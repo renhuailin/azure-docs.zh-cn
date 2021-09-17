@@ -12,12 +12,12 @@ ms.date: 04/14/2021
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bf148645ebdd762b65d59c86e5453b83423201e9
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 804af634c7202fdc3f822e32e7cd1fbf827bfab1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113550599"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733963"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
@@ -52,6 +52,10 @@ ms.locfileid: "113550599"
 ## <a name="named-entity-recognition"></a>命名实体识别
 
 命名实体识别 (NER) 可以[对文本中的实体进行识别和分类](how-tos/text-analytics-how-to-entity-linking.md)，将其识别并分类为人员、地点、组织、数量，还可以识别众所周知的实体并将其链接到 Web 上的详细信息。
+
+## <a name="text-summarization"></a>文本摘要
+
+[摘要](how-tos/extractive-summarization.md)通过提取共同表示原始内容中最重要或相关信息的句子，生成一个文本摘要。 此功能将文章、论文或文档压缩为关键句子。
 
 ## <a name="text-analytics-for-health"></a>运行状况文本分析
 

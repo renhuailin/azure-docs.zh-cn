@@ -1,46 +1,25 @@
 ---
-title: 专用终结点
-description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
+title: 创建并使用 Azure 备份的专用终结点
+description: 了解创建 Azure 备份的专用终结点的过程，其中使用专用终结点可帮助维护资源安全。
 ms.topic: conceptual
-ms.date: 07/06/2021
+ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aac0fc7b25a43130a157540825395e9eb8c9e4c5
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: df65aad1247f21c4deda3f7ee71f657a3b288168
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301143"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444234"
 ---
-# <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
+# <a name="create-and-use-private-endpoints-for-azure-backup"></a>创建并使用 Azure 备份的专用终结点
 
-通过 Azure 备份，你可以使用[专用终结点](../private-link/private-endpoint-overview.md)从恢复服务保管库安全地备份和还原数据。 专用终结点使用 VNet 中的一个或多个专用 IP 地址将服务有效接入 VNet 中。
-
-本文将帮助你了解创建 Azure 备份的专用终结点的过程，以及使用专用终结点帮助维护资源安全的方案。
+本文介绍创建 [Azure 备份的专用终结点](private-endpoints-overview.md)的过程，以及专用终结点帮助维护资源安全的方案。
 
 ## <a name="before-you-start"></a>开始之前
 
-- 仅可为新的恢复服务保管库创建专用终结点（没有任何项已注册到保管库）。 因此必须先创建专用终结点，然后才能尝试保护保管库中的任何项。
-- 一个虚拟网络可以包含用于多个恢复服务保管库的专用终结点。 此外，一个恢复服务保管库可以在多个虚拟网络中包含要使用的专用终结点。 但是，最多只能为保管库创建 12 个专用终结点。
-- 为保管库创建专用终结点后，保管库将被锁定。 除包含该保管库的专用终结点的网络之外，无法从其他网络访问它（用于备份和还原）。 如果删除该保管库的所有专用终结点，则可以从所有网络访问该保管库。
-- 用于备份的专用终结点连接在子网中总共使用 11 个专用 IP，其中包括 Azure 备份用于存储的 IP。 对于某些 Azure 区域，此数字可能更高（最多 25 个）。 因此，我们建议你在尝试创建用于备份的专用终结点时，拥有足够的可用专用 IP。
-- 尽管恢复服务保管库可用于 Azure 备份和 Azure Site Recovery 这两种服务，但本文仅介绍将专用终结点用于 Azure 备份的情况。
-- 用于备份的专用终结点不提供对 Azure Active Directory (Azure AD) 的访问权限，该权限需要单独确保。 因此在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure AD 在区域中操作所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。
-- 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要[禁用网络策略](../private-link/disable-private-endpoint-network-policy.md)。
-- 如果在 2020 年 5 月 1 日之前注册了恢复服务资源提供程序，则需在订阅中重新注册它。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的“资源提供程序”，然后选择“Microsoft.RecoveryServices”，并选择“重新注册”  。
-- 如果为保管库启用了专用终结点，则不支持对 SQL 和 SAP HANA 数据库备份进行[跨区域还原](backup-create-rs-vault.md#set-cross-region-restore)。
-- 将已使用专用终结点的恢复服务保管库移到新租户时，需要更新恢复服务保管库，以重新创建并重新配置保管库的托管标识，并根据需要创建新的专用终结点（应在新租户）中。 如果不执行此操作，备份和还原操作将会失败。 此外，需要重新配置在订阅中设置的任何基于角色的访问控制 (RBAC) 权限。
+请确保已阅读[先决条件](private-endpoints-overview.md#before-you-start)和[支持的方案](private-endpoints-overview.md#recommended-and-supported-scenarios)，再继续创建专用终结点。
 
-## <a name="recommended-and-supported-scenarios"></a>推荐和支持的方案
-
-虽然为保管库启用了专用终结点，但它们仅用于在 Azure VM 中备份和还原 SQL 和 SAP HANA 工作负载以及进行 MARS 代理备份。 还可以使用保管库来备份其他工作负载（尽管它们不需要专用终结点）。 除了备份 SQL 和 SAP HANA 工作负载以及使用 MARS 代理进行备份，专用终结点还可用于在 Azure VM 备份时执行文件恢复。 有关详细信息，请参阅下表：
-
-| 在 Azure VM 中备份工作负载（SQL、SAP HANA），使用 MARS 代理进行备份 | 建议使用专用终结点来实现备份和还原，且无需将虚拟网络中 Azure 备份或 Azure 存储的任何 IP/FQDN 添加到允许列表。 在这种情况下，请确保托管 SQL 数据库的 VM 可以访问 Azure AD 的 IP 或 FQDN。 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **Azure VM 备份**                                         | VM 备份不要求你允许访问任何 IP 或 FQDN。 因此，它不需要专用终结点来备份和还原磁盘。  <br><br>   但是，从包含专用终结点的保管库执行文件恢复将限制为包含该保管库的终结点的虚拟网络。 <br><br>    使用 ACL 非托管磁盘时，请确保包含磁盘的存储帐户允许访问受信任的 Microsoft 服务（如果为 ACL）。 |
-| **Azure 文件备份**                                      | Azure 文件备份存储在本地存储帐户中。 因此，它不需要专用终结点来进行备份和还原。 |
-
->[!Note]
->DPM 和 MABS 服务器不支持专用终结点。 
+这些详细信息有助于了解在为保管库创建专用终结点之前需要满足的限制和条件。
 
 ## <a name="get-started-with-creating-private-endpoints-for-backup"></a>开始创建用于备份的专用终结点
 
@@ -138,6 +117,8 @@ ms.locfileid: "113301143"
 ## <a name="manage-dns-records"></a>管理 DNS 记录
 
 如前所述，需在专用 DNS 区域或服务器中创建所需的 DNS 记录才能建立私密连接。 可将专用终结点直接与 Azure 专用 DNS 区域集成，或者根据网络首选项使用自定义 DNS 服务器来实现此目的。 需要针对所有三个服务执行此操作：备份、Blob 和队列。
+
+此外，如果 DNS 区域或服务器存在于与包含专用终结点的订阅不同的订阅中，另请参阅[当 DNS 服务器/DNS 区域存在于另一个订阅中时，创建 DNS 条目](#create-dns-entries-when-the-dns-serverdns-zone-is-present-in-another-subscription)。 
 
 ### <a name="when-integrating-private-endpoints-with-azure-private-dns-zones"></a>将专用终结点与 Azure 专用 DNS 区域集成时
 
@@ -536,6 +517,93 @@ $privateEndpoint = New-AzPrivateEndpoint `
     }
     }
     ```
+
+### <a name="set-up-proxy-server-for-recovery-services-vault-with-private-endpoint"></a>使用专用终结点为恢复服务保管库设置代理服务器
+
+若要为 Azure VM 或本地计算机配置代理服务器，请执行以下步骤：
+
+1. 在异常中添加以下域并绕过代理服务器。
+   
+   | 服务 | 域名 | 端口 |
+   | ------- | ------ | ---- |
+   | Azure 备份 | *.backup.windowsazure.com | 443 |
+   | Azure 存储 | *.blob.core.windows.net <br><br> *.queue.core.windows.net <br><br> *.blob.storage.azure.net | 443 |
+   | Azure Active Directory <br><br> 更新了 [Microsoft 365 Common 与 Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) 中 56 和 59 节下提到的域 URL。 | *.msftidentity.com、*.msidentity.com、account.activedirectory.windowsazure.com、accounts.accesscontrol.windows.net、adminwebservice.microsoftonline.com、api.passwordreset.microsoftonline.com、autologon.microsoftazuread-sso.com、becws.microsoftonline.com、clientconfig.microsoftonline-p.net、companymanager.microsoftonline.com、device.login.microsoftonline.com、graph.microsoft.com、graph.windows.net、login.microsoft.com、login.microsoftonline.com、login.microsoftonline-p.com、login.windows.net、logincert.microsoftonline.com、loginex.microsoftonline.com、login-us.microsoftonline.com、nexus.microsoftonline-p.com、passwordreset.microsoftonline.com、provisioningapi.microsoftonline.com <br><br> 20.190.128.0/18、40.126.0.0/18、2603:1006:2000::/48、2603:1007:200::/48、2603:1016:1400::/48、2603:1017::/48、2603:1026:3000::/48、2603:1027:1::/48、2603:1036:3000::/48、2603:1037:1::/48、2603:1046:2000::/48、2603:1047:1::/48、2603:1056:2000::/48、2603:1057:2::/48 <br><br> *.hip.live.com、*.microsoftonline.com、*.microsoftonline-p.com、*.msauth.net、*.msauthimages.net、*.msecnd.net、*.msftauth.net、*.msftauthimages.net、*.phonefactor.net、enterpriseregistration.windows.net、management.azure.com、policykeyservice.dc.ad.msft.net | 如果适用。 |
+
+1. 允许访问代理服务器中的这些域，将专用 DNS 区域（`*.privatelink.<geo>.backup.windowsazure.com`、`*.privatelink.blob.core.windows.net`、`*.privatelink.queue.core.windows.net`）链接到创建代理服务器的 VNET，或者使用具有相应 DNS 条目的自定义 DNS 服务器。 <br><br> 运行代理服务器的 VNET 和创建专用终结点 NIC 的 VNET 应对等互连，这将允许代理服务器将请求重定向到专用 IP。 
+
+下图显示了使用代理服务器进行的设置，该代理服务器的 VNet 链接到具有所需 DNS 条目的专用 DNS 区域。 代理服务器也可有自己的自定义 DNS 服务器，并且上述域可以有条件地转发到 169.63.129.16。
+
+:::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="显示使用代理服务器进行设置的关系图。" lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
+
+### <a name="create-dns-entries-when-the-dns-serverdns-zone-is-present-in-another-subscription"></a>当 DNS 服务器/DNS 区域存在于另一个订阅中时，创建 DNS 条目
+
+在本部分，我们将讨论以下案例：使用订阅中存在的 DNS 区域，或者使用与包含恢复服务保管库专用终结点的资源组（如中心和分支拓扑）不同的资源组。 由于用于创建专用终结点的托管标识（以及 DNS 条目）仅对创建专用终结点的资源组具有权限，因此还需要所需的 DNS 条目。 使用以下 PowerShell 脚本创建 DNS 条目。
+  
+>[!Note]
+>请参阅下述的整个过程，以实现所需的结果。 此过程需要重复两次 - 在第一次发现（创建通信存储帐户所需的 DNS 条目）时重复一次，然后在第一次备份（创建后端存储帐户所需的 DNS 条目）时重复一次。
+
+#### <a name="step-1-get-required-dns-entries"></a>步骤 1：获取所需的 DNS 条目
+
+使用 [PrivateIP.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/PrivateIP.ps1) 脚本列出需要创建的所有 DNS 条目。
+
+>[!Note]
+>以下语法中的 `subscription` 是指要创建保管库专用终结点的订阅。
+
+**使用脚本的语法**
+
+```azurepowershell
+./PrivateIP.ps1 -Subscription "<VaultPrivateEndpointSubscriptionId>" -VaultPrivateEndpointName "<vaultPrivateEndpointName>" -VaultPrivateEndpointRGName <vaultPrivateEndpointRGName> -DNSRecordListFile dnsentries.txt
+```
+
+**示例输出**
+
+```
+ResourceName                                                                 DNS                                                                       PrivateIP
+<vaultId>-ab-pod01-fc1         privatelink.eus.backup.windowsazure.com         10.12.0.15
+<vaultId>-ab-pod01-fab1        privatelink.eus.backup.windowsazure.com         10.12.0.16
+<vaultId>-ab-pod01-prot1       privatelink.eus.backup.windowsazure.com         10.12.0.17
+<vaultId>-ab-pod01-rec2        privatelink.eus.backup.windowsazure.com         10.12.0.18
+<vaultId>-ab-pod01-ecs1        privatelink.eus.backup.windowsazure.com         10.12.0.19
+<vaultId>-ab-pod01-id1         privatelink.eus.backup.windowsazure.com         10.12.0.20
+<vaultId>-ab-pod01-tel1        privatelink.eus.backup.windowsazure.com         10.12.0.21
+<vaultId>-ab-pod01-wbcm1       privatelink.eus.backup.windowsazure.com         10.12.0.22
+abcdeypod01ecs114        privatelink.blob.core.windows.net       10.12.0.23
+abcdeypod01ecs114        privatelink.queue.core.windows.net      10.12.0.24
+abcdeypod01prot120       privatelink.blob.core.windows.net       10.12.0.28
+abcdeypod01prot121       privatelink.blob.core.windows.net       10.12.0.32
+abcdepod01prot110       privatelink.blob.core.windows.net       10.12.0.36
+abcdeypod01prot121       privatelink.blob.core.windows.net       10.12.0.30
+abcdeypod01prot122       privatelink.blob.core.windows.net       10.12.0.34
+abcdepod01prot120       privatelink.blob.core.windows.net       10.12.0.26
+
+```
+
+#### <a name="step-2-create--dns-entries"></a>步骤 2：创建 DNS 条目
+
+创建与上述条目相对应的 DNS 条目。 根据使用的 DNS 类型，有两种创建 DNS 条目的替代方法。
+
+案例 1：如果使用的是自定义 DNS 服务器，则需要为上述脚本的每个记录手动创建条目，并验证 FQDN (ResourceName.DNS) 是否解析为 VNET 中的专用 IP。
+
+案例 2：如果使用的是 Azure 专用 DNS 区域，可以使用 [CreateDNSEntries.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/CreateDNSEntries.ps1) 脚本自动在专用 DNS 区域中创建 DNS 条目。 在下面的语法中，`subscription` 是专用 DNS 区域所在的订阅。
+
+**使用脚本的语法**
+
+```azurepowershell
+/CreateDNSEntries.ps1 -Subscription <PrivateDNSZoneSubId> -DNSResourceGroup <PrivateDNSZoneRG> -DNSRecordListFile dnsentries.txt
+```
+
+#### <a name="summary-of-the-entire-process"></a>整个过程的摘要
+
+若要通过此解决方法正确设置 RSV 的专用终结点，需要：
+
+1. 为保管库创建专用终结点（如本文前面所述）。
+1. 触发发现。 UserErrorVMInternetConnectivityIssue 的 SQL/HANA 发现将失败，因为通信存储帐户没有 DNS 条目。
+1. 运行脚本获取 DNS 条目，并为此部分前面提到的通信存储帐户创建相应的 DNS 条目。
+1. 重新触发发现。 这次，发现应会成功。
+1. 触发备份。 对 SQL/HANA 和 MARS 的备份可能会失败，因为本部分前面提到的后端存储帐户没有 DNS 条目。
+1. 运行脚本为后端存储帐户创建 DNS 条目。
+1. 重新触发备份。 这次，备份应会成功。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

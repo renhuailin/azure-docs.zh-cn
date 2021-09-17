@@ -8,14 +8,17 @@ ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
-ms.openlocfilehash: 703732725ae7215d3ff59ad92a4c171a86251c20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82aa54f1b9aea331c7c08128487fbc9711cac2df
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677189"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696836"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) 扩展生命周期支持
+
+**适用于：** :heavy_check_mark: Linux VM 
+
 本文提供有关 Red Hat Enterprise 映像扩展生命周期支持的信息：
 * Red Hat Enterprise Linux 6  
 

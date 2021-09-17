@@ -2,22 +2,23 @@
 metadata:
   title: Microsoft Azure VMware 解决方案常见问题解答
   description: 解答有关 Azure VMware 解决方案的常见问题。
-  ms.topic: troubleshooting
+  ms.topic: article
+  ms.service: azure-vmware
   ms.custom: contperf-fy21q4
-  ms.date: 06/16/2021
-  ms.openlocfilehash: 1d3268c9f2bd35b9907ac6370598099d8d5cb9b9
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.date: 08/19/2021
+  ms.openlocfilehash: 716605f2a617d5f02d93596e760156b58f9ddcb2
+  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114466366"
+  ms.lasthandoff: 08/20/2021
+  ms.locfileid: "122514660"
 title: 有关 Azure VMware 解决方案的常见问题
 summary: 本文将解答有关 Azure VMware 解决方案的常见问题。
 sections:
 - name: 常规
   questions:
   - question: 什么是 Azure VMware 解决方案？
-    answer: 随着企业采用 IT 现代化策略来提高业务敏捷性、降低成本和加速创新，混合云平台已成为客户实施数字转型的关键推动力。 Azure VMware 解决方案结合采用 VMware 的软件定义的数据中心 (SDDC) 软件以及 Microsoft 的 Azure 全球云服务生态系统。 客户可通过管理 Azure VMware 解决方案来满足性能、可用性、安全性及符合性要求。 有关详细信息，请参阅 [Azure VMware 解决方案简介](introduction.md)。
+    answer: 随着企业采用 IT 现代化策略来提高业务敏捷性、降低成本和加速创新，混合云平台已成为客户实施数字转型的关键推动力。 Azure VMware 解决方案结合采用 VMware 的软件定义的数据中心 (SDDC) 软件以及 Microsoft 的 Azure 全球云服务生态系统。 此外，Azure VMware 解决方案满足性能、可用性、安全性及合规性要求。 有关详细信息，请参阅 [Azure VMware 解决方案简介](introduction.md)。
   - question: Azure VMware 解决方案目前在哪些地区提供？
     answer: 我们将持续在新地区推出该项服务。 有关详细信息，请参阅[最新的服务可用性信息](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)。
   - question: 谁为 Azure VMware 解决方案提供支持？
@@ -26,13 +27,37 @@ sections:
 
       对于云解决方案提供商 (CSP) 管理的订阅，第一级支持提供的是解决方案提供程序，采用的提供方式则与 CSP 为其他 Azure 服务提供支持的方式相同。
   - question: 在 Azure VMware 解决方案实例中运行的工作负载能否结合使用 Azure 服务？
-    answer: Azure VMware 解决方案客户可使用所有 Azure 服务。 需要逐一解决特定服务的性能和可用性限制。
+    answer: Azure VMware 解决方案客户可使用所有 Azure 服务。 应该逐一解决特定服务的性能和可用性限制。
   - question: 哪些来宾操作系统与 Azure VMware 解决方案兼容？
     answer: 如需查找来宾操作系统与 vSphere 兼容性的相关信息，请使用 [VMware 兼容性指南](https://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&details=1&releases=485&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc&testConfig=16)。 若要确定在 Azure VMware 解决方案中运行的 vSphere 版本，请参阅 [VMware 软件版本](concepts-private-clouds-clusters.md#vmware-software-versions)。
   - question: 变更控制过程是怎样的？
-    answer: 对服务本身进行的更新将遵循 Microsoft Azure 的标准变更管理过程。 所有工作负载管理任务和关联的变更管理过程均由客户负责。
+    answer: 进行的更新将遵循 Microsoft Azure 的标准变更管理过程。 所有工作负载管理任务和关联的变更管理过程均由客户负责。
   - question: 此版本与 Azure VMware Solution by CloudSimple 有何不同？
-    answer: 对于新的 Azure VMware 解决方案，Microsoft 与 VMware 具有云服务提供商直接合作伙伴关系。 新解决方案完全由 Microsoft 设计、构建及提供支持，并已获得 VMware 认可。 两种解决方案的体系结构是一致的，即都是在 Azure 专用基础结构上运行 VMware 技术堆栈。
+    answer: 对于新的 Azure VMware 解决方案，Microsoft 与 VMware 具有云服务提供商直接合作伙伴关系。 新解决方案由 Microsoft 设计、构建及提供支持，并已获得 VMware 认可。 两种解决方案的体系结构是一致的，即都是在 Azure 专用基础结构上运行 VMware 技术堆栈。
+- name: 计费
+  questions:
+  - question: 在预览期间将如何计费？
+    answer: 在预览期间，计费方式是每月即用即付。 在正式发布 (GA) 后会提供其他选项。
+  - question: 发生故障时，是否替换磁盘上的 SLA？
+    answer: 磁盘出现问题的任何主机都会被替换。 此操作可将 Azure VMware 解决方案的 SLA 可用性提升至 99.9。
+  - question: 如何建立 Azure VMware 解决方案的定价策略？
+    answer: 有关定价的一般问题，请参阅 Azure VMware 解决方案[定价](https://azure.microsoft.com/pricing/details/azure-vmware)页面。
+  - question: VMware HCX Enterprise 是否可用？如果是，如何收费？
+    answer: VMware HCX Enterprise 可作为预览功能/服务在 Azure VMware 解决方案中提供。 虽然适用于 Azure VMware 解决方案的 VMware HCX Enterprise 为预览版，但其是一项需要遵守预览版服务条款和条件的免费功能/服务。 一旦正式发布 VMware HCX Enterprise 服务，你将会在 30 天后收到一则转换账单计费方法的通知。 在此之后，你可以关闭或选择退出该项服务。
+  - question: 对于通过 ExpressRoute 在本地与 Azure VMware 解决方案之间传输的流量，是否会根据数据流量套餐产生任何出站数据传输费用？
+    answer: "Azure VMware 解决方案 ExpressRoute 线路中的流量不会以任何方式计费。 通过 ExpressRoute 线路连接到本地以及 Azure 产生的流量根据 ExpressRoute 定价计划收费。\n\n- Azure VMware 解决方案到 vNet 是通过内部 ExpressRoute 线路实现的，在与 Azure VMware 解决方案相同的区域内免费。 但是，如果内部 ExpressRoute 线路是跨区域连接，则会收取数据传输费用。\n\n- Azure VMware 解决方案到本地是通过 vNet 或 ExpressRoute Global Reach（在内部 ExpressRoute 与外部 ExpressRoute 之间）实现的。 如果是在部署 Azure VMware 解决方案的区域内连接到 vNet（如上所述）或使用 ExpressRoute Global Reach，则仍然免费。 \n"
+  - question: 试用版 Azure VMware 解决方案群集的计费何时开始，何时结束？
+    answer: 试用版群集限定为 3 台主机，可用于对 Azure VMware 解决方案私有云进行为期 30 天的评估。 30 天后，群集将按各自的费率自动开始计费。 如果在 30 天的结束日期之前删除了试用版群集，则 Azure VMware 解决方案试用版也将在删除时结束试用。
+  - question: 从本地 VM 环境使用 L2 扩展进行迁移时，是否有必要购买除 AV36 实例外的其他 VMware 许可和资源？
+    answer: "不需要，无需购买 Azure VMware 解决方案服务以外的其他 VMware 许可。 有关详细信息，请参阅 [Azure VMware 解决方案定价页](https://azure.microsoft.com/pricing/details/azure-vmware/)，了解包含的 VMware 技术。     \n"
+- name: 支持
+  questions:
+  - question: 如何请求为 Azure VMware 解决方案增加主机配额？
+    answer: 无论你是希望为现有私有云分配更多主机，还是要创建新的私有云，都需要提交支持票证才可分配主机。  有关详细信息，请参阅为 [Azure VMware 解决方案请求主机配额](request-host-quota-azure-vmware-solution.md)。
+  - question: 创建 Azure VMware 解决方案私有云需要哪些帐户？
+    answer: 需要 Azure 订阅中的 Azure 帐户。
+  - question: Red Hat 解决方案是否适用于 Azure VMware 解决方案？
+    answer: Microsoft 和 Red Hat 共享一个集成型同地支持团队，该团队为在 Azure 平台上运行的 Red Hat 生态系统提供统一联系点。  与其他使用 Red Hat Enterprise Linux 的 Azure 平台服务一样，Azure VMware 解决方案也属于 Cloud Access 集成支持的范畴。 Azure 支持 Red Hat Enterprise Linux 在 Azure VMware 解决方案上运行。
 - name: 客户通信
   questions:
   - question: 当 Azure 将服务运行状况通知发送到我的 Azure 订阅时，我要如何接收警报？
@@ -49,7 +74,7 @@ sections:
   - question: 在 Azure VMware 解决方案 VM 上安装和使用 VMRC 时是否需要遵循特殊说明？
     answer: 否。 若要满足 VM 先决条件，请遵循 [VMware 提供的相关说明](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)。
   - question: 可以使用在本地运行的 vRealize Suite 吗？
-    answer: 可以根据具体情况评估特定集成和用例。
+    answer: 可根据具体情况评估特定集成和用例。
   - question: 我是否可以将 vSphere VM 从本地环境迁移到 Azure VMware 解决方案私有云吗？
     answer: 是的。 只要满足标准的跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952)，便可使用 VM 迁移和 vMotion 将 VM 迁移到私有云。
   - question: 本地环境中是否需要特定版本的 vSphere？
@@ -63,15 +88,13 @@ sections:
     answer: >
       [!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
   - question: 私有云是否使用 VMware NSX？ 如果是，支持哪个版本？
-    answer: 是的，Azure VMware 解决方案私有云使用软件定义的网络——NSX-T 2.5。 而且 NSX-T 是唯一支持的 NSX 版本。
+    answer: "是，NSX-T 是唯一支持的 NSX 版本。   \n\nNSX-T [!INCLUDE [nsxt-version](includes/nsxt-version.md)] 在 Azure VMware 解决方案私有云中用于软件定义的网络。\n"
   - question: 本地环境或连接到私有云的网络中是否需要 NSX？
     answer: 不需要，不需要在本地使用 NSX。
   - question: VMware Horizon 8 2012 是否与 Azure VMware 解决方案兼容？
     answer: 是的。
   - question: 我能否更改默认的 vSphere Web 客户端超时值？
     answer: 是的。 有关更改超时值的信息，请参阅[配置 vSphere Web 客户端超时值](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-975412DE-CDCB-49A1-8E2A-0965325D33A5.html)。
-  - question: NSX-T 中是否支持 Windows 2008 作为 Active Directory (AD) 服务器或远程桌面会话主机 (RDSH) 操作系统？
-    answer: 否。
 - name: Migrate
   questions:
   - question: 为什么我在使用 Sentinel 设备服务时，在 HCX 管理器中看不到“Sentinel 管理”选项卡？
@@ -86,10 +109,8 @@ sections:
     answer: 服务器的 RAM 为 576 GB。
   - question: Azure VMware 解决方案是否支持将 ESXi/ESX 作为嵌套虚拟化解决方案运行？
     answer: 否。 VMware 并未正式支持嵌套虚拟化。
-- name: 第三方备份和恢复
+- name: 备份
   questions:
-  - question: Azure VMware 解决方案是否支持 cloudadmin 扩展特权？
-    answer: 否。 我们目前并不支持 cloudadmin 扩展特权，并且短期内也并无提供该等支持的计划。
   - question: 哪些独立软件供应商 (ISV) 备份解决方案适用于 Azure VMware 解决方案？
     answer: 为适用 Azure VMware 解决方案，Commvault、Veritas 和 Veeam 已扩展其备份解决方案。  但是，任何使用 VMware vStorage API for Data Protection (VADP) 且采用 HotAdd 传输模式的备份解决方案都即时适用 Azure VMware 解决方案。 有关详细信息，请参阅[适用于 Azure VMware 解决方案 VM 的备份解决方案](ecosystem-back-up-vms.md)。
   - question: 如何获得 ISV 备份解决方案的相关支持？
@@ -138,6 +159,8 @@ sections:
     answer: 是的。
   - question: 能否通过 ExpressRoute Global Reach 上的 Azure 虚拟 WAN 在本地与 Azure VMware 解决方案之间建立传输连接？
     answer: Azure 虚拟 WAN 不提供两个已连接 ExpressRoute 线路和非虚拟 WAN ExpressRoute 网关之间的传递路由。 借助 ExpressRoute Global Reach，你便可在本地与 Azure VMware 解决方案之间建立连接，但却是通过 Microsoft 全球网络而不是虚拟 WAN 集线器进行连接。
+  - question: NSX-T 中是否支持 Windows 2008 作为 Active Directory (AD) 服务器或远程桌面会话主机 (RDSH) 操作系统？
+    answer: 否。
 - name: 存储
   questions:
   - question: 重复数据删除设置的正确存储策略是什么？
@@ -169,7 +192,7 @@ sections:
   - question: 我是否使用与现在相同的工具来管理私有云资源？
     answer: 是的。 Azure 门户可用于部署以及管理少量操作。 vCenter 和 NSX Manager 用于管理 vSphere 和 NSX-T 资源。
   - question: 可以使用我的本地 vCenter 来管理私有云吗？
-    answer: 正式发布的 Azure VMware 解决方案不支持跨本地和私有云环境实施单一管理。 将通过私有云的本地 vCenter 和 NSX Manager 来管理私有云群集。
+    answer: 正式发布的 Azure VMware 解决方案不支持跨本地和私有云环境实施单一管理。 可通过私有云的本地 vCenter 和 NSX Manager 来管理私有云群集。
   - question: 如果对群集进行纵向扩展后，工作负载需求下降，是否可以纵向缩减群集？
     answer: 可以，只要为私有云分配配额，便可横向扩展群集。 当工作负载需求下降时，可以从群集中删除节点，以便缩减群集。 此操作可以通过 Azure VMware 解决方案门户执行。
   - question: 是否共享了底层基础结构？
@@ -183,7 +206,7 @@ sections:
 - name: 身份管理
   questions:
   - question: 我可以通过新的 Azure VMware 解决方案私有云获得哪些帐户和特权？
-    answer: 你可获得 vCenter 中 cloudadmin 用户的凭据和 NSX-T 管理器的管理员访问权限。 还可通过一个 CloudAdmin 组合并 Azure Active Directory。 有关详细信息，请参阅[访问权限和标识的概念](concepts-identity.md)。
+    answer: 你可获得 vCenter 中 cloudadmin 用户的凭据和 NSX-T 管理器的管理员访问权限。 还可以使用 CloudAdmin 组合并 Azure Active Directory。 有关详细信息，请参阅[访问权限和标识的概念](concepts-identity.md)。
   - question: 是否可以拥有 ESXi 主机的管理员访问权限？
     answer: 不可以，对 ESXi 的管理员访问权限受到限制，以满足解决方案的安全要求。
   - question: 我可在 vCenter 中拥有哪些特权和权限？
@@ -212,29 +235,9 @@ sections:
     answer: 客户可以在其 Azure VMware 解决方案私有云中创建多租户环境并将其销售给客户，前提是该产品不是标准的 VM，且已添加了大量嵌入到 VM 的知识产权应用程序。
   - question: 作为主机托管服务提供商或客户，是否可以在 Azure VMware 解决方案中使用现有的 VMware Cloud Director (VCD) 或新的 VCXD 部署？
     answer: VMware 不允许通过任何超大规模客户（包括 Microsoft）获取云中或本地 VCD 的使用许可。
-  - question: 能否在 Azure 中将 VMware Cloud Director Service (CDS) 连接到 Azure VMware 解决方案实例
+  - question: 能否在 Azure 中将 VMware Cloud Director Service (CDS) 连接到 Azure VMware 解决方案实例？
     answer: 尽管从技术上讲是可行的，但 Microsoft 不允许通过 VMC 上运行的 VMware 所提供的新 CDS 服务使用 Azure VMware 解决方案。
   - question: 能否通过 Microsoft CSP 购买 Azure VMware 解决方案？
     answer: 能，客户可以在由 CSP 管理的 Azure 订阅中部署 Azure VMware 解决方案。
   - question: 是否可以通过 CSP 计划购买预留实例？
     answer: 是的。 CSP 可以为其客户购买预留实例。 有关详细信息，请参阅[使用预留实例节省成本](reserved-instance.md)。
-- name: 计费和支持
-  questions:
-  - question: 发生故障时，是否替换磁盘上的 SLA？
-    answer: 磁盘出现问题的任何主机都将被替换。 此操作可将 Azure VMware 解决方案的 SLA 可用性提升至 99.9。
-  - question: 如何建立 Azure VMware 解决方案的定价策略？
-    answer: 有关定价的一般问题，请参阅 Azure VMware 解决方案[定价](https://azure.microsoft.com/pricing/details/azure-vmware)页面。
-  - question: 创建 Azure VMware 解决方案私有云需要哪些帐户？
-    answer: 需要 Azure 订阅中的 Azure 帐户。
-  - question: Red Hat 解决方案是否适用于 Azure VMware 解决方案？
-    answer: Microsoft 和 Red Hat 共享一个集成型同地支持团队，该团队为在 Azure 平台上运行的 Red Hat 生态系统提供统一联系点。  与其他使用 Red Hat Enterprise Linux 的 Azure 平台服务一样，Azure VMware 解决方案也属于 Cloud Access 集成支持的范畴。 Azure 支持 Red Hat Enterprise Linux 在 Azure VMware 解决方案上运行。
-  - question: VMware HCX Enterprise 是否可用？如果是，如何收费？
-    answer: VMware HCX Enterprise 可作为预览功能/服务在 Azure VMware 解决方案中提供。 虽然适用于 Azure VMware 解决方案的 VMware HCX Enterprise 为预览版，但其是一项免费的功能/服务，并且需要遵守预览版服务条款和条件。 一旦正式发布 VMware HCX Enterprise 服务，你将会在 30 天后收到一则将转换账单计费方法的通知。 你可以关闭或选择退出该项服务。
-  - question: 如何请求为 Azure VMware 解决方案增加主机配额？
-    answer: 无论你是希望为现有私有云分配更多主机，还是要创建新的私有云，都需要提交支持票证才可分配主机。  有关详细信息，请参阅为 [Azure VMware 解决方案请求主机配额](request-host-quota-azure-vmware-solution.md)。
-  - question: 对于通过 ExpressRoute 在本地与 Azure VMware 解决方案之间传输的流量，是否会根据数据流量套餐产生任何出站数据传输费用？
-    answer: Azure VMware 解决方案 ExpressRoute 线路中的流量不会以任何方式计费。 通过 ExpressRoute 线路连接到本地以及 Azure 产生的流量根据 ExpressRoute 定价计划收费。
-  - question: 从本地 VM 环境使用 L2 扩展进行迁移时，是否有必要购买除 AV36 实例外的其他许可证和资源？
-    answer: "否。        \n"
-  - question: 试用版 Azure VMware 解决方案群集的计费何时开始，何时结束？
-    answer: 试用版群集限定为 3 台主机，可用于对 Azure VMware 解决方案私有云进行为期 30 天的评估。 30 天后，群集将按各自的费率自动开始计费。 如果在 30 天的结束日期之前删除了试用版群集，则 Azure VMware 解决方案试用版也将在删除时结束试用。

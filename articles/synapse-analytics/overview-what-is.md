@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 652f98659f96b36e3185432e50d9d36dc569bd43
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 3d0987e5203288da6c6acd8bec6c478f5762b320
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537943"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823721"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>什么是 Azure Synapse Analytics？
 
@@ -27,8 +27,9 @@ Azure Synapse 是一项企业分析服务，可以缩短在数据仓库和大数
 Synapse SQL 是 T-SQL 的分布式查询系统，它实现了数据仓库和数据虚拟化方案，还扩展了 T-SQL 来应对流式处理和计算机学习方案。
 
 * Synapse SQL 同时提供了“无服务器”和“专用”资源模型。  若要使性能和成本可预测，可以创建专用 SQL 池，以保留对 SQL 表中存储的数据进行处理的能力。 对于计划外或突发性的工作负荷，请使用始终可用的无服务器 SQL 终结点。
-* 使用内置的流式处理功能可将数据从云数据源载入到 SQL 表中
-* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)对数据进行评分，将 AI 与 SQL 集成
+* 使用内置的流式处理功能可将数据从云数据源载入到 SQL 表中。
+* 将数据加载到托管表以获取最佳查询性能，或直接在 [Azure Data Lake Storage](sql/query-data-storage.md) 或 [Azure Cosmos DB](sql/query-cosmos-db-analytical-store.md) 中查询数据，而无需执行定期导入任务并等待完成。
+* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)对数据进行评分，将 AI 与 SQL 集成。
 
 ## <a name="industry-standard-apache-spark"></a>行业标准 Apache Spark
 
@@ -44,8 +45,9 @@ Apache Spark for Azure Synapse 深入无缝地集成了 Apache Spark - 用于数
 Azure Synapse 消除了结合使用 SQL 和 Spark 时存在的传统技术阻碍。 你可以根据需求和专业知识无缝混搭使用这两种技术。
 
 * Spark 或 Hive 可以无缝使用基于数据湖中文件定义的各种表。
-* SQL 和 Spark 可以直接浏览和分析 Data Lake 中存储的 Parquet、CSV、TSV 和 JSON 文件。
+* SQL 和 Spark 可以直接浏览和分析 Data Lake 中存储的 Parquet、CSV、TSV、Delta Lake 和 JSON 文件。
 * 在 SQL 与 Spark 数据库之间以可缩放的方式快速加载的数据
+
 
 ## <a name="built-in-data-integration"></a>内置数据集成
 

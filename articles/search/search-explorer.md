@@ -1,25 +1,25 @@
 ---
-title: Azure 门户中的“搜索浏览器”查询工具
+title: 快速入门：搜索浏览器查询工具
 titleSuffix: Azure Cognitive Search
-description: 在此 Azure 门户快速入门中，使用“搜索浏览器”了解查询语法、测试查询表达式或检查搜索文档。 搜索浏览器在 Azure 认知搜索中查询索引。
+description: 搜索浏览器是 Azure 门户中的一种查询工具，它将查询请求发送到 Azure 认知搜索中的搜索索引。 使用它了解语法、测试查询表达式或检查搜索文档。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: e9607a71ed6b045ac704c43bf4ea54c9f181bbf4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.openlocfilehash: d246c9aad024b1086a531c31a2a9559dfa798642
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98179769"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772823"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>快速入门：在门户中使用“搜索浏览器”来运行查询
 
-“搜索浏览器”是一种内置查询工具，用于针对 Azure 认知搜索中的搜索索引运行查询。 利用此工具，可以轻松学习查询语法，测试查询或筛选器表达式，或者通过验证索引中是否存在较新的内容来确认数据刷新。
+“搜索浏览器”是 Azure 门户中的一种内置查询工具，用于针对 Azure 认知搜索中的搜索索引运行查询。 利用此工具，可以轻松学习查询语法，测试查询或筛选器表达式，或者通过验证索引中是否存在较新的内容来确认数据刷新。
 
-本快速入门使用现有索引来演示搜索浏览器。 请求是使用[搜索 REST API](/rest/api/searchservice/search-documents) 表述的，响应以详细的 JSON 文档的形式返回。
+本快速入门使用现有索引来演示搜索浏览器。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,6 +44,8 @@ ms.locfileid: "98179769"
    :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="“搜索浏览器”选项卡" border="true":::
 
 ## <a name="unspecified-query"></a>未指定查询
+
+在搜索浏览器中，请求是使用[搜索 REST API](/rest/api/searchservice/search-documents) 表述的，响应以详细的 JSON 文档的形式返回。
 
 若要首先查看内容，请执行空搜索，方法是单击“搜索”，不提供搜索词。 空搜索作为第一个查询十分有用，因为它返回全部文档，以便查看文档组合。 空搜索没有搜索级别，按任意顺序返回文档（所有文档都为 `"@search.score": 1`）。 默认情况下，搜索请求中会返回 50 个文档。
 

@@ -3,12 +3,12 @@ title: 使用备份中心管理备份空间
 description: 了解如何管理 Azure 环境，以确保从备份角度来看所有资源都与备份中心兼容。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 283c99c4b17683850f71b25fb2006784e43f3b8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b62c2968dccb8d225e472db84c30f9513dd596d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506188"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605106"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>使用备份中心管理备份空间
 
@@ -26,7 +26,7 @@ ms.locfileid: "102506188"
 
 ## <a name="azure-policies-for-backup"></a>用于备份的 Azure 策略
 
-若要查看所有可用于备份的 [Azure 策略](../governance/policy/overview.md)，请选择“用于备份的 Azure 策略”菜单项。 随即会显示可用于订阅和资源组分配的所有内置和自定义的[用于备份的 Azure 策略定义](policy-reference.md)。
+若要查看所有可用于备份的 [Azure 策略](../governance/policy/overview.md)，请选择“用于备份的 Azure 策略”菜单项。 执行此操作将显示可用于订阅和资源组分配的所有内置和自定义的[备份专用 Azure Policy 定义](policy-reference.md)。
 
 选择任何定义都可[将策略分配](../governance/policy/tutorials/create-and-manage.md#assign-a-policy)给范围。
 

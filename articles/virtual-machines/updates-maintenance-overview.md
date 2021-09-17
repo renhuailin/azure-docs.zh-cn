@@ -5,16 +5,19 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 03/08/2021
+ms.date: 08/10/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 81c6fb2e7f25abc9a236c80d1412b84fd6761872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e2d200e7133074ffc1dc2732cdedb692c1ea30c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103021925"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698325"
 ---
 # <a name="updates-and-maintenance-overview"></a>更新和维护概述
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 本文概述适用于 Azure 虚拟机 (VM) 的各种更新和维护选项。
 
 ## <a name="automatic-os-image-upgrade"></a>自动 OS 映像升级
@@ -40,17 +43,17 @@ ms.locfileid: "103021925"
 [自动 VM 来宾修补](automatic-vm-guest-patching.md)具有以下特征：
 - 在 VM 上自动下载并应用已分类为“关键”或“安全性”的补丁。 
 - 在 VM 所在时区的非高峰期应用补丁。
-- 由 Azure 管理补丁业务流程，遵循[可用性优先原则](automatic-vm-guest-patching.md#availability-first-patching)应用补丁。
+- 由 Azure 管理补丁业务流程，遵循[可用性优先原则](automatic-vm-guest-patching.md#availability-first-updates)应用补丁。
 - 监视虚拟机运行状况（通过平台运行状况信号来确定），以检测修补失败的情况。
 - 适用于所有大小的 VM。
 
 
-## <a name="automatic-extension-upgrade-preview"></a>自动扩展升级（预览版）
+## <a name="automatic-extension-upgrade"></a>自动扩展升级
 
-适用于 Azure VM 和 Azure 虚拟机规模集的[自动扩展升级](automatic-extension-upgrade.md)以预览版提供。 在 VM 或规模集中启用自动扩展升级后，每当扩展发行商发布了扩展的新版本，该扩展就会自动升级。
+[自动扩展升级](automatic-extension-upgrade.md)适用于 Azure VM 和 Azure 虚拟机规模集。 在 VM 或规模集中启用自动扩展升级后，每当扩展发行商发布了扩展的新版本，该扩展就会自动升级。
 
  自动扩展升级具有以下特性：
-- 支持 Azure VM 和 Azure 虚拟机规模集。 目前不支持 Service Fabric 虚拟机规模集。
+- 支持 Azure VM 和 Azure 虚拟机规模集。
 - 在可用性优先部署模型中应用升级。
 - 对于虚拟机规模集，在一个批次中升级的规模集虚拟机数不超过总数的 20%。 最小批次大小为一个虚拟机。
 - 适用于所有 VM 大小，并且适用于 Windows 和 Linux 扩展。
@@ -59,7 +62,7 @@ ms.locfileid: "103021925"
 - 每个受支持的扩展将单独注册，可以选择要自动升级哪些扩展。
 - 在所有公有云区域中均受支持。
 
-## <a name="hotpatch"></a>热补丁 
+## <a name="hotpatch"></a>热补丁
 
 [热修补](../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context)是在新的 Windows Server Azure Edition 虚拟机 (VM) 上安装更新的一种新方式，安装后无需重新启动。 适用于 Windows Server Azure Edition VM 的热补丁具有以下优势：
 
@@ -74,23 +77,23 @@ ms.locfileid: "103021925"
 
 ## <a name="maintenance-control"></a>维护控制
 
-使用[维护控制](maintenance-control.md)管理不需要重新启动的平台更新。 Azure 会频繁更新其基础结构，以提高可靠性、性能、安全性或推出新功能。 大多数更新对用户是透明的。 一些敏感的工作负载，如游戏、媒体流和金融交易，甚至不能容忍 VM 冻结或断开连接几秒钟来进行维护。 维护控制允许你等待平台更新并在 35 天滚动时段内应用它们。 
+使用[维护控制](maintenance-control.md)管理不需要重新启动的平台更新。 Azure 会频繁更新其基础结构，以提高可靠性、性能、安全性或推出新功能。 大多数更新对用户是透明的。 一些敏感的工作负载，如游戏、媒体流和金融交易，甚至不能容忍 VM 冻结或断开连接几秒钟来进行维护。 维护控制允许你等待平台更新并在 35 天滚动时段内应用它们。
 
 维护控制允许你决定何时向独立 VM 和 Azure 专用主机应用更新。
 
 使用[维护控制](maintenance-control.md)可以：
 - 将许多更新作为一个更新包进行批处理。
-- 等待长达 35 天才应用更新。 
+- 等待长达 35 天才应用更新。
 - 通过配置维护计划或使用 [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)，可以自动执行平台更新。
-- 维护配置跨订阅和资源组生效。 
+- 维护配置跨订阅和资源组生效。
 
 
 ## <a name="scheduled-events"></a>计划事件
 
-计划事件是一个 Azure 元数据服务，可提供应用程序时间用于准备虚拟机 (VM) 维护。 它提供有关即将发生的维护事件的信息（例如重新启动），使应用程序可以为其准备并限制中断。 它可用于 Windows 和 Linux 上的所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 
+计划事件是一个 Azure 元数据服务，可提供应用程序时间用于准备虚拟机 (VM) 维护。 它提供有关即将发生的维护事件的信息（例如重新启动），使应用程序可以为其准备并限制中断。 它可用于 Windows 和 Linux 上的所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。
 
 有关 Scheduled Events 的信息，请参阅[适用于 Windows VM 的 Scheduled Events](./windows/scheduled-events.md) 和[适用于 Linux 的 Scheduled Events](./linux/scheduled-events.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-有关增加应用程序和服务运行时间的更多方法，请查看[可用性和规模](availability.md)文档。 
+有关增加应用程序和服务运行时间的更多方法，请查看[可用性和规模](availability.md)文档。

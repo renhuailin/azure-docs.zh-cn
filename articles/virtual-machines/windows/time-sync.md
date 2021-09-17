@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 85abc77757d31f3b1054a0670ea3f65a4fcb2e52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc35b26d1bf81b7d3cc139d0076c44a481cf4a70
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555952"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689653"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
+
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 时间同步对于安全性和事件相关性来说很重要。 有时候，它用于分布式事务实现。 多个计算机系统之间的时间准确性通过同步来实现。 同步可能受多种因素影响，包括重启以及时间源和提取时间的计算机之间的网络流量。 
 

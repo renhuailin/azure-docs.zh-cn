@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5b2303b17a525a6ae394996780fe3ebb89388f44
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 4c29ff09b6d353072cb8486e17ffa605ceff9aea
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855090"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769352"
 ---
 # <a name="plan-your-update-management-deployment"></a>计划更新管理部署
 
@@ -34,7 +34,7 @@ ms.locfileid: "111855090"
 
 在 Azure VM 上，如果还没有安装 Log Analytics 代理，当你为 VM 启用更新管理时，会使用适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展自动安装。 该代理被配置为向链接到自动化帐户（已启用更新管理）的 Log Analytics 工作区报告。
 
-非 Azure VM 或服务器需要安装适用于 Windows 或 Linux 的 Log Analytics 代理，并向链接的工作区报告。 建议通过先将计算机连接到[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 或 Linux 的 Log Analytics 代理，然后使用 Azure Policy 来分配[将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 或者，如果计划使用 [VM 见解](../../azure-monitor/vm/vminsights-overview.md)来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+非 Azure VM 或服务器需要安装适用于 Windows 或 Linux 的 Log Analytics 代理，并向链接的工作区报告。 建议通过先将计算机连接到[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 或 Linux 的 Log Analytics 代理，然后使用 Azure Policy 来分配[将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略定义。 或者，如果计划使用 [VM 见解](../../azure-monitor/vm/vminsights-overview.md)来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
 如果你启用当前由 Operations Manager 管理的计算机，则不需要新代理。 将管理组连接到 Log Analytics 工作区时，工作区信息会添加到代理配置中。
 
@@ -85,7 +85,7 @@ Azure 自动化更新管理依赖 Windows 更新客户端来下载和安装 Wind
 
 - 使用 Azure [资源管理器模板](enable-from-template.md)将更新管理部署到订阅中新的或现有的自动化帐户和 Azure Monitor Log Analytics 工作区。 它不会配置应管理的计算机范围，而是在使用模板后在单独的步骤中执行此操作。
 
-- 从[自动化帐户](enable-from-automation-account.md)为一个或多个 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）启用。
+- 从一台或多台 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）的[自动化帐户](enable-from-automation-account.md)。
 
 - 使用 Enable-AutomationSolution [runbook](enable-from-runbook.md) 自动加入 Azure VM。
 

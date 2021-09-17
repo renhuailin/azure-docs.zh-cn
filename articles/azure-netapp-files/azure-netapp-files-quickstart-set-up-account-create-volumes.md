@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 08/10/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: b90b19edd1cf7f22f7396476866208e7e3bd2523
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: 3d97c10236391157dbf0a8d32110e3e1d540a3b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112574616"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729264"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入门：设置 Azure NetApp 文件并创建 NFS 卷
 
@@ -89,9 +89,7 @@ ms.locfileid: "112574616"
 
       ![选择“Azure NetApp 文件”](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
-2. 单击“+ 添加”  来创建新的 NetApp 帐户。
-
-     ![创建新的 NetApp 帐户](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
+2. 单击“+ 创建”以创建新的 NetApp 帐户。
 
 3. 在“新建 NetApp 帐户”窗口中提供以下信息：
    1. 输入 **myaccount1** 作为帐户名称。
@@ -287,11 +285,9 @@ ms.locfileid: "112574616"
 
     ![为快速入门指定 NFS 协议](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
-5. 单击“查看 + 创建”  。
+5. 单击“查看 + 创建”以显示正在创建的卷的信息。  
 
-    ![“查看 + 创建”窗口](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)
-
-6. 查看卷的信息，然后单击“创建”。 
+6. 单击“创建”以创建卷。 
     创建的卷将显示在“卷”边栏选项卡中。
 
     ![已创建卷](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)

@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: references_regions
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/23/2021
-ms.openlocfilehash: 87af6f9764c2ab01b0e0d02d8eb4a6c7342ca31c
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.date: 07/30/2021
+ms.openlocfilehash: 5423af2f148a56e978bfbe6a1584b3e281f9a1a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112894619"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740294"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>发行说明 - Azure Database for PostgreSQL - 灵活服务器
 
@@ -20,6 +20,16 @@ ms.locfileid: "112894619"
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
+
+## <a name="release-july-2021"></a>发布：2021 年 7 月
+
+* 支持[新区域](overview.md#azure-regions)东亚、德国中西部、韩国南部、美国中南部、英国西部。
+* 支持 [pglogical 扩展](concepts-logical.md) v2.3.2 和 PostgreSQL 11、12 及 13。<sup>$</sup>
+* PgBouncer 现包括 `ignore_startup_parameters` 以忽略特定客户端驱动程序的参数，包括 `extra_float_digits` 和 `pgbouncer.query_wait_timeout` 参数。  <sup>$</sup>.
+* 支持 `pg_stat_reset_shared('bgwriter');` 和 `pg_stat_reset_shared('archiver');` 以重置显示在 `pg_stat_bgwriter` 和 `pg_stat_archiver` 视图中的计数器 <sup>$</sup>。
+* 修复了多个 bug，并提升了稳定性和性能<sup>$</sup>。
+
+<sup> **$** </sup> 新服务器会自动获取这些功能。 在现有的服务器中，这些功能在服务器的未来维护时段内启用。
 
 ## <a name="release-june-2021"></a>发布时间：2021 年 6 月
 
@@ -31,7 +41,7 @@ ms.locfileid: "112894619"
 * 支持 lo 扩展。 有关每个主版本支持的版本，请参阅[扩展页](./concepts-extensions.md)<sup>$</sup>。
 * 修复了多个 bug，并提升了稳定性和性能<sup>$</sup>。
   
-<sup> **$**</sup> 你的现有服务器将自动升级到受支持的最新次要版本，还会在服务器将来的维护时段内启用新功能。
+<sup> **$** </sup> 新服务器会自动获取这些功能。  你的现有服务器将自动升级到受支持的最新次要版本，还会在服务器将来的维护时段内启用新功能。
 
 ## <a name="release-may-2021"></a>发布时间：2021 年 5 月
 

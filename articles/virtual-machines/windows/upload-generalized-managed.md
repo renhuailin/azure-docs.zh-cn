@@ -1,6 +1,6 @@
 ---
-title: 从上传的通用化 VHD 创建 VM
-description: 将通用化 VHD 上传到 Azure，然后在 Resource Manager 部署模型中使用它来创建新的 VM。
+title: 从上传的通用化 Windows VHD 创建 VM
+description: 将通用化 Windows VHD 上传到 Azure 并使用它来创建新的 VM（使用 Resource Manager 部署模型）。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 70a89a8fe4917498dc7c31f2a15b95619e973b99
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 4f31fff34dcaaa8cc30b1a894e24f3eda8e5764d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667856"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688583"
 ---
-# <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新 VM
+# <a name="upload-a-generalized-windows-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 Windows VHD 并使用它在 Azure 中创建新的 VM
+
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 本文逐步讲解如何使用 PowerShell 将通用化 VM 的 VHD 上传到 Azure、从该 VHD 创建映像，然后从该映像创建新 VM。 可以上传从本地虚拟化工具或其他云导出的 VHD。 对新的 VM 使用[托管磁盘](../managed-disks-overview.md)可以简化 VM 管理，在将 VM 置于可用性集中时提供更好的可用性。 
 

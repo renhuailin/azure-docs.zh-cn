@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0947f9924e97532b087940ecde08e8a0f8d7e005
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b77a0a8f1a02fa970965d3393dada2a7720ab3e4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449099"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821372"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>利用 Azure Active Directory 智能锁定保护用户帐户免受攻击
 
@@ -44,10 +44,10 @@ ms.locfileid: "114449099"
 
 使用[直通身份验证](../hybrid/how-to-connect-pta.md)时，请注意以下事项：
 
-* Azure AD 锁定阈值小于 AD DS 帐户锁定阈值。 请设置此值，以便使 AD DS 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。
+* Azure AD 锁定阈值小于 AD DS 帐户锁定阈值。 设置这些值，使 AD DS 帐户锁定阈值至少是 Azure AD 锁定阈值的二倍或三倍。
 * Azure AD 锁定持续时间必须设置为长于 AD DS 重置帐户锁定计数器的持续时间。 Azure AD 持续时间以秒为单位进行设置，而 AD 持续时间以分钟为单位进行设置。
 
-例如，如果希望 Azure AD 计数器大于 AD DS，则 Azure AD 将为 120 秒（2 分钟），而本地 AD 设置为 1 分钟（60 秒）。
+例如，如果希望 Azure AD 智能锁定持续时间长于 AD DS，则 Azure AD 将为 120 秒（2 分钟），而本地 AD 将设置为 1 分钟（60 秒）。 如果希望 Azure AD 锁定阈值为 5，则需要本地 AD 锁定阈值为 10。  此配置将确保智能锁定可防止本地 AD 帐户被针对 Azure AD 帐户的暴力攻击锁定。
 
 > [!IMPORTANT]
 > 目前，如果用户的云帐户已被智能锁定功能锁定，管理员将无法为其解锁。 管理员必须等到锁定持续时间到期。 但是，用户可使用自助密码重置 (SSPR) 从受信任的设备或位置解锁。

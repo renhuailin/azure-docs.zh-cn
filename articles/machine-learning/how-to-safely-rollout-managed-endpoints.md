@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 08/05/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 11fa5a3057f50a354058141ed688d8c55b4345d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5fe647fba68150f45c450d71f208cf6a53dd0b98
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739138"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419274"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>联机终结点的安全推出（预览版）
 
@@ -39,7 +39,7 @@ ms.locfileid: "121739138"
 
 * 若要使用 Azure 机器学习，必须有一个 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
-* 必须安装并配置 Azure CLI 和 ML 扩展。 有关详细信息，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。 
+* 必须安装并配置 Azure CLI 和 ML 扩展。 有关详细信息，请参阅[安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)。 
 
 * 必须有一个 Azure 资源组，你（或者你使用的服务主体）在此资源组中需要拥有 `Contributor` 访问权限。 如果已按照上述文章配置了 ML 扩展，那么你就有了此类资源组。 
 

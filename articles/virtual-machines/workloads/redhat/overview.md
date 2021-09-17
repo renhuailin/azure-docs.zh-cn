@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 4403a45e4bb4383977b68725518317cdf8acbdbc
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 8ccb6b9fa2d6b7e4f91f460c07789a17ad29a4ef
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112467394"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696825"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上的 Red Hat 工作负荷
+
+适用于：:heavy_check_mark: Linux VM 
 
 通过 Azure 上的各种产品/服务支持 Red Hat 工作负荷。 Red Hat Enterprise Linux (RHEL) 映像是 RHEL 工作负荷的核心，如 Red Hat 更新基础结构 (RHUI) 一样。
 

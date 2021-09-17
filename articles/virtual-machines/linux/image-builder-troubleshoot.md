@@ -9,14 +9,17 @@ ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 91b60204c8fddd892fbaacf00a7588cf1a64854d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 6ef288e776daaf7aa266d13068647bea1c5a4c27
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180359"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691885"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>排查 Azure 映像生成器服务的问题
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
+
 本文有助于排查和解决在使用 Azure 映像生成器服务时可能会遇到的常见问题。
 
 ## <a name="prerequisites"></a>先决条件
@@ -535,6 +538,25 @@ PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 230
 
 #### <a name="solution"></a>解决方案
 查看脚本，以了解防火墙更改/启用情况或对 SSH 或 WinRM 的更改，并确保任何更改都允许服务和生成 VM 之间在上述端口进行持续连接。 若要详细了解映像生成器网络，请查看[要求](./image-builder-networking.md)。
+
+### <a name="jwt-errors-in-log-early-in-the-build"></a>生成早期日志中的 JWT 错误
+
+#### <a name="error"></a>错误
+在生成过程的早期阶段，生成发生故障，并且日志指示 JWT 错误：
+
+```text
+PACKER OUT Error: Failed to prepare build: "azure-arm"
+PACKER ERR 
+PACKER OUT 
+PACKER ERR * client_jwt will expire within 5 minutes, please use a JWT that is valid for at least 5 minutes
+PACKER OUT 1 error(s) occurred:
+```
+
+#### <a name="cause"></a>原因
+将模板中的 `buildTimeoutInMinutes` 值设置为介于 1 和 5 分钟之间。
+
+#### <a name="solution"></a>解决方案
+如[创建 Azure 映像生成器模板](./image-builder-json.md)中所述，必须将超时设置为 0，才能使用默认值或大于 5 分钟的值替代默认值。  将模板中的超时更改为 0，以使用默认值或最低 6 分钟的值。
 
 ## <a name="devops-task"></a>DevOps 任务 
 

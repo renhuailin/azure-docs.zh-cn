@@ -2,14 +2,14 @@
 title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
-ms.date: 12/2/2019
+ms.date: 08/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0149fb56a970d2962088a850e3a56a3674cb1a4b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1d72dec0e9e2c1df0f93df5b557d72e8ad5c857e
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672212"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779491"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -408,6 +408,9 @@ PolicyState     : Valid
 ### <a name="applying-the-policy"></a>应用策略
 
 现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 应用新建策略之前，请使用 [Remove-OBPolicy](/powershell/module/msonlinebackup/remove-obpolicy) cmdlet 确保没有任何现有备份策略与服务器相关联。 删除策略时，系统会提示用户确认。 若要跳过确认，请在 cmdlet 中使用 `-Confirm:$false` 标志。
+
+>[!Note]
+>在运行 cmdlet 时，如果系统提示设置安全 PIN，请参阅[方法 1 部分](/azure/backup/backup-azure-delete-vault#method-1)。
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy

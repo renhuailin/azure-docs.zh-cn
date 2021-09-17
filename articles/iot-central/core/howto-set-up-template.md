@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 451a880485503684f09108a84c559f222362bae8
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 59c95633322f279504ded61bbf02a7415b1337b9
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071588"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446289"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 设备类型
 
@@ -63,6 +63,9 @@ ms.locfileid: "122071588"
 ## <a name="autogenerate-a-device-template"></a>自动生成设备模板
 
 还可以从尚未分配到设备模板的已连接设备自动创建设备模板。 IoT Central 使用设备发送的遥测值和属性值来推断设备模型。
+
+> [!NOTE]
+> 目前，此预览功能不能使用组件的遥测数据和属性。 它只能从根遥测数据和属性生成功能。
 
 以下步骤说明如何使用此功能：
 
@@ -237,15 +240,15 @@ ms.locfileid: "122071588"
 | ----- | ----------- |
 |显示名称 | 替代模型中的显示名称。 |
 |语义类型 | 替代模型中的语义类型。 |
-|单位 | 替代模型中的单位。 |
+|计价单位 | 替代模型中的单位。 |
 |显示单位 | 在模型中替代。 |
 |注释 | 在模型中替代。 |
-|说明 | 在模型中替代。 |
+|描述 | 在模型中替代。 |
 |颜色 | 特定于 IoT Central 的选项。 |
 |最小值 | 设置最小值 - 特定于 IoT Central 的选项。 |
 |最大值 | 设置最大值 - 特定于 IoT Central 的选项。 |
 |小数位数 | 特定于 IoT Central 的选项。 |
-|初始值 | 命令仅允许特定于 IoT Central 的值 - 默认参数值。 |
+|初始值 | 仅命令特定于 IoT Central 的值 - 默认参数值。 |
 
 ## <a name="views"></a>视图
 

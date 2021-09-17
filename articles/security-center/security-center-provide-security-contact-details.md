@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 04/07/2021
 ms.author: memildin
-ms.openlocfilehash: 736979bf85d75c7ca9e141e7ff04da4c9fe1c9c4
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 4bdfdcc83a920b5b2e7317c4706c470e302cc49f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486042"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731102"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>针对安全警报配置电子邮件通知 
 
@@ -38,7 +38,7 @@ ms.locfileid: "113486042"
 |发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|**安全管理员**<br>**订阅所有者** |
-|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::国家/地区/主权（US Gov，Azure 中国）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国家/地区/主权云（Azure 政府、Azure 中国世纪互联）|
 |||
 
 

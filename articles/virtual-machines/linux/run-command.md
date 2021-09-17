@@ -10,14 +10,16 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 67e84ce780f3013917edbce3e66c5a708509c194
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 2d4c640695395963a83629fbeea87c96b4a31aad
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112518129"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688212"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 “运行命令”功能使用虚拟机 (VM) 代理在 Azure Linux VM 中运行 shell 脚本。 可以使用这些脚本进行常规计算机或应用程序管理。 它们可以帮助你快速诊断和修正 VM 访问与网络问题，使 VM 恢复正常状态。
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 86be3b4fd072179d3ac8b584788ce8988e6b297c
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: e104a00f92517b917252144b3234c16dd104a673
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486492"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751855"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 简介
 
@@ -26,7 +26,7 @@ ms.locfileid: "113486492"
 |发布状态：|**适用于 Azure SQL 数据库服务器的 Azure Defender** - 正式发布 (GA)<br>**适用于计算机上的 SQL Server 的 Azure Defender** - 正式发布 (GA) |
 |定价：|适用于 SQL 的 Azure Defender 包含的两个计划按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
 |受保护的 SQL 版本：|[Azure 虚拟机上的 SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[已启用 Azure Arc 的 SQL Server](/sql/sql-server/azure-arc/overview)<br>不带 Azure Arc 的 Windows 计算机上的本地 SQL Server<br>Azure SQL [单一数据库](../azure-sql/database/single-database-overview.md)和[弹性池](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics（以前称为 SQL DW）专用 SQL 池](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
-|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure 中国（部分：SQL 服务器的警报和漏洞评估的子集。 行为威胁防护功能不可用。）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 政府<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure 中国世纪互联（部分：SQL 服务器的警报和漏洞评估的子集。 行为威胁防护功能不可用。）|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>适用于 SQL 的 Azure Defender 保护了哪些项目？

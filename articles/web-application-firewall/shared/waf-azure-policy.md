@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 7798d7e960286d4f8aa971eb2eb0b03d24bd6360
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7738976cbc3f7b87862cab73a5b5f52c6d499d47
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97589451"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606110"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web 应用程序防火墙和 Azure Policy
 
@@ -22,13 +22,13 @@ Azure Web 应用程序防火墙 (WAF) 与 Azure Policy 结合，可帮助强制�
 
 Azure Policy 内置多种用于管理 WAF 资源的定义。 策略定义细分及其功能情况如下所示：
 
-1. 应为 Azure Front Door 服务启用 Web 应用程序防火墙 (WAF)：如果在创建资源时存在 WAF，则会评估 Azure Front Door 服务。 策略具有三种效果：审核、拒绝和禁用。 审核跟踪 Azure Front Door 服务未附加 WAF 的情况，并允许用户查看 Azure Front Door 服务不符合规范的方面。 如果未附加 WAF，则“拒绝”会阻止创建任何 Azure Front Door 服务。 “禁用”将关闭此策略。
+1. 应为 Azure Front Door 服务启用 Web 应用程序防火墙 (WAF)：如果在创建资源时存在 WAF，则会评估 Azure Front Door 服务。 策略定义具有三种效果：审核、拒绝和禁用。 审核跟踪 Azure Front Door 服务未附加 WAF 的情况，并允许用户查看 Azure Front Door 服务不符合规范的方面。 如果未附加 WAF，则“拒绝”会阻止创建任何 Azure Front Door 服务。 “已禁用”会关闭策略分配。
 
-2. 应为应用程序网关启用 Web 应用程序防火墙 (WAF)：如果在创建资源时存在 WAF，将对应用程序网关进行评估。 策略具有三种效果：审核、拒绝和禁用。 审核跟踪应用程序网关未附加 WAF 的情况，并允许用户查看应用程序网关不符合规范的方面。 如果未附加 WAF，则“拒绝”会阻止创建任何应用程序网关。 “禁用”将关闭此策略。
+2. 应为应用程序网关启用 Web 应用程序防火墙 (WAF)：如果在创建资源时存在 WAF，将对应用程序网关进行评估。 策略定义具有三种效果：审核、拒绝和禁用。 审核跟踪应用程序网关未附加 WAF 的情况，并允许用户查看应用程序网关不符合规范的方面。 如果未附加 WAF，则“拒绝”会阻止创建任何应用程序网关。 “已禁用”会关闭策略分配。
 
-3. Web 应用程序防火墙 (WAF) 应使用指定的 Azure Front Door 服务模式：要求 Azure Front Door 服务的所有 Web 应用程序防火墙策略都启用“检测”或“防护”模式。 策略具有三种效果：审核、拒绝和禁用。 审核跟踪 WAF 不符合指定模式的情况。 如果未处于正确模式，“拒绝”将阻止创建任何 WAF。 “禁用”将关闭此策略。
+3. Web 应用程序防火墙 (WAF) 应使用指定的 Azure Front Door 服务模式：要求 Azure Front Door 服务的所有 Web 应用程序防火墙策略都启用“检测”或“防护”模式。 策略定义具有三种效果：审核、拒绝和禁用。 审核跟踪 WAF 不符合指定模式的情况。 如果未处于正确模式，“拒绝”将阻止创建任何 WAF。 “已禁用”会关闭策略分配。
 
-4. Web 应用程序防火墙 (WAF) 应使用指定的应用程序网关模式：要求应用程序网关的所有 Web 应用程序防火墙策略都启用“检测”检或“防护”模式。 策略具有三种效果：审核、拒绝和禁用。 审核跟踪 WAF 不符合指定模式的情况。 如果未处于正确模式，“拒绝”将阻止创建任何 WAF。 “禁用”将关闭此策略。
+4. Web 应用程序防火墙 (WAF) 应使用指定的应用程序网关模式：要求应用程序网关的所有 Web 应用程序防火墙策略都启用“检测”检或“防护”模式。 策略定义具有三种效果：审核、拒绝和禁用。 审核跟踪 WAF 不符合指定模式的情况。 如果未处于正确模式，“拒绝”将阻止创建任何 WAF。 “已禁用”会关闭策略分配。
 
 ## <a name="launch-an-azure-policy"></a>启动 Azure Policy
 

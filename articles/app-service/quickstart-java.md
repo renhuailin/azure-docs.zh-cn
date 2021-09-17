@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 7393a8085a2ac597f3fdbcc365608d32956f39b7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 54ca249d1b89eb90b636da72e1378eadfd5fe0c1
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111620"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681384"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
 
@@ -98,7 +98,7 @@ cd agoncal-application-petstore-ee7
 运行下面的 Maven 命令来配置部署。 此命令将帮助你设置应用服务操作系统、Java 版本和 Tomcat 版本。
 
 ```azurecli-interactive
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.0.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 ```
 
 ::: zone pivot="platform-windows"
@@ -291,13 +291,7 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
 
 ## <a name="deploy-the-app"></a>部署应用
 
-Maven 插件会使用 Azure CLI 中的帐户凭据来部署到应用服务。 在继续操作之前[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
-
-```azurecli-interactive
-az login
-```
-
-然后你可使用以下命令将 Java 应用部署到 Azure。
+在 pom 文件中准备好所有配置后，只需要一个命令即可将 Java 应用部署到 Azure。
 
 ```azurecli-interactive
 mvn package azure-webapp:deploy

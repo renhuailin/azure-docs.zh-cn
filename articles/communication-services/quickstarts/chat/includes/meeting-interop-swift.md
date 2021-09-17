@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 335e21057d0deaa68b4b791501e59aaa772eb49c
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 06d7b776b49411fece14356f24a91f1a5df2b364
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113082"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722544"
 ---
 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务聊天 SDK 在 Teams 会议中聊天。
 
@@ -19,15 +19,9 @@ ms.locfileid: "113113082"
 -  [部署 Teams](/deployoffice/teams-install)。 
 - [通话应用](../../voice-video-calling/get-started-teams-interop.md)正常运行。 
 
-## <a name="enable-teams-interoperability"></a>启用 Teams 互操作性 
-
-以来宾用户身份加入 Teams 会议的通信服务用户仅在加入 Teams 会议通话后才能访问会议的聊天。 请参阅 [Teams 互操作](../../voice-video-calling/get-started-teams-interop.md)文档，了解如何将通信服务用户添加到 Teams 会议通话。
-
-你需要是拥有这两个实体的组织的成员才能使用此功能。
-
 ## <a name="joining-the-meeting-chat"></a>加入会议聊天 
 
-启用 Teams 互操作性后，通信服务用户可以使用通话 SDK 以外部用户身份加入 Teams 通话。 用户加入通话时还会以参与者身份加入会议聊天，在聊天中用户可以与通话中的其他用户发送和接收消息。 用户将无法访问加入通话前发送的聊天消息。 若要加入会议并开始聊天，可以执行后续步骤。
+通信服务用户可以使用调用 SDK 作为匿名用户加入 Teams 会议。 用户加入会议时还会以参与者身份加入会议聊天，在聊天中用户可以与会议中的其他用户发送和接收消息。 用户将不能访问在其加入会议之前发送的聊天消息，且他们将无法在会议结束后发送或接收消息。 若要加入会议并开始聊天，可以执行后续步骤。
 
 ## <a name="add-chat-to-the-teams-calling-app"></a>将聊天添加到 Teams 通话应用
 

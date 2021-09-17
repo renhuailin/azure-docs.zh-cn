@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: fafffc6777883209383fd8d20fc9d3ebfa7ab7fb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 591718ab8ec83fd262968ca3b37e07c308ed4e4a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470530"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698564"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入门：部署第一个 Azure Spring Cloud 应用程序
 
@@ -54,9 +54,9 @@ az --version
 az extension add --name spring-cloud
 ```
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-1. 登录 Azure CLI
+1. 登录 Azure CLI：
 
     ```azurecli
     az login
@@ -77,7 +77,7 @@ az extension add --name spring-cloud
 在 Visual Studio 中，使用 API 项目模板创建名为“hello-world”的 ASP.NET Core Web 应用程序。 请注意，会有一个自动生成的 WeatherForecastController，它将在稍后作为我们的测试终结点。
 
 1. 为项目源代码创建文件夹，并生成项目。
- 
+
    ```console
    mkdir source-code
    ```
@@ -139,22 +139,22 @@ az extension add --name spring-cloud
      }
    }
    ```
-   
+
 1. 将依赖项和 `Zip` 任务添加到 .csproj 文件中：
 
    ```xml
    <ItemGroup>
-     <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.0.0" />
+     <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.1.0" />
      <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="2.0.0-preview.1" />
    </ItemGroup>
    <Target Name="Publish-Zip" AfterTargets="Publish">
-       <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(MSBuildProjectDirectory)/deploy.zip" Overwrite="true" />
+     <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(MSBuildProjectDirectory)/deploy.zip" Overwrite="true" />
    </Target>
    ```
 
    包适用于 Steeltoe 服务发现和 Azure Spring Cloud 客户端库。 `Zip` 任务用于部署到 Azure。 运行 `dotnet publish` 命令时，它会在 publish 文件夹中生成二进制文件，此任务会将 publish 文件夹压缩为上传到 Azure 的 .zip 文件中。
 
-3. 在 Program.cs 文件中，添加 `using` 指令以及使用 Azure Spring Cloud 的代码：
+1. 在 Program.cs 文件中，添加 `using` 指令以及使用 Azure Spring Cloud 的代码：
 
    ```csharp
    using Microsoft.Azure.SpringCloud.Client;
@@ -170,7 +170,7 @@ az extension add --name spring-cloud
                    });
    ```
 
-4. 在 Startup.cs 文件中，添加 `using` 指令以及在 `ConfigureServices` 和 `Configure` 方法末尾使用 Steeltoe 服务发现的代码：
+1. 在 Startup.cs 文件中，添加 `using` 指令以及在 `ConfigureServices` 方法末尾使用 Steeltoe 服务发现的代码：
 
    ```csharp
    using Steeltoe.Discovery.Client;
@@ -185,26 +185,17 @@ az extension add --name spring-cloud
    }
    ```
 
-   ```csharp
-   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-   {
-       // Template code not shown.
-
-       app.UseDiscoveryClient();
-   }
-   ```
-
 1. 生成项目以确保没有任何编译错误。
 
    ```dotnetcli
    dotnet build
    ```
- 
+
 ## <a name="provision-a-service-instance"></a>预配服务实例
 
 以下步骤使用 Azure 门户创建 Azure Spring Cloud 的实例。
 
-1. 打开 [Azure 门户](https://ms.portal.azure.com/)。 
+1. 打开 [Azure 门户](https://ms.portal.azure.com/)。
 
 1. 在顶部搜索框中，搜索“Azure Spring Cloud”。
 
@@ -212,7 +203,7 @@ az extension add --name spring-cloud
 
    ![ASC 图标 - 启动](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-1. 在 Azure Spring Cloud 页上，选择“+ 创建”。
+1. 在 Azure Spring Cloud 页上，选择“创建”。
 
    ![ASC 图标 - 添加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-create.png)
 
@@ -225,9 +216,9 @@ az extension add --name spring-cloud
 
    ![ASC 门户启动](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. 选择“查看并创建”。 
+1. 选择“查看并创建”。 
 
-7. 选择“创建”  。
+1. 选择“创建”  。
 
 ## <a name="build-and-deploy-the-app"></a>生成并部署应用
 
@@ -261,7 +252,7 @@ az extension add --name spring-cloud
 
 完成部署后，便可通过以下 URL 访问应用：
 
-```http
+```url
 https://<service instance name>-hello-world.azuremicroservices.io/weatherforecast
 ```
 
@@ -324,7 +315,7 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-本快速入门介绍如何部署简单的 Azure Spring Cloud 微服务应用程序，以便在 Azure 上运行。 
+本快速入门介绍如何部署简单的 Azure Spring Cloud 微服务应用程序，以便在 Azure 上运行。
 
 本教程中使用的应用程序代码是使用 Spring Initializr 生成的简单应用。 完成此示例后，你可以在线访问应用程序，并可通过 Azure 门户对其进行管理。
 
@@ -340,44 +331,49 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 完成本快速入门教程需要：
 
-* [安装 JDK 8](/java/azure/jdk/)
+* [安装 JDK 8 或 JDK 11](/java/azure/jdk/)
 * [注册 Azure 订阅](https://azure.microsoft.com/free/)
 * （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/azure/install-azure-cli)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
 * （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* （可选）[安装 Maven](https://maven.apache.org/download.cgi)。 如果使用 Azure Cloud Shell，则不需要此安装。
 
 ## <a name="generate-a-spring-cloud-project"></a>生成 Spring Cloud 项目
 
-首先，使用 [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.12.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) 生成一个包含推荐的 Azure Spring Cloud 依赖项的示例项目。 下图显示了为此示例项目设置的 Initializr。
+首先，使用 [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.3&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) 生成一个包含推荐的 Azure Spring Cloud 依赖项的示例项目。 此链接使用以下 URL 为你提供默认设置。 
+
 ```url
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.12.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.5.3&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
+下图显示了为此示例项目设置的推荐 Initializr。 
+
 请注意，此示例使用 Java 版本 8。  如果要使用 Java 版本 11，请更改“项目元数据”下的选项。
 
-  ![Initializr 页](media/spring-cloud-quickstart-java/initializr-page.png)
+![Initializr 页](media/spring-cloud-quickstart-java/initializr-page.png)
 
-1. 设置好所有依赖项后，单击“生成”。 下载包并将其解压缩，然后按照如下所示添加 `src/main/java/com/example/hellospring/HelloController.java`，以便为简单的 Web 应用程序创建 Web 控制器：
+1. 设置好所有依赖项后，选择“生成”。 下载包并将其解压缩，然后按照如下所示添加 `src/main/java/com/example/hellospring/HelloController.java`，以便为简单的 Web 应用程序创建 Web 控制器：
 
     ```java
     package com.example.hellospring;
-    
+
     import org.springframework.web.bind.annotation.RestController;
     import org.springframework.web.bind.annotation.RequestMapping;
-    
+
     @RestController
     public class HelloController {
-    
+
         @RequestMapping("/")
         public String index() {
             return "Greetings from Azure Spring Cloud!";
         }
-    
+
     }
     ```
+
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>预配 Azure Spring Cloud 的实例
 
 以下步骤使用 Azure 门户创建 Azure Spring Cloud 的实例。
 
-1. 在新选项卡中，打开 [Azure 门户](https://ms.portal.azure.com/)。 
+1. 在新选项卡中，打开 [Azure 门户](https://ms.portal.azure.com/)。
 
 2. 在顶部搜索框中，搜索“Azure Spring Cloud”。
 
@@ -385,11 +381,12 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
 
     ![ASC 图标 - 启动](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. 在 Azure Spring Cloud 页上，单击“+ 创建”。
+4. 在 Azure Spring Cloud 页上，选择“创建”。
 
-    ![ASC 图标 - 添加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+    ![ASC 图标 - 添加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-create.png)
 
 5. 在 Azure Spring Cloud“创建”页中填写表单。  遵循以下指南：
+
     - 订阅：选择要在其中收取此资源费用的订阅。
     - 资源组：最佳做法是为新资源创建新的资源组。 后面的步骤会将其用作 \<resource group name\>。
     - **服务详细信息/名称**：指定 \<service instance name\>。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
@@ -397,12 +394,30 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
 
     ![ASC 门户启动](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. 单击“审阅并创建”。
+6. 选择“查看并创建”。 
 
 ## <a name="build-and-deploy-the-app"></a>生成并部署应用
-    
+
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 以下步骤使用 Azure CLI 生成并部署应用程序。 在项目的根目录中，执行以下命令。
+
+1. 登录到 Azure 并选择订阅。
+
+    ```azurecli
+    az login
+    ```
+
+   如果有多个订阅，请使用以下命令列出你有权访问的订阅，然后选择要用于本快速入门的订阅。
+
+   ```azurecli
+   az account list -o table
+   ```
+
+   使用以下命令设置默认订阅以与本快速入门中的 Azure CLI 命令一起使用。
+
+   ```azurecli
+   az account set --subscription <Name or ID of a subscription from the last step>
+   ```
 
 1. 使用 Maven 生成项目：
 
@@ -410,12 +425,6 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
     mvn clean package -DskipTests
     ```
 
-1. （如果尚未安装）安装适用于 Azure CLI 的 Azure Spring Cloud 扩展：
-
-    ```azurecli
-    az extension add --name spring-cloud
-    ```
-    
 1. 创建已分配公共终结点的应用。 如果在生成 Spring Cloud 项目时选择了 Java 版本 11，请包含 --runtime-version=Java_11 开关。
 
     ```azurecli
@@ -425,14 +434,14 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
 1. 为应用部署 Jar 文件（在 Windows 上为 `target\hellospring-0.0.1-SNAPSHOT.jar`）：
 
     ```azurecli
-    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path <jar file path>
+    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --artifact-path <jar file path>
     ```
-    
+
 1. 完成应用程序部署需要几分钟时间。 若要确认它是否已经部署，请在 Azure 门户中转到“应用”边栏选项卡。 你应该会看到应用程序的状态。
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
-以下步骤使用适用于 Azure Spring Cloud 的 IntelliJ 插件在 IntelliJ IDEA 中部署示例应用。  
+以下步骤使用适用于 Azure Spring Cloud 的 IntelliJ 插件在 IntelliJ IDEA 中部署示例应用。
 
 ### <a name="import-project"></a>导入项目
 
@@ -442,6 +451,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
     ![导入项目](media/spring-cloud-quickstart-java/intellij-new-project.png)
 
 ### <a name="deploy-the-app"></a>部署应用
+
 若要部署到 Azure，必须使用你的 Azure 帐户登录，然后选择你的订阅。  有关登录的详细信息，请参阅[安装和登录](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
 
 1. 在 IntelliJ 项目资源管理器中右键单击你的项目，选择“Azure” -> “部署到 Azure Spring Cloud”。 
@@ -454,16 +464,17 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
 1. 在“Spring Cloud”文本框中，选择你在[预配 Azure Spring Cloud 实例](./quickstart-provision-service-instance.md)中创建的 Azure Spring Cloud 实例。
 1. 将“公共终结点”设置为“启用”。
 1. 在“应用:”文本框中，选择“创建应用…” 。
-1. 输入“hellospring”，然后单击“确定”。
+1. 输入“hellospring”，然后选择“确定”。
 
     [ ![部署到 Azure - 确定](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png) ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
-1. 单击“部署 Azure Spring Cloud 应用”对话框底部的“运行”按钮，以开始部署 。 此插件会对 `hellospring` 应用运行命令 `mvn package`，然后部署由 `package` 命令生成的 jar。
+1. 选择“部署 Azure Spring Cloud 应用”对话框底部的“运行”按钮，以开始部署 。 此插件会对 `hellospring` 应用运行命令 `mvn package`，然后部署由 `package` 命令生成的 jar。
+
 ---
 
 完成部署后，就可以通过 `https://<service instance name>-hellospring.azuremicroservices.io/` 访问应用。
 
-  [ ![从浏览器访问应用](media/spring-cloud-quickstart-java/access-app-browser.png) ](media/spring-cloud-quickstart-java/access-app-browser.png#lightbox)
+[ ![从浏览器访问应用](media/spring-cloud-quickstart-java/access-app-browser.png) ](media/spring-cloud-quickstart-java/access-app-browser.png#lightbox)
 
 ## <a name="streaming-logs-in-real-time"></a>实时流式处理日志
 
@@ -473,8 +484,8 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.1
 
 ```azurecli
 az spring-cloud app logs -n hellospring -s <service instance name> -g <resource group name> --lines 100 -f
-
 ```
+
 日志随即出现在结果中：
 
 [ ![流式处理日志](media/spring-cloud-quickstart-java/streaming-logs.png) ](media/spring-cloud-quickstart-java/streaming-logs.png#lightbox)
@@ -494,11 +505,13 @@ az spring-cloud app logs -n hellospring -s <service instance name> -g <resource 
 1. 流式处理日志将显示在输出窗口中。
 
     [ ![流式处理日志输出](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png) ](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)
+
 ---
 
 如需查看高级日志分析功能，请访问 [Azure 门户](https://portal.azure.com/)菜单中的“日志”选项卡。 这里日志会延迟几分钟。
 
 [ ![日志分析](media/spring-cloud-quickstart-java/logs-analytics.png) ](media/spring-cloud-quickstart-java/logs-analytics.png#lightbox)
+
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>清理资源

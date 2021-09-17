@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9a931790428a138ea926b0408dd236917987c620
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 29e6f131b5efb36788d2400a940902f3757f5405
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114285975"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725059"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -20,7 +20,7 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 
 示例作业从 IoT 中心设备中读取流式处理数据。 输入数据由 Raspberry Pi 联机模拟器生成。 接下来，流分析作业使用流分析查询语言对数据进行转换，以便筛选所涉及的温度大于 27° 的消息。 最后，作业将生成的输出事件写入到 Blob 存储的一个文件中。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -78,19 +78,19 @@ New-AzResourceGroup `
     az account set --subscription "<your subscription>"
     ```
 
-2. 使用 [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) 命令创建 IoT 中心。 此示例创建名为 **MyASAIoTHub** 的 IoT 中心。 由于 IoT 中心名称是唯一的，因此需使用你自己的 IoT 中心名称。 将 SKU 设置为 F1 即可使用免费层，前提是它在订阅中可用。 否则，请选择下一个最低的层。
+2. 使用 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令创建 IoT 中心。 此示例创建名为 **MyASAIoTHub** 的 IoT 中心。 由于 IoT 中心名称是唯一的，因此需使用你自己的 IoT 中心名称。 将 SKU 设置为 F1 即可使用免费层，前提是它在订阅中可用。 否则，请选择下一个最低的层。
 
     ```azurecli
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    创建 IoT 中心以后，请使用 [az iot hub show-connection-string](/cli/azure/iot/hub) 命令获取 IoT 中心连接字符串。 复制整个连接字符串并将其保存。这样，在将 IoT 中心作为输入添加到流分析作业时，就可以使用该字符串。
+    创建 IoT 中心以后，请使用 [az iot hub show-connection-string](/cli/azure/iot/hub#az_iot_hub_show_connection_string) 命令获取 IoT 中心连接字符串。 复制整个连接字符串并将其保存。这样，在将 IoT 中心作为输入添加到流分析作业时，就可以使用该字符串。
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-3. 使用 [az iothub device-identity create](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c#create-a-simulated-device) 命令将设备添加到 IoT 中心。 此示例创建名为 **MyASAIoTDevice** 的设备。
+3. 使用 [az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) 命令将设备添加到 IoT 中心。 此示例创建名为 **MyASAIoTDevice** 的设备。
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"

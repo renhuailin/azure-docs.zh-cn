@@ -6,13 +6,13 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 02/24/2021
-ms.openlocfilehash: 16320021ede4a4e285c4e1973c166d2cdf643c4a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 08/02/2021
+ms.openlocfilehash: f0004845033493dc7546bb3af467918ea77ebcad
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529535"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201610"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户创建跨区域 Azure 负载均衡器
 
@@ -45,100 +45,86 @@ ms.locfileid: "107529535"
 
 ## <a name="create-cross-region-load-balancer"></a>创建跨区域负载均衡器
 
-在本部分中，你将创建跨区域负载均衡器和公共 IP 地址。
+在本部分中，你将创建 
 
-1. 选择“创建资源”。  
-2. 在搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
-3. 在“负载均衡器”页上，选择“创建” 。
-4. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
+* 跨区域负载均衡器
+* 具有全局公共 IP 地址的前端
+* 具有两个区域负载均衡器的后端池
+
+> [!IMPORTANT]
+> 若要完成这些步骤，请确保已在订阅中部署了两个具有后端池的区域负载均衡器。  有关详细信息，请参阅[快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡](quickstart-load-balancer-standard-public-portal.md)。
+
+1. 在门户顶部的搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
+
+2. 在“负载均衡器”页上，选择“创建” 。
+
+3. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
+    | **项目详细信息** |    |
     | 订阅               | 选择订阅。    |    
-    | 资源组         | 选择“新建”并在文本框中输入“CreateCRLBTutorial-rg” 。|
+    | 资源组         | 选择“新建”并在文本框中输入“CreateCRLBTutorial-rg” 。 |
+    | **实例详细信息** |   |
     | 名称                   | 输入“myLoadBalancer-CR”                                   |
     | 区域         | 选择“(US) 美国西部”。                                        |
     | 类型          | 选择“公共”。                                        |
     | SKU           | 保留默认值“标准”。 |
     | 层           | 选择“全局” |
-    | 公共 IP 地址 | 选择“新建”。|
-    | 公共 IP 地址名称 | 在文本框中键入 myPublicIP-CR。|
-    | 路由首选项| 选择“Microsoft 网络”。 </br> 有关路由首选项的详细信息，请参阅[什么是路由首选项（预览）？](../virtual-network/routing-preference-overview.md)。 |
+
+    :::image type="content" source="./media/tutorial-cross-region-portal/create-cross-region.png" alt-text="创建跨区域负载均衡器" border="true":::
+  
+4. 在页面底部选择“下一步: 前端 IP 配置”。
+
+5. 在“前端 IP 配置”中，选择“+ 添加前端 IP” 。
+
+6. 在“添加前端 IP 地址”的“名称”中输入 LoadBalancerFrontend  。
+
+7. 对于“IP 版本”，请选择“IPv4”或“IPv6”  。
+
+8. 在“公共 IP 地址”中，选择“新建” 。 在“名称”中输入 myPublicIP-cr 。  选择“确定” 。
+
+9. 选择“添加”  。
+
+10. 在页面底部选择“下一步: 后端池”。
+
+11. 在“后端池”中，选择“+ 添加后端池” 。
+
+12. 在“添加后端池”的“名称”中输入 myBackendPool-cr  。
+
+13. 在“负载均衡器”的“负载均衡器”下拉框中选择“myLoadBalancer-r1”或第一个区域负载均衡器  。 验证“前端 IP 配置”和“IP 地址”是否与 myLoadBalancer-r1 相对应  。
+
+14. 在“负载均衡器”下拉框中选择“myLoadBalancer-r2”或第二个区域负载均衡器 。 验证“前端 IP 配置”和“IP 地址”是否与 myLoadBalancer-r2 相对应  。
+
+15. 选择 **添加** 。
+
+16. 选择页面底部的“下一步: 入站规则”。
+
+17. 在“入站规则”中，选择“+ 添加负载均衡规则” 。
+
+18. 在“添加负载均衡规则”中，输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 名称 | 输入 myHTTPRule-cr。 |
+    | IP 版本 | 对于“IP 版本”，请选择“IPv4”或“IPv6”  。 |
+    | 前端 IP 地址 | 选择“LoadBalancerFrontend”。 |
+    | 协议 | 选择“TCP”。 |
+    | 端口 | 输入 **80**。 |
+    | 后端池 | 选择“myBackendPool-cr”。 |
+    | 会话暂留 | 选择“无”。 |
+    | 空闲超时（分钟） | 输入或将滑块移动到“15”。 |
+    | TCP 重置 | 选择“启用”。  |
+    | 浮动 IP | 保留默认值“禁用”。 |
+
+19. 选择 **添加** 。
+
+20. 在页面底部选择“查看 + 创建”。
+
+21. 在“查看 + 创建”选项卡中，选择“创建” 。
 
     > [!NOTE]
     > 跨区域负载均衡器只能部署在以下主区域中：美国东部 2、美国西部、西欧、东南亚、美国中部、北欧、东亚。 有关详细信息，请参阅 **https://aka.ms/homeregionforglb**。
-
-
-3. 接受剩余设置的默认值，然后选择“查看 + 创建”。
-
-4. 在“查看 + 创建”选项卡中，选择“创建”。   
-
-    :::image type="content" source="./media/tutorial-cross-region-portal/create-cross-region.png" alt-text="创建跨区域负载均衡器" border="true":::
-
-## <a name="create-backend-pool"></a>创建后端池
-
-在本部分中，你将向跨区域负载均衡器的后端池添加两个区域标准负载均衡器。
-
-> [!IMPORTANT]
-> 若要完成这些步骤，请确保已在订阅中部署了两个具有后端池的区域负载均衡器。  有关详细信息，请参阅[快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡](quickstart-load-balancer-standard-public-portal.md)。
-
-创建后端地址池 myBackendPool-CR 以包含区域负载均衡器。
-
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer-CR”  。
-
-2. 在“设置”下，依次选择“后端池”、“添加”。
-
-3. 在“添加后端池”页上，键入 myBackendPool-CR 作为名称 。
-
-4. 选择 **添加** 。
-
-4. 选择“myBackendPool-CR”。
-
-5. 在“负载均衡器”下，选择“负载均衡器”下方的下拉框 。
-
-5. 选择“myLoadBalancer-R1”，或区域 1 中的负载均衡器的名称。
-
-6. 选择“前端 IP 配置”下方的下拉框。 选择“LoadBalancerFrontEnd”。
-
-7. 重复步骤 4-6 以添加 myLoadBalancer-R2。
-
-8. 选择 **添加** 。
-
-    :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="向后端池添加区域负载均衡器" border="true":::
-
-## <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
-
-在本部分中，你将创建创建负载均衡器规则：
-
-* 该规则名为“myHTTPRule”。
-* 在名为“LoadBalancerFrontEnd”的前端中。
-* 正在侦听“端口 80”。
-* 将负载均衡流量定向到“端口 80”上名为“myBackendPool-CR”的后端 。
-
-    > [!NOTE]
-    > 前端端口必须与后端端口和后端池中区域负载均衡器的前端端口匹配。
-
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer-CR”  。
-
-2. 在“设置”下，依次选择“负载均衡规则”、“添加”  。
-
-3. 使用以下值配置负载均衡规则：
-    
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 **myHTTPRule**。 |
-    | IP 版本 | 选择“IPv4” |
-    | 前端 IP 地址 | 选择“LoadBalancerFrontEnd” |
-    | 协议 | 选择“TCP”。 |
-    | 端口 | 输入 **80**。|
-    | 后端端口 | 输入 **80**。 |
-    | 后端池 | 选择“myBackendPool”。|
-    | 空闲超时（分钟） | 将滑块移动到 15。 |
-    | TCP 重置 | 选择“启用”。  |
-
-4. 将剩余的字段保留默认设置，然后选择“确定”。
-
-    :::image type="content" source="./media/tutorial-cross-region-portal/create-lb-rule.png" alt-text="创建负载均衡器规则" border="true":::
 
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
 

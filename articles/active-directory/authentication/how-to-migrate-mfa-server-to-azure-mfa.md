@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eff0705208442c09b859c09ac975e044528f833
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 4415e7ce86d2beb9e2903f23d0b6fa9ac7d3ec04
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397755"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597831"
 ---
 # <a name="migrate-from-azure-mfa-server-to-azure-multi-factor-authentication"></a>从 Azure MFA 服务器迁移到 Azure 多重身份验证
 
@@ -112,7 +112,7 @@ MFA 服务器支持通过 RADIUS 来为支持该协议的应用程序和网络�
 - 用户必须先注册 Azure AD MFA 才能使用 NPS 扩展。 否则，该扩展无法对用户进行身份验证，从而可能导致用户呼叫支持人员。
 - 当 NPS 扩展调用 MFA 时，MFA 请求将发送到用户的默认 MFA 方法。 
   - 由于登录是在第三方应用程序中发生的，用户不太可能会看到指出需要执行 MFA 并且已将请求发送到其设备的视觉通知。
-  - 在处理 MFA 要求期间，用户必须能够访问其默认身份验证方法才能解决 MFA 要求。 
+  - 在处理 MFA 要求期间，用户必须能够访问其默认身份验证方法才能解决 MFA 要求。 他们无法选择替代方法。 即使租户身份验证方法和 MFA 策略中已禁用默认身份验证方法，也将使用该方法。
   - 用户可以在“安全信息”页 (aka.ms/mysecurityinfo) 中更改其默认 MFA 方法。
 - RADIUS 客户端的可用 MFA 方法由发送 RADIUS 访问请求的客户端系统控制。
   - 只能在支持 RADIUS 访问质询响应的系统中使用要求用户在输入密码后提供用户输入的 MFA 方法。 输入方法可能包括 OTP、硬件 OATH 令牌或 Microsoft Authenticator 应用程序。

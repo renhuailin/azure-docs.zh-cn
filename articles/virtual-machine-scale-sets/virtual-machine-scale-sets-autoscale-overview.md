@@ -9,14 +9,17 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: dbd2d6dc3034ff64ef6b5d4d36d836ce8462b154
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fde975c0649a0ba9da32ed53983e3632d5535ca
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591397"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690522"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集自动缩放概述
+
+适用于：:heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实例数。 这种自动且弹性的行为可以减少监视和优化应用程序性能所需的管理开销。 创建规则，用于定义提供正面客户体验而可接受的性能。 如果满足定义的这些阈值，自动缩放规则会采取措施来调整规模集的容量。 还可以计划事件，以便在固定的时间自动增加或减少规模集的容量。 本文概述所提供的性能指标，以及自动缩放可以执行的操作。
 
 

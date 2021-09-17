@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa59db40f88824bdbec6fbaae8cf3664ae825846
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4935b42efa6e6fd17d66ddfba744ae36653ed952
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727785"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419209"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作伙伴
 
@@ -93,6 +93,7 @@ Microsoft 与以下 ISV 合作实现 Web 应用程序防火墙 (WAF)。
 | ISV 合作伙伴 | 说明和集成细节 |
 |:-------------------------|:--------------|
 |  ![Akamai 徽标的屏幕截图](./media/partner-gallery/akamai-logo.png) | [Akamai WAF](./partner-akamai.md) 允许对流量进行精细化操控，以保护标识基础结构免受恶意攻击。  |
+|  ![Azure WAF 徽标的屏幕截图](./media/partner-gallery/azure-web-application-firewall-logo.png) | [Azure WAF](./partner-azure-web-application-firewall.md) 可在出现常见攻击和漏洞时为 Web 应用程序提供集中保护。  |
 ![Cloudflare 徽标的屏幕截图](./media/partner-gallery/cloudflare-logo.png) | [Cloudflare](./partner-cloudflare.md) 是 WAF 提供商，可帮助组织防范旨在利用安全漏洞进行的恶意攻击，如 SQLi 和 XSS。 |
 
 

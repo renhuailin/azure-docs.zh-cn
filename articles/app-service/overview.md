@@ -3,14 +3,14 @@ title: 概述
 description: 了解 Azure 应用服务如何帮助用户开发和托管 Web 应用程序
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
-ms.date: 07/06/2020
+ms.date: 07/21/2021
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 8994edd417f4f9e94ae14e5923dd1a0d7398f584
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 481ef611bb3bd48ae5096abc538bd43a1bac2423
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209762"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741529"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
@@ -54,9 +54,11 @@ Linux 上的应用服务支持许多特定于语言的内置映像。 只需部�
 
 ### <a name="limitations"></a>限制
 
+> [!NOTE]
+> Linux 和 Windows 应用服务计划现在可以共享资源组。 此限制已从平台中解除，现有资源组已更新以支持这一点。
+>
+
 - [共享](https://azure.microsoft.com/pricing/details/app-service/plans/)定价层不支持 Linux 上的应用服务。 
-- 不能在同一个应用服务计划中混合使用 Windows 和 Linux 应用。  
-- 过去，没法在同一资源组中混用 Windows 和 Linux 应用。 不过，2021 年 1 月 21 日或之后创建的所有资源组都支持此方案。 对于 2021 年 1 月 21 日之前创建的资源组，即将在 Azure 区域（包括国家云区域）中推出用于添加混合平台部署的功能。
 - Azure 门户仅显示当前可用于 Linux 应用的功能。 功能启用后，它们在门户上被激活。
 - 部署到内置映像时，代码和内容将被分配一个 Web 内容存储卷，由 Azure 存储提供支持。 与容器文件系统的延迟相比，此卷的磁盘延迟更高，并且变化更大。 自定义容器选项将文件放在容器文件系统而非内容卷中，因此可能更适用于需要频繁以只读方式访问内容文件的应用。
 

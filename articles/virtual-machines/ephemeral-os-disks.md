@@ -9,14 +9,16 @@ ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3237985389b8248781ad6662af895cf5cdf0dfc6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b37f88d79e0b5abdacf7ada31badc57e7e666b03
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663286"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691101"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 临时 OS 磁盘在本地虚拟机 (VM) 存储中创建，不保存到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负荷，在此类工作负荷中，应用程序可以容忍单个 VM 故障，但受 VM 部署时间或单个 VM 实例的映像重置的影响更大。 使用临时 OS 磁盘时，通过 OS 磁盘进行读取/写入的延迟更低，VM 重置映像速度会更快。 
  

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 57b1d47fa40c0af4bced1e4169fe60cd759ee2f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aceaed29b83a190e4e943f0ec1ae99a8daa44682
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963632"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 的集成
 
@@ -107,7 +107,7 @@ ms.locfileid: "97963632"
     | | |
 
     > [!NOTE]
-    > adminrole 值应与步骤 9 中提到的 Palo Alto Networks 中配置的角色名相同。 
+    > 上面显示为 adminrole 的“名称”值应与[配置 Palo Alto Networks - Admin UI SSO](#configure-palo-alto-networks---admin-ui-sso) 部分步骤 12 中配置的“管理角色属性”值相同 。 上面显示为 customadmin 的“源属性”值应与[配置 Palo Alto Networks - Admin UI SSO](#configure-palo-alto-networks---admin-ui-sso) 部分步骤 9 中配置的“管理角色配置文件名称”值相同 。  
 
     > [!NOTE]
     > 有关这些属性的详细信息，请参阅以下文章：

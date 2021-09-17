@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 888123d1e1b2b87313f44f8b266d969cbff5bcde
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d45ab7ba80a33658d1a3feaf024cb23ea65d5fab
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460483"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771797"
 ---
 # <a name="operating-systems-supported-by-update-management"></a>更新管理支持的操作系统
 
@@ -60,7 +60,7 @@ ms.locfileid: "114460483"
 - 需要 Windows PowerShell 5.1（[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。）
 - 更新管理功能取决于系统混合 Runbook 辅助角色，你应确认其[系统要求](../automation-windows-hrw-install.md#prerequisites)。
 
-Windows 更新代理也必须配置为与 Windows Server Update Services (WSUS) 服务器通信或需要有权访问 Microsoft 更新。 对于混合计算机，我们建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 或者，如果计划使用 VM Insights 监视计算机，请改用[启用 Enable VM Insights](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+Windows 更新代理也必须配置为与 Windows Server Update Services (WSUS) 服务器通信，或需要访问 Microsoft 更新。 对于混合计算机，建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略定义。 或者，如果计划使用 VM Insights 监视计算机，请改用[启用 Enable VM Insights](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
 可以将更新管理与 Microsoft Endpoint Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将更新管理与 Microsoft Endpoint Configuration Manager](mecmintegration.md)。 对于由 Configuration Manager 环境中的站点托管的 Windows 服务器，需要[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/agents/agent-windows.md)。
 
@@ -80,7 +80,7 @@ Windows 更新代理也必须配置为与 Windows Server Update Services (WSUS) 
 > [!NOTE]
 > 仅特定区域支持 Linux 计算机的更新评估。 请参阅自动化帐户和 Log Analytics 工作区[映射表](../how-to/region-mappings.md#supported-mappings)。
 
-对于混合计算机，我们建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Linux 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Linux Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+对于混合计算机，建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Linux 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Linux Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略定义。 或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
 ## <a name="next-steps"></a>后续步骤
 

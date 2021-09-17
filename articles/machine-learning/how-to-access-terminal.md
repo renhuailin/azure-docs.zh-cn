@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: d02259419a6349224b1d047ce01b2e1bf64c1b37
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 7b0d43cec561040e98688a216165d7a4ed88c3d2
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454547"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635173"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>访问工作区中的计算实例终端
 
@@ -68,7 +68,7 @@ ms.locfileid: "112454547"
 
 ## <a name="install-packages"></a>安装包
 
- 从终端窗口安装程序包。 将 Python 包安装到“Python 3.6 - AzureML”环境中。  将 R 包安装到 **R** 环境中。
+ 从终端窗口安装程序包。 将 Python 包安装到“Python 3.8 - AzureML”环境中。  将 R 包安装到 **R** 环境中。
 
 还可以直接在 Jupyter Notebook 或 RStudio 中安装程序包：
 
@@ -81,7 +81,7 @@ ms.locfileid: "112454547"
 ## <a name="add-new-kernels"></a>添加新内核
 
 > [!WARNING]
->  自定义计算实例时，请确保未删除 Conda 环境“azureml_py36”或“Python 3.6 - AzureML”内核 。 必须具备它们才能使用 Jupyter/JupyterLab 功能
+>  自定义计算实例时，请勿删除 Conda 环境“azureml_py36”或“azureml_py38”，   以及“Python 3.6 - AzureML”或“Python 3.8 - AzureML”内核。  这些是 Jupyter/JupyterLab 功能必需的。
 
 若要向计算实例添加新 Jupyter 内核，请执行以下步骤：
 

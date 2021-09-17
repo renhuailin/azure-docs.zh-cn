@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d5b07e761d5ed38cb2083054708265189bdd72f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60b4eb7f827c1ed0084032b5e6cbe13a4c3dccb9
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651565"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180379"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucidchart"></a>教程：Azure Active Directory 与 Lucidchart 的单一登录 (SSO) 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "101651565"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Lucidchart 支持 SP 发起的 SSO
+* Lucidchart 支持[自动用户预配和取消预配](lucidchart-provisioning-tutorial.md)（推荐）。
 * Lucidchart 支持恰时用户预配
 
 ## <a name="add-lucidchart-from-the-gallery"></a>从库中添加 Lucidchart

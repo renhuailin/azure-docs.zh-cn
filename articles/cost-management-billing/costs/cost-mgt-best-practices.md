@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb40946bc01b6bd241f542b3987e8a2e7d570794
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 26b48e4f5ed50b547c8ec628fc534e24dfeb252e
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331657"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609541"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -162,7 +162,7 @@ Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载
 
 同样，你拥有的 Web 应用或环境（如测试环境或生产环境）可能还会跨不同团队拥有的多个订阅使用资源。 为了更好地了解工作负载的全部成本，可标记他们使用的资源。 正确应用标记后，可以在成本分析中将标记作为筛选器，从而更好地理解趋势。
 
-规划资源标记后，可以配置 Azure 策略来强制对资源进行标记。 观看[如何使用 Azure 成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)视频，了解有助于强制执行可缩放资源标记的可用工具。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+规划资源标记后，你可以配置 Azure Policy 来强制对资源进行标记。 观看[如何使用 Azure 成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)视频，了解有助于强制执行可缩放资源标记的可用工具。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

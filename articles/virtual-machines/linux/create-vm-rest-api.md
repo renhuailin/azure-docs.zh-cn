@@ -7,14 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 519939445e67f0f993662e2faf506eb186686156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af006f25733344ebd272087b897130f895478685
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554558"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689761"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure 中的 Linux 虚拟机 (VM) 包含各种资源（例如磁盘和网络接口）并定义了各种参数（例如位置、大小、操作系统映像以及身份验证设置）。
 
@@ -55,7 +57,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 下面的通用定义用来构建请求正文：
 
-| 名称                       | 必选 | 类型                                                                                | 说明  |
+| 名称                       | 必须 | 类型                                                                                | 说明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | 字符串                                                                              | 资源位置。 |
 | name                       |          | 字符串                                                                              | 虚拟机的名称。 |

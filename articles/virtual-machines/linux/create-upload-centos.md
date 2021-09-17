@@ -7,14 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 035625793fdcd149eeff63d6f620e51a7463a8f8
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 0dd27e395dfcb1542600301c3f49c47b220ff6a4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113565627"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689860"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 了解如何创建和上传包含基于 CentOS 的 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 

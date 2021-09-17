@@ -10,14 +10,16 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c202b8b2d4535afd96ffad1806460c3cf43e34b6
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 591ad83cf9beeff7b25ffa1234441109dc169aa2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028030"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691256"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>使用 PowerShell 根据通用化映像创建规模集 
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 从[共享映像库](../virtual-machines/shared-image-galleries.md)中存储的通用化映像版本创建 VM。 若要使用专用化映像创建规模集，请参阅[从专用化映像创建规模集实例](instance-specialized-image-version-powershell.md)。
 

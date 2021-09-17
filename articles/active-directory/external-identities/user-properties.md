@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/04/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a10345851d80bf8903e2b7bcb7fd295e6656bc7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9a0cda7edf93578e95ee9a6f15cc8c3c26274b49
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746144"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823712"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
@@ -25,7 +25,7 @@ ms.locfileid: "121746144"
 
 根据邀请方组织的需要，Azure AD B2B 协作用户可以处于以下帐户状态之一：
 
-- 状态 1：驻留在 Azure AD 的外部实例中，代表邀请方组织中的来宾用户。 在这种情况下，B2B 用户需使用属于受邀方租户的 Azure AD 帐户进行登录。 如果合作伙伴组织不使用 Azure AD，仍会在 Azure AD 中创建来宾用户。 相应要求是，他们兑换自己的邀请，并由 Azure AD 验证其电子邮件地址。 此安排也称为实时 (JIT) 租户或“促销型”租户。
+- 状态 1：驻留在 Azure AD 的外部实例中，代表邀请方组织中的来宾用户。 在这种情况下，B2B 用户需使用属于受邀方租户的 Azure AD 帐户进行登录。 如果合作伙伴组织不使用 Azure AD，仍会在 Azure AD 中创建来宾用户。 相应要求是，他们兑换自己的邀请，并由 Azure AD 验证其电子邮件地址。 此安排也称为实时 (JIT) 租户、“促销型”租户或非管理的 Azure AD 租户。
 
    > [!IMPORTANT]
    > 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择加入现已正式发布的[电子邮件一次性密码身份验证](one-time-passcode.md)。

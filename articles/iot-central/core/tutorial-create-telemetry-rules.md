@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ce10143be81da9ad797ba0ccd68837b647aeb7a7
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 6a9a7d23d4fb8f11c27f279bdef8d2b46274b21e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301965"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743394"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中创建规则并设置通知
 
@@ -55,7 +55,7 @@ ms.locfileid: "113301965"
 
     | 显示名称      | 语义类型 | 架构 |
     | ----------------- | ------------- | ------ |
-    | 最后维修日期 | 无          | 日期   |
+    | 最后维修日期 | 无          | Date   |
     | 客户名称     | 无          | 字符串 |
 
 1. 选择“保存”  以保存更改。
@@ -110,7 +110,7 @@ ms.locfileid: "113301965"
 
     :::image type="content" source="media/tutorial-create-telemetry-rules/aggregate-condition-filled-out.png" alt-text="显示填写了聚合条件的屏幕截图":::
 
-选择“+ 条件”，将多个条件添加到规则中  。 如果指定多个条件，必须满足所有条件才能触发该规则。 每个条件都由一个隐式 `AND` 子句联接。 如果在多个条件下使用时间聚合，则必须聚合所有遥测值。
+选择“+ 条件”，将多个条件添加到规则中  。 添加多个条件时，可以指定是在必须满足所有条件还是任一条件时触发规则。 如果在多个条件下使用时间聚合，则必须聚合所有遥测值。
 
 ### <a name="configure-actions"></a>配置操作
 

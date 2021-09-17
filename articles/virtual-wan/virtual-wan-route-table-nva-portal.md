@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 08/19/2021
 ms.author: cherylmc
-ms.openlocfilehash: 409858b2a9005592d895f6044d028221769144cc
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e57f419daeb112be0925158109697bb2a9b399e8
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058504"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779977"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>创建 NVA 的虚拟 WAN 中心路由表：Azure 门户
 
@@ -20,7 +20,7 @@ ms.locfileid: "106058504"
 
 ![虚拟 WAN 示意图](./media/virtual-wan-route-table-nva/vwanroute.png)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 验证是否符合以下条件：
 
@@ -45,7 +45,7 @@ ms.locfileid: "106058504"
 
 ## <a name="2-create-a-virtual-wan"></a><a name="vwan"></a>2.创建虚拟 WAN
 
-创建虚拟 WAN。 请使用以下示例值：
+创建虚拟 WAN。 可以使用以下示例值，或替换为自己的值。
 
 * **虚拟 WAN 名称：** myVirtualWAN
 * **资源组：** testRG
@@ -55,13 +55,13 @@ ms.locfileid: "106058504"
 
 ## <a name="3-create-a-hub"></a><a name="hub"></a>3.创建中心
 
-创建中心。 使用以下示例值：
+创建中心。 可以使用以下示例值，或替换为自己的值。
 
 * **位置：** 美国西部
 * **名称：** westushub
 * **中心专用地址空间：** 10.0.1.0/24
 
-[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
+[!INCLUDE [Create a hub](../../includes/virtual-wan-empty-hub-include.md)]
 
 ## <a name="4-create-and-apply-a-hub-route-table"></a><a name="route"></a>4.创建并应用中心路由表
 

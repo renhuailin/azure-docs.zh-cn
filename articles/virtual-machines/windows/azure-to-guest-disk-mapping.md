@@ -10,14 +10,17 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f2eaa92b99e286d4046b0bbb784c12f090c3903e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 68941b2253e1b4655a9e0e61da3b0a4f0db27bdf
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677729"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697583"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>如何将 Azure 磁盘映射到 Windows VM 来宾磁盘
+
+**适用于：** :heavy_check_mark: Windows VM 
+
 
 你需要确定支持 VM 来宾磁盘的 Azure 磁盘。 在某些方案中，可以将磁盘或卷大小与附加的 Azure 磁盘的大小进行比较。 如果有多个相同大小的 Azure 磁盘附加到 VM，则需要使用数据磁盘的逻辑单元号 (LUN)。 
 

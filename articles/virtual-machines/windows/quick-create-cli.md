@@ -6,19 +6,21 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 07/02/2019
+ms.date: 08/09/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 651d644070f13933fadf4a2616e770a27c014c92
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: ca4466c307a893ac7058581a5e22aec87b9a71a2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074874"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694680"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Windows 虚拟机
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门展示了如何使用 Azure CLI 在 Azure 中部署运行 Windows Server 2016 的虚拟机 (VM)。 若要查看运行中的 VM，可以通过 RDP 登录到该 VM 并安装 IIS Web 服务器。
+适用于：:heavy_check_mark: Windows VM
+
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门展示了如何使用 Azure CLI 在 Azure 中部署运行 Windows Server 2019 的虚拟机 (VM)。 若要查看运行中的 VM，可以通过 RDP 登录到该 VM 并安装 IIS Web 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -41,17 +43,21 @@ az group create --name myResourceGroup --location eastus
 使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建一个名为 myVM 的 VM。 此示例使用 azureuser 作为管理用户名。 
 
 你将需要提供符合 [Azure VM 密码要求](./faq.yml#what-are-the-password-requirements-when-creating-a-vm-
-)的密码。 使用以下示例时，系统将提示你在命令行中输入密码。 你还可以在 `--admin-password` 参数中添加密码值。 用户名和密码将在以后连接到 VM 时使用。
+)的密码。 
+
+使用以下示例时，系统将提示你在命令行中输入密码。 你还可以在 `--admin-password` 参数中添加密码值。 用户名和密码将在以后连接到 VM 时使用。
 
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
-    --image win2016datacenter \
+    --image Win2019Datacenter \
+    --public-ip-sku Standard \
     --admin-username azureuser 
 ```
 
 创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
+
 
 ```output
 {
@@ -67,8 +73,6 @@ az vm create \
 ```
 
 记下 VM 输出中自己的 `publicIpAddress`。 在后续步骤中，将使用此地址访问 VM。
-
-[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 PolicyStat 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory SAML 2.0 与 PolicyStat 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 PolicyStat 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c2520c8e209ab8319cbc5a369b70d247a52232c
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 72f62a23c40e005b7cb659aedf52b7eabf81d667
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600992"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教程：Azure Active Directory 与 PolicyStat 的集成
 

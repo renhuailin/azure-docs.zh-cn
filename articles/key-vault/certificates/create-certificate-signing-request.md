@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Key Vault 中创建和合并 CSR
+title: 在 Azure Key Vault 中创建和合并证书签名请求
 description: 了解如何在 Azure Key Vault 中创建和合并 CSR。
 services: key-vault
 author: msmbaldwin
@@ -9,16 +9,16 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 77a46beceda451d456dfc4f576f855ebf7312e50
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 54b387892e3ad7d813fb97fb8e9ab399ccdb2a1c
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463506"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515103"
 ---
-# <a name="create-and-merge-a-csr-in-key-vault"></a>在 Key Vault 中创建和合并 CSR
+# <a name="create-and-merge-a-certificate-signing-request-in-key-vault"></a>在 Key Vault 中创建和合并证书签名请求
 
-Azure Key Vault 支持存储任何证书颁发机构 (CA) 颁发的数字证书。 它支持使用私钥/公钥对创建证书签名请求 (CSR)。 CSR 可以由任何 CA（内部企业 CA 或外部公共 CA）签名。 CSR 是你发送给 CA 以请求数字证书的消息。
+Azure Key Vault 支持存储任何证书颁发机构 (CA) 颁发的数字证书。 它支持使用私钥/公钥对创建证书签名请求 (CSR)。 CSR 可以由任何 CA（内部企业 CA 或外部公共 CA）签名。 证书签名请求 (CSR) 是你发送给 CA 以请求数字证书的消息。
 
 若要详细了解证书的常规信息，请参阅 [Azure Key Vault 证书](./about-certificates.md)。
 

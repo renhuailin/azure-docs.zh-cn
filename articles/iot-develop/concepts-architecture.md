@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 35062d3be0ba73a0cb9aa2e497199c44eccd2469
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 94376e1bc5192a0aa437066cb8a460e9aecd27a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732887"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607418"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT 即插即用体系结构
 
-通过 IoT 即插即用，解决方案构建者无需进行任何手动配置即可将智能设备集成到解决方案中。 IoT 即插即用的核心是设备 _模型_，该模型向支持 IoT 即插即用的应用程序介绍设备的功能。 该模型被构造为一组接口，这些接口定义以下内容：
+通过 IoT 即插即用，解决方案构建者无需进行任何手动配置即可将 IoT 设备集成到解决方案中。 IoT 即插即用的核心是设备 _模型_，该模型向支持 IoT 即插即用的应用程序介绍设备的功能。 该模型被构造为一组接口，这些接口定义以下内容：
 
 - _属性_：表示设备或其他实体的只读或可写状态。 例如，设备序列号可以是只读属性，而调温器上的目标温度可以是可写属性。
 - _遥测_：设备发出的数据，包括常规的传感器读数流、偶发性错误或信息消息。
@@ -39,7 +39,7 @@ ms.locfileid: "121732887"
 
 ## <a name="devices"></a>设备
 
-设备生成器使用一个 [Azure IoT 设备 SDK](./libraries-sdks.md) 来实现在 IoT 智能设备上运行的代码。 设备 SDK 可帮助设备生成器执行以下操作：
+设备生成器使用一个 [Azure IoT 设备 SDK](./libraries-sdks.md) 来实现在 IoT 设备上运行的代码。 设备 SDK 可帮助设备生成器执行以下操作：
 
 - 安全地连接到 IoT 中心。
 - 向 IoT 中心注册设备，并公告标识设备实现的 DTDL 接口集合的模型 ID。

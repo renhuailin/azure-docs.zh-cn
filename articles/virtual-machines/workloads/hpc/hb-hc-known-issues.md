@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9b0e33b80cf5bd8963efa036dc76ae9f634fee66
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b9277e8ce7c9c3fff748efff42517c6c0baed57a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460531"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691472"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知问题
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 本文尝试列出使用 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) HPC 和 GPU VM 时最常见的问题及其解决方案。
 

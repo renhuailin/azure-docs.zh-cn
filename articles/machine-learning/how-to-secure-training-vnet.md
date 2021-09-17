@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 08/04/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 913fb8f782872a2a8651d19de8c918595cdecfeb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b4b7f35173b4f1d6d83d9b7ffd937704750f5502
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739146"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603964"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
@@ -88,7 +88,7 @@ ms.locfileid: "121739146"
 
         :::image type="content" source="./media/how-to-secure-training-vnet/compute-instance-cluster-network-security-group.png" alt-text="NSG 的屏幕截图":::
 
-    * 一个公共 IP 地址。 如果你的 Azure 策略禁止创建公共 IP，则群集/实例的部署将失败
+    * 一个公共 IP 地址。 如果 Azure Policy 分配禁止创建公共 IP，则群集/实例的部署将失败
     * 一个负载均衡器
 
     对于计算群集，每当群集纵向缩减到 0 个节点时，将删除这些资源，而当群集横向扩展时，将创建这些资源。
@@ -96,7 +96,7 @@ ms.locfileid: "121739146"
     对于计算实例，这些资源将一直保留，直到该实例被删除。 停止实例不会删除资源。 
 
     > [!IMPORTANT]
-    > 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果虚拟网络资源组被锁定，则删除计算群集/实例将失败。 在删除计算群集/实例之前，无法删除负载均衡器。 另外，请确保不存在禁止创建网络安全组的 Azure 策略。
+    > 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果虚拟网络资源组被锁定，则删除计算群集/实例将失败。 在删除计算群集/实例之前，无法删除负载均衡器。 此外，请确保不存在禁止创建网络安全组的 Azure Policy 分配。
 
 * 如果工作区的 Azure 存储帐户也在虚拟网络中，请遵循以下有关子网限制的指导：
 
@@ -263,7 +263,7 @@ except ComputeTargetException:
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
+本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
 
 * [虚拟网络概述](how-to-network-security-overview.md)
 * [保护工作区资源](how-to-secure-workspace-vnet.md)

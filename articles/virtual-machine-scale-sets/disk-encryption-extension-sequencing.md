@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59f781e1e5969c9d11a0e801fef48e2f6e347832
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90988020"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771353"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>将 Azure 磁盘加密与虚拟机规模集扩展排序配合使用
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 Azure 磁盘加密等扩展可以按指定顺序添加到 Azure 虚拟机规模集。 为此，请使用[扩展排序](virtual-machine-scale-sets-extension-sequencing.md)。 
 
@@ -31,7 +33,7 @@ Azure 磁盘加密等扩展可以按指定顺序添加到 Azure 虚拟机规模�
 
 如果希望在另一个扩展之后应用 Azure 磁盘加密，请将 `provisionAfterExtensions` 属性放在 AzureDiskEncryption 扩展块中。 
 
-下面是一个使用“CustomScriptExtension”的例子，这是一个初始化和格式化 Windows 磁盘的 Powershell 脚本，后跟“AzureDiskEncryption”：
+下面是一个使用“CustomScriptExtension”的例子，这是一个初始化和格式化 Windows 磁盘的 PowerShell 脚本，后跟“AzureDiskEncryption”：
 
 ```json
 "virtualMachineProfile": {

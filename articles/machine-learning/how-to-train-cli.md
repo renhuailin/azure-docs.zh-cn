@@ -1,5 +1,5 @@
 ---
-title: 使用 2.0 CLI 训练模型（创建作业）
+title: 使用 CLI (v2) 训练模型（创建作业）
 titleSuffix: Azure Machine Learning
 description: 了解如何使用用于机器学习的 Azure CLI 扩展训练模型（创建作业）。
 services: machine-learning
@@ -11,21 +11,18 @@ ms.author: copeters
 ms.date: 06/18/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: dda9c6dee04d724d27668cb8bbe5e189b774433d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9f3a91f9abc472f285139bfac04af7dff5c63e9f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457757"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444555"
 ---
-# <a name="train-models-create-jobs-with-the-20-cli-preview"></a>使用 2.0 CLI（预览版）训练模型（创建作业）
+# <a name="train-models-create-jobs-with-the-cli-v2"></a>使用 CLI (v2) 训练模型（创建作业）
 
-使用用于机器学习的 Azure 2.0 CLI 扩展（预览版）可以加速模型训练过程，同时可以在 Azure 计算中纵向扩展和横向扩展，并对模型生命周期进行跟踪和审核。
+Azure 机器学习 CLI (v2) 是一个 Azure CLI 扩展，可以加速模型训练过程，同时可以在 Azure 计算中横向和纵向扩展，并对模型生命周期进行跟踪和审核。
 
 训练机器学习模型通常是一个迭代过程。 使用新式工具能够更快捷轻松地基于更多数据训练更大的模型。 以前繁琐的手动过程（如超参数优化，甚至算法选择）现在通常都可以自动完成。 借助 Azure 机器学习 CLI，可以使用超参数扫描来跟踪[工作区](concept-workspace.md)中的作业（和模型）、在高性能 Azure 计算中纵向扩展，并利用分布式训练进行横向扩展。
-
-> [!TIP]
-> 在全功能的开发环境中，可以使用 Visual Studio Code 和 [Azure 机器学习扩展](how-to-setup-vs-code.md)来[管理Azure 机器学习资源](how-to-manage-resources-vscode.md)和[训练机器学习模型](tutorial-train-deploy-image-classification-model-vscode.md)。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
@@ -33,16 +30,35 @@ ms.locfileid: "114457757"
 
 - 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 - [安装并设置用于机器学习的 Azure CLI 扩展](how-to-configure-cli.md)
-- 克隆示例存储库：
 
-    ```azurecli-interactive
-    git clone https://github.com/Azure/azureml-examples --depth 1
-    cd azureml-examples/cli
-    ```
+> [!TIP]
+> 在全功能的开发环境中，可以使用 Visual Studio Code 和 [Azure 机器学习扩展](how-to-setup-vs-code.md)来[管理Azure 机器学习资源](how-to-manage-resources-vscode.md)和[训练机器学习模型](tutorial-train-deploy-image-classification-model-vscode.md)。
+
+### <a name="clone-examples-repository"></a>克隆示例存储库
+
+若要运行训练示例，请首先克隆示例存储库，然后更改为 `cli` 目录：
+
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="git_clone":::
+
+请注意 `--depth 1` 仅克隆最新提交到目录，这将减少操作完成的时间。
+
+### <a name="create-compute"></a>创建计算
+
+可以从命令行创建 Azure 机器学习计算群集。 例如，以下命令创建一个名为 `cpu-cluster` 的群集和一个名为 `gpu-cluster` 的群集。
+
+:::code language="azurecli" source="~/azureml-examples-main/cli/create-compute.sh" id="create_computes":::
+
+请注意，此时你无需支付计算费用，因为在提交作业之前，`cpu-cluster` 和 `gpu-cluster` 将保留在 0 个节点上。 详细了解如何[管理和优化 AmlCompute 的成本](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)。
+
+本文的以下示例作业使用 `cpu-cluster` 或 `gpu-cluster` 之一。 根据需要将这些设置调整为群集名称。
+
+使用 `az ml compute create -h` 了解有关计算创建选项的更多详细信息。
+
+[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 ## <a name="introducing-jobs"></a>作业简介
 
-对于 Azure 机器学习 CLI，作业是以 YAML 格式创作的。 作业聚合：
+对于 Azure 机器学习 CLI (v2)，作业是以 YAML 格式创作的。 作业聚合：
 
 - 运行内容
 - 运行方式
@@ -50,9 +66,13 @@ ms.locfileid: "114457757"
 
 “hello world”作业包含所有三项：
 
-:::code language="yaml" source="~/azureml-examples-main/cli/jobs/hello-world.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/misc/hello-world.yml":::
 
-这只是一个示例作业，它只会在日志文件中输出一行，此外不输出其他任何内容。 除了系统生成的日志外，你通常还想要生成其他项目，例如模型二进制文件和随附的元数据。
+可运行的对象：
+
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world":::
+
+不过，这只是一个示例作业，它只会在日志文件中输出一行，但不会输出其他任何内容。 除了系统生成的日志外，你通常还想要生成其他项目，例如模型二进制文件和随附的元数据。
 
 Azure 机器学习自动捕获以下项目：
 
@@ -73,43 +93,17 @@ Azure 机器学习自动捕获以下项目：
 
 此目录包含两个作业文件和一个源代码子目录 (`src`)。 虽然此示例仅在 `src` 下包含单个文件，但整个子目录将以递归方式上传，并可供在作业中使用。
 
-基本命令作业是通过 `job.yml` 配置的：
+命令作业是通过 `job.yml` 配置的：
 
 :::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/lightgbm/iris/job.yml":::
 
-可以使用 `--file/-f` 参数通过 `az ml job create` 创建并运行此作业。 但是，该作业的目标是尚不存在的名为 `cpu-cluster` 的计算。 若要先在本地运行作业，可以使用 `--set` 替代计算目标：
+可运行的对象：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="lightgbm_iris_local":::
-
-虽然在本地运行此作业比在包含所需包的本地 Python 环境运行 `python main.py` 要慢，但这样你可以：
-
-- 在 Azure 机器学习工作室中保存运行历史记录
-- 在远程计算目标上重现运行（纵向扩展、横向扩展、扫描超参数）
-- 跟踪运行提交详细信息，包括源代码 Git 存储库和提交
-- 跟踪模型指标、元数据和项目
-- 避免在本地环境中进行安装和包管理
-
-> [!IMPORTANT]
-> 需要在本地安装和运行 [Docker](https://docker.io)。 需要在作业的环境中安装 Python。 对于使用 `inputs` 的本地运行，需要在作业的环境中安装 Python 包 `azureml-dataprep`。
-
-> [!TIP]
-> 这需要几分钟时间来拉取 Docker 基础映像。 使用预生成的 Docker 映像可避免花费映像生成时间。
-
-## <a name="create-compute"></a>创建计算
-
-可以从命令行创建 Azure 机器学习计算群集。 例如，以下命令创建一个名为 `cpu-cluster` 的群集和一个名为 `gpu-cluster` 的群集。
-
-:::code language="azurecli" source="~/azureml-examples-main/cli/create-compute.sh" id="create_computes":::
-
-请注意，此时你无需支付计算费用，因为在提交作业之前，`cpu-cluster` 和 `gpu-cluster` 将保留在 0 个节点上。 详细了解如何[管理和优化 AmlCompute 的成本](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)。
-
-使用 `az ml compute create -h` 了解有关计算创建选项的更多详细信息。
-
-[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="lightgbm_iris":::
 
 ## <a name="basic-python-training-job"></a>基本 Python 训练作业
 
-创建 `cpu-cluster` 后，可以运行基本训练作业，该作业将输出一个模型和随附的元数据。 让我们详细查看作业 YAML 文件：
+让我们详细查看作业 YAML 文件：
 
 :::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/lightgbm/iris/job.yml":::
 

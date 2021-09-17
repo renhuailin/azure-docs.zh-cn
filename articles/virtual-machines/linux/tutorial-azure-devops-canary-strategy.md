@@ -1,25 +1,26 @@
 ---
-title: 教程 - 为 Azure Linux 虚拟机配置 Canary 部署
-description: 本教程介绍如何设置持续部署 (CD) 管道。 此管道使用 Canary 部署策略更新一组 Azure Linux 虚拟机。
+title: 为 Azure Linux 虚拟机配置 Canary 部署
+description: 了解如何设置持续部署 (CD) 管道。 此管道使用 Canary 部署策略更新一组 Azure Linux 虚拟机。
 author: moala
 tags: azure-devops-pipelines
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: bbfe6571cf075b2ce4930eea91bfd1e239470c5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f9ab4712e6419303f010d7cf1a417a8a907f9a05
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552501"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690944"
 ---
-# <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>教程 - 为 Azure Linux 虚拟机配置 Canary 部署策略
+# <a name="configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>为 Azure Linux 虚拟机配置 Canary 部署策略
+
+适用于：:heavy_check_mark: Linux VM 
 
 ## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>基础结构即服务 (IaaS) - 配置 CI/CD
 

@@ -7,14 +7,17 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 2acd6fe8450999b4518f19a353d0eab87ddedfaf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 77e2ef4a5af250f19e505dfb9f725aa7674f691f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146412"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694474"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Azure 虚拟机可用性选项
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 本文概述了 Azure 虚拟机 (VM) 的可用性选项。
 
 ## <a name="availability-zones"></a>可用性区域

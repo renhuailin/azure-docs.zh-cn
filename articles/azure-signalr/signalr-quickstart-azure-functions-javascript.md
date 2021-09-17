@@ -10,12 +10,12 @@ ms.devlang: javascript
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: 9e8bb3d49ef236521f7d4a48060b2405dbbbc104
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: fa3c4405bd2c62642e5d61dad10b078695fb32cd
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462012"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444670"
 ---
 # <a name="quickstart-use-javascript-to-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service"></a>快速入门：使用 JavaScript 通过 Azure SignalR 服务和 Azure Functions 来创建一个应用，用于显示 GitHub 星数
 
@@ -66,7 +66,30 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
         ```bash
         func new -n index -t HttpTrigger
         ```
-        
+        打开 `index/function.json` 并复制以下 json 代码：
+
+        ```json
+        {
+          "bindings": [
+            {
+              "authLevel": "anonymous",
+              "type": "httpTrigger",
+              "direction": "in",
+              "name": "req",
+              "methods": [
+                "get",
+                "post"
+              ]
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "res"
+            }
+          ]
+        }
+        ```
+
         打开 `index/index.js` 并复制以下代码。
 
         ```javascript
@@ -191,7 +214,7 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
         }    
         ```
 
-3. 此示例的客户端界面为网页。 考虑到我们在 `index` 函数中从 `content/index.html` 读取 HTML 内容，因此要在 `content` 目录中创建一个新文件 `index.html`。 然后复制以下内容。
+3. 此示例的客户端界面为网页。 考虑到我们是在 `index` 函数中从 `content/index.html` 读取 HTML 内容，因此需要在项目根目录下的 `content` 目录中创建一个新文件 `index.html`。 然后复制以下内容。
 
     ```html
     <html>
@@ -219,7 +242,7 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
     </html>
     ```
 
-4. 现在即将完成了。 最后一步是将 SignalR 服务的连接字符串设置为 Azure Functions 设置。
+4. 现在就快完成了。 最后一步是将 SignalR 服务的连接字符串设置为 Azure Functions 设置。
 
     1. 在打开 Azure门户的浏览器中，通过在门户顶部的搜索框中搜索先前部署的 SignalR 服务实例的名称，确认该实例已成功创建。 选择该实例以将其打开。
 
@@ -232,7 +255,7 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
     1. 复制主连接字符串。 然后执行以下命令。
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         ```
     
 5. 在本地运行 Azure Functions：
@@ -241,11 +264,11 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
     func start
     ```
 
-    在本地运行 Azure Functions 后， 使用浏览器访问 `http://localhost:7071/api/index`，随后可以查看当前星数。 如果在 GitHub 中进行星标或取消星标，星数会每隔几秒刷新一次。
+    在本地运行 Azure Functions 后， 使用浏览器访问 `http://localhost:7071/api/index`，随后可以看到当前的星数。 如果你在 GitHub 中进行星标或取消星标，星数会每隔几秒刷新一次。
 
     > [!NOTE]
     > SignalR 绑定需要 Azure 存储，但是在本地运行 Azure Functions 时，可以使用本地存储仿真器。
-    > 如果收到类似`There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.`的错误，则需要下载并启用[存储仿真器](../storage/common/storage-use-emulator.md)
+    > 如果收到一些类似 `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` 的错误，则需要下载并启用[存储仿真器](../storage/common/storage-use-emulator.md)
 
 遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qscsharp)
 
@@ -255,8 +278,8 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你在本地生成并运行了一个实时无服务器应用程序。 详细了解如何将 SignalR 服务绑定用于 Azure Functions。
-接下来，详细了解如何通过 SignalR 服务在客户端与 Azure Functions 之间进行双向通信。
+在本快速入门中，你在本地生成并运行了一个实时的无服务器应用程序。 详细了解了如何将 SignalR 服务绑定用于 Azure Functions。
+接着，详细了解了如何通过 SignalR 服务在客户端与 Azure Functions 之间进行双向通信。
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的 SignalR Service 绑定](../azure-functions/functions-bindings-signalr-service.md)

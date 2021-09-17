@@ -7,14 +7,16 @@ ms.subservice: disks
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: 92e3be9111abe5712549ba85ef4550a9ac1473f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd23b2381fb042d80297c7b29fad382787ef1281
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596801"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697175"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>如何重设使用 Azure 磁盘加密的逻辑卷管理设备的大小
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本文介绍如何重设使用 Azure 磁盘加密的数据磁盘的大小。 若要重设磁盘大小，在 Linux 上使用逻辑卷管理 (LVM)。 这些步骤适用于多种场景。
 

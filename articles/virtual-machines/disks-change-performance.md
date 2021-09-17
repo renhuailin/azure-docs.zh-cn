@@ -8,14 +8,16 @@ ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c45bc6fa0df5883f060458c3ce92680752e5875a
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: d2f617d2f5d05a6310d5442fa8d4a9e49369912e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113358519"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696416"
 ---
 # <a name="performance-tiers-for-managed-disks"></a>托管磁盘的性能层
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 创建磁盘时，将以其性能层的形式设置 Azure 托管磁盘的性能。 性能层决定了托管磁盘的 IOPS 和吞吐量。 当你设置磁盘的预配大小时，系统会自动选择性能层。 可以在部署时或之后更改性能层，而无需更改磁盘大小。
 

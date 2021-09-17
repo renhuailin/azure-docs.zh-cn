@@ -13,14 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 666990d59fe92935150c2ae78712830a186723a8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 0f41a089dc6757c36ba8fc262553a92b03147263
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205316"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823757"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
+
+适用于：:heavy_check_mark: Linux VM 
 
 本文介绍使用 Azure 基础结构运行 Oracle 解决方案的功能。 另请参阅 Azure 市场中的可用 [WebLogic Server Azure 应用程序](oracle-weblogic.md)、[Oracle VM 映像](oracle-vm-solutions.md)的详细介绍，以及 [Azure 与 Oracle 云基础结构 (OCI) 互连](oracle-oci-overview.md)的功能。
 
@@ -55,8 +57,6 @@ ms.locfileid: "108205316"
 * 将 Azure 基础结构上的 [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956)、[使用 FSFO 激活 Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[分片](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)或[Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) 配置为与[可用性区域](../../../availability-zones/az-overview.md)结合，以获得区域内高可用性。 你还可以跨多个 Azure 区域设置这些配置，以提高可用性和灾难恢复能力。
 
 * 使用 [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) 在 Azure 中和物理服务器上编排和管理 Oracle Linux VM 灾难恢复。 
-
-* 在 Azure 中使用 [Azure VMware 解决方案](../../../vmware-cloudsimple/oracle-real-application-clusters.md)或 [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) 启用 Oracle Real Application Clusters (RAC)。
 
 ## <a name="backup-oracle-workloads"></a>备份 Oracle 工作负载
 

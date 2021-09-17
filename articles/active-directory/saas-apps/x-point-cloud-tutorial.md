@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/15/2021
+ms.date: 08/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 87516b3114e665275c5a3e2ead0caf8c49987d33
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: 77c954d5fd3541b172ec51e237443b00e7e86154
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114373297"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768542"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-x-point-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 X-point Cloud 的集成
 
@@ -77,14 +77,16 @@ ms.locfileid: "114373297"
 
     a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.atledcloud.jp`
 
-    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.atledcloud.jp/xpoint` 
+    b. 在“回复 URL (断言使用者服务 URL)”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.atledcloud.jp/xpoint/saml/acs`
+
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.atledcloud.jp/xpoint` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [X-point Cloud 客户端支持团队](mailto:x-point@atled.jp)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [X-point Cloud 客户端支持团队](mailto:x-point@atled.jp)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
-    ![证书下载链接](common/certificatebase64.png)
+    ![证书下载链接](common/certificateraw.png)
 
 1. 在“设置 X-point Cloud”部分中，根据要求复制相应的 URL。
 
@@ -98,7 +100,7 @@ ms.locfileid: "114373297"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -116,7 +118,7 @@ ms.locfileid: "114373297"
 
 ## <a name="configure-x-point-cloud-sso"></a>配置 X-point Cloud SSO
 
-若要在 X-point Cloud 端配置单一登录，需要将下载的“证书 (Base64)”以及从 Azure 门户复制的相应 URL 发送给 [X-point Cloud 支持团队](mailto:x-point@atled.jp)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 X-point Cloud 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [X-point Cloud 支持团队](mailto:x-point@atled.jp)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-x-point-cloud-test-user"></a>创建 X-point Cloud 测试用户
 

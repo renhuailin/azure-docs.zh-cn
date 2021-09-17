@@ -3,12 +3,12 @@ title: 通过 Azure 门户开始使用 Azure 视频分析器 - Azure
 description: 本快速入门将引导你完成通过 Azure 门户开始使用 Azure 视频分析器的步骤。
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: 4ff89417a10e50ff404ce22b7c57a2c0e29322e6
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: df63755aa66399a2f457673ba17391d5b42f31a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601089"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734238"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer-in-the-azure-portal"></a>快速入门：在 Azure 门户中开始使用 Azure 视频分析器
 
@@ -230,7 +230,7 @@ Azure 视频分析器模块应配置为使用非特权本地用户帐户在 IoT 
 
 ## <a name="use-direct-method-calls"></a>使用直接方法调用
 
-现在，可以通过调用视频分析器边缘模块公开的直接方法来分析实时视频流。 阅读[视频分析器直接方法](direct-methods.md)，检查模块提供的所有直接方法。
+现在，可以通过调用视频分析器边缘模块公开的直接方法来分析实时视频流。 阅读[视频分析器直接方法](direct-methods.md)，检查模块提供的所有直接方法。 可在[此处](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json)找到直接方法的架构。
 
 ### <a name="enumerate-pipeline-topologies"></a>枚举管道拓扑
 

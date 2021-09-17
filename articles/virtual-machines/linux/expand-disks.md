@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c27b042b78931fd58e43e4bbb06699abe510f385
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c8c8881de696143be60c9ff61c1649eb31fe59b3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762544"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695608"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本文介绍了如何使用 Azure CLI 扩展 Linux 虚拟机 (VM) 的托管磁盘。 可通过[添加数据磁盘](add-disk.md)来扩充存储空间，也可扩展现有的数据磁盘。 在 Azure 中的 Linux VM 上，操作系统 (OS) 的默认虚拟硬盘大小通常为 30 GB。 
 

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fbc47fa19cccb8d5ce6af38fdff3f0e772f5039f
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 08/24/2021
+ms.openlocfilehash: 64206d1e5a26d163c5d5ed81c3c762a10de0fe96
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537702"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769586"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>有关使用 Azure Database for PostgreSQL 灵活服务器确保业务连续性的概述
 
@@ -59,7 +59,7 @@ Azure Database for PostgreSQL 灵活服务器中的业务连续性是指在遇�
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>计划外停机：故障场景和服务恢复
 下面是一些计划外故障场景和恢复过程。 
 
-| **方案** | **恢复过程 [非 HA]** | **恢复过程 [HA]** |
+| **方案** | 恢复过程 <br> [未配置区域冗余 HA 的服务器] | 恢复过程 <br> [配置了区域冗余 HA 的服务器] |
 | ---------- | ---------- | ------- |
 | <B>数据库服务器故障 | 如果数据库服务器已关闭，Azure 将尝试重启数据库服务器。 如果重启失败，数据库服务器将在另一个物理节点上重启。  <br /> <br /> 恢复时间 (RTO) 取决于各种因素，包括发生故障时的活动，例如，在数据库服务器启动过程中需执行的大型事务和恢复量。 <br /> <br /> 所构建的使用 PostgreSQL 数据库的应用程序需要能够检测并重试丢弃的连接和失败的事务。 | 如果检测到数据库服务器故障，服务器将故障转移到备用服务器，从而减少停机时间。 有关详细信息，请参阅 [HA 概念页](./concepts-high-availability.md)。 RTO 应为 60-120 s，且不会丢失数据。 |
 | <B>存储故障 | 对于任何与存储相关的问题（例如磁盘故障或物理块损坏），应用程序看不到任何影响。 由于数据存储在三个副本中，因此将由未发生故障的存储提供数据的副本。 损坏的数据块会自动修复，数据的新副本会自动创建。 | 对于任何罕见错误和不可恢复的错误（如整个存储不可访问），灵活服务器将故障转移到备用副本以减少停机时间。 有关详细信息，请参阅 [HA 概念页](./concepts-high-availability.md)。 |

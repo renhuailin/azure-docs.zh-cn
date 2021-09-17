@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 59b015232fcfe2fd98e1b9f28c2eb4fa86606049
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b7ed6cbfcf93e05efb294c7af907a2416c3fe56
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519565"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691338"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>通过 Azure PowerShell 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。  本文介绍如何使用 Azure PowerShell 创建和加密虚拟机规模集。 若要详细了解如何将 Azure 磁盘加密应用于虚拟机规模集，请参阅[适用于虚拟机规模集的 Azure 磁盘加密](disk-encryption-overview.md)。
 

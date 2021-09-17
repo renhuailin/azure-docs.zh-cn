@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: f21ce89c265bc97d393c1ea2766acfb6fe63d6ee
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: f30403adf3c981df62a1e5c5122721400ecc060c
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406403"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605942"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>IoT 即插即用设备开发人员指南
 
-借助 IoT 即插即用，可以生成将功能播发到 Azure IoT 应用程序的智能设备。 当客户将 IoT 即插即用设备连接到已启用 IoT 即插即用的应用程序时，无需手动配置。
+借助 IoT 即插即用，你可以生成将功能播发到 Azure IoT 应用程序的 IoT 设备。 当客户将 IoT 即插即用设备连接到已启用 IoT 即插即用的应用程序时，无需手动配置。
 
-智能设备可以直接实现，也可以使用[模块](../iot-hub/iot-hub-devguide-module-twins.md)或 [IoT Edge 模块](../iot-edge/about-iot-edge.md)。
+IoT 设备可以直接实现，也可以使用[模块](../iot-hub/iot-hub-devguide-module-twins.md)或 [IoT Edge 模块](../iot-edge/about-iot-edge.md)。
 
 本指南介绍了创建遵循 [IoT 即插即用约定](../iot-develop/concepts-convention.md)的设备、模块或 IoT Edge 模块所需的基本步骤。
 

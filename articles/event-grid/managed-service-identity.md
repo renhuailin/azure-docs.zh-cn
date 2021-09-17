@@ -3,20 +3,20 @@ title: 事件传递、托管服务标识和专用链接
 description: 本文介绍如何为 Azure 事件网格主题启用托管服务标识。 用于将事件转发到受支持的目标。
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 76f10b4627dc9578b1e616a868eab03431b59b69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f1f80f23fe108415daa6e0526b651c7269d6b1b3
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625263"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634082"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用托管标识进行事件传递
 本文介绍如何为 Azure 事件网格系统主题、自定义主题或域使用[托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)。 使用它将事件转发到受支持的目标，如服务总线队列和主题、事件中心和存储帐户。
 
 
 
-## <a name="prerequisites"></a>先决条件
-1. 向系统主题、自定义主题或域分配系统分配的标识。 
+## <a name="prerequisites"></a>必备条件
+1. 向系统主题、自定义主题或域分配系统分配标识或用户分配标识。 
     - 对于自定义主题和域，请参阅[为自定义主题和域启用托管标识](enable-identity-custom-topics-domains.md)。 
     - 对于系统主题，请参阅[为系统主题启用托管标识](enable-identity-system-topics.md)
 1. 在目标（例如，服务总线队列）上将标识添加到相应角色（例如，服务总线数据发送方）。 有关详细步骤，请参阅[向目标上的 Azure 角色添加标识](add-identity-roles.md)
@@ -28,13 +28,24 @@ ms.locfileid: "105625263"
 当你的事件网格自定义主题、系统主题或域已分配有系统托管标识并且你已向目标上的相应角色添加该标识之后，就可以创建使用该标识的订阅了。 
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
-创建事件订阅时，你会在“终结点详细信息”部分看到一个选项，启用该选项即可使用该部分中的终结点的系统托管标识。 
+创建事件订阅时，你将在“终结点详细信息”部分看到一个选项，用于启用该终结点的系统分配标识或用户分配标识。 
+
+以下示例说明如何在通过服务总线队列创建事件订阅目标时启用系统分配的标识。 
 
 ![在为服务总线队列创建事件订阅时启用标识](./media/managed-service-identity/service-bus-queue-subscription-identity.png)
 
 还可以在“附加功能”选项卡上启用将系统分配的标识用于死信的功能。 
 
 ![为死信启用系统分配的标识](./media/managed-service-identity/enable-deadletter-identity.png)
+
+你还可以在创建事件订阅后对其启用托管标识。 在事件订阅的“事件订阅”页面，切换到“其他功能”选项卡以查看相关选项。  
+
+![在现有事件订阅上启用系统分配标识](./media/managed-service-identity/event-subscription-additional-features.png)
+
+如果已为主题启用用户分配标识，你会在“托管标识类型”的下拉列表中看到“用户分配标识”选项已启用。 如果你为“托管标识类型”选择“已分配用户”，随后便可选择向其传送事件的用户分配标识。  
+
+![在事件订阅上启用用户分配标识](./media/managed-service-identity/event-subscription-user-identity.png)
+
 
 ### <a name="use-the-azure-cli---service-bus-queue"></a>使用 Azure CLI - 服务总线队列 
 本部分介绍如何使用 Azure CLI 启用系统分配的标识，以将事件传送到服务总线队列。 标识必须是“Azure 服务总线数据发送方”角色的成员。 它还必须是用于死信的存储帐户上的“存储 Blob 数据参与者”角色的成员。 

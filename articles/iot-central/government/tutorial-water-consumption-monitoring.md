@@ -1,27 +1,54 @@
 ---
-title: 教程：使用 Azure IoT Central 创建水消耗量监测应用
-description: 教程：了解如何使用 Azure IoT Central 应用程序模板创建水消耗量监测应用程序。
+title: 教程 - Azure IoT 水消耗量监测 | Microsoft Docs
+description: 本教程介绍如何部署和使用 IoT Central 的水消耗量监测应用程序模板。
 author: miriambrus
 ms.author: miriamb
-ms.date: 12/11/2020
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: df5752760dcb9968b44243fb4c2d2412698267df
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 5b27c9b26c71fba3f5acbd326ff78514212c00ef
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588986"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183671"
 ---
-# <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>教程：使用 Azure IoT Central 创建水消耗量监测应用程序
+# <a name="tutorial--deploy-and-walk-through-the-water-consumption-monitoring-application"></a>教程：部署并演练水消耗量监测应用程序
 
-本教程介绍如何创建 Azure IoT Central 水消耗量监测应用程序。
+使用 IoT Central 水消耗量监测应用程序模板和本文中的指南来开发端到端水消耗量监测解决方案。
 
-在本教程中，您将学习如何执行以下操作：
+![用水量监测体系结构](./media/tutorial-waterconsumptionmonitoring/concepts-waterconsumptionmonitoring-architecture1.png)
+
+### <a name="devices-and-connectivity"></a>设备和连接
+
+水务管理解决方案使用智能水务设备，例如流量计、水质监测仪、智能阀门、检漏仪。
+
+智能水务解决方案中的设备可通过低功耗广域网 (LPWAN) 或通过第三方网络运营商进行连接。 对于这几类设备，请使用 [Azure IoT Central 设备网桥](../core/howto-build-iotc-device-bridge.md)将设备数据发送到 Azure IoT Central 中的 IoT 应用程序。 还可以使用支持 IP 且可直接连接到 IoT Central 的设备网关。
+
+### <a name="iot-central"></a>IoT Central
+
+Azure IoT Central 是一种 IoT 应用平台，可帮助快速构建和部署 IoT 解决方案。 你可以设计、自定义解决方案，并将其与第三方服务相集成。
+
+将智能水务设备连接到 IoT Central 时，该应用程序会提供设备命令与控制、监视和警报、带有内置 RBAC 的用户界面、可配置的仪表板和扩展性选项。
+
+### <a name="extensibility-and-integrations"></a>扩展性和集成
+
+可以在 IoT Central 中扩展 IoT 应用程序，并可根据需要执行以下操作：
+
+* 转换和集成 IoT 数据以进行高级分析，例如，通过从 IoT Central 应用程序持续导出的数据训练机器学习模型。
+* 通过 Power Automate 或 IoT Central 应用程序中的 Webhook 来触发操作，在其他系统中自动执行工作流。
+* 通过 IoT Central API 以编程方式访问 IoT Central 中的 IoT 应用程序。
+
+### <a name="business-applications"></a>业务应用程序
+
+可以使用 IoT 数据为水务公用事业中的各种业务应用程序赋能。 在 [IoT Central 用水量监测应用程序](tutorial-water-consumption-monitoring.md)中，可以配置规则和操作，并将其设置为在[已连接现场服务](/dynamics365/field-service/connected-field-service)中创建警报。 在 IoT Central 规则中配置 Power Automate，以跨应用程序和服务自动执行工作流。 此外，基于已连接现场服务中的服务活动，可以将信息发送回 Azure IoT Central。
+
+在本教程中，你将了解：
 
 > [!div class="checklist"]
+
 > * 使用 Azure IoT Central 水消耗量监测模板创建水消耗量监测应用程序。
 > * 浏览并自定义仪表板。
 > * 浏览设备模板。
@@ -30,55 +57,30 @@ ms.locfileid: "113588986"
 > * 配置作业。
 > * 使用白色标签自定义应用程序品牌。
 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="create-a-water-consumption-monitoring-app-with-azure-iot-central"></a>使用 Azure IoT Central 创建水消耗量监测应用
+* 无需满足特定的先决条件，就可以部署此应用。
+* 你可以使用免费定价计划或使用 Azure 订阅。
 
-本部分将使用 Azure IoT Central 水消耗量监测模板在 Azure IoT Central 中创建水消耗量监测应用程序。
+## <a name="create-water-consumption-monitoring-application"></a>创建水消耗量监测应用程序
 
-若要创建新的 Azure IoT Central 水消耗量监测应用程序：
+使用以下步骤创建应用程序：
 
-1. 转到 [Azure IoT Central 主页](https://aka.ms/iotcentral)网站。
+1. 导航到 [Azure IoT Central 生成](https://aka.ms/iotcentral)站点。 然后使用 Microsoft 个人、工作或学校帐户登录。 从左侧导航栏中选择“生成”，然后选择“政府”选项卡：:::image type="content" source="media/tutorial-waterconsumptionmonitoring/iot-central-government-tab-overview1.png" alt-text="应用程序模板"::: 
 
-    如果你有一个 Azure 订阅，请使用用于访问该订阅的凭据登录。 否则，请使用 Microsoft 帐户登录。
+1. 选择“水消耗量监测”下的“创建应用” 。
 
-    ![输入组织帐户](media/tutorial-waterconsumptionmonitoring/sign-in.png)
+若要了解详细信息，请参阅[创建 IoT Central 应用程序](../core/howto-create-iot-central-application.md)。
 
-1. 在左侧窗格中选择“生成”，然后选择“政府”选项卡   。“政府”页显示了几个政府应用程序模板  。
+## <a name="walk-through-the-application"></a>演练应用程序
 
-    :::image type="content" source="media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png" alt-text="生成政府应用模板。":::
-  
+以下各部分将介绍应用程序的主要功能：
 
-1. 选择“水消耗量监测”应用程序模板  。
-此模板包括示例水消耗量设备模板、模拟设备、仪表板以及预配置的监测规则。
-
-1. 选择“创建应用”打开“新建应用程序”创建窗体，其中包含以下字段   ：
-    * **应用程序名称**：默认情况下，应用程序使用“水消耗量监测”，后跟 Azure IoT Central 生成的唯一 ID 字符串  。 （可选）选择一个易记的应用程序名称。 稍后也可以更改应用程序名称。
-    * **URL**：Azure IoT Central 将根据应用程序名称自动生成 URL。 你可以根据自己的喜好选择更新 URL。 也可以稍后更改 URL。
-    * 如果你有一个 Azure 订阅，请输入“目录”、“Azure 订阅”和“位置”信息    。 如果你没有订阅，可以选择“7 天免费试用”选项并填写所需的联系信息  。
-
-1. 在页面底部选择“创建”  。
-
-    :::image type="content" source="media/tutorial-waterconsumptionmonitoring/new-application-water-consumption-monitoring.png" alt-text="Azure IoT Central“新建应用程序”页面。":::
-
-    ![Azure IoT Central -“计费信息”页](./media/tutorial-waterconsumptionmonitoring/new-application-water-consumption-monitoring-billing-info.png)
-
-现在，你已使用 Azure IoT Central 水消耗量监测模板创建了水消耗量监测应用。
-
-该水消耗量监测应用程序中已预配置了以下组件：
-
-* 示例仪表板。
-* 示例预定义水流量和阀设备模板。
-* 模拟水流量和智能阀设备。
-* 规则和作业。
-* 示例品牌。
-
-这是你的应用程序，你可以随时修改它。 接下来，浏览应用程序并进行一些自定义。
-
-## <a name="explore-and-customize-the-dashboard"></a>浏览并自定义仪表板
+### <a name="dashboard"></a>仪表板
 
 创建应用程序后，会打开“Wide World 水消耗量监测仪表板”示例  。
   
- :::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-dashboard-full.png" alt-text="水消耗量监测仪表板。":::
+:::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-dashboard-full.png" alt-text="水消耗量监测仪表板。":::
 
 
 可在仪表板上创建和自定义视图，以供操作员使用。
@@ -268,4 +270,4 @@ ms.locfileid: "113588986"
 
 ## <a name="next-steps"></a>后续步骤
  
-建议的下一步是了解[水消耗量监测概念](./concepts-waterconsumptionmonitoring-architecture.md)。
+建议的下一步是了解[水质监测](./tutorial-water-quality-monitoring.md)。

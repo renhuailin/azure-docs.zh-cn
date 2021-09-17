@@ -7,14 +7,14 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/18/2021
-ms.openlocfilehash: cf69321045a3c79e2803445964ff7f09a5e522e7
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: b1168833242aa69b8e1bff5d7bd810f2c3db019d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114732015"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693582"
 ---
-# <a name="connect-azure-database-for-sql-flexible-server-with-private-access-connectivity-method"></a>使用专用访问连接方法连接 Azure Database for SQL 灵活服务器
+# <a name="connect-azure-database-for-mysql-flexible-server-with-private-access-connectivity-method"></a>使用专用访问连接方法连接 Azure Database for MySQL 灵活服务器
 
 Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 MySQL 服务器。 本快速入门介绍如何使用 Azure 门户在虚拟网络中创建灵活服务器。
 
@@ -44,7 +44,7 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
 
 4. 在“基本”选项卡上，输入“订阅”、“资源组”、“区域”、“管理员用户名”和“管理员密码”     。  使用默认值，这将使用 1 个 vCore、2 GiB 内存和 32 GiB 存储空间配置具有可突发 SKU 的 5.7 版 MySQL 服务器。 备份保留期为 7 天。 可以更改配置。
 
-    > :::image type="content" source="./media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png" alt-text="显示“灵活服务器”页的“基本信息”选项卡的屏幕截图。" lightbox="/media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png":::
+    > :::image type="content" source="./media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png" alt-text="显示“灵活服务器”页的“基本信息”选项卡的屏幕截图。" lightbox="./media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png":::
 
    > [!TIP]
    > 为了在迁移过程中更快地加载数据，建议将 IOPS 增加到计算大小所支持的最大大小，然后再将其调整回原来的大家，以节省成本。
@@ -133,7 +133,7 @@ ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
 需要安装 mysql-client 工具才能连接到服务器。
 
 ```bash
-sude apt-getupdate
+sudo apt-getupdate
 sudo apt-get install mysql-client
 ```
 

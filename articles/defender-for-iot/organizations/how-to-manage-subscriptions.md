@@ -3,12 +3,12 @@ title: 管理订阅
 description: 订阅由托管的已提交设备组成，可根据需要加入或移除。
 ms.date: 08/10/2021
 ms.topic: how-to
-ms.openlocfilehash: b2d9c5ba3b359415f1dcfa5772003aec04a80855
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 41240bd3b05c08d8acd3484bbe32fc99b6590d49
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252486"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444421"
 ---
 # <a name="manage-defender-for-iot-subscriptions"></a>管理 Defender for IoT 订阅
 
@@ -32,20 +32,22 @@ Azure Defender for IoT 的计费周期按日历月计算。 当月对已提交�
 此外，用户还可以使用试用版订阅，它支持在 30 天内监视有限数量的设备。
 请参阅 [Azure Defender 定价](https://azure.microsoft.com/pricing/details/azure-defender/)，了解已提交设备价格的信息。
 
-### <a name="before-you-begin"></a>在开始之前
+## <a name="requirements"></a>要求
 
 在加入订阅之前，请确认：
+
 - 已设置 Azure 帐户。
 - 拥有所需的 Azure 用户权限。
-#### <a name="azure-account-setup"></a>Azure 帐户设置
 
-若要使用 Azure Defender for IoT，你必须先订阅 Microsoft Azure。 如果尚无订阅，可注册免费帐户。 如果已具有对 Azure 订阅的访问权限，但在订阅时未列出，请查看帐户详情，确认拥有订阅所有者的相关权限。
+### <a name="azure-account-subscription-requirements"></a>Azure 帐户订阅要求
 
-- 如果已有帐户： https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade 。
+若要使用 Azure Defender for IoT，必须先订阅 Microsoft Azure 帐户。
 
-- 如果还没有帐户： https://azure.microsoft.com/free/ 。
+如果尚无订阅，可注册免费帐户。 有关详细信息，请参阅 https://azure.microsoft.com/free/。
 
-#### <a name="user-permission-requirements"></a>用户权限要求
+如果已具有对 Azure 订阅的访问权限，但在订阅 Defender for IoT 时未列出，请查看帐户详情，确认拥有订阅所有者的相关权限。 请参阅 https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade。
+
+### <a name="user-permission-requirements"></a>用户权限要求
 
 Azure 订阅所有者和订阅参与者可以加入、更新和移除 Azure Defender for IoT 订阅。
 

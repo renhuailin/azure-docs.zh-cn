@@ -10,14 +10,16 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 63c78cd7fc9fea15eb2fd5452101aa2377e94b06
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 4e4738f46b2d5f8d90f0d1fd79738270e01de64f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109808907"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698922"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 <!-- rename to create-vm-specialized -->
 

@@ -8,17 +8,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: f02c9699dc59db30f2291be1817f564dbc394998
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 6b2a2370f6b98184a48c370c929b948ebc72a84e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252223"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698669"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 > [!TIP]
-> 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你的工作负荷的其他虚拟机大小。
+> 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你的工作负载的其他尺寸。
 
 本部分提供了有关先前几代虚拟机大小的信息。 这些大小仍可使用，但有新的大小可供使用。
 

@@ -4,12 +4,12 @@ description: 了解 BareMetal 中适用于 Oracle 数据库的功能。
 ms.topic: overview
 ms.subservice: baremetal-oracle
 ms.date: 04/16/2021
-ms.openlocfilehash: 52bd9856b9203dfc515d5507fda310d567e1b588
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 73473cb99521be76be5518ad82dfbb9ec9d1feb0
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862475"
 ---
 # <a name="high-availability-features-for-oracle-on-azure-baremetal"></a>Azure BareMetal 上的 Oracle 的高可用性功能
 
@@ -55,9 +55,9 @@ Oracle Database 服务的另一个关键功能是仅根据服务角色启动服�
 - 防止块内逻辑损坏和写入丢失损坏。 它还消除了将存储管理员所犯错误复制到备用数据库的风险。
 恢复可能会延迟一段预先确定的时间，因此用户错误不会立即复制到备用数据库。
 
-## <a name="azure-netapp-files-snapshots"></a>Azure NetApp 文件快照
+## <a name="baremetal-snapshot-recovery"></a>BareMetal 快照恢复
 
-BareMetal 中使用的 NetApp 文件存储解决方案可用于创建卷的快照。 快照可让你快速将文件系统还原到特定时间点。 快照技术支持恢复时间目标 (RTO) 时间（还原数据库备份所需的一小部分时间）。
+通过基础结构中提供的使用 NetApp 的 BareMetal 存储解决方案，可以创建卷的快照。 快照可让你快速将文件系统还原到特定时间点。 快照技术支持恢复时间目标 (RTO) 时间（还原数据库备份所需的一小部分时间）。
 
 可通过 Azure NetApp SnapCenter 获得 Oracle 数据库的快照功能。 SnapCenter 启用快照用于备份，SnapVault 提供脱机保管库，而 Snap Clone 支持自助式还原和其他操作。 有关详细信息，请查看 [BareMetal 基础结构上 Oracle 的 SnapCenter 集成](netapp-snapcenter-integration-oracle-baremetal.md)。
 

@@ -5,13 +5,13 @@ ms.service: digital-twins
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
-ms.date: 7/20/2020
-ms.openlocfilehash: 9a5191533b336d9d0cbefcf9b58f56d6648a60df
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 8/20/2021
+ms.openlocfilehash: b3ad9c84e35483cf81bde83703b01ef0ff3d8a9d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456147"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772328"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服务请求失败。 状态: 403 (已禁用)
 
@@ -39,8 +39,8 @@ ms.locfileid: "114456147"
 
 第一种解决方案是验证 Azure 用户对正在尝试管理的实例是否拥有“Azure 数字孪生数据所有者”角色。 如果没有此角色，请对其进行设置。
 
-请注意，此角色不同于...
-* 此角色之前在Azure 数字孪生所有者 (预览) 预览期间使用的名称（角色相同，但名称已更改）
+此角色不同于
+* 此角色之前在 Azure 数字孪生所有者（预览版）预览期间使用的名称。 在这种情况下，角色相同，但名称已更改。
 * 对整个 Azure 订阅的“所有者”角色。 “Azure 数字孪生数据所有者”是 Azure 数字孪生中的角色，其作用范围限定为单个 Azure 数字孪生实例。
 * Azure 数字孪生中的“所有者”角色。 它们是两个不同的 Azure 数字孪生管理角色，“Azure 数字孪生数据所有者”是应该用于管理的角色。
 
@@ -50,7 +50,7 @@ ms.locfileid: "114456147"
 
 #### <a name="fix-issues"></a>解决问题 
 
-如果你没有此角色分配，则对 Azure 订阅具有“所有者”角色的用户应运行以下命令，向 Azure 用户授予对 Azure 数字孪生实例的“Azure 数字孪生数据所有者”角色。 
+如果你没有此角色分配，则在 Azure 订阅中具有“所有者”角色的用户应运行以下命令，向 Azure 用户授予对 Azure 数字孪生实例的“Azure 数字孪生数据所有者”角色。  
 
 如果你是订阅的“所有者”，则可以自己运行此命令。 如果不是，请联系“所有者”代表你运行此命令。
 
@@ -58,13 +58,13 @@ ms.locfileid: "114456147"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-有关此角色要求和分配过程的详细信息，请参阅“操作说明：设置实例和身份验证（CLI 或门户）”的[设置用户访问权限](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)部分。
+有关此角色要求和分配过程的详细信息，请参阅“操作说明：设置实例和身份验证（CLI 或门户）”的[“设置用户的访问权限”部分](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)。
 
-如果已拥有此角色分配且使用 Azure AD 应用注册对客户端应用进行身份验证，但此解决方案未解决 403 问题，则可继续执行下一个解决方案。
+如果你已拥有此角色分配且使用 Azure AD 应用注册对客户端应用进行身份验证，但此解决方案未解决 403 问题，则可继续执行下一个解决方案。
 
 ### <a name="solution-2"></a>解决方法 #2
 
-如果要使用 Azure AD 应用注册对客户端应用进行身份验证，则第二种可能的解决方案是验证是否已为应用注册配置对 Azure 数字孪生服务的权限。 如果未配置这些设置，请对其进行设置。
+如果要使用 Azure AD 应用注册对客户端应用进行身份验证，则第二种可能的解决方案是验证是否已为应用注册配置对 Azure 数字孪生服务的权限。 如果未配置这些，请对其进行设置。
 
 #### <a name="check-current-setup"></a>检查当前设置
 
@@ -72,11 +72,11 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 切换到“所有应用程序”选项卡以查看在订阅中创建的所有应用注册。
 
-在列表中应该可以看到刚创建的应用注册。 选择它以打开其详细信息。
+在列表中应该可以看到已创建的应用注册。 选择它以打开其详细信息。
 
 :::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Azure 门户中“应用注册”页的屏幕截图。":::
 
-首先，验证注册中是否已正确设置 Azure 数字孪生权限。 为此，请从菜单栏中选择“清单”，以查看应用注册的清单代码。 滚动到代码窗口的底部，在 `requiredResourceAccess` 下查找以下字段。 这些值应与以下屏幕截图中的值相匹配：
+首先，验证注册中是否已正确设置 Azure 数字孪生权限：从菜单栏中选择“清单”，以查看应用注册的清单代码。 滚动到代码窗口的底部，在 `requiredResourceAccess` 下查找以下字段。 这些值应与以下屏幕截图中的值匹配：
 
 :::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Azure 门户中 Azure AD 应用注册清单屏幕截图。":::
 

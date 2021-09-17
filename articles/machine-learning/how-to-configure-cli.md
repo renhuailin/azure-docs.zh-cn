@@ -1,7 +1,7 @@
 ---
-title: 安装、设置和使用 2.0 CLI
+title: 安装和设置 CLI (v2)
 titleSuffix: Azure Machine Learning
-description: 了解如何安装、设置和使用适用于 Azure 机器学习的 CLI 扩展。
+description: 了解如何安装和设置用于机器学习的 Azure CLI 扩展。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 53d7b42426919ec5b91821ac67fbde940972494a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8034b9e6027f85d9dd5385fda18f81523830944f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745228"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772706"
 ---
-# <a name="install-set-up-and-use-the-20-cli-preview"></a>安装、设置和使用 2.0 CLI（预览版）
+# <a name="install-and-set-up-the-cli-v2"></a>安装和设置 CLI (v2)
 
 [Azure CLI](/cli/azure/) 的 `ml` 扩展（预览版）是适用于 Azure 机器学习的增强型接口。 该扩展可让你从命令行训练和部署模型，并提供了在跟踪模型生命周期时加快数据科学纵向和横向扩展的功能。
 
@@ -29,16 +29,11 @@ ms.locfileid: "121745228"
 - 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 - 若要从本地环境使用本文档中的 CLI 命令，需要使用 [Azure CLI](/cli/azure/install-azure-cli)。
 
-    > [!TIP]
-    > 如果使用的是 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)，则可通过浏览器访问 CLI（它位于云端）。
-
 ## <a name="installation"></a>安装
 
 新的机器学习扩展需要 Azure CLI 版本 `>=2.15.0`。 请确保满足此要求：
 
-```azurecli
-az version
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_version":::
 
 如果不满足此要求，请[升级 Azure CLI](/cli/azure/update-azure-cli)。
 
@@ -74,9 +69,7 @@ az version
 
 登录名：
 
-```azurecli
-az login
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_login":::
 
 如果你可以访问多个 Azure 订阅，则可以设置活动的订阅：
 
@@ -96,29 +89,6 @@ az login
 现在创建机器学习工作区：
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_ml_workspace_create":::
-
-## <a name="hello-world"></a>Hello world
-
-若要继续操作，请克隆示例存储库并切换到 `cli` 子目录：
-
-```azurecli-interactive
-git clone https://github.com/Azure/azureml-examples --depth 1
-cd azureml-examples/cli
-```
-
-若要通过 Python 在本地运行 hello world，请查看 `jobs` 子目录中的示例：
-
-:::code language="yaml" source="~/azureml-examples-main/cli/jobs/hello-world.yml":::
-
-> [!IMPORTANT]
-> 需要在本地安装和运行 [Docker](https://docker.io)。
-
-提交作业，将日志流式传输到控制台输出，并在 Azure 机器学习工作室中打开运行：
-
-:::code language="azurecli" source="~/azureml-examples-main/cli/hello-world.sh" id="hello_world":::
-
-> [!IMPORTANT]
-> 首次运行可能需要花费几分钟时间，因为将在本地拉取 Docker 映像，并且要运行 Azure ML 作业。 后续运行将使用本地缓存的映像，因此可以更快地完成。
 
 ## <a name="next-steps"></a>后续步骤
 

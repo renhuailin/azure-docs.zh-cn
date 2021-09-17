@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: 3d68ac7aa9927e62011c58b17139d7232ce4a10c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2620595a314cef2317ff56224d325438093b5d2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98200747"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696122"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>创建虚拟网络接口卡，以及在 Azure 上使用内部 DNS 进行 VM 名称解析
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本文介绍了如何通过 Azure CLI 使用虚拟网络接口卡 (vNic) 和 DNS 标签名称为 Linux VM 设置静态内部 DNS 名称。 静态 DNS 名称用于永久基础结构服务，如本文档所使用的 Jenkins 生成服务器或 Git 服务器。
 

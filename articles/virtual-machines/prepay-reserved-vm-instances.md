@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 7eab410bb2344617e555a7a9d1d44cd9adcc676d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 819732043ce035214fc9a56e22a99e9a3dec28a2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674718"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694281"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>借助 Azure 虚拟机预留实例节省资金
 
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 承诺购买 Azure 虚拟机预留实例可以节省资金。 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 无需向虚拟机分配预留即可享受折扣。 购买的预留实例仅涵盖了所用 VM 的计算部分。 对于 Windows VM，使用量计量器分为两个单独的计量器， 包括一个计算计量器（与 Linux 计量器相同）和一个 Windows IP 计量器。 购买时看到的费用只是计算成本。 这些费用不包括 Windows 软件成本。 有关软件成本的详细信息，请参阅 [Azure 虚拟机预留实例未包含的软件成本](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)。
 
@@ -120,7 +121,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 有关使用情况数据中如何显示预留折扣的详细信息，EA 客户可参阅[了解企业注册的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)。 如果你使用个人订阅，请参阅[了解即用即付订阅的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
-## <a name="change-a-reservation-after-purchase"></a>在购买后更改预留项
+## <a name="change-a-reservation-after-purchase"></a>在购买后更改预留
 
 可以在购买后对预留进行以下类型的更改：
 

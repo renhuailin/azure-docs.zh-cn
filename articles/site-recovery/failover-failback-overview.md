@@ -1,18 +1,20 @@
 ---
-title: 关于 Azure Site Recovery 中的故障转移和故障回复
-description: 了解 Azure Site Recovery 中的故障转移和故障回复。
+title: 关于 Azure Site（经典）中的故障转移和故障回复
+description: 了解 Azure Site Recovery（经典）中的故障转移和故障回复
 ms.topic: conceptual
-ms.date: 12/24/2019
-ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/30/2021
+ms.openlocfilehash: 97465622afb1a8b59601799ed14a625f49073a43
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98070732"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446551"
 ---
-# <a name="about-on-premises-disaster-recovery-failoverfailback"></a>关于本地灾难恢复故障转移/故障回复
+# <a name="about-on-premises-disaster-recovery-failoverfailback---classic"></a>关于本地灾难恢复故障转移/故障回复（经典）
 
-本文概述在将本地计算机灾难恢复到 Azure 期间如何使用 [Azure Site Recovery](site-recovery-overview.md) 进行故障转移和故障回复。
+本文概述了使用 [Azure Site Recovery](site-recovery-overview.md)（经典）将本地机器灾难恢复到 Azure 期间的故障转移和故障回复。
+
+有关 Azure Site Recovery 预览版中故障转移和故障回复的信息，请[参阅本文](failover-failback-overview-preview.md)。
 
 ## <a name="recovery-stages"></a>恢复阶段
 

@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b1b2782f9bf7ab7e99478a547c2181598ff4cd12
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2892ae3ff10110c2e45d29edd009a9116da0b166
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672744"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687504"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>使用 PowerShell 更改 Azure VM 使用的 OS 磁盘
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 如果当前具备 VM，但希望将磁盘更换为备份磁盘或其他 OS 磁盘，可使用 Azure PowerShell 更换 OS 磁盘。 无需删除和重新创建 VM。 甚至可在另一资源组中使用托管磁盘，只要该磁盘尚未使用。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6307c99c0796fb4159da7563c951304ceef6ece2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 125f3aa1cb3cfec0b7e8ec3cfafebdf2fae53e59
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750860"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771209"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 数字孪生高可用性和灾难恢复
 
@@ -28,7 +28,7 @@ Azure 数字孪生支持以下功能选项：
 
 ## <a name="intra-region-ha"></a>区域内部 HA
  
-Azure 数字孪生通过在服务内实现冗余来提供区域内部 HA。 这反映在指示运行时间的[服务 SLA](https://azure.microsoft.com/support/legal/sla/digital-twins) 中。 Azure 数字孪生解决方案开发人员无需完成任何额外工作就能利用这些 HA 功能。 尽管 Azure 数字孪生提供相当高的运行时间保证，但与任何分布式计算平台一样，暂时性的故障仍有可能出现。 必须在与云应用程序交互的组件中内置相应重试策略，以处理暂时性故障。
+Azure 数字孪生通过在服务内实现冗余来提供区域内部 HA。 [服务 SLA](https://azure.microsoft.com/support/legal/sla/digital-twins) 的运行时间反映了此功能。 Azure 数字孪生解决方案开发人员无需完成任何额外工作就能利用这些 HA 功能。 尽管 Azure 数字孪生提供相当高的运行时间保证，但与任何分布式计算平台一样，暂时性的故障仍有可能出现。 必须在与云应用程序交互的组件中内置相应重试策略，以处理暂时性故障。
 
 ## <a name="cross-region-dr"></a>跨区域 DR
 
@@ -65,7 +65,7 @@ Azure 数字孪生通过在服务内实现冗余来提供区域内部 HA。 这�
     :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="显示“运行状况历史记录”页的 Azure 门户的屏幕截图，其中突出显示了“问题更新”选项卡。该选项卡显示了条目的状态。" lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
 
 
-请注意，此工具中显示的信息并不特定于某一个 Azure 数字实例。 使用服务运行状况了解某个区域或订阅中 Azure 数字孪生服务的运行状况后，可以通过使用[资源运行状况工具](troubleshoot-resource-health.md) 向下钻取到特定实例并查看这些实例是否受影响，来实施进一步监视。
+此工具中显示的信息并不特定于某一个 Azure 数字实例。 使用服务运行状况了解某个区域或订阅中 Azure 数字孪生服务的运行状况后，可以通过使用[资源运行状况工具](troubleshoot-resource-health.md)向下钻取到特定实例并查看这些实例是否受影响，来实施进一步监视。
 
 ## <a name="best-practices"></a>最佳做法
 

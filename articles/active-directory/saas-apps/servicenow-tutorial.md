@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: c90234249f3cf7eb6ed4793110d61e1f8190ed60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24f05c59d7ceac37ff628aec265541d323f170e3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99092595"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725804"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceNow 集成
 
@@ -92,7 +92,10 @@ ms.locfileid: "99092595"
 
 1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”  中，输入使用以下模式的 URL：`https://<instancename>.service-now.com/navpage.do`
+    a. 在“登录 URL”  中，输入使用以下模式的 URL：`https://<instance-name>.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
+    
+    > [!NOTE]
+    >  请从“配置 ServiceNow”部分的步骤 5.d.iii 中复制 sys_id 值。
 
     b. 在“标识符(实体 ID)”  中，输入使用以下模式的 URL：`https://<instance-name>.service-now.com`
 
@@ -130,7 +133,7 @@ ms.locfileid: "99092595"
 1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 对于“名称”，请输入 `B.Simon`。  
+   1. 对于“名称”  ，请输入 `B.Simon`。  
    1. 对于“用户名”，请输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选择“显示密码”，然后记下“密码”框中显示的值   。
    1. 选择“创建”  。
@@ -163,7 +166,7 @@ ms.locfileid: "99092595"
 
 4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
-    a. 对于“登录 URL”  ，输入使用以下模式的 URL：`https://<instancename>.service-now.com/navpage.do`
+    a. 对于“登录 URL”，输入以下格式的 URL：`https://<instance-name>.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>` 请从“配置 ServiceNow”部分的步骤 5.d.iii 中复制 sys_id 值 。
 
     b. 对于“标识符(实体 ID)”  ，输入使用以下模式的 URL：`https://<instance-name>.service-now.com`
 
@@ -262,18 +265,20 @@ ms.locfileid: "99092595"
 
              ![“标识提供者”部分的屏幕截图](./media/servicenow-tutorial/automatic-config.png "配置单一登录")
 
-               a. 对于“名称”  ，为你的配置输入一个名称（例如，“Microsoft Azure Federated single sign-on”  ）。
+               a. 右键单击屏幕顶部的灰色栏，然后单击“复制 sys_id”，并将该值用于“基本 SAML 配置”部分的“登录 URL”  。
 
-               b. 复制“ServiceNow 主页”值，将其粘贴到 Azure 门户上“ServiceNow 基本 SAML 配置”部分中的“登录 URL”内。
+               b. 对于“名称”  ，为你的配置输入一个名称（例如，“Microsoft Azure Federated single sign-on”  ）。
+
+               c. 复制“ServiceNow 主页”值，将其粘贴到 Azure 门户上“ServiceNow 基本 SAML 配置”部分中的“登录 URL”内。
 
                 > [!NOTE]
                 > ServiceNow 实例主页是 **ServiceNow 租户 URL** 和 **/navpage.do** 的串联（例如：`https://fabrikam.service-now.com/navpage.do`）。
 
-              c. 复制“实体 ID/颁发者”值，将其粘贴到 Azure 门户中“ServiceNow 基本 SAML 配置”部分的“标识符”内。
+              d. 复制“实体 ID/颁发者”值，将其粘贴到 Azure 门户中“ServiceNow 基本 SAML 配置”部分的“标识符”内。
 
-              d. 确认将“名称 ID 策略”  设置为 `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` 值。 
+              e. 确认将“名称 ID 策略”  设置为 `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` 值。 
 
-              e. 单击“高级”，然后将“单一登录脚本”值指定为“MultiSSOv2_SAML2_custom”  。
+              f. 单击“高级”，然后将“单一登录脚本”值指定为“MultiSSOv2_SAML2_custom”  。
 
          1. 向下滚动到“X.509 证书”  部分，选择“编辑”  。
 
@@ -324,7 +329,7 @@ ms.locfileid: "99092595"
 
     1. 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
-        ![“标识提供者”的屏幕截图](./media/servicenow-tutorial/ic7694982.png "配置单一登录")
+        ![“标识提供者”的屏幕截图](./media/servicenow-tutorial/identity-provider.png "配置单一登录")
 
         a. 对于“名称”  ，为你的配置输入一个名称（例如，“Microsoft Azure Federated single sign-on”  ）。
 
@@ -384,7 +389,7 @@ ms.locfileid: "99092595"
 
 5. 在“X.509 证书”  对话框中，执行以下步骤：
 
-    ![“X.509 证书”对话框的屏幕截图](./media/servicenow-tutorial/ic7694975.png "配置单一登录")
+    ![“X.509 证书”对话框的屏幕截图](./media/servicenow-tutorial/certificate.png "配置单一登录")
 
     a. 对于“名称”  ，输入配置名称（例如：TestSAML2.0）  。
 
@@ -404,7 +409,7 @@ ms.locfileid: "99092595"
 
 7. 在“添加新的标识提供者”  对话框的“配置标识提供者”  下，执行以下步骤：
 
-    ![“添加新的标识提供者”对话框的屏幕截图](./media/servicenow-tutorial/ic7694982ex.png "配置单一登录")
+    ![“添加新的标识提供者”对话框的屏幕截图](./media/servicenow-tutorial/new-identity-provider.png "配置单一登录")
 
     a. 对于“名称”  ，输入配置名称（例如：SAML 2.0）  。
 
@@ -418,7 +423,7 @@ ms.locfileid: "99092595"
 
 8. 选择“高级设置”  。 在“其他标识提供者属性”  下，执行以下步骤：
 
-    ![“添加新标识提供者”对话框的屏幕截图，其中突出显示了“高级设置”](./media/servicenow-tutorial/ic7694983ex.png "配置单一登录")
+    ![“添加新标识提供者”对话框的屏幕截图，其中突出显示了“高级设置”](./media/servicenow-tutorial/advanced-settings.png "配置单一登录")
 
     a. 对于“IDP 的 SingleLogoutRequest 协议绑定”  ，输入“urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect”  。
 
@@ -430,7 +435,7 @@ ms.locfileid: "99092595"
 
 9. 在“其他服务提供者属性”  下，执行以下步骤：
 
-    ![“添加新标识提供者”对话框的屏幕截图，其中突出显示了各个属性](./media/servicenow-tutorial/ic7694984ex.png "配置单一登录")
+    ![“添加新标识提供者”对话框的屏幕截图，其中突出显示了各个属性](./media/servicenow-tutorial/service-provider.png "配置单一登录")
 
     a. 对于“ServiceNow 主页”  ，输入 ServiceNow 实例主页的 URL。
 

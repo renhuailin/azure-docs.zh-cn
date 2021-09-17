@@ -1,14 +1,14 @@
 ---
 title: 策略示例索引
 description: Azure Policy 的内置项的索引。 类别标记、法规符合性、Key Vault、Kubernetes、来宾配置等。
-ms.date: 07/16/2021
+ms.date: 08/13/2021
 ms.topic: sample
-ms.openlocfilehash: 3156c992ba0914fc5f244515b0027438567310a5
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: ca5c973b8efe6ec97eb5d4e6dada5418d7433c0f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114387569"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180075"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
@@ -35,22 +35,41 @@ ms.locfileid: "114387569"
 
 ## <a name="regulatory-compliance"></a>合规性
 
-下面是[法规符合性](../concepts/regulatory-compliance.md)内置项：
+下面是 Azure 中的[法规符合性](../concepts/regulatory-compliance.md)内置项：
 
+- [澳大利亚政府 ISM PROTECTED](./australia-ism.md)
 - [Azure 安全基准 v2](./azure-security-benchmark.md)
 - [Azure 安全基准 v1](./azure-security-benchmarkv1.md)
 - [加拿大联邦 PBMM](./canada-federal-pbmm.md)
 - [CIS Microsoft Azure 基础基准检验 v1.3.0](./cis-azure-1-3-0.md)
 - [CIS Microsoft Azure 基础基准检验 v1.1.0](./cis-azure-1-1-0.md)
 - [CMMC 级别 3](./cmmc-l3.md)
+- [FedRAMP Moderate](./fedramp-moderate.md)
+- [FedRAMP High](./fedramp-high.md)
 - [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
 - [IRS 1075 2016 年 9 月](./irs-1075-sept2016.md)
 - [ISO 27001:2013](./iso-27001.md)
 - [受限于新西兰 ISM](./new-zealand-ism.md)
-- [NIST SP 800-53 R5](./nist-sp-800-53-r5.md)
-- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
+- [NIST SP 800-53 修订版 5](./nist-sp-800-53-r5.md)
+- [NIST SP 800-53 修订版 4](./nist-sp-800-53-r4.md)
 - [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 - [英国官方和英国 NHS](./ukofficial-uknhs.md)
+
+下面是 Azure 政府中的[法规符合性](../concepts/regulatory-compliance.md)内置项：
+
+- [Azure 安全基准 v2](./gov-azure-security-benchmark.md)
+- [CIS Microsoft Azure 基础基准检验 v1.3.0](./gov-cis-azure-1-3-0.md)
+- [CIS Microsoft Azure 基础基准检验 v1.1.0](./gov-cis-azure-1-1-0.md)
+- [CMMC 级别 3](./gov-cmmc-l3.md)
+- [DoD 影响级别 4](./gov-dod-impact-level-4.md)
+- [DoD 影响级别 5](./gov-dod-impact-level-5.md)
+- [FedRAMP Moderate](./gov-fedramp-moderate.md)
+- [FedRAMP High](./gov-fedramp-high.md)
+- [IRS 1075 2016 年 9 月](./gov-irs-1075-sept2016.md)
+- [ISO 27001:2013](./gov-iso-27001.md)
+- [NIST SP 800-53 修订版 5](./gov-nist-sp-800-53-r5.md)
+- [NIST SP 800-53 修订版 4](./gov-nist-sp-800-53-r4.md)
+- [NIST SP 800-171 R2](./gov-nist-sp-800-171-r2.md)
 
 ## <a name="other-samples"></a>其他示例
 

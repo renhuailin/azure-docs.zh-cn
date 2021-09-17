@@ -2,14 +2,14 @@
 title: 关于 Azure Site Recovery
 description: 简要介绍 Azure Site Recovery 服务并概述灾难恢复和迁移部署方案。
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/19/2021
 ms.custom: MVC
-ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d5558930c77c115ba25cb4b35e88d470afc38a23
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92281874"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445686"
 ---
 # <a name="about-site-recovery"></a>关于 Site Recovery
 
@@ -33,6 +33,7 @@ Site Recovery 可以为以下计算机管理复制：
 --- | ---
 **简单的 BCDR 解决方案** | 可以在 Azure 门户中使用 Site Recovery，以便设置和管理从单个位置进行的复制、故障转移和故障回复。
 **Azure VM 复制** | 可以设置 Azure VM 从主要区域到次要区域的灾难恢复。
+**VMware VM 复制** | 可以使用改进的 Azure Site Recovery 复制设备将 VMware VM 复制到 Azure，该设备提供比配置服务器更好的安全性和复原能力。 有关详细信息，请参阅 [VMware VM 灾难恢复](vmware-azure-about-disaster-recovery.md)。
 **本地 VM 复制** | 可以将本地 VM 和物理服务器复制到 Azure 或辅助性的本地数据中心。 将数据复制到 Azure 以后，就不需进行复杂的辅助数据中心维护，从而消除相关成本。
 **工作负荷复制** | 复制在支持的 Azure VM、本地 Hyper-V 和 VMware VM 以及 Windows/Linux 物理服务器上运行的任何工作负荷。
 **数据复原能力** | Site Recovery 会协调复制，而不会拦截应用程序数据。 复制到 Azure 时，数据存储在 Azure 存储中，具有后者提供的复原能力。 发生故障转移时，会基于复制的数据创建 Azure VM。
@@ -58,3 +59,4 @@ Site Recovery 可以为以下计算机管理复制：
 
 - 阅读有关[工作负荷支持](site-recovery-workload.md)的更多内容。
 - [区域之间的 Azure VM 复制](azure-to-azure-quickstart.md)入门。
+- [VMware VM 复制](vmware-azure-enable-replication.md)入门。

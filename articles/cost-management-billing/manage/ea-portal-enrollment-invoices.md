@@ -3,18 +3,18 @@ title: Azure Enterprise 注册发票
 description: 本文介绍如何管理和处理 Azure 企业发票。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/05/2021
+ms.date: 08/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8750ad846b832eb4fe037568d3b99f299cfe121b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 77f463d34ebd05e39876933d65631371acff1707
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790624"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515718"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -316,7 +316,7 @@ Azure 预付款是提前为 Azure 服务支付的金额。 使用服务时会消
 
 如果在标准计费周期结束时没有超额的用量，则对单独计费的费用单独开票。 此过程适用于澳大利亚、日本和新加坡的客户。
 
-以下服务单独计费：
+请参阅以下单独计费的服务示例。 你可以通过提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)获取完整的单独计费服务列表。
 
 - Canonical
 - Citrix XenApp Essentials

@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: daf844870670c14db5208f45fbd9c9adf46be985
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37e959615ea9e5d483a081c7059556d36b5fc8ff
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504620"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694864"
 ---
 # <a name="create-a-proximity-placement-group-using-the-azure-portal"></a>使用 Azure 门户创建邻近放置组
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM 
 
 若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](../co-location.md#proximity-placement-groups)中。
 

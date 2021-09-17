@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: static-web-apps
 ms.custom:
 - mode-portal
-ms.openlocfilehash: ce4c37091fc56398c9986396d56e2cc66f9b1d8a
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: d83a9f96745e798d307c6e5299da84f1ac717e76
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813915"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609080"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>快速入门：在 Azure 门户中构建你的第一个静态站点
 
@@ -67,9 +67,9 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
     # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
 
     1. 在“生成预设”下拉列表中选择“自定义”。
-    1. 保留“应用位置”框中的默认值。
+    1. 在“应用位置”框中键入 ./src。
     1. 将“API 位置”框留空。
-    1. 将“应用项目位置”框留空。
+    1. 在“应用项目位置”框中键入 ./src。
 
     # <a name="angular"></a>[Angular](#tab/angular)
 

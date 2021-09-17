@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c618ae7f63c1191bf440b5629057660531dd3d7c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 917f2c00f8cf301be8ec2b19d1cb039dc4a93744
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721767"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691692"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 使用安全外壳 (SSH) 密钥对，可以创建使用 SSH 密钥进行身份验证的 Azure 虚拟机 (VM)。 本文介绍如何快速生成和使用适用于 Linux VM 的 SSH 公钥-私钥文件对。 可以使用 Azure Cloud Shell、macOS 或 Linux 主机完成这些步骤。 
 

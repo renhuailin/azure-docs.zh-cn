@@ -9,14 +9,16 @@ ms.collection: windows
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e81d29922bee53ba9021c9c26816258f7922a59c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6db23229cf0f3521c5855226ac96ad7d52c0fc87
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759698"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693432"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和加密 Windows VM
+
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门演示如何使用 Azure CLI 创建和加密 Windows Server 2016 虚拟机 (VM)。
 

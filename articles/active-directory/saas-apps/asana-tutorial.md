@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: a06c94eed6c90d7b38f28d37f3c8145d4ac1151d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 337311bb94443e7e11ac5fed125acd1e1f625926
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651002"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>教程：Azure Active Directory 与 Asana 集成
 
@@ -39,7 +39,7 @@ ms.locfileid: "101651002"
 
 * Asana 支持 **SP** 发起的 SSO
 
-* Asana 支持 [**自动** 用户预配](asana-provisioning-tutorial.md)
+* Asana 支持[自动用户预配](asana-provisioning-tutorial.md)
 
 ## <a name="add-asana-from-the-gallery"></a>从库中添加 Asana
 

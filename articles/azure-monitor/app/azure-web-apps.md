@@ -4,12 +4,12 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet, devx-track-azurepowershell
-ms.openlocfilehash: e8197c757de4bf109e12ca3d9171e4244ed3b35b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9fac3e79b62a1f354b4120afc965e331b0185e98
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741347"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428624"
 ---
 # <a name="application-monitoring-for-azure-app-service"></a>Azure 应用服务的应用程序监视
 
@@ -92,7 +92,7 @@ Windows 不支持将来自 ASP.NET Core 的完整框架作为目标。 请改为
 ### <a name="linux"></a>Linux 
 
 > [!IMPORTANT]
-> Linux 上的自动检测支持以下 ASP.NET Core 版本：ASP.NET Core 3.1、5.0 和 6.0（预览版）。 版本 2.0、2.1、2.2 和 3.0 已停用，不再受支持。 请升级到 .NET Core 的[受支持版本](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)，使自动检测能够正常工作。
+> 仅支持 ASP.NET Core 6.0（预览版）在 Linux 上自动检测。
 
 > [!NOTE]
 > Linux 自动检测应用程序服务门户支持目前为公共预览版。 这些预览版现已推出，但未提供服务级别协议。 某些功能可能不受支持或者受限。

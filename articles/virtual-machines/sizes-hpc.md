@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 1a82c13d0ad64f100f2fb8b826b1786afa81abac
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 11c3fadd7f95f07bbcbf095e8d6a126022bbea0b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253370"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697919"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 > [!TIP]
 > 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你的工作负载的其他尺寸。

@@ -10,14 +10,16 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 05b51b2edfe7d7abe99835204c8e98197ecdeba0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: cd80a8a69d4e75ec1be31a849fe00cc3ec708e1c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591163"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692672"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集 
 
 计划事件是一个 Azure 元数据服务，可提供应用程序时间用于准备虚拟机 (VM) 维护。 它提供有关即将发生的维护事件的信息（例如重新启动），使应用程序可以为其准备并限制中断。 它可用于 Windows 和 Linux 上的所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 
 
@@ -50,7 +52,7 @@ ms.locfileid: "111591163"
 
   元数据服务公开在 VM 中使用可访问的 REST 终结点运行 VM 的相关信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
 
-### <a name="scope"></a>范围
+### <a name="scope"></a>作用域
 计划的事件传送到：
 
 - 独立虚拟机。

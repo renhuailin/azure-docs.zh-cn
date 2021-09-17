@@ -6,14 +6,14 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 08/12/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 71115da01f47572d77243f25204d5b1127db22cd
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 920cfa4053fac692145f46cc5cff7d53381d900b
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887155"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201794"
 ---
 # <a name="tutorial-create-a-load-balancer-with-more-than-one-availability-set-in-the-backend-pool-using-the-azure-portal"></a>教程：在后端池中创建具有多个可用性集的负载均衡器
 
@@ -109,7 +109,7 @@ ms.locfileid: "107887155"
 
 6. 在“出站 IP”选项卡中，选择“公共 IP 地址”旁边的“创建新的公共 IP 地址”  。
 
-7. 在“名称”中输入 myPublicIP-nat 。
+7. 在“名称”中输入“myNATgatewayIP” 。
 
 8. 选择“确定”。
 
@@ -127,105 +127,100 @@ ms.locfileid: "107887155"
 
 本部分将为虚拟机创建负载均衡器。
 
-1. 在门户顶部的搜索框中，输入“负载均衡器”。
+1. 在门户顶部的搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
 
-2. 在搜索结果中选择“负载均衡器”。
+2. 在“负载均衡器”页上，选择“创建” 。
 
-3. 选择“+ 新建”。 
+3. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-4. 在“创建负载均衡器”的“基本信息”选项卡中，输入或选择以下信息 ：
-
-    | 设置 | 值 |
-    | ------- | ----- |
+    | 设置                 | 值                                              |
+    | ---                     | ---                                                |
     | **项目详细信息** |   |
-    | 订阅 | 选择订阅。 |
-    | 资源组 | 选择 TutorLBmultiAVS-rg。 |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择 TutorLBmultiAVS-rg。 |
     | **实例详细信息** |   |
-    | 名称 | 输入 **myLoadBalancer**。 |
-    | 区域 | 选择“(US) 美国西部 2”。 |
-    | 类型 | 保留默认值“公共”。 |
-    | SKU | 保留默认值“标准”。 |
-    | 层 | 保留默认值“区域”。 |
-    | **公共 IP 地址** |   |
-    | 公共 IP 地址 | 保留默认值“新建”。 |
-    | 公共 IP 地址名称 | 输入 。 |
-    | 可用性区域 | 选择“区域冗余”。 |
-    | 添加一个公共 IPv6 地址 | 保留默认值“否”。 |
-    | 路由首选项 | 保留默认值“Microsoft 网络”。 |
+    | 名称                   | 输入“myLoadBalancer”                                   |
+    | 区域         | 选择“(US) 美国西部 2”。                                        |
+    | 类型          | 选择“公共”。                                        |
+    | SKU           | 保留默认值“标准”。 |
+    | 层          | 保留默认值“区域”。 |
 
-5. 选择“查看 + 创建”选项卡，或选择页面底部的“查看 + 创建”按钮 。
+4. 在页面底部选择“下一页: 前端 IP 配置”。
 
-6. 选择“创建”。
+5. 在“前端 IP 配置”中，选择“+ 添加前端 IP” 。
 
-### <a name="configure-load-balancer-settings"></a>配置负载均衡器设置
+6. 在“名称”中输入“LoadBalancerFrontEnd” 。
 
-在此部分，创建 myLoadBalancer 的后端池。
+7. 对于“IP 版本”，请选择“IPv4”或“IPv6”  。
 
-创建一个运行状况探测，以监视 HTTP 和端口 80 。 运行状况探测将监视后端池中虚拟机的运行状况。 
+    > [!NOTE]
+    > IPv6 目前不支持路由首选项或跨区域负载平衡（全局层）。
 
-为已禁用出站 SNAT 的端口 80 创建负载均衡规则。 之前创建的 NAT 网关将处理虚拟机的出站连接。
+8. 选择“IP 类型”的“IP 地址” 。
 
-1. 在门户顶部的搜索框中，输入“负载均衡器”。
+    > [!NOTE]
+    > 有关 IP 前缀的更多详细信息，请参阅 [Azure 公共 IP 地址前缀](../virtual-network/public-ip-address-prefix.md)。
 
-2. 在搜索结果中选择“负载均衡器”。
+9. 在“公共 IP 地址”中选择“新建” 。
 
-3. 选择“myLoadBalancer”。
+10. 在“添加公共 IP”的“名称”中输入“myPublicIP-lb”  。
 
-4. 在“myLoadBalancer”中，选择“设置”中的“后端池”  。
+11. 在“可用性区域”中选择“区域冗余” 。
 
-5. 在“后端池”中，选择“+ 添加” 。
+    > [!NOTE]
+    > 在提供[可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)设置的区域中，可以选择无区域（默认选项）、特定区域或区域冗余。 请根据特定的域故障要求做出选择。 在不提供可用性区域设置的区域中，不会显示此字段。 </br> 有关可用性区域的详细信息，请参阅[可用性区域概述](../availability-zones/az-overview.md)。
 
-6. 在“添加后端池”中，输入或选择以下信息：
+12. 保留“路由首选项”的默认值“Microsoft 网络” 。
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入“myBackendPool”。 |
-    | 虚拟网络 | 选择“myVNet”。 |
-    | 后端池配置 | 保留默认值“NIC”。 |
-    | IP 版本 | 保留默认值“IPv4”。 |
+13. 选择“确定” 。
 
-7. 选择 **添加** 。
+14. 选择“添加”  。
 
-8. 选择“运行状况探测”。
+15. 在页面底部选择“下一页: 后端池”。
 
-9. 选择“+ 添加”。
+16. 在“后端池”选项卡上，选择“+ 添加后端池” 。
 
-10. 在“添加运行状况探测”中，输入或选择以下信息：
+17. 在“添加后端池”的“名称”中输入“myBackendPool”  。
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 myHTTPProbe。 |
-    | 协议 | 选择“HTTP”。 |
-    | 端口 | 保留默认值“80”。 |
-    | 路径 | 保留默认值“/”。 |
-    | 时间间隔 | 保留默认值“5 秒”。 |
-    | 不正常阈值 | 保留默认值“2 次连续失败”。 |
+18. 在“虚拟网络”中，选择“myVNet” 。
 
-11. 选择 **添加** 。
+19. 对于“后端池配置”，请选择“NIC”或“IP 地址”  。
 
-12. 选择“负载均衡规则”。 
+20. 对于“IP 版本”，请选择“IPv4”或“IPv6”  。
 
-13. 选择“+ 添加”。
+21. 选择 **添加** 。
 
-14. 在“添加负载均衡规则”中输入或选择以下信息：
+22. 选择页面底部的“下一页: 入站规则”按钮。
+
+23. 在“入站规则”选项卡的“负载均衡规则”中，选择“+ 添加负载均衡规则”  。
+
+24. 在“添加负载均衡规则”中输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入 **myHTTPRule**。 |
-    | IP 版本 | 保留默认值“IPv4”。 |
+    | 名称 | 输入“myHTTPRule” |
+    | IP 版本 | 根据要求选择“IPv4”或“IPv6” 。 |
     | 前端 IP 地址 | 选择“LoadBalancerFrontEnd”。 |
-    | 协议 | 选择默认值“TCP”。 |
+    | 协议 | 选择“TCP”。 |
     | 端口 | 输入 **80**。 |
     | 后端端口 | 输入 **80**。 |
     | 后端池 | 选择“myBackendPool”。 |
-    | 运行状况探测 | 选择 myHTTPProbe。 |
-    | 会话暂留 | 保留默认值“无”。 |
-    | 空闲超时（分钟） | 将滑块更改到 15。 |
+    | 运行状况探测 | 选择“新建”。 </br> 在“名称”中输入“myHealthProbe” 。 </br> 在“协议”中选择“HTTP” 。 </br> 将剩余的字段保留为默认值，然后选择“确定”。 |
+    | 会话暂留 | 选择“无”。 |
+    | 空闲超时（分钟） | 输入或选择“15”。 |
     | TCP 重置 | 选择“启用”。  |
-    | 浮动 IP | 保留默认值“禁用”。 |
+    | 浮动 IP | 选择“已禁用”。  |
     | 出站源网络地址转换 (SNAT) | 保留默认值“(建议)使用出站规则为后端池成员提供对 Internet 的访问权限。” |
 
-5. 选择 **添加** 。
+25. 选择 **添加** 。
+
+26. 选择页面底部的“查看 + 创建”蓝色按钮。
+
+27. 选择“创建”。
+
+    > [!NOTE]
+    > 本示例创建了一个 NAT 网关来提供出站 Internet 访问。 绕过了配置中的出站规则选项卡，因为它是可选选项，且 NAT 网关不需要它。 有关 Azure NAT 网关的详细信息，请参阅[什么是虚拟网络 NAT？](../virtual-network/nat-gateway/nat-overview.md)
+    > 有关 Azure 中出站连接的详细信息，请参阅[出站连接的源网络地址转换 (SNAT)](../load-balancer/load-balancer-outbound-connections.md)
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 

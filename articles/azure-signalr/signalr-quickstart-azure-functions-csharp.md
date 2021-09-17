@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 06/09/2021
 ms.author: zhshang
-ms.openlocfilehash: 1856f6e012c2b90e173162f055d64402f0c4c908
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3a3fa958ac6ad1cb440f30b5c680ae3f9139d29a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462102"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444919"
 ---
 # <a name="quickstart-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service-using-c"></a>快速入门：使用 C\# 通过 Azure Functions 和 SignalR 服务创建一个可显示 GitHub 星数的应用
 
@@ -105,7 +105,7 @@ ms.locfileid: "112462102"
                     new SignalRMessage
                     {
                         Target = "newMessage",
-                        Arguments = new[] { $"Current start count of https://github.com/Azure/azure-signalr is: {result.StartCount}" }
+                        Arguments = new[] { $"Current star count of https://github.com/Azure/azure-signalr is: {result.StarCount}" }
                     });
             }
     
@@ -113,14 +113,14 @@ ms.locfileid: "112462102"
             {
                 [JsonRequired]
                 [JsonProperty("stargazers_count")]
-                public string StartCount { get; set; }
+                public string StarCount { get; set; }
             }
         }
     }
     ```
     这些代码有三个函数。 `Index` 用作客户端来获取网站。 `Negotiate` 用于为客户端获取访问令牌。 `Broadcast` 定期从 GitHub 获取星数，并向所有客户端广播消息。
 
-3. 本示例的客户端界面是网页。 考虑到我们是在 `GetHomePage` 函数中从 `content/index.html` 读取 HTML 内容，因此需要在 `content` 目录中创建一个新文件 `index.html`。 然后复制以下内容。
+3. 本示例的客户端界面是网页。 考虑到我们是在 `GetHomePage` 函数中从 `content/index.html` 读取 HTML 内容，因此需要在项目根目录下的 `content` 目录中创建一个新文件 `index.html`。 然后复制以下内容。
     ```html
     <html>
     
@@ -147,23 +147,33 @@ ms.locfileid: "112462102"
     </html>
     ```
 
-4. 现在就快完成了。 最后一步是将 SignalR 服务的连接字符串设置为 Azure Functions 设置。
+4. 更新 `*.csproj` 以在生成输出文件夹中制作内容页面。
+
+    ```html
+    <ItemGroup>
+      <None Update="content/index.html">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+    ```
+
+5. 现在就快完成了。 最后一步是将 SignalR 服务的连接字符串设置为 Azure Functions 设置。
 
     1. 在打开 Azure门户的浏览器中，通过在门户顶部的搜索框中搜索先前部署的 SignalR 服务实例的名称，确认该实例已成功创建。 选择该实例以将其打开。
 
         ![搜索 SignalR 服务实例](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-    1. 选择“密钥”以查看 SignalR 服务实例的连接字符串。
+    2. 选择“密钥”以查看 SignalR 服务实例的连接字符串。
     
         ![屏幕截图突出显示了主连接字符串。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-    1. 复制主连接字符串。 然后执行以下命令。
+    3. 复制主连接字符串。 然后执行以下命令。
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         ```
     
-5. 在本地运行 Azure Functions：
+6. 在本地运行 Azure Functions：
 
     ```bash
     func start
@@ -193,5 +203,5 @@ ms.locfileid: "112462102"
 > [无服务器双向通信](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/BidirectionChat)
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio 开发 Azure Functions](../azure-functions/functions-develop-vs.md)
+> [使用 Visual Studio 部署 Azure 函数应用](../azure-functions/functions-develop-vs.md#publish-to-azure)
 

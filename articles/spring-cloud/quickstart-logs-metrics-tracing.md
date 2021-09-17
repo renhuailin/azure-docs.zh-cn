@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 04/23/2021
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 424954d18fc719748175c2ad9428bb621d577a70
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4ff1666222eedecd944b94de428c7666b0998d03
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470774"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271566"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用
 
 ::: zone pivot="programming-language-csharp"
-使用 Azure Spring Cloud 中的内置监视功能，可以调试和监视复杂问题。 Azure Spring Cloud 将 Steeltoe [分布式跟踪](https://steeltoe.io/docs/3/tracing/distributed-tracing) 与 Azure 的 [Application Insights](../azure-monitor/app/app-insights-overview.md) 集成。 这种集成可以通过 Azure 门户提供强大的日志、指标和分布式跟踪功能。
+使用 Azure Spring Cloud 中的内置监视功能，可以调试和监视复杂问题。 Azure Spring Cloud 将 Steeltoe [分布式跟踪](https://docs.steeltoe.io/api/v3/tracing/) 与 Azure 的 [Application Insights](../azure-monitor/app/app-insights-overview.md) 集成。 这种集成可以通过 Azure 门户提供强大的日志、指标和分布式跟踪功能。
 
 以下过程说明如何通过你在前面快速入门中部署的示例应用使用日志流式处理、Log Analytics、指标和分布式跟踪。
 
@@ -66,7 +66,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 1. 在 Azure 门户中转到“服务 | 概览”页，然后在“监视”部分选择“日志”  。 选择 Azure Spring Cloud 的一个示例查询上的“运行”。
 
    [ ![Logs Analytics 条目](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
-    
+
 1. 编辑查询以删除将显示限制为警告和错误日志的 Where 子句。
 
 1. 然后选择 `Run`，随即会显示日志。 有关编写查询的更多指导，请参阅 [Azure Logs Analytics 文档](../azure-monitor/logs/get-started-queries.md)。
@@ -80,8 +80,8 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 1. 在 Azure 门户中转到“服务 | 概述”页，然后在“监视”部分中选择“指标”  。 添加第一个指标（方法是：在“性能(.NET)”或“请求(.NET)”下的“指标”下拉框中选择 .NET 指标之一，并在“聚合”中选择 `Avg`）以查看该指标的时间线。
 
    [ ![指标条目 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
-    
-1. 单击工具栏中的“添加筛选器”，选择 `App=solar-system-weather`，以仅查看“solar-system-weather”应用的 CPU 使用情况 。
+
+1. 选择工具栏中的“添加筛选器”，选择 `App=solar-system-weather`，以仅查看“solar-system-weather”应用的 CPU 使用情况 。
 
    [ ![在指标中使用筛选器 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
 
@@ -95,14 +95,14 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
    [ ![分布式跟踪条目 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 
-1. 现在可以查看应用间的调用状态。 
+1. 现在可以查看应用间的调用状态。
 
    [ ![分布式跟踪概述 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png#lightbox)
-    
+
 1. 选择“solar-system-weather”和“planet-weather-provider”之间的链接，查看更多详细信息，如最慢的 HTTP 方法调用 。
 
    [ ![分布式跟踪 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png#lightbox)
-    
+
 1. 最后，选择“调查性能”以探索更强大的内置性能分析。
 
    [ ![分布式跟踪性能 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png#lightbox)
@@ -113,7 +113,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="prerequisites"></a>先决条件
 
-完成前面的步骤： 
+完成前面的步骤：
 
 * [预配 Azure Spring Cloud 的实例](./quickstart-provision-service-instance.md)
 * [设置 Config Server](./quickstart-setup-config-server.md)
@@ -153,11 +153,11 @@ az spring-cloud app logs -s <service instance name> -g <resource group name> -n 
 1. 从下拉列表中选择“流式处理日志”。
 
    ![选择流式处理日志](media/spring-cloud-intellij-howto/streaming-logs.png)
-    
+
 1. 选择“实例”。
 
    ![选择实例](media/spring-cloud-intellij-howto/select-instance.png)
-    
+
 1. 流式处理日志将显示在输出窗口中。
 
    ![流式处理日志输出](media/spring-cloud-intellij-howto/streaming-log-output.png)
@@ -168,7 +168,7 @@ az spring-cloud app logs -s <service instance name> -g <resource group name> -n 
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. 转到“服务 | 概述”页，然后在“监视”部分中选择“日志”  。 单击 Azure Spring Cloud 的一个示例查询上的“运行”。
+1. 转到“服务 | 概述”页，然后在“监视”部分中选择“日志”  。 选择 Azure Spring Cloud 的一个示例查询上的“运行”。
 
    [ ![Logs Analytics 门户入口](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/logs-entry.png#lightbox)
 
@@ -178,8 +178,10 @@ az spring-cloud app logs -s <service instance name> -g <resource group name> -n 
 
 ## <a name="metrics"></a>指标
 
-导航到“`Metrics`”边栏选项卡，可以看到由 Spring Boot 应用、Spring Cloud 模块和依赖项提供的指标。 下图显示 `gateway-requests`（Spring Cloud 网关）、`hikaricp_connections`（JDBC 连接）和 `http_client_requests`。
- 
+导航到“`Application insights`边栏选项卡。 然后导航到“`Metrics`”边栏选项卡，可以看到由 Spring Boot 应用、Spring Cloud 模块和依赖项提供的指标。 
+
+下图显示 `gateway-requests`（Spring Cloud 网关）、`hikaricp_connections`（JDBC 连接）和 `http_client_requests`。
+
 [ ![“指标”边栏选项卡](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-metrics.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-metrics.jpg#lightbox)
 
 Spring Boot 注册了大量核心指标：JVM、CPU、Tomcat、Logback 等。Spring Boot 自动配置可用于检测由 Spring MVC 处理的请求。
@@ -209,11 +211,11 @@ Spring Boot 注册了大量核心指标：JVM、CPU、Tomcat、Logback 等。Spr
 
 导航到“`Performance/Dependenices`”边栏选项卡 - 可以查看依赖项的性能数，尤其是 SQL 调用：[ ![“性能/依赖项”边栏选项卡](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-insights-on-dependencies.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-insights-on-dependencies.jpg#lightbox)
 
-单击 SQL 调用，查看上下文中的端到端事务：[ ![SQL 端到端事务](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg#lightbox)
+选择 SQL 调用，查看上下文中的端到端事务：[ ![SQL 端到端事务](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg#lightbox)
 
-导航到“`Failures/Exceptions`”边栏选项卡，可以看到异常的集合：[ ![失败/异常](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.jpg#lightbox)
+导航到“`Failures/Exceptions`”边栏选项卡，可以看到异常的集合：[ ![失败/异常](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.png#lightbox)
 
-单击一个异常以查看上下文中的端到端事务和堆栈跟踪：[ ![堆栈跟踪端到端](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg#lightbox)
+选择一个异常以查看上下文中的端到端事务和堆栈跟踪：[ ![堆栈跟踪端到端](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg#lightbox)
 
 ::: zone-end
 

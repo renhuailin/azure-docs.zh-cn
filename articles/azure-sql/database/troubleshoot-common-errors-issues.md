@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: mathoma,vanto
-ms.date: 01/14/2021
-ms.openlocfilehash: 804c59409ec1acea44cf650e6ccc032b50fcd26c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/20/2021
+ms.openlocfilehash: 1e656227387bebc9806ad06574084bd01fcc0b35
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743704"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603795"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题和其他问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 | 错误代码 | 严重性 | 说明 |
 | ---:| ---:|:--- |
+| 926 |14 |无法打开数据库 'replicatedmaster'。 恢复操作已将该数据库标记为 SUSPECT。 有关详细信息，请参阅 SQL Server 错误日志。<br/><br/>在最后的重新配置阶段，旧的主副本关闭其日志时，此错误可能在 SQL 托管实例错误日志上记录一段很短的时间。<br/>[MSSQL 错误文档](/sql/relational-databases/errors-events/mssqlserver-926-database-engine-error)中介绍了涉及此错误消息的其他非暂时性方案。|
 | 4060 |16 |无法打开该登录请求的数据库“%.&#x2a;ls”。 登录失败。 有关详细信息，请参阅[错误 4000 到 4999](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |该服务在处理你的请求时遇到错误。 请重试。 错误代码 %d。<br/><br/>当服务由于软件或硬件升级、硬件故障或任何其他故障转移问题而关闭时，将收到此错误。 错误 40197 的消息中嵌入的错误代码 (%d) 提供有关所发生的故障或故障转移类型的其他信息。 错误 40197 的消息中嵌入的错误代码的一些示例有 40020、40143、40166 和 40540。<br/><br/>重新连接会将你自动连接到数据库的正常运行副本。 应用程序必须捕获错误 40197、记录该消息中嵌入的错误代码 (%d) 以供进行故障排除，然后尝试重新连接到 SQL 数据库，直到资源可用且再次建立连接为止。 有关详细信息，请参阅[暂时性错误](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)。|
 | 40501 |20 |服务当前正忙。 请在 10 秒钟后重试请求。 事件 ID：%ls。 代码：%d。 有关详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。|
@@ -43,7 +44,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 1. 查看 [Microsoft Azure 服务仪表板](https://azure.microsoft.com/status)以了解应用程序报告错误时出现的任何已知中断。
 2. 连接到云服务的应用程序（如 Azure SQL 数据库）应预期会有定期重新配置事件并实施重试逻辑来处理这些错误，而不是向用户呈现应用程序错误。
-3. 由于数据库即将达到其资源限制，因此错误看起来像是暂时性连接问题。 请参阅[资源限制](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached)。
+3. 由于数据库即将达到其资源限制，因此错误看起来像是暂时性连接问题。 请参阅[资源限制](resource-limits-logical-server.md#what-happens-when-resource-limits-are-reached)。
 4. 如果连接问题继续存在，或者应用程序发生错误的持续时间超过 60 秒或在特定的一天中看到错误多次发生，请通过在 [Azure 支持](https://azure.microsoft.com/support/options)网站上选择“**获取支持**”提出 Azure 支持请求。
 
 #### <a name="implementing-retry-logic"></a>实现重试逻辑

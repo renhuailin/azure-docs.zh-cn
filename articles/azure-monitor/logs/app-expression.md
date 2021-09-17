@@ -4,13 +4,13 @@ description: app 表达式在 Azure Monitor 日志查询中用于从同一资源
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: 9d60857503402554381068fc36121fa3f7b61622
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.date: 08/11/2021
+ms.openlocfilehash: 1c7659d8b566649291e135c68c677b3f3a074d9f
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283552"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515468"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -36,12 +36,12 @@ ms.locfileid: "107283552"
 | Azure 资源 ID | Azure 资源的标识符 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>注释
+## <a name="notes"></a>说明
 
 * 必须具有该应用程序的读取权限。
 * 按应用程序的名称来标识应用程序，即假定该名称在所有可访问订阅中唯一。 如果拥有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用一个其他的标识符。
 * 使用相关表达式 [workspace](../logs/workspace-expression.md) 来跨 Log Analytics 工作区进行查询。
-* 除非使用 Application Insights 应用程序作为警报规则的资源，否则在使用 Azure 门户创建[自定义日志搜索警报规则](../alerts/alerts-log.md)时，搜索查询目前不支持 app() 表达式。
+* 除非使用 Application Insights 应用程序作为警报规则的资源，否则在使用 Azure 门户创建[自定义日志查询警报规则](../alerts/alerts-log.md)时，日志查询目前不支持 app() 表达式。
 
 ## <a name="examples"></a>示例
 

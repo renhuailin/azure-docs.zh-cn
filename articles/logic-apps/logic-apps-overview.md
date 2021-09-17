@@ -3,16 +3,16 @@ title: Azure 逻辑应用概述
 description: Azure 逻辑应用是一个云平台，用于自动化工作流，以便在几乎不使用代码的情况下集成应用、数据、服务和系统。 工作流可以在多租户、单租户或专用环境中运行。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q4
-ms.date: 06/22/2021
-ms.openlocfilehash: 032723c66d3263019447e231064f8846b44afe1d
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.date: 08/18/2021
+ms.openlocfilehash: 299585baea87ca956fafb936fe7b8b265c936abc
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728667"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122638931"
 ---
 # <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 
@@ -21,20 +21,27 @@ ms.locfileid: "114728667"
 以下列表仅描述了可使用逻辑应用服务自动执行的部分示例任务、业务流程和工作负载：
 
 * 当发生特定事件（例如上传新文件时）使用 Office 365 计划并发送电子邮件通知。
+
 * 跨本地系统和云服务路由并处理客户订单。
+
 * 将上传的文件从 SFTP 或 FTP 服务器移至 Azure 存储。
+
 * 监视推文，分析观点，针对需要查看的项目创建警报或任务。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-根据选择和创建的逻辑应用资源类型，逻辑应用在多租户、单租户或专用集成服务环境中运行。 例如，对基于单租户的逻辑应用进行容器化时，可以将应用部署为容器，并可在 Azure Functions 可以运行的任何地方运行它们。 有关详细信息，请查看[逻辑应用的资源类型和主机环境差异](#resource-environment-differences)。
+根据选择和创建的逻辑应用资源类型，访问 Azure 虚拟机时，逻辑应用在多租户 Azure 逻辑应用、[单租户 Azure 逻辑应用](single-tenant-overview-compare.md)或[专用集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)中运行。 若要在容器中运行逻辑应用，请[使用已启用 Azure Arc 的逻辑应用创建基于单租户的逻辑应用](azure-arc-enabled-logic-apps-create-deploy-workflows.md)。 有关详细信息，请查看[什么是已启用 Azure Arc 的逻辑应用？](azure-arc-enabled-logic-apps-overview.md)和[逻辑应用的资源类型和主机环境差异](#resource-environment-differences)。
 
 若要安全地实时访问并运行各种数据源上的操作，可以从 [400 多个且不断增长的 Azure 连接器生态系统](/connectors/connector-reference/connector-reference-logicapps-connectors)中选择[托管连接器](#managed-connector)，以在工作流中使用，例如：
 
 * Azure 服务，例如 Blob 存储和服务总线
+
 * Office 365 服务，例如 Outlook、Excel 和 SharePoint
+
 * 数据库服务器，例如 SQL 和 Oracle
+
 * 企业系统，例如 SAP 和 IBM MQ
+
 * 文件共享，例如 FTP 和 SFTP
 
 要与任何服务终结点通信、运行自己的代码、组织工作流或处理数据，可以使用[内置的](#built-in-operations)触发器和操作，它们会在逻辑应用服务中以本机方式运行。 例如，内置触发器包括请求、HTTP 和定期。 内置操作包括 Condition、For each、Execute JavaScript 代码，以及调用 Azure 函数、Azure 中托管的 Web 应用或 API 应用以及其他逻辑应用工作流的操作。
@@ -44,8 +51,11 @@ ms.locfileid: "114728667"
 要详细了解工作流可以访问和使用应用、数据、服务和系统的方式，请参阅以下文档：
 
 * [适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)
+
 * [适用于 Azure 逻辑应用的托管连接器](../connectors/built-in.md)
+
 * [Azure 逻辑应用的内置触发器和操作](../connectors/managed.md)
+
 * [使用 Azure 逻辑应用的 B2B 企业集成解决方案](logic-apps-enterprise-integration-overview.md)
 
 <a name="logic-app-concepts"></a>
@@ -62,7 +72,7 @@ ms.locfileid: "114728667"
 
 工作流是定义任务或进程的一系列步骤。 每个工作流都从单个触发器开始，之后必须添加一个或多个操作。
 
-### <a name="trigger"></a>触发器 
+### <a name="trigger"></a>触发器
 
 触发器始终是任何工作流中的第一个步骤，并指定在该工作流中运行任何后续步骤的条件。 例如，触发事件可能是在收件箱中收到电子邮件，或者在存储帐户中检测到新文件。
 
@@ -76,8 +86,7 @@ ms.locfileid: "114728667"
 
 大多数内置操作不与任何服务或系统关联，但一些内置操作可用于特定服务，如 Azure Functions 或 Azure 应用服务。 还有许多操作不要求首先从工作流创建连接并验证身份。 有关详细信息和示例，请参阅[适用于 Azure 逻辑应用的内置操作](../connectors/built-in.md)。
 
-例如，使用“定期”触发器时，可以启动计划表上的几乎任何工作流。 或者在使用“请求”触发器时，可以让工作流在被调用以前都保持等待状态。 
- 
+例如，使用“定期”触发器时，可以启动计划表上的几乎任何工作流。 或者在使用“请求”触发器时，可以让工作流在被调用以前都保持等待状态。
 
 ### <a name="managed-connector"></a>托管连接器
 
@@ -99,12 +108,17 @@ ms.locfileid: "114728667"
 
 以下屏幕截图显示了示例企业工作流的一部分。 此工作流使用条件和开关来确定下一个操作。 假设你有一个订单系统，工作流处理传入订单。 你希望手动查看高于特定成本的订单。 工作流已经执行前面的步骤来确定传入订单的成本。 因此，可以基于该成本值创建初始条件。 例如：
 
-- 如果订单低于特定数额，则条件为 false。 然后，工作流处理订单。
-- 如果条件为 true，那么工作流将发送电子邮件以供手动审阅。 开关确定下一个步骤。 
-  - 如果审阅者批准，工作流会继续处理订单。
-  - 如果审阅者呈报，工作流将发送呈报电子邮件以获取有关订单的详细信息。 
-      - 如果满足呈报要求，则响应条件为 true。 因此，会处理订单。 
-      - 如果响应条件为 false，则会发送有关该问题的电子邮件。
+* 如果订单低于特定数额，则条件为 false。 然后，工作流处理订单。
+
+* 如果条件为 true，那么工作流将发送电子邮件以供手动审阅。 开关确定下一个步骤。
+
+  * 如果审阅者批准，工作流会继续处理订单。
+
+  * 如果审阅者呈报，工作流将发送呈报电子邮件以获取有关订单的详细信息。
+
+    * 如果满足呈报要求，则响应条件为 true。 因此，会处理订单。
+
+    * 如果响应条件为 false，则会发送有关该问题的电子邮件。
 
 :::image type="content" source="./media/logic-apps-overview/example-enterprise-workflow.png" alt-text="屏幕截图显示工作流设计器以及使用开关和条件的示例企业工作流。" lightbox="./media/logic-apps-overview/example-enterprise-workflow.png":::
 
@@ -153,8 +167,11 @@ ms.locfileid: "114728667"
 你可以从当前系统和服务着手，按自己的步调逐渐扩大规模。 准备就绪以后，即可使用逻辑应用平台获得以下功能和其他功能，从而实现集成方案并通过纵向扩展将其变为更成熟的方案：
 
 * 在 [Microsoft BizTalk Server](/biztalk/core/introducing-biztalk-server)、[Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)、[Azure Functions](../azure-functions/functions-overview.md)、[Azure API 管理](../api-management/api-management-key-concepts.md)等服务的基础上进行集成和构建。
+
 * 使用 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](../logic-apps/logic-apps-enterprise-integration-x12.md) 和 [RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 协议交换消息。
+
 * 处理 [XML 消息](../logic-apps/logic-apps-enterprise-integration-xml.md)和[平面文件](../logic-apps/logic-apps-enterprise-integration-flatfile.md)。
+
 * 创建[集成帐户](./logic-apps-enterprise-integration-create-integration-account.md)来存储和管理 B2B 项目，例如[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)、[协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)、[转换映射](../logic-apps/logic-apps-enterprise-integration-maps.md)、[验证架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)等等。
 
 例如，如果使用 Microsoft BizTalk Server，则工作流可以使用 [BizTalk Server 连接器](../connectors/managed.md#on-premises-connectors)与 BizTalk Server 通信。 然后，可以使用[集成帐户连接器](../connectors/managed.md#integration-account-connectors)在工作流中运行或扩展类似于 BizTalk 的操作。 从另一个方向看，BizTalk Server 可以使用[适用于逻辑应用的 Microsoft BizTalk Server 适配器](https://www.microsoft.com/download/details.aspx?id=54287)与工作流进行通信。 了解如何在 BizTalk Server 中[设置和使用 BizTalk 服务器适配器](/biztalk/core/logic-app-adapter)。
@@ -185,19 +202,21 @@ ms.locfileid: "114728667"
 
 ## <a name="get-started"></a>入门
 
-在开始使用 Azure 逻辑应用之前，你需要一个 Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 
+在开始使用 Azure 逻辑应用之前，你需要一个 Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
 准备就绪后，请尝试以下一个或多个适用于逻辑应用的快速入门指南。 了解如何创建基本工作流，以便监视 RSS 源和发送电子邮件以获取新内容。
 
 * [在 Azure 门户中创建基于多租户的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
 * [在 Visual Studio 中创建基于多租户的逻辑应用](quickstart-create-logic-apps-with-visual-studio.md)
+
 * [在 Visual Studio Code 中创建基于多租户的逻辑应用](quickstart-create-logic-apps-visual-studio-code.md)
 
 你可能还想要浏览适用于逻辑应用的其他快速入门指南：
 
 * [使用 ARM 模板创建基于多租户的逻辑应用](quickstart-create-deploy-azure-resource-manager-template.md)
-* [使用 Azure CLI 创建基于多租户的逻辑应用](quickstart-create-deploy-azure-resource-manager-template.md)
 
+* [使用 Azure CLI 创建基于多租户的逻辑应用](quickstart-create-deploy-azure-resource-manager-template.md)
 
 ## <a name="other-resources"></a>其他资源
 

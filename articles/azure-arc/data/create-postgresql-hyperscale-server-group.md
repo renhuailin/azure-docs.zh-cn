@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 24e81f9d83212b674b50acdb24042b6d29a9c266
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c9987e82fe64dd30584f3ceb8dbacfc857d27ab8
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741502"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779383"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
@@ -77,7 +77,7 @@ az postgres arc-server create --help
 - 希望服务器组使用的存储类。 请务必在部署服务器组时设置存储类，因为在部署后便无法更改此设置。 如果要在部署后更改存储类，则需要提取数据、删除服务器组、创建新的服务器组，然后导入数据。 可以指定用于数据、日志和备份的存储类。 默认情况下，如果不指示存储类，则将使用数据控制器的存储类。
     - 要设置数据的存储类，请指示参数 `--storage-class-data` 或 `-scd`，后跟存储类的名称。
     - 要设置日志的存储类，请指示参数 `--storage-class-logs` 或 `-scl`，后跟存储类的名称。
-    - 要设置备份的存储类：在此已启用 Azure Arc 的超大规模 PostgreSQL 预览版中，可以通过两种方法设置存储类，具体取决于要执行的备份/还原操作的类型。 我们正在努力简化此体验。 你将指示存储类或卷声明装载。 卷声明装载是一对现有永久性卷声明（相同命名空间中）和卷类型（和可选元数据，具体取决于卷类型），用冒号分隔。 将在 PostgreSQL 服务器组的每个 pod 中装载永久性卷。
+    - 设置备份的存储类：在此已启用 Azure Arc 的 PostgreSQL 超大规模服务器组预览版中，可以通过两种方法设置存储类，具体取决于要执行的备份/还原操作的类型。 我们正在努力简化此体验。 你将指示存储类或卷声明装载。 卷声明装载是一对现有永久性卷声明（相同命名空间中）和卷类型（和可选元数据，具体取决于卷类型），用冒号分隔。 将在 PostgreSQL 服务器组的每个 pod 中装载永久性卷。
         - 如果要计划仅执行完整的数据库还原，请设置参数 `--storage-class-backups` 或 `-scb`，后跟存储类的名称。
         - 如果计划同时执行完整的数据库还原和时间点还原，请设置参数 `--volume-claim-mounts` 或 `--volume-claim-mounts`，后跟卷声明和卷类型的名称。
 
@@ -94,7 +94,7 @@ az postgres arc-server create -n postgres01 --workers 2 --k8s-namespace <namespa
 
  此示例假设服务器组托管在 Azure Kubernetes 服务 (AKS) 群集中。 此示例使用 azurefile-premium 作为存储类名称。 可调整下面的示例以适应你的环境。 请注意，此配置需要 accessModes ReadWriteMany。  
 
-首先，创建一个包含以下备份 PVC 描述的 YAML 文件，并将其命名为 CreateBackupPVC.yml，例如：
+首先，创建一个包含以下备份 PVC（永久性卷声明）描述的 YAML 文件，并将其命名为 CreateBackupPVC.yml，例如：
 ```console
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -228,7 +228,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
 ## <a name="next-steps"></a>后续步骤
 
-- 连接到已启用 Azure Arc 的超大规模 PostgreSQL：请阅读[获取连接终结点和连接字符串](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
+- 连接到已启用 Azure Arc 的 PostgreSQL 超大规模服务器组：请阅读[获取连接终结点和连接字符串](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
 - 阅读 Azure Database for PostgreSQL 超大规模的概念和操作方法指南，以将数据分布到多个超大规模 PostgreSQL 节点并可能从更好的性能中获益：
     * [节点和表](../../postgresql/concepts-hyperscale-nodes.md)
     * [确定应用程序类型](../../postgresql/concepts-hyperscale-app-type.md)
@@ -238,9 +238,9 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
     * [设计多租户数据库](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [设计实时分析仪表板](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-    > 在上述文档中，跳过“登录到 Azure 门户”和“创建 Azure Database for PostgreSQL - 超大规模 (Citus)”部分\* 。 在 Azure Arc 部署中执行剩余步骤。 这些部分特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus)，但文档的其他部分直接适用于已启用 Azure Arc 的超大规模 PostgreSQL。
+    > 在上述文档中，跳过“登录到 Azure 门户”和“创建 Azure Database for PostgreSQL - 超大规模 (Citus)”部分\* 。 在 Azure Arc 部署中执行剩余步骤。 这些部分特定于在 Azure 云中作为 PaaS 服务提供的“Azure Database for PostgreSQL 超大规模(Citus)服务器组”，但文档的其他部分直接适用于已启用 Azure Arc 的 PostgreSQL 超大规模服务器组。
 
-- [横向扩展已启用 Azure Arc 的超大规模 PostgreSQL 服务器组](scale-out-in-postgresql-hyperscale-server-group.md)
+- [横向扩展已启用 Azure Arc 的 PostgreSQL 超大规模服务器组](scale-out-in-postgresql-hyperscale-server-group.md)
 - [存储配置和 Kubernetes 存储概念](storage-configuration.md)
 - [扩展永久性卷声明](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes 资源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

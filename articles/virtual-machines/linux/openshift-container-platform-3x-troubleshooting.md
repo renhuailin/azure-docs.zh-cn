@@ -7,19 +7,20 @@ ms.service: virtual-machines
 ms.subservice: openshift
 ms.collection: linux
 ms.topic: troubleshooting
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
-ms.openlocfilehash: b6dfb4cb697e7d66c7db323df9786ff7ad45e1d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f01a31bbee5a6abe40020a5760ef5a5fafcd3ff
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101672325"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688230"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>在 Azure 中排查 OpenShift Container Platform 3.11 部署问题
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 如果 OpenShift 群集未成功部署，Azure 门户将提供错误输出。 该输出可能难以阅读，导致难以识别问题。 请在此输出中快速扫描退出代码 3、4 或 5。 下面提供了有关这三个退出代码的信息：
 

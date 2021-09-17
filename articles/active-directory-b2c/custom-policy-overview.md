@@ -10,12 +10,13 @@ ms.topic: reference
 ms.date: 04/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a8aabac6960909f2a3d90fcee01cebb0ad7a832
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.custom: b2c-support
+ms.openlocfilehash: 5c27384e58a23501224e279e987115e4981ebf99
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256933"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633605"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C 自定义策略概述
 
@@ -34,6 +35,8 @@ Azure AD B2C 自定义策略[新手包](tutorial-create-user-flows.md?pivots=b2c
 - **SocialAndLocalAccounts** - 允许使用本地帐户和社交帐户。 我们的大多数示例都引用该策略。
 - **SocialAndLocalAccountsWithMFA** - 启用社交、本地和多重身份验证选项。
 
+在 [Azure AD B2C 示例 GitHub 存储库](https://github.com/azure-ad-b2c/samples)中，可找到多个增强型 Azure AD B2C 自定义 CIAM 用户旅程的示例，例如本地帐户策略增强功能、社交帐户策略增强功能、MFA 增强功能、用户界面增强功能、通用增强功能、应用迁移、用户迁移、条件访问、Web 测试和 CI/CD。
+ 
 ## <a name="understanding-the-basics"></a>了解基础知识 
 
 ### <a name="claims"></a>声明

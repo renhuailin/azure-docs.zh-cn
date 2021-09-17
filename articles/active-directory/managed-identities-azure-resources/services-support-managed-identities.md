@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: f1da6ec900176807647819865ba708002bd6e614
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: a7022c9de1449d0c4001b1d814eeb9464b98c24a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271202"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769979"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -84,8 +84,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 所有启用了 Azure Arc 的服务器都有系统分配的标识。 无法在启用了 Azure Arc 的服务器上禁用或更改系统分配的标识。 请参阅以下资源，详细了解如何在启用了 Azure Arc 的服务器上使用托管标识：
 
-- [针对启用了 Arc 的服务器对 Azure 资源进行身份验证](../../azure-arc/servers/managed-identity-authentication.md)
-- [将托管标识用于启用了 Arc 的服务器](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
+- [针对已启用 Arc 的服务器对 Azure 资源进行身份验证](../../azure-arc/servers/managed-identity-authentication.md)
+- [将托管标识用于已启用 Arc 的服务器](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Azure 自动管理
 
@@ -196,7 +196,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 托管标识类型 |所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | 预览 | 预览 | 不可用 | 预览 |
-| 用户分配 | 不可用 | 不可用  | 不可用  | 不可用 |
+| 用户分配 | 预览 | 预览 | 不可用 | 预览 |
 
 ### <a name="azure-firewall-policy"></a>Azure 防火墙策略
 

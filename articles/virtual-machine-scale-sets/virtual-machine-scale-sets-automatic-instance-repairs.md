@@ -9,14 +9,16 @@ ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: af63d27f60c3e3fa8f6aa95cd30d1f93114d4078
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 6134e1f4b4823b2198a1ecc316644ef0cd11ca33
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031162"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690533"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>适用于 Azure 虚拟机规模集的自动实例修复
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 为 Azure 虚拟机规模集启用自动实例修复，有助于通过维护一组正常运行的实例来实现应用程序的高可用性。 如果发现规模集中的实例在[应用程序运行状况扩展](./virtual-machine-scale-sets-health-extension.md)或[负载均衡器运行状况探测](../load-balancer/load-balancer-custom-probe-overview.md)中报告为不正常，则此功能会自动执行实例修复，删除不正常的实例并创建一个新实例来替换它。
 

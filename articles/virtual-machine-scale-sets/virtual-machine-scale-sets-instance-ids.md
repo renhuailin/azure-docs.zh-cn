@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: a62c9bbde0726c8dec8fba1f69e221bd4e4b63bc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b9b088eb3e9524e711ba4068c49f172e65b1be8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209843"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697456"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
+
 本文介绍规模集的实例 ID 和显示这些 ID 的各种方法。
 
 ## <a name="scale-set-instance-ids"></a>规模集实例 ID

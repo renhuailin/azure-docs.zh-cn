@@ -10,14 +10,16 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef70eb3400c7126ed0cb6dffdfd8b7208896ee40
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91975121"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692654"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>使用 Azure CLI 打开 VM 的端口和终结点
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 通过在子网或 VM 网络接口上创建网络筛选器可为 Azure 中的虚拟机 (VM) 打开端口或创建终结点。 将这些筛选器（控制入站和出站流量）放在网络安全组中，并附加到将接收流量的资源。 让我们在端口 80 上使用 Web 流量的常见示例。 本文说明如何使用 Azure CLI 打开 VM 的端口。 
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/07/2021
+ms.date: 08/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: rogoya
+ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: d240e9bbf657a4336480d1340b8fbd59903a355a
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a82b2632d5415091986c418ca7cd3871e519b374
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730291"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634182"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -35,30 +35,30 @@ ms.locfileid: "113730291"
 
 ## <a name="availability"></a>可用性
 
-Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组织能在不增加费用的情况下实现基本级别的安全防护。 你可以在 Azure 门户中打开安全默认值。 如果你的租户是在 2019 年 10 月 22 日或之后创建的，则可能已在租户中启用了安全默认值。 为了保护我们的所有用户，将向所有新创建的租户推出安全默认值。
+Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组织能在不增加费用的情况下实现基本级别的安全防护。 你可以在 Azure 门户中打开安全默认值。 如果你的租户是在 2019 年 10 月 22 日当天或之后创建的，该租户可能已启用安全默认值。 为了保护所有用户，我们将于创建时向所有新租户推出安全默认值。
 
 ### <a name="whos-it-for"></a>目标用户
 
-- 如果贵组织想要提高安全状况，但不知道如何或在何处着手，那么安全默认值就是理想之选。
-- 如果贵组织使用的是 Azure Active Directory 许可的免费层，则安全默认值适合你。
+- 如果贵组织想要改进安全状况，但不知道如何进行或从何处着手，则安全默认值就是理想选择。
+- 如果贵组织使用的是 Azure Active Directory 许可的免费层，则安全默认值就是理想选择。
 
 ### <a name="who-should-use-conditional-access"></a>谁应使用条件访问？
 
-- 如果贵组织当前使用条件访问策略将信号组合在一起，以进行决策和实施组织策略，那么安全默认值可能不适用。 
-- 如果贵组织具有 Azure Active Directory Premium 许可证，则安全默认值可能不适用。
+- 如果贵组织当前使用条件访问策略将信号组合在一起，以进行决策和实施组织策略，安全默认值可能不太适用。 
+- 如果贵组织具有 Azure Active Directory Premium 许可证，安全默认值可能不太适用。
 - 如果贵组织有复杂的安全要求，则应考虑条件访问。
 
 ## <a name="policies-enforced"></a>执行策略
 
 ### <a name="unified-multi-factor-authentication-registration"></a>统一的多重身份验证注册
 
-租户中的所有用户都必须以 Azure AD 多重身份验证的形式注册多重身份验证 (MFA)。 用户可以在 14 天内使用 Microsoft Authenticator 应用注册 Azure AD 多重身份验证。 14 天后，在完成注册之前用户将无法登录。 用户的 14 天周期从启用安全默认值后首次成功进行交互式登录算起。
+租户中的所有用户都必须以 Azure AD 多重身份验证的形式注册多重身份验证 (MFA)。 用户可以在 14 天内使用 Microsoft Authenticator 应用注册 Azure AD 多重身份验证。 14 天后，用户在完成注册之前无法登录。 用户的 14 天周期从启用安全默认值后首次成功进行交互式登录算起。
 
 ### <a name="protecting-administrators"></a>保护管理员
 
-具有特权访问权限的用户可以增加对你环境的访问权限。 鉴于这些帐户具有的权利，应当特别小心地对待它们。 增强对特权帐户保护的一种常用方法是，要求在登录时进行更强的帐户验证。 在 Azure AD 中，可以通过要求进行多重身份验证来实现更强的帐户验证。
+具有特权访问权限的用户可以增加对你环境的访问权限。 鉴于这些帐户具有的权利，使用时要特别小心。 增强对特权帐户保护的一种常用方法是，要求在登录时进行更强的帐户验证。 在 Azure AD 中，可以通过要求进行多重身份验证来实现更强的帐户验证。
 
-完成 Azure AD 多重身份验证注册后，以下 9 个 Azure AD 管理员角色在每次登录时都需要执行额外的身份验证：
+完成 Azure AD 多重身份验证注册后，每次登录以下 9 个 Azure AD 管理员角色时都需要执行额外的身份验证：
 
 - 全局管理员
 - SharePoint 管理员
@@ -79,7 +79,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 这些攻击者获得访问权限后，可以代表原始帐户持有者请求对特权信息的访问权限。 他们甚至可以下载整个目录，对整个组织进行网络钓鱼攻击。 
 
-提高对所有用户保护的一种常用方法是，要求对所有用户进行更强形式的帐户验证，如多重身份验证。 用户完成多重身份验证注册后，将在必要时提示用户进行其他身份验证。 系统主要在用户使用新设备或应用程序进行身份验证时，或者在用户执行关键角色和任务时提示用户。 此功能可保护注册到 Azure AD 的所有应用程序，包括 SaaS 应用程序。
+提高对所有用户保护的一种常用方法是，要求对所有用户进行更强形式的帐户验证，如多重身份验证。 用户完成多重身份验证注册后，系统将在必要时提示用户进行其他身份验证。 系统主要在用户使用新设备或应用程序进行身份验证时，或者在用户执行关键角色和任务时提示用户。 此功能可保护注册到 Azure AD 的所有应用程序，包括 SaaS 应用程序。
 
 ### <a name="blocking-legacy-authentication"></a>阻止旧式身份验证
 
@@ -107,9 +107,9 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 使用 Azure 资源管理器来管理服务是一种高度特权操作。 Azure 资源管理器可以改变租户范围的配置，例如服务设置和订阅计费。 单因素身份验证容易受到各种攻击，如网络钓鱼和密码喷射。 
 
-务必要对希望访问 Azure 资源管理器和更新配置的用户的标识进行验证。 在允许访问之前，通过要求额外的身份验证来验证其标识。
+务必要对希望访问 Azure 资源管理器和更新配置的用户的标识进行验证。 在允许访问之前，你会通过要求更多身份验证来验证其身份。
 
-启用租户中的安全默认值后，访问 Azure 门户、Azure PowerShell 或 Azure CLI 的任何用户都需要完成额外的身份验证。 此策略适用于访问 Azure 资源管理器的所有用户，无论他们是管理员还是用户。 
+启用租户中的安全默认值后，访问 Azure 门户、Azure PowerShell 或 Azure CLI 的任何用户都需要完成更多身份验证。 此策略适用于访问 Azure 资源管理器的所有用户，无论他们是管理员还是用户。 
 
 > [!NOTE]
 > 默认情况下，2017 之前的 Exchange Online 租户已禁用新式身份验证。 为了避免在对这些租户进行身份验证时出现登录循环，必须[启用新式身份验证](/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
@@ -141,21 +141,20 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 ### <a name="disabled-mfa-status"></a>禁用的 MFA 状态
 
-如果贵组织以前是基于每用户的 Azure AD 多重身份验证的用户，则在你查看多重身份验证状态页时，若没有看到处于“已启用”或“已强制实施”状态的用户，请不必担心。 “已禁用”是使用安全默认值或基于条件访问的 Azure AD 多重身份验证的用户的相应状态。
+如果贵组织以前是基于每用户 Azure AD 多重身份验证的用户，则你在查看多重身份验证状态页时，若没有看到处于“启用”或“已执行”状态的用户，请不必担心。 “已禁用”是使用安全默认值或基于条件访问的 Azure AD 多重身份验证的用户的相应状态。
 
 ### <a name="conditional-access"></a>条件性访问
 
-你可以使用条件访问来配置类似于安全默认值的策略，但要具有更细的粒度，包括在安全默认值中不可用的用户排除。 如果使用的是条件访问，并且在环境中启用了条件访问策略，则不能使用安全默认值。 如果你的许可证提供条件访问，但在环境中未启用任何条件访问策略，则欢迎使用安全默认值，直至你启用条件访问策略。 有关 Azure AD 许可的更多信息，请参阅 [Azure AD 定价页](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
+你可以使用条件访问配置类似于安全默认值的策略，但要具有更细的粒度，包括在安全默认值中不可用的用户排除。 如果使用的是条件访问，并且在环境中启用了条件访问策略，则不能使用安全默认值。 如果你的许可证提供条件访问，但在环境中未启用任何条件访问策略，则欢迎使用安全默认值，直至你启用条件访问策略。 有关 Azure AD 许可的更多信息，请参阅 [Azure AD 定价页](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ![不能同时具有安全默认值或条件访问的警告消息](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-下面是分步指南，介绍如何使用条件访问来配置与安全默认值所启用的策略相同的策略：
+下面是有关如何使用条件访问配置一组策略的分步指南，这些策略是保护标识的良好起点：
 
 - [要求对管理员执行 MFA](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [要求将 MFA 用于 Azure 管理](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [阻止旧式身份验证](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [要求对所有用户执行 MFA](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [需要注册 Azure AD MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - 需要 Azure AD Premium P2 的 Azure AD 标识保护部分。
 
 ## <a name="enabling-security-defaults"></a>启用安全默认值
 

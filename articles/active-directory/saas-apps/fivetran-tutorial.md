@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 08/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 88f6da7e43e269816c7e4ae2fd7bbc3f5e26522b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5845df453801b9c59e3652efed5cef7d9f9e0978
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92453087"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Fivetran 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "92453087"
 * 让用户使用其 Azure AD 帐户自动登录到 Fivetran。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,8 +37,8 @@ ms.locfileid: "92453087"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Fivetran 支持 IDP 发起的 SSO
-* Fivetran 支持实时用户预配
+* Fivetran 支持 IDP 发起的 SSO。
+* Fivetran 支持实时用户预配。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -53,7 +53,6 @@ ms.locfileid: "92453087"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Fivetran” 。
 1. 从结果面板中选择“Fivetran”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-fivetran"></a>配置并测试 Fivetran 的 Azure AD SSO
 
@@ -74,12 +73,11 @@ ms.locfileid: "92453087"
 
 1. 在 Azure 门户中的“Fivetran”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
-
 
 1. Fivetran 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 
@@ -129,13 +127,14 @@ ms.locfileid: "92453087"
 本部分将在“Fivetran”端配置单一登录。
 
 1. 在另一 Web 浏览器窗口中，以帐户所有者身份登录到 Fivetran 帐户。
+
 1. 选择窗口左上角的箭头，然后从下拉列表中选择“管理帐户”。
 
-   ![屏幕截图，显示已选择“管理帐户”菜单选项。](media/fivetran-tutorial/fivetran-1.png)
+   ![屏幕截图，显示已选择“管理帐户”菜单选项。](media/fivetran-tutorial/menu.png)
 
 1. 转到“设置”页的“SAML 配置”部分。
 
-   ![显示“SAML 配置”窗格的屏幕截图，其中突出显示了配置选项。](media/fivetran-tutorial/fivetran-2.png)
+   ![显示“SAML 配置”窗格的屏幕截图，其中突出显示了配置选项。](media/fivetran-tutorial/settings.png)
 
    1. 对于“启用 SAML 身份验证”，请选择“打开”。
    1. 在“登录 URL”中，粘贴从 Azure 门户复制的“登录 URL”的值 。
@@ -149,11 +148,11 @@ ms.locfileid: "92453087"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-1. 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Fivetran 
+* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Fivetran。
 
-2. 可以使用 Microsoft 访问面板。 在访问面板中单击“Fivetran”磁贴时，应会自动登录到为其设置了 SSO 的 Fivetran。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Fivetran 磁贴时，你应该会自动登录到为其设置了 SSO 的 Fivetran。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

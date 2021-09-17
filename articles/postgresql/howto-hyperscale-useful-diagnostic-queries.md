@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 1/5/2021
-ms.openlocfilehash: 4858f650aca1b704ac79482e0158fd83fc0264b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 8/23/2021
+ms.openlocfilehash: efd251e48beb4e2f2b3db16f694da14888e876dd
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98165235"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822533"
 ---
 # <a name="useful-diagnostic-queries"></a>有用的诊断查询
 
@@ -253,18 +253,56 @@ GROUP BY state;
 └────────┴───────┘
 ```
 
+## <a name="viewing-system-queries"></a>查看系统查询
+
+### <a name="active-queries"></a>活动查询数
+
+`pg_stat_activity` 视图显示当前正在执行的查询。 你可以筛选以查找主动执行的进程及其后端的进程 ID：
+
+```sql
+SELECT pid, query, state
+  FROM pg_stat_activity
+ WHERE state != 'idle';
+```
+
+### <a name="why-are-queries-waiting"></a>查询为何正在等待
+
+我们还可以通过查询查看非空闲查询正在等待的最常见原因。 如需这些原因的说明，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/current/monitoring-stats.html#WAIT-EVENT-TABLE)。
+
+```sql
+SELECT wait_event || ':' || wait_event_type AS type, count(*) AS number_of_occurences
+  FROM pg_stat_activity
+ WHERE state != 'idle'
+GROUP BY wait_event, wait_event_type
+ORDER BY number_of_occurences DESC;
+```
+
+在单独查询中并发运行 `pg_sleep` 时的示例输出：
+
+```
+┌─────────────────┬──────────────────────┐
+│      type       │ number_of_occurences │
+├─────────────────┼──────────────────────┤
+│ ∅               │                    1 │
+│ PgSleep:Timeout │                    1 │
+└─────────────────┴──────────────────────┘
+```
+
 ## <a name="index-hit-rate"></a>索引命中率
 
-此查询将提供所有节点中的索引命中率。 索引命中率有助于确定查询时使用索引的频率：
+此查询将提供所有节点中的索引命中率。 索引点击率有助于确定查询时索引的使用频率。
+值在 95% 或以上比较理想。
 
 ``` postgresql
+-- on coordinator
+SELECT 100 * (sum(idx_blks_hit) - sum(idx_blks_read)) / sum(idx_blks_hit) AS index_hit_rate
+  FROM pg_statio_user_indexes;
+
+-- on workers
 SELECT nodename, result as index_hit_rate
 FROM run_command_on_workers($cmd$
-  SELECT CASE sum(idx_blks_hit)
-    WHEN 0 THEN 'NaN'::numeric
-    ELSE to_char((sum(idx_blks_hit) - sum(idx_blks_read)) / sum(idx_blks_hit + idx_blks_read), '99.99')::numeric
-    END AS ratio
-  FROM pg_statio_user_indexes
+  SELECT 100 * (sum(idx_blks_hit) - sum(idx_blks_read)) / sum(idx_blks_hit) AS index_hit_rate
+    FROM pg_statio_user_indexes;
 $cmd$);
 ```
 
@@ -274,8 +312,8 @@ $cmd$);
 ┌───────────┬────────────────┐
 │ nodename  │ index_hit_rate │
 ├───────────┼────────────────┤
-│ 10.0.0.16 │ 0.88           │
-│ 10.0.0.20 │ 0.89           │
+│ 10.0.0.16 │ 96.0           │
+│ 10.0.0.20 │ 98.0           │
 └───────────┴────────────────┘
 ```
 
@@ -286,20 +324,32 @@ $cmd$);
 一个重要的度量是内存缓存中的数据与工作负载的磁盘中的数据的百分比：
 
 ``` postgresql
+-- on coordinator
 SELECT
   sum(heap_blks_read) AS heap_read,
   sum(heap_blks_hit)  AS heap_hit,
-  sum(heap_blks_hit) / (sum(heap_blks_hit) + sum(heap_blks_read)) AS ratio
+  100 * sum(heap_blks_hit) / (sum(heap_blks_hit) + sum(heap_blks_read)) AS cache_hit_rate
 FROM
   pg_statio_user_tables;
+
+-- on workers
+SELECT nodename, result as cache_hit_rate
+FROM run_command_on_workers($cmd$
+  SELECT
+    100 * sum(heap_blks_hit) / (sum(heap_blks_hit) + sum(heap_blks_read)) AS cache_hit_rate
+  FROM
+    pg_statio_user_tables;
+$cmd$);
 ```
 
 示例输出：
 
 ```
- heap_read | heap_hit |         ratio
------------+----------+------------------------
-         1 |      132 | 0.99248120300751879699
+┌───────────┬──────────┬─────────────────────┐
+│ heap_read │ heap_hit │   cache_hit_rate    │
+├───────────┼──────────┼─────────────────────┤
+│         1 │      132 │ 99.2481203007518796 │
+└───────────┴──────────┴─────────────────────┘
 ```
 
 如果你发现比率明显低于 99%，则可能需要考虑增加可供数据库使用的缓存。

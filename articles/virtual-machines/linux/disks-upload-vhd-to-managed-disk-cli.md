@@ -8,14 +8,16 @@ ms.date: 06/29/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 4928cb098990a0f91fd0d6a4fbde4844a81ed338
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: e78998d089ffe6446e9b7dbdf898b2d4ee4ba3a1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113358374"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694927"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 

@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a9243bdc014f3f9ac3d68a91054fbfef6b4c0840
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 49b58a46b4abc65089970982c26424a2f615bad4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669147"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693414"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何从 Windows 虚拟机分离数据磁盘
+
+**适用于：** :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除磁盘，但不会从存储中删除它。
 

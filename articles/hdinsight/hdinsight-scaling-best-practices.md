@@ -1,19 +1,19 @@
 ---
-title: 缩放群集大小 - Azure HDInsight
-description: 弹性缩放 Apache Hadoop 群集，使其与 Azure HDInsight 中的工作负荷匹配
+title: 手动缩放群集 - Azure HDInsight
+description: 手动弹性缩放 Apache Hadoop 群集，使其与 Azure HDInsight 中的工作负荷匹配
 ms.author: ashish
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 1c388cb070c66fc3a2322c358bc4113ed2106c77
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 86759dacfc4412fff1d100f5f6808aa7269575e1
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761842"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444409"
 ---
-# <a name="scale-azure-hdinsight-clusters"></a>缩放 Azure HDInsight 群集
+# <a name="manually-scale-azure-hdinsight-clusters"></a>手动缩放 Azure HDInsight 群集
 
 HDInsight 提供弹性，可让你选择纵向扩展和纵向缩减群集中的工作器节点数。 这种弹性允许你在若干小时后或者在周末收缩群集。 还可以在业务需求高峰期扩展群集。
 

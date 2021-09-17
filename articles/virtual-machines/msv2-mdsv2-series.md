@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 696125f75e41d39b4f9aaa1ff852b03eff589fb0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e129b596473784c72cab93568be88dd6dcb6fe2a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204236"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697991"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2 和 Mdsv2 系列中型内存
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Msv2 和 Mdsv2 中型内存 VM 系列具有 Intel® Xeon® Platinum 8280 (Cascade Lake) 处理器，所有核心基础频率为 2.7 GHz，单核睿频为 4.0 GHz。 借助这些 VM，客户可以通过本地磁盘和无磁盘选项获得更大的灵活性。 客户还可以访问一组新的独立 VM 大小，这些 VM 具有更多 CPU 和内存，vCPU 最多可以达到 192 个，内存最多可以达到 4 TiB。 
 

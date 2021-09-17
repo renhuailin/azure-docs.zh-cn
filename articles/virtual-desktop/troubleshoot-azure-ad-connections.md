@@ -6,14 +6,14 @@ author: Heidilohr
 manager: lizross
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/11/2021
+ms.date: 08/20/2021
 ms.author: helohr
-ms.openlocfilehash: 97c81eadf7091f04b77b094a4622c1731d19c537
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: f168c05e5df3421126c94bea7160896fb1b75363
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228882"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662270"
 ---
 # <a name="connections-to-azure-ad-joined-vms"></a>与已加入 Azure AD 的 VM 的连接
 
@@ -41,6 +41,7 @@ ms.locfileid: "122228882"
 - 你位于已加入 Azure AD 的设备或已建立 Azure AD 混合联接的设备上，并且该设备与会话主机位于同一 Azure AD 租户中，或者
 - 你位于运行 Windows 10 2004 或更高版本的设备上，并且该设备已在 Azure AD 中注册并与会话主机位于同一 Azure AD 租户中
 - 本地电脑和会话主机上均[启用了 PKU2U 协议](/windows/security/threat-protection/security-policy-settings/network-security-allow-pku2u-authentication-requests-to-this-computer-to-use-online-identities)
+- 为用户帐户[禁用了每用户 MFA](deploy-azure-ad-joined-vm.md#enabling-mfa-for-azure-ad-joined-vms)，因为 Azure AD 联接的 VM 不支持此功能。
 
 ### <a name="the-sign-in-method-youre-trying-to-use-isnt-allowed"></a>你尝试使用的登录方法不受允许
 

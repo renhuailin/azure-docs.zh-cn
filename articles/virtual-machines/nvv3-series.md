@@ -8,14 +8,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 4b0c9777602eae50de45cb383eff1a05cb8395d8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2477820a7b6c30ebad1c676cc9ec31f513eed1de
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744320"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690207"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 NVv3 系列虚拟机由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术提供支持，具备 E5-2690 v4 (Broadwell) CPU 和 Intel 超线程技术。 此类虚拟机面向 GPU 加速图形应用程序和虚拟桌面，客户希望利用这些应用和桌面直观呈现数据、模拟要查看的结果、处理 CAD 或渲染和流式处理内容。 此外，这些虚拟机还能运行编码和渲染等单精度工作负荷。 NVv3 虚拟机支持高级存储，且与之前的 NV 系列相比，系统内存 (RAM) 翻了一番。  
 

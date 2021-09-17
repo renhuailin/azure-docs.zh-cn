@@ -1,18 +1,21 @@
 ---
 title: 映射数据流中的表达式生成器
-description: 通过使用 Azure 数据工厂的映射数据流中的表达式生成器生成表达式
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 通过使用 Azure 数据工厂和 Azure Synapse Analytics 的映射数据流中的表达式生成器生成表达式
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/29/2021
-ms.openlocfilehash: e335176b5cd7c6c35477ac9318cf20ce4b64b82d
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 08/24/2021
+ms.openlocfilehash: 7dd40b52cbc74e62a6dbb8ed83d19c968e48d9c4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291003"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822812"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>在映射数据流中生成表达式
 
@@ -20,7 +23,7 @@ ms.locfileid: "108291003"
 
 在映射数据流中，许多转换属性都作为表达式输入。 这些表达式由列值、参数、函数、运算符和文本组成，它们在运行时的计算结果为 Spark 数据类型。 映射数据流具有专用体验，旨在协助构建这些称为“表达式生成器”的表达式。 通过 [IntelliSense](/visualstudio/ide/using-intellisense) 代码完成功能来实现突出显示、语法检查和自动完成，表达式生成器可简化数据流的生成。 本文介绍如何使用表达式生成器有效地生成业务逻辑。
 
-![表达式生成器](media/data-flow/expresion-builder.png "表达式生成器")
+:::image type="content" source="media/data-flow/expresion-builder.png" alt-text="表达式生成器":::
 
 ## <a name="open-expression-builder"></a>打开表达式生成器
 
@@ -173,7 +176,7 @@ toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd 
 ### <a name="data-flow-time-evaluation"></a>数据流时间评估
 
 数据流处理到毫秒级别。 对于“2018-07-31T20:00:00.2170000”，你会在输出中看到“2018-07-31T20:00:00.217”。
-在 ADF 门户中，时间戳按“当前浏览器设置”显示（可能会消除 217），但当你以端到端方式运行数据流时，217（毫秒部分）也会被处理。 可以使用 toString(myDateTimeColumn) 作为表达式，在预览中查看全精度数据。 实际上会将 datetime 作为日期/时间处理，而不是作为字符串处理。
+在服务的门户中，时间戳按“当前浏览器设置”显示（可能会消除 217），但当你以端到端方式运行数据流时，217（毫秒部分）也会被处理。 可以使用 toString(myDateTimeColumn) 作为表达式，在预览中查看全精度数据。 实际上会将 datetime 作为日期/时间处理，而不是作为字符串处理。
  
 
 ## <a name="next-steps"></a>后续步骤

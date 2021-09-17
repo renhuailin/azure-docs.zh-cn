@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1a0bca9446cd6a04b8568ccebd8df006641e6dca
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 58e68193ffabb6984365eade56c9c8efe8504acd
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297700"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692136"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Linux 虚拟机从非托管磁盘转换为托管磁盘
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 如果有使用非托管磁盘的现有 Linux 虚拟机 (VM)，可以将这些 VM 转换为使用 [Azure 托管磁盘](../managed-disks-overview.md)。 此过程会同时转换 OS 磁盘和任何附加的数据磁盘。
 

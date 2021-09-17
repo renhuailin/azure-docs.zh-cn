@@ -8,12 +8,12 @@ ms.date: 07/06/2021
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bd4c1c4a20bbf9f19cffd8dd766642ba484ee4de
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: faa4c57a4fc5e75d0e6262833c27833e9069fb30
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015339"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418709"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的应用程序
 
@@ -144,13 +144,14 @@ Azure Spring Cloud 支持 Java 8 和 Java 11。 托管环境包含用于 Azure �
 
 若要准备要部署到 Azure Spring Cloud 的现有 Spring Boot 应用程序，请按以下部分中所述，在应用程序 POM 文件中包含 Spring Boot 和 Spring Cloud 依赖项。
 
-Azure Spring Cloud 支持 Spring Boot 版本 2.2、2.3、2.4。 下表列出了支持的 Spring Boot 和 Spring Cloud 组合：
+Azure Spring Cloud 将在发布后的一个月内支持最新的 Spring Boot 或 Spring Cloud 版本。 可以从 [Spring Boot 版本](https://github.com/spring-projects/spring-boot/wiki/Supported-Versions#releases)获取支持的 Spring Boot 版本，从 [Spring Cloud 版本](https://github.com/spring-projects/spring-boot/wiki/Supported-Versions#releases)获取 Spring Cloud 版本。 
+
+下表列出了支持的 Spring Boot 和 Spring Cloud 组合：
 
 Spring Boot 版本 | Spring Cloud 版本
 ---|---
-2.2 | Hoxton.SR8+
-2.3 | Hoxton.SR8+
-2.4.1+ | 2020.0.2+
+2.3.x | Hoxton.SR8+
+2.4.x、2.5.x | 2020.0 即 Ilford +
 
 > [!NOTE]
 > - 请将 Spring Boot 升级到 2.5.2 或 2.4.8，以解决以下 CVE 报告的问题：[CVE-2021-22119：使用 spring-security-oauth2-client 时出现拒绝服务攻击](https://tanzu.vmware.com/security/cve-2021-22119)。 如果使用的是 Spring Security，请将其升级到 5.5.1、5.4.7、5.3.10 或 5.2.11。

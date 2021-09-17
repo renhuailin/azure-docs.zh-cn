@@ -7,14 +7,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 7dbe06a9f2fff8abf59adbdfc9e41055c85e8f2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2ceae3fbf1a59f5f148a488900e9bb88e6be4e4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889291"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688277"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>将 VM 移到其他订阅或资源组
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
+
 本文逐步说明如何在资源组或订阅之间移动虚拟机 (VM)。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
 
 > [!IMPORTANT]

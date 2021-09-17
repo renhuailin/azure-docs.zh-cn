@@ -10,14 +10,17 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ec66c0aa34fe2a41d4bd0f450175cd884a3bae8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563211"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692080"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM 预配
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
+
 使用通用映像（共享映像库或托管映像）创建 VM 时，通过控制平面可以创建 VM 并将参数和设置传递到 VM。 此过程称为 VM 预配。 在预配过程中，该平台会在 VM 启动时将所需的 VM Create 参数值（主机名、用户名、密码、SSH 密钥 和 customData）提供给 VM。 
 
 映像内烘焙的预配代理与该平台建立连接（连接多个独立的预配接口），设置属性并向该平台发送成功完成的信号。 

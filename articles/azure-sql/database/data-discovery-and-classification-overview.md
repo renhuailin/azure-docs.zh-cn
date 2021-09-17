@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/16/2021
+ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: e61660a5c559012cbf4940356bd1a204f3203db6
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: bcda86cd166e410bfc546c802466180557a92dc8
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228773"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825053"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -114,7 +114,27 @@ ms.locfileid: "122228773"
 
 分类的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 审核](../../azure-sql/database/auditing-overview.md)已得到增强，在审核日志中包括了名为 `data_sensitivity_information` 的新字段。 此字段记录查询返回的数据的敏感度分类（标签）。 下面是一个示例：
 
-![审核日志](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
+[ ![审核日志](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png#lightbox)
+
+这些活动可使用敏感信息进行实际审核：
+- ALTER TABLE ... DROP COLUMN
+- BULK INSERT
+- DELETE
+- INSERT
+- MERGE
+- UPDATE
+- UPDATETEXT
+- WRITETEXT
+- DROP TABLE
+- BACKUP
+- DBCC CloneDatabase
+- SELECT INTO
+- INSERT INTO EXEC
+- TRUNCATE TABLE
+- DBCC SHOW_STATISTICS
+- sys.dm_db_stats_histogram
+
+使用 [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) 从 Azure 存储帐户中存储的审核文件返回信息。
 
 ## <a name="permissions"></a><a id="permissions"></a>权限
 
@@ -126,15 +146,25 @@ ms.locfileid: "122228773"
 - SQL 安全管理器
 - 用户访问管理员
 
+以下是读取数据库的数据分类所需的操作：
+
+- Microsoft.Sql/servers/databases/currentSensitivityLabels/*
+- Microsoft.Sql/servers/databases/recommendedSensitivityLabels/*
+- Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*
+
 以下内置角色可修改数据库的数据分类：
 
 - 所有者
 - 参与者
 - SQL 安全管理器
 
+以下是修改数据库的数据分类所需的操作：
+
+- Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*
+
 在 [Azure RBAC](../../role-based-access-control/overview.md) 中了解有关基于角色的权限的详细信息。
 
-## <a name="manage-classifications"></a><a id="manage-classification"></a>管理分类
+## <a name="manage-classifications"></a>管理分类
 
 可以使用 T-SQL、REST API 或 PowerShell 来管理分类。
 
@@ -184,14 +214,21 @@ ms.locfileid: "122228773"
 - [按数据库列出当前敏感度](/rest/api/sql/sensitivitylabels/listcurrentbydatabase)：获取指定数据库的当前敏感度标签。
 - [按数据库列出建议敏感度](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)：获取指定数据库的建议敏感度标签。
 
+## <a name="retrieve-classifications-metadata-using-sql-drivers"></a>使用 SQL 驱动程序检索分类元数据
+
+可使用以下 SQL 驱动程序来检索分类元数据：
+
+- [ODBC 驱动程序](https://docs.microsoft.com/sql/connect/odbc/data-classification)
+- [OLE DB 驱动程序](https://docs.microsoft.com/sql/connect/oledb/features/using-data-classification)
+- [JDBC 驱动程序](https://docs.microsoft.com/sql/connect/jdbc/data-discovery-classification-sample)
+- [Microsoft Drivers for PHP for SQL Server](https://docs.microsoft.com/sql/connect/php/release-notes-php-sql-driver)
 
 ## <a name="faq---advanced-classification-capabilities"></a>常见问题解答 - 高级分类功能
 
 问：是 [Azure Purview](../../purview/overview.md) 会取代 SQL 数据发现和分类，还是 SQL 数据发现和分类即将停用？
 答：我们会继续支持 SQL 数据发现和分类，但鼓励你采用功能更丰富的 [Azure Purview](../../purview/overview.md) 来改善高级分类功能和数据治理。 如果我们决定停用任何服务、功能、API 或 SKU，将会向你提前发送包含迁移或转换路径的通知。 在此处详细了解 Microsoft 生命周期策略。
 
-
-## <a name="next-steps"></a><a id="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 - 请考虑配置 [Azure SQL 审核](../../azure-sql/database/auditing-overview.md)来监视和审核对已分类敏感数据的访问。
 - 对于包含数据发现和分类的演示文稿，请参阅[发现 SQL 数据并对其进行分类、标记和保护 | 公开的数据](https://www.youtube.com/watch?v=itVi9bkJUNc)。

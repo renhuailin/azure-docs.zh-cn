@@ -9,14 +9,16 @@ ms.topic: sample
 ms.service: virtual-machines
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e70284a3a89c30d0f1d1363a15652449a6a1d4f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fc60e5b149ace0243df53e6da09c4f93aaf158a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100558090"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694454"
 ---
 # <a name="move-a-marketplace-azure-virtual-machine-to-another-subscription"></a>将 Azure 市场虚拟机迁移到其他订阅
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集
 
 若要将市场虚拟机迁移至其他订阅，必须将 OS 磁盘迁移至该订阅，然后重新创建虚拟机。
 

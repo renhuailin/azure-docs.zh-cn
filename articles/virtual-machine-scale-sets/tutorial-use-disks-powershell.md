@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a32d9675de9968608da0c7faa70cc31208d666a
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92367935"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821696"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教程：通过 Azure PowerShell 对虚拟机规模集创建和使用磁盘
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 虚拟机规模集使用磁盘来存储 VM 实例的操作系统、应用程序和数据。 创建和管理规模集时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何创建和管理 VM 磁盘。 本教程介绍如何执行下列操作：
 
@@ -129,7 +131,7 @@ Add-AzVmssDataDisk `
 # Update the scale set to apply the change
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
-  -Name "myScaleSet" `
+  -VMScaleSetName "myScaleSet" `
   -VirtualMachineScaleSet $vmss
 ```
 
@@ -166,7 +168,7 @@ Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
 # Update the scale set and apply the Custom Script Extension to the VM instances
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
-  -Name "myScaleSet" `
+  -VMScaleSetName "myScaleSet" `
   -VirtualMachineScaleSet $vmss
 ```
 
@@ -294,7 +296,7 @@ Remove-AzVmssDataDisk `
 # Update the scale set and detach the disk from the VM instances
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
-  -Name "myScaleSet" `
+  -VMScaleSetName "myScaleSet" `
   -VirtualMachineScaleSet $vmss
 ```
 

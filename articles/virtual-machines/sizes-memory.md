@@ -16,17 +16,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 450a35eddf0316f75bfcd97d23cfccdb59acfb7d
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: bde62a7b25f5c367b5fadb5881ab889a95dc2354
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252226"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688935"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>内存优化虚拟机大小
 
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 > [!TIP]
-> 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你工作负荷的其他尺寸。
+> 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你的工作负载的其他尺寸。
 
 内存优化 VM 规格提供适用于关系数据库服务器、大中型缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。
 

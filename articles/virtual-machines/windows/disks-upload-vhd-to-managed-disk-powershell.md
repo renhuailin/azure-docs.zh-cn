@@ -9,14 +9,16 @@ ms.service: storage
 ms.tgt_pltfrm: linux
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9bec6aaf34691adf03dad9204b93af006008c7a0
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 2260603ce4b2baa969734d87d91aa4c949e875f2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356147"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692486"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure PowerShell
+
+**适用于：** :heavy_check_mark: Windows VM 
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
@@ -104,7 +106,7 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 请将 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourOSTypeHere>` 和 `<yourTargetLocationHere>`（例如位置值为 uswest2）替换为自己的值，然后运行以下脚本来复制托管磁盘。
 
 > [!TIP]
-> 如果要创建 OS 磁盘，请将 -HyperVGeneration <yourGeneration> 添加到 `New-AzDiskConfig`。
+> 如果要创建 OS 磁盘，请将 `-HyperVGeneration '<yourGeneration>'` 添加到 `New-AzDiskConfig`。
 
 ```powershell
 

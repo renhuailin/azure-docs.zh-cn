@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
-ms.openlocfilehash: c97294833ea04e4af559008cf55d3aef7230ef81
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 60922ca7b2e910c883d39a89bebcd6de3c4b4ec8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072228"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695747"
 ---
 # <a name="maintenance-control-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的维护控制 
+
+**适用于：:heavy_check_mark: 统一规模集**
 
 使用维护控制来管理虚拟机规模集的[自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)。
 

@@ -10,14 +10,16 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 784adc6829a66269fb863cce7e1e103a45fde7d9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 52256f000cd52577e2322b236b1047abd712265b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114455667"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692042"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>使用 Azure CLI 在可用性集中创建和部署虚拟机
+
+适用于：:heavy_check_mark: Linux VM 
 
 本教程介绍如何使用称作“可用性集”的功能提高 Azure 上虚拟机解决方案的可用性和可靠性。 可用性集可确保在 Azure 上部署的 VM 能够跨多个隔离的硬件群集分布。 这样，就可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 受到影响，整体解决方案仍可使用和操作。
 

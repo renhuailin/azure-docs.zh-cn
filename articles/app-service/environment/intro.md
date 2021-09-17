@@ -4,15 +4,15 @@ description: 了解如何通过 Azure 应用服务环境在一个完全隔离的
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
-ms.date: 04/19/2018
+ms.date: 07/28/2021
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 990d1ca07d4cf9e66c50a22f213817dda3ae029c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 195da1286251ca51c9d36aaf7c2dcfb3c2177766
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432907"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725736"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
 > [!NOTE]
@@ -49,7 +49,7 @@ ASE 仅托管一个客户的应用程序，并在其一个 VNet 中进行托管�
 
 ## <a name="dedicated-environment"></a>专用环境 ##
 
-ASE 专用于单个订阅，可托管 100 个应用服务计划实例。 其范围可涵盖单个应用服务计划中的 100 个实例，也可以是 100 个单实例应用服务计划，或者两者之间的任何实例。
+ASE 是专用于单个客户的专用环境，可以托管 200 个应用服务计划总实例。 一个“独立 SKU”应用服务计划本身最多可以包含 100 个实例。 从该 ASE 中的所有应用服务计划中添加所有实例时，总数必须小于或等于 200。
 
 ASE 由前端和辅助角色组成。 前端负责处理 HTTP/HTTPS 终止以及 ASE 中应用请求的自动负载均衡。 前端作为应用服务计划自动添加在 ASE 中，并且可以扩展。
 

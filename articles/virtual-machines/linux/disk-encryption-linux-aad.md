@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a88fd0cd1e973118cc52456030046b3478d07e7a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dadbd135617335ecff85a4583fd85a79af5b2e34
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741767"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687869"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 新版本的 Azure 磁盘加密无需提供 Azure Active Directory (Azure AD) 应用程序参数即可启用 VM 磁盘加密。 使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。 所有新 VM 都必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。 有关如何使用新版本启用 VM 磁盘加密的说明，请参阅[适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-linux.md)。 已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。
 

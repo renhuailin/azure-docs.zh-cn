@@ -8,15 +8,16 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-manager: carmonm
-ms.openlocfilehash: 34abfb3195f8a3640b1b4797aa430b6250d15b68
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 7c45718726e9037021edc53346d20f26273a92b3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112452361"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687486"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>在 Windows VM 中运行脚本
+
+**适用于：** VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 可能需要在 VM 中运行命令来自动完成任务或排查问题。 下文概述了可以用来在 VM 中运行脚本和命令的功能。
 

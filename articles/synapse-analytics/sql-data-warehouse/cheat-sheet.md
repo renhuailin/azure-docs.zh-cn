@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad10e8d9f376578a61aaa7f5dc2cb0e896dd29cb
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120217"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324660"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）的速查表
 
@@ -92,10 +92,10 @@ ms.locfileid: "98120217"
 
 ## <a name="partitioning"></a>分区
 
-如果拥有一个大型事实数据表（超过 10 亿行的表），可能需要对表分区。 在 99% 的情况下，分区键应基于日期。 注意不要过度分区，尤其是在具有聚集列存储索引时。
+如果拥有一个大型事实数据表（超过 10 亿行的表），可能需要对表分区。 在 99% 的情况下，分区键应基于日期。 
 
 对于需要 ELT 的临时表，可从分区中受益。 它使数据生命周期管理更便捷。
-注意不要对数据过度分区，尤其是对聚集列存储索引。
+注意不要对事实或临时表过度分区，尤其是对聚集列存储索引。
 
 详细了解[分区](sql-data-warehouse-tables-partition.md)。
 

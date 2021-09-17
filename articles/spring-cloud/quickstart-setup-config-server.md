@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, fasttrack-edit
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 95f4e7e9dcc8c9f16465d2a577d4bdf425dae4a8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f3a3e4897904dcfd02b6ef3879736d1afb533747
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470548"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014712"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入门：设置 Azure Spring Cloud Config Server
 
@@ -27,7 +27,7 @@ Azure Spring Cloud 配置服务器是分布式系统的集中式配置服务。 
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud Config Server 过程
 
-通过运行以下命令，使用项目的 Git 存储库的位置设置配置服务器。 将 `<service instance name>` 替换为之前创建的服务的名称。 在前面的快速入门中设置的服务实例名称的默认值不适用于此命令。
+通过运行以下命令，使用项目的 Git 存储库的位置设置配置服务器。 将 \<service instance name> 替换为之前创建的服务的名称。 在前面的快速入门中设置的服务实例名称的默认值不适用于此命令。
 
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples --search-paths steeltoe-sample/config
@@ -57,22 +57,21 @@ Azure Spring Cloud Config Server 是分布式系统的集中式配置服务。 �
 
 2. 在“默认存储库”部分，将“URI”设置为“https://github.com/azure-samples/spring-petclinic-microservices-config” 。
 
-3. 单击 **“验证”** 。
+3. 选择“验证”。
 
     ![导航到配置服务器](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
-4. 完成验证后，请单击“应用”以保存更改。
+4. 完成验证后，选择“应用”以保存更改。
 
     ![正在验证配置服务器](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
 
 5. 更新配置可能需要几分钟。
- 
-    ![正在更新配置服务器](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+    ![正在更新配置服务器](media/spring-cloud-quickstart-launch-app-portal/updating-config.png)
 
 6. 配置完成后，会收到通知。
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
-
 
 以下过程使用 Azure CLI 设置配置服务器来部署 [Pet Clinic 示例](https://github.com/azure-samples/spring-petclinic-microservices)。
 
@@ -91,24 +90,24 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 以下过程说明如何对 Config Server 设置进行故障排除。
 
-1. 在 Azure 门户中，转到服务“概览”页，然后选择“日志” 。 
-1. 选择“查询”和“显示包含‘错误’或‘异常’术语的应用程序日志” 。 
-1. 单击 **“运行”** 。 
+1. 在 Azure 门户中，转到服务“概览”页，然后选择“日志” 。
+1. 选择“查询”和“显示包含‘错误’或‘异常’术语的应用程序日志” 。
+1. 选择“运行”。
 1. 如果在日志中发现错误“java.lang.illegalStateException”，则表明 Spring Cloud Service 无法从 Config Server 中找到属性。
 
     [ ![ASC 门户运行查询](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
 
 1. 转到服务“概述”页。
-1. 选择“诊断并解决问题”。 
+1. 选择“诊断并解决问题”。
 1. 选择“Config Server”检测程序。
 
     [ ![ASC 门户诊断问题](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
 
-3. 单击“Config Server 运行状况检查”。
+1. 选择“Config Server 运行状况检查”。
 
     [ ![ASC 门户精灵](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
 
-4. 单击“Config Server 状态”以查看来自检测程序的详细信息。
+1. 选择“Config Server 状态”以查看来自检测器的详细信息。
 
     [ ![ASC 门户运行状况状态](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 

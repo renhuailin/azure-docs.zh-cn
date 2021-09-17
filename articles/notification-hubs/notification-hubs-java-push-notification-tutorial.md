@@ -5,24 +5,22 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4c3f966d-0158-4a48-b949-9fa3666cb7e4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: java
 ms.devlang: java
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/23/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 09553f587916e8204541b36f259a450d72c1b270
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5a3e848694f89d7c0b59304043e774b2291ae1f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87322935"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772778"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何通过 Java 使用通知中心
 
@@ -43,6 +41,9 @@ SDK 目前支持以下内容：
 * 计划发送
 * 通过 Java NIO 的异步操作
 * 支持的平台：APNS (iOS)、FCM (Android)、WNS（Windows 应用商店应用）、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、百度（没有 Google 服务的 Android）
+
+> [!NOTE]
+> Microsoft 推送通知服务 (MPNS) 已弃用，不再受支持。
 
 ## <a name="sdk-usage"></a>SDK 用法
 

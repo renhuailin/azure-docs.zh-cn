@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 08/16/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 80491f2d9169bcd5c9d4054eb8329c89fd778ba9
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 0c72a263ff9d20f0cb70a0721625446b6a2e0ff9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252576"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689349"
 ---
 # <a name="share-an-azure-managed-disk"></a>共享 Azure 托管磁盘
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Azure 共享磁盘是 Azure 托管磁盘的一项功能，可同时将托管磁盘附加到多个虚拟机 (VM)。 通过将托管磁盘附加到多个 VM，可以向 Azure 部署新的群集应用程序或迁移现有的群集应用程序。
 

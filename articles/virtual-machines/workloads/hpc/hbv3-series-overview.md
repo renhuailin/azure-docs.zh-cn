@@ -5,20 +5,22 @@ services: virtual-machines
 author: vermagit
 tags: azure-resource-manager
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7e9cdb80f1423076fb222e1d1521117e65bca9bc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1f5442c7ade736c4313812a4cb20e6535492acc3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460565"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693405"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3 系列虚拟机概述 
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 [HBv3 系列](../../hbv3-series.md)服务器具有 2 个 64 核 EPYC 7V13 CPU，总共 128 个物理“Zen3”内核。 HBv3 上禁用了同时多线程处理技术 (SMT)。 这 128 个内核分为 16 个部分（每个套接字 8 个），每个部分包含 8 个处理器内核，可对 32 MB L3 缓存进行统一访问。 Azure HBv3 服务器还运行以下 AMD BIOS 设置：
 

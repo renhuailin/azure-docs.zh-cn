@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/14/2021
 ms.author: duau
-ms.openlocfilehash: 97a96d439773d7332fda3fe545d950dfe0077ad1
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 16b808200c43324a68bf909b3cf5548f34dbdec4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765416"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738049"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -87,7 +87,7 @@ ms.locfileid: "113765416"
 2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为 **证书** 对象，而不是 **机密**。
 
 > [!NOTE]
-> 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。 证书必须具有包含叶证书和中间证书的完整证书链，根 CA 必须是 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)的一部分。
+> 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。 证书必须有完整的证书链（包括叶证书和中间证书），根 CA 必须包含在 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)中。
 
 #### <a name="register-azure-front-door"></a>注册 Azure Front Door
 
@@ -136,7 +136,9 @@ ms.locfileid: "113765416"
     - 可用的机密版本。
 
     > [!NOTE]
-    >  要在密钥保管库中有更新版本的证书可用时自动将证书轮换为最新版本，请将机密版本设置为“最新”。 如果选择了特定版本，则必须为证书轮换手动重新选择新版本。 部署新版本的证书/机密最多需要 24 小时。 
+    >  要在密钥保管库中有更新版本的证书可用时自动将证书轮换为最新版本，请将机密版本设置为“最新”。 如果选择了特定版本，则必须为证书轮换手动重新选择新版本。 部署新版本的证书/机密最多需要 24 小时。
+    >
+    > :::image type="content" source="./media/front-door-custom-domain-https/certificate-version.png" alt-text="在更新自定义域页面上选择机密版本的屏幕截图。":::
  
 5. 使用你自己的证书时，无需进行域验证。 转到[等待传播](#wait-for-propagation)。
 

@@ -12,12 +12,12 @@ metadata:
   ms.workload: infrastructure-services
   ms.date: 06/10/2021
   ms.author: duau
-  ms.openlocfilehash: 790f1d8d69fb70556bb083e95e50039e4fbd4c1a
-  ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+  ms.openlocfilehash: 4f846d521473c483f7e127df13b5305e7b9cd6de
+  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/23/2021
-  ms.locfileid: "112553793"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122324589"
 title: Azure Front Door 常见问题解答
 summary: >
   本文解答有关 Azure Front Door 特性和功能的常见问题。 如果本文未能涵盖你的问题，欢迎通过以下渠道联系我们（以升序排列）：
@@ -95,7 +95,7 @@ sections:
     answer: "是，Azure Front Door 支持 X-Forwarded-For、X-Forwarded-Host 和 X-Forwarded-Proto 头。 对于 X-Forwarded-For，如果该头已存在，则 Front Door 会将客户端套接字 IP 追加到其中。 否则，它会添加该头，并在其中包含客户端套接字 IP 作为值。 对于 X-Forwarded-Host 和 X-Forwarded-Proto，将替代值。\n\n详细了解 [Front Door 支持的 HTTP 头](front-door-http-headers-protocol.md)。  \n"
   - question: >
       部署 Azure Front Door 需要多长时间？ 更新 Front Door 时，它是否仍可正常工作？
-    answer: "在所有边缘位置全局部署大多数新的 Front Door 创建和更新需要大约 3 到 20 分钟时间。 \n\n> [!Note]  \n> 全局部署大多数自定义 TLS/SSL 证书更新需要大约 30 分钟时间。\n\n对路由或后端池等的任何更新是无缝的，完全不会导致停机（如果新配置正确）。 证书更新也是原子性的，不会造成任何中断，除非从“AFD 托管”切换到“使用你自己的证书”，反之亦然。\n"
+    answer: "在所有边缘位置全局部署大多数新的 Front Door 创建和更新需要大约 3 到 20 分钟时间。 \n\n> [!Note]  \n> 全局部署大多数自定义 TLS/SSL 证书更新需要数分钟到一小时。\n\n对路由或后端池等的任何更新是无缝的，完全不会导致停机（如果新配置正确）。 证书更新也是原子性的，不会造成任何中断，除非从“AFD 托管”切换到“使用你自己的证书”，反之亦然。\n"
 - name: 配置
   questions:
   - question: >
@@ -138,7 +138,7 @@ sections:
     answer: >
       使用 Front Door 托管证书选项时，Front Door 会自动轮换证书。 如果你使用 Front Door 托管的证书并发现证书过期日期少于 60 天，请提交支持票证。
 
-      </br>使用你自己的自定义 TLS/SSL 证书时，不支持自动轮换。 与第一次为给定的自定义域设置方法类似，需要将 Front Door 指向密钥保管库中的正确证书版本，并确保 Front Door 的服务主体仍然可以访问密钥保管库。 只要证书的使用者名称或 SAN 不会更改，Front Door 执行的这项已更新的证书推出操作就是原子性的，并且不会在生产过程中造成任何影响。
+      </br>对于你自己的自定义 TLS/SSL 证书，请将机密版本设置为“最新”，以便 Azure Front Door 自动轮换到上传到 Key Vault 的最新机密版本。 部署新版本的证书/机密最多需要 24 小时。 如果将机密版本配置为特定版本，则需要将 Front Door 指向 Key Vault 中的正确证书版本。 确保 Front Door 的服务主体仍有权访问密钥保管库。 请参阅[如何授予对密钥保管库的访问权限](standard-premium/how-to-configure-https-custom-domain.md#grant-azure-front-door-access-to-your-key-vault)。 只要证书的使用者名称或使用者替换名称 (SAN) 不更改，Front Door 执行的这项已更新的证书推出操作就不会在生产过程中造成任何停机时间。
   - question: >
       Azure Front Door 支持哪些最新的加密套件？
     answer: "对于 TLS1.2，支持的加密套件如下： \n\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n\n> [!NOTE]  \n> 对于 Windows 10 及更高版本，建议启用一个或全部两个 ECDHE 加密套件来增强安全性。 Windows 8.1、8 和 7 版本与这些 ECDHE 加密套件不兼容。 提供 DHE 加密套件是为了与这些操作系统兼容。\n\n在启用 TLS 1.0/1.1 的情况下使用自定义域时，支持以下加密套件：\n\n- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\n- TLS_RSA_WITH_AES_256_GCM_SHA384\n- TLS_RSA_WITH_AES_128_GCM_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA256\n- TLS_RSA_WITH_AES_128_CBC_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA\n- TLS_RSA_WITH_AES_128_CBC_SHA\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n"

@@ -2,14 +2,14 @@
 title: 什么是 Azure 备份？
 description: 概述 Azure 备份服务及其如何有助于实现业务连续性和灾难恢复 (BCDR) 策略。
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 07fc6ee0afb29f9d6c701c7eb2c65be988971eaf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5e5250860b1388bd679e6167f6f9c9f2920b787
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612630"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722669"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？
 
@@ -26,7 +26,7 @@ Azure 备份服务提供简单、安全且经济高效的解决方案来备份�
 - **Azure VM 中的 SQL Server** -  [备份 Azure VM 上运行的 SQL Server 数据库](backup-azure-sql-database.md)
 - **Azure VM 中的 SAP HANA 数据库** - [备份 Azure VM 上运行的 SAP HANA 数据库](backup-azure-sap-hana-database.md)
 - **Azure Database for PostgreSQL 服务器（预览版）**  -  [备份 Azure PostgreSQL 数据库，并将备份最多保留 10 年](backup-azure-database-postgresql.md)
-- **Azure Blob（预览版）**  - [Azure Blob（预览版）的操作备份概述](blob-backup-overview.md)
+- **Azure Blob** - [Azure Blob 操作备份概述](blob-backup-overview.md)
 
 ![Azure 备份概述](./media/backup-overview/azure-backup-overview.png)
 

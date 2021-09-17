@@ -9,14 +9,17 @@ ms.subservice: extensions
 ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 013404113c3346cfce752f53266062a3b5386092
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1aa6a3291ef5d770104697669ec20468d91efc66
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673952"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690496"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>在虚拟机规模集中对扩展预配进行排序
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
+
 Azure 虚拟机扩展提供部署后配置和管理、监视、安全性等功能。 生产部署通常结合使用为 VM 实例配置的多个扩展来实现所需效果。
 
 在虚拟机上使用多个扩展时，请务必确保需要相同 OS 资源的扩展并未尝试同时获取这些资源。 一些扩展还依赖其他扩展来提供所需配置，如环境设置和机密。 如果排序不正确，依赖扩展部署可能会失败。

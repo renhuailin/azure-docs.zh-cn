@@ -8,14 +8,17 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: 4ca42c259e10742e61fbd7f36b73f332cba5a8db
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 38e020cc7541c6005fe3bc1209d6a31191e49404
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445823"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692208"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>深入了解 cloud-init
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
+
 若要详细了解 [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) 或在更深级别对其进行故障排除，你需要了解其工作原理。 本文档重点介绍了重要的部分，并介绍了 Azure 具体内容。
 
 当通用映像中包含 cloud-init 并且基于该映像创建了 VM 时，它会在初始启动过程中处理配置并完成 5 个阶段。 这些阶段很重要，因为它会显示 cloud-init 将在何时应用配置。 

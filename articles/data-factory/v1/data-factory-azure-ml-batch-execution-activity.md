@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 数据工厂创建预测数据管道
-description: 介绍了如何使用 Azure 数据工厂和机器学习工作室（经典）创建预测管道
+description: 介绍如何使用 Azure 数据工厂和机器学习工作室（经典版）创建预测管道
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a613a48f1787c456885aabb0012efb4d71829aae
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: d4a930677f4760ae5f2d77dd4f148097ae67f465
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396848"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598012"
 ---
-# <a name="create-predictive-pipelines-using-ml-studio-classic-and-azure-data-factory"></a>使用机器学习工作室（经典）和 Azure 数据工厂创建预测管道
+# <a name="create-predictive-pipelines-using-machine-learning-studio-classic-and-azure-data-factory"></a>使用机器学习工作室（经典版）和 Azure 数据工厂创建预测管道
 
 > [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md)
@@ -32,7 +32,7 @@ ms.locfileid: "122396848"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用机器学习转换数据](../transform-data-using-machine-learning.md)。
 
-### <a name="ml-studio-classic"></a>机器学习工作室（经典版）
+### <a name="machine-learning-studio-classic"></a>机器学习工作室（经典版）
 使用[机器学习工作室（经典）](https://azure.microsoft.com/documentation/services/machine-learning/)可生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
 
 1. **创建训练实验**。 使用机器学习工作室（经典）执行此步骤。 工作室（经典版）是一个协作式可视开发环境，可用于通过定型数据来定型和测试预测分析模型。

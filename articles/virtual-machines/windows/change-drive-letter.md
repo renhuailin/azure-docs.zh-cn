@@ -10,14 +10,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 87aa1344b3fbe0d11c1c5cdfa8a56560d67eb54f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83151da2cff5d4eb7fc626573b3e7719bb3a2444
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555544"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688149"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器
+
+适用于：:heavy_check_mark: Windows VM 
+
+
 如果应用程序需要使用 D 盘存储数据，请按照以下说明使用其他驱动器号作为临时磁盘。 切勿使用临时磁盘来存储需要保存的数据。
 
 如果调整虚拟机大小或 **停止（解除分配）** 虚拟机，这可能会触发将虚拟机放置于新虚拟机监控程序的操作。 计划中或计划外的维护事件也可能触发此放置操作。 在这种情况下，临时磁盘将重新分配给第一个可用的驱动器号。 如果应用程序明确需要 D: 盘，则需要遵循以下步骤暂时移动 pagefile.sys，并连接新的数据磁盘并为其分配驱动器号 D，再将 pagefile.sys 移回到临时驱动器。 完成后，如果 VM 移到不同的虚拟机监控程序，Azure 不会收回 D:。

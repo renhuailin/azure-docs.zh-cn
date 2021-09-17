@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: troubleshooting
-ms.date: 08/17/2021
+ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: c63954123af949c02d578d7acc604d7a8528caf3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7b0045ccfd54d956ef8ae7fd2eb1b38705aafd31
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322211"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514966"
 ---
 # <a name="virtual-wan-faq"></a>虚拟 WAN 常见问题解答
 
@@ -98,6 +98,10 @@ ms.locfileid: "122322211"
 
 例如，假设用户选择 1 个缩放单元。 每个缩放单元的存在都意味着已部署主动-主动网关，并且每个实例（在本例中为 2 个）都支持最多 500 个连接。 每个网关可以获得 500 * 2 个连接，但这并不意味着你要为此缩放单元的 1000 个（而不是 500 个）连接做规划。 系统可能需要为实例提供服务，而在服务期间，当你超过建议的连接数时，系统可能会中断这额外的 500 个连接。 此外，如果决定在缩放单元上纵向扩展或缩减，或者在 VPN 网关上更改点到站点配置，请确保计划停机时间。
 
+### <a name="what-are-virtual-wan-gateway-scale-units"></a>什么是虚拟 WAN 网关缩放单元？
+
+根据定义，缩放单元是用于选择虚拟中心内网关的聚合吞吐量的单位。 1 个缩放单元的 VPN 为 500 Mbps。 1 个缩放单元的 ExpressRoute 为 2 Gbps。 示例：10 个缩放单元的 VPN：500 Mbps * 10 = 5 Gbps
+
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虚拟网络网关（VPN 网关）和 Azure 虚拟 WAN VPN 网关之间有什么区别？
 
 虚拟 WAN 提供大规模站点到站点连接，在设计上考虑到了吞吐量、可伸缩性和易用性。 将站点连接到虚拟 WAN VPN 网关时，它不同于使用网关类型 “VPN”的常规虚拟网络网关。 同样，将 ExpressRoute 线路连接到虚拟 WAN 中心时，它对 ExpressRoute 网关使用的资源与对使用“ExpressRoute”网关类型的常规虚拟网络网关使用的资源不同。 
@@ -112,11 +116,6 @@ ms.locfileid: "122322211"
 
 为了获得最佳性能，建议使用 GCMAES256 算法发送大约 95,000 PPS 以实现 IPSEC 加密和完整性。 不过如果发送的 PPS 多于 95,000，不会阻止流量，但可以预期会出现性能下降，如延迟和数据包丢弃。 如果需要更多 PPS，请创建其他隧道。
 
-
-### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>什么是虚拟 WAN 网关缩放单元？
-
-根据定义，缩放单元是用于选择虚拟中心内网关的聚合吞吐量的单位。 1 个缩放单元的 VPN 为 500 Mbps。 1 个缩放单元的 ExpressRoute 为 2 Gbps。 示例：10 个缩放单元的 VPN：500 Mbps * 10 = 5 Gbps
-
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>支持哪些设备提供商（虚拟 WAN 合作伙伴）？
 
 目前，许多合作伙伴都支持全自动虚拟 WAN 体验。 有关详细信息，请参阅[虚拟 WAN 合作伙伴](virtual-wan-locations-partners.md)。
@@ -127,7 +126,7 @@ ms.locfileid: "122322211"
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>是否需要使用首选的合作伙伴设备？
 
-不是。 可以使用任何支持 VPN 且符合 Azure 对 IKEv2/IKEv1 IPsec 的支持要求的设备。 虚拟 WAN 还具有 CPE 合作伙伴解决方案，该解决方案可自动连接到 Azure 虚拟 WAN，使大规模设置 IPsec VPN 连接变得更加容易。
+否。 可以使用任何支持 VPN 且符合 Azure 对 IKEv2/IKEv1 IPsec 的支持要求的设备。 虚拟 WAN 还具有 CPE 合作伙伴解决方案，该解决方案可自动连接到 Azure 虚拟 WAN，使大规模设置 IPsec VPN 连接变得更加容易。
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>虚拟 WAN 合作伙伴如何自动与 Azure 虚拟 WAN 建立连接？
 
@@ -175,7 +174,7 @@ Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主�
 
 ### <a name="can-a-spoke-vnet-have-a-virtual-network-gateway"></a>辐射 VNet 是否可以包含虚拟网络网关？
 
-不是。 如果辐射 VNet 已连接到虚拟中心，则不能包含虚拟网络网关。
+否。 如果辐射 VNet 已连接到虚拟中心，则不能包含虚拟网络网关。
 
 ### <a name="is-there-support-for-bgp-in-vpn-connectivity"></a>VPN 连接是否支持 BGP？
 
@@ -277,7 +276,11 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>如果连接了两个中心（中心 1 和 2），并且有一条 ExpressRoute 线路以蝴蝶结的形式连接到这两个中心，那么连接到中心 1 的 VNet 通过什么路径到达中心 2 中连接的 VNet？
 
-对于 VNet 到 VNet 连接，当前行为优先选择 ExpressRoute 线路路径而非中心到中心。 但是，不建议在虚拟 WAN 设置中进行此选择。 虚拟 WAN 团队正在研究修补程序，以支持优先选择中心到中心而非 ExpressRoute 路径。 对于区域间流量流，建议将多个 ExpressRoute 线路（不同提供商）连接到一个中心，并使用虚拟 WAN 提供的中心到中心连接。
+对于 VNet 到 VNet 连接，当前行为优先选择 ExpressRoute 线路路径而非中心到中心。 但是，不鼓励在虚拟 WAN 设置中这样做。 要解决此问题，可以执行以下两项操作之一：
+
+ * 对于区域间流量流，将多个 ExpressRoute 线路（不同提供商）配置为连接到一个中心，并使用虚拟 WAN 提供的中心到中心连接。
+
+ * 请与产品团队联系，参与封闭公共预览。 在此预览版中，2 个中心之间的流量遍历每个中心内的 Azure 虚拟 WAN 路由器，并使用中心到中心路径，而不是 ExpressRoute 路径（它遍历 Microsoft 边缘路由器/MSEE）。 若要在预览期间使用此功能，请发送电子邮件到 previewpreferh2h@microsoft.com，并提供虚拟 WAN ID、订阅 ID 和 Azure 区域。 通常你会在 48 个工作小时（周一至周五）内收到确认启用功能的回复。
 
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>是否可以在虚拟 WAN 的不同资源组中创建中心？
 
@@ -317,11 +320,11 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 
 Azure 路由服务器提供边界网关协议 (BGP) 对等互连服务，该服务可由 NVA (网络虚拟设备) 用于了解 DIY 中心 VNet 中路由服务器的路由。 虚拟 WAN 路由提供多种功能，其中包括 VNet 到 VNet 传输路由、自定义路由、自定义路由关联和传播、零接触全网状中心服务，以及与 ExpressRoute、Site VPN、远程用户/大型 P2S VPN 的连接服务，和安全中心（Azure 防火墙）功能。 当你在 NVA 与 Azure 路由服务器之间建立 BGP 对等互连时，可以将 NVA 中的 IP 地址播发到虚拟网络。 对于所有高级路由功能（例如传输路由、自定义路由等），可以使用虚拟 WAN 路由。
 
-### <a name="if-i-am-using-a-third-party-security-provider-zscalar-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-azure-portal"></a>如果我使用第三方安全提供程序（ZScalar、iBoss 或 Checkpoint）保护我的 Internet 流量安全，为什么在 Azure 门户中看不到与第三方安全提供程序关联的 VPN 站点？
+### <a name="if-i-am-using-a-third-party-security-provider-zscalar-iboss-or-checkpoint-to-secure-my-internet-traffic-why-dont-i-see-the-vpn-site-associated-to-the-third-party-security-provider-in-the-azure-portal"></a>如果我使用第三方安全提供程序（ZScalar、iBoss 或 Checkpoint）保护我的 Internet 流量安全，为什么在 Azure 门户中看不到与第三方安全提供程序关联的 VPN 站点？
 
 选择部署安全合作伙伴提供程序来保护用户的 Internet 访问时，第三方安全提供程序会代表你创建 VPN 站点。 因为第三方安全提供程序是由提供程序自动创建，并且不是用户创建的 VPN 站点，所以此 VPN 网站不会显示在 Azure 门户中。
 
-有关第三方安全提供程序和设置方法的可用选项的详细信息，请参阅此[文档](../firewall-manager/deploy-trusted-security-partner.md)
+有关第三方安全提供程序和设置方法的可用选项的详细信息，请参阅[部署安全合作伙伴提供商](../firewall-manager/deploy-trusted-security-partner.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,14 +8,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: cynthn
-ms.openlocfilehash: 45616c5b5648153291c81c9ac17e3da3a2c66e3f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5e7c342ae66594e502870030f8e8561ba861b05b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769968"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692100"
 ---
 # <a name="use-scp-to-move-files-to-and-from-a-linux-vm"></a>使用 SCP 将文件移入和移出 Linux VM 
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本文说明如何使用安全复制 (SCP) 将文件从工作站向上移到 Azure Linux VM，或从 Azure Linux VM 向下移到工作站。 在工作站和 Linux VM 之间快速安全地移动文件是管理 Azure 基础结构的关键。 
 

@@ -9,14 +9,16 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 0605780651e1a3c54ae53d13a3f99e1124fa76db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ea607f788d9acb971312639851b745eb28b313d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585004"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697382"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>使用 Linux 规模集模板中的来宾指标执行自动缩放
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 统一规模集
 
 在 Azure 中有两大类主要指标是从 VM 和规模集收集的：主机指标和来宾指标。 粗略地讲，如果想使用标准 CPU、磁盘和网络指标，则主机指标非常适合。 但是，如果需要选择更多的指标，则应考虑来宾指标。
 

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26373d9bfb0c946f412358c16b97f882e2cfba53
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2cd749289b9a389b495481517a56b2652fb2026f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114439117"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444531"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
@@ -46,32 +46,11 @@ ms.locfileid: "114439117"
 
 ### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>禁用默认权限时授予创建和许可应用程序的单个权限
 
-分配“应用程序开发人员”角色，以便在“用户可以注册应用程序”设置为“否”时，授予创建应用程序注册的权限。 当“用户可以许可代表其访问公司数据的应用”设置设为“否”时，此角色还能够代表自己授权许可权限。 作为一种系统行为，当用户创建新的应用程序注册时，他们将自动添加为第一个所有者。 所有权权限可让用户全方面管理其拥有的应用程序注册或企业应用程序。
+分配“应用程序开发人员”角色，以便在“用户可以注册应用程序”设置为“否”时，授予创建应用程序注册的权限。 当“用户可以许可代表其访问公司数据的应用”设置设为“否”时，此角色还能够代表自己授权许可权限。
 
 ## <a name="assign-application-owners"></a>分配应用程序所有者
 
-分配所有者是授予全方面管理特定应用程序注册或企业应用程序的 Azure AD 配置权限的一种简单方法。 作为一种系统行为，当用户创建新的应用程序注册时，他们将自动添加为第一个所有者。 所有权权限可让用户全方面管理其拥有的应用程序注册或企业应用程序。 可以删除原始所有者，可以添加其他所有者。
-
-### <a name="enterprise-application-owners"></a>企业应用程序所有者
-
-身为所有者的用户可以管理企业应用程序的组织特定配置，例如单一登录配置、预配和用户分配。 所有者还可以添加或删除其他所有者。 与全局管理员不同，所有者只能管理他们拥有的企业应用程序。
-
-在某些情况下，从应用程序库创建的企业应用程序包括企业应用程序和应用程序注册。 如果存在这种情况，则将某个所有者添加到企业应用程序会自动将该所有者添加为相应应用程序注册的所有者。
-
-### <a name="to-assign-an-owner-to-an-enterprise-application"></a>向企业应用程序分配所有者
-
-1. 使用符合组织中应用程序管理员或云应用程序管理员条件的帐户登录到 [Azure AD 组织](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
-1. 在组织的[“企业应用程序”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，选择一个应用以打开该应用的概述页面。
-1. 选择“所有者”，以查看应用所有者列表。
-1. 选择“添加”，以选择一个或多个要添加到应用的所有者。
-
-> [!NOTE]
-> 如果用户将“[限制对 Azure AD 管理门户的访问](../fundamentals/users-default-permissions.md)”设置为“是”，则非管理员用户将无法使用 Azure 门户管理其拥有的应用程序。
-
-> [!IMPORTANT]
-> 用户和服务主体可以是应用程序注册的所有者。 只有用户才能是企业应用程序的所有者。 无法将组分配为任何应用程序的所有者。
->
-> 所有者可将凭据添加到应用程序，并使用这些凭据来模拟应用程序的标识。 应用程序拥有的权限可能多于所有者，因此，与身为用户或服务主体的所有者的访问权限相比，应用程序的特权将会提升。 在模拟应用程序时，根据应用程序的权限，应用程序所有者可能会创建或更新用户或其他对象。
+分配所有者是授予全方面管理特定应用程序注册或企业应用程序的 Azure AD 配置权限的一种简单方法。 有关详细信息，请参阅[分配企业应用程序所有者](../manage-apps/assign-app-owners.md)。
 
 ## <a name="assign-built-in-application-admin-roles"></a>分配内置的应用程序管理员角色
 

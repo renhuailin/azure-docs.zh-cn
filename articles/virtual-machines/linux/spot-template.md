@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 04319066c59dda5d240f527d86894674a505eaed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f54e9b80bc6babe90093e45d6a9b7400fa0a5b5
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669359"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698128"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-a-resource-manager-template"></a>使用资源管理器模板部署 Azure 现成虚拟机
+
+适用于：:heavy_check_mark: Linux VM
 
 使用 [Azure 现成虚拟机](../spot-vms.md)，可以利用未使用的容量，大幅降低成本。 每当 Azure 需要回收容量时，Azure 基础结构就会逐出 Azure 现成虚拟机。 因此，Azure 现成虚拟机非常适用于那些处理服务中断的工作负荷（例如批处理作业）、开发/测试环境、大型计算工作负荷等。
 

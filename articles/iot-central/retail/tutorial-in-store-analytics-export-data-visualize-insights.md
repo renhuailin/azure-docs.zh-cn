@@ -11,20 +11,20 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: d94b3e56b3b8f70a03b6a3872b085e450043ab70
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: d2a5df40dd16ea7f996caf34b2e0cad7b0a60900
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585944"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195416"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
-
 
 在前面的两个教程中，你使用“店内分析 - 结帐”  应用程序模板创建并自定义了 IoT Central 应用程序。 本教程将介绍如何配置 IoT Central 应用程序以导出从设备收集的遥测数据。 然后，可以使用 Power BI 创建用于存储管理器的自定义仪表板，以可视化从遥测数据派生的见解。
 
 在本教程中，您将学习如何执行以下操作：
 > [!div class="checklist"]
+
 > * 配置 IoT Central 应用程序以将遥测数据导出到事件中心。
 > * 使用逻辑应用将数据从事件中心发送到 Power BI 流数据集。
 > * 创建一个 Power BI 仪表板，用于可视化流数据集中的数据。
@@ -75,7 +75,7 @@ ms.locfileid: "113585944"
 
 现在，你有了一个事件中心，可以在从 IoT Central 应用程序配置数据导出时使用它：
 
-![事件中心](./media/tutorial-in-store-analytics-visualize-insights/event-hub.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/event-hub.png" alt-text="事件中心。":::
 
 ## <a name="configure-data-export"></a>配置数据导出
 
@@ -92,7 +92,7 @@ ms.locfileid: "113585944"
 
 数据导出可能需要几分钟才能开始向事件中心发送遥测数据。 可以在“数据导出”  页上查看导出的状态：
 
-![连续数据导出配置](./media/tutorial-in-store-analytics-visualize-insights/export-configuration.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/export-configuration.png" alt-text="连续数据导出配置。":::
 
 ## <a name="create-the-power-bi-datasets"></a>创建 Power BI 数据集
 
@@ -119,7 +119,8 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
 现在有两个流数据集。 逻辑应用将从连接到“店内分析 - 结帐”  应用程序的两个环境传感器将遥测数据路由到以下两个数据集：
 
-![区域数据集](./media/tutorial-in-store-analytics-visualize-insights/dataset-1.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/dataset-1.png" alt-text="区域数据集。":::
+
 
 此解决方案对每个传感器使用一个流数据集，因为无法在 Power BI 中将筛选器应用于流数据。
 
@@ -143,7 +144,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
 现在，你有了第三个流数据集，它可存储模拟占用传感器中的值。 此传感器报告商店中两个结帐之间的队列长度，以及客户在这些队列中等待的时长：
 
-![占用数据集](./media/tutorial-in-store-analytics-visualize-insights/dataset-2.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/dataset-2.png" alt-text="占用数据集。":::
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
@@ -155,7 +156,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 1. 在左窗格中，选择“设备”  。 然后选择“RuuviTag”  。
 1. 记下“设备 ID”  。 在以下屏幕截图中，ID 是 f5dcf4ac32e8  和 e29ffc8d5326  ：
 
-    ![设备 ID](./media/tutorial-in-store-analytics-visualize-insights/device-ids.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/device-ids.png" alt-text="设备 ID。":::
 
 以下步骤展示了如何在 Azure 门户中创建逻辑应用：
 
@@ -369,7 +370,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
 1. 选择“保存”  ，然后选择“设计器”  以查看所添加逻辑的视觉版本：
 
-    ![逻辑应用设计](./media/tutorial-in-store-analytics-visualize-insights/logic-app.png)
+    :::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/logic-app.png" alt-text="逻辑应用设计。":::
 
 1. 选择“按设备 ID 切换”  以展开操作。 然后选择“Zone 1 environment”  ，并选择“添加操作”  。
 1. 在“搜索连接器和操作”  中，输入“Power BI”  ，然后按 Enter  。
@@ -383,7 +384,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“湿度”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“湿度”  。
     * 选择“温度”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“温度”  。
-    * 选择“保存”  以保存更改。 **Zone 1 environment** 操作如以下屏幕截图所示：![Zone 1 environment](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
+    * 选择“保存”  以保存更改。 “Zone 1 environment”操作如以下屏幕截图所示：:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png" alt-text="Zone 1 environment。":::
 1. 选择“Zone 2 environment”  操作，然后选择“添加操作”  。
 1. 在“搜索连接器和操作”  中，输入“Power BI”  ，然后按 Enter  。
 1. 选择“向数据集添加行(预览)”  操作。
@@ -395,7 +396,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“湿度”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“湿度”  。
     * 选择“温度”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“温度”  。
-    选择“保存”  以保存更改。  **Zone 2 environment** 操作如以下屏幕截图所示：![Zone 2 environment](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
+    选择“保存”  以保存更改。  “Zone 2 environment”操作如以下屏幕截图所示：:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png" alt-text="Zone 2 environment。":::
 1. 选择“占用”  操作，然后选择“按接口 ID 切换”  操作。
 1. 选择“停留时间接口”  操作，然后选择“添加操作”  。
 1. 在“搜索连接器和操作”  中，输入“Power BI”  ，然后按 Enter  。
@@ -408,7 +409,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“停留时间 1”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“DwellTime1”  。
     * 选择“停留时间 2”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后选择“DwellTime2”  。
-    * 选择“保存”  以保存更改。 **停留时间接口** 操作如以下屏幕截图所示：![显示“停留时间接口”操作的屏幕截图。](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * 选择“保存”  以保存更改。 “停留时间接口”操作如以下屏幕截图所示：:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png" alt-text="停留时间接口。":::
 1. 选择“人数接口”  操作，然后选择“添加操作”  。
 1. 在“搜索连接器和操作”  中，输入“Power BI”  ，然后按 Enter  。
 1. 选择“向数据集添加行(预览)”  操作。
@@ -420,7 +421,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
     * 选择“时间戳”  字段，然后从“动态内容”  列表中选择“x-opt-enqueuedtime”  。
     * 选择“队列长度 1”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后，选择“count1”  。
     * 选择“队列长度 2”  字段，然后选择“分析遥测”  旁边的“查看更多”  。 然后，选择“count2”  。
-    * 选择“保存”  以保存更改。 **人数接口** 操作如以下屏幕截图所示：![占用操作](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
+    * 选择“保存”  以保存更改。 “人数接口”操作如以下屏幕截图所示：:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png" alt-text="占用”操作。":::
 
 逻辑应用会自动运行。 若要查看每个运行的状态，请导航到 Azure 门户中逻辑应用的“概述”  页：
 
@@ -449,7 +450,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
 以下屏幕截图显示了第一个图表的设置：
 
-![折线图设置](./media/tutorial-in-store-analytics-visualize-insights/line-chart.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/line-chart.png" alt-text="折线图设置。":::
 
 ### <a name="add-cards-to-show-environmental-data"></a>添加卡以显示环境数据
 
@@ -465,7 +466,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
 以下屏幕截图显示了第一个卡的设置：
 
-![卡设置](./media/tutorial-in-store-analytics-visualize-insights/card-settings.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/card-settings.png" alt-text="卡设置。":::
 
 ### <a name="add-tiles-to-show-checkout-occupancy-data"></a>添加磁贴以显示结帐占用数据
 
@@ -483,11 +484,11 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
 在仪表板上调整磁贴的大小并重新排列，如以下屏幕截图所示：
 
-![显示 Power BI 仪表板的屏幕截图，其中包含重设大小和重新排列的磁贴。](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png" alt-text="显示 Power BI 仪表板的屏幕截图，其中包含重设大小和重新排列的磁贴。":::
 
 可以添加一些其他图形资源来进一步自定义仪表板：
 
-![Power BI 仪表板](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard-graphics.png)
+:::image type="content" source="media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard-graphics.png" alt-text="Power BI 仪表板。":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

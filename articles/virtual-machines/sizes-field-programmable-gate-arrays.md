@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: vikancha
-ms.openlocfilehash: d9eb0d5bc93cbe9c2a7cbae56c336115bb227b04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c421c30e9a8f117806e9e93b2df5154bd881e7c2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557669"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697928"
 ---
 # <a name="fpga-optimized-virtual-machine-sizes"></a>FPGA 优化虚拟机大小
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 FPGA 优化 VM 大小是具有单个或多个 FPGA 的专用虚拟机。 这些大小专为计算密集型工作负载而设计。 本文介绍有关 FPGA、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
 

@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 6ce02e1af466562c2a50c8a3286e45355a881cb3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 72360804989f5f328231d73893b12363447e1754
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461084"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693947"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure 资源管理器向 Linux VM 应用策略
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
+
 通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文介绍如何使用 Azure 资源管理器策略，为组织中的虚拟机定义所需的行为。
 
 有关策略的简介，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。

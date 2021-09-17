@@ -7,15 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 07/28/2021
 ms.author: srijangupta
-ms.openlocfilehash: f0417c156de07cd5a6fd45bdd63ed9134078966f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2079e50d92c7253c7c4f642c9a51e56aa1bfae2c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732481"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689797"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>为 Azure 准备 Ubuntu 虚拟机
 
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) 下载。 如果需要为 Azure 构建自己专用的 Ubuntu 映像，而不是使用以下手动过程，则我们建议先使用这些已知良好的 VHD，并根据需要进行自定义。 始终可以在以下位置找到最新的映像版本：
 

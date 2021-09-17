@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: a0e6a02aed59cbe968abb0df5c3fb612c8f2d3b0
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 811078d18d6659e600cb5b0931dcf2a217a8856e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551679"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751892"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source"></a>注册并扫描 SAP S/4HANA 源
 
@@ -54,7 +54,7 @@ SAP S/4HANA 源支持完全扫描（用于从 SAP S/4HANA 实例中提取元数�
 若要在数据目录中注册新的 SAP S/4HANA 源，请执行以下操作：
 
 1.  导航到你的 Purview 帐户。
-2.  在左侧导航区域中选择“源”。
+2.  在左侧导航区域中选择“数据映射”。
 3.  选择“注册”
 4.  在“注册源”上，选择“SAP S/4HANA”。 选择“继续”
 

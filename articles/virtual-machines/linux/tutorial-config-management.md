@@ -1,29 +1,25 @@
 ---
 title: 教程 - 在 Azure 中管理 Linux 虚拟机配置
 description: 在本教程中，你将学习如何在 Linux 虚拟机上识别更改和管理包更新版
-services: virtual-machines
-documentationcenter: virtual-machines
 author: mgoedtel
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bbc294f006859e30aa891c7aa1b9ad4d1665a21c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fae7a6065f04b34ea952dd474919d43dad46d0df
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139950"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690940"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure [更改跟踪](../../automation/change-tracking/overview.md)允许你轻松识别更改，[更新管理](../../automation/update-management/overview.md)允许你管理 Azure Linux VM 的操作系统更新。
 
@@ -108,7 +104,7 @@ az vm create \
 
 若要创建新的更新部署，请选择“计划更新部署”。 此时会打开“新建更新部署”页。 为下表中介绍的属性输入值，然后单击“创建”：
 
-| properties | 说明 |
+| properties | 描述 |
 | --- | --- |
 | 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|

@@ -8,14 +8,16 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 01c4c22dcf806eced40cf6d3aa382dbeb68078aa
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5e059cd4112b39565ba07b39d80d2db4a53c9d46
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669249"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693470"
 ---
 # <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-powershell"></a>使用 Azure PowerShell 在可用性区域中创建虚拟机
+
+**适用于：** :heavy_check_mark: Windows VM 
 
 本文详细介绍如何使用 Azure PowerShell 在 Azure 可用性区域中创建运行 Windows Server 2016 的 Azure 虚拟机。 [可用性区域](../../availability-zones/az-overview.md)是 Azure 区域中物理上独立的区域。 使用可用性区域可以在整个数据中心发生故障或服务中断（这种情况很少见）时保护应用和数据。
 

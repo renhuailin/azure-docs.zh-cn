@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 05/24/2021
 ms.author: pepogors
-ms.openlocfilehash: ad760cb50e2719d3eb910f597e1fe9377580176e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aaf5be101320a5b8cccb24b89908c788996fc494
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737511"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445795"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 
@@ -233,7 +233,7 @@ Service Fabric 负载均衡器在工作区域中显示副本以匹配目标副�
 >[!IMPORTANT]
 >Service Fabric 群集资源 API 版本应为 2020-12-01-preview 或更高版本。
 >
->群集代码版本应为 8.0.536 或更高版本。
+>群集代码版本至少应为 8.1.321 或更高版本。
 
 ```json
 {

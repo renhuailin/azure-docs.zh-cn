@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62a88350e0bb1fceba635c651f8b831cba30cfce
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e0af1080a2d56fc01bdeb4bfb5f6475c477b685
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732458"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777736"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>将 API 连接器添加到注册用户流
 
@@ -576,7 +576,8 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标，确保使用包含 Azure AD 租户的目录。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“标识体验框架”。
 1. 选择“上传自定义策略”，然后上传已更改的策略文件：*TrustFrameworkExtensions.xml* 和 *SignUpOrSignin.xml*。 

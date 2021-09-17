@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 7/1/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: e8cfba3c7dc13f6e32d0dd4141832bab475cc5b8
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: 974dba9d3770d7d5570896f24d31fc2378472ae2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138812"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697901"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>排查 Azure 中共享映像库的问题
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 可以通过传递 `--debug` 开关（在使用 Azure CLI 时）和 `-Debug` 开关（在使用 PowerShell 时）来激活调试模式。 在找到错误后，按照本文来解决错误。
 

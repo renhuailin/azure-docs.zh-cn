@@ -1,5 +1,5 @@
 ---
-title: 在 UI 中创建训练作业
+title: 使用作业创建 UI 创建训练作业
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习工作室中的作业创建 UI 创建训练作业。
 services: machine-learning
@@ -11,18 +11,18 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 06/22/2021
 ms.reviewer: laobri
-ms.openlocfilehash: f3199158dd5a156192fafa87531c1d92a4262170
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4da4cb933f24a0ca172c6b0fd6b8b9827d615859
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448368"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823460"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>使用作业创建 UI（预览版）创建训练作业
 
-可通过多种方式使用 Azure 机器学习来创建训练作业。 可以使用 CLI（参阅[使用 2.0 CLI（预览版）训练模型（创建作业）](how-to-train-cli.md)）、REST API（参阅[使用 REST 训练模型（预览版）](how-to-train-with-rest.md)），或者可以使用 UI 直接创建训练作业。 本文介绍如何使用你自己的数据和代码，通过 Azure 机器学习工作室中的作业创建 UI 训练机器学习模型。
+可通过多种方式使用 Azure 机器学习来创建训练作业。 可以使用 CLI（参阅[使用 CLI (v2)（预览版）训练模型（创建作业）](how-to-train-cli.md)）、REST API（参阅[使用 REST 训练模型（预览版）](how-to-train-with-rest.md)），或者可以使用 UI 直接创建训练作业。 本文介绍如何使用你自己的数据和代码，通过 Azure 机器学习工作室中的作业创建 UI 训练机器学习模型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "114448368"
 
 有关创建各种类型的计算的详细信息，请参阅：
 
-| 计算类型 | 如何 | 
+| 计算类型 | 操作方法 | 
 | --- | --- | 
 | 计算实例 | [创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md) | 
 | 计算群集 | [创建 Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md) | 
@@ -102,15 +102,15 @@ ms.locfileid: "114448368"
 
 指定环境后，可以使用其他设置配置作业。 
 
-|字段| 说明|
+|字段| 描述|
 |------| ------|
 |作业名称| 作业名称字段用于唯一标识作业。 它还用作作业的显示名称。 此字段是可选的；如果你未输入任何内容，Azure 将为作业生成 GUID 名称。 注意：作业名称必须唯一。|
 |实验名称| 这有助于在 Azure 机器学习工作室中组织作业。 每个作业的运行记录将组织到工作室“试验”选项卡中的相应试验下。默认情况下，Azure 会将作业放在“默认”试验中。|
 |代码| 可以从计算机上传代码文件或文件夹，或者从工作区的默认 Blob 存储上传代码文件。 在你做出选择后，Azure 将显示要上传的文件。 |
-|Command| 要执行的命令。 可以将命令行参数显式写入到命令中，或者使用大括号表示法从其他部分（具体而言，是“输入”，具体请参阅下一部分）推断这些参数。|
+|命令| 要执行的命令。 可以将命令行参数显式写入到命令中，或者使用大括号表示法从其他部分（具体而言，是“输入”，具体请参阅下一部分）推断这些参数。|
 |输入| 指定输入绑定。 支持三种类型的输入：1) Azure 机器学习注册的数据集；2) 工作区默认 Blob 存储；3) 上传本地文件。 可以添加多个输入。 |
 |环境变量| 通过设置环境变量可以提供作业的动态配置。 可在此处添加变量和值。|
-|Tags| 将标记添加到作业以帮助进行组织。|
+|标记| 将标记添加到作业以帮助进行组织。|
 
 ### <a name="specify-code-and-inputs-in-the-command-box"></a>在命令框中指定代码和输入
 
@@ -150,8 +150,8 @@ ms.locfileid: "114448368"
 
 配置作业后，选择“下一步”转到“查看”页 。 若要修改设置，请选择铅笔图标并进行更改。 
 
-可以选择“查看 YAML 规范”，以查看和下载此作业配置生成的 YAML 文件。 此作业 YAML 文件可用于从 2.0 CLI 提交作业。 （参阅[使用 2.0 CLI（预览版）训练模型（创建作业）](how-to-train-cli.md)。）[![查看 YAML 规范](media/how-to-train-with-ui/view-yaml.png)](media/how-to-train-with-ui/view-yaml.png)
-[![YAML 规范](media/how-to-train-with-ui/yaml-spec.png)](media/how-to-train-with-ui/yaml-spec.png)
+可以选择“查看 YAML 规范”，以查看和下载此作业配置生成的 YAML 文件。 此作业 yaml 文件可用于从 CLI (v2) 提交作业。 （参阅[使用 CLI (v2)（预览版）训练模型（创建作业）](how-to-train-cli.md)。）[![查看 yaml 规范](media/how-to-train-with-ui/view-yaml.png)](media/how-to-train-with-ui/view-yaml.png)
+[![Yaml 规范](media/how-to-train-with-ui/yaml-spec.png)](media/how-to-train-with-ui/yaml-spec.png)
 
 若要启动作业，请选择“创建”。 创建作业后，Azure 将显示运行详细信息页，可在其中监视和管理训练作业。 
 
@@ -159,4 +159,4 @@ ms.locfileid: "114448368"
 
 * [使用托管联机终结点（预览版）部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md)。
 
-* [使用 2.0 CLI（预览版）训练模型（创建作业）](how-to-train-cli.md)
+* [使用 CLI (v2)（预览版）训练模型（创建作业）](how-to-train-cli.md)

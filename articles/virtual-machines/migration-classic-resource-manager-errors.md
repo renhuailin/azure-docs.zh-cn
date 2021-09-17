@@ -10,14 +10,16 @@ ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2d1364d8b408cc6a42e2c87f6748ab36558bb389
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: e883bccf5ed57f1cc300d4000c9bfb9cac91b39b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112322559"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690322"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>从经典部署模型迁移到 Azure 资源管理器部署模型的过程中经常出现的错误
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 > [!IMPORTANT]
 > 目前，大约有 90% 的 IaaS VM 在使用 [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 自 2020 年 2 月 28 日起，经典 VM 已弃用，并将于 2023 年 3 月 1 日完全停用。 [详细了解]( https://aka.ms/classicvmretirement)此弃用以及[它对你的影响](classic-vm-deprecation.md#how-does-this-affect-me)。

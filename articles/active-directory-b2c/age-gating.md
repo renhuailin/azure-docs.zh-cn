@@ -11,12 +11,12 @@ ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f7aac30ec8cb5aa2707217183a7612f4eb5b27c3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f0502f11c9a6e900ae8f25209b6897f8384c2773
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322365"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777754"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>启用 Azure Active Directory B2C 中的年龄限制
 
@@ -44,7 +44,8 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 若要在用户流中使用年龄限制，需要将租户配置为具有附加属性。
 
 1. 使用[此链接](https://portal.azure.com/?Microsoft_AAD_B2CAdmin_agegatingenabled=true#blade/Microsoft_AAD_B2CAdmin/TenantManagementMenuBlade/overview)可试用年龄限制（预览版）。
-1. 选择顶部菜单中的“目录 + 订阅”筛选器，确保使用包含 Azure AD B2C 租户的目录。 选择包含租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标，确保使用包含 Azure AD B2C 租户的目录。
+1. 在“门户设置 | 目录+订阅”页上，在“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 Azure AD B2C。
 1. 在左侧菜单中选择租户的“属性”。
 1. 在“年龄限制”下，选择“配置”。 

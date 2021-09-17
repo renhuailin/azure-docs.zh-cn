@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: 使用自定义位置在已启用 Azure Arc 的 Kubernetes 群集上部署 Azure PaaS 服务
-ms.openlocfilehash: 5fa255755dd0b78498203624194d081447d70a13
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a4586f6f527bd98f0f347e51c787f2bcda7c6d8d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730849"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768299"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>创建和管理已启用 Azure Arc 的 Kubernetes 上的自定义位置
 
@@ -57,29 +57,26 @@ ms.locfileid: "113730849"
 - 验证 `Microsoft.ExtendedLocation` 的提供程序注册是否已完成。
     1. 输入以下命令：
     
-    ```azurecli
-    az provider register --namespace Microsoft.ExtendedLocation
-    ```
+        ```azurecli
+        az provider register --namespace Microsoft.ExtendedLocation
+        ```
 
     2. 监视注册过程。 注册可能最多需要 10 分钟。
     
-    ```azurecli
-    az provider show -n Microsoft.ExtendedLocation -o table
-    ```
+        ```azurecli
+        az provider show -n Microsoft.ExtendedLocation -o table
+        ```
+
+        一经注册，`RegistrationState` 状态将具有 `Registered` 值。
 
 - 验证是否具有现有的[已启用 Azure Arc 的 Kubernetes 连接的群集](quickstart-connect-cluster.md)。
     - 将[代理升级](agent-upgrade.md#manually-upgrade-agents)到版本 1.1.0 或更高版本。
-
->[!NOTE]
->**自定义位置支持的区域：**
->* 美国东部
->* 西欧
 
 ## <a name="enable-custom-locations-on-cluster"></a>在群集上启用自定义位置
 
 如果你以 Azure AD 用户身份登录到 Azure CLI，要在集群上启用此功能，请执行以下命令：
 
-```console
+```azurecli
 az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations
 ```
 
@@ -87,13 +84,13 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 1. 获取 Azure Arc 服务使用的 Azure AD 应用程序的对象 ID：
 
-    ```console
+    ```azurecli
     az ad sp show --id 'bc313c14-388c-4e7d-a58e-70017303ee3b' --query objectId -o tsv
     ```
 
 1. 使用上面步骤中的 `<objectId>` 值在群集上启用自定义位置功能：
 
-    ```console
+    ```azurecli
     az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
     ```
 

@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f5dddd3d59ebe778d577176e439528a86bb42a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7bcd49de1b92dd91ee1c643d1f48629d8b0a8c02
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802580"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694640"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB 系列虚拟机概述
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 要在 AMD EPYC 上最大程度地提高高性能计算 (HPC) 应用程序性能，需要考虑周全的方法内存位置和进程放置。 下面概述了 AMD EPYC 体系结构，以及如何在 Azure 上为 HPC 应用程序实现它。 我们将使用术语“pNUMA”指代物理 NUMA 域，使用“vNUMA”指代虚拟化 NUMA 域。
 

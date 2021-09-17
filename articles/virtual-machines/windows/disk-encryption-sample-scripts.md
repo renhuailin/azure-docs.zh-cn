@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 529132863b40ba667757eeaf2b2295c36d0ba67f
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 27d29256f85d932727b9c859eb0dd0965596220a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283314"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698287"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本
+
+**适用于：** :heavy_check_mark: Windows VM 
 
 本文提供了用于准备预加密 VHD 和其他任务的示例脚本。
 

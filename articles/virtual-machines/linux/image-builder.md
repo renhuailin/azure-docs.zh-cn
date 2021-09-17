@@ -8,14 +8,16 @@ ms.date: 03/02/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: 87f77b72104caf74007d63477f6f845c7ae8ad96
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: ea18c4f5738fef119106dd983b58252ef364bae8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113593681"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770354"
 ---
 # <a name="create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>使用 Azure CLI 创建 Linux 映像并将其分发到共享映像库
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本文介绍如何使用 Azure 映像生成器和 Azure CLI，在[共享映像库](../shared-image-galleries.md)中创建映像版本，然后全局分发此映像。 还可以使用 [Azure PowerShell](../windows/image-builder-gallery.md).来实现此目的。
 
@@ -69,10 +71,10 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-为你的订阅 ID 创建变量。 可使用 `az account show -o json | grep id` 获取。
+为你的订阅 ID 创建变量。
 
 ```azurecli-interactive
-subscriptionID=<Subscription ID>
+subscriptionID=$(az account show --query id --output tsv)
 ```
 
 创建资源组。
@@ -90,7 +92,7 @@ identityName=aibBuiUserId$(date +'%s')
 az identity create -g $sigResourceGroup -n $identityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName -o json | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName --query clientId -o tsv)
 
 # get the user identity URI, needed for the template
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName

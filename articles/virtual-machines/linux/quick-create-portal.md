@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ca04b3bc0a71dfde11fe6c830912d95b7e9f537d
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6daa33669490e2b63c918860bec752542e35e5bb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "114288238"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691054"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
+
+适用于：:heavy_check_mark: Linux VM
 
 可以通过 Azure 门户创建 Azure 虚拟机 (VM)。 Azure 门户是基于浏览器的用户界面，用于创建 Azure 资源。 本快速入门介绍如何使用 Azure 门户部署运行 Ubuntu 18.04 LTS 的 Linux 虚拟机 (VM)。 若要查看运行中的 VM，也可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
 

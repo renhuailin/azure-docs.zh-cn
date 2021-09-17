@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/30/2021
+ms.date: 08/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed916e16392911dd92a98f3199cbb1c422ed2f55
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 5c8918870274cb0ea443dd1f4c93f39c301c6287
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861476"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446500"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>发行说明 - 已启用 Azure Arc 的数据服务
 
@@ -47,7 +47,7 @@ ms.locfileid: "121861476"
 - 在 AKS HCI 上部署需要进行特殊的存储类配置。 请参阅[配置存储（使用 AKS-HCI 的 Azure Stack HCI）](create-data-controller-indirect-cli.md#configure-storage-azure-stack-hci-with-aks-hci)下的详细信息。
 - 有一项新要求允许在导出数据时使用非 SSL 连接。 设置环境变量以禁止显示交互式提示。
 
-### <a name="whats-new"></a>新变化
+### <a name="whats-new"></a>新增功能
 
 #### <a name="data-controller"></a>数据控制器
 
@@ -107,6 +107,7 @@ ms.locfileid: "121861476"
 
 #### <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL
 
+- 目前，PosgreSQL 超大规模不能用于 Kubernetes 版本 1.22 及更高版本。 
 - 在 7 月 30 日版本中，备份和还原操作不再有效。 这是一个临时限制。 如果需要执行备份或还原，请使用 2021 年 6 月版。 此问题将在未来版本中得到解决。
 
 - 不能同时启用和配置 `pg_cron` 扩展。 为此，你需要使用两个命令，分别是 启用命令和配置命令。 例如：
@@ -209,7 +210,7 @@ az extension add --name arcdata
 
 默认情况下，自动备份服务处于可用且开启状态。 请密切关注备份卷上的空间可用性。
 
-### <a name="whats-new"></a>新变化
+### <a name="whats-new"></a>新增功能
 
 此版本引入了适用于已启用 Azure Arc 的数据服务的 `az` CLI 扩展。 有关详细信息，请参阅上文的[中断性变更](#breaking-change)。
 

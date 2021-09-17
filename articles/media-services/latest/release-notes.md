@@ -12,12 +12,12 @@ ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3258baa30d689513ae09ea727ac1db603f8bf5fe
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 46ebdd1f5cb3093b0c1c1a5bc3273cf1aa1afd8f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720292"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634825"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -30,6 +30,26 @@ ms.locfileid: "114720292"
 * Bug 修复
 * 已弃用的功能
 
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget-coming-soon---early-september-2021"></a>.NET SDK (Microsoft.Azure.Management.Media) 5.0.0 已在 NuGet 中提供（即将在 2021 年 9 月上旬推出！）
+
+[Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/5.0.0) .NET SDK 版本 5.0.0 现已在 NuGet 中发布。 生成此版本的目的是为了与 Open API (Swagger) ARM Rest API [2021-06-01 稳定版本](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01)配合使用。
+
+有关 4.0.0 版本的更改的详细信息，请参阅[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/mediaservices/Microsoft.Azure.Management.Media/CHANGELOG.md)。
+
+#### <a name="changes-in-the-500-net-sdk-release-coming-soon---early-september-2021"></a>5\.0.0 .NET SDK 版本的更改（即将在 2021 年 9 月上旬推出！）
+
+* 媒体服务帐户现在支持系统分配的托管标识和用户分配的托管标识。
+* 为媒体服务帐户添加了 PublicNetworkAccess 选项。 可将此选项与专用链接功能配合使用，以便仅允许来自专用网络的访问，并阻止所有公用网络访问
+* 基本直通 - 添加了新的实时事件类型。 “基本直通”实时事件的功能类似于标准直通实时事件，但存在一些输入和输出限制，并以更低的价格提供。
+* PresetConfigurations - 可用于自定义输出设置，以及用于[内容感知编码预设](./encode-content-aware-concept.md)的最小和最大比特率。 它可以帮助你在通过受约束的输出轨道编号和分辨率使用内容感知编码时，更准确地估算费用并相应地做好安排。
+
+#### <a name="breaking-changes-in-tht-500-net-sdk-release"></a>5\.0.0 .NET SDK 版本的中断性变更
+
+* 为了与所有其他 Azure SDK 保持一致，ApiErrorException 已替换为 ErrorResponseException 。 异常正文没有变化。
+* 媒体服务构造函数可以在 KeyDelivery 参数后面使用新的可选 PublicNetworkAccess 参数。
+* MediaServiceIdentity 中的 Type 属性已从 ManagedIdentityType 枚举更改为字符串，以适应逗号分隔的多个类型。 类型的有效字符串为 SystemAssigned 或 SystemAssigned，以及 UserAssigned 或 UserAssigned。
 
 ## <a name="june-2021"></a>2021 年 6 月
 

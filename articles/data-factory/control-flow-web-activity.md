@@ -1,23 +1,26 @@
 ---
-title: Azure 数据工厂中的 Web 活动
-description: 了解如何使用 Web 活动（数据工厂支持的控制流活动之一）从管道调用 REST 终结点。
+title: Web 活动
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用 Web 活动（Azure 数据工厂和 Azure Synapse Analytics 支持的控制流活动之一）从管道调用 REST 终结点。
 author: nabhishek
 ms.author: abnarain
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/19/2018
-ms.openlocfilehash: 23b28b54e42b03007492424a58b6234ccc5233ce
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 08/24/2021
+ms.openlocfilehash: 88b7e1cb43fc10301f9dab46c6cca5f30c1e14d1
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906667"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822479"
 ---
-# <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
+# <a name="web-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的 Web 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
+Web 活动可用于从 Azure 数据工厂或 Synapse 管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
 
 > [!NOTE]
 > 使用自承载集成运行时，还支持 Web 活动调用专用虚拟网络中托管的 URL。 该集成运行时应可以看到 URL 终结点。 
@@ -128,7 +131,7 @@ connectVia | 用于连接到数据存储的[集成运行时](./concepts-integrat
 
 ### <a name="managed-identity"></a>托管标识
 
-使用数据工厂的托管标识指定要为其请求访问令牌的资源 URI。 若要调用 Azure 资源管理 API，请使用 `https://management.azure.com/`。 有关如何托管标识工作原理的详细信息，请参阅 [Azure 资源概述页面的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+使用数据工厂或 Synapse 工作区实例的托管标识指定要为其请求访问令牌的资源 URI。 若要调用 Azure 资源管理 API，请使用 `https://management.azure.com/`。 有关如何托管标识工作原理的详细信息，请参阅 [Azure 资源概述页面的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ```json
 "authentication": {
@@ -138,7 +141,7 @@ connectVia | 用于连接到数据存储的[集成运行时](./concepts-integrat
 ```
 
 > [!NOTE]
-> 如果数据工厂配置了 Git 存储库，则必须将凭据存储在 Azure Key Vault 中，才能使用基本身份验证或客户端证书身份验证。 Azure 数据工厂不会在 Git 中存储密码。
+> 如果数据工厂或 Synapse 工作区配置了 Git 存储库，则必须将凭据存储在 Azure Key Vault 中，才能使用基本身份验证或客户端证书身份验证。 该服务不会在 Git 中存储密码。
 
 ## <a name="request-payload-schema"></a>请求有效负载架构
 当使用 POST/PUT 方法时，正文属性表示发送到终结点的有效负载。 可以将链接服务和数据集作为有效负载的一部分进行传递。 下面是有效负载的架构：
@@ -258,7 +261,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动：
+参阅支持的其他控制流活动：
 
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)

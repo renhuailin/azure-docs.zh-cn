@@ -9,14 +9,17 @@ ms.workload: infrastructure
 ms.date: 03/17/2021
 ms.author: cynthn
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: e3f49268b11d57ccabccd7c14ccc244103d1db86
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f13c13ec30972c6129f794f831d3f937ca98c9dc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670230"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698336"
 ---
 # <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>使用 Azure PowerShell 查找并使用 Azure 市场 VM 映像
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 
 本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，可以在创建 VM 时指定市场映像和计划信息。
 

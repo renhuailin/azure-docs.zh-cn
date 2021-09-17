@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 270b3e3f4c5e462b66129413d7acf983efd3f8eb
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: be14a8cb9d72c439f5ba127858ccd3a3249b8a14
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357618"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770768"
 ---
 # <a name="scenario-single-page-application"></a>方案：单页应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "113357618"
 
 Microsoft 标识平台提供了 **两个** 选项来允许单页应用程序登录用户并获取用于访问后端服务或 Web API 的令牌。
 
-- [OAuth 2.0 授权代码流（使用 PKCE）](./v2-oauth2-auth-code-flow.md)。 授权代码流允许应用程序用授权代码来交换 **ID** 令牌（表示已经过身份验证的用户），以及交换调用受保护 API 所需的 **访问** 令牌。 此外，它还返回 **刷新** 令牌，这类令牌提供以用户身份长期访问资源而无需与这些用户交互的权限。 这是 **建议的** 做法。
+- [OAuth 2.0 授权代码流（使用 PKCE）](./v2-oauth2-auth-code-flow.md)。 授权代码流允许应用程序用授权代码来交换 **ID** 令牌（表示已经过身份验证的用户），以及交换调用受保护 API 所需的 **访问** 令牌。 PKCE (Proof Key for Code Exchange) 是代码交换证明密钥，旨在防止多个攻击，并能够安全地从公共客户端执行 OAuth 交换。 PKCE 是 RFC 7636 中所述的 IETF 标准。 此外，它还返回 **刷新** 令牌，这类令牌提供以用户身份长期访问资源而无需与这些用户交互的权限。 这是 **建议的** 做法。
 
 ![单页应用程序 - 授权](./media/scenarios/spa-app-auth.svg)
 

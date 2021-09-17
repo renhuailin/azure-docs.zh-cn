@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.openlocfilehash: 4f4e9b51a44ee193a946f76499c95d6fe77f2e5e
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 622e89392dc10f12fe81ed1c1085e5b9cc524999
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665392"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181294"
 ---
 # <a name="register-and-scan-an-azure-database-for-postgresql"></a>注册和扫描 Azure Database for PostgreSQL
 
@@ -37,7 +37,7 @@ Purview 仅支持 Azure Database for PostgreSQL 的 SQL 身份验证。
 
 #### <a name="sql-authentication-for-an-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 的 SQL 身份验证
 
-连接到 Azure Database for PostgreSQL 数据库需要完全限定的服务器名称和登录凭据。 如果没有可用的登录名，则可以按照[连接和查询](/azure/postgresql/connect-python)中的说明为 Azure Database for PostgreSQL 创建登录名。 后续步骤将用到该用户名和密码 。
+连接到 Azure Database for PostgreSQL 数据库需要完全限定的服务器名称和登录凭据。 如果没有可用的登录名，则可以按照[连接和查询](../postgresql/connect-python.md)中的说明为 Azure Database for PostgreSQL 创建登录名。 后续步骤将用到该用户名和密码 。
 
 1. 在 Azure 门户中，导航到密钥保管库
 1. 选择“设置”>“机密”
@@ -52,9 +52,9 @@ Purview 仅支持 Azure Database for PostgreSQL 的 SQL 身份验证。
 
 1. 导航到你的 Purview 帐户。
 
-1. 在左侧导航区域中选择“源”。
+1. 在左侧导航区域中选择“数据映射”。
 
-1. 选择“注册”。
+1. 选择“注册”
 
 1. 在“注册源”上选择“Azure Database for PostgreSQL” 。 选择“继续”。
 

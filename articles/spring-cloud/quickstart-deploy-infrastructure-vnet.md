@@ -2,18 +2,18 @@
 title: 快速入门 - 使用 Azure 资源管理器模板（ARM 模板）预配 Azure Spring Cloud
 description: 本快速入门介绍如何使用 ARM 模板将 Spring Cloud 群集部署到现有虚拟网络中。
 services: azure-resource-manager
-author: ryhud
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-java
 ms.author: rhudson
 ms.date: 05/27/2021
-ms.openlocfilehash: 73c24f62e2c4333cb1e8ea826792626591aa1c68
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: b012f34501a4b944f0f39d37c74fc91a97bc41c3
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895879"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272247"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-an-arm-template"></a>快速入门：使用 ARM 模板预配 Azure Spring Cloud
 
@@ -29,12 +29,13 @@ ms.locfileid: "112895879"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 订阅。 如果你没有订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * Azure Spring Cloud 群集的两个专用子网，一个用于服务运行时，另一个用于 Spring Boot 微服务应用程序。 有关子网和虚拟网络要求，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[虚拟网络要求](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements)部分。
 * 用于 Azure Spring Cloud 诊断设置的现有 Log Analytics 工作区，以及一个基于工作区的 Application Insights 资源。 有关详细信息，请参阅[使用诊断设置分析日志和指标](diagnostic-services.md)以及 [Azure Spring Cloud 中的 Application Insights Java 进程内代理](how-to-application-insights.md)。
 * 你已确定供 Azure Spring Cloud 群集使用的三个内部无类别域际路由 (CIDR) 范围（每个范围至少为 /16）。 这些 CIDR 范围不可直接路由，只能在 Azure Spring Cloud 群集内部使用。 群集无法将 169.254.0.0/16、172.30.0.0/16、172.31.0.0/16 或 192.0.2.0/24 用作内部 Spring Cloud CIDR 范围，或包含在群集虚拟网络地址范围内的任何 IP 范围   。
-* 已授予对虚拟网络的服务权限。 Azure Spring Cloud 资源提供程序要求对虚拟网络拥有“所有者”权限，以便为虚拟网络中专用的动态服务主体授予访问权限，从而进行进一步的部署和维护。 有关说明和详细信息，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[授予虚拟网络服务权限](how-to-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network)部分。
+* 已授予对虚拟网络的服务权限。 Azure Spring Cloud 资源提供程序要求对虚拟网络拥有“所有者”权限，以便为虚拟网络中专用的动态服务主体授予访问权限，从而进行进一步的部署和维护。 有关说明和详细信息，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[向服务授予虚拟网络权限](how-to-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network)部分。
 * 如果使用 Azure 防火墙或网络虚拟设备 (NVA)，则还需要满足以下先决条件：
+
    * 网络和完全限定域名 (FQDN) 规则。 有关详细信息，请参阅[虚拟网络要求](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements)。
    * 应用于每个服务运行时和 Spring Boot 微服务应用程序子网的唯一一个用户定义路由 (UDR)。 有关 UDR 的详细信息，请参阅[虚拟网络流量路由](../virtual-network/virtual-networks-udr-overview.md)。 在部署 Spring Cloud 群集之前，应将 UDR 配置为具有 NVA 目标的 0.0.0.0/0 路由。 有关详细信息，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[自带路由表](how-to-deploy-in-azure-virtual-network.md#bring-your-own-route-table)部分。
 
@@ -49,7 +50,7 @@ ms.locfileid: "112895879"
 * [Microsoft.AppPlatform/Spring](/azure/templates/microsoft.appplatform/spring)：创建 Azure Spring Cloud 实例。
 * [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)：创建 Application Insights 工作区。
 
-对于 Azure CLI 和 Terraform 部署，请参阅 GitHub 上的 [Azure Spring Cloud 参考体系结构](https://github.com/Azure/azure-spring-cloud-reference-architecture)存储库。
+对于 Azure CLI、Terraform 和 Bicep 部署，请参阅 GitHub 上的 [Azure Spring Cloud 参考体系结构](https://github.com/Azure/azure-spring-cloud-reference-architecture)存储库。
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -59,16 +60,16 @@ ms.locfileid: "112895879"
 
    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-spring-cloud-reference-architecture%2Fmain%2FARM%2Fbrownfield-deployment%2fazuredeploy.json)
 
-2. 为以下字段输入值：
+2. 输入以下字段的值：
 
-- 资源组：选择“新建”，为资源组输入唯一的名称，然后选择“确定”   。
-- springCloudInstanceName：输入 Azure Spring Cloud 资源的名称。
-- appInsightsName：输入 Azure Spring Cloud 的 Application Insights 实例的名称。
-- laWorkspaceResourceId：输入现有 Log Analytics 工作区的资源 ID（例如 /subscriptions/<your subscription>/resourcegroups/<your log analytics resource group>/providers/Microsoft.OperationalInsights/workspaces/<your log analytics workspace name>）。
-- springCloudAppSubnetID：输入 Azure Spring Cloud 应用子网的 resourceID。
-- springCloudRuntimeSubnetID：输入 Azure Spring Cloud 运行时子网的 resourceID。
-- springCloudServiceCidrs：以 CIDR 格式输入 IP 地址范围（总共 3 个）的逗号分隔列表。 这些 IP 范围将保留下来，用于托管底层的 Azure Spring Cloud 基础结构。 这 3 个范围应该至少是 /16 的未使用 IP 范围，且不能与网络中使用的任何可路由子网 IP 范围重叠。
-- tags：输入任何自定义标记。
+   - 资源组：选择“新建”，为资源组输入唯一的名称，然后选择“确定”   。
+   - springCloudInstanceName：输入 Azure Spring Cloud 资源的名称。
+   - appInsightsName：输入 Azure Spring Cloud 的 Application Insights 实例的名称。
+   - laWorkspaceResourceId：输入现有 Log Analytics 工作区的资源 ID（例如 /subscriptions/\<your subscription>/resourcegroups/\<your log analytics resource group>/providers/Microsoft.OperationalInsights/workspaces/\<your log analytics workspace name>）。
+   - springCloudAppSubnetID：输入 Azure Spring Cloud 应用子网的 resourceID。
+   - springCloudRuntimeSubnetID：输入 Azure Spring Cloud 运行时子网的 resourceID。
+   - springCloudServiceCidrs：以 CIDR 格式输入 IP 地址范围（总共 3 个）的逗号分隔列表。 这些 IP 范围将保留下来，用于托管底层的 Azure Spring Cloud 基础结构。 这 3 个范围应该至少是 /16 的未使用 IP 范围，且不能与网络中使用的任何可路由子网 IP 范围重叠。
+   - tags：输入任何自定义标记。
 
 3. 选择“审阅 + 创建”，然后选择“创建” 。
 
@@ -82,7 +83,7 @@ ms.locfileid: "112895879"
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
-```azurecli-interactive
+```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az group delete --name $resourceGroupName &&
@@ -96,6 +97,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
+
 ---
 
 ## <a name="next-steps"></a>后续步骤

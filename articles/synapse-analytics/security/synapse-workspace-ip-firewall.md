@@ -1,19 +1,19 @@
 ---
 title: 配置 IP 防火墙规则
 description: 一篇介绍如何在 Azure Synapse Analytics 中配置 IP 防火墙规则的文章
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
-ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: 787e600df4185346b250d9a96bdb89927e134075
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/15/2021
+ms.author: seshin
+ms.reviewer: wiassaf
+ms.openlocfilehash: a375c4c99e3b86706f9fed7bc52f3064995cd21c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472023"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252767"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Azure Synapse Analytics IP 防火墙规则
 
@@ -25,15 +25,17 @@ IP 防火墙规则基于每个请求的来源 IP 地址授予或拒绝对 Synaps
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>创建和管理 IP 防火墙规则
 
-可通过两种方式向 Synapse 工作区添加 IP 防火墙规则。 若要向工作区添加 IP 防火墙，请在创建工作区期间选择“安全 + 网络”，并选中“允许来自所有 IP 地址的连接”。
+可通过两种方式向 Azure Synapse 工作区添加 IP 防火墙规则。 若要向工作区添加 IP 防火墙，请在创建工作区期间选择“网络”，并选中“允许来自所有 IP 地址的连接” 。
 
-![屏幕截图突出显示了“安全 + 网络”按钮。](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
+> [!Important]
+> 此功能仅适用于未与托管 VNet 关联的 Azure Synapse 工作区。
 
-![Azure 门户 Synapse 工作区 IP 配置。](./media/synpase-workspace-ip-firewall/ip-firewall-2.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-connections-all-ip-addresses.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-connections-all-ip-addresses.png" alt-text="突出显示“网络”选项卡和“允许来自所有 IP 地址的连接”复选框的屏幕截图。":::
+
 
 还可以在创建工作区后向 Synapse 工作区添加 IP 防火墙规则。 在 Azure 门户中，从“安全性”下选择“防火墙”。 若要添加新的 IP 防火墙规则，请为其指定名称、起始 IP 和结束 IP。 完成后，选择“保存”。
 
-![Azure 门户中的 Azure Synapse 工作区 IP 配置。](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-firewalls-add-client-ip.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-firewalls-add-client-ip.png" alt-text="Synapse 工作区的“网络”页面的屏幕截图，其中突出显示了“添加客户端 IP”按钮和规则字段。":::
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>从你自己的网络连接到 Synapse
 

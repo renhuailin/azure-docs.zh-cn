@@ -3,12 +3,12 @@ title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 ms.date: 07/27/2021
 ms.topic: overview
-ms.openlocfilehash: 387c52eb1337f6d3aa7046b122fa66ff93be5e64
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 9462281ce37e066a920c17d1dc142a177b97fb2a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114726678"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770543"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -83,7 +83,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy 涵盖的资源
 
-Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启用了 Arc 的资源。 对于某些资源提供程序（例如 [Guest Configuration](./concepts/guest-configuration.md)、[Azure Kubernetes 服务](../../aks/intro-kubernetes.md)和 [Azure Key Vault](../../key-vault/general/overview.md)），可以使用一个更深度的集成来管理设置和对象。 有关详细信息，请参阅[资源提供程序模式](./concepts/definition-structure.md)。
+Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启用了 Arc 的资源。 对于某些资源提供程序（例如[来宾配置](./concepts/guest-configuration.md)、[Azure Kubernetes 服务](../../aks/intro-kubernetes.md)和 [Azure 密钥保管库](../../key-vault/general/overview.md)），可以使用一个更深度的集成来管理设置和对象。 有关详细信息，请参阅[资源提供程序模式](./concepts/definition-structure.md)。
 
 ### <a name="recommendations-for-managing-policies"></a>管理策略的建议
 
@@ -148,7 +148,7 @@ Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启
 | 策略 | 参数的名称 |参数的类型  |注意 |
 |---|---|---|---|
 | policyA | allowedLocations | array  |此参数要求将值设置为字符串列表，因为参数类型已定义为数组 |
-| policyB | allowedSingleLocation |string |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
+| policyB | allowedSingleLocation |字符串 |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
 
 在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
 

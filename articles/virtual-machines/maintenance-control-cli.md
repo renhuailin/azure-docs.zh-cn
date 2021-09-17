@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: a611daf290bda8d6511cb4217e411de2886ce822
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: 95054a4da3bc11e92cc140e7fb6689773b0343ac
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112370844"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698824"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>使用维护控制和 Azure CLI 来控制更新
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 利用维护控制，你可以决定何时为隔离的 VM 和 Azure 专用主机的主机基础结构应用平台更新。 本主题介绍维护控制的 Azure CLI 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
 

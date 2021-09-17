@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: f673c506411898788b35886dea741604e885e7a3
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a9234a2bcce6a754a96d1f323af9f08a9697ff03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461668"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725238"
 ---
 # <a name="register-and-scan-oracle-source"></a>注册并扫描 Oracle 源
 
@@ -74,7 +74,7 @@ Oracle 源支持完全扫描（用于从 Oracle 数据库中提取元数据）�
 若要在数据目录中注册新的 Oracle 源，请执行以下操作：
 
 1.  导航到你的 Purview 帐户。
-2.  在左侧导航区域中选择“源”。
+2.  在左侧导航区域中选择“数据映射”。
 3.  选择“注册”
 4.  在“注册源”上，选择“Oracle”。 选择“继续”。
 

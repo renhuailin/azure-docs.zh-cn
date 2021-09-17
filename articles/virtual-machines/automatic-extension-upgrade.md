@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6af80da8c05df4f56fe04ae45169c5e1a63fcd9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 120171f77f9b9895cf58bbadd2f475110d068ffd
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751727"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698222"
 ---
 # <a name="automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Azure 中 VM 和规模集的自动扩展升级
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 自动扩展升级适用于 Azure VM 和 Azure 虚拟机规模集。 在 VM 或规模集中启用自动扩展升级后，每当扩展发行商发布了扩展的新版本，该扩展就会自动升级。
 

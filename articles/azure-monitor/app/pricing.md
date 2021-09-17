@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 6/24/2021
+ms.date: 8/23/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: 39109106a100d2af8a9dad4e6009f4c73fea8f59
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 8183e52e5b475f08df3631021d8ea6d3120525c8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195519"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772589"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -37,22 +37,20 @@ ms.locfileid: "122195519"
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算应用程序的管理成本
 
-如果尚未使用 Application Insights，可以使用 [Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估算使用 Application Insights 的成本。 首先在搜索框中输入“Azure Monitor”，然后单击生成的 Azure Monitor 磁贴。 将页面向下滚动到“Azure Monitor”，然后从“类型”下拉列表中选择“Application Insights”。  可以在这里输入每月要收集的数据的 GB 数，因此问题是 Application Insights 在监视应用程序时会收集多少数据量。
+如果尚未使用 Application Insights，可以使用 [Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估算使用 Application Insights 的成本。 首先在搜索框中输入“Azure Monitor”，然后单击生成的 Azure Monitor 磁贴。 向下滚动页面到 Azure Monitor，然后展开“Application Insights”部分。 估计成本取决于引入的日志数据量。  有两种估计数据量的方法：
 
-可以通过两种方法解决这个问题：使用 ASP.NET SDK 中提供的默认监视和自适应采样；或根据其他类似客户遇到的情况估算可能的数据引入量。
+1. 根据其他类似应用程序生成的内容估计可能的数据引入量，或 
+2. 使用 ASP.NET SDK 中提供的默认监视和自适应采样。
+
+### <a name="learn-from-what-similar-applications-collect"></a>了解类似应用程序收集的内容
+
+在 Application Insights 的 Azure 监控定价计算器中，单击以启用 **基于应用程序活动估计数据量**。 在这里，可以提供有关应用程序的输入（如果收集客户端遥测数据，请提供每月请求数和页面视图数），然后，计算器会告知类似应用程序收集的中间值和第 90 百分位的数据量。 这些应用程序涉及各种 Application Insights 配置（例如，某些应用程序具有默认[采样](./sampling.md)、有些没有采样等），因此你仍然拥有控制权，可以使用采样将引入的数据量减少到远低于中间值级别。 
 
 ### <a name="data-collection-when-using-sampling"></a>在使用采样时收集数据
 
 使用 ASP.NET SDK 的[自适应采样](sampling.md#adaptive-sampling)，系统会自动调整数据量，将数据量保持在默认 Application Insights 监视功能的最大指定流量速率范围内。 如果应用程序产生的遥测数据很少（例如在调试时或由于使用量较小所致），那么，只要数据量低于配置的每秒事件数级别，采样处理器就不会丢弃项。 对于大数据量应用程序，默认阈值为每秒 5 个事件，自适应采样会将每日事件的数量限制为 432,000。 使用典型的平均事件大小 1 KB，这相当于托管应用程序的每个节点每月（按平均 31 天计算）可引入 13.4 GB 的遥测数据（因为每个节点的采样都是在本地完成的。）
 
-> [!NOTE]
-> Azure Monitor 日志数据大小以 GB 计算（1 GB = 10^9 字节）。
-
 对于不支持自适应采样的 SDK，可以使用[引入采样](./sampling.md#ingestion-sampling)（Application Insights 收到数据时根据要保留的数据百分比采样），或使用 [ASP.NET、ASP.NET Core 和 Java 网站的固定速率采样](sampling.md#fixed-rate-sampling)来减少从 Web 服务器和 Web 浏览器发送的流量
-
-### <a name="learn-from-what-similar-customers-collect"></a>参考类似客户收集的信息
-
-在 Application Insights 的 Azure 监视定价计算器中，如果启用“根据应用程序活动估算数据量”功能，可以提供有关应用程序的输入（如果以后会收集客户端遥测数据，请提供每月请求数和页面查看次数），然后，计算器会告知类似由应用程序收集的中间值和第 90 个百分位的数据量。 这些应用程序涉及各种 Application Insights 配置（例如，某些应用程序具有默认[采样](./sampling.md)、有些没有采样等），因此你仍然拥有控制权，可以使用采样将引入的数据量减少到远低于中间值级别。 但这只是了解其他类似客户看到的情况的一个起点。
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>了解自己的使用情况和估算成本
 
@@ -332,7 +330,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 场景                               | 每日节点计数总数 |
+| 方案                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 

@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: b7191e4d1cff49ff31fa66f80c3aafbc4dfd9924
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 8132ed61a1588c8ccdeb2ac9dc0eb6b5354fd0e0
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814273"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778843"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps"></a>为 Azure 静态 Web 应用配置应用程序设置
 
 应用程序设置包含可能更改的值（例如数据库连接字符串）的配置设置。 通过添加应用程序设置，可以修改应用的配置输入，而无需更改应用程序代码。
 
-应用程序设置包含：
+应用程序设置：
 
 - 静态加密
 - 复制到[过渡环境](review-publish-pull-requests.md)和生产环境
-
-应用程序设置有时也称为环境变量。
+- 只能是字母数字字符、`.` 和 `_`
+- 有时也称为环境变量
 
 > [!IMPORTANT]
 > 本文所述的应用程序设置仅适用于 Azure 静态 Web 应用的后端 API。

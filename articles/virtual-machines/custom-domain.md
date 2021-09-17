@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2021
 ms.author: jamesser
 ms.reviewer: cynthn
-ms.openlocfilehash: e8e3567d752627915596645b13246236bad321c9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5bd9adb8354c3919a63e3de2e850513641af12a3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146304"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696546"
 ---
 # <a name="add-custom-domain-to-azure-vm-or-resource"></a>将自定义域添加到 Azure VM 或资源
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集
+
 
 在 Azure 中，可以通过多种方式将自定义域连接到 VM 或资源。 对于具有公共 IP（虚拟机、负载均衡器、应用程序网关）的所有资源，最直接的方法是在相应的域注册器中创建 A 记录集。 
 

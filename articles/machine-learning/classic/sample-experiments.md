@@ -1,5 +1,5 @@
 ---
-title: 机器学习工作室（经典）：通过示例开始试验 - Azure
+title: 机器学习工作室（经典版）：通过示例开始试验 - Azure
 description: 了解如何通过 Azure AI 库和机器学习工作室（经典）使用示例机器学习试验来创建新试验。
 services: machine-learning
 ms.service: machine-learning
@@ -9,19 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: fbb9787ce6641e379c3f43f0725d28dbd51fc962
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 82b64ff099b2b503e2150d45f952d9c833b64b16
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579551"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689595"
 ---
 # <a name="create-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建机器学习工作室（经典）试验
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 了解如何从 [Azure AI 库](https://gallery.azure.ai/)中的示例试验开始，而不是从头开始创建机器学习试验。 可以使用这些示例构建自己的机器学习解决方案。
 

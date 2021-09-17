@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: quickstart
-ms.openlocfilehash: ae417006903c8d2478126f928f05647361bad1b9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e77196572a0ea3b18f0b28a6ad26349e6e7c668e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896200"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744794"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入门：生成、部署和使用翻译的自定义模型
 
@@ -27,6 +27,8 @@ ms.locfileid: "98896200"
 2. 通过 Azure 门户完成的对文本翻译 API 的订阅。 需要文本翻译 API 订阅密钥才能与自定义翻译中的工作区相关联。 请参阅[如何注册文本翻译 API](../translator-how-to-signup.md)。
 
 3. 当你同时具备上述两个条件时，请登录到[自定义翻译器](https://portal.customtranslator.azure.ai)门户，以创建工作区、项目、上传文件和创建/部署模型。
+
+你还可以在 [YouTube](https://www.youtube.com/watch?v=TykB6WDTkRc&t=3s) 上观看自定义翻译器从头到尾的完整演练视频。
 
 >[!Note]
 >对于在[已启用的 VNET](../../../api-management/api-management-using-with-vnet.md) 内创建的文本翻译 API 资源，自定义翻译器不支持为其创建工作区。

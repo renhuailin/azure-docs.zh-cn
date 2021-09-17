@@ -7,14 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: ecc3f5934e4dd37cc27a1715ea39f86619d581ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9dfc76f360c90bb14304ccd75f87463b9b2c901
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98730200"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694846"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>用于创建和管理 Azure 虚拟机的常用 PowerShell 命令
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 本文介绍一些可用于在 Azure 订阅中创建和管理虚拟机的 Azure PowerShell 命令。  若要获取特定命令行开关和选项的详细帮助，可以使用 **Get-Help** 命令。
 

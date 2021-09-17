@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: fee6770108cbcc2334b2d8fb3ccc3b1e923772d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69df4491272e849c34edd65c462d37587615ae46
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673247"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689698"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure 市场库映像部署 Oracle 12c 数据库。 
 

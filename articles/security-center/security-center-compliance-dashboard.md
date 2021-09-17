@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 08/09/2021
 ms.author: memildin
-ms.openlocfilehash: 970329753d6dd6c6175c26da4288c304e27e3982
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: fae230c3f6dc37a269299fab74400f87198195d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734927"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 
@@ -29,6 +29,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 > [!div class="checklist"]
 > * 使用合规性仪表板评估合规性
 > * 针对建议进行操作，改进符合性情况
+> * 下载 PDF/CSV 报告以及合规性状态的认证报告
 > * 设置合规性状态更改时的警报
 > * 将合规性数据导出为连续流和每周快照
 
@@ -41,7 +42,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 - 必须启用 [Azure Defender](azure-defender.md)。 可以免费试用 Azure Defender 30 天。
 - 你必须使用对策略合规性数据具有读取者访问权限的帐户登录（安全读取者的权限不够）。 订阅的全局读取器角色将起作用。 至少需要分配“资源策略参与者”和“安全管理员”角色 。
 
-##  <a name="assess-your-regulatory-compliance"></a>评估合规性
+## <a name="assess-your-regulatory-compliance"></a>评估合规性
 
 法规合规性仪表板显示所选的合规性标准及其所有要求，其中受支持的要求映射到适用的安全评估。 这些评估的状态反映了标准的合规性。
 
@@ -56,12 +57,6 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 1. 针对与自己相关的符合性标准，选择一个选项卡 (1)。 你可看到该标准应用于哪些订阅 (2)，以及该标准的所有控件列表 (3)。 对于适用控件，你可查看与控件关联的及格评估和未及格评估的详细信息 (4)，以及受影响的资源数量 (5)。 某些控件为灰显状态。这些控件没有任何与之关联的安全中心评估。 查看其要求并在环境中对其进行评估。 其中一部分可能与进程相关，与技术无关。
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="浏览特定标准的合规性详细信息。":::
-
-1. 要生成总结特定标准的当前合规性状态的 PDF 报告，请选择“下载报告”。
-
-    该报告根据安全中心评估数据，就所选标准提供你的合规性状态的大致汇总。 该报告按照该特定标准的控件进行整理。 该报告可与相关利益干系人共享，并可能为内部和外部审计员提供证据。
-
-    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="下载合规性报告。":::
 
 ## <a name="improve-your-compliance-posture"></a>改进符合性情况
 
@@ -84,10 +79,32 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
     > [!NOTE]
     > 评估大约每 12 小时运行一次，因此只有在下一次相关评估运行以后才能看到对符合性数据造成的影响。
 
+## <a name="generate-compliance-status-reports-and-certificates"></a>生成合规性状态报告和证书
 
-## <a name="export-your-compliance-status-data"></a>导出合规性状态数据
+- 要生成总结特定标准的当前合规性状态的 PDF 报告，请选择“下载报告”。
 
-如果要在环境中使用其他监视工具来跟踪合规性状态，则安全中心会提供一种导出机制来简化此操作。 配置“连续导出”将选择的数据发送到 Azure 事件中心或 Log Analytics 工作区。
+    该报告根据安全中心评估数据，就所选标准提供你的合规性状态的大致汇总。 该报告按照该特定标准的控件进行整理。 该报告可与相关利益干系人共享，并可能为内部和外部审计员提供证据。
+
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="使用安全中心法规合规性仪表板中的工具栏下载合规性报告。":::
+
+- 若要适用于订阅的标准的 Azure 和 Dynamics 认证报告，请使用“审核报告”选项 。 
+
+    :::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="使用安全中心法规合规性仪表板中的工具栏下载 Azure 和 Dynamics 认证报告。":::
+
+    选择用于相关报告类型（PCI、SOC 和 ISO 等）的选项卡，然后使用筛选器来查找所需的特定报告：
+
+    :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard-ga.png" alt-text="使用选项卡和筛选器筛选可用 Azure 审核报告的列表。":::
+
+    例如，在 PCI 选项卡中，可以下载 ZIP 文件，其中包含证明 Microsoft Azure、Dynamics 365 和其他联机服务是否符合 ISO22301 框架的数字签名证书，以及解释和呈现证书所需的辅助材料。 
+
+    > [!NOTE]
+    > 下载其中一个认证报告时，会显示以下隐私声明：
+    > 
+    > 下载此文件即表示你同意 Microsoft 在下载时存储当前用户和所选订阅。此数据用于在下载的审核报告发生更改或更新时通知你。仅当需要通知时，Microsoft 和生成认证/报表的审核公司才会使用此数据。
+
+## <a name="configure-frequent-exports-of-your-compliance-status-data"></a>配置合规性状态数据的频繁导出
+
+如果要在环境中使用其他监视工具来跟踪合规性状态，则安全中心会提供一种导出机制来简化此操作。 配置“连续导出”将选择的数据发送到 Azure 事件中心或 Log Analytics 工作区。 有关详细信息，请参阅[连续导出安全中心数据](continuous-export.md)。
 
 使用“连续导出”将数据发送到 Azure 事件中心或 Log Analytics 工作区：
 
@@ -99,11 +116,8 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
     :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="持续导出法规合规性数据的每周快照。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
 
-还可以直接从法规合规性仪表板导出法规合规性数据的 PDF/CSV 报表：
-
-:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="将法规合规性数据导出为 PDF 或 CSV 报表。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
-
-有关详细信息，请参阅[连续导出安全中心数据](continuous-export.md)。
+> [!TIP]
+> 还可以直接从法规合规性仪表板手动导出有关单个时间点的报告。 使用“下载报告”或“审核报告”工具栏选项生成这些 PDF/CSV 报告或 Azure 和 Dynamics 认证报告   。 请参阅[评估合规性](#assess-your-regulatory-compliance) 
 
 
 ## <a name="run-workflow-automations-when-there-are-changes-to-your-compliance"></a>当合规性发生变更时，运行工作流自动化
@@ -187,11 +201,11 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 
 ### <a name="what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard"></a>需要具有哪些 Azure Defender 计划或许可证才能使用法规合规性仪表板？
-如果你在你的任何 Azure 资源类型上启用了任何 Azure Defender 包，那么你有权在安全中心访问法规合规性仪表板及其所有数据。
+如果你在任何 Azure 资源上启用了任何 Azure Defender 计划，那么你可以访问安全中心法规合规性仪表板及其所有数据 。
 
 
 ### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>如何知道要使用哪个基准或标准？
-[Azure 安全基准](/security/benchmark/azure/introduction) (ASB) 是 Microsoft 定义的一组规范安全建议和最佳做法，与常见的合规性控制框架（包括 [CIS Microsoft Azure 基础基准](https://www.cisecurity.org/benchmark/azure/)和 [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)）一致。 ASB 是一种非常全面的基准，旨在建议各种 Azure 服务的最新安全功能。 我们建议希望最大限度改进其安全态势，并且能够将其合规性状态与行业标准保持一致的客户使用 ASB。
+[Azure 安全基准](/security/benchmark/azure/introduction) (ASB) 是 Microsoft 定义的一组规范安全建议和最佳做法，与常见的合规性控制框架（包括 [CIS Microsoft Azure 基础基准](https://www.cisecurity.org/benchmark/azure/)和 [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)）一致。 ASB 是一种全面的基准，旨在建议各种 Azure 服务的最新安全功能。 我们建议希望最大限度改进其安全态势，并且将其合规性状态与行业标准保持一致的客户使用 ASB。
 
 [CIS 基准](https://www.cisecurity.org/benchmark/azure/)由独立实体 Internet 安全中心 (CIS) 编写，其中包含有关部分核心 Azure 服务的建议。 我们使用 CIS 来尝试确保其建议与 Azure 中的最新增强功能保持同步，但是有时它们确实落伍了并且过时了。 尽管如此，一些客户还是喜欢将 CIS 的这一客观第三方评估用作其初始和主要安全基线。
 

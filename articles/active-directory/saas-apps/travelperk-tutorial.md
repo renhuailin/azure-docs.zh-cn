@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/23/2020
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: eefc47e1308dc5b59d8b57d7481a5250a7d2af93
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ab437afbd8e0dd3035837da47bbbb89e358103f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99475737"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272303"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TravelPerk 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "99475737"
 * 让用户能够使用其 Azure AD 帐户自动登录到 TravelPerk。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,11 +37,11 @@ ms.locfileid: "99475737"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* TravelPerk 支持 SP 启动的 SSO
+* TravelPerk 支持 SP 启动的 SSO。
 
-* TravelPerk 支持实时用户预配
+* TravelPerk 支持实时用户预配。
 
-## <a name="adding-travelperk-from-the-gallery"></a>从库中添加 TravelPerk
+## <a name="add-travelperk-from-the-gallery"></a>从库中添加 TravelPerk
 
 若要配置 TravelPerk 与 Azure AD 的集成，需要从库中将 TravelPerk 添加到托管 SaaS 应用的列表。
 
@@ -51,7 +51,6 @@ ms.locfileid: "99475737"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“TravelPerk” 。
 1. 从结果面板中选择“TravelPerk”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-travelperk"></a>配置并测试 TravelPerk 的 Azure AD SSO
 
@@ -72,20 +71,20 @@ ms.locfileid: "99475737"
 
 1. 在 Azure 门户中的 TravelPerk 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/` 
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/accounts/saml2/metadata/<APPLICATION_ID>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/accounts/saml2/metadata/<APPLICATION_ID>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/accounts/saml2/callback/<APPLICATION_ID>/?acs`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/accounts/saml2/callback/<APPLICATION_ID>/?acs`
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<COMPANY>.travelperk.com/` 
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、回复 URL 和标识符更新这些值。 可在你的 TravelPerk 帐户中找到这些值：转到“公司设置” > “集成” > “单一登录”  。 若要获得帮助，请访问 [TravelPerk 帮助中心](https://support.travelperk.com/hc/en-us/articles/360052450271-How-can-I-setup-SSO-for-Azure-SAML-)。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 可在你的 TravelPerk 帐户中找到这些值：转到“公司设置” > “集成” > “单一登录”  。 若要获得帮助，请访问 [TravelPerk 帮助中心](https://support.travelperk.com/hc/articles/360052450271-How-can-I-setup-SSO-for-Azure-SAML)。
 
 1. TravelPerk 应用程序需要特定格式的 SAML 断言，这就需要将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。 在默认映射中，emailaddress 是使用 user.mail 映射的 。 但是，TravelPerk 应用程序期望使用 user.userprincipalname 映射 emailaddress 。 对于 TravelPerk，必须编辑属性映射：单击“编辑”图标，然后更改属性映射。 若要编辑某一属性，只需单击该属性以打开编辑模式。
 
@@ -98,6 +97,7 @@ ms.locfileid: "99475737"
 1. 在“设置 TravelPerk”部分中，根据需要复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -134,11 +134,11 @@ ms.locfileid: "99475737"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 TravelPerk 登录 URL，可以从那里启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 TravelPerk 登录 URL，可以从那里启动登录流。 
 
-2. 直接转到 TravelPerk 登录 URL，并从那里启动登录流。
+* 直接转到 TravelPerk 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 TravelPerk 磁贴时，将会重定向到 TravelPerk 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 TravelPerk 磁贴时，会重定向到 TravelPerk 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,18 +7,18 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/18/2021
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6385f03556d155941139b77333d6f4a25081fe67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fa12eca00bca011107f48c6f1b282dded4f3b5a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103152"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444549"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>注册调用 Web API 的移动应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "100103152"
 
 ### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Windows 集成身份验证、用户名-密码以及 B2C 的受众
 
-如果你有通用 Windows 平台 (UWP) 应用，则可以使用 Windows 集成身份验证将用户登录。 若要使用 Windows 集成身份验证或用户名-密码身份验证，应用程序需在你自己的业务线 (LOB) 开发人员租户中将用户登录。 在独立软件供应商 (ISV) 方案中，应用程序可以在 Azure Active Directory 组织中将用户登录。 Microsoft 个人帐户不支持这些身份验证流。
+如果拥有通用 Windows 平台 (UWP) 应用，则可使用集成 Windows 身份验证 (IWA) 使用户登录。 若要使用 IWA 或用户名-密码身份验证，则应用程序需在你自己的业务线 (LOB) 开发人员租户中使用户登录。 在独立软件供应商 (ISV) 方案中，应用程序可以在 Azure Active Directory 组织中将用户登录。 Microsoft 个人帐户不支持这些身份验证流。
 
 还可以使用传递 B2C 颁发机构和策略的社交标识将用户登录。 若要使用此方法，只能使用交互式身份验证和用户名-密码身份验证。 用户名-密码身份验证目前仅在 Xamarin.iOS、Xamarin.Android 和 UWP 上受支持。
 
@@ -90,7 +90,7 @@ ms.locfileid: "100103152"
 
 ## <a name="api-permissions"></a>API 权限
 
-移动应用程序代表已登录用户调用 API。 应用需要请求委托的权限。 这些权限也称为范围。 根据所需的体验，可以通过 Azure 门户以静态方式请求委托的权限。 或者，可以在运行时动态请求这些权限。
+适用于已登录用户的移动应用程序调用 API。 应用需要请求委托的权限。 这些权限也称为范围。 根据所需的体验，可以通过 Azure 门户以静态方式请求委托的权限。 或者，可以在运行时动态请求这些权限。
 
 以静态方式注册权限可让管理员轻松审批应用。 建议使用静态注册。
 

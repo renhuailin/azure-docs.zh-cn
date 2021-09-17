@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/17/2020
+ms.date: 08/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 0cc005ee22bff897a87679a0bde95ffec6e98e51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96077765fe4332c56a2d2d429bc5a18c2fcaf750
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522402"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772472"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nimbus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Nimbus 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "92522402"
 * 让用户能够使用其 Azure AD 帐户自动登录到 Nimbus。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,10 +37,10 @@ ms.locfileid: "92522402"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Nimbus 支持 SP 和 IDP 启动的 SSO
-* Nimbus 支持实时用户预配
+* Nimbus 支持 SP 和 IDP 发起的 SSO。
+* Nimbus 支持实时用户预配。
 
-## <a name="adding-nimbus-from-the-gallery"></a>从库中添加 Nimbus
+## <a name="add-nimbus-from-the-gallery"></a>从库中添加 Nimbus
 
 若要配置 Nimbus 与 Azure AD 的集成，需要从库中将 Nimbus 添加到托管 SaaS 应用的列表。
 
@@ -50,7 +50,6 @@ ms.locfileid: "92522402"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Nimbus” 。
 1. 从结果面板中选择“Nimbus”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-nimbus"></a>配置并测试 Nimbus 的 Azure AD SSO
 
@@ -71,19 +70,19 @@ ms.locfileid: "92522402"
 
 1. 在 Azure 门户中的 Nimbus 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.time2work.com/Security/ADFS.aspx`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.time2work.com/Security/ADFS.aspx`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.time2work.com/Security/ADFS.aspx?authmode=15&saml=2.0`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.time2work.com/`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.time2work.com/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Nimbus 客户端支持团队](mailto:support@nimbus.cloud)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -91,6 +90,7 @@ ms.locfileid: "92522402"
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -135,9 +135,9 @@ ms.locfileid: "92522402"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Nimbus 
+* 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Nimbus。 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Nimbus 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Nimbus。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Nimbus 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Nimbus。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,16 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 8b0bc143ca92961d7c358248b73ee5524e6835c3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bf81d49bbbfaae2b96dfb712ae69568695ba6f23
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768186"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687513"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 虚拟机上的自定义数据和 Cloud-Init
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集
 
 可能需要在预配时将脚本或其他元数据注入 Microsoft Azure 虚拟机。  在其他云中，此概念通常称为用户数据。  在 Microsoft Azure 中，我们有一个称为自定义数据的类似功能。 
 
@@ -80,7 +82,7 @@ Azure 目前支持两个预配代理：
 若要排查自定义数据执行问题，请查看故障排除[文档](./linux/using-cloud-init.md#troubleshooting-cloud-init)。
 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>是否可以在创建 VM 后更新自定义数据？
 对于单个 VM，无法更新 VM 模型中的自定义数据，但对于 VMSS，你可以通过 [REST API](/rest/api/compute/virtualmachinescalesets/update) 更新 VMSS 自定义数据（不适用于 PS 或 AZ CLI 客户端）。 在 VMSS 模型中更新自定义数据时：
 * VMSS 中的现有实例只有在重置映像之后，才会获得更新的自定义数据。

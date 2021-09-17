@@ -9,15 +9,16 @@ ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 85d6350a36e62ace8f1922d30493d0f1d448d315
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f186052117f40167c9e4e72e350bf689f43bd8b1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765928"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692837"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-azure-cli"></a>使用 Azure CLI 更改由 Azure VM 使用的 OS 磁盘
 
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 如果有现有 VM，但希望将磁盘交换为备份磁盘或其他 OS 磁盘，则可使用 Azure CLI 交换 OS 磁盘。 无需删除和重新创建 VM。 甚至可在另一资源组中使用托管磁盘，只要该磁盘尚未使用。
 

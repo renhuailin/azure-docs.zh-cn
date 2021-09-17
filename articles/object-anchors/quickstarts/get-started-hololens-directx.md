@@ -4,15 +4,15 @@ description: 此快速入门介绍如何使用 Object Anchors 生成 HoloLens �
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/02/2021
+ms.date: 08/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: eee130b0736c87b118b38f19e7523c07a431e5c9
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 605acf95b521e150456a69e84d2008be7080589a
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202879"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254181"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>快速入门：在 C++/WinRT 和 DirectX 中使用 Azure Object Anchors 创建 HoloLens 应用
 
@@ -38,6 +38,8 @@ ms.locfileid: "114202879"
   * 若要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”    。
 
 [!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
+[!INCLUDE [Upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
 
 ## <a name="open-the-sample-project"></a>打开示例项目
 
@@ -67,25 +69,19 @@ ms.locfileid: "114202879"
 
 成功编译示例项目后，可以将应用部署到 HoloLens。
 
-打开 HoloLens 设备，登录并使用 USB 电缆将其连接到电脑。 请确保“设备”是选择的部署目标（参见上文）。
+确保 HoloLens 设备已打开并通过 USB 电缆连接到电脑。 请确保“设备”是选择的部署目标（参见上文）。
 
 右键单击“AoaSampleApp”项目，然后从弹出菜单中单击“部署”以安装应用。 如果 Visual Studio 的“输出窗口”中没有显示任何错误，则会在 HoloLens 上安装应用。
 
 :::image type="content" source="./media/vs-deploy-app.png" alt-text="将应用部署到 HoloLens":::
 
-在启动应用之前，需要上传对象模型。 按照下面的“引入对象模型并检测其实例”一节中的说明进行操作。
+在启动应用之前，应先将对象模型（例如 chair.ou）上传到 HoloLens 上的“3D 对象”文件夹 。 如果未上传，请按照[“上传模型”](#upload-your-model)部分中的说明进行操作。
 
-若要启动和调试应用，请选择“调试” **>“开始调试”** 。 若要停止应用，请选择“停止调试”或按 Shift + F5。
+若要启动和调试应用，请选择“调试” **>“开始调试”** 。
 
 ## <a name="ingest-object-model-and-detect-its-instance"></a>引入对象模型并检测其实例
 
-需要创建一个对象模型来运行示例应用。 假设你已在空间中获得对象的 CAD 或扫描的 3D 网格模型。 请参阅[快速入门：引入 3D 模型](./get-started-model-conversion.md)了解如何创建模型。
-
-在本例中，将模型 chair.ou 下载到你的计算机。 然后，从 HoloLens 设备门户选择“系统”>“文件资源管理器”>“LocalAppData”>“AoaSampleApp”>“LocalState”，然后选择“浏览...” 。然后，选择模型文件，例如 chair.ou，再选择“上传” 。 随后你应该会在本地缓存中看到该模型文件。
-
-:::image type="content" source="../../../includes/media/object-anchors-quickstarts/portal-upload-model.png" alt-text="门户上传模型":::
-
-在 HoloLens 中启动 AoaSampleApp 应用（如果它已打开，请将其关闭并重新打开）。 走近（2 米距离内）目标对象（椅子），并从多个角度观察以进行扫描。 应该会看到对象周围出现一个粉红色的边框，一些黄色的点呈现在对象表面的附近，这表示检测到了该对象。
+AoaSampleApp 应用现已在 HoloLens设备上运行。 走近（2 米距离内）目标对象（椅子），并从多个角度观察以进行扫描。 应该会看到对象周围出现一个粉红色的边框，一些黄色的点呈现在对象表面的附近，这表示检测到了该对象。
 
 :::image type="content" source="./media/chair-detection.png" alt-text="椅子检测":::
 
@@ -94,7 +90,7 @@ ms.locfileid: "114202879"
 你可以通过右手或左手的手指在空中点击，来定义应用中对象的搜索空间。 搜索空间将在半径为 2 米的球形、4 米 ^3 的边框和视锥之间切换。 对于汽车等大型对象，最佳选择通常是在面对对象的一角站立在大约 2 米的距离时，使用视锥选择。
 每当搜索区域发生更改时，应用都将删除当前正在跟踪的实例，然后在新的搜索区域尝试再次查找它们。
 
-此应用可一次跟踪多个对象。 为此，请将多个模型上传到“LocalState”文件夹，并设置一个涵盖所有目标对象的搜索区域。 检测和跟踪多个对象可能需要更长时间。
+此应用可一次跟踪多个对象。 为此，请将多个模型上传到设备的“3D 对象”文件夹，并设置一个涵盖所有目标对象的搜索区域。 检测和跟踪多个对象可能需要更长时间。
 
 应用将 3D 模型紧密地对齐到其物理对应项。 用户可以在空中使用左手点击以启用高精度跟踪模式，这可以计算出更准确的姿势。 这仍是一项试验性功能，它会消耗更多的系统资源，并可能会导致估计姿势的抖动更剧烈。 在空中使用左手再次点击即可切换回正常跟踪模式。
 

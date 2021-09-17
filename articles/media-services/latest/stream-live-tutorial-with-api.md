@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 06/13/2019
 ms.author: inhenkel
-ms.openlocfilehash: d471431da7cc738f9ef908897ccab34343cc4c4b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f10ef55a44aa917fd8f0fb3783dcd29284512d7e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470422"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732670"
 ---
 # <a name="tutorial-stream-live-with-media-services-by-using-net-50"></a>教程：使用 .NET 5.0 通过媒体服务进行实时流式传输
 
@@ -68,11 +68,7 @@ git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
 
 实时传送视频流示例位于 [Live](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live) 文件夹中。
 
-打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/appsettings.json)。 将这些值替换为在[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中获得的凭据。
-
-请注意，还可以在项目根处使用 .env 文件格式，仅为 .NET 示例存储库中的所有项目设置一次环境变量。 只需复制 sample.env 文件，然后填写从 Azure 门户中的媒体服务 API 访问页面或从 Azure CLI 获得的信息。 将 sample.env 文件重命名为 .env 以在所有项目中使用它 。
-
-已配置 .gitignore 文件以避免将此文件发布到分叉存储库。 
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 > [!IMPORTANT]
 > 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则最终会在帐户中有多个直播活动。
@@ -81,22 +77,24 @@ git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>检查执行实时传送视频流的代码
 
-此部分研究 LiveEventWithDVR 项目的 [Authentication.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Common_Utils/Authentication.cs) 文件和 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) 文件中定义的函数。
+此部分研究 LiveEventWithDVR 项目的 [Authentication.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Common_Utils/Authentication.cs) 文件（在 Common_Utils 文件夹中）和 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) 文件中定义的函数。
 
 此示例为每个资源创建唯一的后缀，因此即使在没有清理的情况下运行示例多次，也不会有名称冲突。
 
 
 ### <a name="start-using-media-services-apis-with-the-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 `AzureMediaServicesClient` 对象。 若要创建对象，需要提供客户端凭据以使用 Azure Active Directory 连接到 Azure。 另一个选项是使用在 `GetCredentialsInteractiveAuthAsync` 中实现的交互式身份验证。
+Authentication.cs 使用本地配置文件 (appsettings.json 或 .env) 中提供的凭据创建 `AzureMediaServicesClient` 对象。
+
+通过 `AzureMediaServicesClient` 对象可以开始将媒体服务 API 与 .NET 结合使用。 若要创建对象，需要提供客户端凭据以使用 Azure Active Directory 连接到 Azure（在 `GetCredentailsAsync` 中实现）。 另一个选项是使用在 `GetCredentialsInteractiveAuthAsync` 中实现的交互式身份验证。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
 
-在文章开头克隆的代码中，`GetCredentialsAsync` 函数根据本地配置文件 (appsettings.json) 中提供的凭据或通过存储库根目录中的 .env 环境变量文件创建 `ServiceClientCredentials` 对象 。
+在文章开头克隆的代码中，`GetCredentialsAsync` 函数根据本地配置文件 (appsettings.json) 中提供的凭据或通过存储库根目录中的 .env 环境变量文件创建 `ServiceClientCredentials` 对象。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#GetCredentialsAsync)]
 
-在交互式身份验证的情况下，`GetCredentialsInteractiveAuthAsync` 函数根据交互式身份验证和本地配置文件 (appsettings.json) 中提供的连接参数或通过存储库根目录中的 .env 环境变量文件创建 `ServiceClientCredentials` 对象 。 在本例中，配置或环境变量文件中均不需要 AADCLIENTID 和 AADSECRET。
+在交互式身份验证的情况下，`GetCredentialsInteractiveAuthAsync` 函数根据交互式身份验证和本地配置文件 (appsettings.json) 中提供的连接参数或通过存储库根目录中的 .env 环境变量文件创建 `ServiceClientCredentials` 对象。 在本例中，配置或环境变量文件中均不需要 AADCLIENTID 和 AADSECRET。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
 
@@ -204,7 +202,7 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ## <a name="watch-the-event"></a>观看事件
 
-若要观看活动，请复制在运行代码以创建流式处理定位符时获得的流式处理 URL。 你可以使用所选的媒体播放器。 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 可用于在 [Media Player 演示站点](https://ampdemo.azureedge.net)测试流。
+按 Ctrl+F5 运行代码。 这会输出可用于观看直播活动的流式处理 URL。 复制为创建流式处理定位符而获得的流式处理 URL。 你可以使用所选的媒体播放器。 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) 可用于在 [Media Player 演示站点](https://ampdemo.azureedge.net)测试流。
 
 直播活动在停止后会自动转换为点播内容。 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果事件正在使用资产，则无法将其删除；必须先删除该事件。
 

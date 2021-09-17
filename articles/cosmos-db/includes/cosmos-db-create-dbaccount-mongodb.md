@@ -3,28 +3,28 @@ title: include 文件
 description: include 文件
 services: cosmos-db
 ms.custom: include file
-ms.openlocfilehash: e81f5ef294fd798f720bff06e8fd5f8bc1075ff0
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 3f7a37ce78e49abe1356180818a215488fe82ea3
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195788"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515610"
 ---
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 在左侧菜单中，选择“创建资源”。
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-0.png" alt-text="在 Azure 门户中创建资源":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-0.png" alt-text="在 Azure 门户中创建资源的屏幕截图。":::
    
 3. 在“新建”页上，选择“数据库” > “Azure Cosmos DB”。  
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure 门户“数据库”窗格":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure 门户“数据库”窗格的屏幕截图。":::
    
 4. 在“选择 API 选项”页面上，选择“Azure Cosmos DB API for MongoDB” > “创建”  。
 
    API 确定要创建的帐户的类型。 选择“Azure Cosmos DB API for MongoDB”，因为本快速入门将创建使用 MongoDB 的集合。 若要了解有关详细信息，请参阅 [Azure Cosmos DB API for MongoDB 概述](../mongodb-introduction.md)。
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-select-api.png" alt-text="“选择 API 选项”窗格":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-select-api.png" alt-text="“选择 API 选项”窗格的屏幕截图。":::
 
 5. 在“创建 Azure Cosmos DB 帐户”页中，输入新 Azure Cosmos DB 帐户的设置。
 
@@ -41,7 +41,7 @@ ms.locfileid: "122195788"
    > [!NOTE]
    > 每个 Azure 订阅最多可以有一个免费层 Azure Cosmos DB 帐户，并且你必须在创建帐户时选择加入使用。 如果看不到用于应用免费层折扣的选项，这意味着订阅中的另一个帐户已启用免费层。
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png" alt-text="Azure Cosmos DB 的“新建帐户”页面"::: 
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png" alt-text="Azure Cosmos DB“新建帐户”页面的屏幕截图。"::: 
 
 1. 在“全局分发”选项卡中，配置以下详细信息。 对于本快速入门，可以保留默认值：
 
@@ -67,4 +67,4 @@ ms.locfileid: "122195788"
 
 4. 创建帐户需要几分钟时间。 等待门户中显示“祝贺你! Azure Cosmos DB API for MongoDB 帐户已准备就绪”页面。
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png" alt-text="Azure 门户“通知”窗格"::: 
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png" alt-text="Azure 门户“通知”窗格的屏幕截图。"::: 

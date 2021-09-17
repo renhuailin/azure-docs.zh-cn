@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: d1aae5620f32b5680badc073d74d360b70b68a3b
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 8c9ab37e46f23d533550ffc535633575a85937a6
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579865"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778897"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>将跨租户 VNet 连接到某个虚拟 WAN 中心
 
@@ -44,9 +44,9 @@ ms.locfileid: "110579865"
 
 ## <a name="assign-permissions"></a><a name="rights"></a>分配权限
 
-为了使具有虚拟中心的父订阅能够修改和访问远程租户中的虚拟网络，需要从远程租户订阅为父订阅分配 **参与者** 权限。
+要让通过虚拟中心管理父订阅的用户能够修改和访问远程租户中的虚拟网络，你需要为此用户分配“参与者”权限。 要为此用户分配“参与者”权限，可以在远程租户中的 VNET 的订阅中完成。
 
-1. 将 **参与者** 角色分配添加到父帐户（包含虚拟 WAN 中心的帐户）。 可以使用 PowerShell 或 Azure 门户来分配此角色。 有关步骤，请参阅下面的 **添加或删除角色分配** 文章：
+1. 为管理员添加“参与者”角色分配（负责管理虚拟 WAN 中心的管理员）。 可以使用 PowerShell 或 Azure 门户来分配此角色。 有关步骤，请参阅下面的 **添加或删除角色分配** 文章：
 
    * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
    * [门户](../role-based-access-control/role-assignments-portal.md)

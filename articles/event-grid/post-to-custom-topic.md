@@ -2,20 +2,18 @@
 title: 将事件发布到自定义 Azure 事件网格主题
 description: 本文说明如何将事件发布到自定义主题。 它显示发布和事件数据的格式。
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b662cd2034fc1035a5da64c19d9aba87b180af8f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3c3be5c11341ddd7bb381134a0d0b50ba8745709
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701153"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515423"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
+# <a name="post-to-azure-event-grid-custom-topics-using-access-keys"></a>使用访问密钥在 Azure 事件网格发布自定义主题
 
-本文说明如何将事件发布到自定义主题。 它显示发布和事件数据的格式。 [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) 仅适用于与预期格式匹配的发布。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+本文说明如何使用访问密钥发布自定义主题事件。 它显示发布和事件数据的格式。 [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) 仅适用于与预期格式匹配的发布。
 
 ## <a name="endpoint"></a>端点
 

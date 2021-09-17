@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/08/2021
-ms.openlocfilehash: f4fa21c99a17111b1045b66713490b86592e04bf
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 83fd36ca1f352371e4d0717968512d791443d590
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467109"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515531"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>注册并扫描 Azure SQL 数据库
 
@@ -140,9 +140,9 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 
 可在计算机上安装自承载集成运行 (SHIR)，以连接到专用网络中的资源。
 
-1. 在个人计算机或与数据库服务器相同的 VNet 中的计算机上[创建并安装自承载集成运行时](/azure/purview/manage-integration-runtimes)。
+1. 在个人计算机或与数据库服务器相同的 VNet 中的计算机上[创建并安装自承载集成运行时](./manage-integration-runtimes.md)。
 1. 检查数据库服务器防火墙，确认 SHIR 计算机是否可通过防火墙进行访问。 如果计算机没有访问权限，请添加该计算机的 IP。
-1. 如果 Azure SQL Server 位于专用终结点后面或 VNet 中，则可使用[引入专用终结点](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources)来确保端到端网络隔离。
+1. 如果 Azure SQL Server 位于专用终结点后面或 VNet 中，则可使用[引入专用终结点](catalog-private-link-ingestion.md#deploy-self-hosted-integration-runtime-ir-and-scan-your-data-sources)来确保端到端网络隔离。
 
 ## <a name="register-an-azure-sql-database-data-source"></a>注册 Azure SQL 数据库数据源
 
@@ -150,9 +150,9 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 
 1. 导航到你的 Purview 帐户。
 
-1. 在左侧导航区域中选择“源”。
+1. 在左侧导航区域中选择“数据映射”。
 
-1. 选择“注册”。
+1. 选择“注册”
 
 1. 在“注册源”上选择“Azure SQL 数据库” 。 选择“继续”。
 

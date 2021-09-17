@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 07/21/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: f2a634aa73cf9b9cb2b379887f9a677a79c39b57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1511581e3cc80d5f2f71bb82dc1bcb0ba639acb
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745056"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681502"
 ---
 # <a name="azure-sentinel-sap-solution-logs-reference-public-preview"></a>Azure Sentinel SAP 解决方案日志参考（公共预览版）
 
@@ -204,7 +204,7 @@ ms.locfileid: "121745056"
 
 ### <a name="abapos_gw_cl-log-schema"></a>ABAPOS_GW_CL 日志架构
 
-| 字段        | 说明      |
+| 字段        | 描述      |
 | ------------ | ---------------- |
 | 主机         | 主机             |
 | 实例     | ABAP 实例，采用以下语法：`<HOST>_<SYSID>_<SYSNR>`   |
@@ -226,7 +226,7 @@ ms.locfileid: "121745056"
 
 ### <a name="abapos_icm_cl-log-schema"></a>ABAPOS_ICM_CL 日志架构
 
-| 字段        | 说明      |
+| 字段        | 描述      |
 | ------------ | ---------------- |
 | 主机         | 主机             |
 | 实例     | ABAP 实例，采用以下语法：`<HOST>_<SYSID>_<SYSNR>`   |
@@ -537,7 +537,7 @@ ms.locfileid: "121745056"
 ### <a name="abapos_wp_cl-log-schema"></a>ABAPOS_WP_CL 日志架构
 
 
-| 字段        | 说明         |
+| 字段        | 描述         |
 | ------------ | ------------------- |
 | 主机         | 主机                |
 | 实例     | ABAP 实例，采用以下语法：`<HOST>_<SYSID>_<SYSNR>`   |
@@ -620,6 +620,7 @@ ms.locfileid: "121745056"
 
 - [为 SAP 部署 Azure Sentinel 解决方案](sap-deploy-solution.md)
 - [Azure Sentinel SAP 解决方案详细的 SAP 要求](sap-solution-detailed-requirements.md)
+- [通过 SNC 部署 Azure Sentinel SAP 数据连接器](sap-solution-deploy-snc.md)
 - [专家配置选项、本地部署和 SAPControl 日志源](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP 解决方案：内置安全内容](sap-solution-security-content.md)
 - [Azure Sentinel SAP 解决方案部署故障排除](sap-deploy-troubleshoot.md)

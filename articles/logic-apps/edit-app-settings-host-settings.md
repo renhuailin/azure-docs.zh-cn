@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: cf1361a531511daf7f249f4e7c7d2acf9207c457
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/18/2021
+ms.openlocfilehash: 731fe8f29fc4e67e2d74d46702768e642928ae09
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743247"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514567"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>在单租户 Azure 逻辑应用中编辑逻辑应用的主机和应用设置
 
@@ -295,6 +295,7 @@ az logicapp config appsettings set --name MyLogicApp --resource-group MyResource
 
 | 设置 | 默认值 | 说明 |
 |---------|---------------|-------------|
+| `ServiceProviders.ServiceBus.MessageSenderOperationTimeout` | `00:01:00` <br>（1 分钟） | 设置使用内置服务总线操作发送消息的超时值。 |
 | `Runtime.ServiceProviders.ServiceBus.MessageSenderPoolSizePerProcessorCount` | `64` 个消息发送程序 | 设置要在消息发送程序池中使用的每个处理器核心的 Azure 服务总线消息发送程序数。 |
 ||||
 

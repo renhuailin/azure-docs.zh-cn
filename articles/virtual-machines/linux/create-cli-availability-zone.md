@@ -6,14 +6,16 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3405468c64a7130bb0d71543403dd4ce5ef9c241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 646a5a65105912215bc378ae7e7813dfa9ffe31b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558366"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692091"
 ---
 # <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-cli"></a>使用 Azure CLI 在可用性区域中创建虚拟机
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本文逐步说明如何使用 Azure CLI 在 Azure 可用性区域中创建 Linux VM。 [可用性区域](../../availability-zones/az-overview.md)是 Azure 区域中物理上独立的区域。 使用可用性区域可以在整个数据中心发生故障或服务中断（这种情况很少见）时保护应用和数据。
 

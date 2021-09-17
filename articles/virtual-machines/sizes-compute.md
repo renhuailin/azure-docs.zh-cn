@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: fb3053e5fffa2c13808542e05f126c6d35822b8f
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: edc1dbd3d0c2250bf2dd4db870a9813602477073
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254155"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688643"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>计算优化虚拟机大小
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 > [!TIP]
 > 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你的工作负载的其他尺寸。

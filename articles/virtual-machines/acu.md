@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: daa53491df084cb68b26d1f9dabb3e17c77880f3
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 977c92e0537ff44c2cf28085ad7491a8cd18b71c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113231010"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692282"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU) 性能的方法。 这有助于轻松确定最有可能满足性能需求的 SKU。 ACU 目前在数量为 100 的小型 (Standard_A1) VM 上标准化，而所有其他 SKU 则表示该 SKU 在运行标准基准测试时大约会快多少
 

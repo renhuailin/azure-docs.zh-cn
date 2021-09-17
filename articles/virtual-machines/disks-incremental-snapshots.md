@@ -8,14 +8,16 @@ ms.date: 08/10/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bbd87d8f8e4c140c1ced76a3c60e82d3066d2f5a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8f00a0f69bf00c42ef120250cbc4a770fb1b7a09
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745007"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689414"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>为托管磁盘创建增量快照
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](../../includes/virtual-machines-disks-incremental-snapshots-description.md)]
 

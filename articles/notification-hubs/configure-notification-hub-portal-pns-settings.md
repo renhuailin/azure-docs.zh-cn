@@ -7,17 +7,17 @@ manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
-ms.date: 06/22/2020
+ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 31d915cd44bcf60f3515eb1a84309980f45d40b0
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: d7a46f41aecf4b53fed309ef9d1eaaaeadb819fc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868278"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770300"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入门：在通知中心设置推送通知
 
@@ -123,6 +123,9 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
 相关信息，请参阅[通过 Azure 通知中心向 UWP 发送通知](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
 
 ## <a name="microsoft-push-notification-service-for-windows-phone"></a>面向 Windows Phone 的 Microsoft 推送通知服务
+
+> [!NOTE]
+> Microsoft 推送通知服务 (MPNS) 已弃用，不再受支持。
 
 要为 Windows Phone 设置 Microsoft 推送通知服务 (MPNS)：
 

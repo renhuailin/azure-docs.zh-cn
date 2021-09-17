@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e8b3b5c28d00b4d7c81fa3e245113119ae3134ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d98b7050b2472c1dd0405c213b450c719bcd8572
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555697"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322441"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>快速入门：创建 Azure CDN 配置文件和终结点
 
@@ -50,7 +50,7 @@ ms.locfileid: "102555697"
     | **源服务器类型** | 选择“存储”。 | 
     | **源服务器主机名** | 从下拉列表中选择要使用的 Azure 存储帐户的主机名，例如“cdnstorageacct123.blob.core.windows.net”。 |
     | **源服务器路径** | 留空。 |
-    | **源服务器主机标头** | 保留默认值（即存储帐户的主机名）。 |  
+    | **源服务器主机标头** | 保留默认值（即源服务器主机名）。 |  
     | 协议 | 保留默认选择的 **HTTP** 和 **HTTPS** 选项。 |
     | **源服务器端口** | 保留默认的端口值。 | 
     | **优化对象** | 保留默认选择“常规 Web 交付”。 |

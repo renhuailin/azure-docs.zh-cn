@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4051f8fe4b338f223b36c3a87ebcc3e3d3e51979
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 30d7282d6f6f30b34b522991d6fd4e79b194d7dd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472966"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771584"
 ---
 # <a name="extending-ontologies"></a>扩展 ontology 
 
@@ -24,7 +24,7 @@ ms.locfileid: "114472966"
 
 ## <a name="realestatecore-space-hierarchy"></a>RealEstateCore 空间层次结构 
 
-在基于 DTDL 的 RealEstateCore 本体中，空间层次结构可用于定义各种空间：房间、建筑物、区域等。空间层次结构从每个这样的模型中扩展，从而定义各种房间、建筑物和区域。 
+在基于 DTDL 的 RealEstateCore 本体中，空间层次结构可用于定义各种空间：房间、建筑物、区域等。 空间层次结构从每个这样的模型中扩展，从而定义各种房间、建筑物和区域。 
 
 层次结构的一部分如下图所示。 
 
@@ -43,9 +43,9 @@ ms.locfileid: "114472966"
 
 ### <a name="add-new-interfaces-for-new-concepts"></a>为新概念添加新接口 
 
-在此案例中，你想要为解决方案所需的概念添加接口，但行业本体中未提供这些接口。 例如，如果解决方案中存在基于 DTDL 的 RealEstateCore 本体中未表示的其他房间类型，则可以通过直接从 RealEstateCore 接口扩展来添加它们。 
+在此案例中，想要为解决方案所需的概念添加接口，但行业本体中未提供这些接口。 例如，如果解决方案中存在基于 DTDL 的 RealEstateCore 本体中未表示的其他房间类型，则可以通过直接从 RealEstateCore 接口扩展来添加它们。 
 
-下面的示例演示了一个解决方案，该解决方案需要表示 RealEstateCore 本体中不提供的“专注室”。 专注室是专为人们每次数小时专注一个任务而设计的一个小空间。 
+下例演示的解决方案需要表示 RealEstateCore 本体中不提供的“专注室”。 专注室是专为人们每次数小时专注一个任务而设计的一个小空间。 
 
 若要使用此新概念扩展行业本体，请从行业本体中的接口[扩展](concepts-models.md#model-inheritance)，创建新的接口。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "114472966"
 
 :::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="流程图展示部分 RealEstateCore 空间层次结构，包括新增内容。"::: 
 
-### <a name="add-additional-capabilities-to-existing-interfaces"></a>将附加功能添加到现有接口 
+### <a name="add-extra-capabilities-to-existing-interfaces"></a>将附加功能添加到现有接口 
 
 在此案例中，你想要将更多属性（或关系、组件、遥测或命令）添加到行业本体中的接口。
 

@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 6d43935365580233063deb0e523d222351c22d54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f035d7813dfcf84d21e5913fa4626188e125db9a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670615"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691083"
 ---
 # <a name="error-messages-for-azure-spot-virtual-machines-and-scale-sets"></a>Azure 现成虚拟机和规模集的错误消息
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 下面是使用 Azure 现成虚拟机和规模集时可能会出现的一些错误代码。
 
@@ -39,4 +41,4 @@ ms.locfileid: "101670615"
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | 采用 VM 业务流程模式的虚拟机规模集不支持 Azure 现成虚拟机。 | 将业务流程模式设置为虚拟机规模集，以便能够使用 Azure 现成虚拟机实例。 |
 
 
-**后续步骤** 有关详细信息，请参阅[现成虚拟机](./spot-vms.md)。
+**后续步骤** 有关详细信息，请参阅 [现成虚拟机](./spot-vms.md)。

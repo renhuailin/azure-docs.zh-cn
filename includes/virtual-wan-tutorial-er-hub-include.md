@@ -1,38 +1,31 @@
 ---
-title: include 文件
-description: include 文件
-services: virtual-wan
+ms.author: cherylmc
 author: cherylmc
+ms.date: 08/19/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 11/04/2019
-ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: 6f910dbe91ed8e1cb65eefa6dfc48c72a689bf25
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f5d641a1d017f40081b311e9b9b610b7fcc7c13c
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "73491537"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122820804"
 ---
-1. 找到创建的虚拟 WAN。 在虚拟 WAN 页上的“连接”部分下，选择“中心” 。
-2. 在“中心”页上，选择“+ 新建中心”以打开“创建虚拟中心”页 。
-3. 在“创建虚拟中心”页上的“基本”选项卡上，请填写以下字段 ：
+1. 找到创建的虚拟 WAN。 在虚拟 WAN 页上的“连接”部分下，选择“中心” 。 单击“新建中心”以打开“创建虚拟中心”页 。
 
-   ![基础知识](./media/virtual-wan-tutorial-er-hub-include/hub1.png "基础")
+   :::image type="content" source="media/virtual-wan-empty-hub/new-hub.jpg" alt-text="屏幕截图显示了中心配置对话框，其中已选择“新建中心”。":::
 
-    **项目详细信息**
+1. 在“创建虚拟中心”页上，填写相应字段。
 
-   * 区域（之前称为位置）
-   * 名称
-   * 中心专用地址空间。 用于创建中心的最小地址空间是 /24，这表示在创建过程中从 /25 到 /32 的任何范围都将产生错误。
-4. 选择“ExpressRoute 选项卡”。
+   :::image type="content" source="media/virtual-wan-tutorial-er-hub/create-hub.png" alt-text="屏幕截图显示可在其中输入值的“基本信息”选项卡。":::
 
-5. 在“ExpressRoute 选项卡”上，填写以下字段：
+   * 区域：选择要在其中部署虚拟中心的区域。
+   * 名称：想要用于称呼虚拟中心的名称。
+   * 中心专用地址空间：用 CIDR 表示法来表示的中心地址范围。
 
-   ![ExpressRoute](./media/virtual-wan-tutorial-er-hub-include/hub2.png "ExpressRoute")
+1. 选择“ExpressRoute”选项卡。单击“是”以显示设置并填写字段 。 有关网关缩放单元的信息，请参阅[常见问题解答](../articles/virtual-wan/virtual-wan-faq.md#what-are-virtual-wan-gateway-scale-units)。
 
-   * 选择“是”以创建“ExpressRoute”网关。
-   * 从下拉列表中选择“网关缩放单元”。
-6. 选择“查看 + 创建”以进行验证。
-7. 选择“创建”以创建中心。 30 分钟后，“刷新”以在“中心”页上查看该中心 。 选择“转到资源”导航到资源。
+   :::image type="content" source="media/virtual-wan-tutorial-er-hub/expressroute.png" alt-text="屏幕截图显示可在其中输入值的“ExpressRoute”选项卡。":::
+
+1. 选择“查看 + 创建”以进行验证。
+1. 选择“创建”以创建具有 ExpressRoute 网关的中心。 中心大约需要 30 分钟才能完成。 30 分钟后，“刷新”以在“中心”页上查看该中心 。 选择“转到资源”导航到资源。

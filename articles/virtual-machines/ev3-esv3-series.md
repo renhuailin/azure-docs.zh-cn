@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: 5920a7c0aecd02e4d5b7bbcac9c5254a14d7f192
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3166ba5015c4d3a8e8d449c497eade6bc8bc56f6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751676"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688286"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Ev3 和 Esv3 系列在采用超线程配置的 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器上运行，为大多数常规用途工作负荷提供更好的价值定位，并使 Ev3 满足大多数其他云的常规用途 VM 的要求。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。 Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 

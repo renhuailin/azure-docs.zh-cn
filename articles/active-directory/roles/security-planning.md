@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e45240d9d1a957765dfd362bf612ae2ea93919c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eeba1c933d049e67e45204ad62d71a0eb52a930d
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744013"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662429"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -178,7 +178,7 @@ Azure AD 标识保护是一种基于算法的监视和报告工具，可用于�
 
 #### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>获取 Microsoft 365 安全分数（如果使用 Microsoft 365）
 
-安全评分会查看你正在使用的 Microsoft 365 服务的设置和活动，并将其与 Microsoft 建立的基线进行比较。 将会根据你遵循安全做法的情况对你评分。 对 Microsoft 365 商业标准版或企业版订阅拥有管理员权限的任何人都可以在 [https://securescore.office.com](https://securescore.office.com/) 上访问安全评分。
+安全评分会查看你正在使用的 Microsoft 365 服务的设置和活动，并将其与 Microsoft 建立的基线进行比较。 将会根据你遵循安全做法的情况对你评分。 对 Microsoft 365 商业标准版或企业版订阅拥有管理员权限的任何人都可以在 `https://securescore.office.com` 上访问安全评分。
 
 #### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>查看 Microsoft 365 安全性和合规性指南（如果使用 Microsoft 365）
 

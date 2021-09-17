@@ -7,14 +7,16 @@ author: cynthn
 ms.service: virtual-machines
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 9c220814ae1f714e9eac0c0c11a50d9cf68a621d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 543317b2e1dcc0c55ac970212612f5266e5f84aa
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897402"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695359"
 ---
 # <a name="tagging-a-vm-using-the-portal"></a>使用门户标记 VM
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 本文介绍如何使用门户将标记添加到 VM。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 50 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。
 

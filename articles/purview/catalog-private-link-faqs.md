@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 6f9af57ad381604ffdf3882602a5dfa4163b8b25
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3d7a37565b46137a95f0dd30a3e29b750bed3afe
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090576"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515564"
 ---
 # <a name="faq-about-azure-purview-private-endpoints"></a>Azure Purview 专用终结点常见问题解答
 
@@ -74,11 +74,11 @@ Azure 密钥保管库或服务主体。
 
 ### <a name="what-private-dns-zones-are-required-for-azure-purview-for-a-private-endpoint"></a>Azure Purview 需要为专用终结点使用哪些专用 DNS 区域？
 
-对于 Azure Purview 资源：
+对于 Azure Purview 帐户和门户专用终结点：
 
 - `privatelink.purview.azure.com`
 
-对于 Azure Purview 托管资源：
+对于 Azure Purview 引入专用终结点：
 
 - `privatelink.blob.core.windows.net`
 - `privatelink.queue.core.windows.net`

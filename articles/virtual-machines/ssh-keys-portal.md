@@ -7,14 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
-ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa6cdb37e6b664398e469ab8e1c3eefbb721bba0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88929426"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698443"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>在 Azure 门户中生成并存储 SSH 密钥
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 如果你经常使用门户来部署 Linux VM，可以直接在门户中创建 SSH 密钥或者从计算机上传这些密钥，以更方便地使用这些密钥。
 

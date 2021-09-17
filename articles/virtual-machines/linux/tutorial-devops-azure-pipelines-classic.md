@@ -13,14 +13,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: dd47250989be5c31d5f0ade2b602b9d6af535d83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5212357fe123d722b7dbb853c874190a3ef9dee0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563993"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697717"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>教程 - 为 Azure Linux 虚拟机配置滚动部署策略
+
+适用于：:heavy_check_mark: Linux VM
 
 Azure DevOps 是一项内置的 Azure 服务，可为任何 Azure 资源自动执行 DevOps 过程的每个部分。 不管应用使用的是虚拟机、Web 应用、Kubernetes 还是任何其他资源，都可以通过 Azure 和 Azure DevOps 实现基础结构即代码 (IaC)、持续集成、持续测试、持续交付以及持续监视。
 

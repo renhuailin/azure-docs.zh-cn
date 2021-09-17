@@ -10,14 +10,16 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: c70b02bdc554c723f53ad5f8c0d36c5eca87811e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f8aa1b8e50a287861cb6367e21878579d69e2d2d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774360"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687878"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>禁用或删除 VM 和映像中的 Linux 代理
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 在删除 Linux 代理之前，你必须了解在删除 Linux 代理后 VM 将无法执行哪些操作。
 

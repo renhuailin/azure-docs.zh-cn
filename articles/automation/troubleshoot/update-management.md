@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cc65a1c0cd72d9da9208e7377eaef7a887119f43
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 735677886493bace8bb831eae1c974bb0483b0c1
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730532"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771833"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -340,7 +340,7 @@ Azure Resource Graph 查询结果中确实显示了计算机，但动态组预�
 
 5. 如果未将计算机设置为系统混合 Runbook 辅助角色，请使用以下方式之一查看启用方法：
 
-   - 从[自动化帐户](../update-management/enable-from-automation-account.md)为一个或多个 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）启用。
+   - 从一台或多台 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）的[自动化帐户](../update-management/enable-from-automation-account.md)。
 
    - 使用 Enable-AutomationSolution [runbook](../update-management/enable-from-runbook.md) 自动加入 Azure VM。
 

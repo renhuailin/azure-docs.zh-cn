@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12471ef2816f5e4cb1e5f545f6d5670be59b4863
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96177979"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183920"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>教程：Azure Active Directory 与 Keeper Password Manager & Digital Vault 集成
 
@@ -40,7 +40,7 @@ ms.locfileid: "96177979"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Keeper Password Manager & Digital Vault 支持 SP 发起的 SSO。
-
+* Keeper Password Manager 支持[自动用户预配和取消预配](keeper-password-manager-digitalvault-provisioning-tutorial.md)（推荐）。
 * Keeper Password Manager & Digital Vault 支持实时用户预配。
 
 ## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>从库中添加 Keeper Password Manager & Digital Vault
@@ -123,7 +123,7 @@ ms.locfileid: "96177979"
 1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 对于“名称”，请输入 `B.Simon`。  
+   1. 对于“名称”  ，请输入 `B.Simon`。  
    1. 对于“用户名”，请输入 `username@companydomain.extension`。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”并记下显示的值。
    1. 选择“创建”  。

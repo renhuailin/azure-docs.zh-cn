@@ -2,17 +2,19 @@
 title: 关于 Azure Site Recovery 配置/进程/主目标服务器
 description: 本文概述了使用 Azure Site Recovery 设置本地 VMware VM 到 Azure 的灾难恢复时使用的配置服务器、进程服务器和主目标服务器
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/19/2021
+ms.openlocfilehash: ad8cdbdf9d051ac9b0e5a7fd47660811e4a285e3
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80062093"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446425"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>关于 Site Recovery 组件（配置服务器、进程服务器、主目标服务器）
 
-本文介绍 [Site Recovery](site-recovery-overview.md) 服务将 VMware VM 和物理服务器复制到 Azure 时所用的配置服务器、进程服务器和主目标服务器。
+本文介绍 [Site Recovery](site-recovery-overview.md) 服务将 VMware VM 和物理服务器复制到 Azure 时所用的配置服务器、进程服务器和主目标服务器。 本文适用于经典版本。
+
+在预览版中，若要复制 VM，需要创建并使用 Azure Site Recovery 复制服务器。 有关 Azure Site Recovery 复制服务器及其组件的信息，请参阅[本文](vmware-azure-architecture-preview.md)。
 
 ## <a name="configuration-server"></a>配置服务器
 

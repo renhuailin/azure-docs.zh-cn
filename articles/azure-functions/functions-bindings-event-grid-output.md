@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 9ebf502fc2ae83651e8f69472b3b2042cef723d8
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: f29302efdf6d2a0c0b12ec15d897efda16cdc368
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537237"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444415"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件网格输出绑定
 
@@ -162,7 +162,100 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 
 # <a name="java"></a>[Java](#tab/java)
 
-事件网格输出绑定对于 Java 不可用。
+以下示例显示了一个将消息写入事件网格自定义主题的 Java 函数。 此函数使用绑定的 `setValue` 方法输出字符串。
+
+```java
+public class Function {
+    @FunctionName("EventGridTriggerTest")
+    public void run(@EventGridTrigger(name = "event") String content,
+            @EventGridOutput(name = "outputEvent", topicEndpointUri = "MyEventGridTopicUriSetting", topicKeySetting = "MyEventGridTopicKeySetting") OutputBinding<String> outputEvent,
+            final ExecutionContext context) {
+        context.getLogger().info("Java EventGrid trigger processed a request." + content);
+        final String eventGridOutputDocument = "{\"id\": \"1807\", \"eventType\": \"recordInserted\", \"subject\": \"myapp/cars/java\", \"eventTime\":\"2017-08-10T21:03:07+00:00\", \"data\": {\"make\": \"Ducati\",\"model\": \"Monster\"}, \"dataVersion\": \"1.0\"}";
+        outputEvent.setValue(eventGridOutputDocument);
+    }
+}
+```
+
+你还可使用 POJO 类发送 EventGrid 消息。
+
+```java
+public class Function {
+    @FunctionName("EventGridTriggerTest")
+    public void run(@EventGridTrigger(name = "event") String content,
+            @EventGridOutput(name = "outputEvent", topicEndpointUri = "MyEventGridTopicUriSetting", topicKeySetting = "MyEventGridTopicKeySetting") OutputBinding<EventGridEvent> outputEvent,
+            final ExecutionContext context) {
+        context.getLogger().info("Java EventGrid trigger processed a request." + content);
+
+        final EventGridEvent eventGridOutputDocument = new EventGridEvent();
+        eventGridOutputDocument.setId("1807");
+        eventGridOutputDocument.setEventType("recordInserted");
+        eventGridOutputDocument.setEventTime("2017-08-10T21:03:07+00:00");
+        eventGridOutputDocument.setDataVersion("1.0");
+        eventGridOutputDocument.setSubject("myapp/cars/java");
+        eventGridOutputDocument.setData("{\"make\": \"Ducati\",\"model\":\"monster\"");
+
+        outputEvent.setValue(eventGridOutputDocument);
+    }
+}
+
+class EventGridEvent {
+    private String id;
+    private String eventType;
+    private String subject;
+    private String eventTime;
+    private String dataVersion;
+    private String data;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getDataVersion() {
+        return dataVersion;
+    }
+
+    public void setDataVersion(String dataVersion) {
+        this.dataVersion = dataVersion;
+    }
+
+    public String getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }  
+}
+```
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -364,7 +457,19 @@ C# 脚本不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-事件网格输出绑定对于 Java 不可用。
+对于 Java 类，使用 [EventGridAttribute](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/EventGridOutput.java) 特性。
+
+该特性的构造函数可接受包含自定义主题名称的应用设置的名称，以及包含主题密钥的应用设置的名称。 有关这些设置的详细信息，请参阅[输出 - 配置](#configuration)。 下面是 `EventGridOutput` 特性的示例：
+
+```java
+public class Function {
+    @FunctionName("EventGridTriggerTest")
+    public void run(@EventGridTrigger(name = "event") String content,
+            @EventGridOutput(name = "outputEvent", topicEndpointUri = "MyEventGridTopicUriSetting", topicKeySetting = "MyEventGridTopicKeySetting") OutputBinding<String> outputEvent, final ExecutionContext context) {
+            ...
+    }
+}
+```
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -376,7 +481,7 @@ PowerShell 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-事件网格输出绑定对于 Python 不可用。
+Python 不支持特性。
 
 ---
 
@@ -388,7 +493,7 @@ PowerShell 不支持特性。
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为“eventGrid”。 |
 |direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|name | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**topicEndpointUri** |**TopicEndpointUri** | 包含自定义主题 URI 的应用设置的名称，例如 `MyTopicEndpointUri`。 |
 |**topicKeySetting** |**TopicKeySetting** | 包含自定义主题访问密钥的应用设置的名称。 |
 
@@ -415,7 +520,7 @@ PowerShell 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-事件网格输出绑定对于 Java 不可用。
+通过调用方法参数（如 `out EventGridOutput paramName`）发送单个消息，通过 `ICollector<EventGridOutput>` 编写多个消息。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -427,7 +532,9 @@ PowerShell 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-事件网格输出绑定对于 Python 不可用。
+有两个选项可用于通过函数输出事件网格消息：
+- **返回值**：将 function.json 中的 `name` 属性  设置为 `$return`。 使用此配置时，函数的返回值将作为 EventGrid 消息保留。
+- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) 方法。 传递给 `set` 的值将作为 EventGrid 消息保留。
 
 ---
 

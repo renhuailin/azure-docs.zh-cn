@@ -7,18 +7,21 @@ manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2b46d3f4831ed98e54a47d8daa77107a625e362
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87760985"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770894"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>在 Azure 门户中配置 Microsoft 推送通知服务 (MPNS) 设置
+
+> [!NOTE]
+> Microsoft 推送通知服务 (MPNS) 已弃用，不再受支持。
 
 本文介绍如何使用 Azure 门户为 Azure 通知中心配置 Microsoft 推送通知服务 (MPNS) 设置。
 

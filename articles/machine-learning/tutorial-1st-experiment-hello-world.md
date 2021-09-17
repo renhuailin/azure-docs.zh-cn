@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 40fdfcec5e74c7b86807f5cd1577d12ed4904632
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 472fcf4c7a1cc486db5aded40c87ffec2a9e796a
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765747"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634689"
 ---
 # <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>教程：开始在 Azure 机器学习中使用 Python 脚本（第 1 部分，共 3 部分）
 
@@ -149,13 +149,19 @@ print(aml_url)
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> 在云中提交并运行代码
 
-选择“保存并在终端中运行脚本”运行你的控制脚本，该脚本继而会在[设置教程](quickstart-create-resources.md)中创建的计算群集上运行 `hello.py`。
+1. 选择“保存并在终端中运行脚本”运行你的控制脚本，该脚本继而会在[设置教程](quickstart-create-resources.md)中创建的计算群集上运行 `hello.py`。
 
-在终端中，系统可能会要求你登录以进行身份验证。  复制代码，然后访问链接完成此步骤。
+1. 在终端中，系统可能会要求你登录以进行身份验证。  复制代码，然后访问链接完成此步骤。
 
-> [!TIP]
-> 如果刚创建完计算群集，则可能会看到错误“UserError: 未找到必需的 Docker 映像...”请等待大约 5 分钟，然后重试。  计算群集可能需要更多时间才能准备好启动节点。
+1. 经过身份验证后，终端中会显示一个链接。 选择该链接以查看运行。
 
+    [!INCLUDE [amlinclude-info](../../includes/machine-learning-py38-ignore.md)]
+
+## <a name="view-the-output"></a>查看输出
+
+1. 在打开的页面中，你将看到运行状态。
+1. 运行状态为“已完成”时，选择页面顶部的“输出 + 日志” 。
+1. 选择 70_driver_log.txt 以查看运行的输出。
 
 ## <a name="monitor-your-code-in-the-cloud-in-the-studio"></a><a name="monitor"></a>在工作室的云中监视代码
 

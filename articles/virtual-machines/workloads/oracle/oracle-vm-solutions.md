@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: b81356c0a17315bbb614b4def5db90e4dbae9af3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9b847b1f4d3e4c47a5b353a2b0e9ad7a47b77330
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450853"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692797"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 本文介绍了以 Oracle 在 Azure 市场中发布的虚拟机映像为基础的 Oracle 解决方案的相关信息。 如果对包含 Oracle 云基础结构的跨云应用程序解决方案感兴趣，请参阅[集成 Microsoft Azure 和 Oracle 云基础结构的 Oracle 应用程序解决方案](oracle-oci-overview.md)。
 

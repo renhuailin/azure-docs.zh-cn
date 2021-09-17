@@ -1,17 +1,20 @@
 ---
 title: 复制活动中的架构和数据类型映射
-description: 了解 Azure 数据工厂中的复制活动如何将架构和数据类型从源数据映射到接收器数据。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解 Azure 数据工厂和 Azure Synapse Analytics 管道中的复制活动如何将架构和数据类型从源数据映射到接收器数据。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 2bd616ddec207d2aad47608c6f0200c7b629471e
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 046b25164df92c609196a701d35f989aa397253b
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482518"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825089"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,20 +43,20 @@ ms.locfileid: "109482518"
 - [分层源到表格接收器](#hierarchical-source-to-tabular-sink)
 - [表格/分层源到分层接收器](#tabularhierarchical-source-to-hierarchical-sink)
 
-可在数据工厂创作 UI >“复制活动”->“映射”选项卡上配置映射，也可以采用编程方式在“复制活动”> `translator` 属性中指定映射。 以下属性在 `translator` -> `mappings` 数组 > 对象 -> `source` 和 `sink` 中受支持，后者指向用于映射数据的特定列/字段。
+可以在“创作 UI -> 复制活动 -> 映射”选项卡上配置映射，也可以在复制活动 -> `translator` 属性中以编程方式指定映射。 以下属性在 `translator` -> `mappings` 数组 > 对象 -> `source` 和 `sink` 中受支持，后者指向用于映射数据的特定列/字段。
 
 | 属性 | 说明                                                  | 必需 |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | 源或接收器列/字段的名称。 适用于表格源和接收器。 | 是      |
 | 序号  | 列索引。 从 1 开始。 <br>在使用带分隔符的文本但没有标头行时应用，为必填项。 | 否       |
 | path     | 要提取或映射的每个字段的 JSON 路径表达式。 适用于分层源和接收器，例如 Cosmos DB、MongoDB 或 REST 连接器。<br>对于根对象下的字段，JSON 路径以根 `$` 开头；对于 `collectionReference` 属性选择的数组内的字段，JSON 路径从没有 `$` 的数组元素开始。 | 否       |
-| type     | 源或接收器列的数据工厂临时数据类型。 通常无需指定或更改此属性。 详细了解[数据类型映射](#data-type-mapping)。 | 否       |
+| type     | 源或接收器列的临时数据类型。 通常无需指定或更改此属性。 详细了解[数据类型映射](#data-type-mapping)。 | 否       |
 | culture  | 源或接收器列的区域性。 当类型为 `Datetime` 或 `Datetimeoffset` 时应用。 默认为 `en-us`。<br>通常无需指定或更改此属性。 详细了解[数据类型映射](#data-type-mapping)。 | 否       |
 | format   | 当类型为 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 通常无需指定或更改此属性。 详细了解[数据类型映射](#data-type-mapping)。 | 否       |
 
 除 `mappings` 外，`translator` 下还支持以下属性：
 
-| 属性            | 说明                                                  | 必须 |
+| 属性            | 描述                                                  | 必须 |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | 从分层源（例如 Cosmos DB、MongoDB 或 REST 连接器）复制数据时适用。<br>若要进行迭代操作，以同一模式从 **数组字段中** 的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
 
@@ -175,11 +178,11 @@ ms.locfileid: "109482518"
 
 可在数据工厂创作 UI 上定义此类映射：
 
-1. 在“复制活动”->“映射”选项卡上，单击“导入架构”按钮以导入源架构和接收器架构。 由于数据工厂在导入架构时会对前几个对象采样，因此如果没有显示任何字段，你可以将其添加到层次结构中的正确层上：将鼠标指针悬停在现有字段名称上，然后选择添加节点、对象或数组。
+1. 在“复制活动”->“映射”选项卡上，单击“导入架构”按钮以导入源架构和接收器架构。 由于服务在导入架构时会对前几个对象采样，因此如果没有显示任何字段，你可以将其添加到层次结构中的正确层上：将鼠标指针悬停在现有字段名称上，然后选择添加节点、对象或数组。
 
 2. 选择要从中遍历和提取数据的数组。 它将自动填充为“集合引用”。 请注意，此类操作只支持单个数组。
 
-3. 将所需字段映射到接收器。 数据工厂自动确定分层端对应的 JSON 路径。
+3. 将所需字段映射到接收器。 服务自动确定分层端对应的 JSON 路径。
 
 > [!NOTE]
 > 对于标记为集合引用的数组为空且选中此复选框的记录，将跳过整个记录。
@@ -273,9 +276,9 @@ ms.locfileid: "109482518"
 
 复制活动按照以下流执行源类型到接收器类型的映射： 
 
-1. 从源原生数据类型转换为 Azure 数据工厂临时数据类型。
+1. 从源本机数据类型转换为 Azure 数据工厂和 Synapse 管道使用的临时数据类型。
 2. 根据需要自动转换临时数据类型，使之匹配相应的接收器类型（适用于[默认映射](#default-mapping)和[显式映射](#explicit-mapping)）。
-3. 从 Azure 数据工厂临时数据类型转换为接收器原生数据类型。
+3. 从临时数据类型转换为接收器原生数据类型。
 
 复制活动目前支持以下临时数据类型：Boolean、Byte、Byte Array、Datetime、DatetimeOffset、Decimal、Double、GUID、Int16、Int32、Int64、SByte、Single、String、Timespan、UInt16、UInt32 和 UInt64。
 
@@ -307,7 +310,7 @@ ms.locfileid: "109482518"
 
 | 属性                         | 说明                                                  | 必需 |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
-| typeConversion                   | 实现新的数据类型转换体验。 <br>考虑到后向兼容性，默认值为 false。<br><br>对于自 2020 年 6 月末以来通过数据工厂创作 UI 创建的新复制活动，默认情况下会启用此数据类型转换以实现最佳体验。你可以在适用方案的“复制活动”->“映射”选项卡上查看以下类型的转换设置。 <br>若要以编程方式创建管道，需要将 `typeConversion` 属性显式设置为 true 以启用它。<br>对于在此功能发布之前创建的现有复制活动，你不会在数据工厂创作 UI 上看到有关后向兼容的类型转换选项。 | 否       |
+| typeConversion                   | 实现新的数据类型转换体验。 <br>考虑到后向兼容性，默认值为 false。<br><br>对于自 2020 年 6 月末以来通过数据工厂创作 UI 创建的新复制活动，默认情况下会启用此数据类型转换以实现最佳体验。你可以在适用方案的“复制活动”->“映射”选项卡上查看以下类型的转换设置。 <br>若要以编程方式创建管道，需要将 `typeConversion` 属性显式设置为 true 以启用它。<br>对于在此功能发布之前创建的现有复制活动，你不会在创作 UI 上看到有关后向兼容的类型转换选项。 | 否       |
 | typeConversionSettings           | 一组类型转换设置。 当 `typeConversion` 设置为 `true` 时应用。 以下属性都属于此组。 | 否       |
 | 在 `typeConversionSettings` 下 |                                                              |          |
 | allowDataTruncation              | 复制期间使用不同类型将源数据转换为接收器数据（例如，从小数转换为整数，从 DatetimeOffset 转换为 Datetime）时，允许数据截断。 <br>默认值为 true。 | 否       |
@@ -350,7 +353,7 @@ ms.locfileid: "109482518"
 ## <a name="legacy-models"></a>旧模型
 
 > [!NOTE]
-> 为实现后向兼容性，照旧支持下述可将源列/字段映射到接收器的模型。 建议使用[架构映射](#schema-mapping)中提到的新模型。 数据工厂创作 UI 已转变为生成新模型。
+> 为实现后向兼容性，照旧支持下述可将源列/字段映射到接收器的模型。 建议使用[架构映射](#schema-mapping)中提到的新模型。 创作 UI 已切换为生成新模型。
 
 ### <a name="alternative-column-mapping-legacy-model"></a>备用列映射（旧模型）
 
@@ -450,7 +453,7 @@ ms.locfileid: "109482518"
 
 可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Azure Cosmos DB API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| 属性            | 说明                                                  | 必需 |
+| 属性            | 描述                                                  | 必需 |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是      |
 | schemaMapping       | 键值对的集合，代表 **从源端到接收器端** 的映射关系。<br/>- **键：** 代表源。 对于 **表格源**，指定数据集结构中定义的列名称；对于 **分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于 **表格接收器**，指定数据集结构中定义的列名称；对于 **分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。 | 是      |

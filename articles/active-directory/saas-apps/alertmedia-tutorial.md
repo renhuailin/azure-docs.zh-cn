@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 5affe9f8876ef8d69a585119155d6cdd77ab46ac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 847e80822cffe0a1a1daaf7595062b2e7a522ab5
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078700"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772193"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>教程：Azure Active Directory 与 AlertMedia 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110078700"
 * 让用户使用其 Azure AD 帐户自动登录到 AlertMedia。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -39,6 +39,7 @@ ms.locfileid: "110078700"
 
 * AlertMedia 支持 IDP 发起的 SSO。
 * AlertMedia 支持实时用户预配。
+* AlertMedia 支持[自动用户预配](alertmedia-provisioning-tutorial.md)。
 
 ## <a name="add-alertmedia-from-the-gallery"></a>从库中添加 AlertMedia
 
@@ -76,7 +77,7 @@ ms.locfileid: "110078700"
 
 1. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.alertmedia.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.alertmedia.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.alertmedia.com/api/sso/saml/`
 

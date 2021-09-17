@@ -9,14 +9,16 @@ ms.subservice: extensions
 ms.date: 11/08/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: faacadc391a124bbb67833a9c4c8f63033fea62a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 9c317f1f67b016124eeb71d5bec6a34374d3c8bf
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110674246"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693023"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>教程：使用 Azure PowerShell 在虚拟机规模集中安装应用程序
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程介绍了如何创建自定义 VM 映像并使用它来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
 
@@ -25,7 +27,7 @@ ms.locfileid: "110674246"
 > * 使用 Azure 自定义脚本扩展
 > * 更新规模集中运行的应用程序
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 

@@ -1,15 +1,15 @@
 ---
 title: 带有模板的新策略分配
 description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）来创建策略分配以识别不合规的资源。
-ms.date: 04/22/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: c25107bf5701b4e730924417e01c5e2486317c8e
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 52daeb50d1b8eea91b43c07e45682d87e0bc12cb
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330937"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323476"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>使用 ARM 模板创建策略分配以识别不合规的资源
 
@@ -52,7 +52,7 @@ ms.locfileid: "108330937"
    | 名称 | 值 |
    |------|-------|
    | 订阅 | 选择 Azure 订阅。 |
-   | 资源组 | 选择“新建”，指定名称，然后选择“确定”。 在屏幕截图中，资源组名称为 _mypolicyquickstart\<Date in MMDD\>rg_。 |
+   | 资源组 | 选择“新建”，指定名称，然后选择“确定”。  在屏幕截图中，资源组名称为 _mypolicyquickstart\<Date in MMDD\>rg_。 |
    | 位置 | 选择区域。 例如“美国中部”。 |
    | 策略分配名称 | 指定策略分配名称。 如果需要，可以使用策略定义显示名称。 例如，“审核不使用托管磁盘的 VM”。 |
    | 资源组名称 | 指定要将策略分配到的资源组名称。 本快速入门使用默认值 **[resourceGroup().name]**。 **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** 是检索资源组的模板函数。 |
@@ -61,7 +61,7 @@ ms.locfileid: "108330937"
 
 1. 选择“购买”。
 
-其他某些资源：
+其他一些资源：
 
 - 若要查找更多示例模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)。
 - 若要查看模板参考，请转到 [Azure 模板参考](/azure/templates/microsoft.authorization/allversions)。

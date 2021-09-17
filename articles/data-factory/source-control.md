@@ -8,12 +8,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: 1dc73117d1d9fc470ae284461e520c9d45358e87
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0eb7356542eb7016cd27cc76e048857e8d7f9955
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730125"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598083"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -241,6 +241,8 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 > [!IMPORTANT]
 > 主分支并不代表数据工厂服务中部署的内容。 必须将主分支手动发布到数据工厂服务。
 
+
+
 ## <a name="best-practices-for-git-integration"></a>Git 集成的最佳做法
 
 ### <a name="permissions"></a>权限
@@ -262,17 +264,34 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 ### <a name="stale-publish-branch"></a>过时的发布分支
 
-如果发布分支与主分支不同步，并且包含最近发布的过时资源，请尝试执行以下步骤：
+下面是一些可能导致发布分支过时的示例情形：
+
+- 用户有多个分支。 在一个功能分支中，用户删除了一个与 AKV 不关联的链接服务（无论是否在 Git 中，非 AKV 链接服务都会立即发布），并且从未将功能分支合并到协作分支中。
+- 用户使用 SDK 或 PowerShell 修改了数据工厂
+- 用户已将所有资源移动到新的分支，并尝试首次发布。 导入资源时应手动创建链接服务。
+- 用户手动上传非 AKV 链接服务或集成运行时 JSON。 他们从另一个资源（如数据集、链接服务或管道）引用该资源。 通过 UX 创建的非 AKV 链接服务将立即发布，因为凭据需要加密。 如果上传引用该链接服务的数据集并尝试发布，UX 会允许该数据集，因为它存在于 git 环境中。 在发布时该数据集会被拒绝，因为它不存在于数据工厂服务中。
+
+如果发布分支与主分支不同步，并且包含虽是最近发布但却已过时的资源，则可以使用以下任一解决方案：
+
+#### <a name="option-1-use-overwrite-live-mode-functionality"></a>选项 1：使用“覆盖实时模式”功能
+
+它将来自协作分支的代码发布到实时模式中或将其覆盖。 它会将存储库中的代码视为事实来源。 
+
+<u>代码流：</u>协作分支 -> 实时模式
+
+![强制从协作分支发布代码](media/author-visually/force-publish-changes-from-collaboration-branch.png)
+
+#### <a name="option-2-disconnect-and-reconnect-git-repository"></a>选项 2：断开连接并重新连接 Git 存储库
+
+它将代码从实时模式导入协作分支。 它将实时模式下的代码视为事实来源。 
+
+<u>代码流：</u>实时模式 -> 协作分支  
 
 1. 删除当前的 Git 存储库
 1. 使用相同的设置重新配置 Git，但确保选择了“将现有数据工厂资源导入到存储库”，然后选择“新建分支” 
 1. 创建拉取请求以将更改合并到协作分支 
 
-下面是一些可能导致发布分支过时的示例情形：
-- 用户有多个分支。 在一个功能分支中，用户删除了一个与 AKV 不关联的链接服务（无论是否在 Git 中，非 AKV 链接服务都会立即发布），并且从未将功能分支合并到协作分支中。
-- 用户使用 SDK 或 PowerShell 修改了数据工厂
-- 用户已将所有资源移动到新的分支，并尝试首次发布。 导入资源时应手动创建链接服务。
-- 用户手动上传非 AKV 链接服务或集成运行时 JSON。 他们从另一个资源（如数据集、链接服务或管道）引用该资源。 通过 UX 创建的非 AKV 链接服务将立即发布，因为凭据需要加密。 如果上传引用该链接服务的数据集并尝试发布，UX 会允许该数据集，因为它存在于 git 环境中。 在发布时该数据集会被拒绝，因为它不存在于数据工厂服务中。
+根据需要适当地选择任一方法。 
 
 ## <a name="switch-to-a-different-git-repository"></a>切换到不同 Git 存储库
 

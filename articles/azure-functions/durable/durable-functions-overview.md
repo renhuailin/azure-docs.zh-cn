@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 62d5d3095d2c68741a61f2df64d54287fb429110
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 987857c4534ddbef90ef3eca5f73f554db0c4341
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375974"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777709"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -22,7 +22,7 @@ ms.locfileid: "110375974"
 Durable Functions 目前支持以下语言：
 
 * **C#**：[预编译的类库](../functions-dotnet-class-library.md)和 [C# 脚本](../functions-reference-csharp.md)。
-* **JavaScript**：仅 Azure Functions 运行时的版本 2.x 支持此语言。 要求使用 1.7.0 版或更高版本的 Durable Functions 扩展。 
+* JavaScript：仅 Azure Functions 运行时的版本 2.x 或更高版本支持此语言。 要求使用 1.7.0 版或更高版本的 Durable Functions 扩展。 
 * **Python**：要求使用 2.3.1 版或更高版本的 Durable Functions 扩展。
 * **F#** ：预编译的类库和 F# 脚本。 仅 Azure Functions 运行时的版本 1.x 支持 F# 脚本。
 * **PowerShell**：仅 Azure Functions 运行时的版本 3.x 和 PowerShell 7 支持。 需要 2.x 版的捆绑包扩展。
@@ -40,7 +40,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 * [函数链](#chaining)
 * [扇出/扇入](#fan-in-out)
 * [异步 HTTP API](#async-http)
-* [Monitoring](#monitoring)
+* [监视](#monitoring)
 * [人机交互](#human)
 * [聚合器（有状态实体）](#aggregator)
 

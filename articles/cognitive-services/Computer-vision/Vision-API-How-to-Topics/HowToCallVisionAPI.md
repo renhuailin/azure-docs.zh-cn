@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5feb16227653bdc7e51925b7a327c3eb50c88491
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0014297d45c26d855a2df8c2a3fdccb2f0c047d2
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453803"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822902"
 ---
 # <a name="call-the-image-analysis-api"></a>调用图像分析 API
 
@@ -136,6 +136,10 @@ description.captions[].confidence    | `number`    | 短语的置信度评分。
     * FailedToProcess
     * Timeout - 图像处理超时。
     * InternalServerError
+
+> [!TIP]
+> 使用计算机视觉时，可能会遇到服务强制实施的[速率限制](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)所导致的暂时性错误，或者网络中断等其他暂时性问题。 有关如何处理此类故障的信息，请参阅云设计模式指南中的[重试模式](https://docs.microsoft.com/azure/architecture/patterns/retry)，以及相关的[断路器模式](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

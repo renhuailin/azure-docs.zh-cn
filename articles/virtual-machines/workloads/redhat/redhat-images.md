@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 970e0931556a787b461b8c614b41fd88271bdf1c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ed4df5d747dfcd9d5e50e439be63b7682d6b886a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469113"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696760"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像概述
+
+适用于：:heavy_check_mark: Linux VM 
 
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
 

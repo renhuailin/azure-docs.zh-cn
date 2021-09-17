@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 06/02/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0ef3b00fe3ae68ddecc7ab93ee612e0698329c43
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: cd040ef394163113b46f9af46aef0aead9cb37ca
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460481"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689275"
 ---
 # <a name="configure-and-optimize-vms"></a>配置和优化 VM
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 本文分享了有关如何针对 HPC 配置和优化启用了 InfiniBand 的 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) VM 的指导。
 

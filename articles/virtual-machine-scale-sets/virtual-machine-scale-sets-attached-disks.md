@@ -9,14 +9,17 @@ ms.subservice: disks
 ms.date: 4/25/2017
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 9e4bdf868d3f8ddf3a049509ead30a4b1ba341b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13bdbe7a1f6c328a2797d6f8869c05af9c5cb7f5
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86527432"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690553"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 虚拟机规模集和附加数据磁盘
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
+
 为了扩展可用存储，Azure [虚拟机规模集](./index.yml)支持包含附加数据磁盘的 VM 实例。 可以在创建规模集时附加数据磁盘，也可以将数据磁盘附加到现有规模集。
 
 > [!NOTE]

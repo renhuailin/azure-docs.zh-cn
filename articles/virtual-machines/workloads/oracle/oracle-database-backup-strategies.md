@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: dbe0fe6d0dadea6e99b406f2de6e16ed4d667741
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2a61ed8f32fb85c3500ebf191c8bd53808b75eb9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461531"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696883"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Azure Linux VM 备份策略中的 Oracle Database
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 数据库备份可保护数据库，防止因存储组件故障和数据中心故障而导致的数据丢失。 通过利用备份，还可以从人为错误中恢复，以及克隆数据库用于开发或测试目的。 
 

@@ -4,20 +4,22 @@ description: 了解 Azure 中 HBv3 系列 VM 大小的性能和可伸缩性。
 services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: bf64cfc8ad00fc7f761019ed2fa66089434a96ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb32a407813ba7e85f55fc39790fba81ca452c50
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604764"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693396"
 ---
 # <a name="hbv3-series-virtual-machine-performance"></a>HBv3 系列虚拟机性能
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 使用常见 HPC 微基准测试程序的性能预期如下：
 
@@ -53,4 +55,4 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 - 了解有关[缩放 MPI 应用程序](compiling-scaling-applications.md)的信息。
 - 有关 HBv3 VM 上 HPC 应用程序的性能和可伸缩性结果，请参阅[技术社区文章](https://techcommunity.microsoft.com/t5/azure-compute/hpc-performance-and-scalability-results-with-azure-hbv3-vms/bc-p/2235843)。
 - 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
-- 有关运行 HPC 工作负荷的高层架构视图，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负载，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

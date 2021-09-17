@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8710bac1d3161581f1002aa2d7531350c197be1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92132765"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696711"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure CDN 上创建 WAF 策略
 
@@ -39,8 +39,8 @@ ms.locfileid: "92132765"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 策略适用于            |选择“Azure CDN(预览版)”。|
-    | 订阅            |选择 Front Door 订阅名称。|
-    | 资源组          |选择 Front Door 资源组名称。|
+    | 订阅            |选择 CDN 配置文件订阅名称。|
+    | 资源组          |选择 CDN 配置文件资源组名称。|
     | 策略名称             |输入 WAF 策略的唯一名称。|
 
    :::image type="content" source="../media/waf-cdn-create-portal/basic.png" alt-text="“创建 WAF 策略”页的屏幕截图，其中包含“查看 + 创建”按钮以及为各种设置输入的值。" border="false":::

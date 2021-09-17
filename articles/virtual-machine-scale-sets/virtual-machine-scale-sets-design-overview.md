@@ -9,14 +9,17 @@ ms.service: virtual-machine-scale-sets
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6541f1a54391ca4dd991ff9ae2299cd9e337cc7b
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a9c000d5c1ced86fd12e78b362fa437da119bf45
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985925"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690486"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
+
 本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](./overview.md)。
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>何时使用规模集而不使用虚拟机？

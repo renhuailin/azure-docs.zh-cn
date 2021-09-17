@@ -9,14 +9,17 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 10d45662f84a354ee4b261c2e7255a57aa81ad0f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ff513925647e5233afd6056677343dca88b8977b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774478"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697400"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>为虚拟机规模集选择适当数量的容错域
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
+
 默认情况下，系统会在没有区域的 Azure 区域中创建具有五个容错域的虚拟机规模集。 对于支持虚拟机规模集分区部署等等区域，如果已选中此选项，则每个区域的容错域计数的默认值为 1。 在这种情况下，FD = 1 意味着尽最大努力将属于规模集的 VM 实例分布在多个机架上。
 
 你还可以考虑使规模集容错域数量与托管磁盘容错域数量对齐。 如果整个托管磁盘容错域发生故障，此对齐有助于防止仲裁。 FD 计数可以设置为小于或等于每个区域中可用托管磁盘容错域的数量。 请参阅此[文档](../virtual-machines/availability.md)，了解按区域划分的托管磁盘容错域数。

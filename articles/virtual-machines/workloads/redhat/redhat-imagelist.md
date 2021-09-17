@@ -8,14 +8,17 @@ ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: b34f4c70e572aade6e37c55d67801423602430cc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b38ced5ec6ed66f14648b165a9556bdc87aa2302
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450767"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696798"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 中可用的 Red Hat Enterprise Linux (RHEL) 映像
+
+**适用于：** :heavy_check_mark: Linux VM 
+
 Azure 针对不同用例提供了各种 RHEL 映像。
 
 > [!NOTE]

@@ -7,20 +7,19 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/13/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: 467547b3a7aa9b1c0e728282ab8208134911d9b0
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 042d7fd04ca3a41016e67481f81237a56e0dfc8d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733850"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737173"
 ---
 #  <a name="create-azure-arc-data-controller-in-direct-connectivity-mode-using-cli"></a>使用 CLI 在直接连接模式下创建 Azure Arc 数据控制器
 
 本文介绍在此功能的当前预览版中，如何在直接连接模式下使用 CLI 创建 Azure Arc 数据控制器。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="complete-prerequisites"></a>满足先决条件
 
@@ -105,7 +104,7 @@ az k8s-extension create -c "my-connected-cluster" -g "my-resource-group" --name 
 #### <a name="azure-portal"></a>Azure 门户
 1. 登录 Azure 门户并浏览到连接了 Kubernetes 的群集资源所在的资源组。
 1. 选择部署了扩展的已启用 Arc 的 Kubernetes 群集（类型 =“Kubernetes - Azure Arc”）。
-1. 在左侧导航栏中的“设置”下，选择“扩展(预览)”。
+1. 在左侧导航栏中的“设置”下，选择“扩展”。
 1. 你应该会看到刚才创建的扩展处于“已安装”状态。
 
 :::image type="content" source="media/deploy-data-controller-direct-mode-prerequisites/dc-extensions-dashboard.png" alt-text="“扩展”仪表板":::

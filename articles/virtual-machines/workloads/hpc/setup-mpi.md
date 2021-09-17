@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7e468b246534fef1fab4e710d0449e785280e16a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c189c850d0db5965823c531d86c243d209c8db34
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460514"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694124"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>设置适用于 HPC 的消息传递接口
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 [消息传递接口 (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface) 是实现分布式内存并行化的开放库和事实标准。 它通常跨许多 HPC 工作负载使用。 [支持 RDMA](../../sizes-hpc.md#rdma-capable-instances) 的 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md)虚拟机 (VM) 上的 HPC 工作负载可使用 MPI 通过低延迟和高带宽 InfiniBand 网络进行通信。
 - 通过 Azure 上已启用 SR-IOV 的 VM 大小，可将几乎任何形式的 MPI 与 Mellanox OFED 配合使用。

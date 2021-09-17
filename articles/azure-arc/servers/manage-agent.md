@@ -1,14 +1,14 @@
 ---
 title: 管理已启用 Azure Arc 的服务器代理
 description: 本文介绍在已启用 Azure Arc 的服务器 Connected Machine 代理的生命周期内通常会执行的不同管理任务。
-ms.date: 05/18/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 728e67930366f1b62b405f503a775b6d14a90bd0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5e80d240c9b5ce8795de8baee3214d256d180e0f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068223"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769847"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -30,7 +30,7 @@ ms.locfileid: "110068223"
 
     * 在计算机或者服务器上运行 `azcmagent disconnect` 命令。
 
-    * 在 Azure 门户中已启用 Arc 的已注册的所选服务器上，选择顶部栏中的“删除”。
+    * 在 Azure 门户中已启用 Arc 的所选已注册服务器上，选择顶部栏中的“删除”。
 
     * 使用 [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) 或 [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource)。 对于 `ResourceType` 参数，请使用 `Microsoft.HybridCompute/machines`。
 
@@ -50,15 +50,15 @@ ms.locfileid: "110068223"
 
 1. 使用 [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) 或 [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed) 来审核计算机上安装的 VM 扩展并记录其配置。
 
-2. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除通过 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extension)安装的 VM 扩展。
+2. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除通过 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extensions)安装的 VM 扩展。
 
-3. 结合使用 azcmagent 工具与 [Disconnect](manage-agent.md#disconnect) 参数从 Azure Arc 中断开计算机的连接，然后从 Azure 中删除计算机资源。 从已启用 Arc 的服务器断开计算机的连接不会删除 Connected Machine 代理，并且在此过程中不需要删除该代理。 可以在以交互方式登录时手动运行此内容，或者使用用于加入多个代理的同一服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)来自动运行此内容。 如果你未使用服务主体将计算机注册到已启用 Azure Arc 的服务器，请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)创建服务主体。
+3. 结合使用 azcmagent 工具与 [Disconnect](manage-agent.md#disconnect) 参数从 Azure Arc 中断开计算机的连接，然后从 Azure 中删除计算机资源。 从已启用 Arc 的服务器断开计算机的连接不会删除 Connected Machine 代理，并且在此过程中不需要删除该代理。 可以在以交互方式登录时手动运行 azcmagent，或者使用用于加入多个代理的同一服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)来自动运行此内容。 如果你未使用服务主体将计算机注册到已启用 Azure Arc 的服务器，请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)创建服务主体。
 
 4. 重命名计算机的计算机名。
 
 5. 将 Connected Machine 代理重新注册到已启用 Arc 的服务器。 使用 [Connect](manage-agent.md#connect) 参数运行 `azcmagent` 工具即可完成此步骤。
 
-6. 重新部署最初部署到了已启用 Arc 的服务器中的计算机的 VM 扩展。 如果你使用 Azure 策略部署了用于 VM 的 Azure Monitor（见解）代理或 Log Analytics 代理，将在下一个[评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署这些代理。
+6. 重新部署最初部署到了已启用 Arc 的服务器中的计算机的 VM 扩展。 如果使用 Azure Policy 定义部署了用于 VM 的 Azure Monitor（见解）代理或 Log Analytics 代理，将在下一个[评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署这些代理。
 
 ## <a name="upgrading-agent"></a>升级代理
 
@@ -199,7 +199,7 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 
 此参数指定 Azure 资源管理器中的资源，该资源表示已在 Azure 中创建计算机。 资源位于指定的订阅和资源组中，有关计算机的数据存储在由 `--location` 设置指定的 Azure 区域中。 如果未指定，则该计算机的主机名为默认资源名。
 
-然后，将下载与系统分配的计算机标识相对应的证书，并将其存储在本地。 完成此步骤后，Azure Connected Machine 元数据服务和来宾配置代理将开始与已启用 Azure Arc 的服务器进行同步。
+然后，将下载与系统分配的计算机标识相对应的证书，并将其存储在本地。 完成此步骤后，Azure Connected Machine 元数据服务和来宾配置代理服务将开始与已启用 Azure Arc 的服务器进行同步。
 
 若要使用服务主体进行连接，请运行以下命令：
 
@@ -236,7 +236,7 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 
 执行以下方法之一，从计算机中卸载 Windows 或 Linux Connected Machine 代理。 删除代理不会在已启用 Arc 的服务器中注销计算机，也不会删除已安装的 Azure VM 扩展。 对于不再希望通过已启用 Azure Arc 的服务器进行管理的服务器或计算机，需要执行以下步骤来成功停止对它们的管理： 
 
-1. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或使用 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除从 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extension)安装的不想保留在计算机上的 VM 扩展。
+1. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或使用 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除从 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extensions)安装的不想保留在计算机上的 VM 扩展。
 1. 通过运行 `azcmagent disconnect` 取消注册计算机，以删除 Azure 中已启用 Arc 的服务器资源。 如果此命令失败，可以在 Azure 中手动删除该资源。 否则，如果该资源已在 Azure 中删除，你需要在服务器上运行 `azcmagent disconnect --force-local-only` 以删除本地配置。
 
 ### <a name="windows-agent"></a>Windows 代理
@@ -314,7 +314,7 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 
 ## <a name="update-or-remove-proxy-settings"></a>更新或删除代理设置
 
-若要将代理配置为在部署后通过代理服务器与服务进行通信或在部署后删除此配置，请使用以下任一方法来完成此任务。
+若要将代理配置为在部署后通过代理服务器与服务进行通信或在部署后删除此配置，请使用以下任一方法来完成此任务。 在此情况下，代理使用 HTTP 协议进行出站通信。
 
 > [!NOTE]
 > 已启用 Arc 的服务器不支持使用 [Log Analytics 网关](../../azure-monitor/agents/gateway.md)作为 Connected Machine 代理的代理。
@@ -360,6 +360,6 @@ sudo azcmagent_proxy remove
 
 * 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
-* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视等。
+* 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。
 
-* 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 如果需要收集操作系统和工作负载监视数据，使用自动化 runbook 或更新管理等功能管理这些数据，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)等其他 Azure 服务，则需要适用于 Windows 和 Linux 的 Log Analytics 代理。
+* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用 [VM 见解](../../azure-monitor/vm/vminsights-enable-policy.md)启用监视，等等。

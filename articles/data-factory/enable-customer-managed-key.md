@@ -1,18 +1,19 @@
 ---
 title: 使用客户管理的密钥加密 Azure 数据工厂
 description: 通过创建自己的密钥 (BYOK) 增强数据工厂安全性
-author: chez-charlie
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/08/2020
-ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: a18d06e3a0324889a4cb9936fb339fd9d8f9b816
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3580ae78497426f1399981035e861bc51c912144
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222671"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697552"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>使用客户管理的密钥加密 Azure 数据工厂
 

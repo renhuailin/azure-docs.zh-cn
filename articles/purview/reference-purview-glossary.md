@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: purview
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 20fdf362524a7a1a801aabd5a307b41216a81f31
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 77c1d203808683d50e0a7648c686f84c7d23b354
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254152"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607913"
 ---
 # <a name="azure-purview-product-glossary"></a>Azure Purview 产品词汇表
 
@@ -42,7 +42,7 @@ Azure Purview 在自动扫描期间提取架构并应用分类的资产。 扫�
 ## <a name="contact"></a>联系人
 与数据目录中的某个实体关联的个人 
 ## <a name="control-plane-operation"></a>控制平面操作
-用于管理订阅中的资源（例如基于角色的访问控制和 Azure 策略）的操作，这些操作将被发送到 Azure 资源管理器终结点。 
+用于管理订阅中的资源（例如基于角色的访问控制和 Azure Policy）的操作，这些操作将被发送到 Azure 资源管理器终结点。 
 ## <a name="credential"></a>凭据
 验证访问控制系统中使用的身份或工具。 凭据可用于对个人或团体进行身份验证，目的是授予对数据资产的访问权限。 
 ## <a name="data-catalog"></a>数据目录

@@ -1,19 +1,21 @@
 ---
-title: 在 Azure 数据工厂中创建计划触发器
-description: 了解如何在 Azure 数据工厂中创建按计划运行管道的触发器。
+title: 创建计划触发器
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何在 Azure 数据工厂或 Azure Synapse Analytics 中创建触发器以根据计划运行管道。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 96a6b82afb7d3d71b0dd8ce392fa308a3611aa94
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 08/24/2021
+ms.custom: devx-track-python, devx-track-azurepowershell, synapse
+ms.openlocfilehash: 833800da17302d2f28619cd1f66acfc476175a7f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675015"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824612"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 
@@ -25,18 +27,24 @@ ms.locfileid: "110675015"
 
 以下部分提供以不同方式创建计划触发器的步骤。 
 
-## <a name="data-factory-ui"></a>数据工厂 UI
+## <a name="ui-experience"></a>UI 体验
 
 可以创建 **计划触发器**，用于将管道计划为定期运行（每小时运行一次、每天运行一次，等等）。 
 
 > [!NOTE]
 > 有关创建管道和计划触发器，将触发器与管道相关联以及运行和监视管道的完整演练，请参阅[快速入门：使用数据工厂 UI 创建数据工厂](quickstart-create-data-factory-portal.md)。
 
-1. 切换到“编辑”选项卡（显示为铅笔符号）。 
+1. 切换到数据工厂中的“编辑”选项卡，或 Azure Synapse 中的“集成”选项卡。 
 
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
     ![切换到“编辑”选项卡](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
 
-1. 在菜单上选择“触发器”，然后选择“新建/编辑” 。 
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![切换到“编辑”选项卡](./media/how-to-create-schedule-trigger/switch-edit-tab-synapse.png)
+
+---
+    
+2. 在菜单上选择“触发器”，然后选择“新建/编辑” 。 
 
     ![“新建触发器”菜单](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
 
@@ -54,7 +62,9 @@ ms.locfileid: "110675015"
         > 对于实施夏令时的时区，触发器时间会根据此每年两次的变更自动调整。 若要选择退出夏令时变更，请选择不实施夏令时的时区，例如 UTC
 
     1. 指定触发器的“重复周期”。 从下拉列表中选择一个值（“每分钟”、“每小时”、“每日”、“每周”和“每月”）。 在文本框中输入乘数。 例如，如果希望触发器每隔 15 分钟运行一次，请选择“每分钟”，并在文本框中输入 **15**。 
-    1. 若要指定结束日期时间，请选择“指定结束日期”，指定“结束日期”，然后选择“确定”。 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在将解决方案发布到数据工厂之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
+    1. 在“定期”中，如果从下拉框中选择“日、周或月”，可以找到 “高级定期选项”。
+    :::image type="content" source="./media/how-to-create-schedule-trigger/advanced.png" alt-text="日、周或月的高级定期选项":::
+    1. 若要指定结束日期时间，请选择“指定结束日期”，指定“结束日期”，然后选择“确定”。 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在发布解决方案之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
 
         ![触发器设置](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
 
@@ -68,17 +78,31 @@ ms.locfileid: "110675015"
 
     ![触发器设置 -“完成”按钮](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
 
-1. 选择“全部发布”，将所做的更改发布到数据工厂。 在将更改发布到数据工厂之前，触发器不会开始触发管道运行。 
+1. 选择“全部发布”，发布所做的更改。 在发布更改之前，触发器不会开始触发管道运行。 
 
     ![发布按钮](./media/how-to-create-schedule-trigger/publish-2.png)
 
 1. 切换到左侧的“管道运行”选项卡，然后选择“刷新”以刷新列表 。 可以看到由计划的触发器触发的管道运行。 请注意“触发因素”列中的值。 如果使用“立即触发”选项，将在列表中看到手动触发器运行。 
 
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
     ![监视触发的运行](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 
-1. 切换到“触发器运行” \ “计划”视图。  
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![监视触发的运行](./media/how-to-create-schedule-trigger/monitor-triggered-runs-synapse.png)
+    
+---
+
+9. 切换到“触发器运行” \ “计划”视图。  
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
     ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs-synapse.png)
+    
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -286,7 +310,7 @@ ms.locfileid: "110675015"
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>将触发器开始时间传递给管道
 
-Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区的数据：SliceStart、SliceEnd、WindowStart 和 WindowEnd。 在 Azure 数据工厂的当前版本中，可以使用管道参数实现此行为。 触发器的开始时间和计划时间设置为管道参数的值。 在以下示例中，触发器的计划时间作为值传递给 **scheduledRunTime** 管道参数：
+Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区的数据：SliceStart、SliceEnd、WindowStart 和 WindowEnd。 在 Azure 数据工厂和 Synapse 管道的当前版本中，可以使用管道参数实现此行为。 触发器的开始时间和计划时间设置为管道参数的值。 在以下示例中，触发器的计划时间作为值传递给 **scheduledRunTime** 管道参数：
 
 ```json
 "parameters": {
@@ -391,7 +415,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 | 印度标准时间 (IST) | +5:30 | `India Standard Time` | 否 | `'yyyy-MM-ddTHH:mm:ss'` |
 | 中国标准时间 | +8 | `China Standard Time` | 否 | `'yyyy-MM-ddTHH:mm:ss'` |
 
-此列表不完整。 有关时区选项的完整列表，请在数据工厂门户中浏览[触发器创建页](#data-factory-ui)
+此列表不完整。 有关时区选项的完整列表，请在门户中浏览[触发器创建页](#ui-experience)
 
 ### <a name="starttime-property"></a>startTime 属性
 下表说明了 **startTime** 属性如何控制触发器运行：

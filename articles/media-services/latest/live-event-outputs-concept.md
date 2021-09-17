@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: f1df5c945c5216e82837672ad8aeaa669fc4fb20
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5269be27a0e31e9626cd26960092356bce0d8ff4
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786439"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635027"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -224,7 +224,6 @@ ms.locfileid: "110786439"
 将流传输到实时事件后，可以通过创建[资产](/rest/api/media/assets)、[实时输出](/rest/api/media/liveoutputs)和[流定位符](/rest/api/media/streaminglocators)来启动流事件。 实时输出会存档流，并使观看者可通过[流式处理终结点](/rest/api/media/streamingendpoints)使用该流。  
 
 有关实时输出的详细信息，请参阅[使用云 DVR](live-event-cloud-dvr-time-how-to.md)。
-
 ## <a name="live-event-output-questions"></a>实时事件输出问题
 
-请参阅[实时事件输出问题](questions-collection.md#live-streaming)一文。
+查看[常见问题解答中的实时事件问题](frequently-asked-questions.yml)。

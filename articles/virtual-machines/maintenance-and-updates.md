@@ -7,14 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 8b332b1871c92d36821e8f797ceac5b6697e5dc1
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 0f1d65c7caa9073fa66fe3920b2b39bc9c5a5d11
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632180"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687703"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的维护
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Azure 定期更新平台，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 此类更新的目的包括修补托管环境中的软件组件、升级网络组件以及硬件解除授权，等等。 
 

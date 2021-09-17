@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: b180a0f148db5222a288958724ad248acd18b565
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bd7b8e13ef6c44952f682497a4f4a5cdc2ebc3f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673857"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688084"
 ---
-# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
+# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM
+
+适用于：:heavy_check_mark: Linux VM 
 
 Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  学习如何：
 

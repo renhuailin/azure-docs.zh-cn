@@ -6,14 +6,14 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 9/06/2020
+ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 6e433950c04c4494201b090063b17a10e54a4822
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06d0e35534db97f1de48c55f9cc6f46f979514fa
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685765"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444838"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN 终结点多原点
 
@@ -83,6 +83,12 @@ ms.locfileid: "98685765"
 3. 选择“添加”。
 
 4. 选择“配置原点”，为所有原点设置原点路径：
+
+    源路径将用于重写 Microsoft CDN 在构造转发到源的请求时要使用的 URL。 其还会携带传入请求的所有剩余部分。 默认情况下，不提供此路径。 因此，Microsoft CDN 将在对源路径的请求中使用传入 URL 路径。
+
+    源路径：`/fwd/`
+
+    传入 URL 路径：`/foo/a/b/image1.jpg` </br> 从 Microsoft CDN 到源路径的 URL：`fwd/foo/a/b/image1.jpg.`
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="配置原点路径" border="true":::
 

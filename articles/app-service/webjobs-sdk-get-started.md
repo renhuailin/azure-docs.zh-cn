@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 06/25/2021
 ms.author: glenga
 ms.topic: tutorial
-ms.openlocfilehash: 4a017d57062e2871052305eb9bbf393c808a643d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6b4875f028fe8645125743d04770c2fd237b4f62
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293280"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752468"
 ---
 # <a name="tutorial-get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>教程：开始使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -246,7 +246,7 @@ ms.locfileid: "114293280"
     }
     ```
 
-    将消息添加到名为 `queue` 的队列后，将执行该函数，并将 `message` 字符串写入日志。 受监视的队列位于接下来要创建的默认 Azure 存储帐户中。
+    应该将 Functions 类标记为 `public static`，以便运行时访问和执行方法。 在上面的代码示例中，将消息添加到名为 `queue` 的队列后，将执行该函数，并将 `message` 字符串写入日志。 受监视的队列位于接下来要创建的默认 Azure 存储帐户中。
    
 `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
 

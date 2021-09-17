@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 04/26/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41f0a9beda1c72b778d4f238cc5aa629e10b6d7e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3eb2f0023cbd0bbe36b466ecf4a1380aa20a2c5c
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094269"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446307"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的基于主机的加密
 
@@ -26,9 +26,30 @@ ms.locfileid: "110094269"
 
 ### <a name="prerequisites"></a>先决条件
 
-
 - 确保已安装 CLI 扩展 v2.23 或更高版本。
+- 确保已在 `Microsoft.Compute` 下启用 `EncryptionAtHost` 功能标志。
 
+### <a name="register-encryptionathost--preview-features"></a>注册 `EncryptionAtHost` 预览功能
+
+若要创建使用基于主机加密的 AKS 群集，必须在订阅上启用 `EncryptionAtHost` 功能标志。
+
+使用 [az feature register][az-feature-register] 命令注册 `EncryptionAtHost` 功能标志，如以下示例所示：
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
+```
+
+状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 `Microsoft.Compute` 资源提供程序的注册状态：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
+```
 
 ### <a name="limitations"></a>限制
 

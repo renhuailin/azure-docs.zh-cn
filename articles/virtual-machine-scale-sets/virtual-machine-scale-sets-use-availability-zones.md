@@ -8,15 +8,17 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 5584f052dc9dcb72f03b923c1a4c666e212b5385
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96016652"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697355"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 若要防止虚拟机规模集发生数据中心级故障，可以跨可用性区域创建规模集。 支持可用性区域的 Azure 区域最少具有三个单独的区域，每个都有其自己的独立电源、网络和冷却设备。 有关详细信息，请参阅[可用性区域概述](../availability-zones/az-overview.md)。
 

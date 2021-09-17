@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: kegorman
-ms.openlocfilehash: 04a3fb9e4e7dd1d498714cd3b2ebd4c5f6b55bec
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 1dfeaf71d846dfe33f42df3e9931293a76f62209
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210340"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698624"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成 Microsoft Azure 和 Oracle 云基础结构的 Oracle 应用程序解决方案
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 Microsoft 和 Oracle 合作提供低延迟、高吞吐量的跨云连接，使你能够充分利用这两个云。 
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 08/12/2021
 ms.author: alkohli
-ms.openlocfilehash: ae3504b1483dce5678a9d7b53556d9228e53ded0
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 68667c495384320731b8a7898e3590aa8487a13e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839120"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860745"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>教程：配置 Azure Stack Edge Mini R 的网络
 
@@ -49,11 +49,16 @@ ms.locfileid: "109839120"
 
 2. 如果需要零时差更新，可在此处通过为数据端口配置有线连接来实现。 若要详细了解如何为此设备设置有线连接，请参阅[通过数据线连接设备](azure-stack-edge-mini-r-deploy-install.md#cable-the-device)。 更新结束后，可删除有线连接。
 
-3. 创建 Wi-Fi 证书和签名链证书。 签名链证书和 Wi-Fi 证书都必须采用带有 .cer 文件扩展名的 DER格式。 有关说明，请参阅[创建证书](azure-stack-edge-gpu-manage-certificates.md)。
+3. 创建 Wi-Fi 证书和签名链证书。 签名链证书和 Wi-Fi 证书都必须采用带有 .cer 文件扩展名的 DER格式。 有关说明，请参阅[创建证书](azure-stack-edge-gpu-manage-certificates.md)。 如果使用 Wi-Fi 配置文件而不是证书进行身份验证，则此步骤是可选的。
 
-4. 在本地 web UI 中，转到“开始使用”。 在“安全”磁贴上，依次选择“证书”和“配置”  。 
+   > [!NOTE] 
+   > 如果在个人 Wi-Fi 网络上使用基于密码的身份验证，则可以跳过证书步骤。 只需配置 Wi-Fi 端口，然后上传 Wi-Fi 配置文件。</br></br> 若要了解有关 WPA2（个人网络）的 Wi-Fi 配置文件并了解如何导出 Wi-Fi 配置文件，请参阅[使用 Wi-Fi 配置文件](azure-stack-edge-mini-r-use-wifi-profiles.md)。
 
-   [![本地 Web UI“证书”页](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
+4. 将证书添加到设备： 
+
+   1. 在本地 web UI 中，转到“开始使用”。 在“安全”磁贴上，依次选择“证书”和“配置”  。 
+
+      [![本地 Web UI“证书”页](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
 
    1. 选择“+ 添加证书”。 
     
@@ -73,7 +78,7 @@ ms.locfileid: "109839120"
 
    5. 返回到“开始使用”。
 
-5. 在“网络”磁贴上，选择“配置” 。  
+5. 配置 Wi-Fi 端口。 在“网络”磁贴上，选择“配置” 。  
 
    在物理设备上有 4 个网络接口。 端口 1 和端口 2 是 1 Gbps 网络接口。 端口 3 和端口 4 是 10-Gbps 网络接口。 第 5 个端口是 Wi-Fi 端口。 
 

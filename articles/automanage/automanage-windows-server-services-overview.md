@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 07/09/2021
 ms.author: niwashbu
-ms.openlocfilehash: 475ea083a6412f38093f601ce34da8775357fa3e
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 09b011d76a570aaed1a9ea8c0b9bdc74e80eca53
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286456"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772184"
 ---
 # <a name="automanage-for-windows-server-services-preview"></a>适用于 Windows Server 的 Automanage 服务（预览版）
 
@@ -27,9 +27,11 @@ ms.locfileid: "114286456"
 > 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
+> [!NOTE]
+> 热补丁可以在 Windows Server 2022 Datacenter：Azure Edition (Core) 预览版上进行评估。  Windows Server 2019 Datacenter：Azure Edition 预览版上的热补丁不再可供评估。
+
 你可在下面的一个或多个 Windows Server Azure Edition 映像中找到适用于 Windows Server 的 Automanage 功能： 
 
-- Windows Server 2019 Datacenter：Azure Edition (Core)
 - Windows Server 2022 Datacenter：Azure Edition（桌面体验）
 - Windows Server 2022 Datacenter：Azure Edition (Core)
 
@@ -41,7 +43,6 @@ ms.locfileid: "114286456"
 
 在以下映像中，热补丁提供公开预览版：
 
-- Windows Server 2019 Datacenter：Azure Edition (Core)
 - Windows Server 2022 Datacenter：Azure Edition (Core)
 
 使用热补丁功能，无需重启即可在 VM 上应用安全更新程序。  此外，适用于 Windows Server 的 Automanage 可自动执行热修补的载入、配置和编排。  要了解详细信息，请参阅[热补丁](automanage-hotpatch.md)。  
@@ -71,9 +72,8 @@ ms.locfileid: "114286456"
 
 ### <a name="deciding-which-image-to-use"></a>确定使用哪个映像 
 
-|图像|功能|
+|映像|功能|
 |--|--|
-| Windows Server 2019 Datacenter：Azure Edition (Core) | 热补丁 | 
 |Windows Server 2022 Datacenter：Azure Edition（桌面体验） | 基于 QUIC 的 SMB、扩展网络 | 
 | Windows Server 2022 Datacenter：Azure Edition (Core) | 热补丁、基于 QUIC 的 SMB、扩展网络 | 
 

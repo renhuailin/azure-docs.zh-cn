@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/16/2021
-ms.openlocfilehash: 749caf37ee09f9dc794dee60c6d4a5b93da43c6e
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 81c82152bf87944c7aed191c12e067567ec2b086
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114386310"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662243"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent"></a>为 Azure Monitor 代理配置数据收集
 
@@ -36,7 +36,7 @@ ms.locfileid: "114386310"
 可以使用 Azure 门户创建数据收集规则并将订阅中的虚拟机关联到该规则。 系统会自动安装 Azure Monitor 代理，并为尚未安装它的任何虚拟机创建托管标识。
 
 > [!IMPORTANT]
-> 除了现有的用户分配的标识（如果有）外，使用门户创建数据收集规则也会在目标资源上启用系统分配的托管标识。 对于现有应用程序，除非它们在请求中指定用户分配的标识，否则计算机将默认使用系统分配的标识。 [了解详细信息](../../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)
+> 使用门户创建数据收集规则，还可以对目标资源启用系统分配的托管标识，以及现有的用户分配的标识（如果有）。 对于现有应用程序，除非在请求中指定用户分配的标识，否则计算机将默认使用系统分配的标识。 [了解详细信息](../../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)
 
                     
 
@@ -89,6 +89,7 @@ ms.locfileid: "114386310"
 > Get-WinEvent -LogName 'Application' -FilterXPath $XPath
 > ```
 >
+> - 在上面的 cmdlet 中，“-LogName”参数的值是 XPath 查询的初始部分到“!”，只有 XPath 查询的其余部分进入 $XPath 参数。
 > - 如果返回事件，则查询有效。
 > - 如果收到消息“找不到任何与指定的选择条件匹配的事件。”，则查询可能有效，但在本地计算机上没有匹配的事件。
 > - 如果收到消息“指定的查询无效”，则查询语法无效。 
@@ -122,7 +123,7 @@ ms.locfileid: "114386310"
 > [!NOTE]
 > 如果要将数据发送到 Log Analytics，则必须在 Log Analytics 工作区所在的同一区域中创建数据收集规则。 该规则可关联到其他受支持的区域中的计算机。
 
-可以使用资源管理器模板为 Azure 虚拟机或已启用 Azure Arc 的服务器创建规则和关联。 请参阅[用于 Azure Monitor 中的数据收集规则的资源管理器模板示例](./resource-manager-data-collection-rules.md)以了解示例模板）。
+可以使用资源管理器模板为 Azure 虚拟机或启用了 Azure Arc 的服务器创建规则和关联。 请参阅[用于 Azure Monitor 中的数据收集规则的资源管理器模板示例](./resource-manager-data-collection-rules.md)以了解示例模板。
 
 
 ## <a name="manage-rules-and-association-using-powershell"></a>使用 PowerShell 管理规则和关联

@@ -1,6 +1,6 @@
 ---
 title: 教程 - 为 Linux VM 创建和管理 Azure 虚拟网络
-description: 本教程介绍如何使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络
+description: 本教程介绍如何使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络。
 services: virtual-machines
 author: cynthn
 ms.collection: linux
@@ -10,14 +10,16 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cfc76ffd05b6348c9a585a64e3f2868f28f5e5cd
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: e259a835046b24d84fad9ec9fdb6416bc1bd6c90
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107811699"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698942"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程将指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 在本教程中，你将了解如何执行以下操作：
 

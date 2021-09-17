@@ -9,14 +9,16 @@ ms.collection: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: df9721e400f1d7142db2578eceee8dd4fc25f7cc
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: f205354b0a27404adaec83e071934c2cea4d4ba0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901756"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693220"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>快速入门：使用 ARM 模板创建 Linux 虚拟机规模集
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 统一规模集
 
 利用虚拟机规模集，可以部署和管理一组自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 然后，Azure 负载均衡器会将流量分配到规模集中的 VM 实例。 本快速入门将使用 Azure 资源管理器模板（ARM 模板）创建虚拟机规模集并部署示例应用程序。
 

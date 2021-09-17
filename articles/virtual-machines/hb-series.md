@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 02eb75f96cee6df8cf2659e65cbb48099b0d81e4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ae1107deb58aa7bcc52fc9ed8055772c81cd4eb3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768240"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696306"
 ---
 # <a name="hb-series"></a>HB 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 HB 系列 VM 针对内存带宽驱动的应用进行了优化，例如流体动力学、显式有限元素分析和天气建模等应用。 HB VM 具有 60 个 AMD EPYC 7551 处理器核心、每 CPU 核心 4 GB RAM，无同步多线程。 HB VM 可提供高达 260 GB/秒的内存带宽。
 

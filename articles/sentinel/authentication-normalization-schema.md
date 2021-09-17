@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: 3372dd6c76cbc4e1e232832966474c4b383f2d76
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b2eeec44054f57857e0da08134f6bada3aaf24f6
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731068"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514765"
 ---
 # <a name="azure-sentinel-authentication-normalization-schema-reference-public-preview"></a>Azure Sentinel 身份验证规范化架构参考（公共预览版）
 
@@ -33,9 +33,10 @@ ms.locfileid: "121731068"
 有关 Azure Sentinel 中的规范化的详细信息，请参阅[规范化和 Azure Sentinel 信息模型 (ASIM)](normalization.md)。
 
 > [!IMPORTANT]
-> 身份验证规范化架构目前以公共预览版提供。
-> 此功能不附带服务级别协议，不建议将其用于生产工作负载。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 身份验证规范化架构目前以预览版提供。 此功能不附带服务级别协议，不建议将其用于生产工作负荷。
+>
+> [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+>
 
 ## <a name="parsers"></a>分析器
 
@@ -47,19 +48,21 @@ Azure Sentinel 提供以下内置的特定于产品的身份验证事件分析�
 - 使用 AWS CloudTrail 连接器收集的 AWS 登录。
 - 使用 Okta 连接器收集的 Okta 身份验证。
 
-若要使用与源无关的分析器（统一了所有列出的分析器），并确保针对所有配置的源进行分析，请在查询中使用“imAuthentication”作为表名称。
+若要使用与源无关的分析程序（统一了所有列出的分析程序），并确保针对所有配置的源分析数据，请在查询中使用“imAuthentication”作为表名称。
 
-从 [Azure Sentinel GitHub 存储库](https://aka.ms/AzSentinelAuth)部署[与源无关的分析器和特定于源的分析器](normalization.md#parsers)。
+从 [Azure Sentinel GitHub 存储库](https://aka.ms/AzSentinelAuth)部署[与源无关的分析器和特定于源的分析器](normalization-about-parsers.md)。
 
 
 
 ## <a name="normalized-content"></a>规范化内容
 
-对身份验证规范化架构的支持还包括对以下内置分析规则和规范化身份验证分析器的支持：
+对身份验证 ASIM 架构的支持还包括对以下内置分析规则和规范化身份验证分析程序的支持。 虽然下面提供了 Azure Sentinel GitHub 存储库的链接作为参考，但也可在 [Azure Sentinel Analytics 规则库](detect-threats-built-in.md)中找到这些规则。 使用链接的 GitHub 页复制所列规则的任何相关搜寻查询。
 
-- 3 小时内来自不同国家/地区的用户登录（使用身份验证规范化）
-- 潜在的密码喷涂攻击（使用身份验证规范化）
-- 对用户凭据进行的暴力攻击（使用身份验证规范化）
+- [潜在的密码喷涂攻击（使用身份验证规范化）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthPasswordSpray.yaml)
+ - [对用户凭据进行的暴力攻击（使用身份验证规范化）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthBruteForce.yaml)
+ - [3 小时内来自不同国家/地区的用户登录（使用身份验证规范化）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthSigninsMultipleCountries.yaml)
+ - [尝试登录已禁用帐户的 IP 登录（使用身份验证规范化）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imSigninAttemptsByIPviaDisabledAccounts.yaml)
+
 
 规范化身份验证分析规则是唯一的，因为它们可以检测跨源的攻击。 例如，如果用户从不同国家/地区登录不同的不相关系统，Azure Sentinel 现在可以检测到这种威胁。
 
@@ -67,16 +70,16 @@ Azure Sentinel 提供以下内置的特定于产品的身份验证事件分析�
 
 身份验证信息模型与 [OSSEM 登录实体架构](https://github.com/OTRF/OSSEM/blob/master/docs/cdm/entities/logon.md)保持一致。
 
-在下面的表中，“类型”指的是逻辑类型。 有关详细信息，请参阅[逻辑类型](normalization.md#logical-types)。
+在下面的表中，“类型”指的是逻辑类型。 有关详细信息，请参阅[逻辑类型](normalization-about-schemas.md#logical-types)。
 
 ### <a name="log-analytics-fields"></a>Log Analytics 字段
 
 Log Analytics 会为每条记录生成以下字段，在创建自定义连接器时可以替代这些字段。
 
-|字段  |类型  |说明  |
+|字段  |类型  |描述  |
 |---------|---------|---------|
 |<a name ="timegenerated"></a>TimeGenerated     |  datetime       |报告设备生成事件的时间。         |
-|_ResourceId     | GUID        |  报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。       |
+|_ResourceId     | guid        |  报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。       |
 |     |         |         |
 
 > [!NOTE]
@@ -87,11 +90,11 @@ Log Analytics 会为每条记录生成以下字段，在创建自定义连接器
 
 事件字段是所有架构的通用字段，用于描述活动本身和报告设备。
 
-| 字段               | 类       | 类型       |  说明        |
+| 字段               | 实例       | 类型       |  说明        |
 |---------------------|-------------|------------|--------------------|
-| **EventMessage**        | 可选    | 字符串     |     一般消息或说明，包含在记录中或者从记录生成。   |
-| EventCount          | 必需   | 整数    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。 <br><br>注意：出于一致性目的，包括此字段，但它通常不用于身份验证事件。  |
-| **EventStartTime**      | 必需   | 日期/时间  |      如果源支持聚合并且记录表示多个事件，则此字段指定生成第一个事件的时间。 否则，此字段将别名化 [TimeGenerated](#timegenerated) 字段。<br><br>注意：出于一致性目的，包括此字段，但它通常不用于身份验证事件。  |
+| **EventMessage**        | 可选    | 字符串     |     一般消息或说明，包含在记录中或者根据记录生成。   |
+| EventCount          | 必需   | Integer    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。 <br><br>**注意**：出于一致性目的，包括此字段，但它通常不用于身份验证事件。  |
+| **EventStartTime**      | 必需   | 日期/时间  |      如果源支持聚合并且记录表示多个事件，则此字段指定生成第一个事件的时间。 否则，此字段将别名化 [TimeGenerated](#timegenerated) 字段。<br><br>**注意**：出于一致性目的，包括此字段，但它通常不用于身份验证事件。  |
 | **EventEndTime**        | 必需   | Alias      |      [TimeGenerated](#timegenerated) 字段的别名。    |
 | **EventType**           | 必需   | Enumerated |    描述记录报告的操作。 <br><br>对于身份验证记录，支持的值包括： <br>- `Logon` <br>- `Logoff`<br><br>注意：可以在源记录中使用不同字词提供该值，这些字词应规范化为这些值。 原始值应存储在 [EventOriginalType](#eventoriginaltype) 字段中。|
 | <a name ="eventoriginaltype"></a>EventOriginalType           | 可选   | 字符串 |    源记录中提供的事件类型或 ID。 <br><br>示例： `4625`|
@@ -104,9 +107,9 @@ Log Analytics 会为每条记录生成以下字段，在创建自定义连接器
 | <a name ="eventproduct"></a>EventProduct        | 必需   | 字符串     |             生成事件的产品。 <br><br>示例： `Windows`<br><br>注意：源记录中可能未提供此字段。 在这种情况下，此字段必须由分析器设置。           |
 | **EventProductVersion** | 可选    | 字符串     | 生成事件的产品的版本。 <br><br>示例： `10` <br><br>注意：源记录中可能未提供此字段。 在这种情况下，此字段必须由分析器设置。     |
 | **EventVendor**         | 必需   | 字符串     |           生成事件的产品的供应商。 <br><br>示例： `Microsoft`  <br><br>注意：源记录中可能未提供此字段。 在这种情况下，此字段必须由分析器设置。  |
-| **EventSchemaVersion**  | 必需   | 字符串     |    架构的版本。 此处所述的架构版本为 `0.1`         |
+| **EventSchemaVersion**  | 必需   | 字符串     |    架构的版本。 此处记录的架构版本为 `0.1`         |
 | **EventReportUrl**      | 可选    | 字符串     | 在资源的事件中提供的 URL，提供有关该事件的其他信息。|
-| <a name ="dvc"></a>Dvc | 必需       | 字符串     |              发生该事件的设备的唯一标识符。 <br><br>此字段可以别名化 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [Event Product](#eventproduct) 字段相同的值。             |
+| <a name ="dvc"></a>Dvc | 必需       | 字符串     |              发生该事件的设备的唯一标识符。 <br><br>此字段可能又称为 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。             |
 | <a name ="dvcipaddr"></a>DvcIpAddr           | 建议 | IP 地址 |         发生进程事件的设备的 IP 地址。  <br><br>示例： `45.21.42.12`  <br><br>注意：如果标识符可用但类型未知，请不要使用此字段。 有关详细信息，请参阅 [Dvc](#dvc)。  |
 | <a name ="dvchostname"></a>DvcHostname         | 建议 | 主机名   |               发生进程事件的设备的主机名。 <br><br>示例： `ContosoDc.Contoso.Azure`      <br><br>注意：如果标识符可用但类型未知，请不要使用此字段。 有关详细信息，请参阅 [Dvc](#dvc)。          |
 | <a name ="dvcid"></a>DvcId               | 可选    | 字符串     |  发生进程事件的设备的唯一 ID。 <br><br>示例： `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
@@ -131,47 +134,47 @@ Log Analytics 会为每条记录生成以下字段，在创建自定义连接器
 
 “参与者”(Actor) 在“源设备”(SrcDvc) 上运行“操作应用程序”(ActingApp)，尝试向“目标设备”(TargetDvc) 上的“目标应用程序”(TargetApp) 对“目标用户”(TargetUser) 进行身份验证  。
 
-| 字段          | 类        | 类型       | 说明   |
+| 字段          | 实例        | 类型       | 说明   |
 |---------------|--------------|------------|-----------------|
 |**LogonMethod** |可选 |字符串 |用于执行身份验证的方法。 <br><br>示例： `Username & Password` |
 |LogonProtocol |可选 |字符串 |用于执行身份验证的协议。 <br><br>示例： `NTLM` |
-| <a name="actoruserid"></a>ActorUserId    | 可选  | UserId     |   参与者的计算机可读的唯一字母数字表示形式。 有关详细信息，请参阅[用户实体](normalization.md#the-user-entity)。  <br><br>示例： `S-1-12-1-4141952679-1282074057-627758481-2916039507`    |
-| ActorUserIdType| 可选  | UserIdType     |  [ActorUserId](#actoruserid) 字段中存储的 ID 的类型。 有关详细信息，请参阅[用户实体](normalization.md#the-user-entity)。         |
-| <a name="actorusername"></a>ActorUsername  | 可选    | 用户名     | 参与者的用户名，包括域信息（如果可用）。 有关详细信息，请参阅[用户实体](normalization.md#the-user-entity)。<br><br>示例： `AlbertE`     |
-| ActorUsernameType              | 可选    | UsernameType |   指定 [ActorUsername](#actorusername) 字段中存储的用户名的类型。 有关详细信息，请参阅[用户实体](normalization.md#the-user-entity)。 <br><br>示例： `Windows`       |
-| ActorUserType | 可选 | 字符串 | 参与者的类型。 <br><br>例如：`Guest` |
+| <a name="actoruserid"></a>ActorUserId    | 可选  | UserId     |   参与者的计算机可读的唯一字母数字表示形式。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。  <br><br>示例： `S-1-12-1-4141952679-1282074057-627758481-2916039507`    |
+| ActorUserIdType| 可选  | UserIdType     |  [ActorUserId](#actoruserid) 字段中存储的 ID 的类型。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。         |
+| <a name="actorusername"></a>ActorUsername  | 可选    | 用户名     | 参与者的用户名，包括域信息（如果可用）。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。<br><br>示例： `AlbertE`     |
+| ActorUsernameType              | 可选    | UsernameType |   指定 [ActorUsername](#actorusername) 字段中存储的用户名的类型。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。 <br><br>示例： `Windows`       |
+| ActorUserType | 可选 | 字符串 | 参与者的类型。 <br><br>例如： `Guest` |
 | ActorSessionId | 可选     | 字符串     |   参与者登录会话的唯一 ID。  <br><br>示例： `102pTUgC3p8RIqHvzxLCHnFlg`  |
-| ActingAppId | 可选 | 字符串 | 代表参与者授权的应用程序的 ID，包括进程、浏览器或服务。 <br><br>例如：`0x12ae8` |
-| ActiveAppName | 可选 | 字符串 | 代表参与者授权的应用程序的名称，包括进程、浏览器或服务。 <br><br>例如：`C:\Windows\System32\svchost.exe` |
+| ActingAppId | 可选 | 字符串 | 代表参与者授权的应用程序的 ID，包括进程、浏览器或服务。 <br><br>例如： `0x12ae8` |
+| ActiveAppName | 可选 | 字符串 | 代表参与者授权的应用程序的名称，包括进程、浏览器或服务。 <br><br>例如： `C:\Windows\System32\svchost.exe` |
 | ActingAppType | 可选 | Enumerated | 操作应用程序的类型。 支持的值包括： <br> <br>- `Process` <br>- `Browser` <br>- `Resource` <br>- `Other` |
-| HttpUserAgent |   可选    | 字符串 |  通过 HTTP 或 HTTPS 执行身份验证时，此字段的值是执行身份验证时操作应用程序提供的 user_agent HTTP 标头。<br><br>例如：`Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1` |
-|<a name="targetuserid"></a>TargetUserId   | 可选 | UserId     | 目标用户的计算机可读的唯一字母数字表示形式。 有关详细信息，请参阅[用户实体](normalization.md#the-user-entity)。            <br><br> 示例： `00urjk4znu3BcncfY0h7`    |
-| TargetUserIdType               | 可选 | UserIdType     | [TargetUserId](#targetuserid) 字段中存储的用户 ID 的类型。 有关详细信息，请参阅[用户实体](normalization.md#the-user-entity)。            <br><br> 示例：`SID`  |
-| <a name="targetusername"></a>TargetUsername | 可选 | 用户名     | 目标用户的用户名，包括域信息（如果可用）。 有关详细信息，请参阅[用户实体](normalization.md#the-user-entity)。  <br><br>示例：`MarieC`      |
-| TargetUsernameType             |可选  | UsernameType | 指定 [TargetUsername](#targetusername) 字段中存储的用户名的类型。 有关详细信息，请参阅[用户实体](normalization.md#the-user-entity)。          |
-| TargetUserType | 可选 | 字符串 | 目标用户的类型。 <br><br>例如：`Member` |
+| HttpUserAgent |   可选    | 字符串 |  通过 HTTP 或 HTTPS 执行身份验证时，此字段的值是执行身份验证时操作应用程序提供的 user_agent HTTP 标头。<br><br>例如： `Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1` |
+|<a name="targetuserid"></a>TargetUserId   | 可选 | UserId     | 目标用户的计算机可读的唯一字母数字表示形式。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。            <br><br> 示例： `00urjk4znu3BcncfY0h7`    |
+| TargetUserIdType               | 可选 | UserIdType     | [TargetUserId](#targetuserid) 字段中存储的用户 ID 的类型。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。            <br><br> 示例：`SID`  |
+| <a name="targetusername"></a>TargetUsername | 可选 | 用户名     | 目标用户的用户名，包括域信息（如果可用）。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。  <br><br>示例：`MarieC`      |
+| TargetUsernameType             |可选  | UsernameType | 指定 [TargetUsername](#targetusername) 字段中存储的用户名的类型。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。          |
+| TargetUserType | 可选 | 字符串 | 目标用户的类型。 <br><br>例如： `Member` |
 | TargetSessionId | 可选 | 字符串 | 源设备上 TargetUser 的登录会话标识符。 |
 | **用户**           | Alias        |     字符串       | [TargetUsername](#targetusername) 或 [TargetUserId](#targetuserid) 的别名（如果未定义 [TargetUsername](#targetusername)）。 <br><br>示例： `CONTOSO\dadmin`     |
-|SrcDvcId |可选 |字符串 |记录中报告的源设备的 ID。 <br><br>例如：`ac7e9755-8eae-4ffc-8a02-50ed7a2216c3` |
-| <a name="srcdvchostname"></a>SrcDvcHostname |可选 | 主机名| 源设备主机名，包括域信息（如果可用）。 有关详细信息，请参阅[实体](normalization.md#the-device-entity)。 <br><br>示例： `Constoso\DESKTOP-1282V4D`|
-| SrcDvcHostnameType|可选 |HostnameType |[SrcDvcHostname](#srcdvchostname) 的类型（如果已知）。 有关详细信息，请参阅[实体](normalization.md#the-device-entity)。 |
+|SrcDvcId |可选 |字符串 |记录中报告的源设备的 ID。 <br><br>例如： `ac7e9755-8eae-4ffc-8a02-50ed7a2216c3` |
+| <a name="srcdvchostname"></a>SrcDvcHostname |可选 | 主机名| 源设备主机名，包括域信息（如果可用）。 有关详细信息，请参阅[实体](normalization-about-schemas.md#the-device-entity)。 <br><br>示例： `Constoso\DESKTOP-1282V4D`|
+| SrcDvcHostnameType|可选 |HostnameType |[SrcDvcHostname](#srcdvchostname) 的类型（如果已知）。 有关详细信息，请参阅[实体](normalization-about-schemas.md#the-device-entity)。 |
 |**SrcDvcType** |可选 |Enumerated |源设备的类型。 可能的值包括： <br><br>- `Computer`<br>- `Mobile Device` <br>- `IOT Device` <br>- `Other` |
 |**SrcDvcIpAddr**|建议 |IP 地址 |源设备的 IP 地址。 <br><br>示例： `185.175.35.214` |
 | **SrcDvcOs**|可选 |字符串 |源设备的 OS。 <br><br>示例： `Windows 10` |
 |SrcIsp | 可选|字符串 |源设备用于连接到 Internet 的 Internet 服务提供商 (ISP)。 <br><br>示例： `corpconnect` |
-| **SrcGeoCountry**|可选 |国家/地区 |示例： `Canada` <br><br>有关详细信息，请参阅[逻辑类型](normalization.md#logical-types)。 |
-| **SrcGeoCity**|可选 |城市 |示例： `Montreal` <br><br>有关详细信息，请参阅[逻辑类型](normalization.md#logical-types)。 |
-|**SrcGeoRegion** | 可选|区域 | 示例： `Quebec` <br><br>有关详细信息，请参阅[逻辑类型](normalization.md#logical-types)。|
-| SrcGeoLongtitude|可选 |经度  | 示例： `-73.614830` <br><br>有关详细信息，请参阅[逻辑类型](normalization.md#logical-types)。|
-| **SrcGeoLatitude**|可选 |纬度 |示例： `45.505918` <br><br>有关详细信息，请参阅[逻辑类型](normalization.md#logical-types)。 |
+| **SrcGeoCountry**|可选 |国家/地区 |示例： `Canada` <br><br>有关详细信息，请参阅[逻辑类型](normalization-about-schemas.md#logical-types)。 |
+| **SrcGeoCity**|可选 |城市 |示例： `Montreal` <br><br>有关详细信息，请参阅[逻辑类型](normalization-about-schemas.md#logical-types)。 |
+|**SrcGeoRegion** | 可选|区域 | 示例： `Quebec` <br><br>有关详细信息，请参阅[逻辑类型](normalization-about-schemas.md#logical-types)。|
+| SrcGeoLongtitude|可选 |经度  | 示例： `-73.614830` <br><br>有关详细信息，请参阅[逻辑类型](normalization-about-schemas.md#logical-types)。|
+| **SrcGeoLatitude**|可选 |纬度 |示例： `45.505918` <br><br>有关详细信息，请参阅[逻辑类型](normalization-about-schemas.md#logical-types)。 |
 |**TargetAppId** |可选 | 字符串| 需要授权的应用程序的 ID，该 ID 通常由报告设备分配。 <br><br>示例： `89162` |
 |<a name="targetappname"></a>TargetAppName |可选 |字符串 |需要授权的应用程序的名称，包括服务、URL 或 SaaS 应用程序。 <br><br>示例： `Saleforce` |
 | TargetAppType|可选 |字符串 |代表参与者授权的应用程序的类型。 支持的值包括：  <br><br>- `Process` <br>- `Service` <br>- `Resource` <br>- `URL` <br>- `SaaS application` <br>- `Other`|
 |TargetUrl |可选 |字符串 |与目标应用程序相关联的 URL。 <br><br>示例： `https://console.aws.amazon.com/console/home?fromtb=true&hashArgs=%23&isauthcode=true&nc2=h_ct&src=header-signin&state=hashArgsFromTB_us-east-1_7596bc16c83d260b` |
 |LogonTarget| Alias| |[TargetAppName](#targetappname)、URL 或 [TargetDvcHostname](#targetdvchostname) 的别名，以最能描述身份验证目标的字段为准。 |
 |TargetDvcId |可选 | 字符串|记录中报告的目标设备的 ID。 <br><br> 示例： `2739` |
-|<a name="targetdvchostname"></a>TargetDvcHostname | 建议| 字符串|目标设备主机名，包括域信息（如果可用）。 有关详细信息，请参阅[实体](normalization.md#the-device-entity)。 |
-| TargetDvcHostnameType|建议 | 字符串|[TargetDvcHostname](#targetdvchostname) 的类型。 有关详细信息，请参阅[实体](normalization.md#the-device-entity)。 |
+|<a name="targetdvchostname"></a>TargetDvcHostname | 建议| 字符串|目标设备主机名，包括域信息（如果可用）。 有关详细信息，请参阅[实体](normalization-about-schemas.md#the-device-entity)。 |
+| TargetDvcHostnameType|建议 | 字符串|[TargetDvcHostname](#targetdvchostname) 的类型。 有关详细信息，请参阅[实体](normalization-about-schemas.md#the-device-entity)。 |
 |TargetDvcType |可选 | Enumerated|目标设备的类型。 支持的值包括： <br><br>- `Computer`<br>- `Mobile Device` <br>- `IOT Device` <br>- `Other` |
 |<a name="targetdvcipaddr"></a>TargetDvcIpAddr |可选 | IP 地址|目标设备的 IP 地址。 <br><br>示例： `2.2.2.2` |
 |TargetDvc |Alias | |   目标设备的唯一标识符。 <br><br>选择此值可以为特定源的最合适值指定别名：[TargetDvcHostname](#targetdvchostname)[TargetDvcIpAddr](#targetdvcipaddr) 或不同的 ID（如果更合适）。 |

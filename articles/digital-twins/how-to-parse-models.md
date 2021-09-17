@@ -8,12 +8,12 @@ ms.date: 8/13/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 52cec60dc771232fcb808184373b82f790f8a759
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 584d4ba9de922cd035a70850f723550b02863e16
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252755"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606593"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>使用 DTDL 分析程序库分析和验证模型
 
@@ -70,7 +70,7 @@ DTDLValidator -i
 * 确定模型是否可从另一个模型分配。
 
 > [!NOTE]
-> [IoT 即插即用 (PnP)](../iot-develop/overview-iot-plug-and-play.md) 设备使用小语法变体来描述其功能。 此语法变体是 Azure 数字孪生中使用的 DTDL 的一个子集，在语义上与其兼容。 使用分析程序库时，你不需要知道数字孪生体的 DTDL 是使用哪种语法变体创建的。 默认情况下，对于 PnP 语法和 Azure 数字孪生语法，分析程序会始终返回相同的模型。
+> [IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)设备使用小语法变体来描述其功能。 此语法变体是 Azure 数字孪生中使用的 DTDL 的一个子集，在语义上与其兼容。 使用分析程序库时，你不需要知道数字孪生体的 DTDL 是使用哪种语法变体创建的。 默认情况下，对于 IoT 即插即用语法和 Azure 数字孪生语法，分析程序会始终返回相同的模型。
 
 ### <a name="code-with-the-parser-library"></a>包含分析程序库的代码
 

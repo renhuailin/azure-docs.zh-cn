@@ -2,13 +2,13 @@
 title: 用于部署 Azure 资源的 Bicep 语言
 description: 介绍了用于将基础结构部署到 Azure 的 Bicep 语言。 它通过使用 JSON 来开发模板，提供改进的创作体验。
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 28d42335901db5326be502be52fd4ce2209a7980
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/18/2021
+ms.openlocfilehash: 93aea8ee92d1f15ac45bd5978e7cbf68261e5a69
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724604"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429107"
 ---
 # <a name="what-is-bicep"></a>什么是 Bicep？
 
@@ -34,6 +34,8 @@ Bicep 不是用于编写应用程序的常规编程语言。 Bicep 文件声明 
 2. 完成[快速入门](./quickstart-create-bicep-use-visual-studio-code.md)和 [Microsoft Learn Bicep 模块](./learn-bicep.md)。
 
 若要将现有 ARM 模板反向编译为 Bicep，请参阅[将 ARM 模板反向编译为 Bicep](./decompile.md)。 可使用 [Bicep Playground](https://bicepdemo.z22.web.core.windows.net/) 并排查看 Bicep 和等效的 JSON。
+
+若要了解 Bicep 文件中可用的资源，请参阅 [Bicep 资源参考](/azure/templates/)
 
 有关 Bicep 示例，请参阅 [Bicep GitHub 存储库](https://github.com/Azure/bicep/tree/main/docs/examples)。
 

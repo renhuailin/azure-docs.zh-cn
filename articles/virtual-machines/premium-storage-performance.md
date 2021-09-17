@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 9edab369f009eb1d8c2c9ca9a09f7121aa180c79
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6cd71daa43eb311316bb0da8b54bbef8733fb168
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440920"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694326"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 本文提供了使用 Azure 高级存储构建高性能应用程序的准则。 可以将本文档中提供的说明与适用于应用程序所使用技术的性能最佳实践结合使用。 为了说明这些准则，我们在本文档中使用了在高级存储上运行的 SQL Server 作为示例。
 

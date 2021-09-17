@@ -1,25 +1,25 @@
 ---
-title: 教程 - 使用 Azure Pipelines 将 CI/CD 设置到 Azure VM
-description: 本教程介绍如何使用基于 YAML 的 Azure 管道将 Node.js 应用的持续集成 (CI) 和持续部署 (CD) 设置到 Azure VM。
+title: 使用 Azure Pipelines 将 CI/CD 设置到 Azure VM
+description: 了解如何使用基于 YAML 的 Azure 管道将 Node.js 应用的持续集成 (CI) 和持续部署 (CD) 设置到 Azure VM。
+ms.service: virtual-machines
 author: ushan
 tags: azure-devops-pipelines
-ms.assetid: ''
-ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
-ms.tgt_pltfrm: azure-pipelines
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 49282bf6cbc7c24b75fbe3f1bbe68bd1fac62ae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a50a51d68154654d204149a5e76e5aa94e57683
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552484"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697737"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教程：使用 Azure DevOps Services 和 Azure Pipelines 将应用部署到 Azure 中的 Linux 虚拟机
+# <a name="deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>使用 Azure DevOps Services 和 Azure Pipelines 将应用部署到 Azure 中的 Linux 虚拟机
+
+适用于：:heavy_check_mark: Linux VM 
 
 持续集成 (CI) 和持续部署 (CD) 可形成一个管道，用于在每个代码提交后生成、发布和部署代码。 本文档包含与设置 CI/CD 管道相关联的步骤，以使用 Azure Pipelines 执行多计算机部署。
 

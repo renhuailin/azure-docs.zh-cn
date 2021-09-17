@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fa227e1aa503cf17da6027da8754a6f51e7f469
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97608521"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>教程：Azure Active Directory 与 Peakon 集成
 
@@ -45,6 +45,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Peakon 支持 **SP** 和 **IDP** 发起的 SSO
+* Peakon 支持[自动用户预配和取消预配](peakon-provisioning-tutorial.md)（推荐）。
 
 ## <a name="adding-peakon-from-the-gallery"></a>从库中添加 Peakon
 
@@ -104,7 +105,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     ![Peakon 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://app.peakon.com/saml/<companyid>/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://app.peakon.com/saml/<companyid>/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.peakon.com/saml/<companyid>/assert`
 

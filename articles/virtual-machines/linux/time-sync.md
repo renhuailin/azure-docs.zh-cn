@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/30/2021
 ms.author: cynthn
-ms.openlocfilehash: c50e39db804a18d50f4a6fb594209cc015515a8c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e5ceb8e4db1d2b94d746303a2185bea2015467a0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754732"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691009"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集 
 
 时间同步对于安全性和事件相关性来说很重要。 有时候，它用于分布式事务实现。 多个计算机系统之间的时间准确性通过同步来实现。 同步可能受多种因素影响，包括重启以及时间源和提取时间的计算机之间的网络流量。 
 

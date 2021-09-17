@@ -4,12 +4,12 @@ description: 本快速入门将引导你完成开始使用 Azure 视频分析器
 ms.service: azure-video-analyzer
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: 335890f4bb939123290e5dfe9cccbf9f9aef1242
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 001b1bd2e1f2f3350ad9e9cef28bb3ec682332ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605173"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748684"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer"></a>快速入门：开始使用 Azure 视频分析器
 
@@ -91,14 +91,14 @@ ms.locfileid: "114605173"
 
 ## <a name="use-direct-method-calls"></a>使用直接方法调用
 
-现在，可调用视频分析器边缘模块公开的直接方法来分析实时视频流。 阅读[视频分析器直接方法](direct-methods.md)，检查模块提供的所有直接方法。 
+现在，可调用视频分析器边缘模块公开的直接方法来分析实时视频流。 阅读[视频分析器直接方法](direct-methods.md)，检查模块提供的所有直接方法。 可在[此处](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json)找到直接方法的架构。
 
 ### <a name="enumerate-pipeline-topologies"></a>枚举管道拓扑
 
 此步骤将枚举模块中的所有[管道拓扑](pipeline.md)。
 
 1. 右键单击“avaedge”模块，然后从上下文菜单中选择“调用模块直接方法”。
-1. 你将看到一个编辑框在 Visual Studio Code 窗口的顶部中间弹出。 在编辑框中输入“pipelineTopologyList”，然后按 Enter。
+1. 你将看到一个编辑框在 Visual Studio Code 窗口的顶部中间弹出。 在编辑框中输入 `pipelineTopologyList`，然后按 Enter。
 1. 接下来，复制以下 JSON 有效负载并将其粘贴到编辑框中，然后按 Enter。
    
 ```json

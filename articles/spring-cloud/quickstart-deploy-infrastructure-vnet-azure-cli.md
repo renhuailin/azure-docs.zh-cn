@@ -2,18 +2,18 @@
 title: 快速入门 - 使用 Azure CLI 预配 Azure Spring Cloud
 description: 本快速入门介绍如何使用 Azure CLI 将 Spring Cloud 群集部署到现有虚拟网络中。
 services: azure-cli
-author: vinodramasubbu
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-java
 ms.author: vramasubbu
 ms.date: 06/15/2021
-ms.openlocfilehash: 7eb9b1a3194398dff60b72d1bc65f6ad71cb6822
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: a8dd727b0f0f999f1b0b8e6c9b6ed5977779f5ff
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289467"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271370"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-azure-cli"></a>快速入门 - 使用 Azure CLI 预配 Azure Spring Cloud
 
@@ -23,7 +23,7 @@ ms.locfileid: "114289467"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 订阅。 如果你没有订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * Azure Spring Cloud 群集的两个专用子网，一个用于服务运行时，另一个用于 Spring Boot 微服务应用程序。 有关子网和虚拟网络要求，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[虚拟网络要求](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements)部分。
 * 用于 Azure Spring Cloud 诊断设置的现有 Log Analytics 工作区，以及一个基于工作区的 Application Insights 资源。 有关详细信息，请参阅[使用诊断设置分析日志和指标](diagnostic-services.md)以及 [Azure Spring Cloud 中的 Application Insights Java 进程内代理](how-to-application-insights.md)。
 * 你已确定供 Azure Spring Cloud 群集使用的三个内部无类别域际路由 (CIDR) 范围（每个范围至少为 /16）。 这些 CIDR 范围不可直接路由，只能在 Azure Spring Cloud 群集内部使用。 群集无法将 169.254.0.0/16、172.30.0.0/16、172.31.0.0/16 或 192.0.2.0/24 用作内部 Spring Cloud CIDR 范围，或包含在群集虚拟网络地址范围内的任何 IP 范围   。
@@ -157,7 +157,7 @@ az monitor diagnostic-settings create  \
    az account list-locations --output table
    ```
 
-1. 创建要将资源部署到其中的资源组。 
+1. 创建要将资源部署到其中的资源组。
 
    ```azurecli
    az group create --name <your-resource-group-name> --location <location-name>
@@ -172,38 +172,28 @@ az monitor diagnostic-settings create  \
 1. 在脚本提示时输入以下值：
 
    - 之前保存的 Azure 订阅 ID。
-
    - 之前保存的 Azure 位置名称。
-
    - 之前创建的资源组的名称。
-
    - 将在其中部署资源的虚拟网络资源组的名称。
-
    - 分支虚拟网络的名称（例如 vnet-spoke）。
-
    - Spring Cloud 应用服务要使用的子网的名称（例如 snet-app）。
-
    - Spring Cloud 运行时服务要使用的子网的名称（例如 snet-runtime）。
-
    - 要用于存储诊断日志的 Azure Log Analytics 工作区的资源组的名称。
-
    - Azure Log Analytics 工作区的名称（例如 la-cb5sqq6574o2a）。
-
    - Azure Spring Cloud 要使用的虚拟网络的 CIDR 范围（例如 XX.X.X.X/16,XX.X.X.X/16,XX.X.X.X/16）。
-
    - 要在所有支持标记的资源上作为标记应用的键/值对。 有关详细信息，请参阅[使用标记对 Azure 资源和管理层次结构进行组织](../azure-resource-manager/management/tag-resources.md)。 使用空格分隔列表来应用多个标记（例如 environment=Dev BusinessUnit=finance）。
 
 提供此信息后，脚本将创建和部署 Azure 资源。
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-可以使用 Azure 门户来检查已部署的资源，也可以使用 Azure CLI 或 Azure PowerShell 脚本列出已部署的资源。
+可以使用 Azure 门户来检查已部署的资源，也可以使用 Azure CLI 列出已部署的资源。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。 如果不再需要资源组，可以将其删除，这将删除资源组中的资源。 若要使用 Azure CLI 删除资源组，请使用以下命令：
 
-```azurecli-interactive
+```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az group delete --name $resourceGroupName &&
@@ -219,4 +209,4 @@ echo "Press [ENTER] to continue ..."
    - [简单的 Hello World](./quickstart.md?pivots=programming-language-java&tabs=Azure-CLI)。
 - 在 Azure Spring Cloud 中使用[自定义域](tutorial-custom-domain.md)。
 - 使用 [Azure 应用程序网关](expose-apps-gateway-azure-firewall.md)向 Internet 公开 Azure Spring Cloud 应用程序。
-- 查看安全的端到端 [Azure Spring Cloud 参考体系结构](reference-architecture.md)，它基于 [Microsoft Azure 架构良好的框架](/azure/architecture/framework/)。
+- 查看基于 [Microsoft Azure 架构良好的框架](/azure/architecture/framework/)的安全端到端 [Azure Spring Cloud 参考体系结构](reference-architecture.md)。

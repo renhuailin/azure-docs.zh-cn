@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 9872402ca86ec1d6de349f921806757822e3b587
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 78fa4b405c95d1f39a733eb22ff7c08d28873940
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568785"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178061"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-code42"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Code42 集成
 
@@ -38,6 +38,8 @@ ms.locfileid: "111568785"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Code42 支持 SP 发起的 SSO。
+* Code42 支持[自动用户预配和取消预配](code42-provisioning-tutorial.md)（推荐）。
+
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。

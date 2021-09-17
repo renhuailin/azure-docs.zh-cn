@@ -13,12 +13,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: 9814037b9a4ace0a5f39d6ab0b01d1d940fb00fa
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: cda15b8d0dfd5074fca75283589c3ea173310b4e
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112991975"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769943"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -75,25 +75,23 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="enable-cluster-monitoring"></a>启用群集监视
 
-1. 验证是否已在订阅中注册 *Microsoft.OperationsManagement* 和 *Microsoft.OperationalInsights*。 若要检查注册状态，请使用以下命令：
+验证是否已在订阅中注册 *Microsoft.OperationsManagement* 和 *Microsoft.OperationalInsights*。 若要检查注册状态，请使用以下命令：
 
-    ```azurecli
-    az provider show -n Microsoft.OperationsManagement -o table
-    az provider show -n Microsoft.OperationalInsights -o table
-    ```
+```azurecli
+az provider show -n Microsoft.OperationsManagement -o table
+az provider show -n Microsoft.OperationalInsights -o table
+```
  
-    如果未注册，请使用以下命令注册 *Microsoft.OperationsManagement* 和 *Microsoft.OperationalInsights*：
+如果未注册，请使用以下命令注册 *Microsoft.OperationsManagement* 和 *Microsoft.OperationalInsights*：
  
-    ```azurecli
-    az provider register --namespace Microsoft.OperationsManagement
-    az provider register --namespace Microsoft.OperationalInsights
-    ```
-
-2. 使用 *--enable-addons monitoring* 参数启用 [用于容器的 Azure Monitor][azure-monitor-containers]。 
+```azurecli
+az provider register --namespace Microsoft.OperationsManagement
+az provider register --namespace Microsoft.OperationalInsights
+```
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建包含一个节点的名为 *myAKSCluster* 的群集。 
+使用带有 --enable-addons monitoring 参数的 [az aks create][az-aks-create] 命令创建 AKS 群集，以启用[用于容器的 Azure Monitor][azure-monitor-containers]。 以下示例创建包含一个节点的名为 *myAKSCluster* 的群集。 
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -168,7 +166,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
             app: azure-vote-back
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-back
             image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
@@ -211,7 +209,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
             app: azure-vote-front
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-front
             image: mcr.microsoft.com/azuredocs/azure-vote-front:v1

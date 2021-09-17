@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: c0694e7d136b7fd339362145179939d350eb23ef
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1040c05b081c6edb181d349d00468d1ba0aac3a7
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475958"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455916"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>自定义命令的概念和定义
 
@@ -51,12 +51,24 @@ ms.locfileid: "110475958"
 ### <a name="type"></a>类型
 自定义命令支持以下参数类型：
 
+* Age
+* 货币
 * DateTime
+* 维度
+* 电子邮件
 * 地理位置
 * Number
+* Ordinal
+* 百分比
+* PersonName
+* PhoneNumber
 * 字符串
+* 温度
+* URL
 
-其中除“地理位置”以外的所有参数类型都支持默认值配置，你可以在门户中配置默认值。
+每个区域设置都支持“String”参数类型，但所有其他类型的可用性则因区域设置而异。 自定义命令使用 LUIS 的预生成实体解析，因此区域设置中的参数类型的可用性取决于 LUIS 在该区域设置中预生成的实体支持。 可以查看 [LUIS 在每个区域设置中预生成的实体支持](/azure/cognitive-services/luis/luis-reference-prebuilt-entities)，找到更多详细信息。
+
+有些参数类型（如 Number、String 和 DateTime）支持默认值配置（可以从门户中配置这些值）。
 
 ### <a name="configuration"></a>配置
 配置是仅为“字符串”类型定义的参数属性。 支持以下值：

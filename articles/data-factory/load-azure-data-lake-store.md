@@ -4,15 +4,16 @@ description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 5269267f0fa786163b6c1fa1a4d4bfc8d0ff9af5
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 07/05/2021
+ms.openlocfilehash: 0d2bdda7cacc07b84c8136eb63d282d55a4a0806
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483508"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637878"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
 
@@ -59,15 +60,15 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 3. 选择“创建”。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
-   ![数据工厂主页](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
 
-   选择“创作和监视”磁贴，在单独的选项卡中启动数据集成应用程序。
+   在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独的标签页中启动“数据集成应用程序”。 
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>将数据加载到 Data Lake Storage Gen1 中
 
-1. 在“入门”页中，单击“复制数据”磁贴启动“复制数据”工具 ： 
+1. 在主页中，选择“引入”磁贴启动复制数据工具： 
 
-   ![“复制数据”工具磁贴](./media/load-data-into-azure-data-lake-store/copy-data-tool-tile.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 2. 在“属性”页中，为“任务名称”字段指定“CopyFromAmazonS3ToADLS”，然后选择“下一步”   ：
 
     ![“属性”页](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)

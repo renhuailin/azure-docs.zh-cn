@@ -9,14 +9,17 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 02ea434b74e92e2bdd126a98d33e9e68adb811d0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9e40c1085458140204a1632824e9ac550caae27d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468974"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696751"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
+
+适用于：:heavy_check_mark: Linux VM 
+
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
 
 已预先配置 Red Hat Enterprise Linux (RHEL) 即用即付 (PAYG) 映像来访问 Azure RHUI。 不需要任何其他配置。 要获取最新更新，请在 RHEL 实例准备好后运行 `sudo yum update`。 RHEL PAYG 软件费涵盖了此服务。
@@ -287,16 +290,14 @@ sudo yum makecache
 - 适用于 RHEL 8：
     1. 创建配置文件：
         ```bash
-        vi rhel8.config
-        ```
-    1. 将以下内容添加到配置文件中：
-        ```bash
+        cat <<EOF > rhel8.config
         [rhui-microsoft-azure-rhel8]
         name=Microsoft Azure RPMs for Red Hat Enterprise Linux 8
         baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel8
         enabled=1
         gpgcheck=1
         gpgkey=https://rhelimage.blob.core.windows.net/repositories/RPM-GPG-KEY-microsoft-azure-release sslverify=1
+        EOF
         ```
     1. 保存文件并运行以下命令：
         ```bash

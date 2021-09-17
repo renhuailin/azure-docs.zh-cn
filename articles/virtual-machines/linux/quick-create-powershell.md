@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 12715a3f1392f789425ac7cc5176db3f293efef8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f195a741ed11fc8f7ded421593417bf41a3b9d84
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668209"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692815"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Linux 虚拟机
+
+适用于：:heavy_check_mark: Linux VM 
 
 Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 本快速入门展示了如何使用 Azure PowerShell 模块在 Azure 中部署 Linux 虚拟机 (VM)。 本快速入门使用 Canonical 提供的 Ubuntu 18.04 LTS 市场映像。 若要查看运行中的 VM，也可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
 

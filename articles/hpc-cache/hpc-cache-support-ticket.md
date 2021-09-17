@@ -4,18 +4,20 @@ description: 如何为 Azure HPC 缓存创建帮助请求
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 08/19/2021
 ms.author: v-erkel
-ms.openlocfilehash: 95247985be955b71403a5c2c78962792c6451183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43b2189eb5c782a980db186781f64ea8a540bb3b
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87061425"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770525"
 ---
-# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>为 Azure HPC 缓存创建支持票证
+# <a name="contact-support-for-help-with-azure-hpc-cache"></a>有关 Azure HPC 缓存的帮助，请联系支持人员
 
-使用 Azure 门户创建支持票证。 导航到缓存实例，然后单击侧栏底部显示的“新建支持请求”链接。
+要获得 Azure HPC 缓存方面的帮助，最佳方式是使用 Azure 门户提交支持票证。
+
+导航到缓存实例，然后单击侧栏底部显示的“新建支持请求”链接。
 
 如果没有活动的缓存，请使用 Azure 门户中的主“帮助 + 支持”页面创建票证。 从屏幕左上角的控件打开门户菜单，然后滚动到底部并单击“帮助 + 支持”。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: a2c149bfdf79102779abf7544fed9fb78796a50e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d04d2aa68eecc4b18f0ec1e3bfd1f6cb4d279bc0
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649938"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178858"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>教程：Azure Active Directory 与 New Relic by Account 的单一登录 (SSO) 集成
 
@@ -38,6 +38,8 @@ ms.locfileid: "101649938"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * New Relic by Account 支持 SP 发起的 SSO 
+* New Relic 支持[自动用户预配和取消预配](new-relic-by-organization-provisioning-tutorial.md)（推荐）。
+
 
 ## <a name="add-new-relic-by-account-from-the-gallery"></a>从库中添加 New Relic by Account
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 2de0dcd52745ebadb02ab8dbb563e28abf2822dc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbb169924498b30284ea26d172f605596e6a0379
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046476"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446361"
 ---
 # <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>在 VM 见解中禁用对 VM 的监视
 
@@ -23,7 +23,7 @@ VM 见解依赖于以下组件来提供其体验：
 * Log Analytics 工作区，用于存储来自 VM 和其他源的监视数据。
 * 性能计数器的集合在工作区中配置。 该集合会更新已连接到该工作区的所有 VM 上的监视配置。
 * `VMInsights`（在工作区中配置的监视解决方案）。 此解决方案会更新已连接到该工作区的所有 VM 上的监视配置。
-* Azure VM 扩展 `MicrosoftMonitoringAgent` 和 `DependencyAgent`。 这些扩展收集数据并将其发送到工作区。
+* `MicrosoftMonitoringAgent`（适用于 Windows）或 `OmsAgentForLinux`（适用于 Linux），以及 `DependencyAgent`（为 Azure VM 扩展）。 这些扩展收集数据并将其发送到工作区。
 
 准备禁用 VM 监视时，请注意以下事项：
 

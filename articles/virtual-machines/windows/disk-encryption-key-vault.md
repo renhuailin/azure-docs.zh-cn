@@ -9,14 +9,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a4cd97f838c454a1ea2fa2dba7be327cf157b081
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: eed24e01541b15ce002cb5f10538b376ca0797b7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288987"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697603"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>在 Windows VM 上创建和配置用于 Azure 磁盘加密的密钥保管库
+
+**适用于：** :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/general/overview.md)和[保护 Key Vault](../../key-vault/general/security-features.md)。 
 

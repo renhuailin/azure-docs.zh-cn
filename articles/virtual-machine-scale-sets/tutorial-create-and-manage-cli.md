@@ -8,14 +8,17 @@ ms.service: virtual-machine-scale-sets
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: bdf1f2f54e17c5c04d359e32d3596e73472f3506
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1b95d997bfea9703f302b6ebfdc8dcbf1f514589
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738316"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693067"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
+
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]

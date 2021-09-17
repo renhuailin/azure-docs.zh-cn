@@ -9,14 +9,16 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 29a2cbbf2c390b81aa62b064a7cf93decbaa7457
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19c048613fa1f3e97382264be58da62f2eade286
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565982"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694727"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除磁盘，但不会从存储中删除它。 在本文中，我们使用的是 Ubuntu LTS 16.04 分发版。 如果使用的是其他分发版，则卸载磁盘的说明可能会有所不同。
 

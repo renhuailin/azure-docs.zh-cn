@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: cb87ca44ecc7ff5c308dbf3a74390e34a0f5daea
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 28198fe22bb20e3bb1e4a08715686eca62f1fbba
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770004"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689053"
 ---
 # <a name="hbv3-series"></a>HBv3 系列
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 HBv3 系列 VM 针对 HPC 应用程序进行了优化，例如流体动力学、显式和隐式有限元素分析、天气建模、地震处理、容器模拟和 RTL 模拟。 HBv3 VM 最多具有 120 个 AMD EPYC™ 7003 系列（米兰）CPU 内核、448 GB RAM，无超线程。 HBv3 系列 VM 还提供 350 GB/秒的内存带宽，每个内核最多可达 32 MB 的 L3 缓存，最高可达 7 GB/秒的块设备 SSD 性能和最高为 3.675 GHz 的时钟频率。 
 

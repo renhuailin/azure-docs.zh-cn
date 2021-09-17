@@ -4,15 +4,16 @@ description: 这些教程介绍如何以增量方式将数据从源数据存储�
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 7161fb30c8b445681b4cd577d8f8ac9fff5106df
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a7dae1f33583a7350dd273a44efa90e9cb7dd725
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638866"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
 
@@ -43,7 +44,7 @@ ms.locfileid: "101739239"
 - [使用更改跟踪技术，以增量方式将 Azure SQL 数据库中的数据复制到 Azure Blob 存储](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
 ## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>仅使用 LastModifiedDate 加载新文件和已更改文件
-只能使用 LastModifiedDate 将新文件和已更改文件复制到目标存储。 ADF 会扫描来自源存储的所有文件，按其 LastModifiedDate 应用文件筛选器，然后仅将自上次以来的新文件和已更新文件复制到目标存储。  请注意，如果让 ADF 扫描大量文件，但是仅将少量文件复制到目标，则仍然会预计由于文件扫描所导致的较长持续时间也十分耗时。   
+只能使用 LastModifiedDate 将新文件和已更改文件复制到目标存储。 ADF 会扫描来自源存储的所有文件，按其 LastModifiedDate 应用文件筛选器，然后仅将自上次以来的新文件和已更新文件复制到目标存储。  请注意，如果让 ADF 扫描大量文件，但仅将几个文件复制到目标，则会由于文件扫描过程而花费很长时间。   
 
 有关分步说明，请参阅以下教程： <br/>
 - [基于 LastModifiedDate 以增量方式将新文件和已更改文件从 Azure Blob 存储复制到 Azure Blob 存储](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

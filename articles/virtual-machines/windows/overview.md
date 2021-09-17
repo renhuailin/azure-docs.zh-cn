@@ -9,14 +9,16 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 07562641ef866074dcf14cb01afd4d7ce071e467
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cca6105704afbe4899c62493b50d971471a890f6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310999"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694153"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机
+
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源](/azure/architecture/guide/technology-choices/compute-decision-tree)之一。 通常情况下，如果需要以更大的力度（相对于其他控制选项）控制计算环境，则应选择 VM。 本文介绍创建 VM 之前的注意事项，以及 VM 的创建方法和管理方式。
 

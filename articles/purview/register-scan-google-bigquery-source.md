@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 7/15/2021
-ms.openlocfilehash: f7b134f14d190e7ef65eb2da897f9c106583d497
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d88df617e994f4a609b12dff0419fd673f8207d1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393477"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721936"
 ---
 # <a name="register-and-scan-google-bigquery-source-preview"></a>注册和扫描 Google BigQuery 源（预览版）
 
@@ -43,7 +43,7 @@ BigQuery 源支持完全扫描，以从 BigQuery 项目中提取元数据，并�
 若要在数据目录中注册新的 Google BigQuery 项目，请执行以下操作：
 
 1.  导航到你的 Purview 帐户。
-2.  在左侧导航区域中选择“源”。
+2.  在左侧导航区域中选择“数据映射”。
 3.  选择“注册”。
 4.  在“注册源”中选择 Google BigQuery。 选择“继续” **。** 
     :::image type="content" source="media/register-scan-google-bigquery-source/register-sources.png" alt-text="注册 BigQuery 源" border="true":::
@@ -80,7 +80,7 @@ BigQuery 源支持完全扫描，以从 BigQuery 项目中提取元数据，并�
     c.  凭据：配置 BigQuery 凭据时，请确保：
 
     - 选择“基本身份验证”作为身份验证方法
-    - 在“用户名”字段中提供服务帐户的电子邮件 ID。 例如 \xyz\@developer.gserviceaccount.com
+    - 在“用户名”字段中提供服务帐户的电子邮件 ID。 例如 xyz\@developer.gserviceaccount.com
     - 将服务帐户的私钥文件以 JSON 格式保存在密钥保管库的机密中
 
     若要从 Google 云平台创建新私钥，请在导航菜单中单击“IAM 和管理员”-\>“服务帐户”-\> 选择一个项目 -\> 单击要为其创建密钥的服务帐户的电子邮件地址 -\> 单击“密钥”选项卡 -\> 单击“添加密钥”下拉菜单，然后选择“创建新密钥”。  现在，选择“JSON 格式”。

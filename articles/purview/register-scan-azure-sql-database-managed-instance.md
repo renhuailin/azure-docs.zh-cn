@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 05/08/2021
-ms.openlocfilehash: 655314720975738ebdbddb009d6d31ad7a322e72
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 06f3ee8b820d732c0f605adc3201cff57fa70b42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112552209"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739081"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>注册和扫描 Azure SQL 数据库托管实例
 
@@ -105,9 +105,9 @@ Purview 可以通过几个步骤使用服务主体扫描 Azure SQL 数据库托�
 
 1. 导航到你的 Purview 帐户。
 
-1. 在左侧导航区域中选择“源”。
+1. 在左侧导航区域中选择“数据映射”。
 
-1. 选择“注册”。
+1. 选择“注册”
 
 1. 选择“Azure SQL 数据库托管实例”，然后选择“继续” 。
 
