@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 3a950727034d4be822e0b9554424074a1aaebf33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44286f0f5a0d5f367cd3934ff61653eb4772c1fd
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649888"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182461"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Oracle Fusion ERP 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "101649888"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Oracle Fusion ERP 支持 SP 发起的 SSO。
+* Oracle Fusion ERP 支持[自动用户预配和取消预配](oracle-fusion-erp-provisioning-tutorial.md)（推荐）。
 
 ## <a name="add-oracle-fusion-erp-from-the-gallery"></a>从库中添加 Oracle Fusion ERP
 

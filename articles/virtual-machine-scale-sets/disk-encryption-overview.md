@@ -8,14 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
-ms.openlocfilehash: 9e9a0a8b07c300282f26ce12b989a8510ccd1e98
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 579315379923b5ba8a16f94cff5984e6e904a5ec
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738344"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691298"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 磁盘加密
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 Azure 磁盘加密为虚拟机的操作系统和数据磁盘提供卷加密，帮助保护数据，以便符合在组织安全性与符合性方面所做的承诺。 若要了解详细信息，请参阅 [Azure 磁盘加密：Linux VM](../virtual-machines/linux/disk-encryption-overview.md) 和 [Azure 磁盘加密：Windows VM](../virtual-machines/windows/disk-encryption-overview.md)  
 

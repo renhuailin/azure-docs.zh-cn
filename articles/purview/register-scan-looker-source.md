@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 7/16/2021
-ms.openlocfilehash: 903435ff45249d0c066b386d84ce060057bac666
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: ed524382bf1fcc0c93fc61dd1c0450d69a16b74c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666571"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749414"
 ---
 # <a name="register-and-scan-lookerpreview"></a>注册并扫描 Looker（预览）
 
@@ -45,7 +45,7 @@ Looker 源支持完全扫描，以从 Looker 服务器提取元数据。 它从 
 若要在数据目录中注册新的 Looker 服务器，请执行以下操作：
 
 1. 导航到你的 Purview 帐户。
-2. 在左侧导航区域中选择“源”。
+2. 在左侧导航区域中选择“数据映射”。
 3. 选择“注册”。
 4. 在“注册源”上，选择“Looker”。 选择“继续”。
     :::image type="content" source="media/register-scan-looker-source/register-sources.png" alt-text="注册 looker 源" border="true":::

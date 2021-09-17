@@ -5,14 +5,15 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 41689a842bff067fb36dd97f980c10b71e533f8d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566653"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446212"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>如何在 Azure 数据工厂中使用参数、表达式和函数
 
@@ -25,7 +26,7 @@ ms.locfileid: "105566653"
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Azure 数据工厂 UI 和参数
 
-如果你不熟悉 ADF 用户界面中的 Azure 数据工厂参数用法，请查看[使用参数的链接服务的数据工厂 UI](./parameterize-linked-services.md#data-factory-ui)和[使用参数的元数据驱动管道的数据工厂 UI](./how-to-use-trigger-parameterization.md#data-factory-ui)，以获取直观说明。
+如果你不熟悉 ADF 用户界面中的 Azure 数据工厂参数用法，请查看[使用参数的链接服务的数据工厂 UI](./parameterize-linked-services.md#ui-experience)和[使用参数的元数据驱动管道的数据工厂 UI](./how-to-use-trigger-parameterization.md#data-factory-ui)，以获取直观说明。
 
 ## <a name="parameter-and-expression-concepts"></a>参数和表达式概念 
 

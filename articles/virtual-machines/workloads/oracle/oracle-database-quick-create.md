@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 4b15d683a54f665e948dc31b51df039d20c58f7a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2854cb45f83e46fc556f57247ab4aa28bd7f74c0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081364"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696908"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
+
+适用于：:heavy_check_mark: Linux VM 
 
 本指南详述了如何使用 Azure CLI 通过从 [Oracle 市场库映像](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview)部署 Azure 虚拟机来创建 Oracle 19c 数据库。 部署服务器后，若要配置 Oracle 数据库，请先通过 SSH 进行连接。 
 
@@ -270,8 +272,8 @@ az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 64
     dbca -silent \
        -createDatabase \
        -templateName General_Purpose.dbc \
-       -gdbname test \
-       -sid test \
+       -gdbname oratest1 \
+       -sid oratest1 \
        -responseFile NO_VALUE \
        -characterSet AL32UTF8 \
        -sysPassword OraPasswd1 \
@@ -305,11 +307,11 @@ az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 64
        70% complete
        Executing Post Configuration Actions
        100% complete
-       Database creation complete. For details check the logfiles at: /u01/app/oracle/cfgtoollogs/dbca/test.
+       Database creation complete. For details check the logfiles at: /u01/app/oracle/cfgtoollogs/dbca/oratest1.
        Database Information:
-       Global Database Name:test
-       System Identifier(SID):test
-       Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/test/test.log" for further details.
+       Global Database Name:oratest1
+       System Identifier(SID):oratest1
+       Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/oratest1/oratest1.log" for further details.
     ```
 
 4. 设置 Oracle 变量
@@ -317,13 +319,13 @@ az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 64
     在连接之前，需要设置环境变量 ORACLE_SID：
 
     ```bash
-        export ORACLE_SID=test
+        export ORACLE_SID=oratest1
     ```
 
     你还应使用以下命令将 ORACLE_SID 变量添加到 `oracle` 用户 `.bashrc` 文件以供将来登录：
 
     ```bash
-    echo "export ORACLE_SID=test" >> ~oracle/.bashrc
+    echo "export ORACLE_SID=oratest1" >> ~oracle/.bashrc
     ```
 
 ## <a name="oracle-em-express-connectivity"></a>Oracle EM Express 连接

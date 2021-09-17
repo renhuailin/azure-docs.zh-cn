@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: fab7a613a040a57b65ecb8cb2372fff37f35c84a
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: bd0fb0720218b938b8c10454afeafba85887fa2c
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392554"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779122"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -123,7 +123,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="configure-the-solution"></a>配置解决方案 
 
-1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview)添加到工作区。 也可以使用[从解决方案库中添加 Azure Monitor 解决方案](./solutions.md)中所述的过程。 
+1. 按照[从解决方案库中添加 Azure Monitor 解决方案](./solutions.md#install-a-monitoring-solution)中所述的过程，将网络性能监视器解决方案添加到工作区。 如果要在连接监视器中使用非 Azure 终结点，则这是必需的。
 2. 打开 Log Analytics 工作区，然后选择“概览”磁贴  。 
 3. 选择带有“解决方案需要进行额外配置”  消息的“网络性能监视器”  磁贴。
 

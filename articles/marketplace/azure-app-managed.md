@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 666dfb22036c3d7f1d88515f4b8118eaf133db8c
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: cba8ba5c8c5ff300fe585d75aab98fd4003a475d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594943"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608229"
 ---
 # <a name="configure-a-managed-application-plan"></a>配置托管的应用程序计划
 
@@ -178,7 +178,7 @@ ms.locfileid: "113594943"
 
 1. 在“策略设置”下，选择“+ 添加策略（最多 5 个）”链接。 
 1. 在“名称”框中，输入策略分配名称（最多 50 个字符）。
-1. 从“策略”列表框中，选择 Azure 策略，该策略将应用于客户订阅中的托管应用程序创建的资源。
+1. 从“策略”列表框中，选择 Azure Policy 定义，该定义将应用于客户订阅中的托管应用程序创建的资源。
 1. 在“策略参数”框中，提供要对其应用审核和诊断设置策略的参数。
 1. 从“策略 SKU”列表框中，选择策略 SKU 类型。
 

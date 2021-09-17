@@ -1,23 +1,26 @@
 ---
-title: Azure 数据工厂中的查找活动
-description: 了解如何使用查找活动从外部源查找值。 此输出可进一步由后续活动引用。
+title: 查找活动
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用 Azure 数据工厂和 Azure Synapse Analytics 中的查找活动从外部源查找值。 此输出可进一步由后续活动引用。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/25/2021
-ms.openlocfilehash: 14ab6295717777f40677e0bdcd63a46821683658
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/24/2021
+ms.openlocfilehash: a9a1918496d3832aea736b8a024a15f62f72edad
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480178"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824549"
 ---
-# <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
+# <a name="lookup-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的查找活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-查找活动可以从任何 Azure 数据工厂支持的数据源检索数据集。 可以使用它来动态确定哪些对象在后续活动中工作，而不是针对对象名称进行硬编码。 一些对象示例包括文件和表。
+查找活动可以从数据工厂和 Synapse 管道支持的任何数据源中检索数据集。 可以使用该活动来动态确定哪些对象在后续活动中工作，而不是针对对象名称进行硬编码。 一些对象示例包括文件和表。
 
 查找活动读取并返回配置文件或表的内容。 它还返回执行查询或存储过程的结果。 输出可以是单一实例值或属性数组，可在后续的复制、转换或控制流活动（如 ForEach 活动）中使用它们。
 
@@ -108,7 +111,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否�
 
 在此示例中，管道包含两个活动：查找和复制 。 复制活动将 Azure SQL 数据库实例的 SQL 表中的数据复制到 Azure Blob 存储。 SQL 表的名称存储在 Blob 存储的 JSON 文件中。 查找活动在运行时查找表名。 使用此方法动态修改 JSON。 不需要重新部署管道或数据集。 
 
-本示例演示如何只查找第一行。 若要查找所有行并将结果与 ForEach 活动链接，请参阅[使用 Azure 数据工厂批量复制多个表](tutorial-bulk-copy.md)中的示例。
+本示例演示如何只查找第一行。 若要查找所有行并将结果与 ForEach 活动链接，请参阅[批量复制多个表](tutorial-bulk-copy.md)中的示例。
 
 
 ### <a name="pipeline"></a>管道
@@ -389,7 +392,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 否�
 | | |
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+查看 Azure 数据工厂和 Synapse 管道支持的其他控制流活动： 
 
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
 - [ForEach 活动](control-flow-for-each-activity.md)

@@ -10,12 +10,12 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca738136984941b050c0ae3a7c2408273724b1cd
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: d3a1fe8f4b06601ed6b3e77ffa5743506e923ec4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112379269"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771743"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -103,7 +103,7 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 
 ## <a name="firewall-protected-storage"></a>受防火墙保护的存储
 
-通过创建[资源实例规则](../../storage/common/storage-network-security.md?tabs=azure-portal#grant-access-from-azure-resource-instances-preview)，可以将存储帐户配置为允许访问特定无服务器 SQL 池。
+通过创建[资源实例规则](../../storage/common/storage-network-security.md?tabs=azure-portal#grant-access-from-azure-resource-instances-preview)，可以将存储帐户配置为允许访问特定的无服务器 SQL 池。
 访问受防火墙保护的存储时，可使用用户标识或托管标识。 
 
 > [!NOTE]
@@ -195,7 +195,7 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
-需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
+需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 Azure 角色](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
 
 ### <a name="anonymous-access"></a>[匿名访问](#tab/public-access)
 

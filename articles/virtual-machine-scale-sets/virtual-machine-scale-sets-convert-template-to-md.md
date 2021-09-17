@@ -10,14 +10,16 @@ ms.subservice: disks
 ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cf6fc21baae657b28b7d3edfb242ee1bcef407c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85373958"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690497"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>将规模集模板转换为托管磁盘规模集模板
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 使用 Resource Manager 模板创建不使用托管磁盘的规模集的客户可能希望修改该模板以使用托管磁盘。 本文演示如何使用托管磁盘，以 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)（适用于示例资源管理器模板的社区主导存储库）中的拉取请求为例。 可在此处查看完整的拉取请求：[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)，差异的相关部分如下，并进行了说明：
 

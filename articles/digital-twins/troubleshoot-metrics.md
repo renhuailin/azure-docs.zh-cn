@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7e581925928276ebaddb6b3af9d5f549067a29c0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8dc18662431e750301db7e3d2c4e56d5fbaea674
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457546"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770930"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>排查 Azure 数字孪生指标问题
 
-可通过本文中描述的指标了解 Azure 订阅中的 Azure 数字孪生资源的状态。 Azure 数字孪生指标可帮助你评估 Azure 数字孪生服务及其关联的资源的整体运行状况。 这些面向用户的统计信息可帮助你了解 Azure 数字孪生的当前情况，还可帮助你对问题执行根本原因分析，而无需联系 Azure 支持部门。
+可通过本文中描述的指标了解 Azure 订阅中的 Azure 数字孪生资源的状态。 Azure 数字孪生指标可帮助你评估 Azure 数字孪生服务及其关联的资源的整体运行状况。 这些面向用户的统计信息可帮助你了解 Azure 数字孪生的当前情况，还有助于分析问题的根本原因，而无需联系 Azure 支持。
 
 默认启用度量值。 可通过 [Azure 门户](https://portal.azure.com)查看 Azure 数字孪生指标。
 
@@ -53,7 +53,7 @@ Azure 数字孪生提供了几项指标，便于你简要了解你的实例及�
 
 你可配置这些指标，在解决方案的某些方面快要达到[已发布的服务限制](reference-service-limits.md#functional-limits)时进行跟踪。 
 
-若要对其进行设置，请使用 Azure Monitor 中的[警报](troubleshoot-alerts.md)功能。 你可为这些指标定义阈值，以便在指标达到其发布限制的某个百分比时接收警报。
+若要设置跟踪，请使用 Azure Monitor 中的[警报](troubleshoot-alerts.md)功能。 你可为这些指标定义阈值，以便在指标达到其发布限制的某个百分比时接收警报。
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
@@ -68,7 +68,7 @@ Azure 数字孪生提供了几项指标，便于你简要了解你的实例及�
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API 请求 | 计数 | 总计 | 为数字孪生读取、写入、删除和查询操作发出的 API 请求数。 |  身份验证、 <br>操作、 <br>协议、 <br>状态代码、 <br>状态代码类、 <br>状态文本 |
 | ApiRequestsFailureRate | API 请求失败率 | 百分比 | 平均值 | 服务为实例收到的，针对数字孪生读取、写入、删除和查询操作显示内部错误 (500) 响应代码的 API 请求百分比。 | 身份验证、 <br>操作、 <br>协议、 <br>状态代码、 <br>状态代码类、 <br>状态文本
-| ApiRequestsLatency | API 请求延迟 | 毫秒 | 平均值 | API 请求的响应时间。 这是指从 Azure 数字孪生收到请求到服务发送数字孪生读取、写入、删除和查询操作的结果（成功/失败）之间的时间。 | 身份验证、 <br>操作、 <br>协议 |
+| ApiRequestsLatency | API 请求延迟 | 毫秒 | 平均值 | API 请求的响应时间。 此值指从 Azure 数字孪生收到请求到服务发送数字孪生读取、写入、删除和查询操作的结果（成功/失败）之间的时间。 | 身份验证、 <br>操作、 <br>协议 |
 
 #### <a name="billing-metrics"></a>计费指标
 
@@ -77,10 +77,10 @@ Azure 数字孪生提供了几项指标，便于你简要了解你的实例及�
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | 计费 API 操作 | 计数 | 总计 | 针对 Azure 数字孪生服务发出的所有 API 请求的计数的计费指标。 | Meter ID |
-| BillingMessagesProcessed | 计费已处理的消息数 | 计数 | 总计 | 从 Azure 数字孪生发送到外部终结点的消息数量的计费指标。<br><br>若要在计费时将其看作一条消息，一个有效负载不得大于 1 KB。 大于此值的有效负载将按 1 KB 的增量计为附加消息（因此，1 到 2 KB 之间的消息将计为 2 条消息，2 到 3 KB 之间的消息将计为 3 条消息，依此类推）。<br>此限制也适用于响应；因此，例如，在响应正文中返回 1.5 KB 内容的调用将作为 2 个操作进行计费。 | Meter ID |
-| BillingQueryUnits | 计费查询单元 | 计数 | 总计 | 查询单元的数量，它是在内部计算的服务资源使用量度量值，用于执行查询。 还有一个可用于度量查询单元的帮助程序 API：[QueryChargeHelper 类](/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet&preserve-view=true) | Meter ID |
+| BillingMessagesProcessed | 计费已处理的消息数 | 计数 | 总计 | 从 Azure 数字孪生发送到外部终结点的消息数量的计费指标。<br><br>若要在计费时将其看作一条消息，一个有效负载不得大于 1 KB。 大于此限值的有效负载将按 1 KB 的增量计为附加消息（因此，1 KB 到 2 KB 之间的消息将计为 2 条消息，2 KB 到 3 KB 之间的消息将计为 3 条消息，依此类推）。<br>此限制也适用于响应；例如，在响应正文中返回 1.5 KB 内容的调用将作为 2 个操作进行计费。 | Meter ID |
+| BillingQueryUnits | 计费查询单元 | 计数 | 总计 | 用于执行查询的查询单位数（服务资源使用情况的内部计算度量值）。 还有一个可用于度量查询单元的帮助程序 API：[QueryChargeHelper 类](/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet&preserve-view=true) | Meter ID |
 
-若要更详细地了解 Azure 数字孪生的计费方式，请参阅 Azure 数字孪生定价。
+若要更详细地了解 Azure 数字孪生的计费方式，请参阅 [Azure 数字孪生定价](https://azure.microsoft.com/pricing/details/digital-twins/)。
 
 #### <a name="ingress-metrics"></a>入口指标
 

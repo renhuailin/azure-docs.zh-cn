@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 08/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 454c59b5f5f5d0781f99f21b612ac2a3fc904fb9
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 9a00022227959d8506bd976c33787bcc5a23273f
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072389"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778798"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -39,7 +39,7 @@ Azure 自动化中的 runbook 可以在 Azure 沙盒上运行，也可以在[混
 
 你也可以使用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)直接在托管角色的计算机上运行 runbook，以及针对环境中的资源运行 runbook。 Azure 自动化存储并管理 runbook，然后将其发送到一个或多个分配的计算机。
 
-在 [Azure 存储](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md) 或 [Azure SQL](../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙会阻止从 Azure 自动化 runbook 访问这些服务。 即使启用了允许受信任 Microsoft 服务的防火墙例外，访问也将被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
+在 [Azure 存储](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md) 或 [Azure SQL](../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙会阻止从 Azure 自动化 runbook 访问这些服务。 即使启用了允许受信任的 Microsoft 服务的防火墙例外，访问也会被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
 
 >[!NOTE]
 >若要在 Linux 混合 Runbook 辅助角色上运行，必须对脚本进行签名并相应配置辅助角色。 或者，[必须关闭签名验证](automation-linux-hrw-install.md#turn-off-signature-validation)。
@@ -154,7 +154,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 | 失败，正在等待资源 |作业失败，因为它已达到[公平份额](#fair-share)限制三次，并且每次都从同一个检查点或 Runbook 开始处启动。 |
 | 已排队 |作业正在等待自动化辅助角色上的资源变得可用，以便其能够启动。 |
 | 正在恢复 |系统正在恢复已暂停的作业。 |
-| 正在运行 |作业正在运行。 |
+| 运行 |作业正在运行。 |
 | 正在运行，正在等待资源 |作业已卸载，因为它已达到公平份额限制。 片刻之后，它将从其上一个检查点恢复。 |
 | 正在启动 |作业已分配给辅助角色，并且系统正在将它启动。 |
 | 已停止 |作业在完成之前已被用户停止。 |
@@ -166,7 +166,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 
 在 Azure 自动化中执行 runbook 会在自动化帐户的活动日志中写入详细信息。 有关如何使用日志的详细信息，请参阅[从活动日志中检索详细信息](manage-runbooks.md#retrieve-details-from-activity-log)。
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 
 本部分介绍在 runbook 中处理异常或间歇性问题的一些方法。 一个示例是 WebSocket 异常。 正确的异常处理可防止暂时性网络故障导致 runbook 失败。
 
@@ -238,7 +238,7 @@ Azure 沙盒中的 runbook 作业无法访问任何设备或应用程序特征�
 
 为了在云中的所有 runbook 之间共享资源，Azure 使用称为公平份额的概念。 使用公平份额时，Azure 会暂时卸载或停止已运行三小时以上的所有作业。 [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) 和 [Python runbook](automation-runbook-types.md#python-runbooks) 的作业会停止且不会重启，作业状态变为“已停止”。
 
-对于长时间运行的 Azure 自动化任务，建议使用混合 Runbook 辅助角色。 混合 Runbook 辅助角色不受公平份额限制，并且不会限制 runbook 的执行时间。 其他作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)适用于 Azure 沙盒和混合 Runbook 辅助角色。 虽然混合 Runbook 辅助角色不受 3 小时公平份额限制的约束，但你应该开发在辅助角色上运行的 runbook，以便在出现意外的本地基础结构问题时支持重启。
+对于长时间运行的 Azure 自动化任务，建议使用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)。 混合 Runbook 辅助角色不受公平份额限制，并且不会限制 runbook 的执行时间。 其他作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)适用于 Azure 沙盒和混合 Runbook 辅助角色。 虽然混合 Runbook 辅助角色不受 3 小时公平份额限制的约束，但你应该开发在辅助角色上运行的 runbook，以便在出现意外的本地基础结构问题时支持重启。
 
 另一种选择是通过使用子 runbook 来优化 runbook。 例如，runbook 可能会在多个资源上循环访问同一函数（例如，对多个数据库执行某个数据库操作）。 可将此函数移至[子 runbook](automation-child-runbooks.md)，并让 runbook 使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) 对其进行调用。 子 runbook 在单独的进程中并行执行。
 

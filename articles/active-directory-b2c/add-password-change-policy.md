@@ -12,12 +12,12 @@ ms.date: 05/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f359595a136a356938194f2df728935c80059008
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a0f5376574dd0329641ebc68b906bc5342437be8
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742870"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777700"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码更改
 
@@ -41,7 +41,7 @@ ms.locfileid: "108742870"
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 完成 [Active Directory B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)中的步骤。
 * [在 Azure Active Directory B2C 中注册 Web 应用程序](tutorial-register-applications.md)（如果尚未这样做）。
@@ -148,13 +148,14 @@ ms.locfileid: "108742870"
 ## <a name="upload-and-test-the-policy"></a>上传并测试策略
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-4. 选择“标识体验框架”。
-5. 在“自定义策略”页上，单击“上传策略”。
-6. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
-7. 单击“上载” 。
-8. 针对信赖方文件（例如 *ProfileEditPasswordChange.xml*）重复步骤 5 到 7。
+1. 在门户工具栏中选择“目录 + 订阅”图标，确保使用包含 Azure AD B2C 租户的目录。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 选择“标识体验框架”。
+1. 在“自定义策略”页上，单击“上传策略”。
+1. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
+1. 单击“上载” 。
+1. 针对信赖方文件（例如 *ProfileEditPasswordChange.xml*）重复步骤 5 到 7。
 
 ### <a name="run-the-policy"></a>运行策略
 
@@ -166,6 +167,6 @@ ms.locfileid: "108742870"
 
 - 在 [GitHub](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change) 上查找示例策略。
 - 了解如何 [在 Azure AD B2C 中配置密码复杂性](password-complexity.md)。
-- 设置[密码重置流程](add-password-reset-policy.md)。
+- 创建[密码重置流](add-password-reset-policy.md)。
 
 ::: zone-end

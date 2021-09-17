@@ -1,5 +1,5 @@
 ---
-title: 在 Privileged Identity Management (PIM) 中管理特权 Azure AD 组 | Microsoft Docs
+title: 在 Privileged Identity Management (PIM) 中管理特权访问组 | Microsoft Docs
 description: 如何在 Privileged Identity Management (PIM) 中管理特权访问组的成员和所有者
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 12/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83aa5f4527885fbb0a02c70857cdd8409f0fa554
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: f2b68492dfd5c25199b00f6b5f68dc154ae767c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892717"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736138"
 ---
-# <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>特权访问 Azure AD 组的管理功能（预览版）
+# <a name="management-capabilities-for-privileged-access-groups-preview"></a>特权访问组的管理功能（预览版）
 
-在 Privileged Identity Management (PIM) 中，现在可以针对特权访问组的成员资格或所有权分配资格。 从此预览版开始，可以将 Azure Active Directory (Azure AD) 内置角色分配给云组，并使用 PIM 管理组成员和所有者资格和激活。 有关 Azure AD 中可分配角色的组的详细信息，请参阅[在 Azure Active Directory 中使用云组管理角色分配（预览版）](../roles/groups-concept.md)。
+在 Privileged Identity Management (PIM) 中，现在可以针对特权访问组的成员资格或所有权分配资格。 从此预览版开始，可以将 Azure Active Directory (Azure AD) 内置角色分配给云组，并使用 PIM 管理组成员和所有者资格和激活。 有关 Azure AD 中可分配角色的组的详细信息，请参阅[使用 Azure AD 组管理角色分配](../roles/groups-concept.md)。
 
 >[!Important]
 > 若要将特权访问组分配到角色，以实现 Exchange、安全与合规中心或 SharePoint 的管理访问，请使用 Azure AD 门户“角色和管理员”体验，而不是使用“特权访问组”体验来允许将用户或组激活到组中。

@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: cynthn
 ms.reviewer: ''
-ms.openlocfilehash: f6473340baf29861c9f10ac4244deed413310b88
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 3a716e8baaeae1527dc04005a36c59d772abca83
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111853093"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697247"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服务中断影响了 Azure VM，该怎么办
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。
 

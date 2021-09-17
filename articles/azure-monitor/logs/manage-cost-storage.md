@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/29/2021
+ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a334e537c306071c8ee48e7369566a490e504f30
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9967eaa374116ac28bd0db830eed6a4fc2becfa0
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727249"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771788"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -34,17 +34,16 @@ Azure Monitor 日志用于调整和支持来自任何源的巨量数据的每日
 
 Log Analytics 的默认定价采用即用即付模型，该模型基于数据引入量，有时还基于长期数据保留策略。 数据量是以 GB（10^9 字节）为单位存储的数据大小来度量的。 每个 Log Analytics 工作区作为独立服务计费，并在 Azure 订阅的账单中产生相应费用。 数据引入量可能相当大，具体取决于以下因素： 
 
-  - 已启用的管理解决方案的数量及其配置
-  - 受监视的虚拟机 (VM) 数量
-  - 从每个受监视 VM 收集的数据类型 
+  - 已启用的管理解决方案集及其配置
+  - 受监视资源的数量和类型
+  - 从每个受监视资源收集的数据类型
   
 除了即用即付模型外，Log Analytics 还具有承诺层级，与即用即付价格相比，使你能够节省多达 30% 的成本。 采用承诺层级定价时，你能够以低于即用即付定价的价格购买起始量为 100 GB/天的数据引入量。 对于超出承诺级别的任何使用量（超额），将按当前承诺层级提供的每 GB 价格计费。 承诺层级的承诺期为 31 天。 在承诺期，可以更改为更高级别的承诺层级（这将重启 31 天的承诺期），但在承诺期结束之前，无法返回到即用即付或更低的承诺层级。 承诺层级按天计费。 [详细了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 即用即付和承诺层级定价。 
 
 > [!NOTE]
-> 从 2021 年 6 月 2 日开始，“容量预留”称作“承诺层级” 。 现在，如果收集的数据量超过承诺层级的级别（超额），将按照与当前承诺层级级别相同的每 GB 价格计费，与采用即用即付费率的旧计费方式相比，这将降低成本，并减少了数据量较大的用户微调其承诺级别的需求。 此外有三个新的较大承诺层级：1000、2000 和 5000 GB/天。 
+> 从 2021 年 6 月 2 日开始，“容量预留”称作“承诺层级” 。 现在，如果收集的数据量超过承诺层级的级别（超额），将按照与当前承诺层级级别相同的每 GB 价格计费，与采用即用即付费率的旧计费方式相比，这将降低成本，并减少了数据量较大的用户微调其承诺级别的需求。 还添加了三个新的承诺层级：1000、2000 和 5000 GB/天。 
 
-在所有定价层中，事件的数据大小均根据存储在此事件 Log Analytics 中的属性的字符串表示形式进行计算，无论数据是从代理发送的还是在引入过程中添加的。 这包括在收集数据并随后将数据存储在 Log Analytics 中时添加的任何[自定义字段](custom-fields.md)。 一些对于所有数据类型都通用的属性（包括一些 [Log Analytics 标准属性](./log-standard-columns.md)）均未包括在事件大小的计算中。 这包括 `_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize` 和 `Type`。 存储在 Log Analytics 中的所有其他属性均包括在事件大小的计算中。 某些数据类型完全不收取数据引入费用，例如 [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity)、[检测信号](/azure/azure-monitor/reference/tables/heartbeat)、[使用情况](/azure/azure-monitor/reference/tables/usage)和[操作](/azure/azure-monitor/reference/tables/operation)类型。 若要确定某个事件是否不收取数据引入计费，可使用 [_IsBillable](log-standard-columns.md#_isbillable) 属性，[如下](#data-volume-for-specific-events)所示。 使用情况以 GB（1.0E9 字节）为单位进行报告。 
-
+在所有定价层中，事件的数据大小均根据存储在此事件 Log Analytics 中的属性的字符串表示形式进行计算，无论数据是从代理发送的还是在引入过程中添加的。 这包括在收集数据并随后将数据存储在 Log Analytics 中时添加的任何[自定义字段](custom-fields.md)。 一些对于所有数据类型都通用的属性（包括一些 [Log Analytics 标准属性](./log-standard-columns.md)）均未包括在事件大小的计算中。 这包括 `_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize` 和 `Type`。 存储在 Log Analytics 中的所有其他属性均包括在事件大小的计算中。 某些数据类型完全不收取数据引入费用，例如 [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity)、[检测信号](/azure/azure-monitor/reference/tables/heartbeat)、[使用情况](/azure/azure-monitor/reference/tables/usage)和[操作](/azure/azure-monitor/reference/tables/operation)类型。 一些解决方案具有更多特定于解决方案的有关免费引入数据的策略，例如，[Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/) 在服务器评估的前 180 天内免费提供依赖项可视化数据。 若要确定某个事件是否不收取数据引入计费，可使用 [_IsBillable](log-standard-columns.md#_isbillable) 属性，[如下](#data-volume-for-specific-events)所示。 以 GB（10^9 字节）为单位报告使用情况。 
 
 另外，有些解决方案（如 [Azure Defender（安全中心）](https://azure.microsoft.com/pricing/details/azure-defender/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) 和[配置管理](https://azure.microsoft.com/pricing/details/automation/)）有其自己的定价模型。 
 
@@ -54,7 +53,7 @@ Log Analytics 的默认定价采用即用即付模型，该模型基于数据引
 
 群集承诺层级的级别是使用 `Sku` 下的 `Capacity` 参数以编程方式通过 Azure 资源管理器配置的。 以 GB 为单位指定 `Capacity`，值可为 500、1000、2000 或 5000 GB/天。 对于超出承诺级别的任何使用量（超额），将按当前承诺层级提供的每 GB 价格计费。  有关详细信息，请参阅 [Azure Monitor 客户管理的密钥](customer-managed-keys.md)。
 
-对于群集上的使用情况，有两种计费模式。 可以在[创建群集](logs-dedicated-clusters.md#creating-a-cluster)时通过 `billingType` 参数指定这些计费模式，也可以在创建后设置。 这两种模式是： 
+对于群集上的使用情况，有两种计费模式。 可以在[创建群集](logs-dedicated-clusters.md#create-a-dedicated-cluster)时通过 `billingType` 参数指定这些计费模式，也可以在创建后设置。 这两种模式是： 
 
 - **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 每个与群集关联的工作区中的引入数据数量将进行聚合，以计算该群集的每日帐单。 在跨群集中的所有工作区对此聚合数据进行聚合之前，将在工作区级别应用来自 [Azure Defender（安全中心）](../../security-center/index.yml)的按节点分配。 
 
@@ -64,9 +63,7 @@ Log Analytics 的默认定价采用即用即付模型，该模型基于数据引
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>估算环境的管理成本 
 
-如果尚未使用 Azure Monitor 日志，可以使用 [Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估计使用 Log Analytics 的成本。 在“搜索”框中输入“Azure Monitor”，然后选择生成的“Azure Monitor”磁贴。 在页面中向下滚动到“Azure Monitor”，然后从“类型”下拉列表中选择“Log Analytics”  。 可在此处输入虚拟机数以及预期要从每个 VM 收集的数据量 (GB)。 通常每月会从一个典型的 Azure 虚拟机引入 1 GB 到 3 GB 数据。 如果你已评估 Azure Monitor 日志，则可以使用自己环境中的数据统计信息。 请参阅下文来了解如何确定[受监视 VM 数](#understanding-nodes-sending-data)和[工作区引入的数据量](#understanding-ingested-data-volume)。 
-
-如果尚未运行 Log Analytics，可以了解下面有关估算数据量的一些指导：
+如果尚未使用 Azure Monitor 日志，可以使用 [Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估计使用 Log Analytics 的成本。 在“搜索”框中输入“Azure Monitor”，然后选择生成的“Azure Monitor”磁贴。 将页面向下滚动到“Azure Monitor”，然后展开“Log Analytics”部分。 可以在此处输入你希望收集的数据量 (GB)。 如果你已评估 Azure Monitor 日志，则可以使用自己环境中的数据统计信息。 请参阅下文来了解如何确定[受监视 VM 数](#understanding-nodes-sending-data)和[工作区引入的数据量](#understanding-ingested-data-volume)。 如果尚未运行 Log Analytics，可以了解下面有关估算数据量的一些指导：
 
 1. 监视 VM：启用典型监视后，每个受监视 VM 每月引入 1 GB 到 3 GB的数据。 
 2. 监视 Azure Kubernetes 服务 (AKS) 群集：[此处](../containers/container-insights-cost.md#estimating-costs-to-monitor-your-aks-cluster)提供了有关监视典型 AKS 群集预期会产生的数据量的详细信息。 请遵循这些[最佳做法](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost)来控制 AKS 群集监视成本。 
@@ -152,7 +149,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 > [!TIP]
 > 如果工作区可访问“按节点”定价层，但你想知道在即用即付层中是否成本更低，则可以[使用以下查询](#evaluating-the-legacy-per-node-pricing-tier)来轻松获取建议。 
 
-在 2016 年 4 月之前创建的工作区还可以访问“标准”和“高级”定价层，这些层的数据保留期是固定的，分别为 30 天和 365 天 。 无法在“标准”或“高级”定价层中创建新的工作区，并且如果将工作区移出这些层，则无法将其移回 。 这些旧版层的数据引入计量称为“分析的数据”。
+2016 年 4 月之前创建的工作区可以继续使用“标准”和“高级”定价层（分别有 30 天和 365 天的固定数据保留期）。 无法在“标准”或“高级”定价层中创建新的工作区，并且如果将工作区移出这些层，则无法将其移回 。 Azure 账单上针对这些旧层的数据引入计量称为“分析的数据”。
 
 在使用旧 Log Analytics 层和 [Azure Defender（安全中心）](../../security-center/index.yml)的使用情况计费方式之间还有一些行为。 
 

@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: e7cd664e9eb61cae4f1888e4c94f02f19301e9e5
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 73b7922e8295f33191f29f6bf7e7bb947764724b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502090"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751127"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>什么是 Azure 认证设备计划？
 
-感谢你关注 Azure 认证设备计划！ Azure 认证设备是一个免费程序，让你可以区分、认证和升级构建用于在 Azure 上运行的 IoT 设备。 从智能相机，到连接的传感器，再到边缘基础结构，此增强型 IoT 设备认证计划都可以帮助设备制造商提高其产品知名度，并为客户节省构建解决方案的时间。
+感谢你关注 Azure 认证设备计划！ Azure 认证设备是一项免费计划，让你可以区分、认证和升级构建用于在 Azure 上运行的 IoT 设备。 从智能相机，到连接的传感器，再到边缘基础结构，此增强型 IoT 设备认证计划都可以帮助设备制造商提高其产品知名度，并为客户节省构建解决方案的时间。
 
 ## <a name="our-certification-promise"></a>我们的认证承诺
 

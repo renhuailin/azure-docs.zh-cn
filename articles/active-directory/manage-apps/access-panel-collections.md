@@ -12,12 +12,12 @@ ms.date: 02/10/2020
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e47e7900fd6d678e07b4fb4ccfe02b17f734c67f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 454f1d5513e7cee0535251ac6f6b02fd3b699643
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727634"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771398"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>在“我的应用”门户中创建集合
 
@@ -68,6 +68,9 @@ ms.locfileid: "121727634"
    ![添加用户和组](media/acces-panel-collections/add-users-and-groups.png)
 
 11. 选择“查看 + 创建”  。 此时会显示新集合的属性。
+
+> [!NOTE]
+> 管理集合通过 [Azure 门户](https://portal.azure.com)而不是从[我的应用门户](https://myapps.microsoft.com)进行管理。 例如，如果将用户或组分配为所有者，则它们只能通过 Azure 门户管理集合。
 
 ## <a name="view-audit-logs"></a>查看审核日志
 

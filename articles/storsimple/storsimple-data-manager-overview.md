@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/11/2021
+ms.date: 08/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 81a906e6d1a5630ed7b40092d997ba0f81c7220b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 66c9394c446f5fa74662fb39815a4cd6d121c008
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750610"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821569"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 数据管理器解决方案概述
 
@@ -65,7 +65,7 @@ StorSimple 数据管理器在以下 7 个区域中提供：
 ## <a name="choosing-a-region"></a>选择一个区域
 
 我们建议：
- - 源存储帐户（与 StorSimple 设备关联的帐户）和目标存储帐户（希望其中的数据采用本机格式）位于同一 Azure 区域中。
+ - 将源存储帐户（与 StorSimple 设备关联的帐户）和目标存储帐户（你希望其中的数据采用原生格式）置于同一 Azure 区域。
  - 在包含 StorSimple 存储帐户的区域中使用数据管理器和作业定义。 如果不可行，请在最近的 Azure 区域中使用数据管理器，然后在 StorSimple 存储帐户所在的同一区域中创建作业定义。 
 
     如果 StorSimple 存储帐户不在支持创建作业定义的 26 个区域中，建议不要运行 StorSimple 数据管理器，因为这样可能会产生较长的延迟和潜在的流出费用。
@@ -90,13 +90,19 @@ StorSimple 数据管理器不收集，也不显示任何个人信息。 有关�
 
 ## <a name="known-limitations"></a>已知限制
 
-该服务目前具有以下限制：
-- StorSimple 数据管理器当前不适用于 BitLocker 加密的卷。 如果尝试使用加密驱动器运行该服务，将会看到作业失败。
+StorSimple 数据管理器具有以下限制：
+- 该服务不适用于 BitLocker 加密的卷。 如果尝试使用加密驱动器运行该服务，将会看到作业失败。
+- 如果 StorSimple 快照损坏，该服务将无法复制数据。
 - 无法在存储 StorSimple 备份的存储帐户上启用防火墙。 如果在存储帐户上启用防火墙，则作业将失败。 
 - 文件的某些元数据（包括 ACL）将不会保留在转换后的数据中。
 - 此服务仅适用于 NTFS 卷。
 - StorSimple 数据管理器不支持迁移虚拟硬盘 (VHD)。 若要迁移 VHD，可以使用 Azure Data Box 或 Azure 文件同步服务。
 - 文件路径长度必须小于 256 个字符，否则作业将失败。
+- Blob 传输限制：
+  - Blob 支持的最大文件大小为 4.7 TiB。
+  - 将使用最新的可用备份集。
+  - 文件元数据不会随文件内容一起上传。
+  - 上传的 Blob 为块 Blob 类型。 因此，任何上传的 VHD 都不能在 Azure 虚拟机中使用。
 
 ## <a name="next-steps"></a>后续步骤
 

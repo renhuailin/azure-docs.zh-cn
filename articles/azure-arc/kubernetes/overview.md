@@ -8,13 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的概述。
 keywords: Kubernetes、Arc、Azure、容器
-ms.custom: references_regions
-ms.openlocfilehash: d2e71b61210baf93950cb9e8fb2270320f882404
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 80d1b741c4a3a1d60cc44e3afdeac22a61a7db4b
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967151"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768281"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>什么是已启用 Azure Arc 的 Kubernetes？
 
@@ -47,26 +46,11 @@ ms.locfileid: "111967151"
 
 * 使用 Azure Defender for Kubernetes 强制实施威胁防护。
 
-* 使用适用于 Kubernetes 的 Azure Policy 来应用策略。
+* 使用适用于 Kubernetes 的 Azure Policy 来应用策略定义。
 
 * 创建[自定义位置](./custom-locations.md)作为目标位置，用于部署已启用 Azure Arc 的数据服务、[Azure Arc 上的应用服务](../../app-service/overview-arc-integration.md)（包括 Web、函数和逻辑应用）和 [Kubernetes 上的事件网格](../../event-grid/kubernetes/overview.md)。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
-
-## <a name="supported-regions"></a>支持的区域 
-
-以下区域目前支持启用 Azure Arc 的 Kubernetes： 
-
-* 美国东部
-* 西欧
-* 美国中西部
-* 美国中南部
-* 东南亚
-* 英国南部
-* 美国西部 2
-* 澳大利亚东部
-* 美国东部 2
-* 北欧
 
 ## <a name="next-steps"></a>后续步骤
 

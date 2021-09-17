@@ -2,14 +2,14 @@
 title: 使用客户管理的密钥加密注册表
 description: 了解 Azure 容器注册表的静态加密，以及如何使用 Azure Key Vault 中存储的客户管理的密钥来加密高级注册表
 ms.topic: how-to
-ms.date: 06/25/2021
+ms.date: 08/16/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 4258aa4e14802ba500987da419c4314e6610a210
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 399b1940ff3d87fa862e234948742a35d814f558
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735506"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634899"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -31,10 +31,6 @@ ms.locfileid: "121735506"
 * Azure 容器注册表仅支持 RSA 或 RSA-HSM 密钥。 当前不支持椭圆曲线密钥。
 * 使用客户管理的密钥加密的注册表目前不支持[内容信任](container-registry-content-trust.md)。
 * 在使用客户管理的密钥加密的注册表中，[ACR 任务](container-registry-tasks-overview.md)的运行日志目前只会保留 24 小时。 如果需要将日志保留更长时间，请参阅有关[导出和存储任务运行日志](container-registry-tasks-logs.md#alternative-log-storage)的指南。
-
-
-> [!IMPORTANT]
-> 如果你计划在拒绝公共访问且仅允许专用终结点或所选虚拟网络的现有 Azure Key Vault 中存储注册表加密密钥，则需要执行额外的配置步骤。 请参阅本文中的[高级方案：Key Vault 防火墙](#advanced-scenario-key-vault-firewall)。
 
 ## <a name="automatic-or-manual-update-of-key-versions"></a>密钥版本的自动或手动更新
 
@@ -97,7 +93,7 @@ identityID=$(az identity show --resource-group <resource-group-name> --name <man
 identityPrincipalID=$(az identity show --resource-group <resource-group-name> --name <managed-identity-name> --query 'principalId' --output tsv)
 ```
 
-### <a name="create-a-key-vault"></a>创建密钥保管库
+### <a name="create-a-key-vault"></a>创建 key vault
 
 使用 [az keyvault create][az-keyvault-create] 创建一个密钥保管库来存储用于加密注册表的客户管理的密钥。 
 
@@ -115,7 +111,14 @@ az keyvault create --name <key-vault-name> \
 keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key-vault-name> --query 'id' --output tsv)
 ```
 
-### <a name="enable-key-vault-access"></a>启用密钥保管库访问权限
+### <a name="enable-key-vault-access-by-trusted-services"></a>启用受信任的服务进行密钥保管库访问
+
+如果使用防火墙或虚拟网络（专用终结点）来保护密钥保管库，请启用网络设置，以允许[受信任的 Azure 服务](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)进行访问。 
+
+有关详细信息，请参阅[配置 Azure Key Vault 网络设置](../key-vault/general/how-to-azure-key-vault-network-security.md?tabs=azure-cli)。
+
+
+### <a name="enable-key-vault-access-by-managed-identity"></a>启用通过托管标识进行密钥保管库访问的功能
 
 #### <a name="enable-key-vault-access-policy"></a>启用密钥保管库访问策略
 
@@ -259,7 +262,13 @@ az acr encryption show --name <registry-name>
 
 :::image type="content" source="media/container-registry-customer-managed-keys/create-key-vault.png" alt-text="在 Azure 门户中创建密钥保管库":::
 
-### <a name="enable-key-vault-access"></a>启用密钥保管库访问权限
+### <a name="enable-key-vault-access-by-trusted-services"></a>启用受信任的服务进行密钥保管库访问
+
+如果使用防火墙或虚拟网络（专用终结点）来保护密钥保管库，请启用网络设置，以允许[受信任的 Azure 服务](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)进行访问。 
+
+有关详细信息，请参阅[配置 Azure Key Vault 网络设置](../key-vault/general/how-to-azure-key-vault-network-security.md?tabs=azure-portal)。
+
+### <a name="enable-key-vault-access-by-managed-identity"></a>启用通过托管标识进行密钥保管库访问的功能
 
 #### <a name="enable-key-vault-access-policy"></a>启用密钥保管库访问策略
 
@@ -273,7 +282,7 @@ az acr encryption show --name <registry-name>
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="创建密钥保管库访问策略":::
 
-#### <a name="assign-rbac-role"></a>分配 RBAC 角色
+#### <a name="assign-rbac-role"></a>分配 RBAC 角色    
 
 或者，将“Key Vault 加密服务加密用户”角色分配给密钥保管库范围内用户分配的托管标识。
 
@@ -281,7 +290,7 @@ az acr encryption show --name <registry-name>
 
 ### <a name="create-key-optional"></a>创建密钥（可选）
 
-（可选）在密钥保管库中创建密钥，以用于加密注册表。 如果要选择特定的密钥版本作为客户管理的密钥，请执行以下步骤。 
+（可选）在密钥保管库中创建密钥，以用于加密注册表。 如果要选择特定的密钥版本作为客户管理的密钥，请执行以下步骤。 如果密钥保管库访问仅限于专用终结点或选定网络，则创建注册表之前可能还需要创建密钥。 
 
 1. 导航到你的密钥保管库。
 1. 选择“设置” > “密钥”。
@@ -297,7 +306,7 @@ az acr encryption show --name <registry-name>
 1. 在“标识”中，选择你创建的托管标识。
 1. 在“加密”中，选择以下任一项：
     * 选择“从密钥保管库中选择”，然后选择现有密钥保管库和密钥或“新建” 。 你选择的密钥不受版本控制，可启用自动密钥轮换。
-    * 选择“输入密钥 URI”，并直接提供密钥标识符。 可以提供受版本控制的密钥 URI（适用于必须手动轮换的密钥）或不受版本控制的密钥 URI（该 URI 启用自动密钥轮换）。 
+    * 选择“输入密钥 URI”，并提供现有密钥的标识符。 可以提供受版本控制的密钥 URI（适用于必须手动轮换的密钥）或不受版本控制的密钥 URI（该 URI 启用自动密钥轮换）。 有关创建密钥的步骤，请参阅上一部分。
 1. 在“加密”选项卡中，选择“查看 + 创建”。
 1. 选择“创建”以部署注册表实例。
 
@@ -451,7 +460,8 @@ az acr encryption show --name <registry-name>
 轮换密钥时，通常需要指定在创建注册表时所用的同一标识。 （可选）配置新的用户分配标识以用于进行密钥访问，或者启用并指定注册表的系统分配标识。
 
 > [!NOTE]
-> 确保针对为进行密钥访问而配置的标识设置了所需的[密钥保管库访问权限](#enable-key-vault-access)。
+> * 若要在门户中启用注册表的系统分配的标识，请选择“设置” > “标识”，并将系统分配的标识的状态设置为“启用”。  
+> * 确保针对为进行密钥访问而配置的标识设置了所需的[密钥保管库访问权限](#enable-key-vault-access-by-managed-identity)。
 
 ### <a name="update-key-version"></a>更新密钥版本
 
@@ -521,62 +531,7 @@ az keyvault delete-policy \
 
 撤销密钥会有效阻止对所有注册表数据的访问，因为注册表无法访问加密密钥。 如果启用了对密钥的访问或者还原了已删除的密钥，则注册表将选取该密钥，使你可以再次访问已加密的注册表数据。 
 
-## <a name="advanced-scenario-key-vault-firewall"></a>高级方案：Key Vault 防火墙
-
-> [!IMPORTANT]
-> 目前，在注册表部署期间，注册表的用户分配标识只能配置为访问允许公共访问的密钥保管库中的加密密钥，而不能访问配置了 [Key Vault 防火墙](../key-vault/general/network-security.md)的密钥保管库中的加密密钥。 
-> 
-> 若要访问受 Key Vault 防火墙保护的密钥保管库，注册表必须使用其系统管理标识绕过防火墙。 目前，这些设置只能在部署注册表后进行配置。 
-
-对于此方案，首先使用 [Azure CLI](#enable-customer-managed-key---cli)、[门户](#enable-customer-managed-key---portal)或[模板](#enable-customer-managed-key---template)创建新的用户分配的标识、密钥保管库以及使用客户管理的密钥加密的容器注册表。 本文前面的部分介绍了详细步骤。
-   > [!NOTE]
-   > 新的密钥保管库部署在防火墙外部。 它仅临时用于存储客户管理的密钥。
-
-创建注册表后，继续执行以下步骤。 下面的部分介绍了详细信息。
-
-1. 启用注册表的系统分配的标识。
-1. 授予系统分配的标识权限来访问使用 Key Vault 防火墙限制的密钥保管库中的密钥。
-1. 确保允许受信任的服务绕过 Key Vault 防火墙。 目前，Azure 容器注册表只能在使用其系统管理的标识时绕过防火墙。 
-1. 通过在使用 Key Vault 防火墙限制的密钥保管库中选择一个客户管理的密钥来轮换该密钥。
-1. 如果不再需要在防火墙外创建的密钥保管库，则可将其删除。
-
-
-### <a name="step-1---enable-registrys-system-assigned-identity"></a>步骤 1 - 启用注册表的系统分配的标识
-
-1. 在门户中导航到你的注册表。
-1. 选择“设置” >  “标识”。
-1. 在“系统分配”下，将“状态”设置为“开”。 选择“保存”。
-1. 复制标识的“对象 ID”。
-
-### <a name="step-2---grant-system-assigned-identity-access-to-your-key-vault"></a>步骤 2 - 授予系统分配的标识对密钥保管库的访问权限
-
-1. 在门户中导航到你的密钥保管库。
-1. 选择“设置” > “访问策略”>“+添加访问策略”。
-1. 选择“密钥权限”，然后选择“获取”、“解包密钥”和“包装密钥”。
-1. 选择“选择主体”，并搜索系统分配的托管标识的对象 ID，或搜索注册表的名称。  
-1. 依次选择“添加”、“保存”。
-
-### <a name="step-3---enable-key-vault-bypass"></a>步骤 3 - 启用密钥保管库绕过
-
-若要访问使用 Key Vault 防火墙配置的密钥保管库，注册表必须绕过防火墙。 确保将密钥保管库配置为允许任何[受信任的服务](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)进行访问。 Azure 容器注册表是受信任的服务之一。
-
-1. 在门户中导航到你的密钥保管库。
-1. 选择“设置” > “网络”。 
-1. 确认、更新或添加虚拟网络设置。 有关详细步骤，请参阅[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/general/network-security.md)。
-1. 在“允许受信任的 Microsoft 服务绕过此防火墙”中选择“是”。 
-
-### <a name="step-4---rotate-the-customer-managed-key"></a>步骤 4 - 旋转客户管理的密钥
-
-完成上述步骤后，轮旋到防火墙后面的密钥保管库中存储的密钥。
-
-1. 在门户中导航到你的注册表。
-1. 在“设置”下，选择“加密” > “更改密钥”。
-1. 在“标识”中，选择“系统分配”。
-1. 选择“从密钥保管库中选择”，然后选择防火墙后面的密钥保管库的名称。
-1. 选择现有用户或“新建”。 你选择的密钥不受版本控制，可启用自动密钥轮换。
-1. 完成密钥选择，然后选择“保存”。
-
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 ### <a name="removing-managed-identity"></a>删除托管标识
 
@@ -604,6 +559,11 @@ az acr identity assign -n myRegistry \
 
 如果系统分配的标识出现此问题，请[创建 Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)以帮助还原标识。
 
+### <a name="enabling-key-vault-firewall"></a>启用密钥保管库防火墙
+
+如果在创建加密的注册表后启用密钥保管库防火墙或虚拟网络，则可能会看到“HTTP 403”错误或其他进行映像导入或自动密钥轮换时会发生的错误。 若要解决此问题，请重新配置最初用于加密的托管标识和密钥。 请参阅[轮换密钥](#rotate-key)中的步骤。 
+
+如果此问题仍然存在，请联系 Azure 支持。
 
 ## <a name="next-steps"></a>后续步骤
 

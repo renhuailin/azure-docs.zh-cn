@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ebeca5ec1e3a478fdf1a62e2478cad9754c6ccd2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ad82e65258dd985ce351b5fa11156ccdd2ef977
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99808520"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771988"
 ---
 1. 请确保已安装最新 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，并使用 Connect-AzAccount 登录到 Azure 帐户
 
 1. 创建 Azure Key Vault 和加密密钥的实例。
 
-    创建 Key Vault 实例时，必须启用软删除和清除保护。 软删除可确保 Key Vault 在给定的保留期（默认为 90 天）内保留已删除的密钥。 清除保护可确保在保留期结束之前，无法永久删除已删除的密钥。 这些设置可防止由于意外删除而丢失数据。 使用 Key Vault 加密托管磁盘时，这些设置是必需的。
+    创建 Key Vault 实例时，必须启用清除保护。 清除保护可确保在保留期结束之前，无法永久删除已删除的密钥。 这些设置可防止由于意外删除而丢失数据。 使用 Key Vault 加密托管磁盘时，这些设置是必需的。
     
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
@@ -29,17 +29,28 @@ ms.locfileid: "99808520"
     $keyDestination="Software"
     $diskEncryptionSetName="yourDiskEncryptionSetName"
 
-    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnablePurgeProtection
+    $keyVault = New-AzKeyVault -Name $keyVaultName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $LocationName `
+    -EnablePurgeProtection
 
-    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
+    $key = Add-AzKeyVaultKey -VaultName $keyVaultName `
+          -Name $keyName `
+          -Destination $keyDestination 
     ```
 
-1.    创建一个 DiskEncryptionSet 实例。 
+1.    创建一个 DiskEncryptionSet 实例。 可以将 RotationToLatestKeyVersionEnabled 设置为等于 $true 以启用密钥的自动轮换。 启用自动轮换后，系统将自动更新引用该磁盘加密集的所有托管磁盘、快照和映像，以便在一小时内使用新版本密钥。  
     
         ```powershell
-        $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName -SourceVaultId $keyVault.ResourceId -KeyUrl $key.Key.Kid -IdentityType SystemAssigned
-        
-        $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -InputObject $desConfig 
+      $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName `
+            -SourceVaultId $keyVault.ResourceId `
+            -KeyUrl $key.Key.Kid `
+            -IdentityType SystemAssigned `
+            -RotationToLatestKeyVersionEnabled $false
+
+       $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName `
+               -ResourceGroupName $ResourceGroupName `
+               -InputObject $desConfig
         ```
 
 1.    授予对密钥保管库的 DiskEncryptionSet 资源访问权限。

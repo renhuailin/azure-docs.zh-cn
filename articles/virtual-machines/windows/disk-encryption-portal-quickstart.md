@@ -8,14 +8,16 @@ ms.subservice: disks
 ms.collection: windows
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: e29d1de976a027e32564a258fd5669b1e54c60f3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4cd05aa5d9d1846dd30c171b4ed19f3506121b10
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564435"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698296"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和加密 Windows 虚拟机
+
+适用于：:heavy_check_mark: Windows VM 
 
 可以通过 Azure 门户创建 Azure 虚拟机 (VM)。 Azure 门户是基于浏览器的用户界面，用于创建 VM 及其相关资源。 本快速入门介绍如何使用 Azure 门户来部署 Windows 虚拟机、如何创建用于存储加密密钥的密钥保管库，以及如何加密 VM。
 

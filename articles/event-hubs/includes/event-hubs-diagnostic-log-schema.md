@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 0d39961e1c56bdd6159fdb0d14cc0901aab6bc0e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: ad25ce992dec7165e2b936e5642e8c3a209ce6a5
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112413436"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122516293"
 ---
 事件中心会捕获以下类别的诊断日志：
 
@@ -182,7 +182,7 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 | `Count` | 给定操作的发生次数 |
 | `ResourceId` | Azure 资源管理器资源 ID。 |
 
-只有当命名空间允许从选定的网络或从特定的 IP 地址（IP 筛选器规则）进行访问时，才会生成虚拟网络日志 。 如果不希望使用这些功能限制对命名空间的访问，仍希望获取虚拟网络日志来跟踪连接到事件中心命名空间的客户端的 IP 地址，则可以使用以下解决方法。 [启用 IP 筛选](../event-hubs-ip-filtering.md)，并添加整个可寻址 IPv4 范围 (1.0.0.0/1 - 255.0.0.0/1)。 事件中心 IP 筛选不支持 IPv6 范围。 请注意，日志中可能会出现 IPv6 格式的专用终结点地址。 
+只有当命名空间允许从选定的网络或从特定的 IP 地址（IP 筛选器规则）进行访问时，才会生成虚拟网络日志 。 如果不希望使用这些功能限制对命名空间的访问，仍希望获取虚拟网络日志来跟踪连接到事件中心命名空间的客户端的 IP 地址，则可以使用以下解决方法。 [启用 IP 筛选](../event-hubs-ip-filtering.md)，并添加整个可寻址 IPv4 范围 (1.0.0.0/1 - 255.0.0.0/1)。 事件中心 IP 筛选不支持 IPv6 范围。 日志中可能会出现 IPv6 格式的专用终结点地址。 
 
 #### <a name="example"></a>示例
 
@@ -204,11 +204,58 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---- | ----------- | 
-| `Category` | 消息类别的类型。 以下值之一：“错误”和“信息”  |
+| `Category` | 消息类别的类型。 以下值之一：“错误”和“信息”。  例如，如果密钥保管库中的密钥处于禁用状态，则它将是信息类别；如果密钥无法展开，则可能发生错误。|
 | `ResourceId` | 内部资源 ID，包括 Azure 订阅 ID 和命名空间名称 |
 | `KeyVault` | Key Vault 资源的名称 |
-| `Key` | Key Vault 密钥的名称。 |
-| `Version` | Key Vault 密钥的版本 |
-| `Operation` | 对服务器请求执行的操作的名称 |
-| `Code` | 状态代码 |
+| `Key` | 用于加密事件中心命名空间的 Key Vault 密钥的名称。 |
+| `Version` | Key Vault 密钥的版本。|
+| `Operation` | 对密钥保管库中的密钥执行的操作。 例如，禁用/启用密钥、包装或展开。 |
+| `Code` | 与操作关联的代码。 示例：错误代码 404 表示找不到密钥。 |
 | `Message` | 消息，提供有关错误或信息性消息的详细信息 |
+
+下面是客户管理的密钥的日志示例：
+
+```json
+{
+   "TaskName": "CustomerManagedKeyUserLog",
+   "ActivityId": "11111111-1111-1111-1111-111111111111",
+   "category": "error"
+   "resourceId": "/SUBSCRIPTIONS/11111111-1111-1111-1111-11111111111/RESOURCEGROUPS/DEFAULT-EVENTHUB-CENTRALUS/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/FBETTATI-OPERA-EVENTHUB",
+   "keyVault": "https://mykeyvault.vault-int.azure-int.net",
+   "key": "mykey",
+   "version": "1111111111111111111111111111111",
+   "operation": "wrapKey",
+   "code": "404",
+   "message": "Key not found: ehbyok0/111111111111111111111111111111",
+}
+
+
+
+{
+   "TaskName": "CustomerManagedKeyUserLog",
+   "ActivityId": "11111111111111-1111-1111-1111111111111",
+   "category": "info"
+   "resourceId": "/SUBSCRIPTIONS/111111111-1111-1111-1111-11111111111/RESOURCEGROUPS/DEFAULT-EVENTHUB-CENTRALUS/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/FBETTATI-OPERA-EVENTHUB",
+   "keyVault": "https://mykeyvault.vault-int.azure-int.net",
+   "key": "mykey",
+   "version": "111111111111111111111111111111",
+   "operation": "disable" | "restore",
+   "code": "",
+   "message": "",
+}
+```
+
+下面是启用 BYOK 加密时要查找的常见错误代码。
+
+| 操作 | 错误代码 | 数据的生成状态 |
+| ------ | ---------- | ----------------------- | 
+| 从密钥保管库中删除包装/展开权限 | 403 |    Inaccessible |
+| 从授予了包装/展开权限的 AAD 主体中删除 AAD 角色成员身份 | 403 |  Inaccessible |
+| 从密钥保管库中删除加密密钥 | 404 | Inaccessible |
+| 删除密钥保管库 | 404 | 无法访问（假设启用软删除，这是必需的设置。） |
+| 更改加密密钥的过期期限，使其已过期 | 403 |   Inaccessible  |
+| 更改 NBF（不早于），使密钥加密密钥不会处于活动状态 | 403 | Inaccessible  |
+| 为密钥保管库防火墙选择“允许 MSFT 服务”选项，或阻止对具有加密密钥的密钥保管库进行网络访问 | 403 | Inaccessible |
+| 将密钥保管库移到其他租户 | 404 | Inaccessible |  
+| 间歇性网络问题或 DNS/AAD/MSI 中断 |  | 可使用缓存数据加密密钥进行访问 |
+

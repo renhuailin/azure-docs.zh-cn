@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 06/24/2021
 ms.author: alsin
-ms.openlocfilehash: 87008ec2ba23e642ecbbe1e91c7f87d0cc07012f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 990cca45c41eef57f1971c866cdbe1e9efd62f6c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113014663"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772607"
 ---
 # <a name="azure-automanage-for-machines-best-practices---arc-enabled-servers"></a>适用于计算机的 Azure Automanage 最佳做法 - 已启用 Arc 的服务器
 
@@ -55,4 +55,4 @@ ms.locfileid: "113014663"
 尝试在 Azure 门户中启用适用于计算机的 Automanage。
 
 > [!div class="nextstepaction"]
-> [在 Azure 门户中启用适用于计算机 Automanage](quick-create-virtual-machines-portal.md)
+> [在 Azure 门户中启用适用于计算机的 Automanage](quick-create-virtual-machines-portal.md)

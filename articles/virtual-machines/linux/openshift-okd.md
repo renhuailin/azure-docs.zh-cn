@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: dc14b10081cf175581d29524dcea60c52763b03c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e011b48323246d9cff2b6cc6116cb6746fb81299
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667214"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692663"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 可使用两种方式之一在 Azure 中部署 OKD（以前称为 OpenShift Origin）：
 

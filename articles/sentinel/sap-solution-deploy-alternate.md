@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 05/19/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: ba0457bef8ad4e732cffe229e850272f68a6d30f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0dbdc6be4eb5dd61545bbf761d1805824690ebc7
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723439"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681366"
 ---
 # <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>专业配置选项、本地部署和 SAPControl 日志源
 
@@ -30,7 +30,7 @@ ms.locfileid: "121723439"
 
 无论采用何种部署方法，部署 Azure Sentinel SAP 数据连接器所需的基本先决条件都是相同的。
 
-在开始之前，请确保系统符合主要的 [SAP 数据连接器部署教程](sap-deploy-solution.md#prerequisites)中记录的先决条件。
+在开始之前，请确保系统符合主要的 [SAP 数据连接器部署过程](sap-deploy-solution.md#prerequisites)中记录的先决条件。
 
 有关详细信息，请参阅 [Azure Sentinel SAP 解决方案的详细 SAP 要求（公共预览版）](sap-solution-detailed-requirements.md)。
 
@@ -337,9 +337,9 @@ timechunk = 60
 
 |设置  |说明  |
 |---------|---------|
-|**javaappserver**     |输入 SAP Control ABAP 服务器主机。 <br>例如：`contoso-erp.appserver.com`         |
-|**javainstance**     |输入 SAP Control ABAP 实例编号。 <br>例如：`00`         |
-|**abaptz**     |输入在 SAP Control ABAP 服务器上配置的时区（GMT 格式）。 <br>例如：`GMT+3`         |
+|**javaappserver**     |输入 SAP Control ABAP 服务器主机。 <br>例如： `contoso-erp.appserver.com`         |
+|**javainstance**     |输入 SAP Control ABAP 实例编号。 <br>例如： `00`         |
+|**abaptz**     |输入在 SAP Control ABAP 服务器上配置的时区（GMT 格式）。 <br>例如： `GMT+3`         |
 |**abapseverity**     |输入要将 ABAP 日志引入 Azure Sentinel 的最低（含）严重性级别。  值包括： <br><br>- **0** = 所有日志 <br>- **1** = 警告 <br>- **2** = 错误     |
 
 
@@ -349,9 +349,9 @@ timechunk = 60
 
 |参数  |说明  |
 |---------|---------|
-|**javaappserver**     |输入 SAP Control Java 服务器主机。 <br>例如：`contoso-java.server.com`         |
-|**javainstance**     |输入 SAP Control ABAP 实例编号。 <br>例如：`10`         |
-|**javatz**     |输入在 SAP Control Java 服务器上配置的时区（GMT 格式）。 <br>例如：`GMT+3`         |
+|**javaappserver**     |输入 SAP Control Java 服务器主机。 <br>例如： `contoso-java.server.com`         |
+|**javainstance**     |输入 SAP Control ABAP 实例编号。 <br>例如： `10`         |
+|**javatz**     |输入在 SAP Control Java 服务器上配置的时区（GMT 格式）。 <br>例如： `GMT+3`         |
 |**javaseverity**     |输入要将 Web 服务日志引入 Azure Sentinel 的最低（含）严重性级别。  值包括： <br><br>- **0** = 所有日志 <br>- **1** = 警告 <br>- **2** = 错误     |
 
 ## <a name="next-steps"></a>后续步骤
@@ -362,6 +362,7 @@ timechunk = 60
 
 有关详细信息，请参阅：
 
+- [通过 SNC 部署 Azure Sentinel SAP 数据连接器](sap-solution-deploy-snc.md)
 - [Azure Sentinel SAP 解决方案详细的 SAP 要求](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP 解决方案日志参考](sap-solution-log-reference.md)
 - [Azure Sentinel SAP 解决方案：安全内容参考](sap-solution-security-content.md)

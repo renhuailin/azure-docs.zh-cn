@@ -1,5 +1,5 @@
 ---
-title: 对表进行分区
+title: 在专用 SQL 池中对表进行分区
 description: 在专用 SQL 池中使用表分区的建议和示例
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/18/2019
+ms.date: 08/19/2021
 ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.reviewer: igorstan, wiassaf
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ed9a5c63fa86e1fac6abd9ac023bb48abd2f196d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ea941ae782e7da33cc07932d4b0c79613790b2e8
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459641"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515037"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>在专用 SQL 池中对表进行分区
 
@@ -134,6 +134,8 @@ GROUP BY    s.[name]
 专用 SQL 池支持分区拆分、合并和切换。 这些函数每个都使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句执行。
 
 若要在两个表之间切换分区，必须确保分区对齐其各自的边界，并且表定义匹配。 由于检查约束不可用于强制实施表中的值范围，因此源表必须包含与目标表相同的分区边界。 如果那时分区边界不相同，则分区切换会失败，因为分区元数据不会同步。
+
+如果表中包含聚集列存储索引 (CCI)，分区拆分需要各自的分区（不一定整张表）为空。 同一表中的其他分区可以包含数据。 无法拆分包含数据的分区，这将导致错误：`ALTER PARTITION statement failed because the partition is not empty. Only empty partitions can be split in when a columnstore index exists on the table. Consider disabling the columnstore index before issuing the ALTER PARTITION statement, then rebuilding the columnstore index after ALTER PARTITION is complete.` 作为拆分包含数据的分区的解决方法，请参阅[如何拆分包含数据的分区](#how-to-split-a-partition-that-contains-data)。 
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>如何拆分包含数据的分区
 
@@ -278,6 +280,11 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 ```
 
 ### <a name="table-partitioning-source-control"></a>表分区源代码管理
+
+> [!NOTE]
+> 如果源代码管理工具未配置为忽略分区方案，则更改表方案以更新分区可能导致在部署过程中删除并重新创建表，因此更改可能难以实现。 如下文所述，可能必需要自定义可实现此类更改的解决方案。 检查持续集成/持续部署 (CI/CD) 工具是否能实现这一目标。 在 SQL Server Data Tools (SSDT) 中，查找高级发布设置——“忽略分区方案”，以避免生成的脚本导致表被删除和重新创建。
+
+此示例在更新空表的分区方案时非常有用。 若要对包含数据的表持续部署分区更改，请按照[如何拆分包含数据的分区](#how-to-split-a-partition-that-contains-data)以及部署中的步骤，在应用分区拆分范围之前将数据从每个分区中暂时移出。 此操作必需执行，因为 CI/CD 工具无法识别哪些分区中包含数据。
 
 若要避免表定义在源代码管理系统中 **失效**，可以考虑以下方法：
 

@@ -1,18 +1,21 @@
 ---
-title: 在 Azure 数据工厂中创建翻转窗口触发器
-description: 了解如何在 Azure 数据工厂中创建按翻转窗口运行管道的触发器。
+title: 创建翻转窗口触发器
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何在 Azure 数据工厂或 Azure Synapse Analytics 中创建触发器以在翻转窗口中运行管道。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 10/25/2020
-ms.openlocfilehash: ad397b62adcbcf6a0e117950c0dc3be33e6522db
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.date: 08/24/2021
+ms.openlocfilehash: b4a2e86c66584f555dd88dfd8e3d3b8b0fac5858
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779811"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822731"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 
@@ -22,13 +25,19 @@ ms.locfileid: "104779811"
 
 翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。 翻转窗口触发器是计划触发器的权重更高的替代方案，为复杂方案提供一套功能（[依赖于其他翻转窗口触发器](#tumbling-window-trigger-dependency)、[重新运行失败的作业](tumbling-window-trigger-dependency.md#monitor-dependencies)以及[为管道设置用户重试](#user-assigned-retries-of-pipelines)）。 若要进一步了解计划触发器和翻转窗口触发器之间的差异，请访问[此处](concepts-pipeline-execution-triggers.md#trigger-type-comparison)。
 
-## <a name="data-factory-ui"></a>数据工厂 UI
+## <a name="ui-experience"></a>UI 体验
 
-1. 若要在数据工厂 UI 中创建翻转窗口触发器，请选择“触发器”选项卡，然后选择“新建”。 
+1. 若要在 UI 中创建翻转窗口触发器，请选择“触发器”选项卡，然后选择“新建”。  
 1. 在触发器配置窗格打开后，选择“翻转窗口”，然后定义翻转窗口触发器属性。 
 1. 完成后，选择“保存”。
 
-![在 Azure 门户中创建翻转窗口触发器](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png" alt-text="在 Azure 门户中创建翻转窗口触发器":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger-synapse.png" alt-text="在 Azure 门户中创建翻转窗口触发器":::
+
+---
 
 ## <a name="tumbling-window-trigger-type-properties"></a>翻转窗口触发器类型属性
 
@@ -168,11 +177,27 @@ ms.locfileid: "104779811"
 * 如果窗口处于“正在运行”状态，则取消关联的“管道运行”，然后触发器运行会被标记为“已取消”
 * 如果窗口处于“正在等待”或“正在等待依赖项”状态，则可以取消该窗口的监视：
 
-![从“监视”页取消翻转窗口触发器](media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png" alt-text="从“监视”页取消翻转窗口触发器":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger-synapse.png" alt-text="从“监视”页取消翻转窗口触发器":::
+
+---
 
 还可以重新运行已取消的窗口。 重新运行会采用触发器的最新发布定义，并且指定窗口的依赖项会在重新运行时重新进行评估
 
-![为之前取消的运行重新运行翻转窗口触发器](media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png" alt-text="为之前取消的运行重新运行翻转窗口触发器":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger-synapse.png" alt-text="为之前取消的运行重新运行翻转窗口触发器":::
+
+---
 
 ## <a name="sample-for-azure-powershell"></a>Azure PowerShell 示例
 

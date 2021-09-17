@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 04/27/2021
+ms.date: 08/18/2021
 ms.custom: devx-track-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q
-ms.openlocfilehash: c96936635898f9173b7eb8e60502ea059420cf0b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f8ff5e9d5a7b35bcc4ada9fd600d28b54ead57a9
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113758867"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634346"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-2-of-3"></a>教程：训练你的第一个机器学习模型（第 2 部分，共 3 部分）
 
@@ -77,7 +77,7 @@ ms.locfileid: "113758867"
 
     在 src 子文件夹中创建 train.py 脚本：
 
-     ```python
+    ```python
     import torch
     import torch.optim as optim
     import torchvision
@@ -200,16 +200,18 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> 将该运行提交到 Azure 机器学习
 
-选择“保存并在终端中运行脚本”来运行 run-pytorch.py 脚本。
+1. 选择“保存并在终端中运行脚本”来运行 run-pytorch.py 脚本。
 
->[!NOTE] 
-> 首次运行此脚本时，Azure 机器学习会从 PyTorch 环境生成新的 Docker 映像。 完成整个运行可能需要 3 到 4 分钟。 
->
-> 可以在 Azure 机器学习工作室中查看 Docker 生成日志。 单击指路向工作室的链接，选择“输出 + 日志”选项卡，然后选择 `20_image_build_log.txt`。
->
-> 在将来的运行中将会重复使用此映像，以加快脚本的运行速度。
+1. 你将在打开的终端窗口中看到一个链接。 选择该链接以查看运行。
 
-生成映像之后，请选择 `70_driver_log.txt`，以查看训练脚本的输出。
+    [!INCLUDE [amlinclude-info](../../includes/machine-learning-py38-ignore.md)]
+
+### <a name="view-the-output"></a>查看输出
+
+1. 在打开的页面中，你将看到运行状态。 首次运行此脚本时，Azure 机器学习会从 PyTorch 环境生成新的 Docker 映像。 完成整个运行可能需要 3 到 4 分钟。  在将来的运行中将会重复使用此映像，以加快脚本的运行速度。
+1. 可以在 Azure 机器学习工作室中查看 Docker 生成日志。 选择“输出 + 日志”选项卡，然后选择“20_image_build_log.txt” 。
+1. 运行状态完成后，选择“输出 + 日志” 。
+1. 选择“70_driver_log.txt”以查看运行的输出。
 
 ```txt
 Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
@@ -230,10 +232,11 @@ epoch=2, batch=12000: loss 1.27
 Finished Training
 ```
 
-> [!WARNING]
-> 如果看到错误 `Your total snapshot size exceeds the limit`，则表明数据文件夹位于在 `ScriptRunConfig` 中使用的 `source_directory` 中。
->
-> 选择文件夹末尾的“...”，然后选择“移动”，将“数据”移动到 get-started 文件夹   。  
+如果看到错误 `Your total snapshot size exceeds the limit`，则表明数据文件夹位于在 `ScriptRunConfig` 中使用的 `source_directory` 中。
+
+选择文件夹末尾的“...”，然后选择“移动”，将“数据”移动到 get-started 文件夹   。  
+
+
 
 ## <a name="log-training-metrics"></a><a name="log"></a> 记录训练指标
 

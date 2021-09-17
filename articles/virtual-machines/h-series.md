@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b3e3beb51256bbf22d29d74b51c52ca3a6bee0c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f48e6bd94566922066b277553f64b25f5d55a45
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774773"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696335"
 ---
 # <a name="h-series"></a>H 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 H 系列 VM 针对由高 CPU 频率或每核心大内存要求驱动的应用程序进行了优化。 H 系列 VM 具有 8 或 16 个 Intel Xeon E5 2667 v3 处理器核心，每个 CPU 核心最多 14 GB RAM，无超线程。 H 系列提供 56 Gb/秒的 Mellanox FDR InfiniBand，具有无阻塞的丰富树配置，可实现一致的 RDMA 性能。 H 系列 VM 目前不支持 SR-IOV，支持 Intel MPI 5.x 和 MS-MPI。
 

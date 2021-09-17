@@ -1,18 +1,20 @@
 ---
 title: 从 SAP Business Warehouse 加载数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 使用 Azure 数据工厂从 SAP Business Warehouse (BW) 复制数据
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/22/2019
-ms.openlocfilehash: 3dabb6d5df0a74cc7ae2fb8b381ad9e0dfe04e63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/04/2021
+ms.openlocfilehash: 7f6a17d6596ce07c593ee83ad54cc856b2b1b592
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370693"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638555"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,17 +45,15 @@ ms.locfileid: "100370693"
 
 ## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>从 SAP BW Open Hub 执行完整复制
 
-在 Azure 门户中转到你的数据工厂。 选择“创作和监视”，在单独的选项卡中打开数据工厂 UI。 
+在 Azure 门户中转到你的数据工厂。 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，在单独的选项卡中打开数据工厂 UI。 
 
-1. 在“开始”页上选择“复制数据”，打开“复制数据”工具。  
+1. 在主页上，选择“引入”以打开“复制数据”工具。
 
-2. 在“属性”页上指定一个 **任务名称**，然后选择“下一步”。  
+2. 在“属性”页上，在“任务类型”下选择“内置复制任务”，在“任务节奏或任务计划”下选择“现在运行一次”，然后选择“下一步”。
 
-3. 在“源数据存储”页上，单击“+创建新连接”。   从连接器库中选择“SAP BW Open Hub”，然后选择“继续”。   若要筛选连接器，可在搜索框中键入 **SAP**。
+3. 在“源数据存储”页上，选择“+ 新建连接”。 从连接器库中选择“SAP BW Open Hub”，然后选择“继续”。   若要筛选连接器，可在搜索框中键入 **SAP**。
 
-4. 在“指定 SAP BW Open Hub 连接”页上，执行以下步骤创建新连接。 
-
-   ![创建 SAP BW Open Hub 链接服务页](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
+4. 在“新建连接 (SAP BW Open Hub)”页上，按照以下步骤创建新连接。
 
    1. 在“通过集成运行时进行连接”列表中，选择一个现有的自承载 IR。  如果你没有自承载 IR，请创建一个。
 
@@ -61,62 +61,61 @@ ms.locfileid: "100370693"
 
       如[先决条件](#prerequisites)中所述，请确保在运行自承载 IR 的同一台计算机上安装 SAP Connector for Microsoft .NET 3.0。
 
-   2. 填写 SAP BW 的“服务器名称”、“系统编号”、“客户端 ID”、“语言”（如果不是“EN”）、“用户名”和“密码”。       
+   2. 填写 SAP BW 的“服务器名称”、“系统编号”、“客户端 ID”、“语言”（如果不是“EN”）、“用户名”和“密码”。      
 
-   3. 选择“测试连接”以验证设置，然后选择“完成”。  
+   3. 选择“测试连接”以验证设置，然后选择“创建” 。
 
-   4. 现已创建新的连接。 选择“**下一步**”。
+   ![创建 SAP BW Open Hub 链接服务页](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
 
-5. 在“选择 Open Hub 目标”页上，浏览 SAP BW 中可用的 Open Hub 目标。  选择要从中复制数据的 OHD，然后选择“下一步”。 
+   4. 在“源数据存储”页上的“连接”块中选择新创建的连接 。
 
-   ![选择 SAP BW Open Hub 目标表](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
+   5. 在选择 Open Hub 目标的部分中，浏览 SAP BW 中可用的 Open Hub 目标。 通过选择每个行末尾的预览按钮，可以预览每个目标中的数据。 选择要从中复制数据的 OHD，然后选择“下一步”。 
+   
+   :::image type="content" source="./media/load-sap-bw-data/source-data-store-page.png" alt-text="显示“源数据存储”页的屏幕截图。":::
 
-6. 如果需要，请指定筛选器。 如果你的 OHD 仅包含采用单个请求 ID 的单个数据传输进程 (DTP) 执行中的数据，或者你确定 DTP 已完成并想要复制数据，请清除“排除最后一个请求”复选框。 
+5. 如果需要，请指定筛选器。 如果 OHD 仅包含来自具有单一请求 ID 的单一数据传输过程 (DTP) 执行中的数据，或者确定 DTP 已完成并且想要复制数据，请清除“高级”部分中的“排除最后一个请求”复选框 。 可以通过选择“预览数据”按钮来预览数据。
 
-   请在本文的 [SAP BW Open Hub 目标配置](#sap-bw-open-hub-destination-configurations)部分详细了解这些设置。 选择“验证”以仔细检查要返回的数据。  然后，选择“下一步”  。
+   请在本文的 [SAP BW Open Hub 目标配置](#sap-bw-open-hub-destination-configurations)部分详细了解这些设置。 然后，选择“下一步”  。
 
    ![配置 SAP BW Open Hub 筛选器](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. 在“目标数据存储”页上，选择“+创建新连接” > “Azure Data Lake Storage Gen2” > “继续”。    
+6. 在“目标数据存储”页中，选择“+ 新建连接” > “Azure Data Lake Storage Gen2” > “继续”。
 
-8. 在“指定 Azure Data Lake Storage 连接”页上，遵循这些步骤来创建连接。 
+7. 在“新建连接(Azure Data Lake Storage Gen2)”页中，按以下步骤操作来创建连接。
+   1. 在“名称”下拉列表中，选择支持 Data Lake Storage Gen2 的帐户。 
+   2. 选择“创建”以创建连接。
 
    ![创建 ADLS Gen2 链接服务页](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
-   1. 在“名称”下拉列表中，选择支持 Data Lake Storage Gen2 的帐户。 
-   2. 选择“完成”  以创建连接。 然后，选择“下一步”  。
+8. 在“目标数据存储”页上的“连接”部分中选择新创建的连接，然后输入“copyfromopenhub”作为输出文件夹名称。   然后，选择“下一步”。
 
-9. 在“选择输出文件或文件夹”页上，输入 **copyfromopenhub** 作为输出文件夹名称。  然后，选择“下一步”  。
+   :::image type="content" source="./media/load-sap-bw-data/destination-data-store-page.png" alt-text="显示“目标数据存储”页的屏幕截图。":::
 
-   ![选择输出文件夹页](media/load-sap-bw-data/choose-output-folder.png)
-
-10. 在“文件格式设置”页上，选择“下一步”以使用默认设置。  
+9. 在“文件格式设置”页上，选择“下一步”以使用默认设置。  
 
     ![指定接收器格式页](media/load-sap-bw-data/specify-sink-format.png)
 
-11. 在“设置”页上，展开“性能设置”。   为“复制并行度”输入一个值（例如 5），表示从 SAP BW 加载数据的并行度。  然后，选择“下一步”  。
+10. 在“设置”页上，指定“任务名称”，然后展开“高级”。   为“复制并行度”输入一个值（例如 5），表示从 SAP BW 加载数据的并行度。  然后，选择“下一步”  。
 
     ![配置复制设置](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. 在“摘要”页上复查设置。  然后，选择“下一步”  。
+11. 在“摘要”页上复查设置。  然后，选择“下一步”  。
 
-13. 在“部署”页上，选择“监视”以监视管道。  
+    :::image type="content" source="./media/load-sap-bw-data/summary-page.png" alt-text="显示“摘要”页的屏幕截图。":::
 
-    ![“部署”页](media/load-sap-bw-data/deployment.png)
+12. 在“部署”页上，选择“监视”以监视管道。  
 
-14. 请注意，页面左侧的“监视”选项卡已自动选择。  “操作”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接。 
+13. 请注意，页面左侧的“监视”选项卡已自动选择。  可以使用“管道运行”页中“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。 
 
-    ![管道监视视图](media/load-sap-bw-data/pipeline-monitoring.png)
-
-15. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”。   该管道只包含一个活动（复制活动），因此只显示了一个条目。 若要切换回到管道运行视图，请选择顶部的“管道”链接。  选择“刷新”可刷新列表。 
+14. 若要查看与管道运行关联的活动运行，请选择“管道名称”列下面的链接。 该管道只包含一个活动（复制活动），因此只显示了一个条目。 若要切换回到管道运行视图，请选择顶部的“所有管道运行”链接。 选择“刷新”可刷新列表。 
 
     ![活动监视屏幕](media/load-sap-bw-data/activity-monitoring.png)
 
-16. 若要监视每个复制活动的执行详细信息，请在活动监视视图中选择“操作”下面的“详细信息”链接（眼镜图标）   。 提供的详细信息包括从源复制到接收器的数据量、数据吞吐量、执行步骤和持续时间，以及使用的配置。
+15. 若要监视每个复制活动的执行详细信息，请选择“详细信息”链接，也就是活动监视视图中每个复制活动的同一行中的眼镜图标。 提供的详细信息包括从源复制到接收器的数据量、数据吞吐量、执行步骤和持续时间，以及使用的配置。
 
     ![活动监视详细信息](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. 若要查看“最大请求 ID”，请返回到活动监视视图，并选择“操作”下的“输出”。   
+16. 要查看每个复制活动的“最大请求 ID”，请返回活动监控视图并在每个复制活动的同一行中选择“输出”。 
 
     ![活动输出屏幕](media/load-sap-bw-data/activity-output.png)
 
@@ -133,7 +132,7 @@ ms.locfileid: "100370693"
 
 ![增量复制工作流程图](media/load-sap-bw-data/incremental-copy-workflow.png)
 
-在数据工厂的“开始”页上，选择“从模板创建管道”以使用内置模板。  
+在数据工厂主页上，选择“发现更多”部分中的“管道模板”以使用内置模板。 
 
 1. 搜索 **SAP BW**，找到并选择“从 SAP BW 增量复制到 Azure Data Lake Storage Gen2”模板。  此模板将数据复制到 Azure Data Lake Storage Gen2。 可以使用类似的工作流将数据复制到其他接收器类型。
 

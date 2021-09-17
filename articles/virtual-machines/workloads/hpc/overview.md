@@ -8,14 +8,16 @@ ms.subservice: hpc
 ms.topic: overview
 ms.date: 04/09/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 8017b3e84c80acc71fca1442c4493bd1ec239175
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2b9f89126f49b75f5e232521f807f6db3ba9d4e9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141210"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693385"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>在支持 InfiniBand 的 H 系列和 N 系列 VM 上进行高性能计算
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Azure 的支持 InfiniBand 的 H 系列和 N 系列 VM 旨在为各种实际 HPC 和 AI 工作负载提供领先的性能、消息传递接口 (MPI) 可伸缩性和成本效益。 这些高性能计算 (HPC) 优化 VM 用于解决科学和工程方面的一些计算密集程度最高的问题（如：流体动力学、地球建模、天气模拟等）。
 

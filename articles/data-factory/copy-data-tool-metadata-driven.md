@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/19/2021
 ms.author: yexu
-ms.openlocfilehash: ab17ad8c47f7cc49588e5caf556282c40a9c0a76
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: e2263db67214fb6fea91c8a8cefa65a981475ec3
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271984"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681595"
 ---
 # <a name="build-large-scale-data-copy-pipelines-with-metadata-driven-approach-in-copy-data-tool-preview"></a>使用复制数据工具中元数据驱动的方法生成大规模数据复制管道（预览版）
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -204,7 +204,7 @@ ADF 中的复制数据工具简化了这种元数据驱动的数据复制管道�
 ### <a name="known-limitations"></a>已知的限制
 - 复制数据工具目前不支持使用元数据驱动的引入来以增量方式仅复制新添加的文件。 但是，你可以使用自己的参数化管道来实现此目的。
 - 无法在 ADF 中参数化 IR 名称、数据库类型和文件格式类型。 例如，如果你要从 Oracle Server 和 SQL Server 引入数据，则需要两个不同的参数化管道。 但是，一个控制表可由两组管道共享。 
-
+- OPENJSON 用于通过复制数据工具生成 SQL 脚本。 如果使用 SQL Server 托管控制表，则必须是 SQL Server 2016 (13.x) 及更高版本以便支持 OPENJSON 函数。
 
 
 ## <a name="next-steps"></a>后续步骤

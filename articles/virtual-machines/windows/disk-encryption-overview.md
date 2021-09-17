@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d7e096a0dbd730b2ec5f64589a5924340e32f66
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: fc3c40e9f4bad9a15b94ee7aa529438f45b97498
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195542"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692607"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>适用于 Windows VM 的 Azure 磁盘加密
+
+**适用于：** :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它使用 Windows 的 [BitLocker](https://en.wikipedia.org/wiki/BitLocker) 功能为 Azure 虚拟机 (VM) 的操作系统和数据磁盘提供卷加密，并与 [Azure 密钥保管库](../../key-vault/index.yml)集成，以帮助你控制和管理磁盘加密密钥和机密。
 
@@ -38,7 +40,7 @@ Azure 磁盘加密可在区域内复原，与虚拟机的方式相同。 有关�
 
 Windows VM 的大小有[多种](../sizes-general.md)。 Azure 磁盘加密在第 1 代和第 2 代 VM 上受支持。 Azure 磁盘加密还可用于使用高级存储的 VM。
 
-Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或内存小于 2 GB 的虚拟机上不可用。  Azure 磁盘加密对于没有临时磁盘（Dv4、Dsv4、Ev4 和 Esv4）的 VM 映像也不可用。  请参阅[无本地临时磁盘的 Azure VM 规格](../azure-vms-no-temp-disk.yml)。  有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
+Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或内存小于 2 GB 的虚拟机上不可用。  有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -58,7 +60,6 @@ Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/de
   - 若要将加密密钥写入密钥保管库，Windows VM 必须能够连接到密钥保管库终结点。
   - Windows VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
   -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。    
-
 
 ## <a name="group-policy-requirements"></a>组策略要求
 

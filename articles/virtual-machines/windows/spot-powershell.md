@@ -10,15 +10,16 @@ ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6db3a8b2871cad0348893ab2878904767f512988
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ee1f915045ed3272d8f93559efcf06c0c2bcc011
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677660"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689313"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 部署 Azure 现成虚拟机
 
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 使用 [Azure 现成虚拟机](../spot-vms.md)，可以利用未使用的容量，大幅降低成本。 每当 Azure 需要回收容量时，Azure 基础结构就会逐出 Azure 现成虚拟机。 因此，Azure 现成虚拟机非常适用于那些处理服务中断的工作负荷（例如批处理作业）、开发/测试环境、大型计算工作负荷等。
 

@@ -2,14 +2,14 @@
 title: 在虚拟网络中预配池
 description: 如何在 Azure 虚拟网络中创建 Batch 池，以便计算节点可以安全地与网络（例如文件服务器）中的其他 VM 通信。
 ms.topic: how-to
-ms.date: 06/09/2021
+ms.date: 08/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: 5279e9efb426c327761f14188b436e47387ea1eb
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: bc8f63af713b3b56d85426ce9be86214572506be
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903072"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635128"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -38,14 +38,16 @@ ms.locfileid: "111903072"
 在创建 VNet 并将一个子网分配给它后，可以使用该 VNet 创建 Batch 池。 请按照下列步骤在 Azure 门户中创建池： 
 
 1. 导航到 Azure 门户中的批处理帐户。 此帐户必须与要使用的 VNet 所在的资源组位于同一订阅和区域中。
-2. 在左侧的“设置”窗口中，选择“池”菜单项。
-3. 在“池”窗口中，选择“添加”。 
-4. 在“添加池”窗口中，从“映像类型”下拉列表中选择要使用的选项。 
-5. 为自定义映像选择正确的“发布服务器/产品/SKU”。
-6. 指定剩余所需设置，包括“节点大小”、“目标专用节点”和“低优先级节点”，以及任何所需的可选设置。  
-7. 在“虚拟网络”中，选择要使用的虚拟网络和子网。
+1. 在左侧的“设置”窗口中，选择“池”菜单项。
+1. 在“池”窗口中，选择“添加”。 
+1. 在“添加池”窗口中，从“映像类型”下拉列表中选择要使用的选项。 
+1. 为自定义映像选择正确的“发布服务器/产品/SKU”。
+1. 指定剩余所需设置，包括“节点大小”、“目标专用节点”和“低优先级节点”，以及任何所需的可选设置。  
+1. 在“虚拟网络”中，选择要使用的虚拟网络和子网。
+1. 选择“确定”创建池。
 
-   ![使用虚拟网络添加池](./media/batch-virtual-network/add-vnet-pool.png)
+> [!IMPORTANT]
+> 如果你尝试删除池正在使用的子网，则会收到错误消息。 必须先删除所有使用子网的池，然后才能删除该子网。
 
 ## <a name="user-defined-routes-for-forced-tunneling"></a>用户定义的用于强制隧道的路由
 
@@ -62,8 +64,6 @@ ms.locfileid: "111903072"
 - 如果使用虚拟文件装载，请查看[网络要求](virtual-file-mount.md#networking-requirements)，并确保未阻止所需的流量。
 
 添加 UDR 时，请为每个相关 Batch IP 地址前缀定义路由，并将“下一个跃点类型”设置为“Internet” 。
-
-![用户定义的路由](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
 > Batch 服务 IP 地址随时可能会更改。 为了防止由于 IP 地址更改而造成服务中断的情况出现，请创建一个进程以自动刷新 Batch 服务 IP 地址，并使这些地址在路由表中保持最新状态。

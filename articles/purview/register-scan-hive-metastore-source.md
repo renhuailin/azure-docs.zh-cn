@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 5/17/2021
-ms.openlocfilehash: c289ab60973c0e907deb97c0e8520f8b608099eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0a7d8a22cf8f9dcdaac9d3fe07bd6ab006e61818
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467074"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751901"
 ---
 # <a name="register-and-scan-hive-metastore-database"></a>注册并扫描 Hive 元存储数据库
 
@@ -36,7 +36,7 @@ Hive 元存储源支持完全扫描，用于从 **Hive 元存储数据库** 中�
     > [!Note]
     > VM 中的所有帐户均应可以访问该驱动程序。 请不要在用户帐户中安装它。
 
-5.  支持的 Hive 版本为 2.x 到 3.x。
+5.  支持的 Hive 版本为 2.x 到 3.x。 支持的 Databricks 版本为 8.0 及更高版本。 
 
 ## <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
@@ -48,9 +48,9 @@ Hive 元存储数据库唯一支持的身份验证是 **基本身份验证。**
 
 1.  导航到你的 Purview 帐户。
 
-2.  在左侧导航区域中选择“源”。
+2.  在左侧导航区域中选择“数据映射”。
 
-3.  选择“注册”。
+3.  选择“注册”
 
 4.  在“注册源”中选择 Hive **元存储**。 选择“继续”。
 

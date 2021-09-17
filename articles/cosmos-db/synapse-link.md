@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.reviewer: sngun
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: 1f5d3231bd70848b5c09bc8fbebca86a445254f8
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 41aa8efe93970205faad1bc621061aa8cdf9adaa
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664661"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429142"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>什么是 Azure Synapse Link for Azure Cosmos DB？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -121,7 +121,9 @@ Azure Cosmos DB 分析存储是 Azure Cosmos DB 中的操作数据的面向列�
 
 * 对于启用了分析存储的容器，目前不支持自动备份和还原分析存储中的数据。 在数据库帐户上启用 Synapse Link 后，Azure Cosmos DB 会像往常一样，继续按计划的备份间隔以自动方式仅对容器的事务性存储中的数据[执行备份](./online-backup-and-restore.md)。 需要特别注意的是，将启用了分析存储的容器还原到新帐户时，将仅使用事务性存储来还原容器，而不会启用分析存储。
 
-* 当前无法访问预配了 Synapse SQL 的 Azure Cosmos DB 分析存储。
+* 当前不支持通过 Azure Synapse 专用 SQL 池访问 Azure Cosmos DB 分析存储。
+
+* 当前不支持 Azure Cosmos DB 无服务器帐户。
 
 ## <a name="security"></a>安全性
 

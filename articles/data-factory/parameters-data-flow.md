@@ -1,24 +1,27 @@
 ---
 title: 将映射数据流参数化
-description: 了解如何将数据工厂管道中的映射数据流参数化
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何参数化来自 Azure 数据工厂和 Azure Synapse Analytics 管道的映射数据流
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: 22c4fc0680d8666d8c2dfafb8829436e27cf1ebd
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.date: 08/24/2021
+ms.openlocfilehash: 5d06d55e199e0c5f2f1fcda9f1a9d121ed1726e5
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725703"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821597"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>将映射数据流参数化
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Azure 数据工厂和 Azure Synapse Analytics 中的映射数据流支持使用参数。 定义数据流定义内的参数并在整个表达式中使用它们。 参数值由调用管道通过“执行数据流”活动设置。 你可以使用三个选项来设置数据流活动表达式中的值：
+Azure 数据工厂和 Synapse 管道中的映射数据流支持使用参数。 定义数据流定义内的参数并在整个表达式中使用它们。 参数值由调用管道通过“执行数据流”活动设置。 你可以使用三个选项来设置数据流活动表达式中的值：
 
 * 使用管道控制流表达式语言来设置动态值
 * 使用数据流表达式语言来设置动态值

@@ -9,14 +9,16 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a7d32bdb2ea1897a0458708425cd7af025818fd8
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 759f48a8bcfaa30c190c701ba5dcc8b9cad8a876
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113596328"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696140"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>使用 PowerShell 配置 Azure 映像生成器服务权限
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 注册 (AIB) 时，这会授予 AIB 服务创建、管理和删除暂存资源组 (IT_*) 以及向其添加资源的权限，映像生成需要这些权限。 这是通过在成功注册期间在订阅中提供的 AIB 服务主体名称 (SPN) 来实现的。
 
@@ -113,7 +115,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | 自定义映像的资源组 |

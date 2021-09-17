@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 270a48181e8eceb7b5e851f9bc69bb5a41428573
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 20df340df025ceada8a4b254f317fe2f5d8eecbc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964460"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768893"
 ---
 # <a name="view-update-assessments-in-update-management"></a>查看更新管理中的更新评估
 
@@ -34,7 +34,7 @@ ms.locfileid: "111964460"
 
 [ ![已启用 Arc 的服务器的更新管理评估视图](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
 
-若要从自动化帐户查看所有计算机（包括启用了 Arc 的服务器）上的更新评估，请导航至“自动化帐户”，然后从列表中选择启用了“更新管理”的自动化帐户。 在自动化帐户中，从左侧菜单选择“更新管理”。
+要查看所有计算机上的更新评估，包括来你的自动化帐户的已启用 Arc 的服务器，请导航到“自动化帐户”并从列表中选择启用了更新管理的自动化帐户。 在自动化帐户中，从左侧菜单选择“更新管理”。
 
 “更新管理”页上会列出你的环境所具有的更新。 如果发现缺少任何更新，则会在“缺少的更新”选项卡上显示缺少的更新的列表。
 

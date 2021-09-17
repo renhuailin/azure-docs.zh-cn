@@ -9,20 +9,23 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8390b5c779e6aa053e1af2754c436dd51e410b06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50979abac226797a7b8e309678846bc327d28428
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550410"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697811"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>如何使用 PowerShell 打开 VM 的端口和终结点
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
+
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>快速命令
 若要创建网络安全组和 ACL 规则，需要[安装最新版本的 Azure PowerShell](/powershell/azure/)。 也可以[使用 Azure 门户执行这些步骤](nsg-quickstart-portal.md)。
 
-登录 Azure 帐户：
+登录到 Azure 帐户：
 
 ```powershell
 Connect-AzAccount

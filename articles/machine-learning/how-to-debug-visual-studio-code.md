@@ -9,12 +9,12 @@ ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/11/2021
-ms.openlocfilehash: 517577fd7a9383ede62df5403c52ccfa219ba5eb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4488670a5dfbedf22fa2880d6e4093c4fbfa52b9
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751976"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419154"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
@@ -29,7 +29,7 @@ ms.locfileid: "121751976"
 * Azure 机器学习 VS Code 扩展（预览版）。 有关详细信息，请参阅[设置 Azure 机器学习 VS Code 扩展](how-to-setup-vs-code.md)。
 
     > [!IMPORTANT]
-    > 在默认情况下，Azure 机器学习 VS Code 扩展使用 2.0 CLI。 本指南中的说明使用 1.0 CLI。 若要切换到 1.0 CLI，请将 Visual Studio Code 中的 `azureML.CLI Compatibility Mode` 设置指定为 `1.0`。 有关在 Visual Studio 中修改设置的详细信息，请参阅[用户和工作区设置文档](https://code.visualstudio.com/docs/getstarted/settings)。
+    > Azure 机器学习 VS Code 扩展默认使用 CLI (v2)。 本指南中的说明使用 1.0 CLI。 若要切换到 1.0 CLI，请将 Visual Studio Code 中的 `azureML.CLI Compatibility Mode` 设置指定为 `1.0`。 有关在 Visual Studio 中修改设置的详细信息，请参阅[用户和工作区设置文档](https://code.visualstudio.com/docs/getstarted/settings)。
 
 * [Docker](https://www.docker.com/get-started)
   * 适用于 Mac 和 Windows 的 Docker Desktop

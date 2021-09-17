@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 69bc44fcffd760b0c98264c43c02f8dfffd8b853
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3a7ed9fbb30ab770cd7069ebbd97faa41b12cd34
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448453"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606833"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub（预览版）概述
 
@@ -24,12 +24,12 @@ Device Update for IoT Hub 是一项服务，可用于为 IoT 设备部署无线�
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>支持各种 IoT 设备
 
 
-Device Update for IoT Hub 旨在通过与 [Azure IoT 中心](https://azure.microsoft.com/en-us/services/iot-hub/)集成，提供优化的更新部署和简化的操作。 通过这种集成，可以轻松地在任何现有解决方案中采用 Device Update。 它提供了可用于连接几乎任何设备的云托管解决方案。 Device Update 支持范围广泛的 IoT 操作系统，包括 Linux 和 [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/)（实时操作系统），并且可通过开放源代码进行扩展。 我们正在与半导体合作伙伴（包括 STMicroelectronics、NXP、Renesas 和 Microchip）共同开发 IoT 中心产品/服务的设备更新。 请参阅主要半导体评估版块的[示例](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU)（包括入门指南），以了解如何配置、生成和部署 MCU 类设备的无线 (OTA) 更新。 
+Device Update for IoT Hub 旨在通过与 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)集成，提供优化的更新部署和简化的操作。 通过这种集成，可以轻松地在任何现有解决方案中采用 Device Update。 它提供了可用于连接几乎任何设备的云托管解决方案。 Device Update 支持范围广泛的 IoT 操作系统，包括 Linux 和 [Azure RTOS](https://azure.microsoft.com/services/rtos/)（实时操作系统），并且可通过开放源代码进行扩展。 我们正在与半导体合作伙伴（包括 STMicroelectronics、NXP、Renesas 和 Microchip）共同开发 IoT 中心产品/服务的设备更新。 请参阅主要半导体评估版块的[示例](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU)（包括入门指南），以了解如何配置、生成和部署 MCU 类设备的无线 (OTA) 更新。 
 
 同时提供了 Device Update 代理模拟器二进制文件和 Raspberry Pi 引用 Yocto 映像。
 Device Update for IoT Hub 还支持更新 Azure IoT Edge 设备。 为 Ubuntu Server 18.04 amd64 平台提供了 Device Update 代理。 如果你运行的不是上述任一平台，Device Update for IoT Hub 还会提供开源代码。 你可以将代理移植到你正在运行的分发版。
 
-Device Update 适用于 IoT 即插即用 (PnP)，可以管理支持所需 PnP 接口的任何设备。 有关详细信息，请参阅 [Device Update for IoT Hub 与 IoT 即插即用](device-update-plug-and-play.md)。
+Device Update 适用于 IoT 即插即用，可以管理支持所需 IoT 即插即用接口的任何设备。 有关详细信息，请参阅 [Device Update for IoT Hub 与 IoT 即插即用](device-update-plug-and-play.md)。
 
 ## <a name="support-for-a-wide-range-of-update-artifacts"></a>支持各种更新项目
 

@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d432ff03290c3ce26346b99c428cd89c853ed6b7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d95e9e6ed85e170efeb570fa46f634a9071c687c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472138"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772391"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>将行业标准本体转换为适用于 Azure 数字孪生的 DTDL
 
 大多数[本体](concepts-ontologies.md)基于语义 Web 标准，例如 [OWL](https://www.w3.org/OWL/)、[RDF](https://www.w3.org/2001/sw/wiki/RDF) 和 [RDFS](https://www.w3.org/2001/sw/wiki/RDFS)。 
 
-若要将模型用于 Azure 数字孪生，则其必须采用 DTDL 格式。 本文通过转换模式介绍了将基于 RDF 的模型转换为 DTDL 以使其用于 Azure 数字孪生的通用设计指南。 
+若要将模型用于 Azure 数字孪生，则其必须采用 DTDL 格式。 本文以“转换模式”的形式介绍了通用设计指南，该模式将基于 RDF 的模型转换为 DTDL 以使其用于 Azure 数字孪生。 
 
 本文还包含用于 RDF 和 OWL 转换器的示例转换器代码，可将其扩展以用于建筑行业中的其他架构。
 
 ## <a name="conversion-pattern"></a>转换模式
 
-在将基于 RDF 的模型转换为 DTDL 时可以使用多个第三方库。 其中一些库支持将模型文件加载到图形中。 你可以遍历图形查找特定的 RDFS 和 OWL 构造，并将其转换为 DTDL。   
+在将基于 RDF 的模型转换为 DTDL 时可以使用多个第三方库。 其中一些库支持将模型文件加载到图形中。 可以遍历图形查找特定的 RDFS 和 OWL 构造，并将其转换为 DTDL。   
 
 下表举例说明了如何将 RDFS 和 OWL 构造映射到 DTDL。 
 
@@ -37,7 +37,7 @@ ms.locfileid: "114472138"
 
 下面的 C# 代码段演示如何使用 dotNetRDF 库将 RDF 模型文件加载到图形并转换为 DTDL。 
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/convertRDF.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples/other/csharp/convertRDF.cs":::
 
 ## <a name="converter-samples"></a>转换器示例
 
@@ -51,7 +51,7 @@ ms.locfileid: "114472138"
 
 :::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="GitHub 上 RdfToDtdlConverter 存储库的屏幕截图。选中了“代码”按钮，生成了一个对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
 
-你可以使用此示例在上下文中查看转换模式，并将其用作自己的应用程序构建块，根据自己的特定需要执行模型转换。
+可使用此示例在上下文中查看转换模式，并将其用作自己的应用程序构建块，根据自己的特定需要执行模型转换。
 
 ### <a name="owl2dtdl-converter"></a>OWL2DTDL 转换器 
 

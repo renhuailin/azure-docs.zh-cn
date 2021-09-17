@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/17/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 8deba37750c6e498e87b87ab2c49e4aa54561475
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 87e548cd39c7c064b11131c28790d8335bd942fb
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743961"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418410"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
@@ -75,13 +75,17 @@ node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx   1/1     Running   0     
 
 在以上示例中，node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx 是 `kubectl debug` 启动的 Pod 的名称。
 
-将 SSH 私钥复制到 `kubectl debug` 创建的 pod 中。 此私钥用于创建与 Windows Server AKS 节点的 SSH。 如果需要，请将 `~/.ssh/id_rsa` 更改为 SSH 私钥的位置：
+使用 `kubectl port-forward`，可以打开到已部署的 pod 的连接：
 
-```azurecli-interactive
-kubectl cp ~/.ssh/id_rsa node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx:/id_rsa
+```
+$ kubectl port-forward node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx 2022:22
+Forwarding from 127.0.0.1:2022 -> 22
+Forwarding from [::1]:2022 -> 22
 ```
 
-使用 `kubectl get nodes` 显示 Windows Server 节点的内部 IP 地址：
+上面的示例从开发计算机上的端口 2022 开始将网络流量转发到部署的 pod 上的端口 22。 使用 `kubectl port-forward` 打开连接并转发网络流量时，在停止 `kubectl port-forward` 命令之前，连接将一直保持打开状态。
+
+打开新终端并使用 `kubectl get nodes` 显示 Windows Server 节点的内部 IP 地址：
 
 ```output
 $ kubectl get nodes -o wide
@@ -94,16 +98,10 @@ aksnpwin000000                      Ready    agent   87s     v1.19.9   10.240.0.
 
 在以上示例中，10.240.0.67 是 Windows Server 节点的内部 IP 地址。
 
-返回到由 `kubectl debug` 启动的终端，并更新复制到 Pod 的专用 SSH 密钥的权限。
-
-```azurecli-interactive
-chmod 0400 id_rsa
-```
-
 使用内部 IP 地址创建与 Windows Server 节点的 SSH 连接。 AKS 节点的默认用户名为 *azureuser*。 接受提示以继续进行连接。 然后，系统会提供 Windows Server 节点的 bash 提示：
 
 ```output
-$ ssh -i id_rsa azureuser@10.240.0.67
+$ ssh -o 'ProxyCommand ssh -p 2022 -W %h:%p azureuser@127.0.0.1' azureuser@10.240.0.67
 
 The authenticity of host '10.240.0.67 (10.240.0.67)' can't be established.
 ECDSA key fingerprint is SHA256:1234567890abcdefghijklmnopqrstuvwxyzABCDEFG.
@@ -117,9 +115,18 @@ Microsoft Windows [Version 10.0.17763.1935]
 azureuser@aksnpwin000000 C:\Users\azureuser>
 ```
 
+上面的示例通过开发计算机上的端口 2022 连接到 Windows 服务器节点上的端口 22。
+
+> [!NOTE]
+> 如果希望使用密码身份验证，请使用 `-o PreferredAuthentications=password`。 例如：
+>
+> ```console
+>  ssh -o 'ProxyCommand ssh -p 2022 -W %h:%p azureuser@127.0.0.1' -o PreferredAuthentications=password azureuser@10.240.0.67
+> ```
+
 ## <a name="remove-ssh-access"></a>删除 SSH 访问
 
-完成后，运行 `exit` 退出 SSH 会话，然后运行 `exit` 退出交互式容器会话。 此容器会话关闭后，将删除用于从 AKS 群集进行 SSH 访问的 pod。
+完成后，运行 `exit` 退出 SSH 会话，停止任何端口转发，然后运行 `exit` 退出交互式容器会话。 交互式容器会话关闭后，将删除用于从 AKS 群集进行 SSH 访问的 pod。
 
 ## <a name="next-steps"></a>后续步骤
 

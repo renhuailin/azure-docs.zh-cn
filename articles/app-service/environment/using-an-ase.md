@@ -4,15 +4,15 @@ description: 了解如何在应用服务环境中创建、发布和缩放应用�
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 9/22/2020
+ms.date: 8/5/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f49bcba81594fa2992c07cad1efb2d6235b0270
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: da32a2bbd4824e589a6673b043551dce67c32e70
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432925"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446315"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 > [!NOTE]
@@ -210,22 +210,15 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 ## <a name="upgrade-preference"></a>升级首选项
 
-如果你有多个 ASE，你可能希望先升级某些 ASE，再升级其他 ASE。 在 ASE“HostingEnvironment 资源管理器”对象中，可以设置 upgradePreference 的值。  可以使用模板、ARMClient 或 https://resources.azure.com 配置 upgradePreference 设置。 三个可能的值为：
+如果你有多个 ASE，你可能希望先升级某些 ASE，再升级其他 ASE。 可通过 ASE 门户启用此行为。  在“配置”下，可选择设置“升级首选项”。 三个可能的值为：
 
 - **无**：Azure 将在非特定的批次中升级 ASE。 此值为默认值。
 - **Early**：ASE 将在应用服务升级过程的上半阶段升级。
 - **Late**：ASE 将在应用服务升级过程的下半阶段升级。
 
-如果使用的是 https://resources.azure.com ，请按以下步骤操作来设置 upgradePreferences 值：
+选择所需值，然后选择“保存”。  任何 ASE 的默认值均为“无”。
 
-1. 转到 resources.azure.com，然后使用 Azure 帐户登录。
-1. 浏览资源到 subscriptions\/\[subscription name\]\/resourceGroups\/\[resource group name\]\/providers\/Microsoft.Web\/hostingEnvironments\/\[ASE name\]。
-1. 在顶部选择“读/写”。
-1. 选择“编辑”。
-1. 将 upgradePreference 设置为所需的三个值之一。
-1. 选择“补丁”。
-
-![azure com 显示的资源][5]
+![ASE 配置门户][5]
 
 upgradePreferences 功能在有多个 ASE 时最有意义，因为“早期”ASE 将在“晚期”ASE 之前升级。 当你有多个 ASE 时，应将开发和测试 ASE 设置为“早期”，而将生产 ASE 设置为“晚期”。
 

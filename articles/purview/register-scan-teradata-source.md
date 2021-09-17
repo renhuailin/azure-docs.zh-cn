@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 7dae716944426ce21cb81bdbb36992238e4bb227
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3d6f30e3d50fa79ac394460f9b13e1127cf16168
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112298432"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740265"
 ---
 # <a name="register-and-scan-teradata-source"></a>注册并扫描 Teradata 源
 
@@ -48,7 +48,7 @@ Teradata 源支持完全扫描，以从 Teradata 数据库中提取元数据，�
 若要在数据目录中注册新的 Teradata 源，请执行以下操作：
 
 1.  导航到你的 Purview 帐户。
-2.  在左侧导航区域中选择“源”。
+2.  在左侧导航区域中选择“数据映射”。
 3.  选择“注册”
 4.  在“注册源”上，选择“Teradata”。 选择“继续”
 

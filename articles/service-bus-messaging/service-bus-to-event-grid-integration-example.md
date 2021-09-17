@@ -4,15 +4,15 @@ description: 本文提供了使用 Azure 逻辑应用通过事件网格处理服
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 07/26/2021
+ms.date: 08/13/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 36690973f441c80f71c1941c63cd40d91c1efd08
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 013468d1b6e5ba6fccb1277f715b5a42a469f4a2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114719877"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182569"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用响应通过 Azure 事件网格收到的 Azure 服务总线事件
 本教程介绍如何使用 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 
@@ -44,7 +44,7 @@ ms.locfileid: "114719877"
     2. 对于“资源类型”，请选择“Microsoft.ServiceBus.Namespaces”。 
     3. 对于“资源名称”，请选择你的服务总线命名空间。 
     4. 选择“添加新参数”，然后选择“后缀筛选器”。 
-    5. 对于“后缀筛选器”，请输入第二个服务总线主题订阅的名称。 
+    5. 对于“后缀筛选器”，请输入服务总线主题订阅的名称。 
         ![逻辑应用设计器 - 配置事件](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. 在设计器中选择“+ 新建步骤”，然后执行以下步骤：
     1. 搜索“服务总线”。
@@ -102,7 +102,7 @@ ms.locfileid: "114719877"
     1. 在“最近”列表中选择“服务总线” 。
     2. 在操作列表中选择“完成主题订阅中的消息”。 
     3. 选择你的服务总线 **主题**。
-    4. 选择主题的第二个 **订阅**。
+    4. 选择主题的订阅。
     5. 对于“消息的锁定标记”，请从“动态内容”中选择“锁定标记”。 
 
         ![逻辑应用设计器 - 完成消息](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)

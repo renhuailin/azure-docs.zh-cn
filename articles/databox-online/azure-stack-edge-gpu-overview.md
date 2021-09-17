@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 07/14/2021
+ms.date: 08/12/2021
 ms.author: alkohli
-ms.openlocfilehash: a307fd2e2504e3c11c96fb56c7ab4f55db9508ff
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: a61178917214e53f6a2d01183a3d35a1ba93eff3
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221257"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429659"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>什么是 Azure Stack Edge Pro with GPU？
 
@@ -51,6 +51,7 @@ Azure Stack Edge Pro GPU 具有以下功能：
 |数据刷新     | 可以使用云中的最新内容刷新本地文件。|
 |加密    | BitLocker 支持本地加密数据，并通过 *http* 安全地将数据传输到云中。|
 |带宽限制| 中止以限制在高峰时段使用带宽。|
+|轻松排序| 通过 Azure Edge Hardware Center（预览版）对设备进行批量排序和跟踪。|
 |专用网络功能|使用 Azure 网络功能管理器的“市场”体验将网络功能（如移动数据包核心、SD-WAN edge 和 VPN 服务）快速部署到在本地环境中运行的 Azure Stack Edge 设备。 有关详细信息，请参阅[什么是 Azure 网络功能管理器（预览版）](../network-function-manager/overview.md)？|
 
 <!--|ExpressRoute | Added security through ExpressRoute. Use peering configuration where traffic from local devices to the cloud storage endpoints travels over the ExpressRoute. For more information, see [ExpressRoute overview](../expressroute/expressroute-introduction.md).|-->
@@ -60,10 +61,13 @@ Azure Stack Edge Pro GPU 具有以下功能：
 Azure Stack Edge Pro GPU 解决方案包括 Azure Stack Edge 资源、Azure Stack Edge Pro GPU 物理设备和本地 Web UI。
 
 * **Azure Stack Edge Pro GPU 物理设备** - Microsoft 提供的 1U 机架安装式服务器，可配置为将数据发送到 Azure。
-    
-* **Azure Stack Edge 资源** - Azure 门户中的一种资源，使用该资源可以通过 Web 界面（可从不同的地理位置访问该界面）管理 Azure Stack Edge Pro GPU 设备。 使用 Azure Stack Edge 资源可以创建和管理资源、查看和管理设备与警报，以及管理共享。  
+
+    [!INCLUDE [azure-stack-edge-gateway-edge-hardware-center-overview](../../includes/azure-stack-edge-gateway-edge-hardware-center-overview.md)]    
 
     有关详细信息，请转到[为 Azure Stack Edge Pro GPU 设备创建订单](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)。
+    
+* **Azure Stack Edge 资源** - Azure 门户中的一种资源，使用该资源可以通过 Web 界面（可从不同的地理位置访问该界面）管理 Azure Stack Edge Pro GPU 设备。 使用 Azure Stack Edge 资源可以创建和管理资源、查看和管理设备与警报，以及管理共享。  
+   
 
 * **Azure Stack Edge Pro GPU 本地 Web UI** - Azure Stack Edge Pro GPU 设备上基于浏览器的本地用户界面，主要用于设备的初始配置。 使用本地 Web UI 还可以运行诊断、关闭和重启 Azure Stack Edge Pro GPU 设备、查看复制日志，并联系 Microsoft 支持部门以提出服务请求。
 
@@ -82,6 +86,8 @@ Azure Stack Edge Pro GPU 解决方案包括 Azure Stack Edge 资源、Azure Stac
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 存储帐户存储 Azure Stack Edge Pro GPU 数据的区域应靠近设备所在位置，以便获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。
 
 Azure Stack Edge 服务是一种非区域性服务。 有关详细信息，请参阅 [Azure 中的区域和可用性区域](../availability-zones/az-overview.md)。 Azure Stack Edge 服务不依赖于特定的 Azure 区域，因此可以灵活应对区域范围的服务中断和区域范围的服务中断。
+
+有关为 Azure Stack Edge 服务、设备和数据存储选择区域的注意事项的讨论，请参阅[为 Azure Stack Edge 选择区域](azure-stack-edge-gpu-regions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

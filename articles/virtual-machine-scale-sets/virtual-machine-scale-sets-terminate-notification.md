@@ -9,14 +9,17 @@ ms.subservice: terminate-notification
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9104aeb3a4cd9f0eb123aaab036b1cade5c7b1c9
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 29466a1954e64b79614eec0afdd139e45a44df5b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673764"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698260"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>为 Azure 虚拟机规模集实例终止通知
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
+
 规模集实例可以选择接收实例终止通知，并为终止操作设置预定义的延迟超时。 终止通知通过 Azure 元数据服务 - [Scheduled Events](../virtual-machines/windows/scheduled-events.md) 发送，该服务为影响性操作（如重新启动和重新部署）提供通知和延迟。 解决方案将另一个事件“终止”添加到 Scheduled Events 列表中，终止事件的关联延迟将取决于用户在其规模集模型配置中指定的延迟限制。
 
 注册该功能后，规模集实例无需等待指定的超时过期就会被删除。 收到终止通知后，实例可以选择在终止超时到期之前随时删除。

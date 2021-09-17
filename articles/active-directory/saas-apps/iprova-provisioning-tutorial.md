@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: thwimmer
-ms.openlocfilehash: c48f5bace8c19d2bbf64668eedf60ae811e5398d
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e3ff62f4099e4098c2ca695d0e7c07bbc5c08b0a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113726925"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746093"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>教程：为 iProva 配置自动用户预配
 
-本教程的目的是演示要将 Azure AD 配置为自动将用户和/或组预配到 [iProva](https://www.iProva.com/) 以及取消其预配需在 iProva 和 Azure Active Directory (Azure AD) 中执行的步骤。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程的目的是演示要将 Azure AD 配置为自动将用户和/或组预配到 [iProva](https://www.iProva.com/) 以及取消其预配需在 iProva 和 Azure Active Directory (Azure AD) 中执行的步骤。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 在尝试使用本教程之前，请确保你了解并满足所有要求。 如有疑问，请联系 Infoland。
 
 > [!NOTE]
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -29,7 +29,7 @@ ms.locfileid: "113726925"
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
 > * 在 iProva 中创建用户
-> * 在用户不再有访问需求的情况下，在 iProva 中删除用户
+> * 在用户不再有访问需求的情况下，在 iProva 中删除/禁用用户
 > * 使用户属性在 Azure AD 和 iProva 之间保持同步
 > * 在 iProva 中预配组和组成员身份
 > * [单一登录](./iprova-tutorial.md)到 iProva（推荐）
@@ -102,7 +102,7 @@ ms.locfileid: "113726925"
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分中，分别在“租户 URL”和“机密令牌”字段中输入之前检索到的 SCIM 2.0 基 URL 和永久令牌值   。 单击“测试连接”以确保 Azure AD 可以连接到 iProva。 如果连接失败，请确保 iProva 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分中，在“租户 URL”中输入之前检索到的 SCIM 2.0 基 URL 和永久令牌值，并将 /scim/ 添加到其中  。 还需要添加“机密令牌”。 可以使用“永久令牌”按钮在 iProva 中生成机密令牌。 单击“测试连接”以确保 Azure AD 可以连接到 iProva。 如果连接失败，请确保 iProva 帐户具有管理员权限，然后重试。 
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -120,32 +120,12 @@ ms.locfileid: "113726925"
    |---|---|
    |活动|Boolean|
    |displayName|字符串|
-   |title|字符串|
    |emails[type eq "work"].value|字符串|
    |preferredLanguage|字符串|
    |userName|字符串|
-   |addresses[type eq "work"].country|字符串|
-   |addresses[type eq "work"].locality|字符串|
-   |addresses[type eq "work"].postalCode|字符串|
-   |addresses[type eq "work"].formatted|字符串|
-   |addresses[type eq "work"].region|字符串|
-   |addresses[type eq "work"].streetAddress|字符串|
-   |addresses[type eq "other"].formatted|字符串|
-   |name.givenName|字符串|
-   |name.familyName|字符串|
-   |name.formatted|字符串|
-   |phoneNumbers[type eq "fax"].value|字符串|
-   |phoneNumbers[type eq "mobile"].value|字符串|
    |phoneNumbers[type eq "work"].value|字符串|
    |externalId|字符串|
-   |roles[primary eq "True"].display|字符串|
-   |roles[primary eq "True"].type|字符串|
-   |roles[primary eq "True"].value|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
+
 
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 iProva” 。
@@ -156,6 +136,7 @@ ms.locfileid: "113726925"
       |---|---|
       |displayName|字符串|
       |members|参考|
+      |externalID|字符串|
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

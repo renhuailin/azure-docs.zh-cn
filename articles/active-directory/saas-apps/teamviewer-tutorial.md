@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: jeedes
-ms.openlocfilehash: a5b14cd231998515003574e6c961989d46e50095
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7be4e58ccb7b788c98c0ab0c8b21c7d5bd9f4088
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654028"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182931"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamviewer"></a>教程：Azure Active Directory 与 TeamViewer 的单一登录 (SSO) 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "101654028"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * TeamViewer 支持 SP 发起的 SSO。
+* TeamViewer 支持[自动用户预配和取消预配](teamviewer-provisioning-tutorial.md)（推荐）。
 
 ## <a name="add-teamviewer-from-the-gallery"></a>从库中添加 TeamViewer
 

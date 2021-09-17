@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b9038840142be64918b22f1aefc32d505252d71d
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2718dd070cc12cb58f8033d5a2757d8aedf05e05
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254238"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771200"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>将事件路由到 Azure 数字孪生内部和外部
 
-Azure 数字孪生使用事件路由向服务外的使用者发送数据。 
+Azure 数字孪生使用“事件路由”向服务外的使用者发送数据。 
 
 发送 Azure 数字孪生数据的主要情况有两种：
-* 将 Azure 数字孪生图中的一个孪生体的数据发送给另一个孪生体。 例如，当一个数字孪生体上的属性发生变化时，可能需要相应地通知并更新另一个数字孪生体。
-* 向下游数据服务发送数据以进行额外的存储或处理（也称为数据传出）。 例如，
+* 将 Azure 数字孪生图中的一个孪生体的数据发送给另一个孪生体。 例如，当一个数字孪生体上的属性发生变化时，可能需要基于更新的数据通知并更新另一个数字孪生体。
+* 向下游数据服务发送数据以进行额外的存储或处理（也称为“数据传出”）。 例如，
   - 一家医院可能希望将 Azure 数字孪生事件数据发送到[时序见解 (TSI)](../time-series-insights/overview-what-is-tsi.md)，记录洗手相关事件的时序数据以进行批量分析。
   - 正在使用 [Azure Maps](../azure-maps/about-azure-maps.md) 的企业可能希望使用 Azure 数字孪生来强化其解决方案。 在设置 Azure 数字孪生后，他们可以快速启用 Azure Maps，将 Azure Maps 实体作为孪生图中的[数字孪生体](concepts-twins-graph.md)引入 Azure 数字孪生，或同时利用 Azure Maps 和 Azure 数字孪生数据来运行功能强大的查询。
 
@@ -38,11 +38,11 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 ### <a name="event-routes-for-internal-digital-twin-events"></a>内部数字孪生事件的事件路由
 
-事件路由还用于处理孪生图中的事件，并将一个数字孪生体中的数据发送到另一个数字孪生体。 此操作是通过事件网格将事件路由连接到计算资源（如 [Azure Functions](../azure-functions/functions-overview.md)）来完成的。 然后，这些函数会定义孪生体应如何接收和响应事件。 
+事件路由还用于处理孪生图中的事件，并将一个数字孪生体中的数据发送到另一个数字孪生体。 这种事件操作是通过事件网格将事件路由连接到计算资源（如 [Azure Functions](../azure-functions/functions-overview.md)）来完成的。 然后，这些函数会定义孪生体应如何接收和响应事件。 
 
 当计算资源希望根据通过事件路由收到的事件修改孪生图时，它可以提前知道要修改哪一个孪生体。 
 
-另外，事件消息还包含发送消息的源孪生体的 ID，因此计算资源可使用查询或遍历关系来查找所需操作的目标孪生体。 
+事件消息还包含发送消息的源孪生体的 ID，因此计算资源可使用查询或遍历关系来查找所需操作的目标孪生体。 
 
 计算资源还需要单独建立安全和访问权限。
 

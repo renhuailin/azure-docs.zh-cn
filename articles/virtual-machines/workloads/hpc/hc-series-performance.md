@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 177a58090303a70491d9a9226eca40d0bb371764
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40cdd0ffeafe9e55444eb6ac4836a335aacbacc1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722253"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687495"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC 系列虚拟机大小
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 已对 HC 系列大小运行多个性能测试。 下面是此性能测试的部分结果。
 

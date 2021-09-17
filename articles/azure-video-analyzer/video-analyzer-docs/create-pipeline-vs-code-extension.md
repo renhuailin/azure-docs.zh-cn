@@ -4,12 +4,12 @@ description: 本快速入门将逐步介绍如何开始使用 Azure 视频分析
 ms.service: azure-video-analyzer
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: dd342d1aaf8cf93bfcf518342315ad022e52f4f9
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e3d118f2651e7b680b85bbb41bb6ecc3d7106bba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604014"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745689"
 ---
 # <a name="quickstart-azure-video-analyzer-visual-studio-code-extension"></a>快速入门：Azure 视频分析器 Visual Studio Code 扩展
 
@@ -25,7 +25,7 @@ ms.locfileid: "114604014"
 * 包含活动订阅的 Azure 帐户。 如果没有帐户，可免费[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
-    * [视频分析器](https://go.microsoft.com/fwlink/?linkid=2163332)
+    * [视频分析器](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-video-analyzer)
 
 * 如果未完成[开始使用 - Azure 视频分析器](./get-started-detect-motion-emit-events.md)快速入门，请确保[设置 Azure 资源](#set-up-azure-resources)。    
 
@@ -58,7 +58,7 @@ ms.locfileid: "114604014"
 
 管道拓扑是视频分析器用于定义工作如何发生的基本构建基块。  你可在[此处](./pipeline.md)详细了解管道拓扑。  在本部分中，你将部署一个管道拓扑（它是一个模板），然后创建拓扑或实时管道的实例。 实时管道连接到实际的视频流。
 
-1.  在左侧的 `Modules` 下，右键单击 `Pipeline topologies` 并选择“创建管道拓扑”。
+1.  在左侧的 `Modules` 下，右键单击 `Pipeline topologies` 并选择 `Create pipeline topology`。
 1.  在顶部的 `Try sample topologies` 下，选择 `Motion Detection` 下的 `Publish motion events to IoT Hub`。  系统提示时，单击“是”`Proceed`。
 1.  单击右上方的 `Save`。
 
@@ -67,9 +67,9 @@ ms.locfileid: "114604014"
 1.  在左侧的 `Pipeline topologies` 下，右键单击 `MotionDetection` 并选择 `Create live pipeline`。
 1.  对于 `Live pipeline name`，输入 `mdpipeline1`。
 1.  在 `Parameters` 部分：
-    - 对于“rtspPassword”，输入“testuser”。
+    - 对于“rtspPassword”，输入“testpassword”。
     - 对于“rtspUrl”，输入“rtsp://rtspsim:554/media/camera-300s.mkv”。
-    - 对于“rtspUserName”，输入"testpassword"。
+    - 对于“rtspUserName”，输入"testuser"。
 1.  在右上方，单击“保存并激活”。
 
 此时，边缘设备上将部署一个启动拓扑，实时管道将启动并运行。  如果根据“开始使用”快速入门安装了 Azure IoT 中心扩展，你可以在 Azure IoT 中心 Visual Studio Code 扩展中监视内置的事件终结点；请按照[观察结果](./get-started-detect-motion-emit-events.md#observe-results)部分所示进行监视。

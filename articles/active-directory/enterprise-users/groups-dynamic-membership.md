@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 08/06/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d93acbfa8ae89b459fafb69411d35706b18fcbb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 9551906dc3a80a07597fc8406228a5869688d317
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982981"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750568"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -176,25 +176,25 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 表达式中使用的值可包含多种类型，包括：
 
-* 字符串
-* 布尔值 - true、false
-* 数字
-* 数组 - 数字数组、字符串数组
+- 字符串
+- 布尔值 - true、false
+- 数字
+- 数组 - 数字数组、字符串数组
 
 在表达式中指定值时，使用正确的语法来避免错误至关重要。 部分语法提示包括：
 
-* 除非值是字符串，否则双引号是可选的。
-* 字符串和正则表达式运算不区分大小写。
-* 当字符串值包含双引号时，两个引号都应使用 \` 字符进行转义，例如，user.department -eq \`“Sales\`”是值为“Sales”时的正确语法。
-* 还可执行 Null 检查，使用 null 作为值，例如 `user.department -eq null`。
+- 除非值是字符串，否则双引号是可选的。
+- 字符串和正则表达式运算不区分大小写。
+- 当字符串值包含双引号时，两个引号都应使用 \` 字符进行转义，例如，user.department -eq \`“Sales\`”是值为“Sales”时的正确语法。 单引号应使用两个单引号（而不是每次一个单引号）进行转义。
+- 还可执行 Null 检查，使用 null 作为值，例如 `user.department -eq null`。
 
 ### <a name="use-of-null-values"></a>Null 值的用法
 
 要在规则中指定 null 值，可以使用 null 值。 
 
-* 比较表达式中的 null 值时，请使用 -eq 或 -ne。
-* 仅当希望将其解释为文本字符串值时，才在 null 两边加引号。
-* 不能将 -not 运算符用作 null 的比较运算符。 如果使用该运算符，将会出现错误，不管使用 null 还是 $null。
+- 比较表达式中的 null 值时，请使用 -eq 或 -ne。
+- 仅当希望将其解释为文本字符串值时，才在 null 两边加引号。
+- 不能将 -not 运算符用作 null 的比较运算符。 如果使用该运算符，将会出现错误，不管使用 null 还是 $null。
 
 引用 null 值的正确方法如下：
 
@@ -241,9 +241,9 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 成员资格规则可能包含复杂表达式，其中属性、运算符和值采用更复杂的形式。 只要满足以下任何条件，表达式就会被认为是复杂的：
 
-* 属性由一组值组成；具体而言为多值属性
-* 表达式使用 -any 和 -all 运算符
-* 表达式的值可为一个或多个表达式
+- 属性由一组值组成；具体而言为多值属性
+- 表达式使用 -any 和 -all 运算符
+- 表达式的值可为一个或多个表达式
 
 ## <a name="multi-value-properties"></a>多值属性
 
@@ -258,8 +258,8 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 可以使用 -any 和 -all 运算符将条件分别应用到集合中的一项或所有项。
 
-* -any（当集合中至少有一项符合条件时满足条件）
-* -all（当集合中的所有项都符合条件时满足条件）
+- -any（当集合中至少有一项符合条件时满足条件）
+- -all（当集合中的所有项都符合条件时满足条件）
 
 #### <a name="example-1"></a>示例 1
 
@@ -357,8 +357,8 @@ device.objectId -ne null
 
 [自定义扩展属性](../hybrid/how-to-connect-sync-feature-directory-extensions.md)与本地 Windows Server AD 或连接的 SaaS 应用程序同步，格式为 `user.extension_[GUID]_[Attribute]`，其中：
 
-* [GUID] 是 Azure AD 中用于在 Azure AD 中创建属性的应用程序的唯一标识符
-* [Attribute] 是属性创建时的名称
+- [GUID] 是 Azure AD 中用于在 Azure AD 中创建属性的应用程序的唯一标识符
+- [Attribute] 是属性创建时的名称
 
 下面是使用自定义扩展属性的规则示例：
 

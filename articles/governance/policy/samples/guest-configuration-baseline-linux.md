@@ -1,21 +1,21 @@
 ---
 title: 参考 - 适用于 Linux 的 Azure Policy 来宾配置基线
 description: Azure 上通过 Azure Policy 来宾配置实现的 Linux 基线的详细信息。
-ms.date: 08/03/2021
+ms.date: 08/24/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4fe3e374b39c880940fa61b84342d2d8cbf94d12
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5d3b360a3a87c08e457e02829d1938193631e74f
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731348"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779320"
 ---
 # <a name="linux-security-baseline"></a>Linux 安全基线
 
 本文详细介绍适用于以下实现中的 Linux 来宾的配置设置：
 
-- **\[预览版\] Linux 计算机应符合 Azure 计算安全基线** Azure Policy 来宾配置定义的要求
+- \[预览版\]：Linux 计算机应符合 Azure 计算安全基线 Azure Policy 来宾配置定义的要求
 - **Azure 安全中心应修复计算机上安全配置中的漏洞**
 
 有关详细信息，请参阅 [Azure Policy 来宾配置](../concepts/guest-configuration.md)和 [Azure 安全基准概述 (V2)](../../../security/benchmarks/overview.md)。

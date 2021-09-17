@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b8ae9365199edfde078cad39783458fc3f86ebd6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ea85ca0cf1160b4ad738ea45ce33e72d07dc5fbf
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061491"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681392"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>查看和配置 DDoS 诊断日志记录
 
@@ -61,13 +61,46 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
     - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将资源日志流式传输到事件中心](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)。
     - **发送到 Log Analytics**：将日志写入到 Azure Monitor 服务。 若要了解有关此选项的详细信息，请参阅 [收集日志以在 Azure Monitor 日志中使用](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace)。
 
+### <a name="query-ddos-protection-logs-in-log-analytics-workspace"></a>在日志分析工作区中查询 DDOS 防护日志
+
+#### <a name="ddosprotectionnotifications-logs"></a>DDoSProtectionNotifications 日志
+
+1. 在“日志分析工作区”边栏选项卡下，选择日志分析工作区。
+
+4. 在“常规”下，单击“日志” 
+
+5. 在查询资源管理器中，键入以下 Kusto 查询，将时间范围更改为“自定义”，并将时间范围更改为过去 3 个月。 然后单击“运行”。
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSProtectionNotifications"
+    ```
+
+#### <a name="ddosmitigationflowlogs"></a>DDoSMitigationFlowLogs
+
+1. 现在，将查询更改为如下所示，保留相同的时间范围，然后单击“运行”。
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSMitigationFlowLogs"
+    ```
+
+#### <a name="ddosmitigationreports"></a>DDoSMitigationReports
+
+1. 现在，将查询更改为如下所示，保留相同的时间范围，然后单击“运行”。
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == "DDoSMitigationReports"
+    ```
+
 ### <a name="log-schemas"></a>日志架构
 
 下表列出了字段的名称和描述：
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| 字段名称 | 说明 |
+| 字段名 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建通知时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
@@ -78,12 +111,12 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **ResourceType** | 这将始终为 `PUBLICIPADDRESS`。 |
 | **OperationName** | 对于通知，这将为 `DDoSProtectionNotifications`。  |
 | **消息** | 攻击的详细信息。 |
-| 类型 | 通知的类型。 可能的值包括 `MitigationStarted`。 `MitigationStopped`. |
+| **类型** | 通知的类型。 可能的值包括 `MitigationStarted`。 `MitigationStopped`. |
 | **PublicIpAddress** | 你的公共 IP。 |
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| 字段名称 | 说明 |
+| 字段名 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建流日志时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
@@ -98,15 +131,15 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **SourcePort** | 端口号范围介于 0 到 65535 之间。 |
 | **DestPublicIpAddress** | 你的公共 IP。 |
 | **DestPort** | 端口号范围介于 0 到 65535 之间。 |
-| **协议** | 协议的类型。 可能的值包括 `tcp`、`udp`、`other`。|
+| 协议  | 协议的类型。 可能的值包括 `tcp`、`udp`、`other`。|
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| 字段名称 | 说明 |
+| 字段名 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建报表时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
-| **类别** | 对于通知，这将为 `DDoSProtectionNotifications`。|
+| **类别** | 对于通知，这将为 `DDoSMitigationReports`。|
 | **ResourceGroup** | 包含公共 IP 和虚拟网络的资源组。 |
 | **SubscriptionId** | 你的 DDoS 防护计划订阅 ID。 |
 | **资源** | 公共 IP 的名称。 |

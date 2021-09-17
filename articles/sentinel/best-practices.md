@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 570dccac5b7ddae323ce37dfbfbf850a54d576d6
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 4a47a13405402b381c1a1b3682f5d42038218959
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181454"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689147"
 ---
 # <a name="best-practices-for-azure-sentinel"></a>Azure Sentinel 最佳做法
 
@@ -159,6 +159,8 @@ Azure Sentinel 文档提供了更多最佳做法指南，这些指南分散在�
     - [直接检测威胁](detect-threats-built-in.md)
     - [创建自定义分析规则以检测威胁](detect-threats-custom.md)
     - [使用 Jupyter Notebook 搜寻安全威胁](notebooks.md)
+
+有关详细信息，另请参阅我们的视频：[构造 SecOps 以获得成功：部署 Azure Sentinel 的最佳做法](https://youtu.be/DyL9MEMhqmI)
 
 ## <a name="next-steps"></a>后续步骤
 

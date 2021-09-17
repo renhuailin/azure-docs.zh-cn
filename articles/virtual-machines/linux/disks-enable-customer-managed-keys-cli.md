@@ -7,14 +7,16 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 21f2aaeea730d183fa42cbde03769aeaf75297ab
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: e1c79ee87861124b669ad3cd8507085631a199a8
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356880"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825028"
 ---
 # <a name="use-the-azure-cli-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>使用 Azure CLI，通过客户管理的密钥为托管磁盘启用服务器端加密
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时管理自己的密钥（如果你选择）。 有关使用客户管理的密钥的 SSE 以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密文章的[客户管理的密钥](../disk-encryption.md#customer-managed-keys)部分。
 
@@ -26,7 +28,7 @@ Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时�
     如果需要解决此问题，则必须[复制所有数据](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)到完全不同的托管磁盘（未使用客户托管密钥）。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## <a name="set-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet 资源
+## <a name="set-up-your-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation"></a>在有自动密钥轮换的情况下选择性设置 Azure Key Vault DiskEncryptionSet
 
 首先，必须设置 Azure Key Vault 和 DiskEncryptionSet 资源。
 

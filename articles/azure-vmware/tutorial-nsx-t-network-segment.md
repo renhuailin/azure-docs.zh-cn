@@ -4,16 +4,16 @@ description: 了解如何添加用于 vCenter 中虚拟机 (VM) 的网段。
 ms.topic: tutorial
 ms.custom: contperf-fy22q1
 ms.date: 07/16/2021
-ms.openlocfilehash: 04681c5d55536e3ee1cc0b12d2ebc94f19b3873f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a678e29591bc3ca17a1ec6638e111ffeb8c264b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464419"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734205"
 ---
 # <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>教程：在 Azure VMware 解决方案中添加一个网段 
 
-部署 Azure VMware 解决方案后，可以通过 NSX-T Manager 或 Azure 门户配置 NSX-T 网段。  配置后，这些网段将显示在 Azure VMware 解决方案、NSX-T Manger 和 vCenter 中。  默认情况下，NSX-T 预先配置了主动/主动模式的 NSX-T 第 0 层网关，以及主动/待机模式的默认 NSX-T 第 1 层网关 。  通过这些网关可以将段连接（逻辑交换机）并提供东-西和北-南连接。 
+部署 Azure VMware 解决方案后，可以通过 NSX-T Manager 或 Azure 门户配置 NSX-T 网段。 配置后，这些网段将显示在 Azure VMware 解决方案、NSX-T Manger 和 vCenter 中。 默认情况下，NSX-T 预先配置了主动/主动模式的 NSX-T 第 0 层网关，以及主动/待机模式的默认 NSX-T 第 1 层网关 。  通过这些网关可以将段连接（逻辑交换机）并提供东-西和北-南连接。 
 
 >[!TIP]
 >Azure 门户针对不熟悉 NSX-T Manager 的用户提供了 VMware 管理员日常所需 NSX-T 操作的简化视图。 

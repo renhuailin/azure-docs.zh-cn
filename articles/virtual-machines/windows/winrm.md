@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 958edc8a5e9874efd8add4b74a3dc56a54651e11
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 32241529dc97f97fe3dfce2f1b7cb015dc952475
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667608"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688474"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
+
 
 为 VM 设置 WinRM 连接需执行以下步骤
 

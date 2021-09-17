@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova, vanto
-ms.date: 07/08/2021
-ms.openlocfilehash: fd2616b6de5c1c3955139ec7869c1903d68729f6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/20/2021
+ms.openlocfilehash: 3acd77d986d22af08ac7042da751a6aa8c7fc24b
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751266"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607577"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>将应用程序连接到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,9 +28,13 @@ ms.locfileid: "121751266"
 
 不管选择哪个选项，都可将应用程序连接到 Azure SQL 托管实例。 
 
+本文介绍如何在虚拟网络中的许多不同的应用程序方案中，将应用程序连接到 Azure SQL 托管实例。 
+
+> [!IMPORTANT]
+> 还可以从虚拟网络外部启用对托管实例的数据访问。 通过在托管实例上使用公共终结点，可以从多租户 Azure 服务（如 Power BI、Azure 应用服务或未连接到 VPN 的本地网络）访问托管实例。 需要在托管实例上启用公共终结点，并且要允许与托管实例子网关联的网络安全组上的公共终结点流量。 有关更多详细信息，请参阅[在 Azure SQL 托管实例中配置公共终结点](./public-endpoint-configure.md)。 
+
 ![高可用性](./media/connect-application-instance/application-deployment-topologies.png)
 
-本文介绍如何在众多不同的应用方案中将应用程序连接到 Azure SQL 托管实例。 
 
 ## <a name="connect-inside-the-same-vnet"></a>在同一 VNet 中连接
 
@@ -52,7 +56,7 @@ ms.locfileid: "121751266"
 
 ## <a name="connect-from-on-premises"></a>从本地连接 
 
-还可将本地应用程序连接到 SQL 托管实例。 只能通过专用 IP 地址访问 SQL 托管实例。 若要从本地访问它，需在应用程序与 SQL 托管实例虚拟网络之间建立站点到站点连接。
+还可以通过虚拟网络（专用 IP 地址）将本地应用程序连接到 SQL 托管实例。 若要从本地访问它，需在应用程序与 SQL 托管实例虚拟网络之间建立站点到站点连接。 有关从虚拟网络外部访问托管实例的数据，请参阅[在 Azure SQL 托管实例中配置公共终结点](./public-endpoint-configure.md)。
 
 可使用两个选项从本地连接到 Azure 虚拟网络：
 
@@ -63,7 +67,9 @@ ms.locfileid: "121751266"
 
 ## <a name="connect-the-developer-box"></a>连接开发人员工具箱
 
-还可将开发人员工具箱连接到 SQL 托管实例。 只能通过专用 IP 地址访问 SQL 托管实例，因此若要从开发人员工具箱访问该实例，首先需要在开发人员工具箱与 SQL 托管实例虚拟网络之间建立连接。 为此，请使用本机 Azure 证书身份验证配置与虚拟网络的点到站点连接。 有关详细信息，请参阅[配置点到站点连接，以便从本地计算机连接到 Azure SQL 托管实例](point-to-site-p2s-configure.md)。
+还可将开发人员工具箱连接到 SQL 托管实例。 若要通过虚拟网络从开发人员工具箱访问该实例，首先需要在开发人员工具箱与 SQL 托管实例虚拟网络之间建立连接。 为此，请使用本机 Azure 证书身份验证配置与虚拟网络的点到站点连接。 有关详细信息，请参阅[配置点到站点连接，以便从本地计算机连接到 Azure SQL 托管实例](point-to-site-p2s-configure.md)。
+
+有关从虚拟网络外部访问托管实例的数据，请参阅[在 Azure SQL 托管实例中配置公共终结点](./public-endpoint-configure.md)。
 
 ## <a name="connect-with-vnet-peering"></a>通过 VNet 对等互连进行连接
 
@@ -78,9 +84,9 @@ ms.locfileid: "121751266"
 
 ## <a name="connect-azure-app-service"></a>连接 Azure 应用服务 
 
-还可连接由 Azure 应用服务托管的应用程序。 只能通过专用 IP 地址访问 SQL 托管实例，因此若要从 Azure 应用服务访问该实例，首先需要在应用程序与 SQL 托管实例虚拟网络之间建立连接。 请参阅[将应用与 Azure 虚拟网络集成](../../app-service/web-sites-integrate-with-vnet.md)。  
+还可连接由 Azure 应用服务托管的应用程序。 若要通过虚拟网络从 Azure 应用服务访问该实例，首先需要在应用程序与 SQL 托管实例虚拟网络之间建立连接。 请参阅[将应用与 Azure 虚拟网络集成](../../app-service/web-sites-integrate-with-vnet.md)。 有关从虚拟网络外部访问托管实例的数据，请参阅[在 Azure SQL 托管实例中配置公共终结点](./public-endpoint-configure.md)。 
 
-有关故障排除信息，请参阅[排查虚拟网络和应用程序问题](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting)。 如果无法建立连接，请尝试[同步网络配置](azure-app-sync-network-configuration.md)。
+有关通过虚拟网络访问 Azure 应用服务的故障排除信息，请参阅[对虚拟网络和应用程序进行故障排除](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting)。 如果无法建立连接，请尝试[同步网络配置](azure-app-sync-network-configuration.md)。
 
 在将 Azure 应用服务连接到 SQL 托管实例时，有一种特殊情况是将 Azure 应用服务集成到已与 SQL 托管实例虚拟网络建立对等互连的网络。 对于这种情况，需要设置以下配置：
 

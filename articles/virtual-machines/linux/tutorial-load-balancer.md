@@ -11,14 +11,16 @@ ms.workload: infrastructure
 ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 191eb1338533cf1a5f81f4d04c5dfc6fd5cc569c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 33be1136005d6a8e54906372056bed0a96978453
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818739"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698975"
 ---
 # <a name="tutorial-load-balance-vms-for-high-availability"></a>教程：为实现高可用性对 VM 进行负载均衡
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍了 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 学习如何：
 

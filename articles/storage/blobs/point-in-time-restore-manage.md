@@ -10,12 +10,12 @@ ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 904def8328fbd7e23812b7ca325beda7722c5189
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: 7e2d71c1f388786c05052e773ea621caab92185e
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504686"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445874"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
 
@@ -128,7 +128,7 @@ az storage account blob-service-properties update \
 >
 > 如果存储帐户是异地复制的，则在还原操作期间，从辅助位置读取的操作可以继续。
 >
-> 还原一组数据所用的时间取决于在还原期间执行的写入和删除操作的次数。 例如，如果一个帐户有 1 百万个对象，每天增加 3,000 个对象，每天删除 1,000 个对象，将需要大约两个小时才能还原到过去 30 天的点。 对于具有此变化率的帐户，不建议在过去保留时间和还原超过90天。
+> 还原数据集所用的时间取决于选取还原作业最多一小时后在还原期间执行的写入和删除操作的次数。 例如，如果一个帐户有 1 百万个对象，每天增加 3,000 个对象，每天删除 1,000 个对象，将需要大约两三个小时才能还原到过去 30 天的点。 进行少量更改的还原最多需要一小时进行还原。 对于具有此变化率的帐户，不建议在过去保留时间和还原超过90天。
 
 ### <a name="restore-all-containers-in-the-account"></a>还原帐户中的所有容器
 

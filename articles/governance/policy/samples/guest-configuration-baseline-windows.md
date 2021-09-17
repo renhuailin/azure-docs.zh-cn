@@ -1,21 +1,21 @@
 ---
 title: 参考 - 适用于 Windows 的 Azure Policy 来宾配置基线
 description: Azure 上通过 Azure Policy 来宾配置实现的 Windows 基线的详细信息。
-ms.date: 08/03/2021
+ms.date: 08/24/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 359849bf8339fb8f5c4e668d39be7657c5dc4e2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c69a15fc97a605e1166a1721cb9e2fef9ce21ab7
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745385"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779167"
 ---
 # <a name="windows-security-baseline"></a>Windows 安全基线
 
 本文详细介绍适用于以下实现中的 Windows 来宾的配置设置：
 
-- \[预览版\] Windows 计算机应符合 Azure 计算安全基线 Azure Policy 来宾配置定义的要求
+- **\[预览版\]：Windows 计算机应符合 Azure 计算安全基线** Azure Policy 来宾配置定义的要求
 - 应在 Azure 安全中心修复计算机上安全配置中的漏洞
 
 有关详细信息，请参阅 [Azure Policy 来宾配置](../concepts/guest-configuration.md)和 [Azure 安全基准概述 (V2)](../../../security/benchmarks/overview.md)。
@@ -251,7 +251,7 @@ ms.locfileid: "121745385"
 |从网络访问此计算机<br /><sub>(CCE-35818-4)</sub> |**描述**： <p><span>此策略设置允许网络上的其他用户连接到计算机，并且是各种网络协议所必需，这些协议包括基于服务器消息块 (SMB) 的协议、NetBIOS、通用 Internet 文件系统 (CIFS) 和组件对象模型增强版 (COM+)。- 级别 1 - 域控制器。此设置的建议状态为“管理员、已通过身份验证的用户和企业域控制器”。- 级别 1 – 成员服务器。此设置的建议状态为“管理员和已通过身份验证的用户”。 </span></p><br />**注册表项路径**：[Privilege Rights]SeNetworkLogonRight<br />**OS**：WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**服务器类型**：域成员、工作组成员 | Administrators、Authenticated Users<br /><sub>（策略）</sub> |严重 |
 |以操作系统方式操作<br /><sub>(CCE-36876-1)</sub> |**说明**：此策略设置允许进程采用任何用户的身份，从而获得对该用户有权访问的资源的访问权限。 此设置的建议状态为：`No One`。<br />**注册表项路径**：[Privilege Rights]SeTcbPrivilege<br />**OS**：WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**服务器类型**：域控制器、域成员、工作组成员 |\= 无人<br /><sub>（策略）</sub> |严重 |
 |允许本地登录<br /><sub>(CCE-37659-0)</sub> |**说明**：此策略设置确定哪些用户可采用交互方式登录到你的环境中的计算机。 通过在客户端计算机键盘上按 CTRL + ALT + DEL 键序列启动的登录需要此用户权限。 尝试通过终端服务或 IIS 登录的用户也需要此用户权限。 默认情况下，将为来宾帐户分配此用户权限。 尽管默认情况下禁用此帐户，但 Microsoft 建议你通过组策略启用此设置。 但是，通常应当仅为 Administrators 和 Users 组分配此用户权限。 如果你的组织要求 Backup Operators 组具有此功能，请将此用户权限分配给该组。  在 SCM 中配置用户权限时，请输入以逗号分隔的帐户列表。 帐户可以是本地帐户，也可以位于 Active Directory 中，它们可以是组、用户或计算机。<br />**注册表项路径**：[Privilege Rights]SeInteractiveLogonRight<br />**OS**：WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**服务器类型**：域成员、工作组成员 |\= Administrators<br /><sub>（策略）</sub> |严重 |
-|允许通过远程桌面服务登录<br /><sub>(CCE-37072-6)</sub> |**描述**： <p><span>此策略设置确定哪些用户或组有权作为终端服务客户端登录。远程桌面用户需要此用户权限。如果你的组织使用远程协助作为其技术支持策略的一部分，请创建一个组，并通过组策略将此用户权限分配给该组。如果你所在组织的技术支持不使用远程协助，请将此用户权限仅分配给 Administrators 组，或使用“受限制的组”功能确保 Remote Desktop Users 组中没有用户帐户。通过将此用户权限仅授予 Administrators 组（也可能授予 Remote Desktop Users 组），可以阻止不需要的用户通过远程协助功能访问你的网络上的计算机。- 级别 1 - 域控制器。此设置的建议状态为“Administrators”。- 级别 1 - 成员服务器。此设置的建议状态为“Administrators 和 Remote Desktop Users”。注：具有远程桌面服务角色并拥有远程桌面连接代理角色服务的成员服务器需要这项建议的特殊例外，以允许将此用户权限授予“Authenticated Users”组。注 2：上述列表视为允许列表，这表示上述主体无需存在，此建议的评估即可通过。   </span></p><br />**注册表项路径**：[Privilege Rights]SeRemoteInteractiveLogonRight<br />**OS**：WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**服务器类型**：域控制器、域成员、工作组成员 | Administrators、Remote Desktop Users<br /><sub>（策略）</sub> |严重 |
+|允许通过远程桌面服务登录<br /><sub>(CCE-37072-6)</sub> |**描述**： <p><span>此策略设置确定哪些用户或组有权作为终端服务客户端登录。远程桌面用户需要此用户权限。如果你的组织使用远程协助作为其技术支持策略的一部分，请创建一个组，并通过组策略将此用户权限分配给该组。如果你所在组织的技术支持不使用远程协助，请将此用户权限仅分配给 Administrators 组，或使用“受限制的组”功能确保 Remote Desktop Users 组中没有用户帐户。通过将此用户权限授予 Administrators 组（也可能授予 Remote Desktop Users 组），可以阻止不需要的用户通过远程协助功能访问你的网络上的计算机。- 级别 1 - 域控制器。此设置的建议状态为“Administrators”。- 级别 1 - 成员服务器。此设置的建议状态为“Administrators 和 Remote Desktop Users”。注：具有远程桌面服务角色并拥有远程桌面连接代理角色服务的成员服务器需要这项建议的特殊例外，以允许将此用户权限授予“Authenticated Users”组。注 2：上述列表视为允许列表，这表示上述主体无需存在，此建议的评估即可通过。   </span></p><br />**注册表项路径**：[Privilege Rights]SeRemoteInteractiveLogonRight<br />**OS**：WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**服务器类型**：域控制器、域成员、工作组成员 | Administrators、Remote Desktop Users<br /><sub>（策略）</sub> |严重 |
 |备份文件和目录<br /><sub>(CCE-35912-5)</sub> |说明：此策略设置允许用户绕过文件和目录权限来备份系统。 仅当应用程序（例如 NTBACKUP）尝试通过 NTFS 文件系统备份应用程序编程接口 (API) 访问文件或目录时，才启用此用户权限。 否则，将应用分配的文件和目录权限。 此设置的建议状态为：`Administrators`。<br />**注册表项路径**：[Privilege Rights]SeBackupPrivilege<br />**OS**：WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**服务器类型**：域成员、工作组成员 | Administrators、Backup Operators、Server Operators<br /><sub>（策略）</sub> |严重 |
 |跳过遍历检查<br /><sub>(AZ-WIN-00184)</sub> |**说明**：此策略设置允许没有“遍历文件夹”访问权限的用户在浏览 NTFS 文件系统或注册表中的对象路径时越过文件夹。 此用户权限不允许用户列出文件夹的内容。  在 SCM 中配置用户权限时，请输入以逗号分隔的帐户列表。 帐户可以是本地帐户，也可以位于 Active Directory 中，它们可以是组、用户或计算机。<br />**注册表项路径**：[Privilege Rights]SeChangeNotifyPrivilege<br />**OS**：WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**服务器类型**：域成员、工作组成员 | Administrators、Authenticated Users、Backup Operators、Local Service、Network Service<br /><sub>（策略）</sub> |严重 |
 |更改系统时间<br /><sub>(CCE-37452-0)</sub> |**说明**：此策略设置确定哪些用户和组可以更改环境中计算机的内部时钟的时间和日期。 分配有此用户权限的用户可能会影响事件日志的外观。 更改计算机的时间设置后，所记录的事件将反映新时间，而不是事件的实际发生时间。 在 SCM 中配置用户权限时，请输入以逗号分隔的帐户列表。 帐户可以是本地帐户，也可以位于 Active Directory 中，它们可以是组、用户或计算机。 **注意：** 本地计算机上的时间与环境中域控制器上的时间之间的差异可能会导致 Kerberos 身份验证协议出现问题，这可能导致用户无法登录到域，或者在登录后无法获得授权来访问域资源。 此外，如果系统时间与域控制器不同步，则当组策略应用于客户端计算机时，将会出现问题。 此设置的建议状态为：`Administrators, LOCAL SERVICE`。<br />**注册表项路径**：[Privilege Rights]SeSystemtimePrivilege<br />**OS**：WS2008、WS2008R2、WS2012、WS2012R2、WS2016<br />**服务器类型**：域成员、工作组成员 | Administrators、Server Operators、LOCAL SERVICE<br /><sub>（策略）</sub> |严重 |

@@ -3,18 +3,17 @@ title: 教程 - 使用 Azure IoT Edge 开发用于 Linux 的 C# 模块
 description: 本教程介绍如何使用 C# 代码创建 IoT Edge 模块并将其部署到 Linux IoT Edge 设备。
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 1384fbc79e052bfc2b0fdf29b7087de0949c5095
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 27bfa2400715b568fc99411235a21e1a87d17cbb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438325"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740621"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发 C# IoT Edge 模块
 
@@ -82,7 +81,7 @@ ms.locfileid: "113438325"
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
    | 选择模块模板 | 选择“C# 模块”。 |
    | 提供模块名称 | 将模块命名为 **CSharpModule**。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/csharpmodule。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/csharpmodule。 |
 
    ![提供 Docker 映像存储库](./media/tutorial-csharp-module/repository.png)
 
@@ -111,7 +110,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 
 1. 在 VS Code 资源管理器中，打开 **modules** > **CSharpModule** > **Program.cs**。
 
-2. 在 **CSharpModule** 命名空间的顶部，为稍后要使用的类型添加三个 **using** 语句：
+1. 在 **CSharpModule** 命名空间的顶部，为稍后要使用的类型添加三个 **using** 语句：
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>
@@ -119,13 +118,13 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
     using Newtonsoft.Json;                // For JsonConvert
     ```
 
-3. 将 **temperatureThreshold** 变量添加到 **Program** 类。 此变量设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。
+1. 将 **temperatureThreshold** 变量添加到 **Program** 类。 此变量设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-4. 将 **MessageBody**、**Machine** 和 **Ambient** 类添加到 **Program** 类。 这些类将为传入消息的正文定义所需的架构。
+1. 将 **MessageBody**、**Machine** 和 **Ambient** 类添加到 **Program** 类。 这些类将为传入消息的正文定义所需的架构。
 
     ```csharp
     class MessageBody
@@ -146,24 +145,26 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
     }
     ```
 
-5. 找到 **Init** 函数。 此函数可创建并配置 **ModuleClient** 对象，使模块能够连接到本地 Azure IoT Edge 运行时以发送和接收消息。 创建 **ModuleClient** 后，代码将从模块孪生的所需属性中读取 **temperatureThreshold** 值。 代码注册一个回调，以通过 **input1** 终结点从 IoT Edge 中心接收消息。 将 **SetInputMessageHandlerAsync** 方法替换为新方法，并添加 **SetDesiredPropertyUpdateCallbackAsync** 方法用于更新所需属性。 若要进行此更改，请使用以下代码替换 Init 方法的最后一行 ：
+1. 找到 **Init** 函数。 此函数可创建并配置 **ModuleClient** 对象，使模块能够连接到本地 Azure IoT Edge 运行时以发送和接收消息。 创建 **ModuleClient** 后，代码将从模块孪生的所需属性中读取 **temperatureThreshold** 值。 代码注册一个回调，以通过名为 input1 的终结点从 IoT Edge 中心接收消息。
 
-    ```csharp
-    // Register a callback for messages that are received by the module.
-    // await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
+   将 SetInputMessageHandlerAsync 方法替换为一种新方法，该方法可更新终结点名称以及在输入到达时调用的方法。 此外添加 SetDesiredPropertyUpdateCallbackAsync 方法用于更新所需属性。 若要进行此更改，请使用以下代码替换 Init 方法的最后一行 ：
 
-    // Read the TemperatureThreshold value from the module twin's desired properties
-    var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
-    await OnDesiredPropertiesUpdate(moduleTwin.Properties.Desired, ioTHubModuleClient);
+   ```csharp
+   // Register a callback for messages that are received by the module.
+   // await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
 
-    // Attach a callback for updates to the module twin's desired properties.
-    await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
+   // Read the TemperatureThreshold value from the module twin's desired properties
+   var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
+   await OnDesiredPropertiesUpdate(moduleTwin.Properties.Desired, ioTHubModuleClient);
 
-    // Register a callback for messages that are received by the module.
-    await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
-    ```
+   // Attach a callback for updates to the module twin's desired properties.
+   await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertiesUpdate, null);
 
-6. 将 **onDesiredPropertiesUpdate** 方法添加到 **Program** 类。 此方法从孪生模块接收所需属性的更新，然后更新 **temperatureThreshold** 变量，使之匹配。 所有模块都有自己的孪生模块，因此可以直接从云配置在模块中运行的代码。
+   // Register a callback for messages that are received by the module. Messages received on the inputFromSensor endpoint are sent to the FilterMessages method.
+   await ioTHubModuleClient.SetInputMessageHandlerAsync("inputFromSensor", FilterMessages, ioTHubModuleClient);
+   ```
+
+1. 将 **onDesiredPropertiesUpdate** 方法添加到 **Program** 类。 此方法从孪生模块接收所需属性的更新，然后更新 **temperatureThreshold** 变量，使之匹配。 所有模块都有自己的孪生模块，因此可以直接从云配置在模块中运行的代码。
 
     ```csharp
     static Task OnDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -194,7 +195,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
     }
     ```
 
-7. 将 **PipeMessage** 方法替换为 **FilterMessages** 方法。 每当模块从 IoT Edge 中心接收消息，就会调用此方法。 此方法筛选掉那些所报告温度低于温度阈值（通过孪生模块进行设置）的消息。 它还将 **MessageType** 属性添加到消息，其值设置为“警报”。
+1. 将 **PipeMessage** 方法替换为 **FilterMessages** 方法。 每当模块从 IoT Edge 中心接收消息，就会调用此方法。 此方法筛选掉那些所报告温度低于温度阈值（通过孪生模块进行设置）的消息。 它还将 **MessageType** 属性添加到消息，其值设置为“警报”。
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -251,11 +252,19 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
     }
     ```
 
-8. 保存 Program.cs 文件。
+1. 保存 Program.cs 文件。
 
-9. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。
+1. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。
 
-10. 将 **CSharpModule** 模块孪生添加到部署清单。 在 **modulesContent** 节底部的 **$edgeHub** 模块孪生后面插入以下 JSON 内容：
+1. 由于我们更改了模块侦听的终结点的名称，因此还需要更新部署清单中的路由，以便 edgeHub 将消息发送到新终结点。
+
+    在 $edgeHub 模块孪生中找到 routes 节 。 更新 sensorToCSharpModule 路由以将 `input1` 替换为 `inputFromSensor`：
+
+    ```json
+    "sensorToCSharpModule": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/CSharpModule/inputs/inputFromSensor\")"
+    ```
+
+1. 将 **CSharpModule** 模块孪生添加到部署清单。 在 **modulesContent** 节底部的 **$edgeHub** 模块孪生后面插入以下 JSON 内容：
 
     ```json
        "CSharpModule": {
@@ -267,7 +276,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 
     ![将模块孪生添加到部署模板](./media/tutorial-csharp-module/module-twin.png)
 
-11. 保存 deployment.template.json 文件。
+1. 保存 deployment.template.json 文件。
 
 ## <a name="build-and-push-your-module"></a>生成并推送模块
 

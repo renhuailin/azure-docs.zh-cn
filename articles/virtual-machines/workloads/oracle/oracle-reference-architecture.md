@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 70d2401545c49bfb8bb1870f4881e51b7134ae59
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a8171d29dfe88ea34d02d7f48567aeb2df46a8a7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450888"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694133"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>适用于 Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 本指南详细介绍如何在 Azure 上部署高可用性 Oracle 数据库。 此外，本指南还深入探讨灾难恢复注意事项。 这些体系结构根据客户部署创建。 本指南仅适用于 Oracle Database Enterprise Edition。
 

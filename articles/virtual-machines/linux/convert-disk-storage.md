@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
 ms.subservice: disks
-ms.openlocfilehash: 35ba681ae35e60d7cd275c9e649b2463d2dc30a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 385d801d43a41bb836e04398427fff6c01b1e357
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558451"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692127"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>将 Azure 托管磁盘存储从标准类型转换为高级类型，或者从高级类型转换为标准类型
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure 托管磁盘有四种磁盘类型：Azure 超级磁盘、高级 SSD、标准 SSD 和标准 HDD。 可以根据性能需求在高级 SSD、标准 SSD 和标准 HDD 之间进行切换。 尚无法与超级磁盘进行切换，必须部署一个新磁盘。
 

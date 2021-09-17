@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2021
-ms.openlocfilehash: 45d9104c5669b3b0adef2c32757076097656ae87
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cafe928ad8baed2a597bfef9bbedca8ca72e1d76
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967892"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201969"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-offline-using-dms"></a>教程：使用 DMS 将 MySQL 脱机迁移到 Azure Database for MySQL
 
@@ -25,8 +25,6 @@ ms.locfileid: "111967892"
 
 > [!IMPORTANT]
 > 对于联机迁移，可以将 [MyDumper/MyLoader](https://centminmod.com/mydumper.html) 之类的开源工具与[数据传入复制](../mysql/concepts-data-in-replication.md)配合使用。 
-
-[!INCLUDE [preview features callout](../../includes/dms-boilerplate-preview.md)]
 
 > [!NOTE]
 > 有关此迁移体验的基于 PowerShell 的可编写脚本版本，请参阅[以可编写脚本的方式脱机迁移到 Azure Database for MySQL](./migrate-mysql-to-azure-mysql-powershell.md)。
@@ -76,6 +74,24 @@ ms.locfileid: "111967892"
 * Azure Database for MySQL 仅支持 InnoDB 表。 若要将 MyISAM 表转换为 InnoDB，请参阅 [Converting Tables from MyISAM to InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)（将表从 MyISAM 转换为 InnoDB）一文
 * 用户必须具有读取源数据库上数据的权限。
 
+## <a name="sizing-the-target-azure-database-for-mysql-instance"></a>调整目标 Azure Database for MySQL 实例的大小
+
+若要准备目标 Azure Database for MySQL 服务器以便使用 Azure 数据库迁移服务更快地加载数据，建议进行以下服务器参数和配置更改。 
+
+* max_allowed_packet – 设置为 1073741824（即 1 GB），以防止由于大型行而引起的连接问题。 
+* slow_query_log – 设置为“关闭”以关闭慢速查询日志。 这将消除数据加载过程中由慢速查询日志记录导致的开销。
+* query_store_capture_mode - 设置为“无”以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
+* innodb_buffer_pool_size – 只能通过纵向扩展 Azure Database for MySQL 服务器的计算来增大 innodb_buffer_pool_size。 在迁移期间从门户的定价层纵向扩展服务器到 64 vCore 常规用途 SKU，以增大 innodb_buffer_pool_size。 
+* innodb_io_capacity 和 innodb_io_capacity_max - 从 Azure 门户中的服务器参数更改为 9000，以提高 IO 利用率，从而优化迁移速度。
+* innodb_write_io_threads 和 innodb_write_io_threads - 从 Azure 门户中的服务器参数更改为 4 以加快迁移速度。
+* 纵向扩展存储层 – 随着存储层的增加，Azure Database for MySQL 服务器的 IOP 会逐渐增加。 
+    * 在单服务器部署选项中，为了更快地加载，建议增加存储层以增加预配的 IOP。 
+    * 在灵活服务器部署选项中，建议可以缩放（增加或减少）IOPS，而不考虑存储大小。 
+    * 请注意，存储大小只能纵向扩展，不能纵向缩减。
+
+迁移完成后，可以将服务器参数和配置还原为工作负载所需的值。 
+
+
 ## <a name="migrate-database-schema"></a>迁移数据库架构
 
 要传输所有数据库对象（例如表架构、索引和存储过程），需从源数据库提取架构并将其应用到目标数据库。 若要提取架构，可以将 mysqldump 与 `--no-data` 参数配合使用。 为此，需要一台可以连接到源 MySQL 数据库和目标 Azure Database for MySQL 的计算机。
@@ -104,47 +120,9 @@ mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file pa
 mysql.exe -h mysqlsstrgt.mysql.database.azure.com -u docadmin@mysqlsstrgt -p migtestdb < d:\migtestdb.sql
  ```
 
-如果在架构中有外键，则迁移任务将处理迁移过程中的并行数据加载。 在架构迁移期间不需要删除外键。
+如果在架构中有外键或触发器，则迁移任务将处理迁移过程中的并行数据加载。 在架构迁移期间不需要删除外键或触发器。
 
-如果数据库中有触发器，它将在从源进行完整数据迁移之前在目标中强制实施数据完整性。 建议在迁移期间禁用目标中所有表的触发器，然后在迁移完成后再启用这些触发器。
-
-在 MySQL Workbench 中对目标数据库执行以下脚本，以提取“删除触发器”脚本和“添加触发器”脚本。
-
-```sql
-SELECT
-    SchemaName,
-    GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery,
-    Concat('DELIMITER $$ \n\n', GROUP_CONCAT(AddQuery SEPARATOR '$$\n'), '$$\n\nDELIMITER ;') as AddQuery
-FROM
-(
-SELECT 
-    TRIGGER_SCHEMA as SchemaName,
-    Concat('DROP TRIGGER `', TRIGGER_NAME, "`") as DropQuery,
-    Concat('CREATE TRIGGER `', TRIGGER_NAME, '` ', ACTION_TIMING, ' ', EVENT_MANIPULATION, 
-            '\nON `', EVENT_OBJECT_TABLE, '`\n' , 'FOR EACH ', ACTION_ORIENTATION, ' ',
-            ACTION_STATEMENT) as AddQuery
-FROM  
-    INFORMATION_SCHEMA.TRIGGERS
-ORDER BY EVENT_OBJECT_SCHEMA, EVENT_OBJECT_TABLE, ACTION_TIMING, EVENT_MANIPULATION, ACTION_ORDER ASC
-) AS Queries
-GROUP BY SchemaName
-```
-
-在结果中运行生成的“删除触发器”查询（DropQuery 列），以删除目标数据库中的触发器。 可保存“添加触发器”查询，以供数据迁移完成后使用。
-
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
-
-每个 Azure 订阅只需注册一次资源提供程序。 如果没有注册，你将无法创建 Azure 数据库迁移服务的实例。
-
-1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
-
-   ![显示门户订阅](media/tutorial-mysql-to-azure-mysql-offline-portal/01-dms-portal-select-subscription.png)
-
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
-
-3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
-
-    ![注册资源提供程序](media/tutorial-mysql-to-azure-mysql-offline-portal/02-dms-portal-register-rp.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-a-database-migration-service-instance"></a>创建数据库迁移服务实例
 
@@ -188,7 +166,7 @@ GROUP BY SchemaName
     
     ![创建新迁移项目](media/tutorial-mysql-to-azure-mysql-offline-portal/08-02-dms-portal-new-project.png)
 
-3. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”选择框中选择“MySQL”，在“目标服务器类型”选择框中选择“Azure Database For MySQL”，然后在“迁移活动类型”选择框中选择“数据迁移\[预览版\]”      。 选择“创建并运行活动”。
+3. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”选择框中选择“MySQL”，在“目标服务器类型”选择框中选择“Azure Database For MySQL”，然后在“迁移活动类型”选择框中选择“数据迁移”      。 选择“创建并运行活动”。
 
     ![创建数据库迁移服务项目](media/tutorial-mysql-to-azure-mysql-offline-portal/09-dms-portal-project-mysql-create.png)
 

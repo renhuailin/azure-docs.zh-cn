@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/19/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: ac70d5ae65e07673ffdd68c1659ca3c342f1f29c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 13211d4b22470291fcee84a075a0305ba1e29718
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114479579"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739912"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-directprintio-cloud-print-administration"></a>教程：Azure Active Directory 单一登录 (SSO) 与 directprint.io Cloud Print Administration 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "114479579"
 * 让用户使用其 Azure AD 帐户自动登录到 directprint.io Cloud Print Administration。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,6 +38,8 @@ ms.locfileid: "114479579"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * directprint.io Cloud Print Administration 支持 IDP 发起的 SSO。
+
+* directprint.io Cloud Print Administration 支持实时用户预配。
 
 ## <a name="add-directprintio-cloud-print-administration-from-the-gallery"></a>从库中添加 directprint.io Cloud Print Administration
 
@@ -75,9 +77,9 @@ ms.locfileid: "114479579"
 
 1. 在基本 SAML 配置  部分，应用程序在 IDP 发起的模块中进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，单击“复制”按钮以复制“应用联合元数据 URL”，并将其保存在计算机上。  
 
-    ![证书下载链接](common/certificatebase64.png)
+    ![证书下载链接](common/copy-metadataurl.png)
 
 1. 在“设置 directprint.io Cloud Print Administration”部分，根据要求复制相应的 URL。
 
@@ -91,7 +93,7 @@ ms.locfileid: "114479579"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -109,11 +111,11 @@ ms.locfileid: "114479579"
 
 ## <a name="configure-directprintio-cloud-print-administration-sso"></a>配置 directprint.io Cloud Print Administration SSO
 
-若要在“directprint.io Cloud Print Administration”端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送到 [directprint.io Cloud Print Administration 支持团队](mailto:support@directprint.io) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 directprint.io Cloud Print Administration 端配置单一登录，需要将应用联合元数据 URL 发送到 [directprint.io Cloud Print Administration 支持团队](mailto:support@directprint.io) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-directprintio-cloud-print-administration-test-user"></a>创建 directprint.io Cloud Print Administration 测试用户
 
-在本部分中，在 directprint.io Cloud Print Administration 中创建一个名为 Britta Simon 的用户。 与 [directprint.io Cloud Print Administration 支持团队](mailto:support@directprint.io)合作，将用户添加到 directprint.io Cloud Print Administration 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 directprint.io Cloud Print Administration 中创建名为 B.Simon 的用户。 directprint.io Cloud Print Administration 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 directprint.io Cloud Print Administration 中不存在用户，则会在身份验证后创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

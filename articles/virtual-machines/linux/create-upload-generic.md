@@ -7,14 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: 5a62bae8881f20eb7778f179cbecce77f102f6e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0ab2da9f6e301f1a39ee1dde65e9e0cb6a5d05b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554626"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689833"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 仅当使用某个[认可的分发版](endorsed-distros.md)时，Azure 平台 SLA 才适用于运行 Linux OS 的虚拟机。 对于这些认可的分发版，Azure 市场中提供了预配置的 Linux 映像。
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 243f176fd906ecfe33c38bebc7e7745a7dc15e1e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f96eeaaddbf49a0649cbec8737052b8d555b2681
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470584"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681243"
 ---
 # <a name="quickstart-provision-an-azure-spring-cloud-service"></a>快速入门：预配 Azure Spring Cloud 服务
 
@@ -41,7 +41,7 @@ az --version
 az extension add --name spring-cloud
 ```
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 1. 登录 Azure CLI。
 
@@ -84,10 +84,12 @@ az extension add --name spring-cloud
    ```azurecli
    az config set defaults.spring-cloud=<service instance name>
    ```
+
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 可以使用 Azure 门户或 Azure CLI 实例化 Azure Spring Cloud。  以下过程介绍了这两种方法。
+
 ## <a name="prerequisites"></a>先决条件
 
 * [安装 JDK 8](/java/azure/jdk/)
@@ -101,7 +103,7 @@ az extension add --name spring-cloud
 
 以下步骤使用 Azure 门户创建 Azure Spring Cloud 的实例。
 
-1. 在新选项卡中，打开 [Azure 门户](https://ms.portal.azure.com/)。 
+1. 在新选项卡中，打开 [Azure 门户](https://ms.portal.azure.com/)。
 
 2. 在顶部搜索框中，搜索“Azure Spring Cloud”。
 
@@ -109,11 +111,12 @@ az extension add --name spring-cloud
 
     ![ASC 图标 - 启动](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. 在“Azure Spring Cloud”页上，单击“+ 添加”。
+4. 在 Azure Spring Cloud 页面上，选择“创建”。
 
-    ![ASC 图标 - 添加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+    ![ASC 图标 - 添加](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-create.png)
 
 5. 在 Azure Spring Cloud“创建”页中填写表单。  遵循以下指南：
+
     - 订阅：选择要在其中收取此资源费用的订阅。
     - 资源组：最佳做法是为新资源创建新的资源组。 请注意，后面的步骤会将其用作 \<resource group name\>。
     - **服务详细信息/名称**：指定 \<service instance name\>。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
@@ -123,7 +126,7 @@ az extension add --name spring-cloud
 
     ![ASC 门户启动](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. 单击“审阅并创建”。
+6. 选择“查看并创建”。 
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)
@@ -148,9 +151,9 @@ az extension add --name spring-cloud
 
 1. 准备 Azure Spring Cloud 服务的名称。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
 
-1. 创建用于包含 Azure Spring Cloud 服务的资源组。  在 Azure Spring Cloud 服务的实例中进行创建。  
+1. 创建用于包含 Azure Spring Cloud 服务的资源组。  在 Azure Spring Cloud 服务的实例中进行创建。
 
-    ```azurecli 
+    ```azurecli
     az group create --name <resource group name>
     az spring-cloud create -n <service instance name> -g <resource group name> --enable-java-agent
     ```
@@ -162,6 +165,7 @@ az extension add --name spring-cloud
     ```azurecli
     az config set defaults.group=<resource group name> defaults.spring-cloud=<service name>
     ```
+
 ---
 ::: zone-end
 

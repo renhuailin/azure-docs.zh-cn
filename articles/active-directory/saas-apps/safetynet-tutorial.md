@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: aeedb10071ab53a7b3f5f2a688590bf245074892
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d813ef00371c78d4ab6c81ee31c5569da8bb6357
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92676750"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746060"
 ---
 # <a name="tutorial-integrate-safetynet-with-azure-active-directory"></a>教程：将 SafetyNet 与 Azure Active Directory 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92676750"
 * 在 Azure AD 中控制谁有权访问 SafetyNet。
 * 让用户使用其 Azure AD 帐户自动登录到 SafetyNet。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,51 +37,51 @@ ms.locfileid: "92676750"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* SafetyNet 支持 **SP 和 IDP** 发起的 SSO
+* SafetyNet 支持 SP 和 IDP 发起的 SSO。
 
-## <a name="adding-safetynet-from-the-gallery"></a>从库中添加 SafetyNet
+## <a name="add-safetynet-from-the-gallery"></a>从库中添加 SafetyNet
 
 若要配置 SafetyNet 与 Azure AD 的集成，需要从库中将 SafetyNet 添加到托管的 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **SafetyNet**。
 1. 在结果面板中选择“SafetyNet”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-safetynet"></a>配置并测试 SafetyNet 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 SafetyNet 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 SafetyNet 中的相关用户之间建立链接关系。
 
-若要配置并测试 SafetyNet 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 SafetyNet 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-2. **[配置 SafetyNet SSO](#configure-safetynet-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-5. **[创建 SafetyNet 测试用户](#create-safetynet-test-user)** - 在 SafetyNet 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 SafetyNet SSO](#configure-safetynet-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 SafetyNet 测试用户](#create-safetynet-test-user)** - 在 SafetyNet 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“SafetyNet”应用程序集成页上，找到“管理”部分并选择“单一登录”。
+1. 在 Azure 门户中的“SafetyNet”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.predictivesolutions.com/sp`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.predictivesolutions.com/sp`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.predictivesolutions.com/CRMApp/saml/SSO`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.predictivesolutions.com/CRMApp/saml/SSO`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.predictivesolutions.com`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.predictivesolutions.com`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SafetyNet 客户端支持团队](mailto:dev@predictivesolutions.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -91,10 +89,6 @@ ms.locfileid: "92676750"
 1. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
-
-### <a name="configure-safetynet-sso"></a>配置 SafetyNet SSO
-
-若要在 **SafetyNet** 端配置单一登录，需要将生成的 **应用联合元数据 URL** 发送给 [SafetyNet 支持团队](mailto:dev@predictivesolutions.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -115,31 +109,35 @@ ms.locfileid: "92676750"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“SafetyNet”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-safetynet-sso"></a>配置 SafetyNet SSO
+
+若要在 **SafetyNet** 端配置单一登录，需要将生成的 **应用联合元数据 URL** 发送给 [SafetyNet 支持团队](mailto:dev@predictivesolutions.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-safetynet-test-user"></a>创建 SafetyNet 测试用户
 
 本部分将在 SafetyNet 中创建名为“Britta Simon”的用户。 请与 [SafetyNet 支持团队](mailto:dev@predictivesolutions.com)协作，将用户添加到 SafetyNet 平台中。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中单击“SafetyNet”磁贴时，应会自动登录到设置了 SSO 的 SafetyNet。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+#### <a name="sp-initiated"></a>SP 启动的：
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 SafetyNet 登录 URL，可从中启动登录流。  
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 直接转到 SafetyNet 登录 URL，并在其中启动登录流。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 启动的：
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 SafetyNet。 
+
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 SafetyNet 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 SafetyNet。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+配置 SafetyNet 后，即可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

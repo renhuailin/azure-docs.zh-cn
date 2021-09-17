@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 4dc5cf7b6a583f63e75c366c5fb2bc7857bd45dc
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ef637225d516ccaf2eaf06ace1803874299d3312
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111896047"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178489"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Figma 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "111896047"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Figma 支持 SP 和 IDP 发起的 SSO。
+* Figma 支持[自动用户预配和取消预配](figma-provisioning-tutorial.md)（推荐）。
 * Figma 支持实时用户预配。
 
 ## <a name="add-figma-from-the-gallery"></a>从库中添加 Figma
@@ -76,13 +77,13 @@ ms.locfileid: "111896047"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>/consume`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>/start`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<TENANT ID>/start`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 将从 Figma 的 [Configure Azure Active Directory SAML SSO process](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory)（配置 Azure Active Directory SAML SSO 进程）文章中步骤 11 获取 `TENANT ID`。

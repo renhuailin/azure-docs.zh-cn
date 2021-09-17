@@ -8,14 +8,14 @@ ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/09/2020
+ms.date: 08/24/2021
 ms.topic: how-to
-ms.openlocfilehash: b934a5b5d7781465d01b0e16927bf213f9fa23df
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 397f22711eadc38c82625a8b6a899f6485d798cf
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897029"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778231"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>在 Azure 机器学习训练运行中使用身份验证凭据机密
 
@@ -49,6 +49,11 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 不要将机密值放在 Python 代码中，因为将其以明文形式存储在文件中不安全。 应从环境变量中获取机密值（例如 Azure DevOps 生成机密）或从交互式用户输入中获取机密值。
 
 你可以使用 [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#list-secrets--) 方法列出机密名称，此方法还有一个批处理版本 [set_secrets()](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secrets-secrets-batch-)，允许你一次设置多个机密。
+
+> [!IMPORTANT]
+> 使用 `list_secrets()` 只会列出使用 Azure ML SDK 通过 `set_secret()` 或 `set_secrets()` 创建的机密。 不会列出由 SDK 外的其他方式创建的机密。 例如，不会列出使用 Azure 门户或 Azure PowerShell 创建的机密。
+> 
+> 无论机密是通过什么方式创建的，都可以使用 [`get_secret()`](#get-secrets) 从密钥保管库中获取机密值。 因此，可以检索 `list_secrets()` 未列出的机密。
 
 ## <a name="get-secrets"></a>获取机密
 

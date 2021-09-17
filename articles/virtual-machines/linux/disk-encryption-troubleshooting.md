@@ -9,14 +9,16 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 7ad94ba469ca44aa8b5348480ccf9de545b16055
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f99bec51f57376cf0c26d80a914a3f8854c06d3b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673067"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695617"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>适用于 Linux VM 的 Azure 磁盘加密故障排除指南
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本指南面向使用 Azure 磁盘加密的组织中的 IT 专业人员、信息安全分析人员和云管理员。 本文旨在帮助排查与磁盘加密相关的问题。
 

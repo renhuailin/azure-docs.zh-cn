@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/29/2021
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 92b58249441340397cbb7f8e030317b137dfb566
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 45214579e599ab83dfa97470276c85c225c5473b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754499"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730660"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 Azure SQL 数据库应用
 
@@ -43,7 +43,7 @@ ms.locfileid: "108754499"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 - <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 - <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
@@ -56,32 +56,41 @@ ms.locfileid: "108754499"
 
 ### <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-在终端窗口中，通过 `cd` 转到工作目录。
+1. 在终端窗口中，通过 `cd` 转到工作目录。
 
-运行以下命令来克隆示例存储库，并转到其根目录。
+1. 运行以下命令来克隆示例存储库，并转到其根目录。
 
-```bash
-git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
-cd dotnetcore-sqldb-tutorial
-```
+    ```bash
+    git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
+    cd dotnetcore-sqldb-tutorial
+    ```
 
-此示例项目包含使用 [Entity Framework Core](/ef/core/) 的基本 CRUD（创建-读取-更新-删除）应用。
+    此示例项目包含使用 [Entity Framework Core](/ef/core/) 的基本 CRUD（创建-读取-更新-删除）应用。
+
+1. 确保默认分支为 `main`。
+
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > 应用服务不需要更改分支名称。 但是，由于许多存储库将其默认分支更改为 `main`（请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)），因此本教程还介绍如何从 `main` 部署存储库。
 
 ### <a name="run-the-application"></a>运行应用程序
 
-运行以下命令，安装所需的包，运行数据库迁移并启动应用程序。
+1. 运行以下命令，安装所需的包，运行数据库迁移并启动应用程序。
 
-```bash
-dotnet tool install -g dotnet-ef
-dotnet ef database update
-dotnet run
-```
+    ```bash
+    dotnet tool install -g dotnet-ef
+    dotnet ef database update
+    dotnet run
+    ```
 
-在浏览器中导航到 `http://localhost:5000`。 选择“新建”链接，创建多个待办事项。
+1. 在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建多个待办事项。
 
-![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
+    ![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
-在终端按 `Ctrl+C`，随时停止 .NET Core。
+1. 在终端按 `Ctrl+C`，随时停止 .NET Core。
 
 ## <a name="create-production-sql-database"></a>创建生产环境 SQL 数据库
 
@@ -126,21 +135,21 @@ az sql server create --name <server-name> --resource-group myResourceGroup --loc
 
 ### <a name="configure-a-server-firewall-rule"></a>配置服务器防火墙规则
 
-使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../azure-sql/database/firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
+1. 使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../azure-sql/database/firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
 
-```azurecli-interactive
-az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-```
+    ```azurecli-interactive
+    az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+    ```
+    
+    > [!TIP] 
+    > 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](overview-inbound-outbound-ips.md#find-outbound-ips)。
+    >
 
-> [!TIP] 
-> 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](overview-inbound-outbound-ips.md#find-outbound-ips)。
->
+1. 在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
 
-在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
-
-```azurecli-interactive
-az sql server firewall-rule create --name AllowLocalClient --server <server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
-```
+    ```azurecli-interactive
+    az sql server firewall-rule create --name AllowLocalClient --server <server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
+    ```
 
 ### <a name="create-a-database"></a>创建数据库
 
@@ -208,20 +217,20 @@ dotnet ef database update
 
 ### <a name="run-app-with-new-configuration"></a>使用新配置运行应用
 
-现在，数据库迁移将在生产数据库中运行，请通过运行以下命令来测试应用：
+1. 现在，数据库迁移将在生产数据库中运行，请通过运行以下命令来测试应用：
 
-```
-dotnet run
-```
+    ```
+    dotnet run
+    ```
 
-在浏览器中导航到 `http://localhost:5000`。 选择“新建”链接，创建多个待办事项。 应用现在正在读取数据并将数据写入生产数据库。
+1. 在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建多个待办事项。 应用现在正在读取数据并将数据写入生产数据库。
 
-提交本地更改，然后将其提交到 Git 存储库。 
+1. 提交本地更改，然后将其提交到 Git 存储库。 
 
-```bash
-git add .
-git commit -m "connect to SQLDB in Azure"
-```
+    ```bash
+    git add .
+    git commit -m "connect to SQLDB in Azure"
+    ```
 
 现在已准备好部署代码。
 
@@ -275,86 +284,84 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
 
-::: zone pivot="platform-windows"  
-
 [!INCLUDE [push-to-azure-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-<pre>
-Enumerating objects: 268, done.
-Counting objects: 100% (268/268), done.
-Compressing objects: 100% (171/171), done.
-Writing objects: 100% (268/268), 1.18 MiB | 1.55 MiB/s, done.
-Total 268 (delta 95), reused 251 (delta 87), pack-reused 0
-remote: Resolving deltas: 100% (95/95), done.
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id '64821c3558'.
-remote: Generating deployment script.
-remote: Project file path: .\DotNetCoreSqlDb.csproj
-remote: Generating deployment script for ASP.NET MSBuild16 App
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
-remote: .
-remote: .
-remote: .
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Triggering recycle (preview mode disabled).
-remote: App container will begin restart within 10 seconds.
-To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      main -> main
-</pre>
+::: zone pivot="platform-windows"  
+
+   <pre>
+   Enumerating objects: 268, done.
+   Counting objects: 100% (268/268), done.
+   Compressing objects: 100% (171/171), done.
+   Writing objects: 100% (268/268), 1.18 MiB | 1.55 MiB/s, done.
+   Total 268 (delta 95), reused 251 (delta 87), pack-reused 0
+   remote: Resolving deltas: 100% (95/95), done.
+   remote: Updating branch 'main'.
+   remote: Updating submodules.
+   remote: Preparing deployment for commit id '64821c3558'.
+   remote: Generating deployment script.
+   remote: Project file path: .\DotNetCoreSqlDb.csproj
+   remote: Generating deployment script for ASP.NET MSBuild16 App
+   remote: Generated deployment script files
+   remote: Running deployment command...
+   remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
+   remote: .
+   remote: .
+   remote: .
+   remote: Finished successfully.
+   remote: Running post deployment command(s)...
+   remote: Triggering recycle (preview mode disabled).
+   remote: App container will begin restart within 10 seconds.
+   To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
+    * [new branch]      main -> main
+   </pre>
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-[!INCLUDE [push-to-azure-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
-
-<pre>
-Enumerating objects: 273, done.
-Counting objects: 100% (273/273), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (175/175), done.
-Writing objects: 100% (273/273), 1.19 MiB | 1.85 MiB/s, done.
-Total 273 (delta 96), reused 259 (delta 88)
-remote: Resolving deltas: 100% (96/96), done.
-remote: Deploy Async
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'cccecf86c5'.
-remote: Repository path is /home/site/repository
-remote: Running oryx build...
-remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
-remote: You can report issues at https://github.com/Microsoft/Oryx/issues
-remote: .
-remote: .
-remote: .
-remote: Done.
-remote: Running post deployment command(s)...
-remote: Triggering recycle (preview mode disabled).
-remote: Deployment successful.
-remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/cccecf86c56493ffa594e76ea1deb3abb3702d89/log'
-To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      main -> main
-</pre>
+   <pre>
+   Enumerating objects: 273, done.
+   Counting objects: 100% (273/273), done.
+   Delta compression using up to 4 threads
+   Compressing objects: 100% (175/175), done.
+   Writing objects: 100% (273/273), 1.19 MiB | 1.85 MiB/s, done.
+   Total 273 (delta 96), reused 259 (delta 88)
+   remote: Resolving deltas: 100% (96/96), done.
+   remote: Deploy Async
+   remote: Updating branch 'main'.
+   remote: Updating submodules.
+   remote: Preparing deployment for commit id 'cccecf86c5'.
+   remote: Repository path is /home/site/repository
+   remote: Running oryx build...
+   remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+   remote: You can report issues at https://github.com/Microsoft/Oryx/issues
+   remote: .
+   remote: .
+   remote: .
+   remote: Done.
+   remote: Running post deployment command(s)...
+   remote: Triggering recycle (preview mode disabled).
+   remote: Deployment successful.
+   remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/cccecf86c56493ffa594e76ea1deb3abb3702d89/log'
+   To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
+    * [new branch]      main -> main
+   </pre>
 
 ::: zone-end
 
 ### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
-使用 Web 浏览器转到已部署的应用。
+1. 使用 Web 浏览器转到已部署的应用。
 
-```bash
-http://<app-name>.azurewebsites.net
-```
+    ```bash
+    http://<app-name>.azurewebsites.net
+    ```
 
-添加多个待办事项。
+1. 添加多个待办事项。
 
-![在应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
+    ![在应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-**祝贺你！** 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
+祝贺你！ 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -385,73 +392,75 @@ dotnet ef database update
 
 为了使用 `Done` 属性，请对代码做一些更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作过程中查看属性。
 
-打开 Controllers/TodosController.cs。
+1. 打开 Controllers/TodosController.cs。
 
-找到 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下面的代码所示：
+1. 找到 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下面的代码所示：
 
-```csharp
-public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
-```
+    ```csharp
+    public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
+    ```
 
-打开 Views/Todos/Create.cshtml。
+1. 打开 Views/Todos/Create.cshtml。
 
-在 Razor 代码中，应能看到用于 `Description` 的 `<div class="form-group">` 元素，以及另一个用于 `CreatedDate` 的 `<div class="form-group">` 元素。 紧跟在这两个元素之后，添加另一个用于 `Done` 的 `<div class="form-group">` 元素：
+1. 在 Razor 代码中，应能看到用于 `Description` 的 `<div class="form-group">` 元素，以及另一个用于 `CreatedDate` 的 `<div class="form-group">` 元素。 紧跟在这两个元素之后，添加另一个用于 `Done` 的 `<div class="form-group">` 元素：
 
-```csharp
-<div class="form-group">
-    <label asp-for="Done" class="col-md-2 control-label"></label>
-    <div class="col-md-10">
-        <input asp-for="Done" class="form-control" />
-        <span asp-validation-for="Done" class="text-danger"></span>
+    ```csharp
+    <div class="form-group">
+        <label asp-for="Done" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Done" class="form-control" />
+            <span asp-validation-for="Done" class="text-danger"></span>
+        </div>
     </div>
-</div>
-```
+    ```
 
-打开 Views/Todos/Index.cshtml。
+1. 打开 Views/Todos/Index.cshtml。
 
-搜索空的 `<th></th>` 元素。 在此元素的正上方，添加下列 Razor 代码：
+1. 搜索空的 `<th></th>` 元素。 在此元素的正上方，添加下列 Razor 代码：
 
-```csharp
-<th>
-    @Html.DisplayNameFor(model => model.Done)
-</th>
-```
+    ```csharp
+    <th>
+        @Html.DisplayNameFor(model => model.Done)
+    </th>
+    ```
 
-查找包含 `asp-action` 标记帮助程序的 `<td>` 元素。 在此元素的正上方，添加下列 Razor 代码：
+1. 查找包含 `asp-action` 标记帮助程序的 `<td>` 元素。 在此元素的正上方，添加下列 Razor 代码：
 
-```csharp
-<td>
-    @Html.DisplayFor(modelItem => item.Done)
-</td>
-```
+    ```csharp
+    <td>
+        @Html.DisplayFor(modelItem => item.Done)
+    </td>
+    ```
 
 这就是要在 `Index` 和 `Create` 视图中查看更改所需的全部操作。
 
 ### <a name="test-your-changes-locally"></a>在本地测试更改
 
-在本地运行应用。
+1. 在本地运行应用。
 
-```bash
-dotnet run
-```
+    ```bash
+    dotnet run
+    ```
 
-> [!NOTE]
-> 如果打开新的终端窗口，则需要像在[运行到生产数据库的数据库迁移](#run-database-migrations-to-the-production-database)中一样，在终端中将连接字符串设置为生产数据库。
->
+    > [!NOTE]
+    > 如果打开新的终端窗口，则需要像在[运行到生产数据库的数据库迁移](#run-database-migrations-to-the-production-database)中一样，在终端中将连接字符串设置为生产数据库。
+    >
 
-在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查''Done''。 然后，它应作为已完成项在主页中显示。 请记住，`Edit`视图不显示`Done`字段，因为没有更改`Edit`视图。
+1. 在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查''Done''。 然后，它应作为已完成项在主页中显示。 请记住，`Edit`视图不显示`Done`字段，因为没有更改`Edit`视图。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
-```bash
-git add .
-git commit -m "added done field"
-git push azure main
-```
+1. 将更改提交到 Git 并将其推送到应用服务应用。
 
-`git push` 完成后，请导航至应用服务应用，尝试添加一个待办事项并选中“Done”。
+    ```bash
+    git add .
+    git commit -m "added done field"
+    git push azure main
+    ```
 
-![Code First 迁移后的 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
+1. `git push` 完成后，请导航至应用服务应用，尝试添加一个待办事项并选中“Done”。
+
+    ![Code First 迁移后的 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
 所有现有待办事项仍将显示。 重新发布 ASP.NET Core 应用时，SQL 数据库中的现有数据不会丢失。 此外，实体框架核心迁移仅更改数据架构，而使现有数据保持不变。
 
@@ -464,40 +473,40 @@ git push azure main
 - 在 *DotNetCoreSqlDb.csproj* 中包含了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
 - 在 *Program.cs* 中调用 `loggerFactory.AddAzureWebAppDiagnostics()`。
 
-若要将应用服务中的 ASP.NET Core [日志级别](/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) 命令。
+1. 若要将应用服务中的 ASP.NET Core [日志级别](/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) 命令。
 
-```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
-```
+    ```azurecli-interactive
+    az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
+    ```
 
-> [!NOTE]
-> 项目的日志级别在 *appsettings.json* 中已设置为 `Information`。
+    > [!NOTE]
+    > 项目的日志级别在 *appsettings.json* 中已设置为 `Information`。
 
-若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) 命令。
+1. 若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) 命令。
 
-```azurecli-interactive
-az webapp log tail --name <app-name> --resource-group myResourceGroup
-```
+    ```azurecli-interactive
+    az webapp log tail --name <app-name> --resource-group myResourceGroup
+    ```
 
-启动日志流式处理后，请在浏览器中刷新 Azure 应用，以获取一些 Web 流量。 现在可以看到通过管道传送到终端的控制台日志。 如果没有立即看到控制台日志，请在 30 秒后重新查看。
+1. 启动日志流式处理后，请在浏览器中刷新 Azure 应用，以获取一些 Web 流量。 现在可以看到通过管道传送到终端的控制台日志。 如果没有立即看到控制台日志，请在 30 秒后重新查看。
 
-若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
+1. 若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
 
 有关自定义 ASP.NET Core 日志的详细信息，请参阅 [ASP.NET Core 中的日志记录](/aspnet/core/fundamentals/logging)。
 
 ## <a name="manage-your-azure-app"></a>管理 Azure 应用
 
-若要查看所创建的应用，请在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”"。
+1. 若要查看所创建的应用，请在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”"。
 
-![在 Azure 门户中选择应用服务](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
+    ![在 Azure 门户中选择应用服务](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
 
-在“应用服务”页上，选择 Azure 应用的名称。
+1. 在“应用服务”页上，选择 Azure 应用的名称。
 
-![在门户中导航到 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
+    ![在门户中导航到 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+    默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
-![Azure 门户中的“应用服务”页](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
+    ![Azure 门户中的“应用服务”页](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

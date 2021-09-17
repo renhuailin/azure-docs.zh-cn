@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56a306e56991500a6b1d5acab1ab38a3b4fa457f
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.custom: b2c-support
+ms.openlocfilehash: e8f5405e55c3443b020265e68d68737f6d266a17
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613292"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179301"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教程：创建 Azure Active Directory B2C 租户
 
@@ -49,6 +50,12 @@ ms.locfileid: "110613292"
     在 Azure 门户工具栏中，选择“目录 + 订阅”图标，然后选择包含订阅的目录。 此目录不同于将包含 Azure AD B2C 租户的其他目录。
 
     ![订阅租户，“目录”+“订阅”筛选器，订阅租户为选中状态](media/tutorial-create-tenant/portal-01-pick-directory.png)
+
+1. 将 Microsoft.AzureActiveDirectory 添加为所使用 Azure 订阅的资源提供程序（[了解详细信息](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1)）：
+
+    1. 在 Azure 门户菜单或主页上，选择“订阅” 。
+    2. 选择你的订阅，然后选择“资源提供程序”。
+    3. 确保 Microsoft.AzureActiveDirectory 行显示“已注册”状态 。 如果不是，请选择该行，然后选择“注册”。
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
 

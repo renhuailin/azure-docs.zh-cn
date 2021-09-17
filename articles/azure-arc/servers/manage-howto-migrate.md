@@ -3,12 +3,12 @@ title: 如何跨区域迁移已启用 Azure Arc 的服务器
 description: 了解如何将已启用 Azure Arc 的服务器从一个区域迁移到另一个区域。
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9635bcf4f2f557c1f4b32a15c9cd936e5b5f02fe
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d0e909b789e3e0dcee4d39e22067de26daace548
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114387107"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609646"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>如何跨区域迁移已启用 Azure Arc 的服务器
 
@@ -30,7 +30,7 @@ ms.locfileid: "114387107"
 
 3. 将 Connected Machine Agent 重新注册到另一区域中的已启用 Arc 的服务器。 使用 [Connect](manage-agent.md#connect) 参数运行 `azcmagent` 工具即可完成此步骤。
 
-4. 重新部署最初部署到了已启用 Arc 的服务器中的计算机的 VM 扩展。 如果你使用 Azure 策略部署了用于 VM 的 Azure Monitor（见解）代理或 Log Analytics 代理，将在下一个[评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署这些代理。
+4. 重新部署最初部署到了已启用 Arc 的服务器中的计算机的 VM 扩展。 如果使用 Azure Policy 定义部署了用于 VM 的 Azure Monitor（见解）代理或 Log Analytics 代理，将在下一个[评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署这些代理。
 
 ## <a name="next-steps"></a>后续步骤
 

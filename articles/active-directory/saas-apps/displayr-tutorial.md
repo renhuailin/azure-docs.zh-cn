@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 7d561f9c99641beba8a5092df447f3d18da050e9
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 5f5ffb3303d60ebe080514099822ea4743e9a31f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190125"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271799"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>教程：将 Displayr 与 Azure Active Directory 集成
 
@@ -26,9 +26,7 @@ ms.locfileid: "110190125"
 * 让用户使用其 Azure AD 帐户自动登录到 Displayr。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,50 +35,52 @@ ms.locfileid: "110190125"
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程介绍如何在 Displayr 公司配置 Azure AD SSO。 Displayr 支持 **SP** 发起的 SSO。
+本教程介绍如何在 Displayr 公司配置 Azure AD SSO。
 
-## <a name="adding-displayr-from-the-gallery"></a>从库中添加 Displayr
+* Displayr 支持 **SP** 发起的 SSO。
+
+## <a name="add-displayr-from-the-gallery"></a>从库中添加 Displayr
 
 要配置 Displayr 与 Azure AD 的集成，需要从库中将 Displayr 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Displayr”   。
 1. 从结果面板中选择“Displayr”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+## <a name="configure-azure-ad-sso-for-displayr"></a>配置 Displayr 的 Azure AD SSO
 
-若要配置 Displayr 的 Azure AD SSO，请完成以下基本操作：
+若要配置 Displayr 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
-2. **[配置 Displayr](#configure-displayr)** ，以在应用程序端配置 SSO 设置。
-4. **[仅允许特定用户访问](#restrict-access-to-specific-users)** ，从而规定哪些 Azure AD 用户可登录到 Displayr。
-6. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
+1. [配置 Displayr SSO](#configure-displayr-sso)，以在应用程序端配置 SSO 设置。
+1. **[仅允许特定用户访问](#restrict-access-to-specific-users)** ，从而规定哪些 Azure AD 用户可登录到 Displayr。
+1. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Displayr”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
+1. 在 Azure 门户的“Displayr”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，执行以下步骤：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOURDOMAIN>.displayr.com`。
+    a. 在“标识符(实体 ID)”文本框中，键入使用以下模式的值：`<YOURDOMAIN>.displayr.com`
+    
+    b. 在“回复 URL”文本框中键入 URL：`https://app.displayr.com/Login/ProcessSamlResponse`
+    
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOURDOMAIN>.displayr.com`。
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<YOURDOMAIN>.displayr.com` 
-    
-    c. 在“回复 URL”文本框中键入 `https://app.displayr.com/Login/ProcessSamlResponse`。
-    
     d. 单击“ **保存**”。
 
     >[!NOTE]
-    >这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Displayr 客户端支持团队](mailto:support@displayr.com)获取这些值。 还可参考 Azure 门户的“基本 SAML 配置”部分中显示的模式。
+    >这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [Displayr 客户端支持团队](mailto:support@displayr.com)获取这些值。 还可参考 Azure 门户的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -94,7 +94,7 @@ ms.locfileid: "110190125"
 
    a. 单击“添加组声明”。
 
-      ![显示已选择设置的“组声明(预览)”窗口的屏幕截图。](./media/displayr-tutorial/config05.png)
+      ![显示已选择设置的“组声明(预览)”窗口的屏幕截图。](./media/displayr-tutorial/claims.png)
 
    b. 从单选列表中选择“所有组”。 
 
@@ -106,7 +106,7 @@ ms.locfileid: "110190125"
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-displayr"></a>配置 Displayr
+## <a name="configure-displayr-sso"></a>配置 Displayr SSO
 
 1. 若要在 Displayr 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
@@ -120,15 +120,15 @@ ms.locfileid: "110190125"
 
 4. 单击“用户”图标，然后导航到“帐户设置” 。
 
-    ![显示“设置”图标和“帐户”处于选中状态的屏幕截图。](./media/displayr-tutorial/config01.png)
+    ![显示“设置”图标和“帐户”处于选中状态的屏幕截图。](./media/displayr-tutorial/account.png)
 
 5. 在顶部菜单中切换到“设置”，然后在该页中向下滚动，单击“配置单一登录(SAML)” 。
 
-    ![显示“设置”选项卡和“配置单一登录(SAML)”操作处于选中状态的屏幕截图。](./media/displayr-tutorial/config02.png)
+    ![显示“设置”选项卡和“配置单一登录(SAML)”操作处于选中状态的屏幕截图。](./media/displayr-tutorial/settings.png)
 
 6. 在“单一登录(SAML)”  页上，执行以下步骤：
 
-    ![配置](./media/displayr-tutorial/config03.png)
+    ![显示配置的屏幕截图。](./media/displayr-tutorial/configure.png)
 
     a. 选中“启用单一登录(SAML)”框。 
 
@@ -148,14 +148,16 @@ ms.locfileid: "110190125"
 
 默认情况下，你添加了 Displayr 应用程序的租户中的所有用户都可使用 SSO 登录到 Displayr。 如果要仅允许特定用户或组访问，请查看[仅允许 Azure AD 租户中的一组用户访问Azure AD 应用](../develop/howto-restrict-your-app-to-a-set-of-users.md)。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择 Displayr 磁贴时，应会自动登录到设置了 SSO 的 Displayr 公司。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Displayr 登录 URL，可从中启动登录流。 
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 直接转到 Displayr 登录 URL，并从那里启动登录流。
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Displayr”磁贴时，会重定向到 Displayr 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+## <a name="next-steps"></a>后续步骤
+
+配置 Displayr 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

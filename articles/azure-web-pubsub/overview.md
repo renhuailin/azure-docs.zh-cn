@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 01/27/2021
-ms.openlocfilehash: 920c55746ab78f9479c37027b479af7cf6604865
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: ed48335b0417cacce9a1e408de06c0c2a9ec9b44
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166855"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751125"
 ---
 # <a name="what-is-azure-web-pubsub-service"></a>什么是 Azure Web PubSub 服务？ 
 
@@ -23,7 +23,7 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
 
 任何需要在服务器和客户端或客户端之间进行实时发布-订阅消息传送的方案都可以使用 Azure Web PubSub 服务。 通常需要从服务器轮询或提交 HTTP 请求的传统实时功能也可以使用 Azure Web PubSub 服务。
 
-Azure Web PubSub 服务已在各种行业中使用，适用于需要实时内容更新的任何应用类型。 下面是适合使用 Azure Web PubSub 服务的一些示例：
+Azure Web PubSub 服务可用于需要实时内容更新的任何应用程序类型。 下面是适合使用 Azure Web PubSub 服务的一些示例：
 
 * **高频率数据更新：** 游戏、投票、轮询、竞拍。
 * **实时仪表板和监视：** 公司仪表板、金融市场数据、即时销量更新、多玩家游戏排行榜和 IoT 监视。
@@ -44,14 +44,14 @@ Azure Web PubSub 服务是针对大规模实时应用程序设计的。 该服�
 
 **对各种客户端 SDK 和编程语言的支持：**
 
-Azure Web PubSub 服务适用于广泛的客户端，例如 Web 和移动浏览器、桌面应用、移动应用、服务器进程、IoT 设备和游戏主机。 由于此服务支持使用发布-订阅模式的原始 WebSocket，因此可以轻松地在此服务中使用不同语言的任何标准 WebSocket 客户端 SDK。 
+Azure Web PubSub 服务适用于广泛的客户端，例如 Web 和移动浏览器、桌面应用、移动应用、服务器进程、IoT 设备和游戏主机。 由于此服务支持使用发布-订阅模式的标准 WebSocket 连接，因此可以轻松地在此服务中使用不同语言的任何标准 WebSocket 客户端 SDK。 
 
 **为不同的消息传送模式提供丰富的 API：**
 
 Azure Web PubSub 服务是一种双向消息传递服务，支持在服务器和客户端之间使用不同的消息传递模式，例如：
 
-* 服务器将消息发送到特定的连接、所有连接或属于特定用户或已放置在任意组中的连接子集。 
-* 客户端将消息发送到特定的连接、所有连接或属于任意组的连接子集。
+* 服务器将消息发送到特定客户端、所有客户端或属于特定用户或已放置在任意组中的客户端子集。 
+* 客户端将消息发送到属于任意组的客户端。
 * 客户端将消息发送到服务器。
 
 
@@ -60,4 +60,6 @@ Azure Web PubSub 服务是一种双向消息传递服务，支持在服务器和
 可通过多种不同的方式对 Azure Web PubSub 服务编程，下面列出了一些示例：
 
 - **生成无服务器实时应用程序**：使用 Azure Functions 与 Azure Web PubSub 服务的集成，以 JavaScript、C#、Java 和 Python 等语言生成无服务器实时应用程序。 
+- **使用 WebSocket 子协议执行仅限客户端的发布/订阅** - Azure Web PubSub 服务提供 WebSocket 子协议，使获得授权的客户端能够方便地发布到其他客户端。
+- **使用提供的 SDK 管理自托管应用服务器中的 WebSocket 连接** - Azure Web PubSub 服务提供 C#、JavaScript、Java 和 Python 形式的 SDK 来轻松管理 WebSocket 连接，包括向连接广播消息、向某些组添加连接或关闭连接等。
 - **通过 REST API 将消息从服务器发送到客户端**：Azure Web PubSub 服务提供的 REST API 使应用程序能够以任何支持 REST 的编程语言向连接的客户端发送消息。

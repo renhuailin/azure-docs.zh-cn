@@ -1,7 +1,6 @@
 ---
 title: 教程 - 在 Azure 中使用 cloud-init 自定义 Linux VM
 description: 本教程介绍在 Azure 中首次启动 Linux VM 时如何使用 cloud-init 和 Key Vault 对其进行自定义
-documentationcenter: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
@@ -9,14 +8,16 @@ ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 461a52bca90040279ceaf2bab0bb1361336f355e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 98723a6390958f38acec4909d6635adadc65ff13
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816307"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692051"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教程 - 如何在 Azure 中的 Linux 虚拟机首次启动时使用 cloud-init 对其进行自定义
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 在前面的教程中，你已学习如何通过 SSH 连接到虚拟机 (VM) 并手动安装 NGINX。 若要以快速一致的方式创建 VM，通常需要某种形式的自动化。 在首次启动 VM 时实现自定义的常见方法是使用 [cloud-init](https://cloudinit.readthedocs.io)。 本教程介绍如何执行下列操作：
 

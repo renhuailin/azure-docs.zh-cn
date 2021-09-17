@@ -10,14 +10,16 @@ ms.subservice: scale-in-policy
 ms.date: 02/26/2020
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: af2293e9a9c5d3dcbed5dc737ad7785be9221913
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: af1aa7ceb0784b58f9878befeae7c6ee26742061
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673832"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696633"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>对 Azure 虚拟机规模集使用自定义横向缩减策略
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 可根据一系列指标（包括平台指标和用户定义的自定义指标）横向扩展或缩减虚拟机规模集部署。 随着规模集工作负载的变化，横向扩展会根据规模集模型创建新的虚拟机，而横向缩减会影响正在运行的采用不同配置和/或功能的虚拟机。 
 

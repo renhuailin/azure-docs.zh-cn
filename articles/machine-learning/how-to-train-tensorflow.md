@@ -9,12 +9,12 @@ ms.author: minxia
 author: mx-iao
 ms.date: 09/28/2020
 ms.topic: how-to
-ms.openlocfilehash: c1c0ac3d95a005a55d3b334a1f68add072b75700
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8e53d67dacff8337d4a6832fc5febe3b83ec6126
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764758"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606824"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 TensorFlow 模型
 
@@ -265,82 +265,7 @@ Azure 机器学习还支持多节点分布式 TensorFlow 作业，以便可以�
 
 Azure ML 支持使用 Horovod 和 TensorFlow 的内置分布式训练 API 运行分布式 TensorFlow 作业。
 
-### <a name="horovod"></a>Horovod
-[Horovod](https://github.com/uber/horovod) 是 Uber 开发的用于分布式训练的开放源代码 all reduce 框架。 它提供了一个简单的路径来编写分布式 TensorFlow 代码进行训练。
-
-训练代码必须使用 Horovod 检测，以进行分布式训练。 有关将 Horovod 与 TensorFlow 结合使用的详细信息，请参阅 Horovod 文档：
-
-有关将 Horovod 与 TensorFlow 结合使用的详细信息，请参阅 Horovod 文档：
-
-* [Horovod 与 TensorFlow 结合使用](https://github.com/horovod/horovod/blob/master/docs/tensorflow.rst)
-* [Horovod 与 TensorFlow 的 Keras API 结合使用](https://github.com/horovod/horovod/blob/master/docs/keras.rst)
-
-此外，请确保训练环境包含 horovod 包。 如果你使用的是 TensorFlow 特选环境，则 horovod 已作为依赖项之一包含在内。 如果使用自己的环境，请确保包含 horovod 依赖项，例如：
-
-```yaml
-channels:
-- conda-forge
-dependencies:
-- python=3.6.2
-- pip:
-  - azureml-defaults
-  - tensorflow-gpu==2.2.0
-  - horovod==0.19.5
-```
-
-若要在 Azure ML 上使用 MPI/Horovod 执行分布式作业，必须指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数的 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)。 以下代码将配置每个节点运行一个进程的 2 节点分布式作业。 如果你还希望每个节点运行多个进程，（即，如果群集 SKU 有多个 GPU），请在 MpiConfiguration 中另外指定 `process_count_per_node` 参数（默认值为 `1`）。
-
-```python
-from azureml.core import ScriptRunConfig
-from azureml.core.runconfig import MpiConfiguration
-
-src = ScriptRunConfig(source_directory=project_folder,
-                      script='tf_horovod_word2vec.py',
-                      arguments=['--input_data', dataset.as_mount()],
-                      compute_target=compute_target,
-                      environment=tf_env,
-                      distributed_job_config=MpiConfiguration(node_count=2))
-```
-
-有关在 Azure ML 上使用 Horovod 运行分布式 TensorFlow 的完整教程，请参阅[使用 Horovod 的分布式 TensorFlow](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/distributed-tensorflow-with-horovod)。
-
-### <a name="tfdistribute"></a>tf.distribute
-
-如果你正在使用训练代码中的[本机分布式 TensorFlow](https://www.tensorflow.org/guide/distributed_training)（例如 TensorFlow 2.x 的 `tf.distribute.Strategy` API），则可以通过 Azure ML 启动分布式作业。 
-
-为此，请指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数的 [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)。 如果正在使用 `tf.distribute.experimental.MultiWorkerMirroredStrategy`，请在 TensorflowConfiguration 中指定与训练作业的节点数对应的 `worker_count`。
-
-```python
-import os
-from azureml.core import ScriptRunConfig
-from azureml.core.runconfig import TensorflowConfiguration
-
-distr_config = TensorflowConfiguration(worker_count=2, parameter_server_count=0)
-
-model_path = os.path.join("./outputs", "keras-model")
-
-src = ScriptRunConfig(source_directory=source_dir,
-                      script='train.py',
-                      arguments=["--epochs", 30, "--model-dir", model_path],
-                      compute_target=compute_target,
-                      environment=tf_env,
-                      distributed_job_config=distr_config)
-```
-
-在 TensorFlow 中，在多台计算机上训练需要 `TF_CONFIG` 环境变量。 在执行训练脚本之前，Azure ML 会相应地为每个辅助角色配置和设置 `TF_CONFIG` 变量。 如果需要，可以通过 `os.environ['TF_CONFIG']` 从训练脚本访问 `TF_CONFIG`。
-
-在主要辅助角色节点上设置的 `TF_CONFIG` 的示例结构：
-```JSON
-TF_CONFIG='{
-    "cluster": {
-        "worker": ["host0:2222", "host1:2222"]
-    },
-    "task": {"type": "worker", "index": 0},
-    "environment": "cloud"
-}'
-```
-
-如果训练脚本使用参数服务器策略进行分布式训练（例如对于旧版 TensorFlow 1.x），则还需要指定要在作业中使用的参数服务器数目，例如 `distr_config = TensorflowConfiguration(worker_count=2, parameter_server_count=1)`。
+有关分布式训练的更多信息，请参阅[分布式 GPU 训练指南](how-to-train-distributed-gpu.md)。
 
 ## <a name="deploy-a-tensorflow-model"></a>部署 TensorFlow 模型
 

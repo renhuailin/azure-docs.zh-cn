@@ -12,12 +12,12 @@ ms.date: 02/05/2021
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 365283ebc45c0f85a56d27d4cc90807de9a88fb4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6f8ee443f12ce4c28e5bb883be686a4610eeec38
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742879"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768902"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>将应用程序身份验证迁移到 Azure Active Directory
 
@@ -575,7 +575,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 允许用户通过浏览器扩展打开其应用。
 
-用户可在 [Chrome](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)、[FireFox](https://addons.mozilla.org/firefox/addon/access-panel-extension/) 或 [Microsoft Edge](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) 中[下载 MyApps 安全登录扩展](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)，并可以直接从浏览器栏启动应用以执行以下操作：
+用户可在 [Chrome](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) 或 [Microsoft Edge](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) 中[下载 MyApps 安全登录扩展](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)，并可直接从浏览器栏启动应用以执行以下操作：
 
 - 搜索其应用并显示最近使用的应用
 

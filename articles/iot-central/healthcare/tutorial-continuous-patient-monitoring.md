@@ -1,55 +1,65 @@
 ---
-title: 教程 - 使用 Azure IoT Central 创建持续患者监视应用 | Microsoft Docs
-description: 在本教程中，你将了解如何使用 Azure IoT Central 应用程序模板生成持续患者监视应用程序。
+title: 教程 - Azure IoT 持续患者监视 | Microsoft Docs
+description: 本教程介绍如何部署和使用 IoT Central 的持续患者监视应用程序模板。
 author: philmea
 ms.author: philmea
-ms.date: 09/24/2019
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 07cd77eb5546143936af1fc963f0212112fc6eb7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dc1cf6a9a250b64b84cacbcf300183b913144b45
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743356"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180106"
 ---
-# <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>教程：部署和演练持续患者监视应用模板
+# <a name="tutorial-deploy-and-walkthrough-the-continuous-patient-monitoring-app-template"></a>教程：部署和演练持续患者监视应用模板
 
-本教程介绍如何通过部署 IoT Central 持续患者监视应用程序模板开始入门。 了解如何部署和使用模板。
+:::image type="content" source="media/cpm-architecture.png" alt-text="持续患者监视体系结构":::
+
+## <a name="bluetooth-low-energy-ble-medical-devices"></a>蓝牙低功耗 (BLE) 医疗设备
+
+医疗保健 IoT 解决方案中使用的许多医疗可穿戴设备都是 BLE 设备。 这些设备无法直接与云通信，需要使用网关与云解决方案交换数据。 此体系结构使用手机应用程序作为网关。
+
+## <a name="mobile-phone-gateway"></a>手机网关
+
+该手机应用程序的主要功能是从医疗设备收集 BLE 数据，并将其传递给 IoT Central。 该应用还通过设备设置指导患者，让他们查看自己的个人健康数据。 其他解决方案可以使用病房中的平板电脑网关或静态网关。 开源示例移动应用程序可用于 Android 和 iOS，以用作应用程序开发的起点。 若要了解详细信息，请参阅 [IoT Central 持续患者监视移动应用](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)。
+
+## <a name="export-to-azure-api-for-fhirreg"></a>导出到 Azure API for FHIR&reg;
+
+Azure IoT Central 符合 HIPAA 并经过 HITRUST&reg; 认证。 还可以使用 [Azure API for FHIR](../../healthcare-apis/fhir/overview.md) 向其他服务发送患者健康状况数据。 Azure API for FHIR 是基于标准的临床健康状况数据 API。 通过[适用于 FHIR 的 Azure IoT 连接器](../../healthcare-apis/fhir/iot-fhir-portal-quickstart.md)，可以将 Azure API for FHIR 用作 IoT Central 的连续数据导出目标。
+
+## <a name="machine-learning"></a>机器学习
+
+将机器学习模型与 FHIR 数据一起使用，以生成见解并支持护理团队的决策制定。 若要了解详细信息，请参阅 [Azure 机器学习文档](../../machine-learning/index.yml)。
+
+## <a name="provider-dashboard"></a>提供程序仪表板
+
+使用 Azure API for FHIR 数据构建患者见解仪表板或将其直接集成到护理团队使用的电子病历中。 护理团队可以使用仪表板帮助患者并识别恶化的早期警告迹象。 若要了解详细信息，请参阅[构建 Power BI 提供程序仪表板](tutorial-health-data-triage.md)教程。
 
 在本教程中，你将了解如何执行以下操作：
 
-> [!div class="checklist"]
-> * 创建应用程序模板
-> * 演练应用程序模板
+- 创建应用程序模板
+- 演练应用程序模板
 
 ## <a name="prerequisites"></a>先决条件
 
-建议使用 Azure 订阅。 或者，可使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
+- 无需满足特定的先决条件，就可以部署此应用。
+- 你可以使用免费定价计划或使用 Azure 订阅。
 
-## <a name="create-an-application-template"></a>创建应用程序模板
+## <a name="create-continuous-patient-monitoring-application"></a>创建持续患者监视应用程序
 
-导航到 [Azure IoT Central 应用程序管理器网站](https://apps.azureiotcentral.com/)。 从左侧导航栏中选择“生成”，然后选择“医疗保健”选项卡 。
+1. 导航到 [Azure IoT Central 生成](https://aka.ms/iotcentral)站点。 然后使用 Microsoft 个人、工作或学校帐户登录。 从左侧导航栏中选择“生成”，然后选择“医疗保健”选项卡：:::image type="content" source="media/app-manager-health.png" alt-text="应用程序模板"::: 
 
-:::image type="content" source="media/app-manager-health.png" alt-text="医疗保健应用模板":::
+1. 选择“持续患者监视”下的“创建应用” 。
 
-选择“创建应用”按钮开始创建应用程序，然后使用 Microsoft 个人、工作或学校帐户登录。 这会转到“新建应用程序”  页。
+若要了解详细信息，请参阅[创建 IoT Central 应用程序](../core/howto-create-iot-central-application.md)。
 
-![创建应用程序医疗保健](media/app-manager-health-create.png)
+## <a name="walk-through-the-application"></a>演练应用程序
 
-![创建应用程序医疗保健计费信息](media/app-manager-health-create-billinginfo.png)
-
-创建应用程序：
-
-1. Azure IoT Central 会根据所选模板自动建议应用程序名称。 你可以接受此名称或输入自己的友好应用程序名称，例如“持续患者监视”  。 Azure IoT Central 还会根据应用程序名称为你生成唯一的 URL 前缀。 如果你愿意，可以自由地将此 URL 前缀更改为更令人难忘的内容。
-
-2. 你可以选择是使用“免费”  定价计划还是使用“标准”  定价计划之一创建应用程序。 使用免费计划创建的应用程序免费 7 天，然后过期，最多可在 5 台设备上免费使用。 你可以在应用程序到期前随时将其从免费计划移动到标准定价计划。 如果选择了免费计划，则需要输入联系信息并选择是否接收 Microsoft 发送的信息和使用技巧。 使用标准计划创建的应用程序支持最多两个免费设备，并且要求你输入 Azure 订阅信息以便计费。
-
-3. 选择页面底部的“创建”以部署应用程序  。
-
-## <a name="walk-through-the-application-template"></a>演练应用程序模板
+以下各部分将介绍应用程序的主要功能：
 
 ### <a name="dashboards"></a>仪表板
 
@@ -75,9 +85,9 @@ ms.locfileid: "108743356"
 
 如果选择“设备模板”，则会在模板中看到两个设备类型：
 
-* **Smart Vitals Patch**：此设备表示测量各种生命体征的补丁。 它用于监视医院内外的患者。 如果选择模板，你会看到此补丁同时发送设备数据（如电池电量和设备温度）和患者健康状况数据（如呼吸频率和血压）。
+- **Smart Vitals Patch**：此设备表示测量各种生命体征的补丁。 它用于监视医院内外的患者。 如果选择模板，你会看到此补丁同时发送设备数据（如电池电量和设备温度）和患者健康状况数据（如呼吸频率和血压）。
 
-* **Smart Knee Brace**：此设备表示患者在从膝关节置换手术中恢复过来时使用的膝盖支架。 如果选择此模板，则会看到设备数据、运动范围和加速等功能。
+- **Smart Knee Brace**：此设备表示患者在从膝关节置换手术中恢复过来时使用的膝盖支架。 如果选择此模板，则会看到设备数据、运动范围和加速等功能。
 
 :::image type="content" source="media/smart-vitals-device-template.png" alt-text="智能补丁模板":::
 
@@ -91,11 +101,11 @@ ms.locfileid: "108743356"
 
 如果选择“规则”，则会看到模板中的三个规则：
 
-* **温度过高**：当 Smart Knee Brace 的设备温度超过 95&deg;F 且持续时间超过 5 分钟窗口期时，将触发此规则。 使用此规则来提醒患者和护理团队，并远程冷却设备。
+- **温度过高**：当 Smart Knee Brace 的设备温度超过 95&deg;F 且持续时间超过 5 分钟窗口期时，将触发此规则。 使用此规则来提醒患者和护理团队，并远程冷却设备。
 
-* **检测到跌倒**：如果检测到患者跌倒，则触发此规则。 使用此规则来配置操作，以部署操作团队来帮助跌倒的患者。
+- **检测到跌倒**：如果检测到患者跌倒，则触发此规则。 使用此规则来配置操作，以部署操作团队来帮助跌倒的患者。
 
-* **Patch 电量不足**：当设备上的电池电量低于 10% 时将触发此规则。 使用此规则来触发通知，通知患者为其设备充电。
+- **Patch 电量不足**：当设备上的电池电量低于 10% 时将触发此规则。 使用此规则来触发通知，通知患者为其设备充电。
 
 :::image type="content" source="media/brace-temp-rule.png" alt-text="规则":::
 
@@ -119,9 +129,6 @@ ms.locfileid: "108743356"
 
 :::image type="content" source="media/knee-brace-dashboard.png" alt-text="膝盖支架仪表板":::
 
-### <a name="data-export"></a>数据导出
-
-通过数据导出，可以将设备数据连续导出到其他 Azure 服务，包括 [Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

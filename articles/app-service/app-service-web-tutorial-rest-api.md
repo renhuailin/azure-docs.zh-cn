@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18, devx-track-azurecli
-ms.openlocfilehash: 8317db1b7c4e71f05694ab902738dca87925a4d6
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: 43eaa0db5530483cae58ade96bb8ff65408790f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992182"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730712"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
@@ -41,35 +41,44 @@ ms.locfileid: "112992182"
 
 ### <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-在终端窗口中，通过 `cd` 转到工作目录。  
+1. 在终端窗口中，通过 `cd` 转到工作目录。  
 
-运行下列命令，克隆示例存储库。 
+1. 克隆示例存储库并更改为存储库根目录。 
 
-```bash
-git clone https://github.com/Azure-Samples/dotnet-core-api
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/dotnet-core-api
+    cd dotnet-core-api
+    ```
 
-此存储库包含基于以下教程创建的应用：[使用 Swagger 的 ASP.NET Core Web API 帮助页](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio)。 它使用 Swagger 生成器来提供 [Swagger UI](https://swagger.io/swagger-ui/) 和 Swagger JSON 终结点。
+    此存储库包含基于以下教程创建的应用：[使用 Swagger 的 ASP.NET Core Web API 帮助页](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio)。 它使用 Swagger 生成器来提供 [Swagger UI](https://swagger.io/swagger-ui/) 和 Swagger JSON 终结点。
+
+1. 确保默认分支为 `main`。
+
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > 应用服务不需要更改分支名称。 但是，由于许多存储库将其默认分支更改为 `main`（请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)），因此本教程还介绍如何从 `main` 部署存储库。
 
 ### <a name="run-the-application"></a>运行应用程序
 
-运行以下命令，安装所需的包，运行数据库迁移并启动应用程序。
+1. 运行以下命令，安装所需的包，运行数据库迁移并启动应用程序。
 
-```bash
-cd dotnet-core-api
-dotnet restore
-dotnet run
-```
+    ```bash
+    dotnet restore
+    dotnet run
+    ```
 
-在浏览器中导航到 `http://localhost:5000/swagger`，以便使用 Swagger UI。
+1. 在浏览器中导航到 `http://localhost:5000/swagger`，以便使用 Swagger UI。
 
-![在本地运行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
+    ![在本地运行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
 
-导航到 `http://localhost:5000/api/todo`，此时会看到 ToDo JSON 项的列表。
+1. 导航到 `http://localhost:5000/api/todo`，此时会看到 ToDo JSON 项的列表。
 
-导航到 `http://localhost:5000` 并使用浏览器应用。 稍后请将浏览器应用指向应用服务中的远程 API，以便测试 CORS 功能。 浏览器应用的代码位于存储库的 _wwwroot_ 目录中。
+1. 导航到 `http://localhost:5000` 并使用浏览器应用。 稍后请将浏览器应用指向应用服务中的远程 API，以便测试 CORS 功能。 浏览器应用的代码位于存储库的 _wwwroot_ 目录中。
 
-在终端按 `Ctrl+C` 可随时停止 ASP.NET Core。
+1. 在终端按 `Ctrl+C` 可随时停止 ASP.NET Core。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -97,42 +106,42 @@ dotnet run
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-<pre>
-Enumerating objects: 83, done.
-Counting objects: 100% (83/83), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (78/78), done.
-Writing objects: 100% (83/83), 22.15 KiB | 3.69 MiB/s, done.
-Total 83 (delta 26), reused 0 (delta 0)
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id '509236e13d'.
-remote: Generating deployment script.
-remote: Project file path: .\TodoApi.csproj
-remote: Generating deployment script for ASP.NET MSBuild16 App
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
-remote: .
-remote: .
-remote: .
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Triggering recycle (preview mode disabled).
-remote: Deployment successful.
-To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
- * [new branch]      master -> master
-</pre>
+   <pre>
+   Enumerating objects: 83, done.
+   Counting objects: 100% (83/83), done.
+   Delta compression using up to 8 threads
+   Compressing objects: 100% (78/78), done.
+   Writing objects: 100% (83/83), 22.15 KiB | 3.69 MiB/s, done.
+   Total 83 (delta 26), reused 0 (delta 0)
+   remote: Updating branch 'master'.
+   remote: Updating submodules.
+   remote: Preparing deployment for commit id '509236e13d'.
+   remote: Generating deployment script.
+   remote: Project file path: .\TodoApi.csproj
+   remote: Generating deployment script for ASP.NET MSBuild16 App
+   remote: Generated deployment script files
+   remote: Running deployment command...
+   remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
+   remote: .
+   remote: .
+   remote: .
+   remote: Finished successfully.
+   remote: Running post deployment command(s)...
+   remote: Triggering recycle (preview mode disabled).
+   remote: Deployment successful.
+   To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
+   * [new branch]      master -> master
+   </pre>
 
 ### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
-在浏览器中导航到 `http://<app_name>.azurewebsites.net/swagger`，开始使用 Swagger UI。
+1. 在浏览器中导航到 `http://<app_name>.azurewebsites.net/swagger`，开始使用 Swagger UI。
 
-![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
+    ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
-导航到 `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` 即可看到已部署 API 的 _swagger.json_。
+1. 导航到 `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` 即可看到已部署 API 的 _swagger.json_。
 
-导航到 `http://<app_name>.azurewebsites.net/api/todo` 即可看到已部署 API 正在运行。
+1. 导航到 `http://<app_name>.azurewebsites.net/api/todo` 即可看到已部署 API 正在运行。
 
 ## <a name="add-cors-functionality"></a>添加 CORS 功能
 
@@ -140,23 +149,23 @@ To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
 
 ### <a name="test-cors-in-sample-app"></a>在示例应用中测试 CORS
 
-在本地存储库中，打开 _wwwroot/index.html_。
+1. 在本地存储库中，打开 _wwwroot/index.html_。
 
-在第 51 中，将 `apiEndpoint` 变量设置为已部署 API 的 URL (`http://<app_name>.azurewebsites.net`)。 在应用服务中将 \<appname> 替换为你的应用名称。
+1. 在第 51 中，将 `apiEndpoint` 变量设置为已部署 API 的 URL (`http://<app_name>.azurewebsites.net`)。 在应用服务中将 \<appname> 替换为你的应用名称。
 
-在本地终端窗口中，再次运行示例应用。
+1. 在本地终端窗口中，再次运行示例应用。
 
-```bash
-dotnet run
-```
+    ```bash
+    dotnet run
+    ```
 
-导航到浏览器应用 (`http://localhost:5000`)。 在浏览器中打开开发人员工具窗口（在用于 Windows 的 Chrome 中使用 `Ctrl`+`Shift`+`i`），检查“控制台”选项卡。  此时会看到错误消息：`No 'Access-Control-Allow-Origin' header is present on the requested resource`。
+1. 导航到浏览器应用 (`http://localhost:5000`)。 在浏览器中打开开发人员工具窗口（在用于 Windows 的 Chrome 中使用 `Ctrl`+`Shift`+`i`），检查“控制台”选项卡。  此时会看到错误消息：`No 'Access-Control-Allow-Origin' header is present on the requested resource`。
 
-![浏览器客户端中的 CORS 错误](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
+    ![浏览器客户端中的 CORS 错误](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
-由于浏览器应用 (`http://localhost:5000`) 和远程资源 (`http://<app_name>.azurewebsites.net`) 的域不匹配，并且由于应用服务中的 API 未发送 `Access-Control-Allow-Origin` 标头，因此浏览器已阻止跨域内容在浏览器应用中加载。
+    由于浏览器应用 (`http://localhost:5000`) 和远程资源 (`http://<app_name>.azurewebsites.net`) 的域不匹配，并且由于应用服务中的 API 未发送 `Access-Control-Allow-Origin` 标头，因此浏览器已阻止跨域内容在浏览器应用中加载。
 
-在生产中，浏览器应用会有一个公共 URL 而不是 localhost URL，但对 localhost URL 启用 CORS 的方式与对公共 URL 相同。
+    在生产中，浏览器应用会有一个公共 URL 而不是 localhost URL，但对 localhost URL 启用 CORS 的方式与对公共 URL 相同。
 
 ### <a name="enable-cors"></a>启用 CORS 
 

@@ -1,22 +1,25 @@
 ---
-title: Azure 数据工厂中的 Azure 函数活动
-description: 了解如何使用 Azure 函数活动在数据工厂管道中运行 Azure 函数
+title: Azure 函数活动
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用 Azure Functions 活动在 Azure 数据工厂或 Azure Synapse Analytics 管道中运行 Azure Functions
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.openlocfilehash: 202cf30ae0f620789f300404b26ba04582ea3300
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 08/24/2021
+ms.openlocfilehash: 4e62ea4c57e00695b2a2f969b9fd4f80f8298681
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906721"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824081"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-通过 Azure 函数活动可以在数据工厂管道中运行 [Azure Functions](../azure-functions/functions-overview.md)。 若要运行 Azure 函数，需要创建链接服务连接以及指定计划执行的 Azure 函数的活动。
+通过 Azure 函数活动可以在 Azure 数据工厂或 Synapse 管道中运行 [Azure Functions](../azure-functions/functions-overview.md)。 若要运行 Azure 函数，需要创建链接服务连接以及指定计划执行的 Azure 函数的活动。
 
 有关此功能的 8 分钟简介和演示，请观看以下视频：
 
@@ -24,7 +27,11 @@ ms.locfileid: "107906721"
 
 ## <a name="azure-function-linked-service"></a>Azure 函数链接服务
 
+
 Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误 *响应内容不是有效的 JObject*。
+
+函数密钥提供了对函数名称的安全访问，其中每个函数在函数应用中都有单独的唯一密钥或主密钥。 托管标识提供对整个函数应用的安全访问。 用户需要提供密钥才能访问函数名称。 有关[函数访问密钥](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#configuration)的更多详细信息，请参阅函数文档
+
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
@@ -63,8 +70,8 @@ Azure Functions 会在 230 秒之后超时，无论在设置中配置的 `functi
 
 ## <a name="sample"></a>示例
 
-可以在[此处](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)找到使用 Azure 函数提取 tar 文件内容的数据工厂示例。
+可以在[此处](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)找到使用 Azure Functions 提取 tar 文件内容的示例。
 
 ## <a name="next-steps"></a>后续步骤
 
-在[Azure 数据工厂中的管道和活动](concepts-pipelines-activities.md)中了解有关数据工厂中的活动的详细信息。
+可在[管道与活动](concepts-pipelines-activities.md)中详细了解受支持的活动。

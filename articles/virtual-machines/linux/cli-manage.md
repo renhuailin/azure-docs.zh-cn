@@ -1,19 +1,21 @@
 ---
 title: 常用的 Azure CLI 命令
 description: 了解一些常用 Azure CLI 命令，以便开始在 Azure 资源管理器模式下管理 VM
-author: RicksterCDN
+author: cynthn
 ms.service: virtual-machines
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2017
-ms.author: rclaus
-ms.openlocfilehash: 2084d79ecbbc53ef9e3c75bae0664eae7de0eccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: cynthn
+ms.openlocfilehash: 64f028059504d7d4ff7905653146add0649ecd2f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559624"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696999"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>用于管理 Azure 资源的常用 Azure CLI 命令
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 可以通过 Azure CLI 在 macOS、Linux 和 Windows 上创建和管理 Azure 资源。 本文详述了一些最常用于创建和管理虚拟机 (VM) 的命令。
 

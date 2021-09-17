@@ -1,0 +1,235 @@
+### YamlMime:FAQ
+metadata:
+  title: 有关 Azure Cosmos DB 中的表 API 的常见问题解答
+  description: 获取有关 Azure Cosmos DB 中的表 API 的常见问题解答
+  author: SnehaGunda
+  ms.service: cosmos-db
+  ms.subservice: cosmosdb-table
+  ms.topic: conceptual
+  ms.date: 08/12/2020
+  ms.author: sngun
+  ms.openlocfilehash: 72b6dd7f64e7c55fd2547632cc132f8247b6ff72
+  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122322747"
+title: 有关 Azure Cosmos DB 中的表 API 的常见问题解答
+summary: >
+  [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
+
+
+  可以在 [Azure 门户](https://portal.azure.com)中使用 Azure Cosmos DB 表 API。首先必须注册一个 Azure 订阅。 注册成功后，可将 Azure Cosmos DB 表 API 帐户添加到 Azure 订阅，然后向帐户添加表。 可以在 [Azure Cosmos DB 表 API 简介](introduction.md)中找到支持的语言和相关的快速入门。
+sections:
+- name: Azure Cosmos DB 中的表 API 与 Azure 表存储
+  questions:
+  - question: >
+      表 API 与 Azure 表存储的行为有哪些不同之处？
+    answer: "想要使用 Azure Cosmos DB 表 API 创建表的 Azure 表存储用户应注意以下这些行为差异：\n\n* Azure Cosmos DB 表 API 使用保留容量模型来保障性能，但这意味着，一旦创建了表，就必须立即支付容量费用，即使容量未被使用。 使用 Azure 表存储时，只需为使用的容量付费。 这也说明了，表 API 在 99% 的时间里为何能够提供 10 毫秒的读取延迟和 15 毫秒的写入延迟 SLA，而 Azure 表存储提供 10 秒延迟 SLA。 因此，使用表 API 表（即使是不带任何请求的空表）时，要达到 Azure Cosmos DB 所提供的 SLA，必须支付费用来确保提供所需的容量来处理对这些表发出的所有请求。\n\n* 表 API 返回的查询结果未按分区键/行键顺序排序，因为它们在 Azure 表存储中。\n\n* 行键最多可以包含 255 个字节。\n\n* 批最多可以包含 2 MB。\n\n* 目前不支持 CORS。\n\n* Azure 表存储中的表名不区分大小写，但出现在 Azure Cosmos DB 表 API 中。\n\n* Azure Cosmos DB 的某些编码信息内部格式，例如二进制字段，目前不如想像的那么有效。 因此，这会导致数据大小受到意外限制。 例如，目前无法使用整整有 1 MB 的表实体来存储二进制数据，因为编码会增大数据大小。\n\n* 目前不支持实体属性名称“ID”、“etag”。\n\n* TableQuery TakeCount 不限为 1000 以内。\n\n* 对于 REST API，以下终结点/查询选项受 Azure 表存储的支持，但不受 Azure Cosmos DB 表 API 的支持：\n\n  | REST 方法 | REST 终结点/查询选项 | 文档 URL | 说明 | 受表存储支持 | 受表 API 支持 | \n  | ------------| ------------- | ---------- | ----------- |\n  | GET、PUT | `/?restype=service@comp=properties`| [设置表服务属性](/rest/api/storageservices/set-table-service-properties)和[获取表服务属性](/rest/api/storageservices/get-table-service-properties) | 此终结点用于设置 CORS 规则、存储分析配置和日志记录设置。 CORS 目前不受支持，Azure Cosmos DB 与 Azure 存储表中以不同的方式处理分析和日志记录 | 是 | 否 |\n  | OPTIONS | `/<table-resource-name>` | [预检 CORS 表请求](/rest/api/storageservices/preflight-table-request) | 这是 Azure Cosmos DB 目前不支持的 CORS 部分。 | 是 | 否 |\n  | GET | `/?restype=service@comp=stats` | [获取表服务统计信息](/rest/api/storageservices/get-table-service-stats) | 提供有关主节点与辅助节点之间的数据复制速度的信息。 由于复制是写入的一部分，因此在 Cosmos DB 中不需要此选项。 | 是 | 否 |\n  | GET、PUT | `/mytable?comp=acl` | [获取表 ACL](/rest/api/storageservices/get-table-acl) 和[设置表 ACL](/rest/api/storageservices/set-table-acl) | 获取和设置用于管理共享访问签名 (SAS) 的存储访问策略。 | 是 | 否 |\n\n* Azure Cosmos DB 表 API 仅支持 JSON 格式，而不支持 ATOM。\n\n* 对于特定的 .NET SDK，Azure Cosmos DB 目前不支持某些类和方法。\n\n  | 类 | 不支持的方法 |\n  |-------|-------- |\n  | CloudTableClient | \\*ServiceProperties\\* |\n  |                  | \\*ServiceStats\\* |\n  | CloudTable | SetPermissions* |\n  |            | GetPermissions* |\n  | TableServiceContext | *（此类已弃用） |\n  | TableServiceEntity | \" \" |\n  | TableServiceExtensions | \" \" |\n  | TableServiceQuery | \" \" |\n"
+- name: 其他常见问题解答
+  questions:
+  - question: >
+      是否需要新的 SDK 才能使用表 API？
+    answer: >
+      不是，现有的存储 SDK 仍然适用。 但是，我们建议始终使用最新的 SDK，以获得最佳支持，并在许多场合下获得优异的性能。 请参阅 [Azure Cosmos DB 表 API 简介](introduction.md)中的可用语言列表。
+  - question: >
+      连接到表 API 需要使用哪个连接字符串？
+    answer: >
+      连接字符串为：
+
+
+      ```
+
+      DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmosDB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountName>.table.cosmosdb.azure.com
+
+      ```
+
+
+      可以通过 Azure 门户中的“连接字符串”页获取连接字符串。
+  - question: >
+      如何在表 API 的 .NET SDK 中替代请求选项的配置设置？
+    answer: >
+      有些设置是通过 CreateCloudTableClient 方法处理的，还有一些设置是通过客户端应用程序中 appSettings 节的 app.config 处理的。 有关配置设置的信息，请参阅 [Azure Cosmos DB 功能](tutorial-develop-table-dotnet.md)。
+  - question: >
+      使用现有 Azure 表存储 SDK 的客户是否需要进行任何更改？
+    answer: >
+      无。 使用现有 Azure 表存储 SDK 的现有客户或新客户无需进行任何更改。
+  - question: >
+      如何查看 Azure Cosmos DB 中存储的用于表 API 的表数据？
+    answer: >
+      可以使用 Azure 门户浏览此数据。 也可以使用表 API 代码或下一个问题答案中提到的工具。
+  - question: >
+      哪些工具适用于表 API？
+    answer: >
+      可以使用 [Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)。
+
+
+      灵活地采用之前指定格式的连接字符串的工具可以支持新的表 API。 [Azure 存储客户端工具](../../storage/common/storage-explorers.md)页上提供了表工具的列表。
+  - question: >
+      是否能控制并发操作？
+    answer: >
+      是，乐观并发是通过使用 ETag 机制提供的。
+  - question: >
+      实体是否支持 OData 查询模型？
+    answer: >
+      是，表 API 支持 OData 查询和 LINQ 查询。
+  - question: >
+      是否可以在同一应用程序中同时连接到 Azure 表存储和 Azure Cosmos DB 表 API？
+    answer: >
+      是，可以创建 CloudTableClient 的两个不同实例并使其通过连接字符串指向其自身的 URI 来实现此目的。
+  - question: >
+      如何将现有 Azure 表存储应用程序迁移到此服务？
+    answer: >
+      支持使用 [AzCopy](../../storage/common/storage-use-azcopy-v10.md) 和 [Azure Cosmos DB 数据迁移工具](../import-data.md)。
+  - question: >
+      如何为此服务扩展存储大小，比如，最初我有“n”GB 的数据，但一段时间后我的数据会增长到 1 TB？
+    answer: >
+      Azure Cosmos DB 旨在通过横向缩放提供无限的存储。 该服务可以监视并有效地增加存储。
+  - question: >
+      如何监视表 API 服务？
+    answer: >
+      可以使用表 API 的“指标”窗格来监视请求和存储使用情况。
+  - question: >
+      如何计算所需的吞吐量？
+    answer: >
+      可以使用容量估算器计算操作所需的 TableThroughput。 有关详细信息，请参阅[估算请求单位和数据存储](https://www.documentdb.com/capacityplanner)。 通常，可以将实体显示为 JSON 并且为操作提供所需数量。
+  - question: >
+      是否可以在本地将表 API SDK 用于模拟器？
+    answer: >
+      目前没有。
+  - question: >
+      现有的应用程序是否适用于表 API？
+    answer: >
+      是的，支持相同的 API。
+  - question: >
+      如果我不想使用表 API 功能，是否需要将现有 Azure 表存储应用程序迁移到该 SDK？
+    answer: >
+      否，可以在没有任何干扰的情况下创建和使用现有 Azure 表存储资产。 但是，如果不使用表 API，则无法从自动索引、其他一致性选项或全局分发中受益。
+  - question: >
+      如何在跨多个 Azure 区域的表 API 中添加数据复制？
+    answer: >
+      可以使用 Azure Cosmos DB 门户的[全局复制设置](../tutorial-global-distribution-sql-api.md#portal)添加适合应用程序的区域。 若要开发全球分布的应用程序，还应该将应用程序的 PreferredLocation 信息设置为本地区域，以实现较低的读取延迟。
+  - question: >
+      如何在表 API 中更改帐户的主要写入区域？
+    answer: >
+      可以使用 Azure Cosmos DB 的全局复制门户窗格添加区域，然后故障转移到所需区域。 有关说明，请参阅[使用多区域 Azure Cosmos DB 帐户进行开发](../high-availability.md)。
+  - question: >
+      在分发数据时，如何配置首选读取区域以实现较低的延迟？
+    answer: "可使用 app.config 文件中的 PreferredLocation 键，帮助从本地位置进行读取。 对于现有应用程序，如果设置 LocationMode，表 API 会引发错误。 请删除该代码，因为表 API 会从 app.config 文件中选取此信息。 \n"
+  - question: >
+      如何理解表 API 中的一致性级别？
+    answer: >
+      Azure Cosmos DB 在一致性、可用性和延迟之间提供合理的平衡。 Azure Cosmos DB 为表 API 开发人员提供五个一致性级别，因此可以在表级别选择合适的一致性模型，并在查询数据时发出相应的请求。 客户端建立连接后，可以指定一致性级别。 可以通过 CreateCloudTableClient 的 consistencyLevel 参数更改级别。
+
+
+      如果将“有限过时”一致性设置为默认值，表 API 可通过“读取自己写入的数据”提供低延迟的读取。 有关详细信息，请参阅[一致性级别](../consistency-levels.md)。
+
+
+      默认情况下，Azure 表存储在区域内提供非常一致性，在辅助位置中提供最终一致性。
+  - question: >
+      Azure Cosmos DB 表 API 是否比 Azure 表存储提供更多的一致性级别？
+    answer: >
+      是，有关如何受益于 Azure Cosmos DB 的分布式特性的信息，请参阅[一致性级别](../consistency-levels.md)。 由于为一致性级别提供了保障，因此可以放心使用它们。
+  - question: >
+      启用全局分发后，完成数据的复制需要多久？
+    answer: >
+      Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将数据立即推送到其他区域。 此复制仅依赖于数据中心的往返时间 (RTT)。 若要详细了解 Azure Cosmos DB 的全球分布功能，请参阅 [Azure Cosmos DB：Azure 上的全球分布式数据库服务](../distribute-data-globally.md)。
+  - question: >
+      是否可以更改读取请求一致性级别？
+    answer: >
+      使用 Azure Cosmos DB 时，可以在容器级别（在表上）设置一致性级别。 使用 .NET SDK，可以通过在 app.config 文件中提供 TableConsistencyLevel 键值来更改级别。 可能的值包括：“强”、“有限过期”、“会话”、“一致前缀”和“最终”。 有关详细信息，请参阅 [Azure Cosmos DB 中的可优化数据一致性级别](../consistency-levels.md)。 关键是不能将请求的一致性级别设置为高于表的一致性级别。 例如，不能将表的一致性级别设置为“最终”，而将请求的一致性级别设置为“非常”。
+  - question: >
+      在某个区域出现故障时，表 API 如何处理故障转移？
+    answer: >
+      表 API 利用 Cosmos DB 的全球分布式平台。 若要确保应用程序能够容许数据中心停机，需在 Azure Cosmos DB 门户中至少再为帐户启用一个区域（[使用多区域 Azure Cosmos DB 帐户进行开发](../high-availability.md)）。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](../high-availability.md)）。
+
+
+      可以视需要为帐户添加任意数目的区域，并通过提供故障转移优先级来控制可将该帐户故障转移到哪个位置。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。 [最新的 .NET 客户端 SDK](dotnet-sdk.md) 可自动寻址，但其他 SDK 则不可以。 也就是说，它能够检测到有故障的区域，并自动故障转移到新区域。
+  - question: >
+      是否能够为表 API 启用备份？
+    answer: >
+      可以，表 API 利用 Azure Cosmos DB 的平台进行备份。 可自动创建备份。 有关详细信息，请参阅[使用 Azure Cosmos DB 联机备份和还原](../online-backup-and-restore.md)。
+  - question: >
+      表 API 是否默认对实体的所有属性编制索引？
+    answer: >
+      是，默认情况下会对实体的所有属性进行索引。 有关详细信息，请参阅 [Azure Cosmos DB：索引策略](../index-policy.md)。
+  - question: >
+      这是否意味着，无需创建多个索引来满足查询要求？
+    answer: >
+      是，Azure Cosmos DB 表 API 针对所有属性提供自动索引，无需任何架构定义。 此自动化功能使开发人员能够将重心放在应用程序上，而不必担心索引的创建和管理。 有关详细信息，请参阅 [Azure Cosmos DB：索引策略](../index-policy.md)。
+  - question: >
+      是否可以更改索引策略？
+    answer: "是，可以提供索引定义来更改索引策略。 需要适当地将这些设置编码并转义。\n\n对于非 .NET SDK，只能在门户中设置索引策略，方法是：打开“数据资源管理器”，导航到想要更改的特定表，转到“缩放和设置”->“索引策略”，进行所需的更改，并单击“保存”。  \n\n对于 .NET SDK，可以在 app.config 文件中提交更改：\n\n```JSON\n{\n  \"indexingMode\": \"consistent\",\n  \"automatic\": true,\n  \"includedPaths\": [\n    {\n      \"path\": \"/somepath\",\n      \"indexes\": [\n        {\n          \"kind\": \"Range\",\n          \"dataType\": \"Number\",\n          \"precision\": -1\n        },\n        {\n          \"kind\": \"Range\",\n          \"dataType\": \"String\",\n          \"precision\": -1\n        }\n      ]\n    }\n  ],\n  \"excludedPaths\":\n[\n {\n      \"path\": \"/anotherpath\"\n }\n]\n}\n```\n"
+  - question: >
+      平台形式的 Azure Cosmos DB 似乎拥有许多功能，例如排序、聚合、分层和其他功能。 是否会将这些功能添加到表 API 中？
+    answer: >
+      表 API 提供与 Azure 表存储相同的查询功能。 Azure Cosmos DB 还支持排序、聚合、地理空间查询、层次结构和各种内置函数。 有关详细信息，请参阅 [SQL 查询](../sql-query-getting-started.md)。
+  - question: >
+      何时应更改表 API 的 TableThroughput？
+    answer: >
+      符合以下任一情况时，都应更改 TableThroughput：
+
+
+      * 要执行数据提取、转换和加载 (ETL) 操作，或者想在短时间内上传大量数据。
+
+      * 需要后端的容器或容器组提供更大的吞吐量。 例如，发现已用吞吐量超过预配吞吐量，且吞吐量已达到限制。 有关详细信息，请参阅[为 Azure Cosmos 容器设置吞吐量](../set-throughput.md)。
+  - question: >
+      是否可以纵向扩展纵向缩减表 API 表的吞吐量？
+    answer: >
+      是，可以使用 Azure Cosmos DB 门户的缩放窗格来缩放吞吐量。 有关详细信息，请参阅[设置吞吐量](../set-throughput.md)。
+  - question: >
+      是否为新预配的表设置了默认 TableThroughput？
+    answer: >
+      是，如果未通过 app.config 替代 TableThroughput，并且未使用 Azure Cosmos DB 中预创建的容器，服务则会创建吞吐量为 400 的表。
+  - question: >
+      对于 Azure 表存储服务的现有客户，定价是否有任何变化？
+    answer: >
+      无。 对于现有的 Azure 表存储客户，价格上没有任何更改。
+  - question: >
+      表 API 的价格是如何计算的？
+    answer: >
+      价格取决于分配的 TableThroughput。
+  - question: >
+      如何在表 API 服务中处理对表设置的任何速率限制？
+    answer: >
+      如果请求速率超出了为基础容器或容器组预配的吞吐量的容量，则会出现错误，SDK 会使用重试策略重试调用。
+  - question: >
+      为何需要选择吞吐量而不是 PartitionKey 和 RowKey 来利用 Azure Cosmos DB 的表 API 服务？
+    answer: >
+      如果未在 app.config 文件中或通过门户提供吞吐量，Azure Cosmos DB 将为容器设置默认的吞吐量。
+
+
+      Azure Cosmos DB 针对操作设置上限，在性能和延迟方面提供保障。 如果引擎可以针对租户的操作实施调控，则可以做到这一点。 设置 TableThroughput 可确保在吞吐量和延迟方面获得保障，因为平台会保留此容量，并保证操作成功。
+
+
+      通过使用吞吐量规范，可以弹性更改吞吐量，以利用应用程序的季节性，满足吞吐量需求并节省成本。
+  - question: >
+      Azure 表存储对我而言非常便宜，因为我只需支付数据的存储费用，并且我很少进行查询。 但是，即使我未执行任何事务或存储任何数据，Azure Cosmos DB 表 API 服务似乎也要收费。 是否能解释一下？
+    answer: >
+      Azure Cosmos DB 设计为一个全球分布的、基于 SLA 的系统，在可用性、延迟和吞吐量方面提供保障。 在 Azure Cosmos DB 中保留吞吐量时，获得的保障与其他系统不同。 Azure Cosmos DB 还提供客户长期以来一直期盼的其他功能，例如辅助索引和全局分发。
+  - question: >
+      在向 Azure 表存储引入数据时，我从未收到过“配额已满”通知（指示分区已满）。 但使用表 API 时会收到此消息。 是此产品有限制，迫使我更改现有的应用程序吗？
+    answer: >
+      Azure Cosmos DB 是基于 SLA 的系统，可提供无限缩放，并在延迟、吞吐量、可用性和一致性方面提供保障。 为了确保获得有保障的高级性能，需确保数据大小和索引可管理且可缩放。 我们对每个分区键的实体数或项数实施 20 GB 限制，以确保提供强大的查找和查询性能。 若要确保即使针对 Azure 存储，应用程序也能很好地进行缩放，建议 *不要* 创建热分区，即，将所有信息存储在一个分区内并查询它。
+  - question: >
+      表 API 是否仍然需要 PartitionKey 和 RowKey？
+    answer: >
+      是的。 由于表 API 的外围应用类似于 Azure 表存储 SDK，因此使用分区键可以高效地分发数据。 行键在该分区中是唯一的。 需要存在行键且它不能为 null（在标准 SDK 中可为 null）。 RowKey 的长度为 255 个字节，PartitionKey 的长度为 1 KB。
+  - question: >
+      表 API 的错误消息有哪些？
+    answer: >
+      Azure 表存储和 Azure Cosmos DB 表 API 使用相同的 SDK，因此，大多数错误是相同的。
+  - question: >
+      在表 API 中尝试一个接一个地创建许多表时，为何会受到限制？
+    answer: >
+      Azure Cosmos DB 是基于 SLA 的系统，在可用性、延迟和吞吐量方面提供保障。 由于它是预配的系统，因此会保留资源来保证满足这些要求。 以较快的速率创建表会被系统检测到并受到限制。 建议查看表创建速率，将其降至每分钟不超过 5 个。 请记住，表 API 是预配的系统。 只要预配它，就必须付费。
+  - question: >
+      如何提供有关 SDK 的反馈或 Bug？
+    answer: >
+      可以通过以下任一方式分享反馈：
+
+
+      * [Microsoft 问答页](/answers/topics/azure-cosmos-db.html)
+
+      * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 适合编程问题。 请确保提问[切中主题](https://stackoverflow.com/help/on-topic)并[尽可能提供较多的详细信息，使问题清楚明了，便于回答](https://stackoverflow.com/help/how-to-ask)。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n* [使用 .NET SDK 和 Azure Cosmos DB 构建表 API 应用](../create-table-dotnet.md)\n* [构建 Java 应用来管理 Azure Cosmos DB 表 API 数据](../create-table-java.md)"

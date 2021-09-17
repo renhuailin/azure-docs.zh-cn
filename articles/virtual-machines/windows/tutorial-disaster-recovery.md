@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e76245c9ad08a9a826e1d0431c2dd01b61a6b860
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a79a3d87fb7937c01896a30076385e86c65ad4bc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077565"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691719"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>教程：为 Windows VM 启用灾难恢复
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 本教程演示如何为运行 Windows 的 Azure VM 设置灾难恢复。 在本文中，将学习以下内容：
 

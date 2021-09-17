@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: edaecb8d3969d251f8ff7c4e6525912a0c199089
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 0c1871921160b0b5862e7655a3826949406ac111
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322374"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777799"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中创建注册和登录流
 
@@ -46,7 +46,8 @@ ms.locfileid: "122322374"
 注册和登录用户流通过单一配置处理注册和登录体验。 根据上下文将应用程序用户引导至正确的路径。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上，在“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“策略”下，依次选择“用户流”、“新建用户流”。
 

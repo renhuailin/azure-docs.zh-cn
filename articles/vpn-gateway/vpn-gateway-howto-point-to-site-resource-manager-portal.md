@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/21/2021
+ms.date: 08/19/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2589c96e6b1de95ef93e942f382eb57f2eb4b53c
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 7986b592496ee558b76202ecf32f5121f6b30e37
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722459"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514614"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-using-azure-certificate-authentication-azure-portal"></a>使用 Azure 证书身份验证配置点到站点 VPN 连接：Azure 门户
 
@@ -25,7 +25,7 @@ ms.locfileid: "114722459"
 
 [!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
@@ -168,11 +168,11 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>从 Mac VPN 客户端进行连接
 
-在“网络”对话框中，找到要使用的客户端配置文件，在 [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) 中指定设置，然后选择“连接”。
+在“网络”对话框中，找到要使用的客户端配置文件，在 [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) 中指定设置，然后选择“连接”。 有关详细说明，请参阅[生成并安装 VPN 客户端配置文件 - macOS](./point-to-site-vpn-client-configuration-azure-cert.md#installmac)。 
 
-请查看[安装 - macOS](./point-to-site-vpn-client-configuration-azure-cert.md#installmac) 获取详细说明。 如果连接有问题，请验证虚拟网络网关是否未使用基本 SKU。 Mac 客户端不支持基本 SKU。
+如果连接有问题，请验证虚拟网络网关是否未使用基本 SKU。 Mac 客户端不支持基本 SKU。
 
-:::image type="content" source="./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png" alt-text="Mac VPN 客户端连接。" border="false":::
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/select-connect.png" alt-text="屏幕截图显示了“连接”按钮。" lightbox="./media/point-to-site-vpn-client-configuration-azure-cert/expanded/select-connect.png":::
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>验证连接
 

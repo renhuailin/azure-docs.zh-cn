@@ -16,12 +16,12 @@ ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e01dd7c32c822f03b8f47147826e085321eeacf
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a2ff57c06fba085fd28e7e0b13ec6e503517cab7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472393"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768677"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -88,7 +88,6 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 - 按照以下[附加指南](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)操作，以减少 Active Directory 环境的攻击面。
 - 按照[监视联合身份验证配置的更改](how-to-connect-monitor-federation-changes.md)中的要求设置警报，以监视对在 Idp 与 Azure AD 之间建立的信任的更改。 
 
-
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect 所使用的 SQL Server
 * Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 默认安装 SQL Server 2019 Express LocalDB（轻量版本的 SQL Server Express）。 SQL Server Express 有 10-GB 的大小限制，允许管理大约 100,000 个对象。 如果需要管理更多的 Directory 对象，请将安装向导指向不同的 SQL Server 安装。 SQL Server 安装的类型可能会影响 [Azure AD Connect 的性能](./plan-connect-performance-factors.md#sql-database-factors)。
 * 如果使用不同的 SQL Server 安装，则以下要求适用：
@@ -107,7 +106,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 * 如果 Intranet 有防火墙，且需要开放 Azure AD Connect 服务器与域控制器之间的端口，请参阅 [Azure AD Connect 端口](reference-connect-ports.md)，了解详细信息。
 * 如果代理或防火墙限制了可访问的 URL，则必须打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。 另请参阅[在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)。
   * 如果在德国使用 Microsoft 云或 Microsoft Azure 政府版云，请参阅 [Azure AD Connect 同步服务实例注意事项](reference-connect-instances.md)以了解 URL。
-* Azure AD Connect（1.1.614.0 版及更高版本）默认情况下使用 TLS 1.2 对同步引擎和 Azure AD 之间的通信进行加密。 如果 TLS 1.2 在基础操作系统上不可用，Azure AD Connect 会递增地回退到较旧的协议（TLS 1.1 和 TLS 1.0）。 来自 Azure AD Connect 2.0 及更高版本。 不再支持 TLS 1.0 和 1.1；如果 TLS 1.2 不可用，安装将失败。
+* Azure AD Connect（1.1.614.0 版及更高版本）默认情况下使用 TLS 1.2 对同步引擎和 Azure AD 之间的通信进行加密。 如果 TLS 1.2 在基础操作系统上不可用，Azure AD Connect 会递增地回退到较旧的协议（TLS 1.1 和 TLS 1.0）。 来自 Azure AD Connect 2.0 及更高版本。 不再支持 TLS 1.0 和 1.1；如果未启用 TLS 1.2，安装将失败。
 * 在 1.1.614.0 版以前，Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎和 Azure AD 之间的通信进行加密。 若要更改为 TLS 1.2，请按照[为 Azure AD connect 启用 TLS 1.2](#enable-tls-12-for-azure-ad-connect) 中的步骤进行操作。
 * 如果使用出站代理连接到 Internet，则必须在 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config 文件中添加以下设置，才能将安装向导和 Azure AD Connect 同步连接到 Internet 和 Azure AD。 必须在文件底部输入此文本。 在此代码中，&lt;PROXYADDRESS&gt; 代表实际代理 IP 地址或主机名。
 

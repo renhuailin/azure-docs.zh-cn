@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 机器学习工作室（经典版）根据 IoT 中心数据预测天气
-description: 使用 Azure 机器学习工作室（经典版）基于 IoT 中心从传感器收集的温度和湿度数据来预测下雨的可能性。
+title: 结合使用机器学习工作室（经典）和 IoT 中心数据来预测天气
+description: 使用 ML 工作室（经典）基于 IoT 中心从传感器收集的温度和湿度数据来预测下雨的可能性。
 author: robinsh
 keywords: 天气预报机器学习
 ms.service: iot-hub
@@ -8,20 +8,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: f9b683d08a5b1fde172efa5a769a605d3d1862da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a85456c6227df1f32387ff92746e0efb8c721ca
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742226"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597447"
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中使用 IoT 中心的传感器数据进行天气预测
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-machine-learning-studio-classic"></a>在机器学习工作室（经典）中使用 IoT 中心的传感器数据进行天气预测
 
 ![端到端关系图](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-机器学习是一项数据科研技术，可帮助计算机从现有的数据中学习，预测将来的行为、结果和趋势。 Azure 机器学习工作室（经典）是一种云预测分析服务，可用于将预测模型作为分析解决方案进行快速创建和部署。 在本文中，您将了解如何使用 Azure 机器学习工作室（经典版）根据 Azure IoT 中心的温度和湿度数据来进行天气预测（下雨的可能性）。 下雨的可能性是已准备的天气预测模型的输出。 该模型基于历史数据构建，以根据温度和湿度预测下雨的可能性。
+机器学习是一项数据科研技术，可帮助计算机从现有的数据中学习，预测将来的行为、结果和趋势。 ML 工作室（经典）是一种云预测分析服务，可用于将预测模型作为分析解决方案进行快速创建和部署。 在本文中，你将了解如何使用 ML 工作室（经典）根据 Azure IoT 中心的温度和湿度数据来进行天气预测（下雨的可能性）。 下雨的可能性是已准备的天气预测模型的输出。 该模型基于历史数据构建，以根据温度和湿度预测下雨的可能性。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -29,11 +29,11 @@ ms.locfileid: "121742226"
   - 一个有效的 Azure 订阅。
   - 已在订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
-- 一个 [Azure 机器学习工作室（经典版）](https://studio.azureml.net/)帐户。
+- [ML 工作室（经典版）](https://studio.azureml.net/)帐户。
 - 一个 [Azure 存储帐户](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts)。常规用途 v2 帐户是首选，但任何支持 Azure Blob 存储的 Azure 存储帐户也可以使用。
 
 > [!Note]
-> 本文使用 Azure 流分析和多个其他付费服务。 当必须在 Azure 区域之间传输数据时，Azure 流分析会产生额外的费用。 出于此原因，最好确保资源组、IoT 中心和 Azure 存储帐户以及本教程后面添加的机器学习工作室（经典）工作区和 Azure 流分析作业均位于同一 Azure 区域中。 可以在[“Azure 产品可用性(按区域)”页](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)上查看对 Azure 机器学习工作室（经典版）和其他 Azure 服务的区域支持。
+> 本文使用 Azure 流分析和多个其他付费服务。 当必须在 Azure 区域之间传输数据时，Azure 流分析会产生额外的费用。 出于此原因，最好确保资源组、IoT 中心和 Azure 存储帐户以及本教程后面添加的机器学习工作室（经典）工作区和 Azure 流分析作业均位于同一 Azure 区域中。 可以在 [Azure 产品可用性（按区域显示）](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)页上，查看 ML 工作室（经典）和其他 Azure 服务的区域支持情况。
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>将天气预测模型部署为 Web 服务
 
@@ -41,21 +41,21 @@ ms.locfileid: "121742226"
 
 ### <a name="get-the-weather-prediction-model"></a>获取天气预测模型
 
-在本部分，你将从 Azure AI 库获取天气预测模型，并在 Azure 机器学习工作室（经典版）中将其打开。
+在本部分，你将从 Azure AI 库获取天气预测模型，并在 ML 工作室（经典）中打开该模型。
 
 1. 转到[天气预测模型页](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1)。
 
    ![打开 Azure AI 库中的天气预测模型页](media/iot-hub-weather-forecast-machine-learning/weather-prediction-model-in-azure-ai-gallery.png)
 
-1. 选择“在工作室(经典版)中打开”，以便在 Microsoft Azure 机器学习工作室（经典版）中打开该模型。 在“从库中复制试验”弹出窗口中，选择一个靠近 IoT 中心的区域和相应的工作区。
+1. 选择“在工作室（经典）中打开”，以在 Microsoft ML 工作室（经典）中打开模型。 在“从库中复制试验”弹出窗口中，选择一个靠近 IoT 中心的区域和相应的工作区。
 
-   ![在 Azure 机器学习工作室（经典版）中打开天气预测模型](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
+   ![在 ML 工作室（经典）中打开天气预测模型](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
 
 ### <a name="add-an-r-script-module-to-clean-temperature-and-humidity-data"></a>添加一个 R 脚本模块用于清理温度和湿度数据
 
 若要使模型正常运行，温度和湿度数据必须可转换为数字数据。 在本部分，你将在天气预测模型中添加一个 R 脚本模块，用于删除所有包含无法转换为数字值的温度或湿度数据值的行。
 
-1. 在 Azure 机器学习工作室（经典版）窗口的左侧，选择用于展开工具面板的箭头。 在搜索框中输入“执行”。 选择“执行 R 脚本”模块。
+1. 在 ML 工作室（经典）窗口的左侧，选择用于展开工具窗格的箭头。 在搜索框中输入“执行”。 选择“执行 R 脚本”模块。
 
    ![选择“执行 R 脚本”模块](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
 
@@ -92,11 +92,11 @@ ms.locfileid: "121742226"
 
 1. 选择“设置 WEB 服务” > “预测 Web 服务”。 预测试验图随即打开。
 
-   ![在 Azure 机器学习工作室（经典版）中部署天气预测模型](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
+   ![在 ML 工作室（经典）中部署天气预测模型](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
 1. 在预测试验图中，删除“Web 服务输入”模块与顶部“选择数据集中的列”之间的连接。  然后将“Web 服务输入”模块拖到“评分模型”模块附近的某个位置，并连接该输入模块，如下所示： 
 
-   ![在 Azure 机器学习工作室（经典版）中连接两个模块](media/iot-hub-weather-forecast-machine-learning/connect-modules-azure-machine-learning-studio.png)
+   ![在 ML 工作室（经典）中连接两个模型](media/iot-hub-weather-forecast-machine-learning/connect-modules-azure-machine-learning-studio.png)
 
 1. 选择“运行”以验证模型中的步骤。
 
@@ -230,10 +230,10 @@ ms.locfileid: "121742226"
 1. 选择你的订阅 >“存储帐户”> 你的存储帐户 >“Blob 容器”> 你的容器。
 1. 下载一个 .csv 文件以查看结果。 最后一列记录下雨的可能性。
 
-   ![使用 Azure 机器学习工作室（经典版）获取天气预测结果](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
+   ![使用 ML 工作室（经典）获取天气预测结果](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
-你已成功使用 Azure 机器学习工作室（经典版）根据 IoT 中心接收的温度和湿度数据生成下雨的可能性。
+已成功使用 ML 工作室（经典）并基于 IoT 中心收到的温度和湿度数据生成下雨的可能性。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

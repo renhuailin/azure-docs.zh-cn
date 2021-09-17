@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 07/07/2021
+ms.date: 08/20/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 053f1372067284e2b2d10bac508156b6ef38e4af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d3317bafa2ff03e83bd79e9a3efa0ecfaffd4124
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014612"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122752760"
 ---
 | 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -33,10 +33,10 @@ ms.locfileid: "122014612"
 | 最大总请求持续时间<sup>8</sup> | 30 秒 |
 | 请求有效负载最大大小<sup>8</sup> | 1 GiB |
 | 最大缓冲有效负载大小<sup>8</sup> | 2 MiB |
-| 最大请求 URL 大小<sup>9</sup> | 4096 字节 |
+| 最大请求 URL 大小<sup>9</sup> | 16384 字节 |
 | URL 路径段的最大长度<sup>10</sup> | 260 个字符 |
 | [验证策略](../articles/api-management/validation-policies.md)使用的 API 架构的最大大小<sup>10</sup> | 4 MB |
-| [验证内容策略](../articles/api-management/validation-policies.md#validate-content)中请求或响应正文的最大大小 | 100 KB |
+| [验证内容策略](../articles/api-management/validation-policies.md#validate-content)<sup>10</sup>中请求或响应正文的最大大小 | 100 KB |
 | 最大自托管网关数目<sup>11</sup> | 25 |
 
 <sup>1</sup>缩放限制取决于定价层。 若要查看定价层及其缩放限制的详细信息，请参阅 [API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>

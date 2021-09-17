@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/21/2021
+ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 407a6284c46eb6eef4057d98cef0f5e86a38bcea
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 6e19b051378bb068172d6356397ee16761611bae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601824"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732229"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudtamerio"></a>教程：Azure Active Directory 单一登录 (SSO) 与 cloudtamer.io 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "114601824"
 * 让用户使用其 Azure AD 帐户自动登录到 cloudtamer.io。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -74,6 +74,8 @@ ms.locfileid: "114601824"
 
     ![创建 IDMS 的屏幕截图。](./media/cloudtamer-io-tutorial/idms-creation.png)
 
+1. 选择 SAML 2.0 作为 IDMS 类型。
+
 1. 让此屏幕保持打开状态，并将此屏幕中的值复制到 Azure AD 配置中。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -88,16 +90,13 @@ ms.locfileid: "114601824"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”文本框中，将 cloudtamer.io 中的“标识提供者颁发者(实体 ID)”粘贴到此框中 。
+    a. 在“标识符”文本框中，将 cloudtamer.io 中的“服务提供者颁发者(实体 ID)”粘贴到此框中 。
 
     b. 在“回复 URL”文本框中，将 cloudtamer.io 中的“服务提供者 ACS URL”粘贴到此框中 。
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMERDOMAIN>.<EXTENSION>/login`
-
-    > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    在“登录 URL”文本框中，将 cloudtamer.io 中的“服务提供者 ACS URL”粘贴到此框中 。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -115,7 +114,7 @@ ms.locfileid: "114601824"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -137,19 +136,17 @@ ms.locfileid: "114601824"
 
     ![“添加 IDMS”的屏幕截图。](./media/cloudtamer-io-tutorial/configuration.png)
 
-    a. 从下拉列表中选择“SAML 2.0”作为“IDMS 类型” 。
+    a. 在“IDMS 名称”中，提供一个用户可以从“登录”屏幕识别的名称。
 
-    b. 在“IDMS 名称”中，提供一个用户可以从“登录”屏幕识别的名称。
+    b. 在“标识提供者颁发者(实体 ID)”文本框中，粘贴从 Azure 门户复制的“标识符”值 。
 
-    c. 在“标识提供者颁发者(实体 ID)”文本框中，粘贴从 Azure 门户复制的“标识符”值 。
+    c. 在记事本中打开从 Azure 门户下载的“联合元数据 XML”，并将内容粘贴到“标识提供者元数据”文本框中 。
 
-    d. 在记事本中打开从 Azure 门户下载的“联合元数据 XML”，并将内容粘贴到“标识提供者元数据”文本框中 。
+    d. 复制“服务提供者颁发者(实体 ID)”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中 。
 
-    e. 复制“服务提供者颁发者(实体 ID)”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中 。
+    e. 复制“服务提供者 ACS URI”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中 。
 
-    f. 复制“服务提供者 ACS URI”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中 。
-
-    g. 在“断言映射”下，输入以下值：
+    f. 在“断言映射”下，输入以下值：
 
     | 字段 | 值 |
     |-----------|-------|

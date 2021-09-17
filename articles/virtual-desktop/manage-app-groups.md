@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 80a066aab79e3ca6ca541a82fe6b7fe023653a81
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c020e239c566accfe10f0ad298bf76f2c749309b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448783"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740149"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>教程：使用 Azure 门户管理应用组
 
@@ -21,7 +21,7 @@ ms.locfileid: "114448783"
 为新的 Azure 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”菜单应用。
 
 >[!NOTE]
->可以将 MISX 应用动态附加到用户会话，或将应用包添加到自定义 VM 映像，以发布组织的应用。 有关详细信息，请参阅[如何使用 Azure 虚拟桌面托管自定义应用](./remote-app-streaming/custom-apps.md)。
+>可以将 MSIX 应用动态附加到用户会话，或将应用包添加到自定义虚拟机 (VM) 映像，以发布组织的应用。 有关详细信息，请参阅[如何使用 Azure 虚拟桌面托管自定义应用](./remote-app-streaming/custom-apps.md)。
 
 本教程介绍如何执行下列操作：
 

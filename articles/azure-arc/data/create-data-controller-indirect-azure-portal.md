@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: ce593d8f4e29ecbe0873381b2a1cf028f03e212b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cc31c8af40e064e9a320f93ec4ccbd5fe0f051c6
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745884"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771779"
 ---
 # <a name="create-azure-arc-data-controller-from-azure-portal---indirect-connectivity-mode"></a>从 Azure 门户创建 Azure Arc 数据控制器 - 间接连接模式
 
@@ -23,7 +23,7 @@ ms.locfileid: "121745884"
 
 可以使用 Azure 门户以间接连接模式创建 Azure Arc 数据控制器。
 
-Azure Arc 的许多创建体验都是从 Azure 门户中开始，即使要创建或管理的资源在 Azure 基础结构之外也是如此。 在这些情况下，尤其是当 Azure 与环境之间没有直接连接时，用户体验模式是使用 Azure 门户生成脚本，然后可以在环境中下载并执行该脚本，以建立与 Azure 的安全连接。 例如，已启用 Azure Arc 的服务器遵循这种用于[创建已启用 Arc 的服务器](../servers/onboard-portal.md)的模式。
+Azure Arc 的许多创建体验都是从 Azure 门户中开始，即使要创建或管理的资源在 Azure 基础结构之外也是如此。 在这些情况下，尤其是当 Azure 与环境之间没有直接连接时，用户体验模式是使用 Azure 门户生成脚本，然后可以在环境中下载并执行该脚本，以建立与 Azure 的安全连接。 例如，已启用 Azure Arc 的服务器遵循此模式来[创建已启用 Arc 的服务器](../servers/onboard-portal.md)。
 
 使用已启用 Azure Arc 的数据服务的间接连接模式时，可以使用 Azure 门户为你生成笔记本，然后将其下载并针对 Kubernetes 群集在 Azure Data Studio 中运行它。 
 

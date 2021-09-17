@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: b700cd6a9b17abcd86cfb31b1d2c65fefe226d79
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: e8367f0dbbbc7a15603071efa9d7ff2828c692d6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237395"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734859"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -41,7 +41,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 -   **防范威胁**：安全中心会评估工作负荷，并提出威胁预防建议和引发安全警报。
 
--   **更快地获取安全性**：在安全中心中，一切操作都以云速度完成。 由于它以本机方式集成，因此可以轻松部署安全中心，从而通过 Azure 服务为你提供自动预配和保护。
+-   **更快地获取安全性**：在安全中心中，一切操作都以云速度完成。 由于它以原生方式集成，因此可以轻松部署安全中心，从而通过 Azure 服务为你提供自动预配和保护。
 
 > [!NOTE]
 > 此服务支持 [Azure Lighthouse](../lighthouse/overview.md)；通过它，服务提供商可登录自己的租户来管理客户委托的订阅和资源组。 在 Azure 安全中心方案中，必须委托订阅而不是单个资源组。

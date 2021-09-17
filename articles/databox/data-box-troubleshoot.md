@@ -1,25 +1,29 @@
 ---
-title: 排查 Azure Data Box 和 Azure Data Box Heavy 的问题
-description: 介绍如何排查在将数据复制到 Azure Data Box 和 Azure Data Box Heavy 时这些设备出现的问题。
+title: 排查将数据复制到 Azure Data Box、Azure Data Box Heavy 时出现的问题
+description: 介绍如何排查将数据复制到 Azure Data Box 和 Azure Data Box Heavy 设备时出现的问题。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/14/2021
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 06f0408587cc7c5533bdb852f7ad4f59094a33da
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: e3921e8b326be2163981eacc089e16e6fcf6f1bc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220252"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772409"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>排查 Azure Data Box 和 Azure Data Box Heavy 的相关问题
+# <a name="troubleshoot-data-copy-issues-on-azure-data-box-and-azure-data-box-heavy"></a>排查 Azure Data Box 和 Azure Data Box Heavy 上的数据复制问题
 
-本文详细说明如何排查使用 Azure Data Box 或 Azure Data Box Heavy 处理导入订单时可能出现的问题。 本文将列出在将数据复制到 Data Box 时或从 Data Box 为导入订单上传数据时可能出现的错误。
+本文介绍如何排查为 Azure Data Box 或 Azure Data Box Heavy 导入订单执行数据复制或数据上传时出现的问题。 本文列出了在将数据复制到 Data Box 或从 Data Box 上传数据时可能出现的错误。
 
-本文中的信息不适用于为 Data Box 创建的导出订单。
+有关排查访问设备上共享的问题的帮助，请参阅[排查复制数据期间共享连接失败的问题](data-box-troubleshoot-share-access.md)。
+
+
+> [!NOTE]
+> 本文中的信息仅适用于导入订单。
 
 ## <a name="error-classes"></a>错误类
 

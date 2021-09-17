@@ -8,14 +8,16 @@ ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 05cff1385ee4e606a3d5ecae3f04139a67be699a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 16ba38828cc9137e7d69e113126826b254aaf957
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289251"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688988"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 可以使用[专用终结点](../../private-link/private-endpoint-overview.md)来限制托管磁盘的导出和导入，并通过[专用链接](../../private-link/private-link-overview.md)从 Azure 虚拟网络上的客户端安全地访问数据。 专用终结点将虚拟网络地址空间中的 IP 地址用于托管磁盘服务。 虚拟网络上客户端与托管磁盘之间的网络流量仅穿过虚拟网络以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。
 
@@ -156,5 +158,5 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 
 - 将 VHD 上传到 Azure 或将托管磁盘复制到其他区域 - [Azure CLI](disks-upload-vhd-to-managed-disk-cli.md) 或 [Azure PowerShell 模块](../windows/disks-upload-vhd-to-managed-disk-powershell.md)
 - 下载 VHD - [Windows](../windows/download-vhd.md) 或 [Linux](download-vhd.md)
-- [专用链接常见问题解答](/azure/virtual-machines//faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
+- [专用链接常见问题解答](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [使用 CLI 将托管快照作为 VHD 导出/复制到不同区域中的存储帐户](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 30b378f0ba25579d78118ff82a17689f4bdf56a5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6e0975a61ff5b36eb5ffbe5737be614a70150796
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457774"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419480"
 ---
 # <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>安装 Visual Studio Code Azure 机器学习扩展（预览版）
 
@@ -38,7 +38,7 @@ ms.locfileid: "114457774"
 - Azure 订阅。 如果没有订阅，注册之后即可试用 [Azure 机器学习免费版或付费版](https://azure.microsoft.com/free/)。
 - Visual Studio Code。 如果尚未安装它，请[安装它](https://code.visualstudio.com/docs/setup/setup-overview)。
 - [Python](https://www.python.org/downloads/)
-- （可选）若要使用该扩展创建资源，需要安装 2.0 CLI。 有关安装说明，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。
+- （可选）若要使用扩展创建资源，需要安装 CLI (v2)。 有关安装说明，请参阅[安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)。
 
 ## <a name="install-the-extension"></a>安装扩展
 
@@ -56,7 +56,7 @@ ms.locfileid: "114457774"
 本教程中的其余步骤已使用最新版本的扩展进行了测试。
 
 > [!NOTE]
-> 在默认情况下，Azure 机器学习 VS Code 扩展使用 2.0 CLI。 若要切换到 1.0 CLI，请将 Visual Studio Code 中的 `azureML.CLI Compatibility Mode` 设置指定为 `1.0`。 有关在 Visual Studio 中修改设置的详细信息，请参阅[用户和工作区设置文档](https://code.visualstudio.com/docs/getstarted/settings)。
+> Azure 机器学习 VS Code 扩展默认使用 CLI (v2)。 若要切换到 1.0 CLI，请将 Visual Studio Code 中的 `azureML.CLI Compatibility Mode` 设置指定为 `1.0`。 有关在 Visual Studio 中修改设置的详细信息，请参阅[用户和工作区设置文档](https://code.visualstudio.com/docs/getstarted/settings)。
 
 ## <a name="sign-in-to-your-azure-account"></a>登录 Azure 帐户
 
@@ -71,7 +71,7 @@ ms.locfileid: "114457774"
 
 ## <a name="choose-your-default-workspace"></a>选择默认工作区
 
-在创作 2.0 CLI YAML 规范文件时，选择默认的 Azure 机器学习工作区可启用以下功能：
+在创作 CLI (v2) YAML 规范文件时，选择默认的 Azure 机器学习工作区可启用以下功能：
 
 - 架构验证
 - 自动完成

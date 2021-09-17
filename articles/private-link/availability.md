@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: ec1911911653b8c176d92ad3216c64f7fd1a836e
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 052a59ede2acc751d6847646ca1b103de0c1b78a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295572"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446454"
 ---
 # <a name="azure-private-link-availability"></a>Azure 专用链接可用性
 
@@ -94,11 +94,11 @@ ms.locfileid: "112295572"
 ### <a name="storage"></a>存储
 |支持的服务  |可用区域 | 其他注意事项 | 状态  |
 |:-------------------|:-----------------|:----------------|:--------|
-| Azure Blob 存储（包括 Data Lake Storage Gen2）       |  所有公共区域<br/> 所有政府区域       |  在帐户类型常规用途 V2 上受支持 | GA <br/> [了解如何为 Blob 存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md)  |
+| Azure Blob 存储（包括 Data Lake Storage Gen2）       |  所有公共区域<br/> 所有政府区域       |  仅帐户类型常规用途 V2 支持 | GA <br/> [了解如何为 Blob 存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure 文件 | 所有公共区域<br/> 所有政府区域      | |   GA <br/> [了解如何创建 Azure 文件存储网络终结点。](../storage/files/storage-files-networking-endpoints.md)   |
 | Azure 文件同步 | 所有公共区域      | |   GA <br/> [了解如何创建 Azure 文件存储网络终结点。](../storage/file-sync/file-sync-networking-endpoints.md)   |
-| Azure 队列存储       |  所有公共区域<br/> 所有政府区域       |  在帐户类型常规用途 V2 上受支持 | GA <br/> [了解如何为队列存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md) |
-| Azure 表存储       |  所有公共区域<br/> 所有政府区域       |  在帐户类型常规用途 V2 上受支持 | GA <br/> [了解如何为表存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md)  |
+| Azure 队列存储       |  所有公共区域<br/> 所有政府区域       |  仅帐户类型常规用途 V2 支持 | GA <br/> [了解如何为队列存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md) |
+| Azure 表存储       |  所有公共区域<br/> 所有政府区域       |  仅帐户类型常规用途 V2 支持 | GA <br/> [了解如何为表存储创建专用终结点。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Batch | 除以下区域外的所有公共区域：德国中部、德国东北部 <br/> 所有政府区域  | | GA <br/> [了解如何为 Azure Batch 创建专用终结点。](../batch/private-connectivity.md) |
 
 ### <a name="web"></a>Web

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
-ms.date: 10/26/2020
-ms.openlocfilehash: 084f9aae16cfbf495f05c90c8244b2b9b71cf624
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 08/23/2021
+ms.openlocfilehash: 9326797e16190b3570ed6faca4d724bec432bc86
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812928"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767912"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL 数据库和 Azure SQL 托管实例安全功能概述
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -69,9 +69,9 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 ## <a name="authorization"></a>授权
 
-授权是指在 Azure SQL 数据库的数据库或 Azure SQL 托管实例中分配给用户的权限，并决定用户可以执行的操作。 权限控制通过将用户帐户添加到[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)并向这些角色分配数据库级权限来实现，也可以通过授予用户特定的[对象级权限](/sql/relational-databases/security/permissions-database-engine)来实现。 有关详细信息，请参阅[登录和用户](logins-create-manage.md)
+授权是指控制对数据库内资源和命令的访问。 为此，可以向 Azure SQL 数据库或 Azure SQL 托管实例中的数据库中的用户分配权限。 要以理想方式来管理权限，可以将用户帐户添加到[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)并为这些角色分配数据库级别的权限。 或者，也可以向单个用户授予某些[对象级别的权限](/sql/relational-databases/security/permissions-database-engine)。 有关详细信息，请参阅[登录和用户](logins-create-manage.md)
 
-最佳做法是根据需要创建自定义角色。 将用户添加到具有完成其作业功能所需的最低权限的角色中。 请勿直接将权限分配给用户。 服务器管理员帐户是内置的 db_owner 角色的成员，该角色具有广泛权限，只应将其授予部分具有管理职责的用户。 对于应用程序，请使用 [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) 来指定被调用模块的执行上下文，或者使用权限受限的[应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)。 此做法可确保连接到数据库的应用程序具有应用程序所需的最低权限。 按这些最佳做法操作也有助于职责分离。
+最佳做法是根据需要创建自定义角色。 将用户添加到具有完成其作业功能所需的最低权限的角色中。 请勿直接将权限分配给用户。 服务器管理员帐户是内置的 db_owner 角色的成员，该角色具有广泛权限，只应将其授予部分具有管理职责的用户。 若要进一步限制用户可以执行的操作范围，可以使用 [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) 来指定被调用模块的执行上下文。 遵循这些最佳实践也是实现职责分离的基本步骤。
 
 ### <a name="row-level-security"></a>行级别安全性
 
@@ -140,7 +140,7 @@ SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 通过使用[传输�
 
 ### <a name="data-discovery-and-classification"></a>数据发现和分类
 
-数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库和 SQL 托管实例的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 发现最敏感的数据（业务/财务、医疗保健、个人数据等）并进行分类，可在组织的信息保护方面发挥关键作用。 它可以充当基础结构，用于：
+数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库和 SQL 托管实例的基本功能，可用于发现、分类和标记数据库中的敏感数据。 发现最敏感的数据（业务/财务、医疗保健、个人数据等）并进行分类，可在组织的信息保护方面发挥关键作用。 它可以充当基础结构，用于：
 
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 - 控制对包含高度敏感数据的数据库的访问并增强其安全性。

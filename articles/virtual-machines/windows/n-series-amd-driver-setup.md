@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: ec4f09249bda14eb29d7dc9704a6096848a78557
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: b715fd2f292ae7633d7581ec9604bc4e12b459af
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122194985"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693844"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
+
+适用于：Windows VM :heavy_check_mark: 灵活规模集 
 
 若要利用运行 Windows 的全新 Azure NVv4 系列 VM 的 GPU 功能，必须安装 AMD GPU 驱动程序。 [AMD GPU 驱动程序扩展](../extensions/hpccompute-amd-gpu-windows.md)会在 NVv4 系列 VM 上安装 AMD GPU 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [AMD GPU 驱动程序扩展文档](../extensions/hpccompute-amd-gpu-windows.md)。
 

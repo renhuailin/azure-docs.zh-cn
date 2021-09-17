@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/19/2021
 ms.author: jeedes
-ms.openlocfilehash: dc22571c2b66767d38e3cf663633db8060251678
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1622868d0f7209f2aa612c1b612f13be3c19549f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455286"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183909"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Splashtop 的集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "110455286"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Splashtop 支持 SP 发起的 SSO。
+* Splashtop 支持[自动用户预配和取消预配](splashtop-provisioning-tutorial.md)（推荐）。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。

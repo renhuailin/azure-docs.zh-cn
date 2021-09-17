@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f3ff46312c7836d90aeb8e3281e760d2ab163186
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0043935f46698f694aa76aec816c8bf72a9ee098
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724926"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698166"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>预览：Azure VM 的自动 VM 来宾修补
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 为 Azure VM 启用自动 VM 来宾修补有助于通过安全自动修补虚拟机来简化更新管理，使虚拟机保持安全合规。
 

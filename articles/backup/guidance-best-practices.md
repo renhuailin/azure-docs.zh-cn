@@ -3,12 +3,12 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳做法和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7b507fec6c3f9cd53dd5b775dff2ca43c4dcfd1f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e2d65f256a69b397486675dc71efb71ce3e4263d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965482"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605031"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -73,7 +73,7 @@ Azure 备份使用保管库（恢复服务保管库和备份保管库）来安�
 * 如果工作负载分布在多个订阅中，则可以创建多个保管库，每个订阅一个保管库或多个保管库。
   * 备份中心使你可以在一个管理工具中管理与备份相关的所有任务。 [在此处了解更多信息]()。
   * 可以通过工作簿模板来自定义视图。 备份资源管理器就是这样一个用于 Azure VM 的模板。 [在此处了解更多信息](monitor-azure-backup-with-backup-explorer.md)。
-  * 如果你需要对多个保管库应用一致的策略，则可以使用 Azure Policy 来跨多个保管库传播备份策略。 可以编写自定义 [Azure Policy 定义](../governance/policy/concepts/definition-structure.md)，以使用 [‘deployifnotexists’](../governance/policy/concepts/effects.md#deployifnotexists) 效果跨多个保管库传播一个备份策略。 还可以将此 Azure Policy 定义[分配](../governance/policy/assign-policy-portal.md)到特定的范围（订阅或 RG），以便它将一个“备份策略”资源部署到该 Azure Policy 分配的范围内的所有恢复服务保管库。 备份策略的设置（例如备份频率、保留期等）应作为 Azure Policy 分配中的参数由用户指定。
+  * 如需对多个保管库应用一致策略，则可以使用 Azure Policy 来跨多个保管库传播备份策略。 可以编写自定义 [Azure Policy 定义](../governance/policy/concepts/definition-structure.md)，以使用 [‘deployifnotexists’](../governance/policy/concepts/effects.md#deployifnotexists) 效果跨多个保管库传播一个备份策略。 还可以将此 Azure Policy 定义[分配](../governance/policy/assign-policy-portal.md)到特定的范围（订阅或 RG），以便它将一个“备份策略”资源部署到该 Azure Policy 分配的范围内的所有恢复服务保管库。 备份策略的设置（例如备份频率、保留期等）应作为 Azure Policy 分配中的参数由用户指定。
 
 * 随着组织的占用量的增长，你可能想要跨订阅移动工作负载，原因包括：根据备份策略进行调整，合并保管库，权衡降低冗余度以节省成本（从 GRS 迁移到 LRS）。  Azure 备份支持跨 Azure 订阅移动恢复服务保管库，或将其移动到同一订阅中的其他资源组。 [在此处了解更多信息](backup-azure-move-recovery-services-vault.md)。
 
@@ -184,7 +184,7 @@ Azure 备份需要将工作负载中的数据移到恢复服务保管库。 Azur
 
 Azure [专用终结点](../private-link/private-endpoint-overview.md)是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 通过 Azure 备份，你可以使用专用终结点从恢复服务保管库安全地备份和还原数据。
 
-* 为保管库启用了专用终结点后，这些专用终结点仅用于备份 Azure VM 中的 SQL 和 SAP HANA 工作负载并向 Azure VM 还原这些工作负载，以及进行 MARS 代理备份。  还可以使用保管库来备份其他工作负载（尽管它们不需要专用终结点）。 除了备份 SQL 和 SAP HANA 工作负载以及使用 MARS 代理进行备份，专用终结点还可用于针对 Azure VM 备份执行文件恢复。 [在此处了解更多信息](private-endpoints.md#recommended-and-supported-scenarios)。
+* 为保管库启用了专用终结点后，这些专用终结点仅用于备份 Azure VM 中的 SQL 和 SAP HANA 工作负载并向 Azure VM 还原这些工作负载，以及进行 MARS 代理备份。  还可以使用保管库来备份其他工作负载（尽管它们不需要专用终结点）。 除了备份 SQL 和 SAP HANA 工作负载以及使用 MARS 代理进行备份，专用终结点还可用于针对 Azure VM 备份执行文件恢复。 [在此处了解更多信息](private-endpoints-overview.md#recommended-and-supported-scenarios)。
 
 * Azure Active Directory 当前不支持专用终结点。 因此，在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure Active Directory 所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。 详细了解[此处的先决条件](./private-endpoints.md#before-you-start)。
 

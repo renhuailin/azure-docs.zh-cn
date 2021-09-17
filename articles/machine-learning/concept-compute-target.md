@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: a3c52783cf88e9890ffa1a96feb3a332e43c5e1c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: bb7baa20b5bc7e47e231e3e15937dde941ac0e03
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860824"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608256"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -23,14 +23,14 @@ ms.locfileid: "121860824"
 在典型的模型开发生命周期中，你可以：
 
 1. 首先，基于少量数据进行开发和试验。 在此阶段，请使用本地环境（如本地计算机或基于云的虚拟机 (VM)）作为计算目标。
-1. 通过使用其中一种[训练计算目标](#train)，纵向扩展到更多的数据或进行分布式训练。
+1. 通过使用其中一种[训练计算目标](#train)，纵向扩展到更多的数据或进行[分布式训练](how-to-train-distributed-gpu.md)。
 1. 模型准备就绪后，将其部署到具有这些[部署计算目标](#deploy)之一的 Web 托管环境。
 
 你用于计算目标的计算资源附加到[工作区](concept-workspace.md)。 本地计算机以外的计算资源由工作区的用户共享。
 
 ## <a name="training-compute-targets"></a><a name="train"></a> 训练计算目标
 
-Azure 机器学习为不同的计算目标提供不同的支持。 典型的模型开发生命周期从针对少量数据进行开发或试验开始。 在此阶段，请使用本地环境，如本地计算机或基于云的 VM。 在针对更大的数据集纵向扩展训练或执行分布式训练时，请使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为不同方案提供的支持可能会有所不同。
+Azure 机器学习为不同的计算目标提供不同的支持。 典型的模型开发生命周期从针对少量数据进行开发或试验开始。 在此阶段，请使用本地环境，如本地计算机或基于云的 VM。 在针对更大的数据集纵向扩展训练或执行[分布式训练](how-to-train-distributed-gpu.md)时，请使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为不同方案提供的支持可能会有所不同。
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 

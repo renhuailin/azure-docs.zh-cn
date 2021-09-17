@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 08/06/2021
 ms.author: jeedes
-ms.openlocfilehash: b0afcf00a95b46472c902b24c6d4b287c1c6a482
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d6e1c99bd70cedd678cbf3dcef4ef66a594d969
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181006"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728410"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-checkproof"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CheckProof 的集成
 
@@ -37,9 +37,9 @@ ms.locfileid: "96181006"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* CheckProof 支持 IDP 发起的 SSO
+* CheckProof 支持 IDP 发起的 SSO。
 
-## <a name="adding-checkproof-from-the-gallery"></a>从库中添加 CheckProof
+## <a name="add-checkproof-from-the-gallery"></a>从库中添加 CheckProof
 
 若要配置 CheckProof 与 Azure AD 的集成，需要从库中将 CheckProof 添加到托管 SaaS 应用列表。
 
@@ -49,7 +49,6 @@ ms.locfileid: "96181006"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“CheckProof” 。
 1. 从结果面板中选择“CheckProof”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-checkproof"></a>配置并测试 CheckProof 的 Azure AD SSO
 
@@ -70,13 +69,13 @@ ms.locfileid: "96181006"
 
 1. 在 Azure 门户中的“CheckProof”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
+1. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://api.checkproof.com/api/v1/saml/<ID>/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.checkproof.com/api/v1/saml/<ID>/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.checkproof.com/api/v1/saml/<ID>/acs`
 
@@ -120,7 +119,7 @@ ms.locfileid: "96181006"
 
 1. 转到“设置”>“公司设置”>“SAML 设置”页面，然后在“联合 XML”文本框中上传联合元数据 XML  。
 
-    ![saml 设置页](./media/checkproof-tutorial/saml-settings.png)
+    ![SAML 设置页。](./media/checkproof-tutorial/settings.png)
 
 ### <a name="create-checkproof-test-user"></a>创建 CheckProof 测试用户
 
@@ -128,23 +127,22 @@ ms.locfileid: "96181006"
 
 1. 单击“个人资料”，然后选择“我的个人资料” 。
 
-    ![CheckProof 测试用户页](./media/checkproof-tutorial/create-user.png)
+    ![CheckProof 测试用户页。](./media/checkproof-tutorial/create-user.png)
 
 1. 单击“创建用户”。
 
 1. 在“创建用户”页上，填写必填字段，然后单击“保存” 。
 
-    ![CheckProof 测试用户 1 页](./media/checkproof-tutorial/create-user-2.png)
+    ![CheckProof 创建用户页。](./media/checkproof-tutorial/user.png)
 
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-1. 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 CheckProof
+* 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 CheckProof。
 
-1. 可以使用 Microsoft 访问面板。 在访问面板中单击“CheckProof”磁贴时，你应该会自动登录到设置了 SSO 的 CheckProof。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
-
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“CheckProof”磁贴时，你应该会自动登录到设置了 SSO 的 CheckProof。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 CheckProof 后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 CheckProof 后，即可强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

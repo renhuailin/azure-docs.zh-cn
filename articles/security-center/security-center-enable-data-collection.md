@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 03/04/2021
+ms.date: 08/18/2021
 ms.author: memildin
-ms.openlocfilehash: 3f7663c62b514cb002b4de3df59d2185cfa815d3
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 96b5becdda011243cdcc9e510450683c255e7c1c
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284228"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607944"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心为代理和扩展配置自动预配
 
@@ -25,10 +25,10 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
 
 | 方面                  | 详细信息                                                                                                                                                                                                                      |
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 发布状态：          | **功能**：自动预配功能已正式发布 (GA)<br>**代理和扩展**：适用于 Azure VM 的 Log Analytics 代理已正式发布，Microsoft Dependency Agent 为预览版，适用于 Kubernetes 的策略加载项已正式发布                |
+| 发布状态：          | **功能**：自动预配功能已正式发布 (GA)<br>代理和扩展：适用于 Azure VM 的 Log Analytics 代理已正式发布，Microsoft Dependency Agent 为预览版，适用于 Kubernetes 的策略加载项已正式发布，来宾配置代理为预览版  |
 | 定价：                | 免费                                                                                                                                                                                                                         |
 | 支持的目标： | :::image type="icon" source="./media/icons/yes-icon.png":::Azure 计算机<br>:::image type="icon" source="./media/icons/no-icon.png":::Azure Arc 计算机<br>:::image type="icon" source="./media/icons/no-icon.png":::Kubernetes 节点<br>:::image type="icon" source="./media/icons/no-icon.png":::虚拟机规模集 |
-| 云：                 | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::US Gov，Azure 中国                                                                                                      |
+| 云：                 | **功能**：<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 政府、Azure 中国世纪互联<br>**代理和扩展**：<br>适用于 Azure VM 的 Log Analytics 代理在所有云上可用，适用于 Kubernetes 的策略加载项在所有云上可用，来宾配置代理仅在商业云上可用  |
 |                         |                                                                                                                                                                                                                              |
 
 ## <a name="how-does-security-center-collect-data"></a>安全中心如何收集数据？
@@ -67,9 +67,9 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
 
 1. 从安全中心的菜单中，选择“定价和设置”。
 1. 选择相关订阅。
-1. 在“自动预配”页中，将 Log Analytics 代理的状态设置为“打开” 。
+1. 在“自动预配”页中，将 Log Analytics 代理的自动预配状态设置为“打开” 。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="启用 Log Analytics 代理的自动预配。":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="启用 Log Analytics 代理的自动预配。" lightbox="./media/security-center-enable-data-collection/enable-automatic-provisioning.png":::
 
 1. 在配置选项窗格中，定义要使用的工作区。
 
@@ -120,13 +120,14 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
 
         :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="切换以启用 K8s 策略加载项的自动预配。":::
 
-    1. 选择“保存”。 分配 Azure Policy 并创建修正任务。
+    1. 选择“保存”。 分配 Azure Policy 定义并创建修正任务。
 
         |分机  |策略  |
         |---------|---------|
-        |适用于 Kubernetes 的策略加载项|[将 Azure Policy 加载项部署到 Azure Kubernetes 服务群集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |适用于 Kubernetes 的策略加载项                      |[将 Azure Policy 加载项部署到 Azure Kubernetes 服务群集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
         |Microsoft Dependency Agent（预览）(Windows VM)|[为 Windows 虚拟机部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
-        |Microsoft Dependency Agent（预览）(Linux VM)|[为 Linux 虚拟机部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |Microsoft Dependency Agent（预览）(Linux VM)  |[为 Linux 虚拟机部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |来宾配置代理（预览版）               |[部署先决条件以在虚拟机上启用来宾配置策略](https://github.com/Azure/azure-policy/blob/64dcfa3033a3ff231ec4e73d2c1dad4db4e3b5dd/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json)|
         |||
 
 1. 选择“保存”。 如果需要设置工作区，那么代理安装过程可能需要最多 25 分钟的时间。
@@ -221,7 +222,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
    - [安装适用于 Windows 的 Log Analytics 代理](../virtual-machines/extensions/oms-windows.md)
    - [安装适用于 Linux 的 Log Analytics 代理](../virtual-machines/extensions/oms-linux.md)
 
-1. 若要在现有 VM 上部署代理，请按照[收集有关 Azure 虚拟机的数据](../azure-monitor/vm/quick-collect-azurevm.md)（“收集事件和性能数据”部分为可选）中的说明进行操作。
+1. 若要在现有 VM 上部署代理，请按照[收集有关 Azure 虚拟机的数据](../azure-monitor/vm/monitor-virtual-machine.md)（“收集事件和性能数据”部分为可选）中的说明进行操作。
 
 1. 若要使用 PowerShell 部署代理，请按照虚拟机文档中的说明进行操作：
 

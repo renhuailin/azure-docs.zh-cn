@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 6f2a70e932c1b810e9fef2bca75f1ff9b6e92048
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: e07ff969e8245d245cf724152b6257904f7cb860
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113353964"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698470"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 NVv4 系列虚拟机由 [Amd Radeon INSTINCT MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU 和 AMD EPYC 7V12(Rome) CPU 提供支持，基本频率为 2.45GHz，所有核心峰值频率为 3.1GHz，单核峰值频率为 3.3GHz。 Azure 通过 NVv4 系列引入使用部分 GPU 的虚拟机。 选取适当大小虚拟机来运行 GPU 加速图形应用程序和虚拟桌面，可选范围为具有 2 GiB 帧缓冲区的 1/8 个 GPU 到具有 16 GiB 帧缓冲区的完整 GPU。 NVv4 虚拟机目前只支持 Windows 来宾操作系统。
 

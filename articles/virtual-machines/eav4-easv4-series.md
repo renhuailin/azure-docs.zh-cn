@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: ayshak
 ms.reviewer: jushiman
-ms.openlocfilehash: e91239e1438deae10fcbd20fe3efb1d9fbd0264a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c040c0d4d3c4d2492a866afbf86fdde52809cd45
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751706"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691182"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 在拥有最多 256 MB L3 缓存的多线程配置中，Eav4 和 Easv4 系列使用 AMD 的 2.35Ghz EPYC<sup>TM</sup> 7452 处理器，增加了用于运行最多内存优化工作负载的选项。 Eav4 系列和 Easv4 系列具有与 Ev3 和 Esv3 系列相同的内存和磁盘配置。
 

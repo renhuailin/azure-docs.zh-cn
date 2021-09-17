@@ -4,13 +4,13 @@ description: workspace 表达式用于 Azure Monitor 日志查询中，以从同
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/10/2018
-ms.openlocfilehash: 2f6eb3998c611cb7a72886d1c577c665d73cb5a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 08/19/2021
+ms.openlocfilehash: 7eee3f0133a629fb5c1669ba8dbdc36fe95bf252
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035562"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515411"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 workspace() 表达式
 
@@ -27,7 +27,7 @@ ms.locfileid: "102035562"
 
 | 标识符 | 说明 | 示例
 |:---|:---|:---|
-| 资源名称 | 人工可读的工作区名称（又称“组件名称”） | workspace("contosoretail") |
+| 资源名称 | 人工可读的工作区名称（也称为“组件名称”） | workspace("contosoretail") |
 | 限定的名称 | 窗体中工作区的完整名称：“subscriptionName/resourceGroup/componentName” | workspace('Contoso/ContosoResource/ContosoWorkspace') |
 | ID | 工作区 GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure 资源 ID | Azure 资源的标识符 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |

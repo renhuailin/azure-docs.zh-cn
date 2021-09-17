@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: d66b9cb314ee9cf200a18949f774ff8a8b4a1f6b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d044ddbde293721e26ed491e237aa5b89075f72a
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725300"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455835"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -65,6 +65,8 @@ Azure 门户通过“指标”页公开负载均衡器指标，可在特定资�
 
   >[!NOTE] 
   >解释某些指标时，时间聚合非常重要，因为数据每分钟采样一次。 如果时间聚合设置为五分钟，并且指标聚合类型“求和”用于“SNAT 分配”等指标，则图形将显示分配的 SNAT 端口总数的五倍。 
+  >
+  >建议：分析指标聚合类型 Sum 和 Count 时，建议使用大于一分钟的时间聚合值。
 
 ![标准负载均衡器的指标](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 

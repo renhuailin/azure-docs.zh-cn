@@ -14,14 +14,14 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce3e4c6a7708fba15560564577c9b01722c8aec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79673341845504590d1c70f802a04c644d20b7db
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96548046"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750541"
 ---
-# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>了解多个 Azure Active Directory 组织如何交互
+# <a name="understand-how-multiple-azure-active-directory-tenant-organizations-interact"></a>了解多个 Azure Active Directory 租户组织如何交互
 
 在 Azure Active Directory (Azure AD) 中，每个 Azure AD 组织都是完全独立的：也就是说，对等租户与你管理的其他 Azure AD 组织在逻辑上相互独立。 组织之间的这种独立性包括资源独立性、管理独立性和同步独立性。 组织之间不存在父子关系。
 
@@ -35,7 +35,7 @@ ms.locfileid: "96548046"
 如果组织“Contoso”的某个非管理用户创建了测试组织“Test”，那么：
 
 * 默认情况下，会在该新组织中将创建组织的用户添加为外部用户，并在该组织中为其分配全局管理员角色。
-* 组织“Contoso”的管理员对组织“Test”没有直接管理特权，除非“Test”的管理员专门向其授予了这些特权。 不过，如果“Contoso”的管理员控制创建“Test”的用户帐户，则可以控制对组织“Test”的访问。
+* 组织“Contoso”的管理员对组织“Test”没有直接管理特权，除非“Test”的管理员专门向其授予了这些特权。 不过，如果“Contoso”的管理员登录到创建“Test”的用户帐户，则可以控制对组织“Test”的访问。
 * 如果为一个组织中的用户添加或删除 Azure AD 角色，则此更改不会影响在任何其他 Azure AD 组织中为该用户分配的角色。
 
 ## <a name="synchronization-independence"></a>同步独立性

@@ -7,14 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: e849f97e2c3cb88b81a86b7ea80ac2e0ca35bebe
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2f86f559bfba9c2fcc75649153db450abb877b4d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253626"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696528"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>支持受约束 vCPU 的 VM 大小
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 > [!TIP]
 > 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你工作负载的其他尺寸。

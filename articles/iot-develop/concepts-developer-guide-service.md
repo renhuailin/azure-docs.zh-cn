@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 156f2228800ba433012ef95a8ea410ea1ff1223a
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 15a381f847082e0853db307cc60893eaeeb43e96
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406402"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122604157"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT 即插即用服务开发人员指南
 
-借助 IoT 即插即用，可以生成将功能播发到 Azure IoT 应用程序的智能设备。 当客户将 IoT 即插即用设备连接到已启用 IoT 即插即用的应用程序时，无需手动配置。
+借助 IoT 即插即用，你可以生成将功能播发到 Azure IoT 应用程序的 IoT 设备。 当客户将 IoT 即插即用设备连接到已启用 IoT 即插即用的应用程序时，无需手动配置。
 
 借助 IoT 即插即用，你可以使用已通过 IoT 中心公布其模型 ID 的设备。 例如，你可以直接访问设备的属性和命令。
 

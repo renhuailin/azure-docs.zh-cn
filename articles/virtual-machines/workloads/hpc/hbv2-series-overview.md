@@ -11,16 +11,17 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: ee09191069c05ae67eb84ee15d739cd101de8ef0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d695f01daa4b30a6e88607929f67a0453b06edf0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460463"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691454"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 系列虚拟机概述 
 
- 
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 要在 AMD EPYC 上最大程度地提高高性能计算 (HPC) 应用程序性能，需要考虑周全的方法内存位置和进程放置。 下面概述了 AMD EPYC 体系结构，以及如何在 Azure 上为 HPC 应用程序实现它。 我们将使用术语“pNUMA”指代物理 NUMA 域，使用“vNUMA”指代虚拟化 NUMA 域 。 
 
 从物理上讲，[HBv2 系列](../../hbv2-series.md)服务器是 2 * 64 核 EPYC 7742 CPU，总共 128 个物理内核。 这 128 个核心分为 32 个 pNUMA 域（每套接字 16 个），其中每个都是 4 个核心，被 AMD 称为“CPU Complex”（或“CCX”） 。 每个 CCX 都有自己的 L3 缓存，这是操作系统对 pNUMA/vNUMA 边界的理解。 四个相邻 CCX 共享对 2 个通道的物理 DRAM 的访问。 

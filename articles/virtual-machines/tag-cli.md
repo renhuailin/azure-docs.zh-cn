@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20bb4ab622a01646bcc61d0f691c514a25a06edc
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 10d5526b33b06867da267d61551cc4d6f16f1750
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502600"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695377"
 ---
 # <a name="how-to-tag-a-vm-using-the-azure-cli"></a>如何使用 Azure CLI 标记 VM
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 本文介绍如何使用 Azure CLI 来标记 VM。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 50 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。 还可以使用 Azure [PowerShell](tag-powershell.md) 来标记虚拟机。
 

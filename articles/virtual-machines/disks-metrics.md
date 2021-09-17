@@ -7,14 +7,17 @@ ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0d0330996629ec087022e592cc862a428bc02807
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 461d8c7ae29c56a80b8863b2900c051158add918
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114454572"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689376"
 ---
 # <a name="disk-performance-metrics"></a>磁盘性能指标
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 Azure 在 Azure 门户中提供了指标，这些指标可说明虚拟机 (VM) 和磁盘的性能情况。 还可以通过 API 调用来检索这些指标。 本文分为 3 个部分：
 
 - **磁盘 IO、吞吐量和队列深度指标** - 通过这些指标可以从磁盘和虚拟机的角度了解存储性能。

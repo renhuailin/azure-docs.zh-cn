@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e403ed4778e87e42ad4abb2e6d45923e420ca0c4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d008888968f05641786cdfcb73afac1d540b7596
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438626"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769865"
 ---
 # <a name="event-notifications"></a>事件通知
 
@@ -103,11 +103,11 @@ Azure 数字孪生向事件网格发出的通知将按照 CloudEvents 架构或 
   }
 ```
 
-此信息将出现在生命周期通知消息的 `data` 字段中。
+此数据将出现在生命周期通知消息的 `data` 字段中。
 
 ## <a name="digital-twin-lifecycle-notifications"></a>数字孪生体生命周期通知
 
-所有[数字孪生](concepts-twins-graph.md)都会发出通知，而不管它们是否代表 [Azure 数字孪生中的 IoT 中心设备](how-to-ingest-iot-hub-data.md)。 这是因为生命周期通知与数字孪生体本身有关。
+无论[数字孪生](concepts-twins-graph.md)是否代表 [Azure 数字孪生中的 IoT 中心设备](how-to-ingest-iot-hub-data.md)，数字孪生都会发出通知。 数字孪生之所以执行此操作是因为生命周期通知，生命周期通知与数字孪生体本身有关。
 
 出现以下情况时会触发生命周期通知：
 * 创建了数字孪生
@@ -153,11 +153,11 @@ Azure 数字孪生向事件网格发出的通知将按照 CloudEvents 架构或 
 }
 ```
 
-在消息中，`data` 字段包含受影响数字孪生体的数据（以 JSON 格式表示）。 此正文的架构是“数字孪生资源 7.1”。
+在消息中，`data` 字段包含受影响数字孪生体的数据（以 JSON 格式表示）。 `data` 字段的架构是 *数字孪生资源 7.1*。
 
 对于创建事件，`data` 有效负载将反映创建资源后的孪生状态，因此，它应包含系统生成的所有元素，就如同一个 `GET` 调用一样。
 
-下面是包含组件但不包含顶级属性的某个 [IoT 即插即用 (PnP)](../iot-develop/overview-iot-plug-and-play.md) 设备的数据示例。 应该省略对设备没有意义的属性（例如报告的属性）。 此信息将出现在生命周期通知消息的 `data` 字段中。
+下面是包含组件但不包含顶级属性的某个 [IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)设备的数据示例。 应该省略对设备没有意义的属性（例如报告的属性）。 以下 JSON 对象是将出现在生命周期通知消息的 `data` 字段中的信息：
 
 ```json
 {
@@ -242,7 +242,7 @@ Azure 数字孪生向事件网格发出的通知将按照 CloudEvents 架构或 
 
 在消息中，`data` 字段包含关系的有效负载（以 JSON 格式表示）。 其所用格式与通过 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 对关系发出的 `GET` 请求的格式相同。 
 
-下面是更新关系通知的数据示例。 “更新关系”是指关系的属性已更改，因此数据显示更新后的属性及其新值。 此消息将出现在数字孪生体关系通知消息的 `data` 字段中。
+下面是更新关系通知的数据示例。 “更新关系”是指关系的属性已更改，因此数据显示更新后的属性及其新值。 以下 JSON 对象是将出现在数字孪生体关系通知消息的 `data` 字段中的信息：
 
 ```json
 {

@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: b85855238beb9887a35369011ff8daaaf58bef9e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: ce20b7815c89a45a2677029a28fd205499751e30
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787232"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695397"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>使用 Azure 现成虚拟机 
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 使用 Azure 现成虚拟机，可以利用未使用的容量，大幅降低成本。 每当 Azure 需要回收容量时，Azure 基础结构就会逐出 Azure 现成虚拟机。 因此，Azure 现成虚拟机非常适用于那些处理服务中断的工作负荷（例如批处理作业）、开发/测试环境、大型计算工作负荷等。
 
@@ -105,7 +107,7 @@ Azure 现成虚拟机的定价因地区和 SKU 而异。 有关详细信息，�
 
 **问**：是否可以为 Azure 现成虚拟机申请额外的配额？
 
-**答**：是，可以通过[标准配额申请流程](../azure-portal/supportability/per-vm-quota-requests.md)提交申请，请求提高 Azure 现成虚拟机的配额。
+**答**：是，可以通过 [标准配额申请流程](../azure-portal/supportability/per-vm-quota-requests.md)提交申请，请求提高 Azure 现成虚拟机的配额。
 
 
 **问：** 我可以在何处发布问题？

@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
 ms.collection: linux
-ms.openlocfilehash: bc6c6273ab3d1a4403763e4ed0a8c491995fb2df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca606d2c73952316a269d5ac8663823ffb249bf4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556717"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692237"
 ---
 # <a name="how-to-map-azure-disks-to-linux-vm-guest-disks"></a>如何将 Azure 磁盘映射到 Linux VM 来宾磁盘
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 你需要确定支持 VM 来宾磁盘的 Azure 磁盘。 在某些方案中，可以将磁盘或卷大小与附加的 Azure 磁盘的大小进行比较。 如果有多个相同大小的 Azure 磁盘附加到 VM，则需要使用数据磁盘的逻辑单元号 (LUN)。 
 

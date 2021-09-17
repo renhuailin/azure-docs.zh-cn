@@ -1,18 +1,18 @@
 ---
 title: Azure 流分析简介
 description: 了解 Azure 流分析，这是一种托管的服务，可以帮助你实时分析物联网 (IoT) 提供的流式数据。
-author: enkrumah
-ms.author: ebnkruma
+author: jeanb
+ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q2
-ms.date: 11/12/2020
-ms.openlocfilehash: 5aea6460f3a876d63544ce8422f9f205c22f2a0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 8/20/2021
+ms.openlocfilehash: ee78ca8fee1b83ea10ea86ef180b3804279bbe91
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98015243"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687681"
 ---
 # <a name="welcome-to-azure-stream-analytics"></a>欢迎使用 Azure 流分析
 
@@ -100,7 +100,7 @@ Azure 流分析遵循多个符合性认证，如 [Azure 符合性概述](https:/
 
 ## <a name="performance"></a>性能
 
-流分析可以每秒处理数百万事件，而且传送结果时的延迟也极低。 可以通过它进行纵向扩展和横向扩展，以便操控实时且复杂的大型事件处理应用程序。 流分析通过分区支持高性能，允许将复杂的查询并行化，并在多个流式处理节点上执行这些查询。 Azure 流分析基于 [Trill](https://github.com/Microsoft/Trill)，这是一种与 Microsoft Research 合作开发的高性能内存中流式处理分析引擎。
+流分析可以每秒处理数百万事件，而且传送结果时的延迟也极低。 它允许你[横向扩展](stream-analytics-autoscale.md)以适应工作负载。 流分析通过分区支持高性能，允许将复杂的查询并行化，并在多个流式处理节点上执行这些查询。 Azure 流分析基于 [Trill](https://github.com/Microsoft/Trill)，这是一种与 Microsoft Research 合作开发的高性能内存中流式处理分析引擎。
 
 ## <a name="next-steps"></a>后续步骤
 

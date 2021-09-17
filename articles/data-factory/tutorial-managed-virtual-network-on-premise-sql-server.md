@@ -6,12 +6,12 @@ ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: bb29c7712bdbe629ff3aa8704c0c4654404f0da3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a04371fcba573be41fd5c2275371e0c590b82c08
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971837"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736877"
 ---
 # <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>教程：如何使用专用终结点从数据工厂托管 VNet 访问本地 SQL Server
 
@@ -239,11 +239,9 @@ ms.locfileid: "111971837"
 4. 在“托管专用终结点”下选择“+新建” 。
 5. 在列表中选择“专用链接服务”磁贴，然后选择“继续” 。
 6. 输入专用终结点的名称，然后在专用链接服务列表中选择“myPrivateLinkService”。
-7. 添加目标本地 SQL Server 的 FQDN 和专用链接服务的 NAT IP。
-    
-    :::image type="content" source="./media/tutorial-managed-virtual-network/link-service-nat-ip.png" alt-text="显示链接服务中的 NAT IP 的屏幕截图。" lightbox="./media/tutorial-managed-virtual-network/link-service-nat-ip-expanded.png":::
+7. 添加目标本地 SQL Server 的 FQDN。
 
-    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint.png" alt-text="显示专用终结点设置的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint-6.png" alt-text="显示专用终结点设置的屏幕截图。":::
 
 8. 创建专用终结点。
 

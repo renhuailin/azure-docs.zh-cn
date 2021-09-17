@@ -1,23 +1,24 @@
 ---
 title: 复制活动性能和可伸缩性指南
-description: 了解使用复制活动时影响 Azure 数据工厂中数据移动性能的关键因素。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解使用复制活动时影响 Azure 数据工厂和 Azure Synapse Analytics 管道中数据移动性能的关键因素。
 services: data-factory
 documentationcenter: ''
 ms.author: jianleishen
 author: jianleishen
 manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
+ms.subservice: data-movement
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: 473f0c2c33fff48f945079ad1bd948c35c0826c4
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 2a2708c3d84dd83b752db2a0ae56843ae068aabe
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482590"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822425"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 
@@ -29,27 +30,27 @@ ms.locfileid: "109482590"
 
 有时，你需要执行从数据湖或企业数据仓库 (EDW) 到 Azure 的大规模数据迁移。 其他时候，你需要将来自不同源的大量数据引入 Azure 来进行大数据分析。 在每种情况下，实现最佳性能和可伸缩性都至关重要。
 
-Azure 数据工厂 (ADF) 提供了一种机制用来引入数据。 ADF 具有以下优势：
+Azure 数据工厂和 Azure Synapse Analytics 管道提供了一种引入数据的机制，这种机制具有以下优势：
 
 * 处理大量数据
 * 性能高
 * 经济高效
 
-这些优势使得 ADF 非常适合于想要构建高性能的可伸缩数据引入管道的数据工程师。
+这些优势非常适合于想要构建高性能的可伸缩数据引入管道的数据工程师。
 
 阅读本文后，能够回答以下问题：
 
-* 对于数据迁移和数据引入方案，使用 ADF 复制活动可以实现哪种程度的性能和可伸缩性？
-* 应执行哪些步骤来优化 ADF 复制活动的性能？
-* 可以利用哪些 ADF 性能优化设置来优化单个复制活动运行的性能？
-* 优化复制性能时，需要考虑 ADF 以外的其他哪些因素？
+* 将复制活动用于数据迁移和数据引入方案时，可以实现什么级别的性能和可扩展性？
+* 应执行哪些步骤来优化复制活动的性能？
+* 对于单个复制活动运行，可以使用哪些性能优化？
+* 优化复制性能时需要考虑哪些其他外部因素？
 
 > [!NOTE]
 > 如果你对常规复制活动不熟悉，在阅读本文前请参阅[复制活动概述](copy-activity-overview.md)。
 
-## <a name="copy-performance-and-scalability-achievable-using-adf"></a>使用 ADF 可实现的复制性能和可伸缩性
+## <a name="copy-performance-and-scalability-achievable-using-azure-data-factory-and-synapse-pipelines"></a>使用 Azure 数据工厂和 Synapse 管道可实现的复制性能和可扩展性
 
-ADF 提供一个可在不同级别实现并行度的无服务器体系结构。
+Azure 数据工厂和 Synapse 管道提供无服务器体系结构，可以实现不同级别的并行性。
 
 通过此体系结构，可开发能最大程度地提高环境数据移动吞吐量的管道。 这些管道充分利用以下资源：
 
@@ -65,7 +66,7 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构。
 下表显示了数据移动持续时间的计算。 根据给定的网络和数据存储带宽以及给定的数据有效负载大小来计算每个单元中的持续时间。
 
 > [!NOTE]
-> 下面提供的持续时间旨在表示使用 ADF 实现的端到端数据集成解决方案中可实现的性能，方法是使用[复制性能优化功能](#copy-performance-optimization-features)中描述的一种或多种性能优化技术，包括使用 ForEach 对多个并发复制活动进行分区和生成。 建议执行[性能优化步骤](#performance-tuning-steps)中列出的步骤，以优化特定数据集和系统配置的复制性能。 应将性能优化测试中获取的数字用于生产部署计划、容量计划和计费计划。
+> 下面提供的持续时间旨在表示端到端数据集成解决方案中可实现的性能，方法是使用[复制性能优化功能](#copy-performance-optimization-features)中描述的一种或多种性能优化技术，包括使用 ForEach 对多个并发复制活动进行分区和生成。 建议执行[性能优化步骤](#performance-tuning-steps)中列出的步骤，以优化特定数据集和系统配置的复制性能。 应将性能优化测试中获取的数字用于生产部署计划、容量计划和计费计划。
 
 &nbsp;
 
@@ -81,11 +82,11 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构。
 | **10 PB**                   | 647.3 个月   | 323.6 个月  | 64.7 个月   | 31.6 个月  | 6.5 个月   | 3.2 个月   | 0.6 个月    |
 | | |  | | |  | | |
 
-ADF 副本可在不同的级别缩放：
+复制可在不同的级别缩放：
 
-![ADF 副本的缩放方式](media/copy-activity-performance/adf-copy-scalability.png)
+![复制的缩放方式](media/copy-activity-performance/adf-copy-scalability.png)
 
-* ADF 控制流可以并行启动多个复制活动（例如，使用 [For Each 循环](control-flow-for-each-activity.md)）。
+* 控制流可以并行启动多个复制活动（例如，使用 [For Each 循环](control-flow-for-each-activity.md)）。
 
 * 单个复制活动可以利用可缩放的计算资源。
   * 使用 Azure 集成运行时 (IR) 时，能够以无服务器的方式为每个复制活动指定[最多 256 个数据集成单元 (DIU)](#data-integration-units)。
@@ -97,7 +98,7 @@ ADF 副本可在不同的级别缩放：
 
 ## <a name="performance-tuning-steps"></a>性能优化步骤
 
-请执行以下步骤，通过复制活动优化 Azure 数据工厂服务的性能：
+请执行以下步骤，通过复制活动优化服务的性能：
 
 1. **选取测试数据集并建立基线。**
 
@@ -127,7 +128,7 @@ ADF 副本可在不同的级别缩放：
 
 3. **如何通过并行运行多项复制来最大化聚合吞吐量：**
 
-    至此，你已将单个复制活动的性能最大化。 如果尚未达到环境的吞吐量上限，可并行运行多个复制活动。 可使用 ADF 控制流构造并行运行。 其中一种构造是 [For Each 循环](control-flow-for-each-activity.md)。 有关详细信息，请参阅以下关于解决方案模板的文章：
+    至此，你已将单个复制活动的性能最大化。 如果尚未达到环境的吞吐量上限，可并行运行多个复制活动。 可使用控制流构造并行运行。 其中一种构造是 [For Each 循环](control-flow-for-each-activity.md)。 有关详细信息，请参阅以下关于解决方案模板的文章：
 
     * [从多个容器复制文件](solution-template-copy-files-multiple-containers.md)
     * [将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md)
@@ -139,11 +140,11 @@ ADF 副本可在不同的级别缩放：
 
 ## <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
-遵循[性能优化步骤](#performance-tuning-steps)为方案规划并执行性能测试。 从[排查复制活动的性能问题](copy-activity-performance-troubleshooting.md)了解如何排查 Azure 数据工厂中的每个复制活动运行性能问题。
+遵循[性能优化步骤](#performance-tuning-steps)为方案规划并执行性能测试。 并且通过[复制活动性能故障排除](copy-activity-performance-troubleshooting.md)来了解如何排除每个复制活动运行的性能问题。
 
 ## <a name="copy-performance-optimization-features"></a>复制性能优化功能
 
-Azure 数据工厂提供以下性能优化功能：
+此服务提供以下性能优化功能：
 
 * [数据集成单元](#data-integration-units)
 * [自承载集成运行时可伸缩性](#self-hosted-integration-runtime-scalability)
@@ -152,7 +153,7 @@ Azure 数据工厂提供以下性能优化功能：
 
 ### <a name="data-integration-units"></a>数据集成单元
 
-数据集成单元 (DIU) 是一个度量值，表示单个单位在 Azure 数据工厂中的能力。 这种能力包含 CPU、内存和网络资源分配。 DIU 仅适用于 [Azure 集成运行时](concepts-integration-runtime.md#azure-integration-runtime)。 DIU 不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。 [在此处了解更多信息](copy-activity-performance-features.md#data-integration-units)。
+数据集成单元 (DIU) 是一个度量值，表示单个单位在 Azure 数据工厂和 Synapse 管道中的能力。 这种能力包含 CPU、内存和网络资源分配。 DIU 仅适用于 [Azure 集成运行时](concepts-integration-runtime.md#azure-integration-runtime)。 DIU 不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。 [在此处了解更多信息](copy-activity-performance-features.md#data-integration-units)。
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>自承载集成运行时可伸缩性
 

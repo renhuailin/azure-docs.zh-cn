@@ -5,20 +5,20 @@ services: virtual-machines
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
-ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: zivr
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 647f9bd509633000e5154e77aeebfea56947b45d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: cad5029c88c3444ab42a53af950d78a4167ea878
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668858"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697166"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-powershell"></a>使用 Azure PowerShell 将 VM 部署到邻近放置组
 
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM 
 
 若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](../co-location.md#proximity-placement-groups)中。
 

@@ -8,14 +8,16 @@ ms.custom: REST
 ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: a7237bfc82a932b774b4b6ef293c242a84fd75af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 536a3040bda2fec6aa5139949d31ef47bd2bbd9e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591215"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694918"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 此示例演示如何使用 [Azure REST API](/rest/api/azure/) 检索 Linux 虚拟机的 CPU 使用情况。
 

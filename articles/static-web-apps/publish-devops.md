@@ -5,14 +5,14 @@ services: static-web-apps
 author: scubaninja
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 03/23/2021
+ms.date: 08/17/2021
 ms.author: apedward
-ms.openlocfilehash: 17a41bd64f1bba4a5ae4d6d9d497c03afae037e7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9df037177aac3dd909795f18c6e903eedd1c98a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114444219"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608867"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>教程：使用 Azure DevOps 发布 Azure Static Web Apps
 
@@ -34,6 +34,9 @@ ms.locfileid: "114444219"
 
   > [!NOTE]
   > 如果你的存储库中已有一个应用，则可以跳到下一部分。
+  
+  > [!NOTE]
+  > 应用程序必须面向 .NET Core 3.1，管道才能成功。
 
 1. 导航到 Azure Repos 中的存储库。
 
@@ -55,17 +58,30 @@ ms.locfileid: "114444219"
 
 1. 选择“静态 Web 应用”。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
-1. 在“部署详细信息”下，确保选择“其他”。 这样你就可以使用 Azure Repos 中的代码。
+1. 使用以下值创建新的静态 Web 应用。
 
-    :::image type="content" source="media/publish-devops/create-resource.png" alt-text="部署详细信息 - 其他":::
+    :::image type="content" source="media/publish-devops/azure-portal-static-web-apps-devops.png" alt-text="部署详细信息 - 其他":::
 
-1. 部署成功后，导航到新的 Static Web Apps 资源。
+    | 设置 | 值 |
+    |---|---|
+    | 订阅 | Azure 订阅名称。 |
+    | 资源组 | 选择现有组名称或创建新组。 |
+    | 名称 | 输入 myDevOpsApp。 |
+    | 托管计划类型 | 选择“免费”。 |
+    | 区域 | 选择离你最近的区域。 |
+    | Source | 选择“其他”。 |
+
+1. 选择“查看 + 创建”
+
+1. 选择“创建”。
+
+1. 部署成功后，选择“转到资源”。
 
 1. 选择“管理部署令牌”。
 
-1. 复制 **部署令牌** 并将其粘贴到文本编辑器中，以便在另一屏幕中使用。
+1. 复制部署令牌并将部署令牌值粘贴到文本编辑器中，以便在另一屏幕中使用。
 
     > [!NOTE]
     > 暂时不要理会此值，因为在后面的步骤中你还要复制并粘贴其他值。
@@ -76,15 +92,15 @@ ms.locfileid: "114444219"
 
 1. 导航到前面创建的 Azure Repos 中的存储库。
 
-1. 选择“设置生成”。
+2. 选择“设置生成”。
 
     :::image type="content" source="media/publish-devops/azdo-build.png" alt-text="生成管道":::
 
-1. 在“配置管道”屏幕中，选择“初学者管道”。
+3. 在“配置管道”屏幕中，选择“初学者管道”。
 
     :::image type="content" source="media/publish-devops/configure-pipeline.png" alt-text="配置管道":::
 
-1. 将以下 YAML 复制并粘贴到你的管道中。
+4. 复制以下 YAML，并将管道中生成的配置替换为此代码。
 
     ```yaml
     trigger:
@@ -98,9 +114,9 @@ ms.locfileid: "114444219"
         submodules: true
       - task: AzureStaticWebApp@0
         inputs:
-          app_location: '/'
+          app_location: '/src'
           api_location: 'api'
-          output_location: ''
+          output_location: '/src'
           azure_static_web_apps_api_token: $(deployment_token)
     ```
 
@@ -111,35 +127,44 @@ ms.locfileid: "114444219"
 
     `azure_static_web_apps_api_token` 值是自我管理的，并且是手动配置的。
 
-2. 选择“变量”。
+5. 选择“变量”。
 
-3. 创建新变量。
+6. 选择“New variable”。
 
-4. 将该变量命名为 **deployment_token**（与工作流中的名称匹配）。
+7. 将该变量命名为 **deployment_token**（与工作流中的名称匹配）。
 
-5. 复制前面已粘贴到文本编辑器中的部署令牌。
+8. 复制前面已粘贴到文本编辑器中的部署令牌。
 
-6. 将该部署令牌粘贴到“值”框中。
+9. 将该部署令牌粘贴到“值”框中。
 
     :::image type="content" source="media/publish-devops/variable-token.png" alt-text="变量令牌":::
 
-7. 选择“将此值保密”。
+10. 选择“将此值保密”。
 
-8. 选择“确定”。
+11. 选择“确定”。
 
-9. 选择“保存”，返回到管道 YAML。
+12. 选择“保存”，返回到管道 YAML。
 
-10. 选择“保存并运行”打开“保存并运行”对话框。
+13. 选择“保存并运行”打开“保存并运行”对话框。
 
     管道
 
-11. 选择“保存并运行”以运行管道。
+14. 选择“保存并运行”以运行管道。
 
-12. 部署成功后，导航到 Azure Static Web Apps 的“概述”，其中包含了部署配置的链接。 请注意“源”链接现在如何指向 Azure DevOps 存储库的分支和位置。
+15. 部署成功后，导航到 Azure Static Web Apps 的“概述”，其中包含了部署配置的链接。 请注意“源”链接现在如何指向 Azure DevOps 存储库的分支和位置。
 
-13. 选择“URL”查看新部署的网站。
+16. 选择“URL”查看新部署的网站。
 
     :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="部署位置":::
+
+## <a name="clean-up-resources"></a>清理资源
+
+通过删除资源组来清理你部署的资源。
+
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
+2. 在“按名称筛选”字段中输入资源组名称。
+3. 选择在本教程中使用的资源组名称。
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

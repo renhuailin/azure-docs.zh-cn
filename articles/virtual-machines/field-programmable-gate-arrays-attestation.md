@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: a0c0c04d33c994279fe15a8fe7f677b2c25a55de
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 034acde1f99409ef7d541d7705bb995e0db00d3b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166030"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689100"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>适用于 Azure NP 系列 VM 的 FPGA 证明（预览版）
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 FPGA 证明服务对 Xilinx 工具集生成的设计检查点文件（称为“网表”）执行一系列验证，并生成一个包含已验证映像的文件（称为“位流”），该文件可加载到 NP 系列 VM 中的 Xilinx U250 FPGA 卡上。  
 

@@ -9,14 +9,16 @@ ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485968e6fa9a68781de85648f0ad008586c2c15b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 49357c5098a4e9a9dc35e3abd910a33efe6411ca
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734588"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691036"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
+
+**适用于：** :heavy_check_mark: Linux VMs :heavy_check_mark: 灵活规模集
 
 本文适用于希望[创建](#create-an-ssh-key-pair)并使用安全外壳 (SSH) 密钥以[连接](#connect-to-your-vm)到 Azure 中的 Linux 虚拟机 (VM) 的 Windows 用户。 你还可以[在 Azure 门户中生成并存储 SSH 密钥](../ssh-keys-portal.md)，以便在门户中创建 VM 时使用。
 

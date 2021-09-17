@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/08/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: 7bef7a0cbc81f4d72a28d74feb5a526789c0ff59
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 87780dbc3a7d492f0fd0fec8839ef26bb092b2eb
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114469714"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122777547"
 title: 应用程序网关常见问题
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -64,7 +64,7 @@ sections:
   - question: 在应用程序网关的生存期内，其 IP 或 DNS 名称是否会变化？
     answer: 在应用程序网关 V1 SKU 中，如果停止再启动应用程序网关，则 VIP 可能会变化。 但是，与应用程序网关关联的 DNS 名称在网关的整个生命周期内不会更改。 由于 DNS 名称不会更改，建议使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。 在应用程序网关 V2 SKU 中，可以将 IP 地址设置为静态，因此 IP 和 DNS 名称将在应用程序网关的生存期内不会更改。
   - question: 应用程序网关是否支持静态 IP？
-    answer: 是，应用程序网关 v2 SKU 支持静态公共 IP 地址。 v1 SKU 支持静态内部 IP。
+    answer: 是，应用程序网关 v2 SKU 支持静态公共 IP 地址和静态内部 IP。 v1 SKU 支持静态内部 IP。
   - question: 应用程序网关是否支持在网关上使用多个公共 IP？
     answer: 一个应用程序网关仅支持一个公共 IP 地址。
   - question: 应该为应用程序网关创建多大的子网？

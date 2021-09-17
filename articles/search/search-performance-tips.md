@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 804166beebf4f12e246a27122bd44c611972a488
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 03d29f6f6265c214427e208de4bc9177659bb473
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111437993"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823901"
 ---
 # <a name="tips-for-better-performance-in-azure-cognitive-search"></a>提高 Azure 认知搜索性能的提示
 
@@ -67,7 +67,9 @@ ms.locfileid: "111437993"
 
 + **使用部分术语搜索。** 与典型关键字搜索相比，[部分术语搜索](search-query-partial-matching.md)（如前缀搜索、模糊搜索和正则表达式搜索）的计算成本要高得多，因为它们需要完全索引扫描来生成结果。
 
-+ **Facet 的数量。** 将 facet 添加到查询需要对每个查询进行聚合。 通常，仅添加计划在应用中呈现的 facet。
++ **Facet 的数量。** 将 facet 添加到查询需要对每个查询进行聚合。 要为构面请求更高的“计数”，则还需要服务完成额外的工作。 通常，只需要添加计划在应用程序中呈现的构面，除非必要，否则应避免为构面请求大量计数。
+
++ **skip 的值很高。** 将 $skip 参数设置为较高的值（例如，以千为单位）会增加搜索延迟，因为引擎将在为每个请求检索大量文档并进行排名。 出于性能原因，最好避免高 $skip 值并使用其他技术（例如筛选）来检索大量文档。
 
 + **限制高基数字段。**  高基数字段是具有大量唯一值的可查找或可筛选的字段，因此，会在计算结果时使用大量资源。 例如，将“产品 ID”或“说明”字段设置为可查找和可筛选则视为高基数字段，因为大多值在不同的文档中是唯一值。
 

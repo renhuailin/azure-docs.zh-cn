@@ -2,23 +2,31 @@
 title: Azure-SSIS Integration Runtime 上内置和预安装的组件
 description: 列出 Azure-SSIS Integration Runtime 上所有内置和预安装的组件，例如客户端、驱动程序、提供程序、连接管理器、数据源/目标/转换以及任务。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 05/14/2020
-ms.openlocfilehash: 2f5ad8deb702e312f7dd7275128e8ca8098ab90c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73b1bbd29cf7b418c4eb9df3b5dd6d296154f051
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393779"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418640"
 ---
 # <a name="built-in-and-preinstalled-components-on-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime 上内置和预安装的组件
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文列出了 Azure 数据工厂 (ADF) 中 Azure-SSIS Integration Runtime 上的所有内置和预安装组件，例如客户端、驱动程序、提供程序、连接管理器、数据源/目标/转换以及任务。  若要在 ADF 中预配 SSIS IR，请按照[预配 Azure-SSIS IR](./tutorial-deploy-ssis-packages-azure.md) 中的说明操作。
+
+## <a name="os-and-net-framework-on-azure-ssis-ir"></a>Azure-SSIS IR 上的操作系统和 .NET Framework
+
+| 名称 | 版本 |
+|------|---------|
+| **Windows** | Windows Server 2019 |
+| **.NET Framework** | 4.7.2 |
 
 ## <a name="built-in-and-preinstalled-clients-drivers-and-providers-on-azure-ssis-ir"></a>Azure-SSIS IR 上内置和预安装的客户端、驱动程序和提供程序
 

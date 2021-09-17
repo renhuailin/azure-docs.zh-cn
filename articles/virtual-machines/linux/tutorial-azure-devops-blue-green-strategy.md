@@ -1,25 +1,26 @@
 ---
-title: 教程 - 为 Azure Linux 虚拟机配置 Canary 部署
-description: 本教程介绍如何设置持续部署 (CD) 管道。 此管道使用蓝绿部署策略更新一组 Azure Linux 虚拟机。
+title: 为 Azure Linux 虚拟机配置 Canary 部署
+description: 了解如何设置持续部署 (CD) 管道。 此管道使用蓝绿部署策略更新一组 Azure Linux 虚拟机。
 author: moala
 tags: azure-devops-pipelines
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 4545891cce926f049673cd2c2380a8309f2e71a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a455950e1637dbcef63acc52de139c5d0a9a2e10
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552580"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690962"
 ---
-# <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>教程 - 为 Azure Linux 虚拟机配置蓝绿部署策略
+# <a name="configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>为 Azure Linux 虚拟机配置蓝绿部署策略
+
+适用于：:heavy_check_mark: Linux VM 
 
 ## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>基础结构即服务 (IaaS) - 配置 CI/CD
 

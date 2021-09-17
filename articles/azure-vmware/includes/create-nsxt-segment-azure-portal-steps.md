@@ -3,12 +3,15 @@ title: 使用 Azure VMware 解决方案添加 NSX-T 网段
 description: 在 Azure 门户中为 Azure VMware 解决方案添加 NSX-T 网段的步骤。
 ms.topic: include
 ms.date: 07/16/2021
-ms.openlocfilehash: 7744884da7e1e6d46428bb00b52f88772c866760
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 4b153d95ad339d3a71d5b227e0f794675014a28c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734210"
 ---
 <!-- Used in configure-dhcp-azure-vmware-solution.md and tutorial-nsx-t-network-segment.md -->
 
@@ -26,7 +29,7 @@ ms.locfileid: "114229289"
 
    - “子网网关”- 带有子网掩码的段的子网网关 IP 地址。 VM 附加到逻辑段，连接到此段的所有 VM 都属于同一子网。  而且，附加到此逻辑段的所有 VM 必须携带来自同一段的 IP 地址。
 
-   - “DHCP”（可选） - 逻辑段的 DHCP 范围。 必须配置 [DHCP 服务器或 DHCP 中继](../configure-dhcp-azure-vmware-solution.md)，以使用段的 DHCP。  
+   - “DHCP”（可选） - 逻辑段的 DHCP 范围。 必须配置 [DHCP 服务器或 DHCP 中继](../configure-dhcp-azure-vmware-solution.md)，以使用段的 DHCP。    
 
    >[!NOTE]
    >默认情况下，“已连接网关”被选中，且为只读。  其显示第 1 层网关和段信息类型。 

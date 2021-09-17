@@ -1,23 +1,26 @@
 ---
-title: Azure 数据工厂中的 ForEach 活动
-description: ForEach 活动在管道中定义重复的控制流。 它用于循环访问集合并执行指定的活动。
+title: ForEach 活动
+titleSuffix: Azure Data Factory & Azure Synapse
+description: ForEach 活动定义了 Azure 数据工厂或 Azure Synapse Analytics 管道中的重复控制流。 ForEach 用于对集合进行迭代，以对集合中的每个项单独执行操作。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 28c67640a65e44fb9c6d6791229796c614993fa1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 08/24/2021
+ms.openlocfilehash: 5325999fc844a23aeea3795527396709d2e7a730
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906289"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825072"
 ---
-# <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
+# <a name="foreach-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的 ForEach 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
+ForEach Activity 定义了 Azure 数据工厂或 Synapse 管道中的重复控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
 
 ## <a name="syntax"></a>语法
 此属性在本文后面介绍。 项属性是集合，通过 `@item()` 引用集合中的每个项目，如以下语法中所示：  
@@ -70,13 +73,13 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 -------- | ----------- | -------------- | --------
 name | For-Each 活动的名称。 | String | 是
 type | 必须设置为 **ForEach** | String | 是
-isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 20 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 False。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | 布尔 | 否。 默认值为 False。
+isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 50 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 False。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | 布尔 | 否。 默认值为 False。
 batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 这是并发数上限，但 for-each 活动不会始终按此数量执行 | 整数（最大值为 50） | 否。 默认值为 20。
 Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回 JSON 数组） | 是
 活动 | 要执行的活动。 | 活动列表 | 是
 
 ## <a name="parallel-execution"></a>并行执行
-如果 **isSequential** 被设置为 False，则活动以并行方式迭代，最多包含 20 个并发迭代。 应谨慎使用此设置。 如果并发迭代写入同一文件夹中的不同文件，此方法仍然适用。 如果并发迭代以并发的方式写入同一文件，则此方法很有可能出错。 
+如果 isSequential 被设置为 False，则活动以并行方式迭代，最多包含 50 个并发迭代。 应谨慎使用此设置。 如果并发迭代写入同一文件夹中的不同文件，此方法仍然适用。 如果并发迭代以并发的方式写入同一文件，则此方法很有可能出错。 
 
 ## <a name="iteration-expression-language"></a>迭代表达式语言
 在 ForEach 活动中，为属性 **items** 提供要循环访问的数组。 使用 `@item()` 循环访问 ForEach 活动中的单个枚举。 例如，如果 **items** 是数组：[1, 2, 3]，则 `@item()` 在第一次迭代中返回 1，在第二次迭代中返回 2，在第三次迭代中返回 3。 你还可以使用 `@range(0,10)` 之类的表达式，从 0 开始，到 9 结束，迭代 10 次。
@@ -487,7 +490,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 | | |
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+参阅支持的其他控制流活动： 
 
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [Get Metadata 活动](control-flow-get-metadata-activity.md)

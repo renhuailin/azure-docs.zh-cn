@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: d45a8b8f426df32b9f5ac6f64237107083e0f9ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 907ae75b17bcb7496c2ad3e76a8e4da1bd44b1fa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586292"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728112"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>教程：使用 Azure Monitor 排查应用服务应用的问题
 
@@ -43,15 +43,18 @@ ms.locfileid: "100586292"
 
 ## <a name="create-azure-resources"></a>创建 Azure 资源
 
-首先在本地运行多个命令，以设置要在本教程中使用的示例应用。 这些命令将克隆示例应用，创建 Azure 资源，创建部署用户，然后将应用部署到 Azure。 系统会提示输入在创建部署用户期间提供的密码。 
+首先在本地运行多个命令，以设置要在本教程中使用的示例应用。 这些命令将创建 Azure 资源，创建部署用户，然后将示例应用部署到 Azure。 系统会提示输入在创建部署用户期间提供的密码。 
 
 ```bash
-git clone https://github.com/Azure-Samples/App-Service-Troubleshoot-Azure-Monitor
 az group create --name myResourceGroup --location "South Central US"
 az webapp deployment user set --user-name <username> --password <password>
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku B1 --is-linux
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
-git remote add azure <url_from_previous_step>
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DEPLOYMENT_BRANCH='main'
+git clone https://github.com/Azure-Samples/App-Service-Troubleshoot-Azure-Monitor
+cd App-Service-Troubleshoot-Azure-Monitor
+git branch -m main
+git remote add azure <url-from-app-webapp-create>
 git push azure main
 ```
 

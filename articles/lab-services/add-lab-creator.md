@@ -2,13 +2,14 @@
 title: 在 Azure 实验室服务中添加用户作为实验室创建者
 description: 本文介绍如何在 Azure 实验室服务中向实验室帐户的实验室创建者角色添加用户。 实验室创建者可以在此实验室帐户中创建实验室。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/26/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: a2135ab6580d39d6c63f7e948a29f0f0ede4efd6
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435954"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634191"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>在 Azure 实验室服务中向实验室帐户添加实验室创建者
 本文介绍如何在 Azure 实验室服务中将用户作为实验室创建者添加到实验室帐户中。 然后，这些用户可以在实验室帐户中创建实验室。 
@@ -16,14 +17,25 @@ ms.locfileid: "96435954"
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>将 Microsoft 用户帐户添加到实验室创建者角色
 若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 如果打算使用同一用户帐户创建课堂实验室，可以跳过此步骤。 若要使用其他用户帐户创建教室实验室，请执行以下步骤： 
 
-为教师提供为课程创建实验室的权限，并将他们添加为 **实验室创建者** 角色：
+为教师提供创建课程实验室的权限，并将他们添加为“实验室创建者”角色：有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
-1. 在“实验室帐户”页上，选择“访问控制(IAM)”，然后单击工具栏中的“+ 添加角色分配”。 
 
-    ![“访问控制”->“添加角色分配”按钮](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. 在“添加角色分配”页上，选择“实验室创建者”作为“角色”，选择想要添加到“实验室创建者”角色的用户，然后选择“保存”   。 
+1. 在“实验室帐户”页上，选择“访问控制 (IAM)” 
 
-    ![添加实验室创建者](./media/tutorial-setup-lab-account/add-lab-creator.png)
+1. 选择“添加” > “+ 添加角色分配（预览版）”。 
+
+    ![打开了“添加角色分配”菜单的“访问控制(IAM)”页。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. 在“角色”选项卡上，选择“实验室创建者”角色。 
+
+    ![选中了“角色”选项卡的“添加角色分配”页。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. 在“成员”选项卡上，选择要添加到“实验室创建者”角色的用户
+
+1. 在“查看 + 分配”选项卡上，选择“查看 + 分配”，以分配角色 。
+
+
+
 
     > [!NOTE]
     > 如果要添加非 Microsoft 帐户用户作为实验室创建者，请参阅[添加非 Microsoft 帐户用户作为实验室创建者](#add-a-non-microsoft-account-user-as-a-lab-creator)部分。 

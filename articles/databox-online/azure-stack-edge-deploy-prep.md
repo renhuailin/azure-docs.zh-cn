@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/23/2021
 ms.author: alkohli
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: eecdead171e68915430aefe9aebeb24833485789
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: d215c1cc8650eb23d1702f7ef0fd782278cfb6d8
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688972"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605201"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-fpga"></a>教程：准备部署 Azure Stack Edge Pro FPGA  
 
@@ -79,7 +79,7 @@ ms.locfileid: "114688972"
 
 * 具有 Microsoft Azure 存储帐户和访问凭据。
 
-* 你未被系统管理员设置的任何 Azure 策略阻止。 有关策略的详细信息，请参阅[快速入门：创建策略分配以识别不合规资源](../governance/policy/assign-policy-portal.md)。
+* 你未被系统管理员设置的任何 Azure Policy 分配阻止。 有关 Azure Policy 的详细信息，请参阅[快速入门：创建策略分配以识别不合规资源](../governance/policy/assign-policy-portal.md)。
 
 
 ### <a name="for-the-azure-stack-edge-pro-fpga-device"></a>对于 Azure Stack Edge Pro FPGA 设备

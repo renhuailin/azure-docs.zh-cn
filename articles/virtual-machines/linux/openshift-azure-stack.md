@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: decc66d2d5abd16c084aa19443dbac54e87a9560
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce24fa1e3956d1ebfe7365a89e312bf8586ce770
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667236"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695433"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>在 Azure Stack 中部署 OpenShift 容器平台或 OKD。
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 可在 Azure Stack 中部署 OpenShift。 Azure 与 Azure Stack 之间存在一些重要的差异，因此，部署方法和功能会略有不同。
 

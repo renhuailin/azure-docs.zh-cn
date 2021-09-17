@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 240ed5ed7aefb31503047f124d34e99d738da687
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: e065aa7d3d269632c77a810917ec913c43e518db
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236852"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605270"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>什么是安全策略、计划和建议？
 
@@ -21,7 +21,7 @@ ms.locfileid: "112236852"
 
 ## <a name="what-is-a-security-policy"></a>什么是安全策略？
 
-Azure 策略定义是在 Azure Policy 中创建的，它是有关你要控制的特定安全条件的规则。 内置的定义包括诸如控制可以部署什么类型的资源或在所有资源上强制使用标签之类的事情。 你还可以创建你自己的自定义策略定义。
+一种 Azure Policy 定义，创建于 Azure Policy，是一种有关你要控制的特定安全状况的规则。 内置的定义包括诸如控制可以部署什么类型的资源或在所有资源上强制使用标签之类的事情。 你还可以创建你自己的自定义策略定义。
 
 若要实现这些策略定义（不管是内置定义还是自定义定义），你需要分配它们。 可通过 Azure 门户、PowerShell 或 Azure CLI 来分配上述任意策略。
 
@@ -29,7 +29,7 @@ Azure Policy 中有各种类型的策略。 安全中心主要使用“审核”
 
 ## <a name="what-is-a-security-initiative"></a>什么是安全计划？
 
-Azure 计划是针对特定目标或用途组合在一起的 Azure 策略定义或规则的集合。 Azure 计划在逻辑上将一组策略分组为单个项，从而简化了对策略的管理。
+Azure Policy 计划是为满足特定目标或目的而组合在一起的 Azure Policy 定义或规则集合。 Azure 计划在逻辑上将一组策略分组为单个项，从而简化了对策略的管理。
 
 安全计划定义工作负荷的所需配置，有助于确保你遵守公司或监管机构的安全要求。
 

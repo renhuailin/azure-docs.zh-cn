@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 8d947fa0d9566eae712a4b41c1c7280f6f5f22c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e65399c363fe5afc3c233e32b3a1e606ff272f61
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145909"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182978"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Grammarly 的集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "108145909"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Grammarly 支持 IDP 发起的 SSO。
+* Grammarly 支持[自动用户预配和取消预配](grammarly-provisioning-tutorial.md)（推荐）。
 * Grammarly 支持实时用户预配。
 
 > [!NOTE]

@@ -8,14 +8,16 @@ ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 48b7fb11f3f0127358ee92ddea9262b805264500
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f4ae0dfb8e03add64f450d98c15f85da33eaef3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738994"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696463"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 大多数 Azure 托管磁盘使用 Azure 存储加密进行加密，后者使用服务器端加密 (SSE) 来保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 将存储在 Azure 托管磁盘（OS 和数据磁盘）上的数据保存到云时，Azure 存储加密在默认情况下会自动对这些数据进行静态加密。 但是，启用了主机加密的磁盘不会通过 Azure 存储进行加密。 对于启用了主机加密的磁盘，托管 VM 的服务器会为数据提供加密，该加密数据会流入 Azure 存储中。
 
@@ -55,7 +57,7 @@ Azure 存储加密不会影响托管磁盘的性能，并且不会产生额外�
 > [!IMPORTANT]
 > 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会转移到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
 
-若要为托管磁盘启用客户管理的密钥，请参阅我们的相关文章，了解如何使用 [Azure PowerShell 模块](windows/disks-enable-customer-managed-keys-powershell.md)、[Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) 或 [Azure 门户](disks-enable-customer-managed-keys-portal.md)来启用它。 若要了解如何使用自动密钥轮换来启用客户管理的密钥，请参阅[使用自动密钥轮换来设置 Azure Key Vault 和 DiskEncryptionSet（预览版）](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview)。
+若要为托管磁盘启用客户管理的密钥，请参阅我们的相关文章，了解如何使用 [Azure PowerShell 模块](windows/disks-enable-customer-managed-keys-powershell.md)、[Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) 或 [Azure 门户](disks-enable-customer-managed-keys-portal.md)来启用它。 
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>主机加密 - VM 数据的端到端加密
 

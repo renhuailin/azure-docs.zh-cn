@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: cb4f074cb9487c22fc340b2e7b2941cd7b69ca98
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 272c146c71e9caf6d7ba6a1ba165a6157f5b6de0
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459046"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445845"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询
 Azure Monitor 日志基于 Azure 数据资源管理器，日志查询是使用相同的 Kusto 查询语言 (KQL) 编写的。 这是一种旨在方便阅读和创作的丰富语言，你只需接受一些基本指导，便可开始编写查询。
@@ -22,7 +22,7 @@ Azure Monitor 中使用查询的区域包括以下几个：
 - [工作簿](../visualize/workbooks-overview.md)。 在 Azure 门户中通过交互式视觉对象报表中的各种可视化效果提供日志查询结果。
 - [Azure 仪表板](../visualize/tutorial-logs-dashboards.md)。 将任何查询的结果固定到 Azure 仪表板，这样就可以将日志和指标数据一起可视化，并且还可以将其与其他 Azure 用户共享。
 - [逻辑应用](../logs/logicapp-flow-connector.md)。  通过逻辑应用在自动化工作流中使用日志查询结果。
-- [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult)。 在使用 Get-AzOperationalInsightsSearchResults 的 PowerShell 脚本（通过命令行运行）或 Azure 自动化 runbook 中使用日志查询结果。
+- [PowerShell](/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery)。 使用命令行中 PowerShell 脚本或使用 Invoke-AzOperationalInsightsQuery 的 Azure 自动化 runbook 中的日志查询结果。
 - [Azure Monitor 日志 API](https://dev.loganalytics.io)。 从任何 REST API 客户端检索工作区中的日志数据。  API 请求包括针对 Azure Monitor 运行的查询，用于确定要检索的数据。
 
 ## <a name="getting-started"></a>入门

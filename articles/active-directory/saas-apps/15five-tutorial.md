@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/27/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: b463460fe649034d4e0175e46154e41cd401689d
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 9d39d65ca7ec64587bd619cecbeebdfdf58a42a8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555232"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>教程：Azure Active Directory 与 15Five 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "111555232"
 * 让用户使用其 Azure AD 帐户自动登录到 15Five。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,6 +38,7 @@ ms.locfileid: "111555232"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * 15Five 支持 SP 发起的 SSO。
+* 15Five 支持[自动用户预配](15five-provisioning-tutorial.md)。
 
 ## <a name="add-15five-from-the-gallery"></a>从库中添加 15Five
 

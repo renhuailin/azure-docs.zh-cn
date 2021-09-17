@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: a06a488473264a992d947ef78ad69c61776d34ae
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 11f8c7ddd7e06e9cc4c27173d5bb8f9dd14cbd42
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271208"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768470"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -87,6 +87,7 @@ ms.locfileid: "122271208"
 | **AzureSignalR** | Azure SignalR。 | 出站 | 否 | 否 |
 | **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory**、**AzureKeyVault**、**EventHub**、**GuestAndHybridManagement** 和 **Storage** 标记。 | 出站 | 否 | 否 |
 | **AzureTrafficManager** | Azure 流量管理器探测 IP 地址。<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](../traffic-manager/traffic-manager-faqs.md)。 | 入站 | 否 | 是 |  
+| **AzureUpdateDelivery** | 用于访问 Windows 更新。 <br/><br/>*注意：* 此标记提供对 Windows 更新元数据服务的访问。 若要成功下载更新，还必须启用 AzureFrontDoor.FirstParty 服务标记并使用定义的协议和端口配置出站安全规则，如下所示： <ul><li>AzureUpdateDelivery：TCP，端口 443</li><li>AzureFrontDoor.FirstParty：TCP，端口 80</li></ul>此标记当前不可通过 Azure 门户进行配置| 出站 | 否 | 否 |  
 | **BatchNodeManagement** | Azure Batch 专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
 | **CognitiveServicesManagement** | Azure 认知服务的流量的地址范围。 | 推送、请求和匿名 | 否 | 否 |
 | **DataFactory**  | Azure 数据工厂 | 推送、请求和匿名 | 否 | 否 |
@@ -110,6 +111,7 @@ ms.locfileid: "122271208"
 | **SqlManagement** | SQL 专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
 | **存储** | Azure 存储。 <br/><br/>*注意：* 此标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 | 出站 | 是 | 是 |
 | **StorageSyncService** | 存储同步服务。 | 推送、请求和匿名 | 否 | 否 |
+| **WindowsAdminCenter** | 允许 Windows Admin Center 后端服务与 Windows Admin Center 的客户安装通信。 注意：此标签当前无法通过 Azure 门户进行配置。 | 出站 | 否 | 是 |
 | **WindowsVirtualDesktop** | Windows 虚拟桌面。 | 推送、请求和匿名 | 否 | 是 |
 | **VirtualNetwork** | 虚拟网络地址空间（为虚拟网络定义的所有 IP 地址范围）、所有连接的本地地址空间、[对等互连](virtual-network-peering-overview.md)的虚拟网络、已连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虚拟网络、[主机的虚拟 IP 地址](./network-security-groups-overview.md#azure-platform-considerations)以及在[用户定义的路由](virtual-networks-udr-overview.md)上使用的地址前缀。 此标记还可能包含默认路由。 | 推送、请求和匿名 | 否 | 否 |
 

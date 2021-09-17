@@ -12,12 +12,12 @@ ms.date: 04/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
 adobe-target: true
-ms.openlocfilehash: 6fc1fbb6a665d03e250beec85c66178feaa55189
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 22161ee49c2527b92b11b4c1fe197fa06d48fcb9
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862259"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122661979"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure 
 
@@ -180,7 +180,10 @@ az ml model register -n bidaf_onnx --asset-path outputs/model.onnx --experiment-
 
 下方的推理配置指定机器学习部署将使用 `./source_dir` 目录中的 `echo_score.py` 文件来处理传入的请求，并将搭配使用 Docker 映像与 `project_environment` 环境中指定的 Python 包。
 
-创建项目环境时，可以使用任何[Azure 机器学习的特选环境](./resource-curated-environments.md)作为基础 Docker 映像。 我们会在顶层安装所需的依赖项，并将生成的 Docker 映像存储在与工作区关联的存储库中。
+创建项目环境时，可以使用任何 [Azure 机器学习的推理特选环境](concept-prebuilt-docker-images-inference.md#list-of-prebuilt-docker-images-for-inference)作为基础 Docker 映像。 我们会在顶层安装所需的依赖项，并将生成的 Docker 映像存储在与工作区关联的存储库中。
+
+> [!NOTE]
+> Azure 机器学习[推理源目录](/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py#constructor&preserve-view=true)上传不遵循 .gitignore 或 .amlignore
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

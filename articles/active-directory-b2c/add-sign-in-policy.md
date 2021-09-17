@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1bfe50bc80e3aa2a8c924002efdba2a020dbe9ef
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 71784aa5e40cc7af96faa60d0779a779e99f3425
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112198757"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777844"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录流
 
@@ -46,7 +46,8 @@ ms.locfileid: "112198757"
 若要添加登录策略，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“策略”下，依次选择“用户流”、“新建用户流”。
 1. 在“创建用户流”页上，选择“登录”用户流 。
@@ -116,7 +117,8 @@ ms.locfileid: "112198757"
 ## <a name="update-and-test-your-policy"></a>更新并测试策略
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标，确保使用包含 Azure AD 租户的目录。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“标识体验框架”。
 1. 选择“上传自定义策略”，然后上传已更改的策略文件 *TrustFrameworkExtensions.xml*。

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2021
+ms.date: 08/24/2021
 ms.author: b-juche
-ms.openlocfilehash: 06be68fb1de224bbbcad13e71e7f4069e44f8309
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b05b934b4dc57b4db941755cfcfb2f8d21fc2c6
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725554"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824960"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -90,68 +90,50 @@ Azure NetApp 文件卷有一个名为 maxfiles 的限制。 Maxfiles 限制是�
 |    > 3 TiB 但 <= 4 TiB    |    8000 万     |
 |    > 4 TiB                 |    1 亿    |
 
-如果已为卷分配至少 4 TiB 的配额，则可发起[支持请求](#limit_increase)以将 maxfiles (Inode) 限制提高到 1 亿以上。 每增加 1 亿个文件（或低于此数量），需要将相应的卷配额增加 4 TiB。  例如，如果将 maxfiles 限制从 1 亿个文件增加到 2 亿个文件（或二者之间的任意数量），则需要将卷配额从 4 TiB 增加到 8 TiB。
+如果已为卷分配至少 4 TiB 的配额，则可发起[支持请求](#request-limit-increase)以将 maxfiles (Inode) 限制提高到 1 亿以上。 每增加 1 亿个文件（或低于此数量），需要将相应的卷配额增加 4 TiB。  例如，如果将 maxfiles 限制从 1 亿个文件增加到 2 亿个文件（或二者之间的任意数量），则需要将卷配额从 4 TiB 增加到 8 TiB。
 
 如果卷配额至少为 20 TiB，则可以将 maxfiles 限制增加到 5 亿。 <!-- ANF-11854 --> 
 
 ## <a name="regional-capacity-quota"></a>区域容量配额
 
-Azure NetApp 文件具有基于容量的区域限制。 每个订阅的标准容量限制为每个区域 25 TiB，涵盖所有服务级别。   
+可以单击 Azure NetApp 文件“设置”下方的“配额”，以显示区域的当前和默认配额大小。 
 
-可以通过提交特定服务和订阅限制（配额）支持票证来请求增加容量，如下所示：
+例如： 
 
-1. 请在门户中的“支持 + 故障排除”中启动支持请求过程：  
+![显示如何展示配额信息的屏幕截图。](../media/azure-netapp-files/quota-display.png) 
 
-    ![显示“支持 + 故障排除”菜单的屏幕截图。](../media/azure-netapp-files/support-troubleshoot-menu.png)   
+可以[提交支持请求](#request-limit-increase)来增加区域容量配额，而不产生额外的费用。 你提交的支持请求将发送给 Azure 容量管理团队进行处理。 你通常会在 2 个工作日内收到回复。 如果你有大容量请求，Azure 容量管理团队可能会与你联系。  
 
-2.  选择服务和订阅限制（配额）问题类型，并输入所有相关的详细信息：
+区域容量配额增加不会导致计费增加。 计费仍依据预配的容量池。
+例如，如果当前预配的容量为 25 TiB，可以请求将配额增大到 35 TiB。  在 2 个工作日内，配额增加将应用到请求的区域。 应用配额增加后，仍只需为当前预配的容量 (25 TiB) 付费。 但实际预配额外的 10 TiB 时，将按 35 TiB 计费。
 
-    ![显示“服务和订阅限制”菜单的屏幕截图。](../media/azure-netapp-files/service-subscription-limits-menu.png)   
+Azure NetApp 文件的当前[资源限制](#resource-limits)不会更改。 你仍然可以预配 500 TiB 容量池。 但在执行此操作之前，需要将区域容量配额增加到 500 TiB。
 
-3. 单击“详细信息”选项卡中的“输入详细信息”链接，然后选择“每个订阅的 TiB”配额类型：   
-
-    ![显示“详细信息”选项卡中“输入详细信息”链接的屏幕截图。](../media/azure-netapp-files/support-details.png)   
-
-    ![显示“配额详细信息”窗口的屏幕截图。](../media/azure-netapp-files/support-quota-details.png)   
-
-4.  一定要在“支持方法”页上选择“严重级别 B - 中等影响”：  
-
-    ![显示“支持方法”窗口的屏幕截图。](../media/azure-netapp-files/support-method-severity.png)   
-
-5. 完成请求过程以发出请求。 
- 
-提交票证后，请求将发送到 Azure 容量管理团队进行处理。 你通常会在 2 个工作日内收到回复。 Azure 容量管理团队可能会与你联系，以处理大容量请求。
- 
-区域容量配额增加不会导致计费增加。 计费依据依旧为预配的容量池。
-
-## <a name="request-limit-increase"></a>请求调高限制 <a name="limit_increase"></a> 
+## <a name="request-limit-increase"></a>请求调高限制
 
 可创建 Azure 支持请求以上调[资源限制](#resource-limits)表中的可调整限制。 
 
-从 Azure 门户导航平面： 
+1. 转到“支持 + 故障排除”下的“新建支持请求” 。
+1. 在“问题描述”选项卡下，提供请求的信息。
+1. 在“其他详细信息”选项卡下，单击“请求详细信息”字段中的“输入详细信息”。   
 
-1. 单击“帮助 + 支持”。
-2. 单击“+ 新建支持请求”。
-3. 在“基本信息”选项卡中提供以下信息： 
-    1. 问题类型： 选择“服务和订阅限制(配额)”。
-    2. 订阅：选择需要增加配额的资源的订阅。
-    3. 配额类型：选择“存储: Azure NetApp 文件限制”。
-    4. 单击“下一步: 解决方案”
-4. 在“详细信息”选项卡上：
-    1. 在“说明”框中，为相应的资源类型提供以下信息：
+    ![显示“详细信息”选项卡和“输入详细信息”字段的屏幕截图。](../media/azure-netapp-files/quota-additional-details.png)
 
-        |  资源  |    父资源      |    请求的新限制     |    配额增加的原因       |
-        |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  帐户 |  *订阅 ID*   |  请求的新的最大帐户数    |  哪个方案或用例提示了请求？  |
-        |  池    |  订阅 ID、NetApp 帐户 URI  |  请求的新的最大池数   |  哪个方案或用例提示了请求？  |
-        |  Volume  |  订阅 ID、NetApp 帐户 URI、容量池 URI   |  请求的新的最大卷数     |  哪个方案或用例提示了请求？  |
-        |  Maxfiles  |  订阅 ID、NetApp 帐户 URI、容量池 URI、卷 URI   |  请求的新的最大 maxfiles 数     |  哪个方案或用例提示了请求？  |    
-        |  跨区域复制数据保护卷  |  订阅 ID、目标 NetApp 帐户 URI、目标容量池 URI、源 NetApp 帐户 URI、源容量池 URI、源卷 URI   |  请求的跨区域复制数据保护卷（目标卷）的新的最大数量     |  哪个方案或用例提示了请求？  |    
+1. 在出现的“配额详细信息”窗口中：  
 
-    2. 指定相应的支持方法并提供你的协定信息。
+    1. 在“配额类型”中，选择要增加的资源类型。  
+        例如：  
+        * *每个订阅的区域容量配额 (TiB)*
+        * *每个 Azure 区域每个订阅的 NetApp 帐户数*
+        * *每个订阅的卷数*
 
-    3. 单击“下一步: 查看 + 创建”以创建请求。 
+    1. 在“请求的区域”中，选择你的区域。   
+        当前和默认大小显示在“配额状态”下。
+    1. 输入一个值，请求增加指定的配额类型。
+    
+    ![显示如何展示和请求增加区域配额的屏幕截图。](../media/azure-netapp-files/quota-details-regional-request.png)
 
+1. 单击“下一步”，然后单击“查看 + 创建”以创建请求。 
 
 ## <a name="next-steps"></a>后续步骤  
 

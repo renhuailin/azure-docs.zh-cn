@@ -1,39 +1,50 @@
 ---
 title: 监视复制活动
-description: 了解如何监视 Azure 数据工厂中的复制活动执行情况。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何监视 Azure 数据工厂和 Azure Synapse Analytics 中的复制活动执行情况。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 1382d92b09bef59a7b9e79a758c41c6bbaec7343
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b8f3de9a986c491de6bfd2b507755abe4face534
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482626"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822398"
 ---
 # <a name="monitor-copy-activity"></a>监视复制活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何监视 Azure 数据工厂中的复制活动执行情况。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何监视 Azure 数据工厂和 Synapse 中的复制活动执行情况。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="monitor-visually"></a>直观地监视
 
-在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 参阅[直观监视 Azure 数据工厂](monitor-visually.md)，对 Azure 数据工厂监视进行常规了解。
+创建并发布管道后，就可以将它与触发器相关联，或手动启动临时运行。 可以在用户体验中以本机方式监视所有管道运行。 通过[可视化监控 Azure 数据工厂和 Synapse 管道](monitor-visually.md)全面了解监控。
 
-若要监视复制活动运行，请转到数据工厂的“创作和监视”UI。 在“监视器”选项卡上，可以看到一个管道运行列表，单击“管道名称”链接即可访问管道运行中的活动运行的列表。
+要监视复制活动运行，请转到服务实例的数据工厂 Studio 或 Azure Synapse Studio UI。  在“监视器”选项卡上，可以看到一个管道运行列表，单击“管道名称”链接即可访问管道运行中的活动运行的列表。
+
+# <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
 ![监视管道运行](./media/copy-activity-overview/monitor-pipeline-run.png)
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+![监视管道运行](./media/copy-activity-overview/monitor-pipeline-run-synapse.png)
+
+---
 
 在此级别，可以看到复制活动输入、输出和错误的链接（如果复制活动运行失败）以及持续时间/状态等统计信息。 单击复制活动名称旁边的“详细信息”  按钮（眼镜）即可详细了解复制活动执行情况。 
 
 ![监视复制活动运行](./media/copy-activity-overview/monitor-copy-activity-run.png)
 
-在此图形监视视图中，Azure 数据工厂会提供复制活动执行信息，其中包括数据读取/写入量、从源复制到接收器的数据的文件数/行数、吞吐量、针对复制方案应用的配置、使用相应的持续时间和详细信息执行复制活动的步骤，等等。 请参阅[此表](#monitor-programmatically)，了解每个可能的指标及其详细说明。 
+在此图形监视视图中，该服务会提供复制活动执行信息，其中包括数据读取/写入量、从源复制到接收器的数据的文件数/行数、吞吐量、针对复制方案应用的配置、使用相应的持续时间和详细信息执行复制活动的步骤，等等。 请参阅[此表](#monitor-programmatically)，了解每个可能的指标及其详细说明。 
 
-在某些方案中，当你运行数据工厂中的复制活动时，会在复制活动监视视图顶部看到“性能调优提示”，如示例中所示。 这些提示告知 ADF 针对此特定复制运行确定的瓶颈，并建议如何进行更改，以便提升复制吞吐量。 详细了解[自动性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。
+在某些情况下，运行复制活动时，复制活动监视视图的顶部会显示“性能优化提示”，如示例中所示。 这些提示告知服务针对此特定复制运行确定的瓶颈，并建议如何进行更改，以便提升复制吞吐量。 详细了解[自动性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。
 
 底部的 **执行详细信息和持续时间** 描述了复制活动所要经历的重要阶段，这对于排查复制性能问题特别有用。 复制运行的瓶颈就是持续时间最长的那个运行。 请参阅[排查复制活动性能问题](copy-activity-performance-troubleshooting.md)，了解每个阶段所代表的内容以及详细的故障排除指南。
 
@@ -43,7 +54,7 @@ ms.locfileid: "109482626"
 
 ## <a name="monitor-programmatically"></a>以编程方式监视
 
-“复制活动运行结果” > “输出”部分（用于呈现 UI 监视视图）中也会返回复制活动执行详细信息和性能特征。 下面是可能返回的属性的完整列表。 只会显示适用于你的复制方案的属性。 若要对如何以编程方式监视活动运行进行常规了解，请参阅[以编程方式监视 Azure 数据工厂](monitor-programmatically.md)。
+“复制活动运行结果” > “输出”部分（用于呈现 UI 监视视图）中也会返回复制活动执行详细信息和性能特征。 下面是可能返回的属性的完整列表。 只会显示适用于你的复制方案的属性。 有关如何以编程方式监视活动运行的一般信息，请参阅[以编程方式监视 Azure 数据工厂或 Synapse 管道](monitor-programmatically.md)。
 
 | 属性名称  | 说明 | 输出中的单位 |
 |:--- |:--- |:--- |

@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: cef99e06eaafda41022d4c8937a4a624267b1e1d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 2fddb83123f22a99e0b65363f52c2b8c3bbfbfc3
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454413"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597992"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 
@@ -213,9 +213,11 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 |错误  | 解决方法  |
 |---------|---------|
+| 409 冲突错误| 如有操作正在进行，则同一 Web 服务上的任何新操作都将响应 409 冲突错误。 例如，如果创建或更新 Web 服务操作正在进行，那么触发新的删除操作将会引发错误。 |
 |部署 Web 服务时映像生成失败     |  将“pynacl==1.2.1”作为 pip 依赖项添加到 Conda 文件以进行映像配置       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   请将部署中使用的 VM 的 SKU 更改为具有更多内存的 SKU。 |
 |FPGA 失败     |  你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai       |
+
 
 ## <a name="advanced-debugging"></a>高级调试
 

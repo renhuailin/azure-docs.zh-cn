@@ -7,14 +7,17 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 6/3/2021
 ms.author: srijangupta
-ms.openlocfilehash: 9e276c9051be711e41b68d0b2dbb17c6816645d5
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 4e9d7eec14e994d88f4212df4d0e848de1ea6476
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004954"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689770"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
+
 ## <a name="prerequisites"></a>必备条件
 本部分假设已经将从 [Debian 网站](https://www.debian.org/distrib/)下载的 .iso 文件中的 Debian Linux 操作系统安装到虚拟硬盘。 可以使用多种现有的工具来创建 .vhd 文件；Hyper-V 只是一个示例。 有关 Hyper-V 的使用说明，请参阅[安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f13ffe10ed9ade4e6fe8767ef61b6709747b7d2a
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92310031"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606246"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>阻止 Azure 逻辑应用中的连接器创建的连接
 
@@ -123,7 +123,7 @@ ms.locfileid: "92310031"
 
    ![显示“策略定义”属性的屏幕截图。](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **定义位置** | 是 | <*Azure-subscription-name*> | 用于策略定义的 Azure 订阅 <p><p>1.若要查找你的订阅，请选择省略号 ( **...** ) 按钮。 <br>2.在“订阅”列表中找到并选择你的订阅。 <br>3.完成后，选择“选择”。 |
    | **名称** | 是 | <policy-definition-name> | 用于策略定义的名称 |
@@ -222,7 +222,7 @@ ms.locfileid: "92310031"
 
 有关 Azure 策略定义的详细信息，请参阅以下主题：
 
-* [策略结构定义](../governance/policy/concepts/definition-structure.md)
+* [Azure Policy 定义结构](../governance/policy/concepts/definition-structure.md)
 * [教程：创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 * [Azure 逻辑应用的 Azure Policy 内置策略定义](./policy-reference.md)
 
@@ -244,7 +244,7 @@ ms.locfileid: "92310031"
 
    ![策略定义属性](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **定义位置** | 是 | <*Azure-subscription-name*> | 用于策略定义的 Azure 订阅 <p><p>1.若要查找你的订阅，请选择省略号 ( **...** ) 按钮。 <br>2.在“订阅”列表中找到并选择你的订阅。 <br>3.完成后，选择“选择”。 |
    | **名称** | 是 | <policy-definition-name> | 用于策略定义的名称 |
@@ -309,7 +309,7 @@ ms.locfileid: "92310031"
 
 有关 Azure 策略定义的详细信息，请参阅以下主题：
 
-* [策略结构定义](../governance/policy/concepts/definition-structure.md)
+* [Azure Policy 定义结构](../governance/policy/concepts/definition-structure.md)
 * [教程：创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 * [Azure 逻辑应用的 Azure Policy 内置策略定义](./policy-reference.md)
 
@@ -329,7 +329,7 @@ ms.locfileid: "92310031"
 
 1. 在“基本信息”下，为策略分配提供以下信息：
 
-   | 属性 | 必选 | 说明 |
+   | 属性 | 必须 | 说明 |
    |----------|----------|-------------|
    | **范围** | 是 | 要在其中强制实施策略分配的资源。 <p><p>1.在“作用域”框旁边，选择省略号 ( **...** ) 按钮。 <br>2.在“订阅”列表中选择 Azure 订阅。 <br>3.（可选）在“资源组”列表中选择资源组。 <br>4.完成后，选择“选择”。 |
    | **排除项** | 否 | 要从策略分配中排除的任何 Azure 资源。 <p><p>1.在“排除项”框旁边，选择省略号 ( **...** ) 按钮。 <br>2.从“资源”列表中选择相应资源 >“添加到所选作用域”。 <br>3.完成后，选择“保存”。 |

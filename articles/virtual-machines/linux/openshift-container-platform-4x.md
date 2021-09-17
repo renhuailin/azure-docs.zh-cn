@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: e8650802b4add9b33664205367bb3242b32b9754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1e37e401bd44c4e6077e9a69dbc6ad72f8eaa0d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670389"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693956"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>在 Azure 中部署 OpenShift 容器平台 4.x
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 现在，Azure 中支持通过 Installer-Provisioned Infrastructure (IPI) 模型部署 OpenShift 容器平台 (OCP) 4.2。  尝试 OpenShift 4 的登录页为 [try.openshift.com](https://try.openshift.com/)。 若要在 Azure 中安装 OCP 4.2，请访问 [Red Hat OpenShift 群集管理器](https://cloud.redhat.com/openshift/install/azure/installer-provisioned)页。  需要使用 Red Hat 凭据才能访问此站点。
 

@@ -12,14 +12,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: 71d585d16f4026ac605e7a61e64af89df806fed8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d8671cab8e81b47316d14c9cabb4b803111643be
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950023"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768479"
 ---
 # <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set"></a>Linux 虚拟机规模集的 Azure 混合权益
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 统一规模集
 
 Linux 虚拟机规模集的 Azure 混合权益现已正式发布。 Azure 混合权益可帮助降低运行 RHEL 和 SLES [虚拟机规模集](./overview.md)的成本。
 

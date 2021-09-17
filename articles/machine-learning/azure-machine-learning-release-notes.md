@@ -8,19 +8,28 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 02/18/2021
-ms.openlocfilehash: 354bc77283949f46ce5f1f1e972e7917855634b1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/18/2021
+ms.openlocfilehash: 1f3ed6e3c661e0238b6a29284a2da7254edab6c4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742135"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824837"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro) 参考页。
 
 __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在页面更新时收到通知：`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-08-18"></a>2021-08-18
+
+### <a name="azure-machine-learning-experimentation-user-interface"></a>Azure 机器学习试验用户界面
+  + **运行显示名称**
+    + 运行显示名称是可分配给运行的新的、可编辑且可选的显示名称。 
+    + 此名称有助于更有效地跟踪、组织和发现运行。 
+    + 运行显示名称默认为 adjective_noun_guid 格式（例如：awesome_watch_2i3uns）。 
+    + 可以将此默认名称编辑为更易于自定义的名称。 可在 Azure 机器学习工作室用户界面的“运行详细信息”页中编辑此项。   
 
 ## <a name="2021-08-02"></a>2021-08-02
 
@@ -120,7 +129,7 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 
 ## <a name="2021-05-25"></a>2021-05-25
 
-### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>宣布推出适用于 Azure 机器学习的 2.0 CLI（预览版）
+### <a name="announcing-the-cli-v2-preview-for-azure-machine-learning"></a>宣布推出适用于 Azure 机器学习的 CLI (v2)（预览版）
 
 Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 该扩展可让你从命令行训练和部署模型，并提供了在跟踪模型生命周期时加快数据科学纵向和横向扩展的功能。 [安装并开始使用](how-to-configure-cli.md)。
 
@@ -285,7 +294,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
 
 + **Bug 修复与改进**
   + 改进了页面加载时间。
-  + 提高了性能。
+  + 改进的性能。
   + 提高了速度和内核可靠性。
   + 通过永久将“笔记本文件”窗格向上移动来获取垂直空间
   + 现在可以在终端中单击链接

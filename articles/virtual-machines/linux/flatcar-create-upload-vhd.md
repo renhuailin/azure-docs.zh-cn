@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 5d8be9493b7a312270301e3520f301f797fe2167
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7df838cdc036e482bc97d9ca0bb76dd648eb0a46
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565285"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695570"
 ---
 # <a name="using-a-prebuilt-flatcar-image-for-azure"></a>为 Azure 使用预生成的 Flatcar 映像
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 可以为每个 Flatcar 支持的通道下载 Flatcar Container Linux 的预生成的 Azure 虚拟硬盘映像：
 

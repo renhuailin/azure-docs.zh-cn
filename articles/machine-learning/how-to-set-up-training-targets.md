@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/28/2020
+ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 1b4394c7338aabb63654a1462a97518aaff9ada3
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e08823861e0b1a197313c8311cc13ac972d61a25
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408508"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603706"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
@@ -28,7 +28,7 @@ ms.locfileid: "111408508"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
+* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://azure.microsoft.com/free/)
 * [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * [Azure 机器学习工作区](how-to-manage-workspace.md) `ws`
 * 计算目标 `my_compute_target`。  [创建计算目标](how-to-create-attach-compute-studio.md) 
@@ -77,7 +77,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 本文中的示例代码假设你已创建了“先决条件”部分的计算目标 `my_compute_target`。
 
 >[!Note]
->不支持将 Azure Databricks 作为用于模型训练的计算目标。 可以使用 Azure Databricks 执行数据准备和部署任务。 
+>不支持将 Azure Databricks 作为用于模型训练的计算目标。 可以使用 Azure Databricks 执行数据准备和部署任务。
+
+[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 ## <a name="create-an-environment"></a>创建环境
 Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 此类学习环境会指定与训练和评分脚本有关的 Python 包、Docker 映像、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。
@@ -133,7 +135,7 @@ script_run_config.run_config.target = my_compute_target
 如果要替代允许用于运行的默认最长时间，可以通过 `max_run_duration_seconds`  参数来实现。 如果运行时间超过此值，系统会尝试自动取消运行。
 
 ### <a name="specify-a-distributed-job-configuration"></a>指定分布式作业配置
-如果要运行分布式训练作业，请为 `distributed_job_config` 参数提供分布式作业特定配置。 支持的配置类型包括 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) 和 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration)。 
+若要运行[分布式训练](how-to-train-distributed-gpu.md)作业，请为 `distributed_job_config` 参数提供分布式作业特定配置。 支持的配置类型包括 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) 和 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration)。 
 
 有关运行 Horovod、TensorFlow 和 PyTorch 分布式作业的详细信息和示例，请参阅：
 

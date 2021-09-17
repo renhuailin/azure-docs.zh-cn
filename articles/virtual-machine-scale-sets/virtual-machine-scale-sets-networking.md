@@ -9,14 +9,16 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 452d24d95fc0c43d8301e29b2304b9f0baa3cb25
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 85a4305abf1708d45627f775a583ae219db22b8e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673918"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693985"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
+
+**适用于：:heavy_check_mark: 统一规模集**
 
 通过门户部署 Azure 虚拟机规模集时，某些网络属性（例如带入站 NAT 规则的 Azure 负载均衡器）是默认设置的。 本文介绍如何使用部分较高级的可以对规模集配置的网络功能。
 
@@ -516,6 +518,24 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
     }
     ```
 
+
+## <a name="explicit-network-outbound-connectivity-for-flexible-scale-sets"></a>灵活规模集的显式网络出站连接性 
+
+为了增强默认网络安全，[带有灵活业务流程的虚拟机规模集](..\virtual-machines\flexible-virtual-machine-scale-sets.md)要求通过以下方法之一，为通过自动缩放配置文件隐式创建的实例显式定义出站连接： 
+
+- 对于大多数方案，我们建议使用[已附加到子网的 NAT 网关](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md)。
+- 对于安全要求较高的方案，或者在使用 Azure 防火墙或网络虚拟设备 (NVA) 时，你可以将自定义的用户定义路由指定为防火墙中的下一个跃点。 
+- 实例位于标准 SKU 实例 Azure 负载均衡器的后端池。 
+- 将公共 IP 地址附加到实例网络接口。 
+
+使用具有统一业务流程的单实例 VM 和虚拟机规模集时，系统会自动提供出站连接。 
+
+需要显式出站连接的常见方案包括： 
+
+- Windows VM 激活要求你已定义从 VM 实例到 Windows 激活密钥管理服务 (KMS) 的出站连接。 有关详细信息，请参阅[排查 Windows VM 激活问题](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)。  
+- 访问存储帐户或 Key Vault。 你还可以通过[专用链接](../private-link/private-link-overview.md)与 Azure 服务建立连接。 
+
+有关定义安全出站连接的更多详细信息，请参阅 [Azure 中的默认出站访问](https://aka.ms/defaultoutboundaccess)。
 
 
 ## <a name="next-steps"></a>后续步骤

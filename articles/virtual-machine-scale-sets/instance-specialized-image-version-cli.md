@@ -10,14 +10,16 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7f3680af94e8ae36a1d2a2b356d717fcc25b575e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 361ea49a9ab740cc981beac3952301a137e629af
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028012"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691238"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建规模集
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 从共享映像库中存储的[专用化映像版本](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)创建规模集。 若要使用通用化映像版本创建规模集，请参阅[从通用化映像创建规模集](instance-generalized-image-version-cli.md)。
 

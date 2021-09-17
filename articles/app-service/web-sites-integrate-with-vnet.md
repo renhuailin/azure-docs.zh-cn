@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/04/2021
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 444831d1d8e9982ac0837e90fe04941b5ae928a7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac90dadc93ce09bc2ce0af6314e4bd2c48ab79f8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728083"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768668"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -115,7 +115,7 @@ VNet 集成取决于专用子网。 预配子网时，Azure 子网从一开始�
     
     :::image type="content" source="./media/web-sites-integrate-with-vnet/vnetint-route-all-disabling.png" alt-text="禁用“全部路由”":::
 
-1. 选择 **“是”** 。
+1. 请选择“是”。
 
 还可使用 CLI 配置“全部路由”（注意：所需的 `az version` 最低版本为 2.27.0）：
 
@@ -123,9 +123,7 @@ VNet 集成取决于专用子网。 预配子网时，Azure 子网从一开始�
 az webapp config set --resource-group myRG --name myWebApp --vnet-route-all-enabled [true|false]
 ```
 
-“全部路由”配置设置会取代并优先于旧的 `WEBSITE_VNET_ROUTE_ALL` 应用设置。
-
-:::image type="content" source="./media/web-sites-integrate-with-vnet/vnetint-route-all-appsetting.png" alt-text="“全部路由”应用设置":::
+“全部路由”配置设置是启用所有流量的路由的建议方法。 通过此配置设置，你将可以使用[内置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F33228571-70a4-4fa1-8ca1-26d0aba8d6ef)来审核行为。 现有的 `WEBSITE_VNET_ROUTE_ALL` 应用设置仍可使用，你可以使用任一设置启用所有流量路由。
 
 #### <a name="network-routing"></a>网络路由
 

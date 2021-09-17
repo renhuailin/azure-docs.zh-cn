@@ -1,30 +1,32 @@
 ---
 title: 复制活动性能优化功能
-description: 了解有助于优化 Azure 数据工厂中的复制活动性能的重要功能。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解有助于优化 Azure 数据工厂和 Azure Synapse Analytics 中的复制活动性能的重要功能。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/24/2020
-ms.openlocfilehash: e161ddbeaad0f9e366baa1265622bede93d5b567
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 9be8ef1772da6259441a8de4c85fa44d54945c7d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482608"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821813"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述可在 Azure 数据工厂中利用的复制活动性能优化功能。
+本文概述可在 Azure 数据工厂和 Synapse 管道中利用的复制活动性能优化功能。
 
 ## <a name="data-integration-units"></a>数据集成单元
 
-数据集成单元是一种度量单位，代表单个单位在 Azure 数据工厂中的能力（包含 CPU、内存、网络资源分配）。 数据集成单元仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)，而不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。
+数据集成单元是一种度量单位，代表单个单位在该服务中的能力（包含 CPU、内存、网络资源分配）。 数据集成单元仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)，而不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。
 
-允许用来为复制活动运行提供支持的 DIU 数为 **2 到 256 个**。 如果未指定该数目或者在 UI 中选择“自动”，则数据工厂将根据源-接收器对和数据模式动态应用最佳的 DIU 设置。 下表列出了不同复制方案中支持的 DIU 范围和默认行为：
+允许用来为复制活动运行提供支持的 DIU 数为 **2 到 256 个**。 如果未指定该数目或者在 UI 中选择“自动”，则该服务将根据源-接收器对和数据模式动态应用最佳的 DIU 设置。 下表列出了不同复制方案中支持的 DIU 范围和默认行为：
 
 | 复制方案 | 支持的 DIU 范围 | 服务决定的默认 DIU 数目 |
 |:--- |:--- |---- |
@@ -77,10 +79,10 @@ ms.locfileid: "109482608"
 
 并行复制独立于[数据集成单元](#data-integration-units)或[自承载 IR 节点](#self-hosted-integration-runtime-scalability)。 它是根据所有 DIU 或自承载 IR 节点统计的。
 
-对于每个复制活动运行，Azure 数据工厂默认会根据源-接收器对和数据模式动态应用最佳的并行复制设置。 
+对于每个复制活动运行，该服务默认会根据源-接收器对和数据模式动态应用最佳的并行复制设置。 
 
 > [!TIP]
-> 并行复制的默认行为通常可以提供最佳吞吐量，该吞吐量是 ADF 根据源-接收器对、数据模式，以及 DIU 数目或自承载 IR 的 CPU/内存/节点计数自动确定的。 有关何时优化并行复制的信息，请参阅[排查复制活动性能问题](copy-activity-performance-troubleshooting.md)。
+> 并行复制的默认行为通常可以提供最佳吞吐量，该吞吐量是该服务根据源-接收器对、数据模式，以及 DIU 数目或自承载 IR 的 CPU/内存/节点计数自动确定的。 有关何时优化并行复制的信息，请参阅[排查复制活动性能问题](copy-activity-performance-troubleshooting.md)。
 
 下表列出了并行复制行为：
 
@@ -131,7 +133,7 @@ ms.locfileid: "109482608"
 
 ### <a name="how-staged-copy-works"></a>暂存复制的工作原理
 
-激活暂存功能时，首先将数据从源数据存储复制到暂存存储（自带 Azure Blob 或 Azure Data Lake Storage Gen2）。 然后，将数据从暂存复制到接收器数据存储。 Azure 数据工厂复制活动会自动管理两阶段流，还会在数据移动完成后从暂存存储中清除临时数据。
+激活暂存功能时，首先将数据从源数据存储复制到暂存存储（自带 Azure Blob 或 Azure Data Lake Storage Gen2）。 然后，将数据从暂存复制到接收器数据存储。 复制活动会自动管理两阶段流，还会在数据移动完成后从暂存存储中清除临时数据。
 
 ![暂存复制](media/copy-activity-performance/staged-copy.png)
 

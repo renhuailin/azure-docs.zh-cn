@@ -7,18 +7,35 @@ ms.service: data-science-vm
 ms.author: mimarusa
 ms.date: 07/16/2021
 ms.topic: reference
-ms.openlocfilehash: b74b535a6d6e00f83dd659728bb1ed930e1fb7dd
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: e256382b4d1e397be6d11a3660a4c4fe73eafb23
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371379"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778321"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine 发行说明
 
 本文介绍 Azure Data Science Virtual Machine 的发布。 如需获取随附工具的完整列表以及版本号，请查看[此页面](./tools-included.md)。
 
 如需了解已知 bug 和解决方法，请参阅[已知问题列表](reference-known-issues.md)。
+
+
+## <a name="2021-08-11"></a>2021-08-11
+
+[Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) 的新映像。
+
+版本：21.08.11
+
+主要更改：
+
+- Windows 安全更新
+- 将 Nvidia CuDNN 更新到 8.1.0
+- 将 Jupyter Lab 更新到 3.0.16
+- 添加了用于试验跟踪的 MLFLow
+- 改进了稳定性和次要 bug 修补程序 
+
+
 
 ## <a name="2021-07-12"></a>2021-07-12
 

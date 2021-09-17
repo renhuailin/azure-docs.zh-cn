@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: da8cc0ea77de3b544b4bcb97d2ed699c74329e68
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 95081b661d4f33577df07420ab194ec48488221a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757639"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768083"
 ---
 # <a name="required-url-list"></a>所需的 URL 列表
 
@@ -42,7 +42,7 @@ ms.locfileid: "113757639"
 要使用所需 URL 检查工具，请执行以下操作：
 
 1. 在 VM 上以管理员身份打开命令提示符。
-2. 运行以下命令，将目录更改为与生成代理相同的文件夹：
+2. 运行以下命令，将目录更改为与当前生成代理（本例中为 RDAgent_1.0.2944.1200）相同的文件夹：
 
     ```console
     cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200

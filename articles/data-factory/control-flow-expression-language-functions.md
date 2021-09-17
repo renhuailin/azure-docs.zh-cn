@@ -1,27 +1,30 @@
 ---
-title: Azure 数据工厂中的表达式和函数
-description: 本文介绍在创建数据工厂实体时可以使用的表达式和函数。
+title: 表达式和函数
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 本文提供有关可用于创建 Azure 数据工厂和 Azure Synapse Analytics 管道实体的表达式和函数的信息。
 author: minhe-msft
 ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/28/2021
-ms.openlocfilehash: 275c77107faf8fd639d714b92828ab8efe623f26
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 08/24/2021
+ms.openlocfilehash: aaca4774f6f56d38624b4811375a6661299161cc
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164896"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821768"
 ---
-# <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
+# <a name="expressions-and-functions-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的表达式和函数
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-functions-variables.md)
-> * [当前版本](control-flow-expression-language-functions.md)
+> * [当前版本/Synapse 版本](control-flow-expression-language-functions.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文提供了有关 Azure 数据工厂支持的表达式和函数的详细信息。 
+本文提供了有关 Azure 数据工厂和 Azure Synapse Analytics 支持的表达式和函数的详细信息。 
 
 ## <a name="expressions"></a>表达式
 
@@ -60,12 +63,28 @@ ms.locfileid: "108164896"
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| 返回字符串 `Answer is: 42`|  
 |"Answer is: \@\@{pipeline().parameters.myNumber}"| 返回字符串 `Answer is: @{pipeline().parameters.myNumber}`。|  
 
+在 ForEach 活动之类的控制流活动中，可以提供要针对属性项进行迭代的数组，并使用 @item() 在 ForEach 活动中对单个枚举进行迭代。 例如，如果 items 是数组 [1, 2, 3]，则 @item() 在第一次迭代中返回 1，在第二次迭代中返回 2，在第三次迭代中返回 3。 还可以使用 @range(0,10) 之类的表达式来迭代 10 次，从 0 开始，到 9 结束。
+
+可以使用 @activity('活动名称') 来捕获活动的输出并做出决策。 请考虑名为“Web1”的 Web 活动。 若要将第一个活动的输出放在第二个活动的正文中，表达式通常如下所示：@activity('Web1').output 或 @activity('Web1').output.data，或类似的内容，具体取决于第一个活动的输出的内容。 
+
 ## <a name="examples"></a>示例
 
 ### <a name="complex-expression-example"></a>复杂表达式示例
-以下示例显示了一个复杂的示例，该示例引用了活动输出的一个深层子字段。 若要引用计算结果为子字段的管道参数，请使用 [] 语法而不是点 (.) 运算符（如 subfield1 和 subfield2 一样）
+以下示例显示了一个复杂的示例，该示例引用了活动输出的一个深层子字段。 若要引用计算结果为子字段的管道参数，请使用 [] 语法而不是点 (.) 运算符（如 subfield1 和 subfield2 一样），作为某个活动输出的组成部分。
 
 `@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*`
+
+动态创建文件并命名是一种常见模式。 让我们来探究几个动态文件命名示例。
+
+  1. 将日期追加到文件名：`@concat('Test_',  formatDateTime(utcnow(), 'yyyy-dd-MM'))` 
+  
+  2. 按照客户时区追加日期时间：`@concat('Test_',  convertFromUtc(utcnow(), 'Pacific Standard Time'))`
+  
+  3. 追加触发器时间：` @concat('Test_',  pipeline().TriggerTime)`
+  
+  4. 输出到带有日期的单个文件时，在映射数据流中输出自定义文件名：`'Test_' + toString(currentDate()) + '.csv'`
+
+在上述情况下，会创建 4 个以 Test_ 开头的动态文件名。 
 
 ### <a name="dynamic-content-editor"></a>动态内容编辑器
 
@@ -186,8 +205,7 @@ Baba's book store
 ```
 
 ### <a name="tutorial"></a>教程
-本[教程](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)逐步讲解如何在管道和活动之间以及活动之间传递参数。
-
+本[教程](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)逐步讲解如何在管道和活动之间以及活动之间传递参数。  本教程针对专门 Azure 数据工厂演示了步骤，尽管 Synapse 工作区的步骤几乎相同，但用户界面略有不同。
   
 ## <a name="functions"></a>函数
 
@@ -249,7 +267,7 @@ Baba's book store
 ## <a name="conversion-functions"></a>转换函数  
 
  这些函数用于在语言中的每个本机类型之间转换：  
--   string
+-   字符串
 -   integer
 -   FLOAT
 -   boolean
@@ -791,7 +809,7 @@ bool(<value>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | Any | 要转换的值 |
+| <*value*> | 是 | 任意 | 要转换的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -831,7 +849,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | Any | 第一个不为 null 的项或值。 如果所有参数均为 null，则此函数返回 null。 |
+| <*first-non-null-item*> | 任意 | 第一个不为 null 的项或值。 如果所有参数均为 null，则此函数返回 null。 |
 ||||
 
 *示例*
@@ -1567,7 +1585,7 @@ first([<collection>])
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*first-collection-item*> | Any | 集合中的第一项 |
+| <*first-collection-item*> | 任意 | 集合中的第一项 |
 ||||
 
 *示例*
@@ -1809,7 +1827,7 @@ greaterOrEquals('apple', 'banana')
 
 <a name="guid"></a>
 
-### <a name="guid"></a>GUID
+### <a name="guid"></a>guid
 
 生成一个字符串形式的全局唯一标识符 (GUID)，例如“c2ecc88d-88c8-4096-912c-d6f2e2b138ce”：
 
@@ -1857,13 +1875,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | 是 | 布尔 | 要检查的表达式 |
-| <*valueIfTrue*> | 是 | Any | 当表达式为 true 时要返回的值 |
-| <*valueIfFalse*> | 是 | Any | 当表达式为 false 时要返回的值 |
+| <*valueIfTrue*> | 是 | 任意 | 当表达式为 true 时要返回的值 |
+| <*valueIfFalse*> | 是 | 任意 | 当表达式为 false 时要返回的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*specified-return-value*> | Any | 根据表达式为 true 或 false 返回的指定值 |
+| <*specified-return-value*> | 任意 | 根据表达式为 true 或 false 返回的指定值 |
 ||||
 
 *示例*
@@ -2768,7 +2786,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-### <a name="string"></a>string
+### <a name="string"></a>字符串
 
 返回值的字符串版本。
 
@@ -2778,7 +2796,7 @@ string(<value>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | Any | 要转换的值 |
+| <*value*> | 是 | 任意 | 要转换的值 |
 |||||
 
 | 返回值 | 类型 | 说明 |
@@ -3251,7 +3269,7 @@ xml('<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*xml-version*> | Object | 指定的字符串或 JSON 对象的编码 XML |
+| <*xml-version*> | 对象 | 指定的字符串或 JSON 对象的编码 XML |
 ||||
 
 *示例 1*
@@ -3304,14 +3322,14 @@ xpath('<xml>', '<xpath>')
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | 是 | Any | 要在其中搜索与 XPath 表达式值匹配的节点或值的 XML 字符串 |
-| <*xpath*> | 是 | Any | 用来查找匹配的 XML 节点或值的 XPath 表达式 |
+| <*xml*> | 是 | 任意 | 要在其中搜索与 XPath 表达式值匹配的节点或值的 XML 字符串 |
+| <*xpath*> | 是 | 任意 | 用来查找匹配的 XML 节点或值的 XPath 表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 一个 XML 节点，当只有单个节点与指定的 XPath 表达式匹配时 |
-| <*value*> | Any | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
+| <*value*> | 任意 | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
 | [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
 ||||
 

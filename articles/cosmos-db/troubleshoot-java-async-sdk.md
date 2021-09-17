@@ -1,0 +1,284 @@
+---
+title: 诊断 Azure Cosmos DB Async Java SDK v2 并对其进行故障排除
+description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查 Async Java SDK v2 中的 Azure Cosmos DB 问题。
+author: anfeldma-ms
+ms.service: cosmos-db
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.devlang: java
+ms.subservice: cosmosdb-sql
+ms.topic: troubleshooting
+ms.reviewer: sngun
+ms.custom: devx-track-java
+ms.openlocfilehash: 45c23c9c3b8dac1aea79c5af86f51de4b8a25034
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771593"
+---
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Async Java SDK v2 于 SQL API 帐户配合使用时出现的问题
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+> [!div class="op_single_selector"]
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
+> [!IMPORTANT]
+> 这不是最新的 Azure Cosmos DB Java SDK！ 应将项目升级到 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md)，然后阅读 Azure Cosmos DB Java SDK v4 [故障排除指南](troubleshoot-java-sdk-v4-sql.md)。 请按照[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南和 [Reactor 与 RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) 指南中的说明进行升级。 
+>
+> 本文仅介绍 Azure Cosmos DB Async Java SDK v2 的故障排除。 有关详细信息，请参阅 Azure Cosmos DB Async Java SDK v2 [发行说明](sql-api-sdk-async-java.md)、[Maven 存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和[性能提示](performance-tips-async-java.md)。
+>
+
+> [!IMPORTANT]  
+> 2024 年 8 月 31 日，Azure Cosmos DB Async Java SDK v2.x 将停用；此 SDK 和所有使用此 SDK 的应用程序将继续运行；Azure Cosmos DB 将仅停止为此 SDK 提供进一步的维护和支持。
+> 我们建议按照上述说明迁移到 Azure Cosmos DB Java SDK v4。
+>
+
+本文介绍了将 [Java 异步 SDK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
+Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API。 本文介绍了在遇到任何问题时可以提供帮助的工具和方法。
+
+从本列表开始：
+
+* 请查看本文中的[常见问题和解决方法]部分。
+* 查看 SDK（可在 [GitHub 上通过开源方式](https://github.com/Azure/azure-cosmosdb-java)获取）。 该 SDK 拥有受到主动监视的[问题部分](https://github.com/Azure/azure-cosmosdb-java/issues)。 检查是否已提交包含解决方法的任何类似问题。
+* 查看[性能提示](performance-tips-async-java.md)并按照建议的做法进行操作。
+* 阅读本文的其余部分，如果找不到解决方案， 则提交 [GitHub 问题](https://github.com/Azure/azure-cosmosdb-java/issues)。
+
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>常见问题和解决方法
+
+### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>网络问题、Netty 读取超时故障、低吞吐量、高延迟
+
+#### <a name="general-suggestions"></a>常规建议
+* 确保应用与 Azure Cosmos DB 帐户在同一区域运行。 
+* 检查运行应用的主机 CPU 使用情况。 如果 CPU 使用率为 90% 或更高，请在具有更高配置的主机上运行应用。 或者，可将负载分发到更多计算机。
+
+#### <a name="connection-throttling"></a>连接限制
+连接限制可能会因[主机上的连接限制]或 [Azure SNAT (PAT) 端口耗尽]而出现。
+
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>主机上的连接限制
+某些 Linux 系统（例如 Red Hat）的打开文件总数存在上限。 Linux 中的套接字以文件形式实现，因此，此上限也限制了连接总数。
+运行以下命令。
+
+```bash
+ulimit -a
+```
+允许的最大打开文件数（标识为“nofile”）至少需要是连接池大小的两倍。 有关详细信息，请参阅[性能提示](performance-tips-async-java.md)。
+
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 端口耗尽
+
+如果应用部署在没有公共 IP 地址的 Azure 虚拟机上，则默认情况下，[Azure SNAT 端口](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)用于建立与 VM 外部任何终结点的连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)的限制。
+
+ 仅当 VM 具有专用 IP 地址且来自 VM 的进程尝试连接到公共 IP 地址时，才会使用 Azure SNAT 端口。 有两种解决方法可以避免 Azure SNAT 限制：
+
+* 向 Azure 虚拟机虚拟网络的子网添加 Azure Cosmos DB 服务终结点。 有关详细信息，请参阅 [Azure 虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 
+
+    启用服务终结点后，不再从公共 IP 向 Azure Cosmos DB 发送请求， 而是发送虚拟网络和子网标识。 如果仅允许公共 IP，则此更改可能会导致防火墙丢失。 如果使用防火墙，则在启用服务终结点后，请使用[虚拟网络 ACL](/previous-versions/azure/virtual-network/virtual-networks-acl) 将子网添加到防火墙。
+* 将公共 IP 分配给 Azure VM。
+
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>无法访问服务 - 防火墙
+``ConnectTimeoutException`` 表示 SDK 无法访问服务。
+使用直接模式时，可能会出现如下所示的故障：
+```
+GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
+```
+
+如果应用计算机上有防火墙运行，请打开 10,000 到 20,000 这一端口范围，该范围由直接模式使用。
+另请按[主机上的连接限制](#connection-limit-on-host)中的说明操作。
+
+#### <a name="http-proxy"></a>HTTP 代理
+
+如果使用 HTTP 代理，请确保它支持 SDK `ConnectionPolicy` 中配置的连接数。
+否则，将遇到连接问题。
+
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>无效的编码模式：阻塞性 Netty IO 线程
+
+SDK 使用 [Netty](https://netty.io/) IO 库与 Azure Cosmos DB 通信。 SDK 拥有异步 API 并使用 Netty 的非阻塞性 IO API。 SDK 的 IO 工作在 IO Netty 线程上执行。 IO Netty 线程的数量配置为与应用计算机的 CPU 核心数相同。 
+
+Netty IO 线程仅用于非阻塞性 Netty IO 工作。 SDK 将其中一个 Netty IO 线程上的 API 调用结果返回至应用代码。 如果应用在收到 Netty 线程上的结果后执行持续时间较长的操作，则 SDK 可能会没有足够的 IO 线程来执行其内部 IO 工作。 此类应用编码可能会导致低吞吐量、高延迟和 `io.netty.handler.timeout.ReadTimeoutException` 故障。 解决方法是在知道操作需要耗费一定时间的情况下切换线程。
+
+例如，请查看以下代码片段。 你可能会在 Netty 线程上执行耗时超过几毫秒的持续时间较长的工作。 在这种情况下，你最终会陷入没有 Netty IO 线程来处理 IO 工作的状态。 因此，你会遇到 ReadTimeoutException 故障。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
+```java
+@Test
+public void badCodeWithReadTimeoutException() throws Exception {
+    int requestTimeoutInSeconds = 10;
+
+    ConnectionPolicy policy = new ConnectionPolicy();
+    policy.setRequestTimeoutInMillis(requestTimeoutInSeconds * 1000);
+
+    AsyncDocumentClient testClient = new AsyncDocumentClient.Builder()
+            .withServiceEndpoint(TestConfigurations.HOST)
+            .withMasterKeyOrResourceToken(TestConfigurations.MASTER_KEY)
+            .withConnectionPolicy(policy)
+            .build();
+
+    int numberOfCpuCores = Runtime.getRuntime().availableProcessors();
+    int numberOfConcurrentWork = numberOfCpuCores + 1;
+    CountDownLatch latch = new CountDownLatch(numberOfConcurrentWork);
+    AtomicInteger failureCount = new AtomicInteger();
+
+    for (int i = 0; i < numberOfConcurrentWork; i++) {
+        Document docDefinition = getDocumentDefinition();
+        Observable<ResourceResponse<Document>> createObservable = testClient
+                .createDocument(getCollectionLink(), docDefinition, null, false);
+        createObservable.subscribe(r -> {
+                    try {
+                        // Time-consuming work is, for example,
+                        // writing to a file, computationally heavy work, or just sleep.
+                        // Basically, it's anything that takes more than a few milliseconds.
+                        // Doing such operations on the IO Netty thread
+                        // without a proper scheduler will cause problems.
+                        // The subscriber will get a ReadTimeoutException failure.
+                        TimeUnit.SECONDS.sleep(2 * requestTimeoutInSeconds);
+                    } catch (Exception e) {
+                    }
+                },
+
+                exception -> {
+                    //It will be io.netty.handler.timeout.ReadTimeoutException.
+                    exception.printStackTrace();
+                    failureCount.incrementAndGet();
+                    latch.countDown();
+                },
+                () -> {
+                    latch.countDown();
+                });
+    }
+
+    latch.await();
+    assertThat(failureCount.get()).isGreaterThan(0);
+}
+```
+解决方法是更改用于执行需要耗费一定时间的工作的线程。 为应用定义计划程序的单一实例。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
+```java
+// Have a singleton instance of an executor and a scheduler.
+ExecutorService ex  = Executors.newFixedThreadPool(30);
+Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
+```
+你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.observeOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
+```java
+Observable<ResourceResponse<Document>> createObservable = client
+        .createDocument(getCollectionLink(), docDefinition, null, false);
+
+createObservable
+        .observeOn(customScheduler) // Switches the thread.
+        .subscribe(
+            // ...
+        );
+```
+通过使用 `observeOn(customScheduler)`，可以释放 Netty IO 线程并切换到自定义计划程序提供的自定义线程。 此修改可解决这一问题。 你不会再遇到 `io.netty.handler.timeout.ReadTimeoutException` 故障。
+
+### <a name="connection-pool-exhausted-issue"></a>连接池耗尽问题
+
+`PoolExhaustedException` 是客户端故障。 此故障表明应用工作负荷高于 SDK 连接池可以提供的工作负载。 增加连接池大小或将负载分发到多个应用。
+
+### <a name="request-rate-too-large"></a>请求速率过大
+此故障是服务器端故障。 它表明预配的吞吐量已用完。 请稍后重试。 如果经常遇到此故障，请考虑增加集合吞吐量。
+
+### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>连接到 Azure Cosmos DB 模拟器时出现故障
+
+Azure Cosmos DB 模拟器 HTTPS 证书是自签名证书。 若要将 SDK 与仿真器配合使用，请将仿真器证书导入 Java TrustStore。 有关详细信息，请参阅[导出 Azure Cosmos DB 模拟器证书](local-emulator-export-ssl-certificates.md)。
+
+### <a name="dependency-conflict-issues"></a>依赖项冲突问题
+
+```console
+Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
+```
+
+上述异常表明在旧版 RxJava 库（例如 1.2.2）上有依赖项。 我们的 SDK 依赖于 RxJava 1.3.8，它具有早期版本的 RxJava 中没有的 API。 
+
+此类问题的解决方法是，确定其他哪些依赖项会引入 RxJava-1.2.2，并排除对 RxJava-1.2.2 的传递依赖关系，让 CosmosDB SDK 能够引入较新版本。
+
+若要确定引入 RxJava-1.2.2 的库，请在项目 pom.xml 文件旁边运行以下命令：
+```bash
+mvn dependency:tree
+```
+有关详细信息，请参阅 [maven 依赖项树指南](https://maven.apache.org/plugins-archives/maven-dependency-plugin-2.10/examples/resolving-conflicts-using-the-dependency-tree.html)。
+
+确定 RxJava-1.2.2 是项目的哪个其他依赖项的传递依赖项以后，即可在 pom 文件中修改该库的依赖项，排除 RxJava 传递依赖项：
+
+```xml
+<dependency>
+  <groupId>${groupid-of-lib-which-brings-in-rxjava1.2.2}</groupId>
+  <artifactId>${artifactId-of-lib-which-brings-in-rxjava1.2.2}</artifactId>
+  <version>${version-of-lib-which-brings-in-rxjava1.2.2}</version>
+  <exclusions>
+    <exclusion>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+有关详细信息，请参阅[排除传递依赖项指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
+
+
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录
+
+Java 异步 SDK 使用 SLF4j 作为日志记录外观，支持记录到常用的记录框架，如 log4j 和 logback。
+
+例如，如果要使用 log4j 作为日志记录框架，请在 Java classpath 中添加以下库。
+
+```xml
+<dependency>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-log4j12</artifactId>
+  <version>${slf4j.version}</version>
+</dependency>
+<dependency>
+  <groupId>log4j</groupId>
+  <artifactId>log4j</artifactId>
+  <version>${log4j.version}</version>
+</dependency>
+```
+
+同时添加 log4j 配置。
+```
+# this is a sample log4j configuration
+
+# Set root logger level to DEBUG and its only appender to A1.
+log4j.rootLogger=INFO, A1
+
+log4j.category.com.microsoft.azure.cosmosdb=DEBUG
+#log4j.category.io.netty=INFO
+#log4j.category.io.reactivex=INFO
+# A1 is set to be a ConsoleAppender.
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+
+# A1 uses PatternLayout.
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
+```
+
+有关详细信息，请参阅 [sfl4j 日志记录手册](https://www.slf4j.org/manual.html)。
+
+## <a name="os-network-statistics"></a><a name="netstats"></a>OS 网络统计信息
+运行 netstat 命令，掌握处于 `ESTABLISHED` 和 `CLOSE_WAIT` 等状态的连接数。
+
+在 Linux 上可以运行以下命令。
+```bash
+netstat -nap
+```
+筛选结果，以便仅显示到 Azure Cosmos DB 终结点的连接。
+
+处于 `ESTABLISHED` 状态的 Azure Cosmos DB 终结点连接数不应大于配置的连接池大小。
+
+到 Azure Cosmos DB 终结点的许多连接可能会处于 `CLOSE_WAIT` 状态。 可能会有超过 1,000 个连接。 较大的数字表明建立和销毁连接的速度很快。 这种情况可能会导致问题。 有关详细信息，请参阅[常见问题和解决方法]部分。
+
+ <!--Anchors-->
+[常见问题和解决方法]: #common-issues-workarounds
+[Enable client SDK logging]: #enable-client-sice-logging
+[主机上的连接限制]: #connection-limit-on-host
+[Azure SNAT (PAT) 端口耗尽]: #snat

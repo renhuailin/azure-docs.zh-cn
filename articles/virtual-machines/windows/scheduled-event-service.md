@@ -7,14 +7,16 @@ ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 866522da162d22621bd37bf9d2f2fa6838206e17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e13f8a8bd577e3e872d3fc59b099e34fd495d1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674691"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694209"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>监视 Azure VM 的计划事件
+
+**适用于：** VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 每天都有更新应用到 Azure 的不同组成部分，使其中的服务保持安全和最新状态。 除了计划内更新以外，还可能发生计划外事件。 例如，如果检测到任何硬件降级或故障，Azure 服务可能需要执行计划外维护。 使用实时迁移时，内存预留将会更新，同时，更新所造成的影响通常受到严密跟踪，在大多数情况下，这些事件对于客户而言几乎是透明的，不会对他们造成任何影响，或者最多只会造成虚拟机冻结几秒钟。 但是，对于某些应用程序而言，即使是几秒钟的虚拟机冻结，也可能会造成影响。 提前了解即将进行的 Azure 维护非常重要，这可以确保为这些应用程序提供的最佳体验。 [计划事件服务](scheduled-events.md)提供一个编程接口，即将进行维护时它会发出通知，并使你能够正确处理维护。 
 

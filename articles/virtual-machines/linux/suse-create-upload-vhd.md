@@ -9,15 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 7788d7e7a8aa92d4c06b0895c5bea000e13e2d85
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 30246166650cddc1c89fa3a2ca377c163fb5847b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713119"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697748"
 ---
 # <a name="prepare-a-sles-or-opensuse-leap-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE Leap 虚拟机
 
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 **适用于：** :heavy_check_mark: 统一规模集
 
 本文假定你已在虚拟硬盘中安装了 SUSE 或 openSUSE Leap Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 

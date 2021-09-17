@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.openlocfilehash: 1ef7bb79257387526720dd80e86e296280632c82
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 336f7ff589cdc9b2df3f8e447294719869ca0c2f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410146"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445230"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
 
@@ -28,7 +28,7 @@ ms.locfileid: "111410146"
 
 ## <a name="send-custom-metrics"></a>发送自定义指标 
 
-在本教程中，我们将部署运行 Ubuntu 16.04 LTS 操作系统的 Linux VM。 大多数 Linux 操作系统支持 Telegraf 代理。 [InfluxData 下载门户](https://portal.influxdata.com/downloads)提供了 Debian 和 RPM 包以及未打包的 Linux 二进制文件。 有关其他安装说明和选项，请参阅此 [Telegraf 安装指南](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)。 
+在本教程中，我们将部署运行 Ubuntu 18.04 LTS 操作系统的 Linux VM。 大多数 Linux 操作系统支持 Telegraf 代理。 [InfluxData 下载门户](https://portal.influxdata.com/downloads)提供了 Debian 和 RPM 包以及未打包的 Linux 二进制文件。 有关其他安装说明和选项，请参阅此 [Telegraf 安装指南](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)。 
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "111410146"
 
 1. 在左侧导航窗格中选择“创建资源”选项。 
 1. 搜索“虚拟机”。  
-1. 选择“Ubuntu 16.04 LTS”，然后选择“创建”。 
+1. 选择“Ubuntu 18.04 LTS”，然后选择“创建”。 
 1. 提供一个 VM 名称，例如 **MyTelegrafVM**。  
 1. 将磁盘类型保留为“SSD”。 然后提供 **用户名**，例如 **azureuser**。 
 1. 对于“身份验证类型”，请选择“密码”。 然后输入一个密码，稍后将使用该密码通过 SSH 连接到此 VM。 
@@ -79,15 +79,16 @@ ssh azureuser@XXXX.XX.XXX
 
 若要将 Telegraf Debian 包安装到 VM 上，请从 SSH 会话运行以下命令： 
 
-```cmd
+```bash
 # download the package to the VM 
-wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb 
-# install the package 
-sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
+curl -s https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/lsb-release
+echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 ```
+
 Telegraf 的配置文件定义 Telegraf 的操作。 默认情况下，示例配置文件安装在 **/etc/telegraf/telegraf.conf** 路径。 示例配置文件列出了所有可能的输入和输出插件。但是，我们将运行以下命令，创建自定义配置文件并让代理来使用它。 
 
-```cmd
+```bash
 # generate the new Telegraf config file in the current directory 
 telegraf --input-filter cpu:mem --output-filter azure_monitor config > azm-telegraf.conf 
 
@@ -100,7 +101,7 @@ sudo cp azm-telegraf.conf /etc/telegraf/telegraf.conf
 
 最后，为了让代理开始使用新配置，我们将运行以下命令，强制代理在停止后再启动： 
 
-```cmd
+```bash
 # stop the telegraf agent on the VM 
 sudo systemctl stop telegraf 
 # start the telegraf agent on the VM to ensure it picks up the latest configuration 

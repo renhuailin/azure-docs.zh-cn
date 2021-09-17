@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 04/28/2021
 ms.author: memildin
-ms.openlocfilehash: fcadb8879f718913d93e33f81f6ec544ce9edb80
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: cb6f81fc02245e7932222d8555774e398944f1f4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277977"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751825"
 ---
 # <a name="tutorial-investigate-the-health-of-your-resources"></a>教程：调查资源的运行状况
 
@@ -78,7 +78,7 @@ ms.locfileid: "108277977"
 
 - 要确保根据应用于订阅的策略对资源进行强化，请修复建议中所述的问题：
     1. 在右窗格中，选择一条建议。
-    1. 按照屏幕上的指示进行操作。
+    1. 按照屏幕上的指示继续操作。
 
         > [!TIP]
         > 修复由安全建议提出的问题的说明因安全中心的每条建议而异。

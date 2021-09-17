@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure 策略大规模应用群集配置
 keywords: Kubernetes、Arc、Azure、K8s、容器
-ms.openlocfilehash: 4619c84f88ee87b0b63e8c0cbe36b85a25f2dfb9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7a6892c4b89128abe698573960b61d08c2ac2f35
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463053"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609626"
 ---
 # <a name="use-azure-policy-to-apply-gitops-configurations-at-scale"></a>使用 Azure Policy 大规模应用 GitOps 配置
 
@@ -28,8 +28,8 @@ ms.locfileid: "110463053"
 
 为了实现关注点分离，可以创建多个策略分配，每个策略分配都有一个指向不同 Git 存储库的不同 GitOps 配置。 例如，群集管理员可能会使用一个存储库，而应用程序团队可能会使用其他存储库。
 
->[!TIP]
-> 我们针对这些方案提供了内置策略：
+> [!TIP]
+> 我们针对这些方案提供了内置策略定义：
 > * 公用存储库或专用存储库，使用 Flux 创建的 SSH 密钥：`Configure Kubernetes clusters with specified GitOps configuration using no secrets`
 > * 专用存储库，使用用户提供的 SSH 密钥：`Configure Kubernetes clusters with specified GitOps configuration using SSH secrets`
 > * 专用存储库，使用用户提供的 HTTPS 密钥：`Configure Kubernetes clusters with specified GitOps configuration using HTTPS secrets`
@@ -42,10 +42,10 @@ ms.locfileid: "110463053"
 
 1. 在 Azure 门户中，导航到“策略”。
 1. 在边栏的“创作”部分，选择“定义” 。
-1. 在“Kubernetes”类别中，选择“使用指定 GitOps 配置来配置 Kubernetes 群集，不使用机密”内置策略。 
+1. 在“Kubernetes”类别中，选择“为 Kubernetes 群集配置指定的 GitOps 配置（不使用机密）”内置策略定义。 
 1. 单击 **分配**。
 1. 将“范围”设置为将应用策略分配的管理组、订阅或资源组。
-    * 如果要从策略范围中排除任何资源，请设置“排除”。
+    * 如果要从策略分配范围中排除任何资源，请设置“排除”。
 1. 为策略分配指定易于识别的“名称”和“描述” 。
 1. 确保“策略实施”设置为“已启用” 。
 1. 选择“下一步”。
@@ -65,7 +65,7 @@ ms.locfileid: "110463053"
 
 1. 在 Azure 门户中，导航到已启用 Azure Arc 的 Kubernetes 群集之一。
 1. 在边栏的“设置”部分中，选择“策略” 。 
-    * 在策略列表中，应会看到之前创建的策略分配，并且“符合性状态”应设为“符合”。
+    * 在列表中，应会看到之前创建的策略分配，并且“符合性状态”应设为“符合”。
 1. 在边栏的“设置”部分中，选择“GitOps” 。
     * 在配置列表中，应会看到策略分配创建的配置。
 1. 使用 `kubectl` 来询问群集。 

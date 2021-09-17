@@ -1,25 +1,27 @@
 ---
-title: 使用 Azure Site Recovery 设置到 Azure 的 VMware VM 灾难恢复
-description: 了解如何使用 Azure Site Recovery 针对本地 VMware VM 设置到 Azure 的灾难恢复。
+title: 使用 Azure Site Recovery 设置到 Azure 的 VMware VM 灾难恢复 - 经典
+description: 了解如何使用 Azure Site Recovery 针对本地 VMware VM 设置到 Azure 的灾难恢复 - 经典。
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.custom: MVC
-ms.openlocfilehash: 6044de81253b9069631ff3cdae687d90a0287fea
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 8f53f7598b58e46e8020275cdf96e339c69c857a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580574"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446437"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
+# <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms---classic"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复 - 经典
 
-本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务启用本地 VMware VM 的复制，以便能够灾难恢复到 Azure。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务启用本地 VMware VM 的复制，以便能够灾难恢复到 Azure - 经典。
+
+有关 Azure Site Recovery 预览版中灾难恢复的信息，请参阅[此文章](vmware-azure-set-up-replication-tutorial-preview.md)
 
 本文是系列教程的第三篇文章，介绍如何为本地 VMware VM 设置到 Azure 的灾难恢复。 在上一篇教程中，我们已[准备本地 VMware 环境](vmware-azure-tutorial-prepare-on-premises.md)，以便能够灾难恢复到 Azure。
 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置源复制设置，以及一个本地 Site Recovery 配置服务器。
@@ -101,7 +103,7 @@ ms.locfileid: "106580574"
 若要将其他 NIC 添加到配置服务器，请在将服务器注册到保管库中之前添加它。 注册后不支持添加其他适配器。
 
 1. 在 vSphere 客户端库存中，右键单击 VM 并选择“编辑设置”  。
-2. 在“硬件”中，选择“添加” > “以太网适配器”。 然后，选择“下一步”  。
+2. 在“硬件”中，选择“添加” > “以太网适配器”。 然后，选择“下一步”。
 3. 选择适配器类型和网络。
 4. 若要在打开 VM 时连接虚拟 NIC，请选择“打开时连接”。 选择“下一步” > “完成”。 然后选择“确定”。
 
@@ -114,7 +116,7 @@ ms.locfileid: "106580574"
 2. VM 将启动并进入 Windows Server 2016 安装体验。 接受许可协议，然后输入管理员密码。
 3. 安装完成后，以管理员身份登录到 VM。
 4. 首次登录时，会在数秒内启动 Azure Site Recovery 配置工具。
-5. 输入用于向 Site Recovery 注册配置服务器的名称。 然后，选择“下一步”  。
+5. 输入用于向 Site Recovery 注册配置服务器的名称。 然后，选择“下一步”。
 6. 该工具会检查 VM 是否能够连接到 Azure。 建立连接后，选择“登录”以登录到 Azure 订阅  。 使用的凭据必须有权访问配置服务器所要注册到的保管库。 确保向此用户分配了必需的[角色](vmware-azure-deploy-configuration-server.md#azure-active-directory-permission-requirements)。
 7. 该工具将执行一些配置任务，然后重新启动。
 8. 再次登录到计算机。 在数秒内，配置服务器管理向导会自动启动。
@@ -173,7 +175,7 @@ ms.locfileid: "106580574"
 
 为 VM 启用复制，如下所示：
 
-1. 选择“复制应用程序” > “源” 。
+1. 选择“复制应用程序” > “源”   。
 2. 在“源”中选择“本地”，然后在“源位置”中选择配置服务器。
 3. 在“计算机类型”中，选择“虚拟机” 。
 4. 在“vCenter/vSphere 虚拟机监控程序”中选择 vSphere 主机或管理该主机的 vCenter 服务器。
@@ -187,7 +189,7 @@ ms.locfileid: "106580574"
 12. 选择“启用复制”。 为 VM 启用复制后，Site Recovery 会安装移动服务。
 13. 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度   。 在“完成保护”作业运行并且恢复点生成已完成后，计算机就可以进行故障转移了。
 14. 可能要等 15 分钟或更长时间，更改才会生效并显示在门户中。
-15. 若要监视添加的 VM，请在“配置服务器” > “上次联系时间”中查看上次发现 VM 的时间。 若要添加 VM 而不想要等待计划的发现，请突出显示配置服务器（不要选择它），然后选择“刷新”。
+15. 若要监视添加的 VM，请在“配置服务器” > “上次联系时间”中查看上次发现 VM 的时间。 若要添加 VM 而不想要等待计划的发现，请突出显示配置服务器（不要选择它），然后选择“刷新”。 
 
 ## <a name="next-steps"></a>后续步骤
 启用复制后，请运行演练以确保一切按预期进行。

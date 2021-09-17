@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/04/2021
+ms.date: 08/20/2021
 ms.custom: generated
-ms.openlocfilehash: 39eb5b5787cb26fffa168479d34bac58ba5f9b3d
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: b1c1944ddf5fdae42bea41482d429a207190d11f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195625"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771128"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -121,6 +121,7 @@ ms.locfileid: "122195625"
 > | [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和必需的网络配置，但无法向其他人授予访问权限。 | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
 > | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL Server 和数据库，但不允许访问它们及其安全相关策略。 | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+> | [连接到 Azure 的 SQL Server 载入](#azure-connected-sql-server-onboarding) | 对于已启用 Arc 的服务器上的 SQL Server，允许对 Azure 资源的读取和写入访问。 | e8113dce-c529-4d33-91fa-e9b972617508 |
 > | **分析** |  |  |
 > | [Azure 事件中心数据所有者](#azure-event-hubs-data-owner) | 允许完全访问 Azure 事件中心资源。 | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Azure 事件中心数据接收方](#azure-event-hubs-data-receiver) | 允许接收对 Azure 事件中心资源的访问权限。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
@@ -129,7 +130,7 @@ ms.locfileid: "122195625"
 > | [数据清除程序](#data-purger) | 从 Log Analytics 工作区中删除专用数据。 | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | [HDInsight 群集操作员](#hdinsight-cluster-operator) | 允许你读取和修改 HDInsight 群集配置。 | 61ed4efc-fab3-44fd-b111-e24485cc132a |
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
-> | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
+> | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Purview 数据管护者](#purview-data-curator) | Microsoft.Purview 数据管护者可以创建、读取、修改和删除目录数据对象，并可以建立对象之间的关系。 此角色处于预览状态，可能会发生更改。 | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
 > | [Purview 数据读取者](#purview-data-reader) | Microsoft.Purview 数据读取者可以读取目录数据对象。 此角色处于预览状态，可能会发生更改。 | ff100721-1b9d-43d8-af52-42b69c1272db |
@@ -248,6 +249,7 @@ ms.locfileid: "122195625"
 > | [成本管理读者](#cost-management-reader) | 可以查看成本数据和配置（例如预算、导出） | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | [层次结构设置管理员](#hierarchy-settings-administrator) | 允许用户编辑和删除层次结构设置 | 350f8d15-c687-4448-8ae1-157740a3936d |
 > | [Kubernetes 群集 - Azure Arc 载入](#kubernetes-cluster---azure-arc-onboarding) | 授权任何用户/服务创建 connectedClusters 资源的角色定义 | 34e09817-6cbe-4d01-b1a2-e0eac5743d41 |
+> | [Kubernetes 扩展参与者](#kubernetes-extension-contributor) | 可以创建、更新、获取、列出和删除 Kubernetes 扩展，以及获取扩展异步操作 | 85cb6faf-e071-4c9b-8136-154b5a04f717 |
 > | [托管应用程序参与者角色](#managed-application-contributor-role) | 允许创建托管应用程序资源。 | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [托管应用程序操作员角色](#managed-application-operator-role) | 可让你在托管应用程序资源上读取和执行操作 | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [托管应用程序读者](#managed-applications-reader) | 允许读取托管应用中的资源并请求 JIT 访问。 | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -5324,7 +5326,47 @@ ms.locfileid: "122195625"
 }
 ```
 
-## <a name="analytics"></a>分析
+### <a name="azure-connected-sql-server-onboarding"></a>连接到 Azure 的 SQL Server 载入
+
+ 对于已启用 Arc 的服务器上的 SQL Server，允许对 Azure 资源的读取和写入访问。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> |Microsoft.AzureArcData/sqlServerInstances/read| 读取 Azure 资源信息。 |
+> |Microsoft.AzureArcData/sqlServerInstances/write| 写入 Azure 资源信息。  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  | 
+
+```json
+{
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/e8113dce-c529-4d33-91fa-e9b972617508",
+    "properties": {
+        "roleName": "Azure Connected SQL Server Onboarding",
+        "description": "Microsoft.AzureArcData service role to access the resources of Microsoft.AzureArcData stored with RPSAAS.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.AzureArcData/sqlServerInstances/read",
+                    "Microsoft.AzureArcData/sqlServerInstances/write"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
+
+## <a name="analytics"></a>Analytics
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -5650,13 +5692,12 @@ ms.locfileid: "122195625"
 
 ### <a name="log-analytics-contributor"></a>Log Analytics 参与者
 
-Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 [了解详细信息](../azure-monitor/logs/manage-access.md)
+Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 [了解详细信息](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
 > | --- | --- |
 > | */read | 读取除密码外的所有类型的资源。 |
-> | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/extensions/* |  |
 > | [Microsoft.ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | 列出存储帐户的访问密钥。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/extensions/* |  |
@@ -5681,14 +5722,13 @@ Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 �
   "assignableScopes": [
     "/"
   ],
-  "description": "Log Analytics Contributor can read all monitoring data and edit monitoring settings. Editing monitoring settings includes adding the VM extension to VMs; reading storage account keys to be able to configure collection of logs from Azure Storage; creating and configuring Automation accounts; adding solutions; and configuring Azure diagnostics on all Azure resources.",
+  "description": "Log Analytics Contributor can read all monitoring data and edit monitoring settings. Editing monitoring settings includes adding the VM extension to VMs; reading storage account keys to be able to configure collection of logs from Azure Storage; adding solutions; and configuring Azure diagnostics on all Azure resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
   "name": "92aaf0da-9dab-42b6-94a3-d43ce8d16293",
   "permissions": [
     {
       "actions": [
         "*/read",
-        "Microsoft.Automation/automationAccounts/*",
         "Microsoft.ClassicCompute/virtualMachines/extensions/*",
         "Microsoft.ClassicStorage/storageAccounts/listKeys/action",
         "Microsoft.Compute/virtualMachines/extensions/*",
@@ -7812,7 +7852,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 允许完全访问 Azure 中继资源。
 
 > [!div class="mx-tableFixed"]
-> | 操作 | 说明 |
+> | 操作 | 描述 |
 > | --- | --- |
 > | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/* |  |
 > | **不操作** |  |
@@ -7853,7 +7893,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 允许发送对 Azure 中继资源的访问权限。
 
 > [!div class="mx-tableFixed"]
-> | 操作 | 说明 |
+> | 操作 | 描述 |
 > | --- | --- |
 > | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/wcfRelays/read |  |
 > | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/hybridConnections/read |  |
@@ -8982,6 +9022,7 @@ Azure Sentinel 参与者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 对工作区中的数据运行查询 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 获取工作区下面的数据源。 |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | 读取专用工作簿 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -9015,6 +9056,7 @@ Azure Sentinel 参与者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/read",
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
+        "Microsoft.OperationalInsights/querypacks/*/read",
         "Microsoft.Insights/workbooks/*",
         "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
@@ -9052,6 +9094,7 @@ Azure Sentinel 读取者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | 获取现有的 OMS 解决方案 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 对工作区中的数据运行查询 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 获取工作区下面的数据源。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | 读取工作簿 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | 读取专用工作簿 |
@@ -9089,6 +9132,7 @@ Azure Sentinel 读取者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
         "Microsoft.OperationalInsights/workspaces/query/*/read",
+        "Microsoft.OperationalInsights/querypacks/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
         "Microsoft.Insights/myworkbooks/read",
@@ -9135,6 +9179,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 对工作区中的数据运行查询 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 获取工作区下面的数据源。 |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/querypacks/*/read |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | 读取工作簿 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | 读取专用工作簿 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -9180,6 +9225,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/read",
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
+        "Microsoft.OperationalInsights/querypacks/*/read",
         "Microsoft.Insights/workbooks/read",
         "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
@@ -9761,7 +9807,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
 > | **不操作** |  |
-> | *无* |  |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/write | 创建或更新 IoT Defender 设置 |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |
@@ -9792,7 +9838,9 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.IoTSecurity/*",
         "Microsoft.Support/*"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.IoTSecurity/defenderSettings/write"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -9919,8 +9967,6 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/action | 下载 IoT 传感器的重置密码文件 |
 > | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/packageDownloads/action | 获取可下载的 IoT Defender 包信息 |
 > | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/downloadManagerActivation/action | 下载管理器激活文件 |
-> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/sensors/* |  |
-> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/onPremiseSensors/* |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -9953,8 +9999,6 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.Security/iotSensors/downloadResetPassword/action",
         "Microsoft.IoTSecurity/defenderSettings/packageDownloads/action",
         "Microsoft.IoTSecurity/defenderSettings/downloadManagerActivation/action",
-        "Microsoft.IoTSecurity/sensors/*",
-        "Microsoft.IoTSecurity/onPremiseSensors/*",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -11598,6 +11642,59 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
     }
   ],
   "roleName": "Kubernetes Cluster - Azure Arc Onboarding",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="kubernetes-extension-contributor"></a>Kubernetes 扩展参与者
+
+可以创建、更新、获取、列出和删除 Kubernetes 扩展，以及获取扩展异步操作
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.KubernetesConfiguration](resource-provider-operations.md#microsoftkubernetesconfiguration)/extensions/write | 创建或更新扩展资源。 |
+> | [Microsoft.KubernetesConfiguration](resource-provider-operations.md#microsoftkubernetesconfiguration)/extensions/read | 获取扩展实例资源。 |
+> | [Microsoft.KubernetesConfiguration](resource-provider-operations.md#microsoftkubernetesconfiguration)/extensions/delete | 删除扩展实例资源。 |
+> | [Microsoft.KubernetesConfiguration](resource-provider-operations.md#microsoftkubernetesconfiguration)/extensions/operations/read | 获取异步操作状态。 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can create, update, get, list and delete Kubernetes Extensions, and get extension async operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/85cb6faf-e071-4c9b-8136-154b5a04f717",
+  "name": "85cb6faf-e071-4c9b-8136-154b5a04f717",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.KubernetesConfiguration/extensions/write",
+        "Microsoft.KubernetesConfiguration/extensions/read",
+        "Microsoft.KubernetesConfiguration/extensions/delete",
+        "Microsoft.KubernetesConfiguration/extensions/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Kubernetes Extension Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

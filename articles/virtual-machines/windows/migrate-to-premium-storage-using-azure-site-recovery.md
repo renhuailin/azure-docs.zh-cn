@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 749ad687f77b497c66a96de883c6f5566054112e
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: b3226dbaa180c2d7d09b3172cecac18e2f1e7389
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360426"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694236"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM 
 
 [Azure 高级 SSD](../disks-types.md) 为运行 I/O 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 本指南帮助用户使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 将其 VM 磁盘从标准存储帐户迁移到高级存储帐户。
 

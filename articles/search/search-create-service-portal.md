@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 713d2216029fb88716d157d9db7b2010d3f32720
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 08/24/2021
+ms.openlocfilehash: 4a77ca4a3318e9ea583bd113d373815860e8d591
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526265"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767831"
 ---
 # <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>在门户中创建 Azure 认知搜索服务
 
@@ -28,16 +28,20 @@ ms.locfileid: "111526265"
 以下服务属性在服务生存期内是固定的，更改任何属性都需要新的服务。 因为它们是固定的，所以在填写每个属性时，请考虑以下与用法相关的注意事项：
 
 + 服务名称变为 URL 终结点的一部分（[查看提示](#name-the-service)，了解有用的服务名称）。
-+ [服务层](search-sku-tier.md)会影响计费，应设置容量上限。 某些功能在免费层上不可用。
++ [服务层级](search-sku-tier.md)（基本、标准等）决定了底层物理硬件的特性。 因此，选择的层级会影响计费并设置容量上限。 某些功能在免费层上不可用。
 + 服务区域可能决定某些方案的可用性。 如果需要[高安全性功能](search-security-overview.md)或 [AI 扩充](cognitive-search-concept-intro.md)，则需要在与其他服务相同的区域中创建 Azure 认知搜索，或在提供相关功能的区域中进行创建。 
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 
-[打开免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)并使用免费信用额度试用付费 Azure 服务。 信用额度用完后，请保留帐户并继续使用免费的 Azure 服务，如网站。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
+要免费试用搜索，有两种选择：
 
-还可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 MSDN 订阅每月提供可用来试用付费版 Azure 服务的信用额度。 
++ [打开免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)并使用免费信用额度试用付费 Azure 服务。 信用额度用完后，请保留帐户并继续使用免费的 Azure 服务，如网站。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
 
-## <a name="find-azure-cognitive-search"></a>查找 Azure 认知搜索
++ 或者，[在 Visual Studio 订阅中激活 Azure 额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 一份 Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。 
+
+选择计费层级（基本或更高）并创建资源时，付费（或计费）搜索将生效。
+
+## <a name="find-the-azure-cognitive-search-offering"></a>查找 Azure 认知搜索产品
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 

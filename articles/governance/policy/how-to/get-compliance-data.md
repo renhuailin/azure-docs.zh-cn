@@ -3,12 +3,12 @@ title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取 Azure 资源的符合性详细信息。
 ms.date: 06/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 547128d56eb2577a416ad2dae419d58ffe8b645b
-ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
+ms.openlocfilehash: 38811d67c54bf87476d1015ab6b45497094d12ca
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113038365"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767840"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -42,7 +42,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 - 标准符合性评估周期。 分配每隔 24 小时自动重新评估一次。 涉及大量资源的大型策略或计划可能需要花费一段时间，因此，在评估周期何时完成方面，无法预先定义预期目标。 完成评估后，更新的符合性结果会在门户和 SDK 中提供。
 
-- [来宾配置](../concepts/guest-configuration.md)资源提供程序更新受管理资源的符合性详细信息。
+- [来宾配置](../concepts/guest-configuration.md)资源提供程序通过受管理资源更新了符合性详细信息。
 
 - 按需扫描
 

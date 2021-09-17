@@ -3,18 +3,18 @@ title: 教程 - 从 Azure 成本管理创建和管理导出的数据
 description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/26/2021
+ms.date: 08/05/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 592ef54b359c84309da350bf53da6bb0a4152374
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: f6d640d40b586e435e1484fce8d6560a961ba6ac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708639"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731952"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -259,11 +259,11 @@ Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-00
 
 ### <a name="file-partitioning-for-large-datasets"></a>大型数据集的文件分区
 
-如果你有 Microsoft 客户协议或 Microsoft 合作伙伴协议，则可以启用导出将文件分块到多个较小的文件分区中，以帮助进行数据引入。 首次配置导出时，请将“文件分区”设置设置为“启用” 。 默认情况下设置为“关闭”。
+如果你有 Microsoft 客户协议、Microsoft 合作伙伴协议或企业协议，则可以启用导出将文件分块到多个较小的文件分区中，以帮助进行数据引入。 首次配置导出时，请将“文件分区”设置设置为“启用” 。 默认情况下设置为“关闭”。
 
 :::image type="content" source="./media/tutorial-export-acm-data/file-partition.png" alt-text="显示“文件分区”选项的屏幕截图。" lightbox="./media/tutorial-export-acm-data/file-partition.png" :::
 
-如果没有 Microsoft 客户协议或 Microsoft 合作伙伴协议，就不会看到“文件分区”选项。
+如果没有 Microsoft 客户协议、Microsoft 合作伙伴协议或企业协议，就不会看到“文件分区”选项。
 
 #### <a name="update-existing-exports-to-use-file-partitioning"></a>更新现有导出以使用文件分区
 

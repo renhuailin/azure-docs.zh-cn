@@ -1,25 +1,25 @@
 ---
-title: 内容感知编码的预设
+title: 内容感知编码预设
 description: 本文介绍 Microsoft Azure 媒体服务 v3 中的内容感知编码。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 08/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0b87b37b98ada136597faa3ac5d990d6e08e9865
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5f333b4ca86e24c845a8a91c621a2b3f7c8c984e
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179421"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429757"
 ---
-# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用内容感知编码预设来查找给定分辨率的最佳比特率值
+# <a name="content-aware-encoding-preset"></a>内容感知编码预设
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -58,34 +58,6 @@ Microsoft 的[自适应流式处理](encode-autogen-bitrate-ladder.md)预设部�
 Azure 媒体服务的标准编码器现在支持 8 位 HEVC (H.265) 编码。 可以通过动态打包器使用“hev1”格式传送和打包 HEVC 内容。
 
 [media-services-v3-dotnet GitHub 存储库](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)中提供了有关使用 HEVC 实现 .NET 自定义编码的新示例。 除了自定义编码，AMS 还支持其他新的内置 HEVC 编码预设，可以在 [2021 年 2 月发行说明](https://docs.microsoft.com/azure/media-services/latest/release-notes#february-2021)中查看这些预设。
-
-## <a name="how-to-use-the-content-aware-encoding-preset"></a>如何使用内容感知编码预设 
-
-可按如下所示创建使用此预设的转换。 
-
-有关使用转换输出的教程，请参阅[后续步骤](#next-steps)部分。 可以在 MPEG-DASH 和 HLS 等协议中通过媒体服务流式处理终结点传送输出资产（如教程中所述）。
-
-> [!NOTE]
-> 请确保使用预设的 ContentAwareEncoding 而不使用 ContentAwareEncodingExperimental。 或者，如果想要使用 HEVC 进行编码，可使用 H265ContentAwareEncoding。
-
-```csharp
-TransformOutput[] output = new TransformOutput[]
-{
-   new TransformOutput
-   {
-      // The preset for the Transform is set to one of Media Services built-in sample presets.
-      // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
-      Preset = new BuiltInStandardEncoderPreset()
-      {
-         // This sample uses the new preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncoding
-      }
-   }
-};
-```
-
-> [!NOTE]
-> 使用 `ContentAwareEncoding` 预设的编码作业仅根据输出分钟数计费。 AMS 使用二次编码，除[定价页](https://azure.microsoft.com/pricing/details/media-services/#overview)上列出的费用以外，没有任何与使用任何预设相关的额外费用。
   
 ## <a name="next-steps"></a>后续步骤
 

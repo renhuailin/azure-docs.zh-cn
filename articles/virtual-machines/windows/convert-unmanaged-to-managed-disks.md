@@ -7,19 +7,19 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 7b1c270f83565e2968e6677f07b81968dcf61ac7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 57f0d5ed33bf662867ce7a4323f5f69d889e6653
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734583"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688907"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 
+适用于：:heavy_check_mark: Windows VM 
+
 如果有使用非托管磁盘的现有 Windows 虚拟机 (VM)，可通过 [Azure 托管磁盘](../managed-disks-overview.md)服务将 VM 转换为使用托管磁盘。 此过程同时转换操作系统 (OS) 磁盘和任何附加的数据磁盘。
 
-
- 
 
 ## <a name="before-you-begin"></a>准备阶段
 

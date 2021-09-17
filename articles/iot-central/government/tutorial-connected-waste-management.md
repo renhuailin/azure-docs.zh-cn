@@ -1,26 +1,58 @@
 ---
-title: 教程：使用 Azure IoT Central 创建连接的废弃物管理应用
-description: Tutorial:了解如何使用 Azure IoT Central 应用程序模板构建联网废弃物管理应用程序
+title: 教程 - Azure IoT 连接的废弃物管理 | Microsoft Docs
+description: 本教程介绍如何部署和使用适用于 IoT Central 的连接的废弃物管理应用程序模板。
 author: miriambrus
 ms.author: miriamb
-ms.date: 12/11/2020
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: bc83af43fab3871bf693635ddbdd446c2f4bb2e2
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 1ed898b02f2c30c3dcb043903bd3c3261d088539
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586502"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183215"
 ---
-# <a name="tutorial-create-a-connected-waste-management-app"></a>教程：创建连接的废弃物管理应用
+# <a name="tutorial-deploy-and-walk-through-the-connected-waste-management-application-template"></a>教程：部署和演练连接的废弃物管理应用程序模板
 
-本教程介绍如何使用 Azure IoT Central 创建联网废物管理应用程序。 
+使用 IoT Central 连接的废弃物管理应用程序模板和本文中的指南来开发端到端连接的废弃物管理解决方案。
 
-具体来说，你将学习如何： 
+:::image type="content" source="media/tutorial-connectedwastemanagement/concepts-connected-waste-management-architecture-1.png" alt-text="连接的废弃物管理体系结构。":::
+
+### <a name="devices-and-connectivity"></a>设备和连接
+
+在开放环境中使用的设备（例如垃圾桶）可以通过低功耗广域网 (LPWAN) 或第三方网络运营商进行连接。 对于这几类设备，请使用 [Azure IoT Central 设备网桥](../core/howto-build-iotc-device-bridge.md)将设备数据发送到 Azure IoT Central 中的 IoT 应用程序。 还可以使用支持 IP 且可直接连接到 IoT Central 的设备网关。
+
+### <a name="iot-central"></a>IoT Central
+
+Azure IoT Central 是一种 IoT 应用平台，可帮助快速构建和部署 IoT 解决方案。 你可以设计、自定义解决方案，并将其与第三方服务相集成。
+
+将智能废弃物设备连接到 IoT Central 时，该应用程序会提供设备命令与控制、监视和警报、带有内置 RBAC 的用户界面、可配置的仪表板和扩展性选项。
+
+### <a name="extensibility-and-integrations"></a>扩展性和集成
+
+可以在 IoT Central 中扩展 IoT 应用程序，并可根据需要执行以下操作：
+
+* 转换和集成 IoT 数据以进行高级分析，例如，通过从 IoT Central 应用程序持续导出的数据训练机器学习模型。
+* 通过 Power Automate 或 IoT Central 应用程序中的 Webhook 来触发操作，在其他系统中自动执行工作流。
+* 通过 IoT Central API 以编程方式访问 IoT Central 中的 IoT 应用程序。
+
+### <a name="business-applications"></a>业务应用程序
+
+可以使用 IoT 数据为废弃物治理公用事业中的各种业务应用程序赋能。 例如，在连接的废弃物管理解决方案中，可以优化垃圾收集车的调度。 可以基于已连接的垃圾箱中的 IoT 传感器数据执行优化。在 [IoT Central 连接的废弃物管理应用程序](./tutorial-connected-waste-management.md)中，你可以配置规则和操作，并将其设置为在[已连接的现场服务](/dynamics365/field-service/connected-field-service)中创建警报。 在 IoT Central 规则中配置 Power Automate，以跨应用程序和服务自动执行工作流。 此外，基于已连接的现场服务中的服务活动，可以将信息发送回 Azure IoT Central。
+
+可以使用 IoT Central 和已连接的现场服务轻松配置以下集成过程：
+
+* Azure IoT Central 可以将有关设备异常的信息发送到已连接的现场服务进行诊断。
+* 连接的现场服务可以创建从设备异常触发的案例或工作订单。
+* 连接的现场服务可以安排技术人员进行检查，以防止停机事件发生。
+* 可以使用相关服务和计划信息更新 Azure IoT Central 设备仪表板。
+
+在本教程中，你将了解：
 
 > [!div class="checklist"]
+
 > * 使用 Azure IoT Central 联网废弃物管理模板来创建应用。
 > * 浏览并自定义仪表板。 
 > * 浏览联网垃圾箱设备模板。
@@ -31,50 +63,27 @@ ms.locfileid: "113586502"
 
 ## <a name="prerequisites"></a>先决条件
 
-建议使用 Azure 订阅。 或者，可使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
+* 无需满足特定的先决条件，就可以部署此应用。
+* 你可以使用免费定价计划或使用 Azure 订阅。
 
-## <a name="create-your-app-in-azure-iot-central"></a>在 Azure IoT Central 中创建应用
+## <a name="create-connected-waste-management-application"></a>创建连接的废弃物管理应用程序
 
-在本部分，你将使用联网废物管理模板在 Azure IoT Central 中创建应用。 下面介绍如何操作：
+1. 导航到 [Azure IoT Central 生成](https://aka.ms/iotcentral)站点。 然后使用 Microsoft 个人、工作或学校帐户登录。 从左侧导航栏中选择“生成”，然后选择“政府”选项卡 ：:::image type="content" source="media/tutorial-connectedwastemanagement/iot-central-government-tab-overview.png" alt-text="连接的废弃物管理模板":::
 
-1. 转到 [Azure IoT Central](https://aka.ms/iotcentral)。
+1. 选择“连接的废弃物管理”下的“创建应用” 。
 
-    如果你有一个 Azure 订阅，请使用用于访问该订阅的凭据登录。 否则，请使用 Microsoft 帐户登录：
+若要了解详细信息，请参阅[创建 IoT Central 应用程序](../core/howto-create-iot-central-application.md)。
 
-    ![Microsoft 登录的屏幕截图。](./media/tutorial-connectedwastemanagement/sign-in.png)
+## <a name="walk-through-the-application"></a>演练应用程序
 
-1. 在左侧窗格中，选择“构建”。 然后，选择“政府”选项卡。“政府”窗格显示了几个政府应用程序模板。
+以下各部分将介绍应用程序的主要功能：
 
-    ![“Azure IoT Central 构建”页面的屏幕截图。](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
+### <a name="dashboard"></a>仪表板 
 
-1. 选择“联网废弃物管理”应用程序模板。 此模板包括示例联网垃圾箱设备模板、模拟设备、仪表板以及预配置的监测规则。    
+部署应用程序模板之后，默认仪表板为“Wide World 废弃物管理仪表板”。
 
-1. 选择“创建应用”，这会打开“新建应用程序”对话框 。 填写以下字段的信息：
-    * **应用程序名称**。 默认情况下，应用程序使用“联网废弃物管理”，后跟 Azure IoT Central 生成的唯一 ID 字符串。 （可选）可选择一个易记的应用程序名称。 稍后也可以更改应用程序名称。
-    * **URL**。 （可选）可选择所需的 URL。 稍后可更改该 URL。 
-    * **定价计划**。 如果你有 Azure 订阅，请在“计费信息”对话框的相应字段输入目录、Azure 订阅和区域。 如果你没有订阅，请选择“免费”来启用 7 天试用版订阅，并填写所需的联系信息。  
+:::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-dashboard-1.png" alt-text="Wide World 废弃物管理仪表板的屏幕截图。":::
 
-1. 在页面底部，选择“创建”。 
-
-    ![Azure IoT Central 的“新建应用程序”对话框的屏幕截图。](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
-    
-    ![Azure IoT Central 的“计费信息”对话框的屏幕截图。](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
-
- 
-新创建的应用程序带有下列预配置的内容：
-* 示例仪表板。
-* 预定义的联网垃圾箱设备示例模板。
-* 模拟的联网垃圾箱设备。
-* 规则和作业。
-* 示例品牌。 
-
-这是你的应用程序，你可以随时修改它。 现在，浏览应用程序并进行一些自定义。  
-
-## <a name="explore-and-customize-the-dashboard"></a>浏览并自定义仪表板 
-
-查看创建应用后看到的 Wide World 废弃物管理仪表板。
-
-   ![Wide World 废弃物管理仪表板的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
 
 生成人员可在仪表板上创建和自定义视图，以供操作员使用。 首先，来看看这个仪表板。 
 
@@ -91,26 +100,27 @@ ms.locfileid: "113586502"
 
 * **废弃物监视区域地图**：该磁贴使用 Azure Maps，你可直接在 Azure IoT Central 中对其进行配置。 地图磁贴显示设备[位置](../core/howto-use-location-data.md)。 尝试将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开。
 
-     ![联网废弃物管理模板仪表板地图的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-dashboard-map.png" alt-text="联网废弃物管理模板仪表板地图的屏幕截图。":::
+
 
 
 * **填充、气味、重量水平条形图**：可在条形图中直观呈现一种或多种设备遥测数据。 还可以展开条形图。  
 
-  ![联网废弃物管理模板仪表板条形图的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-dashboard-bar-chart.png" alt-text="连接的废弃物管理模板仪表板条形图的屏幕截图。":::
 
 
 * **Field Services**：仪表板上有一个链接，可通过它了解如何从 Azure IoT Central 应用程序与 Dynamics 365 Field Services 进行集成。 例如，可使用 Field Services 创建用于调度垃圾收集服务的票证。 
-
 
 ### <a name="customize-the-dashboard"></a>自定义仪表板 
 
 可通过选择“编辑”菜单来自定义仪表板  。 然后，可添加新磁贴或配置现有磁贴。 下面是仪表板在编辑模式下的显示效果： 
 
-![编辑模式下联网废弃物管理模板仪表板的屏幕截图。](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
+:::image type="content" source="media/tutorial-connectedwastemanagement/edit-dashboard.png" alt-text="编辑模式下联网废弃物管理模板仪表板的屏幕截图。":::
+
 
 还可选择“+新建”来创建新的仪表板，并从头开始配置。 你可以有多个仪表板，还可通过仪表板菜单在仪表板之间切换。 
 
-## <a name="explore-the-device-template"></a>浏览设备模板
+### <a name="explore-the-device-template"></a>浏览设备模板
 
 Azure IoT Central 中的设备模板会定义设备的功能，这些功能可以包括遥测、属性或命令。 构建者可定义设备模板来表示要联网的设备功能。 
 
@@ -120,18 +130,20 @@ Azure IoT Central 中的设备模板会定义设备的功能，这些功能可�
 
 1. 在 Azure IoT Central 中，从应用的左侧窗格中选择“设备模板”。 
 
-    ![显示应用程序中的设备模板列表的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-device-template.png" alt-text="显示应用程序中的设备模板列表的屏幕截图。":::
+
 
 1. 在“设备模板”列表中，选择“联网垃圾箱” 。
 
 1. 检查设备模板功能。 你可以看到，它定义了填充级别、气味测量仪、重量和位置等传感器   。
 
-   ![显示联网垃圾箱设备模板详细信息的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-device-template-connected-bin.png" alt-text="显示连接的垃圾桶设备模板详细信息的屏幕截图。":::
 
 
 ### <a name="customize-the-device-template"></a>自定义设备模板
 
 尝试自定义以下内容：
+
 1. 在设备模板菜单中，选择“自定义”  。
 1. 查找“气味测量仪”遥测类型。
 1. 将气味测量仪的显示名称更新为“气味级别”  。
@@ -141,14 +153,17 @@ Azure IoT Central 中的设备模板会定义设备的功能，这些功能可�
 ### <a name="add-a-cloud-property"></a>添加云属性 
 
 下面介绍如何操作：
+
 1. 从设备模板菜单中，选择“云属性”  。
 1. 选择“+添加云属性”。 在 Azure IoT Central 中，可添加与设备相关但不应由设备发送的属性。 例如，云属性可以是特定于安装区域、资产信息或维护信息的警报阈值。 
 1. 选择“保存”。 
  
 ### <a name="views"></a>视图 
+
 联网垃圾箱设备模板带有预定义的视图。 浏览视图，并根据需要对其进行更新。 视图定义了操作员查看设备数据及输入云属性的方式。 
 
-  ![联网垃圾箱管理模板模板视图的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
+:::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-device-template-views.png" alt-text="连接的废弃物管理模板设备模板视图的屏幕截图。":::
+
 
 ### <a name="publish"></a>发布 
 
@@ -158,7 +173,7 @@ Azure IoT Central 中的设备模板会定义设备的功能，这些功能可�
 
 若要创建新的设备模板，请选择“+新建”，然后按照步骤操作。 可从头开始创建自定义设备模板，也可从 Azure 设备目录选择一个设备模板。 
 
-## <a name="explore-simulated-devices"></a>浏览模拟设备
+### <a name="explore-simulated-devices"></a>浏览模拟设备
 
 在 Azure IoT Central 中，可以创建模拟设备以测试设备模板和应用程序。 
 
@@ -168,11 +183,13 @@ Azure IoT Central 中的设备模板会定义设备的功能，这些功能可�
 
 1. 在 Azure IoT Central 的左侧窗格中，选择“设备”。 
 
-   ![联网垃圾箱管理模板设备的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-devices.png" alt-text="联网垃圾箱管理模板设备的屏幕截图。":::
+
 
 1. 选择“联网垃圾箱”设备。  
 
-     ![联网垃圾箱管理模板设备属性的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-devices-bin-1.png" alt-text="联网垃圾箱管理模板设备属性的屏幕截图。":::
+
 
 1. 请转到“云属性”选项卡。将“箱满警报阈值”的值从 95 更新到 100  。 
 
@@ -192,13 +209,16 @@ Azure IoT Central 中的设备模板会定义设备的功能，这些功能可�
 “连接的废弃物管理”应用程序有四个示例规则  。
 
 ### <a name="view-rules"></a>查看规则
+
 1. 在 Azure IoT Central 的左侧窗格中，选择“规则”。
 
-   ![联网垃圾箱管理模板规则的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-rules.png" alt-text="联网垃圾箱管理模板规则的屏幕截图。":::
+
 
 1. 选择“箱满警报”。
 
-     ![箱满警报的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-bin-full-alert.png" alt-text="箱满警报的屏幕截图。":::
+
 
  1. 箱满警报会检查以下情况：**填充级别大于或等于箱满警报阈值**。
 
@@ -241,7 +261,8 @@ Azure IoT Central 中的设备模板会定义设备的功能，这些功能可�
 1. 选择“更改”，来选择要上传用于浏览器图标的图像（该图标是一个将显示在浏览器标签页上的图像） 。
 1. 还可添加 HTML 十六进制颜色代码来替换默认浏览器颜色。 为此，请使用“标头”和“强调”字段 。
 
-   ![联网废弃物管理模板的“自定义应用程序”的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
+    :::image type="content" source="media/tutorial-connectedwastemanagement/connected-waste-management-customize-your-application.png" alt-text="联网废弃物管理模板的“自定义应用程序”的屏幕截图。":::
+
 
 1. 还可更改应用程序图像。 选择“管理” > “应用程序设置” > “选择图像”，来选择要上传用作应用程序图像的图像  。
 1. 最后，还可单击应用程序刊头上的“设置”来更改主题。
@@ -256,4 +277,4 @@ Azure IoT Central 中的设备模板会定义设备的功能，这些功能可�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [连接的废弃物管理概念](./concepts-connectedwastemanagement-architecture.md)
+> [连接的水消耗量概念](./tutorial-water-consumption-monitoring.md)

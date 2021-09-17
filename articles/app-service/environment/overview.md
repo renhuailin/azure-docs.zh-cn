@@ -4,15 +4,15 @@ description: 有关应用服务环境的概述
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 07/05/2021
+ms.date: 08/05/2021
 ms.author: ccompy
 ms.custom: references_regions
-ms.openlocfilehash: d08645c3250490935c11fb983208a30d426dcce0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 848b7ce830c91cffaaaa39ed2102255f0adc3b7f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723035"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445680"
 ---
 # <a name="app-service-environment-overview"></a>应用服务环境概述 
 > [!NOTE]
@@ -88,15 +88,15 @@ ASEv3 相比于早期版本的 ASE 而言存在一些差异。 使用 ASEv3 时�
 
 使用 ASEv3 时，有一种不同的定价模式，具体取决于你的 ASE 部署类型。 三种定价模式如下： 
 
-- ASEv3：如果 ASE 是空的，则收费方式如同你有一个包含 Windows I1v2 实例的 ASP。 一个实例的费用并非附加性费用，这笔费用只会在 ASE 完全为空时应用。
-- 可用性区域 ASEv3：至少有 9 笔 Windows I1v2 实例费用。 如果有 9 个或多个应用服务计划实例，则可用性区域支持不收取额外的费用。 
+- ASEv3：如果 ASE 是空的，则收费方式如同你有一个包含 Windows I1v2 实例的 ASP。 一个实例的费用并非附加性费用，这笔费用只会在 ASE 为空时应用。
+- 可用性区域 ASEv3：至少有 9 笔 Windows I1v2 实例费用。 如果有 9 个或更多个应用服务计划实例，则可用性区域支持不收取额外的费用。 此外，AZ ASEv3 中的所有应用服务计划的最小实例计数为 3，以确保每个可用性区域中都有一个实例。 随着计划的横向扩展，这些计划将分散到各个可用性区域。 
 - 专用主机 ASEv3：使用专用主机部署时，你需要按照创建 ASEv3 时的定价支付两个专用主机的费用，并在缩放时按照较小百分比的“独立 V2”费率支付每个核心的费用。
 
-“独立 V2”的预留实例定价将在正式版推出后提供。  
+已提供独立 v2 的预留实例定价，并在[如何将预留折扣应用于 Azure 应用服务][reservedinstances]中进行了介绍。 [应用服务定价][pricing]的“独立 v2 计划”下提供了定价和预留实例定价。 
 
 ## <a name="regions"></a>区域
 
-ASEv3 在以下区域中可用。
+ASEv3 在以下区域中可用。 
 
 |常规和专用主机 ASEv3 区域|   AZ ASEv3 区域|
 |---------------------------------------|------------------|
@@ -114,7 +114,6 @@ ASEv3 在以下区域中可用。
 |韩国中部  | 英国南部|
 |北欧   | 西欧|
 |挪威东部    | 美国西部 2 |
-|南非北部| |  
 |美国中南部   | |
 |东南亚| |
 |瑞士北部  | | 
@@ -124,3 +123,7 @@ ASEv3 在以下区域中可用。
 |西欧    | |
 |美国西部    | | 
 |美国西部 2| |
+
+<!--Links-->
+[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

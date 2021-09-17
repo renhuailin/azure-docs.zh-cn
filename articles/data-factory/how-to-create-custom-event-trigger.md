@@ -8,12 +8,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 2a454f2f81e048511725e7a9f3269bdd9b5bcd49
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 046d94202769845f58c7f528bddb37e29e0c312a
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396634"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514425"
 ---
 # <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory"></a>创建自定义事件触发器以在 Azure 数据工厂中运行管道
 
@@ -133,9 +133,9 @@ ms.locfileid: "122396634"
 
 | JSON 元素 | 说明 | 类型 | 允许的值 | 必需 |
 |---|----------------------------|---|---|---|
-| `scope` | 事件网格主题的 Azure 资源管理器资源 ID。 | String | Azure 资源管理器 ID | 是 |
+| `scope` | 事件网格主题的 Azure 资源管理器资源 ID。 | 字符串 | Azure 资源管理器 ID | 是 |
 | `events` | 导致此触发器触发的事件的类型。 | 字符串数组    |  | 是，至少需要一个值。 |
-| `subjectBeginsWith` | `subject` 字段必须以所提供的模式开头，触发器才会触发。 例如， *factories 仅会针对以 factories 开头的事件主题引发触发器。 | String   | | 否 |
+| `subjectBeginsWith` | `subject` 字段必须以所提供的模式开头，触发器才会触发。 例如，factories 仅会针对以 factories 开头的事件主题引发触发器。 | 字符串   | | 否 |
 | `subjectEndsWith` | `subject` 字段必须以所提供的模式结尾，触发器才会触发。 | 字符串   | | 否 |
 | `advancedFilters` | JSON blob 的列表，每个指定一个筛选条件。 每个 blob 都指定 `key`、`operatorType` 和 `values`。 | JSON blob 的列表 | | 否 |
 

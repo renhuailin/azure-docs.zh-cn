@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e001e268a5e805fbab7cc84e7248750bd58e911e
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92912899"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822858"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
@@ -129,7 +129,7 @@ ms.locfileid: "92912899"
 
 ## <a name="auto-correction"></a>自动更正
 
-假设输入文本如下（“lzay”和“f0x”是有意拼错的）：
+假设输入文本为（“qu!ck”、“f0x”和“lzay”是有意拼错的）：
 
 > The qu!ck brown f0x jumps over the lzay dog.
 

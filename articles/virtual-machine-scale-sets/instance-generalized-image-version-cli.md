@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
-ms.openlocfilehash: 7be64109aa304e25ec6c61053f446733ed922b32
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: a9ac2bd794ee4aa9f531ad9fcd2f07bb744d02c8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028048"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691247"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>使用 Azure CLI 从通用化映像创建规模集
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 使用 Azure CLI 从[共享映像库](../virtual-machines/shared-image-galleries.md)中存储的通用化映像版本创建规模集。 若要使用专用化映像版本创建规模集，请参阅[从专用化映像创建规模集实例](instance-specialized-image-version-cli.md)。
 

@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: ffa2a3a921e988b92ad90831041a6fb4d321bc42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3171b9ffd15fe7dd9e13b3fdde1a3394efb6327
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92747825"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697373"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
+
 用户现在可以创建容量高达 1,000 台 VM 的 Azure [虚拟机规模集](./index.yml)。 在本文档中，_大型虚拟机规模集_ 定义为能够扩展到 100 台 VM 以上的规模集。 此功能通过规模集属性 (_singlePlacementGroup=False_) 设置。 
 
 大型规模集在某些方面（例如负载均衡和容错域）的表现不同于标准规模集。 本文档介绍了大型规模集的特征，说明了在应用程序中成功使用大型规模集需要了解的事项。 

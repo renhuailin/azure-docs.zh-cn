@@ -7,12 +7,12 @@ ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: ebf73d6a79048a7cd08b0995e98da229f9df46ca
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c8a10873f420b5aba75596a4377bfa4f0b37d4f7
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068221"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606891"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>已启用 Azure Arc 的 Open Service Mesh（预览版）
 
@@ -23,9 +23,10 @@ OSM 在 Kubernetes 上运行基于 Envoy 的控制平面，可以使用 [SMI](ht
 ### <a name="support-limitations-for-arc-enabled-open-service-mesh"></a>已启用 Arc 的 Open Service Mesh 的支持限制
 
 - 在一个已连接到 Arc 的 Kubernetes 群集上，只能部署一个 Open Service Mesh 实例
-- 为 Open Service Mesh v0.8.4 和更高版本推出了此功能的公共预览版。 在[此处](https://github.com/Azure/osm-azure/releases)可以找到最新发布版本。
+- 为 Open Service Mesh v0.8.4 和更高版本推出了此功能的公共预览版。 在[此处](https://github.com/Azure/osm-azure/releases)可以找到最新发布版本。 受支持的发行版本附有注释。 忽略与中间版本关联的标记。 
 - 目前支持以下 Kubernetes 发行版
     - AKS 引擎
+    - HCI 上的 AKS
     - Cluster API Azure
     - Google Kubernetes Engine
     - Canonical Kubernetes Distribution
@@ -37,7 +38,7 @@ OSM 在 Kubernetes 上运行基于 Envoy 的控制平面，可以使用 [SMI](ht
 
 [!INCLUDE [preview features note](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - 确保满足[此处](extensions.md#prerequisites)列出的所有一般群集扩展先决条件。
 - 使用版本 >= v0.4.0 的 az k8s-extension CLI
@@ -393,24 +394,23 @@ Azure Monitor 和 Azure Application Insights 都提供用于收集、分析和�
 
 已启用 Arc 的 Open Service Mesh 将深度集成到这两个 Azure 服务，并提供无缝的 Azure 体验用于查看和响应 OSM 指标所提供的关键 KPI。 按照以下步骤允许 Azure Monitor 抓取 prometheus 终结点以收集应用程序指标。 
 
-1. 确保在 `osm-mesh-config` 中将 prometheus_scraping 设置为 true。
+1. 确保要监视的应用程序命名空间已加入到网格。 请按照[此处](#onboard-namespaces-to-the-service-mesh)提供的指导操作。
 
-2. 确保要监视的应用程序命名空间已加入到网格。 请按照[此处](#onboard-namespaces-to-the-service-mesh)提供的指导操作。
-
-3. 公开应用程序命名空间的 prometheus 终结点。
+2. 公开应用程序命名空间的 prometheus 终结点。
     ```azurecli-interactive
     osm metrics enable --namespace <namespace1>
     osm metrics enable --namespace <namespace2>
     ```
+    对于 v0.8.4，请确保 `osm-config` ConfigMap 中的 `prometheus_scraping` 设置为 `true`。
 
-4. 参考[此处](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)提供的指导安装 Azure Monitor 扩展。
+3. 参考[此处](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)提供的指导安装 Azure Monitor 扩展。
 
-5. 在 container-azm-ms-osmconfig ConfigMap 中添加要监视的命名空间。 从[此处](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-osmconfig.yaml)下载 ConfigMap。
+4. 在 container-azm-ms-osmconfig ConfigMap 中添加要监视的命名空间。 从[此处](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-osmconfig.yaml)下载 ConfigMap。
     ```azurecli-interactive
     monitor_namespaces = ["namespace1", "namespace2"]
     ```
 
-6. 运行以下 kubectl 命令
+5. 运行以下 kubectl 命令
     ```azurecli-interactive
     kubectl apply -f container-azm-ms-osmconfig.yaml
     ```

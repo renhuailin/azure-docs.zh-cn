@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.openlocfilehash: 862bb886c7ec5dfd40c7acdbae2f70f6698a711b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac9c699addf996178b1d6aabdf010267bda75964
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669937"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690066"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>用于在 Azure 上部署 Oracle 应用程序的体系结构
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 Microsoft 和 Oracle 竭诚合作，让客户能够在云中部署 Oracle E-Business Suite、JD Edwards EnterpriseOne 和 PeopleSoft 等 Oracle 应用程序。 通过引入 Microsoft Azure 与 Oracle Cloud Infrastructure (OCI) 之间的预览[专用网络互连](configure-azure-oci-networking.md)，现在可以在 Azure 上使用 Azure 或 OCI 中的后端数据库部署 Oracle 应用程序。 Oracle 应用程序还可以与 Azure Active Directory 集成，从而允许你设置单一登录，以便用户可以使用其 Azure Active Directory (Azure AD) 凭据登录到 Oracle 应用程序。
 

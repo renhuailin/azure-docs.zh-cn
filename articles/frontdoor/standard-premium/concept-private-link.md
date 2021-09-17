@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 38bd02f478ebe34f3c5708e1df9cc7da1e885058
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 53c719bb451b6bc8239fbd0f68bb6ad423b37b11
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715207"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607136"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>在 Azure Front Door 标准版/高级版（预览版）中使用专用链接保护源
 
 > [!Note]
-> 本文档适用于 Azure Front Door 标准/高级（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看 [Azure Front Door 文档](../front-door-overview.md)。
+> 本文档适用于 Azure Front Door 标准版/高级版（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看 [Azure Front Door 文档](../front-door-overview.md)。
 
 ## <a name="overview"></a>概述
 
@@ -51,5 +51,6 @@ Azure Front Door 专用终结点由平台管理，位于 Azure Front Door 订阅
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要通过专用链接服务将 Azure Front Door 高级版连接到 Web 应用，请参阅[使用专用终结点连接到 Web 应用](../../private-link/tutorial-private-endpoint-webapp-portal.md)。
-* 若要通过专用链接服务将 Azure Front Door 高级版连接到存储帐户，请参阅[使用专用终结点连接到存储帐户](../../private-link/tutorial-private-endpoint-storage-portal.md)。
+* 若要通过专用链接服务将 Azure Front Door 高级版连接到 Web 应用，请参阅[使用专用链接将 Azure Front Door Premium 连接到 Web 应用源](../../frontdoor/standard-premium/how-to-enable-private-link-web-app.md)。
+* 若要通过专用链接服务将 Azure Front Door 高级版连接到存储帐户，请参阅[使用专用链接将 Azure Front Door Premium 连接到存储帐户源](../../frontdoor/standard-premium/how-to-enable-private-link-storage-account.md)。
+* 要使用专用链接服务将 Azure Front Door Premium 连接到内部负载均衡器源，请参阅[使用专用链接将 Azure Front Door Premium 连接到内部负载均衡器源](../../frontdoor/standard-premium/how-to-enable-private-link-internal-load-balancer.md)。

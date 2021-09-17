@@ -10,14 +10,15 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: cf30282ee37beaa99e83b78b8b7455f2060d8023
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0834fa6fd7eff41f37eb8f16dc3429189be284cb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667997"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688672"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Windows 虚拟机
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集
 
 Azure 监视使用代理从 Azure VM 收集启动和性能数据，将此数据存储在 Azure 存储中，并使其可供通过门户、Azure PowerShell 模块和 Azure CLI 进行访问。 用于 VM 的 Azure Monitor 通过收集性能指标、发现 VM 上安装的应用程序组件来提供高级监视，并包括性能图表和依赖关系图。
 

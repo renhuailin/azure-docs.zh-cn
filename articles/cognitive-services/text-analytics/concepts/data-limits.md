@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/19/2020
+ms.date: 04/07/2021
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 9ba9fe7ca73e874fb55c228e22b884a86de736cf
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: b583caa4fdb2a1e72833d4e24c317282be041513
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661453"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822128"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文本分析 API 的数据和速率限制
 <a name="data-limits"></a>
 
-使用本文查找将数据发送到文本分析 API 的大小和速率限制。 请注意，定价不受数据限制或速率限制的影响。 定价受限于文本分析资源的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)。
+使用本文查找将数据发送到文本分析 API 的大小和速率限制。
 
 ## <a name="data-limits"></a>数据限制
 
 > [!NOTE]
-> * 如果需要分析的文档的大小超出限制，则可将文本拆分成较小的文本块，然后再将其发送到 API。 
-> * 文档是由文本字符构成的单个字符串。  
+> * 定价不受数据或速率限制影响。 定价基于发送到 API 的文本记录的数量，并受文本分析资源的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)限制。
+>   * 文本记录测量为 1000 个字符。 
+> * 数据和速率限制基于发送到 API 的文档数。 如果需要分析的文档的大小超出限制，则可将文本拆分成较小的文本块，然后再将其发送到 API。 
+>   * 文档是由文本字符构成的单个字符串。  
 
 | 限制 | 值 |
 |------------------------|---------------|
@@ -88,6 +90,8 @@ ms.locfileid: "98661453"
 
 对每个文本分析功能的请求速率分别进行测量。 可以同时向每个功能发送定价层的最大数量的请求。 例如，如果你处于 `S` 层并一次发送了 1000 个请求，则你将无法在 59 秒内再发送其他请求。
 
+
+S0-S4 层已弃用，建议切换到 S 层。
 
 ## <a name="see-also"></a>另请参阅
 

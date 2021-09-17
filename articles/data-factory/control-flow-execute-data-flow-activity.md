@@ -1,19 +1,22 @@
 ---
 title: 数据流活动
-description: 如何在数据工厂管道中执行数据流。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 如何从 Azure 数据工厂或 Azure Synapse Analytics 管道内部执行数据流。
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 05/20/2021
-ms.openlocfilehash: 3793fb3495ca9df9ab8ed408090a8f285f6488b0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/24/2021
+ms.openlocfilehash: b5fdb41c84d97c5a4ba544c299eb183c704fa3d8
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464640"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822209"
 ---
-# <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
+# <a name="data-flow-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的数据流活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -71,7 +74,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 可以动态设置“核心计数”和“计算类型”属性，以在运行时调整传入源数据的大小。 使用管道活动（例如“查找”或“获取元数据”），以便查找源数据集数据的大小。 然后，在“数据流”活动属性中使用“添加动态内容”。
 
 > [!NOTE]
-> 在 Synapse 数据流中选择驱动程序和工作器节点核心时，将会始终使用至少 3 个节点。
+> 在 Azure Synapse 数据流中选择驱动程序和工作器节点核心时，将会始终使用至少 3 个节点。
 
 ![动态数据流](media/data-flow/dyna1.png "动态数据流")
 
@@ -79,7 +82,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 ### <a name="data-flow-integration-runtime"></a>数据流集成运行时
 
-选择用于数据流活动执行的 Integration Runtime。 在默认情况下，数据工厂会将自动解析 Azure Integration Runtime 与四个工作器核心配合使用。 此 IR 具有常规用途计算类型，并在与工厂相同的区域中运行。 对于已运营化的管道，强烈建议创建你自己的 Azure Integration Runtime，用于定义执行数据流活动所需的特定区域、计算类型、核心计数和 TTL。
+选择用于数据流活动执行的 Integration Runtime。 在默认情况下，服务会将自动解析 Azure Integration Runtime 与四个工作器核心配合使用。 此 IR 具有常规用途计算类型，并在与服务实例相同的区域中运行。 对于已运营化的管道，强烈建议创建你自己的 Azure Integration Runtime，用于定义执行数据流活动所需的特定区域、计算类型、核心计数和 TTL。
 
 对于大多数生产工作负荷，建议至少使用一个采用 8+8（总计 16）个 v-Core 和 10 分钟配置的“常规用途”计算类型（对于大型工作负荷，建议不要使用“计算优化”计算类型）。 通过设置小型 TTL，Azure IR 可以维护一个热群集，它不会出现冷群集那种需要几分钟时间才能启动的情况。 通过在 Azure IR 数据流配置上选择“快速重复使用”，你还可以进一步加快数据流的执行速度。 有关详细信息，请参阅 [Azure Integration Runtime](concepts-integration-runtime.md)。
 
@@ -94,13 +97,13 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 ## <a name="logging-level"></a>日志记录级别
 
-如果不需要数据流活动的每个管道执行完整地记录所有详细的遥测日志，则可根据需要将日志记录级别设置为“基本”或“无”。 在“详细”模式（默认）下执行数据流时，要求 ADF 在数据转换期间完整地记录每个分区级别的活动。 该操作成本昂贵，因此仅在进行故障排除时启用“详细”模式可优化整体数据流和管道性能。 “基本”模式仅记录转换持续时间，而“无”模式仅提供持续时间的摘要。
+如果不需要数据流活动的每个管道执行完整地记录所有详细的遥测日志，则可根据需要将日志记录级别设置为“基本”或“无”。 在“详细”模式（默认）下执行数据流时，要求此服务在数据转换期间完整地记录每个分区级别的活动。 该操作成本昂贵，因此仅在进行故障排除时启用“详细”模式可优化整体数据流和管道性能。 “基本”模式仅记录转换持续时间，而“无”模式仅提供持续时间的摘要。
 
 ![日志记录级别](media/data-flow/logging.png "设置日志记录级别")
 
 ## <a name="sink-properties"></a>接收器属性
 
-使用数据流中的分组功能，既可以设置接收器的执行顺序，又可以使用相同的组号将接收器分组在一起。 为了帮助管理组，可以要求 ADF 并行运行同一组中的接收器。 还可以将接收器组设置为继续，即使其中一个接收器遇到错误仍可这样设置。
+使用数据流中的分组功能，既可以设置接收器的执行顺序，又可以使用相同的组号将接收器分组在一起。 为帮助管理组，可以要求此服务在同一组中运行接收器，以并行运行。 还可以将接收器组设置为继续，即使其中一个接收器遇到错误仍可这样设置。
 
 数据流接收器的默认行为是以串行方式顺序执行每个接收器，并且在接收器中遇到错误时使数据流失败。 此外，除非进入数据流属性并为接收器设置不同的优先级，否则所有接收器均默认为同一组。
 
@@ -120,7 +123,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 ### <a name="parameterized-data-flows"></a>参数化数据流
 
-如果数据流已参数化，请在“参数”选项卡中设置数据流参数的动态值。可以使用 ADF 管道表达式语言或数据流表达式语言来分配动态或文字参数值。 有关详细信息，请参阅[数据流参数](parameters-data-flow.md)。
+如果数据流已参数化，请在“参数”选项卡中设置数据流参数的动态值。可以使用管道表达式语言或数据流表达式语言来分配动态或文字参数值。 有关详细信息，请参阅[数据流参数](parameters-data-flow.md)。
 
 ### <a name="parameterized-compute-properties"></a>参数化计算属性。
 
@@ -179,7 +182,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅数据工厂支持的控制流活动： 
+参阅支持的控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)

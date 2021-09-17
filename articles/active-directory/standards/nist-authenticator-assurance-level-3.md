@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 210213321dfba3bf734af498db6567cf1c6b4281
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: d95bfadd23e1a8e0d2db70952c81667d24dc4230
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889699"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771020"
 ---
 # <a name="achieve-nist-authenticator-assurance-level-3-by-using-azure-active-directory"></a>使用 Azure Active Directory 满足 NIST 验证器保证等级 3 要求
 
@@ -44,7 +44,7 @@ Microsoft 提供的身份验证方法有助于满足所需的 NIST 验证器类�
 
 建议使用多重加密硬件验证器来满足 AAL3 要求。 无密码身份验证消除了最大的攻击面（密码），并为用户提供了一种简化的身份验证方法。 如果你的组织完全基于云，建议使用 FIDO2 安全密钥。
 
-请注意，FIDO2 密钥和 Windows Hello 企业版尚未在所需的 FIPS 140 安全级别进行验证。 因此，在选择将这些验证器用于满足 AAL3 级别要求之前，联邦客户需要进行风险评估和计算。
+请注意，Windows Hello 企业版尚未在所需的 FIPS 140 安全级别进行验证，因此，在认可其达到 AAL3 之前，联邦客户需要进行风险评估和评价。 .
 
 有关详细指南，请参阅[在 Azure Active Directory 中规划无密码身份验证部署](../authentication/howto-authentication-passwordless-deployment.md)。
 

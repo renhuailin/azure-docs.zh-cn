@@ -2,13 +2,13 @@
 title: 将磁盘池附加到 Azure VMware 解决方案主机（预览版）
 description: 了解如何将通过 iSCSI 目标呈现的磁盘池附加为 Azure VMware 解决方案私有云的 VMware 数据存储。 配置数据存储后，可在其上创建卷，然后将卷附加到 VMware 实例。
 ms.topic: how-to
-ms.date: 07/13/2021
-ms.openlocfilehash: fefb014f221a121259c0b8d6411de362e11a63c0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/20/2021
+ms.openlocfilehash: 2487e26d887935f0d66f13d51ce7894edb2b2b6e
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745650"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769298"
 ---
 # <a name="attach-disk-pools-to-azure-vmware-solution-hosts-preview"></a>将磁盘池附加到 Azure VMware 解决方案主机（预览版）
 
@@ -32,7 +32,7 @@ Azure 托管磁盘附加到在 Azure VMware 解决方案资源组下部署的一
 只能将磁盘池连接到同一区域中的 Azure VMware 解决方案私有云。 有关受支持的区域列表，请参阅[区域可用性](../virtual-machines/disks-pools.md#regional-availability)。  如果你的私有云部署在不受支持的区域，可将其重新部署到受支持的区域。 将 Azure VMware 解决方案私有云和磁盘池共置在一起可以实现最佳性能和最低网络延迟。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 确定工作负载的可伸缩性和性能要求。 有关详细信息，请参阅[规划 Azure 磁盘池](../virtual-machines/disks-pools-planning.md)。
 
@@ -53,83 +53,83 @@ Azure 托管磁盘附加到在 Azure VMware 解决方案资源组下部署的一
 >[!IMPORTANT]
 >在公共预览版中，只能将磁盘池附加到测试群集或非生产群集。
 
-1. 检查订阅是否已注册到 `Microsoft.AVS`：
+1. 检查订阅是否已注册到 `Microsoft.AVS`。
 
    ```azurecli
    az provider show -n "Microsoft.AVS" --query registrationState
    ```
 
-   如果尚未注册，请注册：
+   如果尚未注册，请注册。
 
    ```azurecli
    az provider register -n "Microsoft.AVS"
    ```
 
-1. 检查订阅是否已注册到 Microsoft.AVS 中的 `CloudSanExperience` AFEC：
+2. 检查订阅是否已注册到 Microsoft.AVS 中的 `CloudSanExperience` AFEC。
 
    ```azurecli
    az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS"
    ```
 
-   - 如果尚未注册，请注册：
+   - 如果尚未注册，请注册。
 
       ```azurecli
       az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
       ```
 
-      注册可能需要大约 15 分钟才能完成，可以检查此操作的当前状态：
+      可能需要大约 15 分钟才能完成注册，可以检查此操作的当前状态。
       
       ```azurecli
       az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS" --query properties.state
       ```
 
       >[!TIP]
-      >如果注册停滞在中间状态超过 15 分钟，请取消注册，然后重新注册：
+      >如果注册停滞在中间状态超过 15 分钟，请取消注册，然后重新注册标记。
       >
       >```azurecli
       >az feature unregister --name "CloudSanExperience" --namespace "Microsoft.AVS"
       >az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
       >```
 
-1. 检查是否已安装 `vmware `扩展： 
+3. 检查是否已安装 `vmware `扩展。 
 
    ```azurecli
    az extension show --name vmware
    ```
 
-   - 如果已安装该扩展，请检查版本是否为 3.0.0。 如果安装的是旧版本，请更新该扩展：
+   - 如果已安装该扩展，请检查版本是否为 3.0.0。 如果安装的是旧版本，请更新该扩展。
 
       ```azurecli
       az extension update --name vmware
       ```
 
-   - 如果尚未安装该扩展，请安装它：
+   - 如果尚未安装该扩展，请安装它。
 
       ```azurecli
       az extension add --name vmware
       ```
 
-3. 使用 `Microsoft.StoragePool` 提供的 iSCSI 目标在 Azure VMware 解决方案私有云群集中创建并附加 iSCSI 数据存储：
+4. 使用 `Microsoft.StoragePool` 提供的 iSCSI 目标在 Azure VMware 解决方案私有云群集中创建并附加 iSCSI 数据存储。 磁盘池通过委托的子网附加到 vNet，此操作由 Microsoft.StoragePool/diskPools 资源提供程序完成。  如果未委托子网，部署将失败。
 
    ```bash
    az vmware datastore disk-pool-volume create --name iSCSIDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud --target-id /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/mpio-diskpool/iscsiTargets/mpio-iscsi-target --lun-name lun0
    ```
 
    >[!TIP]
-   >可以显示有关数据存储的帮助：
+   >可以显示有关数据存储的帮助。
    >
    >   ```azurecli
    >   az vmware datastore -h
    >   ```
    
 
-4. 显示私有云群集中 iSCSI 数据存储的详细信息：
+5. 显示私有云群集中 iSCSI 数据存储的详细信息。
    
    ```azurecli
    az vmware datastore show --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster -Cluster-1 --private-cloud MyPrivateCloud
    ```
 
-5. 列出私有云群集中的所有数据存储：
+6. 列出私有云群集中的所有数据存储。
 
    ```azurecli
    az vmware datastore list --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
@@ -147,7 +147,7 @@ Azure 托管磁盘附加到在 Azure VMware 解决方案资源组下部署的一
 
    - 快照
 
-2. 删除私有云数据存储：
+2. 删除私有云数据存储。
 
    ```azurecli
    az vmware datastore delete --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
@@ -157,7 +157,7 @@ Azure 托管磁盘附加到在 Azure VMware 解决方案资源组下部署的一
 
 将磁盘池附加到 Azure VMware 解决方案主机后，接下来可以了解：
 
-- [管理 Azure 磁盘池](../virtual-machines/disks-pools-manage.md )。  部署磁盘池后，可以执行各种管理操作。 可以在磁盘池中添加或删除磁盘，更新 iSCSI LUN 映射，或添加 ACL。
+- [管理 Azure 磁盘池](../virtual-machines/disks-pools-manage.md)。  部署磁盘池后，可以执行各种管理操作。 可以在磁盘池中添加或删除磁盘，更新 iSCSI LUN 映射，或添加 ACL。
 
 - [删除磁盘池](../virtual-machines/disks-pools-deprovision.md#delete-a-disk-pool)。 删除磁盘池时，受管理资源组中的所有资源也将随之删除。
 

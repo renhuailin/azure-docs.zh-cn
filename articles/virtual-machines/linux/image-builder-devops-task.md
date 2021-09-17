@@ -9,14 +9,16 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c3785f20c47656304f7d40b67c9d90c54cb3072
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c700170e59792dc6f782ded02960962c7b21d946
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447073"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696919"
 ---
 # <a name="azure-image-builder-service-devops-task-preview"></a>Azure 映像生成器服务 DevOps 任务（预览）
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集
 
 本文介绍如何使用 Azure DevOps 任务将生成工件注入到 VM 映像中，以便能够安装并配置应用程序和 OS。
 

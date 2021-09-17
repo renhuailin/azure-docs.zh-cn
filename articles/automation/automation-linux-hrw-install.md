@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 08/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1cd00a81717e95efe65402c2eb0912d2f43d89b6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c241c55c4eb075c98abeeb0fe221f62aca255809
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744973"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771344"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -33,7 +33,7 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
 
-混合 Runbook 辅助角色需要受支持的 Linux 操作系统的 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)。 对于在 Azure 外部托管的服务器或计算机，你可以使用[启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。
+混合 Runbook 辅助角色需要受支持的 Linux 操作系统的 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)。 对于在 Azure 外部托管的服务器或计算机，可以使用[已启用 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。
 
 > [!NOTE]
 > 安装适用于 Linux 的 Log Analytics 代理后，不应更改 `sudoers.d` 文件夹的权限或其所有权。 Nxautomation 帐户需要 Sudo 权限，该帐户是运行混合 Runbook 辅助角色的用户上下文。 不应删除该权限。 将此限制为某些文件夹或命令可能会导致中断性变更。
@@ -145,7 +145,7 @@ runbook 使用以下参数。
 
 2. 将 Log Analytics 代理部署到目标计算机。
 
-    * 对于 Azure VM，请使用[适用于 Linux 的虚拟机扩展](../virtual-machines/extensions/oms-linux.md)安装适用于 Linux 的 Log Analytics 代理。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 可以使用 Azure 资源管理器模板、Azure CLI 或 Azure Policy 来分配[为 Linux 或 Windows VM 部署 Log Analytics 代理](../governance/policy/samples/built-in-policies.md#monitoring)内置策略 。 安装代理后，可将计算机添加到自动化帐户中的混合 Runbook 辅助角色组。
+    * 对于 Azure VM，请使用[适用于 Linux 的虚拟机扩展](../virtual-machines/extensions/oms-linux.md)安装适用于 Linux 的 Log Analytics 代理。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 可以使用一个 Azure 资源管理器模板、Azure CLI 或 Azure Policy 分配[为 Linux 或 Windows VM 内置策略定义部署 Log Analytics 代理 ](../governance/policy/samples/built-in-policies.md#monitoring)。 安装代理后，可将计算机添加到自动化帐户中的混合 Runbook 辅助角色组。
 
     * 对于非 Azure 计算机，可以使用[已启用 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。 已启用 Arc 的服务器支持使用以下方法部署 Log Analytics 代理：
 
@@ -160,7 +160,7 @@ runbook 使用以下参数。
 
         - 使用 Azure Policy。
 
-            在使用此方法时，请使用 Azure Policy [将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../governance/policy/samples/built-in-policies.md#monitoring)内置策略来审核已启用 Arc 的服务器是否已安装 Log Analytics 代理。 如果该代理未安装，则会使用修正任务来自动部署该代理。 或者，如果你计划通过用于 VM 的 Azure Monitor 来监视计算机，请改为使用[启用用于 VM 的 Azure Monitor](../governance/policy/samples/built-in-initiatives.md#monitoring) 计划来安装和配置 Log Analytics 代理。
+            在使用此方法时，请使用 Azure Policy [将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../governance/policy/samples/built-in-policies.md#monitoring)内置策略定义来审核已启用 Arc 的服务器是否已安装 Log Analytics 代理。 如果该代理未安装，则会使用修正任务来自动部署该代理。 或者，如果你计划通过用于 VM 的 Azure Monitor 来监视计算机，请改为使用[启用用于 VM 的 Azure Monitor](../governance/policy/samples/built-in-initiatives.md#monitoring) 计划来安装和配置 Log Analytics 代理。
 
         建议使用 Azure 策略安装适用于 Windows 或 Linux 的 Log Analytics 代理。
 

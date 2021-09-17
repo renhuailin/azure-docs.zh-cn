@@ -2,14 +2,15 @@
 metadata:
   title: 常见问题解答 - 备份 Azure VM
   description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常见问题。
-  ms.topic: conceptual
-  ms.date: 06/02/2021
-  ms.openlocfilehash: 7c9743c71a505c586745117d48b3b23537db1d77
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.topic: article
+  ms.service: backup
+  ms.date: 08/19/2021
+  ms.openlocfilehash: d579c304c9a345323fc57020435b4b3a41c70cbd
+  ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114458008"
+  ms.lasthandoff: 08/20/2021
+  ms.locfileid: "122597860"
 title: 常见问题 - 备份 Azure VM
 summary: >
   本文解答有关使用 [Azure 备份](./backup-overview.md)服务备份 Azure VM 的常见问题。
@@ -106,7 +107,19 @@ sections:
   - question: 虚拟机备份中存储了哪些 VM 配置？
     answer: 执行还原操作所需的所有 VM 配置均存储在 VM 备份中。 其中包括 VM 加密密钥的加密副本，你可以在还原时对其进行访问。 只能使用密钥保管库对加密副本进行解密。 快照中不捕获临时磁盘和内存状态。
   - question: 是否可以通过 Azure VM 备份标记？ 如果可以，能备份多少个标记？
-    answer: Azure 备份可以备份和还原标记（NIC 和 IP 除外）。 Azure 备份支持 Azure 资源组的订阅限制，最多可还原 50 个标记。<br><br>有关详细信息，请参阅[订阅限制](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。
+    answer: Azure 备份可以备份和还原标记（除 NIC 和 IP 以外）。 Azure 备份支持 Azure 资源组的订阅限制，最多可还原 50 个标记。<br><br>有关详细信息，请参阅[订阅限制](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。
+  - question: 是否可以进行按需（临时）备份而不为 Azure VM 计划备份？
+    answer: >
+      不行，无法通过禁用计划备份来触发按需备份。
+  - question: Azure 备份过程如何为群集节点工作？
+    answer: >
+      群集中的每个 Azure VM 都被视为单个 Azure VM。 因此，所有备份操作都适用于单个 Azure VM。
+  - question: Azure 备份是否会干扰应用程序性能？
+    answer: >
+      创建 VM 快照需要几分钟，在此阶段对应用程序性能的干扰非常小。 但是，将数据传输到保管库需要几小时；因此建议在非营业时间计划备份。 详细了解[备份和还原的最佳做法](/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations)。
+  - question: 添加到 VM 的新磁盘是否会自动备份？
+    answer: >
+      是的，添加到 VM 的新磁盘会在下一次备份期间自动备份。
 - name: 还原
   questions:
   - question: 如何确定是仅还原磁盘还是要还原整个 VM？
@@ -127,7 +140,8 @@ sections:
 
       - 添加必须使用 PowerShell 或模板进行配置的其他任何设置。
   - question: 升级到托管磁盘后，是否可以还原非托管 VM 磁盘的备份？
-    answer: 是的，可以使用从非托管磁盘迁移到托管磁盘之前创建的备份。
+    answer: >
+      是的，可以使用从非托管磁盘迁移到托管磁盘之前创建的备份。
   - question: 如何将 VM 还原至将它迁移到托管磁盘之前的某个还原点？
     answer: >
       还原过程保持不变。 如果恢复点是 VM 具有非托管磁盘的时间点，则可以[将磁盘还原为非托管磁盘](tutorial-restore-disk.md#unmanaged-disks-restore)。 如果当时 VM 具有托管磁盘，则可以[将磁盘还原为托管磁盘](tutorial-restore-disk.md#managed-disk-restore)。 然后，可以[从这些磁盘创建 VM](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)。
@@ -137,7 +151,7 @@ sections:
   - question: 如果还原无法创建 VM，还原中包含的磁盘会发生什么情况？
     answer: 如果是托管 VM 还原，则即使 VM 创建失败，也仍会还原磁盘。
   - question: 能否还原已删除的 VM？
-    answer: 是的。 即使删除了 VM，也仍可以转到保管库中的相应备份项，然后从恢复点还原。
+    answer: 是的。 即使删除了 VM，也仍可以转到保管库中的相应备份项，然后[从恢复点还原](backup-azure-arm-restore-vms.md#select-a-restore-point)。
   - question: 如何将 VM 还原到相同的可用性集？
     answer: 对于托管磁盘 Azure VM，通过在还原为托管磁盘时在模板中提供选项来允许还原到可用性集。 此模板包含名为“可用性集”的输入参数。
   - question: 我们提高还原速度？
@@ -162,6 +176,9 @@ sections:
 
 
       `if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
+  - question: 如何将 VM 还原到关机状态？
+    answer: >
+      若要将 VM 还原到关机状态，可以[创建 VM](/azure/backup/backup-during-vm-creation#create-a-vm-with-backup-configured) 或[还原磁盘](/azure/backup/backup-azure-arm-restore-vms#restore-disks)，但不能替换现有 VM。 详细了解[可用还原选项](/azure/backup/backup-azure-arm-restore-vms#restore-options)。
 - name: 管理 VM 备份
   questions:
   - question: 如果修改备份策略，会发生什么情况？
@@ -214,7 +231,7 @@ sections:
   - question: 当快照从存储帐户移到保管库时，如何管理传输中加密？
     answer: Azure VM 备份[使用 HTTPS 通信进行传输中加密](guidance-best-practices.md#encryption-of-data-in-transit-and-at-rest)。 数据传输使用 Azure 结构（而不是公共终结点），该结构无需访问 Internet 即可进行 VM 备份。
   - question: 如何禁用“文件恢复”选项？
-    answer: >-
+    answer: >
       [此 API](/rest/api/backup/item-level-recovery-connections/provision) 可预配脚本来调用 iSCSI 连接，以便通过 Azure 备份进行文件恢复。
 
       - 可以通过排除 API 操作，使用“自定义角色定义”禁用此选项。
@@ -222,3 +239,14 @@ sections:
       - 还可使用[专用终结点](private-endpoints.md)限制从专用网络中访问 iSCSI 服务器。
 
       - 还可使用[拒绝分配](../role-based-access-control/deny-assignments.md)功能在整个组织中禁用此选项。
+  - question: 我更改了保留策略，该策略生效需要多长时间？
+    answer: >
+      策略在修改参数（如保留、计划等）之后立即生效。 这适用于从修改后的策略创建的所有新备份。 但是，根据新策略删除恢复点（如果适用）需要 24 小时。
+  - question: 执行跨区域还原时，我无法选择次要区域中的虚拟网络、子网或存储帐户。
+    answer: >
+      需要检查次要区域中的订阅权限。 请通过 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 联系我们以进行订阅注册。
+  - question: 如何检查 Azure 备份服务与 Azure VM 之间的流量？
+    answer: >
+      由于 Azure 资源会处理此流量，因此它不能由外部用户确定。
+  - question: Azure 备份中 VM 备份的最小 RPO 和 RTO 是多少？
+    answer: RPO：最小 RPO 为 1 天或 24 小时。  <br><br>  RTO：快照存储在存储帐户中。 因此，从即时还原层进行还原是即时的。 此数据随后会传输到恢复服务保管库，该保管库由 Azure 备份服务进行维护，传输和还原需要几小时。

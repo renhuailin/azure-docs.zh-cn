@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 06f4ddff9c897858eec27f97f8e45a3d656e951d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d317adf207360c7e513bbd5239f45e4955b50782
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650781"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182953"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>教程：Azure Active Directory 单一登录 (SSO) 与 monday.com 的集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "101650781"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * monday.com 支持“SP 和 IDP”发起的 SSO 
+* monday.com 支持[自动用户预配和取消预配](mondaycom-provisioning-tutorial.md)（推荐）。
 * monday.com 支持恰时用户预配 
 
 ## <a name="add-mondaycom-from-the-gallery"></a>从库中添加 monday.com
@@ -91,7 +92,7 @@ ms.locfileid: "101650781"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOUR_DOMAIN>.monday.com`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOUR_DOMAIN>.monday.com`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [monday.com 客户端支持团队](https://monday.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

@@ -7,14 +7,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: f833f3eb9e3d94da6178a0a9a9cf4f95ec0682e7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: ad0f4905e5e6f404ef9eb86d42d729e1559bef90
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865362"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698036"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>将维护控制配置移动到另一个区域
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 按照本文将维护控制配置移动到另一个 Azure 区域。 出于多种原因，你可能需要移动配置。 例如，利用新的区域、部署在特定区域中可用的功能或服务、满足内部策略和治理要求，或者应对容量规划。
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 219ff986e88bca31912cfe8be72e9dba179b9236
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 707ee38ef71a0f3f3f09e142bd4d944bb04cff3d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289560"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446125"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -42,7 +42,7 @@ ARO 拉取机密不会改变 ARO 的 RH OpenShift 许可证的成本。
 
 在本教程中，你将创建一个资源组，该资源组将包含群集的虚拟网络。 你必须直接在虚拟网络或包含该网络的资源组或订阅上具有“参与者”和“用户访问管理员”权限或“所有者”权限。
 
-你还需要具有足够的 Azure Active Directory 权限，使工具能够代表你为群集创建应用程序和服务主体。
+还需要具有足够的 Azure Active Directory 权限（租户的成员用户或分配有角色“应用程序管理员”的来宾用户），以便工具代表你为群集创建应用程序和服务主体。 有关详细信息，请参阅[成员和来宾用户](/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users)以及[为具有 Azure Active Directory 的用户分配管理员和非管理员角色](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 ### <a name="register-the-resource-providers"></a>注册资源提供程序
 
@@ -124,7 +124,7 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
    Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。
     
    > [!NOTE] 
-   > Azure Red Hat OpenShift 并非在可以创建 Azure 资源组的所有区域中可用。 有关支持 Azure Red Hat OpenShift 的位置的信息，请参阅[可用区域](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift)。
+   > Azure Red Hat OpenShift 并非在可以创建 Azure 资源组的所有区域中可用。 有关支持 Azure Red Hat OpenShift 的位置的信息，请参阅[可用区域](https://azure.microsoft.com/global-infrastructure/services/?products=openshift)。
 
    ```azurecli-interactive
    az group create \

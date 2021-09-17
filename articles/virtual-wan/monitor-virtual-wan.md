@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 25e12ce4fd361cb053eae8b0d9992031a91d4616
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d3cffbe9ebaa71ca5c4dfd8681159f83ff06eb38
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469009"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821462"
 ---
 # <a name="monitoring-virtual-wan"></a>监视虚拟 WAN
 
@@ -34,16 +34,42 @@ Azure Monitor 中的指标是数字值，用于描述系统某些方面在特定
 
 Azure 站点到站点 VPN 网关提供以下指标：
 
+#### <a name="tunnel-packet-drop-metrics"></a>隧道数据包丢弃指标
+| 指标 | 说明|
+| --- | --- |
+| **隧道传出数据包丢弃计数** | 隧道丢弃的传出数据包计数。|
+| **隧道传入数据包丢弃计数** | 隧道丢弃的传入数据包计数。|
+| **隧道 NAT 数据包丢包数** | 丢包类型和 NAT 规则列出的隧道丢弃 NAT 处理数据包数|
+| **隧道流出 TS 不匹配数据包丢弃** | 因隧道的流量选择器不匹配而导致的传出数据包丢弃计数。|
+| **隧道流入 TS 不匹配数据包丢弃** | 因隧道的流量选择器不匹配而导致的传入数据包丢弃计数。|
+
+#### <a name="ipsec-metrics"></a>IPSEC 指标
+| 指标 | 描述|
+| --- | --- |
+| 隧道 MMSA 计数 | 创建或删除的 MMSA 数。|
+| 隧道 QMSA 计数 | 创建或删除的 IPSEC QMSA 数。|
+
+#### <a name="routing-metrics"></a>路由指标
+| 指标 | 描述|
+| --- | --- |
+| **BGP 对等方状态** | 每个对等机和每个实例的 BGP 连接状态。|
+| **播发的 BGP 路由数** | 每个对等机和每个实例播发的路由数。|
+| **获知的 BGP 路由数** | 每个对等机和每个实例学习的路由数。|
+| VNET 地址前缀计数 | 网关使用/播发的 VNET 地址前缀数。|
+
+可以通过选择“应用拆分”并选择首选值来查看每个对等机和实例的指标。 
+
+#### <a name="traffic-flow-metrics"></a>流量流指标
 | 指标 | 说明|
 | --- | --- |
 | 网关带宽 | 网关站点到站点的平均聚合带宽（字节/秒）。|
 | **隧道带宽** | 隧道带宽平均值（字节/秒）。|
 | **隧道流出字节** | 隧道的传出字节数。 |
 | **隧道流出数据包** | 隧道的传出数据包计数。 |
-| **隧道流出 TS 不匹配数据包丢弃** | 因隧道的流量选择器不匹配而导致的传出数据包丢弃计数。|
 | **隧道流入字节** | 隧道的传入字节数。|
 | **隧道流入数据包** | 隧道的传入数据包计数。|
-| **隧道流入 TS 不匹配数据包丢弃** | 因隧道的流量选择器不匹配而导致的传入数据包丢弃计数。|
+| **隧道峰值 PPS** | 过去一分钟内每个链接连接每秒的数据包数。|
+| **隧道流计数** | 每个链接连接创建非重复流的数量。|
 
 ### <a name="point-to-site-vpn-gateways"></a>点到站点 VPN 网关
 
@@ -53,6 +79,7 @@ Azure 点到站点 VPN 网关提供以下指标：
 | --- | --- |
 | **网关 P2S 带宽** | 网关点到站点的平均聚合带宽（字节/秒）。 |
 | **P2S 连接计数** |网关的点到站点连接计数。 网关的点到站点连接计数。 为确保在 Azure Monitor 中查看准确的指标，请选择“Sum”作为“P2S 连接计数”的“聚合类型” 。 如果还按“实例”拆分，也可以选择“Max”。 |
+| 用户 VPN 路由计数 | VPN 网关上配置的用户 VPN 路由数。 此指标可以分解为“静态”路由和”动态“路由。 
 
 ### <a name="azure-expressroute-gateways"></a>Azure ExpressRoute 网关
 

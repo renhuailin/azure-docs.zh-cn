@@ -9,15 +9,16 @@ ms.subservice: maintenance-control
 ms.date: 04/26/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: e23630fb0d102c10194d85d3beff1ce626fbf898
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1f20b83d89258de2d557fc230edd57810fc13806
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673886"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697409"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可靠性、性能及安全性。 更新可能包括修补托管环境或升级以及解除硬件授权。 大多数更新不影响托管的 VM。 但是在以下情况下，更新会影响 VM：
 
@@ -81,7 +82,7 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 现在，“自助维护”列将显示在虚拟机规模集的列表中  。 每个虚拟机规模集可以具有以下自助维护列的值之一：
 
-| Value | 说明 |
+| Value | 描述 |
 |-------|-------------|
 | 是 | 虚拟机规模集中至少有一个 VM 处于自助时段。 你可以在此自助时段随时启动维护。 | 
 | 否 | 受影响的虚拟机规模集中的自助时段中没有任何 VM。 | 

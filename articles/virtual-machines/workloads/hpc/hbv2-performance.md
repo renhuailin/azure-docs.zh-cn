@@ -10,14 +10,16 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6edaed1011b867cac9920a19be6bb5fb7157e16f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a15aaece5916ac9e9ff6129754b4f932878ac707
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721229"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698633"
 ---
 # <a name="hbv2-series-virtual-machine-sizes"></a>HBv2 系列虚拟机大小
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 已对 [HBv2 系列](../../hbv2-series.md)大小的 VM 运行多个性能测试。 下面是此性能测试的部分结果。
 

@@ -3,18 +3,18 @@ title: 快速入门 - 通过成本分析了解 Azure 成本
 description: 本快速入门可帮助你通过成本分析了解和分析 Azure 组织成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/10/2021
+ms.date: 07/28/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 9769b6ecb04ca513c4b48ec3d0ca32bdd3c64b5f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 2391fbdf586c652f7567b5c4b08757a68546314a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887096"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731978"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -151,64 +151,9 @@ ms.locfileid: "107887096"
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-若要固定成本分析，请选择右上角或“<Subscription Name> | 成本分析”后的图钉图标。 固定成本分析只会保存主图表或表视图。 共享仪表板，允许他人访问此磁贴。 共享只会共享仪表板配置，并不授予他人访问基础数据的权限。 如果你没有成本访问权限但有共享仪表板的访问权限，将会看到“拒绝访问”消息。
+若要固定成本分析，请选择右上角或“订阅名称 | 成本分析”后的图钉图标。 固定成本分析只会保存主图表或表视图。 共享仪表板，允许他人访问此磁贴。 共享只会共享仪表板配置，并不授予他人访问基础数据的权限。 如果你没有成本访问权限但有共享仪表板的访问权限，将会看到“拒绝访问”消息。
 
 若要共享成本分析链接，请选择窗口顶部的“共享”。 随即会显示一个自定义 URL，单击此 URL 会打开针对此特定范围的特定视图。 如果你没有成本访问权限也没有获取此 URL，你将看到“拒绝访问”消息。
-
-## <a name="download-usage-data"></a>下载使用情况数据
-
-### <a name="portal"></a>[门户](#tab/azure-portal)
-
-有时候，需要下载数据进行进一步的分析、将其与你自己的数据合并，或者将其集成到你自己的系统中。 成本管理提供一些不同选项。 如果需要快速获得大致摘要（例如成本分析中的内容），请首先生成所需的视图。 然后通过依次选择“导出”和“将数据下载到 CSV”或“将数据下载到 Excel”进行下载  。 Excel 下载提供关于用于生成下载的视图的更多上下文，例如范围、查询配置、总计以及生成日期。
-
-如果需要完整的非聚合数据集，请从计费帐户下载。 然后从门户左侧导航窗格中的服务列表中转到“成本管理 + 计费”。 如果适用，请选择你的计费帐户。 转到“使用情况 + 费用”，然后选择计费周期的“下载”图标 。
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-首先为 Azure CLI 准备环境：
-
-[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-登录后，请使用 [az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query) 命令来查询订阅本月至今的使用情况信息：
-
-```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
-```
-
-还可以使用 --dataset-filter 参数或其他参数来缩小查询范围：
-
-```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
-   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
-```
-
---dataset-filter 参数采用 JSON 字符串或 `@json-file`。
-
-还可以选择使用 [az costmanagement export](/cli/azure/costmanagement/export) 命令将使用情况数据导出到 Azure 存储帐户。 可从此处下载数据。
-
-1. 创建一个资源组或使用现有资源组。 若要创建资源组，请运行 [az group create](/cli/azure/group#az_group_create) 命令：
-
-   ```azurecli
-   az group create --name TreyNetwork --location "East US"
-   ```
-
-1. 可以创建一个存储帐户或使用现有存储账户来接收导出。 若要创建帐户，请使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令：
-
-   ```azurecli
-   az storage account create --resource-group TreyNetwork --name cmdemo
-   ```
-
-1. 运行 [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) 命令以创建导出：
-
-   ```azurecli
-   az costmanagement export create --name DemoExport --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
-   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
-   ```
-
----
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: bb8ea637d0353e4efa0cb946f486d68639fc699d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef6a785fc1d825b0b490ec7af7d3c8128aac588b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592483"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181657"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex Meetings 集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "104592483"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Cisco Webex Meetings 支持 **SP 和 IDP** 发起的 SSO。
-
+* Cisco Webex Meetings 支持[自动用户预配和取消预配](cisco-webex-provisioning-tutorial.md)（推荐）。
 * Cisco Webex Meetings 支持 **适时** 用户预配。
 
 ## <a name="adding-cisco-webex-meetings-from-the-gallery"></a>从库中添加 Cisco Webex Meetings

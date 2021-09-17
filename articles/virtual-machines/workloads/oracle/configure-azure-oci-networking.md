@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 06f0eb1ef36e711c5297af936d704f442596fc1a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 9c785be73e424d4669b24600c353a14127e9279a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887569"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696021"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>在 Azure 与 Oracle 云基础结构之间建立直接互连  
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 为了创建[集成的多云体验](oracle-oci-overview.md)，Microsoft 和 Oracle 通过 [ExpressRoute](../../../expressroute/expressroute-introduction.md) 和 [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) 在 Azure 与 Oracle 云基础结构 (OCI) 之间提供直接互连。 通过 ExpressRoute 和 FastConnect 互连，客户可以在两个云之间体验具有低延迟和高吞吐量特点的专用直接连接。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 7f0e9d0c97b9325a30de3cb8c6ce10a3ba8489f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a49dec3b7a87eebebbb6d4737618a387c80e4f1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92454107"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742844"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Elium 的集成
 
@@ -40,10 +40,10 @@ ms.locfileid: "92454107"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Elium 支持 **SP 和 IDP** 发起的 SSO
-* Elium 支持 **实时** 用户预配
+* Elium 支持 SP 和 IDP 发起的 SSO。
+* Elium 支持实时用户预配。
 
-## <a name="adding-elium-from-the-gallery"></a>从库中添加 Elium
+## <a name="add-elium-from-the-gallery"></a>从库中添加 Elium
 
 若要配置 Elium 与 Azure AD 的集成，需要从库中将 Elium 添加到托管 SaaS 应用列表。
 
@@ -58,13 +58,13 @@ ms.locfileid: "92454107"
 
 使用名为 **B.Simon** 的测试用户配置和测试 Elium 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Elium 相关用户之间建立链接关系。
 
-若要配置并测试 Elium 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Elium 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Elium SSO](#configure-elium-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 Elium 测试用户](#create-elium-test-user)** - 在 Elium 中创建 B.Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
+    1. **[创建 Elium 测试用户](#create-elium-test-user)** - 在 Elium 中创建 B.Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -73,19 +73,19 @@ ms.locfileid: "92454107"
 
 1. 在 Azure 门户的“Elium”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/acs`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/login`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/login`
 
     > [!NOTE]
     > 这些不是实际值。 从可以在 `https://<platform-domain>.elium.com/login/saml2/metadata` 中下载的 **SP 元数据文件** 获取这些值。本教程稍后将对此做出说明。
@@ -153,20 +153,20 @@ ms.locfileid: "92454107"
 
 1. 在右上角单击“用户配置文件”，然后选择“设置”。 
 
-    ![配置单一登录 Elium 01](./media/elium-tutorial/elium-01.png)
+    ![配置单一登录用户配置文件。](./media/elium-tutorial/profile.png)
 
 1. 在“高级”下选择“安全性” 。
 
-    ![配置单一登录 Elium 02](./media/elium-tutorial/elium-02.png)
+    ![配置单一登录高级。](./media/elium-tutorial/security.png)
 
 1. 向下滚动到“单一登录(SSO)”部分中，并执行以下步骤： 
 
-    ![配置单一登录 Elium 03](./media/elium-tutorial/elium-03.png)
+    ![配置单一登录。](./media/elium-tutorial/configuration.png)
 
     a. 复制“验证 SAML2 身份验证是否适用于你的帐户”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“登录 URL”文本框中。   
 
     > [!NOTE]
-    > 配置 SSO 后，始终可以通过以下 URL 访问默认的远程登录页：`https://<platform_domain>/login/regular/login` 
+    > 配置 SSO 后，始终可以通过以下 URL 访问默认的远程登录页：`https://<platform_domain>/login/regular/login`。 
 
     b. 选中“启用 SAML2 联合身份验证”复选框。 
 
@@ -176,11 +176,11 @@ ms.locfileid: "92454107"
 
     e. 在“SP 元数据”文件中搜索 **entityID**，复制“entityID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中。     
 
-    ![配置单一登录 Elium 04](./media/elium-tutorial/elium-04.png)
+    ![配置单一登录配置。](./media/elium-tutorial/metadata.png)
 
     f. 在“SP 元数据”文件中搜索 **AssertionConsumerService**，复制“Location”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中。    
 
-    ![配置单一登录 Elium 05](./media/elium-tutorial/elium-05.png)
+    ![配置单一登录 AssertionConsumerService。](./media/elium-tutorial/service.png)
 
     g. 在写字板中打开从 Azure 门户下载的元数据文件内容，复制内容并将其粘贴到“IdP 元数据”文本框中  。
 
@@ -207,7 +207,7 @@ ms.locfileid: "92454107"
  
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Elium 
  
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Elium 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Elium。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的 Elium 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Elium。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

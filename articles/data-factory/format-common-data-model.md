@@ -1,17 +1,20 @@
 ---
 title: Common Data Model 格式
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 使用 Common Data Model 元数据系统转换数据
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 612faa714f6a31bb464d30cc5b30766734782d41
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387693"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637751"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -84,7 +87,7 @@ CDM 仅作为内联数据集提供，且默认情况下没有关联架构。 若
 2. 查找 partitions.Location 属性 
 3. 将“blob.core.windows.net”更改为“dfs.core.windows.net”
 4. 将 URL 中的任何“% 2F”编码修正为“/”
-5. 如果使用 ADF 数据流，则必须将分区文件路径中的特殊字符替换为字母数字值，或切换到 Synapse 数据流
+5. 如果使用 ADF 数据流，则必须将分区文件路径中的特殊字符替换为字母数字值，或切换到 Azure Synapse 数据流
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM 源数据流脚本示例
 

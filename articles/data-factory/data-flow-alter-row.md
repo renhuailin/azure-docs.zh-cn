@@ -1,19 +1,21 @@
 ---
 title: 映射数据流中的“更改行”转换
-description: 如何在映射数据流中使用“更改行”转换来更新数据库目标
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 如何在 Azure 数据工厂和 Azure Synapse Analytics 管道中的映射数据流中使用更改行转换来更新数据库目标。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 7fe220315f7cccb749fe0974e822f157cf54ca36
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82982643"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821714"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>映射数据流中的“更改行”转换
 
@@ -23,7 +25,7 @@ ms.locfileid: "82982643"
 
 ![“更改行”设置](media/data-flow/alter-row1.png "“更改行”设置")
 
-“更改行”转换将仅对你的数据流中的数据库或 CosmosDB 接收器进行操作。 在调试会话期间，分配给行的操作（插入、更新、删除、更新插入）不会发生。 在管道中运行“执行数据流”活动，对数据库表执行“更改行”策略。
+“更改行”转换将仅对你的数据流中的数据库、REST 或 CosmosDB 接收器进行操作。 在调试会话期间，分配给行的操作（插入、更新、删除、更新插入）不会发生。 在管道中运行“执行数据流”活动，对数据库表执行“更改行”策略。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
@@ -57,15 +59,15 @@ ms.locfileid: "82982643"
 
 接收器转换需要单个键或一系列键才能在目标数据库中对行进行独一无二的标识。 对于 SQL 接收器，请在接收器“设置”选项卡中设置键。对于 CosmosDB，请在“设置”中设置分区键，并且还要在接收器映射中设置 CosmosDB 系统字段“id”。 对于 CosmosDB，必须包含针对更新、更新插入和删除操作的系统列“id”。
 
-## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>对 Azure SQL 数据库和 Synapse 的合并与更新插入
+## <a name="merges-and-upserts-with-azure-sql-database-and-azure-synapse"></a>对 Azure SQL 数据库和 Azure Synapse 的合并与更新插入
 
-ADF 数据流支持使用更新插入选项对 Azure SQL 数据库和 Synapse 数据库池（数据仓库）执行合并操作。
+数据流支持使用更新插入选项对 Azure SQL 数据库和 Azure Synapse 数据库池（数据仓库）执行合并操作。
 
-但是，你可能会遇到目标数据库架构使用了键列的标识属性的情况。 ADF 要求你标识用来为更新和更新插入操作匹配行值的键。 但是，如果目标列设置了标识属性，而你使用的是更新插入策略，则目标数据库不会允许写入到列。 尝试对分布式表的分布列进行更新插入时，也可能会遇到错误。
+但是，你可能会遇到目标数据库架构使用了键列的标识属性的情况。 此服务要求你标识用来为更新和更新插入操作匹配行值的键。 但是，如果目标列设置了标识属性，而你使用的是更新插入策略，则目标数据库不会允许写入到列。 尝试对分布式表的分布列进行更新插入时，也可能会遇到错误。
 
 下面是解决该问题的方法：
 
-1. 转到“接收器转换设置”并设置“跳过写入键列”。 这将告诉 ADF 不要写入你选择用作映射键值的列。
+1. 转到“接收器转换设置”并设置“跳过写入键列”。 这将命令此服务不要写入你选择用作映射键值的列。
 
 2. 如果该键列不是导致标识列问题的列，则可使用此接收器转换预处理 SQL 选项：```SET IDENTITY_INSERT tbl_content ON```。 然后，通过以下后处理 SQL 属性将其关闭：```SET IDENTITY_INSERT tbl_content OFF```。
 
@@ -89,7 +91,7 @@ ADF 数据流支持使用更新插入选项对 Azure SQL 数据库和 Synapse �
 
 下面的示例是一个名为 `CleanData` 的“更改行”转换，它接受传入的流 `SpecifyUpsertConditions` 并创建三个“更改行”条件。 在上一转换中计算了名为 `alterRowCondition` 的列，目的是确定是否在数据库中插入、更新或删除行。 如果列的值包含与“更改行”规则匹配的字符串值，则会为其分配该策略。
 
-在数据工厂 UX 中，此转换如下图所示：
+在 UI 中，此转换如下图所示：
 
 ![“更改行”示例](media/data-flow/alter-row4.png "“更改行”示例")
 

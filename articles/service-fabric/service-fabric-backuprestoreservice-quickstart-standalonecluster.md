@@ -3,12 +3,12 @@ title: 在单独的 Azure Service Fabric 中进行定期备份/还原
 description: 使用独立 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: d78a627c0c50a3e2ec57138e40cb5bc97486d6f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78a906e1e2261b0d117c7042b1ac387e2e98f045
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103198704"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444567"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>在独立 Service Fabric 中定期备份和还原
 > [!div class="op_single_selector"]
@@ -112,7 +112,9 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
         ...
     }
     ```
-
+    > [!NOTE]
+    > \[指纹\]需替换为要用于加密的有效证书指纹。
+    >
 4. 通过前述更改更新群集配置文件后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行  。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
 
 

@@ -10,14 +10,16 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 048afc8997f4e2b3f1d9a9cf6aea67be63c659ee
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4da68df884eae4e0ae0f8e929d5ee58d4e782db8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027136"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691739"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集 
 
 本概述介绍有关映像的基础概念以及如何在 Azure 中成功构建和使用 Linux。 在将自定义映像引入 Azure 之前，需要首先了解可用的类型和选项。
 

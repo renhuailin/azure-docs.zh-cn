@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: duau
-ms.openlocfilehash: 80013ca5d4d20366672eda417862ff7bb1309b0c
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: e902c8d3a1662f83328ab39a85a11009c58da24b
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633152"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606575"
 ---
 # <a name="connect-azure-front-door-premium-to-an-internal-load-balancer-origin-with-private-link"></a>使用专用链接将 Azure Front Door Premium 连接到内部负载均衡器源
 
@@ -51,7 +51,7 @@ ms.locfileid: "109633152"
 
 1. 然后依次选择“添加”和“更新”以保存配置。
 
-## <a name="approve-private-endpoint-connection-from-the-storage-account"></a>从存储帐户批准专用终结点连接
+## <a name="approve-azure-front-door-premium-private-endpoint-connection-from-private-link-service"></a>批准来自专用链接服务的 Azure Front Door Premium 专用终结点连接
 
 1. 转到专用链接中心，并选择“专用链接服务”。 然后选择专用链接名称。
 

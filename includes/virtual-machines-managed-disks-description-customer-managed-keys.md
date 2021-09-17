@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 76ee3371134c66d6dcc5b4b07436e5c30a15f144
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 7c06903720db4315bad04e88dfdb9c7cad604697
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111450016"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122820842"
 ---
 可以选择使用自己的密钥在每个托管磁盘的级别管理加密。 使用客户托管密钥对托管磁盘进行服务器端加密提供了与 Azure Key Vault 的集成体验。 可以将 [RSA 密钥](../articles/key-vault/keys/hsm-protected-keys.md)导入 Key Vault，也可以在 Azure Key Vault 中生成新的 RSA 密钥。 
 
@@ -42,6 +42,6 @@ Azure 托管磁盘使用[信封加密](../articles/storage/common/storage-client
 
 若要撤销对客户托管密钥的访问权限，请参阅 [Azure Key Vault PowerShell](/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](/cli/azure/keyvault)。 撤销访问权限会实际阻止对存储帐户中所有数据的访问权限，因为 Azure 存储无法访问加密密钥。
 
-#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>自动轮换客户管理的密钥（预览版）
+#### <a name="automatic-key-rotation-of-customer-managed-keys"></a>自动轮换客户管理的密钥
 
-可以选择启用自动密钥轮回，以轮换到最新密钥版本。 磁盘通过其磁盘加密集引用密钥。 为磁盘加密集启用自动轮换后，系统将自动更新引用该磁盘加密集的所有托管磁盘、快照和映像，以便在一小时内使用新版本密钥。 此功能目前以预览版在限定区域提供。 有关区域可用性，请参阅“[支持的区域](#supported-regions)”部分。
+可以选择启用自动密钥轮回，以轮换到最新密钥版本。 磁盘通过其磁盘加密集引用密钥。 为磁盘加密集启用自动轮换后，系统将自动更新引用该磁盘加密集的所有托管磁盘、快照和映像，以便在一小时内使用新版本密钥。 若要了解如何使用自动密钥轮换来启用客户管理的密钥，请参阅[使用自动密钥轮换来设置 Azure Key Vault 和 DiskEncryptionSet](../articles/virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation)。

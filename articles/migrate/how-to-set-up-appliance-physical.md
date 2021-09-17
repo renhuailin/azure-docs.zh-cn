@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 7dd11143e3852d17787de5e20ebe53290f5af96f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3e7780f2214cd603bbf4bd7955a8be7bc7128b89
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731185"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777619"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
@@ -62,7 +62,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > 该脚本可用于为 Azure 公有云或 Azure 政府云设置物理设备。
@@ -91,7 +91,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
         - **配置文件**：%Programdata%\Microsoft Azure\Config
         - **日志文件**：%Programdata%\Microsoft Azure\Logs
 
-成功执行脚本后，将自动启动设备配置管理器。
+成功执行该脚本后，将自动启动设备配置管理器。
 
 > [!NOTE]
 > 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。

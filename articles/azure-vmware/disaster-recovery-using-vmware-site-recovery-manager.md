@@ -2,13 +2,13 @@
 title: 使用 VMware Site Recovery Manager 部署灾难恢复
 description: 在 Azure VMware 解决方案私有云中使用 VMware Site Recovery Manager (SRM) 部署灾难恢复。
 ms.topic: how-to
-ms.date: 07/22/2021
-ms.openlocfilehash: e026083a14dc9ae5b84b03943224b687f34cfab5
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 08/18/2021
+ms.openlocfilehash: 7c4f518623801e8cb489452dbeb3be76e1104e62
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604644"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608063"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 部署灾难恢复
 
@@ -49,6 +49,7 @@ SRM 可帮助你在受保护的 vCenter 服务器站点和恢复 vCenter 服务�
 >- VVOL 保护组 
 >- 使用 SRM 命令行工具自定义 SRM IP
 >- 一对多和多对一拓扑 
+>- 自定义 SRM 插件标识符或扩展 ID
 
 
 ## <a name="deployment-workflow"></a>部署工作流
@@ -57,7 +58,7 @@ SRM 可帮助你在受保护的 vCenter 服务器站点和恢复 vCenter 服务�
 
 :::image type="content" source="media/vmware-srm-vsphere-replication/site-recovery-manager-workflow.png" alt-text="显示 Azure VMware 解决方案上 VMware Site Recovery Manager 的部署工作流的图表。" border="false":::
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="scenario-on-premises-to-azure-vmware-solution"></a>方案：本地到 Azure VMware 解决方案 
 
@@ -218,19 +219,19 @@ SRM 可帮助你在受保护的 vCenter 服务器站点和恢复 vCenter 服务�
 
 ## <a name="scale-limitations"></a>缩放限制
 
+每个私有云都有缩放限制。
+
 | 配置 | 限制 |
 | --- | --- |
 | 受保护虚拟机的数量  | 1000  |
 | 每个恢复计划的虚拟机数量  | 1000  |
 | 每个恢复计划的保护组数量  | 250  |
-| RPO 值  | 5 分钟、30 分钟、60 分钟、90 分钟、120 分钟  |
-| 每个保护组的虚拟机总数  | 4  |
+| RPO 值  | 5 分钟或更高*  |
+| 每个保护组的虚拟机总数  | 500  |
 | 恢复计划总数  | 250  |
-| RPO 为 5 分钟的 VM 数量  | 100  |
-| RPO 为 30 分钟的 VM 数量  | 300  |
-| RPO 为 60 分钟的 VM 数量  | 300  |
-| RPO 为 90 分钟的 VM 数量  | 200  |
-| RPO 为 120 分钟的 VM 数量  | 100  |
+
+\*有关恢复点目标 (RPO) 低于 15 分钟的信息，请参阅《VSphere 复制管理指南》中的 [5 分钟恢复点目标的工作原理](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-9E17D567-A947-49CD-8A84-8EA2D676B55A.html)。
+
 
 
 ## <a name="srm-licenses"></a>SRM 许可证

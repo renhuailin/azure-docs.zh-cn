@@ -17,12 +17,12 @@ ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0428f73c4df3d97002def03823ff8cced1d647
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6570e378aa75843c525cb21ed58c9da5fd4fb574
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552625"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445851"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>使用 Privileged Identity Management 所要满足的许可证要求
 
@@ -30,7 +30,7 @@ ms.locfileid: "106552625"
 
 ## <a name="valid-licenses"></a>有效的许可证
 
-你将需要 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] 才能使用 PIM 及其所有设置。 目前，你可以使用租户中处于活动状态的 Azure Active Directory Premium P2 版本将访问评审的范围限定为可访问 Azure AD 和 Azure 资源角色（预览版）的服务主体。 服务主体的许可模型将会最终确定，以便正式发布此功能。可能需要额外的许可证。
+你需要 Azure AD 许可证，才能使用 PIM 及其所有设置。 目前，你可以使用租户中处于活动状态的 Azure Active Directory Premium P2 版本将访问评审的范围限定为可访问 Azure AD 和 Azure 资源角色（预览版）的服务主体。 服务主体的许可模型将会最终确定，以便正式发布此功能。可能需要额外的许可证。 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="licenses-you-must-have"></a>你必须拥有的许可证
 

@@ -3,27 +3,36 @@ title: 部署和配置 Azure VMware 解决方案
 description: 了解如何使用规划阶段中收集的信息部署和配置 Azure VMware 解决方案私有云。
 ms.topic: tutorial
 ms.custom: contperf-fy22q1, devx-track-azurecli
-ms.date: 07/09/2021
-ms.openlocfilehash: 30c6360e49da2574edd87c639811aac4b66d5e9e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 07/28/2021
+ms.openlocfilehash: fd3d39a33fcf86556b12fefe7a07dde48dd14c2c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438182"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729089"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署和配置 Azure VMware 解决方案
 
-本文介绍如何使用[规划部分](production-ready-deployment-steps.md)的信息部署和配置 Azure VMware 解决方案。 
+[规划部署](plan-private-cloud-deployment.md)后，将部署和配置 Azure VMware 解决方案私有云。 
 
 此图显示了 Azure VMware 解决方案的部署工作流。 
 
-:::image type="content" source="media/deploy-azure-vmware-solution-workflow.png" alt-text="Azure VMware 解决方案的部署工作流关系图。" lightbox="media/deploy-azure-vmware-solution-workflow.png" border="false":::
+:::image type="content" source="media/deploy-azure-vmware-solution-workflow.png" alt-text="显示 Azure VMware 解决方案部署工作流的关系图。" lightbox="media/deploy-azure-vmware-solution-workflow.png" border="false":::
 
-## <a name="step-1-register-the-microsoftavs-resource-provider"></a>步骤 1。 注册 Microsoft.AVS 资源提供程序
+在此操作说明中，你将：
+
+> [!div class="checklist"]
+> * 注册资源提供程序并创建私有云
+> * 连接到新的或现有的 ExpressRoute 虚拟网络网关
+> * 验证网络连接
+
+完成后，请按照末尾建议的后续步骤继续执行本入门指南的其他步骤。
+
+## <a name="register-the-microsoftavs-resource-provider"></a>注册 Microsoft.AVS 资源提供程序
 
 [!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
-## <a name="step-2-create-an-azure-vmware-solution-private-cloud"></a>步骤 2. 创建 Azure VMware 解决方案私有云
+## <a name="create-an-azure-vmware-solution-private-cloud"></a>创建 Azure VMware 解决方案私有云
 
 [!INCLUDE [create-private-cloud-azure-portal-steps](includes/create-private-cloud-azure-portal-steps.md)]
 
@@ -31,7 +40,7 @@ ms.locfileid: "114438182"
 >有关此步骤的端到端概述，请观看 [Azure VMware 解决方案：部署](https://www.youtube.com/embed/gng7JjxgayI)视频。
 
 
-## <a name="step-3-connect-to-azure-virtual-network-with-expressroute"></a>步骤 3. 通过 ExpressRoute 连接到 Azure 虚拟网络
+## <a name="connect-to-azure-virtual-network-with-expressroute"></a>通过 ExpressRoute 连接到 Azure 虚拟网络
 
 在计划阶段，你定义了是要使用现有的 ExpressRoute 虚拟网络网关，还是要使用新的 ExpressRoute 虚拟网络网关 。  
 
@@ -47,21 +56,20 @@ ms.locfileid: "114438182"
 
 | 如果 | Then  |
 | --- | --- |
-| 如果还没有虚拟网络…     |  创建以下各项：<ol><li><a href="tutorial-configure-networking.md#create-a-virtual-network">虚拟网络</a></li><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">虚拟网络网关</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">将 ExpressRoute 连接到网关</a></li></ol>        |
+| 如果还没有虚拟网络…     |  创建以下各项：<ol><li><a href="tutorial-configure-networking.md#create-a-vnet-manually">虚拟网络</a></li><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">虚拟网络网关</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">将 ExpressRoute 连接到网关</a></li></ol>        |
 | 你已经有一个不具备 GatewaySubnet 的虚拟网络…   | 创建以下各项： <ol><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">虚拟网络网关</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">将 ExpressRoute 连接到网关</a></li></ol>          |
 | 你已经有一个带有 GatewaySubnet 的虚拟网络… | 创建以下各项： <ol><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">虚拟网络网关</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">将 ExpressRoute 连接到网关</a></li></ol>    |
-
 
 ### <a name="use-an-existing-virtual-network-gateway"></a>使用现有虚拟网络网关
 
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
 
-## <a name="step-4-validate-the-connection"></a>步骤 4. 验证连接
+## <a name="validate-the-connection"></a>验证连接
 
 应在 ExpressRoute 在其中终止的 Azure 虚拟网络与 Azure VMware 解决方案私有云之间建立连接。 
 
-1. 使用 Azure VMware 解决方案 ExpressRoute 在其中终止的 Azure 虚拟网络中的[虚拟机](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)（请参阅[步骤 3. 通过 ExpressRoute 连接到 Azure 虚拟网络](#step-3-connect-to-azure-virtual-network-with-expressroute)）。  
+1. 使用 Azure VMware 解决方案 ExpressRoute 在其中终止的 Azure 虚拟网络中的[虚拟机](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)。 有关详细信息，请参阅[通过 ExpressRoute 连接到 Azure 虚拟网络](#connect-to-azure-virtual-network-with-expressroute)。  
 
    1. 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -80,7 +88,7 @@ ms.locfileid: "114438182"
 
 ## <a name="next-steps"></a>后续步骤
 
-在下一部分，需通过 ExpressRoute 将 Azure VMware 解决方案连接到本地网络。
+下一教程将介绍通过 ExpressRoute 将 Azure VMware 解决方案连接到本地网络。
 
 > [!div class="nextstepaction"]
 > [连接到本地环境](tutorial-expressroute-global-reach-private-cloud.md)

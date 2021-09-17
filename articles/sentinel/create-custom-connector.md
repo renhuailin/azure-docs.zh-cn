@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: b2e2e1dad8d8fca6ce809e7e76a7ba8021420561
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b0a0b8cb4d3ff5ce10348608d66a451517b60016
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182521"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514736"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>用于创建 Azure Sentinel 自定义连接器的资源
 
@@ -198,11 +198,13 @@ Import-Csv .\testcsv.csv
 例如：
 
 - 如果你已使用 Logstash，请使用 [Grok](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html) 筛选器插件来分析数据。
-- 如果你已使用 Azure 函数，请使用代码分析数据。 有关详细信息，请参阅[分析程序](normalization.md#parsers)。
+- 如果你已使用 Azure 函数，请使用代码分析数据。
 
-Azure Sentinel 支持在查询时进行分析。 通过在查询时进行分析，可以按原始格式推送数据，然后在需要时进行分析。
+Azure Sentinel 支持在查询时进行分析。 通过在查询时进行分析，可以按原始格式推送数据，然后在需要时进行分析。 
 
 在查询时进行分析还意味着不需要在创建自定义连接器时提前知道数据的确切结构，甚至无需知道需要提取的信息。 你随时可以分析数据，即使在调查期间也是如此。
+
+有关在查询时进行分析的详细信息，请参阅[分析程序](normalization-about-parsers.md)。
 
 > [!NOTE]
 > 更新分析程序还会应用于已引入到 Azure Sentinel 的数据。

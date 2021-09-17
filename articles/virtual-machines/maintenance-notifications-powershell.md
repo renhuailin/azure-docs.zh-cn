@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5b522ac678c5a2ffbcf5713de79e35c00e30ba40
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 9c03280532a1296d49c26b8e7502c5cbac896f8e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672880"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687730"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 处理计划内维护
 
-**本文适用于同时运行 Linux 和 Windows 的虚拟机。**
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 可以使用 Azure PowerShell 查看何时安排 VM 进行[维护](maintenance-notifications.md)。 使用 `-status` 参数时可通过 [Get-AzVM](/powershell/module/az.compute/get-azvm) cmdlet 获得计划内维护信息。
   

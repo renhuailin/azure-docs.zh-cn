@@ -9,14 +9,16 @@ ms.subservice: automatic-os-upgrade
 ms.date: 07/29/2021
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b080c741276233e671d5724b3ee72cc7b4738446
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9e814ad43d157d69fee2b70eaaccbadf23f4fa2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751732"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690513"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 在规模集上启用自动 OS 映像升级有助于简化更新管理，这样可以安全自动升级规模集中所有实例的 OS 磁盘。
 

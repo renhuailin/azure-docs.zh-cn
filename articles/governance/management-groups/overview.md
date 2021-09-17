@@ -1,15 +1,14 @@
 ---
 title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
-ms.date: 04/28/2021
+ms.date: 08/17/2021
 ms.topic: overview
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: b3624500632d0f02d4b255aef6b836ee0491ff83
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 541ac526ba7105322cb00a7fd26f1c7075af0a60
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733613"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322998"
 ---
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
@@ -190,6 +189,10 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 **例外**：如果目标或现有父管理组不是根管理组，则权限要求不适用。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需在其上具有相关权限即可移动某个项。
 
 如果订阅上的“所有者”角色继承自当前管理组，你的移动目标会受限。 只能将订阅移到你在其中拥有“所有者”角色的另一管理组。 不能将它移到你在其中是参与者的管理组，因为你会失去订阅的所有权。 如果你是直接分配到订阅的“所有者”角色的（而不是从管理组继承的），则可将它移到你在其中是参与者的任何管理组。
+
+> [!IMPORTANT]
+> Azure 资源管理器可以将管理组层次结构详细信息缓存最多 30 分钟。
+> 因此，移动管理组可能不会立即反映在 Azure 门户中。 
 
 ## <a name="audit-management-groups-using-activity-logs"></a>使用活动日志审核管理组
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 5cdc0080c0d8b06bd0b7e19566b54b4f105648e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c6dd93bc492c8823f5b97e51fce66196502aa36c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122096"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769676"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>适用于虚拟机的 Azure Automanage 最佳做法
 
@@ -33,7 +33,7 @@ ms.locfileid: "102122096"
 |Microsoft 反恶意软件    |适用于 Azure 的 Microsoft 反恶意软件是一种免费实时保护，可帮助识别并删除病毒、间谍软件和其他恶意软件。 当已知恶意软件或不需要的软件试图在 Azure 系统上安装自己或运行时，该服务会生成警报。 了解[详细信息](../security/fundamentals/antimalware.md)。 |Azure VM 最佳做法 - 生产、Azure VM 最佳做法 - 开发/测试    |是    |
 |更新管理    |可以使用 Azure 自动化中的更新管理为虚拟机管理操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。 了解[详细信息](../automation/update-management/overview.md)。    |Azure VM 最佳做法 - 生产、Azure VM 最佳做法 - 开发/测试    |否    |
 |更改跟踪和库存    |“更改跟踪和库存”结合了更改跟踪和库存功能，可跟踪虚拟机和服务器基础结构的更改。 该服务支持对环境中的不同服务、守护程序软件、注册表和文件执行“更改跟踪”，以帮助诊断不需要的更改和引发警报。 库存支持可让你查询来宾中的资源，以洞察已安装的应用程序和其他配置项。  了解[详细信息](../automation/change-tracking/overview.md)。    |Azure VM 最佳做法 - 生产、Azure VM 最佳做法 - 开发/测试    |否    |
-|Azure 来宾配置    | 来宾配置策略用于监视配置并报告计算机的合规性。 Automanage 服务将使用“来宾配置”扩展来安装 [Windows 安全基线](/windows/security/threat-protection/windows-security-baselines)。 了解[详细信息](../governance/policy/concepts/guest-configuration.md)。    |Azure VM 最佳做法 - 生产、Azure VM 最佳做法 - 开发/测试    |否    |
+|来宾配置 | 来宾配置用于监视配置并报告计算机的合规性。 Automanage 服务将使用“来宾配置”扩展来安装 [Windows 安全基线](/windows/security/threat-protection/windows-security-baselines)。 了解[详细信息](../governance/policy/concepts/guest-configuration.md)。    |Azure VM 最佳做法 - 生产、Azure VM 最佳做法 - 开发/测试    |否    |
 |Azure 自动化帐户    |Azure 自动化支持在基础结构和应用程序的整个生命周期内进行管理。 了解[详细信息](../automation/automation-intro.md)。    |Azure VM 最佳做法 - 生产、Azure VM 最佳做法 - 开发/测试    |否    |
 |Log Analytics 工作区    |Azure Monitor 将日志数据存储在 Log Analytics 工作区中。该工作区是一个 Azure 资源，也是一个用于收集和聚合数据的容器，充当管理边界。 了解[详细信息](../azure-monitor/logs/design-logs-deployment.md)。    |Azure VM 最佳做法 - 生产、Azure VM 最佳做法 - 开发/测试    |否    |
 

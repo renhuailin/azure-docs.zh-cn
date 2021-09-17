@@ -6,21 +6,33 @@ author: mlee3gsd
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 12/2/2020
+ms.date: 08/19/2021
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 6422c33f17879aa8ec4844cc6de63411528a388b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c674813aee7702e9887e909e4a8baf7ace074a2c
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606151"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597643"
 ---
 # <a name="apache-spark-pool-configurations-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Apache Spark 池配置
 
 Spark 池是一组元数据，用于定义实例化 Spark 实例时的计算资源要求和关联的行为特征。 这些特征包括但不限于名称、节点数、节点大小、缩放行为和生存时间。 Spark 池本身不会消耗任何资源。 创建 Spark 池不会产生任何费用。 仅当在目标 Spark 池上执行 Spark 作业以及按需实例化 Spark 实例后，才会产生费用。
 
 可在 [Synapse Analytics 中的 Spark 池入门](../quickstart-create-apache-spark-pool-portal.md)中了解如何创建 Spark 池及查看其所有属性
+
+## <a name="isolated-compute"></a>独立计算
+
+“独立计算”选项通过将物理计算资源分配给单个客户，为来自不受信任的服务的 Spark 计算资源提供额外安全保障。
+“独立计算”选项最适合为满足合规性和监管要求等原因而需要与其他客户的工作负载高度隔离的工作负载。  
+“独立计算”选项仅适用于 XXX 大型 (80 vCPU/504 GB) 节点大小，并仅在以下区域可用。  “独立计算”选项可以在创建池后启用或禁用，但可能需要重启实例。  如果希望将来启用此功能，请确保在支持独立计算选项的区域创建 Synapse 工作区。
+
+* 美国东部
+* 美国西部 2
+* 美国中南部
+* US Gov 亚利桑那州
+* US Gov 弗吉尼亚州
 
 ## <a name="nodes"></a>节点
 
@@ -37,6 +49,7 @@ Apache Spark 池实例由一个头节点和两个或更多个工作器节点组�
 |大|16|128 GB|
 |XLarge|32|256 GB|
 |XXLarge|64|432 GB|
+|XXX 大型（独立计算）|80|504 GB|
 
 ## <a name="autoscale"></a>自动缩放
 

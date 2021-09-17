@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 08/20/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1c4a006a12e9708b35ea15ff68728569822ae26d
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 37f5e0163d7c2ed57866f8c4eda49458a969ad87
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114390745"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687757"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据。 创建 VM 时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程演示如何部署和管理 VM 磁盘。 学习内容：
 
@@ -111,7 +113,7 @@ az vm disk attach \
 创建与虚拟机的 SSH 连接。 将示例 IP 地址替换为虚拟机的公共 IP 地址。
 
 ```console
-ssh 10.101.10.10
+ssh azureuser@10.101.10.10
 ```
 
 使用 `parted` 对磁盘进行分区。

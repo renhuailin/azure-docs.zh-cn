@@ -3,15 +3,17 @@ title: 在 StartupServices.xml 中为 Service Fabric 应用程序定义服务配
 description: 了解如何使用 StartupServices.xml 从 ApplicationManifest.xml 中隔离服务级别配置。
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 2b11e1dfdfec357d48ee95cabb35c87e71123bc8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 69ec795bab910f8f2b030ab5758698d3fdbae824
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482148"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681375"
 ---
 # <a name="introducing-startupservicesxml-in-service-fabric-application"></a>在 Service Fabric 应用程序中引入 StartupServices.xml
-此功能在 Service Fabric 应用程序设计中引入了 StartupServices.xml 文件。 此文件承载 ApplicationManifest.xml 的 DefaultServices 节。 使用此实现时，DefaultServices 和服务定义相关的参数将从现有 ApplicationManifest.xml 移动到这个名为 StartupServices.xml 的新文件。 此文件在 Visual Studio 的每个功能（生成/重新生成/F5/Ctrl+F5/发布）中使用。
+此功能在 Service Fabric 应用程序设计中引入了 StartupServices.xml 文件。 此文件承载 ApplicationManifest.xml 的 DefaultServices 节。 使用此实现时，DefaultServices 和服务定义相关的参数将从现有 ApplicationManifest.xml 移动到这个名为 StartupServices.xml 的新文件。 此文件用在 Visual Studio 的每个功能（生成/重新生成/F5/Ctrl+F5/发布）中。
+
+注 - StartupServices.xml 仅适用于 Visual Studio 部署，这种安排是为了确保使用 Visual Studio（使用 StartupServices.xml）部署的包不会与 ARM 部署的服务发生冲突。 StartupServices.xml 未打包为应用程序包的一部分。 DevOps 管道不支持 StartupServices.xml，客户应通过 ARM 或通过 cmdlet 使用所需配置在应用程序中部署单个服务。
 
 ## <a name="existing-service-fabric-application-design"></a>现有的 Service Fabric 应用程序设计
 对于每个 Service Fabric 应用程序，ApplicationManifest.xml 是应用程序的所有服务相关信息的源。 ApplicationManifest.xml 包含所有 Parameters、ServiceManifestImport 和 DefaultServices。 将在 ApplicationParameters 下的 Cloud.xml/Local1Node.xml/Local5Node.xml 文件中提到配置参数。

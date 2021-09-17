@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/28/2020
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 1fd718f206220edeef4cba164d787a8de44e82f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcf872a80c0deacfaea2933c0f3c70ddb97bb015
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181686"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737259"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prolorus"></a>教程：Azure Active Directory 与 Prolorus 的单一登录 (SSO) 集成
 
@@ -33,11 +33,14 @@ ms.locfileid: "96181686"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Prolorus 单一登录 (SSO) 的订阅。
 
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Prolorus 支持 SP 发起的 SSO
+* Prolorus 支持 SP 发起的 SSO。
 
 ## <a name="adding-prolorus-from-the-gallery"></a>从库中添加 Prolorus
 
@@ -49,7 +52,6 @@ ms.locfileid: "96181686"
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Prolorus” 。
 1. 从结果面板中选择“Prolorus”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-prolorus"></a>配置并测试 Prolorus 的 Azure AD SSO
 
@@ -70,7 +72,7 @@ ms.locfileid: "96181686"
 
 1. 在 Azure 门户的“Prolorus”应用程序集成页上，找到“管理”部分，然后选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -128,11 +130,11 @@ ms.locfileid: "96181686"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Prolorus 登录 URL，可以从那里启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Prolorus 登录 URL，可以从那里启动登录流。 
 
-2. 直接转到 Prolorus 登录 URL，并从那里启动登录流。
+* 直接转到 Prolorus 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Prolorus 磁贴时，将会重定向到 Prolorus 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Prolorus 磁贴时，会重定向到 Prolorus 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

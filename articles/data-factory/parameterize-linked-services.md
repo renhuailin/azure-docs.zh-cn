@@ -1,25 +1,28 @@
 ---
-title: 参数化 Azure 数据工厂中的链接服务
-description: 了解如何参数化 Azure 数据工厂中的链接服务，并在运行时传递动态值。
+title: 将链接的服务参数化
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何参数化 Azure 数据工厂和 Azure Synapse Analytics 中的链接服务，并在运行时传递动态值。
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 08/24/2021
 author: chez-charlie
 ms.author: chez
-ms.openlocfilehash: 277f3d9e9d82edf9e93d41808a351528a94f85d7
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 563ca47dc79b9ff9a31accb0d5c8a35477d32055
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793688"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825161"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
+# <a name="parameterize-linked-services-in-azure-data-factory-and-azure-synapse-analytics"></a>参数化 Azure 数据工厂和 Azure Synapse Analytics 中的链接服务
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 现在可以参数化链接服务并在运行时传递动态值。 例如，如果要连接到同一逻辑 SQL Server 上的不同数据库，则现在可以在链接服务定义中参数化数据库名称。 这样就不需为逻辑 SQL Server 上的每个数据库创建链接服务。 也可以参数化链接服务定义中的其他属性 - 例如，用户名。
 
-可以使用 Azure 门户中的数据工厂 UI 或编程接口来参数化链接服务。
+可以使用 Azure 门户中的 UI 或编程接口来参数化链接服务。
 
 > [!TIP]
 > 我们建议不要参数化密码或机密。 而应将所有机密都存储在 Azure Key Vault 中，并参数化“机密名称”。
@@ -35,7 +38,7 @@ ms.locfileid: "110793688"
 
 所有链接服务类型都支持参数化。
 
-在 ADF UI 上提供原生支持：在 UI 上创作链接服务时，数据工厂为以下类型的链接服务提供内置的参数化体验。 在“链接服务创建/编辑”边栏选项卡中，可以找到新参数的选项并添加动态内容。 请参阅[数据工厂 UI 体验](#data-factory-ui)。
+在 UI 中提供原生支持：在 UI 上创作链接服务时，该服务为以下类型的链接服务提供内置的参数化体验。 在“链接服务创建/编辑”边栏选项卡中，可以找到新参数的选项并添加动态内容。 请参阅 [UI 体验](#ui-experience)。
 
 - Amazon Redshift
 - Amazon S3
@@ -62,13 +65,23 @@ ms.locfileid: "110793688"
 - 在“链接服务创建/编辑”边栏选项卡中 -> 展开底部的“高级”-> 选中“以 JSON 格式指定动态内容”复选框 -> 指定链接服务 JSON 有效负载。 
 - 或者，在创建没有参数化的链接服务后，转到[管理中心](author-visually.md#management-hub) ->“链接服务”-> 查找特定的链接服务 -> 单击“代码”（“{}”按钮）以编辑 JSON。 
 
-请参考 [JSON 示例](#json)来添加 ` parameters` 节，以定义参数并使用 ` @{linkedService().paraName} ` 来引用参数。
+请参考 [JSON 示例](#json)来添加 ` parameters` 节，以定义参数并使用 ` @{linkedService().paramName} ` 来引用参数。
 
-## <a name="data-factory-ui"></a>数据工厂 UI
+## <a name="ui-experience"></a>UI 体验
 
-![将动态内容添加到“链接服务”定义](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+# <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-![新建参数](media/parameterize-linked-services/parameterize-linked-services-image2.png)
+![将动态内容添加到“链接服务”定义](media/parameterize-linked-services/parameterize-linked-services-image-1.png)
+
+![新建参数](media/parameterize-linked-services/parameterize-linked-services-image-2.png)
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+![将动态内容添加到“链接服务”定义](media/parameterize-linked-services/parameterize-linked-services-image-1-synapse.png)
+
+![新建参数](media/parameterize-linked-services/parameterize-linked-services-image-2-synapse.png)
+
+---
 
 ## <a name="json"></a>JSON
 

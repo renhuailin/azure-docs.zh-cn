@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 05/25/2021
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 098f2d63f7bfd87aed8c7c88d1ec13be684983c1
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 195ea650e15024366d3d9d9426b466cf73951bb1
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459345"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418865"
 ---
 # <a name="train-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>使用 Azure 机器学习 Visual Studio Code 扩展（预览版）训练图像分类 TensorFlow 模型
 
@@ -34,7 +34,7 @@ ms.locfileid: "112459345"
 - Azure 订阅。 如果没有订阅，注册之后即可试用 [Azure 机器学习免费版或付费版](https://azure.microsoft.com/free/t.com/free/)。
 - 安装 [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)，一种轻量型跨平台代码编辑器。
 - Azure 机器学习工作室 Visual Studio Code 扩展。 有关安装说明，请参阅 [Azure 机器学习 Visual Studio Code 扩展指南](./how-to-setup-vs-code.md)
-- 2.0 CLI（预览版）。 有关安装说明，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)
+- CLI (v2)（预览版）。 有关安装说明，请参阅[安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)
 
 ## <a name="understand-the-code"></a>了解代码
 
@@ -70,7 +70,7 @@ ms.locfileid: "112459345"
 
     规格文件将在 `WestUS2` 区域中创建名为 `TeamWorkspace` 的工作区。 规格文件中定义的其余选项为工作区提供友好的命名、说明和标记。
 
-1. 右键单击规范文件，然后选择“Azure ML: 创建资源”。 创建资源时将使用 YAML 规范文件中定义的配置选项，并使用 2.0 CLI 提交一个作业。 此时，系统会向 Azure 发出请求，以便在你的帐户中创建新的工作区和相关资源。 几分钟后，新工作区会显示在订阅节点中。
+1. 右键单击规范文件，然后选择“Azure ML: 创建资源”。 创建资源时将使用 YAML 规范文件中定义的配置选项，并使用 CLI (v2) 提交一个作业。 此时，系统会向 Azure 发出请求，以便在你的帐户中创建新的工作区和相关资源。 几分钟后，新工作区会显示在订阅节点中。
 1. 将 `TeamWorkspace` 设置为默认工作区。 这样会默认将你创建的资源和作业放入该工作区。 在 Visual Studio Code 状态栏上选择“设置 Azure ML 工作区”按钮，然后按照提示将 `TeamWorkspace` 设置为默认工作区。
 
 有关工作区的详细信息，请参阅[如何在 VS Code 中管理资源](how-to-manage-resources-vscode.md)。

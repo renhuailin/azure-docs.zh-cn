@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ee9b326a43adb9c96fe6013eeecaabf955c78d45
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 98b8b3c1de7879301d82356bbb23e2d2d19ff9cc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986383"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768425"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-4me"></a>教程：Azure Active Directory 单一登录 (SSO) 与 4me 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "111986383"
 * 让用户使用其 Azure AD 帐户自动登录到 4me。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -42,6 +42,7 @@ ms.locfileid: "111986383"
 
 * 4me 支持 SP 发起的 SSO。
 * 4me 支持实时用户预配。
+* 4me 支持[自动用户预配](4me-provisioning-tutorial.md)。
 
 ## <a name="add-4me-from-the-gallery"></a>从库中添加 4me
 

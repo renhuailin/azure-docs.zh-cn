@@ -4,15 +4,16 @@ description: 创建一个 Azure 数据工厂，然后使用复制数据工具根
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 25e39d3fc9c56a282714bafb630fee65421fb5ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/12/2021
+ms.openlocfilehash: 0c2cfe51e84931b90ab80588b16fe126aadaf4c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606661"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638814"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>使用复制数据工具根据 LastModifiedDate 以增量方式复制新的和已更改的文件
 
@@ -55,7 +56,7 @@ ms.locfileid: "104606661"
 
    数据工厂的名称必须全局独一无二。 可能会收到以下错误消息：
 
-    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="针对重复名称的新数据工厂错误消息。":::
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="针对重复名称的新的数据工厂错误消息。":::
 
    如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 3. 在“订阅”下，选择要在其中创建新数据工厂的 Azure 订阅  。
@@ -71,83 +72,74 @@ ms.locfileid: "104606661"
 6. 在“位置”下选择数据工厂的位置。  列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 Azure SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
 8. 选择“创建”  。
 9. 创建数据工厂后，会显示数据工厂主页。
-10. 若要在单独的选项卡中打开 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴： 
+10. 若要在单独的选项卡中登录 Azure 数据工厂用户界面 (UI)，请在“打开 Azure 数据工厂工作室”磁贴上选择“打开”： 
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>使用“复制数据”工具创建管道
 
-1. 在“开始使用”页中选择“复制数据”磁贴，打开“复制数据”工具：  
+1. 在 Azure 数据工厂主页上，选择“引入”磁贴来打开“复制数据”工具：
 
-   ![“复制数据”磁贴](./media/doc-common-process/get-started-page.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 
 2. 在“属性”页上执行以下步骤： 
 
-    a. 在“任务名称”下  输入 **DeltaCopyFromBlobPipeline**。
+    1. 在“任务类型”下，选择“内置复制任务” 。
 
-    b. 在“任务频率或任务计划”下  ，选择“按计划定期运行”  。
+    1. 在“任务节奏或任务计划”下，选择“翻滚窗口”。 
 
-    c. 在“触发器类型”下，选择“翻转窗口”。  
+    1. 在“重复周期”下输入“15 分钟”。  
 
-    d. 在“重复周期”下输入“15 分钟”。  
-
-    e. 选择“**下一步**”。
-
-    数据工厂会使用指定的任务名称创建一个管道。
+    1. 选择“**下一页**”。
 
     ![复制数据 - 属性页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/copy-data-tool-properties-page.png)
 
 3. 在“源数据存储”  页上，完成以下步骤：
 
-    a. 选择“创建新连接”，添加一个连接。 
+    1. 选择“+ 新建连接”添加一个连接。
 
-    b. 从库中选择“Azure Blob 存储”   ，然后选择“继续”：
+    1. 从库中选择“Azure Blob 存储”   ，然后选择“继续”：
 
-    ![选择“Azure Blob 存储”](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
+        ![选择“Azure Blob 存储”](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
-    c. 在“新建链接服务(Azure Blob 存储)”页上，从“存储帐户名称”列表中选择你的存储帐户。   测试连接，然后选择“创建”  。
+    1. 在“新建连接（）Azure Blob 存储”页上，从“Azure 订阅”列表中选择你的 Azure 订阅，从“存储帐户名称”列表中选择你的存储帐户  。 测试连接，然后选择“创建”  。
 
-    d. 选择新的链接服务，然后选择“下一步”： 
+    1. 在“连接”块中选择新建的连接。
 
-   ![选择新的链接服务](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
+    1. 在“文件或文件夹”部分中，选择“浏览”并选择源文件夹，然后选择“确定”。   
 
-4. 在“选择输入文件或文件夹”页中完成以下步骤： 
+    1. 在“文件加载行为”下，选择“增量加载：LastModifiedDate”，然后选择“二进制复制”  。
+    
+    1. 选择“**下一页**”。
 
-    a. 浏览并选择 source 文件夹，然后选择“选择”   。
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page.png" alt-text="显示“源数据存储”页的屏幕截图。":::
 
-    ![选择输入文件或文件夹](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
+4. 在“目标数据存储”页上，完成以下步骤：
+    1. 选择已创建的“AzureBlobStorage”连接。 这是与源数据存储相同的存储帐户。
 
-    b. 在“文件加载行为”下，选择“增量加载:   LastModifiedDate”。
+    1. 在“文件夹路径”部分中，浏览并选择目标文件夹，然后选择“确定”。  
 
-    c. 选择“二进制副本”，然后选择“下一步”   ：
+    1. 选择“**下一页**”。
 
-     ![“选择输入文件或文件夹”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page.png" alt-text="显示“目标数据存储”页的屏幕截图。":::
 
-5. 在“目标数据存储”页上，选择已创建的“AzureBlobStorage”服务   。 这是与源数据存储相同的存储帐户。 然后，选择“下一步”  。
+5. 在“设置”页上的“任务名称”下，输入 DeltaCopyFromBlobPipeline，然后选择“下一步”。    数据工厂会使用指定的任务名称创建一个管道。
 
-6. 在“选择输出文件或文件夹”页中完成以下步骤： 
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/settings-page.png" alt-text="显示“设置”页的屏幕截图。":::
 
-    a. 浏览并选择 destination 文件夹，然后选择“选择”   ：
-
-    ![“选择输出文件或文件夹”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
-
-    b. 选择“**下一步**”。
-
-7. 在“设置”页中，选择“下一步”。  
-
-8. 在“摘要”  页上检查设置，然后选择“下一步”  。
+6. 在“摘要”  页上检查设置，然后选择“下一步”  。
 
     ![“摘要”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png)
 
-9. 在“部署”页中，选择“监视”可以监视管道（任务）   。
+7. 在“部署”页中，选择“监视”以监视管道（任务） 。
 
     ![“部署”页](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
 
-10. 请注意，界面中已自动选择左侧的“监视”选项卡。  应用程序将切换到“监视”选项卡。  请查看管道的状态。 选择“刷新”可刷新列表。  选择“管道名称”  下的链接，查看活动运行详细信息或重新运行管道。
+8. 请注意，界面中已自动选择左侧的“监视”选项卡。  应用程序将切换到“监视”选项卡。  请查看管道的状态。 选择“刷新”可刷新列表。  选择“管道名称”下的链接，查看活动运行详细信息或重新运行管道。
 
     ![刷新列表并查看活动运行详细信息](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
-11. 该管道只包含一个活动（复制活动），因此只显示了一个条目。 有关复制操作的详细信息，请选择“活动名称”列中的“详细信息”链接（眼镜图标）。   有关属性的详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
+9. 该管道只包含一个活动（复制活动），因此只显示了一个条目。 要了解有关复制操作的详细信息，请在“活动运行”页上，选择“活动名称”列下的“详细信息”链接（眼镜图标）。 有关属性的详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
     ![管道中的“复制”活动](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
 
@@ -155,26 +147,25 @@ ms.locfileid: "104606661"
 
     ![源容器或目标容器中没有文件](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. 创建空的文本文件，并将其命名为 **file1.txt**。 将此文本文件上传到存储帐户中的源容器。 可以使用各种工具（例如 [Azure 存储资源管理器](https://storageexplorer.com/)）来执行这些任务。
+10. 创建空的文本文件，并将其命名为 **file1.txt**。 将此文本文件上传到存储帐户中的源容器。 可以使用各种工具（例如 [Azure 存储资源管理器](https://storageexplorer.com/)）来执行这些任务。
 
     ![创建 file1.txt 并将其上传到源容器](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
-13. 若要回到“管道运行”视图，请选择“所有管道运行”，然后等待再次自动触发同一管道   。  
+11. 要返回“管道运行”视图，请在“活动运行”页的痕迹菜单中选择“所有管道运行”链接，然后等待同一管道再次自动触发。    
 
-14. 当第二个管道运行完成时，请按照前述步骤查看活动运行详情。  
+12. 当第二个管道运行完成时，请按照前述步骤查看活动运行详情。  
 
     你会发现，已将一个文件 (file1.txt) 从 Blob 存储帐户的源容器复制到目标容器。
 
     ![file1.txt 已从源容器复制到目标容器](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
 
-15. 创建另一个空的文本文件，并将其命名为 **file2.txt**。 将此文本文件上传到 Blob 存储帐户中的源容器。
+13. 创建另一个空的文本文件，并将其命名为 **file2.txt**。 将此文本文件上传到 Blob 存储帐户中的源容器。
 
-16. 针对第二个文本文件重复步骤 13 和 14。 你会发现，在执行此管道运行期间，只有新文件 (file2.txt) 从存储帐户的源容器复制到了目标容器。  
+14. 针对第二个文本文件重复步骤 11 和 12。 你会发现，在执行此管道运行期间，只有新文件 (file2.txt) 从存储帐户的源容器复制到了目标容器。  
 
     还可以使用 [Azure 存储资源管理器](https://storageexplorer.com/)来扫描文件，以便验证是否只复制了一个文件：
 
     ![使用 Azure 存储资源管理器来扫描文件](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
-
 
 ## <a name="next-steps"></a>后续步骤
 请转到下一教程，了解如何使用 Azure 上的 Apache Spark 群集来转换数据：

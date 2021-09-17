@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7803d14a46978c21d5fea65211abe0506c4cc1c8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6af10befe614ecd353bd5bd2185fcd9c7097f058
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677055"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445072"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -129,7 +129,7 @@ Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential
 | **Azure 存储** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
 | **Azure 文件同步** | &ast;.one.microsoft.com<br>&ast;.afs.azure.net | &ast;.afs.azure.us | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
 | **Microsoft PKI** |  https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | 安装 Azure 文件同步代理后，PKI URL 用于下载与 Azure 文件同步服务和 Azure 文件共享进行通信所需的中间证书。 OCSP URL 用于检查证书的状态。 |
-| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | 在安装 Azure 文件同步代理后，Microsoft 更新 URL 用于下载 Azure 文件同步代理更新。 |
+| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | 安装 Azure 文件同步代理后，Microsoft 更新 URL 用于下载 Azure 文件同步代理更新。 |
 
 > [!Important]
 > 在允许流量流向 &ast;.afs.azure.net 时，流量只能流向同步服务。 没有其他 Microsoft 服务在使用此域。
@@ -137,7 +137,7 @@ Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential
 
 如果 &ast;.afs.azure.net 或 &ast;.one.microsoft.com 范围太广，则可限制服务器的通信，只允许与 Azure 文件同步服务的显式区域性实例通信。 选择哪个或哪些实例取决于向其部署和注册了服务器的存储同步服务的区域。 在下表中，该区域称为“主终结点 URL”。
 
-出于业务连续性和灾难恢复 (BCDR) 的原因，你可能在全局冗余 (GRS) 存储帐户中指定了 Azure 文件共享。 如果是这样，在发生长时间的区域性中断时，Azure 文件共享将故障转移到配对的区域。 Azure 文件同步使用的区域配对与存储相同。 因此，如果使用 GRS 存储帐户，则需要启用附加的 URL 才能让服务器与 Azure 文件同步的配对区域通信。在下表中，此配对称为“配对区域”。 此外，还需要启用一个流量管理器配置文件 URL。 在发生故障转移时，此 URL 可确保将网络流量无缝重新路由到配对区域；在下表中，此 URL 称为“发现 URL”。
+出于业务连续性和灾难恢复 (BCDR) 原因，你可能已在配置为异地冗余存储 (GRS) 的存储帐户中创建了 Azure 文件共享。 如果是这样，则在发生长时间的区域性中断时，Azure 文件共享会将故障转移到配对区域。 Azure 文件同步使用的区域配对与存储相同。 因此，如果使用 GRS 存储帐户，则需要启用附加的 URL 才能让服务器与 Azure 文件同步的配对区域通信。在下表中，此配对称为“配对区域”。 此外，还需要启用一个流量管理器配置文件 URL。 在发生故障转移时，此 URL 可确保将网络流量无缝重新路由到配对区域；在下表中，此 URL 称为“发现 URL”。
 
 | 云  | 区域 | 主终结点 URL | 配对区域 | 发现 URL |
 |--------|--------|----------------------|---------------|---------------|
@@ -173,9 +173,9 @@ Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential
 | 政府机关 | US Gov 亚利桑那州 | https:\//usgovarizona01.afs.azure.us | US Gov 德克萨斯州 | https:\//tm-usgovarizona01.afs.azure.us |
 | 政府机关 | US Gov 德克萨斯州 | https:\//usgovtexas01.afs.azure.us | US Gov 亚利桑那州 | https:\//tm-usgovtexas01.afs.azure.us |
 
-- 如果使用本地冗余 (LRS) 或区域冗余 (ZRS) 存储帐户，只需启用“主终结点 URL”下面列出的 URL。
+- 如果使用为本地冗余存储 (LRS) 或区域冗余存储 (ZRS) 配置的存储帐户，则只需启用“主终结点 URL”下列出的 URL。
 
-- 如果使用全局冗余 (GRS) 存储帐户，请启用三个 URL。
+- 如果使用为 GRS 配置的存储帐户，请启用三个 URL。
 
 **示例：** 在 `"West US"` 中部署存储同步服务并在其中注册自己的服务器。 在本例中，允许与服务器通信的 URL 为：
 

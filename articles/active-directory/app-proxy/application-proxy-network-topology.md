@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e26522130d98d5e2f706a6c48002ad75b537d32a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a9b12750ec16ee5fe79c91e4ed931426f8dbaa36
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964765"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445084"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理优化流量流
 
@@ -27,7 +27,7 @@ ms.locfileid: "111964765"
 通过 Azure AD 应用程序代理发布应用程序时，从用户发往应用程序的流量将通过三个连接流动：
 
 1. 用户连接到 Azure 上的 Azure AD 应用程序代理服务公共终结点
-1. 应用程序代理服务连接到应用程序代理连接器
+1. 应用程序代理连接器连接到应用程序代理服务（出站）
 1. 应用程序代理连接器连接到目标应用程序
 
 :::image type="content" source="./media/application-proxy-network-topology/application-proxy-three-hops.png" alt-text="显示从用户到目标应用程序的流量流的示意图。" lightbox="./media/application-proxy-network-topology/application-proxy-three-hops.png":::

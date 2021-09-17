@@ -11,14 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 57916a7f142663711215fdb2a7f641e35fd9ad0f
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 43c1785a80738741478e93289fd9ff239dca7719
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389971"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697793"
 ---
 # <a name="configure-prerequisites"></a>配置先决条件
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 在使用市场产品/服务在 Azure 中部署自托管 OpenShift Container Platform 3.11 群集之前，必须先配置几个先决条件。  有关如何创建 SSH 密钥（不含密码）、Azure 密钥保管库、密钥保管库机密和服务主体的说明，请阅读 [OpenShift 先决条件](./openshift-container-platform-3x-prerequisites.md)一文。
 

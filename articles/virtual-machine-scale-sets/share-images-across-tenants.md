@@ -9,14 +9,16 @@ ms.subservice: shared-image-gallery
 ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: b6b5e48997da03c7f180c62a9142c99b05c95b46
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b1833fe7c692529649e078e18e17e9333d74bfa6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444031"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693200"
 ---
 # <a name="share-images-across-tenants-with-shared-image-gallery"></a>使用共享映像库在租户之间共享映像
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 

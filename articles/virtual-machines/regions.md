@@ -8,14 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 3/8/2021
-ms.openlocfilehash: e874a76cc447158127da8482f23bf03d56961818
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 168bafe6991e6b661af9a389e2b29324f2bfdb1d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504603"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694218"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 请务必了解 Azure 中虚拟机 (VM) 运行的方式和位置，以及最大化性能、可用性和冗余的选项。 本文提供了 Azure 的可用性和冗余功能的概述。
 
@@ -48,7 +50,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 |:--- |:--- |
 | 美国西部 |美国东部 |
 | 北欧 |西欧 |
-| Southeast Asia |东亚 |
+| 东南亚 |东亚 |
 
 可以在[此处](../best-practices-availability-paired-regions.md#what-are-paired-regions)查看完整的区域对列表。
 

@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3c44db5c17d1179df03985515acc9133feca198e
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b3c84a46e19e4cf24459424458340233869ea683
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711049"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736293"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -111,7 +111,7 @@ ms.locfileid: "114711049"
 |11 月 | [文档提取技能（预览）](cognitive-search-skill-document-extraction.md) | 技能组中一种从文件提取内容的认知技能。|
 |11 月 | [文本翻译技能](cognitive-search-skill-text-translation.md) | 一种在索引期间用于评估和翻译文本的认知技能。 正式发布。|
 |11 月 | [Power BI 模板](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | 用于在知识存储中直观显示内容的模板 |
-|11 月 | [Azure Data Lake Storage Gen2（预览版）](search-howto-index-azure-data-lake-storage.md)、[Cosmos DB Gremlin API（预览版）](search-howto-index-cosmosdb.md)和 [Cosmos DB Cassandra API（预览版）](search-howto-index-cosmosdb.md) | 以公共预览版形式提供新的索引器数据源。 |
+|11 月 | [Azure Data Lake Storage Gen2（预览版）](search-howto-index-azure-data-lake-storage.md)和 [Cosmos DB Gremlin API（预览版）](search-howto-index-cosmosdb.md) | 以公共预览版形式提供新的索引器数据源。 |
 |7 月 | [Azure 政府云支持](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | 正式发布。|
 
 <a name="new-service-name"></a>

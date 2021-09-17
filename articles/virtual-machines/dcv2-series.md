@@ -7,15 +7,16 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 474478c03586866f28d02c4e1cb219bd6df65dea
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0d37e8308afd75b310893272f338fb5a3245a8ce
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183465"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696519"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 DCsv2 系列虚拟机可以在公有云中处理数据和代码时帮助保护数据和代码的机密性和完整性。 DCsv2 系列利用 Intel® Software Guard Extensions，使客户能够使用安全 enclave 进行保护。
 

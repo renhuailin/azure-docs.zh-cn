@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: c1c53da8c62acc1b4aacd2b0fa79dd968c65c13a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61b8a15e4e765113455be0e8b37ba22b98e6e4ad
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645630"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271094"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>教程：Azure Active Directory 单一登录 (SSO) 与 KnowledgeOwl 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101645630"
 * 让用户使用其 Azure AD 帐户自动登录到 KnowledgeOwl。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -74,7 +74,7 @@ ms.locfileid: "101645630"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”文本框中，使用以下模式之一键入 URL：
     
@@ -156,13 +156,13 @@ ms.locfileid: "101645630"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 KnowledgeOwl 公司站点。
 
-1. 单击“设置”，然后选择“安全性”   。
+1. 单击“设置”，然后选择“SSO” 。
 
-    ![屏幕截图显示从“设置”菜单中选择了“安全”。](./media/knowledgeowl-tutorial/configure-1.png)
+    ![屏幕截图显示从“设置”菜单选择了“SSO”。](./media/knowledgeowl-tutorial/settings-sso-dropdown.png)
 
-1. 滚动至“SAML SSO 集成”并执行以下步骤  ：
+1. 滚动到“SAML 设置”选项卡，执行以下步骤：
 
-    ![屏幕截图显示了“SAML SSO 集成”，你可以在其中进行此处所述的更改。](./media/knowledgeowl-tutorial/configure-2.png)
+    ![屏幕截图显示了“SAML SSO 集成”，你可以在其中进行此处所述的更改。](./media/knowledgeowl-tutorial/sso-settings-required-fields.png)
 
     a. 选择“启用 SAML SSO”  。
 
@@ -176,21 +176,24 @@ ms.locfileid: "101645630"
 
     f. 在“IDP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值 。
 
-    g. 单击“上传 IdP 证书”，上传从 Azure 门户下载的证书  。
+    g. 单击“IdP 证书”下的“上传”链接，上传从 Azure 门户下载的证书 。
 
-    h. 单击“映射 SAML 属性”以映射属性并执行以下操作  ：
+    h. 单击页面底部的“保存”  。
 
-    ![屏幕截图显示了“映射 SAML 属性”页面，你可以在其中进行此处所述更改。](./media/knowledgeowl-tutorial/configure-3.png)
+    ![屏幕截图显示“保存”按钮。](./media/knowledgeowl-tutorial/sso-settings-saml-save.png)
 
-    * 在“SSO ID”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` 
+    i. 打开“SAML 属性映射”选项卡以映射属性并执行以下操作：
+
+    ![屏幕截图显示了“映射 SAML 属性”页面，你可以在其中进行此处所述更改。](./media/knowledgeowl-tutorial/sso-settings-direct-attribute-fields.png)
+
+    * 在“SSO ID”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid`。
     * 在“用户名/电子邮件”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`  。
     * 在“名字”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`  。
     * 在“姓氏”文本框中输入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`  。
-    * 单击“ **保存**”。
 
-    i. 单击页面底部的“保存”  。
+    j. 单击页面底部的“保存”  。
 
-    ![屏幕截图显示“保存”按钮。](./media/knowledgeowl-tutorial/configure-4.png)
+    ![屏幕截图显示“保存”按钮。](./media/knowledgeowl-tutorial/sso-settings-direct-attribute-save.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>创建 KnowledgeOwl 测试用户
 
@@ -203,17 +206,17 @@ ms.locfileid: "101645630"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-#### <a name="sp-initiated"></a>SP 启动的：
+#### <a name="sp-initiated"></a>SP 启动的
 
 * 在 Azure 门户中单击“测试此应用程序”。 这将重定向到 KnowledgeOwl 登录 URL，可以从那里启动登录流。  
 
 * 直接转到 KnowledgeOwl 登录 URL，并从那里启动登录流。
 
-#### <a name="idp-initiated"></a>IDP 启动的：
+#### <a name="idp-initiated"></a>IDP 启动的
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 KnowledgeOwl。 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 KnowledgeOwl 应用程序。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 KnowledgeOwl 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，你应会自动登录到为其设置了 SSO 的 KnowledgeOwl。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”门户在任何模式下测试此应用程序。 在“我的应用”门户中单击 KnowledgeOwl 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，你应会自动登录到为其设置了 SSO 的 KnowledgeOwl 应用程序。 有关“我的应用”门户的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: b-juche
-ms.openlocfilehash: 824f2c9d8259e04790d89428c4a4f7384d02ec9a
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: bf38602fdbc2c6fb1f7beba5a374c641963651a0
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322231"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429547"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -166,7 +166,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
 * [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
 * [通过 TLS 配置 Azure NetApp 文件的 ADDS LDAP](configure-ldap-over-tls.md) 
-* [转换现有 SMB 卷以使用持续可用性](convert-smb-continuous-availability.md)
+* [在现有 SMB 卷上启用连续可用性](enable-continuous-availability-existing-SMB.md)
 * [SMB 加密](azure-netapp-files-smb-performance.md#smb-encryption)
 * [SMB 或双重协议卷故障排除](troubleshoot-dual-protocol-volumes.md)
 * [了解 Azure 服务的虚拟网络集成](../virtual-network/virtual-network-for-azure-services.md)

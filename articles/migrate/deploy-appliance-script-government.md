@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 20b4a76756a70660ff638207fa20b5a4801e783d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 97980d07d7dc597b5bfb4b093495b2cb74c4569e
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740392"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777911"
 ---
 # <a name="set-up-an-appliance-for-azure-government-cloud"></a>为 Azure 政府云设置设备
 
@@ -26,7 +26,7 @@ ms.locfileid: "121740392"
 > [!NOTE]
 > Azure 政府不支持使用模板（为 VMware 或 Hyper-V 环境中运行的服务器）部署设备的选项。 只需使用安装程序脚本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 可使用脚本将 Azure Migrate 设备部署到现有物理服务器或虚拟化服务器上。
 
@@ -61,7 +61,7 @@ ms.locfileid: "121740392"
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 
 ### <a name="run-the-script"></a>运行脚本
@@ -74,7 +74,7 @@ ms.locfileid: "121740392"
     
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-5. 从场景、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上一个已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现、评估和迁移 VMware 环境中运行的服务器  。
+5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上一个已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现、评估和迁移 VMware 环境中运行的服务器  。
 
     :::image type="content" source="./media/deploy-appliance-script-government/script-vmware-gov-inline.png" alt-text="显示如何为 Vmware 设置具有所需配置的设备的屏幕截图。" lightbox="./media/deploy-appliance-script-government/script-vmware-gov-expanded.png":::
 
@@ -122,7 +122,7 @@ ms.locfileid: "121740392"
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 ### <a name="run-the-script"></a>运行脚本
 
@@ -134,7 +134,7 @@ ms.locfileid: "121740392"
     
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-5. 从场景、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上一个已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估 Hyper-V 环境中运行的服务器  。
+5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上一个已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估 Hyper-V 环境中运行的服务器  。
 
     :::image type="content" source="./media/deploy-appliance-script-government/script-hyperv-gov-inline.png" alt-text="显示如何为 Hyper-V 设置具有所需配置的设备的屏幕截图。" lightbox="./media/deploy-appliance-script-government/script-hyperv-gov-expanded.png":::
 
@@ -180,7 +180,7 @@ ms.locfileid: "121740392"
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > 可以使用同一脚本为已连接到公共或专用终结点的 Azure 政府云设置物理设备。
@@ -195,7 +195,7 @@ ms.locfileid: "121740392"
     
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-5. 从场景、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估物理服务器（或在 AWS、GCP、Xen 等其他云上运行的服务器） 。
+5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估物理服务器（或在 AWS、GCP、Xen 等其他云上运行的服务器） 。
 
     :::image type="content" source="./media/deploy-appliance-script-government/script-physical-gov-inline.png" alt-text="显示如何为物理服务器设置具有所需配置的设备的屏幕截图。" lightbox="./media/deploy-appliance-script-government/script-physical-gov-expanded.png":::
 

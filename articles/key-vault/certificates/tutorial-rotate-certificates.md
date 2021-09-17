@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 50cc8f2454aa18dd9a0f1365490fadedcbb623b7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a0ae17c5108a4af15245d833f4f2636f9a330138
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140670"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862246"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>教程：配置 Key Vault 中的证书自动轮换
 
@@ -46,7 +46,7 @@ ms.locfileid: "108140670"
 
 ## <a name="create-a-certificate-in-key-vault"></a>在 Key Vault 中创建证书
 
-创建证书或将证书导入到密钥保管库中（请参阅[在 Key Vault 中创建证书的步骤](../secrets/quick-create-portal.md)）。 在本例中，你将使用名为 ExampleCertificate 的证书。
+创建证书或将证书导入到密钥保管库中（请参阅[在密钥保管库中创建证书的步骤](../certificates/quick-create-portal.md)）。 在本例中，你将使用名为 ExampleCertificate 的证书。
 
 ## <a name="update-certificate-lifecycle-attributes"></a>更新证书生命周期属性
 

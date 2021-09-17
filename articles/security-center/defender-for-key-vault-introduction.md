@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 51908deb8e24ce7106b937450683309046440ae7
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 0b14b30e5ea749b53819d94fc69ff7f3d2eee0b4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487302"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743111"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>用于 Key Vault 的 Azure Defender 简介
 
@@ -27,7 +27,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|用于 Key Vault 的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
-|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/no-icon.png":::国家/地区/主权（US Gov，Azure 中国）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/no-icon.png"::: 国家/地区/主权云（Azure 政府、Azure 中国世纪互联）|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>适用于 Key Vault 的 Azure Defender 有哪些优点？

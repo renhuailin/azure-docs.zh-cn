@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 972929f93737342942ed22f103598bc55dbb57fc
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 1cac67a60f5ebcd0b7075d9caa6c453209ce0121
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688607"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606007"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>预览版：通过基于 SSH 证书的身份验证使用 Azure Active Directory 登录到 Azure 中的 Linux 虚拟机
 
@@ -380,7 +380,7 @@ az ssh vm --ip 10.11.123.456
       ```
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>使用 Azure Policy 来确保符合标准并评估合规性
 
-使用 Azure 策略确保为新的和现有的 Linux 虚拟机启用 Azure AD 登录，并在 Azure 策略符合性仪表板上大规模评估环境的符合性。 通过此功能，可以使用多个级别的强制：可以标记环境中未启用 Azure AD 登录的新的和现有的 Linux VM。 还可以使用 Azure 策略在未启用 Azure AD 登录的新 Linux VM 上部署 Azure AD 扩展，以及将现有 Linux VM 恢复为相同标准。 除这些功能以外，还可以使用策略来检测并标记在其计算机上创建了未批准的本地帐户的 Linux VM。 有关详细信息，请查看 [Azure 策略](https://www.aka.ms/AzurePolicy)。
+使用 Azure Policy 确保为新的和现有的 Linux 虚拟机启用 Azure AD 登录，并在 Azure Policy 符合性仪表板上大规模评估环境的符合性。 通过此功能，可以使用多个级别的强制：可以标记环境中未启用 Azure AD 登录的新的和现有的 Linux VM。 还可以使用 Azure Policy 在未启用 Azure AD 登录的新 Linux VM 上部署 Azure AD 扩展，以及将现有 Linux VM 恢复为相同标准。 除这些功能以外，还可以使用 Azure Policy 来检测并标记在其计算机上创建了未批准的本地帐户的 Linux VM。 若要了解详细信息，请参阅 [Azure Policy](../../governance/policy/overview.md)。
 
 ## <a name="troubleshoot-sign-in-issues"></a>排查登录问题
 

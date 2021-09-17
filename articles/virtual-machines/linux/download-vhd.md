@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 8def06990b72d6e08127e8c4f16e0dfd87905d4f
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 4492eb9a346d89789f1527bf80b46a08cc74fe92
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565179"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696086"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本文介绍如何使用 Azure 门户从 Azure 下载 Linux 虚拟硬盘 (VHD) 文件。 
 
@@ -34,21 +36,21 @@ ms.locfileid: "107565179"
 
 ### <a name="alternative-snapshot-the-vm-disk"></a>替代方法：创建 VM 磁盘快照
 
-创建要下载的磁盘的快照。
+创建要下载的磁盘快照。
 
 1. 在[门户](https://portal.azure.com)中选择 VM。
 2. 在左侧菜单中选择“磁盘”，然后选择要创建快照的磁盘。 系统将显示磁盘的详细信息。  
-3. 从页面的顶部菜单选择“创建快照”。 此时将打开“创建快照”页。
+3. 从页面的顶部菜单选择“创建快照”。 “创建快照”页将打开。
 4. 在“名称”中键入快照的名称。 
 5. 对于“快照类型”，选择“完全”或“增量”  。
 6. 完成操作后，选择“查看 + 创建”。
 
-很快会创建快照，然后可以使用该快照下载或创建另一个 VM。
+快照将很快创建，然后可用于下载或从中创建另一个 VM。
 
 > [!NOTE]
-> 如果不先停止 VM，将不会清理快照。 快照的状态就好像在创建快照时 VM 已重启或崩溃一样。  尽管这通常是安全的，但如果当时正在运行的应用程序不具备抵抗崩溃的能力，可能会导致问题。
+> 如果不先停止 VM，快照将不会清理。 快照的状态就好像在创建快照时 VM 已重启或崩溃一样。  尽管这通常是安全的，但如果当时正在运行的应用程序会因崩溃受到影响，则可能会导致问题。
 >  
-> 此方法只推荐给具有单个操作系统磁盘的 VM。 在下载快照之前，或者在为操作系统磁盘和每个数据磁盘创建快照之前，应停止具有一个或多个数据磁盘的 VM。
+> 仅建议具有单个操作系统磁盘的 VM 使用此方法。 在下载快照之前，或者在为操作系统磁盘和每个数据磁盘创建快照之前，应停止具有一个或多个数据磁盘的 VM。
 
 ## <a name="generate-sas-url"></a>生成 SAS URL
 

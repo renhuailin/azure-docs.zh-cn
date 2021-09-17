@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4ab8f3eb36e254a9b98444ecf85904fc574bcc65
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 788cce5f8f380c2bcf2fa7c66b06f22bcda167f2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487374"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732580"
 ---
 # <a name="protect-your-web-apps-and-apis"></a>保护 Web 应用和 API
 
@@ -36,7 +36,7 @@ ms.locfileid: "113487374"
 | 发布状态：               | 正式发布版 (GA)                                                                                                                                                                      |
 | 定价：                     | [适用于应用服务的 Azure Defender](azure-defender.md) 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费<br>计费以所有计划中的总计算实例数为依据       |
 | 支持的应用服务计划： | 除[消耗计划上的 Azure Functions](../azure-functions/functions-scale.md) 外，[所有应用服务计划](https://azure.microsoft.com/pricing/details/app-service/plans/)都受支持。 |
-| 云：                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/no-icon.png"::: 国家/地区/主权（US Gov，Azure 中国）                                                     |
+| 云：                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/no-icon.png"::: 国家/地区/主权云（Azure 政府、Azure 中国世纪互联）                                                     |
 |                              |                                                                                                                                                                                                |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>适用于应用服务的 Azure Defender 有哪些优点？
@@ -93,10 +93,11 @@ Azure Defender 会监视指向应用服务资源的多种威胁。 警报涵盖�
 
 本文介绍了适用于应用服务的 Azure Defender。 
 
+> [!div class="nextstepaction"]
+> [启用 Azure Defender](enable-azure-defender.md)
+
 如需相关材料，请参阅以下文章： 
 
 - 若要将警报导出到 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，请按照[将警报流式传输到 SIEM、SOAR，或 IT 服务管理解决方案](export-to-siem.md)中的说明操作。
 - 有关适用于应用服务的 Azure Defender 警报的列表，请查看[警报参考表](alerts-reference.md#alerts-azureappserv)。
 - 有关应用服务计划的详细信息，请参阅[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。
-> [!div class="nextstepaction"]
-> [启用 Azure Defender](enable-azure-defender.md)

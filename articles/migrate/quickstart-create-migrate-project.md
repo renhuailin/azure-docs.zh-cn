@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 29bd42bedb9c7aa70769236d95339a510ae9dfe9
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 4380b52489a483faf8063516cf2d3fd6af6b061d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487482"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726232"
 ---
 # <a name="quickstart-create-an-azure-migrate-project-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Migrate 项目
 
@@ -37,8 +37,6 @@ ms.locfileid: "113487482"
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/migrate-project-create/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.migrate/migrate-project-create/azuredeploy.json":::
-
-
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -66,7 +64,7 @@ ms.locfileid: "113487482"
 
 
 1. 在 Azure 门户上的搜索栏中搜索“Azure Migrate”，导航到 Azure Migrate。
-2. 单击“Windows、Linux 和 SQL Server”磁贴下的“发现、评估和迁移”按钮  。
+2. 单击“服务器、数据库和网络应用”磁贴下的“发现”、“评估”和“迁移”按钮  。
 3. 根据部署中指定的值，选择 Azure 订阅和项目 。
 
 

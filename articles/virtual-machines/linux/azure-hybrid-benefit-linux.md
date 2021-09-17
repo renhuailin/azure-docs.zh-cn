@@ -12,14 +12,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 72bf18bee387dc0602f543161afc20c73c2e4144
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c794d3e18eaf25241cb9c55c14a32e4e5c9ff7b0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741798"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692255"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure 混合权益如何应用于 Linux 虚拟机
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure 混合权益是一种许可权益，可帮助你显著降低在云中运行 Red Hat Enterprise Linux (RHEL) 和 SUSE Linux Enterprise Server (SLES) 虚拟机 (VM) 的成本。 利用此权益，只需支付 VM 的基础结构成本，因为 RHEL 或 SLES 订阅涵盖了软件费用。 该权益适用于所有 RHEL 和 SLES 市场即用即付 (PAYG) 映像。
 

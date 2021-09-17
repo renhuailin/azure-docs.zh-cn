@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92bf7b7c1d2f24b7a858f6e9b786b84943651239
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 6f9fd7f2827e298f3273ad11ab104b75a7e81582
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810725"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744839"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>示例：如何实时分析视频
 
@@ -176,4 +176,4 @@ while (true)
 请随时在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议，或者在我们的 [UserVoice](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743) 站点上提供更广泛的 API 反馈。
 
 ## <a name="related-topics"></a>相关主题
-- [如何检测图像中的人脸](HowtoDetectFacesinImage.md)
+- [调用检测 API](HowtoDetectFacesinImage.md)

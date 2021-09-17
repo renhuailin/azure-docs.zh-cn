@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: d7d33fe4bc94de3d1fdca3d2b2e99d0663e39c97
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 86db0ce090c68f1a610aae6c69ed74dcf303416a
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289848"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635200"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>存储：Azure VM 上的 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -193,10 +193,12 @@ ms.locfileid: "112289848"
 |---------|---------|
 | **数据磁盘** | 为托管 SQL Server 数据文件的磁盘启用 `Read-only` 缓存。 <br/> 从缓存中读取的速度要快于从数据磁盘进行的非缓存读取速度。 <br/> 未缓存的 IOPS 和吞吐量加上缓存 IOPS 和吞吐量将形成虚拟机在 VM 限制范围内可用的潜在总体性能，但实际性能将因工作负载使用缓存的能力（缓存命中率）而异。 <br/>|
 |**事务日志磁盘**|将托管事务日志的磁盘的缓存策略设置为 `None`。  为事务日志磁盘启用缓存没有性能优势，事实上，在日志驱动器上启用 `Read-only` 或 `Read/Write` 缓存可能会降低对驱动器的写入的性能，并减少数据驱动器上可用于读取的缓存量。  |
-|**操作 OS 磁盘** | 对于 OS 驱动器，默认缓存策略可能是 `Read-only` 或 `Read/write`。 <br/> 建议不要更改 OS 驱动器的缓存级别。  |
+|**操作 OS 磁盘** | 对于 OS 驱动器，默认缓存策略 `Read/write`。 <br/> 建议不要更改 OS 驱动器的缓存级别。  |
 | **tempdb**| 如果由于容量原因，无法将 tempdb 放置在临时驱动器 `D:\` 上，则可以调整虚拟机大小以获得更大的临时驱动器，或者将 tempdb 放置在已配置 `Read-only` 缓存的独立数据驱动器上。 <br/> 虚拟机缓存和临时驱动器都使用本地 SSD，因此，请记住托管在临时驱动器上时，将大小调整为 tempdb I/O 会对缓存的 IOPS 和吞吐量虚拟机限制不利。| 
 | | | 
 
+> [!IMPORTANT]
+> 更改 Azure 磁盘的缓存设置会分离并重新附加目标磁盘。 当更改托管 SQL Server 数据、日志或应用程序文件的磁盘缓存设置时，请确保停止 SQL Server 服务以及任何其他相关服务，以避免数据损坏。
 
 若要了解详细信息，请参阅[磁盘缓存](../../../virtual-machines/premium-storage-performance.md#disk-caching)。 
 

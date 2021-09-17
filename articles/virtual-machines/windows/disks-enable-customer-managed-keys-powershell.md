@@ -8,14 +8,16 @@ ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c5d0bf7f209683668ddbffff7be11f932f3eeaee
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: d5de598c71cda0010869da709e8f6290ccdf03cc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359025"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771987"
 ---
 # <a name="azure-powershell---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure PowerShell - 使用客户管理的密钥进行服务器端加密 - 托管磁盘
+
+适用于：:heavy_check_mark: Windows VM 
 
 Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时管理自己的密钥（如果你选择）。 有关使用客户管理的密钥的 SSE 以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密文章的[客户管理的密钥](../disk-encryption.md#customer-managed-keys)部分。
 
@@ -27,53 +29,12 @@ Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时�
     如果需要解决此问题，则必须[复制所有数据](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)到完全不同的托管磁盘（未使用客户托管密钥）。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## <a name="set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation"></a>在没有自动密钥轮换的情况下设置 Azure Key Vault DiskEncryptionSet
+## <a name="set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation"></a>在有自动密钥轮换的情况下选择性设置 Azure Key Vault DiskEncryptionSet
 
 若要使用客户管理的密钥进行 SSE，必须设置 Azure Key Vault 和 DiskEncryptionSet 资源。
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-powershell](../../../includes/virtual-machines-disks-encryption-create-key-vault-powershell.md)]
 
-## <a name="set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview"></a>在有自动密钥轮换的情况下设置 Azure Key Vault DiskEncryptionSet（预览）
-
-1. 请确保已安装最新的 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，并已使用 `Connect-AzAccount` 登录到 Azure 帐户。
-1. 创建 Azure Key Vault 和加密密钥的实例。
-
-    创建 Key Vault 实例时，必须启用清除保护。 清除保护可确保在保留期结束之前，无法永久删除已删除的密钥。 此设置可保护你免于因意外删除而丢失数据，并且对于加密托管磁盘是必需的。
-    
-    ```powershell
-    $ResourceGroupName="yourResourceGroupName"
-    $LocationName="westcentralus"
-    $keyVaultName="yourKeyVaultName"
-    $keyName="yourKeyName"
-    $keyDestination="Software"
-    $diskEncryptionSetName="yourDiskEncryptionSetName"
-
-    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnablePurgeProtection
-
-    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
-    ```
-
-1.  使用 API 版本 `2020-12-01` 和通过 Azure 资源管理器模板 [CreateDiskEncryptionSetWithAutoKeyRotation.json](https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/AutoKeyRotation/CreateDiskEncryptionSetWithAutoKeyRotation.json) 将属性 `rotationToLatestKeyVersionEnabled` 设置为 true，来创建 DiskEncryptionSet
-    
-    ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/AutoKeyRotation/CreateDiskEncryptionSetWithAutoKeyRotation.json" `
-    -diskEncryptionSetName $diskEncryptionSetName `
-    -keyVaultId $($keyVault.ResourceId) `
-    -keyVaultKeyUrl $($key.Key.Kid) `
-    -encryptionType "EncryptionAtRestWithCustomerKey" `
-    -region $LocationName
-    ```
-
-1.  授予对密钥保管库的 DiskEncryptionSet 资源访问权限。
-
-    > [!NOTE]
-    > Azure 可能需要几分钟时间才能在 Azure Active Directory 中创建 DiskEncryptionSet 的标识。 如果在运行以下命令时收到类似于“找不到 Active Directory 对象”的错误，请等待几分钟，然后重试。
-
-    ```powershell
-    $des=Get-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName
-    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-    ```
 
 ## <a name="examples"></a>示例
 

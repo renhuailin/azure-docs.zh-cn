@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 6066dc8709fe376f99babcc3dd1360e4bf571ef2
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: d5731c8ae901edc57e17b050a8078f511759d772
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655190"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178847"
 ---
 # <a name="tutorial-integrate-miro-with-azure-active-directory"></a>教程：将 Miro 与 Azure Active Directory 集成
 
@@ -37,6 +37,7 @@ ms.locfileid: "110655190"
 
 本教程在测试环境中配置并测试 Azure AD SSO。 
 * Miro 支持 **SP 和 IDP** 发起的 SSO，并支持 **实时** 用户预配。
+* Miro 支持[自动用户预配和取消预配](miro-provisioning-tutorial.md)（推荐）。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。

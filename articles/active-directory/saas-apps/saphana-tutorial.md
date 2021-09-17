@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 08/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 1a1e155974b66dce9a036a20cdebe19ded81fed5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dac7582f772beaf62a60661869f829018770538b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98727075"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751632"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
 
@@ -47,8 +47,8 @@ ms.locfileid: "98727075"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* SAP HANA 支持“IDP”发起的 SSO 
-* SAP HANA 支持“实时”用户预配 
+* SAP HANA 支持 IDP 发起的 SSO。
+* SAP HANA 支持实时用户预配。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -90,7 +90,7 @@ ms.locfileid: "98727075"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc` 
 
     > [!NOTE]
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [SAP HANA 客户支持团队](https://cloudplatform.sap.com/contact.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -192,10 +192,10 @@ SAP HANA 支持默认启用的“实时预配”  。
 
 3. 选择“添加”以添加 SAML IDP。   选择相应的 SAML IDP，再选择“确定”。 
 
-4. 添加“外部标识”（本例中为 BrittaSimon）或选择“任何”。   然后选择“确定”。 
+4. 添加“外部标识”（本例中为 BrittaSimon）。 然后选择“确定”。
 
    > [!Note]
-   > 如果未选中“任何”复选框，则 HANA 中的用户名必须与域后缀前面的 UPN 中的用户名完全匹配。  （例如，BrittaSimon@contoso.com 在 HANA 中将会变成 BrittaSimon。）
+   > 必须填充用户的“外部标识”字段，且该字段必须与 Azure AD 的 SAML 令牌中的 NameID 字段匹配 。 不应选中任何复选框，因为此选项要求 IDP 将 SPProvderID 属性发送到目前不受 Azure AD 支持的 NameID 字段中。 有关更多详细信息，请参阅[此文档](https://help.sap.com/viewer/b3ee5778bc2e4a089d3299b82ec762a7/2.0.05/en-US/db6db355bb571014b56eb25057daec5f.html)。
 
 5. 针对测试，请将所有“XS”  角色分配给该用户。
 

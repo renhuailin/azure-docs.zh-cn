@@ -8,14 +8,18 @@ ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4b2290d29d1f6fbf8acd2e2652cd47a321fe674f
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: fbe2aabbcf9595cbb7520d160f72d17b58872293
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813157"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698964"
 ---
 # <a name="tutorial-use-tlsssl-certificates-to-secure-a-web-server"></a>教程：使用 TLS/SSL 证书保护 Web 服务器
+
+
+适用于：:heavy_check_mark: Linux VM 
+
 若要保护 Web 服务器，可以使用传输层安全 (TLS)（以前称为安全套接字层 (SSL)）证书来加密 Web 流量。 这些 TLS/SSL 证书可存储在 Azure Key Vault 中，并可安全部署到 Azure 中的 Linux 虚拟机 (VM)。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]

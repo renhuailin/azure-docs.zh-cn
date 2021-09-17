@@ -9,14 +9,16 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: c05ab2b89a275b4e33774cca34c0e971657eddb2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a32fdd1da872c45c0e2402cdddd0685ef4296c7a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751710"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691211"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 和 Dsv4 系列
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Dv4 和 Dsv4 系列以超线程配置在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，为大多数常规用途工作负载带来价值提升。 它的全核睿频时钟速度达到 3.4 GHz。 
 

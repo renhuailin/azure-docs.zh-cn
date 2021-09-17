@@ -5,43 +5,63 @@ ms.topic: overview
 author: anvar-ms
 ms.author: anvar
 ms.manager: bsiva
-ms.date: 04/19/2020
+ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: 3e6644f8d1956b69390e8bb3bb49bfbc3c7b0621
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 720b19ff16e72fade8bcdbd1b41304b2d87d1f2d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988762"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737660"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
 [Azure Migrate](migrate-services-overview.md) 可帮助发现和访问本地服务器、应用和数据并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 中的新版本和功能。
 
+## <a name="update-august-2021"></a>更新（2021 年 8 月）
+
+- 目前，对 VMware 环境中 IIS 服务器上运行的 ASP.NET Web 应用的大规模发现和评估功能以预览版提供。 [了解详细信息](concepts-azure-webapps-assessment-calculation.md)。 若要开始，请参阅[发现](tutorial-discover-vmware.md)和[评估](tutorial-assess-webapps.md)教程。
+- 在 Azure VM 评估建议中支持 Azure [超级磁盘](https://docs.microsoft.com/azure/virtual-machines/disks-types#ultra-disk)。
+- 正式发布了适用于 VMware 虚拟机的大规模软件清单和无代理依赖项分析。
+- Azure Migrate 设备更新：
+    - 可对设备进行“诊断并解决”，帮助用户识别并自我评估设备的任何问题。
+    - 统一安装程序脚本 - 用户需要从场景、云和连接选项中选择的常用脚本，以部署具有所需配置的设备。
+    - 支持在设备配置管理器上添加具有“sudo”访问权限的用户帐户，以执行 Linux 服务器的发现（作为提供根帐户或启用 setcap 权限的替代方法）。
+    - 支持在设备配置管理器上编辑 SQL Server 连接属性。
+
+## <a name="update-july-2021"></a>更新（2021 年 7 月）
+
+- Azure Migrate：应用容器化工具现在允许你将服务器上运行的应用程序打包到容器映像中，并将容器化应用程序部署到 Azure 应用服务容器和 Azure Kubernetes 服务。 还可以自动将针对 Java 应用的应用程序监视与 Azure Application Insights 集成，并使用 Azure Key Vault 管理应用程序机密（如证书和参数化配置）。 有关详细信息，请参阅 [ASP.NET 应用容器化和迁移到 Azure 应用服务](tutorial-app-containerization-aspnet-app-service.md)以及 [Java Web 应用容器化和迁移到 Azure 应用服务](tutorial-app-containerization-java-app-service.md)教程以开始操作。
+
 ## <a name="update-june-2021"></a>更新（2021 年 6 月）
+
 - Azure Migrate 现在支持新的公有云地理位置和区域。 [了解详细信息](migrate-support-matrix.md#supported-geographies-public-cloud)
 - Azure Migrate 可让你在复制期间使用 SQL VM RP 注册运行 SQL Server 的服务器，以自动安装 SQL IaaS 代理扩展。 此功能适用于无代理 VMware、无代理 Hyper-V 和基于代理的迁移。
 - 导入 CSV 文件进行评估现在最多支持 20 个磁盘。 之前，该功能被限制为每台服务器 8 个磁盘。
 
 ## <a name="update-may-2021"></a>更新（2021 年 5 月）
+
 - 现在支持使用基于代理的迁移方法迁移 OS 磁盘容量高达 4 TB 的 VM 和物理服务器。
 
 ## <a name="update-march-2021"></a>更新（2021 年 3 月）
+
 - 支持在 Azure Migrate 设备上提供多个服务器凭据，以在 VMware 环境中发现已安装的应用程序（软件清单）、执行无代理依赖项分析以及发现 SQL Server 实例和数据库。 [了解详细信息](tutorial-discover-vmware.md#provide-server-credentials)
 - 目前，对 VMware 环境中运行的 SQL Server 实例和数据库的发现和评估功能以预览版提供。 [了解详细信息](concepts-azure-sql-assessment-calculation.md) 要开始入门学习，请参阅[发现](tutorial-discover-vmware.md)和[评估](tutorial-assess-sql.md)教程。
 - 无代理 VMware 迁移现支持按每个 vCenter 并发复制 500 个 VM。
 - Azure Migrate：应用容器化工具现在允许你将服务器上运行的应用程序打包到容器映像中，并将容器化应用程序部署到 Azure Kubernetes 服务。  
 有关详细信息，请参阅 [ASP.NET 应用容器化和迁移到 Azure Kubernetes 服务](tutorial-app-containerization-aspnet-kubernetes.md)以及 [Java Web 应用容器化和迁移到 Azure Kubernetes 服务](tutorial-app-containerization-java-kubernetes.md)教程以开始操作。
 
-
 ## <a name="update-january-2021"></a>更新（2021 年 1 月）
--  借助 Azure Migrate 的服务器迁移工具，你现可将 VMware 虚拟机、物理服务器和其他云中的虚拟机迁移到 Azure 虚拟机，其中后者带有用客户管理的密钥 (CMK) 进行服务器端加密的磁盘。
+
+- 借助 Azure Migrate 的服务器迁移工具，你现可将 VMware 虚拟机、物理服务器和其他云中的虚拟机迁移到 Azure 虚拟机，其中后者带有用客户管理的密钥 (CMK) 进行服务器端加密的磁盘。
 
 ## <a name="update-december-2020"></a>更新（2020 年 12 月）
+
 - Azure Migrate 现在会自动将 Azure VM 代理安装在 VMware VM 上，同时使用 VMware 迁移的无代理方法将其迁移到 Azure。 （Windows Server 2008 R2 和更高版本）
 - 现可通过 Azure 门户使用 Azure Migrate 服务器迁移（无代理复制）将 VMware VM 迁移到 Azure 虚拟机，后者具有使用服务器端加密 (SSE) 和客户管理的密钥 (CMK) 进行加密的磁盘。
 
 ## <a name="update-september-2020"></a>更新（2020 年 9 月）
+
 - 现支持将服务器迁移到可用性区域。
 - 现支持将基于 UEFI 的虚拟机 (VM) 和物理服务器迁移到 Azure 第二代 VM。 在此版本中，Azure Migrate：服务器迁移工具将不会在迁移过程中执行从第二代 VM 到第一代 VM 的转换。
 - 现提供一个新的 Azure Migrate Power BI 评估仪表板来帮助你比较不同评估设置的费用。 该仪表板覆盖了一个 PowerShell 实用工具，它会自动创建要插入到 Power BI 仪表板中的评估。 [了解详细信息。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
@@ -67,7 +87,6 @@ ms.locfileid: "112988762"
 - 支持在设备上用多个凭据来发现物理服务器。
 - 支持允许租户从设备登录 Azure，其中租户限制已配置。
 
-
 ## <a name="update-april-2020"></a>更新（2020 年 4 月）
 
 Azure Migrate 支持在 Azure 政府中部署。
@@ -78,7 +97,6 @@ Azure Migrate 支持在 Azure 政府中部署。
 - [查看](migrate-support-matrix.md#supported-geographies-azure-government) Azure 政府支持的地理位置和区域。
 - Azure 政府不支持[基于代理的依赖关系分析](concepts-dependency-visualization.md#agent-based-analysis)。
 - Azure 政府支持预览版中的功能：[无代理依赖关系分析](concepts-dependency-visualization.md#agentless-analysis)和[应用程序发现](how-to-discover-applications.md)。
-
 
 ## <a name="update-march-2020"></a>更新（2020 年 3 月）
 
@@ -124,8 +142,6 @@ Azure Migrate 的当前版本（于 2019 年 7 月发布）提供了许多新功
 ## <a name="azure-migrate-previous-version"></a>Azure Migrate 旧版本
 
 如果你使用的是以前版本的 Azure Migrate（仅支持对本地 VMware VM 的评估），则现在应使用当前版本。 在以前的版本中，已无法创建新的 Azure Migrate 项目，也无法执行新发现。 仍可以访问现有项目。 在“Azure 门户”>“所有服务”中执行此操作，搜索“Azure Migrate” 。 Azure Migrate 通知中提供了一个用于访问旧 Azure Migrate 项目的链接。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

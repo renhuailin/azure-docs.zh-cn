@@ -4,13 +4,13 @@ description: 介绍 Azure Monitor 日志中多种数据类型共有的列。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/25/2021
-ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/16/2021
+ms.openlocfilehash: 909c02c53f753579d6788933277bca8f75f53859
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562240"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514865"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准列
 Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](../logs/data-platform-logs.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的列。 许多数据类型都具有在多种类型中通用的标准列。 本文介绍这些列，并提供如何在查询中使用它们的示例。
@@ -24,10 +24,13 @@ Application Insights 中基于工作区的应用程序将其数据存储在 Log 
 ## <a name="tenantid"></a>TenantId
 TenantId 列保存 Log Analytics 工作区的工作区 ID。
 
-## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和 timestamp
-TimeGenerated（Log Analytics 工作区）和 timestamp（Application Insights 应用程序）列包含数据源创建记录的日期和时间 。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../logs/data-ingestion-time.md)。
+## <a name="timegenerated"></a>TimeGenerated
+TimeGenerated 属性包含数据源创建记录的日期和时间。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../logs/data-ingestion-time.md)。
 
-TimeGenerated 和 timestamp 提供了一个用于按时间进行筛选或汇总的常用列 。 为 Azure 门户中的视图或仪表板选择时间范围时，它使用 TimeGenerated 或 timestamp 来筛选结果。 
+TimeGenerated 提供用于按时间筛选或汇总的常用列。 为 Azure 门户中的视图或仪表板选择时间范围时，其使用 TimeGenerated 来筛选结果。 
+
+> [!NOTE]
+> 支持经典 Application Insights 资源的表使用“timestamp”列而不是“TimeGenerated”列。
 
 ### <a name="examples"></a>示例
 
@@ -40,16 +43,6 @@ Event
 | summarize count() by bin(TimeGenerated, 1day) 
 | sort by TimeGenerated asc 
 ```
-
-以下查询返回过去一周内每天产生的异常数。
-
-```Kusto
-exceptions
-| where timestamp between(startofweek(ago(7days))..endofweek(ago(7days))) 
-| summarize count() by bin(TimeGenerated, 1day) 
-| sort by timestamp asc 
-```
-
 ## <a name="_timereceived"></a>\_TimeReceived
 **\_TimeReceived** 列包含 Azure 云中的 Azure Monitor 引入点收到记录的日期和时间。 这对于查明数据源与云之间的延迟问题非常有用。 例如，网络问题会导致从代理发送数据时出现延迟。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../logs/data-ingestion-time.md)。
 
@@ -68,8 +61,11 @@ Event
 | summarize avg(AgentLatency), avg(TotalLatency) by bin(TimeGenerated,1hr)
 ``` 
 
-## <a name="type-and-itemtype"></a>Type 和 itemType
-Type（Log Analytics 工作区）和 itemType（Application Insights 应用程序）列保存从中检索记录的表的名称，也可以将其视为记录类型 。 此列在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方， **$table** 可以用来替代 **Type**。
+## <a name="type"></a>类型
+“Type”列包含从中检索记录的表的名称，也可以将其视为记录类型。 此列在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些查询中，“$table”可用于替代“Type”。
+
+> [!NOTE]
+> 支持经典 Application Insights 资源的表使用“itemType”列而不是“Type”列。
 
 ### <a name="examples"></a>示例
 以下查询返回过去一小时内按类型收集的记录计数。
@@ -145,7 +141,7 @@ union withsource = tt *
 ```Kusto
 Perf 
 | where TimeGenerated > ago(24h) and CounterName == "memoryAllocatableBytes"
-| where _SubscriptionId == "57366bcb3-7fde-4caf-8629-41dc15e3b352"
+| where _SubscriptionId == "ebb79bc0-aa86-44a7-8111-cabbe0c43993"
 | summarize avgMemoryAllocatableBytes = avg(CounterValue) by Computer
 ```
 

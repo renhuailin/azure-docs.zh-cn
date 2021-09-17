@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 27328ae64eabf9a5894d9bfc4ebbb2d0217d7a18
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b2675f6633da27c12e067cf93463f6cba94b473c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465878"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769388"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>更改跟踪和库存概述
 
@@ -89,7 +89,7 @@ Python2 可执行文件必须将别名设置为“python”。
 
 - 从[自动化帐户](enable-from-automation-account.md)为一个或多个 Azure 和非 Azure 计算机启用。
 
-- 为非 Azure 计算机手动执行，非 Azure 计算机包括注册到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)的计算机或服务器。 对于混合计算机，我们建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 如果还计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+- 为非 Azure 计算机手动执行，非 Azure 计算机包括注册到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)的计算机或服务器。 对于混合计算机，建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 如果还计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
 - 对于单个 Azure VM，通过 Azure 门户中的[虚拟机页](enable-from-vm.md)启用。 此方案适用于 Linux 和 Windows VM。
 

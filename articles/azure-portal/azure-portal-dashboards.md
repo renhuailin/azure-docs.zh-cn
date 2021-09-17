@@ -1,15 +1,14 @@
 ---
 title: 在 Azure 门户中创建仪表板
 description: 本文介绍如何在 Azure 门户中创建和自定义仪表板。
-ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 05/12/2021
-ms.openlocfilehash: 0de3e30d2a27d131c13b2df94b1462b6e89b48e3
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.date: 08/19/2021
+ms.openlocfilehash: af26cc36f73088c9a4231e59f3414efaa828d452
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846171"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597710"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>在 Azure 门户中创建仪表板
 
@@ -18,7 +17,7 @@ ms.locfileid: "109846171"
 Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，然后创建和自定义其他仪表板。
 
 > [!NOTE]
-> 每个用户最多可以创建 100 个专用仪表板。 如果你[发布并分享该仪表板](azure-portal-dashboard-share-access.md)，它将在你的订阅中实现为 Azure 资源，并且不会计入此限制。
+> 每个用户最多可以创建 100 个专用仪表板。 若[发布并分享该仪表板](azure-portal-dashboard-share-access.md)，其将在订阅中实现为 Azure 资源，并且不会计入此限制。
 
 本文介绍如何创建新的仪表板并对其进行自定义。 有关共享仪表板的信息，请参阅[使用 Azure 基于角色的访问控制共享 Azure 仪表板](azure-portal-dashboard-share-access.md)。
 
@@ -30,11 +29,11 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 1. 在 Azure 门户菜单上，选择“仪表板”  。 默认视图可能已设置为“仪表板”。
 
-    ![已选择“仪表板”的 Azure 门户的屏幕截图。](./media/azure-portal-dashboards/portal-menu-dashboard.png)
+    :::image type="content" source="media/azure-portal-dashboards/portal-menu-dashboard.png" alt-text="已选择“仪表板”的 Azure 门户的屏幕截图。":::
 
 1. 依次选择“新建仪表板”、“空白仪表板” 。
 
-    ![“新建仪表板”选项的屏幕截图。](./media/azure-portal-dashboards/create-new-dashboard.png)
+    :::image type="content" source="media/azure-portal-dashboards/create-new-dashboard.png" alt-text="“新建仪表板”选项的屏幕截图。":::
 
     此操作会打开可供你选择磁贴的“磁贴库”，以及可供你排列磁贴的空网格。
 
@@ -56,7 +55,7 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 1. 从仪表板的页眉选择![编辑图标](./media/azure-portal-dashboards/dashboard-edit-icon.png)“编辑”。
 
-    ![突出显示“编辑”选项的仪表板的屏幕截图。](./media/azure-portal-dashboards/dashboard-edit.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-edit.png" alt-text="突出显示“编辑”选项的仪表板的屏幕截图。":::
 
 1. 浏览“磁贴库”，或使用搜索字段查找某个磁贴。 选择要添加到仪表板的磁贴。
 
@@ -131,7 +130,7 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 某些磁贴可能需要额外配置才能显示所需的信息。 例如，“指标图表”磁贴必须经过设置才能显示 Azure Monitor 中的指标。 还可以自定义磁贴数据以替代仪表板的默认时间设置和筛选器。
 
-## <a name="complete-tile-configuration"></a>完成磁贴配置
+### <a name="complete-tile-configuration"></a>完成磁贴配置
 
 需要设置的任何磁贴在自定义它之前会显示一个横幅。 例如，在“指标图表”中，横幅写着“在指标中编辑”。  其他横幅可能会使用不同的文本，如“配置磁贴”。
 
@@ -141,7 +140,7 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 1. 请选择横幅，然后执行所需的设置。
 
-    ![需要配置的磁贴的屏幕截图](./media/azure-portal-dashboards/dashboard-configure-tile.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-configure-tile.png" alt-text="需要配置的磁贴的屏幕截图":::
 
 ### <a name="customize-time-span-for-a-tile"></a>为磁贴自定义时间跨度
 
@@ -149,11 +148,11 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 1. 从上下文菜单或磁贴左上角的![筛选器图标](./media/azure-portal-dashboards/dashboard-filter.png)中选择“自定义磁贴数据”。
 
-    ![磁贴上下文菜单的屏幕截图。](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-customize-tile-data.png" alt-text="磁贴上下文菜单的屏幕截图。":::
 
 1. 选中“在磁贴级别替代仪表板时间设置”对应的复选框。 
 
-    ![用于配置磁贴时间设置的对话框屏幕截图。](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-override-time-settings.png" alt-text="用于配置磁贴时间设置的对话框屏幕截图。":::
 
 1. 选择要为此磁贴显示的时间跨度。 可以选择过去 30 分钟到过去 30 天的时间，或者自定义范围。
 
@@ -161,6 +160,16 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 1. 选择“应用”。 
 
+### <a name="change-the-title-and-subtitle-of-a-tile"></a>更改磁贴的标题和副标题
+
+部分磁贴允许编辑其标题和副标题。 为此，请从上下文菜单中选择“配置磁贴设置”。
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-tile-rename.png" alt-text="显示“配置磁贴设置”选项的屏幕截图。":::
+
+对磁贴的标题和/或副标题作出任意更改，然后选择“应用”。
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-title-subtitle.png" alt-text="显示如何更改磁贴标题和副标题的屏幕截图。":::
+ 
 ## <a name="delete-a-tile"></a>删除磁贴
 
 要从仪表板中删除磁贴，请执行以下操作之一：
@@ -169,7 +178,7 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 - 选择![编辑图标](./media/azure-portal-dashboards/dashboard-edit-icon.png)“编辑”进入自定义模式。  将鼠标悬停在磁贴的右上角，然后选择![删除图标](./media/azure-portal-dashboards/dashboard-delete-icon.png)删除图标从仪表板中删除该磁贴。
 
-   ![演示如何从仪表板中删除磁贴的屏幕截图。](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-delete-tile.png" alt-text="演示如何从仪表板中删除磁贴的屏幕截图。":::
 
 ## <a name="clone-a-dashboard"></a>克隆仪表板
 
@@ -195,11 +204,11 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
     1. 选择“浏览所有仪表板”  。
 
-        ![仪表板选择菜单的屏幕截图](./media/azure-portal-dashboards/dashboard-browse.png)
+        :::image type="content" source="media/azure-portal-dashboards/dashboard-browse.png" alt-text="仪表板选择菜单的屏幕截图。":::
 
     1. 在“类型”字段中，选择“共享的仪表板”。  
 
-        ![所有仪表板选择菜单的屏幕截图](./media/azure-portal-dashboards/dashboard-browse-all.png)
+        :::image type="content" source="media/azure-portal-dashboards/dashboard-browse-all.png" alt-text="所有仪表板选择菜单的屏幕截图。":::
 
     1. 选择一个或多个订阅。 还可以输入文本以按名称筛选仪表板。
 
@@ -215,7 +224,7 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 1. 对于专用仪表板，请在确认对话框中选择“确定”以删除仪表板。  对于共享仪表板，请在确认对话框中选中相应的复选框，以确认发布的仪表板不再可供其他人查看。 选择“确定”。 
 
-    ![确认删除操作的屏幕截图。](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-delete-dash.png" alt-text="确认删除操作的屏幕截图。":::
 
 ## <a name="recover-a-deleted-dashboard"></a>恢复已删除的仪表板
 

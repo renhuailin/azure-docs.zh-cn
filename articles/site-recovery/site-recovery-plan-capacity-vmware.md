@@ -6,21 +6,23 @@ manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
-ms.date: 05/27/2021
-ms.openlocfilehash: 9a8706ee361ea7cb34b1e843b3bdd29ce381d48e
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 08/19/2021
+ms.openlocfilehash: b8161a10e958fe15ef8797e54585acb3612c6c41
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577354"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446367"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 
-本文介绍在使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure 时如何规划容量和缩放。
+本文介绍在使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure 时，要如何规划容量和缩放。
+
+在预览版中，需要[创建并使用 Azure Site Recovery 复制设备/多部设备](deploy-vmware-azure-replication-appliance-preview.md)来规划容量。
 
 ## <a name="how-do-i-start-capacity-planning"></a>如何开始容量规划？
 
-若要了解 Azure Site Recovery 基础结构要求，请针对 VMware 复制运行 [Azure Site Recovery 部署规划器](./site-recovery-deployment-planner.md)，以收集有关复制环境的信息。 有关详细信息，请参阅[关于用于 VMware 到 Azure 复制的 Azure Site Recovery 部署规划器](site-recovery-deployment-planner.md)。 
+若要了解 Azure Site Recovery 基础结构要求，请针对 VMware 复制运行 [Azure Site Recovery 部署规划器](./site-recovery-deployment-planner.md)，以收集有关复制环境的信息。 有关详细信息，请参阅[关于用于 VMware 到 Azure 复制的 Azure Site Recovery 部署规划器](site-recovery-deployment-planner.md)。
 
 Site Recovery 部署规划器将提供一份报告，其中包含有关兼容和不兼容的 VM、每个 VM 的磁盘以及每个磁盘数据变动率的完整信息。 该工具还将汇总符合目标 RPO 所要满足的网络带宽要求，以及成功完成复制和测试故障转移所需的 Azure 基础结构。
 
@@ -160,7 +162,7 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 6. 若要将主目标注册到配置服务器，请选择“转到配置”。 
 
     ![显示“转到配置”按钮的屏幕截图](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
-7. 输入配置服务器的 IP 地址，然后输入通行短语。 若要了解如何生成通行短语，请参阅[生成配置服务器通行短语](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)。 
+7. 输入配置服务器的 IP 地址，然后输入通行短语。 若要了解如何生成通行短语，请参阅[生成配置服务器通行短语](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)。
 
     ![显示配置服务器 IP 地址和通行短语输入位置的屏幕截图](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. 选择“注册”  。 完成注册后，选择“完成”。 

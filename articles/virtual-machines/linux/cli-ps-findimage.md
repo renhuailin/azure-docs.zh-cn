@@ -9,14 +9,16 @@ ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
 ms.custom: contperf-fy21q3-portal, devx-track-azurecli
-ms.openlocfilehash: f440518e0d7b4fc347da6455e7f6c06e18633598
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b0df8d446716363f21c468838523ffe4804f2e9c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740074"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691903"
 ---
 # <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>使用 Azure CLI 查找 Azure 市场映像信息
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本主题介绍如何使用 Azure CLI 在 Azure 市场中查找 VM 映像。 使用 CLI、资源管理器模板或其他工具以编程方式创建 VM 时，使用此信息指定市场映像。
 

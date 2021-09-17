@@ -1,15 +1,15 @@
 ---
 title: Azure 视频分析器是什么
-description: 本主题概述了 Azure 视频分析器。
+description: 本主题概述了 Azure 视频分析器
 ms.service: azure-video-analyzer
 ms.topic: overview
 ms.date: 06/01/2021
-ms.openlocfilehash: 35f13e8cd87e7e633b6836105f2d4c16911be663
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: c32ccdbbf73d9e2dd4ee6812e49ca82eac150a31
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604803"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397715"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Azure 视频分析器是什么？ （预览版）
  
@@ -44,4 +44,4 @@ Azure 视频分析器提供了一个平台，可用于构建跨越边缘和云�
 ## <a name="next-steps"></a>后续步骤
 
 * 请参照[快速入门：Azure 视频分析器入门](get-started-detect-motion-emit-events.md)了解如何在实时视频源运行运动检测。
-* 查看[术语](terminology.md)
+* 查看[术语](terminology.md)。

@@ -9,14 +9,17 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 88cec878ca5d3ccab3a232888ff3a3c0b0faa1db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11b37415bdd385fb0ec3ea8bceb099face08a89f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97705245"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693078"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教程：使用 Azure 模板自动缩放虚拟机规模集
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
@@ -72,7 +75,7 @@ ms.locfileid: "97705245"
 | *timeWindow*      | 比较指标与阈值之前监视的时长。                                   | 5 分钟       |
 | *operator*        | 用于比较指标数据和阈值的运算符。                                                     | 大于    |
 | *threshold*       | 使自动缩放规则触发操作的值。                                                      | 70%             |
-| *direction*       | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
+| direction       | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
 | type            | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
 | *value*           | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
 | *cooldown*        | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟       |

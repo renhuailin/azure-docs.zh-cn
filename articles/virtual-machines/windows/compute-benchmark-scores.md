@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: fd2ab3926cfe8357bdb3a28fd833bfd6e91d5da0
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: f83a2a8aab4f1daf9fe4317491b2ed3591ec227d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479553"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689707"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
+
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
+
 以下 CoreMark 基准测试分数显示了运行 Windows Server 2019 的特定 Azure VM 的计算性能。 此外，还提供了 [Linux VM](../linux/compute-benchmark-scores.md) 的计算基准测试分数。
 
 | 类型 | 系列 |

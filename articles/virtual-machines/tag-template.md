@@ -7,14 +7,16 @@ ms.workload: infrastructure-services
 ms.author: cynthn
 author: cynthn
 ms.date: 10/26/2018
-ms.openlocfilehash: 7a07c3b2c95367debb375785effc15b69dc8de0a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 92be32279b812d4a8ff3baad3e3ccc881fe20049
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087573"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695323"
 ---
 # <a name="tagging-a-vm-using-a-template"></a>使用模板来标记 VM
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 本文介绍如何使用资源管理器模板在 Azure 中标记 VM。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 50 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。
 

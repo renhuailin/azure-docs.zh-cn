@@ -1,28 +1,30 @@
 ---
-title: Azure 数据工厂中的管道执行和触发器
-description: 本文介绍了如何在 Azure 数据工厂中按需执行管道，或者通过创建触发器来执行管道。
+title: 管道执行和触发器
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 本文介绍了如何在 Azure 数据工厂或 Azure Synapse Analytics 中按需执行管道，或者通过创建触发器来执行管道。
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 07/05/2018
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e0696d648fa176314c4ed73eb68f4edbd73c32a2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 08/24/2021
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: b0fda7e6376cd7adb302db2c0f3aac39da38b407
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675134"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821507"
 ---
-# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
+# <a name="pipeline-execution-and-triggers-in-azure-data-factory-or-azure-synapse-analytics"></a>Azure 数据工厂或 Azure Synapse Analytics 中的管道执行和触发器
 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
 > * [版本 1](v1/data-factory-scheduling-and-execution.md)
 > * [当前版本](concepts-pipeline-execution-triggers.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 数据工厂中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。
+Azure 数据工厂和 Azure Synapse Analytics 中的“管道运行”用于定义管道执行实例。 例如，假设你有一个管道，分别在上午 8:00、9:00 和 10:00 点执行。 在这种情况下，将分三次单独运行管道，也即有三次管道运行。 每次管道运行都有唯一的管道运行 ID。 运行 ID 是一个 GUID，用于对该特定的管道运行进行唯一定义。
 
 管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 执行管道时，可以手动，也可以使用触发器。 本文提供了有关执行管道的两种方式的详细信息。
 
@@ -133,11 +135,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 有关完整示例，请参阅[快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)。
 
 > [!NOTE]
-> 可以使用 .NET SDK 从 Azure Functions、你的 Web 服务等位置调用数据工厂管道。
+> 可以使用 .NET SDK 从 Azure Functions、你的 Web 服务等位置调用管道。
 
 ## <a name="trigger-execution"></a>触发器执行
 
-触发器是可以执行管道运行的另一种方法。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，数据工厂支持三种类型的触发器：
+触发器是可以执行管道运行的另一种方法。 触发器表示一个处理单元，用于确定何时需要启动管道执行。 目前，服务支持三种类型的触发器：
 
 - 计划触发器：按时钟计划调用管道的触发器。
 

@@ -1,5 +1,5 @@
 ---
-title: 运行自定义命令应用程序时调试错误
+title: 运行时自定义命令应用程序的故障排除指南
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何在自定义命令应用程序中调试运行时错误。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b41bcda7381e5811ef1e1f91c102d8c85f50b3b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7577a1c2666c8b5d34920e3827a9f4549b69edd2
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103196917"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455805"
 ---
-# <a name="debug-errors-when-running-a-custom-commands-application"></a>运行自定义命令应用程序时调试错误
+# <a name="troubleshoot-a-custom-commands-application-at-runtime"></a>在运行时对自定义命令应用程序进行故障排除
 
 本文介绍如何在运行自定义命令应用程序期间出现错误时进行调试。 
 

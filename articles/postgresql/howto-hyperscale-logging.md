@@ -1,36 +1,60 @@
 ---
-title: 日志-超大规模 (Citus) -Azure Database for PostgreSQL
-description: '如何访问 Azure Database for PostgreSQL-超大规模 (Citus 的数据库日志) '
+title: 日志 - 超大规模 (Citus) - Azure Database for PostgreSQL
+description: 如何访问 Azure Database for PostgreSQL 超大规模 (Citus) 的数据库日志
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
-ms.date: 7/13/2020
-ms.openlocfilehash: ca3cc2873fbc6db72b10c80daecddf1471e30ff4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.topic: how-to
+ms.date: 8/20/2021
+ms.openlocfilehash: c65d2947e6e0f9505f1827ec8dbb32f59855d332
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577057"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633884"
 ---
-# <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模 (Citus 中的日志) 
+# <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL 超大规模 (Citus) 中的日志
 
-PostgreSQL 日志在超大规模 (Citus) 服务器组的每个节点上可用。 可以将日志发送到存储服务器或分析服务。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。
+超大规模 (Citus) 服务器组的每个节点都可以获取 PostgreSQL 数据库服务器日志。 可以将日志发送到存储服务器或分析服务。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。
 
-## <a name="accessing-logs"></a>访问日志
+## <a name="capturing-logs"></a>捕获日志
 
-若要访问超大规模 (Citus) 协调器或辅助节点的 PostgreSQL 日志，请打开 Azure 门户中的节点：
-
-:::image type="content" source="media/howto-hyperscale-logging/choose-node.png" alt-text="节点列表":::
-
-对于所选节点，打开 " **诊断设置**"，然后单击 " **+ 添加诊断设置**"。
+要访问超大规模 (Citus) 协调器或工作器节点的 PostgreSQL 日志，必须启用 PostgreSQLLogs 诊断设置。 在 Azure 门户中，打开“诊断设置”，然后选择“+ 添加诊断设置”。 
 
 :::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="“添加诊断设置”按钮":::
 
-为新诊断设置选择一个名称，并选中 " **PostgreSQLLogs** " 框。  选择) 应接收日志的目标 (。
+为新的诊断设置选择一个名称，选中“PostgreSQLLogs”框，然后选中“发送到 Log Analytics 工作区”框。   再选择“保存”。
 
 :::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="选择 PostgreSQL 日志":::
+
+## <a name="viewing-logs"></a>查看日志
+
+为查看和筛选日志，我们将使用 Kusto 查询。 在你的超大规模 (Citus) 服务器组的 Azure 门户中，打开“日志”。 如果显示查询选择对话框，请将其关闭：
+
+:::image type="content" source="media/howto-hyperscale-logging/logs-dialog.png" alt-text="打开对话框时的“日志”页":::
+
+然后，会看到用于输入查询的输入框。
+
+:::image type="content" source="media/howto-hyperscale-logging/logs-query.png" alt-text="用于查询日志的输入框":::
+
+输入以下查询并选择“运行”按钮。
+
+```kusto
+AzureDiagnostics
+| project TimeGenerated, Message, errorLevel_s, LogicalServerName_s
+```
+
+上面的查询列出了所有节点的日志消息及其严重性和时间戳。 可以添加 `where` 子句来筛选结果。 例如，若要仅查看协调器节点中的错误，请按如下所示筛选错误级别和服务器名称：
+
+```kusto
+AzureDiagnostics
+| project TimeGenerated, Message, errorLevel_s, LogicalServerName_s
+| where LogicalServerName_s == 'example-server-group-c'
+| where errorLevel_s == 'ERROR'
+```
+
+将上述示例中的服务器名称替换为你的服务器名称。 协调器节点名称具有后缀 `-c`，而工作节点则以 `-w0`、`-w1` 等后缀命名。
 
 ## <a name="next-steps"></a>后续步骤
 

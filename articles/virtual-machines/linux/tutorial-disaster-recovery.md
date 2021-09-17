@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b5e83f883b5e1e35842ab128e4732e993fb937a0
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: ff3c4dc893a6760c317b39b4a76f4de2e24da96e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383628"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690900"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>教程：为 Linux 虚拟机设置灾难恢复
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本教程介绍如何为运行 Linux 的 Azure VM 设置灾难恢复。 在本文中，将学习以下内容：
 

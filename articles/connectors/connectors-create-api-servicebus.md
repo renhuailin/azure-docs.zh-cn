@@ -3,16 +3,16 @@ title: 使用 Azure 服务总线交换消息
 description: 在 Azure 逻辑应用中创建使用 Azure 服务总线发送和接收消息的自动化任务和工作流
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 08/18/2021
 tags: connectors
-ms.openlocfilehash: fb8e97dfd929be96d51c761ff91c91cc033d5127
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 43ea4bd0eea40e5e74b92f67241adbe7bee1dcc3
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847828"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515724"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -25,25 +25,54 @@ ms.locfileid: "109847828"
 * 续订队列和主题订阅中的消息和会话上的锁。
 * 关闭队列和主题中的会话。
 
-可以使用触发器从服务总线获取响应，并使输出可供逻辑应用中的其他操作使用。 还可以让其他操作使用服务总线操作的输出。 如果不熟悉服务总线和逻辑应用，请参阅[什么是 Azure 服务总线？](../service-bus-messaging/service-bus-messaging-overview.md)和[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
-
-[!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
+可以使用触发器从服务总线获取响应，并使输出可供逻辑应用工作流中的其他操作使用。 还可以让其他操作使用服务总线操作的输出。 如果你不太熟悉服务总线和 Azure 逻辑应用，请查看[什么是 Azure 服务总线？](../service-bus-messaging/service-bus-messaging-overview.md)和[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)？
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 服务总线命名空间和消息传送实体，例如队列。 如果没有这些项，请了解如何[创建服务总线命名空间和队列](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 有关[如何创建逻辑应用工作流](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 在其中使用服务总线命名空间和消息传送实体的逻辑应用。 若要通过服务总线触发器启动工作流，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要在工作流中使用服务总线操作，请使用另一个触发器（例如[“定期”触发器](../connectors/connectors-native-recurrence.md)）启动逻辑应用。
+* 在其中使用服务总线命名空间和消息传送实体的逻辑应用工作流。 若要通过服务总线触发器启动工作流，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要在工作流中使用服务总线操作，请使用另一个触发器（例如[定期触发器](../connectors/connectors-native-recurrence.md)）启动逻辑应用工作流。
+
+## <a name="considerations-for-azure-service-bus-operations"></a>Azure 服务总线操作注意事项
+
+### <a name="infinite-loops"></a>无限循环
+
+[!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
+
+### <a name="large-messages"></a>大型消息
+
+仅在将内置服务总线操作与[单租户 Azure 逻辑应用（标准）](../logic-apps/single-tenant-overview-compare.md)工作流配合使用时，才提供大型消息支持。 你可以在内置版本中通过触发器或操作来发送和接收大型消息。
+
+  为了接收消息，可以通过[在 Azure Functions 扩展中更改以下设置](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)来增加超时值：
+
+  ```json
+  {
+     "version": "2.0",
+     "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle.Workflows",
+        "version": "[1.*, 2.0.0)"
+     },
+     "extensions": {
+        "serviceBus": {
+           "batchOptions": {
+              "operationTimeout": "00:15:00"
+           }
+        }  
+     }
+  }
+  ```
+
+  为了发送消息，可以通过[添加 `ServiceProviders.ServiceBus.MessageSenderOperationTimeout` 应用设置](../logic-apps/edit-app-settings-host-settings.md)来增加超时值。
 
 <a name="permissions-connection-string"></a>
 
 ## <a name="check-permissions"></a>检查权限
 
-确认逻辑应用有权访问服务总线命名空间。
+确认逻辑应用资源有权访问服务总线命名空间。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，使用 Azure 帐户登录。
 
@@ -60,17 +89,17 @@ ms.locfileid: "109847828"
       ![复制服务总线命名空间连接字符串](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > 若要确认连接字符串是与服务总线命名空间关联还是与消息传送实体（例如队列）关联，请在该连接字符串中搜索 `EntityPath` 参数。 如果找到了该参数，则表示连接字符串适用于特定的实体，不是适用于逻辑应用的正确字符串。
+   > 若要确认连接字符串是与服务总线命名空间关联还是与消息传送实体（例如队列）关联，请在该连接字符串中搜索 `EntityPath` 参数。 如果找到该参数，则表示连接字符串适用于特定实体，不是适用于逻辑应用工作流的正确字符串。
 
 ## <a name="add-service-bus-trigger"></a>添加服务总线触发器
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后在逻辑应用设计器中打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)，并在工作流设计器中打开空白逻辑应用。
 
 1. 在门户的搜索框中，输入 `azure service bus`。 从出现的“触发器”列表中选择所需的触发器。
 
-   例如，若要在有新项发送到服务总线队列时触发逻辑应用，请选择“队列中收到消息时(自动完成)”触发器。
+   例如，若要在有新项发送到服务总线队列时触发逻辑应用工作流，请选择“队列中收到消息时（自动完成）”触发器。
 
    ![选择服务总线触发器](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
@@ -81,11 +110,11 @@ ms.locfileid: "109847828"
    * 某些触发器（例如“一条或多条消息抵达队列时(自动完成)”触发器）可能会返回一条或多条消息。 这些触发器在触发时返回的消息数至少为 1，至多为触发器的 **最大消息计数** 属性指定的消息数。
 
      > [!NOTE]
-     > 自动完成触发器会自动完成消息，但只有在下一次调用服务总线时才会完成。 此行为可能会影响逻辑应用的设计。 例如，应避免更改自动完成触发器的并发性，因为如果逻辑应用进入受限制状态，此更改可能会导致重复的消息。 更改并发控制会形成以下情况：跳过受限制的触发器并显示 `WorkflowRunInProgress` 代码、完成操作不会发生以及下一次触发器运行会在轮询间隔后发生。 必须将服务总线锁定持续时间设置为比轮询间隔更长的值。 但是尽管进行此设置，如果逻辑应用在下一个轮询间隔内保持受限制状态，则消息仍可能不会完成。
+     > 自动完成触发器会自动完成消息，但只有在下一次调用服务总线时才会完成。 此行为可能会影响逻辑应用的设计。 例如，应避免更改自动完成触发器的并发性，因为如果逻辑应用工作流进入受限制状态，此更改可能会导致重复的消息。 更改并发控制会形成以下情况：跳过受限制的触发器并显示 `WorkflowRunInProgress` 代码、完成操作不会发生以及下一次触发器运行会在轮询间隔后发生。 必须将服务总线锁定持续时间设置为比轮询间隔更长的值。 但即使存在此设置，如果逻辑应用工作流在下一次轮询间隔内仍保持受限制状态，也可能无法完成消息传送任务。
 
-   * 如果为服务总线触发器[启用并发设置](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)，则 `maximumWaitingRuns` 属性的默认值为 10。 根据服务总线实体的锁定持续时间设置和逻辑应用实例的运行持续时间，此默认值可能太大，并可能导致“锁丢失”异常。 若要为方案找到最佳值，请对 `maximumWaitingRuns` 属性使用值 1 或值 2 开始测试。 若要更改最大等待运行值，请参阅[更改等待运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。
+   * 如果为服务总线触发器[启用并发设置](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)，则 `maximumWaitingRuns` 属性的默认值为 10。 根据服务总线实体的锁定持续时间设置和逻辑应用工作流的运行持续时间，此默认值可能太大，并可能导致“锁丢失”异常。 若要为方案找到最佳值，请对 `maximumWaitingRuns` 属性使用值 1 或值 2 开始测试。 若要更改最大等待运行值，请参阅[更改等待运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。
 
-1. 如果触发器是首次连接到服务总线命名空间，则请在逻辑应用设计器提示你输入连接信息时执行以下步骤。
+1. 如果触发器是首次连接到服务总线命名空间，则在工作流设计器提示输入连接信息时执行以下步骤。
 
    1. 请提供连接名称，并选择服务总线命名空间。
 
@@ -98,7 +127,7 @@ ms.locfileid: "109847828"
       ![显示选择服务总线策略的屏幕截图](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. 选择所需的消息传送实体，例如某个队列或主题。 在此示例中，请选择服务总线队列。
-   
+
       ![显示选择服务总线队列的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. 为所选触发器提供必需信息。 若要向操作添加其他可用属性，请打开“添加新参数”列表，然后选择所需属性。
@@ -109,15 +138,15 @@ ms.locfileid: "109847828"
 
    有关可用触发器和属性的详细信息，请参阅连接器的[参考页](/connectors/servicebus/)。
 
-1. 通过添加所需的操作继续生成逻辑应用。
+1. 通过添加所需操作，继续构建逻辑应用工作流。
 
-   例如，可以添加一个可在收到新消息时发送电子邮件的操作。 当触发器检查队列并找到新消息时，逻辑应用会针对找到的消息运行选定的操作。
+   例如，可以添加一个可在收到新消息时发送电子邮件的操作。 当触发器检查队列并找到新消息时，逻辑应用工作流会针对找到的消息执行所选操作。
 
 ## <a name="add-service-bus-action"></a>添加服务总线操作
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的工作流设计器中打开逻辑应用。
 
 1. 在要添加操作的步骤下，选择“新建步骤”。
 
@@ -129,7 +158,7 @@ ms.locfileid: "109847828"
 
    ![显示选择服务总线操作的屏幕截图](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
-1. 如果操作是首次连接到服务总线命名空间，则请在逻辑应用设计器提示你输入连接信息时执行以下步骤。
+1. 如果你的操作是首次关联服务总线命名空间，则在工作流设计器提示输入关联信息时执行以下步骤。
 
    1. 请提供连接名称，并选择服务总线命名空间。
 
@@ -153,7 +182,7 @@ ms.locfileid: "109847828"
 
    有关可用操作及其属性的详细信息，请参阅连接器的[参考页](/connectors/servicebus/)。
 
-1. 通过添加所需的任何其他操作继续生成逻辑应用。
+1. 通过添加需要的任何其他操作，继续构建逻辑应用工作流。
 
    例如，可以添加一个操作来发送电子邮件，确认消息已发送。
 
@@ -169,7 +198,7 @@ ms.locfileid: "109847828"
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>逻辑应用的更新延迟生效
 
-如果服务总线触发器的轮询间隔很短（例如 10 秒），则对逻辑应用的更新可能会在长达 10 分钟的时间内不会生效。 若要解决此问题，可禁用逻辑应用，进行更改，然后重新启用逻辑应用。
+如果服务总线触发器的轮询间隔很短（例如 10 秒），则对逻辑应用工作流的更新可能在长达 10 分钟的时间内都不会生效。 若要解决此问题，可禁用逻辑应用，进行更改，然后重新启用逻辑应用工作流。
 
 <a name="connector-reference"></a>
 
@@ -181,4 +210,4 @@ ms.locfileid: "109847828"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+* 了解其他 [Azure 逻辑应用连接器](../connectors/apis-list.md)

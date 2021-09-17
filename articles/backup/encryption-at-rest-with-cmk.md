@@ -2,14 +2,14 @@
 title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何使用客户管理的密钥 (CMK) 加密备份数据 (CMK)。
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 08/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5a036d7808a365e7f4332d380246bfa17be8e6c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f16974d00f4801f288180814daf9ff5ed4558748
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722658"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778717"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -37,6 +37,7 @@ Azure 备份允许使用客户管理的密钥 (CMK)（而不是默认启用的�
 - 恢复服务保管库只能使用存储在同一区域的 Azure Key Vault 中的密钥进行加密。 此外，密钥必须仅为 RSA 密钥，并且应处于启用状态。
 
 - 当前不支持跨资源组和订阅移动 CMK 加密的恢复服务保管库。
+- 使用客户管理的密钥加密的恢复服务保管库不支持跨区域还原备份的实例。
 - 将已使用客户管理的密钥加密的恢复服务保管库移到新租户时，需要更新恢复服务保管库，以重新创建并重新配置保管库的托管标识和 CMK（应位于新租户中）。 如果不执行此操作，备份和还原操作将会失败。 此外，需要重新配置在订阅中设置的任何基于角色的访问控制 (RBAC) 权限。
 
 - 通过 Azure 门户和 PowerShell 可配置此功能。
@@ -112,7 +113,11 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>将用户分配的托管标识分配给保管库
+### <a name="assign-user-assigned-managed-identity-to-the-vault-in-preview"></a>将用户分配的托管标识分配给保管库（预览版）
+
+>[!Note]
+>- 使用用户分配的托管标识进行 CMK 加密的保管库不支持使用专用终结点进行备份。
+>- 尚不支持将限制对特定网络访问的 Azure Key Vault 与用户分配的托管标识一起用于 CMK 加密。
 
 若要为恢复服务保管库分配用户分配的托管标识，请执行以下步骤：
 

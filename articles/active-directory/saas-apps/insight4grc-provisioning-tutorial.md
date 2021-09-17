@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: thwimmer
-ms.openlocfilehash: d3172f571afbcdbac83a527ef1de5e56283b7438
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: d8fbdff34ea84685366c04ee956473b4165a4cd2
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766957"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444579"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教程：为 Insight4GRC 配置自动用户预配
 
@@ -100,11 +100,12 @@ ms.locfileid: "113766957"
 
 9. 在“特性映射”部分中，查看从 Azure AD 同步到 Insight4GRC 的用户特性。 选为“匹配”属性的特性用于匹配 Insight4GRC 中的用户帐户以执行更新操作。 如果选择更改[匹配目标特性](../app-provisioning/customize-application-attributes.md)，则需要确保 Insight4GRC API 支持基于该特性筛选用户。 选择“保存”按钮以提交任何更改  。
 
-   |Attribute|类型|
-   |---|---|
-   |userName|字符串|
-   |externalId|字符串|
+   |Attribute|类型|支持筛选|
+   |---|---|--|
+   |userName|字符串|&check;
+   |externalId|字符串|&check;
    |活动|Boolean|
+   urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|字符串|
    |title|字符串|
    |name.givenName|字符串|
    |name.familyName|字符串|
@@ -142,7 +143,11 @@ ms.locfileid: "113766957"
 
 * 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败。
 * 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)以查看预配周期的状态以及完成进度。
-* 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。
+* 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](../app-provisioning/application-provisioning-quarantine-status.md)。
+
+## <a name="change-log"></a>更改日志
+
+* 2021/08/19 - 已添加企业扩展用户属性“管理器”。
 
 ## <a name="additional-resources"></a>其他资源
 

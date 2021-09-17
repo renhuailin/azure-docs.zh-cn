@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c7ed059e3f7a0bbf620bf9008a08a7d600dcbc88
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 18f73a379c32bf80893e00ff0e95cb9edf905724
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739438"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607757"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 
@@ -52,7 +52,7 @@ ms.locfileid: "121739438"
 
             SQL 托管实例的入站要求，以允许来自 Azure-SSIS IR 的入站流量。
 
-            | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 |
+            | 传输协议 | Source | 源端口范围 | 目标 | 目标端口范围 |
             |---|---|---|---|---|
             |TCP|Azure 云服务标记|*|VirtualNetwork|3342|
 
@@ -64,13 +64,13 @@ ms.locfileid: "121739438"
 
             1. SQL 托管实例的入站要求，以允许来自 Azure-SSIS IR 的入站流量。
 
-                | 传输协议 | 源 | 源端口范围 | 目标 |目标端口范围 |
+                | 传输协议 | Source | 源端口范围 | 目标 |目标端口范围 |
                 |---|---|---|---|---|
                 |TCP|Azure-SSIS IR 的静态 IP 地址 <br> 有关详细信息，请参阅[为 Azure-SSIS IR 创建自己的公共 IP](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)。|*|VirtualNetwork|3342|
 
              1. Azure-SSIS IR 的出站要求，以允许流向 SQL 托管实例的出站流量。
 
-                | 传输协议 | 源 | 源端口范围 | 目标 |目标端口范围 |
+                | 传输协议 | Source | 源端口范围 | 目标 |目标端口范围 |
                 |---|---|---|---|---|
                 |TCP|VirtualNetwork|*|[SQL 托管实例公共终结点 IP 地址](../azure-sql/managed-instance/management-endpoint-find-ip-address.md)|3342|
 
@@ -92,22 +92,22 @@ ms.locfileid: "121739438"
 
         这些资源在 Azure-SSIS IR 启动时创建， 并在 Azure-SSIS IR 停止时删除。 为了避免阻止 Azure-SSIS IR 停止，请不要在其他资源中重用这些网络资源。
 
-    1. 确保虚拟网络所属的资源组/订阅中没有任何[资源锁](../azure-resource-manager/management/lock-resources.md)。 如果你配置了只读锁/删除锁，则无法启动和停止 Azure-SSIS IR，或者它会停止响应。
+    1. 确保虚拟网络所属的资源组/订阅中没有任何[资源锁](../azure-resource-manager/management/lock-resources.md)。 如果配置只读/删除锁，则启动和停止 Azure-SSIS IR 将会失败，或者它会停止响应。
 
-    1. 确保没有 Azure 策略阻止在虚拟网络所属的资源组/订阅下创建以下资源：
+    1. 请确保你的 Azure Policy 定义不会阻止在虚拟网络所属的资源组/订阅下创建以下资源：
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 
     1. 允许网络安全组 (NSG) 上流量的规则，以允许 SQL 托管实例和 Azure-SSIS IR 之间的流量，以及 Azure-SSIS IR 所需的流量。
         1. SQL 托管实例的入站要求，以允许来自 Azure-SSIS IR 的入站流量。
 
-            | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 | 注释 |
+            | 传输协议 | Source | 源端口范围 | 目标 | 目标端口范围 | 注释 |
             |---|---|---|---|---|---|
             |TCP|VirtualNetwork|*|VirtualNetwork|1433、11000-11999|如果 SQL 数据库服务器连接策略设置为“代理”（而不是“重定向”），那么只需要端口 1433。|
 
         1. Azure-SSIS IR 的出站要求，以允许流向 SQL 托管实例的出站流量，以及 Azure-SSIS IR 所需的其他流量。
 
-        | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 | 注释 |
+        | 传输协议 | Source | 源端口范围 | 目标 | 目标端口范围 | 注释 |
         |---|---|---|---|---|---|
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |允许流向 SQL 托管实例的出站流量。 如果连接策略设置为“代理”（而不是“重定向”），那么只需要端口 1433。 |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | 虚拟网络中的 Azure-SSIS IR 节点使用此端口来访问 Azure 服务，如 Azure 存储和 Azure 事件中心。 |
@@ -117,7 +117,7 @@ ms.locfileid: "121739438"
 
         1. Azure-SSIS IR 的入站要求，以允许 Azure-SSIS IR 所需的流量。
 
-        | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 | 注释 |
+        | 传输协议 | Source | 源端口范围 | 目标 | 目标端口范围 | 注释 |
         |---|---|---|---|---|---|
         | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877（如果将 IR 加入资源管理器虚拟网络） <br/><br/>10100、20100、30100（如果将 IR 加入经典虚拟网络）| 数据工厂服务使用这些端口来与虚拟网络中 Azure-SSIS IR 的节点通信。 <br/><br/> 无论是否创建子网级 NSG，数据工厂都始终会在附加到托管 Azure-SSIS IR 的虚拟机的网络接口卡 (NIC) 级别配置 NSG。 此 NIC 级别的 NSG 仅允许来自指定端口上的数据工厂 IP 地址的入站流量。 即使你在子网级别向 Internet 流量打开这些端口，来自非数据工厂 IP 地址的流量也会在 NIC 级别被阻止。 |
         | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | （可选）只有当 Microsoft 支持者要求客户打开以进行高级故障排除，并且可以在故障排除后立即关闭时，才需要此规则。 CorpNetSaw 服务标记只允许 Microsoft 企业网络中的安全访问工作站使用远程桌面。 无法在门户中选择此服务标记，只能通过 Azure PowerShell 或 Azure CLI 选择。 <br/><br/> 在 NIC 级别 NSG 处，端口 3389 是默认打开的，允许在子网级别 NSG 处控制端口 3389；但在此期间，Azure-SSIS IR 在每个 IR 节点上的 Windows 防火墙规则处默认禁止端口 3389 出站以实现保护。 |

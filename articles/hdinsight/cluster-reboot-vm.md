@@ -5,12 +5,12 @@ ms.custom: hdinsightactive, devx-track-azurepowershell
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: b3f356d5a7b0919b6aa44cbe6653625c9e96f3f1
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: f2bb1ebd6e8db80a071dc3f82e1eedded26f6116
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688611"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634483"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>重新启动 HDInsight 群集的 VM
 
@@ -57,7 +57,7 @@ Azure HDInsight 群集包含作为群集节点的虚拟机 (VM) 组。 对于长
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. 重新启动主机。 获取想要重新启动的节点名称后，请使用 REST API 重新启动节点来重启节点。 节点名称遵循的模式为 NodeType(wn/hn/zk/gw) + x + 群集名称的前六个字符  。 有关详细信息，请参阅 [HDInsight 重启主机 REST API 操作](/rest/api/hdinsight/virtualmachines/restarthosts)。
+1. 重新启动主机。 获取想要重新启动的节点名称后，请使用 REST API 重新启动节点来重启节点。 节点名称遵循的模式为 *NodeType(wn/hn/zk)*  + *x* + *群集名称的前六个字符*。 有关详细信息，请参阅 [HDInsight 重启主机 REST API 操作](/rest/api/hdinsight/virtualmachines/restarthosts)。
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview

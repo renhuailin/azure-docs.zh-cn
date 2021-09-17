@@ -8,14 +8,16 @@ ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: fb6180754be5e94091e5ff1ca21823b85c8a6e6d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 5ea12e47b67f79ab2d5aa559f3afc1db587e1a55
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322010"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695911"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超级磁盘
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 本文介绍如何部署和使用超级磁盘，有关超级磁盘的概念性信息，请参阅 [Azure 中有哪些可用的磁盘类型？](disks-types.md#ultra-disk)。
 

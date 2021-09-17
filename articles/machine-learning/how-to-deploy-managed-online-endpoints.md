@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 08/05/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 0a4117e17ddddbb1fcb083a927fc35abae8b2eb6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c421148571b99bb182de6841586caafb116df42
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751961"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418427"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-a-managed-online-endpoint-preview"></a>使用托管联机终结点（预览版）部署机器学习模型并为其评分
 
@@ -32,11 +32,11 @@ ms.locfileid: "121751961"
 
 * 若要使用 Azure 机器学习，必须有一个 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
-* 安装并配置 Azure CLI 和 Azure CLI 的 `ml` 扩展。 有关详细信息，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。 
+* 安装并配置 Azure CLI 和 Azure CLI 的 `ml` 扩展。 有关详细信息，请参阅[安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)。 
 
-* 必须有一个 Azure 资源组，且你（或者你使用的服务主体）必须对此拥有参与者访问权限。 在[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)中创建资源组。 
+* 必须有一个 Azure 资源组，且你（或者你使用的服务主体）必须对此拥有参与者访问权限。 在[安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)中创建资源组。 
 
-* 必须有一个 Azure 机器学习工作区。 在[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)中创建工作区。
+* 必须有一个 Azure 机器学习工作区。 在[安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)中创建工作区。
 
 * 如果尚未为 Azure CLI 指定默认设置，则应保存默认设置。 若要避免多次传入订阅、工作区和资源组的值，请运行此代码：
 
@@ -92,7 +92,7 @@ set ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 
 下表描述了 YAML 格式的终结点的参考资料。 若要了解如何指定这些属性，请参阅[准备系统](#prepare-your-system)或[联机终结点 YAML 参考](reference-yaml-endpoint-managed-online.md)中的 YAML 示例。 有关托管终结点相关限制的信息，请参阅[管理和提高 Azure 机器学习资源的配额](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)。
 
-| 键 | 说明 |
+| 键 | 描述 |
 | --- | --- |
 | `$schema`    | （可选）YAML 架构。 如要查看 YAML 文件的所有可用选项，可在浏览器中查看上述示例中的架构。|
 | `name`       | 终结点的名称。 在 Azure 区域中必须具有唯一性。|
@@ -102,7 +102,7 @@ set ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 
 下表描述了 `deployments` 的属性：
 
-| 键 | 说明 |
+| 键 | 描述 |
 | --- | --- |
 | `name`  | 部署的名称。 |
 | `model` | 在此示例中，我们指定了内联模型属性：`name`、`version` 和 `local_path`。 将自动上传和注册模型文件。 内联规范的缺点是，如果要更新模型文件，则必须手动递增版本。 有关相关的最佳实践，请参阅下一节中的提示。 |
@@ -265,7 +265,7 @@ az ml endpoint get-credentials -n $ENDPOINT_NAME
 
 1. 打开 online/model-1/onlinescoring/score.py 文件。
 1. 更改 `init()` 函数的最后一行：在 `logging.info("Init complete")` 后面，添加 `logging.info("Updated successfully")`。 
-1. 保存文件。
+1. 保存该文件。
 1. 运行以下命令：
 
     ```azurecli

@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 464ffc8b5d4d04aeb7e4013f5b25d240d5ee9b06
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607409"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688961"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>通过 Azure 专用主机预留来节省成本
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 当提交到 Azure 专用主机的预留实例时，可以节省资金。 预留折扣会自动应用到正在运行的专用主机，具体数量需与预留范围和属性相匹配。 无需向专用主机分配预留，即可享受折扣。 购买的预留实例仅涵盖使用过程中的计算部分，并包括软件许可成本。 请参阅[适用于虚拟机的 Azure 专用主机概述](./dedicated-hosts.md)。
 
@@ -86,9 +88,9 @@ ms.locfileid: "104607409"
 
 ## <a name="usage-data-and-reservation-utilization"></a>使用数据和预留使用情况
 
-对于获得预留折扣的使用量，使用数据的有效价格为零。 这样可以看出每个预留对应的预留折扣分别应用于哪一个 VM 实例。
+对于获得预留折扣的使用量，使用数据的有效价格为零。 这样可以看出每个预留项对应的预留折扣分别应用于哪一个 VM 实例。
 
-有关使用数据中如何显示预留折扣的详细信息，EA 客户可参阅[了解适用于企业合约的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)。 对于个人订阅，请参阅[了解即用即付订阅的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
+有关使用情况数据中如何显示预留折扣的详细信息，EA 客户可参阅[了解企业注册的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)。 如果你使用个人订阅，请参阅[了解即用即付订阅的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 ## <a name="change-a-reservation-after-purchase"></a>在购买后更改预留
 
@@ -100,7 +102,7 @@ ms.locfileid: "104607409"
 
 - 所有权
 
-还可以将预留拆分为多个小区块，或者对已拆分的预留进行合并。 这些更改都不会产生新的商业交易，也不会更改预留的结束日期。
+还可以将预留项拆分为多个小区块，或者对已拆分的预留项进行合并。 任何更改都不会导致新的商业交易，也不会更改预留项的结束日期。
 
 在购买后，不能直接进行以下类型的更改：
 
@@ -112,7 +114,7 @@ ms.locfileid: "104607409"
 
 - 持续时间
 
-但是，如果想要进行更改，可以交换预留。
+但是，如果你要进行更改，可以交换预留项。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 

@@ -2,13 +2,13 @@
 title: 在 Batch 池中配置托管标识
 description: 了解如何在 Batch 池上启用用户分配的托管标识，以及如何在节点内使用托管标识。
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: f8946575497a7453ca729d9334b90977efd906d9
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 08/18/2021
+ms.openlocfilehash: 903e173a6028e6bb574dfba618661da802702c2d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862239"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444803"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>在 Batch 池中配置托管标识
 
@@ -71,7 +71,14 @@ var pool = await managementClient.Pool.CreateWithHttpMessagesAsync(
 
 ## <a name="use-user-assigned-managed-identities-in-batch-nodes"></a>在 Batch 节点中使用用户分配的托管标识
 
-创建池后，用户分配的托管标识可通过安全外壳 (SSH) 或远程桌面 (RDP) 来访问池节点。 你还可以配置任务，以便托管标识可以直接访问[支持托管标识的 Azure 资源](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
+许多用于访问其他 Azure 资源（如 Azure 存储或 Azure 容器注册表）的 Azure Batch 技术均支持托管标识。 如需进一步了解如何在 Azure Batch 中使用托管标识，请参阅以下链接：
+
+- [资源文件](resource-files.md)
+- [输出文件](batch-task-output-files.md#specify-output-files-using-managed-identity)
+- [Azure 容器注册表](batch-docker-container-workloads.md#managed-identity-support-for-acr)
+- [Azure Blob 容器文件系统](virtual-file-mount.md#azure-blob-container)
+
+你还可以手动配置任务，以便托管标识可以直接访问[支持托管标识的 Azure 资源](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 在 Batch 节点中，你可以获取托管标识令牌，并使用它们通过 [Azure 实例元数据服务](../virtual-machines/windows/instance-metadata-service.md)进行 Azure AD 身份验证。
 

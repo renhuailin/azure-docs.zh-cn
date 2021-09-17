@@ -1,14 +1,14 @@
 ---
 title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: 51b1f71985bde3a405b56514078e905042340321
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: ee7939461c6d655447ebbd32079ec2e1345a89ad
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362145"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323613"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -44,7 +44,7 @@ ms.locfileid: "114362145"
 
 要求中应该明确规定“正常”和“不正常”资源状态。
 
-尽管我们已定义资源的预期状态，但尚未定义如何处理不合规的资源。 Azure Policy 支持多种[效果](../concepts/effects.md)。 本教程将业务要求定义为阻止创建不符合业务规则的资源。 为了满足此目标，我们将使用“[拒绝](../concepts/effects.md#deny)”效果。 我们还需要使用相应的选项来暂停特定分配的策略。 因此，我们将使用“[已禁用](../concepts/effects.md#disabled)”效果，并将其设为策略定义中的[参数](../concepts/definition-structure.md#parameters)。
+尽管我们已定义资源的预期状态，但尚未定义如何处理不合规的资源。 Azure Policy 支持许多[效果](../concepts/effects.md)。 本教程将业务要求定义为阻止创建不符合业务规则的资源。 为了满足此目标，我们将使用“[拒绝](../concepts/effects.md#deny)”效果。 我们还需要使用相应的选项来暂停特定分配的策略。 因此，我们将使用“[已禁用](../concepts/effects.md#disabled)”效果，并将其设为策略定义中的[参数](../concepts/definition-structure.md#parameters)。
 
 ## <a name="determine-resource-properties"></a>确定资源属性
 
@@ -233,7 +233,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 }
 ```
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
 前三个组成部分是策略元数据。 由于我们知道要为哪些对象创建规则，因此可以轻松提供这些组成部分的值。 [Mode](../concepts/definition-structure.md#mode) 主要与标记和资源位置相关。 由于我们不需要将评估范围限制为支持标记的资源，因此将对 **mode** 使用 _all_ 值。
 
@@ -268,8 +268,8 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 撰写[策略规则](../concepts/definition-structure.md#policy-rule)是生成自定义策略定义的最后一步。 我们已指定两条语句用于测试：
 
-- 存储帐户的 **类型** 是否为 **Microsoft.Storage/storageAccounts**
-- 存储帐户的 **supportsHttpsTrafficOnly** 不为 **true**
+- 存储帐户的类型是否为 Microsoft.Storage/storageAccounts 
+- 存储帐户的 supportsHttpsTrafficOnly 不为 true 
 
 由于这两条语句都需要为 true，因此将使用 **allOf** [逻辑运算符](../concepts/definition-structure.md#logical-operators)。 将 **effectType** 参数传递给效果，而不是进行静态声明。 完成的规则如以下示例所示：
 

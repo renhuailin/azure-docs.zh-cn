@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: mimckitt
-ms.openlocfilehash: 7879e355573d2b9952728828bd3780094a919fe3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1fc0b3b628256f5ecbc0361ee2294e70e1619160
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869049"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698345"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 客户端实现开发/测试方案
+
+**适用于：** :heavy_check_mark: Windows VM 
+
 如果有相应的 Visual Studio（以前为 MSDN）订阅，可以在 Azure 中使用 Windows 7、Windows 8 或 Windows 10 企业版 (x64) 实施开发/测试方案。 
 
 若要在生产环境中运行 Windows 10，请参阅[如何使用多租户托管权限在 Azure 上部署 windows 10](windows-desktop-multitenant-hosting-deployment.md)。

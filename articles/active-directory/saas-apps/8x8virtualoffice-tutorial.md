@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 81a7efea268600e661981b35f79149fe814ef084
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3de204c960a6369589ee0c52bb6f5770a2cee407
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180670"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>教程：Azure Active Directory 单一登录 (SSO) 与 8x8 的集成
 
@@ -41,6 +41,7 @@ ms.locfileid: "96180670"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * 8x8 支持 **SP 和 IDP** 发起的 SSO
+* 8x8 支持 [**自动** 用户预配和取消预配](8x8-provisioning-tutorial.md)（推荐）。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。

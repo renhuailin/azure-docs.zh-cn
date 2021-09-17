@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c251634710811820ba920b72c1759938758f5d2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0db18bf162ee91ddccc070d7250a2ee35b05f5a9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802806"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689203"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虚拟机概述
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 要在 Intel Xeon 可扩展处理器上最大限度提高 HPC 应用程序性能，需要一种周全的方法来处理这一新体系结构上的放置。 下文概述了如何在适用于 HPC 应用程序的 Azure HC 系列 VM 上实现它。 我们将使用术语“pNUMA”指代物理 NUMA 域，使用“vNUMA”指代虚拟化 NUMA 域。 同样，我们将使用术语“pCore”指代物理 CPU 核心，使用“vCore”指代虚拟化 CPU 核心。
 

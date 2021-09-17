@@ -1,12 +1,9 @@
 ---
 title: 调整具有 GPT 分区的 OS 磁盘的大小
 description: 本文提供了有关如何调整 Linux 中具有 GUID 分区表 (GPT) 分区的 OS 磁盘大小的说明。
-services: virtual-machines
-ms.topic: article
+ms.topic: how-to
 author: kailashmsft
 manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: virtual-machines
 ms.subservice: disks
 ms.collection: linux
@@ -15,14 +12,16 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 0db79728bbb963aa360743afc70aecc213bfb7bc
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: ca7a018accb0410c2656d7aeb4282b42f2756e39
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011675"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688221"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>调整具有 GPT 分区的 OS 磁盘的大小
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 > [!NOTE]
 > 本文仅适用于具有 GUID 分区表 (GPT) 分区的 OS 磁盘。

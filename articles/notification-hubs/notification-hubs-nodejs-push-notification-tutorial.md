@@ -6,24 +6,22 @@ services: notification-hubs
 documentationcenter: nodejs
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 08/23/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: eb41593938c670199be38140118f276142ceed43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44e6156d472200c818520fbba7e0618100f4344b
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453217"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769150"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 
@@ -100,6 +98,9 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **iOS** - 使用可在 `notificationHubService.apns` 访问的 `ApnsService` 对象
 - **Windows Phone** - 使用可在 `notificationHubService.mpns` 获得的 `MpnsService` 对象
 - **通用 Windows 平台** - 使用可在 `notificationHubService.wns` 获得的 `WnsService` 对象
+
+> [!NOTE]
+> Microsoft 推送通知服务 (MPNS) 已弃用，不再受支持。
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>如何：向 Android 应用程序发送推送通知
 

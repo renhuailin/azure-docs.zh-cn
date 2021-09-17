@@ -1,18 +1,20 @@
 ---
 title: 映射数据流中的派生列转换
-description: 了解如何使用映射数据流派生列转换在 Azure 数据工厂中大规模转换数据。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用映射数据流派生列转换在 Azure 数据工厂和 Azure Synapse Analytics 中大规模转换数据。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/14/2020
-ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 815410030ffbfece39f5f92a4d6783abb8991eb6
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90531946"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822839"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>映射数据流中的派生列转换
 
@@ -85,7 +87,7 @@ ms.locfileid: "90531946"
 
 下面的示例是一个名为 `CleanData` 的派生列，它接受传入的流 `MoviesYear` 并创建两个派生列。 第一个派生列将列 `Rating` 替换为整数类型的 Rating 值。 第二个派生列是与名称以“movies”开头的每个列匹配的模式。 对于每个匹配列，它会创建列 `movie`，该列等于前缀为“movie_”的匹配列的值。 
 
-在数据工厂 UX 中，此转换如下图所示：
+在 UI 中，此转换如下图所示：
 
 ![派生示例](media/data-flow/derive-script.png "派生示例")
 

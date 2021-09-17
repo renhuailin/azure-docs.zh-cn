@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a04d7dde8b6f2a492538d2012de5222686fd7fcf
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 6f7a0d8169fed92564437166c74255743ea61a7f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762391"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122820752"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -13,7 +13,15 @@ ms.locfileid: "113762391"
 
 ## <a name="create-azure-communication-services-resource"></a>创建 Azure 通信服务资源
 
-若要创建 Azure 通信服务资源，请先[登录 Azure CLI](/cli/azure/authenticate-azure-cli)。 你可以通过使用命令 ```Connect-AzAccount``` 和提供凭据在终端完成此操作。 运行以下命令以创建资源：
+若要创建 Azure 通信服务资源，请先[登录 Azure CLI](/cli/azure/authenticate-azure-cli)。 你可以通过使用命令 ```Connect-AzAccount``` 和提供凭据在终端完成此操作。
+
+首先，请确保使用以下命令安装 Azure 通信服务模块 ```Az.Communication```。
+
+```PowerShell
+PS C:\> Install-Module Az.Communication
+```
+
+运行以下命令以创建资源：
 
 ```PowerShell
 PS C:\> New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global

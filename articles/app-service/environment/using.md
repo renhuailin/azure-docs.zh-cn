@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1d51fff9739ecb928ff2f11f53b58b190122d69d
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 131c8d2abc21e046a96488a602b831361f64dcf4
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432817"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446222"
 ---
 # <a name="using-an-app-service-environment"></a>使用应用服务环境
 
@@ -163,13 +163,17 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 ## <a name="upgrade-preference"></a>升级首选项
 
-如果你有多个 ASE，你可能希望先升级某些 ASE，再升级其他 ASE。 在 ASE“HostingEnvironment 资源管理器”对象中，可以设置 upgradePreference 的值。  可以使用模板、ARMClient 或 https://resources.azure.com 配置 upgradePreference 设置。 三个可能的值为：
+如果你有多个 ASE，你可能希望先升级某些 ASE，再升级其他 ASE。 可通过 ASE 门户启用此行为。  在“配置”下，可选择设置“升级首选项”。 三个可能的值为：
 
 - **无**：Azure 将在非特定的批次中升级 ASE。 此值为默认值。
 - **Early**：ASE 将在应用服务升级过程的上半阶段升级。
 - **Late**：ASE 将在应用服务升级过程的下半阶段升级。
 
-若要配置升级首选项，请转到 ASE 的配置 UI。 当你有多个 ASE 时，upgradePreferences 功能最为有效，因为“早期”ASE 将在“晚期”ASE 之前升级。 当你有多个 ASE 时，应将开发和测试 ASE 设置为“早期”，而将生产 ASE 设置为“晚期”。
+选择所需值，然后选择“保存”。  任何 ASE 的默认值均为“无”。
+
+![ASE 配置门户][5]
+
+upgradePreferences 功能在有多个 ASE 时最有意义，因为“早期”ASE 将在“晚期”ASE 之前升级。 当你有多个 ASE 时，应将开发和测试 ASE 设置为“早期”，而将生产 ASE 设置为“晚期”。
 
 ## <a name="delete-an-ase"></a>删除 ASE
 
@@ -179,6 +183,16 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 1. 输入 ASE 的名称，确认想要将它删除。 删除 ASE 时，会同时删除它包含的所有内容。
 ![ASE 删除][3]
 1. 选择“确定”。
+
+## <a name="pricing"></a>定价 
+
+使用 ASEv3 时，有一种不同的定价模式，具体取决于你的 ASE 部署类型。 三种定价模式如下： 
+
+- ASEv3：如果 ASE 是空的，则收费方式如同你有一个包含 Windows I1v2 实例的 ASP。 一个实例的费用并非附加性费用，这笔费用只会在 ASE 为空时应用。
+- 可用性区域 ASEv3：至少有 9 笔 Windows I1v2 实例费用。 如果有 9 个或更多个应用服务计划实例，则可用性区域支持不收取额外的费用。 此外，AZ ASEv3 中的所有应用服务计划的最小实例计数为 3，以确保每个可用性区域中都有一个实例。 随着计划的横向扩展，这些计划将分散到各个可用性区域。 
+- 专用主机 ASEv3：使用专用主机部署时，你需要按照创建 ASEv3 时的定价支付两个专用主机的费用，并在缩放时按照较小百分比的“独立 V2”费率支付每个核心的费用。
+
+已提供独立 v2 的预留实例定价，并在[如何将预留折扣应用于 Azure 应用服务][reservedinstances]中进行了介绍。 [应用服务定价][pricing]的“独立 v2 计划”下提供了定价和预留实例定价。 
 
 <!--Image references-->
 
@@ -206,3 +220,5 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
+[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

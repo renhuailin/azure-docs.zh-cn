@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/09/2021
+ms.date: 08/18/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: anjusingh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3505f53c9ddeb4f3605554799c029a8195a9ab65
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 284a1c9d8b79a0d4e9c479afea9713a09c8c0fa4
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113004981"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429608"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>为用户配置和启用通过 Azure Active Directory 进行基于短信的身份验证 
 
@@ -24,7 +24,7 @@ ms.locfileid: "113004981"
 
 本文介绍如何在 Azure AD 中为选定的用户或组启用基于短信的身份验证。 有关支持使用基于短信的登录的应用列表，请参阅[应用对基于短信的身份验证的支持](how-to-authentication-sms-supported-apps.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需有以下资源和特权才能完成本文：
 
@@ -35,6 +35,7 @@ ms.locfileid: "113004981"
 * 需要在 Azure AD 租户中拥有“全局管理员”特权才能启用基于短信的身份验证。
 * 短信身份验证方法策略中启用的每个用户都必须获得许可，即使他们不使用该方法也是如此。 每个启用的用户都必须具有以下 Azure AD、EMS、Microsoft 365 许可证之一：
     * [Microsoft 365 F1 或 F3][m365-firstline-workers-licensing]
+    * [Azure Active Directory Premium P1 或 P2][azure-ad-pricing]
     * [企业移动性 + 安全性 (EMS) E3 或 E5][ems-licensing] 或 [Microsoft 365 E3 或 E5][m365-licensing]
     * [Office 365 F3][o365-f3]
 
@@ -173,3 +174,4 @@ ms.locfileid: "113004981"
 [m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans
 [o365-f1]: https://www.microsoft.com/microsoft-365/business/office-365-f1?market=af
 [o365-f3]: https://www.microsoft.com/microsoft-365/business/office-365-f3?activetab=pivot%3aoverviewtab
+[azure-ad-pricing]: https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing

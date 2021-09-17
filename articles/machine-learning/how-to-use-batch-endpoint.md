@@ -11,12 +11,12 @@ ms.author: tracych
 ms.reviewer: laobri
 ms.date: 8/11/2021
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: bd5d5eba2d5da4cd0f920d4c6287e779d83ac293
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b68ba3f0221aa97307e746d192de65b2915d2e4b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739120"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419550"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>使用批处理终结点（预览版）进行批量评分
 
@@ -64,7 +64,7 @@ az upgrade
 az extension add -n ml
 ```
 
-有关配置 ML 扩展的详细信息，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。
+有关配置 ML 扩展的详细信息，请参阅[安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)。
 
 * 示例存储库
 

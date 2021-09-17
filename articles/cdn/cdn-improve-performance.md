@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 545125877f8ef8e3b01aa24f6d65dbff6756c391
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601536"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445113"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 文件压缩是提高文件传输速度和增加页面加载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 文件压缩可以减少带宽成本，并为用户提供更快的响应体验。
@@ -121,11 +121,8 @@ ms.locfileid: "103601536"
 - gzip (GNU zip)
 - DEFLATE
 - bzip2
-- brotli 
 
-如果请求支持多个压缩类型，这些压缩类型优先于 brotli 压缩。
-
-如果对资产的请求指定了 brotli 压缩（HTTP 标头为 `Accept-Encoding: br`）并且请求导致缓存未命中，则 Azure CDN 将直接在 POP 服务器上对资产执行 brotli 压缩。 此后，将从缓存提供压缩的文件。
+Verizon 推出的 Azure CDN 不支持 brotli 压缩。 当 HTTP 请求包含标头时 `Accept-Encoding: br` 时，CDN 将会响应压缩失败问题。
 
 ### <a name="azure-cdn-standard-from-akamai-profiles"></a>Akamai 的 Azure CDN 标准版配置文件
 

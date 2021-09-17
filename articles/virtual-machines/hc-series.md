@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 362e12814457cfcc1e5e5dfa395756c0e5f8c83f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: adc52df3a393abb5579a7e03015548808722b197
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771858"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697112"
 ---
 # <a name="hc-series"></a>HC 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 HC 系列 VM 针对由密集计算驱动的应用程序（如隐式有限元素分析、分子动力学和计算化学）进行了优化。 HC VM 搭载 44 个 Intel Xeon Platinum 8168 处理器核心，为每个 CPU 核心提供 8 GB RAM，但不支持超线程。 Intel Xeon Platinum 平台支持 Intel 丰富的软件工具（如 Intel 数学内核库）生态系统，和高级矢量处理功能（如 AVX-512）。
 

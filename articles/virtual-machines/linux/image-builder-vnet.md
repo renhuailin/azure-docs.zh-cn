@@ -8,14 +8,16 @@ ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: 0234d011b424f3a910c67947d524401a415cd313
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: e6ea151e7f8449a8dc3e86944fff4bcf55932784
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113593790"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770399"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>使用 Azure 映像生成器创建允许访问现有 Azure VNET 的 Linux VM
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 本文介绍如何使用 Azure 映像生成器创建有权访问 VNET 中现有资源的基本自定义 Linux 映像。 创建的生成 VM 将部署到在订阅中指定的新的或现有 VNET。 使用现有的 Azure VNET 时，Azure 映像生成器服务不需要公共网络连接。
 
@@ -36,7 +38,7 @@ location=WestUS2
 
 # your subscription
 # get the current subID : 'az account show | grep id'
-subscriptionID=$(az account show | grep id | tr -d '",' | cut -c7-)
+subscriptionID=$(az account show --query id --output tsv)
 
 # name of the image to be created
 imageName=aibCustomLinuxImg01
@@ -159,7 +161,7 @@ idenityName=aibBuiUserId$(date +'%s')
 az identity create -g $imageResourceGroup -n $idenityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName --query clientId -o tsv)
 
 # get the user identity URI, needed for the template
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName

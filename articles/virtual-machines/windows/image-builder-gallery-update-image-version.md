@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.collection: windows
-ms.openlocfilehash: 08cc123df4d0b4af0d5a0e94d5ef0e4826b0681c
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 166e9b2b2ea98027c4ca9a8e13c5c26d68214d9a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594798"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769073"
 ---
 # <a name="create-a-new-windows-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>使用 Windows 中的 Azure 映像生成器从现有映像版本创建新的 VM 映像版本
+
+**适用于：** :heavy_check_mark: Windows VM
 
 本文介绍如何使用[共享映像库](../shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
 
@@ -71,10 +73,10 @@ username="user name for the VM"
 vmpassword="password for the VM"
 ```
 
-为你的订阅 ID 创建变量。 可使用 `az account show | grep id` 获取。
+为你的订阅 ID 创建变量。
 
 ```azurecli-interactive
-subscriptionID=<Subscription ID>
+subscriptionID=$(az account show --query id --output tsv)
 ```
 
 获取要更新的映像版本。
@@ -84,7 +86,7 @@ sigDefImgVersionId=$(az sig image-version list \
    -g $sigResourceGroup \
    --gallery-name $sigName \
    --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID --query [].'id' -o json | grep 0. | tr -d '"' | tr -d '[:space:]')
+   --subscription $subscriptionID --query [].'id' -o tsv)
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识，并在资源组上设置权限

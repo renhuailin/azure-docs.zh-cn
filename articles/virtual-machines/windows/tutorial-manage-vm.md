@@ -8,14 +8,15 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: ae298562b5d3306cf6c20b4c2fb7b378ba99c986
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ca70f0cf236cf786bcc578fa96e7a81597e5c06
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561613"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690037"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
+适用于：:heavy_check_mark: Windows VM 
 
 Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
 
@@ -237,7 +238,7 @@ Azure VM 可能会处于多种电源状态之一。
 | 电源状态 | 说明
 |----|----|
 | 正在启动 | 正在启动虚拟机。 |
-| 正在运行 | 虚拟机正在运行。 |
+| 运行 | 虚拟机正在运行。 |
 | 正在停止 | 正在停止虚拟机。 |
 | 已停止 | VM 已停止。 虚拟机处于停止状态时仍会产生计算费用。  |
 | 正在解除分配 | VM 正解除分配。 |

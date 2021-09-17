@@ -8,14 +8,16 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 3ed0766067e50ac8199890afdd7c7627aeecbdb9
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1b0f47f11f72a4fa26a15bc96e04052b460d5729
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112455043"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688203"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>在 Linux VM 中运行脚本
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 可能需要在 VM 中运行命令来自动完成任务或排查问题。 下文概述了可以用来在 VM 中运行脚本和命令的功能。
 

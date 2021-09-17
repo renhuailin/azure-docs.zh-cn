@@ -5,19 +5,20 @@ author: cynthn
 ms.collection: linux
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: cynthn
-ms.openlocfilehash: 5365bad5fdea2a8213defc103f0cdd966ebe50a5
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: ec73bc6c6f7563f1513f4575b5ee3c9b4a244e7c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816332"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698995"
 ---
 # <a name="tutorial-install-a-lamp-stack-on-an-azure-linux-vm"></a>教程：在 Azure Linux VM 上安装 LAMP 堆栈
+
+适用于：:heavy_check_mark: Linux VM 
 
 本文逐步讲解如何在 Azure 中的 Ubuntu VM 上部署 Apache Web 服务器、MySQL 和 PHP（LAMP 堆栈）。 若要了解 LAMP 服务器的运作情况，可以选择性地安装并配置 WordPress 站点。 本教程介绍如何执行下列操作：
 

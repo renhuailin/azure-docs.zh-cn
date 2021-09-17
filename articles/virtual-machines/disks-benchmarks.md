@@ -7,14 +7,16 @@ ms.date: 06/29/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: a6e156350be0de13b6c6bfea3f8d220830c3480e
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: c57047cdaf848bc27805d8819be515636d492676
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360768"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687549"
 ---
 # <a name="benchmark-a-disk"></a>对磁盘进行基准检验
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 基准测试是指模拟应用程序的不同工作负荷，针对每个工作负荷来测量应用程序性能这样一个过程。 通过[为实现高性能而设计](premium-storage-performance.md)一文中描述的步骤，你已经收集了应用程序性能要求。 通过在托管应用程序的 VM 上运行基准测试工具，可以确定应用程序在高级 SSD 中能够达到的性能级别。 在本文中，我们提供了如何对预配了 Azure 高级 SSD 的 Standard_D8ds_v4 VM 进行基准测试的示例。
 

@@ -3,12 +3,12 @@ title: 将已启用 Azure Arc 的服务器迁移到 Azure
 description: 了解如何将本地运行的已启用 Azure Arc 的服务器或其他云环境迁移到 Azure。
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9dd7baa2466f4acd3e4106c3cec5a0d7e7afe05c
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5433c859389722884df525ab7ac885ae013f9e59
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114390229"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768272"
 ---
 # <a name="migrate-your-on-premises-or-other-cloud-arc-enabled-server-to-azure"></a>将本地或其他已启用 Arc 的云服务器迁移到 Azure
 
@@ -42,7 +42,7 @@ ms.locfileid: "114390229"
 
 如果对已启用 Arc 的服务器上运行的应用程序或进程使用托管标识，则需要确保 Azure VM 分配有托管标识。 若要查看托管标识的角色分配，可以使用 Azure PowerShell `Get-AzADServicePrincipal` cmdlet。 有关详细信息，请参阅[列出托管标识的角色分配](../../role-based-access-control/role-assignments-list-powershell.md#list-role-assignments-for-a-managed-identity)。 
 
-使用 Azure Policy 审核计算机或服务器中的设置时，还会使用系统托管标识。 对于已启用 Arc 的服务器，将包括来宾配置代理，并执行审核设置验证。 迁移后，请参阅 [Azure 虚拟机的部署要求](../../governance/policy/concepts/guest-configuration.md#deploy-requirements-for-azure-virtual-machines)，了解如何手动或通过来宾配置扩展策略来配置 Azure VM 的相关信息。
+使用 Azure Policy 审核或配置计算机或服务器中的设置时，还会使用系统托管标识。 对于已启用 Arc 的服务器，将包括来宾配置代理服务，并执行审核设置验证。 迁移后，请参阅 [Azure 虚拟机的部署要求](../../governance/policy/concepts/guest-configuration.md#deploy-requirements-for-azure-virtual-machines)，了解如何通过手动方式或通过来宾配置扩展策略来配置 Azure VM。
 
 使用托管标识访问的任何资源更新角色分配，以允许新的 Azure VM 标识向这些服务进行身份验证。 请参阅以下资源，了解[如何将 Azure 资源的托管标识用于 Azure 虚拟机 (VM)](../../active-directory/managed-identities-azure-resources/how-managed-identities-work-vm.md)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "114390229"
 
 迁移并完成所有迁移后配置步骤后，就可以基于最初安装在已启用 Arc 的服务器上的 VM 扩展来部署 Azure VM 扩展了。 查看 [Azure 虚拟机扩展和功能](../../virtual-machines/extensions/overview.md)，以帮助规划扩展部署。 
 
-若要在具有 Azure Policy 来宾配置策略定义的计算机中继续使用审核设置，请参阅[启用来宾配置](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration)。
+若要在具有来宾配置策略定义的计算机中继续使用审核设置，请参阅[启用来宾配置](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration)。
 
 如果 Log Analytics VM 扩展或依赖项代理 VM 扩展是使用 Azure Policy 和 [VM 见解计划](../../azure-monitor/vm/vminsights-enable-policy.md)部署的，请删除之前创建的[排除项](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion)。 若要使用 Azure Policy 启用 Azure 虚拟机，请参阅[使用 Azure Policy 大规模部署 Azure Monitor](../../azure-monitor/deploy-scale.md#vm-insights)。 
 

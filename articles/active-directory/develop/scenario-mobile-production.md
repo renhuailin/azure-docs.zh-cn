@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 08243fd06de289941d8e6a9197ccb349614af056
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7756029d4b3ed43f55c86fa12128e1943c99b6bb
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104675951"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778384"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>准备用于生产的移动应用
 
@@ -39,4 +39,4 @@ ms.locfileid: "104675951"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要尝试其他示例，请参阅[桌面和移动公共客户端应用](sample-v2-code.md#desktop-and-mobile-public-client-apps)。
+若要尝试其他示例，请参阅[移动公共客户端应用程序](sample-v2-code.md#mobile)。

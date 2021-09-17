@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/23/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9b45671496f114eaf708aad92def220a3b81349e
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 079575148585c508224b6767b2eba61a16463fa0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690202"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732737"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
 
@@ -38,7 +38,7 @@ ms.locfileid: "114690202"
 - 安装[适用于 Windows/macOS/Linux 的 Visual Studio Code](https://code.visualstudio.com/) 或[适用于 Windows 或 Mac 的 Visual Studio 2019](https://visualstudio.microsoft.com/)。
 - 安装 [.NET 5.0 SDK](https://dotnet.microsoft.com/download)
 - [创建媒体服务帐户](./account-create-how-to.md)。 请务必以 JSON 格式复制 API 访问详细信息，或以此示例中使用的 .env 文件格式存储连接到媒体服务帐户所需的值。
-- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你需要使用它们来访问此示例中的 API，或将它们输入为 .env 文件格式。
+- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤。 确保保存凭据。 你需要使用它们来访问此示例中的 API，或将它们输入为 .env 文件格式。
 
 ## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
@@ -48,7 +48,7 @@ ms.locfileid: "114690202"
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
 
-该示例位于 [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) 文件夹。
+该示例位于 AMSV3Quickstarts 下的 [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) 文件夹。
 
 [!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
@@ -68,8 +68,9 @@ ms.locfileid: "114690202"
 
 运行应用时，显示使用不同协议播放视频的 URL。 
 
-1. 按 Ctrl+F5 运行 EncodeAndStreamFiles 应用程序  。
-2. 选择 Apple 的“HLS”协议（以 manifest(format=m3u8-aapl) 结束），并从控制台复制流式处理 URL   。
+1. 在 VSCode 中打开 AMSV3Quickstarts。
+2. 按 Ctrl+F5 通过 .NET 运行 EncodeAndStreamFiles 应用程序。 这可能需要几分钟的时间。
+3. 应用将输出三个 URL。 你将在下一步中使用这些 URL 测试流。
 
 ![Visual Studio 中 EncodeAndStreamFiles 应用输出的屏幕截图，显示了在 Azure Media Player 中使用的三个流式处理 URL。](./media/stream-files-tutorial-with-api/output.png)
 
@@ -86,7 +87,7 @@ ms.locfileid: "114690202"
 2. 在“URL:”框中，粘贴运行应用程序时获取的某个流式处理 URL 值  。 
  
      可以粘贴 HLS、Dash 或 Smooth 格式的 URL，Azure Media Player将切换到适当的流协议，以便在你的设备上自动播放。
-3. 按“更新播放器”。
+3. 按“更新播放器”。 这应开始播放存储库中的视频文件。
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
 

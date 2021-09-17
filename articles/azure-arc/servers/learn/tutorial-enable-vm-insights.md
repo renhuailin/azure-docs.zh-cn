@@ -3,12 +3,12 @@ title: 教程 - 使用 Azure Monitor VM 见解来监视混合计算机
 description: 了解如何在 Azure Monitor 的混合计算机中收集和分析数据。
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: f59ad448440110e2c5e6dd1fa1b2858d9cf42e91
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8ab801885e86ed90d5f28c2ce90a994828b358a0
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834257"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772616"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-vm-insights"></a>教程：使用 VM 见解监视混合计算机
 

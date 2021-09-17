@@ -1,15 +1,15 @@
 ---
 title: 创建 Bicep 文件 - Visual Studio Code
 description: 使用 Visual Studio Code 和适用于 Bicep 文件的 Bicep 扩展来部署 Azure 资源
-ms.date: 06/25/2021
+ms.date: 07/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8167516a41943ea17fdeb47bce84767178593e85
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 4f76d18c756855798651e0c129fd4f0caec15984
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112970096"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750147"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Bicep 文件
 
@@ -61,7 +61,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
 }
 ```
 
-此代码片段包含定义虚拟网络所需的所有值。 不过，你可以根据自己的需求修改此代码。 例如，`name` 并不是很适合用作虚拟网络的名称。 将 `name` 属性更改为 `examplevnet`。
+此代码片段包含用于定义虚拟网络的所有值。 不过，你可以根据自己的需求修改此代码。 例如，`name` 并不是很适合用作虚拟网络的名称。 将 `name` 属性更改为 `examplevnet`。
 
 ```bicep
 name: 'examplevnet'
@@ -118,13 +118,13 @@ param storageName string
 
 我们将使用 Intellisense 来设置值，而不是使用代码片段来定义存储帐户。 与手动键入值相比，使用 Intellisense 完成此步骤要方便得多。
 
-使用 `resource` 关键字定义资源。  在虚拟网络下方，键入 resource exampleStorage：
+若要定义资源，请使用关键字 `resource`。  在虚拟网络下方，键入 resource exampleStorage：
 
 ```bicep
 resource exampleStorage
 ```
 
-exampleStorage 是要部署的资源的符号名称。 它可让你轻松在 Bicep 文件的其他部分引用该资源。
+exampleStorage 是要部署的资源的符号名称。 可以使用此名称引用 Bicep 文件其他部分中的资源。
 
 在该符号名称的后面添加空格时，会显示资源类型的列表。 不断键入 storage，直到可以从可用选项中选择它。
 
@@ -154,7 +154,7 @@ resource exampleStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 
 即将完成。 只需为这些属性提供值。
 
-同样，Intellisense 可为你提供帮助。 对于 `name`，请提供包含存储帐户名称的参数。 对于 `location`，请将其设置为 `eastus`。 添加 SKU 名称和类型时，Intellisense 会显示有效选项。
+同样，Intellisense 可为你提供帮助。 将 `name` 设置为 `storageName`，这是包含存储帐户名称的参数。 对于 `location`，请将其设置为 `eastus`。 添加 SKU 名称和类型时，Intellisense 会显示有效选项。
 
 完成后，你的 Bicep 文件将如下所示：
 

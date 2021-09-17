@@ -1,15 +1,15 @@
 ---
 title: 快速入门：通过 Bicep（预览版）文件的新策略分配
 description: 本快速入门介绍如何使用 Bicep（预览版）文件创建策略分配以识别不合规的资源。
-ms.date: 05/20/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: subject-bicepqs
-ms.openlocfilehash: 0f48804fd73b073479617aa3359e6d338056fb39
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 116058395d556d4e5f7d8a9c67867376e703a7cc
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007168"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323747"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-bicep-file"></a>快速入门：使用 Bicep 文件创建策略分配以识别不合规的资源
 
@@ -37,7 +37,7 @@ ms.locfileid: "112007168"
 param policyAssignmentName string = 'audit-vm-manageddisks'
 param policyDefinitionID string = '/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d'
 
-resource assignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
+resource assignment 'Microsoft.Authorization/policyAssignments@2021-09-01' = {
     name: policyAssignmentName
     scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
     properties: {
@@ -79,7 +79,7 @@ az deployment group create \
 
 ---
 
-其他某些资源：
+其他一些资源：
 
 - 若要查找更多示例模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)。
 - 若要查看模板参考，请转到 [Azure 模板参考](/azure/templates/microsoft.authorization/allversions)。

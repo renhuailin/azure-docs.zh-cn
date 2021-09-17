@@ -1,77 +1,79 @@
 ### YamlMime:FAQ
 metadata:
   title: Azure SQL 数据库超大规模命名副本常见问题解答
-  description: 对客户关于“超大规模”服务层级命名副本中 SQL 数据库中的数据库提出的常见问题的回答
+  description: 对客户关于“超大规模”命名副本提出的常见问题的回答
   services: sql-database
   ms.service: sql-database
-  ms.subservice: 
+  ms.subservice: service-overview
   ms.custom: 
   ms.devlang: 
   ms.topic: conceptual
   author: yorek
   ms.author: damauri
   ms.reviewer: 
-  ms.date: 06/09/2021
-  ms.openlocfilehash: 53dd0035a9ee973b68b7a1f795e500775e226e3f
-  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+  ms.date: 07/27/2021
+  ms.openlocfilehash: 223873b80235c9a8734d0b7d6c3a04781e202a4d
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113233440"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121722908"
 title: Azure SQL 数据库超大规模命名副本常见问题解答
-summary: "[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]\n\n本文就客户对 Azure SQL 数据库“超大规模”服务层级中的数据库（在本常见问题解答的剩余部分简称为“超大规模”）提出的常见问题做出回答。 本文介绍“超大规模”支持的方案，以及与“超大规模”兼容的功能。\n\n- 本常见问题解答适用于对“超大规模”服务层级命名副本有基本了解并希望其具体问题得到解答的读者。\n- 有关“超大规模”命名副本的完整信息，请参阅[超大规模副本命名副本](service-tier-hyperscale-replicas.md#named-replica-in-preview)。 \n"
+summary: >
+  [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+
+  本常见问题解答适用于对“超大规模”[命名副本](service-tier-hyperscale-replicas.md#named-replica-in-preview)有大致了解并希望其具体问题得到解答的读者。
 sections:
 - name: 一般问题
   questions:
   - question: >
-      命名副本能否用作故障转移目标？
+      Can a named replica be used as a failover target?
     answer: >
-      不能，命名副本不能用作故障转移目标。 此目的请使用 HA 副本。
+      No, named replicas cannot be used as failover targets for the primary replica. Add HA replicas for that purpose.
   - question: >
-      如何在命名副本之间分配只读工作负载？
+      How can I distribute a read-only workload across my named replicas?
     answer: >
-      由于每个命名副本可能具有不同的服务级别目标，因此可用于不同的用例，因而没有内置方法将发送到主要副本的只读流量定向到相关的命名副本。 例如，你可能有八个命名副本，并且可能只想将 OLTP 工作负载定向到命名副本 1 到 4，而所有 Power BI 分析工作负载将使用命名副本 5 和 6，数据科学工作负载将使用副本 7 和 8. 根据你使用的工具或编程语言，分发此类工作负载的策略可能会有所不同。 创建工作负载路由解决方案以允许 REST 后端横向扩展的一个示例如下：[OLTP 横向扩展示例](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout)。
+      Since every named replica may have a different service level objective and thus be used for different use cases, there is no built-in way to direct read-only traffic sent to the primary to a set of named replicas. For example, you may have eight named replicas, and you may want to direct OLTP workload only to named replicas 1 to 4, while all the Power BI analytical workloads will use named replicas 5 and 6 and the data science workload will use replicas 7 and 8. Depending on which tool or programming language you use, strategies to distribute such workload may vary. One example of creating a workload routing solution to allow a REST backend to scale out is here: [OLTP scale-out sample](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout).
   - question: >
-      命名副本是否可以位于与主要副本不同的区域？
+      Can a named replica be in a region different from the region of the primary replica?
     answer: >
-      不能，由于命名副本使用主副本的同一页面服务器，所以它们必须位于相同的区域。
+      No, as named replicas use the same page servers of the primary replica, they must be in the same region.
   - question: >
-      命名副本是否会影响主要副本的可用性或性能？
+      Can a named replica impact availability or performance of the primary replica?
     answer: >
-      命名副本不会影响主要副本的可用性。 通常，命名副本不太可能影响主要副本的性能，但如果运行密集型工作负载，则可能会发生此情况。 与 HA 副本一样，命名副本通过事务日志服务与主副本保持同步。 如果命名副本出于任何原因无法以足够快的速度使用事务日志，它将开始请求主要副本减慢（限制）其日志生成，以便它能够跟上进度。 尽管此行为不会影响主服务器的可用性，但会影响其性能。 若要避免这种情况，请确保命名副本有足够的可用资源（主要是 CPU）以便它们可以无延迟地处理事务日志。 例如，如果主服务器正在处理大量数据更改，建议命名副本至少具有与主服务器相同的服务级别目标，以避免副本上的 CPU 出现瓶颈，从而迫使主要副本减慢速度。
+      A named replica cannot impact the availability of the primary replica. Named replicas, under normal circumstances, are unlikely to impact the primary's performance, but it can happen if there are intensive workloads running. Just like an HA replica, a named replica is kept in sync with the primary via the transaction log service. If a named replica, for any reason, is not able to consume the transaction log fast enough, it will start asking the primary replica to slow down (throttle) its log generation, so that it can catch up. While this behavior will not impact the primary's availability, it may impact performance of write workloads on the primary. To avoid this situation, make sure that your named replicas have enough resource headroom – mainly CPU – to process transaction log without delay. For example, if the primary is processing numerous data changes, it is recommended to have named replicas with at least the same Service Level Objective as the primary, to avoid saturating CPU on the replicas and thus forcing the primary to slow down.
   - question: >
-      如果主要副本（例如由于计划内维护）不可用，命名副本会发生什么情况？
+      What happens to named replicas if the primary replica is unavailable, for example because of planned maintenance?
     answer: >
-      命名副本仍可照常进行只读访问。
+      Named replicas will still be available for read-only access, as usual.
   - question: >
-      如何验证我是否已使用 SQL Server Management Studio (SSMS) 或其他客户端工具成功连接到次要计算副本？
+      How do I validate if I have successfully connected to secondary compute replica using SQL Server Management Studio (SSMS) or other client tools?
     answer: >
-      可执行以下 T-SQL 查询：
+      You can execute the following T-SQL query. The database context must be set to the name of the Hyperscale database, not to the `master` database.
 
 
       ```sql
 
-      SELECT @@SERVERNAME, DB_NAME(), DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
+      SELECT @@SERVERNAME AS logical_server_name, DB_NAME() AS database_name, DATABASEPROPERTYEX(DB_NAME(), 'Updateability') AS replica_updateability;
 
       ```
 
 
-      如果已连接到只读辅助副本，则结果为 `READ_ONLY`；如果已连接到主要副本，则结果为 `READ_WRITE`。 数据库上下文必须设置为“超大规模”数据库的名称，而不是数据库 `master` 的名称。
+      `replica_updateability` will be `READ_ONLY` if you are connected to a read-only secondary replica, and `READ_WRITE` if you are connected to the primary replica.
   - question: >
-      能否在次要计算副本上创建任何对象或索引？
+      Can I create any objects or indexes on my secondary compute replicas?
     answer: >
-      否。 “超大规模”数据库有共享存储，这表示所有计算副本会看到相同的表格、索引和视图。 如果要使次要副本上的额外索引得到读取优化，必须在主要副本上添加索引。
+      No. Hyperscale databases have shared storage, meaning that all compute replicas see the same tables, indexes, views, etc. If you want additional indexes optimized for reads on secondary, you must add them on the primary.
 
 
-      你仍然可以创建和使用临时表来存储临时数据。
+      You can still create temporary tables (table names prefixed with # or ##) on each secondary replica to store temporary data. Temporary tables are read-write.
   - question: >
-      主要和次要计算副本之间的延迟是多少？
+      How much delay is there between the primary and secondary compute replicas?
     answer: >
-      从在主要副本上提交事务的时间开始算起，到该事务在次要副本上可读的时间为止，数据延迟取决于当前日志生成速率、事务大小、副本上的负载以及其他因素。 小型事务的典型数据延迟为数十毫秒，但数据延迟没有上限。 给定次要副本上的数据始终在事务上保持一致。 但在给定的时间点，不同次要副本的数据延迟可能不同。 需要立即读取已提交数据的工作负载应在主要副本上运行。
+      Data latency from the time a transaction is committed on the primary to the time it is readable on a secondary depends on current log generation rate, transaction size, load on the replica, and other factors. Typical data latency for small transactions is in tens of milliseconds, however there is no upper bound on data latency. Data on a given secondary replica is always transactionally consistent. However, at a given point in time data latency may be different for different secondary replicas. Workloads that need to read committed data immediately should run on the primary replica.
   - question: >
-      如何提高命名副本的可用性？
+      How can I improve availability of named replicas?
     answer: >
-      默认情况下，命名副本没有任何 HA 副本。 但是，由于它们的行为类似于常规（只读）Azure SQL 数据库，因此它们可以受益于 HA 副本提供的[更高 SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database/)。 若要设置 HA 副本数，可结合使用 `--ha-replicas` 和 [AZ CLI](/cli/azure/sql/db/replica?view=azure-cli-latest#az_sql_db_replica_create)或 `--HighAvailabilityReplicaCount` 和 [PowerShell](/powershell/module/az.sql/set-azsqldatabase)或通过 `highAvailabilityReplicaCount` 属性和 [REST API](/rest/api/sql/2021-02-01-preview/databases/create-or-update)。
-
-      可以在创建命名副本期间设置 HA 副本数，并且可在创建命名副本后随时更改（仅通过 AZ CLI、PowerShell 或 REST API）。 命名副本的 HA 副本定价与常规数据库的 HA 副本相同。
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n有关“超大规模”服务层级的详细信息，请参阅[“超大规模”服务层级](service-tier-hyperscale.md)。\n有关超大规模副本的详细信息，请参阅[超大规模副本](service-tier-hyperscale-replicas.md)。"
+      By default, named replicas do not have any HA replicas of their own. A failover of a named replica requires creating a new replica first, which typically takes about 1-2 minutes. However, named replicas can also benefit from higher availability and shorter failovers provided by HA replicas. To add HA replicas for a named replica, you can use the parameter `ha-replicas` with [AZ CLI](/cli/azure/sql/db/replica?view=azure-cli-latest#az_sql_db_replica_create), or the parameter `HighAvailabilityReplicaCount` with [PowerShell](/powershell/module/az.sql/set-azsqldatabase), or the `highAvailabilityReplicaCount` property with [REST API](/rest/api/sql/2021-02-01-preview/databases/create-or-update). The number of HA replicas can be set during the creation of a named replica and can be changed – only via AZ CLI, PowerShell or REST API – anytime after the named replica has been created. Pricing of HA replicas for named replicas is the same of HA replicas for regular Hyperscale databases.
+additionalContent: "\n## Next steps\n\nFor more information about the Hyperscale service tier, see [Hyperscale service tier](service-tier-hyperscale.md).\nFor more information about the Hyperscale replicas, see [Hyperscale Replicas](service-tier-hyperscale-replicas.md)."

@@ -6,13 +6,13 @@ ms.author: v-ssudhir
 ms.manager: deseelam
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/15/2021
-ms.openlocfilehash: 1b2dd711fb44b1b6b684257e5e5f6abefb5eda50
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/19/2021
+ms.openlocfilehash: f6f63c24f98cd362619823ca4ebe1d66d35e6ced
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291146"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598023"
 ---
 # <a name="troubleshoot-network-connectivity"></a>排查网络连接问题
 本文帮助你在专用终结点使用 Azure Migrate 排查网络连接问题。
@@ -49,7 +49,7 @@ ms.locfileid: "114291146"
 
 存储帐户专用链接 FQDN 的 DNS 解析的说明性示例。  
 
-- 输入 nslookup<storage-account-name>.blob.core.windows.net。  将 <storage-account-name> 替换为用于 Azure Migrate 的存储帐户的名称。  
+- 输入 _nslookup ```<storage-account-name>_.blob.core.windows.net.``` 将 ```<storage-account-name>``` 替换为用于 Azure Migrate 的存储帐户的名称。  
 
     你将收到如下消息：  
 
@@ -231,7 +231,7 @@ Azure Migrate 自动创建专用 DNS 区域（用户选择的缓存/复制存储
 |*.portal.azure.com | 导航到 Azure 门户
 |*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com <br/> *.microsoftonline.com <br/> *.microsoftonline-p.com <br/> | 由 Azure Active Directory 用于访问控制和标识管理
 |management.azure.com | 用于触发 Azure 资源管理器部署
-|*.services.visualstudio.com（可选） | 上传用于内部监视的设备日志
+|*.services.visualstudio.com（可选） | 上传用于内部监视的设备日志。
 |aka.ms/*（可选） | 允许访问 aka 链接；用于下载和安装设备服务的最新更新
 |download.microsoft.com/download | 允许从 Microsoft 下载中心中进行下载    
 
@@ -265,3 +265,33 @@ Azure Migrate 自动创建专用 DNS 区域（用户选择的缓存/复制存储
 3. 如果问题仍然存在，请[参阅本部分](#validate-the-private-dns-zone)以进一步进行故障排除。
 
 验证连接后，请重试发现过程。
+
+### <a name="importexport-request-fails-with-the-error-403-this-request-is-not-authorized-to-perform-this-operation"></a>导入/导出请求失败，出现错误“403：此请求无权执行此操作” 
+
+对于具有专用终结点连接的项目，导出/导入/下载报表请求失败，并出现错误“403：此请求无权执行此操作”。
+
+#### <a name="possible-causes"></a>可能的原因： 
+如果导出/导入/下载请求不是从经过授权的网络启动的，则可能出现此错误。 如果导入/导出/下载请求从未通过专用网络连接到 Azure Migrate 服务（Azure 虚拟网络）的客户端启动，则会发生这种情况。 
+
+#### <a name="remediation"></a>补救
+选项 1（建议）：
+  
+若要解决此错误，请从驻留在虚拟网络中的通过专用链接连接到 Azure 的客户端重试导入/导出/下载操作。 可以在本地网络或设备 VM 中打开 Azure 门户，并重试该操作。 
+
+**选项 2**：
+
+导入/导出/下载请求与存储帐户建立连接，用于上传/下载报表。 还可以更改用于导入/导出/下载操作的存储帐户的网络设置，并允许通过其他网络（公用网络）访问存储帐户。  
+
+若要为公用终结点连接设置存储帐户，请
+
+1. 找到存储帐户：存储帐户名称位于“Azure Migrate：发现和评估”属性页上。 存储帐户名称的后缀为 usa。 
+
+   :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/server-assessment-properties.png" alt-text="下载 DNS 设置的快照。"::: 
+
+2. 导航到存储帐户并编辑存储帐户网络属性，以允许从所有/其他网络访问。 
+
+    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/networking-firewall-virtual-networks.png" alt-text="存储帐户网络属性的快照。":::
+
+3. 或者，可以限制对所选网络的访问，并添加要尝试从中访问 Azure 门户的客户端的公共 IP 地址。  
+
+    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/networking-firewall.png" alt-text="添加客户端的公共 IP 地址的快照。":::

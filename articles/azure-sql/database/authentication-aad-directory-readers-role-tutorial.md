@@ -8,24 +8,21 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: 14f21939e53a284619f18049df84706cab6fd594
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/30/2021
+ms.openlocfilehash: 73fc178efb78ca1c305a65a154c60f3c49778df9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087048"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727150"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>教程：将目录读取者角色分配到 Azure AD 组并管理角色分配
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-> [!NOTE]
-> 本文中组的目录读取者角色分配为公共预览版 。 
-
 本文介绍如何在 Azure Active Directory (Azure AD) 中创建组，并向该组分配 [目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)角色。 通过目录读取者权限，组所有者能够将其他成员添加到组中，如 [Azure SQL 数据库](sql-database-paas-overview.md)的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 这就不需要[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)来为租户中的每个 Azure SQL 逻辑服务器标识直接分配目录读取者角色。
 
-本教程使用[使用云组来管理 Azure Active Directory 中的角色分配（预览版）](../../active-directory/roles/groups-concept.md)中引入的功能。 
+本教程使用[使用 Azure AD 组来管理角色分配](../../active-directory/roles/groups-concept.md)中引入的功能。 
 
 如需详细了解将目录读取者角色分配给 Azure SQL 的 Azure AD 组的优势，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
 
@@ -41,7 +38,7 @@ ms.locfileid: "110087048"
 1. 此初始设置需要具有[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)权限的用户。
 1. 让特权用户登录到 [Azure 门户](https://portal.azure.com)。
 1. 转到 Azure Active Directory 资源。 在“托管”下，转到“组” 。 选择“新建组”以创建一个新组。
-1. 选择“安全”作为组类型，并填充其余字段。 确保可以将设置“Azure AD 角色可以分配给组（预览）”切换为“是” 。 然后，将 Azure AD 目录读取者角色分配给组。
+1. 选择“安全”作为组类型，并填充其余字段。 确保将“Azure AD 角色可以分配给组”设置切换为“是” 。 然后，将 Azure AD 目录读取者角色分配给组。
 1. 将 Azure AD 用户作为所有者分配给创建的组。 组所有者可以是未分配任何 Azure AD 管理角色的常规 AD 用户。 所有者应该是管理 SQL 数据库、SQL 托管实例或 Azure Synapse 的用户。
 
    :::image type="content" source="media/authentication-aad-directory-readers-role/new-group.png" alt-text="aad-new-group":::
@@ -55,7 +52,7 @@ ms.locfileid: "110087048"
 
 若要检查和管理已创建的组，请返回到 Azure 门户中的“组”窗格，并搜索组名称。 选择组后，可以在“管理”设置的“所有者”和“成员”菜单下添加其他所有者和成员  。 还可查看组的“已分配角色”。
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="“组”窗格的屏幕截图，其中包含的链接可打开突出显示的“成员”、“所有者”和“分配的角色(预览)”的“设置”菜单。":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="“组”窗格的屏幕截图，其中突出显示了用于打开成员、所有者和已分配角色“设置”菜单的链接。":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>向组添加 Azure SQL 托管标识
 
@@ -96,13 +93,13 @@ ms.locfileid: "110087048"
 > [!IMPORTANT]
 > [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)需要运行这些初始步骤。 除 PowerShell 外，Azure AD 还提供 Microsoft 图形 API 以[在 Azure AD 中创建可分配角色的组](../../active-directory/roles/groups-create-eligible.md#microsoft-graph-api)。
 
-1. 使用以下命令下载 Azure AD 预览版 PowerShell 模块。 可能需要以管理员身份运行 PowerShell。
+1. 使用以下命令下载 Azure AD PowerShell 模块。 可能需要以管理员身份运行 PowerShell。
 
     ```powershell
-    Install-Module azureadpreview
-    Import-Module azureadpreview
+    Install-Module azuread
+    Import-Module azuread
     #To verify that the module is ready to use, use the following command:
-    Get-Module azureadpreview
+    Get-Module azuread
     ```
 
 1. 连接到 Azure AD 租户。

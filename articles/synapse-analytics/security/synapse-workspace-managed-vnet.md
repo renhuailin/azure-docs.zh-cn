@@ -1,19 +1,19 @@
 ---
 title: 托管虚拟网络
 description: 本文介绍 Azure Synapse Analytics 中的托管虚拟网络
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 01/18/2021
-ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/16/2021
+ms.author: seshin
+ms.reviewer: wiassaf
+ms.openlocfilehash: 9866a2c773193cc20bd6b9e193e025fa65eddcc6
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98569891"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446202"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics 托管虚拟网络
 
@@ -50,25 +50,23 @@ ms.locfileid: "98569891"
 >[!IMPORTANT]
 >只能在具有托管工作区虚拟网络的工作区中使用专用链接。
 
-![启用托管工作区虚拟网络](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-analytics-networking-managed-virtual-network-outbound-traffic.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-analytics-networking-managed-virtual-network-outbound-traffic.png" alt-text="“创建 Synapse 工作区”网络页面的屏幕截图，其中已启用“托管虚拟网络”选项，且“只允许出站数据流量传输到已批准的目标”选项为“是”。":::
 
 选择将托管工作区虚拟网络与你的工作区关联后，可使用[托管专用终结点](./synapse-workspace-managed-private-endpoints.md)，仅允许从托管工作区虚拟网络到已批准目标的出站连接，从而防止数据外泄。 选择“是”，通过托管专用终结点限制从托管工作区虚拟网络到目标的出站流量。 
 
 
->[!IMPORTANT]
->在具有已启用数据外泄保护的托管虚拟网络的 Synapse 工作区中禁用元存储。 你将无法在这些工作区中使用 Spark SQL。
 
-![使用托管专用终结点的出站流量](./media/synapse-workspace-managed-vnet/select-outbound-connectivity.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-managed-virtual-network-allow-outbound-traffic.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-managed-virtual-network-allow-outbound-traffic.png" alt-text="“托管虚拟网络”页的屏幕截图，其中“只允许出站数据流量传输到已批准的目标”选项为“是”。":::
 
 选择“否”以允许从工作区到任何目标的出站流量。
 
 你还可控制从 Azure Synapse 工作区中创建的托管专用终结点的目标。 默认情况下，允许为你的订阅所属的同一 AAD 租户中的资源创建托管专用终结点。 如果要为并非你的订阅所属的 AAD 租户中的资源创建托管专用终结点，则可选择“+ 添加”来添加该 AAD 租户。 可从下拉列表中选择 AAD 租户，也可手动输入 AAD 租户 ID。
 
-![添加额外的 AAD 租户](./media/synapse-workspace-managed-vnet/add-additional-azure-active-directory-tenants.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-managed-virtual-network-private-endpoints-azure-ad.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-managed-virtual-network-private-endpoints-azure-ad.png" alt-text="“托管虚拟网络”页的屏幕截图，其中突出显示了 Azure AD 租户的“添加”按钮。":::
 
 在创建工作区后，可以通过在 Azure 门户中选择“概览”来检查 Azure Synapse 工作区是否关联到某个托管工作区虚拟网络。
 
-![Azure 门户中的工作区概览](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-analytics-overview-managed-virtual-network-enabled.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-analytics-overview-managed-virtual-network-enabled.png" alt-text="Azure Synapse 工作区概述页的屏幕截图，指示已启用托管虚拟网络。":::
 
 ## <a name="next-steps"></a>后续步骤
 

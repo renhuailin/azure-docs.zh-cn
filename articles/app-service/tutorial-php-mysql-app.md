@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0810f023f4e2e192f2cb0d83f2a028cdded9e275
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 832f685bd53f19d4295863b922789b0c4ee85f62
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779414"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746863"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP 和 MySQL 应用
 
@@ -44,7 +44,7 @@ ms.locfileid: "107779414"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 - [安装 Git](https://git-scm.com/)
 - [安装 PHP 5.6.4 或更高版本](https://php.net/downloads.php)
@@ -71,17 +71,17 @@ mysql -u root -p
 
 ### <a name="create-a-database-locally"></a>在本地创建数据库
 
-在 `mysql` 提示中创建数据库。
+1. 在 `mysql` 提示中创建数据库。
 
-```sql 
-CREATE DATABASE sampledb;
-```
+    ```sql 
+    CREATE DATABASE sampledb;
+    ```
 
-键入 `quit` 退出服务器连接。
+1. 键入 `quit` 退出服务器连接。
 
-```sql
-quit
-```
+    ```sql
+    quit
+    ```
 
 <a name="step2"></a>
 
@@ -92,19 +92,27 @@ quit
 
 在终端窗口中，通过 `cd` 转到工作目录。
 
-运行下列命令，克隆示例存储库。
+1. 克隆示例存储库并更改为存储库根路径。
 
-```bash
-git clone https://github.com/Azure-Samples/laravel-tasks
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/laravel-tasks
+    cd laravel-tasks
+    ```
 
-通过 `cd` 转到克隆目录。
-安装所需程序包。
+1. 确保默认分支为 `main`。
 
-```bash
-cd laravel-tasks
-composer install
-```
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > 应用服务不需要更改分支名称。 但是，由于许多存储库将其默认分支更改为 `main`，因此本教程还介绍如何从 `main` 部署存储库。 有关详细信息，请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)。
+
+1. 安装所需程序包。
+
+    ```bash
+    composer install
+    ```
 
 ### <a name="configure-mysql-connection"></a>配置 MySQL 连接
 
@@ -126,29 +134,29 @@ DB_PASSWORD=<root_password>
 
 ### <a name="run-the-sample-locally"></a>在本地运行示例
 
-运行 [Laravel 数据库迁移](https://laravel.com/docs/5.4/migrations)，创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 database/migrations 目录。
+1. 运行 [Laravel 数据库迁移](https://laravel.com/docs/5.4/migrations)，创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 database/migrations 目录。
 
-```bash
-php artisan migrate
-```
+    ```bash
+    php artisan migrate
+    ```
 
-生成新的 Laravel 应用程序密钥。
+1. 生成新的 Laravel 应用程序密钥。
 
-```bash
-php artisan key:generate
-```
+    ```bash
+    php artisan key:generate
+    ```
 
-运行应用程序。
+1. 运行应用程序。
 
-```bash
-php artisan serve
-```
+    ```bash
+    php artisan serve
+    ```
 
-在浏览器中导航到 `http://localhost:8000`。 在页面中添加一些任务。
+1. 在浏览器中导航至 `http://localhost:8000` 。 在页面中添加一些任务。
 
-![PHP 已成功连接到 MySQL](./media/tutorial-php-mysql-app/mysql-connect-success.png)
+    ![PHP 已成功连接到 MySQL](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
-在终端键入 `Ctrl + C` 可停止 PHP。
+1. 在终端键入 `Ctrl + C` 可停止 PHP。
 
 ## <a name="create-mysql-in-azure"></a>在 Azure 中创建 MySQL
 
@@ -186,52 +194,48 @@ az mysql server create --resource-group myResourceGroup --name <mysql-server-nam
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-在 Cloud Shell 中，使用 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
+1. 在 Cloud Shell 中，使用 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
 
-```azurecli-interactive
-az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-```
+    ```azurecli-interactive
+    az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+    ```
 
-> [!TIP] 
-> 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](overview-inbound-outbound-ips.md#find-outbound-ips)。
->
+    > [!TIP] 
+    > 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](overview-inbound-outbound-ips.md#find-outbound-ips)。
+    >
 
-在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
+1. 在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
 
-```azurecli-interactive
-az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
-```
-
-### <a name="connect-to-production-mysql-server-locally"></a>在本地连接到生产 MySQL 服务器
-
-在本地终端窗口中，连接到 Azure 中的 MySQL 服务器。 对于 &lt;admin-user> 和 &lt;mysql-server-name>，请使用前面指定的值 。 出现输入密码的提示时，请使用在 Azure 中创建数据库时指定的密码。
-
-```bash
-mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
-```
+    ```azurecli-interactive
+    az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
+    ```
 
 ### <a name="create-a-production-database"></a>创建生产数据库
 
-在 `mysql` 提示中创建数据库。
+1. 在本地终端窗口中，连接到 Azure 中的 MySQL 服务器。 对于 &lt;admin-user> 和 &lt;mysql-server-name>，请使用前面指定的值 。 出现输入密码的提示时，请使用在 Azure 中创建数据库时指定的密码。
 
-```sql
-CREATE DATABASE sampledb;
-```
+    ```bash
+    mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
+    ```
 
-### <a name="create-a-user-with-permissions"></a>创建具有权限的用户
+1. 在 `mysql` 提示中创建数据库。
 
-创建一个名为 phpappuser 的数据库用户并向其授予 `sampledb` 数据库中的所有特权。 为方便学习教程，请使用 MySQLAzure2017 作为密码。
+    ```sql
+    CREATE DATABASE sampledb;
+    ```
 
-```sql
-CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
-GRANT ALL PRIVILEGES ON sampledb.* TO 'phpappuser';
-```
+1. 创建一个名为 phpappuser 的数据库用户并向其授予 `sampledb` 数据库中的所有特权。 为方便学习教程，请使用 MySQLAzure2017 作为密码。
 
-键入 `quit` 退出服务器连接。
+    ```sql
+    CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
+    GRANT ALL PRIVILEGES ON sampledb.* TO 'phpappuser';
+    ```
 
-```sql
-quit
-```
+1. 键入 `quit` 退出服务器连接。
+
+    ```sql
+    quit
+    ```
 
 ## <a name="connect-app-to-azure-mysql"></a>将应用连接到 Azure MySQL
 
@@ -300,31 +304,31 @@ MYSQL_SSL=true
 
 ### <a name="test-the-application-locally"></a>在本地测试应用程序
 
-使用 _.env.production_ 作为环境文件运行 Laravel 数据库迁移，在 Azure Database for MySQL 中的 MySQL 数据库内创建表。 请记住，在 Azure 中 .env.production 具有的 MySQL 数据库的连接信息。
+1. 使用 _.env.production_ 作为环境文件运行 Laravel 数据库迁移，在 Azure Database for MySQL 中的 MySQL 数据库内创建表。 请记住，在 Azure 中 .env.production 具有的 MySQL 数据库的连接信息。
 
-```bash
-php artisan migrate --env=production --force
-```
+    ```bash
+    php artisan migrate --env=production --force
+    ```
 
-_.env.production_ 目前还不包含有效的应用程序密钥。 请在终端中为它生成一个新密钥。
+1. _.env.production_ 目前还不包含有效的应用程序密钥。 请在终端中为它生成一个新密钥。
 
-```bash
-php artisan key:generate --env=production --force
-```
+    ```bash
+    php artisan key:generate --env=production --force
+    ```
 
-使用 _.env.production_ 作为环境文件运行示例应用程序。
+1. 使用 _.env.production_ 作为环境文件运行示例应用程序。
 
-```bash
-php artisan serve --env=production
-```
+    ```bash
+    php artisan serve --env=production
+    ```
 
-导航到 `http://localhost:8000`。 如果页面可加载且未出错，则表示 PHP 应用程序正在连接到 Azure 中的 MySQL 数据库。
+1. 导航到 `http://localhost:8000`。 如果页面可加载且未出错，则表示 PHP 应用程序正在连接到 Azure 中的 MySQL 数据库。
 
-在页面中添加一些任务。
+1. 在页面中添加一些任务。
 
-![PHP 已成功连接到 Azure Database for MySQL](./media/tutorial-php-mysql-app/mysql-connect-success.png)
+    ![PHP 已成功连接到 Azure Database for MySQL](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
-在终端键入 `Ctrl + C` 可停止 PHP。
+1. 在终端键入 `Ctrl + C` 可停止 PHP。
 
 ### <a name="commit-your-changes"></a>提交更改
 
@@ -401,19 +405,19 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 在应用服务中，Laravel 需要应用程序密钥。 可以使用应用设置来配置该密钥。
 
-在本地终端窗口中，使用 `php artisan` 生成新的应用程序密钥，但不要将它保存到 _.env_。
+1. 在本地终端窗口中，使用 `php artisan` 生成新的应用程序密钥，但不要将它保存到 _.env_。
 
-```bash
-php artisan key:generate --show
-```
+    ```bash
+    php artisan key:generate --show
+    ```
 
-在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 &lt;app-name> 和 &lt;outputofphpartisankey:generate> 。
+1. 在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 &lt;app-name> 和 &lt;outputofphpartisankey:generate> 。
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
-```
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
+    ```
 
-当部署的应用遇到错误时，`APP_DEBUG="true"` 将告知 Laravel 返回调试信息。 在运行生产应用程序时，请将其设置为 `false`，这样会更安全。
+    当部署的应用遇到错误时，`APP_DEBUG="true"` 将告知 Laravel 返回调试信息。 在运行生产应用程序时，请将其设置为 `false`，这样会更安全。
 
 ### <a name="set-the-virtual-application-path"></a>设置虚拟应用程序路径
 
@@ -445,30 +449,30 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-<pre>
-Counting objects: 3, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
-Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'a5e076db9c'.
-remote: Running custom deployment command...
-remote: Running deployment command...
-...
-&lt; Output has been truncated for readability &gt;
-</pre>
-
-> [!NOTE]
-> 你可能会发现，部署过程在即将结束时会安装 [Composer](https://getcomposer.org/) 包。 应用服务在默认部署期间不会运行这些自动化任务，因此该示例存储库的根目录中提供了两个附加的文件用于运行这些任务：
->
-> - `.deployment` - 此文件告知应用服务以自定义部署脚本运行 `bash deploy.sh`。
-> - `deploy.sh` - 自定义部署脚本。 查看该文件时可以看到，它会先运行 `npm install`，再运行 `php composer.phar install`。
-> - `composer.phar` - Composer 包管理器。
->
-> 可使用此方法将任何步骤添加到应用服务中的基于 Git 的部署。 有关详细信息，请参阅[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。
->
+   <pre>
+   Counting objects: 3, done.
+   Delta compression using up to 8 threads.
+   Compressing objects: 100% (3/3), done.
+   Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
+   Total 3 (delta 2), reused 0 (delta 0)
+   remote: Updating branch 'main'.
+   remote: Updating submodules.
+   remote: Preparing deployment for commit id 'a5e076db9c'.
+   remote: Running custom deployment command...
+   remote: Running deployment command...
+   ...
+   &lt; Output has been truncated for readability &gt;
+   </pre>
+    
+   > [!NOTE]
+   > 你可能会发现，部署过程在即将结束时会安装 [Composer](https://getcomposer.org/) 包。 应用服务在默认部署期间不会运行这些自动化任务，因此该示例存储库的根目录中提供了两个附加的文件用于运行这些任务：
+   >
+   > - `.deployment` - 此文件告知应用服务以自定义部署脚本运行 `bash deploy.sh`。
+   > - `deploy.sh` - 自定义部署脚本。 查看该文件时可以看到，它会先运行 `npm install`，再运行 `php composer.phar install`。
+   > - `composer.phar` - Composer 包管理器。
+   >
+   > 可使用此方法将任何步骤添加到应用服务中的基于 Git 的部署。 有关详细信息，请参阅[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。
+   >
 
 ::: zone-end
 
@@ -476,21 +480,21 @@ remote: Running deployment command...
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-<pre>
-Counting objects: 3, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
-Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'a5e076db9c'.
-remote: Running custom deployment command...
-remote: Running deployment command...
-...
-&lt; Output has been truncated for readability &gt;
-</pre>
-
+   <pre>
+   Counting objects: 3, done.
+   Delta compression using up to 8 threads.
+   Compressing objects: 100% (3/3), done.
+   Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
+   Total 3 (delta 2), reused 0 (delta 0)
+   remote: Updating branch 'main'.
+   remote: Updating submodules.
+   remote: Preparing deployment for commit id 'a5e076db9c'.
+   remote: Running custom deployment command...
+   remote: Running deployment command...
+   ...
+   &lt; Output has been truncated for readability &gt;
+   </pre>
+    
 ::: zone-end
 
 ### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
@@ -509,137 +513,137 @@ remote: Running deployment command...
 
 ### <a name="add-a-column"></a>添加列
 
-在本地终端窗口中，导航到 Git 存储库中的根路径。
+1. 在本地终端窗口中，导航到 Git 存储库中的根路径。
 
-为 `tasks` 表创建新数据库迁移：
+1. 为 `tasks` 表创建新数据库迁移：
 
-```bash
-php artisan make:migration add_complete_column --table=tasks
-```
+    ```bash
+    php artisan make:migration add_complete_column --table=tasks
+    ```
 
-此命令显示已生成的迁移文件的名称。 在 database/migrations 中找到此文件，并打开它。
+1. 此命令显示已生成的迁移文件的名称。 在 database/migrations 中找到此文件，并打开它。
 
-将 `up` 方法替换为以下代码：
+1. 将 `up` 方法替换为以下代码：
 
-```php
-public function up()
-{
-    Schema::table('tasks', function (Blueprint $table) {
-        $table->boolean('complete')->default(False);
-    });
-}
-```
+    ```php
+    public function up()
+    {
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->boolean('complete')->default(False);
+        });
+    }
+    ```
 
-上述代码在名为 `complete` 的 `tasks` 表中添加一个布尔值列。
+    上述代码在名为 `complete` 的 `tasks` 表中添加一个布尔值列。
 
-请将 `down` 方法替换为以下回滚操作代码：
+1. 请将 `down` 方法替换为以下回滚操作代码：
 
-```php
-public function down()
-{
-    Schema::table('tasks', function (Blueprint $table) {
-        $table->dropColumn('complete');
-    });
-}
-```
+    ```php
+    public function down()
+    {
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->dropColumn('complete');
+        });
+    }
+    ```
 
-在本地终端窗口中运行 Laravel 数据库迁移，以便在本地数据库中进行更改。
+1. 在本地终端窗口中运行 Laravel 数据库迁移，以便在本地数据库中进行更改。
 
-```bash
-php artisan migrate
-```
+    ```bash
+    php artisan migrate
+    ```
 
-根据 [Laravel 命名约定](https://laravel.com/docs/5.4/eloquent#defining-models)，模型 `Task`（请参阅 app/Task.php）默认映射到 `tasks` 表。
+    根据 [Laravel 命名约定](https://laravel.com/docs/5.4/eloquent#defining-models)，模型 `Task`（请参阅 app/Task.php）默认映射到 `tasks` 表。
 
 ### <a name="update-application-logic"></a>更新应用程序逻辑
 
-打开 routes/web.php 文件。 应用程序在此处定义其路由和业务逻辑。
+1. 打开 routes/web.php 文件。 应用程序在此处定义其路由和业务逻辑。
 
-在文件末尾，添加包含以下代码的路由：
+1. 在文件末尾，添加包含以下代码的路由：
 
-```php
-/**
- * Toggle Task completeness
- */
-Route::post('/task/{id}', function ($id) {
-    error_log('INFO: post /task/'.$id);
-    $task = Task::findOrFail($id);
+    ```php
+    /**
+     * Toggle Task completeness
+     */
+    Route::post('/task/{id}', function ($id) {
+        error_log('INFO: post /task/'.$id);
+        $task = Task::findOrFail($id);
+    
+        $task->complete = !$task->complete;
+        $task->save();
+    
+        return redirect('/');
+    });
+    ```
 
-    $task->complete = !$task->complete;
-    $task->save();
-
-    return redirect('/');
-});
-```
-
-上述代码通过切换 `complete` 的值对数据模型进行简单的更新。
+    上述代码通过切换 `complete` 的值对数据模型进行简单的更新。
 
 ### <a name="update-the-view"></a>更新视图
 
-打开 resources/views/tasks.blade.php 文件。 找到 `<tr>` 开始标记并将其替换为：
+1. 打开 resources/views/tasks.blade.php 文件。 找到 `<tr>` 开始标记并将其替换为：
 
-```html
-<tr class="{{ $task->complete ? 'success' : 'active' }}" >
-```
+    ```html
+    <tr class="{{ $task->complete ? 'success' : 'active' }}" >
+    ```
 
-上述代码会根据任务是否已完成来更改行的颜色。
+    上述代码会根据任务是否已完成来更改行的颜色。
 
-在下一行中包含以下代码：
+1. 在下一行中包含以下代码：
 
-```html
-<td class="table-text"><div>{{ $task->name }}</div></td>
-```
+    ```html
+    <td class="table-text"><div>{{ $task->name }}</div></td>
+    ```
 
-请将整行替换为以下代码：
+    请将整行替换为以下代码：
 
-```html
-<td>
-    <form action="{{ url('task/'.$task->id) }}" method="POST">
-        {{ csrf_field() }}
+    ```html
+    <td>
+        <form action="{{ url('task/'.$task->id) }}" method="POST">
+            {{ csrf_field() }}
+    
+            <button type="submit" class="btn btn-xs">
+                <i class="fa {{$task->complete ? 'fa-check-square-o' : 'fa-square-o'}}"></i>
+            </button>
+            {{ $task->name }}
+        </form>
+    </td>
+    ```
 
-        <button type="submit" class="btn btn-xs">
-            <i class="fa {{$task->complete ? 'fa-check-square-o' : 'fa-square-o'}}"></i>
-        </button>
-        {{ $task->name }}
-    </form>
-</td>
-```
-
-上述代码添加引用前面定义的路由的提交按钮。
+    上述代码添加引用前面定义的路由的提交按钮。
 
 ### <a name="test-the-changes-locally"></a>在本地测试更改
 
-在本地终端窗口中，从 Git 存储库的根目录运行开发服务器。
+1. 在本地终端窗口中，从 Git 存储库的根目录运行开发服务器。
 
-```bash
-php artisan serve
-```
+    ```bash
+    php artisan serve
+    ```
 
-若要查看任务状态更改，请导航至 `http://localhost:8000` 并选择复选框。
+1. 若要查看任务状态更改，请导航至 `http://localhost:8000` 并选择复选框。
 
-![将复选框添加到任务](./media/tutorial-php-mysql-app/complete-checkbox.png)
+    ![将复选框添加到任务](./media/tutorial-php-mysql-app/complete-checkbox.png)
 
-在终端键入 `Ctrl + C` 可停止 PHP。
+1. 在终端键入 `Ctrl + C` 可停止 PHP。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
-在本地终端窗口中，使用生产连接字符串运行 Laravel 数据库迁移，在 Azure 数据库中进行更改。
+1. 在本地终端窗口中，使用生产连接字符串运行 Laravel 数据库迁移，在 Azure 数据库中进行更改。
 
-```bash
-php artisan migrate --env=production --force
-```
+    ```bash
+    php artisan migrate --env=production --force
+    ```
 
-提交在 Git 中进行的所有更改，然后将代码更改推送到 Azure。
+1. 提交在 Git 中进行的所有更改，然后将代码更改推送到 Azure。
 
-```bash
-git add .
-git commit -m "added complete checkbox"
-git push azure main
-```
+    ```bash
+    git add .
+    git commit -m "added complete checkbox"
+    git push azure main
+    ```
 
-`git push` 完成后，请导航至 Azure 应用，测试新功能。
+1. `git push` 完成后，请导航至 Azure 应用，测试新功能。
 
-![发布到 Azure 的模型和数据库更改](media/tutorial-php-mysql-app/complete-checkbox-published.png)
+    ![发布到 Azure 的模型和数据库更改](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
 如果添加任何任务，则它们保留在数据库中。 更新数据架构不会改变现有数据。
 
@@ -676,17 +680,17 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
-转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
+1. 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击 **应用程序服务**，然后单击 Azure 应用的名称。
+1. 在左侧菜单中单击 **应用程序服务**，然后单击 Azure 应用的名称。
 
-![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
+    ![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
 
-这里我们可以看到应用的“概述”页。 在此处可以执行基本的管理任务，例如停止、启动、重启、浏览和删除。
+    这里我们可以看到应用的“概述”页。 在此处可以执行基本的管理任务，例如停止、启动、重启、浏览和删除。
 
-左侧菜单提供用于配置应用的页面。
+    左侧菜单提供用于配置应用的页面。
 
-![Azure 门户中的“应用服务”页](./media/tutorial-php-mysql-app/web-app-blade.png)
+    ![Azure 门户中的“应用服务”页](./media/tutorial-php-mysql-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

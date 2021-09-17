@@ -1,24 +1,27 @@
 ---
-title: Azure 数据工厂中的系统变量
-description: 本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
+title: 系统变量
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 本文介绍了 Azure 数据工厂和 Azure Synapse Analytics 支持的系统变量。 在两个服务中定义实体时，可以在表达式中使用这些变量。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/12/2018
-ms.openlocfilehash: 7e29bd82f9f72651ca0383c680c0b05860fe29b4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/24/2021
+ms.openlocfilehash: f0fa5503b52481afafe2a0a6be8e28f8a964464b
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062229"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821616"
 ---
-# <a name="system-variables-supported-by-azure-data-factory"></a>Azure 数据工厂支持的系统变量
+# <a name="system-variables-supported-by-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 支持的系统变量
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
+本文介绍了 Azure 数据工厂和 Azure Synapse 支持的系统变量。 在两个服务中定义实体时，可以在表达式中使用这些变量。
 
 ## <a name="pipeline-scope"></a>管道范围
 
@@ -26,16 +29,16 @@ ms.locfileid: "110062229"
 
 | 变量名 | 说明 |
 | --- | --- |
-| @pipeline().DataFactory |在其中运行管道运行的数据工厂的名称 |
+| @pipeline().DataFactory |在其中运行管道运行的数据工厂或 Synapse 工作区的名称 |
 | @pipeline().Pipeline |管道的名称 |
 | @pipeline().RunId |特定管道运行的 ID |
-| @pipeline().TriggerType |调用了该管道的触发器的类型（例如 `ScheduleTrigger`、`BlobEventsTrigger`）。 有关支持的触发器类型的列表，请参阅 [Azure 数据工厂中的管道执行和触发器](concepts-pipeline-execution-triggers.md)。 触发器类型为 `Manual` 表示管道是手动触发的。 |
+| @pipeline().TriggerType |调用了该管道的触发器的类型（例如 `ScheduleTrigger`、`BlobEventsTrigger`）。 有关支持的触发器类型列表，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。 触发器类型为 `Manual` 表示管道是手动触发的。 |
 | @pipeline().TriggerId|调用了管道的触发器的 ID |
 | @pipeline().TriggerName|调用了管道的触发器的名称 |
 | @pipeline().TriggerTime|触发器运行调用管道的时间。 这是触发器实际触发以调用管道运行的时间，它可能与触发器的计划时间略有不同。  |
 | @pipeline().GroupId | 管道运行所属组的 ID。 |
-| @pipeline() __?__ .TriggeredByPipelineName | 触发管道运行的管道的名称。 当管道运行由 ExecutePipeline 活动触发时适用。 在其他环境中使用时，结果为“Null”。 注意 @pipeline() 后面的问号 |
-| @pipeline() __?__ .TriggeredByPipelineRunId | 运行触发管道运行的管道的 id。 当管道运行由 ExecutePipeline 活动触发时适用。 在其他环境中使用时，结果为“Null”。 注意 @pipeline() 后面的问号 |
+| @pipeline()?TriggeredByPipelineName | 触发管道运行的管道的名称。 当管道运行由 ExecutePipeline 活动触发时适用。 在其他环境中使用时，结果为“Null”。 注意 @pipeline() 后面的问号 |
+| @pipeline()?TriggeredByPipelineRunId | 运行触发管道运行的管道的运行 ID。 当管道运行由 ExecutePipeline 活动触发时适用。 在其他环境中使用时，结果为“Null”。 注意 @pipeline() 后面的问号 |
 
 >[!NOTE]
 >与触发器相关的日期/时间系统变量（在管道和触发器作用域内）以 ISO 8601 格式返回 UTC 日期，例如 `2017-06-01T22:20:00.4061448Z`。
@@ -67,7 +70,7 @@ ms.locfileid: "110062229"
 | 变量名 | 说明 |
 | --- | --- |
 | @triggerBody().fileName  |创建或删除时导致触发器触发的文件的名称。   |
-| @triggerBody().folderName  |包含 `@triggerBody().fileName` 指定的文件的文件夹路径。 文件夹路径的第一部分是 Azure Blob 存储容器的名称。  |
+| @triggerBody().folderPath  |包含 `@triggerBody().fileName` 指定的文件的文件夹路径。 文件夹路径的第一部分是 Azure Blob 存储容器的名称。  |
 | @trigger().startTime |触发器触发以调用管道运行的时间。 |
 
 ## <a name="custom-event-trigger-scope"></a>自定义事件触发器范围
@@ -75,7 +78,7 @@ ms.locfileid: "110062229"
 如果触发器的类型为 [CustomEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)，则可以在触发器 JSON 中的任何位置引用这些系统变量。
 
 >[!NOTE]
->Azure 数据工厂希望自定义事件的格式采用 [Azure 事件网格事件架构](../event-grid/event-schema.md)。
+>服务预期自定义事件的格式采用 [Azure 事件网格事件架构](../event-grid/event-schema.md)。
 
 | 变量名 | 说明
 | --- | --- |

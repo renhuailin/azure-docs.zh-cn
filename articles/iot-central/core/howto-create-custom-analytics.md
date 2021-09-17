@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ce4c526408f4aae1d4814a1c523c668e79e32c3a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 5f046920ce711ac6b1e6b9a461d71d9d49b2ddc7
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861815"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597661"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central
 
@@ -38,7 +38,7 @@ ms.locfileid: "121861815"
 
 | 设置 | “值” |
 | ------- | ----- |
-| 定价计划 | Standard |
+| 定价计划 | 标准 |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
 | URL | 接受默认设置，或选择自己的唯一 URL 前缀 |
@@ -250,4 +250,4 @@ ms.locfileid: "121861815"
 * 使用“连续数据导出”从 IoT Central 应用程序流式传输遥测数据。
 * 创建一个 Azure Databricks 环境用于分析和绘制遥测数据。
 
-了解如何创建自定义分析后，建议接下来了解如何在 Power BI 仪表板中[可视化和分析 Azure IoT Central 数据](howto-connect-powerbi.md)。
+了解如何创建自定义分析后，建议接下来了解如何[使用 IoT Central 设备桥将其他 IoT 云连接到 IoT Central](howto-build-iotc-device-bridge.md)。

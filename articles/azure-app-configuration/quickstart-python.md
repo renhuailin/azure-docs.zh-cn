@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1be74ceeb1f4808a8df8f56b71b66aa870cdd91d
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 36b840cb851ef544d0956ff0dec969ce251855d4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800867"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748757"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Python 应用
 
@@ -289,7 +289,7 @@ Key: TestApp:Settings:NewSetting, Value: Value has been updated!
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了新的应用程序配置存储区，并了解到如何从 Python 应用访问键-值。
+在本快速入门中，你创建了新的应用配置存储区，并了解了如何从 Python 应用访问键/值。
 
 有关其他代码示例，请访问：
 

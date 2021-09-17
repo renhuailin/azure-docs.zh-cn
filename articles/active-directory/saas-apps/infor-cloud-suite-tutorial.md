@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: f7df0bcedc5601001ba92326d95db2fa12a76d60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9933a11f9d358380dafbf4f1573ab53d4ff189dc
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649336"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179629"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>教程：Azure Active Directory 与 Infor CloudSuite 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "101649336"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Infor CloudSuite 支持启用了 **SP 和 IDP** 的 SSO
+* Infor CloudSuite 支持[自动用户预配和取消预配](infor-cloudsuite-provisioning-tutorial.md)（推荐）。
 * Infor CloudSuite 支持恰时用户预配 
 
 ## <a name="add-infor-cloudsuite-from-the-gallery"></a>从库添加 Infor CloudSuite

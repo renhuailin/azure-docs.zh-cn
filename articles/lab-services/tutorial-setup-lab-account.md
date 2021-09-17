@@ -2,13 +2,14 @@
 title: 使用 Azure 实验室服务设置实验室帐户 | Microsoft Docs
 description: 了解如何使用 Azure 实验室服务设置实验室帐户、添加实验室创建者，并指定实验室帐户中实验室使用的市场映像。
 ms.topic: tutorial
-ms.date: 06/26/2020
-ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/26/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: d6107c1a70b22682636b63c0fb0f7374a0d96873
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445060"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634010"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教程：使用 Azure 实验室服务设置实验室帐户
 在 Azure 实验室服务中，实验室帐户充当管理组织实验室的中心帐户。 在你的实验室帐户中，授予他人创建实验室的权限，并设置适用于实验室帐户下所有实验室的策略。 在本教程中，你将了解如何创建实验室帐户。 
@@ -50,17 +51,25 @@ ms.locfileid: "85445060"
     ![“实验室帐户”页面](./media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>将用户添加为“实验室创建者”角色
-若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 为教师提供为课程创建实验室的权限，并将他们添加为 **实验室创建者** 角色：
+若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 为教师提供为课程创建实验室的权限，并将他们添加为“实验室创建者”角色：有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 > [!NOTE]
 > 用来创建实验室帐户的帐户会自动添加到此角色。 如果在本教程中打算使用同一用户帐户创建课堂实验室，可以跳过此步骤。 
 
-1. 在“实验室帐户”页上，选择“访问控制(IAM)”，选择工具栏上的“添加”，然后选择工具栏上的“+ 添加角色分配”   。 
 
-    ![“访问控制”->“添加角色分配”按钮](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. 在“添加角色分配”页上，选择“实验室创建者”作为“角色”，选择想要添加到“实验室创建者”角色的用户，然后选择“保存”   。 
+1. 在“实验室帐户”页上，选择“访问控制(IAM)” 
 
-    ![添加实验室创建者](./media/tutorial-setup-lab-account/add-lab-creator.png)
+1. 选择“添加” > “添加角色分配(预览版)” 。
+
+    ![打开了“添加角色分配”菜单的“访问控制(IAM)”页。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. 在“角色”选项卡上，选择“实验室创建者”角色 。
+
+    ![选中了“角色”选项卡的“添加角色分配”页。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. 在“成员”选项卡上，选择要添加到“实验室创建者”角色的用户
+
+1. 在“查看 + 分配”选项卡上，选择“查看 + 分配”，以分配角色 。
 
 
 ## <a name="next-steps"></a>后续步骤

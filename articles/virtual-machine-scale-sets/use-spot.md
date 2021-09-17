@@ -9,14 +9,16 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 817c3e4a9e3c6226d25e28d1aad378813369d765
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b0c0ffdce85450900c0d4ca0da936b8675820f79
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077727"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690562"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 现成虚拟机 
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 对规模集使用 Azure 现成虚拟机，可以利用未使用的容量，同时大幅降低成本。 每当 Azure 需要回收容量时，Azure 基础结构就会逐出 Azure 现成虚拟机实例。 因此，Azure 现成虚拟机实例非常适合用于处理服务中断（例如批处理作业）的工作负载、开发/测试环境、大型计算工作负载等。
 

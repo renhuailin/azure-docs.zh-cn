@@ -8,14 +8,16 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: fa4381aa21b1565e29db026b43dbc70b457daf5d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b9a113c4c7f54bfb47d10795325f163cd6f35429
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783200"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687925"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>对使用 cloud-init 的 VM 预配进行故障排除
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 如果你已在创建通用化自定义映像（使用 cloud-init 进行预配），但发现 VM 未正确创建，则需对自定义映像进行故障排除。
 

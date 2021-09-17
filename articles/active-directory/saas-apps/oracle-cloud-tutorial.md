@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 914858471432979e5516a1f075ed4fcbb8061a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02ba974aa430bd75848c3fcf2b762453d99e27fe
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181843"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183602"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>教程：将 Oracle Cloud Infrastructure Console 与 Azure Active Directory 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "96181843"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Oracle Cloud Infrastructure Console 支持 SP 发起的 SSO  。
+* Oracle Cloud Infrastructure Console 支持[自动用户预配和取消预配](oracle-cloud-infrastructure-console-provisioning-tutorial.md)（推荐）。
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>从库中添加 Oracle Cloud Infrastructure Console
 

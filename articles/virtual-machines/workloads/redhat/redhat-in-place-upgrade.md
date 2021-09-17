@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 1be0904cc640eff5af7a77bba3abd6aa062991a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccd3e58babc6627a384636dbea28ef82969be9fc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676072"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696742"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Red Hat Enterprise Linux 就地升级
+
+适用于：:heavy_check_mark: Linux VM 
 
 本文提供了有关如何执行从 Red Hat Enterprise Linux (RHEL) 7 到 Red Hat Enterprise Linux 8 的就地升级的说明。 本说明使用 Azure 中的 `leapp` 工具。 在就地升级过程中，现有 RHEL 7 操作系统被替换为 RHEL 8 版本。
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/07/2021
+ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26bd2a4e39f2698f47a27a08716dc3049c7b70f8
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ce49a0a6fc249f3cea6bfdac613beade5322142f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106814"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323881"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流和自定义策略
 
@@ -39,7 +39,7 @@ ms.locfileid: "113106814"
 
 ::: zone pivot="b2c-user-flow"
 > [!IMPORTANT]
-> 我们更改了引用用户流版本的方式。 之前，我们提供 V1（生产就绪）版本，还提供了 V1.1 和 V2（预览版）版本。 现在，我们已将用户流合并为两个版本：“建议”用户流（具有最新功能）和“标准(旧)”用户流 。 在公有云中，所有旧的预览版用户流（V1.1 和 V2）都将在 2021 年 8 月 1 日之前逐渐弃用。 有关详细信息，请参阅 [Azure AD B2C 中的用户流版本](user-flow-versions.md)。 这些更改仅适用于 Azure 公有云。其他环境将继续使用[旧用户流版本控制](user-flow-versions-legacy.md)。 
+> 我们更改了引用用户流版本的方式。 之前，我们提供 V1（生产就绪）版本，还提供了 V1.1 和 V2（预览版）版本。 现在，我们已将用户流合并为两个版本：“建议”用户流（具有最新功能）和“标准(旧)”用户流 。 所有旧的预览版用户流（V1.1 和 V2）都已弃用。 有关详细信息，请参阅 [Azure AD B2C 中的用户流版本](user-flow-versions.md)。 这些更改仅适用于 Azure 公有云。其他环境将继续使用[旧用户流版本控制](user-flow-versions-legacy.md)。 
 ::: zone-end
 
 ## <a name="prerequisites"></a>先决条件
@@ -70,7 +70,7 @@ ms.locfileid: "113106814"
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“策略”下，依次选择“用户流”、“新建用户流”。
 
-    ![门户中的“用户流”页面，突出显示了“新建用户流”按钮](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
+    ![门户中的“用户流”页面，突出显示了“新建用户流”按钮](./media/tutorial-create-user-flows/sign-up-sign-in-user-flow.png)
 
 1. 在“创建用户流”页面上，选择“注册和登录”用户流 。
 
@@ -339,9 +339,17 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 > * 创建配置文件编辑用户流
 > * 创建密码重置用户流
 
-接下来，了解如何使用 Azure AD B2C 在应用程序中登录和注册用户。 使用下面的 ASP.NET Web 应用程序链接，或在“用户身份验证”下的目录中导航到其他应用程序。
+接下来，了解如何使用 Azure AD B2C 在应用程序中登录和注册用户。 按照下面链接的示例应用操作：
 
-> [!div class="nextstepaction"]
-> [教程：使用 Azure AD B2C 在 Web 应用程序中启用身份验证 >](tutorial-web-app-dotnet.md)
+- [配置示例 ASP.NET Core Web 应用](configure-authentication-sample-web-app.md)
+- [配置调用 Web API 的示例 ASP.NET Core Web 应用](configure-authentication-sample-web-app-with-api.md)
+- [在示例 Python Web 应用程序中配置身份验证](configure-authentication-sample-python-web-app.md)
+- [配置示例单页应用程序 (SPA)](configure-authentication-sample-spa-app.md)
+- [配置示例 Angular 单页应用](configure-authentication-sample-angular-spa-app.md)
+- [配置示例 Android 移动应用](configure-authentication-sample-android-app.md)
+- [配置示例 iOS 移动应用](configure-authentication-sample-ios-app.md)
+- [在示例 WPF 桌面应用程序中配置身份验证](configure-authentication-sample-wpf-desktop-app.md)
+- [在 Web API 中启用身份验证](enable-authentication-web-api.md)
+- [配置 SAML 应用程序](saml-service-provider.md) 
 
 还可以在 [Azure AD B2C 体系结构深入探讨系列](https://www.youtube.com/playlist?list=PLOPotgzC07IKXXCTZcrpuLWbVe3y51kfm)中了解详细信息。

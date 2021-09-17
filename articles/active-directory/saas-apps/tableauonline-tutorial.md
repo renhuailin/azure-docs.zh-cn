@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 5318570ed77e3352f37c2306ecd003195992d010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d3d74c0e29de6ee75f80ab26c982c92501dafa2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731963"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181679"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Tableau Online 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "98731963"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Tableau Online 支持 **SP** 发起的 SSO
+* Tableau Online 支持[自动用户预配和取消预配](tableau-online-provisioning-tutorial.md)（推荐）。
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>从库中添加 Tableau Online
 

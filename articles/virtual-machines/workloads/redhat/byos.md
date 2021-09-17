@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 77b55315256de8b2170a40c76006f05431aac267
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 93557e5fb32a6f5100bdc99cdfbeed3375fcc379
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454989"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691959"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 中的 Red Hat Enterprise Linux 自带订阅黄金映像
+
+**适用于：** :heavy_check_mark: Linux VM 
 
 Red Hat Enterprise Linux (RHEL) 映像在 Azure 中通过即用即付或自带订阅 (BYOS)（Red Hat 黄金映像）模型提供。 本文概述了 Azure 中的 Red Hat 黄金映像。
 

@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: f87175500fcf5bdbcf9a5c2f499f6bab96b37b63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 517eb0a0abfc00349b42e1948192ad53baca9c8b
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102498959"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603697"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure 机器学习的分布式训练
 
@@ -24,11 +24,12 @@ ms.locfileid: "102498959"
 
 ## <a name="deep-learning-and-distributed-training"></a>深度学习和分布式训练 
 
-分布式训练有两种主要类型：[数据并行](#data-parallelism)和[模型并行](#model-parallelism)。 对于深度学习模型上的分布式训练，[Python 中的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 支持与常用框架 PyTorch 和 TensorFlow 进行集成。 两种框架都采用数据并行方式进行分布式训练，并且可以利用 [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) 来优化计算速度。 
+分布式训练有两种主要类型：[数据并行](#data-parallelism)和[模型并行](#model-parallelism)。 对于深度学习模型上的分布式训练，[Python 中的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 支持与常用框架 PyTorch 和 TensorFlow 进行集成。 两种框架都采用数据并行方式进行分布式训练，并且可以利用 [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) 来优化计算速度。
 
-* [使用 PyTorch 进行分布式训练](how-to-train-pytorch.md#distributed-training)
 
-* [使用 TensorFlow 进行分布式训练](how-to-train-tensorflow.md#distributed-training)
+* [使用 PyTorch 进行分布式训练](how-to-train-distributed-gpu.md#pytorch)
+
+* [使用 TensorFlow 进行分布式训练](how-to-train-distributed-gpu.md#tensorflow)
 
 对于不需要进行分布式训练的 ML 模型，请参阅[使用 Azure 机器学习训练模型](concept-train-machine-learning-model.md#python-sdk)，了解使用 Python SDK 训练模型的不同方法。
 
@@ -52,5 +53,4 @@ ms.locfileid: "102498959"
 
 * 了解如何使用 Python SDK [将计算目标用于模型训练](how-to-set-up-training-targets.md)。
 * 有关技术示例，请参阅[体系结构方案参考信息](/azure/architecture/reference-architectures/ai/training-deep-learning)。
-* [使用 TensorFlow 训练 ML 模型](how-to-train-tensorflow.md)。
-* [使用 PyTorch 训练 ML 模型](how-to-train-pytorch.md)。
+* 查看[分布式 GPU 培训指南](how-to-train-distributed-gpu.md)，了解适用于 MPI、TensorFlow 和 PyTorch 的提示 

@@ -8,14 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: da51fabaaa3c02137770f0b2d9a851b1f6702980
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34ffb5f43116220b97f07821d9f5c09673184571
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044043"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690358"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 简介
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
+
 本文提供有关在 Azure 中运行 FreeBSD 虚拟机的概述。
 
 ## <a name="overview"></a>概述

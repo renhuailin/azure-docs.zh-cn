@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/22/2021
+ms.date: 08/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 7042d3ede872c5dc854675334b964430671d1306
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: b99247bf0aefb8052d4f6f04446a5f66dff7b88a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065627"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324428"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>教程：准备部署 Azure Stack Edge Mini R
 
@@ -83,26 +83,55 @@ ms.locfileid: "106065627"
 
 如果现有的 Azure Stack Edge 资源可以管理物理设备，请跳过此步骤，转到[获取激活密钥](#get-the-activation-key)。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+---
+
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center（预览版）](#tab/azure-edge-hardware-center)
+
+Azure Edge Hardware Center（预览版）是一种新服务，可让你从 Azure 混合产品组合（包括 Azure Stack Edge Pro 设备）浏览和订购各种硬件。
+
+通过 Azure Edge Hardware Center 下订单时，可以订购多个设备以寄送到多个地址，并且可重复使用来自其他订单的地址。
+
+通过 Azure Edge Hardware Center 进行订购会创建一个 Azure 资源，其中包含所有与订单相关的信息。 会为每个订购的单元创建一个资源。 收到设备之后必须创建 Azure Stack Edge 资源才能激活和管理设备。
+
+[!INCLUDE [Create order in Azure Edge Hardware Center](../../includes/azure-edge-hardware-center-new-order.md)]
+
+#### <a name="create-a-management-resource-for-each-device"></a>为每个设备创建管理资源
+
+若要管理通过 Azure Edge Hardware Center 订购的设备，请在 Azure Stack Edge 中为每个设备创建管理资源。 激活设备后，管理资源会与订单项关联。 你将能够从管理资源打开订单项，并从订单项打开管理资源。 
+
+交付设备后，“配置硬件”链接会添加到订单项详细信息中，使你可以直接打开向导以便创建管理资源。 还可以使用 Azure Stack Edge 中的“创建管理资源”选项。
+
+[!INCLUDE [Create management resource](../../includes/azure-edge-hardware-center-create-management-resource.md)]
+
+### <a name="portal-classic"></a>[门户（经典）](#tab/azure-portal)
 
 若要创建 Azure Stack Edge 资源，请在 Azure 门户中执行以下步骤。
 
 1. 使用 Microsoft Azure 凭据通过以下 URL 登录到 Azure 门户：[https://portal.azure.com](https://portal.azure.com)。
 
+2. 在“Azure 服务”中，搜索并选择“Azure Stack Edge” 。 然后选择“+ 创建”。 
 
-2. 在左窗格中，选择“+ 创建资源”。 搜索并选择“Azure Stack Edge/Data Box Gateway”。 选择“创建”。 
+3. 在“管理 Azure Stack Edge 设备”中，选择“试用 Azure Hardware Center”链接 。
 
-3. 选取要用于 Azure Stack Edge Pro 设备的订阅。 选择要将此物理设备寄送到的国家/地区。 选择“显示设备”。
+    ![通过“+ 创建”按钮打开的“管理 Azure Stack Edge 设备”屏幕的屏幕截图。 突出显示了“试用 Azure Edge Hardware Center”链接。](media/azure-stack-edge-mini-r-deploy-prep/classic-order-experience-1.png)
 
-    ![创建资源 1](media/azure-stack-edge-mini-r-deploy-prep/create-resource-1.png)
+    这会打开“开始”屏幕，以便在 Azure Edge Hardware Center 中创建订单。 
+
+4. 如果不想通过 Hardware Center 进行订购，请在“开始使用”屏幕上选择“使用经典订购体验进行订购” 。
+
+   ![Azure Stack Edge 中“开始使用”屏幕的屏幕截图。 突出显示了“使用经典订购体验进行订购”链接。](media/azure-stack-edge-mini-r-deploy-prep/classic-order-experience-2.png)
+
+5. 选取要用于 Azure Stack Edge Pro 设备的订阅。 选择要将此物理设备寄送到的国家/地区。 选择“显示设备”。
+
+    ![“选择设备类型”屏幕的屏幕截图，用于选择订阅，然后寄送到 Azure Stack Edge 资源的相应区域。 突出显示“显示设备”按钮。](media/azure-stack-edge-mini-r-deploy-prep/create-resource-1.png)
 
 
-4. 选择设备类型。 在“Azure Stack Edge”下，选择“Azure Stack Edge Pro Mini R”，然后选择“选择”  。 如果发现任何问题或无法选择设备类型，请转到[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
+6. 选择设备类型。 在“Azure Stack Edge”下，选择“Azure Stack Edge Pro Mini R”，然后选择“选择”  。 如果发现任何问题或无法选择设备类型，请转到[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
 
-    [![创建资源 2](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png#lightbox)
+    [![“选择设备类型”屏幕的屏幕截图，用于为 Azure Stack Edge 资源选择设备类型。突出显示了设备类型的“选择”按钮。](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)
 
 
-5. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
+7. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
     
     |设置  |值  |
     |---------|---------|
@@ -110,41 +139,41 @@ ms.locfileid: "106065627"
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 
-6. 输入或选择以下“实例详细信息”。
+8. 输入或选择以下“实例详细信息”。
 
     |设置  |值  |
     |---------|---------|
     |名称   | 用于标识资源的友好名称。<br>名称可具有 2 和 50 个字符，包括字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
     |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
 
-    ![创建资源 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
+    ![Azure Stack Edge 的创建资源并订购设备向导的“基本信息”选项卡屏幕截图。 突出显示“基本信息”选项卡和“下一步: 送货地址”按钮。](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
-7. 在完成时选择“下一步:送货地址”。
+9. 在完成时选择“下一步:送货地址”。
 
    - 如果已经有一台设备，请选择与“我已有设备”对应的组合框。
 
-     ![创建资源 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
+     ![“送货地址”选项卡的屏幕截图，其中在“为 Azure Stack Edge 创建资源向导”中选择了“我已有设备的送货地址”选项。](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
    - 如果这是你订购的新设备，请输入联系人姓名、公司、要将设备寄送到的地址，以及联系人信息。
 
-     ![创建资源 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
+     ![创建新 Azure Stack Edge 资源时创建资源向导中的“送货地址”选项卡屏幕截图。](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
-8. 在完成时选择“下一步:  标记”。 （可选）提供标记，以便对资源进行分类并合并账单。 在完成时选择“下一步:查看 + 创建”。
+10. 在完成时选择“下一步:  标记”。 （可选）提供标记，以便对资源进行分类并合并账单。 在完成时选择“下一步:查看 + 创建”。
 
-9. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
+11. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
 
-    ![创建资源 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
+    ![Azure Stack Edge 订单的“查看 + 创建”选项卡屏幕截图。](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
     你还会收到通知，了解到在资源创建期间启用了一个托管服务标识 (MSI)，你可通过它对云服务进行身份验证。 只要资源存在，就会存在此标识。
 
-10. 选择“创建”。
+12. 选择“创建”。
 
     创建资源需要几分钟时间。 还会创建一个 MSI，Azure Stack Edge 设备可通过它与 Azure 中的资源提供程序进行通信。
     
     成功创建并部署资源后，你会收到通知。 选择“转到资源”。
     
-    ![转到 Azure Stack Edge Pro 资源](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-1.png)
+    ![已成功创建的 Azure Stack Edge 订单“概述”窗格的屏幕截图。](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-1.png)
     
 在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
 
@@ -204,7 +233,7 @@ az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1
 
 1. 选择创建的资源，然后选择“概述”。
 
-   ![选择“设备设置”](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
+   ![Azure Stack Edge 资源的“概述”窗格屏幕截图。](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. 在“激活”磁贴上，为 Azure Key Vault 提供一个名称，或者接受默认名称。 密钥保管库名称的长度可介于 3 至 24 个字符之间。 
 
@@ -212,7 +241,7 @@ az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1
 
     指定密钥保管库名称后，请选择“生成激活密钥”来创建激活密钥。
 
-    [![获取激活密钥](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
+    [![使用密钥保管库名称条目新创建的 Azure Stack Edge 资源的“概述”窗格屏幕截图。突出显示了条目和“生成激活密钥”按钮。](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
 
     创建密钥保管库和激活密钥需要几分钟时间，请稍候。 选择复制图标复制密钥并将其保存供日后使用。
 

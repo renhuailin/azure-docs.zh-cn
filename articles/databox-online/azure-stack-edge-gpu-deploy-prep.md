@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/03/2021
+ms.date: 08/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 81c11665db1ee1f7c73e8abee95f01b8ea62d2fe
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: b223d428daf1a7080478f4f80b6a997fb97cd7a0
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504884"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322531"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教程：准备部署 Azure Stack Edge Pro with GPU 
 
@@ -63,18 +63,20 @@ ms.locfileid: "113504884"
 
 ### <a name="for-the-azure-stack-edge-resource"></a>对于 Azure Stack Edge 资源
 
+<!--Why isn't the include file used, as for the Pro R and Mini R SKUs? Check for differences. Also, the presentation of requirements is organized a bit differently; standard presentation would be more usable, even if the GPU requirements are different.-->
+
 在开始之前，请确保：
 
 - 已为 Azure Stack Edge 资源启用 Microsoft Azure 订阅。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 若要确定你的 Azure 订阅的类型，请参阅[什么是 Azure 产品/服务？](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)。
-- 你在资源组级别拥有对 Azure Stack Edge Pro/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
+- 你在资源组级别拥有对 Azure Stack Edge Pro、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
 
-    - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 
+    - 若要创建任何 Azure Stack Edge 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 
     - 你还需要确保已注册 `Microsoft.DataBoxEdge` 和 `MicrosoftKeyVault` 资源提供程序。 若要创建任何 IoT 中心资源，应注册 `Microsoft.Devices` 提供程序。 
         - 若要注册资源提供程序，请在 Azure 门户中转到“主页”>“订阅”> 你的订阅 >“资源提供程序”。 
         - 搜索特定资源提供程序（如 `Microsoft.DataBoxEdge`）并将其注册。 
     - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
+- 若要在 Azure Edge Hardware Center 创建订单，需确保注册 `Microsoft.EdgeOrder` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-gpu-manage-access-power-connectivity-mode.md#register-resource-providers)。
 - 你需要对 Azure Active Directory Graph API 具有管理员或用户访问权限，以便生成激活密钥或凭据操作，例如使用存储帐户创建共享。 有关详细信息，请参阅 [Azure Active Directory 图形 API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
-
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>对于 Azure Stack Edge Pro 设备
 
@@ -102,67 +104,91 @@ ms.locfileid: "113504884"
 
 如果现有的 Azure Stack Edge 资源可以管理物理设备，请跳过此步骤，转到[获取激活密钥](#get-the-activation-key)。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+---
 
-若要创建 Azure Stack Edge 资源，请在 Azure 门户中执行以下步骤。
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center（预览版）](#tab/azure-edge-hardware-center)
+
+Azure Edge Hardware Center（预览版）是一种新服务，可让你从 Azure 混合产品组合（包括 Azure Stack Edge Pro 设备）浏览和订购各种硬件。
+
+通过 Azure Edge Hardware Center 下订单时，可以订购多个设备以寄送到多个地址，并且可重复使用来自其他订单的地址。
+
+通过 Azure Edge Hardware Center 进行订购会创建一个 Azure 资源，其中包含所有与订单相关的信息。 会为每个订购的单元创建一个资源。 收到设备之后必须创建 Azure Stack Edge 资源才能激活和管理设备。
+
+[!INCLUDE [Create order in Azure Edge Hardware Center](../../includes/azure-edge-hardware-center-new-order.md)]
+
+#### <a name="create-a-management-resource-for-each-device"></a>为每个设备创建管理资源
+
+[!INCLUDE [Create management resource](../../includes/azure-edge-hardware-center-create-management-resource.md)]
+
+### <a name="portal-classic"></a>[门户（经典）](#tab/azure-portal)
+
+若要通过 Azure Stack Edge 服务创建 Azure Stack Edge 资源，请在 Azure 门户中执行以下步骤。
 
 1. 使用 Microsoft Azure 凭据通过以下 URL 登录到 Azure 门户：[https://portal.azure.com](https://portal.azure.com)。
 
-2. 在左窗格中，选择“+ 创建资源”。 搜索并选择“Azure Stack Edge/Data Box Gateway”。 选择“创建”。 
+2. 在“Azure 服务”中，搜索并选择“Azure Stack Edge” 。 然后选择“+ 创建”。 
 
-3. 选取要用于 Azure Stack Edge Pro 设备的订阅。 选择要将此物理设备寄送到的国家/地区。 选择“显示设备”。
+3. 在“管理 Azure Stack Edge 设备”中，选择“试用 Azure Hardware Center”链接 。
 
-    ![创建资源 1](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
+    ![通过“+ 创建”按钮打开的“管理 Azure Stack Edge 设备”屏幕的屏幕截图。 突出显示了“试用 Azure Edge Hardware Center”链接。](media/azure-stack-edge-gpu-deploy-prep/classic-order-experience-1.png)
 
-4. 选择设备类型。 在“Azure Stack Edge Pro”下，选择“Azure Stack Edge Pro with GPU”，然后选择“选择”  。 如果发现任何问题或无法选择设备类型，请转到[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
+4. 如果不想通过 Hardware Center 进行订购，请在“开始使用”屏幕上选择“使用经典订购体验进行订购” 。
 
-    ![创建资源 3](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
+   ![Azure Stack Edge 中“开始使用”屏幕的屏幕截图。 突出显示了“使用经典订购体验进行订购”链接。](media/azure-stack-edge-gpu-deploy-prep/classic-order-experience-2.png)
 
-5. 根据业务需要，可以从 Nvidia 选择带有 1 个或 2 个图形处理单元 (GPU) 的 Azure Stack Edge Pro。 
+5. 选取要用于 Azure Stack Edge Pro GPU 设备的订阅。 选择要将物理设备寄送到的国家或地区。 然后选择“显示设备”。
 
-    ![创建资源 4](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
+    ![“选择设备类型”屏幕的屏幕截图，用于选择订阅，然后寄送到 Azure Stack Edge 资源的相应区域。 突出显示“显示设备”按钮。](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
 
-6. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
+6. 选择设备类型。 在“Azure Stack Edge Pro”下，选择“Azure Stack Edge Pro with GPU”，然后选择“选择”  。 如果发现任何问题或无法选择设备类型，请转到[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
+
+    ![“选择设备类型”屏幕的屏幕截图，用于选择 Azure Stack Edge资源的设备类型。 突出显示设备类型的“选择”按钮。](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
+
+7. 根据业务需要，可以从 Nvidia 选择带有 1 个或 2 个图形处理单元 (GPU) 的 Azure Stack Edge Pro。 
+
+    ![为 Azure Stack Edge 资源选择 Azure Stack Edge Pro GPU 设备的配置的屏幕截图。 突出显示硬件配置和“选择”按钮。](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
+
+8. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
     
     |设置  |值  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此订阅。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
-7. 输入或选择以下“实例详细信息”。
+9. 输入或选择以下“实例详细信息”。
 
     |设置  |值  |
     |---------|---------|
     |名称   | 用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
     |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
 
-    ![创建资源 5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
+    ![Azure Stack Edge 的创建资源并订购设备向导的“基本信息”选项卡屏幕截图。 突出显示“基本信息”选项卡和“下一步: 送货地址”按钮。](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
-8. 在完成时选择“下一步:送货地址”。
+10. 在完成时选择“下一步:送货地址”。
 
     - 如果已经有一台设备，请选择与“我已有设备”对应的组合框。
 
-        ![创建资源 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
+        ![“送货地址”选项卡的屏幕截图，其中在“为 Azure Stack Edge 创建资源向导”中选择了“我已有设备的送货地址”选项。](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
     - 如果这是你订购的新设备，请输入联系人姓名、公司、要将该设备寄送到的地址，以及联系人信息。
 
-        ![创建资源 7](media/azure-stack-edge-gpu-deploy-prep/create-resource-7.png)
+        ![创建新 Azure Stack Edge 资源时创建资源向导中的“送货地址”选项卡屏幕截图。](media/azure-stack-edge-gpu-deploy-prep/create-resource-7.png)
 
-9. 在完成时选择“下一步:  标记”。 （可选）提供标记，以便对资源进行分类并合并账单。 在完成时选择“下一步:查看 + 创建”。
+11. 在完成时选择“下一步:  标记”。 （可选）提供标记，以便对资源进行分类并合并账单。 在完成时选择“下一步:查看 + 创建”。
 
-10. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
+12. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
 
-    ![创建资源 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+    ![Azure Stack Edge 订单的“查看 + 创建”选项卡屏幕截图。](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
     你还会收到通知，了解到在资源创建期间启用了托管标识，可通过它向云服务进行身份验证。 只要资源存在，就会存在此标识。
 
-11. 选择“创建”。
+13. 选择“创建”。
 
     创建资源需要几分钟时间。 还会创建一个托管标识，Azure Stack Edge 设备可通过它与 Azure 中的资源提供程序通信。
 
     成功创建并部署资源后，你会收到通知。 选择“转到资源”。
 
-    ![转到 Azure Stack Edge Pro 资源](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
+    ![显示屏幕截图，指示新 Azure Stack Edge 资源的部署已完成。 突出显示“转到资源”按钮。](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
 在你下单以后，Microsoft 会审核该订单并通过电子邮件联系你，核对配送详细信息。
 
@@ -230,7 +256,7 @@ az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1
 
    指定密钥保管库名称后，请选择“生成密钥”来创建一个激活密钥。 
 
-   ![获取激活密钥](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+   ![新创建的 Azure Stack Edge 资源的“概述”窗格屏幕截图。 突出显示“生成激活密钥”按钮。](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
 
    创建密钥保管库和激活密钥需要几分钟时间，请稍候。 选择复制图标复制密钥并将其保存供日后使用。<!--Verify that the new screen has a copy icon.-->
 

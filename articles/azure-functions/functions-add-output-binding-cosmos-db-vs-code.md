@@ -2,16 +2,16 @@
 title: 使用 Visual Studio Code 将 Azure Functions 连接到 Azure Cosmos DB
 description: 了解如何通过将输出绑定添加到 Visual Studio Code 项目，从而将 Azure Functions 连接到 Azure Cosmos DB 帐户。
 author: ThomasWeiss
-ms.date: 03/23/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 884ed08dc6dc6587b4f464c18e8231a7f5342422
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 9fbc67f14d6d67393b62129f2b4e9269fb6c6f52
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234531"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446234"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>使用 Visual Studio Code 将 Azure Functions 连接到 Azure Cosmos DB
 
@@ -33,44 +33,47 @@ ms.locfileid: "112234531"
 ## <a name="create-your-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
 
 > [!IMPORTANT]
-> [Azure Cosmos DB 无服务器](../cosmos-db/serverless.md)目前为预览版。 这种基于消耗的模式让 Azure Cosmos DB 成为了无服务器工作负载的强有力选项。 要在无服务器模式下使用 Azure Cosmos DB，请在创建帐户时选择“无服务器”作为“容量模式”。
+> [Azure Cosmos DB 无服务器](../cosmos-db/serverless.md)现已正式发布。 这种基于消耗的模式让 Azure Cosmos DB 成为了无服务器工作负载的强有力选项。 要在无服务器模式下使用 Azure Cosmos DB，请在创建帐户时选择“无服务器”作为“容量模式”。
 
-1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
+1. 在 Visual Studio Code 中，右键单击在[前面文章](./create-first-function-vs-code-csharp.md)中创建了函数应用的 Azure 订阅，然后选择“创建服务器...”。
 
-2. 单击“创建资源” > “数据库” > “Azure Cosmos DB”。
-   
-    :::image type="content" source="../cosmos-db/includes/media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure 门户“数据库”窗格" border="true":::
+    :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-account.png" alt-text="从 Visual Studio Code 创建新 Azure Cosmos DB 帐户" border="true":::
 
-3. 在“创建 Azure Cosmos DB 帐户”页中，输入新 Azure Cosmos DB 帐户的设置。 
- 
-    设置|值|说明
-    ---|---|---
-    订阅|*订阅*|选择在[前面文章](./create-first-function-vs-code-csharp.md)中创建 Function App 的 Azure 订阅。
-    资源组|你的资源组|选择在[前面的文章](./create-first-function-vs-code-csharp.md)中创建 Function App 的资源组。
-    帐户名|输入唯一名称|输入标识此 Azure Cosmos DB 帐户的唯一名称。<br><br>帐户名称只能使用小写字母、数字及连字符 (-)，必须为 3 到 31 个字符长。
-    API|Core (SQL)|选择“Core (SQL)”以创建一个文档数据库，然后可以使用 SQL 语法来查询。 [了解有关 Azure Cosmos DB SQL API 的详细信息](../cosmos-db/introduction.md)。|
-    位置|*选择离你的位置最近的区域*|选择用于托管 Azure Cosmos DB 帐户的地理位置。 使用离你或你的用户最近的位置，以便能够以最快的速度访问数据。
-    容量模式|无服务器或预配吞吐量|选择“无服务器”以在[无服务器](../cosmos-db/serverless.md)模式下创建帐户。 选择“预配吞吐量”以在[预配吞吐量](../cosmos-db/set-throughput.md)模式下创建帐户。<br><br>如果要开始使用 Azure Cosmos DB，请选择“无服务器”。
+1. 根据提示提供以下信息：
 
-4. 单击“查看 + 创建”。 可以跳过“网络”  和“标记”  部分。 
+    + 选择 Azure 数据库服务器：选择 `Core (SQL)` 以创建一个文档数据库，然后可以使用 SQL 语法来查询。 [了解有关 Azure Cosmos DB SQL API 的详细信息](../cosmos-db/introduction.md)。
 
-5. 查看摘要信息，然后单击“创建”。 
+    + 帐户名称：输入标识此 Azure Cosmos DB 帐户的唯一名称。 帐户名称只能使用小写字母、数字及连字符 (-)，必须为 3 到 31 个字符长。
 
-6. 等待新的 Azure Cosmos DB 创建完毕，然后选择“转到资源”。
+    + 选择容量模型：选择“无服务器”以在[无服务器](../cosmos-db/serverless.md)模式下创建帐户。 选择“预配吞吐量”以在[预配吞吐量](../cosmos-db/set-throughput.md)模式下创建帐户。 如果要开始使用 Azure Cosmos DB，建议选择“无服务器”。
 
-    :::image type="content" source="../cosmos-db/media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Azure Cosmos DB 帐户创建已完成" border="true":::
+    + 选择新资源的资源组：选择在[前面文章](./create-first-function-vs-code-csharp.md)中创建函数应用的资源组。
+
+    + 选择新资源的位置：选择用于托管 Azure Cosmos DB 帐户的地理位置。 使用离你或你的用户最近的位置，以便能够以最快的速度访问数据。
 
 ## <a name="create-an-azure-cosmos-db-database-and-container"></a>创建 Azure Cosmos DB 数据库和容器
 
-从 Azure Cosmos DB 帐户中选择“数据资源管理器”，然后选择“新建容器”。 创建一个名为 *my-database* 的新数据库、一个名为 *my-container* 的新容器，然后选择 `/id` 作为 [分区键](../cosmos-db/partitioning-overview.md)。
+1. 创建新 Azure Cosmos DB 帐户后，右键单击其名称，然后选择“创建数据库...”。
 
-:::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-container.png" alt-text="从 Azure 门户创建新的 Azure Cosmos DB 容器" border="true":::
+    :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-database.png" alt-text="从 Visual Studio Code 创建新 Azure Cosmos DB 数据库" border="true":::
+
+1. 出现提示时，请输入 `my-database` 作为“数据库名称”。
+
+1. 创建数据库后，右键单击其名称，然后选择“创建集合...”
+
+    :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-container.png" alt-text="从 Visual Studio Code 创建新 Azure Cosmos DB 容器" border="true":::
+
+1. 根据提示提供以下信息：
+
+    + 输入集合的 id：`my-container`
+
+    + 输入集合的[分区键](../cosmos-db/partitioning-overview.md)：`id`
 
 ## <a name="update-your-function-app-settings"></a>更新函数应用设置
 
 在[前一篇快速入门文章](./create-first-function-vs-code-csharp.md)中，你已在 Azure 中创建了一个函数应用。 在本文中，你将学习如何更新函数应用，以在上面创建的 Azure Cosmos DB 容器中写入 JSON 文档。 要连接到 Azure Cosmos DB 帐户，必须将其连接字符串添加到应用设置。 然后，将新设置下载到 local.settings.json 文件，这样就可以在本地运行时可以连接到 Azure Cosmos DB 帐户。
 
-1. 在 Visual Studio Code 中，找到刚创建的 Azure Cosmos DB 帐户。 右键单击其名称，然后选择“复制连接字符串”。
+1. 在 Visual Studio Code 中，右键单击 Azure Cosmos DB 帐户，然后选择“复制连接字符串”。
 
     :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/copy-connection-string.png" alt-text="复制 Azure Cosmos DB 连接字符串" border="true":::
 
@@ -129,7 +132,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB
     ConnectionStringSetting = "CosmosDbConnectionString")]IAsyncCollector<dynamic> documentsOut,
 ```
 
-`documentsOut` 参数是一个 IAsyncCollector <T> 类型，它表示在函数完成时将写入到 Azure Cosmos DB 容器的 JSON 文档的集合。 特定属性指定容器的名称及其父数据库的名称。 Azure Cosmos DB 帐户的连接字符串是由 `ConnectionStringSettingAttribute` 设置。
+`documentsOut` 参数是一个 `IAsyncCollector<T>` 类型，它表示在函数完成时将写入到 Azure Cosmos DB 容器的 JSON 文档的集合。 特定属性指定容器的名称及其父数据库的名称。 Azure Cosmos DB 帐户的连接字符串是由 `ConnectionStringSettingAttribute` 设置。
 
 Run 方法定义如下所示：  
 

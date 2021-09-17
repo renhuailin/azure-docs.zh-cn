@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: security
 author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: e5c598555cdfabbb250216b9e6a97e7222410c49
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 285b4c4fb9fae46ed7549352a93553b15a518e36
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739548"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419303"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -23,7 +23,7 @@ ms.locfileid: "121739548"
 
 ## <a name="roles-and-requirements"></a>角色和要求
 
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。   若要查看你在订阅中拥有的权限，请在 Azure 门户中，选择右上角的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。   若要查看你在订阅中拥有的权限，请在 Azure 门户中选择右上角的用户名，然后选择“我的权限”。 如果可以访问多个订阅，请选择相应的订阅。 
 
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 - 若要在 Azure 门户中创建和管理子资源，你必须属于“资源组”级别或更高级别的“数据工厂参与者”角色 。

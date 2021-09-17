@@ -9,14 +9,15 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 2b624f43a892c3b3fc07a7128a18dc9cc66736f8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c31c77fee8f4a9706f4c7d2ad0c39d89d1327d78
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668104"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689284"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视更改和更新 Azure 中的 Windows 虚拟机
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
 借助 Azure [更改跟踪](../../automation/change-tracking/overview.md)和[更新管理](../../automation/update-management/overview.md)，可以轻松地识别 Azure 中 Windows 虚拟机中的更改并管理这些 VM 的操作系统更新。
 
@@ -109,7 +110,7 @@ New-AzVm `
 
 若要为 VM 计划新的更新部署，请选择“更新管理”窗口顶部的“计划更新部署”。 在“新建更新部署”窗口中，指定以下信息：
 
-| 选项 | 说明 |
+| 选项 | 描述 |
 | --- | --- |
 | **名称** |输入用于标识更新部署的唯一名称。 |
 |**操作系统**| 选择 Linux 或 Windows 。|

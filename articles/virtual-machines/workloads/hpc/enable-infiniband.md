@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6f2a9502074543272b69f01b567da89b421f6fa6
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 563cbf412fa8bb522b835fe41849f8358f5303fb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227751"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689239"
 ---
 # <a name="enable-infiniband"></a>启用 InfiniBand
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 [支持 RDMA 的](../../sizes-hpc.md#rdma-capable-instances) [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) VM 通过低延迟的高带宽 InfiniBand 网络进行通信。 此类互连上的 RDMA 功能对于提高分布式节点 HPC 和 AI 工作负载的可伸缩性和性能至关重要。 支持 InfiniBand 的 H 系列和 N 系列 VM 采用非阻塞性胖树进行连接，使用的小直径旨在实现一致的优化 RDMA 性能。
 

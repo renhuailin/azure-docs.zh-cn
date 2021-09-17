@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 06/16/2021
 ms.author: cshoe
-ms.openlocfilehash: 3ec36a06dafb8622f97ded317f8ab2617e96662a
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: b543831ceead6d386de0617b02db93a99d9507a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428846"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609124"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>快速入门：使用 Azure Static Web Apps 生成第一个静态站点
 
@@ -46,6 +46,9 @@ Azure Static Web Apps 通过从代码存储库生成应用程序来发布网站�
 1. 在“Static Web Apps”标签下，选择“加号”。
 
     :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="应用程序名称":::
+    
+    > [!NOTE]
+    > Azure Static Web Apps Visual Studio Code 扩展通过使用一系列默认值简化了创建过程。 如果要对创建过程进行精细控制，请打开命令面板，然后选择“Azure Static Web Apps: 创建静态 Web 应用…(高级)”。
 
 1. 命令面板会在编辑器顶部打开，并提示你选择订阅名称。
 
@@ -65,11 +68,11 @@ Azure Static Web Apps 通过从代码存储库生成应用程序来发布网站�
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="应用程序预设：无框架":::
 
-    输入“./”作为应用程序文件的位置，并按 <kbd>Enter</kbd>。
+    输入 ./src 作为应用程序文件的位置，并按 <kbd>Enter</kbd>。
 
     :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="应用程序生成输出位置":::
 
-    输入“./”作为生成输出位置，并按 <kbd>Enter</kbd>。
+    输入 ./src 作为生成输出位置，并按 <kbd>Enter</kbd>。
 
     # <a name="angular"></a>[Angular](#tab/angular)
 

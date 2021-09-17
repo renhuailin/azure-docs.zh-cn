@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 91f6db79b7d18dc8b34ba1712d74a92000d63528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 362b2108fb76716b0ad8f81aa2cca4215a97a570
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953521"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746970"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>教程：Azure Active Directory SSO 与 Kemp LoadMaster Azure AD 集成的集成
 
@@ -33,11 +33,14 @@ ms.locfileid: "104953521"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Kemp LoadMaster Azure AD 集成单一登录 (SSO) 的订阅。
 
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Kemp LoadMaster Azure AD 集成支持 IDP 发起的 SSO
+* Kemp LoadMaster Azure AD 集成支持 IDP 发起的 SSO。
 
 ## <a name="add-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>从库中添加“Kemp LoadMaster Azure AD integration”
 
@@ -209,7 +212,7 @@ ms.locfileid: "104953521"
  
 ### <a name="import-idp-certificate"></a>导入 IdP 证书
 
-转到 Kemp LoadMaster Azure AD 集成 Web 控制台 
+转到 Kemp LoadMaster Azure AD 集成 Web 控制台。 
 
 1. 在“证书和颁发机构”下单击“中间证书”。
 
@@ -251,7 +254,7 @@ ms.locfileid: "104953521"
 
 ### <a name="set-authentication"></a>设置身份验证  
  
-在 Kemp LoadMaster Azure AD 集成 Web 控制台上
+在 Kemp LoadMaster Azure AD 集成 Web 控制台上。
 
 1. 单击“虚拟服务”。
 
@@ -273,7 +276,7 @@ ms.locfileid: "104953521"
 
 ### <a name="verify-the-changes"></a>验证更改 
  
-浏览到应用程序 URL 
+浏览应用程序 URL。 
 
 此时应显示租户登录页，而不是之前未经身份验证的访问。 
 

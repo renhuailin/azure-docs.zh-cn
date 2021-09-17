@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 8688d278c40ba34b7c4344a73cb4717f3fd71368
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 426322477ccef3a7e3d8be1e0b024a5abff532d4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600065"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695053"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>使用 Site Recovery 迁移到高级存储
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 [Azure 高级 SSD](../disks-types.md) 为运行 I/O 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 本指南帮助用户使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 将其 VM 磁盘从标准存储帐户迁移到高级存储帐户。
 
@@ -201,7 +203,7 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 3. **清理 Azure Site Recovery 基础结构**。 如果不再需要 Site Recovery，可清理其基础结构。 删除复制的项、配置服务器和恢复策略，然后删除 Azure Site Recovery 保管库。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 * [监视虚拟机和物理服务器的保护及其故障排除](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [有关 Microsoft Azure Site Recovery 的 Microsoft 问答页](/answers/topics/azure-site-recovery.html)

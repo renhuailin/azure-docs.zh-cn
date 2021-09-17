@@ -9,14 +9,15 @@ ms.subservice: instance-protection
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurepowershell
-ms.openlocfilehash: 1b54a1be03aca62cacf6afe7361028a42ea7f84c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 60d7b1c2a869d22e3d8220e0f3537b2882ea0db4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673885"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690421"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>针对 Azure 虚拟机规模集实例的实例保护
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Azure 虚拟机规模集可以通过[自动缩放](virtual-machine-scale-sets-autoscale-overview.md)提高工作负荷的弹性，让你可以配置何时对基础结构进行横向扩展，何时对其进行横向缩减。 规模集还可以让你通过不同的[升级策略](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)设置集中管理、配置和更新大量 VM。 可以针对规模集模型配置更新，此时如果已将升级策略设置为“自动”或“滚动”，则新配置会自动应用到每个规模集实例。
 

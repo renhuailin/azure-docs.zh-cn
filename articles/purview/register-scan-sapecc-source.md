@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 62015554f7e8e17e1443cc85812b3f37ee64f0a4
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: f9cd8601ef3e59de3c11073d7ac73176367f4fc9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551697"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724257"
 ---
 # <a name="register-and-scan-sap-ecc-source"></a>注册并扫描 SAP ECC 源
 
@@ -55,7 +55,7 @@ SAP ECC 源支持完全扫描（用于从 SAP ECC 实例中提取元数据），
 若要在数据目录中注册新的 SAP ECC 源，请执行以下操作：
 
 1.  导航到你的 Purview 帐户。
-2.  在左侧导航区域中选择“源”。
+2.  在左侧导航区域中选择“数据映射”。
 3.  选择“注册”
 4.  在“注册源”上，选择“SAP ECC”。 选择“继续”。
 

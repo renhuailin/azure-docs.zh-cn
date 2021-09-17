@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: ed31a2202a0eacbdc257e127e111d21215c27de4
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: a8fb169db79281240e2aab854bc6079a60054625
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258191"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771443"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>排查 NAS 配置和 NFS 存储目标的问题
 
@@ -146,4 +146,4 @@ If that command doesn't list the exports, the cache will have trouble connecting
 
 ## <a name="next-steps"></a>后续步骤
 
-如果本文未能解决你遇到的问题，请[开具支持票证](hpc-cache-support-ticket.md)以获得专家帮助。
+如果本文未能解决你遇到的问题，请[联系支持人员](hpc-cache-support-ticket.md)以获得专家帮助。

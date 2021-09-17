@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: bafae485c16923f3a4f7f5db6db0456f4b2f3bf7
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 75a9a8f9888c0e3773135aa407938601b74bab0e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109844945"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690268"
 ---
 # <a name="mv2-series"></a>Mv2 系列
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Mv2 系列采用高吞吐量、低延迟平台，在超线程 Intel® Xeon® Platinum 8180M 2.5GHz (Skylake) 处理器上运行，其所有核心基础频率为 2.5 GHz，最大超频为 3.8 GHz。 所有 Mv2 系列虚拟机大小均可使用标准和高级永久性磁盘。 Mv2 系列实例具有内存优化的 VM 大小，提供卓越的计算性能以支持大型内存中数据库和工作负载，其内存到 CPU 比率高，非常适用于关系数据库服务器、大型缓存和内存中分析。
 

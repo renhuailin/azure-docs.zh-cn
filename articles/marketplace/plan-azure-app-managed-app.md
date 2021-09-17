@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 4b06a8808826c5b11ecc2c54824db65f37d3b50f
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 08/13/2021
+ms.openlocfilehash: 082b943aef3f82898b80d23d33a90d3f5ec3ebc6
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431395"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515126"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>为 Azure 应用程序产品/服务创建 Azure 托管应用程序计划
 
@@ -39,6 +39,28 @@ Azure“托管应用程序”计划是一种在 Azure 市场发布 Azure 应用�
 
 > [!NOTE]
 > 托管应用程序必须可以通过 Azure 市场来部署。 如果担心客户沟通方面的问题，请在启用潜在客户分享后与感兴趣的客户联系。
+
+## <a name="usage-of-azure-kubernetes-service-aks-and-containers-in-managed-application"></a>在托管应用程序中使用 Azure Kubernetes 服务 (AKS) 和容器
+
+### <a name="azure-application-offers-fall-into-two-categories"></a>Azure 应用程序产品/服务分为两类
+
+- 解决方案模板 - 发布服务器不可访问
+- 托管应用程序 - 发布服务器可通过部署时由客户授权的预定义授权访问
+
+**解决方案模板：** 客户部署后，发布服务器无法更改解决方案模板产品/服务。 因此，此产品/服务类别中目前不允许预配容器和 Azure Kubernetes 服务 (AKS) 资源。
+
+**托管应用程序：** 托管应用程序产品/服务允许发布服务器访问和控制在客户订阅中部署时创建的资源。 因此，此产品/服务类别中允许预配容器和 Azure Kubernetes 服务 (AKS) 资源 *<u></u>* 。
+
+### <a name="rules-and-known-issues-for-aks-and-containers-in-managed-applications"></a>托管应用程序中 AKS 和容器的规则和已知问题
+
+- AKS 节点资源组不会继承拒绝分配作为 Azure 托管应用程序的一部分。 这意味着，客户将对 AKS 资源包括在托管应用程序中时创建的 AKS 节点资源组具有完全访问权限，同时受管理资源组将具有适当的拒绝分配。
+ 
+- 发布服务器可包括 Helm 图表和其它脚本作为 Azure 托管应用程序的一部分。 但是，该产品/服务将被视为常规托管应用程序部署，并且在部署时不会自动进行容器特定的处理或 Helm 图表安装。 发布服务器负责在部署时使用 VM 自定义脚本扩展或 Azure 部署脚本等常用技术，或在部署后执行相关脚本。
+ 
+- 与常规 Azure 托管应用程序相同，发布服务器也要负责确保解决方案成功部署，并且正确配置、保护和操作所有组件。 例如，发布服务器可使用自己的容器注册表作为映像源，但完全负责容器安全性和正在进行的漏洞扫描。
+
+> [!NOTE]
+> 当市场提供官方容器应用程序产品/服务类型时，可能会撤销对 Azure 托管应用程序产品/服务中的容器和 AKS 的支持。 届时，可能需要使用新的产品/服务类型发布所有未来的产品/服务，并且现有产品/服务可能需要迁移到新的产品/服务类型并停用。
 
 ## <a name="deployment-package"></a>部署包
 

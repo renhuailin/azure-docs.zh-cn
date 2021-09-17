@@ -8,14 +8,16 @@ ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6321058c863b6db190ec987887e61cf20ed8be50
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102549747"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692681"
 ---
 # <a name="prepay-for-azure-software-plans"></a>为 Azure 软件计划预付
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 为 Azure 中使用的 SUSE 和 RedHat 软件预付时，可以通过即用即付成本来节省资金。 折扣仅适用于 SUSE 和 RedHat 计量器，而不适用于虚拟机的使用。 可以单独购买虚拟机预留项，以节省更多成本。
 

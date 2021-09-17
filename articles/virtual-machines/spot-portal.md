@@ -1,6 +1,6 @@
 ---
 title: 使用门户部署 Azure 现成虚拟机
-description: 如何使用 Azure PowerShell 部署现成虚拟机以节省成本。
+description: 如何使用门户部署现成虚拟机
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: spot
@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 09/14/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 879a3e9b3d3f651a1dea17e76dba503cd2816b9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a80356cf7045fc079e71d429f89f3b4b0fff31ba
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098564"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694373"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-the-azure-portal"></a>使用 Azure 门户部署 Azure 现成虚拟机
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 使用 [Azure 现成虚拟机](spot-vms.md)，可以利用未使用的容量，大幅降低成本。 每当 Azure 需要回收容量时，Azure 基础结构就会逐出 Azure 现成虚拟机。 因此，Azure 现成虚拟机非常适用于那些处理服务中断的工作负荷（例如批处理作业）、开发/测试环境、大型计算工作负荷等。
 

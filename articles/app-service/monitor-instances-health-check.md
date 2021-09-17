@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 571f273d54989b0ea2f014294cd570c26b5e6931
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3efac96949d701bbc0147abf8712d4995f781d47
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741547"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771842"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>使用运行状况检查监视应用服务实例
 
@@ -99,6 +99,10 @@ ms.locfileid: "121741547"
 ### <a name="what-if-all-my-instances-are-unhealthy"></a>如果所有实例都不正常，该怎么办？
 
 如果应用程序的所有实例都不正常，应用服务会从负载均衡器中删除实例，最大删除百分比为 `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` 中指定的百分比。 在这种情况下，从负载均衡器轮换中删除所有不正常的应用实例实际上会导致应用程序出现故障。
+
+### <a name="does-health-check-work-on-app-service-environments"></a>健康状况检查在应用服务环境中是否正常工作？
+
+是，在应用服务环境 (ASE) 中，平台将在指定路径上 ping 实例，并从负载均衡器中删除任何运行不正常的实例，以便请求不会路由到这些实例。 但是，如果这些运行不正常的实例保持此状态 1 小时，则当前它们不会替换为新实例。
 
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)

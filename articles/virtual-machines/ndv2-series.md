@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 07b76f565aa9eda4db885b6ec37a42a21b2d25bc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1009a63f1ffc323073deb00e7c628d3752af2408
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744355"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690206"
 ---
 # <a name="updated-ndv2-series"></a>已更新 NDv2 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 NDv2 系列虚拟机是 GPU 系列中新增的系列，旨在满足最严苛 GPU 加速 AI、机器学习、模拟和 HPC 工作负载的需求。
 

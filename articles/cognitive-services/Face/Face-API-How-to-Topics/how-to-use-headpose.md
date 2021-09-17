@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/23/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cec466fc420e435159e2882d7b39ef6d03eeea7c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c53686338ae45971519735edce0ac62a0544ac2e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733476"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744782"
 ---
 # <a name="use-the-headpose-attribute"></a>使用 HeadPose 属性
 
@@ -29,7 +29,7 @@ ms.locfileid: "101733476"
 
 ### <a name="explore-the-sample-code"></a>探索示例代码
 
-可使用 HeadPose 属性以编程方式旋转人脸矩形。 如果在检测人脸（请参阅[如何检测人脸](HowtoDetectFacesinImage.md)）时指定此属性，可以稍后对其进行查询。 [认知服务人脸 WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) 应用中的以下方法采用一系列 **DetectedFace** 对象，返回一系列 **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** 对象。 此处的 **Face** 是一个自定义类，用于存储人脸数据，包括更新的矩形坐标。 将会针对 **top**、**left**、**width** 和 **height** 计算新值，而新字段 **FaceAngle** 用于指定旋转。
+可使用 HeadPose 属性以编程方式旋转人脸矩形。 如果在检测人脸（请参阅[调用检测 API](HowtoDetectFacesinImage.md)）时指定此属性，可以稍后对其进行查询。 [认知服务人脸 WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) 应用中的以下方法采用一系列 **DetectedFace** 对象，返回一系列 **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** 对象。 此处的 **Face** 是一个自定义类，用于存储人脸数据，包括更新的矩形坐标。 将会针对 **top**、**left**、**width** 和 **height** 计算新值，而新字段 **FaceAngle** 用于指定旋转。
 
 ```csharp
 /// <summary>

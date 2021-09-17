@@ -1,8 +1,6 @@
 ---
 title: 教程 - 使用 Azure CLI 创建和管理 Linux VM
 description: 本教程介绍如何使用 Azure CLI 在 Azure 中创建和管理 Linux VM
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
@@ -10,14 +8,16 @@ ms.topic: tutorial
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fb70f11e8815b078bccd4ed1cd294c961904579d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 4a9eea52f7b58368c17f7edb6f5b217fbf8c777e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816595"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698953"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
 

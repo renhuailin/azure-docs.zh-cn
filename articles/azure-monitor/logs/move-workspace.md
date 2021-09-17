@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 96d9e64a7b3443b4c2e835bfe824bd7d9197cb1c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0af9aeb9efe3b652f52b01e3b45307253e810742
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752150"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418650"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移到其他订阅或资源组
 
@@ -44,7 +44,7 @@ ms.locfileid: "109752150"
 > - 如果已移动工作区，请禁用“分析”下的所有活动规则，并在五分钟后重新启用这些规则。 重申一下，此解决方案在大多数情况下应该是有效的，但不支持这样做，风险由你自己承担。
 > 
 > **重新创建警报**
-> - 所有警报都必须在工作区的移动或重命名操作后重新创建，因为权限基于工作区的 Azure 资源 ID，该 ID 在工作区移动或资源名称更改期间会发生变化。
+> - 所有警报必须重新创建，因为权限基于工作区资源 ID，而该 ID 在工作区移动或资源名称更改期间会发生变化。 在 2019 年 6 月 1 日之后创建的工作区中的警报，或[从旧 Log Analytics 警报 API 升级到 scheduledQueryRules API](../alerts/alerts-log-api-switch.md) 的工作区中的警报可以导出到模板中，并可在移动后进行部署。 你可以[检查 scheduledQueryRules API 是否用于你的工作区中的警报](../alerts/alerts-log-api-switch.md#check-switching-status-of-workspace)。 也可以在目标工作区中手动配置警报
 >
 > **更新资源路径**
 > - 工作区移动之后，必须查看并更新指向工作区的任何 Azure 资源或外部资源，使之指向新的资源目标路径。

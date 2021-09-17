@@ -1,23 +1,26 @@
 ---
-title: Azure 数据工厂中的“获取元数据”活动
-description: 了解如何在数据工厂管道中使用“获取元数据”活动。
+title: 获取元数据活动
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何在 Azure 数据工厂或 Azure Synapse Analytics 管道中使用“获取元数据”活动。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 6c375143217379b7ec795778f8947d88b70aa4bc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4f619266d225e4dd36bb68ca9ebcaaae366891cb
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062805"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821885"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
+# <a name="get-metadata-activity-in-azure-data-factory-or-azure-synapse-analytics"></a>Azure 数据工厂或 Azure Synapse Analytics 中的“获取元数据”活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-可以使用“获取元数据”活动来检索 Azure 数据工厂中任何数据的元数据。 你可以在条件表达式中使用“获取元数据”活动的输出来执行验证，也可以在后续活动中使用元数据。
+可以使用“获取元数据”活动来检索 Azure 数据工厂或 Synapse 管道中任何数据的元数据。 你可以在条件表达式中使用“获取元数据”活动的输出来执行验证，也可以在后续活动中使用元数据。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -135,7 +138,7 @@ ms.locfileid: "110062805"
 }
 ```
 
-数据集
+**数据集**
 
 ```json
 {
@@ -224,7 +227,7 @@ storeSettings | 使用格式类型数据集时适用。 | 否
 ```
 
 ## <a name="next-steps"></a>后续步骤
-了解数据工厂支持的其他控制流活动：
+了解支持的其他控制流活动：
 
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
 - [ForEach 活动](control-flow-for-each-activity.md)

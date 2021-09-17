@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: 680e22974aa85ae2d179f0b927a44b3471b4939d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a106f6f4a9a539b8139c6a423d70d78faa97e769
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87100694"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122229027"
 ---
 # <a name="what-is-azure-dev-tools-for-teaching"></a>什么是 Azure Dev Tools for Teaching？
 
@@ -37,6 +37,9 @@ Azure Dev Tools for Teaching 订阅的管理员能够：
 所有软件都可通过[教育中心](https://azureforeducation.microsoft.com/devtools)（内置在 [Azure 门户](https://portal.azure.com/)中）进行访问，教育中心容纳可供学术用户使用的所有产品和服务。 学生只需使用访问其 Imagine 订阅所用的相同凭据登录 Azure 门户，即可访问软件。
 
 学生无需注册 Azure 订阅即可访问其软件权益。 但是，Microsoft 为学生提供 100 美元的 Azure 额度和免费 Azure 服务的访问权限：学生可以注册[面向学生的 Azure 套餐](azure-students-program.md)，而无需信用卡。
+
+## <a name="why-cant-i-purchase-azure-dev-tools-for-teaching"></a>为什么无法购买 Azure Dev Tools for Teaching？
+Azure Dev Tools for Teaching 现在只有在你与 Microsoft 签订了批量许可 (VL) 协议的情况下才能兑换。  如果你与 Microsoft 签订了 VL 协议，但兑换仍有问题，请联系支持人员。  有关教育批量许可的详细信息，请访问 https://aka.ms/ees
 
 ## <a name="getting-help"></a>获取帮助
 

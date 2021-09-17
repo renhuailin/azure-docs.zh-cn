@@ -6,18 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: c142cae3e96d800488b67da613181d1a91ba5b5b
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 9c36fc141dd09d3fc968116fe6a62fecc00721e9
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713311"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466134"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>教程：使用导入的 CSV 文件评估服务器
 
-在迁移到 Azure 的过程中，你将发现本地库存和工作负载。 
+在迁移到 Azure 的过程中，你将发现本地库存和工作负载。
 
-本教程演示如何使用 Azure Migrate 评估本地计算机：服务器评估工具，使用导入的逗号分隔值 (CSV) 文件。 
+本教程演示如何使用 Azure Migrate 评估本地计算机：发现和评估工具，使用导入的逗号分隔值 (CSV) 文件。 
 
 如果使用 CSV 文件，则不需要设置 Azure Migrate 设备来发现和评估服务器。 你可以控制在文件中共享的数据，并且许多数据都是可选的。 这种方法可用于以下情况：
 
@@ -38,7 +38,7 @@ ms.locfileid: "107713311"
 > * 评估服务器
 
 > [!NOTE]
-> 教程显示尝试方案的最快路径，并尽可能使用默认选项。 
+> 教程显示尝试方案的最快路径，并尽可能使用默认选项。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -47,10 +47,10 @@ ms.locfileid: "107713311"
 - 最多可以在单个 CSV 文件和 Azure Migrate 项目中添加 20,000 个服务器。 
 - 在 CSV 文件中指定的操作系统名称必须包含并匹配[支持的名称](#supported-operating-system-names)。
 
-
 ## <a name="prepare-an-azure-user-account"></a>准备 Azure 用户帐户
 
 若要创建 Azure Migrate 迁移项目，则需要一个帐户，其中包含：
+
 - Azure 订阅的参与者或所有者权限。
 - 用于注册 Azure Active Directory 应用的权限。
 
@@ -60,7 +60,7 @@ ms.locfileid: "107713311"
 
     ![用于搜索 Azure 订阅的搜索框](./media/tutorial-discover-import/search-subscription.png)
 
-2. 在“订阅”页上，选择要在其中创建 Azure Migrate 项目的订阅。 
+2. 在“订阅”页上，选择要在其中创建 Azure Migrate 项目的订阅。
 3. 在“订阅”中，选择“访问控制 (IAM)” > “检查访问权限” 。
 4. 在“检查访问权限”中，搜索相关的用户帐户。
 5. 在“添加角色分配”中，选择“添加” 。
@@ -75,8 +75,6 @@ ms.locfileid: "107713311"
 8. 在“用户设置”中，验证 Azure AD 用户是否可以注册应用程序（默认情况下设置为“是”） 。
 
     ![在用户设置中，验证用户是否可以注册 Active Directory 应用](./media/tutorial-discover-import/register-apps.png)
-
-
 
 ## <a name="set-up-a-project"></a>设置项目
 
@@ -130,7 +128,7 @@ IP 地址 | 否 | 服务器地址。
 **OS 版本** | 否 | 服务器操作系统版本。
 **OS 体系结构** | 否 | 服务器 OS 体系结构 <br/> 有效值为：x64、x86、amd64、32 位或 64 位
 **磁盘数目** | 否 | 如果提供了单独的磁盘详细信息，则不需要。
-**磁盘 1 大小**  | 否 | 磁盘最大大小 (GB)。<br/>可以通过在模板中[添加列](#add-multiple-disks)来添加更多磁盘的详细信息。 最多可以添加八个磁盘。
+**磁盘 1 大小**  | 否 | 磁盘最大大小 (GB)。<br/>可以通过在模板中[添加列](#add-multiple-disks)来添加更多磁盘的详细信息。 最多可以添加二十个磁盘。
 **磁盘 1 读取操作数** | 否 | 每秒的磁盘读取操作次数。
 **磁盘 1 写入操作数** | 否 | 每秒的磁盘写入操作次数。
 **磁盘 1 读取吞吐量** | 否 | 每秒从磁盘读取的数据，以 MB/秒为单位。
@@ -146,14 +144,13 @@ IP 地址 | 否 | 服务器地址。
 **固件类型** | 否 | 服务器固件。 值可以是“BIOS”或“UEFI”。
 **MAC 地址**| 否 | 服务器 MAC 地址。
 
-
 ### <a name="add-operating-systems"></a>添加操作系统
 
 评估识别特定的操作系统名称。 你指定的任何名称都必须与[支持的名称列表](#supported-operating-system-names)中的字符串之一匹配。
 
 ### <a name="add-multiple-disks"></a>添加多个磁盘
 
-模板为第一个磁盘提供默认字段。 你可以为最多八个磁盘添加类似的列。
+模板为第一个磁盘提供默认字段。 你可以为最多二十个磁盘添加类似的列。
 
 例如，若要指定第二个磁盘的所有字段，请添加以下列：
 
@@ -163,20 +160,19 @@ IP 地址 | 否 | 服务器地址。
 - 磁盘 2 读取吞吐量
 - 磁盘 2 写入吞吐量
 
-
 ## <a name="import-the-server-information"></a>导入服务器信息
 
 将信息添加到 CSV 模板之后，将 CSV 文件导入到“服务器评估”。
 
 1. 在 Azure Migrate 中，在“发现计算机”中，转到完成的模板。
-2. 选择“导入”  。
+2. 选择“导入”。
 3. 将显示导入状态。
     - 如果状态中出现警告，则可以修复它们，也可以继续操作而不解决它们。
     - 若要提高评估准确性，请按照警告中建议的方式改进服务器信息。
     - 若要查看并修复警告，请单击“下载警告详细信息 .CSV”。 此操作将下载包含警告的 CSV。 查看警告并根据需要解决问题。
     - 如果状态中出现错误，导致导入状态为“失败”，则必须修复这些错误，然后才能继续导入：
         1. 下载 CSV，现在其中包含错误详细信息。
-        1. 查看并根据需要处理错误。 
+        1. 查看并根据需要处理错误。
         1. 重新上传修改后的文件。
 4. 如果导入状态为“已完成”，则服务器信息已导入。 如果导入过程似乎未完成，请刷新。
 
@@ -192,8 +188,6 @@ IP 地址 | 否 | 服务器地址。
 2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页面上，选择显示了 **已发现服务器** 计数的图标。
 3. 选择“基于导入”选项卡。
 
-
-
 ## <a name="supported-operating-system-names"></a>支持的操作系统名称
 
 CSV 中提供的操作系统名称必须包含此列表中的名称并与之匹配。 否则，你将无法对它们进行评估。 
@@ -207,5 +201,6 @@ Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux
 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 创建 Azure Migrate 项目 
-> * 使用导入的 CSV 文件发现服务器。 现在，为[到 Azure VM 的 VMware VM 迁移](./tutorial-assess-vmware-azure-vm.md)运行评估。
+> * 创建 Azure Migrate 项目。
+> * 使用导入的 CSV 文件发现服务器。
+现在，为[到 Azure VM 的 VMware VM 迁移](./tutorial-assess-vmware-azure-vm.md)运行评估。

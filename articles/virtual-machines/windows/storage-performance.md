@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 8d38e3f58de0fc4cc1e963c18b002dc1e16852ec
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1bec93d8001287c3ac57a5073b3f8b40a1a4f658
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556003"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689304"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-windows-virtual-machines"></a>优化 Lsv2 系列 Windows 虚拟机上的性能
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Lsv2 系列虚拟机支持需要在各种应用与行业的本地存储中提供高 I/O 和吞吐量的各种工作负荷。  Lsv2 系列非常适用于大数据、SQL、NoSQL 数据库、数据仓库，以及大型事务数据库（包括 Cassandra、MongoDB、Cloudera 和 Redis）。
 

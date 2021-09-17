@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2f7af8ebc054b49df03a7f03c512db08a5098f2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5de4c52015a8282591edeee6de9fd27aae042324
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723021"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770660"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>新虚拟机的热补丁（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "121723021"
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 > [!NOTE]
-> 可在以下 Windows Server Azure Edition 映像之一找到热修补功能：Windows Server 2019 Datacenter：Azure Edition (Core)、Windows Server 2022 Datacenter：Azure Edition (Core)
+> 热补丁可以在“Windows Server 2022 Datacenter：Azure Edition (Core) 预览版”上进行评估。  “Windows Server 2019 Datacenter：Azure Edition 预览版”上的热补丁不再可供评估。
 
 热修补是在受支持的 Windows Server Azure Edition 虚拟机 (VM) 上安装更新的一种新方式，安装后无需重新启动。 本文介绍有关适用于受支持的 Windows Server Azure Edition VM 的热补丁的信息，热补丁具有以下优势：
 * 减少重新启动的次数，降低对工作负载的影响
@@ -218,7 +218,7 @@ VM 每隔数天自动评估，并在任意 30 天周期内多次评估，以确�
 
 ### <a name="can-i-upgrade-from-my-existing-windows-server-os"></a>是否可以从现有的 Windows Server 操作系统升级？
 
-* 当前支持从 Windows Server 的现有版本（即 Windows Server 2016 或 2019 的非 Azure 版本）升级至 Windows Server 2022 Datacenter：Azure Edition。 当前不支持升级到 Windows Server 2019 Datacenter：Azure Edition。
+* 是，支持从 Windows Server 的现有版本（如 Windows Server 2016 或 Windows Server 2019）升级至“Windows Server 2022 Datacenter：Azure Edition”。 
 
 ### <a name="can-i-use-hotpatch-for-production-workloads-during-the-preview"></a>在预览期间，是否可以将热补丁用于生产工作负载？
 

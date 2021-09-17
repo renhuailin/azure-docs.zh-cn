@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c37017269eb8989102353b079f61c104f5061749
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 87d3518b59bd5297bed4af25b11d7a47b7021a58
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074919"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692457"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Windows 虚拟机
+
+适用于：:heavy_check_mark: Windows VM 
 
 可以通过 Azure 门户创建 Azure 虚拟机 (VM)。 此方法提供基于浏览器的用户界面来创建 VM 及其相关资源。 本快速入门展示了如何使用 Azure 门户在 Azure 中部署运行 Windows Server 2019 的虚拟机 (VM)。 若要查看运行中的 VM，可以通过 RDP 登录到该 VM 并安装 IIS Web 服务器。
 
@@ -30,7 +32,7 @@ ms.locfileid: "112074919"
 
 1. 在搜索中键入“虚拟机”。
 1. 在“服务”下，选择“虚拟机” 。
-1. 在“虚拟机”页中，选择“添加”，然后选择“虚拟机”  。 
+1. 在“虚拟机”页面中，选择“创建”，然后选择“虚拟机”  。 
 1. 在“基本信息”标签页中的“项目详细信息”下，确保选择了正确的订阅，然后选择“新建资源组”。 对于名称，请键入 *myResourceGroup*。 
 
     ![“项目详细信息”部分的屏幕截图，显示为虚拟机选择 Azure 订阅和资源组的位置](./media/quick-create-portal/project-details.png)

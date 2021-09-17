@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 779574bd5d4e7b982cac065b2bb79bc7b483cee8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ee1adc5b6964b8583c33b68a9e02bb77cb050f4a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467700"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698546"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 适用于 Linux 虚拟机 (VM) 的 Azure 磁盘加密使用 Linux 的 DM-Crypt 功能为 OS 磁盘和数据磁盘提供全磁盘加密。 此外，它还在使用 EncryptFormatAll 功能时提供临时磁盘加密。
 
@@ -87,20 +89,23 @@ Set-AzContext -Subscription <SubscriptionId>
 运行 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) cmdlet 将验证是否选择了正确的订阅。
 
 若要确认已安装 Azure 磁盘加密 cmdlet，请使用 [Get-command](/powershell/module/microsoft.powershell.core/get-command) cmdlet：
-     
+
 ```powershell
 Get-command *diskencryption*
 ```
+
 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。 
 
 ## <a name="enable-encryption-on-an-existing-or-running-linux-vm"></a>在现有或正在运行的 Linux VM 上启用加密
+
 在此方案中，可以使用资源管理器模板、PowerShell cmdlet 或 CLI 命令启用加密。 如果需要虚拟机扩展的架构信息，请参阅[适用于 Linux 扩展的 Azure 磁盘加密](../extensions/azure-disk-enc-linux.md)一文。
 
 >[!IMPORTANT]
  >启用 Azure 磁盘加密之前，必须在其外部创建基于托管磁盘的 VM 实例的快照和/或备份。 可以通过门户或 [Azure 备份](../../backup/backup-azure-vms-encryption.md)创建托管磁盘的快照。 备份确保在加密过程中发生任何意外故障时可以使用恢复选项。 备份后，可以通过指定 -skipVmBackup 参数，使用 Set-AzVMDiskEncryptionExtension cmdlet 来加密托管磁盘。 在未备份基于托管磁盘的 VM 且未指定此参数的情况下，对该 VM 使用 Set-AzVMDiskEncryptionExtension 命令会失败。 
 >
->加密或禁用加密可能导致 VM 重新启动。 
->
+> 加密或禁用加密可能导致 VM 重新启动。
+
+若要禁用加密，请参阅[禁用加密和删除加密扩展](#disable-encryption-and-remove-the-encryption-extension)。
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>使用 Azure CLI 在现有或正在运行的 Linux VM 上启用加密 
 
@@ -129,14 +134,10 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
      ```azurecli-interactive
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
-
-- **禁用加密：** 若要禁用加密，请使用 [az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) 命令。 只允许对 Linux VM 的数据卷禁用加密。
-
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "data"
-     ```
+若要禁用加密，请参阅[禁用加密和删除加密扩展](#disable-encryption-and-remove-the-encryption-extension)。
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-powershell"></a>使用 PowerShell 在现有或正在运行的 Linux VM 上启用加密
+
 使用 [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 在 Azure 中运行的虚拟机上启用加密。 在加密磁盘之前，创建[快照](snapshot-copy-managed-disk.md)和/或使用 [Azure 备份](../../backup/backup-azure-vms-encryption.md)备份 VM。 已在 PowerShell 脚本中指定 -skipVmBackup 参数以加密正在运行的 Linux VM。
 
 -  **加密正在运行的 VM：** 以下脚本初始化变量并运行 Set-AzVMDiskEncryptionExtension cmdlet。 已创建必要的资源组、VM 和 Key Vault。 请将 MyVirtualMachineResourceGroup、MySecureVM 和 MySecureVault 替换为自己的值。 修改 -VolumeType 参数，以指定要加密哪些磁盘。
@@ -178,12 +179,9 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
      ```azurepowershell-interactive 
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
-    
-- **禁用磁盘加密：** 若要禁用加密，请使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。 只允许对 Linux VM 的数据卷禁用加密。
-     
-     ```azurepowershell-interactive 
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
-     ```
+
+若要禁用加密，请参阅[禁用加密和删除加密扩展](#disable-encryption-and-remove-the-encryption-extension)。
+
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-with-a-template"></a>使用模板在现有或正在运行的 Linux VM 上启用加密
 
@@ -206,6 +204,8 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 | location | 所有资源的位置。 |
 
 有关配置 Linux VM 磁盘加密模板的详细信息，请参阅[适用于 Linux 的 Azure 磁盘加密](../extensions/azure-disk-enc-linux.md)。
+
+若要禁用加密，请参阅[禁用加密和删除加密扩展](#disable-encryption-and-remove-the-encryption-extension)。
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>对 Linux VM 上的数据磁盘使用 EncryptFormatAll 功能
 
@@ -311,14 +311,14 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -Di
 * [准备预加密的 Linux VHD](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-linux-vhd)
 
 >[!IMPORTANT]
- >启用 Azure 磁盘加密之前，必须在其外部创建基于托管磁盘的 VM 实例的快照和/或备份。 可以从门户创建托管磁盘的快照，也可以使用 [Azure 备份](../../backup/backup-azure-vms-encryption.md)。 备份确保在加密过程中发生任何意外故障时可以使用恢复选项。 备份后，可以通过指定 -skipVmBackup 参数，使用 Set-AzVMDiskEncryptionExtension cmdlet 来加密托管磁盘。 在未备份基于托管磁盘的 VM 且未指定此参数的情况下，对该 VM 使用 Set-AzVMDiskEncryptionExtension 命令会失败。 
+ >启用 Azure 磁盘加密之前，必须在其外部创建基于托管磁盘的 VM 实例的快照和/或备份。 可以从门户创建托管磁盘的快照，也可以使用 [Azure 备份](../../backup/backup-azure-vms-encryption.md)。 备份确保在加密过程中发生任何意外故障时可以使用恢复选项。 备份后，可以通过指定 -skipVmBackup 参数，使用 Set-AzVMDiskEncryptionExtension cmdlet 来加密托管磁盘。 在未备份基于托管磁盘的 VM 且未指定此参数的情况下，对该 VM 使用 Set-AzVMDiskEncryptionExtension 命令会失败。
 >
-> 加密或禁用加密可能导致 VM 重新启动。 
+> 加密或禁用加密可能导致 VM 重新启动。
 
 
 
 ### <a name="use-azure-powershell-to-encrypt-vms-with-pre-encrypted-vhds"></a>使用 Azure PowerShell 加密包含预加密 VHD 的 VM 
-可以使用 PowerShell cmdlet [Set-AzVMOSDisk](/powershell/module/Az.Compute/Set-AzVMOSDisk#examples) 在加密的 VHD 上启用磁盘加密。 以下示例显示了一些常用参数。 
+可以使用 PowerShell cmdlet [Set-AzVMOSDisk](/powershell/module/Az.Compute/Set-AzVMOSDisk#examples) 在加密的 VHD 上启用磁盘加密。 以下示例显示了一些常用参数。
 
 ```azurepowershell
 $VirtualMachine = New-AzVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
@@ -386,9 +386,58 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
     >[!NOTE]
     > disk-encryption-keyvault 参数值的语法是完整的标识符字符串：/subscriptions/[subscription-id-guid]/resourceGroups/[KVresource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br> key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] 
 
+## <a name="disable-encryption-and-remove-the-encryption-extension"></a>禁用加密并删除加密扩展
 
-## <a name="disable-encryption-for-linux-vms"></a>为 Linux VM 禁用加密
-[!INCLUDE [disk-encryption-disable-encryption-cli](../../../includes/disk-encryption-disable-cli.md)]
+
+你可以禁用 Azure 磁盘加密扩展，也可以删除 Azure 磁盘加密扩展。 这是两个不同的操作。
+
+若要删除 ADE，建议先禁用加密，然后删除扩展。 如果删除加密扩展而非禁用，磁盘仍将加密。 如果在删除扩展后禁用加密，则扩展将重新安装（以执行解密操作），并且需要再次删除。
+
+> [!WARNING]
+> 如果 OS 磁盘已加密，你无法禁用加密。 （当原始加密操作指定 volumeType=ALL 或 volumeType=OS 时，OS 磁盘已加密。） 
+>
+> 只有在加密数据磁盘但未加密 OS 磁盘时，禁用加密才有效。
+
+### <a name="disable-encryption"></a>禁用加密功能
+
+可以使用 Azure PowerShell、Azure CLI 或资源管理器模板禁用加密。 禁用加密不会删除扩展（请参阅[删除加密扩展](#remove-the-encryption-extension)）。
+
+- **使用 Azure PowerShell 禁用磁盘加密：** 若要禁用加密，请使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。
+
+     ```azurepowershell-interactive
+     Disable-AzVMDiskEncryption -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM" -VolumeType "all"
+     ```
+
+- **使用 Azure CLI 禁用加密：** 若要禁用加密，请使用 [az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) 命令。 
+
+     ```azurecli-interactive
+     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "all"
+     ```
+
+- **使用资源管理器模板禁用加密：** 
+
+    1. 单击[在正在运行的 Linux VM 模板上“禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm-without-aad)中的“部署到 Azure”。
+    2. 选择订阅、资源组、位置、VM、卷类型、法律条款和协议。
+    3.  单击“购买”，以便在正在运行的 Windows VM 上禁用磁盘加密。
+
+### <a name="remove-the-encryption-extension"></a>删除加密扩展
+
+如果要解密磁盘并删除加密扩展，则必须在删除扩展之前禁用加密；具体请参阅[禁用加密](#disable-encryption)。
+
+你可以使用 Azure PowerShell 或 Azure CLI 删除加密扩展。 
+
+- 使用 Azure PowerShell 禁用磁盘加密：若要移除加密，请使用 [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) cmdlet。
+
+     ```azurepowershell-interactive
+     Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM"
+     ```
+
+- 使用 Azure CLI 禁用加密：若要移除加密，请使用 [az vm extension delete](/cli/azure/vm/extension#az_vm_extension_delete) 命令。
+
+     ```azurecli-interactive
+     az vm extension delete -g "MyVirtualMachineResourceGroup" --vm-name "MySecureVM" -n "AzureDiskEncryptionForLinux"
+     ```
+
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 

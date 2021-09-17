@@ -1,18 +1,18 @@
 ---
 title: 快速入门 - 使用 Terraform 预配 Azure Spring Cloud
 description: 本快速入门介绍如何使用 Terraform 将 Spring Cloud 群集部署到现有虚拟网络中。
-author: aluna033
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-java
 ms.author: ariel
 ms.date: 06/15/2021
-ms.openlocfilehash: d099e86f5a28aae145723b728e79ce3ee55f8250
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: f3459ef8fe7f3d1dcc491c0c7dcc8863df0b2cb1
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114287572"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271506"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-terraform"></a>快速入门：使用 Terraform 预配 Azure Spring Cloud
 
@@ -27,7 +27,7 @@ ms.locfileid: "114287572"
 * Azure Spring Cloud 群集的两个专用子网，一个用于服务运行时，另一个用于 Spring Boot 微服务应用程序。 有关子网和虚拟网络要求，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[虚拟网络要求](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements)部分。
 * 用于 Azure Spring Cloud 诊断设置的现有 Log Analytics 工作区，以及一个基于工作区的 Application Insights 资源。 有关详细信息，请参阅[使用诊断设置分析日志和指标](diagnostic-services.md)以及 [Azure Spring Cloud 中的 Application Insights Java 进程内代理](how-to-application-insights.md)。
 * 你已确定供 Azure Spring Cloud 群集使用的三个内部无类别域际路由 (CIDR) 范围（每个范围至少为 /16）。 这些 CIDR 范围不可直接路由，只能在 Azure Spring Cloud 群集内部使用。 群集无法将 169.254.0.0/16、172.30.0.0/16、172.31.0.0/16 或 192.0.2.0/24 用作内部 Spring Cloud CIDR 范围，或包含在群集虚拟网络地址范围内的任何 IP 范围   。
-* 已授予对虚拟网络的服务权限。 Azure Spring Cloud 资源提供程序要求对虚拟网络拥有“所有者”权限，以便为虚拟网络中专用的动态服务主体授予访问权限，从而进行进一步的部署和维护。 有关说明和详细信息，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[授予虚拟网络服务权限](how-to-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network)部分。
+* 已授予对虚拟网络的服务权限。 Azure Spring Cloud 资源提供程序要求对虚拟网络拥有“所有者”权限，以便为虚拟网络中专用的动态服务主体授予访问权限，从而进行进一步的部署和维护。 有关说明和详细信息，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[向服务授予虚拟网络权限](how-to-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network)部分。
 * 如果使用 Azure 防火墙或网络虚拟设备 (NVA)，则还需要满足以下先决条件：
    * 网络和完全限定域名 (FQDN) 规则。 有关详细信息，请参阅[虚拟网络要求](how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements)。
    * 应用于每个服务运行时和 Spring Boot 微服务应用程序子网的唯一一个用户定义路由 (UDR)。 有关 UDR 的详细信息，请参阅[虚拟网络流量路由](../virtual-network/virtual-networks-udr-overview.md)。 在部署 Spring Cloud 群集之前，应将 UDR 配置为具有 NVA 目标的 0.0.0.0/0 路由。 有关详细信息，请参阅[在虚拟网络中部署 Azure Spring Cloud](how-to-deploy-in-azure-virtual-network.md) 的[自带路由表](how-to-deploy-in-azure-virtual-network.md#bring-your-own-route-table)部分。
@@ -38,7 +38,7 @@ ms.locfileid: "114287572"
 
 ```hcl
 provider "azurerm" {
-    features {} 
+    features {}
 }
 
 resource "azurerm_resource_group" "sc_corp_rg" {
@@ -55,24 +55,24 @@ resource "azurerm_application_insights" "sc_app_insights" {
 }
 
 resource "azurerm_spring_cloud_service" "sc" {
-  name                = var.sc_service_name 
+  name                = var.sc_service_name
   resource_group_name = var.resource_group_name
   location            = var.location
-  
+
   network {
     app_subnet_id                   = "/subscriptions/${var.subscription}/resourceGroups/${var.azurespringcloudvnetrg}/providers/Microsoft.Network/virtualNetworks/${var.vnet_spoke_name}/subnets/${var.app_subnet_id}"
     service_runtime_subnet_id       = "/subscriptions/${var.subscription}/resourceGroups/${var.azurespringcloudvnetrg}/providers/Microsoft.Network/virtualNetworks/${var.vnet_spoke_name}/subnets/${var.service_runtime_subnet_id}"
     cidr_ranges                     = var.sc_cidr
   }
-  
+
   timeouts {
       create = "60m"
       delete = "2h"
   }
-  
+
   depends_on = [azurerm_resource_group.sc_corp_rg]
   tags = var.tags
-  
+
 }
 
 resource "azurerm_monitor_diagnostic_setting" "sc_diag" {
@@ -111,27 +111,19 @@ resource "azurerm_monitor_diagnostic_setting" "sc_diag" {
 
    - Azure Spring Cloud 可用区域（请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud&regions=all)）中的某个部署位置。 需要以短格式输入位置名称。 若要获取此值，请使用以下命令生成 Azure 位置列表，然后查找所选区域的“名称”值。
 
-      ```azurecli
-      az account list-locations --output table
-      ```
+   ```azurecli
+   az account list-locations --output table
+   ```
 
    - 要部署到的资源组的名称。
-
    - 为 Spring Cloud 部署选择的名称。
-
    - 将在其中部署资源的虚拟网络资源组的名称。
-
    - 分支虚拟网络的名称（例如 vnet-spoke）。
-
    - Spring Cloud 应用服务要使用的子网的名称（例如 snet-app）。
-
    - Spring Cloud 运行时服务要使用的子网的名称（例如 snet-runtime）。
-
    - Azure Log Analytics 工作区的名称。
-
    - Azure Spring Cloud 要使用的虚拟网络的 CIDR 范围（例如 XX.X.X.X/16,XX.X.X.X/16,XX.X.X.X/16）。
-
-   - 要在所有支持标记的资源上作为标记应用的键/值对。 有关详细信息，请参阅[使用标记对 Azure 资源和管理层次结构进行组织](../azure-resource-manager/management/tag-resources.md)。 
+   - 要在所有支持标记的资源上作为标记应用的键/值对。 有关详细信息，请参阅[使用标记对 Azure 资源和管理层次结构进行组织](../azure-resource-manager/management/tag-resources.md)。
 
 1. 运行以下命令以初始化 Terraform 模块：
 

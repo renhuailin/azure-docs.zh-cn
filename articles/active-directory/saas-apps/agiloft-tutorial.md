@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/03/2021
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 25bea4a80a33d520683ec56ee4b40dd54b9652c9
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: bcb919a12590c7cb97ba220da8fb44dc59782331
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527003"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft-contract-management-suite"></a>教程：Azure Active Directory 与 Agiloft 合同管理套件集成
 
@@ -82,7 +82,7 @@ ms.locfileid: "111527003"
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Agiloft 合同管理套件客户支持团队](https://www.agiloft.com/support-login.htm)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -103,7 +103,7 @@ ms.locfileid: "111527003"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -123,15 +123,20 @@ ms.locfileid: "111527003"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Agiloft 合同管理套件公司站点。
 
-2. 单击“设置”（在左窗格中），然后选择“访问”。  
+2. 单击页面右上角的“设置”图标。
 
-    ![突出显示“访问”部分的屏幕截图。](./media/agiloft-tutorial/access.png)
+    ![显示“设置”图标的屏幕截图。](./media/agiloft-tutorial/settings.png)
 
-3. 单击“配置 SAML 2.0 单一登录”按钮。 
+3. 选择“访问权限”。
+
+    ![突出显示访问区域的屏幕截图](./media/agiloft-tutorial/access.png)
+
+
+4. 单击“配置 SAML 2.0 单一登录”按钮。 
 
     ![突出显示“配置 SAML 2.0 单一登录”按钮的屏幕截图。](./media/agiloft-tutorial/setup.png)
 
-4. 此时会显示向导对话框。 在对话框中，单击“标识提供者详细信息”并填写以下字段：   
+5. 此时会显示向导对话框。 在对话框中，单击“标识提供者详细信息”并填写以下字段：   
 
     ![Agiloft 合同管理套件配置](./media/agiloft-tutorial/details.png)
 

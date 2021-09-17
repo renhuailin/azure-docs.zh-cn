@@ -11,12 +11,12 @@ ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab94a83a64ca9770f0c216ddf42145b262629c6d
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 8a05599efd58acb71534bef41a881de9170811af
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598986"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428807"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>使用有序聚集列存储索引优化性能  
 
@@ -59,7 +59,6 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id;
 具有所有这些模式的查询在使用有序 CCI 时运行速度往往更快。  
 1. 查询具有相等性、不相等性或范围谓词
 1. 谓词列和有序 CCI 列相同。  
-1. 谓词列的使用顺序与有序 CCI 列的列序号相同。  
  
 在此示例中，表 T1 具有一个已按 Col_C、Col_B 和 Col_A 顺序排序的聚集列存储索引。
 
@@ -70,7 +69,7 @@ ORDER (Col_C, Col_B, Col_A);
 
 ```
 
-如果使用有序 CCI，查询 1 的性能比其他三个查询更好。 
+由于查询 1 和查询 2 引用所有有序 CCI 列，因此相比其他查询，这两种查询的性能最适用于有序 CCI。 
 
 ```sql
 -- Query #1: 

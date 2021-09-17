@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 7bddb61bbbab008fad4e538400bbe4396ac744b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 555bc5c14a769c6e2ec309347fd40e4e9aa9e1e3
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723456"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681404"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>部署 SAP 连续威胁监视（公共预览版）
 
@@ -35,13 +35,16 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 
 部署 SAP 数据连接器后，部署 SAP 解决方案安全内容，以顺利深入了解组织的 SAP 环境并改进任何相关的安全操作功能。
 
-在本教程中，学习以下内容：
+本文内容：
 
 > [!div class="checklist"]
 > * 如何为 SAP 数据连接器部署准备 SAP 系统
 > * 如何使用 Docker 容器和 Azure VM 部署 SAP 数据连接器
 > * 如何在 Azure Sentinel 中部署 SAP 解决方案安全内容
 
+> [!NOTE]
+> 必须执行额外的步骤才能通过安全 SNC 连接部署 SAP 数据连接器。 有关详细信息，请参阅[通过 SNC 部署 Azure Sentinel SAP 数据连接器](sap-solution-deploy-snc.md)。
+>
 ## <a name="prerequisites"></a>先决条件
 
 为了按照本教程中的说明部署 Azure Sentinel SAP 数据连接器和安全内容，必须具备以下先决条件：
@@ -83,7 +86,7 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
     |- 700 到 702<br>- 710 到 711、730、731 和 740<br>- 750 到 752     | 2502336：CD（更改文档）：RSSCD100 - 仅从存档读取，而不从数据库中读取        |
     |     |         |
 
-    更高版本不需要额外的说明。 有关详细信息，请参阅 [SAP 支持速启动板站点](https://support.sap.com/en/index.html)，使用 SAP 用户帐户登录。
+    更高版本不需要额外的说明。 有关详细信息，请参阅 [SAP 支持 Launchpad 站点](https://support.sap.com/en/index.html)，使用 SAP 用户帐户登录。
 
 1. 从位于 https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/CR: 的 Azure Sentinel GitHub 存储库下载并安装以下 SAP 更改请求之一
 
@@ -299,7 +302,20 @@ SAP 数据连接器部署脚本存储在 [Azure Sentinel GitHub 存储库 > Data
     ./ sapcon-instance-update.sh
     ```
 
-已更新计算机上的 SAP 数据连接器 Docker 容器。
+1. 重启 Docker 容器：
+
+    ```bash
+    docker restart sapcon-[SID]
+    ```
+
+已更新计算机上的 SAP 数据连接器 Docker 容器。 
+
+确保检查是否有任何其他可用更新：
+
+- 在 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/CR)中检查相关 SAP 更改请求。
+- 在“适用于 SAP 的 Azure Sentinel 持续威胁监视”解决方案中检查 Azure Sentinel SAP 安全内容
+- 在 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/Analytics/Watchlists)中检查相关播放列表
+
 
 ## <a name="collect-sap-hana-audit-logs"></a>收集 SAP HANA 审核日志
 
@@ -336,6 +352,7 @@ SAP 数据连接器部署脚本存储在 [Azure Sentinel GitHub 存储库 > Data
 
 详细了解 Azure Sentinel SAP 解决方案：
 
+- [通过 SNC 部署 Azure Sentinel SAP 数据连接器](sap-solution-deploy-snc.md)
 - [专家配置选项、本地部署和 SAPControl 日志源](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP 解决方案详细的 SAP 要求](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP 解决方案日志参考](sap-solution-log-reference.md)

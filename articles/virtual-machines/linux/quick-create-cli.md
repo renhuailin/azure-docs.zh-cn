@@ -14,14 +14,16 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: 14dbf2580b8dc114ea1c2706a682541bbd0aecc9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: f6ae323dadd2f2859079899906c3ba51a12df935
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "114288199"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698155"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Linux 虚拟机
+
+适用于：:heavy_check_mark: Linux VM
 
 本快速入门向你展示了如何使用 Azure 命令行接口 (CLI) 在 Azure 中部署 Linux 虚拟机 (VM)。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。
 

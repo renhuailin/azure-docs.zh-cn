@@ -7,12 +7,12 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: e6c2a452441b268adc52ef3d9337aa5e604fe1e6
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 29d2f44dec6a80f2512e6ef23c2627c8dd098be4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729858"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741567"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中运行自定义容器
 
@@ -313,7 +313,7 @@ ENTRYPOINT ["java", "-Dserver.port=80", "-jar", "/tmp/appservice/parkingpage.jar
 
 “资源组”是 Azure 中所有应用程序资源的命名集合。 例如，资源组可以包含对网站、数据库和 Azure 函数的引用。
 
-应用服务计划定义用于托管网站的物理资源。 此快速入门在 Linux 基础结构上使用“基本”托管计划，这意味着该站点将与其他网站一起托管在 Linux 计算机上。 如果开始使用“基本”计划，则可以使用 Azure 门户进行扩展，使你的计算机是在计算机上运行的唯一站点。
+应用服务计划定义用于托管网站的物理资源。 此快速入门在 Linux 基础结构上使用“基本”托管计划，这意味着该站点将与其他网站一起托管在 Linux 计算机上。 如果开始使用“基本”计划，则可以使用 Azure 门户进行扩展，使你的计算机是在计算机上运行的唯一站点。 有关定价，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/linux)。
 
 ## <a name="browse-the-website"></a>浏览网站
 

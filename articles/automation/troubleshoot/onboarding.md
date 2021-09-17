@@ -4,12 +4,12 @@ description: 本文介绍如何排查和解决部署 Azure 自动化功能时出
 services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 43bc367be9ad9bb32f33f94df774acb3e808182a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8112b7637fc2737a80ab9235b962b2adef6d1b19
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651113"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607793"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>排查功能部署问题
 
@@ -105,20 +105,20 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="issue"></a>问题
 
-此错误代码指出因违反一项或多项策略，部署失败。
+此错误代码指出因违反一项或多项 Azure Policy 分配而导致部署失败。
 
 #### <a name="cause"></a>原因 
 
-某项策略在阻止操作完成。
+Azure Policy 分配阻止操作完成。
 
 #### <a name="resolution"></a>解决方法
 
-要成功部署该功能，你必须考虑更改所指出的策略。 由于可定义很多不同类型的策略，因此所需的更改由所违反的策略而定。 例如，如果在资源组上定义了一项策略，该策略拒绝更改某些所含资源的内容，那么你可选择下列解决方案之一：
+要成功部署该功能，你必须考虑更改所指的策略定义。 由于可定义很多不同类型的策略定义，因此所需的更改由所违反的策略定义而定。 例如，如果为某个资源组上分配了一个策略定义，该策略拒绝授予权限以更改某些所含资源的内容，那么你可选择下列解决方案之一：
 
-* 将该策略完全删除。
+* 完全删除策略分配。
 * 试着为其他资源组启用该功能。
-* 将该策略的目标改为特定资源，例如自动化帐户。
-* 修改该策略根据配置要拒绝的一组资源。
+* 将该策略的目标重新定向到特定资源，例如自动化帐户。
+* 修改该策略定义根据配置要拒绝访问的一组资源。
 
 请查看 Azure 门户右上角的通知，或转到包含自动化帐户的资源组，然后选择“设置”下的“部署”，查看失败的部署 。 要详细了解 Azure Policy，请参阅 [Azure Policy 概述](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 

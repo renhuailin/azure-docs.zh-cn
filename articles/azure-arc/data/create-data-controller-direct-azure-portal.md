@@ -7,18 +7,16 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/13/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: c1c72ea44dc392e169f505c4820f99affdc82615
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 6ac96cb0420ecdba934b364c185bedf01f9f4321
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602512"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822641"
 ---
 #  <a name="create-azure-arc-data-controller-from-azure-portal---direct-connectivity-mode"></a>从 Azure 门户创建 Azure Arc 数据控制器 - 直接连接模式
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 本文介绍如何在此功能的当前预览版中，在直接连接模式下部署 Azure Arc 数据控制器。 
 
@@ -26,21 +24,13 @@ ms.locfileid: "114602512"
 
 在开始之前，请先验证是否已满足[部署数据控制器 - 直接连接模式 - 先决条件](create-data-controller-direct-prerequisites.md)中的先决条件。
 
->[!NOTE]
->首先需要使用 Azure CLI 部署已启用 Arc 的 Kubernetes 数据服务扩展。
->
->```azurecli
->az k8s-extension create -c "{connected_cluster_name}" -g "{resource_group_name}" --name "arcdataservices" --cluster-type "connectedClusters" --extension-type "microsoft.arcdataservices" --scope "cluster" --release-namespace {namespace} --config "Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper"
->```
-
-
 ## <a name="deploy-azure-arc-data-controller"></a>部署 Azure Arc 数据控制器
 
 你可以采用以下方法之一从 Azure 门户启动 Azure Arc 数据控制器创建流：
 
 - 在 Azure 门户的搜索栏中搜索“Azure Arc 数据控制器”，然后选择“+ 创建”
 - 在已启用 Azure Arc 的 Kubernetes 群集的“概述”页中，
-  - 选择“设置”下面的“扩展(预览版)”。
+  - 选择“设置”下面的“扩展”。
   - 从“扩展概述”页选择“添加”，然后选择“Azure Arc 数据控制器”
   - 从 Azure Arc 数据控制器市场库选择“创建”
   

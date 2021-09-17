@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6710273438b291c1547688b2213b0c57ac766b99
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b018dead90b593276a9cb92696dd964473057407
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796368"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732321"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>快速入门：授权创建无限数目的应用注册的权限
 
@@ -39,8 +39,9 @@ ms.locfileid: "110796368"
 
 ### <a name="create-a-custom-role"></a>创建自定义角色
 
-1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
-1. 依次选择“Azure Active Directory”、“角色和管理员”和“新建自定义角色”  。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 依次选择“Azure Active Directory” > “角色和管理员”和“新建自定义角色”  。
 
     ![从“角色和管理员”页创建或编辑角色](./media/quickstart-app-registration-limits/new-custom-role.png)
 
@@ -56,9 +57,12 @@ ms.locfileid: "110796368"
 
 ### <a name="assign-the-role"></a>分配角色
 
-1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
-1. 依次选择“Azure Active Directory”、“角色和管理员” 。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 选择“Azure Active Directory” > “角色和管理员”。 。
+
 1. 选择“应用程序注册创建者”角色，然后选择“添加分配”。
+
 1. 选择所需的用户，然后单击“选择”将该用户添加到该角色。
 
 完成！ 在本快速入门中，你已成功创建一个有权创建无限数目的应用注册的自定义角色，然后将该角色分配给了某个用户。

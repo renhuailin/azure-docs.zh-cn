@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 08/03/2021
 ms.author: memildin
-ms.openlocfilehash: b826ed1ab9fbe2c55e8fd4737cb3a1c83bae1766
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5b2eb0cd1f96ce52a7f27ec961bd08248442827a
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734986"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606855"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -935,7 +935,7 @@ Azure 安全中心现在可保护 Azure、Amazon Web Services (AWS) 和 Google C
 
 - 利用 Azure Policy 的“拒绝”效果，可以阻止创建不正常的资源
 
-- 通过“强制执行”选项，可以利用 Azure Policy 的“不存在时部署”效果，在创建时自动修正不合规的资源 
+- 通过“强制执行”选项，可以利用 Azure Policy 的“DeployIfNotExist”效果，在创建时自动修正不合规的资源 
  
 这适用于所选的安全建议，位于资源详细信息页的顶部。
 
@@ -1283,7 +1283,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 若要在整个组织中部署自动化配置，请使用以下内置的“DeployIfdNotExist”Azure 策略来创建和配置[连续导出](continuous-export.md)和[工作流自动化](workflow-automation.md)过程：
 
-可在 Azure 策略中找到这些策略：
+可以在 Azure Policy 中找到策略定义：
 
 
 |目标  |策略  |策略 ID  |
@@ -1314,9 +1314,9 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 ### <a name="new-policies-for-enabling-threat-protection-and-advanced-data-security"></a>启用威胁防护和高级数据安全性的新策略
 
-以下新策略已添加到 ASC Default 计划，旨在帮助为相关资源类型启用威胁防护或高级数据安全性。
+下面的新策略定义已添加到 ASC 默认计划中，旨在协助为相关资源类型启用威胁防护或高级数据安全。
 
-可在 Azure 策略中找到这些策略：
+可以在 Azure Policy 中找到策略定义：
 
 
 | 策略                                                                                                                                                                                                                                                                | 策略 ID                            |
@@ -1442,7 +1442,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 自定义策略现显示在安全中心的建议体验、安全功能分数和法规符合性标准仪表板中。 此功能现已正式发布，可用于在安全中心扩大你组织的安全评估范围。 
 
-在 Azure 策略中创建自定义计划，向该计划添加策略并将它加入 Azure 安全中心，然后将它作为建议直观呈现。
+在 Azure Policy 中创建自定义计划，向该计划添加策略并将它加入 Azure 安全中心，然后将它作为建议直观呈现。
 
 现在，我们还添加了可编辑自定义建议元数据的选项。 元数据选项中有严重级别、修正步骤和威胁信息等。  
 

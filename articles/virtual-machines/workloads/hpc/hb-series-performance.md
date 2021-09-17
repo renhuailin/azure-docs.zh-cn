@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f37f0bb14cf29551e85c0e592c327b86048f18e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2545c04074d60d72b0c21877dae3393d6e34fa0f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721249"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691463"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB 系列虚拟机大小
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 已对 HB 系列大小运行多个性能测试。 下面是此性能测试的部分结果。
 

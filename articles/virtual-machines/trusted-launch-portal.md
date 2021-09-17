@@ -9,14 +9,16 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 15386baa369b18678ef84ebed8144d358fa8177f
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: bcc91283c29aaef251c2a18422e90090c56a6298
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839358"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688916"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>部署已启用受信任启动的 VM（预览版）
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集
 
 [受信任启动](trusted-launch.md)是一种提高[第 2 代](generation-2.md) VM 安全性的方法。 受信任启动通过组合基础结构技术（例如 vTPM 和安全启动）来防范高级攻击和持续性攻击方法。
 

@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 31bb35a096845c489b0f141a601ee604253e6ef9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd6826370a0292190fc2534585fdb08f7982f447
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738985"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698696"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>使用 Azure 备份在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
+
+适用于：:heavy_check_mark: Linux VM 
 
 本文展示了如何使用 Azure 备份来创建 VM 磁盘的磁盘快照，其中包括数据库文件和快速恢复区域。 使用 Azure 备份时，可以创建适合作为备份的完整磁盘快照，这些快照存储在[恢复服务保管库](../../../backup/backup-azure-recovery-services-vault-overview.md)中。  Azure 备份还提供了应用程序一致性备份，确保还原数据不需要额外的修复。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
 

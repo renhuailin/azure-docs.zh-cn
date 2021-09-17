@@ -10,12 +10,12 @@ ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 46c15f932f55883be66745d415820767089ae0f1
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 99d2f7a67ede762f84e5f6d9abf5af78c5751d22
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461976"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444964"
 ---
 # <a name="quickstart-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service-using-python"></a>快速入门：使用 Azure Functions 和 SignalR 服务通过 Python 创建显示 GitHub 星数的应用
 
@@ -60,12 +60,35 @@ Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （�
 
 2. 初始化项目后，需要创建函数。 在此示例中，我们需要创建 3 个函数。
 
-    1. 运行以下命令以创建 `index` 函数，该函数将托管客户端网页。
+    1. 运行以下命令以创建一个 `index` 函数，该函数将承载客户端的网页。
 
         ```bash
         func new -n index -t HttpTrigger
         ```
-        
+        打开 `index/function.json` 并复制以下 json 代码：
+
+        ```json
+        {
+          "bindings": [
+            {
+              "authLevel": "anonymous",
+              "type": "httpTrigger",
+              "direction": "in",
+              "name": "req",
+              "methods": [
+                "get",
+                "post"
+              ]
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "res"
+            }
+          ]
+        }
+        ```
+
         打开 `index/__init__.py` 并复制以下代码。
 
         ```javascript
@@ -79,7 +102,7 @@ Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （�
             return func.HttpResponse(f.read(), mimetype='text/html')
         ```
     
-    2. 为客户端创建 `negotiate` 函数以获取访问令牌。
+    2. 为客户端创建一个 `negotiate` 函数以获取访问令牌。
     
         ```bash
         func new -n negotiate -t SignalRNegotiateHTTPTrigger
@@ -92,7 +115,7 @@ Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （�
           "scriptFile": "__init__.py",
           "bindings": [
             {
-              "authLevel": "function",
+              "authLevel": "anonymous",
               "type": "httpTrigger",
               "direction": "in",
               "name": "req",
@@ -133,9 +156,9 @@ Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （�
         # install requests
         pip install requests
         ```
-    
+
         打开 `broadcast/function.json` 并复制以下代码。
-    
+
         ```json
         {
           "scriptFile": "__init__.py",
@@ -177,7 +200,7 @@ Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （�
             }))
         ```
 
-3. 此示例的客户端界面为网页。 考虑到我们在 `index` 函数中从 `content/index.html` 读取 HTML 内容，因此要在 `content` 目录中创建一个新文件 `index.html`。 然后复制以下内容。
+3. 此示例的客户端界面为网页。 考虑到我们是在 `index` 函数中从 `content/index.html` 读取 HTML 内容，因此需要在项目根目录下的 `content` 目录中创建一个新文件 `index.html`。 然后复制以下内容。
 
     ```html
     <html>
@@ -205,20 +228,20 @@ Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （�
     </html>
     ```
     
-4. 现在即将完成了。 最后一步是将 SignalR 服务的连接字符串设置为 Azure Functions 设置。
+4. 现在就快完成了。 最后一步是将 SignalR 服务的连接字符串设置为 Azure Functions 设置。
 
     1. 在打开 Azure门户的浏览器中，通过在门户顶部的搜索框中搜索先前部署的 SignalR 服务实例的名称，确认该实例已成功创建。 选择该实例以将其打开。
 
         ![搜索 SignalR 服务实例](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-    1. 选择“密钥”以查看 SignalR 服务实例的连接字符串。
+    2. 选择“密钥”以查看 SignalR 服务实例的连接字符串。
     
         ![屏幕截图突出显示了主连接字符串。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-    1. 复制主连接字符串。 然后执行以下命令。
+    3. 复制主连接字符串。 然后执行以下命令。
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         ```
     
 5. 在本地运行 Azure Functions：
@@ -227,11 +250,11 @@ Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （�
     func start
     ```
 
-    在本地运行 Azure Functions 后， 使用浏览器访问 `http://localhost:7071/api/index`，随后可以查看当前星数。 如果在 GitHub 中进行星标或取消星标，星数会每隔几秒刷新一次。
+    在本地运行 Azure Functions 后， 使用浏览器访问 `http://localhost:7071/api/index`，随后可以看到当前的星数。 如果你在 GitHub 中进行星标或取消星标，星数会每隔几秒刷新一次。
 
     > [!NOTE]
     > SignalR 绑定需要 Azure 存储，但是在本地运行 Azure Functions 时，可以使用本地存储仿真器。
-    > 如果收到类似`There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.`的错误，则需要下载并启用[存储仿真器](../storage/common/storage-use-emulator.md)
+    > 如果收到一些类似 `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` 的错误，则需要下载并启用[存储仿真器](../storage/common/storage-use-emulator.md)
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -239,8 +262,8 @@ Azure Functions 需要 [Python 3.6+](https://www.python.org/downloads/)。 （�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你在本地生成并运行了一个实时无服务器应用程序。 详细了解如何将 SignalR 服务绑定用于 Azure Functions。
-接下来，详细了解如何通过 SignalR 服务在客户端与 Azure Functions 之间进行双向通信。
+在本快速入门中，你在本地生成并运行了一个实时的无服务器应用程序。 详细了解了如何将 SignalR 服务绑定用于 Azure Functions。
+接着，详细了解了如何通过 SignalR 服务在客户端与 Azure Functions 之间进行双向通信。
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的 SignalR Service 绑定](../azure-functions/functions-bindings-signalr-service.md)

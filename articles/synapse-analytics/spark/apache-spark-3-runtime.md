@@ -1,28 +1,28 @@
 ---
-title: 适用于 Apache Spark 3.0（预览版）的 Azure Synapse 运行时
-description: Apache Spark 3.0（预览版）支持的 Spark、Scala、Python 和 .NET 版本。
+title: 适用于 Apache Spark 3.1 的 Azure Synapse 运行时（预览版）
+description: Apache Spark 3.1 支持的 Spark、Scala、Python 和 .NET 版本（预览版）。
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: reference
 ms.subservice: spark
-ms.date: 05/26/2021
+ms.date: 08/23/2021
 ms.author: midesa
-ms.openlocfilehash: 1a129b7db413f7b4104f2d3f21e11f638ef6ee23
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4ee561e5be8d24136210cd755865973d9aafd62f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579405"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695673"
 ---
-# <a name="azure-synapse-runtime-for-apache-spark-30-preview"></a>适用于 Apache Spark 3.0（预览版）的 Azure Synapse 运行时
+# <a name="azure-synapse-runtime-for-apache-spark-31-preview"></a>适用于 Apache Spark 3.1 的 Azure Synapse 运行时（预览版）
 
-Azure Synapse Analytics 支持 Apache Spark 的多个运行时。 本文档将介绍适用于 Apache Spark 3.0（预览版）的 Azure Synapse 运行时的运行时组件和版本。  在预览期间，运行时引擎将定期更新到最新的功能和库。  查看此处以检查库及其版本的最新更新情况。
+Azure Synapse Analytics 支持 Apache Spark 的多个运行时。 本文档将介绍适用于 Apache Spark 3.1 的 Azure Synapse 运行时（预览版）的运行时组件和版本。  在预览期间，运行时引擎将定期更新到最新的功能和库。  查看此处以检查库及其版本的最新更新情况。
 
 ## <a name="known-issues-in-preview"></a>预览版的已知问题
 * 即将推出 Synapse 管道/数据流支持。
-* 即将推出用于添加库的库管理。
-* 连接器：即将提供以下连接器支持。
+* 即将提供以下连接器支持：
   * Azure 数据资源管理器连接器
   * CosmosDB
   * SQL Server
@@ -31,14 +31,14 @@ Azure Synapse Analytics 支持 Apache Spark 的多个运行时。 本文档将�
 ## <a name="component-versions"></a>组件版本
 |  组件   | 版本   |  
 | ----- | ----- |
-| Apache Spark | 3.0 |
+| Apache Spark | 3.1 |
 | 操作系统 | Ubuntu 18.04 |
 | Java | 1.8.0_282 |
 | Scala | 2.12  |
 | .NET Core | 3.1 |
-| .NET | 1.0.0 |
-| Delta Lake | 0.8 |
-| Python | 3.6 |
+| .NET | 2.0.0 |
+| Delta Lake | 1.0 |
+| Python | 3.8 |
 
 ## <a name="scala-and-java-libraries"></a>Scala 和 Java 库
 
@@ -1277,5 +1277,5 @@ zipp=0.6.0
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Apache Spark 文档](https://spark.apache.org/docs/2.4.4/)
+- [Apache Spark 文档](https://spark.apache.org/docs/3.0.2/)
 - [Apache Spark 概念](apache-spark-concepts.md)

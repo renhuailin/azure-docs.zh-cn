@@ -7,14 +7,16 @@ ms.date: 06/29/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 60ccfe222b06e9c250eab3b8fa568cc4e5a925b2
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 4ec7c3640a242212010de68a9f08c4d6e3e27300
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356174"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694317"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>通过 Azure 磁盘预留降低成本
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 使用预留容量节省 Azure 磁盘存储用量费用。 Azure 磁盘存储预留与 Azure 虚拟机预留实例相使用，可降低虚拟机 (VM) 的总成本。 预留折扣会自动应用于所选预留范围中的匹配磁盘。 由于这种自动应用，无需将预留分配给托管磁盘即可获享折扣。
 

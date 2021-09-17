@@ -3,12 +3,12 @@ title: 事件中心 - 使用 Azure 门户捕获流式处理事件
 description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中心流式处理的事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b603af17ca4e46b8004b7b2550cddd87164da157
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653945"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253633"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 
@@ -34,7 +34,7 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流数
 
 ## <a name="capture-data-to-azure-data-lake-storage-gen-2"></a>将数据捕获到 Azure Data Lake Storage Gen 2 
 
-1. 请按照[创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)一文创建 Azure 存储帐户。 请在“高级”选项卡上将“分层命名空间”设置为“启用”，使其成为 Azure Data Lake Storage Gen 2 帐户  。
+1. 请按照[创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)一文创建 Azure 存储帐户。 请在“高级”选项卡上将“分层命名空间”设置为“启用”，使其成为 Azure Data Lake Storage Gen 2 帐户  。 Azure 存储帐户必须与事件中心位于同一订阅中。
 2. 创建事件中心时，请执行以下步骤： 
 
     1. 将“捕获”设置为“打开” 。 

@@ -8,24 +8,18 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: abdaafbaf03e76c9de466fa8fb264c3ab5cc00d3
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 6dd82d635199e4aa47a07e09b3c4649dbc4ef7cd
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113216308"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "122643111"
 ---
 # <a name="media-services-v3-samples"></a>媒体服务 v3 示例
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 本文包含可用于媒体服务的所有示例的列表，这些示例按方法和 SDK 进行组织。  示例包括 .NET、Node.JS (Typescript)、Python 和 Java 以及带 Postman 的 REST。
-
-## <a name="rest-postman-collection"></a>REST Postman 集合
-
-[REST Postman](https://github.com/Azure-Samples/media-services-v3-rest-postman) 示例包括一个 Postman 环境和集合，供你导入到 Postman 客户端中。 建议使用 Postman 集合示例，以熟悉 API 结构及其如何与 Azure 资源管理 (ARM) 以及客户端 SDK 中的调用结构一起工作。 
-
-对于生产工作负荷，应该使用包装此 REST API 的客户端 SDK，因为它们支持由 Azure 资源管理网关定义的重试策略。 如果选择直接实现 REST API 调用，则应注意在某些情况下，需要重试才能实现更高的 SLA。
 
 ## <a name="samples-by-sdk"></a>按 SDK 归类的示例
 
@@ -50,7 +44,7 @@ ms.locfileid: "113216308"
 | [ContentProtection/OfflinePlayReadyAndWidevine](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/OfflinePlayReadyAndWidevine)|该示例演示了如何使用 PlayReady 和 Widevine DRM 来动态加密内容，并在不从许可证服务请求许可证的情况下播放内容。 它展示了如何使用内置的 AdaptiveStreaming 预设创建转换，如何提交作业，创建具有开放式限制和 PlayReady/Widevine 永久性配置的 ContentKeyPolicy，将 ContentKeyPolicy 与 StreamingLocator 相关联，以及输出用于播放的 URL。|
 | [Streaming/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|该示例演示了如何使用内置的 AdaptiveStreaming 预设创建转换，如何提交作业，如何创建资产筛选器和帐户筛选器，如何将筛选器关联到流式传输定位符，以及如何打印用于播放的 URL。|
 | [Streaming/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|该示例演示了如何使用内置的 AdaptiveStreaming 预设创建转换，如何提交作业，如何发布输出资产以进行 HLS 和 DASH 流式传输。|
-| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | 该示例提供了针对使用按需编码或分析的生产系统的指南和最佳做法。 读者应该从[媒体服务和 VOD 的高可用性](media-services-high-availability-encoding.md)这一配套文章开始。 为 [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/Readme.md) 示例提供了一个单独的解决方案文件。 |
+| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | 该示例提供了针对使用按需编码或分析的生产系统的指南和最佳做法。 读者应该从[媒体服务和 VOD 的高可用性](architecture-high-availability-encoding-concept.md)这一配套文章开始。 为 [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) 示例提供了一个单独的解决方案文件。 |
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 
@@ -92,3 +86,9 @@ ms.locfileid: "113216308"
 |[EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoEncoding/EncodingWithMESPredefinedPreset)|如何使用内置预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
 
 ---
+
+## <a name="rest-postman-collection"></a>REST Postman 集合
+
+[REST Postman](https://github.com/Azure-Samples/media-services-v3-rest-postman) 示例包括一个 Postman 环境和集合，供你导入到 Postman 客户端中。 建议使用 Postman 集合示例，以熟悉 API 结构及其如何与 Azure 资源管理 (ARM) 以及客户端 SDK 中的调用结构一起工作。 
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]

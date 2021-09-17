@@ -1,24 +1,26 @@
 ---
-title: 使用 Azure Site Recovery 执行 VMware VM 灾难恢复的体系结构
-description: 本文概述了使用 Azure Site Recovery 设置本地 VMware VM 到 Azure 的灾难恢复时使用的组件和体系结构
+title: Azure Site Recovery 中的 VMware VM 灾难恢复体系结构 - 经典版
+description: 本文概述了使用 Azure Site Recovery（经典版）设置本地 VMware VM 到 Azure 的灾难恢复时使用的组件和体系结构
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 24333ccc5096e7f04f016444de2b0a7e13ae7bfa
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 08/19/2021
+ms.openlocfilehash: 87bfbad2993bb1eee4c20990082a892cf8e46fd1
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579814"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445404"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 到 Azure 的灾难恢复体系结构
+# <a name="vmware-to-azure-disaster-recovery-architecture---classic"></a>VMware 到 Azure 的灾难恢复体系结构 - 经典版
 
-本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务在本地 VMware 站点和 Azure 之间部署 VMware 虚拟机 (VM) 的灾难恢复复制、故障转移和恢复时使用的体系结构和过程。
+本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务（经典版）在本地 VMware 站点和 Azure 之间部署 VMware 虚拟机 (VM) 的灾难恢复复制、故障转移和恢复时使用的体系结构和进程。
+
+如需了解预览版中的体系结构详细信息，请[参阅本文](vmware-azure-architecture-preview.md)
 
 
 ## <a name="architectural-components"></a>体系结构组件
 
-下面的表和图提供了用于将 VMware 灾难恢复到 Azure 的组件的概要视图。
+下表和下图概述了用于将 VMware VM/物理计算机灾难恢复到 Azure 的组件。
 
 **组件** | **要求** | **详细信息**
 --- | --- | ---
@@ -55,7 +57,7 @@ ms.locfileid: "106579814"
     - 对于 VMware VM，复制是在块级别进行的，几乎连续进行，使用的是在 VM 上运行的移动服务代理。
     - 应用的任何复制策略设置：
         - **RPO 阈值**。 此设置不影响复制。 它有助于监视。 如果当前 RPO 超出了你指定的阈值限制，则会引发事件，并且还可能会发送电子邮件。
-        - **恢复点保留期**。 此设置指定当发生中断时要回退的时间距离。 高级存储上的最大保留期为 24 小时。 标准存储上的最大保留期为 72 小时。 
+        - **恢复点保留期**。 此设置指定当发生中断时要回退的时间距离。 高级存储上的最大保留期为 24 小时。 标准存储上的最大保留期为 72 小时。
         - **应用一致的快照**。 可以每隔 1 到 12 个小时获取一次应用一致的快照，具体取决于应用需求。 快照是标准的 Azure blob 快照。 在 VM 上运行的移动代理根据此设置请求 VSS 快照，并且会将该时间点标记为复制流中的一个应用一致点。
 
 2. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以结合使用 Azure ExpressRoute 和 [Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)。 不支持通过站点到站点虚拟专用网络 (VPN) 将流量从本地站点复制到 Azure。
@@ -66,7 +68,7 @@ ms.locfileid: "106579814"
     - 配置服务器通过 HTTPS 443 出站端口来与 Azure 协调复制。
     - VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
     - 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
-5. 复制数据首先登陆 Azure 中的缓存存储帐户。 处理这些日志，并将数据存储在 Azure 托管磁盘（称为 asr 种子磁盘）中。 将在此磁盘上创建恢复点。
+5. 复制数据首先登陆 Azure 中的缓存存储帐户。 处理这些日志，并将数据存储在 Azure 托管磁盘（称为“Azure Site Recovery 种子磁盘”）中。 将在此磁盘上创建恢复点。
 
 ![此图显示 VMware 到 Azure 的复制过程。](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
@@ -82,7 +84,7 @@ ms.locfileid: "106579814"
 6. 如果默认重新同步在办公时间之外失败，并且需要手动干预，则会在 Azure 门户中的特定计算机上生成错误。 可以解决错误并手动触发重新同步。
 7. 重新同步完成后，将继续复制增量更改。
 
-## <a name="replication-policy"></a>复制策略 
+## <a name="replication-policy"></a>复制策略
 
 启用 Azure VM 复制时，Site Recovery 默认会使用下表中汇总的默认设置创建新的复制策略。
 
@@ -99,7 +101,7 @@ ms.locfileid: "106579814"
 
 ### <a name="multi-vm-consistency"></a>多 VM 一致性
 
-如果希望 VM 一同复制，并在故障转移时获得共享的崩溃一致性和应用一致性恢复点，可将这些 VM 集中到一个复制组中。 多 VM 一致性会影响工作负荷的性能。仅当 VM 运行的工作负荷需要在所有计算机之间保持一致时，才应该对这些 VM 使用此功能。 
+如果希望 VM 一同复制，并在故障转移时获得共享的崩溃一致性和应用一致性恢复点，可将这些 VM 集中到一个复制组中。 多 VM 一致性会影响工作负荷的性能。仅当 VM 运行的工作负荷需要在所有计算机之间保持一致时，才应该对这些 VM 使用此功能。
 
 
 
@@ -128,7 +130,7 @@ Site Recovery 按如下所述创建快照：
 
 **说明** | **详细信息** | 建议
 --- | --- | ---
-应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用仅复制备份 (VSS_BT_COPY) 方法，此方法不会更改 Microsoft SQL 的事务日志备份时间和序列号 </br></br> 2) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   3) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存常驻数据刷新到磁盘。<br/><br/>   4) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
+应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) Azure Site Recovery 使用仅复制备份 (VSS_BT_COPY) 方法，此方法不会更改 Microsoft SQL 的事务日志备份时间和序列号 </br></br> 2) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   3) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存常驻数据刷新到磁盘。<br/><br/>   4) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。
 
 ## <a name="failover-and-failback-process"></a>故障转移和故障回复过程
 
@@ -149,8 +151,8 @@ Site Recovery 按如下所述创建快照：
     - 第 1 阶段：重新保护 Azure VM，以便它们可以从 Azure 复制回本地 VMware VM。
     -  第 2 阶段：运行到本地站点的故障转移。
     - 第 3 阶段：在工作负荷进行故障回复后，为本地 VM 重新启用复制。
-    
- 
+
+
 
 ![此图显示从 Azure 进行 VMware 故障回复。](./media/vmware-azure-architecture/enhanced-failback.png)
 

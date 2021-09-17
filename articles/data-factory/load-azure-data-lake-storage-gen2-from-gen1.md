@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/06/2021
-ms.openlocfilehash: 5538000573a70340b576e79b3e1dcab9367e7d89
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 0b927f945dc7e891e93df6cd455840e6ff19a2fd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201901"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772441"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
@@ -84,7 +84,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 6. 在“源数据存储”页上，完成以下步骤。 
     1. 在“连接”部分中选择新建的连接。
     1. 在“文件或文件夹”下，浏览到要复制的文件夹和文件。 选择文件夹或文件，然后选择“确定”。
-    1. 选择“以递归方式”和“以二进制方式复制”选项，指定复制行为。 选择“下一步”。
+    1. 选择“以递归方式”和“以二进制方式复制”选项，指定复制行为。 选择“**下一页**”。
     
     :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page.png" alt-text="屏幕截图显示“源数据存储”页。":::
     
@@ -133,25 +133,41 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 若要对从 Azure Data Lake Storage Gen1 到 Azure Data Lake Storage Gen2 的升级进行常规性评估，请参阅[将大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)。 以下部分介绍了使用数据工厂将数据从 Data Lake Storage Gen1 升级到 Data Lake Storage Gen2 的最佳做法。
 
-### <a name="historical-data-copy"></a>历史数据复制
+### <a name="initial-snapshot-data-migration"></a>初始快照数据迁移
 
-#### <a name="performance-tuning-by-proof-of-concept"></a>通过概念证明优化性能
+#### <a name="performance"></a>性能
 
-使用概念证明来验证端到端解决方案并测试环境中的复制吞吐量。 概念证明的主要步骤为： 
+ADF 提供一个可在不同级别实现并行度的无服务器体系结构，使开发人员能够生成管道，以充分利用网络带宽以及存储 IOPS 和带宽将环境的数据移动吞吐量最大化。 
 
-1. 使用单个复制活动创建数据工厂管道，以将几万亿字节的数据从 Data Lake Storage Gen1 复制到 Data Lake Storage Gen2，从而获取复制性能基线。 从 128 个[数据集成单元 (DIU)](copy-activity-performance-features.md#data-integration-units) 开始。 [并行复制](copy-activity-performance-features.md#parallel-copy)建议设置为”空(默认)”。
-2. 根据在步骤 1 中获取的复制吞吐量，估算整个数据迁移所需的时间。 如果复制吞吐量对你有影响，请遵循[性能优化步骤](copy-activity-performance.md#performance-tuning-steps)来确定并解决性能瓶颈问题。
-3. 如果你已将单个复制活动的性能最大化，但还没有达到环境的吞吐量上限，那么可以并行运行多个复制活动。 可以将每个复制活动配置为一次复制一个分区，以便多个复制活动可以同时从单个 Data Lake Storage Gen1 帐户复制数据。 对文件进行分区的方法是使用[复制活动属性](connector-azure-data-lake-store.md#copy-activity-properties)中的 name range- listAfter/listBefore。
+客户已成功将由数亿个文件组成的 PB 级数据从 Data Lake Storage Gen1 迁移到 Gen2，同时保持 2 GBps 及更高的吞吐量。
 
-如果 Data Lake Storage Gen1 中的总数据大小小于 30 TB，且文件数低于一百万个，则可以在单个复制活动运行中复制所有数据。 如果要复制的数据量较大，或者想要灵活地按批管理数据迁移并使每批数据在特定期限内是完整的，请对数据进行分区。 分区还会降低发生任何意外问题的风险。 
+可通过不同的并行度实现极佳的数据移动速度：
+
+- 单个复制活动可以利用可缩放的计算资源：使用 Azure Integration Runtime 时，能够以无服务器方式为每个复制活动指定最多 256 个[数据集成单元 (DIU)](copy-activity-performance-features.md#data-integration-units)；使用自承载集成运行时时，可以手动纵向扩展计算机或横向扩展为多个计算机（最多 4 个节点），单个复制活动会在所有节点之间将其文件集分区。
+- 单个复制活动使用多个线程读取和写入数据存储。
+- ADF 控制流可以并行启动多个复制活动（例如，使用 For Each 循环）。
+
+#### <a name="data-partitions"></a>数据分区
+
+如果 Data Lake Storage Gen1 中的总数据大小小于 10 TB，且文件数低于一百万个，则可以在单个复制活动运行中复制所有数据。 如果要复制的数据量较大，或者想要灵活地按批管理数据迁移并使每批数据在特定期限内是完整的，请对数据进行分区。 分区还会降低发生任何意外问题的风险。 
+
+对文件进行分区的方法是使用[复制活动属性](connector-azure-data-lake-store.md#copy-activity-properties)中的 name range- listAfter/listBefore。 可以将每个复制活动配置为一次复制一个分区，以便多个复制活动可以同时从单个 Data Lake Storage Gen1 帐户复制数据。
 
 
-#### <a name="network-bandwidth-and-storage-io"></a>网络带宽和存储 I/O 
+#### <a name="rate-limiting"></a>速率限制 
 
-如果看到[复制活动监视](copy-activity-monitoring.md#monitor-visually)中出现大量限制错误，则表明已达到存储帐户的容量上限。 ADF 将自动重试以克服每个限制错误，从而确保不会丢失任何数据，但重试次数过多也会影响复制吞吐量。 在这种情况下，建议减少同时运行的复制活动数量，以避免大量限制错误。 如果一直在使用单个复制活动来复制数据，则建议减少[数据集成单元 (DIU)](copy-activity-performance-features.md#data-integration-units) 的数量。
+最佳做法是使用有代表性的示例数据集执行性能 POC，以便确定适当的分区大小。
+
+1. 一开始使用单个分区，以及采用默认 DIU 设置的单个复制活动。 [并行复制](copy-activity-performance-features.md#parallel-copy)始终建议设置为“空（默认）”。 如果复制吞吐量对你有影响，请遵循[性能优化步骤](copy-activity-performance.md#performance-tuning-steps)来确定并解决性能瓶颈问题。 
+
+2. 逐渐增大 DIU 设置，直到达到网络的带宽限制或数据存储的 IOPS/带宽限制，或者达到单个复制活动允许的最大 DIU 数目 (256)。 
+
+3. 如果你已将单个复制活动的性能最大化，但还没有达到环境的吞吐量上限，那么可以并行运行多个复制活动。  
+
+如果看到[复制活动监视](copy-activity-monitoring.md#monitor-visually)中出现大量限制错误，则表明已达到存储帐户的容量上限。 ADF 将自动重试以克服每个限制错误，从而确保不会丢失任何数据，但重试次数过多也会影响复制吞吐量。 在这种情况下，建议减少同时运行的复制活动数量，以避免大量限制错误。 如果一直在使用单个复制活动来复制数据，则建议减少 DIU 的数量。
 
 
-### <a name="incremental-copy"></a>增量复制 
+### <a name="delta-data-migration"></a>增量数据迁移
 
 可以使用多种方法仅加载 Data Lake Storage Gen1 中的新文件或已更新的文件：
 
@@ -161,10 +177,22 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 执行增量加载的正确频率取决于 Azure Data Lake Storage Gen1 中的文件总数以及每次加载的新文件或已更新文件的数量。 
 
+### <a name="network-security"></a>网络安全
+
+ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Azure Data Lake Storage Gen1 传输到 Gen2。 HTTPS 提供传输中数据加密，并可防止窃听和中间人攻击。
+
+如果不希望通过公共 Internet 传输数据，可以通过专用网络传输数据，以此实现更高的安全性。
 
 ### <a name="preserve-acls"></a>保留 ACL
 
 若要在从 Data Lake Storage Gen1 升级到 Data Lake Storage Gen2 时复制 ACL 和数据文件，请参阅[从 Data Lake Storage Gen1 保留 ACL](connector-azure-data-lake-storage.md#preserve-acls)。 
+
+### <a name="resilience"></a>复原能力
+
+在单个复制活动运行中，ADF 具有内置的重试机制，因此，它可以处理数据存储或底层网络中特定级别的暂时性故障。 如果迁移的数据超过 10 TB，建议将数据分区，以降低出现任何意外问题的风险。
+
+还可以在复制活动中启用[容错](copy-activity-fault-tolerance.md)以跳过预定义的错误。 也可在复制活动中启用[数据一致性验证](copy-activity-data-consistency.md)以进行附加验证，确保数据不仅成功地从源存储复制到目标存储，而且经验证在源存储和目标存储之间保持一致。
+
 
 ### <a name="permissions"></a>权限 
 

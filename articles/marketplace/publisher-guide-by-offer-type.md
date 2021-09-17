@@ -1,18 +1,18 @@
 ---
 title: 发布指南（按产品/服务类型）- Microsoft 商业市场
-description: 本文介绍 Microsoft 商业市场中提供的产品/服务类型。
+description: 本文介绍 Microsoft 商业市场（Azure 市场）中提供的产品/服务类型。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 04/06/2021
-ms.openlocfilehash: 72cae8aee9b1bcca286696b5685ef69b84167a8e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 08/20/2021
+ms.openlocfilehash: b5b969a5e390b59e60fb0dee47e2335541532730
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537847"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633766"
 ---
 # <a name="publishing-guide-by-offer-type"></a>发布指南（按产品/服务类型）
 
@@ -42,6 +42,9 @@ ms.locfileid: "110537847"
 | [**托管服务**](./plan-managed-service-offer.md) | 通过 [Azure Lighthouse](../lighthouse/overview.md) 创建托管服务产品/服务和管理客户委托的订阅或资源组。|
 | [**Power BI 应用**<br/>**Microsoft 365**](marketplace-dynamics-365.md) | 发布依赖或扩展 Power BI 和 Microsoft 365 的 AppSource 产品/服务。|
 | [**服务型软件**](plan-saas-offer.md) | 使用服务型软件 (SaaS) 产品/服务类型可让客户以订阅的形式购买基于 SaaS 的技术解决方案。 有关 SaaS 产品/服务的单一登录要求的信息，请参阅[商业市场中的 Azure AD 和可交易的 SaaS 产品/服务](azure-ad-saas.md)。 |
+
+> [!IMPORTANT]
+> **SaaS 产品/服务和 Microsoft 365 加载项**：若要了解交易功能如何影响市场客户查看和购买产品/服务的方式的特定详细信息，请参阅[在商业市场中进行交易](marketplace-commercial-transaction-capabilities-and-considerations.md)。 对于 SaaS 产品/服务，产品/服务的交易功能和类别选择将决定产品/服务将在哪个在线商店发布。
 
 ## <a name="next-steps"></a>后续步骤
 

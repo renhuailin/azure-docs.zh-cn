@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 0bdc063c5820ed9ab52cf9962638cbcb56146c0d
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: 0e86c503fb016f79097d9ddde1d30f4314942870
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113508286"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695287"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure 虚拟机的受信任启动（预览版）
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集
 
 Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) VM 安全性的方式。 受信任启动能够防范具有持续性的高级攻击手法。 受信任启动由多种可单独启用的协调式基础结构技术组成。 每种技术都针对错综复杂的威胁提供另一层防御。
 

@@ -17,12 +17,12 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a0e4bb393e522d54bb259e1a85c645fe7f3f5e48
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: dcbc2f726d4c7c935462743578f863efc8762f79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786350"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749199"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
@@ -159,7 +159,7 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 
 - 设置初始目录、访问包和策略并将管理任务委托给其他用户的、具有全局管理员角色的用户无需任何许可证。
 - 被委托了管理任务的用户（例如目录创建者、目录所有者和访问包管理员）无需任何许可证。
-- 有权请求访问包但并不请求访问包的来宾无需任何许可证 。
+- 有权请求访问包但并不选择请求的来宾无需任何许可证 。
 
 有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
 

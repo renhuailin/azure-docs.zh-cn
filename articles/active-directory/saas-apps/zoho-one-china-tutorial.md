@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: d4762aff046c6820a3e3a208aa9be5c4f6e23cb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3f765062895fc31ea3e8e768a025b35ca88d4a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643875"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746065"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoho-one-china"></a>教程：Azure Active Directory 与 Zoho One China 的单一登录 (SSO) 集成
 
@@ -33,14 +33,14 @@ ms.locfileid: "101643875"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 启用了单一登录 (SSO) 的 Zoho One China 订阅。
 
-> [!NOTE]
-> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
-
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Zoho One China 支持 **SP 和 IDP** 发起的 SSO
+* Zoho One China 支持 SP 和 IDP 发起的 SSO。
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="add-zoho-one-china-from-the-gallery"></a>从库中添加 Zoho One China
 
@@ -76,13 +76,13 @@ ms.locfileid: "101643875"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://accounts.zoho.com.cn/signin/samlsp/<zoid>`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://accounts.zoho.com.cn/signin/samlsp/<zoid>` 
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://accounts.zoho.com.cn/samlauthrequest/<zoid>?serviceurl=https://one.zoho.com.cn`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://accounts.zoho.com.cn/samlauthrequest/<zoid>?serviceurl=https://one.zoho.com.cn`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Zoho One China 客户端支持团队](mailto:support@zohocorp.com.cn)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

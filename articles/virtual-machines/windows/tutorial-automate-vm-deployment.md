@@ -9,14 +9,15 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 2ffef6ee99bc7e5de589a52c71a6c7bc4656d655
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1ed110618b81c5aa074b5003a2fbbac67073a4dc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677554"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692300"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>教程 - 使用自定义脚本扩展将应用程序部署到 Azure 中的 Windows 虚拟机
+适用于：:heavy_check_mark: Window :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 若要以快速一致的方式配置虚拟机 (VM)，可以使用[适用于 Windows 的自定义脚本扩展](../extensions/custom-script-windows.md)。 本教程介绍如何执行下列操作：
 

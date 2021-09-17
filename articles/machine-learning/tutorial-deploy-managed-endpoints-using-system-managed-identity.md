@@ -7,15 +7,15 @@ ms.subservice: core
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.topic: tutorial
 ms.custom: tutorial, devplatv2
-ms.openlocfilehash: 78cbec0c8f4805794062b6fd525567f8aebcb2b6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 681d78d07ac27cb8796f4dad5920d91d9efcb94a
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448829"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418876"
 ---
 # <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>教程：使用托管联机终结点和标识（预览版）访问资源
 
@@ -37,7 +37,7 @@ ms.locfileid: "114448829"
 
 * 若要使用 Azure 机器学习，必须有一个 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
-* 必须安装并配置 Azure CLI 和 ML 扩展。 有关详细信息，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。 
+* 必须安装并配置 Azure CLI 和 ML 扩展。 有关详细信息，请参阅[安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)。 
 
 * 必须有一个 Azure 资源组，你（或者你使用的服务主体）在此资源组中需要拥有 `Contributor` 访问权限。 如果已按照上述文章配置了 ML 扩展，那么你就有了此类资源组。 
 
@@ -72,7 +72,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
-有关 YAML 的参考，请参阅[托管联机终结点（预览版）YAML 参考](reference-online-endpoint-yaml.md)。
+有关 YAML 的参考，请参阅[托管联机终结点（预览版）YAML 参考](reference-yaml-endpoint-managed-online.md)。
 
 ## <a name="configure-variables-for-your-deployment"></a>为部署配置变量
 
@@ -193,7 +193,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 * 要详细了解如何使用 CLI，请参阅[将 CLI 扩展用于 Azure 机器学习](reference-azure-machine-learning-cli.md)。
 * 若要将 JSON 查询细化为仅返回特定数据，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli)。
-* 有关 YAML 架构的详细信息，请参阅[联机终结点 YAML 参考](reference-online-endpoint-yaml.md)文档。
+* 有关 YAML 架构的详细信息，请参阅[联机终结点 YAML 参考](reference-yaml-endpoint-managed-online.md)文档。
 * 若要查看可使用哪些计算资源，请参阅[托管联机终结点 SKU 列表（预览版）](reference-managed-online-endpoints-vm-sku-list.md)。
 * 有关成本的详细信息，请参阅[查看 Azure 机器学习托管联机终结点（预览版）的成本](how-to-view-online-endpoints-costs.md)。
 * 有关部署的详细信息，请参阅[联机终结点（预览版）的安全推出](how-to-safely-rollout-managed-endpoints.md)。

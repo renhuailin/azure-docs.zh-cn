@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 75a6064ba44f803837719e0cb1f574d4295f8ac4
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 88ac65c35b29c2113576594788f820973331d64b
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732883"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515008"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>从保管库访问策略迁移到 Azure 基于角色的访问控制权限模型
 
@@ -76,7 +76,7 @@ Azure RBAC 基于角色的访问控制有多个 Azure 内置角色，可将其�
 | 证书管理 | 证书：所有操作 | Key Vault 证书管理人员|
 | SQL Server 连接器 | 密钥：获取、列出、包装密钥、解包密钥 | 密钥保管库加密服务加密用户|
 | Azure Data Lake Storage 或 Azure 存储 | 密钥：获取、列出、解包密钥 | 空值<br> 所需的自定义角色|
-| Azure 备份 | 密钥：获取、列出、备份<br> 证书：获取、列出、备份 | 空值<br> 所需的自定义角色|
+| Azure 备份 | 密钥：获取、列出、备份<br> 机密：获取、列出、备份 | 空值<br> 所需的自定义角色|
 | Exchange Online 客户密钥 | 密钥：获取、列出、包装密钥、解包密钥 | 密钥保管库加密服务加密用户|
 | Exchange Online 客户密钥 | 密钥：获取、列出、包装密钥、解包密钥 | 密钥保管库加密服务加密用户|
 | Azure 信息 BYOK | 密钥：获取、解密、签名 | 空值<br>所需的自定义角色|

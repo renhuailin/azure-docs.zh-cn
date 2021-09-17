@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 06/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d84d6b8bd2978f58f5fb44c0ee1d003db89b7da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 46a7d0ed41b8f10874c19c8d70ddc5d8c5d7f197
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746526"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608283"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>排查 Azure Stack Edge 排序问题
 
@@ -74,7 +74,7 @@ Microsoft 有可能会根据具体情况，允许按事例升级订阅类型。 
 
 *策略不允许使用资源“&lt;资源名称&gt;”。（代码：RequestDisallowedByPolicy）。计划: 拒绝通常不需要的资源类型。策略: 不允许的资源类型。*
 
-**建议的解决方案：** 发生此错误的原因是现有的一个 Azure 策略阻止资源创建。 Azure 策略由组织的系统管理员设置，目的是在使用或创建 Azure 资源时确保相关合规性。 如果任何此类策略会阻止创建 Azure Stack Edge 资源，请与系统管理员联系，要求其编辑 Azure 策略。
+**建议的解决方案：** 发生此错误的原因是现有的一个 Azure Policy 分配阻止资源创建。 Azure Policy 定义和分配由组织的系统管理员设置，目的是在使用或创建 Azure 资源时确保相关符合性。 如果任何此类策略分配会阻止创建 Azure Stack Edge 资源，请与系统管理员联系，要求其编辑 Azure Policy 定义。
 
 ## <a name="next-steps"></a>后续步骤
 

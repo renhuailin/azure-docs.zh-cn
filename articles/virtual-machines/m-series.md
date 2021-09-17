@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 83bb3b8e2f6704c595b6398a15f620be6927f3d5
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 97691d3b9c2d94a42e3ff434a5bbaef1bd281975
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846619"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698833"
 ---
 # <a name="m-series"></a>M 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 Intel&reg; Xeon&reg; CPU E7-8890 v3 @ 2.50GHz 和 Intel&reg; Xeon&reg; Platinum 8280M (Cascade Lake) 均支持 M 系列大小。
 

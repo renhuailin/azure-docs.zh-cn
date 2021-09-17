@@ -9,12 +9,12 @@ ms.workload: media
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: c5d8d5d5dbbe8e79591c735e4a6fa77f47ff9b2f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a753115db7ae0f0ff3c9939ef4d90018b15b064f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793348"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633741"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>适用于 Android 的脱机 Widevine 流式处理和媒体服务 v3
 
@@ -154,6 +154,6 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 ## <a name="more-information"></a>详细信息
 
-有关详细信息，请参阅[问题集合中的 Widevine](questions-collection.md#widevine-streaming-for-android)。
+有关详细信息，请参阅[常见问题解答中的内容保护](frequently-asked-questions.yml)。
 
 Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。

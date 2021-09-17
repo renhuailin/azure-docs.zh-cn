@@ -6,17 +6,17 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 08/10/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 898cc8dcb634ed9beab26c0a0d5de9a9fdda068c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622907"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732866"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>教程：为 IoT 中心执行手动故障转移
 
@@ -41,35 +41,14 @@ ms.locfileid: "98622907"
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
-
-2. 单击“+ 创建资源”，选择“物联网”，然后选择“IoT 中心”。  
-
-   ![显示正在创建 IoT 中心的屏幕截图](./media/tutorial-manual-failover/create-hub-01.png)
-
-3. 选择“基本信息”选项卡。在以下字段中进行填充。
-
-    **订阅**：选择要使用的 Azure 订阅。
-
-    **资源组**：单击“新建”，指定“ManlFailRG”作为资源组名称。 
-
-    **区域**：选择离你近的区域。 本教程使用 `West US 2`。 只能在 Azure 异地配对区域之间执行故障转移。 与“美国西部 2”异地配对的区域是 WestCentralUS。
-    
-   **Iot 中心名称**：指定 IoT 中心的名称。 该中心名称必须在全局中独一无二。 
-
-   ![显示用于创建 IoT 中心的“基本信息”窗格的屏幕截图](./media/tutorial-manual-failover/create-hub-02-basics.png)
-
-   单击“查看 + 创建”。 （它使用大小和规模的默认值。） 
-
-4. 查看信息，然后单击“创建”以创建 IoT 中心。 
-
-   ![显示用于创建 IoT 中心的最后步骤的屏幕截图](./media/tutorial-manual-failover/create-hub-03-create.png)
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="perform-a-manual-failover"></a>执行手动故障转移
 
-请注意，一个 IoT 中心每天的限制是两次故障转移和两次故障回复。
+> [!NOTE]
+> 一个 IoT 中心每天的限制是两次故障转移和两次故障回复。
 
-1. 单击“资源组”，然后选择资源组“ManlFailRG” 。 在资源列表中单击你的中心。 
+1. 单击“资源组”，然后选择相应资源组。 本教程使用 ManlFailRG。 在资源列表中单击你的中心。 
 
 1. 在 IoT Hub 窗格上的“设置”下，单击“故障转移”。
 
@@ -143,7 +122,7 @@ ms.locfileid: "98622907"
 > * 执行故障回复，让 IoT 中心的操作返回到主位置。 
 > * 确认中心在正确的位置正确运行。
 
-转到下一教程，了解如何管理 IoT 设备的状态。 
+请继续学习下一教程，了解如何从后端服务配置设备。 
 
 > [!div class="nextstepaction"]
-> [管理 IoT 设备的状态](tutorial-device-twins.md)
+> [配置设备](tutorial-device-twins.md)

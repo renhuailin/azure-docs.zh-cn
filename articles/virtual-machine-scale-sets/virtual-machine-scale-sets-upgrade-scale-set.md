@@ -8,14 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9c8aa6aa30cae55d4a317eea7acad475b8e70b97
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: cf79bc16ed717a71820b7226c0c97cfd263c7fef
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324656"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693741"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
+
+**适用于：** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 在应用程序的整个生命周期内，你可能需要修改或更新你的虚拟机规模集。 这些更新可能包括更新规模集的配置，或更改应用程序配置。 本文介绍了如何使用 REST API、Azure PowerShell 或 Azure CLI 修改现有规模集。
 

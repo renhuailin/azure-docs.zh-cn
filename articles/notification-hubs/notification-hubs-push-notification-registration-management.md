@@ -5,24 +5,22 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7807d28da459656938acb399eb8c621e4c292372
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a2e9d19c3847c5f2c7153580e463ce1e4d1d657
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89001563"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768767"
 ---
 # <a name="registration-management"></a>注册管理
 
@@ -96,6 +94,9 @@ ms.locfileid: "89001563"
 > 安装 API 不支持百度服务（尽管注册 API 支持）。 
 
 ### <a name="templates"></a>模板
+
+> [!NOTE]
+> Microsoft 推送通知服务 (MPNS) 已弃用，不再受支持。
 
 如果要使用[模板](notification-hubs-templates-cross-platform-push-messages.md)，则设备安装还会保存与设备关联的、采用 JSON 格式的所有模板（请参阅上面的示例）。 模板名称有助于将目标指向相同设备的不同模板。
 

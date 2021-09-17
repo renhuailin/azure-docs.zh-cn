@@ -3,16 +3,16 @@ title: 教程 - 使用 Azure 门户新建策略分配
 description: 本教程介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: 20cb8125a157a3ce97c88278c99f90936b449b65
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: be7752b5ccf73269b1e4715fc05c85162b4ea546
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831647"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770336"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>教程：创建策略分配以识别不合规资源
 
-若要了解 Azure 中的符合性，第一步是确定资源的状态。 Azure Policy 支持通过来宾配置策略来审核启用了 Arc 的服务器的状态。 来宾配置策略不会应用配置，它们仅审核计算机内部的设置。 本教程将指导你完成创建和分配策略的过程，并确定启用了 Arc 的服务器中哪些服务器未安装 Log Analytics 代理。
+若要了解 Azure 中的符合性，第一步是确定资源的状态。 Azure Policy 支持通过来宾配置策略来审核启用了 Arc 的服务器的状态。 Azure Policy 来宾配置定义可以审核或应用计算机中的设置。 本教程将指导你完成创建和分配策略的过程，并确定启用了 Arc 的服务器中哪些服务器未安装 Log Analytics 代理。
 
 在此过程结束时，你将成功识别未安装 Windows 或 Linux 版 Log Analytics 代理的计算机。 这些虚拟机不符合策略分配要求。
 
@@ -50,7 +50,7 @@ ms.locfileid: "107831647"
 
    有关可用内置策略的部分列表，请参阅 [Azure Policy 示例](../../../governance/policy/samples/index.md)。
 
-1. 如果在基于 Windows 的计算机上已启用启用了 Arc 的服务器（预览版）代理，则搜索策略定义列表并找到“\[预览]：Log Analytics 代理应安装在 Windows Azure Arc 计算机中”定义。 对于基于 Linux 的计算机，请找到相应的“\[预览]：Log Analytics 代理应安装在 Linux Azure Arc 计算机中”策略定义。 单击该策略，再单击“选择”。
+1. 如果在基于 Windows 的计算机上已启用启用了 Arc 的服务器代理，则搜索策略定义列表并找到“\[预览]：Log Analytics 代理应安装在 Windows Azure Arc 计算机中”定义。 对于基于 Linux 的计算机，请找到相应的“\[预览]：Log Analytics 代理应安装在 Linux Azure Arc 计算机中”策略定义。 单击该策略，再单击“选择”。
 
    :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="找到正确的策略定义" border="false":::
 

@@ -1,14 +1,14 @@
 ---
 title: 通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 description: 已启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展向非 Azure VM 提供部署后配置和自动化任务。
-ms.date: 08/11/2021
+ms.date: 08/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 20ae8b6cbb29a9a0b43592c3b242707bb2d3add6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b09a5ecc2121d2ff1cc377bde7619b834a58e474
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727325"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824639"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 
@@ -52,11 +52,11 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 > [!NOTE]
 > 对于已启用 Arc 的服务器，删除了针对 DSC VM 扩展的最近支持。 另外，我们建议使用自定义脚本扩展来管理服务器或计算机的部署后配置。
 
-已启用 Arc 的服务器支持在资源组或其他 Azure 订阅之间移动安装了一个或多个 VM 扩展的计算机，而不会影响其配置。 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../../active-directory/develop/quickstart-create-new-tenant.md)中。 有关在处理之前移动资源和注意事项的详细信息，请参阅[将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+已启用 Arc 的服务器支持在资源组或其他 Azure 订阅之间移动安装了一个或多个 VM 扩展的计算机，而不会影响其配置。 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../../active-directory/develop/quickstart-create-new-tenant.md)中。 从 Connected Machine 代理版本 1.8.21197.005 开始启用此支持。 有关在处理之前移动资源和注意事项的详细信息，请参阅[将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 ### <a name="windows-extensions"></a>Windows 扩展
 
-|扩展名 |Publisher |类型 |其他信息 |
+|分机 |Publisher |类型 |其他信息 |
 |----------|----------|-----|-----------------------|
 |Azure Defender 集成漏洞扫描程序 |Qualys |WindowsAgent.AzureSecurityCenter |[适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft.Compute | CustomScriptExtension |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
@@ -67,7 +67,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 
 ### <a name="linux-extensions"></a>Linux 扩展
 
-|扩展名 |Publisher |类型 |其他信息 |
+|分机 |Publisher |类型 |其他信息 |
 |----------|----------|-----|-----------------------|
 |Azure Defender 集成漏洞扫描程序 |Qualys |LinuxAgent.AzureSecurityCenter |[适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft.Azure.Extensions |CustomScript |[Linux 自定义脚本扩展版本 2](../../virtual-machines/extensions/custom-script-linux.md) |
@@ -76,7 +76,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 |Azure Key Vault 证书同步 | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md) |
 |Azure Monitor 代理 |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[安装 Azure Monitor 代理（预览版）](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 此功能依赖于订阅中的以下 Azure 资源提供程序：
 

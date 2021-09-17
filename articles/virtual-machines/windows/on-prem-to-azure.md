@@ -11,14 +11,16 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d2e23b202957018ee80186dd28b6b2360698fc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 68aaf58230ebadd7283e62baf232b84743bba535
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740069"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692412"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>从 Amazon Web Services (AWS) 和其他平台迁移到 Azure 中的托管磁盘
+
+**适用于：** :heavy_check_mark: Windows VM 
 
 可将 VHD 文件从 AWS 或本地虚拟化解决方案上传到 Azure，以创建可使用托管磁盘的虚拟机 (VM)。 Azure 托管磁盘不需要为 Azure IaaS VM 管理存储帐户。 只需指定所需的磁盘类型和大小，Azure 会为你创建和管理磁盘。 
 

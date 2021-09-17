@@ -1,18 +1,20 @@
 ---
 title: Azure 数据工厂支持的计算环境
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 可与 Azure 数据工厂管道（例如 Azure HDInsight）配合使用来转换或处理数据的计算环境。
 ms.service: data-factory
+ms.subservice: concepts
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d6e75efac274a456c3759edae2d5c62ae26467c8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: 55b089b7deea167ca14a83a21e7c8d166edc519b
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675168"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598067"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 
@@ -26,7 +28,7 @@ ms.locfileid: "110675168"
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [自定义](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure 机器学习工作室（经典）](#azure-machine-learning-studio-classic-linked-service) | [机器学习工作室（经典版）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
+| [机器学习工作室（经典版）](#ml-studio-classic-linked-service) | [ML Studio（经典）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
 | [Azure 机器学习](#azure-machine-learning-linked-service) | [Azure 机器学习执行管道](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程](transform-data-using-stored-procedure.md) |
@@ -109,7 +111,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 #### <a name="properties"></a>属性
 
-| 属性                     | 说明                              | 必须 |
+| 属性                     | 说明                              | 必需 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 类型属性应设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)，了解详细信息。 | 是      |
@@ -167,7 +169,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 也可以为按需 HDInsight 群集的粒度配置指定以下属性。
 
-| 属性               | 说明                              | 必须 |
+| 属性               | 描述                              | 必须 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为待创建的 HDInsight 群集指定核心配置参数（如在 core-site.xml 中）。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -235,7 +237,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 #### <a name="node-sizes"></a>节点大小
 可使用以下属性指定头节点、数据节点和 Zookeeper 节点的大小： 
 
-| 属性          | 说明                              | 必须 |
+| 属性          | 描述                              | 必须 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 指定头节点的大小。 默认值为：Standard_D3。 有关详细信息，请参阅 **指定节点大小** 部分。 | 否       |
 | dataNodeSize      | 指定数据节点的大小。 默认值为：Standard_D3。 | 否       |
@@ -294,7 +296,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                                                  | 必须 |
+| 属性          | 描述                                                  | 必需 |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | 类型属性应设置为 **HDInsight**。            | 是      |
 | clusterUri        | HDInsight 群集的 URI。                            | 是      |
@@ -357,7 +359,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必须 |
+| 属性          | 说明                              | 必需 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 类型属性应设置为 **AzureBatch**。 | 是      |
 | accountName       | Azure Batch 帐户的名称。         | 是      |
@@ -367,8 +369,8 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | linkedServiceName | 与此 Azure Batch 链接服务相关联的 Azure 存储链接服务的名称。 此链接服务用于暂存运行活动所需的文件。 | 是      |
 | connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
-## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure 机器学习工作室（经典版）链接服务
-你可以创建 Azure 机器学习工作室（经典版）链接服务，以向数据工厂注册机器学习（经典版）批处理评分终结点。
+## <a name="ml-studio-classic-linked-service"></a>ML 工作室（经典）链接服务
+可以创建 ML 工作室（经典）链接服务，用于向数据工厂注册机器学习工作室（经典）批处理计分终结点。
 
 ### <a name="example"></a>示例
 
@@ -393,12 +395,12 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必须                                 |
+| 属性               | 描述                              | 必需                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
 | apiKey                 | 已发布的工作区模型 API。     | 是                                      |
-| updateResourceEndpoint | Azure 机器学习工作室（经典版）Web 服务终结点的更新资源 URL 可用于使用经过训练的模型文件更新预测性 Web 服务 | 否                                       |
+| updateResourceEndpoint | ML 工作室（经典）Web 服务终结点的更新资源 URL 用于使用经过训练的模型文件更新预测性 Web 服务 | 否                                       |
 | servicePrincipalId     | 指定应用程序的客户端 ID。     | 如果已指定 updateResourceEndpoint，则为必需 |
 | servicePrincipalKey    | 指定应用程序的密钥。           | 如果已指定 updateResourceEndpoint，则为必需 |
 | tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 |
@@ -438,7 +440,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性               | 说明                              | 必须                                 |
+| 属性               | 说明                              | 必需                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureMLService。 | 是                                      |
 | subscriptionId         | Azure 订阅 ID              | 是                                      |
@@ -481,7 +483,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必须                                 |
+| 属性             | 描述                              | 必需                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | accountName          | Azure Data Lake Analytics 帐户名。  | 是                                      |
@@ -543,7 +545,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必须                                 |
+| 属性             | 描述                              | 必需                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | 链接服务的名称               | 是   |
 | type                 | 类型属性应设置为：**Azure Databricks**。 | 是                                      |

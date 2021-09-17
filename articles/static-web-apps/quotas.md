@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 12666d69f6dcab043e909dbb2b49276644a70d76
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5030b0fb4e714be221e28e590c463186ec81ad04
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069555"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515581"
 ---
 # <a name="quotas-in-azure-static-web-apps"></a>Azure Static Web Apps 中的配额
 
@@ -24,6 +24,7 @@ Azure Static Web Apps 存在以下配额。
 | 超额带宽           | 不可用      | 每 GB 0.20 美元 |
 | 应用/Azure 订阅 | 10               | 无限制 |
 | 应用大小                    | 250 MB           | 500 MB |
+| 计划大小                   | 单个部署的最大应用大小为 500 MB，所有过渡和生产环境的最大应用大小为 0.50 GB  | 单个部署的最大应用大小为 500 MB，所有过渡和生产环境的最大合并应用大小为 2.00 GB |
 | 预生产环境 | 3                | 10 |
 | 自定义域              | 每个应用 2 个        | 每个应用 5 个 |
 | 授权（使用自定义角色和路由规则） | 最多可有 25 个最终用户属于自定义角色 | 最多可有 25 个最终用户属于自定义角色 |

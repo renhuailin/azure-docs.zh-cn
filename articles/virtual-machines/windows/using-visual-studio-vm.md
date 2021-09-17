@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: andster
 keywords: visualstudio
-ms.openlocfilehash: b37c8bde959822dfcb1b3db2ec96b377217d2bfc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: de2c782b7b311256e287f49f931ed6ab1de09c55
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138204"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688534"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
+**适用于：** :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集:heavy_check_mark: 统一规模集
+
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。
 
 不熟悉 Azure？ [创建免费 Azure 帐户](https://azure.microsoft.com/free)。

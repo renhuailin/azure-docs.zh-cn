@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 36740e7b135309524b70a74e0f92ceb7e2ac1238
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 5e655177f37ecafea407899c4512d803ba2295ad
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461796"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco AnyConnect 集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "112461796"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Cisco AnyConnect 支持 **IDP** 发起的 SSO
+* Cisco AnyConnect 支持 IDP 发起的 SSO。
 
 ## <a name="adding-cisco-anyconnect-from-the-gallery"></a>从库中添加 Cisco AnyConnect
 
@@ -76,10 +76,10 @@ ms.locfileid: "112461796"
 1. 在“设置 SAML 单一登录”页上，输入以下字段的值（请注意值区分大小写）：
 
    1. 在“标识符”文本框中，使用以下模式键入 URL：   
-      `https://*.YourCiscoServer.com/saml/sp/metadata/TGTGroup`
+      `https://<SUBDOMAIN>.YourCiscoServer.com/saml/sp/metadata/<Tunnel_Group_Name>`
 
    1. 在“回复 URL”文本框中，使用以下模式键入 URL：   
-      `https://YOUR_CISCO_ANYCONNECT_FQDN/+CSCOE+/saml/sp/acs?tgname=TGTGroup`
+      `https://<YOUR_CISCO_ANYCONNECT_FQDN>/+CSCOE+/saml/sp/acs?tgname=<Tunnel_Group_Name>`
 
     > [!NOTE]
     > 有关这些值的说明，请联系 Cisco TAC 客户支持。 使用 Cisco TAC 提供的实际标识符和回复 URL 更新这些值。 请联系 [Cisco AnyConnect 客户端支持团队](https://www.cisco.com/c/en/us/support/index.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -103,7 +103,7 @@ ms.locfileid: "112461796"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -113,11 +113,11 @@ ms.locfileid: "112461796"
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Cisco AnyConnect”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-cisco-anyconnect-sso"></a>配置 Cisco AnyConnect SSO
 
@@ -170,7 +170,7 @@ ms.locfileid: "112461796"
     ```
 
     > [!NOTE]
-    > SAML IdP 配置有一项功能 - 如果对 IdP 配置进行更改，则需从隧道组中删除 SAML 标识提供程序配置，然后重新应用该配置，使更改生效。
+    > SAML IdP 配置有一个解决方法。 如果对 IdP 配置进行更改，则需从隧道组中删除 SAML 标识提供程序配置，然后重新应用该配置，使更改生效。
 
 ### <a name="create-cisco-anyconnect-test-user"></a>创建 Cisco AnyConnect 测试用户
 

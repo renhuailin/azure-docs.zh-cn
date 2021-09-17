@@ -8,14 +8,16 @@ ms.date: 07/22/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: bd1c2d9a9d428a765a9b621652aa23fdec94f212
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1fd010e645370389a657f70aeb2e821b69477ef1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456368"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687567"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure 门户通过主机加密来启用端到端加密
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 启用主机加密时，存储在 VM 主机上的数据将静态加密，且已加密的数据将流向存储服务。 有关主机加密以及其他托管磁盘加密类型的概念信息，请参阅[主机加密 - VM 数据的端到端加密](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
 
@@ -58,7 +60,7 @@ ms.locfileid: "114456368"
 
 ## <a name="deploy-a-vm-with-platform-managed-keys"></a>使用平台管理的密钥部署 VM
 
-1. 登录 [Azure 门户](https://aka.ms/diskencryptionupdates)。
+1. 登录到 [Azure 门户](https://aka.ms/diskencryptionupdates)。
 1. 搜索“虚拟机”，然后选择“+ 添加”以创建 VM 。
 1. 创建新的虚拟机，选择适当的区域和支持的 VM 大小。
 1. 根据需要填写“基本”窗格上的其他值，然后继续填写“磁盘”窗格 。
@@ -88,7 +90,7 @@ ms.locfileid: "114456368"
 
 设置了 Azure Key Vault 和磁盘加密集之后，现在可以部署 VM，它将在主机上使用加密。
 
-1. 登录 [Azure 门户](https://aka.ms/diskencryptionupdates)。
+1. 登录到 [Azure 门户](https://aka.ms/diskencryptionupdates)。
 1. 搜索“虚拟机”，然后选择“+ 添加”以创建 VM 。
 1. 创建新的虚拟机，选择适当的区域和支持的 VM 大小。
 1. 根据需要填写“基本”窗格上的其他值，然后继续填写“磁盘”窗格 。

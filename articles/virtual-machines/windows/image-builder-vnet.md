@@ -10,14 +10,16 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ae5fddf35136046fae6d1dff9938700740bee01
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: cb089d643953848e1441bc3b1d6707e7e5f9d6fa
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594690"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690672"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>使用 Azure 映像生成器创建允许访问现有 Azure VNET 的 Windows VM
+
+适用于：:heavy_check_mark: Windows VM 
 
 本文介绍如何使用 Azure 映像生成器创建有权访问 VNET 中现有资源的基本自定义 Windows 映像。 创建的生成 VM 将部署到在订阅中指定的新的或现有的 VNET。 使用现有的 Azure VNET 时，Azure 映像生成器服务不需要公共网络连接。
 

@@ -9,39 +9,38 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 45d7939840f1fd3055f29d3aee677e105890a94d
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 88336401fa7e351791ecddbaf0b9caf5b3a54bd3
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802083"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
 
-在本教程中，了解如何将 Andromeda 与 Azure Active Directory (Azure AD) 集成。
-将 Andromeda 与 Azure AD 集成可提供以下优势：
+本教程介绍如何将 Andromeda 与 Azure Active Directory (Azure AD) 集成。 将 Andromeda 与 Azure AD 集成后，可以：
 
-- 可在 Azure AD 中控制谁有权访问 Andromeda。
-- 可以让用户使用其 Azure AD 帐户自动登录到 Andromeda（单一登录）。
-- 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Andromeda。
+* 让用户使用其 Azure AD 帐户自动登录到 Andromeda。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Andromeda 的集成，需要以下项：
 
-- 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
-- 启用了单一登录的 Andromeda 订阅
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Andromeda 单一登录的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-- Andromeda 支持 **SP 和 IDP** 发起的 SSO
-- Andromeda 支持 **实时** 用户预配
+* Andromeda 支持 SP 和 IDP 发起的 SSO。
+* Andromeda 支持实时用户预配。
 
-## <a name="adding-andromeda-from-the-gallery"></a>从库中添加 Andromeda
+## <a name="add-andromeda-from-the-gallery"></a>从库中添加 Andromeda
 
 若要配置 Andromeda 与 Azure AD 的集成，需要从库中将 Andromeda 添加到托管的 SaaS 应用列表。
 
@@ -75,15 +74,13 @@ ms.locfileid: "108802083"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：  
 
-   a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
+   a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
 
    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
-
-   ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`。
 
@@ -92,9 +89,9 @@ ms.locfileid: "108802083"
 
 1. Andromeda 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-   ![屏幕截图显示“用户属性”（如 givenname user.givenname 和 emailaddress user.mail）。](common/edit-attribute.png)
+   ![显示用户属性的屏幕截图。](common/edit-attribute.png)
 
-   > [!Important]
+   > [!NOTE]
    > 设置时清除命名空间定义。
 
 1. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
@@ -122,9 +119,9 @@ ms.locfileid: "108802083"
 
    e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-   f. 单击“确定” 
+   f. 单击“确定”
 
-   g. 单击“ **保存**”。
+   g. 单击“保存”  。
 
 1. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -162,17 +159,17 @@ ms.locfileid: "108802083"
 
 1. 以管理员身份登录 Andromeda 公司站点。
 
-2. 在菜单栏顶部单击“管理”并导航到“管理”。  
+2. 在菜单栏顶部单击“管理”并导航到“管理” 。
 
-   ![Andromeda 管理员](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
+   ![Andromeda 管理员。](./media/andromedascm-tutorial/admin.png)
 
 3. 在工具栏左侧的“界面”部分下面，单击“SAML 配置”。  
 
-   ![Andromeda saml](./media/andromedascm-tutorial/tutorial_andromedascm_saml.png)
+   ![Andromeda SAML。](./media/andromedascm-tutorial/interface.png)
 
 4. 在“SAML 配置”  部分的页面上，执行以下步骤：
 
-   ![Andromeda 配置](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
+   ![Andromeda 配置。](./media/andromedascm-tutorial/configure.png)
 
    a. 选中“使用 SAML 启用 SSO”。 
 
@@ -188,9 +185,9 @@ ms.locfileid: "108802083"
 
    g. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书**，将其粘贴到“X 509 证书”文本框中。 
 
-   h. 将以下属性映射到相应的值，以便于从 Azure AD 进行 SSO 登录。 登录时必须使用“用户 ID”属性  。 预配时，必须使用“电子邮件”、“公司”、“用户类型”和“角色”     。 本部分定义要关联到 Azure 门户中定义的值的属性映射（名称和值）
+   h. 将以下属性映射到相应的值，以便于从 Azure AD 进行 SSO 登录。 登录时必须使用“用户 ID”属性  。 预配时，必须使用“电子邮件”、“公司”、“用户类型”和“角色”     。 本部分定义要关联到 Azure 门户中定义的值的属性映射（名称和值）。
 
-   ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+   ![Andromeda 属性。](./media/andromedascm-tutorial/mapping.png)
 
    i. 单击“ **保存**”。
 
@@ -204,15 +201,15 @@ ms.locfileid: "108802083"
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-- 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Andromeda 登录 URL，可在其中启动登录流。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Andromeda 登录 URL，可在其中启动登录流。
 
-- 直接转到 Andromeda 登录 URL，并从那里启动登录流。
+* 直接转到 Andromeda 登录 URL，并从那里启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-- 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Andromeda
+* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Andromeda
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Andromeda 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Andromeda。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Andromeda 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Andromeda。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

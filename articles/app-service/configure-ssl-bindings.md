@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c67dfe6295a62a464d1a7a5eeb7a9ba7afd88ced
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 717c9595a9fbda39583be0be5bc6565d2938dc63
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128761"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823361"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -154,6 +154,17 @@ ms.locfileid: "113128761"
 在应用服务中，[TLS 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
 特定于语言的配置指南，如 [Linux Node.js 配置](configure-language-nodejs.md#detect-https-session)指南，介绍如何在应用程序代码中检测 HTTPS 会话。
+
+## <a name="renew-certificate-binding"></a>续订证书绑定
+
+> [!NOTE]
+> 若要续订[购买的应用服务证书](configure-ssl-certificate.md#import-an-app-service-certificate)，请参阅[导出（应用服务）证书](configure-ssl-certificate.md#export-certificate)。 应用服务证书可以自动续订，并且绑定可以自动同步。
+
+替换过期证书时，使用新证书更新证书绑定的方式可能会对用户体验产生不利影响。 例如，在删除某个绑定时，即使该绑定是基于 IP 的，入站 IP 地址也可能会更改。 在续订已进行基于 IP 的绑定的证书时，了解这一点尤为重要。 若要避免应用的 IP 地址发生更改，并避免应用停机，请按顺序执行以下步骤：
+
+1. 上传新证书。
+2. 将新证书绑定到同一自定义域，而不删除现有（过期）证书。 此操作将替换绑定而不是删除现有证书。
+3. 删除现有证书。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

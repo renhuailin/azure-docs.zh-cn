@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e57202fbbfcf40ed38cb9bed51a78c6a66a19bba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0ba2fcbc404a17b4b31d48b4e7d2e540a875f4f1
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728463"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444068"
 ---
 # <a name="start-vm-on-connect-faq"></a>Connect 上的 Start VM 常见问题解答
 
@@ -34,11 +34,11 @@ ms.locfileid: "121728463"
 >[!NOTE]
 >请确保将“结束已断开连接的会话”策略的时间限制设置为大于五分钟的值。 如果时间限制值太低，若用户的网络失去连接太长时间，则会中断会话，导致工作丢失。
 
-注销用户不会解除分配其 VM。 若要了解如何解除分配 VM，请参阅[在非工作时间启动或停止 VM](../automation/automation-solution-vm-management.md)。
+注销用户不会解除分配其 VM。 若要了解如何解除分配 VM，请参阅[在非工作时间启动或停止 VM](../automation/automation-solution-vm-management.md)（适用于个人主机池）和[使用 Azure 自动化缩放会话主机](set-up-scaling-script.md)（适用于共用主机池）。
 
 ## <a name="can-users-turn-off-the-vm-from-their-clients"></a>用户是否可以从他们的客户端中关闭 VM？
 
-是的。 用户可以使用会话中的 "开始" 菜单关闭 VM，就像在物理计算机上那样。 但是，关闭 VM 不会解除分配 VM。 若要了解如何解除分配 VM，请参阅[在非工作时间启动或停止 VM](../automation/automation-solution-vm-management.md)。
+是的。 用户可以使用会话中的 "开始" 菜单关闭 VM，就像在物理计算机上那样。 但是，关闭 VM 不会解除分配 VM。 若要了解如何解除分配 VM，请参阅[在非工作时间启动或停止 VM](../automation/automation-solution-vm-management.md)（适用于个人主机池）和[使用 Azure 自动化缩放会话主机](set-up-scaling-script.md)（适用于共用主机池）。
 
 ## <a name="next-steps"></a>后续步骤
 

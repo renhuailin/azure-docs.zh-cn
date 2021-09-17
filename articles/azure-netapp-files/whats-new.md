@@ -12,20 +12,44 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/12/2021
+ms.date: 08/18/2021
 ms.author: b-juche
-ms.openlocfilehash: a50b8eee5a45fdd496aa0e063272c1c32cf0e5a7
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 0bf972cd5b597d4cf0fb608eee8481cb72080425
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664442"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769334"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
 Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强功能。 
 
-## <a name="june-2021"></a>2021 年 6 月
+## <a name="august-2021"></a>2021 年 8 月
+
+* 支持[在现有 SMB 卷上启用连续可用性](enable-continuous-availability-existing-SMB.md)
+
+    已经可以在[新建 SMB 卷](azure-netapp-files-create-volumes-smb.md#continuous-availability)时启用 SMB 持续可用性 (CA) 功能。 现在还可以在现有 SMB 卷上启用 SMB CA。 请参阅[在现有 SMB 卷上启用连续可用性](enable-continuous-availability-existing-SMB.md)。
+
+* [快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)现已正式发布 (GA)  
+
+    快照策略功能现已正式发布。 使用该功能前无需再进行注册。
+
+* [NFS `Chown Mode` 导出策略和 UNIX 导出权限](configure-unix-permissions-change-ownership-mode.md)（预览版）   
+
+    对于具有 Unix 安全样式的 Azure NetApp 文件 NFS 卷或双协议卷，现在可以选择设置“Unix 权限”和“更改所有权模式”(`Chown Mode`) 选项。 可以在创建卷时或创建卷后指定这些设置。   
+
+    使用“更改所有权模式”(`Chown Mode`) 功能，可以设置文件和目录的所有权管理功能。 可以在卷的导出策略下指定或修改该设置。 `Chown Mode` 有两个选项可用：“受限”（默认，其中只有根用户才能更改文件和目录的所有权），以及“非限制”（其中非根用户可以更改其拥有的文件和目录的所有权）。   
+
+    使用 Azure NetApp 文件的“Unix 权限”功能，可以为装载路径指定更改权限。 
+
+    这些新功能提供了一些选项，可用于将某些文件和目录的访问控制移交给数据用户（而不是服务操作员）。   
+
+* [双协议（NFSv4.1 和 SMB）卷](create-volumes-dual-protocol.md)（预览版）   
+
+    从 [2020 年 7 月](#july-2020)起，Azure NetApp 文件已支持对 NFSv3 和 SMB 卷进行双协议访问。 现在可以创建 Azure NetApp 文件卷。该卷允许进行同步双协议（NFSv4.1 和 SMB）访问，并支持 LDAP 用户映射。 此功能支持以下用例：你可能具有使用 NFSv4.1 进行访问的基于 Linux 的工作负载，该工作负载在 Azure NetApp 文件卷中生成和存储数据。 同时，你的员工可能需要使用基于 Windows 的客户端和软件来分析同一 Azure NetApp 文件卷中新生成的数据。 有了同步双协议访问功能，就不必将工作负荷生成的数据复制到使用不同协议的单独卷中进行后期分析，从而节省了存储成本和运营时间。 此功能免费（常规 Azure NetApp 文件存储成本仍然适用），并已正式发布。 有关详细信息，请参阅[同步双协议 NFSv4.1/SMB 访问](create-volumes-dual-protocol.md)文档。
+
+## <a name="june-2021"></a>2021 年 6 月  
 
 * [Azure NetApp 文件存储服务加载项](storage-service-add-ons.md)
 
@@ -86,11 +110,11 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
     用户已请求直接控制预配的容量。 用户想要控制和平衡存储容量与利用率。 他们还想要控制成本，及其应用程序卷的可用、已用和预配容量与性能的应用程序端和客户端可见性。 借助这一新行为，现在可以完整启用整个容量。
 
-* [SMB 连续可用性 (CA) 共享支持 FSLogix 用户配置文件容器](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)（预览版）  
+* [SMB 连续可用性 (CA) 共享支持 FSLogix 用户配置文件容器](azure-netapp-files-create-volumes-smb.md#continuous-availability)（预览版）  
 
-    [FSLogix](/fslogix/overview) 是一组可优化、启用和简化非持久性 Windows 计算环境的解决方案。 FSLogix 解决方案适用于公有云和私有云中的虚拟环境。 使用物理设备时，FSLogix 解决方案还可用于创建更多的可移植计算会话。 FSLogix 可用于提供对存储在 SMB 共享网络存储（包括 Azure NetApp 文件）上的持久性用户配置文件容器的动态访问。 为了进一步增强 FSLogix 对存储服务维护事件的复原能力，Azure NetApp 文件通过适用于用户配置文件容器的 [Azure NetApp 文件上的 SMB 连续可用性 (CA) 共享](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)扩展了对 SMB 透明故障转移的支持。 有关其他信息，请参阅 Azure NetApp 文件 [Windows 虚拟桌面解决方案](azure-netapp-files-solution-architectures.md#windows-virtual-desktop)。  
+    [FSLogix](/fslogix/overview) 是一组可优化、启用和简化非持久性 Windows 计算环境的解决方案。 FSLogix 解决方案适用于公有云和私有云中的虚拟环境。 使用物理设备时，FSLogix 解决方案还可用于创建更多的可移植计算会话。 FSLogix 可用于提供对存储在 SMB 共享网络存储（包括 Azure NetApp 文件）上的持久性用户配置文件容器的动态访问。 为了进一步增强 FSLogix 对存储服务维护事件的复原能力，Azure NetApp 文件通过适用于用户配置文件容器的 [Azure NetApp 文件上的 SMB 连续可用性 (CA) 共享](azure-netapp-files-create-volumes-smb.md#continuous-availability)扩展了对 SMB 透明故障转移的支持。 有关其他信息，请参阅 Azure NetApp 文件 [Azure 虚拟桌面解决方案](azure-netapp-files-solution-architectures.md#windows-virtual-desktop)。  
 
-* [SMB3 协议加密](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)（预览版） 
+* [SMB3 协议加密](azure-netapp-files-create-volumes-smb.md#smb3-encryption)（预览版） 
 
     现在可以在 Azure NetApp 文件 SMB 和双协议卷上启用 SMB3 协议加密。 此功能使用 [SMB 3.0 上的 AES-CCM 算法和 SMB 3.1.1 上的 AES-GCM 算法](/windows-server/storage/file-server/file-server-smb-overview#features-added-in-smb-311-with-windows-server-2016-and-windows-10-version-1607)连接，对传送中的 SMB3 数据启用加密。 未使用 SMB3 加密的 SMB 客户端无法访问此卷。 无论此设置如何，静态数据都会加密。 SMB 加密进一步增强了安全性。 但是，它可能会对客户端产生影响（加密和解密消息的 CPU 开销）。 它还可能会影响存储资源利用率（降低吞吐量）。 在将工作负载部署到生产环境之前，应测试对应用程序的加密性能影响。
 
@@ -138,7 +162,7 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
     在手动 QoS 容量池中，可以单独为卷分配容量和吞吐量。 使用手动 QoS 容量池创建的所有卷的总吞吐量受池总吞吐量的限制。 它由池大小和服务级别吞吐量共同决定。 另外，容量池的 [QoS 类型](azure-netapp-files-understand-storage-hierarchy.md#qos_types)也可以是自动，这是默认值。 在自动 QoS 容量池中，吞吐量会自动分配到池中的卷，并与分配给这些卷的大小配额成正比。
 
-* [LDAP 签名](azure-netapp-files-create-volumes-smb.md)（预览版）   
+* [LDAP 签名](create-active-directory-connections.md#create-an-active-directory-connection)（预览版）   
 
     Azure NetApp 文件现在支持 LDAP 签名，以在 Azure NetApp 文件服务和用户指定的 Active Directory 域服务域控制器之间进行安全 LDAP 查找。 此功能目前处于预览状态。
 

@@ -2,14 +2,14 @@
 title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 08/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: af008e8f14e3df60f0ce48a23cb32d45716645d0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9244b7c5a62be57b1f8ec9ea0f27918c7aa62457
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728917"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770975"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -174,6 +174,7 @@ Azure VM 数据磁盘 | 支持备份最多包含 32 个磁盘的 Azure VM。<br>
 超级 SSD 磁盘 | 不支持。 有关详细信息，请参阅这些[限制](selective-disk-backup-restore.md#limitations)。
 [临时磁盘](../virtual-machines/managed-disks-overview.md#temporary-disk) | Azure 备份服务不会备份临时磁盘。
 NVMe/[临时磁盘](../virtual-machines/ephemeral-os-disks.md) | 不支持。
+[ReFS](/windows-server/storage/refs/refs-overview) 还原 | 。 VSS 也像 NFS 一样支持 ReFS 上的应用一致性备份。
 
 ## <a name="vm-network-support"></a>VM 网络支持
 
@@ -229,8 +230,8 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
-没有 DPM/MABS 的本地 Windows 计算机 | NA | ![是][green]
-Azure VM | NA | NA
+没有 DPM/MABS 的本地 Windows 计算机 | 不可用 | ![是][green]
+Azure VM | 不可用 | 不可用
 本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
 本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 06/30/2021
+ms.date: 08/19/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e29ee77aa3fb9f33c5c923a49de07ffea1642a77
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: ea5ad0ed61ac0d2b9603752efc6bbc998cf189a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138442"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608110"
 ---
 # <a name="login-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>使用 Azure Active Directory 身份验证登录到 Azure 中的 Windows 虚拟机
 
@@ -240,7 +240,7 @@ az role assignment create \
 
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>使用 Azure Policy 来确保符合标准并评估合规性
 
-使用 Azure 策略来确保为新的和现有 Windows 虚拟机启用 Azure AD 登录，并在 Azure 策略合规性仪表板上全面评估环境的合规性。 借助此功能，可以使用多个强制实施级别：你可以标记环境中未启用 Azure AD 登录的新的和现有 Windows VM。 还可以使用 Azure 策略在未启用 Azure AD 登录的新 Windows VM 上部署 Azure AD 扩展，并按照相同的标准来修正现有的 Windows VM。 除上述功能外，还可以使用策略来检测和标记其中创建了未经批准的本地帐户的 Windows VM。 有关详细信息，请查看 [Azure 策略](https://www.aka.ms/AzurePolicy)。
+使用 Azure Policy 来确保为新的和现有的 Windows 虚拟机启用 Azure AD 登录，并在 Azure Policy 相容性仪表板中大规模评估环境的符合性。 借助此功能，可以使用多个强制实施级别：你可以标记环境中未启用 Azure AD 登录的新的和现有 Windows VM。 你还可以使用 Azure Policy 在未启用 Azure AD 登录的新 Windows VM 上部署 Azure AD 扩展，以及将现有 Windows VM 恢复为相同标准。 除这些功能以外，还可以使用 Azure Policy 来检测并标记在其计算机上创建了未批准的本地帐户的 Windows VM。 若要了解详细信息，请参阅 [Azure Policy](../../governance/policy/overview.md)。
 
 ## <a name="troubleshoot"></a>疑难解答
 
@@ -376,6 +376,29 @@ AADLoginForWindows 扩展仅适用于在 Windows Server 2019 或 Windows 10（�
 ![你尝试使用的登录方法不受允许。](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
 如果配置了一种条件访问策略，该访问策略在访问资源之前需要多重身份验证 (MFA)，则需要确保启动到 VM 的远程桌面连接的 Windows 10 电脑使用强身份验证方法（如 Windows Hello）登录。 如果不对远程桌面连接使用强身份验证方法，则会看到上述错误。
+
+- 你的凭据无效。
+
+![你的凭据无效](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
+
+> [!WARNING]
+> VM 登录不支持每用户启用/强制执行的 Azure AD 多重身份验证。 此设置会导致登录失败，并出现“你的凭据无效。” 错误消息。
+
+按照以下步骤，删除每用户 MFA 设置即可解决上述问题：
+
+```
+
+# Get StrongAuthenticationRequirements configure on a user
+(Get-MsolUser -UserPrincipalName username@contoso.com).StrongAuthenticationRequirements
+ 
+# Clear StrongAuthenticationRequirements from a user
+$mfa = @()
+Set-MsolUser -UserPrincipalName username@contoso.com -StrongAuthenticationRequirements $mfa
+ 
+# Verify StrongAuthenticationRequirements are cleared from the user
+(Get-MsolUser -UserPrincipalName username@contoso.com).StrongAuthenticationRequirements
+
+```
 
 如果尚未部署 Windows Hello 企业版，并且目前还没有此选项，则可以通过配置条件访问策略排除 MFA 要求，也就是要在该策略中将“Azure Windows VM 登录”应用从需要 MFA 的云应用列表中排除。 若要了解有关 Windows Hello 企业版的详细信息，请参阅 [Windows Hello 企业版概述](/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
 

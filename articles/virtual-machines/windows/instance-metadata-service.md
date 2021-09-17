@@ -8,17 +8,18 @@ ms.service: virtual-machines
 ms.subservice: monitoring
 ms.collection: windows
 ms.topic: how-to
-ms.workload: infrastructure-services
 ms.date: 04/16/2021
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 9421bc5c04ab9f6416cbe89276bf2bc393fac14e
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 7b4ec75e12f3fc80c8eb20628f551f1e34cb6ee4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588507"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693649"
 ---
 # <a name="azure-instance-metadata-service-windows"></a>Azure 实例元数据服务 (Windows)
+
+**适用于：** :heavy_check_mark: Windows VM 
 
 [!INCLUDE [virtual-machines-imds](../../../includes/virtual-machines-imds.md)]

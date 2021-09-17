@@ -10,9 +10,11 @@ ms.service: media-services ms.workload: ms.topic: conceptual ms.date: 10/23/2020
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-作为开发者，可以利用媒体服务 [REST API](/rest/api/media/) 或客户端库，与 REST API 交互，以轻松创建、管理和维护自定义媒体工作流。 [媒体服务 v3](https://aka.ms/ams-v3-rest-sdk) API 基于 OpenAPI 规范（以前称为 Swagger）。
+开发者可以利用 .NET、Python、Node.js、Java、Go 和 Ruby（可与 REST API 交互）的客户端库，轻松创建、管理和维护自定义媒体工作流。 [媒体服务 v3](https://aka.ms/ams-v3-rest-sdk) API 基于 OpenAPI 规范（以前称为 Swagger）。
 
 本文论述使用媒体服务 v3 进行开发时适用于实体和 API 的规则。
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]
 
 ## <a name="accessing-the-azure-media-services-api"></a>访问 Azure 媒体服务 API
 
@@ -51,12 +53,11 @@ Azure AD 应用和服务主体应在同一个租户中。 创建应用后，向�
 ### <a name="samples"></a>示例
 
 查看演示如何连接 Azure AD 服务主体的以下示例：
-
-* [通过 REST 进行连接](setup-postman-rest-how-to.md)  
-* [通过 Java 进行连接](configure-connect-java-howto.md)
 * [通过 .NET 进行连接](configure-connect-dotnet-howto.md)
 * [通过 Node.js 进行连接](configure-connect-nodejs-howto.md)
 * [通过 Python 进行连接](configure-connect-python-howto.md)
+* [通过 Java 进行连接](configure-connect-java-howto.md)
+* [通过 REST 进行连接](setup-postman-rest-how-to.md)  
 
 ## <a name="naming-conventions"></a>命名约定
 
@@ -128,7 +129,7 @@ AMSE 是一个开源项目，由社区提供支持（可以将问题报告给 ht
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
-请参阅 [Azure 媒体服务实体的筛选、排序、分页](filter-order-page-entitites-how-to.md)。
+请参阅 [Azure 媒体服务实体的筛选、排序、分页](filter-order-page-entities-how-to.md)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

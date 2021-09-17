@@ -7,39 +7,39 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 05/28/2021
+ms.date: 08/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f2ad1284dcbd6bbc8ab61f700405521ec07f2e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fe1da3615d835b6a2d828fdbca989c805a9f9b17
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449513"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823073"
 ---
 # <a name="troubleshoot-ecma-connector-host-issues"></a>ECMA 连接器主机问题故障排除
 
 >[!IMPORTANT]
-> 本地预配预览版目前为仅限受邀请人使用的预览版。 要请求访问该功能，请使用[访问请求窗体](https://aka.ms/onpremprovisioningpublicpreviewaccess)。 未来几个月在我们准备正式发布版的过程中，我们会向更多客户和连接器开放该预览版。
+> 本地预配预览版目前为仅限受邀请人使用的预览版。 如需请求功能访问权限，请使用[访问请求窗体](https://aka.ms/onpremprovisioningpublicpreviewaccess)”。 未来几个月在我们准备正式发布版的过程中，我们会向更多客户和连接器开放该预览版。
 
 ## <a name="troubleshoot-test-connection-issues"></a>测试连接问题故障排除
 配置 ECMA 主机和预配代理后，可以测试 Azure Active Directory (Azure AD) 预配服务与预配代理、ECMA 主机和应用程序之间的连接性。 要执行此端到端测试，请在 Azure 门户的应用程序中选择“测试连接”。 如果测试连接失败，请尝试以下故障排除步骤：
 
  1. 检查代理和 ECMA 主机是否正在运行：
      1. 在安装有代理的服务器上，转到 **开始** > **运行** > **Services.msc** 来打开 **服务**。
-     1. 确保“Microsoft Azure AD Connect 代理更新程序”、“Microsoft Azure AD Connect 预配代理”和“Microsoft ECMA2Host”服务包含在“服务”列表中，并且其状态为“正在运行”。
+     2. 确保“Microsoft Azure AD Connect 代理更新程序”、“Microsoft Azure AD Connect 预配代理”和“Microsoft ECMA2Host”服务包含在“服务”列表中，并且其状态为“正在运行”。
     
         ![显示 ECMA 服务正在运行的屏幕截图。](./media/on-premises-ecma-troubleshoot/tshoot-1.png)
 
- 1. 选择“故障排除” > “脚本” > “TestECMA2HostConnection”，转到安装 ECMA 主机的文件夹。 运行该脚本。 此脚本发送 SCIM GET 或 POST 请求，以验证 ECMA 连接器主机是否正在运行并响应请求。 应在 ECMA 连接器主机服务本身所在的同一台计算机上运行此脚本。
- 1. 转到 Azure 门户中的应用程序，选择“管理员连接性”，选择代理下拉列表，确保代理处于活动状态。
- 1. 检查提供的机密令牌是否与本地机密令牌相同。 转到本地，再次提供机密令牌，并将其复制到 Azure 门户。
- 1. 确保已将一个或多个代理分配给 Azure 门户中的应用程序。
- 1. 分配代理后，需要等待 10 到 20 分钟才能完成注册。 在注册完成之前，连接性测试将无法正常工作。
- 1. 确保使用的是有效证书。 转到 ECMA 主机的“设置”选项卡，生成新的证书。
- 1. 在虚拟机中转至任务栏，搜索“Microsoft Azure AD Connect 预配代理”，从而重新启动预配代理。 右键单击“停止”，然后选择“启动”。
- 1. 在 Azure 门户中预配租户 URL 时，请确保该 URL 遵循以下模式。 可将 `localhost` 替换为主机名，但这并非必要操作。 将 `connectorName` 替换为在 ECMA 主机中指定的连接器名称。
+ 2. 选择“故障排除” > “脚本” > “TestECMA2HostConnection”，转到安装 ECMA 主机的文件夹。 运行该脚本。 此脚本发送 SCIM GET 或 POST 请求，以验证 ECMA 连接器主机是否正在运行并响应请求。 应在 ECMA 连接器主机服务本身所在的同一台计算机上运行此脚本。
+ 3. 转到 Azure 门户中的应用程序，选择“管理员连接性”，选择代理下拉列表，确保代理处于活动状态。
+ 4. 检查提供的机密令牌是否与本地机密令牌相同。 转到本地，再次提供机密令牌，并将其复制到 Azure 门户。
+ 5. 确保已将一个或多个代理分配给 Azure 门户中的应用程序。
+ 6. 分配代理后，需要等待 10 到 20 分钟才能完成注册。 在注册完成之前，连接性测试将无法正常工作。
+ 7. 确保使用的是有效证书。 转到 ECMA 主机的“设置”选项卡，生成新的证书。
+ 8. 在虚拟机中转至任务栏，搜索“Microsoft Azure AD Connect 预配代理”，从而重新启动预配代理。 右键单击“停止”，然后选择“启动”。
+ 9. 在 Azure 门户中预配租户 URL 时，请确保该 URL 遵循以下模式。 可将 `localhost` 替换为主机名，但这并非必要操作。 将 `connectorName` 替换为在 ECMA 主机中指定的连接器名称。 错误消息“资源无效”通常指示 URL 不符合预期格式。
  
     ```
     https://localhost:8585/ecma2host_connectorName/scim
@@ -125,6 +125,13 @@ ms.locfileid: "114449513"
   1. 在“事件查看器”中，展开“应用程序和服务”日志，然后选择“Microsoft ECMA2Host 日志”。 
   1. 在连接器主机收到更改时，事件会写入应用程序日志。 
 
+### <a name="common-errors"></a>常见错误
+
+| 错误      | 解决方法 |
+| ----------- | ----------- |
+| 无法加载文件或程序集“file:///C:\Program Files\Microsoft ECMA2Host\Service\ECMA\Cache\8b514472-c18a-4641-9a44-732c296534e8\Microsoft.IAM.Connector.GenericSql.dll”或其依赖项之一。 访问被拒绝。      | 确保网络服务帐户对缓存文件夹具有“完全控制”权限。 |
+| 对象 DN 的 LDAP 样式无效。 DN：username@domain.com"   | 确保未在 ECMA 主机的“连接”页中选中“DN 是定位点”复选框。 确保在 ECMA 主机的“对象类型”页中选中了“自动生成”复选框。  有关详细信息，请参阅[关于定位点属性和可分辨名称](on-premises-application-provisioning-architecture.md#about-anchor-attributes-and-distinguished-names)。|
+
 ## <a name="understand-incoming-scim-requests"></a>了解传入的 SCIM 请求
 
 由 Azure AD 向预配代理和连接器主机发出的请求将使用 SCIM 协议。 从主机向应用发送的请求使用应用支持的协议。 从主机发送到代理再发送到 Azure AD 的请求依赖于 SCIM。 有关 SCIM 实现的更多信息，请参阅[教程：开发和计划 Azure Active Directory 中 SCIM 终结点的预配](use-scim-to-provision-users-and-groups.md)。
@@ -145,10 +152,10 @@ ms.locfileid: "114449513"
 
 若要解决此问题，请执行以下操作:
 
-1. 使用管理员帐户登录到服务器。
-1. 导航到“服务”或者转到“开始” > “运行” > “Services.msc”来打开“服务”。
-1. 在“服务”下，双击“Microsoft Azure AD Connect 预配代理”。
-1. 在“登录”选项卡上，将此帐户更改为域管理员。然后重启服务。 
+ 1. 使用管理员帐户登录到服务器。
+ 2. 导航到“服务”或者转到“开始” > “运行” > “Services.msc”来打开“服务”。
+ 3. 在“服务”下，双击“Microsoft Azure AD Connect 预配代理”。
+ 4. 在“登录”选项卡上，将此帐户更改为域管理员。然后重启服务。 
 
 此测试验证代理是否可以通过端口 443 与 Azure 通信。 打开浏览器，然后通过安装有代理的服务器转到上一个 URL。
 
@@ -188,8 +195,8 @@ ms.locfileid: "114449513"
 
 要收集有关代理相关问题故障排除的更多信息，请执行以下操作：
 
-1. 按照 [Azure AD Connect 云同步的 AADCloudSyncTools Power Shell 模块](../../active-directory/cloud-sync/reference-powershell.md#install-the-aadcloudsynctools-powershell-module)中所述安装 AADCloudSyncTools PowerShell 模块。
-1. 使用 `Export-AADCloudSyncToolsLogs` PowerShell cmdlet 捕获信息。 使用以下开关微调数据收集。 使用：
+ 1. 按照 [Azure AD Connect 云同步的 AADCloudSyncTools Power Shell 模块](../../active-directory/cloud-sync/reference-powershell.md#install-the-aadcloudsynctools-powershell-module)中所述安装 AADCloudSyncTools PowerShell 模块。
+ 2. 使用 `Export-AADCloudSyncToolsLogs` PowerShell cmdlet 捕获信息。 使用以下开关微调数据收集。 使用：
 
       - “SkipVerboseTrace”用于仅导出当前日志而不捕获详细日志（默认值 = false）。
       - “TracingDurationMins”用于指定不同的捕获持续时间（默认值 = 3 分钟）。
@@ -211,6 +218,12 @@ ms.locfileid: "114449513"
 
   ```
 
+### <a name="i-am-getting-an-invalid-ldap-style-dn-error-when-trying-to-configure-the-ecma-connector-host-with-sql"></a>尝试使用 SQL 配置 ECMA 连接器主机时，收到了 LDAP 样式 DN 无效错误
+默认情况下，genericSQL 连接器要求使用 LDAP 样式填充 DN（在第一个连接页中未选中“DN 是定位点”属性时）。 在上面的错误消息中，可以看到 DN 是 UPN，而不是连接器需要的 LDAP 样式 DN。 
+
+若要解决此问题，请确保配置连接器时在“对象类型”页上选择“自动生成”。
+
+有关详细信息，请参阅[关于定位点属性和可分辨名称](on-premises-application-provisioning-architecture.md#about-anchor-attributes-and-distinguished-names)。
 
 ## <a name="next-steps"></a>后续步骤
 

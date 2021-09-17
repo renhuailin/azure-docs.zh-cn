@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 70bc81edde843f70dfb4403b63dfeb55ec2036fe
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bceda42909a2d6a2940da00d09cd46767e3c2e2d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750880"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689988"
 ---
 # <a name="hbv2-series"></a>HBv2 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 HBv2 系列 VM 针对内存带宽驱动的应用程序（例如流体动力学、有限元分析和储层模拟）进行了优化。 HBv2 VM 搭载 120 个 AMD EPYC 7742 处理器核心，为每个 CPU 核心提供 4 GB RAM，但不支持同步多线程。 每个 HBv2 VM 提供高达 340 GB/秒的内存带宽，以及高达 4 兆次的 FP64 浮点运算能力。
 

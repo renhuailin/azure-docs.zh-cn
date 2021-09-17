@@ -5,16 +5,16 @@ services: container-service
 ms.topic: tutorial
 ms.date: 05/24/2021
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 0c577a316e5034e4a21599b0806be534c5f6888a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: ab994a49ed81a13eeb018d39d2f1d8be7eaee733
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697779"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741610"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
-如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了示例 Azure 投票应用。 在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 你将学习如何执行以下操作：
+如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了示例 Azure 投票应用。 在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 学习如何：
 
 > [!div class="checklist"]
 > * 缩放 Kubernetes 节点
@@ -101,14 +101,21 @@ Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用�
 > kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 > ```
 
-若要使用自动缩放程序，你的 Pod 中的所有容器和你的 Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器已请求了 0.25 个 CPU，限制为 0.5 个 CPU。 这些资源请求和限制的定义方式如以下示例代码片段所示：
+若要使用自动缩放程序，你的 Pod 中的所有容器和你的 Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器已请求了 0.25 个 CPU，限制为 0.5 个 CPU。
+
+这些资源请求和限制是为每个容器定义的，如以下示例代码片段所示：
 
 ```yaml
-resources:
-  requests:
-     cpu: 250m
-  limits:
-     cpu: 500m
+  containers:
+  - name: azure-vote-front
+    image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
+    ports:
+    - containerPort: 80
+    resources:
+      requests:
+        cpu: 250m
+      limits:
+        cpu: 500m
 ```
 
 下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 *azure-vote-front* 部署中的 Pod 数。 如果所有 Pod 的平均 CPU 利用率超过其请求使用率的 50%，则自动缩放程序会将 Pod 增加到最多 *10* 个实例。 为部署定义的最小实例数为 *3*：

@@ -8,14 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: risverma
-ms.openlocfilehash: cdfb44518c75dbb57d184fa72eb7639fd56f738c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e0fbe4b02ac0cf2978bba69a9e7e6eafb36b0f84
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729672"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697946"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 B 系列 VM 可部署在多种硬件类型和处理器上，因此提供具有竞争力的带宽分配。 对于并非持续需要 CPU 完全性能的工作负载（如 Web 服务器、概念证明、小型数据库和开发生成环境），B 系列 VM 是理想之选。 这些工作负荷通常具有可突增的性能要求。 若要判断此大小部署在哪个物理硬件上，请从虚拟机中查询虚拟硬件。 B 系列使用户可以购买具有基准性能的 VM 大小，当其在 CPU 使用率未达到其基线时会增加额度。 在虚拟机累积额度后，当应用程序需要更高的 CPU 性能时，虚拟机可以使用高达 100% vCPU 突增到基线以上。
 

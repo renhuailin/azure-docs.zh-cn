@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 3cca568245dfce01fb96d7a46590cb72349213ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36ae87796210390e8e23596f6ee96758df85eacc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97591916"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727458"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Web Cargo Air 的集成
 
@@ -37,10 +37,9 @@ ms.locfileid: "97591916"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Web Cargo Air 支持 SP 启动的 SSO
+* Web Cargo Air 支持 SP 发起的 SSO。
 
-
-## <a name="adding-web-cargo-air-from-the-gallery"></a>从库中添加 Web Cargo Air
+## <a name="add-web-cargo-air-from-the-gallery"></a>从库中添加 Web Cargo Air
 
 若要配置 Web Cargo Air 与 Azure AD 的集成，需要从库中将 Web Cargo Air 添加到托管 SaaS 应用的列表。
 
@@ -50,7 +49,6 @@ ms.locfileid: "97591916"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Web Cargo Air” 。
 1. 在结果面板中选择“Web Cargo Air”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-web-cargo-air"></a>配置并测试 Web Cargo Air 的 Azure AD SSO
 
@@ -71,20 +69,20 @@ ms.locfileid: "97591916"
 
 1. 在 Azure 门户中的 Web Cargo Air 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com` 
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com/saml-sso`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com/saml-sso`
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.webcargonet.com` 
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Web Cargo Air 客户端支持团队](mailto:support@webcargonet.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Web Cargo Air 客户端支持团队](mailto:support@webcargonet.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上。   
 
@@ -130,12 +128,12 @@ ms.locfileid: "97591916"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Web Cargo Air 登录 URL，可以从那里启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Web Cargo Air 登录 URL，可以从那里启动登录流。 
 
-2. 直接转到 Web Cargo Air 登录 URL，并从那里启动登录流。
+* 直接转到 Web Cargo Air 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 如果在访问面板中单击 Web Cargo Air 磁贴，将会重定向到 Web Cargo Air 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Web Cargo Air 磁贴时，会重定向到 Web Cargo Air 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Web Cargo Air 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Web Cargo Air 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

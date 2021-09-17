@@ -7,14 +7,17 @@ ms.date: 06/29/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 64b535c717d446957e06464a7b3393565a4e250e
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 2e3bf032cad39887250c0d0a3cf148e24dc2397a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113362298"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695848"
 ---
 # <a name="virtual-machine-and-disk-performance"></a>虚拟机和磁盘性能
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance.md)]
 
 ## <a name="virtual-machine-uncached-vs-cached-limits"></a>虚拟机非缓存限制与缓存限制

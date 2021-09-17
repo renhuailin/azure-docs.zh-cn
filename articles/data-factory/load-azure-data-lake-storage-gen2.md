@@ -4,15 +4,16 @@ description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: dc71dbb50478494b30bb78f4ae55a7f4a6423d62
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 07/22/2021
+ms.openlocfilehash: edc3005a462777ce7cf873b4098a17af215e308b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637863"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
 
@@ -53,76 +54,72 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
-   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
 
-   选择“创作和监视”磁贴，在单独的选项卡中启动数据集成应用程序。
+   在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独的选项卡中启动“数据集成应用程序”。 
 
 ## <a name="load-data-into-azure-data-lake-storage-gen2"></a>将数据加载到 Azure Data Lake Storage Gen2 中
 
-1. 在“入门”页中，选择“复制数据”磁贴以启动“复制数据”工具 。
+1. 在 Azure 数据工厂的主页中，选择“引入”磁贴来启动“复制数据”工具。
 
-2. 在“属性”页中，为“任务名称”字段指定“CopyFromAmazonS3ToADLS”，然后选择“下一步”   。
+2. 在“属性”页中，在“任务类型”下选择“内置复制任务”，在“任务节奏或任务计划”下选择“现在运行一次”，然后选择“下一页”。
 
     ![“属性”页](./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png)
-3. 在“源数据存储”页中，单击“+ 创建新连接”。  从连接器库中选择“Amazon S3”，然后选择“继续” 。
+3. 在“源数据存储”页上，完成以下步骤：
+    1. 选择“+ 新建连接”。 从连接器库中选择“Amazon S3”，然后选择“继续” 。
     
-    ![“源数据存储 S3”页](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
+        ![“源数据存储 S3”页](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
-4. 在“新建链接服务(Amazon S3)”页中执行以下步骤：
+    1. 在“新建连接 (Amazon S3)”页中，执行以下步骤：
 
-   1. 指定“访问密钥 ID”值。
-   2. 指定“机密访问密钥”值。
-   3. 单击“测试连接”以验证设置，然后选择“创建” 。
-
-      ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   4. 随即会显示新创建的 AmazonS3 连接。 选择“**下一步**”。 
-
-5. 在“选择输入文件或文件夹”页上，浏览到要复制的文件夹和文件。 选中文件夹/文件，然后选择“选择”。
-
-    ![选择输入文件或文件夹](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
-
-6. 通过选中“以递归方式”和“以二进制方式复制”选项，指定复制行为 。 选择“**下一步**”。
-
-    ![屏幕截图显示了“选择输入文件或文件夹”，你可以在其中选择“以二进制方式复制”和“以递归方式”。](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
+        1. 指定“访问密钥 ID”值。
+        1. 指定“机密访问密钥”值。
+        1. 选择“测试连接”以验证设置，然后选择“创建” 。
     
-7. 在“目标数据存储”页中，单击“+ 新建连接”，接着选择“Azure Data Lake Storage Gen2”，然后选择“继续”   。
+          ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
 
-    ![“目标数据存储”页](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
+    1. 在“源数据存储”页上，确保新创建的 Amazon S3 连接在“连接”块中处于选中状态。 
+    1. 在“文件或文件夹”部分中，浏览到要复制的文件夹和文件。 选中文件夹/文件，然后选择“确定”。
+    1. 通过选中“以递归方式”和“以二进制方式复制”选项，指定复制行为 。 选择“**下一步**”。
 
-8. 在“新建链接服务(Azure Data Lake Storage Gen2)”页中，执行以下步骤：
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2/source-data-store.png" alt-text="显示“源数据存储”页的屏幕截图。":::
+    
+4. 在“目标数据存储”页上，完成以下步骤。
+    1. 选择“+ 新建连接”，然后选择“Azure Data Lake Storage Gen2”，再选择“继续”  。
 
-   1. 从“存储帐户名称”下拉列表中选择能使用 Data Lake Storage Gen2 的帐户。
-   2. 选择“创建”以创建连接。 然后，选择“下一步”。   
+        ![“目标数据存储”页](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
+    
+    1. 在“新建连接 (Azure Data Lake Storage Gen2)”页上，从“存储帐户名称”下拉列表中选择你的支持 Data Lake Storage Gen2 的帐户，然后选择“创建”以创建连接。  
 
         ![指定 Azure Data Lake Storage Gen2 帐户](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
 
-9. 在“选择输出文件或文件夹”页中，输入 **copyfroms3** 作为输出文件夹名称，然后选择“下一步”。 ADF 将在复制过程中创建相应的 ADLS Gen2 文件系统和子文件夹（如果不存在）。
+    1. 在“目标数据存储”上的“连接”块中选择新创建的连接 。 然后在“文件夹路径”下，输入“copyfroms3”作为输出文件夹名称，然后选择“下一步”。 ADF 将在复制过程中创建相应的 ADLS Gen2 文件系统和子文件夹（如果不存在）。
 
-    ![屏幕截图显示了所输入的文件夹路径。](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
-
-10. 在“设置”页中选择“下一步”，以便使用默认设置 。
+        :::image type="content" source="./media/load-azure-data-lake-storage-gen2/destiantion-data-store.png" alt-text="显示“目标数据存储”页的屏幕截图。":::   
+    
+5. 在“设置”页中，为“任务名称”字段指定“CopyFromAmazonS3ToADLS”，然后选择“下一步”，以使用默认设置。
 
     ![“设置”页](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
 
-11. 在“摘要”页中检查设置，然后选择“下一步”。
+6. 在“摘要”页中检查设置，然后选择“下一步”。
 
     ![“摘要”页](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
 
-12. 在“部署”页中，选择“监视”可以监视管道（任务） 。 
+7. 在“部署”页中，选择“监视”可以监视管道（任务） 。 
  
-13. 管道运行成功完成后，你会看到由手动触发器触发的管道运行。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。
+8. 管道运行成功完成后，你会看到由手动触发器触发的管道运行。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。
 
     ![监视管道运行](./media/load-azure-data-lake-storage-gen2/monitor-pipeline-runs.png)
 
-14. 若要查看与管道运行关联的活动运行，请选择“管道名称”列下的“CopyFromAmazonS3ToADLS”链接。 有关复制操作的详细信息，请选择“活动名称”列下的“详细信息”链接（眼镜图标）。 可以监视详细信息，例如，从源复制到接收器的数据量、数据吞吐量、执行步骤以及相应的持续时间和使用的配置。
+9. 若要查看与管道运行关联的活动运行，请选择“管道名称”列下的“CopyFromAmazonS3ToADLS”链接。  有关复制操作的详细信息，请选择“活动名称”列下的“详细信息”链接（眼镜图标） 。 可以监视详细信息，例如，从源复制到接收器的数据量、数据吞吐量、执行步骤以及相应的持续时间和使用的配置。
  
     ![监视活动运行](./media/load-azure-data-lake-storage-gen2/monitor-activity-runs.png)
     
     ![监视活动运行详细信息](./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png)
 
-15. 若要刷新视图，请选择“刷新”。 选择顶部的“所有管道运行”，回到“管道运行”视图。
+10. 若要刷新视图，请选择“刷新”。 选择顶部的“所有管道运行”，回到“管道运行”视图。
 
-16. 验证数据是否已复制到 Data Lake Storage Gen2 帐户。
+11. 验证数据是否已复制到 Data Lake Storage Gen2 帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

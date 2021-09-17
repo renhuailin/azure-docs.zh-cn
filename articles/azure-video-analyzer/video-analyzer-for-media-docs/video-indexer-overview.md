@@ -9,12 +9,12 @@ ms.topic: overview
 ms.subservice: azure-video-analyzer-media
 ms.date: 07/15/2021
 ms.author: juliako
-ms.openlocfilehash: 79c6dc98bd214594b938cf74ce9176a64867fe3e
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 9f7b76a0de33e89a17f89f3c93fc7de430a681c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711843"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734151"
 ---
 # <a name="what-is-video-analyzer-for-media"></a>什么是视频分析器媒体版？
 
@@ -74,7 +74,7 @@ Azure 视频分析器媒体版（以前称为视频索引器）是构建在 Azur
 
 ### <a name="audio-insights"></a>音频见解
 
-* **音频听录**：将语音转换为 12 种语言的文本并允许扩展。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话）、日语、阿拉伯语、俄语、葡萄牙语、印地语和韩语。
+* **音频听录**：将语音转换为超过 50 种语言的文本并允许扩展。 支持的语言包括：英语（美国）、英语（英国）、英语（澳大利亚）、西班牙语、西班牙语（墨西哥）、法语、法语（加拿大）、德语、意大利语、中文、中文（粤语、繁体）、中文（简体）、日语、俄罗斯语、葡萄牙语、印地语、捷克语、荷兰语、波兰语、丹麦语、挪威语、芬兰语、瑞典语、泰语、土耳其语、韩语、阿拉伯语（埃及）、阿拉伯语（阿拉伯叙利亚共和国）、阿拉伯语（以色列）、阿拉伯语（阿曼）、阿拉伯语（卡塔尔）、阿拉伯语（沙特阿拉伯）、阿拉伯语（阿拉伯联合酋长国）、阿拉伯语（巴勒斯坦民族权力机构）和现代标准阿拉伯语（巴林）。
 * **自动语言检测**：自动识别主导性的讲述语言。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话）、日语、俄语和葡萄牙语。 如果无法准确识别语言，视频分析器媒体版会假定所讲语言为英语。 有关详细信息，请参阅[语言识别模型](language-identification-model.md)。
 * **多语言语音识别和听录**：自动识别音频中不同片段的口述语言。 它会发送要转录的媒体文件的每个片段，然后将转录合并成一个完成的转录。 有关详细信息，请参阅[自动识别和转录多语言内容](multi-language-identification-transcription.md)。
 * **隐藏式字幕**：以三种格式创建隐藏式字幕：VTT、TTML、SRT。

@@ -3,16 +3,17 @@ metadata:
   title: Azure Monitor 常见问题解答 | Microsoft Docs
   description: 有关 Azure Monitor 常见问题的解答。
   services: azure-monitor
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: azure-monitor
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 8493312bcb15e2358191fb0aa6f0c0236961a446
-  ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+  ms.openlocfilehash: 280a020b66ce20f8efdf124b92afa24bab0c9c13
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/12/2021
-  ms.locfileid: "113616363"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252823"
 title: Azure Monitor 常见问题解答
 summary: >
   这份 Microsoft 常见问题解答列出了 Azure Monitor 的常见问题。 如果有任何其他问题，请转到[论坛](/answers/questions/topics/single/24223.html)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -106,7 +107,7 @@ sections:
   - question: >
       Log Analytics 存储是否不可变？
     answer: >
-      数据库存储中的数据在引入后将无法更改，但可以通过[用于删除专用数据的“清除”API 路径](./logs/personal-data-mgmt.md#delete)将其删除。 尽管该数据无法更改，但某些认证要求数据保持不可变且不能在存储中更改或删除。 可以通过使用[数据导出](./logs/logs-data-export.md)将数据导出到配置为[不可变存储](../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据不可变性。
+      数据库存储中的数据在引入后将无法更改，但可以通过[用于删除专用数据的“清除”API 路径](./logs/personal-data-mgmt.md#delete)将其删除。 尽管该数据无法更改，但某些认证要求数据保持不可变且不能在存储中更改或删除。 可以通过使用[数据导出](./logs/logs-data-export.md)将数据导出到配置为[不可变存储](../storage/blobs/immutable-policy-configure-version-scope.md)的存储帐户来实现数据不可变性。
   - question: >
       什么是 Log Analytics 工作区？
     answer: >
@@ -207,20 +208,21 @@ sections:
 
       指定现有或新的[操作组](alerts/action-groups.md)，以便当日志警报匹配条件时，如果检测信号丢失超过 15 分钟，你将收到通知。
   - question: >
-      Azure Monitor 代理的防火墙要求是什么？
+      Log Analytics 代理的防火墙要求是什么？
     answer: >
       有关防火墙要求的详细信息，请参阅[网络防火墙要求](agents/log-analytics-agent.md#network-requirements)。
 - name: Azure Monitor 代理
   questions:
   - question: >
       从 Log Analytics 代理到 Azure Monitor 代理的升级路径是什么？ 如何迁移？
-    answer: "目前没有“自动更新”路径，因为这涉及完全卸载虚拟机上的现有代理并安装新代理。 因此，我们希望客户根据功能奇偶一致性在最合适的时间规划迁移。\n更重要的是，使用新代理时，数据收集设置更简单、集中且可配置，适用于使用数据收集规则功能连接到相同或多个目标的虚拟机子集，这克服了现有 Log Analytics 代理设置的诸多限制。\n\n因此，建议从整体上查看数据收集需求，先创建正确的 DCR，然后执行代理更新，以配合此新设置。 为此，可以遵循有关如何大规模部署的指南。 \n"
+    answer: >
+      请参阅[从 Log Analytics 代理迁移](./agents/azure-monitor-agent-migration.md)
   - question: >
-      从 Log Analytics 代理 (MMA) 到 Azure Monitor 代理 (AMA) 以监视 SCOM 的升级路径是什么？ 我们能否将 AMA 用于 SCOM 场景？
-    answer: "下面展示了 AMA 如何影响两个与 SCOM 相关的监视场景：\n- 场景 1：若要监视 SCOM 的 Windows 操作系统，升级路径与任何其他虚拟机相同，一旦所需的功能奇偶一致性在 AMA 上可用，就可以从 MMA（版本 2016、2019）迁移到 AMA。\n- 场景 2：对于将 SCOM 载入/连接到 Log Analytics 工作区的场景，由于这是通过适用于 Log Analytics/Azure Monitor 的 SCOM 连接器启用的，因此无需在 SCOM 管理服务器上安装 MMA 和 AMA。 因此，从 AMA 的角度来看，此用例没有影响。  \n\n> [!NOTE] \n> 可以使用 MMA 和 AMA 并行运行上述两个场景，没有任何影响。\n"
+      从 Log Analytics 代理 (MMA) 升级到 Azure Monitor 代理 (AMA) 以监视 System Center Operations Manager (SCOM) 的路径是什么？ 我们能否将 AMA 用于 SCOM 场景？
+    answer: "下面展示了 AMA 如何影响两个与 System Center Operations Manager (SCOM) 相关的监视场景：\n- 场景 1：若要监视 SCOM 的 Windows 操作系统，升级路径与任何其他虚拟机相同，一旦所需的功能奇偶一致性在 AMA 上可用，就可以从 MMA（版本 2016、2019）迁移到 AMA。\n- 场景 2：对于将 SCOM 载入/连接到 Log Analytics 工作区的场景，由于这是通过适用于 Log Analytics/Azure Monitor 的 SCOM 连接器启用的，因此无需在 SCOM 管理服务器上安装 MMA 和 AMA。 因此，从 AMA 的角度来看，此用例没有影响。  \n\n> [!NOTE] \n> 可以使用 MMA 和 AMA 并行运行上述两个场景，没有任何影响。\n"
   - question: >
-      新的 Azure Monitor 代理是否支持各种 Log Analytics 解决方案的数据收集？
-    answer: "你所熟悉的解决方案或管理包现将成为 VM 扩展，这些扩展使用 Azure Monitor 代理扩展将数据发送到 Azure Monitor。 如果在 AMA 上启用解决方案，则会在适当时机看到已安装的其他 VM 扩展。\n随着时间的推移，AMA 将是唯一将数据上传到 Azure Monitor（或其他受支持目标）的代理。 解决方案特定的 VM 扩展用来收集特定于场景的数据，或根据需要执行转换/处理，然后使用 AMA 将最终数据路由到 Azure Monitor。 \n\n下面的关系图说明了新的扩展体系结构：\n\n![扩展体系结构](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
+      新的 Azure Monitor 代理是否支持各种 Log Analytics 解决方案和 Azure 服务（如安全中心、Sentinel 等）的数据收集？
+    answer: "查看[预览版当前提供的 AMA 扩展](./agents/azure-monitor-agent-overview.md#supported-services-and-features)列表。 这些是现在可以使用新的 Azure Monitor 代理提供的相同解决方案和服务。 你可能会看到为解决方案/服务安装了其他扩展，这是为了根据解决方案/服务的需要收集其他数据或执行转换/处理，然后使用 AMA 将最终数据路由到 Azure Monitor。 \n\n下面的关系图说明了新的扩展体系结构：\n\n![扩展体系结构](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
   - question: >
       新的 Azure Monitor 代理支持哪些 Log Analytics 解决方案？
     answer: >
@@ -239,14 +241,14 @@ sections:
       可以，但有一些注意事项。 在[此处](agents/azure-monitor-agent-overview.md#coexistence-with-other-agents)了解详细信息。
   - question: >
       新的 Azure Monitor 代理是否与现有代理存在奇偶一致性？
-    answer: "它与现有代理尚未实现完全奇偶一致性。 下面是一些高级别差距：\n\n- 与 Log Analytics 代理 (MMA/OMS) 相比\n    -   目前并非所有 Log Analytics 解决方案都受支持。 请见上表\n    -   不支持专用链接 \n    -   不支持代理服务器或 Log Analytics (OMS) 网关\n    -   不支持收集自定义日志或 IIS 日志\n    -   不支持混合 Runbook 辅助角色\n\n- 与 Azure 诊断扩展 (WAD/LAD) 相比\n    -   不支持事件中心和存储帐户作为目标\n"
+    answer: "它与现有代理尚未实现完全奇偶一致性。 下面是一些高级别差距：\n\n- 与 Log Analytics 代理 (MMA/OMS) 相比\n    -   目前并非所有 Log Analytics 解决方案都受支持。 请参阅[支持的内容](agents/azure-monitor-agent-overview.md#supported-services-and-features)\n    -   不支持专用链接 \n    -   不支持收集自定义日志或 IIS 日志\n\n- 与 Azure 诊断扩展 (WAD/LAD) 相比\n    -   不支持事件中心和存储帐户作为目标\n"
   - question: >
       新的 Azure Monitor 代理是否支持非 Azure 环境（其他云、本地环境）？
     answer: >
-      现在，只要安装了 Azure ARC 代理，服务器便支持本地虚拟机和连接到其他云的虚拟机。 出于运行 AMA 和 DCR 的目的，ARC 要求无需额外付费或资源消耗，因为 ARC 代理仅用于安装机制，不会执行任何操作，除非启用它们
+      现在，只要安装了 Azure Arc 代理，服务器便支持本地计算机和连接到其他云的计算机。 出于运行 AMA 和 DCR 的目的，ARC 要求无需额外付费或资源消耗，因为 ARC 代理仅用于安装机制，不会执行任何操作，除非启用它们
   - question: >
       新 Azure Monitor 代理支持哪些虚拟机？
-    answer: "可以直接在虚拟机、虚拟机规模集和启用了 ARC 的服务器中安装它们。 \n"
+    answer: "只能在虚拟机、虚拟机规模集和启用了 Arc 的服务器中直接安装它们。 \n"
   - question: >
       我们能否使用事件 ID 筛选事件，即使用新的 Azure Monitor 代理进行更精细的事件筛选？
     answer: "是的。 可以使用 Xpath 查询筛选 Windows 虚拟机上的事件。 [了解详细信息](agents/data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)  \n对于性能计数器，可以指定要收集的特定计数器，并排除不需要的计数器。\n对于 Linux 上的 syslog，可以选择要收集的“设施”和每个设施的“日志级别”。\n"

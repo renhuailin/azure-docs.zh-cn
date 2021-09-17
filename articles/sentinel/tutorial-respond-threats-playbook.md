@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure Sentinel 中结合自动化规则使用 playbook
+title: 在 Azure Sentinel 中结合自动化规则使用 playbook
 description: 使用本教程可帮助你在 Azure Sentinel 中结合自动化规则使用 playbook，以自动执行事件响应并修正安全威胁。
 services: sentinel
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: a9411d044a8c176387d8b9900ca56a7512c4a0de
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 152b034fe5fd5571ec58c001a8befc98c84f4107
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458319"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737547"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>教程：在 Azure Sentinel 中结合自动化规则使用 playbook
 
@@ -33,6 +33,10 @@ ms.locfileid: "112458319"
 > * 创建 playbook
 > * 向 playbook 添加操作
 > * 将 playbook 附加到自动化规则或分析规则以自动执行威胁响应
+
+> [!NOTE]
+> 本教程提供了首要客户任务的基本指导：创建自动化来会审事件。 有关详细信息，请参阅“操作说明”部分，例如[在 Azure Sentinel 中使用 playbook 实现威胁响应自动化](automate-responses-with-playbooks.md)和[在 Azure Sentinel playbook 中使用触发器和操作](playbook-triggers-actions.md)。
+>
 
 ## <a name="what-are-automation-rules-and-playbooks"></a>什么是自动化规则和 playbook？
 
@@ -124,7 +128,7 @@ Azure Sentinel 中的 playbook 基于 [Azure 逻辑应用](../logic-apps/logic-a
    选择与要创建的 playbook 类型匹配的触发器。
 
     > [!NOTE]
-    > 请记住，自动化规则只能调用基于事件触发器的 playbook。 基于警报触发器的 playbook 必须定义为直接在[分析规则](tutorial-detect-threats-custom.md#set-automated-responses-and-create-the-rule)中运行，也可以手动运行。
+    > 请记住，自动化规则只能调用基于事件触发器的 playbook。 基于警报触发器的 playbook 必须定义为直接在[分析规则](detect-threats-custom.md#set-automated-responses-and-create-the-rule)中运行，也可以手动运行。
     > 
     > 有关要使用哪个触发器，请参阅[在 Azure Sentinel playbook 中使用触发器和操作](playbook-triggers-actions.md)
 
@@ -205,7 +209,7 @@ Azure Sentinel 中的 playbook 基于 [Azure 逻辑应用](../logic-apps/logic-a
 
 ### <a name="respond-to-alerts"></a>响应警报
 
-使用 playbook 通过以下方法来响应 **警报**：创建 **分析规则** 或编辑现有分析规则，警报生成时运行，并在 [分析规则向导](tutorial-detect-threats-custom.md)中选择 playbook 作为自动响应。
+使用 playbook 通过以下方法来响应 **警报**：创建 **分析规则** 或编辑现有分析规则，警报生成时运行，并在 [分析规则向导](detect-threats-custom.md)中选择 playbook 作为自动响应。
 
 1. 从 Azure Sentinel 导航菜单中的 **分析** 边栏选项卡中，选择要自动响应的分析规则，并在细节窗格中单击 **编辑**。
 

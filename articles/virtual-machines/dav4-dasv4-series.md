@@ -8,14 +8,16 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.reviewer: jushiman
-ms.openlocfilehash: 5bdd4ab5e7be84b817c9ce5e90820ab6801069f7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 054a15fe800152981ce494aca4abe26a996a173c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739006"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687531"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 和 Dasv4 系列
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Dav4 系列和 Dasv4 系列采用新大小，在多线程配置中使用 AMD 的 2.35Ghz EPYC<sup>TM</sup> 7452 处理器，提供高达 256 MB 的 L3 缓存，每 8 个内核分配 8 MB 的这种专用 L3 缓存，从而为客户提供了更多运行常规用途工作负荷的选项。 Dav4 系列和 Dasv4 系列具有与 D 和 Dsv3 系列相同的内存和磁盘配置。
 
@@ -55,7 +57,7 @@ Dav4 系列大小基于 2.35Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 

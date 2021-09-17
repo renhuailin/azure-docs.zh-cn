@@ -10,12 +10,12 @@ ms.devlang: java
 ms.custom:
 - devx-track-java
 - mode-api
-ms.openlocfilehash: fdcc8b9355556804b2f13fccd206eb13ac7c0cb6
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: c5f363ce78724ed569ec3ab24cd6c1fa640954e2
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462048"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444427"
 ---
 # <a name="quickstart-use-java-to-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service"></a>快速入门：使用 Java 通过 Azure SignalR 服务和 Azure Functions 来创建一个应用，用于显示 GitHub 星数
 
@@ -140,7 +140,7 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
             HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
             Gson gson = new Gson();
             GitResult result = gson.fromJson(res.body(), GitResult.class);
-            return new SignalRMessage("newMessage", "Current start count of https://github.com/Azure/azure-signalr is:".concat(result.stargazers_count));
+            return new SignalRMessage("newMessage", "Current star count of https://github.com/Azure/azure-signalr is:".concat(result.stargazers_count));
         }
     
         class GitResult {
@@ -225,12 +225,12 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
     
         ![屏幕截图突出显示了主连接字符串。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-    1. 复制主连接字符串。 并执行以下命令。
+    1. 复制主连接字符串。 然后执行以下命令。
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         # Also we need to set AzureWebJobsStorage as Azure Function's requirement
-        func settings add AzureWebJobsStorage 'UseDevelopmentStorage=true'
+        func settings add AzureWebJobsStorage "UseDevelopmentStorage=true"
         ```
     
 6. 在本地运行 Azure Functions：
@@ -240,11 +240,11 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
     mvn azure-functions:run
     ```
 
-    在本地运行 Azure Functions 后。 使用浏览器进行访问 `http://localhost:7071/api/index`，你可以查看当前开始计数。 如果在 GitHub 中进行星标或取消星标，则每隔几秒就会刷新一次星数。
+    在本地运行 Azure Functions 后， 使用浏览器访问 `http://localhost:7071/api/index`，随后可以看到当前的星数。 如果你在 GitHub 中进行星标或取消星标，星数会每隔几秒刷新一次。
 
     > [!NOTE]
-    > SignalR 绑定 Azure 存储，但是当 Azure Functions 在本地运行时，你可以使用本地存储模拟器。
-    > 如果收到类似`There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.`的错误，则需要下载并启用[存储模拟器](../storage/common/storage-use-emulator.md)
+    > SignalR 绑定需要 Azure 存储，但是在本地运行 Azure Functions 时，可以使用本地存储仿真器。
+    > 如果收到一些类似 `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` 的错误，则需要下载并启用[存储仿真器](../storage/common/storage-use-emulator.md)
     
 遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
@@ -255,8 +255,8 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你在本地生成并运行了一个实时无服务器应用程序。 详细了解如何将 SignalR 服务绑定用于 Azure Functions。
-接下来，详细了解如何通过 SignalR 服务在客户端与 Azure Functions 之间双向通信。
+在本快速入门中，你在本地生成并运行了一个实时的无服务器应用程序。 详细了解了如何将 SignalR 服务绑定用于 Azure Functions。
+接着，详细了解了如何通过 SignalR 服务在客户端与 Azure Functions 之间进行双向通信。
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的 SignalR Service 绑定](../azure-functions/functions-bindings-signalr-service.md)

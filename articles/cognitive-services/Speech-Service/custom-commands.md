@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: e4ae8a09a554afe232091b68888af17dfa096771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db0f78f2f3aef3295837d921d7d70866ed8b8769
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102426463"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455811"
 ---
 # <a name="what-is-custom-commands"></a>什么是自定义命令？
 
@@ -23,10 +23,7 @@ ms.locfileid: "102426463"
 
 使用“自定义命令”，可以轻松构建针对语音优先的交互体验进行了优化的丰富语音命令应用。 它提供统一的创作体验、自动托管模型和相对较低的复杂性，帮助你集中精力为“语音命令”场景构建最佳解决方案。
 
-“自定义命令”最适用于“任务完成”或“命令与控制”场景，尤其适合物联网 (IoT) 设备、环境设备和无外设设备。 示例包括了酒店、零售和汽车行业的解决方案，用于为你的客人构建最佳的室内语音控制体验、在商店中管理库存，以及在行进时控制汽车内的功能。
-
-> [!TIP]
-> 在登陆页 [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) 上查看我们的示例演示。
+“自定义命令”最适用于“任务完成”或“命令与控制”场景，尤其适合物联网 (IoT) 设备、环境设备和无外设设备。 示例包括用于酒店、零售和汽车行业的解决方案，其中从事这些行业的用户会希望为来宾、商店库存管理或车内功能提供语音控制体验。
 
 如果你有兴趣构建复杂的对话应用，建议你使用[虚拟助理解决方案](/azure/bot-service/bot-builder-enterprise-template-overview)尝试 Bot Framework。 可以使用 Direct Line Speech 将语音添加到任何 Bot Framework 机器人。
 

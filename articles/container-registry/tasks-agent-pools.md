@@ -4,12 +4,12 @@ description: 在注册表中设置专用的计算池（代理池），以运行 
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: a303155b82cc35461cd6080b3cce694ffe7a1fc4
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: c8c790e551cd6e31df515a3af9fc0ea835be1ce4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122832"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769667"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>在专用的代理池上运行 ACR 任务
 
@@ -31,7 +31,7 @@ ms.locfileid: "112122832"
 ## <a name="preview-limitations"></a>预览版限制
 
 - 任务代理池目前支持 Linux 节点。 目前不支持 Windows 节点。
-- 任务代理池以预览版形式在以下区域中提供：美国西部 2、美国中南部、美国东部 2、美国东部、美国中部、欧洲西部、欧洲北部、加拿大中部、US Gov 亚利桑那州、US Gov 德克萨斯州和 US Gov 弗吉尼亚州。
+- 任务代理池以预览版形式在以下区域中提供：美国西部 2、美国中南部、美国东部 2、美国东部、美国中部、欧洲西部、欧洲北部、加拿大中部、东亚、US Gov 亚利桑那州、US Gov 德克萨斯州和 US Gov 弗吉尼亚州。
 - 对于每个注册表，所有标准代理池的默认 vCPU（核心）总配额为 16，独立代理池的此总配额则为 0。 如需更多分配，请提出[支持请求][open-support-ticket]。
 - 目前无法取消代理池上的任务运行。
 

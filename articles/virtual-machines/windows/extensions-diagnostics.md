@@ -11,14 +11,16 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41030582c03c41089e4b4cde80caeecfad6fb6bf
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7afc6c67f52d205cdb7aa524ee01f6e14b1c5de2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076196"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690735"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>适用于 Windows VM 的 Azure 诊断扩展
+
+**适用于：** :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集:heavy_check_mark: 统一规模集
 
 ## <a name="overview"></a>概述
 
@@ -75,7 +77,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 

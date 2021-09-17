@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 07/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f56ce9fa86dc27b77ad6b463479d13c8e4e7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4bb5bc57ea387695ed77193c4b642b615186a7a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91856506"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749111"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -79,7 +79,7 @@ SQL DB 需要唯一的 AAD 显示名称。 因此，AAD 帐户（例如用户、
 4. 在“用户名”字段中，输入已设为服务器管理员的 Azure AD 帐户的名称，例如 helen@woodgroveonline.com
 5. 单击“选项”。
 6. 在“连接到数据库”字段中，输入要配置的非系统数据库的名称。
-7. 单击“连接”。 完成登录过程。
+7. 单击“连接” 。 完成登录过程。
 8. 在“对象资源管理器”中，展开“数据库”文件夹。 
 9. 右键单击某个用户数据库，并单击“新建查询”。
 10. 在查询窗口中输入以下行，在工具栏中单击“执行”：
@@ -153,6 +153,9 @@ if (accessToken != null) {
 }
 ```
 
+>[!NOTE]
+>可以使用托管标识，同时使用 [SDK](qs-configure-sdk-windows-vm.md) 处理其他编程选项。
+
 或者，可以使用 PowerShell 快速测试端到端设置，而无需在 VM 上编写和部署应用。
 
 1. 在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。
@@ -209,3 +212,4 @@ if (accessToken != null) {
 
 > [!div class="nextstepaction"]
 > [Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)
+

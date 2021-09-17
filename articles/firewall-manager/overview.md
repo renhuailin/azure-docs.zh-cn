@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/21/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: c5ba8ed36bc59b9b26dc854a0c1a1757f1c47266
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 9a6e6a0713179295379e758f454617484c75b9a2
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113595320"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779149"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什么是 Azure 防火墙管理器？
 
@@ -87,6 +87,8 @@ Azure 防火墙管理器存在以下已知问题：
 |批量 IP 地址添加失败|如果添加多个公共 IP 地址，安全中心防火墙将进入失败状态。|添加较小的公共 IP 地址增量。 例如，一次添加 10 个。|
 |安全虚拟中心不支持 DDoS 防护标准|DDoS 防护标准未与 vWAN 集成。|正在调查|
 |不完全支持活动日志|防火墙策略当前不支持活动日志。|正在调查|
+|不完全支持规则说明|防火墙策略不在 ARM 导出中显示规则说明。|正在调查|
+|Azure 防火墙管理器会覆盖静态和自定义路由，从而导致虚拟 WAN 中心出现停机。|不应使用 Azure 防火墙管理器管理使用自定义路由或静态路由配置的部署中的设置。 来自防火墙管理器的更新可能会覆盖静态或自定义路由设置。|如果使用静态路由或自定义路由，请使用虚拟 WAN 页管理安全设置，避免通过 Azure 防火墙管理器进行配置。<br><br>有关详细信息，请参阅[方案：Azure 防火墙 - 自定义](../virtual-wan/scenario-route-between-vnets-firewall.md)。|
 
 ## <a name="next-steps"></a>后续步骤
 

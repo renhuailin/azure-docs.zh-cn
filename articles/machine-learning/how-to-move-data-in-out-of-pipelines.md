@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: ddac4588009d495ac64c607e97780eca5aceb54b
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 5b6a4186fed994057ab6c44930c5ec68ba85ad05
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112515449"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607127"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
@@ -172,7 +172,7 @@ dataprep_step = PythonScriptStep(
 ```
 
 > [!NOTE]
-> 向 `OutputFileDatasetConfig` 进行的并发写入会失败。 请勿尝试共用单个 `OutputFileDatasetConfig`。 不要在多处理情况下（例如使用分布式训练时）共享单个 `OutputFileDatasetConfig`。 
+> 向 `OutputFileDatasetConfig` 进行的并发写入会失败。 请勿尝试共用单个 `OutputFileDatasetConfig`。 不要在多处理情况下共享单个 `OutputFileDatasetConfig`，例如在使用[分布式训练](how-to-train-distributed-gpu.md)时。 
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>将 `OutputFileDatasetConfig` 用作训练步骤的输出
 

@@ -8,25 +8,27 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/13/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: cb905bd3e8ceb7012415a65bda1928b25da3037b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 5a2bd61c2e59e5933361cc5d64462ba50a12d836
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760999"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737117"
 ---
-# <a name="what-are-azure-arc-enabled-data-services-preview"></a>什么是已启用 Azure Arc 的数据服务（预览）？
+# <a name="what-are-azure-arc-enabled-data-services"></a>什么是已启用 Azure Arc 的数据服务？
 
 借助 Azure Arc，可以使用 Kubernetes 和你选择的基础结构在本地、边缘和公有云环境中运行 Azure 数据服务。
 
-目前，以下已启用 Azure Arc 的数据服务以预览形式提供：
+目前，以下已启用 Azure Arc 的数据服务可用： 
 
 - SQL 托管实例
-- PostgreSQL 超大规模
+- PostgreSQL 超大规模（预览版）
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+有关已启用 Azure Arc 的数据服务如何支持混合工作环境的简介，请参阅此介绍性视频：
+
+> [!VIDEO https://channel9.msdn.com/Shows//Inside-Azure-for-IT/Choose-the-right-data-solution-for-your-hybrid-environment/player?format=ny]
 
 ## <a name="always-current"></a>始终最新
 
@@ -43,6 +45,8 @@ Azure Arc 还提供了其他云优势，例如快速部署和大规模自动化�
 ## <a name="unified-management"></a>统一管理
 
 现在，使用具有 `arcdata` 扩展的 Azure 门户、Azure Data Studio 和 Azure CLI (`az`) 等熟悉的工具，可以统一查看使用 Azure Arc 部署的所有数据资产。你不仅可以查看和管理整个环境和 Azure 中的各种关系数据库，还可以从 Kubernetes API 获取日志和遥测，以分析基础结构的容量和运行状况。 除了拥有本地化的日志分析和性能监视之外，你现在还可以利用 Azure Monitor 在整个资产范围内获得全面的操作见解。
+
+[!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
 
 ## <a name="disconnected-scenario-support"></a>断开连接的方案支持
 

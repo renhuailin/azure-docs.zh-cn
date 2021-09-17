@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 386045fef1081034c5a1c31904107b6537873eb8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cc516b917d56d6b41f83e0c81354453dafc41f42
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726041"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822920"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC 角色
 
@@ -39,7 +39,7 @@ ms.locfileid: "121726041"
 
 |角色 |权限|作用域|
 |---|---|-----|
-|Synapse 管理员  |对无服务器 SQL 池、Apache Spark 池和集成运行时的完全 Synapse 访问。  包括对所有已发布代码项目的创建、读取、更新和删除访问权限。  包括对工作区系统标识凭据的计算操作员、链接数据管理员和凭据用户权限。  包括分配 Synapse RBAC 角色。 除了 Synapse 管理员以外，Azure 所有者也可以分配 Synapse RBAC 角色。 创建、删除和管理计算资源需要 Azure 权限。 </br></br>_可以读取和写入项目</br>可以对 Spark 活动执行所有操作。</br>可以查看 Spark 池日志</br>可以查看已保存的笔记本和管道输出</br>可以使用链接的服务或凭据存储的机密</br>可以使用 SQL `db_datareader`、`db_datawriter``connect` 和 `grant` 权限连接到 SQL 无服务器终结点</br>可以在当前范围内分配和撤消 Synapse RBAC 角色_|工作区 </br> Spark 池<br/>集成运行时 </br>链接服务</br>凭据 |
+|Synapse 管理员  |对无服务器 SQL 池、Apache Spark 池和集成运行时的完全 Synapse 访问。  包括对所有已发布代码项目的创建、读取、更新和删除访问权限。  包括对工作区系统标识凭据的计算操作员、链接数据管理员和凭据用户权限。  包括分配 Synapse RBAC 角色。 除了 Synapse 管理员以外，Azure 所有者也可以分配 Synapse RBAC 角色。 创建、删除和管理计算资源需要 Azure 权限。 </br></br>可以读写工件 </br>可以对 Spark 活动执行所有操作</br>。可以查看 Spark 池日志</br> 可以查看保存的笔记本和管道输出</br> 可以使用链接服务或凭据存储的机密</br> 可以在当前范围内分配和撤销 Synapse RBAC 角色|工作区 </br> Spark 池<br/>集成运行时 </br>链接服务</br>凭据 |
 |Synapse Apache Spark 管理员</br>|对 Apache Spark 池的完全 Synapse 访问权限。  对已发布的 Spark 作业定义、笔记本及其输出以及对库、链接服务和凭据的创建、读取、更新和删除访问权限。  包括对所有其他已发布代码项目的读取权限。 不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>_可以对 Spark 项目执行所有操作</br>可以对 Spark 活动执行所有操作_|工作区</br>Spark 池|
 |Synapse SQL 管理员|对无服务器 SQL 池的完全 Synapse 访问权限。  对已发布的 SQL 脚本、凭据和链接服务的创建、读取、更新和删除访问权限。  包括对所有其他已发布代码项目的读取权限。  不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>*可以对 SQL 脚本执行所有操作<br/>可以通过 SQL `db_datareader``db_datawriter``connect` 和 `grant` 权限连接到 SQL 无服务器终结点*|工作区|
 |Synapse 参与者|对 Apache Spark 池和集成运行时的完全 Synapse 访问权限。 包括对所有已发布项目及其输出（包括凭据和链接的服务）的创建、读取、更新和删除访问权限。  包括计算操作员权限。 不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>_可以读取和写入项目</br>可以查看已保存的笔记本和管道输出</br>可以对 Spark 活动执行所有操作</br>可以查看 Spark 池日志_|工作区 </br> Spark 池<br/> 集成运行时|

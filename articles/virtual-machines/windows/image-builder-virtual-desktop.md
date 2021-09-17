@@ -10,14 +10,16 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 45748ac5c21993e6df69950e03de9e90180c4ab0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fdda25ecc9d111d626b7c9836757c31d4972c25f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472070"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692442"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>使用 Azure VM 映像生成器和 PowerShell 创建 Windows 虚拟桌面映像
+
+适用于：:heavy_check_mark: Windows VM 
 
 本文介绍如何使用以下自定义创建 Windows 虚拟桌面映像：
 

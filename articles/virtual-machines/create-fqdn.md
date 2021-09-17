@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8567097258305bab622fe8aa46d6a6a95be33d68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ad48a8d4c2f10bab26e04bcb105747e7a7c474f9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739010"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696510"
 ---
 # <a name="create-a-fully-qualified-domain-name-for-a-vm-in-the-azure-portal"></a>在 Azure 门户中为 VM 创建完全限定的域名
+
+**适用于：** **适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 在 [Azure 门户](https://portal.azure.com)中创建虚拟机 (VM) 时，此门户会自动为虚拟机创建公共 IP 资源。 可以使用此公共 IP 地址远程访问 VM。 虽然此门户不会创建[完全限定的域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN)，但可以在创建 VM 后添加完全限定的域名。 本文演示了创建 DNS 名称或 FQDN 的步骤。 如果创建的 VM 没有公共 IP 地址，则无法创建 FQDN。
 

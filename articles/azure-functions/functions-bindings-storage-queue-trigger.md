@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 8f9f6c18e75b0c8238583742a2a99d0e365edbd0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 85422b8bc587c858fc219379e553d1705e5aaabe
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166354"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429226"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -357,7 +357,7 @@ Python 不支持特性。
 |**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 |函数代码中包含队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
-|连接  | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
+|连接  | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是使用连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -439,9 +439,21 @@ Python 不支持特性。
 
 ## <a name="poison-messages"></a>有害消息
 
-队列触发函数失败时，Azure Functions 会针对给定的队列消息重试该函数最多 5 次（包括第一次尝试）。 如果 5 次尝试全部失败，函数运行时会将一条消息添加到名为 *&lt;originalqueuename>-poison* 的队列。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
+队列触发函数失败时，Azure Functions 会针对给定的队列消息重试该函数最多 5 次（包括第一次尝试）。 如果 5 次尝试全部失败，函数运行时会将一则消息添加到名为 &lt;originalqueuename&gt;-poison 的队列。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
 
 若要手动处理有害消息，请检查队列消息的 [dequeueCount](#message-metadata)。
+
+
+## <a name="peek-lock"></a>速览锁定
+速览锁定模式将在触发队列时自动发生。 当取消消息排队时，这些消息将被标记为不可见，并与存储服务管理的超时关联。
+
+启用函数后，其便会在满足下列条件时开始处理消息。
+
+- 如果函数运行成功，则函数执行完成，消息被删除。
+- 如果函数运行失败，则重置消息可见性。 重置后，系统将在函数下次请求新消息时重新处理该消息。
+- 如果函数一直因故障问题未完成，则消息可见性将过期，而消息也将重新出现在队列中。
+
+所有可见性机制都由存储服务而不是函数运行时处理。
 
 ## <a name="polling-algorithm"></a>轮询算法
 
@@ -449,14 +461,15 @@ Python 不支持特性。
 
 该算法使用以下逻辑：
 
-- 找到消息后，运行时将等待两秒钟，然后检查是否有其他消息
-- 如果未找到任何消息，它将等待大约四秒钟，然后重试。
+- 当找到一条消息时，运行时会等待 100 毫秒，然后检查另一条消息
+- 如果未找到任何消息，它会等待大约 200 毫秒，然后重试。
 - 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。
 - 可以通过 [host.json 文件](functions-host-json-v1.md#queues)中的 `maxPollingInterval` 属性配置最大等待时间。
 
 对于本地开发，最大轮询间隔默认为两秒。
 
-在计费方面，运行时轮询所花时间是“免费的”，不会计入帐户。
+> [!NOTE]
+> 关于在消耗计划中托管函数应用的计费问题，我们不会针对你在运行时所花费的轮询时间收取费用。
 
 ## <a name="concurrency"></a>并发
 

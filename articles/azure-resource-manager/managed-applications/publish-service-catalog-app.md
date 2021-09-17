@@ -3,15 +3,15 @@ title: 发布服务目录托管应用
 description: 演示如何创建适用于组织中成员的 Azure 托管应用程序。
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli, devx-track-azurepowershell
-ms.date: 04/14/2020
+ms.custom: subject-armqs, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
+ms.date: 08/16/2021
 ms.author: tomfitz
-ms.openlocfilehash: b5306b40688974b17fb268a31c2d095de264df6d
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 7722017e2cbe9c0f195ce24ee5452674ad0fd344
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314690"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253743"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入门：创建并发布托管应用程序定义
 
@@ -309,14 +309,9 @@ az managedapp definition create \
 
 ### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>在存储帐户中设置“设备资源提供程序”的角色分配
 
-在将托管的应用程序定义部署到存储帐户之前，你必须为“设备资源提供程序”角色授予参与者权限，以便它可以将定义文件写入存储帐户的容器中。
+在可以将托管应用程序定义部署到存储帐户之前，请将“参与者”角色分配给存储帐户范围内的“设备资源提供程序”用户 。 此分配允许标识将定义文件写入存储帐户的容器。
 
-1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
-1. 选择“访问控制(标识和访问管理)”以显示存储帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
-1. 在“添加角色分配”窗口中，选择“参与者”角色 。
-1. 在“分配访问权限至”  字段中，选择“Azure AD 用户、组或服务主体”  。
-1. 在“选择”下，搜索“设备资源提供程序”角色，然后将其选中。 
-1. 保存角色分配。
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>使用 ARM 模板部署托管应用程序定义
 

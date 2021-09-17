@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 8d9654ce534bea9a6f1a10ffc9605278b1c598e9
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 168c187c4e573193b439e790fb94290aadec046a
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372514"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778870"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>Azure 静态 Web 应用中通过 Azure Functions 提供 API 支持
 
@@ -37,10 +37,11 @@ Azure 静态 Web 应用通过 [Azure Functions](../azure-functions/functions-ove
 | 支持 Azure Functions [托管计划](../azure-functions/functions-scale.md) | 消耗 | 消耗<br>高级<br>专用 |
 | [集成安全性](user-information.md)，可直接访问用户身份验证和基于角色的授权数据 | ✔ | ✔ |
 | [路由集成](./configuration.md?#routes)，可向 Web 应用安全地提供 api 路由，而无需自定义 CORS 规则。 | ✔ | ✔ |
-| [Durable Functions](../azure-functions/durable/durable-functions-overview.md) 编程模型 | | ✔ |
-| [托管的标识](../app-service/overview-managed-identity.md) | | ✔ |
-| [Azure 应用服务身份验证和授权](../app-service/configure-authentication-provider-aad.md)令牌管理 | | ✔ |
-| Azure Static Web Apps 外部的可用 API 函数 |  | ✔ |
+| [Durable Functions](../azure-functions/durable/durable-functions-overview.md) 编程模型 | ✕ | ✔ |
+| [托管的标识](../app-service/overview-managed-identity.md) | ✕ | ✔ |
+| [Azure 应用服务身份验证和授权](../app-service/configure-authentication-provider-aad.md)令牌管理 | ✕ | ✔ |
+| Azure Static Web Apps 外部的可用 API 函数 | ✕ | ✔ |
+| Azure 密钥保管库中存储的应用程序设置 | ✕ | ✔ |
 
 ## <a name="configuration"></a>配置
 

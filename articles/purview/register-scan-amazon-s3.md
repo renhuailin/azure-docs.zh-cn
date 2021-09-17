@@ -1,5 +1,5 @@
 ---
-title: 如何扫描 Amazon S3 存储桶
+title: 用于 Azure Purview 的 Amazon S3 多云扫描连接器
 description: 本操作指南详细介绍了如何扫描 Amazon S3 存储桶。
 author: batamig
 ms.author: bagol
@@ -8,20 +8,24 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 181e0ae76dccf763d23fb648a5e6553ed352655a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ad62ff0c7d3e6249ecb8497953501466b5152265
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748139"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445731"
 ---
-# <a name="azure-purview-connector-for-amazon-s3"></a>用于 Amazon S3 的 Azure Purview 连接器
+# <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>用于 Azure Purview 的 Amazon S3 多云扫描连接器
 
-本操作指南说明了如何使用 Azure Purview 扫描当前存储在 Amazon S3 标准存储桶中的非结构化数据，并发现数据中存在的敏感信息类型。 本操作指南还介绍了如何确定当前存储数据的 Amazon S3 存储桶，以便于保护信息并实现数据合规性。
+用于 Azure Purview 的多云扫描连接器可跨云服务提供商（包括 Amazon Web Services 和 Azure 存储服务）浏览组织数据。
 
-对于这项服务，请使用 Purview 提供一个可安全访问 AWS 的 Microsoft 帐户，Purview 扫描程序将在那里运行。 Purview 扫描程序使用对 Amazon S3 存储桶的此访问权限读取数据，然后向 Azure 返回扫描结果报告，其中仅包括元数据和分类。 请使用 Purview 分类和标记报告来分析和查看数据扫描结果。
+本文介绍如何使用 Azure Purview 扫描当前存储在 Amazon S3 标准 Bucket 中的非结构化数据，并发现数据中存在的敏感信息类型。 本操作指南还介绍了如何确定当前存储数据的 Amazon S3 存储桶，以便于保护信息并实现数据合规性。
 
-在本操作指南中，你将了解如何添加 Amazon S3 存储桶作为 Purview 资源，以及如何为 Amazon S3 数据创建扫描。
+对于此服务，请使用 Purview 为 Microsoft 帐户提供对 AWS（用于 Azure Purview 的多云扫描连接器将在其中运行）的安全访问。 用于 Azure Purview 的多云扫描连接器使用针对 Amazon S3 Bucket 的此访问权限读取数据，然后将扫描结果（其中仅包括元数据和分类）报告给 Azure。 请使用 Purview 分类和标记报告来分析和查看数据扫描结果。
+
+> [!IMPORTANT]
+> 用于 Azure Purview 的多云扫描连接器是 Azure Purview 的单独加载项。 用于 Azure Purview 的多云扫描连接器的条款和条件包含在你获得 Microsoft Azure 服务所签署的协议中。 有关详细信息，请参阅 https://azure.microsoft.com/support/legal/ 中的“Microsoft Azure 法律信息”。
+>
 
 ## <a name="purview-scope-for-amazon-s3"></a>适用于 Amazon S3 的 Purview 范围
 
@@ -339,7 +343,7 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
 1. 在打开的“注册源(Amazon S3)”窗格中，输入以下详细信息：
 
-    |字段  |说明  |
+    |字段  |描述  |
     |---------|---------|
     |**名称**     |输入一个有意义的名称，或者使用提供的默认值。         |
     |**AWS 帐户 ID**     | 输入你的 AWS 帐户 ID。 有关详细信息，请参阅 [找到 AWS 帐户 ID](#locate-your-aws-account-id)|
@@ -361,7 +365,7 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
 1. 在右侧打开的“扫描...”窗格上，定义以下字段，然后选择“继续”：
 
-    |字段  |说明  |
+    |字段  |描述  |
     |---------|---------|
     |**名称**     |  为扫描输入一个有意义的名称，或者使用默认值。       |
     |类型 |只有当你添加了 AWS 帐户并且其中包含所有存储桶时，此字段才会显示。 <br><br>当前选项只有“所有” > “Amazon S3”。 随着 Purview 支持矩阵扩大，敬请期待更多可选选项。 |

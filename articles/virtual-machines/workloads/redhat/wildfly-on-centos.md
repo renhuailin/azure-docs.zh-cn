@@ -11,14 +11,16 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: 1f7bc4bcefe7535e531fcd8288a6dce0e93696e0
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: b2903ebbbeee8a33a0acfe37ada7c8f9cc13a85e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486114"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696731"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>快速入门：CentOS 8 上的 WildFly
+
+适用于：:heavy_check_mark: Linux VM 
 
 本快速入门介绍如何部署 CentOS 8 虚拟机 (VM) 的 WildFly 的独立节点。 它非常适合用于在 Azure 上开发和测试企业 Java 应用程序。 部署此快速入门不需要应用程序服务器订阅。
 

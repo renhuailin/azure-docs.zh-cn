@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f480f7821ea3443c76c551f45ac74d136f417060
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7c4db2326ab8e325dfdfa759ec7f5fdc71f17df1
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277294"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633719"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -118,6 +118,6 @@ ms.locfileid: "106277294"
 - [状态和计费](live-event-states-billing-concept.md)
 - [延迟](live-event-latency-reference.md)
 
-## <a name="live-streaming-questions"></a>实时传送视频流问题
+## <a name="live-streaming-faq"></a>实时传送视频流常见问题解答
 
-请参阅[实时传送视频流问题](questions-collection.md#live-streaming)一文。
+请参阅[实时传送视频流常见问题解答](frequently-asked-questions.yml)。

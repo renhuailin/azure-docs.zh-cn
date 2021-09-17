@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 06/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: a03031640bd116e2901ff123b5fec13d36151fd4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 63ca9c2a76b5daaf576992f715a7ec112ac98b25
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723430"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681522"
 ---
 # <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Azure Sentinel SAP 解决方案的详细 SAP 要求（公共预览版）
 
@@ -28,6 +28,9 @@ ms.locfileid: "121723430"
 > Azure Sentinel SAP 解决方案目前处于预览版阶段。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 >
 
+> [!NOTE]
+> 如果使用安全 SNC 连接部署 SAP 数据连接器，则会列出其他要求。 有关详细信息，请参阅[通过 SNC 部署 Azure Sentinel SAP 数据连接器](sap-solution-deploy-snc.md)。
+>
 ## <a name="recommended-virtual-machine-sizing"></a>建议的虚拟机大小
 
 下表描述了根据预期用途不同为虚拟机建议的大小：
@@ -139,7 +142,8 @@ ms.locfileid: "121723430"
 有关详细信息，请参阅：
 
 - [为 SAP 部署 Azure Sentinel 解决方案](sap-deploy-solution.md)
+- [通过 SNC 部署 Azure Sentinel SAP 数据连接器](sap-solution-deploy-snc.md)
 - [专家配置选项、本地部署和 SAPControl 日志源](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP 解决方案日志参考](sap-solution-log-reference.md)
 - [Azure Sentinel SAP 解决方案：可用的安全内容](sap-solution-security-content.md)
-- [Azure Sentinel SAP 解决方案部署疑难解答](sap-deploy-troubleshoot.md)
+- [Azure Sentinel SAP 解决方案部署故障排除](sap-deploy-troubleshoot.md)

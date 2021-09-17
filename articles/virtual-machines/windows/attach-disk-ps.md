@@ -9,16 +9,18 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a6943d2a26075c0671ad7c631e8d0d8f46c5b47e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f8fbcbb70ae73c9fdfe0aa388c07d23d6c4f8e20
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732460"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692616"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
 
-本文介绍了如何使用 PowerShell 将新磁盘和现有磁盘附加到 Windows 虚拟机。
+**适用于：** :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
+
+本文介绍了如何使用 PowerShell 将新磁盘和现有磁盘附加到 Windows 虚拟机。 
 
 首先，查看以下提示：
 

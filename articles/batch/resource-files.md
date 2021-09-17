@@ -1,14 +1,14 @@
 ---
 title: 创建和使用资源文件
 description: 了解如何从各种输入源创建 Batch 资源文件。 本文介绍有关如何创建这些文件并将其置于 VM 上的一些常用方法。
-ms.date: 05/25/2021
+ms.date: 08/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 1ef8cde8c345cebeb166cddd67a1951d71eea810
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a4939cc6c60d226d8b75569ab08447973968735a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467686"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446568"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件
 
@@ -33,7 +33,9 @@ Azure Batch 任务通常需要处理某种形式的数据。 使用资源文件�
 
 使用存储容器 URL 意味着，只要拥有正确的权限，就可以访问 Azure 中任何存储容器中的文件。
 
-在下面的 C# 示例中，文件已作为 blob 存储上传到 Azure 存储容器。 为了访问在创建资源文件时所需的数据，首先需要获取对存储容器的访问权限。
+在下面的 C# 示例中，文件已作为 blob 存储上传到 Azure 存储容器。 为了访问在创建资源文件时所需的数据，首先需要获取对存储容器的访问权限。 这可以通过多种方法来实现。
+
+#### <a name="shared-access-signature"></a>共享访问签名
 
 创建一个具有正确权限的共享访问签名 (SAS) URI 来访问存储容器。 设置 SAS 的到期时间和权限。 本例中没有指定开始时间，因此 SAS 会立即生效，并且有效期是生成后的两小时内。
 
@@ -65,7 +67,19 @@ ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl, blobPrefix = yourPrefix);
 ```
 
-生成 SAS URL 的替代方法是，启用对 Azure Blob 存储中的容器及其 blob 的匿名公共读取访问。 这样做可以授予对这些资源的只读访问权限，无需共享帐户密钥，也无需 SAS。 如果需要始终允许对某些 blob 进行匿名读取访问，通常是通过启用公共读取访问来实现。 如果这与你的解决方案相匹配，请参阅[匿名访问 blob](../storage/blobs/anonymous-read-access-configure.md) 一文，详细了解如何管理对 blob 数据的访问。
+#### <a name="managed-identity"></a>托管标识
+
+创建[用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)，并为其分配 Azure 存储容器的 `Storage Blob Data Reader` 角色。 接下来，[将托管标识分配给池](managed-identity-pools.md)，以便 VM 可以访问该标识。 最后，可以通过指定 Batch 要使用的标识来访问容器中的文件。
+
+```csharp
+CloudBlobContainer container = blobClient.GetContainerReference(containerName);
+
+ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(container.Uri, identityReference: new ComputeNodeIdentityReference() { ResourceId = "/subscriptions/SUB/resourceGroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name" });
+```
+
+#### <a name="public-access"></a>公共访问
+
+生成 SAS URL 或使用托管标识的替代方法是，对 Azure Blob 存储中的容器及其 blob 启用匿名公共读取访问。 这样做可以授予对这些资源的只读访问权限，无需共享帐户密钥，也无需 SAS。 如果需要始终允许对某些 blob 进行匿名读取访问，通常是通过启用公共访问来实现的。 如果这与你的解决方案相匹配，请参阅[为容器和 blob 配置匿名公共读取访问](../storage/blobs/anonymous-read-access-configure.md)一文，详细了解如何管理对 blob 数据的访问。
 
 ### <a name="storage-container-name-autostorage"></a>存储容器名称（自动存储）
 
@@ -100,6 +114,18 @@ ResourceFile inputFile = ResourceFile.FromUrl(yourURL, filePath);
 ```csharp
 ResourceFile inputFile = ResourceFile.FromUrl(yourDomain + yourFile, filePath);
 ```
+
+如果文件位于 Azure 存储中，则可使用托管标识，而不是为资源文件生成共享访问签名。
+
+```csharp
+ResourceFile inputFile = ResourceFile.FromUrl(yourURLFromAzureStorage, 
+    identityReference: new ComputeNodeIdentityReference() { ResourceId = "/subscriptions/SUB/resourceGroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name"},
+    filePath: filepath
+);
+```
+
+> [!Note]
+> 托管标识身份验证仅适用于 Azure 存储中的文件。 托管标识需要为文件所在的容器分配 `Storage Blob Data Reader` 角色，并且还必须将此托管标识[分配给 Batch 池](managed-identity-pools.md)。
 
 ## <a name="tips-and-suggestions"></a>提示和建议
 

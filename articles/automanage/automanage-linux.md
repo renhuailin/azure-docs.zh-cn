@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: ebcd3d38b929b7643a730a445531e7897990a5af
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: d30aa61b172188a44eb462bee05fb894f7e68b31
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113004279"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772175"
 ---
 # <a name="azure-automanage-for-machines-best-practices---linux"></a>适用于计算机的 Azure Automanage 最佳做法 - Linux
 
@@ -43,7 +43,7 @@ Automanage 支持以下 Linux 分发版和版本：
 |[Azure 安全中心](../security-center/security-center-introduction.md)    |Azure 安全中心是一个统一的基础结构安全管理系统，可增强数据中心的安全态势，并跨云中的混合工作负载提供高级威胁防护。 了解[详细信息](../security-center/security-center-introduction.md)。  Automanage 会将 VM 所在的订阅配置为 Azure 安全中心的免费层产品/服务。 如果订阅已加入到 Azure 安全中心，则 Automanage 不会重新配置它。    |生产、开发/测试    |否    |
 |[更新管理](../automation/update-management/overview.md)    |可使用 Azure 自动化中的更新管理为计算机管理操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。 了解[详细信息](../automation/update-management/overview.md)。    |生产、开发/测试    |否    |
 |[更改跟踪和库存](../automation/change-tracking/overview.md) |“更改跟踪和库存”结合了更改跟踪和库存功能，可跟踪虚拟机和服务器基础结构的更改。 该服务支持对环境中的不同服务、守护程序软件、注册表和文件执行“更改跟踪”，以帮助诊断不需要的更改和引发警报。 库存支持可让你查询来宾中的资源，以洞察已安装的应用程序和其他配置项。  了解[详细信息](../automation/change-tracking/overview.md)。    |生产、开发/测试    |否    |
-|[Azure 来宾配置](../governance/policy/concepts/guest-configuration.md)  | 来宾配置策略用于监视配置并报告计算机的合规性。 Automanage 服务将使用“来宾配置”扩展来安装 Azure Linux 基线。 对于 Linux 计算机，来宾配置服务将以仅审核模式安装基线。 你能够看到 VM 与基线不符合的地方，但不会自动修正不符合的项目。 了解[详细信息](../governance/policy/concepts/guest-configuration.md)。    |生产、开发/测试    |否    |
+|[来宾配置](../governance/policy/concepts/guest-configuration.md)  | 来宾配置用于监视配置并报告计算机的合规性。 Automanage 服务将使用来宾配置扩展来安装 Azure Linux 基线。 对于 Linux 计算机，来宾配置服务将以仅审核模式安装基线。 你能够看到 VM 与基线不符合的地方，但不会自动修正不符合的项目。 了解[详细信息](../governance/policy/concepts/guest-configuration.md)。    |生产、开发/测试    |否    |
 |[启动诊断](../virtual-machines/boot-diagnostics.md)  | 启动诊断是 Azure 虚拟机 (VM) 的一项调试功能，可用于诊断 VM 启动故障。 启动诊断使用户能够通过收集串行日志信息和屏幕截图来观察其 VM 在启动时的状态。 只会在正在使用托管磁盘的计算机上启用该功能。 |生产、开发/测试    |否    |
 |[Azure 自动化帐户](../automation/automation-create-standalone-account.md)    |Azure 自动化支持在基础结构和应用程序的整个生命周期内进行管理。 了解[详细信息](../automation/automation-intro.md)。    |生产、开发/测试    |否    |
 |[Log Analytics 工作区](../azure-monitor/logs/log-analytics-overview.md) |Azure Monitor 将日志数据存储在 Log Analytics 工作区中。该工作区是一个 Azure 资源，也是一个用于收集和聚合数据的容器，充当管理边界。 了解[详细信息](../azure-monitor/logs/design-logs-deployment.md)。    |生产、开发/测试    |否    |
@@ -57,4 +57,4 @@ Automanage 支持以下 Linux 分发版和版本：
 尝试在 Azure 门户中启用适用于计算机的 Automanage。
 
 > [!div class="nextstepaction"]
-> [在 Azure 门户中启用适用于计算机 Automanage](quick-create-virtual-machines-portal.md)
+> [在 Azure 门户中启用适用于计算机的 Automanage](quick-create-virtual-machines-portal.md)

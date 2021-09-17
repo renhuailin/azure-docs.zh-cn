@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 3938f7f5dae00a3628e2c9e2fec21a364efac95d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d546726e03420b41b4ff445418e30274904c6e5c
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084693"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635056"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>复制和移动“自定义视觉”项目
 
@@ -103,6 +103,9 @@ curl -v -X GET "{endpoint}/customvision/v3.3/Training/projects/{projectId}/expor
   "token": "string"
 }
 ```
+
+> [!TIP]
+> 如果在导入项目时收到“无效令牌”错误，则可能是令牌 URL 字符串未进行 web 编码。 你可以使用 [URL 编码器](https://meyerweb.com/eric/tools/dencoder/)对令牌进行编码。
 
 ## <a name="import-the-project"></a>导入项目
 

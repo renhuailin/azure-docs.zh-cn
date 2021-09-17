@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0cdaefcc92a1a690ae3e3e222053976c3aa3178
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 26b91b216c6a813270cf3b30cde0d8450f964668
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730795"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734480"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 中的管理单元
 
@@ -33,9 +33,9 @@ ms.locfileid: "113730795"
 
 中心管理员可以：
 
-- 创建具有仅对商学院管理单元中的 Azure AD 用户具有管理权限的角色。
 - 为商学院创建管理单元。
 - 仅可将商学院学生和员工填充到该管理单元。
+- 创建仅对商学院管理单元中的 Azure AD 用户具有管理权限的角色。
 - 将商学院 IT 团队及其范围添加到角色中。
 
 ## <a name="license-requirements"></a>许可要求

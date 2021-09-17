@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: a296babaafdee7939d462a356b9a3087e5e8990f
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226364"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777772"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>使用 Application Insights 在 Azure AD B2C 中跟踪用户行为
 
@@ -58,7 +58,8 @@ ms.locfileid: "107226364"
 将 Azure AD B2C 与 Application Insights 配合使用时，只需创建资源并获取检测密钥。 有关信息，请参阅[创建 Application Insights 资源](../azure-monitor/app/create-new-resource.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure 订阅的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure 订阅的目录。 此租户不是 Azure AD B2C 租户。
+1. 确保使用的是包含 Azure AD 订阅的目录，而不是 Azure AD B2C 目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上，在“目录名称”列表中找到包含你的订阅的 Azure AD 目录，然后选择“切换”
 1. 选择 Azure 门户左上角的“创建资源”，然后搜索并选择“Application Insights” 。
 1. 选择“创建”  。
 1. 对于“名称”，请输入资源的名称。

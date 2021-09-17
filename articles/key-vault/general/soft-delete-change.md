@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7e1b2ee95864affa6e5e72e1f8354767dc95bdb1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 45eea8f8809e97f7e424a988140bcf76b47d5947
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753319"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609282"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>对所有 Key Vault 启用软删除
 
@@ -55,7 +55,7 @@ ms.locfileid: "107753319"
 
 需要访问永久删除机密的安全主体必须获授更多的访问策略权限才能清除这些机密和密钥保管库。
 
-禁用对密钥保管库实施的任何要求关闭软删除的 Azure 策略。 你可能需要将此问题上报给控制应用于环境的 Azure 策略的管理员。 如果未禁用此策略，你可能无法在所应用策略范围内创建新的密钥保管库。
+禁用对密钥保管库实施的任何要求关闭软删除的 Azure Policy 分配。 你可能需要将此问题上报给控制应用于环境的 Azure Policy 分配的管理员。 如果未禁用此策略分配，你可能无法在所应用策略分配范围内创建新的密钥保管库。
 
 如果你的组织受到法律合规性要求的约束，并且不允许已删除的密钥保管库和机密长时间保持可恢复状态，则你必须调整软删除的保持期，以满足你组织的标准。 可将保持期配置为持续 7 至 90 天。
 

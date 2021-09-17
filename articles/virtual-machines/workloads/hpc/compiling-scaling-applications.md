@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 8012702e9004361c8b19797bf0ca66553d307dce
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c6396eab9cb7a2224d660e0e034f8592a879510d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138186"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688456"
 ---
 # <a name="scaling-hpc-applications"></a>缩放 HPC 应用程序
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 若要优化 Azure 上 HPC 应用程序的纵向扩展和横向扩展性能，需要针对特定工作负载进行性能优化和优化试验。 本节以及特定于 VM 系列的页面为缩放应用程序提供了一般指导。
 

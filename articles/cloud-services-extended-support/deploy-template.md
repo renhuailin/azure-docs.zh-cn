@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 10ebb60caed4bb42bb8e8d8351b465d692eaaf0a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: de46eb9fca550d95caa8aa5d42449ab10d1bb9a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445086"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741120"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>使用 ARM 模板部署云服务（外延支持）
 
@@ -109,7 +109,30 @@ ms.locfileid: "114445086"
           ] 
     ```
  
-3. 创建网络配置文件对象，并将公共 IP 地址与负载均衡器的前端相关联。 平台会自动创建负载均衡器。
+3. 创建云服务（外延支持）对象，如果要在模板中部署虚拟网络或公共 IP，请添加适当的 `dependsOn` 引用。 
+
+    ```json
+    {
+      "apiVersion": "2021-03-01",
+      "type": "Microsoft.Compute/cloudServices",
+      "name": "[variables('cloudServiceName')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "DeploymentLabel": "[parameters('deploymentLabel')]",
+        "DeployFromVisualStudio": "true"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
+        "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPName'))]"
+      ],
+      "properties": {
+        "packageUrl": "[parameters('packageSasUri')]",
+        "configurationUrl": "[parameters('configurationSasUri')]",
+        "upgradeMode": "[parameters('upgradeMode')]"
+      }
+    }
+    ```
+4. 为云服务创建网络配置文件对象，并将公共 IP 地址与负载均衡器的前端相关联。 平台会自动创建负载均衡器。 
 
     ```json
     "networkProfile": { 
@@ -135,7 +158,7 @@ ms.locfileid: "114445086"
     ```
  
 
-4. 在 ARM 模板的  `OsProfile`  部分添加 Key Vault 引用。 Key Vault 用于存储与云服务（外延支持）关联的证书。 将证书添加到 Key Vault，然后引用服务配置文件 (.cscfg) 中的证书指纹。 还需要为“用于部署的 Azure 虚拟机”启用 Key Vault“访问策略（在门户上），以便云服务（外延支持）资源可从 Key Vault 检索存储为机密的证书。 密钥保管库必须位于云服务所在的区域和订阅中，并且名称必须独一无二。 有关详细信息，请查看[在云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
+5. 在 ARM 模板的  `OsProfile`  部分添加 Key Vault 引用。 Key Vault 用于存储与云服务（外延支持）关联的证书。 将证书添加到 Key Vault，然后引用服务配置文件 (.cscfg) 中的证书指纹。 还需要为“用于部署的 Azure 虚拟机”启用 Key Vault“访问策略（在门户上），以便云服务（外延支持）资源可从 Key Vault 检索存储为机密的证书。 密钥保管库必须位于云服务所在的区域和订阅中，并且名称必须独一无二。 有关详细信息，请查看[在云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
      
     ```json
     "osProfile": { 
@@ -159,7 +182,7 @@ ms.locfileid: "114445086"
     > - 可导航到 Key Vault 中标记为“机密标识符”的证书来找到 certificateUrl。  
    >  - certificateUrl 的格式应为： https://{keyvault-endpoin}/secrets/{secretname}/{secret-id}
 
-5. 创建角色配置文件。 请确保在 ARM 模板中，服务配置 (.cscfg)、服务定义 (.csdef) 和角色配置文件部分的角色数、角色名称、每个角色中的实例数和大小相同。
+6. 创建角色配置文件。 请确保在 ARM 模板中，服务配置 (.cscfg)、服务定义 (.csdef) 和角色配置文件部分的角色数、角色名称、每个角色中的实例数和大小相同。
     
     ```json
     "roleProfile": {
@@ -184,7 +207,7 @@ ms.locfileid: "114445086"
     }   
     ```
 
-6. （可选）创建扩展配置文件以向云服务添加扩展。 在本例中，我们将添加远程桌面和 Windows Azure 诊断扩展。
+7. （可选）创建扩展配置文件以向云服务添加扩展。 在本例中，我们将添加远程桌面和 Windows Azure 诊断扩展。
    > [!Note] 
    > 远程桌面的密码必须介于 8-123 个字符，且必须至少满足以下 3 个密码复杂性要求：1) 包含大写字符 2) 包含小写字符 3) 包含数字 4) 包含特殊字符 5) 不允许使用控制字符
 
@@ -220,7 +243,7 @@ ms.locfileid: "114445086"
         }
     ```
 
-7. 查看完整模板。
+8. 查看完整模板。
 
     ```json
     {
@@ -448,7 +471,7 @@ ms.locfileid: "114445086"
     }
     ```
 
-8. 部署模板和参数文件（定义模板文件中的参数）用于创建云服务（扩展的支持）部署。 请参阅这些所需的[示例模板](https://github.com/Azure-Samples/cloud-services-extended-support)。
+9. 部署模板和参数文件（定义模板文件中的参数）用于创建云服务（扩展的支持）部署。 请参阅这些所需的[示例模板](https://github.com/Azure-Samples/cloud-services-extended-support)。
 
     ```powershell
     New-AzResourceGroupDeployment -ResourceGroupName "ContosOrg" -TemplateFile "file path to your template file" -TemplateParameterFile "file path to your parameter file"

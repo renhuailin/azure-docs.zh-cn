@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 29fccb3051fda96d47a54e8efb831980df262059
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bc282833b57b03faf782f40ebb42666899c56e81
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725967"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698779"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>处理计划内维护通知
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 更新包括如下更改：修补托管环境或升级以及解除硬件授权。 大多数此类更新在完成时不会影响托管的虚拟机。 但是，也会存在更新产生影响的情况：
 

@@ -9,14 +9,16 @@ ms.collection: linux
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1833b25554df53a480af9a8fc643755dbc2bbdb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 916f1b268e8fc8a3b765e4362190a2db78ec306a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564673"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698479"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>快速入门：在 Azure 中使用 Azure PowerShell 创建和加密 Linux VM
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 本快速入门介绍如何使用 Azure PowerShell 模块创建 Linux 虚拟机 (VM)、创建用于存储加密密钥的密钥保管库以及加密 VM。 本快速入门使用 Canonical 提供的 Ubuntu 16.04 LTS 市场映像和 VM Standard_D2S_V3 大小。 
 
