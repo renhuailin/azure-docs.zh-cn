@@ -34,9 +34,9 @@ ms.locfileid: "70099456"
 1. [设置 Azure Kinect DK 设备](set-up-azure-kinect-dk.md)。
 2. [下载](sensor-sdk-download.md)并安装 Azure Kinect 传感器 SDK。
 
-## <a name="headers"></a>头文件
+## <a name="headers"></a>标头
 
-只需要一个头文件，即 `k4a.h`。 请确保所选的编译器设置为使用 SDK 的库并包含文件夹。 此外，需要链接 `k4a.lib` 和 `k4a.dll` 文件。 建议参阅[将Azure Kinect 库添加到项目](add-library-to-project.md)。
+只需要一个标头，即 `k4a.h`。 请确保所选的编译器设置为使用 SDK 的库并包含文件夹。 此外，需要链接 `k4a.lib` 和 `k4a.dll` 文件。 建议参阅[将Azure Kinect 库添加到项目](add-library-to-project.md)。
 
 ```C
 #include <k4a/k4a.h>
@@ -97,7 +97,7 @@ k4a_device_start_cameras(device, &config);
 k4a_device_stop_cameras(device);
 ```
 
-## <a name="error-handling"></a>错误处理。
+## <a name="error-handling"></a>错误处理
 
 为简洁起见，我们不会在某些内联示例中显示错误处理。 但是，错误处理始终很重要！ 许多函数返回常规的成功/失败类型 [`k4a_result_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___enumerations_ga4b419a99aa2220b076a4520dc2afd1e5.html#ga4b419a99aa2220b076a4520dc2afd1e5)，或者包含详细信息的更具体的变量，比如 [`k4a_wait_result_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___enumerations_ga44c7c0c1cfba7c879e9e2da1a869e4ee.html#ga44c7c0c1cfba7c879e9e2da1a869e4ee)。 请查看每个函数的文档或 IntelliSense，以了解该函数预期显示的错误消息！
 

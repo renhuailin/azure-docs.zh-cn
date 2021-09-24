@@ -45,7 +45,7 @@ ms.locfileid: "76756240"
 
 ## <a name="verify-body-tracking"></a>验证人体跟踪
 
-启动 **Azure Kinect 人体跟踪查看器**来检查是否已正确设置人体跟踪 SDK。 该查看器是使用 SDK msi 安装程序安装的。 可以在开始菜单或 `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe` 中找到它。
+启动 **Azure Kinect 人体跟踪查看器** 来检查是否已正确设置人体跟踪 SDK。 该查看器是使用 SDK msi 安装程序安装的。 可以在开始菜单或 `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe` 中找到它。
 
 如果没有足够强大的 GPU 但仍想测试结果，可以通过以下命令在命令行中启动 **Azure Kinect 人体跟踪查看器**：`<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe CPU`
 

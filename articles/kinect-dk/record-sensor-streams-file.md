@@ -41,7 +41,7 @@ ms.locfileid: "73932206"
 可以使用 [Azure Kinect 查看器](azure-kinect-viewer.md)播放录制内容。
 
 1. 启动 [`k4aviewer.exe`](azure-kinect-viewer.md)
-2. 展开“打开录制内容”选项卡并打开你的录制内容。 
+2. 展开“打开录制内容”选项卡并打开你的录制内容。
 
 ## <a name="next-steps"></a>后续步骤
 
