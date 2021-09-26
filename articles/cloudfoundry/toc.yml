@@ -1,10 +1,5 @@
 - name: Cloud Foundry 文档
   href: index.yml
-- name: 快速入门
-  expanded: true
-  items:
-    - name: 市场模板
-      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: 教程
   items:
     - name: 在 Azure 上创建 CF

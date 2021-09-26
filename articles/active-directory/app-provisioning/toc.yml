@@ -78,12 +78,6 @@
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: 本地应用预配
       items:
-        - name: ECMA 连接器主机先决条件
-          href: on-premises-ecma-prerequisites.md
-        - name: ECMA 连接器主机安装
-          href: on-premises-ecma-install.md
-        - name: ECMA 连接器主机配置
-          href: on-premises-ecma-configure.md
         - name: 泛型 SQL 连接器配置
           href: on-premises-sql-connector-configure.md
         - name: 本地应用程序预配到启用 SCIM 的应用
