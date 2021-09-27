@@ -160,6 +160,32 @@
         - name: 基准评分
           href: ../virtual-machines/windows/compute-benchmark-scores.md
           maintainContext: true
+        - name: 产能预留（预览版）
+          items:
+            - name: 概述
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-overview.md
+              maintainContext: true
+            - name: 创建容量预留
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-create.md
+              maintainContext: true
+            - name: 超量分配产能预留
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-overallocate.md
+              maintainContext: true
+            - name: 修改产能预留
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-modify.md
+              maintainContext: true
+            - name: 关联虚拟机规模集
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-associate-virtual-machine-scale-set.md
+              maintainContext: true
+            - name: 删除虚拟机规模集
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-remove-virtual-machine-scale-set.md
+              maintainContext: true
       maintainContext: true
     - name: 认可的 Linux 发行版
       href: ../virtual-machines/linux/endorsed-distros.md

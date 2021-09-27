@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 蓝图示例概述
 description: 支付卡行业数据安全标准 v3.2.1 蓝图示例的概述。 此蓝图示例可帮助客户评估特定控制要求。
-ms.date: 04/02/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 19e25afe5eb8543936de75321ea9689a08dfb43d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7abd1d90efd1972a1d039125f158b8b9cff72501
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756802"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580313"
 ---
 # <a name="overview-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 蓝图示例概述
 
