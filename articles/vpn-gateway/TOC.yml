@@ -261,7 +261,7 @@
       href: create-zone-redundant-vnet-gateway.md
     - name: 配置数据包捕获
       href: packet-capture.md
-    - name: 运行状况监视
+    - name: 监视
       items:
         - name: 监视 VPN 网关
           href: monitor-vpn-gateway.md
@@ -269,9 +269,10 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: 基于资源日志设置警报
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
-    - name: 疑难解答
-      href: vpn-gateway-troubleshoot.md
+    - name: 故障排除
       items:
+        - name: VPN 网关疑难解答
+          href: vpn-gateway-troubleshoot.md
         - name: 使用诊断日志对 Azure VPN 网关进行故障排除
           href: troubleshoot-vpn-with-azure-diagnostics.md
         - name: 社区建议的 VPN 或防火墙设备设置

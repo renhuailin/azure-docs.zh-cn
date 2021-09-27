@@ -200,6 +200,8 @@
       items:
         - name: 安全基线
           href: /security/benchmark/azure/baselines/site-recovery-security-baseline?toc=/azure/site-recovery/toc.json
+        - name: 传输层安全性
+          href: transport-layer-security.md
 - name: 操作方法指南
   items:
     - name: Azure 到 Azure 灾难恢复

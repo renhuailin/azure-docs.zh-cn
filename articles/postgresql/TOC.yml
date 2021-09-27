@@ -609,8 +609,8 @@
       items:
         - name: 什么是超大规模 (Citus)？
           href: hyperscale-overview.md
-        - name: 预览版功能
-          href: hyperscale-preview-features.md
+        - name: 产品更新
+          href: hyperscale-product-updates.md
     - name: 快速入门
       items:
         - name: 创建服务器组
