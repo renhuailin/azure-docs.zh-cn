@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 36338fdaad38bb84b4b4a796289c07e0cfee01d7
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 448cf07b05d429106405cccc387ba9f4b84f3583
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124804879"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128565221"
 landingContent:
 - title: 关于 Azure Database for MySQL
   linkLists:
@@ -175,8 +175,10 @@ landingContent:
       url: https://dev.mysql.com/doc/connector-net/en/
   - linkListType: deploy
     links:
-    - text: 用于常见任务的 Azure CLI 脚本
+    - text: Azure CLI 示例 - 单个服务器
       url: ./sample-scripts-azure-cli.md
+    - text: Azure CLI 示例 - 灵活服务器
+      url: flexible-server/sample-scripts-azure-cli.md
     - text: Azure 资源管理器模板
       url: /azure/templates/microsoft.dbformysql/allversions
   - linkListType: reference

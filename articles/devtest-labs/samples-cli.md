@@ -1,14 +1,14 @@
 ---
-title: 用于 Azure 实验室服务的 Azure CLI 示例 | Microsoft Docs
+title: Azure CLI 示例
 description: 本文提供了可帮助你管理 Azure 实验室服务中的实验室的 Azure CLI 脚本示例列表。
-ms.topic: article
+ms.topic: landing-page
 ms.date: 06/26/2020
-ms.openlocfilehash: f184d6753fc0280eae1d46b676f160778070fa3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab30d65917c488de4988e82e42edc0511f1447b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86166087"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563144"
 ---
 # <a name="azure-cli-samples-for-azure-lab-services"></a>用于 Azure 实验室服务的 Azure CLI 示例
 

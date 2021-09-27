@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 关于 Web 应用
+    - name: 关于应用服务
       href: overview.md
     - name: 关于应用服务环境
       href: environment/intro.md
@@ -92,6 +92,8 @@
       items:
         - name: ASP.NET Core 与容器
           href: app-service-sql-github-actions.md
+        - name: ASP.NET
+          href: app-service-sql-asp-github-actions.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -366,7 +368,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 排查间歇性出站连接错误
           href: troubleshoot-intermittent-outbound-connection-errors.md

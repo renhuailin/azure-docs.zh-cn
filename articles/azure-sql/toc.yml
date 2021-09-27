@@ -73,7 +73,7 @@
               href: database/threat-detection-overview.md
             - name: 数据发现和分类
               href: database/data-discovery-and-classification-overview.md
-            - name: 动态数据掩码
+            - name: 动态数据屏蔽
               href: database/dynamic-data-masking-overview.md
             - name: SQL 漏洞评估
               items:
@@ -104,6 +104,8 @@
                   href: database/authentication-aad-directory-readers-role.md
                 - name: 仅 Azure AD 身份验证
                   href: database/authentication-azure-ad-only-authentication.md
+                - name: 仅 Azure AD 身份验证的 Azure Policy
+                  href: database/authentication-azure-ad-only-authentication-policy.md
             - name: 透明数据加密 (TDE)
               items:
                 - name: 概述
@@ -191,6 +193,8 @@
                   href: database/authentication-aad-directory-readers-role-tutorial.md
                 - name: 启用仅 Azure AD 身份验证
                   href: database/authentication-azure-ad-only-authentication-tutorial.md
+                - name: 使用 Azure Policy 强制实施仅 Azure AD 的身份验证
+                  href: database/authentication-azure-ad-only-authentication-policy-how-to.md
                 - name: 创建启用了仅 Azure AD 身份验证的服务器
                   href: database/authentication-azure-ad-only-authentication-create-server.md
             - name: 为 TDE 配置 BYOK

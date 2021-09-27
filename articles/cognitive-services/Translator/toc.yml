@@ -100,7 +100,7 @@
       href: document-translation/get-started-with-document-translation.md
     - name: 操作指南
       items:
-        - name: 为文档翻译创建 SAS 令牌
+        - name: 为文档翻译生成 SAS 令牌
           href: document-translation/create-sas-tokens.md
         - name: 创建并使用托管标识
           href: document-translation/managed-identity.md

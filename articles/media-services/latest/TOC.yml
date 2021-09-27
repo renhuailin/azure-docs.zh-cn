@@ -219,6 +219,9 @@
         - name: 内容感知型编码
           href: encode-content-aware-concept.md
           displayName: 'Content aware encoding, encode, transcode, ABR, adaptive bitrate, resolution, HLS, DASH, Smooth, per title encoding, per title, per scene encoding, scene based, QVBR, Quality Defined Variable Bitrate, Quality-Defined'
+        - name: 预设替代
+          href: encode-concept-preset-overrides.md
+          displayName: 'preset, override, transform, job, per-job, language, encode, transcode, custom, per job, encoding settings, customize, job output, output'
         - name: 媒体保留单位（旧版）
           href: concept-media-reserved-units.md
           displayName: 'MRU, reserved units, scaling, scale, encoding, media reserved units'
@@ -465,7 +468,7 @@
         - name: 管理多个存储帐户
           href: storage-managing-multiple-storage-accounts-how-to.md
           displayName: 'how to, how-to, tutorial, storage accounts, multiple storage accounts,'
-    - name: 创建转换
+    - name: 编码媒体
       items:
         - name: 创建转换
           href: transform-create-transform-how-to.md
@@ -514,7 +517,7 @@
           displayName: 'copy videos, copy, copy codec, copy video codec, copy audio codec, fast encoding, fast remux, remuxing, re-package, packaging, re-encoding'
         - name: 使用内容感知编码预设
           href: encode-content-aware-how-to.md
-          displayName: 'encode, encoder, transcode, custom preset, content aware, transform'
+          displayName: 'encode, encoder, transcode, custom preset, content aware, transform, CAE, scene based, shot based, qvbr, quality defined'
     - name: 创建作业
       items:
         - name: 使用 CLI 创建作业

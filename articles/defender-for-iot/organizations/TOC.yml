@@ -25,6 +25,12 @@
   items:
     - name: Azure Defender for IoT 试用版设置
       href: tutorial-onboarding.md
+    - name: 集成 Forescout
+      href: tutorial-forescout.md
+    - name: 集成 Fortinet
+      href: tutorial-fortinet.md
+    - name: 集成 Palo Alto
+      href: tutorial-palo-alto.md
     - name: 集成 Qradar
       href: tutorial-qradar.md
     - name: 集成 Splunk
@@ -52,7 +58,7 @@
           displayName: 'SSL, TLS, PKI, Locally-signed, CA-signed'
           href: how-to-deploy-certificates.md
         - name: 安装软件
-          displayName: 'tunnel, setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports'
+          displayName: 'tunnel, setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports, hyper-v, NDIS, ClearPass, span,'
           href: how-to-install-software.md
         - name: 将传感器与代理连接
           displayName: 'Squid, proxy, connect, direct internet access, access, internet, tunnel'
@@ -183,14 +189,6 @@
     - name: 设置 SNMP MIB 监视
       href: how-to-set-up-snmp-mib-monitoring.md
       displayName: health
-    - name: 与合作伙伴集成
-      items:
-        - name: Forescout 集成
-          href: integration-forescout.md
-        - name: Fortinet 集成
-          href: integration-fortinet.md
-        - name: Palo Alto 集成
-          href: integration-palo-alto.md
 - name: 参考
   items:
     - name: 使用 Defender for IoT API

@@ -343,7 +343,23 @@
               href: power-bi-app-supplemental-content.md
     - name: Power BI 视觉对象产品/服务
       items:
-        - name: 有关迁移到合作伙伴中心的常见问题解答
+        - name: 计划产品/服务
+          href: marketplace-power-bi-visual.md
+        - name: 创建套餐
+          items:
+            - name: 产品/服务设置
+              href: power-bi-visual-offer-setup.md
+            - name: 属性
+              href: power-bi-visual-properties.md
+            - name: 产品/服务一览
+              href: power-bi-visual-offer-listing.md
+            - name: 可用性
+              href: power-bi-visual-availability.md
+            - name: 技术配置
+              href: power-bi-visual-technical-configuration.md
+            - name: 管理产品/服务名称
+              href: power-bi-visual-manage-names.md
+        - name: 有关迁移到商业市场的常见问题解答
           href: power-bi-visual-faq.yml
     - name: SaaS 产品/服务
       items:
@@ -484,7 +500,7 @@
     - name: 商业市场审阅策略
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
     - name: Azure 市场条款
-      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+      href: 'https://azure.microsoft.com/support/legal/marketplace-terms/'
     - name: Microsoft Publisher 协议
       href: /legal/marketplace/msft-publisher-agreement
     - name: Microsoft 发布者协议的更改历史记录

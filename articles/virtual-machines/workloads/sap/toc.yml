@@ -260,6 +260,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
         - name: 使用文件共享的 SAP
           items:
+            - name: 使用 Azure 文件存储 SMB 安装 HA SAP NetWeaver
+              href: high-availability-guide-windows-azure-files-smb.md
             - name: 使用 Azure NetApp 文件 (SMB) 安装 HA SAP NetWeaver
               href: high-availability-guide-windows-netapp-files-smb.md
             - name: 使用 WSFC 和 SOFS 文件共享的 SAP ASCS/SCS 实例

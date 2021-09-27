@@ -256,6 +256,8 @@ items:
             href: connector-overview.md
           - name: Amazon Marketplace Web Service
             href: connector-amazon-marketplace-web-service.md
+          - name: Amazon RDS for Oracle
+            href: connector-amazon-rds-for-oracle.md
           - name: Amazon Redshift
             href: connector-amazon-redshift.md
           - name: Amazon S3
@@ -709,6 +711,8 @@ items:
             href: monitor-integration-runtime.md
           - name: 监视 Azure-SSIS 集成运行时
             href: monitor-integration-runtime.md#azure-ssis-integration-runtime
+          - name: 运行具有服务级别协议的数据管道
+            href: tutorial-operationalize-pipelines.md
           - name: 重新配置 Azure-SSIS 集成运行时
             href: manage-azure-ssis-integration-runtime.md
           - name: 复制或克隆数据工厂
@@ -879,7 +883,7 @@ items:
             displayName: diu
       - name: 疑难解答指南
         items:
-          - name: 数据工厂 UX
+          - name: Azure 数据工厂 Studio
             href: data-factory-ux-troubleshoot-guide.md
           - name: 活动
             href: data-factory-troubleshoot-guide.md

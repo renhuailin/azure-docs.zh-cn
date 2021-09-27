@@ -110,6 +110,8 @@
           href: configure-dns-azure-vmware-solution.md
         - name: 配置 HCX 网络扩展
           href: configure-hcx-network-extension.md
+        - name: 配置 NSX 网络组件
+          href: configure-nsx-network-components-azure-portal.md
         - name: 配置端口镜像
           href: configure-port-mirroring-azure-vmware-solution.md
         - name: 在 vWAN 中配置站点到站点 VPN
@@ -120,12 +122,16 @@
           href: vmware-hcx-mon-guidance.md
     - name: 配置存储策略
       href: configure-storage-policy.md
+    - name: 配置 VMware syslog
+      href: configure-vmware-syslogs.md
     - name: 配置 Windows Server 故障转移群集
       href: configure-windows-server-failover-cluster.md
     - name: 连接同一区域内的多个私有云
       href: connect-multiple-private-clouds-same-region.md
     - name: 部署灾难恢复
       items:
+        - name: 部署 JetStream DR
+          href: deploy-disaster-recovery-using-jetstream.md
         - name: 部署 VMware HCX 以进行灾难恢复
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: 部署 VMware SRM 以进行灾难恢复
@@ -148,6 +154,10 @@
           href: ecosystem-back-up-vms.md
         - name: VM 的迁移解决方案
           href: ecosystem-migration-vms.md
+        - name: Azure VMware Solution 的安全解决方案
+          href: ecosystem-security-solutions.md
+        - name: Bitnami 设备部署
+          href: bitnami-appliances-deployment.md
     - name: VMware 解决方案
       items:
         - name: 配置 HCX 网络扩展
@@ -158,12 +168,6 @@
           href: azure-vmware-solution-horizon.md
         - name: 从内容库部署 VM
           href: deploy-vm-content-library.md
-        - name: 灾难恢复
-          items:
-            - name: 用于灾难恢复的 VMware SRM
-              href: disaster-recovery-using-vmware-site-recovery-manager.md
-            - name: 用于灾难恢复的 VMware HCX
-              href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: 升级 VMware HCX 设备
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
 - name: 资源

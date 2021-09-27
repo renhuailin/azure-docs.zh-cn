@@ -552,6 +552,8 @@
           href: howto-restrict-your-app-to-a-set-of-users.md
         - name: 在应用程序中添加应用角色
           href: howto-add-app-roles-in-azure-ad-apps.md
+        - name: 在应用程序中实现 RBAC
+          href: howto-implement-rbac-for-apps.md
     - name: 使用 Microsoft Graph API
       href: microsoft-graph-intro.md
     - name: 针对复原能力构建

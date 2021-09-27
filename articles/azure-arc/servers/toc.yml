@@ -41,10 +41,12 @@
           href: agent-overview.md
         - name: 部署规划
           href: plan-at-scale-deployment.md
-        - name: 从 Azure 门户将计算机连接到 Azure Arc
+        - name: 使用部署脚本连接计算机
           href: onboard-portal.md
         - name: 使用服务主体大规模连接计算机
           href: onboard-service-principal.md
+        - name: 从自动化更新管理连接计算机
+          href: onboard-update-management-machines.md
         - name: 通过 PowerShell DSC 将计算机连接到 Azure Arc
           href: onboard-dsc.md
         - name: 从 Windows Admin Center 连接计算机
@@ -107,7 +109,7 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
     - name: Java
       href: /java/api/overview/azure/compute/resourcemanagement
-    - name: JavaScript
+    - name: Javascript
       href: /javascript/api/%40azure/arm-hybridcompute
     - name: Python
       href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'

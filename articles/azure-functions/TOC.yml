@@ -25,7 +25,7 @@
               href: create-first-function-vs-code-csharp.md
             - name: Java
               href: create-first-function-vs-code-java.md
-            - name: JavaScript
+            - name: Javascript
               href: create-first-function-vs-code-node.md
             - name: PowerShell
               href: create-first-function-vs-code-powershell.md
@@ -44,7 +44,7 @@
               href: create-first-function-cli-csharp.md
             - name: Java
               href: create-first-function-cli-java.md
-            - name: JavaScript
+            - name: Javascript
               href: create-first-function-cli-node.md
             - name: PowerShell
               href: create-first-function-cli-powershell.md
@@ -118,7 +118,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: JavaScript
+        - name: Javascript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -156,10 +156,12 @@
               href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: 概念
   items:
-    - name: 最佳实践
+    - name: 最佳做法
       items:
-        - name: 性能和可靠性
+        - name: 一般最佳实践
           href: functions-best-practices.md
+        - name: 性能和可靠性
+          href: performance-reliability.md
           displayName: best practices
         - name: 管理连接
           href: manage-connections.md
@@ -184,12 +186,12 @@
           href: functions-premium-plan.md
         - name: 专用计划
           href: dedicated-plan.md
-        - name: 事件驱动的缩放
-          href: event-driven-scaling.md
     - name: 部署
       href: functions-deployment-technologies.md
     - name: 事件和消息传送
       items:
+        - name: 事件驱动的缩放
+          href: event-driven-scaling.md
         - name: 可靠的事件处理
           href: functions-reliable-event-processing.md
         - name: 设计完全相同的输入
@@ -222,7 +224,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -259,6 +261,8 @@
       href: ip-addresses.md
     - name: 自定义处理程序
       href: functions-custom-handlers.md
+    - name: 高可用性
+      href: azure-functions-az-redundancy.md
 - name: 操作指南
   items:
     - name: 开发

@@ -7,14 +7,14 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 08/17/2021
+  ms.date: 09/21/2021
   ms.author: magoedte
-  ms.openlocfilehash: 1af908e1c778a9e390ef644cf1e3d211af335c88
-  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+  ms.openlocfilehash: ed9df4d3242f64f950e52ecd3003150b1eb103f7
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122322054"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128624437"
 landingContent:
 - title: 使用已启用 Azure Arc 的服务器将计算机连接到 Azure
   linkLists:
@@ -28,18 +28,24 @@ landingContent:
       url: plan-at-scale-deployment.md
   - linkListType: get-started
     links:
-    - text: 从 Azure 门户将计算机连接到 Azure Arc
+    - text: 使用部署脚本将计算机连接到 Azure Arc
       url: onboard-portal.md
     - text: 使用服务主体大规模连接计算机
       url: onboard-service-principal.md
-    - text: 通过 PowerShell DSC 将计算机连接到 Azure
-      url: onboard-dsc.md
+    - text: 通过 Windows Admin Center 将计算机连接到 Azure
+      url: onboard-windows-admin-center.md
 - title: 10 分钟快速入门
   linkLists:
   - linkListType: quickstart
     links:
     - text: 部署支持 Arc 的服务器代理
       url: ./learn/quick-enable-hybrid-vm.md
+- title: 培训
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Microsoft Learn 学习路径
+      url: /learn/paths/manage-hybrid-infrastructure-with-azure-arc
 - title: 概念证明
   linkLists:
   - linkListType: sample

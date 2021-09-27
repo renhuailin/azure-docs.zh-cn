@@ -44,7 +44,7 @@ items:
                     href: storage-quickstart-blobs-python.md
                   - name: Python (v2.1 SDK)
                     href: storage-quickstart-blobs-python-legacy.md
-              - name: JavaScript
+              - name: Javascript
                 items:
                   - name: JavaScript（适用于 Node.js 的 v12 SDK）
                     href: storage-quickstart-blobs-nodejs.md
@@ -114,7 +114,7 @@ items:
             href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Python
             href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: JavaScript
+          - name: Javascript
             href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: C++
             href: ../common/storage-samples-c-plus-plus.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -376,6 +376,8 @@ items:
                     href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                   - name: 定义存储访问策略
                     href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  - name: 创建 SAS 到期策略
+                    href: ../common/sas-expiration-policy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: 管理对 Blob 数据的匿名读取访问
                 items:
                   - name: 配置对容器和 Blob 的匿名读取访问
@@ -875,26 +877,16 @@ items:
           - name: 与 Azure 服务配合使用
             href: data-lake-storage-integrate-with-services-tutorials.md
           - name: 优化性能
-            items:
-              - name: 性能优化概述
-                href: data-lake-storage-performance-tuning-guidance.md
-              - name: 优化 HDInsight 上的 Spark
-                href: data-lake-storage-performance-tuning-spark.md
-              - name: 优化 HDInsight 上的 Hive
-                href: data-lake-storage-performance-tuning-hive.md
-              - name: 优化 HDInsight 上的 MapReduce
-                href: data-lake-storage-performance-tuning-mapreduce.md
-              - name: 优化 HDInsight 上的 Storm
-                href: data-lake-storage-performance-tuning-storm.md
+            href: data-lake-storage-performance-tuning-guidance.md
       - name: 参考
         items:
           - name: .NET
             href: /dotnet/api/azure.storage.files.datalake
           - name: Java
-            href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
+            href: 'https://docs.microsoft.com/java/api/overview/azure/storage-file-datalake-readme'
           - name: Python
             href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
-          - name: JavaScript
+          - name: Javascript
             href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
           - name: C++
             href: 'https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-datalake'

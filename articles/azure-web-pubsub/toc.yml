@@ -13,18 +13,18 @@
     - name: 创建实例
       expanded: true
       items:
-        - name: 门户
+        - name: Azure 门户
           href: howto-develop-create-instance.md
-        - name: CLI
+        - name: Azure CLI
           href: quickstart-cli-create.md
     - name: 连接到实例
       expanded: true
       items:
-        - name: 从浏览器发布/订阅
+        - name: 通过浏览器 PubSub
           href: quickstart-live-demo.md
-        - name: 从 CLI 发布/订阅
+        - name: 通过 Azure CLI PubSub
           href: quickstart-cli-try.md
-        - name: 使用服务 SDK 发布/订阅
+        - name: 通过使用服务 SDK PubSub
           href: quickstart-use-sdk.md
 - name: 教程
   expanded: true
@@ -49,7 +49,7 @@
   items:
     - name: 开发
       items:
-        - name: 如何创建 WebSocket 客户端
+        - name: 创建 WebSocket 客户端
           href: howto-websocket-connect.md
     - name: 安全
       items:

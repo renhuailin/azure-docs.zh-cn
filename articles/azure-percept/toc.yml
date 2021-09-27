@@ -130,6 +130,8 @@
           href: software-releases-usb-cable-updates.md
         - name: Azure Percept DK 软件发行说明
           href: azure-percept-devkit-software-release-notes.md
+        - name: Azure Percept DK 容器发行说明
+          href: azure-percept-devkit-container-release-notes.md
     - name: Azure Percept 设备数据表
       items:
         - name: Azure Percept DK 数据表

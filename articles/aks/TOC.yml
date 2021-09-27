@@ -207,6 +207,8 @@
           href: azure-files-dynamic-pv.md
         - name: Azure 文件 - 静态
           href: azure-files-volume.md
+        - name: Azure HPC 缓存
+          href: azure-hpc-cache.md
         - name: NFS 服务器 - 静态
           href: azure-nfs-volume.md
         - name: Azure NetApp 文件
@@ -367,7 +369,11 @@
             - name: OSM 概述
               href: open-service-mesh-about.md
             - name: 部署 OSM AKS 加载项
-              href: open-service-mesh-deploy-add-on.md
+              items:
+                - name: 使用 Azure CLI
+                  href: open-service-mesh-deploy-addon-az-cli.md
+                - name: 使用 Bicep 模板
+                  href: open-service-mesh-deploy-addon-bicep.md
             - name: 下载 OSM 客户端库
               href: open-service-mesh-binary.md
             - name: OSM 教程

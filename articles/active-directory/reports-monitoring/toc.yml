@@ -60,8 +60,6 @@
           href: howto-find-activity-reports.md
         - name: 排查用户登录错误
           href: howto-troubleshoot-sign-in-errors.md
-        - name: 修复已标记为存在风险的用户
-          href: howto-remediate-users-flagged-for-risk.md
         - name: 配置报告 API 的先决条件
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: 如何使用 Azure AD 工作簿

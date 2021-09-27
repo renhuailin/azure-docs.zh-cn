@@ -1,7 +1,6 @@
 - name: Bicep 文档
   href: index.yml
 - name: 概述
-  expanded: true
   items:
     - name: 什么是 Bicep？
       href: overview.md
@@ -35,9 +34,9 @@
             - name: 条件部署
               href: conditional-resource-deployment.md
               displayName: runtime
-            - name: 子资源名称和类型
+            - name: 子资源
               href: child-resource-name-type.md
-              displayName: 'parent,parent resource'
+              displayName: 'parent,parent resource,sub,nested'
             - name: 扩展资源
               href: scope-extension-resources.md
         - name: parameters
@@ -84,7 +83,23 @@
               href: deploy-to-tenant.md
               displayName: assign role
         - name: Linter
-          href: linter.md
+          items:
+            - name: Linter
+              href: linter.md
+            - name: Linter 规则
+              items:
+                - name: 没有硬编码的环境 URL
+                  href: linter-rule-no-hardcoded-environment-urls.md
+                - name: 没有未使用的参数
+                  href: linter-rule-no-unused-parameters.md
+                - name: 没有未使用的变量
+                  href: linter-rule-no-unused-variables.md
+                - name: 首选内插
+                  href: linter-rule-prefer-interpolation.md
+                - name: 安全参数默认值
+                  href: linter-rule-secure-parameter-default.md
+                - name: 简化内插
+                  href: linter-rule-simplify-interpolation.md
         - name: 最佳实践
           href: best-practices.md
         - name: 模式
@@ -121,8 +136,10 @@
               href: add-template-to-azure-pipelines.md
             - name: Bicep 与 GitHub Actions
               href: deploy-github-actions.md
-    - name: 使用 Bicep CLI
+    - name: 迁移到 Bicep
       items:
+        - name: 建议的工作流
+          href: migrate.md
         - name: 反向编译
           href: decompile.md
           displayName: 'conversion issues,export,convert,playground'
