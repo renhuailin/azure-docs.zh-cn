@@ -1,14 +1,14 @@
 ---
 title: 策略示例索引
 description: Azure Policy 的内置项的索引。 类别标记、法规符合性、Key Vault、Kubernetes、来宾配置等。
-ms.date: 08/13/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: ca5c973b8efe6ec97eb5d4e6dada5418d7433c0f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2c8dbaa1496d8f67c30cc3021697760d67206b8f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180075"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650470"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
@@ -38,8 +38,7 @@ ms.locfileid: "122180075"
 下面是 Azure 中的[法规符合性](../concepts/regulatory-compliance.md)内置项：
 
 - [澳大利亚政府 ISM PROTECTED](./australia-ism.md)
-- [Azure 安全基准 v2](./azure-security-benchmark.md)
-- [Azure 安全基准 v1](./azure-security-benchmarkv1.md)
+- [Azure 安全基准](./azure-security-benchmark.md)
 - [加拿大联邦 PBMM](./canada-federal-pbmm.md)
 - [CIS Microsoft Azure 基础基准检验 v1.3.0](./cis-azure-1-3-0.md)
 - [CIS Microsoft Azure 基础基准检验 v1.1.0](./cis-azure-1-1-0.md)
@@ -57,7 +56,7 @@ ms.locfileid: "122180075"
 
 下面是 Azure 政府中的[法规符合性](../concepts/regulatory-compliance.md)内置项：
 
-- [Azure 安全基准 v2](./gov-azure-security-benchmark.md)
+- [Azure 安全基准](./gov-azure-security-benchmark.md)
 - [CIS Microsoft Azure 基础基准检验 v1.3.0](./gov-cis-azure-1-3-0.md)
 - [CIS Microsoft Azure 基础基准检验 v1.1.0](./gov-cis-azure-1-1-0.md)
 - [CMMC 级别 3](./gov-cmmc-l3.md)

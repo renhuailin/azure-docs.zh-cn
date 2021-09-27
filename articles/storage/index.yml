@@ -7,8 +7,8 @@ metadata:
   description: Azure 存储文档中心页。 指向云和混合存储解决方案以及用于传输、共享和备份数据的服务的服务文档。
   ms.service: storage
   ms.topic: hub-page
-  author: twooley
-  ms.author: twooley
+  author: tamram
+  ms.author: tamram
   ms.date: 04/14/2021
 highlightedContent:
   items:

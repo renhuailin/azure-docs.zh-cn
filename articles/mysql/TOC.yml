@@ -384,6 +384,8 @@
                   displayName: 'debug, slow query log , performance'
     - name: 示例
       items:
+        - name: Azure CLI 示例
+          href: sample-scripts-azure-cli.md
         - name: 配置 Java 连接池
           href: sample-scripts-java-connection-pooling.md
 - name: 灵活服务器（预览版）
@@ -590,6 +592,10 @@
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
             - name: 排查 CLI 错误
               href: flexible-server/how-to-troubleshoot-cli-errors.md
+    - name: 示例
+      items:
+        - name: Azure CLI 示例
+          href: flexible-server/sample-scripts-azure-cli.md
 - name: 迁移
   items:
     - name: 将数据从本地 MySQL 迁移到 Azure Database for MySQL >
