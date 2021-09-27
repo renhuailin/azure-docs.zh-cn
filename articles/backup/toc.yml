@@ -196,8 +196,12 @@
           href: manage-monitor-sql-database-backup.md
     - name: Azure Database for PostgreSQL 备份
       items:
+        - name: 概述
+          href: backup-azure-database-postgresql-overview.md
         - name: 备份
           href: backup-azure-database-postgresql.md
+        - name: 还原
+          href: restore-azure-database-postgresql.md
         - name: 管理
           href: manage-azure-database-postgresql.md
     - name: 使用 MARS 代理的 Windows 备份
@@ -416,6 +420,8 @@
           href: offline-backup-server-previous-versions.md
     - name: 监视和警报
       items:
+        - name: 概述
+          href: monitoring-and-alerts-overview.md
         - name: 使用备份资源管理器
           href: monitor-azure-backup-with-backup-explorer.md
         - name: 使用 Azure 门户
@@ -543,6 +549,8 @@
           href: disk-backup-troubleshoot.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: Azure Database for PostgreSQL
+          href: backup-azure-database-postgresql-troubleshoot.md
         - name: Azure VM 中的 SAP HANA 备份
           href: backup-azure-sap-hana-database-troubleshoot.md
         - name: 系统状态
