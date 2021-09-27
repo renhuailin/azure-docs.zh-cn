@@ -15,10 +15,12 @@
   items:
     - name: 使用 UEBA 进行调查
       href: investigate-with-ueba.md
-    - name: 使用自动化来响应威胁
-      href: tutorial-respond-threats-playbook.md
     - name: 创建 Azure Sentinel 的 KQL 查询（Learn 模块）
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
+    - name: 使用自动化来响应威胁
+      href: tutorial-respond-threats-playbook.md
+    - name: 开始使用笔记本和 MSTICPy
+      href: notebook-get-started.md
     - name: 从 Azure Sentinel 创建 Power BI 报表
       href: powerbi.md
 - name: 概念
@@ -200,6 +202,8 @@
       items:
         - name: 使用 Jupyter Notebook 进行搜寻
           href: notebooks.md
+        - name: Jupyter 笔记本的高级 MSTICPy 设置
+          href: notebooks-msticpy-advanced.md
         - name: 使用书签进行搜寻
           href: bookmarks.md
         - name: 使用 Livestream 进行搜寻

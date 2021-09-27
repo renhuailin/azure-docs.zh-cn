@@ -213,6 +213,8 @@
         - name: 企业安全概述
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
+        - name: 安全工作区流量流
+          href: concept-secure-network-traffic-flow.md
         - name: 安全基线
           href: /security/benchmark/azure/baselines/machine-learning-security-baseline?context=/azure/machine-learning/context/ml-context
         - name: Azure Policy 的安全控件
@@ -243,7 +245,7 @@
               displayName: 'vnet, workspace, container instance, container registry'
               href: how-to-secure-workspace-vnet.md
             - name: 保护训练环境
-              displayName: vnet
+              displayName: 'vnet, No public IP'
               href: how-to-secure-training-vnet.md
             - name: 保护推理环境
               displayName: vnet
@@ -295,7 +297,7 @@
         - name: 创建并管理计算资源
           items:
             - name: 计算实例
-              displayName: compute target
+              displayName: 'compute target, No public IP'
               href: how-to-create-manage-compute-instance.md
             - name: 计算群集
               displayName: 'compute target, low priority, managed identity'
@@ -541,7 +543,7 @@
                 - name: 监视托管联机终结点
                   href: how-to-monitor-online-endpoints.md
                 - name: 排查托管联机终结点问题
-                  href: how-to-troubleshoot-managed-online-endpoints.md
+                  href: how-to-troubleshoot-online-endpoints.md
             - name: Batch
               items:
                 - name: 使用批处理终结点进行批量评分

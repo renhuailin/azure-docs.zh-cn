@@ -256,6 +256,12 @@
             - name: 安装 AMD GPU 驱动程序
               displayName: 'AMD GPU drivers, AMD, GPU drivers, GPU'
               href: ./windows/n-series-amd-driver-setup.md
+            - name: NC 系列停用
+              href: nc-series-retirement.md
+            - name: NCv2 系列停用
+              href: ncv2-series-retirement.md
+            - name: ND 系列停用
+              href: nd-series-retirement.md
             - name: GPU 计算迁移指南
               displayName: GPU compute migration guide
               href: ./n-series-migration.md
@@ -337,13 +343,8 @@
         - name: 虚拟机选择器工具
           href: 'https://aka.ms/vm-selector'
         - name: 更改 VM 大小
-          items:
-            - name: CLI
-              displayName: 'Change, resize, update size'
-              href: ./linux/change-vm-size.md
-            - name: 门户或 PowerShell
-              displayName: 'Change, resize, update size'
-              href: ./windows/resize-vm.md
+          displayName: 'Change, resize, update size'
+          href: resize-vm.md
         - name: 状态和计费
           href: states-billing.md
         - name: 不带临时磁盘的 Azure VM
@@ -403,28 +404,28 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: 产能预留（预览版）
       items:
-        - name: 概述（预览版）
+        - name: 概述
           displayName: on-demand capacity reservation
           href: capacity-reservation-overview.md
-        - name: 创建产能预留（预览版）
+        - name: 创建容量预留
           displayName: on-demand capacity reservation
           href: capacity-reservation-create.md
-        - name: 超量分配产能预留（预览版）
+        - name: 超量分配产能预留
           displayName: on-demand capacity reservation
           href: capacity-reservation-overallocate.md
-        - name: 修改产能预留（预览版）
+        - name: 修改产能预留
           displayName: on-demand capacity reservation
           href: capacity-reservation-modify.md
-        - name: 关联 VM（预览版）
+        - name: 关联 VM
           displayName: on-demand capacity reservation
           href: capacity-reservation-associate-vm.md
-        - name: 删除 VM（预览版）
+        - name: 删除 VM
           displayName: on-demand capacity reservation
           href: capacity-reservation-remove-vm.md
-        - name: 关联 VM 规模集（预览版）
+        - name: 关联虚拟机规模集
           displayName: on-demand capacity reservation
           href: capacity-reservation-associate-virtual-machine-scale-set.md
-        - name: 删除 VM 规模集（预览版）
+        - name: 删除虚拟机规模集
           displayName: on-demand capacity reservation
           href: capacity-reservation-remove-virtual-machine-scale-set.md
     - name: 创建虚拟机

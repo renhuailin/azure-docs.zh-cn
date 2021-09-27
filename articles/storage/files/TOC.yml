@@ -9,14 +9,8 @@
   items:
     - name: 创建/使用文件共享 - Windows
       href: storage-files-quick-create-use-windows.md
-    - name: 创建文件共享 - 门户
+    - name: 创建文件共享
       href: storage-how-to-use-files-portal.md
-    - name: 创建文件共享 - PowerShell
-      href: storage-how-to-use-files-powershell.md
-    - name: 创建文件共享 - CLI
-      href: storage-how-to-use-files-cli.md
-    - name: 创建文件共享 - 存储资源管理器
-      href: storage-how-to-use-files-storage-explorer.md
 - name: 教程
   items:
     - name: 使用 Azure 文件同步扩展 Windows 文件服务器
@@ -177,7 +171,7 @@
           href: storage-files-migration-overview.md
         - name: 面向仅限云的部署
           items:
-            - name: 从 RoboCopy 迁移到 Azure 文件共享
+            - name: 使用 RoboCopy 迁移到 Azure 文件共享
               href: storage-files-migration-robocopy.md
             - name: 使用 DataBox 从本地 NAS 迁移到 Azure 文件共享
               href: storage-files-migration-nas-cloud-databox.md

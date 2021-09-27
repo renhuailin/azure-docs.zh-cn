@@ -29,15 +29,19 @@ items:
           - name: 大规模进行 Azure Purview MSI 配置
             href: tutorial-msi-configuration.md
       - name: 注册和扫描本地 SQL Server
-        href: register-scan-on-premises-sql-server.md
-      - name: 调用目录的 REST API
+        href: tutorial-register-scan-on-premises-sql-server.md
+      - name: 如何使用 Purview 数据平面的 REST API
         href: tutorial-using-rest-apis.md
   - name: 概念
     items:
       - name: 使用 Purview Studio
         href: use-purview-studio.md
-      - name: 部署最佳做法
-        href: deployment-best-practices.md
+      - name: 最佳做法
+        items:
+          - name: 部署最佳做法
+            href: deployment-best-practices.md
+          - name: 集合体系结构
+            href: concept-best-practices-collections.md
       - name: Azure Purview 限制
         href: how-to-manage-quotas.md
       - name: 扫描和引入
@@ -231,12 +235,10 @@ items:
             items:
               - name: 专用终结点概述
                 href: catalog-private-link.md
-              - name: 隔离用于 Purview 帐户和门户的网络
-                href: catalog-private-link-account-portal.md
-              - name: 隔离网络以进行扫描
-                href: catalog-private-link-ingestion.md
               - name: 端到端网络隔离
                 href: catalog-private-link-end-to-end.md
+              - name: 隔离用于 Purview 帐户和门户的网络
+                href: catalog-private-link-account-portal.md
               - name: 为专用终结点配置 DNS
                 href: catalog-private-link-name-resolution.md
               - name: 对专用终结点进行故障排除
