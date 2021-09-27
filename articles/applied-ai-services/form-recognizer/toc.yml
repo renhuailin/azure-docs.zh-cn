@@ -41,6 +41,8 @@
       href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/applied-ai-services/form-recognizer/context/context
 - name: 操作指南
   items:
+    - name: 为 Azure Blob 容器生成 SAS 令牌
+      href: generate-sas-tokens.md
     - name: 使用示例标记工具训练自定义模型
       href: label-tool.md
     - name: 生成训练数据集
