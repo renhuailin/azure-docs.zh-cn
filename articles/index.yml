@@ -340,12 +340,6 @@ productDirectory:
       azureCategories:
         - analytics
       url: hdinsight/r-server/r-server-overview.md
-    - title: Azure 区块链服务（预览版）
-      summary: 构建、管理和扩展联盟区块链网络
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/blockchain-service.svg'
-      azureCategories:
-        - blockchain
-      url: blockchain/service/index.yml
     - title: Azure Blockchain Workbench（预览版）
       summary: 在云中轻松构建区块链应用原型
       imageSrc: 'https://static.docs.com/ui/media/product/azure/blockchain-workbench.svg'

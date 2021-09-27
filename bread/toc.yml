@@ -533,7 +533,7 @@
     - name: 专用 HSM
       tocHref: /azure/dedicated-hsm/
       topicHref: /azure/dedicated-hsm/
-    - name: 开发测试实验室
+    - name: Azure 开发测试实验室
       tocHref: /azure/devtest-labs/
       topicHref: /azure/devtest-labs/
     - name: FXT Edge Filer

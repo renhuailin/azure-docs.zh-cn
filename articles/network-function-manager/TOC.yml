@@ -21,6 +21,8 @@
       href: faq.md
 - name: 参考
   items:
+    - name: REST
+      href: /rest/api/hybridnetwork
     - name: 用于 Java 的 SDK
       href: 'https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/hybridnetwork/azure-resourcemanager-hybridnetwork'
     - name: 用于 Python 的 SDK
