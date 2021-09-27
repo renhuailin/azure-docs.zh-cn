@@ -225,6 +225,8 @@
           href: sql/cli-samples.md
         - name: Azure 资源管理器
           href: sql/templates-samples-sql.md
+        - name: Bicep
+          href: sql/bicep-samples.md
     - name: 概念
       items:
         - name: 建模和分区
@@ -788,7 +790,7 @@
                 - name: 排查请求速度缓慢的问题
                   href: sql/troubleshoot-dot-net-sdk-slow-request.md
                 - name: 排查服务不可用故障
-                  href: troubleshoot-service-unavailable.md
+                  href: sql/troubleshoot-service-unavailable.md
             - name: .Java
               items:
                 - name: 排查 Java SDK v4 问题
@@ -1065,6 +1067,8 @@
         - name: 使用资源管理器模板进行管理
           href: cassandra/templates-samples.md
           displayName: ARM
+        - name: 使用 Bicep 进行管理
+          href: cassandra/manage-with-bicep.md
         - name: 使用 PowerShell 管理
           href: cassandra/powershell-samples.md
         - name: 使用 Azure CLI 进行管理
@@ -1205,6 +1209,8 @@
         - name: 使用资源管理器模板进行管理
           href: mongodb/resource-manager-template-samples.md
           displayName: ARM
+        - name: 使用 Bicep 进行管理
+          href: mongodb/manage-with-bicep.md
         - name: 使用 PowerShell 管理
           href: mongodb/powershell-samples.md
         - name: 使用 Azure CLI 进行管理
@@ -1289,6 +1295,8 @@
         - name: 使用资源管理器模板进行管理
           href: graph/resource-manager-template-samples.md
           displayName: ARM
+        - name: 使用 Bicep 进行管理
+          href: graph/manage-with-bicep.md
         - name: 使用 PowerShell 管理
           href: graph/powershell-samples.md
         - name: 使用 Azure CLI 进行管理
@@ -1364,6 +1372,8 @@
           href: table/find-request-unit-charge.md
         - name: 使用资源管理器模板进行管理
           href: table/resource-manager-templates.md
+        - name: 使用 Bicep 进行管理
+          href: table/manage-with-bicep.md
           displayName: ARM
         - name: 使用 PowerShell 管理
           href: table/powershell-samples.md
@@ -1402,6 +1412,9 @@
           href: sql/manage-with-powershell.md
         - name: 使用 Azure CLI
           href: sql/manage-with-cli.md
+        - name: 使用 Bicep
+          href: sql/manage-with-bicep.md
+          displayName: ARM
         - name: 使用资源管理器模板
           href: sql/manage-with-templates.md
           displayName: ARM
@@ -1504,6 +1517,8 @@
               href: monitor-server-side-latency.md
             - name: 监视请求单位使用情况
               href: monitor-request-unit-usage.md
+            - name: 监视密钥更新
+              href: monitor-account-key-updates.md
             - name: 监视规范化请求单位使用情况
               href: monitor-normalized-request-units.md
         - name: 使用 Azure Monitor 日志

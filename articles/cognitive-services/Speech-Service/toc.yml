@@ -97,7 +97,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -196,7 +196,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -241,7 +241,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -288,7 +288,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: /java/api/com.microsoft.cognitiveservices.speech
-            - name: JavaScript
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
@@ -365,7 +365,7 @@
                     - name: Java
                       displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                       href: /java/api/com.microsoft.cognitiveservices.speech
-                    - name: JavaScript
+                    - name: Javascript
                       displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                       href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
                     - name: Objective-C
@@ -589,7 +589,7 @@
               href: /dotnet/api/microsoft.cognitiveservices.speech
             - name: Java
               href: /java/api/com.microsoft.cognitiveservices.speech
-            - name: JavaScript
+            - name: Javascript
               href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
               href: /objectivec/cognitive-services/speech/
@@ -618,6 +618,8 @@
       items:
         - name: Speech Studio 概述
           href: speech-studio-overview.md
+        - name: Speech Studio 中基于角色的访问控制
+          href: speech-studio-role-based-access-control.md
     - name: 企业就绪情况
       items:
         - name: 区域支持

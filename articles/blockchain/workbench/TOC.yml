@@ -23,6 +23,8 @@
   items:
     - name: 部署 Workbench
       href: deploy.md
+    - name: 迁移到另一个账本
+      href: 'https://github.com/Azure-Samples/blockchain/blob/caleteet-migration/migration/abw-migration.md'
     - name: 管理 Workbench 用户
       href: manage-users.md
     - name: 版本控制应用
@@ -67,9 +69,3 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: 产品反馈
       href: 'https://aka.ms/blockchainuservoice'
-- name: 解决方案模板
-  items:
-    - name: Ethereum 权威证明联盟
-      href: ../templates/ethereum-poa-deployment.md
-    - name: Hyperledger Fabric 联盟 Azure Kubernetes 服务
-      href: ../templates/hyperledger-fabric-consortium-azure-kubernetes-service.md
