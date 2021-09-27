@@ -1,18 +1,18 @@
 ---
 title: Azure 安全基准基础蓝图示例概述
 description: Azure 安全基准基础蓝图示例的概述和体系结构。
-ms.date: 03/12/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: a60f70b1f3e9d810ccded8bbeee726ea950524e9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 82521251ca395a0d5a1409dae62954950b7da8a3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739252"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614724"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure 安全基准基础蓝图示例的概述
 
-Azure 安全基准基础蓝图示例提供一套基线基础结构模式来帮助你构建安全且合规的 Azure 环境。 此蓝图有助于部署基于云的体系结构，以便为有认证或合规性要求的方案提供解决方案。 此基本蓝图示例是 [Azure 安全基准示例蓝图](../azure-security-benchmark.md)的一个扩展。 它根据 [Azure 安全基准](../../../../security/benchmarks/index.yml)中定义的策略和其他规范措施部署和配置网络边界、监视和其他资源。
+Azure 安全基准基础蓝图示例提供一套基线基础结构模式来帮助你构建安全且合规的 Azure 环境。 此蓝图有助于部署基于云的体系结构，以便为有认证或合规性要求的方案提供解决方案。 它根据 [Azure 安全基准](../../../../security/benchmarks/index.yml)中定义的策略和其他规范措施部署和配置网络边界、监视和其他资源。
 
 ## <a name="architecture"></a>体系结构
 
