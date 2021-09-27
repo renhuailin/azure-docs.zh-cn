@@ -324,6 +324,12 @@
           href: stream-analytics-machine-learning-anomaly-detection.md
         - name: 使用 ML REST API
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+    - name: 从 Application Insights 导出
+      items:
+        - name: 导出到流分析
+          href: app-insights-export-stream-analytics.md
+        - name: 使用流分析导出到 SQL
+          href: app-insights-export-sql-stream-analytics.md
     - name: 使用作业关系图进行调试
       href: stream-analytics-job-diagram-with-metrics.md
     - name: 利用 ML 函数进行缩放

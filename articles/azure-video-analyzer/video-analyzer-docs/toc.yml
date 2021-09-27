@@ -113,6 +113,8 @@
           href: playback-recordings-how-to.md
         - name: 使用 Azure 视频分析器播放机小组件
           href: player-widget.md
+        - name: 播放机小组件示例应用
+          href: sample-player-widget.md
         - name: 使用访问策略进行播放
           href: access-policies.md
     - name: 记录
@@ -135,6 +137,8 @@
       items:
         - name: 监视和日志记录
           href: monitor-log-edge.md
+        - name: 公共终结点
+          href: access-public-endpoints-networking.md
     - name: 可视化
       items:
         - name: 在 Power BI 中嵌入播放器小组件
@@ -173,3 +177,5 @@
       href: faq-edge.yml
     - name: 配额和限制
       href: quotas-limitations.md
+    - name: Azure 视频分析 Terraform 资源
+      href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/video_analyzer'

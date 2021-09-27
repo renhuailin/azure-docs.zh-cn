@@ -3,12 +3,12 @@ title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
 ms.date: 08/17/2021
 ms.topic: sample
-ms.openlocfilehash: 22c6e1382fdfbd7cafb423e99239fe2480d3b088
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 31cf137577301402cd9e26d96a1204f427331daf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322127"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658291"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -19,16 +19,11 @@ ms.locfileid: "122322127"
 | 示例 | 说明 |
 |---------|---------|
 | [澳大利亚政府 ISM PROTECTED](./ism-protected/index.md) | 提供可帮助满足澳大利亚政府 ISM PROTECTED 的规范措施。 |
-| [Azure 安全基准](./azure-security-benchmark.md) | 提供可帮助符合 [Azure 安全基准](../../../security/benchmarks/overview.md)的规范措施。 |
 | [Azure 安全基准基础](./azure-security-benchmark-foundation/index.md) | 部署和配置 Azure 安全基准基础。 |
 | [加拿大联邦 PBMM](./canada-federal-pbmm.md) | 提供防护措施，以便符合加拿大联邦受保护的 B、中等完整性、中等可用性 (PBMM)。 |
 | [CIS Microsoft Azure 基础基准检验 v1.3.0](./cis-azure-1-3-0.md) | 提供一组策略以帮助符合 CIS Microsoft Azure 基础基准 v1.3.0 建议。 |
 | [CIS Microsoft Azure 基础基准检验 v1.1.0](./cis-azure-1-1-0.md) | 提供一组策略以帮助符合 CIS Microsoft Azure 基础基准 v1.1.0 建议。 |
 | [CMMC 级别 3](./cmmc-l3.md) | 提供可帮助符合 CMMC 级别 3 的规范措施。 |
-| [DoD 影响级别 4](./dod-impact-level-4/index.md) | 提供了一组策略以帮助符合 DoD 影响级别 4。 |
-| [DoD 影响级别 5](./dod-impact-level-5/index.md) | 提供了一组策略以帮助符合 DoD 影响级别 5。 |
-| [FedRAMP Moderate](./fedramp-m/index.md) | 提供了一组策略以帮助符合 FedRAMP Moderate。 |
-| [FedRAMP High](./fedramp-h/index.md) | 提供了一组策略以帮助符合 FedRAMP High。 |
 | [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | 提供了一组有助于符合 HIPAA HITRUST 的策略。 |
 | [IRS 1075 2016 年 9 月](./irs-1075-sept2016.md) | 提供可帮助符合 IRS 1075 的规范措施。|
 | [ISO 27001](./iso-27001-2013.md) | 提供可帮助符合 ISO 27001 的规范措施。 |
@@ -36,7 +31,6 @@ ms.locfileid: "122322127"
 | [ISO 27001 应用服务环境/SQL 数据库工作负荷](./iso27001-ase-sql-workload/index.md) | 为 [ISO 27001 共享服务](./iso27001-shared/index.md)蓝图示例提供了更多基础结构。 |
 | [介质](./media/index.md) | 提供了一组策略以帮助符合媒体 MPAA。 |
 | [受限于新西兰 ISM](./new-zealand-ism.md) | 分配策略以处理“新西兰信息安全手册”的具体控制。 |
-| [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | 提供可帮助符合 NIST SP 800-53 R4 的规范措施。 |
 | [NIST SP 800-171 R2](./nist-sp-800-171-r2.md) | 提供可帮助符合 NIST SP 800-171 R2 的规范措施。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一组策略以帮助用户符合 PCI-DSS v3.2.1。 |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | 帮助用户符合 SWIFT CSP-CSCF v2020。 |

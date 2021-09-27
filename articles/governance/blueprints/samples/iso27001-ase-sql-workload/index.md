@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL 工作负荷蓝图示例概述
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述和体系结构。
-ms.date: 04/30/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: e8af838861d8ab9fd7863f99d63bf60ff5e3c56b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 19a81d873873bec1d4bfa38d4bf39b407a4e7f76
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772578"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674996"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述
 
