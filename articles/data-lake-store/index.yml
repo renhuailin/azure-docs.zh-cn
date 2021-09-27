@@ -6,15 +6,15 @@ metadata:
   description: 了解如何设置、管理和访问具有超高可伸缩性、与 Hadoop 兼容的 Data Lake 存储库，用于对任何大小、类型和引入速度的数据执行分析。
   ms.service: data-lake-store
   ms.topic: landing-page
-  author: twooley
-  ms.author: twooley
+  author: normesta
+  ms.author: normesta
   ms.date: 03/11/2020
-  ms.openlocfilehash: 09685af7a10c8624cb8b1442189cd68057031e9d
-  ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+  ms.openlocfilehash: f94c92bd1fbeeba31f9b45e766ff8f37b4bee556
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/16/2020
-  ms.locfileid: "92106529"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128678604"
 landingContent:
 - title: 关于 Azure Data Lake Storage Gen1
   linkLists:

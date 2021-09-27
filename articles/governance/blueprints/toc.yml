@@ -39,9 +39,6 @@
     - name: 索引
       displayName: 'list, examples'
       href: ./samples/index.md
-    - name: Azure 安全基准
-      displayName: 'standards, azure, benchmark'
-      href: ./samples/azure-security-benchmark.md
     - name: Azure 安全基准基础
       items:
         - name: 概述
@@ -72,50 +69,6 @@
     - name: CMMC 级别 3
       displayName: 'standards, cmmc'
       href: ./samples/cmmc-l3.md
-    - name: DoD 影响级别 4
-      items:
-        - name: 概述
-          displayName: 'standards, DoD, IL4'
-          href: ./samples/dod-impact-level-4/index.md
-        - name: 控制映射
-          displayName: 'standards, DoD, IL4'
-          href: ./samples/dod-impact-level-4/control-mapping.md
-        - name: 部署步骤
-          displayName: 'standards, DoD, IL4'
-          href: ./samples/dod-impact-level-4/deploy.md
-    - name: DoD 影响级别 5
-      items:
-        - name: 概述
-          displayName: 'standards, DoD, IL5'
-          href: ./samples/dod-impact-level-5/index.md
-        - name: 控制映射
-          displayName: 'standards, DoD, IL5'
-          href: ./samples/dod-impact-level-5/control-mapping.md
-        - name: 部署步骤
-          displayName: 'standards, DoD, IL5'
-          href: ./samples/dod-impact-level-5/deploy.md
-    - name: FedRAMP 中等
-      items:
-        - name: 概述
-          displayName: 'standards, fedramp, moderate'
-          href: ./samples/fedramp-m/index.md
-        - name: 控制映射
-          displayName: 'standards, fedramp, moderate'
-          href: ./samples/fedramp-m/control-mapping.md
-        - name: 部署步骤
-          displayName: 'standards, fedramp, moderate'
-          href: ./samples/fedramp-m/deploy.md
-    - name: FedRAMP 高
-      items:
-        - name: 概述
-          displayName: 'standards, fedramp, high'
-          href: ./samples/fedramp-h/index.md
-        - name: 控制映射
-          displayName: 'standards, fedramp, high'
-          href: ./samples/fedramp-h/control-mapping.md
-        - name: 部署步骤
-          displayName: 'standards, fedramp, high'
-          href: ./samples/fedramp-h/deploy.md
     - name: HIPAA HITRUST 9.2
       displayName: 'standards, HIPAA HITRUST'
       href: ./samples/hipaa-hitrust-9-2.md
@@ -157,12 +110,9 @@
         - name: 部署步骤
           displayName: 'standards, Media'
           href: ./samples/media/deploy.md
-    - name: 受限于新西兰 ISM
+    - name: 限制性的新西兰 ISM
       displayName: 'standards, NZISM'
       href: ./samples/new-zealand-ism.md
-    - name: NIST SP 800-53 R4
-      displayName: 'standards, nist, 800-53, rev 4'
-      href: ./samples/nist-sp-800-53-r4.md
     - name: NIST SP 800-171 R2
       displayName: 'standards, nist, 800-171, rev 2'
       href: ./samples/nist-sp-800-171-r2.md
