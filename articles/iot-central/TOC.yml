@@ -253,8 +253,6 @@
       href: core/howto-faq.yml
     - name: 管理个人首选项
       href: core/howto-manage-preferences.md
-    - name: 切换实时聊天
-      href: core/howto-show-hide-chat.md
 - name: 参考
   items:
     - name: Azure CLI

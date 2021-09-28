@@ -326,6 +326,8 @@
       items:
         - name: 概述
           href: sap-hana-db-about.md
+        - name: 体系结构
+          href: azure-backup-architecture-for-sap-hana-backup.md
         - name: 备份
           href: backup-azure-sap-hana-database.md
         - name: 还原
