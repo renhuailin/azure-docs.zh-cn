@@ -42,7 +42,7 @@ Kubernetes 社区现在采用“树外”模型，其中云提供商将通过 [c
 若要使用云控制器管理器功能，必须在订阅上启用 `EnableCloudControllerManager` 功能标志。 
 
 ```azurecli
-az feature register –name EnableCloudControllerManager --namespace Microsoft.ContainerService
+az feature register --name EnableCloudControllerManager --namespace Microsoft.ContainerService
 ```
 可使用 [az feature list][az-feature-list] 命令来检查注册状态：
 
