@@ -106,6 +106,8 @@
           href: vs-key-vault-add-connected-service.md
     - name: 监视和监管
       items:
+        - name: 监视 Key Vault
+          href: monitor-key-vault.md
         - name: 事件网格通知
           items:
             - name: 通过逻辑应用接收通知
@@ -114,7 +116,9 @@
               href: event-grid-tutorial.md
         - name: 启用日志记录
           href: howto-logging.md
-        - name: 使用 Azure Monitor 为 Azure Key Vault 配置监视和警报
+        - name: 监视 Azure Key Vault
+          href: monitor-key-vault.md
+        - name: 为 Azure Key Vault 配置警报
           href: alert.md
         - name: 通过软删除和清除保护实现恢复管理
           href: key-vault-recovery.md
@@ -146,6 +150,8 @@
   items:
     - name: 新增功能
       href: whats-new.md
+    - name: 监视 Key Vault 数据引用
+      href: monitor-key-vault-reference.md
     - name: 客户端库
       href: client-libraries.md
     - name: REST API 错误代码

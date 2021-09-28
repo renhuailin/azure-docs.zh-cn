@@ -10,19 +10,17 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 添加应用
+    - name: 添加应用程序
       href: add-application-portal.md
-    - name: 配置应用
-      href: add-application-portal-configure.md
-    - name: 向应用分配用户
+    - name: 分配用户
       href: add-application-portal-assign-users.md
-    - name: 设置基于 SAML 的单一登录
+    - name: 启用单一登录
       href: add-application-portal-setup-sso.md
-    - name: 设置基于 OIDC 的单一登录
-      href: add-application-portal-setup-oidc-sso.md
-    - name: 查看你的应用
+    - name: 配置属性
+      href: add-application-portal-configure.md
+    - name: 查看应用程序
       href: view-applications-portal.md
-    - name: 删除应用
+    - name: 删除应用程序
       href: delete-application-portal.md
 - name: 教程
   items:
@@ -47,6 +45,8 @@
       href: application-management-fundamentals.md
     - name: 应用管理常用方案
       href: common-scenarios.md
+    - name: 主领域发现策略
+      href: home-realm-discovery-policy.md
     - name: 计划云应用集成
       items:
         - name: 应用集成入门
@@ -55,10 +55,10 @@
           href: my-apps-deployment-plan.md
     - name: 单一登录
       items:
+        - name: 部署规划
+          href: plan-sso-deployment.md
         - name: 什么是单一登录？
           href: what-is-single-sign-on.md
-        - name: 计划单一登录部署
-          href: plan-sso-deployment.md
     - name: 应用程序安全性
       items:
         - name: 应用访问选项
@@ -152,10 +152,12 @@
           href: f5-aad-password-less-vpn.md
     - name: 单一登录
       items:
-        - name: 基于密码的单一登录
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: 连接单一登录
+        - name: 链接
           href: configure-linked-sign-on.md
+        - name: OpenID Connect
+          href: add-application-portal-setup-oidc-sso.md
+        - name: 密码
+          href: configure-password-single-sign-on-non-gallery-applications.md
     - name: 疑难解答
       items:
         - name: 排查基于密码的单一登录问题

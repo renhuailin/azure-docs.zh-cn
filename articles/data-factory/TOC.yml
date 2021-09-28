@@ -564,6 +564,8 @@ items:
             href: control-flow-append-variable-activity.md
           - name: 执行管道活动
             href: control-flow-execute-pipeline-activity.md
+          - name: 失败活动
+            href: control-flow-fail-activity.md
           - name: 筛选活动
             href: control-flow-filter-activity.md
           - name: For Each 活动

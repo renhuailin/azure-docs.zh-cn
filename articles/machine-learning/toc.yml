@@ -276,7 +276,7 @@
         - name: 安全编码
           href: concept-secure-code-best-practice.md
           displayName: security threat
-        - name: 审核和管理合规性
+        - name: 审核和管理
           href: how-to-integrate-azure-policy.md
           displayName: policy
     - name: 工作区和计算资源

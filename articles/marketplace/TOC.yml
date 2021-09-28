@@ -509,36 +509,46 @@
   items:
     - name: 市场 API 指南
       href: marketplace-apis-guide.md
-    - name: CPP API 参考
+    - name: 市场提交 API
       items:
-        - name: CPP API 概述
-          href: cloud-partner-portal-api-overview.md
-        - name: API 先决条件
-          href: cloud-partner-portal-api-prerequisites.md
-        - name: API 注意事项
-          href: cloud-partner-portal-api-considerations.md
-        - name: 并发控制
-          href: cloud-partner-portal-api-concurrency-control.md
-        - name: 检索产品/服务
-          href: cloud-partner-portal-api-retrieve-offers.md
-        - name: 检索特定套餐
-          href: cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: 添加或修改套餐
-          href: cloud-partner-portal-api-creating-offer.md
-        - name: 检索产品/服务状态
-          href: cloud-partner-portal-api-retrieve-offer-status.md
-        - name: 发布产品/服务
-          href: cloud-partner-portal-api-publish-offer.md
-        - name: 检索操作
-          href: cloud-partner-portal-api-retrieve-operations.md
-        - name: 取消操作
-          href: cloud-partner-portal-api-cancel-operations.md
-        - name: 投入使用
-          href: cloud-partner-portal-api-go-live.md
-        - name: 虚拟机套餐的定价
-          href: cloud-partner-portal-api-setting-price.md
-        - name: 排查身份验证错误
-          href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
+        - name: 市场提交 API 概述
+          href: submission-api-overview.md
+        - name: 合作伙伴中心提交 API
+          items:
+            - name: API 先决条件
+              href: submission-api-onboard.md
+            - name: 合作伙伴中心提交 API
+              href: 'https://apidocs.microsoft.com/services/partneringestion/'
+        - name: 旧提交 API
+          items:
+            - name: 旧 API 概述
+              href: cloud-partner-portal-api-overview.md
+            - name: API 先决条件
+              href: cloud-partner-portal-api-prerequisites.md
+            - name: API 注意事项
+              href: cloud-partner-portal-api-considerations.md
+            - name: 并发控制
+              href: cloud-partner-portal-api-concurrency-control.md
+            - name: 检索产品/服务
+              href: cloud-partner-portal-api-retrieve-offers.md
+            - name: 检索特定套餐
+              href: cloud-partner-portal-api-retrieve-specific-offer.md
+            - name: 添加或修改套餐
+              href: cloud-partner-portal-api-creating-offer.md
+            - name: 检索产品/服务状态
+              href: cloud-partner-portal-api-retrieve-offer-status.md
+            - name: 发布产品/服务
+              href: cloud-partner-portal-api-publish-offer.md
+            - name: 检索操作
+              href: cloud-partner-portal-api-retrieve-operations.md
+            - name: 取消操作
+              href: cloud-partner-portal-api-cancel-operations.md
+            - name: 投入使用
+              href: cloud-partner-portal-api-go-live.md
+            - name: 虚拟机套餐的定价
+              href: cloud-partner-portal-api-setting-price.md
+            - name: 排查身份验证错误
+              href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: 市场计量服务
       items:
         - name: 异常情况检测服务

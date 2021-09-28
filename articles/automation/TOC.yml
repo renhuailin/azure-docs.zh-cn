@@ -30,6 +30,8 @@
   items:
     - name: 自动化帐户身份验证概述
       href: automation-security-overview.md
+    - name: 自动化中的上下文切换
+      href: context-switching.md
     - name: Runbook 执行概述
       href: automation-runbook-execution.md
     - name: 混合 Runbook 辅助角色概述

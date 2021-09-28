@@ -104,6 +104,8 @@
       href: samples-resource-manager-templates.md
     - name: Terraform
       href: samples-terraform.md
+    - name: Bicep
+      href: samples-bicep.md
 - name: 概念
   items:
     - name: 应用服务计划
@@ -321,6 +323,12 @@
       items:
         - name: 配置高可用性
           href: how-to-zone-redundancy.md
+    - name: 自动预配
+      items:
+        - name: Bicep
+          href: provision-resource-bicep.md
+        - name: Terraform
+          href: provision-resource-terraform.md
 - name: 参考
   items:
     - name: 监视数据
@@ -368,7 +376,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查间歇性出站连接错误
           href: troubleshoot-intermittent-outbound-connection-errors.md
