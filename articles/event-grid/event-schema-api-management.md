@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: dlepow
 ms.author: danlep
 ms.date: 07/12/2021
-ms.openlocfilehash: c14107561886a9e29c2d95c5d04847274afdf4e3
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e2f56f8886a387158c148edaf9ae557deac3783f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733857"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659146"
 ---
 # <a name="azure-api-management-as-an-event-grid-source-preview"></a>将 Azure API 管理用作事件网格源（预览版）
 
@@ -22,21 +22,21 @@ API Management 发出以下事件类型：
 
 | 事件类型 | 说明 |
 | ---------- | ----------- |
-| Microsoft.APIManagement.UserCreated | 创建用户时引发。 |
-| Microsoft.APIManagement.UserUpdated | 更新用户时引发。 |
-| Microsoft.APIManagement.UserDeleted | 删除用户时引发。 |
-| Microsoft.APIManagement.APICreated | 创建 API 时引发。 |
-| Microsoft.APIManagement.APIUpdated | 更新 API 时引发。 |
-| Microsoft.APIManagement.APIDeleted | 删除 API 时引发。 |
-| Microsoft.APIManagement.ProductCreated | 创建产品时引发。 |
-| Microsoft.APIManagement.ProductUpdated | 更新产品时引发。 |
-| Microsoft.APIManagement.ProductDeleted | 删除产品时引发。 |
-| Microsoft.APIManagement.ReleaseCreated | 创建 API 发布时引发。 |
-| Microsoft.APIManagement.ReleaseUpdated | 更新 API 发布时引发。 |
-| Microsoft.APIManagement.ReleaseDeleted | 删除 API 发布时引发。 |
-| Microsoft.APIManagement.SubscriptionCreated | 创建订阅时引发。 |
-| Microsoft.APIManagement.SubscriptionUpdated | 更新订阅时引发。 |
-| Microsoft.APIManagement.SubscriptionDeleted | 删除订阅时引发。 |
+| Microsoft.ApiManagement.UserCreated | 创建用户时引发。 |
+| Microsoft.ApiManagement.UserUpdated | 更新用户时引发。 |
+| Microsoft.ApiManagement.UserDeleted | 删除用户时引发。 |
+| Microsoft.ApiManagement.APICreated | 创建 API 时引发。 |
+| Microsoft.ApiManagement.APIUpdated | 更新 API 时引发。 |
+| Microsoft.ApiManagement.APIDeleted | 删除 API 时引发。 |
+| Microsoft.ApiManagement.ProductCreated | 创建产品时引发。 |
+| Microsoft.ApiManagement.ProductUpdated | 更新产品时引发。 |
+| Microsoft.ApiManagement.ProductDeleted | 删除产品时引发。 |
+| Microsoft.ApiManagement.ReleaseCreated | 创建 API 发布时引发。 |
+| Microsoft.ApiManagement.ReleaseUpdated | 更新 API 发布时引发。 |
+| Microsoft.ApiManagement.ReleaseDeleted | 删除 API 发布时引发。 |
+| Microsoft.ApiManagement.SubscriptionCreated | 创建订阅时引发。 |
+| Microsoft.ApiManagement.SubscriptionUpdated | 更新订阅时引发。 |
+| Microsoft.ApiManagement.SubscriptionDeleted | 删除订阅时引发。 |
 
 ## <a name="example-event"></a>示例事件
 
@@ -116,16 +116,13 @@ API Management 发出以下事件类型：
 
 # <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
 
-以下示例显示了 API 更新事件的架构。 `data` 属性包含 `updatedProperies` 数组和 `resourceUri`。  其他 API 管理资源更新事件的架构类似。 
+以下示例显示了 API 更新事件的架构。 其他 API 管理资源更新事件的架构类似。 
 ```json
 [{
   "id": "95015754-aa51-4eb6-98d9-9ee322b82ad7",
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}",
   "subject": "/apis/myapi;Rev=1",
   "data": {
-    "updatedProperties": [
-      "path"
-    ],
     "resourceUri": "/subscriptions/subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
   },
   "eventType": "Microsoft.ApiManagement.APIUpdated",
@@ -137,7 +134,7 @@ API Management 发出以下事件类型：
 
 # <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
 
-以下示例显示了 API 更新事件的架构。 `data` 属性包含 `updatedProperies` 数组和 `resourceUri`。  其他 API 管理资源更新事件的架构类似。 
+以下示例显示了 API 更新事件的架构。 其他 API 管理资源更新事件的架构类似。 
 
 ```json
 [{
@@ -145,10 +142,7 @@ API Management 发出以下事件类型：
   "source": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}",
   "subject": "/apis/myapi;Rev=1",
   "data": {
-    "updatedProperties": [
-      "path"
-    ],
-    "resourceUri": "/subscriptions/subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
   },
   "Type": "Microsoft.ApiManagement.APIUpdated",
   "Time": "2021-07-12T23:13:44.9048323Z",
@@ -166,7 +160,7 @@ API Management 发出以下事件类型：
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `topic` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| `subject` | string | 符合性状态更改所针对的资源的完全限定 ID，包括资源名称和资源类型。 使用格式 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
+| `subject` | string | 事件主题的发布者定义路径。 |
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | string | 事件的唯一标识符。 |
@@ -181,7 +175,7 @@ API Management 发出以下事件类型：
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `source` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| `subject` | string | 符合性状态更改所针对的资源的完全限定 ID，包括资源名称和资源类型。 使用格式 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
+| `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | string | 事件的唯一标识符。 |
@@ -194,8 +188,7 @@ API Management 发出以下事件类型：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| `resourceUri` | string | 触发事件的 API 管理资源的 URI。 |
-| `updatedProperties` | string[] | 触发更新事件的 API 管理资源中更新的属性列表。 |
+| `resourceUri` | string | 符合性状态更改所针对的资源的完全限定 ID，包括资源名称和资源类型。 使用 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/Microsoft.ApiManagement/service/<ServiceName>/<ResourceType>/<ResourceName>` 格式 |
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
 

@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9298c3c6f7d6c634ed5647a6473e0780cd82bf1d
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c5d7adc35829e60f40c74f310023b2ea5a259cec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798886"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754309"
 ---
 # <a name="azure-active-directory-security-operations-for-devices"></a>Azure Active Directory 设备安全操作
 
@@ -56,15 +56,15 @@ ms.locfileid: "113798886"
 
 * [登录日志](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide.md) 
+* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault 日志](../..//key-vault/general/logging.md?tabs=Vault)
 
-在 Azure 门户中，你可以查看 Azure AD 审核日志，并以逗号分隔值 (CSV) 或 JavaScript 对象表示法 (JSON) 文件格式下载。 Azure 门户提供多种将 Azure AD 日志与其他工具集成的方法，能够实现更好的监视和警报自动化：
+在 Azure 门户中，你可以查看 Azure AD 审核日志，并以逗号分隔值 (CSV) 或 JavaScript 对象表示法 (JSON) 文件格式下载。 Azure 门户提供多种方法将 Azure AD 日志与其他便于更好地自动执行监视和警报的工具集成：
 
-* **[Azure Sentinel](../../sentinel/overview.md)** – 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
+* [Azure Sentinel](../../sentinel/overview.md) - 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
 
-* **[Azure Monitor](../..//azure-monitor/overview.md)** – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿来合并不同源的数据。
+* [Azure Monitor](../..//azure-monitor/overview.md) – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿来合并不同源的数据。
 
 * 与 SIEM 集成的 [Azure 事件中心](../../event-hubs/event-hubs-about.md) -  通过 Azure 事件中心集成[可将 Azure AD 日志集成到其他 SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)，例如 Splunk、ArcSight、QRadar 和 Sumo Logic。
 
@@ -220,11 +220,11 @@ Ubuntu 示例：
 
 [特权帐户的安全操作](security-operations-privileged-accounts.md)
 
-[Privileged Identity Management 安全操作](security-operations-privileged-identity-management.md)
+[Privileged Identity Management 的安全操作](security-operations-privileged-identity-management.md)
 
 [应用程序的安全操作](security-operations-applications.md)
 
 [设备的安全操作](security-operations-devices.md)
 
  
-[基础结构安全操作](security-operations-infrastructure.md)
+[基础结构的安全操作](security-operations-infrastructure.md)

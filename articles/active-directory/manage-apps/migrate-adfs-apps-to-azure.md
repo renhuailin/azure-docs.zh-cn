@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 6633d7a6ed7def1a2c3ee7f0262c16b106275bfa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 420b1a0042dff8b643dc98f3b3f92e33be8c2d75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742903"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791757"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
 
@@ -409,11 +409,11 @@ AD FS 2016 中的内置访问控制策略：
 
 根据你配置应用的方式，验证 SSO 是否正常工作。
 
-| 身份验证类型| 测试 |
+| 身份验证类型| 正在测试 |
 | :- | :- |
 | OAuth/OpenID Connect| 选择“企业应用程序”>“权限”，并确保你已在应用的用户设置中许可该应用程序。|
 | 基于 SAML 的 SSO | 使用“单一登录”下的[测试 SAML 设置](debug-saml-sso-issues.md)按钮。 |
-| 基于密码的 SSO |  下载并安装 [MyApps 安全](../user-help/my-apps-portal-end-user-access.md)[登录](../user-help/my-apps-portal-end-user-access.md)[扩展](../user-help/my-apps-portal-end-user-access.md)。 此扩展可帮助你启动组织中任何需要你使用 SSO 过程的云应用。 |
+| 基于密码的 SSO |  下载并安装 [MyApps 安全](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)[登录](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)[扩展](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。 此扩展可帮助你启动组织中任何需要你使用 SSO 过程的云应用。 |
 | 应用程序代理 | 确保连接器正在运行并已分配给应用程序。 访问[应用程序代理故障排除指南](../app-proxy/application-proxy-troubleshoot.md)以获取进一步的帮助。 |
 
 > [!NOTE]

@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 3e7780f2214cd603bbf4bd7955a8be7bc7128b89
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 4c770899c2673926b9db7a676958db56a8ae71be
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777619"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092559"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
@@ -62,7 +62,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 > [!NOTE]
 > 该脚本可用于为 Azure 公有云或 Azure 政府云设置物理设备。
@@ -74,8 +74,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 公有云上已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估物理服务器（或在 AWS、GCP、Xen 等其他云上运行的服务器） 。
 
