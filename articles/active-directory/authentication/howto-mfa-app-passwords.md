@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58344a385a8ad4d409748c039f8f1e7807e290b7
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: f79bca8626eca56c40f99f75daa2b8cb4da3a995
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228372"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773771"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>使用应用密码对旧版应用程序启用和使用 Azure AD 多重身份验证
 
@@ -42,7 +42,7 @@ Microsoft Office 2013 客户端及更高版本支持现代身份验证。 Office
 * 对用户帐户启用 Azure AD 多重身份验证后，应用密码就可用于大多数非浏览器客户端，例如 Outlook 和 Microsoft Skype for Business。 但是，不能通过非浏览器应用程序（如 Windows PowerShell）使用应用密码执行管理操作。 即使用户具有管理帐户，也无法执行这些操作。
     * 若要运行 PowerShell 交吧，应创建具有强密码的服务帐户，并且不为该帐户启用双重验证。
 * 如果怀疑某个用户帐户已泄露并撤消/重置了帐户密码，则应用密码也应该更新。 撤消/重置用户帐户密码时，应用密码不会自动撤销。 用户应删除现有的应用密码，然后创建新的应用密码。
-   * 有关详细信息，请参阅[在“其他安全验证”页中创建和删除应用密码](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
+   * 有关详细信息，请参阅[在“其他安全验证”页中创建和删除应用密码](https://support.microsoft.com/account-billing/manage-app-passwords-for-two-step-verification-d6dc8c6d-4bf7-4851-ad95-6d07799387e9#create-and-delete-app-passwords-from-the-additional-security-verification-page)。
 
 >[!WARNING]
 > 在客户端同时与本地和云自动发现终结点通信的混合环境中，应用密码无效。 需要域密码才能进行本地身份验证。 需要应用密码才能进行云身份验证。
@@ -102,8 +102,8 @@ Azure AD 支持与本地 Active Directory 域服务 (AD DS) 联合（也称单�
 当用户完成 Azure AD 多重身份验证的初始注册后，可以选择在注册过程结束时创建应用密码。
 
 用户还可以在注册后创建应用密码。 有关用户的更多信息和详细步骤，请参阅以下资源：
-* [Azure AD 多重身份验证中的应用密码是什么？](../user-help/multi-factor-authentication-end-user-app-passwords.md)
-* [从“安全信息”页创建应用密码](../user-help/security-info-app-passwords.md)
+* [Azure AD 多重身份验证中的应用密码是什么？](https://support.microsoft.com/account-billing/manage-app-passwords-for-two-step-verification-d6dc8c6d-4bf7-4851-ad95-6d07799387e9)
+* [从“安全信息”页创建应用密码](https://support.microsoft.com/account-billing/create-app-passwords-from-the-security-info-preview-page-d8bc744a-ce3f-4d4d-89c9-eb38ab9d4137)
 
 ## <a name="next-steps"></a>后续步骤
 

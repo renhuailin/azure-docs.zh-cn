@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: 917a22980cda5dea5ced20f01d7e79ccd55fbcf1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: c3accb7edfb65ee2f21c924e4b028a6fdcaccea4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426681"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774246"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
 
@@ -92,8 +92,10 @@ Dsv3 系列 VM 采用 Intel® 超线程技术。
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
-- [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-- 有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
 
 ## <a name="next-steps"></a>后续步骤
 

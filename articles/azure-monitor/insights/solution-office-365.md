@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aca623f9292a1e34eacd209b204436dc7fbdcea
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: c0cb4d4c1c9d37c7b449dd3e6d3c07ec2bd2476d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220850"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737391"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -18,7 +18,7 @@ ms.locfileid: "123220850"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>解决方案更新
-> 此解决方案已被 [Azure Sentinel](../../sentinel/overview.md) 中的 [Office 365](../../sentinel/connect-office-365.md) 正式版解决方案和 [Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)替代。 它们共同提供以前的 Azure Monitor Office 365 解决方案的更新版本，并改进了配置体验。 你可以继续使用现有解决方案，直到 2020 年 10 月 31 日为止。
+> 此解决方案已被 [Azure Sentinel](../../sentinel/overview.md) 中的 [Office 365](../../sentinel/data-connectors-reference.md#microsoft-office-365) 正式版解决方案和 [Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)替代。 它们共同提供以前的 Azure Monitor Office 365 解决方案的更新版本，并改进了配置体验。 你可以继续使用现有解决方案，直到 2020 年 10 月 31 日为止。
 > 
 > Azure Sentinel 是一个云原生安全信息和事件管理解决方案，它引入日志并提供额外的 SIEM 功能，包括检测、调查、搜寻和机器学习驱动型见解。 现在，使用 Azure Sentinel 会为你提供引入 Office 365 SharePoint 活动和 Exchange 管理日志的功能。
 > 
@@ -91,10 +91,10 @@ ms.locfileid: "123220850"
 > ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>问：如何使用 Azure Sentinel 面向安全性的现成内容？
 > Azure Sentinel 基于 Office 365 和 Azure AD 日志提供现成的面向安全性的仪表板、自定义警报查询、搜寻查询、调查和自动响应功能。 浏览 Azure Sentinel GitHub 和教程来了解更多信息：
 >
-> - [直接检测威胁](/azure/sentinel/detect-threats-built-in)
-> - [创建自定义分析规则以检测可疑威胁](/azure/sentinel/detect-threats-custom)
-> - [监视数据](/azure/sentinel/monitor-your-data)
-> - [使用 Azure Sentinel 调查事件](/azure/sentinel/investigate-cases)
+> - [直接检测威胁](../../sentinel/detect-threats-built-in.md)
+> - [创建自定义分析规则以检测可疑威胁](../../sentinel/detect-threats-custom.md)
+> - [监视数据](../../sentinel/monitor-your-data.md)
+> - [使用 Azure Sentinel 调查事件](../../sentinel/investigate-cases.md)
 > - [在 Azure Sentinel 中设置自动威胁响应](../../sentinel/tutorial-respond-threats-playbook.md)
 > - [Azure Sentinel GitHub 社区](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 

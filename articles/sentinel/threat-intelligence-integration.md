@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: c231840b6255ef693353d83323710cb3243efaef
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 82a2dca4c38a8d8602bf41ee36760e846edb5d78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214296"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774740"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel 中的威胁情报集成
 
@@ -75,7 +75,7 @@ Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](work-
 
 ### <a name="agari-phishing-defense-and-brand-protection"></a>Agari Phishing Defense 和 Agari Brand Protection
 
-- 若要连接 [Agari Phishing Defense and Brand Protection](https://agari.com/products/phishing-defense/)，请使用 Azure Sentinel 中的内置 [Agari 数据连接器](connect-agari-phishing-defense.md)。
+- 若要连接 [Agari Phishing Defense and Brand Protection](https://agari.com/products/phishing-defense/)，请使用 Azure Sentinel 中的内置 [Agari 数据连接器](./data-connectors-reference.md#agari-phishing-defense-and-brand-protection-preview)。
 
 ### <a name="anomali-threatstream"></a>Anomali ThreatStream
 

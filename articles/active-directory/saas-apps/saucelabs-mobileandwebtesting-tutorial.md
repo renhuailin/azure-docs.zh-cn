@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 754fb3f80bfdf44205d43461c4b09b5ea7b20072
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 941d516e1fa3f287db906586da0eb925fed9d27e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481621"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789705"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>教程：Azure Active Directory 与 Sauce Labs - Mobile and Web Testing 的集成
 
@@ -147,7 +147,7 @@ ms.locfileid: "110481621"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应能够自动登录到为其设置了 SSO 的 Sauce Labs - Mobile and Web Testing。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Sauce Labs - Mobile and Web Testing”磁贴时，应会自动登录到为其设置了 SSO 的 Sauce Labs - Mobile and Web Testing。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Sauce Labs - Mobile and Web Testing”磁贴时，应会自动登录到为其设置了 SSO 的 Sauce Labs - Mobile and Web Testing。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

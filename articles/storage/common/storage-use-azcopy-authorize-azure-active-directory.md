@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e6b2e331c274013ccad445c4e203388b8b7b8048
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: d5aced875863f892ec9dda0022f4571ce15349c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903862"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638228"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD) 授予对 blob 的访问权限
 
-你可以通过使用 Azure AD 来向 AzCopy 提供授权凭据。 这样就无需为每个命令都追加共享访问签名 (SAS) 令牌。 
+你可以通过使用 Azure AD 来向 AzCopy 提供授权凭据。 这样就无需为每个命令都追加共享访问签名 (SAS) 令牌。
 
-首先请验证你的角色分配。 然后，选择要授权的 _安全主体_ 类型。 [用户标识](../../active-directory/fundamentals/add-users-azure-active-directory.md)、[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)和[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)，每一种都是安全主体类型。
+首先请验证你的角色分配。 然后，选择要授权的 *安全主体* 类型。 [用户标识](../../active-directory/fundamentals/add-users-azure-active-directory.md)、[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)和[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)，每一种都是安全主体类型。
 
-用户标识是在 Azure AD 中具有标识的任何用户。 这是最易于授权的安全主体。 如果你计划在以无用户交互方式运行的脚本中使用 AzCopy，那么托管标识和服务主体会是非常有用的选项。 托管标识更适合从 Azure 虚拟机 (VM) 运行的脚本，服务主体则更适合在本地运行的脚本。 
+用户标识是在 Azure AD 中具有标识的任何用户。 这是最易于授权的安全主体。 如果你计划在以无用户交互方式运行的脚本中使用 AzCopy，那么托管标识和服务主体会是非常有用的选项。 托管标识更适合从 Azure 虚拟机 (VM) 运行的脚本，服务主体则更适合在本地运行的脚本。
 
 有关 AzCopy 的详细信息，请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)。
 
@@ -145,7 +145,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> 考虑使用本示例中所示的提示符。 这样，密码就不会显示在控制台的命令历史记录中。  
+> 考虑使用本示例中所示的提示符。 这样，密码就不会显示在控制台的命令历史记录中。
 
 接下来键入以下命令，然后按 ENTER 键。
 
@@ -153,7 +153,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 azcopy login --service-principal  --application-id application-id --tenant-id=tenant-id
 ```
 
-请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。 
+请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。
 
 #### <a name="authorize-a-service-principal-by-using-a-certificate"></a>通过使用证书来授权服务主体
 
@@ -181,13 +181,13 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 请将 `<path-to-certificate-file>` 占位符替换为证书文件的相对路径或完全限定的路径。 AzCopy 将保存此证书的路径，但并不会保存此证书的副本，因此，请务必将此证书放在原有位置。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。
 
 > [!NOTE]
-> 考虑使用本示例中所示的提示符。 这样，密码就不会显示在控制台的命令历史记录中。 
+> 考虑使用本示例中所示的提示符。 这样，密码就不会显示在控制台的命令历史记录中。
 
 ## <a name="authorize-without-a-secret-store"></a>不使用机密存储授权
 
-`azcopy login` 命令检索 OAuth 令牌，然后将该令牌放入系统上的机密存储。 如果操作系统没有机密存储（如 Linux keyring），则 `azcopy login` 命令将不起作用，因为没有地方可以放置令牌。 
+`azcopy login` 命令检索 OAuth 令牌，然后将该令牌放入系统上的机密存储。 如果操作系统没有机密存储（如 Linux keyring），则 `azcopy login` 命令将不起作用，因为没有地方可以放置令牌。
 
-可以设置内存中环境变量来代替使用 `azcopy login` 命令。 然后运行任何 AzCopy 命令。 AzCopy 将检索完成操作所需的 Auth 令牌。 操作完成后，令牌将从内存中消失。 
+可以设置内存中环境变量来代替使用 `azcopy login` 命令。 然后运行任何 AzCopy 命令。 AzCopy 将检索完成操作所需的 Auth 令牌。 操作完成后，令牌将从内存中消失。
 
 ### <a name="authorize-a-user-identity"></a>授权用户标识
 
@@ -264,10 +264,10 @@ export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
 export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 将 `<client-secret>` 占位符替换为客户端机密。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。 
+请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 将 `<client-secret>` 占位符替换为客户端机密。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。
 
 > [!NOTE]
-> 考虑使用提示从用户处收集密码。 这样，密码就不会显示在命令历史记录中。 
+> 考虑使用提示从用户处收集密码。 这样，密码就不会显示在命令历史记录中。
 
 然后，运行任何 azcopy 命令（例如 `azcopy list https://contoso.blob.core.windows.net`）。
 
@@ -275,7 +275,7 @@ export AZCOPY_TENANT_ID=<tenant-id>
 
 如果希望使用自己的凭据进行授权，可将证书上传到应用注册，然后使用该证书来登录。
 
-除了将证书上传到应用注册以外，还需要在运行 AzCopy 的计算机或 VM 中保存该证书的副本。 此证书副本应采用 .PFX 或 .PEM 格式，且必须包含私钥。 该私钥应通过密码予以保护。 
+除了将证书上传到应用注册以外，还需要在运行 AzCopy 的计算机或 VM 中保存该证书的副本。 此证书副本应采用 .PFX 或 .PEM 格式，且必须包含私钥。 该私钥应通过密码予以保护。
 
 键入以下命令，然后按 Enter。
 
@@ -286,10 +286,10 @@ export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
 export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-请将 `<path-to-certificate-file>` 占位符替换为证书文件的相对路径或完全限定的路径。 AzCopy 将保存此证书的路径，但并不会保存此证书的副本，因此，请务必将此证书放在原有位置。 将 `<certificate-password>` 占位符替换为证书的密码。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。 
+请将 `<path-to-certificate-file>` 占位符替换为证书文件的相对路径或完全限定的路径。 AzCopy 将保存此证书的路径，但并不会保存此证书的副本，因此，请务必将此证书放在原有位置。 将 `<certificate-password>` 占位符替换为证书的密码。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。
 
 > [!NOTE]
-> 考虑使用提示从用户处收集密码。 这样，密码就不会显示在命令历史记录中。 
+> 考虑使用提示从用户处收集密码。 这样，密码就不会显示在命令历史记录中。
 
 然后，运行任何 azcopy 命令（例如 `azcopy list https://contoso.blob.core.windows.net`）。
 

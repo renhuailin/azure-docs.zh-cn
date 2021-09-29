@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.author: jeedes
-ms.openlocfilehash: a3848f29f9f8b12981b84a5ac025f0a73e6f21f1
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: b9230da3c27f17c6f8f2c6b5bb7d0e88b4ec0e84
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062965"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124772954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>教程：Azure Active Directory 与 Hosted Graphite 的集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "112062965"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.hostedgraphite.com/metadata/<USER_ID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.hostedgraphite.com/metadata/<USER_ID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.hostedgraphite.com/complete/saml/<USER_ID>`
 
@@ -166,7 +166,7 @@ ms.locfileid: "112062965"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 Hosted Graphite。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Hosted Graphite 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你应会自动登录到为其设置了 SSO 的 Hosted Graphite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Hosted Graphite 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你应会自动登录到为其设置了 SSO 的 Hosted Graphite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

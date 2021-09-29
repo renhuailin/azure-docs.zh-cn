@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 1a91b5e11707d8f17effa6b2d711aaaa1a97afed
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 20725796abed454aaccdea73f13d898ca48f615c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113570"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626107"
 ---
 # <a name="development"></a>开发
 
@@ -69,3 +69,9 @@ Redis 最适合处理较小的值。 请考虑将较大的数据块划分为较�
 * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
 * [HiRedisCluster](https://github.com/Azure/AzureCacheForRedis/blob/main/HiRedisCluster%20Best%20Practices.md)
 * [ASP.NET 会话状态提供程序](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
+
+## <a name="next-steps"></a>后续步骤
+
+- [Azure Cache for Redis 开发的常见问题解答](cache-development-faq.yml)
+- [性能测试](cache-best-practices-performance.md)
+- [Azure Cache for Redis 的故障转移和修补](cache-failover.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
-ms.openlocfilehash: d52ea8d6af84568f9dd458aefdecd36d3b36457d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea7294056d5c4d604036cdef0ba7c1144f2b0d90
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98727333"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739265"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lablog"></a>教程：Azure Active Directory 与 LabLog 的单一登录 (SSO) 集成
 
@@ -79,7 +79,7 @@ ms.locfileid: "98727333"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_SUBDOMAIN>.labnotebook.app/lablog/login/sso/`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_SUBDOMAIN>.labnotebook.app/lablog/login/sso/`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [LabLog 客户端支持团队](mailto:support@labnotebook.app)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -147,7 +147,7 @@ ms.locfileid: "98727333"
 
 * 直接转到 LabLog 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 LabLog 磁贴时，会重定向到 LabLog 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 LabLog 磁贴时，会重定向到 LabLog 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

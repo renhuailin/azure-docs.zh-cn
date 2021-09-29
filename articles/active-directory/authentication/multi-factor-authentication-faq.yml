@@ -12,12 +12,12 @@ metadata:
   manager: daveba
   ms.reviewer: michmcla
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 93a4f7b6b58262ce71cfc40492ffc444d15ccc0c
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 101eec41e463be264f51015c9672b60bd52e0d40
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "111907041"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124787388"
 title: 有关 Azure AD 多重身份验证的常见问题
 summary: >
   本“常见问题解答”文章解答有关 Azure AD 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
@@ -170,7 +170,7 @@ sections:
       如果上述步骤不起作用，请检查是否为用户配置了多个验证方法。 再次尝试登录，但需要在登录页上选择另一种验证方法。
 
 
-      有关详细信息，请参阅[最终用户故障排除指南](../user-help/multi-factor-authentication-end-user-troubleshoot.md)。
+      有关详细信息，请参阅[最终用户故障排除指南](https://support.microsoft.com/account-billing/common-problems-with-two-step-verification-for-a-work-or-school-account-63acbb9b-16a1-47b9-8619-6a865e8071a5)。
   - question: >
       如果某个用户无法进入其帐户，我该怎么做？
     answer: >
@@ -182,7 +182,7 @@ sections:
   - question: >
       如果用户无法登录到非浏览器应用，该怎么办？
     answer: >
-      如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-app-passwords.md)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和 *应用密码* 而不是普通的密码登录。
+      如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-app-passwords.md)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](https://support.microsoft.com/account-billing/manage-app-passwords-for-two-step-verification-d6dc8c6d-4bf7-4851-ad95-6d07799387e9)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和 *应用密码* 而不是普通的密码登录。
 
 
       如果组织不使用传统客户端，则不应允许用户创建应用密码。

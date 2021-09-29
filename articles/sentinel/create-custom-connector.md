@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: b0a0b8cb4d3ff5ce10348608d66a451517b60016
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 3b578ffbb734c738aa3f082d192eae8557f4e307
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514736"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755102"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>用于创建 Azure Sentinel 自定义连接器的资源
 
@@ -183,10 +183,10 @@ Import-Csv .\testcsv.csv
 
 如需这种方法的示例，请参阅：
 
-- [使用 Azure Function 将 VMware Carbon Black Cloud Endpoint Standard 连接到 Azure Sentinel](connect-vmware-carbon-black.md)
-- [使用 Azure Function 将 Okta Single Sign-On 连接到 Azure Sentinel](connect-okta-single-sign-on.md)
-- [使用 Azure Function 将 Proofpoint TAP 连接到 Azure Sentinel](connect-proofpoint-tap.md)
-- [使用 Azure Function 将 Qualys VM 连接到 Azure Sentinel](connect-qualys-vm.md)
+- [使用 Azure Function 将 VMware Carbon Black Cloud Endpoint Standard 连接到 Azure Sentinel](./data-connectors-reference.md#vmware-carbon-black-endpoint-standard-preview)
+- [使用 Azure Function 将 Okta Single Sign-On 连接到 Azure Sentinel](./data-connectors-reference.md#okta-single-sign-on-preview)
+- [使用 Azure Function 将 Proofpoint TAP 连接到 Azure Sentinel](./data-connectors-reference.md#proofpoint-targeted-attack-protection-tap-preview)
+- [使用 Azure Function 将 Qualys VM 连接到 Azure Sentinel](./data-connectors-reference.md#qualys-vulnerability-management-vm-preview)
 - [引入 XML、CSV 或其他格式的数据](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
 - [使用 Azure Sentinel 监视 Zoom](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516)（博客）
 - [部署 Function App 以将 Office 365 管理 API 数据引入 Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data)（Azure Sentinel GitHub 社区）

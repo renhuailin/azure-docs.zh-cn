@@ -8,16 +8,16 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: f6319369a03de754b1ce016fb20aa99e5ab466e1
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: d9f3d2c8f30f3b5d249aae0789a7e2fee282e867
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223425"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677808"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>快速入门：从 VM 设置配置 Azure Bastion
 
-本快速入门文章介绍如何在 Azure 门户中根据 VM 设置配置 Azure Bastion，然后通过专用 IP 地址连接到 VM。 预配服务后，RDP/SSH 体验即可用于同一虚拟网络中的所有虚拟机。 VM 不需要公共 IP 地址、客户端软件、代理或特殊配置。 如果不需要对 VM 上的公共 IP 地址执行任何其它操作，可以将其删除。 然后，使用专用 IP 地址，通过门户连接到 VM。 有关 Azure Bastion 的详细信息，请参阅[什么是 Azure Bastion？](bastion-overview.md)
+本快速入门文章介绍如何在 Azure 门户中根据 VM 设置配置 Azure Bastion，然后通过专用 IP 地址连接到 VM。 预配服务后，RDP/SSH 体验即可用于同一虚拟网络中的所有虚拟机。 VM 不需要公共 IP 地址、客户端软件、代理或特殊配置。 如果不需要对 VM 上的公共 IP 地址执行任何其它操作，可以将其删除。 然后，使用专用 IP 地址，通过门户连接到 VM。 有关 Azure Bastion 的详细信息，请参阅[什么是 Azure Bastion？](bastion-overview.md) 
 
 ## <a name="prerequisites"></a><a name="prereq"></a>先决条件
 

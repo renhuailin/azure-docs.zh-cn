@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: ea85ca0cf1160b4ad738ea45ce33e72d07dc5fbf
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: eded4bfc37df72b9163aeac51d66c973b24838b2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681392"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750254"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>查看和配置 DDoS 诊断日志记录
 
-Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 在 DDoS 攻击期间通过 Azure Monitor 公开丰富的遥测数据（包括详细的指标）。 可以针对 DDoS 防护公开的任何 Azure Monitor 指标配置警报。 可将记录与 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk（Azure 事件中心）、OMS Log Analytics 和 Azure 存储进一步集成，以通过 Azure Monitor 诊断界面进行高级分析。
+Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 在 DDoS 攻击期间通过 Azure Monitor 公开丰富的遥测数据（包括详细的指标）。 可以针对 DDoS 防护公开的任何 Azure Monitor 指标配置警报。 可将记录与 [Azure Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection)、Splunk（Azure 事件中心）、OMS Log Analytics 和 Azure 存储进一步集成，以通过 Azure Monitor 诊断界面进行高级分析。
 
 以下诊断日志适用于 Azure DDoS 防护标准： 
 
@@ -100,7 +100,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建通知时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
@@ -116,7 +116,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建流日志时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
@@ -135,7 +135,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建报表时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
@@ -167,7 +167,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ### <a name="azure-sentinel-data-connector"></a>Azure Sentinel 数据连接器
 
-可以将日志连接到 Azure Sentinel，查看和分析工作簿中的数据，创建自定义警报，并将其纳入调查过程。 若要连接到 Azure Sentinel，请参阅[连接到 Azure sentinel](../sentinel/connect-azure-ddos-protection.md)。 
+可以将日志连接到 Azure Sentinel，查看和分析工作簿中的数据，创建自定义警报，并将其纳入调查过程。 若要连接到 Azure Sentinel，请参阅[连接到 Azure sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection)。 
 
 ![Azure Sentinel DDoS 连接器](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
 
@@ -185,7 +185,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 - 配置 DDoS 诊断日志，包括通知、风险缓解报表和缓解流日志。 
 - 在定义的范围内对所有公共 IP 启用诊断日志记录。

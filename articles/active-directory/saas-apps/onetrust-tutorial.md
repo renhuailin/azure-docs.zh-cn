@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: f0a145b0eb9dd9dbed0927ce825a21d8f47c48ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a23f0b1389323ffbbe27b27cf9011c0a16b7f7d2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648418"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738419"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>教程：Azure Active Directory 与 OneTrust Privacy Management Software 集成
 
@@ -86,7 +86,7 @@ ms.locfileid: "101648418"
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.onetrust.com/auth/login`
+     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.onetrust.com/auth/login`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 请联系 [OneTrust Privacy Management Software 客户端支持团队](mailto:support@onetrust.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -147,7 +147,7 @@ ms.locfileid: "101648418"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 OneTrust Privacy Management Software。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 OneTrust Privacy Management Software 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应自动登录到为其设置了 SSO 的 OneTrust Privacy Management Software。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 OneTrust Privacy Management Software 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应自动登录到为其设置了 SSO 的 OneTrust Privacy Management Software。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e289ad866ba53de761077f22b27ef4ff763451ff
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ccf2f423137e4732b2785f23256577c92eee07ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468546"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595648"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -46,7 +46,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 如果不将 AzCopy 目录添加到系统路径，则必须将目录切换到 AzCopy 可执行文件所在的位置，然后在 Windows PowerShell 命令提示符中键入 `azcopy` 或 `.\azcopy`。
 
-系统不会自动向 Azure 存储帐户的所有者分配数据访问权限。 在使用 AzCopy 执行任何有意义的操作之前，需确定如何向存储服务提供身份验证凭据。 
+系统不会自动向 Azure 存储帐户的所有者分配数据访问权限。 在使用 AzCopy 执行任何有意义的操作之前，需确定如何向存储服务提供身份验证凭据。
 
 <a id="choose-how-youll-provide-authorization-credentials"></a>
 
@@ -64,7 +64,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="option-1-use-azure-active-directory"></a>选项 1：使用 Azure Active Directory
 
-此选项仅适用于 blob 存储。 使用 Azure Active Directory 可以一次性提供凭据，而无需向每个命令追加 SAS 令牌。  
+此选项仅适用于 blob 存储。 使用 Azure Active Directory 可以一次性提供凭据，而无需向每个命令追加 SAS 令牌。
 
 > [!NOTE]
 > 在当前版本中，如果你打算在存储帐户之间复制 Blob，必须向每个源 URL 追加一个 SAS 令牌。 只能在目标 URL 中省略 SAS 令牌。 有关示例，请参阅[在存储帐户之间复制 Blob](#transfer-data)。
@@ -84,7 +84,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 若要详细了解 SAS 令牌及其获取方式，请参阅[使用共享访问签名 (SAS)](./storage-sas-overview.md)。
 
 > [!NOTE]
-> 存储帐户的[需要安全传输](storage-require-secure-transfer.md)设置决定了与存储帐户的连接是否通过传输层安全 (TLS) 进行安全保护。 默认情况下，此设置处于启用状态。   
+> 存储帐户的[需要安全传输](storage-require-secure-transfer.md)设置决定了与存储帐户的连接是否通过传输层安全 (TLS) 进行安全保护。 默认情况下，此设置处于启用状态。
 
 <a id="transfer-data"></a>
 
@@ -116,7 +116,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 ### <a name="list-of-commands"></a>命令列表
 
-下表列出了所有 AzCopy v10 命令。 每个命令链接到参考文章。 
+下表列出了所有 AzCopy v10 命令。 每个命令链接到参考文章。
 
 |命令|说明|
 |---|---|
@@ -140,7 +140,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 |[azcopy sync](storage-ref-azcopy-sync.md?toc=/azure/storage/blobs/toc.json)|将源位置复制到目标位置。|
 
 > [!NOTE]
-> AzCopy 没有用于重命名文件的命令。 
+> AzCopy 没有用于重命名文件的命令。
 
 ## <a name="use-in-a-script"></a>在脚本中使用
 

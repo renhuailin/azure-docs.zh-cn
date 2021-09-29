@@ -6,16 +6,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.author: gopalv
-author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 7d080297dd32ad137e11cb692b820f4b9f6b3521
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: c25dbb3c03bb4c03a511b4e526ff8248bd0096c8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428445"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641990"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 Web 服务
 

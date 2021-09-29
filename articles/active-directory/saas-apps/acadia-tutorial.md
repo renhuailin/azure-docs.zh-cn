@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 4cf82a4c68ed556b5b18d451cecd3a0e2430b95a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: c588e0194d3d13877eca7db53ec4c56a17f82f2f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063263"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770769"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>教程：Azure Active Directory 与 Acadia 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "112063263"
 * 让用户使用其 Azure AD 帐户自动登录到 Acadia。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -103,7 +103,7 @@ ms.locfileid: "112063263"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -141,7 +141,7 @@ ms.locfileid: "112063263"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Acadia. 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“Acadia”磁贴时，如果是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，你应该会自动登录到为其设置了 SSO 的 Acadia。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“Acadia”磁贴时，如果是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，你应该会自动登录到为其设置了 SSO 的 Acadia。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

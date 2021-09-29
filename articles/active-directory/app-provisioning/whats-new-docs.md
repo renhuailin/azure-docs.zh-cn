@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序预配中的新增内容
 description: 有关 Azure Active Directory 应用程序预配的新文档和更新文档。
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,25 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: 23d3c074ee1a4cb07b4770b27ee1ead145bae28a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1cd99265954671084b37bcf0f11606a1e334223e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732404"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759788"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 应用程序预配：新增内容
 
 欢迎查看 Azure Active Directory 应用程序预配文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解预配服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [有关在 Azure Active Directory 中编写特性映射表达式的参考](functions-for-customizing-application-data.md)
+- [Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法](application-provisioning-config-problem-scim-compatibility.md)
+- [教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射](customize-application-attributes.md)
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 

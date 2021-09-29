@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff8a97afa39f4db6892402c334aacb903d2cb4c2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755015"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787237"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -27,11 +27,11 @@ Microsoft 身份验证库 (MSAL) 支持在不同的应用程序场景中使用�
 |--|--|--|
 | [授权代码](#authorization-code) | 在设备上安装的应用中使用，以访问受保护的资源，例如 Web API。 使你能够添加对移动应用和桌面应用的登录与 API 访问权限。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md)、[Web 应用](scenario-web-app-call-api-overview.md) |
 | [客户端凭据](#client-credentials) | 允许你使用应用程序的标识访问 Web 托管的资源。 通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 | [守护程序应用](scenario-daemon-overview.md) |
-| [设备代码](#device-code) | 允许用户登录到智能电视、IoT 设备或打印机等输入受限的设备。 | [桌面/移动应用](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
+| [设备代码](#device-code) | 允许用户登录到智能电视、IoT 设备或打印机等输入受限的设备。 | [桌面/移动应用](scenario-desktop-acquire-token-device-code-flow.md) |
 | [隐式授权](#implicit-grant) | 允许应用在不执行后端服务器凭据交换的情况下获取令牌。 使应用能够让用户登录、维护会话，并获取客户端 JavaScript 代码中所有其他 Web API 的令牌。 | [单页应用程序 (SPA)](scenario-spa-overview.md) |
 | [代理](#on-behalf-of) | 应用程序调用某个服务或 Web API，而后者又需要调用另一个服务或 Web API。 思路是通过请求链传播委托用户标识和权限。 | [Web API](scenario-web-api-call-api-overview.md) |
-| [用户名/密码](#usernamepassword) | 允许应用程序通过直接处理用户密码来登录用户。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token.md#username-and-password) |
-| [Windows 集成身份验证](#integrated-windows-authentication) | 允许已加入域或已加入 Azure Active Directory (Azure AD) 的计算机上的应用程序以静默方式获取令牌（无需用户进行任何 UI 交互）。 | [桌面/移动应用](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
+| [用户名/密码](#usernamepassword) | 允许应用程序通过直接处理用户密码来登录用户。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token-username-password.md) |
+| [Windows 集成身份验证](#integrated-windows-authentication) | 允许已加入域或已加入 Azure Active Directory (Azure AD) 的计算机上的应用程序以静默方式获取令牌（无需用户进行任何 UI 交互）。 | [桌面/移动应用](scenario-desktop-acquire-token-integrated-windows-authentication.md) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>每个流如何发出令牌和代码
 

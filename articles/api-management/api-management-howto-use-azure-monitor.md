@@ -2,18 +2,18 @@
 title: 教程 - 在 Azure API 管理中监视已发布的 API | Microsoft Docs
 description: 按本教程中的步骤操作，了解如何使用 Azure API 管理中的指标、警报、活动日志和资源日志来监视 API。
 services: api-management
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
-ms.author: apimpm
-ms.openlocfilehash: f70a43efd0b56f76ee4b68e8fede3ce4e255063d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: danlep
+ms.openlocfilehash: 378fa83925808b1c9551522cfe4c47665095cd17
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466017"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642066"
 ---
 # <a name="tutorial-monitor-published-apis"></a>教程：监视已发布的 API
 

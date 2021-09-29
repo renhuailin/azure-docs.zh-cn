@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
-ms.openlocfilehash: 85c169afb8c6158a3e5c32ac4d62cbeeabb4c2bb
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 7f8e9c26de1cceb6c4dec514e21d36b9843bb44e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035590"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588155"
 ---
 # <a name="multivariate-time-series-anomaly-detection-preview"></a>多变量时序异常检测（预览版）
 
@@ -34,7 +34,7 @@ ms.locfileid: "123035590"
 
 ## <a name="notebook"></a>笔记本
 
-若要了解如何调用异常检测器 API（多变量），请试用此 [Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)。 此 Jupyter Notebook 演示如何发送 API 请求和直观显示结果。
+若要了解如何调用异常检测器 API（多变量），请试用此 [Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/API%20Sample/Multivariate%20API%20Demo%20Notebook.ipynb)。 此 Jupyter Notebook 演示如何发送 API 请求和直观显示结果。
 
 若要运行 Notebook，应获取有效的异常检测器 API 订阅密钥和 API 终结点。 在笔记本中，将有效的异常检测器 API 订阅密钥添加到 `subscription_key` 变量，并将 `endpoint` 变量更改为你的终结点。
 

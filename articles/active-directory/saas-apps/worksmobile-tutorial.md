@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: a8b344cd9e4428c3508534edaec4fd98fb67d832
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c460f350a8650380b05eb891819942446f31b6e7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182030"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744966"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>教程：Azure Active Directory 与 LINE WORKS 的集成
 
@@ -138,7 +138,7 @@ ms.locfileid: "96182030"
 
 2. 直接转到 LINE WORKS 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 LINE WORKS 磁贴时，将会重定向到 LINE WORKS 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击 LINE WORKS 磁贴时，将会重定向到 LINE WORKS 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 

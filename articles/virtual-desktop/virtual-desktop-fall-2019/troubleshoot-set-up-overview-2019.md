@@ -6,17 +6,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 14449af17a39be884ae023ea23910e617048d5c4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5c55dac88810531af849cbacb129197eaddf1a08
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753892"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774588"
 ---
 #  <a name="azure-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Azure 虚拟桌面（经典版）故障排除概述、反馈和支持
 
 >[!IMPORTANT]
->此内容适用于 Azure 虚拟桌面（经典版），不支持 Azure 资源管理器和 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器和 Azure 虚拟桌面对象，请参阅[此文](../troubleshoot-set-up-overview.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../troubleshoot-set-up-overview.md)。
 
 本文概述了在设置 Azure 虚拟桌面租户环境时可能会遇到的问题，并给出了这些问题的解决方法。
 
@@ -53,10 +53,10 @@ ms.locfileid: "111753892"
 
 - 若要排查在 Azure 虚拟桌面环境中创建租户和主机池时遇到的问题，请参阅[租户和主机池创建](troubleshoot-set-up-issues-2019.md)。
 - 若要排查在 Azure 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration-2019.md)。
-- 若要排查 Azure 虚拟桌面客户端连接问题，请参阅[ Azure 虚拟桌面服务连接](troubleshoot-service-connection-2019.md)。
+- 若要排查 Azure 虚拟桌面客户端连接问题，请参阅 [Azure 虚拟桌面服务连接](troubleshoot-service-connection-2019.md)。
 - 若要排查远程桌面客户端的问题，请参阅[排查远程桌面客户端问题](../troubleshoot-client.md)
-- 若要排查结合使用 PowerShell 与 Azure 虚拟桌面时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell-2019.md)。
-- 若要详细了解该服务，请参阅[ Azure 虚拟桌面环境](environment-setup-2019.md)。
+- 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell-2019.md)。
+- 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup-2019.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../../azure-monitor/essentials/activity-log.md)。
 - 若要了解为确定部署期间的错误而需要执行哪些操作，请参阅[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)。

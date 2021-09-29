@@ -1,14 +1,14 @@
 ---
 title: 部署 SWIFT CSP-CSCF v2020 蓝图示例
 description: SWIFT CSP-CSCF v2020 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 04/02/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 6af8495db98386bd2ce6dff90f57b5f3f0014616
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4c19e55c8a31158e26ab6818204b8e177342b94d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733942"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606297"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>部署 SWIFT CSP-CSCF v2020 蓝图示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "108733942"
 
 1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。  在“策略”页上选择“蓝图”。 
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
 
 1. 在“其他示例”下找到“SWIFT CSP-CSCF v2020”蓝图示例，然后选择“使用此示例”。
 

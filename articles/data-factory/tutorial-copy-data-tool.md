@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/08/2021
-ms.openlocfilehash: 4a03eb37d5ec956dfeb5eb3d637722c506f58bf1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c47443068aadef73a75e68d97de24981125fd973
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637727"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736996"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 
@@ -80,7 +80,7 @@ ms.locfileid: "122637727"
 
 1. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ：
 
-   ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="新建数据工厂":::
 
 1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
@@ -104,7 +104,7 @@ ms.locfileid: "122637727"
 
 1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 1. 创建完以后，会显示“数据工厂”  主页。
 
@@ -116,11 +116,11 @@ ms.locfileid: "122637727"
 
 1. 在 Azure 数据工厂的主页中，选择“引入”磁贴来启动“复制数据”工具。
 
-   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="屏幕截图显示 Azure 数据工厂主页。":::
 
 1. 在“复制数据”工具的“属性”页上，选择“任务类型”下的“内置复制任务”，然后选择“下一步”   。
 
-     ![显示“属性”页面的屏幕截图](./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png)
+     :::image type="content" source="./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png" alt-text="显示“属性”页面的屏幕截图":::
     
 1. 在“源数据存储”  页上，完成以下步骤：
 
@@ -140,7 +140,7 @@ ms.locfileid: "122637727"
 
 1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 请注意，该工具会自动检测列和行分隔符，可以通过选择此页面上的“预览数据”按钮来预览数据和查看输入数据的架构。 然后，选择“下一步”。 
 
-   ![文件格式设置](./media/tutorial-copy-data-tool/file-format-settings-page.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/file-format-settings-page.png" alt-text="文件格式设置":::
 
 1. 在“目标数据存储”页上，完成以下步骤：
 
@@ -150,7 +150,7 @@ ms.locfileid: "122637727"
 
    c. 在“新连接(Azure SQL 数据库)”页中，从下拉列表中选择你的 Azure 订阅、服务器名称和数据库名称。 然后在“身份验证类型”下选择“SQL 身份验证”，指定用户名和密码 。 测试连接并选择“创建”。
 
-   ![配置 Azure SQL DB](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/config-azure-sql-db.png" alt-text="配置 Azure SQL DB":::
 
    d. 选择新创建的链接服务作为接收器，然后选择“下一步”。
 
@@ -158,7 +158,7 @@ ms.locfileid: "122637727"
 
 1. 在“列映射”页中，请注意，输入文件中的第二个和第三个列已映射到 **emp** 表的 **FirstName** 和 **LastName** 列。 请调整映射，确保没有错误，然后选择“下一步”。
 
-   ![“列映射”页](./media/tutorial-copy-data-tool/column-mapping.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/column-mapping.png" alt-text="“列映射”页":::
 
 1. 在“设置”页的“任务名称”下，输入“CopyFromBlobToSqlPipeline”，然后选择“下一步”   。
 
@@ -168,21 +168,21 @@ ms.locfileid: "122637727"
 
 1. 在“部署”页中，选择“监视”以监视管道（任务） 。
 
-   ![监视管道](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/monitor-pipeline.png" alt-text="监视管道":::
 
 1. 在“管道运行”页上，选择“刷新”来刷新列表。 选择“管道名称”下的链接，查看活动运行详细信息或重新运行管道。 
 
-   ![管道运行](./media/tutorial-copy-data-tool/pipeline-run.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/pipeline-run.png" alt-text="管道运行":::
 
 1. 在“活动运行”页上，选择“活动名称”列下的“详细信息”链接（眼镜图标），以获取有关复制操作的更多详细信息 。 若要返回到“管道运行”视图，请选择痕迹导航菜单中的“所有管道运行”链接。 若要刷新视图，请选择“刷新”。
 
-   ![监视活动运行](./media/tutorial-copy-data-tool/activity-monitoring.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/activity-monitoring.png" alt-text="监视活动运行":::
 
 1. 验证数据是否已插入到 SQL 数据库中的 **dbo.emp** 表。
 
 1. 选择左侧的“创作”选项卡切换到编辑器模式。 可以使用编辑器来更新通过该工具创建的链接服务、数据集和管道。 有关在数据工厂 UI 中编辑这些实体的详细信息，请参阅[本教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
 
-   ![选择“创作”选项卡](./media/tutorial-copy-data-tool/author-tab.png)
+   :::image type="content" source="./media/tutorial-copy-data-tool/author-tab.png" alt-text="选择“创作”选项卡":::
 
 ## <a name="next-steps"></a>后续步骤
 此示例中的管道将数据从 Blob 存储复制到 SQL 数据库。 你已了解如何执行以下操作：

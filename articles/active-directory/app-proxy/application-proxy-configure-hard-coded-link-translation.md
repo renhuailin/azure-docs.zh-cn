@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 32fcbcd7c932eee36f5974b369d41e551c861ebf
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 08b730b0196aa5b78ebafc0208accd51e544e8d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186114"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787483"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-active-directory-application-proxy"></a>重定向使用 Azure Active Directory 应用程序代理发布的应用的硬编码链接
 
@@ -57,7 +57,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 若要使用此功能，用户需要下载该扩展并登录。 管理员或用户不需要进行其他配置。 
 
-若要了解详细信息（包括如何配置此选项），请参阅 [MyApps 浏览器扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)文档。
+若要了解详细信息（包括如何配置此选项），请参阅 [MyApps 浏览器扩展](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension)文档。
 
 > [!NOTE]
 > MyApps 浏览器扩展不支持通配符 URL 的链接转换。

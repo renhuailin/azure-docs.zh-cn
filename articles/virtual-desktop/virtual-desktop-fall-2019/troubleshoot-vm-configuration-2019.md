@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c662338a29ef30abf1a0da77edad25d4f5896cd3
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f867ad9d55f5e5dbaac7962dd8e4ae4daeafee6f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028066"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776835"
 ---
 # <a name="azure-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Azure 虚拟桌面（经典）会话主机虚拟机配置
 
@@ -125,7 +125,7 @@ ms.locfileid: "112028066"
 
 1. 在会话主机 VM 上下载新版本的代理。
 2. 启动“任务管理器”，然后在“服务”选项卡中停止 RDAgentBootLoader 服务。
-3. 运行新版 Azure 虚拟桌面代理的安装程序。
+3. 运行 Azure 虚拟桌面代理新版本的安装程序。
 4. 在系统提示输入注册令牌时，删除 INVALID_TOKEN 条目并按“下一步”（无需新令牌）。
 5. 完成安装向导。
 6. 打开“任务管理器”并启动 RDAgentBootLoader 服务。
@@ -312,7 +312,7 @@ Azure 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Mic
 如果出现这些消息中的任意一条，则表示该映像未安装最新的 Windows 更新，或者你正在通过组策略设置远程桌面许可模式。 按照下一部分中的步骤检查组策略设置，确定 Windows 10 企业版多会话的版本，并安装相应的更新。
 
 >[!NOTE]
->如果主机池包含 Windows Server 会话主机，Azure 虚拟桌面只需要 RDS 客户端访问许可证 (CAL)。 若要了解如何配置 RDS CAL，请参阅[使用客户端访问许可证为 RDS 部署提供许可](/windows-server/remote/remote-desktop-services/rds-client-access-license/)。
+>在主机池包含 Windows Server 会话主机时，Azure 虚拟桌面只需要 RDS 客户端访问许可证 (CAL)。 若要了解如何配置 RDS CAL，请参阅[使用客户端访问许可证为 RDS 部署提供许可](/windows-server/remote/remote-desktop-services/rds-client-access-license/)。
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>禁用远程桌面许可模式组策略设置
 
@@ -345,19 +345,19 @@ Azure 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Mic
 
 ## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>由于安全错误，无法连接到远程电脑
 
-如果用户看到一条错误，显示“由于安全错误，无法连接到远程电脑。 如果此问题仍然存在，请向管理员或技术支持人员寻求帮助”，请验证更改默认 RDP 权限的任何现有策略。 可能导致此错误的策略是“允许通过远程桌面服务安全策略登录。”
+如果用户看到一条错误，显示“由于安全错误，无法连接到远程电脑。 如果此问题仍然存在，请向管理员或技术支持人员获取帮助”，请验证更改默认 RDP 权限的任何现有策略。 可能导致此错误的策略是“允许通过远程桌面服务安全策略登录。”
 
 若要详细了解此策略，请参阅[允许通过远程桌面服务登录](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如需简要了解如何排查 Azure 虚拟桌面问题和跟踪上报，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)。
+- 如需大致了解如何排查 Azure 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)。
 - 若要排查在 Azure 虚拟桌面环境中创建租户和主机池时遇到的问题，请参阅[租户和主机池创建](troubleshoot-set-up-issues-2019.md)。
 - 若要排查在 Azure 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration-2019.md)。
 - 若要排查 Azure 虚拟桌面客户端连接问题，请参阅 [Azure 虚拟桌面服务连接](troubleshoot-service-connection-2019.md)。
 - 若要排查远程桌面客户端的问题，请参阅[排查远程桌面客户端问题](../troubleshoot-client.md)
 - 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell-2019.md)。
-- 若要详细了解服务，请参阅 [Azure 虚拟桌面环境](environment-setup-2019.md)。
+- 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup-2019.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../../azure-monitor/essentials/activity-log.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)。

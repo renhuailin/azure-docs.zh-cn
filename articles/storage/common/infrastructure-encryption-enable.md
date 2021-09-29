@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5c87ed5222b5bb95660b6e63e259a2b5e14b7b47
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: c4dca05b855666a04d1def09228c596eb931bbf5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372667"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607000"
 ---
 # <a name="enable-infrastructure-encryption-for-double-encryption-of-data"></a>启用基础结构加密，对数据进行双重加密
 
@@ -142,7 +142,6 @@ az storage account show /
 ---
 
 Azure Policy 提供了一个内置策略，要求为存储帐户启用基础结构加密。 有关详细信息，请参阅 [Azure Policy 内置策略定义](../../governance/policy/samples/built-in-policies.md#storage)中的“存储”部分。
-
 
 ## <a name="create-an-encryption-scope-with-infrastructure-encryption-enabled"></a>创建启用了基础结构加密的加密范围
 

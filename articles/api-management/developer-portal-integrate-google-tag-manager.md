@@ -3,16 +3,16 @@ title: 将 Google Tag Manager 集成到开发人员门户
 titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中将 Google Tag Manager 插入托管的或自承载的开发人员门户。
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.date: 03/25/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: c209eb782787146d947b4684d41c5d1e9bb6364e
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: a3436727470ceb073f5431ef9677fbc17afdda84
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741115"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601665"
 ---
 # <a name="integrate-google-tag-manager-to-api-management-developer-portal"></a>将 Google Tag Manager 集成到 API 管理开发人员门户
 

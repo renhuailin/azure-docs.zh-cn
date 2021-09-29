@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1f2779cfe6d04d9a80f34eea8a1db53116d25ba
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460098"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124756976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教程：Azure Active Directory 与 InsideView 集成
 
@@ -121,13 +121,13 @@ ms.locfileid: "92460098"
 
     1. **注销 URL**。
 
-### <a name="configure-insideview-single-sign-on"></a>配置 InsideView 单一登录
+### <a name="configure-insideview-single-sign-on&quot;></a>配置 InsideView 单一登录
 
 1. 在新的 Web 浏览器窗口中，以管理员身份登录到 InsideView 公司站点。
 
 1. 在窗口顶部，依次选择“管理”、“单一登录设置”、“添加 SAML”。
    
-   ![SAML 单一登录设置](./media/insideview-tutorial/ic794135.png "SAML 单一登录设置")
+   ![SAML 单一登录设置](./media/insideview-tutorial/ic794135.png &quot;SAML 单一登录设置")
 
 1. 在“添加新 SAML”部分中，执行以下步骤。
 
@@ -171,7 +171,7 @@ ms.locfileid: "92460098"
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -212,7 +212,7 @@ ms.locfileid: "92460098"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“InsideView”磁贴时，应会自动登录到设置了 SSO 的 InsideView 实例。 有关访问面板的详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
+在访问面板中选择“InsideView”磁贴时，应会自动登录到设置了 SSO 的 InsideView 实例。 有关访问面板的详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

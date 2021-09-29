@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 04/28/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 48d1fd6797dee7f73c2af6b7455b9d58de04f237
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 2146d07ce28cf0d14bb1b1416a0aa5b8ebf1febe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429586"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612066"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教程：使用 Azure 数字孪生 API 编写代码
 
@@ -245,6 +245,8 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Query_twins":::
 
 在命令窗口中，使用 `dotnet run` 运行程序。 你应该会在输出中看到此实例中的所有数字孪生。
+
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 ## <a name="complete-code-example"></a>完整代码示例
 

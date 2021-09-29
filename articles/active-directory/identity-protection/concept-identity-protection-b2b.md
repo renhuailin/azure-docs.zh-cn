@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d275c4fe093992f1bf87f7d4b8c5965e448a41
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0f3a5efbb9c990173c7012b9ff6f938fed33f1ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737294"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734568"
 ---
 # <a name="identity-protection-and-b2b-users"></a>标识保护和 B2B 用户
 
@@ -32,7 +32,7 @@ ms.locfileid: "121737294"
 
 如果你的组织启用了此功能，则可以使用自助式密码重置取消阻止帐户，并将凭据恢复为安全状态。
 1. 转到[密码重置门户](https://passwordreset.microsoftonline.com/)，并启动密码重置。 如果没有为你的帐户启用自助式密码重置，并且无法继续操作，请联系你的 IT 管理员，并提供[以下](#how-to-remediate-a-users-risk-as-an-administrator)信息。
-2. 如果为你的帐户启用了自助式密码重置，则在更改密码之前，系统将提示你使用安全方法验证你的标识。 有关帮助信息，请参阅[重置工作或学校帐户密码](../user-help/active-directory-passwords-update-your-own-password.md)一文。
+2. 如果为你的帐户启用了自助式密码重置，则在更改密码之前，系统将提示你使用安全方法验证你的标识。 有关帮助信息，请参阅[重置工作或学校帐户密码](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)一文。
 3. 成功并安全地重置密码后，你的用户风险将得以修正。 你现在能够与以来宾用户身份重试登录。
 
 如果重置密码后，你仍因风险而被阻止作为来宾登录，请联系你组织的 IT 管理员。

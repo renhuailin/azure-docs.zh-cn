@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 3926e98cb55d1afd80caf4af5d67910b66c09cdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34adca214e5673340b12c8dfcdbdfd8a5bac9e0e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180330"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>教程：Azure Active Directory 与 BambooHR 集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "96180330"
     ![复制配置 URL](common/copy-configuration-urls.png)
 
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -113,7 +113,7 @@ ms.locfileid: "96180330"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 本部分将通过授予 B.Simon 访问 BambooHR 的权限，使其能够使用 Azure 单一登录。
 
@@ -125,13 +125,13 @@ ms.locfileid: "96180330"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-bamboohr-sso"></a>配置 BambooHR SSO
+## <a name=&quot;configure-bamboohr-sso&quot;></a>配置 BambooHR SSO
 
 1. 在一个新窗口中，以管理员身份登录到 BambooHR 公司站点。
 
 2. 在主页上执行以下操作：
    
-    ![BambooHR 单一登录页](./media/bamboo-hr-tutorial/ic796691.png "单一登录")   
+    ![BambooHR 单一登录页](./media/bamboo-hr-tutorial/ic796691.png &quot;单一登录")   
 
     a. 选择“应用”  。
    
@@ -178,7 +178,7 @@ ms.locfileid: "96180330"
 
 2. 直接转到 BambooHR 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 BambooHR 磁贴时，将会重定向到 BambooHR 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 在访问面板中单击 BambooHR 磁贴时，将会重定向到 BambooHR 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤

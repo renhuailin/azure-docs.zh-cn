@@ -2,21 +2,19 @@
 title: 为高级方案创作入口脚本
 titleSuffix: Azure Machine Learning entry script authoring
 description: 了解如何编写在部署期间用于预处理和后处理的 Azure 机器学习入口脚本。
-author: gvashishtha
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 09/17/2020
-ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 920dd7a885570df4cd7c5529bcc00f2345c3d81d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: acdb9a371a6a49bc8d4c5475748f60d9c589d80e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114287128"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591532"
 ---
 # <a name="advanced-entry-script-authoring"></a>高级入口脚本创作
 

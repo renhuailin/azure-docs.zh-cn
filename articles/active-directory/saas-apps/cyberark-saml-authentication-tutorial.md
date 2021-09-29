@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: afe340461386f9a864d0777294c1f922aa73f064
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7045a61dcec8f149272d8cbd0ddc71e9543fa82
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648316"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783950"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cyberark-saml-authentication"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CyberArk SAML Authentication 集成
 
@@ -73,13 +73,13 @@ ms.locfileid: "101648316"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<PVWA DNS or IP>/passwordvault/api/auth/saml/logon`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<PVWA DNS or IP>/passwordvault/api/auth/saml/logon` 
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<PVWA DNS or IP>/PasswordVault/v10/logon/saml`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<PVWA DNS or IP>/PasswordVault/v10/logon/saml`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [CyberArk SAML Authentication 客户端支持团队](mailto:bizdevtech@cyberark.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -138,7 +138,7 @@ ms.locfileid: "101648316"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 CyberArk SAML 身份验证。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 CyberArk SAML 身份验证磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 CyberArk SAML 身份验证。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 CyberArk SAML 身份验证磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 CyberArk SAML 身份验证。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

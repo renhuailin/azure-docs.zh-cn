@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 37d47c36ebbd7c274bac2a9e1b7e940614f2aa6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d57be54a7a495613e5e2cf85e4f7e41a42eda6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92511650"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>教程：Azure Active Directory 与 ProMaster (by Inlogik) 集成
 
@@ -161,7 +161,7 @@ ms.locfileid: "92511650"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ProMaster (by Inlogik) 磁贴时，应当会自动登录到为其设置了 SSO 的 ProMaster (by Inlogik)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 ProMaster (by Inlogik) 磁贴时，应当会自动登录到为其设置了 SSO 的 ProMaster (by Inlogik)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

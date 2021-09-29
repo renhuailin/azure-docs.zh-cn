@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 05070571a4c8a1b673ff145a9449c9e744718026
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c25784583b74069f4b6462166da5c9cf1038c6d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891367"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>教程：Azure Active Directory 与 Sectigo Certificate Manager 的集成
 
@@ -162,7 +162,7 @@ Sectigo Certificate Manager 支持以下功能：
 
 #### <a name="test-by-using-the-my-apps-portal-idp-initiated-single-sign-on"></a>使用“我的应用”门户进行测试（IDP 启动的单一登录）
 
-在“我的应用”门户中选择“Sectigo Certificate Manager”。  如果配置正确，你将自动登录到 Sectigo Certificate Manager。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](../user-help/my-apps-portal-end-user-access.md)。
+在“我的应用”门户中选择“Sectigo Certificate Manager”。  如果配置正确，你将自动登录到 Sectigo Certificate Manager。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

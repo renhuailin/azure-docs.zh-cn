@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26e55c1bbb1c20781a28dda8ad635c99d058da2d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97608929"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124731527"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>教程：将 Way We Do 与 Azure Active Directory 集成
 
@@ -177,7 +177,7 @@ ms.locfileid: "97608929"
 
 ### <a name="test-sso"></a>测试 SSO
 
-选择访问面板中的“Way We Do”磁贴时，应当会自动登录到设置了 SSO 的 Way We Do。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+选择访问面板中的“Way We Do”磁贴时，应当会自动登录到设置了 SSO 的 Way We Do。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

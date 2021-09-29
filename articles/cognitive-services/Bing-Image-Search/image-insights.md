@@ -3,20 +3,18 @@ title: 获取图像见解 - 必应图像搜索 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应图像搜索 API 获取图像的详细信息。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.assetid: 0BCD936E-D4C0-472D-AE40-F4B2AB6912D5
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: scottwhi
-ms.openlocfilehash: 9dffc16a1d1171343fa10fce10fddba2a12c2167
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4f9ce34f35b32c580a5cbf0f579765e55a4c2d4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96348239"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672507"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>使用必应图像搜索 API 获取图像见解
 

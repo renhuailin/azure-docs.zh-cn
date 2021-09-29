@@ -5,14 +5,14 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.date: 07/14/2020
+ms.date: 09/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1ffdba78d43d558f5d84ec30153df17dfba83cc1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 02a1a6d5088a722c0b919811afc0ac89c7c52550
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460115"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593565"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
@@ -25,15 +25,6 @@ ms.locfileid: "114460115"
 | 这是否会影响我？ | 原因 | 解决方法 |
 | --- | --- | --- |
 | 在&nbsp;Azure&nbsp;数字孪生中，此问题会影响以下命令组：<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | 这是 Cloud Shell 中的一个已知问题导致的：[从 Cloud Shell 获取令牌时会间歇性失败，出现“400 客户端错误: 错误请求”](https://github.com/Azure/azure-cli/issues/11749)。<br><br>这会影响 Azure 数字孪生实例身份验证令牌和 Cloud Shell 默认的基于[托管标识](../active-directory/managed-identities-azure-resources/overview.md)的身份验证。 <br><br>这不会影响来自 `az dt` 或 `az dt endpoint` 命令组的 Azure 数字孪生命令，原因是它们使用不同类型的身份验证令牌（基于 Azure 资源管理器），这不会对 Cloud Shell 的托管标识身份验证造成问题。 | 解决此问题的一种方法是在 Cloud Shell 中重新运行 `az login` 命令并完成后续登录步骤。 该操作将使会话脱离托管标识身份验证，从而避免了根本问题。 之后就能重新运行该命令。<br><br>或者，你可在 Azure 门户中打开 Cloud Shell 窗格，在这里完成 Cloud Shell 工作。<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure 门户图标栏中的 Cloud Shell 图标的屏幕截图。" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>最后，还有一种解决方案是在计算机上[安装 Azure CLI](/cli/azure/install-azure-cli)，以便可在本地运行 Azure CLI 命令。 本地 CLI 不会遇到此问题。 |
-
-
-## <a name="missing-role-assignment-after-scripted-setup"></a>脚本安装后缺少角色分配
-
-**问题描述：** 一些用户可能会在[设置实例和身份验证（已编写脚本）](how-to-set-up-instance-scripted.md)的角色分配部分遇到问题。 脚本没有指示失败，但是 Azure 数字孪生数据所有者角色没有成功分配给用户，此问题将影响以后创建其他资源的能力。
-
-| 这是否会影响我？ | 原因 | 解决方法 |
-| --- | --- | --- |
-| 若要确定在运行脚本后是否成功设置了角色分配，请按照安装文章的验证用户角色分配部分中的说明进行操作。 如果用户未显示具有此角色，则此问题会影响你。 | 对于使用个人 [Microsoft 帐户 (MSA)](https://account.microsoft.com/account) 登录的用户，在此类命令中标识你的用户主体 ID 可能与用户的登录电子邮件不同，这使得脚本难以发现并使用它来正确分配角色。 | 若要解决此问题，可按照 [CLI 说明](how-to-set-up-instance-cli.md#set-up-user-access-permissions)或 [Azure 门户说明](how-to-set-up-instance-portal.md#set-up-user-access-permissions)手动设置角色分配。 |
 
 ## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Azure.Identity 1.2.0 上的交互式浏览器身份验证存在问题
 

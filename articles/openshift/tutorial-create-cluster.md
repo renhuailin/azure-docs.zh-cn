@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 707ee38ef71a0f3f3f09e142bd4d944bb04cff3d
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 82e21038b143e0e32a58c3aa24b227ebe850fd06
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446125"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775006"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -42,7 +42,7 @@ ARO 拉取机密不会改变 ARO 的 RH OpenShift 许可证的成本。
 
 在本教程中，你将创建一个资源组，该资源组将包含群集的虚拟网络。 你必须直接在虚拟网络或包含该网络的资源组或订阅上具有“参与者”和“用户访问管理员”权限或“所有者”权限。
 
-还需要具有足够的 Azure Active Directory 权限（租户的成员用户或分配有角色“应用程序管理员”的来宾用户），以便工具代表你为群集创建应用程序和服务主体。 有关详细信息，请参阅[成员和来宾用户](/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users)以及[为具有 Azure Active Directory 的用户分配管理员和非管理员角色](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+还需要具有足够的 Azure Active Directory 权限（租户的成员用户或分配有角色“应用程序管理员”的来宾用户），以便工具代表你为群集创建应用程序和服务主体。 有关详细信息，请参阅[成员和来宾用户](../active-directory/fundamentals/users-default-permissions.md#member-and-guest-users)以及[为具有 Azure Active Directory 的用户分配管理员和非管理员角色](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ### <a name="register-the-resource-providers"></a>注册资源提供程序
 

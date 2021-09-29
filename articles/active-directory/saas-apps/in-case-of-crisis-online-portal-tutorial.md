@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 124b53297c04d3c9958a233cf40f56ecda57bbc5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d8925079abfda716755179d5ed8d38e0ab33f8e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460200"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757280"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---online-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 In Case of Crisis - Online Portal 的集成
 
@@ -130,7 +130,7 @@ ms.locfileid: "92460200"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“In Case of Crisis - Online Portal”磁贴时，应会自动登录到设置了 SSO 的 In Case of Crisis - Online Portal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“In Case of Crisis - Online Portal”磁贴时，应会自动登录到设置了 SSO 的 In Case of Crisis - Online Portal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

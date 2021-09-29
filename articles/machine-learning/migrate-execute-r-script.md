@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: b6b422236b122244d18f0d000329b67213f36a0f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 925288281f19869f68baca1b22b7fdb3da8d05a1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479024"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128614650"
 ---
 # <a name="migrate-execute-r-script-modules-in-studio-classic"></a>在工作室（经典）中迁移“执行 R 脚本”模块
 
@@ -87,7 +87,7 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=data.set)) 
 } 
 ```
-有关详细信息，请参阅设计器[执行 R 脚本模块参考](/azure/machine-learning/algorithm-module-reference/execute-r-script)。
+有关详细信息，请参阅设计器[执行 R 脚本模块参考](./algorithm-module-reference/execute-r-script.md)。
 
 ### <a name="install-r-packages-from-the-internet"></a>从 Internet 安装 R 包
 

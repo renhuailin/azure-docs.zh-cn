@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65ce79252c25d187ed61de3b637182deaf225db
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: df3c243970709ad7ae4bc52f179117affc2d8613
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136339"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776425"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -166,7 +166,7 @@ ms.locfileid: "113136339"
 > [!div class="mx-tableFixed"]
 > | 任务 | 最小特权角色 | 其他角色 |
 > | ---- | --------------------- | ---------------- |
-> | 将资源添加到目录 | Identity Governance 管理员 | 通过权利管理，你可将此任务委派给目录所有者（[参阅文档](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)） |
+> | 将资源添加到目录 | Identity Governance 管理员 | 通过权利管理，你可将此任务委派给目录所有者（[参阅文档](../governance/entitlement-management-catalog-create.md#add-more-catalog-owners)） |
 > | 向目录添加 SharePoint Online 站点 | SharePoint 管理员 |  |
 
 ## <a name="groups"></a>组

@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.topic: reference
 ms.date: 08/12/2021
 ms.author: bagol
-ms.openlocfilehash: d3f727b251c13bdc52de793919d85e984d8b78f2
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 8cbd8861e7dc01e8615225dd88960b581fd4c2f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260926"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755076"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>查找 Azure Sentinel 数据连接器
 
@@ -72,7 +72,7 @@ ms.locfileid: "123260926"
 > [!IMPORTANT]
 > 如果执行此步骤，请在部署数据连接器之前执行。
 >
-Agari 函数应用允许通过安全图形 API 与 Azure Sentinel 共享威胁情报。 若要使用此功能，你需要启用 [Sentinel 威胁情报平台连接器](connect-threat-intelligence.md)，同时在 Azure Active Directory 中[注册应用程序](/graph/auth-register-app-v2)。
+Agari 函数应用允许通过安全图形 API 与 Azure Sentinel 共享威胁情报。 若要使用此功能，你需要启用 [Sentinel 威胁情报平台连接器](./connect-threat-intelligence-tip.md)，同时在 Azure Active Directory 中[注册应用程序](/graph/auth-register-app-v2)。
 
 此过程将提供下面三条信息，供你在[部署函数应用](connect-azure-functions-template.md)时使用：图形租户 ID、图形客户端 ID 和图形客户端密码（请查看上表中的“应用程序设置”）  。
 
@@ -92,7 +92,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** <br><br>[为 AI Analyst 分配 CEF 日志转发功能](#configure-cef-log-forwarding-for-ai-analyst) |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** <br><br>[为 AI Analyst 分配 CEF 日志转发功能](#configure-cef-log-forwarding-for-ai-analyst) |
 | **Log Analytics 表** | CommonSecurityLog |
 | **支持的服务** | [Darktrace](https://customerportal.darktrace.com/) |
 | | |
@@ -113,7 +113,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** <br><br>[为 AI Vectra Detect 分配 CEF 日志转发功能](#configure-cef-log-forwarding-for-ai-vectra-detect)|
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** <br><br>[为 AI Vectra Detect 分配 CEF 日志转发功能](#configure-cef-log-forwarding-for-ai-vectra-detect)|
 | **Log Analytics 表** | CommonSecurityLog |
 | **支持的服务** | [Vectra AI](https://www.vectra.ai/support) |
 | | |
@@ -163,7 +163,6 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 | --- | --- |
 | **数据引入方法** | [**Log Analytics 代理 - 自定义日志**](connect-custom-logs.md) <br><br>[Alsid 的额外配置](#extra-configuration-for-alsid)|
 | **Log Analytics 表** | AlsidForADLog_CL |
-| **自定义日志示例文件：** | https://github.com/Azure/azure-quickstart-templates/blob/master/alsid-syslog-proxy/logs/AlsidForAD.log |
 | **Kusto 函数别名：** | afad_parser |
 | **Kusto 函数 URL：** | https://aka.ms/sentinel-alsidforad-parser |
 | **支持的服务** | [Alsid](https://www.alsid.com/contact-us/) |
@@ -298,7 +297,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 下面是迁移到诊断设置管道后的一些关键改进：
 - 改进了引入延迟（在事件发生后 2-3 分钟内而不是 15-20 分钟内引入事件）。
 - 提高了可靠性。
-- 提高了性能。
+- 改进的性能。
 - 支持活动日志服务记录的所有类别的事件（旧机制仅支持部分类别，例如不支持服务运行状况事件）。
 - 使用 Azure Policy 进行大规模管理。
 
@@ -494,7 +493,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [日志导出程序 - Check Point 日志导出](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk122323) |
 | **支持的服务** | [Check Point](https://www.checkpoint.com/support-services/contact-support/) |
@@ -504,7 +503,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [Cisco ASA 系列 CLI 配置指南](https://www.cisco.com/c/en/us/support/docs/security/pix-500-series-security-appliances/63884-config-asa-00.html) |
 | **支持的服务** | Microsoft |
@@ -514,7 +513,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** <br><br>[Cisco Firepower eStreamer 的额外配置](#extra-configuration-for-cisco-firepower-estreamer)|
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** <br><br>[Cisco Firepower eStreamer 的额外配置](#extra-configuration-for-cisco-firepower-estreamer)|
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [eStreamer eNcore for Sentinel 操作指南](https://www.cisco.com/c/en/us/td/docs/security/firepower/670/api/eStreamer_enCore/eStreamereNcoreSentinelOperationsGuide_409.html) |
 | **支持的服务** | [Cisco](https://www.cisco.com/c/en/us/support/index.html)
@@ -591,7 +590,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | 若要配置 WAF，请参阅[支持 WIKI - 使用 NetScaler 进行 WAF 配置](https://support.citrix.com/article/CTX234174)。<br><br>若要配置 CEF 日志，请参阅[应用程序防火墙中的 CEF 日志记录支持](https://support.citrix.com/article/CTX136146)。<br><br>若要将日志转发到代理，请参阅[为审核日志记录配置 Citrix ADC 设备](https://docs.citrix.com/en-us/citrix-adc/current-release/system/audit-logging/configuring-audit-logging.html)。 |
 | **支持的服务** | [Citrix Systems](https://www.citrix.com/support/) |
@@ -611,7 +610,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [安全信息和事件管理 (SIEM) 应用程序](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm) |
 | **支持的服务** | [CyberArk](https://www.cyberark.com/customer-support/) |
@@ -798,7 +797,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [ExtraHop Detection SIEM Connector](https://aka.ms/asi-syslog-extrahop-forwarding) |
 | **支持的服务** | [ExtraHop](https://www.extrahop.com/support/) |
@@ -817,7 +816,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [配置应用程序安全性事件日志记录](https://aka.ms/asi-syslog-f5-forwarding) |
 | **支持的服务** | [F5 网络](https://support.f5.com/csp/home) |
@@ -827,7 +826,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [Forcepoint CASB 和 Azure Sentinel](https://forcepoint.github.io/docs/casb_and_azure_sentinel/) |
 | **支持的服务** | [Forcepoint](https://support.forcepoint.com/) |
@@ -837,7 +836,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [Forcepoint Cloud Security Gateway 和 Azure Sentinel](https://forcepoint.github.io/docs/csg_and_sentinel/) |
 | **支持的服务** | [Forcepoint](https://support.forcepoint.com/) |
@@ -856,7 +855,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [Forcepoint Next-Gen Firewall 和 Azure Sentinel](https://forcepoint.github.io/docs/ngfw_and_azure_sentinel/) |
 | **支持的服务** | [Forcepoint](https://support.forcepoint.com/) |
@@ -866,7 +865,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [请先安装 ForgeRock Common Audit (CAUD) for Azure Sentinel](https://github.com/javaservlets/SentinelAuditEventHandler) |
 | **支持的服务** | [ForgeRock](https://www.forgerock.com/support) |
@@ -876,7 +875,7 @@ Agari 连接器使用环境变量来存储日志访问时间戳。 为了使应�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** <br><br>[将 Fortinet 日志发送到日志转发器](#send-fortinet-logs-to-the-log-forwarder) |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** <br><br>[将 Fortinet 日志发送到日志转发器](#send-fortinet-logs-to-the-log-forwarder) |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [Fortinet 文档库](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)<br>选择你的版本，然后使用“手册”和“日志消息参考”PDF 。 |
 | **支持的服务** | [Fortinet](https://support.fortinet.com/) |
@@ -927,7 +926,7 @@ end
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [Illusive Networks 管理员指南](https://support.illusivenetworks.com/hc/en-us/sections/360002292119-Documentation-by-Version) |
 | **支持的服务** | [Illusive Networks](https://www.illusivenetworks.com/technical-support/) |
@@ -937,7 +936,7 @@ end
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [有关启用向 Azure Sentinel 发送 Imperva WAF 网关警报日志记录的步骤](https://community.imperva.com/blogs/craig-burlingame1/2020/11/13/steps-for-enabling-imperva-waf-gateway-alert) |
 | **支持的服务** | [Imperva](https://www.imperva.com/support/technical-support/) |
@@ -1109,7 +1108,7 @@ end
 | **Log Analytics 表** | Okta_CL |
 | **Azure 函数应用代码** | https://aka.ms/sentineloktaazurefunctioncodev2 |
 | **API 凭据** | <li>API 令牌 |
-| **供应商文档/<br>安装说明** | <li>[Okta System Log API 文档](https://developer.okta.com/docs/reference/api/system-log/)<li>[创建 API 令牌](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/)<li>[将 Okta SSO 连接到 Azure Sentinel](connect-okta-single-sign-on.md) |
+| **供应商文档/<br>安装说明** | <li>[Okta System Log API 文档](https://developer.okta.com/docs/reference/api/system-log/)<li>[创建 API 令牌](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/)<li>[将 Okta SSO 连接到 Azure Sentinel](#okta-single-sign-on-preview) |
 | **连接器部署说明** | <li>通过 Azure 资源管理器 (ARM) 模板进行[单击部署](connect-azure-functions-template.md?tabs=ARM)<li>[手动部署](connect-azure-functions-template.md?tabs=MPS) |
 | **应用程序设置** | <li>apiToken<li>workspaceID<li>workspaceKey<li>uri（遵循 `https://<OktaDomain>/api/v1/logs?since=`。 [标识域命名空间](https://developer.okta.com/docs/reference/api-overview/#url-namespace)。） <li>logAnalyticsUri（可选） |
 | **支持的服务** | Microsoft |
@@ -1138,7 +1137,7 @@ end
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [One Identity Safeguard for Privileged Sessions 管理指南](https://aka.ms/sentinel-cef-oneidentity-forwarding) |
 | **支持的服务** | [统一标识](https://support.oneidentity.com/) |
@@ -1186,7 +1185,7 @@ end
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [通用事件格式 (CEF) 配置指南](https://aka.ms/asi-syslog-paloalto-forwarding)<br>[配置 Syslog 监视](https://aka.ms/asi-syslog-paloalto-configure) |
 | **支持的服务** | [Palo Alto Networks](https://www.paloaltonetworks.com/company/contact-support) |
@@ -1372,7 +1371,7 @@ end
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [日志 > Syslog](http://help.sonicwall.com/help/sw/eng/7020/26/2/3/content/Log_Syslog.120.2.htm)<br>选择 facility local4 和 ArcSight 用作 Syslog 格式。  |
 | **支持的服务** | [SonicWall](https://www.sonicwall.com/support/) |
@@ -1466,7 +1465,7 @@ end
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [安全 Syslog/CEF 日志记录](https://thy.center/ss/link/syslog) |
 | **支持的服务** | [Thycotic](https://thycotic.force.com/support/s/) |
@@ -1550,7 +1549,7 @@ end
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | 请联系 [WireX 支持人员](https://wirexsystems.com/contact-us/)，配置 NFP 解决方案来发送 CEF 格式的 Syslog 消息。 |
 | **支持的服务** | [WireX Systems](mailto:support@wirexsystems.com) |
@@ -1610,7 +1609,7 @@ end
 
 Zimperium Mobile Threat Defense 数据连接器可将 Zimperium 威胁日志连接到 Azure Sentinel，以查看仪表板、创建自定义警报并改进调查。 此连接器可帮助更深入了解组织的移动威胁态势，并增强安全操作能力。 有关更多说明，请参阅相关文章。
 
-有关连接到 Azure Sentinel 的详细信息，请参阅[将 Zimperium 连接到 Azure Sentinel](connect-zimperium-mtd.md)。
+有关连接到 Azure Sentinel 的详细信息，请参阅[将 Zimperium 连接到 Azure Sentinel](#zimperium-mobile-thread-defense-preview)。
 
 | 连接器属性 | 说明 |
 | --- | --- |
@@ -1652,7 +1651,7 @@ Zimperium Mobile Threat Defense 数据连接器可将 Zimperium 威胁日志连�
 
 | 连接器属性 | 说明 |
 | --- | --- |
-| **数据引入方法** | **使用 Syslog 的[通用事件格式 (CEF)](connect-common-event-format.md)** |
+| **数据引入方法** | **使用 Syslog 的 [通用事件格式 (CEF)](connect-common-event-format.md)** |
 | **Log Analytics 表** | CommonSecurityLog |
 | **供应商文档/<br>安装说明** | [Zscaler 和 Microsoft Azure Sentinel 部署指南](https://aka.ms/ZscalerCEFInstructions) |
 | **支持的服务** | [Zscaler](https://help.zscaler.com/submit-ticket-links) |

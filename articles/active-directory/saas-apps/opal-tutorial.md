@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 80c4b1998872c749228d7352484fd5af22b6d23d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7a7930270385519891829a0639d8c3e24d6dad74
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97608334"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738172"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Opal 集成
 
@@ -97,7 +97,7 @@ ms.locfileid: "97608334"
 
     | 名称 | 源属性|
     | ---------------| --------------- |
-    | 名 | user.givenname |
+    | firstname | user.givenname |
     | 姓 | user.surname |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
@@ -150,7 +150,7 @@ ms.locfileid: "97608334"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Opal 磁贴时，应会自动登录到为其设置了 SSO 的 Opal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Opal 磁贴时，应会自动登录到为其设置了 SSO 的 Opal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -3,7 +3,7 @@ title: Azure API 管理中的自定义缓存
 description: 了解如何在 Azure API 管理中根据键来缓存项。 可以使用请求头来修改键。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 772bc8dd-5cda-41c4-95bf-b9f6f052bc85
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
-ms.author: apimpm
-ms.openlocfilehash: cf9901b4e49460dd2fb91dceaf239571058c5284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 6349ddde5b5c2e8b38be402617c6189d6e4e68c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88213328"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655992"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API 管理中的自定义缓存
 Azure API 管理服务使用资源 URL 作为键，提供对 [HTTP 响应缓存](api-management-howto-cache.md)的内置支持。 可以使用 `vary-by` 属性根据请求标头修改键。 这种做法适用于缓存整个 HTTP 响应（也称为“表示形式”），但有时也适用于只缓存表示形式的一部分。 使用新的 [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) 和 [cache-store-value](./api-management-caching-policies.md#StoreToCacheByKey) 策略可以存储和检索策略定义中的任意数据。 此功能使得以前推出的 [send-request](./api-management-advanced-policies.md#SendRequest) 策略更有作用，因为现在可以缓存来自外部服务的响应。

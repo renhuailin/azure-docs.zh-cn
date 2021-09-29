@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82071c393cea168fccb5e06db85e71852bbd4f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783753"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636755"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure 存储管理器安全指南
 
@@ -98,7 +98,7 @@ Microsoft Azure 存储资源管理器可用于在 Windows、macOS 和 Linux 上�
 在为 blob 容器启用公共访问时，建议遵循以下准则：
 
 - **不要对可能包含任何潜在敏感数据的 blob 容器启用公共访问权限。** 确保 blob 容器中没有任何专用数据。
-- **请勿将任何潜在的敏感数据上载到具有 blob 或容器访问权限的 blob 容器中。** 
+- **请勿将任何潜在的敏感数据上载到具有 blob 或容器访问权限的 blob 容器中。**
 
 ## <a name="next-steps"></a>后续步骤
 

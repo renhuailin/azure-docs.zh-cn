@@ -1,18 +1,18 @@
 ---
 title: 开始使用 Azure Data Lake Storage Gen1 - PowerShell | Microsoft Docs
 description: 使用 Azure PowerShell 创建 Azure Data Lake Store Gen1 帐户并执行基本操作。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.author: twooley
+ms.author: normesta
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485b14f85d68290c5447c885b9bc4974318f7952
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98875363ca7a32183b79dc63c8b958203d757ce0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92103724"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612294"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Storage Gen1
 
@@ -27,7 +27,7 @@ ms.locfileid: "92103724"
 
 了解如何使用 Azure PowerShell 创建 Azure Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Storage Gen1 的详细信息，请参阅 [Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

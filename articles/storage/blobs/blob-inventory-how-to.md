@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
-ms.openlocfilehash: e7b92b2b9c4885e09bc2a700fbf3a8f1a37dbfa4
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 67bd943028ba321aa4fa3a5acca30e80cfc36a32
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272263"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615560"
 ---
 # <a name="enable-azure-storage-blob-inventory-reports"></a>启用 Azure 存储 Blob 清单报表
 
-Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照和 Blob 版本。 使用清单报表可以了解 Blob 和容器的各种属性，例如总数据大小、新旧程度、加密状态、不可变性策略和法定保留，等等。 该报表概述了有关业务和符合性要求的数据。 
+Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照和 Blob 版本。 使用清单报表可以了解 Blob 和容器的各种属性，例如总数据大小、新旧程度、加密状态、不可变性策略和法定保留，等等。 该报表概述了有关业务和符合性要求的数据。
 
 若要详细了解 Blob 清单报表，请参阅 [Azure 存储 Blob 清单](blob-inventory.md)。
 
@@ -44,7 +44,7 @@ Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照�
 
 7. 在“要清点的对象类型”下，选择是为 Blob 还是为容器创建报表。
 
-   如果选择“Blob”，则在“Blob 子类型”下，选择要包括在报表中的 Blob 类型，以及是否在清单报表中包括 Blob 版本和/或快照。 
+   如果选择“Blob”，则在“Blob 子类型”下，选择要包括在报表中的 Blob 类型，以及是否在清单报表中包括 Blob 版本和/或快照。
 
    > [!NOTE]
    > 必须在该帐户上启用版本和快照，才能保存启用了相应选项的新规则。
@@ -91,30 +91,30 @@ Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照�
    $ctx = $storageAccount.Context
    ```
 
-   * 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+   - 将 `<resource-group-name>` 占位符值替换为资源组的名称。
 
-   * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+   - 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
 6. 使用 [New-AzStorageBlobInventoryPolicyRule](/powershell/module/az.storage/new-azstorageblobinventorypolicyrule) 命令创建清单规则。 每个规则都列出了报表字段。 要查看报表字段的完整列表，请参阅 [Azure 存储 Blob 清单](blob-inventory.md)。
 
-   ```Powershell
+   ```powershell
     $containerName = "my-container"
 
     $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -PrefixMatch con1,con2 `
-                -ContainerSchemaField Name,Metadata,PublicAccess,Last-modified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold 
+                -ContainerSchemaField Name,Metadata,PublicAccess,Last-modified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold
 
     $rule2 = New-AzStorageBlobInventoryPolicyRule -Name test2 -Destination $containerName -Format Parquet -Schedule Weekly  -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                 -BlobSchemaField name,Last-Modified,Metadata,LastAccessTime
 
     $rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
-                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata,LastAccessTime 
+                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata,LastAccessTime
 
     $rule4 = New-AzStorageBlobInventoryPolicyRule -Name test4 -Destination $containerName -Format Csv -Schedule Weekly -BlobType blockBlob -BlobSchemaField Name,BlobType,Content-Length,Creation-Time
 
    ```
 
-7. 使用 [Set-AzStorageBlobInventoryPolicy](/powershell/module/az.storage/set-azstorageblobinventorypolicy) 创建 Blob 清单策略。 使用 `-Rule` 参数将规则传递到此命令中。 
-  
+7. 使用 [Set-AzStorageBlobInventoryPolicy](/powershell/module/az.storage/set-azstorageblobinventorypolicy) 创建 Blob 清单策略。 使用 `-Rule` 参数将规则传递到此命令中。
+
    ```powershell
    $policy = Set-AzStorageBlobInventoryPolicy -StorageAccount $storageAccount -Rule $rule1,$rule2,$rule3,$rule4  
    ```
@@ -132,9 +132,10 @@ Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照�
    ```azurecli
       az account set --subscription <subscription-id>
    ```
+
    将 `<subscription-id>` 占位符值替换为你的订阅 ID。
 
-3. 在 JSON 文档中定义策略的规则。 下面显示了名为 `policy.json` 的示例 JSON 文件的内容。 
+3. 在 JSON 文档中定义策略的规则。 下面显示了名为 `policy.json` 的示例 JSON 文件的内容。
 
     ```json
     {
@@ -178,7 +179,8 @@ Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照�
       }
      ]
    }
-   ``` 
+
+   ```
 
 4. 使用 [az storage account blob-inventory-policy](/cli/azure/storage/account/blob-inventory-policy#az_storage_account_blob_inventory_policy_create) create 命令创建 Blob 清单策略。 使用 `--policy` 参数提供 JSON 文档的名称。
 
@@ -191,4 +193,4 @@ Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照�
 ## <a name="next-steps"></a>后续步骤
 
 - [计算每个容器的 Blob 计数和总大小](calculate-blob-count-size.md)
-- [管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)
+- [管理 Azure Blob 存储生命周期](./lifecycle-management-overview.md)

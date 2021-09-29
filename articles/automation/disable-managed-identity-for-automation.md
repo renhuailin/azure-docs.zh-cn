@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7c0d2d1f64d0d931c670b87438a032c646c45f9d
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 178da223b5d5f14cc27034c39bd4cc3a05f82631
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114673913"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606582"
 ---
 # <a name="disable-system-assigned-managed-identity-for-azure-automation-account-preview"></a>为 Azure 自动化帐户禁用系统分配的托管标识（预览版）
 
@@ -34,7 +34,7 @@ ms.locfileid: "114673913"
 
 ### <a name="request-body"></a>请求正文
 
-以下请求正文禁用系统分配的托管标识，并且使用 HTTP PATCH 方法删除任何用户分配的托管标识。
+以下请求正文使用 HTTP PATCH 方法禁用系统分配的托管标识，并删除任何用户分配的托管标识。
 
 ```json
 { 
@@ -45,7 +45,7 @@ ms.locfileid: "114673913"
 
 ```
 
-如果定义了多个用户分配的标识，若要保留这些标识并仅删除系统分配的标识，则需要使用逗号分隔的列表指定每个用户分配的标识。 下面的示例使用的是 HTTP PATCH 方法。
+如果定义了多个用户分配的标识，若要保留这些标识并仅删除系统分配的标识，则需要使用逗号分隔的列表指定每个用户分配的标识。 下例使用的是 HTTP PATCH 方法。
 
 ```json
 { 
@@ -78,7 +78,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
     $sub = Get-AzSubscription -ErrorAction SilentlyContinue
     if(-not($sub))
     {
-        Connect-AzAccount -Subscription
+        Connect-AzAccount
     }
     
     # If you have multiple subscriptions, set the one to use

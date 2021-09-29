@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: iafinder
-ms.openlocfilehash: d323338ba5b323db5ea1a144fe1010962407f3b9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 22883ab1053a69cc0593565eb19df46ae1852fb7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123423603"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774132"
 ---
 # <a name="nd-a100-v4-series"></a>ND A100 v4 系列
 
@@ -52,12 +52,9 @@ Ubuntu 20.04：5.4.0-1046-azure <br>
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_ND96asr_v4 | 96 | 900 | 6000 | 8 个 A100 40 GB GPU (NVLink 3.0) | 40 | 32 | 80,000 / 800 | 24000 Mbps | 8 |
 
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-
-
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)] <br>
-
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
@@ -65,6 +62,10 @@ Ubuntu 20.04：5.4.0-1046-azure <br>
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
 
 ## <a name="next-steps"></a>后续步骤
 

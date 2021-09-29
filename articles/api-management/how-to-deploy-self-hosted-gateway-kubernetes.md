@@ -1,20 +1,19 @@
 ---
-title: 将自承载网关部署到 Kubernetes | Microsoft Docs
+title: 将自托管网关部署到 Kubernetes
 description: 了解如何将 Azure API 管理的自承载网关组件部署到 Kubernetes
-services: api-management
-author: vladvino
+author: dlepow
 manager: gwallace
 ms.service: api-management
 ms.workload: mobile
 ms.topic: article
-ms.author: apimpm
+ms.author: danlep
 ms.date: 05/25/2021
-ms.openlocfilehash: 645fce68e408b65299090e4661b36690f7ca140c
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: dda6fcbf71914fefcd1afd2056864ad66aa11d4d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690484"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609814"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>将自托管网关部署到 Kubernetes
 
@@ -43,25 +42,27 @@ ms.locfileid: "114690484"
 8. 将命令粘贴到终端（或命令）窗口。 第一个命令创建 Kubernetes 机密，其中包含在步骤 4 中生成的访问令牌。 第二个命令将在步骤 6 中下载的配置文件应用于 Kubernetes 群集，并假定该文件位于当前目录中。
 9. 运行命令以在[默认命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)中创建必要的 Kubernetes 对象，并从 Microsoft 容器注册表下载的[容器映像](https://aka.ms/apim/sputnik/dhub)中启动自承载网关 Pod。
 10. 运行以下命令，检查部署是否成功。 请注意，创建所有对象和初始化 Pod 可能需要一些时间。
+
     ```console
     kubectl get deployments
     NAME             READY   UP-TO-DATE   AVAILABLE   AGE
     <gateway-name>   1/1     1            1           18s
     ```
 11. 运行以下命令，检查是否已成功创建服务。 请注意，你的服务 IP 和端口与此不同。
+
     ```console
     kubectl get services
     NAME             TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
     <gateway-name>   LoadBalancer   10.99.236.168   <pending>     80:31620/TCP,443:30456/TCP   9m1s
     ```
-12. 返回到 Azure 门户，选择“概述”。
-13. 确认“状态”显示绿色复选标记，后跟与 YAML 文件中指定的副本数匹配的节点计数。 此状态表示部署的自承载网关 Pod 正在成功地与 API 管理服务通信，并且具有常规的“检测信号”。
+1. 返回到 Azure 门户，选择“概述”。
+1. 确认“状态”显示绿色复选标记，后跟与 YAML 文件中指定的副本数匹配的节点计数。 此状态表示部署的自承载网关 Pod 正在成功地与 API 管理服务通信，并且具有常规的“检测信号”。
 
     ![网关状态](media/how-to-deploy-self-hosted-gateway-kubernetes/status.png)
 
 > [!TIP]
-> 运行 <code>kubectl logs deployment/<gateway-name></code> 命令以查看随机选择的 Pod 的日志（如果有多个 Pod）。
-> 运行 <code>kubectl logs -h</code> 以获得一组完整的命令选项，例如如何查看特定 Pod 或容器的日志。
+> 运行 `kubectl logs deployment/<gateway-name>` 命令以查看随机选择的 Pod 的日志（如果有多个 Pod）。
+> 运行 `kubectl logs -h` 以获得一组完整的命令选项，例如如何查看特定 Pod 或容器的日志。
 
 ## <a name="production-deployment-considerations"></a>生产部署注意事项
 

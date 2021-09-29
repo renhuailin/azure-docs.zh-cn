@@ -12,12 +12,12 @@ ms.date: 08/27/2021
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 541c9f29e18f3972bf0f9e2a717457fa4fe07a70
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: fb8cf19f3b266d2cc7c3a1569f964acdc934ba7b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102085"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786762"
 ---
 # <a name="microsoft-identity-platform-code-samples"></a>Microsoft 标识平台代码示例
 
@@ -88,7 +88,7 @@ ms.locfileid: "123102085"
 > | Node.js | [用户登录](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-desktop) | MSAL Node | 采用 PKCE 的授权代码 |
 > | Powershell | [通过使用用户名/密码登录用户来调用 Microsoft Graph](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) | MSAL.NET | 资源所有者密码凭据 |
 > | Python | [用户登录](https://github.com/Azure-Samples/ms-identity-python-desktop) | MSAL Python | 采用 PKCE 的授权代码 |
-> | 通用 Window 平台 (UWP) | [调用 Microsoft Graph](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) | Web 帐户管理器 API | Windows 集成身份验证 |
+> | 通用 Window 平台 (UWP) | [调用 Microsoft Graph](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/main/2-With-broker) | MSAL.NET | Web 帐户管理器 |
 > | Windows Presentation Foundation (WPF) | [使用户登录并调用 Microsoft Graph](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | MSAL.NET | 采用 PKCE 的授权代码 |
 > | XAML | &#8226; [使用户登录并调用 ASP.NET Core Web API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/1.%20Desktop%20app%20calls%20Web%20API) <br/> &#8226; [使用户登录并调用 Microsoft Graph](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | MSAL.NET | 采用 PKCE 的授权代码 |
 

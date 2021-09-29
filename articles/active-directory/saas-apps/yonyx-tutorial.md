@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cbf0b03928f8cf8823fe2491c48d0470cf24606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5e375ecd4aae9e89421d4cf5d345ccb5b68a966
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519140"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>教程：Azure Active Directory 与 Yonyx Interactive Guides 的集成
 
@@ -189,7 +189,7 @@ ms.locfileid: "92519140"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Yonyx Interactive Guides”磁贴时，应会自动登录到设置了 SSO 的 Yonyx Interactive Guides。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Yonyx Interactive Guides”磁贴时，应会自动登录到设置了 SSO 的 Yonyx Interactive Guides。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

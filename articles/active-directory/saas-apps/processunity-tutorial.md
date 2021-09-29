@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 7f5904cf961191072532b033b435b9b636650f98
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: fe1b9db6c52f302f27a79d455802f38b938cbb03
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207566"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124756311"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-processunity"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ProcessUnity 集成
 
@@ -76,13 +76,13 @@ ms.locfileid: "108207566"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.processunity.net/<DOMAIN_NAME>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.processunity.net/<DOMAIN_NAME>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.processunity.net/<DOMAIN_NAME>/SAML/AssertionConsumerServiceV2.aspx`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.processunity.net/<DOMAIN_NAME>/SAML/SamlLoginV2.aspx`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.processunity.net/<DOMAIN_NAME>/SAML/SamlLoginV2.aspx`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ProcessUnity 客户端支持团队](mailto:customer.support@processunity.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -141,7 +141,7 @@ ms.locfileid: "108207566"
 
 * 在 Azure 门户中单击“测试此应用程序”，你应该会自动登录到为其设置了 SSO 的 ProcessUnity。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击 ProcessUnity 磁贴时，如果这是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果这是在 IDP 模式下配置的，系统会让你自动登录到为其设置了 SSO 的 ProcessUnity。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击 ProcessUnity 磁贴时，如果这是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果这是在 IDP 模式下配置的，系统会让你自动登录到为其设置了 SSO 的 ProcessUnity。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

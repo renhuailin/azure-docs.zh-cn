@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: a5090835089ec32c03b35e195f5a18129d7319c8
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: d32043aa51f798de96468768fd68a924914b621b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234584"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660721"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用 
 
@@ -39,13 +39,13 @@ ms.locfileid: "112234584"
 
     b. 选择“ASP.NET Web 应用程序(.NET Framework)”。
 
-    c. 选择“**下一步**”。
+    c. 选择“下一步”。
 
 3. 在“项目名称”框中，为项目提供一个名称。 在此示例中，我们使用了 **ContosoTeamStats**。
 
 4. 验证是否已选择“.NET Framework 4.6.1”或更高版本。
 
-5. 选择“创建”。
+5. 选择“创建”  。
    
 6. 选择“MVC”作为项目类型。
 
@@ -57,9 +57,9 @@ ms.locfileid: "112234584"
 
 接下来，为应用创建缓存。
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>编辑 *CacheSecrets.config* 文件的步骤
 

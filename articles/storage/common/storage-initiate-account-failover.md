@@ -10,12 +10,12 @@ ms.date: 05/07/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bd1bbf0d1c5a49bde35d303e6780737fb43ca997
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab764fd95168fef768efd0687adb5e2841bfb140
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726064"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609282"
 ---
 # <a name="initiate-a-storage-account-failover"></a>启动存储帐户故障转移
 
@@ -124,7 +124,7 @@ az storage account failover \ --name accountName
 - 可用于后台复制的资源，例如 CPU、内存、磁盘和 WAN 容量。 实时流量优先于异地复制。
 - 每个 Blob 的快照数（如果使用 Blob 存储）。
 - [数据分区策略](/rest/api/storageservices/designing-a-scalable-partitioning-strategy-for-azure-table-storage)（如果使用表存储）。 复制过程不能扩展到超过所用分区键数量的地步。
-  
+
 ## <a name="next-steps"></a>后续步骤
 
 - [灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 2cdc549a5231fed6c6819c0952cb2d7431757852
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 6f466ce54e542a84303c3ac028af8e167dcf419d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688456"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>教程：Azure Active Directory 与 Hornbill 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "114688456"
 * 让用户使用其 Azure AD 帐户自动登录到 Hornbill。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -98,7 +98,7 @@ ms.locfileid: "114688456"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -167,7 +167,7 @@ ms.locfileid: "114688456"
 
 * 直接转到 Hornbill 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Hornbill”磁贴时，会重定向到 Hornbill 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Hornbill”磁贴时，会重定向到 Hornbill 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

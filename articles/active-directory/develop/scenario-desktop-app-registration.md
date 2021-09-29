@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b0295c994a736e26d7b581bd13b6167819833360
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8acfbdba72eaaee65e7421f503462c6346776384
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748702"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786534"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>调用 Web API 的桌面应用：应用注册
 
@@ -53,7 +53,7 @@ ms.locfileid: "108748702"
 - 如果针对 macOS 构建本机 Objective-C 或 Swift 应用，请基于应用程序的捆绑包标识符采用以下格式注册重定向 URI：`msauth.<your.app.bundle.id>://auth`。 将 `<your.app.bundle.id>` 替换为应用程序的捆绑包标识符。
 - 如果生成 Node.js Electron 应用，请使用自定义文件协议，而不是常规 web (https://) 重定向 URI，以便处理授权流的重定向步骤，例如 `msal://redirect`。 自定义文件协议名称不能太明显而容易被猜到，应遵循[适用于本机应用的 Oauth 2.0 规范](https://tools.ietf.org/html/rfc8252#section-7.1)中的建议。
 - 如果你的应用仅使用集成 Windows 身份验证或用户名和密码，则不需要为应用程序注册重定向 URI。 这些流前往 Microsoft 标识平台 v2.0 终结点并返回。 不会在任何特定 URI 上调用你的应用程序。
-- 若要使用[守护程序应用程序](scenario-daemon-overview.md)中使用的客户端凭据流将[设备代码流](scenario-desktop-acquire-token.md#device-code-flow)、[集成 Windows 身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication)以及[用户名和密码](scenario-desktop-acquire-token.md#username-and-password)与机密的客户端应用程序（它们都不要求重定向 URI）区分开来，请将应用程序配置为公共客户端应用程序。 为了实现该配置：
+- 若要使用[守护程序应用程序](scenario-daemon-overview.md)中使用的客户端凭据流将[设备代码流](scenario-desktop-acquire-token-device-code-flow.md)、[集成 Windows 身份验证](scenario-desktop-acquire-token-integrated-windows-authentication.md)以及[用户名和密码](scenario-desktop-acquire-token-username-password.md)与机密的客户端应用程序（它们都不要求重定向 URI）区分开来，请将应用程序配置为公共客户端应用程序。 为了实现该配置：
 
     1. 在 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>中，选择“应用注册”中的应用，然后选择“身份验证” 。
     1. 在“高级设置” > “允许公共客户端流” > “启用以下移动和桌面流:”中，选择“是”。

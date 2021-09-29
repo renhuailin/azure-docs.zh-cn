@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c98269f9851272e8caa9b26ae0c57ed13e9a99f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 327d04109be26e14f8fedc46e88266e51e733455
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89049122"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615408"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件访问：要求符合的设备
 
@@ -34,8 +34,8 @@ ms.locfileid: "89049122"
 以下步骤将有助于创建条件访问策略，该策略要求将访问资源的设备标记为符合组织的 Intune 符合性策略。
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择“所有用户”。  

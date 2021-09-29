@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2019
 ms.author: jeedes
-ms.openlocfilehash: b1f8fb4c6586281352b6da05978c6ca4dac23ce5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 606d6563ed78e291f975262864d74739656fd6f6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92504790"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124752002"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-supermood"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Supermood 集成
 
@@ -84,7 +84,7 @@ ms.locfileid: "92504790"
 
 1. 若要在 **SP** 发起的模式下配置应用程序，请单击“设置其他 URL”并执行以下步骤  ：
 
-    在“登录 URL”文本框中，键入 URL：  `https://supermood.co/app/#!/loginv2`
+    在“登录 URL”文本框中，键入 URL：`https://supermood.co/app/#!/loginv2`
 
 1. 单击“ **保存**”。
 
@@ -163,7 +163,7 @@ ms.locfileid: "92504790"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Supermood 磁贴时，应会自动登录到为其设置了 SSO 的 Supermood。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Supermood 磁贴时，应会自动登录到为其设置了 SSO 的 Supermood。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

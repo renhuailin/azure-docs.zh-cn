@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: d9b3bf52e6483577b85787372c77623517a5f9cb
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 7a1415aa3e1859fe487bab511f623241df3bc839
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730093"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124772783"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 JIRA SAML SSO by Microsoft 集成
 
@@ -126,7 +126,7 @@ ms.locfileid: "113730093"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -140,7 +140,7 @@ ms.locfileid: "113730093"
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-jira-saml-sso-by-microsoft-sso"></a>配置 JIRA SAML SSO by Microsoft SSO
 
@@ -242,7 +242,7 @@ ms.locfileid: "113730093"
 
     c. 在“用户名”文本框中，键入用户的电子邮件地址（例如 B.simon@contoso.com）。
 
-    d. 在“密码”文本框中，键入用户的密码。
+    d. 在“密码”文本框中，键入用户的密码。 
 
     e. 单击“创建用户”  。
 
@@ -254,7 +254,7 @@ ms.locfileid: "113730093"
 
 * 直接转到 JIRA SAML SSO by Microsoft 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中 JIRA SAML SSO by Microsoft 磁贴时，这将通过 Microsoft 登录 URL 重定向到 JIRA SAML SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中 JIRA SAML SSO by Microsoft 磁贴时，这将通过 Microsoft 登录 URL 重定向到 JIRA SAML SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

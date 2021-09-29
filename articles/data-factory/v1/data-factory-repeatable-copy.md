@@ -3,16 +3,17 @@ title: Azure 数据工厂中的可重复复制
 description: 了解如何避免重复项（即使多次运行复制数据的切片）。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c427cd90412121e896738ca43f4c66dd24b096dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dabe0767954d3ca19ea4b392c70641aa2f12c79
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387081"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612788"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure 数据工厂中的可重复复制
 

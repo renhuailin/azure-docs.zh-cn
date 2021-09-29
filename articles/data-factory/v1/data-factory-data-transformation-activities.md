@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e9cc86e83de6e9cd673b0ee67159bbe23dde4351
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 6ccca89b92075f0f4db94a8fef8f01dea2f458a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396830"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128634855"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>在 Azure 数据工厂版本 1 中转换数据
 > [!div class="op_single_selector"]
@@ -88,7 +89,7 @@ Azure 数据工厂支持以下数据转换活动和活动的计算环境。 这�
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [机器学习工作室（经典）活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [ML Studio（经典）活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [存储过程](data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics 或 SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] 或 Azure Batch |

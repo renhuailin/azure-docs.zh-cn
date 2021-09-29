@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 59dfd1020b65923ebbcee6bc8c80fab92f23b4f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a059f99978bfe52c8181d908a25af04ef981a0a8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92635960"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>教程：Azure Active Directory 与 Vibe HCM 集成
 
@@ -105,7 +105,7 @@ ms.locfileid: "92635960"
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyName>.vibehcm.com/portal.jsp`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyName>.vibehcm.com/portal.jsp`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Vibe HCM 客户端支持团队](mailto:support@vibehcm.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -176,7 +176,7 @@ ms.locfileid: "92635960"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Vibe HCM 磁贴时，应会自动登录到为其设置了 SSO 的 Vibe HCM。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Vibe HCM 磁贴时，应会自动登录到为其设置了 SSO 的 Vibe HCM。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

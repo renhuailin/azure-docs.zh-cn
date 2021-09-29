@@ -2,7 +2,6 @@
 title: 参考：表单识别器客户端库 3.0.0 和 REST API v2.0
 titleSuffix: Azure Cognitive Services
 description: 使用表单识别器客户端库 v3.0.0 或 REST API v2.0 创建一个表单处理应用，该应用从自定义文档中提取键值对和表数据。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -13,12 +12,12 @@ ms.author: lajanuar
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp
 keywords: 表单处理, 自动化数据处理
-ms.openlocfilehash: 2a312359d164b54c90be7bc1dc8dbf8aa47f80cb
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 32dcfb1ba1e413e666e6a3d27ef9f03dbce81978
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326285"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641724"
 ---
 # <a name="reference-azure-form-recognizer-client-library-v300-and-rest-api-v20"></a>参考：Azure 表单识别器客户端库 v3.0.0 和 REST API v2.0
 

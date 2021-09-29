@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 6b74f4616f988d27bca7c7087d33bdb5f5a2a324
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2f7929875ac9cb489f79a7755066c85848e9ebe1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130658"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753377"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Equinix Federation App 的集成
 
@@ -131,7 +131,7 @@ ms.locfileid: "108130658"
 直接转到 Equinix Federation App 登录 URL，并在其中启动登录流。
 
  > [!NOTE]
- > 如果尝试使用“测试此应用程序”链接或单击“Equinix Federation App”磁贴来测试 Azure 应用程序，则该应用程序将无法正常运行，因为这是 IdP 启动的 SSO，默认情况下 Equinix 并不支持。  有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+ > 如果尝试使用“测试此应用程序”链接或单击“Equinix Federation App”磁贴来测试 Azure 应用程序，则该应用程序将无法正常运行，因为这是 IdP 启动的 SSO，默认情况下 Equinix 并不支持。  有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: b62e41f280d02664b3df631c3413960f1265356f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c6a46d1d0224ac802dc2c7b418e1fa19f1b26099
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863167"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742853"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>请求增加 Azure HDInsight 的配额
 
@@ -25,7 +25,7 @@ CPU 内核配额有助于确保资源使用在特定 Azure 区域的所有客户
 1. 确定所需的群集 VM 大小、规模和类型。
 1. 查看订阅的当前配额容量限制。 若要查看可用的内核数，请执行以下步骤：
 
-    1. 登录到 [Azure 门户](https://portal.azure.com/)。
+    1. 登录 [Azure 门户](https://portal.azure.com/)。
     1. 导航到 HDInsight 群集的“概述”页面。
     1. 在左侧菜单上，选择“配额限制”。 页面显示正在使用的核心数、可用核心数和总核心数。
 
@@ -64,7 +64,7 @@ CPU 内核配额有助于确保资源使用在特定 Azure 区域的所有客户
 > [!NOTE]  
 > 如果需要增加专用区域中的 HDInsight 核心配额，请[提交已批准列表请求](https://aka.ms/canaryintwhitelist)。
 
-可以[联系支持部门来请求提高配额](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+可以[联系支持部门来请求提高配额](../azure-portal/supportability/regional-quota-requests.md)。
 
 有一些配额限制是固定的。 例如，单个 Azure 订阅最多可以有 10,000 个内核。 有关这些限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c91961eb6e89533ee5b995eb56fdd172d21b6f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504297"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730176"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负载：规划和部署清单
 
@@ -82,7 +82,7 @@ ms.locfileid: "102504297"
     - [标记策略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - VM 及其他基础结构组件的命名约定和/或逻辑名称。
 5.  Microsoft 专业或顶级支持合同。 如果与 Microsoft 签订了顶级支持合同，请确定你的 Microsoft 技术客户经理 (TAM)。 有关 SAP 支持要求，请参阅 [SAP 支持说明 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
-6.  Azure 订阅数以及订阅的核心配额。 根据需要[创建增加 Azure 订阅配额的支持请求](../../../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+6.  Azure 订阅数以及订阅的核心配额。 根据需要[创建增加 Azure 订阅配额的支持请求](../../../azure-portal/supportability/regional-quota-requests.md)。
 7.  将 SAP 数据迁移到 Azure 的数据缩减和数据迁移计划。 对于 SAP NetWeaver 系统，SAP 提供了有关如何限制大量数据量的指南。 请参阅[此 SAP 指南](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)，了解 SAP ERP 系统中的数据管理。 一些内容通常也适用于 NetWeaver 和 S/4HANA 系统。
 8.  自动部署方法。 在 Azure 上实现基础结构部署自动化的目标是以确定性的方式进行部署并获得确定性结果。 许多客户都使用基于 PowerShell 或 CLI 的脚本。 不过，你可以使用多种开源技术为 SAP 部署 Azure 基础结构，甚至安装 SAP 软件。 你可以在 GitHub 上找到相关示例：
     - [Azure 云中的自动 SAP 部署](https://github.com/Azure/sap-hana)

@@ -8,12 +8,12 @@ ms.date: 09/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8556dc719aa8abcfa1506b4d1147c29959b32746
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 5ea7c1afd57fa566f9dcc5f92760f8350b978783
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427617"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605404"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -40,7 +40,7 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[S
 ```
 
 使用 SAS 令牌删除整个虚拟目录：
- 
+
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
@@ -72,6 +72,7 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/d
     blob1
     blob2
 ```
+
 从采用分层命名空间的 Blob 存储帐户中删除单个文件（不支持 include/exclude）：
 
 ```azcopy
@@ -104,9 +105,9 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 --include-pattern 字符串：仅包括名称与模式列表相匹配的文件。 例如： *`.jpg`;* `.pdf`;`exactName`
 
---list-of-files 字符串：定义要删除的文件和目录列表所在文件的位置。 相对路径应由换行符分隔，路径不应进行 URL 编码。 
+--list-of-files 字符串：定义要删除的文件和目录列表所在文件的位置。 相对路径应由换行符分隔，路径不应进行 URL 编码。
 
---list-of-versions 字符串   指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 给定 Blob 的指定版本 ID 将从 Azure 存储中删除。 
+--list-of-versions 字符串   指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 给定 Blob 的指定版本 ID 将从 Azure 存储中删除。
 
 --log-level 字符串：定义日志文件的日志详细程度。 可用级别包括：`INFO`（所有请求/响应）、`WARNING`（缓慢的响应）、`ERROR`（仅失败的请求）和 `NONE`（无输出日志）。 （默认值为 `INFO`）（默认值为 `INFO`）
 

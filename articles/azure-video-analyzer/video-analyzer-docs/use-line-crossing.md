@@ -3,12 +3,12 @@ title: 使用 Azure 视频分析器检测对象在实时视频中越过虚拟线
 description: 本快速入门介绍如何使用 Azure 视频分析器检测对象在来自（模拟）IP 相机的实时视频源中越线的时间。
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.openlocfilehash: 7257562626b17c8f61479eb1ba4d51fea52d3c91
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 27f14c8257d11956d0cacb3efddfb6a00ba239f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185950"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630179"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>教程：检测对象在实时视频中越过虚拟线的时间
 
@@ -253,7 +253,7 @@ HTTP 扩展处理器节点将第 0 帧、第 15 帧、第 30 帧… 发送到 av
 * `direction` 包含此事件的方向。
 
 > [!NOTE] 
-> 如果使用本教程的一键式部署部署了 Azure 资源，则会创建一个标准 DS1 虚拟机。 但是，要从资源密集型 AI 模型（如 YOLO）获得准确的结果，可能需要增加 VM 的大小。 [调整 VM 大小](../../virtual-machines/windows/resize-vm.md)，以根据要求增加 vcpu 和内存数。 然后，重新激活实时管道以查看推理。
+> 如果使用本教程的一键式部署部署了 Azure 资源，则会创建一个标准 DS1 虚拟机。 但是，要从资源密集型 AI 模型（如 YOLO）获得准确的结果，可能需要增加 VM 的大小。 [调整 VM 大小](../../virtual-machines/resize-vm.md)，以根据要求增加 vcpu 和内存数。 然后，重新激活实时管道以查看推理。
 
 ## <a name="customize-for-your-own-environment"></a>请根据你自己的环境进行自定义
 

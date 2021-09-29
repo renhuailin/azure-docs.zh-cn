@@ -2,13 +2,13 @@
 title: 充当事件网格源的 Azure Key Vault
 description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供的属性和架构
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 31a5e77cc238dcfc774ebc851e864c916206fd9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/15/2021
+ms.openlocfilehash: fccd93b97455a673da5a3b92dcd54cf494f0cecb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748468"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612769"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault
 
@@ -50,8 +50,8 @@ Azure Key Vault 帐户生成以下事件类型：
          "Id":"https://sample-kv.vault.azure.net/secrets/newsecret/ee059b2bb5bc48398a53b168c6cdcb10",
          "VaultName":"sample-kv",
          "ObjectType":"Secret",
-         "ObjectName ":"newsecret",
-         "Version":" ee059b2bb5bc48398a53b168c6cdcb10",
+         "ObjectName":"newsecret",
+         "Version":"ee059b2bb5bc48398a53b168c6cdcb10",
          "NBF":"1559081980",
          "EXP":"1559082102"
       },
@@ -77,8 +77,8 @@ Azure Key Vault 帐户生成以下事件类型：
          "Id":"https://sample-kv.vault.azure.net/secrets/newsecret/ee059b2bb5bc48398a53b168c6cdcb10",
          "VaultName":"sample-kv",
          "ObjectType":"Secret",
-         "ObjectName ":"newsecret",
-         "Version":" ee059b2bb5bc48398a53b168c6cdcb10",
+         "ObjectName":"newsecret",
+         "Version":"ee059b2bb5bc48398a53b168c6cdcb10",
          "NBF":"1559081980",
          "EXP":"1559082102"
       },

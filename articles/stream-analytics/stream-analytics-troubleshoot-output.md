@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 28d66477c31db9ee274fb1e8aaa1690365a4fa72
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 393d710ba411a6573a4cce155abd7c1aeae06aa8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112912782"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754872"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
@@ -25,7 +25,7 @@ ms.locfileid: "112912782"
 
    * 如果“输入事件”的值大于零，则作业可以读取输入数据。 如果“输入事件”的值小于或等于零，表示作业的输入有问题。 有关详细信息，请参阅[对输入连接进行故障排除](stream-analytics-troubleshoot-input.md)。 如果作业具有参考数据输入，请在查看输入事件指标时按逻辑名称应用拆分。 如果仅参考数据中没有输入事件，则可能意味着此输入源未正确配置，无法获取正确的参考数据集。
    * 如果“数据转换错误”的值大于零并不断增大，请参阅 [Azure 流分析数据错误](data-errors.md)，详细了解数据转换错误。
-   * 如果“运行时错误”的值大于零，表示作业可以接收数据，但在处理查询时生成错误。 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)，然后筛选“失败”状态。
+   * 如果“运行时错误”的值大于零，表示作业可以接收数据，但在处理查询时生成错误。 若要查找错误，请转到[审核日志](../azure-monitor/essentials/activity-log.md)，然后筛选“失败”状态。
    * 如果“输入事件”的值大于零，而“输出事件”的值等于零，则下列陈述之一是正确的：
       * 查询处理导致了输出事件为零。
       * 事件或字段的格式可能不正确，导致在执行查询处理后的输出为零。

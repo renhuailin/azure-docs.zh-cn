@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 1cffc36cbd4f24bbcbb5996a323ffa963e311693
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9ebfd3a9ce02ece7fc36fdce004dac29539f4fae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530962"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737108"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 
@@ -22,7 +22,7 @@ ms.locfileid: "107530962"
 
 可通过几种方式在 Azure 上创建 Cloud Foundry 环境：
 
-- 使用 Azure 市场中的 [Pivotal Cloud Foundry 产品][pcf-azuremarketplace]创建包括 PCF Ops Manager 和 Azure Service Broker 的标准环境。 可在 Pivotal 文档中找到有关部署市场产品的[完整说明][pcf-azuremarketplace-pivotaldocs]。
+- 使用 Azure 市场中的 Pivotal Cloud Foundry 产品创建包括 PCF Ops Manager 和 Azure Service Broker 的标准环境。 可在 Pivotal 文档中找到有关部署市场产品的[完整说明][pcf-azuremarketplace-pivotaldocs]。
 - 通过[手动部署 Pivotal Cloud Foundry ][pcf-custom]创建自定义环境。
 - 通过设置 [BOSH](https://bosh.io) 控制器（一种协调 Cloud Foundry 环境部署的 VM），[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
 
@@ -141,7 +141,6 @@ cf scale -i 2 hello-spring-cloud
 
 <!-- LINKS -->
 
-[pcf-azuremarketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
 [pcf-custom]: https://docs.pivotal.io/pivotalcf/1-10/customizing/azure.html
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
 [pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/ops-manager/2-10/install/pcf_azure.html

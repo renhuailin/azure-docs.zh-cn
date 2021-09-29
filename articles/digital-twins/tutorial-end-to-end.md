@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/23/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cdd4554485a7c04f2d768f7a3bf7265d6342af96
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 9d19a74dc7bacc996fe328679d9c3e12766bfadf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227224"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626183"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -84,12 +84,7 @@ SetupBuildingScenario
 Query
 ```
 
->[!TIP]
-> 此简化方法作为 AdtE2ESample 项目的一部分提供。 在此示例代码的上下文外，你可以随时使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)查询实例中的所有孪生体。
->
-> 下面是完整的查询正文，用于获取实例中的所有数字孪生体：
-> 
-> :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="GetAllTwins":::
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 现在可以停止运行该项目。 不过，请在 Visual Studio 中使解决方案保持打开状态，因为本教程还将继续使用它。
 

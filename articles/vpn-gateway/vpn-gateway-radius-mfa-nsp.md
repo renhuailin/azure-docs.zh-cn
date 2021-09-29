@@ -9,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 6cfc6ea361dddf703741baa1a990018186b402e4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 6fada4ca0ae24c2f3b859e02c55c7406cc44bb51
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289473"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734964"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证 
 
@@ -22,7 +22,7 @@ ms.locfileid: "108289473"
 
 ## <a name="prerequisite"></a>先决条件
 
-若要启用 MFA，用户必须位于 Azure Active Directory (Azure AD) 中，后者必须从本地或云环境进行同步。 此外，用户还必须已完成 MFA 的自动注册过程。  有关详细信息，请参阅[为帐户设置双重验证](../active-directory/user-help/multi-factor-authentication-end-user-first-time.md)
+若要启用 MFA，用户必须位于 Azure Active Directory (Azure AD) 中，后者必须从本地或云环境进行同步。 此外，用户还必须已完成 MFA 的自动注册过程。  有关详细信息，请参阅[为帐户设置双重验证](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
 
 ## <a name="detailed-steps"></a>详细步骤
 

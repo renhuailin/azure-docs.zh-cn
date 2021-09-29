@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: b4a8ea5c08f66bc0c64d4762e695dd4e2822af44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7db46b80f1276961ea44d561ad73263c797d8ee
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92451955"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124747262"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教程：Azure Active Directory 与 ForeSee CX Suite 的集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "92451955"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
+4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -196,7 +196,7 @@ ms.locfileid: "92451955"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ForeSee CX Suite 磁贴时，应当会自动登录到为其设置了 SSO 的 ForeSee CX Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 ForeSee CX Suite 磁贴时，应当会自动登录到为其设置了 SSO 的 ForeSee CX Suite。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

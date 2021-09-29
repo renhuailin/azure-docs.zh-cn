@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 73f378bb0f71df4df3731a3ef2a1fdb7f8abb4aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0db5d434e2442019fc441b5443c50df16bc4559e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653020"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>教程：将 Azure Active Directory 与 MOVEit Transfer - Azure AD 集成集成
 
@@ -73,7 +73,7 @@ ms.locfileid: "101653020"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
+4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -186,7 +186,7 @@ ms.locfileid: "101653020"
 
 * 直接转到 MOVEit Transfer - Azure AD 集成登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在我的应用中单击“MOVEit Transfer - Azure AD 集成”磁贴时，应会自动登录到设置了 SSO 的 MOVEit Transfer - Azure AD 集成。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在我的应用中单击“MOVEit Transfer - Azure AD 集成”磁贴时，应会自动登录到设置了 SSO 的 MOVEit Transfer - Azure AD 集成。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

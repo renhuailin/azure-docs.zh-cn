@@ -8,17 +8,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.openlocfilehash: f16c323f861c5d105cb7761c33f6457df54c355c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 393e6dbc0f30e4a541408119db6f606f24023d5d
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638643"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059732"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>映射数据流转换概述
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 下面是映射数据流中当前受支持的转换的列表。 你可以单击每个转换，了解其配置详细信息。
 

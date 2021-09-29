@@ -8,16 +8,16 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 352497f0f4d23250abe9f84121f358589664002b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c1171ada070131477c06292628da6eca9ee9c2ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502906"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590981"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy"></a>使用 AzCopy 将文件上传到 Azure Blob 存储
 
-可以使用 AzCopy v10 命令行实用程序将文件和目录上传到 Blob 存储。 
+可以使用 AzCopy v10 命令行实用程序将文件和目录上传到 Blob 存储。
 
 若要查看其他类型任务（如下载 Blob、与 Blob 存储同步或在帐户之间复制 Blob）的示例，请参阅本文的[后续步骤](#next-steps)部分中提供的链接。
 
@@ -25,7 +25,7 @@ ms.locfileid: "107502906"
 
 请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)一文下载 AzCopy，并了解如何提供存储服务的授权凭据。
 
-> [!NOTE] 
+> [!NOTE]
 > 本文中的示例假定你已使用 Azure Active Directory (Azure AD) 提供了授权凭据。
 >
 > 如果你希望使用 SAS 令牌来授权访问 Blob 数据，可将该令牌追加到每个 AzCopy 命令中的资源 URL。 例如：`'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`。
@@ -84,7 +84,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.w
 
 ## <a name="upload-a-directory"></a>上传目录
 
-使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令上传目录。 
+使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令上传目录。
 
 此示例将某个目录（以及该目录中的所有文件）复制到 Blob 容器。 结果是该文件共享中出现一个同名的容器。
 
@@ -132,7 +132,7 @@ azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/myco
 
 **语法**
 
-`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` 
+`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'`
 
 **示例**
 
@@ -159,9 +159,9 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/my
 
 结合 `--include-path` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 使用分号 (`;`) 分隔各个文件名。
 
-**语法** 
+**语法**
 
-`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` 
+`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>`
 
 **示例**
 
@@ -181,11 +181,11 @@ azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/myco
 
 ### <a name="use-wildcard-characters"></a>使用通配符
 
-结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。 
+结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
 
 **语法**
 
-`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` 
+`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>`
 
 **示例**
 
@@ -203,15 +203,15 @@ azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/myco
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
-### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>上传在某个日期和时间之前或之后修改的文件 
+### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>上传在某个日期和时间之前或之后修改的文件
 
-将 [azcopy copy](storage-ref-azcopy-copy.md) 命令与 `--include-before` 或 `--include-after` 选项结合使用。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
+将 [azcopy copy](storage-ref-azcopy-copy.md) 命令与 `--include-before` 或 `--include-after` 选项结合使用。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。
 
 以下示例上传在指定日期或之后修改的文件。
 
 **语法**
 
-`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` 
+`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>`
 
 **示例**
 
@@ -229,11 +229,11 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/my
 
 ## <a name="upload-with-index-tags"></a>使用索引标记上传
 
-可上传文件并将 [Blob 索引标记（预览版）](../blobs/storage-manage-find-blobs.md)添加到目标 Blob。  
+可上传文件并将 [Blob 索引标记（预览版）](../blobs/storage-manage-find-blobs.md)添加到目标 Blob。
 
 如果使用 Azure AD 授权，则必须向安全主体分配[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色，或者必须通过自定义 Azure 角色向其授予 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write`[Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)权限。 如果使用共享访问签名 (SAS) 令牌，则该令牌必须通过 SAS 权限 `t` 提供对 Blob 标记的访问权限。
 
-要添加标记，请使用 `--blob-tags` 选项以及 URL 编码的键值对。 例如，要添加键 `my tag` 和值 `my tag value`，可将 `--blob-tags='my%20tag=my%20tag%20value'` 添加到目标参数。 
+要添加标记，请使用 `--blob-tags` 选项以及 URL 编码的键值对。 例如，要添加键 `my tag` 和值 `my tag value`，可将 `--blob-tags='my%20tag=my%20tag%20value'` 添加到目标参数。
 
 使用与号 (`&`) 分隔多个索引标记。  例如，如果要添加键 `my second tag` 和值 `my second tag value`，则完整选项字符串将为 `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`。
 
@@ -290,4 +290,4 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/m
 
 - [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
 - [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)
-- [使用日志文件排查 Azure 存储中的 AzCopy V10 问题](storage-use-azcopy-configure.md)
+- [使用日志文件对 Azure 存储中的 AzCopy V10 问题进行故障排除](storage-use-azcopy-configure.md)

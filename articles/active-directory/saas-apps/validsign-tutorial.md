@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 525df3a1ca7089c68e31f124e38c5dcc2ae7a5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95554ce60457e189334cebab4e0e905b55fda2e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951685"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-validsign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ValidSign 的集成
 
@@ -82,7 +82,7 @@ ms.locfileid: "104951685"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://my.validsign.nl/sso/saml/login/alias/ValidSign?idp=<CustomerEntityID>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://my.validsign.nl/sso/saml/login/alias/ValidSign?idp=<CustomerEntityID>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [ValidSign 客户端支持团队](mailto:support@validsign.nl)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -97,11 +97,11 @@ ms.locfileid: "104951685"
     
     | 名称 |  源属性|
     | ----------------- | --------- |
-    | 名 | user.givenname |
+    | firstname | user.givenname |
     | 姓 | user.surname |
     | 电子邮件 | user.mail |
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -150,7 +150,7 @@ ms.locfileid: "104951685"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 ValidSign。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“ValidSign”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 ValidSign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“ValidSign”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 ValidSign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

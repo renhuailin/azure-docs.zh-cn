@@ -8,12 +8,12 @@ metadata:
   ms.subservice: education-hub
   ms.topic: overview
   ms.date: 08/31/2021
-  ms.openlocfilehash: 28972b6c29e14ca453d713e25867b8079e05c3ca
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: add297aa2c3ff9b883cbf07b2e546bbf46f09b94
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123431019"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124771472"
 title: 有关教育中心的常见问题
 summary: 本文解决了有关面向学生的 Azure、面向学生的 Azure 入门版和 Azure Dev Tools for Teaching 的常见问题。
 sections:
@@ -32,7 +32,7 @@ sections:
       可以！  你可以在 1 年后续订面向学生的 Azure 订阅。  我们会在你的周年纪念日之前向你发送一封电子邮件，提醒你进行续订。  若要续订，只需从面向学生的 Azure [网站](https://aka.ms/azure4students)重新注册套餐即可
   - question: >
       为什么我会收到来自 Microsoft 的发票？
-    answer: "你可能会收到来自 Microsoft 的发票，其中包含你在上个月使用的面向学生的 Azure 订阅的使用情况详细说明。  不用担心，无需为该使用量付费，面向学生的 Azure 提供的额度会覆盖所有这些费用。  要详细了解发票及其工作方式，请查看 docs.microsoft.com 上的[文章](https://docs.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview) \n"
+    answer: "你可能会收到来自 Microsoft 的发票，其中包含你在上个月使用的面向学生的 Azure 订阅的使用情况详细说明。  不用担心，无需为该使用量付费，面向学生的 Azure 提供的额度会覆盖所有这些费用。  要详细了解发票及其工作方式，请查看 docs.microsoft.com 上的[文章](../../cost-management-billing/understand/mca-overview.md) \n"
   - question: >
       什么是订阅？订阅与面向学生的 Azure 有什么关联？
     answer: >

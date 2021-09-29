@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2f3a3c561b2fe82dcbeaaee1138c0d465ac6a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a38361355c48021b6145552071593056a2a3caa6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737327"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759731"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>启用使用 Microsoft Authenticator 应用的无密码登录 
 
@@ -83,7 +83,7 @@ ms.locfileid: "121737327"
 1. 在“Microsoft Authenticator”中，从注册帐户的下拉菜单中选择“启用手机登录”。
 1. 按照应用中的说明完成帐户无密码手机登录注册。
 
-组织可以指导其用户使用手机无密码登录。 若要获得有关配置 Microsoft Authenticator 应用并启用手机登录的更多帮助，请参阅[使用 Microsoft Authenticator 应用登录帐户](../user-help/user-help-auth-app-sign-in.md)。
+组织可以指导其用户使用手机无密码登录。 若要获得有关配置 Microsoft Authenticator 应用并启用手机登录的更多帮助，请参阅[使用 Microsoft Authenticator 应用登录帐户](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c)。
 
 > [!NOTE]
 > 策略不允许其使用手机登录的用户，无法再在 Microsoft Authenticator 应用内启用它。

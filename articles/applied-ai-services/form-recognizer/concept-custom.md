@@ -2,7 +2,6 @@
 title: 自定义模型和组合模型 - 表单识别器
 titleSuffix: Azure Applied AI Services
 description: 了解如何创建、使用和管理表单识别器自定吃模型和组合模型 - 用法和限制。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 19d18028118c5513f6272612c9e4c690aceab493
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 9c995c5ce63c44473cd3d7b824ef85e64868ae1e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326273"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546629"
 ---
 # <a name="form-recognizer-custom-and-composed-models"></a>表单识别器自定义模型和组合模型
 

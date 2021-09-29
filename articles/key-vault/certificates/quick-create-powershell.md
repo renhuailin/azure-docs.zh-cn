@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 32150fb4cce76d5a2537c5ec969f265e0d8aae20
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 170c115e56232b334527d92623c87bacd377f5aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816181"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659831"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure Key Vault 中设置和检索证书
 
@@ -52,7 +52,7 @@ $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs
 Add-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
-现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此证书。 使用“https://<your-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate”获取当前版本。 
+现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此证书。 使用 **`https://<your-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate`** 获取当前版本。 
 
 若要查看以前存储的证书，请使用以下命令：
 

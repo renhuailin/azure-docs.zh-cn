@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4e9bca98280b27ff6ac3facee5c00513fc57862c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e593b3e97a378d873e970f350a1f286556e1d840
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97669884"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aravo"></a>教程：Azure Active Directory 与 Aravo 集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "97669884"
 
     ![Aravo 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<companyname>.aravo.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.aravo.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.aravo.com/aems/login.do`
 
@@ -185,7 +185,7 @@ ms.locfileid: "97669884"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Aravo”磁贴时，应会自动登录到设置了 SSO 的 Aravo。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Aravo”磁贴时，应会自动登录到设置了 SSO 的 Aravo。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

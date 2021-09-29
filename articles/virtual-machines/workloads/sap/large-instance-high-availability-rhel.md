@@ -6,12 +6,12 @@ ms.author: jaawasth
 ms.service: virtual-machines-sap
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 3da8c2a0147136ad5da90489e4f8db511cad7378
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 7f5f554f6563c2d0275bca7b6db48f2521379b11
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217442"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626601"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>SAP on RHEL 的 Azure 大型实例高可用性
 
@@ -1226,10 +1226,12 @@ global.ini
 
 
 若要测试将 SAPHana 资源从一个节点移到另一个节点，请使用以下命令。 请注意，由于 SAPHana 资源在内部的工作方式，运行以下命令时，不应使用选项 `--primary`。
-```pcs resource move SAPHana_HR2_00-primary```
+
+`pcs resource move SAPHana_HR2_00-primary`
 
 对每个 pcs 资源调用 move 命令后，群集将创建位置约束以实现资源移动。 要使以后能够自动故障转移，必须删除这些约束。
 若要删除这些约束，可使用以下命令。
+
 ```
 pcs resource clear SAPHana_HR2_00-primary
 crm_mon -A1

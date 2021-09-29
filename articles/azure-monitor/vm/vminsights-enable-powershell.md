@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: b51a49abda76a4d1433336cf73dc9a0dd6e40787
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: af990dec84d786d1a299b8aec353f94b1f188435
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031850"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614346"
 ---
 # <a name="enable-vm-insights-using-powershell"></a>使用 PowerShell 启用 VM 见解
 本文介绍如何使用 PowerShell 在 Azure 虚拟机上启用 VM 见解。 此过程可用于以下对象：
@@ -34,7 +34,7 @@ ms.locfileid: "102031850"
 
 对于每个虚拟机或虚拟机规模集，该脚本将验证是否已安装 Log Analytics 代理和 Dependency Agent 的 VM 扩展。 如果这两个扩展均已安装，该脚本会尝试重新安装。 如果这两个扩展均未安装，该脚本会进行安装。
 
-验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 若要获取脚本的参数详细信息和示例用法的列表，请运行 `Get-Help`。
 
@@ -120,19 +120,19 @@ PARAMETERS
         about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
 
     -------------------------- EXAMPLE 1 --------------------------
-    .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
+    .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId> -WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup>
 
     Install for all VMs in a resource group in a subscription
 
     -------------------------- EXAMPLE 2 --------------------------
-    .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
+    .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId> -WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup> -ReInstall
 
     Specify to reinstall extensions even if already installed, for example, to update to a different workspace
 
     -------------------------- EXAMPLE 3 --------------------------
-    .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
+    .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId> -WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -PolicyAssignmentName a4f79f8ce891455198c08736 -ReInstall
 
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)

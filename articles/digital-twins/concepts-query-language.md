@@ -8,12 +8,12 @@ ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 00bc85b06bd734a075ff9a9ca2baf3fe58e95623
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: c5779f827177907d3bf3378fde8a35157723b5f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253629"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631108"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>关于 Azure 数字孪生的查询语言
 
@@ -43,7 +43,7 @@ ms.locfileid: "122253629"
 
   :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="EscapedSingleQuote":::
 
-* **考虑可能的延迟**：对图表中的数据进行更改后，可能会有长达 10 秒的延迟才会在查询中反映更改。 [GetDigitalTwin API](how-to-manage-twin.md#get-data-for-a-digital-twin) 不会遇到这种延迟，因此如果需要即时响应，请使用 API 调用而不是通过查询来立即查看更改。
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b96310c029867cb60d45bc17ab36a357e7fc26f7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519378"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124765032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>教程：Azure Active Directory 与 TurboRater 的集成
 
@@ -151,7 +151,7 @@ TurboRater 支持 IDP 发起的单一登录 (SSO)。
 
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -187,7 +187,7 @@ TurboRater 支持 IDP 发起的单一登录 (SSO)。
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“TurboRater”时，应自动登录到为其设置了单一登录的 TurboRater 订阅  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](../user-help/my-apps-portal-end-user-access.md)。
+在“我的应用”门户中选择“TurboRater”时，应自动登录到为其设置了单一登录的 TurboRater 订阅  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

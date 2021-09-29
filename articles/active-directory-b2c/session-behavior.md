@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/27/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9259fac727287ce4d52594d146eaac96a3085433
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8c6e1e1e22f8d694a020174af15ee8f12c6838d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738967"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128594719"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置会话行为
 
@@ -89,7 +89,8 @@ ms.locfileid: "121738967"
 配置会话行为：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“用户流”。
 1. 打开之前创建的用户流。
@@ -114,7 +115,7 @@ ms.locfileid: "121738967"
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>启用“使我保持登录状态 (KMSI)”
 
-可以为在 Azure AD B2C 目录中拥有本地帐户的 Web 和本机应用程序的用户启用 KMSI 功能。 该功能启用时，用户能够选择保持登录状态，这样当他们关闭浏览器后会话也保持活动状态。 通过设置[永久性 Cookie](cookie-definitions.md) 维护会话。 选择 KMSI 的用户重新打开浏览器时不会提示其重新输入用户名和密码。 当用户注销时，会撤销此访问权限（永久性 Cookie）。 
+可以为在 Azure AD B2C 目录中拥有本地帐户的 Web 和本机应用程序的用户启用 KMSI 功能。 该功能启用时，用户能够选择保持登录状态，这样当他们关闭浏览器后会话也保持活动状态。 通过设置[永久性 Cookie](cookie-definitions.md) 维护会话。 选择 KMSI 的用户重新打开浏览器时不会提示他们重新输入用户名和密码。 当用户注销时，会撤销此访问权限（永久性 Cookie）。 
 
 ![显示“使我保持登录状态”复选框的示例注册登录页](./media/session-behavior/keep-me-signed-in.png)
 
@@ -133,14 +134,14 @@ ms.locfileid: "121738967"
 为用户流启用 KMSI：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录 **** 。
-3. 选择 Azure 户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” ****  **** 。
-4. 选择“用户流(策略)” **** 。
-5. 打开之前创建的用户流。
-6. 选择“属性” **** 。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” ****  **** 。
+1. 选择“用户流(策略)” **** 。
+1. 打开之前创建的用户流。
+1. 选择“属性” **** 。
 
-7. 在“会话行为”下选择“启用‘使我保持登录会话状态’” **** 。 在“使我保持登录会话状态(天)”旁边输入一个介于 1 到 90 之间的值，指定会话可以保持打开状态的天数。
-
+1. 在“会话行为”下选择“启用‘使我保持登录会话状态’” **** 。 在“使我保持登录会话状态(天)”旁边输入一个介于 1 到 90 之间的值，指定会话可以保持打开状态的天数。
 
    ![启用“使我保持登录会话状态”](media/session-behavior/enable-keep-me-signed-in.png)
 
@@ -325,7 +326,8 @@ ms.locfileid: "121738967"
 要求在注销请求中提供 ID 令牌：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“用户流”。
 1. 打开之前创建的用户流。
@@ -353,7 +355,8 @@ ms.locfileid: "121738967"
 配置应用程序注销 URL：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“应用注册”，然后选择自己的应用程序。
 1. 选择“身份验证”。

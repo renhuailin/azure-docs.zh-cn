@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 1706fd69f58e4dee4a7ed963fb22cb63aec026fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2f2d88a48b7dca0b2ab3ad512e6b723ab68931c8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593386"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650242"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 预算管理成本
 
@@ -60,7 +60,7 @@ ms.locfileid: "100593386"
 1. Runbook 完成导入过程后，选择“编辑”以显示图形 runbook 编辑器和发布选项  。  
     ![Azure - 编辑图形 Runbook](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. 选择“发布”以发布该 Runbook，并在出现提示时选择“是”   。 发布 runbook 时，可以用草稿版本替代任何现有的已发布版本。 在本例中，还没有已发布版本，因为才创建了 Runbook。
-    有关发布 runbook 的详细信息，请参阅[创建图形 runbook](../../automation/learn/automation-tutorial-runbook-graphical.md)。
+    有关发布 runbook 的详细信息，请参阅[创建图形 runbook](../../automation/learn/powershell-runbook-managed-identity.md)。
 
 ## <a name="create-webhooks-for-the-runbook"></a>为 runbook 创建 Webhook
 

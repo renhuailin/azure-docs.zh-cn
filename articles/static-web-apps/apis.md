@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 168c187c4e573193b439e790fb94290aadec046a
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: d7716c6d91ac0f7c8c699d14f265e00f5535a00d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778870"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730410"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>Azure 静态 Web 应用中通过 Azure Functions 提供 API 支持
 
@@ -49,7 +49,7 @@ API 终结点通过 api 路由向 Web 应用提供。
 
 | 托管函数 | 创建自己的函数 |
 | --- | --- |
-| 虽然 api 路由已固定，但你可以控制托管函数应用的文件夹位置。 可以通过[编辑工作流 YAML 文件](github-actions-workflow.md#build-and-deploy)来改变此位置，该文件位于存储库的 .github/workflows 文件夹中的。 | 对 api 路由的请求将发送到现有 Azure Functions 应用。 |
+| 虽然 api 路由已固定，但你可以控制托管函数应用的文件夹位置。 可以通过[编辑工作流 YAML 文件](build-configuration.md)来改变此位置，该文件位于存储库的 .github/workflows 文件夹中的。 | 对 api 路由的请求将发送到现有 Azure Functions 应用。 |
 
 ## <a name="troubleshooting-and-logs"></a>故障排除和日志
 

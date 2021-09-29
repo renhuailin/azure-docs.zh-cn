@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 5a2169db47ca5a6adcddbcc9558161370b896a62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54396b54539bcd352d2643c964a5ecc9e3b9f1f7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95997063"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124752298"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Smart Global Governance 的集成
 
@@ -114,7 +114,7 @@ Smart Global Governance 支持 SP 和 IDP 发起的 SSO。
    1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="grant-access-to-the-test-user"></a>向测试用户授予访问权限
 
@@ -130,7 +130,7 @@ Smart Global Governance 支持 SP 和 IDP 发起的 SSO。
 
     ![选择“添加用户”](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中的“用户”列表内选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 在“用户和组”对话框中的“用户”列表内选择“B.Simon”，然后单击屏幕底部的“选择”按钮。    
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮 。
 1. 在“添加分配”对话框中选择“分配”。 
 
@@ -146,7 +146,7 @@ Smart Global Governance 支持 SP 和 IDP 发起的 SSO。
 
 在本部分，你将使用访问面板测试 Azure AD SSO 配置。
 
-在访问面板中选择“Smart Global Governance”磁贴时，应当会自动登录到设置了 SSO 的 Smart Global Governance 实例。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
+在访问面板中选择“Smart Global Governance”磁贴时，应当会自动登录到设置了 SSO 的 Smart Global Governance 实例。 有关访问面板的详细信息，请参阅[访问面板简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

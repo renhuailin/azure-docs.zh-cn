@@ -8,16 +8,16 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: reference
-  ms.date: 06/25/2020
+  ms.date: 09/10/2021
   ms.subservice: hybrid
   ms.author: billmath
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: cde28b924954db563ce3ed71873ded00a753f80f
-  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+  ms.openlocfilehash: 45a4273ccdfa76eb158ca8fd2ce51161fc3993b1
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113114450"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124771339"
 title: Azure Active Directory Connect 云同步常见问题解答
 summary: >
   阅读有关 Azure Active Directory (Azure AD) Connect 云同步的常见问题。
@@ -92,5 +92,5 @@ sections:
       无变化。  如果重命名或移动该 OU，不会删除用户。
   - question: >
       Azure AD Connect 云同步是否支持大型组？
-    answer: "是。 如今，我们最多支持使用 OU 范围筛选进行同步的 50K 组成员。 同时，当你使用组范围筛选时，建议将组大小保留为小于 1500 成员。 出现这种情况的原因是，即使你可以将大型组作为组范围筛选器的一部分进行同步，但当你按大于 1500 的批次将成员添加到该组时，增量同步将会失败。 \n"
+    answer: "是。 如今，我们最多支持使用 OU 范围筛选进行同步的 50K 组成员。 \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤 \n\n- [什么是预配？](what-is-provisioning.md)\n- [什么是 Azure AD Connect 云同步？](what-is-cloud-sync.md)"

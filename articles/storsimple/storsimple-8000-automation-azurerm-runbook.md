@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: b5f2a86fb7c776436ea707ef293a66c033014c33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33385fa03d480c257789fd4cc139f9033e541a99
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021072"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754927"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自动化 Runbook 管理 StorSimple 设备
 
@@ -206,7 +206,7 @@ ms.locfileid: "96021072"
 
     ![click-new-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. 编辑 Runbook 并单击“测试”窗格。 提供 StorSimple 设备管理器服务的名称、StorSimple 设备的名称和订阅等参数。 **开始** 测试。 完成运行后，会生成报告。 有关详细信息，请转到[如何测试 Runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook)。
+8. 编辑 Runbook 并单击“测试”窗格。 提供 StorSimple 设备管理器服务的名称、StorSimple 设备的名称和订阅等参数。 **开始** 测试。 完成运行后，会生成报告。 有关详细信息，请转到[如何测试 Runbook](../automation/learn/powershell-runbook-managed-identity.md)。
 
     ![屏幕截图显示可输入参数值和开始测试的测试全景](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 

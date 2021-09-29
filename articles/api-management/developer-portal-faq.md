@@ -4,18 +4,18 @@ titleSuffix: Azure API Management
 description: 有关 API 管理中的开发人员门户的常见问题。 开发人员门户是一个可自定义的网站，API 使用者可以在其中浏览你的 API。
 services: api-management
 documentationcenter: API Management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: troubleshooting
 ms.date: 07/30/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b7b7efda7ca28382ca1dfbdead64db9976d67bd4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c8757211bf11e97cde091d49eb6512bb0e4f7cc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747791"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656334"
 ---
 # <a name="api-management-developer-portal---frequently-asked-questions"></a>API 管理开发人员门户 - 常见问题
 
@@ -79,7 +79,7 @@ ms.locfileid: "121747791"
 1. 选择“在全局级别上手动应用”链接以查看生成的策略代码。
 2. 在 Azure 门户中导航到 API 管理服务的“API”部分的“所有 API” 。
 3. 在“入站处理”部分中，选择 </> 图标 。
-4. 将策略插入到 XML 文件的 <inbound> 部分中。 请确保 <origin> 值与开发人员门户的域匹配。
+4. 将策略插入到 XML 文件的 \<inbound\> 部分中。 请确保 \<origin\> 值与开发人员门户的域匹配。
 
 > [!NOTE]
 > 

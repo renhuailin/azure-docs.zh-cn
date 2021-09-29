@@ -3,12 +3,12 @@ title: 管理本地管理控制台
 description: 了解本地管理控制台选项，如备份和还原、定义主机名和设置传感器的代理。
 ms.date: 1/12/2021
 ms.topic: article
-ms.openlocfilehash: a94dc89f6d39bfef096809299e31bd88b43824d4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9b956dbfa640862d10d0e47aef97e5a1727052c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431073"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625214"
 ---
 # <a name="manage-the-on-premises-management-console"></a>管理本地管理控制台
 
@@ -78,7 +78,7 @@ ms.locfileid: "123431073"
 
 若要还原最新备份文件，请执行以下操作：
 
-- 登录到管理帐户并输入 `$ sudo cyberx-management-system-restore`。
+- 登录到管理帐户，然后输入 `$ sudo cyberx-management-system-restore`。
 
 若要将备份保存到外部 SMB 服务器，请执行以下操作：
 
@@ -232,9 +232,9 @@ VLAN 名称在传感器和管理控制台之间未同步。 在组件上定义�
 1. 使用管理凭据登录到本地管理的 CLI。
 1. 键入 ```nano /var/cyberx/properties/remote-interfaces.properties```。
 1. 按 Enter。 将显示以下提示。
-```mail.smtp_server= ```
-```mail.port=25 ```
-```mail.sender=```
+   `mail.smtp_server=`
+   `mail.port=25`
+   `mail.sender=`
 1. 输入 SMTP 服务器名称和发件人，然后按 Enter。
 
 ## <a name="see-also"></a>另请参阅

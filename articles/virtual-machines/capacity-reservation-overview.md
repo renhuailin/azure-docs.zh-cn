@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: ee14ea525575a49abd4e4026201c3fa39ffa84b9
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: fe50e8db24f0f280365e435d8a205e9b45ac6ccb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273285"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774441"
 ---
 # <a name="on-demand-capacity-reservation-preview"></a>按需容量预留（预览版）
 
@@ -137,7 +137,7 @@ Azure 接受预留请求后，具有匹配配置的 VM 就可使用预留。 若
 
 创建预留后，Azure 会在指定位置留出请求的容量实例数： 
 
-![容量预留图像 1。](\media\capacity-reservation-overview\capacity-reservation-1.jpg) 
+![容量预留图像 1。](./media/capacity-reservation-overview/capacity-reservation-1.jpg) 
 
 通过以下属性跟踪整体预留的状态：  
 - `capacity` = 客户预留的实例总数 
@@ -148,7 +148,7 @@ Azure 接受预留请求后，具有匹配配置的 VM 就可使用预留。 若
 
 随后在针对容量预留分配 VM 后，该 VM 将在逻辑上使用其中一个预留容量实例： 
 
-![容量预留图像 2。](\media\capacity-reservation-overview\capacity-reservation-2.jpg) 
+![容量预留图像 2。](./media/capacity-reservation-overview/capacity-reservation-2.jpg) 
 
 容量预留的状态显示将是 `capacity` 为 2，长度为 `virutalMachinesAllocated`，而 `virtualMachinesAssociated` 为 1。  
 
@@ -156,23 +156,23 @@ Azure 接受预留请求后，具有匹配配置的 VM 就可使用预留。 若
 
 根据我们的示例，针对容量预留分配第三个 VM 时，预留会进入[过度分配](capacity-reservation-overallocate.md)状态。 第三个 VM 将需要未使用的配额且要求 Azure 额外提供容量。 分配第三个 VM 后，容量预留现如下所示： 
 
-![容量预留图像 3。](\media\capacity-reservation-overview\capacity-reservation-3.jpg) 
+![容量预留图像 3。](./media/capacity-reservation-overview/capacity-reservation-3.jpg) 
 
 `capacity` 为 2，长度为 `virutalMachinesAllocated`，而 `virtualMachinesAssociated` 为 3。 
 
 现在假设应用程序纵向缩减到最少两个 VM。 VM 0 需要更新，因此选择它来解除分配。 预留会自动切换到此状态： 
 
-![容量预留图像 4。](\media\capacity-reservation-overview\capacity-reservation-4.jpg) 
+![容量预留图像 4。](./media/capacity-reservation-overview/capacity-reservation-4.jpg) 
 
 `virtualMachinesAllocated` 的长度和 `capacity` 都是 2。 不过，`virtualMachinesAssociated` 的长度仍然是 3，原因是 VM 0 虽然已解除分配，但仍与容量预留关联。  
 
 容量预留将一直存在，直到被显式删除为止。 若要删除容量预留，首先要在 `virtualMachinesAssociated` 属性中取消关联所有 VM。 取消关联后，容量预留应如下所示： 
 
-![容量预留图像 5。](\media\capacity-reservation-overview\capacity-reservation-5.jpg) 
+![容量预留图像 5。](./media/capacity-reservation-overview/capacity-reservation-5.jpg) 
 
 容量预留的状态显示将是 `capacity` 为 2，长度为 `virtualMachinesAssociated`，而 `virtualMachinesAllocated` 为 0。 在此状态中，可删除容量预留。 删除后，你不再为预留付费。  
 
-![容量预留图像 6。](\media\capacity-reservation-overview\capacity-reservation-6.jpg)
+![容量预留图像 6。](./media/capacity-reservation-overview/capacity-reservation-6.jpg)
 
 
 ## <a name="usage-and-billing"></a>使用情况和计费 
@@ -183,13 +183,13 @@ Azure 接受预留请求后，具有匹配配置的 VM 就可使用预留。 若
 
 例如，假设创建了一个容量预留，它的预留数量为 2。 订阅有权访问一个大小相同的匹配预留 VM 实例。 结果就是容量预留有两个使用流，其中一个由预留容量涵盖： 
 
-![容量预留图像 7。](\media\capacity-reservation-overview\capacity-reservation-7.jpg)
+![容量预留图像 7。](./media/capacity-reservation-overview/capacity-reservation-7.jpg)
 
 在上图中，向其中一个未使用的实例应用了一个预留 VM 实例，因此该实例的成本将归零。对于其他实例，预留的 VM 大小采用即用即付费率计费。  
 
 针对容量预留分配 VM 时，还必须分配其他 VM 组件（例如磁盘、网络、扩展和其他任何请求的组件）。 在此状态中，VM 使用量将反映出一个已分配的 VM 和一个未使用的容量实例。 预留 VM 实例将使该 VM 或未使用的容量实例的费用归零。 账单上还将显示与分配的 VM 关联的磁盘、网络和其他组件的其他费用。 
 
-![容量预留图像 8。](\media\capacity-reservation-overview\capacity-reservation-8.jpg)
+![容量预留图像 8。](./media/capacity-reservation-overview/capacity-reservation-8.jpg)
 
 在上图中，VM 预留实例折扣应用于 VM 0，这将仅针对磁盘和网络等其他组件收费。 另一个未使用的实例按预留的 VM 大小的即用即付费率收费。
 

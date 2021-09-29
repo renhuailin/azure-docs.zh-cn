@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 636260baa432bdcf2686e2ffea3cfaec0e27d036
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 6f2061457e2263c13554492f8b6f5c117d94fa96
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605791"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745442"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workboard"></a>教程：Azure Active Directory 单一登录 (SSO) 与 WorkBoard 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "114605791"
 * 让用户使用其 Azure AD 帐户自动登录到 WorkBoard。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -81,7 +81,7 @@ ms.locfileid: "114605791"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.myworkboard.com/wb/user/login?saml_sso=<ENVIRONMENTNAME>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.myworkboard.com/wb/user/login?saml_sso=<ENVIRONMENTNAME>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [WorkBoard 客户端支持团队](mailto:support@workboard.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -102,7 +102,7 @@ ms.locfileid: "114605791"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -140,7 +140,7 @@ ms.locfileid: "114605791"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 WorkBoard。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“WorkBoard”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页，从中可以启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 WorkBoard。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“WorkBoard”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页，从中可以启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 WorkBoard。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

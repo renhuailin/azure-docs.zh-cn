@@ -8,12 +8,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: e1d4b294003fe7eb03f6742c75be6d4fadbfce4f
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 1258255ddc12dc4d718998e2320aa40951916400
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405967"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642731"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Tutorial:创建和配置时序见解 Gen2 环境
 
@@ -208,11 +208,11 @@ az tsi event-source iothub create --event-source-name iot-hub-event-source --env
 
 ![显示如何编辑实例的屏幕截图。](./media/tutorial-configure-tsi/edit-instance.png)
 
-打开“类型”下拉菜单，然后选择“温度控制器” 。 输入 defaultComponent <your device name>，更新表示与设备关联的所有顶级标记的实例名称。
+打开“类型”下拉菜单，然后选择“温度控制器” 。 输入 defaultComponent \<your device name\>，更新表示与设备关联的所有顶级标记的实例名称。
 
 ![显示如何更改实例类型的屏幕截图。](./media/tutorial-configure-tsi/change-type.png)
 
-在选择“保存”之前，首先选择“实例字段”选项卡，然后选择“设备组”  。 若要将遥测组合在一起，请输入 \<your device name> - 温度控制器。 再选择“保存”。
+在选择“保存”之前，首先选择“实例字段”选项卡，然后选择“设备组”  。 若要将遥测组合在一起，请输入 \<your device name\> - 温度控制器。 再选择“保存”。
 
 ![显示如何将实例分配给层次结构的屏幕截图](./media/tutorial-configure-tsi/assign-to-hierarchy.png)
 

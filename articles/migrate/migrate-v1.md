@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: a0f3e3b927f5f3aed0a29473af4046fb5c09cf4f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a24675bb1dc0977165dfe891f36f2f83476198f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465066"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615123"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -247,7 +247,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 1. 使用 scp/sftp 将相应的捆绑包（x86 或 x64）传输到 Linux 计算机。
 2. 使用 --install 参数安装捆绑包。
 
-    ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
+    `sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>`
 
 [详细了解 MMA 支持的 Linux 操作系统的列表](../azure-monitor/agents/agents-overview.md#supported-operating-systems)。
 
@@ -260,7 +260,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 1. 若要在 Windows 计算机上安装依赖项代理，请双击安装程序文件，然后按照向导操作。
 2. 若要在 Linux 计算机上安装依赖项代理，请使用以下命令安装为根目录：
 
-    ```sh InstallDependencyAgent-Linux64.bin```
+    `sh InstallDependencyAgent-Linux64.bin`
 
 - 详细了解针对 Windows 和 Linux 操作系统的 [Dependency agent 支持](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)。
 - [详细了解](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)如何使用脚本来安装依赖项代理。

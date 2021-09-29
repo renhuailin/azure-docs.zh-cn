@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3defd1bf3e3052f45f00eeeec0078ce0f6bbde
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d4b704e1226348f834be8f4af237443994cb456e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723140"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732717"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>在 Windows 登录屏幕上启用 Azure Active Directory 自助式密码重置
 
@@ -45,7 +45,7 @@ ms.locfileid: "121723140"
     - HideFastUserSwitching 设置为“已启用”或 1
     - DontDisplayLastUserName 设置为“已启用”或 1
     - NoLockScreen 设置为“已启用”或 1
-    - BlockNonAdminUserInstall 设置为“已启用”或 1
+    - BlockNonAdminUserInstall 设置为启用或 1。
     - 在设备上设置了 EnableLostMode
     - 将 Explorer.exe 替换为自定义 shell
 - 组合使用下面三个特定的设置可能会导致此功能失效。
@@ -186,7 +186,7 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provide
 
 用户在尝试登录时，可以看到“重置密码”或“忘记了密码”链接，该链接用于在登录屏幕上打开自助式密码重置体验。  此功能允许用户重置其密码，不需使用其他设备来访问 Web 浏览器。
 
-可以在[重置工作或学校密码](../user-help/active-directory-passwords-update-your-own-password.md)中找到为用户提供的有关使用此功能的详细信息
+可以在[重置工作或学校密码](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)中找到为用户提供的有关使用此功能的详细信息
 
 ## <a name="next-steps"></a>后续步骤
 

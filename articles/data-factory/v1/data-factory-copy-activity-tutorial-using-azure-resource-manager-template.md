@@ -3,17 +3,18 @@ title: '教程：使用资源管理器模板创建管道 '
 description: 本教程使用 Azure 资源管理器模板创建 Azure 数据工厂管道。 该管道将从 Azure Blob 存储中复制数据到 Azure SQL 数据库。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: f396563b4429d7aa547c86a2a5b3f84ac6bab4b9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 259a2e2e263f022b4cb91824aba9921f14cc1069
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957222"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614819"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 资源管理器模板创建复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
@@ -59,7 +60,7 @@ ms.locfileid: "111957222"
 
 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 有两种类型的活动：[数据移动活动](data-factory-data-movement-activities.md)和[数据转换活动](data-factory-data-transformation-activities.md)。 本教程会创建包含一个活动（复制活动）的管道。
 
-![将 Azure Blob 复制到 Azure SQL 数据库](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png) 
+:::image type="content" source="media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png" alt-text="将 Azure Blob 复制到 Azure SQL 数据库"::: 
 
 以下部分提供了用于定义数据工厂实体的完整 Resource Manager 模板，以便可以快速完成整个教程并测试模板。 若要了解每个数据工厂实体的定义方式，请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分。
 
@@ -339,15 +340,15 @@ ms.locfileid: "111957222"
 
 1. 在左侧菜单中单击“数据工厂”；或者单击“所有服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。   
    
-    ![数据工厂菜单](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
+    :::image type="content" source="media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png" alt-text="数据工厂菜单":::
 
 1. 在“数据工厂”页中，搜索并查找数据工厂 (AzureBlobToAzureSQLDatabaseDF)。 
    
-    ![搜索数据工厂](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
+    :::image type="content" source="media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png" alt-text="搜索数据工厂":::  
 
 1. 单击 Azure 数据工厂。 随后会显示该数据工厂的主页。
    
-    ![数据工厂主页](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
+    :::image type="content" source="media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png" alt-text="数据工厂主页":::  
 
 1. 按照[监视数据集和管道](data-factory-monitor-manage-pipelines.md)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。
 

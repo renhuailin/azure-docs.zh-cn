@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 70c310903461a4639a1eec1db9441d8f53e9e125
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4da231da354bf94947c663dafcb84617330535b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97505386"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124756292"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-procaire"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Procaire 的集成
 
@@ -78,7 +78,7 @@ ms.locfileid: "97505386"
 
 1. 单击“ **保存**”。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -127,7 +127,7 @@ ms.locfileid: "97505386"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Procaire 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Procaire 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；而如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Procaire。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Procaire 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；而如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Procaire。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤

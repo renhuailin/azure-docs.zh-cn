@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aahi
-ms.openlocfilehash: 18099d4de55423bdef2a5c05f3aecfa34a653bd0
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0ec2538d114bb659942bd8ef3dbd89821dda02f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426357"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650185"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>将计算机视觉容器与 Kubernetes 和 Helm 配合使用
 

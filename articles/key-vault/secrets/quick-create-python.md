@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: d9d15735439890d16ba56ca12b5476253f6fcf5d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 8d5ef1f13b7413eeb21c7e026aa1cbf9d9bb4541
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537359"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757394"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 机密客户端库
 
@@ -133,7 +133,7 @@ python kv_secrets.py
 ```
 
 - 如果遇到权限错误，请确保已运行 [`az keyvault set-policy` 命令](#grant-access-to-your-key-vault)。
-- 重新运行具有相同机密名称的代码可能会产生错误：“(冲突)机密 <name> 当前处于已删除但可恢复的状态。” 请使用另一机密名称。
+- 重新运行具有相同机密名称的代码可能会产生错误：“(冲突)机密 \<name\> 当前处于已删除但可恢复的状态。” 请使用另一机密名称。
 
 ## <a name="code-details"></a>代码详细信息
 

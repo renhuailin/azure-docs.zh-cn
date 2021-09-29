@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
-ms.openlocfilehash: e8393410c5b15ee888a2c0cee82c783f17e0e177
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f34ff25a75c4a1dfab0636ece8d2c8aecf4a8b77
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92517610"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789363"
 ---
 # <a name="tutorial-integrate-viareport-europe-with-azure-active-directory"></a>教程：将 Viareport (Europe) 与 Azure Active Directory 集成
 
@@ -76,13 +76,13 @@ ms.locfileid: "92517610"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://inativ.viareport.com/SSO/<tenant_id>/callback`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://inativ.viareport.com/SSO/<tenant_id>/callback` 
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://inativ.viareport.com/SSO/<tenant_id>/login`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://inativ.viareport.com/SSO/<tenant_id>/login`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Viareport (Europe) 客户端支持团队](mailto:ycezard@viareport.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -132,7 +132,7 @@ ms.locfileid: "92517610"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Viareport (Europe)”磁贴时，应会自动登录到设置了 SSO 的 Viareport (Europe)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Viareport (Europe)”磁贴时，应会自动登录到设置了 SSO 的 Viareport (Europe)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

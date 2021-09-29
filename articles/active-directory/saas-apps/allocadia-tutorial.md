@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cfb3da0b711bc1ac3f577a8f5af2a03c8532e925
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a9d03bf68b742dd8c557e2c81bce13c341e28e72
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92318829"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732271"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-allocadia"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Allocadia 集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "92318829"
 
     | 名称 | 源属性|
     | -------------- | ----------- |
-    | 名 | user.givenname |
+    | firstname | user.givenname |
     | 姓 | user.surname |
     | 电子邮件 | user.mail |
     | | |
@@ -156,7 +156,7 @@ ms.locfileid: "92318829"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Allocadia”磁贴时，应会自动登录到设置了 SSO 的 Allocadia。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Allocadia”磁贴时，应会自动登录到设置了 SSO 的 Allocadia。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

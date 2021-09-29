@@ -13,12 +13,12 @@ ms.date: 07/23/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: johngarland, mamarxen, ianbe, marsma
-ms.openlocfilehash: 4dcdb90daa9bb8cd1df79ec399eb9372fca02c61
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: a3710d4af1b65b1220db8938b35cf9d6cb516579
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037184"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734713"
 ---
 # <a name="authorization-basics"></a>授权基础知识
 
@@ -50,7 +50,7 @@ ms.locfileid: "123037184"
 在高级 RBAC 实现中，可将角色映射到权限集合，其中权限描述了可执行的细化操作或活动。 然后，会将角色配置为权限组合。 通过将授予给为实体分配的各种角色的权限进行相交，计算应用程序中实体的总体权限集。 此方法的一个很好的示例是用于管理对 Azure 订阅中资源的访问权限的 RBAC 实现。
 
 > [!NOTE]
-> [应用程序 RBAC](./custom-rbac-for-developers.md) 不同于 [Azure RBAC](/azure/role-based-access-control/overview) 和 [Azure AD RBAC](../roles/custom-overview.md#understand-azure-ad-role-based-access-control)。 Azure 自定义角色和内置角色都是 Azure RBAC 的一部分，可帮助你管理 Azure 资源。 Azure AD RBAC 使你能够管理 Azure AD 资源。
+> [应用程序 RBAC](./custom-rbac-for-developers.md) 不同于 [Azure RBAC](../../role-based-access-control/overview.md) 和 [Azure AD RBAC](../roles/custom-overview.md#understand-azure-ad-role-based-access-control)。 Azure 自定义角色和内置角色都是 Azure RBAC 的一部分，可帮助你管理 Azure 资源。 Azure AD RBAC 使你能够管理 Azure AD 资源。
 
 ### <a name="attribute-based-access-control"></a>基于属性的访问控制 
 
@@ -75,4 +75,4 @@ ABAC 的一项优势是，可通过规则和条件评估实现更精细的动态
 
 - 若要了解应用程序中自定义的基于角色的访问控制实现，请参阅[面向应用程序开发人员的基于角色的访问控制](./custom-rbac-for-developers.md)。
 - 若要了解注册应用程序以便它可以与 Microsoft 标识平台集成的过程，请参阅[应用程序模型](./application-model.md)。
-- 有关配置基于身份验证的简单授权的示例，请参阅[将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录](/azure/app-service/configure-authentication-provider-aad)。
+- 有关配置基于身份验证的简单授权的示例，请参阅[将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录](../../app-service/configure-authentication-provider-aad.md)。

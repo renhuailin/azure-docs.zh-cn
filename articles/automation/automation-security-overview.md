@@ -7,12 +7,12 @@ ms.subservice: process-automation
 ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 78b188b270ec08aa546311b449f908d47313a9a1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a86a5c8c0922e0861411e93376047344ba6c5af
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730584"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789097"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure 自动化帐户身份验证概述
 
@@ -24,7 +24,7 @@ Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (A
 
 首次启动 Azure 自动化时，必须创建至少一个自动化帐户。 使用 Azure 自动化帐户，你可以将 Azure 自动化资源、Runbook、资产、配置与其他帐户的资源相隔离。 可以使用 Azure 自动化帐户将资源分成单独的逻辑环境或委派的职责。 例如，可以在开发环境中使用一个帐户，在生产环境中使用另一个帐户，并在本地环境中使用另一个账户。 也可以使用[更新管理](update-management/overview.md)来指定一个 Azure 自动化帐户管理所有计算机上的操作系统更新。 
 
-Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的帐户。 有关创建自动化帐户的介绍，请参阅[创建自动化帐户](automation-quickstart-create-account.md)。
+Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的帐户。 有关创建自动化帐户的介绍，请参阅[创建自动化帐户](./quickstarts/create-account-portal.md)。
 
 ## <a name="automation-resources"></a>自动化资源
 
@@ -61,15 +61,15 @@ Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的�
 
 Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azure 资源管理器资源或在经典部署模型上部署的资源。 Azure 自动化中有两种类型的运行方式帐户：
 
-若要创建或续订运行方式帐户，需要以下三个级别的权限：
+若要创建或续订运行方式帐户，需要 3 个级别的权限：
 
 - 订阅、
-- Azure Active Directory (Azure AD)，以及
+- Azure Active Directory (Azure AD) 和
 - 自动化帐户
 
 ### <a name="subscription-permissions"></a>订阅权限
 
-你需要 `Microsoft.Authorization/*/Write` 权限。 此权限可通过以下某个 Azure 内置角色的成员身份获取：
+你需要 `Microsoft.Authorization/*/Write` 权限。 此权限是通过以下 Azure 内置角色之一的成员资格获得的：
 
 - [所有者](../role-based-access-control/built-in-roles.md#owner)
 - [用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)
@@ -78,16 +78,16 @@ Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azur
 
 ### <a name="azure-ad-permissions"></a>Azure AD 权限
 
-若要创建或续订服务主体，需要成为以下某个 Azure AD 内置角色的成员：
+为了能够创建或续订服务主体，需要成为以下 Azure AD 内置角色之一的成员：
 
 - [应用程序管理员](../active-directory/roles/permissions-reference.md#application-administrator)
 - [应用程序开发人员](../active-directory/roles/permissions-reference.md#application-developer)
 
-可以在目录级将成员身份分配给租户中的所有用户，这是默认行为。 可以在目录级别向任一角色授予成员身份。 有关详细信息，请参阅[谁有权向我的 Azure AD 实例添加应用程序？](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)
+可在目录级别将成员资格分配给租户中的所有用户，这是默认行为。 你可在目录级别向任一角色授予成员资格。 有关详细信息，请参阅[谁有权向我的 Azure AD 实例添加应用程序？](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 ### <a name="automation-account-permissions"></a>自动化帐户权限
 
-若要创建或更新自动化帐户，需要成为以下某个自动化帐户角色的成员：
+为了能够创建或更新自动化帐户，你需要成为以下自动化帐户角色之一的成员：
 
 - [所有者](./automation-role-based-access-control.md#owner)
 - [参与者](./automation-role-based-access-control.md#contributor)

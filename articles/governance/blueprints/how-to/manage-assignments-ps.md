@@ -3,12 +3,12 @@ title: 如何使用 PowerShell 管理分配
 description: 了解如何通过正式的 Azure 蓝图 PowerShell 模块 Az.Blueprint 管理蓝图分配。
 ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 943f2bcceef76a2b867b7459f88f6d5041f38ef5
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 0ce2132fe9d43ef0d5df1a4e0eec3a80a3a5c5ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322417"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612807"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理分配
 
@@ -16,7 +16,7 @@ ms.locfileid: "122322417"
 
 ## <a name="add-the-azblueprint-module"></a>添加 Az.Blueprint 模块
 
-必须添加 Azure PowerShell，才能启用此模块来管理蓝图分配。 此模块可以与在本地安装的 PowerShell 以及 [Azure Cloud Shell](https://shell.azure.com) 一起使用，也可以与 [Azure PowerShell Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell/)一起使用。
+必须添加 Azure PowerShell，才能启用此模块来管理蓝图分配。 此模块可以与在本地安装的 PowerShell 以及 [Azure Cloud Shell](https://shell.azure.com) 一起使用，也可以与 [Azure PowerShell Docker 映像](/powershell/azure/azureps-in-docker)一起使用。
 
 ### <a name="base-requirements"></a>基本要求
 

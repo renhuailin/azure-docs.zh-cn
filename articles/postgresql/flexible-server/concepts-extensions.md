@@ -6,17 +6,16 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: 3ccbe4cfa7b6e4f485d16ffecbda5c3b7042b8e1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dda5f9c654d7b6630a733006e69df7f2b98b8eeb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745148"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128594814"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的 PostgreSQL 扩展
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL 灵活服务器以预览版提供
+
 
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中将多个相关 SQL 对象捆绑在一起，可以使用命令在数据库中加载或删除该包。 在数据库中加载之后，扩展会如同内置功能一样运行。
 
@@ -62,7 +61,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_visibility](https://www.postgresql.org/docs/13/pgvisibility.html)                      | 1.2             | 检查可见性映射 (VM) 和页面级别的可见性信息|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.5             | 提供审核功能|
 > |[pgcrypto](https://www.postgresql.org/docs/13/pgcrypto.html)                     | 1.3             | 加密函数| 
-> |[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流式复制 |
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流复制 |
 > |[pgrowlocks](https://www.postgresql.org/docs/13/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/13/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/13/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
@@ -115,7 +114,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | 检查可见性映射 (VM) 和页面级别的可见性信息|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | 提供审核功能|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | 加密函数|
->|[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流式复制 |
+>|[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流复制 |
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
@@ -168,7 +167,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | 检查可见性映射 (VM) 和页面级别的可见性信息|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | 提供审核功能|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | 加密函数|
->|[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流式复制 |
+>|[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流复制 |
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|

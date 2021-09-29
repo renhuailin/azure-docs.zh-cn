@@ -3,13 +3,13 @@ title: Azure PowerShell 脚本示例 - 订阅自定义主题 | Microsoft Docs
 description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅自定义主题的事件网格事件。
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 07/08/2020
-ms.openlocfilehash: f37a90b84e5e55298efc0b3cd53812db95e4d86d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 30d328583246c8460e157f706ff68536d74232d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460722"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595059"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>使用 PowerShell 订阅自定义主题的事件
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b782de623deac68e9a5a305e5cfd1e7ad8578040
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92509958"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775714"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SiteIntel 集成
 
@@ -48,7 +48,7 @@ ms.locfileid: "92509958"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧窗格中，选择“Azure Active Directory”。
-1. 转到“企业应用程序”，并选择“所有应用程序”。  
+1. 转到“企业应用程序”，并选择“所有应用程序”。 
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”框中，输入“SiteIntel” 。
 1. 在结果列表中选择“SiteIntel”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -114,7 +114,7 @@ ms.locfileid: "92509958"
 
    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
-   d. 选择“创建”。
+   d. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -146,7 +146,7 @@ ms.locfileid: "92509958"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“SiteIntel”磁贴时，应会自动登录到设置了 SSO 的 SiteIntel。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中选择“SiteIntel”磁贴时，应会自动登录到设置了 SSO 的 SiteIntel。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1e49e787854069c2fcea30df7a43c3aacdd21b9e
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 6bd80367ab407be3d6b43750c6525b2d2ae30200
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502022"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605860"
 ---
 # <a name="azcopy-benchmark"></a>azcopy benchmark
 
 通过将测试数据上传到指定目标或从指定目标下载测试数据来运行性能基准检验。 对于上传，测试数据是自动生成的。
 
-基准检验命令运行与“copy”命令相同的过程，区别在于： 
+基准检验命令运行与“copy”命令相同的过程，区别在于：
 
   - 基准检验并非同时需要源参数和目标参数，而只需要其中一个。 这是你要向其上传数据或从中下载数据的 Blob 容器、Azure 文件存储共享或 Azure Data Lake Storage Gen2 文件系统。
 
@@ -28,14 +28,14 @@ ms.locfileid: "107502022"
   - 对于上传基准检验，有效负载通过命令行参数来描述，这些参数控制自动生成的文件的数量和这些文件的重要性。 生成过程完全在内存中进行。 不使用磁盘。
 
   - 对于下载，有效负载包含源中已存在的任何文件。 （如果需要，请参阅下面关于如何生成测试文件的示例）。
-  
+
   - 仅支持几个可用于 copy 命令的可选参数。
-  
+
   - 将会度量和报告其他诊断信息。
-  
+
   - 对于上传，默认行为是在测试运行结束时删除传输的数据。  对于下载，数据永远不会保存在本地。
 
-基准模式会自行调整为能够提供最大吞吐量的并行 TCP 连接数。 它会在结尾处显示该数字。 若要防止自动优化，请将 AZCOPY_CONCURRENCY_VALUE 环境变量设置为特定的连接数。 
+基准模式会自行调整为能够提供最大吞吐量的并行 TCP 连接数。 它会在结尾处显示该数字。 若要防止自动优化，请将 AZCOPY_CONCURRENCY_VALUE 环境变量设置为特定的连接数。
 
 支持所有常用的身份验证类型。 但通常情况下，进行上传基准检验最方便的方法是创建一个包含 SAS 令牌的空容器并使用 SAS 身份验证。 （下载模式要求目标容器中存在一组测试数据。）
 
@@ -43,7 +43,6 @@ ms.locfileid: "107502022"
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 - [通过 Azure 存储优化 AzCopy v10 的性能](storage-use-azcopy-optimize.md)
-
 
 ## <a name="examples"></a>示例
 
@@ -56,11 +55,13 @@ azcopy benchmark [destination] [flags]
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"
 ```
+
 运行一个上传 100 个文件的基准测试，每个文件的大小为 2 GiB：（适用于在快速网络（例如 10 Gbps 的网络）上进行基准测试）：
 
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"--file-count 100 --size-per-file 2G
 ```
+
 运行基准测试，但使用 50,000 个文件，每个文件的大小为 8 MiB，并计算其 MD5 哈希值（使用的方式与 `--put-md5` 标记在 copy 命令中使用的相同）。 进行基准测试时使用 `--put-md5` 的目的是测试 MD5 计算是否会影响所选文件计数和大小的吞吐量：
 
 ```azcopy
@@ -110,7 +111,6 @@ azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-
 **--output-type** 字符串  命令输出的格式。 选项包括：text、json。 默认值为“text”。 （默认值为“text”）。
 
 --trusted-microsoft-suffixes string 指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
-
 
 ## <a name="see-also"></a>另请参阅
 

@@ -7,12 +7,12 @@ ms.author: rgarcia
 ms.date: 06/23/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 174701b16d8ae9c8c8e5b1edf863aa9f1a65336c
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: a83606d76beb4fd9cead19293636b9e5348d4990
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113094780"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777557"
 ---
 # <a name="quickstart-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-object-anchors"></a>快速入门：有关使用 Azure Object Anchors 创建新 HoloLens Unity 应用的分步说明
 
@@ -22,7 +22,7 @@ ms.locfileid: "113094780"
 
 若要完成本快速入门，请确保具备以下项：
 
-* [Unity HoloLens](get-started-unity-hololens.md) 或 [Unity HoloLens 与 MRTK](get-started-unity-hololens-mrtk.md) 快速入门的所有先决条件。
+* [Unity HoloLens](get-started-unity-hololens.md) 或[通过 MRTK 创建 Unity HoloLens](get-started-unity-hololens-mrtk.md) 快速入门的所有先决条件。
 * <a href="https://unity3d.com/get-unity/download" target="_blank">Unity Hub 与 Unity 2020.3.8f1 或更高版本</a>
 
 ## <a name="getting-started"></a>入门
@@ -45,10 +45,10 @@ ms.locfileid: "113094780"
 
 ## <a name="install-mixed-reality-feature-tool-feature-packages"></a>安装混合现实功能工具功能包
 
-1. 按照<a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>文档来设置工具，并了解如何使用该工具。
+1. 按照<a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>文档来设置工具，并了解如何使用该工具。
 1. 在“平台支持”部分，将混合现实 OpenXR 插件功能包（版本 1.0.0 或更高版本）安装到 Unity 项目文件夹中。 
 1. 在“Azure 混合现实服务”部分，将 Microsoft Azure Object Anchors 功能包安装到 Unity 项目文件夹中。
-1. 返回到“Unity 编辑器”。 安装混合现实功能工具功能包可能需要几分钟的时间。
+1. 返回到“Unity 编辑器”。 安装“混合现实功能工具”功能包可能需要几分钟时间。
 1. 你将看到一个对话框，要求你确认启用新的输入系统。
 1. 选择“是”按钮。
 1. 安装过程完成后，Unity 将自动重启。

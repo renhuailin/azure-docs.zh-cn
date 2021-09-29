@@ -12,12 +12,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma
 ms.date: 07/13/2021
-ms.openlocfilehash: 13e522b45673723a33b8739ccefafa4a8410910a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e5e980878091145770f98cff952374e76f08180d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751325"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775638"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>长期保留 - Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -88,8 +88,6 @@ W=12 周（84 天）、M=12 个月（365 天）、Y=10 年（3650 天）、WeekO
 若要了解如何使用 Azure 门户或 PowerShell 配置长期保留或从 SQL 数据库的备份还原数据库，请参阅[管理 Azure SQL 数据库长期备份保留](long-term-backup-retention-configure.md)。
 
 若要了解如何使用 Azure 门户或 PowerShell 配置长期保留或从 SQL 托管实例的备份还原数据库，请参阅[管理 Azure SQL 托管实例长期备份保留](../managed-instance/long-term-backup-retention-configure.md)。
-
-若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器。 若要了解如何使用 Azure 门户或 PowerShell 从 LTR 备份还原数据库，请参阅[管理 Azure SQL 数据库长期备份保留](long-term-backup-retention-configure.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

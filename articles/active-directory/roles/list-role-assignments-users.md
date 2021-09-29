@@ -13,12 +13,12 @@ ms.author: absinh
 ms.reviewer: rolyon
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed1a0906e31691cae86547f165d5b44ac6e1f7c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 58647d37da29066c14457ae6624763c800e6f123
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862740"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776410"
 ---
 # <a name="list-azure-ad-role-assignments-for-a-user"></a>列出用户的 Azure AD 角色分配
 
@@ -81,7 +81,7 @@ ms.locfileid: "121862740"
 
 5. 若要获取分配给用户的可传递角色，请使用以下 cmdlet。
   
-    a. 使用 [Get-AzureADMSGroup](/powershell/module/azuread/get-azureadmsgroup) 获取所有可分配角色组的列表。  
+    a. 使用 [Get-AzureADMSGroup](/powershell/module/azuread/get-azureadmsgroup) 获取所有角色可分配组的列表。  
   
       ```powershell
       $roleAssignableGroups = (Get-AzureADMsGroup -All $true | Where-Object IsAssignableToRole -EQ 'True').Id

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/14/2021
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 56c8044f1ab36015accb3f951469ee0a0579ca23
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 4d549c3d8e97cad7a2cf0bbb75f45c6c06eba641
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608638"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128640033"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用
 
@@ -277,10 +277,10 @@ npm run build
 
     # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
 
-    将当前文件夹 (`.`) 和 API 文件夹 (`api`) 传递到 CLI。
+    将当前文件夹 (`src`) 和 API 文件夹 (`api`) 传递到 CLI。
      
     ```bash
-    swa start . --api api
+    swa start src --api api
     ```
 
     # <a name="angular"></a>[Angular](#tab/angular)

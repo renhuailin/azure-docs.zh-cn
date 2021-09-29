@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: rogarana
-ms.openlocfilehash: 6f179fe2e91da9e68a0809763bd9f38a5947e8a4
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: 3dcc0a93473e5f0b14f8921114172dbf6506d8aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113600597"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636736"
 ---
 # <a name="compare-access-to-azure-files-blob-storage-and-azure-netapp-files-with-nfs"></a>比较使用 NFS 对 Azure 文件存储、Blob 存储和 Azure NetApp 文件进行访问的方式
 
@@ -29,7 +29,6 @@ ms.locfileid: "113600597"
 |性能（每个卷）     |IOPS 高达 20,000，吞吐量高达 100 GiB/秒。         |IOPS 高达 100,000，吞吐量高达 80 GiB/秒。         |IOPS 高达 460,000，吞吐量高达 36 GiB/秒。         |
 |缩放     | 单个卷最大可扩展为 2 PiB。 <br></br> 单个文件最大可扩展为大约 4.75 TiB。<br></br>无最低容量要求。         |单个文件共享最大可扩展为 100 TiB。<br></br>单个文件最大可扩展为 4 TiB。<br></br>最小容量为 100 GiB。         |单个卷最大可扩展为 100 TiB。<br></br>单个文件最大可扩展为 16 TiB。<br></br>一致的混合云体验。         |
 |定价     |[Azure Blob 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)         |[Azure 文件存储定价](https://azure.microsoft.com/pricing/details/storage/files/)         |[Azure NetApp 文件定价](https://azure.microsoft.com/pricing/details/netapp/)         |
-
 
 ## <a name="next-steps"></a>后续步骤
 

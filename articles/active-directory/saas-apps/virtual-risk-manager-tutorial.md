@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
-ms.openlocfilehash: e3de90084c42a6ce5f71977de7e90e0767f858db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12fd6865e80932328748a28cf7b5c833aa44008b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181299"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785470"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-virtual-risk-manager"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Virtual Risk Manager 的集成
 
@@ -121,7 +121,7 @@ ms.locfileid: "96181299"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Virtual Risk Manager
 
-* 可以使用 Microsoft 访问面板。 单击访问面板中的 Virtual Risk Manager 磁贴时，应当会自动登录到你为其设置了 SSO 的 Virtual Risk Manager。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 可以使用 Microsoft 访问面板。 单击访问面板中的 Virtual Risk Manager 磁贴时，应当会自动登录到你为其设置了 SSO 的 Virtual Risk Manager。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 

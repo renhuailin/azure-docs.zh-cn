@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: 本文介绍了在 Azure 数字孪生中导出和删除个人数据的过程。
 author: baanders
 ms.author: baanders
-ms.date: 05/05/2020
+ms.date: 9/14/2021
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: c50ff2e1a8e63fd775b7b09863ffcd9d832d8683
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ef68e552d57df0fc202b9d75ae76065e3119ccff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205712"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642788"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure 数字孪生客户数据请求功能
 

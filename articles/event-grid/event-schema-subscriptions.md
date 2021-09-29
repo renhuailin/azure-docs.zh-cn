@@ -2,13 +2,13 @@
 title: 充当事件网格源的 Azure 订阅
 description: 介绍为 Azure 事件网格的订阅事件提供的属性
 ms.topic: reference
-ms.date: 02/12/2021
-ms.openlocfilehash: b9753ecfb46f5ac5f383f19e3d409e703c144d48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: b7a09dd16d6620dca74a45f796cccf2308a53396
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363179"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629211"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>充当事件网格源的 Azure 订阅
 
@@ -425,7 +425,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | object | 订阅事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
@@ -440,7 +440,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | object | 订阅事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 

@@ -11,12 +11,12 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a0bef4fbfd4ee9aa720dab430a33bbfcd0b918b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe955ede3c2936c0c842d19fbadb9a075830822c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91280345"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603479"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教程：模拟从主要区域读取数据时出现的故障
 
@@ -29,9 +29,9 @@ ms.locfileid: "91280345"
 本系列教程的第二部分将介绍如何：
 
 > [!div class="checklist"]
-> * 运行和暂停应用程序
-> * 使用[无效的静态路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler) 模拟故障
-> * 模拟主终结点还原
+> - 运行和暂停应用程序
+> - 使用[无效的静态路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler) 模拟故障
+> - 模拟主终结点还原
 
 ## <a name="prerequisites"></a>先决条件
 

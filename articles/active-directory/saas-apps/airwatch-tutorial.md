@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 4955062e6f0d0c231d09964c985df12284e3733c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b6c102cc7f7bd7c8c32a2ebc04ddce5458a2563
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653280"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748266"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>教程：将 AirWatch 与 Azure Active Directory 集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "101653280"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“ **保存**”。
 
@@ -115,7 +115,7 @@ ms.locfileid: "101653280"
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -127,7 +127,7 @@ ms.locfileid: "101653280"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 AirWatch 的权限，允许其使用 Azure 单一登录。
 
@@ -139,13 +139,13 @@ ms.locfileid: "101653280"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-airwatch-sso"></a>配置 AirWatch SSO
+### <a name=&quot;configure-airwatch-sso&quot;></a>配置 AirWatch SSO
 
 1. 在其他 Web 浏览器窗口中，以管理员身份登录 AirWatch 公司站点。
 
 1. 在设置页上： 选择“设置”>“企业集成”>“目录服务”。 
 
-   ![设置](./media/airwatch-tutorial/services.png "设置")
+   ![设置](./media/airwatch-tutorial/services.png &quot;设置")
 
 1. 单击“用户”选项卡，在“基 DN”文本框中键入域名，然后单击“保存”    。
 
@@ -238,7 +238,7 @@ ms.locfileid: "101653280"
 
 * 直接转到 AirWatch 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 AirWatch 磁贴时，会重定向到 AirWatch 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 AirWatch 磁贴时，会重定向到 AirWatch 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

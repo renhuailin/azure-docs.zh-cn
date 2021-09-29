@@ -4,12 +4,12 @@ description: 将 Apache Storm 工作负荷迁移到 Spark 流式处理或 Spark 
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: b8b054d06c9c0987508abfdf03bbcf9470572bd1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c4f4156f80fac0c9e5eaae360aa937544d88aa9e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868760"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656790"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>将 Azure HDInsight 3.6 Apache Storm 迁移到 HDInsight 4.0 Apache Spark
 
@@ -40,7 +40,7 @@ Apache Storm 可以提供不同级别的有保证的消息处理。 例如，基
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark 流式处理与 Spark 结构化流式处理
 
-Spark 结构化流式处理即将取代 Spark 流式处理 (DStream)。 结构化流式处理将不断得到增强和维护，而 DStream 只会保留维护模式。 注意：需要通过一些链接来强调这一点。 在现成支持的源和接收器方面，结构化流式处理的功能不如 DStream 那样全面，因此，在选择适当的 Spark 流式处理处理选项之前，请先评估要求。
+Spark 结构化流式处理即将取代 Spark 流式处理 (DStream)。 结构化流式处理将不断得到增强和维护，而 DStream 只会保留维护模式。 在现成支持的源和接收器方面，结构化流式处理的功能不如 DStream 那样全面，因此，在选择适当的 Spark 流式处理处理选项之前，请先评估要求。
 
 ## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>流式处理（单个事件）处理与微批处理
 

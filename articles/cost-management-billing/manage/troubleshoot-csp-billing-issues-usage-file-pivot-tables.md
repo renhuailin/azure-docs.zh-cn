@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 10/09/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 6525d809805da3a19a0efe423306f18d8e67a646
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 2532b02247a85d180d7b1cccd504838b83a8f93f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026279"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591836"
 ---
 # <a name="troubleshoot-csp-billing-issues-with-usage-file-pivot-tables"></a>通过使用情况文件数据透视表排查 CSP 计费问题
 
@@ -40,9 +40,9 @@ ms.locfileid: "92026279"
 1. 选择表中的第一个字段，即 PartnerID。
 1. 按 Ctrl+Shift+向下键，然后按 Ctrl+Shift+向右键，选择表中的所有信息。
 1. 在顶部菜单中，选择“插入” > “表” 。 在“创建表”框中，选择“表包含标题”，然后选择“确定” 。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/create-table-dialog.png" alt-text="显示 Excel 中未格式化数据的示例" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/create-table-dialog.png" alt-text="显示“创建表”对话框的示例" :::
 1. 在顶部菜单中，选择“插入” > “数据透视表”，然后选择“确定”  。 该操作会在文件中创建一个新工作表，并转到工作表右侧的数据透视表区域。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-fields.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-fields.png" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-fields.png" alt-text="显示“数据透视表字段”区域的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-fields.png" :::
 
 “数据透视表字段”区域是拖放区域。 继续执行下一部分以创建数据透视表。
 
@@ -51,13 +51,13 @@ ms.locfileid: "92026279"
 在本部分中，你将创建一个数据透视表，可在其中对总体 Azure 使用情况进行故障排除。 示例表可帮助你调查哪项服务消耗的资源最多。 你也可以查看产生的成本最大的资源以及服务的收费方式。
 
 1. 在“数据透视表字段”区域中，将“服务名称”和“资源”拖到“行”区域  。 将“资源”置于“服务名称”下 。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/rows-section.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/rows-section.png" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/rows-section.png" alt-text="显示行中的服务名称和资源的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/rows-section.png" :::
 1. 接下来，将“税后总计”置于“值”区域 。 你还可以改为使用“已使用数量”列来获取关于使用单位和交易的信息。 例如 GB 和小时。 或者事务，而不是采用各种货币单位（如 USD、EUR 和 INR）的成本。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/add-pivot-table-fields.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/add-pivot-table-fields.png" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/add-pivot-table-fields.png" alt-text="显示添加到数据透视表字段的列的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/add-pivot-table-fields.png" :::
 1. 现在，你有一个用于一般化使用量调查的仪表板。 可以使用数据透视表中的筛选选项来筛选特定服务。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-filter-option-row-label.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-filter-option-row-label.png" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-filter-option-row-label.png" alt-text="显示行标签的数据透视表筛选器选项的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-filter-option-row-label.png" :::
     若要筛选数据透视表中的第二级（例如资源），请在表中选择第二级的项。
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-filter-option-select-field.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-filter-option-select-field.png" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-filter-option-select-field.png" alt-text="显示“选择”字段的筛选器选项的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-filter-option-select-field.png" :::
 1. 对于其他筛选器，你可以将“订阅 ID”和“客户公司名称”添加到“筛选器”区域并选择所需的范围  。
 
 ## <a name="create-a-pivot-table-to-view-azure-usage-by-date"></a>创建数据透视表以按日期查看 Azure 使用情况
@@ -66,12 +66,12 @@ ms.locfileid: "92026279"
 
 你的对帐文件有两个表。 一个在顶部（主表），另一个在文档底部。 第二个表包含很多相同的信息，但不包括定价或成本详细信息。 它包含使用日期和已使用量。
 
-:::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/reconciliation-file-two-tables.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/reconciliation-file-two-tables.png" :::
+:::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/reconciliation-file-two-tables.png" alt-text="显示具有两个数据表的对帐文件的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/reconciliation-file-two-tables.png" :::
 
 1. 按照[获取数据并设置其格式](#get-the-data-and-format-it)部分中的步骤创建一个 Excel 表，其中包含对帐文件底部的信息。
 1. 表准备就绪并且你有一个数据透视表工作表时，请按“创建数据透视表以按资源查看 Azure 成本”部分的步骤来准备仪表板。 不使用“税后总计”，而是将“已使用量”置于“值”区域 。
 1. 将“使用日期”添加到列部分。 数据透视表应类似于下面的示例。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/final-pivot-table-fields.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/final-pivot-table-fields.png" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/final-pivot-table-fields.png" alt-text="显示最终的数据透视表字段的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/final-pivot-table-fields.png" :::
 1. 现在就有了一个按日期显示使用情况的仪表板。 选择“+”符号即可展开每个月。
 
 仪表板以 GB、小时和传输次数等为单位显示已使用的量。
@@ -86,7 +86,7 @@ ms.locfileid: "92026279"
 
 对帐文件不包含特定于资源的详细信息。 因此，使用聚合的使用情况文件。 请与 [Azure 计费支持](https://go.microsoft.com/fwlink/?linkid=2083458)联系，让他们为你提供订阅的聚合使用情况文件。 聚合文件是在订阅级别生成的。 未格式化的数据类似于以下示例。
 
-:::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/raw-aggregated-usage-file.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/raw-aggregated-usage-file.png" :::
+:::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/raw-aggregated-usage-file.png" alt-text="显示未设置格式的聚合使用情况文件的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/raw-aggregated-usage-file.png" :::
 
 该文件包含以下列。
 
@@ -98,11 +98,11 @@ ms.locfileid: "92026279"
 1. 选择表中的第一个字段，即 PartnerID。  
 1. 按 Ctrl+Shift+向下键，然后按 Ctrl+Shift+向右键，选择表中的所有信息。
 1. 在顶部菜单中，选择“插入” > “表” 。 在“创建表”框中，选择“表包含标题”，然后选择“确定” 。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/create-table-dialog.png" alt-text="显示 Excel 中未格式化数据的示例" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/create-table-dialog.png" alt-text="显示“创建表”对话框的示例" :::
 1. 在顶部菜单中，选择“插入” > “数据透视表”，然后选择“确定”  。 该操作会在文件中创建一个新工作表，并转到工作表右侧的数据透视表区域。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-fields-reconciliation.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-fields-reconciliation.png" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-fields-reconciliation.png" alt-text="显示对帐文件的数据透视表字段区域的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/pivot-table-fields-reconciliation.png" :::
 1. 接下来，将“MeteredResourceID”添加到“行”区域，将“Quantity”添加到“值”   。 结果显示总体使用情况信息。 有关更多详细信息，请将“UsageEndDateTime”置于“列”区域中 。  
-    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/overall-usage.png" alt-text="显示 Excel 中未格式化数据的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/overall-usage.png" :::
+    :::image type="content" source="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/overall-usage.png" alt-text="显示总体使用情况信息的示例" lightbox="./media/troubleshoot-csp-billing-issues-usage-file-pivot-tables/overall-usage.png" :::
 1. 若要查看整个报表，请在“MeteredResourceID”下将“Properties”添加到“行”  。 它显示一个完整的使用情况仪表板。
 1. 若要按特定资源筛选，请将“Properties”添加到“筛选器”区域，然后选择所需的使用情况 。 可以使用“搜索”来查找资源名称。
     若要查看资源的成本，请找到总使用量并用该值乘以定价。 每个资源 GUID (MeteredResourceID) 都有特定的定价。 如果一个资源使用多个 MeteredResourceID，必须记下每个 ID 的总值。

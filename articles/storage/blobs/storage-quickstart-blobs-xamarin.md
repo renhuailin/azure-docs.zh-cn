@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ceb941f361cd719e48726799db25d726764933f9
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: c19524fc66bbddc00e320c18664f2978a6941d9d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470537"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587492"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>快速入门：通过 Xamarin 使用 Azure Blob 存储客户端库 v12
 
@@ -21,29 +21,29 @@ ms.locfileid: "123470537"
 
 通过 Xamarin 使用 Azure Blob 存储客户端库 v12 完成以下操作：
 
-* 创建容器
-* 将 blob 上传到 Azure 存储
-* 列出容器中所有的 blob
-* 将 blob 下载到设备
-* 删除容器
+- 创建容器
+- 将 blob 上传到 Azure 存储
+- 列出容器中所有的 blob
+- 将 blob 下载到设备
+- 删除容器
 
 参考链接：
 
-* [API 参考文档](/dotnet/api/azure.storage.blobs)
-* [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
-* [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [示例](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+- [API 参考文档](/dotnet/api/azure.storage.blobs)
+- [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+- [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+- [示例](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-* Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
-* 安装了 [Mobile Development for .NET 工作负荷](/xamarin/get-started/installation/?pivots=windows)的 Visual Studio 或 [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true)
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
+- 安装了 [Mobile Development for .NET 工作负荷](/xamarin/get-started/installation/?pivots=windows)的 Visual Studio 或 [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true)
 
 ## <a name="setting-up"></a>设置
-    
+
 本部分逐步讲解如何准备项目，以便通过 Xamarin 使用 Azure Blob 存储客户端库 v12。
-    
+
 ### <a name="create-the-project"></a>创建项目
 
 1. 打开 Visual Studio 并创建一个空白窗体应用。
@@ -70,7 +70,7 @@ ms.locfileid: "123470537"
     <Button x:Name="deleteButton" Text="Delete Container" Clicked="Delete_Clicked" IsEnabled="False" />
 
     <Label Text="" x:Name="resultsLabel" HorizontalTextAlignment="Center" Margin="0,20,0,0" TextColor="Red" />
-        
+
 </StackLayout>
 ```
 
@@ -80,9 +80,9 @@ ms.locfileid: "123470537"
 
 Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。 Blob 存储提供了三种类型的资源：
 
-* 存储帐户
-* 存储帐户中的容器
-* 容器中的 blob
+- 存储帐户
+- 存储帐户中的容器
+- 容器中的 blob
 
 以下图示显示了这些资源之间的关系。
 
@@ -90,21 +90,21 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 .NET 类与这些资源进行交互：
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
-* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo)：`BlobDownloadInfo` 类表示从下载 blob 返回的属性和内容。
+- [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
+- [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
+- [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
+- [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo)：`BlobDownloadInfo` 类表示从下载 blob 返回的属性和内容。
 
 ## <a name="code-examples"></a>代码示例
 
 这些示例代码片段演示了如何在 Xamarin.Forms 应用中使用适用于 .NET 的 Azure Blob 存储客户端库执行以下任务：
 
-* [创建类级别变量](#create-class-level-variables)
-* [创建容器](#create-a-container)
-* [将 blob 上传到容器中](#upload-blobs-to-a-container)
-* [列出容器中的 blob](#list-the-blobs-in-a-container)
-* [下载 blob](#download-blobs)
-* [删除容器](#delete-a-container)
+- [创建类级别变量](#create-class-level-variables)
+- [创建容器](#create-a-container)
+- [将 blob 上传到容器中](#upload-blobs-to-a-container)
+- [列出容器中的 blob](#list-the-blobs-in-a-container)
+- [下载 blob](#download-blobs)
+- [删除容器](#delete-a-container)
 
 ### <a name="create-class-level-variables"></a>创建类级别变量
 
@@ -138,7 +138,7 @@ BlobClient blobClient;
 protected async override void OnAppearing()
 {            
     string containerName = $"quickstartblobs{Guid.NewGuid()}";
-    
+
     client = new BlobServiceClient(storageConnectionString);
     containerClient = await client.CreateBlobContainerAsync(containerName);
 
@@ -204,7 +204,7 @@ async void Download_Clicked(object sender, EventArgs e)
     BlobDownloadInfo downloadInfo = await blobClient.DownloadAsync();
 
     using MemoryStream memoryStream = new MemoryStream();
-    
+
     await downloadInfo.Content.CopyToAsync(memoryStream);
     memoryStream.Position = 0;
 
@@ -274,5 +274,5 @@ Container Deleted
 > [!div class="nextstepaction"]
 > [Azure Blob 存储 SDK v12 Xamarin 示例](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
-* 有关教程、示例、快速入门和其他文档，请访问[面向移动开发人员的 Azure](/azure/mobile-apps)。
-* 若要详细了解 Xamarin，请参阅 [Xamarin 入门](/xamarin/get-started/)。
+- 有关教程、示例、快速入门和其他文档，请访问[面向移动开发人员的 Azure](/azure/mobile-apps)。
+- 若要详细了解 Xamarin，请参阅 [Xamarin 入门](/xamarin/get-started/)。

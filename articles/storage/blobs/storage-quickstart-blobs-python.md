@@ -1,8 +1,8 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - Python
 description: 本快速入门介绍如何使用适用于 Python 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 Blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/28/2021
 ms.topic: quickstart
 ms.service: storage
@@ -10,12 +10,12 @@ ms.subservice: blobs
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: d560dfc8d8621e94315d8603a9d6e8b3b8cbf09a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: fdb5e14d57e2e8f9fa4bcf0cba5d54dba253e935
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468107"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587549"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入门：使用 Python v12 SDK 管理 blob
 
@@ -23,10 +23,10 @@ ms.locfileid: "123468107"
 
 更多资源：
 
-* [API 参考文档](/python/api/azure-storage-blob)
-* [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
-* [包（Python 包索引）](https://pypi.org/project/azure-storage-blob/)
-* [示例](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+- [API 参考文档](/python/api/azure-storage-blob)
+- [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
+- [包（Python 包索引）](https://pypi.org/project/azure-storage-blob/)
+- [示例](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -90,9 +90,9 @@ pip install azure-storage-blob
 
 Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。 Blob 存储提供了三种类型的资源：
 
-* 存储帐户
-* 存储帐户中的容器
-* 容器中的 blob
+- 存储帐户
+- 存储帐户中的容器
+- 容器中的 blob
 
 以下图示显示了这些资源之间的关系。
 
@@ -100,20 +100,20 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 Python 类与这些资源进行交互：
 
-* [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
-* [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient)：`ContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
-* [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
+- [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
+- [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient)：`ContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
+- [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
 
 ## <a name="code-examples"></a>代码示例
 
 这些示例代码片段演示了如何使用适用于 Python 的 Azure Blob 存储客户端库执行以下任务：
 
-* [获取连接字符串](#get-the-connection-string)
-* [创建容器](#create-a-container)
-* [将 blob 上传到容器中](#upload-blobs-to-a-container)
-* [列出容器中的 blob](#list-the-blobs-in-a-container)
-* [下载 blob](#download-blobs)
-* [删除容器](#delete-a-container)
+- [获取连接字符串](#get-the-connection-string)
+- [创建容器](#create-a-container)
+- [将 blob 上传到容器中](#upload-blobs-to-a-container)
+- [列出容器中的 blob](#list-the-blobs-in-a-container)
+- [下载 blob](#download-blobs)
+- [删除容器](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>获取连接字符串
 
@@ -219,5 +219,5 @@ Done
 > [!div class="nextstepaction"]
 > [Azure Blob 存储 SDK v12 Python 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* 有关详细信息，请参阅[适用于 Python 的 Azure 存储客户端库](/azure/developer/python/sdk/storage/overview)。
-* 有关教程、示例、快速入门和其他文档，请访问[面向 Python 开发人员的 Azure](/azure/python/)。
+- 有关详细信息，请参阅[适用于 Python 的 Azure 存储客户端库](/azure/developer/python/sdk/storage/overview)。
+- 有关教程、示例、快速入门和其他文档，请访问[面向 Python 开发人员的 Azure](/azure/python/)。

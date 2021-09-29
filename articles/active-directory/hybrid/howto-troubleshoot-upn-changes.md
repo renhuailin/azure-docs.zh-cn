@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b48fa334aedce144e274b8155edda3cc7b08b9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858529"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739945"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory 中用户主体名称更改的规划和故障排除
 
@@ -168,9 +168,9 @@ dsregcmd /leave
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Microsoft Authenticator 已知问题和解决方法
 
-你的组织可能需要使用 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)来登录和访问组织的应用程序和数据。 尽管用户名可能会在应用中显示，但在用户完成注册过程前，该帐户不会设置为用作验证方法。
+你的组织可能需要使用 [Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)来登录和访问组织的应用程序和数据。 尽管用户名可能会在应用中显示，但在用户完成注册过程前，该帐户不会设置为用作验证方法。
 
-[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)有四个主要功能：
+[Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)有四个主要功能：
 
 * 通过推送通知或验证码进行多重身份验证
 
@@ -186,7 +186,7 @@ Microsoft Authenticator 应用提供一个带外验证选项。 [多重身份验
 
 **已知问题** 
 
-更改用户的 UPN 时，旧的 UPN 仍将显示在用户帐户上，并且可能无法接收通知。 [验证码](../user-help/user-help-auth-app-faq.md)将继续有效。
+更改用户的 UPN 时，旧的 UPN 仍将显示在用户帐户上，并且可能无法接收通知。 [验证码](https://support.microsoft.com/account-billing/common-problems-with-the-microsoft-authenticator-app-12d283d1-bcef-4875-9ae5-ac360e2945dd)将继续有效。
 
 **解决方法**
 

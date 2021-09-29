@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa8f116680b3876eebb2b96a4f4c5e40d6384a2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a03b30c1e2628342246430089e3c6fbb47c98a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732341"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754342"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>Azure Active Directory 应用程序安全操作指南
 
@@ -72,23 +72,23 @@ ms.locfileid: "121732341"
 
 * [登录日志](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide)
+* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview)
 
 * [Azure Key Vault 日志](../../key-vault/general/logging.md)
 
 在 Azure 门户中，你可以查看 Azure AD 审核日志，并以逗号分隔值 (CSV) 或 JavaScript 对象表示法 (JSON) 文件格式下载。 Azure 门户提供多种方法将 Azure AD 日志与其他便于更好地自动执行监视和警报的工具集成：
 
-* **[Azure Sentinel](../../sentinel/overview.md)** – 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
+* [Azure Sentinel](../../sentinel/overview.md) - 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
 
-* **[Azure Monitor](../../azure-monitor/overview.md)** – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿来合并不同源的数据。
+* [Azure Monitor](../../azure-monitor/overview.md) – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿来合并不同源的数据。
 
-* **与 SIEM 集成的 [Azure 事件中心](../../event-hubs/event-hubs-about.md)** -  通过 Azure 事件中心集成[可将 Azure AD 日志集成到其他 SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)，例如 Splunk、ArcSight、QRadar 和 Sumo Logic。
+* **与 SIEM 集成的 [Azure 事件中心](../../event-hubs/event-hubs-about.md)** -  通过 Azure 事件中心集成 [可将 Azure AD 日志集成到其他 SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)，例如 Splunk、ArcSight、QRadar 和 Sumo Logic。
 
 * **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS)** – 支持发现和管理应用、跨应用和资源进行治理以及检查云应用合规性。
 
-条件访问策略决定了大部分你将监视和发出警报的内容。 可以使用[条件访问见解和报告工作簿](../conditional-access/howto-conditional-access-insights-reporting.md)来检查一个或多个条件访问策略对登录的影响以及包括设备状态在内的策略结果。 通过此工作簿，你可以查看影响摘要并识别特定时间段的影响。 还可以使用此工作簿来调查特定用户的登录。 
+大部分你将监视和发出警报的内容由条件访问策略决定。 可以使用[条件访问见解和报告工作簿](../conditional-access/howto-conditional-access-insights-reporting.md)来检查一个或多个条件访问策略对登录的影响以及包括设备状态在内的策略结果。 可通过此工作簿查看影响摘要并确定特定时间段的影响。 还可以使用此工作簿来调查特定用户的登录情况。 
 
- 本文接下来将按威胁类型介绍我们建议你监视和发出警报的内容。 如果有特定预生成解决方案，我们会链接到这些解决方案，或在表后提供示例。 否则，可以使用前面的工具来生成警报。 
+ 本文接下来将按威胁类型介绍应该监视和发出相关警报的对象。 如果有特定预生成解决方案，我们会链接到这些解决方案，或在表格之后提供示例。 否则，可以使用前面的工具来生成警报。 
 
 ## <a name="application-credentials"></a>应用程序凭据
 
@@ -162,7 +162,7 @@ Azure Key Vault 可用于存储租户密钥。 建议特别注意对 Key Vault �
 
 * [在 Azure Active Directory 中管理应用程序的同意和评估同意请求](../manage-apps/manage-consent-requests.md)
 
-* [检测并修正非法同意授权 - Office 365](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants?view=o365-worldwide)
+* [检测并修正非法同意授权 - Office 365](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)
 
 * [事件响应 playbook - 应用同意授权调查](/security/compass/incident-response-playbook-app-consent)
 

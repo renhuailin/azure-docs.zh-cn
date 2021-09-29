@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 6d61a44e671c43754fa7cccbe8ea8fe54eeba387
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: faee5c872b70f55011c6213a04e14c6f69bcc8df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97900410"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730460"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>解决问题
 
-联系 [Azure 计费支持](../azure-portal/supportability/resource-manager-core-quotas-request.md)启用订阅，以便在目标位置中创建所需大小的 VM。 然后重试失败的操作。
+联系 [Azure 计费支持](../azure-portal/supportability/regional-quota-requests.md)启用订阅，以便在目标位置中创建所需大小的 VM。 然后重试失败的操作。
 
 如果目标位置存在容量约束，请禁用到该位置的复制。 然后在订阅具有足够配额的其他位置启用复制，以创建所需大小的 VM。
 

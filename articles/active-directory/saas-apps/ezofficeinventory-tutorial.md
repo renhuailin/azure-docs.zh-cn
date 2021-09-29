@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 8306d593b74c6b7a51d59ba59e40378ed30677f4
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: f3b364809aa287084a1d5e93f4498b7ac822385b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556275"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EZOfficeInventory 的集成
 
@@ -79,7 +79,7 @@ ms.locfileid: "111556275"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.ezofficeinventory.com/users/sign_in`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.ezofficeinventory.com/users/sign_in`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [EZOfficeInventory 客户端支持团队](mailto:support@ezofficeinventory.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -178,7 +178,7 @@ ms.locfileid: "111556275"
 
 * 直接转到 EZOfficeInventory 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“EZOfficeInventory”磁贴时，将会重定向到 EZOfficeInventory 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“EZOfficeInventory”磁贴时，将会重定向到 EZOfficeInventory 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

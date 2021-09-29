@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 介绍了Azure 和 Azure 数字孪生功能，这些功能有助于构建带灾难恢复功能的 Azure IoT 高可用性解决方案。
 author: baanders
 ms.author: baanders
-ms.date: 10/14/2020
+ms.date: 9/16/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 125f3aa1cb3cfec0b7e8ec3cfafebdf2fae53e59
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d021bc7643cfab1bbe805b424623c4ba129f6b1e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771209"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642807"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 数字孪生高可用性和灾难恢复
 

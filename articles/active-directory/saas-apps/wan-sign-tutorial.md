@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: f20a401487e402d70f58d475ab5c99ff480ac840
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: b7df43c394d3df20f4d423fde6cf680432c80337
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111987736"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124731480"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wan-sign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 WAN-Sign 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "111987736"
 * 让用户使用其 Azure AD 帐户自动登录到 WAN-Sign。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -100,7 +100,7 @@ ms.locfileid: "111987736"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -130,11 +130,9 @@ ms.locfileid: "111987736"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 WAN-Sign
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 WAN-Sign 磁贴时，应会自动登录到为其设置了 SSO 的 WAN-Sign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 WAN-Sign 磁贴时，应会自动登录到为其设置了 SSO 的 WAN-Sign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 配置 WAN-Sign 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
-
-

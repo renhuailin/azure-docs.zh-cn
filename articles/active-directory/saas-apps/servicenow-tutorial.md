@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 24f05c59d7ceac37ff628aec265541d323f170e3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 438d53657f2836f02de18c0cd6685aa97e0540cc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725804"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124741401"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceNow 集成
 
@@ -133,7 +133,7 @@ ms.locfileid: "121725804"
 1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 对于“名称”  ，请输入 `B.Simon`。  
+   1. 对于“名称”，请输入 `B.Simon`。  
    1. 对于“用户名”，请输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选择“显示密码”，然后记下“密码”框中显示的值   。
    1. 选择“创建”  。
@@ -457,7 +457,7 @@ ms.locfileid: "121725804"
 
 ## <a name="test-sso"></a>测试 SSO
 
-选择访问面板中的 ServiceNow 磁贴时，应当会自动登录到已为其设置了 SSO 的 ServiceNow。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+选择访问面板中的 ServiceNow 磁贴时，应当会自动登录到已为其设置了 SSO 的 ServiceNow。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="test-sso-for-servicenow-classic-mobile"></a>测试 ServiceNow Classic（移动版）的 SSO
 

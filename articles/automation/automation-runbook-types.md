@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 06/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a6005c267423787fed61f2fb9badfea5769137d2
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 44923cd63676a6eb2fa589c66726f1c14c76896c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113565357"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744815"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
@@ -134,7 +134,7 @@ Python Runbook 在 Python 2 和 Python 3 下编译。 Python 3 Runbook 目前处
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
+* 要了解 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](./learn/powershell-runbook-managed-identity.md)。
 * 要了解 PowerShell 工作流 Runbook，请参阅[教程：创建 PowerShell 工作流 Runbook](learn/automation-tutorial-runbook-textual.md)。
-* 要了解图形 Runbook，请参阅[教程：创建图形 Runbook](learn/automation-tutorial-runbook-graphical.md)。
-* 要了解 Python Runbook，请参阅[教程：创建 Python Runbook](learn/automation-tutorial-runbook-textual-python2.md)。
+* 要了解图形 Runbook，请参阅[教程：创建图形 Runbook](./learn/powershell-runbook-managed-identity.md)。
+* 要了解 Python Runbook，请参阅[教程：创建 Python Runbook](./learn/automation-tutorial-runbook-textual-python-3.md)。

@@ -7,12 +7,12 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 5303289cd0629fea1c78e4ae746427e875f80520
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ab7bd55dd7b66d613f99b4d54a8fdf4445542545
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891609"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591817"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>快速入门：将 Azure Cache for Redis 与 Go 配合使用
 
@@ -31,9 +31,9 @@ ms.locfileid: "111891609"
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>创建用于 Redis 的 Azure 缓存实例
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
 
 ## <a name="review-the-code-optional"></a>查看代码（可选）
 
@@ -132,20 +132,20 @@ func (uh userHandler) getUser(rw http.ResponseWriter, r *http.Request) {
 
 1. 将它们设置为相应的环境变量：
 
-    ```shell
+    ```console
     set REDIS_HOST=<Host name>:<port> (e.g. <name of cache>.redis.cache.windows.net:6380)
     set REDIS_PASSWORD=<Primary Access Key>
     ```
 
 1. 在“终端”窗口中，切换到正确的文件夹。 例如：
 
-    ```shell
+    ```console
     cd "C:\git-samples\azure-redis-cache-go-quickstart"
     ```
 
 1. 在终端中，运行以下命令以启动应用程序。
 
-    ```shell
+    ```console
     go run main.go
     ```
 

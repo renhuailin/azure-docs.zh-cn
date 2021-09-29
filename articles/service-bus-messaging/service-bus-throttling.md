@@ -2,13 +2,13 @@
 title: Azure 服务总线限制概述 | Microsoft Docs
 description: 概述了服务总线限制 - 标准层和高级层。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 95b03859b26d97c1089b6112b41511618abdcffe
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.date: 09/20/2021
+ms.openlocfilehash: 0607cd96b68de960829d80f00765586213a55d2d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191102"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609168"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure 服务总线中的限制操作
 

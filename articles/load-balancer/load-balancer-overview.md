@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: f847ef4f4490b64212e4cdcce3f9a89e94c7cd37
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3d3c1d9937382080ea5a735e3f67e9767919366f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058589"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740769"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -55,7 +55,7 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第 4 层上运行�
 
 - 对发往 Azure 虚拟机的 **[内部](./quickstart-load-balancer-standard-internal-portal.md)** 和 **[外部](./quickstart-load-balancer-standard-public-portal.md)** 流量进行负载均衡。
 
-- 通过在区域 **[内部](./tutorial-load-balancer-standard-public-zonal-portal.md)** 和区域 **[之间](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** 分配资源，提高可用性。
+- 通过在区域 **[内部](./tutorial-load-balancer-standard-public-zonal-portal.md)** 和区域 **[之间](./quickstart-load-balancer-standard-public-portal.md)** 分配资源，提高可用性。
 
 - 配置 Azure 虚拟机的 **[出站连接](./load-balancer-outbound-connections.md)** 。
 

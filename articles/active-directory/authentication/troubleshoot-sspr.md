@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff19142255b168dc0c0d3b422752c0610a3ddd1
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5451c8b5211fec91872b05eba5c30d9622f51dc9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538572"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787294"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>排查在 Azure Active Directory 中进行自助式密码重置时遇到的问题
 
@@ -121,7 +121,7 @@ UI 的许多元素都是隐藏的，直到需要它们时才会显示。 在查�
 
 | 错误 | 详细信息 | 技术详细信息 |
 | --- | --- | --- |
-| TenantSSPRFlagDisabled = 9 | 抱歉，由于管理员已对组织禁用密码重置，目前无法重置密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们启用此功能。<br /><br />若要了解详细信息，请参阅[请为我提供帮助，我忘记了 Azure AD 密码](../user-help/active-directory-passwords-update-your-own-password.md#common-problems-and-their-solutions)。 | SSPR_0009：我们检测到管理员尚未启用密码重置。 请联系管理员，并请求他们为组织启用密码重置。 |
+| TenantSSPRFlagDisabled = 9 | 抱歉，由于管理员已对组织禁用密码重置，目前无法重置密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们启用此功能。<br /><br />若要了解详细信息，请参阅[请为我提供帮助，我忘记了 Azure AD 密码](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e#common-problems-and-their-solutions)。 | SSPR_0009：我们检测到管理员尚未启用密码重置。 请联系管理员，并请求他们为组织启用密码重置。 |
 | WritebackNotEnabled = 10 |抱歉，由于管理员没有为组织启用必要服务，目前无法重置密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们检查你组织的配置。<br /><br />若要了解此必要服务的详细信息，请参阅[配置密码写回](./tutorial-enable-sspr-writeback.md)。 | SSPR_0010：我们检测到尚未启用密码写回。 请联系管理员，并请求他们启用密码写回。 |
 | SsprNotEnabledInUserPolicy = 11 | 抱歉，由于管理员未为组织配置密码重置，目前无法重置密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们配置密码重置。<br /><br />若要了解有关密码重置配置的详细信息，请参阅[快速入门：Azure AD 自助式密码重置](./tutorial-enable-sspr.md)。 | SSPR_0011：你的组织尚未定义密码重置策略。 请联系管理员，并请求他们定义密码重置策略。 |
 | UserNotLicensed = 12 | 抱歉，由于组织缺少必要的许可证，目前无法重置密码。 无法采取进一步操作来解决这种情况。 请联系管理员，并请求他们检查许可证分配。<br /><br />若要了解有关许可的详细信息，请参阅 [Azure AD 自助密码重置的许可要求](./concept-sspr-licensing.md)。 | SSPR_0012：你的组织没有执行密码重置所需的许可证。 请联系管理员，并请求他们查阅许可证分配。 |

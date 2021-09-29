@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: d9db86e400d862dd67582ede0bf44b9e9fd1c893
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8831666015663eedd3ab779cd23b58bb8cf0df24
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954796"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>教程：Azure Active Directory 与 LaunchDarkly 集成
 
@@ -159,7 +159,7 @@ ms.locfileid: "104954796"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 LaunchDarkly。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“LaunchDarkly”磁贴时，应会自动登录到为其设置了 SSO 的 LaunchDarkly。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“LaunchDarkly”磁贴时，应会自动登录到为其设置了 SSO 的 LaunchDarkly。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

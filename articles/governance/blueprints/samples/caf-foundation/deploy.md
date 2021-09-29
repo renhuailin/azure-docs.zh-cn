@@ -3,12 +3,12 @@ title: 部署 CAF 基础蓝图示例
 description: CAF Foundation 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 281bd0fdae5aa144799499d583b5673a569612b1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: daa3d4a2c8f8abec3754680ddf9fb6115f88bf6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108757864"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678225"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>部署适用于 Azure 的 Microsoft 云采用框架基础蓝图示例
 
@@ -106,7 +106,7 @@ ms.locfileid: "108757864"
 |允许的虚拟机 SKU|策略分配|Policy_Allowed-VM-SKUs|允许的虚拟机 SKU|
 |将 CostCenter 标记追加到资源组|策略分配|Policy_CostCenter_Tag|从资源组追加 CostCenter 标记及其值|
 |你不想在环境中允许的资源类型|策略分配|Policy _Allowed-Resource-Types|你希望在环境中允许哪些 Azure 资源|
-|部署 Key Vault|资源管理器模板|KV-AccessPolicy|**已锁定** - 在 Key Vault 中向其授予权限的 Azure AD 组或用户 <Object ID>|
+|部署 Key Vault|资源管理器模板|KV-AccessPolicy|**已锁定** - 在 Key Vault 中向其授予权限的 Azure AD 组或用户 \<Object ID\>|
 |部署 Log Analytics|资源管理器模板|LogAnalytics_DataRetention|**已锁定** - 数据将在 Log Analytics 中保留的天数|
 |部署 Log Analytics|资源管理器模板|LogAnalytics_Location|**已锁定** - 建立工作区时使用的区域|
 

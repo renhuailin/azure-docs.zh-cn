@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 9bdfaef667d0a9377a69011f2ce21750854a33c3
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: f2bde73ace6861f96df0708fc7a406921589cfdd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895975"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739878"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>教程：Azure Active Directory 与 Autotask Endpoint Backup 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "111895975"
 
 4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.backup.autotask.net/singlesignon/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.backup.autotask.net/singlesignon/saml/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.backup.autotask.net/singlesignon/saml/SSO`
 
@@ -128,7 +128,7 @@ ms.locfileid: "111895975"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Autotask Endpoint Backup。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Autotask Endpoint Backup”磁贴时，你应会自动登录到为其设置了 SSO 的 Autotask Endpoint Backup。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Autotask Endpoint Backup”磁贴时，你应会自动登录到为其设置了 SSO 的 Autotask Endpoint Backup。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

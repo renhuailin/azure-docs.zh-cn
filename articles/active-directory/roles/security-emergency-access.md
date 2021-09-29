@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249332f680bd0550d99a38a200ce95d32e6f95d7
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f840d72698790be10630fe182f4655554ff23962
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473597"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748389"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
@@ -158,4 +158,4 @@ ms.locfileid: "123473597"
 - [注册 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)（如果尚未注册）
 - [如何要求用户进行双重验证](../authentication/howto-mfa-userstates.md)
 - 如果使用 Microsoft 365，则[在 Microsoft 365 中为全局管理员配置额外的保护](/office365/enterprise/protect-your-global-administrator-accounts)
-- [启动全局管理员访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)并[将现有全局管理员转换为更具体的管理员角色](permissions-reference.md)
+- [启动全局管理员访问评审](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md)并[将现有全局管理员转换为更具体的管理员角色](permissions-reference.md)

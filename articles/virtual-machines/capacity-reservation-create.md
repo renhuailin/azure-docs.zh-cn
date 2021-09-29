@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: a8c5e7f21747bc4f37f766106931a8f303fa33d3
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: db9b8b71ddbdccb2cdc4893ce7ea041304bafba9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273277"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776607"
 ---
 # <a name="create-a-capacity-reservation-preview"></a>创建容量预留（预览版）
 
@@ -157,12 +157,12 @@ ms.locfileid: "123273277"
     -CapacityToReserve 5
     ```
 
-要了解详细信息，请转到 Azure PowerShell 命令 [New-AzResourceGroup](/powershell/module/az.compute/new-azresourcegroup)、[New-AzCapacityReservationGroup](/powershell/module/az.compute/new-azcapacityreservationgroup) 和 [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)。
+要了解详细信息，请转到 Azure PowerShell 命令 [New-AzResourceGroup](/powershell/module/az.Resources/new-azresourcegroup)、[New-AzCapacityReservationGroup](/powershell/module/az.compute/new-azcapacityreservationgroup) 和 [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)。
 
 
 ### <a name="arm-template"></a>[ARM 模板](#tab/arm1)
 
- [ARM 模板](/azure/azure-resource-manager/templates/overview) 是一个 JavaScript 对象表示法 (JSON) 文件，用于定义项目的基础结构和配置。 模板使用声明性语法。 在声明性语法中，你可以在不编写创建部署的编程命令序列的情况下，描述预期部署。 
+ [ARM 模板](../azure-resource-manager/templates/overview.md) 是一个 JavaScript 对象表示法 (JSON) 文件，用于定义项目的基础结构和配置。 模板使用声明性语法。 在声明性语法中，你可以在不编写创建部署的编程命令序列的情况下，描述预期部署。 
 
 ARM 模板允许部署相关资源的组。 在单个模板中，可创建容量预留组和容量预留。 可通过 Azure 门户、Azure CLI、Azure PowerShell 或持续集成/持续交付 (CI/CD) 管道部署模板。 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c32e0da05b3d076cbb18c2f4d475f45bfb0ecd15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9ebbae0aea03ef560621588320fe4452ad6ec30
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458738"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739094"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>教程：Azure Active Directory 与 LCVista 集成
 
@@ -205,7 +205,7 @@ ms.locfileid: "92458738"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 LCVista 磁贴时，应会自动登录到为其设置了 SSO 的 LCVista。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 LCVista 磁贴时，应会自动登录到为其设置了 SSO 的 LCVista。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

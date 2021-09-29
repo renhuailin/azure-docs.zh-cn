@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120e97e62980427fb83c6bf7884da92dd9c5e1f7
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 01044f9d03b911bfb6939023dfb4fd5d3b0a3cd3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602305"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773790"
 ---
 # <a name="plan-an-azure-active-directory-multi-factor-authentication-deployment"></a>规划 Azure Active Directory 多重身份验证部署 
 
@@ -182,7 +182,7 @@ Azure AD 标识保护同时为 Azure AD MFA 过程提供自动风险检测的注
 - 以管理员角色更新用户的方法。 为此，请在 Azure 门户中选择用户，然后选择“身份验证方法”并更新其方法。
 用户通信
 
-通知用户即将进行的更改、Azure AD MFA 注册要求以及任何必要的用户操作至关重要。 我们提供[通信模板](https://aka.ms/mfatemplates)和[最终用户文档](../user-help/security-info-setup-signin.md)来帮助草拟通信。 在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以注册。
+通知用户即将进行的更改、Azure AD MFA 注册要求以及任何必要的用户操作至关重要。 我们提供[通信模板](https://aka.ms/mfatemplates)和[最终用户文档](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)来帮助草拟通信。 在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以注册。
 
 ## <a name="plan-integration-with-on-premises-systems"></a>计划与本地系统进行集成
 

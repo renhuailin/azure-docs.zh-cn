@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c2613d39ce760ea5326b827472b19e033a513c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9ae65a58151ff69eba119483cadf06f7561add9f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752510"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idrive"></a>教程：Azure Active Directory 与 IDrive 的集成
 
@@ -133,7 +133,7 @@ ms.locfileid: "121752510"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 IDrive。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“IDrive”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 IDrive。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“IDrive”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 IDrive。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

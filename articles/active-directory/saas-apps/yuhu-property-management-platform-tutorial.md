@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 51e84e7e3a1e8a800769985e37374abf6d601f5c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 05591a72da0df39e9fad043d3d77b6e30eb97ddb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077340"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Yuhu Property Management Platform 集成
 
@@ -146,7 +146,7 @@ ms.locfileid: "106077340"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 Yuhu Property Management Platform 磁贴时，应会自动登录到设置了 SSO 的 Yuhu Property Management Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击 Yuhu Property Management Platform 磁贴时，应会自动登录到设置了 SSO 的 Yuhu Property Management Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

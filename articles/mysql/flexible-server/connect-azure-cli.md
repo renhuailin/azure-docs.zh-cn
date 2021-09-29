@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: f75b933769e94986b1c140fb8bcbadca44b96cf1
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b27fb9ec4ff24cd53906b304db1f32655380fc66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643093"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128595773"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>快速入门：通过 Azure CLI 与 Azure Database for MySQL - 灵活服务器进行连接和查询
 
@@ -25,7 +25,9 @@ ms.locfileid: "122643093"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure 帐户。 如果没有帐户，可[获取一个免费试用帐户](https://azure.microsoft.com/free/)。
+- 具有活动订阅的 Azure 帐户。 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - 安装 [Azure CLI](/cli/azure/install-azure-cli) 最新版本（2.20.0 或更高版本）
 - 通过 ```az login``` 命令使用 Azure CLI 登录 
 - 使用 ```az config param-persist on``` 启用参数持久性。 参数持久性将帮助你使用本地上下文，而无需重复大量参数，如资源组或位置等。

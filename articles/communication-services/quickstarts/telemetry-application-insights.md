@@ -9,13 +9,14 @@ ms.author: peiliu
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: data
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: cddff62f911339e7b2ddb76535acda09e1793137
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 71f294cb42977b89fc36d8f750aa43baadb31f47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292362"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609491"
 ---
 # <a name="quickstart-using-azure-opentelemetry-exporter-to-export-sdk-telemetry-data-to-application-insights"></a>快速入门：使用 Azure OpenTelemetry 导出程序将 SDK 遥测数据导出到 Application Insights
 

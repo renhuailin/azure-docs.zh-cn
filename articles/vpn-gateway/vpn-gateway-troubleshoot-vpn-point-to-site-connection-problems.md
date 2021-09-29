@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 136ea5fcb8dd446cfff6400616df058722fa2827
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c30dc859a7cfc139d1402eadc3b4e0ae812125c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075366"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603460"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -341,9 +341,9 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 4. 如果 Windows 找不到新的驱动程序，可以尝试在设备制造商的网站上查找，并按照说明执行操作。
 5. 重启计算机并再次尝试连接。
 
-## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN 客户端错误：拨号 VPN 连接 <VPN Connection Name>，状态 =“VPN 平台未触发连接”
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN 客户端错误：拨号 VPN 连接 \<VPN Connection Name\>，状态 =“VPN 平台未触发连接”
 
-你可能还会在 RasClient 的事件查看器中看到以下错误：“用户 <User> 拨打了一个名为 <VPN Connection Name> 的连接，该连接已失败。 失败时返回的错误代码是 1460。”
+你可能还会在 RasClient 的事件查看器中看到以下错误：“用户 \<User\> 拨打了一个名为 \<VPN Connection Name\> 的连接，该连接已失败。 失败时返回的错误代码是 1460。”
 
 ### <a name="cause"></a>原因
 

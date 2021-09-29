@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1b944480ce7c09676b65216da4c74f4ffdacdcf
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3091afbab67f65a1850bb4ffbd73487d0e0327c9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292332"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742558"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD 权利管理中的常见方案
 
@@ -40,7 +40,7 @@ ms.locfileid: "112292332"
 
 ### <a name="catalog-owner-delegate-management-of-resources"></a>目录所有者：委托资源管理权
 
-1. [将共同所有者添加到目录](entitlement-management-catalog-create.md#add-additional-catalog-owners)
+1. [将共同所有者添加到目录](entitlement-management-catalog-create.md#add-more-catalog-owners)
 1. [将资源添加到目录](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
 
 ### <a name="catalog-owner-delegate-management-of-access-packages"></a>目录所有者：委托访问包的管理

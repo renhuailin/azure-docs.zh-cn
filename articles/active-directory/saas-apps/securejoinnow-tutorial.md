@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: f000cf2b58bb9f9b3c2077dbad490e6a4ff3da43
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a7d7abd904b2948b9da5af5af25a43934c3513e4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109735879"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124741287"
 ---
 # <a name="tutorial-integrate-securew2-joinnow-connector-with-azure-active-directory"></a>教程：将 SecureW2 JoinNow Connector 与 Azure Active Directory 集成
 
@@ -130,7 +130,7 @@ ms.locfileid: "109735879"
 
 * 直接转到 SecureW2 JoinNow Connector 登录 URL，从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 SecureW2 JoinNow Connector 磁贴时，将会重定向到 SecureW2 JoinNow Connector 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 SecureW2 JoinNow Connector 磁贴时，将会重定向到 SecureW2 JoinNow Connector 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

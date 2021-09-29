@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 509d1dc0b94bdfa9be5185df0bad793f7702eb26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 904a29278ea3efdabe6ed72892d2e14ccbf2e0e3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101731028"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740753"
 ---
 # <a name="correct-misspelled-words-with-bing-resource"></a>使用必应资源更正拼写错误的单词
 
@@ -68,11 +68,6 @@ V3 预测 API 现支持[必应拼写检查 API](/bing/search-apis/bing-spell-che
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
-## <a name="enable-spell-check-from-ui"></a>从 UI 启用拼写检查 
-可以使用 [Luis 门户](https://www.luis.ai)为示例查询启用拼写检查。 在屏幕的顶部选择“管理”，在左侧导航栏中选择“Azure 资源”。 将预测资源关联到应用程序后，可以从页面底部选择“更改查询参数”，然后在“启用拼写检查”字段中粘贴资源密钥。
-    
-   > [!div class="mx-imgBorder"]
-   > ![启用拼写检查](./media/luis-tutorial-bing-spellcheck/spellcheck-query-params.png)
 
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>将密钥添加到终结点 URL

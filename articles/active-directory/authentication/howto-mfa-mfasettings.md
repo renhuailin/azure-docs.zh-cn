@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: d5aa2a2eba1cf6123d81813cab00d2ac7c5309b4
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 22dd9bdfc8f26a46c7cd5989851fb748955732fe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835365"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773809"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>配置 Azure AD 多重身份验证设置
 
@@ -311,7 +311,7 @@ Azure AD 多重身份验证的应用密码、受信任的 IP、验证选项以�
 
 ## <a name="verification-methods"></a>验证方法
 
-可以在服务设置门户中选择可供用户使用的验证方法。 用户为其帐户注册 Azure AD 多重身份验证时，将从你启用的选项中选择其首选验证方法。 [为我的帐户设置多重身份验证](../user-help/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程的指导。
+可以在服务设置门户中选择可供用户使用的验证方法。 用户为其帐户注册 Azure AD 多重身份验证时，将从你启用的选项中选择其首选验证方法。 [为我的帐户设置多重身份验证](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)中提供了用户注册过程的指导。
 
 可使用以下验证方法：
 
@@ -341,7 +341,7 @@ Azure AD 多重身份验证的应用密码、受信任的 IP、验证选项以�
 > [!IMPORTANT]
 > 请记住，如果帐户或设备遭到入侵，受信任的设备的多重身份验证可能影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[撤销 MFA 会话](howto-mfa-userdevicesettings.md)。
 >
-> 还原操作会撤销所有设备的受信任状态，然后用户必须再次执行多重身份验证。 还可以指示用户按照[管理多重身份验证的设置](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)中所述在其自己的设备上还原多重身份验证。
+> 还原操作会撤销所有设备的受信任状态，然后用户必须再次执行多重身份验证。 还可以指示用户按照[管理多重身份验证的设置](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7#turn-on-two-factor-verification-prompts-on-a-trusted-device)中所述在其自己的设备上还原多重身份验证。
 
 ### <a name="how-the-feature-works"></a>该功能的工作原理
 

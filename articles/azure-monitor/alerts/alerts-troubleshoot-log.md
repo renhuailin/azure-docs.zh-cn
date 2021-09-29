@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f7e5340b69bacb14180b4feee7ada22c7ca298d0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: aafd6f2e0d5c10b1e3e1698176734a83083ef72d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592697"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744500"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 
@@ -156,7 +156,7 @@ SecurityEvent
 
 ## <a name="activity-log-example-when-rule-is-disabled"></a>禁用规则时的活动日志示例
 
-如果查询连续七天失败，Azure Monitor 会禁用日志警报并停止规则的计费。 在 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中可以看到 Azure Monitor 禁用日志警报的确切时间。 
+如果查询连续七天失败，Azure Monitor 会禁用日志警报并停止规则的计费。 在 [Azure 活动日志](../../azure-monitor/essentials/activity-log.md)中可以看到 Azure Monitor 禁用日志警报的确切时间。 
 
 请参阅此示例：
 

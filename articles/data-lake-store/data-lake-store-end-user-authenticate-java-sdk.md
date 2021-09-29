@@ -1,18 +1,18 @@
 ---
 title: 最终用户身份验证 - 采用 Azure Data Lake Storage Gen1 的 Java
 description: 了解如何通过 Java 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.custom: devx-track-java
-ms.author: twooley
-ms.openlocfilehash: ece996f7edb8d37cea47756c5b7e635e02409b35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: c3b15eb3b978c446e7c4848b6f893b66cb9cc5c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87318855"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605518"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>通过 Java 使用 Azure Data Lake Storage Gen1 进行最终用户身份验证
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "87318855"
 ## <a name="end-user-authentication"></a>最终用户身份验证
 1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。
 
-2. 将以下依赖项添加到 Maven pom.xml 文件。 在 **\</project>** 标记前添加以下代码片段：
+2. 将以下依赖项添加到 Maven pom.xml 文件。 在 \</project> 标记前添加以下代码片段：
    
     ```xml
     <dependencies>

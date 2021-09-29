@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 05/14/2021
+ms.date: 09/07/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60517714e0aa19a2cf465c22c6511b0c89648942
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: bf1fbd4d57b3daa073d506fbaf371b379030a810
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792436"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776455"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>在 Azure Active Directory 中使用 PowerShell 分配具有资源范围的自定义角色
 
@@ -48,10 +48,10 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Applicati
 
 # Get app registration and construct resource scope for assignment.
 $appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
-$resourceScope = '/' + $appRegistration.objectId
+$directoryScope = '/' + $appRegistration.objectId
 
 # Create a scoped role assignment
-$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+$roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $directoryScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 若要将该角色分配给服务主体而不是用户，请使用 [Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet。
@@ -122,10 +122,10 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Applicati
 
 # Get app registration and construct resource scope for assignment.
 $appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
-$resourceScope = '/' + $appRegistration.objectId
+$directoryScope = '/' + $appRegistration.objectId
 
 # Create a scoped role assignment
-$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+$roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $directoryScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 ### <a name="read-and-list-role-assignments"></a>读取并列出角色分配

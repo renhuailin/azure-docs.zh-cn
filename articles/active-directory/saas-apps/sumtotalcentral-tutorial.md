@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 929c447d1a19b85ab8e12b45198508e5f5747c12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ff2ea6b4c230a2156a7a63287e8d940d1cb6f98
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521843"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124752075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>教程：Azure Active Directory 与 SumTotalCentral 集成
 
@@ -121,7 +121,7 @@ ms.locfileid: "92521843"
    1. 在“姓名”字段中输入 **B.Simon**。  
    1. 在“用户名”字段中输入 `<username>@<companydomain>.<extension>`。 例如：`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -153,7 +153,7 @@ ms.locfileid: "92521843"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 SumTotalCentral 磁贴时，应会自动登录到为其设置了 SSO 的 SumTotalCentral。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 SumTotalCentral 磁贴时，应会自动登录到为其设置了 SSO 的 SumTotalCentral。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

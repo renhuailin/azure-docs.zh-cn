@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 4c292838305baa44699b6309fcaaf7de7366ba94
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a501c12c81da0e2fbacfa6db3a46d590f2501a54
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753374"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124746407"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 Samsung Knox and Business Services 的集成
 
@@ -141,7 +141,7 @@ ms.locfileid: "109753374"
 
 * 直接转到 [SamsungKnox.com](https://samsungknox.com/)，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Samsung Knox 和业务服务”磁贴时，会重定向到 [SamsungKnox.com](https://samsungknox.com/)。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Samsung Knox 和业务服务”磁贴时，会重定向到 [SamsungKnox.com](https://samsungknox.com/)。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 1/31/2021
 ms.author: amberz
 ms.co-author: Donnana
-ms.openlocfilehash: a652ac797739323530dee169987a135c8abdf0f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 084e4c0fa3ecf94685e1789273764c548c07147a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638959"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730786"
 ---
 # <a name="process-data-from-automated-machine-learning-models-by-using-data-flows"></a>通过使用数据流处理自动化机器学习模型中的数据
 
@@ -71,19 +71,19 @@ CREATE TABLE [dbo].[MyProducts](
 
 1. 使用聚合活动获取行计数。 使用基于 Col2 的“分组”，然后通过 `count(1)`“聚合”以获取行计数。
 
-    ![显示配置聚合活动以获取行计数的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/aggregate-activity-addrowcount.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/aggregate-activity-addrowcount.png" alt-text="显示配置聚合活动以获取行计数的屏幕截图。":::
 
 1. 使用接收器活动，在“接收器”选项卡上，选择“缓存”作为“接收器类型”。然后在“设置”选项卡上的“键列”下拉列表中，选择所需的列    。
 
-    ![显示配置 CacheSink 活动以获取缓存接收器中行计数的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/cachesink-activity-addrowcount.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/cachesink-activity-addrowcount.png" alt-text="显示配置 CacheSink 活动以获取缓存接收器中行计数的屏幕截图。":::
 
 1. 使用派生列活动在源流中添加行计数列。 在“派生列的设置”选项卡上，使用 `CacheSink#lookup` 表达式从 CacheSink 中获取行计数。
 
-    ![显示配置派生列活动以添加 source1 中行计数的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/derived-column-activity-rowcount-source-1.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/derived-column-activity-rowcount-source-1.png" alt-text="显示配置派生列活动以添加 source1 中行计数的屏幕截图。":::
 
 1. 使用有条件拆分活动可删除不符合条件的数据。 在此示例中采用基于 Col2 列的行计数。 条件是删除行计数小于 2 的数据，因此将删除两行（ID = 2 和 ID = 7）。 你需要将不符合条件的数据保存到 blob 存储，以便进行数据管理。
 
-    ![显示配置有条件拆分活动以获取大于或等于 2 的数据的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/conditionalsplit-greater-or-equal-than-2.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/conditionalsplit-greater-or-equal-than-2.png" alt-text="显示配置有条件拆分活动以获取大于或等于 2 的数据的屏幕截图。":::
 
 > [!NOTE]
 >    * 创建一个用于获取行计数的新源，在后续步骤中将在初始源中使用行计数。
@@ -95,21 +95,21 @@ CREATE TABLE [dbo].[MyProducts](
 
 1. 使用窗口活动为每个分区添加一个列行号。 在“超过”选项卡上，选择分区的列。 在本教程中，我们将对 Col2 进行分区。 在“排序”选项卡上给出一个顺序，本教程中将基于 ID 排序。 在“窗口列”选项卡上给出一个顺序，为每个分区添加一列作为行号。
 
-    ![显示配置窗口活动以将一个新列添加为行号的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/window-activity-add-row-number.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/window-activity-add-row-number.png" alt-text="显示配置窗口活动以将一个新列添加为行号的屏幕截图。":::
 
 1. 使用“有条件拆分”活动可将每个分区的前 2 行拆分为测试数据集，并将其余行拆分为训练数据集。 在“有条件拆分设置”选项卡上，将表达式 `lesserOrEqual(RowNum,2)` 用作条件。
 
-    ![显示配置有条件拆分活动以将当前数据集拆分为训练数据集和测试数据集的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/split-training-dataset-test-dataset.png)
+    :::image type="content" source="./media/scenario-dataflow-process-data-aml-models/split-training-dataset-test-dataset.png" alt-text="显示配置有条件拆分活动以将当前数据集拆分为训练数据集和测试数据集的屏幕截图。":::
 
 ## <a name="partition-the-training-and-test-datasets-with-parquet-format"></a>采用 Parquet 格式对训练和测试数据集进行分区
 
 使用接收器活动，在“优化”选项卡中，使用“每个分区的唯一值”将列设置为分区的列键。
 
-![显示配置接收器活动以设置训练数据集的分区的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/partition-training-dataset-sink.png)
+:::image type="content" source="./media/scenario-dataflow-process-data-aml-models/partition-training-dataset-sink.png" alt-text="显示配置接收器活动以设置训练数据集的分区的屏幕截图。":::
 
 让我们回顾一下整个管道逻辑。
 
-![显示整个管道逻辑的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/entire-pipeline.png)
+:::image type="content" source="./media/scenario-dataflow-process-data-aml-models/entire-pipeline.png" alt-text="显示整个管道逻辑的屏幕截图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

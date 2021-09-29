@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 268943463002ddd1dbdbf67df9587758f81f537f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1347ee33905f9c39e752c1a78e3d5573f9fb6f2d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646514"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
 
@@ -89,7 +89,7 @@ ms.locfileid: "101646514"
 
     如果使用的是 Absorb 5 - New Learner Experience，请使用以下配置：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.myabsorb.com/api/rest/v2/authentication/saml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.myabsorb.com/api/rest/v2/authentication/saml`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.myabsorb.com/api/rest/v2/authentication/saml`
 
@@ -219,7 +219,7 @@ ms.locfileid: "101646514"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Absorb LMS。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Absorb LMS 磁贴时，你应会自动登录到为其设置了 SSO 的 Absorb LMS。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Absorb LMS 磁贴时，你应会自动登录到为其设置了 SSO 的 Absorb LMS。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

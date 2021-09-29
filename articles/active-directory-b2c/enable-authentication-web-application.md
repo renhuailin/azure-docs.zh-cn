@@ -11,12 +11,12 @@ ms.date: 06/11/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 44f3c777279d6f6b8d2df2600141e7fd66e44214
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 8cb836752ff75a32465d5c8df0e88210c323fb26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186292"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740106"
 ---
 # <a name="enable-authentication-in-your-own-web-app-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在自己的 Web 应用中启用身份验证
 
@@ -68,7 +68,7 @@ Install-Package Microsoft.Identity.Web.UI
 
 Microsoft 标识 Web 中间件使用在托管进程启动时运行的启动类。 在此步骤中，添加启动身份验证库所需的代码。
 
-打开 Startup.cs，然后在类开头添加以下 `using` 声明：
+打开 Startup.cs，然后在类的开头添加以下 `using` 声明：
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -273,19 +273,18 @@ Azure AD B2C 标识提供者设置存储在 appsettings.json 文件中。 打开
 [在示例 Web 应用中配置身份验证](configure-authentication-sample-web-app.md)一文介绍了所需信息。 使用以下设置：
 
 * **实例**：将 `<your-tenant-name>` 替换为 Azure AD B2C [租户名称](tenant-management.md#get-your-tenant-name)的第一部分（例如 `https://contoso.b2clogin.com`）。
-* **域**：将 `<your-b2c-domain>` 替换为 Azure AD B2C 完整[租户名称](tenant-management.md#get-your-tenant-name)（例如 `contoso.onmicrosoft.com`）。
-* **客户端 ID**：将 `<web-app-application-id>` 替换为[步骤 2](configure-authentication-sample-web-app.md#step-2-register-a-web-application) 中的应用程序 ID。
-* **策略名称**：将 `<your-sign-up-in-policy>` 替换为在[步骤 1](configure-authentication-sample-web-app.md#step-1-configure-your-user-flow) 中创建的用户流。
+* **域**：将 `<your-b2c-domain>` 替换为 Azure AD B2C 完整 [租户名称](tenant-management.md#get-your-tenant-name)（例如 `contoso.onmicrosoft.com`）。
+* **客户端 ID**：将 `<web-app-application-id>` 替换为 [步骤 2](configure-authentication-sample-web-app.md#step-2-register-a-web-application) 中的应用程序 ID。
+* **策略名称**：将 `<your-sign-up-in-policy>` 替换为在 [步骤 1](configure-authentication-sample-web-app.md#step-1-configure-your-user-flow) 中创建的用户流。
 
 ## <a name="step-7-run-your-application"></a>步骤 7：运行应用程序
 
 1. 生成并运行该项目。
-1. 转到 [https://localhost:5001](https://localhost:5001)。 
+1. 转到  `https://localhost:5001` 。 
 1. 选择“注册/登录”。
 1. 完成注册或登录过程。
 
 成功进行身份验证后，导航栏中会显示显示名称。 若要查看 Azure AD B2C 令牌返回到应用的声明，请选择“声明”。
 
 ## <a name="next-steps"></a>后续步骤
-
 * 了解如何[自定义和增强 Web 应用的 Azure AD B2C 身份验证体验](enable-authentication-web-application-options.md).

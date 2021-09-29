@@ -2,14 +2,14 @@
 title: 使用 PowerShell 管理 Azure 服务总线资源 | Microsoft Docs
 description: 本文介绍如何使用 Azure PowerShell 模块创建和管理服务总线实体（命名空间、队列、主题和订阅）。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 09/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2f8b1252e75a2c0aa1a44b8b7aaae5389aa8fa3
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 41fe10c13c77871845cadf93890768064f6dc143
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112379845"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627969"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 

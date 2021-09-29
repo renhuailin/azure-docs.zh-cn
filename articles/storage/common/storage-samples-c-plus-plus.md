@@ -1,18 +1,18 @@
 ---
 title: 使用 C++ 的 Azure 存储示例 | Microsoft Docs
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 C++ 存储客户端库发现 Blob、队列、表和文件的入门示例。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: d82b31cde0e8df5db2d073abcec8ea44f13bd0f0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 46f34dfc6a841bf465aed527907ee81e8fb56e22
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276665"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633709"
 ---
 # <a name="azure-storage-samples-using-v12-c-client-libraries"></a>使用 v12 C++ 客户端库的 Azure 存储示例
 
@@ -132,9 +132,9 @@ ms.locfileid: "106276665"
 
 要查看完整的 C++ 示例库，请转到：
 
-* [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-blobs/sample)
-* [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-datalake/sample)
-* [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-shares/sample)
+- [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-blobs/sample)
+- [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-datalake/sample)
+- [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-shares/sample)
 
 可以浏览并克隆每个库的 GitHub 存储库。
 
@@ -142,14 +142,14 @@ ms.locfileid: "106276665"
 
 如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [快速入门：Azure Blob 存储库 v12 - C++](../blobs/quickstart-blobs-c-plus-plus.md)
+- [快速入门：Azure Blob 存储库 v12 - C++](../blobs/quickstart-blobs-c-plus-plus.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关其他语言的示例的信息：
 
-* .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
-* Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
-* Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
-* JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
-* 所有其他语言：[Azure 存储示例](storage-samples.md)
+- .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
+- Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
+- Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
+- JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
+- 所有其他语言：[Azure 存储示例](storage-samples.md)

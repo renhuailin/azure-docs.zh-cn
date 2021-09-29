@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c738a5fb785c5b325835627f3b6f120dfb1a838
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: df9886b5d760450eeab41f230603aa47c3798da5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568659"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>教程：Azure Active Directory 与 Expiration Reminder 的集成
 
@@ -129,7 +129,7 @@ ms.locfileid: "111568659"
 
 * 直接转到 Expiration Reminder 登录 URL，从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Expiration Reminder”磁贴时，将会重定向到 Expiration Reminder 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Expiration Reminder”磁贴时，将会重定向到 Expiration Reminder 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

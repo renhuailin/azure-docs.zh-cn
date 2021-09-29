@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: f48f7cf9507afae31e3c36aef517aab7b7d77ccf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7408e5203d0b2bc05895ae8ba0403ab9718d1fb9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92515366"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>教程：Azure Active Directory 与 Predictix Ordering 集成
 
@@ -154,7 +154,7 @@ ms.locfileid: "92515366"
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -190,7 +190,7 @@ ms.locfileid: "92515366"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“Predictix Ordering”磁贴时，应会自动登录到设置了 SSO 的 Predictix Ordering 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
+在访问面板中选择“Predictix Ordering”磁贴时，应会自动登录到设置了 SSO 的 Predictix Ordering 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

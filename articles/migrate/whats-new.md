@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: 720b19ff16e72fade8bcdbd1b41304b2d87d1f2d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 99216bd26bfff76c4342f1533ff4ced070a69e92
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737660"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735967"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
@@ -21,7 +21,7 @@ ms.locfileid: "121737660"
 ## <a name="update-august-2021"></a>更新（2021 年 8 月）
 
 - 目前，对 VMware 环境中 IIS 服务器上运行的 ASP.NET Web 应用的大规模发现和评估功能以预览版提供。 [了解详细信息](concepts-azure-webapps-assessment-calculation.md)。 若要开始，请参阅[发现](tutorial-discover-vmware.md)和[评估](tutorial-assess-webapps.md)教程。
-- 在 Azure VM 评估建议中支持 Azure [超级磁盘](https://docs.microsoft.com/azure/virtual-machines/disks-types#ultra-disk)。
+- 在 Azure VM 评估建议中支持 Azure [超级磁盘](../virtual-machines/disks-types.md#ultra-disk)。
 - 正式发布了适用于 VMware 虚拟机的大规模软件清单和无代理依赖项分析。
 - Azure Migrate 设备更新：
     - 可对设备进行“诊断并解决”，帮助用户识别并自我评估设备的任何问题。

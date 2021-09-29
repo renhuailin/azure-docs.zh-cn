@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中配置共享映像库 | Microsoft Docs
+title: 配置共享映像库
 description: 了解如何在 Azure 开发测试实验室中配置共享映像库，从而使用户在创建实验室资源时能够从某个共享位置访问映像。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6275b8903df7e815e763b04198265060943e124
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98788415"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128634836"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置共享映像库
 开发测试实验室现在支持[共享映像库](../virtual-machines/shared-image-galleries.md)功能。 利用该功能，实验室用户在创建实验室资源时可以从某个共享位置访问映像。 该功能还有助于围绕自定义托管 VM 映像来构建结构和组织。 共享映像库功能支持：

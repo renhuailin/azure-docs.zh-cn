@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 65def18d91a6fd3f76439313cadcca07cf6bfc6b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 79668f9055d9e5715ed5deb04506c1c0b53e5563
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664059"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771434"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 密钥客户端库
 适用于 Java 的 Azure Key Vault 密钥客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。
@@ -155,9 +155,9 @@ import com.azure.security.keyvault.keys.models.KeyVaultKey;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
-本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。 有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。 有关详细信息，请参阅[托管标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-在下面的示例中，密钥保管库的名称将扩展为密钥保管库 URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 ['DefaultAzureCredential()'](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) 类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关详细信息，请参阅[默认 Azure 凭据身份验证](https://docs.microsoft.com/java/api/overview/azure/identity-readme)。
+在下面的示例中，密钥保管库的名称将扩展为密钥保管库 URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 ['DefaultAzureCredential()'](/java/api/com.azure.identity.defaultazurecredential) 类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关详细信息，请参阅[默认 Azure 凭据身份验证](/java/api/overview/azure/identity-readme)。
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");

@@ -10,12 +10,12 @@ ms.author: cchiedo
 author: Chrispine-Chiedo
 manager: CelesteDG
 ms.reviewer: stevebal
-ms.openlocfilehash: 32cee4ca0558166c44ff83c5ce9d61360e79e535
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 26d7e967ceb0208d6e852db9946ac0c260751dd3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975631"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732567"
 ---
 # <a name="frontline-worker-management"></a>一线员工管理
 
@@ -48,6 +48,6 @@ Azure Active Directory (Azure AD) 支持通过[“我的员工”门户](../role
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关委托的用户管理的详细信息，请参阅[“我的员工”用户文档](../user-help/my-staff-team-manager.md)。
+- 有关委托的用户管理的详细信息，请参阅[“我的员工”用户文档](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)。
 - 有关 SAP SuccessFactors 的入站用户预配，请参阅有关[配置 Sap SuccessFactors Active Directory 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)的教程。
 - 对于 Workday 的入站用户预配，请参阅有关[配置 Workday 以实现自动用户预配](../saas-apps/workday-inbound-tutorial.md)的教程。

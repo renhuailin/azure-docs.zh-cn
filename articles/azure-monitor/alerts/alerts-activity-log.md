@@ -4,12 +4,12 @@ description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 08/12/2021
-ms.openlocfilehash: 8f26806a08ca463350e54d5ce1319fe0323715e7
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 273f8b3a747685c250958e745ce6a37754859329
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220031"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744584"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -269,6 +269,5 @@ set [az monitor activity-log alert](/cli/azure/monitor/activity-log/alert) 下�
 
 - 了解[活动日志的 Webhook 架构](./activity-log-alerts-webhook.md)。
 - 阅读[活动日志概述](./activity-log-alerts.md)。
-- 详细了解[操作组](../platform/action-groups.md)。  
+- 详细了解[操作组](./action-groups.md)。  
 - 了解[服务运行状况通知](../../service-health/service-notifications.md)。
-

@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 08/25/2021
 ms.author: enewman
-ms.openlocfilehash: 80a64ce36697db2ac7bf941fdb40ab997e9f700f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 14e30572ab620b36730c725c7ac5a2e762947366
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110092"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755497"
 ---
 # <a name="set-up-a-lab-to-teach-r-on-linux"></a>在 Linux 上设置实验室来讲授 R
 
-[R](https://www.r-project.org/about.html) 是一种用于统计计算和图形的开源语言。  它运用于遗传学统计分析，进行自然语言处理来分析财务数据。  R 提供一种[交互式命令行](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line)体验。  [RStudio](https://www.rstudio.com/products/rstudio/) 是可用于 R 语言的交互式开发环境 (IDE)。  免费版提供代码编辑工具、集成调试体验和包开发工具。
+[R](https://www.r-project.org/about.html) 是一种用于统计计算和图形的开源语言。  它被运用于遗传学统计分析、自然语言处理和金融数据数据分析等领域。  R 提供了一种[交互式命令行](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line)体验。  [RStudio](https://www.rstudio.com/products/rstudio/) 是可用于 R 语言的交互式开发环境 (IDE)。  免费版提供代码编辑工具、集成调试体验和包开发工具。
 
-本文仅重点介绍 RStudio 和 R 用作需要使用统计计算的类的构建基块。  [深度学习](class-type-deep-learning-natural-language-processing.md)和 [Python 和 Jupyter Notebook](class-type-jupyter-notebook.md) 类别类型通过不同的方式设置 RStudio。  每篇文章都介绍了如何使用[适用于 Linux 的 Data Science Virtual Machine (Ubuntu)](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) 市场映像，该映像预先安装了许多[与数据科学相关的工具](/azure/machine-learning/data-science-virtual-machine/tools-included)，包括 RStudio。  
+本文仅重点介绍 RStudio 和 R，两者是需要使用统计计算的课程的基础。  [深度学习](class-type-deep-learning-natural-language-processing.md)以及 [Python 和 Jupyter Notebook](class-type-jupyter-notebook.md) 课程类型通过不同的方式设置 RStudio。  每篇文章都介绍了如何使用[适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) 市场映像，该映像预先安装了许多[与数据科学相关的工具](../machine-learning/data-science-virtual-machine/tools-included.md)，包括 RStudio。  
 
 ## <a name="lab-account-configuration"></a>实验室帐户配置
 
@@ -29,14 +29,14 @@ ms.locfileid: "123110092"
 | 实验室帐户设置 | Instructions |
 | -------------------- | ----- |
 | 市场映像 | Ubuntu Server 18.04 LTS |
-| [启用对等虚拟网络](how-to-connect-peer-virtual-network.md) | 在以下情况下启用该设置：<ul><li>类需要共享 R Server。</li><li>类需要你想要存储在外部（而不是学生 VM）上的大型数据文件。</li></ul> |
+| [启用对等虚拟网络](how-to-connect-peer-virtual-network.md) | 在以下情况下启用该设置：<ul><li>课程需要共享 R Server。</li><li>课程需要你想要存储在外部（而不是学生 VM）上的大型数据文件。</li></ul> |
 
 > [!IMPORTANT]
 > 如果选择启用对等虚拟网络，则必须在创建实验室之前完成此操作。
 
 ## <a name="lab-configuration"></a>实验室配置
 
-若要了解如何创建新的实验室和应用所需设置，请参阅[教程：设置教室实验室](tutorial-setup-classroom-lab.md)。  创建实验室时，请应用以下设置：
+有关创建新实验室和应用所需设置的说明，请参阅[教程：设置课堂实验室](tutorial-setup-classroom-lab.md)。  创建实验室时，请应用以下设置：
 
 | 实验室设置 | 值和描述 |
 | ------------ | ------------------ |
@@ -46,9 +46,9 @@ ms.locfileid: "123110092"
 
 ## <a name="external-resource-configuration"></a>外部资源配置
 
-某些类需要将文件（例如大型数据文件）存储在外部。  有关选项和设置说明，请参阅[在 Azure 实验室服务中使用外部文件存储](how-to-attach-external-storage.md)。
+某些课程需要将文件（例如大型数据文件）存储在外部。  有关选项和设置说明，请参阅[在 Azure 实验室服务中使用外部文件存储](how-to-attach-external-storage.md)。
 
-如果选择让学生拥有共享 R Server，则应在创建实验室之前设置服务器。  若要详细了解如何设置共享服务器，请参阅[如何在 Azure 实验室服务中创建具有共享资源的实验室](how-to-create-a-lab-with-shared-resource.md)。  若要了解如何创建 RStudio 服务器，请参阅[下载适用于 Debian 和 Ubuntu 的 RStudio 服务器](https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/)和[访问 RStudio 服务器开放源代码](https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started)。
+如果选择让学生拥有共享 R Server，则应在创建实验室之前设置服务器。  若要详细了解如何设置共享服务器，请参阅[如何在 Azure 实验室服务中创建具有共享资源的实验室](how-to-create-a-lab-with-shared-resource.md)。  有关创建 RStudio 服务器的说明，请参阅[下载适用于 Debian 和 Ubuntu 的 RStudio 服务器](https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/)和[访问 RStudio 服务器开源代码](https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started)。
 
 ## <a name="template-configuration"></a>模板配置
 

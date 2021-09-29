@@ -2,16 +2,14 @@
 title: Azure Functions Python 应用内存分析
 description: 了解如何分析 Python 应用的内存用量并确定内存瓶颈。
 ms.topic: how-to
-author: hazhzeng
-ms.author: hazeng
 ms.date: 3/22/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: f47451809a2fa2b7d22805e6415056f19c4c1d88
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: f894f369fa1efdb80160761e3c58cad937708b08
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258803"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737429"
 ---
 # <a name="profile-python-apps-memory-usage-in-azure-functions"></a>分析 Azure Functions Python 应用的内存用量
 

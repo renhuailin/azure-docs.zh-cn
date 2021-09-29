@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020, devx-track-azurecli
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 09/21/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, 情绪分析, 自然语言处理
-ms.openlocfilehash: 82e247d51351417a987205b2c65ea26be737ec5c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4cf8ddce1045209f6d5e45a2eaccbbf4d2f03afc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114473415"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677529"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -43,7 +43,7 @@ ms.locfileid: "114473415"
 
 * 在主机上安装 [Docker](https://docs.docker.com/)。 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 
     * 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。
-    * 应该基本了解 [Docker 概念](https://docs.docker.com/get-started/overview/)。 
+    * 你应该对 [Docker 概念](https://docs.docker.com/get-started/overview/)有基本的了解。 
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建使用免费 (F0) 或标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)的文本分析资源"  target="_blank">文本分析资源</a>。
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "114473415"
 
 [!INCLUDE [Host Computer requirements](../../../../includes/cognitive-services-containers-host-computer.md)]
 
-下表显示了可用文本分析容器的最小和建议规范。 每个 CPU 核心必须至少为 2.6 千兆赫 (GHz) 或更快。 还列出了允许的每秒事务数 (TPS)。
+下表显示了可用文本分析容器的最小规范和建议规范。 每个 CPU 核心必须至少为 2.6 千兆赫 (GHz) 或更快。 还列出了允许的每秒事务数 (TPS)。
 
 |  | 最小主机规格 | 推荐主机规格 | 最小 TPS | 最大 TPS|
 |---|---------|-------------|--|--|

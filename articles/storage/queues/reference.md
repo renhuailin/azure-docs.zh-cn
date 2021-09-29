@@ -1,19 +1,18 @@
 ---
 title: Azure 队列存储参考
 description: 查找 Azure 队列存储 API 参考、自述文件和客户端库包。
-author: twooley
-ms.author: twooley
-ms.reviewer: ripohane
+author: normesta
+ms.author: normesta
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 92b822da14b75dc27c71b3d9400409cb37554cf6
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 029ac2d0e71e41d1f2db684bad6f5f6288fc735d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276716"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606905"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure 队列存储参考
 

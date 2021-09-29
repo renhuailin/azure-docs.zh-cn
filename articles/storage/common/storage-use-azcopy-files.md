@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 91e771554c5ce1940243eaec4a0ea3cf965c3f8f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3e60815b2361f4ba14b6a40ded2734c748f8d4ae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468563"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633690"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据
 
 AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制文件。 本文包含适用于 Azure 文件存储的示例命令。
 
@@ -46,10 +46,10 @@ azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-
 本部分包含以下示例：
 
 > [!div class="checklist"]
-> * 上传文件
-> * 上传目录
-> * 上传目录的内容
-> * 上传特定的文件
+> - 上传文件
+> - 上传目录
+> - 上传目录的内容
+> - 上传特定的文件
 
 > [!TIP]
 > 可以通过使用可选标志来调整上传操作。 下面是几个示例。  
@@ -58,7 +58,7 @@ azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-
 > |---|---|
 > |将访问控制列表 (ACL) 与文件一起复制。|**--preserve-smb-permissions**=\[true\|false\]|
 > |将 SMB 属性信息与文件一起复制。|**--preserve-smb-info**=\[true\|false\]|
-> 
+>
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
 > [!NOTE]
@@ -159,9 +159,9 @@ azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myf
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `--recursive` 选项获取整个目录树，然后使用 `--include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
-#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在某个日期和时间之后修改的文件 
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在某个日期和时间之后修改的文件
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO 8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO 8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。
 
 **语法**
 
@@ -182,10 +182,10 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/m
 本部分包含以下示例：
 
 > [!div class="checklist"]
-> * 下载文件
-> * 下载目录
-> * 下载目录的内容
-> * 下载特定的文件
+> - 下载文件
+> - 下载目录
+> - 下载目录的内容
+> - 下载特定的文件
 
 > [!TIP]
 > 可以通过使用可选标志来调整下载操作。 下面是几个示例。
@@ -195,7 +195,7 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/m
 > |将访问控制列表 (ACL) 与文件一起复制。|**--preserve-smb-permissions**=\[true\|false\]|
 > |将 SMB 属性信息与文件一起复制。|**--preserve-smb-info**=\[true\|false\]|
 > |自动解压缩文件。|**--decompress**|
-> 
+>
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
 > [!NOTE]
@@ -284,9 +284,9 @@ azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myDirect
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `--recursive` 选项获取整个目录树，然后使用 `--include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
-#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下载在某个日期和时间之后修改的文件 
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下载在某个日期和时间之后修改的文件
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。
 
 **语法**
 
@@ -302,7 +302,7 @@ azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/*?sv=201
 
 #### <a name="download-from-a-share-snapshot"></a>从共享快照下载
 
-可以通过引用共享快照的 DateTime 值来下载特定版本的文件或目录。 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](../files/storage-snapshots-files.md)。 
+可以通过引用共享快照的 DateTime 值来下载特定版本的文件或目录。 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](../files/storage-snapshots-files.md)。
 
 **语法**
 
@@ -326,15 +326,15 @@ azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileSh
 
 AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-url) [API](/rest/api/storageservices/put-page-from-url)，因此，数据会直接在存储服务器之间复制。 这些复制操作不会占用计算机的网络带宽。 可以通过设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量的值来提高这些操作的吞吐量。 若要了解详细信息，请参阅[提高并发性](storage-use-azcopy-optimize.md#increase-concurrency)。
 
-还可以通过引用共享快照的 DateTime 值来复制文件的特定版本。 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](../files/storage-snapshots-files.md)。 
+还可以通过引用共享快照的 DateTime 值来复制文件的特定版本。 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](../files/storage-snapshots-files.md)。
 
 本部分包含以下示例：
 
 > [!div class="checklist"]
-> * 将文件复制到另一个存储帐户
-> * 将目录复制到另一个存储帐户
-> * 将文件共享复制到另一个存储帐户
-> * 将所有文件共享、目录和文件复制到另一个存储帐户
+> - 将文件复制到另一个存储帐户
+> - 将目录复制到另一个存储帐户
+> - 将文件共享复制到另一个存储帐户
+> - 将所有文件共享、目录和文件复制到另一个存储帐户
 
 > [!TIP]
 > 可以通过使用可选标志来调整复制操作。 下面是几个示例。
@@ -343,7 +343,7 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 > |---|---|
 > |将访问控制列表 (ACL) 与文件一起复制。|**--preserve-smb-permissions**=\[true\|false\]|
 > |将 SMB 属性信息与文件一起复制。|**--preserve-smb-info**=\[true\|false\]|
-> 
+>
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
 ### <a name="copy-a-file-to-another-storage-account"></a>将文件复制到另一个存储帐户
@@ -420,7 +420,7 @@ azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt
 
 ## <a name="synchronize-files"></a>同步文件
 
-可以将本地文件系统的内容与文件共享同步，也可以将文件共享的内容与另一个文件共享同步。 还可将一个文件共享中的目录内容，与位于另一个文件共享中的目录内容同步。 同步是单向的。 换言之，需要选择这两个终结点中哪一个是源，哪一个是目标。 同步也使用服务器到服务器 API。
+可以将本地文件系统的内容与文件共享同步，也可以将文件共享的内容与其他文件共享同步。 还可将一个文件共享中的目录内容，与位于另一个文件共享中的目录内容同步。 同步是单向的。 换言之，需要选择这两个终结点中哪一个是源，哪一个是目标。 同步也使用服务器到服务器 API。
 
 > [!NOTE]
 > 目前，只有不使用分层命名空间的帐户才支持此方案。 当前版本的 AzCopy 不会在 Azure 文件存储与 Blob 存储之间同步。
@@ -431,7 +431,7 @@ azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt
 
 - 如果将 `--delete-destination` 标志设置为 `true`，AzCopy 将删除文件且不提供提示。 若要在 AzCopy 删除文件之前显示提示，请将 `--delete-destination` 标志设置为 `prompt`。
 
-- 如果计划将 `--delete-destination` 标志设置为 `prompt` 或 `false`，请考虑使用 [copy](storage-ref-azcopy-copy.md) 命令而不是 [sync](storage-ref-azcopy-sync.md) 命令，并将 `--overwrite` 参数设置为 `ifSourceNewer`。 [copy](storage-ref-azcopy-copy.md) 命令占用的内存较少，且费用较低，因为在移动文件之前，复制操作无需为源或目标编制索引。 
+- 如果计划将 `--delete-destination` 标志设置为 `prompt` 或 `false`，请考虑使用 [copy](storage-ref-azcopy-copy.md) 命令而不是 [sync](storage-ref-azcopy-sync.md) 命令，并将 `--overwrite` 参数设置为 `ifSourceNewer`。 [copy](storage-ref-azcopy-copy.md) 命令占用的内存较少，且费用较低，因为在移动文件之前，复制操作无需为源或目标编制索引。
 
 - 运行 sync 命令的计算机应具有准确的系统时钟，因为上次修改时间对于确定是否应传输文件至关重要。 如果你的系统有严重的时钟偏差，请避免修改目标中的文件的时间与计划运行 sync 命令的时间太过接近。
 
@@ -444,12 +444,12 @@ azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt
 > |将 SMB 属性信息与文件一起复制。|**--preserve-smb-info**=\[true\|false\]|
 > |基于模式排除文件。|**--exclude-path**|
 > |指定你希望与同步相关的日志条目达到何种详细程度。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
-> 
+>
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-sync.md#options)。
 
 ### <a name="update-a-file-share-with-changes-to-a-local-file-system"></a>使用对本地文件系统所做的更改来更新文件共享
 
-在本例中，文件共享是目标，本地文件系统是源。 
+在这种情况下，文件共享是目标，本地文件系统是源。
 
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
@@ -466,7 +466,7 @@ azcopy sync 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myf
 
 ### <a name="update-a-local-file-system-with-changes-to-a-file-share"></a>使用对文件共享所做的更改来更新本地文件系统
 
-在本例中，本地文件系统是目标，文件共享是源。
+在这种情况下，本地文件系统是目标，文件共享是源。
 
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
@@ -521,7 +521,7 @@ azcopy sync 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirecto
 
 ```azcopy
 azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive --preserve-smb-permissions=true --preserve-smb-info=true
-``` 
+```
 
 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](../files/storage-snapshots-files.md)。
 
@@ -537,4 +537,3 @@ azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-0
 - [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
 - [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)
 - [使用日志文件对 Azure 存储中的 AzCopy V10 问题进行故障排除](storage-use-azcopy-configure.md)
-

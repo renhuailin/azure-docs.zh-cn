@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 42b25599bfd1ef40f8bb0bc1a954677f68dbf668
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 1c134fa24914ffc1cc2d51389cf6840986a74c58
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862868"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128661555"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>快速入门：使用 Azure 门户创建 Azure Database for MySQL 灵活服务器
 
@@ -24,7 +24,9 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 转到 [Azure 门户](https://portal.azure.com/)。 输入登录到门户所需的凭据。 默认视图是服务仪表板。
@@ -57,7 +59,7 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
     区域|离用户最近的区域| 最靠近用户的位置。|
     工作负荷类型| 开发 | 对于生产工作负荷，你可以选择“小”、“中”或“大”，具体取决于 [max_connections](concepts-server-parameters.md#max_connections) 要求|
     可用性区域| 无首选项 | 如果 Azure VM 中的应用程序、虚拟机规模集或 AKS 实例是在特定的可用性区域中预配的，则可以在同一可用性区域中指定你的灵活服务器，以归置应用程序和数据库，通过跨区域降低网络延迟来提高性能。|
-    高可用性| 未选中 | 对于生产服务器，在[区域冗余高可用性](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability#zone-redundant-high-availability)和[相同区域高可用性](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability#same-zone-high-availability)之间选择。 强烈建议此设置以实现业务连续性并防止 VM 故障|
+    高可用性| 未选中 | 对于生产服务器，在[区域冗余高可用性](concepts-high-availability.md#zone-redundant-ha-architecture)和[相同区域高可用性](concepts-high-availability.md#same-zone-ha-architecture)之间选择。 强烈建议此设置以实现业务连续性并防止 VM 故障|
     |备用可用性区域| 无首选项| 选择备用服务器区域位置，并与应用程序备用服务器共置，以防出现区域故障 |
     MySQL 版本|**5.7**| MySQL 主要版本。|
     管理员用户名 |mydemouser| 连接到服务器时需要使用的你自己的登录帐户。 管理员用户名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”     。|
@@ -132,7 +134,7 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl
 
 如果按照之前的命令连接到灵活服务器时看到以下错误消息，则说明未使用前面提到过的“允许从 Azure 中的任何 Azure 服务公共访问此服务器”设置防火墙规则，或该选项未保存。 请尝试重新设置防火墙，然后重试。
 
-错误 2002 (HY000)：无法连接到 <servername> 上的 MySQL 服务器 (115)
+错误 2002 (HY000)：无法连接到 \<servername\> 上的 MySQL 服务器 (115)
 
 ## <a name="clean-up-resources"></a>清理资源
 现在已在资源组中创建 Azure Database for MySQL 灵活服务器。 如果将来不再需要这些资源，可以通过删除资源组来删除它们，也可以直接删除 MySQL 服务器。 若要删除资源组，请完成以下步骤：

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 72220b33ea0d10b16ec5be94da6a26d91b9bfc1e
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 4b59b7d42b162a369862974c0599d972fa1957ee
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161836"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636679"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用存储分析日志排查延迟问题
 
@@ -80,18 +80,18 @@ ms.locfileid: "108161836"
 
 5. 在发生问题的时间范围内，以下值很重要：
 
-   * Operation-type = GetBlob
-   * request-status = SASNetworkError
-   * End-to-End-Latency-In-Ms = 8453
-   * Server-Latency-In-Ms = 391
+   - Operation-type = GetBlob
+   - request-status = SASNetworkError
+   - End-to-End-Latency-In-Ms = 8453
+   - Server-Latency-In-Ms = 391
 
    端到端延迟是使用以下公式计算的：
 
-   * 端到端延迟 = 服务器延迟 + 客户端延迟
+   - 端到端延迟 = 服务器延迟 + 客户端延迟
 
    使用日志条目计算客户端延迟：
 
-   * 客户端延迟 = 端到端延迟 – 服务器延迟
+   - 客户端延迟 = 端到端延迟 – 服务器延迟
 
         示例：8453 – 391 = 8062ms
 
@@ -110,58 +110,58 @@ ms.locfileid: "108161836"
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
-* 端到端延迟
-* 服务器延迟
-* 客户端延迟
+- 端到端延迟
+- 服务器延迟
+- 客户端延迟
 
 在 **RequestStatus = Success** 的 **GetBlob 操作** 中，如果在 **Client-Latency** 中花费了 **Max Time**，则这表明 Azure 存储在将数据写入到客户端时花费了大量时间。 此延迟表明客户端存在问题。
 
 **建议：**
 
-* 在客户端中调查代码。
-* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
+- 在客户端中调查代码。
+- 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
 
 ### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 操作：RequestStatus = (SAS)NetworkError
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
-* 端到端延迟
-* 服务器延迟
-* 客户端延迟
+- 端到端延迟
+- 服务器延迟
+- 客户端延迟
 
 在 **RequestStatus = (SAS)NetworkError** 的 **GetBlob 操作** 中，如果在 **Client-Latency** 中花费了 **Max Time**，则最常见的问题是客户端在存储服务超时之前断开连接。
 
 **建议：**
 
-* 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。
-* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
+- 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。
+- 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
 
 ### <a name="put-operation-requeststatus--success"></a>Put 操作：RequestStatus = Success
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
-* 端到端延迟
-* 服务器延迟
-* 客户端延迟
+- 端到端延迟
+- 服务器延迟
+- 客户端延迟
 
 在 **RequestStatus = Success** 的 **Put 操作** 中，如果在 **Client-Latency** 中花费了 **Max Time**，则这表明客户端在将数据发送到 Azure 存储时花费了更多时间。 此延迟表明客户端存在问题。
 
 **建议：**
 
-* 在客户端中调查代码。
-* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
+- 在客户端中调查代码。
+- 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
 
 ### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put 操作：RequestStatus = (SAS)NetworkError
 
 按“建议的步骤”部分中的步骤 5 所述检查以下值：
 
-* 端到端延迟
-* 服务器延迟
-* 客户端延迟
+- 端到端延迟
+- 服务器延迟
+- 客户端延迟
 
 在 **RequestStatus = (SAS)NetworkError** 的 **PutBlob 操作** 中，如果在 **Client-Latency** 中花费了 **Max Time**，则最常见的问题是客户端在存储服务超时之前断开连接。
 
 **建议：**
 
-* 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。
-* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。
+- 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。
+- 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。

@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 5d06d55e199e0c5f2f1fcda9f1a9d121ed1726e5
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: d01e1ca8d3eb0ca2e345d42118ad5f1463c3139f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821597"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750463"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>将映射数据流参数化
 
@@ -33,17 +33,17 @@ Azure 数据工厂和 Synapse 管道中的映射数据流支持使用参数。 �
 
 若要将参数添加到数据流，请单击数据流画布的空白部分，查看常规属性。 在设置窗格中，你将看到名为“参数”的选项卡。 选择“新建”，生成新参数。 对于每个参数，必须分配名称，选择类型，然后根据需要设置默认值。
 
-![创建数据流参数](media/data-flow/create-params.png "创建数据流参数")
+:::image type="content" source="media/data-flow/create-params.png" alt-text="创建数据流参数":::
 
 ## <a name="use-parameters-in-a-mapping-data-flow"></a>在映射数据流中使用参数 
 
 可以在任意数据流表达式中引用参数。 参数以 $ 开头，并且不可改变。 可以在“参数”选项卡下发现表达式生成器内的可用参数的列表。
 
-![屏幕截图显示了“参数”选项卡中的可用参数。](media/data-flow/parameter-expression.png "数据流参数表达式")
+:::image type="content" source="media/data-flow/parameter-expression.png" alt-text="屏幕截图显示了“参数”选项卡中的可用参数。":::
 
 可以通过选择“新建参数”并指定名称和类型来快速添加更多参数。
 
-![屏幕截图显示了“参数”选项卡中的参数以及新添加的参数。](media/data-flow/new-parameter-expression.png "数据流参数表达式")
+:::image type="content" source="media/data-flow/new-parameter-expression.png" alt-text="屏幕截图显示了“参数”选项卡中的参数以及新添加的参数。":::
 
 ## <a name="assign-parameter-values-from-a-pipeline"></a>从管道分配参数值
 
@@ -51,13 +51,13 @@ Azure 数据工厂和 Synapse 管道中的映射数据流支持使用参数。 �
 
 分配参数值时，可以根据 Spark 类型使用[管道表达式语言](control-flow-expression-language-functions.md)或[数据流表达式语言](data-flow-expression-functions.md)。 所有映射数据流都可以具有管道和数据流表达式参数的任意组合。
 
-![屏幕截图显示了“参数”选项卡，其中为 myparam 的值选择了“数据流表达式”。](media/data-flow/parameter-assign.png "设置数据流参数")
+:::image type="content" source="media/data-flow/parameter-assign.png" alt-text="屏幕截图显示了“参数”选项卡，其中为 myparam 的值选择了“数据流表达式”。":::
 
 ### <a name="pipeline-expression-parameters"></a>管道表达式参数
 
 使用管道表达式参数，可以引用系统变量、函数、管道参数以及类似于其他管道活动的变量。 单击“管道表达式”可打开侧导航栏，可以通过该导航栏使用表达式生成器输入表达式。
 
-![屏幕截图显示了表达式生成器窗格。](media/data-flow/parameter-pipeline.png "设置数据流参数")
+:::image type="content" source="media/data-flow/parameter-pipeline.png" alt-text="屏幕截图显示了表达式生成器窗格。":::
 
 引用管道参数时，系统将计算该参数的值，然后在数据流表达式语言中使用其值。 管道表达式类型不需要与数据流参数类型匹配。 
 
@@ -65,7 +65,7 @@ Azure 数据工厂和 Synapse 管道中的映射数据流支持使用参数。 �
 
 分配字符串类型的管道表达式参数时，默认情况下将添加引号，并将值作为文本评估。 若要将参数值作为数据流表达式读取，请勾选参数旁的表达式框。
 
-![屏幕截图显示了“数据流参数”窗格，其中为参数选择了“表达式”。](media/data-flow/string-parameter.png "设置数据流参数")
+:::image type="content" source="media/data-flow/string-parameter.png" alt-text="屏幕截图显示了“数据流参数”窗格，其中为参数选择了“表达式”。":::
 
 对于数据流参数，`stringParam` 引用值为 `upper(column1)` 的管道参数。 
 
@@ -76,7 +76,7 @@ Azure 数据工厂和 Synapse 管道中的映射数据流支持使用参数。 �
 
 在管道表达式语言中，`pipeline().TriggerTime` 等系统变量和 `utcNow()` 等函数以“yyyy-MM-dd\'T\'HH:mm:ss.SSSSSSZ”格式的字符串形式返回时间戳。 若要将其转换为时间戳类型的数据流参数，请使用字符串内插在 `toTimestamp()` 函数中加入所需时间戳。 例如，若要将管道触发时间转换为数据流参数，可以使用 `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`。 
 
-![屏幕截图显示了可在其中输入触发时间的“参数”选项卡。](media/data-flow/parameter-timestamp.png "设置数据流参数")
+:::image type="content" source="media/data-flow/parameter-timestamp.png" alt-text="屏幕截图显示了可在其中输入触发时间的“参数”选项卡。":::
 
 > [!NOTE]
 > 数据流最多支持表示 3 毫秒的数字。 `left()` 函数用于裁剪超出部分的数字。
@@ -85,15 +85,15 @@ Azure 数据工厂和 Synapse 管道中的映射数据流支持使用参数。 �
 
 假设整数参数 `intParam` 引用字符串类型的管道参数 `@pipeline.parameters.pipelineParam`。 
 
-![屏幕截图显示了“参数”选项卡，其中包含名为 stringParam 和 intParam 的参数。](media/data-flow/parameter-pipeline-2.png "设置数据流参数")
+:::image type="content" source="media/data-flow/parameter-pipeline-2.png" alt-text="屏幕截图显示了“参数”选项卡，其中包含名为 stringParam 和 intParam 的参数。":::
 
 在运行时为 `@pipeline.parameters.pipelineParam` 分配值 `abs(1)`。
 
-![屏幕截图显示了“参数”选项卡，其中选择了 a b s (1) 的值。](media/data-flow/parameter-pipeline-4.png "设置数据流参数")
+:::image type="content" source="media/data-flow/parameter-pipeline-4.png" alt-text="屏幕截图显示了“参数”选项卡，其中选择了 a b s (1) 的值。":::
 
 在派生列等表达式中引用 `$intParam` 时，它将计算 `abs(1)` 的结果，并返回 `1`。 
 
-![屏幕截图显示了列值。](media/data-flow/parameter-pipeline-3.png "设置数据流参数")
+:::image type="content" source="media/data-flow/parameter-pipeline-3.png" alt-text="屏幕截图显示了列值。":::
 
 ### <a name="data-flow-expression-parameters"></a>数据流表达式参数
 
@@ -109,7 +109,7 @@ Azure 数据工厂和 Synapse 管道中的映射数据流支持使用参数。 �
 
 例如，如果要基于参数 `columnName` 映射字符串列，可以添加派生列转换 `toString(byName($columnName))`。
 
-![以参数的形式传入列名](media/data-flow/parameterize-column-name.png "以参数的形式传入列名")
+:::image type="content" source="media/data-flow/parameterize-column-name.png" alt-text="以参数的形式传入列名":::
 
 ## <a name="next-steps"></a>后续步骤
 * [执行数据流活动](control-flow-execute-data-flow-activity.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 9562c81fcd159d61e36aa77f01fa5d5f09f71b8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12410dd0ece85a6ecec8d753abe4359afda1a81f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460421"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>教程：Azure Active Directory 与 iDiD Manager 的集成
 
@@ -105,7 +105,7 @@ ms.locfileid: "92460421"
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://idid2.fi/saml/login/<domain>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://idid2.fi/saml/login/<domain>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取该值，请与 [iDiD Manager 客户端支持团队](mailto:support@idid.fi)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -177,7 +177,7 @@ ms.locfileid: "92460421"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 iDiD Manager 磁贴时，应当会自动登录到你为其设置了 SSO 的 iDiD Manager。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 iDiD Manager 磁贴时，应当会自动登录到你为其设置了 SSO 的 iDiD Manager。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

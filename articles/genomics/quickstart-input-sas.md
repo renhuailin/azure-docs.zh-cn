@@ -9,12 +9,12 @@ ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 660f6ffe286e13e46f367c761c596ed0ee51da24
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 6d6a3833ccf9a30f59da0931f497da1d0490b9a8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259839"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736887"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS 而非存储帐户密钥将工作流提交到 Microsoft 基因组学 
 
@@ -51,7 +51,7 @@ ms.locfileid: "123259839"
 
 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)是一项工具，用于管理已经存储在 Azure 存储中的资源。  可在[此处](../vs-azure-tools-storage-manage-with-storage-explorer.md)详细了解如何使用 Azure 存储资源管理器。
 
-输入文件的 SAS 的作用域应局限于特定输入文件 (Blob)。 若要创建 SAS 令牌，请遵循[这些说明](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。 创建 SAS 之后，包含查询字符串的完整 URL 以及查询字符串本身都已提供，可以从屏幕复制。
+输入文件的 SAS 的作用域应局限于特定输入文件 (Blob)。 若要创建 SAS 令牌，请遵循[这些说明](../storage/blobs/quickstart-storage-explorer.md)。 创建 SAS 之后，包含查询字符串的完整 URL 以及查询字符串本身都已提供，可以从屏幕复制。
 
  ![基因组学 SAS 存储资源管理器](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "基因组学 SAS 存储资源管理器")
 

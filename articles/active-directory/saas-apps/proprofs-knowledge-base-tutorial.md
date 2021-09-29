@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 9747abb5b614c5a59b56159399c3386a831b3337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 614d4c91b714a43549ccd19b300d278114cbfe88
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735044"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775866"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-proprofs-knowledge-base"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ProProfs 知识库的集成
 
@@ -124,7 +124,7 @@ ms.locfileid: "98735044"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应当会自动登录到为其设置了 SSO 的 ProProfs 知识库
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“ProProfs 知识库”磁贴时，你应当会自动登录到为其设置了 SSO 的 ProProfs 知识库。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“ProProfs 知识库”磁贴时，你应当会自动登录到为其设置了 SSO 的 ProProfs 知识库。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

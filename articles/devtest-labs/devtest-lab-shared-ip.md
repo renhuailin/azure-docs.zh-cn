@@ -1,14 +1,14 @@
 ---
-title: 了解 Azure 开发测试实验室中的共享的 IP 地址 |Microsoft 文档
+title: 了解共享的 IP 地址
 description: 了解 Azure 开发测试实验室如何使用共享 IP 地址以最大程度地减少访问实验室 VM 所需的公共 IP 地址。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 36a5da1b2b6252d0adb480a622c461b33425e675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3d5afd69b898a4f17440a81fc41a065c1c79a3e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85484088"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659771"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>了解 Azure 开发测试实验室中的共享的 IP 地址
 
@@ -44,8 +44,3 @@ Azure 开发测试实验室允许实验室 VM 共享相同的 IP 地址，以最
 
 * [在 Azure 开发测试实验室中定义实验室策略](devtest-lab-set-lab-policy.md)
 * [在 Azure 开发测试实验室中配置虚拟网络](devtest-lab-configure-vnet.md)
-
-
-
-
-

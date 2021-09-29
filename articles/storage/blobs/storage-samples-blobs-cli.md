@@ -1,19 +1,19 @@
 ---
 title: 适用于 Blob 存储的 Azure CLI 示例 | Microsoft Docs
 description: 查看有关使用 Azure Blob 存储的 Azure CLI 示例的链接，例如创建存储帐户、删除具有特定前缀的容器等。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 06/13/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4b18d332132bcaa8b3297179c7992eb9cc2f88d8
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 123939b166fd972152adb0b8b2e4b49fecf95fe1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279640"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630672"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>适用于 Azure Blob 存储的 Azure CLI 示例
 

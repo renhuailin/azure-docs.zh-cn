@@ -1,14 +1,14 @@
 ---
 title: CMMC 级别 3 蓝图示例
 description: CMMC 级别 3 蓝图示例概述。 此蓝图示例可帮助客户评估特定控制要求。
-ms.date: 03/24/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: df3dac17ce91757640f5b437f5915d41c901afc4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2925acf75ada0bd950ca52e3fe63b9c97b5e34ad
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108757630"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632322"
 ---
 # <a name="cmmc-level-3-blueprint-sample"></a>CMMC 级别 3 蓝图示例
 
@@ -280,8 +280,8 @@ CMMC 级别 3 蓝图示例使用 [Azure Policy](../../policy/overview.md) 提供
 |CMMC 级别 3|策略分配|从策略评估中排除的命名空间: Kubernetes 群集 Pod 应只使用已批准的主机网络和端口范围|要从策略评估中排除的 Kubernetes 命名空间的列表。|
 |CMMC 级别 3|策略分配|适用于应用服务的最新 Java 版本|应用服务支持的最新 Java 版本|
 |CMMC 级别 3|策略分配|适用于应用服务的最新 Linux Python 版本|应用服务支持的最新 Python 版本|
-|CMMC 级别 3|策略分配|可选: 在审核 Log Analytics 代理部署时，需要添加到范围的安装了受支持 Linux OS 的 VM 映像的列表|示例值: "/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage"|
-|CMMC 级别 3|策略分配|可选: 在审核 Log Analytics 代理部署时，需要添加到范围的安装了受支持 Windows OS 的 VM 映像的列表|示例值: "/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage"|
+|CMMC 级别 3|策略分配|可选: 在审核 Log Analytics 代理部署时，需要添加到范围的安装了受支持 Linux OS 的 VM 映像的列表|示例值： `/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage`|
+|CMMC 级别 3|策略分配|可选: 在审核 Log Analytics 代理部署时，需要添加到范围的安装了受支持 Windows OS 的 VM 映像的列表|示例值： `/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage`|
 |CMMC 级别 3|策略分配|应启用网络观察程序的区域的列表|审核是否没有为区域启用网络观察程序。|
 |CMMC 级别 3|策略分配|应启用诊断日志的资源类型列表||
 |CMMC 级别 3|策略分配|Pod 可以在主机网络命名空间中使用的允许主机端口范围内的最大值。|Pod 可以在主机网络命名空间中使用的允许主机端口范围内的最大值。|

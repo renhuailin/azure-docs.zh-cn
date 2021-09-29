@@ -1,14 +1,14 @@
 ---
 title: 部署澳大利亚政府 ISM PROTECTED 蓝图示例
 description: 澳大利亚政府 ISM PROTECTED 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 04/02/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 2293ea808452066b6fb0f09d3d92d3ffccc0b054
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 630453b0673d07ffb43380a26af9871d394c0584
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763192"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632246"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>部署澳大利亚政府 ISM PROTECTED 蓝图示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "108763192"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
 
 1. 在“其他示例”下找到“ISM PROTECTED”蓝图示例，然后选择“使用此示例”。
 

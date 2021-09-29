@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 2ba417782fcaa5fedc5696546af60623696387e7
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a9605f6a6240fcaad29b30c03138f31e1472ba3f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694299"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734866"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
 
@@ -118,7 +118,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解如何：
 
-- [创建 PowerShell Runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md)。
+- [创建 PowerShell Runbook](../automation/learn/powershell-runbook-managed-identity.md)。
 - [使用混合 Runbook 辅助角色管理本地资源](../automation/automation-hybrid-runbook-worker.md)。
 - [使用 Azure 自动化 DSC](../automation/automation-dsc-getting-started.md)。
 

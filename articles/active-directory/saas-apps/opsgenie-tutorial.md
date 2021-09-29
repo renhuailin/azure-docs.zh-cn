@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ab1f9ee6095dfc0f708ec33622aad6f70fcae65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e35ed7aaabbb81c274c4d92ad7e83dcd9f3bac77
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728502"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738148"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>教程：Azure Active Directory 单一登录 (SSO) 与 OpsGenie 的集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "98728502"
 
 1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://app.opsginie.com/auth/saml/<UNIQUEID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://app.opsginie.com/auth/saml/<UNIQUEID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.opsginie.com/auth/saml?id=<UNIQUEID>`
 
@@ -187,7 +187,7 @@ ms.locfileid: "98728502"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 OpsGenie
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 OpsGenie 磁贴时，你应当会自动登录到为其设置了 SSO 的 OpsGenie。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 OpsGenie 磁贴时，你应当会自动登录到为其设置了 SSO 的 OpsGenie。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

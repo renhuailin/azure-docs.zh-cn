@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c44336e41c173cffad28a52bed3c29ec13df497f
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: 65d877bce0bdcab35248d4b9a41b92f46c132903
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112323153"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630710"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全传输以确保安全连接
 
@@ -30,8 +30,8 @@ Azure Policy 提供内置策略，以确保存储帐户需要安全传输。 有
 
 > [!NOTE]
 > 由于 Azure 存储对自定义域名不支持 HTTPS，因此使用自定义域名时不应用此选项。
-> 
-> 此安全传输设置不适用于 TCP。 在 Azure Blob 存储中使用 TCP（不安全）通过 NFS 3.0 协议支持进行连接会成功。  
+>
+> 此安全传输设置不适用于 TCP。 在 Azure Blob 存储中使用 TCP（不安全）通过 NFS 3.0 协议支持进行连接会成功。
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>需要在 Azure 门户中进行安全传输
 
@@ -56,13 +56,13 @@ Azure Policy 提供内置策略，以确保存储帐户需要安全传输。 有
 
 若要以编程方式要求安全传输，请在存储帐户上设置“enableHttpsTrafficOnly”属性为“真” 。 可以使用存储资源提供程序 REST API、客户端库或工具来设置此属性：
 
-* [REST API](/rest/api/storagerp/storageaccounts)
-* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
-* [CLI](/cli/azure/storage/account)
-* [NodeJS](https://www.npmjs.com/package/@azure/arm-storage/)
-* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
-* [Python SDK](https://pypi.org/project/azure-mgmt-storage)
-* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
+- [REST API](/rest/api/storagerp/storageaccounts)
+- [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
+- [CLI](/cli/azure/storage/account)
+- [NodeJS](https://www.npmjs.com/package/@azure/arm-storage/)
+- [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
+- [Python SDK](https://pypi.org/project/azure-mgmt-storage)
+- [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
 ## <a name="require-secure-transfer-with-powershell"></a>要求通过 PowerShell 进行安全传输
 

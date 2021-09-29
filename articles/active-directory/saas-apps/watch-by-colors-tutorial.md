@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
-ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79a5ab92cbc2a61ef0fb90e4072dd52762f4bb0e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92636776"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124731590"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Watch by Colors 集成
 
@@ -163,7 +163,7 @@ ms.locfileid: "92636776"
 
     b. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 
-    c. 在“电子邮件”文本框中，输入用户的电子邮件，如 `B.Simon@contoso.com`。 
+    c. 在“电子邮件”文本框中，输入用户的电子邮件，如 `B.Simon@contoso.com`。
 
     d. 在“密码”文本框中，输入密码  。
 
@@ -175,7 +175,7 @@ ms.locfileid: "92636776"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Watch by Colors 磁贴时，应当会自动登录到设置了 SSO 的 Watch by Colors。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Watch by Colors 磁贴时，应当会自动登录到设置了 SSO 的 Watch by Colors。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

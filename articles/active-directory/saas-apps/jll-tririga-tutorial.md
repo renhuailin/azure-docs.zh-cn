@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
-ms.openlocfilehash: b33db1b766d99aeb8d0a08f6396b5384948f118e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ece13e809f83188b5907eea2a6b66bdd02291fce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736863"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jll-tririga"></a>教程：Azure Active Directory 与 JLL TRIRIGA 的单一登录 (SSO) 集成
 
@@ -140,7 +140,7 @@ ms.locfileid: "98736863"
 
 * 在 Azure 门户中单击“测试此应用程序”，随后应会自动登录到为其设置了 SSO 的 JLL TRIRIGA
 
-* 可以使用 Microsoft 访问面板。 在访问面板中单击 JLL TRIRIGA 磁贴时，应会自动登录到为其设置了 SSO 的 JLL TRIRIGA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 可以使用 Microsoft 访问面板。 在访问面板中单击 JLL TRIRIGA 磁贴时，应会自动登录到为其设置了 SSO 的 JLL TRIRIGA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤

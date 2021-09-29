@@ -1,19 +1,15 @@
 ---
 title: 包含逻辑应用和 Power Automate 的 Azure 视频分析器媒体版（以前称为视频索引器）连接器教程。
 description: 本教程介绍如何使用包含逻辑应用和 Power Automate 的 Azure 视频分析器媒体版（以前称为视频索引器）连接器来解锁新的体验并创造盈利机会。
-author: anzaman
-manager: johndeu
 ms.author: alzam
 ms.topic: tutorial
-ms.service: azure-video-analyzer
-ms.subservice: azure-video-analyzer-media
 ms.date: 09/21/2020
-ms.openlocfilehash: e6f312f92fa910677f979edb31985d5c6698fa47
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 3650d82ec5d35b6b4e9826fd7a9d8579e40bb543
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119553"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626145"
 ---
 # <a name="tutorial-use-video-analyzer-for-media-with-logic-app-and-power-automate"></a>教程：使用包含逻辑应用和 Power Automate 的 Azure 视频分析器媒体版
 

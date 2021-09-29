@@ -7,16 +7,18 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.openlocfilehash: 2058fcade3375f680f616374ba8dee73a4e72dbc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f426c04793c754619cd40bfdfcb4a7b9fc7d904
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637906"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059903"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>分析映射数据流中的转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 使用“分析”转换分析数据中文档形式的列。 可以分析的嵌入文档的当前支持类型是 JSON、XML 和带分隔符的文本。
 
@@ -26,7 +28,7 @@ ms.locfileid: "122637906"
 
 在分析转换配置面板中，首先选择要以内联方式分析的列中包含的数据类型。 分析转换还包含以下配置设置。
 
-![分析设置](media/data-flow/data-flow-parse-1.png "分析")
+:::image type="content" source="media/data-flow/data-flow-parse-1.png" alt-text="分析设置":::
 
 ### <a name="column"></a>列
 
@@ -51,11 +53,11 @@ ms.locfileid: "122637906"
 
 你将在此处根据将写入单个列的分析配置目标输出架构。
 
-![分析示例](media/data-flow/data-flow-parse-2.png "分析示例")
+:::image type="content" source="media/data-flow/data-flow-parse-2.png" alt-text="分析示例":::
 
 在此示例中，我们定义了对传入字段“jsonString”的分析，该字段是纯文本，但格式为 JSON 结构。 我们将使用此架构将分析结果以 JSON 格式存储在一个名为“json”的新列中：
 
-```(trade as boolean, customers as string[])```
+`(trade as boolean, customers as string[])`
 
 请参阅检查选项卡和数据预览，验证是否正确映射输出。
 

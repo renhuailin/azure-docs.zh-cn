@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 6fcc7ab20bfc347fd9cf8d4ce2a7e0e878741811
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 71a7e6177018b2ec5c54c93ec786fa8a3fb1ab37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478487"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768227"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pandadoc"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PandaDoc 集成
 
@@ -148,7 +148,7 @@ ms.locfileid: "110478487"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 PandaDoc。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的 PandaDoc 磁贴时，如果是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 PandaDoc。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的 PandaDoc 磁贴时，如果是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 PandaDoc。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

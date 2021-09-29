@@ -1,17 +1,17 @@
 ---
 title: 将数据从事件中心捕获到 Azure Data Lake Storage Gen1
 description: 了解如何使用 Azure Data Lake Storage Gen1 捕获 Azure 事件中心收到的数据。 首先验证先决条件。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
-ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 61677d61ac028f6ae6ce64db665fdc8398d63fca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91578234"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656961"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
 
@@ -48,7 +48,7 @@ ms.locfileid: "91578234"
 
     ![“访问”页的屏幕截图，标出了“添加”选项、“选择用户或组”选项和“Microsoft Eventhubs”选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为 Data Lake Storage Gen1 根目录分配权限")
     
-    单击“选择”。
+    单击“选择”  。
 
     c. 在“分配权限”下，单击“选择权限”。 将“权限”设为“执行”。 将“添加到”设为“此文件夹和所有子文件夹”。 将“添加为”设为“一个访问权限入口和一个默认权限入口”。
 
@@ -69,7 +69,7 @@ ms.locfileid: "91578234"
 
     ![数据资源管理器“访问”页的屏幕截图，标出了“添加”选项、“选择用户或组”选项和“Microsoft Eventhubs”选项。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为 Data Lake Storage Gen1 文件夹分配权限")
     
-    单击“选择”。
+    单击“选择”  。
 
     c. 在“分配权限”下，单击“选择权限”。 将“权限”设为“读取”、“写入”和“执行”。 将“添加到”设为“此文件夹和所有子文件夹”。 最后，将“添加为”设为“一个访问权限入口和一个默认权限入口”。
 

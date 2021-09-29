@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b0cb321abdd3aa1221e62a1efc953943d00afa0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0e9d1ef18a0cd7852227e50b116ec6ff9c1b1250
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541452"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732706"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -173,7 +173,7 @@ ms.locfileid: "123541452"
 
 * [SSPR 和 MFA 使用情况和见解报告](./howto-authentication-methods-activity.md)
 * [如何成功推出 SSPR？](howto-sspr-deployment.md)
-* [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
+* [重置或更改密码](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)。
 * [注册自助服务密码重置](https://support.microsoft.com/account-billing/register-the-password-reset-verification-method-for-a-work-or-school-account-47a55d4a-05b0-4f67-9a63-f39a43dbe20a)。
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)

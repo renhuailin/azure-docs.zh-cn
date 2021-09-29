@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 115f792c82f2e3eea42636c788c3461f7cc55f77
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 8d807de1eac29b233ad4fae3a4924c6238b33fd5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014604"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605841"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码身份验证选项
 
@@ -60,7 +60,7 @@ Windows Hello 企业版[规划指南](/windows/security/identity-protection/hell
 
 ![通过 Microsoft Authenticator 应用登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Authenticator 应用可将任何 iOS 或 Android 手机变成强、无密码凭据。 用户可以通过以下方式登录到任何平台或浏览器：向其手机发送通知，将屏幕上显示的数字与其手机上的相应数字匹配，然后使用其生物识别（触摸或人脸）或 PIN 进行确认。 有关安装的详细信息，请参阅[下载并安装 Microsoft Authenticator 应用](../user-help/user-help-auth-app-download-install.md)。
+Authenticator 应用可将任何 iOS 或 Android 手机变成强、无密码凭据。 用户可以通过以下方式登录到任何平台或浏览器：向其手机发送通知，将屏幕上显示的数字与其手机上的相应数字匹配，然后使用其生物识别（触摸或人脸）或 PIN 进行确认。 有关安装的详细信息，请参阅[下载并安装 Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)。
 
 使用 Authenticator 应用的无密码身份验证遵循与 Windows Hello 企业版相同的基本模式。 这会稍微复杂一些，因为需要识别用户，以便 Azure AD 可以找到正在使用的 Microsoft Authenticator 应用版本：
 
@@ -145,7 +145,7 @@ FIDO2 安全密钥可用于登录到其 Azure AD 或已建立混合 Azure AD 联
 | Kensington                | ![y]              | ![y]| ![n]| ![n]| ![n]           | https://www.kensington.com/solutions/product-category/why-biometrics/                               |
 | KONA I                    | ![y]              | ![n]| ![y]| ![y]| ![n]           | https://konai.com/business/security/fido                                                            |
 | Nymi                      | ![y]              | ![n]| ![y]| ![n]| ![n]           | https://www.nymi.com/product                                                                      | 
-| OneSpan Inc.              | ![y]              | ![n]| ![n]| ![y]| ![n]           | https://www.onespan.com/products/fido                                                               |
+| OneSpan Inc.              | ![n]              | ![y]| ![n]| ![y]| ![n]           | https://www.onespan.com/products/fido                                                               |
 | Thales Group              | ![n]              | ![y]| ![y]| ![n]| ![n]           | https://cpl.thalesgroup.com/access-management/authenticators/fido-devices                           |
 | Thetis                    | ![y]              | ![y]| ![y]| ![y]| ![n]           | https://thetis.io/collections/fido2                                                                 |
 | Token2 Switzerland        | ![y]              | ![y]| ![y]| ![n]| ![n]           | https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key               |
@@ -203,7 +203,7 @@ FIDO2 安全密钥可用于登录到其 Azure AD 或已建立混合 Azure AD 联
 
 使用下表选择支持你的需求和用户的方法。
 
-|角色|场景|环境|无密码技术|
+|角色|方案|环境|无密码技术|
 |:-|:-|:-|:-|
 |**管理员**|安全访问设备以执行管理任务|已分配 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
 |**管理员**|非 Windows 设备上的管理任务| 移动或非 Windows 设备|使用 Microsoft Authenticator 应用进行无密码登录|

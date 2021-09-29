@@ -1,19 +1,19 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - JavaScript
 description: 本快速入门介绍如何使用适用于 JavaScript 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 09/17/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 58c956b48c26e4614dd15cd8c4bca657409d2678
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 610e955a948af4e41a32741b7132cdadb322bbab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123467622"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609225"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob
 
@@ -21,10 +21,10 @@ ms.locfileid: "123467622"
 
 其他资源：
 
-* [API 参考文档](/javascript/api/@azure/storage-blob)
-* [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
-* [包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-blob)
-* [示例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+- [API 参考文档](/javascript/api/@azure/storage-blob)
+- [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+- [包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-blob)
+- [示例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -113,9 +113,9 @@ npm install
 
 Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。 Blob 存储提供了三种类型的资源：
 
-* 存储帐户
-* 存储帐户中的容器
-* 容器中的 blob
+- 存储帐户
+- 存储帐户中的容器
+- 容器中的 blob
 
 以下图示显示了这些资源之间的关系。
 
@@ -123,20 +123,20 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 JavaScript 类与这些资源进行交互：
 
-* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
-* [ContainerClient](/javascript/api/@azure/storage-blob/containerclient)：`ContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
-* [BlobClient](/javascript/api/@azure/storage-blob/blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
+- [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
+- [ContainerClient](/javascript/api/@azure/storage-blob/containerclient)：`ContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
+- [BlobClient](/javascript/api/@azure/storage-blob/blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
 
 ## <a name="code-examples"></a>代码示例
 
 这些示例代码片段演示如何使用适用于 JavaScript 的 Azure Blob 存储客户端库执行以下步骤：
 
-* [获取连接字符串](#get-the-connection-string)
-* [创建容器](#create-a-container)
-* [将 blob 上传到容器中](#upload-blobs-to-a-container)
-* [列出容器中的 blob](#list-the-blobs-in-a-container)
-* [下载 blob](#download-blobs)
-* [删除容器](#delete-a-container)
+- [获取连接字符串](#get-the-connection-string)
+- [创建容器](#create-a-container)
+- [将 blob 上传到容器中](#upload-blobs-to-a-container)
+- [列出容器中的 blob](#list-the-blobs-in-a-container)
+- [下载 blob](#download-blobs)
+- [删除容器](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>获取连接字符串
 
@@ -312,6 +312,6 @@ Done
 > [!div class="nextstepaction"]
 > [Azure for JavaScript 开发人员中心](/azure/developer/javascript/)
 
-* 若要了解如何部署使用 Azure Blob 存储的 Web 应用，请参阅[教程：使用 Azure 存储将映像数据上传到云中](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)
-* 若要查看 Blob 存储示例应用，请继续学习 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
-* 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure Blob 存储客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。
+- 若要了解如何部署使用 Azure Blob 存储的 Web 应用，请参阅[教程：使用 Azure 存储将映像数据上传到云中](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)
+- 若要查看 Blob 存储示例应用，请继续学习 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
+- 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure Blob 存储客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。

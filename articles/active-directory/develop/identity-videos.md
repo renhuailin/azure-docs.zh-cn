@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.author: marsma
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: celested
-ms.openlocfilehash: f9fac943ee19334eb241a6e0ee8601a8a0fc797c
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 18a097e0677aa97a6af56d1ed1930355354c276c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419064"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615332"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft 标识平台视频
 
@@ -208,122 +208,122 @@ ___
         >[!Video https://www.youtube.com/embed/bNlcFuIo3r8]
     :::column-end:::
     :::column:::
-        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank">Microsoft Graph 和 Microsoft 身份验证库 (MSAL)</a>
-    :::column-end:::
-    :::column:::
-        >[!Video https://www.youtube.com/embed/apbbx2n4tnU]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
         <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank">什么是 MSAL 库系列？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/yLVEBU9Z96Q]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank">范围说明</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank">什么是中转站</a>
     :::column-end:::
     :::column:::
-        >[!Video https://www.youtube.com/embed/Zd_Uubnu0U0]
+       >[!Video https://www.youtube.com/embed/Zd_Uubnu0U0]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank">重定向 URI 的用途</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank">租户说明</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/mDhT4Zv1fZU]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank">Azure AD 角色</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank">Azure AD 应用对象的角色</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/HEpq_YSmuWw]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank">组织和个人 Microsoft 帐户的差异</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank">SPA 和 Web 应用的差异</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/ZJirt7eTVw8]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=6R3W9T01gdE" target="_blank">什么是应用程序权限与委托权限？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/6R3W9T01gdE]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=Gm6sALdXtpg" target="_blank">什么是 Microsoft 标识平台 OpenID Connect 认证？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/Gm6sALdXtpg]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank">什么是不同的 Azure Active Directory 应用类型，如何进行比较？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/NrydwrckYaw]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=cZKgTqF4o88" target="_blank">如果你使用 MSAL，应了解哪些重要协议概念？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/cZKgTqF4o88]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=41vmzPdbfXM" target="_blank">ID 令牌、访问令牌、刷新令牌和会话令牌之间有何区别？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/41vmzPdbfXM]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=jEEwN7XAtUo" target="_blank">授权请求和令牌之间的关系是什么？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/jEEwN7XAtUo]
     :::column-end:::
+:::row-end:::
+:::row:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=4pwuRYcZbz4" target="_blank">使用协议的哪些方面会使 MSAL 库更轻松？</a>
     :::column-end:::
     :::column:::
         >[!Video https://www.youtube.com/embed/4pwuRYcZbz4]
+    :::column-end:::
+    :::column:::
+
+    :::column-end:::
+    :::column:::
+
     :::column-end:::
 :::row-end:::
 

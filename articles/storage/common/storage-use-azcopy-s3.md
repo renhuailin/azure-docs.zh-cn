@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ac73d0e57377a8922691ea06c8de3df5ef577680
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 68aaa447aef65a109105f870b805dd485f322643
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502430"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639976"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -21,9 +21,9 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>选择如何提供授权凭据
 
-* 若要对 Azure 存储授权，请使用 Azure Active Directory (AD) 或共享访问签名 (SAS) 令牌。
+- 若要对 Azure 存储授权，请使用 Azure Active Directory (AD) 或共享访问签名 (SAS) 令牌。
 
-* 若要对 AWS S3 授权，请使用 AWS 访问密钥和机密访问密钥。
+- 若要对 AWS S3 授权，请使用 AWS 访问密钥和机密访问密钥。
 
 ### <a name="authorize-with-azure-storage"></a>对 Azure 存储授权
 
@@ -53,7 +53,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 > [!TIP]
 > 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
- 这些示例也适用于具有分层命名空间的帐户。 [Data Lake Storage 上的多协议访问](../blobs/data-lake-storage-multi-protocol-access.md)使你可以在这些帐户上使用相同的 URL 语法 (`blob.core.windows.net`)。 
+ 这些示例也适用于具有分层命名空间的帐户。 [Data Lake Storage 上的多协议访问](../blobs/data-lake-storage-multi-protocol-access.md)使你可以在这些帐户上使用相同的 URL 语法 (`blob.core.windows.net`)。
 
 ### <a name="copy-an-object"></a>复制对象
 
@@ -153,7 +153,7 @@ azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.
 
 相比 Azure Blob 容器，AWS S3 对桶的名称实施一组不同的命名约定。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)了解相关信息。 如果选择将一组桶复制到 Azure 存储帐户，复制操作可能因命名差异而失败。
 
-AzCopy 会处理可能出现的两个最常见问题：包含句点的桶，以及包含连续连字符的桶。 AWS S3 桶名称可以包含句点和连续的连字符，但 Azure 中的容器则不可以。 AzCopy 会将句点替换为连字符，并将连续的连字符替换为表示连续连字符数目的数字（例如：名为 `my----bucket` 的桶将变成 `my-4-bucket`）。 
+AzCopy 会处理可能出现的两个最常见问题：包含句点的桶，以及包含连续连字符的桶。 AWS S3 桶名称可以包含句点和连续的连字符，但 Azure 中的容器则不可以。 AzCopy 会将句点替换为连字符，并将连续的连字符替换为表示连续连字符数目的数字（例如：名为 `my----bucket` 的桶将变成 `my-4-bucket`）。
 
 此外，在 AzCopy 复制文件时，它会检查并尝试解决命名冲突。 例如，如果存在名为 `bucket-name` 和 `bucket.name` 的桶，则 AzCopy 会将名为 `bucket.name` 的桶解析为 `bucket-name`，再将后者解析为 `bucket-name-2`。
 
@@ -187,7 +187,7 @@ AzCopy 执行以下步骤：
 
 ## <a name="next-steps"></a>后续步骤
 
-在以下文章中查找更多示例：
+如需了解更多示例，请参阅以下文章：
 
 - [示例：上载](storage-use-azcopy-blobs-upload.md)
 - [示例：下载](storage-use-azcopy-blobs-download.md)
@@ -201,4 +201,4 @@ AzCopy 执行以下步骤：
 
 - [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
 - [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)
-- [使用日志文件排查 Azure 存储中的 AzCopy V10 问题](storage-use-azcopy-configure.md)
+- [使用日志文件对 Azure 存储中的 AzCopy V10 问题进行故障排除](storage-use-azcopy-configure.md)

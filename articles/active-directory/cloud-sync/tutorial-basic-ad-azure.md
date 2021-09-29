@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de59b3f26a9a4696c721cab94cd5b96bd0200e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbf02dd12c76de529026b58f98f111aa3be39502
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98611903"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626430"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>教程：基本 Active Directory 环境
 
@@ -33,7 +33,7 @@ ms.locfileid: "98611903"
 - 允许虚拟机与 Internet 通信的[外部网络适配器](/virtualization/hyper-v-on-windows/quick-start/connect-to-network)。
 - [Azure 订阅](https://azure.microsoft.com/free)
 - Windows Server 2016 的副本
-- [Microsoft .NET framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
+- [Microsoft .NET framework 4.7.1](https://dotnet.microsoft.com/download/dotnet-framework/net471)
 
 > [!NOTE]
 > 本教程使用 PowerShell 脚本，以便可以在最短的时间内创建教程环境。  每个脚本都使用在脚本开头声明的变量。  你可以而且应该更改变量以反映你的环境。

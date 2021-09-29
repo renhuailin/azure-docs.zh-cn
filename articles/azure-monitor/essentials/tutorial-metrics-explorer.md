@@ -5,12 +5,12 @@ author: bwren
 ms.author: bwren
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 9923bfcbd439ef5e20e44e9c397199fe06f40b43
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 029202b1b05c43c29f0011d01d63cc5d5c5f029f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032902"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649693"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教程：在 Azure Monitor 中创建指标图表
 指标资源管理器是 Azure 门户中 Azure Monitor 的一项功能，通过它可以根据指标值创建图表，直观地关联趋势，以及调查指标值中的高峰和凹陷。 使用指标资源管理器调查 Azure 资源的运行状况和利用率，或根据自定义指标绘制图表。 
@@ -77,7 +77,7 @@ ms.locfileid: "102032902"
 
 ## <a name="advanced-chart-settings"></a>高级图表设置
 
-可以自定义图表样式和标题并修改高级图表设置。 完成自定义后，将其固定到仪表板以保存工作。 你还可以配置指标警报。 请参阅 [Azure 指标资源管理器的高级功能](../essentials/metrics-charts.md#locking the-range-of-the-y-axis)，了解 Azure Monitor 指标资源管理器的这些功能和其他高级功能。
+可以自定义图表样式和标题并修改高级图表设置。 完成自定义后，将其固定到仪表板以保存工作。 你还可以配置指标警报。 请参阅 [Azure 指标资源管理器的高级功能](../essentials/metrics-charts.md#locking-the-range-of-the-y-axis)，了解 Azure Monitor 指标资源管理器的这些功能和其他高级功能。
 
 
 ## <a name="next-steps"></a>后续步骤

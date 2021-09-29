@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3310e1569cd04950c768b24a333dc6d6c7bbe09
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95999784"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124746101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>教程：Azure Active Directory 与 ScreenSteps 集成
 
@@ -120,13 +120,13 @@ ms.locfileid: "95999784"
 
     c. 注销 URL
 
-### <a name="configure-screensteps-single-sign-on"></a>配置 ScreenSteps 单一登录
+### <a name="configure-screensteps-single-sign-on&quot;></a>配置 ScreenSteps 单一登录
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 ScreenSteps 公司站点。
 
 1. 单击“帐户设置”  。
 
-    ![帐户管理](./media/screensteps-tutorial/ic778523.png "帐户管理")
+    ![帐户管理](./media/screensteps-tutorial/ic778523.png &quot;帐户管理")
 
 1. 单击“单一登录”  。
 
@@ -229,7 +229,7 @@ ms.locfileid: "95999784"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ScreenSteps 磁贴时，应当会自动登录到为其设置了 SSO 的 ScreenSteps。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 ScreenSteps 磁贴时，应当会自动登录到为其设置了 SSO 的 ScreenSteps。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

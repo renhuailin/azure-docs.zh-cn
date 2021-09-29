@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 1c18b31e8eb77c6dea2d3cf3a3e99c09d4a7e8b6
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: a94b6382003d4cd9ee1e3d1bbb4932ee88a15577
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236042"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625728"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>快速入门：在 Node.js 中使用 Azure Cache for Redis
 
@@ -32,9 +32,9 @@ ms.locfileid: "112236042"
 
 ## <a name="create-a-cache"></a>创建缓存
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
 为 **主机名** 和 **主** 访问密钥添加环境变量。 通过代码使用这些变量，而不是直接在代码中包含敏感信息。
 

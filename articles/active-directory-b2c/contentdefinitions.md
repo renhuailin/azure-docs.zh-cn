@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/04/2021
+ms.date: 09/12/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a3c8b3d97a117e88c323253134be383fb0766355
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bbe79082f63065ed73b573ab87f3299f7df79148
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723262"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740238"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -111,8 +111,6 @@ LoadUri 元素用于为内容定义指定 HTML5 页面的 URL。 Azure AD B2C [�
 ### <a name="select-a-page-layout"></a>选择页面布局
 
 在 `elements` 和页面类型之间插入 `contract` 即可启用 [JavaScript 客户端代码](javascript-and-page-layout.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 `DataUri` 的 [version](page-layout.md) 部分指定内容包，其中包含的 HTML、CSS 和 JavaScript 适用于策略中的用户界面元素。 如果打算启用 JavaScript 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本。 这样做可以确保 JavaScript 所基于的所有内容定义不可变。 即使不打算启用 JavaScript，也仍然需要为页面指定页面布局版本。
 

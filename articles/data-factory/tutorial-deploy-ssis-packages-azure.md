@@ -8,12 +8,12 @@ ms.custom: seo-lt-2019
 ms.date: 07/19/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 2eff29e1260198c6d5031403e9dfb9fcbd2da4e5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fcd1349df07920ff0e7669face1bfa0e66343dfb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730093"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737015"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中预配 Azure-SSIS 集成运行时
 
@@ -73,7 +73,7 @@ ms.locfileid: "121730093"
 
 1. 在主页上，选择“配置 SSIS”磁贴。 
 
-   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="屏幕截图显示 Azure 数据工厂主页。":::
 
 1. 请参阅[预配 Azure-SSIS 集成运行时](#provision-an-azure-ssis-integration-runtime)部分，了解用于设置 Azure-SSIS IR 的剩余步骤。 
 
@@ -81,15 +81,15 @@ ms.locfileid: "121730093"
 
 1. 在 Azure 数据工厂 UI 中切换到“管理”选项卡，然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时 。 
 
-   ![用于查看现有 IR 的选择](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png" alt-text="用于查看现有 IR 的选择":::
 
 1. 选择“新建”，创建 Azure-SSIS IR，然后打开“集成运行时设置”窗格 。 
 
-   ![通过菜单创建集成运行时](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png" alt-text="通过菜单创建集成运行时":::
 
 1. 在“集成运行时设置”窗格中选择“直接迁移现有的 SSIS 包以在 Azure 中执行”磁贴，然后选择“继续”  。
 
-   ![指定集成运行时的类型](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png" alt-text="指定集成运行时的类型":::
 
 1. 请参阅[预配 Azure-SSIS 集成运行时](#provision-an-azure-ssis-integration-runtime)部分，了解用于设置 Azure-SSIS IR 的剩余步骤。 
 
@@ -101,7 +101,7 @@ ms.locfileid: "121730093"
 
 在“集成运行时设置”窗格的“常规设置”页中完成以下步骤 。 
 
-   ![常规设置](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png" alt-text="常规设置":::
 
    1. 对于“名称”，请输入集成运行时的名称。 
 
@@ -131,7 +131,7 @@ ms.locfileid: "121730093"
    
 如果选中该复选框，请完成以下步骤以提供你自己的数据库服务器来承载我们将代表你创建和管理的 SSISDB。
 
-   ![SSISDB 的部署设置](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png" alt-text="SSISDB 的部署设置":::
    
    1. 对于“订阅”，请选择使用数据库服务器来托管 SSISDB 的 Azure 订阅。 
 
@@ -169,7 +169,7 @@ ms.locfileid: "121730093"
    
 如果选中此复选框，则可以通过选择“新建”将多个包存储添加到 Azure-SSIS IR。 相反，多个 Azure SSIS IR 可以共享一个包存储。
 
-![MSDB/文件系统/Azure 文件存储的部署设置](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+:::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png" alt-text="MSDB/文件系统/Azure 文件存储的部署设置":::
 
 在“添加包存储”窗格上，完成以下步骤。
    
@@ -180,7 +180,7 @@ ms.locfileid: "121730093"
       > [!NOTE]
       > 可以使用 Azure文件存储或文件系统链接服务来访问 Azure 文件 。 如果你使用 Azure 文件存储链接服务，则 Azure-SSIS IR 包存储仅支持基本（不支持帐户密钥或 SAS URI）身份验证方法   。 
 
-      ![链接服务的部署设置](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
+      :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png" alt-text="链接服务的部署设置":::
 
       1. 对于“名称”，请输入链接服务的名称。 
          
@@ -230,7 +230,7 @@ ms.locfileid: "121730093"
 
 在“集成运行时设置”窗格的“高级设置”页中，请完成以下步骤 。 
 
-   ![高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png" alt-text="高级设置":::
 
    1. 对于“每个节点的最大并行执行数”，请选择要在集成运行时群集中并发运行的最大包数（按节点）。 仅显示支持的包数。 如果需要使用多个核心来运行单个计算密集型或内存密集型的大型包，请选择较小的数字。 如果需要在单个核心中运行一个或多个小型包，请选择较大的数字。 
 
@@ -257,7 +257,7 @@ ms.locfileid: "121730093"
 
 在“管理”中心的“连接”窗格中，切换到“集成运行时”页，然后选择“刷新”   。 
 
-   ![“连接”窗格](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png" alt-text="“连接”窗格":::
 
    可以通过选择 Azure-SSIS IR 的名称来对其进行编辑/重新配置。 此外，还可以选择相应的按钮来监视/启动/停止/删除 Azure-SSIS IR，通过“执行 SSIS 包”活动自动生成 ADF 管道以在 Azure-SSIS IR 上运行，并查看 Azure-SSIS IR 的 JSON 代码/有效负载。  只能在 Azure-SSIS IR 停止时对其执行编辑/删除操作。
 

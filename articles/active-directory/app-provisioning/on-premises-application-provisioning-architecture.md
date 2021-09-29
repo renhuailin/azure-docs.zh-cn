@@ -11,12 +11,12 @@ ms.date: 05/28/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bd76a9633311a073f2a672efd1560272deddb48
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: cdd7995c50ef63b4ec88e65c949a4c098a4b9330
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770037"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609928"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-architecture"></a>Azure AD 本地应用程序预配体系结构
 
@@ -159,6 +159,3 @@ genericSQL 连接器要求使用 LDAP 格式填充 DN。  泛型 SQL 连接器�
 ## <a name="next-steps"></a>后续步骤
 
 - [应用预配](user-provisioning.md)
-- [Azure AD ECMA 连接器主机先决条件](on-premises-ecma-prerequisites.md)
-- [Azure AD ECMA 连接器主机安装](on-premises-ecma-install.md)
-- [Azure AD ECMA 连接器主机配置](on-premises-ecma-configure.md)

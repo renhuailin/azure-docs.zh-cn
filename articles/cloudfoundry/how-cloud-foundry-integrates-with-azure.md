@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: ff2a6618b60ff2cfa5faa74c905e140466a14359
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2fcb89ccbebf557a1a4068f6fe08b0d27226b1fa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563313"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591760"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>将 Cloud Foundry 与 Azure 集成
 
@@ -87,7 +87,7 @@ Azure Log Analytics Nozzle 是一个 Cloud Foundry 组件，可将指标从 [Clo
 #### <a name="use-azure-first-party-services"></a>使用 Azure 第一方服务： 
 利用 Azure 的第一方服务可以降低长期管理成本，此外还能实现前面部分中所述的高可用性和可靠性。 
 
-Pivotal 为 PCF 客户推出了[空间占用量较小的 ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html)。Pivotal 的组件只会共置到最多运行 2500 个应用程序实例的 4 个 VM 中。 目前可以通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)获取试用版。
+Pivotal 为 PCF 客户推出了[空间占用量较小的 ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html)。Pivotal 的组件只会共置到最多运行 2500 个应用程序实例的 4 个 VM 中。 目前可以通过 Azure 市场获取试用版。
 
 ## <a name="next-steps"></a>后续步骤
 Azure 集成功能首先在[开源 Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/) 中推出，然后在 Pivotal Cloud Foundry 中推出。 带有 * 标记的功能尚未通过 PCF 推出。 本文档也未介绍 Cloud Foundry 与 Azure Stack 的集成。

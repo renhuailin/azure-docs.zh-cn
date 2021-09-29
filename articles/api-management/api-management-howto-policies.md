@@ -3,7 +3,7 @@ title: Azure API 管理中的策略 | Microsoft Docs
 description: 了解如何在 API 管理中创建、编辑和配置策略。 查看代码示例和其他可用资源。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/25/2021
-ms.author: apimpm
-ms.openlocfilehash: c4b069d76d795bd8ae830b811c97dfe58c2f842c
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.author: danlep
+ms.openlocfilehash: 37e25908bd08ca9618bc56bb2e10ff8e48a46fc6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123106006"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649671"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/31/2021
 ms.author: jeedes
-ms.openlocfilehash: b08121b7008dd40944eb1035ecb968ac0d01b8af
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: e57824ff7a88c5a3306fc500956d43cbb0a02a93
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557793"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738405"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Onit 集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "111557793"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -106,7 +106,7 @@ ms.locfileid: "111557793"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Onit 的权限，允许其使用 Azure 单一登录。
 
@@ -118,13 +118,13 @@ ms.locfileid: "111557793"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-onit-sso"></a>配置 Onit SSO
+## <a name=&quot;configure-onit-sso&quot;></a>配置 Onit SSO
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Onit 公司站点。
 
 2. 在顶部菜单中，单击“管理”。 
    
-    ![屏幕截图显示“MS SSO 测试”页面顶部的菜单，其中选择了“管理”操作。](./media/onit-tutorial/admin.png "管理")
+    ![屏幕截图显示“MS SSO 测试”页面顶部的菜单，其中选择了“管理”操作。](./media/onit-tutorial/admin.png &quot;管理")
 
 3. 单击“编辑公司”。 
    
@@ -177,9 +177,8 @@ ms.locfileid: "111557793"
 
 * 直接转到 Onit 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Onit 磁贴时，会重定向到 Onit 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Onit 磁贴时，会重定向到 Onit 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 
 配置 Onit 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。
-

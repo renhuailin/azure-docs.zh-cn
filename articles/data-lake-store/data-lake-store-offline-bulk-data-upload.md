@@ -1,18 +1,18 @@
 ---
 title: 将大型数据集上传到 Azure Data Lake Storage Gen1 - 脱机方法
 description: 使用导入/导出服务将数据从 Azure Blob 存储复制到 Azure Data Lake Storage Gen1
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
+ms.author: normesta
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1ce3c649a2bf37252b9d12eb9fe08ddf287fc8a0
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 854426ff67816992c2dfb42ef08627bc6ceb0199
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706894"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612199"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Storage Gen1
 

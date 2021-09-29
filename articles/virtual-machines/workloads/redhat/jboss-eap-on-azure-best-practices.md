@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 195a0bfa-dff1-429b-b030-19ca95ee6abe
 ms.date: 06/08/2021
-ms.openlocfilehash: 711a91b86eb5e802693fea7b3cf2f84f9eae59b3
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 909f3dcff9f8ad5af5f1128d1d067f2430a00525
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314453"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730116"
 ---
 # <a name="red-hat-jboss-eap-on-azure-best-practices"></a>Azure 上的 Red Hat JBoss EAP 最佳做法
 
@@ -187,7 +187,7 @@ Azure 不支持基于 UDP 多播的 JGroups 发现协议。 默认情况下，JG
 
 ## <a name="other-best-practices"></a>其他最佳做法
 
-- 作为虚拟机上 JBoss EAP 设置的管理员，确保虚拟机安全非常重要。 这将显著降低来宾和主机操作系统被恶意软件感染的风险。 保护虚拟机可减少对 JBoss EAP 的攻击，并减少 JBoss EAP 上托管的应用程序故障。 使用[Azure 基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview) 中的 [Azure Policy](https://azure.microsoft.com/services/azure-policy/) 和 [Azure 内置角色](../../../role-based-access-control/built-in-roles.md)等功能来控制对 Azure VM 的访问。 通过安装 Microsoft Antimalware 或 Microsoft 合作伙伴的端点保护解决方案，并将防恶意软件解决方案与 [Azure Security Center](https://azure.microsoft.com/services/security-center/) 集成，以监视您的保护状态，从而保护你的虚拟机免受恶意软件的攻击。 在 RHEL VM 中，可以通过阻止端口转发和阻止根登录（可在 */ 中禁用）来防范这种情况
+- 作为虚拟机上 JBoss EAP 设置的管理员，确保虚拟机安全非常重要。 这将显著降低来宾和主机操作系统被恶意软件感染的风险。 保护虚拟机可减少对 JBoss EAP 的攻击，并减少 JBoss EAP 上托管的应用程序故障。 使用[Azure 基于角色的访问控制 (RBAC)](../../../role-based-access-control/overview.md) 中的 [Azure Policy](https://azure.microsoft.com/services/azure-policy/) 和 [Azure 内置角色](../../../role-based-access-control/built-in-roles.md)等功能来控制对 Azure VM 的访问。 通过安装 Microsoft Antimalware 或 Microsoft 合作伙伴的端点保护解决方案，并将防恶意软件解决方案与 [Azure Security Center](https://azure.microsoft.com/services/security-center/) 集成，以监视您的保护状态，从而保护你的虚拟机免受恶意软件的攻击。 在 RHEL VM 中，可以通过阻止端口转发和阻止根登录（可在 */ 中禁用）来防范这种情况
 
 
 - 使用环境变量，你可以在 Azure 虚拟机上轻松且流畅地体验 JBoss EAP。 例如，可以使用 EAP_HOME 来表示 JBoss EAP 安装的路径，该路径将多次使用。 在这种情况下，环境变量会十分方便。 环境变量也是配置服务和处理 Web 应用程序机密的常用方法。 使用 export 命令从 shell 设置某个环境变量时，用户的会话结束时，这个环境变量也随之结束。 如果我们需要变量跨会话持久保存时，这会造成问题。 为了让用户的环境持久化，我们从用户的配置文件脚本中导出变量。 对于要在 bash_profile 中持久化的每个环境变量，添加 export 命令。 如果要为有权访问虚拟机的所有用户设置永久全局环境变量，可以将其添加到默认配置文件。 建议将全局环境变量存储在名为 `/etc/profile.d` 的目录中。 目录包含用于为整个系统设置环境变量的文件列表。 如果在 Windows Server 命令提示符下使用 set 命令设置系统环境变量，不会永久设置环境变量。 使用 *setx* 命令或者控制面板中的“系统接口”。
@@ -196,7 +196,7 @@ Azure 不支持基于 UDP 多播的 JGroups 发现协议。 默认情况下，JG
 
 - 使用 [Azure Monitor](../../../azure-monitor/data-platform.md) 来洞察资源的运行状况。 Azure Monitor 包括[资源诊断日志文件](../../../azure-monitor/essentials/platform-logs-overview.md)。 用于监视 VM 资源并识别可能会损害性能与可用性的潜在问题。 [Azure 诊断扩展](../../../azure-monitor/agents/diagnostics-extension-overview.md)可以在 Windows 虚拟机上提供监视和诊断功能。 在 Azure 资源管理器模板中包含该扩展来启用这些功能。 启用启动诊断，这是在虚拟机无法启动的情况下进行故障排除时要使用的重要工具。 在解决启动问题时，控制台输出和启动日志可以为 Red Hat 技术支持人员提供极大帮助。 在创建虚拟机或在现有虚拟机中，在 Microsoft Azure 门户中启用引导诊断。 启用后，可以查看虚拟机的控制台输出，并可下载启动日志以进行故障排除。
 
-- 确保安全通信的另一种方法是在[虚拟网络 (VNet)](/azure/virtual-network/virtual-networks-overview) 和[虚拟专用网 (VPN)](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) 中使用专用终结点。 开放网络可供外部世界访问，因此容易受到恶意用户的攻击。 VNet 和 VPN 将仅限所选用户进行访问。 VNet 使用专用 IP 在同一范围内的服务器之间建立隔离的通信通道。 隔离通信允许同一帐户下的多个服务器交换信息和数据，而不会泄露到公共空间。 如果通过专用网络在本地执行此操作，则需连接到远程服务器。 有多种不同方法来连接到远程服务器，比如，在应用程序服务器所在的同一个 VNet 中使用 JumpVM/JumpBox，或者使用 [Azure 虚拟网络对等](../../../virtual-network/virtual-network-peering-overview.md)、[Azure 应用程序网关](../../../application-gateway/overview.md)、[Azure Bastion](https://azure.microsoft.com/services/azure-bastion) 等。 所有这些方法都可实现完全安全的专用连接，并可以连接多个远程服务器。
+- 确保安全通信的另一种方法是在[虚拟网络 (VNet)](../../../virtual-network/virtual-networks-overview.md) 和[虚拟专用网 (VPN)](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) 中使用专用终结点。 开放网络可供外部世界访问，因此容易受到恶意用户的攻击。 VNet 和 VPN 将仅限所选用户进行访问。 VNet 使用专用 IP 在同一范围内的服务器之间建立隔离的通信通道。 隔离通信允许同一帐户下的多个服务器交换信息和数据，而不会泄露到公共空间。 如果通过专用网络在本地执行此操作，则需连接到远程服务器。 有多种不同方法来连接到远程服务器，比如，在应用程序服务器所在的同一个 VNet 中使用 JumpVM/JumpBox，或者使用 [Azure 虚拟网络对等](../../../virtual-network/virtual-network-peering-overview.md)、[Azure 应用程序网关](../../../application-gateway/overview.md)、[Azure Bastion](https://azure.microsoft.com/services/azure-bastion) 等。 所有这些方法都可实现完全安全的专用连接，并可以连接多个远程服务器。
 
 - 使用 [Azure 网络安全组 (NSG)](../../../virtual-network/network-security-groups-overview.md) 过滤进出 Azure VNet 中应用服务器的网络流量。 NSG 包含安全规则，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 可以为每项规则指定源和目标、端口以及协议。 通过使用这些 NSG 规则保护 JBoss EAP 上的应用程序，并阻止或允许到 Internet 的端口。
 

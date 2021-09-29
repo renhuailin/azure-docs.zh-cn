@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中使用客户管理的密钥加密 OS 磁盘
+title: 使用客户管理的密钥加密 OS 磁盘
 description: 了解如何在 Azure 开发测试实验室中使用客户管理的密钥来加密操作系统 (OS) 磁盘。
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 26ef4ff1529483da9956c6dcc43807af0ffd6463
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2da0e89c5a3f34d9ba967088ea3881f6a30bc1e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96341201"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632341"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中使用客户管理的密钥来加密操作系统 (OS) 磁盘
 服务器端加密 (SSE) 可保护数据，并帮助实现组织安全性和符合性承诺。 将 Azure 中的托管磁盘（OS 磁盘和数据磁盘）上存储的数据保存到云时，SSE 在默认情况下会自动对这些数据进行静态加密。 详细了解 Azure 上的[磁盘加密](../virtual-machines/disk-encryption.md)。 

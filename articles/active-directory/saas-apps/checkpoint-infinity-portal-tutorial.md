@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e35f717c2ebce4cc39383afcd87bce3d7352276
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 25511f956d61a16efbfe589f8b4df4cb16a406a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463980"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124747662"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-infinity-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Check Point Infinity Portal 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "112463980"
 * 让用户使用 Azure AD 帐户自动登录 Check Point Infinity Portal。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -120,7 +120,7 @@ ms.locfileid: "112463980"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -192,7 +192,7 @@ ms.locfileid: "112463980"
 
 * 直接转到 Check Point Infinity Portal 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Check Point Infinity Portal”磁贴后，会重定向到 Check Point Infinity Portal 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Check Point Infinity Portal”磁贴后，会重定向到 Check Point Infinity Portal 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

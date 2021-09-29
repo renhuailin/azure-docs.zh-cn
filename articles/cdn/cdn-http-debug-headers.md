@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
-ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b0171b2bf74f60e2cc1ea7600f313934737103e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84343014"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639634"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 X-EC-Debug HTTP 标头
 调试缓存请求标头 `X-EC-Debug` 提供有关应用到所请求资产的缓存策略的附加信息。 这些标头特定于 **Verizon 的 Azure CDN Premium** 产品。
@@ -169,5 +169,4 @@ YES    | 指示请求的内容是否符合缓存的条件。
 
 以下示例响应标头指示所请求内容在请求时的缓存状态：
 
-```X-EC-Debug: x-ec-cache-state: max-age=604800 (7d); cache-ts=1341802519 (Mon, 09 Jul 2012 02:55:19 GMT); cache-age=0 (0s); remaining-ttl=604800 (7d); expires-delta=none```
-
+`X-EC-Debug: x-ec-cache-state: max-age=604800 (7d); cache-ts=1341802519 (Mon, 09 Jul 2012 02:55:19 GMT); cache-age=0 (0s); remaining-ttl=604800 (7d); expires-delta=none`

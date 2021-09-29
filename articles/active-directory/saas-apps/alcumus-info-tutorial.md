@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 567cbf72c94d63999ba2000a77a60717a01a9d94
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 5bce2c89d39d4a3c3853c1592523da793b467d40
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572514"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732526"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>教程：Azure Active Directory 与 Alcumus Info Exchange 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "111572514"
 
 4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.info-exchange.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.info-exchange.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.info-exchange.com/Auth/`
 
@@ -128,7 +128,7 @@ ms.locfileid: "111572514"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Alcumus Info Exchange。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Alcumus Info Exchange”磁贴时，应会自动登录到设置了 SSO 的 Alcumus Info Exchange。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Alcumus Info Exchange”磁贴时，应会自动登录到设置了 SSO 的 Alcumus Info Exchange。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

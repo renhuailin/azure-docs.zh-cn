@@ -2,17 +2,17 @@
 title: 应用程序网关的工作原理
 description: 本文介绍应用程序网关如何接受传入请求并将其路由到后端。
 services: application-gateway
-author: abshamsft
+author: KumudD
 ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.author: absha
-ms.openlocfilehash: d2055bf812c3dc986a907d4358fa0e74e8af20fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: 594bc177afc0de7703ce12ae9e8a1e831431f176
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599657"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751217"
 ---
 # <a name="how-an-application-gateway-works"></a>应用程序网关的工作原理
 

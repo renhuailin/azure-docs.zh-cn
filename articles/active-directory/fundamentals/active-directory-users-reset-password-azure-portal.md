@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8809f8c168e7095f05587c7a572e08287637dc5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7efa458ebcae7e837be4bb574f4a2707e9cb9e30
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034585"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732607"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>使用 Azure Active Directory 重置用户的密码
 
@@ -29,7 +29,7 @@ ms.locfileid: "102034585"
 >除非 Azure AD 租户是用户的主目录，否则你将无法重置其密码。 这意味着，如果用户使用另一个组织的帐户（Microsoft 帐户或 Google 帐户）登录到组织，那么你将无法重置其密码。<br><br>如果用户具有 Windows Server Active Directory 的权限源，则只有在你打开密码回写时才能重置密码。<br><br>如果用户拥有外部 Azure AD 的权限源，你将无法重置密码。 只有用户或外部 Azure AD 中的管理员可以重置密码。
 
 >[!Note]
->如果你不是管理员，只想获得有关如何重置你自己的工作或学校密码的说明，请参阅[重置工作或学校密码](../user-help/active-directory-passwords-update-your-own-password.md)。
+>如果你不是管理员，只想获得有关如何重置你自己的工作或学校密码的说明，请参阅[重置工作或学校密码](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)。
 
 ## <a name="to-reset-a-password"></a>重置密码
 

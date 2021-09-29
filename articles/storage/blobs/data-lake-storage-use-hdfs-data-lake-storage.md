@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: b73e79c2f7bbd37b640d3e83d98be68d85ed3b5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8861255cb81c1200108dff22354be7636c1bd2d5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735363"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633785"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
 
@@ -24,8 +24,8 @@ HDInsight 可以访问在本地附加到计算节点的分布式容器。 可以
 
 有关 HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和 [HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
->[!NOTE]
->如果你使用的是 Azure Databricks 而不是 HDInsight，并且要使用命令行接口与数据进行交互，可使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅 [Databricks CLI](/azure/databricks/dev-tools/cli/)。
+> [!NOTE]
+> 如果你使用的是 Azure Databricks 而不是 HDInsight，并且要使用命令行接口与数据进行交互，可使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅 [Databricks CLI](/azure/databricks/dev-tools/cli/)。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上结合使用 HDFS CLI 和 HDInsight Hadoop 群集
 
@@ -39,18 +39,19 @@ hdfs dfs -ls /
 #Create a sample directory.
 hdfs dfs -mkdir /samplefolder
 ```
+
 可以在 Azure 门户中 HDInsight 群集边栏选项卡的“SSH + 群集登录”部分中找到连接字符串。 SSH 凭据是在创建群集时指定的。
 
->[!IMPORTANT]
->创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 HDInsight 群集按分钟收费，因此不再需要使用群集时，应将其删除。 若要了解如何删除群集，请参阅我们的[有关该主题的文章](../../hdinsight/hdinsight-delete-cluster.md)。 但是，即使删除了 HDInsight 群集，在启用了 Data Lake Storage Gen2 的存储帐户中存储的数据仍然会保留。
+> [!IMPORTANT]
+> 创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 HDInsight 群集按分钟收费，因此不再需要使用群集时，应将其删除。 若要了解如何删除群集，请参阅我们的[有关该主题的文章](../../hdinsight/hdinsight-delete-cluster.md)。 但是，即使删除了 HDInsight 群集，在启用了 Data Lake Storage Gen2 的存储帐户中存储的数据仍然会保留。
 
 ## <a name="create-a-container"></a>创建容器
 
 `hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
-* 将 `<container-name>` 占位符替换为你要为容器指定的名称。
+- 将 `<container-name>` 占位符替换为你要为容器指定的名称。
 
-* 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
+- 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
 ## <a name="get-a-list-of-files-or-directories"></a>获取文件或目录列表
 
@@ -118,6 +119,6 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Azure Databricks 中使用支持 Azure Data Lake Storage Gen2 的帐户](./data-lake-storage-use-databricks-spark.md)
+- [在 Azure Databricks 中使用支持 Azure Data Lake Storage Gen2 的帐户](./data-lake-storage-use-databricks-spark.md)
 
-* [了解文件和目录上的访问控制列表](./data-lake-storage-access-control.md)
+- [了解文件和目录上的访问控制列表](./data-lake-storage-access-control.md)

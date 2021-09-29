@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 6372cd9d778210163c461c55119343e6c6911e4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5444d1eb503fd238f5acd5c1e19da68d58782cad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649045"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770522"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>教程：将 Adaptive Insights 与 Azure Active Directory 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "101649045"
 
 1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
@@ -189,7 +189,7 @@ ms.locfileid: "101649045"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Adaptive Insights。
 
-* 你可使用 Microsoft 的“我的应用”。 单击我的应用中的 Adaptive Insights 磁贴时，应会自动登录到为其设置了 SSO 的 Adaptive Insights。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击我的应用中的 Adaptive Insights 磁贴时，应会自动登录到为其设置了 SSO 的 Adaptive Insights。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

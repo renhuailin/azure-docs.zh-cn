@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: a7b13f06e342478258fc2806991aeed2d2df726e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7a6b1099ea81c7a4a50692496ee044fe4a72bd24
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424917"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742945"
 ---
 # <a name="migrate-databases-with-azure-sql-migration-extension-for-azure-data-studio-preview"></a>使用适用于 Azure Data Studio 的 Azure SQL 迁移扩展（预览版）迁移数据库
 
@@ -48,8 +48,8 @@ DMS 使用 Azure 数据工厂的自承载集成运行时，从本地网络共享
 
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
-* [下载并安装 Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio.md)
-* 从 Azure Data Studio 市场[安装 Azure SQL 迁移扩展](/sql/azure-data-studio/extensions/azure-sql-migration-extension.md)
+* [下载并安装 Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
+* 从 Azure Data Studio 市场[安装 Azure SQL 迁移扩展](/sql/azure-data-studio/extensions/azure-sql-migration-extension)
 * 有一个 Azure 帐户，该帐户已分配给下列内置角色之一：
     - 目标 Azure SQL 托管实例（以及从 SMB 网络共享上传数据库备份文件的存储帐户）的参与者。
     - 包含目标 Azure SQL 托管实例或 Azure 存储帐户的 Azure 资源组的“所有者”或“参与者”角色。
@@ -83,7 +83,7 @@ DMS 使用 Azure 数据工厂的自承载集成运行时，从本地网络共享
     > 如果数据库备份文件已在 Azure 存储帐户中提供，则在迁移过程中不需要自承载集成运行时。
 
 * 使用自承载集成运行时时，请确保安装了运行时的计算机可以连接到源 SQL Server 实例和备份文件所在的网络文件共享。 应该启用出站端口 445，以允许访问网络文件共享。
-* 如果是首次使用 Azure 数据库迁移服务，请确保在订阅中注册了 Microsoft.DataMigration 资源提供程序。 可以按照步骤[注册资源提供程序](/quickstart-create-data-migration-service-portal.md#register-the-resource-provider)
+* 如果是首次使用 Azure 数据库迁移服务，请确保在订阅中注册了 Microsoft.DataMigration 资源提供程序。 可以按照步骤[注册资源提供程序](/azure/dms/quickstart-create-data-migration-service-portal#register-the-resource-provider)
 
 ### <a name="recommendations-for-using-self-hosted-integration-runtime-for-database-migrations"></a>使用自承载集成运行时进行数据库迁移的建议
 - 将单个自承载集成运行时用于多个源 SQL Server 数据库。

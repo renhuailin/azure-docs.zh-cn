@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: edd90071125c65b7d4af3d0065e92b30f35e5f65
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c3ad407b0c412e3cf4dbb5cc1635376c718a747
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436946"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605803"
 ---
 # <a name="azcopy-v10-configuration-settings-azure-storage"></a>AzCopy v10 配置设置（Azure 存储）
 
@@ -37,7 +37,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 | AZCOPY_CONCURRENCY_VALUE | 指定可能发生的并发请求数。 可以使用此变量来提高吞吐量。 如果计算机中的 CPU 少于 5 个，则此变量的值将设置为 `32`。 否则，默认值等于 16 乘以 CPU 数。 此变量的最大默认值为 `3000`，但可以手动增大或减小此值。 请参阅[提高并发](storage-use-azcopy-optimize.md#increase-concurrency) |
 | AZCOPY_CONCURRENT_FILES | 通过控制并发启动传输的文件的数量，覆盖任何时候正在进行的文件的（近似）数量。 |
 | AZCOPY_CONCURRENT_SCAN | 控制扫描期间使用的（最大）并行度。 仅影响并行化枚举器，其中包括 Azure 文件存储/Blob 和本地文件系统。 |
-| AZCOPY_CONTENT_TYPE_MAP  | 重写操作系统定义的一个或多个默认 MIME 类型映射。 将此变量设置为定义任何映射的 JSON 文件的路径。  下面是示例 JSON 文件的内容： <br><br> {<br>&nbsp;&nbsp;"MIMETypeMapping": { <br>&nbsp;&nbsp;&nbsp;&nbsp;".323": "text/h323",<br>&nbsp;&nbsp;&nbsp;&nbsp;".aaf": "application/octet-stream",<br>&nbsp;&nbsp;&nbsp; ".aca": "application/octet-stream",<br>&nbsp;&nbsp;&nbsp;&nbsp;".accdb": "application/msaccess",<br>&nbsp;&nbsp;&nbsp;&nbsp;  }<br>}
+| AZCOPY_CONTENT_TYPE_MAP  | 重写操作系统定义的一个或多个默认 MIME 类型映射。 将此变量设置为定义任何映射的 JSON 文件的路径。  下面是一个示例 JSON 文件的内容： <br><br> {<br>&nbsp;&nbsp;"MIMETypeMapping": { <br>&nbsp;&nbsp;&nbsp;&nbsp;".323": "text/h323",<br>&nbsp;&nbsp;&nbsp;&nbsp;".aaf": "application/octet-stream",<br>&nbsp;&nbsp;&nbsp; ".aca": "application/octet-stream",<br>&nbsp;&nbsp;&nbsp;&nbsp;".accdb": "application/msaccess",<br>&nbsp;&nbsp;&nbsp;&nbsp;  }<br>}
 |
 | AZCOPY_DEFAULT_SERVICE_API_VERSION | 覆盖服务 API 版本，使 AzCopy 可以容纳 Azure Stack 等自定义环境。 |
 | AZCOPY_DISABLE_HIERARCHICAL_SCAN | 仅当 Azure Blob 为源时才适用。 并发扫描速度更快，但使用分层列表 API，这可能会导致增加 IO/成本。 指定为“true”会降低性能，但能节省成本。 |
@@ -58,7 +58,6 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 | AZCOPY_USER_AGENT_PREFIX | 向默认 AzCopy 用户代理添加一个前缀，用于遥测。 将自动插入空格。 |
 | GOOGLE_APPLICATION_CREDENTIALS | 服务帐户密钥文件的绝对路径 提供密钥以对 Amazon Web Services 进行授权。 [使用 AzCopy 将数据从 Google Cloud Storage 复制到 Azure 存储（预览版）](storage-ref-azcopy-configuration-settings.md) |
 | HTTPS_PROXY | 为 AzCopy 配置代理设置。 将此变量设置为代理 IP 地址和代理端口号。 例如，`xx.xxx.xx.xxx:xx`。 如果在 Windows 中运行 AzCopy，AzCopy 会自动检测代理设置，因此你无需在 Windows 中使用此设置。 如果在 Windows 中选择使用此设置，此设置会替代自动检测。 请参阅[配置代理设置](#configure-proxy-settings) |
-
 
 ## <a name="configure-proxy-settings"></a>配置代理设置
 
