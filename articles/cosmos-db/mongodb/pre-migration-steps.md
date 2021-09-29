@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 80bb166925964624dc4a4b9811989ab15a5cfe9a
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9bf6403f57ed7b49fb6b60d1f674a10616c017f2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035669"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593865"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>将数据从 MongoDB 迁移到 Azure Cosmos DB's API for MongoDB 的迁移前步骤
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -84,7 +84,7 @@ ms.locfileid: "123035669"
 ### <a name="capacity-planning"></a>容量计划
 
 尝试为迁移到 Azure Cosmos DB 进行容量规划？
-* 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+* 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
 * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)
 
 ### <a name="considerations-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB’s API for MongoDB 时的注意事项
@@ -143,7 +143,7 @@ ms.locfileid: "123035669"
 
     此命令将输出类似于以下内容的 JSON 文档：
 
-    ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
+    `{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}`
 
 * 也可以使用[诊断设置](../cosmosdb-monitor-resource-logs.md)来了解针对 Azure Cosmos DB 执行的查询的频率和模式。 可将诊断日志中的结果发送到存储帐户、事件中心实例或 [Azure Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md)。  
 
@@ -161,7 +161,7 @@ ms.locfileid: "123035669"
    |联机|[Azure 数据库迁移服务](../../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集，负责复制实时更改 <br/>&bull; 仅适用于其他 MongoDB 源|
    |Offline|[Azure 数据库迁移服务](../../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集，负责复制实时更改 <br/>&bull; 仅适用于其他 MongoDB 源|
    |Offline|[Azure 数据工厂](../../data-factory/connector-azure-cosmos-db.md)|&bull; 易于设置且支持多个源 <br/>&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集 <br/>&bull; 缺少检查点，这意味着，在迁移过程中出现任何问题都需要重启整个迁移过程<br/>&bull; 缺少死信队列，这意味着，出现几个有错误的文件就可能会停止整个迁移过程。 <br/>&bull; 需要编写自定义代码来增大某些数据源的读取吞吐量|
-   |脱机|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](tutorial-mongotools-cosmos-db.md)|&bull; 易于设置和集成 <br/>&bull; 需要对限制进行自定义处理|
+   |Offline|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](tutorial-mongotools-cosmos-db.md)|&bull; 易于设置和集成 <br/>&bull; 需要对限制进行自定义处理|
    |脱机/联机|[Azure Databricks 和 Spark](migrate-databricks.md)|&bull; 完全控制迁移速率和数据转换 <br/>&bull; 需要自定义编码|
     
    * 如果资源能够容许脱机迁移，请使用下图选择适当的迁移工具：
@@ -204,7 +204,7 @@ ms.locfileid: "123035669"
 ## <a name="next-steps"></a>后续步骤
 
 * 尝试为迁移到 Azure Cosmos DB 进行容量规划？
-    * 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
     * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)
 * 迁移到 Azure Cosmos DB API for MongoDB
    * [使用 MongoDB 本机工具进行脱机迁移](tutorial-mongotools-cosmos-db.md)

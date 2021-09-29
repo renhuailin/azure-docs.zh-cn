@@ -3,12 +3,12 @@ title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
 ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: aa1dc5554924efa36d7f1ab8b9d7398a7a076852
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bca5d7535cbbcbf2fc7b6f54e853872c788c723d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437033"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792270"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -202,7 +202,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
   - 默认值是 ResourceGroup。
 - **EvaluationDelay**（可选）
   - 指定何时应该评估相关资源的存在性。 延迟仅用于作为创建或更新资源请求的结果的评估。
-  - 允许的值为 `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure` 或 ISO 8601 持续时间（介于 10 到 360 分钟之间）。
+  - 允许的值为 `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure` 或 ISO 8601 持续时间（介于 0 到 360 分钟之间）。
   - AfterProvisioning 值会检查在策略规则的 IF 条件中进行评估的资源的预配结果。 `AfterProvisioning` 在完成预配后运行，与结果无关。 如果预配的时间超过 6 小时，则在确定 AfterProvisioning 评估延迟时，它会被视为失败。
   - 默认值为 `PT10M`（10 分钟）。
   - 指定较长的评估延迟可能会导致记录的资源合规性状态在下一次[评估触发](../how-to/get-compliance-data.md#evaluation-triggers)之前不会更新。

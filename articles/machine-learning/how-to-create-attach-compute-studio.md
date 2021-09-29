@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/16/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8f74b21e2c40b441c48cc3a2837f396252408224
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be6bc9166ffc0bddae5433734d3213b53e6f6f0e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736598"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673647"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建计算目标以进行模型训练和部署
 
@@ -55,7 +55,7 @@ ms.locfileid: "121736598"
 
     :::image type="content" source="media/how-to-create-attach-studio/view-compute-targets.png" alt-text="查看计算目标的列表":::
 
-## <a name="start-creation-process"></a><a id="portal-create"></a>启动创建过程
+## <a name="start-creation-process"></a><a id="portal-create"></a>开始创建过程
 
 遵循上述步骤查看计算目标的列表。 然后使用以下步骤创建计算目标：
 
@@ -83,7 +83,7 @@ ms.locfileid: "121736598"
 
     :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="从列表中查看计算状态":::
 
-按照[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)中的步骤操作。
+请按[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)中的步骤进行操作。
 
 
 ## <a name="create-compute-clusters"></a><a name="amlcompute"></a>创建计算群集
@@ -97,15 +97,15 @@ ms.locfileid: "121736598"
 |虚拟机优先级 | 选择“专用”或“低优先级”。  低优先级虚拟机的费用更低，但不能保证计算节点。 其他作业可能会抢先于你的作业执行。
 |虚拟机大小     |  在你的区域中，支持的虚拟机大小可能会受到限制。 请查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 
-选择“下一步”，继续进行“高级设置”，并按如下所示填写表单：
+选择“下一步”，进入“高级设置”，按如下所示填写窗体 ：
 
 |字段  |说明  |
 |---------|---------|
 |计算名称     |  <li>名称是必须提供的，且长度必须介于 3 到 24 个字符之间。</li><li>有效字符为大小写字母、数字和 **-** 字符。</li><li>名称必须以字母开头</li><li>名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报</li><li>如果在名称中使用了 **-** 字符，在此字符之后必须至少跟有一个字母</li>     |
 |最小节点数 | 需要预配的节点的最小数量。 如果需要专用数量的节点，请在此处设置所需计数。 将最小值设置为 0 可节省费用，这样在群集空闲时就不需要为任何节点付费。 |
 |最大节点数 | 需要预配的节点的最大数量。 提交作业时，计算将自动缩放到此节点计数的最大值。 |
-| 缩减前的空闲秒数 | 将群集缩减到最小节点数前的空闲时间。 |
-| 启用 SSH 访问 | 为计算实例使用[启用 SSH 访问](#enable-ssh)的相同说明（上文）。 |
+| 缩减前的空闲秒数 | 将群集规模缩减到最小节点数之前等待的空闲时间。 |
+| 启用 SSH 访问 | 按照[启用 SSH 访问](#enable-ssh)中关于计算实例（上文）的说明操作。 |
 |高级设置     |  可选。 配置虚拟网络 指定 **资源组**、**虚拟网络** 和 **子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](./how-to-secure-training-vnet.md)。   另外请附加[托管标识](#managed-identity)以授予对资源的访问权限     |
 
 ### <a name="enable-ssh-access"></a><a name="enable-ssh"></a> 启用 SSH 访问
@@ -179,31 +179,31 @@ ms.locfileid: "121736598"
 1. 在 Azure 机器学习工作室中，选择“计算”、“附加的计算”，以及要删除的计算 。
 1. 使用“拆离”链接来拆离计算。
 
-## <a name="connect-with-ssh-access"></a><a name="ssh-access"></a> 通过 SSH 访问连接
+## <a name="connect-with-ssh-access"></a><a name="ssh-access"></a> 使用 SSH 访问进行连接
 
-如果创建计算实例或计算群集的同时启用了 SSH 访问，请使用以下步骤进行访问。
+如果创建了计算实例或计算群集，并启用了 SSH 访问，请按照以下步骤进行访问。
 
 1. 在工作区资源中查找计算：
     1. 在左侧选择“计算”。
-    1. 使用顶部的选项卡选择“计算实例”或“计算群集”以查找计算机。
-1. 在资源列表中选择计算名称。
+    1. 使用顶部的选项卡选择“计算实例”或“计算群集”，以查找计算机 。
+1. 在资源列表中选择计算机名称。
 1. 查找连接字符串：
 
-    * 对于“计算实例”，请在“详细信息”部分顶部选择“连接”。
+    * 对于“计算实例”，选择“详细信息”部分顶部的“连接”  。
 
-        :::image type="content" source="media/how-to-create-attach-studio/details.png" alt-text="屏幕截图：“详细信息”页顶部的“连接”工具。":::
+        :::image type="content" source="media/how-to-create-attach-studio/details.png" alt-text="屏幕截图：“详细信息”页面顶部的连接工具。":::
 
-    * 对于“计算群集”，选择顶部的“节点”，然后在表中为节点选择“连接字符串”。
-        :::image type="content" source="media/how-to-create-attach-studio/compute-nodes.png" alt-text="屏幕截图：计算群集中节点的“连接字符串”。":::
+    * 对于“计算群集”，选择顶部的“节点”，然后在表中为节点选择“连接字符串”  。
+        :::image type="content" source="media/how-to-create-attach-studio/compute-nodes.png" alt-text="屏幕截图：计算群集中节点的连接字符串。":::
 
 1. 复制该连接字符串。
 1. 对于 Windows，打开 PowerShell 或命令提示符：
-    1. 进入用来存储密钥的目录或文件夹
-    1. 将 -i 标志添加到连接字符串，以查找私钥并指向其存储位置：
+   1. 转到存储密钥的目录或文件夹
+   1. 将 -i 标志添加到连接字符串，以查找私钥并指向其存储位置：
     
-        ```ssh -i <keyname.pem> azureuser@... (rest of connection string)```
+      `ssh -i <keyname.pem> azureuser@... (rest of connection string)`
 
-1. 对于 Linux 用户，请按照[在 Azure 中创建和使用适用于 Linux VM 的 SSH 密钥对](../virtual-machines/linux/mac-create-ssh-keys.md)中的步骤操作
+1. 对于 Linux 用户，请按照[为 Azure 中的 Linux VM 创建和使用 SSH 密钥对](../virtual-machines/linux/mac-create-ssh-keys.md)中的步骤进行操作
 
 ## <a name="next-steps"></a>后续步骤
 

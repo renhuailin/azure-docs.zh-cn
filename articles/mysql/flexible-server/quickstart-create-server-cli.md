@@ -8,19 +8,21 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0e5b5a2fb64c803c76f663d506dec8d750a4af29
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b8b7454effbef87eb44ec5e99caf5bfb03756d1a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643097"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128609244"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for MySQL 灵活服务器
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
-本快速入门教程介绍如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](/cli/azure/get-started-with-azure-cli) 在大约 5 分钟内创建 Azure Database for MySQL 灵活服务器。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+本快速入门教程介绍如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](/cli/azure/get-started-with-azure-cli) 在大约 5 分钟内创建 Azure Database for MySQL 灵活服务器。 
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
@@ -226,7 +228,7 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl
 
 如果按照之前的命令连接到灵活服务器时看到以下错误消息，则说明未使用前面提到过的“允许从 Azure 中的任何 Azure 服务公共访问此服务器”设置防火墙规则，或该选项未保存。 请尝试重新设置防火墙，然后重试。
 
-错误 2002 (HY000)：无法连接到 <servername> 上的 MySQL 服务器 (115)
+错误 2002 (HY000)：无法连接到 \<servername\> 上的 MySQL 服务器 (115)
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -6,17 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/24/2021
-ms.openlocfilehash: 64206d1e5a26d163c5d5ed81c3c762a10de0fe96
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 571311d5d455bedc61bae06634324cc5a380f7ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769586"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555972"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>有关使用 Azure Database for PostgreSQL 灵活服务器确保业务连续性的概述
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL 灵活服务器以预览版提供
+
 
 Azure Database for PostgreSQL 灵活服务器中的业务连续性是指在遇到中断（尤其是计算基础结构的中断）时，使企业能够继续运营的机制、策略和过程。 在大多数情况下，灵活服务器将会处理云环境中可能发生的中断事件，并让应用程序和业务流程保持运行。 但是，有些事件无法自动处理，例如：
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: a5ebd28df08129b54a0ec74915fe442ffbaacdd8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e6913fae2b9b3516eb5bf1f88e1409ad134a724c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203714"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780274"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sds--chemical-information-management"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SDS & Chemical Information Management 的集成
 
@@ -88,7 +88,7 @@ ms.locfileid: "108203714"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SDS & Chemical Information Management 客户端支持团队](mailto:info@cloudsds.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -131,7 +131,7 @@ ms.locfileid: "108203714"
 
 * 直接转到 SDS & Chemical Information Management 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SDS & Chemical Information Management”磁贴时，这会重定向到 SDS & Chemical Information Management 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SDS & Chemical Information Management”磁贴时，这会重定向到 SDS & Chemical Information Management 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

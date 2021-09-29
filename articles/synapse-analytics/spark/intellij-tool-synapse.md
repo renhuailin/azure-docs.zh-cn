@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ccc36bb9f940fd018fe6d96b5338a7178657aa2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d237a1ff5ff2fa55a5a22fbc3b57c93849bdb87d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469374"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818833"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教程：使用 Synapse 工作区通过 IntelliJ 创建 Apache Spark 应用程序
 
@@ -67,7 +67,7 @@ ms.locfileid: "114469374"
 
     ![选择 Apache Spark SDK](./media/intellij-tool-synapse/create-synapse-application02.png)
 
-7. 选择“完成”。 可能需要在几分钟后才会显示该项目。
+7. 选择“完成”  。 可能需要在几分钟后才会显示该项目。
 8. Spark 项目自动为你创建项目。 若要查看项目，请执行以下操作：
 
    a. 在菜单栏中，导航到“文件” > “项目结构...”。 
@@ -145,7 +145,7 @@ ms.locfileid: "114469374"
     |主类名|默认值是所选文件中的主类。 可以通过选择省略号图标 (...) 并选择另一个类来更改类。|
     |作业配置|可以更改默认的键和值。 有关详细信息，请参阅 [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)。|
     |命令行参数|如果需要，可为 main 类输入参数并以空格分隔。|
-    |引用的 Jar 和引用的文件|可以输入引用的 Jar 和引用的文件的路径（如果有）。 还可以在 Azure 虚拟文件系统中浏览文件，但目前仅支持 ADLS 第 2 代群集。 有关详细信息，请参阅 [Apache Spark 配置]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) 和[如何将资源上传到群集](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。|
+    |引用的 Jar 和引用的文件|可以输入引用的 Jar 和引用的文件的路径（如果有）。 还可以在 Azure 虚拟文件系统中浏览文件，但目前仅支持 ADLS 第 2 代群集。 更多相关信息：[Apache Spark 配置](https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment)和[如何将资源上传到群集](../../storage/blobs/quickstart-storage-explorer.md)。|
     |作业上传存储|展开以显示其他选项。|
     |存储类型|从下拉列表中选择“使用 Azure Blob 上传”或“使用群集默认存储帐户上传” 。|
     |存储帐户|输入存储帐户。|
@@ -213,9 +213,9 @@ ms.locfileid: "114469374"
 
 确保符合 WINUTILS.EXE 先决条件。
 
-1. 从菜单栏中，导航到“运行” > “编辑配置...”   。
+1. 从菜单栏中，导航到“运行” > “编辑配置...” 。
 2. 在“运行/调试配置”窗口中的左侧窗格内，导航到“Synapse 上的 Apache Spark” > “[Synapse 上的 Spark] myApp”。  
-3. 在主窗口中，选择“在本地运行”选项卡  。
+3. 在主窗口中，选择“在本地运行”选项卡。
 4. 提供以下值，然后选择“确定”：
 
     |属性 |值 |
@@ -225,7 +225,7 @@ ms.locfileid: "114469374"
 
     ![本地控制台设置配置](./media/intellij-tool-synapse/local-console-synapse01.png)
 
-5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”      。
+5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”    。
 6. 在菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark 本地控制台(Scala)”。  
 7. 然后，系统可能会显示两个对话框，询问你是否要自动修复依赖项。 如果出现对话框，请选择“自动修复”。
 
@@ -241,11 +241,11 @@ ms.locfileid: "114469374"
 
 它仅在 IntelliJ 2018.2 和 2018.3 上受支持。
 
-1. 从菜单栏中，导航到“运行” > “编辑配置...”   。
+1. 从菜单栏中，导航到“运行” > “编辑配置...” 。
 
 2. 在“运行/调试配置”窗口中的左侧窗格内，导航到“Synapse 上的 Apache Spark” > “[Synapse 上的 Spark] myApp”。  
 
-3. 在主窗口中，选择“在群集中远程运行”选项卡  。
+3. 在主窗口中，选择“在群集中远程运行”选项卡。
 
 4. 提供以下值，然后选择“确定”：
 
@@ -257,7 +257,7 @@ ms.locfileid: "114469374"
 
     ![交互式控制台设置配置](./media/intellij-tool-synapse/interactive-console-configuration.png)
 
-5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”      。
+5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”    。
 
 6. 在菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark Livy 交互式会话控制台(Scala)”。  
 7. 控制台应如下图所示。 在“控制台”窗口中键入 `sc.appName`，然后按 Ctrl+Enter。 系统将显示结果。 可以选择红色按钮来停止本地控制台。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 13fe269431a84a00a8af073849cbd17d188c5175
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 70b8715119eb221fc860ba6e7a26b92bffadd12f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724759"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744925"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -217,7 +217,7 @@ AKS 将通过 Azure RBAC 集成使用 Kubernetes 授权 Webhook 服务器，这�
 
 在这种情形下，请使用 Azure RBAC 机制和 API 来分配用户内置角色或创建自定义角色，就像在使用 Kubernetes 角色时一样。 
 
-使用此功能，不仅可为用户提供跨订阅的 AKS 资源权限，还可在每个控制 Kubernetes API 访问权限的群集中配置角色和权限。 例如，可以针对订阅范围授予“`Azure Kubernetes Service RBAC Viewer`”角色。 角色接收方将能够从所有群集列出和获取所有 Kubernetes 对象，而无需修改这些群集。
+使用此功能，不仅可为用户提供跨订阅的 AKS 资源权限，还可在每个控制 Kubernetes API 访问权限的群集中配置角色和权限。 例如，可以针对订阅范围授予“`Azure Kubernetes Service RBAC Reader`”角色。 角色接收方将能够从所有群集列出和获取所有 Kubernetes 对象，而无需修改这些群集。
 
 > [!IMPORTANT]
 > 在使用此功能之前，需要启用 Azure RBAC 进行 Kubernetes 授权。 有关更多详细信息和分步指导，请参阅我们的[使用 Azure RBAC 进行 Kubernetes 授权](manage-azure-rbac.md)操作指南。
@@ -226,9 +226,9 @@ AKS 将通过 Azure RBAC 集成使用 Kubernetes 授权 Webhook 服务器，这�
 
 AKS 提供以下四个内置角色。 它们与 [Kubernetes 内置角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)很相似，但有一些不同之处，例如支持 CRD。 请查看每个 [Azure内置角色](../role-based-access-control/built-in-roles.md)允许的操作的完整列表。
 
-| 角色                                | 描述  |
+| 角色                                | 说明  |
 |-------------------------------------|--------------|
-| Azure Kubernetes 服务 RBAC 查看者  | 允许进行只读访问并查看命名空间中的大多数对象。 <br> 不允许查看角色或角色绑定。<br> 不允许查看 `Secrets`。 读取 `Secrets` 内容可访问命名空间中的 `ServiceAccount` 凭据，这样就会允许以命名空间中任何 `ServiceAccount` 的身份进行 API 访问（一种特权提升形式）。  |
+| Azure Kubernetes 服务 RBAC 读取者  | 允许进行只读访问并查看命名空间中的大多数对象。 <br> 不允许查看角色或角色绑定。<br> 不允许查看 `Secrets`。 读取 `Secrets` 内容可访问命名空间中的 `ServiceAccount` 凭据，这样就会允许以命名空间中任何 `ServiceAccount` 的身份进行 API 访问（一种特权提升形式）。  |
 | Azure Kubernetes 服务 RBAC 写入者 | 允许对命名空间中的大多数对象进行读/写访问。 <br> 不允许查看或修改角色或角色绑定。 <br> 允许以命名空间中任何 ServiceAccount 的身份访问 `Secrets` 和运行 Pod，因此可用于获取命名空间中任何 ServiceAccount 的 API 访问级别。 |
 | Azure Kubernetes 服务 RBAC 管理员  | 允许要在命名空间内授予的管理员访问权限。 <br> 允许对命名空间（或群集范围）中的大多数资源进行读/写访问，包括在命名空间内创建角色和角色绑定。 <br> 不允许对资源配额或命名空间本身进行写入访问。 |
 | Azure Kubernetes 服务 RBAC 群集管理员  | 允许超级用户访问权限（对任何资源执行任何操作）。 <br> 提供对群集中每个资源和所有命名空间的完全控制。 |

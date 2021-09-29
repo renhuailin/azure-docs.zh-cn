@@ -4,16 +4,16 @@ ms.topic: include
 ms.service: azure-video-analyzer
 ms.date: 05/03/2021
 ms.author: juliako
-ms.openlocfilehash: 341730ee0ed64809cec3f60a0e28cb6367fa863f
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: ca59a7d54b405c323529353878f2e2de27b5566a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113559700"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056928"
 ---
 ### <a name="get-the-sample-code"></a>获取示例代码
 
-1. 克隆 [AVA C# 示例存储库](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp)。
+1. 克隆 [AVA C# 示例存储库](https://github.com/Azure-Samples/video-analyzer-iot-edge-python)。
 1. 启动 Visual Studio Code，然后打开下载的存储库所在的文件夹。
 1. 在 Visual Studio Code 中，浏览到 src/cloud-to-device-console-app 文件夹，然后创建一个名为 appsettings.json 的文件。 该文件包含运行程序所需的设置。
 1. 浏览到上述设置步骤中创建的存储帐户中的文件共享，并找到“deployment-output”文件共享下的“appsettings.json”文件。 单击该文件，然后点击“下载”按钮。 应在新的浏览器选项卡中打开内容，如下所示：

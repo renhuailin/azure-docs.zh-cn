@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0558be2ea1defb2a09e6461ba838e328cb293d6
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 072cfcd66207d8c778c77f3ece4db49a30e8ca28
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112201709"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124826854"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
@@ -82,7 +82,7 @@ Identity Governance 可帮助组织在以下需求之间实现平衡：工作效
 |访问请求|最终用户可以请求组成员身份或应用程序访问权限。 最终用户（包括来自其他组织的来宾）可以请求访问访问包。|[权利管理](entitlement-management-overview.md)|
 |工作流|资源所有者可以定义访问请求的审批者和升级审批者，以及角色激活请求的审批者。  |[权利管理](entitlement-management-overview.md)和 [PIM](../privileged-identity-management/pim-configure.md)|
 |策略和角色管理|管理员可以为应用程序的运行时访问定义条件访问策略。  资源所有者可以为用户通过访问包进行的访问定义策略。|[条件访问](../conditional-access/overview.md)和[权利管理](entitlement-management-overview.md)策略|
-|访问证书|管理员可以为以下对象启用定期访问重新认证：SaaS 应用或云组成员身份、Azure AD 或 Azure 资源角色分配。 自动删除资源访问权限、阻止来宾访问并删除来宾帐户。|[访问评审](access-reviews-overview.md)，也出现在 [PIM](../privileged-identity-management/pim-how-to-start-security-review.md) 中|
+|访问证书|管理员可以为以下对象启用定期访问重新认证：SaaS 应用或云组成员身份、Azure AD 或 Azure 资源角色分配。 自动删除资源访问权限、阻止来宾访问并删除来宾帐户。|[访问评审](access-reviews-overview.md)，也出现在 [PIM](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md) 中|
 |履行和预配|自动预配和取消预配到 Azure AD 连接的应用（包括通过 SCIM）和 SharePoint Online 网站。 |[用户预配](../app-provisioning/user-provisioning.md)|
 |报告和分析|管理员可以检索最近的用户预配和登录活动的审核日志。 通过访问包与 Azure Monitor 和“有权访问的用户”集成。|[Azure AD 报表](../reports-monitoring/overview-reports.md)和[监视](../reports-monitoring/overview-monitoring.md)|
 |特权访问|面向 Azure AD 角色（包括自定义角色）和 Azure 资源角色的实时和计划访问、警报以及审批工作流。|[Azure AD PIM](../privileged-identity-management/pim-configure.md)|

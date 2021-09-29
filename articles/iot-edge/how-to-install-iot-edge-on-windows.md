@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6169d3b0f99b2044fbe6076283e176d4dc1a76a7
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 8cc39325f8c993afb6901e9700376fc73ecbefe7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272432"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602852"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device"></a>在 Windows 设备上安装和预配适用于 Linux 的 Azure IoT Edge
 
@@ -81,8 +81,8 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
 
   * 选择要使用的身份验证方法，然后按照相应文章中的步骤设置 DPS 实例，并创建注册以设置设备。 有关注册类型的详细信息，请访问 [Azure IoT 中心设备预配服务概念](../iot-dps/concepts-service.md#enrollment)。
 
-    * [使用 DPS 和对称密钥预配 IoT Edge 设备](how-to-auto-provision-symmetric-keys.md)。
-    * [使用 DPS 和 X.509 证书预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)。
+    * [使用 DPS 和对称密钥预配 IoT Edge 设备](how-to-provision-devices-at-scale-linux-on-windows-symmetric.md)。
+    * [使用 DPS 和 X.509 证书预配 IoT Edge 设备](how-to-provision-devices-at-scale-linux-on-windows-x509.md)。
     * [使用 DPS 和 TPM 证明预配 IoT Edge 设备](how-to-auto-provision-tpm-linux-on-windows.md)。
 
 ## <a name="create-a-new-deployment"></a>创建新部署
@@ -240,8 +240,8 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
 
 * 自动预配：
 
-  * [使用设备预配服务 (DPS) 和对称密钥进行自动预配](how-to-auto-provision-symmetric-keys.md?tabs=eflow#configure-the-device-with-provisioning-information)
-  * [使用 DPS 和 X.509 证书进行自动预配](how-to-auto-provision-x509-certs.md?tabs=eflow#configure-the-device-with-provisioning-information)
+  * [使用设备预配服务 (DPS) 和对称密钥进行自动预配](how-to-provision-devices-at-scale-linux-on-windows-symmetric.md#configure-the-device-with-provisioning-information)
+  * [使用 DPS 和 X.509 证书进行自动预配](how-to-provision-devices-at-scale-linux-on-windows-x509.md#configure-the-device-with-provisioning-information)
   * [使用 DPS 和 TPM 证明进行自动预配](how-to-auto-provision-tpm-linux-on-windows.md#configure-the-device-with-provisioning-information)
 
 ### <a name="manual-provisioning-using-the-connection-string"></a>使用连接字符串进行手动预配
@@ -321,6 +321,9 @@ Provision-EflowVm -provisioningType ManualX509 -iotHubHostname "<HUB HOSTNAME>" 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+> [!IMPORTANT]
+> 如果使用 IoT Edge for Linux on Windows PowerShell 公共函数，请确保将目标设备上的执行策略设置为 `AllSigned`。 确保满足[适用于 IoT Edge for Linux on Windows 的 PowerShell 函数](reference-iot-edge-for-linux-on-windows-functions.md)的所有先决条件。
+
 1. 在 PowerShell 会话中使用以下命令，登录到 Windows 虚拟机上的 IoT Edge for Linux：
 
    ```powershell
@@ -351,9 +354,6 @@ Provision-EflowVm -provisioningType ManualX509 -iotHubHostname "<HUB HOSTNAME>" 
        ```
 
 # <a name="windows-admin-center"></a>[Windows 管理中心](#tab/windowsadmincenter)
-
-> [!NOTE]
-> 如果使用 IoT Edge for Linux on Windows PowerShell 公共函数，请确保将目标设备上的执行策略设置为 `AllSigned`。 确保满足[适用于 IoT Edge for Linux on Windows 的 PowerShell 函数](reference-iot-edge-for-linux-on-windows-functions.md)的所有先决条件。
 
 1. 从 Windows Admin Center 中所连接设备的列表中选择你的 IoT Edge 设备，以连接到该设备。
 

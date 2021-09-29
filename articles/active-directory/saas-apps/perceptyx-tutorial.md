@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 58fcc1ad45e9a3e0d956baf455eda9f616fc9d54
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7ffd11f3aa0a422f8b61c6accdf162c610b08947
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734164"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738066"
 ---
 # <a name="tutorial-integrate-perceptyx-with-azure-active-directory"></a>教程：将 Perceptyx 与 Azure Active Directory 集成
 
@@ -72,9 +72,9 @@ ms.locfileid: "109734164"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”页面上，执行以下步骤：
+1. 在“基本 SAML 配置”页上，执行以下步骤：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=B`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=B`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=P`
 
@@ -123,7 +123,7 @@ ms.locfileid: "109734164"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Perceptyx。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Perceptyx”磁贴时，你应会自动登录到设置了 SSO 的 Perceptyx。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Perceptyx”磁贴时，你应会自动登录到设置了 SSO 的 Perceptyx。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

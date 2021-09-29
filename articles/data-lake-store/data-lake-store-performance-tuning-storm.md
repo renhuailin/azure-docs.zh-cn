@@ -1,17 +1,17 @@
 ---
 title: 性能优化 - Storm 与 Azure Data Lake Storage Gen1
 description: 了解在优化 Azure Storm 拓扑的性能时应该考虑的因素，包括常见问题的故障排除。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: twooley
-ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 8b90b6e6ca6867ea397ac6fca5abe22dd5c0c86b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97725031"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615902"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 

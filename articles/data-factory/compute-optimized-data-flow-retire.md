@@ -4,14 +4,15 @@ description: 即将停用数据流计算优化选项
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: tutorial
 ms.date: 06/29/2021
-ms.openlocfilehash: 883fd878ecc90cb9608b6d5e6cbe8be4fb1ea079
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ef5e68f9629feab42a4417b4e08697038947495
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122643112"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661823"
 ---
 # <a name="retirement-of-data-flow-compute-optimized-option"></a>停用数据流计算优化选项
 
@@ -26,7 +27,7 @@ Azure 数据工厂和 Azure Synapse Analytics 数据流提供了一种代码较�
 1. 创建将“常规用途”或“内存优化”作为计算类型的新 Azure Integration Runtime 实例。
 2. 使用其中任一计算类型设置数据流活动。
 
-   ![计算类型](media/data-flow/compute-types.png)
+   :::image type="content" source="media/data-flow/compute-types.png" alt-text="计算类型":::
 
 ## <a name="comparison-between-different-compute-options"></a>不同计算选项之间的比较 
 
@@ -37,5 +38,5 @@ Azure 数据工厂和 Azure Synapse Analytics 数据流提供了一种代码较�
 | 计算优化数据流（已弃用） | 不建议用于生产工作负载 |
 
 * [访问 Azure 数据工厂 定价页，了解可用于常规用途和内存优化数据流的最新更新定价](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
-* [在此处可找到数据流常见问题解答中的更多详细信息](https://aka.ms/dataflowsqa)  
+* [在此处可找到数据流常见问题解答中的更多详细信息](/azure/data-factory/frequently-asked-questions#mapping-data-flows)  
 * [在 Microsoft Q&A 上发布有关数据流的问题并查找答案](https://aka.ms/datafactoryqa)

@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: cef23894759b0b2dca7098ef1c430548d1720406
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5d25e46ae62962e3f94d4a3f9222f91ebfa1d430
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868285"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823442"
 ---
 # <a name="preview-create-virtual-machines-in-a-flexible-scale-set-using-azure-portal"></a>预览：使用 Azure 门户在灵活规模集中创建虚拟机
 
@@ -37,9 +37,7 @@ ms.locfileid: "122868285"
 
 在以灵活业务流程模式部署虚拟机规模集之前，必须先注册订阅以获取预览版功能。 功能注册最多可能需要 15 分钟。
 
-在适用于规模集的灵活业务流程模式的预览期，使用以下步骤中的链接访问预览版 Azure 门户。 
-
-1. 通过 https://preview.portal.azure.com 登录到 Azure 门户。
+1. 通过 https://portal.azure.com 登录到 Azure 门户。
 1. 转到你的订阅。
 1. 选择订阅的名称，导航到你要在灵活业务流程模式下为其创建规模集的订阅的详细信息页。
 1. 在菜单中的“设置”下，选择“预览功能” 。
@@ -57,9 +55,7 @@ ms.locfileid: "122868285"
 
 ### <a name="create-a-virtual-machine-scale-set-in-flexible-orchestration-mode-through-the-azure-portal"></a>通过 Azure 门户以灵活业务流程模式创建虚拟机规模集。
 
-在适用于规模集的灵活业务流程模式的预览期，使用以下步骤中的链接访问预览版 Azure 门户。 
-
-1. 通过 https://preview.portal.azure.com 登录到 Azure 门户。
+1. 通过 https://portal.azure.com 登录到 Azure 门户。
 1. 在搜索栏中，搜索并选择“虚拟机规模集”。
 1. 在“虚拟机规模集”页上选择“创建”。 
 1. 在“创建虚拟机规模集”页上查看“业务流程”部分。 

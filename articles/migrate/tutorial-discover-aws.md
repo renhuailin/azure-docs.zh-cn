@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: f71a8f3a720fae540773019e0ba2a3eb582fd76e
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 625a11c42db4971dfa5e9c355354987178afbb07
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751160"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611314"
 ---
 # <a name="tutorial-discover-aws-instances-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现 AWS 实例
 
@@ -186,14 +186,15 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    - 对于公有云： 
-    
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
-    - 对于 Azure 政府： 
-    
-        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
+   - 对于公有云： 
 
-    脚本将在成功完成时启动设备 Web 应用程序。
+     `PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1`
+
+   - 对于 Azure 政府： 
+
+     `PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1`
+
+     脚本将在成功完成时启动设备 Web 应用程序。
 
 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
 

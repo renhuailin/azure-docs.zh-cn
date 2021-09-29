@@ -6,12 +6,12 @@ ms.date: 03/26/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d394b74bb2021d77f9d68cd101e0ee98e091f0ac
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 14aece10cad828b82f2541e4f0478633382de662
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892987"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656239"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教程：使用 ARM 模板部署虚拟机扩展
 
@@ -45,7 +45,7 @@ ms.locfileid: "111892987"
 可以使用内联 PowerShell 脚本或脚本文件。 本教程介绍如何使用脚本文件。 从 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 共享包含以下内容的 PowerShell 脚本：
 
 ```azurepowershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools
 ```
 
 如果选择将文件发布到你自己的位置，请在本教程的后面部分更新模板中的 `fileUri` 元素。
@@ -82,23 +82,23 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2020-12-01",
+  "apiVersion": "2021-04-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
-      "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
+    "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
   ],
   "properties": {
-      "publisher": "Microsoft.Compute",
-      "type": "CustomScriptExtension",
-      "typeHandlerVersion": "1.7",
-      "autoUpgradeMinorVersion":true,
-      "settings": {
-        "fileUris": [
-          "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
-        ],
-        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
-      }
+    "publisher": "Microsoft.Compute",
+    "type": "CustomScriptExtension",
+    "typeHandlerVersion": "1.7",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "fileUris": [
+        "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
+      ],
+      "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
+    }
   }
 }
 ```

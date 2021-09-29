@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室的实验室中删除实验室或 VM
+title: 删除实验室或实验室中的 VM
 description: 本文介绍如何使用 Azure 门户（Azure 开发测试实验室）删除实验室或删除实验室中的 VM。
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 495fb98f3da41a47d316dd64554ba616ede0af47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af8a1691bbd0f34647b7e52a8f05b7acffb86d2b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481215"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616358"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中删除实验室或 VM
 本文介绍如何在实验室中删除实验室或 VM。

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7c4e0fed78eb85e0e5326cbee6c6823466811c16
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 0d5d9eb7d2d8097da47d6639b1b6bb6887825207
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321855"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649107"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -77,8 +77,8 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 默认情况下，新存储帐户在热访问层中创建，常规用途 v1 存储帐户可以升级到“热”或“冷”帐户层。 如果升级时未指定帐户访问层，则默认情况下，它将升级到“热”层。 如果正探讨要将哪个访问层用于升级，请考虑当前的数据使用场景。 有两种典型的用户场景适合迁移到常规用途 v2 帐户：
 
-* 已经有了一个常规用途 v1 存储帐户，想要使用适合 Blob 数据的存储访问层来评估对常规用途 v2 存储帐户所做的升级。
-* 已经决定使用常规用途 v2 存储帐户，或者已经有了一个这种帐户，想要评估一下是应使用热存储访问层还是冷存储访问层来存储 Blob 数据。
+- 已经有了一个常规用途 v1 存储帐户，想要使用适合 Blob 数据的存储访问层来评估对常规用途 v2 存储帐户所做的升级。
+- 已经决定使用常规用途 v2 存储帐户，或者已经有了一个这种帐户，想要评估一下是应使用热存储访问层还是冷存储访问层来存储 Blob 数据。
 
 在这两种情况下，首要任务都是估算对存储在常规用途 v2 存储帐户中的数据进行存储、访问和操作所需的成本，并将该成本与当前成本进行比较。
 
@@ -88,17 +88,17 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 所有存储帐户使用的定价模型都适用于 Blob 存储，具体取决于每个 Blob 的层。 使用存储帐户时，需要考虑到以下计费因素：
 
-* **存储成本**：除了存储的数据量，存储数据的成本将因存储访问层而异。 层越冷，单 GB 成本越低。
+- **存储成本**：除了存储的数据量，存储数据的成本将因存储访问层而异。 层越冷，单 GB 成本越低。
 
-* **数据访问成本**：层越冷，数据访问费用越高。 对于冷存储访问层和存档存储访问层中的数据，需要按 GB 支付读取方面的数据访问费用。
+- **数据访问成本**：层越冷，数据访问费用越高。 对于冷存储访问层和存档存储访问层中的数据，需要按 GB 支付读取方面的数据访问费用。
 
-* **事务成本**：层越冷，每个层的按事务收费越高。
+- **事务成本**：层越冷，每个层的按事务收费越高。
 
-* **异地复制数据传输成本**：此费用仅适用于配置了异地复制的帐户，包括 GRS 和 RA-GRS。 异地复制数据传输会产生每 GB 费用。
+- **异地复制数据传输成本**：此费用仅适用于配置了异地复制的帐户，包括 GRS 和 RA-GRS。 异地复制数据传输会产生每 GB 费用。
 
-* **出站数据传输成本**：出站数据传输（传出 Azure 区域的数据）会按每 GB 产生带宽使用费，与通用存储帐户一致。
+- **出站数据传输成本**：出站数据传输（传出 Azure 区域的数据）会按每 GB 产生带宽使用费，与通用存储帐户一致。
 
-* **更改存储访问层**：将帐户存储访问层从“冷”更改为“热”会产生费用，费用等于读取存储帐户中存在的所有数据的费用。 但是，将帐户访问层从“热”更改为“冷”产生的费用则相当于将所有数据写入冷层（仅限 GPv2 帐户）。
+- **更改存储访问层**：将帐户存储访问层从“冷”更改为“热”会产生费用，费用等于读取存储帐户中存在的所有数据的费用。 但是，将帐户访问层从“热”更改为“冷”产生的费用则相当于将所有数据写入冷层（仅限 GPv2 帐户）。
 
 > [!NOTE]
 > 有关存储帐户的定价模型的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)页。 有关出站数据传输收费的详细信息，请参阅[数据传输定价详细信息](https://azure.microsoft.com/pricing/details/data-transfers/)页。
@@ -107,13 +107,13 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 若要估算在特定层的常规用途 v2 存储帐户中存储和访问 Blob 数据所需的成本，请评估现有的使用模式，或对预期的使用模式进行大致的估计。 一般情况下，需了解：
 
-* Blob 存储消耗量（以 GB 为单位），包括：
-  * 有多少数据存储在存储帐户中？
-  * 数据量每月如何变化；新数据是否不断替换旧数据？
+- Blob 存储消耗量（以 GB 为单位），包括：
+  - 有多少数据存储在存储帐户中？
+  - 数据量每月如何变化；新数据是否不断替换旧数据？
 
-* Blob 存储数据的主要访问模式，包括：
-  * 要从存储帐户读取多少数据，向其写入了多少数据？
-  * 针对存储帐户中的数据执行多少次读取和写入操作？
+- Blob 存储数据的主要访问模式，包括：
+  - 要从存储帐户读取多少数据，向其写入了多少数据？
+  - 针对存储帐户中的数据执行多少次读取和写入操作？
 
 若要确定最适合需求的访问层，确定 blob 数据容量以及如何使用这些数据会很有帮助。 最好通过查看帐户的监视指标来完成此操作。
 
@@ -155,9 +155,9 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 若要估算 Blob 存储帐户的事务费用，需将事务细分成三组，因为这些事务价格不一样。
 
-* 写入事务，例如 *'PutBlob'* 、 *'PutBlock'* 、 *'PutBlockList'* 、 *'AppendBlock'* 、 *'ListBlobs'* 、 *'ListContainers'* 、 *'CreateContainer'* 、 *'SnapshotBlob'* 和 *'CopyBlob'* 。
-* 删除事务，例如 *'DeleteBlob'* 和 *'DeleteContainer'* 。
-* 所有其他事务。
+- 写入事务，例如 *'PutBlob'* 、 *'PutBlock'* 、 *'PutBlockList'* 、 *'AppendBlock'* 、 *'ListBlobs'* 、 *'ListContainers'* 、 *'CreateContainer'* 、 *'SnapshotBlob'* 和 *'CopyBlob'* 。
+- 删除事务，例如 *'DeleteBlob'* 和 *'DeleteContainer'* 。
+- 所有其他事务。
 
 若要估算 GPv1 存储帐户的事务成本，需聚合所有事务而不考虑操作/API。
 
@@ -167,9 +167,9 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 若要估算 Blob 存储帐户的数据访问费用，需将事务细分成两组。
 
-* 从存储帐户检索的数据量可以通过查看主要为 *'GetBlob'* 和 *'CopyBlob'* 操作的 *'TotalEgress'* 计得之和来估算。
+- 从存储帐户检索的数据量可以通过查看主要为 *'GetBlob'* 和 *'CopyBlob'* 操作的 *'TotalEgress'* 计得之和来估算。
 
-* 写入到存储帐户的数据量可以通过查看主要为 *'PutBlob'* 、 *'PutBlock'* 、 *'CopyBlob'* 和 *'AppendBlock'* 操作的 *'TotalIngress'* 计算之和来估算。
+- 写入到存储帐户的数据量可以通过查看主要为 *'PutBlob'* 、 *'PutBlock'* 、 *'CopyBlob'* 和 *'AppendBlock'* 操作的 *'TotalIngress'* 计算之和来估算。
 
 在使用 GRS 或 RA-GRS 存储帐户时，也可以通过所写入数据量的估算值来计算 Blob 存储帐户的异地复制数据传输费用。
 
@@ -178,7 +178,7 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [存储帐户概述](storage-account-overview.md)
-* [创建存储帐户](storage-account-create.md)
-* [将 Azure 存储帐户移到另一个区域](storage-account-move.md)
-* [恢复删除的存储帐户](storage-account-recover.md)
+- [存储帐户概述](storage-account-overview.md)
+- [创建存储帐户](storage-account-create.md)
+- [将 Azure 存储帐户移到另一个区域](storage-account-move.md)
+- [恢复删除的存储帐户](storage-account-recover.md)

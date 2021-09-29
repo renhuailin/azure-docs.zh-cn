@@ -8,12 +8,12 @@ ms.service: virtual-network
 ms.topic: tutorial
 ms.date: 03/06/2021
 ms.author: kumud
-ms.openlocfilehash: cfbb499c79761e1f2014c834e65dac35fe09ef90
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4af40f7f1caab7e4517c0dd621e400f58e3a29ad
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057280"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091362"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 
@@ -178,7 +178,7 @@ ms.locfileid: "106057280"
     | 目标应用程序安全组 | 选择“myAsgMgmtServers”。 |
     | 服务 | 保留默认值“自定义”。 |
     | 目标端口范围 | 输入“3389”。 |
-    | 协议 | 选择“TCP”。 |
+    | 协议 | 选择 **“任何”**。 |
     | 操作 | 保留默认值“允许”。 |
     | 优先级 | 保留默认值“110”。 |
     | 名称 | 输入“Allow-RDP-All”。 |

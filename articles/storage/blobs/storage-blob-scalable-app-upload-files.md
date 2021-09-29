@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: a23836ebadace19c23802a0897287932892657a0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 787cfde40013122c3827cddd4903ca15dfe51836
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459658"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624930"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
 
@@ -21,10 +21,10 @@ ms.locfileid: "110459658"
 本系列教程的第二部分将介绍如何：
 
 > [!div class="checklist"]
-> * 配置连接字符串
-> * 构建应用程序
-> * 运行应用程序
-> * 验证连接数
+> - 配置连接字符串
+> - 构建应用程序
+> - 运行应用程序
+> - 验证连接数
 
 Microsoft Azure Blob 存储提供可缩放的服务来存储数据。 为了尽可能提高应用程序的性能，建议了解 blob 存储的工作方式。 了解 Azure Blob 的限制非常重要，要深入了解这些限制，请访问：[Blob 存储的可伸缩性和性能目标](../blobs/scalability-targets.md)。
 
@@ -160,6 +160,7 @@ private static async Task UploadFilesAsync()
     }
 }
 ```
+
 除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
 
 |properties|值|说明|
@@ -205,10 +206,10 @@ C:\>
 本系列的第二部分介绍了以并行方式将大量随机数据上传到存储帐户的方法，例如如何：
 
 > [!div class="checklist"]
-> * 配置连接字符串
-> * 构建应用程序
-> * 运行应用程序
-> * 验证连接数
+> - 配置连接字符串
+> - 构建应用程序
+> - 运行应用程序
+> - 验证连接数
 
 进入本系列的第三部分，从存储帐户下载大量数据。
 

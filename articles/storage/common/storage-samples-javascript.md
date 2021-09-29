@@ -1,19 +1,19 @@
 ---
 title: 使用 JavaScript 的 Azure 存储示例 | Microsoft 文档
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 JavaScript/Node.js 存储客户端库发现 Blob、队列、表和文件的入门示例。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-js
-ms.openlocfilehash: fa36c399807c92b4c521e5b29c0d465a42462cbe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d2a098a68c086e658ed697f0eb40176526bf6115
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740134"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549388"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>使用 v12 JavaScript 客户端库的 Azure 存储示例
 
@@ -149,7 +149,6 @@ ms.locfileid: "121740134"
       [使用容器客户端触发可恢复的错误](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
    :::column-end:::
 :::row-end:::
-
 
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2 示例
 
@@ -406,10 +405,10 @@ ms.locfileid: "121740134"
 
 若要查看完整的 JavaScript 示例库，请转到：
 
-* [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
-* [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
-* [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
-* [Azure 队列代码示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
+- [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
+- [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
+- [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
+- [Azure 队列代码示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
 
 可以浏览并克隆每个库的 GitHub 存储库。
 
@@ -417,16 +416,16 @@ ms.locfileid: "121740134"
 
 如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [在 JavaScript 中开始使用 Azure Blob 服务](../blobs/storage-quickstart-blobs-nodejs.md)
-* [在 JavaScript 中开始使用 Azure 队列服务](../queues/storage-quickstart-queues-nodejs.md)
-* [在 JavaScript 中开始使用 Azure 表服务](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+- [在 JavaScript 中开始使用 Azure Blob 服务](../blobs/storage-quickstart-blobs-nodejs.md)
+- [在 JavaScript 中开始使用 Azure 队列服务](../queues/storage-quickstart-queues-nodejs.md)
+- [在 JavaScript 中开始使用 Azure 表服务](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关其他语言的示例的信息：
 
-* .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
-* Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
-* Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
-* C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
-* 所有其他语言：[Azure 存储示例](storage-samples.md)
+- .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
+- Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
+- Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
+- C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
+- 所有其他语言：[Azure 存储示例](storage-samples.md)

@@ -2,13 +2,13 @@
 title: WebHook 事件传送
 description: 本文介绍如何在使用 Webhook 时进行 WebHook 事件传送和终结点验证。
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: 04ae18ca6aab01331bdc1005498820177dfec56d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 09/15/2021
+ms.openlocfilehash: 58da34498fa3e2fc81c8fe1476b1098688b9c6c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450190"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625157"
 ---
 # <a name="webhook-event-delivery"></a>Webhook 事件传送
 Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格服务会向已配置的终结点 POST HTTP 请求，并在请求正文中包含该事件。
@@ -81,7 +81,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 有关处理订阅验证握手的示例，请参阅 [C# 示例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)。
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 验证终结点
-CloudEvents v1.0 使用 **HTTP OPTIONS** 方法实现自己的[滥用保护语义](webhook-event-delivery.md)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格可与 CloudEvents v1.0 滥用保护配合使用，取代事件网格验证事件机制。
+CloudEvents v1.0 使用 **HTTP OPTIONS** 方法实现自己的 [滥用保护语义](webhook-event-delivery.md)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格可与 CloudEvents v1.0 滥用保护配合使用，取代事件网格验证事件机制。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章，了解如何排查事件订阅验证问题： 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0bbb1df9821879dd34956d1cb16d2b37850d1d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 484136b1c01cf93515971a42030eacfdda51715e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734522"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784159"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Azure AD 标识保护中的用户体验
 
@@ -29,7 +29,7 @@ ms.locfileid: "121734522"
 
 ## <a name="multi-factor-authentication-registration"></a>多重身份验证注册
 
-启用需要注册多重身份验证并面向所有用户的标识保护策略，将确保他们能够在以后使用 Azure AD MFA 进行自我修正。 配置此策略后，用户可选择在 14 天的期限内进行注册，也可在最后强制用户进行注册。 用户体验如下所述。 有关详细信息，请参阅文章中的最终用户文档：[双因素验证概述以及工作或学校帐户](../user-help/multi-factor-authentication-end-user-first-time.md)。
+启用需要注册多重身份验证并面向所有用户的标识保护策略，将确保他们能够在以后使用 Azure AD MFA 进行自我修正。 配置此策略后，用户可选择在 14 天的期限内进行注册，也可在最后强制用户进行注册。 用户体验如下所述。 有关详细信息，请参阅文章中的最终用户文档：[双因素验证概述以及工作或学校帐户](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)。
 
 ### <a name="registration-interrupt"></a>注册中断
 

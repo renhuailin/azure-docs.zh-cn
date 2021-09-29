@@ -1,18 +1,18 @@
 ---
 title: 最终用户身份验证 - 采用 Data Lake Storage Gen1 的 Python - Azure
 description: 了解如何通过 Python 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
+ms.author: normesta
 ms.custom: has-adal-ref, devx-track-python
-ms.openlocfilehash: c7ee58dec4e8bc04eb07695378e0d4dc973b6705
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e40780b0730b0b483a267ab2a92fd17ac50ff41e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92109079"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648044"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>通过 Python 使用 Azure Data Lake Storage Gen1 进行最终用户身份验证
 > [!div class="op_single_selector"]

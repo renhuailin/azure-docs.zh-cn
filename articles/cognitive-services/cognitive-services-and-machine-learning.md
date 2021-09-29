@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: cc09acbb8f7220d63c6884cbb4860f1a45f32052
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: e723089b0e248b3bab167b985bc410b3e00d4dc6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475937"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788261"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -103,7 +103,7 @@ ms.locfileid: "123475937"
 |[语音语音转文本 (STT)](speech-service/speech-to-text.md)|x|x||
 |[语音翻译](speech-service/speech-translation.md)|x|||
 |[文本分析](./text-analytics/overview.md)|x|||
-|[翻译](./translator/translator-info-overview.md)|x|||
+|[翻译](./translator/translator-overview.md)|x|||
 |[翻译器 - 自定义翻译器](./translator/custom-translator/overview.md)||x||
 
 *个性化体验创建服务仅需要服务（在实时运行中）收集的训练数据来评估策略和数据。 个性化体验创建服务不需要大型历史数据集即可进行前期或批量训练。 

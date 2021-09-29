@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: c594d253c193928eae47949474aaa75c4f27b60d
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: ce4d1030999978ba5814d7978238c6f70026b34c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123313997"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785109"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 复制和转换 Azure SQL 数据库中的数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "123313997"
 
    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-   :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+   :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -279,7 +279,7 @@ Azure SQL 数据库数据集支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlTable 。 | 是 |
-| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -519,7 +519,7 @@ GO
 
 复制活动中的 Azure SQL 数据库连接器提供内置的数据分区，用于并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。 
 
-![分区选项的屏幕截图](./media/connector-sql-server/connector-sql-partition-options.png)
+:::image type="content" source="./media/connector-sql-server/connector-sql-partition-options.png" alt-text="分区选项的屏幕截图":::
 
 启用分区复制时，复制活动将对 Azure SQL 数据库源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则该服务会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Azure SQL 数据库检索一部分数据。
 
@@ -580,7 +580,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 如果表具有物理分区，你可看到“HasPartition”为“是”，如下所示。
 
-![SQL 查询结果](./media/connector-azure-sql-database/sql-query-result.png)
+:::image type="content" source="./media/connector-azure-sql-database/sql-query-result.png" alt-text="SQL 查询结果":::
 
 ## <a name="best-practice-for-loading-data-into-azure-sql-database"></a>有关将数据载入 Azure SQL 数据库的最佳做法
 
@@ -605,7 +605,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 例如，可以创建一个管道，其中“复制活动”与“存储过程活动”相链接。 前者将数据从源存储复制到数据集中的 Azure SQL 数据库临时表（例如，表名为“UpsertStagingTable”的表）。 然后，后者调用一个存储过程，以将临时表中的源数据合并到目标表中，并清理临时表。
 
-![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+:::image type="content" source="./media/connector-azure-sql-database/azure-sql-database-upsert.png" alt-text="Upsert":::
 
 在数据库中使用 MERGE 逻辑定义一个存储过程（如以下示例所示），以便从上述存储过程活动指向该过程。 假设目标是包含三个列的 **Marketing** 表：**ProfileID**、**State** 和 **Category**。 根据 **ProfileID** 列执行更新插入。
 
@@ -702,7 +702,7 @@ END
 
 **存储过程**：如果希望从源数据库执行的存储过程生成投影和源数据，请选择此选项。 可以键入架构、过程名称和参数，或者单击“刷新”以要求该服务发现架构和过程名称。 然后，可以单击“导入”以使用格式 ``@paraName`` 导入所有过程参数。
 
-![存储过程](media/data-flow/stored-procedure-2.png "存储过程")
+:::image type="content" source="media/data-flow/stored-procedure-2.png" alt-text="存储过程":::
 
 - SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2000```
 - 参数化 SQL 示例：``"select * from {$tablename} where orderyear > {$year}"``
@@ -717,7 +717,7 @@ END
 - 可序列化
 - 无（忽略隔离级别）
 
-![隔离级别](media/data-flow/isolationlevel.png "隔离级别")
+:::image type="content" source="media/data-flow/isolationlevel.png" alt-text="隔离级别":::
 
 ### <a name="sink-transformation"></a>接收器转换
 
@@ -725,7 +725,7 @@ END
 
 **更新方法：** 确定数据库目标上允许哪些操作。 默认设置为仅允许插入。 若要更新、更新插入或删除行，需要进行 alter-row 转换才能标记这些操作的行。 对于更新、更新插入和删除操作，必须设置一个或多个键列，以确定要更改的行。
 
-![键列](media/data-flow/keycolumn.png "键列")
+:::image type="content" source="media/data-flow/keycolumn.png" alt-text="键列":::
 
 该服务在后续的更新、更新插入和删除中会使用你在此处将其选取为密钥的列名称。 因此，你必须选取存在于接收器映射中的列。 如果你不希望将值写入此键列，请单击“跳过写入键列”。
 
@@ -741,11 +741,11 @@ END
 
 **使用 TempDB**：默认情况下，作为加载过程的一部分，该服务将使用全局临时表来存储数据。 你也可以取消选中“使用 TempDB”选项，改为要求该服务将临时保存表存储在用于此接收器的数据库中的用户数据库中。
 
-![使用临时数据库](media/data-flow/tempdb.png "使用临时数据库")
+:::image type="content" source="media/data-flow/tempdb.png" alt-text="使用临时数据库":::
 
 **预处理和后处理 SQL 脚本**：输入将在数据写入接收器数据库之前（预处理）和之后（后处理）执行的多行 SQL 脚本
 
-![预处理和后处理 SQL 脚本](media/data-flow/prepost1.png "SQL 处理脚本")
+:::image type="content" source="media/data-flow/prepost1.png" alt-text="预处理和后处理 SQL 脚本":::
 
 ### <a name="error-row-handling"></a>行处理时出错
 
@@ -763,7 +763,7 @@ END
 
 出错时报告成功：如果已启用，则即使发现了错误行，也会将数据流标记为成功。 
 
-![行处理时出错](media/data-flow/sql-error-row-handling.png "行处理时出错")
+:::image type="content" source="media/data-flow/sql-error-row-handling.png" alt-text="行处理时出错":::
 
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL 数据库的数据类型映射

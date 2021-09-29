@@ -1,17 +1,15 @@
 ---
 title: 将 PyTorch 模型部署为 Azure Functions 应用程序
 description: 将 PyTorch 中预先训练的 ResNet 18 深度神经网络与 Azure Functions 配合使用来将 1000 个 ImageNet 标签中的 1 个分配给图像。
-author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 4677ec09994b9dcafbf3600c3c3cae48d71f1477
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 680bae6ddcd1f46a91bd1f332762a590fd9c60e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750183"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615180"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>教程：使用 PyTorch 将预先训练的图像分类模型部署到 Azure Functions
 

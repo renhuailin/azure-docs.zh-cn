@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 90e16f89a6b591841ed28942c44f7dc1223e975a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3114a182ff381213a06fbf91e038439ac5007bdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121777817"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575107"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 AD FS 作为 SAML 标识提供者
 
@@ -49,14 +49,15 @@ ms.locfileid: "121777817"
 需要将你的证书存储在 Azure AD B2C 租户中。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-4. 在“概述”页上选择“标识体验框架”。
-5. 选择“策略密钥”，然后选择“添加”。
-6. 对于“选项”，请选择 `Upload`。
-7. 输入策略密钥的 **名称**。 例如，`SAMLSigningCert` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-8. 浏览并选择带有私钥的证书 .pfx 文件。
-9. 单击“创建”。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 在“概述”页上选择“标识体验框架”。
+1. 选择“策略密钥”，然后选择“添加”。
+1. 对于“选项”，请选择 `Upload`。
+1. 输入策略密钥的 **名称**。 例如，`SAMLSigningCert`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 浏览并选择带有私钥的证书 .pfx 文件。
+1. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -200,7 +201,8 @@ https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/meta
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 在“策略”下，选择“Identity Experience Framework”
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。

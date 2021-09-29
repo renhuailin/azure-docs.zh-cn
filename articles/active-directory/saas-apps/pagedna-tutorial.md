@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea643d58802a1233a24d53cb68c5099f2b8bdacd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95993918"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>教程：Azure Active Directory 与 PageDNA 的集成
 
@@ -56,7 +56,7 @@ PageDNA 支持以下功能：
 
     ![“Azure Active Directory”选项](common/select-azuread.png)
 
-1. 转到“企业应用程序”，并选择“所有应用程序”。  
+1. 转到“企业应用程序”，并选择“所有应用程序”。 
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -160,7 +160,7 @@ PageDNA 支持以下功能：
 
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -196,7 +196,7 @@ PageDNA 支持以下功能：
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“PageDNA”时，应自动登录到为其设置了单一登录的 PageDNA 订阅。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](../user-help/my-apps-portal-end-user-access.md)。
+在“我的应用”门户中选择“PageDNA”时，应自动登录到为其设置了单一登录的 PageDNA 订阅。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -7,12 +7,12 @@ ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: fff9c94af2c74612e8c07be1f7e125787265a72d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: b9dce997adb1fbf16c777bc472d10008f68ef9f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541362"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763379"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -37,7 +37,7 @@ ms.locfileid: "123541362"
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|适用于资源管理器的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
-|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure 政府<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure 中国世纪互联|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 政府<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 中国世纪互联|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 有哪些优点？
@@ -73,7 +73,7 @@ ms.locfileid: "123541362"
 1. 查找可疑活动。
 
 > [!TIP]
-> 为了获得更好且更丰富的调查体验，请按照[从 Azure 活动日志连接数据](../sentinel/connect-azure-activity.md)中所述，将 Azure 活动日志流式传输到 Azure Sentinel。
+> 为了获得更好且更丰富的调查体验，请按照[从 Azure 活动日志连接数据](../sentinel/data-connectors-reference.md#azure-activity)中所述，将 Azure 活动日志流式传输到 Azure Sentinel。
 
 
 

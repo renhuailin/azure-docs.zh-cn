@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
 ms.custom: devx-track-js
-ms.openlocfilehash: ca842a3d235cd58cb12bf9d8d80419e42ddf8441
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9a709b9872546e8aa4909077b3dd40a03f004d5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444944"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910347"
 ---
 适用于 JavaScript 的异常检测器客户端库入门。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
@@ -24,7 +24,7 @@ ms.locfileid: "102444944"
 * 在时序中检测最新数据点的异常状态
 * 检测数据集中的趋势更改点。
 
-[库参考文档](https://go.microsoft.com/fwlink/?linkid=2090788) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (npm)](https://www.npmjs.com/package/%40azure/ai-anomaly-detector) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
+[库参考文档](https://go.microsoft.com/fwlink/?linkid=2090788) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/anomalydetector) | [包 (npm)](https://www.npmjs.com/package/%40azure/ai-anomaly-detector) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
 ## <a name="prerequisites"></a>先决条件
 

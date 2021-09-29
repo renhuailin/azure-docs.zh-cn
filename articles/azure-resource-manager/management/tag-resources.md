@@ -4,12 +4,12 @@ description: 演示如何应用标记来组织 Azure 资源进行计费和管理
 ms.topic: conceptual
 ms.date: 07/29/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9dc4b87713d5b397b900f19e83c297130a10be3c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cf8b4ceb70eec2ac6dbb79b8193276997f8e06f1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751368"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664516"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记对 Azure 资源和管理层次结构进行组织
 
@@ -468,7 +468,7 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('storage', uniqueString(resourceGroup().id))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -492,7 +492,7 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 param location string = resourceGroup().location
 param utcShort string = utcNow('d')
 
-resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
@@ -535,7 +535,7 @@ resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('storage', uniqueString(resourceGroup().id))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -558,7 +558,7 @@ param tagValues object = {
   Environment: 'Production'
 }
 
-resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
@@ -590,7 +590,7 @@ resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('storage', uniqueString(resourceGroup().id))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -611,7 +611,7 @@ resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 ```Bicep
 param location string = resourceGroup().location
 
-resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
@@ -645,7 +645,7 @@ resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-02-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('storage', uniqueString(resourceGroup().id))]",
       "location": "[parameters('location')]",
       "sku": {
@@ -667,7 +667,7 @@ resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 ```Bicep
 param location string = resourceGroup().location
 
-resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   location: location
   sku: {
@@ -843,7 +843,7 @@ resource applyTags 'Microsoft.Resources/tags@2021-04-01' = {
 * 每个资源、资源组和订阅最多可以有 50 个标记名称/值对。 如果需要应用的标记超过最大允许数量，请使用 JSON 字符串作为标记值。 JSON 字符串可以包含多个应用于单个标记名称的值。 一个资源组或订阅可以包含多个资源，这些资源每个都有 50 个标记名称/值对。
 * 标记名称不能超过 512 个字符，标记值不能超过 256 个字符。 对于存储帐户，标记名称不能超过 128 个字符，标记值不能超过 256 个字符。
 * 不能将标记应用到云服务等经典资源。
-* Azure IP 组和 Azure 防火墙策略不支持 PATCH 操作，这意味着它们不支持通过门户更新标记。 请改为对这些资源使用更新命令。 例如，可使用 [az network ip-group update](/cli/azure/network/ip-group#az_network_ip_group_update) 命令更新 IP 组的标记。 
+* Azure IP 组和 Azure 防火墙策略不支持 PATCH 操作，这意味着它们不支持通过门户更新标记。 请改为对这些资源使用更新命令。 例如，可使用 [az network ip-group update](/cli/azure/network/ip-group#az_network_ip_group_update) 命令更新 IP 组的标记。
 * 标记名称不能包含以下字符：`<`、`>`、`%`、`&`、`\`、`?`、`/`
 
    > [!NOTE]
@@ -852,7 +852,7 @@ resource applyTags 'Microsoft.Resources/tags@2021-04-01' = {
    > * Azure Front Door 不支持在标记名称中使用 `#` 或 `:`。
    >
    > * 以下 Azure 资源仅支持 15 个标记：
-   >     * Azure 自动化 
+   >     * Azure 自动化
    >     * Azure CDN
    >     * Azure DNS（区域和记录）
    >     * Azure 专用 DNS（区域、记录和虚拟网络链接）

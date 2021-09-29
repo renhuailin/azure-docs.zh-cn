@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3765114c73be73beba6d898385077b83d46e3bc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92784042"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638285"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -33,10 +33,10 @@ ms.locfileid: "92784042"
 
 - **网络传输** - 通过网络连接将数据传输到 Azure。 这可以通过多种方法来实现。
 
-    - **图形界面** - 如果偶尔仅传输几个文件，并且无需自动执行数据传输，则可以选择图形界面工具（如 Azure 存储资源管理器或 Azure 门户中基于 Web 的浏览工具）。
-    - **脚本化或编程传输** - 可以使用我们提供的优化软件工具，或直接调用我们的 REST API/SDK。 可用的可编写脚本工具有 AzCopy、Azure PowerShell 和 Azure CLI。 对于编程接口，请使用用于 .NET、Java、Python、Node/JS、C++、Go、PHP 或 Ruby 的 SDK 之一。
-    - **本地设备** - 我们向你提供物理或虚拟设备，该设备驻留在你的数据中心内，并优化通过网络进行的数据传输。 这些设备还提供频繁使用的文件的本地缓存。 物理设备是 Azure Stack Edge，虚拟设备是 Data Box Gateway。 两者都在本地永久运行，并通过网络连接到 Azure。
-    - **托管数据管道** - 可以设置云管道，以在多个 Azure 服务、本地或这两者的组合之间定期传输文件。 使用 Azure 数据工厂可设置和管理数据管道，以及移动和转换数据以进行分析。
+  - **图形界面** - 如果偶尔仅传输几个文件，并且无需自动执行数据传输，则可以选择图形界面工具（如 Azure 存储资源管理器或 Azure 门户中基于 Web 的浏览工具）。
+  - **脚本化或编程传输** - 可以使用我们提供的优化软件工具，或直接调用我们的 REST API/SDK。 可用的可编写脚本工具有 AzCopy、Azure PowerShell 和 Azure CLI。 对于编程接口，请使用用于 .NET、Java、Python、Node/JS、C++、Go、PHP 或 Ruby 的 SDK 之一。
+  - **本地设备** - 我们向你提供物理或虚拟设备，该设备驻留在你的数据中心内，并优化通过网络进行的数据传输。 这些设备还提供频繁使用的文件的本地缓存。 物理设备是 Azure Stack Edge，虚拟设备是 Data Box Gateway。 两者都在本地永久运行，并通过网络连接到 Azure。
+  - **托管数据管道** - 可以设置云管道，以在多个 Azure 服务、本地或这两者的组合之间定期传输文件。 使用 Azure 数据工厂可设置和管理数据管道，以及移动和转换数据以进行分析。
 
 下面的视觉对象说明根据可用于传输的网络带宽、打算传输的数据大小和传输频率选择各种 Azure 数据传输工具的指导原则。
 
@@ -49,7 +49,7 @@ ms.locfileid: "92784042"
 回答以下问题以帮助选择数据传输解决方案：
 
 - 可用网络带宽是否有限或不存在，并且你要传输大型数据集？
-  
+
     如果是，请参阅：[方案 1：在网络带宽不存在或较低的情况下传输大型数据集](storage-solution-large-dataset-low-network.md)。
 - 是否要通过网络传输大型数据集并且具有中等到较高网络带宽？
 
@@ -66,7 +66,7 @@ ms.locfileid: "92784042"
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Azure 门户中的数据传输功能
 
-也可转到 Azure 门户中的 Azure 存储帐户，然后选择“数据传输”功能。 请在环境中提供网络带宽、要传输的数据大小以及数据传输的频率。 将会看到与提供的信息相对应的最佳数据传输解决方案。 
+也可转到 Azure 门户中的 Azure 存储帐户，然后选择“数据传输”功能。 请在环境中提供网络带宽、要传输的数据大小以及数据传输的频率。 将会看到与提供的信息相对应的最佳数据传输解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -76,10 +76,10 @@ ms.locfileid: "92784042"
 - [快速入门：使用 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
 - 学习内容：
 
-    - [用于脱机传输的 Azure Data Box、Azure Data Box Disk 和 Azure Data Box Heavy](../../databox/index.yml)。
-    - [用于联机传输的 Azure Data Box Gateway 和 Azure Stack Edge](../../databox-online/index.yml)。
+  - [用于脱机传输的 Azure Data Box、Azure Data Box Disk 和 Azure Data Box Heavy](../../databox/index.yml)。
+  - [用于联机传输的 Azure Data Box Gateway 和 Azure Stack Edge](../../databox-online/index.yml)。
 - [了解什么是 Azure 数据工厂](../../data-factory/copy-activity-overview.md)。
 - 使用 REST API 传输数据
 
-    - [在 .NET 中](/dotnet/api/overview/azure/storage)
-    - [在 Java 中](/java/api/overview/azure/storage)
+  - [在 .NET 中](/dotnet/api/overview/azure/storage)
+  - [在 Java 中](/java/api/overview/azure/storage)

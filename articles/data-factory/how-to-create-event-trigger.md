@@ -9,13 +9,13 @@ author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 5c7cf8d02b3a1cf19b826db63ff5eaaac1ff20d1
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: bea14b1630cbe5d1c4035e9abea62130cd546964
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303227"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831410"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>创建运行管道的触发器来响应存储事件
 
@@ -90,12 +90,12 @@ ms.locfileid: "123303227"
 
 下表概述了与存储事件触发器相关的架构元素：
 
-| **JSON 元素** | **说明** | 类型 | **允许的值** | **必需** |
+| **JSON 元素** | **说明** | **类型** | **允许的值** | **必需** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **作用域** | 存储帐户的 Azure 资源管理器资源 ID。 | String | Azure 资源管理器 ID | 是 |
+| **作用域** | 存储帐户的 Azure 资源管理器资源 ID。 | 字符串 | Azure 资源管理器 ID | 是 |
 | **events** | 导致此触发器触发的事件的类型。 | Array    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | 是的，这些值的任意组合。 |
 | **blobPathBeginsWith** | blob 路径必须使用为要触发的触发器提供的模式开头。 例如，`/records/blobs/december/` 只会触发 `records` 容器下 `december` 文件夹中的 blob 触发器。 | 字符串   | | 必须为以下至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
-| **blobPathEndsWith** | blob 路径必须使用为要触发的触发器提供的模式结尾。 例如，`december/boxes.csv` 只会触发 `december` 文件夹中名为 `boxes` 的 blob 的触发器。 | String   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
+| **blobPathEndsWith** | blob 路径必须使用为要触发的触发器提供的模式结尾。 例如，`december/boxes.csv` 只会触发 `december` 文件夹中名为 `boxes` 的 blob 的触发器。 | 字符串   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
 | **ignoreEmptyBlobs** | 零字节 Blob 是否触发管道运行。 默认情况下，此元素设置为 true。 | 布尔 | true 或 false | 否 |
 
 ## <a name="examples-of-storage-event-triggers"></a>存储事件触发器的示例

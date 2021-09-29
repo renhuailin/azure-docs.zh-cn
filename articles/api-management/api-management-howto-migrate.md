@@ -2,18 +2,18 @@
 title: 如何在不同区域之间迁移 Azure API 管理
 description: 了解如何将 API 管理实例从一个区域迁移到另一个区域。
 services: api-management
-author: miaojiang
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/20/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 4958cc4684cc1ecc8ed43de987246c435b4982eb
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1007241c09e22d1fb35f6cc12733c04946af88f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698604"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591779"
 ---
 # <a name="how-to-move-azure-api-management-across-regions"></a>如何跨区域移动 Azure API 管理
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: f6030e209b06dc7ae9acd8a13e6dcdf22b58f8c5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d8bac5651e0fe82ab018cb68af3a7a18027e1990
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92318875"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>教程：Azure Active Directory 与 Allbound SSO 集成
 
@@ -102,7 +102,7 @@ ms.locfileid: "92318875"
 
     ![显示“基本 SAML 配置”部分的屏幕截图，可在其中输入“标识符”和“回复 URL”，然后选择“保存”。](common/idp-intiated.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.allbound.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.allbound.com/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.allbound.com/acs`
 
@@ -195,7 +195,7 @@ ms.locfileid: "92318875"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Allbound SSO 磁贴时，应当会自动登录到为其设置了 SSO 的 Allbound SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Allbound SSO 磁贴时，应当会自动登录到为其设置了 SSO 的 Allbound SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

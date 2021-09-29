@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Site Recovery 将大量本地 VMware VM �
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 869702c9eaac4a38f6b0e64311c772892ddd6d90
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 6a77b91b49009964ba6e20f76e20e4739da6ea75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580447"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823779"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
 
@@ -82,7 +82,7 @@ ms.locfileid: "106580447"
 
 **Task** | **详细信息** | **操作**
 --- | --- | ---
-**检查核心数** | 如果可用配额中的核心数少于故障转移时的目标总数，故障转移将会失败。 | 对于 VMware VM，请检查目标订阅中是否有足够的核心，与部署规划器的核心建议相符。<br/><br/> 对于物理服务器，请检查 Azure 核心数是否符合人工估算结果。<br/><br/> 若要检查配额，请在 Azure 门户中依次单击“订阅”、“用量 + 配额”。 <br/><br/> [详细了解](../azure-portal/supportability/resource-manager-core-quotas-request.md)如何提高配额。
+**检查核心数** | 如果可用配额中的核心数少于故障转移时的目标总数，故障转移将会失败。 | 对于 VMware VM，请检查目标订阅中是否有足够的核心，与部署规划器的核心建议相符。<br/><br/> 对于物理服务器，请检查 Azure 核心数是否符合人工估算结果。<br/><br/> 若要检查配额，请在 Azure 门户中依次单击“订阅”、“用量 + 配额”。 <br/><br/> [详细了解](../azure-portal/supportability/regional-quota-requests.md)如何提高配额。
 **检查故障转移限制** | 故障转移次数不得超过 Site Recovery 的故障转移限制。 |  如果故障转移次数超过限制，你可以添加订阅并故障转移到多个订阅，或者提高订阅的配额。 
 
 

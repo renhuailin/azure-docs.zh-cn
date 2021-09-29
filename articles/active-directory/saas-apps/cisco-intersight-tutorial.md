@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: a53fbdf23d4d76056d51bd787603931f7c017371
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5e50e7196bc469578048af97a62f16d53b1a336a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144162"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803066"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-intersight"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Intersight 集成
 
@@ -143,7 +143,7 @@ ms.locfileid: "108144162"
 
 * 直接转到 Cisco Intersight 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Cisco Intersight”磁贴时，会自动重定向到 Cisco Intersight 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Cisco Intersight”磁贴时，会自动重定向到 Cisco Intersight 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 244ff34b462d519d111aad6d6b66d7261e612595
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: fa6052c91be73e05bc2413f57810405fe5a198a0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446584"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818641"
 ---
 # <a name="upload-msix-images-to-azure-netapp-files-in-azure-virtual-desktop"></a>在 Azure 虚拟桌面中将 MSIX 映像上传到 Azure NetApp 文件
 
@@ -33,12 +33,11 @@ ms.locfileid: "122446584"
 
 若要开始使用 Azure NetApp 文件，请按照以下步骤操作：
 
-1. 按照[注册 Azure NetApp 文件](../azure-netapp-files/azure-netapp-files-register.md)中的说明，提交等待列表请求，并注册 NetApp 提供程序。
-2. 按照[设置 Azure NetApp 文件帐户](create-fslogix-profile-container.md#set-up-your-azure-netapp-files-account)中的说明，设置 Azure NetApp 文件帐户。
-3. 按照[设置容量池](../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)中的说明创建容量池。
-4. 按照[加入 Active Directory 连接](create-fslogix-profile-container.md#join-an-active-directory-connection)中的说明，加入 Azure Active Directory (Azure AD) 连接。
-5. 按照[创建新卷](create-fslogix-profile-container.md#create-a-new-volume)和[配置卷访问参数](create-fslogix-profile-container.md#configure-volume-access-parameters)中的说明创建一个新卷。
-6. 按照[确保用户可以访问 Azure NetApp 文件共享](create-fslogix-profile-container.md#make-sure-users-can-access-the-azure-netapp-file-share)中的说明，确保与 Azure NetApp 文件共享的连接可以正常工作。
+1. 按照[设置 Azure NetApp 文件帐户](create-fslogix-profile-container.md#set-up-your-azure-netapp-files-account)中的说明，设置 Azure NetApp 文件帐户。
+2. 按照[设置容量池](../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)中的说明创建容量池。
+3. 按照[加入 Active Directory 连接](create-fslogix-profile-container.md#join-an-active-directory-connection)中的说明，加入 Azure Active Directory (Azure AD) 连接。
+4. 按照[创建新卷](create-fslogix-profile-container.md#create-a-new-volume)和[配置卷访问参数](create-fslogix-profile-container.md#configure-volume-access-parameters)中的说明创建一个新卷。
+5. 按照[确保用户可以访问 Azure NetApp 文件共享](create-fslogix-profile-container.md#make-sure-users-can-access-the-azure-netapp-file-share)中的说明，确保与 Azure NetApp 文件共享的连接可以正常工作。
 
 ## <a name="upload-an-msix-image-to-the-azure-netapp-file-share"></a>将 MSIX 映像上传到 Azure NetApp 文件共享
 

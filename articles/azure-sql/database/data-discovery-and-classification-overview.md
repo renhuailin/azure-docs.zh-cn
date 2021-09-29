@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: bcda86cd166e410bfc546c802466180557a92dc8
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: b24fcbac37288dd3c49fe64fe517dd31bbab03d2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825053"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788394"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -134,7 +134,7 @@ ms.locfileid: "122825053"
 - DBCC SHOW_STATISTICS
 - sys.dm_db_stats_histogram
 
-使用 [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) 从 Azure 存储帐户中存储的审核文件返回信息。
+使用 [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) 从 Azure 存储帐户中存储的审核文件返回信息。
 
 ## <a name="permissions"></a><a id="permissions"></a>权限
 
@@ -218,10 +218,10 @@ ms.locfileid: "122825053"
 
 可使用以下 SQL 驱动程序来检索分类元数据：
 
-- [ODBC 驱动程序](https://docs.microsoft.com/sql/connect/odbc/data-classification)
-- [OLE DB 驱动程序](https://docs.microsoft.com/sql/connect/oledb/features/using-data-classification)
-- [JDBC 驱动程序](https://docs.microsoft.com/sql/connect/jdbc/data-discovery-classification-sample)
-- [Microsoft Drivers for PHP for SQL Server](https://docs.microsoft.com/sql/connect/php/release-notes-php-sql-driver)
+- [ODBC 驱动程序](/sql/connect/odbc/data-classification)
+- [OLE DB 驱动程序](/sql/connect/oledb/features/using-data-classification)
+- [JDBC 驱动程序](/sql/connect/jdbc/data-discovery-classification-sample)
+- [Microsoft Drivers for PHP for SQL Server](/sql/connect/php/release-notes-php-sql-driver)
 
 ## <a name="faq---advanced-classification-capabilities"></a>常见问题解答 - 高级分类功能
 

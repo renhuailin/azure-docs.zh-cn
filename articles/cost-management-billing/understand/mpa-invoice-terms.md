@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 9ff151071d42308137bdb8e9064f9b27ed194cae
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 63295e27791252e3b978fb83801182b7b8814f82
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688838"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559818"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Microsoft 合作伙伴协议发票中的术语
 
@@ -26,11 +26,11 @@ ms.locfileid: "88688838"
 
 ## <a name="billing-period"></a>计费周期
 
-每月开票一次。 在计费周期结束和发票日期之间产生的费用包括在下月的发票中，因为它们属于下一计费周期。 每个发票的计费周期开始日期和结束日期列在发票 PDF 中的“计费摘要”上方。 
+每月开票一次。 在计费周期结束和发票日期之间产生的费用包括在下月的发票中，因为它们属于下一计费周期。 每个发票的计费周期开始日期和结束日期列在发票 PDF 中的“计费摘要”上方。
 
 ## <a name="invoice-summary"></a>发票摘要
 
-“发票摘要”位于第一页顶部，显示了有关计费对象信息和付款方式的信息。 
+“发票摘要”位于第一页顶部，显示了有关计费对象信息和付款方式的信息。
 
 <!-- add screenshot -->
 
@@ -42,18 +42,18 @@ ms.locfileid: "88688838"
 | P.O. 数字 |可选采购订单号，由你分配用于跟踪 |
 | 发票号 |由 Microsoft 生成的唯一发票号，用于跟踪 |
 | 发票日期 |生成发票的日期，通常是计费周期截止后的 5 到 12 天。 可以在计费对象信息属性中查看发票日期。|
-| 付款条款 |如何支付 Microsoft 账单。 “净 60 天”是指在开票日期后的 60 天内付款。  |
+| 付款期限 |如何支付 Microsoft 账单。 “净 60 天”是指在开票日期后的 60 天内付款。 |
 
 ## <a name="billing-summary"></a>计费摘要
 
-“计费摘要”显示  自上一个计费周期以来针对计费对象信息收取的费用、应用的任何额度、税款，以及应付总金额。
+“计费摘要”显示自上一个计费周期以来针对计费对象信息收取的费用、应用的任何额度、税款，以及应付总金额。
 
 <!-- add screenshot -->
 
 | 术语 | 说明 |
 | --- | --- |
 | Charges|自上次计费周期以来针对此计费对象信息收取的 Microsoft 费用总数目 |
-| 致谢 |从退货收到的额度 |
+| 信用 |从退货收到的额度 |
 | 已应用的 Azure 额度 | 每个计费周期自动应用到 Azure 费用的 Azure 额度 |
 | 小计 |应付的税前金额 |
 | 税款 |需支付的税款的类型和金额，具体取决于计费对象信息的国家/地区。 如果不需缴税，则发票上看不到税款。 |
@@ -62,7 +62,7 @@ ms.locfileid: "88688838"
 
 ## <a name="billing-details-by-product"></a>按产品列出的计费详细信息
 
-**按产品列出的计费详细信息**部分列出了与此计费对象信息关联的每个产品的总费用。 可以在 Azure 使用情况和费用 CSV 中查看每个产品费用的每日明细。 若要了解如何将发票 pdf 与 Azure 使用情况和费用 CSV 进行对帐，请参阅[了解 Microsoft 合作伙伴协议帐单](review-partner-agreement-bill.md)。
+**按产品列出的计费详细信息** 部分列出了与此计费对象信息关联的每个产品的总费用。 可以在 Azure 使用情况和费用 CSV 中查看每个产品费用的每日明细。 若要了解如何将发票 pdf 与 Azure 使用情况和费用 CSV 进行对帐，请参阅[了解 Microsoft 合作伙伴协议帐单](review-partner-agreement-bill.md)。
 
 ## <a name="how-to-pay"></a>如何支付
 
@@ -82,6 +82,6 @@ ms.locfileid: "88688838"
 ## <a name="next-steps"></a>后续步骤
 
 - [了解计费对象信息的发票上的费用](review-customer-agreement-bill.md)
-- [如何获取 Azure 计费发票和每日使用数据](../manage/download-azure-invoice-daily-usage-date.md)
+- [如何获取 Azure 帐单发票和每日使用数据](../manage/download-azure-invoice-daily-usage-date.md)
 - [查看组织的 Azure 定价](../manage/ea-pricing.md)
 - [查看计费对象信息的税单](mca-download-tax-document.md)

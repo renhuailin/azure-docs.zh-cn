@@ -2,13 +2,13 @@
 title: 充当事件网格源的 Azure 容器注册表
 description: 介绍为 Azure 事件网格中的容器注册表事件提供的属性
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 7e19b223e43f30a532c1cd8bdc86f9a29220f5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 9be7a7b8b9674aa755bc40d56394257783753edd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363570"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651078"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>充当事件网格源的 Azure 容器注册表
 
@@ -279,8 +279,8 @@ Azure 容器注册表发出以下事件类型：
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | object | Blob 存储事件数据。 |
+| `id` | string | 事件的唯一标识符。 |
+| `data` | 对象 (object) | Blob 存储事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -294,8 +294,8 @@ Azure 容器注册表发出以下事件类型：
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | object | Blob 存储事件数据。 |
+| `id` | string | 事件的唯一标识符。 |
+| `data` | 对象 (object) | Blob 存储事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---

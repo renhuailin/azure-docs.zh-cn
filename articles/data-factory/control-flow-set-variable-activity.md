@@ -6,16 +6,16 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
-ms.openlocfilehash: c9c489ab15f7b6a44e4aadeef8cd98b0d935e1ba
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 63c4a4b53889f2c762b7c1dadffe432cd7383b4c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821642"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758041"
 ---
 # <a name="set-variable-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>在 Azure 数据工厂和 Azure Synapse Analytics 中的“设置变量”活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,7 +38,7 @@ variableName | 此活动设置的变量的名称 | 是
 
 下面是此模式的示例：
 
-![递增变量](media/control-flow-set-variable-activity/increment-variable.png "递增变量")
+:::image type="content" source="media/control-flow-set-variable-activity/increment-variable.png" alt-text="递增变量":::
 
 ``` json
 {

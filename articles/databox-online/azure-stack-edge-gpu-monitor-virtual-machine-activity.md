@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: a73337ad261d8d2d7aef2c6292c7387d7c4cad9a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aa1974347caa04c314e51b33daba47d7835026db
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778537"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757603"
 ---
 # <a name="monitor-vm-activity-on-your-azure-stack-edge-pro-gpu-device"></a>监视 Azure Stack Edge Pro GPU 设备上的 VM 活动
 
@@ -42,7 +42,7 @@ ms.locfileid: "121778537"
 
     ![显示 Azure Stack Edge 设备上虚拟机的“活动日志”页的屏幕截图。 展开的操作在列表中突出显示。](./media/azure-stack-edge-gpu-monitor-virtual-machine-activity/activity-log-03.png)<!--Reshoot to remove pointer. May be able to replace drop-down only.-->
 
-在 Azure 中的任何“活动日志”窗格上，可以对活动进行筛选和排序、选择要显示的列、向下钻取特定活动的详细信息，并获取过去 24 小时内的错误、失败部署、警报、服务运行状况和安全更改的“快速见解”。 有关日志和筛选选项的详细信息，请参阅[查看活动日志](../azure-resource-manager/management/view-activity-logs.md)。
+在 Azure 中的任何“活动日志”窗格上，可以对活动进行筛选和排序、选择要显示的列、向下钻取特定活动的详细信息，并获取过去 24 小时内的错误、失败部署、警报、服务运行状况和安全更改的“快速见解”。 有关日志和筛选选项的详细信息，请参阅[查看活动日志](../azure-monitor/essentials/activity-log.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

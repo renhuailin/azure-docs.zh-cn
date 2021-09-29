@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 9612a45d61e2bab03516699f661e8404fef6b7d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 23ecefefc767e76514b23c3755e7cddf6eeb0de5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92515075"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758753"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-redbrick-health"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RedBrick Health 集成
 
@@ -122,11 +122,11 @@ ms.locfileid: "92515075"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“ **保存**”。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "92515075"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 RedBrick Health 磁贴时，应当会自动登录到已为其设置了 SSO 的 RedBrick Health。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 RedBrick Health 磁贴时，应当会自动登录到已为其设置了 SSO 的 RedBrick Health。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

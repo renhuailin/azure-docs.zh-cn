@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 8429ed368e8465c45137e555444a18b8a66769dd
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 93a217a88b75ec6c472972d3f12cb33e33561f2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123271946"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579778"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>用于 IoT Edge for Linux on Windows 的 PowerShell 函数
 
@@ -84,9 +84,9 @@ Deploy-Eflow 命令是主要部署方法。 该部署命令可创建虚拟机、
 | vmDiskSize | 介于 8 GB 和 256 GB | 动态扩展虚拟硬盘的最大磁盘大小。<br><br>默认值：10 GB。 |
 | vswitchName | 虚拟交换机的名称 |  分配给 EFLOW VM 的虚拟交换机的名称。 |
 | vswitchType | “内部”或“外部”  | 分配给 EFLOW VM 的虚拟交换机的类型。 |
-| ip4Address | DCHP 服务器范围中的 IPv4 地址 | EFLOW VM 的静态 Ipv4 地址。 注意：仅支持使用 ICS 默认交换机。 |
-| ip4PrefixLength | 子网的 IPv4 前缀长度 | Ipv4 子网前缀长度，仅在指定了静态 Ipv4 地址时有效。  注意：仅支持使用 ICS 默认交换机。 |
-| ip4GatewayAddress | 子网网关的 IPv4 地址 | 网关 Ipv4 地址，仅当指定了静态 Ipv4 地址时有效。  注意：仅支持使用 ICS 默认交换机。 |
+| ip4Address | DCHP 服务器范围中的 IPv4 地址 | EFLOW VM 的静态 Ipv4 地址。 |
+| ip4PrefixLength | 子网的 IPv4 前缀长度 | Ipv4 子网前缀长度，仅在指定了静态 Ipv4 地址时有效。 |
+| ip4GatewayAddress | 子网网关的 IPv4 地址 | 网关 Ipv4 地址，仅当指定了静态 Ipv4 地址时有效。 |
 | gpuName | GPU 设备名称 |  用于传递的 GPU 设备的名称。 |
 | gpuPassthroughType | DirectDeviceAssignment、ParaVirtualization 或无（仅限 CPU） |  GPU 传递类型 |
 | gpuCount | 介于 1 和设备 GPU 内核数量之间的整数值 | VM 的 GPU 设备数。 <br><br>注意：如果使用 ParaVirtualization，请确保设置 gpuCount = 1 |
@@ -257,4 +257,4 @@ Verify-EflowVm 命令是一个公开函数，用于检查是否已创建 IoT Edg
 
 阅读以下文章，了解如何使用这些命令安装和预配 IoT Edge for Linux on Windows：
 
-* [安装 Azure IoT Edge for Linux on Windows](./how-to-install-iot-edge-windows-on-windows.md)
+* [安装 Azure IoT Edge for Linux on Windows](./how-to-install-iot-edge-on-windows.md)

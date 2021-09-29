@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/02/2021
+ms.date: 09/24/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, Kubernetes
-ms.openlocfilehash: 567e09dfcc47926b8b25fa8c634a11ee339ab2ea
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0a55820202d5bfe6d0948afdd00ac99c6d9d666e
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475847"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061877"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
@@ -54,7 +54,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 | [文本分析][ta-containers-language] |  文本语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)） | 针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 | 正式发布 |
 | [文本分析][ta-containers-sentiment] | 情绪分析 v3（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） | 分析原始文本，获取正面或负面情绪的线索。 此版本的情绪分析为每个文档以及其中的句子返回情绪标签（例如正面或负面） 。 |  正式发布 |
 | [文本分析][ta-containers-health] |  **运行状况文本分析** | 从非结构化临床文本中提取医疗信息并进行标记。 | 预览 |
-| [翻译][tr-containers] | **翻译** | 将文本翻译成多种语言和方言。 | 门控式预览版。 [请求访问权限][request-access]。 | 
+| [翻译][tr-containers] | **翻译** | 将文本翻译成多种语言和方言。 | 门控式预览版。 [请求访问权限](https://aka.ms/csgate-translator)。 | 
 
 ### <a name="speech-containers"></a>语音容器
 

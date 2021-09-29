@@ -10,12 +10,12 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0641a7357a334847bc52c3089eb4cf36cc3e3175
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1feb78c381a189ae2db1d2aa658f8d0782769f99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123467603"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664782"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -45,7 +45,7 @@ Blob 版本控制是针对 Blob 数据的综合性数据保护策略的一部分
 
 Blob 版本是不可变的。 不能修改现有 blob 版本的内容或元数据。
 
-如果每个 blob 都具有大量版本，则会增加 blob 列表操作的延迟。 Microsoft 建议每个 Blob 保留的版本少于 1000 个。 可以使用生命周期管理来自动删除旧版本。 有关生命周期管理的详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](storage-lifecycle-management-concepts.md)。
+如果每个 blob 都具有大量版本，则会增加 blob 列表操作的延迟。 Microsoft 建议每个 Blob 保留的版本少于 1000 个。 可以使用生命周期管理来自动删除旧版本。 有关生命周期管理的详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](./lifecycle-management-overview.md)。
 
 Blob 版本控制可用于标准常规用途 v2、高级块 blob 和旧版 Blob 存储帐户。 当前不支持启用了分层命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
 
@@ -111,7 +111,7 @@ Blob 的所有版本必须具有相同的 blob 类型。 如果 blob 具有先�
 
 可以通过调用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作将块 blob 的任何版本（包括当前版本）移到不同的 blob 访问层。 要利用较低的容量定价，可以将较早版本的 blob 移到冷访问层或存档访问层。 有关详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。
 
-若要自动将块 blob 移到相应的层，请使用 blob 生命周期管理。 有关生命周期管理的详细信息，请参阅[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)。
+若要自动将块 blob 移到相应的层，请使用 blob 生命周期管理。 有关生命周期管理的详细信息，请参阅[管理 Azure Blob 存储生命周期](./lifecycle-management-overview.md)。
 
 ## <a name="enable-or-disable-blob-versioning"></a>启用或禁用 blob 版本控制
 
@@ -298,11 +298,11 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。

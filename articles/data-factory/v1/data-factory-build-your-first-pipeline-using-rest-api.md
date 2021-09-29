@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2d6a3ce399f5f02d48868627ac43c810cedb87a0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 358980423fbc998c1705316c8e0ef873263c847b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670817"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664250"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -461,7 +462,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 
 运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。   当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
 
-![输出数据](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
+:::image type="content" source="./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png" alt-text="输出数据":::
 
 > [!IMPORTANT]
 > 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 adfgetstarted 容器的 inputdata 文件夹中。

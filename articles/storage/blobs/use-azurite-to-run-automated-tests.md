@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: ikivanc
-ms.openlocfilehash: 7ad2fb4a808f2fef794a904287c25bd0643a085f
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 21a0d2157cdb8b6b2c31520596327b3b433ef93a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378594"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674540"
 ---
 # <a name="run-automated-tests-by-using-azurite"></a>使用 Azurite 运行自动测试
 
@@ -33,10 +33,10 @@ ms.locfileid: "112378594"
    ```bash
    # Install Azurite
    npm install -g azurite
-   
+
    # Create an Azurite directory
-   mkdir c:/azurite
-   
+   mkdir c:\azurite
+
    # Launch Azurite locally
    azurite --silent --location c:\azurite --debug c:\azurite\debug.log
    ```
@@ -101,7 +101,7 @@ ms.locfileid: "112378594"
 ## <a name="run-tests-on-azure-pipelines"></a>在 Azure Pipelines 上运行测试
 
 在本地运行测试后，确保测试在 [Azure Pipelines](/azure/devops/pipelines) 上通过。 使用 Docker Azurite 映像作为 Azure 上的托管代理，或使用 npm 安装 Azurite。 以下 Azure Pipelines 示例使用 npm 来安装 Azurite。
-  
+
 ```yaml
 trigger:
 - master
@@ -115,7 +115,7 @@ steps:
 - bash: |
     pip install -r requirements_tests.txt
   displayName: 'Setup requirements for tests'
-  
+
 - bash: |
     sudo npm install -g azurite
     sudo mkdir azurite

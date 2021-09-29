@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb700a4432082f75cf1ddf1ce007cee801597948
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f2b7eade30ad675b9c64fbe8d21ce5c7f6d63e43
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409444"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558402"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中添加用户属性和自定义用户输入
 
@@ -322,7 +322,8 @@ ms.locfileid: "111409444"
 
 ## <a name="upload-and-test-your-updated-custom-policy"></a>上传并测试已更新的自定义策略
 
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 搜索并选择“Azure AD B2C”。
 1. 在“策略”下，选择“Identity Experience Framework”。 
 1. 选择“上传自定义策略”。

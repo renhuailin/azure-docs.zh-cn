@@ -8,12 +8,12 @@ ms.author: sawinark
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: c12c6bf17b5a773e9ef7f5ef122dfd8f466f3822
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 71991798306296c7df16ee7d39678a25f263629f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738136"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831223"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时安装付费或许可的自定义组件
 
@@ -35,7 +35,7 @@ Azure-SSIS 集成运行时的性质带来了多种挑战，使得在本地安装
 
 下图显示了使用这些新变量对第三方组件执行的典型安装、激活和许可证绑定以及验证流：
 
-![许可组件的安装](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
+:::image type="content" source="media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png" alt-text="许可组件的安装":::
 
 ## <a name="instructions"></a>说明
 1. ISV 可在各种 SKU 或层（例如，单个节点、最多 5 个节点、最多 10 个节点，等等）中提供其许可组件。 当客户购买某个产品时，ISV 会提供相应的产品密钥。 ISV 还可以提供包含 ISV 安装脚本和关联文件的 Azure 存储 Blob 容器。 客户可将这些文件复制到其自己的存储容器中，并使用其自己的产品密钥修改这些文件（例如运行 `IsvSetup.exe -pid xxxx-xxxx-xxxx`）。 然后，客户可以使用容器的 SAS URI 作为参数，来预配或重新配置 Azure-SSIS IR。 有关详细信息，请参阅 [Azure-SSIS 集成运行时的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。

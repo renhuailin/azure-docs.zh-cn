@@ -1,19 +1,19 @@
 ---
 title: 快速入门：适用于 Java 的 Azure Blob 存储客户端库 v8
 description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Java 的 Azure 存储客户端库 v8 将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
-author: twooley
+author: normesta
 ms.custom: devx-track-java
-ms.author: twooley
+ms.author: normesta
 ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 49c55a2b565100e370ce561537c96a96b896f355
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 97c876821cd457b1da95429160f74a19b491147b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280592"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622448"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入门：使用 Java v8 SDK 管理 blob
 
@@ -78,8 +78,8 @@ Deleting the source, and downloaded files
 
 检查示例文件的默认目录（对于 Windows 用户，为 *C:\Users\<user>\AppData\Local\Temp*），再继续操作。 从控制台窗口复制 blob 的 URL，将其粘贴到浏览器，查看 Blob 存储中的文件的内容。 如果将目录中的示例文件与 Blob 存储中的内容进行比较，则会发现它们是相同的。
 
-  >[!NOTE]
-  >还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。
+  > [!NOTE]
+  > 还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。
 
 验证文件后，按 **Enter** 键可完成演示并删除测试文件。 现在已了解此示例的用途，打开 AzureApp.java 文件可查看代码。
 
@@ -91,15 +91,15 @@ Deleting the source, and downloaded files
 
 首先创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联 - 每个对象被列表中的下一个对象使用。
 
-* 创建指向存储帐户的 [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount) 对象的实例。
+- 创建指向存储帐户的 [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount) 对象的实例。
 
     “CloudStorageAccount”对象是存储帐户的表示形式，允许用户以编程方式设置和访问存储帐户属性。 使用“CloudStorageAccount”对象，可创建访问 blob 服务所需的“CloudBlobClient”实例 。
 
-* 创建 CloudBlobClient 对象的实例，该对象指向存储帐户中的 [Blob 服务](/java/api/com.microsoft.azure.storage.blob.cloudblobclient)。
+- 创建 CloudBlobClient 对象的实例，该对象指向存储帐户中的 [Blob 服务](/java/api/com.microsoft.azure.storage.blob.cloudblobclient)。
 
     “CloudBlobClient”提供对 Blob 服务的访问点，允许用户以编程方式设置和访问 Blob 存储属性。 使用“CloudBlobClient”，可创建“CloudBlobContainer”对象的实例，创建容器需要该实例 。
 
-* 创建 [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer) 对象的实例，该对象代表所访问的容器。 使用容器来组织 Blob，就像使用计算机上的文件夹组织文件一样。
+- 创建 [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer) 对象的实例，该对象代表所访问的容器。 使用容器来组织 Blob，就像使用计算机上的文件夹组织文件一样。
 
     有了 CloudBlobContainer 后，就可以创建 [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) 对象（该对象指向你感兴趣的特定 Blob）的实例，然后执行上传、下载、复制等操作。
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 1bec42dabde64fed8126e47e39f19536b28014f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ced5b6493753baab64f5390b7dee815227334796
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714827"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549510"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>验证存储帐户的吞吐量和延迟指标
 
@@ -21,8 +21,8 @@ ms.locfileid: "101714827"
 该系列的第 4 部分中介绍了如何：
 
 > [!div class="checklist"]
-> * 在 Azure 门户中配置图表
-> * 验证吞吐量和延迟指标
+> - 在 Azure 门户中配置图表
+> - 验证吞吐量和延迟指标
 
 [Azure 存储指标](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)使用 Azure Monitor 提供用于深入了解存储帐户的性能和可用性的统一视图。
 
@@ -67,8 +67,8 @@ ms.locfileid: "101714827"
 在本系列教程的第四部分中，已学习了如何查看示例解决方案的指标，例如如何：
 
 > [!div class="checklist"]
-> * 在 Azure 门户中配置图表
-> * 验证吞吐量和延迟指标
+> - 在 Azure 门户中配置图表
+> - 验证吞吐量和延迟指标
 
 请访问以下链接，查看预先生成的存储示例。
 

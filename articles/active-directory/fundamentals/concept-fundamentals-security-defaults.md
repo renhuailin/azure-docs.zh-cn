@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/20/2021
+ms.date: 09/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: a82b2632d5415091986c418ca7cd3871e519b374
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 83a2c5bca5837919015125d6c421dccfef5bf58c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634182"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079440"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -61,14 +61,18 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 完成 Azure AD 多重身份验证注册后，每次登录以下 9 个 Azure AD 管理员角色时都需要执行额外的身份验证：
 
 - 全局管理员
-- SharePoint 管理员
-- Exchange 管理员
-- 条件访问管理员
-- 安全管理员
-- 支持管理员
-- 计费管理员
-- 用户管理员
+- 应用程序管理员
 - 身份验证管理员
+- 计费管理员
+- 云应用程序管理员
+- 条件访问管理员
+- Exchange 管理员
+- 支持管理员
+- 密码管理员
+- 特权身份验证管理员
+- 安全管理员
+- SharePoint 管理员
+- 用户管理员
 
 > [!WARNING]
 > 确保你的目录至少具有两个分配有全局管理员权限的帐户。 这有助于应对一个全局管理员被锁定的情况。有关更多详细信息，请参阅[在 Azure AD 中管理紧急访问帐户](../roles/security-emergency-access.md)一文。

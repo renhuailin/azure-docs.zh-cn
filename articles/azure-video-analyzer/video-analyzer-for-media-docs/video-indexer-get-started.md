@@ -1,20 +1,16 @@
 ---
 title: 注册 Azure 视频分析器媒体版（原视频索引器）并上传第一个视频 - Azure
-titleSuffix: Azure Video Analyzer for Media
 description: 了解如何使用 Azure 视频分析器媒体版（原视频索引器）门户注册并上传第一个视频。
-services: azure-video-analyzer
-author: Juliako
-manager: femila
 ms.topic: quickstart
 ms.subservice: azure-video-analyzer-media
 ms.date: 01/25/2021
 ms.author: juliako
-ms.openlocfilehash: 8ecbf87bb7cd571b017e339bddcb384bae39bbef
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: bf8b8f640fbcb6155092a50fdbd6e1af66060e07
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112118757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636147"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 

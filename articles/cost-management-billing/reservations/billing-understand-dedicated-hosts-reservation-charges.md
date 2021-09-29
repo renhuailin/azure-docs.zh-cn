@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3e0f6bc30ca86653ff7a05f2874236a51d359955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148377"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631089"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>如何将 Azure 预留折扣应用于 Azure 专用主机
 
@@ -20,7 +20,7 @@ ms.locfileid: "92148377"
 
 ## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 
-预留折扣的性质是“不用就会失效”  。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
+预留折扣的性质是“不用就会失效”。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
 
 删除专用主机时，预留折扣自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
 
@@ -30,7 +30,7 @@ Azure 专用主机预留实例为专用主机使用的计算基础结构提供�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
-如有任何疑问或需要帮助，请 [创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 

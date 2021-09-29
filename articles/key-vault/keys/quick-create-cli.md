@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Key Vault 中创建和检索密钥的属性 - Azure CLI
 description: 以快速入门的方式介绍如何使用 Azure CLI 在 Azure Key Vault 中设置和检索密钥
-services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
@@ -10,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f5281c02f68598b1cf121a6ab8a574f0694f5ea2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 620ddefc6a51f1910d97d9b38f94f1e246f2159c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813427"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619432"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索密钥
 
@@ -45,7 +44,7 @@ ms.locfileid: "107813427"
 az keyvault key create --vault-name "<your-unique-keyvault-name>" -n ExampleKey --protection software
 ```
 
-现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此密钥。 使用“https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey”来获取当前版本。 
+现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此密钥。 使用 **`https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey`** 获取当前版本。 
 
 若要查看以前存储的密钥，请使用以下命令：
 

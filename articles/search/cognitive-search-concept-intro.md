@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 73a1ae771ba3e3e5876b2efd3914b9e38ab0e426
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b1c7a8f29c08f00cc69dbd304c8215180f5ace92
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222364"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796602"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充
 
@@ -71,7 +71,7 @@ AI 扩充在 Azure 认知服务也可用的区域中提供。 可在[各区域�
 
 ### <a name="use-cases-for-custom-skills"></a>自定义技能用例
 
-自定义技能可以支持更复杂的方案，例如识别表单，或者使用你提供的模型进行自定义实体检测，以及在[自定义技能 Web 界面](cognitive-search-custom-skill-interface.md)中进行包装。 自定义技能的一些示例：[表单识别器](../cognitive-services/form-recognizer/overview.md)、集成[必应实体搜索 API](./cognitive-search-create-custom-skill-example.md)、[自定义实体识别](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
+自定义技能可以支持更复杂的方案，例如识别表单，或者使用你提供的模型进行自定义实体检测，以及在[自定义技能 Web 界面](cognitive-search-custom-skill-interface.md)中进行包装。 自定义技能的一些示例：[表单识别器](../applied-ai-services/form-recognizer/overview.md)、集成[必应实体搜索 API](./cognitive-search-create-custom-skill-example.md)、[自定义实体识别](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
 
 ## <a name="enrichment-steps"></a>扩充步骤 <a name="enrichment-steps"></a>
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/29/2021
 ms.author: radeltch
-ms.openlocfilehash: b6eceec68433c9cacfa4aa507e260cae86766609
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 59c977b94efe62489208fca0d2514a5d2e381aff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419573"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803694"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>使用适用于 SAP 应用程序的 Azure NetApp 文件 (SMB) 实现 Windows 上 Azure VM 的 SAP NetWeaver 高可用性
 
@@ -31,7 +31,6 @@ ms.locfileid: "122419573"
 
 [anf-azure-doc]:../../../azure-netapp-files/azure-netapp-files-introduction.md
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -111,10 +110,9 @@ SMB 文件共享的先决条件为：
 
 执行以下步骤，以准备好使用 Azure NetApp 文件。  
 
-1. 按照[注册 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-register.md)的步骤操作  
-2. 按照[创建 NetApp 帐户](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)中所述的步骤创建 Azure NetApp 帐户  
-3. 按照[设置容量池](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)中的说明设置容量池
-4. Azure NetApp 文件资源必须驻留在委托的子网中。 按照[将子网委托给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)中的说明创建委托的子网。  
+1. 按照[创建 NetApp 帐户](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)中所述的步骤创建 Azure NetApp 帐户  
+2. 按照[设置容量池](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)中的说明设置容量池
+3. Azure NetApp 文件资源必须驻留在委托的子网中。 按照[将子网委托给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)中的说明创建委托的子网。  
 
    > [!IMPORTANT]
    > 在创建 SMB 卷之前，需要创建 Active Directory 连接。 查看 [Active Directory 连接要求](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)。  
@@ -122,9 +120,9 @@ SMB 文件共享的先决条件为：
    > 创建 Active Directory 连接时，请确保输入的 SMB 服务器（计算机帐户）前缀不超过 8 个字符，以避免违反 SAP 应用程序的 13 个字符主机名限制（会自动在 SMB 计算机帐户名称中添加一个后缀）。     
    > SAP 应用程序的主机名限制在 [2718300 - 物理和虚拟主机名长度限制](https://launchpad.support.sap.com/#/notes/2718300)和 [611361 - SAP ABAP 平台服务器的主机名](https://launchpad.support.sap.com/#/notes/611361)中进行了介绍。  
 
-5. 按照[创建 Active Directory 连接](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)中所述创建 Active Directory 连接  
-6. 按照[添加 SMB 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)中的说明创建 SMB Azure NetApp 文件 SMB 卷  
-7. 在 Windows 虚拟机上装载 SMB 卷。
+4. 按照[创建 Active Directory 连接](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)中所述创建 Active Directory 连接  
+5. 按照[添加 SMB 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)中的说明创建 SMB Azure NetApp 文件 SMB 卷  
+6. 在 Windows 虚拟机上装载 SMB 卷。
 
 > [!TIP]
 > 可以通过在 [Azure 门户](https://portal.azure.com/#home)中导航到“Azure NetApp 文件”对象，单击“卷”边栏选项卡，然后单击“装载说明”，找到有关如何装载 Azure NetApp 文件卷的说明 。  

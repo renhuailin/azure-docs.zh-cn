@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 8b2909d608578cf2ceff926bba5f3aa1b569b025
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 63595bc1471e550eb964e50e5d5bafacb29bd623
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136618"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596365"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>快速入门：在 .NET Core 中使用 Azure Cache for Redis
 
@@ -29,9 +29,10 @@ ms.locfileid: "113136618"
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-a-cache"></a>创建缓存
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
+
+[!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
 记下 **主机名** 和 **主** 访问密钥。 稍后将使用这些值来构造 *CacheConnection* 机密。
 

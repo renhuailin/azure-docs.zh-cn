@@ -9,21 +9,21 @@ ms.date: 11/17/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cee20d5104ceb09dc0ba3d826b28108e543cc3d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99508923"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664896"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>通过 WANdisco LiveData Platform for Azure（预览版）满足苛刻的迁移要求
 
-使用 [WANdisco LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) 将本地 Hadoop 数据迁移到 Azure Data Lake Storage Gen2。 此平台无需应用程序故障时间，消除了数据丢失的可能性，并且即使操作在本地继续进行也可确保数据一致性。  
+使用 [WANdisco LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) 将本地 Hadoop 数据迁移到 Azure Data Lake Storage Gen2。 此平台无需应用程序故障时间，消除了数据丢失的可能性，并且即使操作在本地继续进行也可确保数据一致性。
 
 > [!NOTE]
 > WANdisco LiveData Platform for Azure 以公共预览版提供。 有关区域可用性，请参阅[支持的区域](https://docs.wandisco.com/live-data-platform/docs/prereq#supported-regions)。
 
-该平台由以下两个服务组成：[LiveData Migrator for Azure](https://www.wandisco.com/products/livedata-migrator-for-azure)，用于将主动使用的数据从本地环境迁移到 Azure 存储；[LiveData Plane for Azure](https://www.wandisco.com/products/livedata-plane-for-azure)，可确保一致复制所有修改的数据或引入数据。 
+该平台由以下两个服务组成：[LiveData Migrator for Azure](https://www.wandisco.com/products/livedata-migrator-for-azure)，用于将主动使用的数据从本地环境迁移到 Azure 存储；[LiveData Plane for Azure](https://www.wandisco.com/products/livedata-plane-for-azure)，可确保一致复制所有修改的数据或引入数据。
 
 > [!div class="mx-imgBorder"]
 > ![实时数据平台概述示意图](./media/migrate-gen2-wandisco-live-data-platform/live-data-platform-overview.png)
@@ -36,7 +36,7 @@ ms.locfileid: "99508923"
 
 [WANdisco LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) 使用一个支持广域网的独特共识引擎来实现数据一致性，并大规模执行数据复制，同时应用程序可以继续修改正在复制的数据。 <br><br>
 
->[!VIDEO https://www.youtube.com/embed/KRrmcYPxEho] 
+> [!VIDEO https://www.youtube.com/embed/KRrmcYPxEho]
 
 该平台的主要功能包括以下内容：
 
@@ -64,12 +64,12 @@ WANdisco LiveData Platform for Azure 的第一个服务是 [LiveData Migrator fo
 1. 将 LiveData Migrator 实例从 Azure 门户预配到本地 Hadoop 群集。 无需停机或更改群集，应用程序可以继续运行。
 
    > [!div class="mx-imgBorder"]
-   >![创建 LiveData Migrator 实例](./media/migrate-gen2-wandisco-live-data-platform/create-live-data-migrator.png)
+   > ![创建 LiveData Migrator 实例](./media/migrate-gen2-wandisco-live-data-platform/create-live-data-migrator.png)
 
 2. 定义启用了 Azure Data Lake Storage Gen2 的目标存储帐户。
 
    > [!div class="mx-imgBorder"]
-   >![创建 LiveData Migrator 目标](./media/migrate-gen2-wandisco-live-data-platform/create-target.png)
+   > ![创建 LiveData Migrator 目标](./media/migrate-gen2-wandisco-live-data-platform/create-target.png)
 
 3. 定义要迁移的数据的位置，例如：`/user/hive/warehouse`，并开始迁移。
 
@@ -97,7 +97,7 @@ LiveData Plane for Azure 使数据保持一致，而不会对群集操作或应�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 适用于 Azure 的 [LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) 的使用方法和任何其他 Azure 资源一样，现提供预览版。 
+- 适用于 Azure 的 [LiveData Platform for Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) 的使用方法和任何其他 Azure 资源一样，现提供预览版。
 
 - 了解[先决条件](https://docs.wandisco.com/live-data-platform/docs/prereq/)，计划迁移，并使用 LiveData Migrator for Azure 快速完成大规模迁移。
 
@@ -111,7 +111,7 @@ LiveData Plane for Azure 使数据保持一致，而不会对群集操作或应�
 
 - [LiveData Migrator for Azure 计划和定价](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldm?tab=PlansAndPrice)
 
-- [LiveData Plane for Azure 计划和定价](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldp?tab=PlansAndPrice) 
+- [LiveData Plane for Azure 计划和定价](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldp?tab=PlansAndPrice)
 
 - [LiveData Platform for Azure 常见问题](https://docs.wandisco.com/live-data-platform/docs/faq/)
 

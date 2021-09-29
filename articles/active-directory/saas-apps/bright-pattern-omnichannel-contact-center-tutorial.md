@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 9929dc3dbe5870fbe1a5047fbc3fc552e32aba59
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fb5c3a5811afdd003bf91a99bd64ed5fa8952a49
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92456683"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749992"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Bright Pattern Omnichannel Contact Center 集成
 
@@ -80,15 +80,15 @@ ms.locfileid: "92456683"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`<SUBDOMAIN>_sso`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`<SUBDOMAIN>_sso`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightpattern.com/agentdesktop/sso/redirect`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightpattern.com/`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightpattern.com/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Bright Pattern Omnichannel Contact Center 客户端支持团队](mailto:support@brightpattern.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -105,7 +105,7 @@ ms.locfileid: "92456683"
     | lastName | user.surname |
     | 电子邮件 | user.mail |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "92456683"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Bright Pattern Omnichannel Contact Center”磁贴时，应该会自动登录到设置了 SSO 的 Bright Pattern Omnichannel Contact Center。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Bright Pattern Omnichannel Contact Center”磁贴时，应该会自动登录到设置了 SSO 的 Bright Pattern Omnichannel Contact Center。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -7,12 +7,12 @@ keywords: azure 自动化, DSC, powershell, 状态配置, 更新管理, 更改�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf32e654b3d5a60b542747fd731c329979412e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182812"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812582"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
 
@@ -97,4 +97,4 @@ Azure 自动化支持在基础结构和应用程序的整个生命周期内进�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建自动化帐户](automation-quickstart-create-account.md)
+> [创建自动化帐户](./quickstarts/create-account-portal.md)

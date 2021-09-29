@@ -10,20 +10,20 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 181dd9531ec8aa3630ff1ef3e3356ead5120c512
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783566"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605955"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
 大多数人为其全球 Azure 部署使用了 Azure 公有云。 但出于主权等方面的原因，还存在一些独立的 Microsoft Azure 部署。 这些独立部署称为“环境”。 以下列表详细说明了当前存在的独立云。
 
-* [Azure 政府云](https://azure.microsoft.com/features/gov/)
-* [由中国世纪互联运营的 Azure 中国世纪互联云](http://www.windowsazure.cn/)
-* [Azure 德国云](../../germany/germany-welcome.md)
+- [Azure 政府云](https://azure.microsoft.com/features/gov/)
+- [由中国世纪互联运营的 Azure 中国世纪互联云](http://www.windowsazure.cn/)
+- [Azure 德国云](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,9 +31,9 @@ ms.locfileid: "92783566"
 
 若要在某个独立云中使用 Azure 存储，需要连接到该云而不是 Azure 公有云。 若要使用某个独立云而不是 Azure 公有云，需要：
 
-* 指定要连接到的环境。
-* 确定并使用可用的区域。
-* 使用正确的终结点后缀，它不同于 Azure 公有云。
+- 指定要连接到的环境。
+- 确定并使用可用的区域。
+- 使用正确的终结点后缀，它不同于 Azure 公有云。
 
 本文中的示例需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 在 PowerShell 窗口中，运行 `Get-Module -ListAvailable Az` 可查找版本。 如果未列出任何信息或需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "92783566"
 Get-AzEnvironment
 ```
 
-登录到有权访问所要连接的云的帐户，并设置环境。 此示例演示如何登录到使用 Azure 政府云的帐户。   
+登录到有权访问所要连接的云的帐户，并设置环境。 此示例演示如何登录到使用 Azure 政府云的帐户。
 
 ```powershell
 Connect-AzAccount –Environment AzureUSGovernment
@@ -65,7 +65,6 @@ Get-AzLocation | select Location, DisplayName
 |----|----|
 | `germanycentral` | 德国中部|
 | `germanynortheast` | 德国东北部 |
-
 
 ## <a name="endpoint-suffix"></a>终结点后缀
 
@@ -166,8 +165,8 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在不同的 PowerShell 会话中保留用户登录](/powershell/azure/context-persistence)
-* [Azure 政府版存储](../../azure-government/compare-azure-government-global-azure.md)
-* [Microsoft Azure Government 开发人员指南](../../azure-government/documentation-government-developer-guide.md)
-* [Azure 中国世纪互联应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
-* [Azure 德国版文档](../../germany/germany-welcome.md)
+- [在不同的 PowerShell 会话中保留用户登录](/powershell/azure/context-persistence)
+- [Azure 政府版存储](../../azure-government/compare-azure-government-global-azure.md)
+- [Microsoft Azure Government 开发人员指南](../../azure-government/documentation-government-developer-guide.md)
+- [Azure 中国世纪互联应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+- [Azure 德国版文档](../../germany/germany-welcome.md)

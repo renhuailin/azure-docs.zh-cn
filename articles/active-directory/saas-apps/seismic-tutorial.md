@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 62785a787cb1153264001def1a030ad47f9b38bf
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: bd541d899c7c396253c47cf7a9c9925fe4c8e097
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111893275"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801555"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>教程：Azure Active Directory 与 Seismic 集成
 
@@ -135,7 +135,7 @@ ms.locfileid: "111893275"
 
 * 直接转到 Seismic 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Seismic”磁贴时，会重定向到 Seismic 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Seismic”磁贴时，会重定向到 Seismic 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

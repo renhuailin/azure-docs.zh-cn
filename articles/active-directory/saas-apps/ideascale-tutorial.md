@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef04bf9f6d9ca6ff5089d2826c05a5acfb759b04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 896ce37053d54dbc51991082b4a79e91bdf85769
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001654"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教程：Azure Active Directory 与 IdeaScale 集成
 
@@ -127,13 +127,13 @@ ms.locfileid: "96001654"
 
     c. 注销 URL
 
-### <a name="configure-ideascale-single-sign-on"></a>配置 IdeaScale 单一登录
+### <a name="configure-ideascale-single-sign-on&quot;></a>配置 IdeaScale 单一登录
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 IdeaScale 公司站点。
 
 2. 转到“社区设置”  。
 
-    ![社区设置](./media/ideascale-tutorial/ic790847.png "社区设置")
+    ![社区设置](./media/ideascale-tutorial/ic790847.png &quot;社区设置")
 
 3. 转到“安全性”\>“单一登录设置”。
 
@@ -206,7 +206,7 @@ ms.locfileid: "96001654"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-ideascale-test-user"></a>创建 IdeaScale 测试用户
+### <a name="create-ideascale-test-user&quot;></a>创建 IdeaScale 测试用户
 
 要使 Azure AD 用户能够登录 IdeaScale，必须将这些用户预配到 IdeaScale 中。 对于 IdeaScale，预配是一项手动任务。
 
@@ -216,7 +216,7 @@ ms.locfileid: "96001654"
 
 2. 转到“社区设置”  。
 
-    ![社区设置](./media/ideascale-tutorial/ic790847.png "社区设置")
+    ![社区设置](./media/ideascale-tutorial/ic790847.png &quot;社区设置")
 
 3. 转到“基本设置”\>“成员管理”。
 
@@ -242,7 +242,7 @@ ms.locfileid: "96001654"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 IdeaScale 磁贴时，应当会自动登录到你为其设置了 SSO 的 IdeaScale。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 IdeaScale 磁贴时，应当会自动登录到你为其设置了 SSO 的 IdeaScale。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

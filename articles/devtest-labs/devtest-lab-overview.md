@@ -1,14 +1,14 @@
 ---
-title: 关于 Azure 开发测试实验室 | Microsoft Docs
+title: 关于 Azure 开发测试实验室
 description: 了解开发测试实验室如何轻松地创建、管理和监视 Azure 虚拟机
-ms.topic: article
+ms.topic: overview
 ms.date: 08/20/2021
-ms.openlocfilehash: 5ef1aabb861b90679fbb36e46b837d6567f122d4
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: cad1bb218722c72d6b7f7c2d28ad92a460e3d051
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468035"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563163"
 ---
 # <a name="about-azure-devtest-labs"></a>关于 Azure 开发测试实验室
 Azure 开发测试实验室使团队中的开发人员能够高效地自行管理虚拟机 (VM) 和 PaaS 资源，而无需等待审批。

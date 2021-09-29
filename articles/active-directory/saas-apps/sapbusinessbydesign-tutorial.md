@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 6db863f43deb6eb2787cda60650a267a62076aad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54bf74a0d20945d7af27b86b80e1ac50397d7425
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654328"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>教程：将 Azure Active Directory 与 SAP Business ByDesign 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101654328"
 * 让用户使用其 Azure AD 帐户自动登录到 SAP Business ByDesign。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -192,7 +192,7 @@ ms.locfileid: "101654328"
 
 2. 直接转到 SAP Business ByDesign 登录 URL，并从此处启动登录流。
 
-3. 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 SAP Business ByDesign 磁贴时，将会重定向到 SAP Business ByDesign 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+3. 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 SAP Business ByDesign 磁贴时，将会重定向到 SAP Business ByDesign 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

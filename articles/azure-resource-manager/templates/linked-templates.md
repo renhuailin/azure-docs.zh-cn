@@ -2,14 +2,14 @@
 title: 用于部署的链接模板
 description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中的链接模板创建一个模块化的模板解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 09/10/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3ae1bcc6cc1c99bc89e2f8fbd2c8debf95418850
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b8be710611d892913c43e9d500a051a3d3b55ca5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951153"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820505"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -38,7 +38,7 @@ ms.locfileid: "111951153"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -67,7 +67,7 @@ ms.locfileid: "111951153"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -77,7 +77,7 @@ ms.locfileid: "111951153"
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2019-04-01",
+              "apiVersion": "2021-04-01",
               "name": "[parameters('storageAccountName')]",
               "location": "West US",
               "sku": {
@@ -104,7 +104,7 @@ ms.locfileid: "111951153"
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2020-10-01",
+  "apiVersion": "2021-04-01",
   "name": "nestedTemplate1",
   "properties": {
     "expressionEvaluationOptions": {
@@ -131,7 +131,7 @@ ms.locfileid: "111951153"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "nestedTemplate1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -215,7 +215,7 @@ ms.locfileid: "111951153"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "dynamicSecret",
       "properties": {
         "mode": "Incremental",
@@ -258,7 +258,7 @@ ms.locfileid: "111951153"
           "resources": [
             {
               "type": "Microsoft.Sql/servers",
-              "apiVersion": "2018-06-01-preview",
+              "apiVersion": "2021-02-01-preview",
               "name": "[variables('sqlServerName')]",
               "location": "[parameters('location')]",
               "properties": {
@@ -308,7 +308,7 @@ ms.locfileid: "111951153"
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-04-01",
       "name": "mainTemplate",
       "properties": {
         ...
@@ -322,7 +322,7 @@ ms.locfileid: "111951153"
     {
       "name": "outer",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "outer"
@@ -334,7 +334,7 @@ ms.locfileid: "111951153"
           "resources": [
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-04-01",
               "name": "outer",
               "properties": {
                 ...
@@ -352,7 +352,7 @@ ms.locfileid: "111951153"
     {
       "name": "inner",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -386,7 +386,7 @@ ms.locfileid: "111951153"
           "resources": [
             {
               "type": "Microsoft.Compute/virtualMachines",
-              "apiVersion": "2020-06-01",
+              "apiVersion": "2021-04-01",
               "name": "inner",
               "properties": {
                 ...
@@ -418,7 +418,7 @@ ms.locfileid: "111951153"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -456,7 +456,7 @@ ms.locfileid: "111951153"
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -479,7 +479,7 @@ ms.locfileid: "111951153"
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -522,7 +522,7 @@ ms.locfileid: "111951153"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "childLinked",
       "properties": {
         "mode": "Incremental",
@@ -644,7 +644,7 @@ az deployment group create \
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2020-10-01",
+    "apiVersion": "2021-04-01",
     "name": "[concat('nestedTemplate', copyIndex())]",
     // yes, copy works here
     "copy": {
@@ -662,7 +662,7 @@ az deployment group create \
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2021-04-01",
             "name": "[concat(variables('storageName'), copyIndex())]",
             "location": "West US",
             "sku": {
@@ -726,7 +726,7 @@ az deployment group create \
   "resources": [
     {
       "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2021-02-01",
       "name": "[parameters('publicIPAddresses_name')]",
       "location": "southcentralus",
       "properties": {
@@ -761,7 +761,7 @@ az deployment group create \
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "[concat('linkedTemplate', copyIndex())]",
       "copy": {
         "count": 3,
@@ -831,7 +831,7 @@ done
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -893,7 +893,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要完成教程，请参阅[教程：部署链接模板](./deployment-tutorial-linked-template.md)。
-* 若要了解如何为资源定义部署顺序，请参阅[在 ARM 模板中定义资源的部署顺序](./resource-dependency.md)。
-* 若要了解如何定义一个资源但要创建它的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
-* 有关在存储帐户中设置模板和生成 SAS 令牌的步骤，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)或[使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)。
+- 若要完成教程，请参阅[教程：部署链接模板](./deployment-tutorial-linked-template.md)。
+- 若要了解如何为资源定义部署顺序，请参阅[在 ARM 模板中定义资源的部署顺序](./resource-dependency.md)。
+- 若要了解如何定义一个资源但要创建它的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
+- 有关在存储帐户中设置模板和生成 SAS 令牌的步骤，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)或[使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)。

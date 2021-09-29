@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Lake Storage 查询加速来筛选数据 |Microsoft Docs
+title: 使用 Azure Data Lake Storage 查询加速来筛选数据
 description: 使用查询加速来检索存储帐户中的部分数据。
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,16 +9,16 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: f5feda40d775964aec52c8f5b12b54e6329b0048
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 840c31dc8110405eee02745f773f14f33ab059df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664838"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636774"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查询加速来筛选数据
 
-本文介绍如何使用查询加速来检索存储帐户中的部分数据。 
+本文介绍如何使用查询加速来检索存储帐户中的部分数据。
 
 查询加速使应用程序和分析框架可以通过仅检索执行给定操作所需的数据来大幅优化数据处理。 若要了解详细信息，请参阅 [Azure Data Lake Storage 查询加速](data-lake-storage-query-acceleration.md)。
 
@@ -36,17 +36,17 @@ ms.locfileid: "110664838"
 
   ### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-  [.NET SDK](https://dotnet.microsoft.com/download) 
+  [.NET SDK](https://dotnet.microsoft.com/download)
 
   ### <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
   - [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本
 
-  - [Apache Maven](https://maven.apache.org/download.cgi) 
+  - [Apache Maven](https://maven.apache.org/download.cgi)
 
-    > [!NOTE] 
+    > [!NOTE]
     > 本文假设已使用 Apache Maven 创建了一个 Java 项目。 有关如何使用 Apache Maven 创建项目的示例，请参阅[设置](storage-quickstart-blobs-java.md#setting-up)。
-  
+
   ### <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
   [Python](https://www.python.org/downloads/) 3.8 或更高版本。
@@ -59,11 +59,11 @@ ms.locfileid: "110664838"
 
 ## <a name="enable-query-acceleration"></a>启用查询加速
 
-若要使用查询加速，必须向订阅注册查询加速功能。 验证该功能已注册后，必须注册 Azure 存储资源提供程序。 
+若要使用查询加速，必须向订阅注册查询加速功能。 验证该功能已注册后，必须注册 Azure 存储资源提供程序。
 
 ### <a name="step-1-register-the-query-acceleration-feature"></a>步骤 1：注册查询加速功能
 
-若要使用查询加速，必须首先向订阅注册查询加速功能。 
+若要使用查询加速，必须首先向订阅注册查询加速功能。
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -132,7 +132,7 @@ az feature show --namespace Microsoft.Storage --name BlobQuery
 
 ### <a name="step-3-register-the-azure-storage-resource-provider"></a>步骤 3：注册 Azure 存储资源提供程序
 
-注册得到批准后，必须重新注册 Azure 存储资源提供程序。 
+注册得到批准后，必须重新注册 Azure 存储资源提供程序。
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -154,7 +154,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 ## <a name="set-up-your-environment"></a>设置环境
 
-### <a name="step-1-install-packages"></a>步骤 1：安装包 
+### <a name="step-1-install-packages"></a>步骤 1：安装包
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -178,7 +178,7 @@ Update-Module -Name Az
    cd myProject
    ```
 
-2. 使用 `dotnet add package` 命令安装 `12.5.0-preview.6` 版本或更高版本的适用于 .NET 包的 Azure Blob 存储客户端库。 
+2. 使用 `dotnet add package` 命令安装 `12.5.0-preview.6` 版本或更高版本的适用于 .NET 包的 Azure Blob 存储客户端库。
 
    ```console
    dotnet add package Azure.Storage.Blobs -v 12.8.0
@@ -192,7 +192,7 @@ Update-Module -Name Az
 
 #### <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/java)
 
-1. 在文本编辑器中打开项目的 pom.xml 文件。 将以下依赖项元素添加到依赖项组。 
+1. 在文本编辑器中打开项目的 pom.xml 文件。 将以下依赖项元素添加到依赖项组。
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -205,7 +205,7 @@ Update-Module -Name Az
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-csv</artifactId>
         <version>1.8</version>
-    </dependency>    
+    </dependency>
     <dependency>
       <groupId>com.azure</groupId>
       <artifactId>azure-storage-blob</artifactId>
@@ -288,7 +288,7 @@ from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, D
 
 ### <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
-将此语句放置在代码文件的顶部，以加入 `storage-blob` 模块。 
+将此语句放置在代码文件的顶部，以加入 `storage-blob` 模块。
 
 ```javascript
 const { BlobServiceClient } = require("@azure/storage-blob");
@@ -304,11 +304,11 @@ const csv = require('@fast-csv/parse');
 
 ## <a name="retrieve-data-by-using-a-filter"></a>使用筛选器来检索数据
 
-可以使用 SQL 来指定查询加速请求中的行筛选器谓词和列投影。 下面的代码查询存储中的 CSV 文件，并返回第三列中与值 `Hemingway, Ernest` 匹配的所有数据行。 
+可以使用 SQL 来指定查询加速请求中的行筛选器谓词和列投影。 下面的代码查询存储中的 CSV 文件，并返回第三列中与值 `Hemingway, Ernest` 匹配的所有数据行。
 
 - 在 SQL 查询中，关键字 `BlobStorage` 用于表示正在查询的文件。
 
-- 列引用被指定为 `_N`，其中第一列是 `_1`。 如果源文件包含标题行，则可以按标题行中指定的名称来引用列。 
+- 列引用被指定为 `_N`，其中第一列是 `_1`。 如果源文件包含标题行，则可以按标题行中指定的名称来引用列。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -403,7 +403,7 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
             .setInputSerialization(input)
             .setOutputSerialization(output)
             .setErrorConsumer(errorConsumer)
-            .setProgressConsumer(progressConsumer);            
+            .setProgressConsumer(progressConsumer);
 
         /* Open the query input stream. */
         InputStream stream = blobClient.openQueryInputStream(queryOptions).getValue();
@@ -478,10 +478,10 @@ async function dumpQueryCsv(blob, query, headers)
 
 ## <a name="retrieve-specific-columns"></a>检索特定列
 
-可以将结果的范围限定为部分列。 这样一来，只需检索执行给定计算所需的列。 这可以提高应用程序性能并降低成本，因为通过网络传输的数据较少。 
+可以将结果的范围限定为部分列。 这样一来，只需检索执行给定计算所需的列。 这可以提高应用程序性能并降低成本，因为通过网络传输的数据较少。
 
 > [!NOTE]
-> 可以将结果范围限定到的最大列数为 49。 如果需要结果包含 49 列以上，请对 SELECT 表达式使用通配符 (`*`)（例如：`SELECT *`）。 
+> 可以将结果范围限定到的最大列数为 49。 如果需要结果包含 49 列以上，请对 SELECT 表达式使用通配符 (`*`)（例如：`SELECT *`）。
 
 此代码仅检索数据集中所有书籍的 `BibNum` 列。 它还使用源文件的标题行中的信息来引用查询中的列。
 
@@ -541,7 +541,7 @@ async function queryBibNum(blob)
 
 ---
 
-下面的代码将行筛选和列投影合并到同一个查询中。 
+下面的代码将行筛选和列投影合并到同一个查询中。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -556,9 +556,9 @@ Function Get-QueryCsv($ctx, $container, $blob, $query, $hasheaders) {
 }
 
 $container = "data"
-$query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType 
-            FROM BlobStorage 
-            WHERE ItemType IN 
+$query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType
+            FROM BlobStorage
+            WHERE ItemType IN
                 ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')"
 
 ```
@@ -568,9 +568,9 @@ $query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType
 ```cs
 static async Task QueryDvds(BlockBlobClient blob)
 {
-    string query = @"SELECT BibNum, Title, Author, ISBN, Publisher, ItemType 
-        FROM BlobStorage 
-        WHERE ItemType IN 
+    string query = @"SELECT BibNum, Title, Author, ISBN, Publisher, ItemType
+        FROM BlobStorage
+        WHERE ItemType IN
             ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
     await DumpQueryCsv(blob, query, true);
 }
@@ -607,7 +607,7 @@ async function queryDvds(blob)
 {
     const query = "SELECT BibNum, Title, Author, ISBN, Publisher, ItemType " +
                   "FROM BlobStorage " +
-                  "WHERE ItemType IN " + 
+                  "WHERE ItemType IN " +
                   " ('acdvd', 'cadvd', 'cadvdnf', 'calndvd', 'ccdvd', 'ccdvdnf', 'jcdvd', 'nadvd', 'nadvdnf', 'nalndvd', 'ncdvd', 'ncdvdnf')";
     await dumpQueryCsv(blob, query, true);
 }

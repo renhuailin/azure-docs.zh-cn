@@ -4,12 +4,12 @@ description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署�
 ms.topic: conceptual
 ms.date: 05/13/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee67ca1f924c2159ab85a47ffdf73dfb7c3fc9f5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27f6e398beacde13fa02ebdc1653b30ed7742300
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957822"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573191"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 模板和 Azure PowerShell 部署资源
 
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile <path-to-template>
 ```
 
-部署可能需要几分钟才能完成。
+部署可能需要几分钟时间才能完成。
 
 ## <a name="deploy-remote-template"></a>部署远程模板
 
@@ -141,7 +141,7 @@ New-AzResourceGroupDeployment `
   -Name linkedTemplateWithRelativePath `
   -ResourceGroupName "myResourceGroup" `
   -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
-  -QueryString $sasToken
+  -QueryString "$sasToken"
 ```
 
 有关详细信息，请参阅[对链接模板使用相对路径](./linked-templates.md#linked-template)。
@@ -166,7 +166,7 @@ New-AzTemplateSpec `
 然后，获取模板规格的 ID 并部署它。
 
 ```azurepowershell
-$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Versions.Id
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName demoRG `

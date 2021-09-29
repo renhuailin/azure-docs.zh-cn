@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c5d4c390110a5b3eef7509508d35c9554f7be984
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cb19372e5b97a9f508367366faa9ae49d0d11261
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065973"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596954"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -66,7 +66,7 @@ Azure 存储提供多种类型的存储帐户。 每种类型支持不同的功�
 
 `http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*`
 
-也可将存储帐户配置为对 Blob 使用自定义域。 有关详细信息，请参阅[为 Azure 存储帐户配置自定义域名](../blobs/storage-custom-domain-name.md)。  
+也可将存储帐户配置为对 Blob 使用自定义域。 有关详细信息，请参阅[为 Azure 存储帐户配置自定义域名](../blobs/storage-custom-domain-name.md)。
 
 ## <a name="migrate-a-storage-account"></a>迁移存储帐户
 
@@ -111,7 +111,7 @@ Azure 存储根据存储帐户使用情况计费。 存储帐户中的所有对�
 | 旧存储帐户类型 | 支持的存储服务 | 冗余选项 | 部署模型 | 使用情况 |
 |--|--|--|--|--|
 | 标准常规用途 v1 | Blob、队列和表存储、Azure 文件存储 | LRS/GRS/RA-GRS | 资源管理器、经典 | 常规用途 v1 帐户可能没有最新功能，其每 GB 定价也可能不是最低的。 可考虑在以下场景中使用：<br /><ul><li>应用程序需要 Azure [经典部署模型](../../azure-portal/supportability/classic-deployment-model-quota-increase-requests.md)。</li><li>应用程序为事务密集型，或者使用很大的异地复制带宽，但不需要大的容量。 在这种情况下，常规用途 v1 可能是最经济的选择。</li><li>如果使用的 Azure 存储 REST API 版本早于 2014-02-14，或使用的客户端库版本低于 4.x，则无法升级应用程序。</li></ul> |
-| 标准 Blob 存储 | Blob 存储（仅限块 Blob 和追加 Blob） | LRS/GRS/RA-GRS | Resource Manager | Microsoft 建议尽可能使用标准常规用途 v2 帐户。 |
+| 标准 Blob 存储 | Blob 存储（仅限块 Blob 和追加 Blob） | LRS/GRS/RA-GRS | 资源管理器 | Microsoft 建议尽可能使用标准常规用途 v2 帐户。 |
 
 ## <a name="next-steps"></a>后续步骤
 

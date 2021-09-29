@@ -2,17 +2,17 @@
 title: 使用 Azure Bastion 连接到 Windows 虚拟机规模集
 description: 了解如何使用 Azure Bastion 连接到 Azure 虚拟机规模集。
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 10/14/2020
-ms.author: charwen
-ms.openlocfilehash: 361bb52ffd9762a49a549fe3fc5ac5cd652416ca
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 09/20/2021
+ms.author: cherylmc
+ms.openlocfilehash: e57ee80fa7727a6f5e7e1ec59857746cb4b8d590
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534148"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620648"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>使用 Azure Bastion 连接到虚拟机规模集
 
@@ -20,7 +20,7 @@ ms.locfileid: "110534148"
 
 ## <a name="prerequisites"></a>先决条件
 
-请确保已为虚拟机规模集所在的虚拟网络设置 Azure Bastion 主机。 有关详细信息，请参阅[创建 Azure Bastion 主机](./tutorial-create-host-portal.md)。 在虚拟网络中预配和部署 Bastion 服务后，就可用它来连接到此虚拟网络中的虚拟机规模集实例。 Bastion 假设你正在使用 RDP 连接 Windows 虚拟机规模集，用 SSH 连接 Linux 虚拟机规模集。 要了解到 Linux VM 的连接，请参阅[连接到 VM - Linux](bastion-connect-vm-ssh.md)。
+请确保已为虚拟机规模集所在的虚拟网络设置 Azure Bastion 主机。 有关详细信息，请参阅[创建 Azure Bastion 主机](./tutorial-create-host-portal.md)。 在虚拟网络中预配和部署 Bastion 服务后，就可用它来连接到此虚拟网络中的虚拟机规模集实例。 Bastion 假设你正在使用 RDP 连接 Windows 虚拟机规模集，用 SSH 连接 Linux 虚拟机规模集。 要了解到 Linux VM 的连接，请参阅[连接到 VM - Linux](bastion-connect-vm-ssh-linux.md)。
 
 ## <a name="connect-using-rdp"></a><a name="rdp"></a>使用 RDP 进行连接
 

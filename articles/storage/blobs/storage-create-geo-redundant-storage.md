@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 8c9666f9cfadeda29b6259876c972bda67a9ee44
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e8009e7b86ca151b6445ff3a5c165687641318d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462007"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590340"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -31,9 +31,9 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 在该系列的第一部分中，你会学习如何：
 
 > [!div class="checklist"]
-> * 创建存储帐户
-> * 设置连接字符串
-> * 运行控制台应用程序
+> - 创建存储帐户
+> - 设置连接字符串
+> - 运行控制台应用程序
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-* 安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)（包含 **Azure 开发** 工作负荷）。
+- 安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)（包含 **Azure 开发** 工作负荷）。
 
   ![Azure 开发（位于“Web 和云”下）](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -55,8 +55,8 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 # <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
-* [安装 Python](https://www.python.org/downloads/)
-* 下载并安装[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)
+- [安装 Python](https://www.python.org/downloads/)
+- 下载并安装[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)
 
 # <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
@@ -64,13 +64,13 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 # <a name="nodejs-v11-sdk"></a>[Node.js v11 SDK](#tab/nodejs11)
 
-* 安装 [Node.js](https://nodejs.org)。
+- 安装 [Node.js](https://nodejs.org)。
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -82,14 +82,14 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 2. 从“新建”页中选择“存储帐户 - blob、文件、表、队列”。
 4. 使用以下信息填充存储帐户窗体（如下图所示），然后选择“创建”：
 
-   | 设置       | 示例值 | 说明 |
+   | 设置       | 示例值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **订阅** | 我的订阅 | 有关订阅的详细信息，请参阅[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 |
    | **ResourceGroup** | *myResourceGroup* | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
    | **名称** | mystorageaccount | 存储帐户的唯一名称。 |
    | **位置** | *美国东部* | 选择一个位置。 |
    | **“性能”** | *标准* | 对于示例方案，“标准”性能是一个不错的选项。 |
-   | 帐户类型 | StorageV2 | 建议使用常规用途 v2 存储帐户。 有关 Azure 存储帐户类型的详细信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。 |
+   | **帐户种类** | StorageV2 | 建议使用常规用途 v2 存储帐户。 有关 Azure 存储帐户类型的详细信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。 |
    | **复制**| *读取访问异地区域冗余存储 (RA-GZRS)* | 主要区域是区域冗余的，将在启用了对次要区域的读取访问权限的情况下复制到次要区域。 |
    | **访问层**| *热访问层* | 将热访问层用于经常访问的数据。 |
 

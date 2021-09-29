@@ -9,12 +9,12 @@ ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 06/04/2021
-ms.openlocfilehash: 3b8c15a764f3a196232e43ffd8d7fd7fe373355c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b24ae5a1564f182cf44e540a9d05a2aaac005ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739459"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733107"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 
@@ -36,15 +36,15 @@ ms.locfileid: "121739459"
 
 1. 在 Azure 门户中的数据工厂概述或主页上，选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 或应用。 
 
-   ![数据工厂主页](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png" alt-text="数据工厂主页":::
 
    在主页上，选择“协调”。 
 
-   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="显示 ADF 主页的屏幕截图。":::
 
 1. 在“活动”工具箱中，展开“常规”。 然后将“执行 SSIS 包”活动拖到管道设计图面上。 
 
-   ![将“执行 SSIS 包”活动拖到设计面](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png" alt-text="将“执行 SSIS 包”活动拖到设计面"::: 
 
    选择“执行 SSIS 包”活动对象，以配置其“常规”、“设置”、“SSIS 参数”、“连接管理器”和“属性替代”选项卡。
 
@@ -52,7 +52,7 @@ ms.locfileid: "121739459"
 
 在“执行 SSIS 包”活动的“常规”选项卡上，完成以下步骤。
 
-![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png" alt-text="在“常规”选项卡上设置属性":::
 
    1. 对于“名称”，请输入你的“执行 SSIS 包”活动的名称。
 
@@ -72,7 +72,7 @@ ms.locfileid: "121739459"
 
 在“执行 SSIS 包”活动的“设置”选项卡上，完成以下步骤。
 
-![在“设置”选项卡上设置属性 - 自动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png" alt-text="在“设置”选项卡上设置属性 - 自动":::
 
    1. 对于“Azure-SSIS IR”，请选择指定的 Azure-SSIS IR 以运行“执行 SSIS 包”活动。
 
@@ -98,13 +98,13 @@ ms.locfileid: "121739459"
 
    1. 如果 Azure-SSIS IR 未在运行或“手动输入内容”复选框处于选中状态，请采用以下格式直接在 SSISDB 中输入你的包和环境路径：`<folder name>/<project name>/<package name>.dtsx` 和 `<folder name>/<environment name>`。
 
-      ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png" alt-text="在“设置”选项卡上设置属性 - 手动":::
 
 ##### <a name="package-location-file-system-package"></a>包位置：文件系统(包)
 
 如果没有为 Azure-SSIS IR 预配 SSISDB，则会自动选择“文件系统(包)”作为包位置，否则，你可以自己选择它。 如果选择了该位置，请完成以下步骤。
 
-![在“设置”选项卡上设置属性 - 文件系统(包)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png" alt-text="在“设置”选项卡上设置属性 - 文件系统(包)":::
    
    1. 指定要运行的包，方法是在“包路径”框中提供包文件（带扩展名 `.dtsx`）的通用命名约定 (UNC) 路径。 你可以通过选择“浏览文件存储”来浏览并选择包，也可以手动输入其路径。 例如，如果你将包存储在 Azure 文件存储中，则其路径为 `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`。 
    
@@ -134,7 +134,7 @@ ms.locfileid: "121739459"
 
 如果选择“文件系统(项目)”作为包位置，请完成以下步骤。
 
-![在“设置”选项卡上设置属性 - 文件系统(项目)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png" alt-text="在“设置”选项卡上设置属性 - 文件系统(项目)":::
 
    1. 通过在“项目路径”框中提供项目文件（带 `.ispac` 扩展名）的 UNC 路径，并在“包名称”框中提供项目中某个包文件（带 `.dtsx` 扩展名）的 UNC 路径，来指定要运行的包。  你可以通过选择“浏览文件存储”来浏览并选择项目，也可以手动输入其路径。 例如，如果将项目存储在 Azure 文件存储中，则其路径为 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
 
@@ -162,7 +162,7 @@ ms.locfileid: "121739459"
 
 如果选择“嵌入包”作为包位置，请完成以下步骤。
 
-![在“设置”选项卡上设置属性 - 嵌入包](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png" alt-text="在“设置”选项卡上设置属性 - 嵌入包":::
 
    1. 拖放你的包文件（带有 `.dtsx`），或将其从文件夹“上传”到提供的框中。 包会自动压缩并嵌入到活动有效负载中。 嵌入后，可以“下载”包供以后编辑。 你还可以通过将嵌入包分配给可在多个活动中使用的管道参数来 **参数化** 它，从而优化管道有效负载的大小。 当前不支持嵌入项目文件（带有 `.ispac`），因此无法在嵌入包中将 SSIS 参数/连接管理器与项目级范围一起使用。
    
@@ -190,7 +190,7 @@ ms.locfileid: "121739459"
 
 如果选择“包存储”作为包位置，请完成以下步骤。
 
-![在“设置”选项卡上设置属性 - 包存储](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png" alt-text="在“设置”选项卡上设置属性 - 包存储":::
    
    1. 对于“包存储名称”，请选择附加到你的 Azure-SSIS IR 的一个现有包存储。
 
@@ -222,7 +222,7 @@ ms.locfileid: "121739459"
 
 在“执行 SSIS 包”活动的“SSIS 参数”选项卡上，完成以下步骤。
 
-![在“SSIS 参数”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png" alt-text="在“SSIS 参数”选项卡上设置属性":::
 
    1. 如果 Azure-SSIS IR 正在运行，而你已选择“SSISDB”作为包位置，并已清除“设置”选项卡上的“手动输入内容”复选框，则会显示 SSISDB 中选定项目和包中现有的 SSIS 参数，方便你为它们赋值  。 否则，可以逐个输入以便手动为它们赋值。 为了使包成功执行，请确保它们存在并已正确输入。 
    
@@ -236,19 +236,19 @@ ms.locfileid: "121739459"
 
 在“执行 SSIS 包”活动的“连接管理器”选项卡上，完成以下步骤。
 
-![在“连接管理器”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png" alt-text="在“连接管理器”选项卡上设置属性":::
 
    1. 如果 Azure-SSIS IR 正在运行，而你已选择“SSISDB”作为包位置，并已清除“设置”选项卡上的“手动输入内容”复选框，则会显示 SSISDB 中选定项目和包中现有的连接管理器，方便你为它们的属性赋值  。 否则，可以逐个输入以便手动为其属性赋值。 为了使包成功执行，请确保它们存在并已正确输入。 
    
       可以获取任何连接管理器的正确 SCOPE、NAME 和 PROPERTY 名称，具体方法是在 SSDT 上打开包含相应连接管理器的包。 打开包之后，选择相关连接管理器，以在 SSDT 的“属性”窗口中显示其所有属性的名称和值。 利用此信息，可以在运行时重写任何连接管理器属性的值。 
 
-      ![从 SSDT 获取连接管理器属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png" alt-text="从 SSDT 获取连接管理器属性":::
 
       例如，在不修改 SSDT 上的原始包的情况下，可以通过在运行时覆盖现有连接管理器中的 ConnectByProxy、ConnectionString 和 ConnectUsingManagedIdentity 属性的值，将其在 SQL Server 上运行的本地到本地数据流转换为在 ADF 中的 SSIS IR 上运行的本地到云数据流  。
       
       这些运行时重写可以在本地访问数据时启用自承载 IR (SHIR) 作为 SSIS IR 的代理（请参阅[将 SHIR 配置为 SSIS IR 的代理](./self-hosted-integration-runtime-proxy-ssis.md)），以及启用使用最新 MSOLEDBSQL 驱动程序、进而允许使用 ADF 托管标识进行 Azure Active Directory (AAD) 身份验证的 Azure SQL 数据库/托管实例连接（请参阅[为 OLEDB 连接配置使用 ADF 托管标识的 AAD 身份验证](/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)）。
 
-      ![在“连接管理器”选项卡上通过 SSDT 设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png" alt-text="在“连接管理器”选项卡上通过 SSDT 设置属性":::
    
    1. 如果通过 SSDT 创建包时使用了 **EncryptSensitiveWithUserKey** 保护级别，并且选择了“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”作为包位置，则还需要重新输入敏感的连接管理器属性，以便在此选项卡上为它们赋值。    
 
@@ -260,23 +260,23 @@ ms.locfileid: "121739459"
 
 在“执行 SSIS 包”活动的“属性替代”选项卡上，完成以下步骤。
 
-![在“属性替代”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png" alt-text="在“属性替代”选项卡上设置属性":::
 
    1. 逐个输入选定包的现有属性的路径，以便手动为其赋值。 为了使包成功执行，请确保它们存在并已正确输入。 例如，若要替代用户变量的值，请按以下格式输入其路径：`\Package.Variables[User::<variable name>].Value`。 
 
       可以通过在 SSDT 上打开包含任何包属性的包，获取相应包属性的正确 PROPERTY PATH。 打开包之后，在 SSDT 的“属性”窗口中选择其控制流和“配置”属性。 接下来，选择其“配置”属性旁的省略号 (...) 按钮，以打开“包配置组织程序”，它通常用于[在包部署模型中创建包配置](/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)。 
 
-      ![从 SSDT 获取包属性 - 配置属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png" alt-text="从 SSDT 获取包属性 - 配置属性":::
 
       在“包配置组织程序”中，选中“启用包配置”复选框和“添加...”按钮以打开“包配置向导”。 
       
       在“包配置向导”上，在“配置类型”下拉菜单中选择“XML 配置文件”项，选择“直接指定配置设置”按钮，输入配置文件名，然后选择“下一步 >”按钮。 
 
-      ![从 SSDT 获取包属性 - 配置组织程序](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png" alt-text="从 SSDT 获取包属性 - 配置组织程序":::
 
       最后，选择需要其路径的包属性，然后选择“下一步 >”按钮。  现在可以查看、复制和粘贴所需的包属性路径，并将它们保存在配置文件中。 利用此信息，可以在运行时重写任何包属性的值。 
 
-      ![从 SSDT 获取包属性 - 配置向导](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png" alt-text="从 SSDT 获取包属性 - 配置向导":::
    
    1. 如果通过 SSDT 创建包时使用了 **EncryptSensitiveWithUserKey** 保护级别，并且选择了“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”作为包位置，则还需要重新输入敏感的包属性，以便在此选项卡上为它们赋值。    
    
@@ -293,7 +293,7 @@ ms.locfileid: "121739459"
 
 1. 若要触发某个管道运行，请在工具栏中选择“触发器”，然后选择“立即触发”。 
 
-   ![立即触发](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png" alt-text="立即触发":::
 
 2. 在“管道运行”窗口中选择“完成”。  
 
@@ -301,11 +301,11 @@ ms.locfileid: "121739459"
 
 1. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态和其他信息（例如“运行开始”时间）。 若要刷新视图，请选择“刷新”。
 
-   ![管道运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png" alt-text="管道运行":::
 
 2. 在“操作”列中选择“查看活动运行”链接。  此时只显示一个活动运行，因为管道只有一个活动。 该活动为“执行 SSIS 包”活动。
 
-   ![活动运行](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png" alt-text="活动运行":::
 
 3. 在 SQL Server 中针对 SSISDB 数据库运行以下查询，验证是否执行了该包。 
 
@@ -313,11 +313,11 @@ ms.locfileid: "121739459"
    select * from catalog.executions
    ```
 
-   ![验证包执行](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png" alt-text="验证包执行":::
 
 4. 还可以从管道活动运行的输出中获取 SSISDB 执行 ID，并使用此 ID 在 SQL Server Management Studio 中查看更全面的执行日志和错误消息。
 
-   ![获取执行 ID。](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png" alt-text="获取执行 ID。":::
 
 ### <a name="schedule-the-pipeline-with-a-trigger"></a>使用触发器计划管道
 

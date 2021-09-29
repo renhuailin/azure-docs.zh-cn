@@ -1,20 +1,19 @@
 ---
 title: 使用 Azure IoT Central 资源管理器监视设备连接性
 description: 监视设备消息，并通过 IoT Central 资源管理器 CLI 观察设备孪生更改。
-author: viv-liu
-ms.author: viviali
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
-manager: corywink
-ms.openlocfilehash: fe42d9bcfef72dfb8f2deebd3fb147ed2025f150
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 9c257b9df42af31c443ae3e609d578db6adeb1c8
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479394"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154824"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 监视设备连接
 

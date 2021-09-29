@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 44ea8afcb42365b2b01d81674d0f76781cca0ea9
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: eb1b40636c26e9515b19cc1853e249a7e4c99b57
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108801723"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753875"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-count-me-in---operations-dashboard"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Count Me In - 操作仪表板集成
 
@@ -97,7 +97,7 @@ ms.locfileid: "108801723"
    > [!NOTE]
    > Count Me In - 操作仪表板需要分配给应用程序的用户的角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
    ![证书下载链接](common/certificatebase64.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "108801723"
 
 - 直接转到 Count Me In - 操作仪表板登录 URL，并从那里启动登录流。
 
-- 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Count Me In - 操作仪表板”磁贴时，将重定向到 Count Me In - 操作仪表板登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+- 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Count Me In - 操作仪表板”磁贴时，将重定向到 Count Me In - 操作仪表板登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

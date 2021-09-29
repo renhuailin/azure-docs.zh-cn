@@ -3,12 +3,12 @@ title: 模板中的参数
 description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中定义参数。
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: 4fa624763b3a0eaa0277882fcb8493e96e24e7a5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 5c94dc3f4d37fa6c08e29e03e88dd3ba54e68271
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960216"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625518"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM 模板中的参数
 
@@ -199,7 +199,7 @@ ms.locfileid: "111960216"
   "resources": [
     {
       "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2019-09-01",
+      "apiVersion": "2021-06-01-preview",
       "name": "[parameters('vaultName')]",
       ...
     }
@@ -245,7 +245,7 @@ ms.locfileid: "111960216"
   "resources": [
     {
       "type": "Microsoft.Network/virtualNetworks",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-02-01",
       "name": "[parameters('vNetSettings').name]",
       "location": "[parameters('vNetSettings').location]",
       "properties": {

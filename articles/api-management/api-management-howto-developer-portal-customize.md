@@ -2,17 +2,17 @@
 title: 教程 - 访问和自定义开发人员门户 - Azure API 管理 | Microsoft Docs
 description: 请参阅本教程，了解如何自定义 API 管理开发人员门户，这是一个自动生成的、可完全自定义的网站，其中包含 API 的文档。
 services: api-management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: tutorial
 ms.date: 08/31/2021
-ms.author: apimpm
-ms.openlocfilehash: c08fd4635232bdb84ce27fdc7a3e6f0d1791e921
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.author: danlep
+ms.openlocfilehash: 9220bcfc218acaaa073090fd1b05b4648510d096
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318569"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583019"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>教程：访问和自定义开发人员门户
 

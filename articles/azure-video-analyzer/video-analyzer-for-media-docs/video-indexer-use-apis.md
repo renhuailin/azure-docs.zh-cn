@@ -1,21 +1,15 @@
 ---
 title: 使用 Azure 视频分析器媒体版（以前称为视频索引器）API
-titleSuffix: Azure Video Analyzer for Media
 description: 本文介绍如何开始使用 Azure 视频分析器媒体版（以前称为视频索引器）API。
-services: azure-video-analyzer
-author: Juliako
-manager: femila
-ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.date: 01/07/2021
-ms.author: juliako
+ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5f7b2bcc861ae92016c1eece0db19026bc233c9
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 83aa673625ad2119adc35571a8aaa98d3a3736a0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112118818"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658633"
 ---
 # <a name="tutorial-use-the-video-analyzer-for-media-api"></a>教程：使用视频分析器媒体版 API
 

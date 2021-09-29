@@ -1,18 +1,18 @@
 ---
 title: .NET SDK - Data Lake Storage Gen1 上的文件系统操作 - Azure
 description: 使用 Azure Data Lake Storage Gen1 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作，例如创建文件夹等。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
-ms.author: twooley
+ms.author: normesta
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: faa539119bbb8d73e66788b8ba472cf0db26a2e4
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 4757e9524740acd6eaaed0bc95acb5674c502cb1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431731"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642199"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>使用 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作
 

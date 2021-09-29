@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 08/26/2021
 ms.author: enewman
-ms.openlocfilehash: 6a50b1f0cb53fa064a426b2fe3d28ae7fb7be2aa
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 5d081e21723fa73d84beec12e8602234ad5e8074
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113571"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757375"
 ---
 # <a name="set-up-a-lab-to-teach-r-on-windows"></a>在 Windows 上设置实验室来讲授 R
 
 [R](https://www.r-project.org/about.html) 是一种用于统计计算和图形的开源语言。  它被运用于遗传学统计分析、自然语言处理和金融数据数据分析等领域。  R 提供了一种[交互式命令行](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line)体验。  [RStudio](https://www.rstudio.com/products/rstudio/) 是可用于 R 语言的交互式开发环境 (IDE)。  免费版提供代码编辑工具、集成调试体验和包开发工具。
 
-本文仅重点介绍 RStudio 和 R，两者是需要使用统计计算的课程的基础。  [深度学习](class-type-deep-learning-natural-language-processing.md)以及 [Python 和 Jupyter Notebook](class-type-jupyter-notebook.md) 课程类型通过不同的方式设置 RStudio。  每篇文章都介绍了如何使用[适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) 市场映像，该映像预先安装了许多[与数据科学相关的工具](/azure/machine-learning/data-science-virtual-machine/tools-included)，包括 RStudio。  
+本文仅重点介绍 RStudio 和 R，两者是需要使用统计计算的课程的基础。  [深度学习](class-type-deep-learning-natural-language-processing.md)以及 [Python 和 Jupyter Notebook](class-type-jupyter-notebook.md) 课程类型通过不同的方式设置 RStudio。  每篇文章都介绍了如何使用[适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) 市场映像，该映像预先安装了许多[与数据科学相关的工具](../machine-learning/data-science-virtual-machine/tools-included.md)，包括 RStudio。  
 
 ## <a name="lab-account-configuration"></a>实验室帐户配置
 
@@ -97,7 +97,7 @@ Start-Process -FilePath $installPath.FullName -ArgumentList "/VERYSILENT /LOG=r-
 
 ### <a name="install-rstudio"></a>安装 RStudio
 
-现在已在本地安装了 R，可以安装 RStudio IDE 了。  我们将安装免费版本的 RStudio Desktop。  有关所有可用版本，请参阅 [RStudio 下载](https://www.rstudio.com/products/rstudio/download/)。
+现在已在本地安装 R，接下来可以安装 RStudio IDE。  我们将安装免费版本的 RStudio Desktop。  有关所有可用版本，请参阅 [RStudio 下载](https://www.rstudio.com/products/rstudio/download/)。
 
 1. 下载适用于 Windows 10 的 [R Studio 安装程序](https://www.rstudio.com/products/rstudio/download/#download)。  安装程序文件的格式为 `rstudio-{version}.exe`。  
 2. 运行 RStudio 安装程序。

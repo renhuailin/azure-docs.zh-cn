@@ -3,12 +3,12 @@ title: 发现 Microsoft Learn 中的 Bicep
 description: 概述 Microsoft Learn 中可用的 Bicep 单元。
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 47ac7f6915453502b40b5ad5417a5d060e2ecd3e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 71af6012dcdd9cd5b951a0edbe8f244fb3a8be26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430335"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793505"
 ---
 # <a name="bicep-on-microsoft-learn"></a>Microsoft Learn 上的 Bicep
 
@@ -42,6 +42,7 @@ ms.locfileid: "123430335"
 | [使用 Azure Pipelines 构建你的第一个 Bicep 部署管道](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/) | 为 Bicep 代码构建基本的部署管道。 使用服务连接将管道安全标识到 Azure。 使用触发器配置管道运行的时间。 |
 | [使用 GitHub Actions 构建第一个 Bicep 部署工作流](/learn/modules/build-first-bicep-deployment-pipeline-using-github-actions/) | 为 Bicep 代码构建基本的部署工作流。 使用机密将 GitHub Actions 工作流安全地标识到 Azure，然后使用触发器和计划设置工作流的运行时间。 |
 | [使用服务主体对 Azure 部署管道进行身份验证](/learn/modules/authenticate-azure-deployment-pipeline-service-principals/) | 通过服务主体，部署管道能够安全地向 Azure 进行身份验证。 在本模块中，你将了解服务主体的本质、其工作原理及创建方式。 你还将学习如何向它们授予对 Azure 资源的权限，以便管道可部署 Bicep 文件。 |
+| [使用 Azure Pipelines 测试 Bicep 代码](/learn/modules/test-bicep-code-using-azure-pipelines/) | 在部署管道中验证和测试 Bicep 代码。 在部署之前，使用 Lint 分析、预检验证和 What-if 操作来验证 Azure 更改，并在每次部署后测试资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

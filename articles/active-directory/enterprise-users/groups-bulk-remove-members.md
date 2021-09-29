@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 09/02/2021
+ms.date: 09/22/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52aa3c4b2f9ec34139debf008a5cb291e443c689
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 254b92907c04559f0e63fee9daa4db25e0df0965
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431957"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707746"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中批量删除组成员
 
@@ -57,7 +57,7 @@ ms.locfileid: "123431957"
 
 1. 打开 CSV 文件，并为要从组中删除的每个组成员添加一行（所需值为成员对象 ID 或用户主体名称）。 然后保存文件。
 
-    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV 文件包含要删除的组成员的姓名和 ID":::
+    :::image type="content" source="./media/groups-bulk-remove-members/csv-file.png" alt-text="CSV 文件包含要删除的组成员的姓名和 ID":::
 
 1. 在“批量删除组成员”页面上的“上传 csv 文件”下，浏览到该文件 。 选择 CSV 文件后立即开始对它的验证。
 1. 验证文件内容后，批量导入页将显示“已成功上传文件”。 如果有错误，必须修正错误，然后才能提交作业。

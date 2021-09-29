@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/17/2021
 ms.author: jeedes
-ms.openlocfilehash: a22d10cb5d8f8ec7998f1e501239f260fba7328f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 8a495f408fb1d43bcec1f1d9a554cad5f8ff71f3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771860"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>教程：Azure Active Directory 与 ZIVVER 的集成
 
@@ -167,7 +167,7 @@ ms.locfileid: "122771860"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 ZIVVER。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 ZIVVER 磁贴时，你应该会自动登录到已为其设置了 SSO 的 ZIVVER。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 ZIVVER 磁贴时，你应该会自动登录到已为其设置了 SSO 的 ZIVVER。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

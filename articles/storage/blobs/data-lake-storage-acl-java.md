@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 设置 Azure Data Lake Storage Gen2 中的 ACL
+title: 使用 Java 管理 Azure Data Lake Storage Gen2 中的 ACL
 description: 使用适用于 Java 的 Azure 存储库在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
@@ -9,18 +9,18 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: e7d6156fe5cd8ab32ff159bda64e0c06cfbac406
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6414db11bac11cb9b6faab59e67980b8ee8a2a78
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100653993"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555501"
 ---
 # <a name="use-java-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure Data Lake Storage Gen2 中的 ACL
 
-本文介绍如何使用 Java 来获取、设置和更新目录和文件的访问控制列表。 
+本文介绍如何使用 Java 来获取、设置和更新目录和文件的访问控制列表。
 
-ACL 继承已可用于在父目录下创建的新子项。 但是，还可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。 
+ACL 继承已可用于在父目录下创建的新子项。 但是，还可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。
 
 [包 (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API 参考](/java/api/overview/azure/storage-file-datalake-readme) | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
@@ -34,10 +34,10 @@ ACL 继承已可用于在父目录下创建的新子项。 但是，还可以为
 
 - 以下安全权限之一：
 
-  - 一个预配的 Azure Active Directory (AD) [安全主体](../../role-based-access-control/overview.md#security-principal)，它在目标容器父资源组或订阅范围中分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色。  
+  - 一个预配的 Azure Active Directory (AD) [安全主体](../../role-based-access-control/overview.md#security-principal)，它在目标容器父资源组或订阅范围中分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色。
 
   - 计划将 ACL 设置应用到的目标容器或目录的拥有用户。 为了以递归方式设置 ACL，这包括目标容器或目录中的所有子项。
-  
+
   - 存储帐户密钥。
 
 ## <a name="set-up-your-project"></a>设置项目
@@ -70,20 +70,20 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 ## <a name="connect-to-the-account"></a>连接到帐户
 
-若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 
+若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。
 
 ### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD) 进行连接
 
 可以使用[适用于 Java 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)，通过 Azure AD 对应用程序进行身份验证。
 
-获取客户端 ID、客户端机密和租户 ID。 若要执行此操作，请参阅[从 Azure AD 获取用于对客户端应用程序的请求进行授权的令牌](../common/storage-auth-aad-app.md)。 在该过程中，你必须为安全主体分配以下 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 角色之一。 
+获取客户端 ID、客户端机密和租户 ID。 若要执行此操作，请参阅[从 Azure AD 获取用于对客户端应用程序的请求进行授权的令牌](../common/storage-auth-aad-app.md)。 在该过程中，你必须为安全主体分配以下 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 角色之一。
 
 |角色|ACL 设置功能|
 |--|--|
 |[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|帐户中的所有目录和文件。|
 |[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|仅限安全主体拥有的目录和文件。|
 
-此示例使用客户端 ID、客户端密码和租户 ID 创建 DataLakeServiceClient 实例。  
+此示例使用客户端 ID、客户端密码和租户 ID 创建 DataLakeServiceClient 实例。
 
 :::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/Authorize_DataLake.java" id="Snippet_AuthorizeWithAzureAD":::
 
@@ -92,7 +92,7 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 ### <a name="connect-by-using-an-account-key"></a>使用帐户密钥进行连接
 
-这是连接到帐户的最简单方法。 
+这是连接到帐户的最简单方法。
 
 此示例使用帐户密钥创建 DataLakeServiceClient 实例。
 
@@ -100,7 +100,7 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 ## <a name="set-acls"></a>设置 ACL
 
-设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的[更新 ACL](#update-acls) 部分。  
+设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的[更新 ACL](#update-acls) 部分。
 
 如果选择设置 ACL，则必须为责任用户添加一个条目，为责任组添加一个条目，为所有其他用户添加一个条目。 若要详细了解责任用户、责任组和所有其他用户，请参阅[用户和标识](data-lake-storage-access-control.md#users-and-identities)。
 
@@ -108,7 +108,7 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 - 设置目录的 ACL
 - 设置文件的 ACL
-- 以递归方式设置 ACL 
+- 以递归方式设置 ACL
 
 ### <a name="set-the-acl-of-a-directory"></a>设置目录的 ACL
 
@@ -128,7 +128,7 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 通过调用 **DataLakeDirectoryClient.setAccessControlRecursive** 方法以递归方式设置 ACL。 向此方法传递 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 对象的[列表](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)。 每个 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 定义一个 ACL 条目。
 
-如果要设置 **默认** ACL 条目，则可以调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法，并传入值 **true**。 
+如果要设置 **默认** ACL 条目，则可以调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法，并传入值 **true**。
 
 此示例设置名为 `my-parent-directory` 的目录的 ACL。 此方法接受一个名为 `isDefaultScope` 的布尔参数，该参数指定是否设置默认 ACL。 该参数在每次调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法时使用。 ACL 的条目为所有者用户提供读取、写入和执行权限，仅为负责人组授予读取和执行权限，不为所有其他用户提供任何访问权限。 此示例中的最后一个 ACL 条目为对象 ID 为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”的特定用户提供读取和执行权限。
 
@@ -136,7 +136,7 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 ## <a name="update-acls"></a>更新 ACL
 
-更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新它，请参阅本文的[设置 ACL](#set-acls) 部分。
+更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新它，请参阅本文的 [设置 ACL](#set-acls) 部分。
 
 本节介绍如何完成下列操作：
 
@@ -147,7 +147,7 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 首先，通过调用 [PathAccessControl. getAccessControlList](/java/api/com.azure.storage.file.datalake.models.pathaccesscontrol.getaccesscontrollist) 方法获取目录的 ACL。 将 ACL 条目列表复制到类型为 [PathAccessControlListEntry](/java/api/com.azure.storage.file.datalake.models.pathaccesscontrolentry) 的新的 List 对象。 然后找到要更新的条目并在列表中替换它。 通过调用 [DataLakeDirectoryClient.setAccessControlList](/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) 方法设置 ACL。
 
-此示例通过替换所有其他用户的条目来更新名为 `my-parent-directory` 的容器的 ACL。 
+此示例通过替换所有其他用户的条目来更新名为 `my-parent-directory` 的容器的 ACL。
 
 :::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_UpdateACL":::
 
@@ -157,11 +157,11 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 若要以递归方式更新 ACL，请创建包含要更新的 ACL 条目的一个新 ACL 对象，然后在“更新 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要更新的 ACL 条目。
 
-通过调用 **DataLakeDirectoryClient.updateAccessControlRecursive** 方法以递归方式更新 ACL。  向此方法传递 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 对象的[列表](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)。 每个 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 定义一个 ACL 条目。 
+通过调用 **DataLakeDirectoryClient.updateAccessControlRecursive** 方法以递归方式更新 ACL。  向此方法传递 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 对象的[列表](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)。 每个 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 定义一个 ACL 条目。
 
-如果要更新 **默认** ACL 条目，则可以调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法，并传入值 **true**。 
+如果要更新 **默认** ACL 条目，则可以调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法，并传入值 **true**。
 
-此示例以写入权限更新某个 ACL 条目。 此方法接受一个名为 `isDefaultScope` 的布尔参数，该参数指定是否更新默认 ACL。 该参数在调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法时使用。 
+此示例以写入权限更新某个 ACL 条目。 此方法接受一个名为 `isDefaultScope` 的布尔参数，该参数指定是否更新默认 ACL。 该参数在调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法时使用。
 
 :::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_UpdateACLRecursively":::
 
@@ -182,9 +182,9 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 若要以递归方式删除 ACL 条目，请为要删除的 ACL 条目创建一个新的 ACL 对象，然后在“删除 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要删除的 ACL 条目。
 
-通过调用 **DataLakeDirectoryClient.removeAccessControlRecursive** 方法删除 ACL 条目。 向此方法传递 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 对象的[列表](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)。 每个 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 定义一个 ACL 条目。 
+通过调用 **DataLakeDirectoryClient.removeAccessControlRecursive** 方法删除 ACL 条目。 向此方法传递 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 对象的[列表](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)。 每个 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 定义一个 ACL 条目。
 
-如果要删除 **默认** ACL 条目，则可以调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法，并传入值 **true**。  
+如果要删除 **默认** ACL 条目，则可以调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法，并传入值 **true**。
 
 此示例从名为 `my-parent-directory` 的目录的 ACL 中删除 ACL 条目。 此方法接受一个名为 `isDefaultScope` 的布尔参数，该参数指定是否删除默认 ACL 中的条目。 该参数在调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法时使用。
 

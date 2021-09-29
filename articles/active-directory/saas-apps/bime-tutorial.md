@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d444a62b7bb6be680c359d6b853a629a1e2dc5a9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673703"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教程：Azure Active Directory 与 Bime 集成
 
@@ -126,13 +126,13 @@ ms.locfileid: "97673703"
 
     c. 注销 URL
 
-### <a name="configure-bime-single-sign-on"></a>配置 Bime 单一登录
+### <a name="configure-bime-single-sign-on&quot;></a>配置 Bime 单一登录
 
 1. 在其他 Web 浏览器窗口中，以管理员身份登录 Bime 公司站点。
 
 2. 在工具栏中，单击“管理员”  ，并单击“帐户”  。
 
-    ![屏幕截图，显示选中了“管理员”项和“帐户”。](./media/bime-tutorial/ic775558.png "管理员")
+    ![屏幕截图，显示选中了“管理员”项和“帐户”。](./media/bime-tutorial/ic775558.png &quot;管理员")
 
 3. 在帐户配置页面上，执行以下步骤：
 
@@ -197,7 +197,7 @@ ms.locfileid: "97673703"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-bime-test-user"></a>创建 Bime 测试用户
+### <a name="create-bime-test-user&quot;></a>创建 Bime 测试用户
 
 为了使 Azure AD 用户能够登录 Bime，必须将其预配到 Bime 中。 就 Bime 来说，预配任务需要手动完成。
 
@@ -207,7 +207,7 @@ ms.locfileid: "97673703"
 
 2. 在工具栏中，单击“管理员”  ，并单击“用户”  。
 
-    ![屏幕截图，显示选中了“管理员”项和“用户”。](./media/bime-tutorial/ic775561.png "管理员")
+    ![屏幕截图，显示选中了“管理员”项和“用户”。](./media/bime-tutorial/ic775561.png &quot;管理员")
 
 3. 在“用户列表”  中，单击“添加新用户”  (“+”)。
 
@@ -232,7 +232,7 @@ ms.locfileid: "97673703"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Bime 磁贴时，应会自动登录到为其设置了 SSO 的 Bime。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Bime 磁贴时，应会自动登录到为其设置了 SSO 的 Bime。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

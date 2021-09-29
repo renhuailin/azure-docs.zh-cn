@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 90e505a4d505cc52920f1c7727afb321f4eda462
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 53adc99c236371dcbd39e59edae1fecc394091de
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814147"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760016"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 机密客户端库（版本 4）
 
@@ -152,9 +152,9 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
 
-本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)中的[“DefaultAzureCredential()”](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential)类。利用该类，我们可以在具有不同选项的不同环境中使用相同的代码来提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
+在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](/javascript/api/overview/azure/identity-readme)中的[“DefaultAzureCredential()”](/javascript/api/@azure/identity/defaultazurecredential)类。利用该类，我们可以在具有不同选项的不同环境中使用相同的代码来提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](../general/developers-guide.md#authenticate-to-key-vault-in-code)。
 
 将以下代码添加到“main()”函数
 
@@ -186,7 +186,7 @@ const retrievedSecret = await client.getSecret(secretName);
 
 ### <a name="delete-a-secret"></a>删除机密
 
-最后，让我们使用 [beginDeleteSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#beginDeleteSecret_string__BeginDeleteSecretOptions_) 和 [purgeDeletedSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#purgeDeletedSecret_string__PurgeDeletedSecretOptions_) 方法从密钥保管库中删除并清除机密。
+最后，让我们使用 [beginDeleteSecret](/javascript/api/@azure/keyvault-secrets/secretclient?#beginDeleteSecret_string__BeginDeleteSecretOptions_) 和 [purgeDeletedSecret](/javascript/api/@azure/keyvault-secrets/secretclient?#purgeDeletedSecret_string__PurgeDeletedSecretOptions_) 方法从密钥保管库中删除并清除机密。
 
 ```javascript
 const deletePoller = await client.beginDeleteSecret(secretName);

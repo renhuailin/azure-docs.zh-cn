@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: b057ce763c547a2aa925884ae5d71999e49d04f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c9ed07d7dc3c084e6046c5f39bf40280663cd508
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782007"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764963"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tutorocean"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TutorOcean 集成
 
@@ -155,7 +155,7 @@ ms.locfileid: "121782007"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 TutorOcean。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“TutorOcean”磁贴时，如果是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，你应该会自动登录到为其设置了 SSO 的 TutorOcean。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“TutorOcean”磁贴时，如果是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，你应该会自动登录到为其设置了 SSO 的 TutorOcean。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

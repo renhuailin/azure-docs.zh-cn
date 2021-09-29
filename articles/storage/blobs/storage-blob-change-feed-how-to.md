@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 857e5ba3c4251e49dd84726697164f87e0a96bc6
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 9d43b91fcebff017d6d18ee736cfddc858650fc7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653171"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620191"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>处理 Azure Blob 存储中的更改源
 
@@ -31,13 +31,15 @@ ms.locfileid: "110653171"
 dotnet add package Azure.Storage.Blobs --version 12.5.1
 dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
+
+
 ## <a name="read-records"></a>读取记录
 
 > [!NOTE]
 > 更改源是存储帐户中的不可变只读实体。 任意数量的应用程序都可以同时独立读取和处理更改源，具体取决于应用程序自身的需求。 当应用程序读取记录时，不会从更改源中删除这些记录。 每个使用方读取器的读取或迭代状态是独立的，仅由应用程序维护。
 
 此示例将循环访问更改源中的所有记录，将它们添加到列表中，然后将该列表返回到调用方。
- 
+
 ```csharp
 public async Task<List<BlobChangeFeedEvent>> ChangeFeedAsync(string connectionString)
 {
@@ -59,7 +61,7 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedAsync(string connectionSt
 }
 ```
 
-此示例将列表中每个记录的几个值输出到控制台。 
+此示例将列表中每个记录的几个值输出到控制台。
 
 ```csharp
 public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
@@ -81,7 +83,7 @@ public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
 
 你可以选择保存你在更改源中的读取位置，以后可以继续循环访问记录。 可以通过获取更改源游标来保存读取位置。 该游标是一个 **字符串**，你的应用程序可以采用适合你的应用程序设计的任何方式保存该字符串（例如，保存到文件或数据库中）。
 
-此示例将循环访问更改源中的所有记录，将它们添加到列表中，然后保存游标。 列表和游标将返回到调用方。 
+此示例将循环访问更改源中的所有记录，将它们添加到列表中，然后保存游标。 列表和游标将返回到调用方。
 
 ```csharp
 public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCursorAsync
@@ -103,10 +105,10 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
     foreach (BlobChangeFeedEvent changeFeedEvent in enumerator.Current.Values)
     {
-    
+
         changeFeedEvents.Add(changeFeedEvent);             
     }
-    
+
     // Update the change feed cursor.  The cursor is not required to get each page of events,
     // it is intended to be saved and used to resume iterating at a later date.
     cursor = enumerator.Current.ContinuationToken;
@@ -118,7 +120,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 你可以选择在更改源记录提交到更改源时处理这些记录。 请参阅[规范](storage-blob-change-feed.md#specifications)。 更改事件以平均 60 秒的时间间隔发布到更改源。 在指定轮询时间间隔时，建议使用此时间间隔来轮询新更改。
 
-此示例定期轮询更改。  如果存在更改记录，此代码将处理这些记录并保存更改源游标。 这样一来，如果进程停止并再次启动，则应用程序可以使用游标继续从上次离开的位置处理记录。 此示例将游标保存到一个本地应用程序配置文件，但你的应用程序可以将其保存为最适合你的方案的任何形式。 
+此示例定期轮询更改。  如果存在更改记录，此代码将处理这些记录并保存更改源游标。 这样一来，如果进程停止并再次启动，则应用程序可以使用游标继续从上次离开的位置处理记录。 此示例将游标保存到一个本地应用程序配置文件，但你的应用程序可以将其保存为最适合你的方案的任何形式。
 
 ```csharp
 public async Task ChangeFeedStreamAsync
@@ -151,7 +153,7 @@ public async Task ChangeFeedStreamAsync
                         "Event Type: " + eventType + "\n" +
                         "Api: " + api);
                 }
-            
+
                 // helper method to save cursor. 
                 SaveCursor(enumerator.Current.ContinuationToken);
             }

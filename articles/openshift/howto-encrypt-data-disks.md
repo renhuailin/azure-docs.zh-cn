@@ -7,12 +7,12 @@ author: stuartatmicrosoft
 ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: 加密, byok, aro, cmk, openshift, red hat
-ms.openlocfilehash: 12920f45528911c755035dacd9b9bc0dfa5908ba
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: d5251188dfef87363846d4a19cd7ccc0d5d2976f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113231406"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665105"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>在 Azure Red Hat OpenShift (ARO) 上使用客户管理的密钥 (CMK) 加密永久性卷声明（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "113231406"
 > [!IMPORTANT]
 > ARO 预览版功能是可选择启用的自助功能。 预览版功能“一经发布”就会“按原样”提供，不包括在服务级别协议和有限保证中。 客户支持部门会尽力为 ARO 预览版功能提供部分支持。 因此，这些功能不应用于生产。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 本文假设读者：
 
 * 在 OpenShift 4.4（或更高版本）中有预先存在的 ARO 群集。
@@ -208,7 +208,7 @@ metadata:
 spec:
   containers:
   - name: mypod-with-cmk-encryption
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

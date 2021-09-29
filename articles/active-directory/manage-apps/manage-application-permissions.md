@@ -12,12 +12,12 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35afe080bdbb98a871fa039ad533c31ac0e8c111
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ab20521ea61820a7518529c4940837ab08ae3a4f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439697"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822968"
 ---
 # <a name="take-action-on-over-privileged-or-suspicious-applications-in-azure-active-directory"></a>对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施
 
@@ -29,7 +29,7 @@ ms.locfileid: "123439697"
 
 若要执行以下操作，必须以全局管理员、应用程序管理员或云应用程序管理员的身份登录到 Azure 门户。
 
-- 设置 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/)
+- 设置 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](/powershell/azure/)
 
 若要限制对应用程序的访问，你需要要求用户分配，然后将用户或组分配到应用程序。  有关详细信息，请参阅[分配用户和组的方法](./assign-user-or-group-access-portal.md)。
 

@@ -13,18 +13,18 @@ ms.date: 03/11/2021
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d3ec7c9786a9b5d3774c05669ae6d51ad443e71d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c7f05973f7d609ab3f4dc0f2f567ede4ce0d0f64
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744092"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830920"
 ---
 # <a name="manage-your-users-with-my-staff"></a>使用“我的员工”管理用户
 
 使用“我的员工”可将权限委托给某个权威人物，例如商店经理或团队主管，以确保其员工能够访问他们的 Azure AD 帐户。 组织可将常见任务（例如重置密码或更改电话号码）委托给本地团队经理，而不是依赖于中心支持人员。 通过“我的员工”门户，无法访问帐户的用户只需点击几下即可重新获取访问权限，无需求助支持人员或 IT 人员。
 
-在为组织配置“我的员工”之前，我们建议查看本文档以及[用户文档](../user-help/my-staff-team-manager.md)，确保了解“我的员工”的工作原理及其对用户的影响。 可以利用用户文档来培训用户，让其准备好适应新的体验，并帮助确保“我的员工”成功推出。
+在为组织配置“我的员工”之前，我们建议查看本文档以及[用户文档](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)，确保了解“我的员工”的工作原理及其对用户的影响。 可以利用用户文档来培训用户，让其准备好适应新的体验，并帮助确保“我的员工”成功推出。
 
 ## <a name="how-my-staff-works"></a>“我的员工”的工作原理
 
@@ -72,7 +72,7 @@ ms.locfileid: "121744092"
 
 ## <a name="using-my-staff"></a>使用“我的员工”
 
-当用户转到“我的员工”时，将会看到他们对其拥有管理权限的[管理单元](administrative-units.md)的名称。 [“我的员工”用户文档](../user-help/my-staff-team-manager.md)中使用术语“位置”来表示管理单元。 如果管理员的权限不带有管理单元范围，则这些权限将在整个组织中应用。 启用“我的员工”后，拥有管理角色的已启用用户可以通过 [https://mystaff.microsoft.com](https://mystaff.microsoft.com) 访问“我的员工”。 他们可以选择某个管理单元来查看该单元中的用户，并选择一个用户来打开其配置文件。
+当用户转到“我的员工”时，将会看到他们对其拥有管理权限的[管理单元](administrative-units.md)的名称。 [“我的员工”用户文档](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)中使用术语“位置”来表示管理单元。 如果管理员的权限不带有管理单元范围，则这些权限将在整个组织中应用。 启用“我的员工”后，拥有管理角色的已启用用户可以通过 [https://mystaff.microsoft.com](https://mystaff.microsoft.com) 访问“我的员工”。 他们可以选择某个管理单元来查看该单元中的用户，并选择一个用户来打开其配置文件。
 
 ## <a name="reset-a-users-password"></a>重置用户密码
 
@@ -128,5 +128,5 @@ ms.locfileid: "121744092"
 
 ## <a name="next-steps"></a>后续步骤
 
-[“我的员工”用户文档](../user-help/my-staff-team-manager.md)
+[“我的员工”用户文档](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)
 [管理单元文档](administrative-units.md)

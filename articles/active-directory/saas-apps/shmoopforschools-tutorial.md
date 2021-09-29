@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 17b4b0ca07b5adc054d4fcfcf4183bb97ce134fb
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: c27d2fbe1c80c13a91ff31d5d3f655c873b63fbf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108801525"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801137"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>教程：将 Shmoop For Schools 与 Azure Active Directory 集成
 
@@ -143,7 +143,7 @@ ms.locfileid: "108801525"
 
 - 直接转到 Shmoop For Schools 登录 URL，并从那里启动登录流。
 
-- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Shmoop For Schools 磁贴时，会重定向到 Shmoop For Schools 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Shmoop For Schools 磁贴时，会重定向到 Shmoop For Schools 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

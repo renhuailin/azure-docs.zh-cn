@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12a2ef28e4335b933a33a244387494a0de7cd649
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92636147"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
 
@@ -123,13 +123,13 @@ ms.locfileid: "92636147"
 
     c. 注销 URL
 
-### <a name="configure-workcom-single-sign-on"></a>配置 Work.com 单一登录
+### <a name="configure-workcom-single-sign-on&quot;></a>配置 Work.com 单一登录
 
 1. 以管理员身份登录到 Work.com 租户。
 
 2. 转到“设置”  。
    
-    ![显示从用户菜单选择了“设置”的屏幕截图。](./media/work-com-tutorial/ic794108.png "设置")
+    ![显示从用户菜单选择了“设置”的屏幕截图。](./media/work-com-tutorial/ic794108.png &quot;设置")
 
 3. 在左侧导航窗格中的“管理”  部分中，单击“域管理”  以展开相关部分，并单击“我的域”  ，打开“我的域”  页。 
    
@@ -246,17 +246,17 @@ ms.locfileid: "92636147"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-workcom-test-user"></a>创建 Work.com 测试用户
+### <a name="create-workcom-test-user&quot;></a>创建 Work.com 测试用户
 
 要使 Azure Active Directory 用户能够登录，必须将这些用户预配到 Work.com 中。 对于 Work.com，需要手动执行预配。
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
+### <a name=&quot;to-configure-user-provisioning-perform-the-following-steps&quot;></a>若要配置用户设置，请执行以下步骤：
 
 1. 以管理员身份登录到 Work.com 公司站点。
 
 2. 转到“设置”  。
    
-    ![显示从用户菜单选择了“设置”的屏幕截图。](./media/work-com-tutorial/ic794108.png "设置")
+    ![显示从用户菜单选择了“设置”的屏幕截图。](./media/work-com-tutorial/ic794108.png &quot;设置")
 
 3. 转到“管理用户”\>“用户”  。
    
@@ -294,7 +294,7 @@ ms.locfileid: "92636147"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Work.com”磁贴时，应会自动登录到设置了 SSO 的 Work.com。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Work.com”磁贴时，应会自动登录到设置了 SSO 的 Work.com。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

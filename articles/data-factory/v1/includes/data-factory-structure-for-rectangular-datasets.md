@@ -1,22 +1,23 @@
 ---
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 7bfca8b9e2894fa3c82457a96ad2d09731a6e01f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 702c5a273ba7d4af6b233c59880e0d3f119eb620
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741557"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610365"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>指定矩形数据集的结构定义
 数据集 JSON 中的结构部分是矩形表（包括行与列）的 **可选** 部分，其中包含该表的列集合。 结构部分用于提供类型转换的类型信息或执行列映射。 以下部分更详细说明了这些功能。 
 
 每个列包含以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必需 |
 | --- | --- | --- |
 | name |列的名称。 |是 |
 | type |列的数据类型。 有关何时应指定类型信息，请参阅下面的类型转换部分 |否 |

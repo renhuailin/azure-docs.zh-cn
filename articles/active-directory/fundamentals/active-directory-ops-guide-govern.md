@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 065b0ca66b2e8d253ae798ce672638877ddceef8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935744"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732659"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 治理操作参考指南
 
@@ -96,7 +96,7 @@ ms.locfileid: "97935744"
 
 如果组织中不存在管理特权帐户的过程，或者当前让管理员使用其常规用户帐户来管理服务和资源，则应该立即开始使用单独的帐户，例如，一个帐户用于定期执行日常活动；另一个帐户用于进行特权访问并配置 MFA。 如果组织具有 Azure AD Premium P2 订阅，则最好立即部署 [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM)。 同样，还应评审这些特权帐户，并尽可能[分配较少的特权角色](../roles/security-planning.md)。
 
-关于特权帐户管理，应实现的另一个方面是，手动或[通过 PIM](../privileged-identity-management/pim-how-to-perform-security-review.md) 自动定义对这些帐户的[访问评审](../governance/access-reviews-overview.md)。
+关于特权帐户管理，应实现的另一个方面是，手动或[通过 PIM](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md) 自动定义对这些帐户的[访问评审](../governance/access-reviews-overview.md)。
 
 #### <a name="privileged-account-management-recommended-reading"></a>特权帐户管理方面的推荐阅读内容
 
@@ -128,7 +128,7 @@ ms.locfileid: "97935744"
 > [!NOTE]
 > Azure AD 权利管理需要 Azure AD Premium P2 许可证。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 确保标识治理安全包括八个方面。 此列表有助于你确定应采取的操作，以便于评估和证明已授予非特权标识和特权标识的权限、审核和控制环境更改。
 

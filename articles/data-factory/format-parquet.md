@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 58dfe48ca6b0f9cdf1db1f4342e1ee19b5c4c9ce
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: f0391e0993470bc8980a60ab6398d3e144b04acc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255005"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743759"
 ---
 # <a name="parquet-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,7 +114,7 @@ ms.locfileid: "123255005"
 
 下图是映射数据流中 parquet 源配置的示例。
 
-![Parquet 源](media/data-flow/parquet-source.png)
+:::image type="content" source="media/data-flow/parquet-source.png" alt-text="Parquet 源":::
 
 关联的数据流脚本为：
 
@@ -139,7 +139,7 @@ source(allowSchemaDrift: true,
 
 下图是映射数据流中 parquet 接收器配置的示例。
 
-![Parquet 接收器](media/data-flow/parquet-sink.png)
+:::image type="content" source="media/data-flow/parquet-sink.png" alt-text="Parquet 接收器":::
 
 关联的数据流脚本为：
 
@@ -172,7 +172,7 @@ Parquet 复杂数据类型（如 MAP、LIST、STRUCT）目前仅在数据流中�
 > [!TIP]
 > 如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道  。
 
-![在自承载 IR 上设置 JVM 堆大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+:::image type="content" source="./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png" alt-text="在自承载 IR 上设置 JVM 堆大小":::
 
 示例：将变量 `_JAVA_OPTIONS` 的值设置为 `-Xms256m -Xmx16g`。 标志 `Xms` 指定 Java 虚拟机 (JVM) 的初始内存分配池，而 `Xmx` 指定最大内存分配池。 这意味着 JVM 初始内存为 `Xms`，并且能够使用的最多内存为 `Xmx`。 默认情况下，该服务最少使用 64 MB 且最多使用 1G。
 

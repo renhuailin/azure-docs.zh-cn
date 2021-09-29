@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code, b2c-support
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f227c63ef837b0de60ee72e2f33084e744f2f96f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 583c9fb66708cee46cbd0b7c7f341c1a6a9b7a55
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535592"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575306"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -72,7 +72,8 @@ Azure AD B2C 提供了多个内置模板，你可以从中进行选择，为用�
 ::: zone pivot="b2c-user-flow"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 选择“用户流”。
 1. 选择要自定义的用户流。
@@ -198,7 +199,8 @@ Azure AD B2C 提供了多个内置模板，你可以从中进行选择，为用�
 首先在“公司品牌”内设置横幅徽标、背景图像和背景色。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“管理”下，选择“公司品牌”。
 1. 操作[将品牌化功能添加到组织的 Azure Active Directory 登录页面](../active-directory/fundamentals/customize-branding.md)中的步骤。

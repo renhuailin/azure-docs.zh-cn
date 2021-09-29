@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 80e4de168bea5a60b0c3a30d06239af5971c0aa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7c678e34b825c112a3a5a612feea7d02fd5503a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654284"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751256"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zuddl"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 Zuddl 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "101654284"
 
 * 直接转到 Zuddl 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zuddl 磁贴时，会重定向到 Zuddl 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zuddl 磁贴时，会重定向到 Zuddl 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

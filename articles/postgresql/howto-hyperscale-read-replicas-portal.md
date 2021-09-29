@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 08/03/2021
-ms.openlocfilehash: 74c9df5ee9eb6cd6a61104b4c9cce91b284dbb29
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 45867bc93b90c76d971fc4b7d8e4d8cc094929d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726138"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629002"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---hyperscale-citus-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL - 超大规模 (Citus) 中的只读副本
 
@@ -47,13 +47,7 @@ ms.locfileid: "121726138"
 
 ## <a name="delete-a-primary-server-group"></a>删除主服务器组
 
-若要删除主服务器组，请执行删除超大规模 (Citus) 独立服务器组的相同步骤。 
-
-> [!IMPORTANT]
->
-> 删除主服务器组后，将停止复制到所有只读副本的操作。 只读副本将成为支持读取和写入的独立服务器组。
-
-若要在 Azure 门户中删除服务器组，请遵循以下步骤：
+若要删除主服务器组，请执行删除超大规模 (Citus) 独立服务器组的相同步骤。 在 Azure 门户中执行以下步骤：
 
 1. 在 Azure 门户中，选择 Azure Database for PostgreSQL 主服务器组。
 

@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: a521e6f21346898a7a9af17b2cd6e66cc4029c1e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 692ec1db6e897774e3fe662e59d24339de55e723
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638312"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805920"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>使用 PowerShell 通过 Azure 数据工厂批量复制多个表
 
@@ -36,7 +36,7 @@ ms.locfileid: "122638312"
 ## <a name="end-to-end-workflow"></a>端到端工作流
 在本场景中，Azure SQL 数据库中包含一些表，我们要将其复制到 Azure Synapse Analytics。 下面是管道中发生的工作流中的逻辑步骤顺序：
 
-![工作流](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
+:::image type="content" source="media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png" alt-text="Workflow":::
 
 * 第一个管道查找需要复制到接收器数据存储的表列表。  也可以维护一个元数据表用于列出要复制到接收器数据存储的所有表。 然后，该管道触发另一个管道，后者循环访问数据库中的每个表并执行数据复制操作。
 * 第二个管道执行实际复制。 它使用表列表作为参数。 对于列表中的每个表，为获得最佳性能，会使用[通过 Blob 存储和 PolyBase 进行的分阶段复制](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)，将 Azure SQL 数据库中的特定表复制到 Azure Synapse Analytics 中的相应表。 在本示例中，第一个管道传递表列表作为参数值。 

@@ -9,12 +9,12 @@ ms.author: prakulka
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2281dac86281d01ec6f033062b87236a780d3bc7
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 8bd683be329572189daedc74f089ef89d9f015ea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259761"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609662"
 ---
 # <a name="azure-communication-services-messaging-policy"></a>Azure 通信服务消息传递策略
 
@@ -101,7 +101,6 @@ Azure 通信服务部门可能会自行更改要求双重的选择加入同意�
  
 这些消息中不得包括招标或广告。
 
-
 ## <a name="opt-out"></a>选择退出
 
 消息收件人可以通过合理的方式撤销同意，选择不再接收将来的消息。 你不能为消息收件人指定用于撤销同意的排他方式。 
@@ -115,7 +114,6 @@ Azure 通信服务部门可能会自行更改要求双重的选择加入同意�
 ### <a name="opt-out-best-practices"></a>选择退出的最佳做法：
 
 除了关键字以外，其他常见的选择退出机制包括：在网页上向客户提供指定的选择退出电子邮件地址、客户支持人员的电话号码，或用于取消订阅的链接。 
-
 
 ### <a name="how-we-handle-opt-out-requests"></a>我们如何处理选择退出请求：
 

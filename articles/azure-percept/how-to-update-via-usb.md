@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: eef23597e6cb8f215fd7ce2374d66ff104cc00bc
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 293249c764155aefe16ef23738b1e4efea4255e5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226018"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751050"
 ---
 # <a name="update-azure-percept-dk-over-a-usb-c-connection"></a>通过 USB-C 连接更新 Azure Percept DK
 
@@ -44,7 +44,7 @@ ms.locfileid: "123226018"
 
 1. [NXP UUU 工具](https://github.com/NXPmicro/mfgtools/releases)。 在“资产”选项卡下下载最新版本的 uuu.exe 文件（适用于 Windows）或 uuu 文件（适用于 Linux）。UUU 是 NXP 创建的工具，用于更新 NXP 开发板。 
 
-1. [下载更新文件](https://go.microsoft.com/fwlink/?linkid=2155734)。 它们都包含在 zip 文件中，你将在下一部分中提取该文件。
+1. [下载更新文件](./how-to-select-update-package.md)。 它们都包含在 zip 文件中，你将在下一部分中提取该文件。
 
 1. 确保存在以下所有三个生成工件：
     - Azure-Percept-DK-&lt;版本号&gt;.raw

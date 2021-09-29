@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: fbe711652d11a426d80dd767eb3069170f67f1b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb29d0d54c37502f4d6b54afd7c3d8429ca33182
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516131"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>教程：Azure Active Directory 与 Mobile Xpense 的集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "92516131"
 
     ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://mobilexpense.com/ServiceProvider`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://mobilexpense.com/ServiceProvider`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx`
 
@@ -109,7 +109,7 @@ ms.locfileid: "92516131"
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.mobilexpense.com/<customername>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<sub-domain>.mobilexpense.com/<customername>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Mobile Xpense 客户端支持团队](https://www.mobilexpense.net/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -191,7 +191,7 @@ ms.locfileid: "92516131"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Mobile Xpense 磁贴时，应当会自动登录到你为其设置了 SSO 的 Mobile Xpense。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Mobile Xpense 磁贴时，应当会自动登录到你为其设置了 SSO 的 Mobile Xpense。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 29ffaaa1b1b6efbcd5523a76018c92645e13d187
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8160da443398787f2b0ebb3cf437383a5bdc522
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181783"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783076"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeterx"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PerimeterX 的集成
 
@@ -156,7 +156,7 @@ ms.locfileid: "96181783"
 
 1. 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 PerimeterX
 
-1. 可以使用 Microsoft 访问面板。 在访问面板中单击 PerimeterX 磁贴时，应会自动登录到为其设置了 SSO 的 PerimeterX。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+1. 可以使用 Microsoft 访问面板。 在访问面板中单击 PerimeterX 磁贴时，应会自动登录到为其设置了 SSO 的 PerimeterX。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤

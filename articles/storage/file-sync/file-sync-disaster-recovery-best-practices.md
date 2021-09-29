@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/18/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 87fd5de90896a1a5b97cf9fa07a880ebcea1f35b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: f5928815b6559c257319eb625587135cbf99df0d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122420589"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645733"
 ---
 # <a name="best-practices-for-disaster-recovery-with-azure-file-sync"></a>使用 Azure 文件同步进行灾难恢复的最佳做法
 
@@ -30,7 +30,6 @@ ms.locfileid: "122420589"
 - 将服务器的操作系统克隆到另一个服务器
 - 恢复到以前的虚拟机检查点
 - 如果启用了云分层，则从本地备份还原文件
-
 
 ## <a name="high-availability"></a>高可用性
 
@@ -67,7 +66,7 @@ ms.locfileid: "122420589"
 若要确保可靠的灾难恢复解决方案，请在基础结构中增加某种形式的数据冗余。 Azure Files 有四种冗余服务，分别是：[本地冗余存储 (LRS)](../common/storage-redundancy.md#locally-redundant-storage)、[区域冗余存储 (ZRS)](../common/storage-redundancy.md#zone-redundant-storage)、[异地冗余存储 (GRS)](../common/storage-redundancy.md#geo-redundant-storage) 和[异地区域冗余存储 (GZRS)](../common/storage-redundancy.md#geo-zone-redundant-storage)。
 
 - [本地冗余存储 (LRS)](../common/storage-redundancy.md#locally-redundant-storage)：使用 LRS，每个文件在 Azure 存储群集中存储三次。 这可以防止由于硬件故障（例如磁盘驱动器损坏）而导致数据丢失。 但是，如果数据中心发生火灾或洪灾等灾难，使用 LRS 的存储帐户的所有副本可能会丢失或不可恢复。
-- [区域冗余存储 (ZRS)](../common/storage-redundancy.md#zone-redundant-storage)：使用 ZRS，将存储每个文件的三个副本，但这些副本位于不同的 Azure 可用性区域的三个不同存储群集中，它们在物理上是隔离的。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 在将副本写入所有三个可用性区域的存储群集前，不允许将其写入存储。 
+- [区域冗余存储 (ZRS)](../common/storage-redundancy.md#zone-redundant-storage)：使用 ZRS，将存储每个文件的三个副本，但这些副本位于不同的 Azure 可用性区域的三个不同存储群集中，它们在物理上是隔离的。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 在将副本写入所有三个可用性区域的存储群集前，不允许将其写入存储。
 - [异地冗余存储 (GRS)](../common/storage-redundancy.md#geo-redundant-storage)：使用 GRS 时，有两个区域，即一个主要区域和一个次要区域。 文件在主要区域中的 Azure 存储群集中存储三次。 写入将异步复制到 Microsoft 定义的次要区域。 GRS 提供分布在两个 Azure 区域之间的六个数据副本。
 - [异地区域冗余存储 (GZRS)](../common/storage-redundancy.md#geo-zone-redundant-storage)：可以将 GZRS 视为类似于具有异地冗余的 ZRS。 使用 GZRS，文件在主要区域的三个不同存储群集中存储三次。 所有写入都将异步复制到 Microsoft 定义的次要区域。
 

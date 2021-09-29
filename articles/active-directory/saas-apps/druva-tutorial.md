@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 69649cf16ecfeca81d730ecfc19c8124fdc25579
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 5948ff079ad207d843e29f8b0735c45d21071ecb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224173"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124765450"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Druva 集成
 
@@ -165,7 +165,7 @@ Druva 还支持自动用户预配，有关如何配置自动用户预配的更�
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Druva。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Druva”磁贴时，你应会自动登录到为其设置了 SSO 的 Druva。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Druva”磁贴时，你应会自动登录到为其设置了 SSO 的 Druva。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

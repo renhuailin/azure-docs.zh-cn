@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ca31b4ed8cbc7a6328daf468c3a026665a801f1f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8f5bbb05e51ec52c001b69bd726dd154c9f89de9
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726369"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084106"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发和部署 Python IoT Edge 模块
 
@@ -22,7 +22,7 @@ ms.locfileid: "121726369"
 
 使用 Visual Studio Code 开发 Python 代码并将其部署到运行 Azure IoT Edge 的设备。
 
-可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程将引导你在 IoT Edge 设备（已在快速入门中设置）上创建和部署用于筛选传感器数据的 IoT Edge 模块。 在本教程中，你将了解如何执行以下操作：
+可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程将引导你在 IoT Edge 设备（已在快速入门中设置）上创建和部署用于筛选传感器数据的 IoT Edge 模块。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 >
@@ -141,7 +141,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
             global TEMPERATURE_THRESHOLD
             while True:
                 try:
-                    input_message = await module_client.receive_message_on_input("input1")  # blocking call
+                    input_message = await module_client.on_message_received("input1")  # blocking call
                     message = input_message.data
                     size = len(message)
                     message_text = message.decode('utf-8')
@@ -164,7 +164,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
             global TEMPERATURE_THRESHOLD
             while True:
                 try:
-                    data = await module_client.receive_twin_desired_properties_patch()  # blocking call
+                    data = await module_client.on_twin_desired_properties_patch_received()  # blocking call
                     print( "The data in the desired properties patch was: %s" % data)
                     if "TemperatureThreshold" in data:
                         TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]

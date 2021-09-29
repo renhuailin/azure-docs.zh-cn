@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 07/28/2021
-ms.openlocfilehash: d701767f6e8f22b1577b3fb745d01dea00557e8b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: eca62eccca6f53935f29a16bca0afc382896212c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123306814"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810350"
 ---
 # <a name="troubleshoot-assessment"></a>排查评估问题
 
@@ -153,7 +153,7 @@ Azure VM 评估不断收集本地服务器的性能数据，并使用它来对 A
 
 ## <a name="can-i-migrate-my-disks-to-an-ultra-disk-by-using-azure-migrate"></a>能否使用 Azure Migrate 将磁盘迁移到超级磁盘？
 
-不是。 目前，Azure Migrate 和 Azure Site Recovery 均不支持迁移到超级磁盘。 在[此网站](https://docs.microsoft.com/azure/virtual-machines/disks-enable-ultra-ssd?tabs=azure-portal#deploy-an-ultra-disk)上查找部署超级磁盘的步骤。
+不是。 目前，Azure Migrate 和 Azure Site Recovery 均不支持迁移到超级磁盘。 在[此网站](../virtual-machines/disks-enable-ultra-ssd.md?tabs=azure-portal#deploy-an-ultra-disk)上查找部署超级磁盘的步骤。
 
 ## <a name="why-are-the-provisioned-iops-and-throughput-in-my-ultra-disk-more-than-my-on-premises-iops-and-throughput"></a>为何超级磁盘中的预配 IOPS 和吞吐量超过本地 IOPS 和吞吐量？
 

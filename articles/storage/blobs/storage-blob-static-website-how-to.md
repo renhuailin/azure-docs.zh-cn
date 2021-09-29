@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurepowershell
-ms.openlocfilehash: b4279d296c9948d9fbb06174c7c379cd067666dc
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 46c22fe3033a9fc9cda90bf9901f10f20355838e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677294"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645885"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -35,15 +35,15 @@ ms.locfileid: "110677294"
 
 4. 选择“启用”，启用针对存储帐户的静态网站托管功能。
 
-5. 在“索引文档名称”字段中，指定一个默认索引页（例如：*index.html*）。 
+5. 在“索引文档名称”字段中，指定一个默认索引页（例如：*index.html*）。
 
-   当用户导航到静态网站的根目录时，会显示默认索引页。  
+   当用户导航到静态网站的根目录时，会显示默认索引页。
 
-6. 在“错误文档路径”字段中，指定一个默认错误页（例如：*404.html*）。 
+6. 在“错误文档路径”字段中，指定一个默认错误页（例如：*404.html*）。
 
    当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
 
-7. 单击“ **保存**”。 Azure 门户现在会显示静态网站终结点。 
+7. 单击“ **保存**”。 Azure 门户现在会显示静态网站终结点。
 
     ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -69,11 +69,11 @@ ms.locfileid: "110677294"
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
    ```
 
-   * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+   - 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-   * 将 `<error-document-name>` 占位符替换为当浏览器请求站点上不存在的页面时向用户显示的错误文档的名称。
+   - 将 `<error-document-name>` 占位符替换为当浏览器请求站点上不存在的页面时向用户显示的错误文档的名称。
 
-   * 将 `<index-document-name>` 占位符替换为索引文档的名称。 该文档通常是“index.html”。
+   - 将 `<index-document-name>` 占位符替换为索引文档的名称。 该文档通常是“index.html”。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -113,9 +113,9 @@ ms.locfileid: "110677294"
    $ctx = $storageAccount.Context
    ```
 
-   * 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+   - 将 `<resource-group-name>` 占位符值替换为资源组的名称。
 
-   * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+   - 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
 6. 启用静态网站托管。
 
@@ -123,13 +123,13 @@ ms.locfileid: "110677294"
    Enable-AzStorageStaticWebsite -Context $ctx -IndexDocument <index-document-name> -ErrorDocument404Path <error-document-name>
    ```
 
-   * 将 `<error-document-name>` 占位符替换为当浏览器请求站点上不存在的页面时向用户显示的错误文档的名称。
+   - 将 `<error-document-name>` 占位符替换为当浏览器请求站点上不存在的页面时向用户显示的错误文档的名称。
 
-   * 将 `<index-document-name>` 占位符替换为索引文档的名称。 该文档通常是“index.html”。
+   - 将 `<index-document-name>` 占位符替换为索引文档的名称。 该文档通常是“index.html”。
 
 ---
 
-## <a name="upload-files"></a>上传文件 
+## <a name="upload-files"></a>上传文件
 
 ### <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -143,11 +143,11 @@ ms.locfileid: "110677294"
 
    ![上传文件](media/storage-blob-static-website/storage-blob-static-website-upload.png)
 
-4. 如果希望浏览器显示文件的内容，请确保将该文件的内容类型设置为 `text/html`。 
+4. 如果希望浏览器显示文件的内容，请确保将该文件的内容类型设置为 `text/html`。
 
    ![检查内容类型](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
-   >[!NOTE]
+   > [!NOTE]
    > 对于通常可识别的扩展名（例如 `.html`），存储资源管理器会自动将此属性设置为 `text/html`。 但是，在某些情况下，你必须自行设置此项。 如果你没有将此属性设置为 `text/html`，则浏览器将提示用户下载文件而不是呈现内容。 若要设置此属性，请右键单击文件，然后单击“属性”。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -160,12 +160,12 @@ ms.locfileid: "110677294"
 az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
-> [!NOTE] 
-> 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `--content-type 'text/html; charset=utf-8'` 追加到命令中。 
+> [!NOTE]
+> 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `--content-type 'text/html; charset=utf-8'` 追加到命令中。
 
-* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+- 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-* 将 `<source-path>` 占位符替换为要上传的文件所在位置的路径。
+- 将 `<source-path>` 占位符替换为要上传的文件所在位置的路径。
 
 > [!NOTE]
 > 如果使用的是 Azure CLI 的位置安装，则可以使用本地计算机上的任何位置的路径（例如：`C:\myFolder`）。
@@ -184,12 +184,12 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 -Context $ctx
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `-Properties @{ ContentType = "text/html; charset=utf-8";}` 追加到命令。
 
-* 将 `<path-to-file>` 占位符值替换为要上传的文件的完全限定的路径（例如：`C:\temp\index.html`）。
+- 将 `<path-to-file>` 占位符值替换为要上传的文件的完全限定的路径（例如：`C:\temp\index.html`）。
 
-* 将 `<blob-name>` 占位符值替换为要为生成的 blob 提供的名称（例如：`index.html`）。
+- 将 `<blob-name>` 占位符值替换为要为生成的 blob 提供的名称（例如：`index.html`）。
 
 ---
 
@@ -199,7 +199,7 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 可以使用网站的公共 URL 从浏览器查看网站的页面。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在存储帐户的“帐户概述”页旁显示的窗格中，选择“静态网站”。 你的站点的 URL 显示在“主终结点”字段中。
 
@@ -213,9 +213,9 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
 ```
 
-* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+- 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+- 将 `<resource-group-name>` 占位符值替换为资源组的名称。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -226,9 +226,9 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+- 将 `<resource-group-name>` 占位符值替换为资源组的名称。
 
-* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+- 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
 ---
 
@@ -270,9 +270,9 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
    ![Azure 存储静态网站指标 - GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-   >[!NOTE]
+   > [!NOTE]
    > 只有在给定的期限内使用该 API 成员时，才会显示 GetWebContent 复选框。 门户只会显示在给定时间范围内使用的 API 成员，以便重点关注可返回数据的成员。 如果在此列表中找不到特定的 API 成员，请展开期限。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何为静态网站配置自定义域。 请参阅[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)。
+- 了解如何为静态网站配置自定义域。 请参阅[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)。

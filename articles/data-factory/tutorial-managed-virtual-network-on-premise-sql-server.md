@@ -4,14 +4,15 @@ description: 本教程分步介绍如何使用 Azure 门户设置专用链接服
 author: lrtoyou1223
 ms.author: lle
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: a04371fcba573be41fd5c2275371e0c590b82c08
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d924abc214d01cc4e981d7398a6a250753cb50a8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605024"
 ---
 # <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>教程：如何使用专用终结点从数据工厂托管 VNet 访问本地 SQL Server
 

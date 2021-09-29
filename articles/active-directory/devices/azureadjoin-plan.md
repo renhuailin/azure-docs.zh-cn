@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaef1c746ca23f2badf657e6e72e6e3988bcfa4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3eb56d9de903fc6013600908e3b44e8e0f547ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724856"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618108"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -199,7 +199,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 可以使用以下方法预配 Azure AD 联接：
 
-- **OOBE/设置中的自助式** - 在自助模式下，用户在 Windows Out of Box Experience (OOBE) 期间或从 Windows 设置完成 Azure AD 联接过程。 有关详细信息，请参阅[将工作设备加入组织的网络](../user-help/user-help-join-device-on-network.md)。 
+- **OOBE/设置中的自助式** - 在自助模式下，用户在 Windows Out of Box Experience (OOBE) 期间或从 Windows 设置完成 Azure AD 联接过程。 有关详细信息，请参阅[将工作设备加入组织的网络](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)。 
 - **Windows Autopilot** - Windows Autopilot 支持预先配置设备，可在 OOBE 中实现更顺畅的体验，以执行 Azure AD 联接。 有关详细信息，请参阅 [Windows Autopilot 概述](/windows/deployment/windows-autopilot/windows-10-autopilot)。 
 - **批量注册** - 批量注册通过使用批量预配工具来配置设备，从而实现管理员驱动的 Azure AD 联接。 有关详细信息，请参阅[Windows 设备的批量注册](/intune/windows-bulk-enroll)。
  
@@ -308,7 +308,7 @@ MAM 不适用于 Azure AD 联接。
 
 > [!div class="nextstepaction"]
 > [首次运行期间使用 Azure AD 联接新的 Windows 10 设备](azuread-joined-devices-frx.md)
-> [将工作设备加入组织的网络](../user-help/user-help-join-device-on-network.md)
+> [将工作设备加入组织的网络](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

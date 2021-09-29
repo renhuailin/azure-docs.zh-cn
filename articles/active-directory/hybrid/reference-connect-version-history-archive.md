@@ -13,12 +13,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4c358a0ac6d19918c43cdc99417664ff8ce63971
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 24d62e282258a92826b6e5226ab342d890099c18
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428694"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773619"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect：版本发布历史记录存档
 
@@ -365,16 +365,16 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 
 类型     | 名称                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
-允许    | SYSTEM                        | 完全控制         | 此对象  |
-允许    | 企业管理员             | 完全控制         | 此对象  |
-允许    | 域管理员                 | 完全控制         | 此对象  |
-允许    | 管理员                | 完全控制         | 此对象  |
-允许    | 企业域控制器 | 列出内容        | 此对象  |
-允许    | 企业域控制器 | 读取所有属性  | 此对象  |
-允许    | 企业域控制器 | 读取权限     | 此对象  |
-允许    | 经过身份验证的用户           | 列出内容        | 此对象  |
-允许    | 经过身份验证的用户           | 读取所有属性  | 此对象  |
-允许    | 经过身份验证的用户           | 读取权限     | 此对象  |
+Allow    | SYSTEM                        | 完全控制         | 此对象  |
+Allow    | 企业管理员             | 完全控制         | 此对象  |
+Allow    | 域管理员                 | 完全控制         | 此对象  |
+Allow    | 管理员                | 完全控制         | 此对象  |
+Allow    | 企业域控制器 | 列出内容        | 此对象  |
+Allow    | 企业域控制器 | 读取所有属性  | 此对象  |
+Allow    | 企业域控制器 | 读取权限     | 此对象  |
+Allow    | 经过身份验证的用户           | 列出内容        | 此对象  |
+Allow    | 经过身份验证的用户           | 读取所有属性  | 此对象  |
+Allow    | 经过身份验证的用户           | 读取权限     | 此对象  |
 
 #### <a name="powershell-script-to-tighten-a-pre-existing-service-account"></a>PowerShell 脚本增强预先存在的服务帐户
 
@@ -1069,7 +1069,7 @@ AD FS 管理
 **新的预览功能：**
 
 * [用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)。
-* 支持 [Azure AD 域服务](../user-help/active-directory-passwords-update-your-own-password.md)密码同步。
+* 支持 [Azure AD 域服务](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)密码同步。
 
 **新的受支持方案：**
 

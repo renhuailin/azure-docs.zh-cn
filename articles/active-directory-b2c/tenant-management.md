@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8aeb818104e1424d96374bf535d4c02a870f4705
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3851f9893799902c9cdcda71db67a9152de028ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453873"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595800"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>管理你的 Azure Active Directory B2C 租户
 
@@ -76,7 +76,8 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 若要创建新的管理帐户，请执行以下步骤：
 
 1. 使用“全局管理员”或“特权角色管理员”权限登录到 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 在“管理”下，选择“用户” 。
 1. 选择“新建用户”。
@@ -101,7 +102,8 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 若要邀请用户，请执行以下步骤：
 
 1. 使用“全局管理员”或“特权角色管理员”权限登录到 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 在“管理”下，选择“用户” 。
 1. 选择“新来宾帐户”。
@@ -123,13 +125,13 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 如果来宾未收到邀请电子邮件，或邀请已过期，你可以重新发送邀请。 作为邀请电子邮件的替代方法，你可以为来宾提供直接链接以接受邀请。 若要重新发送邀请并获取直接链接，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 在“管理”下，选择“用户” 。
 1. 搜索并选择要向其重新发送邀请的用户。
 1. 在“用户 | 个人资料”页上的“标识”下，选择“(管理)”。
-    
-    ![屏幕截图显示如何重新发送来宾帐户邀请电子邮件。](./media/tenant-management/guest-account-resend-invite.png)
+        ![屏幕截图显示如何重新发送来宾帐户邀请电子邮件。](./media/tenant-management/guest-account-resend-invite.png)
 
 1. 对于“重新发送邀请?”，请选择“是”。 当系统显示“是否确定要重新发送邀请?”时，选择“是”。
 1. Azure AD B2C 将发送邀请。 你还可以复制邀请 URL，并将其直接提供给来宾。
@@ -141,7 +143,8 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 你可以在[创建用户](#add-an-administrator-work-account)或[邀请来宾用户](#invite-an-administrator-guest-account)时分配角色。 可以为用户添加角色、更改角色或删除角色：
 
 1. 使用“全局管理员”或“特权角色管理员”权限登录到 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 在“管理”下，选择“用户” 。
 1. 选择要更改其角色的用户。 然后选择“已分配的角色”。
@@ -159,7 +162,8 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 在审核过程中，通常会检查为哪些用户分配了 Azure AD B2C 目录中的特定角色。 使用以下步骤审核当前为哪些用户分配了特权角色。
 
 1. 使用“全局管理员”或“特权角色管理员”权限登录到 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 在“管理”下，选择“角色和管理员”。 
 1. 选择一个角色，如“全局管理员”。 “角色 | 分配”页将列出具有该角色的用户。
@@ -186,7 +190,8 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 若要获取 Azure AD B2C 租户名称，请执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“概述”中，复制“域名” 。
 
@@ -197,7 +202,8 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 若要获取 Azure AD B2C 租户 ID，请执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
 1. 在“概述”中，复制“租户 ID” 。
 

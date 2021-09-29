@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/16/2021
+ms.date: 09/10/2021
 ms.author: alexeyo
-ms.openlocfilehash: a71a2736533cd2c707d4224db3790e93fe5e2782
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 06d54a7d42efd1cad9088785d24095abc039337b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747553"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737095"
 ---
 # <a name="speech-service-quotas-and-limits"></a>语音服务配额和限制
 
@@ -45,7 +45,6 @@ ms.locfileid: "121747553"
 | 最大 Blob 容器大小 | 空值 | 5 GB |
 | 每个容器的最大 Blob 数 | 空值 | 10000 |
 | 每个听录请求的最大文件数（当使用多个内容 URL 作为输入时） | 空值 | 1000  |
-| 同时运行作业的最大数目 | 空值 | 2000  |
 
 #### <a name="model-customization"></a>模型自定义
 | Quota | 免费 (F0)<sup>1</sup> | 标准 (S0) |

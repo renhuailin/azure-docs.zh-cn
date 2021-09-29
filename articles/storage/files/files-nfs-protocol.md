@@ -8,15 +8,15 @@ ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 4e12f578fe8bd2eff97deec7b23656086e80475c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9a76298b829df96ca6fcf7c483eeec98e1f5b36d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862525"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673210"
 ---
 # <a name="nfs-file-shares-in-azure-files-preview"></a>Azure 文件存储中的 NFS 文件共享（预览版）
-Azure 文件存储提供两种用于装载 Azure 文件共享的行业标准协议：[服务器消息块 (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 协议和[网络文件系统 (NFS)](https://en.wikipedia.org/wiki/Network_File_System) 协议（预览版）。 通过 Azure 文件存储，可以选择最适合你的工作负荷的文件系统协议。 尽管可以在同一存储帐户中创建 SMB 和 NFS 文件共享，但 Azure 文件共享不支持同时使用 SMB 和 NFS 协议访问单个 Azure 文件共享。 对于所有文件共享，Azure 文件存储提供企业级文件共享，这些共享可以纵向扩展以满足你的存储需求，并且可同时由数千个客户端访问。
+Azure 文件存储提供两种用于装载 Azure 文件共享的行业标准协议：[服务器消息块 (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 协议和[网络文件系统 (NFS)](https://en.wikipedia.org/wiki/Network_File_System) 协议（预览版）。 Azure 文件存储可让你选择最适合你工作负载的文件系统协议。 尽管可以在同一存储帐户中创建 SMB 和 NFS 文件共享，但 Azure 文件共享不支持同时使用 SMB 和 NFS 协议访问单个 Azure 文件共享。 对于所有文件共享，Azure 文件存储提供企业级文件共享，这些共享可以纵向扩展以满足你的存储需求，并且可同时由数千个客户端访问。
 
 本文将介绍 NFS Azure 文件共享。 有关 SMB Azure 文件共享的信息，请参阅 [Azure 文件存储中的 SMB 文件共享](files-smb-protocol.md)。
 
@@ -99,7 +99,6 @@ NFS Azure 文件共享仅适用于高级文件共享，后者在固态硬盘 (SS
 经验证，NFS 预览版可以很好地处理工作负荷，例如常规用途文件服务器主目录和应用程序工作负荷的内容存储库。
 
 以下工作负荷包含已知问题。 有关已知问题的列表，请参阅[对 Azure NFS 文件共享进行故障排除](storage-troubleshooting-files-nfs.md)一文：
-- IBM MQ 将遭遇锁定问题。
 - Oracle Database 将无法与其 dNFS 功能兼容。
 - 由于[含 ls -l 的已知活动问题](storage-troubleshooting-files-nfs.md#ls-la-throws-io-error)，SAP 应用程序层将遇到行为不一致问题。
 

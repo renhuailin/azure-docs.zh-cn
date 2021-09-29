@@ -5,12 +5,12 @@ ms.service: container-service
 ms.custom: subject-monitoring
 ms.date: 07/29/2021
 ms.topic: reference
-ms.openlocfilehash: d2c945d975b158131abb99b421622d5dd9d58477
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 9e8a12f8d3075bade1619ce766c74dc8cac23481
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472409"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816063"
 ---
 # <a name="monitoring-aks-data-reference"></a>监视 AKS 数据参考
 
@@ -99,4 +99,4 @@ ms.locfileid: "123472409"
 ## <a name="see-also"></a>另请参阅
 
 - 有关如何监视 Azure AKS，请参阅[监视 Azure AKS](monitor-aks.md)。
-- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](/azure/azure-monitor/essentials/monitor-azure-resource)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)。

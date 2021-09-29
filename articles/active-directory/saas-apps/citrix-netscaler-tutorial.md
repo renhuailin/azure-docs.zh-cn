@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 915c8d7767842a698c786052f93e81097a4f79c3
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 68d973511685c71d7e698bb84ed51ce27a812280
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986167"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791225"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-saml-connector-for-azure-ad-kerberos-based-authentication"></a>教程：Azure Active Directory 单一登录与 Azure AD（基于 Kerberos 的身份验证）的 Citrix ADC SAML 连接器集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "111986167"
 * 让用户使用其 Azure AD 帐户自动登录到适用于 Azure AD的 Citrix ADC 连接器。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -440,7 +440,7 @@ ms.locfileid: "111986167"
 
 * 直接转到适用于 Azure AD 的 Citrix ADC SAML 连接器登录 URL，从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Azure AD”磁贴的 Citrix ADC SAML 连接器时，会重定向到用于 Azure AD 登录 URL 的 Citrix ADC SAML 连接器。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Azure AD”磁贴的 Citrix ADC SAML 连接器时，会重定向到用于 Azure AD 登录 URL 的 Citrix ADC SAML 连接器。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

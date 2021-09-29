@@ -2,14 +2,14 @@
 title: Azure 服务总线 - 消息计数
 description: 使用 Azure 资源管理器和 Azure 服务总线 NamespaceManager API 检索队列和订阅中保留的消息计数。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 09/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb559f6dbd492d1c35a15f9f30cbc0ad02620a01
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 74038f38f1faca90e4fab7a0d4f94229a1b44429
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670681"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576054"
 ---
 # <a name="get-message-counters"></a>获取消息计数器
 本文介绍为队列或订阅获取以下消息计数的不同方式。 对于确定队列是否累积了需要的处理资源比当前部署资源更多的积压工作，了解活动消息计数会十分有用。 

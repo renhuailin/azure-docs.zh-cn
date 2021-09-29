@@ -10,18 +10,18 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30d865b11db3d456f41067efa54bbcf07b019c65
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 36d36101cc7a7a4efff66e680f47431933ddf569
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451728"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630824"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
 Azure 存储提供了三种类型的 Blob 存储：块 Blob、追加 Blob 和页 Blob。 块 Blob 由块组成，非常适合用于存储文本或二进制文件，以及高效上传大型文件。 追加 Blob 也由块组成，但它们已针对追加操作进行优化，因此非常适合用于日志记录方案。 页 Blob 由总大小可达 8 TB 的 512 字节页面组成，专为频繁的随机读/写操作而设计。 页 Blob 是 Azure IaaS 磁盘的基础。 本文重点介绍页 Blob 的功能和优势。
 
-页 Blob 是 512 字节页面的集合，提供读/写任意字节范围的功能。 因此，页 Blob 非常适用于存储基于索引的稀疏数据结构，如虚拟机和数据库的 OS 磁盘与数据磁盘。 例如，Azure SQL 数据库使用页 Blob 作为数据库的基础持久性存储。 此外，页 Blob 往往还用于支持基于范围的更新的文件。  
+页 Blob 是 512 字节页面的集合，提供读/写任意字节范围的功能。 因此，页 Blob 非常适用于存储基于索引的稀疏数据结构，如虚拟机和数据库的 OS 磁盘与数据磁盘。 例如，Azure SQL 数据库使用页 Blob 作为数据库的基础持久性存储。 此外，页 Blob 往往还用于支持基于范围的更新的文件。
 
 Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以及无缝迁移到 Azure 的功能。 下一部分将更详细地介绍这些功能。 此外，有两种类型的存储目前支持 Azure 页 Blob：高级存储和标准存储。 高级存储专门针对需要持续高性能和低延迟的工作负荷而设计，因此，高级页 Blob 非常适合用于高性能存储方案。 标准存储帐户更具成本效益，可用于运行对延迟不太敏感的工作负荷。
 
@@ -31,13 +31,13 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 ## <a name="sample-use-cases"></a>示例用例
 
-让我们从 Azure IaaS 磁盘着手，讨论页 Blob 的几种用例。 Azure 页 Blob 是 Azure IaaS 虚拟磁盘平台的主干。 Azure OS 磁盘和数据磁盘都实现为虚拟磁盘，其中的数据持久保存在 Azure 存储平台中，然后传送到虚拟机以获得最大性能。 Azure 磁盘以 Hyper-V [VHD 格式](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10))保存，并在 Azure 存储中存储为[页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)。 除了对 Azure IaaS VM 使用虚拟磁盘以外，页 Blob 还可实现 PaaS 和 DBaaS 方案，例如 Azure SQL 数据库服务，该服务目前使用页 Blob 存储 SQL 数据，以便针对数据库快速执行随机读写操作。 另一个示例是，如果使用 PaaS 服务作为共享媒体来访问协作式视频编辑应用程序，则页 Blob 可以实现对媒体中随机位置的快速访问。 此外，多个用户可以使用页 Blob 快速高效地编辑和合并同一媒体。 
+让我们从 Azure IaaS 磁盘着手，讨论页 Blob 的几种用例。 Azure 页 Blob 是 Azure IaaS 虚拟磁盘平台的主干。 Azure OS 磁盘和数据磁盘都实现为虚拟磁盘，其中的数据持久保存在 Azure 存储平台中，然后传送到虚拟机以获得最大性能。 Azure 磁盘以 Hyper-V [VHD 格式](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10))保存，并在 Azure 存储中存储为[页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)。 除了对 Azure IaaS VM 使用虚拟磁盘以外，页 Blob 还可实现 PaaS 和 DBaaS 方案，例如 Azure SQL 数据库服务，该服务目前使用页 Blob 存储 SQL 数据，以便针对数据库快速执行随机读写操作。 另一个示例是，如果使用 PaaS 服务作为共享媒体来访问协作式视频编辑应用程序，则页 Blob 可以实现对媒体中随机位置的快速访问。 此外，多个用户可以使用页 Blob 快速高效地编辑和合并同一媒体。
 
-第一方 Microsoft 服务（例如 Azure Site Recovery 和 Azure 备份）以及许多第三方开发商已使用页 Blob 的 REST 接口实现了行业领先的创新。 下面是在 Azure 上实现的一些独特方案： 
+第一方 Microsoft 服务（例如 Azure Site Recovery 和 Azure 备份）以及许多第三方开发商已使用页 Blob 的 REST 接口实现了行业领先的创新。 下面是在 Azure 上实现的一些独特方案：
 
-* 应用程序主导的增量快照管理：应用程序可以利用页 Blob 快照和 REST API 来保存应用程序检查点，而不会产生高昂的数据复制成本。 Azure 存储支持页 Blob 的本地快照，这类快照不要求复制整个 Blob。 使用这些公共快照 API 还可以访问和复制快照之间的增量数据。
-* 将应用程序和数据从本地实时迁移到云中：复制本地数据并使用 REST API 将数据直接写入 Azure 页 Blob，同时，本地 VM 可继续保持运行。 与目标同步后，可以使用该数据快速故障转移到 Azure VM。 这样，便可以在几乎不造成停机的情况下，将 VM 和虚拟磁盘从本地迁移到云中，因为数据迁移在后台发生，同时我们可以继续使用 VM，并且故障转移所需的停机时间很短（以分钟计）。
-* [基于 SAS](../common/storage-sas-overview.md) 的共享访问，可以实现支持并发控制的方案，例如多个读取者和单个写入者。
+- 应用程序主导的增量快照管理：应用程序可以利用页 Blob 快照和 REST API 来保存应用程序检查点，而不会产生高昂的数据复制成本。 Azure 存储支持页 Blob 的本地快照，这类快照不要求复制整个 Blob。 使用这些公共快照 API 还可以访问和复制快照之间的增量数据。
+- 将应用程序和数据从本地实时迁移到云中：复制本地数据并使用 REST API 将数据直接写入 Azure 页 Blob，同时，本地 VM 可继续保持运行。 与目标同步后，可以使用该数据快速故障转移到 Azure VM。 这样，便可以在几乎不造成停机的情况下，将 VM 和虚拟磁盘从本地迁移到云中，因为数据迁移在后台发生，同时我们可以继续使用 VM，并且故障转移所需的停机时间很短（以分钟计）。
+- [基于 SAS](../common/storage-sas-overview.md) 的共享访问，可以实现支持并发控制的方案，例如多个读取者和单个写入者。
 
 ## <a name="pricing"></a>定价
 
@@ -47,7 +47,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 ### <a name="rest-api"></a>REST API
 
-请参阅以下文档，开始[使用页 Blob 进行开发](./storage-quickstart-blobs-dotnet.md)。 例如，请查看如何使用用于 .NET 的存储客户端库来访问页 Blob。 
+请参阅以下文档，开始[使用页 Blob 进行开发](./storage-quickstart-blobs-dotnet.md)。 例如，请查看如何使用用于 .NET 的存储客户端库来访问页 Blob。
 
 下图描绘了帐户、容器和页 Blob 之间的整体关系。
 
@@ -112,13 +112,13 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-若要写入页面，请使用 [PageBlobClient.UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages) 方法。  
+若要写入页面，请使用 [PageBlobClient.UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages) 方法。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_WriteToPageBlob":::
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-若要写入页面，请使用 [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) 方法。  
+若要写入页面，请使用 [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) 方法。
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -126,28 +126,28 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 ---
 
-这样，便可以写入一组有序页面（最大 4MB）。 写入的偏移量必须在某个 512 字节边界处 (startingOffset % 512 == 0) 开始，在某个 512 边界 - 1 处结束。 
+这样，便可以写入一组有序页面（最大 4MB）。 写入的偏移量必须在某个 512 字节边界处 (startingOffset % 512 == 0) 开始，在某个 512 边界 - 1 处结束。
 
-针对一组有序页面发出的写入请求在 Blob 服务中成功、已复制以实现持久性和复原能力后，即会提交写入，将向客户端返回成功响应。  
+针对一组有序页面发出的写入请求在 Blob 服务中成功、已复制以实现持久性和复原能力后，即会提交写入，将向客户端返回成功响应。
 
 下图显示了 2 种不同的写入操作：
 
 ![一个图，显示了两个不同的写入选项。](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
-1.  一个写入操作从长度 1024 字节的偏移 0 处开始 
-2.  一个写入操作从长度 1024 字节的偏移 4096 处开始 
+1. 一个写入操作从长度 1024 字节的偏移 0 处开始 
+2. 一个写入操作从长度 1024 字节的偏移 4096 处开始
 
 #### <a name="reading-pages-from-a-page-blob"></a>从页 Blob 中读取页面
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-若要读取页面，请使用 [PageBlobClient.Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadto) 方法从页 Blob 中读取某个范围的字节。 
+若要读取页面，请使用 [PageBlobClient.Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadto) 方法从页 Blob 中读取某个范围的字节。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-若要读取页面，请使用 [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) 方法从页 Blob 中读取字节范围。 
+若要读取页面，请使用 [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) 方法从页 Blob 中读取字节范围。
 
 ```csharp
 byte[] buffer = new byte[rangeSize];
@@ -162,17 +162,17 @@ pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSiz
 
 ![一个图，显示了偏移量为 256 且范围大小为 4352 的读取操作](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-如果使用稀疏填充的 Blob，可以只下载有效的页面区域，以避免支付零字节的传出费用，并降低下载延迟。  
+如果使用稀疏填充的 Blob，可以只下载有效的页面区域，以避免支付零字节的传出费用，并降低下载延迟。
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-若要确定数据支持的页面，请使用 [PageBlobClient.GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges)。 然后，可以枚举返回的范围，并下载每个范围中的数据。 
+若要确定数据支持的页面，请使用 [PageBlobClient.GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges)。 然后，可以枚举返回的范围，并下载每个范围中的数据。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadValidPageRegionsFromPageBlob":::
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-若要确定哪些页面以数据为基础，请使用 [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges)。 然后，可以枚举返回的范围，并下载每个范围中的数据。 
+若要确定哪些页面以数据为基础，请使用 [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges)。 然后，可以枚举返回的范围，并下载每个范围中的数据。
 
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
@@ -186,7 +186,7 @@ foreach (PageRange range in pageRanges)
 
     // Read from the correct starting offset in the page blob and
     // place the data in the bufferOffset of the buffer byte array
-    pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, range.StartOffset, rangeSize); 
+    pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, range.StartOffset, rangeSize);
 
     // Then use the buffer for the page range just read
 }
@@ -198,11 +198,11 @@ foreach (PageRange range in pageRanges)
 
 “租赁 Blob”操作在 Blob 上针对写入与删除操作建立和管理一把锁。 如果要从多个客户端访问页 Blob，则此操作非常有用，因为它可以确保每次只有一个客户端能够写入 Blob。 例如，Azure 磁盘利用此租赁机制来确保磁盘只能由一个 VM 管理。 锁的持续时间可以是 15 到 60 秒，也可以是无限期。 有关更多详细信息，请参阅[此文档](/rest/api/storageservices/lease-blob)。
 
-除了丰富的 REST API 以外，页 Blob 还提供共享访问、持久性和增强的安全性。 后续的篇幅将更详细地介绍这些优势。 
+除了丰富的 REST API 以外，页 Blob 还提供共享访问、持久性和增强的安全性。 后续的篇幅将更详细地介绍这些优势。
 
 ### <a name="concurrent-access"></a>并发访问
 
-页 Blob REST API 及其租赁机制可让应用程序从多个客户端访问页 Blob。 例如，假设需要构建一个要与多个用户共享存储对象的分布式云服务。 该服务可能是向多个用户提供大型图像集合的 Web 应用程序。 实现此目的的方法之一是使用包含附加磁盘的 VM。 此方法的弊端包括：(i) 存在只能将一个磁盘附加到一个 VM 的约束，因此限制了可伸缩性和灵活性，并增大了风险。 如果该 VM 或其上运行的服务出现问题，则由于租赁机制，只能在租约过期或中断之后，才能访问图像；(ii) 使用 IaaS VM 会产生额外的成本。 
+页 Blob REST API 及其租赁机制可让应用程序从多个客户端访问页 Blob。 例如，假设需要构建一个要与多个用户共享存储对象的分布式云服务。 该服务可能是向多个用户提供大型图像集合的 Web 应用程序。 实现此目的的方法之一是使用包含附加磁盘的 VM。 此方法的弊端包括：(i) 存在只能将一个磁盘附加到一个 VM 的约束，因此限制了可伸缩性和灵活性，并增大了风险。 如果该 VM 或其上运行的服务出现问题，则由于租赁机制，只能在租约过期或中断之后，才能访问图像；(ii) 使用 IaaS VM 会产生额外的成本。
 
 一种替代做法是直接通过 Azure 存储 REST API 使用页 Blob。 使用此方法不会产生高昂的 IaaS VM 使用成本；可直接从多个客户端访问页 Blob，因此获得完全的灵活性；不需要附加/分离磁盘，因此简化了经典部署模型；可消除 VM 出现问题的风险。 此外，在随机读/写操作方面，此方法提供的性能级别与使用磁盘时相同
 
@@ -212,8 +212,8 @@ foreach (PageRange range in pageRanges)
 
 ### <a name="seamless-migration-to-azure"></a>无缝迁移到 Azure
 
-对于有意实施其自己的自定义备份解决方案的客户和开发人员，Azure 还提供只保存增量数据的增量快照。 此功能避免了初始完整复制的成本，可大幅降低备份成本。 除了有效读取和复制差异数据的功能以外，还有一个强大的功能可以进一步推动开发人员的创新，在 Azure 上带来极佳的备份和灾难恢复 (DR) 体验。 可以使用 [Blob 快照](/rest/api/storageservices/snapshot-blob)为 Azure 上的 VM 设置自己的备份或灾难恢复解决方案，并可以使用[获取页面范围](/rest/api/storageservices/get-page-ranges) API 和[增量复制 Blob](/rest/api/storageservices/incremental-copy-blob) API 轻松复制增量数据以实现灾难恢复。 
+对于有意实施其自己的自定义备份解决方案的客户和开发人员，Azure 还提供只保存增量数据的增量快照。 此功能避免了初始完整复制的成本，可大幅降低备份成本。 除了有效读取和复制差异数据的功能以外，还有一个强大的功能可以进一步推动开发人员的创新，在 Azure 上带来极佳的备份和灾难恢复 (DR) 体验。 可以使用 [Blob 快照](/rest/api/storageservices/snapshot-blob)为 Azure 上的 VM 设置自己的备份或灾难恢复解决方案，并可以使用[获取页面范围](/rest/api/storageservices/get-page-ranges) API 和[增量复制 Blob](/rest/api/storageservices/incremental-copy-blob) API 轻松复制增量数据以实现灾难恢复。
 
-此外，许多企业已在本地数据中心运行关键工作负荷。 若要将工作负荷迁移到云中，一个主要的考虑因素是复制数据时需要多长时间的停机，以及在交接之后出现不可预见问题的风险。 在许多情况下，停机时间可能是迁移到云的一个阻碍因素。 Azure 使用页 Blob REST API 解决了此问题，可以在几乎不会对关键工作负荷造成干扰的情况下实现云迁移。 
+此外，许多企业已在本地数据中心运行关键工作负荷。 若要将工作负荷迁移到云中，一个主要的考虑因素是复制数据时需要多长时间的停机，以及在交接之后出现不可预见问题的风险。 在许多情况下，停机时间可能是迁移到云的一个阻碍因素。 Azure 使用页 Blob REST API 解决了此问题，可以在几乎不会对关键工作负荷造成干扰的情况下实现云迁移。
 
 有关如何创建快照以及如何从快照还原页 Blob 的示例，请参阅[使用增量快照设置备份过程](../../virtual-machines/windows/incremental-snapshots.md)一文。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 863710fb79b0c60cf9487bbfdd0880fe163561d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94faee64354492a93551305507788775da5cde20
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92521707"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820842"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vocoli"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Vocoli 集成
 
@@ -77,7 +77,7 @@ ms.locfileid: "92521707"
 
 1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "92521707"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Vocoli”磁贴时，应当会自动登录到设置了 SSO 的 Vocoli。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的“Vocoli”磁贴时，应当会自动登录到设置了 SSO 的 Vocoli。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/22/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e17f6933695755a86c5d1e2fbcb7a14c183d0c4
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 99363e4f9f67e6ceca0d163131a2f2ff64b09857
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602837"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546966"
 ---
 # <a name="mitigate-credential-attacks-in-azure-ad-b2c"></a>缓解 Azure AD B2C 中的凭据攻击
 
@@ -36,7 +36,8 @@ Azure AD B2C 使用复杂策略来锁定帐户。 将根据请求的 IP 和输�
 若要管理密码保护设置（包括锁定阈值），请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 使用顶部菜单中的“目录 + 订阅”筛选器来选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 在“安全性”下，选择“身份验证方法(预览版)”，然后选择“密码保护”。
 1. 在“自定义智能锁定”下，输入所需的密码保护设置：

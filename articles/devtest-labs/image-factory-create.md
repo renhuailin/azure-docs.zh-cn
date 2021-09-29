@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中创建映像中心 | Microsoft Docs
+title: 创建映像工厂
 description: 本文介绍如何使用 Git 存储库（Azure 开发测试实验室）中提供的示例脚本来设置自定义映像中心。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e4ed8444475d1cd396dfa6c54083858b7671d5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85482065"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623582"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建自定义映像中心
 本文介绍如何使用 [Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)中提供的示例脚本来设置自定义映像中心。

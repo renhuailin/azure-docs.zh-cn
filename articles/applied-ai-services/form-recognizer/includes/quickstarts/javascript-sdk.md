@@ -1,7 +1,6 @@
 ---
 title: 快速入门：适用于 JavaScript 的表单识别器客户端库
 description: 使用适用于 JavaScript 的表单识别器客户端库创建一个表单处理应用，该应用从自定义文档中提取键值对和表数据。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
 ms.custom: devx-track-js
-ms.openlocfilehash: 5f196bb4c09b9923140c268ade4adb6cd20af483
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 18111fcce10b5c139105d19edd3eda68c5dff33c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662466"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652497"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -28,7 +27,7 @@ ms.locfileid: "122662466"
 >
 >* 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。
 
-[参考文档](/javascript/api/overview/azure/ai-form-recognizer-readme?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
+[参考文档](/javascript/api/overview/azure/ai-form-recognizer-readme?view=azure-node-latest&preserve-view=true) | [库源代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
 ## <a name="prerequisites"></a>先决条件
 

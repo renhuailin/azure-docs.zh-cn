@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/11/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 89fb5fdd217ddc38a4b3f80504b3c48a882c4251
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1b315343b524dc165fb6464728a5a9700d4e22c8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471923"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572628"
 ---
 # <a name="configure-authentication-in-a-sample-python-web-app-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在示例 Python Web 应用中配置身份验证
 
@@ -61,8 +61,9 @@ OpenID Connect (OIDC) 是在 OAuth 2.0 上构建的身份验证协议。 可以�
 若要创建 Web 应用注册，请执行下列操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-1. 搜索并选择“Azure AD B2C”。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 在“名称”下，输入应用程序的名称（例如 webapp1）。
 1. 在“支持的帐户类型”下，选择“任何标识提供者或组织目录中的帐户(用于通过用户流对用户进行身份验证)” 。 

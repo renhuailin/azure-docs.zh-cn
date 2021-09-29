@@ -3,18 +3,18 @@ title: 将 Azure API 管理与 Azure Application Insights 集成
 titleSuffix: Azure API Management
 description: 了解如何在 Azure Application Insights 中记录和查看来自 Azure API 管理的事件。
 services: api-management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/04/2021
-ms.author: apimpm
-ms.openlocfilehash: c3c3647831e871e886f44c74d91f1f2827ac26f4
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.author: danlep
+ms.openlocfilehash: 94c83ace24a5605a72809a30291ae6c1229870e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662207"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676573"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
@@ -90,14 +90,14 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 
 Application Insights 接收：
 
-+ 针对每个传入请求的请求遥测项：
-    + 前端请求，前端响应
-+ 针对转发到后端服务的每个请求的依赖项遥测项：
-    + 后端请求，后端响应
++ 每个传入请求的请求遥测项：
+    + 前端请求、前端响应 
++ 转发到后端服务的每个请求的依赖项遥测项：
+    + 后端请求、后端响应 
 + 每个失败的请求的异常遥测项：
     + 由于客户端连接关闭而失败
     + 触发了 API 策略的 *on-error* 节
-    + 具有匹配 4xx 或 5xx 的响应 HTTP 状态代码
+    + 具有与 4xx 或 5xx 匹配的响应 HTTP 状态代码
 + 跟踪遥测项（如果配置[跟踪](api-management-advanced-policies.md#Trace)策略）。 
     + `trace` 策略中的设置 `severity` 必须等于或大于 Application Insights 日志记录中的 `verbosity` 设置。
 

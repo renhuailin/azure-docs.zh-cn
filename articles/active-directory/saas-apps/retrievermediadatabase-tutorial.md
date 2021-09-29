@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 786925799d19bf01e8edebbf85de04d92213298b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95d594d585ebb6016c1f2971121898b1c1b9c5da
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732839"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816414"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retrievermediadatabase"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RetrieverMediaDatabase 的集成
 
@@ -118,7 +118,7 @@ ms.locfileid: "98732839"
 
 1. 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 RetrieverMediaDatabase
 
-1. 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 RetrieverMediaDatabase 磁贴时，你应自动登录到为其设置了 SSO 的 RetrieverMediaDatabase。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+1. 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 RetrieverMediaDatabase 磁贴时，你应自动登录到为其设置了 SSO 的 RetrieverMediaDatabase。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,14 +1,14 @@
 ---
 title: 使用存储资源管理器将 VHD 文件上传到 Azure 开发测试实验室
 description: 使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5571beda476e5e5cac7e899af062a969e798b29
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91282521"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610401"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 

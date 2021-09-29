@@ -4,16 +4,16 @@ description: 若要在 Azure 中创建具有高可用性和弹性的应用程序
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 09/16/2021
 ms.author: prsandhu
 ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 3973941a5fbceb58ed265f2594661c8365c618d9
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 26d4464d67634d5660796ce24dc9b9dc2505e0ef
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123480229"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218235"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -49,16 +49,15 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 
 | 美洲           | 欧洲               | 非洲              | 亚太区   |
 |--------------------|----------------------|---------------------|----------------|
-|                    |                      |                     |                |
 | 巴西南部       | 法国中部       | 南非北部* | 澳大利亚东部 |
 | 加拿大中部     | 德国中西部 |                     | 印度中部* |
 | 美国中部         | 北欧         |                     | 日本东部     |
-| 美国东部            | 挪威东部*         |                     | 韩国中部* |
-| 美国东部 2          | 英国南部             |                     | Southeast Asia |
-| 美国中南部 | 西欧          |                     |                |
+| 美国东部            | 挪威东部          |                     | 韩国中部* |
+| 美国东部 2          | 英国南部             |                     | 东南亚 |
+| 美国中南部   | 西欧          |                     |                |
 | US Gov 弗吉尼亚州    |                      |                     |                |
-| 美国西部 2        |                      |                     |                |
-| 美国西部 3        |                      |                     |                |
+| 美国西部 2          |                      |                     |                |
+| 美国西部 3          |                      |                     |                |
 
 \* 若要详细了解这些地理区域中的可用性区域和可用服务支持，请与 Microsoft 销售或客户代表联系。 有关即将支持可用性区域的地理区域，请参阅 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。
 
@@ -125,6 +124,7 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 |     [Azure Active Directory 域服务](../active-directory-domain-services/overview.md)                      | :large_blue_diamond:  |
 |     [Azure API 管理](../api-management/zone-redundancy.md)                      | :large_blue_diamond:  |
 |     [Azure 应用配置](../azure-app-configuration/faq.yml#how-does-app-configuration-ensure-high-data-availability)   | :large_blue_diamond:  |    
+|     [Azure Batch](/azure/batch/create-pool-availability-zones)                                               | :large_blue_diamond:  |
 |     [Azure Bastion](../bastion/bastion-overview.md)                                               | :large_blue_diamond:  |
 |     [用于 Redis 的 Azure 缓存](../azure-cache-for-redis/cache-high-availability.md)                              | :large_blue_diamond:  |
 |     [Azure 认知搜索](../search/search-performance-optimization.md#availability-zones)               | :large_blue_diamond:  |
@@ -137,17 +137,22 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 |     [Azure 磁盘加密](../virtual-machines/disks-redundancy.md)                                       | :large_blue_diamond:  |
 |     [Azure 防火墙](../firewall/deploy-availability-zone-powershell.md)                                              | :large_blue_diamond:  |
 |     [Azure 防火墙管理器](../firewall-manager/quick-firewall-policy.md)                                      | :large_blue_diamond:  |
+|     [Azure Functions](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html)     | :large_blue_diamond:  |
 |     [Azure Kubernetes 服务 (AKS)](../aks/availability-zones.md)                              | :large_blue_diamond:  |
 |     [Azure 媒体服务 (AMS)](../media-services/latest/concept-availability-zones.md)        | :large_blue_diamond:  |
+|     [Azure Monitor](/azure/azure-monitor/logs/availability-zones)        | :large_blue_diamond:  |
+|     [Azure Monitor：Application Insights](/azure/azure-monitor/logs/availability-zones)        | :large_blue_diamond:  |
+|     [Azure Monitor：Log Analytics](/azure/azure-monitor/logs/availability-zones)        | :large_blue_diamond:  |
 |     [Azure 专用链接](../private-link/private-link-overview.md)                                          | :large_blue_diamond:  |
-|     [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)                                         | :large_blue_diamond:  |
-|     Azure SQL：[虚拟机](../azure-sql/database/high-availability-sla.md)                                  | :large_blue_diamond:  |
-|     [Azure Web 应用程序防火墙](../firewall/deploy-availability-zone-powershell.md)                              | :large_blue_diamond:  |
-|     [容器注册表](../container-registry/zone-redundancy.md)                                          | :large_blue_diamond:  |
-|     [事件网格](../event-grid/overview.md)                                                  | :large_blue_diamond:  |
-|     [网络观察程序](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
-|     网络观察程序：[流量分析](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | :large_blue_diamond:  |
-|     [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)                                           | :large_blue_diamond:  |
+|     [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)                                       | :large_blue_diamond:  |
+|     Azure SQL：[虚拟机](../azure-sql/database/high-availability-sla.md)                                                                 | :large_blue_diamond:  |
+|     [Azure Web 应用程序防火墙](../firewall/deploy-availability-zone-powershell.md)                                                         | :large_blue_diamond:  |
+|     [容器注册表](../container-registry/zone-redundancy.md)                                                                               | :large_blue_diamond:  |
+|     [事件网格](../event-grid/overview.md)                                                                                                      | :large_blue_diamond:  |
+|     [HDInsight](/azure/hdinsight/hdinsight-use-availability-zones)                                                                               | :large_blue_diamond:  |
+|     [网络观察程序](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                     | :large_blue_diamond:  |
+|     网络观察程序：[流量分析](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                  | :large_blue_diamond:  |
+|     [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)                                                      | :large_blue_diamond:  |
 |     [高级 Blob 存储](../storage/blobs/storage-blob-performance-tiers.md)                                        | :large_blue_diamond:  |
 |     存储：[Azure 高级文件](../storage/files/storage-files-planning.md)                                | :large_blue_diamond:  |
 |     虚拟机：[Azure 专用主机](../virtual-machines/windows/create-powershell-availability-zone.md)                     | :large_blue_diamond:  |

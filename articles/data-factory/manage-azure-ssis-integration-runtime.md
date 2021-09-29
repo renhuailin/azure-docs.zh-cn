@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: f163087133e6273752663b9bffa9da4a6fb19879
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fcdf2975d99cb5653f7e7b33480729d303c3caa0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730130"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824507"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>重新配置 Azure-SSIS 集成运行时
 
@@ -29,7 +29,7 @@ ms.locfileid: "121730130"
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>重新配置 Azure-SSIS IR
 在“管理”中心的“连接”窗格中，切换到“集成运行时”页，然后选择“刷新”   。 
 
-   ![“连接”窗格](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png" alt-text="“连接”窗格":::
 
    可以通过选择 Azure-SSIS IR 的名称来对其进行编辑/重新配置。 此外，还可以选择相应的按钮来监视/启动/停止/删除 Azure-SSIS IR，通过“执行 SSIS 包”活动自动生成 ADF 管道以在 Azure-SSIS IR 上运行，并查看 Azure-SSIS IR 的 JSON 代码/有效负载。  只能在 Azure-SSIS IR 停止时对其执行编辑/删除操作。
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: 133496614db862d4c1af31afb015a535ddbfd188
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d49b587262bfceb8072761cec6981ab908abb21e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724456"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732951"
 ---
 # <a name="what-is-data-wrangling"></a>什么是数据整理？
 
@@ -57,7 +57,7 @@ ms.locfileid: "121724456"
 
 创建 Power Query 活动时，所有源数据集都将成为数据集查询，并放置在“ADFResource”文件夹中。 默认情况下，UserQuery 将指向第一个数据集查询。 所有转换都应在 UserQuery 上完成，因为不支持对数据集查询进行更改，也不会将其保留。 当前不支持重命名、添加和删除查询。
 
-![整理](media/wrangling-data-flow/editor.png)
+:::image type="content" source="media/wrangling-data-flow/editor.png" alt-text="整理":::
 
 目前，尽管在创作过程中可以使用 Power Query M 函数，但并非所有的 Power Query M 函数都支持用于数据处理。 在构建 Power Query 活动时，如果函数不受支持，系统将提示以下错误消息：
 

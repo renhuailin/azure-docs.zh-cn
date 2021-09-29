@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/25/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a7aab8497baa5c6b9a53a98ed76e6760fa54ffb0
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 5d7d332d0ce74151ff42bc689b0222f7020dc50d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864432"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575202"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>客户在 Azure Active Directory B2C 中注册期间禁用电子邮件验证
 
@@ -41,7 +41,8 @@ ms.locfileid: "122864432"
 请按照以下步骤禁用电子邮件验证：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 使用顶部菜单中的“目录 + 订阅”筛选器来选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“用户流”。
 1. 选择要禁用电子邮件验证的用户流。
@@ -79,7 +80,8 @@ LocalAccountSignUpWithLogonEmail 是一个[自断言](self-asserted-technical-pr
 ## <a name="test-your-policy"></a>测试策略 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 使用顶部菜单中的“目录 + 订阅”筛选器来选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“用户流”。
 1. 选择要禁用电子邮件验证的用户流。 例如，*B2C_1_signinsignup*。
@@ -95,7 +97,8 @@ LocalAccountSignUpWithLogonEmail 是一个[自断言](self-asserted-technical-pr
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
+1. 请确保使用的是包含 Azure AD 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“标识体验框架”。
 1. 选择“上传自定义策略”，然后上传已更改的两个策略文件。

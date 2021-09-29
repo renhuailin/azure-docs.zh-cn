@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daeff2aef260c13ae4bb08fd0c4c6a39d3fdcb48
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459673"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124809341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
 
@@ -129,13 +129,13 @@ ms.locfileid: "92459673"
 
     1. **注销 URL**。
 
-### <a name="configure-itrp-single-sign-on"></a>配置 ITRP 单一登录
+### <a name="configure-itrp-single-sign-on&quot;></a>配置 ITRP 单一登录
 
 1. 在新的 Web 浏览器窗口中，以管理员身份登录到 ITRP 公司站点。
 
 1. 在窗口顶部，选择“设置”图标： 
 
-    ![设置”图标](./media/itrp-tutorial/ic775570.png "设置图标")
+    ![设置”图标](./media/itrp-tutorial/ic775570.png &quot;设置图标")
 
 1. 在左窗格中，选择“单一登录”  ：
 
@@ -179,7 +179,7 @@ ms.locfileid: "92459673"
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -207,7 +207,7 @@ ms.locfileid: "92459673"
 
 7. 在“添加分配”对话框中选择“分配”。  
 
-### <a name="create-an-itrp-test-user"></a>创建 ITRP 测试用户
+### <a name="create-an-itrp-test-user&quot;></a>创建 ITRP 测试用户
 
 若要使 Azure AD 用户能够登录到 ITRP，需要将其添加到 ITRP 中。 需要手动添加它们。
 
@@ -217,7 +217,7 @@ ms.locfileid: "92459673"
 
 1. 在窗口顶部，选择“记录”图标： 
 
-    ![“记录”图标](./media/itrp-tutorial/ic775575.png "“记录”图标")
+    ![“记录”图标](./media/itrp-tutorial/ic775575.png &quot;“记录”图标")
 
 1. 在菜单中，选择“人员”  ：
 
@@ -242,7 +242,7 @@ ms.locfileid: "92459673"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“ITRP”磁贴时，应会自动登录到设置了 SSO 的 ITRP 实例。 有关访问面板的详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
+在访问面板中选择“ITRP”磁贴时，应会自动登录到设置了 SSO 的 ITRP 实例。 有关访问面板的详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

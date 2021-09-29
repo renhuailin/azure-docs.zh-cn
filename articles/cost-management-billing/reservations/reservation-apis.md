@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 773334787ec7b2706c16e517281d6a60215ad482
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 74539bc58e3b0b7261792f492a6ea2cc151b8964
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353011"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666602"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>适用于 Azure 预留自动化的 API
 
@@ -106,7 +106,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 
 若要以编程方式更改范围，请使用 API [预留 - 更新](/rest/api/reserved-vm-instances/reservation/update)。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 - [什么是适用于 Azure 的预留](save-compute-costs-reservations.md)
 - [了解 VM 预留折扣的应用方式](../manage/understand-vm-reservation-charges.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d63b1fa82400d95b18c6dbd7f37ec321f72b3a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ac9a08cb878bd75f9cd4d6392c7b75a632e8d7f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92453699"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>教程：Azure Active Directory 与 Explanation-Based Auditing System 集成
 
@@ -172,7 +172,7 @@ ms.locfileid: "92453699"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Explanation-Based Auditing System”磁贴时，应会自动登录到设置了 SSO 的 Explanation-Based Auditing System。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Explanation-Based Auditing System”磁贴时，应会自动登录到设置了 SSO 的 Explanation-Based Auditing System。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

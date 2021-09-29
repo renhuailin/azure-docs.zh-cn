@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-azurepowershell
-ms.openlocfilehash: 5c652696d825b6dae4665de1d8afdd9bae6848a4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 3dd0f137a35bc6b505dbc81b509cf345c561104b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183525"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551824"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-metrics-classic"></a>启用和管理 Azure 存储分析指标（经典）
 
@@ -39,13 +39,13 @@ ms.locfileid: "122183525"
 1. 在 [Azure 门户](https://portal.azure.com)中选择“存储帐户”，并单击存储帐户名称打开帐户仪表板。
 
 2. 在菜单边栏选项卡的“监视(经典)”部分中选择“诊断设置(经典)”。
-   
+
    ![屏幕截图，突出显示了“监视(经典)”部分下的“诊断设置(经典)”选项。](./media/manage-storage-analytics-metrics/storage-enable-metrics-00.png)
 
 3. 选择要监视的每个服务的指标数据类型，以及数据的保留策略。 还可以通过将“状态”设置为“关闭”来禁用监视。
 
    > [!div class="mx-imgBorder"]
-   > ![在 Azure 门户中配置日志记录。](./media/manage-storage-analytics-logs/enable-diagnostics.png) 
+   > ![在 Azure 门户中配置日志记录。](./media/manage-storage-analytics-logs/enable-diagnostics.png)
 
    若要设置数据保留策略，请移动“保留期(天)”滑块，或输入数据的保留天数（1 到 365 天）。 新存储帐户的默认保留期为 7 天。 如果不需要设置保留策略，请输入零。 如果没有保留策略，则由用户自行决定是否删除监视数据。
 
@@ -88,59 +88,59 @@ ms.locfileid: "122183525"
    $ctx = $storageAccount.Context
    ```
 
-   * 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+   - 将 `<resource-group-name>` 占位符值替换为资源组的名称。
 
-   * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。 
+   - 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-6. 可以使用本地计算机上的 PowerShell 在存储帐户中配置存储指标。 使用 Azure PowerShell cmdlet“Set-AzStorageServiceMetricsProperty”更改当前设置。 
+6. 可以使用本地计算机上的 PowerShell 在存储帐户中配置存储指标。 使用 Azure PowerShell cmdlet“Set-AzStorageServiceMetricsProperty”更改当前设置。
 
    以下命令在存储帐户中开启 blob 服务的分钟指标，并将保留期设置为五天。
 
    ```powershell
    Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $ctx
-   ```   
+   ```
 
-   此 cmdlet 使用以下参数：  
+   此 cmdlet 使用以下参数：
 
    - ServiceType：可能值为 Blob、Queue、Table 和 File。
-   - MetricsType：可能值为 Hour 和 Minute。  
+   - MetricsType：可能值为 Hour 和 Minute。
    - MetricsLevel：可能的值包括：
       - **无**：禁用监视。
       - **服务**：收集经过汇总的有关 Blob、队列、表和文件服务的入口和出口、可用性、延迟及成功百分比等指标。
       - ServiceAndApi：除服务指标外，在 Azure 存储服务 API 中为每项存储操作收集一组相同的指标。
 
-   以下命令在默认存储帐户中为 Blob 服务检索当前的小时度量值级别和保留天数：  
+   以下命令在默认存储帐户中为 Blob 服务检索当前的小时度量值级别和保留天数：
 
    ```powershell
    Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
-   ```  
+   ```
 
-   若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[安装和配置 Azure PowerShell](/powershell/azure/)。  
+   若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[安装和配置 Azure PowerShell](/powershell/azure/)。
 
 ### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
 
-有关使用 .NET 语言配置存储指标的详细信息，请参阅[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)。  
+有关使用 .NET 语言配置存储指标的详细信息，请参阅[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)。
 
-有关使用 REST API 配置存储指标的一般信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。 
+有关使用 REST API 配置存储指标的一般信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。
 
-### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)  
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
 var queueClient = storageAccount.CreateCloudQueueClient();  
-var serviceProperties = queueClient.GetServiceProperties();  
+var serviceProperties = queueClient.GetServiceProperties();
 
 serviceProperties.HourMetrics.MetricsLevel = MetricsLevel.Service;  
-serviceProperties.HourMetrics.RetentionDays = 10;  
+serviceProperties.HourMetrics.RetentionDays = 10;
 
 queueClient.SetServiceProperties(serviceProperties);  
-```  
+```
 
-有关使用 .NET 语言配置存储指标的详细信息，请参阅[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)。  
+有关使用 .NET 语言配置存储指标的详细信息，请参阅[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)。
 
-有关使用 REST API 配置存储指标的一般信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。 
+有关使用 REST API 配置存储指标的一般信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。
 
 ---
 
@@ -180,48 +180,48 @@ queueClient.SetServiceProperties(serviceProperties);
 
 在“诊断”中选择的指标决定了可用于帐户的指标的解析：
 
-* “聚合”监视提供入口/出口、可用性、延迟和成功百分比等指标。 系统将从 Blob、表、文件和队列服务聚合这些指标。
-* “按 API”除了提供服务级别的聚合外，还提供更精细的解析，包括可用于单个存储操作的指标。
+- “聚合”监视提供入口/出口、可用性、延迟和成功百分比等指标。 系统将从 Blob、表、文件和队列服务聚合这些指标。
+- “按 API”除了提供服务级别的聚合外，还提供更精细的解析，包括可用于单个存储操作的指标。
 
 ## <a name="download-metrics-to-archive-or-analyze-locally"></a>下载指标以在本地进行存档或分析
 
 如果要为长期存储下载指标或在本地分析这些指标，则需要使用工具或编写一些代码来读取表。 如果在存储帐户中列出所有表，则这些表不会显示，但可以按名称直接访问。 很多存储浏览工具可识别这些表，并可用于直接查看这些表。 有关可用工具的列表，请参阅 [Azure 存储客户端工具](./storage-explorers.md)。
 
-|指标|表名|备注| 
-|-|-|-|  
-|小时指标|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日之前的版本中，这些表称为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|  
-|分钟度量值|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能通过 PowerShell 或以编程方式启用。<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|  
-|容量|$MetricsCapacityBlob|仅限 Blob 服务。|  
+|指标|表名|备注|
+|-|-|-|
+|小时指标|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日之前的版本中，这些表称为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|
+|分钟度量值|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能通过 PowerShell 或以编程方式启用。<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|
+|容量|$MetricsCapacityBlob|仅限 Blob 服务。|
 
-有关这些表的完整架构详细信息，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。 以下示例行仅显示一部分可用列，但也说明了存储指标在采用相应方式保存这些指标时展现的一些重要功能：  
+有关这些表的完整架构详细信息，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。 以下示例行仅显示一部分可用列，但也说明了存储指标在采用相应方式保存这些指标时展现的一些重要功能：
 
-|PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|可用性|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
-|-|-|-|-|-|-|-|-|-|-|-|  
-|20140522T1100|user;All|2014-05-22T11:01:16.765025Z|7|7|4003|46801|100|104.4286|6.857143|100|  
-|20140522T1100|user;QueryEntities|2014-05-22T11:01:16.764025Z|5|5|2694|45951|100|143.8|7.8|100|  
-|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.765025Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.765025Z|1|1|771|217|100|9|6|100|  
+|PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|可用性|AverageE2ELatency|AverageServerLatency|PercentSuccess|
+|-|-|-|-|-|-|-|-|-|-|-|
+|20140522T1100|user;All|2014-05-22T11:01:16.765025Z|7|7|4003|46801|100|104.4286|6.857143|100|
+|20140522T1100|user;QueryEntities|2014-05-22T11:01:16.764025Z|5|5|2694|45951|100|143.8|7.8|100|
+|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.765025Z|1|1|538|633|100|3|3|100|
+|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.765025Z|1|1|771|217|100|9|6|100|
 
-在这个分钟指标数据示例中，分区键按分钟使用时间。 行键用于标识行中所存储信息的类型。 行键由访问类型和请求类型组成：  
+在这个分钟指标数据示例中，分区键按分钟使用时间。 行键用于标识行中所存储信息的类型。 行键由访问类型和请求类型组成：
 
--   访问类型是 user 或 system，其中 user 是指用户对存储服务发出的所有请求，而 system 是指存储分析发出的请求。  
--   请求类型是 all（在这种情况下是摘要行）或可识别特定 API，如 QueryEntity 或 UpdateEntity。  
+-   访问类型是 user 或 system，其中 user 是指用户对存储服务发出的所有请求，而 system 是指存储分析发出的请求。
+-   请求类型是 all（在这种情况下是摘要行）或可识别特定 API，如 QueryEntity 或 UpdateEntity。
 
-此示例数据显示一分钟的所有记录（从上午 11:00 开始），因此，QueryEntities 请求数加 QueryEntity 请求数再加 UpdateEntity 请求数的和为 7。 这是显示在 user:All 行上的总数。 同样，通过计算 ((143.8 * 5) + 3 + 9)/7，可以在 user:All 行得到平均端到端延迟为 104.4286。  
+此示例数据显示一分钟的所有记录（从上午 11:00 开始），因此，QueryEntities 请求数加 QueryEntity 请求数再加 UpdateEntity 请求数的和为 7。 这是显示在 user:All 行上的总数。 同样，通过计算 ((143.8 * 5) + 3 + 9)/7，可以在 user:All 行得到平均端到端延迟为 104.4286。
 
 ## <a name="view-metrics-data-programmatically"></a>以编程方式查看指标数据
 
-以下列表显示示例 C# 代码，该代码用于访问分钟范围的分钟指标，并在控制台窗口中显示结果。 代码示例使用 Azure 存储客户端库版本 4.x 或更高版本，其中包括 CloudAnalyticsClient 类，用于简化访问存储中的指标表的过程。 
+以下列表显示示例 C# 代码，该代码用于访问分钟范围的分钟指标，并在控制台窗口中显示结果。 代码示例使用 Azure 存储客户端库版本 4.x 或更高版本，其中包括 CloudAnalyticsClient 类，用于简化访问存储中的指标表的过程。
 
 > [!NOTE]
-> 适用于 .NET 的 Azure Blob 存储客户端库 v12 中不包含 CloudAnalyticsClient 类。 存储分析指标（也称为经典指标）将于 2023 年 8 月 31 日停用。 有关详细信息，请查看[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果使用经典指标，建议你在该日期之前转换为 Azure Monitor 中的指标。 
+> 适用于 .NET 的 Azure Blob 存储客户端库 v12 中不包含 CloudAnalyticsClient 类。 存储分析指标（也称为经典指标）将于 2023 年 8 月 31 日停用。 有关详细信息，请查看[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果使用经典指标，建议你在该日期之前转换为 Azure Monitor 中的指标。
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  
 {  
  // Convert the dates to the format used in the PartitionKey.  
  var start = startDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");  
- var end = endDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");  
+ var end = endDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
 
  var services = Enum.GetValues(typeof(StorageService));  
  foreach (StorageService service in services)  
@@ -236,7 +236,7 @@ private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, Dat
              // because they are calculated fields in the MetricsEntity class.  
              // The PartitionKey identifies the DataTime of the metrics.  
              where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0   
-             select entity;  
+             select entity;
 
      // Filter on "user" transactions after fetching the metrics from Azure Table storage.  
      // (StartsWith is not supported using LINQ with Azure Table storage.)  
@@ -244,7 +244,7 @@ private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, Dat
      var resultString = results.Aggregate(new StringBuilder(), (builder, metrics) => builder.AppendLine(MetricsString(metrics, opContext))).ToString();  
      Console.WriteLine(resultString);  
  }  
-}  
+}
 
 private static string MetricsString(MetricsEntity entity, OperationContext opContext)  
 {  
@@ -256,7 +256,7 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
          string.Join(",", entityProperties.Select(e => new KeyValuePair<string, string>(e.Key.ToString(), e.Value.PropertyAsObject.ToString())));  
  return entityString;  
 }  
-```  
+```
 
 <a id="add-metrics-to-dashboard"></a>
 
@@ -278,6 +278,6 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解存储分析，请参阅[存储分析](storage-analytics.md)。
-* [配置存储分析日志](manage-storage-analytics-logs.md)。
-* 详细了解指标架构。 请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。
+- 若要详细了解存储分析，请参阅[存储分析](storage-analytics.md)。
+- [配置存储分析日志](manage-storage-analytics-logs.md)。
+- 详细了解指标架构。 请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。

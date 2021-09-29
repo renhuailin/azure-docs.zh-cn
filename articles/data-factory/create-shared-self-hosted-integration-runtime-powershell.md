@@ -8,12 +8,12 @@ ms.author: lle
 author: lrtoyou1223
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 06/10/2020
-ms.openlocfilehash: b59655f343c8b5aa279dae9197c1d7fa41e0c318
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 65473b226ac8c188660862bddadb30ba44c4136d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733076"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811676"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
 
@@ -40,17 +40,17 @@ ms.locfileid: "121733076"
 
 1. 在要共享的自承载 IR 中，选择“向另一个数据工厂授予权限”，然后在“集成运行时设置”页中，选择要在其中创建链接 IR 的数据工厂。
       
-    ![“共享”选项卡上的授予权限按钮](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
+    :::image type="content" source="media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png" alt-text="“共享”选项卡上的授予权限按钮":::  
     
 2. 记下并复制上面要共享的自承载 IR 的“资源 ID”。
          
 3. 在已授予权限的数据工厂中，创建新的自承载 IR（链接），并输入资源 ID。
       
-    ![用于创建自承载集成运行时的按钮](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-1.png" alt-text="用于创建自承载集成运行时的按钮":::
    
-    ![用于创建链接的自承载集成运行时的按钮](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-2.png" alt-text="用于创建链接的自承载集成运行时的按钮"::: 
 
-    ![用于输入名称和资源 ID 的框](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-3.png" alt-text="用于输入名称和资源 ID 的框":::
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>使用 Azure PowerShell 创建共享自承载 IR
 
@@ -227,15 +227,15 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 #### <a name="shared-ir"></a>共享 IR
 
-![用于查找共享集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-shared-IR.png" alt-text="用于查找共享集成运行时的选项":::
 
-![监视共享的集成运行时](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png" alt-text="监视共享的集成运行时":::
 
 #### <a name="linked-ir"></a>链接 IR
 
-![用于查找链接集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-linked-ir.png" alt-text="用于查找链接集成运行时的选项":::
 
-![监视链接的集成运行时](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png" alt-text="监视链接的集成运行时":::
 
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自承载 IR 共享的已知限制

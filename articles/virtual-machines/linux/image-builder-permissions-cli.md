@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: 05195eb10355184fd2b8f8a44472099d85295406
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 9a248a5ad65e05db84a0d20f13225d3085b419af
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769082"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766310"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 配置 Azure 映像生成器服务权限
 
@@ -114,7 +114,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | 自定义映像的资源组 |
@@ -141,7 +141,7 @@ sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g
 az role definition create --role-definition ./aibRoleImageCreation.json
 
 # Get the user-assigned managed identity id
-imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName --query clientId -o tsv)
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName --query clientId -o tsv)
 
 # Grant the custom role to the user-assigned managed identity for Azure Image Builder.
 az role assignment create \
@@ -156,7 +156,7 @@ az role assignment create \
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | VNET 资源组 |
@@ -182,7 +182,7 @@ sed -i -e "s/Azure Image Builder Service Networking Role/$netRoleDefName/g" aibR
 az role definition create --role-definition ./aibRoleNetworking.json
 
 # Get the user-assigned managed identity id
-imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName --query clientId -o tsv)
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName --query clientId -o tsv)
 
 # Grant the custom role to the user-assigned managed identity for Azure Image Builder.
 az role assignment create \

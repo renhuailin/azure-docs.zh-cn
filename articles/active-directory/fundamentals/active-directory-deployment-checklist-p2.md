@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b746b1f7d35668759108580d4d695787ac8fa3bc
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e2411ef1ba4878e43c7f6432b6aa3bd032f2842a
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733099"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083707"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -92,7 +92,7 @@ ms.locfileid: "113733099"
 | 任务 | 详细信息 | 所需的许可证 |
 | ---- | ------ | ---------------- |
 | [强制使用 Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | 删除普通日常用户帐户的管理角色。 使管理用户能够在成功完成多重身份验证检查、提供业务理由或请求指定的审批者批准之后使用其角色。 | Azure AD Premium P2 |
-| [在 PIM 中完成 Azure AD 目录角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md) | 与安全和领导团队协作创建访问评审策略，以根据组织的策略评审管理访问权限。 | Azure AD Premium P2 |
+| [在 PIM 中完成 Azure AD 目录角色的访问评审](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md) | 与安全和领导团队协作创建访问评审策略，以根据组织的策略评审管理访问权限。 | Azure AD Premium P2 |
 | [实施动态组成员资格策略](../enterprise-users/groups-dynamic-membership.md) | 使用动态组根据来自人力资源（或真实来源）的属性（例如部门、职位、区域和其他属性）自动向组分配用户。 |  |
 | [实施基于组的应用程序预配](../manage-apps/what-is-access-management.md) | 使用基于组的访问管理预配为 SaaS 应用程序自动预配用户。 |  |
 | [自动用户预配和取消预配](../app-provisioning/user-provisioning.md) | 从员工帐户生命周期中删除手动步骤，以防止未经授权的访问。 将真实来源（HR 系统）中的标识同步到 Azure AD。 |  |

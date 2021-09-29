@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 299d75f6d039ae36cdc99f5e77ec0dc8ca456a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 51d7d7beb74175da38b6fc59c4ce93565dc6f347
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92676765"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124772631"
 ---
 # <a name="tutorial-integrate-safeconnect-with-azure-active-directory"></a>教程：SafeConnect 与 Azure Active Directory 集成
 
@@ -129,7 +129,7 @@ ms.locfileid: "92676765"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“SafeConnect”磁贴时，应会自动登录到设置了 SSO 的 SafeConnect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“SafeConnect”磁贴时，应会自动登录到设置了 SSO 的 SafeConnect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

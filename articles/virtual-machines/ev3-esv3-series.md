@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: 3166ba5015c4d3a8e8d449c497eade6bc8bc56f6
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 251d9d2afd541159ae48d5e769b24e0f925fd65d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688286"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776588"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -97,8 +97,10 @@ Esv3 系列 VM 的 Intel® 超线程技术功能。
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
-- [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-- 有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,13 +2,13 @@
 title: Azure 服务总线身份验证和授权 | Microsoft Docs
 description: 使用共享访问签名 (SAS) 身份验证向服务总线验证应用程序。
 ms.topic: article
-ms.date: 09/01/2021
-ms.openlocfilehash: 0e5c6654cb3efc85e3d3bd7756c90612bd6c18cd
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/15/2021
+ms.openlocfilehash: 74ad1674bc09f1514264f4b7f1521526f8da2fd5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429111"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597144"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 可通过两种方式验证和授权对 Azure 服务总线资源的访问：Azure Activity Directory (Azure AD) 和共享访问签名 (SAS)。 本文将详细介绍如何使用这两种类型的安全机制。 

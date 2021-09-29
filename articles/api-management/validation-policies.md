@@ -7,13 +7,13 @@ author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 08/20/2021
-ms.author: apimpm
-ms.openlocfilehash: 6946dcaf713bda83e5bce7e823b5f7e26ccd6e92
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.author: danlep
+ms.openlocfilehash: 57bb68352f04b356ec7a60f9e354993404c46abd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694604"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658942"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>用于验证请求和响应的 API 管理策略
 
@@ -92,13 +92,13 @@ ms.locfileid: "122694604"
 
 ### <a name="attributes"></a>属性
 
-| 名称                       | 描述                                                                                                                                                            | 必须 | 默认 |
+| 名称                       | 说明                                                                                                                                                            | 必须 | 默认 |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | unspecified-content-type-action | 针对其内容类型未在 API 架构中指定的请求或响应执行的[操作](#actions)。 |  是     | 空值   |
 | max_size | 请求或响应正文的最大长度（以字节为单位），根据 `Content-Length` 标头进行检查。 如果请求正文或响应正文经过压缩，则此值是解压缩后的长度。 最大允许值：102,400 字节 (100 KB)。 （如果需要增加此限制，请联系[支持](https://azure.microsoft.com/support/options/)。） | 是       | 空值   |
 | size-exceeded-action | 针对其正文超过 `max-size` 中指定大小的请求或响应执行的[操作](#actions)。 |  是     | 空值   |
 | errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   否    | 空值   |
-| type | 要对其执行正文验证的内容类型，根据 `Content-Type` 头检查。 此值不区分大小写。 如果为空，此值将应用到 API 架构中指定的每个内容类型。 |   否    |  空值  |
+| 类型 | 要对其执行正文验证的内容类型，根据 `Content-Type` 头检查。 此值不区分大小写。 如果为空，此值将应用到 API 架构中指定的每个内容类型。 |   否    |  空值  |
 | validate-as | 用于验证具有匹配内容类型的请求或响应正文的验证引擎。 目前唯一支持的值是“json”。   |  是     |  空值  |
 | action | 要对其正文与指定内容类型不匹配的请求或响应执行的[操作](#actions)。  |  是      | 空值   |
 
@@ -161,7 +161,7 @@ ms.locfileid: "122694604"
 
 ### <a name="attributes"></a>属性
 
-| 名称                       | 描述                                                                                                                                                            | 必须 | 默认 |
+| 名称                       | 说明                                                                                                                                                            | 必须 | 默认 |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | specified-parameter-action | 针对 API 架构中指定的请求参数执行的[操作](#actions)。 <br/><br/> 在 `headers`、`query` 或 `path` 元素中提供时，该值将替代 `specified-parameter-action` 元素中的 `validate-parameters` 值。  |  是     | 空值   |
 | unspecified-parameter-action | 针对未在 API 架构中指定的请求参数执行的[操作](#actions)。 <br/><br/>在 `headers` 或 `query` 元素中提供时，该值将替代 `validate-parameters` 元素中的 `unspecified-parameter-action` 值。 |  是     | 空值   |
@@ -199,14 +199,14 @@ ms.locfileid: "122694604"
 ```
 ### <a name="elements"></a>元素
 
-| 名称         | 描述                                                                                                                                   | 必需 |
+| 名称         | 说明                                                                                                                                   | 必需 |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-headers | 根元素。 针对响应中的所有头指定默认验证操作。                                                                                                                              | 是      |
 | 标头 | 为命名的头添加一个或多个元素可以替代针对响应中的头执行的默认验证操作。 | 否 |
 
 ### <a name="attributes"></a>属性
 
-| 名称                       | 描述                                                                                                                                                            | 必须 | 默认 |
+| 名称                       | 说明                                                                                                                                                            | 必须 | 默认 |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | specified-header-action | 针对 API 架构中指定的响应头执行的[操作](#actions)。  |  是     | 空值   |
 | unspecified-header-action | 针对未在 API 架构中指定的响应头执行的[操作](#actions)。  |  是     | 空值   |

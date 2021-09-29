@@ -9,16 +9,16 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 40dade86882cdfa8f85015bebc8769430fbf3f1a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b6caf7170130b75689de2915e5d15c8484ba231a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477613"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680198"
 ---
 # <a name="list-blob-containers-with-net"></a>使用 .NET 列出 Blob 容器
 
-通过代码列出 Azure 存储帐户中的容器时，可以指定多个选项来管理如何从 Azure 存储返回结果。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)列出容器。  
+通过代码列出 Azure 存储帐户中的容器时，可以指定多个选项来管理如何从 Azure 存储返回结果。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)列出容器。
 
 ## <a name="understand-container-listing-options"></a>了解容器列出选项
 
