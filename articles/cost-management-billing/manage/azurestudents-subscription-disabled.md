@@ -1,19 +1,19 @@
 ---
-title: 重新激活禁用的 Azure for Students 订阅
+title: 重新激活已禁用的面向学生的 Azure 订阅
 description: 说明为什么禁用 Azure for Students 订阅以及如何将其重新激活。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: d2ccfcb26c66d936d474cd5bd4f830d03a8b0002
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f1666d0bf02a10c2c5e1f87f68d4365782de683d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682907"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648708"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>为何禁用 Azure for Students 订阅？如何重新激活它？
 
@@ -30,15 +30,15 @@ Azure for Students 帐户提供 100 美元的信用额度，以及 12 个月的�
 
     ![屏幕截图，显示 Azure for Students 订阅的信用额度信息](./media/azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
-3. 若要检查使用 Azure 信用额度的服务的使用情况，请从左侧导航中选择“使用情况”  ，然后选择 Azure for Students 订阅。
+3. 若要检查使用 Azure 信用额度的服务的使用情况，请从左侧导航中选择“使用情况”，然后选择 Azure for Students 订阅。
 
     ![屏幕截图，显示 Azure for Students 信用额度的使用情况信息](./media/azurestudents-subscription-disabled/azurestudents-credit-usage.png)
 
 该表包含以下列：
 
-* **服务名称：** 使用 Azure 额度的服务。
+* **服务名称：** 使用 Azure 信用额度的服务。
 * **服务资源：** 所使用的服务的度量单位。
-* **花费：** 服务所用的额度量（以美元 ($) 为单位）。
+* **花费：** 服务所用的信用额度量（以美元 ($) 为单位）。
 
 ## <a name="your-credit-has-expired"></a>信用额度已过期
 
