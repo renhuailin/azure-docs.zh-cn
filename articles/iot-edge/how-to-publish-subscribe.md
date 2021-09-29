@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 248d39e80aea50811050d327782b528db85d4fb4
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: f798f8be2989140711cb9122c9d59e7b91248f61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813584"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600373"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>使用 Azure IoT Edge 发布和订阅（预览版）
 
@@ -395,7 +395,7 @@ mosquitto_pub \
 向 IoT 中心发送遥测数据类似于针对用户定义的主题进行发布，只不过使用的是特定的 IoT 中心主题：
 
 - 对于设备，遥测按主题发送：`devices/<device_name>/messages/events/`
-- 对于模块，遥测按主题发送：`devices/<device_name>/<module_name>/messages/events/`
+- 对于模块，遥测按主题发送：`devices/<device_name>/modules/<module_name>/messages/events/`
 
 此外，创建一个诸如 `FROM /messages/* INTO $upstream` 的路由，将遥测从 IoT Edge MQTT 中转站发送到 IoT 中心。 若要了解有关路由的详细信息，请参阅[声明路由](module-composition.md#declare-routes)。
 

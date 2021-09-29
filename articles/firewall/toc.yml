@@ -68,8 +68,8 @@
       href: dns-details.md
     - name: 安全基线
       href: /security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json
-    - name: 主动 FTP 支持
-      href: active-ftp-support.md
+    - name: FTP 支持
+      href: ftp-support.md
 - name: 操作指南
   items:
     - name: 部署和配置 - 经典

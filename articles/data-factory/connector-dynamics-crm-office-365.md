@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 483ad9dbceb134188ee8a5e2fdce3469226c579b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 6f95e117865ccf9d242d595ec98b66d7cd344a85
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312898"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597644"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-microsoft-dataverse-or-dynamics-crm"></a>从/向 Dynamics 365 (Microsoft Dataverse) 或 Dynamics CRM 复制数据
 
@@ -80,7 +80,7 @@ ms.locfileid: "123312898"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -88,11 +88,11 @@ ms.locfileid: "123312898"
 
 2. 搜索“Dynamics”并选择 Dynamics 365 连接器。
 
-    :::image type="content" source="media/connector-azure-blob-storage/azure-blob-storage-connector.png" alt-text="Dynamics 365 连接器的屏幕截图。":::    
+    :::image type="content" source="media/connector-dynamics-crm-office-365/dynamics-crm-office-365-connector.png" alt-text="Dynamics 365 连接器的屏幕截图。":::    
 
 1. 配置服务详细信息、测试连接并创建新的链接服务。
 
-    :::image type="content" source="media/connector-azure-blob-storage/configure-azure-blob-storage-linked-service.png" alt-text="Dynamics 365 的链接服务配置的屏幕截图。":::
+    :::image type="content" source="media/connector-dynamics-crm-office-365/configure-dynamics-crm-office-365-linked-service.png" alt-text="Dynamics 365 的链接服务配置的屏幕截图。":::
 
 ## <a name="connector-configuration-details"></a>连接器配置详细信息
 
@@ -477,11 +477,11 @@ Dynamics 链接服务支持以下属性。
 - 将 **CustomerField** 映射到 **CustomerField**。 此映射是标准字段映射。
 - 将 **Target** 映射到 **CustomerField\@EntityReference**。 接收器列是表示实体引用的虚拟列。 请在映射中输入此类字段名称，因为不可通过导入架构来显示它们。
 
-![Dynamics 查找字段列映射](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
+:::image type="content" source="./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png" alt-text="Dynamics 查找字段列映射":::
 
 如果所有源记录都映射到同一目标实体，并且源数据不包含目标实体名称，则可使用下面的快捷方式：在复制活动源中添加一个额外的列。 使用模式 `{lookup_field_name}@EntityReference` 命名新列，将值设置为目标实体名称，然后按常规方式进行列映射。 如果源和接收器列名称相同，则还可跳过显式列映射，因为默认情况下，复制活动按名称映射列。
 
-![Dynamics 查找字段：添加实体引用列](./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png)
+:::image type="content" source="./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png" alt-text="Dynamics 查找字段：添加实体引用列":::
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 

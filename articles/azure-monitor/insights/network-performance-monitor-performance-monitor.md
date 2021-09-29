@@ -2,15 +2,15 @@
 title: 网络性能监视器中的性能监视器
 description: 借助网络性能监视器中的性能监视器功能可以监视网络中各个位置的网络连接。 可以监视云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务。
 ms.topic: conceptual
-author: abshamsft
-ms.author: absha
+author: KumudD
+ms.author: kumud
 ms.date: 02/20/2018
-ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae9b17a90bcef6a4cd7caeed87efe363583ce774
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101728614"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794265"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>网络性能监视器解决方案：性能监视
 

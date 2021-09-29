@@ -2,23 +2,19 @@
 title: 管理 NSG 流日志 - Azure PowerShell
 titleSuffix: Azure Network Watcher
 description: 此页说明如何在 Azure 网络观察程序中使用 PowerShell 管理网络安全组流日志
-services: network-watcher
-documentationcenter: na
 author: damendo
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 79a48f479bedfbe7ecbe5199c7af08a3321badd7
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 94a604c687326d7fb43b4b9e44aaad682d7e5ee4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123100405"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585807"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>使用 PowerShell 配置网络安全组流日志
 
@@ -33,9 +29,9 @@ ms.locfileid: "123100405"
 可在[此处](/powershell/module/az.network/#network-watcher)找到各种版本的 AzPowerShell 的所有 NSG 流日志的详细规范
 
 > [!NOTE]
-> - 本文档中使用的 [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) 和 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) 命令需要在网络观察程序的资源组中具有额外的“读取者”权限。 此外，这些是旧命令，可能很快就会弃用。
+> - 本文档中使用的 [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) 和 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) 命令需要在网络观察程序的资源组中具有额外的“读取者”权限。 另外，这些命令是旧的，可能很快就会弃用。
 > - 建议改用新的 [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) 和 [Set-AzNetworkWatcherFlowLog](/powershell/module/az.network/set-aznetworkwatcherflowlog) 命令。
-> - 新的 [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) 命令提供四种变体，便于灵活使用。 如果使用此命令的“Location <String>”变体，则需要在网络观察程序的资源组中具有额外的“读取者”权限。 对于其他变体，无需具有额外权限。 
+> - 新的 [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) 命令提供四种变体，便于灵活使用。 如果使用此命令的“Location \<String\>”变体，则需要在网络观察程序的资源组中具有额外的“读取者”权限。 对于其他变体，无需具有额外权限。 
 
 ## <a name="register-insights-provider"></a>注册 Insights 提供程序
 

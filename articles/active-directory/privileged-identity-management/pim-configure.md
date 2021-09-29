@@ -14,12 +14,12 @@ ms.date: 06/25/2021
 ms.author: curtand
 ms.custom: pim,azuread-video-2020,contperf-fy21q3-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697dd72ba72924a14501a1410255a817f50f6789
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d24f4806274889be1743e19b6b10c909b4a0057d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738709"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707593"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -149,7 +149,7 @@ Azure Active Directory (Azure AD) 来宾用户是 Azure AD 中企业对企业 (B
 
 使用 B2B 协作时，可以将外部用户作为来宾邀请到你的组织。 可以将来宾作为你的组织中的用户进行管理，但来宾必须在其本组织中而不是在你的 Azure AD 组织中进行身份验证。 这意味着，如果来宾不再有权访问其本组织，他们也将失去对你的组织的访问权限。 例如，如果来宾离开其组织，则你无需执行任何操作，他们会自动失去对你在 Azure AD 中与他们共享的任何资源的访问权限。 有关 B2B 协作的详细信息，请参阅[什么是 Azure Active Directory B2B 中的来宾用户访问权限？](../external-identities/what-is-b2b.md)。
 
-![显示了如何在来宾用户的本目录中对其进行身份验证的关系图](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![显示了如何在来宾用户的本目录中对其进行身份验证的关系图](./media/pim-configure/b2b-external-user.png)
 
 ## <a name="next-steps"></a>后续步骤
 

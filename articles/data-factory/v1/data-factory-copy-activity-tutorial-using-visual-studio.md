@@ -3,17 +3,18 @@ title: '教程：使用 Visual Studio 创建包含复制活动的管道 '
 description: 在本教程中，通过使用 Visual Studio 创建带有复制活动的 Azure 数据工厂管道。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.custom: vs-azure, devx-track-azurepowershell
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 82025728f354b5522517e210071aeb4c7528d7cf
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5bd8bef3b45ef634577de90656c9452c44399386
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677711"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629514"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教程：使用 Visual Studio 创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -78,11 +79,11 @@ ms.locfileid: "110677711"
 
 2. 在“新建项目”对话框中，选择“DataFactory”模板，并单击“空数据工厂项目”。    
 
-    ![“新建项目”对话框](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png" alt-text="“新建项目”对话框":::
 
 3. 指定项目名称、解决方案位置以及解决方案名称，并单击“确定”。
 
-    ![解决方案资源管理器](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png" alt-text="解决方案资源管理器":::    
 
 ## <a name="create-linked-services"></a>创建链接服务
 
@@ -102,11 +103,11 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 从 Blo
 
 2. 在“添加新项”对话框中，从列表中选择“Azure 存储链接服务”，并单击“添加”。   
 
-    ![新建链接服务](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-linked-service-dialog.png)
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/new-linked-service-dialog.png" alt-text="新建链接服务":::
 
 3. 将 `<accountname>` 和 `<accountkey>`* 替换为 Azure 存储帐户及其密钥。 
 
-    ![Azure 存储链接服务](./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png)
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png" alt-text="Azure 存储链接服务":::
 
 4. 保存 **AzureStorageLinkedService1.json** 文件。
 
@@ -308,7 +309,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 2. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，并单击“登录”。 
 3. 应该会看到以下对话框：
    
-   ![“发布”对话框](./media/data-factory-copy-activity-tutorial-using-visual-studio/publish.png)
+   :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/publish.png" alt-text="“发布”对话框":::
 4. 在“配置数据工厂”页，请按以下步骤操作： 
    
    1. 选择“新建数据工厂”  选项。
@@ -328,16 +329,16 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
    5. 为数据工厂选择 **区域** 。 下拉列表中只显示数据工厂服务支持的区域。
    6. 单击“下一步”切换到“发布项”页。 
       
-       ![配置数据工厂页](media/data-factory-copy-activity-tutorial-using-visual-studio/configure-data-factory-page.png)   
+       :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/configure-data-factory-page.png" alt-text="配置数据工厂页":::   
 5. 在“发布项”页上，确保已选择所有数据工厂实体，并单击“下一步”切换到“摘要”页。  
    
-   ![发布项页](media/data-factory-copy-activity-tutorial-using-visual-studio/publish-items-page.png)     
+   :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/publish-items-page.png" alt-text="发布项页":::     
 6. 查看摘要，单击“下一步”，启动部署过程并查看“部署状态”。 
    
-   ![发布摘要页](media/data-factory-copy-activity-tutorial-using-visual-studio/publish-summary-page.png)
+   :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/publish-summary-page.png" alt-text="发布摘要页":::
 7. 在“部署状态”  页上，应看到部署过程的状态。 部署完成后，单击“完成”。
  
-   ![部署状态页](media/data-factory-copy-activity-tutorial-using-visual-studio/deployment-status.png)
+   :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/deployment-status.png" alt-text="部署状态页":::
 
 请注意以下几点： 
 
@@ -365,13 +366,13 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单上单击“更多服务”，并单击“数据工厂”。 
 
-  ![浏览数据工厂](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
+  :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png" alt-text="浏览数据工厂":::
 3. 开始键入数据工厂的名称。
 
-  ![数据工厂的名称](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
+  :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png" alt-text="数据工厂的名称"::: 
 4. 单击结果列表中的数据工厂，查看数据工厂的主页。
 
-  ![数据工厂主页](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
+  :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png" alt-text="数据工厂主页":::
 5. 按照[监视数据集和管道](data-factory-monitor-manage-pipelines.md)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。 
 
 ## <a name="summary"></a>总结
@@ -394,13 +395,13 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 1. 在 **Visual Studio** 中，在菜单上单击“视图”，并单击“服务器资源管理器”。 
 2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。  如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的 **帐户**，并单击“继续”。  输入 **密码**，并单击“登录”。 Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。
 
-    ![服务器资源管理器](./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png)
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png" alt-text="服务器资源管理器":::
 
 ## <a name="create-a-visual-studio-project-for-an-existing-data-factory"></a>为现有的数据工厂创建 Visual Studio 项目
 
 - 在服务器资源管理器中右键单击数据工厂，并选择“将数据工厂导出到新项目”，创建基于现有数据工厂的 Visual Studio 项目。
 
-  ![将数据工厂导出为 VS 项目](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
+  :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png" alt-text="将数据工厂导出为 VS 项目":::  
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>更新适用于 Visual Studio 的数据工厂工具
 若要更新适用于 Visual Studio 的 Azure 数据工厂工具，请执行以下步骤：
@@ -433,7 +434,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，并单击“添加项”。 
 2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的 **名称**，并单击“添加”。  
 
-    ![添加配置文件](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png" alt-text="添加配置文件":::
 3. 使用以下格式添加配置参数及其值：
 
   ```json
@@ -511,7 +512,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 2. 选择现有的数据工厂，或者在“配置数据工厂”页上指定用于创建数据工厂的值，并单击“下一步”。    
 3. 在“发布项”页上，可以看到一个下拉列表，其中包含“选择部署配置”字段的可用配置。 
 
-    ![选择配置文件](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png" alt-text="选择配置文件":::
 4. 选择要使用的 **配置文件**，并单击“下一步”。
 5. 确认在“摘要”页上显示了 JSON 文件的名称，并单击“下一步”。 
 6. 部署操作完成后，请单击“完成”。

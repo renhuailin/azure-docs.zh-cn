@@ -1,24 +1,19 @@
 ---
 title: Azure 流量分析架构 | Microsoft Docs
 description: 了解用于分析 Azure 网络安全组流日志的流量分析的架构。
-services: network-watcher
-documentationcenter: na
 author: vinynigam
 manager: agummadi
-editor: ''
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: fb32ff13df7329e6e78095b8ee28639312cc62b5
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 2ec8f1df778a95b571f89f3213c2cc71163de955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113216236"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597220"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
 
@@ -143,7 +138,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | 与流中的源 IP 关联的本地网络网关 |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | 与流中的目标 IP 关联的本地网络网关 |
 | ConnectionType_s | 可能的值为 VNetPeering、VpnGateway 和 ExpressRoute |    连接类型 |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 连接名称。 对于流类型 P2S，此项的格式将设为 <gateway name>_<VPN Client IP> |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 连接名称。 对于流类型 P2S，此项的格式将设为 \<gateway name\>_\<VPN Client IP\> |
 | ConnectingVNets_s | 虚拟网络名称的空格分隔列表 | 对于中心辐射型拓扑，此处将会填充中心虚拟网络 |
 | Country_s | 双字母国家/地区代码 (ISO 3166-1 alpha-2) | 为流类型 ExternalPublic 填充此字段。 PublicIPs_s 字段中的所有 IP 地址将共享同一个国家/地区代码 |
 | AzureRegion_s | Azure 区域位置 | 为流类型 AzurePublic 填充此字段。 PublicIPs_s 字段中的所有 IP 地址将共享该 Azure 区域 |

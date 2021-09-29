@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/16/2021
 ms.author: phanir
 ms.reviewer: jrasnick
-ms.openlocfilehash: a13231ea890476e5fc52cf563c250ef0124f940b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6ad246eefb86c31291d2a9745c6f77e276701744
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539688"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214078"
 ---
 # <a name="move-an-azure-synapse-analytics-workspace-from-one-region-to-another"></a>将 Azure Synapse Analytics 工作区从一个区域移到另一个区域
 
@@ -364,7 +364,7 @@ Select-Object Id,Command,JobStateInfo,PSBeginTime,PSEndTime,PSJobTypeName,Error 
 
 ## <a name="step-6-deploy-artifacts-and-pipelines-by-using-cicd"></a>步骤 6：使用 CI/CD 部署项目和管道 
 
- 若要了解如何将 Azure Synapse 工作区与 Azure DevOps 或 GitHub 集成，以及如何将项目部署到目标区域工作区，请按照 [Azure Synapse 工作区的持续集成和持续交付 (CI/CD)](cicd/continuous-integration-deployment.md) 中的步骤操作。 
+ 若要了解如何将 Azure Synapse 工作区与 Azure DevOps 或 GitHub 集成，以及如何将项目部署到目标区域工作区，请按照 [Azure Synapse 工作区的持续集成和持续交付 (CI/CD)](cicd/continuous-integration-delivery.md) 中的步骤操作。 
 
 将工作区与 Azure DevOps 集成后，你会发现一个名为 workspace_publish 的分支。 此分支包含工作区模板，模板中包括笔记本、SQL 脚本、数据集、链接服务、管道、触发器和 Spark 作业定义等项目的定义。
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 05/25/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 012104c100a66d11f75234b7b9a998d0bd99f29b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c853812cdb869d706f238c346af8e06caecabf41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110481960"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652332"
 ---
 # <a name="microsoft-edge-locations-by-abbreviation-for-azure-front-door-standardpremium"></a>按 Azure Front Door 标准版/高级版的缩写列出的 Microsoft 边缘位置
 > [!div class="op_single_selector"]
@@ -31,5 +31,5 @@ ms.locfileid: "110481960"
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[按 metro 列出的 Azure Front Door 边缘位置](edge-locations.md)。
-* 若要获取 Azure Front Door 的最新边缘节点列表，请参阅[边缘节点列表 - REST API](/rest/api/cdn/cdn/edgenodes/list)。
+* 若要获取 Azure Front Door 的最新边缘节点列表，请参阅[边缘节点列表 - REST API](/rest/api/cdn/edge-nodes/list)。
 * 了解如何[创建 Azure Front Door 标准版/高级版配置文件](create-front-door-portal.md)。

@@ -3,12 +3,12 @@ title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.openlocfilehash: 4f15fea365fc242f3c7253a39b6a877dd672deb1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6581a4c9a61fb3de1e04119b13bc83a4b67ce92d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453282"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707724"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”的列指示该资源类型是否将标记传递给成本报表。 可以通过[成本管理成本分析](../../cost-management-billing/costs/group-filter.md)和 [Azure 账单发票和每日使用情况数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的标记查看成本。
@@ -911,10 +911,10 @@ ms.locfileid: "114453282"
 > | diskEncryptionSets | 是 | 是 |
 > | disks | 是 | 是 |
 > | galleries | 是 | 是 |
-> | galleries / applications | 否 | 否 |
-> | galleries / applications / versions | 否 | 否 |
-> | galleries/images | 否 | 否 |
-> | galleries/images/versions | 否 | 否 |
+> | galleries / applications | 是 | 否 |
+> | galleries / applications / versions | 是 | 否 |
+> | galleries/images | 是 | 否 |
+> | galleries/images/versions | 是 | 否 |
 > | hostGroups | 是 | 是 |
 > | hostGroups / hosts | 是 | 是 |
 > | images | 是 | 是 |

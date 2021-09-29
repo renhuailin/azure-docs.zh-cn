@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 8dc52348967963cbe5fd23b2ce01224c99e913e7
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 354a5302b7bee6d8ef02eb6ee5e4625e6b0bca97
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603027"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833571"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -107,7 +107,7 @@ ms.locfileid: "114603027"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -190,7 +190,7 @@ ms.locfileid: "114603027"
 
 * 在 Azure 门户中单击“测试此应用程序”后，系统应会自动登录到为其设置 SSO 的 Greenhouse 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Greenhouse”磁贴时，如果是在 SP 模式下进行配置，系统会重定向到应用程序登录页启动登录流；如果是在 IDP 模式下进行配置，则应会自动登录到为其设置 SSO 的 Greenhouse。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Greenhouse”磁贴时，如果是在 SP 模式下进行配置，系统会重定向到应用程序登录页启动登录流；如果是在 IDP 模式下进行配置，则应会自动登录到为其设置 SSO 的 Greenhouse。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 

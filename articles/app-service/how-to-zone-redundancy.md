@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/01/2021
 ms.author: jordanselig
 ms.custom: references_regions
-ms.openlocfilehash: b9453783ac0d3e6ecfd3785a134c31393fc15d4a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1fb6959ab6e47ad631ea3cac208a3dc52ca41e41
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479465"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832716"
 ---
 # <a name="availability-zone-support-for-public-multi-tenant-app-service"></a>面向公共多租户应用服务的可用性区域支持
 
@@ -64,7 +64,7 @@ Microsoft Azure 应用服务可部署到[可用性区域 (AZ)](../availability-z
 
 目前，需要使用 ARM 模板来创建区域冗余应用服务。 通过 ARM 模板创建后，可通过 Azure 门户和 CLI 工具查看应用服务计划并与之进行交互。 仅在首次创建应用服务计划时才需要 ARM 模板。
 
-若要指定区域冗余应用服务，只需在 ARM 模板中添加新的 zoneRedundant 属性（必需），并选择性地更改 [Microsoft.Web/serverfarms](https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms?tabs=json) 资源上的应用服务计划实例计数（容量）。 如果未指定容量，则平台默认为 3。 zoneRedundant 属性应设置为 true，容量应根据工作负载要求设置，但不应小于 3 。 选择容量时，一个好的做法是确保应用程序有足够的实例，这样即使失去某个实例区域，也剩有足够的容量来处理预期负载。
+若要指定区域冗余应用服务，只需在 ARM 模板中添加新的 zoneRedundant 属性（必需），并选择性地更改 [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms?tabs=json) 资源上的应用服务计划实例计数（容量）。 如果未指定容量，则平台默认为 3。 zoneRedundant 属性应设置为 true，容量应根据工作负载要求设置，但不应小于 3 。 选择容量时，一个好的做法是确保应用程序有足够的实例，这样即使失去某个实例区域，也剩有足够的容量来处理预期负载。
 
 > [!TIP]
 > 若要确定实例容量，可使用以下计算：

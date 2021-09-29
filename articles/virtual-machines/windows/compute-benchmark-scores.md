@@ -3,18 +3,18 @@ title: Azure Windows VM 的计算基准测试分数
 description: 比较运行 Windows Server 的 Azure VM 的 SPECint 计算基准测试分数。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: benchmark
+ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: f83a2a8aab4f1daf9fe4317491b2ed3591ec227d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a91aaa470904a17ee2fbf1ad3af2ec8482137003
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689707"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215408"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
 
@@ -375,7 +375,7 @@ CoreMark 是一个开源工具，可以从 [GitHub](https://github.com/eembc/cor
 
 若要生成并运行基准，请键入：
 
-```> make```
+`> make`
 
 文件 ```run1.log``` 和 ```run2.log``` 中提供了完整的结果。 
 ```run1.log``` 包含 CoreMark 结果。 这些是包含性能参数的基准测试结果。
@@ -385,7 +385,7 @@ CoreMark 是一个开源工具，可以从 [GitHub](https://github.com/eembc/cor
 
 默认情况下，基准将在 10-100 秒之间运行。 若要替代，请使用 ```ITERATIONS=N```
 
-```% make ITERATIONS=10```
+`% make ITERATIONS=10`
 
 上述标志将对基准运行 10 次迭代。 
 只有当基准运行至少 10 秒钟后，报告的结果才有效！
@@ -394,7 +394,7 @@ CoreMark 是一个开源工具，可以从 [GitHub](https://github.com/eembc/cor
 
 使用 ```XCFLAGS=-DMULTITHREAD=N```，其中 N 为并行运行的线程数。 有几种实现可在多个上下文中执行。
 
-```% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD"```
+`% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD"`
 
 上述语句将编译用于在 4 核上执行的基准。
 

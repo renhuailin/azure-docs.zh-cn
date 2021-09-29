@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: f0242840e856a1ab78f6f6c5b89db3794ee206b3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e5a1569f0f1c2d8eea2c13f458c0f3a09a666f04
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726885"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216662"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>使用 Azure 数据工厂将数据从本地 Hadoop 群集迁移到 Azure 存储 
 
@@ -66,7 +66,7 @@ DistCp 使用 MapReduce 来影响数据分发、错误处理和恢复以及报�
 
 此图描绘了如何通过公共 Internet 迁移数据：
 
-![显示通过公用网络迁移数据的解决方案体系结构示意图](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-public-network.png)
+:::image type="content" source="media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-public-network.png" alt-text="显示通过公用网络迁移数据的解决方案体系结构示意图":::
 
 - 在此体系结构中，将通过公共 Internet 使用 HTTPS 安全传输数据。 
 - 我们建议在公用网络环境中使用数据工厂 DistCp 模式。 可以利用现有的强大群集来实现最佳复制吞吐量。 此外，还能受益于数据工厂提供的灵活计划功能和统一的监视体验。
@@ -75,7 +75,7 @@ DistCp 使用 MapReduce 来影响数据分发、错误处理和恢复以及报�
 
 此图描绘了如何通过专用链路迁移数据： 
 
-![显示通过专用网络迁移数据的解决方案体系结构示意图](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-private-network.png)
+:::image type="content" source="media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-private-network.png" alt-text="显示通过专用网络迁移数据的解决方案体系结构示意图":::
 
 - 在此体系结构中，数据迁移是通过 Azure ExpressRoute 使用专用对等互连链路完成的。 数据永远不会遍历公共 Internet。
 - DistCp 工具不支持使用 Azure 存储虚拟网络终结点的 ExpressRoute 专用对等互连。 我们建议通过集成运行时使用数据工厂的本机功能来迁移数据。
@@ -93,7 +93,7 @@ DistCp 使用 MapReduce 来影响数据分发、错误处理和恢复以及报�
 - 若要对 HDFS 进行身份验证，可以使用 [Windows (Kerberos) 或“匿名”](./connector-hdfs.md#linked-service-properties)。 
 - 支持使用多种身份验证类型连接到 Azure Blob 存储。  我们强烈建议使用 [Azure 资源的托管标识](./connector-azure-blob-storage.md#managed-identity)。 托管标识构建在 Azure Active Directory (Azure AD) 中自动管理的数据工厂标识基础之上，使你无需在链接服务定义中提供凭据，即可配置管道。 或者，可以使用[服务主体](./connector-azure-blob-storage.md#service-principal-authentication)、[共享访问签名](./connector-azure-blob-storage.md#shared-access-signature-authentication)或[存储帐户密钥](./connector-azure-blob-storage.md#account-key-authentication)对 Blob 存储进行身份验证。 
 - 也支持使用多种身份验证类型连接到 Data Lake Storage Gen2。  我们强烈建议使用 [Azure 资源的托管标识](./connector-azure-data-lake-storage.md#managed-identity)，不过，也可以使用[服务主体](./connector-azure-data-lake-storage.md#service-principal-authentication)或[存储帐户密钥](./connector-azure-data-lake-storage.md#account-key-authentication)。 
-- 如果不使用 Azure 资源的托管标识，则我们强烈建议[在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)，以便更轻松地集中管理和轮换密钥，而无需修改数据工厂链接服务。 这也是 [CI/CD 最佳实践](./continuous-integration-deployment.md#best-practices-for-cicd)。 
+- 如果不使用 Azure 资源的托管标识，则我们强烈建议[在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)，以便更轻松地集中管理和轮换密钥，而无需修改数据工厂链接服务。 这也是 [CI/CD 最佳实践](./continuous-integration-delivery.md#best-practices-for-cicd)。 
 
 ### <a name="initial-snapshot-data-migration"></a>初始快照数据迁移 
 
@@ -117,7 +117,7 @@ DistCp 使用 MapReduce 来影响数据分发、错误处理和恢复以及报�
 
 假设以下管道可将数据从 HDFS 迁移到 Azure Blob 存储： 
 
-![显示定价管道的示意图](media/data-migration-guidance-hdfs-to-azure-storage/pricing-pipeline.png)
+:::image type="content" source="media/data-migration-guidance-hdfs-to-azure-storage/pricing-pipeline.png" alt-text="显示定价管道的示意图":::
 
 假设提供了以下信息： 
 
@@ -130,7 +130,7 @@ DistCp 使用 MapReduce 来影响数据分发、错误处理和恢复以及报�
 
 下面是根据上述假设估算出的价格： 
 
-![显示定价计算结果的表格](media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png)
+:::image type="content" source="media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png" alt-text="显示定价计算结果的表格":::
 
 > [!NOTE]
 > 这是一个虚构的定价示例。 实际价格取决于环境中的实际吞吐量。

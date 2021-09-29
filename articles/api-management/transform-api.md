@@ -1,18 +1,18 @@
 ---
 title: 教程 - 在 Azure API 管理中转换和保护 API | Microsoft Docs
 description: 在本教程中，你将了解如何通过转换和限制（速率限制）策略保护 API 管理中的 API。
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.author: apimpm
-ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: be58732e3279b7bfaccee76a8d5bc9d09ea664ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010225"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656391"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>教程：转换和保护 API
 

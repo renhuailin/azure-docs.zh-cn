@@ -8,23 +8,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 373c69d0d8e966f1b55f680ef58ff26826a14de5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 5b65a349ed317890b45290f847a173448d804c9f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027901"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573966"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
+::: zone pivot="b2c-user-flow"
+
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+::: zone-end
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,7 +64,8 @@ ms.locfileid: "107027901"
 ## <a name="configure-weibo-as-an-identity-provider"></a>将“Weibo”配置为标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 1. 选择“标识提供者”，然后选择“微博(预览)”。
 1. 输入“名称”。 例如，Weibo。
@@ -90,15 +95,16 @@ ms.locfileid: "107027901"
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-4. 在“概述”页上选择“标识体验框架”。
-5. 选择“策略密钥”，然后选择“添加”。
-6. 对于“选项”，请选择 `Manual`。
-7. 输入策略密钥的 **名称**。 例如，`WeiboSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-8. 在“机密”中，输入前面记录的应用程序机密。
-9. 在“密钥用法”处选择 `Signature`。
-10. 单击“创建”。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 在“概述”页上选择“标识体验框架”。
+1. 选择“策略密钥”，然后选择“添加”。
+1. 对于“选项”，请选择 `Manual`。
+1. 输入策略密钥的 **名称**。 例如，`WeiboSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 在“机密”中，输入前面记录的应用程序机密。
+1. 在“密钥用法”处选择 `Signature`。
+1. 单击“创建”。
 
 ## <a name="configure-weibo-as-an-identity-provider"></a>将“Weibo”配置为标识提供者
 

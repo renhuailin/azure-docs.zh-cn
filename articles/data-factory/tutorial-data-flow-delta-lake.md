@@ -8,12 +8,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 06/04/2021
-ms.openlocfilehash: dff3972bfc9da83312a1fdf4fc7c6169f932c410
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 246b1988a7a632e9c3b332f7adbdf908f1084457
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638537"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798249"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>使用映射数据流转换 delta lake 中的数据
 
@@ -56,24 +56,24 @@ ms.locfileid: "122638537"
 
 1. 在主页上，选择“协调”。
 
-   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="显示 ADF 主页的屏幕截图。":::
 
 1. 在管道的“常规”选项卡中，输入“DeltaLake”作为管道的名称。 
 1. 在“活动”窗格中，展开“移动和转换”可折叠部分 。 将“数据流”活动从该窗格拖放到管道画布上。
 
-    ![显示管道画布的屏幕截图，你可以在其中放置数据流活动。](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="显示管道画布的屏幕截图，你可以在其中放置数据流活动。":::
 1. 在“添加数据流”弹出窗口中，选择“创建新数据流”，然后将数据流命名为“DeltaLake”。   完成操作后，请单击“完成”。
 
-    ![显示在创建新数据流时对数据流进行命名的位置的屏幕截图。](media/tutorial-data-flow/activity2.png)
+    :::image type="content" source="media/tutorial-data-flow/activity2.png" alt-text="显示在创建新数据流时对数据流进行命名的位置的屏幕截图。":::
 1. 在管道画布的顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
-    ![屏幕截图显示了“数据流调试”滑块的位置。](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="屏幕截图显示了“数据流调试”滑块的位置。":::
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>在数据流画布中构建转换逻辑
+## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>在数据流画布中构建转换逻辑
 
 在本教程中，你将生成两个数据流。 第一个数据流是一个简单的源到接收器数据流，用来基于上面的电影 CSV 文件生成新的 Delta Lake。 最后，你将创建下面的流设计来更新 Delta Lake 中的数据。
 
-![最终流](media/data-flow/data-flow-tutorial-6.png &quot;最终流")
+:::image type="content" source="media/data-flow/data-flow-tutorial-6.png" alt-text="最终流":::
 
 ### <a name="tutorial-objectives"></a>教程目标
 
@@ -95,7 +95,7 @@ ms.locfileid: "122638537"
 1. 添加接收器转换
 1. Delta 是一个内联数据集类型。 需要指向你的 ADLS Gen2 存储帐户。
    
-   ![内联数据集](media/data-flow/data-flow-tutorial-5.png "内联数据集")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-5.png" alt-text="内联数据集":::
 
 1. 在你的存储容器中选择你希望 ADF 在其中创建 Delta Lake 的文件夹名称
 1. 返回到管道设计器，然后单击“调试”以在画布上仅有此数据流活动的情况在调试模式下执行管道。 这会在 ADLS Gen2 中生成新的 Delta Lake。
@@ -107,16 +107,16 @@ ms.locfileid: "122638537"
 1. 在同一派生列中，通过获取现有年份为 2021 年创建电影，并将年份更改为 2021。 让我们选择 1960。
 1. 这是三个派生列的外观
 
-   ![派生列](media/data-flow/data-flow-tutorial-2.png "派生列")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-2.png" alt-text="派生列":::
    
 1. ```Update, insert, delete, and upsert``` 策略是在“更改行”转换中创建的。 在你的派生列后添加一个“更改行”转换。
 1. 你的“更改行”策略应如下所示。
 
-   ![更改行](media/data-flow/data-flow-tutorial-3.png "更改行")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-3.png" alt-text="更改行":::
    
 1. 现在，你已为每个“更改行”类型设置了正确的策略，请检查是否已在接收器转换上设置了正确的更新规则
 
-   ![接收器](media/data-flow/data-flow-tutorial-4.png "接收器")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-4.png" alt-text="接收器":::
    
 1. 此处，我们使用你的 ADLS Gen2 Data Lake 的 Delta Lake 接收器，并允许插入、更新和删除。 
 1. 请注意，键列是由“电影”主键列和“年份”列构成的一个组合键。 这是因为我们通过复制 1960 年的行创建了虚构的 2021 年电影。 此组合键提供了唯一性，从而避免了在查找现有行时出现冲突。

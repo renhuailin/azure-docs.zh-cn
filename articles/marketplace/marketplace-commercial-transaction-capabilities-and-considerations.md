@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: f75d3872d0125e210edcd33ca85978901468bfe8
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 77ec7a7dad4b215ae22bf3766172f1e92e932593
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322383"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736195"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
@@ -75,7 +75,7 @@ ms.locfileid: "122322383"
 如果希望客户在其自己的云基础结构中部署、管理和运行打包应用或服务（作为 ARM 模板中的 VM 映像和/或其他 Azure 服务），则虚拟机和 Azure 应用程序产品/服务非常合适。
 
 [![显示用于确定产品/服务类型和定价计划的流程图。](media/commercial-marketplace-plans/offer-type-and-pricing-plan-flowchart.png)](media/commercial-marketplace-plans/offer-type-and-pricing-plan-flowchart.png#lightbox)
-&nbsp;&nbsp;&nbsp;<sup>(1)</sup> 联系 [Microsoft Office Hours](https://microsoftcloudpartner.eventbuilder.com/MarketplaceDeveloperOfficeHours) 或[支持](/azure/marketplace/support)。<br>
+&nbsp;&nbsp;&nbsp;<sup>(1)</sup> 联系 [Microsoft Office Hours](https://microsoftcloudpartner.eventbuilder.com/MarketplaceDeveloperOfficeHours) 或[支持](./support.md)。<br>
 &nbsp;&nbsp;&nbsp;<sup>(2)</sup> VM 产品/服务映像可包含在 Azure 应用产品/服务中，以提高定价灵活性。<br>
 &nbsp;&nbsp;&nbsp;<sup>(3)</sup> 客户支付基础结构成本，因为对于 VM 和 Azure 应用产品/服务，Azure 服务部署在客户租户上。
 
@@ -207,4 +207,4 @@ Microsoft 作为代理收集的所有软件许可费用将收取 3% 的应用商
 
 - 查看按在线商店划分的发布模式，例如，解决方案如何映射到产品/服务类型和配置。
 - [发布指南（按产品/服务类型）](publisher-guide-by-offer-type.md)。
-- [商业市场产品/服务计划和定价](/azure/marketplace/plans-pricing)
+- [商业市场产品/服务计划和定价](./plans-pricing.md)

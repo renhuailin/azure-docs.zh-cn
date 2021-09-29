@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: f1f8e47235cff2e23e45dcba535caf92ca6da0e4
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: c0bca11a8628d5918a5167d57679fe21b068f4fe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112199567"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830599"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BIC Cloud Design 的集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "112199567"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
+1. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -124,7 +124,7 @@ ms.locfileid: "112199567"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -156,7 +156,7 @@ ms.locfileid: "112199567"
 
 * 直接转到 BIC Cloud Design 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 BIC Cloud Design 磁贴时，将会重定向到 BIC Cloud Design 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 BIC Cloud Design 磁贴时，将会重定向到 BIC Cloud Design 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

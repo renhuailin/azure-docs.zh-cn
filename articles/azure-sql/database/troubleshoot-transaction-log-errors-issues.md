@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 07/23/2021
-ms.openlocfilehash: 0b9e47d23968c29a0c69a2da198bcf8d183f1bb0
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 2bddb630cd2dad83992cfd740fb44b127a770c51
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675099"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672621"
 ---
 # <a name="troubleshooting-transaction-log-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>排查 Azure SQL 数据库和 Azure SQL 托管实例的事务日志错误
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,12 +50,12 @@ SELECT [name], log_reuse_wait_desc FROM sys.databases;
 
 | log_reuse_wait_desc | 诊断 | 要求响应 |
 |--|--|--|
-| **NOTHING** | 典型状态。 没有任何内容阻止日志截断。 | 否。 |
+| 无 | 典型状态。 没有任何内容阻止日志截断。 | 否。 |
 | **CHECKPOINT** | 日志截断需要检查点。 罕见。 | 除非持续，否则无需响应。 如果持续，请向 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。 | 
-| **LOG BACKUP** | 日志备份正在进行。 | 除非持续，否则无需响应。 如果持续，请向 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。 | 
-| **ACTIVE BACKUP OR RESTORE** | 数据库备份正在进行。 | 除非持续，否则无需响应。 如果持续，请向 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。 | 
-| **ACTIVE TRANSACTION** | 正在进行的事务在阻止日志截断。 | 由于活动事务和/或未提交的事务，无法截断日志文件。 请参阅下一节。| 
-| **REPLICATION** | 在 Azure SQL 数据库中，可能由于[更改数据捕获 (CDC)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) 功能。<BR>在 Azure SQL 托管实例中，由于[复制](../managed-instance/replication-transactional-overview.md)或 CDC。 | 在 Azure SQL 数据库中查询 [sys.dm_cdc_errors](/sql/relational-databases/system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors) 并解析错误。 如果错误无法解析，请向 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。<BR>在 Azure SQL 托管实例中，如果持续，请调查与 CDC 或复制有关的代理。 若要排除 CDC 故障，请在 [msdb.dbo.cdc_jobs](/sql/relational-databases/system-tables/dbo-cdc-jobs-transact-sql) 中查询作业。 如果不存在，请通过 [sys.sp_cdc_add_job](/sql/relational-databases/system-stored-procedures/sys-sp-cdc-add-job-transact-sql) 添加。 对于复制，请考虑[排除事务复制故障](/sql/relational-databases/replication/troubleshoot-tran-repl-errors)。 如果错误无法解析，请向 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。 | 
+| 日志备份 | 日志备份正在进行。 | 除非持续，否则无需响应。 如果持续，请向 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。 | 
+| 主动备份或还原 | 数据库备份正在进行。 | 除非持续，否则无需响应。 如果持续，请向 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。 | 
+| 活动事务 | 正在进行的事务在阻止日志截断。 | 由于活动事务和/或未提交的事务，无法截断日志文件。 请参阅下一节。| 
+| 复制 | 在 Azure SQL 数据库中，很可能是由于[变更数据捕获 (CDC)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) 功能。<BR>在 Azure SQL 托管实例中，由于[复制](../managed-instance/replication-transactional-overview.md)或 CDC。 | 在 Azure SQL 数据库中，查询 [sys.dm_cdc_errors](/sql/relational-databases/system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors) 并解决错误。 如果无法解决，请向 [Azure 支持人员](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。<BR>在 Azure SQL 托管实例中，如果问题持续，请调查涉及 CDC 或复制的代理。 如需对 CDC 进行故障排除，请查询 [msdb.dbo.cdc_jobs](/sql/relational-databases/system-tables/dbo-cdc-jobs-transact-sql) 中的作业。 如果不存在，请通过 [sys.sp_cdc_add_job](/sql/relational-databases/system-stored-procedures/sys-sp-cdc-add-job-transact-sql) 添加。 对于复制，请考虑[排查事务复制问题](/sql/relational-databases/replication/troubleshoot-tran-repl-errors)。 如果无法解决，请向 [Azure 支持人员](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。 | 
 | **AVAILABILITY_REPLICA** | 正在同步到次要副本。 | 除非持续，否则无需响应。 如果持续，请向 [Azure 支持](https://portal.azure.com/#create/Microsoft.Support)提交支持请求。 | 
 
 ### <a name="log-truncation-prevented-by-an-active-transaction"></a>活动事务阻止的日志截断
@@ -130,7 +130,7 @@ OUTER APPLY sys.dm_exec_sql_text (r.sql_handle) AS est;
 
 ### <a name="error-40552-the-session-has-been-terminated-because-of-excessive-transaction-log-space-usage"></a>错误 40552：由于过度使用事务日志空间，已终止会话
 
-``40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.``
+`40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.`
 
 若要解决此问题，请尝试执行以下方法：
 
@@ -154,4 +154,3 @@ OUTER APPLY sys.dm_exec_sql_text (r.sql_handle) AS est;
 - 有关单一数据库的 DTU 资源限制，请参阅[使用 DTU 购买模型的单一数据库的资源限制](resource-limits-dtu-single-databases.md)
 - 有关弹性池的 DTU 资源限制，请参阅[使用 DTU 购买模型的弹性池的资源限制](resource-limits-dtu-elastic-pools.md)
 - 有关 SQL 托管实例的资源限制，请参阅 [SQL 托管实例资源限制](../managed-instance/resource-limits.md)。
-

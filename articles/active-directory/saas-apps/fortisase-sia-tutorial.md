@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 7165fb1c8a3bf608ac1f754168ba40647b954b10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9252424a2091dda5a0a05b2b1bfd890715956b7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104583762"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124747156"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortisase-sia"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FortiSASE SIA 的集成
 
@@ -146,7 +146,7 @@ ms.locfileid: "104583762"
 
 * 直接转到 FortiSASE SIA 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“FortiSASE SIA”磁贴时，将重定向到 FortiSASE SIA 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“FortiSASE SIA”磁贴时，将重定向到 FortiSASE SIA 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

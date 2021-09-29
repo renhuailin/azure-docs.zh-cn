@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 046b25164df92c609196a701d35f989aa397253b
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: af22c23184da4163deb07b2b9d5fa470bd35042d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825089"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760473"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "122825089"
 
 除 `mappings` 外，`translator` 下还支持以下属性：
 
-| 属性            | 描述                                                  | 必须 |
+| 属性            | 说明                                                  | 必须 |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | 从分层源（例如 Cosmos DB、MongoDB 或 REST 连接器）复制数据时适用。<br>若要进行迭代操作，以同一模式从 **数组字段中** 的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
 
@@ -68,7 +68,7 @@ ms.locfileid: "122825089"
 
 2. 映射所需字段并排除/删除其余字段。
 
-![从表格映射到表格](media/copy-activity-schema-and-type-mapping/map-tabular-to-tabular.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-tabular-to-tabular.png" alt-text="从表格映射到表格":::
 
 可以在复制活动有效负载（请参阅 `translator`）中将相同的映射配置为以下内容：
 
@@ -187,11 +187,11 @@ ms.locfileid: "122825089"
 > [!NOTE]
 > 对于标记为集合引用的数组为空且选中此复选框的记录，将跳过整个记录。
 
-![使用 UI 从分层映射到表格](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png" alt-text="使用 UI 从分层映射到表格":::
 
 还可以切换到“高级编辑器”，在这种情况下，可以直接查看和编辑字段的 JSON 路径。 如果选择在此视图中添加新映射，请指定 JSON 路径。
 
-![使用高级编辑器从分层映射到表格](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png" alt-text="使用高级编辑器从分层映射到表格":::
 
 可以在复制活动有效负载（请参阅 `translator`）中将相同的映射配置为以下内容：
 
@@ -453,7 +453,7 @@ ms.locfileid: "122825089"
 
 可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Azure Cosmos DB API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| 属性            | 描述                                                  | 必需 |
+| 属性            | 说明                                                  | 必需 |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是      |
 | schemaMapping       | 键值对的集合，代表 **从源端到接收器端** 的映射关系。<br/>- **键：** 代表源。 对于 **表格源**，指定数据集结构中定义的列名称；对于 **分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于 **表格接收器**，指定数据集结构中定义的列名称；对于 **分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。 | 是      |

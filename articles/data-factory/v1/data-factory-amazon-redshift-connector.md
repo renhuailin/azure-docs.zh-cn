@@ -3,16 +3,17 @@ title: 使用 Azure 数据工厂从 Amazon Redshift 移动数据
 description: 了解如何使用 Azure 数据工厂复制活动从 Amazon Redshift 移动数据。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22370c0df5b11935ae107c065ec66fe98b355cd6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377544"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653336"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -102,7 +103,7 @@ Amazon Redshift [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UN
 
 对于该示例用例，复制活动首先将数据从 Amazon Redshift 卸载到 Amazon S3（如 **redshiftUnloadSettings** 选项中所配置）。 接下来，数据从 Amazon S3 复制到 Azure Blob 存储（如 **stagingSettings** 选项中所指定）。 最后，PolyBase 将数据加载到 Azure Synapse Analytics 中。 所有临时格式均由复制活动处理。
 
-![将工作流从 Amazon Redshift 复制到 Azure Synapse Analytics](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+:::image type="content" source="media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png" alt-text="将工作流从 Amazon Redshift 复制到 Azure Synapse Analytics":::
 
 ```json
 {

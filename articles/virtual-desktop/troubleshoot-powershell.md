@@ -7,12 +7,12 @@ ms.date: 06/05/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: aae1f58eb9fc5e006254f6fdfd620c057e6d6fc3
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 3426ff64bbaf1d3d4801a8fcc069cb1767091181
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762510"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804103"
 ---
 # <a name="azure-virtual-desktop-powershell"></a>Azure 虚拟桌面 PowerShell
 
@@ -81,5 +81,5 @@ New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e4
 - 若要排查 Azure 虚拟桌面客户端连接问题，请参阅 [Azure 虚拟桌面服务连接](troubleshoot-service-connection.md)。
 - 若要排查远程桌面客户端的问题，请参阅[排查远程桌面客户端问题](troubleshoot-client.md)
 - 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-monitor/essentials/activity-log.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

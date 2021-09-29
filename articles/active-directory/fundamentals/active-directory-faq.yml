@@ -14,12 +14,12 @@ metadata:
   ms.author: ajburnle
   ms.custom: it-pro, seodec18
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: a60d4a7f59888c7bd19156e567313a0110651753
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.openlocfilehash: 3eda49497f84c26829a626a243f19c7ac94e3b22
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111954986"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124732638"
 title: 有关 Azure Active Directory 的常见问题
 summary: >
   Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -67,7 +67,7 @@ sections:
   - question: >
       是否可以通过报表来查看我的 Azure AD 用户许可证何时会过期？
     answer: >
-      否。  此功能目前不可用。
+      不是。  此功能目前不可用。
 - name: 混合 Azure AD 入门
   questions:
   - question: >
@@ -97,7 +97,7 @@ sections:
       是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com)，方便用户使用自助服务以及进行应用程序访问。 如果你是 Microsoft 365 客户，可以在 [Office 365 门户](https://portal.office.com)中找到许多相同的功能。
 
 
-      有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
+      有关详细信息，请参阅[访问面板简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
   - question: >
       Azure AD 是否可以帮助我管理本地基础结构？
     answer: "是的。 Azure AD Premium Edition 提供 Azure AD Connect Health。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  \n\n有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](../hybrid/whatis-azure-ad-connect.md)。  \n"
@@ -191,4 +191,4 @@ sections:
       有关详细信息，请参阅[使用 Azure Active Directory 自动预配和取消预配 SaaS 应用程序的用户](../app-provisioning/user-provisioning.md)。
   - question: >
       是否可以通过 Azure AD 设置安全的 LDAP 连接？
-    answer: 否。 Azure AD 不直接支持轻型目录访问协议 (LDAP) 或安全 LDAP。 但是，可以借助 Azure 网络通过正确配置的网络安全组在 Azure AD 租户上启用 Azure AD 域服务 (Azure AD DS) 实例，以实现 LDAP 连接。 有关详细信息，请参阅[为 Azure Active Directory 域服务托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)
+    answer: 不是。 Azure AD 不直接支持轻型目录访问协议 (LDAP) 或安全 LDAP。 但是，可以借助 Azure 网络通过正确配置的网络安全组在 Azure AD 租户上启用 Azure AD 域服务 (Azure AD DS) 实例，以实现 LDAP 连接。 有关详细信息，请参阅[为 Azure Active Directory 域服务托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)

@@ -10,12 +10,12 @@ ms.author: jukullam
 ms.date: 05/05/2021
 ms.custom: github-actions-azure
 ms.reviewer: mathoma
-ms.openlocfilehash: 5a46b5c5f8d8d4d39f93f6a91210e70fa41ea20d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 54ef930cbc194f51fc9460da2aa3e4a553910849
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694647"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632512"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>使用 GitHub Actions 连接到 Azure SQL 数据库
 
@@ -48,8 +48,8 @@ GitHub Actions 工作流是由存储库中 `/.github/workflows/` 路径中的 YA
 将占位符 `server-name` 替换为在 Azure 上托管的 SQL Server 的名称。 将 `subscription-id` 和 `resource-group` 替换为连接到你的 SQL Server 的订阅 ID 和资源组。  
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {server-name} --role contributor \
-                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
+   az ad sp create-for-rbac --name {server-name} --role contributor 
+                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} 
                             --sdk-auth
 ```
 

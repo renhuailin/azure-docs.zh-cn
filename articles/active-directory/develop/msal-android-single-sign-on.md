@@ -3,7 +3,7 @@ title: 如何使用 MSAL 在 Android 上启用跨应用 SSO | Azure
 titleSuffix: Microsoft identity platform
 description: 如何使用适用于 Android 的 Microsoft 身份验证库 (MSAL) 启用跨应用程序的单一登录。
 services: active-directory
-author: hamiltonha
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.author: hahamil
+ms.author: marsma
 ms.reviewer: marsma
-ms.openlocfilehash: 8f5e096f5f313f785311c4a6acbaf87fbfe2a38c
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 877ebb2ab58af978896e4cb61989e12bb5731a7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034381"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628907"
 ---
 # <a name="enable-cross-app-sso-on-android-using-msal"></a>使用 MSAL 在 Android 上启用跨应用 SSO
 

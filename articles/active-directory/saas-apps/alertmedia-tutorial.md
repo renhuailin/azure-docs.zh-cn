@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 847e80822cffe0a1a1daaf7595062b2e7a522ab5
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5ebbb4d41775360f491c4fecfd9ccf26c893b077
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772193"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732472"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>教程：Azure Active Directory 与 AlertMedia 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "122772193"
 * 让用户使用其 Azure AD 帐户自动登录到 AlertMedia。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -149,7 +149,7 @@ ms.locfileid: "122772193"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 AlertMedia。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 AlertMedia 磁贴时，你会自动登录到为其设置了 SSO 的 AlertMedia。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 AlertMedia 磁贴时，你会自动登录到为其设置了 SSO 的 AlertMedia。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

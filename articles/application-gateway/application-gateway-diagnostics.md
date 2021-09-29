@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f9a0385856c053d3c7f73acf130ee48d712d4f5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5b7068d707497ee15689671ea9278d72b149cace
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469812"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837378"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -96,7 +96,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
 
-* **活动日志**：可使用 [Azure 活动日志](../azure-resource-manager/management/view-activity-logs.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
+* **活动日志**：可使用 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
 * **访问日志**：可以使用此日志查看应用程序网关访问模式并分析重要信息。 此日志包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。访问日志每 60 秒收集一次。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
 * **性能日志**：可使用此日志查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。 性能日志仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](application-gateway-metrics.md)。
 * **防火墙日志**：可使用此日志查看通过应用程序网关（配置有 Web 应用程序防火墙）的检测模式或阻止模式记录的请求。 防火墙日志每 60 秒收集一次。 
@@ -153,7 +153,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="activity-log"></a>活动日志
 
-默认情况下，Azure 生成活动日志。 日志可在 Azure 事件日志存储中保留 90 天。 了解有关这些日志的详细信息，请参阅[查看事件和活动日志](../azure-resource-manager/management/view-activity-logs.md)一文。
+默认情况下，Azure 生成活动日志。 日志可在 Azure 事件日志存储中保留 90 天。 了解有关这些日志的详细信息，请参阅[查看事件和活动日志](../azure-monitor/essentials/activity-log.md)一文。
 
 ### <a name="access-log"></a>访问日志
 
@@ -351,7 +351,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 可使用以下任意方法查看和分析活动日志数据：
 
-* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
+* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../azure-monitor/essentials/activity-log.md)一文中详细介绍了每种方法的分步说明。
 * **Power BI**：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用 [Power BI 模板应用](/power-bi/service-template-apps-overview)，可以分析数据。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>查看并分析访问、性能和防火墙日志

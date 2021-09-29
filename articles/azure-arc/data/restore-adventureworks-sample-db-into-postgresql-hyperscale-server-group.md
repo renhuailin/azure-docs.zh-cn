@@ -1,7 +1,6 @@
 ---
 title: 将 AdventureWorks 示例数据库导入到已启用 Azure Arc 的超大规模 PostgreSQL
 description: 将 AdventureWorks 示例数据库还原到已启用 Azure Arc 的超大规模 PostgreSQL
-services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
@@ -9,12 +8,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: f802bb5d681e9e77d258d6071def53d4c5e4958f
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: f3174e0980470f9ad23a53810767d75ba375bd9e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113731083"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650166"
 ---
 # <a name="import-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>将 AdventureWorks 示例数据库导入到已启用 Azure Arc 的超大规模 PostgreSQL
 
@@ -38,7 +37,7 @@ ms.locfileid: "113731083"
 >  容器需要通过 443 的 Internet 连接才能从 GitHub 下载文件。
 
 > [!NOTE]
->  使用超大规模 Postgres 服务器组的协调器节点的 pod 名称。 其名称为 <server group name>c-0（例如 postgres01c-0，其中 c 表示协调器节点）。  如果你不确定 pod 名称，请运行命令 `kubectl get pod`
+>  使用超大规模 Postgres 服务器组的协调器节点的 pod 名称。 其名称为 \<server group name\>c-0（例如 postgres01c-0，其中 c 表示协调器节点）。  如果你不确定 pod 名称，请运行命令 `kubectl get pod`
 
 ```console
 kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres  -- /bin/bash -c "cd /tmp && curl -k -O https://raw.githubusercontent.com/microsoft/azure_arc/main/azure_arc_data_jumpstart/aks/arm_template/postgres_hs/AdventureWorks.sql"

@@ -4,13 +4,13 @@ description: 本文介绍了如何将 Azure Policy 用作事件网格源。 其�
 ms.topic: conceptual
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2021
-ms.openlocfilehash: 7723b618910f52d58204711468b482db85ab502c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/15/2021
+ms.openlocfilehash: 3b5c984ca1374c50a312665c3f5e3bb063ed8feb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734900"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589770"
 ---
 # <a name="azure-policy-as-an-event-grid-source"></a>将 Azure Policy 用作事件网格源
 
@@ -131,10 +131,10 @@ Azure Policy 发出以下事件类型：
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `topic` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| `subject` | string | 更改符合性状态的资源的完全限定 ID，包括资源名称和资源类型。 使用格式 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
+| `subject` | string | 符合性状态更改所针对的资源的完全限定 ID，包括资源名称和资源类型。 使用格式 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | object | Azure Policy 事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
@@ -146,10 +146,10 @@ Azure Policy 发出以下事件类型：
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `source` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| `subject` | string | 更改符合性状态的资源的完全限定 ID，包括资源名称和资源类型。 使用格式 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
+| `subject` | string | 符合性状态更改所针对的资源的完全限定 ID，包括资源名称和资源类型。 使用格式 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | object | Azure Policy 事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
@@ -159,10 +159,10 @@ Azure Policy 发出以下事件类型：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| `timestamp` | string | Azure Policy 扫描资源的时间（采用 UTC）。 若要对事件进行排序，请使用此属性而不是顶级 `eventTime` 或 `time` 属性。 |
+| `timestamp` | string | Azure Policy 扫描资源的时间（采用 UTC）。 若要对事件进行排序，请使用此属性而不是顶层 `eventTime` 或 `time` 属性。 |
 | `policyAssignmentId` | string | 策略分配的资源 ID。 |
 | `policyDefinitionId` | string | 策略定义的资源 ID。 |
-| `policyDefinitionReferenceId` | string | 计划定义中策略定义的引用 ID（如果策略分配用于计划）。 可能为空。 |
+| `policyDefinitionReferenceId` | string | 若策略分配针对某个计划，则为计划定义中的策略定义的引用 ID。 可能为空。 |
 | `complianceState` | string | 与策略分配相关的资源的符合性状态。 |
 | `subscriptionId` | string | 资源的订阅 ID。 |
 | `complianceReasonCode` | string | 符合性原因代码。 可能为空。 |

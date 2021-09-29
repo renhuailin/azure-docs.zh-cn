@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: 9cef8babd11ea6a0ed4ffc965ed52164c9abe43d
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 1671b0c4ba57faa6dc631c50cc273678c72b379b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866983"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730130"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>如何将 Java 应用程序迁移到 Azure VM 和虚拟机规模集上的 JBoss EAP
 
@@ -159,7 +159,7 @@ keytool -list -v -keystore <path to keystore>
 * 连接池配置是什么？
 * 在哪里可以找到 Java Database Connectivity (JDBC) 驱动程序 JAR 文件？
 
-有关详细信息，请参阅 JBoss EAP 文档中的[关于 JBoss EAP 数据源](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3html/configuration_guide/datasource_management)。
+有关详细信息，请参阅 JBoss EAP 文档中的[关于 JBoss EAP 数据源](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/configuration_guide/datasource_management)。
 
 ### <a name="determine-whether-and-how-the-file-system-is-used"></a>确定是否使用以及如何使用文件系统
 

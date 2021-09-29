@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c48b156b8f25d40f88be74287c9955a4012107
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b849d6b208208e42700037179b60b286658bc1fd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739965"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779400"
 ---
 # <a name="what-is-identity-protection"></a>什么是“标识保护”？
 
@@ -25,7 +25,7 @@ ms.locfileid: "121739965"
 
 - [自动检测和修正基于标识的风险](howto-identity-protection-configure-risk-policies.md)。
 - 使用门户中的数据[调查风险](howto-identity-protection-investigate-risk.md)。
-- [将风险检测数据导出到你的 SIEM](../../sentinel/connect-azure-ad-identity-protection.md)。
+- [将风险检测数据导出到你的 SIEM](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)。
 
 标识保护利用 Microsoft 从 Azure AD 组织、Microsoft 帐户中的用户群以及 Xbox 游戏中获得的自身经验来保护用户。 Microsoft 每天分析 6.5 万亿条信号，以识别威胁并保护客户安全。
 
@@ -79,7 +79,7 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 
 来自标识保护的数据可以导出到其他工具，以进行存档以及深入调查和相关性分析。 使用基于 API 的 Microsoft Graph，组织可以收集这些数据，以便在 SIEM 等工具中进一步处理。 若要了解如何访问标识保护 API，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](howto-identity-protection-graph-api.md)一文
 
-要了解如何将标识保护信息与 Azure Sentinel 集成，请参阅[从 Azure AD 标识保护连接数据](../../sentinel/connect-azure-ad-identity-protection.md)一文。
+要了解如何将标识保护信息与 Azure Sentinel 集成，请参阅[从 Azure AD 标识保护连接数据](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)一文。
 
 ## <a name="permissions"></a>权限
 

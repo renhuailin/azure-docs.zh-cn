@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 07/06/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
-ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 77737060d8cfc84d9b433d9be2ea5ad9ba11b0a4
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 292bca70ae9ebb8b864e95d9f5eda125a90a597d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861225"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632968"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
 
@@ -182,6 +182,9 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 * 使用 `User.Read.All` 读取所有用户的完整个人资料
 * 使用 `Directory.ReadWrite.All`
 * 使用 `Groups.Read.All` 读取组织目录中的所有组
+
+> [!NOTE]
+>在对 Microsoft 标识平台的授权、令牌或同意终结点请求中，如果在 scope 参数中省略资源标识符，则假定资源为 Microsoft Graph。 例如，`scope=User.Read` 等效于 `https://graph.microsoft.com/User.Read`。
 
 尽管使用者用户可以授予应用程序对此类数据的访问权限，但组织用户无法授予对同一公司敏感数据集的的访问权限。 如果应用程序向组织用户请求访问以下权限之一，用户会收到错误消息，指出他们未经授权，无法许可应用的权限。
 

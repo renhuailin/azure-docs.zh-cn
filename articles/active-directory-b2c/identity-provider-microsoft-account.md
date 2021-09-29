@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 324e494271287824c09030eaf918cd7f3881bc01
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2e024c9cbe5733b5cf5cfb81946957518b7ea28d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178051"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128574455"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Microsoft 帐户注册与登录
 
@@ -47,7 +47,8 @@ ms.locfileid: "122178051"
 若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 Microsoft 帐户的用户启用登录，你需要在 [Azure 门户](https://portal.azure.com)中创建应用程序。 有关详细信息，请参阅[将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。 如果还没有 Microsoft 帐户，可以在 [https://www.live.com/](https://www.live.com/) 获取。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
+1. 请确保使用的是包含 Azure AD 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“新注册”。
 1. 输入应用程序的 **名称**。 例如，MSAapp1。
@@ -67,7 +68,8 @@ ms.locfileid: "122178051"
 ## <a name="configure-microsoft-as-an-identity-provider"></a>将 Microsoft 配置为标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 1. 选择“标识提供者”，然后选择“Microsoft 帐户”。
 1. 输入“名称”。 例如，MSA。
@@ -112,12 +114,13 @@ ms.locfileid: "122178051"
 现在，已在 Azure AD 租户中创建了应用程序，需要将该应用程序的客户端密码存储在 Azure AD B2C 租户中。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于“选项”，请选择 `Manual`。
-1. 输入策略密钥的 **名称**。 例如，`MSASecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`MSASecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“密码”中，输入在上一部分中记录的客户端密码。
 1. 在“密钥用法”处选择 `Signature`。
 1. 单击“创建”。

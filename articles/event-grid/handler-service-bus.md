@@ -2,13 +2,13 @@
 title: 服务总线队列和主题作为 Azure 事件网格事件的事件处理程序
 description: 介绍如何将服务总线队列和主题用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.openlocfilehash: 3a13662f39410ee6a24644963dbfb3fc1f20d747
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.date: 09/28/2021
+ms.openlocfilehash: 5ea44f33bffa0f7158c8e3d1ae4e1cf0776f294e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416553"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214952"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>服务总线队列和主题作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure 服务总线是其中之一。 

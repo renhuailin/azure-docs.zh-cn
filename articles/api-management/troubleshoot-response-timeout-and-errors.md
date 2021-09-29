@@ -1,17 +1,17 @@
 ---
 title: 排查 API 管理的客户端响应超时和错误问题
 description: 排查 API 管理中的间歇性连接错误和相关延迟问题
-author: vladvino
+author: dlepow
 ms.topic: troubleshooting
 ms.date: 12/04/2020
-ms.author: apimpm
+ms.author: danlep
 ms.service: api-management
-ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7b6f8ed20f1af7b4a6f512b9aa4611936f784fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576527"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623905"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>排查 API 管理的客户端响应超时和错误问题
 

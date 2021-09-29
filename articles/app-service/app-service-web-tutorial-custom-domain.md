@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: 6977bbe8d9854a771e31d2dcc0d49353ff29c4bf
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 35d2a35475c6a22608c28f3ffdf3dc1abc3065a1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591573"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657398"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -141,7 +141,7 @@ ms.locfileid: "111591573"
 
 对于子域（如 `www.contoso.com` 中的 `www`），请根据下表创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
 | CNAME | `<subdomain>`（例如 `www`） | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid.<subdomain>`（例如 `asuid.www`） | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
@@ -152,7 +152,7 @@ ms.locfileid: "111591573"
 
 - 对于根域（如 `contoso.com`），请根据下表创建两条记录：
 
-    | 记录类型 | 主机 | Value | 注释 |
+    | 记录类型 | 主机 | 值 | 注释 |
     | - | - | - |
     | A | `@` | 通过[复制应用的 IP 地址](#3-get-a-domain-verification-id)获得的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
     | TXT | `asuid` | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
@@ -161,16 +161,16 @@ ms.locfileid: "111591573"
     
 - 若要使用 A 记录（而不是建议的 CNAME 记录）映射子域（如 `www.contoso.com`），A 记录和 TXT 记录应改为类似于下表：
 
-    |记录类型|主机|Value|
+    |记录类型|主机|值|
     |--- |--- |--- |
-    |A|<subdomain>（例如，www）|通过复制应用的 IP 地址获得的 IP 地址|
-    |TXT|asuid.<subdomain> （例如，asuid.www）|之前获得的验证 ID|
+    |A|\<subdomain\>（例如，www）|通过复制应用的 IP 地址获得的 IP 地址|
+    |TXT|asuid.\<subdomain\> （例如，asuid.www）|之前获得的验证 ID|
     
 # <a name="wildcard-cname"></a>[通配符 (CNAME)](#tab/wildcard)
 
 对于通配符名称（如 `*.contoso.com` 中的 `*`），请按照下表创建两条记录：
 
-| 记录类型 | 主机 | Value | 注释 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid` | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid` TXT 记录以验证你对自定义域的所有权。 |
@@ -225,7 +225,7 @@ ms.locfileid: "111591573"
 
 3. 键入已配置 A 记录的完全限定的域名，如 `contoso.com`。 
 
-1. 选择“验证”。  此时会显示“添加自定义域”页。
+1. 选择“验证”。 此时会显示“添加自定义域”页。
 
 1. 确保“主机名记录类型”设置为“A 记录 (example.com)”。  选择“添加自定义域”。
 

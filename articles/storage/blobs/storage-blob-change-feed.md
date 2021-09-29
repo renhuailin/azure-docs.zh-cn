@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0d06e40fc33a713904fb171a3a44ba8e977a254f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 67ecaac43885b76071a6bc71268edb811db7cbbd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123467623"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680274"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
 
@@ -41,7 +41,7 @@ ms.locfileid: "123467623"
 更改源是[对象复制](object-replication-overview.md)和[块 blob 的时间点还原](point-in-time-restore-overview.md)的先决条件功能。
 
 > [!NOTE]
-> 更改源提供一个持久且有序的日志模型来记录发生在 Blob 中的更改。 在发生更改后的几分钟内，这些更改就会写入并出现在更改源日志中。 如果应用程序必须以比这快得多的速度对事件做出反应，请考虑改用 [Blob 存储事件](storage-blob-event-overview.md)。 [Blob 存储事件](storage-blob-event-overview.md)提供实时的一次性事件，使 Azure Functions 或应用程序能够快速对 Blob 中发生的更改做出反应。 
+> 更改源提供一个持久且有序的日志模型来记录发生在 Blob 中的更改。 在发生更改后的几分钟内，这些更改就会写入并出现在更改源日志中。 如果应用程序必须以比这快得多的速度对事件做出反应，请考虑改用 [Blob 存储事件](storage-blob-event-overview.md)。 [Blob 存储事件](storage-blob-event-overview.md)提供实时的一次性事件，使 Azure Functions 或应用程序能够快速对 Blob 中发生的更改做出反应。
 
 ## <a name="enable-and-disable-the-change-feed"></a>启用和禁用更改源
 
@@ -99,6 +99,7 @@ ms.locfileid: "123467623"
    ```
 
 ### <a name="template"></a>[模板](#tab/template)
+
 通过 Azure 门户使用 Azure 资源管理器模板在现有存储帐户中启用更改源：
 
 1. 在 Azure 门户中，选择“创建资源”。
@@ -153,7 +154,7 @@ ms.locfileid: "123467623"
 
 更改源的可用小时段在清单文件中描述，该文件指定了该段的更改源文件的路径。 `$blobchangefeed/idx/segments/` 虚拟目录的列表按时间顺序显示这些段。 段的路径描述该段所代表的小时时间范围的开始时间。 可以使用该列表筛选出你感兴趣的日志段。
 
-```text
+```output
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
 ----------------------------------------------------------------------  -----------  -----------  --------  ----------------
 $blobchangefeed/idx/segments/1601/01/01/0000/meta.json                  BlockBlob                      584  application/json
@@ -163,7 +164,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> 启用更改源时，会自动创建 `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json`。 可以放心地忽略此文件。 它是一个始终为空的初始化文件。 
+> 启用更改源时，会自动创建 `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json`。 可以放心地忽略此文件。 它是一个始终为空的初始化文件。
 
 段清单文件 (`meta.json`) 显示该段的更改源文件在 `chunkFilePaths` 属性中的路径。 下面是段清单文件的示例。
 
@@ -196,7 +197,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> 只有在帐户中启用更改源功能之后，才会显示 `$blobchangefeed` 容器。 启用更改源后，必须先等待几分钟，然后才能列出容器中的 Blob。 
+> 只有在帐户中启用更改源功能之后，才会显示 `$blobchangefeed` 容器。 启用更改源后，必须先等待几分钟，然后才能列出容器中的 Blob。
 
 <a id="log-files"></a>
 
@@ -288,7 +289,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="conditions-and-known-issues"></a>条件和已知问题
 
-本部分介绍当前的更改源版本中的已知问题和条件。 
+本部分介绍当前的更改源版本中的已知问题和条件。
 
 - 任何一项更改的更改事件记录可能会在更改源中出现多次。
 - 暂时无法通过对更改源日志文件设置基于时间的保留策略来管理其生存期，且无法删除 Blob。
@@ -299,11 +300,11 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
 | 高级块 blob          | ![否](../media/icons/no-icon.png)|![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。

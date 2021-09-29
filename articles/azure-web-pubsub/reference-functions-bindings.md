@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 68c3ba369af177d2b673dc06d5f7ccafe09c4cf6
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 43fcc70bf88b7e037167a936ebd655b8877b394d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598284"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820361"
 ---
 #  <a name="azure-web-pubsub-trigger-and-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure Web PubSub 触发器和绑定
 
@@ -28,7 +28,7 @@ Web PubSub 是一项 Azure 托管服务，可帮助开发人员轻松构建具�
 [源代码](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/webpubsub/) |
 [包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub) |
 [API 参考文档](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/webpubsub/Microsoft.Azure.WebJobs.Extensions.WebPubSub/api/Microsoft.Azure.WebJobs.Extensions.WebPubSub.netstandard2.0.cs) |
-[产品文档](https://aka.ms/awps/doc) |
+[产品文档](./index.yml) |
 [示例][samples_ref]
 
 ## <a name="add-to-your-functions-app"></a>添加到 Functions 应用
@@ -48,9 +48,9 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 ```
 
 [NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub
-[显式安装扩展]: /azure/azure-functions/functions-bindings-register#explicitly-install-extensions 
+[显式安装扩展]: ../azure-functions/functions-bindings-register.md#explicitly-install-extensions 
 [Azure 工具扩展]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
-[更新扩展]: /azure/azure-functions/functions-bindings-register
+[更新扩展]: ../azure-functions/functions-bindings-register.md
 
 ## <a name="key-concepts"></a>关键概念
 
@@ -66,7 +66,7 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 
 使用函数触发器处理来自 Azure Web PubSub 服务的请求。 
 
-`WebPubSubTrigger` 在需要处理来自服务端的请求时使用。 触发器终结点模式如下所示，该模式应在 Web PubSub 服务端（门户：“设置”->“事件处理程序”->“URL 模板”）进行设置。 在终结点模式中，出于[安全](/azure/azure-functions/security-concepts#system-key)原因使用 Azure Function 应用时，查询部分 `code=<API_KEY>` 是必需的。 密钥可在 Azure 门户中找到。 找到函数应用资源，将函数应用部署到 Azure 后，导航到“函数” -> “应用密钥” -> “系统密钥” -> “webpubsub_extension”。 但是，在使用本地函数时不需要此密钥。
+`WebPubSubTrigger` 在需要处理来自服务端的请求时使用。 触发器终结点模式如下所示，该模式应在 Web PubSub 服务端（门户：“设置”->“事件处理程序”->“URL 模板”）进行设置。 在终结点模式中，出于[安全](../azure-functions/security-concepts.md#system-key)原因使用 Azure Function 应用时，查询部分 `code=<API_KEY>` 是必需的。 密钥可在 Azure 门户中找到。 找到函数应用资源，将函数应用部署到 Azure 后，导航到“函数” -> “应用密钥” -> “系统密钥” -> “webpubsub_extension”。 但是，在使用本地函数时不需要此密钥。
 
 ```
 <Function_App_Url>/runtime/webhooks/webpubsub?code=<API_KEY>
@@ -155,7 +155,7 @@ module.exports = async function (context) {
 
 ### <a name="attributes-and-annotations"></a>特性和注释
 
-在 [C# 类库](/azure/azure-functions/functions-dotnet-class-library)中，使用 `WebPubSubTrigger` 特性。
+在 [C# 类库](../azure-functions/functions-dotnet-class-library.md)中，使用 `WebPubSubTrigger` 特性。
 
 下面是某个方法签名中的 `WebPubSubTrigger` 特性：
 

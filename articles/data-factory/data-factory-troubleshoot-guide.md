@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: troubleshooting
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: abnarain
-ms.openlocfilehash: bab07b19efc1978836d1f14463392f8de2bd6e92
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: c9e6c4c0475842d9eb8c674464ebcf997d98b548
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864549"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749447"
 ---
 # <a name="troubleshoot-azure-data-factory-and-synapse-pipelines"></a>排查 Azure 数据工厂和 Synapse 管道问题
 
@@ -566,7 +566,7 @@ ms.locfileid: "122864549"
 
 - **建议**：更正凭据，然后重新部署链接服务。 首先在任何浏览器中打开群集 URI 并尝试登录，以便验证凭据在 HDInsight 中是否有效。 如果凭据无效，可从 Azure 门户重置凭据。
 
-   对于 ESP 群集，可通过[自助式密码重置](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)来重置密码。
+   对于 ESP 群集，可通过[自助式密码重置](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)来重置密码。
 
  </br>
 
@@ -953,7 +953,7 @@ ms.locfileid: "122864549"
 
 - **解决方法**：你可以导航到 Microsoft Integration Runtime\4.0\Shared\ODBC Drivers\Microsoft Hive ODBC Driver\lib 路径，并打开 DriverConfiguration64.exe 以更改设置。
 
-    ![取消选中“使用系统信任存储”](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+    :::image type="content" source="./media/connector-troubleshoot-guide/system-trust-store-setting.png" alt-text="取消选中“使用系统信任存储”":::
 
 ## <a name="web-activity"></a>Web 活动
 
@@ -982,7 +982,7 @@ ms.locfileid: "122864549"
 
    1. 在“HTTPS”选项卡中，选择“捕获 HTTPS 连接”和“解密 HTTPS 流量”。 
 
-      ![Fiddler 选项](media/data-factory-troubleshoot-guide/fiddler-options.png)
+      :::image type="content" source="media/data-factory-troubleshoot-guide/fiddler-options.png" alt-text="Fiddler 选项":::
 
 1. 如果应用程序使用 TLS/SSL 证书，请将 Fiddler 证书添加到设备。
 

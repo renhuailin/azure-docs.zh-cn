@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/19/2021
 ms.author: jeedes
-ms.openlocfilehash: f020d66238cb34f457627a0fda78176678bdf1d0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: eca1b80a8e4eca2834d563a630c7cad9b575b652
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463841"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>教程：Azure Active Directory 与 Brightidea 的集成
 
@@ -181,7 +181,7 @@ ms.locfileid: "110463841"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 Brightidea。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Brightidea 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Brightidea。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Brightidea 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Brightidea。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

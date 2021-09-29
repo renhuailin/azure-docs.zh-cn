@@ -8,17 +8,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/24/2021
-ms.openlocfilehash: 88765f756e5473243cb22719c00d1e497fbd6ea6
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: a95bfe8ed978a0d67381d0be1f15038c847ab36b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822191"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061212"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>映射数据流中的源转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 源转换为数据流配置数据源。 设计数据流时，第一步始终是配置源转换。 若要添加源，请在数据流画布中选择“添加源”框。
 
@@ -36,7 +38,7 @@ ms.locfileid: "122822191"
 
 若要使用内联数据集，请在“源类型”选择器中选择所需的格式。 选择要与其连接的链接服务，而不是选择源数据集。
 
-![显示已选择“内联”的屏幕截图。](media/data-flow/inline-selector.png "显示已选择“内联”的屏幕截图。")
+:::image type="content" source="media/data-flow/inline-selector.png" alt-text="显示已选择“内联”的屏幕截图。":::
 
 ## <a name="workspace-db-synapse-workspaces-only"></a>工作区 DB（仅 Synapse 工作区）
 
@@ -45,7 +47,7 @@ ms.locfileid: "122822191"
 > [!NOTE]
 > Azure Synapse 工作区 DB 连接器目前为公共预览版，只能与 Spark Lake 数据库配合使用
 
-![显示选定工作区 DB 的屏幕截图。](media/data-flow/syms-source.png "显示选定工作区 DB 的屏幕截图。")
+:::image type="content" source="media/data-flow/syms-source.png" alt-text="显示选定工作区 DB 的屏幕截图。":::
 
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a>受支持的源类型
 
@@ -76,7 +78,7 @@ Azure 数据工厂和 Synapse 管道可以访问超过 [90 个原生连接器](c
 
 可在[调试设置](concepts-data-flow-debug-mode.md)中配置数据集参数的开发值。 （必须打开调试模式。）
 
-![显示“源设置”选项卡的屏幕截图。](media/data-flow/source1.png "显示“源设置”选项卡的屏幕截图。")
+:::image type="content" source="media/data-flow/source1.png" alt-text="显示“源设置”选项卡的屏幕截图。":::
 
 **输出流名称**：源转换的名称。
 
@@ -109,7 +111,7 @@ Azure 数据工厂和 Synapse 管道可以访问超过 [90 个原生连接器](c
 
 与数据集中的架构一样，源中的投影定义源数据中的数据列、类型和格式。 对于大多数数据集类型（例如 SQL 和 Parquet），源中的投影是固定的，用于反映数据集中定义的架构。 如果你的源文件不是强类型（例如，平面 .csv 文件而不是 Parquet 文件），则可在源转换中为每个字段定义数据类型。
 
-![显示“投影”选项卡上的设置的屏幕截图。](media/data-flow/source3.png "显示“投影”选项卡上的设置的屏幕截图。")
+:::image type="content" source="media/data-flow/source3.png" alt-text="显示“投影”选项卡上的设置的屏幕截图。":::
 
 如果文本文件没有定义的架构，请选择“检测数据类型”，以便服务采样并推断数据类型。 选择“定义默认格式”以自动检测默认数据格式。
 
@@ -129,7 +131,7 @@ Azure 数据工厂和 Synapse 管道可以访问超过 [90 个原生连接器](c
 
 如果要从 Azure SQL 数据库源读取数据，自定义源分区可能会以最快的速度读取数据。 服务会通过建立与数据库的并行连接来读取大型查询。 此源分区可在列上完成，也可使用查询来完成。
 
-![显示“源”分区设置的屏幕截图。](media/data-flow/sourcepart3.png "显示“源”分区设置的屏幕截图。")
+:::image type="content" source="media/data-flow/sourcepart3.png" alt-text="显示“源”分区设置的屏幕截图。":::
 
 有关映射数据流中的优化的详细信息，请参阅[“优化”选项卡](concepts-data-flow-overview.md#optimize)。
 

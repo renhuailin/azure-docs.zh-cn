@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 77ff6024605c56f0ef74dd51936aed19efdb8a75
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 601dcaa3ea402f8f6b8b8c0664b8a47cfb5f4359
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739427"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743516"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>使用 Azure 数据工厂根据 LastModifiedDate 复制新的和已更改的文件
 
@@ -41,19 +41,19 @@ ms.locfileid: "121739427"
 
 1. 转到模板“仅根据 LastModifiedDate 复制新文件”。  创建与源存储的 **新** 连接。 源存储是要从中复制文件的存储。
 
-    ![与源建立新的连接](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png" alt-text="与源建立新的连接":::
     
 2. 与目标存储建立 **新的** 连接。 目标存储是要将文件复制到的存储。 
 
-    ![与目标建立新的连接](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png" alt-text="与目标建立新的连接":::
 
 3. 选择“使用此模板”  。
 
-    ![使用此模板](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png" alt-text="使用此模板":::
     
 4. 面板中会显示可用的管道，如以下示例所示：
 
-    ![显示管道](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png" alt-text="显示管道":::
 
 5. 选择“调试”，写入“参数”的值，然后选择“完成”。     下图显示了我们的参数设置。
    - **FolderPath_Source** = sourcefolder
@@ -65,21 +65,21 @@ ms.locfileid: "121739427"
     
     此示例表明，最后一次在 **2019-02-01T00:00:00Z** 到 **2019年-03-01T00:00:00Z** 时间跨度内修改的文件将从源路径 **sourcefolder/subfolder** 复制到目标路径 **destinationfolder/subfolder**。  可将这些参数替换为你自己的参数。
 
-    ![运行管道](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png" alt-text="运行管道":::
 
 6. 查看结果。 你将看到，只有其上次修改时间处于配置的时间跨度内的文件已复制到目标存储。
 
-    ![查看结果](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png" alt-text="查看结果":::
     
 7. 现在，可以添加一个翻转窗口触发器来自动执行此管道，使管道始终可以定期根据 LastModifiedDate，仅复制新文件和已更改的文件。  依次选择“添加触发器”、“新建/编辑”。  
 
-    ![突出显示在选择“添加”触发器时显示的“新建/编辑”菜单选项的屏幕截图。](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png" alt-text="突出显示在选择“添加”触发器时显示的“新建/编辑”菜单选项的屏幕截图。":::
     
 8. 在“添加触发器”窗口中，选择“+ 新建”。  
 
 9. 选择“翻转窗口”作为触发器类型，设置“每隔 15 分钟”作为重复周期（可更改为任意间隔时间）。   对于“已激活”框，请选择“是”，然后选择“确定”。  
 
-    ![创建触发器](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png" alt-text="创建触发器"::: 
     
 10. 按如下所示设置“触发器运行参数”的值，然后选择“完成”。  
     - **FolderPath_Source** = **sourcefolder**。  可替换为源数据存储中的文件夹。
@@ -89,11 +89,11 @@ ms.locfileid: "121739427"
     - **LastModified_From** =   **\@trigger().outputs.windowStartTime**。  这是触发器中的一个系统变量，确定上次触发管道的时间。
     - **LastModified_To** =  **\@trigger().outputs.windowEndTime**。  这是触发器中的一个系统变量，确定本次触发管道的时间。
     
-    ![输入参数](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png" alt-text="输入参数":::
     
 11. 选择“全部发布”。 
     
-    ![全部发布](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png" alt-text="全部发布":::
 
 12. 在数据源存储的源文件夹中创建新文件。  现在，等待自动触发的管道，并仅将新文件复制到目标存储。
 
@@ -101,7 +101,7 @@ ms.locfileid: "121739427"
 
 14. 查看结果。 你将看到，管道每隔 15 分钟自动触发，并且在每个管道运行中，只会将源存储中新的或已更改的文件复制到目标存储。
 
-    ![显示触发管道时返回的结果的屏幕截图。](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png" alt-text="显示触发管道时返回的结果的屏幕截图。":::
     
 ## <a name="next-steps"></a>后续步骤
 

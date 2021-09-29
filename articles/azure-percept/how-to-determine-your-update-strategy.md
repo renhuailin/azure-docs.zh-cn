@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: c26de68bc30e8ebfa6de92c8e142e6ca69088b26
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: d5b3f793f6fdf7fe1182c700da8635df9b2ef9a0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223342"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820541"
 ---
 # <a name="determine-your-update-strategy-for-azure-percept-dk"></a>确定 Azure Percept DK 的更新策略
 
@@ -20,7 +20,7 @@ ms.locfileid: "123223342"
 
 通过 USB 数据线更新会在开发工具包中进行全新安装。 部署新映像后，将会擦除每个分区中的现有配置和所有用户数据。 为此，需使用一根 Type-C USB 数据线将开发工具包连接到主机系统。 主机系统可以是 Windows/Linux 计算机。  也可以使用此更新方法实现出厂重置。 为此，需将完全相同的版本重新部署到开发工具包。 有关 USB 数据线更新的详细信息，请参阅[通过 USB-C 数据线连接更新 Azure Percept DK](./how-to-update-via-usb.md)。
 
-OTA 更新建立在 [Device Update for IoT Hub](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-resources) Azure 服务的基础之上。 将开发工具包连接到 Azure IoT 中心即可执行这种更新。 完成 OTA 更新后，配置和用户数据将会保留。 有关执行 OTA 更新的详细信息，请参阅[以无线 (OTA) 方式更新 Azure Percept DK](./how-to-update-over-the-air.md)。
+OTA 更新建立在 [Device Update for IoT Hub](../iot-hub-device-update/device-update-resources.md) Azure 服务的基础之上。 将开发工具包连接到 Azure IoT 中心即可执行这种更新。 完成 OTA 更新后，配置和用户数据将会保留。 有关执行 OTA 更新的详细信息，请参阅[以无线 (OTA) 方式更新 Azure Percept DK](./how-to-update-over-the-air.md)。
 
 查看 USB 数据线更新和 OTA 更新的优点与缺点，然后按照适用于不同方案的 Microsoft 建议进行操作。
 

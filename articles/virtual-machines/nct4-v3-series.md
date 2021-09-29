@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 55799d15ef0ebe8af0f4a79b583143394540f48b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 62108e46b748552fc22a8dc1e86ea78b3cc5e4e5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697964"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774151"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
@@ -42,7 +42,7 @@ Nvidia NVLink 互连：不支持<br>
 | Standard_NC64as_T4_v3 |64 |440 |2880 | 4 | 64 | 32 | 8 / 32000  |
 
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -52,7 +52,9 @@ Nvidia NVLink 互连：不支持<br>
 
 Azure Nvidia GPU 驱动程序扩展将在 NCasT4_v3 系列 VM 上部署 CUDA 驱动程序。 对于图形和可视化工作负荷，手动安装 Azure 支持的 GRID 驱动程序。
 
-## <a name="other-sizes"></a>其他大小
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
@@ -60,6 +62,10 @@ Azure Nvidia GPU 驱动程序扩展将在 NCasT4_v3 系列 VM 上部署 CUDA 驱
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
 
 ## <a name="next-steps"></a>后续步骤
 

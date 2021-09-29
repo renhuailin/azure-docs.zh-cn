@@ -2,22 +2,18 @@
 title: 从网络性能监视器迁移到连接监视器
 titleSuffix: Azure Network Watcher
 description: 了解如何从网络性能监视器迁移到连接监视器。
-services: network-watcher
-documentationcenter: na
 author: vinynigam
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 0ec16b16c8e71d764fb0fe21520eb407493ed8d7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 84daa5527617584d420db02b012bec28760a146c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105356"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614555"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器
 
@@ -58,7 +54,7 @@ ms.locfileid: "113105356"
 1. 在下拉列表中，选择订阅和工作区，然后选择要迁移的 NPM 功能。 
 1. 选择“导入”以迁移测试。
 * 如果工作区中未启用 NPM，则会出现一个错误，指出“未找到有效的 NPM 配置”。 
-* 如果在步骤 2 中选择的功能中不存在任何测试，则会出现一个错误，指出“所选工作区没有 <feature> 配置”。
+* 如果在步骤 2 中选择的功能中不存在任何测试，则会出现一个错误，指出“所选工作区没有 \<feature\> 配置”。
 * 如果没有有效的测试，则会出现一个错误，指出“所选工作区没有有效的测试”
 * 你的测试可能包含不再处于活动状态，但可能在过去处于活动状态的代理。 会出现一个错误，指出“少数测试包含不再处于活动状态的代理。 非活动代理列表 - {0}。 这些代理可能在过去运行，但已关闭/不再运行。 启用代理并迁移到连接监视器。 单击‘继续’以迁移不包含非活动代理的测试”。
 

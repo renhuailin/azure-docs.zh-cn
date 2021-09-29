@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6eb6dd71ae95b3af4ee913e1ac88d9988d2b23a9
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7e2c4c6a68bb8db4434a233e7b7c658074ed015a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762531"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804132"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
@@ -71,7 +71,7 @@ ms.locfileid: "113762531"
 按照以下说明解决 Azure 资源管理器模板和 PowerShell DSC 的不成功部署。
 
 1. 使用 [Azure 资源管理器的查看部署操作](../azure-resource-manager/templates/deployment-history.md)查看部署中的错误。
-2. 如果部署中没有错误，请使用[查看活动日志以审核对资源的操作](../azure-resource-manager/management/view-activity-logs.md)，来查看活动日志中的错误。
+2. 如果部署中没有错误，请使用[查看活动日志以审核对资源的操作](../azure-monitor/essentials/activity-log.md)，来查看活动日志中的错误。
 3. 确定错误后，请使用错误消息和[解决 Azure 资源管理器中的常见 Azure 部署错误](../azure-resource-manager/templates/common-deployment-errors.md)中的资源来解决此问题。
 4. 删除在之前的部署过程中创建的任何资源，然后重试部署模板。
 
@@ -288,5 +288,5 @@ the VM.\\\"
 - 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-monitor/essentials/activity-log.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

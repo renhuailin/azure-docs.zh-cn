@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 4514717274cfb66fbfc0eee25b09aa9e1234ffad
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 504ed485115f48b252027431a5b69e2a6b5f33f3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280320"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763569"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
@@ -138,7 +138,7 @@ ms.locfileid: "106280320"
 
    默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
 
-   可以使用 [Azure 活动日志](../azure-resource-manager/management/view-activity-logs.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。
+   可以使用 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。
 
 ## <a name="metrics"></a>指标
 

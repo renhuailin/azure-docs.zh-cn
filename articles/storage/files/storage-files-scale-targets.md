@@ -4,15 +4,15 @@ description: 了解 Azure 文件的可伸缩性和性能目标信息，包括容
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 09/16/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 871cb72c163472dbe3409738199e710300c5057d
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 83e33933e8afb8b376750368a64c60cb56406a75
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867325"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651534"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 [Azure 文件](storage-files-introduction.md)在云中提供可通过 SMB 和 NFS 文件系统协议访问的完全托管的文件共享。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
@@ -56,7 +56,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 | 属性 | 标准文件共享<sup>1</sup> | 高级文件共享 |
 |-|-|-|
 | 文件共享的最小大小 | 无最小值 | 100 GiB（预配值） |
-| 预配大小增加/减少单位 | 空值 | 1 GiB |
+| 预配大小增加/减少单位 | 不可用 | 1 GiB |
 | 文件共享的最大大小 | <ul><li>100 TiB，如果启用大型文件共享功能<sup>2</sup></li><li>5 TiB，默认值</li></ul> | 100 TiB |
 | 文件共享中的文件数上限 | 无限制 | 无限制 |
 | 最大请求速率（最大 IOPS） | <ul><li>20,000，启用了大型文件共享功能<sup>2</sup></li><li>每 100 毫秒 1,000 或 100 个请求，默认值</li></ul> | <ul><li>基线 IOPS：400 + 每 GiB 1 IOPS，最高 100,000</li><li>IOPS 突发：Max (4000, 每 GiB 3x IOPS)，最高 100,000</li></ul> |
@@ -100,7 +100,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 | 一个目录中的最大文件系统对象（目录和文件）数（非递归） | 500 万个对象 | 是 |
 | 最大对象（目录和文件）安全描述符大小 | 64 KiB | 是 |
 | 文件大小 | 100 GiB | 否 |
-| 要进行分层的文件的最小文件大小 | V9 及更高版本：基于文件系统群集大小（双文件系统群集大小）。 例如，如果文件系统群集大小为 4 KiB，则最小文件大小为 8 KiB。<br> V8 和更早版本：64 KiB  | 是 |
+| 要进行分层的文件的最小文件大小 | 基于文件系统群集大小（双文件系统群集大小）。 例如，如果文件系统群集大小为 4 KiB，则最小文件大小为 8 KiB。 | 是 |
 
 > [!Note]  
 > Azure 文件同步终结点可以纵向扩展到 Azure 文件共享的大小。 如果达到 Azure 文件共享大小限制，同步将无法运行。
@@ -119,7 +119,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 |-|-|
 | CPU | 64 个带 64 MiB L3 高速缓存的虚拟内核 |
 | 内存 | 128 GiB |
-| 磁盘和分区 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
+| 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
 | 工作负荷 | 常规用途文件服务器|
 

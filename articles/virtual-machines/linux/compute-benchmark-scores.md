@@ -2,17 +2,17 @@
 title: Azure Linux VM 的计算基准测试分数
 description: 比较运行 Linux 的 Azure VM 的 CoreMark 计算基准测试分数。
 ms.service: virtual-machines
-ms.subservice: benchmark
+ms.subservice: sizes
 ms.collection: linux
 ms.topic: conceptual
 ms.date: 04/08/2021
 ms.reviewer: davberg
-ms.openlocfilehash: 41a2f377629b8cce647adecb21e395c60bf15a7c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 3847250ee3c5a080740aef51541fdf47e5c11882
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770777"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216513"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的计算基准测试分数
 
@@ -708,7 +708,7 @@ CoreMark 是一个开源工具，可以从 [GitHub](https://github.com/eembc/cor
 
 若要生成并运行基准，请键入：
 
-```> make```
+`> make`
 
 文件 ```run1.log``` 和 ```run2.log``` 中提供了完整的结果。 
 ```run1.log``` 包含 CoreMark 结果。 这些是包含性能参数的基准测试结果。
@@ -718,7 +718,7 @@ CoreMark 是一个开源工具，可以从 [GitHub](https://github.com/eembc/cor
 
 默认情况下，基准将在 10-100 秒之间运行。 若要替代，请使用 ```ITERATIONS=N```
 
-```% make ITERATIONS=10```
+`% make ITERATIONS=10`
 
 上述标志将对基准运行 10 次迭代。 
 只有当基准运行至少 10 秒钟后，报告的结果才有效！
@@ -727,7 +727,7 @@ CoreMark 是一个开源工具，可以从 [GitHub](https://github.com/eembc/cor
 
 使用 ```XCFLAGS=-DMULTITHREAD=N```，其中 N 为并行运行的线程数。 有几种实现可在多个上下文中执行。
 
-```% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD"```
+`% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD"`
 
 上述语句将编译用于在 4 核上执行的基准。
 

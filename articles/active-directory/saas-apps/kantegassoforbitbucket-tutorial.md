@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 52879eb7cb7a9d90113971aa66c590b99b2d5e88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbb01efeb08619f36c682fa1026ff810723c720e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459260"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822517"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>教程：Azure Active Directory 与 Kantega SSO for Bitbucket 集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "92459260"
 
     ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -109,7 +109,7 @@ ms.locfileid: "92459260"
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 在配置 Bitbucket 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
@@ -198,7 +198,7 @@ ms.locfileid: "92459260"
 
     a. 选择“根据需要在 Bitbucket 的内部目录中创建用户”  ，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
-    b. 单击“下一步”。
+    b. 单击“下一步”。 
 
 1. 单击“完成”  。
 
@@ -295,7 +295,7 @@ ms.locfileid: "92459260"
 
     c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    d. 在“密码”文本框中，键入用户的密码。
+    d. 在“密码”文本框中，键入用户的密码。 
 
     e. 在“确认密码”文本框中，再次输入用户密码  。
 
@@ -305,7 +305,7 @@ ms.locfileid: "92459260"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Kantega SSO for Bitbucket 磁贴时，应当会自动登录到你为其设置了 SSO 的 Kantega SSO for Bitbucket。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Kantega SSO for Bitbucket 磁贴时，应当会自动登录到你为其设置了 SSO 的 Kantega SSO for Bitbucket。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

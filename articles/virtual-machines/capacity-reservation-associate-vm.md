@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 28c1d138cc4a2993caf2b162b9363bc33b6666b7
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 6253039c2c256e421815cad30f06780bc6c89694
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273279"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774341"
 ---
 # <a name="associate-a-vm-to-a-capacity-reservation-group-preview"></a>将 VM 与容量预留组进行关联（预览版） 
 
@@ -110,7 +110,7 @@ New-AzVm
 
 ### <a name="arm-template"></a>[ARM 模板](#tab/arm1)
 
- [ARM 模板](/azure/azure-resource-manager/templates/overview) 是一个 JavaScript 对象表示法 (JSON) 文件，用于定义项目的基础结构和配置。 模板使用声明性语法。 在声明性语法中，你可以在不编写创建部署的编程命令序列的情况下，描述预期部署。 
+ [ARM 模板](../azure-resource-manager/templates/overview.md) 是一个 JavaScript 对象表示法 (JSON) 文件，用于定义项目的基础结构和配置。 模板使用声明性语法。 在声明性语法中，你可以在不编写创建部署的编程命令序列的情况下，描述预期部署。 
 
 ARM 模板允许部署相关资源的组。 在单个模板中，可创建容量预留组和容量预留。 可通过 Azure 门户、Azure CLI、Azure PowerShell 或持续集成/持续交付 (CI/CD) 管道部署模板。 
 

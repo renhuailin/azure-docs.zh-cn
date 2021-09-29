@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 08/16/2021
 ms.topic: tutorial
-ms.openlocfilehash: 9f728a8e51dbe310f744d11dd495038b2ff96126
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0620aacb1b4f2a6cb7c6214c1ce92add3bec8f63
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540264"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610667"
 ---
 # <a name="tutorial-create-automation-powershell-runbook-using-managed-identity"></a>教程：使用托管标识创建自动化 PowerShell runbook
 
 本教程会指导你在 Azure 自动化中创建一个使用[托管标识](../automation-security-overview.md#managed-identities-preview)（而不是运行方式帐户）与资源进行交互的 [PowerShell runbook](../automation-runbook-types.md#powershell-runbooks)。 基于 Windows PowerShell 的 PowerShell Runbook。 借助 Azure Active Directory (Azure AD) 的托管标识，runbook 可以轻松访问其他受 Azure AD 保护的资源。
 
-在本教程中，你将了解如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 向托管标识分配权限
@@ -43,7 +43,7 @@ ms.locfileid: "123540264"
     $sub = Get-AzSubscription -ErrorAction SilentlyContinue
     if(-not($sub))
     {
-        Connect-AzAccount -Subscription
+        Connect-AzAccount
     }
     
     # If you have multiple subscriptions, set the one to use
@@ -57,7 +57,7 @@ ms.locfileid: "123540264"
     
     # These values are used in this tutorial
     $automationAccount = "xAutomationAccount"
-    $userAssignedOne = "xUAMI"
+    $userAssignedManagedIdentity = "xUAMI"
     ```
 
 1. 使用 PowerShell cmdlet [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 将角色分配给系统分配的托管标识。
@@ -75,7 +75,7 @@ ms.locfileid: "123540264"
 1. 用户分配的托管标识需要相同的角色分配
 
     ```powershell
-    $UAMI = (Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $userAssignedOne).PrincipalId
+    $UAMI = (Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $userAssignedManagedIdentity).PrincipalId
     New-AzRoleAssignment `
         -ObjectId $UAMI `
         -ResourceGroupName $resourceGroup `
@@ -129,6 +129,10 @@ ms.locfileid: "123540264"
             exit
         }
     
+    # set and store context
+    $subID = (Get-AzContext).Subscription.Id
+    $AzureContext = Set-AzContext -SubscriptionId $subID
+    
     if ($method -eq "SA")
         {
             Write-Output "Using system-assigned managed identity"
@@ -138,12 +142,15 @@ ms.locfileid: "123540264"
             Write-Output "Using user-assigned managed identity"
     
             # Connects using the Managed Service Identity of the named user-assigned managed identity
-            $identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $UAMI
+            $identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $UAMI -DefaultProfile $AzureContext
     
             # validates assignment only, not perms
-            if ((Get-AzAutomationAccount -ResourceGroupName $resourceGroup -Name $automationAccount).Identity.UserAssignedIdentities.Values.PrincipalId.Contains($identity.PrincipalId))
+            if ((Get-AzAutomationAccount -ResourceGroupName $resourceGroup -Name $automationAccount -DefaultProfile $AzureContext).Identity.UserAssignedIdentities.Values.PrincipalId.Contains($identity.PrincipalId))
                 {
                     Connect-AzAccount -Identity -AccountId $identity.ClientId | Out-Null
+    
+                    # set and store context
+                    $AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
                 }
             else {
                     Write-Output "Invalid or unassigned user-assigned managed identity"
@@ -156,26 +163,26 @@ ms.locfileid: "123540264"
          }
     
     # Get current state of VM
-    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status).Statuses[1].Code
+    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status -DefaultProfile $AzureContext).Statuses[1].Code
     
     Write-Output "`r`n Beginning VM status: $status `r`n"
     
     # Start or stop VM based on current state
     if($status -eq "Powerstate/deallocated")
         {
-            Start-AzVM -Name $VMName -ResourceGroupName $resourceGroup
+            Start-AzVM -Name $VMName -ResourceGroupName $resourceGroup -DefaultProfile $AzureContext
         }
     elseif ($status -eq "Powerstate/running")
         {
-            Stop-AzVM -Name $VMName -ResourceGroupName $resourceGroup -Force
+            Stop-AzVM -Name $VMName -ResourceGroupName $resourceGroup -DefaultProfile $AzureContext -Force
         }
     
     # Get new state of VM
-    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status).Statuses[1].Code  
+    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status -DefaultProfile $AzureContext).Statuses[1].Code  
     
     Write-Output "`r`n Ending VM status: $status `r`n `r`n"
     
-    Write-Output "Account ID of current context: " (Get-AzContext).Account.Id
+    Write-Output "Account ID of current context: " $AzureContext.Account.Id
     ```
 
 1. 在编辑器中的第 8 行上，根据需要修改 `$automationAccount` 变量的值。

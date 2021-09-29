@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/11/2021
-ms.openlocfilehash: 29479aa35146630162226ff392f3924bc59ea8ae
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4bcfc687e1a91fd2ecc652ced2481963974e155f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735628"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643339"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -387,7 +387,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 > 不支持在 T-SQL 的 `CREATE LOGIN` 和 `CREATE USER` 语句中将特殊字符（例如冒号 `:` 或与号 `&`）用作用户名的一部分。
 
 > [!IMPORTANT]
-> 不支持属于超过 2048 个 Azure AD 安全组的成员的 Azure AD 用户和服务主体（Azure AD 应用程序）在 SQL 数据库、托管实例或 Azure Synapse 中登录到数据库。
+> 不支持属于 2048 个以上 Azure AD 安全组的成员的 Azure AD 用户和服务主体（Azure AD 应用程序）在 SQL 数据库、托管实例或 Azure Synapse 中登录到数据库。
 
 
 若要创建基于 Azure AD 的包含的数据库用户（而不是拥有数据库的服务器管理员），请以至少具有 **ALTER ANY USER** 权限的用户身份使用 Azure AD 标识连接到数据库。 然后，使用以下 Transact-SQL 语法：
@@ -531,9 +531,9 @@ conn.Open();
 示例连接字符串：
 
 ```csharp
-string ConnectionString =@"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;"
+string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;";
 SqlConnection conn = new SqlConnection(ConnectionString);
-conn.AccessToken = "Your JWT token"
+conn.AccessToken = "Your JWT token";
 conn.Open();
 ```
 

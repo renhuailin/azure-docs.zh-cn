@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 38586e2cc60186c929b5ca43990019e768a1ed13
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 8f857ff3c1a17e0f17d396b8d97d9d0e27b4fa18
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720481"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646073"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 来分析视频
 
@@ -34,7 +34,7 @@ ms.locfileid: "114720481"
 
 ## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
  
-作为一项重要提醒，你必须在使用 Azure 视频分析器媒体版（以前称“视频索引器”）时遵守所有适用法律。 你不得以违反他人权利的方式使用视频分析器媒体版或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到视频分析器媒体版服务进行处理和存储之前，你必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解视频分析器媒体版中的符合性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)提供。 使用视频分析器媒体版，即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束。
+作为一项重要提醒，你必须在使用 Azure 视频分析器媒体版（以前称“视频索引器”）时遵守所有适用法律。 你不得以违反他人权利的方式使用视频分析器媒体版或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到视频分析器媒体版服务进行处理和存储之前，你必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解视频分析器媒体版中的符合性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.yml)提供。 使用视频分析器媒体版，即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束。
 
 ## <a name="prerequisites"></a>必备条件
 

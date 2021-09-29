@@ -3,12 +3,12 @@ title: 部署证书
 description: 了解如何设置并部署用于 Defender for IoT 的证书。
 ms.date: 08/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 83345d9ad0267e39093bc310c8ebd940f878c47e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d6a67a84dab6df165346ff2739d0ac56e2b8eff2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439825"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602814"
 ---
 # <a name="about-certificates"></a>关于证书
 
@@ -193,9 +193,9 @@ Defender for IoT 要求每个 CA 签名证书都包含一个 .key 文件和一�
 
 |**说明** | **CLI 命令** |
 |--|--|
-| 将 .crt 文件转换为 .pem 文件   | openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt  | 
-| 将 .pem 文件转换为 .crt 文件   | openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt |  
-| 将包含私钥和证书的 PKCS#12 文件 (.pfx .p12) 转换为 .pem   | openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes. 可以添加 -nocerts 以仅输出私钥，或添加 -nokeys 以仅输出证书。  |  
+| 将 .crt 文件转换为 .pem 文件   | `openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt`  | 
+| 将 .pem 文件转换为 .crt 文件   | `openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt` |  
+| 将包含私钥和证书的 PKCS#12 文件 (.pfx .p12) 转换为 .pem   | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes`. 可以添加 -nocerts 以仅输出私钥，或添加 -nokeys 以仅输出证书。  |  
 
 ## <a name="troubleshooting"></a>疑难解答  
 

@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 062be43bda26169d27740777bdb60d335c9923e6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a04c205370ee07900b649ed0a3f6f4bf3a892685
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489580"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577817"
 ---
 # <a name="example-azure-role-assignment-conditions-preview"></a>示例 Azure 角色分配条件（预览版）
 
@@ -96,7 +96,7 @@ Get-AzStorageBlob -Container <containerName> -Blob <blobName> -Context $bearerCt
 
 有两个权限允许创建新的 blob，因此必须以获取这两个权限作为目标。 必须将该条件添加到含以下权限之一的任何角色分配。
 
-- /blobs/write（创建或更新） 
+- /blobs/write（创建或更新）
 - /blobs/add/action（创建）
 
 ![示例 2 条件图，其中显示了新的 blob 必须包含标记。](./media/storage-auth-abac-examples/example-2.png)

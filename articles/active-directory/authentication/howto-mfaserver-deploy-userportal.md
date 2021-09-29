@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61cefacc4147ab1eb105af9cb21365129dd1950e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f07ddd744481b80e5a74a7b4b597167964f4f183
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742453"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750151"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -38,7 +38,7 @@ ms.locfileid: "96742453"
 ![MFA 服务器用户门户登录页](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
-> 用户门户仅适用于多重身份验证服务器。 如果在云中使用多重身份验证，则让用户参阅[设置双重验证帐户](../user-help/multi-factor-authentication-end-user-first-time.md)或[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)。
+> 用户门户仅适用于多重身份验证服务器。 如果在云中使用多重身份验证，则让用户参阅[设置双重验证帐户](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)或[管理双重验证设置](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)。
 
 ## <a name="install-the-web-service-sdk"></a>安装 Web 服务 SDK
 

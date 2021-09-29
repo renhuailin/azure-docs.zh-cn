@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cf2f0cdf8b7c540e569067d68374eef55d3479fe
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 4501d28699b2bf9056cfd814bc89b5e9c5672ab9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028190"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571948"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>通过在 Azure Active Directory B2C 中使用 SAML 协议来设置使用 Salesforce SAML 提供程序的登录
 
@@ -99,15 +99,16 @@ ms.locfileid: "107028190"
 你需要将已创建的证书存储在 Azure AD B2C 租户中。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-4. 在“概述”页上选择“标识体验框架”。
-5. 选择“策略密钥”，然后选择“添加”。
-6. 对于“选项”，请选择 `Upload`。
-7. 输入策略的 **名称**。 例如，SAMLSigningCert。 前缀 `B2C_1A_` 将自动添加到你的密钥的名称中。
-8. 浏览找到并选择你创建的 B2CSigningCert.pfx 证书。
-9. 输入证书的密码。
-3. 单击“创建”。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 在“概述”页上选择“标识体验框架”。
+1. 选择“策略密钥”，然后选择“添加”。
+1. 对于“选项”，请选择 `Upload`。
+1. 输入策略的 **名称**。 例如，SAMLSigningCert。 前缀 `B2C_1A_` 将自动添加到你的密钥的名称中。
+1. 浏览找到并选择你创建的 B2CSigningCert.pfx 证书。
+1. 输入证书的密码。
+1. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 32008e0071f9e57c7b85dd3146f7082797710b1c
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 43929f4fc00b8a6ca3fb485c0257f5e651f2802f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123474709"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618279"
 ---
 |名称 |说明 |策略 |版本 |
 |---|---|---|---|
@@ -19,8 +19,8 @@ ms.locfileid: "123474709"
 |[CIS Microsoft Azure 基础基准检验 v1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |此计划包括用于处理部分 CIS Microsoft Azure 基础基准建议的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/cisazure110-initiative](../../../../articles/governance/policy/samples/cis-azure-1-1-0.md)。 |99 |10.1.0 |
 |[CIS Microsoft Azure 基础基准检验 v1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json) |此计划包括用于处理部分 CIS Microsoft Azure 基础基准建议的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/cisazure130-initiative](../../../../articles/governance/policy/samples/cis-azure-1-3-0.md)。 |104 |1.1.2 |
 |[\[预览版\]：CMMC 级别 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |此计划包括用于处理部分网络安全成熟度模型认证 (CMMC) 级别 3 要求的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/cmmc-initiative](../../../../articles/governance/policy/samples/cmmc-l3.md)。 |182 |3.2.1-preview |
-|[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |此计划包括用于处理一部分 FedRAMP High 控制措施的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/fedramph-initiative](../../../../articles/governance/policy/samples/built-in-initiatives.md)。 |262 |5.0.0 |
-|[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |此计划包括用于处理一部分 FedRAMP Moderate 控制措施的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/fedrampm-initiative](../../../../articles/governance/policy/samples/built-in-initiatives.md)。 |262 |5.0.0 |
+|[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |此计划包括用于处理一部分 FedRAMP High 控制措施的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/fedramph-initiative](../../../../articles/governance/policy/samples/built-in-initiatives.md)。 |262 |5.0.1 |
+|[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |此计划包括用于处理一部分 FedRAMP Moderate 控制措施的策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/fedrampm-initiative](../../../../articles/governance/policy/samples/built-in-initiatives.md)。 |262 |5.0.1 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |此计划包括用于处理一部分 HITRUST/HIPAA 控制措施的审核和虚拟机扩展部署策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/hipaa-blueprint](../../../../articles/governance/blueprints/samples/index.md)。 |121 |6.0.1 |
 |[IRS1075 2016 年 9 月](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |此计划包括用于处理一部分 IRS1075 2016 年 9 月控制措施的审核和虚拟机扩展部署策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/irs1075-blueprint](../../../../articles/governance/blueprints/samples/irs-1075-sept2016.md)。 |62 |5.0.0 |
 |[ISO 27001:2013](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |此计划包括用于处理一部分 ISO 27001:2013 控制措施的审核和虚拟机扩展部署策略。 将来的版本中会添加更多策略。 有关详细信息，请访问 [https://aka.ms/iso27001-init](../../../../articles/governance/blueprints/samples/iso-27001-2013.md)。 |53 |4.0.2 |

@@ -2,13 +2,13 @@
 title: 使用 Azure Active Directory 授予访问权限
 description: 本文提供有关使用 Azure Active Directory 授权访问事件中心资源的信息。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: f00f0ff73762cede60a0f2298875fac057ff0563
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92910791"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627361"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问事件中心资源
 Azure 事件中心支持使用 Azure Active Directory (Azure AD) 授权对事件中心资源的请求。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (Azure RBAC) 向安全主体授予权限，该安全主体可能是用户，也可能是应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。

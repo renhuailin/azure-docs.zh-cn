@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.custom: subject-rbac-steps
-ms.date: 07/26/2021
+ms.date: 09/08/2021
 ms.author: radeltch
-ms.openlocfilehash: 7ce4960b167db05874447c8c3063892d0690c4eb
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 63c7def5a76fba19eeef5192ebdfacd6225fbaa1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034315"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784292"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -594,24 +594,21 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 将以下内容用于输入文件。 你需要调整内容以适应你的订阅，也就是说，将 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624 替换为你的订阅的 ID。 如果只有一个订阅，请删除 AssignableScopes 中的第二个条目。
 
 ```json
-       {
-         "Name": "Linux Fence Agent Role - Test",
-         "description": "Allows to power-off and start virtual machines",
-         "assignableScopes": [
-         "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-         "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-         ],
-         "actions": [
-         "Microsoft.Compute/*/read",
-         "Microsoft.Compute/virtualMachines/powerOff/action",
-         "Microsoft.Compute/virtualMachines/start/action"
-            ],
-         "notActions": [],
-         "dataActions": [],
-         "notDataActions": []
-            }
-        ]
-    }
+{
+      "Name": "Linux Fence Agent Role",
+      "description": "Allows to power-off and start virtual machines",
+      "assignableScopes": [
+              "/subscriptions/e663cc2d-722b-4be1-b636-bbd9e4c60fd9",
+              "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+      ],
+      "actions": [
+              "Microsoft.Compute/*/read",
+              "Microsoft.Compute/virtualMachines/powerOff/action",
+              "Microsoft.Compute/virtualMachines/start/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
 }
 ```
 

@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9aa776b52d3303d7721d900476f606c3ab38d7a5
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 3ba616f2edead3bdd3b3353405e3b9ce6b40ccaa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378702"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599138"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
@@ -34,12 +34,12 @@ ms.locfileid: "112378702"
 
 > [!div class="checklist"]
 
-> * 创建存储帐户
-> * 创建容器并设置权限
-> * 检索访问密钥
-> * 将 Web 应用部署到 Azure
-> * 配置应用设置
-> * 与 Web 应用进行交互
+> - 创建存储帐户
+> - 创建容器并设置权限
+> - 检索访问密钥
+> - 将 Web 应用部署到 Azure
+> - 配置应用设置
+> - 与 Web 应用进行交互
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +47,7 @@ ms.locfileid: "112378702"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-若要在本地安装和使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+若要在本地安装和使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -55,7 +55,7 @@ ms.locfileid: "112378702"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location southeastasia
@@ -63,7 +63,7 @@ New-AzResourceGroup -Name myResourceGroup -Location southeastasia
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ```azurecli
 az group create --name myResourceGroup --location southeastasia
@@ -140,7 +140,7 @@ az storage container create --name thumbnails \
 
 ---
 
-记下 Blob 存储帐户名称和密钥。 示例应用使用这些设置连接到存储帐户以上传图像。 
+记下 Blob 存储帐户名称和密钥。 示例应用使用这些设置连接到存储帐户以上传图像。
 
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
 
@@ -170,11 +170,11 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。
 
-在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，你将收到错误消息：*具有给定名称 `<web_app>` 的网站已存在。* Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。  
+在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，你将收到错误消息：*具有给定名称 `<web_app>` 的网站已存在。* Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../../app-service/overview.md)。  
+使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../../app-service/overview.md)。
 
 ```powershell
 $webapp="<web_app>"
@@ -184,7 +184,7 @@ New-AzWebApp -ResourceGroupName myResourceGroup -Name $webapp -AppServicePlan my
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用 [az webapp create](/cli/azure/webapp) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/overview.md)。  
+使用 [az webapp create](/cli/azure/webapp) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/overview.md)。
 
 ```azurecli
 webapp="<web_app>"

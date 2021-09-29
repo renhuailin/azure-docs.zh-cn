@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/06/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support, has-adal-ref
-ms.openlocfilehash: 1e21be821a495dae95b0bc45b47aef4345802f38
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 4dca649048a393adaba58614ab8f63dec5db29e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186184"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575164"
 ---
 # <a name="enable-authentication-in-your-own-android-app-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在你自己的 Android 应用中启用身份验证
 
@@ -142,7 +142,8 @@ packagingOptions{
 若要用应用重定向 URI 更新移动应用注册，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 搜索并选择“Azure AD B2C”。
 1. 选择“应用程序注册”，然后选择在[步骤 2.3：注册移动应用](configure-authentication-sample-android-app.md#step-23-register-the-mobile-app)中注册的应用程序。
 1. 选择“身份验证”。

@@ -4,17 +4,17 @@ description: 了解如何排查 Azure 数据工厂中与连接器和格式相关
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: troubleshooting
 ms.date: 08/17/2021
-ms.openlocfilehash: 79a64a7eb1e06fef3c9e534a69324faaf9f23107
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 3a723f2317e9408f35ef506d96d7fb9714c9f4b3
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867532"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059789"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>排查 Azure 数据工厂中映射数据流中的连接器和格式问题
-
 
 本文探讨了 Azure 数据工厂 (ADF) 中与映射数据流的连接器和格式相关的故障排除方法。
 
@@ -75,7 +75,7 @@ ms.locfileid: "122867532"
 
     1. 使用数据流源“调试设置”使具有样本文件/表的“导入投影”获取完整架构 。 可以执行下图中的步骤：<br/>
 
-        ![屏幕截图，显示用于自定义源架构的第一个选项的第一部分。](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png)<br/>
+        :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png" alt-text="屏幕截图，显示用于自定义源架构的第一个选项的第一部分。":::<br/>
          1. 在数据流画布中选择“调试设置”。
          1. 在弹出窗口中，选择“cosmosSource”选项卡下的“样本表”，然后在“表”块中输入表的名称  。
          1. 选择“保存”以保存设置。
@@ -83,7 +83,7 @@ ms.locfileid: "122867532"
     
     1. 改回“调试设置”，以将源数据集用于其余数据移动/转换。 可以继续执行下图中的步骤：<br/>
 
-        ![屏幕截图，显示用于自定义源架构的第一个选项的第二部分。](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png) <br/>   
+        :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png" alt-text="屏幕截图，显示用于自定义源架构的第一个选项的第二部分。"::: <br/>   
          1. 在数据流画布中选择“调试设置”。
          1. 在弹出窗口中，选择“cosmosSource”选项卡下的“源数据集” 。
          1. 选择“保存”以保存设置。<br/>
@@ -92,7 +92,7 @@ ms.locfileid: "122867532"
 
 - 选项 2：如果熟悉源数据的架构和 DSL 语言，则可以手动更新数据流源脚本，以添加额外/缺失列来读取数据。 下图显示了一个示例： 
 
-    ![屏幕截图，显示用于自定义源架构的第二个选项。](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png" alt-text="屏幕截图，显示用于自定义源架构的第二个选项。":::
 
 ### <a name="support-map-type-in-the-source"></a>在源中支持映射类型
 
@@ -247,7 +247,7 @@ RWX 权限或数据集属性设置不正确。
 - [包含 Azure Database for PostgreSQL 超大规模的 MCW 实时数据](https://github.com/microsoft/MCW-Real-time-data-with-Azure-Database-for-PostgreSQL-Hyperscale/blob/master/Hands-on%20lab/HOL%20step-by%20step%20-%20Real-time%20data%20with%20Azure%20Database%20for%20PostgreSQL%20Hyperscale.md)<br/>
     请参阅本文下图内容：<br/>
 
-    ![屏幕截图：显示上述文章中的引用内容。](./media/data-flow-troubleshoot-connector-format/handshake-failure-cause-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/handshake-failure-cause-2.png" alt-text="屏幕截图：显示上述文章中的引用内容。":::
 
 #### <a name="recommendation"></a>建议
 可以尝试使用复制活动解除阻止此问题。 
@@ -395,7 +395,7 @@ Azure SQL 数据库服务器上的防火墙设置不正确，因此数据流运�
 #### <a name="symptoms"></a>症状
 在数据流中使用 Synapse 作为源/接收器来预览数据、调试/触发运行等，启用暂存以使用 PolyBase，并创建临时存储的链接服务（Blob、Gen2 等）以使用托管标识 (MI) 身份验证时，作业可能会失败，并显示下图所示的错误： <br/>
 
-![屏幕截图：显示服务标识错误。](./media/data-flow-troubleshoot-connector-format/service-identity-error.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/service-identity-error.png" alt-text="屏幕截图：显示服务标识错误。":::
 
 #### <a name="error-message"></a>错误消息
 `shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: Managed Service Identity has not been enabled on this server. Please enable Managed Service Identity and try again.`
@@ -480,7 +480,7 @@ Azure SQL 数据库服务器上的防火墙设置不正确，因此数据流运�
 #### <a name="symptoms"></a>症状
 将 manifest.json 用于 CDM 时，数据预览中或在运行管道后不会显示任何数据。 只显示标头。 可以在下图中查看此问题。<br/>
 
-![显示无数据输出症状的屏幕截图。](./media/data-flow-troubleshoot-connector-format/no-data-output.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/no-data-output.png" alt-text="显示无数据输出症状的屏幕截图。":::
 
 #### <a name="cause"></a>原因
 清单文档描述 CDM 文件夹，例如，文件夹中有哪些实体、这些实体的引用以及与此实例对应的数据。 你的清单文档中缺少指示 ADF 在何处读取数据的 `dataPartitions` 信息，并且由于它是空文档，因此不会返回任何数据。 
@@ -495,11 +495,11 @@ Azure SQL 数据库服务器上的防火墙设置不正确，因此数据流运�
 
 - 在 CSV 源数据（参阅第二列）中： <br/>
 
-    ![显示 CSV 源数据中的属性的屏幕截图。](./media/data-flow-troubleshoot-connector-format/json-array-csv.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/json-array-csv.png" alt-text="显示 CSV 源数据中的属性的屏幕截图。":::
 
 - 在 CDM 源数据预览中： <br/>
 
-    ![显示 CDM 源数据中单独的列的屏幕截图。](./media/data-flow-troubleshoot-connector-format/json-array-cdm.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/json-array-cdm.png" alt-text="显示 CDM 源数据中单独的列的屏幕截图。":::
 
  
 还可以尝试映射偏移列，并使用数据流表达式将此属性转换为数组。 但由于在读取时将此属性作一个单独的列读取，因此转换为数组不起作用。  
@@ -538,7 +538,7 @@ Azure SQL 数据库服务器上的防火墙设置不正确，因此数据流运�
 #### <a name="symptoms"></a>症状
 将数据流中的 CDM 用于模型格式时，无法预览数据，并遇到错误：`DF-CDM_005 The corpus path is null or empty`。 该错误如下图所示：  
 
-![显示语料库路径错误的屏幕截图。](./media/data-flow-troubleshoot-connector-format/corpus-path-error.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/corpus-path-error.png" alt-text="显示语料库路径错误的屏幕截图。":::
 
 #### <a name="cause"></a>原因
 model.json 中的数据分区路径指向 Blob 存储位置，而非数据湖。 对于 ADLS Gen2，该位置的基 URL 应为 .dfs.core.windows.net。 
@@ -546,14 +546,14 @@ model.json 中的数据分区路径指向 Blob 存储位置，而非数据湖。
 #### <a name="recommendation"></a>建议
 为了解决此问题，可以参考文章：[ADF 向数据流添加了对内联数据集和 Common Data Model 的支持](https://techcommunity.microsoft.com/t5/azure-data-factory/adf-adds-support-for-inline-datasets-and-common-data-model-to/ba-p/1441798)。下面的图片展示了修复了此文中所述语料库路径错误的方法。
 
-![显示如何修复语料库路径错误的屏幕截图。](./media/data-flow-troubleshoot-connector-format/fix-format-issue.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/fix-format-issue.png" alt-text="显示如何修复语料库路径错误的屏幕截图。":::
 
 ### <a name="unable-to-read-csv-data-files"></a>无法读取 CSV 数据文件
 
 #### <a name="symptoms"></a>症状 
 你使用内联数据集作为常见数据模型，将清单作为源，并提供了条目清单文件、根路径、实体名称和路径。 在清单中，有包含 CSV 文件位置的数据分区。 同时，实体架构和 CSV 架构完全相同，所有验证均成功。 但是，在数据预览中，只加载了架构而未加载数据，且数据不可见，如下图所示：
 
-![显示无法读取数据文件的问题的屏幕截图。](./media/data-flow-troubleshoot-connector-format/unable-read-data.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/unable-read-data.png" alt-text="显示无法读取数据文件的问题的屏幕截图。":::
 
 #### <a name="cause"></a>原因
 CDM 文件夹不分为逻辑模型和物理模型，并且其中只存在物理模型。 以下两篇文章介绍了差异：[逻辑定义](/common-data-model/sdk/logical-definitions)和[解析逻辑实体定义](/common-data-model/sdk/convert-logical-entities-resolved-entities)。<br/> 
@@ -613,11 +613,11 @@ CDM 文件夹不分为逻辑模型和物理模型，并且其中只存在物理�
 使用数据流读取具有不同架构的文件（例如 CSV 和 Excel 文件）时，数据流调试、沙盒或活动运行将失败。
 - 对于 CSV，当文件架构不同时，存在数据未对齐的情况。 
 
-    ![显示第一个架构错误的屏幕截图。](./media/data-flow-troubleshoot-connector-format/schema-error-1.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/schema-error-1.png" alt-text="显示第一个架构错误的屏幕截图。":::
 
 - 对于 Excel，文件架构不同时，会发生错误。
 
-    ![显示第二个架构错误的屏幕截图。](./media/data-flow-troubleshoot-connector-format/schema-error-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/schema-error-2.png" alt-text="显示第二个架构错误的屏幕截图。":::
 
 #### <a name="cause"></a>原因
 
@@ -785,7 +785,7 @@ Azure 数据工厂数据流不支持使用固定 IP 范围，可以参考 [Azure
 
 对于 Snowflake VARIANT，它只能接受类型为结构、映射或数组的数据流值。 如果输入数据列的值为 JSON、XML 或其他字符串，请使用下列选项之一来解决此问题：
 
-- **选项-1**：使用 Snowflake 作为接收器之前，使用[分析转换](./data-flow-parse.md)将输入数据列值转换为结构、映射或数组类型，例如：
+- **选项-1**：使用 Snowflake 作为接收器之前，使用 [分析转换](./data-flow-parse.md)将输入数据列值转换为结构、映射或数组类型，例如：
 
     :::image type="content" source="./media/data-flow-troubleshoot-connector-format/parse-transformation.png" alt-text="显示分析转换的屏幕截图。"::: 
 

@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 548ddbc3fce6220e32de2df43024b7c4ed22f5e7
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 530602fdb471b86ba84aea0093d9e6c4d91d3c75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187886"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820595"
 ---
 # <a name="managing-azure-monitor-logs-in-azure-cli"></a>在 Azure CLI 中管理 Azure Monitor 日志
 
@@ -32,7 +32,7 @@ az monitor log-analytics workspace create --resource-group ContosoRG \
    --workspace-name ContosoWorkspace
 ```
 
-有关工作区的详细信息，请参阅 [Azure Monitor 日志概述](/azure/azure-monitor/logs/data-platform-logs)。
+有关工作区的详细信息，请参阅 [Azure Monitor 日志概述](./data-platform-logs.md)。
 
 ## <a name="list-tables-in-your-workspace"></a>列出工作区中的表
 
@@ -56,7 +56,7 @@ az monitor log-analytics workspace table update --resource-group ContosoRG \
 
 保留时间在 30 到 730 天之间。
 
-有关表的详细信息，请参阅[数据结构](/azure/azure-monitor/logs/data-platform-logs#data-structure)。
+有关表的详细信息，请参阅[数据结构](./data-platform-logs.md#data-structure)。
 
 ## <a name="export-data-from-selected-tables"></a>从所选表导出数据
 
@@ -83,7 +83,7 @@ az monitor log-analytics workspace data-export delete --resource-group ContosoRG
    --workspace-name ContosoWorkspace --name DataExport --yes
 ```
 
-有关数据导出的详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](/azure/azure-monitor/logs/logs-data-export)。
+有关数据导出的详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](./logs-data-export.md)。
 
 ## <a name="manage-a-linked-service"></a>管理链接服务
 
@@ -132,7 +132,7 @@ az monitor log-analytics workspace linked-storage delete --resource-group Contos
    --workspace-name ContosoWorkspace --type Alerts
 ```
 
-有关详细信息，请参阅[在 Azure Monitor Log Analytics 中使用客户管理的存储帐户](/azure/azure-monitor/logs/private-storage)。
+有关详细信息，请参阅[在 Azure Monitor Log Analytics 中使用客户管理的存储帐户](./private-storage.md)。
 
 ## <a name="manage-intelligence-packs"></a>管理智能包
 

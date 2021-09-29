@@ -3,16 +3,17 @@ title: 使用 Azure 数据工厂从 Teradata 移动数据
 description: 了解 Teradata 连接器，获取允许从 Teradata 数据库移动数据的数据工厂服务的信息
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbe6b315642b4651680a8493e288ca16ecd6544e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387200"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661101"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -41,7 +42,7 @@ ms.locfileid: "100387200"
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。
 
 - 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
-- 也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+- 也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 

@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 08/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f79fc66b44de89ba93137b244e22890348ab1c4
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 91728bfee6b8e303de2e7199e703a8acaa5139d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967196"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773581"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -75,7 +75,7 @@ Azure 资源的托管标识可以用来向支持 Azure AD 身份验证的服务�
 
 - 在资源级别启用或禁用托管标识。
 - 使用 RBAC 角色[授予权限](howto-assign-access-portal.md)。
-- 在 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中查看创建、读取、更新和删除 (CRUD) 操作。
+- 在 [Azure 活动日志](../../azure-monitor/essentials/activity-log.md)中查看创建、读取、更新和删除 (CRUD) 操作。
 - 在 Azure AD [登录日志](../reports-monitoring/concept-sign-ins.md)中查看登录活动。
 
 如果改为选择用户分配的托管标识：
@@ -83,7 +83,7 @@ Azure 资源的托管标识可以用来向支持 Azure AD 身份验证的服务�
 - 可以[创建、读取、更新和删除](how-to-manage-ua-identity-portal.md)标识。
 - 可以使用 RBAC 角色分配来[授予权限](howto-assign-access-portal.md)。
 - 可以在多个资源上使用用户分配的托管标识。
-- 可以在 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中查看 CRUD 操作。
+- 可以在 [Azure 活动日志](../../azure-monitor/essentials/activity-log.md)中查看 CRUD 操作。
 - 在 Azure AD [登录日志](../reports-monitoring/concept-sign-ins.md)中查看登录活动。
 
 可以使用 Azure 资源管理器 (ARM) 模板、Azure 门户、Azure CLI、PowerShell 和 REST API 来执行托管标识的操作。

@@ -4,15 +4,16 @@ description: 本文帮助你了解在转移 Azure 订阅的计费所有权前后
 author: bandersmsft
 ms.reviewer: mcville
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: d234227de98beeed6898697fb6ed8e0865546e16
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 6ce3a4b19bd1ba32a466bede87e111744e1a8a52
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555848"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658462"
 ---
 # <a name="transfer-subscriptions-under-an-azure-plan-from-one-partner-to-another-preview"></a>将 Azure 计划下的订阅从一个合作伙伴转移到另一合作伙伴（预览）
 

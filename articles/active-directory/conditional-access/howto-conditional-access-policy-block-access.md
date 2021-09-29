@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c792888b65f331332c320deecbcd2b5f8d7e2ee3
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 11191d1a0b3ec275184617a16b7dc2dce767d8d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175759"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618127"
 ---
 # <a name="conditional-access-block-access"></a>条件访问：阻止访问
 
@@ -43,8 +43,8 @@ ms.locfileid: "108175759"
 如果用户不在受信任的位置上，则第一个策略会阻止访问除 Microsoft 365 应用程序之外的所有应用。
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组”  。
    1. 在“包括”下，选择“所有用户”。  

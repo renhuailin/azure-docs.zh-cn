@@ -1,15 +1,15 @@
 ---
-title: 向用户授予特定实验室策略的权限 |Microsoft Docs
+title: 向用户授予特定实验室策略的权限
 description: 了解如何根据各个客户的需求在开发测试实验室中向用户授予特定实验室策略的权限
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8a9d48ca6c798c38aa7bda3a8e19405fcfa0a439
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: baf520f1d34d94926e4cf5eff5191d84936e34e0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110703752"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650506"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>向用户授予特定实验室策略的权限
 ## <a name="overview"></a>概述

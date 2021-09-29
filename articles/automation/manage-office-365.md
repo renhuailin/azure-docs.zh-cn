@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 自动化管理 Office 365 订阅服
 services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f61149fd9c35cc55a3ed55fa83e6031d895fb073
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93398039"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737726"
 ---
 # <a name="manage-office-365-services"></a>管理 Office 365 服务
 
@@ -33,7 +33,7 @@ ms.locfileid: "93398039"
 
 ## <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 
-若要完成本文中的步骤，需要在 Azure 自动化中拥有一个帐户。 请参阅[创建 Azure 自动化帐户](automation-quickstart-create-account.md)。
+若要完成本文中的步骤，需要在 Azure 自动化中拥有一个帐户。 请参阅[创建 Azure 自动化帐户](./quickstarts/create-account-portal.md)。
  
 ## <a name="add-msonline-and-msonlineext-as-assets"></a>将 MSOnline 和 MSOnlineExt 添加为资产
 
@@ -94,7 +94,7 @@ Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAdd
 
 可以在 Azure 自动化 Runbook 中使用脚本。 在示例中，我们将使用 PowerShell Runbook 类型。
 
-1. 创建新的 PowerShell Runbook。 请参阅[创建 Azure 自动化 Runbook](./automation-quickstart-create-runbook.md)。
+1. 创建新的 PowerShell Runbook。 请参阅[创建 Azure 自动化 Runbook](./learn/powershell-runbook-managed-identity.md)。
 2. 在你的自动化帐户中的“流程自动化”下选择“Runbook”。 
 3. 选择新的 Runbook，然后单击“编辑”。
 4. 复制脚本，并将其粘贴到 Runbook 的文本编辑器中。

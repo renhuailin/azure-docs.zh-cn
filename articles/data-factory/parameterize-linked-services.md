@@ -6,15 +6,15 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 author: chez-charlie
 ms.author: chez
-ms.openlocfilehash: 563ca47dc79b9ff9a31accb0d5c8a35477d32055
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 6500e743644cc505a15e44be02358d943fa5baa4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825161"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750496"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory-and-azure-synapse-analytics"></a>参数化 Azure 数据工厂和 Azure Synapse Analytics 中的链接服务
 
@@ -71,15 +71,15 @@ ms.locfileid: "122825161"
 
 # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-![将动态内容添加到“链接服务”定义](media/parameterize-linked-services/parameterize-linked-services-image-1.png)
+:::image type="content" source="media/parameterize-linked-services/parameterize-linked-services-image-1.png" alt-text="将动态内容添加到“链接服务”定义":::
 
-![新建参数](media/parameterize-linked-services/parameterize-linked-services-image-2.png)
+:::image type="content" source="media/parameterize-linked-services/parameterize-linked-services-image-2.png" alt-text="新建参数":::
 
 # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
-![将动态内容添加到“链接服务”定义](media/parameterize-linked-services/parameterize-linked-services-image-1-synapse.png)
+:::image type="content" source="media/parameterize-linked-services/parameterize-linked-services-image-1-synapse.png" alt-text="将动态内容添加到“链接服务”定义":::
 
-![新建参数](media/parameterize-linked-services/parameterize-linked-services-image-2-synapse.png)
+:::image type="content" source="media/parameterize-linked-services/parameterize-linked-services-image-2-synapse.png" alt-text="新建参数":::
 
 ---
 

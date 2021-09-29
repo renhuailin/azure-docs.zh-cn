@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/03/2021
-ms.openlocfilehash: e5d4e36b6c9da2d5887675828c407bcc5bde1263
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0a7bca44ccee4e836fd5aa8e0ef44412e1fc6985
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539904"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836212"
 ---
 # <a name="copy-data-from-and-to-salesforce-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 从/向 Salesforce 复制数据
 
@@ -173,7 +173,7 @@ Salesforce 链接服务支持以下属性。
 > [!IMPORTANT]
 > 任何自定义对象均需要 **API 名称** 的“__c”部分。
 
-![Salesforce 连接 API 名称](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
+:::image type="content" source="media/copy-data-from-salesforce/data-factory-salesforce-api-name.png" alt-text="Salesforce 连接 API 名称":::
 
 **示例：**
 
@@ -219,7 +219,7 @@ Salesforce 链接服务支持以下属性。
 > [!IMPORTANT]
 > 任何自定义对象均需要 **API 名称** 的“__c”部分。
 
-![Salesforce 连接 API 名称列表](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
+:::image type="content" source="media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png" alt-text="Salesforce 连接 API 名称列表":::
 
 **示例：**
 

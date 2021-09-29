@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 08/11/2021
-ms.openlocfilehash: f1a7af136633b096f8bcda08466822549f922b35
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 318c4ba47caab7ce7f84f8bc43522d04c3eb40da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536952"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644859"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -168,7 +168,7 @@ ISE 已在以下几方面提高限制：
    
    * [Azure 应用服务依赖项](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
    * [Azure 缓存服务依赖项](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
-   * [Azure API 管理依赖项](../api-management/api-management-using-with-vnet.md#network-configuration)
+   * [Azure API 管理依赖项](../api-management/api-management-using-with-vnet.md#network-configuration-issues)
 
 <a name="create-environment"></a>
 
@@ -186,7 +186,7 @@ ISE 已在以下几方面提高限制：
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | properties | 必选 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的新的或现有的 Azure 资源组 |

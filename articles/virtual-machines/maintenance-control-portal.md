@@ -3,17 +3,17 @@ title: 使用 Azure 门户对 Azure 虚拟机进行维护控制
 description: 了解如何使用维护控制和 Azure 门户来控制对 Azure VM 应用维护的时间。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 0db6f8d43a2492b59b407e43eee016d130915c77
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 6ac4be6b1c0654ea46bbbfe587a72839c3f2896b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687739"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216624"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>使用维护控制和 Azure 门户来控制更新
 

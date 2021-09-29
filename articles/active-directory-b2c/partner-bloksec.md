@@ -8,16 +8,16 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 7/15/2021
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 80d2ad6d011633a3db6a63a37f04db5d22f517ba
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: a983da4159f41ae6dfe261b7f42ce20c2d2fa3a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179617"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128594738"
 ---
 # <a name="tutorial-configure-azure-active-directory-b2c-with-bloksec-for-passwordless-authentication"></a>教程：为 Azure Active Directory B2C 配置 BlokSec 以进行无密码身份验证
 
@@ -114,22 +114,18 @@ BlokSec 集成包括以下组件：
 ### <a name="part-2---add-a-new-identity-provider-in-azure-ad-b2c"></a>第 2 部分 - 在 Azure AD B2C 中添加新的标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录到 [Azure 门户](https://portal.azure.com/#home)。
-
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-
-3. 选择 Azure 门户左上角的所有服务，搜索并选择 Azure AD B2C 
-
-4. 导航至“仪表板”>“Azure Active Directory B2C”>“标识提供者”
-
-5. 选择新的 OpenID Connect 提供程序
-
-6. 选择“添加”
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的所有服务，搜索并选择 Azure AD B2C 
+1. 导航至“仪表板”>“Azure Active Directory B2C”>“标识提供者”
+1. 选择新的 OpenID Connect 提供程序
+1. 选择“添加”
 
 ### <a name="part-3---configure-an-identity-provider"></a>第 3 部分 - 配置标识提供者
 
 1. 选择“标识提供者类型”>“OpenID Connect”
 
-2. 填写用于设置标识提供者的表单：
+1. 填写用于设置标识提供者的表单：
 
 |属性  |值  |
 |:---------|:---------|
@@ -141,11 +137,11 @@ BlokSec 集成包括以下组件：
 |响应类型|代码|
 |域提示|yuID|
 
-3. 选择“确定”
+1. 选择“确定”
 
-4. 选择“映射此标识提供者的声明”。
+1. 选择“映射此标识提供者的声明”。
 
-5. 填写用于映射标识提供者的表单：
+1. 填写用于映射标识提供者的表单：
 
 |属性  |Value  |
 |:---------|:---------|
@@ -155,15 +151,15 @@ BlokSec 集成包括以下组件：
 |Surname|family_name|
 |电子邮件|电子邮件|
 
-6. 选择“保存”以完成新 OIDC 标识提供者的设置。  
+1. 选择“保存”以完成新 OIDC 标识提供者的设置。  
 
 ### <a name="part-4---user-registration"></a>第 4 部分 - 用户注册
 
 1. 使用之前提供的凭据登录到 BlokSec 管理控制台。
 
-2. 导航至之前创建的 Azure AD B2C 应用程序。 选择右上角的齿轮图标，然后选择创建帐户。  
+1. 导航至之前创建的 Azure AD B2C 应用程序。 选择右上角的齿轮图标，然后选择创建帐户。  
 
-3. 在创建帐户窗体中输入用户的信息，记下帐户名称，然后选择“提交”。  
+1. 在创建帐户窗体中输入用户的信息，记下帐户名称，然后选择“提交”。  
 
 用户提供电子邮件地址后将收到一封帐户注册电子邮件。 让用户追随安装了 BlokSec yuID 应用的移动设备上的注册链接，
 
@@ -173,23 +169,23 @@ BlokSec 集成包括以下组件：
 
 1. 在 Azure AD B2C 租户中的“策略”下，选择“用户流”。  
 
-2. 选择新建用户流
+1. 选择新建用户流
 
-3. 选择“注册和登录” > “版本” > “创建”。
+1. 选择“注册和登录” > “版本” > “创建”。
 
-4. 为策略输入一个“名称”。
+1. 为策略输入一个“名称”。
 
-5. 在标识提供者部分，选择新创建的 BlokSec 标识提供者。  
+1. 在标识提供者部分，选择新创建的 BlokSec 标识提供者。  
 
-6. 为本地帐户选择“无”以禁用基于电子邮件和密码的身份验证。
+1. 为本地帐户选择“无”以禁用基于电子邮件和密码的身份验证。
 
-7. 选择“运行用户流”
+1. 选择“运行用户流”
 
-8. 在窗体中，输入回复 URL，例如， https://jwt.ms
+1. 在窗体中，输入回复 URL，例如， https://jwt.ms
 
-9. 浏览器将重定向到 BlokSec 登录页面。 输入用户注册期间注册的帐户名称。 用户的移动设备（安装了 BlokSec yuID）将收到一条推送通知；打开通知后，用户将收到身份验证质询
+1. 浏览器将重定向到 BlokSec 登录页面。 输入用户注册期间注册的帐户名称。 用户的移动设备（安装了 BlokSec yuID）将收到一条推送通知；打开通知后，用户将收到身份验证质询
 
-10. 接受身份验证质询后，浏览器会将用户重定向到回复 URL。  
+1. 接受身份验证质询后，浏览器会将用户重定向到回复 URL。  
 
 ## <a name="next-steps"></a>后续步骤 
 
@@ -211,24 +207,16 @@ BlokSec 集成包括以下组件：
 存储之前在 Azure AD B2C 租户中记录的客户端密码。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-
-4. 在“概述”页上选择“标识体验框架”。
-
-5. 选择“策略密钥”，然后选择“添加”。
-
-6. 对于“选项”，请选择 `Manual`。
-
-7. 输入策略密钥的 **名称**。 例如，`BlokSecAppSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-
-8. 在“机密”中，输入前面记录的应用程序机密。
-
-9. 在“密钥用法”处选择 `Signature`。
-
-10. 选择“创建”。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 在“概述”页上选择“标识体验框架”。
+1. 选择“策略密钥”，然后选择“添加”。
+1. 对于“选项”，请选择 `Manual`。
+1. 输入策略密钥的 **名称**。 例如，`BlokSecAppSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 在“机密”中，输入前面记录的应用程序机密。
+1. 在“密钥用法”处选择 `Signature`。
+1. 选择“创建”。
 
 ### <a name="part-3---configure-bloksec-as-an-identity-provider"></a>第 3 部分 - 将 BlokSec 配置为标识提供者
 
@@ -347,23 +335,18 @@ BlokSec 集成包括以下组件：
 ### <a name="part-7---upload-the-custom-policy"></a>第 7 部分 - 上传自定义策略
 
 1. 登录 [Azure 门户](https://portal.azure.com/#home)。
-
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-
-3. 在 [Azure 门户](https://portal.azure.com/#home)中，搜索并选择 Azure AD B2C。
-
-4. 在策略下，选择 Identity Experience Framework。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在 [Azure 门户](https://portal.azure.com/#home)中，搜索并选择 Azure AD B2C。
+1. 在策略下，选择 Identity Experience Framework。
 选择“上传自定义策略”，然后上传已更改的两个策略文件，其顺序为：先上传扩展策略（例如 `TrustFrameworkExtensions.xml`），然后上传信赖方策略（例如 `SignUpSignIn.xml`）。
 
 ### <a name="part-8---test-your-custom-policy"></a>第 8 部分 - 测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-
-2. 对于“应用程序”，请选择[前面注册](./tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-
-3. 选择“立即运行”按钮。
-
-4. 在注册或登录页面中，选择“Google”以使用 Google 帐户登录。
+1. 对于“应用程序”，请选择[前面注册](./tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页面中，选择“Google”以使用 Google 帐户登录。
 
 如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 

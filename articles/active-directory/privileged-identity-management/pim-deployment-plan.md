@@ -1,5 +1,5 @@
 ---
-title: 规划 Privileged Identity Management 部署？ - Azure AD | Microsoft Docs
+title: 如何规划 Privileged Identity Management 部署？ - Azure AD | Microsoft Docs
 description: 了解如何在 Azure AD 组织中部署 Privileged Identity Management (PIM)。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 07/26/2021
 ms.author: baselden
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99bdfeff59f26f59c9d64bcca9226d9b1f70ec1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: afb94b9589171a5715b1e7bdf9a80ceb0a8b7f45
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749077"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771168"
 ---
 # <a name="plan-a-privileged-identity-management-deployment"></a>规划 Privileged Identity Management 部署
 
-Privileged Identity Management (PIM) 提供基于时间和基于审批的角色激活，用于缓解重要资源上出现的访问权限过度、不必要或滥用的风险。 这些资源包括 Azure Active Directory (Azure AD)、Azure 和其他 Microsoft Online Services（例如 Microsoft 365 或 Microsoft Intune）中的资源。 你还可以将 PIM 用于服务 (SaaS) 应用程序。
+Privileged Identity Management (PIM) 提供基于时间且基于审批的角色激活，用于缓解重要资源上出现的访问权限过度、不必要或滥用的风险。 这些资源包括 Azure Active Directory (Azure AD)、Azure 和其他 Microsoft Online Services（例如 Microsoft 365 或 Microsoft Intune）中的资源。 还可以将 PIM 用于服务 (SaaS) 应用程序。
 
 PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包括：
 
@@ -45,7 +45,7 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 * 下载 **审核历史记录** 进行内部或外部审核
 
-若要充分利用此部署计划，你必须全面了解[什么是 Privileged Identity Management](pim-configure.md)。
+若要充分利用此部署计划，必须全面了解[什么是 Privileged Identity Management](pim-configure.md)。
 
 ## <a name="understand-pim"></a>了解 PIM
 
@@ -61,18 +61,18 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 * **特权访问组** – 用于向 Azure AD 安全组的成员和所有者角色设置实时访问权限。 特权访问组不仅为你提供一种为 Azure AD 角色和 Azure 角色设置 PIM 的替代方法，而且还允许你在 Microsoft Online Services（如 Intune、Azure Key Vault 和 Azure 信息保护）中为其他权限设置 PIM。 
 
-你可以向这些角色或组分配： 
+可以将以下用户或组分配到这些角色或组： 
 
-* **用户** - 获取对 Azure AD 角色、Azure 角色和特权访问组的实时访问权限。 
+* 用户 - 用于获取对 Azure AD 角色、Azure 角色和特权访问组的实时访问权限。 
 
-* **组** - 组中的任何人都可以实时访问 Azure AD 角色和 Azure 角色。 对于 Azure AD 角色，组必须是标记为可分配给某个角色的新建云组，而对于 Azure 角色，组可以是任何 Azure AD 安全组。 建议不要将组分配/嵌套到特权访问组。 
+* 组 - 组中的任何人都可以实时访问 Azure AD 角色和 Azure 角色。 对于 Azure AD 角色，组必须是标记为可分配给某个角色的新建云组，而对于 Azure 角色，组可以是任何 Azure AD 安全组。 建议不要将组分配/嵌套到特权访问组。 
 
 > [!NOTE] 
->不能将服务主体分配为符合 Azure AD 角色、Azure 角色和特权访问组的条件，但可以为这三个角色和组授予有时间限制的活动分配。
+>不能将服务主体分配为符合 Azure AD 角色、Azure 角色和特权访问组的条件，但可以授予有时间限制的活动分配到这所有三者。
 
 ### <a name="principle-of-least-privilege"></a>最低权限原则
 
-为用户分配具有[执行其任务所需的最低权限](../roles/delegate-by-task.md)的角色。 此做法会尽量减少全局管理员的数目，并使用适合特定方案的特定管理员角色。
+为用户分配具有[执行其任务所需的最低特权](../roles/delegate-by-task.md)的角色。 此做法会尽量减少全局管理员的数目，并使用适合特定方案的特定管理员角色。
 
 > [!NOTE] 
 > Microsoft 的全局管理员非常少。 在 [Microsoft 如何使用 Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access) 中了解详细信息。
@@ -81,7 +81,7 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 有两种类型的分配 - 符合条件和活动。 如果用户符合某个角色的条件，则意味着他们在需要执行特权任务时可以激活该角色。 
 
-你还可以为每种类型的分配设置开始时间和结束时间。 这样一来，你就有了四种可能的分配类型：
+还可以为每种类型的分配设置开始时间和结束时间。 这样一来，你就有了四种可能的分配类型：
 
 * 永久符合条件
 
@@ -93,11 +93,11 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 如果角色过期，你可以延长或续订这些分配。 
 
-建议不要向角色分配永久活动类型，但推荐的[两个不受限紧急访问帐户](../roles/security-emergency-access.md)除外，这两个帐户应具有永久的全局管理员角色。 
+建议不要为角色进行永久活动类型分配，但推荐的[两个不受限紧急访问帐户](../roles/security-emergency-access.md)除外，这两个帐户应具有永久的全局管理员角色。 
 
 ## <a name="plan-the-project"></a>规划项目
 
-如果技术项目失败，通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，[请确保选择适当的利益干系人](../fundamentals/active-directory-deployment-plans.md#include-the-right-stakeholders)并充分了解项目中的利益干系人角色。
+如果技术项目失败，通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，[请确保吸引适当的利益干系人](../fundamentals/active-directory-deployment-plans.md#include-the-right-stakeholders)并充分了解项目中的利益干系人角色。
 
 ### <a name="plan-a-pilot"></a>规划试点
 
@@ -113,7 +113,7 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 沟通对于任何新服务的成功都至关重要。 主动与用户交流他们的体验将如何变化、何时会变化以及在遇到问题时如何获取支持。
 
-安排时间与内部 IT 支持人员一起完成 PIM 工作流。 向他们提供适当的文档和你的联系信息。
+安排时间与内部 IT 支持人员一起演练完成 PIM 工作流。 向他们提供适当的文档和你的联系信息。
 
 ## <a name="plan-testing-and-rollback"></a>规划测试和回滚
 
@@ -130,7 +130,7 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 | --- | --- | --- |
 |全局管理员角色| <li> 要求 MFA <br><li>  需要审批 <br><li>  审批者收到通知，并且可以批准 <br><li>  角色在预设时间后过期|
 
-对于 Azure AD 和 Azure 资源角色，请确保有代表你担任这些角色的用户。 此外，在临时环境中测试 PIM 时，请考虑以下角色：
+对于 Azure AD 和 Azure 资源角色，请确保你有要担任这些角色的用户。 此外，在临时环境中测试 PIM 时，请考虑以下角色：
 
 | 角色| Azure AD 角色| Azure 资源角色| 特权访问组 |
 | --- | --- | --- |--- |
@@ -142,7 +142,7 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 ### <a name="plan-rollback"></a>规划回滚
 
-如果 PIM 在生产环境中无法按预期工作，你可以再次将角色分配从符合条件更改为活动。 对于每个已配置的角色，为分配类型为“符合条件”的所有用户选择省略号 (...)。 然后，可以选择“设为活动”选项返回，将角色分配设置为“活动”。
+如果 PIM 在生产环境中无法按预期工作，你可以再次将角色分配从“符合条件”更改为“活动”。 对于每个已配置的角色，为分配类型为“符合条件”的所有用户选择省略号 (...)。 然后，可以选择“设为活动”选项以便回来，将角色分配设置为“活动”。
 
 ## <a name="plan-and-implement-pim-for-azure-ad-roles"></a>为 Azure AD 角色规划和实施 PIM
 
@@ -152,13 +152,13 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 列出组织中有特权角色的人员。 查看分配的用户，确定不再需要该角色的管理员，并将其从分配中删除。 
 
-你可以使用 [Azure AD 角色访问评审](pim-how-to-start-security-review.md)来自动发现、评审、批准或删除分配。
+可以使用 [Azure AD 角色访问评审](./pim-create-azure-ad-roles-and-resource-roles-review.md)来自动发现、评审、批准或删除分配。
 
 ### <a name="determine-roles-to-be-managed-by-pim"></a>确定要由 PIM 管理的角色
 
-侧重于保护具有最多权限的 Azure AD 角色。 此外，请务必考虑哪些数据和权限对组织而言最为敏感。 
+优先保护具有最多权限的 Azure AD 角色。 此外，请务必考虑哪些数据和权限对组织而言最为敏感。 
 
-首先，确保所有全局和安全管理员角色都使用 PIM 进行管理，因为他们是受到攻击时可以造成最大损害的用户。 然后，考虑可能容易受到攻击而应加以管理的更多角色。
+首先，确保所有全局和安全管理员角色都是使用 PIM 进行管理的，因为他们是受到攻击时可以造成最大损害的用户。 然后，考虑可能容易受到攻击而应加以管理的更多角色。
 
 ### <a name="configure-pim-settings-for-azure-ad-roles"></a>为 Azure AD 角色配置 PIM 设置
 
@@ -183,7 +183,7 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 2.[允许符合条件的用户实时激活 Azure AD 角色](pim-how-to-activate-role.md)
 
-当角色即将到期时，请使用 [PIM 来延长或续订角色](pim-resource-roles-renew-extend.md)。 这两种用户启动的操作都需要全局管理员或特权角色管理员批准。  这两种用户启动的操作都需要全局管理员或特权角色管理员批准。 
+当角色即将到期时，请使用 [PIM 来延长或续订角色](pim-resource-roles-renew-extend.md)。 这两种用户启动的操作都需要全局管理员或特权角色管理员批准。
 
 当 Azure AD 角色中发生这些重要事件时，PIM 会根据角色、事件和通知设置，向特权管理员[发送电子邮件通知和每周摘要电子邮件](pim-email-notifications.md)。 这些电子邮件可能还包含指向相关任务的链接，比如激活或续订角色。 
 
@@ -214,7 +214,7 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 作为全局管理员，你可以[提升访问权限以管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md)。 然后可以找到每个订阅的所有者，与其协作，删除订阅内不必要的分配。
 
-使用 [Azure 资源访问评审](pim-resource-roles-start-access-review.md)来审核和删除不必要的角色分配。 
+使用 [Azure 资源访问评审](./pim-create-azure-ad-roles-and-resource-roles-review.md)来审核和删除不必要的角色分配。 
 
 ### <a name="determine-roles-to-be-managed-by-pim"></a>确定要由 PIM 管理的角色
 
@@ -278,7 +278,7 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 在这种情况下，应使用特权访问组。 创建特权访问组，并向其授予对多个角色的永久活动访问权限。 请参阅[特权访问组管理功能](groups-features.md)。
 
-若要将可分配 Azure AD 角色的组作为特权访问组进行管理，你必须[在 PIM 中管理它](groups-discover-groups.md)。
+若要将可分配 Azure AD 角色的组作为特权访问组进行管理，必须[在 PIM 中管理它](groups-discover-groups.md)。
 
 ### <a name="configure-pim-settings-for-privileged-access-groups"></a>为特权访问组配置 PIM 设置
 
@@ -293,15 +293,15 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 
 ### <a name="assign-eligibility-for-privileged-access-groups"></a>为特权访问组分配资格
 
-你可以[为特权访问组的成员或所有者分配资格](groups-assign-member-owner.md)。 只需一次激活，他们就可访问所有链接的资源。 
+可以[为特权访问组的成员或所有者分配资格](groups-assign-member-owner.md)。 只需一次激活，他们就可访问所有链接的资源。 
 
 >[!NOTE] 
->你可以按照向用户分配角色的方式，将特权组分配给一个或多个 Azure AD 和 Azure 资源角色。 在单个 Azure AD 组织（租户）中最多可以创建 250 个可分配角色的组。
+>可以按照向用户分配角色的方式，将特权组分配给一个或多个 Azure AD 和 Azure 资源角色。 在单个 Azure AD 组织（租户）中最多可以创建 250 个可分配角色的组。
 
 ![为特权访问组分配资格](media/pim-deployment-plan/privileged-access-groups.png)
 
 
-当特权组分配即将到期时，请使用 [PIM 来延长或续订组分配](groups-renew-extend.md)。 你需要获得组所有者的批准。
+当特权组分配即将到期时，请使用 [PIM 来延长或续订组分配](groups-renew-extend.md)。 需要获得组所有者的批准。
 
 ### <a name="approve-or-deny-pim-activation-request"></a>批准或拒绝 PIM 激活请求
 
@@ -318,6 +318,4 @@ PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包
 * 如果存在与 PIM 相关的问题，请参阅[排查 PIM 问题](pim-troubleshoot.md)。
 
 * [部署其他标识功能](../fundamentals/active-directory-deployment-plans.md)
-
- 
 

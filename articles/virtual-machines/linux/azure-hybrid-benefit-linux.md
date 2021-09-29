@@ -6,18 +6,18 @@ documentationcenter: ''
 author: mathapli
 manager: rochakm
 ms.service: virtual-machines
-ms.subservice: azure-hybrid-benefit
+ms.subservice: billing
 ms.collection: linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: c794d3e18eaf25241cb9c55c14a32e4e5c9ff7b0
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 867d4b380266c5cbfbae68ca61d83ab3fd28aee3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692255"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216586"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure 混合权益如何应用于 Linux 虚拟机
 

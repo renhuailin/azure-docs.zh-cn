@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 6073142b21a28f1242e0e6ec65ee2945a354b60b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f4cef83309d1579a9360738193c0ea4771883ae1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592498"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella-admin-sso"></a>教程：Azure Active Directory 与 Cisco Umbrella Admin SSO 集成
 
@@ -188,7 +188,7 @@ ms.locfileid: "104592498"
 
 * 在 Azure 门户中单击 **测试此应用程序** 后，应能够自动登录到为其设置了 SSO 的 Cisco Umbrella Admin SSO。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Cisco Umbrella Admin SSO 磁贴时，如果是在 SP 模式下配置的，您会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，应会自动登录到为其设置了 SSO 的 Cisco Umbrella Admin SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Cisco Umbrella Admin SSO 磁贴时，如果是在 SP 模式下配置的，您会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，应会自动登录到为其设置了 SSO 的 Cisco Umbrella Admin SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

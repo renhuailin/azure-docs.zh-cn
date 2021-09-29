@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: aaca4774f6f56d38624b4811375a6661299161cc
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 9b378b4cfb9bb35f1fb2a555afed195ac6b84dc3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821768"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678680"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的表达式和函数
 
@@ -210,11 +210,35 @@ Baba's book store
 ## <a name="functions"></a>函数
 
 可以在表达式中调用函数。 以下各节提供了有关可以在表达式中使用的函数的信息。  
+  
+## <a name="date-functions"></a>日期函数  
+
+| 日期或时间函数 | 任务 |
+| --------------------- | ---- |
+| [addDays](control-flow-expression-language-functions.md#addDays) | 将天数加到时间戳。 |
+| [addHours](control-flow-expression-language-functions.md#addHours) | 将小时数加到时间戳。 |
+| [addMinutes](control-flow-expression-language-functions.md#addMinutes) | 将分钟数加到时间戳。 |
+| [addSeconds](control-flow-expression-language-functions.md#addSeconds) | 将秒数加到时间戳。 |
+| [addToTime](control-flow-expression-language-functions.md#addToTime) | 将一定数目的时间单位加到时间戳。 另请参阅 [getFutureTime](control-flow-expression-language-functions.md#getFutureTime)。 |
+| [convertFromUtc](control-flow-expression-language-functions.md#convertFromUtc) | 将时间戳从协调世界时 (UTC) 转换为目标时区。 |
+| [convertTimeZone](control-flow-expression-language-functions.md#convertTimeZone) | 将时间戳从源时区转换为目标时区。 |
+| [convertToUtc](control-flow-expression-language-functions.md#convertToUtc) | 将时间戳从源时区转换为协调世界时 (UTC)。 |
+| [dayOfMonth](control-flow-expression-language-functions.md#dayOfMonth) | 返回时间戳中月份组成部分的日期。 |
+| [dayOfWeek](control-flow-expression-language-functions.md#dayOfWeek) | 返回时间戳中周组成部分的星期日期。 |
+| [dayOfYear](control-flow-expression-language-functions.md#dayOfYear) | 返回时间戳中年组成部分的日期。 |
+| [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | 以可选格式返回字符串形式的时间戳。 |
+| [getFutureTime](control-flow-expression-language-functions.md#getFutureTime) | 返回当前时间戳加上指定的时间单位。 另请参阅 [addToTime](control-flow-expression-language-functions.md#addToTime)。 |
+| [getPastTime](control-flow-expression-language-functions.md#getPastTime) | 返回当前时间戳减去指定的时间单位。 另请参阅 [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime)。 |
+| [startOfDay](control-flow-expression-language-functions.md#startOfDay) | 返回时间戳中的天的开始时间。 |
+| [startOfHour](control-flow-expression-language-functions.md#startOfHour) | 返回时间戳中的小时的开始时间。 |
+| [startOfMonth](control-flow-expression-language-functions.md#startOfMonth) | 返回时间戳中的月份的开始时间。 |
+| [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime) | 从时间戳中减去一定数目的时间单位。 另请参阅 [getPastTime](control-flow-expression-language-functions.md#getPastTime)。 |
+| [ticks](control-flow-expression-language-functions.md#ticks) | 返回指定时间戳的 `ticks` 属性值。 |
+| [utcNow](control-flow-expression-language-functions.md#utcNow) | 返回字符串形式的当前时间戳。 |
 
 ## <a name="string-functions"></a>字符串函数  
 
-若要使用字符串，可以使用这些字符串函数以及某些[集合函数](#collection-functions)。
-字符串函数仅适用于字符串。
+若要使用字符串，可以使用这些字符串函数以及某些[集合函数](#collection-functions)。  字符串函数仅适用于字符串。
 
 | 字符串函数 | 任务 |
 | --------------- | ---- |
@@ -267,7 +291,7 @@ Baba's book store
 ## <a name="conversion-functions"></a>转换函数  
 
  这些函数用于在语言中的每个本机类型之间转换：  
--   字符串
+-   string
 -   integer
 -   FLOAT
 -   boolean
@@ -315,31 +339,6 @@ Baba's book store
 | [rand](control-flow-expression-language-functions.md#rand) | 返回指定范围内的随机整数。 |
 | [range](control-flow-expression-language-functions.md#range) | 返回以指定整数开头的一个整数数组。 |
 | [sub](control-flow-expression-language-functions.md#sub) | 返回第一个数字减去第二个数字得到的结果。 |
-  
-## <a name="date-functions"></a>日期函数  
-
-| 日期或时间函数 | 任务 |
-| --------------------- | ---- |
-| [addDays](control-flow-expression-language-functions.md#addDays) | 将天数加到时间戳。 |
-| [addHours](control-flow-expression-language-functions.md#addHours) | 将小时数加到时间戳。 |
-| [addMinutes](control-flow-expression-language-functions.md#addMinutes) | 将分钟数加到时间戳。 |
-| [addSeconds](control-flow-expression-language-functions.md#addSeconds) | 将秒数加到时间戳。 |
-| [addToTime](control-flow-expression-language-functions.md#addToTime) | 将一定数目的时间单位加到时间戳。 另请参阅 [getFutureTime](control-flow-expression-language-functions.md#getFutureTime)。 |
-| [convertFromUtc](control-flow-expression-language-functions.md#convertFromUtc) | 将时间戳从协调世界时 (UTC) 转换为目标时区。 |
-| [convertTimeZone](control-flow-expression-language-functions.md#convertTimeZone) | 将时间戳从源时区转换为目标时区。 |
-| [convertToUtc](control-flow-expression-language-functions.md#convertToUtc) | 将时间戳从源时区转换为协调世界时 (UTC)。 |
-| [dayOfMonth](control-flow-expression-language-functions.md#dayOfMonth) | 返回时间戳中月份组成部分的日期。 |
-| [dayOfWeek](control-flow-expression-language-functions.md#dayOfWeek) | 返回时间戳中周组成部分的星期日期。 |
-| [dayOfYear](control-flow-expression-language-functions.md#dayOfYear) | 返回时间戳中年组成部分的日期。 |
-| [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | 以可选格式返回字符串形式的时间戳。 |
-| [getFutureTime](control-flow-expression-language-functions.md#getFutureTime) | 返回当前时间戳加上指定的时间单位。 另请参阅 [addToTime](control-flow-expression-language-functions.md#addToTime)。 |
-| [getPastTime](control-flow-expression-language-functions.md#getPastTime) | 返回当前时间戳减去指定的时间单位。 另请参阅 [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime)。 |
-| [startOfDay](control-flow-expression-language-functions.md#startOfDay) | 返回时间戳中的天的开始时间。 |
-| [startOfHour](control-flow-expression-language-functions.md#startOfHour) | 返回时间戳中的小时的开始时间。 |
-| [startOfMonth](control-flow-expression-language-functions.md#startOfMonth) | 返回时间戳中的月份的开始时间。 |
-| [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime) | 从时间戳中减去一定数目的时间单位。 另请参阅 [getPastTime](control-flow-expression-language-functions.md#getPastTime)。 |
-| [ticks](control-flow-expression-language-functions.md#ticks) | 返回指定时间戳的 `ticks` 属性值。 |
-| [utcNow](control-flow-expression-language-functions.md#utcNow) | 返回字符串形式的当前时间戳。 |
 
 ## <a name="function-reference"></a>函数参考
 
@@ -2786,7 +2785,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-### <a name="string"></a>字符串
+### <a name="string"></a>string
 
 返回值的字符串版本。
 
@@ -3269,7 +3268,7 @@ xml('<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| <*xml-version*> | 对象 | 指定的字符串或 JSON 对象的编码 XML |
+| <*xml-version*> | Object | 指定的字符串或 JSON 对象的编码 XML |
 ||||
 
 *示例 1*

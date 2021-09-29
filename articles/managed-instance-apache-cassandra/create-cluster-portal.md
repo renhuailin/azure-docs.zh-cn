@@ -5,17 +5,17 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
+ms.date: 09/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 67f317594b257776a3a8ac8c257281352516bfee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 468f5141d7e28d387719df6bddbf30f5810c5955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749472"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557224"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>快速入门：从 Azure 门户中创建适用于 Apache Cassandra 群集的 Azure 托管实例（预览版）
- 
+
 适用于 Apache Cassandra 的 Azure 托管实例为托管的开源 Apache Cassandra 数据中心提供自动部署和缩放操作，可以加速混合方案的部署并减少日常维护。
 
 > [!IMPORTANT]
@@ -52,8 +52,8 @@ ms.locfileid: "121749472"
    * **初始 Cassandra 管理员密码** - 用于创建群集的密码。
    * **确认 Cassandra 管理员密码** - 重新输入你的密码。
 
-    > [!NOTE]
-    > 在公共预览版中，可以在美国东部、美国西部、美国东部 2、美国西部 2、美国中部、美国中南部、北欧、西欧、东南亚和澳大利亚东部区域中创建托管实例群集。
+   > [!NOTE]
+   > 在公共预览版中，可以在美国东部、美国西部、美国东部 2、美国西部 2、美国中部、美国中南部、北欧、西欧、东南亚和澳大利亚东部区域中创建托管实例群集。
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="填写“创建群集”窗体。" lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
 
@@ -63,14 +63,14 @@ ms.locfileid: "121749472"
 
    :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="配置网络详细信息。" lightbox="./media/create-cluster-portal/networking.png" border="true":::
 
-    > [!NOTE]
-    > 部署 Azure Managed Instance for Apache Cassandra 需要 Internet 访问权限。 在限制 Internet 访问权限的环境中，部署将失败。 请确保未在 VNet 中阻止对以下关键 Azure 服务（托管 Cassandra 需要这些服务才能正常工作）的访问权限：
-    > - Azure 存储
-    > - Azure KeyVault
-    > - Azure 虚拟机规模集
-    > - Azure 监视
-    > - Azure Active Directory
-    > - Azure 安全性
+   > [!NOTE]
+   > 部署 Azure Managed Instance for Apache Cassandra 需要 Internet 访问权限。 在限制 Internet 访问权限的环境中，部署将失败。 请确保未在 VNet 中阻止对以下关键 Azure 服务（托管 Cassandra 需要这些服务才能正常工作）的访问权限：
+   > - Azure 存储
+   > - Azure KeyVault
+   > - Azure 虚拟机规模集
+   > - Azure 监视
+   > - Azure Active Directory
+   > - Azure 安全性
 
 1. 如果你在上一步中创建了新的 VNet，请跳到步骤 8。 如果你选择了现有 VNet，则在创建群集之前，你需要对虚拟网络和子网应用某些特殊权限。 为此，请使用 `az role assignment create` 命令，将 `<subscription ID>`、`<resource group name>` 和 `<VNet name>` 替换为适当的值：
 
@@ -83,11 +83,10 @@ ms.locfileid: "121749472"
 
 1. 现在，你已完成网络设置，请单击“查看 + 创建” > “创建” 
 
-    > [!NOTE]
-    > 创建群集最多可能需要 15 分钟。
+   > [!NOTE]
+   > 创建群集最多可能需要 15 分钟。
 
    :::image type="content" source="./media/create-cluster-portal/review-create.png" alt-text="查看摘要以创建群集。" lightbox="./media/create-cluster-portal/review-create.png" border="true":::
-
 
 1. 部署完成后，请检查你的资源组，看看新创建的托管实例群集：
 
@@ -96,7 +95,6 @@ ms.locfileid: "121749472"
 1. 若要浏览群集节点，请导航到你用来创建群集的“虚拟网络”窗格，并打开“概述”窗格以查看它们：
 
    :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="查看群集资源。" lightbox="./media/create-cluster-portal/resources.png" border="true":::
-
 
 ## <a name="connecting-to-your-cluster"></a>连接到你的群集
 
@@ -119,7 +117,8 @@ export SSL_VALIDATE=false
 
 # Connect to CQLSH (replace <IP> with the private IP addresses of the nodes in your Datacenter):
 host=("<IP>" "<IP>" "<IP>")
-cqlsh $host 9042 -u cassandra -p cassandra --ssl
+initial_admin_password="Password provided when creating the cluster"
+cqlsh $host 9042 -u cassandra -p $initial_admin_password --ssl
 ```
 
 ## <a name="troubleshooting"></a>疑难解答

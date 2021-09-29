@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 95081b661d4f33577df07420ab194ec48488221a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: ea5cd9dffeb8efdeb9dc29fa9d38696973285e47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768083"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549229"
 ---
 # <a name="required-url-list"></a>所需的 URL 列表
 
@@ -87,7 +87,7 @@ ms.locfileid: "122768083"
 | 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不适用 |
 
 >[!IMPORTANT]
->Azure 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
+>Azure 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-azure-virtual-desktop.md)。
 >
 >建议使用 FQDN 标记或服务标记（而不是 URL）来防止服务问题。 列出的 URL 和标记只对应于 Azure 虚拟桌面站点和资源。 这些 URL 不包含其他服务（如 Azure Active Directory）的 URL。
 

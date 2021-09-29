@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 7dd40b52cbc74e62a6dbb8ed83d19c968e48d9c4
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 6a21299d505d0132bab432223095850b3006b05e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822812"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651268"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>在映射数据流中生成表达式
 
@@ -29,25 +29,25 @@ ms.locfileid: "122822812"
 
 有多个打开表达式生成器的入口点。 这些都取决于数据流转换的具体上下文。 最常见的用例是转换（如[派生列](data-flow-derived-column.md)和[聚合](data-flow-aggregate.md)转换），用户使用数据流表达式语言创建或更新列。 可以通过在列的列表上方选择“打开表达式生成器”来打开表达式生成器。 你还可以单击列上下文，然后直接打开该表达式的表达式生成器。
 
-![打开表达式生成器派生](media/data-flow/open-expression-builder-derive.png "打开表达式生成器派生")
+:::image type="content" source="media/data-flow/open-expression-builder-derive.png" alt-text="打开表达式生成器派生":::
 
 在某些转换（如[筛选器](data-flow-filter.md)）中，单击蓝色表达式文本框将打开表达式生成器。 
 
-![蓝色表达式框](media/data-flow/expressionbox.png "蓝色表达式框")
+:::image type="content" source="media/data-flow/expressionbox.png" alt-text="蓝色表达式框":::
 
 在使用匹配或分组依据条件引用列时，表达式可以从列中提取值。 若要创建表达式，请选择“计算列”。
 
-![计算列选项](media/data-flow/computedcolumn.png "计算列选项")
+:::image type="content" source="media/data-flow/computedcolumn.png" alt-text="计算列选项":::
 
 如果表达式或文本值是有效的输入，请选择“添加动态内容”以生成计算结果为文本值的表达式。
 
-![添加动态内容选项](media/data-flow/add-dynamic-content.png "添加动态内容选项")
+:::image type="content" source="media/data-flow/add-dynamic-content.png" alt-text="添加动态内容选项":::
 
 ## <a name="expression-elements"></a>表达式元素
 
 在映射数据流中，表达式可以由列值、参数、函数、局部变量、运算符和文本组成。 这些表达式的计算结果必须为 Spark 数据类型，如字符串、布尔值或整数。
 
-![表达式元素](media/data-flow/expression-elements.png "表达式元素")
+:::image type="content" source="media/data-flow/expression-elements.png" alt-text="表达式元素":::
 
 ### <a name="functions"></a>函数
 
@@ -57,7 +57,7 @@ ms.locfileid: "122822812"
 
 在处理返回数组类型的列或函数时，请使用括号 ([]) 访问特定元素。 如果索引不存在，表达式的计算结果为 NULL。
 
-![表达式生成器数组](media/data-flow/expression-array.png "表达式数据预览")
+:::image type="content" source="media/data-flow/expression-array.png" alt-text="表达式生成器数组":::
 
 > [!IMPORTANT]
 > 在映射数据流中，数组是从 1 开始的，这意味着第一个元素由第一个索引引用。 例如，myArray[1] 将访问名为“myArray”的数组的第一个元素。
@@ -70,7 +70,7 @@ ms.locfileid: "122822812"
 
 如果列名称包含特殊字符或空格，请用大括号将名称括起来，以便在表达式中引用它们。
 
-```{[dbo].this_is my complex name$$$}```
+`{[dbo].this_is my complex name$$$}`
 
 ### <a name="parameters"></a>参数
 
@@ -84,7 +84,7 @@ ms.locfileid: "122822812"
 
 `outputs()` 不接收任何参数，并以一组复杂列的形式返回整个缓存接收器。 如果在接收器中指定了键列，则无法调用此项，并且仅在缓存接收器中存在少量行时才应使用此项。 常见的用例是追加递增键的最大值。 如果缓存的单个聚合行 `CacheMaxKey` 包含列 `MaxKey`，则可以通过调用 `CacheMaxKey#outputs()[1].MaxKey` 引用第一个值。
 
-![缓存查找](media/data-flow/cached-lookup-example.png "缓存查找")
+:::image type="content" source="media/data-flow/cached-lookup-example.png" alt-text="缓存查找":::
 
 ### <a name="locals"></a>局部变量
 
@@ -94,7 +94,7 @@ ms.locfileid: "122822812"
 
 如果启用了[调试模式](concepts-data-flow-debug-mode.md)，则可以交互方式使用调试群集预览表达式的计算结果。 选择数据预览旁边的“刷新”以更新数据预览的结果。 你可以看到给定输入列的每一行的输出。
 
-![进行中的预览](media/data-flow/preview-expression.png "表达式数据预览")
+:::image type="content" source="media/data-flow/preview-expression.png" alt-text="进行中的预览":::
 
 ## <a name="string-interpolation"></a>字符串内插
 
@@ -126,7 +126,7 @@ ms.locfileid: "122822812"
 
 如果将注释放在表达式的顶部，则该注释将显示在转换文本框中以记录转换表达式。
 
-![转换文本框中的注释](media/data-flow/comment-expression.png "注释")
+:::image type="content" source="media/data-flow/comment-expression.png" alt-text="转换文本框中的注释":::
 
 ## <a name="regular-expressions"></a>正则表达式
 
@@ -159,13 +159,13 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ### <a name="convert-to-dates-or-timestamps"></a>转换为日期或时间戳
 
-若要在时间戳输出中包含字符串文本，请在 ```toString()``` 中包含转换。
+若要在时间戳输出中包含字符串文本，请在 `toString()` 中包含转换。
 
-```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+`toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')`
 
 若要将毫秒从纪元转换为日期或时间戳，请使用 `toTimestamp(<number of milliseconds>)`。 如果时间以秒为单位，则乘以 1,000。
 
-```toTimestamp(1574127407*1000l)```
+`toTimestamp(1574127407*1000l)`
 
 上一个表达式末尾的“l”指示转换为长类型作为内联语法。
 

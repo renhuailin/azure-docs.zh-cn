@@ -4,17 +4,18 @@ titleSuffix: Azure API Management
 description: 了解 API 管理中的开发人员门户 - 它是一个可自定义的网站，API 使用者可以在其中浏览你的 API。
 services: api-management
 documentationcenter: API Management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 04/15/2021
-ms.author: apimpm
-ms.openlocfilehash: aaf02affce924232deb56bf7694771c838b0b323
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.author: danlep
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4fa9b0e777ce64322ebad74c8279724817530790
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739595"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664573"
 ---
 # <a name="overview-of-the-developer-portal"></a>开发人员门户概述
 

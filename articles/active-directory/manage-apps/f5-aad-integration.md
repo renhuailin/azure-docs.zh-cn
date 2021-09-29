@@ -12,12 +12,12 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: cc55eff7c5ed3a4773a016bcd73bbd33708d9595
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a5066eece8950d4e9dffabedb2e0cca4c527353f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738779"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823000"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>将 F5 BIG-IP Access Policy Manager 与 Azure Active Directory 集成以实现安全混合访问
 
@@ -30,7 +30,7 @@ SHA 使组织能够继续使用其 F5 投资实现优异的网络和应用程序
 
 让 Azure AD 预先验证对 BIG-IP 发布的服务的访问权限可带来诸多好处：
 
-- 通过 [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)、[MS Authenticator](../user-help/user-help-auth-app-download-install.md)、[Fast Identity Online (FIDO) 密钥](../authentication/howto-authentication-passwordless-security-key.md)和[基于证书的身份验证](../authentication/active-directory-certificate-based-authentication-get-started.md)进行无密码身份验证
+- 通过 [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)、[MS Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)、[Fast Identity Online (FIDO) 密钥](../authentication/howto-authentication-passwordless-security-key.md)和[基于证书的身份验证](../authentication/active-directory-certificate-based-authentication-get-started.md)进行无密码身份验证
 
 - 先行把关的[条件访问](../conditional-access/overview.md)和[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)
 
@@ -81,7 +81,7 @@ SHA 使组织能够继续使用其 F5 投资实现优异的网络和应用程序
 
 无论是直属员工、隶属单位还是消费者，大多数用户都已经熟悉了 Office 365 登录体验，因此通过 SHA 访问 BIG-IP 服务基本上都是轻车熟路。
 
-现在，无论使用哪种类型的设备或位于何处，用户都可以找到 BIG-IP 发布的服务：这些服务已与更广泛的一组服务的自助功能一起，整合到了[“我的应用”](../user-help/my-apps-portal-end-user-access.md)或 [O365 Launchpad](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) 中。 如果需要，用户甚至可以继续通过 BIG-IP 专属的 Webtop 门户直接访问已发布的服务。 注销时，SHA 可确保在两端（BIG-IP 和 Azure AD）终止用户的会话，确保服务仍完全受到保护，不会受到未经授权的访问。  
+现在，无论使用哪种类型的设备或位于何处，用户都可以找到 BIG-IP 发布的服务：这些服务已与更广泛的一组服务的自助功能一起，整合到了[“我的应用”](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)或 [O365 Launchpad](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf) 中。 如果需要，用户甚至可以继续通过 BIG-IP 专属的 Webtop 门户直接访问已发布的服务。 注销时，SHA 可确保在两端（BIG-IP 和 Azure AD）终止用户的会话，确保服务仍完全受到保护，不会受到未经授权的访问。  
 
 提供的屏幕截图取自 Azure AD 应用门户，该门户可供用户安全访问以查找 BIG-IP 发布的服务，以及管理其帐户属性。  
 

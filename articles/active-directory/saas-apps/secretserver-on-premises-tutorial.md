@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: d723bf1ce82e6d443dfa55dda7d33a3a9bfc16b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 929ca0786ab25cbbcd219510970c3ce66709b6f5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647007"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780217"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>教程：Secret Server (On-Premises) 与 Azure Active Directory 的集成 | Microsoft Docs
 
@@ -73,7 +73,7 @@ ms.locfileid: "101647007"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”文本框中键入 URL：`https://secretserveronpremises.azure`
 
@@ -84,7 +84,7 @@ ms.locfileid: "101647007"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SecretServerURL>/login.aspx`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SecretServerURL>/login.aspx`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Secret Server (On-Premises) 客户端支持团队](https://thycotic.force.com/support/s/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -151,7 +151,7 @@ ms.locfileid: "101647007"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 Secret Server (On-Premises)。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Secret Server (On-Premises) 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Secret Server (On-Premises)。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Secret Server (On-Premises) 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Secret Server (On-Premises)。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

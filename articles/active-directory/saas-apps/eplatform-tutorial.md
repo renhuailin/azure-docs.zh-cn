@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 6cad57c2dac15b89713386661ca54dae6ec3cf99
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 787656f654be9af742d1975aecf11b0df118aa90
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92453920"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124747414"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ePlatform 集成
 
@@ -144,7 +144,7 @@ ms.locfileid: "92453920"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“ePlatform”磁贴时，应会自动登录到设置了 SSO 的 ePlatform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“ePlatform”磁贴时，应会自动登录到设置了 SSO 的 ePlatform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

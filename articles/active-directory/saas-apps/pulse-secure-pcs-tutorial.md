@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: d38ff5c8f33bda5b12f6267e7a8cdf477db6c7d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 743557b3171a0bee6615a875ff647107e81481d1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92511437"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749578"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Pulse Secure PCS 集成
 
@@ -184,7 +184,7 @@ ms.locfileid: "92511437"
 
 2. 直接转到 Pulse Secure PCS 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 如果在访问面板中单击 Pulse Secure PCS 磁贴，这会重定向到 Pulse Secure PCS 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 如果在访问面板中单击 Pulse Secure PCS 磁贴，这会重定向到 Pulse Secure PCS 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 

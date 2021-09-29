@@ -9,35 +9,35 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: ff4c3c5ae8629879fca6e9e683a9c77d0e2f144b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77097d0d59da65acd71b42eef58a3f2aa9b3c85b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596106"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587416"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>转换到 Azure Monitor 中的指标
 
-存储分析指标（也称为经典指标）将于 2023 年 8 月 31 日停用。 有关详细信息，请查看[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果使用经典指标，请确保在该日期之前转换到 Azure Monitor 中的指标。 本文可帮助你进行转换。 
+存储分析指标（也称为经典指标）将于 2023 年 8 月 31 日停用。 有关详细信息，请查看[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果使用经典指标，请确保在该日期之前转换到 Azure Monitor 中的指标。 本文可帮助你进行转换。
 
 ## <a name="steps-to-complete-the-transition"></a>完成转换的步骤
 
 若要转换到 Azure Monitor 中的指标，建议采用以下方法。
 
-1. 了解经典指标和 Azure Monitor 中的指标之间的一些[关键差别](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor)。 
+1. 了解经典指标和 Azure Monitor 中的指标之间的一些[关键差别](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor)。
 
 2. 编译当前使用的经典指标列表。
 
-3. 确定 [Azure Monitor 中的哪些指标](#metrics-mapping-between-old-metrics-and-new-metrics)提供与当前使用指标相同的数据。 
-   
+3. 确定 [Azure Monitor 中的哪些指标](#metrics-mapping-between-old-metrics-and-new-metrics)提供与当前使用指标相同的数据。
+
 4. 创建[图标](/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal)或[仪表板](/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal)以查看指标数据。
 
    > [!NOTE]
-   > 默认情况下，Azure Monitor 中的指标处于启用状态，因此无需执行任何操作来开始捕获指标。 但是，你必须创建图表或仪表板才能查看这些指标。 
- 
-5. 如果已创建基于经典存储指标的警报规则，则会根据 Azure Monitor 中的指标[创建警报规则](../../azure-monitor/alerts/alerts-overview.md)。 
+   > 默认情况下，Azure Monitor 中的指标处于启用状态，因此无需执行任何操作来开始捕获指标。 但是，你必须创建图表或仪表板才能查看这些指标。
 
-6. 在 Azure Monitor 中查看所有指标后，可以关闭经典日志记录。 
+5. 如果已创建基于经典存储指标的警报规则，则会根据 Azure Monitor 中的指标[创建警报规则](../../azure-monitor/alerts/alerts-overview.md)。
+
+6. 在 Azure Monitor 中查看所有指标后，可以关闭经典日志记录。
 
 <a id="key-differences-between-classic-metrics-and-metrics-in-azure-monitor"></a>
 
@@ -45,13 +45,13 @@ ms.locfileid: "100596106"
 
 本部分介绍这两个指标平台之间的一些关键差别。
 
-主要差别在于如何管理指标。 经典指标由 Azure 存储管理，而 Azure Monitor 中的指标由 Azure Monitor 管理。 使用经典指标，Azure 存储会收集并聚合指标值，然后将它们存储到位于存储帐户中的表中。 通过 Azure Monitor 中的指标，Azure 存储发送指标数据到 Azure Monitor 后端。 Azure Monitor 对通过 Azure 门户和引入的数据获取的数据提供统一的监视体验。 
+主要差别在于如何管理指标。 经典指标由 Azure 存储管理，而 Azure Monitor 中的指标由 Azure Monitor 管理。 使用经典指标，Azure 存储会收集并聚合指标值，然后将它们存储到位于存储帐户中的表中。 通过 Azure Monitor 中的指标，Azure 存储发送指标数据到 Azure Monitor 后端。 Azure Monitor 对通过 Azure 门户和引入的数据获取的数据提供统一的监视体验。
 
-经典指标发送并存储在 Azure 存储帐户中。 Azure Monitor 指标可以发送到多个位置。 存储帐户可以是这些位置之一，但不是必需的。  
+经典指标发送并存储在 Azure 存储帐户中。 Azure Monitor 指标可以发送到多个位置。 存储帐户可以是这些位置之一，但不是必需的。
 
 至于指标支持，经典指标仅为 Azure Blob 存储提供容量指标。 Azure Monitor 中的指标提供 Blob、表、文件、队列和高级存储的容量指标。 经典指标提供 Blob、表、Azure 文件和队列存储上的事务指标。 Azure Monitor 中的指标向该列表添加高级存储。
 
-如果帐户中的活动未触发指标，则经典指标将显示该指标的值为零 (0)。 Azure Monitor 中的指标将完全省略数据，让报告更简洁。 例如，对于经典指标，如果未报告服务器超时错误，则度量值表中的 `ServerTimeoutError` 值将设置为 0。 当你查询维度 `ResponseType` 等于 `ServerTimeoutError` 的指标 `Transactions` 的值时，Azure Monitor 不会返回任何数据。 
+如果帐户中的活动未触发指标，则经典指标将显示该指标的值为零 (0)。 Azure Monitor 中的指标将完全省略数据，让报告更简洁。 例如，对于经典指标，如果未报告服务器超时错误，则度量值表中的 `ServerTimeoutError` 值将设置为 0。 当你查询维度 `ResponseType` 等于 `ServerTimeoutError` 的指标 `Transactions` 的值时，Azure Monitor 不会返回任何数据。
 
 若要详细了解 Azure Monitor 中的指标，请参阅 [Azure Monitor 中的指标](../../azure-monitor/essentials/data-platform-metrics.md)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "100596106"
 
 ## <a name="map-classic-metrics-to-metrics-in-azure-monitor"></a>将经典指标映射到 Azure Monitor 中的指标
 
- 使用这些表可以标识 Azure Monitor 中哪些指标提供与当前使用的指标相同的数据。 
+ 使用这些表可以标识 Azure Monitor 中哪些指标提供与当前使用的指标相同的数据。
 
 **容量指标**
 
@@ -117,4 +117,4 @@ ms.locfileid: "100596106"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Monitor](../../azure-monitor/overview.md)
+- [Azure Monitor](../../azure-monitor/overview.md)

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a7f22b05238fb495422a02edd6ca382b4df041a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6937318e3d2e8d1a42279242a0d8b476cdab892f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257800"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606677"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>将 Twilio Verify 应用与 Azure Active Directory B2C 集成
 
@@ -56,9 +56,9 @@ ms.locfileid: "107257800"
 
 1. 在 Twilio 获取[试用帐户](https://www.twilio.com/try-twilio)。
 
-2. 按照[本文](https://support.twilio.com/hc/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console)中所述，在 Twilio 购买电话号码
+1. 按照[本文](https://support.twilio.com/hc/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console)中所述，在 Twilio 购买电话号码
 
-3. 在 Twilio 控制台导航到[验证 API](https://www.twilio.com/console/verify/services)，并按照[说明](https://www.twilio.com/docs/verify/verifying-transactions-psd2)创建服务并启用 PSD2 选项。  
+1. 在 Twilio 控制台导航到[验证 API](https://www.twilio.com/console/verify/services)，并按照[说明](https://www.twilio.com/docs/verify/verifying-transactions-psd2)创建服务并启用 PSD2 选项。  
 
 ## <a name="configure-the-psd2-demo-app"></a>配置 PSD2 演示应用
 
@@ -73,7 +73,7 @@ ms.locfileid: "107257800"
    <add key="ida:RedirectUri" value="https://your hosted psd2 demo app url/" />
    ```
 
-2. [Web 应用](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App)还承载 ID 令牌提示生成器和元数据终结点。
+1. [Web 应用](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/source-code/PSD2%20Demo%20App)还承载 ID 令牌提示生成器和元数据终结点。
    - 按照此[示例说明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#creating-a-signing-certificate)中所述创建签名证书。
    - 根据 web.config 中的证书更新以下行：
    
@@ -82,35 +82,29 @@ ms.locfileid: "107257800"
    <add key="ida:SigningCertAlgorithm" value="RS256" />
    ```
 
-3. 将演示应用程序上传到所选的托管提供程序。  [本示例说明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#hosting-the-application-in-azure-app-service)中提供了 Azure 应用服务指南，其中包括证书上传说明。
+1. 将演示应用程序上传到所选的托管提供程序。  [本示例说明](https://github.com/azure-ad-b2c/samples/tree/master/policies/invite#hosting-the-application-in-azure-app-service)中提供了 Azure 应用服务指南，其中包括证书上传说明。
 
-4. 通过添加与托管应用程序的 URL 等效的回复 URL 来更新 Azure AD B2C 应用程序注册。
+1. 通过添加与托管应用程序的 URL 等效的回复 URL 来更新 Azure AD B2C 应用程序注册。
 
-5. 打开[策略文件](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy)，将  `contoso` 的所有实例替换为你的租户名。
+1. 打开[策略文件](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Twilio-VerifyAPI/policy)，将  `contoso` 的所有实例替换为你的租户名。
 
-6. 查找 Twilio REST API 技术配置文件“Custom-SMS-Enroll” **** 。 使用你的 Twilio AccountSID 更新  `ServiceURL` ，并将致电人号码更新为你购买的电话号码。
+1. 查找 Twilio REST API 技术配置文件“Custom-SMS-Enroll” **** 。 使用你的 Twilio AccountSID 更新  `ServiceURL` ，并将致电人号码更新为你购买的电话号码。
 
-7. 查找 Twilio REST API 技术配置文件“TwilioRestAPI-Verify-Step1” ****  和“TwilioRestAPI-Verify-Step2” **** ，并使用你的 Twilio AccountSID 更新  `ServiceURL` 。
+1. 查找 Twilio REST API 技术配置文件“TwilioRestAPI-Verify-Step1” ****  和“TwilioRestAPI-Verify-Step2” **** ，并使用你的 Twilio AccountSID 更新  `ServiceURL` 。
 
 ## <a name="integrate-with-azure-ad-b2c"></a>与 Azure AD B2C 集成
 
 将策略文件添加到 Azure AD B2C：
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-
-3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
-
-4. 导航到“Azure AD B2C” > “Identity Experience Framework” > “策略密钥”。
-
-5. 添加名为“B2cRestTwilioClientId”的新密钥。 选择“手动” **** ，并提供 Twilio AccountSID 的值。
-
-6. 添加名为“B2cRestTwilioClientSecret”的新密钥。 选择“手动” **** ，并提供 Twilio 身份验证令牌的值。
-
-7. 将所有策略文件上传到你的租户。
-
-8. 为你的注册短信自定义 GenerateOTPMessageEnrol 声明转换中的字符串。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
+1. 导航到“Azure AD B2C” > “Identity Experience Framework” > “策略密钥”。
+1. 添加名为“B2cRestTwilioClientId”的新密钥。 选择“手动” **** ，并提供 Twilio AccountSID 的值。
+1. 添加名为“B2cRestTwilioClientSecret”的新密钥。 选择“手动” **** ，并提供 Twilio 身份验证令牌的值。
+1. 将所有策略文件上传到你的租户。
+1. 为你的注册短信自定义 GenerateOTPMessageEnrol 声明转换中的字符串。
 
 ## <a name="test-the-solution"></a>测试解决方案
 

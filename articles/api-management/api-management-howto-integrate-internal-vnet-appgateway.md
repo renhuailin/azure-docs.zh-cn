@@ -4,18 +4,18 @@ titleSuffix: Azure API Management
 description: 在使用应用程序网关（Web 应用程序防火墙）作为前端的内部虚拟网络中设置和配置 Azure API 管理
 services: api-management
 documentationcenter: ''
-author: solankisamir
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.author: sasolank
+ms.author: danlep
 ms.date: 06/10/2021
 ms.custom: devx-track-azurepowershell,contperf-fy21q4
-ms.openlocfilehash: e7c4583797719ca3b9cbb47d5dead48138d22fe1
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: e7db405d43ef41f4ebe90272498dae61bf56d817
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543101"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679516"
 ---
 # <a name="integrate-api-management-in-an-internal-virtual-network-with-application-gateway"></a>将内部虚拟网络中的 API 管理与应用程序网关集成
 

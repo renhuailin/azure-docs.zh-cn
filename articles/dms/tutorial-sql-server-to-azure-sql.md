@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: ab16bfe708589b6f89dd5b9a37512d4f2148992f
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 5afe39d7693d36ebfd433c6cd1db336e9c72b7ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214918"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664231"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>教程：使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库
 
@@ -343,7 +343,7 @@ ms.locfileid: "123214918"
 
 2. 验证目标 Azure SQL 数据库上的目标数据库。
 
-### <a name="additional-resources"></a>其他资源
+## <a name="additional-resources"></a>其他资源
 
 - 若要了解 Azure 数据库迁移服务，请参阅[什么是 Azure 数据库迁移服务？](./dms-overview.md)一文。
 - 若要了解 Azure SQL 数据库，请参阅[什么是 Azure SQL 数据库服务？](../azure-sql/database/sql-database-paas-overview.md)一文。

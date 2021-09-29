@@ -1,18 +1,18 @@
 ---
 title: 使用 .NET 的 Azure 存储示例 | Microsoft Docs
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 .NET 存储客户端库发现 Blob、队列、表和文件的入门示例。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: c140234ce93ff9146ef3b1a5a135258ad707c807
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 947afa47c3ad5903e22cdd114a8020956861aa45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275696"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633728"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>使用 v12 .NET 客户端库的 Azure 存储示例
 
@@ -86,6 +86,7 @@ ms.locfileid: "106275696"
 :::row-end:::
 
 ### <a name="troubleshooting"></a>故障排除
+
 :::row:::
    :::column span="2":::
       [使用容器客户端触发可恢复的错误](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
@@ -114,6 +115,7 @@ ms.locfileid: "106275696"
 :::row-end:::
 
 ### <a name="file-system"></a>文件系统
+
 :::row:::
    :::column span="":::
       [使用文件系统客户端创建文件](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L22)
@@ -148,6 +150,7 @@ ms.locfileid: "106275696"
 :::row-end:::
 
 ### <a name="file"></a>文件
+
 :::row:::
    :::column span="":::
       [上传文件](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
@@ -270,7 +273,8 @@ ms.locfileid: "106275696"
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>故障排除 
+### <a name="troubleshooting"></a>故障排除
+
 :::row:::
    :::column span="2":::
       [使用队列客户端触发可恢复的错误](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
@@ -313,10 +317,10 @@ ms.locfileid: "106275696"
 
 若要查看完整的 .NET 示例库，请转到：
 
-* [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
-* [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
-* [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
-* [Azure 队列代码示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+- [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+- [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
+- [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
+- [Azure 队列代码示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
 
 可以浏览并克隆每个库的 GitHub 存储库。
 
@@ -324,17 +328,17 @@ ms.locfileid: "106275696"
 
 如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [.NET 中 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-dotnet.md)
-* [Getting Started with Azure Queue Service in .NET](../queues/storage-quickstart-queues-dotnet.md)（.NET 中 Azure 队列服务入门）
-* [.NET 中 Azure 表服务入门](../../cosmos-db/tutorial-develop-table-dotnet.md)
-* [Getting Started with Azure File Service in .NET](../files/storage-dotnet-how-to-use-files.md)（.NET 中 Azure 文件服务入门）
+- [.NET 中 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-dotnet.md)
+- [Getting Started with Azure Queue Service in .NET](../queues/storage-quickstart-queues-dotnet.md)（.NET 中 Azure 队列服务入门）
+- [.NET 中 Azure 表服务入门](../../cosmos-db/tutorial-develop-table-dotnet.md)
+- [Getting Started with Azure File Service in .NET](../files/storage-dotnet-how-to-use-files.md)（.NET 中 Azure 文件服务入门）
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关其他语言的示例的信息：
 
-* Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
-* Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
-* JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
-* C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
-* 所有其他语言：[Azure 存储示例](storage-samples.md)
+- Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
+- Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
+- JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
+- C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
+- 所有其他语言：[Azure 存储示例](storage-samples.md)

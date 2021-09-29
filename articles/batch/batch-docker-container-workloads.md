@@ -4,12 +4,12 @@ description: 了解如何在 Azure Batch 上通过容器映像运行和缩放应
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e8effa7daf0c30edaef9924cbefe35cdad1b20e1
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: c6922c48aedc3394d164367806bece43d5fb8a49
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445772"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744207"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -75,7 +75,7 @@ Batch 支持被指派了容器支持的 Windows Server 映像。 通常，这些
 
 也可以从与 Batch 兼容的 Linux 分发版之一上运行 Docker 的 VM 创建自定义映像。 如果选择提供你自己的自定义 Linux 映像，请参阅[使用托管自定义映像创建虚拟机池](batch-custom-images.md)中的说明。
 
-若要在自定义映像中获取 Docker 支持，请安装 [Docker Community Edition (CE)](https://www.docker.com/community-edition) 或 [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition)。
+若要在自定义映像中获取 Docker 支持，请安装 [Docker Community Edition (CE)](https://www.docker.com/community-edition) 或 [Docker Enterprise Edition (EE)](https://www.docker.com/blog/docker-enterprise-edition/)。
 
 使用自定义 Linux 映像时的其他注意事项：
 

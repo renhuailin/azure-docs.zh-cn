@@ -7,16 +7,16 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 1c17fceb267018901975f942f7cfc804f450ead9
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: fcc79c6b1828d4feb33a73f04e98f92abbf7384e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867640"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597011"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>将静态网站与 Azure CDN 集成
 
-可以启用 [Azure 内容分发网络 (CDN)](../../cdn/cdn-overview.md) 来缓存 Azure 存储帐户中托管的[静态网站](storage-blob-static-website.md)上的内容。 可以使用 Azure CDN 配置静态网站的自定义域终结点，预配自定义 TLS/SSL 证书，以及配置自定义重写规则。 配置 Azure CDN 需额外付费，但用户从世界上的任何位置访问你的网站时，其延迟会始终很低。 Azure CDN 还提供使用你自己的证书进行 TLS 加密的功能。 
+可以启用 [Azure 内容分发网络 (CDN)](../../cdn/cdn-overview.md) 来缓存 Azure 存储帐户中托管的[静态网站](storage-blob-static-website.md)上的内容。 可以使用 Azure CDN 配置静态网站的自定义域终结点，预配自定义 TLS/SSL 证书，以及配置自定义重写规则。 配置 Azure CDN 需额外付费，但用户从世界上的任何位置访问你的网站时，其延迟会始终很低。 Azure CDN 还提供使用你自己的证书进行 TLS 加密的功能。
 
 有关 Azure CDN 定价的详细信息，请参阅 [Azure CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "122867640"
 
 1. 在“CDN 终结点名称”字段中，指定 CDN 终结点的名称。 CDN 终结点必须在 Azure 中是唯一的，并提供终结点 URL 的第一个组成部分。 窗体验证终结点名称是否唯一。
 
-1. 在“源主机名”字段中指定静态网站终结点。 
+1. 在“源主机名”字段中指定静态网站终结点。
 
    若要查找静态网站终结点，请导航到存储帐户的“静态网站”设置。  复制主终结点并将其粘贴到 CDN 配置中。
 
@@ -63,9 +63,9 @@ ms.locfileid: "122867640"
 
 如果不再需要在 Azure CDN 中缓存对象，则可以执行以下步骤之一：
 
-* 将容器设为专用容器而不是公用容器。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](./anonymous-read-access-configure.md)。
-* 通过 Azure 门户禁用或删除 CDN 终结点。
-* 将托管服务修改为不再响应此对象的请求。
+- 将容器设为专用容器而不是公用容器。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](./anonymous-read-access-configure.md)。
+- 通过 Azure 门户禁用或删除 CDN 终结点。
+- 将托管服务修改为不再响应此对象的请求。
 
 已在 Azure CDN 中缓存的对象保持缓存状态，直至对象的生存时间到期，或直至[清除](../../cdn/cdn-purge-endpoint.md)终结点为止。 当生存时间到期时，Azure CDN 会确定 CDN 终结点是否仍有效，以及是否仍可对该对象进行匿名访问。 如果不能，则不再缓存该对象。
 

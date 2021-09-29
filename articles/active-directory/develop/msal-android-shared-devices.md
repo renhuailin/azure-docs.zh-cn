@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 005f69473fa238d56cf7d582a8af4000166d6939
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7b1c87c67413f8240746f2a793c913cd4add4865
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612426"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787275"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
 
@@ -31,7 +31,7 @@ ms.locfileid: "105612426"
 开发人员和云设备管理员可以共同创建共享设备模式应用：
 
 - 开发人员编写单帐户应用（共享设备模式不支持多帐户应用），将 `"shared_device_mode_supported": true` 添加到应用的配置，并编写代码来处理共享设备注销等任务。
-- 设备管理员通过安装 Authenticator 应用，并使用 Authenticator 应用将设备设置为共享模式，来准备要共享的设备。 只有充当[云设备管理员](../roles/permissions-reference.md#cloud-device-administrator)角色的用户才能使用 [Authenticator 应用](../user-help/user-help-auth-app-overview.md)将设备置于共享模式。 可通过以下选项在 Azure 门户中配置组织角色的成员身份：“Azure Active Directory” > “角色和管理员” > “云设备管理员”。   
+- 设备管理员通过安装 Authenticator 应用，并使用 Authenticator 应用将设备设置为共享模式，来准备要共享的设备。 只有充当[云设备管理员](../roles/permissions-reference.md#cloud-device-administrator)角色的用户才能使用 [Authenticator 应用](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)将设备置于共享模式。 可通过以下选项在 Azure 门户中配置组织角色的成员身份：“Azure Active Directory” > “角色和管理员” > “云设备管理员”。   
 
  本文重点介绍开发人员应考虑的事项。
 
@@ -85,7 +85,7 @@ private IPublicClientApplication mApplication;
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>为何只希望支持单帐户模式
 
-如果你编写的应用将仅用于那些使用共享设备的一线工作者，则建议你将应用程序编写为仅支持单帐户模式。 这包括以任务为中心的大多数应用程序，例如医疗记录应用、发票应用和大多数业务线应用。 仅支持单帐户模式可以简化开发，因为无需实现多帐户应用包含的附加功能。
+如果你编写的应用仅供使用共享设备的一线工作者使用，我们建议你将应用程序编写为仅支持单帐户模式。 这包括以任务为中心的大多数应用程序，例如医疗记录应用、发票应用和大多数业务线应用。 仅支持单帐户模式可以简化开发，因为无需实现多帐户应用包含的附加功能。
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>设备模式更改时会发生什么情况
 

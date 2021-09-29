@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: a72900f33347370e193df9ed040df4ff9e51528f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b991ae23f96c0a3ce83c4dac60e3dc075899f018
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063481"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783418"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>教程：Azure Active Directory 与 Deputy 的集成
 
@@ -199,11 +199,11 @@ ms.locfileid: "110063481"
 
     g. 单击“应用更改”。
 
-### <a name="create-deputy-test-user&quot;></a>创建 Deputy 测试用户
+### <a name="create-deputy-test-user"></a>创建 Deputy 测试用户
 
 在本部分，我们将在 Deputy 中创建一个名为 Britta Simon 的用户。 Deputy 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Deputy 中尚不存在用户，身份验证后会创建一个新用户。
 
-#### <a name=&quot;to-add-the-user-manually-perform-the-following-steps&quot;></a>要手动添加用户，请执行以下步骤：
+#### <a name="to-add-the-user-manually-perform-the-following-steps"></a>要手动添加用户，请执行以下步骤：
 
 1. 以管理员身份登录到 Deputy 公司站点。
 
@@ -211,7 +211,7 @@ ms.locfileid: "110063481"
 
 3. 单击“添加人员”按钮，并单击“添加单个人员” 。
    
-    ![添加人员](./media/deputy-tutorial/create-user-1.png &quot;添加人员")
+    ![添加人员](./media/deputy-tutorial/create-user-1.png "添加人员")
 
 4. 在“常规”选项卡中执行以下步骤以添加用户。
    
@@ -237,7 +237,7 @@ ms.locfileid: "110063481"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 TeamzSkill 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 TeamzSkill 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 TeamzSkill。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 TeamzSkill 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 TeamzSkill。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

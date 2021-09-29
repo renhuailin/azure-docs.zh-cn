@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: v-erkel
-ms.openlocfilehash: 70b1dc3e2de6c70a6b59aa739a9bed254295a4f9
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 090003e25c2d8ca13be27bf94bc12b4941cda798
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293426"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814660"
 ---
 # <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>将装载了 NFS 的 blob 存储与 Azure HPC 缓存配合使用
 
@@ -38,7 +38,7 @@ HPC 缓存要求 ADLS-NFS 存储目标保持高度一致。 默认情况下，�
 ## <a name="pre-load-data-with-nfs-protocol"></a>通过 NFS 协议预加载数据
 <!-- cross-referenced from hpc-cache-ingest.md and here -->
 
-在已启用 NFS 的 blob 容器上，只能通过创建某文件时所用的同一协议来编辑该文件。 也就是说，如果使用 Azure REST API 填充容器，则不能使用 NFS 来更新这些文件。 由于 Azure HPC 缓存只使用 NFS，因此无法编辑使用 Azure REST API 创建的任何文件。 （详细了解 [blob 存储 API 已知问题](../storage/blobs/network-file-system-protocol-known-issues.md#blob-storage-apis)）
+在已启用 NFS 的 blob 容器上，只能通过创建某文件时所用的同一协议来编辑该文件。 也就是说，如果使用 Azure REST API 填充容器，则不能使用 NFS 来更新这些文件。 由于 Azure HPC 缓存只使用 NFS，因此无法编辑使用 Azure REST API 创建的任何文件。 （详细了解 [blob 存储 API 已知问题](../storage/blobs/data-lake-storage-known-issues.md#blob-storage-apis)）
 
 如果容器为空，或者文件是使用 NFS 创建的，则不会出现缓存问题。
 

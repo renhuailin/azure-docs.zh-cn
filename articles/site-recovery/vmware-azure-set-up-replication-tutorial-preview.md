@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 08/19/2021
 ms.custom: MVC
-ms.openlocfilehash: 74e9af6f1f9dd30b391c17f03a0d8d5e9a41a10d
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 66bd4e5f24423ef022f8930b618b3cee9b5c9631
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446957"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777329"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms---preview"></a>为本地 VMware VM 设置到 Azure 的灾难恢复 - 预览版
 
@@ -39,7 +39,7 @@ VMware 到 Azure 的复制包括以下过程：
 - 请首先导航到 [Azure 预览门户](https://aka.ms/rcmcanary)。 并执行以下部分详述的步骤。
 - 准备 Azure 帐户
 - 准备基础结构
-- [创建恢复服务保管库](/azure/site-recovery/quickstart-create-vault-template?tabs=CLI)
+- [创建恢复服务保管库](./quickstart-create-vault-template.md?tabs=CLI)
 - [部署 Azure Site Recovery 复制设备](deploy-vmware-azure-replication-appliance-preview.md)
 - 启用复制
 
@@ -123,7 +123,7 @@ VMware 到 Azure 的复制包括以下过程：
       默认情况下，Azure Site Recovery 将创建一个新的 LRS v1 类型的存储帐户，用于在保管库中首次启用复制操作。 对于后续操作，将重复使用相同的缓存存储帐户。
     -  托管磁盘
 
-       默认情况下，在 Azure 中创建的是标准 HDD 托管磁盘。 你可以通过选择“自定义”来自定义托管磁盘的类型。 根据业务需求选择磁盘类型。 确保根据源计算机磁盘的 IOPS [选择适当的磁盘类型](/azure/virtual-machines/disks-types#disk-comparison)。 有关定价信息，请参阅[此处](https://azure.microsoft.com/pricing/details/managed-disks/)的托管磁盘定价文档。
+       默认情况下，在 Azure 中创建的是标准 HDD 托管磁盘。 你可以通过选择“自定义”来自定义托管磁盘的类型。 根据业务需求选择磁盘类型。 确保根据源计算机磁盘的 IOPS [选择适当的磁盘类型](../virtual-machines/disks-types.md#disk-comparison)。 有关定价信息，请参阅[此处](https://azure.microsoft.com/pricing/details/managed-disks/)的托管磁盘定价文档。
 
        >[!NOTE]
        > 如果在启用复制之前手动安装了移动服务，则可以在磁盘级别更改托管磁盘的类型。 另外，在计算机级别默认可选择一种托管磁盘类型

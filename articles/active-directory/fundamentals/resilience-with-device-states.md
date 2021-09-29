@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d9c22974ec3452df9597999eb62569a08eb85dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724604"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754395"
 ---
 # <a name="build-resilience-with-device-states"></a>使用设备状态构建复原能力
 
@@ -42,7 +42,7 @@ ms.locfileid: "98724604"
 
 * 将用户访问网页的浏览器统一为 [Microsoft Edge](/deployedge/microsoft-edge-security-identity) 或 Google Chrome，这些浏览器带有[支持](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)的[扩展](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb)，可以让用户使用 PRT 无缝单一登录到 Web 应用程序。
 
-* 对于个人或公司拥有的 iOS 和 Android 设备，请部署 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)。 除多重身份验证和无密码登录功能外，Microsoft Authenticator 应用还可以通过[中介身份验证](../develop/msal-android-single-sign-on.md)实现各本机应用程序的单一登录，同时减少最终用户收到身份验证提示的次数。
+* 对于个人或公司拥有的 iOS 和 Android 设备，请部署 [Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)。 除多重身份验证和无密码登录功能外，Microsoft Authenticator 应用还可以通过[中介身份验证](../develop/msal-android-single-sign-on.md)实现各本机应用程序的单一登录，同时减少最终用户收到身份验证提示的次数。
 
 * 对于个人或公司拥有的 iOS 和 Android 设备，请使用[移动应用管理](/mem/intune/apps/app-management)来安全访问公司资源，该方法可以减少身份验证请求次数。 
 

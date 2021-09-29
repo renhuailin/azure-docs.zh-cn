@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 8/27/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8b1d7a3f45cd49bdb2ea420084a242e3e2c959
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 19a3f4835e3e2b20d0921aa2a259739ec6cd51bc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214230"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754168"
 ---
 # <a name="tutorial-configure-datawiza-with-azure-active-directory-for-secure-hybrid-access"></a>教程：为 Datawiza 配置 Azure Active Directory 以实现安全的混合访问
 
@@ -32,7 +32,7 @@ Datawiza 的 [Datawiza Access Broker (DAB) ](https://www.datawiza.com/access-bro
 
 - Azure 订阅。 如果你没有订阅，可以获取一个[试用帐户](https://azure.microsoft.com/free/)。
 
-- 一个已关联到你的 Azure 订阅的 [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
+- 一个已关联到你的 Azure 订阅的 [Azure AD 租户](../fundamentals/active-directory-access-create-new-tenant.md)。
 
 - 需要有 [Docker](https://docs.docker.com/get-docker/) 和 [docker-compose](https://docs.docker.com/compose/install/) 才能运行 DAB。 应用程序可以在任何平台（例如虚拟机和裸机）上运行。
 
@@ -42,7 +42,7 @@ Datawiza 的 [Datawiza Access Broker (DAB) ](https://www.datawiza.com/access-bro
 
 Datawiza 集成包括以下组件：
 
-- [Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) - Microsoft 的基于云的标识和访问管理服务，可帮助用户登录以及访问内部和外部资源。
+- [Azure AD](../fundamentals/active-directory-whatis.md) - Microsoft 的基于云的标识和访问管理服务，可帮助用户登录以及访问内部和外部资源。
 
 - Datawiza Access Broker (DAB) - 用户将登录到该服务，并通过 HTTP 头以透明方式将标识传递给应用程序。
 
@@ -125,6 +125,6 @@ Datawiza 集成包括以下组件：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为 Datawiza 配置 Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/partner-datawiza)
+- [为 Datawiza 配置 Azure AD B2C](../../active-directory-b2c/partner-datawiza.md)
 
 - [Datawiza 文档](https://docs.datawiza.com)

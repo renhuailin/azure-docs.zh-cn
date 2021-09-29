@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 05/04/2021
 ms.author: jeffme
-ms.openlocfilehash: fadfffadd0d7c2e642825fa8134906e6c3697014
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 102e8717b1bb6072eb0a52efc6ac3ecdd3e9c165
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745932"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837340"
 ---
 # <a name="what-are-azure-applied-ai-services"></a>什么是 Azure 应用 AI 服务？
 
@@ -27,7 +27,7 @@ Azure 应用 AI 服务是一项高级服务，旨在让开发人员能够将 AI 
 
 表单识别器由自定义文档处理模型、预生成的发票、收据、身份证和名片模型以及布局模型组成。 
 
-[详细了解 Azure 表单识别器](../cognitive-services/form-recognizer/index.yml)
+[详细了解 Azure 表单识别器](./form-recognizer/index.yml)
 
 ## <a name="azure-metrics-advisor"></a>Azure 指标顾问
 

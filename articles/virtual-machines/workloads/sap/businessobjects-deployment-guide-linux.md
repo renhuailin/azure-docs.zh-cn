@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: bf1ca9de6d7ee8ac6c7e87bd444cbd1d98b56f51
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 0d7d68f9452f5f551361a48580e223b0dd614a09
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463398"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818135"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Linux on Azure 的 SAP BusinessObjects BI 平台部署指南
 
@@ -70,19 +70,15 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 
 使用[各 Azure 区域的 Azure NetApp 文件可用性](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)查看各区域的 Azure NetApp 文件可用性。
 
-在部署 Azure NetApp 文件之前，请参阅[注册 Azure NetApp 文件说明](../../../azure-netapp-files/azure-netapp-files-register.md)。
-
 ### <a name="deploy-azure-netapp-files-resources"></a>部署 Azure NetApp 文件资源
 
 以下说明假定你已部署 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)。 Azure NetApp 文件资源和将装载 Azure NetApp 文件资源的 VM 必须部署在同一 Azure 虚拟网络或对等 Azure 虚拟网络中。
 
-1. 如果尚未部署资源，请[注册 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-register.md)。
+1. 在所选的 Azure 区域[创建 Azure NetApp 文件帐户](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)。
 
-2. 在所选的 Azure 区域[创建 Azure NetApp 文件帐户](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)。
+2. [设置 Azure NetApp 文件容量池](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)。 本文中介绍的 SAP BI 平台体系结构使用“高级”服务级别的单个 Azure NetApp 文件容量池。 对于 Azure 上的 SAP BI 文件存储库服务器，建议使用 Azure NetApp 文件“高级”或“超高性能”[服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)。
 
-3. [设置 Azure NetApp 文件容量池](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)。 本文中介绍的 SAP BI 平台体系结构使用“高级”服务级别的单个 Azure NetApp 文件容量池。 对于 Azure 上的 SAP BI 文件存储库服务器，建议使用 Azure NetApp 文件“高级”或“超高性能”[服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)。
-
-4. [将子网委托给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)。
+3. [将子网委托给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)。
 
 5. 按照[为 Azure NetApp 文件创建 NFS 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)中的说明部署 Azure NetApp 文件卷。
 

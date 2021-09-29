@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 01/16/2021
-ms.openlocfilehash: dd4da95bd3352897d62f36265544a10dbd37f825
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 5a4419d210e6cd5e75bdce1b63f97046b9eb6ec2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643092"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128627057"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>快速入门：使用 .NET (C#) 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据
 
@@ -25,7 +25,9 @@ ms.locfileid: "122643092"
 
 对于本快速入门，你需要：
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free)。
+- 具有活动订阅的 Azure 帐户。 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - 使用 [Azure 门户](./quickstart-create-server-portal.md)创建 Azure Database for MySQL 灵活服务器 <br/> 或 [Azure CLI](./quickstart-create-server-cli.md) 创建 Azure Database for PostgreSQL 单一服务器（如果没有）。
 - 请完成以下操作之一以启用连接，具体取决于你使用的是公共访问还是私有访问。
 - [创建数据库和非管理员用户](../howto-create-users.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 535e1b103e44074021f23ae9527f849082d24a7f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f00ed68c42f0d0ed869dcc12749436e9aa292cda
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467761"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832782"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmos"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Litmos 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110467761"
 * 让用户使用其 Azure AD 帐户自动登录到 Litmos。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -76,7 +76,7 @@ ms.locfileid: "110467761"
 
 1. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<companyname>.litmos.com/account/Login`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.litmos.com/account/Login`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.litmos.com/integration/samllogin`
 
@@ -175,7 +175,7 @@ ms.locfileid: "110467761"
 
 * 在 Azure 门户中单击“测试此应用程序”后，将自动登录到设置了 SSO 的 Litmos。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Litmos 磁贴时，将会自动登录到设置了 SSO 的 Litmos。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Litmos 磁贴时，将会自动登录到设置了 SSO 的 Litmos。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

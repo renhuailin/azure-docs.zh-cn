@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 3ed8a3623163ef5f596508cd7073a68eec3fe297
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 74c8fd2c096d8a4b236d9f26bdd27737fac897ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736529"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632987"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何将工作区用于自定义 DNS 服务器
 
@@ -96,7 +96,7 @@ Azure 美国政府区域：
 - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.privatelink.api.ml.azure.us```
 - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>.privatelink.notebooks.usgovcloudapi.net```
 
-FQDN 解析为该区域中 Azure 机器学习工作区的 IP 地址。 但是，可以使用虚拟网络中托管的自定义 DNS 服务器替代工作区专用链接 FQDN 的解析。 有关此体系结构的示例，请参阅 [vnet 中托管的自定义 DNS 服务器](#example-custom-dns-server-hosted-in-vnet)示例。
+FQDN 解析为该区域中 Azure 机器学习工作区的 IP 地址。 但可以使用虚拟网络中托管的自定义 DNS 服务器来替代工作区专用链接 FQDN 的解析。 有关此体系结构的示例，请参阅 [vnet 中托管的自定义 DNS 服务器](#example-custom-dns-server-hosted-in-vnet)示例。
 
 ## <a name="manual-dns-server-integration"></a>手动 DNS 服务器集成
 
@@ -274,7 +274,7 @@ $workspaceDns.CustomDnsConfigs | format-table
     下一步是为 Azure 机器学习工作区创建专用终结点。 专用终结点以在步骤 1 中创建的两个专用 DNS 区域为目标。 这可确保与工作区的所有通信都是通过 Azure 机器学习虚拟网络中的专用终结点完成的。
 
     > [!IMPORTANT]
-    > 若要使此示例正常运行，专用终结点必须启用专用 DNS 集成。
+    > 专用终结点必须启用专用 DNS 集成，此示例才能正常运行。
 
 3. 在 DNS 服务器中创建条件转发器以转发到 Azure DNS： 
 
@@ -285,14 +285,17 @@ $workspaceDns.CustomDnsConfigs | format-table
     Azure 公共区域：
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     Azure 中国区域：
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     Azure 美国政府区域：
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -314,9 +317,9 @@ $workspaceDns.CustomDnsConfigs | format-table
     - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.api.ml.azure.us```
     - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>. notebooks.usgovcloudapi.net```
 
-5. Azure DNS 以递归方式将工作区域解析为 CNAME：
+5. **Azure DNS 以递归方式将工作区域解析为 CNAME**：
 
-    DNS 服务器将解析 Azure DNS 步骤 4 中的 FQDN。 Azure DNS 将使用步骤 1 中列出的域之一进行响应。
+    DNS 服务器将从 Azure DNS 解析步骤 4 中的 FQDN。 Azure DNS 将使用步骤 1 中列出的其中一个域进行响应。
 
 6. DNS 服务器以递归方式解析 Azure DNS 的工作区域 CNAME 记录：
 
@@ -351,7 +354,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
     打开命令提示符、shell 或 PowerShell。 然后，针对每个工作区 FQDN 运行以下命令：
 
-    ```nslookup <workspace FQDN>```
+    `nslookup <workspace FQDN>`
         
     每个 nslookup 的结果应该将专用终结点上的两个专用 IP 地址之一返回到 Azure 机器学习工作区。 如果没有返回，则说明自定义 DNS 解决方案中存在配置错误。
 
@@ -404,7 +407,7 @@ $workspaceDns.CustomDnsConfigs | format-table
     下一步是为 Azure 机器学习工作区创建专用终结点。 专用终结点以在步骤 1 中创建的两个专用 DNS 区域为目标。 这可确保与工作区的所有通信都是通过 Azure 机器学习虚拟网络中的专用终结点完成的。
 
     > [!IMPORTANT]
-    > 若要使此示例正常运行，专用终结点必须启用专用 DNS 集成。
+    > 专用终结点必须启用专用 DNS 集成，此示例才能正常运行。
 
 3. 在 DNS 服务器中创建条件转发器以转发到 Azure DNS：
 
@@ -415,14 +418,17 @@ $workspaceDns.CustomDnsConfigs | format-table
     Azure 公共区域：
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```     
     
     Azure 中国区域：
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    
+    - ```instances.ml.azure.cn```
+
     Azure 美国政府区域：
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -436,14 +442,17 @@ $workspaceDns.CustomDnsConfigs | format-table
     Azure 公共区域：
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     Azure 中国区域：
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     Azure 美国政府区域：
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -466,13 +475,13 @@ $workspaceDns.CustomDnsConfigs | format-table
     - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.api.ml.azure.us```
     - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>. notebooks.usgovcloudapi.net```
 
-6. 本地 DNS 服务器以递归方式解析工作区域：
+6. **本地 DNS 服务器以递归形式解析工作区域**：
 
-    本地 DNS 服务器将解析 DNS 服务器步骤 5 中的 FQDN。 由于有条件转发（步骤 4），因此本地 DNS 服务器会将请求发送到 DNS 服务器进行解析。
+    本地 DNS 服务器将从 DNS 服务器解析步骤 5 中的 FQDN。 由于步骤 4 中设置了条件转发器，因此本地 DNS 服务器将向 DNS 服务器发送请求以进行解析。
 
-7. DNS 服务器将工作区域从 Azure DNS 解析为 CNAME：
+7. **DNS 服务器从 Azure DNS 将工作区域解析为 CNAME**：
 
-    DNS 服务器将解析 Azure DNS 步骤 5 中的 FQDN。 Azure DNS 将使用步骤 1 中列出的域之一进行响应。
+    DNS 服务器将从 Azure DNS 解析步骤 5 中的 FQDN。 Azure DNS 将使用步骤 1 中列出的其中一个域进行响应。
 
 8. 本地 DNS 服务器以递归方式解析 DNS 服务器的工作区域 CNAME 记录：
 
@@ -544,7 +553,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
     打开命令提示符、shell 或 PowerShell。 然后，针对每个工作区 FQDN 运行以下命令：
 
-    ```nslookup <workspace FQDN>```
+    `nslookup <workspace FQDN>`
         
     每个 nslookup 的结果应该将专用终结点上的两个专用 IP 地址之一提供给 Azure 机器学习工作区。 如果没有返回，则说明自定义 DNS 解决方案中存在配置错误。
 

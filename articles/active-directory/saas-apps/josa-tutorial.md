@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 290d70e4dc83a4db0b1c0c31e9d60a32d124dc75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec670a90a3193fd1f4ed1781ac6d4160ae4fd737
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459316"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833124"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-josa"></a>教程：Azure Active Directory 与 JOSA 的单一登录 (SSO) 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "92459316"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
+1. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -92,7 +92,7 @@ ms.locfileid: "92459316"
     > [!Note]
     > 如果“标识符”值未自动填充，请根据要求手动填充该值。  登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [JOSA 客户端支持团队](mailto:hr@alldialogue.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -138,7 +138,7 @@ ms.locfileid: "92459316"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 JOSA 磁贴时，应会自动登录到为其设置了 SSO 的 JOSA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 JOSA 磁贴时，应会自动登录到为其设置了 SSO 的 JOSA。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

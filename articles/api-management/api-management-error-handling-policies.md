@@ -3,7 +3,7 @@ title: Azure API 管理策略中的错误处理 | Microsoft 文档
 description: 了解在 Azure API 管理中处理请求时，如何对可能发生的错误情况做出响应。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
-ms.author: apimpm
-ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: c2ad72d55bc5056b3bb3faf0d520c07f44b4940e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92070939"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647644"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理策略中的错误处理
 

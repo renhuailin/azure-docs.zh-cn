@@ -14,12 +14,12 @@ ms.date: 06/30/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88854bb08b9f1cffec7d6f2fde535f73a3241e18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 761995f33d5688e5864640a0e6e2f864f5aa44a3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749060"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766039"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中为 Azure AD 角色配置安全警报
 
@@ -43,7 +43,7 @@ ms.locfileid: "121749060"
 | --- | --- |
 | **为何收到此警报？** | 为用户分配他们不需要的特权角色会增大受攻击的可能性。 攻击者更容易忽略不经常使用的帐户。 |
 | **如何修复？** | 查看列表中的用户，将其从不需要的特权角色中删除。 |
-| **防护** | 特权角色只分配给有业务需要的用户。 </br>安排定期的[访问评审](pim-how-to-start-security-review.md)，以确认用户是否仍需要访问权限。 |
+| **防护** | 特权角色只分配给有业务需要的用户。 </br>安排定期的[访问评审](./pim-create-azure-ad-roles-and-resource-roles-review.md)，以确认用户是否仍需要访问权限。 |
 | **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
 | **触发器** | 如果用户在指定天数过后未激活角色，将触发此警报。 |
 | **天数** | 此设置指定用户可以不激活角色的最大天数（0 到 100）。|
@@ -76,7 +76,7 @@ ms.locfileid: "121749060"
 | --- | --- |
 | **为何收到此警报？** | 具有特权角色的帐户在过去 90 天内未更改密码。 这些帐户可能是未维护且易受攻击者攻击的服务帐户或共享帐户。 |
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
-| **防护** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
+| **防护** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](./pim-create-azure-ad-roles-and-resource-roles-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
 | **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
 | **最佳实践** | 使用密码进行身份验证并分配给高特权管理角色（如全局管理员或安全管理员）的共享帐户、服务帐户和紧急访问帐户应针对以下情况轮换其密码：<ul><li>发生涉及误用或泄露管理访问权限的安全事件后</li><li>任何用户的权限被更改而导致他们不再是管理员之后（例如，一名曾是管理员的员工离开了 IT 或组织）</li><li>固定时间间隔（例如，每季度或每年），即使没有任何已知的安全漏洞或 IT 人员变动</li></ul>由于多个用户有权限访问这些帐户的凭据，因此应轮换这些凭据以确保已失去其角色的人员无法再访问帐户。 [详细了解如何保护帐户](../roles/security-planning.md) |
 

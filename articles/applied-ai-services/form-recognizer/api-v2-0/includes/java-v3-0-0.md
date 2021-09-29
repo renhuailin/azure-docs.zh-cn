@@ -1,7 +1,6 @@
 ---
 title: 参考：适用于 Java 的表单识别器 3.1.1 客户端库
 description: 使用适用于 Java 的表单识别器客户端库创建一个表单处理应用，Docs Authoring Pack for VS Code 中的 Docs Markdown 扩展会从自定义文档中提取键值对和表数据。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -9,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 0c15ab527191f034c21678c5529f1af4cd4adcb5
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 40f7973149ae81fb9ae8f00df99c51c27300c6d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326278"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641726"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->

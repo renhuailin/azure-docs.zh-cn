@@ -3,17 +3,18 @@ title: 从 ODBC 数据存储移动数据
 description: 了解如何使用 Azure 数据工厂从 ODBC 数据存储移动数据。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 43987b333279675204179a90f01f2aa668abb2c1
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 269d0d0bb1d9fb61dada1640a4a5c63106654abd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665650"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619545"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从 ODBC 数据存储移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -45,7 +46,7 @@ ms.locfileid: "110665650"
 
 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -60,7 +61,7 @@ ms.locfileid: "110665650"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供特定于 ODBC 链接服务的 JSON 元素的描述。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**OnPremisesOdbc** |是 |
 | connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 <br/><br/>可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在网关计算机上使用 `"DSN=<name of the DSN>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。 |是 |
@@ -143,7 +144,7 @@ ms.locfileid: "110665650"
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 ODBC）时，以下属性可用于 typeProperties 部分：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |是 |
 
@@ -355,10 +356,10 @@ ms.locfileid: "110665650"
 
 1. 启动“数据管理网关配置管理器”。 可以直接运行 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe"（或）搜索“网关”以查找“Microsoft 数据管理网关”应用程序的链接，如下图所示。
 
-    ![搜索网关](./media/data-factory-odbc-connector/search-gateway.png)
+    :::image type="content" source="./media/data-factory-odbc-connector/search-gateway.png" alt-text="搜索网关":::
 2. 切换到“诊断”选项卡。
 
-    ![网关诊断](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+    :::image type="content" source="./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png" alt-text="网关诊断":::
 3. 选择数据存储（链接服务）的“类型”。
 4. 指定“身份验证”并输入“凭据”（或）输入用于连接数据存储的“连接字符串”。
 5. 单击“测试连接”以测试数据存储的连接。

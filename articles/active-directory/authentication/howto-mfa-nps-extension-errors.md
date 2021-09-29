@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: b95286169df2960d8e7297a493354b8f01e2f667
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 1bde9622dd649d24de26f38a282d075a46bbaee2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029686"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773752"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>解决 Azure AD 多重身份验证的 NPS 扩展出现的错误消息
 
@@ -51,14 +51,14 @@ ms.locfileid: "112029686"
 | 错误代码 | 错误消息 | 疑难解答步骤 |
 | ---------- | ------------- | --------------------- |
 | **AccessDenied** | 调用方租户无权针对用户执行身份验证 | 检查租户域和用户主体名称 (UPN) 的域是否相同。 例如，确保 user@contoso.com 正在尝试向 Contoso 租户进行身份验证。 UPN 代表 Azure 中的租户的有效用户。 |
-| **AuthenticationMethodNotConfigured** | 未为用户配置指定的身份验证方法 | 请让用户根据[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
+| **AuthenticationMethodNotConfigured** | 未为用户配置指定的身份验证方法 | 请让用户根据[管理双重验证设置](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)中的说明添加或检查其验证方法。 |
 | **AuthenticationMethodNotSupported** | 指定的身份验证方法不受支持。 | 请收集包含此错误的所有日志，并[联系支持人员](#contact-microsoft-support)。 联系支持人员时，请提供用户名以及触发该错误的辅助验证方法。 |
-| **BecAccessDenied** | MSODS Bec 调用返回了拒绝访问错误，原因可能是租户中未定义用户名 | 该用户在本地 Active Directory 中存在，但未由 AD Connect 同步到 Azure AD。 或者，租户中缺少该用户。 请将该用户添加到 Azure AD，并让其根据[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 |
+| **BecAccessDenied** | MSODS Bec 调用返回了拒绝访问错误，原因可能是租户中未定义用户名 | 该用户在本地 Active Directory 中存在，但未由 AD Connect 同步到 Azure AD。 或者，租户中缺少该用户。 请将该用户添加到 Azure AD，并让其根据[管理双重验证设置](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)中的说明添加或检查其验证方法。 |
 | **InvalidFormat** 或 **StrongAuthenticationServiceInvalidParameter** | 电话号码采用了无法识别的格式 | 请让用户更正其验证电话号码。 |
 | **InvalidSession** | 指定的会话无效或已过期 | 完成会话花费的时间超过三分钟。 验证用户是否在发起身份验证请求后的三分钟内输入了验证码或者对应用通知做出了响应。 如果仍未解决问题，请检查客户端、NAS 服务器、NPS 服务器和 Azure AD MFA 终结点之间是否未出现网络延迟。  |
-| **NoDefaultAuthenticationMethodIsConfigured** | 未为用户配置默认的身份验证方法 | 请让用户根据[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的说明添加或检查其验证方法。 验证用户是否已选择默认身份验证方法，并为其帐户配置了该方法。 |
+| **NoDefaultAuthenticationMethodIsConfigured** | 未为用户配置默认的身份验证方法 | 请让用户根据[管理双重验证设置](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)中的说明添加或检查其验证方法。 验证用户是否已选择默认身份验证方法，并为其帐户配置了该方法。 |
 | **OathCodePinIncorrect** | 输入了错误的代码和 PIN。 | NPS 扩展中应该不会出现此错误。 如果用户遇到此错误，请[联系支持人员](#contact-microsoft-support)以获得故障排除帮助。 |
-| **ProofDataNotFound** | 未为指定的身份验证方法配置证明数据。 | 请让用户尝试不同的验证方法，或者根据[管理双重验证设置](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的说明添加新的验证方法。 如果确认用户的验证方法已正确设置后用户仍看到此错误，请[联系支持人员](#contact-microsoft-support)。 |
+| **ProofDataNotFound** | 未为指定的身份验证方法配置证明数据。 | 请让用户尝试不同的验证方法，或者根据[管理双重验证设置](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)中的说明添加新的验证方法。 如果确认用户的验证方法已正确设置后用户仍看到此错误，请[联系支持人员](#contact-microsoft-support)。 |
 | **SMSAuthFailedWrongCodePinEntered** | 输入了错误的代码和 PIN。 (OneWaySMS) | NPS 扩展中应该不会出现此错误。 如果用户遇到此错误，请[联系支持人员](#contact-microsoft-support)以获得故障排除帮助。 |
 | **TenantIsBlocked** | 租户已被阻止 | [请联系支持人员](#contact-microsoft-support)并提供 Azure 门户中 Azure AD 属性页上的租户 ID。 |
 | **UserNotFound** | 找不到指定的用户 | 该租户在 Azure AD 中不再显示为活动状态。 检查订阅是否处于活动状态，并且已创建所需的第一方应用。 此外，请确保证书使用者中的租户符合预期，并且该证书仍然有效且已在服务主体下注册。 |
@@ -95,7 +95,7 @@ ms.locfileid: "112029686"
 
 ### <a name="troubleshoot-user-accounts"></a>排查用户帐户问题
 
-如果用户[在使用双重验证时遇到问题](../user-help/multi-factor-authentication-end-user-troubleshoot.md)，请帮助他们自我诊断问题。
+如果用户[在使用双重验证时遇到问题](https://support.microsoft.com/account-billing/common-problems-with-two-step-verification-for-a-work-or-school-account-63acbb9b-16a1-47b9-8619-6a865e8071a5)，请帮助他们自我诊断问题。
 
 ### <a name="health-check-script"></a>运行状况检查脚本
 

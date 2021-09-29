@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 87c73dc2d5afaf4969a04e850811375d7d46cf07
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 803b356f2011328b47ff17a12176e3c6b22f5497
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113728977"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579489"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>通过共享密钥授权调用 REST API 操作
 
@@ -564,7 +564,7 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 在本文中，你学习了如何向 Blob 存储 REST API 发出请求。 可以通过该请求检索容器列表或容器中 Blob 的列表。 此外，你还学习了如何创建 REST API 调用的授权签名，以及如何在 REST 请求中使用它。 最后，你学习了如何检查该响应。
 

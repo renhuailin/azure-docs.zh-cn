@@ -6,15 +6,15 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 6cf6bae3548a459a1d47dc0dcd55d28a290ca0f6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/24/2021
+ms.openlocfilehash: 0ff55bf38e88bf62b483cf70df89a17b9c5afb8d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749384"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210376"
 ---
-#    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
+# <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
 **实体识别** 技能从文本中提取各种类型的实体。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 

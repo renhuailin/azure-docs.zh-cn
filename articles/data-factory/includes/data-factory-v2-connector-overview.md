@@ -2,14 +2,14 @@
 author: jianleishen
 ms.service: data-factory
 ms.topic: include
-ms.date: 07/29/2021
+ms.date: 09/22/2021
 ms.author: jianleishen
-ms.openlocfilehash: f8ba37528213d4abca398ae3d5fddc24f1ab17aa
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 3eeebaf827e1c5a244423f0cab1b4adceefceb5f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123355509"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129096001"
 ---
 | 类别              | 数据存储                                                   | [复制活动](../copy-activity-overview.md)（源/接收器） | [映射数据流源](../concepts-data-flow-overview.md)（源/接收器） | [Lookup 活动](../control-flow-lookup-activity.md) | [获取元数据活动](../control-flow-get-metadata-activity.md)/[验证活动](../control-flow-validation-activity.md) | [删除活动](../delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -29,7 +29,9 @@ ms.locfileid: "123355509"
 | &nbsp;                | [Azure SQL 托管实例](../connector-azure-sql-managed-instance.md) | ✓/✓                                                          | ✓/✓ <br>                                                     |                                                              | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Azure Synapse Analytics](../connector-azure-sql-data-warehouse.md) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure 表存储](../connector-azure-table-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| **Database**          | [Amazon Redshift](../connector-amazon-redshift.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
+| **Database**          | [Amazon RDS for Oracle](../connector-amazon-rds-for-oracle.md)       | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
+| &nbsp;                | [Amazon RDS for SQL Server](../connector-amazon-rds-for-sql-server.md)       | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                              |                                                              |
+| &nbsp;                | [Amazon Redshift](../connector-amazon-redshift.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [DB2](../connector-db2.md)             | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Drill](../connector-drill.md)         | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Google BigQuery](../connector-google-bigquery.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |

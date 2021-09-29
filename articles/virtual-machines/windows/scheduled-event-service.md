@@ -7,12 +7,12 @@ ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: b8e13f8a8bd577e3e872d3fc59b099e34fd495d1
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 678c59f8a2ca9a3d9f1030597d84ed9986bce8d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694209"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588516"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>监视 Azure VM 的计划事件
 
@@ -158,7 +158,7 @@ New-AzVm `
 
 1. 选择“新建警报规则”。 
 1. 在“创建规则”页中，保留 `collectorworkspace` 作为 **资源**。
-1. 在“条件”下，选择条目“每当客户日志搜索为 <login undefined> 时”。 此时将打开“配置信号逻辑”页。
+1. 在“条件”下，选择条目“每当客户日志搜索为 \<login undefined\> 时”。 此时将打开“配置信号逻辑”页。
 1. 在“阈值”下输入 *0*，然后选择“完成”。 
 1. 在“操作”下，选择“创建操作组”。  此时将打开“添加操作组”页。
 1. 在“操作组名称”中键入 *myActionGroup*。

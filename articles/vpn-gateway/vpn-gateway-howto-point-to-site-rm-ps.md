@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/03/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0d6281f0767938b8ffd00f1790a629adcb8252d6
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 62765ceb53d7a66d591b0fa62397b50c7fc04b9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722413"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774037"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-azure-certificate-authentication-powershell"></a>使用 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：PowerShell
 
@@ -114,7 +114,7 @@ $DNS = "10.2.1.4"
 * -GatewayType 必须是 **Vpn**，-VpnType 必须是 **RouteBased**。
 * -VpnClientProtocol 用来指定要启用的隧道的类型。 隧道选项为 OpenVPN、SSTP 和 IKEv2 。 可以选择启用其中之一或任何受支持的组合。 如果要启用多个类型，请以逗号分隔的形式指定名称。 不能同时启用 OpenVPN 和 SSTP。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 macOS 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。 可以使用 OpenVPN 客户端连接到 OpenVPN 隧道类型。
 * 虚拟网络网关“基本”SKU 不支持 IKEv2、OpenVPN 或 RADIUS 身份验证。 如果计划让 Mac 客户端连接到虚拟网络，请不要使用基本 SKU。
-* VPN 网关可能需要 45 分钟或更长时间才能完成，具体取决于所选的[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md)。 
+* VPN 网关可能需要 45 分钟或更长时间才能完成，具体取决于所选[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md)。 
 
 1. 为 VNet 配置和创建虚拟网络网关。 创建网关大约需要 45 分钟。
 
@@ -386,6 +386,6 @@ $profile.VPNProfileSASUrl
 
 ## <a name="next-steps"></a>后续步骤
 
-连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](../index.yml)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-machines/network-overview.md)。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机](../index.yml)。 若要详细了解网络和虚拟机，请参阅 [Azure 和 Linux VM 网络概述](../virtual-network/network-overview.md)。
 
 有关 P2S 故障排除信息，请参阅[故障排除：Azure 点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

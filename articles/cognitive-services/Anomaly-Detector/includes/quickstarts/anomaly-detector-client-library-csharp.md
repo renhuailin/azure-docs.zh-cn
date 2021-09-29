@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: f526038a37e6f4e4a5d03c516446653a95c08be4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 13245ac2e9569ee9d984ae0978dca2a93ca735da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110166100"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908861"
 ---
 开始使用适用于 C# 的异常检测器客户端库。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
@@ -23,7 +23,7 @@ ms.locfileid: "110166100"
 * 在时序中检测最新数据点的异常状态
 * 检测数据集中的趋势更改点。
 
-[库参考文档](https://aka.ms/anomaly-detector-dotnet-ref) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[库参考文档](https://aka.ms/anomaly-detector-dotnet-ref) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/anomalydetector) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>先决条件
 

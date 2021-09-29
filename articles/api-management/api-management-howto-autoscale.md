@@ -3,20 +3,20 @@ title: 配置 Azure API 管理实例的自动缩放 | Microsoft Docs
 description: 本主题介绍如何设置 Azure API 管理实例的自动缩放行为。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 manager: anneta
 editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
-ms.author: apimpm
-ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 2684eb2a74f5c7bc5b4913ea2101f1d3febbcab8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018235"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628869"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自动缩放 Azure API 管理实例  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 1fdcef7e3b4a4246c3e093874fbb775f4811e59f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9333f8ab82f33b357aaa01af58b7468786ced698
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522013"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800814"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>教程：Azure Active Directory 与 Stormboard 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "92522013"
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/both-signonurl.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.stormboard.com/saml2/ad/login/<TEAMID>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.stormboard.com/saml2/ad/login/<TEAMID>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Stormboard 客户端支持团队](mailto:support@stormboard.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -192,7 +192,7 @@ ms.locfileid: "92522013"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Stormboard”磁贴时，应会自动登录到设置了 SSO 的 Stormboard。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Stormboard”磁贴时，应会自动登录到设置了 SSO 的 Stormboard。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

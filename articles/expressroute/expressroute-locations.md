@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: e0556c4736108e649514a368b582f8f1983a9744
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7703c1bba0faf69ee5d2640497df64cc1a418564
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431055"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665257"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 连接合作伙伴和对等互连位置
 
@@ -356,7 +356,7 @@ Azure 国家/地区云彼此独立，是全球商业 Azure 的一部分。 一�
 | **[Presidio](https://www.presidio.com/subpage/1107/microsoft-azure)** | 北美 |
 | **[sol-tec](https://www.sol-tec.com/what-we-do/)** | 欧洲 |
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | 南美洲 |
-| **[Vigilant.IT](https://vigilant.it/expressroute)** | 澳大利亚 |
+| **[Vigilant.IT](https://vigilant.it/networking-services/microsoft-azure-networking/)** | 澳大利亚 |
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。

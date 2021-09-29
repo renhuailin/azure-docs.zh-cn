@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: e2da161d98a7f4bcae0f8da55a1cf7129c7633f9
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 76800b0f7a90dacd1447b87fdc1f1d23300873ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183954"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784387"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>常用的 Azure Sentinel 工作簿
 
@@ -48,7 +48,7 @@ ms.locfileid: "122183954"
 |**标识和访问**     |   通过包含审核和登录日志的安全日志，提供对 Microsoft 产品使用中的标识和访问操作的见解。     |
 |**事件概述**     |   旨在通过提供有关事件的详细信息（包括常规信息、实体数据、会审时间、缓解时间和注释）来帮助进行会审和调查。 <br><br>有关详细信息，请参阅[用于数据驱动的 SOC 的工具包](https://techcommunity.microsoft.com/t5/azure-sentinel/the-toolkit-for-data-driven-socs/ba-p/2143152)。      |
 |<a name="investigation-insights"></a>调查见解     | 为分析师提供对事件、书签和实体数据的见解。 常见查询和详细可视化效果可帮助分析师调查可疑活动。     |
-|**Microsoft Cloud App Security - 发现日志**     |   提供有关在组织中使用的云应用的详细信息，以及针对特定用户和应用程序的使用趋势和深化数据的见解。  <br><br>有关详细信息，请参阅[连接来自 Microsoft Cloud App Security 的数据](connect-cloud-app-security.md)。|
+|**Microsoft Cloud App Security - 发现日志**     |   提供有关在组织中使用的云应用的详细信息，以及针对特定用户和应用程序的使用趋势和深化数据的见解。  <br><br>有关详细信息，请参阅[连接来自 Microsoft Cloud App Security 的数据](./data-connectors-reference.md#microsoft-cloud-app-security-mcas)。|
 |**MITRE ATT&CK 工作簿**     |   提供有关 Azure Sentinel 的 MITRE ATT&CK 覆盖范围的详细信息。      |
 |**Office 365**     | 通过跟踪和分析所有操作和活动，提供对 Office 365 的见解。 向下钻取到 SharePoint、OneDrive、Teams 和 Exchange 数据。       |
 |**安全警报**     |  提供用于 Azure Sentinel 环境中警报的安全警报仪表板。 <br><br>有关详细信息，请参阅[从 Microsoft 安全警报自动创建事件](create-incidents-from-alerts.md)。      |

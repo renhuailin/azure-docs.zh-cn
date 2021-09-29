@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12337e9c6d42ee140367c26cd160fd0a5fd595d3
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 98cd9fd4a54796827184da9dc549637331892083
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902296"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590473"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教程：实现数据湖捕获模式以更新 Databricks Delta 表
 
@@ -25,21 +25,21 @@ ms.locfileid: "111902296"
 在本教程中，将：
 
 > [!div class="checklist"]
-> * 创建一个事件网格订阅用于调用 Azure 函数。
-> * 创建一个 Azure 函数，用于接收事件中的通知，然后运行 Azure Databricks 中的作业。
-> * 创建一个 Databricks 作业，用于将客户订单插入到存储帐户中的 Databricks Delta 表。
+> - 创建一个事件网格订阅用于调用 Azure 函数。
+> - 创建一个 Azure 函数，用于接收事件中的通知，然后运行 Azure Databricks 中的作业。
+> - 创建一个 Databricks 作业，用于将客户订单插入到存储帐户中的 Databricks Delta 表。
 
 我们将从 Azure Databricks 工作区开始，按相反的顺序生成此解决方案。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 创建一个采用分层命名空间的存储帐户 (Azure Data Lake Storage Gen2)。 本教程使用名为 `contosoorders` 的存储帐户。 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](assign-azure-role-data-access.md)。
+- 创建一个采用分层命名空间的存储帐户 (Azure Data Lake Storage Gen2)。 本教程使用名为 `contosoorders` 的存储帐户。 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](assign-azure-role-data-access.md)。
 
    请参阅[创建用于 Azure Data Lake Storage Gen2 的存储帐户](create-data-lake-storage-account.md)。
 
-* 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
+- 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
   在执行该文中的步骤时，需要完成一些特定的事项。
 
@@ -71,23 +71,23 @@ ms.locfileid: "111902296"
 
 4. 将此文件保存到本地计算机，并将其命名为 **data.csv**。
 
-5. 在存储资源管理器中，将此文件上传到 **input** 文件夹。  
+5. 在存储资源管理器中，将此文件上传到 **input** 文件夹。
 
 ## <a name="create-a-job-in-azure-databricks"></a>在 Azure Databricks 中创建作业
 
 在本部分，你将执行以下任务：
 
-* 创建 Azure Databricks 工作区。
-* 创建笔记本。
-* 创建并填充 Databricks Delta 表。
-* 添加用于将行插入 Databricks Delta 表的代码。
-* 创建一个作业。
+- 创建 Azure Databricks 工作区。
+- 创建笔记本。
+- 创建并填充 Databricks Delta 表。
+- 添加用于将行插入 Databricks Delta 表的代码。
+- 创建一个作业。
 
 ### <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
 在本部分，使用 Azure 门户创建 Azure Databricks 工作区。
 
-1. 在 Azure 门户中，选择“创建资源” > “分析” > “Azure Databricks”。
+1. 在 Azure 门户中，选择“创建资源”   >   “分析” >   “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
@@ -111,8 +111,8 @@ ms.locfileid: "111902296"
 
     除以下值外，接受其他所有默认值：
 
-    * 输入群集的名称。
-    * 请务必选中“在不活动超过 120 分钟后终止”  复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+    - 输入群集的名称。
+    - 请务必选中“在不活动超过 120 分钟后终止”  复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
 4. 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
@@ -132,11 +132,11 @@ ms.locfileid: "111902296"
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>创建并填充 Databricks Delta 表
 
-1. 在创建的笔记本中，将以下代码块复制并粘贴到第一个单元中，但暂时不要运行此代码。  
+1. 在创建的笔记本中，将以下代码块复制并粘贴到第一个单元中，但暂时不要运行此代码。
 
    请将此代码块中的 `appId`、`password` 和 `tenant` 占位符值替换为在完成本教程的先决条件时收集的值。
 
-    ```Python
+    ```python
     dbutils.widgets.text('source_file', "", "Source File")
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
@@ -159,9 +159,8 @@ ms.locfileid: "111902296"
 
 3. 将以下代码块复制并粘贴到另一个单元中，然后按 **SHIFT + ENTER** 键运行此代码块中的代码。
 
-   ```Python
+   ```python
    from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType, StringType
-
 
    inputSchema = StructType([
    StructField("InvoiceNo", IntegerType(), True),
@@ -194,7 +193,7 @@ ms.locfileid: "111902296"
 
 1. 将以下代码块复制并粘贴到另一个单元中，但不要运行此单元。
 
-   ```Python
+   ```python
    upsertDataDF = (spark
      .read
      .option("header", "true")
@@ -257,7 +256,7 @@ ms.locfileid: "111902296"
 2. 依次单击“生成新令牌”按钮、“生成”按钮。  
 
    确保将令牌复制到安全位置。 Azure 函数需要使用此令牌对 Databricks 进行身份验证，以便能够运行该作业。
-  
+
 3. 选择 Azure 门户左上角的“创建资源”按钮，然后选择“计算”>“函数应用”。  
 
    ![创建 Azure 函数](./media/data-lake-storage-events/function-app-create-flow.png "创建 Azure 函数")

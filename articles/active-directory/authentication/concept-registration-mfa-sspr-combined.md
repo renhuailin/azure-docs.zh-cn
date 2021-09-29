@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04f7b5a7757d402035e36aaf085de9033d046ba2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52e50aa4097dbb405b0c37a96426440fdf002810
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723166"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763132"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 的合并安全信息注册概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "121723166"
 
 ![“我的帐户”显示用户的已注册安全信息](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
-在启用新体验之前，请查看以管理员为中心的文档和以用户为中心的文档，以确保你了解此功能的作用和效果。 根据[用户文档](../user-help/security-info-setup-signin.md)方面的培训，让用户准备好适应新的体验，并帮助确保成功推出。
+在启用新体验之前，请查看以管理员为中心的文档和以用户为中心的文档，以确保你了解此功能的作用和效果。 根据[用户文档](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)方面的培训，让用户准备好适应新的体验，并帮助确保成功推出。
 
 Azure AD 组合安全信息注册适用于 Azure 美国政府，但不适用于 Azure 德国或 Azure 中国世纪互联。
 

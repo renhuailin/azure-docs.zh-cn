@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: fefaac3d969695bd85264a82ce76f1524c3c56f0
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c847c87a24dedc994da39a37f37def3caeef4db1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113758807"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818613"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-azure-virtual-desktop"></a>Azure 虚拟桌面的问题排查概述、反馈和支持
 
@@ -59,5 +59,5 @@ ms.locfileid: "113758807"
 - 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-monitor/essentials/activity-log.md)。
 - 若要了解为确定部署期间的错误而需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

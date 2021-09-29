@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 - 性能优化
 description: 了解使用 Azure Data Lake Storage Gen1 中所有可用吞吐量对于通过尽可能多地并行执行读写操作来获得最佳性能的重要性。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: twooley
-ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: d10b2da54cd1262e5d51dc3f52686bdbdf802a61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97724674"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604334"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>优化 Azure Data Lake Storage Gen1 以提高性能
 

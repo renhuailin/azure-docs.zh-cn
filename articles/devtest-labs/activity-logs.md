@@ -1,14 +1,14 @@
 ---
-title: Azure 开发测试实验室中的活动日志 | Microsoft Docs
+title: 活动日志
 description: 本文介绍查看 Azure 开发测试实验室的活动日志的步骤。
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 51bdfc6c3857a3e59d75094b4c847c80c58de045
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5c7453a1cc4959f6517050ed4c1896890b2610b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582771"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654262"
 ---
 # <a name="view-activity-logs-for-labs-in-azure-devtest-labs"></a>查看 Azure 开发测试实验室中实验室的活动日志 
 在创建一个或多个实验室后，可能需要监视实验室的访问、修改和管理情况、时间以及操作者。 Azure 开发测试实验室使用 Azure Monitor（具体而言是活动日志）提供针对实验室的此类操作信息。 
@@ -47,4 +47,3 @@ ms.locfileid: "100582771"
 
 - 若要了解如何针对活动日志设置警报，请参阅[创建警报](create-alerts.md)。
 - 若要了解有关活动日志的详细信息，请参阅 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)。
-

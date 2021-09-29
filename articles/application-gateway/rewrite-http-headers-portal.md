@@ -2,18 +2,18 @@
 title: 在门户中重写 HTTP 请求和响应标头 - Azure 应用程序网关
 description: 了解如何使用 Azure 门户配置应用程序网关，重写通过网关传递的请求和响应中的 HTTP 标头
 services: application-gateway
-author: abshamsft
+author: KumudD
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: absha
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3427dfafe1918590f215793acbae3d5fd290e604
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 16479588b0e0ec64a17cb3ce0b7a46c49bd2244e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205226"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124769895"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure 门户
 

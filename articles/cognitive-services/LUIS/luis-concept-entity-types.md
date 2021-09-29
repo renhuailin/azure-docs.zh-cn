@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/26/2021
-ms.openlocfilehash: a075a84322dc11be352470d50478979b975f0292
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7eb4affb75816789dca094f9ec6e2ae19a222285
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140886"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582374"
 ---
 # <a name="entities-in-luis"></a>LUIS 中的实体
 
@@ -95,7 +95,7 @@ pattern.Any 实体是一种长度可变的占位符，仅在模式的模板言�
 
 可在[此处](./reference-entity-machine-learned-entity.md)了解有关机器学习实体的详细信息。
 
-有关详细信息，请参阅[机器学习实体](./reference-entity-pattern-any.md)参考文章。
+有关详细信息，请参阅[机器学习实体](./reference-entity-machine-learned-entity.md)参考文章。
 
 #### <a name="ml-entity-with-structure"></a>具有结构的 ML 实体
 

@@ -1,26 +1,19 @@
 ---
 title: Azure Sentinel UEBA 扩充引用 | Microsoft Docs
 description: 本文显示 Azure Sentinel 的实体行为分析生成的实体扩充。
-services: sentinel
-cloud: na
-documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 05/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 3253a399015e533fc299bc7a338ce091769f4c65
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 6420ef1345e20c2aec511a0a0284753a78895020
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721692"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627342"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA 扩充引用
 
@@ -199,7 +192,7 @@ ms.locfileid: "114721692"
 
 | 扩充名称 | [基线](#baseline-explained)（天） | 说明 | 示例值 |
 | --- | --- | --- | --- |
-| **用户上次执行的操作**<br>*(LastTimeUserPerformedAction)* | 180 | 上次用户执行了相同的操作。 | <Timestamp> |
+| **用户上次执行的操作**<br>*(LastTimeUserPerformedAction)* | 180 | 上次用户执行了相同的操作。 | \<Timestamp\> |
 | **过去未执行类似操作**<br>*(SimilarActionWasn'tPerformedInThePast)* | 30 | 用户未在相同的资源提供程序中执行任何操作。 | True、False |
 | **源 IP 位置**<br>*(SourceIPLocation)* | *空值* | 此国家/地区从操作的源 IP 解析。 | [英国萨里] |
 | **不常见的大量操作**<br>*(UncommonHighVolumeOfOperations)* | 7 | 用户在同一个提供程序中执行了一连串类似操作 | True、False |

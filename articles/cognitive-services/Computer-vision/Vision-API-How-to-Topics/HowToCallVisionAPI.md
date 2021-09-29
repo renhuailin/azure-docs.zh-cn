@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0014297d45c26d855a2df8c2a3fdccb2f0c047d2
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: b7835185071d85b064c942da9f86f6848443dcd1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822902"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820209"
 ---
 # <a name="call-the-image-analysis-api"></a>调用图像分析 API
 
@@ -138,7 +138,7 @@ description.captions[].confidence    | `number`    | 短语的置信度评分。
     * InternalServerError
 
 > [!TIP]
-> 使用计算机视觉时，可能会遇到服务强制实施的[速率限制](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)所导致的暂时性错误，或者网络中断等其他暂时性问题。 有关如何处理此类故障的信息，请参阅云设计模式指南中的[重试模式](https://docs.microsoft.com/azure/architecture/patterns/retry)，以及相关的[断路器模式](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)。
+> 使用计算机视觉时，可能会遇到服务强制实施的[速率限制](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)所导致的暂时性错误，或者网络中断等其他暂时性问题。 有关如何处理此类故障的信息，请参阅云设计模式指南中的[重试模式](/azure/architecture/patterns/retry)，以及相关的[断路器模式](/azure/architecture/patterns/circuit-breaker)。
 
 
 ## <a name="next-steps"></a>后续步骤

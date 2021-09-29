@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: b58fd8ba86febba41715aba4340838a0f494e6ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759898"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591647"
 ---
 ::: zone target="docs"
 
@@ -222,24 +222,26 @@ ms.locfileid: "91759898"
 
 6. 运行 Data Box Disk 解锁工具。 在 Azure 门户中提供在[连接到磁盘并获取支持密钥](#connect-to-disks-and-get-the-passkey)中获取的支持密钥。 （可选）指定要解锁 BitLocker 加密卷列表。 应在单引号中指定支持密钥和卷列表。 
 
-    键入以下命令。
+   键入以下命令。
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'          
+   ```bash
+   sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'
+   ```
 
-    下面显示了示例输出。 
+   下面显示了示例输出。 
  
-    ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
-    
-    START: Mon Aug 13 14:25:49 2018 
-    Volumes: /dev/sdbl 
-    Passkey: qwerqwerqwer 
-    
-    Volumes for data copy : 
-    /dev/sdbl: /mnt/DataBoxDisk/mountVoll/ 
-    END: Mon Aug 13 14:26:02 2018
-    ```
-    其中显示了可将数据复制到的卷的装入点。
+   ```output
+   [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
+   
+   START: Mon Aug 13 14:25:49 2018 
+   Volumes: /dev/sdbl 
+   Passkey: qwerqwerqwer 
+   
+   Volumes for data copy : 
+   /dev/sdbl: /mnt/DataBoxDisk/mountVoll/ 
+   END: Mon Aug 13 14:26:02 2018
+   ```
+   其中显示了可将数据复制到的卷的装入点。
 
 7. 将来每次重新插入磁盘，都需要重复解锁步骤。 如需 Data Box Disk 解锁工具的帮助，请使用 `help` 命令。 
     

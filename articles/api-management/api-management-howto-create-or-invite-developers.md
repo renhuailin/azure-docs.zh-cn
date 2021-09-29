@@ -3,7 +3,7 @@ title: 如何在 Azure API 管理中管理用户帐户 | Microsoft Docs
 description: 了解如何在 Azure API 管理中创建或邀请用户。 查看创建开发人员帐户后要使用的其他资源。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: apimpm
-ms.openlocfilehash: da9333efb3078564347e6498e84e46c5ebcf10f7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: danlep
+ms.openlocfilehash: 727d576b67350a66f32dca2a2a05bbc5fc7d66db
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748914"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558379"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理用户帐户
 

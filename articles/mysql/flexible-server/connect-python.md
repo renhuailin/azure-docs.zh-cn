@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 57bfd9564f1f5ee3ea66e80a969760ea578a0e74
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 8430fc401e8cbb6c526f5bdca9a0b6841447793b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643100"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128588763"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>快速入门：使用 Python 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据
 
@@ -28,7 +28,9 @@ ms.locfileid: "122643100"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 具有活动订阅的 Azure 帐户。 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 * Azure Database for MySQL 灵活服务器。 若要创建灵活服务器，请参阅[使用 Azure 门户创建 Azure Database for MySQL 灵活服务器](./quickstart-create-server-portal.md)或[使用 Azure CLI 创建 Azure Database for MySQL 灵活服务器](./quickstart-create-server-cli.md)。
 
 ## <a name="preparing-your-client-workstation"></a>准备客户端工作站

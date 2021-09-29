@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c468dccd9058125169181c3fc456b71b7ea7ffec
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8efe40fd4a60da7fa77e642d8ad95b3495d9771e
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737421"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094588"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>将网络观察程序扩展更新到最新版本
 
@@ -34,7 +34,7 @@ ms.locfileid: "121737421"
 
 ## <a name="latest-version"></a>最新版本
 
-当前，网络观察程序扩展的最新版本为 `1.4.1884.1`。
+当前，网络观察程序扩展的最新版本为 `1.4.1974.1`。
 
 ## <a name="update-your-extension-using-a-powershell-script"></a>使用 PowerShell 脚本更新扩展
 要进行大型部署的客户需要一次更新多个 VM。 要手动更新选定的 VM，请参阅下一节 
@@ -59,7 +59,7 @@ param(
     [Parameter(Mandatory=$false)]
     [Switch] $NoUpdate = $false,
     [Parameter(Mandatory=$false)]
-    [string] $MinVersion = "1.4.1654.1"
+    [string] $MinVersion = "1.4.1974.1"
 )
 
 
@@ -181,7 +181,7 @@ Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "NetworkWatcherAgentWindows" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name " AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
 
 ```
 

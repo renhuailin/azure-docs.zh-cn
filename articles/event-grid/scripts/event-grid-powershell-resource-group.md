@@ -3,13 +3,13 @@ title: Azure PowerShell 脚本示例 - 订阅资源组 | Microsoft Docs
 description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅资源组的事件网格事件。
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 07/08/2020
-ms.openlocfilehash: c8e84fe12cf239e7dbb0e6a15088efda793ddec9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 317d712a5bdaf3532e31408dc8980eab854173b6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460739"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612009"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>使用 PowerShell 订阅资源组的事件
 

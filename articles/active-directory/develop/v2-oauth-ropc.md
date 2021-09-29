@@ -13,12 +13,12 @@ ms.date: 07/16/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 866eb949d124e8d705785c6552672730fe67ece1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2ee33ec1ff87a73e31e55f06fe70672314384a6e
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464158"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059466"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
@@ -35,7 +35,7 @@ Microsoft 标识平台支持 [OAuth 2.0 资源所有者密码凭据 (ROPC) 授�
 > * 没有密码的帐户无法使用 ROPC 登录，这意味着 SMS 登录、FIDO 等功能以及 Authenticator 应用都不可用于该流。 如果你的应用或用户需要这些功能，请使用 ROPC 以外的流。
 > * 如果用户需使用[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md) 来登录应用程序，则系统会改为阻止用户。
 > * [混合联合身份验证](../hybrid/whatis-fed.md)方案（例如，用于对本地帐户进行身份验证的 Azure AD 和 ADFS）不支持 ROPC。 如果用户被整页重定向到本地标识提供程序，Azure AD 无法针对该标识提供程序测试用户名和密码。 不过，ROPC 支持[传递身份验证](../hybrid/how-to-connect-pta.md)。
-> * 混合联合身份身份验证方案的一种例外情况如下：当本地密码同步到云时，将 AllowCloudPasswordValidation 设置为 TRUE 时，Home Realm Discovery 策略将启用 ROPC 流来处理联合用户。 有关详细信息，请参阅[为旧版应用程序启用对联合用户的直接 ROPC 身份验证](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications)。
+> * 混合联合身份身份验证方案的一种例外情况如下：当本地密码同步到云时，将 AllowCloudPasswordValidation 设置为 TRUE 时，Home Realm Discovery 策略将启用 ROPC 流来处理联合用户。 有关详细信息，请参阅[为旧版应用程序启用对联合用户的直接 ROPC 身份验证](../manage-apps/home-realm-discovery-policy.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications)。
 
 [!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
@@ -65,17 +65,17 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必须 | 一个目录租户，用户需登录到其中。 此参数可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
-| `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给你的应用的应用程序（客户端）ID。 |
-| `grant_type` | 必须 | 必须设置为 `password`。 |
-| `username` | 必须 | 用户的电子邮件地址。 |
-| `password` | 必须 | 用户的密码。 |
+| `tenant` | 必选 | 一个目录租户，用户需登录到其中。 此参数可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
+| `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给你的应用的应用程序（客户端）ID。 |
+| `grant_type` | 必选 | 必须设置为 `password`。 |
+| `username` | 必选 | 用户的电子邮件地址。 |
+| `password` | 必选 | 用户的密码。 |
 | `scope` | 建议 | 以空格分隔的[范围](v2-permissions-and-consent.md)或权限的列表，这是应用需要的。 在交互式流中，管理员或用户必须提前同意这些作用域。 |
 | `client_secret`| 有时必需 | 如果应用是公共客户端，则无法包括 `client_secret` 或 `client_assertion`。  如果应用是机密客户端，则它必须包括在内。|
 | `client_assertion` | 有时必需 | 使用证书生成的不同形式的 `client_secret`。  有关更多详细信息，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
 
 > [!WARNING]
-> 作为不推荐使用该流的一部分，正式版 SDK 不支持使用机密或断言的机密客户端的该流。 你可能会发现，要使用的 SDK 不允许你在使用 ROPC 时添加机密。 
+> 正式版 SDK 不支持机密客户端（即那些使用机密或断言的客户端）使用此流，这是不建议使用此流的一部分原因。 你可能会发现想要使用的 SDK 不允许你在使用 ROPC 时添加机密。 
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应
 

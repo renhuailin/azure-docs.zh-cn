@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 34c3f19ebb48bef3ece00b6413af2c1d7e585cf5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b30bb21369e75b76c5aba299d38b2ccfc3259803
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737460"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651591"
 ---
 # <a name="assign-an-azure-role-for-access-to-blob-data"></a>分配 Azure 角色以访问 blob 数据
 
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-以下示例为用户分配 **存储 Blob 数据参与者** 角色，其范围为名为 *sample-container* 的容器。 请务必将括号中的示例值和占位符值替换为你自己的值： 
+以下示例为用户分配 **存储 Blob 数据参与者** 角色，其范围为名为 *sample-container* 的容器。 请务必将括号中的示例值和占位符值替换为你自己的值：
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -106,7 +106,7 @@ az role assignment create \
 
 - 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器级别分配该角色。
 - 如果使用 Azure 资源管理器只读锁锁定存储帐户，则该锁会阻止将范围限定为存储帐户或容器的 Azure 角色分配。
-- 如果已设置适当的允许权限以通过 Azure AD 访问数据，但无法访问数据，例如收到“AuthorizationPermissionMismatch”错误。 请确保留出足够的时间来复制在 Azure AD 中执行的权限更改，并确保没有任何拒绝分配阻止访问，请参阅 [了解 Azure 拒绝分配](../../role-based-access-control/deny-assignments.md)。
+- 如果设置了适当的权限以允许通过 Azure AD 访问数据，却无法访问数据，你会收到“AuthorizationPermissionMismatch”错误。 请务必留出足够的时间来复制在 Azure AD 中所做的权限更改，并确保没有任何阻止访问的拒绝分配，请参阅[了解 Azure 拒绝分配](../../role-based-access-control/deny-assignments.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

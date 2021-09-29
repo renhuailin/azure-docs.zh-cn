@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 56feecac6edae1c25c8706891ed7c2697a2508e1
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: a55a49232e18c61f1c5b1915c06cd61e1f13ab0b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221189"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674426"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -28,6 +28,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
 - Ubuntu-1804
 - Suse-15 
+- [CBL-Mariner](https://github.com/microsoft/CBL-Mariner)
 
 > [!NOTE]
 > 若要获得扩展的安全功能，请准备升级 Ubuntu-1604 和 Debian-9 系统，因为这些版本的指定支持期将结束。
@@ -75,7 +76,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体而言：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体来说：  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -285,8 +286,8 @@ Key Vault VM 扩展日志仅存在于本地 VM 上，在进行故障排除时能
 |位置|说明|
 |--|--|
 | /var/log/waagent.log  | 显示进行扩展更新的时间。 |
-| /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*    | 检查 Key Vault VM 扩展服务日志，以确定 akvvm_service 服务和证书下载的状态。 PEM 文件的下载位置也可以在包含一个名为“证书文件名”的条目的这些文件中找到。 如果未指定 certificateStoreLocation，它会默认设置为“/var/lib/waagent/Microsoft.Azure.KeyVault.Store/” |
-| /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/* | Key Vault VM 扩展服务的配置和二进制文件。 |
+| /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*    | 检查 Key Vault VM 扩展服务日志，以确定 akvvm_service 服务和证书下载的状态。 也可以在包含名为“证书文件名”的条目的这些文件中找到 PEM 文件的下载位置。 如果未指定 certificateStoreLocation，它会默认设置为 /var/lib/waagent/Microsoft.Azure.KeyVault.Store/ |
+| /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-\<most recent version\>/config/*   | Key Vault VM 扩展服务的配置和二进制文件。 |
 |||
   
 ### <a name="using-symlink"></a>使用符号链接

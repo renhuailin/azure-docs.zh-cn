@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: bcb6deb4adc79bf3bc3442d4215acc4f4e9c5a12
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 0593ed5d93f9b1d3d0fee072107ce4145970ee7f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557731"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775752"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simple-sign"></a>教程：Azure Active Directory 与 Simple Sign 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "111557731"
 
 4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.simplesign.io/saml/simplesamlphp/www/module.php/saml/sp/metadata.php/cloudfish-sp`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.simplesign.io/saml/simplesamlphp/www/module.php/saml/sp/metadata.php/cloudfish-sp`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.simplesign.io/saml/simplesamlphp/www/module.php/saml/sp/saml2-acs.php/cloudfish-sp`
 
@@ -128,7 +128,7 @@ ms.locfileid: "111557731"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Simple Sign。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Simple Sign”磁贴时，你应会自动登录到为其设置了 SSO 的 Simple Sign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Simple Sign”磁贴时，你应会自动登录到为其设置了 SSO 的 Simple Sign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

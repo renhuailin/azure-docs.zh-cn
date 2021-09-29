@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 9563c0843c56d9eff43c826298295ff0aedb9da1
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 24ee2ce703287e62f1271c14f639048bb88da404
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487572"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663680"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
@@ -108,7 +108,7 @@ Azure PowerShell 目前不支持此功能。
   "Values": {
     "FUNCTIONS_WORKER_RUNTIME": "python",
     "AzureWebJobsStorage": "UseDevelopmentStorage=true", 
-    "AzureWebJobs.HttpExample.Disabled": "true"
+    "AzureWebJobs.HttpExample.Disabled": true
   }
 }
 ``` 

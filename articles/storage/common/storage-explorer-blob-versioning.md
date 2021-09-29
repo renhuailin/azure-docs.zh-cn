@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: ea0b0470c83df147526a145a7c54f7245a72c4c4
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: dfff19eee4c852e336d0d943a9509d286d510347
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450316"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626677"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Azure 存储资源管理器 Blob 版本控制指南
 
@@ -62,7 +62,7 @@ Microsoft Azure 存储资源管理器可轻松访问和管理 Blob 版本。 本
 
 - 活动非版本 Blob
 - 当前版本
-- 最新的活动早期版本。 
+- 最新的活动早期版本。
 
 对于没有当前版本但具有活动的早期版本的 Blob，存储资源管理器会将其最新的活动早期版本作为该 Blob 的表示形式。
 
@@ -73,13 +73,13 @@ Microsoft Azure 存储资源管理器可轻松访问和管理 Blob 版本。 本
 - 活动非版本 Blob
 - 软删除的非版本 Blob
 - 当前版本
-- 最新的早期版本。 
+- 最新的早期版本。
 
 对于没有当前版本的 Blob，存储资源管理器会将其最新的早期版本作为该 Blob 的表示形式。
 
-> [!Note]
+> [!NOTE]
 > 由于服务限制，在列出 Blob 版本时，存储资源管理器需要进行一些额外的处理才能获取虚拟目录的分层视图。 列出以下视图中的 Blob 需要更长的时间：
-> 
+>
 > - 活动 Blob 和没有当前版本的 Blob
 > - 所有 Blob 和没有当前版本的 Blob
 
@@ -117,6 +117,6 @@ Blob 版本不能单独删除。 必须同时删除它们。 若要取消删除�
 
 ## <a name="see-also"></a>另请参阅
 
-* [Blob 版本控制](../blobs/versioning-overview.md)
-* [blob 的软删除](../blobs/soft-delete-blob-overview.md)
-* [Azure 存储资源管理器软删除指南](./storage-explorer-soft-delete.md)
+- [Blob 版本控制](../blobs/versioning-overview.md)
+- [blob 的软删除](../blobs/soft-delete-blob-overview.md)
+- [Azure 存储资源管理器软删除指南](./storage-explorer-soft-delete.md)

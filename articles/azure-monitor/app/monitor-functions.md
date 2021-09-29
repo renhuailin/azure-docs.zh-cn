@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 08/27/2021
-ms.openlocfilehash: d8364915518104581a9f9ffb03b7ee7eda86c447
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: ac160463dbfa5fd66afb351c0c0edc5f59b61b30
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252215"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751042"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>使用 Azure Monitor Application Insights 监视 Azure Functions
 
@@ -51,7 +51,7 @@ ApplicationInsightsAgent_EXTENSION_VERSION -> ~3
 
 ## <a name="distributed-tracing-for-python-function-apps"></a>Python 函数应用的分布式跟踪
 
-若要从 Redis、Memcached、MongoDB 等服务收集自定义遥测数据，可以使用 [OpenCensus Python 扩展](https://github.com/census-ecosystem/opencensus-python-extensions-azure)并[记录遥测数据](https://docs.microsoft.com/azure/azure-functions/functions-reference-python?tabs=azurecli-linux%2Capplication-level#log-custom-telemetry)。 可以在[此处](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib)找到支持的服务的列表。
+若要从 Redis、Memcached、MongoDB 等服务收集自定义遥测数据，可以使用 [OpenCensus Python 扩展](https://github.com/census-ecosystem/opencensus-python-extensions-azure)并[记录遥测数据](../../azure-functions/functions-reference-python.md?tabs=azurecli-linux%2capplication-level#log-custom-telemetry)。 可以在[此处](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib)找到支持的服务的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

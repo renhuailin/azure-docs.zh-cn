@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 64ef52e542d5e014ab3e79d98f730f691fa28a50
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 4b21aa5d63f371749081d7bc71577c7d0f5a2d49
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257378"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787672"
 ---
 # <a name="delimited-text-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中带分隔符的文本格式
 
@@ -167,7 +167,7 @@ ms.locfileid: "123257378"
 
 下图是映射数据流中带分隔符的文本源配置的示例。
 
-![DelimitedText 源](media/data-flow/delimited-text-source.png)
+:::image type="content" source="media/data-flow/delimited-text-source.png" alt-text="DelimitedText 源":::
 
 关联的数据流脚本为：
 
@@ -197,7 +197,7 @@ source(
 
 下图是映射数据流中带分隔符的文本接收器配置的示例。
 
-![DelimitedText 接收器](media/data-flow/delimited-text-sink.png)
+:::image type="content" source="media/data-flow/delimited-text-sink.png" alt-text="DelimitedText 接收器":::
 
 关联的数据流脚本为：
 

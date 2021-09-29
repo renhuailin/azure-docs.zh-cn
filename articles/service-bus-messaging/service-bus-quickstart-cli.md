@@ -3,14 +3,14 @@ title: 快速入门 - 使用 Azure CLI 创建服务总线队列 | Microsoft Docs
 description: 在本快速入门中，你将了解如何使用 Azure CLI 创建服务总线命名空间，然后在该命名空间中创建队列。
 author: spelluru
 ms.topic: quickstart
-ms.date: 08/12/2020
+ms.date: 09/28/2021
 ms.author: spelluru
-ms.openlocfilehash: 73457e6b2e210bd7db91165e97ce73591d921be4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 381d4d32d87391c0914d55690a0f4119b95a3488
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479016"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211822"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>使用 Azure CLI 创建服务总线命名空间和队列
 本快速入门介绍如何使用 Azure CLI 创建服务总线命名空间和队列。 本快速入门还介绍了如何获取客户端应用程序向队列发送消息或从队列接收消息所使用的授权凭据。 

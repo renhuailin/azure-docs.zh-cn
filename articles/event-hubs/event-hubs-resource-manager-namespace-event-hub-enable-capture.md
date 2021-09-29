@@ -2,14 +2,14 @@
 title: 创建启用了捕获的事件中心 - Azure 事件中心 | Microsoft Docs
 description: 使用 Azure 资源管理器模板创建包含一个事件中心的 Azure 事件中心命名空间并启用捕获
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9f249e4faa23b70a18ac2f1c8f3dd8ad523ee76b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 72cd56ef7d2fce836afb5963639983249204cf6c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112296130"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218596"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
@@ -41,7 +41,7 @@ ms.locfileid: "112296130"
 
 [![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventhub%2Feventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
@@ -421,7 +421,7 @@ az deployment group create \<my-resource-group\> \<my-deployment-name\> --templa
 
 * [事件中心概述](./event-hubs-about.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.yml)
+* [事件中心常见问题](event-hubs-faq.yml)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/resources/templates/?term=event+hubs

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abd69e65f5c280eaac8acb41138cf265be0af113
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98183126"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763018"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>管理 Azure AD 多重身份验证的用户身份验证方法
 
@@ -118,4 +118,4 @@ Remove-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -PhoneAuthentic
 
 本文介绍了如何配置单个用户设置。 若要配置整体 Azure AD 多重身份验证服务设置，请参阅[配置 Azure AD 多重身份验证设置](howto-mfa-mfasettings.md)。
 
-如果用户需要帮助，请参阅 [Azure AD 多重身份验证的用户指南](../user-help/multi-factor-authentication-end-user-first-time.md)。
+如果用户需要帮助，请参阅 [Azure AD 多重身份验证的用户指南](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)。

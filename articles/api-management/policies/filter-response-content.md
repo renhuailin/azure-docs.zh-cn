@@ -3,7 +3,7 @@ title: Azure API 管理策略示例 - 筛选响应内容 | Microsoft Docs
 description: Azure API 管理策略示例 - 演示如何基于与请求关联的产品从响应有效负载中筛选数据元素。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
-ms.author: apimpm
-ms.openlocfilehash: 1f2794c2d72dd460f0b3edf5fb7ec4035746c6e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 4bcd9f9db9af45149028707ba2c055b29e2bb420
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92078436"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590613"
 ---
 # <a name="filter-response-content"></a>筛选响应内容
 

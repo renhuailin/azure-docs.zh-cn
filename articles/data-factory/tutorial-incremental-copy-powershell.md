@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 02/18/2021
-ms.openlocfilehash: ecb83eb2b2cbdbbb91eb9b7dbf21c106ff0cab04
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9b1592f76917975e06e7d8a36cb618cbe3abadcf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637992"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757774"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -34,7 +34,7 @@ ms.locfileid: "122637992"
 ## <a name="overview"></a>概述
 下面是高级解决方案示意图：
 
-![以增量方式加载数据](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
+:::image type="content" source="media/tutorial-Incrementally-copy-powershell/incrementally-load.png" alt-text="以增量方式加载数据":::
 
 下面是创建此解决方案所要执行的重要步骤：
 

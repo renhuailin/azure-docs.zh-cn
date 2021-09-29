@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: allensu
-ms.openlocfilehash: d54b181ee55d841f8739008a2fb6657f7885cb96
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 97d1fc2605cc649af0603be540165ba47b3b4345
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126439"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658709"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>清除 Azure CDN 终结点
 ## <a name="overview"></a>概述
@@ -78,5 +78,5 @@ ms.locfileid: "113126439"
 
 ## <a name="see-also"></a>另请参阅
 * [在 Azure CDN 终结点上预加载资产](cdn-preload-endpoint.md)
-* [Azure CDN REST API 参考 - 清除或预加载终结点](/rest/api/cdn/cdn/endpoints)
+* [Azure CDN REST API 参考 - 清除或预加载终结点](/rest/api/cdn/endpoints)
 

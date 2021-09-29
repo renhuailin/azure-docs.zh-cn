@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: daf339a1ba79212f82a853a209068c97c13b29f8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7c3e4441289b2b17cf772df73f3c53caa465813e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965998"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732587"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>将所有应用与 Azure AD 集成的五个步骤
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 
 ![该关系图显示本地应用、业务线应用、SaaS 应用，并且显示了通过 Azure AD，Office 365 连接到 Active Directory 和 AD FS（以虚线表示）。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 
-可以通过将 [ADFS 替换为标识管理解决方案的中心作为 Azure AD](../manage-apps/migrate-adfs-apps-to-azure.md)来升级此配置。 除了上述其他权益之外，这样做还可以为你的员工要访问的每个应用启用登录，并使员工可以通过 [MyApps 门户](../user-help/my-apps-portal-end-user-access.md)轻松找到所需的任何业务应用程序。
+可以通过将 [ADFS 替换为标识管理解决方案的中心作为 Azure AD](../manage-apps/migrate-adfs-apps-to-azure.md)来升级此配置。 除了上述其他权益之外，这样做还可以为你的员工要访问的每个应用启用登录，并使员工可以通过 [MyApps 门户](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)轻松找到所需的任何业务应用程序。
 
 ![该关系图显示了通过 Active Directory 和 AD FS 的本地应用、业务线应用、SaaS 应用和 Office 365，所有应用都连接到 Azure Active Directory（以虚线表示）。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-2.png)
 

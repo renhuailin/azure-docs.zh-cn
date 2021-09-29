@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6755aae60f09fad14f773c3976ae4f3d7e073744
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 6fbffc3b9a8c45aca7fa61b45dd6f34b300864e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186103"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773961"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>使用应用程序代理的本地应用程序的 SAML 单点登录
 
@@ -81,7 +81,7 @@ ms.locfileid: "108186103"
    * 对于 SP 启动的流，请确保后端应用程序指定正确的“回复 URL”或断言使用者服务 URL 以接收身份验证令牌。
 
     > [!NOTE]
-    > 如果后端应用程序需要“回复 URL”作为内部 URL，则需要使用[自定义域](application-proxy-configure-custom-domain.md)来匹配内部和外部 URL，或在用户的设备上安装“我的应用”安全登录扩展。 此扩展将自动重定向到相应的应用程序代理服务。 若要安装该扩展，请参阅[“我的应用”安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。
+    > 如果后端应用程序需要“回复 URL”作为内部 URL，则需要使用[自定义域](application-proxy-configure-custom-domain.md)来匹配内部和外部 URL，或在用户的设备上安装“我的应用”安全登录扩展。 此扩展将自动重定向到相应的应用程序代理服务。 若要安装该扩展，请参阅[“我的应用”安全登录扩展](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension)。
     
 ## <a name="test-your-app"></a>测试应用
 

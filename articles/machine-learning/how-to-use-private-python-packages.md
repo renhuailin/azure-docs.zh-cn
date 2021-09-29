@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 6d199eb684802de948451bd376feda4a254aa06f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 2ca004902a6d574348846ba2ee4829a099db8b39
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884203"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094645"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>将专用 Python 包与 Azure 机器学习一起使用
 
@@ -91,7 +91,7 @@ Azure 机器学习服务在内部将 URL 替换为安全的 SAS URL，使 wheel 
 
 可以在组织的防火墙内使用 Azure 存储帐户的包。 该存储帐户可以包含一组特选包，或者可公开使用的包的内部镜像。
 
-若要设置此类专用存储，请参阅[保护 Azure 机器学习工作区和关联资源](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)。 还必须[将 Azure 容器注册表 (ACR) 放置在 VNet 后](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
+若要设置此类专用存储，请参阅[保护 Azure 机器学习工作区和关联资源](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)。 还必须[将 Azure 容器注册表 (ACR) 放置在 VNet 后](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
 
 > [!IMPORTANT]
 > 必须完成此步骤才能使用专用包存储库训练或部署模型。

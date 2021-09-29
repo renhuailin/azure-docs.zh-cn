@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 34b18de633d586b6b32bc11b4eb6cb1a65928550
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 411eb76308fd9f68541ea7c50d75566b56747baf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222623"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124817055"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Concur 集成
 
@@ -146,7 +146,7 @@ Concur 还支持自动用户预配，有关如何配置自动用户预配的更�
 
 * 直接转到 Concur 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Concur 磁贴时，会重定向到 Concur 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Concur 磁贴时，会重定向到 Concur 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

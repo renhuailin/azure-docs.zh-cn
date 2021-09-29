@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: b5e60883f4af77eabcd3a59334bbf31b63d5cc49
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: e4d77aa3d4456154149c5ad38b9fdc769953f8ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123316564"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764044"
 ---
 # <a name="copy-data-from-an-sap-table-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 从 SAP 表复制数据
 
@@ -53,7 +53,7 @@ ms.locfileid: "123316564"
 1. 使用 SAP GUI 连接到 SAP 系统。 
 2. 转到“系统” -> “状态” 。 
 3. 检查 SAP_BASIS 的版本，确保它等于或大于 701。  
-      ![检查 SAP_BASIS](./media/connector-sap-table/sap-basis.png)
+      :::image type="content" source="./media/connector-sap-table/sap-basis.png" alt-text="检查 SAP_BASIS":::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,7 +63,7 @@ ms.locfileid: "123316564"
 
 - 从 SAP 网站下载 64 位 [SAP Connector for Microsoft .NET 3.0](https://support.sap.com/en/product/connectors/msnet.html)，并将其安装到自承载集成运行时计算机上。 安装期间，请在“可选安装步骤”窗口中确保选择“将程序集安装到 GAC”选项。  
 
-  ![安装 SAP Connector for .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+  :::image type="content" source="./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png" alt-text="安装 SAP Connector for .NET":::
 
 - 在 SAP 表连接器中使用的 SAP 用户必须拥有以下权限：
 
@@ -82,7 +82,7 @@ ms.locfileid: "123316564"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -104,7 +104,7 @@ ms.locfileid: "123316564"
 
 SAP BW Open Hub 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTable`。 | 是 |
 | `server` | SAP 实例所在的服务器的名称。<br/>用于连接到 SAP 应用程序服务器。 | 否 |
@@ -212,7 +212,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 支持使用以下属性从/向 SAP BW Open Hub 链接服务复制数据。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTableResource`。 | 是 |
 | `tableName` | 要从中复制数据的 SAP 表的名称。 | 是 |
@@ -244,7 +244,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 支持使用以下属性从 SAP 表复制数据：
 
-| 属性                         | 说明                                                  | 必须 |
+| 属性                         | 说明                                                  | 必选 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 属性必须设置为 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要检索的行数。                              | 否       |
@@ -331,7 +331,7 @@ SAP 表连接器目前仅支持单个具有默认函数模块的表。 若要获
 
 下面是一个示例：
 
-![SAP 表联接](./media/connector-sap-table/sap-table-join.png) 
+:::image type="content" source="./media/connector-sap-table/sap-table-join.png" alt-text="SAP 表联接"::: 
 
 >[!TIP]
 >还可考虑将联接数据聚合在 VIEW 中，这受 SAP 表连接器支持。
@@ -345,13 +345,13 @@ SAP 表连接器目前仅支持单个具有默认函数模块的表。 若要获
 
 - 定义：
 
-    ![定义](./media/connector-sap-table/custom-function-module-definition.png) 
+    :::image type="content" source="./media/connector-sap-table/custom-function-module-definition.png" alt-text="定义"::: 
 
 - 将数据导出到下表之一：
 
-    ![导出表 1](./media/connector-sap-table/export-table-1.png) 
+    :::image type="content" source="./media/connector-sap-table/export-table-1.png" alt-text="导出表 1"::: 
 
-    ![导出表 2](./media/connector-sap-table/export-table-2.png)
+    :::image type="content" source="./media/connector-sap-table/export-table-2.png" alt-text="导出表 2":::
  
 以下是有关 SAP 表连接器如何与自定义函数模块一起工作的说明：
 
@@ -367,11 +367,11 @@ SAP 表连接器目前仅支持单个具有默认函数模块的表。 若要获
 
     1. 分析字段表中的值以获取架构。
 
-        ![分析字段中的值](./media/connector-sap-table/parse-values.png)
+        :::image type="content" source="./media/connector-sap-table/parse-values.png" alt-text="分析字段中的值":::
 
     1. 获取输出表中的值，以查看哪个表包含这些值。
 
-        ![获取输出表中的值](./media/connector-sap-table/get-values.png)
+        :::image type="content" source="./media/connector-sap-table/get-values.png" alt-text="获取输出表中的值":::
 
     1. 获取 OUT_TABLE 中的值，分析数据，然后将其写入接收器。
 

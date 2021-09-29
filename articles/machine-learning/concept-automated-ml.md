@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 07/01/2021
 ms.custom: automl
-ms.openlocfilehash: 33fa0218a81d57ae6d33578cd08917bfd2055770
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 55cf993dd8f4dad17533ef759e135c1604a48901
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690773"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061383"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -98,7 +98,7 @@ Azure 机器学习提供了以下两种使用自动化 ML 的体验。 请参阅
 
 分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。 详细了解[使用自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)并查看其示例。
 
-参阅以下 Python 笔记本中的分类和自动化机器学习示例：[欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新闻组数据分类](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)
+参阅以下 Python 笔记本中的分类和自动化机器学习示例：[欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新闻组数据分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
 ### <a name="regression"></a>回归
 
@@ -229,7 +229,7 @@ Azure 机器学习提供了以下两种使用自动化 ML 的体验。 请参阅
 
  使用远程计算时，有更多的功能可用，如下表中所示。 
 
-| Feature                                                    | Remote | Local | 
+| 功能                                                    | Remote | Local | 
 |------------------------------------------------------------|--------|-------|
 | 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | 
 | 基于 DNN-BERT 的文本特征化和训练             | ✓      |       |
@@ -256,7 +256,7 @@ Azure 机器学习提供了以下两种使用自动化 ML 的体验。 请参阅
 
 [在此 Jupyter 笔记本示例中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)了解如何转换为 ONNX 格式。 了解 [ONNX 支持的算法](how-to-configure-auto-train.md#select-your-experiment-type)。
 
-ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 详细了解[在带有 ML.NET 的 .NET 应用程序中使用 AutoML ONNX 模型](./how-to-use-automl-onnx-model-dotnet.md)和[使用 ONNX 运行时 C# API 推断 ONNX 模型](https://www.onnxruntime.ai/docs/reference/api/csharp-api.html)。 
+ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 详细了解[在带有 ML.NET 的 .NET 应用程序中使用 AutoML ONNX 模型](./how-to-use-automl-onnx-model-dotnet.md)和[使用 ONNX 运行时 C# API 推断 ONNX 模型](https://onnxruntime.ai/docs/api/csharp-api.html)。 
 
 ## <a name="next-steps"></a>后续步骤
 

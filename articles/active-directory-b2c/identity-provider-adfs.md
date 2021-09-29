@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 69803dc374e92b8fcc856237cb8b791dac5cb40c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 63d94ebe209c4b1a40c58f3c4b1b02e70c51a391
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723191"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572273"
 ---
 # <a name="add-ad-fs-as-an-openid-connect-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将 AD FS 添加为 OpenID Connect 标识提供者
 
@@ -41,7 +41,7 @@ ms.locfileid: "121723191"
 1. 在“应用程序组向导”的“欢迎”屏幕上：
     1. 输入应用程序的名称。 例如“Azure AD B2C 应用程序”。
     1. 在“客户端-服务器应用程序”下，选择“访问 Web 应用程序的 Web 浏览器”模板 。
-    1. 选择“下一步”。
+    1. 选择“**下一页**”。
 1. 在“应用程序组向导”的“本机应用程序”屏幕上：
     1. 复制“客户端标识符”值。 客户端标识符是 AD FS“应用程序 ID”。 本文稍后需要应用程序 ID。
     1. 在“重定向 URI”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称，将 `your-domain-name` 替换为你的自定义域。
@@ -67,7 +67,7 @@ ms.locfileid: "121723191"
     | Given-Name | given_name |
     | Display-Name | name |
 
-    请注意，某些名称将不会显示在传出声明类型下拉列表中。 需要手动键入它们。 （下拉列表是可编辑的）。
+    请注意，某些名称不会显示在传出声明类型下拉列表中。 需要手动键入它们。 （下拉列表是可编辑的）。
 
 1. 选择“完成”，然后选择“关闭” 。
 
@@ -77,7 +77,8 @@ ms.locfileid: "121723191"
 ## <a name="configure-ad-fs-as-an-identity-provider"></a>将 AD FS 配置为标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“标识提供程序”，然后选择“新建 OpenID Connect 提供程序” 。
 1. 输入“名称”。 例如，Contoso。
@@ -113,7 +114,7 @@ ms.locfileid: "121723191"
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页面上，选择“Contoso”以使用 Contoso 帐户登录。
 
-如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
+如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 508a3ca02ec6c0475e78d16691f6597e1a389f97
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2d8c81ddf3a2446131cf698fe8d4e86d1013c7a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92511845"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776246"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>教程：Projectplace 与 Azure Active Directory 集成
 
@@ -160,7 +160,7 @@ ms.locfileid: "92511845"
 
 ### <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“Projectplace”磁贴时，应会自动登录到设置了 SSO 的 Projectplace。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中选择“Projectplace”磁贴时，应会自动登录到设置了 SSO 的 Projectplace。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

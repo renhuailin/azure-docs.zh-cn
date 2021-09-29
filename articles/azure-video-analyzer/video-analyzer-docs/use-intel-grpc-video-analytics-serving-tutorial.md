@@ -4,12 +4,12 @@ description: 本教程介绍如何使用由 Intel 提供的 Intel OpenVINO™ DL
 ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 06/01/2021
-ms.openlocfilehash: f666ac772d85fb1501c54001511e25cd941ee7c3
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: a55b4a970f1a6aeb0e257ae6404eae349f356a01
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604776"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058559"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：使用 Intel OpenVINO™ DL Streamer Edge AI 扩展来分析实时视频 
 
@@ -55,7 +55,7 @@ OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析�
 
 为了构建复杂、高性能的视频分析解决方案，Azure 视频分析器模块应与功能强大的推理引擎（可在边缘使用缩放功能）配合使用。 在本教程中，推理请求会发送到 Intel OpenVINO™ DL Streamer Edge AI 扩展，这是一个 Edge 模块，旨在与 Azure 视频分析器搭配使用。
 
-在此推理服务器的初始版本中，你可以访问以下[模型](https://aka.ms/intel-dlstreamer-docs)：
+在此推理服务器的初始版本中，你可以访问以下[模型](https://github.com/intel/video-analytics-serving/tree/master/samples/ava_ai_extension#edge-ai-extension-module-options)：
 
 - object_detection for person_vehicle_bike_detection ![用于车辆的对象检测](./media/use-intel-openvino-tutorial/object-detection.png)
 

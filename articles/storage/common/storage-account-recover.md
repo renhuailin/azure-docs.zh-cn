@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3a26a181dc8fd25ad93ebba9aaa496f3421bbffc
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 69d95ea67064ad45e60a6c38e37ab425bed27b76
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113354576"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616871"
 ---
 # <a name="recover-a-deleted-storage-account"></a>恢复删除的存储帐户
 
@@ -23,7 +23,7 @@ ms.locfileid: "113354576"
 - 存储帐户在过去 14 天内删除。
 - 存储帐户是使用 Azure 资源管理器部署模型创建的。
 - 删除原始帐户后，尚未创建同名的新存储帐户。
-- 对于要恢复存储帐户的用户，必须为其分配提供 Microsoft.Storage/storageAccounts/write 权限的 Azure RBAC 角色。 有关提供此权限的内置 Azure RBAC 角色的信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。 
+- 对于要恢复存储帐户的用户，必须为其分配提供 Microsoft.Storage/storageAccounts/write 权限的 Azure RBAC 角色。 有关提供此权限的内置 Azure RBAC 角色的信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 在尝试恢复已删除的存储帐户之前，请确保该帐户的资源组存在。 如果资源组已删除，则必须重新创建它。 无法恢复资源组。 有关详细信息，请参阅[管理资源组](../../azure-resource-manager/management/manage-resource-groups-portal.md)。
 

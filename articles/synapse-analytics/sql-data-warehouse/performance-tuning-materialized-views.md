@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/17/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: ce3f7b923cec3dec28043f43babbaa86a0c6d92e
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 2b3e2af66334ebb82c8113caac2f8b78d5c8bf20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662066"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674483"
 ---
 # <a name="performance-tune-with-materialized-views"></a>使用具体化视图优化性能
 
@@ -31,7 +31,7 @@ Azure Synapse 中的专用 SQL 池支持标准视图和具体化视图。  两�
 
 标准视图上的大多数要求仍然适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
-| 比较                     | 查看                                         | 具体化视图
+| 比较                     | 视图                                         | 具体化视图
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |查看定义                 | 存储在专用 SQL 池中。              | 存储在专用 SQL 池中。
 |查看内容                    | 在每次使用视图时生成。   | 在创建视图期间进行预处理并存储在专用 SQL 池中。 随着数据添加到基础表中而更新。
@@ -57,9 +57,6 @@ Azure Synapse 中的专用 SQL 池支持标准视图和具体化视图。  两�
 - 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql)。
 - 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql)。
 - 根据基表中的数据更改，自动、同步刷新数据。 不需要任何用户操作。
->[!note] 
-> 用 CASE 表达式创建的具体化视图仅存储在创建视图时满足 CASE 条件的值。  具体化视图不反映创建视图后由 CASE 表达式导致的增量数据更改。   
-
  
 ## <a name="common-scenarios"></a>常见方案  
 

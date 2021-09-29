@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: andster
 keywords: visualstudio
-ms.openlocfilehash: de2c782b7b311256e287f49f931ed6ab1de09c55
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d77e0c04e5fac91de2142d14ba88d3188303945d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688534"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582137"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 **适用于：** :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集:heavy_check_mark: 统一规模集
@@ -81,7 +81,7 @@ Azure 提供各种虚拟机大小。 由于 Visual Studio 是一个功能强大�
     
 有关最新虚拟机大小的详细信息，请参阅 [Azure 中的 Windows 虚拟机大小](../sizes.md)。
 
-使用 Azure，可通过调整 VM 大小来重新平衡初始选择。 可为新的 VM 预配更合适的大小，也可调整现有 VM 的大小，使其适应不同的底层硬件。 有关详细信息，请参阅[调整 Windows VM 大小](./resize-vm.md)。
+使用 Azure，可通过调整 VM 大小来重新平衡初始选择。 可为新的 VM 预配更合适的大小，也可调整现有 VM 的大小，使其适应不同的底层硬件。 有关详细信息，请参阅[调整 Windows VM 大小](../resize-vm.md)。
 
 ## <a name="after-the-vm-is-running-whats-next"></a>VM 运行后，下一步是什么？
 Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上的安装一样，第一步是授权 Visual Studio 安装。 若要解锁 Visual Studio，请执行以下任一操作：
@@ -92,11 +92,11 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 
 ## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>如何保存开发 VM 供将来使用或供团队使用？
 
-开发环境的种类繁多，构建更复杂的环境需要付出实际成本。 不管环境如何配置，都可以将已配置的 VM 保存为或捕获为“基础映像”供将来使用或供团队的其他成员使用。 然后，启动新的 VM 时，从基础映像（而不是 Azure 市场映像）对其进行预配。
+开发环境的范围很大，而构建出较复杂环境有一些相关的实际成本。 不管环境如何配置，都可以将已配置的 VM 保存为或捕获为“基础映像”供将来使用或供团队的其他成员使用。 然后，启动新的 VM 时，从基础映像（而不是 Azure 市场映像）对其进行预配。
 
 快速摘要：使用系统准备工具 (Sysprep) 关闭正在运行的 VM，然后通过 Azure 门户的 UI 将 VM 捕获为映像（图 1）。 Azure 会将包含该映像的 `.vhd` 文件保存在所选存储帐户中。 然后，新映像在订阅的资源列表中显示为映像资源。
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *（图 1）通过 Azure 门户 UI 捕获映像。*</center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI"><center> *（图 1）通过 Azure 门户 UI 捕获映像。*</center>
 
 有关详细信息，请参阅[在 Azure 中创建通用 VM 的托管映像](./capture-image-resource.md)。
 

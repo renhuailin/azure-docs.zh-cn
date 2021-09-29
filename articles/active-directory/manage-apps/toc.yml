@@ -106,16 +106,12 @@
           href: assign-user-or-group-access-portal.md
         - name: 在“我的应用”上创建集合
           href: access-panel-collections.md
-        - name: 使用自助服务应用访问权限
+        - name: 启用自助服务应用访问权限
           href: access-panel-manage-self-service-access.md
-        - name: 删除用户访问权限
-          href: methods-for-removing-user-access.md
         - name: 隐藏应用
           href: hide-application-from-user-portal.md
         - name: 禁用用户登录
           href: disable-user-sign-in-portal.md
-        - name: 配置自助分配
-          href: manage-self-service-access.md
         - name: 强制自动加速
           href: configure-authentication-for-federated-users-portal.md
         - name: 阻止登录自动加速
@@ -184,6 +180,8 @@
       href: application-types.md
     - name: 将用户分配到应用的原因
       href: ways-users-get-assigned-to-applications.md
+    - name: 删除用户访问权限
+      href: methods-for-removing-user-access.md
 - name: 资源
   items:
     - name: 开发人员的支持和帮助选项

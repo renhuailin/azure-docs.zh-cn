@@ -1,17 +1,17 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure 开发测试实验室常见问题解答 | Microsoft Docs
+  title: Azure 开发测试实验室常见问题
   description: 本文提供有关 Azure 开发测试实验室的部分常见问题解答 (FAQ)。
-  ms.topic: article
+  ms.topic: troubleshooting
   ms.service: azure
   ms.date: 07/17/2020
   ms.custom: devx-track-azurepowershell, references_regions
-  ms.openlocfilehash: c1ad54ee9c95590cf25aacadf0fd549d460e2d8c
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 55a8c385479b5a14407e07288d61ff9cd1eb21a5
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253130"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128650451"
 title: Azure 开发测试实验室常见问题
 summary: "\n获取关于 Azure 开发测试实验室的某些最常见问题的解答。\n\n## <a name=\"blog-post\"></a>博客文章\n我们的开发测试实验室团队博客已于 2019 年 3 月 20 日停用。 \n\n### <a name=\"where-can-i-track-feature-updates-from-now-on\"></a>从现在起，在哪里可以跟踪功能更新？\n从现在起，我们将在 Azure 博客和 Azure 更新上发布功能更新和信息性博客文章。 这些博客文章还将在需要时链接到我们的文档。\n        \n订阅[开发测试实验室 Azure 博客](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)和[开发测试实验室 Azure 更新](https://azure.microsoft.com/updates/?product=devtest-lab)随时了解开发测试实验室中的新功能。\n        \n### <a name=\"what-happens-to-the-existing-blog-posts\"></a>现有的博客文章会发生什么情况？\n我们目前正在努力将现有博客文章（不包括中断更新）迁移到[开发测试实验室文档](devtest-lab-overview.md)。 弃用 MSDN 博客时，它将重定向到开发测试实验室的文档概述。 重定向后，你可以在“筛选条件”标题中搜索要查找的文章。 我们尚未迁移所有帖子，但应在本月底完成。 \n        \n### <a name=\"where-do-i-see-outage-updates\"></a>我在哪里可以看到中断更新？\n从现在开始，我们将使用 Twitter 句柄发布中断更新。 在 Twitter 上关注我们，获取有关中断和已知 Bug 的最新更新。\n\n### <a name=\"twitter\"></a>Twitter\n我们的 Twitter 句柄：[@azlabservices](https://twitter.com/azlabservices)\n"
 sections:
@@ -448,7 +448,7 @@ sections:
       活动日志中会捕获 VM 部署错误。 在实验室的 VM 页（在“我的虚拟机”列表中选择 VM 后，会显示该页面）中的资源菜单上，可在“审核日志”或“虚拟机诊断”下方找到实验室 VM 活动日志 。
 
 
-      有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/management/view-activity-logs.md)。
+      有时，部署错误发生在 VM 部署开始之前。 一个示例是超过与 VM 一起创建的资源的订阅限制时。 在此情况下，会在实验室级别活动日志中捕获错误详细信息。 活动日志位于“配置和策略”设置的底部。 若要深入了解如何在 Azure 中使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-monitor/essentials/activity-log.md)。
   - question: >
       为什么在尝试创建实验室时，我会收到“位置不适用于资源类型”的错误？
     answer: >-

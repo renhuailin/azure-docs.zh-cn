@@ -1,20 +1,15 @@
 ---
 title: 使用 Azure 视频分析器媒体版（以前称为视频索引器）搜索视频中的确切时刻
-titleSuffix: Azure Video Analyzer for Media
 description: 了解如何使用 Azure 视频分析器媒体版（以前称为视频索引器）搜索视频中的确切时刻。
-services: azure-video-analyzer
-author: Juliako
-manager: femila
-ms.topic: article
-ms.subservice: azure-video-analyzer-media
+ms.topic: how-to
 ms.date: 11/23/2019
 ms.author: juliako
-ms.openlocfilehash: 27d25793dfec24a5eac847fae89bc0a01a32e909
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 454c5a8033e30a10183d03a1689b6e606bcb77ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115291"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607513"
 ---
 # <a name="search-for-exact-moments-in-videos-with-video-analyzer-for-media"></a>使用视频分析器媒体版搜索视频中的确切时刻
 

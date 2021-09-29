@@ -8,12 +8,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 08/26/2021
-ms.openlocfilehash: 1d4e8ad4fd7d0b5690f506e9db7f1043c8f21045
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 2c61431f3556a83482306c76c7246df5ba2c0139
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039082"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828400"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure 数据工厂中的映射数据流
 
@@ -29,7 +29,7 @@ ms.locfileid: "123039082"
 
 数据流是从“工厂资源”窗格（如管道和数据集）中创建的。 若要创建数据流，请选择“工厂资源”旁边的加号，然后选择“数据流” 。 
 
-![新建数据流](media/data-flow/new-data-flow.png)
+:::image type="content" source="media/data-flow/new-data-flow.png" alt-text="新建数据流":::
 
 此操作将转到数据流画布，你可在其中创建转换逻辑。 选择“添加源”，开始配置源转换。 有关详细信息，请参阅[源转换](data-flow-source.md)。
 
@@ -37,13 +37,13 @@ ms.locfileid: "123039082"
 
 映射数据流具有独特的创作画布，旨在简化生成转换逻辑。 数据流画布分为三个部分：顶部栏、图形和配置面板。 
 
-![屏幕截图显示数据流画布，其中标记了顶部栏、图形和配置面板。](media/data-flow/canvas-1.png "画布")
+:::image type="content" source="media/data-flow/canvas-1.png" alt-text="屏幕截图显示数据流画布，其中标记了顶部栏、图形和配置面板。":::
 
 ### <a name="graph"></a>图形
 
 图形显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择“添加源”。 若要添加新的转换，请选择现有转换右下方的加号。 详细了解如何[管理数据流图形](concepts-data-flow-manage-graph.md)。
 
-![显示画布的图形部分，其中包含“搜索”文本框。](media/data-flow/canvas-2.png)
+:::image type="content" source="media/data-flow/canvas-2.png" alt-text="显示画布的图形部分，其中包含“搜索”文本框。":::
 
 ### <a name="configuration-panel"></a>配置面板
 
@@ -55,19 +55,19 @@ ms.locfileid: "123039082"
 
 每个转换的配置窗格中的第一个选项卡包含特定于该转换的设置。 有关详细信息，请参阅转换的文档页。
 
-![源设置选项卡](media/data-flow/source1.png "源设置选项卡")
+:::image type="content" source="media/data-flow/source1.png" alt-text="源设置选项卡":::
 
 #### <a name="optimize"></a>优化
 
 “优化”选项卡包含用于配置分区方案的设置。 若要详细了解如何优化数据流，请参阅[映射数据流性能指南](concepts-data-flow-performance.md)。
 
-![屏幕截图显示“优化”选项卡，其中包含“分区选项”、“分区类型”和“分区数”。](media/data-flow/optimize.png)
+:::image type="content" source="media/data-flow/optimize.png" alt-text="屏幕截图显示“优化”选项卡，其中包含“分区选项”、“分区类型”和“分区数”。":::
 
-#### <a name="inspect&quot;></a>检查
+#### <a name="inspect"></a>检查
 
 可以通过“检查”选项卡了解正在转换的数据流的元数据。 可以看到列计数、更改的列、添加的列、数据类型、列排序以及列引用。 “检查”视图是针对元数据的只读视图。 不需启用调试模式即可在“检查”窗格中查看元数据。
 
-![检查](media/data-flow/inspect1.png &quot;检查")
+:::image type="content" source="media/data-flow/inspect1.png" alt-text="检查":::
 
 以转换方式更改数据的形状时，可以在“检查”窗格中查看元数据更改流。 如果源转换中没有定义的架构，则元数据将在“检查”窗格中不可见。 在架构偏差场景中，缺少元数据是很常见的。
 

@@ -4,15 +4,15 @@ description: 有关应用服务环境的概述
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 08/05/2021
+ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: references_regions
-ms.openlocfilehash: 848b7ce830c91cffaaaa39ed2102255f0adc3b7f
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: e422f6316cce204a4b6ea152ff9be4489bb3e331
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445680"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767900"
 ---
 # <a name="app-service-environment-overview"></a>应用服务环境概述 
 > [!NOTE]
@@ -108,22 +108,27 @@ ASEv3 在以下区域中可用。
 |美国中部 |美国东部 2|
 |东亚  | 法国中部|
 |美国东部    | 德国中西部|
-|美国东部 2| 北欧|
-|法国中部 | 美国中南部|
-|德国中西部   |   东南亚|
+|美国东部 2| 日本东部|
+|法国中部 | 北欧|
+|德国中西部   |   美国中南部|
+|Japan East | Southeast Asia|
 |韩国中部  | 英国南部|
-|北欧   | 西欧|
-|挪威东部    | 美国西部 2 |
+|美国中北部   | 西欧|
+|北欧   | 美国西部 2|
+|挪威东部    | |
+|南非北部 | |
 |美国中南部   | |
-|东南亚| |
+|Southeast Asia| |
 |瑞士北部  | | 
+|阿拉伯联合酋长国北部| |   
 |英国南部| |    
 |英国西部| |
 |美国中西部    | | 
 |西欧    | |
 |美国西部    | | 
 |美国西部 2| |
+|美国西部 3| |
 
 <!--Links-->
-[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[reservedinstances]: ../../cost-management-billing/reservations/reservation-discount-app-service.md
 [pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 3e9fbda18c786f934790c9aa70cd0f27d045fa64
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 1df5b2ba2aa44102975bfd68330466fccd0c6bb0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901306"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593166"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教程：Azure Data Lake Storage Gen2、Azure Databricks & Spark
 
@@ -23,23 +23,23 @@ ms.locfileid: "111901306"
 在本教程中，将：
 
 > [!div class="checklist"]
-> * 创建 Databricks 群集
-> * 将非结构化数据引入存储帐户中
-> * 对 Blob 存储中的数据运行分析
+> - 创建 Databricks 群集
+> - 将非结构化数据引入存储帐户中
+> - 对 Blob 存储中的数据运行分析
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 创建 Azure Data Lake Storage Gen2 帐户。
+- 创建 Azure Data Lake Storage Gen2 帐户。
 
   请参阅[创建用于 Azure Data Lake Storage Gen2 的存储帐户](create-data-lake-storage-account.md)。
 
-* 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](assign-azure-role-data-access.md)。
+- 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](assign-azure-role-data-access.md)。
 
-* 安装 AzCopy v10。 请参阅[使用 AzCopy v10 传输数据](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+- 安装 AzCopy v10。 请参阅[使用 AzCopy v10 传输数据](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-* 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
+- 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
   在执行该文中的步骤时，需要完成一些特定的事项。
 
@@ -58,7 +58,7 @@ ms.locfileid: "111901306"
 
 2. 选中“预压缩的文件”复选框以选择所有数据字段。 
 
-3. 选择“下载”按钮并将结果保存到计算机。  
+3. 选择“下载”按钮并将结果保存到计算机。 
 
 4. 将压缩文件的内容解压缩，并记下文件名和文件路径。 在稍后的步骤中需要使用此信息。
 
@@ -101,7 +101,7 @@ ms.locfileid: "111901306"
     填写以下字段的值，对于其他字段接受默认值：
 
     - 输入群集的名称。
-     
+
     - 请务必选中“在不活动超过 120 分钟后终止”  复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
 4. 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
@@ -126,11 +126,11 @@ ms.locfileid: "111901306"
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径  。
+   - 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径  。
 
-   * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+   - 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-   * 将 `<container-name>` 占位符替换为存储帐户中容器的名称。
+   - 将 `<container-name>` 占位符替换为存储帐户中容器的名称。
 
 ## <a name="create-a-container-and-mount-it"></a>创建容器并将其装载
 
@@ -148,7 +148,7 @@ ms.locfileid: "111901306"
 
 5. 将以下代码块复制并粘贴到第一个单元格中，但目前请勿运行此代码。
 
-    ```Python
+    ```python
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
@@ -170,7 +170,7 @@ ms.locfileid: "111901306"
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>使用 Databricks Notebook 将 CSV 转换为 Parquet
 
-在前面创建的笔记本中添加一个新的单元，并将以下代码粘贴到该单元中。 
+在前面创建的笔记本中添加一个新的单元，并将以下代码粘贴到该单元中。
 
 ```python
 # Use the previously established DBFS mount point to read the data.
@@ -210,7 +210,7 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 
 若要为数据源创建数据帧，请运行以下脚本：
 
-* 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径  。
+- 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径  。
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -277,5 +277,5 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)

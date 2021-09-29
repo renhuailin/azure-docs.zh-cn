@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee77fd8ee7f9b209fa1639c787295e380e8dce0b
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 746d908065523651f9147a721531514d1a0f84c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901990"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673267"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
@@ -35,7 +35,7 @@ ms.locfileid: "111901990"
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>将应用程序注册到 Azure AD 租户
 
-使用 Azure AD 授予存储资源访问权限的第一步是，通过 [Azure 门户](https://portal.azure.com)在 Azure AD 租户中注册客户端应用程序。 注册客户端应用程序时，需要向 Azure AD 提供关于应用程序的信息。 Azure AD 随后会提供客户端 ID（也称为 *应用程序 ID*）。在运行时，可以使用该 ID 将应用程序与 Azure AD 关联。 若要详细了解客户端 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)。 若要注册 Azure 存储应用程序，请遵循以下文章中所述的步骤：[快速入门：将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 
+使用 Azure AD 授予存储资源访问权限的第一步是，通过 [Azure 门户](https://portal.azure.com)在 Azure AD 租户中注册客户端应用程序。 注册客户端应用程序时，需要向 Azure AD 提供关于应用程序的信息。 Azure AD 随后会提供客户端 ID（也称为 *应用程序 ID*）。在运行时，可以使用该 ID 将应用程序与 Azure AD 关联。 若要详细了解客户端 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)。 若要注册 Azure 存储应用程序，请遵循以下文章中所述的步骤：[快速入门：将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)。
 
 下图显示了用于注册 Web 应用程序的常用设置。 请注意，在此示例中，“重定向 URI”设置为 `http://localhost:5000/signin-oidc`，以便在开发环境中测试示例应用程序。 稍后，可以在 Azure 门户中你的已注册应用程序的“身份验证”设置下修改此设置：
 
@@ -140,7 +140,7 @@ ms.locfileid: "111901990"
 
 [GitHub](https://aka.ms/aadstorage) 上提供了一个已完成的示例 Web 应用程序，该应用程序可获取令牌，并使用该令牌在 Azure 存储中创建 Blob。 查看并运行这个已完成的示例可能有助于理解代码示例。 有关如何运行已完成的示例的说明，请参阅标题为[查看和运行已完成的示例](#view-and-run-the-completed-sample)的部分。
 
-#### <a name="add-references-and-using-statements"></a>添加引用和 using 语句  
+#### <a name="add-references-and-using-statements"></a>添加引用和 using 语句
 
 在 Visual Studio 中安装 Azure 存储客户端库。 在“工具”菜单中选择“NuGet 包管理器”，然后选择“包管理器控制台”  。 在控制台窗口中键入以下命令，以安装适用于 .NET 的 Azure 存储客户端库中的所需包：
 

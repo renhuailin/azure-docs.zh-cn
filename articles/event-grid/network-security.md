@@ -3,14 +3,14 @@ title: Azure 事件网格资源的网络安全
 description: 本文介绍如何通过 Azure 事件网格使用出口服务标签、入口 IP 防火墙规则以及入口专用终结点。
 author: VidyaKukke
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.author: vkukke
-ms.openlocfilehash: d58e8b5ce9fb444fa501f897cca722613d9c51fe
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 041c09a23b25b2ffe487b6d13171c51f2d96e6e1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967568"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212753"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure 事件网格资源的网络安全
 本文介绍如何将以下安全功能与 Azure 事件网格配合使用： 

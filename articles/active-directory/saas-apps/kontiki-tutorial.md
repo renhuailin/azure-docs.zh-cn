@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01e068c55d6ab2c11e0ac745c2347b52c374741d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95019834"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813438"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教程：Azure Active Directory 与 Kontiki 的集成
 
@@ -180,7 +180,7 @@ Kontiki 支持以下功能：
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-设置单一登录后，当在“我的应用”门户中选择“Kontiki”时，将自动登录到 Kontiki  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](../user-help/my-apps-portal-end-user-access.md)。
+设置单一登录后，当在“我的应用”门户中选择“Kontiki”时，将自动登录到 Kontiki  。 有关“我的应用”门户的详细信息，请参阅[访问和使用“我的应用”门户上的应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

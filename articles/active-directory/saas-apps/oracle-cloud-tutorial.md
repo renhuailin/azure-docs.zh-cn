@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 02ba974aa430bd75848c3fcf2b762453d99e27fe
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 1462b45ede121cfbbe72b1f06d0f64b167c9246f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183602"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808640"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>教程：将 Oracle Cloud Infrastructure Console 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "122183602"
 * 让用户使用其 Azure AD 帐户自动登录到 Oracle Cloud Infrastructure Console。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -197,7 +197,7 @@ ms.locfileid: "122183602"
 
 ### <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“Oracle Cloud Infrastructure Console”磁贴时，将重新定向到 Oracle Cloud Infrastructure Console 登录页面。 从下拉菜单中选择“标识提供者”，然后如下所示单击“继续”以登录   。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中选择“Oracle Cloud Infrastructure Console”磁贴时，将重新定向到 Oracle Cloud Infrastructure Console 登录页面。 从下拉菜单中选择“标识提供者”，然后如下所示单击“继续”以登录   。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ![配置](./media/oracle-cloud-tutorial/config10.png)
 

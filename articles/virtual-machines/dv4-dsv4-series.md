@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: a32fdd1da872c45c0e2402cdddd0685ef4296c7a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e33dba0f48f59f9be02e9cbab8346efd078cb893
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691211"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803910"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 和 Dsv4 系列
 
@@ -85,3 +85,22 @@ Dsv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上运�
 
 <sup>1</sup> Dsv4 系列 VM 可通过[突发方式](./disk-bursting.md)提高其磁盘性能，最大突发的持续时间一次长达 30 分钟。<br>
 <sup>2</sup> 加速网络只能应用于单个 NIC。 
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>其他大小和信息
+
+- [常规用途](sizes-general.md)
+- [内存优化](sizes-memory.md)
+- [存储优化](sizes-storage.md)
+- [GPU 优化](sizes-gpu.md)
+- [高性能计算](sizes-hpc.md)
+- [前几代](sizes-previous-gen.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
+
+## <a name="next-steps"></a>后续步骤
+
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

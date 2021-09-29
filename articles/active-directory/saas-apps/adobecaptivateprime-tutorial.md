@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 527b2bf9e7f97e0ffffa3d2cab1fae45a6393f49
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3f4e44664a3d8b4a013bea5fb26ae0b2c5252ca5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125474"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>教程：Azure Active Directory 与 Adobe Captivate Prime 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "108125474"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置 SSO 的 Adobe Captivate Prime。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Adobe Captivate Prime”磁贴时，系统应会自动登录到为其设置 SSO 的 Adobe Captivate Prime。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Adobe Captivate Prime”磁贴时，系统应会自动登录到为其设置 SSO 的 Adobe Captivate Prime。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

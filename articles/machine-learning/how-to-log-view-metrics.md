@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: 4cb94dab1576e6fdb422fc640ae6edfdcdaad119
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 81f05686954e35d68d93c598978e9676652fe71f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446214"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593470"
 ---
 # <a name="log--view-metrics-and-log-files"></a>记录并查看指标和日志数据
 
@@ -52,7 +52,7 @@ ms.locfileid: "114446214"
 
 ## <a name="logging-with-mlflow"></a>用 MLflow 进行日志记录
 
-建议使用 MLflow 来记录模型、指标和项目，因为它是开源的，并且它支持云可移植性的本地模式。 下表和代码示例演示了如何使用 MLflow 来记录训练运行中的指标和项目。 
+建议使用 MLflow 来记录模型、指标和项目，因为它是开源的，并且支持从本地移植到云。 下表和代码示例演示了如何使用 MLflow 来记录训练运行中的指标和项目。 
 [详细了解 MLflow 的日志记录方法和设计模式](https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_artifact)。
 
 请确保将 `mlflow` 和 `azureml-mlflow` pip 包安装到工作区。 
@@ -79,11 +79,11 @@ mlflow_run = mlflow.start_run()
 
 |记录的值|示例代码| 说明|
 |----|----|----|
-|记录数值（int 或 float） | `mlfow.log_metric('my_metric', 1)`| |
-|记录布尔值 | `mlfow.log_metric('my_metric', 0)`| 0 = True，1 = False|
-|记录字符串 | `mlfow.log_text('foo', 'my_string')`| 记录为项目|
+|记录数值（int 或 float） | `mlflow.log_metric('my_metric', 1)`| |
+|记录布尔值 | `mlflow.log_metric('my_metric', 0)`| 0 = True，1 = False|
+|记录字符串 | `mlflow.log_text('foo', 'my_string')`| 记录为项目|
 |记录 numpy 指标或 PIL 图像对象|`mlflow.log_image(img, 'figure.png')`||
-|记录 matlotlib 绘图或图像文件|` mlflow.log_figure(fig, "figure.png")`||
+|记录 matplotlib 绘图或图像文件|` mlflow.log_figure(fig, "figure.png")`||
 
 ## <a name="view-run-metrics-via-the-sdk"></a>通过 SDK 查看运行指标
 可以使用 `run.get_metrics()` 查看训练的模型的指标。 
