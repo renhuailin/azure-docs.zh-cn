@@ -2,7 +2,6 @@
 title: 发票 - 表单识别器
 titleSuffix: Azure Applied AI Services
 description: 使用表单识别器 API 了解与发票分析相关的概念 - 使用和限制。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: f1d0860e3ab5366661971ba932b87e61d82803e0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 92f20d9275aad08a47e20202e1daab621d1a4578
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326261"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646980"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表单识别器预生成的发票模型
 
@@ -119,7 +118,7 @@ JSON 输出分为三个部分：
 | 金额 | 数字 | 行项目的数量 | 60.00 美元 | 100 |
 | 说明 | 字符串 | 发票行项目的文本说明 | 咨询服务 | 咨询服务 |
 | 数量 | 数字 | 此发票行项目的数量 | 2 | 2 |
-| UnitPrice | 数字 | 此项目一个单位的净价或毛价（具体取决于发票的发票总额设置） | 30.00 美元 | 30 |
+| 单价 | 数字 | 此项目一个单位的净价或毛价（具体取决于发票的发票总额设置） | 30.00 美元 | 30 |
 | ProductCode | 字符串| 与特定行项目关联的产品代码、产品编号或 SKU | A123 | |
 | 计价单位 | 字符串| 行项目单位，如公斤、磅等。 | 小时 | |
 | 日期 | date| 对应于每个行项目的日期。 这通常是行项目的发货日期 | 2021/3/4| 2021-03-04 |

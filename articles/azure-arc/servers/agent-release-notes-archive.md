@@ -4,12 +4,12 @@ description: 已启用 Azure Arc 的服务器代理的“概述”部分中有�
 ms.topic: overview
 ms.date: 08/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 45f7ed97cf9e0fbb389ccf893f2674e2601ee7f9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0e3dbda61503442f15bc74e0ec3b771e732b96db
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123441530"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680692"
 ---
 # <a name="archive-for-whats-new-with-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理的新增功能汇总
 
@@ -21,6 +21,17 @@ ms.locfileid: "123441530"
 - 已知问题
 - Bug 修复
 
+## <a name="april-2021"></a>2021 年 4 月
+
+1.5 版
+
+### <a name="new-features"></a>新增功能
+
+- 添加了对 Red Hat Enterprise Linux 8 和 CentOS Linux 8 的支持。
+- 用于将错误和详细输出定向到 stderr 的新 `-useStderr` 参数。
+- 用于以 JSON 格式定向输出结果的新 `-json` 参数（与 -useStderr 一起使用时）。
+- 收集其他实例元数据 - 制造商、模型和群集资源 ID（Azure Stack HCI 节点的）。
+ 
 ## <a name="march-2021"></a>2021 年 3 月
 
 版本 1.4

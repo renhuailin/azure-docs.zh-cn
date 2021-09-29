@@ -1,17 +1,17 @@
 ---
 title: Azure API 管理对盈利的支持
 description: 了解 Azure API 管理如何支持 API 产品的盈利策略。
-author: v-hhunter
-ms.author: v-hhunter
+author: dlepow
+ms.author: danlep
 ms.date: 08/23/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 88323145b9b6bb66babe77b19d6b834afc2831ab
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: ad6e4358ebd312c498504da6650045d9019fadbe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122868455"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548706"
 ---
 # <a name="how-api-management-supports-monetization"></a>API Management 如何支持变现
 
@@ -132,7 +132,7 @@ API 管理用于管理如何打包 API 并使用“产品”和“策略”的�
 - 检索 API 管理产品和策略，以在付款提供程序（如 Stripe）中支持类似概念的同步配置。
 - 定期轮询 API 管理以检索每个订阅的 API 使用情况指标，并推动计费过程。
 
-有关详细信息，请参阅 [REST API Azure API 管理](https://docs.microsoft.com/rest/api/apimanagement/#rest-operation-groups)概述。
+有关详细信息，请参阅 [REST API Azure API 管理](/rest/api/apimanagement/#rest-operation-groups)概述。
 
 ## <a name="devops"></a>DevOps
 

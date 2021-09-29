@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: a367c643ea2780c081250ec35ebcb890fdfec24e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 3058265fee62143f88bbd87e69c58dd4ff597920
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426999"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793790"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>使用 Bicep 和 Azure PowerShell 部署资源
 
@@ -88,7 +88,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="deploy-remote-bicep-file"></a>部署远程 Bicep 文件
 
-目前，Azure PowerShell 不支持部署远程 Bicep 文件。 使用 [Bicep CLI](./install.md#development-environment) 将 Bicep 文件编译为 JSON 模板，然后将 JSON 文件加载到远程位置。
+目前，Azure PowerShell 不支持部署远程 Bicep 文件。 使用 [Bicep CLI](./install.md#vs-code-and-bicep-extension) 将 Bicep 文件编译为 JSON 模板，然后将 JSON 文件加载到远程位置。
 
 ## <a name="parameters"></a>parameters
 

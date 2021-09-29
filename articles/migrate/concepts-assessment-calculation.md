@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 852bbd93fe7ac1524201db1f96a6a43c7ff60bdb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a5591ddad8410c2cea7018fa2f4d4f13a3afa86
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736472"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735946"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>评估概述（迁移到 Azure VM）
 
@@ -232,7 +232,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
     - 找到一个可以满足总 IOPS 要求的磁盘（磁盘 2）
         - 要预配的 IOPS =（源磁盘吞吐量）*1024/256
     - 找到一个可以满足总吞吐量要求的磁盘（磁盘 3）
-1. 在三个磁盘中，找到一个最大磁盘，并将其四舍五入到下一个可用的[超级磁盘产品/服务](https://docs.microsoft.com/azure/virtual-machines/disks-types#disk-size)。 这是已预配的超级磁盘大小。
+1. 在三个磁盘中，找到一个最大磁盘，并将其四舍五入到下一个可用的[超级磁盘产品/服务](../virtual-machines/disks-types.md#disk-size)。 这是已预配的超级磁盘大小。
 1. 预配的 IOPS 是使用以下逻辑计算的：
     - 如果发现源吞吐量在超级磁盘大小的允许范围内，则预配的 IOPS 等于源磁盘 IOPS
     - 否则，预配的 IOPS 使用要预配的 IOPS =（源磁盘吞吐量）*1024/256 进行计算

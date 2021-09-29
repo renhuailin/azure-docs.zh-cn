@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e1e15c3fdf9900d016581f848fdfdba5d91b0997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74cffc8c495e76ba631db49c69eb63e188bf4b30
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92447056"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833518"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-greenlight-enterprise-business-controls-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Greenlight Enterprise Business Controls Platform 的集成
 
@@ -78,15 +78,15 @@ ms.locfileid: "92447056"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Greenlight Enterprise Business Controls Platform 客户端支持团队](mailto:support@greenlightcorp.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -141,7 +141,7 @@ ms.locfileid: "92447056"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Greenlight Enterprise Business Controls Platform”磁贴时，应会自动登录到设置了 SSO 的 Greenlight Enterprise Business Controls Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Greenlight Enterprise Business Controls Platform”磁贴时，应会自动登录到设置了 SSO 的 Greenlight Enterprise Business Controls Platform。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

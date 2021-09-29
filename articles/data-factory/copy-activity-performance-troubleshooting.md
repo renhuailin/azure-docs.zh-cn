@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: cea4999752d416f36f435ba88403fd9dc735f689
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/09/2021
+ms.openlocfilehash: a2f3ddf20b41ae1a1638a8c8a1900207f5b880df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255804"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767463"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "123255804"
 
 运行复制活动后，可以在[复制活动监视](copy-activity-monitoring.md)视图中收集运行结果和性能统计信息。 下面是一个示例。
 
-![监视复制活动运行详细信息](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-copy-activity-run-details.png" alt-text="监视复制活动运行详细信息":::
 
 ## <a name="performance-tuning-tips"></a>性能优化提示
 

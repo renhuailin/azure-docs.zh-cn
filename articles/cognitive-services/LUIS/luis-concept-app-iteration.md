@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92991ef4b9889b0be2e887884ed46086b87ff9f3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91538715"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588877"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的迭代应用设计
 
@@ -52,8 +52,6 @@ ms.locfileid: "91538715"
 实体架构侧重于实体，是从用户言语中提取的数据。 例如，如果用户说“我想要订三份披萨”。 将会提取两个实体：“三份”和“披萨”。  这些实体有助于实现意图，即订餐。
 
 在实体架构方面，言语的意图对于客户端应用程序而言不太重要。
-
-组织实体架构的常用方法是将所有示例言语添加到 **None** 意向。
 
 ### <a name="example-of-a-mixed-schema"></a>混合架构的示例
 

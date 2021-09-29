@@ -4,15 +4,16 @@ description: 本教程提供在数据流中动态设置列名的步骤
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 06/17/2021
-ms.openlocfilehash: 96143f39811658c2794b46f3504a1a604264ab13
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 576b11e78c8cf928863d7db700942cbeab884e2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112542766"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617823"
 ---
 # <a name="dynamically-set-column-names-in-data-flows"></a>在数据流中动态设置列名
 
@@ -51,17 +52,17 @@ ms.locfileid: "112542766"
 1. 在管道的“常规”选项卡中，输入“DeltaLake”作为管道的名称。 
 1. 在工厂顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
-    ![数据流活动](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="数据流活动":::
 1. 在“活动”窗格中，展开“移动和转换”可折叠部分 。 将“数据流”活动从该窗格拖放到管道画布上。
 
-    ![显示管道画布的屏幕截图，你可以在其中放置数据流活动。](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="显示管道画布的屏幕截图，你可以在其中放置数据流活动。":::
 1. 在“添加数据流”弹出窗口中选择“创建新数据流”，然后将数据流命名为“DynaCols”  。 完成操作后，请单击“完成”。    
 
 ## <a name="build-dynamic-column-mapping-in-data-flows"></a>在数据流中生成动态列映射
 
 本教程将使用一个示例电影分级文件，并将源中的几个字段重命名为一组可随时更改的新目标列。 下面创建的数据集应指向你的 Blob 存储帐户或 ADLS Gen2 存储帐户中的此电影分级 CSV 文件。 [在此处下载电影分级文件](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/moviesDB.csv)，并将其存储在你的 Azure 存储帐户中。
 
-![最终流](media/data-flow/dynacols-1.png "最终流")
+:::image type="content" source="media/data-flow/dynacols-1.png" alt-text="最终流":::
 
 ### <a name="tutorial-objectives"></a>教程目标
 
@@ -95,7 +96,7 @@ ms.locfileid: "112542766"
 
 在这第一个方案中，你将使用一个参数（列的字符串数组）基于匹配的传入字段设置列映射，以此在数据流中设置输出列名，然后使每个数组索引与传入列序号位置匹配。 从管道执行此数据流时，可以通过向数据流活动发送此字符串数组参数，在每个管道执行上设置不同的列名。
 
-![Parameters](media/data-flow/dynacols-3.png "参数")
+:::image type="content" source="media/data-flow/dynacols-3.png" alt-text="Parameters":::
 
 1. 返回到数据流设计器，编辑前面创建的数据流。
 1. 单击“参数”选项卡
@@ -108,7 +109,7 @@ ms.locfileid: "112542766"
 1. 对于第一个列，匹配规则为 ```position==1```，名称为 ```$parameter1[1]```
 1. 对于第 2 和第 3 个列，请遵循相同的模式
  
-    ![选择转换](media/data-flow/dynacols-4.png "选择转换")
+    :::image type="content" source="media/data-flow/dynacols-4.png" alt-text="选择转换":::
 
 1. 单击 Select 转换的“检查”和“数据预览”选项卡，可以看到，新列名值 ```(a,b,c)``` 替换了原始的 movie、title 和 genres 列名
    
@@ -131,7 +132,7 @@ ms.locfileid: "112542766"
 1. 我们要做的是在外部 JSON 配置文件中查找与 ```prevcolumn``` 属性匹配的所有列名，并将每个匹配项重命名为新的 ```newcolumn``` 名称。
 1. 单击 Select 转换中的“数据预览”和“检查”选项卡，现在你应会看到外部映射文件中的新列名。
 
-![源 2](media/data-flow/dynacols-2.png "源 2")
+:::image type="content" source="media/data-flow/dynacols-2.png" alt-text="源 2":::
 
 ## <a name="next-steps"></a>后续步骤
 

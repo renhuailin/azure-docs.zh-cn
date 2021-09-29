@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/05/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: ffda1151054b887114523704498a97d2ab7f7c44
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1ea2ae3644ae22fd06a5bae650fa3f5beb955aba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778179"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572504"
 ---
 # <a name="configure-authentication-in-a-sample-single-page-application-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在示例单页应用程序中配置身份验证
 
@@ -84,8 +84,8 @@ OpenID Connect (OIDC) 是在 OAuth 2.0 上构建的身份验证协议。 你可�
 要创建 SPA 注册，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 输入应用程序的名称（例如 MyApp）。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 55d5594229bccb5fcb6a406e671ed104c1e12378
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94acb0557fd69497ef7f599a157be8db3f2ce026
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101094055"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578465"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "101094055"
 
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
-* 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，其中该模型使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。
 * 请确保虚拟网络的网络安全组(NSG) 规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 * 配置[针对数据库引擎访问的 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
@@ -45,9 +45,9 @@ ms.locfileid: "101094055"
     > "Microsoft.Resources/subscriptions/resourceGroups/read"
     >
     > $writerActions = `
-    > "Microsoft.DataMigration/services/*/write", `
-    > "Microsoft.DataMigration/services/*/delete", `
-    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.DataMigration/*/write", `
+    > "Microsoft.DataMigration/*/delete", `
+    > "Microsoft.DataMigration/*/action", `
     > "Microsoft.Network/virtualNetworks/subnets/join/action", `
     > "Microsoft.Network/virtualNetworks/write", `
     > "Microsoft.Network/virtualNetworks/read", `

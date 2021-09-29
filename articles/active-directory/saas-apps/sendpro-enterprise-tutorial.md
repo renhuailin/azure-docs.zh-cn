@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 2acb234d04a0158b22b9078db903e6be562b892b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14cb4346fd8fee10ed6e204416dc18d81f6bd9d0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954660"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801479"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sendpro-enterprise"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SendPro Enterprise 集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "104954660"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<TENANT_NAME>.sendproenterprise.com`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<TENANT_NAME>.sendproenterprise.com`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [SendPro Enterprise 客户端支持团队](https://www.pitneybowes.com/us/support.html)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -128,7 +128,7 @@ ms.locfileid: "104954660"
 
 * 直接转到 SendPro Enterprise 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SendPro Enterprise”磁贴时，将会重定向到 SendPro Enterprise 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SendPro Enterprise”磁贴时，将会重定向到 SendPro Enterprise 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

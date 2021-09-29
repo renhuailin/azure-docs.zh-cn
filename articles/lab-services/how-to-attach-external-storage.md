@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: dc0f2a4f51fb12c61d0e1e16cb23d030a5dc9cc6
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 86dd9290c640829049f4f6cb7b784aacba3cf7ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969269"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768736"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>在实验室服务中使用外部文件存储
 
@@ -188,11 +188,10 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
 
 要在 Azure 实验室服务中使用 Azure NetApp 文件共享，请执行以下步骤：
 
-1. 如有需要，请访问 [Azure NetApp 文件](https://aka.ms/azurenetappfiles)。
-2. 若要创建 NetApp 文件容量池和一个或多个 NFS 卷，请参阅[设置 Azure NetApp 文件和 NFS 卷](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)。 有关服务级别的信息，请参阅 [Azure NetApp 文件的服务级别](../azure-netapp-files/azure-netapp-files-service-levels.md)。
-3. [ NetApp 文件容量池的虚拟网络与实验室帐户之间建立对等互连](how-to-connect-peer-virtual-network.md)。
-4. [创建教室实验室](how-to-manage-classroom-labs.md)。
-5. 在模板 VM 上，安装必要的组件以使用 NFS 文件共享。
+1. 若要创建 NetApp 文件容量池和一个或多个 NFS 卷，请参阅[设置 Azure NetApp 文件和 NFS 卷](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)。 有关服务级别的信息，请参阅 [Azure NetApp 文件的服务级别](../azure-netapp-files/azure-netapp-files-service-levels.md)。
+2. [ NetApp 文件容量池的虚拟网络与实验室帐户之间建立对等互连](how-to-connect-peer-virtual-network.md)。
+3. [创建教室实验室](how-to-manage-classroom-labs.md)。
+4. 在模板 VM 上，安装必要的组件以使用 NFS 文件共享。
     - Ubuntu：
 
         ```bash
@@ -206,7 +205,7 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
         sudo yum install nfs-utils
         ```
 
-6. 在模板 VM 上，将以下脚本另存为 `mount_fileshare.sh`，以[装载 NetApp 文件共享](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。 为 `capacity_pool_ipaddress` 变量分配容量池的装载目标 IP 地址。 获取卷的装载说明，以查找适当的值。 脚本需要 NetApp 文件卷的路径名称。 若要确保用户可以运行脚本，请运行 `chmod u+x mount_fileshare.sh`。
+5. 在模板 VM 上，将以下脚本另存为 `mount_fileshare.sh`，以[装载 NetApp 文件共享](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。 为 `capacity_pool_ipaddress` 变量分配容量池的装载目标 IP 地址。 获取卷的装载说明，以查找适当的值。 脚本需要 NetApp 文件卷的路径名称。 若要确保用户可以运行脚本，请运行 `chmod u+x mount_fileshare.sh`。
 
     ```bash
     #!/bin/bash
@@ -230,10 +229,10 @@ sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name
     sudo bash -c "echo ""$capacity_pool_ipaddress:/$volume_name /$mount_directory/$volume_name nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0"" >> /etc/fstab"
     ```
 
-7. 如果所有学生均可访问同一 NetApp 文件卷，则发布之前可以在模板计算机上运行 `mount_fileshare.sh` 脚本。 如果每个学生都有自己的卷，请保存脚本，供学生稍后运行。
-8. [发布](how-to-create-manage-template.md#publish-the-template-vm)模板 VM。
-9. [为文件共享配置策略](../azure-netapp-files/azure-netapp-files-configure-export-policy.md)。 导出策略可以允许单个 VM 或多个 VM 访问卷。 可以授予只读或读/写访问权限。
-10. 学生必须启动其 VM 并运行脚本，以装载文件共享。 学生只需运行一次脚本。 命令将如下所示：`./mount_fileshare.sh myvolumename`。
+6. 如果所有学生均可访问同一 NetApp 文件卷，则发布之前可以在模板计算机上运行 `mount_fileshare.sh` 脚本。 如果每个学生都有自己的卷，请保存脚本，供学生稍后运行。
+7. [发布](how-to-create-manage-template.md#publish-the-template-vm)模板 VM。
+8. [为文件共享配置策略](../azure-netapp-files/azure-netapp-files-configure-export-policy.md)。 导出策略可以允许单个 VM 或多个 VM 访问卷。 可以授予只读或读/写访问权限。
+9. 学生必须启动其 VM 并运行脚本，以装载文件共享。 学生只需运行一次脚本。 命令将如下所示：`./mount_fileshare.sh myvolumename`。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,17 +3,17 @@ title: Azure 成本管理中的分组和筛选选项
 description: 本文介绍如何使用 Azure 成本管理中的分组和筛选选项。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 09/15/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 7422f41b617eb6d28a7a7667aecd129b24ac22a1
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 89344ccfe70a3d0becef103bd0bd3ffee79bb80c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679455"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616453"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>成本分析中的分组和筛选选项
 

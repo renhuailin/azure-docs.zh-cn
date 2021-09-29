@@ -14,12 +14,12 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6754ac10f614082f09a460b55dc712f5bc0c27be
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2b4db3701ee5d66616d6e3888a12cb73232f62b5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702622"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603080"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>诊断日志 - Azure 内容分发网络
 
@@ -196,12 +196,11 @@ ms.locfileid: "110702622"
 6.  每个 Blob *PT1H.json* 文件表示特定 CDN 终结点或其自定义域一小时内的分析日志。
 7.  有关此 JSON 文件的内容架构，请参阅核心分析日志的“架构”部分。
 
-
 #### <a name="blob-path-format"></a>Blob 路径格式
 
-核心分析日志每隔一小时生成一次，数据以 JSON 有效负载的形式收集并存储在单个 Azure Blob 中。 存储资源管理器工具将“/”解释为目录分隔符，并显示层次结构。 Azure Blob 的路径看起来像是采用了分层结构并表示 Blob 名称。 Blob 的名称遵循以下命名约定：    
+核心分析日志每隔一小时生成一次，数据以 JSON 有效负载的形式收集并存储在单个 Azure Blob 中。 存储资源管理器工具将“/”解释为目录分隔符，并显示层次结构。 Azure Blob 的路径看起来像是采用了分层结构并表示 Blob 名称。 Blob 的名称遵循以下命名约定：
 
-```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
+`resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y=/m=/d=/h=/m=/PT1H.json`
 
 字段说明：
 

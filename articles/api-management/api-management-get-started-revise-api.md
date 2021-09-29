@@ -4,18 +4,18 @@ titleSuffix: Azure API Management
 description: 遵循本教程中的步骤了解如何在 API 管理中使用修订进行非重大更改。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: 6ab3f2e4e2164611820813a5fdb04e2b27df1ff2
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.author: danlep
+ms.openlocfilehash: 34ffc28e6c8e109252b68be269c1918beabfd5af
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877023"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676592"
 ---
 # <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>教程：使用修订安全地进行非中断性 API 变更
 当 API 准备就绪并即将供开发人员使用时，你最终需要对该 API 进行更改，同时避免干扰 API 的调用方。 另一种有效的做法是让开发人员知道所做的更改。 

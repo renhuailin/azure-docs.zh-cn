@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f42329632b384ad2217f4deac97a9b984d17da7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07ea682d65bde9748a4cd55ed066eb8f31eb418a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778511"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784083"
 ---
 # <a name="how-to-export-risk-data"></a>操作方式：导出风险数据
 
@@ -73,7 +73,7 @@ Azure 事件中心可以查看来自源（如 Azure AD 标识保护）的传入�
 
 ## <a name="other-options"></a>其他选项
 
-组织可选择[将 Azure AD 数据连接到 Azure Sentinel](../../sentinel/connect-azure-ad-identity-protection.md) 进行进一步处理。
+组织可选择[将 Azure AD 数据连接到 Azure Sentinel](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection) 进行进一步处理。
 
 组织可使用 [Microsoft Graph API 以编程方式与风险事件交互](howto-identity-protection-graph-api.md)。
 
@@ -81,6 +81,6 @@ Azure 事件中心可以查看来自源（如 Azure AD 标识保护）的传入�
 
 - [什么是 Azure Active Directory 监视？](../reports-monitoring/overview-monitoring.md)
 - [安装和使用用于 Azure Active Directory 的日志分析视图](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [从 Azure Active Directory (Azure AD) 标识保护中连接数据](../../sentinel/connect-azure-ad-identity-protection.md)
+- [从 Azure Active Directory (Azure AD) 标识保护中连接数据](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 - [Azure Active Directory 标识保护和 Microsoft Graph PowerShell SDK](howto-identity-protection-graph-api.md)
 - [教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)

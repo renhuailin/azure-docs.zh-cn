@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 49c453f4ffcb2fac04b42f4956768e06ab8fce8f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8e33c165cd249b578bd4cba9ef4f25446287d7ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123100788"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766438"
 ---
 # <a name="tutorial-create-a-host-pool"></a>教程：创建主机池
 
@@ -26,7 +26,7 @@ ms.locfileid: "123100788"
 
 本文将引导你完成通过 Azure 门户为 Azure 虚拟桌面环境创建主机池的设置过程。 此方法提供基于浏览器的用户界面，用于在 Azure 虚拟桌面中创建主机池，在 Azure 订阅中创建包含 VM 的资源组，将这些 VM 加入 Active Directory (AD) 域或 Azure Active Directory (Azure AD) 租户，以及将 VM 注册到 Azure 虚拟桌面。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 有两组不同的要求，具体适用哪组要求取决于你是为组织设置部署的 IT 专业人员还是为客户提供应用程序的应用开发人员。
 
@@ -237,7 +237,7 @@ az vm create --name "MyVMName" \
     - [使用 Azure CLI 创建 Windows VM]( /azure/virtual-machines/windows/quick-create-cli)
     - [教程：使用 Azure CLI 创建和管理 Windows VM](/cli/azure/azure-cli-vm-tutorial)
 - Linux
-    - [Create a Linux VM using the Azure CLI（使用 Azure CLI 创建 Linux VM）]( /virtual-machines/linux/quick-create-cli)
+    - [Create a Linux VM using the Azure CLI（使用 Azure CLI 创建 Linux VM）](../virtual-machines/linux/quick-create-cli.md)
     - [教程：使用 Azure CLI 创建和管理 Linux VM]( /azure/virtual-machines/linux/tutorial-manage-vm) 
 ---
 

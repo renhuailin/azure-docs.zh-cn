@@ -3,16 +3,17 @@ title: 使用数据工厂在 Oracle 中复制或粘贴数据
 description: 了解如何使用 Azure 数据工厂在本地 Oracle 数据库中复制或粘贴数据。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 087afa7425d1244c38514c5388e242281bdab3dc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ef5bf35cabf0edddae1922d8acae56dbbef317e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736789"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616396"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
@@ -172,7 +173,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **OracleSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 示例：00:30:00（30 分钟） |否 |
 | writeBatchSize |当缓冲区大小达到 **writeBatchSize** 值时，向 SQL 表插入数据。 |整数（行数） |否（默认值：100） |

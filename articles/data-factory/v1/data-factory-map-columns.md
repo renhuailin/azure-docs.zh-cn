@@ -4,15 +4,16 @@ description: 了解如何将源列映射到目标列。
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
-ms.openlocfilehash: fef2c6f120ae25e6aa1846d4971ff707da9bab92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac8da7dcfcc95a57606b9590e897a66bfab1675e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371118"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602947"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>将源数据集列映射到目标数据集列
 > [!NOTE]
@@ -133,7 +134,7 @@ ms.locfileid: "100371118"
 ```
 **列映射流：**
 
-![列映射流](./media/data-factory-map-columns/column-mapping-flow.png)
+:::image type="content" source="./media/data-factory-map-columns/column-mapping-flow.png" alt-text="列映射流":::
 
 ## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>示例 2 – 使用 SQL 查询从 Azure SQL 到 Azure Blob 的列映射
 本示例使用 SQL 查询从 Azure SQL 提取数据，而不是只在“结构”部分中指定表名和列名。 
@@ -172,7 +173,7 @@ ms.locfileid: "100371118"
 
 **列映射流**
 
-![列映射流-2](./media/data-factory-map-columns/column-mapping-flow-2.png)
+:::image type="content" source="./media/data-factory-map-columns/column-mapping-flow-2.png" alt-text="列映射流-2":::
 
 ## <a name="next-steps"></a>后续步骤
 有关使用复制活动的教程，请参阅以下文章： 

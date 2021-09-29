@@ -12,12 +12,12 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f42f258383e1ca76be7fa45c79b11b3c18e900a7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1824eb31b17ba1a46bd5514797e11a502ac4665a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425802"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810051"
 ---
 # <a name="configure-permission-classifications"></a>配置权限分类
 
@@ -29,7 +29,7 @@ ms.locfileid: "123425802"
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 全局管理员角色。
-- 设置 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/)
+- 安装 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](/powershell/azure/)
 
 ## <a name="manage-permission-classifications"></a>管理权限分类
 

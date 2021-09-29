@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebebd323c683036a472106894cb0e42ba460996
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 53cfd6f72ec51475453ba940c54433651f07b419
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "108807532"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124809778"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-certent-equity-management"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Certent Equity Management 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "108807532"
 
 1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-   a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.certent.com/sys/sso/saml/acs.aspx`
+   a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.certent.com/sys/sso/saml/acs.aspx`
 
    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.certent.com/sys/sso/saml/acs.aspx`
 
@@ -143,7 +143,7 @@ ms.locfileid: "108807532"
 
 - 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Certent Equity Management
 
-- 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Certent Equity Management”磁贴时，应会自动登录到设置了 SSO 的 Certent Equity Management。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+- 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Certent Equity Management”磁贴时，应会自动登录到设置了 SSO 的 Certent Equity Management。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

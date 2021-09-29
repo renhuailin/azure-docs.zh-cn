@@ -12,13 +12,13 @@ ms.subservice: data-movement
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 2a2708c3d84dd83b752db2a0ae56843ae068aabe
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: c66e7a1d19ecf392c5f990bcaa31ba506cf0d7f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822425"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767406"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 
@@ -84,7 +84,7 @@ Azure 数据工厂和 Synapse 管道提供无服务器体系结构，可以实�
 
 复制可在不同的级别缩放：
 
-![复制的缩放方式](media/copy-activity-performance/adf-copy-scalability.png)
+:::image type="content" source="media/copy-activity-performance/adf-copy-scalability.png" alt-text="复制的缩放方式":::
 
 * 控制流可以并行启动多个复制活动（例如，使用 [For Each 循环](control-flow-for-each-activity.md)）。
 

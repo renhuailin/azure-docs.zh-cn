@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 9e5ecc67fe86afa15c66d175f0705818154588bf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a7c67b364fba771ad485eee8b93a62b9bdabc841
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684348"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643035"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>教程：查看 Microsoft 合作伙伴协议发票
 
@@ -85,11 +85,11 @@ ms.locfileid: "88684348"
 
 识别未结费用时，可以通过分析产生这些费用的每笔交易来了解费用。 此时，未结使用费不会显示在“所有交易”页上。 可以在 Azure 订阅页上查看未结使用费。
 
-在“成本管理 + 计费”中，选择一个计费配置文件。 根据你的访问权限，可能需要选择一个计费帐户。 在该计费帐户中选择“计费配置文件”，然后选择一个计费配置文件。
+在“成本管理 + 计费”中，选择一个计费配置文件。 根据你的访问权限，可能需要选择一个计费帐户。 在该计费帐户中选择“计费配置文件”，然后选择一个计费配置文件。 
 
-在页面左侧选择“所有事务”。
+在页面左侧选择“所有事务”。 
 
-搜索“未结”。 使用“时间跨度”筛选器查看当前月份或上一月份的未结费用。
+搜索“未结”。  使用“时间跨度”筛选器查看当前月份或上一月份的未结费用。
 
 <!-- ![Screenshot that shows the pending transactions list](./media/billing-mpa-understand-your-bill/mpa-billing-profile-pending-transactions.png) -->
 

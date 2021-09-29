@@ -8,12 +8,12 @@ author: minhe-msft
 ms.author: hemin
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f3ae53df3827349e208f0097e084c38b2ab4314b
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: f57b33f94bff98714969639e935ae5010a5762cd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681254"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218142"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure 数据工厂中的全局参数
 
@@ -25,21 +25,21 @@ ms.locfileid: "122681254"
 
 若要创建全局参数，请转到“管理” 部分中的“全局参数”选项卡。 选择“新建”以打开“创建”侧导航栏。
 
-![突出显示选择用于创建全局参数的“新建”按钮的屏幕截图。](media/author-global-parameters/create-global-parameter-1.png)
+:::image type="content" source="media/author-global-parameters/create-global-parameter-1.png" alt-text="突出显示选择用于创建全局参数的“新建”按钮的屏幕截图。":::
 
 在侧导航栏中，输入名称，选择数据类型，并指定参数的值。
 
-![显示添加新的全局参数的名称、数据类型和值的位置的屏幕截图。](media/author-global-parameters/create-global-parameter-2.png)
+:::image type="content" source="media/author-global-parameters/create-global-parameter-2.png" alt-text="显示添加新的全局参数的名称、数据类型和值的位置的屏幕截图。":::
 
 创建全局参数后，可以通过单击参数的名称对其进行编辑。 若要同时更改多个参数，请选择“全部编辑”。
 
-![创建全局参数](media/author-global-parameters/create-global-parameter-3.png)
+:::image type="content" source="media/author-global-parameters/create-global-parameter-3.png" alt-text="创建全局参数":::
 
 ## <a name="using-global-parameters-in-a-pipeline"></a>在管道中使用全局参数
 
 全局参数可用于任何[管道表达式](control-flow-expression-language-functions.md)。 如果管道引用其他资源（如数据集或数据流），则可以通过该资源的参数向下传递全局参数值。 全局参数以 `pipeline().globalParameters.<parameterName>` 形式进行引用。
 
-![使用全局参数](media/author-global-parameters/expression-global-parameters.png)
+:::image type="content" source="media/author-global-parameters/expression-global-parameters.png" alt-text="使用全局参数":::
 
 ## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> CI/CD 中的全局参数
 
@@ -48,9 +48,9 @@ ms.locfileid: "122681254"
 * 在 ARM 模板中包含全局参数
 * 通过 PowerShell 脚本部署全局参数
 
-对于一般用例，建议在 ARM 模板中包含全局参数。 这会与 [CI/CD 文档](continuous-integration-deployment.md)中列出的解决方案进行原生集成。在使用自动发布和 Purview 连接的情况下，需要使用 PowerShell 脚本方法。 稍后可以找到有关 PowerShell 脚本方法的更多信息。 默认情况下，全局参数将作为 ARM 模板参数添加，因为它们经常根据不同的环境而变化。 可以从“管理”中心启用将全局参数包含在 ARM 模板中的设置。
+对于一般用例，建议在 ARM 模板中包含全局参数。 这会与 [CI/CD 文档](continuous-integration-delivery.md)中列出的解决方案进行原生集成。在使用自动发布和 Purview 连接的情况下，需要使用 PowerShell 脚本方法。 稍后可以找到有关 PowerShell 脚本方法的更多信息。 默认情况下，全局参数将作为 ARM 模板参数添加，因为它们经常根据不同的环境而变化。 可以从“管理”中心启用将全局参数包含在 ARM 模板中的设置。
 
-![包含在 ARM 模板中](media/author-global-parameters/include-arm-template.png)
+:::image type="content" source="media/author-global-parameters/include-arm-template.png" alt-text="包含在 ARM 模板中":::
 
 > [!NOTE]
 > 只能在“Git 模式”下使用“包含在 ARM 模板中”配置。 目前，在“实时模式”或“数据工厂”模式下会禁用此配置。 在使用自动发布或 Purview 连接的情况下，不要使用包含全局参数的方法；请使用 PowerShell 脚本方法。 
@@ -67,13 +67,13 @@ ms.locfileid: "122681254"
 
 发布工厂或导出包含全局参数的 ARM 模板时，会创建一个名为 *globalParameters* 的文件夹，其中包含名为 *your-factory-name_GlobalParameters.json* 的文件。 此文件是一个 JSON 对象，其中包含已发布的工厂中的每个全局参数类型和值。
 
-![发布全局参数](media/author-global-parameters/global-parameters-adf-publish.png)
+:::image type="content" source="media/author-global-parameters/global-parameters-adf-publish.png" alt-text="发布全局参数":::
 
 如果要部署到新的环境（如 TEST 或 PROD），则建议创建此全局参数文件的副本，并覆盖相应的特定于环境的值。 重新发布时，将覆盖原始全局参数文件，但用于其他环境的副本将保持不变。
 
 例如，如果你有一个名为“ADF-DEV”的工厂，以及一个名为“environment”、值为“dev”的字符串类型的全局参数，则在发布时，将生成名为 *ADF-DEV_GlobalParameters.json* 的文件。 如果部署到名为“ADF_TEST”的测试工厂，请创建 JSON 文件（例如，名为 ADF-TEST_GlobalParameters.json 的文件）的副本，并将参数值替换为特定于环境的值。 参数“environment”现在可能具有值“test”。 
 
-![部署全局参数](media/author-global-parameters/powershell-task.png)
+:::image type="content" source="media/author-global-parameters/powershell-task.png" alt-text="部署全局参数":::
 
 使用以下 PowerShell 脚本将全局参数提升到其他环境。 在进行 ARM 模板部署之前添加一个 Azure PowerShell DevOps 任务。 在该 DevOps 任务中，必须指定新参数文件、目标资源组和目标数据工厂的位置。
 
@@ -114,5 +114,5 @@ Set-AzDataFactoryV2 -InputObject $dataFactory -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 Azure 数据工厂的[持续集成和部署过程](continuous-integration-deployment.md)
+* 了解 Azure 数据工厂的[持续集成和部署过程](continuous-integration-delivery.md)
 * 了解如何使用[控制流表达式语言](control-flow-expression-language-functions.md)

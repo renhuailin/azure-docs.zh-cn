@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 05/21/2021
 ms.author: pafarley
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 04c5c178a37f83203c0b5ee0597cba0b832933d7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 917dd55035ecca40c0a8a25a8f70d79d6a7e6e37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538536"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806627"
 ---
 # <a name="how-to-use-language-identification"></a>如何使用语言识别
 
 语言识别用于确定在与所提供的语言列表比较时，传递到语音 SDK 的音频中所说的语言。 然后，语言识别返回的值用于选择语音转文本的语言模型，从而提供更准确的听录内容。 
 
-执行[语音翻译](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification)时或通过执行[独立识别](/azure/cognitive-services/speech-service/language-identification)，也可使用语言识别。 
+执行[语音翻译](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification)时或通过执行[独立识别](./language-identification.md)，也可使用语言识别。 
 
 若要查看哪些语言可用，请参阅[语言支持](language-support.md)。
 

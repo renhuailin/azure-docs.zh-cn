@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2ecc10c43600a20ceb7209f651f27e78e7b286be
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0ce6c7ced310fa467adbdc707d25bb5efc0f02bc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181270"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763303"
 ---
 # <a name="work-with-threat-indicators-in-azure-sentinel"></a>使用 Azure Sentinel 中的威胁指标
 
@@ -179,7 +179,7 @@ ms.locfileid: "122181270"
 |日志源  |说明  |
 |---------|---------|
 |[CEF](connect-common-event-format.md)     |  对 Log Analytics CommonSecurityLog 表中所包括的所有 CEF 日志执行匹配，但 `DeviceVendor` 列为 `Cisco` 的除外。 <br><br>若要将 Microsoft 生成的威胁情报与 CEF 日志匹配，请确保在 CEF 日志的字段中映射 `RequestURL` 域。      |
-|[DNS](connect-dns.md)     | 对于从客户端查找 DNS 查询到 DNS 服务 (`SubType == "LookupQuery"`) 的所有 DNS 日志，将进行匹配。 DNS 查询仅针对 IPv4 (`QueryType=”A”`) 和 IPv6 查询 (`QueryType=” AAAA”`)。<br><br>若要将 Microsoft 生成的威胁情报与 DNS 日志进行匹配，无需手动映射列，因为所有列都是 Windows DNS 服务器的标准列，默认情况下，域将位于 `Name` 列中。   |
+|[DNS](./data-connectors-reference.md#domain-name-server)     | 对于从客户端查找 DNS 查询到 DNS 服务 (`SubType == "LookupQuery"`) 的所有 DNS 日志，将进行匹配。 DNS 查询仅针对 IPv4 (`QueryType=”A”`) 和 IPv6 查询 (`QueryType=” AAAA”`)。<br><br>若要将 Microsoft 生成的威胁情报与 DNS 日志进行匹配，无需手动映射列，因为所有列都是 Windows DNS 服务器的标准列，默认情况下，域将位于 `Name` 列中。   |
 |[Syslog](connect-syslog.md)     |  当前仅对 Syslog 事件（其中 `Facility` 为 `cron`）执行匹配。 <br><br>将 Microsoft 生成的威胁情报与 Syslog 进行匹配，无需手动映射列。 默认情况下，详细信息位于 Syslog 的 `SyslogMessage` 字段中，规则将直接从 SyslogMessage 对域进行分析。     |
 |     |         |
 

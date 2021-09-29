@@ -2,13 +2,13 @@
 title: 事件中心作为 Azure 事件网格事件的事件处理程序
 description: 介绍如何将时间中心用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 52517980d1c16517bd3b3047c4a56aa5567eb053
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.date: 09/28/2021
+ms.openlocfilehash: 6ba4dec31a93b01804779cd9f614e64854fe6cce
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416391"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215028"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>事件中心作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure 事件中心是其中之一。 

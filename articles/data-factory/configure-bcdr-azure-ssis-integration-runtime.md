@@ -13,12 +13,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: 71e85c44c951e7ce556e920a1316fe9a029c892c
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 2da56452a8674940b3d81ffd06c722886fd07ed7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428787"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217976"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>配置 Azure-SSIS 集成运行时以实现业务连续性和灾难恢复 (BCDR) 
 
@@ -62,11 +62,11 @@ Azure 数据工厂 (ADF) 中的 Azure SQL 数据库/托管实例和 SQL Server I
 
 1. 使用 Azure 门户/ADF UI，你可以创建一个带有主要 Azure SQL 托管实例的新 Azure-SSIS IR，以在主要区域中托管 SSISDB。 如果现有 Azure-SSIS IR 已附加到 Azure SQL 托管实例托管的 SSIDB，并且仍在运行，则需要先将其停止才能重新配置它。 这将是主要 Azure-SSIS IR。
 
-   在“集成运行时设置”窗格的“部署设置”页上[选择使用 SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb)时，请选中“结合使用双重备用 Azure-SSIS Integration Runtime 对和 SSISDB 故障转移”复选框。 对于“双重备用对名称”，请输入一个名称以标识主要和辅助 Azure-SSIS IR 对。 完成主要 Azure-SSIS IR 的创建后，它将启动并附加到主要 SSISDB，该 SSISDB 将以你的身份创建，具有读写访问权限。 如果刚重新配置了它，则需要重新启动。 还可以检查是否已在辅助 Azure SQL 托管实例的“概述”页上将主要 SSISDB 复制到具有只读访问权限的辅助 SSISDB。
+   在“集成运行时设置”窗格的“部署设置”页上[选择使用 SSISDB](./create-azure-ssis-integration-runtime-portal.md#creating-ssisdb)时，请选中“结合使用双重备用 Azure-SSIS Integration Runtime 对和 SSISDB 故障转移”复选框。 对于“双重备用对名称”，请输入一个名称以标识主要和辅助 Azure-SSIS IR 对。 完成主要 Azure-SSIS IR 的创建后，它将启动并附加到主要 SSISDB，该 SSISDB 将以你的身份创建，具有读写访问权限。 如果刚重新配置了它，则需要重新启动。 还可以检查是否已在辅助 Azure SQL 托管实例的“概述”页上将主要 SSISDB 复制到具有只读访问权限的辅助 SSISDB。
 
 1. 使用 Azure 门户/ADF UI，你可以通过辅助 Azure SQL 托管实例创建另一个 Azure-SSIS IR 来托管次要区域中的 SSISDB。 这将是你的辅助 Azure-SSIS IR。 对于完整的 BCDR，请确保还会在次要区域中创建它所依赖的所有资源，例如，用于存储自定义安装程序脚本/文件的 Azure 存储、用于业务流程/计划包执行的 ADF 等。
 
-   在“集成运行时设置”窗格的“部署设置”页上[选择使用 SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb)时，请选中“结合使用双重备用 Azure-SSIS Integration Runtime 对和 SSISDB 故障转移”复选框。 对于“双重备用对名称”，请输入相同名称以标识主要和辅助 Azure-SSIS IR 对。 完成辅助 Azure-SSIS IR 的创建后，它将启动并附加到辅助 SSISDB。
+   在“集成运行时设置”窗格的“部署设置”页上[选择使用 SSISDB](./create-azure-ssis-integration-runtime-portal.md#creating-ssisdb)时，请选中“结合使用双重备用 Azure-SSIS Integration Runtime 对和 SSISDB 故障转移”复选框。 对于“双重备用对名称”，请输入相同名称以标识主要和辅助 Azure-SSIS IR 对。 完成辅助 Azure-SSIS IR 的创建后，它将启动并附加到辅助 SSISDB。
 
 1. Azure SQL 托管实例可以通过使用数据库主密钥 (DMK) 加密数据库中的敏感数据（例如 SSISDB）来保护这些数据。 默认情况下，DMK 本身使用服务主密钥 (SMK) 进行加密。 从 2021 年 9 月开始，在创建故障转移组期间，SMK 将从主 Azure SQL 托管实例复制到辅助实例。 如果你的故障转移组是在此日期之前创建的，请从辅助 Azure SQL 托管实例中删除所有用户数据库（包括 SSISDB），然后重新创建故障转移组。
 
@@ -78,7 +78,7 @@ Azure 数据工厂 (ADF) 中的 Azure SQL 数据库/托管实例和 SQL Server I
 
    1. 对于每个 SSIS 作业，右键单击并选择“将作业脚本撰写为”、“创建到”以及“新建查询编辑器窗口”下拉菜单项来生成脚本。
 
-      ![生成 SSIS 作业脚本](media/configure-bcdr-azure-ssis-integration-runtime/generate-ssis-job-script.png)
+      :::image type="content" source="media/configure-bcdr-azure-ssis-integration-runtime/generate-ssis-job-script.png" alt-text="生成 SSIS 作业脚本":::
 
    1. 对于每个生成的 SSIS 作业脚本，查找用于执行 `sp_add_job` 存储过程的命令，并根据需要修改/删除 `@owner_login_name` 参数的赋值。
 
@@ -115,13 +115,13 @@ Azure 数据工厂 (ADF) 中的 Azure SQL 数据库/托管实例和 SQL Server I
    EXEC [catalog].[failover_integration_runtime] @data_factory_name = 'YourNewADF', @integration_runtime_name = 'YourNewAzureSSISIR'
    ```
 
-1. 使用 [Azure 门户/ADF UI](./create-azure-ssis-integration-runtime.md#use-the-azure-portal-to-create-an-integration-runtime) 或 [Azure PowerShell](./create-azure-ssis-integration-runtime.md#use-azure-powershell-to-create-an-integration-runtime)，在另一个区域中分别创建名为 YourNewADF/YourNewAzureSSISIR 的新 ADF/Azure-SSIS IR。 如果使用 Azure 门户/ADF UI，则可以忽略“集成运行时设置”窗格的“部署设置”页上的测试连接错误。
+1. 使用 [Azure 门户/ADF UI](./create-azure-ssis-integration-runtime-portal.md) 或 [Azure PowerShell](./create-azure-ssis-integration-runtime-powershell.md)，在另一个区域中分别创建名为 YourNewADF/YourNewAzureSSISIR 的新 ADF/Azure-SSIS IR。 如果使用 Azure 门户/ADF UI，则可以忽略“集成运行时设置”窗格的“部署设置”页上的测试连接错误。
 
 ## <a name="next-steps"></a>后续步骤
 
 可以考虑 Azure-SSIS IR 的以下其他配置选项：
 
-- [为 Azure-SSIS IR 配置包存储](./create-azure-ssis-integration-runtime.md#creating-azure-ssis-ir-package-stores)
+- [为 Azure-SSIS IR 配置包存储](./create-azure-ssis-integration-runtime-portal.md#creating-azure-ssis-ir-package-stores)
 
 - [为 Azure-SSIS IR 配置自定义设置](./how-to-configure-azure-ssis-ir-custom-setup.md)
 

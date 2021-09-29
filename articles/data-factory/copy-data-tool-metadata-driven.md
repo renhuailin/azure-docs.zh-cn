@@ -3,15 +3,16 @@ title: 使用复制数据工具中元数据驱动的方法生成大规模数据�
 description: 提供有关 ADF 复制数据工具中元数据驱动的方法的信息
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.date: 06/19/2021
 ms.author: yexu
-ms.openlocfilehash: e2263db67214fb6fea91c8a8cefa65a981475ec3
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 02d7b741ec0c3fb9547d10bde759900ce3a69dd6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681595"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663338"
 ---
 # <a name="build-large-scale-data-copy-pipelines-with-metadata-driven-approach-in-copy-data-tool-preview"></a>使用复制数据工具中元数据驱动的方法生成大规模数据复制管道（预览版）
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,15 +27,15 @@ ADF 中的复制数据工具简化了这种元数据驱动的数据复制管道�
 
    需要输入连接以及控制表的表名称，使生成的管道从该控制表中读取元数据。
 
-   ![选择任务类型](./media/copy-data-tool-metadata-driven/select-task-type.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-task-type.png" alt-text="选择任务类型":::
 
 2. 输入源数据库的连接。 也可以使用[参数化链接服务](parameterize-linked-services.md)。
 
-   ![选择参数化链接服务](./media/copy-data-tool-metadata-driven/select-parameterized-linked-service.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-parameterized-linked-service.png" alt-text="选择参数化链接服务":::
 
 3. 选择要复制的表名称。
 
-   ![选择表](./media/copy-data-tool-metadata-driven/select-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-table.png" alt-text="选择表":::
 
    > [!NOTE]
    > 如果选择了表格数据存储，则可以在下一页中进一步选择完全加载或增量加载。 如果选择了存储，则在下一页中只能进一步选择完全加载。 目前不支持仅从存储中以增量方式加载新文件。  
@@ -47,11 +48,11 @@ ADF 中的复制数据工具简化了这种元数据驱动的数据复制管道�
 
 6. 在“设置”页中，可以通过“并发复制任务数”来确定用于从源存储中并发复制数据的复制活动数上限 。 默认值为 20。 
 
-   ![“设置”页面](./media/copy-data-tool-metadata-driven/settings.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/settings.png" alt-text="“设置”页":::
 
 7. 管道部署后，可以从 UI 复制或下载 SQL 脚本，用于创建控制表和存储过程。 
 
-   ![下载脚本](./media/copy-data-tool-metadata-driven/download-scripts.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/download-scripts.png" alt-text="下载脚本":::
 
    你将看到两个 SQL 脚本。
    
@@ -60,15 +61,15 @@ ADF 中的复制数据工具简化了这种元数据驱动的数据复制管道�
 
 8. 打开 **SSMS** 以连接到控制表服务器，然后运行这两个 SQL 脚本来创建控制表和存储过程。
 
-   ![创建控制表脚本](./media/copy-data-tool-metadata-driven/create-control-table-script.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/create-control-table-script.png" alt-text="创建控制表脚本":::
 
 9. 查询主控制表和连接控制表，以查看其中的元数据。
 
    主控制表
-   ![查询控制表脚本 1](./media/copy-data-tool-metadata-driven/query-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/query-control-table.png" alt-text="查询控制表脚本 1":::
 
    连接控制表
-   ![查询控制表脚本 2](./media/copy-data-tool-metadata-driven/query-connection-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/query-connection-control-table.png" alt-text="查询控制表脚本 2":::
 
 10. 返回 ADF 门户以查看和调试管道。 你将看到，已创建一个名为“MetadataDrivenCopyTask_### _######”的文件夹。单击名为“MetadataDrivenCopyTask_###_TopLevel”的管道，然后单击“调试运行” 。 
 
@@ -85,7 +86,7 @@ ADF 中的复制数据工具简化了这种元数据驱动的数据复制管道�
 
 11. 启用触发器以使管道可运行。
 
-    ![启用触发器](./media/copy-data-tool-metadata-driven/enable-trigger.png)
+    :::image type="content" source="./media/copy-data-tool-metadata-driven/enable-trigger.png" alt-text="启用触发器":::
 
 
 ## <a name="update-control-table-by-copy-data-tool"></a>通过复制数据工具更新控制表
@@ -93,15 +94,15 @@ ADF 中的复制数据工具简化了这种元数据驱动的数据复制管道�
 
 1. 右键单击顶级管道“MetadataDrivenCopyTask_xxx_TopLevel”并选择“编辑控制表” 。
 
-   ![编辑控制表 1](./media/copy-data-tool-metadata-driven/edit-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table.png" alt-text="编辑控制表 1":::
 
 2. 在控制表中选择要编辑的行。
 
-   ![编辑控制表 2](./media/copy-data-tool-metadata-driven/edit-control-table-select-tables.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table-select-tables.png" alt-text="编辑控制表 2":::
 
 3. 完成复制数据工具中的每个步骤，最终它会为你创建一个新的 SQL 脚本。 重新运行 SQL 脚本以更新控制表。
 
-   ![编辑控制表 3](./media/copy-data-tool-metadata-driven/edit-control-table-create-script.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table-create-script.png" alt-text="编辑控制表 3":::
 
    > [!NOTE]
    > 不会重新部署管道。 新建的 SQL 脚本只能帮助你更新控制表。 

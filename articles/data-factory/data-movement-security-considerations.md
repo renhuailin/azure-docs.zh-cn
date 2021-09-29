@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/03/2021
-ms.openlocfilehash: ab31c1629140a1e0f3f5a6dcbe409b6803805e34
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2b39017bb8d1a7e8527f8302190921463247f721
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638891"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779685"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 
@@ -113,7 +113,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 
 混合场景需要在本地网络、虚拟网络 (Azure) 或虚拟私有云 (Amazon) 中安装自承载集成运行时。 自承载集成运行时必须能够访问本地数据存储。 有关自承载集成运行时的详细信息，请参阅[如何创建和配置自承载集成运行时](./create-self-hosted-integration-runtime.md)。 
 
-![自承载集成运行时通道](media/data-movement-security-considerations/data-management-gateway-channels.png)
+:::image type="content" source="media/data-movement-security-considerations/data-management-gateway-channels.png" alt-text="自承载集成运行时通道":::
 
 使用命令通道可在数据工厂中的数据移动服务与自承载集成运行时之间通信。 通信包含与活动相关的信息。 数据信道用于在本地数据存储和云数据存储之间传输数据。    
 
@@ -157,11 +157,11 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 #### <a name="express-route"></a>Express Route
 
-![结合使用 ExpressRoute 和网关](media/data-movement-security-considerations/express-route-for-gateway.png) 
+:::image type="content" source="media/data-movement-security-considerations/express-route-for-gateway.png" alt-text="结合使用 ExpressRoute 和网关"::: 
 
 #### <a name="ipsec-vpn"></a>IPSec VPN
 
-![将 IPSec VPN 与网关配合使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+:::image type="content" source="media/data-movement-security-considerations/ipsec-vpn-for-gateway.png" alt-text="将 IPSec VPN 与网关配合使用":::
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a> 防火墙配置和针对 IP 地址设置的允许列表
 
@@ -188,7 +188,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | PowerShell 加密 cmdlet（参阅[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)）和凭据管理器应用程序需要使用此端口在自承载集成运行时中安全设置本地数据存储的凭据。 |
 
-![网关端口要求](media/data-movement-security-considerations/gateway-port-requirements.png) 
+:::image type="content" source="media/data-movement-security-considerations/gateway-port-requirements.png" alt-text="网关端口要求"::: 
 
 #### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>IP 配置和数据存储中设置的允许列表
 

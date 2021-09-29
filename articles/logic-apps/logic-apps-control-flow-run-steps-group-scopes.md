@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b8e4395cd2ac46acb94abced52aa28eccf4f3d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92314845"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615978"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用作用域基于组状态运行操作
 
@@ -111,13 +111,13 @@ ms.locfileid: "92314845"
 
    1. 在“主题”字段中，输入以下文本：
 
-      ```Time to leave: Traffic more than 10 minutes```
+     `Time to leave: Traffic more than 10 minutes`
 
    1. 在“正文”字段中，输入带尾随空格的以下文本： 
 
-      ```Travel time:```
+     `Travel time:`
 
-      当光标出现在“正文”字段中时，动态内容列表将保持打开状态，以便你可以选择此时可用的任何参数。
+     当光标出现在“正文”字段中时，动态内容列表将保持打开状态，以便你可以选择此时可用的任何参数。
 
    1. 在动态内容列表中，选择“表达式”。
 

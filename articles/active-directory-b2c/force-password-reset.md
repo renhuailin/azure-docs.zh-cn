@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a8fc74a298450ad2581a8a147eaff9f996dca8dc
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: bff08cb924e33090b80f44dd908e2b9964290d5c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112198793"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572396"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置强制密码重置流
 
@@ -44,7 +44,8 @@ ms.locfileid: "112198793"
 若要在注册或登录用户流中启用“强制密码重置”设置，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 选择“用户流”。
 1. 选择要自定义的“注册和登录”或“登录”用户流（“推荐”类型）。
@@ -55,7 +56,8 @@ ms.locfileid: "112198793"
 ## <a name="test-the-user-flow"></a>测试用户流
 
 1. 以用户管理员或密码管理员身份登录到 [Azure 门户](https://portal.azure.com)。 有关可用角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../active-directory/roles/permissions-reference.md#all-roles)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 选择“用户”。 搜索并选择要用于测试密码重置的用户，然后选择“重置密码”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。

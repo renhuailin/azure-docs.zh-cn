@@ -8,13 +8,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 30cae7cb417037637b16b8c5e69981d5897c4a0e
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 5446bf3c2271fd31fc99e5fadb2f3ab92ca38e26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824720"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806292"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-or-azure-synapse-analytics-pipeline"></a>在 Azure 数据工厂或 Azure Synapse Analytics 管道中使用自定义活动
 
@@ -111,7 +111,7 @@ ms.locfileid: "122824720"
 | command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
 | resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否 &#42;       |
 | folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否 &#42;       |
-| referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用服务的资源 | 否       |
+| referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用该服务的资源 | 否       |
 | extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
 | retentionTimeInDays | 为自定义活动提交的文件的保留时间。 默认值为 30 天。 | 否 |
 
@@ -150,7 +150,7 @@ ms.locfileid: "122824720"
 
 ## <a name="passing-objects-and-properties"></a>传递对象和属性
 
-此示例展示了如何使用 referenceObjects 和 extendedProperties 将对象和用户定义的属性从服务传递到自定义应用程序。
+此示例展示了如何使用 referenceObjects 和 extendedProperties 将对象和用户定义的属性从该服务传递到自定义应用程序。
 
 ```json
 {
@@ -308,7 +308,7 @@ Activity Error section:
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动
 
-可以通过自定义活动中的代码将自定义值发送回服务。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 服务复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为 2 MB。）若要在下游活动中使用 `outputs.json` 的内容，可以使用表达式 `@activity('<MyCustomActivity>').output.customOutput` 获取值。
+可以通过自定义活动中的代码将自定义值发送回该服务。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 服务复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为 2 MB。）若要在下游活动中使用 `outputs.json` 的内容，可以使用表达式 `@activity('<MyCustomActivity>').output.customOutput` 获取值。
 
 ## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
 
@@ -323,7 +323,7 @@ Activity Error section:
 }
 ```
 
-此序列化并不是真正安全的，也不应是安全的。 其目的是提示服务屏蔽“监视”选项卡中的值。
+此序列化并不是真正安全的，也不应是安全的。 其目的是提示该服务屏蔽“监视”选项卡中的值。
 
 若要从自定义活动访问 *SecureString* 类型的属性，请读取 `activity.json` 文件（该文件与 .EXE 放在同一个文件夹中），反序列化 JSON，然后访问 JSON 属性（extendedProperties => [propertyName] => 值）。
 

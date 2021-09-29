@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/01/2021
 ms.author: memildin
-ms.openlocfilehash: de0983d981aa4bc229f29e151c37cda0be90cdec
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 4bfacebc9961cdbac89252783f47267002a69a66
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434676"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597239"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
@@ -100,14 +100,8 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 > 有关查看和编辑你的计划的详细信息，请参阅[使用安全策略](tutorial-security-policy.md)。 
 
 即使安全中心的默认安全计划是基于行业最佳做法和标准的，但在某些情况下，下面列出的内置建议可能并不完全适合你的组织。 因此，有时有必要在不影响安全性的情况下调整默认计划，以确保其与组织自己的策略、行业标准、监管标准和你必须满足的基准保持一致。<br><br>
-<div class="foo">
-
-<style type="text/css"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-cly1{text-align:left;vertical-align:middle} .tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle} </style>
 
 [!INCLUDE [security-center-controls-and-recommendations](../../includes/asc/security-control-recommendations.md)]
-
-</div>
-
 
 
 

@@ -10,12 +10,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 07/21/2021
   ms.author: aahi
-  ms.openlocfilehash: e4bef1836b9faaf8d2315fd296a165988a6a3979
-  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+  ms.openlocfilehash: ae166866e7a7c7005bf57f34ffadccc692d8c72f
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/24/2021
-  ms.locfileid: "114665744"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124806612"
 title: Azure 认知服务容器常见问题解答 (FAQ)
 summary: ''
 sections:
@@ -109,7 +109,7 @@ sections:
         * [Azure 认知服务](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
         * [Microsoft 认知](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
   - question: 如何计费？
-    answer: "类似于认知服务云，客户按消耗量付费。 容器需配置为向 Azure 发送计量数据，因此会相应地收取事务费。 跨托管服务和本地服务使用的资源将按分层定价计入到单个配额，并且会同时计入到这两个服务的用量。 有关更多详细信息，请参阅相应产品/服务的定价页。\n\n* [异常检测器](../anomaly-Detector/anomaly-detector-container-howto.md#billing)\n* [计算机视觉](../computer-vision/computer-vision-how-to-install-containers.md#billing)\n* [人脸](../face/face-how-to-install-containers.md#billing)\n* [表单识别器](../form-recognizer/containers/form-recognizer-container-install-run.md#billing)\n* [语言理解 (LUIS)](../luis/luis-container-howto.md#billing)\n* [语音服务 API](../speech-service/speech-container-howto.md#billing)\n* [文本分析](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#billing)\n\n> [!IMPORTANT]\n> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要使容器始终只能向计量服务传送账单信息。 认知服务容器不会将客户数据发送给 Microsoft。\n\n下面是容器为进行计量而传送的信息的示例：\n\n\n```json \n\"usageRequestBody\": {\n  \"id\": \"customer_subscriptionID\",\n  \"apiType\": \"textanalytics\",\n  \"containerType\": \"keyphrase\",\n  \"containerVersion\": \"1.1.00864.0001\",\n  \"containerId\": \"dep--keyphrase-\",\n  \"meter\": {\n    \"name\": \"CognitiveServices.TextAnalytics.Container.BatchScoring\",\n    \"quantity\": 10.0\n  }\n  ```\n"
+    answer: "类似于认知服务云，客户按消耗量付费。 容器需配置为向 Azure 发送计量数据，因此会相应地收取事务费。 跨托管服务和本地服务使用的资源将按分层定价计入到单个配额，并且会同时计入到这两个服务的用量。 有关更多详细信息，请参阅相应产品/服务的定价页。\n\n* [异常检测器](../anomaly-Detector/anomaly-detector-container-howto.md#billing)\n* [计算机视觉](../computer-vision/computer-vision-how-to-install-containers.md#billing)\n* [人脸](../face/face-how-to-install-containers.md#billing)\n* [表单识别器](../../applied-ai-services/form-recognizer/containers/form-recognizer-container-install-run.md#billing)\n* [语言理解 (LUIS)](../luis/luis-container-howto.md#billing)\n* [语音服务 API](../speech-service/speech-container-howto.md#billing)\n* [文本分析](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#billing)\n\n> [!IMPORTANT]\n> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要使容器始终只能向计量服务传送账单信息。 认知服务容器不会将客户数据发送给 Microsoft。\n\n下面是容器为进行计量而传送的信息的示例：\n\n\n```json \n\"usageRequestBody\": {\n  \"id\": \"customer_subscriptionID\",\n  \"apiType\": \"textanalytics\",\n  \"containerType\": \"keyphrase\",\n  \"containerVersion\": \"1.1.00864.0001\",\n  \"containerId\": \"dep--keyphrase-\",\n  \"meter\": {\n    \"name\": \"CognitiveServices.TextAnalytics.Container.BatchScoring\",\n    \"quantity\": 10.0\n  }\n  ```\n"
   - question: 容器的当前支持担保是什么？
     answer: >
       预览版不提供任何担证。 在正式宣布推出容器的正式版 (GA) 后，将实施 Microsoft 面向企业软件的标准担保。
@@ -130,7 +130,7 @@ sections:
 
       * [人脸](../face/face-how-to-install-containers.md#container-requirements-and-recommendations)
 
-      * [表单识别器](../form-recognizer/containers/form-recognizer-container-install-run.md#container-requirements-and-recommendations)
+      * [表单识别器](../../applied-ai-services/form-recognizer/containers/form-recognizer-container-install-run.md#container-requirements-and-recommendations)
 
       * [语言理解 (LUIS)](../luis/luis-container-howto.md#container-requirements-and-recommendations)
 

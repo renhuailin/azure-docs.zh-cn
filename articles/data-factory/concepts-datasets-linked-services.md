@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: d1f3313c1b348e037ab70dad0f4072d4727f21b3
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: dff54916007046d3d0d8d6741ca6fce7409c5d99
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824279"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787975"
 ---
 # <a name="datasets-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的数据集
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -38,7 +38,7 @@ ms.locfileid: "122824279"
 
 下图显示了管道、活动、数据集和链接服务之间的关系：
 
-![管道、活动、数据集和链接服务之间的关系](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+:::image type="content" source="media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png" alt-text="管道、活动、数据集和链接服务之间的关系":::
 
 
 ## <a name="dataset-json"></a>数据集 JSON

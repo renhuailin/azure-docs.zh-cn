@@ -1,20 +1,15 @@
 ---
 title: 使用 Azure 视频分析器媒体版（以前称为视频索引器）自动识别口述语言 - Azure
-titleSuffix: Azure Video Analyzer for Media
 description: 本文介绍如何使用 Azure 视频分析器媒体版（以前称为视频索引器）识别模型来自动识别视频中的口述语言。
-services: azure-video-analyzer
-author: juliako
-manager: femila
-ms.topic: article
-ms.subservice: azure-video-analyzer-media
+ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 8caada82b0c4b0c99e2d18b8586cc0b2c9d575f4
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: b1cb45b206fab5a7aaa887f66c908b524fa9ba93
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119530"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561560"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>通过语言识别模型自动识别口述语言
 

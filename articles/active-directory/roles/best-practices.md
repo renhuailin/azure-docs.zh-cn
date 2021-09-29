@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48d424a64df215a7506130a44d57fc45d638255d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c40d1ae4d24f24feafa138b75aefc3f9b711287e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739944"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762866"
 ---
 # <a name="best-practices-for-azure-ad-roles"></a>Azure AD 角色的最佳做法
 
@@ -62,7 +62,7 @@ ms.locfileid: "121739944"
 - 恶意参与者可能会入侵帐户。
 - 人员在公司内移动团队。 如果不进行审核，随时间推移，他们可能会进行许多不必要的访问。
  
-有关角色的访问评审的信息，请参阅[在 PIM 中创建 Azure AD 角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)。 有关分配了角色的组的访问评审的信息，请参阅[在 Azure AD 访问评审中创建组和应用程序的访问评审](../governance/create-access-review.md)。
+有关角色的访问评审的信息，请参阅[在 PIM 中创建 Azure AD 角色的访问评审](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md)。 有关分配了角色的组的访问评审的信息，请参阅[在 Azure AD 访问评审中创建组和应用程序的访问评审](../governance/create-access-review.md)。
 
 ## <a name="5-limit-the-number-of-global-administrators-to-less-than-5"></a>5. 将全局管理员的数量限制为少于 5
 

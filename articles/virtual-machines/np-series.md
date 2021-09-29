@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: e009f24f1ce7d05c8890b197ea1208f2d01666d4
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a1cd31fdb70dd38a014c60e5a0901cdfa51bc791
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697955"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780844"
 ---
 # <a name="np-series"></a>NP 系列 
 
@@ -163,7 +163,7 @@ OnPrem FPGA 存在管理终结点（设备 ID 5004）和角色终结点（设备
 
 
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
@@ -171,6 +171,10 @@ OnPrem FPGA 存在管理终结点（设备 ID 5004）和角色终结点（设备
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
 
 ## <a name="next-steps"></a>后续步骤
 

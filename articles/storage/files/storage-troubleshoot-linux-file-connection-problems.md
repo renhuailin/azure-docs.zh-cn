@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: db5cb2f6bc8b4ca3eed802552fe86830b9f1723f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 6277e42daf370cef65724f8958a9851ecd51d57c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259570"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216738"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>在 Linux 中排查 Azure 文件存储问题 (SMB)
 
@@ -40,7 +40,6 @@ ms.locfileid: "123259570"
 - 客户端上未安装 SMB 实用程序 (cifs-utils)。
 - 最低的 SMB 版本 2.1 在客户端上不可用。
 - 客户端不支持 SMB 3.x 加密。 上表列出的 Linux 发行版支持使用加密从本地装载以及跨区域装载。 其他分发要求内核 4.11 及更高版本。
-- 试图通过不受支持的 TCP 端口 445 连接到存储帐户。
 - 试图从 Azure VM 连接到 Azure 文件共享，而该 VM 并非与存储帐户处于同一区域。
 - 如果在存储帐户上启用了[需要安全转移](../common/storage-require-secure-transfer.md)设置，则 Azure 文件存储仅允许使用带加密的 SMB 3.x 进行连接。
 

@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/25/2021
+ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 36da44521169c516888489bd0ac60015adcc432f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6d77f3d93ad3b69f6cc8842e8a320221e533c4c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733670"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791472"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>计划 Azure Active Directory 我的应用配置
 
 > [!NOTE]
 > 本文面向需要计划其组织的“我的应用”门户配置的 IT 专业人员。
 >
-> 有关最终用户文档，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
+> 有关最终用户文档，请参阅[从“我的应用”门户登录和启动应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 Azure Active Directory (Azure AD) 我的应用是一个基于 Web 的门户，用于启动和管理应用。 “我的应用”页为用户提供了单一位置来开始工作并查找他们有权访问的所有应用程序。 用户可通过 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 访问“我的应用”。
 
@@ -36,7 +36,6 @@ Azure Active Directory (Azure AD) 我的应用是一个基于 Web 的门户，�
 当同时满足以下两个条件时，Azure Active Directory 企业应用程序列表中的任何应用程序都会出现：
 
 * 应用的可见性属性设置为 true。
-
 * 应用被分配给任何用户或组。 它会向分配的用户进行显示。
 
 配置该门户可确保正确的人员可以轻松找到正确的应用。
@@ -46,27 +45,18 @@ Azure Active Directory (Azure AD) 我的应用是一个基于 Web 的门户，�
 用户可访问“我的应用”门户，以便：
 
 * 发现并访问其组织中他们有权访问的与 Azure AD 连接的所有应用程序。
-
    * 最好确保将应用配置为单一登录 (SSO) 以便为用户提供最佳体验。
-
 * 请求访问为自助服务配置的新应用。
-
 * 创建个人应用集合。
-
 * 在分配有组所有者权限或是被委托了用于授予应用程序访问权限的组控制权时，管理对应用的访问。
 
 管理员可以配置：
 
 * [同意体验](../manage-apps/configure-user-consent.md)，包括服务条款。
-
 * [自助服务应用程序发现和访问请求](../manage-apps/access-panel-manage-self-service-access.md)。
-
 * [应用程序集合](../manage-apps/access-panel-collections.md)。
-
 * 应用程序的图标分配
-
 * 应用程序的用户友好名称
-
 * “我的应用”上显示的公司品牌打造
 
 ## <a name="plan-consent-configuration"></a>计划同意配置
@@ -102,7 +92,6 @@ Microsoft 为“我的应用”提供了[用于电子邮件和其他通信的可
 Azure AD 支持多种 SSO 选项。
 
 * 若要了解详细信息，请参阅 [Azure AD 中的单一登录选项](sso-options.md)。
-
 * 若要详细了解如何将 Azure AD 用作应用的标识提供者，请参阅[应用程序管理快速入门系列](../manage-apps/view-applications-portal.md)。
 
 ### <a name="use-federated-sso-if-possible"></a>在可能的情况下使用联合 SSO
@@ -120,12 +109,11 @@ Azure AD 支持多种 SSO 选项。
 
 ![屏幕截图](./media/my-apps-deployment-plan/ap-dp-install-myapps.png)
 
-有关该扩展的详细信息，请参阅[安装“我的应用”浏览器扩展](../user-help/my-apps-portal-end-user-access.md)。
+有关该扩展的详细信息，请参阅[安装“我的应用”浏览器扩展](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
-如果必须集成这些应用程序，则应定义一种机制，以使用[支持的浏览器](../user-help/my-apps-portal-end-user-access.md)大规模部署扩展。 选项包括：
+如果必须集成这些应用程序，则应定义一种机制，以使用[支持的浏览器](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)大规模部署扩展。 选项包括：
 
 * [适用于 Chrome、Firefox、Microsoft Edge 或 IE 的用户驱动型下载和配置](../user-help/my-apps-portal-end-user-access.md)
-
 * [Internet Explorer 的 Configuration Manager](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 该扩展使用户可以从其搜索栏启动任何应用、查找对最近使用的应用程序的访问以及链接到“我的应用”页。
@@ -151,7 +139,6 @@ Azure AD 支持多种 SSO 选项。
 最终用户还可以通过以下方式自定义其体验
 
 * 创建自己的应用集合。
-
 * [隐藏和重新排列应用集合](access-panel-collections.md)。
 
 ![自助服务配置的屏幕截图](./media/my-apps-deployment-plan/collections.png)
@@ -174,9 +161,7 @@ Azure AD 支持多种 SSO 选项。
 可以允许用户通过“我的应用”面板发现应用程序并请求访问应用程序。 为此，必须首先
 
 * 启用自助服务组管理
-
 * 为 SSO 启用应用
-
 * 创建组以进行应用程序访问
 
 ![“我的应用”自助服务配置的屏幕截图](./media/my-apps-deployment-plan/my-apps-self-service.png)

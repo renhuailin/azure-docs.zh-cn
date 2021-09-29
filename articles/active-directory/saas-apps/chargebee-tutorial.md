@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 22753b80931956af6ce448cfee974ae746fff6e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c994f1bdadc76371b7896350514f3f3adcd7f43b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92456205"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734434"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>教程：将 Chargebee 与 Azure Active Directory 集成
 
@@ -75,9 +75,9 @@ ms.locfileid: "92456205"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<domainname>.chargebee.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<domainname>.chargebee.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.chargebee.com/saml/<domainname>/acs`
 
@@ -166,7 +166,7 @@ ms.locfileid: "92456205"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Chargebee”磁贴时，应会自动登录到设置了 SSO 的 Chargebee。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Chargebee”磁贴时，应会自动登录到设置了 SSO 的 Chargebee。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

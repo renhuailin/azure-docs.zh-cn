@@ -3,16 +3,17 @@ title: Azure 数据工厂中数据移动的安全注意事项
 description: 了解如何为 Azure 数据工厂中的数据移动提供保护。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0823c085470e83c82164fa578f1465e95eda81f0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375096"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596194"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
@@ -80,7 +81,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 ## <a name="hybrid-scenarios-using-data-management-gateway"></a>混合方案（使用数据管理网关）
 混合方案需要在本地网络或虚拟网络 (Azure) 内或虚拟私有云 (Amazon) 中安装数据管理网关。 网关必须能访问本地数据存储。 有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。 
 
-![数据管理网关通道](media/data-factory-data-movement-security-considerations/data-management-gateway-channels.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/data-management-gateway-channels.png" alt-text="数据管理网关通道":::
 
 使用命令通道，可在数据工厂中的数据移动服务与数据管理网关之间进行通信。 通信包含与活动相关的信息。 数据信道用于在本地数据存储和云数据存储之间传输数据。    
 
@@ -100,7 +101,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 #### <a name="click-once-credentials-manager-app"></a>一键式凭据管理器应用
 创作管道时，可以从 Azure 门户/复制向导启动一键式凭据管理器应用。 此应用程序确保凭据不会通过网络以纯文本形式传输。 默认情况下，该应用程序在计算机上使用端口 8050 ，借助网关确保安全通信。 如有必要，可以更改此端口。  
   
-![网关的 HTTPS 端口](media/data-factory-data-movement-security-considerations/https-port-for-gateway.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/https-port-for-gateway.png" alt-text="网关的 HTTPS 端口":::
 
 目前，数据管理网关使用单个证书。 此证书是在网关安装期间创建的（适用于在 2016 年 11 月之后创建的数据管理网关 2.4.xxxx.x 版本或更高上版本）。 可以使用自己的 SSL/TLS 证书替换此证书。 一键式凭据管理器应用程序使用此证书安全地连接到网关计算机，以便设置数据存储凭据。 它通过在具有网关的计算机上使用 Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) 在本地安全地存储数据存储凭据。 
 
@@ -132,11 +133,11 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 快速路由：
  
-![将快速路由与网关配合使用](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
+:::image type="content" source="media/data-factory-data-movement-security-considerations/express-route-for-gateway.png" alt-text="将快速路由与网关配合使用"::: 
 
 IPSec VPN：
 
-![将 IPSec VPN 与网关配合使用](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png" alt-text="将 IPSec VPN 与网关配合使用":::
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>网关的防火墙配置和筛选 IP 地址
 
@@ -162,7 +163,7 @@ IPSec VPN：
 | ------------- | ----------- | 
 | 8050 (TCP) | 由凭据管理器应用程序用于为网关上的本地数据存储安全地设置凭据。 | 
 
-![网关端口要求](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
+:::image type="content" source="media/data-factory-data-movement-security-considerations/gateway-port-requirements.png" alt-text="网关端口要求":::
 
 #### <a name="ip-configurationsfiltering-in-data-store"></a>数据存储中的 IP 配置/筛选
 云中的某些数据存储还需要审批对其进行访问的计算机的 IP 地址。 确保已在防火墙中对网关计算机的 IP 地址进行了适当审批/配置。

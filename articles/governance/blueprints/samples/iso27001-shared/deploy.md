@@ -1,14 +1,14 @@
 ---
 title: 部署 ISO 27001 共享服务蓝图示例
 description: ISO 27001 共享服务蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 04/30/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 872f8ea492d1983f3c527ddb1c0eac7b26406844
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1eb1e8fef7a83ee3cfdb81514b9002281a3f6fb6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739162"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674958"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>部署 ISO 27001 共享服务蓝图示例
 
@@ -27,7 +27,7 @@ ms.locfileid: "108739162"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
 
 1. 在“其他示例”下找到“ISO 27001:共享服务”蓝图示例，然后选择“使用此示例”。
 

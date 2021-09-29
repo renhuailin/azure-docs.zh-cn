@@ -3,14 +3,14 @@ title: 为 Azure 自动化帐户使用用户分配的托管标识（预览版）
 description: 本文介绍如何为 Azure 自动化帐户设置用户分配的托管标识。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/26/2021
+ms.date: 09/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ce409853cddfd0278692e2c6e233331530296d6b
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 7b1a75aac3166b1fdd3cdd39f5f66bd380339975
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214258"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061782"
 ---
 # <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account-preview"></a>为 Azure 自动化帐户使用用户分配的托管标识（预览版）
 
@@ -23,7 +23,7 @@ ms.locfileid: "123214258"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure 自动化帐户。 有关说明，请参阅[创建 Azure 自动化帐户](automation-quickstart-create-account.md)。
+- 一个 Azure 自动化帐户。 有关说明，请参阅[创建 Azure 自动化帐户](./quickstarts/create-account-portal.md)。
 
 - 系统分配的托管标识。 有关说明，请参阅[为 Azure 自动化帐户使用系统分配的托管标识（预览版）](enable-managed-identity-for-automation.md)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "123214258"
 $sub = Get-AzSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
 {
-    Connect-AzAccount -Subscription
+    Connect-AzAccount
 }
 
 # If you have multiple subscriptions, set the one to use
@@ -303,7 +303,7 @@ https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/
 
 在能够使用用户分配的托管标识进行身份验证之前，需要为该标识设置对你打算在其中使用该标识的 Azure 资源的访问权限。 若要完成此任务，请在目标 Azure 资源上向该标识分配适当的角色。
 
-遵循最小权限原则，谨慎分配执行 runbook 仅需的权限。 例如，如果自动化帐户仅需要用于启动或停止 Azure VM，则分配给运行方式帐户或托管标识的权限需仅用于启动或停止 VM。 同样，如果 runbook 要从 Blob 存储读取，则分配只读权限。
+遵循最小权限原则，仔细分配仅执行 runbook 所需的权限。 例如，如果启动或停止 Azure VM 仅需自动化帐户，则分配给运行方式帐户或托管标识的权限需仅用于启动或停止 VM。 同样，如果 runbook 要从 Blob 存储读取，则分配只读权限。
 
 此示例使用 Azure PowerShell 演示如何将订阅中的参与者角色分配给目标 Azure 资源。 “参与者”角色用作示例，在你的案例中不一定需要用到。 或者，也可以将角色分配给 [Azure 门户](../role-based-access-control/role-assignments-portal.md)中的目标 Azure 资源。
 
@@ -319,8 +319,14 @@ New-AzRoleAssignment `
 为自动化帐户启用用户分配的托管标识并向标识授予对目标资源的访问权限后，可以在 Runbook 中针对支持托管标识的资源指定该标识。 若要确认标识支持情况，请使用 Az cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount)。
 
 ```powershell
-Connect-AzAccount -Identity `
-    -AccountId <user-assigned-identity-ClientId> 
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with user-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity -AccountId <user-assigned-identity-ClientId>).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 ```
 
 ## <a name="generate-an-access-token-without-using-azure-cmdlets"></a>在不使用 Azure cmdlet 的情况下生成访问令牌

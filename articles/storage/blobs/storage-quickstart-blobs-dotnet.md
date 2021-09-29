@@ -1,19 +1,19 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - .NET
 description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 Blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 03/03/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d5870935cd4db4c49f84254186277ce7aa431c4
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: c71a362c7e8e3073929967abce4bcdc4566b8ce9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476081"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652901"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -21,25 +21,24 @@ ms.locfileid: "123476081"
 
 使用适用于 .NET 的 Azure Blob 存储客户端库 v12 完成以下操作：
 
-* 创建容器
-* 将 blob 上传到 Azure 存储
-* 列出容器中所有的 blob
-* 将 blob 下载到本地计算机
-* 删除容器
+- 创建容器
+- 将 blob 上传到 Azure 存储
+- 列出容器中所有的 blob
+- 将 blob 下载到本地计算机
+- 删除容器
 
 其他资源：
 
-* [API 参考文档](/dotnet/api/azure.storage.blobs)
-* [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
-* [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [示例](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
-
+- [API 参考文档](/dotnet/api/azure.storage.blobs)
+- [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+- [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+- [示例](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-* Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
-* 适用于操作系统的最新 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 确保获取 SDK，而不是运行时。
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
+- 适用于操作系统的最新 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 确保获取 SDK，而不是运行时。
 
 ## <a name="setting-up"></a>设置
 
@@ -94,9 +93,9 @@ dotnet add package Azure.Storage.Blobs
 
 Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。 Blob 存储提供了三种类型的资源：
 
-* 存储帐户
-* 存储帐户中的容器
-* 容器中的 blob
+- 存储帐户
+- 存储帐户中的容器
+- 容器中的 blob
 
 以下图示显示了这些资源之间的关系。
 
@@ -104,20 +103,20 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 .NET 类与这些资源进行交互：
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
+- [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
+- [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
+- [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
 
 ## <a name="code-examples"></a>代码示例
 
 这些示例代码片段演示如何使用适用于 .NET 的 Azure Blob 存储客户端库执行以下步骤：
 
-* [获取连接字符串](#get-the-connection-string)
-* [创建容器](#create-a-container)
-* [将 blob 上传到容器中](#upload-blobs-to-a-container)
-* [列出容器中的 blob](#list-the-blobs-in-a-container)
-* [下载 blob](#download-blobs)
-* [删除容器](#delete-a-container)
+- [获取连接字符串](#get-the-connection-string)
+- [创建容器](#create-a-container)
+- [将 blob 上传到容器中](#upload-blobs-to-a-container)
+- [列出容器中的 blob](#list-the-blobs-in-a-container)
+- [下载 blob](#download-blobs)
+- [删除容器](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>获取连接字符串
 
@@ -225,5 +224,5 @@ Done
 > [!div class="nextstepaction"]
 > [Azure Blob 存储 SDK v12 .NET 示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
 
-* 有关教程、示例、快速入门和其他文档，请访问[面向 .NET 和 .NET Core 开发人员的 Azure](/dotnet/azure/)。
-* 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)（.NET 10 分钟入门）。
+- 有关教程、示例、快速入门和其他文档，请访问[面向 .NET 和 .NET Core 开发人员的 Azure](/dotnet/azure/)。
+- 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)（.NET 10 分钟入门）。

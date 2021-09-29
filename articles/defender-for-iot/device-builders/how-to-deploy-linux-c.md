@@ -3,12 +3,12 @@ title: 安装和部署 Linux C 代理
 description: 了解如何在 Linux 上安装和部署 Defender for IoT 基于 C 的安全代理
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.openlocfilehash: 8317d91fe51c06b67529b1f7bfe8894cef153232
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 46677a971165c65440310e21933f586cc685b771
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113014512"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584861"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>部署适用于 Linux 的 Defender for IoT 基于 C 的安全代理
 
@@ -61,24 +61,24 @@ ms.locfileid: "113014512"
 
 如需更多帮助，请结合 -help 参数运行该脚本：
 
-```./InstallSecurityAgent.sh --help```
+`./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>卸载代理
 
 若要卸载代理，请结合–-uninstall 参数运行该脚本：
 
-```./InstallSecurityAgent.sh -–uninstall```
+`./InstallSecurityAgent.sh -–uninstall`
 
 ## <a name="troubleshooting"></a>疑难解答
 
 运行以下命令来检查部署状态：
 
-```systemctl status ASCIoTAgent.service```
+`systemctl status ASCIoTAgent.service`
 
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读 Defender for IoT 服务[概述](overview.md)
-- 详细了解 Defender for IoT [什么是基于代理的设备构建者解决方案](architecture-agent-based.md)
+- 详细了解 Defender for IoT [什么是基于代理的设备生成器解决方案](architecture-agent-based.md)
 - 启用该[服务](quickstart-onboard-iot-hub.md)
 - 阅读 [Azure Defender for IoT 代理常见问题](resources-agent-frequently-asked-questions.md)
 - 了解[安全警报](concept-security-alerts.md)

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 235dc8fa484212a8322b24d32f7516af5441978a
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 757a10473c2f6776ef3a84310b42209ddd12ed45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652917"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643643"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
@@ -96,18 +96,20 @@ ms.locfileid: "114652917"
 在 Linux 服务器上安装 MMA：
 
 1. 使用 scp/sftp 将相应的捆绑包（x86 或 x64）传输到 Linux 计算机。
+
 2. 使用 --install 参数安装捆绑包。
 
-    ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
+   `sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>`
 
 [详细了解 MMA 支持的 Linux 操作系统的列表](../azure-monitor/agents/agents-overview.md#supported-operating-systems)。 
 
 ## <a name="install-the-dependency-agent"></a>安装依赖项代理
 
 1. 若要在 Windows 服务器上安装依赖项代理，请双击安装程序文件，然后按照向导操作。
+
 2. 若要在 Linux 服务器上安装依赖项代理，请使用以下命令安装为根目录：
 
-    ```sh InstallDependencyAgent-Linux64.bin```
+   `sh InstallDependencyAgent-Linux64.bin`
 
 - [详细了解](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)如何使用脚本来安装依赖项代理。
 - [详细了解](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)依赖项代理支持的操作系统。

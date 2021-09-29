@@ -8,14 +8,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.custom: devx-track-python, devx-track-azurepowershell, synapse
-ms.openlocfilehash: 833800da17302d2f28619cd1f66acfc476175a7f
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: c21d06a97acd433445ee73e90833684c5cc36dac
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824612"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815008"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 
@@ -37,20 +37,20 @@ ms.locfileid: "122824612"
 1. 切换到数据工厂中的“编辑”选项卡，或 Azure Synapse 中的“集成”选项卡。 
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
-    ![切换到“编辑”选项卡](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/switch-edit-tab.png" alt-text="切换到“编辑”选项卡":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
-    ![切换到“编辑”选项卡](./media/how-to-create-schedule-trigger/switch-edit-tab-synapse.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/switch-edit-tab-synapse.png" alt-text="切换到“编辑”选项卡":::
 
 ---
     
 2. 在菜单上选择“触发器”，然后选择“新建/编辑” 。 
 
-    ![“新建触发器”菜单](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/new-trigger-menu.png" alt-text="“新建触发器”菜单":::
 
 1. 在“添加触发器”页上，选择“选择触发器...”，然后选择“+新建”  。 
 
-    ![添加触发器 - 新建触发器](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/add-trigger-new-button.png" alt-text="添加触发器 - 新建触发器":::
 
 1. 在“新建触发器”页中执行以下步骤： 
 
@@ -66,30 +66,30 @@ ms.locfileid: "122824612"
     :::image type="content" source="./media/how-to-create-schedule-trigger/advanced.png" alt-text="日、周或月的高级定期选项":::
     1. 若要指定结束日期时间，请选择“指定结束日期”，指定“结束日期”，然后选择“确定”。 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在发布解决方案之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
 
-        ![触发器设置](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
+        :::image type="content" source="./media/how-to-create-schedule-trigger/trigger-settings-01.png" alt-text="触发器设置":::
 
-        ![对应于“结束日期”的触发器设置](./media/how-to-create-schedule-trigger/trigger-settings-02.png)
+        :::image type="content" source="./media/how-to-create-schedule-trigger/trigger-settings-02.png" alt-text="对应于“结束日期”的触发器设置":::
 
 1. 在“新建触发器”窗口中，选择“已激活”选项中的“是”，然后选择“确定”   。 以后，可以使用此复选框停用该触发器。 
 
-    ![触发器设置 -“下一步”按钮](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/trigger-settings-next.png" alt-text="触发器设置 -“下一步”按钮":::
 
 1. 在“新建触发器”窗口中查看警告消息，然后选择“确定” 。
 
-    ![触发器设置 -“完成”按钮](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/new-trigger-finish.png" alt-text="触发器设置 -“完成”按钮":::
 
 1. 选择“全部发布”，发布所做的更改。 在发布更改之前，触发器不会开始触发管道运行。 
 
-    ![发布按钮](./media/how-to-create-schedule-trigger/publish-2.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/publish-2.png" alt-text="发布按钮":::
 
 1. 切换到左侧的“管道运行”选项卡，然后选择“刷新”以刷新列表 。 可以看到由计划的触发器触发的管道运行。 请注意“触发因素”列中的值。 如果使用“立即触发”选项，将在列表中看到手动触发器运行。 
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    ![监视触发的运行](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/monitor-triggered-runs.png" alt-text="监视触发的运行":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
-    ![监视触发的运行](./media/how-to-create-schedule-trigger/monitor-triggered-runs-synapse.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/monitor-triggered-runs-synapse.png" alt-text="监视触发的运行":::
     
 ---
 
@@ -97,10 +97,10 @@ ms.locfileid: "122824612"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/monitor-trigger-runs.png" alt-text="监视触发器运行":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
-    ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs-synapse.png)
+    :::image type="content" source="./media/how-to-create-schedule-trigger/monitor-trigger-runs-synapse.png" alt-text="监视触发器运行":::
     
 ---
 
@@ -391,7 +391,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | String | 是 | 无 | ISO-8601 日期时间 | 对于 UTC 时区为 `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> 对于其他时区为 `"2013-01-09T09:30:00-08:00"` |
 | **timeZone** | 字符串 | 是 | 无 | [时区值](#time-zone-option)  | `"UTC"` |

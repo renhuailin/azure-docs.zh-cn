@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: f94aee8fd609870e2ac0e49721e8d7c21892428b
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 12a1505da59763f52da71b94dc3dc1ca8edcc075
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804279"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
 
@@ -129,7 +129,7 @@ ms.locfileid: "108804279"
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -141,7 +141,7 @@ ms.locfileid: "108804279"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 B.Simon 访问 Zscaler Internet Access Administrator 的权限，使其能够使用 Azure 单一登录。
 
@@ -153,13 +153,13 @@ ms.locfileid: "108804279"
 1. 如果已如上述所示设置角色，可从“选择角色”下拉列表中选择角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-zscaler-internet-access-administrator-sso"></a>配置 Zscaler Internet Access Administrator SSO
+## <a name=&quot;configure-zscaler-internet-access-administrator-sso&quot;></a>配置 Zscaler Internet Access Administrator SSO
 
 1. 在另一个 Web 浏览器窗口中，登录到 Zscaler Internet Access 管理员 UI。
 
 2. 转到“管理”>“管理员管理”执行以下步骤，然后单击“保存”：
 
-   ![显示“管理员管理”的屏幕截图，其中包含“启用 SAML 身份验证”、“上传 SSL 证书”和“指定颁发者”选项。](./media/zscaler-internet-access-administrator-tutorial/management.png "管理")
+   ![显示“管理员管理”的屏幕截图，其中包含“启用 SAML 身份验证”、“上传 SSL 证书”和“指定颁发者”选项。](./media/zscaler-internet-access-administrator-tutorial/management.png &quot;管理")
 
    a. 选中“启用 SAML 身份验证”。
 
@@ -188,7 +188,7 @@ https://help.zscaler.com/zia/adding-admins
 
 - 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Zscaler Internet Access Administrator
 
-- 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Zscaler Internet Access Administrator”磁贴时，应会自动登录到设置了 SSO 的 Zscaler Internet Access Administrator。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+- 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Zscaler Internet Access Administrator”磁贴时，应会自动登录到设置了 SSO 的 Zscaler Internet Access Administrator。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

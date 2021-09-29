@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a99d41f5f9fc9538aaf563bd3ae56075d269c94a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae5f9409811e182bcc64dd9a6ea3ec12d46cfefd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97584640"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128574004"
 ---
 # <a name="pass-an-identity-provider-access-token-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中，向应用程序传递标识提供者访问令牌
 
@@ -51,23 +51,24 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 ## <a name="enable-the-claim"></a>启用声明
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
-4. 选择“用户流(策略)”  ，然后选择用户流。 例如 B2C_1_signupsignin1。 
-5. 选择“应用程序声明”  。
-6. 启用“标识提供者访问令牌”  声明。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
+1. 选择“用户流(策略)”  ，然后选择用户流。 例如 B2C_1_signupsignin1。 
+1. 选择“应用程序声明”  。
+1. 启用“标识提供者访问令牌”  声明。
 
     ![启用“标识提供者访问令牌”声明](./media/idp-pass-through-user-flow/identity-provider-pass-through-app-claim.png)
 
-7. 单击“保存”，保存用户流  。
+1. 单击“保存”，保存用户流  。
 
 ## <a name="test-the-user-flow"></a>测试用户流
 
 在 Azure AD B2C 中测试应用程序时，可以使 Azure AD B2C 令牌返回到 `https://jwt.ms`，以便在其中查看声明，这可能很有用处。
 
 1. 在用户流的“概览”页上，选择“运行用户流”  。
-2. 对于“应用程序”  ，选择你之前注册的应用程序。 “回复 URL”  应当显示 `https://jwt.ms` 才能看到以下示例中的令牌。
-3. 单击“运行用户流”，然后使用帐户凭据登录。  应该会在 **idp_access_token** 声明中看到标识提供者的访问令牌。
+1. 对于“应用程序”  ，选择你之前注册的应用程序。 “回复 URL”  应当显示 `https://jwt.ms` 才能看到以下示例中的令牌。
+1. 单击“运行用户流”，然后使用帐户凭据登录。  应该会在 **idp_access_token** 声明中看到标识提供者的访问令牌。
 
     应会看到类似于以下示例的内容：
 
@@ -94,7 +95,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
     </BuildingBlocks>
     ```
 
-2. 针对你需要其访问令牌的每个 OAuth 2.0 标识提供者，向 **TechnicalProfile** 元素中添加 **OutputClaim** 元素。 下面的示例显示了添加到 Facebook 技术配置文件的该元素：
+1. 针对你需要其访问令牌的每个 OAuth 2.0 标识提供者，向 **TechnicalProfile** 元素中添加 **OutputClaim** 元素。 下面的示例显示了添加到 Facebook 技术配置文件的该元素：
 
     ```xml
     <ClaimsProvider>
@@ -110,8 +111,8 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
     </ClaimsProvider>
     ```
 
-3. 保存 *TrustframeworkExtensions.xml* 文件。
-4. 打开你的信赖方策略文件，例如 *SignUpOrSignIn.xml*，向 **TechnicalProfile** 中添加 **OutputClaim** 元素：
+1. 保存 *TrustframeworkExtensions.xml* 文件。
+1. 打开你的信赖方策略文件，例如 *SignUpOrSignIn.xml*，向 **TechnicalProfile** 中添加 **OutputClaim** 元素：
 
     ```xml
     <RelyingParty>
@@ -125,7 +126,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
     </RelyingParty>
     ```
 
-5. 保存策略文件。
+1. 保存策略文件。
 
 ## <a name="test-your-policy"></a>测试策略
 
@@ -134,19 +135,20 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 ### <a name="upload-the-files"></a>上传文件
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-4. 选择“标识体验框架”。
-5. 在“自定义策略”页上，单击“上传策略”。
-6. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
-7. 选择“上传”。
-8. 针对信赖方文件（例如 *SignUpOrSignIn.xml*）重复步骤 5 到 7。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 选择“标识体验框架”。
+1. 在“自定义策略”页上，单击“上传策略”。
+1. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
+1. 选择“上传”。
+1. 针对信赖方文件（例如 *SignUpOrSignIn.xml*）重复步骤 5 到 7。
 
 ### <a name="run-the-policy"></a>运行策略
 
 1. 打开你更改的策略。 例如，*B2C_1A_signup_signin*。
-2. 对于“应用程序”  ，选择你之前注册的应用程序。 “回复 URL”  应当显示 `https://jwt.ms` 才能看到以下示例中的令牌。
-3. 选择“立即运行”。
+1. 对于“应用程序”  ，选择你之前注册的应用程序。 “回复 URL”  应当显示 `https://jwt.ms` 才能看到以下示例中的令牌。
+1. 选择“立即运行”。
 
     应会看到类似于以下示例的内容：
 

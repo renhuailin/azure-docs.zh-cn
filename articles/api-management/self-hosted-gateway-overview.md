@@ -3,17 +3,17 @@ title: 自承载网关概述 | Azure API Management
 description: 了解 Azure API 管理的自托管网关功能如何帮助组织管理混合环境和多云环境中的 API。
 services: api-management
 documentationcenter: ''
-author: vlvinogr
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
-ms.author: apimpm
-ms.openlocfilehash: 2c8688660540f965f25038298c996511901405cb
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.author: danlep
+ms.openlocfilehash: fde1ee4c7b19c27b278fe6728ee244d03be246e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810120"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663642"
 ---
 # <a name="self-hosted-gateway-overview"></a>自托管网关概述
 

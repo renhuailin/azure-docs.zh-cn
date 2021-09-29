@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 11439a8c93c0f1ef682e7104e989a3a2cbbdc28e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7297ed8d3234996d8d359dff82bd94dc05adfa94
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92446712"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>教程：Azure Active Directory 与 GTNexus SSO System 集成
 
@@ -97,7 +97,7 @@ ms.locfileid: "92446712"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
+4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -181,7 +181,7 @@ ms.locfileid: "92446712"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 GTNexus SSO System 磁贴时，应当会自动登录到为其设置了 SSO 的 GTNexus SSO System。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 GTNexus SSO System 磁贴时，应当会自动登录到为其设置了 SSO 的 GTNexus SSO System。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

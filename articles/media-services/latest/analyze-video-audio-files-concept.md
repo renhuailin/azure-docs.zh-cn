@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: a9a101afad5bfcdd8ca7ec20bc39b3080790a09b
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 4271224c3ebb78274d13617ac30d8e376c301108
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720769"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646054"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
 
@@ -21,7 +21,7 @@ ms.locfileid: "114720769"
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-借助 Azure 媒体服务 v3，还可使用 Azure 视频分析器媒体版（以前称为“视频索引器”）从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频分析器媒体版。 如需了解何时使用视频分析器媒体版与媒体服务分析器预设，请查看[比较文档](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)。
+在 Azure 媒体服务 v3 中，可以使用 Azure 视频分析器媒体版（以前称为视频索引器）从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频分析器媒体版。 如需了解何时使用视频分析器媒体版与媒体服务分析器预设，请查看[比较文档](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)。
 
 音频分析器预设有两种模式：基本模式和标准模式。 请参阅下表中的差异说明。
 
@@ -29,7 +29,7 @@ ms.locfileid: "114720769"
 
 ## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
 
-需要重点提醒的是，在使用视频分析器媒体版时，必须遵守所有适用法律，不得以侵犯他人权利或可能对他人有害的方式使用视频分析器媒体版或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到视频分析器媒体版服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 要了解视频分析器媒体版中的合规性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对你的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[联机服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)提供。 使用视频分析器媒体版，即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束。
+需要重点提醒的是，在使用视频分析器媒体版时，必须遵守所有适用法律，不得以侵犯他人权利或可能对他人有害的方式使用视频分析器媒体版或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到视频分析器媒体版服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 要了解视频分析器媒体版中的合规性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对你的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[联机服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.yml)提供。 使用视频分析器媒体版，即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束。
 
 ## <a name="built-in-presets"></a>内置预设
 

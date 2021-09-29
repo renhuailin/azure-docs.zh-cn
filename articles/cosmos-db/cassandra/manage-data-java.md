@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/17/2021
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: c348b82135f129b4c603a70c87f880e8d23d2b67
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 598f1df9808bfe4e367719615ebae332c617a984
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633623"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767824"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据（v3 驱动程序）
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "122633623"
 - [Git](https://www.git-scm.com/downloads)。 在 Ubuntu 上运行 `sudo apt-get install git`，以安装 Git。
 
 > [!NOTE]
-> 这是一个简单的快速入门，使用适用于 Java 的开源 Apache Cassandra 驱动程序的[版本 3](https://github.com/datastax/java-driver/tree/3.x)。 在大多数情况下，你应该能够将现有的 Apache Cassandra 相关 Java 应用程序连接到 Azure Cosmos DB Cassandra API，而无需对现有代码进行任何更改。 但是，我们建议添加[自定义 Java 扩展](https://github.com/Azure/azure-cosmos-cassandra-extensions/tree/feature/java-driver-3%2F1.0.0)，其中包括了自定义重试和负载均衡策略，以便获得更好的整体体验。 这是为了在 Azure Cosmos DB 中分别处理[速率限制](/azure/cosmos-db/cassandra/scale-account-throughput#handling-rate-limiting-429-errors)和应用程序级别的故障转移。 可在[此处](https://github.com/Azure-Samples/azure-cosmos-cassandra-extensions-java-sample)找到实现该扩展的综合性示例。
+> 这是一个简单的快速入门，使用适用于 Java 的开源 Apache Cassandra 驱动程序的[版本 3](https://github.com/datastax/java-driver/tree/3.x)。 在大多数情况下，你应该能够将现有的 Apache Cassandra 相关 Java 应用程序连接到 Azure Cosmos DB Cassandra API，而无需对现有代码进行任何更改。 但是，我们建议添加[自定义 Java 扩展](https://github.com/Azure/azure-cosmos-cassandra-extensions/tree/feature/java-driver-3%2F1.0.0)，其中包括了自定义重试和负载均衡策略，以便获得更好的整体体验。 这是为了在 Azure Cosmos DB 中分别处理[速率限制](./scale-account-throughput.md#handling-rate-limiting-429-errors)和应用程序级别的故障转移。 可在[此处](https://github.com/Azure-Samples/azure-cosmos-cassandra-extensions-java-sample)找到实现该扩展的综合性示例。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 

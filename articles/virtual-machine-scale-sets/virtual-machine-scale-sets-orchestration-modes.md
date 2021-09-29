@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex, devx-track-azurepowershell
-ms.openlocfilehash: 7983ae912d29f2a27d35b261d1654205fe503651
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: be8c322bafb5dfaf3fadecfadfd5f9b1ec9a95f1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305063"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804086"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>预览：Azure 中虚拟机规模集的业务流程模式
 
@@ -164,7 +164,6 @@ az vm create –vmss "myVMSS"  –-platform_fault_domain 1
     | 功能  | 受灵活业务流程（预览版）的支持  | 受统一业务流程（正式版）的支持  | 受 AvSets（正式版）的支持  |
     |-|-|-|-|
     | 最大实例计数（提供 FD 可用性保证）  | 1000  | 3000  | 200  |
-
 
 ## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>排查使用灵活业务流程的规模集的问题
 找到适合你的故障排除方案的解决方案。

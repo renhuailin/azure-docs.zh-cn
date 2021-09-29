@@ -1,21 +1,17 @@
 ---
 title: 涉及 Data Lake Storage Gen1 的数据方案 | Microsoft Docs
 description: 了解可在 Data Lake Storage Gen1（以前称为 Azure Data Lake Store）中进行数据引入、处理、下载和可视化的不同方案和工具
-services: data-lake-store
-documentationcenter: ''
-author: twooley
-manager: mtillman
+author: normesta
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: twooley
-ms.openlocfilehash: 0bd895b0c19293a199b2a9b135915b7dc45b9e5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: f70ec43d1c44acd3505314fe3cd6664ca84d422f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98702491"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603004"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 满足大数据要求
 

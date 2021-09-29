@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: a2db4734650f4af2f0ed67040c7f94eeda5f7c69
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f6374d502a292fc25ecf2a0f7fadc2dc26157f7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453095"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667875"
 ---
 # <a name="use-python-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
@@ -49,11 +49,11 @@ from azure.storage.filedatalake._models import ContentSettings
 
 ## <a name="connect-to-the-account"></a>连接到帐户
 
-若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 
+若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。
 
 ### <a name="connect-by-using-an-account-key"></a>使用帐户密钥进行连接
 
-这是连接到帐户的最简单方法。 
+这是连接到帐户的最简单方法。
 
 此示例使用帐户密钥创建 DataLakeServiceClient 实例。
 
@@ -86,13 +86,13 @@ from azure.storage.filedatalake._models import ContentSettings
 
 通过调用 **FileSystemClient.create_directory** 方法来创建目录引用。
 
-此示例将名为 `my-directory` 的目录添加到容器中。 
+此示例将名为 `my-directory` 的目录添加到容器中。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateDirectory":::
 
 ## <a name="rename-or-move-a-directory"></a>重命名或移动目录
 
-通过调用 **DataLakeDirectoryClient.rename_directory** 方法来重命名或移动目录。 以参数形式传递所需目录的路径。 
+通过调用 **DataLakeDirectoryClient.rename_directory** 方法来重命名或移动目录。 以参数形式传递所需目录的路径。
 
 此示例将子目录重命名为 `my-directory-renamed` 的名称。
 
@@ -102,7 +102,7 @@ from azure.storage.filedatalake._models import ContentSettings
 
 通过调用 **DataLakeDirectoryClient.delete_directory** 方法来删除目录。
 
-此示例删除名为 `my-directory` 的目录。  
+此示例删除名为 `my-directory` 的目录。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DeleteDirectory":::
 
@@ -110,12 +110,12 @@ from azure.storage.filedatalake._models import ContentSettings
 
 首先，通过创建 **DataLakeFileClient** 类的实例，在目标目录中创建文件引用。 通过调用 **DataLakeFileClient.append_data** 方法上传文件。 确保通过调用 **DataLakeFileClient.flush_data** 方法完成上传。
 
-此示例将文本文件上传到名为 `my-directory` 的目录。   
+此示例将文本文件上传到名为 `my-directory` 的目录。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFile":::
 
 > [!TIP]
-> 如果文件很大，则代码必须多次调用 DataLakeFileClient.append_data 方法。 请考虑改用 DataLakeFileClient.upload_data 方法。 这样就可以在单个调用中上传整个文件。 
+> 如果文件很大，则代码必须多次调用 DataLakeFileClient.append_data 方法。 请考虑改用 DataLakeFileClient.upload_data 方法。 这样就可以在单个调用中上传整个文件。
 
 ## <a name="upload-a-large-file-to-a-directory"></a>将大型文件上传到目录
 
@@ -123,9 +123,9 @@ from azure.storage.filedatalake._models import ContentSettings
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFileBulk":::
 
-## <a name="download-from-a-directory"></a>从目录下载 
+## <a name="download-from-a-directory"></a>从目录下载
 
-打开用于写入的本地文件。 然后，创建一个 **DataLakeFileClient** 实例，该实例表示要下载的文件。 调用 **DataLakeFileClient.read_file**，以便从文件读取字节，然后将这些字节写入本地文件。 
+打开用于写入的本地文件。 然后，创建一个 **DataLakeFileClient** 实例，该实例表示要下载的文件。 调用 **DataLakeFileClient.read_file**，以便从文件读取字节，然后将这些字节写入本地文件。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DownloadFromDirectory":::
 

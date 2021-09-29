@@ -8,14 +8,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: b0fda7e6376cd7adb302db2c0f3aac39da38b407
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: c4aa95ad6f2bf44602b18f875626fa93b1248e13
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821507"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787862"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory-or-azure-synapse-analytics"></a>Azure 数据工厂或 Azure Synapse Analytics 中的管道执行和触发器
 
@@ -280,7 +280,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | **startTime** | string | 是 | 无 | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | 是 | 无 | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |

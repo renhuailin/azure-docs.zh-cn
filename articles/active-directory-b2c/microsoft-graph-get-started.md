@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 28e7a6be84a260c26b27b9e6042a6c323d4167ec
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 62b1f81f0e2a1582e78dff044a3109c3b1525939
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128750"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588953"
 ---
 # <a name="register-a-microsoft-graph-application"></a>注册 Microsoft Graph 应用程序
 
@@ -47,7 +47,8 @@ ms.locfileid: "108128750"
 你必须先在 Azure AD B2C 租户中创建授予所需 API 权限的应用程序注册，你的脚本和应用程序才能与 [Microsoft Graph API][ms-graph-api] 进行交互来管理 Azure AD B2C 资源。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 输入应用程序的“名称”。 例如，*managementapp1*。
@@ -74,7 +75,9 @@ ms.locfileid: "108128750"
 
 若要添加“用户管理员”角色，请遵照以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，使用“目录 + 订阅”筛选器切换到你的 Azure AD B2C 租户。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 搜索并选择“Azure AD B2C”。
 1. 在“管理”下，选择“角色和管理员”。 
 1. 选择“用户管理员”角色。 

@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 6ee4987e21acc280a9835bec3457b567f689433f
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 1b775d6ca0dd00a2e6eacf292c2f3397a0de303b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114285124"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563013"
 ---
 # <a name="gatk-resource-bundle"></a>GATK 资源包
 
@@ -74,9 +74,9 @@ ms.locfileid: "114285124"
 
 5. datasetbroadpublic
 
-    美国西部 2： https://datasetpublicbroadpublic.blob.core.windows.net/dataset
+    美国西部 2： https://datasetbroadpublic.blob.core.windows.net/dataset
     
-    美国中西部： https://datasetpublicbroadpublic-secondary.blob.core.windows.net/dataset
+    美国中西部： https://datasetbroadpublic-secondary.blob.core.windows.net/dataset
     
     [SAS 令牌](../storage/common/storage-sas-overview.md)：?sv=2020-04-08&si=prod&sr=c&sig=u%2Bg2Ab7WKZEGiAkwlj6nKiEeZ5wdoJb10Az7uUwis%2Fg%3D
 

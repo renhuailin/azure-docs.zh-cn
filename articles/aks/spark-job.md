@@ -1,17 +1,15 @@
 ---
 title: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
 description: 使用 Azure Kubernetes 服务 (AKS) 创建并运行 Apache Spark 作业来进行大规模数据处理。
-author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: alehall
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: dbb807881a3fe9974eae5cfe7288e188a31b7ecb
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: ffb204d02e27498c7cf82a9bc4d0a591c7e13964
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287953"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093756"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 

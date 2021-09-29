@@ -1,14 +1,14 @@
 ---
 title: 媒体蓝图示例控制措施
 description: 媒体蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 04/13/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: f2750f4733a3a815236778c846bde4e186f30512
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 05349865fc5927c52b669e55157d97dec09f51a5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161314"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674882"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>媒体蓝图示例的控制映射
 

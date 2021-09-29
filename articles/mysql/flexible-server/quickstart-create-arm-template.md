@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 85b7f9898906ffd34ce88fb2243534b5b53898de
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 310e3e4b4b4b00a4b3255cfd581b155c28ed7705
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643098"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128609358"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 灵活服务器（预览版）
 
@@ -27,7 +27,9 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
 
 ## <a name="prerequisites"></a>必备条件
 
-具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/)。
+具有活动订阅的 Azure 帐户。 
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 ## <a name="review-the-template"></a>查看模板
 

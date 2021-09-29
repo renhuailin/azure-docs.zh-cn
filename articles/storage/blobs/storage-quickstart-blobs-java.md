@@ -1,19 +1,19 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - Java
 description: 本快速入门介绍如何使用适用于 Java 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 Blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
-author: twooley
+author: normesta
 ms.custom: devx-track-java
-ms.author: twooley
+ms.author: normesta
 ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c951071b7746e426edfd6a9c9f4851236c12159d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 74fd04281b27c66861de686a03d2dd26031f0349
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469619"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562562"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入门：使用 Java v12 SDK 管理 blob
 
@@ -21,10 +21,10 @@ ms.locfileid: "123469619"
 
 其他资源：
 
-* [API 参考文档](/java/api/overview/azure/storage-blob-readme)
-* [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
-* [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
-* [示例](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+- [API 参考文档](/java/api/overview/azure/storage-blob-readme)
+- [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
+- [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
+- [示例](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -163,9 +163,9 @@ public class App
 
 Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。 Blob 存储提供了三种类型的资源：
 
-* 存储帐户
-* 存储帐户中的容器
-* 容器中的 blob
+- 存储帐户
+- 存储帐户中的容器
+- 容器中的 blob
 
 以下图示显示了这些资源之间的关系。
 
@@ -173,22 +173,22 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 Java 类与这些资源进行交互：
 
-* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。 存储帐户为 Blob 服务提供顶级命名空间。
-* [ 类提供流畅的生成器 API，以帮助对 ](/java/api/com.azure.storage.blob.blobserviceclientbuilder) 对象的配置和实例化。
-* [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
-* [ 类可用于操纵 Azure 存储 blob。
-* [BlobItem](/java/api/com.azure.storage.blob.models.blobitem)：`BlobItem` 类表示从对 [listBlobs](/java/api/com.azure.storage.blob.blobcontainerclient.listblobs) 的调用返回的单个 blob。
+- [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。 存储帐户为 Blob 服务提供顶级命名空间。
+- [ 类提供流畅的生成器 API，以帮助对 ](/java/api/com.azure.storage.blob.blobserviceclientbuilder) 对象的配置和实例化。
+- [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
+- [ 类可用于操纵 Azure 存储 blob。
+- [BlobItem](/java/api/com.azure.storage.blob.models.blobitem)：`BlobItem` 类表示从对 [listBlobs](/java/api/com.azure.storage.blob.blobcontainerclient.listblobs) 的调用返回的单个 blob。
 
 ## <a name="code-examples"></a>代码示例
 
 这些示例代码片段演示如何使用适用于 Java 的 Azure Blob 存储客户端库执行以下步骤：
 
-* [获取连接字符串](#get-the-connection-string)
-* [创建容器](#create-a-container)
-* [将 blob 上传到容器中](#upload-blobs-to-a-container)
-* [列出容器中的 blob](#list-the-blobs-in-a-container)
-* [下载 blob](#download-blobs)
-* [删除容器](#delete-a-container)
+- [获取连接字符串](#get-the-connection-string)
+- [创建容器](#create-a-container)
+- [将 blob 上传到容器中](#upload-blobs-to-a-container)
+- [列出容器中的 blob](#list-the-blobs-in-a-container)
+- [下载 blob](#download-blobs)
+- [删除容器](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>获取连接字符串
 
@@ -371,5 +371,5 @@ Done
 > [!div class="nextstepaction"]
 > [Azure Blob 存储 SDK v12 Java 示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-* 若要了解详细信息，请参阅 [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)。
-* 有关教程、示例、快速入门和其他文档，请访问[面向 Java 云开发人员的 Azure](/azure/developer/java/)。
+- 若要了解详细信息，请参阅 [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)。
+- 有关教程、示例、快速入门和其他文档，请访问[面向 Java 云开发人员的 Azure](/azure/developer/java/)。

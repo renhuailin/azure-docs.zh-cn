@@ -3,21 +3,21 @@ title: Azure PowerShell 脚本示例 - 导入 API | Microsoft Docs
 description: 了解如何导入 API 并将其添加到 API 管理产品。 请参阅示例脚本并查看其他可用资源。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 7748558fa7cee6972e4bb47fea0ba08ffb72b83e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: bbb9ec94f7af3ca62c704655195f52230c60cb72
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816883"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624057"
 ---
 # <a name="import-an-api"></a>导入 API
 

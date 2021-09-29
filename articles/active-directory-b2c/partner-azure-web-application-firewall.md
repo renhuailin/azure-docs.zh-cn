@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 03c66f9610ab8dc309098e1eee695ded477938bc
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 54cb0cdbff2ac11334f168e41a18107d3d0dfe87
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768443"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763211"
 ---
 # <a name="tutorial-configure-azure-web-application-firewall-with-azure-active-directory-b2c"></a>教程：为 Azure Web 应用程序防火墙配置 Azure Active Directory B2C
 
@@ -33,15 +33,15 @@ ms.locfileid: "122768443"
 
 - [Azure AD B2C 租户](tutorial-create-tenant.md) – 授权服务器，负责使用该租户中定义的自定义策略来验证用户的凭据。  其也被称为“标识提供者”。
 
-- [Azure Front Door (AFD)](https://docs.microsoft.com/azure/frontdoor/) – 负责为 Azure AD B2C 租户启用自定义域。  
+- [Azure Front Door (AFD)](../frontdoor/index.yml) – 负责为 Azure AD B2C 租户启用自定义域。  
 
 - [Azure WAF](https://azure.microsoft.com/services/web-application-firewall/#overview) – 管理发送到授权服务器的所有流量。
 
 ## <a name="azure-ad-b2c-setup"></a>Azure AD B2C 设置
 
-若要在 Azure AD B2C 中使用自定义域，需要使用 AFD 提供的自定义域功能。 了解如何[启用 Azure AD B2C 自定义域](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow)。  
+若要在 Azure AD B2C 中使用自定义域，需要使用 AFD 提供的自定义域功能。 了解如何[启用 Azure AD B2C 自定义域](./custom-domain.md?pivots=b2c-user-flow)。  
 
-使用 AFD 成功配置 Azure AD B2C 的自定义域后，请先[测试自定义域](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-custom-policy#test-your-custom-domain)，再继续执行操作。  
+使用 AFD 成功配置 Azure AD B2C 的自定义域后，请先[测试自定义域](./custom-domain.md?pivots=b2c-custom-policy#test-your-custom-domain)，再继续执行操作。  
 
 ## <a name="onboard-with-azure-waf"></a>使用 Azure WAF 加入
 
@@ -80,7 +80,7 @@ ms.locfileid: "122768443"
 
 ### <a name="change-policy-mode-from-detection-to-prevention"></a>改变策略模式从检测到预防
 
-创建 WAF 策略时，默认情况下该策略处于检测模式。 在“检测”模式下，WAF 不会阻止任何请求，而会在 WAF 日志中记录与 WAF 规则匹配的请求。 有关 WAF 日志记录的详细信息，请参阅 [Azure WAF 监视和日志记录](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor)。
+创建 WAF 策略时，默认情况下该策略处于检测模式。 在“检测”模式下，WAF 不会阻止任何请求，而会在 WAF 日志中记录与 WAF 规则匹配的请求。 有关 WAF 日志记录的详细信息，请参阅 [Azure WAF 监视和日志记录](../web-application-firewall/afds/waf-front-door-monitor.md)。
 
 示例查询显示了过去 24 小时内被 WAF 策略阻止的所有请求。 详细信息包括规则名称、请求数据、策略采取的操作以及策略模式。
 
@@ -88,7 +88,7 @@ ms.locfileid: "122768443"
 
 ![图中显示了被阻止的请求详细信息](./media/partner-azure-web-application-firewall/blocked-requests-details.png)
 
-建议让 WAF 在检测模式下捕获请求。 查看 WAF 日志以确定策略中是否有任何规则导致误报结果。 然后[根据 WAF 日志排除 WAF 规则](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-exclusion#define-exclusion-based-on-web-application-firewall-logs)。
+建议让 WAF 在检测模式下捕获请求。 查看 WAF 日志以确定策略中是否有任何规则导致误报结果。 然后[根据 WAF 日志排除 WAF 规则](../web-application-firewall/afds/waf-front-door-exclusion.md#define-exclusion-based-on-web-application-firewall-logs)。
 
 要查看 WAF 的实际效果，请使用切换到预防模式，以从“检测”模式更改为“预防”模式。 与默认规则集 (DRS) 中定义的规则匹配的所有请求都会被阻止并记录在 WAF 日志中。
 
@@ -100,6 +100,6 @@ ms.locfileid: "122768443"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure WAF 监视和日志记录](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor/)
+- [Azure WAF 监视和日志记录](../web-application-firewall/afds/waf-front-door-monitor.md)
 
-- [包含 Front Door 服务排除列表的 WAF](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-exclusion/)
+- [包含 Front Door 服务排除列表的 WAF](../web-application-firewall/afds/waf-front-door-exclusion.md)

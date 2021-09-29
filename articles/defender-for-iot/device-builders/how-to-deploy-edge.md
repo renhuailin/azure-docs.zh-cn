@@ -2,13 +2,13 @@
 title: 部署 IoT Edge 安全模块
 description: 了解如何在 IoT Edge 上部署 Defender for IoT 安全代理。
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 45f7351b47554ce3eb6906d5b6011de945182484
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/23/2021
+ms.openlocfilehash: f5d6dbf45745629fb656812bf75a3b69381260eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113014513"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678566"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在 IoT Edge 设备上部署安全模块
 
@@ -57,8 +57,11 @@ Defender for IoT 模块为 IoT Edge 设备提供了一个全面的安全解决�
 #### <a name="step-1-modules"></a>步骤 1：模块
 
 1. 选择 AzureSecurityCenterforIoT 模块。
+
 1. 在“模块设置”选项卡上，将“名称”更改为“azureiotsecurity”  。
+
 1. 在“环境变量”选项卡上，根据需要添加一个变量（例如，可以添加“调试级别”并将其设置为以下值之一：“致命”、“错误”、“警告”或“信息”）。
+
 1. 在“容器创建选项”选项卡上，添加以下配置：
 
     ``` json
@@ -82,19 +85,19 @@ Defender for IoT 模块为 IoT Edge 设备提供了一个全面的安全解决�
 1. 在“模块孪生设置”选项卡上，添加以下配置：
 
    模块孪生属性：
-   
+
    ``` json
      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
    ```
 
-   模块孪生属性内容： 
+   模块孪生属性内容：
 
    ```json
      {
 
      }
    ```
-    
+
    有关如何配置代理的详细信息，请参阅[配置安全代理](./how-to-agent-configuration.md)。
 
 1. 选择“更新”。

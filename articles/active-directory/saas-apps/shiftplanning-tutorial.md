@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61bb44a6431885c4696af840d829bc1671f1c1e5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522149"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>教程：Azure Active Directory 与 Humanity 的集成
 
@@ -122,13 +122,13 @@ ms.locfileid: "92522149"
 
     c. 注销 URL
 
-### <a name="configure-humanity-single-sign-on"></a>配置 Humanity 单一登录
+### <a name="configure-humanity-single-sign-on&quot;></a>配置 Humanity 单一登录
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Humanity 公司站点。
 
 2. 在顶部菜单中，单击“管理员”。 
 
-    ![管理员](./media/shiftplanning-tutorial/iC786619.png "管理员")
+    ![管理员](./media/shiftplanning-tutorial/iC786619.png &quot;管理员")
 3. 在 **“集成”** 下，单击 **“单一登录”**。
 
     ![显示从“集成”菜单中选择了“单一登录”的屏幕截图。](./media/shiftplanning-tutorial/iC786620.png "单一登录")
@@ -200,7 +200,7 @@ ms.locfileid: "92522149"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-humanity-test-user"></a>创建 Humanity 测试用户
+### <a name="create-humanity-test-user&quot;></a>创建 Humanity 测试用户
 
 要使 Azure AD 用户能够登录 Humanity，必须将这些用户预配到 Humanity 中。 对于 Humanity，预配是一项手动任务。
 
@@ -210,7 +210,7 @@ ms.locfileid: "92522149"
 
 2. 单击“管理”  。
 
-    ![管理员](./media/shiftplanning-tutorial/iC786619.png "管理员")
+    ![管理员](./media/shiftplanning-tutorial/iC786619.png &quot;管理员")
 
 3. 单击 **“员工”**。
 
@@ -235,7 +235,7 @@ ms.locfileid: "92522149"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Humanity 磁贴时，应当会自动登录到为其设置了 SSO 的 Humanity。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Humanity 磁贴时，应当会自动登录到为其设置了 SSO 的 Humanity。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

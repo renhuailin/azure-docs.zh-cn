@@ -8,16 +8,16 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c57744817e26cc79c101246f146d32d3db061ed5
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 9ee927ff858c1242ddab687e28707049a27a23bb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361472"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624835"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy"></a>使用 AzCopy 从 Azure Blob 存储下载 blob
 
-你可以使用 AzCopy v10 命令行实用程序从 Blob 存储下载 Blob 和目录。 
+你可以使用 AzCopy v10 命令行实用程序从 Blob 存储下载 Blob 和目录。
 
 若要查看其他类型任务（如上传文件、与 Blob 存储同步或在帐户之间复制 Blob）的示例，请参阅本文的[下一步](#next-steps)部分中提供的链接。
 
@@ -25,7 +25,7 @@ ms.locfileid: "113361472"
 
 请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)一文下载 AzCopy，并了解如何提供存储服务的授权凭据。
 
-> [!NOTE] 
+> [!NOTE]
 > 本文中的示例假定你已使用 Azure Active Directory (Azure AD) 提供了授权凭据。
 >
 > 如果你希望使用 SAS 令牌来授权访问 Blob 数据，可将该令牌追加到每个 AzCopy 命令中的资源 URL。 例如：`'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`。
@@ -39,7 +39,7 @@ ms.locfileid: "113361472"
 
 **语法**
 
-``azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'``
+`azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'`
 
 **示例**
 
@@ -105,7 +105,7 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDi
 
 ## <a name="download-specific-blobs"></a>下载特定的 Blob
 
-可以使用完整的文件名、包含通配符 (*) 的部分名称或者日期和时间来下载特定 Blob。 
+可以使用完整的文件名、包含通配符 (*) 的部分名称或者日期和时间来下载特定 Blob。
 
 > [!TIP]
 > 这些示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
@@ -158,9 +158,9 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirec
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于 Blob 名，而不适用于路径。  若要复制目录树中存在的所有文本文件 (Blob)，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
-#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>下载在某个日期和时间之前或之后修改的 Blob 
+#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>下载在某个日期和时间之前或之后修改的 Blob
 
-将 [azcopy copy](storage-ref-azcopy-copy.md) 命令与 `--include-before` 或 `--include-after` 选项结合使用。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。 
+将 [azcopy copy](storage-ref-azcopy-copy.md) 命令与 `--include-before` 或 `--include-after` 选项结合使用。 以 ISO-8601 格式指定日期和时间（例如 `2020-08-19T15:04:00Z`）。
 
 以下示例下载在指定日期或之后修改的文件。
 
@@ -184,9 +184,9 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirec
 
 #### <a name="download-previous-versions-of-a-blob"></a>下载 blob 的早期版本
 
-如果已启用 [blob 版本控制](../blobs/versioning-enable.md)，则可以下载 blob 的一个或多个早期版本。 
+如果已启用 [blob 版本控制](../blobs/versioning-enable.md)，则可以下载 blob 的一个或多个早期版本。
 
-首先，创建一个包含[版本 ID](../blobs/versioning-overview.md) 列表的文本文件。 每个版本 ID 必须出现在单独的行中。 例如： 
+首先，创建一个包含[版本 ID](../blobs/versioning-overview.md) 列表的文本文件。 每个版本 ID 必须出现在单独的行中。 例如：
 
 ```
 2020-08-17T05:50:34.2199403Z
@@ -194,11 +194,11 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirec
 2020-08-17T05:50:36.7607103Z
 ```
 
-然后，结合 `--list-of-versions` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含版本列表的文本文件的位置（例如：`D:\\list-of-versions.txt`）。  
+然后，结合 `--list-of-versions` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含版本列表的文本文件的位置（例如：`D:\\list-of-versions.txt`）。
 
 #### <a name="download-a-blob-snapshot"></a>下载 Blob 快照
 
-可通过引用 Blob 快照的 **DateTime** 值来下载 [Blob 快照](../blobs/snapshots-overview.md)。 
+可通过引用 Blob 快照的 **DateTime** 值来下载 [Blob 快照](../blobs/snapshots-overview.md)。
 
 **语法**
 
@@ -243,7 +243,7 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFil
 - [示例：Azure 文件存储](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
 
-请参阅以下文章，配置设置、优化性能和排查问题：
+请参阅以下文章了解如何配置设置、优化性能和排查问题：
 
 - [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
 - [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)

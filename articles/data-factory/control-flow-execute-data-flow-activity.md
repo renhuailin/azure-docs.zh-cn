@@ -8,13 +8,13 @@ ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 08/24/2021
-ms.openlocfilehash: b5fdb41c84d97c5a4ba544c299eb183c704fa3d8
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 14fa6484a3cba97602d33cf2b302d62bf6ef2871
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822209"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743878"
 ---
 # <a name="data-flow-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的数据流活动
 
@@ -67,7 +67,7 @@ staging.linkedService | 如果使用的是 Azure Synapse Analytics 源或接收�
 staging.folderPath | 如果使用的是 Azure Synapse Analytics 源或接收器，则为 blob 存储帐户中用于 PolyBase 暂存的文件夹路径 | 字符串 | 仅当数据流读取或写入 Azure Synapse Analytics 时
 traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略、无 | 否
 
-![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
+:::image type="content" source="media/data-flow/activity-data-flow.png" alt-text="执行数据流":::
 
 ### <a name="dynamically-size-data-flow-compute-at-runtime"></a>在运行时动态调整数据流大小
 
@@ -76,7 +76,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 > [!NOTE]
 > 在 Azure Synapse 数据流中选择驱动程序和工作器节点核心时，将会始终使用至少 3 个节点。
 
-![动态数据流](media/data-flow/dyna1.png "动态数据流")
+:::image type="content" source="media/data-flow/dyna1.png" alt-text="动态数据流":::
 
 [下面是介绍此方法的简短视频教程](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
@@ -86,7 +86,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 对于大多数生产工作负荷，建议至少使用一个采用 8+8（总计 16）个 v-Core 和 10 分钟配置的“常规用途”计算类型（对于大型工作负荷，建议不要使用“计算优化”计算类型）。 通过设置小型 TTL，Azure IR 可以维护一个热群集，它不会出现冷群集那种需要几分钟时间才能启动的情况。 通过在 Azure IR 数据流配置上选择“快速重复使用”，你还可以进一步加快数据流的执行速度。 有关详细信息，请参阅 [Azure Integration Runtime](concepts-integration-runtime.md)。
 
-![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
+:::image type="content" source="media/data-flow/ir-new.png" alt-text="Azure Integration Runtime":::
 
 > [!IMPORTANT]
 > 数据流活动中的 Integration Runtime 选择仅适用于管道的已触发执行。 如果使用数据流调试管道，则可在群集（在调试会话中指定）上运行。
@@ -99,7 +99,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 如果不需要数据流活动的每个管道执行完整地记录所有详细的遥测日志，则可根据需要将日志记录级别设置为“基本”或“无”。 在“详细”模式（默认）下执行数据流时，要求此服务在数据转换期间完整地记录每个分区级别的活动。 该操作成本昂贵，因此仅在进行故障排除时启用“详细”模式可优化整体数据流和管道性能。 “基本”模式仅记录转换持续时间，而“无”模式仅提供持续时间的摘要。
 
-![日志记录级别](media/data-flow/logging.png "设置日志记录级别")
+:::image type="content" source="media/data-flow/logging.png" alt-text="日志记录级别":::
 
 ## <a name="sink-properties"></a>接收器属性
 
@@ -111,7 +111,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 此选项仅适用于已为“输出到活动”启用了缓存接收器的数据流。 直接注入到管道中的数据流的输出限制为 2MB。 设置“仅第一行”有助于在将数据流活动输出直接注入到管道时限制来自数据流的数据输出。
 
-![接收器属性](media/data-flow/sink-properties.png "设置接收器属性")
+:::image type="content" source="media/data-flow/sink-properties.png" alt-text="接收器属性":::
 
 ## <a name="parameterizing-data-flows"></a>将数据流参数化
 
@@ -119,7 +119,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 如果数据流使用参数化数据集，请在“设置”选项卡中设置参数值。
 
-![执行数据流参数](media/data-flow/params.png "参数")
+:::image type="content" source="media/data-flow/params.png" alt-text="执行数据流参数":::
 
 ### <a name="parameterized-data-flows"></a>参数化数据流
 
@@ -129,13 +129,13 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 如果使用自动解析 Azure Integration Runtime 并为 compute.coreCount 和 compute.computeType 指定值，则可以将核心数或计算类型参数化。
 
-![执行数据流参数示例](media/data-flow/parameterize-compute.png "参数示例")
+:::image type="content" source="media/data-flow/parameterize-compute.png" alt-text="执行数据流参数示例":::
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>数据流活动的管道调试
 
 若要执行通过数据流活动运行的调试管道，则必须通过顶部栏中的“数据流调试”滑块来打开数据流调试模式。 借助调试模式，可以针对活动的 Spark 群集运行数据流。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
-![显示“调试”按钮所在位置的屏幕截图](media/data-flow/debug-button-3.png)
+:::image type="content" source="media/data-flow/debug-button-3.png" alt-text="显示“调试”按钮所在位置的屏幕截图":::
 
 调试管道针对活动的调试群集运行，而不是针对“数据流”活动设置中指定的集成运行时环境运行。 在启动调试模式时，可以选择调试计算环境。
 

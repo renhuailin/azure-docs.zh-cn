@@ -1,8 +1,8 @@
 ---
 title: 快速入门：在门户中创建 Azure 存储队列
 description: 使用 Azure 门户创建队列。 然后使用 Azure 门户添加消息，查看消息的属性，并将消息取消排队。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 08/13/2020
 ms.topic: quickstart
@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: queues
 ms.custom:
 - mode-portal
-ms.openlocfilehash: f0e7a5a514f2d68fce025ea9fb354f29fa068561
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 8140e694b900c87ca93e0e73603aa1fd95e34f09
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534385"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555372"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建队列并添加消息
 

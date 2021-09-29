@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 3ccd5cf9ebc1c5183571dcdfbe3beeabe1b28a63
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 01283dd9607dbe3f9b5b0c2103345cb73d56e093
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448110"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579508"
 ---
 # <a name="storage-analytics"></a>存储分析
 
@@ -34,10 +34,10 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 
 存储分析执行的以下操作都是计费的：
 
-* 为日志记录创建 Blob 的请求。
-* 为度量创建表实体的请求。
+- 为日志记录创建 Blob 的请求。
+- 为度量创建表实体的请求。
 
-如果已配置数据保留策略，则可以通过删除旧的日志记录和指标数据来减少开销。 有关保留策略的详细信息，请参阅[设置存储分析数据保留策略](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)。
+如果已配置数据保留策略，则可以通过删除旧的日志记录和指标数据来减少支出。 有关保留策略的详细信息，请参阅[设置存储分析数据保留策略](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)。
 
 ### <a name="understanding-billable-requests"></a>了解计费请求
 
@@ -46,6 +46,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 查看存储分析数据时，可以使用[存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)主题中的表来确定计费的请求。 然后，可以将日志和指标数据与状态消息进行比较，以查看是否对你的特定请求进行收费。 也可以使用前述主题中的表来调查存储服务或各个 API 操作的可用性。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Azure 门户中监视存储帐户](./manage-storage-analytics-logs.md)
-* [存储分析度量值](storage-analytics-metrics.md)
-* [存储分析日志记录](storage-analytics-logging.md)
+
+- [在 Azure 门户中监视存储帐户](./manage-storage-analytics-logs.md)
+- [存储分析度量值](storage-analytics-metrics.md)
+- [存储分析日志记录](storage-analytics-logging.md)

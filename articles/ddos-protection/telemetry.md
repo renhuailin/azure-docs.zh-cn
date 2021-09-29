@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6dc086aae55f3b35dbb7dc787df6a65b7ade108f
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 046b2cefb20f9c413798e310f760a90a15dee441
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674194"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805351"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>查看和配置 DDoS 防护遥测
 
-Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 在 DDoS 攻击期间通过 Azure Monitor 公开丰富的遥测数据（包括详细的指标）。 可以针对 DDoS 防护公开的任何 Azure Monitor 指标配置警报。 可将记录与 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk（Azure 事件中心）、OMS Log Analytics 和 Azure 存储进一步集成，以通过 Azure Monitor 诊断界面进行高级分析。
+Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 在 DDoS 攻击期间通过 Azure Monitor 公开丰富的遥测数据（包括详细的指标）。 可以针对 DDoS 防护公开的任何 Azure Monitor 指标配置警报。 可将记录与 [Azure Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection)、Splunk（Azure 事件中心）、OMS Log Analytics 和 Azure 存储进一步集成，以通过 Azure Monitor 诊断界面进行高级分析。
 
 本教程介绍以下操作：
 
@@ -43,7 +43,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 以下[指标](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses)适用于 Azure DDoS 防护标准。 这些指标也可以通过诊断设置导出（请参阅[查看和配置 DDoS 诊断日志记录](diagnostic-logging.md)）。
 
 
-| 指标 | 指标显示名称 | 单位 | 聚合类型 | 说明 |
+| 指标 | 指标显示名称 | 计价单位 | 聚合类型 | 说明 |
 | --- | --- | --- | --- | --- |
 | BytesDroppedDDoS | 丢弃的入站字节 DDoS | 每秒字节数 | 最大值 | 丢弃的入站字节 DDoS| 
 | BytesForwardedDDoS | 转发的入站字节 DDoS | 每秒字节数 | 最大值 | 转发的入站字节 DDoS |

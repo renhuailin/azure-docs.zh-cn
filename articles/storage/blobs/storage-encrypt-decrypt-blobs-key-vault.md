@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6affeacd119682a76f648feff05429f1e3173b1c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 78356745ee013b011f23a4bf42f903cf89bedd4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461889"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603973"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教程 - 使用 Azure 密钥保管库加密和解密 blob
 
@@ -32,9 +32,9 @@ ms.locfileid: "110461889"
 
 要完成本教程，必须满足下列要求：
 
-* Azure 存储帐户
-* Visual Studio 2013 或更高版本
-* Azure PowerShell
+- Azure 存储帐户
+- Visual Studio 2013 或更高版本
+- Azure PowerShell
 
 ## <a name="overview-of-client-side-encryption"></a>客户端加密概述
 
@@ -51,10 +51,10 @@ ms.locfileid: "110461889"
 
 若要继续学习本教程，需要执行教程[快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密](../../key-vault/secrets/quick-create-net.md)中所述的以下步骤：
 
-* 创建密钥保管库。
-* 将密钥或密码添加到密钥保管库。
-* 将应用程序注册到 Azure Active Directory。
-* 授权应用程序使用密钥或密码。
+- 创建密钥保管库。
+- 将密钥或密码添加到密钥保管库。
+- 将应用程序注册到 Azure Active Directory。
+- 授权应用程序使用密钥或密码。
 
 记下将应用程序注册到 Azure Active Directory 时生成的 ClientID 和 ClientSecret。
 
@@ -107,6 +107,7 @@ using Microsoft.Azure.KeyVault;
 using System.Threading;
 using System.IO;
 ```
+
 ---
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>添加方法以便为控制台应用程序获取令牌
@@ -134,6 +135,7 @@ private async static Task<string> GetToken(string authority, string resource, st
     return result.AccessToken;
 }
 ```
+
 ---
 
 ## <a name="access-azure-storage-and-key-vault-in-your-program"></a>在程序中访问 Azure 存储和密钥保管库
@@ -161,18 +163,19 @@ contain.CreateIfNotExists();
 // This is where the GetToken method from above is used.
 KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
+
 ---
 
 > [!NOTE]
 > 密钥保管库对象模型
-> 
+>
 > 务必了解，实际上有两个 Key Vault 对象模型：一个基于 REST API（KeyVault 命名空间），另一个是客户端加密的扩展。
-> 
+>
 > 密钥保管库客户端与 REST API 进行交互，并了解密钥保管库中包含的两种模型的 JSON Web 密钥和密码。
-> 
+>
 > 密钥保管库扩展似乎是专为 Azure 存储中的客户端加密而创建的类。 根据密钥解析程序的概念，它们包含密钥 (IKey) 和类的接口。 需要了解两种 IKey 实现：RSAKey 和 SymmetricKey。 现在它们碰巧与 Key Vault 中包含的内容保持一致，但此时它们是独立的类（因此，Key Vault 客户端检索到的密钥与秘密检索未实现 IKey）。
-> 
-> 
+>
+>
 
 ## <a name="encrypt-blob-and-upload"></a>加密 Blob 和上传
 
@@ -202,15 +205,15 @@ CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
+
 ---
 
 > [!NOTE]
 > 如果查看 BlobEncryptionPolicy 构造函数，会看到它可以接受密钥和/或解析程序。 请注意，现在无法将解析程序用于加密，因为它当前不支持默认密钥。
 
-
 ## <a name="decrypt-blob-and-download"></a>解密 Blob 并下载
 
-当使用解析程序类有意义时，实际上就是解密。 用于加密的密钥的 ID 与其元数据中的 Blob 相关联，因此没有理由检索该密钥，请记住密钥与 Blob 之间的关联关系。 只需确保该密钥保留在密钥保管库中。   
+当使用解析程序类有意义时，实际上就是解密。 用于加密的密钥的 ID 与其元数据中的 Blob 相关联，因此没有理由检索该密钥，请记住密钥与 Blob 之间的关联关系。 只需确保该密钥保留在密钥保管库中。
 
 RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密，来自包含 CEK 的 Blob 元数据的加密密钥会发送到密钥保管库进行解密。
 
@@ -231,6 +234,7 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
     blob.DownloadToStream(np, null, options, null);
 ```
+
 ---
 
 > [!NOTE]
@@ -240,9 +244,9 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 
 将密码用于客户端加密的方式是通过 SymmetricKey 类，因为密码实际上是一种对称密钥。 但是，如上所述，密钥保管库中的密码不会完全映射到 SymmetricKey。 这里要注意几个问题：
 
-* SymmetricKey 中的密钥必须是固定长度：128、192、256、384 或 512 位。
-* SymmetricKey 中的密钥应采用 Base64 编码。
-* 用作 SymmetricKey 的密钥保管库密钥需要在密钥保管库中具有“application/octet-stream”内容类型。
+- SymmetricKey 中的密钥必须是固定长度：128、192、256、384 或 512 位。
+- SymmetricKey 中的密钥应采用 Base64 编码。
+- 用作 SymmetricKey 的密钥保管库密钥需要在密钥保管库中具有“application/octet-stream”内容类型。
 
 以下是使用 PowerShell 在密钥保管库中创建可用作 SymmetricKey 的密钥的示例。
 请注意，硬编码值 $key 仅用于演示目的。 请在自己的代码中生成此密钥。
@@ -273,6 +277,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
+
 ---
 
 ## <a name="next-steps"></a>后续步骤

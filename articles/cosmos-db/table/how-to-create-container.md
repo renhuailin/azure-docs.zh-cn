@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfb7513ad3dc76c87cb9b06d5d7325011fb2908b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9320e34ccd4cdb217ac574eeef0d5c0b0f1eeb42
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778768"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812094"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-table-api"></a>在 Azure Cosmos DB 表 API 中创建容器
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "121778768"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure Cosmos 帐户](create-table-dotnet.md#create-a-database-account)或选择现有的帐户。
+1. [创建新的 Azure Cosmos 帐户](create-table-dotnet.md#1---create-an-azure-cosmos-db-account)或选择现有的帐户。
 
 1. 打开“数据资源管理器”窗格，然后选择“新建表” 。 接下来，请提供以下详细信息：
 

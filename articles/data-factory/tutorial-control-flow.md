@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: 03c51dc95998ef0d077dc34232d8aa86ab96fbb7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b1eaa9e7a7c35c659156cfd4bc2541cb3ca39173
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739396"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805805"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -23,7 +23,7 @@ ms.locfileid: "121739396"
 
 下图概述了该方案：
 
-![显示 Azure Blob 存储的关系图，该存储是副本的目标，如果成功，将发送包含详细信息的电子邮件，如果失败，则将发送包含错误详细信息的电子邮件。](media/tutorial-control-flow/overview.png)
+:::image type="content" source="media/tutorial-control-flow/overview.png" alt-text="显示 Azure Blob 存储的关系图，该存储是副本的目标，如果成功，将发送包含详细信息的电子邮件，如果失败，则将发送包含错误详细信息的电子邮件。":::
 
 本教程介绍如何执行以下任务：
 
@@ -329,13 +329,13 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 工作流类似于以下示例：
 
-![成功电子邮件工作流](media/tutorial-control-flow/success-email-workflow-trigger.png)
+:::image type="content" source="media/tutorial-control-flow/success-email-workflow-trigger.png" alt-text="成功电子邮件工作流":::
 
 此 JSON 内容与前一部分中创建的 `EmailRequest` 类相符。
 
 添加 `Office 365 Outlook – Send an email` 操作。 对于“发送电子邮件”操作，请使用传入请求 **正文** JSON 架构的属性来自定义如何设置电子邮件的格式。 下面是一个示例：
 
-![逻辑应用设计器 - 发送电子邮件操作](media/tutorial-control-flow/customize-send-email-action.png)
+:::image type="content" source="media/tutorial-control-flow/customize-send-email-action.png" alt-text="逻辑应用设计器 - 发送电子邮件操作":::
 
 保存工作流后，复制并保存触发器中的“HTTP POST URL”值。
 
@@ -343,7 +343,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 克隆 **CopySuccessEmail** 作为名为 *CopyFailEmail* 的另一个逻辑应用工作流。 在请求触发器中，`Request Body JSON schema` 是相同的。 更改电子邮件的格式（例如 `Subject`）即可定制失败电子邮件。 以下是示例：
 
-![逻辑应用设计器 - 失败电子邮件工作流](media/tutorial-control-flow/fail-email-workflow.png)
+:::image type="content" source="media/tutorial-control-flow/fail-email-workflow.png" alt-text="逻辑应用设计器 - 失败电子邮件工作流":::
 
 保存工作流后，复制并保存触发器中的“HTTP POST URL”值。
 

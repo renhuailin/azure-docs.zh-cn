@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: a3f765062895fc31ea3e8e768a025b35ca88d4a0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e0405435a1eda23463e24acee745b968dace41c1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746065"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764671"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoho-one-china"></a>教程：Azure Active Directory 与 Zoho One China 的单一登录 (SSO) 集成
 
@@ -141,7 +141,7 @@ ms.locfileid: "121746065"
 
 * 在 Azure 门户中单击“测试此应用程序”，你应该会自动登录到为其设置了 SSO 的 Zoho One China。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击 Zoho One China 磁贴时，如果这是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果这是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 Zoho One China。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击 Zoho One China 磁贴时，如果这是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果这是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 Zoho One China。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

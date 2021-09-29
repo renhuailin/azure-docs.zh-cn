@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f613a14f84999fced888ae72de11328bc7c90811
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cce6dfcda5c506f27c3527c5a417cbe712ebcca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779998"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661044"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
 > [!NOTE]
@@ -48,7 +49,7 @@ ms.locfileid: "104779998"
 
 如下图中所示，指定为活动计划创建一系列翻转与窗口在管道开始和结束时间。 翻转时段是一系列固定大小、非重叠、连续的时间间隔。 活动的这些逻辑翻转时段称为“活动时段”。
 
-![活动计划程序示例](media/data-factory-scheduling-and-execution/scheduler-example.png)
+:::image type="content" source="media/data-factory-scheduling-and-execution/scheduler-example.png" alt-text="活动计划程序示例":::
 
 活动的 **计划程序** 属性是可选的。 如果要指定一个属性，它必须与在输出数据集定义中指定的频率匹配。 目前，输出数据集驱动计划。 因此，必须创建一个输出数据集，即使活动不会生成任何输出。 
 
@@ -162,7 +163,7 @@ ms.locfileid: "104779998"
 
 活动运行使用或生成的每个数据单元称为 **数据切片**。 下图显示了具有 1 个输入数据集和 1 个输出数据集的活动示例： 
 
-![可用性计划程序](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/availability-scheduler.png" alt-text="可用性计划程序":::
 
 上图中显示了输入和输出数据集的每小时数据切片。 图中还显示已准备好进行处理的三个输入切片。 “上午 10-11 点”活动正在进行，生成“上午 10-11 点”输出切片。 
 
@@ -284,7 +285,7 @@ ms.locfileid: "104779998"
 
 请参考以下示例，其中演示了两个活动。 Activity1 和 Activity2。 Activity1 使用 Dataset1 的切片，并生成 Dataset2，作为输入由 Activity2 以生成最终的数据集的切片的切片。
 
-![失败的切片](./media/data-factory-scheduling-and-execution/failed-slice.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/failed-slice.png" alt-text="失败的切片":::
 
 该图显示在最近的三个片段中，为 Dataset2 生成“上午 9-10 点”切片时失败。 数据工厂自动跟踪时序数据集的依赖项。 因此，未启动“上午 9-10 点”下游切片的活动运行。
 
@@ -292,7 +293,7 @@ ms.locfileid: "104779998"
 
 重新运行“Dataset2”的“上午 9-10 点”切片后，数据工厂会在最终数据集上启动运行“上午 9-10 点”依赖切片。
 
-![重新运行失败的切片](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/rerun-failed-slice.png" alt-text="重新运行失败的切片":::
 
 ## <a name="multiple-activities-in-a-pipeline"></a>管道中的多个活动
 可在管道中添加多个活动。 如果管道中有多个活动，且一个活动的输出不是其他活动的输入，则若活动的输入数据切片准备就绪，活动可能会并行运行。
@@ -308,11 +309,11 @@ ms.locfileid: "104779998"
 
 两个活动位于相同管道的“关系图”视图如下图所示：
 
-![链接相同管道中的活动](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png" alt-text="链接相同管道中的活动":::
 
 如前文所述，活动可以位于不同的管道中。 在此情况下，图示视图如下图所示：
 
-![链接两个管道中的活动](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png" alt-text="链接两个管道中的活动":::
 
 有关示例，请参阅附录中的“按顺序复制”部分。
 
@@ -435,7 +436,7 @@ Hive 脚本接收相应的 *DateTime* 信息作为参数，这些参数使用 **
 
 下图从数据依赖项的角度演示该方案。
 
-![数据依赖项](./media/data-factory-scheduling-and-execution/data-dependency.png)
+:::image type="content" source="./media/data-factory-scheduling-and-execution/data-dependency.png" alt-text="数据依赖项":::
 
 每天的输出切片依赖于输入数据集的 24 小时切片。 数据工厂会自动计算这些依赖项，方法是计算在同一时间段内作为待生成输出切片的输入数据切片。 如果 24 个输入切片均不可用，数据工厂将等待输入切片准备就绪，然后启动每日活动运行。
 

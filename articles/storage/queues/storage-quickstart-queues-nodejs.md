@@ -1,8 +1,8 @@
 ---
 title: 快速入门：Azure 队列存储客户端库 v12 - JavaScript
 description: 介绍如何使用适用于 JavaScript 的 Azure 队列存储客户端库 v12 创建队列并在其中添加消息。 然后介绍如何在队列中读取和删除消息。 还将介绍如何删除队列。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 12/13/2019
 ms.topic: quickstart
 ms.service: storage
@@ -10,12 +10,12 @@ ms.subservice: queues
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: 943678debc32116ff7a2e54810c4edcf2d331bd6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a3adb61c27610b07f17aae44c607e36c640cd07d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534429"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570923"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure 队列存储客户端库 v12
 

@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: c1f2a83807703593482cc725036a2da158d7195d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d1d1ffaecdf57817e5ef7be48791d0cb50ca9b74
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747407"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743540"
 ---
 # <a name="copy-multiple-folders-with-azure-data-factory"></a>通过 Azure 数据工厂复制多个文件夹
 
@@ -45,27 +45,27 @@ ms.locfileid: "121747407"
 
 1. 转到“在文件存储之间复制多个文件容器”模板。 创建与源存储的 **新** 连接。 源存储是你要从多个容器复制文件的位置。
 
-    ![与源建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png" alt-text="与源建立新的连接":::
 
 2. 创建与目标存储的 **新** 连接。
 
-    ![与目标建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png" alt-text="与目标建立新的连接":::
 
 3. 选择“使用此模板”  。
 
-    ![使用此模板](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png" alt-text="使用此模板":::
     
 4. 你将看到管道，如以下示例所示：
 
-    ![显示管道](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png" alt-text="显示管道":::
 
-5. 选择“调试”，输入“参数”，然后选择“完成”。
+5. 选择“调试”，输入 **参数**，然后选择“完成”。  
 
-    ![运行管道](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png" alt-text="运行管道":::
 
 6. 查看结果。
 
-    ![查看结果](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png" alt-text="查看结果":::
 
 ## <a name="next-steps"></a>后续步骤
 

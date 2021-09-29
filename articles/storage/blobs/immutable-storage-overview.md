@@ -10,12 +10,12 @@ ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 01ea434081b83065f510a246591af2d05a8d7276
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: ca0ec185721b0e35c15dfe99e361ff024cf01a78
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469583"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584197"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
 
@@ -53,7 +53,7 @@ Microsoft 一直在与一家领先的独立评估机构 Cohasset Associates 保�
 
 不可变性策略的范围可以限定为 Blob 版本（预览版）或容器。 对象在不可变性策略约束下的行为取决于该策略的范围。 有关每种类型的不可变性策略的范围详细信息，请参阅以下部分：
 
-- [基于时间的保留策略范围](immutable-time-based-retention-policy-overview.md#time-based-retention-policy-scope) 
+- [基于时间的保留策略范围](immutable-time-based-retention-policy-overview.md#time-based-retention-policy-scope)
 - [法定保留范围](immutable-legal-hold-overview.md#legal-hold-scope)
 
 可以根据范围来为资源（容器或 Blob 版本）配置基于时间的保留策略和法定保留。 下表汇总了每个资源范围支持的不可变性策略：
@@ -165,11 +165,11 @@ Azure 存储 Blob 清单提供存储帐户中的容器以及这些容器中的 B
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: f1e9cc3dba7f3ff87295cd184f11728d83c59d03
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 6081e63a9a2fbc4598bac0d368d43c31121fa448
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822082"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787919"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -190,7 +190,7 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 对于复制活动，它需要使用源和接收器链接服务，以定义数据流的方向。 以下逻辑用于确定执行复制所使用的集成运行时实例的类型： 
 
-- 在两个云数据源之间复制：当源和接收器链接服务都使用 Azure IR 时，会使用区域性的 Azure IR（如果已指定），或者自动确定 Azure IR 的位置，前提是你根据[集成运行时位置](#integration-runtime-location)部分的说明选择了自动解析 IR（默认设置）。
+- **在两个云数据源之间复制**：当源和接收器链接服务都使用 Azure IR 时，数据工厂会使用区域性的 Azure IR（如果已指定），或者自动确定 Azure IR 的位置，前提是你根据 [集成运行时位置](#integration-runtime-location)部分的说明选择了自动解析 IR（默认设置）。
 - **在云数据源和专用网络中的数据源之间复制**：如果源或接收器链接服务指向自承载 IR，则在该自承载集成运行时上执行复制活动。
 - **在专用网络中的两个数据源之间复制**：源和接收器链接服务必须同时指向同一集成运行时实例，且该集成运行时用于执行复制活动。
 

@@ -2,13 +2,13 @@
 title: 消息复制任务模式 - Azure 服务总线 | Microsoft Docs
 description: 本文为实现特定的消息复制任务模式提供了详细的指导
 ms.topic: article
-ms.date: 12/12/2020
-ms.openlocfilehash: 5e6161d39281dc48284737cf3ee1f83853db17ef
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 09/28/2021
+ms.openlocfilehash: 4effcb9f51532cb2ef87b18b264789c526b57585
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462311"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211784"
 ---
 # <a name="message-replication-tasks-patterns"></a>消息复制任务模式
 

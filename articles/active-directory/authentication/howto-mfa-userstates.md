@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2e2212171f0be8d754ac1a86567641c2bad8a9a0
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: cd22b7068507358b3b9cff0b97ce9bf6f3cabc1e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602770"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762942"
 ---
 # <a name="enable-per-user-azure-ad-multi-factor-authentication-to-secure-sign-in-events"></a>启用每用户 Azure AD 多重身份验证来保护登录事件
 
@@ -77,7 +77,7 @@ ms.locfileid: "114602770"
 
 1. 在打开的弹出窗口中确认你的选择。
 
-启用用户后，通过电子邮件通知他们。 告诉用户显示了提示，要求他们在下次登录时注册。 此外，如果你的组织使用不支持新式身份验证的非浏览器应用，则他们需要创建应用密码。 有关详细信息，请参阅 [Azure AD 多重身份验证最终用户指南](../user-help/multi-factor-authentication-end-user-first-time.md)，以帮助他们开始使用。
+启用用户后，通过电子邮件通知他们。 告诉用户显示了提示，要求他们在下次登录时注册。 此外，如果你的组织使用不支持新式身份验证的非浏览器应用，则他们需要创建应用密码。 有关详细信息，请参阅 [Azure AD 多重身份验证最终用户指南](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)，以帮助他们开始使用。
 
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>将用户从每用户 MFA 转换为基于条件访问的 MFA
 

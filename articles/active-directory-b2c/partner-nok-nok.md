@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/04/2021
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 586c8373e32f210d6f2f53c773fbe58ef5a2181b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 26842d40034527e5b7b785cfc94e4f7a37e36e04
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778453"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587207"
 ---
 # <a name="tutorial-configure-nok-nok-with-azure-active-directory-b2c-to-enable-passwordless-fido2-authentication"></a>教程：为 Azure Active Directory B2C 配置 Nok Nok 以启用无密码 FIDO2 身份验证
 
@@ -70,23 +70,19 @@ ms.locfileid: "121778453"
 若要添加新的标识提供者，请执行以下步骤：
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录到 [Azure 门户](https://portal.azure.com/#home)。
-
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是：选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-
-3. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
-
-4. 导航到“仪表板” > “Azure Active Directory B2C” >  “标识提供者”。  
-
-5. 选择“标识提供者”。
-
-6. 选择 **添加** 。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
+1. 导航到“仪表板” > “Azure Active Directory B2C” >  “标识提供者”。  
+1. 选择“标识提供者”。
+1. 选择 **添加** 。
 
 ### <a name="configure-an-identity-provider"></a>配置标识提供者 
 
 若要配置标识提供者，请执行以下步骤：
 
 1. 选择“标识提供者类型” > “OpenID Connect (预览版)” 
-2. 填写用于设置标识提供者的表单：
+1. 填写用于设置标识提供者的表单：
 
    |属性 | 值 |
    |:-----| :-----------|
@@ -98,11 +94,11 @@ ms.locfileid: "121778453"
    | 响应类型 | code |
    | 响应模式 | form_post|
 
-3. 选择“确定”。
+1. 选择“确定”。
 
-4. 选择“映射此标识提供者的声明”。
+1. 选择“映射此标识提供者的声明”。
 
-5. 填写用于映射标识提供者的表单：
+1. 填写用于映射标识提供者的表单：
 
    |属性 | 值 |
    |:-----| :-----------|
@@ -110,7 +106,7 @@ ms.locfileid: "121778453"
    | 显示名称 | 从订阅中 |
    | 响应模式 | 从订阅中 |
 
-6. 选择“保存”以完成新 OIDC 标识提供者的设置。
+1. 选择“保存”以完成新 OIDC 标识提供者的设置。
 
 ### <a name="create-a-user-flow-policy"></a>创建用户流策略
 

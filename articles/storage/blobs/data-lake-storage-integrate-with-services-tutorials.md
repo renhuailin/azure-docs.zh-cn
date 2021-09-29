@@ -7,20 +7,20 @@ ms.author: normesta
 ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bbe99ced7a4d0110ac9ff709201a16017b45ec15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735414"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562469"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>将 Azure 服务与 Azure Data Lake Storage Gen2 配合使用的教程
 
-本文包含一些教程链接，这些教程介绍如何将各种 Azure 服务与 Data Lake Storage Gen2 配合使用。 
+本文包含一些教程链接，这些教程介绍如何将各种 Azure 服务与 Data Lake Storage Gen2 配合使用。
 
 ## <a name="list-of-tutorials"></a>教程列表
 
-| Azure 服务 | 分步指南 | 
+| Azure 服务 | 分步指南 |
 |---------------|-------------------|
 | Azure Synapse Analytics | [Azure Synapse Analytics 入门](../../synapse-analytics/get-started.md) |
 | Azure 数据工厂 | [使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中](../../data-factory/load-azure-data-lake-storage-gen2.md) |

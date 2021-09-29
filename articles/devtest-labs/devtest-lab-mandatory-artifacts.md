@@ -1,14 +1,14 @@
 ---
-title: 指定 Azure 开发测试实验室的必需项目 | Microsoft Docs
+title: 指定必需的项目
 description: 了解如何指定在实验室中的虚拟机 (VM) 上安装任何用户选定项目之前需要安装的必需项目。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8963db2f99cc893937365a4eac0a656e1ba90613
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85480297"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678490"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>为 Azure 开发测试实验室中的实验室指定必需项目
 实验室的所有者可以指定必需项目，这些项目应用于在实验室中创建的每台计算机。 假设你要将实验室中的每台计算机连接到企业网络。 在这种情况下，每个实验室用户必须在创建虚拟机期间添加一个域加入项目，以确保其计算机连接到企业域。 换而言之，实验室用户最起码要重新创建一个计算机，以防忘记在计算机上应用必需的项目。 实验室的所有者可将域加入项目指定为实验室中的必需项目。 此步骤可确保每台计算机连接到企业网络，并节省实验室用户的时间和精力。
@@ -76,4 +76,3 @@ ms.locfileid: "85480297"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何 [将 Git 项目存储库添加到实验室](devtest-lab-add-artifact-repo.md)。
-

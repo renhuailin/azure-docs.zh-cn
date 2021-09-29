@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/06/2021
-ms.openlocfilehash: 0b927f945dc7e891e93df6cd455840e6ff19a2fd
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5f18e2a1fc64e33faecf17c95e9261e023cc6c9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772441"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779704"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
@@ -39,11 +39,11 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”。
    
-   ![屏幕截图显示在“新建”窗格中选择“数据工厂”。](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png" alt-text="屏幕截图显示在“新建”窗格中选择“数据工厂”。":::
 
 2. 在“新建数据工厂”页中，为下图中所示的字段提供值： 
       
-   ![屏幕截图显示“新建数据工厂”页。](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
+   :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png" alt-text="屏幕截图显示“新建数据工厂”页。":::
  
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadADLSDemo\" 不可用”，请输入不同的数据工厂名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 再次创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
@@ -62,7 +62,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 1. 在主页中，选择“引入”磁贴启动复制数据工具。 
 
-   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png )
+   :::image type="content" source="./media/doc-common-process/get-started-page.png " alt-text="显示 ADF 主页的屏幕截图。":::
 
 2. 在“属性”页上，在“任务类型”下选择“内置复制任务”，在“任务节奏或任务计划”下选择“现在运行一次”，然后选择“下一页”。
 
@@ -70,7 +70,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
     
 4. 从连接器库中选择“Azure Data Lake Storage Gen1”，然后选择“继续” 。
     
-    ![屏幕截图显示了选择 Azure Data Lake Storage Gen1 连接的页面。](./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page-adls-gen1.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page-adls-gen1.png" alt-text="屏幕截图显示了选择 Azure Data Lake Storage Gen1 连接的页面。":::
     
 5. 在“新建连接(Azure Data Lake Storage Gen1)”页中，按以下步骤操作：
    1. 选择你的 Data Lake Storage Gen1 作为帐户名称，并指定或验证 **租户**。
@@ -79,7 +79,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
    > [!IMPORTANT]
    > 在本演练中，使用 Azure 资源的托管身份来对 Azure Data Lake Storage Gen1 进行身份验证。 请按照[这些说明](connector-azure-data-lake-store.md#managed-identity)授予托管身份在 Azure Data Lake Storage Gen1 中的适当权限。
    
-   ![屏幕截图显示了 Azure Data Lake Storage Gen1 连接配置。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
+   :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png" alt-text="屏幕截图显示了 Azure Data Lake Storage Gen1 连接配置。":::
       
 6. 在“源数据存储”页上，完成以下步骤。 
     1. 在“连接”部分中选择新建的连接。
@@ -90,13 +90,13 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
     
 7. 在“目标数据存储”页中，选择“+ 新建连接” > “Azure Data Lake Storage Gen2” > “继续”。
 
-    ![屏幕截图显示了选择 Azure Data Lake Storage Gen2 连接的页面。](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-store-page-adls-gen2.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-store-page-adls-gen2.png" alt-text="屏幕截图显示了选择 Azure Data Lake Storage Gen2 连接的页面。":::
 
 8. 在“新建连接(Azure Data Lake Storage Gen2)”页中，按以下步骤操作：
    1. 从“存储帐户名称”下拉列表中选择能使用 Data Lake Storage Gen2 的帐户。
    1. 选择“创建”以创建连接。 
 
-   ![屏幕截图显示了 Azure Data Lake Storage Gen2 连接配置。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
+   :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png" alt-text="屏幕截图显示了 Azure Data Lake Storage Gen2 连接配置。":::
 
 9. 在“目标数据存储”页上，完成以下步骤。 
     1. 在“连接”块中选择新建的连接。 
@@ -109,19 +109,19 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 11. 在“摘要”页中检查设置，然后选择“下一步”。
 
-    ![屏幕截图显示了“摘要”页。](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-summary.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/copy-summary.png" alt-text="显示“摘要”页的屏幕截图。":::
 
 12. 在“部署”页中，选择“监视”以监视管道。 
 
-    ![屏幕截图显示了“部署”页。](./media/load-azure-data-lake-storage-gen2-from-gen1/deployment-page.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/deployment-page.png" alt-text="屏幕截图显示了“部署”页。":::
 
 13. 请注意，界面中已自动选择左侧的“监视”选项卡。  “管道名称”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接。
 
-    ![屏幕截图显示监视管道运行页面。](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-pipeline-runs.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-pipeline-runs.png" alt-text="屏幕截图显示监视管道运行页面。":::
 
 14. 若要查看与管道运行关联的活动运行，请选择“管道名称”列中的链接。 该管道只包含一个活动（复制活动），因此只显示了一个条目。 若要切换回“管道运行”视图，请选择顶部痕迹导航菜单中的“所有管道运行”链接。 选择“刷新”可刷新列表。 
 
-    ![屏幕截图显示监视活动运行页面。](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-runs.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-runs.png" alt-text="屏幕截图显示监视活动运行页面。":::
 
 15. 若要监视每个复制活动的执行详细信息，请在活动监视视图中选择“活动名称”列下的“详细信息”链接（眼镜图标）。 可以监视详细信息，例如，从源复制到接收器的数据量、吞吐量、执行步骤以及相应的持续时间和使用的配置。
 

@@ -4,12 +4,12 @@ description: 了解如何在 Azure 应用服务中使用入站和出站 IP 地�
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e4913ad840c847c4ce571f07f971922858e40393
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f8354d52c43d786e3506cf6fcee0907f9f365ab6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472229"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836318"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
@@ -82,7 +82,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 ## <a name="get-a-static-outbound-ip"></a>获取静态出站 IP
-你可以通过将区域性 VNet 集成与虚拟网络 NAT 网关一起使用来将流量定向通过静态公共 IP 地址，以此来控制来自应用的出站流量的 IP 地址。 [区域性 VNet 集成](/azure/app-service/web-sites-integrate-with-vnet)在“标准”、“高级”、“高级 V2”和“高级 V3”应用服务计划中提供。    若要详细了解此设置，请参阅 [NAT 网关集成](./networking/nat-gateway-integration.md)。
+你可以通过将区域性 VNet 集成与虚拟网络 NAT 网关一起使用来将流量定向通过静态公共 IP 地址，以此来控制来自应用的出站流量的 IP 地址。 [区域性 VNet 集成](./web-sites-integrate-with-vnet.md)在“标准”、“高级”、“高级 V2”和“高级 V3”应用服务计划中提供。    若要详细了解此设置，请参阅 [NAT 网关集成](./networking/nat-gateway-integration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

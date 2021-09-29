@@ -7,12 +7,12 @@ ms.author: rgarcia
 ms.date: 06/23/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6ee047cd39eb092c55ed417995bf1e9df6134c5e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b628aab20e08460ea6d023651098227aa3390d5e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113094778"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791985"
 ---
 # <a name="quickstart-upgrade-quickstart-app-to-unity-2020"></a>快速入门：将快速入门应用升级到 Unity 2020
 
@@ -48,7 +48,7 @@ ms.locfileid: "113094778"
 
 升级过程完成后，Unity 编辑器将打开。
 
-按照<a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>文档来设置工具，并了解如何使用该工具。
+按照<a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>文档来设置工具，并了解如何使用该工具。
 
 在“平台支持”部分，将“混合现实 OpenXR 插件”功能包（版本 1.0.0 或更高版本）安装到 Unity 项目文件夹中。 如果你处理的是 `quickstarts/apps/unity/mrtk` 项目，请同时打开“混合现实工具包”部分，找到“混合现实工具包基础”和“混合现实工具包工具”功能包，并将其升级到版本 2.7.0 或更高版本。
 

@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 53153c7ea154b77ee4d0d348818c891ce22bc5f8
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 388b84dc831984cf03b91ff16e4cfb8962b88c73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470951"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662716"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -41,12 +41,12 @@ ms.locfileid: "123470951"
 可以使用下列工具中的任何一种将内容上传到 **$web** 容器：
 
 > [!div class="checklist"]
-> * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
-> * [Azure PowerShell 模块](storage-blob-static-website-how-to.md?tabs=azure-powershell)
-> * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
-> * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code 扩展](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
+> - [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
+> - [Azure PowerShell 模块](storage-blob-static-website-how-to.md?tabs=azure-powershell)
+> - [AzCopy](../common/storage-use-azcopy-v10.md)
+> - [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
+> - [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
+> - [Visual Studio Code 扩展](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
 
 ## <a name="viewing-content"></a>查看内容
 
@@ -102,7 +102,7 @@ ms.locfileid: "123470951"
 
 ## <a name="permissions"></a>权限
 
-能够启用静态网站的权限是 Microsoft.Storage/storageAccounts/blobServices/write 或共享式密钥。  提供此访问权限的内置角色包括存储帐户参与者。  
+能够启用静态网站的权限是 Microsoft.Storage/storageAccounts/blobServices/write 或共享式密钥。  提供此访问权限的内置角色包括存储帐户参与者。
 
 ## <a name="pricing"></a>定价
 
@@ -116,11 +116,11 @@ ms.locfileid: "123470951"
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png)|![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
@@ -137,7 +137,7 @@ ms.locfileid: "123470951"
 
 ##### <a name="how-do-i-use-a-custom-domain-with-a-static-website"></a>如何将自定义域与静态网站配合使用？
 
-可以使用 [Azure 内容分发网络 (Azure CDN)](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) 在静态网站中配置[自定义域](./static-website-content-delivery-network.md)。 Azure CDN 在世界各地为网站提供了一致的低延迟。 
+可以使用 [Azure 内容分发网络 (Azure CDN)](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) 在静态网站中配置[自定义域](./static-website-content-delivery-network.md)。 Azure CDN 在世界各地为网站提供了一致的低延迟。
 
 ##### <a name="how-do-i-use-a-custom-ssl-certificate-with-a-static-website"></a>如何将自定义 SSL 证书用于静态网站？
 
@@ -153,13 +153,13 @@ ms.locfileid: "123470951"
 
 ##### <a name="why-isnt-the-root-directory-of-the-website-not-redirecting-to-the-default-index-page"></a>为什么网站的根目录不重定向到默认索引页？
 
-在 Azure 门户中，打开帐户的静态网站配置页，并查找在“索引文档名称”字段中设置的名称和扩展名。 确保此名称与位于存储帐户的 $web 容器中的文件的名称完全相同。 静态网站的 URL 中的文件名和扩展名区分大小写，即使通过 HTTP 提供也是如此。 
+在 Azure 门户中，打开帐户的静态网站配置页，并查找在“索引文档名称”字段中设置的名称和扩展名。 确保此名称与位于存储帐户的 $web 容器中的文件的名称完全相同。 静态网站的 URL 中的文件名和扩展名区分大小写，即使通过 HTTP 提供也是如此。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Azure 存储中托管静态网站](storage-blob-static-website-how-to.md)
-* [将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)
-* [Azure Functions](../../azure-functions/functions-overview.md)
-* [Azure 应用服务](../../app-service/overview.md)
-* [生成首个无服务器 Web 应用程序](/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [教程：在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)
+- [在 Azure 存储中托管静态网站](storage-blob-static-website-how-to.md)
+- [将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)
+- [Azure Functions](../../azure-functions/functions-overview.md)
+- [Azure 应用服务](../../app-service/overview.md)
+- [生成首个无服务器 Web 应用程序](/azure/functions/tutorial-static-website-serverless-api-with-database)
+- [教程：在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)

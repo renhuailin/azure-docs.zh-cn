@@ -1,17 +1,17 @@
 ---
 title: 最终用户身份验证 - 采用 Azure Data Lake Storage Gen1 的 REST - Azure
 description: 了解如何通过 REST API 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
-ms.openlocfilehash: 462cd06c9da3b1f0a57c293d52c59181372b709b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 4b2a9259ca6177861ebf6dd3c84694941a0bb9aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92103741"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648051"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>通过 REST API 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "92103741"
 
 本文介绍如何使用 REST API 执行 Azure Data Lake Storage Gen1 最终用户身份验证。 有关使用 REST API 的 Data Lake Storage Gen1 服务到服务身份验证，请参阅[使用 REST API 进行 Data Lake Storage Gen1 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 

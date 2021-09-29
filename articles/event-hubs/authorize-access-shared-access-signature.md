@@ -2,13 +2,13 @@
 title: 在 Azure 事件中心使用共享访问签名授权访问
 description: 本文提供有关使用共享访问签名 (SAS) 授权访问 Azure 事件中心资源的信息。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: cc5ed89f9197bfb79735e558b9f36e22f87eba4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85323125"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561037"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>使用共享访问签名授权访问事件中心资源
 使用共享访问签名 (SAS) 可以授予对事件中心命名空间中的资源的受限访问权限。 SAS 基于授权规则保护对事件中心资源的访问。 这些规则是针对命名空间或实体（事件中心或主题）配置的。 本文提供 SAS 模型的概述，并探讨 SAS 最佳做法。

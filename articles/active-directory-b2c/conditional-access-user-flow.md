@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 06/03/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 96e402a46d931223832295ccbd892eb38b909c59
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 54229ff68cf9e4ac749fb1396282d9c881f52806
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220800"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572664"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>向 Azure Active Directory B2C 中的用户流添加条件访问
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
@@ -75,11 +75,12 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 ## <a name="prepare-your-azure-ad-b2c-tenant"></a>准备 Azure AD B2C 租户
 若要添加条件访问策略，请禁用安全默认值：
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-3. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
-4. 选择“属性”，然后选择“管理安全默认值” 。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
+1. 选择“属性”，然后选择“管理安全默认值” 。
    ![禁用安全默认值](media/conditional-access-user-flow/disable-security-defaults.png)
-5. 在“启用安全默认值”下，选择“否”。 
+1. 在“启用安全默认值”下，选择“否”。 
    ![将“启用安全默认值”切换键设置为“否”](media/conditional-access-user-flow/enable-security-defaults-toggle.png)
 
 ## <a name="add-a-conditional-access-policy"></a>添加条件访问策略
@@ -331,8 +332,10 @@ MFA向用户流添加条件访问时，请考虑使用多重身份验证 (MFA)�
    > 随着条件访问在 Azure AD B2C 中正式发布，现在系统会在注册期间提示用户注册 MFA 方法。 在正式发布之前创建的任何注册用户流都不会自动反映这一新行为，但你可以通过创建新的用户流来包括该行为。
 ::: zone pivot="b2c-user-flow"
 若要为用户流启用条件访问，请确保版本支持条件访问。 这些用户流版本标记为“推荐”。
+
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 在“策略”下，选择“用户流” 。 然后选择用户流。
 1. 选择“属性”，并通过查找标记为“条件访问”的设置来确保用户流支持条件访问 。
@@ -374,14 +377,15 @@ MFA向用户流添加条件访问时，请考虑使用多重身份验证 (MFA)�
 ## <a name="review-conditional-access-outcomes-in-the-audit-report"></a>查看审核报告中的条件访问结果
 查看条件访问事件的结果：
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-3. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
-4. 在“活动”下，选择“审核日志” 。
-5. 通过将“类别”设置为“B2C”并将“活动资源类型”设置为“IdentityProtection”来筛选审核日志   。 然后，选择“应用”。
-6. 查看最多过去 7 天的审核活动。 包括以下类型的活动：
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
+1. 在“活动”下，选择“审核日志” 。
+1. 通过将“类别”设置为“B2C”并将“活动资源类型”设置为“IdentityProtection”来筛选审核日志   。 然后，选择“应用”。
+1. 查看最多过去 7 天的审核活动。 包括以下类型的活动：
    - **评估条件访问策略**：此审核日志条目指示在身份验证过程中执行了条件访问评估。
    - **修复用户**：此条目指示最终用户符合条件访问策略的授权或要求，并已向风险引擎报告此活动以修复用户（降低用户风险）。
-7. 在列表中选择“评估条件访问策略”日志条目以打开“活动详细信息：审核日志” 页，其中显示审核日志标识符，以及“其他详细信息”部分中的以下信息：
+1. 在列表中选择“评估条件访问策略”日志条目以打开“活动详细信息：审核日志” 页，其中显示审核日志标识符，以及“其他详细信息”部分中的以下信息：
    - **ConditionalAccessResult**：条件策略评估所需的授权。
    - **AppliedPolicies**：已满足条件且策略处于启用状态的所有条件访问策略的列表。
    - **ReportingPolicies**：设置为“仅限报告”模式且满足条件的条件访问策略的列表。

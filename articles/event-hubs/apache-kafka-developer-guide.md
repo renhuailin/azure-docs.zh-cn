@@ -1,14 +1,14 @@
 ---
 title: 针对事件中心的 Apache Kafka 开发人员指南
 description: 本文提供相关文章的链接，这些文章介绍了如何将 Kafka 应用程序与 Azure 事件中心集成。
-ms.date: 06/23/2020
+ms.date: 09/20/2021
 ms.topic: article
-ms.openlocfilehash: 84fa40d7cc4b09f31d78665f901b49adacf3267f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1206d01a644545d1cbcc1d92a941fc4e29aa4d76
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303077"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660873"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>针对 Azure 事件中心的 Apache Kafka 开发人员指南
 本文提供相关文章的链接，这些文章介绍了如何将 Apache Kafka 应用程序与 Azure 事件中心集成。 

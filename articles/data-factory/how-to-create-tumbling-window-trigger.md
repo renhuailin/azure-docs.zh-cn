@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: b4a2e86c66584f555dd88dfd8e3d3b8b0fac5858
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 7b0af3fbd090eec36c69f784639ff401f5d80c46
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822731"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831432"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 
@@ -100,7 +100,7 @@ ms.locfileid: "122822731"
 
 下表概述了与翻转窗口触发器中的循环和计划相关的主要 JSON 元素：
 
-| JSON 元素 | 说明 | 类型 | 允许的值 | 必须 |
+| JSON 元素 | 说明 | 类型 | 允许的值 | 必选 |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
 | **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |

@@ -1,20 +1,20 @@
 ---
 title: 适用于虚拟机的 Azure 专用主机概述
 description: 详细了解如何使用 Azure 专用主机部署虚拟机。
-author: cynthn
+author: brittanyrowe
 ms.service: virtual-machines
 ms.subservice: dedicated-hosts
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 12/07/2020
-ms.author: cynthn
-ms.reviewer: zivr
-ms.openlocfilehash: 957bc2f34ddbc1af019afe0154d3a27ca6e3e368
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.author: brittanyrowe
+ms.reviewer: brittanyrowe
+ms.openlocfilehash: 6e34d5c638c8501840c9ef8d9bbaf22ae2874ff1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451558"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557091"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 专用主机
 
@@ -80,7 +80,6 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 
 在使用自动 VM 放置时，有以下已知的问题和限制：
 
-- 无法在专用主机上应用 Azure 混合权益。
 - 无法重新部署 VM。
 - 无法在专用主机上使用 Lsv2、NVasv4、Nvsv3、Msv2 或 M系列 VM
 

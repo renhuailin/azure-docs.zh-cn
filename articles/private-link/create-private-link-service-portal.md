@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 6b54784b5cd77113983dea5e936d93e36aca5591
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: de7d106ae02e1150d9765e60fbfdf0dc0cb9bc74
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201841"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810314"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用链接服务
 
@@ -50,7 +50,7 @@ ms.locfileid: "122201841"
     | 资源组   | 选择“新建”。 输入 CreatePrivLinkService-rg。 </br> 选择“确定”。 |
     | **实例详细信息** |                                                                 |
     | 名称             | 输入“myVNet”                                    |
-    | 区域           | 选择“(US)美国东部” |
+    | 区域           | 选择“(US)美国东部 2” |
 
 5. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
 

@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 170d6078863feb76582974e4b1581ea60edca7c2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: b5074e3d07a1df199e189dfb906190c82bde6905
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322890"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796583"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>示例：创建表单识别器自定义技能
 
@@ -30,7 +30,7 @@ ms.locfileid: "122322890"
 
 ## <a name="train-your-model"></a>训练模型
 
-使用此技能之前，需要使用输入窗体训练表单识别器模型。 按照 [cURL 的快速入门](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api)来学习如何训练一个模型。 你可以使用该快速入门中提供的示例窗体，也可以使用自己的数据。 模型训练完成后，将其 ID 值复制到安全位置。
+使用此技能之前，需要使用输入窗体训练表单识别器模型。 按照 [cURL 的快速入门](../applied-ai-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api)来学习如何训练一个模型。 你可以使用该快速入门中提供的示例窗体，也可以使用自己的数据。 模型训练完成后，将其 ID 值复制到安全位置。
 
 ## <a name="set-up-the-custom-skill"></a>设置自定义技能
 

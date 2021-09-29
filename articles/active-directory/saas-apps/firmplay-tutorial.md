@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2230958fb41d8e42967beeca57cf10ea048d1ef9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4c6cd74b81f2573e1d2e1268ac459234dd9f83e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92453461"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>教程：Azure Active Directory 与 FirmPlay - Employee Advocacy for Recruiting 的集成
 
@@ -182,7 +182,7 @@ ms.locfileid: "92453461"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“FirmPlay - Employee Advocacy for Recruiting”磁贴时，应会自动登录到设置了 SSO 的 FirmPlay - Employee Advocacy for Recruiting。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“FirmPlay - Employee Advocacy for Recruiting”磁贴时，应会自动登录到设置了 SSO 的 FirmPlay - Employee Advocacy for Recruiting。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

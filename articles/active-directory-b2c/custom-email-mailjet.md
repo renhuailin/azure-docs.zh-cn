@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 01aa29865967818a3308bc696544fdb140d95f73
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: c8b7a30cfa47634aeb2eace9ee1c8d3ad2d388c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409426"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564237"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>使用 Mailjet 进行自定义电子邮件验证
 
@@ -52,7 +52,8 @@ ms.locfileid: "111409426"
 接下来，将 Mailjet API 密钥存储在 Azure AD B2C 策略密钥中，以供策略引用。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上，选择“Identity Experience Framework”。
 1. 选择“策略密钥”，然后选择“添加” 。

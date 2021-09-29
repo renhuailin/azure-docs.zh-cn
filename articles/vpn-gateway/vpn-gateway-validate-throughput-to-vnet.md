@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 7a50328629f6236893fd7832ea1f96acc8e75112
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b5c3853ca2849590b0338c3f82b3e8606cd35d2d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289437"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643662"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
@@ -47,7 +47,7 @@ VPN 网关连接涉及以下组件：
 1. 确定 Internet 服务提供商 (ISP) 的带宽。
 1. 使用 VM、VPN 网关或 ISP 的最小带宽来计算预期的吞吐量；其度量方式是兆位/每秒 (/) 除以八 (8)。
 
-如果计算得出的吞吐量无法满足应用程序的基准吞吐量需求，则必须提高已被确定为瓶颈的资源的带宽。 若要调整 Azure VPN 网关的大小，请参阅[更改网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 若要调整虚拟机的大小，请参阅[调整 VM 的大小](../virtual-machines/windows/resize-vm.md)。 如果 Internet 的带宽不及预期，也可联系 ISP。
+如果计算得出的吞吐量无法满足应用程序的基准吞吐量需求，则必须提高已被确定为瓶颈的资源的带宽。 若要调整 Azure VPN 网关的大小，请参阅[更改网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 若要调整虚拟机的大小，请参阅[调整 VM 的大小](../virtual-machines/resize-vm.md)。 如果 Internet 的带宽不及预期，也可联系 ISP。
 
 > [!NOTE]
 > VPN 网关吞吐量是所有站点到站点\VNET 到 VNET 或点到站点连接的聚合。

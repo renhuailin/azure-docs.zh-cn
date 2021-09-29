@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 469e7005d1def5bd2f76347fc934577eca54b435
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e55653b5a5b3ac52c0952d5a70e835646247664e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745333"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673704"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>了解 Azure IoT Edge 使用证书的方式
 
@@ -22,7 +22,7 @@ ms.locfileid: "121745333"
 IoT Edge 证书由模块和下游 IoT 设备用来验证 [IoT Edge 中心](iot-edge-runtime.md#iot-edge-hub)运行时模块的身份和合法性。 这些验证可实现运行时、模块和 IoT 设备之间的 TLS（传输层安全性）安全连接。 与 IoT 中心本身一样，IoT Edge 需要来自 IoT 下游（或叶）设备和 IoT Edge 模块的安全加密连接。 为了建立安全的 TLS 连接，IoT Edge 中心模块为连接客户端提供服务器证书链，以便它们验证其身份。
 
 >[!NOTE]
->本文讨论了用于保护 IoT Edge 设备上不同组件之间的连接或 IoT Edge 设备与任何叶设备之间的连接的证书。 还可以使用一些证书向 IoT 中心验证 IoT Edge 设备。 这些身份验证证书是不同的，本文不对其进行讨论。 有关使用证书对设备进行身份验证的详细信息，请参阅[使用 X.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)。
+>本文讨论了用于保护 IoT Edge 设备上不同组件之间的连接或 IoT Edge 设备与任何叶设备之间的连接的证书。 还可以使用一些证书向 IoT 中心验证 IoT Edge 设备。 这些身份验证证书是不同的，本文不对其进行讨论。 有关使用证书对设备进行身份验证的详细信息，请参阅[使用 X.509 证书创建和预配 IoT Edge 设备](how-to-provision-devices-at-scale-linux-x509.md)。
 
 本文介绍了 IoT Edge 证书如何在生产、开发和测试方案中工作。
 

@@ -3,7 +3,7 @@ title: Azure API 管理模板资源 | Microsoft 文档
 description: 了解适用于 Azure API 管理中的开发人员门户模板的资源类型。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 51a1b4c6-a9fd-4524-9e0e-03a9800c3e94
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 608299143de1e480548efaf8a62966c4de96736e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84689981"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654416"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API 管理模板资源
 Azure API 管理提供以下类型的资源，适用于开发人员门户模板。  
@@ -582,7 +582,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |TextboxLabelEmailLastName|姓氏|  
 |TextboxLabelNotificationsSenderEmail|通知发件人电子邮件|  
 |TextboxLabelOrganizationName|组织名称|  
-|SubscriptionStateActive|活动|  
+|SubscriptionStateActive|可用|  
 |SubscriptionStateCancelled|已取消|  
 |SubscriptionStateExpired|已过期|  
 |SubscriptionStateRejected|已拒绝|  

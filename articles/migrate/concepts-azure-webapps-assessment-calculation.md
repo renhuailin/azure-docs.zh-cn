@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: ec83b7a8de449a73dc227941f864ac7cd8495e68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3328fb0fb20a9b0e492c3cd4281ee35dcf12dda0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778227"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792023"
 ---
 # <a name="assessment-overview-migrate-to-azure-app-service"></a>评估概述（迁移到 Azure 应用服务）
 
@@ -92,7 +92,7 @@ Azure 应用服务评估提供了一种调整大小标准：
 
 ### <a name="azure-app-service-plan"></a>Azure 应用服务计划
 
-在应用服务中，应用始终在[应用服务计划](/azure/app-service/overview-hosting-plans)中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 综合来看，计划/SKU 如下表所示。
+在应用服务中，应用始终在[应用服务计划](../app-service/overview-hosting-plans.md)中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 综合来看，计划/SKU 如下表所示。
 
 需要隔离 | 预留实例 | 应用服务计划/SKU
 --- | --- | ---
@@ -103,7 +103,7 @@ Azure 应用服务评估提供了一种调整大小标准：
 
 ### <a name="azure-app-service-cost-details"></a>Azure 应用服务成本详细信息
 
-[应用服务计划](/azure/app-service/overview-hosting-plans)会根据所用的计算资源量产生[费用](https://azure.microsoft.com/pricing/details/app-service/windows/)。 在应用服务中，按应用服务计划而不是 Web 应用付费。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。 放入此应用服务计划的任何应用都在应用服务计划定义的这些计算资源中运行。
+[应用服务计划](../app-service/overview-hosting-plans.md)会根据所用的计算资源量产生[费用](https://azure.microsoft.com/pricing/details/app-service/windows/)。 在应用服务中，按应用服务计划而不是 Web 应用付费。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。 放入此应用服务计划的任何应用都在应用服务计划定义的这些计算资源中运行。
 为了优化成本，Azure Migrate 评估将多个 Web 应用分配给每个建议的应用服务计划。 分配给每个计划实例的 Web 应用的数量如下表所示。
 
 **应用服务计划** | 每个应用服务计划的 Web 应用数
@@ -113,7 +113,7 @@ P1v2  | 8
 P1v3  | 16
 
 > [!NOTE]
-> 随时可以提高和降低应用服务计划。 [了解详细信息](/azure/app-service/overview-hosting-plans#what-if-my-app-needs-more-capabilities-or-features/)。
+> 随时可以提高和降低应用服务计划。 [了解详细信息](../app-service/overview-hosting-plans.md#what-if-my-app-needs-more-capabilities-or-features)。
 
 ## <a name="next-steps"></a>后续步骤
 - [查阅](best-practices-assessment.md)关于创建评估的最佳做法。 

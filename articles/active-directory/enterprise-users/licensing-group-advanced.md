@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/28/2021
+ms.date: 09/22/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b0585e19a4a081502a6b93b79be7ed293a4b1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab2621e1470eeffb1929ade3066e7c1b45ce9e52
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750530"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708864"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -76,7 +76,7 @@ ms.locfileid: "121750530"
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>直接许可证与组许可证共存
 
-如果用户从组继承许可证，则无法直接在用户属性中删除或修改该许可证分配。 只能在组中更改许可证分配，然后更改会传播到所有用户。 如果需要将任何其他功能分配给具有组许可证分配许可证的用户，则必须创建另一个组以将其他功能分配给该用户。
+如果用户从组继承许可证，则无法直接在用户属性中删除或修改该许可证分配。 只能在组中更改许可证分配，然后更改会传播到所有用户。 如果需要向通过组许可分配获得许可的用户分配其他功能，需要创建另一个组，以便向用户分配其他功能。
 
 可以删除直接分配的许可证，不会影响用户继承的许可证。 假设用户从某个组继承了 Office 365 企业版 E3 许可证。
 

@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: gatharej
-ms.openlocfilehash: 4c4e3e2331ce334fbdd1c273fecd899bcd24612b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 395ca8022b0355ff79c200dfbe87bc78e29de089
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124556"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060851"
 ---
 # <a name="azure-internet-peering-for-communications-services-walkthrough"></a>用于通信服务的 Azure Internet 对等互连演练
 
@@ -52,7 +52,7 @@ Azure Internet 对等互连为通信服务提供高度可靠且启用服务质�
 下一步是为对等互连服务创建直接对等连接。
 
 > [!NOTE]
-> ASN 关联获得批准后，请在电子邮件中附加你的 ASN 和订阅 ID 并发送至 peeringservices@microsoft.com，以将你的订阅与通信服务相关联。 
+> ASN 关联获得批准后，请在电子邮件中附加你的 ASN 和订阅 ID 并发送至 peeringservice@microsoft.com，以将你的订阅与通信服务相关联。 
 
 2\.    为对等互连服务创建直接对等互连连接：
 

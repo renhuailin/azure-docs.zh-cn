@@ -3,16 +3,17 @@ title: 复制活动性能和优化指南
 description: 了解使用复制活动时影响 Azure 数据工厂中数据移动性能的关键因素。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 145d93cc073664ed1260170a9c1f7031c9831b7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377204"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559314"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -45,7 +46,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 作为参考，下表基于内部测试显示了给定源和接收器对的复制吞吐量数目（以 MBps 为单位）。 为进行比较，它还演示了[云数据移动单位](#cloud-data-movement-units)或[数据管理网关可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)的不同设置（多个网关节点）如何帮助复制性能。
 
-![性能矩阵](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/CopyPerfRef.png" alt-text="性能矩阵":::
 
 >[!IMPORTANT]
 >在 Azure 数据工厂版本 1 中，用于云到云复制的最小云数据移动单元数为两个。 如果未指定，请参阅[云数据移动单元](#cloud-data-movement-units)了解使用的默认数据移动单元数。
@@ -187,11 +188,11 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 在云复制方案（源和接收器数据都位于云）中，未使用网关。 数据工厂服务执行复制操作。
 
-![暂存复制：云方案](media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png)
+:::image type="content" source="media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png" alt-text="暂存复制：云方案":::
 
 在混合复制方案中（源位于本地，接收器位于云中），网关将数据从源数据存储移动到暂存数据存储。 数据工厂服务将数据从暂存数据存储复制到接收器数据存储。 反向流也支持通过暂存将数据从云数据存储复制到本地数据存储。
 
-![暂存复制：混合方案](media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png)
+:::image type="content" source="media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png" alt-text="暂存复制：混合方案":::
 
 使用暂存存储激活数据移动时，可指定是否要先压缩数据，再将数据从源数据存储移动到过渡数据存储或暂存数据存储，然后先解压缩数据，再将数据从过渡数据存储或暂存数据移动到接收器数据存储。
 
@@ -247,7 +248,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
    使用 **监视和管理应用** 收集执行时间和性能特征。 在数据工厂主页上选择“监视和管理”。 在树视图中，选择“输出数据集”。 在“活动窗口”列表中，选择复制活动运行。 **活动窗口** 列出了复制活动持续时间和所复制的数据大小。 **活动窗口资源管理器** 中列出了吞吐量。 有关此应用的详细信息，请参阅[使用监视和管理应用来监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
 
-   ![活动运行详细信息](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
+   :::image type="content" source="./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png" alt-text="活动运行详细信息":::
 
    在本文之后的部分，可将方案中的性能和配置与我们测试中复制活动的[性能参考](#performance-reference)进行比较。
 2. **诊断和优化性能**。 如果观察到的性能不符合预期，则需要识别性能瓶颈。 然后，优化性能以消除或减少瓶颈的影响。 本文不涵盖性能诊断的完整说明，但下面是一些常见的注意事项：
@@ -258,7 +259,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
      * [暂存复制](#staged-copy)
      * [数据管理网关可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)
    * [数据管理网关](#considerations-for-data-management-gateway)
-   * [Source](#considerations-for-the-source)
+   * [源](#considerations-for-the-source)
    * [接收器](#considerations-for-the-sink)
    * [序列化和反序列化](#considerations-for-serialization-and-deserialization)
    * [压缩](#considerations-for-compression)
@@ -374,7 +375,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 如你所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN> 网关 > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
 
-![数据流](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/case-study-pic-1.png" alt-text="数据流":::
 
 以下的一个或多个因素可能会导致性能瓶颈：
 
@@ -394,19 +395,19 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 **分析和性能优化**：例如，如果已在四核计算机上安装了网关，数据工厂将使用 16 个并行复制将文件从文件系统并发移动到 Blob 存储。 此并行执行应会导致高吞吐量。 还可显式指定并行复制数。 复制许多小文件时，并行复制通过更有效地使用资源显著帮助提高吞吐量。
 
-![方案 1](./media/data-factory-copy-activity-performance/scenario-1.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-1.png" alt-text="方案 1":::
 
 **方案 II**：将 20 个 Blob（每个 500 MB）从 Blob 存储复制到 Data Lake Store Analytics，然后优化性能。
 
 **分析和性能优化**：在此方案中，数据工厂通过使用单个复制（**parallelCopies** 设置为 1）和单一云数据移动单位，将数据从 Blob 存储复制到 Data Lake Store。 观察到的吞吐量将接近[性能参考部分](#performance-reference)中描述的吞吐量。
 
-![方案 2](./media/data-factory-copy-activity-performance/scenario-2.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-2.png" alt-text="方案 2":::
 
 **方案 III**：个别文件大小大于几十 MB 且总量很大。
 
 **分析和优化性能**：因为单一云 DMU 的资源限制，增加 **parallelCopies** 不会产生更好的复制性能。 而应指定更多云 DMU，获取更多资源来执行数据移动。 请勿指定 **parallelCopies** 属性的值。 数据工厂处理并行度。 在此情况下，如果将 **cloudDataMovementUnits** 设置为 4，则会产生大约 4 倍的吞吐量。
 
-![方案 3](./media/data-factory-copy-activity-performance/scenario-3.png)
+:::image type="content" source="./media/data-factory-copy-activity-performance/scenario-3.png" alt-text="方案 3":::
 
 ## <a name="reference"></a>参考
 下面是有关一些受支持数据存储的性能监视和优化参考：

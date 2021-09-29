@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 05b42a3dd6d5df7bf4484e23b2780732d55ab731
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f1b5196d422d2bc4a961c2b45ed814ee5555f2c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789148"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643833"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>使用 Raspberry Pi 3 B + Reference Image 的 Device Update for Azure IoT Hub 教程
 
@@ -143,7 +143,7 @@ Device Update for Azure IoT Hub 软件受以下许可条款的约束：
 
 ## <a name="import-update"></a>导入更新
 
-1. 下载[示例导入清单](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/TutorialImportManifest.json)和[示例映像更新](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu)。
+1. 下载[示例导入清单](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0/TutorialImportManifest_Pi.json)和[示例映像更新](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu)。
 2. 登录 [Azure 门户](https://portal.azure.com/)并导航到具有设备更新的 IoT 中心。 然后，从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
 3. 选择“更新”选项卡。
 4. 选择“+ 导入新更新”。

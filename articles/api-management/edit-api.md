@@ -3,7 +3,7 @@ title: 使用 Azure 门户编辑 API | Microsoft Docs
 description: 了解如何使用 API 管理 (APIM) 编辑 API。 在 APIM 实例中添加、删除或重命名操作，或编辑 API 的 Swagger。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/08/2017
-ms.author: apimpm
-ms.openlocfilehash: 1c4e64251390936e8a63ee904ec69f173cac6114
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: db8ceb0921d7ed18cfaa7651d208d5f7e899a6e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146699"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654435"
 ---
 # <a name="edit-an-api"></a>编辑 API
 

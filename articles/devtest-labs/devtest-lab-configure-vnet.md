@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中配置虚拟网络 | Microsoft Docs
+title: 配置虚拟网络
 description: 了解如何配置现有虚拟网络和子网并通过 Azure 开发测试实验室在 VM 中使用它们
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afc3b3077aa5430d2c624d51bcd22118cb52355e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87283548"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600639"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置虚拟网络
 如文章[将 VM 添加到实验室](devtest-lab-add-vm.md)中所述，在实验室中创建 VM 时，可指定已配置的虚拟网络。 例如，可能需要使用 ExpressRoute 或站点到站点 VPN 配置的虚拟网络从 VM 访问公司网络资源。

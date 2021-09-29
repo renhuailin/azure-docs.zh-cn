@@ -3,16 +3,17 @@ title: 解决数据管理网关问题
 description: 提供解决数据管理网关相关问题的提示。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e136ec96cc2a698f0b0e794830403dcbc284341c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388339"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554233"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
 本文提供有关解决数据管理网关使用问题的信息。
@@ -69,7 +70,7 @@ ms.locfileid: "100388339"
 
 
 
-![密钥内容或格式无效](media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png" alt-text="密钥内容或格式无效":::
 
 #### <a name="cause"></a>原因
 输入网关密钥的内容或格式不正确。 其中一个原因可能是仅从门户复制了密钥的一部分，或者使用了无效密钥。
@@ -82,7 +83,7 @@ ms.locfileid: "100388339"
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![突出显示表明网关密钥无效或为空的错误消息的屏幕截图。](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png" alt-text="突出显示表明网关密钥无效或为空的错误消息的屏幕截图。":::
 
 #### <a name="cause"></a>原因
 网关密钥已重新生成或已在 Azure 门户中删除了网关。 如果数据管理网关安装程序不是最新版本，也可能会发生此问题。
@@ -97,7 +98,7 @@ ms.locfileid: "100388339"
 
 `Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
 
-![网关密钥无效或为空](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png" alt-text="网关密钥无效或为空":::
 
 #### <a name="cause"></a>原因
 发生此错误的原因可能是已删除了网关或已重新生成了关联的网关密钥。
@@ -110,12 +111,12 @@ ms.locfileid: "100388339"
 ### <a name="7-problem"></a>7. 问题
 注册网关时，可能需要输入证书的路径和密码。
 
-![显示你输入证书的路径和密码的位置的屏幕截图。](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/specify-certificate.png" alt-text="显示你输入证书的路径和密码的位置的屏幕截图。":::
 
 #### <a name="cause"></a>原因
 之前已在其他计算机上注册了网关。 在网关初始注册期间，网关已关联有加密证书。 证书可由网关自身生成或由用户提供。  此证书用于加密数据存储（链接服务）的凭据。  
 
-![导出证书](media/data-factory-troubleshoot-gateway-issues/export-certificate.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/export-certificate.png" alt-text="导出证书":::
 
 在其他主机计算机上还原网关时，注册向导会请求此证书解密先前使用此证书加密的凭据。  如果没有此证书，新网关便无法解密凭据，且与此新网关相关联的后续复制活动执行会失败。  
 
@@ -155,7 +156,7 @@ ms.locfileid: "100388339"
 
 `Error: Gateway cannot connect to cloud service through service bus`
 
-![网关无法连接到云服务](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png" alt-text="网关无法连接到云服务":::
 
 #### <a name="cause"></a>原因
 网关无法通过服务总线连接到云服务。
@@ -189,7 +190,7 @@ ms.locfileid: "100388339"
 
 出现此错误时，数据管理网关配置管理器的设置页可能如以下屏幕快照所示。
 
-![无法访问数据库](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png" alt-text="无法访问数据库":::
 
 #### <a name="cause"></a>原因
 网关计算机上的 TLS/SSL 证书可能已丢失。 网关计算机无法加载当前用于 TLS 加密的证书。 可能还会在事件日志中看到类似以下消息的错误消息。
@@ -203,10 +204,10 @@ ms.locfileid: "100388339"
 2. 切换到“设置”选项卡。  
 3. 单击“更改”按钮更改 TLS/SSL 证书。
 
-   ![更改证书按钮](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
+   :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png" alt-text="更改证书按钮":::
 4. 选择一个新证书作为 TLS/SSL 证书。 可使用自己或任何组织生成的任何 TLS/SSL 证书。
 
-   ![指定证书](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
+   :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png" alt-text="指定证书":::
 
 ## <a name="copy-activity-fails"></a>复制活动失败
 ### <a name="problem"></a>问题
@@ -232,7 +233,7 @@ ms.locfileid: "100388339"
 3. 在“测试连接”中，添加网关组值。
 4. 单击“测试”，查看是否可使用连接信息和凭据从网关计算机连接到本地数据源。 如果在安装驱动程序后测试连接仍然失败，请重新启动网关以便选择最新的更改。
 
-![在“诊断”选项卡中测试连接](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png" alt-text="在“诊断”选项卡中测试连接":::
 
 ## <a name="gateway-logs"></a>网关日志
 ### <a name="send-gateway-logs-to-microsoft"></a>向 Microsoft 发送网关日志
@@ -240,21 +241,21 @@ ms.locfileid: "100388339"
 
 1. 切换到数据管理网关配置管理器中的“诊断”选项卡。
 
-    ![数据管理网关 -“诊断”选项卡](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png" alt-text="数据管理网关 -“诊断”选项卡":::
 2. 单击“发送日志”查看以下对话框。
 
-    ![数据管理网关 - 发送日志](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png" alt-text="数据管理网关 - 发送日志":::
 3. （可选）单击“查看日志”在事件查看器中查看日志。
 4. （可选）单击“隐私”查看 Microsoft Web 服务隐私声明。
 5. 如若对要上传的内容感到满意，便可单击“发送日志”将过去 7 天内的日志发送给 Microsoft，以便进行故障排除。 应该会看到“发送日志”操作的状态如以下屏幕快照所示。
 
-    ![显示查看发送日志操作状态的位置的屏幕截图。](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png" alt-text="显示查看发送日志操作状态的位置的屏幕截图。":::
 6. 操作完成后，会看到如以下屏幕快照所示的对话框。
 
-    ![数据管理网关 - 发送日志状态](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png" alt-text="数据管理网关 - 发送日志状态":::
 7. 保存“报告 ID”，并将其与 Microsoft 支持部门共享。 此报告 ID 用于查找已经上传以进行故障排除的网关日志。  此报告 ID 也会保存在事件查看器中。  可通过查找事件 ID“25”找到该报表 ID，并查看日期和时间。
 
-    ![数据管理网关 - 发送日志报告 ID](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png" alt-text="数据管理网关 - 发送日志报告 ID":::    
 
 ### <a name="archive-gateway-logs-on-gateway-host-machine"></a>在网关主机计算机上存档网关日志
 在某些情况下可能碰到网关出现问题且无法直接共享网关日志：
@@ -265,11 +266,11 @@ ms.locfileid: "100388339"
 
 对于此类情况，可将网关日志另存为 zip 文件，并在联系 Microsoft 支持部门时将其与之共享。 例如在注册网关时收到错误，如以下屏幕快照所示。   
 
-![数据管理网关 - 注册错误](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png" alt-text="数据管理网关 - 注册错误":::
 
 单击“存档网关”日志链接，存档并保存日志，并与 Microsoft 支持部门共享 zip 文件。
 
-![数据管理网关 - 存档日志](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png" alt-text="数据管理网关 - 存档日志":::
 
 ### <a name="locate-gateway-logs"></a>查找网关日志
 可以在 Windows 事件日志中找到详细的网关日志信息。
@@ -279,4 +280,4 @@ ms.locfileid: "100388339"
 
    解决网关相关问题时，在事件查看器中查找错误级别事件。
 
-![数据管理网关 - 事件查看器中的日志](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png" alt-text="数据管理网关 - 事件查看器中的日志":::

@@ -8,12 +8,12 @@ ms.author: meiyl
 author: meiyl
 ms.reviewer: sawinark
 ms.date: 06/21/2021
-ms.openlocfilehash: 1d501a461caab23fb45441473fda60e13c7e8334
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1d1b8a876d55698db83b0c7d331f45797c3c1b3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733001"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743182"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>使用 SSIS 集成运行时中的“诊断连接”功能
 
@@ -23,9 +23,9 @@ ms.locfileid: "121733001"
 
 排查连接问题时，请使用“诊断连接”功能来测试连接。 此功能位于 Azure 数据工厂门户的“监视 SSIS 集成运行时”页面上。
 
- ![“监视”页面 - 诊断连接](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png)
+ :::image type="content" source="media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png" alt-text="“监视”页面 - 诊断连接":::
 
- ![“监视”页面 - 测试连接](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png)
+ :::image type="content" source="media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png" alt-text="“监视”页面 - 测试连接":::
 
 使用以下部分来了解在测试连接时出现的最常见错误。 每部分都介绍了以下内容：
 

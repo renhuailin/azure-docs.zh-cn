@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 0430217ab8c2f113127c6a2e519d9e394fc3d3e7
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 91991be65e132ebdcdc06fa5e3a7729debec7062
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318674"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836941"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Redis 缓存中导入和导出数据
 
@@ -59,7 +59,7 @@ ms.locfileid: "123318674"
 
     ![Import](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
-    可以通过关注 Azure 门户中的通知或通过查看[审核日志](../azure-resource-manager/management/view-activity-logs.md)中的事件，来监视导入操作的进度。
+    可以通过关注 Azure 门户中的通知或通过查看[审核日志](../azure-monitor/essentials/activity-log.md)中的事件，来监视导入操作的进度。
 
     ![导入进度](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "123318674"
 
     ![Export](./media/cache-how-to-import-export-data/cache-export-data.png)
 
-    可通过关注 Azure 门户中的通知或查看[审核日志](../azure-resource-manager/management/view-activity-logs.md)中的事件，来监视导出操作的进度。
+    可通过关注 Azure 门户中的通知或查看[审核日志](../azure-monitor/essentials/activity-log.md)中的事件，来监视导出操作的进度。
 
     ![导出数据完成](./media/cache-how-to-import-export-data/cache-export-data-export-complete.png)
 

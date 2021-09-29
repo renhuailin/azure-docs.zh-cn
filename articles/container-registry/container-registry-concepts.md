@@ -3,12 +3,12 @@ title: 关于注册表、存储库、映像和项目
 description: Azure 容器注册表、存储库和容器映像和其他项目的重要概念简介。
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 64ab3812b3f23a7b3a480d3530c82bd39f2d29a5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: add8c20de07a2d520095f257dac0356d1c21af57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784076"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596137"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>关于注册表、存储库和项目
 
@@ -68,7 +68,7 @@ ms.locfileid: "107784076"
 
 ### <a name="manifest"></a>清单
 
-推送到容器注册表的每个容器映像或项目都与一个清单相关联。 推送内容时由注册表生成的清单唯一标识映像并指定其层。 可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存储库的清单。 
+推送到容器注册表的每个容器映像或项目都与一个清单相关联。 推送内容时由注册表生成的清单唯一标识映像并指定其层。
 
 Linux `hello-world` 映像的基本清单类似于以下内容：
 

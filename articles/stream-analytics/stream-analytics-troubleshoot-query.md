@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0dc36b817d5b5cdf731edecd64e1879c153d866a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 444803285eca144ff5abd7cdaa83c90670774955
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98015124"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784482"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
@@ -43,7 +43,7 @@ ms.locfileid: "98015124"
 5.  确保按预期方式配置事件排序策略。 转到“设置”，选择“[事件排序](./stream-analytics-time-handling.md)” 。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
 
 6. 使用活动和资源日志进行调试：
-    - 使用[审核日志](../azure-resource-manager/management/view-activity-logs.md)，并进行筛选来发现和调试错误。
+    - 使用[审核日志](../azure-monitor/essentials/activity-log.md)，并进行筛选来发现和调试错误。
     - 使用[作业资源日志](stream-analytics-job-diagnostic-logs.md)来发现和调试错误。
 
 ## <a name="resource-utilization-is-high"></a>资源利用率高
@@ -104,7 +104,7 @@ ms.locfileid: "98015124"
 
 ## <a name="get-help"></a>获取帮助
 
-如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](/answers/topics/azure-stream-analytics.html)。
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

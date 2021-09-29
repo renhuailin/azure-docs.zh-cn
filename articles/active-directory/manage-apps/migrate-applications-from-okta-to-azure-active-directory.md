@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: 5b91946886866d86542725155114d86ab5316f03
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: c46410a6998998ace9bc1a9e9809262970a131f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439751"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791719"
 ---
 # <a name="tutorial-migrate-your-applications-from-okta-to-azure-active-directory"></a>教程：将应用程序从 Okta 迁移到 Azure Active Directory
 
@@ -79,13 +79,13 @@ Okta 提供了一个 API，该 API 可用于从一个集中的位置收集此信
 
 ![该插图显示应用程序列表](media/migrate-applications-from-okta-to-azure-active-directory/list-of-applications.png)
 
-建议复制此 JSON 列表，并使用 <https://konklone.io/json/> 之类的公用转换器或者在 PowerShell 中使用 [ConvertFrom-Json](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) 和 [ConvertTo-CSV](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertto-csv?view=powershell-7.1) 将其转换为 CSV。
+建议复制此 JSON 列表，并使用 <https://konklone.io/json/> 之类的公用转换器或者在 PowerShell 中使用 [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 和 [ConvertTo-CSV](/powershell/module/microsoft.powershell.utility/convertto-csv) 将其转换为 CSV。
 
 下载 CSV 后，Okta 租户中的应用程序已成功记录以供将来参考。
 
 ## <a name="migrate-a-saml-application-to-azure-ad"></a>将 SAML 应用程序迁移到 Azure AD
 
-若要将 SAML 2.0 应用程序迁移到 Azure AD，请先在 Azure AD 租户中配置该应用程序以进行应用程序访问。 在此示例中，我们将转换一个 Salesforce 实例。 请按照[此教程](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-tutorial)加入应用程序。
+若要将 SAML 2.0 应用程序迁移到 Azure AD，请先在 Azure AD 租户中配置该应用程序以进行应用程序访问。 在此示例中，我们将转换一个 Salesforce 实例。 请按照[此教程](../saas-apps/salesforce-tutorial.md)加入应用程序。
 
 若要完成迁移过程，请对 Okta 租户中发现的所有应用程序重复配置步骤。
 
@@ -145,7 +145,7 @@ Okta 提供了一个 API，该 API 可用于从一个集中的位置收集此信
 
     ![该插图显示有关选择新标识提供者的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/new-identity-provider.png)
 
-15. 如果正确配置了所有设置，则用户将会进入 Salesforce 主页。 如果遇到任何问题，请按照[调试指南](https://docs.microsoft.com/azure/active-directory/manage-apps/debug-saml-sso-issues)进行操作。
+15. 如果正确配置了所有设置，则用户将会进入 Salesforce 主页。 如果遇到任何问题，请按照[调试指南](../manage-apps/debug-saml-sso-issues.md)进行操作。
 
 16. 测试从 Azure 进行 SSO 连接后，返回到企业应用程序，将具有正确角色的其余用户分配到 Salesforce 应用程序。
 
@@ -172,7 +172,7 @@ Okta 提供了一个 API，该 API 可用于从一个集中的位置收集此信
 
    ![该插图显示有关新建 OIDC 应用程序的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/new-oidc-application.png)
 
-3. 在下一页上，你将看到有关应用程序注册租户的选择。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps)。
+3. 在下一页上，你将看到有关应用程序注册租户的选择。 有关详细信息，请参阅[此文](../develop/single-and-multi-tenant-apps.md)。
 
 在此示例中，我们将依次选择“任何组织目录中的帐户(任何 Azure AD 目录 - 多租户)”、“注册”  。
 
@@ -180,7 +180,7 @@ Okta 提供了一个 API，该 API 可用于从一个集中的位置收集此信
 
 4. 注册应用程序后，导航到“Azure Active Directory”下的“应用注册”页，然后打开新建的注册 。
 
-   根据[应用程序方案](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios)的不同，可能需要执行多种配置操作。 由于大多数方案需要应用客户端机密，我们将提供相关示例。
+   根据[应用程序方案](../develop/authentication-flows-app-scenarios.md)的不同，可能需要执行多种配置操作。 由于大多数方案需要应用客户端机密，我们将提供相关示例。
 
 5. 在“概述”页上，记录“应用程序(客户端) ID”以便稍后在应用程序中使用。
 
@@ -219,7 +219,7 @@ Okta 提供了一个 API，该 API 可用于从一个集中的位置收集此信
 
 ## <a name="migrate-a-custom-authorization-server-to-azure-ad"></a>将自定义授权服务器迁移到 Azure AD
 
-Okta 授权服务器一对一地映射到[公开 API](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-expose-web-apis#add-a-scope) 的应用程序注册。
+Okta 授权服务器一对一地映射到[公开 API](../develop/quickstart-configure-app-expose-web-apis.md#add-a-scope) 的应用程序注册。
 
 默认 Okta 授权服务器应映射到 Microsoft Graph 范围/权限。
 

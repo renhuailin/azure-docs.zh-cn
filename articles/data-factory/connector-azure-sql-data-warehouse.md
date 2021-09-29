@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 2131e74935ee831925dbe307a79c26909078e575
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: fb28edc395738a2993750d97e26b9a98999b1284
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123313966"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744062"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory-or-synapse-pipelines"></a>使用 Azure 数据工厂或 Synapse 管道在 Azure Synapse Analytics 中复制和转换数据
 
@@ -60,7 +60,7 @@ ms.locfileid: "123313966"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -249,7 +249,7 @@ Azure Synapse Analytics 数据集支持以下属性：
 | 属性  | 说明                                                  | 必需                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 **type** 属性必须设置为 **AzureSqlDWTable**。 | 是                         |
-| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -436,7 +436,7 @@ Azure 数据工厂和 Synapse 管道支持三种将数据加载到 Azure Synapse
 
 复制活动中的 Azure Synapse Analytics 连接器提供内置的数据分区，用于并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。 
 
-![分区选项的屏幕截图](./media/connector-sql-server/connector-sql-partition-options.png)
+:::image type="content" source="./media/connector-sql-server/connector-sql-partition-options.png" alt-text="分区选项的屏幕截图":::
 
 启用分区复制时，复制活动将对 Azure Synapse Analytics 源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则该服务会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Azure Synapse Analytics 检索一部分数据。
 
@@ -884,7 +884,7 @@ SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2
 - 可序列化
 - 无（忽略隔离级别）
 
-![隔离级别](media/data-flow/isolationlevel.png)
+:::image type="content" source="media/data-flow/isolationlevel.png" alt-text="隔离级别":::
 
 ### <a name="sink-transformation"></a>接收器转换
 
@@ -907,7 +907,7 @@ SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2
 
 **预处理和后处理 SQL 脚本**：输入将在数据写入接收器数据库之前（预处理）和之后（后处理）执行的多行 SQL 脚本
 
-![预处理和后处理 SQL 脚本](media/data-flow/prepost1.png "SQL 处理脚本")
+:::image type="content" source="media/data-flow/prepost1.png" alt-text="预处理和后处理 SQL 脚本":::
 
 ### <a name="error-row-handling"></a>行处理时出错
 

@@ -1,18 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 中的安全性概述 | Microsoft Docs
 description: 了解 Azure Data Lake Storage Gen1 的安全功能，包括身份验证、授权、网络隔离、数据保护和审核。
-services: data-lake-store
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: twooley
-ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: f6ea097209666d75696203163b2b99b927344fdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92146300"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651173"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
 
@@ -101,7 +100,7 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 ![活动日志](./media/data-lake-store-security-overview/activity-logs.png "活动日志")
 
-若要深入了解如何使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/management/view-activity-logs.md)。
+若要深入了解如何使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-monitor/essentials/activity-log.md)。
 
 ### <a name="diagnostics-logs"></a>诊断日志
 

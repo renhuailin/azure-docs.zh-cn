@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/27/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0a3312559ee46b70b97a99a5dae16e4a26cad273
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 0f0ffa8a4a25df07cf212eb3352d3515d8c5267c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123031836"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575550"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 HTML 模板自定义用户界面
 
@@ -326,7 +326,8 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 #### <a name="51-upload-the-custom-policy"></a>5.1 上传自定义策略
 
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 搜索并选择“Azure AD B2C”。
 1. 在“策略”下，选择“Identity Experience Framework”。 
 1. 选择“上传自定义策略”。

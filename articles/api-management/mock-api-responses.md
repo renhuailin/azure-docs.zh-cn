@@ -1,18 +1,18 @@
 ---
 title: 教程 - 在 API 管理中模拟 API 响应 - Azure 门户 |Microsoft Docs
 description: 在本教程中，你将使用 API 管理在 API 上设置策略，以便在后端无法发送实际响应时返回模拟响应。
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: 6214594f825908388762ac35cc8c8722ff9135f1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.author: danlep
+ms.openlocfilehash: afccd6da3374147c77a2caf7bcc9b352b078c11c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874344"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646485"
 ---
 # <a name="tutorial-mock-api-responses"></a>教程：模拟 API 响应
 

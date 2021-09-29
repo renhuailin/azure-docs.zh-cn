@@ -1,20 +1,20 @@
 ---
 title: Azure 队列存储入门（使用 .NET）- Azure 存储
 description: Azure 队列存储用于在应用程序组件之间进行可靠的异步消息传送。 应用程序组件可以利用云消息传送进行独立缩放。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 10/08/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bec9ea1e01edc3e8289eb7212d3c5fecd673faaa
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4dc434d8387a065f60405e1c0937c7bb61ef9833
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477354"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562450"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Azure 队列存储入门（使用 .NET）
 

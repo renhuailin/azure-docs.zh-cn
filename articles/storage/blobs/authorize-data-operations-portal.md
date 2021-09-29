@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: b6af5e7efa14c7a8b2243e908b52ed6cf50c8272
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 35ea4317b78a9f732d095d9f024d7465ebd1828e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727212"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615693"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>选择如何在 Azure 门户中授予对 blob 数据的访问权限
 
-使用 [Azure 门户](https://portal.azure.com)访问 Blob 数据时，门户会在后台对 Azure 存储发出请求。 可以使用 Azure AD 帐户或存储帐户访问密钥对 Azure 存储请求进行授权。 门户会指示使用的是哪种方法，如果你有相应的权限，则门户还允许在这两种方法之间切换。  
+使用 [Azure 门户](https://portal.azure.com)访问 Blob 数据时，门户会在后台对 Azure 存储发出请求。 可以使用 Azure AD 帐户或存储帐户访问密钥对 Azure 存储请求进行授权。 门户会指示使用的是哪种方法，如果你有相应的权限，则门户还允许在这两种方法之间切换。
 
 还可以指定如何在 Azure 门户中授权单个 blob 上传操作。 门户默认使用已用于授权 blob 上传操作的任何方法，但你可以选择在上传 blob 时更改此设置。
 

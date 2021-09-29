@@ -2,13 +2,13 @@
 title: Azure 服务总线资源管理器异常 | Microsoft Docs
 description: Azure 资源管理器显示的服务总线异常列表以及建议的处理措施。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: a0b0338da0f002c7b667748ffd2bf5a40c91c580
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: be88fc84fcc8d90994f134a6efd64ed2bbd964a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85336971"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610819"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>服务总线资源管理器异常
 

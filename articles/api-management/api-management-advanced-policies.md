@@ -1,17 +1,17 @@
 ---
 title: Azure API 管理高级策略 | Microsoft 文档
 description: 了解可在 Azure API 管理中使用的高级策略。 请参阅示例，查看其他可用资源。
-author: vladvino
+author: dlepow
 ms.topic: article
 ms.date: 07/19/2021
 ms.service: api-management
-ms.author: apimpm
-ms.openlocfilehash: 274c4d55955bb3ee7c95fc755660cb67de3bbbd3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: danlep
+ms.openlocfilehash: 056b757b2902889d94ba380dffdd1668de95f892
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467615"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643358"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 

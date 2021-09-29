@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 06/22/2021
-ms.openlocfilehash: afdfce29840bbc88bdfc853e12e8109881f8366a
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: d593b234e33eefeb5116bc69aeb7ad990ac24536
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002023"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153817"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
@@ -51,7 +51,7 @@ ms.locfileid: "113002023"
 
 ## <a name="submit-a-nomination"></a>提交提名
 
-希望参与计划的合作伙伴应确定他们要合作的其他合作伙伴。 他们应填写[集成解决方案提名表单](https://aka.ms/AA5qicu)。 集成解决方案计划团队将评审提名，并在 10 个工作日内进行跟进。 该团队提供审批和后续步骤。
+希望参与计划的合作伙伴应确定他们要合作的其他合作伙伴。 他们应填写[集成解决方案提名表单](https://go.microsoft.com/fwlink/?linkid=2172593)。 集成解决方案计划团队将评审提名，并在 10 个工作日内进行跟进。 该团队提供审批和后续步骤。
 
 ## <a name="develop-an-integrated-solution"></a>部署集成解决方案
 

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 09bb503be37df8afe54f6dcc8c427bf12f9e7dc1
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: dbee4a0c4aa82d34df6b5ea6e3e7274868be5d62
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252985"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743840"
 ---
 # <a name="json-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的 JSON 格式
 
@@ -223,7 +223,7 @@ ms.locfileid: "123252985"
 
 在数据流中使用 JSON 数据集作为源时，你可以设置五个额外的设置。 可以在“源选项”选项卡的“JSON 设置”可折叠列表下找到这些设置。 。对于“文档窗体”设置，你可以选择“单个文档”、“每行一个文档”和“文档数组”类型之一。
 
-![JSON 设置](media/data-flow/json-settings.png "JSON 设置")
+:::image type="content" source="media/data-flow/json-settings.png" alt-text="JSON 设置":::
 
 #### <a name="default"></a>默认
 
@@ -359,11 +359,11 @@ File.json
 
 在输出架构侧窗格中，将鼠标指针悬停在某个列上，并单击加号图标。 选择“添加子列”，使列成为复杂类型。
 
-![添加子列](media/data-flow/derive-add-subcolumn.png "添加子列")
+:::image type="content" source="media/data-flow/derive-add-subcolumn.png" alt-text="添加子列":::
 
 你可以通过相同的方式添加更多的列和子列。 对于每个非复杂字段，可以在右侧的表达式编辑器中添加表达式。
 
-![添加复杂列](media/data-flow/derive-complex-column.png "添加列")
+:::image type="content" source="media/data-flow/derive-complex-column.png" alt-text="添加复杂列":::
 
 #### <a name="entering-the-json-structure-manually"></a>手动输入 JSON 结构
 

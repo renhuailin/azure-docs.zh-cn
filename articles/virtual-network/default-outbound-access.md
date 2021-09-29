@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: allensu
-ms.openlocfilehash: f4c06fb4c97ea38c494f18e5bf72e9eb015299a8
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 0ca1f0ee6bcac39f0f73286fe8c426be9447c345
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515767"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754457"
 ---
 # <a name="default-outbound-access-in-azure"></a>Azure 中的默认出站访问
 
@@ -62,7 +62,7 @@ ms.locfileid: "122515767"
 
 2.  对虚拟机规模集使用灵活业务流程模式。
 
-    * 默认情况下，灵活的规模集是安全的。 通过灵活规模集创建的任何实例不会拥有与其关联的默认出站访问 IP。 如需了解详细信息，请参阅[适用于虚拟机规模集的灵活业务流程模式](https://aka.ms/vmssflex/docs)
+    * 默认情况下，灵活的规模集是安全的。 通过灵活规模集创建的任何实例不会拥有与其关联的默认出站访问 IP。 如需了解详细信息，请参阅[适用于虚拟机规模集的灵活业务流程模式](../virtual-machines/flexible-virtual-machine-scale-sets.md)
 
 ## <a name="if-i-need-outbound-access-what-is-the-recommended-way"></a>如果我需要出站访问，有什么建议方法？
 

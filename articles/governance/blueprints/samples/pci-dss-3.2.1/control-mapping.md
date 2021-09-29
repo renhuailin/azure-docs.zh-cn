@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 蓝图示例控件
 description: 控制支付卡行业数据安全标准 v3.2.1 蓝图示例到 Azure Policy 和 Azure RBAC 的映射。
-ms.date: 04/02/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 5d45e78af9bb07d433ea5aa52581fdbda6d1efea
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9233c8d2ec6f72dc08b67f318bceca29de597058
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756946"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580275"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 蓝图示例的控制映射
 

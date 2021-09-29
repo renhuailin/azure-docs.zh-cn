@@ -8,12 +8,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 06/04/2021
-ms.openlocfilehash: 91eb5d1072f1385c025d9d93b89466aaa9320ecd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 02e67e6521e1f5fa3c29375a15953557613f7d7d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638533"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763683"
 ---
 # <a name="best-practices-for-writing-to-files-to-data-lake-with-data-flows"></a>使用数据流将文件写入数据湖的最佳做法
 
@@ -55,24 +55,24 @@ ms.locfileid: "122638533"
 
 1. 在 Azure 数据工厂的主页上，选择“协调”。
 
-   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="显示 ADF 主页的屏幕截图。":::
 
 1. 在管道的“常规”选项卡中，输入“DeltaLake”作为管道的名称。 
 1. 在工厂顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
-    ![数据流活动](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="数据流活动":::
 1. 在“活动”窗格中，展开“移动和转换”可折叠部分 。 将“数据流”活动从该窗格拖放到管道画布上。
 
-    ![显示管道画布的屏幕截图，你可以在其中放置数据流活动。](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="显示管道画布的屏幕截图，你可以在其中放置数据流活动。":::
 1. 在“添加数据流”弹出窗口中，选择“创建新数据流”，然后将数据流命名为“DeltaLake”。   完成操作后，请单击“完成”。
 
-    ![显示在创建新数据流时对数据流进行命名的位置的屏幕截图。](media/tutorial-data-flow/activity2.png)
+    :::image type="content" source="media/tutorial-data-flow/activity2.png" alt-text="显示在创建新数据流时对数据流进行命名的位置的屏幕截图。":::
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>在数据流画布中构建转换逻辑
+## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>在数据流画布中构建转换逻辑
 
 你将获取任何源数据（在本教程中，我们将使用 Parquet 文件源）并使用接收器转换，以便使用最有效的机制登录 Parquet 格式的数据，从而进行数据湖 ETL。
 
-![最终流](media/data-flow/parts-final.png &quot;最终流")
+:::image type="content" source="media/data-flow/parts-final.png" alt-text="最终流":::
 
 ### <a name="tutorial-objectives"></a>教程目标
 
@@ -101,7 +101,7 @@ ms.locfileid: "122638533"
 1. 访问数据流源中的数据分区时，只需指向 ```releaseyear``` 上面的顶层文件夹，并对每个后续文件夹使用通配符模式，例如：```**/**/*.parquet```
 1. 若要操作数据值，或者即使需要为文件夹名称生成合成值，请使用派生列转换创建要在文件夹名称中使用的值。
 
-![键分区](media/data-flow/key-parts.png "键分区")
+:::image type="content" source="media/data-flow/key-parts.png" alt-text="键分区":::
    
 ### <a name="name-folder-as-data-values"></a>将文件夹命名为数据值
 
@@ -113,7 +113,7 @@ ms.locfileid: "122638533"
 1. 选择要用于生成文件夹名称的列。
 1. 若要操作数据值，或者即使需要为文件夹名称生成合成值，请使用派生列转换创建要在文件夹名称中使用的值。
 
-![文件夹选项](media/data-flow/folders.png "文件夹")
+:::image type="content" source="media/data-flow/folders.png" alt-text="文件夹选项":::
 
 ### <a name="name-file-as-data-values"></a>将文件命名为数据值
 

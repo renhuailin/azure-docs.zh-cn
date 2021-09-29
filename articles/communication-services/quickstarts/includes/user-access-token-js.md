@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: include 文件
 services: azure-communication-services
 author: tomaschladek
@@ -10,17 +10,17 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 60de092a25350add4dc5b216bb7d079b866cc1fd
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: f5b41f98f3d0ce1ca1cab4f8a5c5715d9a10fa64
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113659496"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677266"
 ---
 > [!NOTE]
 > 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/access-tokens-quickstart) 上查找此快速入门的最终代码
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 8.11.1 和 10.14.1）。
@@ -155,7 +155,7 @@ console.log(token);
 刷新访问令牌与调用 `getToken` 一样简单，使用的标识与用于颁发令牌的相同。 还需要提供已刷新令牌的 `scopes`。
 
 ```javascript
-// // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
+// Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
 let refreshedTokenResponse = await identityClient.getToken(identityResponse, ["voip"]);
 ```
 

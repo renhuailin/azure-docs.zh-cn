@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 875669d774684c2960d7e56b655ce0e9234e61db
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 571dd153477757413079da9324272c3600bec40b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108148104"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803500"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview-deprecated"></a>Azure Active Directory 单一登录 (SSO) 与 ADP Globalview 集成（已弃用）
 
@@ -133,7 +133,7 @@ ms.locfileid: "108148104"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 ADP Globalview（已弃用）
 
-* 你可使用 Microsoft 的“我的应用”。 在访问面板中单击“ADP Globalview（已弃用）”磁贴时，应会自动登录到设置了 SSO 的 ADP Globalview（已弃用）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在访问面板中单击“ADP Globalview（已弃用）”磁贴时，应会自动登录到设置了 SSO 的 ADP Globalview（已弃用）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

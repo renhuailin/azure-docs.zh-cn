@@ -1,33 +1,26 @@
 ---
 title: Azure AD Connect：为 Microsoft 365 资源配置首选数据位置
 description: 介绍如何使用 Azure Active Directory Connect 同步将 Microsoft 365 用户资源放在靠近用户的位置。
-services: active-directory
-documentationcenter: ''
 author: billmath
-manager: mtillman
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edbc8c0151be2bc65dd653e996413d4c7877b1ef
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 7b709932114ad9e527b82a1457310ff01d2cff38
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229753"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768546"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect 同步：为 Microsoft 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Microsoft 365 中的多地区功能时，可使用此属性来指定用户的 Microsoft 365 数据的地理位置。 （术语 *区域* 和 *地域* 可以互换使用。）
 
 ## <a name="supported-multi-geo-locations"></a>支持的多地理位置
-有关 Azure AD Connect 支持的所有地理位置的列表，请参阅 [Microsoft 365 多地理位置可用性](/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide#microsoft-365-multi-geo-availability)
+有关 Azure AD Connect 支持的所有地理位置的列表，请参阅 [Microsoft 365 多地理位置可用性](/microsoft-365/enterprise/microsoft-365-multi-geo#microsoft-365-multi-geo-availability)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>启用首选数据位置的同步
 默认情况下，用户使用的 Microsoft 365 资源位于你的 Azure AD 租户所在地区。 例如，如果你的租户位于北美，则用户的 Exchange 邮箱也位于北美。 对于跨国组织而言，这可能不是最佳情况。
@@ -37,7 +30,7 @@ ms.locfileid: "114229753"
 > [!IMPORTANT]
 > 多地区功能目前适用于拥有有效企业协议和至少 250 个 Microsoft 365 服务订阅的客户。 有关详细信息，请咨询 Microsoft 代表。
 >
-> 有关 Azure AD Connect 支持的所有地理位置的列表，请参阅 [Microsoft 365 多地理位置可用性](/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide#microsoft-365-multi-geo-availability)。
+> 有关 Azure AD Connect 支持的所有地理位置的列表，请参阅 [Microsoft 365 多地理位置可用性](/microsoft-365/enterprise/microsoft-365-multi-geo#microsoft-365-multi-geo-availability)。
 
 
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 069238a6feb4425aba1da48b89d26128d6d54775
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: d6fa93319e9e2ecdd666a92f816df5a63a4f477f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846979"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748669"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 证书客户端库（版本 4）
 
@@ -152,9 +152,9 @@ const { CertificateClient } = require("@azure/keyvault-certificates");
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
 
-本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
+在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](/javascript/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](/javascript/api/@azure/identity/defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](../general/developers-guide.md#authenticate-to-key-vault-in-code)。
 
 将以下代码添加到“main()”函数
 
@@ -168,7 +168,7 @@ const client = new Certificate(KVUri, credential);
 
 ### <a name="save-a-certificate"></a>保存证书
 
-现在，应用程序已进行身份验证，可以使用 [beginCreateCertificate method](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_) 方法将证书放入 keyvault 中，这需要证书的名称和具有[证书策略属性](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties)的证书策略[证书策略](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicy)
+现在，应用程序已进行身份验证，可以使用 [beginCreateCertificate method](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_) 方法将证书放入 keyvault 中，这需要证书的名称和具有[证书策略属性](/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties)的证书策略[证书策略](/javascript/api/@azure/keyvault-certificates/certificatepolicy)
 
 ```javascript
 const certificatePolicy = {
@@ -191,7 +191,7 @@ const retrievedCertificate = await client.getCertificate(certificateName);
 
 ### <a name="delete-a-certificate"></a>删除证书
 
-最后，让我们使用[beginDeleteCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) 和 [purgeDeletedCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_) 方法从密钥保管库中删除并清除证书。
+最后，让我们使用 [beginDeleteCertificate](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) 和 [purgeDeletedCertificate](/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_) 方法从密钥保管库中删除并清除证书。
 
 ```javascript
 const deletePoller = await client.beginDeleteCertificate(certificateName);

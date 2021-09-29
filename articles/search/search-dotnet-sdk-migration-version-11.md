@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 06/09/2021
+ms.date: 09/16/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb596e993981275bbf61efd2542dbf1b566e1a3a
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 37c03a5be2f81fff0f4a1cac01153601a39ddd10
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003883"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557146"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本 11
 
@@ -155,7 +155,7 @@ Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
 
 <a name="WhatsNew"></a>
 
-## <a name="inside-v11"></a>在 v11 内
+## <a name="inside-v11"></a>v11 内
 
 Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应版本。 REST API 被视为服务的基础，而各个 SDK 用于包装 REST API 的版本。 作为 .NET 开发人员，查看更详细的 [REST API 文档](/rest/api/searchservice/)可以帮助更深入地了解特定对象或操作。 版本 11 对应于 [2020-06-30 搜索服务](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)。 
 

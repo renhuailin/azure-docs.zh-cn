@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f261e69daa14e652d226c9b0d6402eb353c1744
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 71f127bd45c833205067256a2b23cdc72b2c3bfb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251880"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784501"
 ---
 # <a name="get-cef-formatted-logs-from-your-device-or-appliance-into-azure-sentinel"></a>将设备中 CEF 格式的日志引入到 Azure Sentinel
 
@@ -55,7 +55,7 @@ ms.locfileid: "123251880"
 
 - 你必须对此工作区拥有读取和写入权限。
 
-- 你必须对该工作区的共享密钥拥有读取权限。 [详细了解工作区密钥](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)。
+- 你必须对该工作区的共享密钥拥有读取权限。 [详细了解工作区密钥](../azure-monitor/agents/agent-windows.md)。
 
 ## <a name="designate-a-log-forwarder-and-install-the-log-analytics-agent"></a>指定日志转发器并安装 Log Analytics 代理
 
@@ -117,7 +117,7 @@ ms.locfileid: "123251880"
 
 可以在 Azure Sentinel 门户中你产品的数据连接器页的“后续步骤”选项卡上，找到为专门为你的产品创建的有用示例查询、工作簿和分析规则模板。
 
-如果看不到任何数据，请参阅 [CEF 故障排除](connect-cef-verify.md)页中的指导。
+如果看不到任何数据，请参阅 [CEF 故障排除](./troubleshooting-cef-syslog.md)页中的指导。
 
 ### <a name="changing-the-source-of-the-timegenerated-field"></a>更改 TimeGenerated 字段的源
 

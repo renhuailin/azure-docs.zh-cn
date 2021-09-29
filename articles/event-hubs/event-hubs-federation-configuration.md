@@ -2,13 +2,13 @@
 title: 已配置的复制任务 - Azure 事件中心 | Microsoft Docs
 description: 本文概述了如何在事件中心之间复制事件
 ms.topic: article
-ms.date: 12/12/2020
-ms.openlocfilehash: 0cc083a1368e05f039b674d255c3e3a8d8da0b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: e20a811952fdc1da7220a96eed3444676562b9ec
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935185"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217819"
 ---
 # <a name="configured-replication-tasks---azure-event-hubs"></a>已配置的复制任务 - Azure 事件中心
 

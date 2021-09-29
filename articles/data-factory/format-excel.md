@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 7a1a0331276169bb81dcf86c74aab1a16855b25c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 66f0f310faa32e65dea657d7b15ceae7e4f84ba0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255843"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831340"
 ---
 # <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的 Excel 文件格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -124,7 +124,7 @@ ms.locfileid: "123255843"
 
 下图是使用数据集模式的映射数据流中 Excel 源配置的示例。
 
-![Excel 源](media/data-flow/excel-source.png)
+:::image type="content" source="media/data-flow/excel-source.png" alt-text="Excel 源":::
 
 关联的数据流脚本为：
 
@@ -136,7 +136,7 @@ source(allowSchemaDrift: true,
 
 如果你使用内联数据集，则会在映射数据流中看到以下源选项。
 
-![Excel 源内联数据集](media/data-flow/excel-source-inline-dataset.png)
+:::image type="content" source="media/data-flow/excel-source-inline-dataset.png" alt-text="Excel 源内联数据集":::
 
 关联的数据流脚本为：
 

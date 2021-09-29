@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 920f7912a1289fe92618d893b94943784e4a9a3a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4c5a361fafeaed6452481adc9e6eae856828bfda
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520721"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635577"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 的启用了 Arc 的 Kubernetes 群集上部署具有 Redis 的 PHP `Guestbook` 无状态应用程序
 
@@ -35,9 +35,6 @@ ms.locfileid: "102520721"
 ## <a name="prerequisites"></a>先决条件
 
 在部署无状态应用程序之前，请确保设备和将用于访问该设备的客户端上已满足以下先决条件：
-
-> [!NOTE]
-> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ### <a name="for-device"></a>对于设备
 

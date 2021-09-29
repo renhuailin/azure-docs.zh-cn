@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: 270f6e83a7073bf39f4bc7efae8adea1ca56627e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d6be1c8c0abf050a95d02c764580657b88975e0f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739421"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743418"
 ---
 # <a name="move-files-with-azure-data-factory"></a>使用 Azure 数据工厂移动文件
 
@@ -48,25 +48,25 @@ ms.locfileid: "121739421"
 
 1. 转到“移动文件”模板。 选择现有的连接，或者与要从中移动文件的源文件存储建立 **新** 的连接。 请注意，**DataSource_Folder** 和 **DataSource_File** 是对源文件存储的相同连接的引用。
 
-    ![与源建立新的连接](media/solution-template-move-files/move-files1.png)
+    :::image type="content" source="media/solution-template-move-files/move-files1.png" alt-text="与源建立新的连接":::
 
 2. 选择现有的连接，或者与要将文件移到的目标文件存储建立 **新** 的连接。
 
-    ![与目标建立新的连接](media/solution-template-move-files/move-files2.png)
+    :::image type="content" source="media/solution-template-move-files/move-files2.png" alt-text="与目标建立新的连接":::
 
 3. 选择“使用此模板”选项卡。
     
 4. 你将看到管道，如以下示例所示：
 
-    ![显示管道](media/solution-template-move-files/move-files4.png)
+    :::image type="content" source="media/solution-template-move-files/move-files4.png" alt-text="显示管道":::
 
 5. 选择“调试”，输入“参数”，然后选择“完成”。   参数是要从中移动文件的文件夹路径，以及要将文件移到的文件夹路径。 
 
-    ![运行管道](media/solution-template-move-files/move-files5.png)
+    :::image type="content" source="media/solution-template-move-files/move-files5.png" alt-text="运行管道":::
 
 6. 查看结果。
 
-    ![查看结果](media/solution-template-move-files/move-files6.png)
+    :::image type="content" source="media/solution-template-move-files/move-files6.png" alt-text="查看结果":::
 
 ## <a name="next-steps"></a>后续步骤
 

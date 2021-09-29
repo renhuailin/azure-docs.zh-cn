@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7c46ae96de44b191009a86552799488cb770c7e4
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 1f3b99e7b1db248a09cf20e42391c1bf36584dcb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112233522"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668861"
 ---
 # <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>将 Redis 命令行工具与 Azure Redis 缓存配合使用
 
@@ -34,7 +34,7 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 
 本部分介绍如何从 Azure 门户检索密钥。
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
 
 
 ## <a name="enable-access-for-redis-cliexe"></a>为 redis-cli.exe 启用访问权限

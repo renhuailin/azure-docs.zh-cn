@@ -2,13 +2,13 @@
 title: 充当事件网格源的 Azure 事件中心
 description: 介绍为 Azure 事件网格中的事件中心事件提供的属性
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: e9bb4b5a27173181c7295e96a1eb0654a1a929e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 48d982e27d9da83d16bfbaad1a24ad1c8991a065
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647416"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>充当事件网格源的 Azure 事件中心
 
@@ -92,7 +92,7 @@ ms.locfileid: "100363503"
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | object | 事件中心事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
@@ -107,7 +107,7 @@ ms.locfileid: "100363503"
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | object | 事件中心事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 

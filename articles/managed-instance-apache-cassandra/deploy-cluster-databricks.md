@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 1e66e8a3358bdcbca3d5dea247e1e6af2000393f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7075b7efd871d3f226faa593e0730d22c8913fd1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735057"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797077"
 ---
 # <a name="quickstart-deploy-a-managed-apache-spark-cluster-preview-with-azure-databricks"></a>快速入门：使用 Azure Databricks 部署托管的 Apache Spark 群集（预览版）
 
@@ -36,15 +36,15 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
 
 1. 打开“虚拟网络”资源，并记下地址空间 ：
 
-    :::image type="content" source="./media/deploy-cluster-databricks/virtual-network-address-space.png" alt-text="获取虚拟网络的地址空间。" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/virtual-network-address-space.png" alt-text="获取虚拟网络的地址空间。" border="true":::
 
 1. 从资源组中选择“添加”，并在搜索字段中搜索“Azure Databricks” ：
 
-    :::image type="content" source="./media/deploy-cluster-databricks/databricks.png" alt-text="搜索 Azure Databricks。" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/databricks.png" alt-text="搜索 Azure Databricks。" border="true":::
 
 1. 选择“创建”以创建 Azure Databricks 帐户：
 
-    :::image type="content" source="./media/deploy-cluster-databricks/databricks-create.png" alt-text="创建 Azure Databricks 帐户。" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/databricks-create.png" alt-text="创建 Azure Databricks 帐户。" border="true":::
 
 1. 填充以下值：
 
@@ -52,7 +52,7 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
    * **区域** - 务必选择你的虚拟网络所在的区域。
    * **定价层** - 在“标准”、“高级”和“试用”层之间进行选择。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。
 
-    :::image type="content" source="./media/deploy-cluster-databricks/select-name.png" alt-text="填写 Databricks 帐户的工作区名称、区域和定价层。" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/select-name.png" alt-text="填写 Databricks 帐户的工作区名称、区域和定价层。" border="true":::
 
 1. 接下来，选择“网络”选项卡并填写以下详细信息：
 
@@ -82,17 +82,17 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
    * **群集名称** - 为群集输入一个名称。
    * Databricks Runtime 版本 - 我们建议选择 Databricks Runtime 7.5 或更高版本，以支持 Spark 3.x。 
 
-    :::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="选择 Databricks 运行时版本和 Spark 群集。" border="true":::
+   :::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="选择 Databricks 运行时版本和 Spark 群集。" border="true":::
 
 1. 展开“高级选项”，然后添加以下配置。 请务必替换节点 IP 和凭据：
 
-    ```java
-    spark.cassandra.connection.host <node1 IP>,<node 2 IP>, <node IP>
-    spark.cassandra.auth.password cassandra
-    spark.cassandra.connection.port 9042
-    spark.cassandra.auth.username cassandra
-    spark.cassandra.connection.ssl.enabled true
-    ```
+   ```java
+   spark.cassandra.connection.host <node1 IP>,<node 2 IP>, <node IP>
+   spark.cassandra.auth.password cassandra
+   spark.cassandra.connection.port 9042
+   spark.cassandra.auth.username cassandra
+   spark.cassandra.connection.ssl.enabled true
+   ```
 
 1. 将 Apache Spark Cassandra 连接器库添加到群集，以便连接到原生终结点和 Azure Cosmos DB Cassandra 终结点。 在群集中，选择“库” > “安装新库” > “Maven”，然后在 Maven 坐标中添加 `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0`  。
 
@@ -105,11 +105,11 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
 1. 从 Azure 门户的左侧菜单中选择“资源组”。
 1. 从列表中选择为本快速入门创建的资源组。
 1. 在资源组的“概述”窗格上，选择“删除资源组” 。
-3. 在下一窗口中输入要删除的资源组的名称，然后选择“删除”  。
+1. 在下一窗口中输入要删除的资源组的名称，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你学习了如何在 Azure Managed Instance for Apache Cassandra 群集的虚拟网络中创建完全托管的 Apache Spark 群集。 接下来，你可了解如何管理群集和数据中心资源： 
+在本快速入门中，你学习了如何在 Azure Managed Instance for Apache Cassandra 群集的虚拟网络中创建完全托管的 Apache Spark 群集。 接下来，你可了解如何管理群集和数据中心资源：
 
 > [!div class="nextstepaction"]
 > [使用 Azure CLI 管理 Azure Managed Instance for Apache Cassandra 资源](manage-resources-cli.md)

@@ -8,17 +8,17 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/23/2021
-ms.openlocfilehash: dbe9118cd74b81e82343ec13e74dd20cbee12ae7
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 4f4b0cd13095c83f84c96e57e73f255caf4fcdc9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469916"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736324"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>迁移到 Azure 机器学习 
 
 > [!IMPORTANT]
-> 对机器学习工作室（经典）的支持将于 2024 年 8 月 31 日结束。 建议在该日期之前转换到 [Azure 机器学习](/azure/machine-learning/overview-what-is-azure-machine-learning)。
+> 对机器学习工作室（经典）的支持将于 2024 年 8 月 31 日结束。 建议在该日期之前转换到 [Azure 机器学习](./overview-what-is-azure-machine-learning.md)。
 >
 > 从 2021 年 12 月 1 日开始，你将无法创建新的机器学习工作室（经典）资源。 在 2024 年 8 月 31 日之前，可继续使用现有的机器学习工作室（经典）资源。  
 >
@@ -82,7 +82,7 @@ ms.locfileid: "123469916"
 
 ## <a name="step-5-cleanup-studio-classic-assets"></a>步骤 5：清理工作室（经典）资产
 
-1. [清理工作室（经典）资产](/azure/machine-learning/classic/export-delete-personal-data-dsr)，避免产生额外费用。 在验证 Azure 机器学习工作负载之前，你可能想要保留资产以进行回退。
+1. [清理工作室（经典）资产](./classic/export-delete-personal-data-dsr.md)，避免产生额外费用。 在验证 Azure 机器学习工作负载之前，你可能想要保留资产以进行回退。
 
 ## <a name="step-6-review-and-expand-scenarios"></a>步骤 6：查看并扩展方案
 

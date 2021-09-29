@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ffe433e632e2afed32f2a135d87d927686e9a004
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 6c8f4e902929d6a610dc1f9224ac17b2d3b893d0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018271"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056778"
 ---
 你可以使用 Microsoft Intune 部署 Azure VPN 客户端 (Windows 10) 的配置文件。 本文将帮助你使用自定义设置创建 Intune 配置文件。
 
@@ -72,7 +72,7 @@ ms.locfileid: "108018271"
 
     * 名称：输入配置的名称。
     * 说明：描述（可选）。
-    * OMA-URI：```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML```（可以在 <name> </name> 标记的 azurevpnconfig.xml 文件中找到此信息）。
+    * OMA-URI：```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML```（可以在 \<name\> \</name\> 标记的 azurevpnconfig.xml 文件中找到此信息）。
     * 数据类型：字符串（XML 文件）。
 
    选择文件夹图标，然后选择之前在 [XML](#xml) 步骤中的第 6 步中保存的文件。 选择 **添加** 。

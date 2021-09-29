@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: ba4d84a6d3eda01f3d9192aef521d7d45a811083
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 94f7210c05056db2ead8b1aa54d9a0d16e3d8849
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737009"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743580"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库进行大容量复制
 
@@ -67,33 +67,33 @@ ms.locfileid: "121737009"
 
 2. 转到“从数据库进行大容量复制”模板。 创建与在步骤 1 中创建的外部控制表的新连接。
 
-    ![与控制表建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png" alt-text="与控制表建立新的连接":::
 
 3. 创建与要从中复制数据的源数据库的新连接。
 
-    ![与源数据库建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png" alt-text="与源数据库建立新的连接":::
     
 4. 创建与要将数据复制到其中的目标数据存储的新连接。
 
-    ![与目标存储建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png" alt-text="与目标存储建立新的连接":::
 
 5. 选择“使用此模板”。
 
 6. 可以看到管道，如以下示例所示：
 
-    ![查看管道](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png" alt-text="查看管道":::
 
 7. 选择“调试”，输入 **参数**，然后选择“完成”。  
 
-    ![单击“调试”****](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png" alt-text="单击“调试”****":::
 
 8. 看到的结果类似于以下示例：
 
-    ![查看结果](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png" alt-text="查看结果":::
 
 9. （可选）如果选择“Azure Synapse Analytics”作为数据目标，必须按 Azure Synapse Analytics Polybase 的要求输入用于暂存的 Azure Blob 存储的连接。 模板会自动为 Blob 存储生成容器路径。 检查是否在管道运行后创建了容器。
     
-    ![Polybase 设置](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
+    :::image type="content" source="media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png" alt-text="Polybase 设置":::
        
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,16 +3,17 @@ title: 使用复制活动移动数据
 description: 了解数据工厂管道中的数据移动：云存储之间以及本地存储和云存储之间的数据迁移。 使用复制活动。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 99190ccab6dc299fac970fce6fb0222096592357
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d138cab93d9cd9b1c4c44e92e6fcfb583103fb70
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766890"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629401"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -25,7 +26,7 @@ ms.locfileid: "108766890"
 ## <a name="overview"></a>概述
 在 Azure 数据工厂中，可使用“复制活动”在本地和云数据存储区之间复制数据。 复制数据后，可对其进一步执行转换和分析操作。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
 
-![复制活动的角色](media/data-factory-data-movement-activities/copy-activity.png)
+:::image type="content" source="media/data-factory-data-movement-activities/copy-activity.png" alt-text="复制活动的角色":::
 
 复制活动由安全、可靠、可缩放和[全局可用的服务](#global)提供支持。 本文提供数据工厂和复制活动中移动数据的详细信息。
 
@@ -45,14 +46,14 @@ ms.locfileid: "108766890"
 
 服务自动选择执行数据移动的最佳区域。 此区域通常是最接近接收器数据存储的区域。
 
-![云到云复制](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
+:::image type="content" source="./media/data-factory-data-movement-activities/cloud-to-cloud.png" alt-text="云到云复制":::
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>在本地数据存储和云数据存储之间复制数据
 若要在本地数据存储和云数据存储之间安全移动数据，请在本地计算机上安装数据管理网关。 数据管理网关是一个支持混合数据移动和处理的代理。 可在数据存储本身所在计算机上或在可访问此数据存储的其他计算机上安装数据管理网关。
 
 在此方案中，数据管理网关执行序列化/反序列化、压缩/解压缩、列映射和类型转换。 数据不会通过 Azure 数据工厂服务流动。 相反，数据管理网关会将数据直接写入目标存储。
 
-![本地和云之间的复制](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
+:::image type="content" source="./media/data-factory-data-movement-activities/onprem-to-cloud.png" alt-text="本地和云之间的复制":::
 
 有关说明和演练，请参阅[在本地和云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。 有关此代理的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)。
 
@@ -104,7 +105,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | &nbsp; | 西欧 | 西欧 |
 | 英国 | 英国西部 | 英国南部 |
 | &nbsp; | 英国南部 | 英国南部 |
-| 亚太区 | 东南亚 | Southeast Asia |
+| 亚太区 | Southeast Asia | Southeast Asia |
 | &nbsp; | 东亚 | 东南亚 |
 | 澳大利亚 | 澳大利亚东部 | 澳大利亚东部 |
 | &nbsp; | 澳大利亚东南部 | Australia Southeast |

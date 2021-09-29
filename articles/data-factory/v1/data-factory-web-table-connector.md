@@ -3,16 +3,17 @@ title: 使用 Azure 数据工厂从 Web 表移动数据
 description: 了解如何使用 Azure 数据工厂从网页中的表移动数据。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e3472393587fe117e342bbc1dce5d990520760d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651211"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -50,7 +51,7 @@ ms.locfileid: "100392895"
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -282,24 +283,24 @@ ms.locfileid: "100392895"
 1. 启动 **Excel 2016**，并切换到“数据”  选项卡。  
 2. 单击工具栏中的“新建查询”  ，指向“从其他源”  ，并单击“从 Web”  。
 
-    ![Power Query 菜单](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
+    :::image type="content" source="./media/data-factory-web-table-connector/PowerQuery-Menu.png" alt-text="Power Query 菜单":::
 3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如  ：AFI%27s_100_Years...100_Movies），并单击“确定”  。
 
-    ![“从 Web”对话框](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
+    :::image type="content" source="./media/data-factory-web-table-connector/FromWeb-DialogBox.png" alt-text="“从 Web”对话框":::
 
     此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和 **身份验证**，并单击“连接”  。
 
-   ![“访问 Web 内容”对话框](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
+   :::image type="content" source="./media/data-factory-web-table-connector/AccessWebContentDialog.png" alt-text="“访问 Web 内容”对话框":::
 5. 单击树视图中的“表”  项，查看表中的内容，并单击底部的“编辑”  按钮。  
 
-   ![“导航器”对话框](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
+   :::image type="content" source="./media/data-factory-web-table-connector/Navigator-DialogBox.png" alt-text="“导航器”对话框":::
 6. 在“查询编辑器”  窗口中，单击工具栏上的“高级编辑器”  按钮。
 
-    ![“高级编辑器”按钮](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
+    :::image type="content" source="./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png" alt-text="“高级编辑器”按钮":::
 7. 在“高级编辑器”对话框中，“源”旁边的编号为索引。
 
-    ![高级编辑器 - 索引](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
+    :::image type="content" source="./media/data-factory-web-table-connector/AdvancedEditor-Index.png" alt-text="高级编辑器 - 索引":::
 
 如果使用的是 Excel 2013，请使用 [Microsoft Power Query for Excel](https://www.microsoft.com/download/details.aspx?id=39379) 获取索引。 有关详细信息，请参阅[连接到网页](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8)一文。 如果使用的是 [Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/)，步骤与之类似。
 

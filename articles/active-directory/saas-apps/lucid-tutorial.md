@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 4a4eccf90756b9b34e024a0ece8e71b1c191c233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbdca42aca2de1ff66dc07ffea16b84b48fbfb1a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180721"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808897"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucid-all-products"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Lucid（所有产品）的集成
 
@@ -79,13 +79,13 @@ ms.locfileid: "96180721"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://lucid.app/saml/sso/<TENANT_NAME>?idpHash=<HASH_ID>`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://lucid.app/saml/sso/<TENANT_NAME>?idpHash=<HASH_ID>` 
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://lucid.app/saml/sso/<TENANT_NAME>?idpHash=<HASH_ID>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://lucid.app/saml/sso/<TENANT_NAME>?idpHash=<HASH_ID>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Lucid（所有产品）客户端支持团队](mailto:support@lucidchart.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -143,7 +143,7 @@ ms.locfileid: "96180721"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Lucid（所有产品） 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Lucid（所有产品）磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Lucid（所有产品）。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Lucid（所有产品）磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Lucid（所有产品）。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 
 ## <a name="next-steps"></a>后续步骤

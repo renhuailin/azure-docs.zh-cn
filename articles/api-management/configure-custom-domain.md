@@ -4,20 +4,20 @@ titleSuffix: Azure API Management
 description: 本主题介绍了如何为 Azure API 管理实例配置自定义域名。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: anneta
 editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
 ms.date: 08/24/2021
-ms.author: apimpm
-ms.openlocfilehash: ae0e5fde64cb3a00f16882698b931c9eadcf623d
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.author: danlep
+ms.openlocfilehash: 4cdd269c0acb7568695cbc63b47422ad9b42085b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779790"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598750"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>为 Azure API 管理实例配置自定义域名
 

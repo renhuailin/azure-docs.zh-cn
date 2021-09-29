@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42a7b541b3f5b5c5d1ec462898615793d50b5493
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f17ff93dde6c4bbb7df57d177bc7d1e3d746b347
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727720"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814621"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Privileged Identity Management (PIM) 的 Azure Active Directory 安全操作
 
@@ -56,15 +56,15 @@ Privileged Identity Management (PIM) 是一种 Azure AD 服务，你可以通过
 
 * [登录日志](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault 日志](../../key-vault/general/logging.md?tabs=Vault)
 
 在 Azure 门户中，可以查看 Azure AD 审核日志，并将其作为逗号分隔值 (CSV) 或 JavaScript 对象表示法 (JSON) 文件下载。 Azure 门户提供多种方法,将 Azure AD 日志与其他工具相集成，以便更好地自动执行监视和警报：
 
-* [Azure Sentinel](../../sentinel/overview.md) - 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
+* **Azure Sentinel** - 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
 
-* [Azure Monitor](../../azure-monitor/overview.md) – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿来合并来自不同源的数据。
+* **Azure Monitor** – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿来合并来自不同源的数据。
 
 * 与 SIEM 集成的 [Azure 事件中心](../../event-hubs/event-hubs-about.md) - [ 通过 Azure 事件中心集成可将 Azure AD 日志集成到其他 SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)，例如 Splunk、ArcSight、QRadar 和 Sumo Logic。 
 

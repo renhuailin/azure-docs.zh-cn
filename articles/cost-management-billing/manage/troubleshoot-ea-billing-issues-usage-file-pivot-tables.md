@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 10/09/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 35e4db91a09a4a647e79e39495ed344b82abbaa0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d343959ee67a52ef143ada024d9a5257927a1e3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778690"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556483"
 ---
 # <a name="troubleshoot-ea-billing-issues-with-usage-file-pivot-tables"></a>通过使用情况文件数据透视表排查 EA 计费问题
 

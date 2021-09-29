@@ -2,13 +2,13 @@
 title: 充当事件网格源的 Azure 应用程序配置
 description: 本文介绍了如何将 Azure 应用程序配置用作事件网格事件源。 其中提供了架构，以及教程和操作指南文章的链接。
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: a64c6fead5e6d95ba11bc98d7e9a52e3021c3be2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 9c434bfa9d3c080da2404d858886f1d9c715e3c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100366766"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678319"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>充当事件网格源的 Azure 应用程序配置
 本文提供 Azure 应用程序配置事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 本文还提供了有关将 Azure 应用程序配置用作事件源的快速入门和教程列表。
@@ -113,7 +113,7 @@ Azure 应用程序配置会发出以下事件类型：
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | 对象 | 应用配置事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
@@ -129,7 +129,7 @@ Azure 应用程序配置会发出以下事件类型：
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | 对象 | 应用配置事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 04/26/2021
 ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: d1ad8e4af0d3fdb0abb95fc12ec4a445afabbb1f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 5c3c5271e000b001ebe257a5ef421f01ac2b1e32
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459237"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597353"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>教程：使用示例 Jupyter Notebook 训练图像分类模型 
 
@@ -342,11 +342,13 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 请注意该脚本获取数据和保存模型的方式：
 
-+ 定型脚本读取参数以查找包含数据的目录。 稍后提交作业时，请参考数据存储获取此参数：```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
+- 定型脚本读取参数以查找包含数据的目录。 稍后提交作业时，请参考数据存储获取此参数：
 
-+ 训练脚本将模型保存到一个名为 **outputs** 的目录中。 此目录中编写的所有内容都会自动上传到你的工作区。 稍后，你将在本教程从此目录访问模型。 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
+  `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
 
-+ 训练脚本需要使用文件 `utils.py` 来正确加载数据集。 以下代码将 `utils.py` 复制到 `script_folder` 中，以便可以与远程资源上的训练脚本一起访问该文件。
+- 训练脚本将模型保存到一个名为 **outputs** 的目录中。 此目录中编写的所有内容都会自动上传到你的工作区。 稍后，你将在本教程从此目录访问模型。 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
+
+- 训练脚本需要使用文件 `utils.py` 来正确加载数据集。 以下代码将 `utils.py` 复制到 `script_folder` 中，以便可以与远程资源上的训练脚本一起访问该文件。
 
   ```python
   import shutil

@@ -7,12 +7,12 @@ ms.subservice: security
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: abnarain
-ms.openlocfilehash: 922387e352882cc81a2e8e0f4a02124bee41fa06
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ac261adeade46b14651583cf28803cab039d754
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638685"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743159"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
@@ -48,11 +48,11 @@ Azure Key Vault 链接服务支持以下属性：
 
 选择“连接”   -> “链接服务”   -> “新建”  。 在“新建链接服务”中，搜索并选择“Azure Key Vault”：
 
-![搜索“Azure Key Vault”](media/store-credentials-in-key-vault/search-akv.png)
+:::image type="content" source="media/store-credentials-in-key-vault/search-akv.png" alt-text="搜索“Azure Key Vault”":::
 
 选择凭证所在的已预配的 Azure Key Vault。 可执行“测试连接”操作，确保 AKV 连接有效  。 
 
-![配置 Azure Key Vault](media/store-credentials-in-key-vault/configure-akv.png)
+:::image type="content" source="media/store-credentials-in-key-vault/configure-akv.png" alt-text="配置 Azure Key Vault":::
 
 **JSON 示例：**
 
@@ -86,7 +86,7 @@ Azure Key Vault 链接服务支持以下属性：
 >[!TIP]
 >对于在链接服务（如 SQL Server、Blob 存储等）中使用连接字符串的连接器，可以选择仅存储机密字段（例如 AKV 中的密码），或将整个连接字符串存储在 AKV 中。 可以在 UI 上找到这两个选项。
 
-![配置 Azure Key Vault 机密](media/store-credentials-in-key-vault/configure-akv-secret.png)
+:::image type="content" source="media/store-credentials-in-key-vault/configure-akv-secret.png" alt-text="配置 Azure Key Vault 机密":::
 
 **JSON 示例：（请参阅“密码”部分）**
 

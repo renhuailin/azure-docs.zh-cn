@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: ca4134ff25dc9915f256b5a7bdd9404021b60a8e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b9c96a6434712ed3179fe25c1014dc1fdc6e062d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791906"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736572"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>教程：使用 Azure CLI 创建跨区域 Azure 负载均衡器
 
@@ -192,4 +192,4 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 转到下一篇文章，了解如何…
 > [!div class="nextstepaction"]
-> [跨可用性区域对 VM 进行负载均衡](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [跨可用性区域对 VM 进行负载均衡](./quickstart-load-balancer-standard-public-portal.md)

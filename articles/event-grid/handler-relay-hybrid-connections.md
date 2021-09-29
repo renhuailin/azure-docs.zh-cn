@@ -2,13 +2,13 @@
 title: 将中继混合连接用作 Azure 事件网格事件的事件处理程序
 description: 介绍了如何将 Azure 中继混合连接用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 38233a2e103600f07837ce9a1ad8d63fe7e4fb99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: fb36e391663ee53729175a2768d765521b03f4da
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91270196"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214933"
 ---
 # <a name="relay-hybrid-connection-as-an-event-handler-for-azure-event-grid-events"></a>将中继混合连接用作 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 一些 Azure 服务被自动配置为处理事件，Azure 中继就是其中之一。 

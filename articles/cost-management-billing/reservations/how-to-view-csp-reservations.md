@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 9b4f3375f3d334b21a0f7d169fec9025cd911857
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 490adca7f1e0f7c5e614e164f9e21af9bc36d77b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684382"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653317"
 ---
 # <a name="view-azure-reservations-as-a-cloud-solution-provider-csp"></a>以云解决方案提供商 (CSP) 的身份查看 Azure 预留
 

@@ -2,13 +2,13 @@
 title: 模板函数 - 日期
 description: 介绍了可在 Azure 资源管理器模板（ARM 模板）中用来处理日期的函数。
 ms.topic: conceptual
-ms.date: 05/11/2021
-ms.openlocfilehash: c6bf3adca5dde4947e2c22dd8468f1b045f77120
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/09/2021
+ms.openlocfilehash: ed7c9d44458acb6733618ff84cf98b9bed2e2a36
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959710"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793410"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
 
@@ -25,7 +25,7 @@ ms.locfileid: "111959710"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | base | 是 | string | 用于相加的起始日期/时间值。 使用 [ISO 8601 时间戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 | duration | 是 | string | 要与 base 相加的时间值。 它可以是负值。 使用 [ISO 8601 持续时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
@@ -39,38 +39,7 @@ ms.locfileid: "111959710"
 
 以下示例模板展示了增加时间值的各种方式。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "baseTime": {
-      "type": "string",
-      "defaultValue": "[utcNow('u')]"
-    }
-  },
-  "variables": {
-    "add3Years": "[dateTimeAdd(parameters('baseTime'), 'P3Y')]",
-    "subtract9Days": "[dateTimeAdd(parameters('baseTime'), '-P9D')]",
-    "add1Hour": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
-  },
-  "resources": [],
-  "outputs": {
-    "add3YearsOutput": {
-      "value": "[variables('add3Years')]",
-      "type": "string"
-    },
-    "subtract9DaysOutput": {
-      "value": "[variables('subtract9Days')]",
-      "type": "string"
-    },
-    "add1HourOutput": {
-      "value": "[variables('add1Hour')]",
-      "type": "string"
-    },
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/date/datetimeadd.json":::
 
 在 baseTime为 `2020-04-07 14:53:14Z` 的情况下部署上述模板时，输出为：
 
@@ -82,55 +51,7 @@ ms.locfileid: "111959710"
 
 下一示例模板展示了如何设置自动化计划的开始时间。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "omsAutomationAccountName": {
-      "type": "string",
-      "defaultValue": "demoAutomation",
-      "metadata": {
-        "description": "Use an existing Automation account."
-      }
-    },
-    "scheduleName": {
-      "type": "string",
-      "defaultValue": "demoSchedule1",
-      "metadata": {
-        "description": "Name of the new schedule."
-      }
-    },
-    "baseTime": {
-      "type": "string",
-      "defaultValue": "[utcNow('u')]",
-      "metadata": {
-        "description": "Schedule will start one hour from this time."
-      }
-    }
-  },
-  "variables": {
-    "startTime": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
-  },
-  "resources": [
-    ...
-    {
-      "type": "Microsoft.Automation/automationAccounts/schedules",
-      "apiVersion": "2015-10-31",
-      "name": "[concat(parameters('omsAutomationAccountName'), '/', parameters('scheduleName'))]",
-
-      "properties": {
-        "description": "Demo Scheduler",
-        "startTime": "[variables('startTime')]",
-        "interval": 1,
-        "frequency": "Hour"
-      }
-    }
-  ],
-  "outputs": {
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/date/datetimeadd-automation.json":::
 
 ## <a name="utcnow"></a>utcNow
 
@@ -138,9 +59,9 @@ ms.locfileid: "111959710"
 
 以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (`yyyyMMddTHHmmssZ`) 格式。 **此函数只能在参数的默认值中使用。**
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | format |否 |string |要转换为字符串的 URI 编码值。 使用[标准格式字符串](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
@@ -160,46 +81,11 @@ ms.locfileid: "111959710"
 
 以下示例模板演示日期时间值的不同格式。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "utcValue": {
-      "type": "string",
-      "defaultValue": "[utcNow()]"
-    },
-    "utcShortValue": {
-      "type": "string",
-      "defaultValue": "[utcNow('d')]"
-    },
-    "utcCustomValue": {
-      "type": "string",
-      "defaultValue": "[utcNow('M d')]"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "utcOutput": {
-      "type": "string",
-      "value": "[parameters('utcValue')]"
-    },
-    "utcShortOutput": {
-      "type": "string",
-      "value": "[parameters('utcShortValue')]"
-    },
-    "utcCustomOutput": {
-      "type": "string",
-      "value": "[parameters('utcCustomValue')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/date/utcnow.json":::
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |
@@ -207,39 +93,7 @@ ms.locfileid: "111959710"
 
 以下示例演示在设置标记值时如何使用函数中的值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "utcShort": {
-      "type": "string",
-      "defaultValue": "[utcNow('d')]"
-    },
-    "rgName": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2020-10-01",
-      "name": "[parameters('rgName')]",
-      "location": "westeurope",
-      "tags": {
-        "createdDate": "[parameters('utcShort')]"
-      },
-      "properties": {}
-    }
-  ],
-  "outputs": {
-    "utcShortOutput": {
-      "type": "string",
-      "value": "[parameters('utcShort')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/date/utcnow-tag.json":::
 
 ## <a name="next-steps"></a>后续步骤
 

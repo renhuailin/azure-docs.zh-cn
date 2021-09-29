@@ -3,17 +3,17 @@ title: Azure API 管理策略表达式 | Microsoft 文档
 description: 了解 Azure API 管理中的策略表达式。 请参阅示例，查看其他可用资源。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 07/07/2021
-ms.author: apimpm
-ms.openlocfilehash: 65309253886d8186087a1ac93b5da9d067f444bc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: danlep
+ms.openlocfilehash: c70e72550b88850b6b30c8f96f7f2dc4a460b222
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468477"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678946"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
 本文讨论 C# 7 中的策略表达式语法。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
@@ -22,7 +22,7 @@ ms.locfileid: "114468477"
 
 - 了解如何向后端服务提供上下文信息。 使用[设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter)和[设置 HTTP 标头](api-management-transformation-policies.md#SetHTTPheader)策略来提供此信息。
 - 了解如何使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略根据令牌声明预先授予操作访问权限。
-- 了解如何使用 [API 检查器](./api-management-howto-api-inspector.md)跟踪检测策略求值方法和这些求值的结果。
+- 了解如何使用 [API 检查器](./api-management-howto-api-inspector.md)跟踪来检测策略求值方法和这些求值的结果。
 - 了解如何对[从缓存获取](api-management-caching-policies.md#GetFromCache)和[存储到缓存](api-management-caching-policies.md#StoreToCache)策略使用表达式，以便配置 API 管理响应缓存。 设置持续时间，使之匹配由后端服务的 `Cache-Control` 指令指定的后端服务响应缓存。
 - 了解如何进行内容筛选。 删除使用[控制流](api-management-advanced-policies.md#choose)和[设置正文](api-management-transformation-policies.md#SetBody)策略从后端接收的响应中的数据元素。
 - 要下载策略语句，请参阅 [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub 存储库。
@@ -208,7 +208,7 @@ ms.locfileid: "114468477"
 |----------------------|-------------------------------------------------------|
 |上下文|[Api](#ref-context-api)：[IApi](#ref-iapi)<br /><br /> [部署](#ref-context-deployment)<br /><br /> Elapsed：TimeSpan - 时间戳值和当前时间之间的时间间隔<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [产品](#ref-context-product)<br /><br /> [请求](#ref-context-request)<br /><br /> RequestId：Guid - 唯一请求标识符<br /><br /> [响应](#ref-context-response)<br /><br /> [订阅](#ref-context-subscription)<br /><br /> 时间戳:DateTime - 接收到请求的时间点<br /><br /> Tracing: bool - 指示跟踪是为打开还是关闭 <br /><br /> [User](#ref-context-user)<br /><br /> [变量](#ref-context-variables)：IReadOnlyDictionary<string, object><br /><br /> void Trace(message：string)|
 |<a id="ref-context-api"></a>context.Api|Id：string<br /><br /> IsCurrentRevision：bool<br /><br />  Name：string<br /><br /> Path：string<br /><br /> Revision: string<br /><br /> ServiceUrl：[IUrl](#ref-iurl)<br /><br /> Version: string |
-|<a id="ref-context-deployment"></a>context.Deployment|GatewayId: string（针对托管网关返回“managed”）<br /><br /> Region：string<br /><br /> ServiceName：string<br /><br /> 证书：IReadOnlyDictionary<string, X509Certificate2>|
+|<a id="ref-context-deployment"></a>context.Deployment|GatewayId：字符串（针对托管网关返回“托管”）<br /><br /> Region：string<br /><br /> ServiceName：string<br /><br /> 证书：IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>context.LastError|Source：string<br /><br /> Reason：string<br /><br /> Message：string<br /><br /> Scope：string<br /><br /> Section：string<br /><br /> Path：string<br /><br /> PolicyId：string<br /><br /> 有关 context.LastError 的详细信息，请参阅[错误处理](api-management-error-handling-policies.md)。|
 |<a id="ref-context-operation"></a>context.Operation|Id：string<br /><br /> Method：string<br /><br /> Name：string<br /><br /> UrlTemplate：string|
 |<a id="ref-context-product"></a>context.Product|Api：IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired：bool<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id：string<br /><br /> Name：string<br /><br /> State：enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit：int?<br /><br /> SubscriptionRequired：bool|
@@ -220,7 +220,7 @@ ms.locfileid: "114468477"
 |<a id="ref-context-user"></a>context.User|Email：string<br /><br /> FirstName：string<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id：string<br /><br /> 标识：IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName：string<br /><br /> Note：string<br /><br /> RegistrationDate：DateTime|
 |<a id="ref-iapi"></a>IApi|Id：string<br /><br /> Name：string<br /><br /> Path：string<br /><br /> 协议：IEnumerable<string\><br /><br /> ServiceUrl：[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames：[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id：string<br /><br /> Name：string|
-|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):其中 T 为 string、byte[]、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于以指定的类型 `T` 读取请求和响应消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`，如[此示例](api-management-transformation-policies.md#SetBody)中所示。|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):其中 T 为 string、byte[]、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于以指定的类型 `T` 读取请求和响应消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`，如[本示例](api-management-transformation-policies.md#SetBody)所示。|
 |<a id="ref-iurl"></a>IUrl|Host：string<br /><br /> Path：string<br /><br /> Port：int<br /><br /> [查询](#ref-iurl-query)：IReadOnlyDictionary<string, string[]><br /><br /> QueryString：string<br /><br /> Scheme：string|
 |<a id="ref-iuseridentity"></a>IUserIdentity|Id：string<br /><br /> Provider：string|
 |<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header：string<br /><br /> Query：string|

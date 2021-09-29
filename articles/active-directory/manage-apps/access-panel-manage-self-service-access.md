@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 6297f519e87e9cb98ff0c85916eeae4161d2749e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 017f43152ed041d0b3b9a24bab151bb06acb9d3f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727625"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748477"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助服务应用程序访问
 
@@ -24,7 +24,7 @@ ms.locfileid: "121727625"
 
 对于 IT 组，此功能是节省时间和金钱的绝佳方式，我们强烈建议将其作为 Azure Active Directory 的新式应用程序部署的一部分。
 
-若要从最终用户的角度了解如何使用“我的应用”，请参阅[“我的应用”门户帮助](../user-help/my-apps-portal-end-user-access.md)。
+若要从最终用户的角度了解如何使用“我的应用”，请参阅[“我的应用”门户帮助](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 使用此功能，可以：
 

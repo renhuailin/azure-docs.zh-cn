@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序管理中的新增内容
 description: 有关 Azure Active Directory 应用程序管理的新文档和更新文档。
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,38 @@ ms.author: davidmu
 author: davidmu1
 manager: CelesteDG
 reviewer: napuri
-ms.openlocfilehash: d95c81256dcb58b64273d6062563daf38dfdb4fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a5de6a248d389c90cbc67f59b0b94f53c35821f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727627"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810040"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增内容
 
 欢迎查看 Azure Active Directory 应用程序管理文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解应用程序管理服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="new-articles"></a>新文章
+
+- [防范同意钓鱼](protect-against-consent-phishing.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [配置权限分类](configure-permission-classifications.md)
+- [配置组所有者对应用访问组数据的同意](configure-user-consent-groups.md)
+- [对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施](manage-application-permissions.md)
+- [管理应用程序的许可和评估同意请求](manage-consent-requests.md)
+- [向应用程序授予租户范围的管理许可](grant-admin-consent.md)
+- [快速入门：将应用程序添加到租户](add-application-portal.md)
+- [将用户和组分配到企业应用程序](assign-user-or-group-access-portal.md)
+- [管理对应用的访问](what-is-access-management.md)
+- [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
+- [计划 Azure Active Directory 我的应用配置](my-apps-deployment-plan.md)
+- [SAML 令牌中的高级证书签名选项](certificate-signing-options.md)
+- [在“我的应用”门户中创建集合](access-panel-collections.md)
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 

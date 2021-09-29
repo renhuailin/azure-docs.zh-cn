@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfc36a877ea7c21d580a25fe8987d202d80d0aac
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97672575"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教程：Azure Active Directory 与 AnswerHub 集成
 
@@ -185,7 +185,7 @@ ms.locfileid: "97672575"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
-    d. 选择“创建”。
+    d. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -217,7 +217,7 @@ ms.locfileid: "97672575"
 
 8. 在“添加分配”对话框中选择“分配”。  
 
-### <a name="create-an-answerhub-test-user"></a>创建 AnswerHub 测试用户
+### <a name="create-an-answerhub-test-user&quot;></a>创建 AnswerHub 测试用户
 
 若要使 Azure AD 用户能够登录到 AnswerHub，需要将其添加到 AnswerHub 中。 在 AnswerHub 中，手动执行此任务。
 
@@ -231,7 +231,7 @@ ms.locfileid: "97672575"
 
 4. 在左侧窗格的“管理用户”部分中，选择“创建或导入用户”，然后选择“用户和组”    。
 
-    ![屏幕截图显示 AnswerHub 页，其中“用户和组”选项卡处于选中状态，并标注了“创建或导入用户”链接。](./media/answerhub-tutorial/ic785175.png "用户和组")
+    ![屏幕截图显示 AnswerHub 页，其中“用户和组”选项卡处于选中状态，并标注了“创建或导入用户”链接。](./media/answerhub-tutorial/ic785175.png &quot;用户和组")
 
 5. 在相应的框中，输入要添加的有效 Azure AD 帐户的“电子邮件地址”、“用户名”和“密码”，然后选择“保存”     。
 
@@ -242,7 +242,7 @@ ms.locfileid: "97672575"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“AnswerHub”磁贴时，应会自动登录到设置了 SSO 的 AnswerHub。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
+在访问面板中选择“AnswerHub”磁贴时，应会自动登录到设置了 SSO 的 AnswerHub。 有关访问面板的详细信息，请参阅[访问面板简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

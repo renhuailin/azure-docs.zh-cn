@@ -10,12 +10,12 @@ ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a52460db452d519c51fb7a1b191766b21da67f88
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600456"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592273"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>为 Azure 存储使用专用终结点
 
@@ -47,7 +47,7 @@ VNet 中的应用程序可以使用通过其他方式连接时所用的相同连
 通过[配置存储防火墙](storage-network-security.md#change-the-default-network-access-rule)，使其默认拒绝通过其公共终结点进行的访问，可以保护存储帐户，使其仅接受来自 VNet 的连接。 无需防火墙规则来允许来自具有专用终结点的 VNet 的流量，因为存储防火墙只控制通过公共终结点进行的访问。 专用终结点则是依赖于“同意流”来授予子网对存储服务的访问权限。
 
 > [!NOTE]
-> 在存储帐户之间复制 Blob 时，客户端必须对两个帐户都具有网络访问权限。 因此，如果选择仅对一个帐户（源帐户或目标帐户）使用专用链接，请确保客户端对另一帐户具有网络访问权限。 若要了解配置网络访问的其他方法，请参阅[配置 Azure 存储防火墙和虚拟网络](storage-network-security.md?toc=/azure/storage/blobs/toc.json)。 
+> 在存储帐户之间复制 Blob 时，客户端必须对两个帐户都具有网络访问权限。 因此，如果选择仅对一个帐户（源帐户或目标帐户）使用专用链接，请确保客户端对另一帐户具有网络访问权限。 若要了解配置网络访问的其他方法，请参阅[配置 Azure 存储防火墙和虚拟网络](storage-network-security.md?toc=/azure/storage/blobs/toc.json)。
 
 <a id="private-endpoints-for-azure-storage"></a>
 
@@ -61,11 +61,9 @@ VNet 中的应用程序可以使用通过其他方式连接时所用的相同连
 
 - [使用 Azure PowerShell 创建专用终结点](../../private-link/create-private-endpoint-powershell.md)
 
+创建专用终结点时，必须指定存储帐户及其连接到的存储服务。
 
-
-创建专用终结点时，必须指定存储帐户及其连接到的存储服务。 
-
-需要为所要访问的每个存储资源（即 [Blob](../blobs/storage-blobs-overview.md)、[Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[文件存储](../files/storage-files-introduction.md)、[队列](../queues/storage-queues-introduction.md)、[表](../tables/table-storage-overview.md)或[静态网站](../blobs/storage-blob-static-website.md)）单独创建一个专用终结点。 在专用终结点上，这些存储服务定义为关联存储帐户的“目标子资源”。 
+需要为所要访问的每个存储资源（即 [Blob](../blobs/storage-blobs-overview.md)、[Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[文件存储](../files/storage-files-introduction.md)、[队列](../queues/storage-queues-introduction.md)、[表](../tables/table-storage-overview.md)或[静态网站](../blobs/storage-blob-static-website.md)）单独创建一个专用终结点。 在专用终结点上，这些存储服务定义为关联存储帐户的“目标子资源”。
 
 如果为 Data Lake Storage Gen2 存储资源创建专用终结点，则还应为 Blob 存储资源创建一个专用终结点。 这是因为，面向 Data Lake Storage Gen2 终结点的操作可能会重定向到 Blob 终结点。 为这两个资源创建专用终结点可确保操作成功完成。
 
@@ -96,22 +94,22 @@ VNet 中的应用程序可以使用通过其他方式连接时所用的相同连
 
 | 名称                                                  | 类型  | Value                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
-| ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| `StorageAccountA.blob.core.windows.net`             | CNAME | `StorageAccountA.privatelink.blob.core.windows.net` |
+| `StorageAccountA.privatelink.blob.core.windows.net` | CNAME | \<storage service public endpoint\>                   |
 | \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
 如前文所述，可以使用存储防火墙通过公共终结点拒绝或控制 VNet 外部的客户端的访问。
 
 当 StorageAccountA 的 DNS 资源记录由托管专用终结点的 VNet 中的客户端解析时，将为：
 
-| 名称                                                  | 类型  | Value                                                 |
-| :---------------------------------------------------- | :---: | :---------------------------------------------------- |
-| ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
+| 名称  | 类型 | Value |
+| :--- | :---: | :--- |
+| `StorageAccountA.blob.core.windows.net` | CNAME | `StorageAccountA.privatelink.blob.core.windows.net` |
+| `StorageAccountA.privatelink.blob.core.windows.net` | A | `10.1.1.5` |
 
 对于托管专用终结点的 VNet 上的客户端和 VNet 外部的客户端，此方法允许使用相同的连接字符串访问存储帐户。
 
-如果在网络上使用自定义 DNS 服务器，则客户端必须能够将存储帐户终结点的 FQDN 解析为专用终结点 IP 地址。 应配置 DNS 服务器以将专用链接子域委托到 VNet 的专用 DNS 区域，或者使用专用终结点 IP 地址为“*StorageAccountA.privatelink.blob.core.windows.net*”配置 A 记录。
+如果在网络上使用自定义 DNS 服务器，则客户端必须能够将存储帐户终结点的 FQDN 解析为专用终结点 IP 地址。 应配置 DNS 服务器以将专用链接子域委托到 VNet 的专用 DNS 区域，或者使用专用终结点 IP 地址为 `StorageAccountA.privatelink.blob.core.windows.net` 配置 A 记录。
 
 > [!TIP]
 > 使用自定义或本地 DNS 服务器时，应将 DNS 服务器配置为将 `privatelink` 子域中的存储帐户名称解析为专用终结点 IP 地址。 为此，可以将 `privatelink` 子域委托给 VNet 的专用 DNS 区域，或在 DNS 服务器上配置 DNS 区域并添加 DNS A 记录。
@@ -152,9 +150,9 @@ VNet 中的应用程序可以使用通过其他方式连接时所用的相同连
 
 ### <a name="copying-blobs-between-storage-accounts"></a>在存储帐户之间复制 Blob
 
-仅当使用 Azure REST API 或使用 REST API 的工具时，才能使用专用终结点在存储帐户之间复制 Blob。 这些工具包括 AzCopy、存储资源管理器、Azure PowerShell、Azure CLI 和 Azure Blob 存储 SDK。 
+仅当使用 Azure REST API 或使用 REST API 的工具时，才能使用专用终结点在存储帐户之间复制 Blob。 这些工具包括 AzCopy、存储资源管理器、Azure PowerShell、Azure CLI 和 Azure Blob 存储 SDK。
 
-仅支持针对 Blob 存储资源的专用终结点。 目前尚不支持针对 Data Lake Storage Gen2 或文件资源的专用终结点。 也不支持通过使用网络文件系统 (NFS) 协议在存储帐户之间进行复制。 
+仅支持针对 Blob 存储资源的专用终结点。 目前尚不支持针对 Data Lake Storage Gen2 或文件资源的专用终结点。 也不支持通过使用网络文件系统 (NFS) 协议在存储帐户之间进行复制。
 
 ## <a name="next-steps"></a>后续步骤
 

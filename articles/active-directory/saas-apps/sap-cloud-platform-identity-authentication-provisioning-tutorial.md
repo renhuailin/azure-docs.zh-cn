@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: thwimmer
-ms.openlocfilehash: a02b767a097ec2d826f44ac5975063b681242ad1
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f751b3b705cd1cacc5ef1398fb343de60b8ede6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759554"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596717"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>教程：为 SAP Cloud Platform Identity Authentication 配置自动用户预配
 
@@ -32,7 +32,7 @@ ms.locfileid: "113759554"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * Azure AD 租户
-* [SAP Cloud Platform Identity Authentication 租户](https://cloudplatform.sap.com/pricing.html)
+* [SAP Cloud Platform Identity Authentication 租户](https://www.sap.com/products/cloud-platform.html)
 * SAP Cloud Platform Identity Authentication 中具有管理员权限的用户帐户。
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>将用户分配到 SAP Cloud Platform Identity Authentication
@@ -110,7 +110,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

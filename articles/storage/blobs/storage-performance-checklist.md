@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 249d2e266c0f72336091133a52426602491b3c68
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 5f0cbf0c83d8ea7caba84f681c71659cef119f17
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900730"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643605"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能与可伸缩性查检表
 
@@ -71,7 +71,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 ### <a name="capacity-and-transaction-targets"></a>容量和事务目标
 
-如果应用程序正接近单个存储帐户的可伸缩性目标，可考虑采用以下方法之一：  
+如果应用程序正接近单个存储帐户的可伸缩性目标，可考虑采用以下方法之一：
 
 - 如果应用程序达到了事务目标，请考虑使用块 Blob 存储帐户。这些帐户经过优化，可实现较高的事务速率和持续较低的延迟。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 - 重新考虑导致应用程序接近或超过可伸缩性目标的工作负载。 能否对其进行另外的设计，以便使用较少的带宽、容量或处理事务？
@@ -92,7 +92,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 单个 Blob 每秒最多可支持 500 个请求。 如果多个客户端需要读取同一 Blob，而你可能会超过此限制，请考虑使用块 Blob 存储帐户。 块 Blob 存储帐户提供更高的请求速率或每秒 I/O 操作次数 (IOPS)。
 
-还可以使用内容分发网络 (CDN)（例如 Azure CDN）在 Blob 上分发操作。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN 概述](../../cdn/cdn-overview.md)。  
+还可以使用内容分发网络 (CDN)（例如 Azure CDN）在 Blob 上分发操作。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN 概述](../../cdn/cdn-overview.md)。
 
 ## <a name="partitioning"></a>分区
 
@@ -106,19 +106,19 @@ Blob 存储使用基于范围的分区方案来进行缩放和负载均衡。 �
 
 每个负载均衡操作可能在操作期间会影响存储调用的延迟。 服务处理某个分区流量激增的能力受到单个分区服务器可伸缩性的限制，直到负载均衡操作着手重新平衡分区键范围。
 
-可以遵循一些最佳实践来降低此类操作的频率。  
+可以遵循一些最佳实践来降低此类操作的频率。
 
 - 如果可能，请对标准存储帐户使用大于 4 MiB 的 Blob 或块大小，对高级存储帐户使用大于 256 KiB 的 Blob 或块大小。 较大的 Blob 或块大小会自动激活高吞吐量块 Blob。 高吞吐量块 Blob 提供不受分区命名影响的高性能引入。
 - 检查帐户、容器、Blob、表和队列使用的命名约定。 考虑使用最符合需求的哈希函数，在帐户、容器或 Blob 名前加上三位数哈希。
 - 如果使用时间戳或数字标识符组织数据，请确保使用的不是仅附加在后（或仅在前面加上）的流量模式。 这些模式不适用于基于范围的分区系统。 这些模式可能导致所有流量进入单个分区并限制系统进行有效的负载均衡。
 
     例如，如果日常操作使用有时间戳的 Blob，如 *yyyymmdd*，则该日常操作的所有流量都定向到由单个分区服务器服务的单个 Blob。 考虑每个 Blob 的限制和每个分区的限制是否符合需求，并考虑是否需要将此操作拆分成多个 Blob。 同样，如果在表中存储时序数据，则所有流量都可能定向到键命名空间的最后一个部分。 如果使用数字 ID，请使用三位数哈希作为 ID 的前缀。 如果使用时间戳，请使用秒值作为时间戳的前缀，例如 *ssyyyymmdd*。 如果应用程序定期执行列出和查询操作，请选择限制查询次数的哈希函数。 在某些情况下，使用随机前缀便已足够。
-  
+
 - 有关 Azure 存储中使用的分区方案的详细信息，请参阅 [Azure 存储：具有高度一致性的高可用云存储服务](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
 
 ## <a name="networking"></a>网络
 
-物理网络对应用程序的约束可能会严重影响性能。 以下部分描述了用户可能会遇到的某些限制。  
+物理网络对应用程序的约束可能会严重影响性能。 以下部分描述了用户可能会遇到的某些限制。
 
 ### <a name="client-network-capability"></a>客户端网络功能
 
@@ -130,27 +130,27 @@ Blob 存储使用基于范围的分区方案来进行缩放和负载均衡。 �
 
 #### <a name="link-quality"></a>链接质量
 
-请注意，因错误和数据包丢失而导致的网络状况会降低有效吞吐量，使用任何网络都是这样。  WireShark 或 NetMon 可用于诊断此问题。  
+请注意，因错误和数据包丢失而导致的网络状况会降低有效吞吐量，使用任何网络都是这样。  WireShark 或 NetMon 可用于诊断此问题。
 
 ### <a name="location"></a>位置
 
-在任何分布式环境中，将客户端放置在服务器附近可提供最佳性能。 要以最低的延迟访问 Azure 存储，则最好是将客户端放置在同一 Azure 区域内。 例如，如果 Azure Web 应用使用 Azure 存储，请将二者放在同一个区域（例如美国西部或东南亚）。 将资源放到一起可降低延迟和成本，因为在同一个区域使用带宽是免费的。  
+在任何分布式环境中，将客户端放置在服务器附近可提供最佳性能。 要以最低的延迟访问 Azure 存储，则最好是将客户端放置在同一 Azure 区域内。 例如，如果 Azure Web 应用使用 Azure 存储，请将二者放在同一个区域（例如美国西部或东南亚）。 将资源放到一起可降低延迟和成本，因为在同一个区域使用带宽是免费的。
 
 如果客户端应用程序要访问 Azure 存储但不是托管在 Azure 中（例如移动设备应用或本地企业服务），则将存储帐户放在靠近这些客户端的区域可降低延迟。 如果客户端广泛分布在各地（例如，有些客户端分布在北美，有些则在欧洲），请考虑在每个区域使用一个存储帐户。 如果应用程序存储的数据是特定于各个用户的，不需要在存储帐户之间复制数据，则此方法更容易实施。
 
-若要广泛地分发 blob 内容，请使用内容分发网络，如 Azure CDN。 关于 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。  
+若要广泛地分发 blob 内容，请使用内容分发网络，如 Azure CDN。 关于 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。
 
 ## <a name="sas-and-cors"></a>SAS 和 CORS
 
 假设你需要授权用户 Web 浏览器或手机应用中运行的代码（例如 JavaScript）访问 Azure 存储中的数据。 一种方法是构建充当代理的服务应用程序。 用户的设备将对服务进行身份验证，而后者又可授权访问 Azure 存储资源。 这样，就可以避免在不安全的设备上公开存储帐户密钥。 但是，此方法会明显增大服务应用程序的开销，因为在用户设备与 Azure 存储之间传输的所有数据必须通过服务应用程序。
 
-使用共享访问签名 (SAS) 即可避免将服务应用程序用作 Azure 存储的代理。 使用 SAS 可让用户设备通过受限访问令牌直接对 Azure 存储发出请求。 例如，如果用户想要将照片上传到应用程序，则服务应用程序可以生成 SAS 并将其发送到用户的设备。 SAS 令牌可按指定的时间间隔授予写入 Azure 存储资源的权限，该时间过后，SAS 令牌将会过期。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。  
+使用共享访问签名 (SAS) 即可避免将服务应用程序用作 Azure 存储的代理。 使用 SAS 可让用户设备通过受限访问令牌直接对 Azure 存储发出请求。 例如，如果用户想要将照片上传到应用程序，则服务应用程序可以生成 SAS 并将其发送到用户的设备。 SAS 令牌可按指定的时间间隔授予写入 Azure 存储资源的权限，该时间过后，SAS 令牌将会过期。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
 
 通常，Web 浏览器不允许某个域上的网站所托管的页面中的 JavaScript 对另一个域执行某些操作（例如写入操作）。 此策略称为同源策略，可防止一个页面上的恶意脚本获取另一网页上的数据的访问权限。 但是，在云中构建解决方案时，同源策略可能会成为一种限制。 跨源资源共享 (CORS) 是一种浏览器功能，它使目标域能够与信任源自源域的请求的浏览器通信。
 
-例如，假设 Azure 中运行的某个 Web 应用程序对 Azure 存储帐户发出了某个资源请求。 该 Web 应用程序是源域，存储帐户是目标域。 可为任何 Azure 存储服务配置 CORS，以便与从 Azure 存储信任的源域发出请求的 Web 浏览器通信。 有关 CORS 的详细信息，请参阅 [Azure 存储的跨源资源共享 (CORS) 支持](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)。  
-  
-SAS 和 CORS 都有助于避免 Web 应用程序上出现不必要的负载。  
+例如，假设 Azure 中运行的某个 Web 应用程序对 Azure 存储帐户发出了某个资源请求。 该 Web 应用程序是源域，存储帐户是目标域。 可为任何 Azure 存储服务配置 CORS，以便与从 Azure 存储信任的源域发出请求的 Web 浏览器通信。 有关 CORS 的详细信息，请参阅 [Azure 存储的跨源资源共享 (CORS) 支持](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)。
+
+SAS 和 CORS 都有助于避免 Web 应用程序上出现不必要的负载。
 
 ## <a name="caching"></a>缓存
 
@@ -164,9 +164,9 @@ SAS 和 CORS 都有助于避免 Web 应用程序上出现不必要的负载。
 
 你还可以将应用程序设计为假定 Blob 在检索后的短时间内未有变化。 在这种情况下，应用程序不需要检查 Blob 在该时间间隔内是否被修改。
 
-配置数据、查找数据以及由应用程序频繁使用的其他数据非常适合进行缓存。  
+配置数据、查找数据以及由应用程序频繁使用的其他数据非常适合进行缓存。
 
-有关使用条件标头的详细信息，请参阅[为 Blob 服务操作指定条件标头](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)。  
+有关使用条件标头的详细信息，请参阅[为 Blob 服务操作指定条件标头](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)。
 
 ### <a name="uploading-data-in-batches"></a>批量上传数据
 
@@ -174,7 +174,7 @@ SAS 和 CORS 都有助于避免 Web 应用程序上出现不必要的负载。
 
 ## <a name="net-configuration"></a>.NET 配置
 
-如果使用的是 .NET Framework，则本部分列出的数种快速配置设置可以用于显著提高性能。  如果使用其他语言，则需查看类似的概念是否适用于所选择的语言。  
+如果使用的是 .NET Framework，则本部分列出的数种快速配置设置可以用于显著提高性能。  如果使用其他语言，则需查看类似的概念是否适用于所选择的语言。
 
 ### <a name="use-net-core"></a>使用 .NET Core
 
@@ -193,9 +193,9 @@ SAS 和 CORS 都有助于避免 Web 应用程序上出现不必要的负载。
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-对于其他编程语言，请参阅文档以确定如何设置连接限制。  
+对于其他编程语言，请参阅文档以确定如何设置连接限制。
 
-有关详细信息，请参阅博客文章 [Web 服务：并发连接](/archive/blogs/darrenj/web-services-concurrent-connections)。  
+有关详细信息，请参阅博客文章 [Web 服务：并发连接](/archive/blogs/darrenj/web-services-concurrent-connections)。
 
 ### <a name="increase-minimum-number-of-threads"></a>增大最小线程数
 
@@ -205,11 +205,11 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-有关详细信息，请参阅 [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) 方法。  
+有关详细信息，请参阅 [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) 方法。
 
 ## <a name="unbounded-parallelism"></a>不受限制的并行度
 
-虽然并行度有助于提高性能，但在使用不受限制的并行度时应保持谨慎，因为这意味着对线程数或并行请求数没有限制。 请务必限制上传或下载数据、访问同一存储帐户中的多个分区以及访问同一分区中的多个项的并行请求。 如果并行度不受限制，应用程序则可能会超出客户端设备的承受程度或超出存储帐户的可伸缩性目标，导致延迟和限制时间增长。  
+虽然并行度有助于提高性能，但在使用不受限制的并行度时应保持谨慎，因为这意味着对线程数或并行请求数没有限制。 请务必限制上传或下载数据、访问同一存储帐户中的多个分区以及访问同一分区中的多个项的并行请求。 如果并行度不受限制，应用程序则可能会超出客户端设备的承受程度或超出存储帐户的可伸缩性目标，导致延迟和限制时间增长。
 
 ## <a name="client-libraries-and-tools"></a>客户端库和工具
 
@@ -221,9 +221,9 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ### <a name="timeout-and-server-busy-errors"></a>超时和服务器繁忙错误
 
-如果应用程序即将达到可伸缩性限制，Azure 存储可能会对其进行限制。 在某些情况下，Azure 存储可能会出于某种暂时性的状况而无法处理请求。 对于这两种情况，服务可能返回 503（服务器繁忙）或 500（超时）错误。 如果服务正在对数据分区进行重新均衡以提高吞吐量，则也可能会发生这些错误。 通常，客户端应用程序应重试导致上述某种错误的操作。 但是，如果 Azure 存储因为应用程序即将超出可伸缩性目标而限制应用程序，或者其他某种原因导致服务无法为请求提供服务，则过于频繁的重试可能会使问题变得更糟。 建议使用指数退避重试策略，客户端库默认采用此行为。 例如，应用程序可能会在 2 秒后、4 秒后、10 秒后，以及 30 秒后进行重试，最后彻底放弃重试。 这样，应用程序可明显减少其在服务中施加的负载，而不会使得导致出现限制的行为恶化。  
+如果应用程序即将达到可伸缩性限制，Azure 存储可能会对其进行限制。 在某些情况下，Azure 存储可能会出于某种暂时性的状况而无法处理请求。 对于这两种情况，服务可能返回 503（服务器繁忙）或 500（超时）错误。 如果服务正在对数据分区进行重新均衡以提高吞吐量，则也可能会发生这些错误。 通常，客户端应用程序应重试导致上述某种错误的操作。 但是，如果 Azure 存储因为应用程序即将超出可伸缩性目标而限制应用程序，或者其他某种原因导致服务无法为请求提供服务，则过于频繁的重试可能会使问题变得更糟。 建议使用指数退避重试策略，客户端库默认采用此行为。 例如，应用程序可能会在 2 秒后、4 秒后、10 秒后，以及 30 秒后进行重试，最后彻底放弃重试。 这样，应用程序可明显减少其在服务中施加的负载，而不会使得导致出现限制的行为恶化。
 
-连接错误可以立即重试，因为它不是限制造成的，而且应该是暂时性的。  
+连接错误可以立即重试，因为它不是限制造成的，而且应该是暂时性的。
 
 ### <a name="non-retryable-errors"></a>不可重试的错误
 
@@ -239,11 +239,11 @@ Azure 存储提供多种解决方案用于在存储帐户内部、在存储帐�
 
 若要跨存储帐户复制 Blob，请使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url)操作。 此操作以同步方式将任何 URL 源中的数据复制到块 Blob。 使用 `Put Block from URL` 操作可以大幅减少跨存储帐户迁移数据时所需的带宽。 由于复制操作在服务端中进行，因此无需下载并重新上传数据。
 
-若要复制同一存储帐户中的数据，请使用[复制 Blob](/rest/api/storageservices/Copy-Blob) 操作。 复制同一存储帐户中的数据通常很快就能完成。  
+若要复制同一存储帐户中的数据，请使用[复制 Blob](/rest/api/storageservices/Copy-Blob) 操作。 复制同一存储帐户中的数据通常很快就能完成。
 
 ### <a name="use-azcopy"></a>使用 AzCopy
 
-AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的简单高效选项。 AzCopy 已针对此方案进行优化，可以实现较高的传输速率。 AzCopy 版本 10 使用 `Put Block From URL` 操作跨存储帐户复制 Blob 数据。 有关详细信息，请参阅[使用 AzCopy v10 将数据复制或移到 Azure 存储](../common/storage-use-azcopy-v10.md)。  
+AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的简单高效选项。 AzCopy 已针对此方案进行优化，可以实现较高的传输速率。 AzCopy 版本 10 使用 `Put Block From URL` 操作跨存储帐户复制 Blob 数据。 有关详细信息，请参阅[使用 AzCopy v10 将数据复制或移到 Azure 存储](../common/storage-use-azcopy-v10.md)。
 
 ### <a name="use-azure-data-box"></a>使用 Azure Data Box
 
@@ -251,17 +251,17 @@ AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的
 
 ## <a name="content-distribution"></a>内容分发
 
-有时，应用程序需要向位于同一区域或多个区域的许多用户提供相同的内容（例如网站主页中使用的产品演示视频）。 在这种情况下，使用 Azure CDN 等内容分发网络 (CDN) 按地理位置分发 blob 内容。 与存在于一个区域且无法以低延迟向其他区域交付内容的 Azure 存储帐户不同，Azure CDN 使用位于全世界多个数据中心的服务器。 此外，与单个存储帐户相比，CDN 通常可以支持更高的出口限制。  
+有时，应用程序需要向位于同一区域或多个区域的许多用户提供相同的内容（例如网站主页中使用的产品演示视频）。 在这种情况下，使用 Azure CDN 等内容分发网络 (CDN) 按地理位置分发 blob 内容。 与存在于一个区域且无法以低延迟向其他区域交付内容的 Azure 存储帐户不同，Azure CDN 使用位于全世界多个数据中心的服务器。 此外，与单个存储帐户相比，CDN 通常可以支持更高的出口限制。
 
 关于 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。
 
 ## <a name="use-metadata"></a>使用元数据
 
-Blob 服务支持 HEAD 请求，这些请求可以包含 Blob 属性或元数据。 例如，如果应用程序需要某张照片中的 Exif（可交换图像格式）数据，则它可以检索该照片并从中提取数据。 为了节省带宽并改进性能，应用程序可以在上传照片时将 Exif 数据存储到 Blob 的元数据中。 随后，你只需使用 HEAD 请求即可检索元数据中的 Exif 数据。 仅检索元数据而不检索 Blob 的全部内容可以大幅节省带宽，并减少提取 Exif 数据所需的处理时间。 请记住，每个 Blob 可以存储 8 KiB 元数据。  
+Blob 服务支持 HEAD 请求，这些请求可以包含 Blob 属性或元数据。 例如，如果应用程序需要某张照片中的 Exif（可交换图像格式）数据，则它可以检索该照片并从中提取数据。 为了节省带宽并改进性能，应用程序可以在上传照片时将 Exif 数据存储到 Blob 的元数据中。 随后，你只需使用 HEAD 请求即可检索元数据中的 Exif 数据。 仅检索元数据而不检索 Blob 的全部内容可以大幅节省带宽，并减少提取 Exif 数据所需的处理时间。 请记住，每个 Blob 可以存储 8 KiB 元数据。
 
 ## <a name="upload-blobs-quickly"></a>快速上传 Blob
 
-若要快速上传 Blob，请先确定是要上传一个还是多个 Blob。 请参阅以下指南，根据具体情况确定要使用的正确方法。  
+若要快速上传 Blob，请先确定是要上传一个还是多个 Blob。 请参阅以下指南，根据具体情况确定要使用的正确方法。
 
 ### <a name="upload-one-large-blob-quickly"></a>快速上传一个大型 Blob
 
@@ -272,7 +272,7 @@ Blob 服务支持 HEAD 请求，这些请求可以包含 Blob 属性或元数据
 
 ### <a name="upload-many-blobs-quickly"></a>快速上传多个 Blob
 
-若要快速上传多个 Blob，请以并行方式上传。 并行上传要快于通过并行块上传方式一次上传一个 Blob，因为这种情况下上传会分布到存储服务的多个分区中。 AzCopy 以并行方式执行上传操作，建议用于此方案。 有关详细信息，请参阅 [AzCopy 入门](../common/storage-use-azcopy-v10.md)。  
+若要快速上传多个 Blob，请以并行方式上传。 并行上传要快于通过并行块上传方式一次上传一个 Blob，因为这种情况下上传会分布到存储服务的多个分区中。 AzCopy 以并行方式执行上传操作，建议用于此方案。 有关详细信息，请参阅 [AzCopy 入门](../common/storage-use-azcopy-v10.md)。
 
 ## <a name="choose-the-correct-type-of-blob"></a>选择正确的 Blob 类型
 
@@ -282,7 +282,7 @@ Azure 存储支持块 Blob、追加 Blob 和页 Blob。 在给定的使用方案
 
 追加 Blob 与块 Blob 的类似之处在于，它们都由块构成。 修改追加 Blob 时，块只会添加到 Blob 的末尾。 在日志记录等方案中，如果应用程序需要将数据添加到现有的 Blob 时，则追加 Blob 会很有用。
 
-如果应用程序需要对数据执行随机写入，则适合使用页 Blob。 例如，Azure 虚拟机磁盘将存储为页 Blob。 有关详细信息，请参阅[了解块 Blob、追加 Blob 和页 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。  
+如果应用程序需要对数据执行随机写入，则适合使用页 Blob。 例如，Azure 虚拟机磁盘将存储为页 Blob。 有关详细信息，请参阅[了解块 Blob、追加 Blob 和页 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
 ## <a name="next-steps"></a>后续步骤
 

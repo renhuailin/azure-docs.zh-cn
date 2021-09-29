@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5c9421397b6e5fbfe8688e5ceeff6056de25674a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 771674a3c8d4023b307982f8460f956dd422eb04
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862330"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567134"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
 
@@ -199,7 +199,7 @@ Azure 虚拟桌面目前不支持在主机池设置过程中自动配置受信�
 
 ## <a name="windows-defender-application-control"></a>Windows Defender 应用程序控制
 
-以下操作系统支持将“Windows Defender 应用程序控制”与“Azure 虚拟桌面”结合使用：
+以下操作系统支持将 Windows Defender 应用程序控制和 Azure 虚拟桌面一起使用：
 
 - Windows Server 2016
 - Windows Server 2019
@@ -207,28 +207,7 @@ Azure 虚拟桌面目前不支持在主机池设置过程中自动配置受信�
 - Windows 10 Enterprise 多会话
 
 >[!NOTE]
->使用 Windows Defender 访问控制时，建议仅在设备级别以策略为目标。 尽管策略可以面向单个用户，但应用策略后，它会对设备上所有用户产生同等影响。
-
-## <a name="ip-virtualization"></a>IP 虚拟化
-
-如果要在 Windows Server 2019 上使用 IP 虚拟化，请执行以下步骤：
-
-1. 在管理员 Windows PowerShell 窗口中，重命名以下密钥： 
-```powershell
-Rename-Item HKLM:\SYSTEM\ControlSet001\Services\WinSock2\Parameters\AppId_Catalog\2C69D9F1 Backup_2C69D9F1
-```
->[!NOTE]
->删除密钥可实现相同的结果，但重命名提供了一种可以更轻松还原的方法（如果需要）。 这是默认情况下存在的数据：
->       
->HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WinSock2\Parameters\AppId_Catalog\2C69D9F1\
->AppFullPath: C:\Windows\System32\svchost.exe\
->PermittedLspCategories：0x40000000
-
-2. 重启 VM。
-
-3. 通过打开“gpedit.msc”，然后转到“计算机配置” > “管理模板” > “Windows 组件” > “远程桌面服务” > “远程桌面会话主机” > “应用程序兼容性”      ，启用 IP 虚拟化功能。 启用“打开远程桌面 IP 虚拟化”策略，然后指定想要策略使用的 IP 地址。
-
-4. 重启 VM。
+>使用 Windows Defender 访问控制时，建议仅将策略面向设备级别。 虽然可使策略面向单个用户，但在应用策略后，它对设备上的所有用户都有同样的影响。
 
 ## <a name="next-steps"></a>后续步骤
 

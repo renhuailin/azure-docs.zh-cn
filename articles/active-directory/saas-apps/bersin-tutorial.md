@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dc9bbe4b4f2d5de2a79dbdeabb4b61ecb02f2d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed9905457df3cd2089f6947155c84af12684e97c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673488"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830846"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>教程：Azure Active Directory 与 Bersin 集成
 
@@ -100,7 +100,7 @@ ms.locfileid: "97673488"
 
     ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-identifier-relay.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.bersin.com/shibboleth`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.bersin.com/shibboleth`
 
     b. 单击“设置其他 URL”  。
 
@@ -189,7 +189,7 @@ ms.locfileid: "97673488"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Bersin 磁贴时，应会自动登录到为其设置了 SSO 的 Bersin。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Bersin 磁贴时，应会自动登录到为其设置了 SSO 的 Bersin。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

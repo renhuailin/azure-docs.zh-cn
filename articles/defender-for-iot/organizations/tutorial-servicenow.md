@@ -6,12 +6,12 @@ ms.author: v-ekrieg
 ms.topic: tutorial
 ms.date: 07/27/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: dd4500940b7a7b009e8cfb8acfb0411f2ade3023
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 506af89773f9639df2bd3fcc07a204531d0dcf6e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114719943"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749002"
 ---
 # <a name="tutorial-integrate-servicenow-with-azure-defender-for-iot"></a>教程：将 ServiceNow 与 Azure Defender for IoT 集成
 
@@ -91,7 +91,7 @@ ServiceNow 配置管理数据库 (CMDB) 通过一组由 Defender for IoT 平台�
 
 1. 添加规则名称。
 
-1. 定义 Defender for IoT 触发转发规则的条件。 使用转发规则条件可帮助确定和管理从 Defender for IoT 发送到 ServiceNow 的信息量。 提供了以下选项：
+1. 定义 Defender for IoT 触发转发规则的条件。 使用转发规则条件可帮助确定和管理从 Defender for IoT 发送到 ServiceNow 的信息量。 可以使用以下选项：
 
     - 严重性级别：这是要转发的最小安全级别事件。 例如，如果选择“次要”，将转发次要警报和此严重级别以上的任何警报。 级别由 Defender for IoT 预定义。
 
@@ -224,7 +224,7 @@ Defender for IoT 通过启用对用于集成的默认端口的更改在 ServiceN
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解如何开始进行 ServiceNow 集成。 请继续了解 [Cisco 集成](integration-cisco-ise-pxgrid.md)。
+在本教程中，你已了解如何开始进行 ServiceNow 集成。 请继续了解 [Cisco 集成](./integration-forescout.md)。
 
 > [!div class="nextstepaction"]
-> [“后续步骤”按钮](integration-cisco-ise-pxgrid.md)
+> [“后续步骤”按钮](./integration-forescout.md)

@@ -2,17 +2,17 @@
 title: 计划和管理 Azure API Management 的成本
 description: 了解如何使用 Azure 门户中的成本分析来规划和管理 Azure API Management 的成本。
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 06/11/2021
-ms.openlocfilehash: ec15f11c6aee82d117210402e4cc4fda114e86a2
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 8baf9e9e7ff1ae12fc5c53af9aa2a479e1ce8342
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034600"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670303"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>规划和管理 API Management 的成本
 

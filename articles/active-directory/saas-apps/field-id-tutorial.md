@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 55a66f3f287ffb50d932263e407772efffa839ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d06770489ee4c8a97e5c2e6b50d3b1c345ca03af
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92453529"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835153"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Field iD 的集成
 
@@ -131,7 +131,7 @@ ms.locfileid: "92453529"
 
 在本部分，你将使用访问面板测试 Azure AD 单一登录配置。
 
-选择面板中的 Field iD 磁贴时，应会自动登录到为其设置了 SSO 的 Field iD。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
+选择面板中的 Field iD 磁贴时，应会自动登录到为其设置了 SSO 的 Field iD。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

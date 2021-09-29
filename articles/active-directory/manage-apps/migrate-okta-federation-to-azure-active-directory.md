@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: da42e6ea14167b3214be9162197e2cbc3afabcd5
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b2486f4be20d2347f0cadff04ef8d0aa776ccdc5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439718"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791681"
 ---
 # <a name="tutorial-migrate-okta-federation-to-azure-active-directory-managed-authentication"></a>教程：将 Okta 联合迁移到 Azure Active Directory 托管的身份验证
 
@@ -35,15 +35,15 @@ ms.locfileid: "123439718"
 
 使用以下方法来确定哪种方法最适合你的环境：
 
--  - 密码哈希同步 [密码哈希同步](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs)是对由 Azure AD Connect 服务器或云预配代理实现的目录同步功能的一种扩展。 可以使用此功能登录到 Azure AD 服务（例如 Microsoft 365）。 登录到该服务时使用的密码与登录到本地 Active Directory 实例时使用的密码相同。
+-  - 密码哈希同步 [密码哈希同步](../hybrid/whatis-phs.md)是对由 Azure AD Connect 服务器或云预配代理实现的目录同步功能的一种扩展。 可以使用此功能登录到 Azure AD 服务（例如 Microsoft 365）。 登录到该服务时使用的密码与登录到本地 Active Directory 实例时使用的密码相同。
 
-- 直通身份验 - Azure AD [直通身份验证](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta)允许用户使用相同的密码登录本地应用程序和基于云的应用程序。 如果用户使用 Azure AD 进行登录，此功能可通过直通身份验证大力，直接针对本地 Active Directory 验证用户的密码。
+- 直通身份验 - Azure AD [直通身份验证](../hybrid/how-to-connect-pta.md)允许用户使用相同的密码登录本地应用程序和基于云的应用程序。 如果用户使用 Azure AD 进行登录，此功能可通过直通身份验证大力，直接针对本地 Active Directory 验证用户的密码。
 
-- 无缝 SSO - 当用户登录到连接企业网络的企业台式机之后，[Azure AD 无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 可使用户自动登录。 无缝 SSO 可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。
+- 无缝 SSO - 当用户登录到连接企业网络的企业台式机之后，[Azure AD 无缝 SSO](../hybrid/how-to-connect-sso.md) 可使用户自动登录。 无缝 SSO 可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。
 
 无缝 SSO 还可以部署到密码哈希同步或直通身份验证，为 Azure AD 中的用户创造无缝的身份验证体验。
 
-请确保按照[部署指南](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-1-check-the-prerequisites)，将无缝 SSO 必备的所有必备软件部署到最终用户。
+请确保按照[部署指南](../hybrid/how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)，将无缝 SSO 必备的所有必备软件部署到最终用户。
 
 对于我们的示例，我们将配置密码哈希同步和无缝 SSO。
 
@@ -83,7 +83,7 @@ ms.locfileid: "123439718"
 
 ## <a name="step-2---configure-staged-rollout-features"></a>步骤 2 - 配置分阶段推出功能
 
-[分阶段推出云身份验证](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)是 Azure AD 的一项功能，可用于在取消整个域的联合之前测试取消联合的用户。 在部署之前，请先查看[必备组件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout#prerequisites)。
+[分阶段推出云身份验证](../hybrid/how-to-connect-staged-rollout.md)是 Azure AD 的一项功能，可用于在取消整个域的联合之前测试取消联合的用户。 在部署之前，请先查看[必备组件](../hybrid/how-to-connect-staged-rollout.md#prerequisites)。
 
 在 Azure AD Connect 服务器上启用密码哈希同步和无缝 SSO 后，请按照以下步骤配置分阶段推出。
 
@@ -241,7 +241,7 @@ ms.locfileid: "123439718"
 
 ## <a name="step-5---test-managed-authentication-on-pilot-members"></a>步骤 5 - 对试点成员执行托管身份验证测试
 
-配置 Okta 反向联合应用程序后，让你的用户对托管身份验证体验进行全面测试。 建议设置公司品牌，以帮助用户区分他们正在登录的正确租户。 获得有关设置公司品牌的[指南](https://docs.microsoft.com/azure/active-directory/fundamentals/customize-branding)。
+配置 Okta 反向联合应用程序后，让你的用户对托管身份验证体验进行全面测试。 建议设置公司品牌，以帮助用户区分他们正在登录的正确租户。 获得有关设置公司品牌的[指南](../fundamentals/customize-branding.md)。
 
 >[!IMPORTANT]
 >在从 Okta 整体解除域联合之前，确定可能需要的任何其他条件访问策略。 请参阅 **Okta 登录策略到 Azure AD 条件访问的迁移**，了解在完全关闭之前需要采取哪些步骤来保护你的环境。

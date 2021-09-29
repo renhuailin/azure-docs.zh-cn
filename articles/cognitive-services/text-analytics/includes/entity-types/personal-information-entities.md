@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 08/11/2021
+ms.date: 09/09/2021
 ms.author: aahi
-ms.openlocfilehash: c1b4d8801013eeb25c18b837ef4ff5a0245739e5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ce85895307af9e437fb9ceaaff3f1a385e77e17d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734084"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672551"
 ---
 > [!NOTE]
 > 若要检测受保护的运行状况信息 (PHI)，请使用 `domain=phi` 参数和模型版本 `2020-04-01` 或更高版本。
@@ -37,7 +37,7 @@ ms.locfileid: "121734084"
 | [DateTime](#category-datetime) | 某天的日期和时间。 | 
 | [数量](#category-quantity) | 数字和数量。  |
 | [Azure 信息](#azure-information) | 可识别的 Azure 信息，如身份验证信息。  |
-| [标识](#identification) | 金融和国家/地区特定的标识。  |
+| [标识](#identification) | 金融和国家/地区特定标识。  |
 
 ### <a name="category-person"></a>类别：人员
 
@@ -154,78 +154,6 @@ ms.locfileid: "121734084"
    :::column-end:::
 
 :::row-end:::
-
-#### <a name="subcategories"></a>子类别
-
-此类别中的实体可以有以下子类别。
-
-:::row:::
-    :::column span="":::
-        **实体子类别**
-
-        医疗    
-
-    :::column-end:::
-    :::column span="2":::
-        **详细信息**
-
-        医疗公司和团体。
-
-        若要获得此实体类别，请将 `OrganizationMedical` 添加到 `piiCategories` 参数中。 如果检测到 `OrganizationMedical`，会在 API 响应中返回。
-      
-    :::column-end:::
-
-    :::column span="":::
-      **支持的文档语言**
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-:::row:::
-    :::column span="":::
-
-        证券交易
-
-    :::column-end:::
-    :::column span="2":::
-
-        证券交易所集团。 
-
-        若要获得此实体类别，请将 `OrganizationStockExchange` 添加到 `piiCategories` 参数中。 如果检测到 `OrganizationStockExchange`，会在 API 响应中返回。
-      
-    :::column-end:::
-
-    :::column span="":::
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-:::row:::
-    :::column span="":::
-
-        体育游戏
-
-    :::column-end:::
-    :::column span="2":::
-
-        与体育相关的组织。
-
-        若要获得此实体类别，请将 `OrganizationSports` 添加到 `piiCategories` 参数中。 如果检测到 `OrganizationSports`，会在 API 响应中返回。
-      
-    :::column-end:::
-
-    :::column span="":::
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-
 
 ### <a name="category-address"></a>类别：地址
 
@@ -366,33 +294,6 @@ ms.locfileid: "121734084"
       `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
    :::column-end:::
-:::row-end:::
-
-#### <a name="subcategories"></a>子类别
-
-此类别中的实体可以有以下子类别。
-
-:::row:::
-    :::column span="":::
-        **实体子类别**
-
-        日期
-
-    :::column-end:::
-    :::column span="2":::
-        **详细信息**
-
-        日历日期。 也随 `domain=phi` 一起返回。
-
-        若要获得此实体类别，请将 `Date` 添加到 `piiCategories` 参数中。 如果检测到 `Date`，会在 API 响应中返回。
-      
-    :::column-end:::
-    :::column span="2":::
-      **支持的文档语言**
-      
-      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
-      
-    :::column-end:::
 :::row-end:::
 
 ### <a name="category-quantity"></a>类别：数量

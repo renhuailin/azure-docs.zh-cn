@@ -3,18 +3,18 @@ title: Azure VM 的自动 VM 来宾修补
 description: 了解如何自动修补 Azure 中的虚拟机。
 author: mayanknayar
 ms.service: virtual-machines
-ms.subservice: automatic-guest-patching
+ms.subservice: maintenance
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0043935f46698f694aa76aec816c8bf72a9ee098
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a120914051f7da0ccbfffb2a7fda9ab8404e7a76
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698166"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216446"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>预览：Azure VM 的自动 VM 来宾修补
 

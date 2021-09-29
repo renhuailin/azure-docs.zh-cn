@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0f5586b43143763ebf36adb15d96fdb2a91b5f5c
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: dad937a385f22444baafb00c46de503b836b27f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443468"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575515"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置令牌
 
@@ -52,14 +52,15 @@ ms.locfileid: "106443468"
 
 配置用户流令牌生存期：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“用户流(策略)”。
 1. 打开之前创建的用户流。
 1. 选择“属性”。
 1. 在“令牌生存期”下，调整属性以满足应用程序的需要。
-1. 单击“保存”  。
+1. 单击“保存”。
 
 ::: zone-end
 
@@ -115,7 +116,7 @@ ms.locfileid: "106443468"
 1. 打开之前创建的用户流。
 1. 选择“属性”。
 1. 在“令牌兼容性设置”下，调整属性以满足应用程序的需要。
-1. 单击“保存”  。
+1. 单击“保存”。
 
 ::: zone-end
 

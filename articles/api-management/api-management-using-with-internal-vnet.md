@@ -1,18 +1,18 @@
 ---
 title: 利用 Azure API 管理连接至内部虚拟网络
 description: 了解如何使用内部模式在虚拟网络中设置和配置 Azure API 管理
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/10/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83c0e0a7e04130a25267f7a9dafc1cdd888eb53a
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: ee5d0ac639cbd36215df5545d684909af3acd748
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537218"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563839"
 ---
 # <a name="connect-to-a-virtual-network-in-internal-mode-using-azure-api-management"></a>在内部模式下使用 Azure API 管理连接到虚拟网络 
 借助 Azure 虚拟网络 (VNET)，Azure API 管理可以使用多种 VPN 技术来管理无法访问 Internet 的 API，以建立连接。 你可以通过[外部](./api-management-using-with-vnet.md)或内部模式来部署 API 管理。 有关 VNET 连接选项、要求和注意事项，请参阅[将虚拟网络与 Azure API 管理配合使用](virtual-network-concepts.md)。
@@ -208,7 +208,7 @@ DIP 地址将分配给服务中每个基础虚拟机，用于访问 VNET 中的�
 [api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/updated-api-management-custom-domain-name.png
 
 [Create API Management service]: get-started-create-service-instance.md
-[Common network configuration problems]: api-management-using-with-vnet.md#network-configuration
+[Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
 [ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags
 

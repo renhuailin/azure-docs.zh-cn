@@ -8,18 +8,18 @@ ms.date: 04/27/2021
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 30be4b09c5fc85a272734468d30f11e939ded48b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a2d9c23e5a6819c9e74cea10e78caab242d5cb35
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600316"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>创建与 Azure Data Lake Storage Gen2 配合使用的存储帐户
 
 若要使用 Data Lake Storage Gen2 功能，请创建具有分层命名空间的存储帐户。
 
-有关分步指南，请参阅[创建存储帐户](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json)。 
+有关分步指南，请参阅[创建存储帐户](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json)。
 
 创建帐户时，请确保选择本文中所述的选项。
 
@@ -32,11 +32,11 @@ ms.locfileid: "108125503"
 
 有关如何在它们之间进行选择的信息，请参阅[存储帐户概述](../common/storage-account-overview.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json)。
 
-可以在“创建存储帐户”页面的“基本”选项卡中，选择这两种类型的帐户。 
+可以在“创建存储帐户”页面的“基本”选项卡中，选择这两种类型的帐户。
 
 若要创建标准的常规用途 v2 帐户，请选择“标准”。
 
-若要创建高级块 blob 帐户，请选择“高级”。 然后，在“高级帐户类型”下拉列表中，选择“块 blob”。 
+若要创建高级块 blob 帐户，请选择“高级”。 然后，在“高级帐户类型”下拉列表中，选择“块 blob”。
 
 > [!div class="mx-imgBorder"]
 > ![高级块 blob 选项](./media/create-data-lake-storage-account/premium-block-blob-option.png)

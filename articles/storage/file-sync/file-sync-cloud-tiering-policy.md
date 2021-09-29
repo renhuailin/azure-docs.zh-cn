@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f5f06f87ece24377aac380e80c308b4e40906255
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: be07d4b2213599f9d6a5a5d24f2fc17e266c2c87
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259301"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620134"
 ---
 # <a name="cloud-tiering-policies"></a>云分层策略
 
 云分层提供两个策略用于确定哪些文件分层到云：卷可用空间策略和日期策略 。
 
-卷可用空间策略确保服务器终结点所在的本地卷的指定百分比的空间始终可用。 
+卷可用空间策略确保服务器终结点所在的本地卷的指定百分比的空间始终可用。
 
 日期策略将 x 天前或更早时间访问的文件分层。 卷可用空间策略将始终优先，如果卷中没有足够的可用空间，从而无法对文件存储日期策略描述的天数，则 Azure 文件同步会替代日期策略并继续将最冷的文件分层，直到符合卷可用空间百分比要求。
 
@@ -36,7 +36,7 @@ ms.locfileid: "123259301"
 
 **更改 1：** 你已启用云分层，将卷可用空间策略设置为 20%，并继续禁用日期策略。 使用该配置，云分层可确保 20%（本例中为 100 GiB）的空间在本地计算机上保持可用。 因此，本地缓存的总容量为 400 GiB。 这 400 GiB 将存储本地卷上最近和最频繁访问的文件。
 
-使用此配置时，只会在本地缓存中存储文件 1 到文件 4，将把文件 5 分层。 400 GiB 中只有 370 GiB 可用。 文件 5 为 140 GiB，如果在本地缓存该文件，则将超过 400 GiB 的限制。 
+使用此配置时，只会在本地缓存中存储文件 1 到文件 4，将把文件 5 分层。 400 GiB 中只有 370 GiB 可用。 文件 5 为 140 GiB，如果在本地缓存该文件，则将超过 400 GiB 的限制。
 
 **更改 2：** 假设用户访问文件 5。 这会使文件 5 成为共享中最近访问的文件。 因此，文件 5 将存储在本地缓存中，为了符合 400 GiB 限制，文件 4 将分层。 下表显示了文件的存储位置，其中包含以下更新：
 
@@ -62,7 +62,7 @@ ms.locfileid: "123259301"
 
 在这种情况下，文件 1、2 和 5 将会在本地缓存，而文件 3 和 4 会进行分层。 由于日期策略为 60 天，因此，即使卷可用空间策略允许本地最多使用 400 GiB，也会对文件 3 和 4 进行分层。
 
-> [!NOTE] 
+> [!NOTE]
 > 当客户将卷可用空间策略更改为较小的值（例如从 20% 更改为 10%）或将日期策略更改为较大的值（例如从 20 天更改为 50天）时，文件不会自动召回。
 
 ## <a name="multiple-server-endpoints-on-a-local-volume"></a>本地卷上的多个服务器终结点
@@ -71,4 +71,4 @@ ms.locfileid: "123259301"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [监视云分层](file-sync-monitor-cloud-tiering.md)
+- [监视云分层](file-sync-monitor-cloud-tiering.md)

@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中配置和使用公共环境 | Microsoft Docs
+title: 配置和使用公共环境
 description: 本文介绍如何在 Azure 开发测试实验室中配置和使用公共环境（Git 存储库中的 Azure 资源管理器模板）。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57772ef7308e6db6982344bdddc3c0628d3d668a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85482660"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678547"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置和使用公共环境
 Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments)，可以使用此存储库来创建环境，而无需自行连接到外部 GitHub 源。 此存储库包含常用的模板，例如 Azure Web 应用、Service Fabric 群集和 SharePoint 场开发环境。 此功能类似于针对所创建的每个实验室包含的项目的公共存储库。 借助环境存储库，只需提供极少量的输入参数，即可快速开始使用预先编写的环境模板，在实验室中获得 PaaS 资源的顺畅入门体验。 

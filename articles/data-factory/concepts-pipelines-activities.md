@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/19/2021
-ms.openlocfilehash: b86ae322999441fb4411854e8e11879907ed514f
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: b030ab291f1b1ce0d3d89ea01c63d6c2eaeff72c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272046"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218028"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的管道和活动
 
@@ -32,7 +32,7 @@ ms.locfileid: "122272046"
 
 Azure 数据工厂和 Azure Synapse Analytics 支持三组活动：[数据移动活动](copy-activity-overview.md)、[数据转换活动](transform-data.md)和[控制活动](#control-flow-activities)。 每个活动可获取零个或多个输入[数据集](concepts-datasets-linked-services.md)，并生成一个或多个输出[数据集](concepts-datasets-linked-services.md)。 下图显示了管道、活动和数据集之间的关系：
 
-![数据集、活动和管道之间的关系](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
+:::image type="content" source="media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png" alt-text="数据集、活动和管道之间的关系":::
 
 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 创建数据集后，可将其与管道中的活动一起使用。 例如，数据集可以是复制活动或 HDInsightHive 活动的输入/输出数据集。 有关数据集的详细信息，请参阅 [Azure 数据工厂中的数据集](concepts-datasets-linked-services.md)一文。
 
@@ -49,14 +49,14 @@ Azure 数据工厂和 Azure Synapse Analytics 支持以下转换活动，这些�
 
 数据转换活动 | 计算环境
 ---------------------------- | -------------------
-[数据流](control-flow-execute-data-flow-activity.md) | 由 Azure 数据工厂管理的 Apache Spark 群集
+[数据流](control-flow-execute-data-flow-activity.md) | Azure 数据工厂托管的 Apache Spark 群集
 [Azure Function](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop 流式处理](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[ML 工作室（经典）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
+[ML Studio（经典）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
 [存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics 或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [自定义活动](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -185,8 +185,8 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 JSON 名称 | 说明 | 允许的值 | 必需
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
-retry | 最大重试次数 | 整数 | 否。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | 整数 | 否。 默认为 30 秒
+retry | 最大重试次数 | Integer | 否。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 否。 默认为 30 秒
 secureOutput | 当设置为 true 时，来自活动的输出会被视为安全的，不会记录下来进行监视。 | 布尔 | 否。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
@@ -206,7 +206,7 @@ secureOutput | 当设置为 true 时，来自活动的输出会被视为安全�
 }
 ```
 
-标记 | 说明 | 必需
+标记 | 描述 | 必需
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\"” | 是</li><ul>
 description | 描述活动用途的文本 | 是
@@ -408,4 +408,4 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 - [使用数据转换活动生成管道](tutorial-transform-data-spark-powershell.md)
 
 如何使用 Azure 数据工厂实现 CI/CD（持续集成和持续交付）
-- [Azure 数据工厂中的持续集成和持续交付](continuous-integration-deployment.md)
+- [Azure 数据工厂中的持续集成和持续交付](continuous-integration-delivery.md)

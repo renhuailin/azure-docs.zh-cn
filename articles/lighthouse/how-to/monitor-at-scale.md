@@ -3,12 +3,12 @@ title: 大规模监视委托资源
 description: Azure Lighthouse 可帮助你在客户租户间以可缩放的方式来使用 Azure Monitor 日志。
 ms.date: 08/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 3424078b00aef569f054d6d3c02382f4bd071a91
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d261fd41c300f317e34ff7cacafa53911b7bbc12
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122325069"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736614"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托资源
 
@@ -28,7 +28,7 @@ ms.locfileid: "122325069"
 > [!TIP]
 > 必须在与工作区相同的租户中创建用于访问 Log Analytics 工作区中数据的所有自动化帐户。
 
-您可以通过使用 [Azure 门户](../../azure-monitor/logs/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md) 或 [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) 来创建 Log Analytics 工作区。
+您可以通过使用 [Azure 门户](../../azure-monitor/logs/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/logs/resource-manager-workspace.md) 或 [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) 来创建 Log Analytics 工作区。
 
 > [!IMPORTANT]
 > 如果在客户租户中创建了所有工作区，也必须在管理租户的订阅中[注册](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) Microsoft Insights 资源提供程序。 如果你的管理租户没有现有的 Azure 订阅，可以使用以下 PowerShell 命令手动注册资源提供程序：

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 8df5c60881ad449d8733abaf4f0eb7bcde6dde9a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: c4a6c17bd16a4a2ba005cb28757e341afaff120b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307656"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763873"
 ---
 # <a name="copy-and-transform-data-in-snowflake-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 在 Snowflake 中复制和转换数据
 
@@ -48,7 +48,7 @@ ms.locfileid: "123307656"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -129,7 +129,7 @@ Snowflake 数据集支持以下属性。
 | 属性  | 说明                                                  | 必需                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 type 属性必须设置为 SnowflakeTable。 | 是                         |
-| 架构 | 架构的名称。 请注意，架构名称区分大小写。 |对于源为“否”，对于接收器为“是”  |
+| schema | 架构的名称。 请注意，架构名称区分大小写。 |对于源为“否”，对于接收器为“是”  |
 | 表 | 表/视图的名称。 请注意，表名称区分大小写。 |对于源为“否”，对于接收器为“是”  |
 
 **示例：**

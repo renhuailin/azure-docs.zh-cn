@@ -5,18 +5,16 @@ description: 了解如何在 Azure 机器学习中使用 NVIDIA Triton 推理服
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: gopalv
-author: gvashishtha
 ms.date: 05/17/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: d1f45c5501395ff486101f7270212c8fb333aede
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b6bccf2dd24e557c2d5cdbb5fa6134f8c0dc904d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436961"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598130"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -58,7 +56,7 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 * 系统将请求直接发送到 Triton 服务器。
 * Triton 对请求进行批处理，以最大程度利用 GPU。
-* 客户端使用 Triton URI 发出请求。 例如，`https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
+* 客户端使用 Triton URI 发出请求。 例如 `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="仅使用 Triton 进行 Inferenceconfig 部署，无 Python 中间件":::
 

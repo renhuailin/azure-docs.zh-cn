@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
-manager: daveba
+manager: karenhoran
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b69d4473529f585d6a0c997bafca42516e91a2
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 8aa2519027f210e88af4e03ec9232fcdefb5d3e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114203155"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597847"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -369,7 +369,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 根据条件访问策略的配置情况调整方案和预期结果。
 
-| 策略| 场景| 预期结果 |
+| 策略| 方案| 预期结果 |
 | - | - | - |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户在受信任的位置/工作时登录到应用| 不提示用户执行 MFA |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户不在受信任的位置/工作时登录到应用| 提示用户执行 MFA，他们可以成功登录 |

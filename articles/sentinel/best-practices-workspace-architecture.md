@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 085b9a187ce574c5138867f7a2ce929218717c37
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 591d248bed623a31d9c120ae669615efa5c5544d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253815"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763246"
 ---
 # <a name="azure-sentinel-workspace-architecture-best-practices"></a>Azure Sentinel 工作区体系结构最佳做法
 
@@ -42,7 +42,7 @@ ms.locfileid: "123253815"
 
 如果有多个租户（例如，如果你是安全托管服务提供商 (MSSP)），建议为每个 Azure AD 租户至少创建一个工作区，以支持内置的[服务到服务数据连接器](connect-data-sources.md#service-to-service-integration)，且这些连接器仅在各自的 Azure AD 租户内工作。
 
-所有基于诊断设置的连接器都无法连接到不位于资源所在租户的工作区。 这适用于 [Azure 防火墙](connect-azure-firewall.md)、[Azure 存储](connect-azure-storage-account.md)、[Azure 活动](connect-azure-activity.md)或 [Azure Active Directory](connect-azure-active-directory.md) 等连接器。
+所有基于诊断设置的连接器都无法连接到不位于资源所在租户的工作区。 这适用于 [Azure 防火墙](./data-connectors-reference.md#azure-firewall)、[Azure 存储](./data-connectors-reference.md#azure-storage-account)、[Azure 活动](./data-connectors-reference.md#azure-activity)或 [Azure Active Directory](connect-azure-active-directory.md) 等连接器。
 
 使用 [Azure Lighthouse](../lighthouse/how-to/onboard-customer.md) 帮助管理不同租户中的多个 Azure Sentinel 实例。
 

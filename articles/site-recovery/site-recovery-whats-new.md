@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 2b733f4e525f2f47df7afde0ddc308430ae05d0b
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 0058078e04e14e6e8c823490f8c6e09a123d40f8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215307"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804774"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -43,10 +43,10 @@ ms.locfileid: "123215307"
 > 要设置预览版体验，必须进行全新安装并使用新的恢复服务保管库。 不支持从现有体系结构更新到新的体系结构。
 
 此公共预览版涵盖对当前用于保护 VMware 计算机的体系结构的完整更新。
-- [了解](https://docs.microsoft.com/azure/site-recovery/vmware-azure-architecture-preview)新的体系结构和引入的更改。
-- 按照[这些步骤](https://docs.microsoft.com/azure/site-recovery/deploy-vmware-azure-replication-appliance-preview)检查先决条件并设置 ASR 复制设备。
-- [为 VMware 计算机启用复制](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication-tutorial-preview)。
-- 查看 ASR 复制设备的[自动升级](https://docs.microsoft.com/azure/site-recovery/upgrade-mobility-service-preview)和[切换](https://docs.microsoft.com/azure/site-recovery/switch-replication-appliance-preview)功能。
+- [了解](./vmware-azure-architecture-preview.md)新的体系结构和引入的更改。
+- 按照[这些步骤](./deploy-vmware-azure-replication-appliance-preview.md)检查先决条件并设置 ASR 复制设备。
+- [为 VMware 计算机启用复制](./vmware-azure-set-up-replication-tutorial-preview.md)。
+- 查看 ASR 复制设备的[自动升级](./upgrade-mobility-service-preview.md)和[切换](./switch-replication-appliance-preview.md)功能。
 
 
 ### <a name="update-rollup-56"></a>更新汇总 56

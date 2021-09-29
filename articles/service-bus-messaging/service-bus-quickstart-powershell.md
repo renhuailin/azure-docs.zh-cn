@@ -3,18 +3,18 @@ title: 使用 Azure PowerShell 创建服务总线队列
 description: 在本快速入门中，你将了解如何使用 Azure PowerShell 创建服务总线命名空间并在其中创建队列。
 author: spelluru
 ms.author: spelluru
-ms.date: 08/12/2020
+ms.date: 09/28/2021
 ms.topic: quickstart
 ms.devlang: dotnet
 ms.custom:
 - devx-track-azurepowershell
 - mode-api
-ms.openlocfilehash: e850567f56cb89db135f9b6efeafb3d63dca151b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f98bf871abf50e3164f0ea9ca281887e29abfba9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478998"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211746"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>使用 Azure PowerShell 创建服务总线命名空间和队列
 本快速入门介绍如何使用 Azure PowerShell 创建服务总线命名空间和队列。 本快速入门还介绍了如何获取客户端应用程序向队列发送消息或从队列接收消息所使用的授权凭据。 

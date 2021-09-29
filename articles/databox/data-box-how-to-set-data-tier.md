@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 80c4d8a70454c007ac45f588e59c03ef45f10933
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82ac4e9c4a2f573295790d5d7fa3b02c2e690bbc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92125058"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819862"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的 Azure 存储 Blob 层
 
@@ -47,7 +47,7 @@ Data Box 或 Data Box Heavy 中的数据会上传到与存储帐户关联的存�
 
 Data Box 设备中的数据上传到默认层后，可能需要将数据移到非默认层。 可通过两种方法将数据移动到非默认层。
 
-- Azure Blob 存储生命周期管理 - 可以使用基于策略的方法自动将数据分层，或使其在生命周期结束时过期。 有关详细信息，请转到[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。
+- Azure Blob 存储生命周期管理 - 可以使用基于策略的方法自动将数据分层，或使其在生命周期结束时过期。 有关详细信息，请转到[管理 Azure Blob 存储生命周期](../storage/blobs/lifecycle-management-overview.md)。
 - 脚本 - 可以通过 Azure PowerShell 使用脚本的方法来启用 Blob 级别分层。 可以调用 `SetBlobTier` 操作在 Blob 上设置层。
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>使用 Azure PowerShell 设置 Blob 层
@@ -116,4 +116,4 @@ Data Box 设备中的数据上传到默认层后，可能需要将数据移到�
 
 ## <a name="next-steps"></a>后续步骤
 
--  了解如何[使用生命周期策略规则解决通用数据分层方案](../storage/blobs/storage-lifecycle-management-concepts.md#examples)
+-  了解如何[使用生命周期策略规则解决通用数据分层方案](../storage/blobs/lifecycle-management-overview.md#examples-of-lifecycle-policies)

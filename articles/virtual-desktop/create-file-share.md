@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ab9a70dccdeff6ed16eb3f25e9dc78fb274b2449
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 013a2d377ef4e30848d29c43c7275c6644cf4549
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746926"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593052"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 文件存储和 AD DS 创建配置文件容器
 
@@ -176,8 +176,8 @@ ms.locfileid: "111746926"
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-     - 将<装入的驱动器号>替换为用于映射驱动器的驱动器号。
-     - 将<用户电子邮件>替换为用户 UPN 或包含需要访问共享的用户的 Active Directory 组。
+     - 将 \<mounted-drive-letter\> 替换为你用来映射驱动器的驱动器号。
+     - 将 \<user-email\> 替换为用户 UPN，或包含需要访问共享的用户的 Active Directory 组的 UPN。
 
      例如：
 

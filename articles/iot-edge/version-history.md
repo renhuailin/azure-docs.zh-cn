@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6afc61c53d2e7e48686a5d2f69862b4dc08bc1c6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 334173ceb422db765c86ea05912817a02346f997
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726279"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578347"
 ---
 # <a name="azure-iot-edge-versions-and-release-notes"></a>Azure IoT Edge 版本和发行说明
 
@@ -38,7 +38,7 @@ Azure IoT Edge 是基于 GitHub 上托管的开源 IoT Edge 项目构建的产�
 | [1.2](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0) | Stable | 2021 年 4 月 | [网关后的 IoT Edge 设备](how-to-connect-downstream-iot-edge-device.md?view=iotedge-2020-11&preserve-view=true)<br>[IoT Edge MQTT 中转站（预览版）](how-to-publish-subscribe.md?view=iotedge-2020-11&preserve-view=true)<br>引入了新的 IoT Edge 包，其中包含新的安装和配置步骤。 有关详细信息，请参阅[从 1.0 或 1.1 更新到 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)
 | [1.1](https://github.com/Azure/azure-iotedge/releases/tag/1.1.0) | 长期支持 (LTS) | 2021 年 2 月 | [长期支持计划和支持的系统更新](support.md) |
 | [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Stable | 2020 年 10 月 | [UploadSupportBundle 直接方法](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[上传运行时指标](how-to-access-built-in-metrics.md)<br>[路由优先级和生存时间](module-composition.md#priority-and-time-to-live)<br>[模块启动顺序](module-composition.md#configure-modules)<br>[X.509 手动预配](how-to-register-device.md) |
-| [1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) | Stable | 2020 年 3 月 | [使用 DPS 的 X.509 自动预配](how-to-auto-provision-x509-certs.md)<br>[RestartModule 直接方法](how-to-edgeagent-direct-method.md#restart-module)<br>[support-bundle 命令](troubleshoot.md#gather-debug-information-with-support-bundle-command) |
+| [1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) | Stable | 2020 年 3 月 | 使用 DPS 的 X.509 自动预配<br>[RestartModule 直接方法](how-to-edgeagent-direct-method.md#restart-module)<br>[support-bundle 命令](troubleshoot.md#gather-debug-information-with-support-bundle-command) |
 
 ## <a name="next-steps"></a>后续步骤
 

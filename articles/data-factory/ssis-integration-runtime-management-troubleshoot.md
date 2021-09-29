@@ -9,12 +9,12 @@ ms.author: dashe
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 3419483442a208bd2ed15071ffcbd447dfe1bd26
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9cced212913ad8f31f71445a6bf3e70fc3bb3f8e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736982"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743131"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
 
@@ -174,7 +174,7 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 | 为 Azure-SSIS Integration Runtime 提供的 VNet 和静态公共 IP 地址必须位于同一位置。 | 根据 Azure 网络的要求，静态公共 IP 地址和虚拟网络应当位于同一位置和订阅中。 请提供两个有效的静态公共 IP 地址，然后重启 Azure-SSIS IR。 |
 | 提供的静态公共 IP 地址是一个基本地址，请为你的 Azure-SSIS Integration Runtime 提供两个标准静态公共 IP 地址。 | 有关帮助信息，请参阅[公共 IP 地址的 SKU](../virtual-network/public-ip-addresses.md#sku)。 |
 
-![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+:::image type="content" source="media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png" alt-text="Azure-SSIS IR":::
 
 ### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
 

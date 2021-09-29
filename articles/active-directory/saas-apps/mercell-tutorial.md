@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: c7dc85a2fad11ec47dcf43aaf90da3dbc47c4ae5
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 952ba939511911bd0cec41ee6c3f9b3311bed084
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602614"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>教程：Azure Active Directory 与 Mercell 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "114602614"
 * 让用户能够使用其 Azure AD 帐户自动登录到 Mercell。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -94,7 +94,7 @@ ms.locfileid: "114602614"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -127,7 +127,7 @@ ms.locfileid: "114602614"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 Mercell。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Mercell 磁贴时，应会自动登录到已为其设置了 SSO 的 Mercell。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Mercell 磁贴时，应会自动登录到已为其设置了 SSO 的 Mercell。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

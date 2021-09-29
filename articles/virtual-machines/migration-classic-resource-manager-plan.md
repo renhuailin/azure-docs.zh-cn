@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 931c1f446523247c485987edb29638bb94656b77
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4e8ce635f25eccedbd07e3ccaa89a1e2cf418eda
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698092"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823389"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager
 
@@ -196,7 +196,7 @@ ms.locfileid: "122698092"
 - [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。
 - [使用 Azure Resource Manager 模板以更轻松、更可控的方式完成部署](../azure-resource-manager/templates/overview.md)。
 - [标记](../azure-resource-manager/management/tag-resources.md)。
-- [活动控制](../azure-resource-manager/management/view-activity-logs.md)
+- [活动控制](../azure-monitor/essentials/activity-log.md)
 - [Azure 策略](../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>需避免的错误

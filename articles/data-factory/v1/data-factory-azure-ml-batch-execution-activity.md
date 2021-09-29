@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: d4a930677f4760ae5f2d77dd4f148097ae67f465
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: fd666c51042811a8008657d965d629d1b17848f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598012"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571266"
 ---
 # <a name="create-predictive-pipelines-using-machine-learning-studio-classic-and-azure-data-factory"></a>使用机器学习工作室（经典版）和 Azure 数据工厂创建预测管道
 
@@ -65,9 +66,9 @@ ms.locfileid: "122598012"
    2. 已发布的工作室（经典版）Web 服务的 **API 密钥**。 单击已发布的 Web 服务可找到此 API 密钥。
    3. 使用 **AzureMLBatchExecution** 活动。
 
-      ![机器学习工作室（经典）仪表板](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
+      :::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png" alt-text="机器学习工作室（经典）仪表板":::
 
-      ![批处理 URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
+      :::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png" alt-text="批处理 URI":::
 
 ### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>方案：使用 Web 服务输入/输出（参考 Azure Blob 存储中的数据）的实验
 在本方案中，工作室（经典版）Web 服务使用 Azure Blob 存储中某文件的数据进行预测，并将预测结果存储在 Blob 存储中。 以下 JSON 定义了包含 AzureMLBatchExecution 活动的数据工厂管道。 该活动将数据集 **DecisionTreeInputBlob** 作为输入，**DecisionTreeResultBlob** 作为输出。 通过使用 **webServiceInput** JSON 属性，将 **DecisionTreeInputBlob** 作为输入传递给 Web 服务。 通过使用 **webServiceOutputs** JSON 属性，将 **DecisionTreeResultBlob** 作为输出传递给 Web 服务。
@@ -349,7 +350,7 @@ ms.locfileid: "122598012"
 
 在工作室（经典版）实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中的文件可能是在 HDInsight 上运行的 Pig 和 Hive 脚本生成的输出文件（示例：000000_0）。 使用读取器模块，可通过配置“容器路径、目录/blob”读取文件（无扩展名）。 **容器路径** 指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
 
-![Azure Blob 属性](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
+:::image type="content" source="./media/data-factory-create-predictive-pipelines/azure-blob-properties.png" alt-text="Azure Blob 属性":::
 
 ### <a name="example"></a>示例
 #### <a name="pipeline-with-azuremlbatchexecution-activity-with-web-service-parameters"></a>内含 AzureMLBatchExecution 活动（带 Web 服务参数）的管道

@@ -1,15 +1,15 @@
 ---
 title: 纵向扩展 Azure 开发测试实验室基础结构
 description: 本文提供有关纵向扩展 Azure 开发测试实验室基础结构的指导。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 50bf08678a12a1a0499abd08c52a264d03f4a401
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ceba7023df2a704d43a47f3804c18fd6c0bb113d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85478784"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128550740"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>纵向扩展 Azure 开发测试实验室基础结构
 在以企业规模实施开发测试实验室之前，有几个关键的决策点。 组织大致了解这些决策点有助于将来做出设计决策。 但是，这些要点不应阻碍组织的概念证明工作。 初始纵向扩展规划的三个首要方面包括：
@@ -53,7 +53,7 @@ ms.locfileid: "85478784"
 ## <a name="roles-and-responsibilities"></a>角色和职责
 开发测试实验室概念证明包括三个界定了职责的主要角色 – 订阅所有者、开发测试实验室所有者、开发测试实验室用户和可选的参与者。
 
-- **订阅所有者** - 订阅所有者有权管理 Azure 订阅，包括分配用户、管理策略、创建和管理网络拓扑、请求提高配额，等等。有关详细信息，请参阅[此文章](../role-based-access-control/rbac-and-directory-admin-roles.md)。
+- **订阅所有者** - 订阅所有者有权管理 Azure 订阅，包括分配用户、管理策略、创建和管理网络拓扑、请求提高配额，等等。有关详细信息，请参阅 [此文章](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 - **开发测试实验室所有者** – 开发测试实验室所有者对实验室拥有完全管理访问权限。 此人负责添加/删除用户、管理成本设置、常规实验室设置和其他基于 VM/项目的任务。 实验室所有者还拥有开发测试实验室用户的所有权限。
 - **开发测试实验室用户** – 开发测试实验室用户可以在实验室中创建和使用虚拟机。 这些人可以在他们创建的 VM 上执行一些很次要的管理功能（启动/停止/删除/配置其 VM）。 这些用户不能管理其他用户的 VM。
 

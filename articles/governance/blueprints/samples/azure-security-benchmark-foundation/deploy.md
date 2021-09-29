@@ -1,14 +1,14 @@
 ---
 title: 部署 Azure 安全基准基础蓝图示例
 description: Azure 安全基准基础蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 03/12/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 6afdc94624d39ce60b96ad33639721f130a056ef
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 51765db4a07ffe9399a09aa75c0b282c3fbc94ff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765172"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599480"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>部署 Azure 安全基准基础蓝图示例
 

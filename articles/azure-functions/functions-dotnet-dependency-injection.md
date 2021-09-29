@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 6c7c0adb35901186cb967d416f8b91c4cf54ff9a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2e880a3f38a1341123bec8309f5a80dcefcdb4e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792659"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603118"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -141,7 +141,7 @@ Azure Functions 会自动添加 Application Insights。
 > - 请勿将 `AddApplicationInsightsTelemetry()` 添加到服务集合，因为它注册的服务与环境提供的服务发生冲突。
 > - 如果使用内置 Application Insights 功能，请勿注册自己的 `TelemetryConfiguration` 或 `TelemetryClient`。 如果需要配置自己的 `TelemetryClient` 实例，请通过插入的 `TelemetryConfiguration` 创建一个实例，如[在 C# 函数中记录自定义遥测](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)中所示。
 
-### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> 和 ILoggerFactory
+### <a name="iloggert-and-iloggerfactory"></a>ILogger\<T\> 和 ILoggerFactory
 
 主机会将 `ILogger<T>` 和 `ILoggerFactory` 服务注入构造函数中。  但是在默认情况下，会从函数日志中筛选出新日志记录筛选器。  需要修改 `host.json` 文件，以选择加入其他筛选器和类别。
 

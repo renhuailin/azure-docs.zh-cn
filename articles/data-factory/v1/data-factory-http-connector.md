@@ -4,15 +4,16 @@ description: 了解如何使用 Azure 数据工厂从本地或云 HTTP 源移动
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 05/22/2018
 robots: noindex
-ms.openlocfilehash: ce29b5a112d70575a721b0b527947fd95868da80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 316b8cbcf056b5f26d0043d5a09d688215f1ae9f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382916"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651192"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 源移动数据
 

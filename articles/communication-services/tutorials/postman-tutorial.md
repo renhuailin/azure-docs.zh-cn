@@ -8,12 +8,13 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: tutorial
 ms.service: azure-communication-services
-ms.openlocfilehash: 1b4998be1b49e58c7e2d22749ee46e1f8d754ecd
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: sms
+ms.openlocfilehash: ed39dbc991f8aa1e4b8391f10521ca8094c953fe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255272"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657778"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>教程：使用 Postman 签署和发出请求
 在本教程中，我们将设置并使用 Postman 通过 HTTP 对 Azure 通信服务发出请求。 在本教程结束时，你将会成功地使用通信服务和 Postman 发送短信。 然后，将能够使用 Postman 探索 Azure 通信服务中的其他 API。

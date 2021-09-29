@@ -2,13 +2,13 @@
 title: 经典的基于代理的安全警报
 description: 了解经典版 Defender for IoT 的安全警报，以及使用 Defender for IoT 设备的功能和服务时建议的修正措施。
 ms.topic: conceptual
-ms.date: 08/25/2021
-ms.openlocfilehash: 184001243803b64717ac124c116529bab4c4170d
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 09/27/2021
+ms.openlocfilehash: c62a0216a68f685244c1e9ef4e14c4487c9f8b3e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968258"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081959"
 ---
 # <a name="classic-defender-for-iot-devices-security-alerts"></a>经典 Defender for IoT 设备安全警报
 

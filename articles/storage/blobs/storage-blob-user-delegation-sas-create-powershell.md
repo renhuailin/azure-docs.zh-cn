@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 69184abac12e9146d29ec5e7f14a536756ae0139
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 22ababc0bca34423a6205d52f29f18ad691f919e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613571"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662615"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>使用 PowerShell 为容器或 blob 创建用户委托 SAS
 
@@ -95,7 +95,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>使用 Azure AD 凭据来保护 SAS
 
-通过 Azure PowerShell 创建用户委托 SAS 时，将为你隐式创建用于对 SAS 进行签名的用户委托密钥。 为 SAS 指定的开始时间和到期时间也用作用户委托密钥的开始时间和到期时间。 
+通过 Azure PowerShell 创建用户委托 SAS 时，将为你隐式创建用于对 SAS 进行签名的用户委托密钥。 为 SAS 指定的开始时间和到期时间也用作用户委托密钥的开始时间和到期时间。
 
 由于用户委托密钥的最大时间间隔是从开始日期算起的 7 天内有效，因此，你应为 SAS 指定一个从开始时间算起 7 天内的到期时间。 此 SAS 在用户委托密钥过期后将无效，因此，到期时间超过 7 天的 SAS 的有效期仍然仅为 7 天。
 

@@ -2,14 +2,14 @@
 title: Azure 事件中心 - 使用不同协议的 Exchange 事件
 description: 本文介绍使用不同协议（AMQP、Apache Kafka 和 HTTPS）的使用者和生成者在使用 Azure 事件中心时如何交换事件。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 09/20/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cbc6999e3ede73b948ce034769966922b4b0f282
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03efd7509d9f603a2f4d8346fe0bed7b2af56019
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89010313"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573079"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>在使用不同协议（AMQP、Kafka 和 HTTPS）的使用者与生成者之间交换事件
 Azure 事件中心支持使用者和生成者的三种协议：AMQP、Kafka 和 HTTPS。 其中每个协议使用自身的方式来表示消息，因此，自然而然引出了以下问题：如果应用程序通过一种协议将事件发送到事件中心，并通过另一种协议来使用事件，那么，当事件抵达使用者时，事件的各个组成部分和值是怎样的？ 本文介绍有关生产者和使用者的最佳做法，确保使用方应用程序正确解释事件中的值。

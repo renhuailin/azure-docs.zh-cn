@@ -3,20 +3,18 @@ title: 快速入门：使用 REST API 和 Python 获取图像见解 - 必应视�
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应视觉搜索 API 和 Python 上传图像，并获取有关该图像的见解。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
-ms.author: scottwhi
 ms.custom: devx-track-python
-ms.openlocfilehash: 5c43df5880c1d54fa8e4f86acaa0b3456d778374
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1470bfe66ee79b993e624f1bf6f9d5ca31c84b60
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499038"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658690"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>快速入门：使用必应视觉搜索 REST API 和 Python 获取图像见解
 

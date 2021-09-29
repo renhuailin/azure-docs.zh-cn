@@ -8,15 +8,15 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 07/21/2021
 ms.author: alkohli
-ms.openlocfilehash: a649383ab6998715de9a696cc1abd86926c81432
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 00ff58c2d11ba76889e1293bdb386c199cb3de00
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419468"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589276"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期数据传输解决方案
- 
+
 本文概述用于定期传输数据的数据传输解决方案。 通过网络定期传输数据可分为两类：定期传输或持续性数据移动。 本文还介绍了针对此情况的推荐数据传输选项和相应的关键功能矩阵。
 
 若要查看所有可用数据传输选项的概述，请转到[选择一个 Azure 数据传输解决方案](storage-choose-data-transfer-solution.md)。
@@ -27,14 +27,14 @@ ms.locfileid: "122419468"
 
 - 脚本/编程工具 - 对于定期发生的数据传输，请使用 AzCopy 和 Azure 存储 REST API 等脚本及编程工具。 这些工具均面向 IT 专业人员和开发人员。
 
-    - AzCopy - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
-    - Azure 存储 REST API/SDK - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。 REST API 还可以利用 Azure 存储数据移动库该库专为高性能设计，用于将数据复制到 Azure 和从 Azure 复制数据。
+  - AzCopy - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
+  - Azure 存储 REST API/SDK - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。 REST API 还可以利用 Azure 存储数据移动库该库专为高性能设计，用于将数据复制到 Azure 和从 Azure 复制数据。
 
 - 连续数据引入工具 - 对于连续的数据引入，可以选择以下选项之一。
 
-    - 对象复制 - 对象复制指以异步方式复制源存储帐户和目标存储帐户中的容器之间的块 blob。 使用对象复制作为解决方案，以使两个不同存储帐户中的容器保持同步。
-    - **Azure 数据工厂** - 如果需要业务流程和企业级监视功能，应使用数据工厂横向扩展传输操作。 使用 Azure 数据工厂设置一个云管道，在多个 Azure 服务之间、本地或这两者的组合之间定期传输文件。 通过 Azure 数据工厂，可以安排数据驱动的工作流，该工作流从不同的数据存储引入数据并自动执行数据移动和数据转换。
-    - **用于在线传输的 Azure Data Box 系列** - Data Box Edge 和 Data Box Gateway 是可以将数据移入和移出 Azure 的联机网络设备。 Data Box Edge 使用启用了人工智能 (AI) 的 Edge 计算在上传数据前对数据进行预处理。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。
+  - 对象复制 - 对象复制指以异步方式复制源存储帐户和目标存储帐户中的容器之间的块 blob。 使用对象复制作为解决方案，以使两个不同存储帐户中的容器保持同步。
+  - **Azure 数据工厂** - 如果需要业务流程和企业级监视功能，应使用数据工厂横向扩展传输操作。 使用 Azure 数据工厂设置一个云管道，在多个 Azure 服务之间、本地或这两者的组合之间定期传输文件。 通过 Azure 数据工厂，可以安排数据驱动的工作流，该工作流从不同的数据存储引入数据并自动执行数据移动和数据转换。
+  - **用于在线传输的 Azure Data Box 系列** - Data Box Edge 和 Data Box Gateway 是可以将数据移入和移出 Azure 的联机网络设备。 Data Box Edge 使用启用了人工智能 (AI) 的 Edge 计算在上传数据前对数据进行预处理。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。
 
 Data Box 联机传输设备或 Azure 数据工厂由 IT 专业人员设置，可以透明地自动进行数据传输。
 
@@ -70,6 +70,6 @@ Data Box 联机传输设备或 Azure 数据工厂由 IT 专业人员设置，可
 - [使用 AzCopy 传输数据](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 - [使用存储 REST API 传输数据的详细信息](/dotnet/api/overview/azure/storage)。
 - 了解如何：
-    - [使用 Data Box Gateway 传输数据](../../databox-gateway/data-box-gateway-deploy-add-shares.md)。
-    - [在将数据发送到 Azure 之前使用 Data Box Edge 转换数据](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
+  - [使用 Data Box Gateway 传输数据](../../databox-gateway/data-box-gateway-deploy-add-shares.md)。
+  - [在将数据发送到 Azure 之前使用 Data Box Edge 转换数据](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
 - [了解如何使用 Azure 数据工厂传输数据](../../data-factory/tutorial-bulk-copy-portal.md)。

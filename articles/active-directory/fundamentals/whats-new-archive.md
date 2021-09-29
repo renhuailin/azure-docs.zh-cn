@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/30/2021
+ms.date: 9/7/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af8d770752468d96dda51ad642b2e5d29cb6d23b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: bc57addda6b2e94307aecb5715cd0d3e51a0b745
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537177"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748575"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -34,6 +34,213 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 
 ---
  
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="email-one-time-passcode-authentication-on-by-default-starting-october-2021"></a>从 2021 年 10 月开始，默认启用电子邮件一次性密码身份验证
+
+**类型：** 更改计划  
+**服务类别：** B2B  
+**产品功能：** B2B/B2C
+ 
+从 2021 年 10 月 31 日开始，Microsoft Azure Active Directory [电子邮件一次性密码身份验证](../external-identities/one-time-passcode.md)将成为 B2B 协作场景邀请客户和租户的默认方法。 届时，Microsoft 将不再允许使用非管理的 Azure Active Directory 帐户兑换邀请。 
+
+---
+
+### <a name="unrequested-but-consented-permissions-will-no-longer-be-added-to-tokens-if-they-would-trigger-conditional-access"></a>如果未请求但已同意的权限会触发条件访问，则不会再将其添加到令牌中
+
+**类型：** 更改计划  
+**服务类别：** 身份验证（登录）  
+**产品功能：** 平台
+ 
+目前，使用[动态权限](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent)的应用程序可获得同意它们访问的所有权限。 这包括未请求的应用程序，即使它们会触发条件访问。 例如，这可能会导致只请求 `user.read` 但也已同意 `files.read` 的应用会直接通过为 `files.read` 权限分配的条件访问。 
+
+为了减少不必要的条件访问提示次数，Azure AD 将更改向应用程序提供未请求的范围的方式。 应用将仅触发它们明确请求的权限的条件访问。 有关详细信息，请阅读[身份验证中的新增功能](../develop/reference-breaking-changes.md#conditional-access-will-only-trigger-for-explicitly-requested-scopes)。
+ 
+---
+ 
+### <a name="public-preview----use-a-temporary-access-pass-to-register-passwordless-credentials"></a>公共预览版 - 使用临时访问密码注册无密码凭据
+
+**类型：** 新功能  
+**服务类别：** MFA  
+**产品功能：** 标识安全和保护
+
+临时访问密码是一种有时间限制的密码，可用作强凭据，允许载入无密码凭据，并且可在用户丢失或忘记其强身份验证因素（例如 FIDO2 安全密钥或 Microsoft Authenticator）应用并需要登录注册新的强身份验证方法时恢复。 [了解详细信息](../authentication/howto-authentication-temporary-access-pass.md)。
+
+---
+
+### <a name="public-preview----keep-me-signed-in-kmsi-in-next-generation-of-user-flows"></a>公共预览版 - 下一代用户流中的“保持登录 (KMSI)”
+
+**类型：** 新功能  
+**服务类别：** B2C - 用户标识管理  
+**产品功能：** B2B/B2C
+
+下一代 B2C 用户流现在支持[保持登录 (KMSI)](../../active-directory-b2c/session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi)功能，通过使用该功能，客户可使用永久性 Cookie 为 Web 和本机应用程序用户延长会话生存期。  此功能使会话即使在用户关闭并重新打开浏览器时，仍保持活动状态，在用户注销时才会撤销。
+
+---
+
+### <a name="public-preview----reset-redemption-status-for-a-guest-user"></a>公共预览版 - 重置来宾用户的邀请兑换状态
+
+**类型：** 新功能  
+**服务类别：** B2B  
+**产品功能：** B2B/B2C
+ 
+客户现在可以重新邀请现有外部来宾用户重置其邀请兑换状态，以便保留来宾用户帐户而不丢失任何访问权限。 [了解详细信息](../external-identities/reset-redemption-status.md)。
+ 
+---
+
+### <a name="public-preview----synchronization-provisioning-apis-now-support-application-permissions"></a>公共预览版 - 同步（预配）API 现在支持应用程序权限
+
+**类型：** 新功能  
+**服务类别：** 应用预配  
+**产品功能：** 标识生命周期管理
+ 
+现在，客户可使用 application.readwrite.ownedby 作为调用同步 API 的应用程序权限。 请注意，这仅支持从 Azure AD 预配到第三方应用程序（例如 AWS、Data Bricks 等）。 目前不支持 HR 预配 (Workday/Successfactors) 或云同步（AD 到 Azure AD）。 [了解详细信息](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta&preserve-view=true)。
+ 
+---
+
+### <a name="general-availability---authentication-policy-administrator-built-in-role"></a>正式发布 - 身份验证策略管理员内置角色
+
+**类型：** 新功能  
+**服务类别：** RBAC  
+**产品功能：** 访问控制
+ 
+具有此角色的用户可以配置身份验证方法策略、租户范围 MFA 设置和密码保护策略。 此角色授予管理密码保护设置的权限：智能锁定配置和更新自定义禁止密码列表。 [了解详细信息](../roles/permissions-reference.md#authentication-policy-administrator)。
+
+---
+
+### <a name="general-availability---user-collections-on-my-apps-are-available-now"></a>正式发布 -“我的应用”上的用户集合现已发布！
+
+**类型：** 新功能  
+**服务类别：** 我的应用  
+**产品功能：** 最终用户体验
+ 
+用户现在可在“我的应用”应用启动器上创建自己的应用分组， 还可对管理员与他们共享的集合进行重新排序和隐藏该集合。 [了解详细信息](../user-help/my-apps-portal-user-collections.md)。
+
+---
+
+### <a name="general-availability---autofill-in-authenticator"></a>正式发布 - Authenticator 中的自动填充
+
+**类型：** 新功能  
+**服务类别：** Microsoft Authenticator 应用  
+**产品功能：** 标识安全和保护
+ 
+Microsoft Authenticator 提供多重身份验证 (MFA) 和帐户管理功能，现在还会在用户通过移动设备（iOS 和 Android）访问的站点和应用中自动填充密码。 
+
+若要使用 Authenticator 上的自动填充，用户需要将其个人 Microsoft 帐户添加到 Authenticator 并使用它来同步密码。 目前不能使用工作或学校帐户同步密码。 [了解详细信息](../user-help/user-help-auth-app-faq.md#autofill-for-it-admins)。
+
+---
+
+### <a name="general-availability---invite-internal-users-to-b2b-collaboration"></a>正式发布 - 邀请内部用户参与 B2B 协作
+
+**类型：** 新功能  
+**服务类别：** B2B  
+**产品功能：** B2B/B2C
+ 
+客户现在可邀请内部来宾使用 B2B 协作，而不是向现有内部帐户发送邀请。 这允许客户保留该用户的对象 ID、UPN、组成员身份和应用分配。 [了解详细信息](../external-identities/invite-internal-users.md)。
+
+---
+
+### <a name="general-availability---domain-name-administrator-built-in-role"></a>正式发布 - 域名管理员内置角色
+
+**类型：** 新功能  
+**服务类别：** RBAC  
+**产品功能：** 访问控制
+ 
+具有此角色的用户可以管理（读取、添加、验证、更新和删除）域名。 他们还可以读取有关用户、组和应用程序的目录信息，因为这些对象拥有域依赖项。 
+
+对于本地环境，具有此角色的用户可以配置联合身份验证的域名，以便始终在本地对关联的用户进行身份验证。 然后，这些用户可以通过单一登录，使用其本地密码登录到基于 Azure AD 的服务。 需要通过 Azure AD Connect 同步联合身份验证设置，因此用户也具有管理 Azure AD Connect 的权限。 [了解详细信息](../roles/permissions-reference.md#domain-name-administrator)。
+ 
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---february-2021"></a>Azure AD 应用程序库推出了新联合应用 - 2021 年 2 月
+
+**类型：** 新功能  
+**服务类别：** 企业应用  
+**产品功能：** 第三方集成
+ 
+2021 年 2 月，我们在应用库中添加了以下 37 个支持联合的新应用程序：
+
+[Loop Messenger Extension](https://loopworks.com/loop-flow-messenger/)、[Silverfort Azure AD Adapter](http://www.silverfort.com/)、[Interplay Learning](https://skilledtrades.interplaylearning.com/#login)、[Nura Space](https://dashboard.nuraspace.com/login)、[Yooz EU](https://eu1.getyooz.com/?kc_idp_hint=microsoft)、[UXPressia](https://uxpressia.com/users/sign-in)、[introDus Pre- and Onboarding Platform](http://app.introdus.dk/login)、[Happybot](https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=34353e1e-dfe5-4d2f-bb09-2a5e376270c8&response_type=code&redirect_uri=https://api.happyteams.io/microsoft/integrate&response_mode=query&scope=offline_access%20User.Read%20User.Read.All)、[LeaksID](https://app.leaksid.com/)、[ShiftWizard](http://www.shiftwizard.com/)、[PingFlow SSO](https://app.pingview.io/)、[Swiftlane](https://admin.swiftlane.com/login)、[Quasydoc SSO](https://www.quasydoc.eu/login)、[Fenwick Gold Account](https://businesscentral.dynamics.com/)、[SeamlessDesk](https://www.seamlessdesk.com/login)、[Learnsoft LMS & TMS](http://www.learnsoft.com/)、[P-TH+](https://p-th.jp/)、[myViewBoard](https://api.myviewboard.com/auth/microsoft/)、[Tartabit IoT Bridge](https://bridge-us.tartabit.com/)、[AKASHI](../saas-apps/akashi-tutorial.md)、[Rewatch](../saas-apps/rewatch-tutorial.md)、[Zuddl](../saas-apps/zuddl-tutorial.md)、[Parkalot - Car park management](../saas-apps/parkalot-car-park-management-tutorial.md)、[HSB ThoughtSpot](../saas-apps/hsb-thoughtspot-tutorial.md)、[IBMid](../saas-apps/ibmid-tutorial.md)、[SharingCloud](../saas-apps/sharingcloud-tutorial.md)、[PoolParty Semantic Suite](../saas-apps/poolparty-semantic-suite-tutorial.md)、[GlobeSmart](../saas-apps/globesmart-tutorial.md)、[Samsung Knox and Business Services](../saas-apps/samsung-knox-and-business-services-tutorial.md)、[Penji](../saas-apps/penji-tutorial.md)、[Kendis- Scaling Agile Platform](../saas-apps/kendis-scaling-agile-platform-tutorial.md)、[Maptician](../saas-apps/maptician-tutorial.md)、[Olfeo SAAS](../saas-apps/olfeo-saas-tutorial.md)、[Sigma Computing](../saas-apps/sigma-computing-tutorial.md)、[CloudKnox Permissions Management Platform](../saas-apps/cloudknox-permissions-management-platform-tutorial.md)、[Klaxoon SAML](../saas-apps/klaxoon-saml-tutorial.md)、[Enablon](../saas-apps/enablon-tutorial.md)
+
+也可访问 https://aka.ms/AppsTutorial 找到所有应用程序的文档
+
+有关如何在 Azure AD 应用库中列出你的应用程序的信息，请访问 https://aka.ms/AzureADAppRequest 查看详细信息
+
+--- 
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---february-2021"></a>Azure AD 应用程序库中的新预配连接器 - 2021 年 2 月
+
+**类型：** 新功能  
+**服务类别：** 应用预配  
+**产品功能：** 第三方集成
+ 
+
+现在，可以为这些新集成的应用自动创建、更新和删除用户帐户：
+
+- [Atea](../saas-apps/atea-provisioning-tutorial.md)
+- [Getabstract](../saas-apps/getabstract-provisioning-tutorial.md)
+- [HelloID](../saas-apps/helloid-provisioning-tutorial.md)
+- [Hoxhunt](../saas-apps/hoxhunt-provisioning-tutorial.md)
+- [Iris Intranet](../saas-apps/iris-intranet-provisioning-tutorial.md)
+- [Preciate](../saas-apps/preciate-provisioning-tutorial.md)
+
+有关详细信息，请参阅[使用 Azure AD 自动预配 SaaS 应用程序的用户](../app-provisioning/user-provisioning.md)。
+
+---
+
+### <a name="general-availability---10-azure-active-directory-roles-now-renamed"></a>正式发布 - 10 个 Azure Active Directory 角色现已重命名
+
+**类型：** 已更改的功能  
+**服务类别：** RBAC  
+**产品功能：** 访问控制
+ 
+10 个 Azure AD 内置角色已重命名，以便在 [Microsoft 365 管理中心](/microsoft-365/admin/microsoft-365-admin-center-preview)、[Azure AD 门户](https://portal.azure.com/)和 [Microsoft Graph](https://developer.microsoft.com/graph/) 中保持一致。 若要详细了解这些新角色，请参阅 [Azure Active Directory 中的管理员角色权限](../roles/permissions-reference.md#all-roles)。
+
+![一张表格，其中显示了 MS Graph API 和 Azure 门户中的角色名称，以及建议在 API、Azure 门户和 Mac 中使用的最终名称。](media/whats-new/roles-table-rbac.png)
+
+---
+
+### <a name="new-company-branding-in-mfasspr-combined-registration"></a>MFA/SSPR 合并注册中的新公司品牌
+
+**类型：** 已更改的功能  
+**服务类别：** 用户体验和管理  
+**产品功能：** 最终用户体验
+ 
+过去，Azure Active Directory 登录页中并未使用公司徽标。 公司品牌现在位于 MFA/SSPR 合并注册的左上角。 公司品牌还包含在“我的登录”和“安全信息”页上。 [了解详细信息](../fundamentals/customize-branding.md)。
+
+---
+
+### <a name="general-availability---second-level-manager-can-be-set-as-alternate-approver"></a>正式发布 - 可以将二级管理者设置为备用审批者
+
+**类型：** 已更改的功能  
+**服务类别：** 用户访问管理  
+**产品功能：** 权利管理
+ 
+权利管理现在提供一个可在选择审批者时使用的额外选项。 如果对于第一位审批者选择“管理员作为审批者”，备用审批者字段中将提供另一个选项“将二级管理员作为备用审批者”可供选择。 如果选择此选项，则需要添加后备审批者，以便在系统找不到二级管理员的情况下将请求转发给该审批者。 [了解详细信息](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers)。
+ 
+---
+
+### <a name="authentication-methods-activity-dashboard"></a>身份验证方法活动仪表板
+
+**类型：** 已更改的功能  
+**服务类别：** 报告  
+**产品功能：** 监视和报告
+ 
+
+刷新的身份验证方法活动仪表板为管理员提供了其租户中身份验证方法注册和使用活动的概述。 报告汇总了每种方法的注册用户数，以及在登录和密码重置过程中使用的方法。 [了解详细信息](../authentication/howto-authentication-methods-activity.md)。
+ 
+---
+
+### <a name="refresh-and-session-token-lifetimes-configurability-in-configurable-token-lifetime-ctl-are-retired"></a>可配置令牌生存期 (CTL) 中的刷新和会话令牌生存期可配置性已停用
+
+**类型：** 已弃用  
+**服务类别：** 其他  
+**产品功能：** 用户身份验证
+ 
+CTL 中的刷新和会话令牌生存期可配置性已停用。 Azure Active Directory 不再支持现有策略中的刷新和会话令牌配置。 [了解详细信息](../develop/active-directory-configurable-token-lifetimes.md#token-lifetime-policies-for-refresh-tokens-and-session-tokens)。
+ 
+---
+
 ## <a name="january-2021"></a>2021 年 1 月
 
 ### <a name="secret-token-will-be-a-mandatory-field-when-configuring-provisioning"></a>机密令牌将成为配置预配时的必填字段
@@ -844,7 +1051,7 @@ Azure AD Connect 云预配公共预览版刷新具有两个根据客户反馈开
  
 IT 管理员或最终用户读取他们有权访问的 BitLocker 恢复密钥时，Azure Active Directory 现在会生成一个审核日志来捕获谁访问了恢复密钥。 相同的审核提供与 BitLocker 密钥关联的设备的详细信息。
 
-最终用户可[通过“我的帐户”访问其恢复密钥](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key)。 IT 管理员可通过 [beta 版 BitLocker 恢复密钥 API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta&preserve-view=true) 或 Azure AD 门户访问恢复密钥。 若要了解详细信息，请参阅[在 Azure AD 门户中查看或复制 BitLocker 密钥](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)。
+最终用户可[通过“我的帐户”访问其恢复密钥](https://support.microsoft.com/account-billing/manage-your-work-or-school-account-connected-devices-from-the-devices-page-6b5a735d-0a7f-4e94-8cfd-f5da6bc13d4e#view-a-bitlocker-key)。 IT 管理员可通过 [beta 版 BitLocker 恢复密钥 API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta&preserve-view=true) 或 Azure AD 门户访问恢复密钥。 若要了解详细信息，请参阅[在 Azure AD 门户中查看或复制 BitLocker 密钥](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)。
 
 ---
 
@@ -1086,7 +1293,7 @@ Azure AD 域服务中的资源林功能现已正式发布。 你现在可以在�
 **服务类别：** 身份验证（登录）  
 **产品功能：** 最终用户体验
  
-Azure AD My Sign-Ins 是一项新功能，允许企业用户查看其登录历史记录以检查是否有任何异常活动。 此功能还允许最终用户就可疑活动发出报告“是我本人”或“不是我本人”。 有关使用此功能的详细信息，请参阅[在 My Sign-Ins 页查看并搜索最近的登录活动](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity)。
+Azure AD My Sign-Ins 是一项新功能，允许企业用户查看其登录历史记录以检查是否有任何异常活动。 此功能还允许最终用户就可疑活动发出报告“是我本人”或“不是我本人”。 有关使用此功能的详细信息，请参阅[在 My Sign-Ins 页查看并搜索最近的登录活动](https://support.microsoft.com/account-billing/view-and-search-your-work-or-school-account-sign-in-activity-from-my-sign-ins-9e7d108c-8e3f-42aa-ac3a-bca892898972#confirm-unusual-activity)。
  
 ---
 
@@ -1809,7 +2016,7 @@ Azure AD B2C [应用注册体验](https://developer.microsoft.com/identity/blogs
 
 **产品功能：** 用户身份验证
 
-Office 即将推出一系列移动优先的商业应用程序。这些应用程序迎合非传统组织，以及大型组织中不将电子邮件作为其主要通信方式的员工的需求。 这些应用面向一线员工、无电脑工作者、现场代理或零售员工。这些人员可能无法从其雇主那里获取电子邮件地址，无权访问计算机或 IT。 此项目将允许这些员工通过输入电话号码并来回转换代码来登录到商业应用程序。 有关详细信息，请参阅我们的[管理员文档](../authentication/howto-authentication-sms-signin.md)和[最终用户文档](../user-help/sms-sign-in-explainer.md)。
+Office 即将推出一系列移动优先的商业应用程序。这些应用程序迎合非传统组织，以及大型组织中不将电子邮件作为其主要通信方式的员工的需求。 这些应用面向一线员工、无电脑工作者、现场代理或零售员工。这些人员可能无法从其雇主那里获取电子邮件地址，无权访问计算机或 IT。 此项目将允许这些员工通过输入电话号码并来回转换代码来登录到商业应用程序。 有关详细信息，请参阅我们的[管理员文档](../authentication/howto-authentication-sms-signin.md)和[最终用户文档](https://support.microsoft.com/account-billing/set-up-sms-sign-in-as-a-phone-verification-method-0aa5b3b3-a716-4ff2-b0d6-31d2bcfbac42)。
 
 ---
 
@@ -2028,7 +2235,7 @@ OAuth2PermissionGrant 的 Delta 查询现已提供公共预览版！ 你现在�
 
 **产品功能：**
 
-“我的员工”门户使一线管理者（如店铺经理）可以确保其职员能够访问其 Azure AD 帐户。 组织可以将常见任务（如重置密码或更改电话号码等）委托给一线管理者，而不是依赖于中心支持人员。 通过“我的员工”门户，无法访问帐户的用户只需点击几下即可重新获取访问权限，无需求助支持人员或 IT 人员。 有关详细信息，请参阅[通过“我的员工”门户管理管理用户（预览版）](../roles/my-staff-configure.md)和[通过“我的员工”门户委托用户管理（预览版）](../user-help/my-staff-team-manager.md)。
+“我的员工”门户使一线管理者（如店铺经理）可以确保其职员能够访问其 Azure AD 帐户。 组织可以将常见任务（如重置密码或更改电话号码等）委托给一线管理者，而不是依赖于中心支持人员。 通过“我的员工”门户，无法访问帐户的用户只需点击几下即可重新获取访问权限，无需求助支持人员或 IT 人员。 有关详细信息，请参阅[通过“我的员工”门户管理管理用户（预览版）](../roles/my-staff-configure.md)和[通过“我的员工”门户委托用户管理（预览版）](https://support.microsoft.com/account-billing/manage-front-line-users-with-my-staff-c65b9673-7e1c-4ad6-812b-1a31ce4460bd)。
 
 ---
 
@@ -2384,7 +2591,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
 **服务类别：** 我的配置文件/帐户  
 **产品功能：** 最终用户体验
  
-我的帐户，即满足所有最终用户帐户管理需求的一站式商店，现已正式发布！ 最终用户可以通过 URL 或者在新的“我的应用”体验的标头中访问此新站点。 有关该新体验提供的所有自助服务功能的详细信息，请参阅[“我的帐户”门户概述](../user-help/my-account-portal-overview.md)。
+我的帐户，即满足所有最终用户帐户管理需求的一站式商店，现已正式发布！ 最终用户可以通过 URL 或者在新的“我的应用”体验的标头中访问此新站点。 有关该新体验提供的所有自助服务功能的详细信息，请参阅[“我的帐户”门户概述](https://support.microsoft.com/account-billing/my-account-portal-for-work-or-school-accounts-eab41bfe-3b9e-441e-82be-1f6e568d65fd)。
 
 ---
  
@@ -2394,7 +2601,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
 **服务类别：** 我的配置文件/帐户  
 **产品功能：** 最终用户体验
  
-新的“我的帐户”最终用户体验会在下个月将其 URL 更新为 `https://myaccount.microsoft.com`。 有关该体验以及向最终用户提供的所有帐户自助服务功能的详细信息，请参阅[“我的帐户”门户帮助](../user-help/my-account-portal-overview.md)。
+新的“我的帐户”最终用户体验会在下个月将其 URL 更新为 `https://myaccount.microsoft.com`。 有关该体验以及向最终用户提供的所有帐户自助服务功能的详细信息，请参阅[“我的帐户”门户帮助](https://support.microsoft.com/account-billing/my-account-portal-for-work-or-school-accounts-eab41bfe-3b9e-441e-82be-1f6e568d65fd)。
 
 ---
 
@@ -2903,7 +3110,7 @@ Office 365 组过期策略已得到增强，可以自动续订其成员正在使
 
 从 10 月开始，“我的个人资料”体验将更改为“我的帐户”。 作为更改的一部分，当前所使用的“我的个人资料”都将更改为“我的帐户” 。 除了命名更改和一些设计改进之外，更新后的体验还将提供与 Microsoft Office 帐户页的其他集成。 具体来说，你将能够从“概述帐户”页面访问 Office 安装和订阅，以及从“隐私”页面访问与 Office 相关的联系人首选项 。
 
-有关“我的个人资料”（预览版）体验的详细信息，请参阅[“我的个人资料”（预览版）门户概述](../user-help/my-account-portal-overview.md)。
+有关“我的个人资料”（预览版）体验的详细信息，请参阅[“我的个人资料”（预览版）门户概述](https://support.microsoft.com/account-billing/my-account-portal-for-work-or-school-accounts-eab41bfe-3b9e-441e-82be-1f6e568d65fd)。
 
 ---
 
@@ -3171,7 +3378,7 @@ AzureAD 和 AzureAD 预览 PowerShell 模块的新更新可用：
 
 我们将于 2019 年 9 月 25 日关闭用于注册和管理用户安全信息的旧版非增强安全信息体验，而仅启用新的[增强版本](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)。 这意味着你的用户将无法再使用旧版体验。
 
-有关增强的安全信息体验的详细信息，请参阅[管理文档](../authentication/concept-registration-mfa-sspr-combined.md)和[用户文档](../user-help/security-info-setup-signin.md)。
+有关增强的安全信息体验的详细信息，请参阅[管理文档](../authentication/concept-registration-mfa-sspr-combined.md)和[用户文档](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)。
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>要启用这种新体验，你必须：
 
@@ -3253,7 +3460,7 @@ AzureAD 和 AzureAD 预览 PowerShell 模块的新更新可用：
 
 Azure AD 客户现在可以设置策略来管理其组织的用户和组的 FIDO2 安全密钥。 最终用户还可以自行注册安全密钥，并使用这些密钥在支持 FIDO 的设备上登录到网站上的 Microsoft 帐户，以及登录到其已联接 Azure AD 的 Windows 10 设备。
 
-有关详细信息，请参阅[为 Azure AD 启用无密码登录（预览版）](../authentication/concept-authentication-passwordless.md)以获取管理员相关信息；请参阅[设置安全信息以使用安全密钥（预览版）](../user-help/security-info-setup-security-key.md)以获取最终用户相关信息。
+有关详细信息，请参阅[为 Azure AD 启用无密码登录（预览版）](../authentication/concept-authentication-passwordless.md)以获取管理员相关信息；请参阅[设置安全信息以使用安全密钥（预览版）](https://support.microsoft.com/account-billing/set-up-a-security-key-as-your-verification-method-2911cacd-efa5-4593-ae22-e09ae14c6698)以获取最终用户相关信息。
 
 ---
 
@@ -4054,7 +4261,7 @@ Azure AD Connect 正在转换电子邮件警报系统，系统可能会向某些
 
 我们已于 2019 年 1 月将这 35 款支持联合的新应用添加到了应用库中：
 
-[Firstbird](../saas-apps/firstbird-tutorial.md)、[Folloze](../saas-apps/folloze-tutorial.md)、[Talent Palette](../saas-apps/talent-palette-tutorial.md)、[Infor CloudSuite](../saas-apps/infor-cloud-suite-tutorial.md)、[Cisco Umbrella](../saas-apps/cisco-umbrella-tutorial.md)、[Zscaler Internet Access Administrator](../saas-apps/zscaler-internet-access-administrator-tutorial.md)、[Expiration Reminder](../saas-apps/expiration-reminder-tutorial.md)、[InstaVR Viewer](../saas-apps/instavr-viewer-tutorial.md)、[CorpTax](../saas-apps/corptax-tutorial.md)、[Verb](https://app.verb.net/login)、[OpenLattice](https://openlattice.com/agora)、[TheOrgWiki](https://www.theorgwiki.com/signup)、[Pavaso Digital Close](../saas-apps/pavaso-digital-close-tutorial.md)、[GoodPractice Toolkit](../saas-apps/goodpractice-toolkit-tutorial.md)、[Cloud Service PICCO](../saas-apps/cloud-service-picco-tutorial.md)、[AuditBoard](../saas-apps/auditboard-tutorial.md)、[iProva](../saas-apps/iprova-tutorial.md)、[Workable](../saas-apps/workable-tutorial.md)、[CallPlease](https://webapp.callplease.com/create-account/create-account.html)、[GTNexus SSO System](../saas-apps/gtnexus-sso-module-tutorial.md)、[CBRE ServiceInsight](../saas-apps/cbre-serviceinsight-tutorial.md)、[Deskradar](../saas-apps/deskradar-tutorial.md)、[Coralogixv](../saas-apps/coralogix-tutorial.md)、[Signagelive](../saas-apps/signagelive-tutorial.md)、[ARES for Enterprise](../saas-apps/ares-for-enterprise-tutorial.md)、[K2 for Office 365](https://www.k2.com/O365)、[Xledger](https://www.xledger.net/)、[iDiD Manager](../saas-apps/idid-manager-tutorial.md)、[HighGear](../saas-apps/highgear-tutorial.md)、[Visitly](../saas-apps/visitly-tutorial.md)、[Korn Ferry ALP](../saas-apps/korn-ferry-alp-tutorial.md)、[Acadia](../saas-apps/acadia-tutorial.md)、[Adoddle cSaas Platform](../saas-apps/adoddle-csaas-platform-tutorial.md)<!-- , [CaféX Portal (Meetings)](https://docs.microsoft.com/azure/active-directory/saas-apps/cafexportal-meetings-tutorial), [MazeMap Link](https://docs.microsoft.com/azure/active-directory/saas-apps/mazemaplink-tutorial)-->
+[Firstbird](../saas-apps/firstbird-tutorial.md)、[Folloze](../saas-apps/folloze-tutorial.md)、[Talent Palette](../saas-apps/talent-palette-tutorial.md)、[Infor CloudSuite](../saas-apps/infor-cloud-suite-tutorial.md)、[Cisco Umbrella](../saas-apps/cisco-umbrella-tutorial.md)、[Zscaler Internet Access Administrator](../saas-apps/zscaler-internet-access-administrator-tutorial.md)、[Expiration Reminder](../saas-apps/expiration-reminder-tutorial.md)、[InstaVR Viewer](../saas-apps/instavr-viewer-tutorial.md)、[CorpTax](../saas-apps/corptax-tutorial.md)、[Verb](https://app.verb.net/login)、[OpenLattice](https://openlattice.com/agora)、[TheOrgWiki](https://www.theorgwiki.com/signup)、[Pavaso Digital Close](../saas-apps/pavaso-digital-close-tutorial.md)、[GoodPractice Toolkit](../saas-apps/goodpractice-toolkit-tutorial.md)、[Cloud Service PICCO](../saas-apps/cloud-service-picco-tutorial.md)、[AuditBoard](../saas-apps/auditboard-tutorial.md)、[iProva](../saas-apps/iprova-tutorial.md)、[Workable](../saas-apps/workable-tutorial.md)、[CallPlease](https://webapp.callplease.com/create-account/create-account.html)、[GTNexus SSO System](../saas-apps/gtnexus-sso-module-tutorial.md)、[CBRE ServiceInsight](../saas-apps/cbre-serviceinsight-tutorial.md)、[Deskradar](../saas-apps/deskradar-tutorial.md)、[Coralogixv](../saas-apps/coralogix-tutorial.md)、[Signagelive](../saas-apps/signagelive-tutorial.md)、[ARES for Enterprise](../saas-apps/ares-for-enterprise-tutorial.md)、[K2 for Office 365](https://www.k2.com/O365)、[Xledger](https://www.xledger.net/)、[iDiD Manager](../saas-apps/idid-manager-tutorial.md)、[HighGear](../saas-apps/highgear-tutorial.md)、[Visitly](../saas-apps/visitly-tutorial.md)、[Korn Ferry ALP](../saas-apps/korn-ferry-alp-tutorial.md)、[Acadia](../saas-apps/acadia-tutorial.md)、[Adoddle cSaas Platform](../saas-apps/adoddle-csaas-platform-tutorial.md)
 
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](../saas-apps/tutorial-list.md)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](../develop/v2-howto-app-gallery-listing.md)。
 
@@ -4084,7 +4291,7 @@ Azure AD Connect 正在转换电子邮件警报系统，系统可能会向某些
 
 若要使你的一次性密码、应用信息和应用设置更加安全，可以在 Microsoft Authenticator 应用中开启应用锁定功能。 开启应用锁定意味着你每次打开 Microsoft Authenticator 应用时都会要求你使用 PIN 或生物识别进行身份验证。
 
-有关详细信息，请参阅 [Microsoft Authenticator app FAQ](../user-help/user-help-auth-app-faq.md)（Microsoft Authenticator 应用常见问题解答）。
+有关详细信息，请参阅 [Microsoft Authenticator app FAQ](https://support.microsoft.com/account-billing/common-problems-with-the-microsoft-authenticator-app-12d283d1-bcef-4875-9ae5-ac360e2945dd)（Microsoft Authenticator 应用常见问题解答）。
 
 ---
 
@@ -4379,7 +4586,7 @@ Azure AD 域服务在 Azure 门户中提供有关托管域配置错误或问题�
 查看适用于“我的应用”访问面板的新部署计划 (https://aka.ms/deploymentplans) 。
 “我的应用”访问面板为用户提供查找和访问其应用的单一位置。 此门户还为用户提供自助服务功能，例如，请求访问应用和组，或代表他人管理对这些资源的访问。
 
-有关详细信息，请参阅[什么是“我的应用”门户？](../user-help/my-apps-portal-end-user-access.md)
+有关详细信息，请参阅[什么是“我的应用”门户？](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)
 
 ---
 
@@ -5622,7 +5829,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 - 在扩展中使用快捷方式访问最近使用的应用
 - 此扩展适用于 Microsoft Edge、Chrome 和 Firefox。
 
-有关详细信息，请参阅[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。
+有关详细信息，请参阅[我的应用安全登录扩展](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension)。
 
 ---
 

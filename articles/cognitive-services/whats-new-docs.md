@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 06/14/2021
-ms.openlocfilehash: d8b5d8141410143385cd950ae4e0ecb59d61d422
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 655f61388d2fd19cffbb4b7d3212bf401e20040d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478331"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824764"
 ---
 # <a name="cognitive-services-docs-whats-new-for-may-1-2021---may-31-2021"></a>认知服务文档：2021 年 5 月 1 日 - 2021 年 5 月 31 日的新增内容
 
@@ -36,14 +36,14 @@ ms.locfileid: "123478331"
 
 ### <a name="new-articles"></a>新文章
 
-- [参考：Azure 表单识别器客户端库 v3.0.0 和 REST API v2.0](./form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
+- [参考：Azure 表单识别器客户端库 v3.0.0 和 REST API v2.0](../applied-ai-services/form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [表单识别器预生成的名片模型](./form-recognizer/concept-business-cards.md)
-- [快速入门：开始使用客户端库 SDK 或 REST API](./form-recognizer/quickstarts/client-library.md)
-- [表单识别器的新增功能](./form-recognizer/whats-new.md)
-- [表单识别器登陆页](./form-recognizer/index.yml)
+- [表单识别器预生成的名片模型](../applied-ai-services/form-recognizer/concept-business-cards.md)
+- [快速入门：开始使用客户端库 SDK 或 REST API](../applied-ai-services/form-recognizer/quickstarts/client-library.md)
+- [表单识别器的新增功能](../applied-ai-services/form-recognizer/whats-new.md)
+- [表单识别器登陆页](../applied-ai-services/form-recognizer/index.yml)
 
 ## <a name="translator"></a>转换器
 

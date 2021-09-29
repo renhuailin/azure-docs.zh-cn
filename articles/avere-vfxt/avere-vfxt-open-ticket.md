@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a21e7628857eea002892c3395c3d8e426cb3ffa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008423"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124829066"
 ---
 # <a name="get-help-with-your-system"></a>获得有关系统的帮助
 
@@ -43,7 +43,7 @@ ms.locfileid: "96008423"
 
     ![Azure 门户中“新建支持请求”屏幕的屏幕截图。 “基本信息”选项卡已选中。 屏幕项包括问题类型、订阅、服务、摘要和问题类型。](media/ticket-basics.png)
 
-   单击 **“下一步”** 以继续。
+   单击“下一步”以继续。
 
 1. 在支持表单的第二页中，有基于摘要说明解决问题的建议。 如果仍然需要创建支持票证，请单击底部的“下一步”按钮。
 
@@ -57,4 +57,4 @@ ms.locfileid: "96008423"
 
 ## <a name="request-a-quota-increase"></a>请求增加配额
 
-请参阅 [vFXT 群集的配额](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)，了解部署 Avere vFXT for Azure 所需的组件。 可以从 Azure 门户[请求增加配额](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+请参阅 [vFXT 群集的配额](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)，了解部署 Avere vFXT for Azure 所需的组件。 可以从 Azure 门户[请求增加配额](../azure-portal/supportability/regional-quota-requests.md)。

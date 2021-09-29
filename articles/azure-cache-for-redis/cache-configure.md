@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1d49d222ff26198be0b9b07df900fa4dfac6c07d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: a182d86485a8ca934b3ed94b5251e12b456edabd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294100"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558613"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 
@@ -25,7 +25,7 @@ ms.locfileid: "114294100"
 
 ## <a name="configure-azure-cache-for-redis-settings"></a>配置 Azure Redis 缓存设置
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-browse.md)]
 
 使用“资源菜单”在左侧的“Azure Cache for Redis”上查看和配置 Azure Cache for Redis 设置 。
 
@@ -70,7 +70,7 @@ ms.locfileid: "114294100"
 
 ### <a name="activity-log"></a>活动日志
 
-选择“活动日志”查看对缓存执行的操作。 也可以使用筛选来展开此视图，以包含其他资源。 有关如何使用审核日志的详细信息，请参阅[使用资源管理器审核操作](../azure-resource-manager/management/view-activity-logs.md)。 有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](cache-how-to-monitor.md#operations-and-alerts)。
+选择“活动日志”查看对缓存执行的操作。 也可以使用筛选来展开此视图，以包含其他资源。 有关如何使用审核日志的详细信息，请参阅[使用资源管理器审核操作](../azure-monitor/essentials/activity-log.md)。 有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](cache-how-to-monitor.md#operations-and-alerts)。
 
 ### <a name="access-control-iam"></a>访问控制 (IAM)
 
@@ -498,7 +498,7 @@ Redis 密钥空间通知是左侧的“高级设置”中配置的。 密钥空�
 
 如果尝试访问存储在不同分片（而非已连接的分片）中的密钥，将收到类似于以下消息的错误消息：
 
-```
+```console
 shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```

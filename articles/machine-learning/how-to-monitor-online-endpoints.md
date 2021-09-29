@@ -5,17 +5,15 @@ description: 使用 Application Insights 监视托管联机终结点并创建警
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: gopalv
-author: gvashishtha
 ms.date: 05/03/2021
 ms.topic: conceptual
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: e578924ac2a6f66906c2802dc95a287602931117
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c6b370d568b7448ae6417f050cbc902378571151
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458789"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548158"
 ---
 # <a name="monitor-managed-online-endpoints-preview"></a>监视托管联机终结点（预览版）
 

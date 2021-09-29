@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: f8967d0674689328bf0f761a5f39c17c505d1bd6
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: c36ad9b56ce49234d2ee28f53073267944152db0
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439910"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080428"
 ---
 # <a name="tutorial-migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access"></a>教程：将 Okta 登录策略迁移到 Azure Active Directory 条件访问策略
 
@@ -64,7 +64,7 @@ ms.locfileid: "123439910"
 
 在某些方案中，可能需要在配置 CA 策略之前进行额外的设置。 在撰写本文时，有两个已知的方案：
 
-- Okta 网络位置到 Azure AD 中的命名位置 - 按照[此文](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition#named-locations)所述在 Azure AD 中配置命名位置。
+- Okta 网络位置到 Azure AD 中的命名位置 - 按照[此文](../conditional-access/location-condition.md#named-locations)所述在 Azure AD 中配置命名位置。
 
 - Okta 设备对基于设备的 CA 的信任 - 在评估用户的设备时，CA 提供两个可能的选项。
 
@@ -79,7 +79,7 @@ ms.locfileid: "123439910"
 >[!NOTE]
 >Azure AD Connect 云预配代理不支持混合 Azure AD 加入。
 
-1. 请按照这些[说明](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains#configure-hybrid-azure-ad-join)启用混合 Azure AD 加入。
+1. 请按照这些[说明](../devices/hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join)启用混合 Azure AD 加入。
 
 2. 在 SCP 配置页上，选择“身份验证服务”下拉菜单。 选择你的 Okta 联合提供程序 URL，然后选择“添加”。 输入你的本地企业管理员凭据，然后选择“下一步”。
 
@@ -93,15 +93,15 @@ ms.locfileid: "123439910"
 
 虽然混合 Azure AD 加入是对 Windows 上的 Okta 设备信任的直接替代，但 CA 策略还可以检查已完全注册到 Microsoft Endpoint Manager 的设备的设备合规性。
 
-- 合规性概述 - 请参阅 [Microsoft Intune 中的设备合规性策略](https://docs.microsoft.com/mem/intune/protect/device-compliance-get-started#:~:text=Reference%20for%20non-compliance%20and%20Conditional%20Access%20on%20the,applicable%20%20...%20%203%20more%20rows)。
+- 合规性概述 - 请参阅 [Microsoft Intune 中的设备合规性策略](/mem/intune/protect/device-compliance-get-started#:~:text=Reference%20for%20non-compliance%20and%20Conditional%20Access%20on%20the,applicable%20%20...%20%203%20more%20rows)。
 
-- 设备合规性 - [在 Microsoft Intune 中创建策略](https://docs.microsoft.com/mem/intune/protect/create-compliance-policy)。
+- 设备合规性 - [在 Microsoft Intune 中创建策略](/mem/intune/protect/create-compliance-policy)。
 
-- Windows 注册 - 如果已选择部署混合 Azure AD 加入，可以部署一个额外的组策略来完成[将这些设备自动注册到 Microsoft Intune 的过程](https://docs.microsoft.com/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy)。
+- Windows 注册 - 如果已选择部署混合 Azure AD 加入，可以部署一个额外的组策略来完成[将这些设备自动注册到 Microsoft Intune 的过程](/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy)。
 
-- iOS/iPadOS 注册 - 在注册 iOS 设备之前，必须在终结点管理控制台中完成[额外的配置](https://docs.microsoft.com/mem/intune/enrollment/ios-enroll)。
+- iOS/iPadOS 注册 - 在注册 iOS 设备之前，必须在终结点管理控制台中完成[额外的配置](/mem/intune/enrollment/ios-enroll)。
 
-- Android 注册 - 在注册 Android 设备之前，必须在终结点管理控制台中完成[额外的配置](https://docs.microsoft.com/mem/intune/enrollment/android-enroll)。
+- Android 注册 - 在注册 Android 设备之前，必须在终结点管理控制台中完成[额外的配置](/mem/intune/enrollment/android-enroll)。
 
 ## <a name="step-3---configure-azure-ad-multi-factor-authentication-tenant-settings"></a>步骤 3 - 配置 Azure AD 多重身份验证租户设置
 
@@ -109,13 +109,13 @@ ms.locfileid: "123439910"
 
 1. 导航到 [Azure 门户](https://portal.azure.com)并使用全局管理员帐户登录。
 
-2. 依次选择“Azure Active Directory”、“用户”、“多重身份验证”，随后你将转到旧式 Azure MFA 门户  。
+1. 依次选择“Azure Active Directory”、“用户”、“多重身份验证”，随后你将转到旧式 Azure MFA 门户  。
 
    ![该插图显示旧式 Azure AD 多重身份验证门户](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/legacy-azure-ad-portal.png)
 
-可以改用 <https://aka.ms/mfaportal>。
+   可以改用 <https://aka.ms/mfaportal>。
 
-4. 在“旧式 Azure MFA”菜单中，通过更改状态菜单中的“已启用”和“已强制执行”来确认没有为用户启用旧式 MFA  。 如果租户在下面的视图中具有用户，则必须在旧式 MFA 菜单中禁用这些用户。 只有这样，CA 策略才对这些用户的帐户生效。
+1. 在“旧式 Azure MFA”菜单中，通过更改状态菜单中的“已启用”和“已强制执行”来确认没有为用户启用旧式 MFA  。 如果租户在下面的视图中具有用户，则必须在旧式 MFA 菜单中禁用这些用户。 只有这样，CA 策略才对这些用户的帐户生效。
 
    ![该插图显示有关在旧式 Azure AD 多重身份验证门户中禁用用户的用户界面](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/disable-user-legacy-azure-ad-portal.png)
 
@@ -123,12 +123,12 @@ ms.locfileid: "123439910"
 
    ![该插图显示旧式 Azure AD 多重身份验证门户中的“已强制执行”字段为空](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enforced-empty-legacy-azure-ad-portal.png)
 
-5. 确认没有为任何用户配置旧式 MFA后，选择“服务设置”选项。 将“应用密码”选项更改为“不允许用户创建应用密码登录非浏览器的应用” 。
+1. 确认没有为任何用户配置旧式 MFA后，选择“服务设置”选项。 将“应用密码”选项更改为“不允许用户创建应用密码登录非浏览器的应用” 。
 
-6. 确保已取消选中“对来自我的 Intranet 上的联合用户的请求跳过多重身份验证”和“允许用户在其信任的设备上记住多重身份验证(1 到 365 天)”框，然后选择“保存”  。
+1. 确保已取消选中“对来自我的 Intranet 上的联合用户的请求跳过多重身份验证”和“允许用户在其信任的设备上记住多重身份验证(1 到 365 天)”框，然后选择“保存”  。
 
    >[!NOTE]
-   >请参阅[有关配置 MFA 提示设置的最佳做法](https://aka.ms/mfaprompts)。
+   >请参阅[有关配置 MFA 提示设置的最佳做法](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 
    ![该插图显示有关在旧式 Azure AD 多重身份验证门户中取消选中字段的用户界面](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/uncheck-fields-legacy-azure-ad-portal.png)
 
@@ -138,11 +138,11 @@ ms.locfileid: "123439910"
 
 1. 若要在 Azure AD 中配置 CA 策略，请导航到 [Azure 门户](https://portal.azure.com)。 在“管理 Azure Active Directory”中选择“视图”。
 
-2. 在配置 CA 策略时，应考虑到[有关部署和设计 CA 的最佳做法](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#understand-conditional-access-policy-components)。
+2. 在配置 CA 策略时，应考虑到[有关部署和设计 CA 的最佳做法](../conditional-access/plan-conditional-access.md#understand-conditional-access-policy-components)。
 
-3. 若要模拟 Okta 中的全局登录 MFA 策略，请[创建一个策略](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-all-users-mfa)。
+3. 若要模拟 Okta 中的全局登录 MFA 策略，请[创建一个策略](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)。
 
-4. 创建[基于设备信任的 CA 规则](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)。
+4. 创建[基于设备信任的 CA 规则](../conditional-access/require-managed-devices.md)。
 
 5. 与本教程中的任何其他策略一样，此策略可以设置为以特定的应用程序和/或测试用户组为目标。
 
@@ -150,7 +150,7 @@ ms.locfileid: "123439910"
 
    ![该插图显示测试用户成功](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/success-test-user.png)
 
-6. 配置基于位置的策略和设备信任策略后，接下来请配置对应的[阻止旧式身份验证](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-block-legacy)策略。
+6. 配置基于位置的策略和设备信任策略后，接下来请配置对应的[阻止旧式身份验证](../conditional-access/howto-conditional-access-policy-block-legacy.md)策略。
 
 通过这三个 CA 策略，原始的 Okta 登录策略体验已复制到 Azure AD 中。 后续步骤涉及到将用户注册到 Azure MFA 并测试策略。
 
@@ -162,14 +162,14 @@ ms.locfileid: "123439910"
 
 2. 用户可以转到 <https://aka.ms/mysecurityinfo> 以输入信息或管理 MFA 注册表单。
 
-请参阅[此指南](https://docs.microsoft.com/azure/active-directory/authentication/howto-registration-mfa-sspr-combined)来全面了解 MFA 注册过程。  
+请参阅[此指南](../authentication/howto-registration-mfa-sspr-combined.md)来全面了解 MFA 注册过程。  
 
 使用 Okta MFA 登录后，请导航到 <https://aka.ms/mfasetup>，此时系统会指示你在 Azure AD 中注册 MFA。
 
 >[!NOTE]
 >如果该用户过去已注册，则在按照 MFA 提示输入所需信息后，该用户将转到“我的安全性”信息页。
 
-请参阅[有关 MFA 注册的最终用户文档](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-signin)。
+请参阅[有关 MFA 注册的最终用户文档](../user-help/security-info-setup-signin.md)。
 
 ## <a name="step-6---enable-ca-policies"></a>步骤 6 - 启用 CA 策略
 

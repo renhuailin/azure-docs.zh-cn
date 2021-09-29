@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 01/07/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 081ae6506949407c0cc5331abf542367f7cc4c84
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9f4e99c21ab0cba538021f416e058bdafd5c83b9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738768"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779343"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>了解如何在 Azure Active Directory 中将用户分配到应用
 
@@ -34,8 +34,8 @@ ms.locfileid: "121738768"
   * 在云中创建的[动态安全组](../enterprise-users/groups-dynamic-membership.md)
   * 在云中创建的 Microsoft 365 组
   * [所有用户](../fundamentals/active-directory-groups-create-azure-portal.md)组
-* 管理员启用[自助服务应用程序访问](./manage-self-service-access.md)以允许用户无需业务批准，即可使用[我的应用](../user-help/my-apps-portal-end-user-access.md)的“添加应用”功能添加应用程序
-* 管理员启用 [自助服务应用程序访问](./manage-self-service-access.md)以允许用户仅 **在经过选定业务批准者的事先批准的情况下**，使用 [我的应用](../user-help/my-apps-portal-end-user-access.md)的“添加应用”功能添加应用程序
+* 管理员启用[自助服务应用程序访问](./manage-self-service-access.md)以允许用户无需业务批准，即可使用[我的应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)的“添加应用”功能添加应用程序
+* 管理员启用 [自助服务应用程序访问](./manage-self-service-access.md)以允许用户仅 **在经过选定业务批准者的事先批准的情况下**，使用 [我的应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)的“添加应用”功能添加应用程序
 * 管理员启用 [自助服务组管理](../enterprise-users/groups-self-service-management.md)以允许用户 **无需业务批准**，即可加入已对其分配应用程序的组
 * 管理员启用 [自助服务组管理](../enterprise-users/groups-self-service-management.md)以允许用户在经过 **选定业务批准者的事先批准** 的情况下，加入已对其分配应用程序的组
 * 对于第一方应用程序（如 [Microsoft 365](https://products.office.com/)），管理员直接为用户分配许可证

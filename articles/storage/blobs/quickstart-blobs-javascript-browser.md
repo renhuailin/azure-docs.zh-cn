@@ -1,19 +1,19 @@
 ---
 title: 快速入门：浏览器中的 Azure Blob 存储库 v12 - JavaScript
 description: 本快速入门介绍了如何在浏览器中使用适用于 JavaScript 的 Azure Blob 存储客户端库版本 12。 你将在 Blob 存储中创建容器和对象。 接下来，了解如何列出容器中的所有 Blob。 最后，了解如何删除 Blob 和容器。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: f253be6bbcea46baa6c86f33223504bfba3ab198
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: bea5af6656aacd18805627f471d7227c2d1077bd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475973"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616833"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -23,29 +23,29 @@ Azure Blob 存储已经过优化，可以存储大量的非结构化数据。 Bl
 
 其他资源：
 
-* [API 参考文档](/javascript/api/@azure/storage-blob)
-* [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
-* [包 (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [示例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+- [API 参考文档](/javascript/api/@azure/storage-blob)
+- [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+- [包 (npm)](https://www.npmjs.com/package/@azure/storage-blob)
+- [示例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
-* [一个 Azure 帐户和一个有效的订阅](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [一个 Azure 存储帐户](../common/storage-account-create.md)
-* [Node.js](https://nodejs.org)
-* [Microsoft Visual Studio Code](https://code.visualstudio.com)
-* 一个用于进行浏览器调试的 Visual Studio Code 扩展，例如：
-    * [适用于 Microsoft Edge 的调试器](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
-    * [适用于 Chrome 的调试器](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
-    * [适用于 Firefox 的调试器](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
+- [一个 Azure 帐户和一个有效的订阅](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [一个 Azure 存储帐户](../common/storage-account-create.md)
+- [Node.js](https://nodejs.org)
+- [Microsoft Visual Studio Code](https://code.visualstudio.com)
+- 一个用于进行浏览器调试的 Visual Studio Code 扩展，例如：
+  - [适用于 Microsoft Edge 的调试器](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
+  - [适用于 Chrome 的调试器](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+  - [适用于 Firefox 的调试器](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
 
 ## <a name="object-model"></a>对象模型
 
 Blob 存储提供了三种类型的资源：
 
-* 存储帐户
-* 存储帐户中的容器
-* 容器中的 blob
+- 存储帐户
+- 存储帐户中的容器
+- 容器中的 blob
 
 以下图示显示了这些资源之间的关系。
 
@@ -53,9 +53,9 @@ Blob 存储提供了三种类型的资源：
 
 在本快速入门中，你将使用以下 JavaScript 类来与这些资源进行交互：
 
-* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
-* [ContainerClient](/javascript/api/@azure/storage-blob/containerclient)：`ContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
-* [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient)：`BlockBlobClient` 类可用于操纵 Azure 存储 blob。
+- [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
+- [ContainerClient](/javascript/api/@azure/storage-blob/containerclient)：`ContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
+- [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient)：`BlockBlobClient` 类可用于操纵 Azure 存储 blob。
 
 ## <a name="setting-up"></a>设置
 
@@ -149,13 +149,13 @@ npm install -g parcel-bundler
 
 该示例代码展示了如何使用适用于 JavaScript 的 Azure Blob 存储客户端库完成以下任务：
 
-* [声明 UI 元素的字段](#declare-fields-for-ui-elements)
-* [添加存储帐户信息](#add-your-storage-account-info)
-* [创建客户端对象](#create-client-objects)
-* [创建和删除存储容器](#create-and-delete-a-storage-container)
-* [列出 Blob](#list-blobs)
-* [上传 Blob](#upload-blobs)
-* [删除 Blob](#delete-blobs)
+- [声明 UI 元素的字段](#declare-fields-for-ui-elements)
+- [添加存储帐户信息](#add-your-storage-account-info)
+- [创建客户端对象](#create-client-objects)
+- [创建和删除存储容器](#create-and-delete-a-storage-container)
+- [列出 Blob](#list-blobs)
+- [上传 Blob](#upload-blobs)
+- [删除 Blob](#delete-blobs)
 
 你将在向 index.js 文件添加所有代码片段后运行代码。
 
@@ -304,5 +304,5 @@ Parcel 会捆绑你的代码，并在 `http://localhost:1234/index.html` 上为�
 > [!div class="nextstepaction"]
 > [Azure for JavaScript 文档](/azure/developer/javascript/)
 
-* 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure Blob 存储客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。
-* 若要查看 Blob 存储示例应用，请继续学习 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
+- 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure Blob 存储客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。
+- 若要查看 Blob 存储示例应用，请继续学习 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。

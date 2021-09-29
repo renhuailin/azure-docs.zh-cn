@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: e95119f65e088fe9b9b6ace71b6fee98f679f5a4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 95cc91298945c50174f1edec6ca766e3f7df59c8
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426087"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153722"
 ---
 # <a name="high-availability-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器预览版中的高可用性
 
@@ -107,8 +107,8 @@ Azure Database for MySQL - 灵活服务器强制故障转移使你能够手动�
 * 只有在创建灵活服务器时才能设置区域冗余高可用性。
 * 可突增计算层级不支持高可用性。
 * 如果重启主数据库服务器以获取静态参数更改，也会重启备用副本。
-* 区域冗余高可用性服务器不支持只读副本。
-* 高可用性服务器不支持数据传入复制。 
+* 高可用性服务器不支持只读副本。
+* 高可用性服务器不支持数据传入复制。
 * 将开启 GTID 模式，因为高可用性解决方案使用 GTID。 检查工作负载是否对[使用 GTID 进行复制有限制](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-restrictions.html)。  
  
 ## <a name="frequently-asked-questions-faq"></a>常见问题解答 (FAQ)

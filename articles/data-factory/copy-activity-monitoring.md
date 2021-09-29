@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: b8f3de9a986c491de6bfd2b507755abe4face534
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: ed65bb5bcde37bf4ad18d9650697d51640ac1e4a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822398"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767575"
 ---
 # <a name="monitor-copy-activity"></a>监视复制活动
 
@@ -30,17 +30,17 @@ ms.locfileid: "122822398"
 
 # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-![监视管道运行](./media/copy-activity-overview/monitor-pipeline-run.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-pipeline-run.png" alt-text="监视管道运行":::
 
 # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
-![监视管道运行](./media/copy-activity-overview/monitor-pipeline-run-synapse.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-pipeline-run-synapse.png" alt-text="监视管道运行":::
 
 ---
 
 在此级别，可以看到复制活动输入、输出和错误的链接（如果复制活动运行失败）以及持续时间/状态等统计信息。 单击复制活动名称旁边的“详细信息”  按钮（眼镜）即可详细了解复制活动执行情况。 
 
-![监视复制活动运行](./media/copy-activity-overview/monitor-copy-activity-run.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-copy-activity-run.png" alt-text="监视复制活动运行":::
 
 在此图形监视视图中，该服务会提供复制活动执行信息，其中包括数据读取/写入量、从源复制到接收器的数据的文件数/行数、吞吐量、针对复制方案应用的配置、使用相应的持续时间和详细信息执行复制活动的步骤，等等。 请参阅[此表](#monitor-programmatically)，了解每个可能的指标及其详细说明。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "122822398"
 
 **示例：从 Amazon S3 复制到 Azure Data Lake Storage Gen2**
 
-![监视复制活动运行详细信息](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-copy-activity-run-details.png" alt-text="监视复制活动运行详细信息":::
 
 ## <a name="monitor-programmatically"></a>以编程方式监视
 

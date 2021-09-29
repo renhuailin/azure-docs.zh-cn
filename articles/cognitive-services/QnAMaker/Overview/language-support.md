@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 3718a4255e8b58202c723bccbbfb1aa3459e1ce2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9c6b80897908bf73c21e9bf8b358216c3fd23b1f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372303"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806661"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 资源和知识库的语言支持
 
@@ -77,7 +77,7 @@ ms.locfileid: "110372303"
 
 如果你需要支持包含多种语言的知识库系统，可以执行以下操作：
 
-* 在将问题发送到知识库之前，使用[翻译器服务](../../translator/translator-info-overview.md)将问题翻译为单一语言。 这使你能够集中精力来提高单一语言的质量以及备选问题和答案的质量。
+* 在将问题发送到知识库之前，使用[翻译器服务](../../translator/translator-overview.md)将问题翻译为单一语言。 这使你能够集中精力来提高单一语言的质量以及备选问题和答案的质量。
 * 创建一个 QnA Maker 资源，在该资源中为每种语言创建一个知识库。 这样你就可以为每种语言管理单独的、更细致的备选问题和答案文本。 这为你提供了大得多的灵活性，但当问题或答案在所有语言中有所不同时，这需要高得多的维护成本。
 
 
@@ -157,7 +157,7 @@ QnA Maker 依赖于 [Azure 认知搜索语言分析器](/rest/api/searchservice/
 |匈牙利语|
 |意大利语|
 |日语|
-|韩语|
+|朝鲜语|
 |波兰语|
 |葡萄牙语|
 |西班牙语|

@@ -2,14 +2,14 @@
 title: 备份 Azure Database for PostgreSQL
 description: 了解具有长期保留功能的 Azure Database for PostgreSQL 备份（预览版）
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 09/06/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: ac7790cd823bbca4ca7580bc5b3c5edee6f45f96
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1896f836d9eeb2f4d32e4b0784424837a2f80d0c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432677"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081826"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>具有长期保留功能的 Azure Database for PostgreSQL 备份（预览版）
 
@@ -67,7 +67,7 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 8. 数据传输完成后，协调器将与备份服务确认提交。
 
-    ![备份过程](./media/backup-azure-database-postgresql/backup-process.png)
+    ![备份过程](./media/backup-azure-database-postgresql-overview/backup-process.png)
 
 ## <a name="configure-backup-on-azure-postgresql-databases"></a>在 Azure PostgreSQL 数据库上配置备份
 
@@ -162,21 +162,22 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 遵循以下分步指南来触发还原：
 
 1. 可通过两种方法启动还原流程：
-    1. 转到“[备份中心](backup-center-overview.md)” -> “概述” -> “还原”。
 
-    ![在“备份中心”中选择“还原”](./media/backup-azure-database-postgresql/backup-center-restore.png)
+   1. 转到“[备份中心](backup-center-overview.md)” -> “概述” -> “还原”。
 
-    在“启动: 还原”下，为“数据源类型”选择“Azure Database for PostgreSQL”。 选择“备份实例”。
+      ![在“备份中心”中选择“还原”](./media/backup-azure-database-postgresql/backup-center-restore.png)
 
-    ![在“启动: 还原”中选择“数据源类型”](./media/backup-azure-database-postgresql/initiate-restore.png)
+      在“启动: 还原”下，为“数据源类型”选择“Azure Database for PostgreSQL”。 选择“备份实例”。
 
-    1. 或者，可以直接转到“备份保管库” -> “备份实例”。 选择与要还原的数据库相对应的“备份实例”。
+      ![在“启动: 还原”中选择“数据源类型”](./media/backup-azure-database-postgresql/initiate-restore.png)
 
-    ![用于还原的备份实例](./media/backup-azure-database-postgresql/backup-instances-restore.png)
+   1. 或者，可以直接转到“备份保管库” -> “备份实例”。 选择与要还原的数据库相对应的“备份实例”。
 
-    ![备份实例列表](./media/backup-azure-database-postgresql/list-backup-instances.png)
+      ![用于还原的备份实例](./media/backup-azure-database-postgresql/backup-instances-restore.png)
 
-    ![选择“还原”](./media/backup-azure-database-postgresql/select-restore.png)
+      ![备份实例列表](./media/backup-azure-database-postgresql/list-backup-instances.png)
+
+      ![选择“还原”](./media/backup-azure-database-postgresql/select-restore.png)
 
 1. 从所选备份实例可用的所有完整备份的列表中“选择恢复点”。 默认选择最新的恢复点。
 
@@ -232,12 +233,6 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 ![立即触发备份](./media/backup-azure-database-postgresql/backup-now.png)
 
 ![从保留规则列表中选择](./media/backup-azure-database-postgresql/retention-rules.png)
-
-### <a name="stop-protection"></a>停止保护
-
-你可以停止对某个备份项的保护。 这还会删除该备份项的关联恢复点。 如果恢复点至少六个月不在存档层中，则删除这些恢复点会产生早期删除费用。 我们尚未提供在保留现有恢复点的同时停止保护的选项。
-
-![停止保护](./media/backup-azure-database-postgresql/stop-protection.png)
 
 ### <a name="change-policy"></a>更改策略
 

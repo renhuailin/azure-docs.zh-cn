@@ -2,14 +2,14 @@
 title: 创建分区的 Azure 服务总线队列和主题 | Microsoft 文档
 description: 介绍如何使用多个消息中转站对服务总线队列和主题进行分区。
 ms.topic: article
-ms.date: 04/26/2021
+ms.date: 09/21/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4eba3a911eb5522a1d6ae46f597e99c34d56ef0d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b6e0c0473ea5bf50ed64bf7abee2c66ab5789840
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743212"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616073"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
@@ -69,9 +69,9 @@ MessageId：如果队列或主题是通过[重复检测功能](duplicate-detecti
 CommittableTransaction committableTransaction = new CommittableTransaction();
 using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
-    Message msg = new Message("This is a message");
+    ServiceBusMessage msg = new ServiceBusMessage("This is a message");
     msg.PartitionKey = "myPartitionKey";
-    await messageSender.SendAsync(msg); 
+    await sender.SendMessageAsync(msg); 
     await ts.CompleteAsync();
 }
 committableTransaction.Commit();
@@ -89,9 +89,9 @@ committableTransaction.Commit();
 CommittableTransaction committableTransaction = new CommittableTransaction();
 using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
-    Message msg = new Message("This is a message");
+    ServiceBusMessage msg = new ServiceBusMessage("This is a message");
     msg.SessionId = "mySession";
-    await messageSender.SendAsync(msg); 
+    await sender.SendMessageAsync(msg); 
     await ts.CompleteAsync();
 }
 committableTransaction.Commit();

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 83bf6c6a9c8d6f344b881e2603246fe9c0ead7cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0db862b58d898304dea9480cc624e3f794b90623
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92518469"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808510"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-renraku"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RENRAKU 集成
 
@@ -134,7 +134,7 @@ ms.locfileid: "92518469"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 RENRAKU 磁贴时，应当会自动登录到设置了 SSO 的 RENRAKU。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 RENRAKU 磁贴时，应当会自动登录到设置了 SSO 的 RENRAKU。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

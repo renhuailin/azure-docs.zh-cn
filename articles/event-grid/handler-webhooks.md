@@ -2,13 +2,13 @@
 title: Webhook 作为 Azure 事件网格事件的事件处理程序
 description: 介绍如何将 Webhook 用作 Azure 事件网格事件的事件处理程序。 支持通过 Webhook 将 Azure 自动化 runbook 和逻辑应用用作事件处理程序。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: aa20c75789a18b93f787134dffe165e60ff1ab6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 4f790c6a4ced30d0a0e34cb594581aae09ed1004
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91875795"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128550467"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>Webhook、自动化 runbook、逻辑应用作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 会自动将多个 Azure 服务配置为处理事件。 也可以使用任意 Webhook 来处理事件。 Webhook 不需要托管在 Azure 中便可处理事件。 事件网格仅支持 HTTPS Webhook 终结点。

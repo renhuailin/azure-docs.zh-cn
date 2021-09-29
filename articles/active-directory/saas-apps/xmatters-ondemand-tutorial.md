@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: f6a1fe629d3a73245570dddba1b983b7c0d62612
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a7fc10cb01a8c43942890d99366bd909e2cabbaa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748888"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>教程：Azure Active Directory 与 xMatters OnDemand 集成
 
@@ -176,7 +176,7 @@ ms.locfileid: "111748888"
 
 * 在 Azure 门户中单击“测试此应用程序”，随后应会自动登录到为其设置了 SSO 的 xMatters OnDemand。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“xMatters OnDemand”磁贴时，应会自动登录到为其设置了 SSO 的 xMatters OnDemand。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“xMatters OnDemand”磁贴时，应会自动登录到为其设置了 SSO 的 xMatters OnDemand。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

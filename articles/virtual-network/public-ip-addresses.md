@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 383c1c0419224a568e32dd41f50d49dc448dbb3c
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 61ba348c93b034b5ed1419c22330e2ce842b7136
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538140"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784197"
 ---
 # <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -87,7 +87,7 @@ ms.locfileid: "123538140"
 
 ## <a name="ip-address-assignment"></a>IP 地址分配
 
- 标准公共 IPv4、基本公共 IPv4 和标准公共 IPv6 地址都支持静态分配。  创建资源时，会为资源分配一个 IP 地址。 删除该资源时，将释放此 IP 地址。  
+标准公共 IPv4、基本公共 IPv4 和标准公共 IPv6 地址都支持静态分配。  创建资源时，会为资源分配一个 IP 地址。 删除该资源时，将释放此 IP 地址。  
 
 > [!NOTE]
 > 即使将分配方法设置为“静态”，也无法通过指定方式将实际 IP 地址分配到公共 IP 地址资源。 Azure 会从创建资源时所在的 Azure 位置的可用 IP 地址池中分配 IP 地址。

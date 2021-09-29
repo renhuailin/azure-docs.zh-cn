@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/19/2020
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f79eee17a78bd5cfc9024a333142deaaa44b3e2
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 82454e41ea9895c8006ac179a7c731a57a0c5c3b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071129"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581639"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册单页应用程序 (SPA)
 
@@ -54,7 +54,8 @@ Azure AD B2C 提供了两个选项，用于允许单页应用程序让用户登�
 ## <a name="register-the-spa-application"></a>注册 SPA 应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 输入应用程序的“名称”。 例如 spaapp1。

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 805299da7c74b18cb95c6dc87e1a0462c7f1664b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ffb713ac2a2f60b6ea046691169f4775bff726e3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424197"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647473"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>使用 Azure 门户添加对专用对等互连的 IPv6 支持（预览）
 
@@ -80,7 +80,7 @@ Follow the steps below if you plan to connect to a new set of Azure resources us
 ## Limitations
 While IPv6 support is available for connections to deployments in Public Azure regions, it doesn't support the following use cases:
 
-* Connections to existing ExpressRoute gateways that are *not* zone-redundant
+* Connections to *existing* ExpressRoute gateways that are not zone-redundant. Note that *newly* created ExpressRoute gateways of any SKU (both zone-redundant and not) using  a Standard, Static IP address can be used for dual-stack ExpressRoute connections
 * Global Reach connections between ExpressRoute circuits
 * Use of ExpressRoute with virtual WAN
 * FastPath with non-ExpressRoute Direct circuits

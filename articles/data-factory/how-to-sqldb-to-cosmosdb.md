@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: d37496d8f29585c8a9ad956e3f5790ac11fb748e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 75f2f31bc3ef280b17e6bae6926d5cd3ba66b83e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733017"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600677"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>将规范化数据库架构从 Azure SQL 数据库迁移到 Azure CosmosDB 非规范化容器
 
@@ -41,7 +41,7 @@ FROM SalesLT.SalesOrderHeader o;
 
 生成的 CosmosDB 容器将内部查询嵌入到单个文档中，如下所示：
 
-![集合](media/data-flow/cosmosb3.png)
+:::image type="content" source="media/data-flow/cosmosb3.png" alt-text="集合":::
 
 ## <a name="create-a-pipeline"></a>创建管道
 
@@ -53,7 +53,7 @@ FROM SalesLT.SalesOrderHeader o;
 
 4. 我们将在下面构造此数据流图
 
-![数据流图](media/data-flow/cosmosb1.png)
+:::image type="content" source="media/data-flow/cosmosb1.png" alt-text="数据流图":::
 
 5. 定义“SourceOrderDetails”的源。 对于数据集，请新建一个指向 ```SalesOrderDetail``` 表的 Azure SQL 数据库数据集。
 
@@ -63,19 +63,19 @@ FROM SalesLT.SalesOrderHeader o;
 
 8. 添加另一个派生列并将其称为“MakeStruct”。 我们将在此处创建一个层次结构来保存详细信息表中的值。 请记住，详细信息与标头的关系是 ```M:1```。 将新结构命名为 ```orderdetailsstruct``` 并以这种方式创建层次结构，将每个子列设置为传入列名：
 
-![创建结构](media/data-flow/cosmosb9.png)
+:::image type="content" source="media/data-flow/cosmosb9.png" alt-text="创建结构":::
 
 9. 接下来转到销售标头源。 添加联接转换。 对于右侧，选择“MakeStruct”。 将其设置为“内联”，然后在联接条件两侧均选择 ```SalesOrderID```。
 
 10. 在你添加的新联接中单击“数据预览”选项卡，这样便可查看目前结果。 应该会看到所有与详细信息行联接的标头行。 这是从 ```SalesOrderID``` 形成的联接结果。 接下来，我们将公共行中的详细信息合并到详细信息结构中并聚合公共行。
 
-![联接](media/data-flow/cosmosb4.png)
+:::image type="content" source="media/data-flow/cosmosb4.png" alt-text="Join":::
 
 11. 首先需要删除不需要的列并确保数据值与 CosmosDB 数据类型匹配，然后才能创建数组来使这些行非规范化。
 
 12. 接下来添加一个选择转换，并按如下所示设置字段映射：
 
-![列清理器](media/data-flow/cosmosb5.png)
+:::image type="content" source="media/data-flow/cosmosb5.png" alt-text="列清理器":::
 
 13. 接下来，再次强制转换货币列，这一次转换为 ```TotalDue```。 与上面的步骤 7 类似，将公式设置为：```toDouble(round(TotalDue,2))```。
 
@@ -85,21 +85,21 @@ FROM SalesLT.SalesOrderHeader o;
 
 16. 聚合转换将仅输出属于聚合或分组依据公式的列。 因从，我们还需要包含销售标头中的列。 为此，请在同一聚合转换中添加列模式。 此模式将包含输出中的所有其他列：
 
-```instr(name,'OrderQty')==0&&instr(name,'UnitPrice')==0&&instr(name,'SalesOrderID')==0```
+   `instr(name,'OrderQty')==0&&instr(name,'UnitPrice')==0&&instr(name,'SalesOrderID')==0`
 
 17. 在其他属性中使用“this”语法，以便我们维护相同的列名并使用 ```first()``` 函数作为聚合：
 
-![聚合](media/data-flow/cosmosb6.png)
+:::image type="content" source="media/data-flow/cosmosb6.png" alt-text="聚合":::
 
 18. 现在可通过添加接收器转换来完成迁移流。 单击数据集旁边的“新建”，然后添加指向 CosmosDB 数据库的 CosmosDB 数据集。 对于该集合，我们将其称为“orders”，因为它将会动态创建，因此不包含任何架构和文档。
 
 19. 在“接收器设置”中，将分区键设置为 ```\SalesOrderID``` 并将集合操作设置为“重新创建”。 请确保“映射”选项卡如下所示：
 
-![屏幕截图显示了“映射”选项卡。](media/data-flow/cosmosb7.png)
+:::image type="content" source="media/data-flow/cosmosb7.png" alt-text="屏幕截图显示了“映射”选项卡。":::
 
 20. 单击“数据预览”以确保你将看到以下 32 行设置为以新文档形式插入新容器中：
 
-![屏幕截图显示“数据预览”选项卡。](media/data-flow/cosmosb8.png)
+:::image type="content" source="media/data-flow/cosmosb8.png" alt-text="屏幕截图显示“数据预览”选项卡。":::
 
 如果一切正常，现在可以创建新的管道，将此数据流活动添加到该管道并执行它。 可从调试或触发运行执行。 几分钟后，你的 CosmosDB 数据库中应该有一个名为“orders”的新非规范化容器。
 

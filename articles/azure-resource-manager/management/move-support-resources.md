@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出了可移动到新资源组、订阅或区域的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 614ef51474f789073f35e722733d255818bf3957
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/08/2021
+ms.openlocfilehash: 14ef825ec2e11d76b90161dc7cf3d8814c8daa04
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260894"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764329"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -831,7 +831,7 @@ ms.locfileid: "123260894"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ---------- |
-> | backupvaults | 否 | 否 | 否 |
+> | backupvaults | [是](../../backup/backup-vault-overview.md#use-azure-portal-to-move-backup-vault-to-a-different-resource-group) | [是](../../backup/backup-vault-overview.md#use-azure-portal-to-move-backup-vault-to-a-different-subscription) | 否 |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
@@ -1578,7 +1578,7 @@ ms.locfileid: "123260894"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ---------- |
-> | accounts | 待批准 | 待批准 | 否 |
+> | accounts | 是 | 是 | 否 |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 

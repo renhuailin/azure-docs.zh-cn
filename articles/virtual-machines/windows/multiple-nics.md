@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9cda129c1df1ebb1f880424cd77e65144ef8bd0d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 81173fa34bec38168233c5f740d49832cf9cb795
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693882"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589181"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
 
@@ -124,7 +124,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 6. 通过完成[为多个 NIC 配置操作系统](#configure-guest-os-for-multiple-nics)中的步骤，将辅助 NIC 的路由添加到 OS。
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>向现有 VM 添加 NIC
-若要向现有 VM 添加虚拟 NIC，解除分配 VM，添加虚拟 NIC，并启动 VM。 不同的 [VM 大小](../sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](resize-vm.md)。
+若要向现有 VM 添加虚拟 NIC，解除分配 VM，添加虚拟 NIC，并启动 VM。 不同的 [VM 大小](../sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](../resize-vm.md)。
 
 1. 通过 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) 解除分配 VM。 以下示例解除分配 *myResourceGroup* 中名为 *myVM* 的 VM：
 

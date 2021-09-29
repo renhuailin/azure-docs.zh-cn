@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 5474dbce356ab8bb4b07ffcc5bd9facadd7134e0
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 828524e225f660cab2c11d23c5657ca82ae8781e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430029"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796507"
 ---
 # <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel 信息模型 (ASIM) 架构（公共预览版）
 
@@ -62,7 +62,7 @@ ms.locfileid: "123430029"
 |**布尔值**     |   Bool      |    使用原生 KQL 布尔数据类型，而不要使用布尔值的数字或字符串表示形式。     |
 |枚举     |  字符串       |   为字段显式定义的值列表。 架构定义列出了接受的值。      |
 |**日期/时间**     |  根据引入方法功能，按优先级的降序使用以下任一物理表示形式： <br><br>- Log Analytics 内置的日期时间类型 <br>- 使用 Log Analytics 日期时间数字表示形式的整数字段。 <br>- 使用 Log Analytics 日期时间数字表示形式的字符串字段 <br>- 用于存储受支持 [Log Analytics 日期/时间格式](/azure/data-explorer/kusto/query/scalar-data-types/datetime)的字符串字段。       |  [Log Analytics 日期和时间表示形式](/azure/kusto/query/scalar-data-types/datetime)与 Unix 时间的表示形式类似，但两者实际上是不同的。 有关详细信息，请参阅[转换指南](/azure/kusto/query/datetime-timespan-arithmetic)。 <br><br>注意：在适用的情况下，应调整时间的时区。 |
-|**MAC 地址**     |  String       | 冒分十六进制表示法        |
+|**MAC 地址**     |  字符串       | 冒分十六进制表示法        |
 |**IP 地址**     |字符串         |    Azure Sentinel 架构没有单独的 IPv4 和 IPv6 地址。 任一 IP 地址字段都可以包含 IPv4 地址或 IPv6 地址，如下所述： <br><br>- 采用点分十进制表示法的 IPv4  <br>- 采用 8 个 16 位段表示法的 IPv6，允许短格式<br><br>例如：<br>`192.168.10.10` (IPv4)<br>`FEDC:BA98:7654:3210:FEDC:BA98:7654:3210` (IPv6)<br>`1080::8:800:200C:417A`（IPv6 短格式）     |
 |**FQDN**        |   string      |    使用点分表示法的完全限定域名，例如 `docs.microsoft.com` |
 |**国家/地区**     |   字符串      |    根据以下优先级使用 [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) 的字符串： <br><br> - Alpha-2 代码，例如 `US` 表示美国 <br> - Alpha-3 代码，例如 `USA` 表示美国 <br>- 短名称<br><br>在[国际标准化组织 (ISO) 网站](https://www.iso.org/obp/ui/#search)上可以找到代码列表|
@@ -83,10 +83,10 @@ ms.locfileid: "123430029"
 | 字段               | 类       | 类型       |  说明        |
 |---------------------|-------------|------------|--------------------|
 | <a name="timegenerated"></a>TimeGenerated | 内置 | datetime | 报告设备生成事件的时间。|
-| _ResourceId   | 内置 |  GUID     | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
+| _ResourceId   | 内置 |  guid     | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
 | **Type** | 内置 | String | 从中提取记录的原始表。 当同一事件可以通过两个通道传入不同的表，但具有相同的 `EventVendor` 和 `EventProduct` 时，此字段很有用。 例如，Sysmon 事件可以传入 Event 表或 SecurityEvent 表。 |
-| **EventMessage**        | 可选    | 字符串     |     一般消息或说明，包含在记录中或者从记录生成。   |
-| “EventCount”          | 必需   | 整数    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。   |
+| **EventMessage**        | 可选    | 字符串     |     一般消息或说明，包含在记录中或者根据记录生成。   |
+| “EventCount”          | 必需   | Integer    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。   |
 | **EventStartTime**      | 必需   | 日期/时间  |      如果源支持聚合且记录表示多个事件，则此字段将指定生成第一个事件的时间。 <br><br>否则，此字段将别名化 [TimeGenerated](#timegenerated) 字段。 |
 | **EventEndTime**        | 必需   | Alias      |      [TimeGenerated](#timegenerated) 字段的别名。    |
 |  <a name=eventtype></a>EventType           | 必需   | Enumerated |    描述记录报告的操作。 每个架构将记录此字段的有效值列表。 |
@@ -100,7 +100,7 @@ ms.locfileid: "123430029"
 | **EventVendor**         | 必需   | 字符串     |           生成事件的产品的供应商。 <br><br>示例： `Microsoft`  <br><br>注意：此字段在源记录中可能不可用。 在这种情况下，此字段必须由分析器设置。  |
 | **EventSchemaVersion**  | 必需   | 字符串     |    架构的版本。 每个架构将记录其当前版本。         |
 | **EventReportUrl**      | 可选    | 字符串     | 在资源的事件中提供的 URL，提供有关该事件的其他信息。|
-| “Dvc” | 必需       | 字符串     |               发生该事件的设备的唯一标识符。 <br><br>此字段可以别名化 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确设备的云源，请使用与 [Event Product](#eventproduct) 字段相同的值。           |
+| “Dvc” | 必需       | 字符串     |               发生该事件的设备的唯一标识符。 <br><br>此字段可能又称为 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。           |
 | <a name ="dvcipaddr"></a>“DvcIpAddr”           | 建议 | IP 地址 |         发生该事件的设备的 IP 地址。  <br><br>示例： `45.21.42.12`    |
 | <a name ="dvchostname"></a>“DvcHostname”         | 建议 | 主机名   |               发生该事件的设备的主机名。 <br><br>示例： `ContosoDc.Contoso.Azure`               |
 | <a name ="dvcid"></a>“DvcId”               | 可选    | 字符串     |  发生该事件的设备的唯一 ID。 <br><br>示例： `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
@@ -111,7 +111,7 @@ ms.locfileid: "123430029"
 | | | | |
 
 > [!NOTE]
-> Log Analytics 还会添加与安全用例不太相关的其他字段。 有关详细信息，请参阅 [Azure Monitor 日志中的标准列](/azure/azure-monitor/logs/log-standard-columns)。
+> Log Analytics 还会添加与安全用例不太相关的其他字段。 有关详细信息，请参阅 [Azure Monitor 日志中的标准列](../azure-monitor/logs/log-standard-columns.md)。
 >
 
 
@@ -254,7 +254,7 @@ ms.locfileid: "123430029"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文概述了 Azure Sentinel 和 Azure Sentinel 信息模型中所涉及的规范化。
+本文概述了 Azure Sentinel 和 Azure Sentinel 信息模型中的规范化。
 
 有关详细信息，请参阅：
 

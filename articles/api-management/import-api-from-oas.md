@@ -3,7 +3,7 @@ title: 使用 Azure 门户导入 OpenAPI 规范 | Microsoft Docs
 description: 了解如何使用 API 管理导入 OpenAPI 规范，并在 Azure 和开发人员门户中测试该 API。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
-ms.author: apimpm
-ms.openlocfilehash: 2fd06fa92d7ad028aa45d78268f5a992d4b2b862
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.author: danlep
+ms.openlocfilehash: 438e779d5eb7718a5cf9b56cf9bbe7404f6861c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186346"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679326"
 ---
 # <a name="import-an-openapi-specification"></a>导入 OpenAPI 规范
 
@@ -31,7 +31,7 @@ ms.locfileid: "123186346"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

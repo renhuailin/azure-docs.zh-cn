@@ -4,13 +4,13 @@ description: 了解如何使用 Azure 门户或 CLI 来创建、查看和管理�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/02/2021
-ms.openlocfilehash: 49e9dee0b28eb17f2a4241570a2f0752f33b9020
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 7a76b4b37760e5e320ab62c2660e97c9fcabdbb0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747690"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815701"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -126,7 +126,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 6. 可以使用以下命令禁用指标警报规则。
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --disabled false
+    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --enabled false
     ```
 
 7. 可以使用以下命令删除指标警报规则。

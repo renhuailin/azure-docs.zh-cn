@@ -8,12 +8,12 @@ metadata:
   author: trkeya
   ms.author: trkeya
   ms.date: 06/02/2021
-  ms.openlocfilehash: d8403e69b241ee107631f7ba8cdd88d6700e65e0
-  ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+  ms.openlocfilehash: 5af21d8e78f468a1a099da30ca87437a0433e750
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/30/2021
-  ms.locfileid: "123187633"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124736159"
 title: 有关 Microsoft 商业市场的常见问题
 summary: 本文解答有关商业市场的常见问题。
 sections:
@@ -35,7 +35,7 @@ sections:
       Azure 市场包括 IT 和开发人员解决方案，这些解决方案是基于 Azure 构建的或在 Azure 订阅中使用的。
 
 
-      若要了解详细信息，请参阅[市场客户文档](https://aka.ms/MarketplaceBuyerGuide)。
+      若要了解详细信息，请参阅[市场客户文档](/marketplace/)。
   - question: >
       我为什么要在 Microsoft 商业市场发布我的软件或服务？
     answer: "商业市场是开展市场推广合作的起点，也是开拓销售渠道和进行市场奖励的平台。 网站和产品内体验可以让寻找类似于你提供的解决方案的数百万客户看到你的产品。 你甚至不需要构建或购买商业功能。 \n\n商业市场按计划向 141个区域提供。 \n\n我们管理多个国家/地区的税务支付，并提供对全球经销商渠道网络的访问。 你可以使用客户的 Microsoft 客户协议或企业协议向组织进行销售，而无需创建新的购买关系。\n\n若要了解详细信息，请参阅 [Microsoft 商业市场中心](https://aka.ms/commercialmarketplacehub)。\n"

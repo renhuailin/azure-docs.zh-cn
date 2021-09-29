@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: a7dae1f33583a7350dd273a44efa90e9cb7dd725
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 543acb129d23a0b74434535306aca801d2f5fdd2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638866"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763626"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
 
@@ -24,7 +24,7 @@ ms.locfileid: "122638866"
 ## <a name="delta-data-loading-from-database-by-using-a-watermark"></a>使用水印从数据库进行增量数据加载
 在这种情况下，请在源数据库中定义水印。 水印是一个列，其中包含上次更新的时间戳或增量键。 增量加载解决方案加载旧水印和新水印之间的已更改数据。 此方法的工作流见下图： 
 
-![水印使用工作流](media/tutorial-incremental-copy-overview/workflow-using-watermark.png)
+:::image type="content" source="media/tutorial-incremental-copy-overview/workflow-using-watermark.png" alt-text="水印使用工作流":::
 
 有关分步说明，请参阅以下教程： 
 - [以增量方式将 Azure SQL 数据库中某个表的数据复制到 Azure Blob 存储](tutorial-incremental-copy-powershell.md)
@@ -38,7 +38,7 @@ ms.locfileid: "122638866"
 
 此方法的工作流见下图：
 
-![更改跟踪使用工作流](media/tutorial-incremental-copy-overview/workflow-using-change-tracking.png)
+:::image type="content" source="media/tutorial-incremental-copy-overview/workflow-using-change-tracking.png" alt-text="更改跟踪使用工作流":::
 
 有关分步说明，请参阅以下教程： <br/>
 - [使用更改跟踪技术，以增量方式将 Azure SQL 数据库中的数据复制到 Azure Blob 存储](tutorial-incremental-copy-change-tracking-feature-powershell.md)

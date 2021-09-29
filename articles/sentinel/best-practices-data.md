@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 35b29ae6116e2e040f2383606fa20c5ab6316315
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 7c29ae41acd800a3e8893ec50ef25cb77c89fe04
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253480"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810165"
 ---
 #  <a name="data-collection-best-practices"></a>数据收集最佳做法
 
@@ -99,7 +99,7 @@ ms.locfileid: "123253480"
 
 |挑战/要求  |可能的解决方案  |注意事项  |
 |---------|---------|---------|
-|从 Teams、消息跟踪、钓鱼数据等收集原始数据     |    使用内置 [Office 365 连接器](connect-office-365.md)功能，然后为其他原始数据创建自定义连接器。  |  将事件映射到相应的 recordID 可能有难度。  |
+|从 Teams、消息跟踪、钓鱼数据等收集原始数据     |    使用内置 [Office 365 连接器](./data-connectors-reference.md#microsoft-office-365)功能，然后为其他原始数据创建自定义连接器。  |  将事件映射到相应的 recordID 可能有难度。  |
 |需要 RBAC 来拆分国家/地区、部门等     | 通过将标记添加到数据，并针对所需的每个拆分部分创建专用工作区，来自定义数据收集。|   自定义数据收集具有额外的引入成本。     |
 |单个工作区内需要多个租户     |  使用 Azure LightHouse 和统一的事件视图自定义数据收集。|  自定义数据收集具有额外的引入成本。  <br><br>有关详细信息，请参阅[跨工作区和租户扩展 Azure Sentinel](extend-sentinel-across-workspaces-tenants.md)。      |
 | | | |

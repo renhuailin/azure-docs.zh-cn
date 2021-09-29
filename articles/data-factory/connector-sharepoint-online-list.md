@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 1b21416e06948c9a32831dc23c66c31b62a3ddae
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: ad9adb2c9f6b8308aba79f9e9bd1eadbf755760a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307797"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763930"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 从 SharePoint Online 列表复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -63,7 +63,7 @@ SharePoint Online 列表连接器使用服务主体身份验证连接到 SharePo
         </AppPermissionRequests>
         ```
 
-        ![SharePoint 授予权限](media/connector-sharepoint-online-list/sharepoint-online-grant-permission.png)
+        :::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-grant-permission.png" alt-text="SharePoint 授予权限":::
 
     3. 对此应用单击“信任它”。
 
@@ -79,7 +79,7 @@ SharePoint Online 列表连接器使用服务主体身份验证连接到 SharePo
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -234,7 +234,7 @@ SharePoint Online 列表链接的服务支持以下属性：
 
 您可以使用以下方法从 SharePoint Online 复制文件：使用 Web 活动进行身份验证并从 SPO 中获取访问令牌，然后传递到后续的复制活动以使用 HTTP 连接器作为源复制数据。  
 
-![SharePoint 复制文件流](media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png)
+:::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png" alt-text="SharePoint 复制文件流":::
 
 1. 按照[先决条件](#prerequisites)部分，创建 AAD 应用程序并向 SharePoint Online 授予权限。 
 

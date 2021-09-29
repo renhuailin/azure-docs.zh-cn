@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 70f318c10799c1cf30265373d8971faddfafc072
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: e7241944f6178b80ad684ff35684b5b5d3f53e94
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180457"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784520"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -142,7 +142,7 @@ ms.locfileid: "122180457"
 
 ## <a name="enable-password-management"></a>启用密码管理
 
-如果有多个租户或者你想要允许用户[重置自己的密码](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)，则必须使用适当的安全策略来防止滥用。
+如果有多个租户或者你想要允许用户[重置自己的密码](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)，则必须使用适当的安全策略来防止滥用。
 
 **最佳做法**：为用户设置自助式密码重置 (SSPR)。  
 **详细信息**：使用 Azure AD [自助式密码重置](../../active-directory-b2c/user-flow-self-service-password-reset.md)功能。

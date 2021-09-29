@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: c2cdd4009261306357bc9d840afa83bc1ebf40df
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 863281f85eac1d467e7935f47a90aacf1b3134dd
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111628"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153437"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）
 
@@ -52,7 +52,7 @@ Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务�
 
 Azure Database for MySQL 灵活服务器（预览版）支持通过自动故障转移配置高可用性。 高可用性解决方案旨在确保提交的数据永远不会因故障而丢失，并提升应用程序的总体运行时间。配置高可用性后，灵活服务器会自动预配和管理备用副本。 有两种高可用性体系结构模型： 
 
-- 区域冗余高可用性 (HA)：此选项是跨多个可用性区域实现基础结构完全隔离和冗余的首选选项。 它提供最高级别的可用性，但需要你配置跨区域的应用程序冗余。 如果希望实现最高级别可用性以防可用性区域中出现任何基础结构故障，并且可接受整个可用性区域中的延迟，则首选区域冗余高可用性。 区域冗余 HA 在 [部分 Azure 区域](overview.md#azure-regions) 中可用，这些地理区域支持多个可用性区域并且提供区域冗余高级文件共享。 
+- **区域冗余高可用性 (HA)** ：此选项是跨多个可用性区域实现基础结构完全隔离和冗余的首选选项。 它提供最高级别的可用性，但需要你配置跨区域的应用程序冗余。 如果希望实现最高级别可用性以防可用性区域中出现任何基础结构故障，并且可接受整个可用性区域中的延迟，则首选区域冗余高可用性。 区域冗余 HA 在 [部分 Azure 区域](overview.md#azure-regions) 中可用，这些地理区域支持多个可用性区域并且提供区域冗余高级文件共享。 
 
 :::image type="content" source="./media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="区域冗余高可用性":::
 
@@ -162,26 +162,34 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 | Region | 可用性 | 同一区域 HA | 区域冗余 HA |
 | --- | --- | --- | --- |
 | 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 澳大利亚东南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 巴西南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 加拿大中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 加拿大东部 | :heavy_check_mark: | :x: | :x: |
+| 印度中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 美国中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 东亚（香港） | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 美国东部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 法国中部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:|
+| 法国中部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 德国中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Japan East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 韩国中部 | :heavy_check_mark: | :x: | :x: |
+| 日本西部 | :heavy_check_mark: | :x: | :x: |
+| 韩国中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 韩国南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 北欧 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 挪威东部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 瑞士北部 | :heavy_check_mark: | :x: | :x: |
+| 美国中南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 南非北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 瑞士北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 英国南部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 英国西部 | :heavy_check_mark: | :x: | :x: |
+| 阿拉伯联合酋长国北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 美国西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 西欧 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 澳大利亚东南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| 南非北部 | :heavy_check_mark: | :x: | :x: |
-| 东亚（香港） | :heavy_check_mark: | :x: | :x: |
-| 印度中部 | :heavy_check_mark: | :x: | :x: |
+| 美国中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 
 ## <a name="contacts"></a>联系人
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 9aea5cda6f4cc1b1bf017ae6e317a26982906c88
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7697932a0fa39c2aa0f1ed66f766407bd59d0db7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782054"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124817524"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clockwork-recruiting"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Clockwork Recruiting 集成
 
@@ -82,7 +82,7 @@ ms.locfileid: "121782054"
         > [!NOTE]
         > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [Clockwork Recruiting 客户端支持团队](mailto:support@clockworkrecruiting.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "121782054"
 
 * 在 Azure 门户中，选择“测试此应用程序”。 你将重定向到 Clockwork Recruiting 登录 URL，可以从那里启动登录流。 
 * 直接转到 Clockwork Recruiting 登录 URL，并从那里启动登录流。
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中选择 Clockwork Recruiting 磁贴后，你将重定向到 Clockwork Recruiting 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中选择 Clockwork Recruiting 磁贴后，你将重定向到 Clockwork Recruiting 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

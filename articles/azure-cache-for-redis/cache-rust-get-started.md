@@ -7,12 +7,12 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: acbf5933f01a465ad1855c049796901da5d1ff90
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 23e1bdc895da7ba9941901832d7fc89cd9c6196a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059727"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592615"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>快速入门：将 Azure Cache for Redis 与 Rust 配合使用
 
@@ -35,9 +35,9 @@ ms.locfileid: "110059727"
 - [Git](https://git-scm.com/downloads)
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>创建用于 Redis 的 Azure 缓存实例
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
 
 ## <a name="review-the-code-optional"></a>查看代码（可选）
 
@@ -177,7 +177,7 @@ fn list() {
 }
 ```
 
-可在此处查看一些 `SET` 操作。 使用 [sadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.sadd)（高级别 API）方法将几个条目添加到名为 `users` 的 `SET`。 然后执行 [SISMEMBER](https://redis.io/commands/hset)（低级别 API）以检查 `user1` 是否存在。 最后使用 [smembers](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.smembers) 以向量 ([Vec<String>](https://doc.rust-lang.org/std/vec/struct.Vec.html)) 形式提取所有集合条目并对其进行循环访问。
+可在此处查看一些 `SET` 操作。 使用 [sadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.sadd)（高级别 API）方法将几个条目添加到名为 `users` 的 `SET`。 然后执行 [SISMEMBER](https://redis.io/commands/hset)（低级别 API）以检查 `user1` 是否存在。 最后使用 [smembers](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.smembers) 以向量 ([Vec\<String\>](https://doc.rust-lang.org/std/vec/struct.Vec.html)) 形式提取所有集合条目并对其进行循环访问。
 
 ```rust
 fn set() {
