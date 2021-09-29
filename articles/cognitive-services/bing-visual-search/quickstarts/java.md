@@ -3,20 +3,18 @@ title: 快速入门：使用 REST API 和 Java 获取图像见解 - 必应视觉
 titleSuffix: Azure Cognitive Services
 description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.custom: devx-track-java
-ms.author: scottwhi
-ms.openlocfilehash: b92010a1e4ea0cb942d3e3749965a1c4399a97f8
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: ec9c736c3f1a643e3f53c2c56141f3bc37fa61d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113286153"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658669"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>快速入门：使用必应视觉搜索 REST API 和 Java 获取图像见解
 

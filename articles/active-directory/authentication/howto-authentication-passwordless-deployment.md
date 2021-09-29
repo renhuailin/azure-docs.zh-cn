@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6cb9d7dad1b55e6d49fdbe40a0ecd9dd052ba8
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 1ee82c26217ac1b760c59f56f9875b7dcbcaf663
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228389"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759807"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码身份验证部署
 
@@ -109,11 +109,11 @@ Windows Hello 企业版的先决条件和部署路径很大程度上取决于你
 
 * [Azure AD MFA 和 SSPR 组合注册指南](howto-registration-mfa-sspr-combined.md)
 
-* [下载 Microsoft Authenticator 应用](../user-help/user-help-auth-app-download-install.md)
+* [下载 Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)
 
 * [在 Microsoft Authenticator 应用中注册](howto-authentication-passwordless-phone.md)
 
-* [使用手机登录](../user-help/user-help-auth-app-sign-in.md)
+* [使用手机登录](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c)
 
 Microsoft 为最终用户提供通信模板。 下载[身份验证推出材料](https://aka.ms/MFAtemplates)，以便草拟通信内容。 推出材料包括自定义海报和电子邮件模板，可用于通知用户贵组织即将推出无密码身份验证选项。
 
@@ -130,7 +130,7 @@ Microsoft 为最终用户提供通信模板。 下载[身份验证推出材料](
 
 ## <a name="plan-for-and-deploy-the-microsoft-authenticator-app"></a>计划和部署 Microsoft Authenticator 应用
 
-[Microsoft Authenticator 应用](concept-authentication-passwordless.md)可将任何 iOS 或 Android 手机变成强、无密码凭据。 可从 Google Play 或 Apple App Store 免费下载该应用。 让用户[下载 Microsoft Authenticator 应用](../user-help/user-help-auth-app-download-install.md)并按照说明启用手机登录。
+[Microsoft Authenticator 应用](concept-authentication-passwordless.md)可将任何 iOS 或 Android 手机变成强、无密码凭据。 可从 Google Play 或 Apple App Store 免费下载该应用。 让用户[下载 Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)并按照说明启用手机登录。
 
 ### <a name="technical-considerations"></a>技术注意事项
 

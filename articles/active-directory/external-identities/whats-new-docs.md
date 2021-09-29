@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 外部标识的新增功能
 description: 面向 Azure Active Directory 外部标识的新文档和更新的文档。
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,29 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 81a25af5dfa73cbeefdf5fc677da80515f20a2f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b6346a9e8ff776143b6e000f945fcd9400e03a0d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746121"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776474"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部标识：新增功能
 
 欢迎了解 Azure Active Directory 外部标识文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解外部标识服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [外部标识的标识提供者](identity-providers.md)
+- [启用 B2B 外部协作并管理可以邀请来宾的人员](delegate-invitations.md)
+- [Azure Active Directory B2B 协作用户的属性](user-properties.md)
+- [将 Google 添加为 B2B 来宾用户的标识提供者](google-federation.md)
+- [外部标识的 Azure Active Directory (Azure AD) 标识提供者](azure-ad-account.md)
+- [Microsoft 帐户 (MSA) 标识提供者（用于外部标识）](microsoft-account.md)
+- [向用户流添加 API 连接器](self-service-sign-up-add-api-connector.md)
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 

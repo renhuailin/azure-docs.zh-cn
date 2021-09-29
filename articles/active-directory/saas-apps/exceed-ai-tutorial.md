@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5db18b36464e51d8832e0879e55cfe6f0f73eab5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 66027db844e89ea8491c0b19230401379fd77ca4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597787"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759237"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exceedai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Exceed.ai 的集成
 
@@ -125,7 +125,7 @@ ms.locfileid: "104597787"
 
 * 直接转到 Exceed.ai 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Exceed.ai 磁贴时，会重定向到 Exceed.ai 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Exceed.ai 磁贴时，会重定向到 Exceed.ai 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

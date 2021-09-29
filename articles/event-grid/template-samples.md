@@ -2,13 +2,13 @@
 title: Azure 资源管理器模板示例 - 事件网格 | Microsoft Docs
 description: 本文提供了 GitHub 上适用于 Azure 事件网格的 Azure 资源管理器模板示例的列表。
 ms.topic: sample
-ms.date: 07/07/2020
-ms.openlocfilehash: d8b3cc846ca1bdb032e20d0d904a061b04f473b3
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 09/28/2021
+ms.openlocfilehash: 3c2188e99e62a1db3f71b4064a09535bc24c0c68
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109735739"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210820"
 ---
 # <a name="azure-resource-manager-templates-for-event-grid"></a>事件网格的 Azure 资源管理器模板
 

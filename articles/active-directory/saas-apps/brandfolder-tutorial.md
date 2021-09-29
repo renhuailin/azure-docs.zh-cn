@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 5004b433189700bc2fbaf5efe65e4556d40521cb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4abaf1302ddfb8d99b3baefabf865613794cd026
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97671963"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124747742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>教程：Azure Active Directory 与 Brandfolder 集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "97671963"
 
     ![Brandfolder 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml`
 
@@ -177,7 +177,7 @@ ms.locfileid: "97671963"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Brandfolder”磁贴时，应会自动登录到设置了 SSO 的 Brandfolder。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Brandfolder”磁贴时，应会自动登录到设置了 SSO 的 Brandfolder。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

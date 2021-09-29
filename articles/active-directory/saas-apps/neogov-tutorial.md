@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: ef10672ec6dbe4cd7b646f05daf7ec702c2815de
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 98aa5d76f07da0ac6c5624e28e80a80377f1336a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890278"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124741507"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-neogov"></a>教程：Azure Active Directory 单一登录 (SSO) 与 NEOGOV 的集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "111890278"
     | -------|--------- |
     | mail | user.mail |
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "111890278"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 NEOGOV。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“NEOGOV”磁贴时，你应会自动登录到为其设置了 SSO 的 NEOGOV。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“NEOGOV”磁贴时，你应会自动登录到为其设置了 SSO 的 NEOGOV。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

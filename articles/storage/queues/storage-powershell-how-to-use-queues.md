@@ -1,20 +1,20 @@
 ---
 title: 如何通过 PowerShell 使用 Azure 队列存储 - Azure 存储
 description: 通过 PowerShell 对 Azure 队列存储执行操作。 使用 Azure 队列存储，可以存储大量可通过 HTTP/HTTPS 访问的消息。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/15/2019
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1436114a070dff7120a7de10937cbfa58644d305
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a607d1c494aee2881e623e01e6cd9637cb94dc9d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276240"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582281"
 ---
 # <a name="how-to-use-azure-queue-storage-from-powershell"></a>如何通过 PowerShell 使用 Azure 队列存储
 

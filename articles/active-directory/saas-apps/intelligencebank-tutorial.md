@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 11acc1805e163a4c1cb9f837f0320133042648b8
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 8e8a70be068870d079658661c4e2ea3d3dd22dc1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272272"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124756577"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IntelligenceBank 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "122272272"
 * 让用户使用其 Azure AD 帐户自动登录 IntelligenceBank。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -170,7 +170,7 @@ ms.locfileid: "122272272"
 
 * 直接转到 IntelligenceBank 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 IntelligenceBank 磁贴时，会重定向到 IntelligenceBank 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 IntelligenceBank 磁贴时，会重定向到 IntelligenceBank 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

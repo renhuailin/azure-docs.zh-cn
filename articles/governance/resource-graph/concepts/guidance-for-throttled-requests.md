@@ -1,15 +1,15 @@
 ---
 title: 针对受限制请求的指南
 description: 了解如何分组、错开、分页以及并行查询，以避免 Azure Resource Graph 限制请求。
-ms.date: 08/17/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 745f90fd82c4ee0bd233f6b074c7c3a637820609
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: eece1d35cdabcca957e4ce1e72e32f243a1747e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324986"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589732"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中的受限制请求的指南
 
@@ -200,7 +200,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
   var results = new List<object>();
   var queryRequest = new QueryRequest(
       subscriptions: new[] { mySubscriptionId },
-      query: "Resources | project id, name, type | top 5000");
+      query: "Resources | project id, name, type");
   var azureOperationResponse = await this.resourceGraphClient
       .ResourcesWithHttpMessagesAsync(queryRequest, header)
       .ConfigureAwait(false);
@@ -215,18 +215,6 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
       // Inspect throttling headers in query response and delay the next call if needed.
   }
-  ```
-
-- Azure CLI/Azure PowerShell
-
-  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 进行的查询会自动分页，以便最多提取 5,000 个条目。 查询结果会返回来自所有分页调用的条目的合并列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在以下示例中，运行一次查询最多可能会消耗五个查询配额：
-
-  ```azurecli-interactive
-  az graph query -q 'Resources | project id, name, type' --first 5000
-  ```
-
-  ```azurepowershell-interactive
-  Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
 ## <a name="still-get-throttled"></a>仍受到限制？

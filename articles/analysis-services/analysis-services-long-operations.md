@@ -6,19 +6,19 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: owend
-ms.openlocfilehash: e5b5f61900f3ca82509718e765f2a62ccd163ecf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 65d1b6cbee1040846fec2d8e1dd8153eedf9eabc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145872"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580958"
 ---
 # <a name="best-practices-for-long-running-operations"></a>长时间运行的操作的最佳做法
 
 在 Azure Analysis Services 中，节点  表示运行服务器资源的主机虚拟机。 如果服务器资源移至其他节点，某些操作（例如长时间运行的查询、刷新操作、查询横向扩展同步）可能会失败。 此场景中的常见错误消息包括：
 
 - “尝试查找长时间运行的 XMLA 请求时出错。 该请求可能已被服务升级或服务器重启中断。”
-- “由于服务错误（不活动），针对模型‘<database>’的 ID 为 <guid> 的作业已取消，并出现消息‘正在取消刷新请求，因为它已停滞，无任何更新。’ 这是一个内部服务问题。 如果此问题重复发生，请重新提交作业或提交票证以获取帮助。”
+- “由于服务错误（不活动），针对模型‘\<database\>’的 ID 为 \<guid\> 的作业已取消，并出现消息‘正在取消刷新请求，因为它已停滞，无任何更新。’ 这是一个内部服务问题。 如果此问题重复发生，请重新提交作业或提交票证以获取帮助。”
 
 有很多原因会导致长时间运行的操作被中断。 例如，Azure 中的下述更新： 
 - 操作系统修补 

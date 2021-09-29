@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 801197a171b5be2cfe46c249398381e1b25857ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48fe4b7b30baef036aa3961f189c5354a264b813
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92515349"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>教程：Azure Active Directory 与 Predictix Price Reporting 的集成
 
@@ -155,7 +155,7 @@ ms.locfileid: "92515349"
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -191,7 +191,7 @@ ms.locfileid: "92515349"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“Predictix Price Reporting”磁贴时，应会自动登录到设置了 SSO 的 Predictix Price Reporting 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
+在访问面板中选择“Predictix Price Reporting”磁贴时，应会自动登录到设置了 SSO 的 Predictix Price Reporting 实例。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

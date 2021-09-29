@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 227bbaf2faa845d269d8326883c3e63c4572fdab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7aee146ea06e15696b1e52e701d8d32b476d0570
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637739"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798325"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用专用终结点将数据从 Azure Blob 存储安全复制到 SQL 数据库
 
@@ -102,14 +102,14 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 在数据工厂门户中，转到“管理”并选择“新建”，以创建新的 Azure 集成运行时 。
 
-   ![屏幕截图显示创建新的 Azure 集成运行时。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/create-new-azure-ir.png" alt-text="屏幕截图显示创建新的 Azure 集成运行时。":::
 1. 在“集成运行时安装”页上，根据所需的功能选择要创建的集成运行时。 在本教程中，选择“Azure”、“自承载”，然后单击“继续” 。 
 1. 选择“Azure”，然后单击“继续”以创建 Azure 集成运行时 。
 
-   ![屏幕截图显示新的 Azure 集成运行时。](./media/tutorial-copy-data-portal-private/azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/azure-ir.png" alt-text="屏幕截图显示新的 Azure 集成运行时。":::
 1. 在“虚拟网络配置(预览)”下，选择“启用” 。
 
-   ![屏幕截图显示启用新的 Azure 集成运行时。](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/enable-managed-vnet.png" alt-text="屏幕截图显示启用新的 Azure 集成运行时。":::
 1. 选择“创建”。
 
 ## <a name="create-a-pipeline"></a>创建管道
@@ -123,12 +123,12 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 在主页上，选择“协调”。
 
-   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="显示 ADF 主页的屏幕截图。":::
 1. 在管道的属性窗格中，输入“CopyPipeline”作为管道名称。
 
 1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖动到管道设计器图面  。 输入“CopyFromBlobToSql”作为名称。
 
-    ![屏幕截图显示复制活动。](./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png" alt-text="屏幕截图显示复制活动。":::
 
 ### <a name="configure-a-source"></a>配置源
 
@@ -151,7 +151,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 请确保启用“交互式创作”。 启用可能需要大约 1 分钟的时间。
 
-    ![显示交互式创作的屏幕截图。](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/interactive-authoring.png" alt-text="显示交互式创作的屏幕截图。":::
 
 1. 选择“测试连接”。 当存储帐户仅允许从“选定的网络”访问，并要求数据工厂为其创建专用终结点（使用该终结点之前需要获得批准）时，测试连接应会失败。 在错误消息中，应会看到一个用于创建专用终结点的链接，可以通过该链接创建托管的专用终结点。 一种替代方法是直接转到“管理”选项卡，按照[下一节](#create-a-managed-private-endpoint)中的说明创建托管专用终结点。
 
@@ -169,7 +169,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 选择“确定”。 将自动转到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset” 。 若要预览此页上的数据，请选择“预览数据”。
 
-    ![显示源数据集的屏幕截图。](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/source-dataset-selected.png" alt-text="显示源数据集的屏幕截图。":::
 
 #### <a name="create-a-managed-private-endpoint"></a>创建托管专用终结点
 
@@ -184,7 +184,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 选择“托管专用终结点”下的“+ 新建” 。
 
-    ![显示托管专用终结点“新建”按钮的屏幕截图。](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png" alt-text="显示托管专用终结点“新建”按钮的屏幕截图。"::: 
 
 1. 从列表中选择“Azure Blob 存储”磁贴，然后选择“继续” 。
 
@@ -196,14 +196,14 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 选择创建的专用终结点。 可以看到一个超链接，该超链接将引导你在存储帐户级别批准专用终结点。
 
-    ![显示托管专用终结点窗格的屏幕截图。](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/manage-private-endpoint.png" alt-text="显示托管专用终结点窗格的屏幕截图。"::: 
 
 #### <a name="approval-of-a-private-link-in-a-storage-account"></a>在存储帐户中批准专用链接
 1. 在存储帐户中，转到“设置”部分下的“专用终结点连接” 。
 
 1. 选中创建的专用终结点复选框，并选择“批准”。
 
-    ![显示专用终结点的“批准”按钮的屏幕截图。](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/approve-private-endpoint.png" alt-text="显示专用终结点的“批准”按钮的屏幕截图。":::
 
 1. 添加描述，然后选择“是”。
 1. 返回到数据工厂中“管理”选项卡的“托管专用终结点”部分 。
@@ -240,7 +240,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 转到“管道”选项卡，然后在“接收器数据集”中，确认已选中“OutputSqlDataset” 。
 
-    ![显示“管道”选项卡的屏幕截图。](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/pipeline-tab-2.png" alt-text="显示“管道”选项卡的屏幕截图。":::
 
 可以选择按照[复制活动中的架构映射](./copy-activity-schema-and-type-mapping.md)中所述将源架构映射到对应的目标架构。
 
@@ -252,7 +252,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 1. 转到“托管专用终结点”部分。
 1. 选择“托管专用终结点”下的“+ 新建” 。
 
-    ![显示托管专用终结点“新建”按钮的屏幕截图。](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png" alt-text="显示托管专用终结点“新建”按钮的屏幕截图。"::: 
 
 1. 从列表中选择“Azure SQL 数据库”磁贴，然后选择“继续” 。
 1. 输入所选的 SQL Server 的名称。

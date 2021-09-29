@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的�
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f82adee9690c0114fef17640672c7326cffc8481
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 0aa66b5c853faf26320510b3fe78ac71cd9d8afc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966071"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820336"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -603,7 +603,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 }
 ```
 
-与主要区域还原操作类似，这是一个异步操作，需要[单独跟踪](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#restore-response)。
+与主要区域还原操作类似，这是一个异步操作，需要[单独跟踪](#restore-response)。
 
 
 

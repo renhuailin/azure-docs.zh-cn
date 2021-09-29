@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: aapowell
-ms.openlocfilehash: cc117859c911d9b2c1df6c03fc6cd9738e5de1ec
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 243caef4a1f2cd1d543e7bbb9f3bc127d703296e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988295"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774797"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用
 
@@ -145,7 +145,7 @@ ms.locfileid: "112988295"
 
 #### <a name="custom-hugo-version"></a>自定义 Hugo 版本
 
-生成静态 Web 应用时，将生成一个[工作流文件](./github-actions-workflow.md)，其中包含应用程序的发布配置设置。 可通过在 `env` 部分中输入 `HUGO_VERSION` 的值，在工作流文件中指定特定的 Hugo 版本。 以下示例配置演示了如何将 Hugo 设置为特定版本。
+生成静态 Web 应用时，将生成一个[工作流文件](./build-configuration.md)，其中包含应用程序的发布配置设置。 可通过在 `env` 部分中输入 `HUGO_VERSION` 的值，在工作流文件中指定特定的 Hugo 版本。 以下示例配置演示了如何将 Hugo 设置为特定版本。
 
 ```yaml
 jobs:

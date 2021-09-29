@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 48c6232678adceed0bc239ff788f8a191d9d88c2
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 42040653f432577457cea6e5325fe686878e9da3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304697"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820170"
 ---
 # <a name="copy-and-transform-data-to-and-from-sql-server-by-using-azure-data-factory-or-azure-synapse-analytics"></a>通过使用 Azure 数据工厂或 Azure Synapse Analytics 从/向 SQL Server 复制和转换数据
 
@@ -62,7 +62,7 @@ ms.locfileid: "123304697"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -201,7 +201,7 @@ SQL Server 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 SqlServerTable。 | 是 |
-| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -440,7 +440,7 @@ GO
 
 复制活动中的 SQL Server 连接器提供内置的数据分区，用于并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。 
 
-![分区选项的屏幕截图](./media/connector-sql-server/connector-sql-partition-options.png)
+:::image type="content" source="./media/connector-sql-server/connector-sql-partition-options.png" alt-text="分区选项的屏幕截图":::
 
 启用分区复制时，复制活动将对 SQL Server 源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则该服务会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SQL Server 检索一部分数据。
 
@@ -501,7 +501,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 如果表具有物理分区，你可看到“HasPartition”为“是”，如下所示。
 
-![SQL 查询结果](./media/connector-azure-sql-database/sql-query-result.png)
+:::image type="content" source="./media/connector-azure-sql-database/sql-query-result.png" alt-text="SQL 查询结果":::
 
 ## <a name="best-practice-for-loading-data-into-sql-server"></a>将数据加载到 SQL Server 中的最佳做法
 
@@ -526,7 +526,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 例如，可以创建一个管道，其中“复制活动”与“存储过程活动”相链接。 前者将数据从源存储复制到数据集中的 SQL Server 临时表（例如，表名为“UpsertStagingTable”的表）。 然后，后者调用一个存储过程，以将临时表中的源数据合并到目标表中，并清理临时表。
 
-![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+:::image type="content" source="./media/connector-azure-sql-database/azure-sql-database-upsert.png" alt-text="Upsert":::
 
 在数据库中使用 MERGE 逻辑定义一个存储过程（如以下示例所示），以便从上述存储过程活动指向该过程。 假设目标是包含三个列的 **Marketing** 表：**ProfileID**、**State** 和 **Category**。 根据 **ProfileID** 列执行更新插入。
 
@@ -739,13 +739,13 @@ IncomingStream sink(allowSchemaDrift: true,
 
 1. 将 SQL Server 实例配置为接受远程连接。 启动“SQL Server Management Studio”，右键单击“服务器”并选择“属性”  。 从列表中选择“连接”，并选中“允许远程连接到此服务器”复选框 。
 
-    ![启用远程连接](media/copy-data-to-from-sql-server/AllowRemoteConnections.png)
+    :::image type="content" source="media/copy-data-to-from-sql-server/AllowRemoteConnections.png" alt-text="启用远程连接":::
 
     有关详细步骤，请参阅[配置远程访问服务器配置选项](/sql/database-engine/configure-windows/configure-the-remote-access-server-configuration-option)。
 
 2. 启动“SQL Server 配置管理器”。 针对所需实例展开“SQL Server 网络配置”，并选择“MSSQLSERVER 的协议” 。 协议将显示在右窗格中。 右键单击“TCP/IP”并选择“启用”以启用 TCP/IP 。
 
-    ![启用 TCP/IP](./media/copy-data-to-from-sql-server/EnableTCPProptocol.png)
+    :::image type="content" source="./media/copy-data-to-from-sql-server/EnableTCPProptocol.png" alt-text="启用 TCP/IP":::
 
     有关详细信息和启用 TCP/IP 协议的其他方法，请参阅[启用或禁用服务器网络协议](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol)。
 
@@ -755,4 +755,4 @@ IncomingStream sink(allowSchemaDrift: true,
 6. **验证连接**：若要使用完全限定名称连接到 SQL Server，请从另一台计算机使用 SQL Server Management Studio。 例如 `"<machine>.<domain>.corp.<company>.com,1433"`。
 
 ## <a name="next-steps"></a>后续步骤
-有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: be4c00596e0d058dad50ae5f535ac56334b305ea
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 2c4eac524ecda8a2b90036748fd2a6f2a389a3cd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436511"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823733"
 ---
 # <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>存档层中的 Blob 解除冻结概述
 
@@ -80,7 +80,7 @@ ms.locfileid: "123436511"
 若要了解如何通过将 Blob 层更改为联机层来解除冻结 Blob，请参阅[通过更改 Blob 层解除冻结 Blob](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-by-changing-its-tier)。
 
 > [!CAUTION]
-> 更改 Blob 的层不会影响其上次的修改时间。 如果针对存储帐户存在一个有效的[生命周期管理](storage-lifecycle-management-concepts.md)策略，则使用“设置 Blob 层”解除冻结 Blob 后，会导致生命周期策略将 Blob 移回存档层的情况，因为上次的修改时间超出了此策略设置的阈值。
+> 更改 Blob 的层不会影响其上次的修改时间。 如果针对存储帐户存在一个有效的[生命周期管理](./lifecycle-management-overview.md)策略，则使用“设置 Blob 层”解除冻结 Blob 后，会导致生命周期策略将 Blob 移回存档层的情况，因为上次的修改时间超出了此策略设置的阈值。
 >
 > 若要避免这种情况，请按[将存档的 Blob 复制到联机层](#copy-an-archived-blob-to-an-online-tier)部分所述，改为复制存档的 Blob 来将其解除冻结。 执行复制操作会创建该 Blob 的新实例并更新其上次修改时间，因此不会触发生命周期管理策略。
 

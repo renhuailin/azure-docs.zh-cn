@@ -1,19 +1,19 @@
 ---
 title: 使用 Java 的 Azure 存储示例 | Microsoft 文档
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 Java 存储客户端库发现 Blob、队列、表和文件的入门示例。
-author: twooley
+author: normesta
 ms.custom: devx-track-java
-ms.author: twooley
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 3a6a68a150bd474f40ffb1610ed7a310e4f30de9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 0d5a6c98e990bdc87fbe3dcb26cfe4710b3af099
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276631"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588649"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>使用 v12 Java 客户端库的 Azure 存储示例
 
@@ -111,6 +111,7 @@ ms.locfileid: "106276631"
 :::row-end:::
 
 ### <a name="troubleshooting"></a>疑难解答
+
 :::row:::
    :::column span="2":::
       [使用容器客户端触发可恢复的错误](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
@@ -120,6 +121,7 @@ ms.locfileid: "106276631"
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2 示例
 
 ### <a name="data-lake-service"></a>Data Lake 服务
+
 :::row:::
    :::column span="":::
       [创建 Data Lake 服务客户端](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L48)
@@ -130,6 +132,7 @@ ms.locfileid: "106276631"
 :::row-end:::
 
 ### <a name="file-system"></a>文件系统
+
 :::row:::
    :::column span="":::
       [创建文件系统](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L64)
@@ -210,7 +213,6 @@ ms.locfileid: "106276631"
       [获取对文件的访问控制](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
-
 
 ## <a name="azure-file-samples"></a>Azure 文件示例
 
@@ -324,7 +326,6 @@ ms.locfileid: "106276631"
    :::column-end:::
 :::row-end:::
 
-
 ## <a name="queue-samples"></a>队列示例
 
 ### <a name="authentication"></a>身份验证
@@ -430,10 +431,10 @@ ms.locfileid: "106276631"
 
 若要查看完整的 Java 示例库，请转到：
 
-* [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
-* [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
-* [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
-* [Azure 队列代码示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
+- [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+- [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
+- [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
+- [Azure 队列代码示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
 
 可以浏览并克隆每个库的 GitHub 存储库。
 
@@ -441,17 +442,17 @@ ms.locfileid: "106276631"
 
 如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [Java 中 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-java.md)
-* [Java 中 Azure 队列服务入门](../queues/storage-quickstart-queues-java.md)
-* [Java 中 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Java 中 Azure 文件服务入门](../files/storage-java-how-to-use-file-storage.md)
+- [Java 中 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-java.md)
+- [Java 中 Azure 队列服务入门](../queues/storage-quickstart-queues-java.md)
+- [Java 中 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-java.md)
+- [Java 中 Azure 文件服务入门](../files/storage-java-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关其他语言的示例的信息：
 
-* .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
-* Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
-* JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
-* C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
-* 所有其他语言：[Azure 存储示例](storage-samples.md)
+- .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
+- Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
+- JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
+- C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
+- 所有其他语言：[Azure 存储示例](storage-samples.md)

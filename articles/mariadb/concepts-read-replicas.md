@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b7306555e59759f79ffad8e984f0688820247de
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664208"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641287"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -45,7 +45,7 @@ ms.locfileid: "98664208"
 
 ### <a name="universal-replica-regions"></a>通用副本区域
 
-无论源服务器位于何处，在以下任何区域均可创建只读副本。 支持的通用副本区域包括：
+无论源服务器位于何处，你都可以在以下任何区域中创建只读副本。 支持的通用副本区域包括：
 
 澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、东亚、美国东部、美国东部 2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部 2、美国中西部。
 
@@ -53,7 +53,7 @@ ms.locfileid: "98664208"
 
 除通用副本区域外，还可以在源服务器的 Azure 配对区域中创建只读副本。 如果你不知道所在区域的配对，可以从 [Azure 配对区域](../best-practices-availability-paired-regions.md)一文中了解更多信息。
 
-如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时进行更新，并会优先考虑物理隔离和数据驻留。  
+如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
 
 但是，需要考虑以下限制： 
 

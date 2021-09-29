@@ -2,7 +2,6 @@
 title: 布局 - 表单识别器
 titleSuffix: Azure Applied AI Services
 description: 使用表单识别器 API 了解与布局分析相关的概念 - 使用和限制。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: af45cf3d3f9ae534be52ae617b13c76eb0d2eae8
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 247400ea72567108fb9dc320bddd1b87d6ef6ced
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326297"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641667"
 ---
 # <a name="form-recognizer-layout-service"></a>表单识别器布局服务
 

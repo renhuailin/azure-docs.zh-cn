@@ -3,7 +3,7 @@ title: Azure API 管理转换策略 | Microsoft Docs
 description: 了解可在 Azure API 管理中使用的转换策略。
 services: api-management
 documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
-ms.author: apimpm
-ms.openlocfilehash: 48f8445e30bd186681d1a4384d16f228a3382473
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.author: danlep
+ms.openlocfilehash: 8cbef3416230d087b7ca627e877e0030f0ace9b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012431"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647093"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](./api-management-policies.md)。

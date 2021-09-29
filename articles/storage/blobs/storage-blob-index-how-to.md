@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 682f855232ef021b10d148b3ede71a35dbaee760
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d4743a529649c7223449b35092b1505ee534eeaf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867649"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615658"
 ---
 # <a name="use-blob-index-tags-to-manage-and-find-data-on-azure-blob-storage"></a>使用 Blob 索引标记管理和查找 Azure Blob 存储上的数据
 
@@ -57,7 +57,7 @@ Blob 索引标记使用键值标记属性对存储帐户中的数据进行分类
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的存储帐户。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的存储帐户。
 
 2. 导航到“数据存储”下的“容器”选项，然后选择你的容器 。
 
@@ -199,7 +199,7 @@ static async Task BlobIndexTagsExample()
 
 在 Azure 门户中，“Blob 索引标记”筛选器会自动应用 `@container` 参数来限制所选容器的范围。 如果希望在整个存储帐户中筛选和查找带标记的数据，请使用我们的 REST API、SDK 或工具。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择存储帐户。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择存储帐户。
 
 2. 导航到“数据存储”下的“容器”选项，选择你的容器 。
 
@@ -241,7 +241,7 @@ static async Task FindBlobsByTagsExample()
           AppendBlobClient appendBlobWithTags3 = container2.GetAppendBlobClient("myAppendBlob03.logs");
           AppendBlobClient appendBlobWithTags4 = container2.GetAppendBlobClient("myAppendBlob04.logs");
           AppendBlobClient appendBlobWithTags5 = container2.GetAppendBlobClient("myAppendBlob05.logs");
-           
+
           // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
@@ -250,7 +250,7 @@ static async Task FindBlobsByTagsExample()
               { "Priority", "01" },
               { "Date", "2020-04-20" }
           };
-          
+
           CreateAppendBlobOptions appendOptions2 = new CreateAppendBlobOptions();
           appendOptions2.Tags = new Dictionary<string, string>
           {
@@ -295,7 +295,7 @@ static async Task FindBlobsByTagsExample()
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的存储帐户。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的存储帐户。
 
 2. 导航到“Blob 服务”下的“生命周期管理”选项 
 
@@ -313,11 +313,11 @@ static async Task FindBlobsByTagsExample()
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
-[生命周期管理](storage-lifecycle-management-concepts.md)策略在控制平面级别应用于每个存储帐户。 对于 .NET，请安装 [Microsoft Azure 管理存储库](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/)版本 16.0.0 或更高版本。
+[生命周期管理](./lifecycle-management-overview.md)策略在控制平面级别应用于每个存储帐户。 对于 .NET，请安装 [Microsoft Azure 管理存储库](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/)版本 16.0.0 或更高版本。
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
- - 有关 Blob 索引标记的详细信息，请参阅[通过 Blob 索引标记管理和查找 Azure Blob 数据](storage-manage-find-blobs.md )
- - 有关生命周期管理的详细信息，请参阅[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)
+- 有关 Blob 索引标记的详细信息，请参阅[通过 Blob 索引标记管理和查找 Azure Blob 数据](storage-manage-find-blobs.md )
+- 有关生命周期管理的详细信息，请参阅[管理 Azure Blob 存储生命周期](./lifecycle-management-overview.md)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 177c02da26ffcedd0453538bc32158cf2f014896
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1f3db34f477e228157cfa8378f171adf7a239811
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369279"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828838"
 ---
 # <a name="plan-your-qna-maker-app"></a>规划 QnA Maker 应用
 
@@ -88,7 +88,7 @@ ms.locfileid: "110369279"
 
 在 QnA Maker 资源上创建的第一个知识库会为资源设置语言。 对于一个 QnA Maker 资源，只能使用一种语言。
 
-可以按语言构建 QnA Maker 资源，也可以在将查询发送到查询预测终结点之前，使用[翻译器](../../translator/translator-info-overview.md)将查询从另一种语言更改为知识库语言。
+可以按语言构建 QnA Maker 资源，也可以在将查询发送到查询预测终结点之前，使用[翻译器](../../translator/translator-overview.md)将查询从另一种语言更改为知识库语言。
 
 # <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 

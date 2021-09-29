@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: a5b84673a879c086fe1fc0543da1ab0037d32ac1
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2c7c2a6d0056cb16f2ff79cb662cce2604d835b5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255969"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767615"
 ---
 # <a name="copy-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的复制活动
 
@@ -26,7 +26,7 @@ ms.locfileid: "123255969"
 
 在 Azure 数据工厂和 Synapse 管道中，可使用复制活动在本地与云数据存储之间复制数据。 复制数据后，可以使用其他活动进一步转换和分析数据。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
 
-![复制活动的角色](media/copy-activity-overview/copy-activity.png)
+:::image type="content" source="media/copy-activity-overview/copy-activity.png" alt-text="复制活动的角色":::
 
 复制活动在[集成运行时](concepts-integration-runtime.md)上执行。 对于不同的数据复制方案，可以使用不同类型的集成运行时：
 
@@ -41,7 +41,7 @@ ms.locfileid: "123255969"
 2. 执行序列化/反序列化、压缩/解压缩、列映射等。 此服务基于输入数据集、输出数据集和复制活动的配置执行这些操作。
 3. 将数据写入接收器/目标数据存储。
 
-![“复制活动”概述](media/copy-activity-overview/copy-activity-overview.png)
+:::image type="content" source="media/copy-activity-overview/copy-activity-overview.png" alt-text="复制活动概述":::
 
 ## <a name="supported-data-stores-and-formats"></a>支持的数据存储和格式
 
@@ -161,7 +161,7 @@ ms.locfileid: "123255969"
 - **活动级别重试：** 可以设置复制活动的重试计数。 在管道执行过程中，如果此复制活动运行失败，则下一次自动重试将从上一次试用的故障点开始。
 - **从失败的活动重新运行：** 管道执行完成后，还可以通过 ADF UI 监视视图或编程方式触发从失败的活动重新运行的操作。 如果失败的活动是复制活动，则该管道将不仅从此活动重新运行，而且也会从上一个运行的故障点恢复。
 
-    ![复制恢复](media/copy-activity-overview/resume-copy.png)
+    :::image type="content" source="media/copy-activity-overview/resume-copy.png" alt-text="复制恢复":::
 
 要注意的几点：
 
@@ -190,7 +190,7 @@ ms.locfileid: "123255969"
 
 可以在“复制活动源”选项卡上找到以下配置。也可以照常使用定义的列名在复制活动[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)中映射这些附加列。 
 
-![在复制活动中添加其他列](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
+:::image type="content" source="./media/copy-activity-overview/copy-activity-add-additional-columns.png" alt-text="在复制活动中添加其他列":::
 
 >[!TIP]
 >此功能适用于最新的数据集模型。 如果在 UI 中未看到此选项，请尝试创建一个新数据集。
@@ -255,7 +255,7 @@ ms.locfileid: "123255969"
 - [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
-![创建接收器表](media/copy-activity-overview/create-sink-table.png)
+:::image type="content" source="media/copy-activity-overview/create-sink-table.png" alt-text="创建接收器表":::
 
 ## <a name="fault-tolerance"></a>容错
 

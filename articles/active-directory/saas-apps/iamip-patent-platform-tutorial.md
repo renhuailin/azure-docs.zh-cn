@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 8022ea8ab38dd7b22fe7c51f2700321c40fd9333
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5de5587e7f517d28207bf041b655591736f84a57
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752520"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833147"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IamIP Patent Platform 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "121752520"
 * 让用户使用其 Azure AD 帐户自动登录到 IamIP Patent Platform。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -112,7 +112,7 @@ ms.locfileid: "121752520"
    1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="grant-access-to-the-test-user"></a>向测试用户授予访问权限
 
@@ -148,7 +148,7 @@ ms.locfileid: "121752520"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 IamIP Patent Platform。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在单击“我的应用”中的 IamIP Patent Platform 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 IamIP Patent Platform。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在单击“我的应用”中的 IamIP Patent Platform 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 IamIP Patent Platform。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

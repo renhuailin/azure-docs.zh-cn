@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 1f2e01a79f980e63102bb6538859f0da30c555c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f2a66feb85a9873a34470cfccc6360f9e24612f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651841"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>教程：Azure Active Directory 与 Ceridian Dayforce HCM 集成
 
@@ -125,7 +125,7 @@ ms.locfileid: "101651841"
 
     e. 从“源属性”列表中，选择要用于实现的用户属性  。 例如，如果想要使用 EmployeeID 作为唯一用户标识符并且已在 ExtensionAttribute2 中存储属性值，则选择 user.extensionattribute2。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“ **保存**”。
 
@@ -177,7 +177,7 @@ ms.locfileid: "101651841"
 
 * 直接转到 Ceridian Dayforce HCM 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Ceridian Dayforce HCM”磁贴时，这将重定向到 Ceridian Dayforce HCM“登录 URL”。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Ceridian Dayforce HCM”磁贴时，这将重定向到 Ceridian Dayforce HCM“登录 URL”。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

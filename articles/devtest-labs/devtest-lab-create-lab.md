@@ -1,20 +1,20 @@
 ---
-title: 在 Azure 开发测试实验室中创建实验室 | Microsoft Docs
+title: 创建实验室
 description: 本文将指导你完成使用 Azure 门户和 Azure 开发测试实验室创建实验室的过程。
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/12/2020
-ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68b560125a4cacceee613b5c7c9bfaafc5c95c06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92058303"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602890"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室
 
 Azure 开发测试实验室中的实验室是包含一组资源（例如，虚拟机 (VM)）的基础结构，通过指定限制和配额可以更好地管理这些资源。 本文介绍使用 Azure 门户创建实验室的过程。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要创建实验室，需要：
 
@@ -98,4 +98,3 @@ Azure 开发测试实验室中的实验室是包含一组资源（例如，虚�
 * [创建实验室模板](devtest-lab-create-template.md)
 * [创建适用于 VM 的自定义项目](devtest-lab-artifact-author.md)
 * [将 VM 添加到实验室](devtest-lab-add-vm.md)
-

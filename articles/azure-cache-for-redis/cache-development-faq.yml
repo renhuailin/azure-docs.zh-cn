@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.custom: devx-track-csharp
   ms.date: 08/06/2020
-  ms.openlocfilehash: c8aeae13f22103cc895dffda497b71ac3129330c
-  ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+  ms.openlocfilehash: 5963fe660a3fed4b084d94abb92b172566988c9f
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113137348"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128577026"
 title: Azure Cache for Redis 开发的常见问题解答
 summary: 本文提供有关如何开发 Azure Redis 缓存的常见问题的解答。
 sections:
@@ -44,14 +44,14 @@ sections:
   - question: >
       可以使用哪些 Azure Redis 缓存客户端？
     answer: >
-      Redis 的一大优势是有许多客户端，支持许多不同的开发语言。 如需最新的客户端列表，请参阅 [Redis 客户端](https://redis.io/clients)。 要获取涵盖几种不同语言和客户端的教程，请参阅[如何使用 Azure Cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md)。
+      Redis 的一大优势是有许多客户端，支持许多不同的开发语言。 如需最新的客户端列表，请参阅 [Redis 客户端](https://redis.io/clients)。 有关涵盖多种不同语言和客户端的教程，请参阅[如何使用 Azure Cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md)。
 
 
-      [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+      [!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
   - question: >
       Azure Redis 缓存是否有本地模拟器？
     answer: >
-      Azure Cache for Redis 没有本地模拟器。 可以从本地计算机上通过 [Redis 命令行工具](https://github.com/MSOpenTech/redis/releases/)来运行 redis-server.exe 的 MSOpenTech 版本。 然后，连接到它即可获得与本地缓存模拟器类似的体验，如以下示例所示：
+      Azure Cache for Redis 没有本地模拟器。 可以在本地计算机上通过 [Redis 命令行工具](https://github.com/MSOpenTech/redis/releases/)来运行 redis-server.exe 的 MSOpenTech 版本。 然后，连接到它即可获得与本地缓存模拟器类似的体验，如以下示例所示：
 
 
       ```csharp
@@ -85,7 +85,7 @@ sections:
 
       * 如果有标准或高级缓存，可以使用 [Redis 控制台](cache-configure.md#redis-console)运行 Redis 命令。 Redis 控制台提供了一种在 Azure 门户中安全地运行 Redis 命令的方式。
 
-      * 还可以使用 Redis 命令行工具。 若要使用它们，请执行以下步骤：
+      * 还可以使用 Redis 命令行工具。 若要使用这些工具，请执行以下步骤：
 
       * 下载 [Redis 命令行工具](https://github.com/MSOpenTech/redis/releases/)。
 
@@ -107,7 +107,7 @@ sections:
       Microsoft Azure Cache for Redis 基于热门开源内存中数据存储 Redis。 它可以通过各种 [Redis 客户端](https://redis.io/clients) 进行访问，这些客户端适用于许多编程语言。 每个客户端有自身的 API，用于通过 [Redis 命令](https://redis.io/commands)调用 Azure Redis 缓存实例。
 
 
-      由于每个客户端都不同，因此在 MSDN 上没有集中式类引用。 每个客户端维护自己的参考文档。 除了参考文档以外，还可以参阅多个教程，这些教程介绍了如何通过不同的语言和缓存客户端来开始使用 Azure Cache for Redis。 若要访问这些教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)以及它在内容列表中的同级文章。
+      由于每个客户端不同，因此 MSDN 无法在一个集中的位置提供类参考。 每个客户端维护自身的参考文档。 除了参考文档以外，还可以参阅多篇教程，其中介绍了如何通过不同的语言和缓存客户端来开始使用 Azure Cache for Redis。 若要访问这些教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)以及它在内容列表中的同级文章。
   - question: >
       是否可将 Azure Redis 缓存用作 PHP 会话缓存？
     answer: >

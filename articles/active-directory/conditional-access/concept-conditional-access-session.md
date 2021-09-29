@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81819fa99db4ff0171e96e5b2ba0ce3fc4604769
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f97d2c7ac7026032344f7f08f80cb28bcb0d3d71
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459532"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618951"
 ---
 # <a name="conditional-access-session"></a>条件访问：会话
 
@@ -42,8 +42,8 @@ ms.locfileid: "114459532"
 - 防止数据透露：例如，可以在非托管设备上阻止敏感文档的下载、剪切、复制和打印。
 - 在下载时提供保护：如果不阻止敏感文档的下载，可以要求为文档添加标签并通过 Azure 信息保护进行保护。 此操作可确保文档受到保护，并在有潜在风险的会话中限制用户访问。
 - 阻止上传不带标签的文件：在其他人上传、分发和使用敏感文件之前，必须确保文件带有适当的标签并受保护。 在用户对内容进行分类之前，可以确保阻止上传包含敏感内容的不带标签的文件。
-- 监视用户会话的合规性（预览版）：风险用户在登录到应用时会受到监视，并从会话内部记录其操作。 可以调查和分析用户的行为，以了解将来应在何处、在何种条件下应用会话策略。
-- 阻止访问（预览版）：可根据多种风险因素，以不同的粒度阻止特定应用和用户的访问。 例如，如果应用和用户使用客户端证书作为设备管理形式，则可将其阻止。
+- 监视用户会话的合规性（预览）：风险用户在登录到应用后会受到监视，并且会从会话内部记录他们的操作。 可以调查和分析用户的行为，以了解将来应在何处、在何种条件下应用会话策略。
+- 阻止访问（预览）：可根据多种风险因素以不同的粒度阻止特定应用和用户的访问。 例如，如果应用和用户使用客户端证书作为设备管理形式，则可将其阻止。
 - 阻止自定义活动：某些应用的独特使用场景会带来风险，例如，在 Microsoft Teams 或 Slack 等应用中发送包含敏感内容的消息。 在此类场景中，可以扫描消息中的敏感内容并实时阻止。
 
 有关详细信息，请参阅[为特色应用部署条件访问应用控制](/cloud-app-security/proxy-deployment-aad)一文。

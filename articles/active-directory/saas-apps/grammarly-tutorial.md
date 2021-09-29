@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: e65399c363fe5afc3c233e32b3a1e606ff272f61
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b14abe793ed2e9e309b68e742ecbd40f25bb09c0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182978"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833679"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Grammarly 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "122182978"
 * 让用户使用其 Azure AD 帐户自动登录到 Grammarly。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -135,7 +135,7 @@ ms.locfileid: "122182978"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Grammarly。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Grammarly”磁贴时，应会自动登录到为其设置了 SSO 的 Grammarly。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Grammarly”磁贴时，应会自动登录到为其设置了 SSO 的 Grammarly。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

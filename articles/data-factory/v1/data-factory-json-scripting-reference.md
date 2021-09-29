@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dcb652e66617fc5697be20b1f270d580184e9165
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 4e3b5b200ee39c4b777d85ba42e26dde91f0e046
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662373"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675281"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -279,7 +280,7 @@ ms.locfileid: "122662373"
 
 下表描述了上述 JSON 中的属性：
 
-| 属性 | 描述 | 必须 | 默认 |
+| 属性 | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | name | 数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |不可用 |
 | type | 数据集的类型。 指定 Azure 数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 有关数据工厂支持的所有数据存储和数据集类型，请参阅[数据存储](#data-stores)部分。 |
@@ -291,7 +292,7 @@ ms.locfileid: "122662373"
 
 **structure** 节中的每个列包含以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | name |列的名称。 |是 |
 | type |列的数据类型。  |否 |
@@ -311,7 +312,7 @@ structure:
 
 下表描述了可在 **availability** 节中使用的属性：
 
-| 属性 | 描述 | 必须 | 默认 |
+| 属性 | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |不可用 |
 | interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，则将“频率”<b></b>设置为“小时”<b></b>，“间隔”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |不可用 |
@@ -351,7 +352,7 @@ structure:
 
 除非 Azure 数据工厂生成数据集，否则应将其标记为 **外部**。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| 名称 | 描述 | 必需 | 默认值 |
+| 名称 | 说明 | 必需 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，如果数据应为每小时可用，可使用 dataDelay 推迟检查外部数据是否可用以及相应切片是否就绪。<br/><br/>仅适用于当前时间。  例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>此设置不会影响过去的切片 (End Time + dataDelay < Now)，过去的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间需要使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00；请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次重试之间的等待时间。 如果尝试失败，下一次尝试会在 retryInterval 以后。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |
@@ -408,7 +409,7 @@ structure:
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 要使用 **帐户密钥** 将 Azure 存储帐户链接到数据工厂，请创建 Azure 存储链接服务。 要定义 Azure 存储链接服务，请将链接服务的 **类型** 设置为 **AzureStorage**。 然后，可在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | connectionString |为 connectionString 属性指定连接到 Azure 存储所需的信息。 |是 |
 
@@ -429,7 +430,7 @@ structure:
 #### <a name="azure-storage-sas-linked-service"></a>Azure 存储 SAS 链接服务
 Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure 存储帐户链接到 Azure 数据工厂。 这样，便可以将存储中所有/特定资源（Blob/容器）的受限/限时访问权限提供给数据工厂。 要使用共享访问签名将 Azure 存储帐户链接到数据工厂，请创建 Azure 存储 SAS 链接服务。 要定义 Azure 存储 SAS 链接服务，请将链接服务的 **类型** 设置为 **AzureStorageSas**。 然后，可在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | sasUri |指定 Azure 存储资源（例如 Blob、容器或表）的共享访问签名 URI。 |是 |
 
@@ -452,7 +453,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure Blob 数据集，请将数据集的 **类型** 设置为 **AzureBlob**。 然后，在 **typeProperties** 节中指定 Azure Blob 特定的以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
 | fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式：`Data.<Guid>.txt`（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -492,7 +493,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="blobsource-in-copy-activity"></a>复制活动中的 BlobSource
 如果要从 Azure Blob 存储复制数据，请将复制活动的“源类型”设置为“BlobSource”，并在“source”节中指定以下属性  ：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 
@@ -585,7 +586,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 Azure Data Lake Store 链接服务，请将链接服务的类型设置为 **AzureDataLakeStore**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureDataLakeStore** | 是 |
 | dataLakeStoreUri | 指定 Azure Data Lake Store 帐户相关信息。 其格式如下：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
@@ -635,7 +636,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure Data Lake Store 数据集，请将数据集的 **类型** 设置为 **AzureDataLakeStore**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | folderPath |到 Azure Data Lake Sore 中的容器和文件夹的路径。 |是 |
 | fileName |Azure Data Lake Sore 中文件的名称。 fileName 可选，并且区分大小写。 <br/><br/>如果指定 filename，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式：`Data.<Guid>.txt`（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -682,7 +683,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 **AzureDataLakeStoreSource** 支持以下属性 **typeProperties** 部分：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 
@@ -931,7 +932,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 Azure SQL 数据库链接服务，请将链接服务的 **类型** 设置为 **AzureSqlDatabase**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | connectionString |为 connectionString 属性指定连接到 Azure SQL 数据库实例所需的信息。 |是 |
 
@@ -953,7 +954,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure SQL 数据库数据集，请将数据集的 **类型** 设置为 **AzureSqlTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Azure SQL 数据库实例中的表名称或视图名称。 |是 |
 
@@ -989,7 +990,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 如果要从 Azure SQL 数据库复制数据，请将复制活动的 **源类型** 设置为 **SqlSource**，并在 **source** 节中指定以下属性：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 示例：`select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 |否 |
@@ -1042,7 +1043,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="sql-sink-in-copy-activity"></a>复制活动中的 SQL 接收器
 如果要将数据复制到 Azure SQL 数据库，请将复制活动的 **接收器类型** 设置为 **SqlSink**，并在 **sink** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
@@ -1164,7 +1165,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 如果要从 Azure Synapse Analytics 复制数据，请将复制活动的“源类型”设置为“SqlDWSource”，并在“源”部分中指定以下属性  ：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 |否 |
@@ -1335,7 +1336,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="azure-cognitive-search-index-sink-in-copy-activity"></a>复制活动中的 Azure 认知搜索索引接收器
 如果要将数据复制到搜索索引，请将复制活动的“接收器类型”设置为“AzureSearchIndexSink”，并在“接收器”部分中指定以下属性  ：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 | 合并（默认值）<br/>上传| 否 |
 | WriteBatchSize | 缓冲区大小达到 writeBatchSize 时会将数据上传到搜索索引。 | 1 到 1,000。 默认值为 1000。 | 否 |
@@ -1415,7 +1416,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 #### <a name="azure-storage-sas-linked-service"></a>Azure 存储 SAS 链接服务
 Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure 存储帐户链接到 Azure 数据工厂。 这样，便可以将存储中所有/特定资源（Blob/容器）的受限/限时访问权限提供给数据工厂。 要使用共享访问签名将 Azure 存储帐户链接到数据工厂，请创建 Azure 存储 SAS 链接服务。 要定义 Azure 存储 SAS 链接服务，请将链接服务的 **类型** 设置为 **AzureStorageSas**。 然后，可在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**AzureStorageSas** |是 |
 | sasUri |指定 Azure 存储资源（例如 Blob、容器或表）的共享访问签名 URI。 |是 |
@@ -1439,7 +1440,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure 表数据集，请将数据集的 **类型** 设置为 **AzureTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是的。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 
@@ -1587,7 +1588,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 Amazon Redshift 链接服务，请将链接服务的 **类型** 设置为 **AmazonRedshift**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | server |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | port |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否，默认值：5439 |
@@ -1647,7 +1648,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 Amazon Redshift 复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |否（如果指定了 **数据集** 的 **tableName**） |
 
@@ -1699,7 +1700,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 IBM DB2 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesDB2**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | server |DB2 服务器的名称。 |是 |
 | database |DB2 数据库的名称。 |是 |
@@ -1732,7 +1733,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 DB2 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 DB2 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的 **query**）
 
@@ -1766,7 +1767,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 如果要从 IBM DB2 复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from "MySchema"."MyTable""`。 |否（如果指定了 **数据集** 的 **tableName**） |
 
@@ -1815,7 +1816,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 MySQL 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesMySql**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | server |MySQL 服务器的名称。 |是 |
 | database |MySQL 数据库的名称。 |是 |
@@ -1850,7 +1851,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 MySQL 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 MySQL 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -1884,7 +1885,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 如果要从 MySQL 数据库复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |否（如果指定了 **数据集** 的 **tableName**） |
 
@@ -1937,7 +1938,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 Oracle 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesOracle**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | driverType | 指定在 Oracle 数据库复制/粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 或 **ODP**（默认值）。 请参阅驱动程序详细信息上的“支持版本和安装”部分。 | 否 |
 | connectionString | 为 connectionString 属性指定连接到 Oracle 数据库实例所需的信息。 | 是 |
@@ -1963,7 +1964,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Oracle 数据集，请将数据集的 **类型** 设置为 **OracleTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **OracleSource** 的 **oracleReaderQuery**） |
 
@@ -2052,7 +2053,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="oracle-sink-in-copy-activity"></a>复制活动中的 Oracle 接收器
 如果要将数据复制到 Oracle 数据库，请将复制活动的 **接收器类型** 设置为 **OracleSink**，并在 **sink** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：00:30:00（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：100） |
@@ -2106,7 +2107,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 PostgreSQL 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesPostgreSql**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | server |PostgreSQL 服务器的名称。 |是 |
 | database |PostgreSQL 数据库的名称。 |是 |
@@ -2140,7 +2141,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 PostgreSQL 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 PostgreSQL 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -2173,7 +2174,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 如果要从 PostgreSQL 数据库复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：“query”：“从 \"MySchema\".\"MyTable\" 选择 *”。 |否（如果指定了 **数据集** 的 **tableName**） |
 
@@ -2225,7 +2226,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接服务
 要定义 SAP Business Warehouse (BW) 链接服务，请将链接服务的 **类型** 设置为 **SapBw**，并在 **typeProperties** 节中指定以下属性：
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
@@ -2282,7 +2283,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 如果要从 SAP Business Warehouse 复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
 
@@ -2335,7 +2336,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="linked-service"></a>链接服务
 要定义 SAP HANA 链接服务，请将链接服务的 **类型** 设置为 **SapHana**，并在 **typeProperties** 节中指定以下属性：
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 server | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | 字符串 | 是
 authenticationType | 身份验证的类型。 | 字符串。 “基本”或“Windows” | 是
@@ -2389,7 +2390,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 SAP HANA 数据存储复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | SQL 查询。 | 是 |
 
@@ -2500,7 +2501,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义 SQL Server 数据集，请将数据集的 **类型** 设置为 **SqlServerTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务所引用的 SQL Server 数据库实例中的表或视图的名称。 |是 |
 
@@ -2536,7 +2537,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 如果要从 SQL Server 数据库复制数据，请将复制活动的 **源类型** 设置为 **SqlSource**，并在 **source** 节中指定以下属性：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 可引用输入数据集所引用的数据库中的多个表。 如果未指定，执行的 SQL 语句为：select from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 |否 |
@@ -2603,7 +2604,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="sql-sink-in-copy-activity"></a>复制活动中的 SQL 接收器
 如果要将数据复制到 SQL Server 数据库，请将复制活动的 **接收器类型** 设置为 **SqlSink**，并在 **sink** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
@@ -2664,7 +2665,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="linked-service"></a>链接服务
 要定义 Sybase 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesSybase**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | server |Sybase 服务器的名称。 |是 |
 | database |Sybase 数据库的名称。 |是 |
@@ -2698,7 +2699,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义 Sybase 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Sybase 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -2733,7 +2734,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 如果要从 Sybase 数据库复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |否（如果指定了 **数据集** 的 **tableName**） |
 
@@ -2784,7 +2785,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="linked-service"></a>链接服务
 要定义 Teradata 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesTeradata**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | server |Teradata 服务器的名称。 |是 |
 | authenticationType |用于连接 Teradata 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
@@ -2843,7 +2844,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 Teradata 数据库复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |是 |
 
@@ -2932,7 +2933,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义 Cassandra 数据集，请将数据集的 **类型** 设置为 **CassandraTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 CassandraSource 的查询）。 |
 | tableName |Cassandra 数据库中表的名称。 |是（如果未定义 CassandraSource 的查询）。 |
@@ -2970,7 +2971,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="cassandra-source-in-copy-activity"></a>复制活动中的 Cassandra 源
 如果要从 Cassandra 复制数据，请将复制活动的 **源类型** 设置为 **CassandraSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表  。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
 | consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |不知道。 默认值为 ONE。 |
@@ -3025,7 +3026,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="linked-service"></a>链接服务
 要定义 MongoDB 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesMongoDB**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
 | port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |（可选）默认值：27017 |
@@ -3092,7 +3093,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 #### <a name="mongodb-source-in-copy-activity"></a>复制活动中的 MongoDB 源
 如果要从 MongoDB 复制数据，请将复制活动的 **源类型** 设置为 **MongoDbSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如：`select * from MyTable`。 |否（如果指定了 **数据集** 的 **collectionName**） |
 
@@ -3146,7 +3147,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="linked-service"></a>链接服务
 要定义 Amazon S3 链接服务，请将链接服务的 **类型** 设置为 **AwsAccessKey**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | accessKeyID |机密访问键 ID。 |字符串 |是 |
 | secretAccessKey |机密访问键本身。 |加密的机密字符串 |是 |
@@ -3170,7 +3171,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义 Amazon S3 数据集，请将数据集的 **类型** 设置为 **AmazonS3**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | bucketName |S3 存储桶的名称。 |字符串 |是 |
 | key |S3 对象键。 |字符串 |否 |
@@ -3254,7 +3255,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 如果要从 Amazon S3 复制数据，请将复制活动的 **源类型** 设置为 **FileSystemSource**，并在 **source** 节中指定以下属性：
 
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指定是否以递归方式列出目录下的 S3 对象。 |true/false |否 |
 
@@ -3365,7 +3366,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="dataset"></a>数据集
 要定义文件系统数据集，请将数据集的 **类型** 设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | folderPath |指定文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -3439,7 +3440,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ### <a name="file-system-source-in-copy-activity"></a>复制活动中的文件系统源
 如果要从文件系统复制数据，请将复制活动的 **源类型** 设置为 **FileSystemSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
@@ -3545,7 +3546,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 FTP 链接服务，请将链接服务的 **类型** 设置为 **FtpServer**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必须 | 默认 |
+| 属性 | 说明 | 必须 | 默认 |
 | --- | --- | --- | --- |
 | 主机 |FTP 服务器的名称或 IP 地址 |是 |&nbsp; |
 | authenticationType |指定身份验证类型 |是 |基本、匿名 |
@@ -3631,7 +3632,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 FTP 数据集，请将数据集的 **类型** 设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -3671,7 +3672,7 @@ auto-
 ### <a name="file-system-source-in-copy-activity"></a>复制活动中的文件系统源
 如果要从 FTP 服务器复制数据，请将复制活动的 **源类型** 设置为 **FileSystemSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
@@ -3723,7 +3724,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 HDFS 链接服务，请将链接服务的 **类型** 设置为 **Hdfs**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**Hdfs** |是 |
 | URL |HDFS 的 URL |是 |
@@ -3773,7 +3774,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 HDFS 数据集，请将数据集的 **类型** 设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -3811,7 +3812,7 @@ auto-
 
 **FileSystemSource** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
@@ -3859,21 +3860,21 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 SFTP 链接服务，请将链接服务的 **类型** 设置为 **Sftp**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
 | port |SFTP 服务器侦听的端口。 默认值为 21 |否 |
 | authenticationType |指定身份验证类型。 允许的值：**Basic**、**SshPublicKey**。 <br><br> 有关其他属性和 JSON 示例，请分别参阅使用基本身份验证和[使用 SSH 公钥身份验证](#using-ssh-public-key-authentication)部分。 |是 |
-| skipHostKeyValidation | 指定是否要跳过主机密钥验证。 | 不知道。 默认值：false |
+| skipHostKeyValidation | 指定是否要跳过主机密钥验证。 | 不是。 默认值：false |
 | hostKeyFingerprint | 指定主机密钥的指纹。 | `skipHostKeyValidation` 设置为 false 时表示 Yes。  |
 | gatewayName |用于连接本地 SFTP 服务器的数据管理网关的名称。 | 如果从本地 SFTP 服务器复制数据，则值为 Yes。 |
-| encryptedCredential | 访问 SFTP 服务器的加密凭据 在复制向导或 ClickOnce 弹出对话框中指定基本身份验证（用户名 + 密码）或 SshPublicKey 身份验证（用户名 + 私钥路径或内容）时自动生成。 | 不知道。 仅当从本地 SFTP 服务器复制数据时才适用。 |
+| encryptedCredential | 访问 SFTP 服务器的加密凭据 在复制向导或 ClickOnce 弹出对话框中指定基本身份验证（用户名 + 密码）或 SshPublicKey 身份验证（用户名 + 私钥路径或内容）时自动生成。 | 不是。 仅当从本地 SFTP 服务器复制数据时才适用。 |
 
 #### <a name="example-using-basic-authentication"></a>示例：使用基本身份验证
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `Basic`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | username | 有权访问 SFTP 服务器的用户。 |是 |
 | password | 用户 (username) 的密码。 | 是 |
@@ -3922,7 +3923,7 @@ auto-
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `SshPublicKey`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | username |有权访问 SFTP 服务器的用户 |是 |
 | privateKeyPath | 指定网关可以访问的私钥文件的绝对路径。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 <br><br> 仅当从本地 SFTP 服务器复制数据时才适用。 |
@@ -3973,7 +3974,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 SFTP 数据集，请将数据集的 **类型** 设置为 **FileShare**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
@@ -4012,7 +4013,7 @@ auto-
 ### <a name="file-system-source-in-copy-activity"></a>复制活动中的文件系统源
 如果要从 SFTP 源复制数据，请将复制活动的 **源类型** 设置为 **FileSystemSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
@@ -4066,7 +4067,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 HTTP 链接服务，请将链接服务的 **类型** 设置为 **Http**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | url | Web 服务器的基 URL | 是 |
 | authenticationType | 指定身份验证类型。 允许的值为：**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate**。 <br><br> 有关这些身份验证类型的其他属性和 JSON 示例，请分别参阅此表格下面的部分。 | 是 |
@@ -4077,7 +4078,7 @@ auto-
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>示例：使用基本、摘要或 Windows 身份验证
 将 `authenticationType` 设置为 `Basic`、`Digest` 或 `Windows`，并指定除上述 HTTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | username | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (username) 的密码。 | 是 |
@@ -4101,7 +4102,7 @@ auto-
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `ClientCertificate`，并指定除上述 HTTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | embeddedCertData | 个人信息交换 (PFX) 文件二进制数据的 Base64 编码内容。 | 指定 `embeddedCertData` 或 `certThumbprint`。 |
 | certThumbprint | 在网关计算机的证书存储中安装的证书的指纹。 仅当从本地 HTTP 源复制数据时才适用。 | 指定 `embeddedCertData` 或 `certThumbprint`。 |
@@ -4154,7 +4155,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 HTTP 数据集，请将数据集的 **类型** 设置为 **Http**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定路径时，仅使用链接服务定义中指定的 URL。 <br><br> 若要构造动态 URL，可以使用[数据工厂函数和系统变量](data-factory-functions-variables.md)，例如：`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`。 | 否 |
 | requestMethod | Http 方法。 允许的值为 **GET** 或 **POST**。 | 不知道。 默认值为 `GET`。 |
@@ -4210,7 +4211,7 @@ auto-
 ### <a name="http-source-in-copy-activity"></a>复制活动中的 HTTP 源
 如果要从 HTTP 源复制数据，请将复制活动的 **源类型** 设置为 **HttpSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 (TimeSpan)。 这是获取响应而不是读取响应数据的超时。 | 不知道。 默认值：00:01:40 |
 
@@ -4264,7 +4265,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 OData 链接服务，请将链接服务的 **类型** 设置为 **OData**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | url |OData 服务的 URL。 |是 |
 | authenticationType |用于连接 OData 源的身份验证类型。 <br/><br/> 对于云 OData，可能的值为 Anonymous、Basic 和 OAuth（请注意：Azure 数据工厂目前仅支持基于 Azure Active Directory 的 OAuth）。 <br/><br/> 对于本地 OData，可能的值为 Anonymous、Basic 和 Windows。 |是 |
@@ -4344,7 +4345,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 OData 数据集，请将数据集的 **类型** 设置为 **ODataResource**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | path |OData 资源路径 |否 |
 
@@ -4379,7 +4380,7 @@ auto-
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 OData 源复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 描述 | 示例 | 必须 |
+| 属性 | 说明 | 示例 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
@@ -4434,7 +4435,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 ODBC 链接服务，请将链接服务的 **类型** 设置为 **OnPremisesOdbc**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 |是 |
 | credential |连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例： `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |否 |
@@ -4499,7 +4500,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 ODBC 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |ODBC 数据存储中表的名称。 |是 |
 
@@ -4534,7 +4535,7 @@ auto-
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 ODBC 数据存储复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`select * from MyTable`。 |是 |
 
@@ -4588,7 +4589,7 @@ auto-
 ### <a name="linked-service"></a>链接服务
 要定义 Salesforce 链接服务，请将链接服务的 **类型** 设置为 **Salesforce**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认值为“https:\//login.salesforce.com”。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
@@ -4616,7 +4617,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 Salesforce 数据集，请将数据集的 **类型** 设置为 **RelationalTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |在 Salesforce 中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -4652,7 +4653,7 @@ auto-
 ### <a name="relational-source-in-copy-activity"></a>复制活动中的关系源
 如果要从 Salesforce 复制数据，请将复制活动的 **源类型** 设置为 **RelationalSource**，并在 **source** 节中指定以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 92 查询或 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询。 例如：`select * from MyTable__c`。 |否（如果指定了 **数据集** 的 **tableName**） |
 
@@ -4738,7 +4739,7 @@ auto-
 ### <a name="dataset"></a>数据集
 要定义 Web 数据集，请将数据集的 **类型** 设置为 **WebTable**，并在 **typeProperties** 节中指定以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
 | path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
@@ -4831,7 +4832,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="linked-service"></a>链接服务
 下表提供了按需 HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |类型属性应设置为 **HDInsightOnDemand**。 |是 |
 | clusterSize |群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 |是 |
@@ -4902,7 +4903,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ### <a name="linked-service"></a>链接服务
 下表提供了 Azure 批处理链接服务的 Azure JSON 定义中使用的属性的说明。
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |类型属性应设置为 **AzureBatch**。 |是 |
 | accountName |Azure Batch 帐户的名称。 |是 |
@@ -4962,7 +4963,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 下表提供了 Azure Data Lake Analytics 链接服务的 JSON 定义中使用的属性的说明。
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | 类型 |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | accountName |Azure Data Lake Analytics 帐户名。 |是 |
@@ -5002,7 +5003,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 下表提供了有关特定于 SQL Server 链接服务的 JSON 元素的描述。
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 |是 |
@@ -5071,7 +5072,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive 活动
 可以在 Hive 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightHive**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightHive 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | 脚本 |指定 Hive 脚本内联 |否 |
 | 脚本路径 |将 Hive 脚本存储在 Azure blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
@@ -5117,7 +5118,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-pig-activity"></a>HDInsight Pig 活动
 可以在 Pig 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightPig**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightPig 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | 脚本 |指定 Pig 脚本内联 |否 |
 | 脚本路径 |将 Pig 脚本存储在 Azure Blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
@@ -5169,7 +5170,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce 活动
 可以在 MapReduce 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightMapReduce**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightMapReduce 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | jarLinkedService | 包含 JAR 文件的 Azure 存储的链接服务名称。 | 是 |
 | jarFilePath | Azure 存储中 JAR 文件的路径。 | 是 |
@@ -5291,7 +5292,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark 活动
 可以在 Spark 活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**HDInsightSpark**。 必须先创建 HDInsight 链接服务，然后指定该服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 HDInsightSpark 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | -------- | ----------- | -------- |
 | rootPath | 包含 Spark 文件的 Azure Blob 容器和文件夹。 文件名称需区分大小写。 | 是 |
 | entryFilePath | Spark 代码/包的根文件夹的相对路径 | 是 |
@@ -5346,7 +5347,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="ml-studio-classic-batch-execution-activity"></a>ML 工作室（经典）批处理执行活动
 可以在 ML 工作室（经典）批处理执行活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**AzureMLBatchExecution**。 必须先创建工作室（经典）链接服务，然后指定该服务的名称作为 linkedServiceName 属性的值。 将活动类型设置为 AzureMLBatchExecution 时，**typeProperties** 节支持以下属性：
 
-属性 | 描述 | 必需
+属性 | 说明 | 必需
 -------- | ----------- | --------
 webServiceInput | 要作为工作室（经典）Web 服务的输入传递的数据集。 此数据集也必须包含在活动的输入中。 |使用 webServiceInput 或 webServiceInputs。 |
 webServiceInputs | 指定要作为工作室（经典）Web 服务的输入传递的数据集。 如果该 Web 服务采用多个输入，可以使用 webServiceInputs 属性，而不使用 webServiceInput 属性。 **webServiceInputs** 引用的数据集也必须包括在活动 **inputs** 中。 | 使用 webServiceInput 或 webServiceInputs。 |
@@ -5542,7 +5543,7 @@ trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的�
 
 将活动类型设置为 SqlServerStoredProcedure 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | storedProcedureName |在 Azure SQL 数据库或 Azure Synapse Analytics 中指定存储过程的名称，用输出表使用的链接服务表示。 |是 |
 | storedProcedureParameters |指定存储过程的参数值。 如果需要为参数传递 null，请使用语法："param1": null（全部小写）。 请参阅以下示例了解如何使用此属性。 |否 |
@@ -5582,7 +5583,7 @@ trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的�
 ## <a name="net-custom-activity"></a>.NET 自定义活动
 可以在 .NET 自定义活动 JSON 定义中指定以下属性。 活动的类型属性必须是：**DotNetActivity**。 必须创建一个 Azure HDInsight 链接服务或 Azure 批处理链接服务，并指定该链接服务的名称作为 **linkedServiceName** 属性的值。 将活动类型设置为 DotNetActivity 时，**typeProperties** 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | AssemblyName | 程序集的名称。 在本示例中，该名称为 **MyDotnetActivity.dll**。 | 是 |
 | EntryPoint |实现 IDotNetActivity 接口的类名称。 在本示例中，该名称为 **MyDotNetActivityNS.MyDotNetActivity**，其中，MyDotNetActivityNS 是命名空间，MyDotNetActivity 是类。  | 是 |

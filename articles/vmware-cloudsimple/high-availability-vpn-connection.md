@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0dda4f6bbc5f9942522fb19031091b76105acf64
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: f2ea74aa319bd3cf736a50542e2e8d0285a13646
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114390987"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577744"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>配置从本地到 CloudSimple VPN 网关的高可用性连接
 
@@ -21,7 +21,7 @@ ms.locfileid: "114390987"
 
 本指南介绍为 IPsec 站点到站点 VPN 高可用性连接配置本地防火墙的步骤。 详细步骤具体针对本地防火墙的类型。 作为示例，本指南介绍了两种类型的防火墙的步骤：Cisco ASA 和 Palo Alto Networks。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 在配置本地防火墙之前，请完成以下任务。
 
@@ -40,7 +40,7 @@ ms.locfileid: "114390987"
 
 要启用阶段 1 (IKEv1)，请在 Cisco ASA 防火墙中输入以下 CLI 命令。
 
-```crypto ikev1 enable outside```
+`crypto ikev1 enable outside`
 
 ### <a name="2-create-an-ikev1-policy"></a>2. 创建 IKEv1 策略
 
@@ -121,13 +121,13 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 在外部接口上应用加密映射：
 
-```crypto map mymap interface outside```
+`crypto map mymap interface outside`
 
 ### <a name="8-confirm-applicable-nat-rules"></a>8. 确认适用的 NAT 规则
 
 下面是所使用的 NAT 规则。 确保 VPN 流量不会传入任何其他 NAT 规则。
 
-```nat (inside,outside) source static AZ_inside AZ_inside destination static CS_inside CS_inside```
+`nat (inside,outside) source static AZ_inside AZ_inside destination static CS_inside CS_inside`
 
 ### <a name="sample-ipsec-site-to-site-vpn-established-output-from-cisco-asa"></a>Cisco ASA 中已建立 IPsec 站点到站点 VPN 的示例输出
 

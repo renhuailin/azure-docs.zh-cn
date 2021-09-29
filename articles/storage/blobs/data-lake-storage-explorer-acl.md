@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3f5bd22619e49246583d8b9fc4e62ad8ab266993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97df947309f9ccc9886e45878cfc91ea6423b23
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100654061"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590359"
 ---
 # <a name="use-azure-storage-explorer-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理 ACL
 
 本文介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 
-可以使用存储资源管理器来查看然后更新目录和文件的 ACL。 ACL 继承已可用于在父目录下创建的新子项。 但还可为父目录的现有子项以递归方式应用 ACL 设置，而不必为每个子项单独进行这些更改。 
+可以使用存储资源管理器来查看然后更新目录和文件的 ACL。 ACL 继承已可用于在父目录下创建的新子项。 但还可为父目录的现有子项以递归方式应用 ACL 设置，而不必为每个子项单独进行这些更改。
 
 本文介绍如何修改文件或目录的 ACL，以及如何以递归方式将 ACL 设置应用于子目录。
 
@@ -46,11 +46,11 @@ ms.locfileid: "100654061"
 
 选择“添加 Azure 帐户”  ，并单击“登录”  。遵照屏幕提示登录到 Azure 帐户。
 
-![此屏幕截图显示了 Microsoft Azure 存储资源管理器，并突出显示了“添加 Azure 帐户”选项和“登录”按钮。](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![此屏幕截图显示了 Microsoft Azure 存储资源管理器，并突出显示了“添加 Azure 帐户”选项和“登录”按钮。](media/quickstart-storage-explorer/storage-explorer-connect.png)
 
 完成连接后，将会加载 Azure 存储资源管理器并显示“资源管理器”选项卡。  以下视图可以查看通过 [Azure 存储模拟器](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 帐户或 [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 环境配置的所有 Azure 存储帐户和本地存储。
 
-![“Microsoft Azure 存储资源管理器 - 连接”窗口](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
+![“Microsoft Azure 存储资源管理器 - 连接”窗口](media/quickstart-storage-explorer/storage-explorer-main-page.png)
 
 ## <a name="manage-an-acl"></a>管理 ACL
 

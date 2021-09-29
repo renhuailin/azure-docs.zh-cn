@@ -11,23 +11,23 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 607f7921b62540d26b1354c21f3352f5b5b943f4
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: bc2150f63e0392f94c17f90ab41f80de91336c7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112376641"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620153"
 ---
 # <a name="secure-access-to-application-data"></a>安全访问应用程序数据
 
-本教程是一个系列中的第三部分。 你将了解如何安全访问存储帐户。 
+本教程是一个系列中的第三部分。 你将了解如何安全访问存储帐户。
 
 在该系列的第三部分中，你会学习如何：
 
 > [!div class="checklist"]
-> * 使用 SAS 令牌访问缩略图图像
-> * 启用服务器端加密
-> * 启用仅 HTTPS 传输
+> - 使用 SAS 令牌访问缩略图图像
+> - 启用服务器端加密
+> - 启用仅 HTTPS 传输
 
 [Azure blob 存储](../common/storage-introduction.md#blob-storage)提供存储应用程序文件的可靠服务。 本教程对[上一个主题][previous-tutorial]进行扩展，演示如何从 Web 应用程序安全访问存储帐户。 完成后，图像会被加密，Web 应用使用安全的 SAS 令牌访问缩略图图像。
 
@@ -55,7 +55,7 @@ Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName $blobStor
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --account-name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv)
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
@@ -190,9 +190,9 @@ HTTP/1.1 400 The account being accessed does not support http.
 本系列教程的第三部分介绍了如何安全访问存储帐户，例如如何：
 
 > [!div class="checklist"]
-> * 使用 SAS 令牌访问缩略图图像
-> * 启用服务器端加密
-> * 启用仅 HTTPS 传输
+> - 使用 SAS 令牌访问缩略图图像
+> - 启用服务器端加密
+> - 启用仅 HTTPS 传输
 
 本系列教程第四部分介绍如何对云存储应用程序进行监视和故障排除。
 

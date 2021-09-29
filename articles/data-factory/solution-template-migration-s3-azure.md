@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e313e3cb6711a844b4e0aa44a5453fc945a974d7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 456fc7a8df9103d1edd9d912f56bda3c58a10f9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737008"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743471"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2
 
@@ -106,23 +106,23 @@ ms.locfileid: "121737008"
 
 3. 转到“将历史数据从 AWS S3 迁移到 Azure Data Lake Storage Gen2”模板。  输入与外部控制表的连接，并输入 AWS S3 作为数据源存储，输入 Azure Data Lake Storage Gen2 作为目标存储。 请注意，外部控制表和存储过程引用同一连接。
 
-    ![显示“将历史数据从 AWS S3 迁移到 Azure Data Lake Storage Gen2”模板的屏幕截图。](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png" alt-text="显示“将历史数据从 AWS S3 迁移到 Azure Data Lake Storage Gen2”模板的屏幕截图。":::
 
 4. 选择“使用此模板”  。
 
-    ![突出显示“使用此模板”按钮的屏幕截图。](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png" alt-text="突出显示“使用此模板”按钮的屏幕截图。":::
     
 5. 将会看到已创建 2 个管道和 3 个数据集，如以下示例中所示：
 
-    ![显示使用模板创建的 2 个管道和 3 个数据集的屏幕截图。](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png" alt-text="显示使用模板创建的 2 个管道和 3 个数据集的屏幕截图。":::
 
 6. 转到“BulkCopyFromS3”管道，选择“调试”，然后输入“参数” 。 然后选择“完成”。
 
-    ![显示选择“完成”之前在哪里选择“调试”和输入参数的屏幕截图。](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png" alt-text="显示选择“完成”之前在哪里选择“调试”和输入参数的屏幕截图。":::
 
 7. 看到的结果类似于以下示例：
 
-    ![显示返回结果的屏幕截图。](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png" alt-text="显示返回结果的屏幕截图。":::
 
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>用于仅将已更改的文件从 Amazon S3 复制到 Azure Data Lake Storage Gen2 的模板
@@ -169,27 +169,27 @@ ms.locfileid: "121737008"
 
 3. 转到“将增量数据从 AWS S3 复制到 Azure Data Lake Storage Gen2”模板。  输入与外部控制表的连接，并输入 AWS S3 作为数据源存储，输入 Azure Data Lake Storage Gen2 作为目标存储。 请注意，外部控制表和存储过程引用同一连接。
 
-    ![创建新连接](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png" alt-text="创建新连接":::
 
 4. 选择“使用此模板”  。
 
-    ![使用此模板](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png" alt-text="使用此模板":::
     
 5. 将会看到已创建 2 个管道和 3 个数据集，如以下示例中所示：
 
-    ![查看管道](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png" alt-text="查看管道":::
 
 6.  转到“DeltaCopyFromS3”管道，选择“调试”，然后输入“参数” 。 然后选择“完成”。
 
-    ![单击“调试”****](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png" alt-text="单击“调试”****":::
 
 7. 看到的结果类似于以下示例：
 
-    ![查看结果](media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure5.png" alt-text="查看结果":::
 
 8. 还可以通过查询 *"select * from s3_partition_delta_control_table"* 来检查控制表中的结果，将看到类似于以下示例的输出：
 
-    ![显示运行查询后控制表结果的屏幕截图。](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    :::image type="content" source="media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png" alt-text="显示运行查询后控制表结果的屏幕截图。":::
     
 ## <a name="next-steps"></a>后续步骤
 

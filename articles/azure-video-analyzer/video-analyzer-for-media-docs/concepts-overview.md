@@ -2,19 +2,15 @@
 title: Azure 视频分析器媒体版（以前称为视频索引器）的概念 - Azure
 titleSuffix: Azure Video Analyzer for Media (formerly Video Indexer)
 description: 本文简要概述 Azure 视频分析器媒体版（以前称为视频索引器）的术语和概念。
-services: azure-video-analyzer
-author: Juliako
-manager: femila
-ms.topic: article
-ms.subservice: azure-video-analyzer-media
+ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: juliako
-ms.openlocfilehash: 9b7f6729e437a35001e5fa59d977c3c60321ef3a
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 6b68ee08d6569bd22709e5b9ee25cbbf745c0470
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112123362"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630160"
 ---
 # <a name="video-analyzer-for-media-concepts"></a>视频分析器媒体版的概念
 

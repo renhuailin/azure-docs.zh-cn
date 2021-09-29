@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 12b6e3d0202de03c6378438457900601e4d091b8
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 814514ede598d0de435c767ee29ef6aa4564d003
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113129255"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616567"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>适用于 Azure 云服务的 Azure 安全基线
 
@@ -193,7 +193,7 @@ Azure 安全中心监视：无
 
 **指导**：Microsoft 为 Azure 云服务维护 Azure 资源的时间源。 客户可能需要创建网络规则，以允许使用 UDP 协议通过端口 123 访问其环境中使用的时间服务器。
 
-- [NTP 服务器访问](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
+- [NTP 服务器访问](../firewall/protect-azure-virtual-desktop.md#additional-considerations)
 
 **责任**：共享
 

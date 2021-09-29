@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 26618382223a87f779f95452000a39126f37efbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f56b73c78d7abbfe3fe1f3dce5218c54fcb6fdf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675436"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830277"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Azure AD SAML Toolkit 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "92675436"
 * 可让用户使用其 Azure AD 帐户自动登录到 Azure AD SAML Toolkit。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -108,11 +108,11 @@ ms.locfileid: "92675436"
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Azure AD SAML Toolkit”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-azure-ad-saml-toolkit-sso"></a>配置 Azure AD SAML Toolkit SSO
 
@@ -156,7 +156,7 @@ ms.locfileid: "92675436"
 
 2. 直接转到 SAML Toolkit 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 单击访问面板中的 SAML Toolkit 磁贴时，应会自动登录到设置了 SSO 的 SAML Toolkit。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+3. 可以使用 Microsoft 访问面板。 单击访问面板中的 SAML Toolkit 磁贴时，应会自动登录到设置了 SSO 的 SAML Toolkit。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4d1aab07514f4a42d011cf75a9a22b34246a5653
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6dd813d2bd046d6b4256bd17b447b8d5660bdea2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734535"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564049"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保护 Azure API 管理 API
 
@@ -40,7 +40,8 @@ ms.locfileid: "121734535"
 # <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧窗格中，选择“Azure AD B2C”。 另外，你还可以选择“所有服务”，然后搜索并选择“Azure AD B2C”。 
 1. 选择“应用注册”，然后选择“拥有的应用程序”选项卡 。
 1. 记录 webapp1 或你之前创建的其他应用程序的“应用程序(客户端) ID”列中的值。
@@ -48,7 +49,8 @@ ms.locfileid: "121734535"
 # <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧窗格中，选择“Azure AD B2C”。 另外，你还可以选择“所有服务”，然后搜索并选择“Azure AD B2C”。 
 1. 在“管理”下选择“应用程序(旧版)”。 
 1. 记录 webapp1 或你之前创建的其他应用程序的“应用程序 ID”列中的值。
@@ -160,7 +162,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 1. 接下来添加以下标头：
 
-    | 键 | 值 |
+    | 密钥 | 值 |
     | --- | ----- |
     | `Authorization` | 之前记录的已编码令牌值，带有 `Bearer ` 前缀（包括“Bearer”后面的空格） |
     | `Ocp-Apim-Subscription-Key` | 之前记录的 Azure API 管理订阅密钥。 |

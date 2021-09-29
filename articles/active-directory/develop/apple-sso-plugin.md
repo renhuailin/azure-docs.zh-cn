@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
-ms.custom: aaddev
-ms.openlocfilehash: aae64b3ef63d5ac18bb26019ba74756438adfc7a
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: e03b288934ce01a25a8ee7b4ad3569af6507b8a6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272260"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734767"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "122272260"
 
 企业 SSO 插件目前是下列应用中的内置功能：
 
-* [Microsoft Authenticator](../user-help/user-help-auth-app-overview.md)：iOS、iPadOS
+* [Microsoft Authenticator](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)：iOS、iPadOS
 * Microsoft Intune [公司门户](/mem/intune/apps/apps-company-portal-macos)macOS
 
 ## <a name="features"></a>功能
@@ -46,15 +46,15 @@ ms.locfileid: "122272260"
 若要使用适用于 Apple 设备的 Microsoft 企业 SSO 插件：
 
 - 设备必须支持且已安装具有适用于 Apple 设备的 Microsoft 企业 SSO 插件的应用：
-  - iOS 13.0 及更高版本：[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)
-  - iPadOS 13.0 及更高版本：[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)
+  - iOS 13.0 及更高版本：[Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
+  - iPadOS 13.0 及更高版本：[Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
   - macOS 10.15 及更高版本：[Intune 公司门户应用](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)
 - 设备必须在 MDM 中注册，例如通过 Microsoft Intune。
 - 必须将配置推送到设备，以启用企业 SSO 插件。 Apple 需要此安全约束。
 
 ### <a name="ios-requirements"></a>iOS 要求：
 - 必须在设备上安装 iOS 13.0 或更高版本。
-- 必须在设备上安装提供适用于 Apple 设备的 Microsoft 企业 SSO 插件的 Microsoft 应用程序。 对于公共预览版，这些应用程序是 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)。
+- 必须在设备上安装提供适用于 Apple 设备的 Microsoft 企业 SSO 插件的 Microsoft 应用程序。 对于公共预览版，这些应用程序是 [Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)。
 
 
 ### <a name="macos-requirements"></a>macOS 要求：
@@ -173,7 +173,7 @@ macOS 设置：
 
 | 键 | 类型 | 值 |
 |--|--|--|
-| `Enable_SSO_On_All_ManagedApps` | 整数 | `1` 表示为所有托管应用启用 SSO，`0` 表示为所有托管应用禁用 SSO。 |
+| `Enable_SSO_On_All_ManagedApps` | Integer | `1` 表示为所有托管应用启用 SSO，`0` 表示为所有托管应用禁用 SSO。 |
 | `AppAllowList` | 字符串<br/>（逗号分隔的列表） | 允许其参与 SSO 的应用程序的捆绑 ID。 |
 | `AppBlockList` | 字符串<br/>（逗号分隔的列表） | 不允许其参与 SSO 的应用程序的捆绑 ID。 |
 | `AppPrefixAllowList` | 字符串<br/>（逗号分隔的列表） | 允许其参与 SSO 的应用程序的捆绑 ID 前缀。 |

@@ -1,19 +1,18 @@
 ---
 title: 在 Azure Stack Edge Pro GPU 设备上启用 Edge 容器注册表
 description: 介绍如何在 Azure Stack Edge Pro GPU 设备上启用本地 Edge 容器注册表。
-services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 56b691b2755b5e248b16e338f8fd82864f5bf218
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 18fa68b6d0d0922bad0a632ba10bd82a8cfe8506
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560329"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643016"
 ---
 # <a name="enable-edge-container-registry-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上启用 Edge 容器注册表
 
@@ -59,7 +58,7 @@ Edge 容器注册表在 Edge（你的 Azure Stack Edge Pro 设备）上提供一
     
     此操作可能需要几分钟才能完成。
 
-    下面是该命令的示例输出：  
+    下面是该命令的示例输出：    
             
     ```powershell
     [10.128.44.40]: PS>Set-HcsKubernetesContainerRegistry
@@ -78,9 +77,9 @@ Edge 容器注册表在 Edge（你的 Azure Stack Edge Pro 设备）上提供一
     Endpoint                                   IPAddress    Username     Password
     --------                                   ---------    --------     --------
     ecr.dbe-hw6h1t2.microsoftdatabox.com:31001 10.128.44.41 ase-ecr-user i3eTsU4zGYyIgxV
-    ``` 
+    ```    
 
-1. 记下 `Get-HcsKubernetesContainerRegistryInfo` 的输出中的用户名和密码。 这些凭据用于在推送映像时登录到 Edge 容器注册表。         
+1. 记下 `Get-HcsKubernetesContainerRegistryInfo` 的输出中的用户名和密码。 这些凭据用于在推送映像时登录到 Edge 容器注册表。            
 
 
 ## <a name="manage-container-registry-images"></a>管理容器注册表映像
@@ -95,7 +94,7 @@ Edge 容器注册表在 Edge（你的 Azure Stack Edge Pro 设备）上提供一
         ![“设备”页上的 Edge 容器注册表终结点](media/azure-stack-edge-gpu-edge-container-registry/get-edge-container-registry-endpoint-1.png) 
     1. 复制此终结点，并在客户端的 `C:\Windows\System32\Drivers\etc\hosts` 文件中创建相应的 DNS 条目，以连接到 Edge 容器注册表终结点。 
 
-        <IP address of the Kubernetes main node>    <Edge container registry endpoint> 
+        \<IP address of the Kubernetes main node\>    \<Edge container registry endpoint\> 
         
         ![添加 Edge 容器注册表终结点的 DNS 条目](media/azure-stack-edge-gpu-edge-container-registry/add-domain-name-service-entry-hosts-1.png)    
 

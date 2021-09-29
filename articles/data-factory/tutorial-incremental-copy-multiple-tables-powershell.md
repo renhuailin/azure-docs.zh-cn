@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 07/05/2021
-ms.openlocfilehash: 16feecb1560c114520b10ed2adaef578534052f4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 46c6dfa381ec2dff04212c38a7580859bcba4762
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638401"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733026"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
@@ -60,7 +60,7 @@ ms.locfileid: "122638401"
 
     下面是高级解决方案示意图： 
 
-    ![以增量方式加载数据](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png" alt-text="以增量方式加载数据":::
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -820,11 +820,11 @@ END
 
 5. 在 Azure 数据工厂主页上，选择左侧的“监视”。 
 
-    ![屏幕截图显示了 Azure 数据工厂主页。](media/doc-common-process/get-started-page-monitor-button.png)    
+    :::image type="content" source="media/doc-common-process/get-started-page-monitor-button.png" alt-text="屏幕截图显示了 Azure 数据工厂主页。":::    
 
 6. 可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”列中的链接。
 
-    ![屏幕截图显示了数据工厂的管道运行，包括你的管道。](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png" alt-text="屏幕截图显示了数据工厂的管道运行，包括你的管道。":::    
 7. 在“操作”列中选择链接时，会看到管道的所有活动运行。 
 
 8. 若要回到“管道运行”视图，请选择“所有管道运行” 。 

@@ -12,12 +12,12 @@ ms.date: 02/05/2021
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f8ee443f12ce4c28e5bb883be686a4610eeec38
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 2ef33a1fa80e443a51583551f2ec3ceb65da3f88
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768902"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791643"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>将应用程序身份验证迁移到 Azure Active Directory
 
@@ -503,7 +503,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 | ------------------------ | --------------------------------------------------- |
 | OAuth/OpenID Connect | 选择“企业应用程序”&gt;“权限”，并确保你已在应用的用户设置中同意该应用程序在你的组织中使用。 |
 | **基于 SAML 的 SSO** | 使用“单一登录”下的[测试 SAML 设置](./debug-saml-sso-issues.md)按钮。 |
-| 基于密码的 SSO | 下载并安装 [MyApps 安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。 此扩展可帮助你启动组织中任何需要你使用 SSO 过程的云应用。 |
+| 基于密码的 SSO | 下载并安装 [MyApps 安全登录扩展](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension)。 此扩展可帮助你启动组织中任何需要你使用 SSO 过程的云应用。 |
 
 | [应用程序代理](../app-proxy/application-proxy.md) | 确保连接器正在运行并已分配给应用程序。 访问[应用程序代理故障排除指南](../app-proxy/application-proxy-troubleshoot.md)以获取进一步的帮助。 |
 
@@ -553,7 +553,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 使应用可被发现
 
-将用户指向 [MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) 门户体验。 在此处，他们可以访问所有基于云的应用，使用 [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)提供的应用，以及使用[应用程序代理](../app-proxy/application-proxy.md)的应用（前提是他们有权访问这些应用）。
+将用户指向 [MyApps](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension) 门户体验。 在此处，他们可以访问所有基于云的应用，使用 [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)提供的应用，以及使用[应用程序代理](../app-proxy/application-proxy.md)的应用（前提是他们有权访问这些应用）。
 
 可指导用户了解如何发现其应用：
 

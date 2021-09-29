@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 42a1318ffb4c0063875939c8d3633ea513818ba4
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 2d1cd9053f5be915015653e1b522e82eff7b978c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397071"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571228"
 ---
 # <a name="updating-ml-studio-classic-models-using-update-resource-activity"></a>使用更新资源活动更新机器学习工作室（经典）模型
 
@@ -47,7 +48,7 @@ ms.locfileid: "122397071"
 
 下图描绘了机器学习工作室（经典）中训练终结点与评分终结点之间的关系。
 
-![Web 服务](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/web-services.png" alt-text="Web 服务":::
 
 可以使用“机器学习工作室(经典)批处理执行活动”调用训练 Web 服务。 对于数据评分，调用训练 Web 服务与调用机器学习工作室（经典）Web 服务（评分 Web 服务）是相同的。 前面几部分详细介绍了如何从 Azure 数据工厂管道调用机器学习工作室（经典）Web 服务。 
 
@@ -59,7 +60,7 @@ ms.locfileid: "122397071"
 * 单击“批处理执行”获取 **mlEndpoint** JSON 属性的 URI 值。
 * 单击“更新资源”链接以获取 **updateResourceEndpoint** JSON 属性的 URI 值。 API 密钥就在终结点页面上（位于右下角）。
 
-![可更新终结点](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png" alt-text="可更新终结点":::
 
 以下示例为 AzureML 链接服务提供示例 JSON 定义。 此链接服务使用 apiKey 进行身份验证。  
 
@@ -111,7 +112,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 下面是示例管道的图示视图。 如你所见，工作室（经典版）批处理执行活动采用训练输入并生成训练输出（iLearner 文件）。 工作室（经典版）更新资源活动采用此训练输出并更新评分 Web 服务终结点中的模型。 更新资源活动不会生成任何输出。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
 
-![管道关系图](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png" alt-text="管道关系图":::
 
 ### <a name="azure-blob-storage-linked-service"></a>Azure Blob 存储链接服务：
 Azure 存储保留以下数据：
@@ -258,7 +259,7 @@ Azure 存储保留以下数据：
 ### <a name="pipeline"></a>管道
 管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 机器学习工作室（经典）批处理执行活动采用训练数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
 
-![管道关系图](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png" alt-text="管道关系图":::
 
 ```JSON
 {

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: c1fa9d27bbdfe91eebb74186e69cf707166384fd
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 197b04a659ff2635742907339ba9b48e00668cff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228619"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732730"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -89,7 +89,7 @@ ms.locfileid: "122228619"
 
 ### <a name="strong-credential-management"></a>强大的凭据管理措施
 
-密码本身的安全性无法防止恶意参与者获取对你的环境的访问权限。 至少，任何具有特权帐户的用户都必须启用多因素身份验证 (MFA)。 理想情况下，应该启用[组合式注册](../authentication/concept-registration-mfa-sspr-combined.md)，并要求所有用户使用[组合式注册体验](../user-help/security-info-setup-signin.md)来注册 MFA 和 SSPR。 最终，我们建议采用一种策略来[提供复原能力](../authentication/concept-resilient-controls.md)，以降低由于不可预见的情况而导致锁定的风险。
+密码本身的安全性无法防止恶意参与者获取对你的环境的访问权限。 至少，任何具有特权帐户的用户都必须启用多因素身份验证 (MFA)。 理想情况下，应该启用[组合式注册](../authentication/concept-registration-mfa-sspr-combined.md)，并要求所有用户使用[组合式注册体验](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)来注册 MFA 和 SSPR。 最终，我们建议采用一种策略来[提供复原能力](../authentication/concept-resilient-controls.md)，以降低由于不可预见的情况而导致锁定的风险。
 
 ![组合式用户体验流程](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 
@@ -372,7 +372,7 @@ Microsoft Intune 应用管理 (MAM) 能够将数据保护控件（如存储加�
 - [Office 365 Management Activity API 参考](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 内容包](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 安全的标识基础结构有 12 个方面。 此列表将帮助你进一步保护和管理凭据、定义身份验证体验、委派分配、衡量使用情况，并根据企业安全状况定义访问策略。
 

@@ -3,20 +3,18 @@ title: 使用见解标记 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
 description: 展示了如何将图像的见解标记与必应视觉搜索 API 配合使用来获取有关图像的见解。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
-ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 685bdc3f67594c51f6ab749c33ab30e940faee34
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 04239a1fb2ce060ac2622c8607d66c5b5aacc790
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288277"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663186"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用见解标记来获取图像的见解
 

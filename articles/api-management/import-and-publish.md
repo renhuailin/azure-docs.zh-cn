@@ -1,18 +1,18 @@
 ---
 title: 教程 - 在 Azure API 管理中导入和发布第一个 API
 description: 本教程将在 Azure 门户中将 OpenAPI 规范 API 导入 Azure API 管理并测试该 API。
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.author: apimpm
-ms.openlocfilehash: 0187a1c15315835c1606913acfd52dc930e92443
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: danlep
+ms.openlocfilehash: 8ac58d354c5a92482f2cd47c59316fca9ba32025
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538644"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627095"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>教程：导入和发布第一个 API
 
@@ -20,7 +20,7 @@ ms.locfileid: "123538644"
 
 将后端 API 导入 API 管理后，API 管理 API 将成为后端 API 的外观。 可以在 API 管理中自定义该外观，而无需修改后端 API。 有关详细信息，请参阅[转换和保护 API](transform-api.md)。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 将 API 导入 API 管理

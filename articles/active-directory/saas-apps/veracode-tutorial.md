@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: jeedes
-ms.openlocfilehash: f56f2dc974df58575c72c93a0609026cd7bbf88d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38f822ad8c88f38a1e6b5b5dce4d3d51a629eee7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652617"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124825358"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Veracode 集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "101652617"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 转到“企业应用程序”，并选择“所有应用程序”。  
+1. 转到“企业应用程序”，并选择“所有应用程序”。 
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Veracode”。
 1. 从结果面板中选择“Veracode”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -170,7 +170,7 @@ ms.locfileid: "101652617"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Veracode。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Veracode 磁贴时，应当会自动登录到为其设置了 SSO 的 Veracode。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Veracode 磁贴时，应当会自动登录到为其设置了 SSO 的 Veracode。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

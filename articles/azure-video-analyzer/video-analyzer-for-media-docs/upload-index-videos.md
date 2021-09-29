@@ -1,20 +1,15 @@
 ---
 title: 使用 Azure 视频分析器媒体版（以前称为视频索引器）上传视频和编制视频索引
-titleSuffix: Azure Video Analyzer for Media
 description: 本主题演示如何通过 Azure 视频分析器媒体版（以前称为视频索引器）使用 API 来上传视频和编制视频索引。
-author: Juliako
-manager: femila
 ms.service: azure-video-analyzer
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.date: 05/12/2021
-ms.author: juliako
-ms.openlocfilehash: ce8804d1f057bc8f67331211c7ed4b734750aa19
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 4020050cdcc1f9910ab14117b45bb007f5915dca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119075"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658766"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -353,7 +348,7 @@ public class AccountContractSlim
 
 ## <a name="firewall"></a>防火墙
 
-请参阅[防火墙后的存储帐户](faq.md#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall)。
+请参阅[防火墙后的存储帐户](faq.yml#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall)。
 
 ## <a name="next-steps"></a>后续步骤
 

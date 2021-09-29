@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: d6cb1980c93e5161f02b79b05f1128ba777027c6
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 19aee45977dfde4b401dc4736e24970e311a4cc9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112281946"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621122"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-powershell-preview"></a>教程：使用 Azure PowerShell 添加角色分配条件以限制对 Blob 的访问（预览版）
 
@@ -29,8 +29,8 @@ ms.locfileid: "112281946"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 将条件添加到角色分配
-> * 基于 blob 索引标记限制对 blob 的访问
+> - 将条件添加到角色分配
+> - 基于 blob 索引标记限制对 blob 的访问
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -132,7 +132,7 @@ ms.locfileid: "112281946"
 1. 将以下 Blob 索引标记添加到文本文件。 有关详细信息，请参阅[使用 Blob 索引标记（预览版）管理和查找 Azure Blob 存储中的数据](../blobs/storage-blob-index-how-to.md)。
 
     > [!NOTE]
-    > Blob 还支持存储用户定义的任意键-值元数据。 尽管元数据与 Blob 索引标记类似，但你也必须将 Blob 索引标记与条件配合使用。 
+    > Blob 还支持存储用户定义的任意键-值元数据。 尽管元数据与 Blob 索引标记类似，但你也必须将 Blob 索引标记与条件配合使用。
 
     | 密钥 | 值 |
     | --- | --- |
@@ -193,7 +193,7 @@ ms.locfileid: "112281946"
     ```
 
     这是一个输出示例：
-    
+
     ```azurepowershell
     RoleAssignmentId   : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microso
                          ft.Authorization/roleAssignments/<roleAssignmentId>
@@ -257,7 +257,7 @@ ms.locfileid: "112281946"
     ```
 
     下面是一个输出示例。 请注意，由于添加了上述条件，因此无法读取该文件。
-    
+
     ```azurepowershell
     Get-AzStorageBlob : This request is not authorized to perform this operation using this permission. HTTP Status Code:
     403 - HTTP Error Message: This request is not authorized to perform this operation using this permission.
@@ -272,7 +272,7 @@ ms.locfileid: "112281946"
         + FullyQualifiedErrorId : StorageException,Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet.GetAzureStorageBlob
        Command
     ```
-    
+
 1. 读取 Cascade 项目的文件。
 
     ```azurepowershell
@@ -280,10 +280,10 @@ ms.locfileid: "112281946"
     ```
 
     下面是一个输出示例。 你会发现，由于该项目带有 Project=Cascade 标记，因此可以读取该文件。
-    
+
     ```azurepowershell
        AccountName: <storageAccountName>, ContainerName: <containerName>
-    
+
     Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotT
                                                                                                                   ime
     ----                 --------  ------          -----------                    ------------         ---------- ---------
@@ -339,7 +339,7 @@ ms.locfileid: "112281946"
                          torage/storageAccounts/blobServices/containers/blobs/tags:Project<$key_case_sensitive$>]
                          StringEquals 'Baker'))
     ```
-    
+
 ## <a name="step-9-clean-up-resources"></a>步骤 9：清理资源
 
 1. 使用 [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) 删除添加的角色分配和条件。

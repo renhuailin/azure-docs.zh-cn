@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 096315d314555478b993151bd1b562010cb24949
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735325"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761251"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>教程：Azure Active Directory 单一登录与 AwareGo 的集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "98735325"
    a. 在“名称”框中，输入 **B.Simon**。  
    b. 在“用户名”框中，按以下格式输入用户名：`<username>@<companydomain>.<extension>`（例如 B.Simon@contoso.com）。  
    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值，以供后续使用 。  
-   d. 选择“创建”。
+   d. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -139,7 +139,7 @@ ms.locfileid: "98735325"
 
 * 直接转到 AwareGo 登录页面，并从那里启动登录流。
 
-* 转到 Microsoft“我的应用”。 在“我的应用”中选择 AwareGo 磁贴后，你将重定向到 AwareGo 登录页面。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
+* 转到 Microsoft“我的应用”。 在“我的应用”中选择 AwareGo 磁贴后，你将重定向到 AwareGo 登录页面。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

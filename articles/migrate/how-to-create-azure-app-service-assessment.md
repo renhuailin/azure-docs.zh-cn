@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 07/28/2021
-ms.openlocfilehash: 39dfd96a92dcce152a6a8ff5afdd1c18b2f1d754
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ffaeaa383ee3d21bfe5a1798c440e1bccc039448
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782234"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810437"
 ---
 # <a name="create-an-azure-app-service-assessment"></a>创建 Azure 应用服务评估
 
@@ -88,7 +88,7 @@ Azure 应用服务评估提供了一种调整大小标准：
 
 #### <a name="azure-app-service-cost-details"></a>Azure 应用服务成本详细信息
 
-[应用服务计划](/azure/app-service/overview-hosting-plans)会根据所用的计算资源量产生[费用](https://azure.microsoft.com/pricing/details/app-service/windows/)。
+[应用服务计划](../app-service/overview-hosting-plans.md)会根据所用的计算资源量产生[费用](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 
 ### <a name="review-readiness"></a>查看就绪情况
 

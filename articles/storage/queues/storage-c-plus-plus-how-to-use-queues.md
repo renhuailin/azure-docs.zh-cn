@@ -1,19 +1,19 @@
 ---
 title: 如何使用队列存储 (C++) - Azure 存储
 description: 了解如何使用 Azure 中的队列存储服务。 示例用 C++ 编写。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 07/16/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 0e8274378ed321dc7c3d6ddcfb85f5bb0a2f7993
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: f83d10b59ae2af24ddf690e773ca63e71bff02b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276274"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564990"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>如何通过 C++ 使用队列存储
 
@@ -278,7 +278,7 @@ queue.delete_queue_if_exists();
 
 现在，你已了解了队列存储的基本知识，可以通过单击以下链接了解有关 Azure 存储的详细信息。
 
-- [如何通过 C++ 使用 Blob 存储](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
+- [如何通过 C++ 使用 Blob 存储](../blobs/quickstart-blobs-c-plus-plus.md)
 - [如何通过 C++ 使用表存储](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 - [使用 C++ 列出 Azure 存储资源](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [适用于 C++ 的 Azure 存储客户端库参考](https://azure.github.io/azure-storage-cpp)

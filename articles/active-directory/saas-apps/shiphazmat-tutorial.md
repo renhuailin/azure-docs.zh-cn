@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 4fb6c8259e4225be19492cc67602ba4b98fd47e7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b96acda6ee882f54ea290d5c610d7a7a2fc7496a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92520585"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801175"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shiphazmat"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ShipHazmat 集成
 
@@ -81,7 +81,7 @@ ms.locfileid: "92520585"
 
 1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`ShipHazmat<CustomOrganization>Sso`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`ShipHazmat<CustomOrganization>Sso`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.shiphazmat.net/<CustomOrganization>/sso/saml/v1/ConsumerService.aspx`
 
@@ -145,7 +145,7 @@ ms.locfileid: "92520585"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 ShipHazmat 磁贴时，应当会自动登录到为其设置了 SSO 的 ShipHazmat。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 ShipHazmat 磁贴时，应当会自动登录到为其设置了 SSO 的 ShipHazmat。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

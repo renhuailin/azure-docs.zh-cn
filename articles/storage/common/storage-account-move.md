@@ -10,12 +10,12 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ff972965533dac423cafc731aa4a10165570977
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c447d5cacc0c1d60a7594c1b6e6f2082941f7ae9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258772"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587435"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -24,13 +24,13 @@ ms.locfileid: "123258772"
 本文介绍如何执行以下操作：
 
 > [!div class="checklist"]
-> 
-> * 导出模板。
-> * 通过添加目标区域和存储帐户名称来修改模板。
-> * 部署该模板以创建新的存储帐户。
-> * 配置新的存储帐户。
-> * 将数据移到新的存储帐户。
-> * 删除源区域中的资源。
+>
+> - 导出模板。
+> - 通过添加目标区域和存储帐户名称来修改模板。
+> - 部署该模板以创建新的存储帐户。
+> - 配置新的存储帐户。
+> - 将数据移到新的存储帐户。
+> - 删除源区域中的资源。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,11 +42,11 @@ ms.locfileid: "123258772"
 
 ## <a name="prepare"></a>准备
 
-若要开始，请导出然后修改某个资源管理器模板。 
+若要开始，请导出然后修改某个资源管理器模板。
 
 ### <a name="export-a-template"></a>导出模板
 
-此模板包含描述存储帐户的设置。 
+此模板包含描述存储帐户的设置。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -73,6 +73,7 @@ ms.locfileid: "123258772"
    ```azurepowershell-interactive
    Connect-AzAccount
    ```
+
 2. 如果你的标识已关联到多个订阅，请将活动订阅设置为要移动的存储帐户的订阅。
 
    ```azurepowershell-interactive
@@ -94,7 +95,7 @@ ms.locfileid: "123258772"
 
 ---
 
-### <a name="modify-the-template"></a>修改模板 
+### <a name="modify-the-template"></a>修改模板
 
 通过更改存储帐户名称和区域来修改模板。
 
@@ -117,7 +118,7 @@ ms.locfileid: "123258772"
 6. 选择“加载文件”，然后按说明加载在上一部分下载的 **template.json** 文件。
 
 7. 在 **template.json** 文件中，通过设置存储帐户名称的默认值来为目标存储帐户命名。 此示例将存储帐户名称的默认值设置为 `mytargetaccount`。
-    
+
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -127,7 +128,7 @@ ms.locfileid: "123258772"
             "type": "String"
         }
     },
- 
+
 8. Edit the **location** property in the **template.json** file to the target region. This example sets the target region to `centralus`.
 
     ```json
@@ -138,6 +139,7 @@ ms.locfileid: "123258772"
          "location": "centralus"
          }]          
     ```
+
     若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不带空格的区域名称，“美国中部” = “centralus”。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -145,7 +147,7 @@ ms.locfileid: "123258772"
 若要使用 PowerShell 部署模板：
 
 1. 在 **template.json** 文件中，通过设置存储帐户名称的默认值来为目标存储帐户命名。 此示例将存储帐户名称的默认值设置为 `mytargetaccount`。
-    
+
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -155,7 +157,7 @@ ms.locfileid: "123258772"
             "type": "String"
         }
     },
-    ``` 
+    ```
 
 2. 将 **template.json** 文件中的 **location** 属性编辑为目标区域。 此示例将目标区域设置为 `eastus`。
 
@@ -173,13 +175,14 @@ ms.locfileid: "123258772"
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
     ```
+
 ---
 
 <a id="move"></a>
 
 ## <a name="move"></a>移动
 
-部署该模板，以在目标区域中创建新的存储帐户。 
+部署该模板，以在目标区域中创建新的存储帐户。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -187,11 +190,11 @@ ms.locfileid: "123258772"
 
 2. 输入或选择属性值：
 
-- **订阅**：选择 Azure 订阅。
+   - **订阅**：选择 Azure 订阅。
 
-- **资源组**：选择“新建”  并为资源组指定名称。
+   - **资源组**：选择“新建”  并为资源组指定名称。
 
-- **位置**：选择 Azure 位置。
+   - **位置**：选择 Azure 位置。
 
 3. 单击“我同意上述条款和条件”复选框，然后单击“选择购买”按钮。 
 
@@ -212,11 +215,12 @@ ms.locfileid: "123258772"
    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "<name of your local template file>"  
    ```
+
 ---
 
 ### <a name="configure-the-new-storage-account"></a>配置新的存储帐户
 
-某些功能不会导出到模板，因此必须将其添加到新的存储帐户。 
+某些功能不会导出到模板，因此必须将其添加到新的存储帐户。
 
 下表列出了这些功能，以及有关将其添加到新存储帐户的指导。
 
@@ -228,14 +232,14 @@ ms.locfileid: "123258772"
 | **警报** | [使用 Azure Monitor 创建、查看和管理活动日志警报](../../azure-monitor/alerts/alerts-activity-log.md) |
 | **内容分发网络 (CDN)** | [在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob](../blobs/storage-https-custom-domain-cdn.md) |
 
-> [!NOTE] 
-> 如果为源存储帐户设置 CDN，只需将现有 CDN 的源更改为新帐户的主 blob 服务终结点（或主静态网站终结点）。 
+> [!NOTE]
+> 如果为源存储帐户设置 CDN，只需将现有 CDN 的源更改为新帐户的主 blob 服务终结点（或主静态网站终结点）。
 
 ### <a name="move-data-to-the-new-storage-account"></a>将数据移到新的存储帐户
 
 AzCopy 是移动数据的首选工具。 此方法已针对性能进行优化。  速度较快的原因之一是数据直接在存储服务器之间复制。因此，AzCopy 不会占用计算机的网络带宽。 可在命令行或自定义脚本中使用 AzCopy。 请参阅 [AzCopy 入门](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-你还可以使用 Azure 数据工厂来移动数据。 它提供了直观的用户界面。 要使用 Azure 数据工厂，请参阅以下任意链接： 
+你还可以使用 Azure 数据工厂来移动数据。 它提供了直观的用户界面。 要使用 Azure 数据工厂，请参阅以下任意链接：
 
   - [使用 Azure 数据工厂向/从 Azure Blob 存储复制数据](/azure/data-factory/connector-azure-blob-storage)
   - [使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据](/azure/data-factory/connector-azure-data-lake-storage)
@@ -267,12 +271,12 @@ AzCopy 是移动数据的首选工具。 此方法已针对性能进行优化。
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount
 ```
+
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你已将一个 Azure 存储帐户从一个区域移到了另一个区域，并清理了源资源。  若要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅：
-
 
 - [将资源移到新资源组或订阅中](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 - [将 Azure VM 移到另一区域](../../site-recovery/azure-to-azure-tutorial-migrate.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: f3fbab143fd330e017e9e51c74a403d9bfb687ff
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 472bf22c723bbbf08d97ca95fd595e1559879714
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455614"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808245"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SignalFx 集成
 
@@ -146,7 +146,7 @@ ms.locfileid: "110455614"
 
 * 当新的测试用户首次登录时，Azure 会强制要求更改密码。 如果出现这种情况，SSO 登录过程将不会完成；测试用户会被引导到 Azure 门户。 若要进行故障排除，测试用户应更改其密码，然后导航到 SignalFx 登录页或“MyApps”并重试。
     * 单击“MyApps”中的 SignalFx 磁贴时，你会自动登录到 SignalFx。 
-        * 有关 MyApps 的详细信息，请参阅 [MyApps 简介](../user-help/my-apps-portal-end-user-access.md)。
+        * 有关 MyApps 的详细信息，请参阅 [MyApps 简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 * 可以通过 MyApps 或已分配到组织的自定义登录页访问 SignalFx 应用程序。 测试用户应从上述任一位置开始测试集成。
     * 测试用户可以使用在此过程的前面部分为 b.simon\@contoso.com 创建的凭据。

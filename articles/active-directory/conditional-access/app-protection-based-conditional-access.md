@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 720cd46ac37a82f56aa37c0041ca8d92db177071
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcb64886b1d1c8b324863a762b0a302e9521dab1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99575765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605290"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：要求应用保护策略和核准的客户端设备通过条件访问来访问云应用
 
@@ -45,8 +45,8 @@ ms.locfileid: "99575765"
 **步骤 1：为 Microsoft 365 配置 Azure AD 条件访问策略**
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
@@ -70,7 +70,7 @@ ms.locfileid: "99575765"
 对于此步骤中的条件访问策略，配置以下组件：
 
 1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
-1. 选择“新策略”  。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
@@ -96,8 +96,8 @@ ms.locfileid: "99575765"
 **步骤 1：为 Microsoft 365 配置 Azure AD 条件访问策略**
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
@@ -129,8 +129,8 @@ ms.locfileid: "99575765"
 **步骤 1：在访问 Exchange Online 和 SharePoint 时，基于 Android 和 iOS 的新式身份验证客户端的策略要求使用已批准的客户端应用和应用保护策略。**
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
@@ -151,8 +151,8 @@ ms.locfileid: "99575765"
 
 **步骤 2：Exchange ActiveSync 客户端的策略，要求使用批准的客户端应用。**
 
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
-ms.openlocfilehash: d635d0c87cb6f759c15461abe9efc9dd42297ddb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fbeadc3a8c947f673ca134e0daf8a0a1c1d68b80
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964913"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787502"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理为发布的应用设置自定义主页
 
@@ -32,7 +32,7 @@ ms.locfileid: "111964913"
 - 需要将 `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` 设置为主页 URL，以便外部用户首先看到登录页。
 
 > [!NOTE]
-> 向用户提供对已发布应用的访问权限时，会在[我的应用](../user-help/my-apps-portal-end-user-access.md)和 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)中显示这些应用。
+> 向用户提供对已发布应用的访问权限时，会在[我的应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)和 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)中显示这些应用。
 
 ## <a name="before-you-start"></a>开始之前
 

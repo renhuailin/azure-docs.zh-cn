@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: jeedes
-ms.openlocfilehash: d1ca90d00dad66bf88f767f46d9cd2839fdd57b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99d682cc6d2ae1d7bbdb039953df60aa22dbe00f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519157"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745659"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wisdom-by-invictus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Wisdom by Invictus 的集成
 
@@ -82,11 +82,11 @@ ms.locfileid: "92519157"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：`https://invictuselearning-pool7.com/?option=saml_user_login&idp=Microsoft` 
+    在“登录 URL”文本框中，键入 URL：`https://invictuselearning-pool7.com/?option=saml_user_login&idp=Microsoft`
 
 1. 单击“ **保存**”。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "92519157"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Wisdom by Invictus”磁贴时，应会自动登录到设置了 SSO 的 Wisdom by Invictus。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Wisdom by Invictus”磁贴时，应会自动登录到设置了 SSO 的 Wisdom by Invictus。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

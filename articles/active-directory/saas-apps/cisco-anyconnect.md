@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e655177f37ecafea407899c4512d803ba2295ad
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: d9f8e74119d201cd3449b9a3b0f1a3a85c395181
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252798"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813896"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco AnyConnect 集成
 
@@ -181,7 +181,7 @@ ms.locfileid: "122252798"
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应能够自动登录到为其设置了 SSO 的 Cisco AnyConnect
-* 可以使用 Microsoft 访问面板。 单击访问面板中的 Cisco AnyConnect 磁贴时，应当会自动登录到你为其设置了 SSO 的 Cisco AnyConnect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 可以使用 Microsoft 访问面板。 单击访问面板中的 Cisco AnyConnect 磁贴时，应当会自动登录到你为其设置了 SSO 的 Cisco AnyConnect。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 

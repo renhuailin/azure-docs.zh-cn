@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9d61e9ff753c37268be19e95db9450e2cd923d96
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: ca8e0f2303ed31660e92f084c0f6760a60f40c22
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279674"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659469"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>步骤 3 - 进行设置，以迁移到 V3 REST API 或客户端 SDK
 
@@ -77,11 +77,11 @@ V3 API 基于 Azure 资源管理 (ARM)。 它使用 Azure Active Directory (Azur
 
 如果只想使用 PackageManager 安装最新的 SDK，请使用以下命令：
 
-```Install-Package Microsoft.Azure.Management.Media```
+`Install-Package Microsoft.Azure.Management.Media`
 
 若要使用 .NET CLI 安装最新的 SDK，请使用以下命令：
 
-```dotnet add package Microsoft.Azure.Management.Media```
+`dotnet add package Microsoft.Azure.Management.Media`
 
 此外，对于各种方案，都可在 [Azure-Samples/media-services-v3-dotnet](https://github.com/Azure-Samples/media-services-v3-dotnet) 中找到完整的 .NET 示例。 此存储库中的项目演示了如何使用 v3 版本实现不同的 Azure 媒体服务方案。
 

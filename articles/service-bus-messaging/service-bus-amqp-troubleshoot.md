@@ -2,13 +2,13 @@
 title: 排查 Azure 服务总线中的 AMQP 错误 | Microsoft Docs
 description: 提供使用 Azure 服务总线时可能收到的 AMQP 错误以及这些错误的原因的列表。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 88b10940e0b910f50e6ccf7f8c53134fa7f0ba2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: 0a481f0dccc7a409ada51fb809065fd58db31aed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88064343"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570942"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Azure 服务总线中的 AMQP 错误
 本文提供了在 Azure 服务总线中使用 AMQP 时所收到的一些错误。 这些错误都是服务的标准行为。 可以通过在连接/链路上发出发送/接收调用来避免这些错误，这会自动重新创建连接/链路。

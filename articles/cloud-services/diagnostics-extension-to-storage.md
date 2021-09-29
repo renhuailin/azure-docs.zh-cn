@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: application-insights
-ms.openlocfilehash: 74dcfa8aa2ff062f6b021643dca539233c681cd4
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: f470ea2cb34f10e42d0f45b9bbcbab4db2cee7cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822362"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668766"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
 
@@ -78,7 +78,7 @@ ms.locfileid: "122822362"
 
 * Visual Studio 中的服务器资源管理器 - 如果安装了 Azure Tools for Microsoft Visual Studio，则可以在服务器资源管理器中使用“Azure 存储”节点从 Azure 存储帐户查看只读 Blob 和表数据。 既可以从本地存储模拟器帐户显示数据，也可以从为 Azure 创建的存储帐户显示数据。 有关详细信息，请参阅[使用服务器资源管理器浏览和管理存储资源](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)。
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、OSX 和 Linux 上轻松处理 Azure 存储数据。
-* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) 包括 Azure 诊断管理器，该诊断管理器用于查看、下载和管理在 Azure 上运行的应用程序收集的诊断数据。
+* [Azure Management Studio](https://cerebrata.com/blog/introducing-azure-management-studio-and-azure-explorer) 包括 Azure 诊断管理器，该诊断管理器用于查看、下载和管理在 Azure 上运行的应用程序收集的诊断数据。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure 诊断跟踪云服务应用程序中的流](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)

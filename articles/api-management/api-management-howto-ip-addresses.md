@@ -3,17 +3,17 @@ title: Azure API 管理服务的 IP 地址 | Microsoft Docs
 description: 了解如何检索 Azure API 管理服务的 IP 地址，及其何时发生变化。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 04/13/2021
-ms.author: apimpm
-ms.openlocfilehash: 5939292b6e810634723fada17521bb227764b989
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.author: danlep
+ms.openlocfilehash: d0fe9c305b9592aad7b08437d6e9d14150748ed6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534028"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680730"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
 
@@ -59,7 +59,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 公共 IP 地址用于端口 `3443` 上的内部通信 - 用于管理配置（例如，通过 Azure 资源管理器）。 在外部 VNet 配置中，它们也用于运行时 API 流量。 将请求从 API 管理发送到面向公众（面向 Internet）的后端时，公共 IP 地址将显示为请求来源。
 
-**仅** 在[内部 VNet 模式下](api-management-using-with-internal-vnet.md)提供专用虚拟 IP (VIP)地址，用于从网络内部连接到 API 管理终结点-网关、开发人员门户和用于直接 API 访问的管理平面。 可以使用 VIP 在网络内部设置 DNS 记录。
+**仅** 在 [内部 VNet 模式下](api-management-using-with-internal-vnet.md)提供专用虚拟 IP (VIP)地址，用于从网络内部连接到 API 管理终结点-网关、开发人员门户和用于直接 API 访问的管理平面。 可以使用 VIP 在网络内部设置 DNS 记录。
 
 Azure 门户和 API 调用响应中会显示两种类型的地址：
 

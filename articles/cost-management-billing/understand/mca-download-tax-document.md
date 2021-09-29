@@ -6,16 +6,16 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.subservice: billing
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ee059bc69a671d0623d4d43990e694b87bf177ff
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e41f50e61de324cc244d12be8b9ea70d6c38795
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690793"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648689"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>查看和下载 Azure 发票的税单
 
@@ -24,12 +24,12 @@ ms.locfileid: "88690793"
 ## <a name="view-and-download-tax-documents"></a>查看和下载税单
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。 
+1. 搜索“成本管理 + 计费”。
 1. 根据你的访问权限，可能需要选择一个计费帐户或计费对象信息。
-1. 在左侧菜单中，选择“账单”下的“发票”。
+1. 在左侧菜单中，选择“账单”  下的“发票”  。
 1. 在发票网格中，找到与要下载的税单对应的发票行。
 1. 单击行末尾的下载图标或省略号 (`...`)。
-7. 在下载菜单中选择“税单”  。 根据计费对象信息的国家/地区，可能会看到每个发票有多个税单。
+7. 在下载菜单中选择“税单”。 根据计费对象信息的国家/地区，可能会看到每个发票有多个税单。
 
 ## <a name="check-billing-account-type"></a>检查计费帐户类型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

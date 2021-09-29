@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9acbe5d7b57906c894021ec4e4f83633433b3c3b
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: f5974f8d3f94d16a27c77c81837d7c430ee48b26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228616"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124817924"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -439,9 +439,9 @@ ms.locfileid: "122228616"
 
 | 操作方法文章 | 描述 |
 | - | - |
- [创建访问评审](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中创建特权 Azure AD 角色的访问评审 |
-| [自我评审你的访问权限](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果已为你分配了管理角色，请批准或拒绝对角色的访问权限 |
-| [完成访问评审](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 查看访问评审并应用结果 |
+ [创建访问评审](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中创建特权 Azure AD 角色的访问评审 |
+| [自我评审你的访问权限](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果已为你分配了管理角色，请批准或拒绝对角色的访问权限 |
+| [完成访问评审](../privileged-identity-management/pim-complete-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 查看访问评审并应用结果 |
 
 
 ### <a name="review-azure-resource-roles"></a>评审 Azure 资源角色
@@ -454,9 +454,9 @@ ms.locfileid: "122228616"
 
 | 操作方法文章| 描述 |
 | - | -|
-| [创建访问评审](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中创建特权 Azure 资源角色的访问评审 |
-| [自我评审你的访问权限](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果已为你分配了管理角色，请批准或拒绝对角色的访问权限 |
-| [完成访问评审](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 查看访问评审并应用结果 |
+| [创建访问评审](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中创建特权 Azure 资源角色的访问评审 |
+| [自我评审你的访问权限](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果已为你分配了管理角色，请批准或拒绝对角色的访问权限 |
+| [完成访问评审](../privileged-identity-management/pim-complete-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 查看访问评审并应用结果 |
 
 
 ## <a name="use-the-access-reviews-api"></a>使用访问评审 API

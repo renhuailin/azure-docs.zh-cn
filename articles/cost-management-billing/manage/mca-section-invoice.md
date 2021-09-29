@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 4d725375cb964cb8bc2893f5f8365416e29e5541
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 87a55b588282a0a971f31ea496865a5db4dcb8c5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734042"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649637"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>通过自定义计费帐户来组织成本
 

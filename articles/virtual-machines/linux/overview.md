@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 100a1c8c1222416201ead23c436d064273cc2a5b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 89766dd612a43a60456199ae1fdc9de35c9dd061
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692826"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774208"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虚拟机
 
@@ -64,7 +64,7 @@ VM 的[大小](../sizes.md)由所要运行的工作负荷决定。 然后，选�
 Azure 根据 VM 的大小和操作系统按[小时价格](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)计费。 对于不足一小时的部分，Azure 仅根据使用的分钟数计费。 存储将另行定价和收费。
 
 ## <a name="vm-limits"></a>VM 限制
-订阅附带默认的[配额限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)，在为项目部署大量 VM 时，这些限制可能会造成影响。 每个订阅的当前限制是每区域 20 个 VM。 可以[开具支持票证](../../azure-portal/supportability/resource-manager-core-quotas-request.md)来请求提高限制
+订阅附带默认的[配额限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)，在为项目部署大量 VM 时，这些限制可能会造成影响。 每个订阅的当前限制是每区域 20 个 VM。 可以[开具支持票证](../../azure-portal/supportability/regional-quota-requests.md)来请求提高限制
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -125,6 +125,6 @@ Azure 在支持它的大多数 Linux 发行版中支持 [cloud-init](https://clo
 
 创建第一个 VM！
 
-- [Portal](quick-create-portal.md)
+- [门户](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)

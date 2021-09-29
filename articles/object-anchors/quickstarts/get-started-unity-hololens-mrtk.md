@@ -5,15 +5,15 @@ author: craigktreasure
 manager: virivera
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 08/02/2021
+ms.date: 09/08/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: b047c293a14dcfde5c8de2f56fb5c2abeab61c69
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 987c8933040b71c8053728f64da2964e02ac6fa3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254302"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607304"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity-with-mrtk"></a>快速入门：通过 MRTK 在 Unity 中创建具有 Azure Object Anchors 的 HoloLens 应用
 
@@ -57,11 +57,11 @@ ms.locfileid: "122254302"
 
  在 Unity 初始屏幕后，应该会显示一个白色的边框。 你可以用手移动、缩放或旋转该边框。 放置边框以包围要检测的物体。
 
-打开<a href="https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_HandMenu.html" target="_blank">手动菜单</a>，选择“锁定 SearchArea”以防止边框进一步移动。 选择“开始搜索”以启动物体检测。 检测到物体时，将在物体上呈现一个网格。 屏幕上将显示检测到的实例的详细信息，例如更新的时间戳和表面覆盖率。 选择“停止搜索”停止跟踪，将删除检测到的所有实例。
+打开<a href="/windows/mixed-reality/mrtk-unity/features/ux-building-blocks/hand-menu" target="_blank">手动菜单</a>，选择“锁定 SearchArea”以防止边框进一步移动。 选择“开始搜索”以启动物体检测。 检测到物体时，将在物体上呈现一个网格。 屏幕上将显示检测到的实例的详细信息，例如更新的时间戳和表面覆盖率。 选择“停止搜索”停止跟踪，将删除检测到的所有实例。
 
 #### <a name="the-app-menus"></a>应用菜单
 
-还可以使用<a href="https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_HandMenu.html" target="_blank">手动菜单</a>执行其他操作。
+还可以使用<a href="/windows/mixed-reality/mrtk-unity/features/ux-building-blocks/hand-menu" target="_blank">手动菜单</a>执行其他操作。
 
 ##### <a name="primary-menu"></a>主菜单
 
@@ -70,7 +70,7 @@ ms.locfileid: "122254302"
 * **跟踪器设置** – 切换跟踪器设置菜单的激活状态。
 * **搜索区域设置** – 切换搜索区域设置菜单的激活状态。
 * **开始跟踪** – 捕获诊断数据并将其保存到设备。 有关更多详细信息，请参阅“调试检测问题和捕获诊断”部分。
-* 上传跟踪 – 将诊断数据上传到 Object Anchors 服务。    
+* 上传跟踪 – 将诊断数据上传到 Object Anchors 服务。
 
     :::image type="content" source="./media/mrtk-hand-menu-primary.png" alt-text="Unity 主手动菜单":::
 
@@ -106,3 +106,6 @@ ms.locfileid: "122254302"
 
 > [!div class="nextstepaction"]
 > [转换 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)
+
+> [!div class="nextstepaction"]
+> [排查物体检测问题](../troubleshoot/object-detection.md)

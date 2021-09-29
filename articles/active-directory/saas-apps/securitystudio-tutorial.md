@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 633e2b6e8a7402ce94045fe290b4e08af73b124e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf06fde40914279658393076c1ee29bf9d3dfdb2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951396"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801593"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-securitystudio"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SecurityStudio 的集成
 
@@ -123,7 +123,7 @@ ms.locfileid: "104951396"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 SecurityStudio。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SecurityStudio”磁贴时，应会自动登录到为其设置了 SSO 的 SecurityStudio。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SecurityStudio”磁贴时，应会自动登录到为其设置了 SSO 的 SecurityStudio。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

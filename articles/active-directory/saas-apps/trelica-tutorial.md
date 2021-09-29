@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: a674f5f653ad420ab8f28ff73c6b86f9c18b154e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7b2f01a9e90ca8a29b6ecbfc380cb138a3ad073
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92517746"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800472"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Trelica 的集成
 
@@ -138,7 +138,7 @@ Trelica 支持默认启用的实时用户预配。 在本部分中无需采取�
 
 本部分将使用“我的应用”门户测试 Azure AD 单一登录配置。
 
-在“我的应用”门户中选择“Trelica”磁贴时，将自动登录到已为其设置 SSO 的 Trelica。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](../user-help/my-apps-portal-end-user-access.md)。
+在“我的应用”门户中选择“Trelica”磁贴时，将自动登录到已为其设置 SSO 的 Trelica。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

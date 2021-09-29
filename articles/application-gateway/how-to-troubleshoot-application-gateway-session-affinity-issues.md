@@ -3,17 +3,17 @@ title: 排查会话相关性问题
 titleSuffix: Azure Application Gateway
 description: 本文介绍如何排查 Azure 应用程序网关中的会话相关性问题
 services: application-gateway
-author: abshamsft
+author: KumudD
 ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
-ms.author: absha
-ms.openlocfilehash: 548bda36ed2b167c159d32a575b63ecbf10b16dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: b175aedc743eb724b42a025839b7e32f59dea5da
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397563"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737883"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>排查 Azure 应用程序网关会话相关性问题
 

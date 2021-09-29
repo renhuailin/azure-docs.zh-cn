@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
 ms.custom: has-adal-ref
-ms.openlocfilehash: 49757ba5faaff1043bd9b113cad3cfa342bb51ce
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 43f66b7f44e7d30816da5ac59a9692807f257a2b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418757"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787256"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>在开发的移动应用支持单一登录和应用保护策略
 
@@ -67,7 +67,7 @@ Apple 为在 iOS 应用程序中执行此操作提供了指导：[通过 Web 服
 
 若要启用应用保护策略，请使用 [Microsoft 身份验证库 (MSAL)](msal-overview.md)。 MSAL 是 Microsoft 标识平台的身份验证和授权库，并开发了 Intune SDK 与它配合工作。
 
-此外，必须使用代理应用进行身份验证。 代理要求应用提供应用程序和设备信息以确保应用合规性。 iOS 用户使用 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-sign-in.md)，Android 用户使用 Microsoft Authenticator 应用或[公司门户应用](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)进行[中转身份验证](./msal-android-single-sign-on.md)。 默认情况下，MSAL 使用代理作为其完成身份验证请求的首选，因此在使用现成 MSAL 时，会自动为应用启用使用代理进行身份验证。
+此外，必须使用代理应用进行身份验证。 代理要求应用提供应用程序和设备信息以确保应用合规性。 iOS 用户使用 [Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c)，Android 用户使用 Microsoft Authenticator 应用或[公司门户应用](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)进行[中转身份验证](./msal-android-single-sign-on.md)。 默认情况下，MSAL 使用代理作为其完成身份验证请求的首选，因此在使用现成 MSAL 时，会自动为应用启用使用代理进行身份验证。
 
 最后，向应用[添加 Intune SDK](/mem/intune/developer/app-sdk-get-started)以启用应用保护策略。 该 SDK 在很大程度上遵循截获模型，会自动应用应用保护策略以确定是否允许应用所执行的操作。 还可以手动调用一些 API 来告知应用是否对某些操作有限制。
 

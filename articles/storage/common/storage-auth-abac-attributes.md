@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 45a0fbac0fbe1bd513717ba1ab1d30b3cffbf78e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 791e533cc1f0dafa8724faa8cc3a46d1f8c770d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065937"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665996"
 ---
 # <a name="actions-and-attributes-for-azure-role-assignment-conditions-in-azure-storage-preview"></a>Azure 存储中 Azure 角色分配条件的操作和属性（预览版）
 
@@ -58,11 +58,11 @@ ms.locfileid: "110065937"
 > | --- | --- | --- |
 > | 删除 blob | 用于删除 blob 的 DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete` |
 > | 读取 blob | 用于读取 blob 的 DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
-> | 从具有标记条件的 blob 中读取内容  | REST 操作：获取 Blob、获取 Blob 元数据、获取 Blob 属性、获取块列表、获取页面范围和查询 Blob 内容。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br/>“子操作”<br/>`Blob.Read.WithTagConditions` | 
+> | 从具有标记条件的 blob 中读取内容  | REST 操作：获取 Blob、获取 Blob 元数据、获取 Blob 属性、获取块列表、获取页面范围和查询 Blob 内容。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br/>“子操作”<br/>`Blob.Read.WithTagConditions` |
 > | 写入到 blob | 用于写入到 blob 的 DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` |
-> | 写入到具有 blob 索引标记的 blob | REST 操作：放置 Blob、放置块列表、复制 Blob 和从 URL 复制 Blob。 |`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`<br/>“子操作”<br/>`Blob.Write.WithTagHeaders` | 
+> | 写入到具有 blob 索引标记的 blob | REST 操作：放置 Blob、放置块列表、复制 Blob 和从 URL 复制 Blob。 |`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`<br/>“子操作”<br/>`Blob.Write.WithTagHeaders` |
 > | 创建 blob 或快照，或追加数据 | 用于创建 blob 的 DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action` |
-> | 将内容写入到具有 blob 索引标记的 blob | REST 操作：放置 Blob、放置块列表、复制 Blob 和从 URL 复制 Blob。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action`<br/>“子操作”<br/>`Blob.Write.WithTagHeaders` | 
+> | 将内容写入到具有 blob 索引标记的 blob | REST 操作：放置 Blob、放置块列表、复制 Blob 和从 URL 复制 Blob。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action`<br/>“子操作”<br/>`Blob.Write.WithTagHeaders` |
 > | 删除 blob 的版本 | 用于删除 blob 的版本的 DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action` |
 > | 更改 blob 的所有权 | 用于更改 blob 的所有权的DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/manageOwnership/action` |
 > | 修改 blob 的权限 | 用于修改 blob 的权限的 DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/modifyPermissions/action` |
@@ -141,4 +141,3 @@ ms.locfileid: "110065937"
 - [示例 Azure 角色分配条件（预览版）](storage-auth-abac-examples.md)
 - [Azure 角色分配条件格式和语法（预览版）](../../role-based-access-control/conditions-format.md)
 - [什么是 Azure 基于属性的访问控制 (Azure ABAC)？（预览版）](../../role-based-access-control/conditions-overview.md)
-

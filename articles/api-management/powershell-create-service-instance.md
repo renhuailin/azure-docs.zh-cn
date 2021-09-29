@@ -3,18 +3,18 @@ title: 快速入门 - 使用 PowerShell 创建 Azure API 管理实例 | Microsof
 description: 使用 Azure PowerShell 新建 Azure API 管理实例。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/14/2020
-ms.author: apimpm
-ms.openlocfilehash: 641f262cf95753bd4c364fa889051a2b8f9d111a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.author: danlep
+ms.openlocfilehash: dcc6c96eb634316554a939688766feb153479778
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814237"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590753"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-powershell"></a>快速入门：使用 PowerShell 创建新的 Azure API 管理服务实例
 

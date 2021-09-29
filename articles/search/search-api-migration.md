@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 95e774b1f10f07a447ec168aa7716bab799acd73
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/16/2021
+ms.openlocfilehash: d925b4542a5d03340558f302a2251b4c191de2e0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732579"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601285"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>升级到 Azure 认知搜索服务中最新的 REST API
 

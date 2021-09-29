@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 42180a293ce6e720c54979257fcec7d36e996731
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 666ed8613087336314026d2b46794182ee0824ab
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111893203"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742002"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>教程：Azure Active Directory 单一登录 (SSO) 与 MS Azure SSO MS Azure SSO Access for Ethidex Compliance Office™ 的集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "111893203"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`com.ethidex.prod.<CLIENTID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`com.ethidex.prod.<CLIENTID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.ethidex.com/saml2/sp/acs/<CLIENTID>`
 
@@ -133,7 +133,7 @@ ms.locfileid: "111893203"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Ethidex Compliance Office™
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Ethidex Compliance Office™”磁贴时，你应会自动登录到为其设置了 SSO 的 Ethidex Compliance Office™。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Ethidex Compliance Office™”磁贴时，你应会自动登录到为其设置了 SSO 的 Ethidex Compliance Office™。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,18 +1,18 @@
 ---
 title: 如何通过 iOS 使用对象 (Blob) 存储 - Azure | Microsoft Docs
 description: 使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 1b0653c997930c60950da335e79b0388edd43897
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 999b9d5b700dc807255b695b3254cf11e7d37f80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278348"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603954"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
 
@@ -39,7 +39,7 @@ ms.locfileid: "106278348"
     sudo gem install cocoapods
     ```
 
-2. 接下来，在项目目录（包含 .xcodeproj 文件的目录）中创建名为 _Podfile_ 的文件（无扩展名）。 将以下内容添加到 _Podfile_ 并保存。
+2. 接下来，在项目目录（包含 .xcodeproj 文件的目录）中创建名为 *Podfile* 的文件（无扩展名）。 将以下内容添加到 *Podfile* 并保存。
 
     ```ruby
     platform :ios, '8.0'
@@ -224,12 +224,12 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 - **prefix** - 可以指定要用于 blob 列出的前缀。 将仅列出以该前缀开头的 blob。
 - **useFlatBlobListing** - 如 [命名和引用容器和 blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) 部分中所述，虽然 Blob 服务是平面存储方案，但可通过命名具有路径信息的 blob 来创建虚拟层次结构。 但是，目前不支持非平面列表。 此功能即将支持。 目前，此值应为 **YES**。
 - **blobListingDetails** - 可指定在列出 blob 时要包含哪些项
-  - _AZSBlobListingDetailsNone_：仅列出已提交的 blob，并且不返回 blob 元数据。
-  - _AZSBlobListingDetailsSnapshots_：列出提交的 blob 和 blob 快照。
-  - _AZSBlobListingDetailsMetadata_：检索列表中返回的每个 blob 的 blob 元数据。
-  - _AZSBlobListingDetailsUncommittedBlobs_：列出已提交和未提交的 blob。
-  - _AZSBlobListingDetailsCopy_：在列表中包含复制属性。
-  - _AZSBlobListingDetailsAll_：列出所有可用的已提交 blob、未提交 blob 和快照，并返回这些 blob 的所有元数据和复制状态。
+  - *AZSBlobListingDetailsNone*：仅列出已提交的 blob，并且不返回 blob 元数据。
+  - *AZSBlobListingDetailsSnapshots*：列出提交的 blob 和 blob 快照。
+  - *AZSBlobListingDetailsMetadata*：检索列表中返回的每个 blob 的 blob 元数据。
+  - *AZSBlobListingDetailsUncommittedBlobs*：列出已提交和未提交的 blob。
+  - *AZSBlobListingDetailsCopy*：在列表中包含复制属性。
+  - *AZSBlobListingDetailsAll*：列出所有可用的已提交 blob、未提交 blob 和快照，并返回这些 blob 的所有元数据和复制状态。
 - **maxResults** - 此操作可返回的结果的最大数目。 使用 -1 以不设置限制。
 - **completionHandler** - 要使用列表操作的结果执行的代码块。
 

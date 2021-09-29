@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: 遵循本快速入门中的步骤，在 Azure API 管理开发人员门户中自定义元素的样式。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: 0cdad245981ad02d3cdaefba447d131c775e242f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: ebdb3e9d4cd2d0c4e1e418fd962f6f32edd2f749
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93145763"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659108"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>自定义开发人员门户页面的样式
 
@@ -40,7 +40,7 @@ ms.locfileid: "93145763"
 ## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 ## <a name="customize-the-developer-portal"></a>自定义开发人员门户
