@@ -3,7 +3,7 @@ title: Azure API 管理中的 API 模板 | Microsoft 文档
 description: 了解如何在 Azure API 管理中自定义开发人员门户中 API 页面的内容。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-python
-ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1572843dfdff0f19a5c997781d1b3e5f223fad11
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87851708"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629818"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
@@ -347,7 +347,7 @@ ms.locfileid: "87851708"
   
 |属性|类型|说明|  
 |--------------|----------|-----------------|  
-|`apiId`|字符串|当前 API 的 ID。|  
+|`apiId`|string|当前 API 的 ID。|  
 |`apiName`|string|API 的名称。|  
 |`apiDescription`|string|API 的说明。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  

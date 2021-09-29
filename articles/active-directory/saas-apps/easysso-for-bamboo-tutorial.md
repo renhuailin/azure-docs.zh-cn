@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 4ef286e9e760c6a18b69eb8724c1317e6a872b2c
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 76c203339744e73d9239d44dfe984834b333cf93
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569026"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EasySSO for Bamboo 的集成
 
@@ -76,13 +76,13 @@ ms.locfileid: "111569026"
 
 1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SERVER_BASE_URL>/plugins/servlet/easysso/saml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SERVER_BASE_URL>/plugins/servlet/easysso/saml`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SERVER_BASE_URL>/plugins/servlet/easysso/saml`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SERVER_BASE_URL>/login.jsp`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SERVER_BASE_URL>/login.jsp`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 如有疑问，请联系 [EasySSO 支持团队](mailto:support@techtime.co.nz)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -196,7 +196,7 @@ ms.locfileid: "111569026"
 
 本部分将使用“我的应用”测试 Azure AD 单一登录配置。
 
-单击“我的应用”中的 EasySSO for Bamboo 磁贴时，应当会自动登录到为其设置了 SSO 的 Bamboo 实例。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+单击“我的应用”中的 EasySSO for Bamboo 磁贴时，应当会自动登录到为其设置了 SSO 的 Bamboo 实例。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ### <a name="sp-initiated-workflow"></a>SP 发起的工作流
 

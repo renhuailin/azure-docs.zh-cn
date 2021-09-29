@@ -18,6 +18,8 @@
       href: entitlement-management-access-package-first.md
     - name: 管理资源访问 - Microsoft Graph
       href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
+    - name: 在 Azure AD 中管理基于组的许可证的生命周期
+      href: entitlement-management-group-licenses.md
 - name: 概念
   expanded: true
   items:

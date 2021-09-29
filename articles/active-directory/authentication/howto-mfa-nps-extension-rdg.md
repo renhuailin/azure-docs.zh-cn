@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f50792ec45570f7e90893a97150ea26b63ebf9c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: f1ccaf6daabc661a8d4249aaeed322e2ab01dd66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829829"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773904"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -75,7 +75,7 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 必须具有有效的远程桌面服务 (RDS) 基础结构。 如果没有，则可以使用以下快速入门模板在 Azure 中快速创建此基础结构：[创建远程桌面会话集合部署](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment)。
 
 如果希望快速手动创建一个测试用的本地 RDS 基础结构，请按照以下步骤进行部署。
-**详细了解**：[使用 Azure 快速入门部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 和[基本 RDS 基础结构部署](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
+**详细了解**：[使用 Azure 快速入门部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 和 [基本 RDS 基础结构部署](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
 
 ### <a name="azure-ad-mfa-license"></a>Azure AD MFA 许可证
 
@@ -109,7 +109,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 为 MFA 启用帐户后，在成功配置用于二次身份验证的受信任的设备并且使用双重验证进行身份验证前，你将无法登录 MFA 策略管理的资源。
 
-按照 [Azure AD 多重身份验证对我而言有什么用途？](../user-help/multi-factor-authentication-end-user-first-time.md)中的步骤，使用你的用户帐户了解并正确配置 MFA 的设备。
+按照 [Azure AD 多重身份验证对我而言有什么用途？](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)中的步骤，使用你的用户帐户了解并正确配置 MFA 的设备。
 
 > [!IMPORTANT]
 > 远程桌面网关的登录行为未提供输入 Azure AD 多重身份验证的验证码的选项。 必须为用户帐户配置电话验证或 Microsoft Authenticator 应用的推送通知。
@@ -308,7 +308,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![（可选）指定连接条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 单击“确定”。  当系统提示查看相应帮助主题时，请单击“否”。
+1. 单击 **“确定”** 。 当系统提示查看相应帮助主题时，请单击“否”。
 1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
    ![将策略移至列表顶部](./media/howto-mfa-nps-extension-rdg/image24.png)

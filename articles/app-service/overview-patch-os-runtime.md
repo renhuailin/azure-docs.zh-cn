@@ -4,12 +4,12 @@ description: 了解 Azure 应用服务如何更新 OS 和运行时、你的应�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 8b876760ee2bafc855345878a28c38ec3b35daad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 35d4bbb33aa737725668c0376bb1ffe6f7748f46
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047875"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800073"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -39,10 +39,6 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 受支持语言运行时的新稳定版本（主要、次要或修补版本）会定期添加到应用服务实例。 一些更新会覆盖现有的安装，还有一些更新会连同现有的版本一并安装。 覆盖安装意味着应用自动在更新的运行时上运行。 并列安装意味着必须手动迁移应用才能利用新的运行时版本。 有关详细信息，请参阅以下小节之一。
 
-以下网页中公布了运行时更新和弃用情况：
-
-- https://azure.microsoft.com/updates/?product=app-service 
-- https://github.com/Azure/app-service-announcements/issues
 
 > [!NOTE] 
 > 此处的信息适用于应用服务应用中内置的语言运行时。 例如，上传到应用服务的自定义运行时将保持不变，除非手动升级。
@@ -64,10 +60,6 @@ az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=8.9.3 -
 az webapp config set --python-version 3.8 --resource-group <groupname> --name <appname>
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
-
-### <a name="deprecated-versions"></a>已弃用的版本  
-
-弃用某个旧版本后，将会公布删除日期，以便你可以相应地规划运行时版本升级。 
 
 ## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>如何在实例中查询 OS 和运行时更新状态？  
 

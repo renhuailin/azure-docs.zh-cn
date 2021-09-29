@@ -7,14 +7,14 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 8c6f5954e173f58333ec3970cb09ca0404adf964
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 734c469afa43a178f5c7a50550426a47940b8f35
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822821"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820025"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -45,7 +45,7 @@ ms.locfileid: "122822821"
 
 下面是使用自承载 IR 进行复制的概要数据流步骤：
 
-![数据流概要](media/create-self-hosted-integration-runtime/high-level-overview.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/high-level-overview.png" alt-text="数据流概要":::
 
 1. 数据开发人员首先使用 Azure 门户或 PowerShell cmdlet 在 Azure 数据工厂或 Synapse 工作区中创建自承载集成运行时。  然后数据开发者为本地数据存储创建链接服务，指定服务应用于连接数据存储的自承载集成运行时实例。
 
@@ -226,19 +226,19 @@ dmgcmd ACTION args...
 
 自承载集成运行时的默认登录服务帐户为 NT SERVICE\DIAHostService。 你可以在“服务”->“Integration Runtime 服务”->“属性”->“登录”上查看它。
 
-![自承载集成运行时的服务帐户](media/create-self-hosted-integration-runtime/shir-service-account.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account.png" alt-text="自承载集成运行时的服务帐户":::
 
 确保该帐户具有作为服务登录的权限。 否则，自承载集成运行时无法成功启动。 你可以在“本地安全策略”->“安全设置”->“本地策略”->“用户权限分配”->“作为服务登录”中检查权限。
 
-![“本地安全策略”-“用户权限分配”的屏幕截图](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account-permission.png" alt-text="“本地安全策略”-“用户权限分配”的屏幕截图":::
 
-![“作为服务登录”用户权限分配的屏幕截图](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png" alt-text="“作为服务登录”用户权限分配的屏幕截图":::
 
 ## <a name="notification-area-icons-and-notifications"></a>通知区域图标和通知
 
 如果将光标移到通知区域中的图标或消息上，可以查看自承载集成运行时状态的详细信息。
 
-![通知区域中的通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/system-tray-notifications.png" alt-text="通知区域中的通知":::
 
 ## <a name="high-availability-and-scalability"></a>高可用性和可伸缩性
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: bce5b5874b12638d1f2d628e23812676053006a4
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9a142dfcba67b80a8293a15d03ea2b389bd297d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035195"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593888"
 ---
 # <a name="azure-cosmos-db-api-for-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -57,14 +57,14 @@ MongoDB 的功能兼容性：
 
 * 部署用于 MongoDB 的 Azure Cosmos DB API 的方式有以下三种：
      * [预配吞吐量](../set-throughput.md)：设置每秒钟 RU 的数量，并手动对其进行更改。 此模型最适合一致的工作负载。
-     * [自动缩放]../(provision-throughput-autoscale.md)：设置所需吞吐量的上限。 吞吐量会即时缩放，以满足你的需求。 此模型最适合经常更改的工作负载，可以优化成本。
+     * [自动缩放](../provision-throughput-autoscale.md)：设置所需吞吐量的上限。 吞吐量会即时缩放，以满足你的需求。 此模型最适合经常更改的工作负载，可以优化成本。
      * [无服务器](../serverless.md)：仅为某一时间段使用的吞吐量付费。 此模型最适合开发/测试工作负载。 
 
 * 分片群集的性能取决于创建集合时选择的分片键。 请谨慎选择分片键，确保数据在分片之间均匀分布。
 
 ### <a name="capacity-planning"></a>容量计划
 
-正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
 * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
 * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](../estimate-ru-with-capacity-planner.md)
 
@@ -78,7 +78,7 @@ MongoDB 的功能兼容性：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+* 尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
     * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
     * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)
 * 在[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md) 教程中了解如何获取帐户连接字符串信息。

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解如何使用 Azure 门户创建 Azure AD 应用注册作为客户端应用的身份验证选项。
 author: baanders
 ms.author: baanders
-ms.date: 8/27/2021
+ms.date: 9/8/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: da935038599b86d9c86a1f55071d4b4d1ea4ce16
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8350ff149b54ef8cf8f4061abd64df73dc688962
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223062"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653093"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-portal"></a>创建与 Azure 数字孪生配合使用的应用注册（门户）
 
@@ -64,7 +64,7 @@ ms.locfileid: "123223062"
 
 可以从 Azure 门户中应用注册的详细信息页收集“客户端 ID”和“租户 ID”值 ：
 
-:::image type="content" source="media/how-to-create-app-registration/client-id-tenant-id.png" alt-text="Azure 门户的屏幕截图，其中显示应用注册的重要值。":::
+:::image type="content" source="media/how-to-create-app-registration/client-id-tenant-id.png" alt-text="Azure 门户的屏幕截图，其中显示应用注册的重要值。"  lightbox="media/how-to-create-app-registration/client-id-tenant-id.png":::
 
 记下你的页面上显示的“应用程序(客户端) ID”和“目录(租户) ID”  。
 
@@ -78,7 +78,13 @@ ms.locfileid: "123223062"
 
 1. 输入要用于“说明”和“有效期”的任何值，然后选择“添加”。
 
-    :::image type="content" source="media/how-to-create-app-registration/add-client-secret.png" alt-text="添加客户端密码时的 Azure 门户屏幕截图。":::
+    :::row:::
+        :::column:::
+            :::image type="content" source="media/how-to-create-app-registration/add-client-secret.png" alt-text="添加客户端密码时的 Azure 门户屏幕截图。":::
+        :::column-end:::
+        :::column:::
+        :::column-end:::
+    :::row-end:::
 
 1. 验证客户端密码在“证书和密码”页上显示出来，并带有“有效期”和“值”字段。 
 

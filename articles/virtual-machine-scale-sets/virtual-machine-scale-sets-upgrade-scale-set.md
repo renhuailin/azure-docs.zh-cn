@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cf79bc16ed717a71820b7226c0c97cfd263c7fef
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5fd9fd2e2077ceeccc4fed0d63e759b7c8ec2e67
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693741"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128608140"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -356,7 +356,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ### <a name="properties-that-require-deallocation-to-change"></a>需要解除分配才能更改的属性
 某些属性只有在规模集中的 VM 已解除分配的情况下，才能更改为特定值。 这些属性包括：
 
-- SKU 名称 - 如果新 VM SKU 在规模集当前所在的硬件上不受支持，则需先将规模集中的 VM 解除分配，然后才能修改 SKU 名称。 有关详细信息，请参阅[如何调整 Azure VM 的大小](../virtual-machines/windows/resize-vm.md)。 
+- SKU 名称 - 如果新 VM SKU 在规模集当前所在的硬件上不受支持，则需先将规模集中的 VM 解除分配，然后才能修改 SKU 名称。 有关详细信息，请参阅[如何调整 Azure VM 的大小](../virtual-machines/resize-vm.md)。 
 
 ## <a name="vm-specific-updates"></a>特定于 VM 的更新
 某些修改可以应用于特定的 VM，但不能应用于全局规模集属性。 目前，唯一受支持的特定于 VM 的更新是将数据磁盘附加到规模集中的 VM 或者从其分离数据磁盘。 此功能为预览版。 有关详细信息，请参阅[预览版文档](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)。

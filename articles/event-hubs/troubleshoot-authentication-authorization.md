@@ -2,13 +2,13 @@
 title: 排查身份验证和授权问题 - Azure 事件中心
 description: 本文介绍了如何排查 Azure 事件中心的身份验证和授权问题。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: 0561ab94f113bf849d5492b93171c9b14540de44
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92329604"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656828"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>排查身份验证和授权问题 - Azure 事件中心
 [排查连接问题](troubleshooting-guide.md)一文提供了有关排查 Azure 事件中心连接问题的技巧。 本文提供的技巧和建议适用于排查 Azure 事件中心的身份验证和授权问题。 

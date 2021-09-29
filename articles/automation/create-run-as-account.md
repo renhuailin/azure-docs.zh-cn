@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7ed16e9bbd1071e4831e814e617d69dc4a638510
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4c66a06d9ee54a590f83c026604d72e3933b21fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078249"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836865"
 ---
 # <a name="how-to-create-an-azure-automation-run-as-account"></a>如何创建 Azure 自动化运行方式帐户
 
@@ -116,6 +116,6 @@ PowerShell 脚本包含对多个配置的支持。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
+* 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](./learn/powershell-runbook-managed-identity.md)。
 
 * 若要开始使用 Python 3 runbook，请参阅[教程：创建 Python 3 runbook](learn/automation-tutorial-runbook-textual-python-3.md)。

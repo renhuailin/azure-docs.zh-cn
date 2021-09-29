@@ -60,6 +60,8 @@
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: 使用 MS Graph 自动执行配置
       href: application-provisioning-configuration-api.md
+    - name: 启用意外删除保护
+      href: accidental-deletions.md
     - name: 排查应用程序预配问题
       items:
         - name: 已知问题

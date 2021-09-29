@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/06/2021
 ms.author: b-juche
-ms.openlocfilehash: ed67984dac9d1beb7106c78a8ffa35d778f69d59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9d3f2443d73f75e96e0036d5c546d00238a58d8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725606"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614365"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
@@ -62,7 +62,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
     * **卷名称**      
         指定要创建的卷的名称。   
 
-        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 名称必须以字母开头。 其中包含字母、数字、下划线（“_”）和连字符（“-”）。
+        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 名称必须以字母开头。 只能包含字母、数字、下划线（“_”）和连字符（“-”）。
 
         不能使用 `default` 或 `bin` 作为卷名称。
 
@@ -96,7 +96,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
 
     * 如果要将现有的快照策略应用到卷，请单击“显示高级部分”将其展开，指定是否要隐藏快照路径，并在下拉菜单中选择快照策略。 
 
-        有关创建快照策略的信息，请参阅[管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
+        有关创建快照策略的信息，请参阅[管理快照策略](snapshots-manage-policy.md)。
 
         ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
@@ -117,7 +117,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
 
     * 若要启用 Active Directory LDAP 用户和扩展组（最多 1024 个组）访问该卷，请选择 LDAP 选项。 按照[使用扩展组配置 ADDS LDAP 以访问 NFS 卷](configure-ldap-extended-groups.md)中的说明，完成所需的配置。 
  
-    *  按需自定义“Unix 权限”，以指定安装路径的更改权限。 此设置不适用于安装路径下的文件。 默认设置为 `0770`。 此默认设置向所有者和组授予“读取”、“写入”和“执行”权限，但不向其他用户授予任何权限。     
+    *  按需自定义“Unix 权限”，以指定安装路径的更改权限。 此设置不适用于装载路径下的文件。 默认设置为 `0770`。 此默认设置向所有者和组授予“读取”、“写入”和“执行”权限，但不向其他用户授予任何权限。     
         注册要求和注意事项适用于“Unix 权限”设置。 按照[配置 Unix 权限和更改所有者模式](configure-unix-permissions-change-ownership-mode.md)中的说明进行操作。   
 
     * 或者，参阅[配置 NFS 卷的导出策略](azure-netapp-files-configure-export-policy.md)。

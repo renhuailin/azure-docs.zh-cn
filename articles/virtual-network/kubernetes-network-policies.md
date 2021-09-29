@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 96e055205c5c016504cd6246b9c1b6d1533ad6ac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f8a8e5785af1bd74fb958a315de379facdc87171
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736179"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575965"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 网络策略概述
 
@@ -134,7 +134,9 @@ Azure NPM 包含信息丰富的 Prometheus 指标，可用于监视和更好地�
 
 编辑 ConfigMap 后，将其保存在本地，并按如下所示将 ConfigMap 应用到群集。
 
-```kubectl apply -f container-azm-ms-agentconfig.yaml``` 以下是[用于容器的 Azure Monitor ConfigMap](https://aka.ms/container-azm-ms-agentconfig) 的片段，其中显示了通过高级指标收集启用的 NPM 集成。
+`kubectl apply -f container-azm-ms-agentconfig.yaml`
+
+ 以下是[用于容器的 Azure Monitor ConfigMap](https://aka.ms/container-azm-ms-agentconfig) 的片段，其中显示了通过高级指标收集启用的 NPM 集成。
 ```
 integrations: |-
     [integrations.azure_network_policy_manager]
@@ -265,4 +267,3 @@ helm install prometheus stable/prometheus -n monitoring \
 - 了解 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)。
 -  了解[容器网络](container-networking-overview.md)。
 - 为 Kubernetes 群集或 Docker 容器[部署插件](deploy-container-networking.md)。
-

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 09f62865c80c05fd0860fa39b18d99c583cf3e56
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d8e4610ee7fc6690f3d0784415cea09259dd99ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461616"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645714"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm"></a>使用 Azure Key Vault 托管 HSM 中存储的客户管理的密钥配置加密
 
@@ -45,7 +45,7 @@ az storage account update \
 接下来，将“托管的 HSM 加密服务加密用户”角色分配到存储帐户的托管标识，以便该存储帐户具有托管的 HSM 的访问权限。 Microsoft 建议将角色分配的范围限定为单个密钥级别，以便向托管标识授予尽可能少的特权。
 
 若要为存储帐户创建角色分配，请调用 [az key vault role assignment create](/cli/azure/role/assignment#az_role_assignment_create)。 请记得将括号中的占位符值替换为你自己的值。
-  
+
 ```azurecli
 storage_account_principal = $(az storage account show \
     --name <storage-account> \

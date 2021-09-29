@@ -2,14 +2,14 @@
 title: 将 AMQP 与 Java 消息服务 API 及 Azure 服务总线配合使用
 description: 将 Java 消息服务 (JMS) 用于 Azure 服务总线和高级消息队列协议 (AMQP) 1.0。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 09/20/2021
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: e6225f83cde584dae3cd5633584249c24a2e475e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 83a19e7a360edfb5c883a1ecc717fc7bf96bfec4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742975"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662837"
 ---
 # <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>将 Java 消息服务用于 Azure 服务总线和 AMQP 1.0
 

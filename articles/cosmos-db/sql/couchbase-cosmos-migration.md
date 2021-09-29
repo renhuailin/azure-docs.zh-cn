@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: e638c7051aab49887b3391644c3e947beea04927
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 1ab1bd7c5c4dee610485c556eb3dc0e62ee6d9cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113605"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657702"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -166,13 +166,13 @@ Azure Cosmos DB 提供以下 SDK 来支持不同的 Java 框架：
 
 其中 _repo 是存储库的对象，而 doc 是 POJO 类的对象。 你可以使用 `.save` 插入或更新插入（如果找到具有指定 ID 的文档）。 以下代码片段演示如何插入或更新 doc 对象：
 
-```_repo.save(doc);```
+`_repo.save(doc);`
 
 ### <a name="delete-operation"></a>删除操作
 
 考虑以下代码片段，其中，doc 对象包含查找和删除对象所必需的 ID 和分区键：
 
-```_repo.delete(doc);```
+`_repo.delete(doc);`
 
 ### <a name="read-operation"></a>读取操作
 

@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.author: susabat
 author: ssabat
 ms.custom: seo-lt-2019
-ms.date: 08/24/2021
-ms.openlocfilehash: 5d07ecedbc8fe4ff0670c9e8aa96fdf2a92359d3
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/09/2021
+ms.openlocfilehash: c384985ae178f22c15c4a408d7a2cd42d0fbf416
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123098944"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743392"
 ---
 # <a name="templates"></a>模板
 
@@ -27,15 +27,15 @@ ms.locfileid: "123098944"
 
 1.  在数据工厂主页的“发现更多”部分选择“管道模板”，以打开模板库。 
 
-    ![显示如何从“数据工厂”主页打开模板库的屏幕截图。](media/doc-common-process/home-page-pipeline-templates-tile.png)
+    :::image type="content" source="media/doc-common-process/home-page-pipeline-templates-tile.png" alt-text="显示如何从“数据工厂”主页打开模板库的屏幕截图。":::
 
 1.  在资源浏览器中的“创作”选项卡上选择 +，然后选择“模板中的管道”打开模板库 。
 
-    ![显示如何从“创建者”选项卡打开模板库的屏幕截图。](media/solution-templates-introduction/templates-introduction-image-2.png)
+    :::image type="content" source="media/solution-templates-introduction/templates-introduction-image-2.png" alt-text="显示如何从“创建者”选项卡打开模板库的屏幕截图。":::
 
 ## <a name="template-gallery"></a>模板库
 
-![显示“模板库”页面的屏幕截图。](media/solution-templates-introduction/templates-introduction-image-3.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-3.png" alt-text="显示“模板库”页面的屏幕截图。":::
 
 ### <a name="out-of-the-box-data-factory-templates"></a>现成的数据工厂模板
 
@@ -81,11 +81,11 @@ ms.locfileid: "123098944"
 
 还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。
 
-![显示如何将管道另存为模板的屏幕截图。](media/solution-templates-introduction/templates-introduction-image-4.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-4.png" alt-text="显示如何将管道另存为模板的屏幕截图。":::
 
 选中“模板库”页面中的“我的模板”框后，可以在此页右侧窗格中查看另存为模板的管道 。 
 
-![显示“我的模板”窗格的屏幕截图。](media/solution-templates-introduction/templates-introduction-image-5.png)
+:::image type="content" source="media/solution-templates-introduction/templates-introduction-image-5.png" alt-text="显示“我的模板”窗格的屏幕截图。":::
 
 > [!NOTE]
 > 若要使用“我的模板”功能，必须启用 GIT 集成。 支持 Azure DevOps GIT 和 GitHub。

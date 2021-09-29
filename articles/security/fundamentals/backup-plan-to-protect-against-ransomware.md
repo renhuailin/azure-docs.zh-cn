@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 08/27/2021
-ms.openlocfilehash: 6a9b251b9895b3d28bdeba59f121b646b7d8cd96
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 83caa5e93a8a9fd9df13646f867b176208655450
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123477521"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763341"
 ---
 # <a name="backup-and-restore-plan-to-protect-against-ransomware"></a>旨在防范勒索软件的备份和还原计划
 
@@ -63,7 +63,7 @@ ms.locfileid: "123477521"
 
 ### <a name="azure-backup"></a>Azure 备份
 
-无论是传输中的数据还是静态数据，[Azure 备份](/azure/backup/backup-overview)都可确保备份环境的安全。 使用 Azure 备份[可以备份](/azure/backup/backup-overview#what-can-i-back-up)：
+无论是传输中的数据还是静态数据，[Azure 备份](../../backup/backup-overview.md)都可确保备份环境的安全。 使用 Azure 备份[可以备份](../../backup/backup-overview.md#what-can-i-back-up)：
 
 - 本地文件、文件夹和系统状态
 - 整个 Windows/Linux VM
@@ -75,22 +75,22 @@ ms.locfileid: "123477521"
 
 Azure 备份提供内置监视和警报功能，用于查看和配置 Azure 备份相关事件的操作。 备份报表充当一站式目标，在其中能够以不同的粒度级别跟踪使用情况、审核备份和还原，以及识别关键趋势。 使用 Azure 备份的监视和报告工具可以在发生任何未经授权的、可疑的或恶意的活动后立即获得警报。
 
-已添加检查，确保只有效用户才可执行各种操作。 这些操作包括添加额外的身份验证层。 为关键操作添加额外的身份验证层时，[修改联机备份](/azure/backup/backup-azure-security-feature#prevent-attacks)之前系统会提示输入安全 PIN。
+已添加检查，确保只有效用户才可执行各种操作。 这些操作包括添加额外的身份验证层。 为关键操作添加额外的身份验证层时，[修改联机备份](../../backup/backup-azure-security-feature.md#prevent-attacks)之前系统会提示输入安全 PIN。
 
-详细了解内置于 Azure 备份的[安全功能](/azure/backup/security-overview)。
+详细了解内置于 Azure 备份的[安全功能](../../backup/security-overview.md)。
 
 ### <a name="validate-backups"></a>验证备份
 
-创建备份时及还原之前，请验证备份是否正常。 我们建议使用[恢复服务保管库](/azure/backup/backup-azure-recovery-services-vault-overview)，它是 Azure 中用于存储数据的存储实体。 数据通常是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。 可以使用恢复服务保管库为各种 Azure 服务（例如 IaaS VM（Linux 或 Windows））和 Azure SQL 数据库及本地资产存储备份数据。 恢复服务保管库有助于轻松组织备份数据并提供如下功能：
+创建备份时及还原之前，请验证备份是否正常。 我们建议使用[恢复服务保管库](../../backup/backup-azure-recovery-services-vault-overview.md)，它是 Azure 中用于存储数据的存储实体。 数据通常是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。 可以使用恢复服务保管库为各种 Azure 服务（例如 IaaS VM（Linux 或 Windows））和 Azure SQL 数据库及本地资产存储备份数据。 恢复服务保管库有助于轻松组织备份数据并提供如下功能：
 
-- 增强功能，确保可以保护备份并安全恢复数据，即使生产服务器和备份服务器受到危害。 [了解详细信息](/azure/backup/backup-azure-security-feature)。
-- 从中央门户监视混合 IT 环境（Azure IaaS VM 和本地资产）。 [了解详细信息](/azure/backup/backup-azure-monitoring-built-in-monitor)。
-- 兼容 Azure 基于角色的访问控制 (Azure RBAC)，其中 Azure RBAC 可限制对定义用户角色集的备份和还原访问权限。 Azure RBAC 提供各种内置角色，而 Azure 备份包含三个用于管理恢复点的内置角色。 [了解详细信息](/azure/backup/backup-rbac-rs-vault)。
-- 软删除保护，即使恶意参与者删除备份（或意外删除备份数据）。 备份数据会额外保留 14 天，以便在不丢失数据的情况下恢复备份项。 [了解详细信息](/azure/backup/backup-azure-security-feature-cloud)。
-- 通过跨区域还原可还原次要区域中的 Azure VM，该次要区域是 Azure 配对区域。 可随时还原次要区域中复制的数据。 这使你能够在出现中断时还原次要区域数据以实现审核合规性，而无需等待 Azure 声明出现灾难（与保险库的 GRS 设置不同）。 [了解详细信息](/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)。
+- 增强功能，确保可以保护备份并安全恢复数据，即使生产服务器和备份服务器受到危害。 [了解详细信息](../../backup/backup-azure-security-feature.md)。
+- 从中央门户监视混合 IT 环境（Azure IaaS VM 和本地资产）。 [了解详细信息](../../backup/backup-azure-monitoring-built-in-monitor.md)。
+- 兼容 Azure 基于角色的访问控制 (Azure RBAC)，其中 Azure RBAC 可限制对定义用户角色集的备份和还原访问权限。 Azure RBAC 提供各种内置角色，而 Azure 备份包含三个用于管理恢复点的内置角色。 [了解详细信息](../../backup/backup-rbac-rs-vault.md)。
+- 软删除保护，即使恶意参与者删除备份（或意外删除备份数据）。 备份数据会额外保留 14 天，以便在不丢失数据的情况下恢复备份项。 [了解详细信息](../../backup/backup-azure-security-feature-cloud.md)。
+- 通过跨区域还原可还原次要区域中的 Azure VM，该次要区域是 Azure 配对区域。 可随时还原次要区域中复制的数据。 这使你能够在出现中断时还原次要区域数据以实现审核合规性，而无需等待 Azure 声明出现灾难（与保险库的 GRS 设置不同）。 [了解详细信息](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)。
 
 > [!NOTE]
-> Azure 备份中有两种保管库类型。 除恢复服务保管库之外，还有[备份保管库](/azure/backup/backup-vault-overview)，用于存储 Azure 备份支持的较新工作负载的数据。
+> Azure 备份中有两种保管库类型。 除恢复服务保管库之外，还有[备份保管库](../../backup/backup-vault-overview.md)，用于存储 Azure 备份支持的较新工作负载的数据。
 
 ## <a name="what-to-do-before-an-attack"></a>攻击之前要执行哪些工作
 
@@ -102,7 +102,7 @@ Azure 备份提供内置监视和警报功能，用于查看和配置 Azure 备�
 
 根据我们的以往经验，对客户最重要的五个应用程序按此优先级顺序分为以下类别：
 
-- 标识系统 – 用户访问 Active Directory、[Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect)、AD 域控制器等任何系统（包括下面所述的所有其他系统）时必需
+- 标识系统 – 用户访问 Active Directory、[Azure AD Connect](../../active-directory/hybrid/whatis-azure-ad-connect.md)、AD 域控制器等任何系统（包括下面所述的所有其他系统）时必需
 - 人类生命系统 – 任何支持人类生命或可能使人类生命面临风险的系统，例如医疗或生命支持系统、安全系统（救护车、调度系统、交通灯控制）、大型机器、化学/生物系统、食品或个人产品生产等
 - 财务系统 – 处理货币交易并保持业务运行的系统，例如支付系统和相关数据库、季度报告专用财务系统
 - 产品或服务支持系统 – 提供客户购买的业务服务或生产/交付物理产品所需的任何系统、工厂控制系统、产品交付/调度系统等类似系统
@@ -126,7 +126,7 @@ Azure 备份提供内置监视和警报功能，用于查看和配置 Azure 备�
 | 保护（或打印）恢复所需的支持文档和系统，例如还原过程文档、CMDB、网络图和 SolarWinds 实例。 | 攻击者会故意攻击这些资源，因为这会影响你的恢复能力。 |
 | 请确保已有记录完善的过程，以便充分利用任何第三方支持，尤其是威胁情报提供商、反恶意软件解决方案提供商和恶意软件分析提供商提供的支持。 保护（或打印）这些过程。 | 如果给定勒索软件变种具有已知弱点或提供有解密工具，则第三方联系人可能有用。 |
 | 确保备份和恢复策略包括： <br><br>能够将数据备份到特定时间点。 <br><br>备份的多个副本存储于独立脱机（气隙）位置。 <br><br>恢复时间目标，可确定检索备份信息并将这些信息投入生产环境中的速度。 <br><br>将备份快速还原到生产环境/沙盒。 | 组织遭到破坏后，备份对于复原至关重要。 应用 3-2-1 规则以实现最大限度的保护和可用性：即 3 份（1 份原始文件 + 2 份备份）、2 个存储类型和 1 个场外或冷副本。 |
-| 保护备份以防蓄意擦除和加密： <br><br>将备份存储在脱机或场外存储及/或不可变存储中。 <br><br>需要采用带外步骤（例如 [MFA](/azure/active-directory/authentication/concept-mfa-howitworks) 或安全 PIN），才能允许修改或清除联机备份。 <br><br>在 Azure 虚拟网络中创建专用终结点，以安全地从恢复服务保管库备份和还原数据。 | 攻击者可访问的备份可显示没法用于业务恢复。 <br><br>脱机存储可确保在不使用任何网络带宽的情况下可靠地传输备份数据。 Azure 备份支持[脱机备份](/azure/backup/offline-backup-overview)，即在不使用网络带宽的情况下脱机传输初始备份数据。 它提供了一种可将备份数据复制到物理存储设备的机制。 然后，这些设备将发送到附近的 Azure 数据中心并上传到[恢复服务保管库](/azure/backup/backup-azure-recovery-services-vault-overview)。 <br><br>联机不可变存储（例如 [Azure Blob](/azure/storage/blobs/storage-blob-immutable-storage)）可让用户以 WORM（一次写入，多次读取）状态存储业务关键型数据对象。 此状态可以根据用户指定的时间间隔使数据保持不可擦除且不可修改的状态。 <br><br>[多重身份验证 (MFA)](/azure/active-directory/authentication/concept-mfa-howitworks) 对于所有管理员帐户都应为必需，并强烈建议对所有用户使用。 首选方法是尽量使用验证器应用而非短信或语音。 设置 Azure 备份时，可以将恢复服务配置为使用 Azure 门户中生成的安全 PIN 启用 MFA。 这可确保生成安全 PIN 来执行更新或删除恢复点等关键操作。 |
+| 保护备份以防蓄意擦除和加密： <br><br>将备份存储在脱机或场外存储及/或不可变存储中。 <br><br>需要采用带外步骤（例如 [MFA](../../active-directory/authentication/concept-mfa-howitworks.md) 或安全 PIN），才能允许修改或清除联机备份。 <br><br>在 Azure 虚拟网络中创建专用终结点，以安全地从恢复服务保管库备份和还原数据。 | 攻击者可访问的备份可显示没法用于业务恢复。 <br><br>脱机存储可确保在不使用任何网络带宽的情况下可靠地传输备份数据。 Azure 备份支持[脱机备份](../../backup/offline-backup-overview.md)，即在不使用网络带宽的情况下脱机传输初始备份数据。 它提供了一种可将备份数据复制到物理存储设备的机制。 然后，这些设备将发送到附近的 Azure 数据中心并上传到[恢复服务保管库](../../backup/backup-azure-recovery-services-vault-overview.md)。 <br><br>联机不可变存储（例如 [Azure Blob](../../storage/blobs/immutable-storage-overview.md)）可让用户以 WORM（一次写入，多次读取）状态存储业务关键型数据对象。 此状态可以根据用户指定的时间间隔使数据保持不可擦除且不可修改的状态。 <br><br>[多重身份验证 (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) 对于所有管理员帐户都应为必需，并强烈建议对所有用户使用。 首选方法是尽量使用验证器应用而非短信或语音。 设置 Azure 备份时，可以将恢复服务配置为使用 Azure 门户中生成的安全 PIN 启用 MFA。 这可确保生成安全 PIN 来执行更新或删除恢复点等关键操作。 |
 | 指定[受保护的文件夹](/windows/security/threat-protection/microsoft-defender-atp/controlled-folders)。 | 使未经授权的应用程序更难修改这些文件夹中的数据。 |
 | 评审你的权限： <br><br>发现对文件共享、SharePoint 和其他解决方案的宽泛写入/删除权限。 “宽泛”的定义是许多用户对业务关键数据都具有写入/删除权限。 <br><br>减少宽泛权限，同时满足业务协作要求。 <br><br>进行审核和监视，确保不会再次出现宽泛权限。 | 降低因宽泛访问权限而诱发勒索软件活动的风险。 |
 | 防范网络钓鱼尝试： <br><br>定期开展安全意识培训，帮助用户识别网络钓鱼尝试，并避免单击可能创建初始泄露入口点的内容。 <br><br>将安全筛选控件应用于电子邮件，以检测并最大限度减少成功网络钓鱼尝试的可能性。 | 攻击者渗入组织的最常见方法是通过电子邮件进行网络钓鱼尝试。 [Exchange Online Protection (EOP)](/microsoft-365/security/office-365-security/exchange-online-protection-overview) 是一项基于云的筛选服务，可保护组织免受垃圾邮件、恶意软件和其他电子邮件威胁的攻击。 安装 Exchange Online 邮箱的所有 Microsoft 365 组织中均有 EOP。 <br><br>电子邮件安全筛选控件的一个示例是[安全链接](/microsoft-365/security/office-365-security/safe-links)。 安全链接是 Defender for Office 365 中的一项功能，提供对邮件流中入站电子邮件进行 URL 扫描和重写的功能，以及对电子邮件消息和其他位置中的 URL 和链接的单击时验证功能。 除 EOP 入站电子邮件消息中的常规反垃圾邮件和反恶意软件保护外，还会进行安全链接扫描。 安全链接扫描有助于组织防范网络钓鱼和其他攻击中使用的恶意链接。 <br><br>详细了解[反网络钓鱼保护](/microsoft-365/security/office-365-security/tuning-anti-phishing)。 |
@@ -171,8 +171,8 @@ Azure 备份提供内置监视和警报功能，用于查看和配置 Azure 备�
 Microsoft Azure：
 
 - [使用 Microsoft Azure 备份帮助防范勒索软件](https://www.youtube.com/watch?v=VhLOr2_1MCg)（26 分钟的视频）
-- [从系统标识泄露中恢复](/azure/security/fundamentals/recover-from-identity-compromise)
-- [Azure Sentinel 中的高级多阶段攻击检测](/azure/sentinel/fusion#ransomware)
+- [从系统标识泄露中恢复](./recover-from-identity-compromise.md)
+- [Azure Sentinel 中的高级多阶段攻击检测](../../sentinel/fusion.md#ransomware)
 
 Microsoft 365：
 

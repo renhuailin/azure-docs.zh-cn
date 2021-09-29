@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4fc4cea51494333bed90cd6c277469a58e2c6a3f
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 5985c653d02a041e648f306847b5bcfd93783302
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397481"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615218"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
@@ -54,21 +55,21 @@ ms.locfileid: "122397481"
 1. 创建数据工厂或打开现有数据工厂。 有关创建数据工厂的步骤，请参阅[使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 2. 在数据工厂的“数据工厂”边栏选项卡中，单击“示例管道”磁贴。
 
-    ![“示例管道”磁贴](./media/data-factory-samples/SamplePipelinesTile.png)
+    :::image type="content" source="./media/data-factory-samples/SamplePipelinesTile.png" alt-text="“示例管道”磁贴":::
 3. 在“示例管道”边栏选项卡中，单击要部署的“示例”。
 
-    ![“示例管道”边栏选项卡](./media/data-factory-samples/SampleTile.png)
+    :::image type="content" source="./media/data-factory-samples/SampleTile.png" alt-text="“示例管道”边栏选项卡":::
 4. 指定此示例的配置设置。 例如，Azure 存储帐户名和帐户密钥、逻辑 SQL Server 名称、数据库、用户 ID 和密码等。
 
-    ![“示例”边栏选项卡](./media/data-factory-samples/SampleBlade.png)
+    :::image type="content" source="./media/data-factory-samples/SampleBlade.png" alt-text="“示例”边栏选项卡":::
 5. 指定配置设置后，单击“创建”可以创建/部署示例管道和此管道使用的链接服务/表格。
 6. 可在之前在“示例管道”边栏选项卡上单击的“示例”磁贴上看到部署状态。
 
-    ![部署状态](./media/data-factory-samples/DeploymentStatus.png)
+    :::image type="content" source="./media/data-factory-samples/DeploymentStatus.png" alt-text="部署状态":::
 7. 在此示例的磁贴上看到“已成功部署”消息时，关闭“示例管道”边栏选项卡。  
 8. 在“数据工厂”边栏选项卡上，将看到链接服务、数据集和管道已添加到数据工厂。  
 
-    ![“数据工厂”边栏选项卡](./media/data-factory-samples/DataFactoryBladeAfter.png)
+    :::image type="content" source="./media/data-factory-samples/DataFactoryBladeAfter.png" alt-text="“数据工厂”边栏选项卡":::
 
 ## <a name="samples-in-visual-studio"></a>Visual Studio 中的示例
 ### <a name="prerequisites"></a>先决条件
@@ -88,10 +89,10 @@ ms.locfileid: "122397481"
    4. 选择项目的 **位置**。
    5. 单击 **“确定”** 。
 
-      ![“新建项目”对话框](./media/data-factory-samples/vs-new-project-adf-templates.png)
+      :::image type="content" source="./media/data-factory-samples/vs-new-project-adf-templates.png" alt-text="“新建项目”对话框":::
 3. 在“数据工厂模板”对话框中，从“用例模板”部分选择示例模板，并单击“下一步”。 以下步骤将引导用户完成“客户分析”模板的使用。 步骤与其他示例的步骤类似。
 
-    ![“数据工厂模板”对话框](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
+    :::image type="content" source="./media/data-factory-samples/vs-data-factory-templates-dialog.png" alt-text="“数据工厂模板”对话框":::
 4. 在“数据工厂配置”对话框的“数据工厂基本”上，单击“下一步”。
 5. 在“配置数据工厂”页上，请按以下步骤操作：
    1. 选择“新建数据工厂”。 还可选择“使用现有数据工厂”。
@@ -108,7 +109,7 @@ ms.locfileid: "122397481"
 11. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，并单击“登录”。 
 12. 应该会看到以下对话框：
 
-    ![“发布”对话框](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-vs/publish.png" alt-text="“发布”对话框":::
 13. 在“配置数据工厂”  页，按照以下步骤操作：
 
     1. 确认“使用现有数据工厂”选项。

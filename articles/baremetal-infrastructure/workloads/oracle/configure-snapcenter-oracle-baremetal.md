@@ -4,12 +4,12 @@ description: 了解如何在 BareMetal 基础结构上配置适用于 Oracle 的
 ms.topic: how-to
 ms.subservice: baremetal-oracle
 ms.date: 05/05/2021
-ms.openlocfilehash: cd3163b90d65f3e33fa56a190ed854069afd6703
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: edc75bd8d5fb2a64e22b2dd8f53fceda092161c3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579201"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676098"
 ---
 # <a name="configure-snapcenter-for-oracle-on-baremetal-infrastructure"></a>在 BareMetal 基础结构上配置适用于 Oracle 的 SnapCenter
 
@@ -82,7 +82,7 @@ https://\<hostname\>:8146/
     - **凭据名称**：提供可标识用户名和 sudoers 的名称。
     - **身份验证**：Linux
     - **用户名**：提供新创建的用户名。
-    - **密码**：<Enter Password>
+    - **密码**：\<enter password\>
     - 勾选“使用 sudo 权限”框
     
 7. 选择“确定”。

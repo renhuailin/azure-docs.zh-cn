@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c6b3802add796184714f389b813765945a8d20a4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d090d6c97a26b78799adf8c5927e6e680c43938a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183905"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596498"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>教程：将 BioCatch 和 Azure Active Directory B2C 一起配置
 
@@ -352,24 +352,18 @@ document.getElementById("clientSessionId").style.display = 'none';
 按照以下步骤将策略文件添加到 Azure AD B2C
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录  [Azure 门户](https://portal.azure.com/)。
-
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅” 筛选器，然后选择包含租户的目录。
-
-3. 选择 Azure 门户左上角的“所有服务” ，搜索并选择 Azure AD B2C **** 。
-
-4. 导航到“Azure AD B2C” >“Identity Experience Framework” ****  ****
-
-3. 将所有策略文件上传到租户。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务” ，搜索并选择 Azure AD B2C **** 。
+1. 导航到“Azure AD B2C” >“Identity Experience Framework” ****  ****
+1. 将所有策略文件上传到租户。
 
 ## <a name="test-the-solution"></a>测试解决方案
 
 1. [注册一个将重定向到 JWT.MS 的虚拟应用程序](./tutorial-register-applications.md?tabs=app-reg-ga)  
-
-2. 在“Identity Experience Framework”下，选择所创建的策略
-
-3. 在策略窗口中，选择虚拟 JWT.MS 应用程序，然后选择“立即运行”
-
-4. 完成注册流程并创建帐户。 返回到 JWT.MS 的令牌应具有 2 倍数量的 riskLevel 和评分声明。 遵循该示例。  
+1. 在“Identity Experience Framework”下，选择所创建的策略
+1. 在策略窗口中，选择虚拟 JWT.MS 应用程序，然后选择“立即运行”
+1. 完成注册流程并创建帐户。 返回到 JWT.MS 的令牌应具有 2 倍数量的 riskLevel 和评分声明。 遵循该示例。  
 
     ```JavaScript
     { 

@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: rogarana
-ms.openlocfilehash: 1ab8a709f100930117a445f7eee11f2a865df50d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a741a3bcace98aa4e153f2dc4aaf1b9c900c2003
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108790918"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080551"
 ---
 与对服务器终结点所做的更改不同，使用 Azure 门户或 SMB 对 Azure 文件共享所做的更改不会立即检测到并复制。 Azure 文件尚没有更改通知或日记，因此无法在文件更改时自动启动同步会话。 在 Windows Server 上，Azure 文件同步使用 [Windows USN 日记](/windows/win32/fileio/change-journals)可在文件更改时自动启动同步会话。
 
@@ -23,4 +23,4 @@ ms.locfileid: "108790918"
 >[!NOTE]
 >使用 REST 对 Azure 文件共享所做的更改将不会更新 SMB 上次修改时间，亦不会被视为同步更改。
 
-我们正在探讨针对 Azure 文件共享添加类似于针对 Windows Server 上的卷使用的 USN 的更改检测功能。 请在 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 上为此功能投票，帮助我们确定将来开发此功能的优先级。
+我们正在探讨针对 Azure 文件共享添加类似于针对 Windows Server 上的卷使用的 USN 的更改检测功能。

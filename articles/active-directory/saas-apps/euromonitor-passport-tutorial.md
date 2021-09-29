@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.author: jeedes
-ms.openlocfilehash: a764fbd0edb6531ad0ea4ea25fcfe4f56c426ee7
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 9091de76caecda841e68dbc39a36eea27b37f368
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111893599"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813502"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-euromonitor-passport"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Euromonitor Passport 的集成
 
@@ -147,7 +147,7 @@ ms.locfileid: "111893599"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Euromonitor Passport。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Euromonitor Passport 磁贴时，如果是在 SP 模式下配置的，你会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你将会自动登录到为其设置了 SSO 的 Euromonitor Passport。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Euromonitor Passport 磁贴时，如果是在 SP 模式下配置的，你会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你将会自动登录到为其设置了 SSO 的 Euromonitor Passport。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,20 +2,20 @@
 title: 快速入门：使用 Azure PowerShell 创建 Synapse 工作区
 description: 按照本指南中的步骤使用 Azure PowerShell 创建 Azure Synapse 工作区。
 services: synapse-analytics
-author: lenadroid
+author: rothja
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: workspace
 ms.date: 10/19/2020
-ms.author: alehall
+ms.author: jroth
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b602ecb096293df7071489262175ae4bb7d71b0
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ee02f650ad20eb9f6673875823090ea3d242b7cd
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113528"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092996"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure Synapse 工作区
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 69aaf2032ca321d7c0f8039cde2728134138e95c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c9d0faa12ffe693729ada3225f96eccde8508c58
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147882"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>教程：将 Azure Active Directory 与 Five9 Plus Adapter (CTI, Contact Center Agents) 集成
 
@@ -146,7 +146,7 @@ ms.locfileid: "108147882"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置 SSO 的 Five9 Plus Adapter（CTI、联系人中心代理）。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Five9 Plus Adapter（CTI、联系人中心代理）”磁贴时，应自动登录到为其设置 SSO 的 Five9 Plus Adapter（CTI、联系人中心代理）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Five9 Plus Adapter（CTI、联系人中心代理）”磁贴时，应自动登录到为其设置 SSO 的 Five9 Plus Adapter（CTI、联系人中心代理）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

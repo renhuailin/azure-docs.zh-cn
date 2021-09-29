@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3570256d74fa2da96b4b8335659b5274e492515
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 4d4f602d430a7e71db56f8d5babf78741fc4b88d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113422"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666640"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "123113422"
 
 ## <a name="event-based-architecture-requirements"></a>基于事件的体系结构要求
 
-使用 [Azure Functions](../../azure-functions/functions-overview.md) 生成无服务器体系结构时，[建议](../../azure-functions/functions-best-practices.md#avoid-long-running-functions)创建协同工作的小型函数集，而不是长时间运行的大型函数。
+使用 [Azure Functions](../../azure-functions/functions-overview.md) 生成无服务器体系结构时，[建议](../../azure-functions/performance-reliability.md#avoid-long-running-functions)创建协同工作的小型函数集，而不是长时间运行的大型函数。
 
 在使用[适用于 Cosmos DB 的 Azure Functions 触发器](./change-feed-functions.md)生成基于事件的无服务器流时，只要特定 [Azure Cosmos 容器](../account-databases-containers-items.md#azure-cosmos-containers)中存在新事件，就会遇到要执行多项操作的方案。 如果要触发的操作彼此独立，理想的解决方案是为每个要执行的操作创建一个适用于 Cosmos DB 的 Azure Functions 触发器，所有触发器侦听同一 Azure Cosmos 容器上的更改  。
 

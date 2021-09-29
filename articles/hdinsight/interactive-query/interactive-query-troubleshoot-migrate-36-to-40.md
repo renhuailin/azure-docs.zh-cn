@@ -4,12 +4,12 @@ description: 从 HDInsight 3.6 到 4.0 迁移 Hive 工作负载的故障排除�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/12/2021
-ms.openlocfilehash: eb19f3bd726efe018b4c593f324eb1cacd2cc2c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eecf8cd36c1f631176ce836523be802d751ed55b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722290"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625955"
 ---
 # <a name="troubleshooting-guide-for-migration-of-hive-workloads-from-hdinsight-36-to-hdinsight-40"></a>从 HDInsight 3.6 到 HDInsight 4.0 迁移 Hive 工作负载的故障排除指南
 
@@ -18,9 +18,11 @@ ms.locfileid: "121722290"
 ## <a name="reduce-latency-when-running-describe-table_name"></a>降低运行 `DESCRIBE TABLE_NAME` 时的延迟
 
 解决方法：
+
 * 增加可在一个批处理中从元存储检索的最大对象数（表/分区）。 将它设置为一个较大的数字（默认值为 300），直到达到令人满意的延迟级别。 此数值越大，需要往返 Hive 元存储服务器的次数就越少，但是，这也可能导致客户端需要更高的内存。
 
-    ```hive.metastore.batch.retrieve.max=2000```
+  `hive.metastore.batch.retrieve.max=2000`
+
 * 重新启动 Hive 和所有过时服务
 
 ## <a name="unable-to-query-gzipped-text-file-if-skipheaderlinecount-and-skipfooterlinecount-are-set-for-table"></a>如果为表设置了 skip.header.line.count 和 skip.footer.line.count，则无法查询 Gzip 压缩的文本文件
@@ -35,7 +37,7 @@ ms.locfileid: "121722290"
 解决方法：
 1. 连接到你的群集的 Hive 元存储数据库。
 
-2. 使用以下命令获取 `TBLS` 和 `TABLE_PARAMS` 表的备份：
+2. 使用以下命令备份 `TBLS` 和 `TABLE_PARAMS` 表：
     ```sql
         select * into tbls_bak from tbls;
         select * into table_params_bak from table_params;
@@ -50,7 +52,7 @@ ms.locfileid: "121722290"
 
 ## <a name="create-table-as-select-ctas-creates-a-new-table-with-same-uuid"></a>CREATE TABLE AS SELECT (CTAS) 会创建一个具有相同 UUID 的新表
 
-Hive 3.1 (HDInsight 4.0) 提供内置 UDF 来生成唯一的 UUID。 Hive UUID () 方法将生成唯一的 ID，即使使用 CTAS 也是如此。 使用方法如下所示。
+Hive 3.1 (HDInsight 4.0) 提供内置 UDF 来生成唯一的 UUID。 Hive UUID () 方法将生成唯一的 ID，即使使用 CTAS 也是如此。 可以按如下所示使用它。
 ```hql
 create table rhive as
 select uuid() as UUID
@@ -59,7 +61,7 @@ from uuid_test
 
 ## <a name="hive-job-output-format-differs-from-hdinsight-36"></a>Hive 作业输出格式不同于 HDInsight 3.6
 
-这是由 HDInsight 3.6 和 HDInsight 4.0 之间的 WebHCat(Templeton) 的差异所致。
+这是由 HDInsight 3.6 和 HDInsight 4.0 之间的 WebHCat(Templeton) 的差异所导致的。
 
 * Hive Rest API - 添加 ```arg=--showHeader=false -d arg=--outputformat=tsv2 -d```
 
@@ -92,7 +94,7 @@ from uuid_test
 
 ## <a name="disable-acid-in-hdinsight-40"></a>在 HDInsight 4.0 中禁用 ACID
 
-建议在 HDInsight 4.0 中启用 ACID。 Hive 中最近的大部分增强（包括功能和性能）只对 ACID 表可用。
+建议在 HDInsight 4.0 中启用 ACID。 Hive 中大部分最近的增强（包括功能和性能）仅对 ACID 表可用。
 
 在 HDInsight 4.0 上禁用 ACID 的步骤：
 1. 在 Ambari 中更改以下 Hive 配置：
@@ -133,31 +135,34 @@ from uuid_test
 
 2. 将“Hive Authorization Manager”从 ```org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider``` 更改为 ```org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly```。
 
-MetaStoreAuthzAPIAuthorizerEmbedOnly 会有效禁用安全检查，因为 Hive 元存储并未嵌入在 HDInsight 4.0 中。 但是，这可能会带来其他潜在的问题。 使用此选项时请谨慎操作。
+MetaStoreAuthzAPIAuthorizerEmbedOnly 会有效禁用安全检查，因为 Hive 元存储并未嵌入在 HDInsight 4.0 中。 但是，这可能会带来其他潜在的问题。 因此，使用此选项时请务必小心。
 
 ## <a name="permission-errors-in-hive-job-after-upgrading-to-hdinsight-40"></a>升级到 HDInsight 4.0 后 Hive 作业中的权限错误
 
-* 在 HDInsight 4.0 中，所有带有 Hive 组件的群集形状都配置有一个新的授权提供程序：```org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider```
+* 在 HDInsight 4.0 中，所有带有 Hive 组件的群集形状都配置有一个新的授权提供程序：
+
+  `org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider`
 
 * 应该将 HDFS 文件权限分配给要访问的文件的 Hive 用户。 错误消息会提供解决此问题所需的详细信息。
 
 * 还可以切换到 HDInsight 3.6 Hive 群集中使用的 ```MetaStoreAuthzAPIAuthorizerEmbedOnly``` 提供程序。
-```org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly```
 
-    :::image type="content" source="./media/apache-hive-40-migration-guide/hive-job-permission-errors.png" alt-text="将授权设置为 MetaStoreAuthzAPIAuthorizerEmbedOnly" border="true":::
+  `org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly`
 
-## <a name="unable-to-query-table-with-opencsvserde"></a>无法使用 OpenCSVSerde 查询表
+  :::image type="content" source="./media/apache-hive-40-migration-guide/hive-job-permission-errors.png" alt-text="将授权设置为 MetaStoreAuthzAPIAuthorizerEmbedOnly" border="true":::
 
-从 `csv` 格式表中读取数据可能会引发异常，例如：
+## <a name="unable-to-query-table-with-opencsvserde"></a>无法通过 OpenCSVSerde 查询表
+
+从 `csv` 格式表中读取数据可能会引发如下异常：
 ```text
 MetaException(message:java.lang.UnsupportedOperationException: Storage schema reading not supported)
 ```
 
 解决方法：
 
-* 通过 Ambari UI 在 `Custom hive-site` 中添加配置`metastore.storage.schema.reader.impl`=`org.apache.hadoop.hive.metastore.SerDeStorageSchemaReader`
+* 通过 Ambari UI 在 `Custom hive-site` 中添加配置 `metastore.storage.schema.reader.impl`=`org.apache.hadoop.hive.metastore.SerDeStorageSchemaReader`
 
-* 重新启动所有过时的 Hive 服务
+* 重启所有陈旧 Hive 服务
 
 ## <a name="next-steps"></a>后续步骤
 

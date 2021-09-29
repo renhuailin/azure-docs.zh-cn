@@ -6,17 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: cf2fcf836962bbdb8a3af1671ecf9e11f6b4efa1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c8108540f77d323c46cc88caa628764b40c59e74
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770246"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597980"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的高可用性概念
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL 灵活服务器以预览版提供
+
 
 Azure Database for PostgreSQL 灵活服务器使用区域冗余服务器部署提供具有自动故障转移功能的高可用性配置。 当采用区域冗余配置进行部署时，灵活服务器会自动在不同的可用性区域中预配和管理备用副本。 使用 PostgreSQL 流式复制时，数据会在同步模式下复制到备用副本服务器。 
 

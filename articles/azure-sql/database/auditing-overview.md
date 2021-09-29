@@ -10,12 +10,12 @@ ms.author: arupp
 ms.reviewer: vanto
 ms.date: 08/25/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 5750192116b9d6008bf1bb903dd36875b6939ffb
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 512f43c102aa40707170021ec1b1fd6372437d64
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866479"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793527"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -84,7 +84,7 @@ ms.locfileid: "122866479"
 - 使用 Azure AD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/concept-sign-ins.md)，该门户记录这些事件的详细信息。
 - 通过网关将登录信息路由到数据库所在的特定实例。  对于 AAD 登录，在尝试使用该用户名登录到请求的数据库之前，将验证凭据。  如果失败，则绝不会访问请求的数据库，因此不会进行审核。  对于 SQL 登录，将根据请求的数据对凭据进行验证，因此在这种情况下可以对其进行审核。  在这两种情况下，都将审核已明显到达数据库的成功登录。
 - 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](threat-detection-overview.md)。
-- 将启用了审核的数据库复制到另一个 Azure SQL 逻辑服务器后，你可能会收到一封通知你审核失败的电子邮件。 这是已知问题，在新复制的数据库上审核应该会正常工作。
+- 将启用了审核的数据库复制到另一个 Azure SQL 逻辑服务器后，你可能会收到一封电子邮件，通知你审核失败。 这是一个已知问题，审核应会在新复制的数据库上按预期运行。
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>为服务器设置审核
 
@@ -119,7 +119,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 
 通过 Azure SQL Server 的 Microsoft 支持操作审核，你可以在 Microsoft 支持工程师需要在支持请求期间访问你的服务器时审核他们的操作。 将此功能与审核结合使用，可以提高工作人员的透明度，并可以进行异常情况检测、趋势可视化和数据丢失防护。
 
-要启用 Microsoft 支持操作审核，请导航到 Azure SQL Server 窗格中“安全”标题下的“审核”，并将“启用 Microsoft 支持操作审核”切换到“启用”   。
+若要启用 Microsoft 支持操作审核，请导航到“Azure SQL 服务器”窗格中“安全”标题下的“审核”，并将“启用 Microsoft 支持操作审核”切换到“开”   。
 
 ![Microsoft 支持操作的屏幕截图](./media/auditing-overview/support-operations.png)
 
@@ -130,7 +130,7 @@ AzureDiagnostics
 | where Category == "DevOpsOperationsAudit"
 ```
 
-可以选择为该审核日志选择不同的存储目标，也可为服务器使用相同的审核配置。
+可为此审核日志选择不同的存储目标，也可为服务器使用相同的审核配置。
 
 :::image type="content" source="media/auditing-overview/auditing-support-operation-log-destination.png" alt-text="用于审核支持操作的审核配置的屏幕截图":::
 
@@ -159,7 +159,7 @@ AzureDiagnostics
 
 ## <a name="analyze-audit-logs-and-reports"></a><a id="subheading-3"></a>分析审核日志和报告
 
-如果选择将审核日志写入 Azure Monitor 日志：
+如果已选择将审核日志写入到 Log Analytics，请执行以下操作：
 
 - 使用 [Azure 门户](https://portal.azure.com)。 打开相关数据库。 在数据库的“审核”页的顶部，选择“查看审核日志” 。
 

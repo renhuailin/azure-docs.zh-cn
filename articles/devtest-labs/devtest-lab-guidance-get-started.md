@@ -1,15 +1,15 @@
 ---
 title: 适合使用 Azure 开发测试实验室的常见方案
 description: 本文提供了使用 Azure 开发测试实验室的主要方案以及开始在你的组织中使用该服务的两条常规路径。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: d6508bc4fdcb5f6dfae877fcdb8d407350f1047f
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: fc4c7ca1cdbc8e503ad6c0d94fcec2d9697baae4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293568"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657474"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>适合使用 Azure 开发测试实验室的常见方案
 根据企业的需要，可以配置开发测试实验室来满足不同的要求。  本文介绍常见方案。 每个方案都涵盖使用开发测试实验室和资源来实现这些方案所带来的好处。  

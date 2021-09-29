@@ -9,13 +9,13 @@ ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.date: 07/28/2020
-ms.openlocfilehash: b5f1090c11844e1ca75c2296275588e5123a9d92
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/15/2021
+ms.openlocfilehash: 7b5a9f195d2ba8b682dd4458358cb9d85b7f16d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737021"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644517"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>查看和下载 Azure 使用情况与费用
 
@@ -75,7 +75,7 @@ ms.locfileid: "121737021"
 如果签订了 Microsoft 客户协议，则可以下载当前计费周期的每月至今使用量。 这些尚未计费的使用费。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 3. 选择计费对象信息。 根据你的访问权限，可能需要先选择一个计费帐户。
 4. 在“概述”区域中，找到“最近费用”下的下载链接。
 5. 选择“下载使用量和价格”。

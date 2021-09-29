@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: tutorial
 ms.date: 08/17/2021
-ms.openlocfilehash: 5d78161f73dfa1927483d7c6f8bad3ce925b3631
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 962c3f9e380bda96211ce2056ca886a555d44078
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426861"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736218"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>使用 Apache Spark 迁移到 Azure Managed Instance for Apache Cassandra
 
@@ -31,7 +31,6 @@ ms.locfileid: "123426861"
 * [在托管的 Cassandra VNet 中预配一个 Azure Databricks 帐户](deploy-cluster-databricks.md)。 另外请确保该帐户可通过网络访问源 Cassandra 群集。
 
 * 确保已将密钥空间/表方案从源 Cassandra 数据库迁移到目标 Cassandra 托管实例数据库。
-
 
 ## <a name="provision-an-azure-databricks-cluster"></a>预配 Azure Databricks 群集
 

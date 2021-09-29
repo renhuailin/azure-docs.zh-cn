@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 5802df8bec8a0d938b132e099dd71fdb1d22a5b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d193373b70e8a058716946b7c0acc159df991f5e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98727460"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770009"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kronos 集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "98727460"
 
 1. 在“设置 SAML 单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<company name>.kronos.net/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company name>.kronos.net/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.kronos.net/wfc/navigator/logonWithUID`
 
@@ -147,7 +147,7 @@ ms.locfileid: "98727460"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Kronos
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Kronos 磁贴时，你应该会自动登录到为其设置了 SSO 的 Kronos。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Kronos 磁贴时，你应该会自动登录到为其设置了 SSO 的 Kronos。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

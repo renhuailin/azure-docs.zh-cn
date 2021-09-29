@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 07/28/2021
-ms.openlocfilehash: 1bbe267aef27151b3ef70e88e0a8e85091d8a33d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d37b3755e79c8117bbec7269e7ef97e8edb7429
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781877"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782302"
 ---
 # <a name="tutorial-assess-aspnet-web-apps-for-migration-to-azure-app-service"></a>教程：评估 ASP.NET Web 应用以迁移到 Azure 应用服务
 
@@ -83,7 +83,7 @@ ms.locfileid: "121781877"
 
 #### <a name="azure-app-service-cost-details"></a>Azure 应用服务成本详细信息
 
-[应用服务计划](/azure/app-service/overview-hosting-plans)会根据所用的计算资源量产生[费用](https://azure.microsoft.com/pricing/details/app-service/windows/)。
+[应用服务计划](../app-service/overview-hosting-plans.md)会根据所用的计算资源量产生[费用](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 
 ### <a name="review-readiness"></a>查看就绪情况
 

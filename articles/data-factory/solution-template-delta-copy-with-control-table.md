@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 2478c50b9753f3518a0a09533842a4d7abde762c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8cf8ecaaafa9697286dcaa0ae61d00853d53a311
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731466"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743485"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制
 
@@ -90,37 +90,37 @@ ms.locfileid: "121731466"
     
 4. 转到“从数据库执行增量复制”模板。  与要从中复制数据的源数据库建立 **新的** 连接。
 
-    ![创建与源表的新连接](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png" alt-text="创建与源表的新连接":::
 
 5. 与要将数据复制到的目标数据存储建立 **新的** 连接。
 
-    ![创建与目标表的新连接](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png" alt-text="创建与目标表的新连接":::
 
 6. 与在步骤 2 和 3 中创建的外部控制表与存储过程建立 **新的** 连接。
 
-    ![创建与控件表数据存储的新连接](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png" alt-text="创建与控件表数据存储的新连接":::
 
 7. 选择“使用此模板”  。
     
 8. 你将看到可用的管道，如以下示例所示：
   
-    ![查看管道](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png" alt-text="查看管道":::
 
 9. 选择“存储过程”。  对于“存储过程名称”，请选择“[dbo].[update_watermark]”。   依次选择“导入参数”、“添加动态内容”。    
 
-    ![设置存储过程活动](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png" alt-text="设置存储过程活动":::   
 
 10. 写入内容 **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** ，然后选择“完成”。   
 
-    ![写入存储过程参数的内容](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png" alt-text="写入存储过程参数的内容":::        
      
 11. 选择“调试”，输入 **参数**，然后选择“完成”。  
 
-    ![选择“调试”](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png" alt-text="选择“调试”":::
 
 12. 随后会显示类似于以下示例的结果：
 
-    ![查看结果](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png" alt-text="查看结果":::
 
 13. 可以在源表中创建新行。 下面是用于创建新行的示例 SQL 语言：
 
@@ -138,7 +138,7 @@ ms.locfileid: "121731466"
 
 15. （可选：）如果选择“Azure Synapse Analytics”作为数据目标，则还需按 Azure Synapse Analytics Polybase 的要求，提供与用于暂存的 Azure Blob 存储的连接。 模板会为你生成容器路径。 管道运行后，检查是否已在 Blob 存储中创建容器。
     
-    ![配置 PolyBase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png" alt-text="配置 PolyBase":::
     
 ## <a name="next-steps"></a>后续步骤
 

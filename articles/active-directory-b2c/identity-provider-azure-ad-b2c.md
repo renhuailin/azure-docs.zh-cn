@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6ad2014b8fce21eada9ced1e63a3511daa5e1891
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5757b2e875253ac21c64cd3fbd0b7ade42085e8b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178057"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571910"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>从另一个 Azure AD B2C 租户设置 Azure AD B2C 帐户的注册和登录
 
@@ -90,7 +90,8 @@ ms.locfileid: "122178057"
 ## <a name="configure-azure-ad-b2c-as-an-identity-provider"></a>将 Azure AD B2C 配置为标识提供者
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用的是包含要配置联合身份验证的 Azure AD B2C 租户的目录（例如，Contoso）。 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录（例如，Contoso）。
+1. 请确保使用的是包含要配置联合身份验证的 Azure AD B2C 租户的目录（例如，Contoso）。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“标识提供程序”，然后选择“新建 OpenID Connect 提供程序” 。
 1. 输入“名称”。 例如，输入“Fabrikam”。
@@ -128,7 +129,7 @@ ms.locfileid: "122178057"
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页面上，选择“Fabrikam”以使用其他 Azure AD B2C 租户登录。
 
-如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
+如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 
@@ -138,7 +139,8 @@ ms.locfileid: "122178057"
 
 需将之前创建的应用程序密钥存储在 Azure AD B2C 租户中。
 
-1. 请确保使用的是包含要配置联合身份验证的 Azure AD B2C 租户的目录（例如，Contoso）。 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录（例如，Contoso）。
+1. 请确保使用的是包含要配置联合身份验证的 Azure AD B2C 租户的目录（例如，Contoso）。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“策略”下，选择“Identity Experience Framework”。 
 1. 选择“策略密钥”，然后选择“添加”。

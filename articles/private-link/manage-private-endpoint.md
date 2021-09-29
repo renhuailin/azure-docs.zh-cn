@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d9e402b2015370eca5782ec91dd6afb8f7c6d962
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: f4d5de43786952b3581067c69e2b8840d3aa7296
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701289"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553329"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>管理专用终结点连接
 Azure 专用链接基于一个审批调用流模型工作，其中，专用链接服务使用者可以请求连接到服务提供商以使用该服务。 然后，服务提供商可以决定是否允许使用者进行连接。 通过 Azure 专用链接，服务提供商可以管理其资源上的专用终结点连接。 本文提供了有关如何管理专用终结点连接的说明。
@@ -36,7 +36,8 @@ Azure 专用链接基于一个审批调用流模型工作，其中，专用链�
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>管理 Azure PaaS 资源上的专用终结点连接
-门户是用于管理 Azure PaaS 资源上的专用终结点连接的首选方法。 目前，我们不支持使用 PowerShell/CLI 来管理 Azure PaaS 资源上的连接。
+门户是用于管理 Azure PaaS 资源上的专用终结点连接的首选方法。 
+
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
 2. 导航到“专用链接中心”。
 3. 在“资源”  下，选择要管理专用终结点连接的资源类型。
@@ -46,7 +47,7 @@ Azure 专用链接基于一个审批调用流模型工作，其中，专用链�
 
 ## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>管理客户/合作伙伴拥有的专用链接服务上的专用终结点连接
 
-Azure PowerShell 和 Azure CLI 是用于管理 Microsoft 合作伙伴服务或客户拥有的服务上的专用终结点连接的首选方法。 目前，我们不支持使用门户来管理专用链接服务上的连接。  
+Azure PowerShell 和 Azure CLI 是用于管理 Microsoft 合作伙伴服务或客户拥有的服务上的专用终结点连接的首选方法。 
  
 ### <a name="powershell"></a>PowerShell 
   

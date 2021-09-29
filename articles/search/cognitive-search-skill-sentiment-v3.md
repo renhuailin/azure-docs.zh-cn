@@ -8,16 +8,16 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 4baadea0d78db64d97d1ae94317d7d506a141f41
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: d42eb099091840ed5dbab61abbad47e087504ab3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860887"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214515"
 ---
 # <a name="sentiment-cognitive-skill-v3"></a>情绪认知技能 (V3)
 
-V3 **情绪** 技能评估非结构化文本，对于每条记录，将根据服务在句子和文档级别找到的最高置信度分数来提供情绪标签（例如“消极”、“中立”和“积极”）。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)版本 3 提供的机器学习模型。 它还公开了[文本分析 API 的观点挖掘功能](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)，该功能以文本形式提供了与产品或服务属性相关的观点的更细粒度信息。
+V3 **情绪** 技能评估非结构化文本，对于每条记录，将根据服务在句子和文档级别找到的最高置信度分数来提供情绪标签（例如“消极”、“中立”和“积极”）。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)版本 3 提供的机器学习模型。 它还公开[文本分析 API 的观点挖掘功能](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)，提供有关文本中产品或服务的属性的观点的更精细的信息。
 
 > [!NOTE]
 > 此技能与 Azure 认知服务绑定，对于超过每个索引器每天 20 个文档的事务，需要[一个计费资源](cognitive-search-attach-cognitive-services.md)。 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。
@@ -60,6 +60,7 @@ Microsoft.Skills.Text.V3.SentimentSkill
 ```json
 {
     "@odata.type": "#Microsoft.Skills.Text.V3.SentimentSkill",
+    "context": "/document",
     "includeOpinionMining": true,
     "inputs": [
         {

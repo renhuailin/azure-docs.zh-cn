@@ -6,17 +6,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: d63cafb32dc1db0a901ed3e6004446b450db10c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd0e35105174cf64146cb27f75693e8348b1035e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102451517"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124825000"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>迁移到 Azure Cache for Redis
+
 本文介绍将在本地运行或在其他云服务中运行的现有 Redis 缓存迁移到 Azure Cache for Redis 的多种方法。
 
 ## <a name="migration-scenarios"></a>迁移方案
+
 开源 Redis 可以在许多计算环境中运行。 常见示例包括：
 
 - **本地** - 在专用数据中心中运行的 Redis 缓存。

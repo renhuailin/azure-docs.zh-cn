@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: e411f7fd6f8d8a21b2016cbe16d0c7a947313331
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 64ef920e727baf559b71cac416404fb740e47625
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674857"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788546"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-workloads"></a>使用 Azure Monitor 监视虚拟机：工作负荷
 本文是[在 Azure Monitor 中监视虚拟机及其工作负载](monitor-virtual-machine.md)方案的一部分。 本文介绍了如何监视虚拟机的来宾操作系统上运行的工作负荷。 本文详细介绍了如何在虚拟机上的不同数据源上分析和警示不同数据源。
@@ -186,7 +186,7 @@ IIS 日志中的记录存储在 Log Analytics 工作区的 [W3CIISLog](/azure/az
 > [!NOTE]
 > “更改跟踪和分析”解决方案不同于 VM 见解中的[“更改分析”](vminsights-change-analysis.md)功能。 此功能处于公共预览阶段，此方案中尚未包括此功能。
 
-有关在虚拟机上启用“更改跟踪”解决方案的不同选项，请参阅[启用更改跟踪和清单](../../automation/change-tracking/overview.md#enable-change-tracking-and-inventory)。 此解决方案包括用于大规模配置虚拟机的方法。 你必须[创建一个 Azure 自动化帐户](../../automation/automation-quickstart-create-account.md)才能支持解决方案。
+有关在虚拟机上启用“更改跟踪”解决方案的不同选项，请参阅[启用更改跟踪和清单](../../automation/change-tracking/overview.md#enable-change-tracking-and-inventory)。 此解决方案包括用于大规模配置虚拟机的方法。 你必须[创建一个 Azure 自动化帐户](../../automation/quickstarts/create-account-portal.md)才能支持解决方案。
 
 启用“更改跟踪和清单”后，将在 Log Analytics 工作区中创建两个新的表。 使用这些表作为日志查询警报规则。
 

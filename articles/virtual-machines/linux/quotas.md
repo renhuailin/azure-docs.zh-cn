@@ -3,17 +3,17 @@ title: vCPU 配额
 description: 了解 Azure 的 vCPU 配额。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: quota
+ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: fa0ed99827d4f203b0df55fd83803c976c455757
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 48bba54f8dae565a2af53c068b382f10b4b3b0f8
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687748"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215598"
 ---
 # <a name="check-vcpu-quotas-using-the-azure-cli"></a>使用 Azure CLI 检查 vCPU 配额
 
@@ -22,7 +22,7 @@ ms.locfileid: "122687748"
 虚拟机和虚拟机规模集的 vCPU 配额已根据每个区域中的每个订阅划分成两层。 第一层是区域的 vCPU 总数，第二层是各种 VM 大小系列核心（如 D 系列 vCPU）。 每当部署新 VM 时，VM 的 vCPU 数不能超过 VM 大小系列的 vCPU 配额或区域 vCPU 配额总数。 如果超过了上述任一配额，将不允许部署 VM。 此外，区域中的虚拟机总数也有一个配额。 有关上述每个配额的详细信息，可以在 [Azure 门户](https://portal.azure.com)的“订阅”页的“使用情况 + 配额”部分中查看，也可以使用 Azure CLI 查询值。
 
 > [!NOTE]
-> 配额基于所使用的核心总数（已分配和已解除分配）进行计算。 如果需要额外核心，则[请求增加配额](../../azure-portal/supportability/resource-manager-core-quotas-request.md)或删除不再需要的 VM。 
+> 配额基于所使用的核心总数（已分配和已解除分配）进行计算。 如果需要额外核心，则[请求增加配额](../../azure-portal/supportability/regional-quota-requests.md)或删除不再需要的 VM。 
 
 
 ## <a name="check-usage"></a>检查使用情况
@@ -63,7 +63,7 @@ Premium Storage Managed Disks                  5    10000
 ## <a name="reserved-vm-instances"></a>虚拟机预留实例
 虚拟机预留实例（其范围限定为单个订阅而不具有 VM 大小灵活性）将为 vCPU 配额添加新的方面。 这些值描述一定能够部署在订阅中的所述大小的实例数。 它们在配额系统中用作占位符，确保预留该配额，以便能够在订阅中部署 Azure 预留。 例如，如果特定订阅包含 10 个 Standard_D1 预留，则 Standard_D1 预留的用量限制将是 10。 这会导致 Azure 确保总区域 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例，并且标准 D 系列 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例。
 
-如果需要增加配额以购买单个订阅 RI，则可以在订阅上[请求增加配额](../../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+如果需要增加配额以购买单个订阅 RI，则可以在订阅上[请求增加配额](../../azure-portal/supportability/regional-quota-requests.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

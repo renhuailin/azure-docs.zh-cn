@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 68669418a62daad2c2c5d1b9f44f66c1a5b7ebb8
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: b73fd12d905fe1aa03d02de2b657d5faae90342a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904078"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615656"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
 
@@ -22,12 +22,12 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 创建存储帐户。 
-> * 使用 AzCopy 上传所有数据。
-> * 修改用于测试目的的数据。
-> * 创建一个计划任务或 cron 作业，以标识要上传的新文件。
+> - 创建存储帐户。
+> - 使用 AzCopy 上传所有数据。
+> - 修改用于测试目的的数据。
+> - 创建一个计划任务或 cron 作业，以标识要上传的新文件。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +47,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 2. 选择“服务”  下的“Blob”  ，然后选择“容器”  。
 
    ![显示容器创建的屏幕截图](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
- 
+
 容器名必须以字母或数字开头。 名称中只能包含字母、数字和连字符 (-)。 有关命名 Blob 和容器的更多规则，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 ## <a name="download-azcopy"></a>下载 AzCopy
@@ -80,33 +80,33 @@ azcopy login
 
 可使用 AzCopy 将文件夹中的所有文件上传到 [Windows](./storage-use-azcopy-v10.md) 或 [Linux](./storage-use-azcopy-v10.md) 上的 Blob 存储中。 若要上传文件夹中的所有 Blob，请输入以下 AzCopy 命令：
 
-```AzCopy
+```azcopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* 将 `<local-folder-path>` 占位符替换为包含文件（例如 `C:\myFolder` 或 `/mnt/myFolder`）的文件夹的路径。
+- 将 `<local-folder-path>` 占位符替换为包含文件（例如 `C:\myFolder` 或 `/mnt/myFolder`）的文件夹的路径。
 
-* 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
+- 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
-* 请将 `<container-name>` 占位符替换为所创建容器的名称。
+- 请将 `<container-name>` 占位符替换为所创建容器的名称。
 
 若要将指定目录的内容以递归方式上传到 Blob 存储，请指定 `--recursive` 选项。 使用此选项运行 AzCopy 时，会同时上传所有子文件夹及其文件。
 
 ## <a name="upload-modified-files-to-blob-storage"></a>将修改的文件上传到 Blob 存储
 
-可基于文件的上次修改时间，使用 AzCopy 上传文件。 
+可基于文件的上次修改时间，使用 AzCopy 上传文件。
 
 若要尝试此操作，可在源目录中修改文件或创建新文件，用于测试目的。 然后，使用 AzCopy `sync` 命令。
 
-```AzCopy
+```azcopy
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* 将 `<local-folder-path>` 占位符替换为包含文件（例如 `C:\myFolder` 或 `/mnt/myFolder`）的文件夹的路径。
+- 将 `<local-folder-path>` 占位符替换为包含文件（例如 `C:\myFolder` 或 `/mnt/myFolder`）的文件夹的路径。
 
-* 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
+- 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
-* 请将 `<container-name>` 占位符替换为所创建容器的名称。
+- 请将 `<container-name>` 占位符替换为所创建容器的名称。
 
 若要详细了解 `sync` 命令，请参阅[同步文件](./storage-use-azcopy-v10.md#transfer-data)。
 
@@ -114,7 +114,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
 可创建用于运行 AzCopy 命令脚本的计划任务或 cron 作业。 此脚本标识新的本地数据，并按特定时间间隔将其上传到云存储。
 
-将 AzCopy 命令复制到文本编辑器。 将 AzCopy 命令的参数值更新为合适的值。 将文件另存为适用于 AzCopy 的 `script.sh` (Linux) 或 `script.bat` (Windows)。 
+将 AzCopy 命令复制到文本编辑器。 将 AzCopy 命令的参数值更新为合适的值。 将文件另存为适用于 AzCopy 的 `script.sh` (Linux) 或 `script.bat` (Windows)。
 
 这些示例假设你的文件夹名为 `myFolder`，你的存储帐户名为 `mystorageaccount`，你的容器名为 `mycontainer`。
 
@@ -176,16 +176,16 @@ schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
 
 若要详细了解如何在本地和 Azure 存储之间移动数据，请单击以下链接：
 
-* [将数据移入和移出 Azure 存储](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。  
+- [将数据移入和移出 Azure 存储](./storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 有关 AzCopy 的详细信息，请参阅以下任何文章：
 
-* [AzCopy 入门](storage-use-azcopy-v10.md)
+- [AzCopy 入门](storage-use-azcopy-v10.md)
 
-* [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
+- [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 
-* [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
+- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 
-* [使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)
- 
-* [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
+- [使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)
+
+- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)

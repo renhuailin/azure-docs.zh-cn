@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.openlocfilehash: 93a9abc0b1da58592f45fb2ba4a317128629a370
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 68461802f24a34f66fd51dd6653fda97854c6cca
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122651877"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128565313"
 ---
 # <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-preview"></a>重启/停止/启动 Azure Database for MySQL 灵活服务器（预览）
 
@@ -24,7 +24,9 @@ ms.locfileid: "122651877"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+- 具有活动订阅的 Azure 帐户。 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - 安装 Azure CLI 或将其升级到最新版本。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 -  使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure 帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
 

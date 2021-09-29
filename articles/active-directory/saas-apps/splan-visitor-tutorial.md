@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: de00b869aef2d1429740d75829da9a5c3e79de15
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a2c33808be505209ff5eca58480b9fd5f03d9d4f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112465936"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785527"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Tutorial:将 Azure Active Directory 单一登录 (SSO) 与 Splan Visitor 集成
 
@@ -96,7 +96,7 @@ ms.locfileid: "112465936"
    1. 在“姓名”字段中输入 **B.Simon**。  
    1. 在“用户名”字段中，以 username@companydomain.extension 格式输入用户名。 例如，输入 B.Simon@contoso.com  。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -123,7 +123,7 @@ ms.locfileid: "112465936"
 使用以下选项之一测试 Azure AD 单一登录配置：
 
 * **Azure 门户**：选择“测试此应用程序”，以自动登录到为其设置了 SSO 的 Splan Visitor。
-* **Microsoft 的“我的应用”门户**：选择“Splan Visitor”磁贴，以自动登录到为其设置了 SSO 的 Splan Visitor。 有关“我的应用”门户的详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
+* **Microsoft 的“我的应用”门户**：选择“Splan Visitor”磁贴，以自动登录到为其设置了 SSO 的 Splan Visitor。 有关“我的应用”门户的详细信息，请参阅[从“我的应用”门户登录和启动应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

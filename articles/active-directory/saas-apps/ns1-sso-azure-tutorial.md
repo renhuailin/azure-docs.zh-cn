@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a7fad0af26d15bc77a52d55309c594937ba3be13
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38d64cc11889e3279d4e81ed2ab760ea50755f40
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92518613"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761011"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>教程：Azure Active Directory 单一登录 (SSO) 与 NS1 SSO for Azure 集成
 
@@ -49,7 +49,7 @@ ms.locfileid: "92518613"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 转到“企业应用程序”，并选择“所有应用程序”。  
+1. 转到“企业应用程序”，并选择“所有应用程序”。 
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **NS1 SSO for Azure**。
 1. 在结果面板中选择“NS1 SSO for Azure”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -165,7 +165,7 @@ ms.locfileid: "92518613"
 
 在本部分，你将使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“NS1 SSO for Azure”磁贴时，应会自动登录到设置了 SSO 的 NS1 SSO for Azure。 有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
+在访问面板中选择“NS1 SSO for Azure”磁贴时，应会自动登录到设置了 SSO 的 NS1 SSO for Azure。 有关详细信息，请参阅[访问面板简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

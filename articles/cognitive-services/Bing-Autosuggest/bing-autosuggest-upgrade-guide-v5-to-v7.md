@@ -3,19 +3,17 @@ title: 将必应自动推荐 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
 description: 介绍需要更新为使用版本 7 的“必应自动建议”应用程序部分。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: scottwhi
-ms.openlocfilehash: 531da145e699eecb76366cd73a151b7170a6ed2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc690f88f6f2e00feea003ecee30ec52407b1e61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353419"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619110"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>自动推荐 API 升级指南
 

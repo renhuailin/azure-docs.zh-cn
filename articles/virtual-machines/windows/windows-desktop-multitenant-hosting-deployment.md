@@ -9,19 +9,19 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 08193cc933bfd7c1d183df119b1602270ecf6f74
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 96cd1c079a4d3705dbddaffcaf23c44191e38543
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622410"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
 **适用于：** :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集
 
 对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 多租户托管权限仅适用于 Windows 10（版本 1703 或更高版本）。
 
-有关详细信息，请参阅[适用于 Windows 10 的多租户托管](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)。
+有关详细信息，请参阅[适用于 Windows 10 的多租户托管](https://www.microsoft.com/en-us/CloudandHosting)。
 
 > [!NOTE]
 > - 若要使用 Windows 7、8.1 和 10 映像进行开发或测试，请参阅[适用于开发/测试方案的 Azure 中的 Windows 客户端](client-images.md)
@@ -132,4 +132,4 @@ Azure 使用内置 Administrator 帐户预配所有 Windows，但不能使用此
 
 ## <a name="next-steps"></a>后续步骤
 - 深入了解[为 Windows 10 配置 VDA](/windows/deployment/vda-subscription-activation)
-- 深入了解 [Windows 10 的多租户托管](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
+- 深入了解 [Windows 10 的多租户托管](https://www.microsoft.com/en-us/CloudandHosting)

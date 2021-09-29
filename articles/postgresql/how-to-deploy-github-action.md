@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.author: sumuth
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 7fc59c0d9036a2e83c742f51fc17750d40e057fe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: acfed042be582475f3d186b5bcfbb6754d621b28
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791420"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766884"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-postgresql"></a>快速入门：使用 GitHub Actions 连接到 Azure PostgreSQL
 
-<Token>适用于：:::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL - 单一服务器 :::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL - 灵活服务器 </Token>
+适用于：:::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL - 单一服务器 :::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL - 灵活服务器  
 
 使用工作流将数据库更新部署到 [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/) 以开始使用 [GitHub Actions](https://docs.github.com/en/actions)。
 

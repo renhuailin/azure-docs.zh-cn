@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 07/13/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: d5c794bfc707f6429daad2e78affe592f5e3754c
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 7fe7070611fc9fc94f983a69a6fb9009af0f9c3e
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114709997"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091514"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习工作室
 
@@ -65,7 +65,7 @@ ms.locfileid: "114709997"
 
 + 现有的[具有专用终结点的 Azure 机器学习工作区](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)。
 
-+ 现有的[已添加虚拟网络的 Azure 存储帐户](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)。
++ 现有的[已添加虚拟网络的 Azure 存储帐户](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)。
 
 ## <a name="limitations"></a>限制
 
@@ -83,7 +83,7 @@ ms.locfileid: "114709997"
 > [!TIP]
 > 工作区的默认存储帐户不需要执行第一步。 对于 VNet 后面的所有存储帐户以及工作区使用的所有帐户（包括默认存储帐户）都需要执行其他步骤。
 
-1. 如果存储帐户是工作区的默认存储，请跳过此步骤。 如果不是默认值，请为工作区托管标识授予 Azure 存储帐户的“存储 Blob 数据读者”角色，以便它可以从 Blob 存储读取数据。
+1. 如果存储帐户是工作区的默认存储，请跳过此步骤。 如果不是默认值，请为工作区托管标识授予 Azure 存储帐户的“存储 Blob 数据读取者”角色，以便它可以从 Blob 存储读取数据。
 
     有关详细信息，请参阅[Blob 数据读取者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)内置角色。
 
@@ -106,7 +106,7 @@ ms.locfileid: "114709997"
     |工作区默认 Blob 存储| 存储设计器中的模型资源。 对此存储帐户启用托管标识身份验证才能在设计器中部署模型。 <br> <br> 如果设计器管道使用已配置为使用托管标识的非默认数据存储，则可以可视化和运行该设计器管道。 但如果未在默认数据存储上启用托管标识就尝试部署定型模型，则无论是否正在使用任何其他数据存储，部署都会失败。|
     |工作区默认文件存储| 存储 AutoML 试验资产。 对此存储帐户启用托管标识身份验证才能提交 AutoML 试验。 |
 
-1. 将数据存储配置为使用托管标识身份验证。 将 Azure 存储帐户添加到具有[服务终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)或[专用终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)的虚拟网络后，必须配置数据存储才能使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)身份验证。 这样，工作室就可以访问存储帐户中的数据。
+1. 将数据存储配置为使用托管标识身份验证。 将 Azure 存储帐户添加到具有[服务终结点](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)或[专用终结点](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts)的虚拟网络后，必须配置数据存储才能使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)身份验证。 这样，工作室就可以访问存储帐户中的数据。
 
     Azure 机器学习使用[数据存储](concept-data.md#datastores)连接到存储帐户。 创建新的数据存储时，请使用以下步骤将数据存储配置为使用托管标识身份验证：
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Bastion 故障排除 | Microsoft Docs
+title: Azure Bastion 疑难解答
 description: 了解如何排查 Azure Bastion 的问题。
 services: bastion
 author: charwen
@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 6b8ce0014524a407d6d35b85fed3bf5f41b556cf
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 86be88a7e8900ef871af1a2ad2c1c301f7487042
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067939"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673894"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion 疑难解答
 
@@ -20,7 +20,7 @@ ms.locfileid: "122067939"
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>无法在 AzureBastionSubnet 上创建网络安全组 (NSG)
 
-**问：** 我尝试在 Azure Bastion 子网上创建 NSG 时，遇到以下错误：“网络安全组 <NSG name> 没有 Azure Bastion 子网 AzureBastionSubnet 必需的规则”。
+**问：** 我尝试在 Azure Bastion 子网上创建 NSG 时，遇到以下错误：“网络安全组 \<NSG name\> 没有 Azure Bastion 子网 AzureBastionSubnet 必需的规则”。
 
 **答:** 如果要创建 NSG 并将其应用到 AzureBastionSubnet，请确保已在 NSG 中添加所需规则。 有关所需规则的列表，请参阅[使用 NSG 访问和 Azure Bastion](./bastion-nsg.md)。 如果未添加它们，则 NSG 创建/更新操作将失败。
 
@@ -73,7 +73,7 @@ The key's randomart image is:
 
 问：我无法连接到我的虚拟机（但我没有遇到上述问题）。
 
-答：你可以通过导航到 Azure 门户中 Azure Bastion 资源的“连接故障排除”选项卡（在“监视”部分）来排查连接问题。 “网络观察程序连接故障排除”提供了检查虚拟机 (VM) 之间的直接 TCP 连接、完全限定的域名 (FQDN)、URI 或 IPv4 地址的功能。 若要开始故障排除，请选择要从中开始连接的源和要连接到的目标，然后选择“检查”。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)。
+答：你可以通过导航到 Azure 门户中 Azure Bastion 资源的“连接故障排除”选项卡（在“监视”部分）来排查连接问题。 “网络观察程序连接故障排除”提供了检查虚拟机 (VM) 之间的直接 TCP 连接、完全限定的域名 (FQDN)、URI 或 IPv4 地址的功能。 若要开始故障排除，请选择要从中开始连接的源和要连接到的目标，然后选择“检查”。 [了解详细信息](../network-watcher/network-watcher-connectivity-overview.md)。
 
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>文件传输问题

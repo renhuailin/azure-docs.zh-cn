@@ -3,16 +3,17 @@ title: 将数据从 Blob 存储复制到 SQL 数据库 - Azure
 description: 本教程演示如何使用 Azure 数据工厂管道中的复制活动将数据从 Blob 存储复制到 SQL 数据库。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 24cedc6a1e0be66e9a924a50e25257f18b7f96a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ae57d6efbdff7c1b54c02b97a0b121b9a14b416
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376881"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638779"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -50,13 +51,13 @@ ms.locfileid: "100376881"
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击左侧菜单上的“所有服务”，并选择“存储帐户”。
 
-    ![浏览存储帐户](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
+    :::image type="content" source="media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png" alt-text="浏览存储帐户":::
 3. 在“存储帐户”边栏选项卡中，选择要在本教程中使用的“Azure 存储帐户”。
 4. 在“设置”下，选择“访问密钥”链接。
 5. 在“存储帐户名”文本框旁，单击“复制”（图像）按钮，然后将其保存/粘贴到某个位置（例如：文本文件中）。
 6. 重复上一步以复制或记下 **key1**。
 
-    ![存储访问密钥](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
+    :::image type="content" source="media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png" alt-text="存储访问密钥":::
 7. 单击“X”关闭所有边栏选项卡。
 
 ## <a name="collect-sql-server-database-user-names"></a>收集 SQL Server、数据库和用户的名称

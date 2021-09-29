@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 28bd7af9722bd76d6580257ffaf0446c79522502
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 2d0187dcac4de0fc49bbc504d8a3010801d44ecb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461542"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781318"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -66,7 +66,7 @@ Azure AD 中还包括了整套[标识管理功能](./identity-management-overvie
 
 - [多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)
 - [自助服务密码管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
-- [自助组管理](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
+- [自助组管理](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)
 - [特权帐户管理](../../active-directory/privileged-identity-management/pim-configure.md)
 - [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)
 - [应用程序使用情况监视](../../active-directory/hybrid/whatis-hybrid-identity.md)

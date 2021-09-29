@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/16/2021
 ms.author: billmath
 ms.reviewer: arvinh
-ms.openlocfilehash: 11bd751ebc95b1a9486534b34c771fde64eced21
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0bc74d9c9bab1337638249900de92bee39a40a68
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437342"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571675"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-to-scim-enabled-apps"></a>从 Azure AD 本地应用程序预配到已启用 SCIM 的应用
 
@@ -66,7 +66,5 @@ Azure Active Directory (Azure AD) 预配服务支持 [SCIM 2.0](https://techcomm
 ## <a name="next-steps"></a>后续步骤
 
 - [应用预配](user-provisioning.md)
-- [Azure AD ECMA 连接器主机安装](on-premises-ecma-install.md)
-- [Azure AD ECMA 连接器主机配置](on-premises-ecma-configure.md)
 - [泛型 SQL 连接器](on-premises-sql-connector-configure.md)
 - [教程：ECMA 连接器主机泛型 SQL 连接器](tutorial-ecma-sql-connector.md)

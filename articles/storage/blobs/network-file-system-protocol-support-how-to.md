@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61f57e0ee0f1df5b66526a190e583c72ecde7151
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 54d406303019ebfa967133c26bd5487c848575b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965378"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664877"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>使用网络文件系统 (NFS) 3.0 协议装载 Blob 存储
 
@@ -41,17 +41,17 @@ ms.locfileid: "122965378"
 
 配置帐户时，请选择以下值：
 
-|设置 | 高级性能层 | 标准性能  
+|设置 | 高级性能层 | 标准性能
 |----|---|---|
-|位置|所有可用区域 |所有可用区域    
+|位置|所有可用区域 |所有可用区域
 |性能|高级| 标准
 |帐户种类|BlockBlobStorage| 常规用途 V2
 |复制|本地冗余存储 (LRS)、区域冗余存储 (ZRS)| 本地冗余存储 (LRS)、区域冗余存储 (ZRS)
 |连接方法|公共终结点（选定网络）或专用终结点 |公共终结点（选定网络）或专用终结点
 |分层命名空间|Enabled|Enabled
-|NFS V3|Enabled |Enabled 
+|NFS V3|Enabled |Enabled
 
-对于所有其他设置，可接受默认值。 
+对于所有其他设置，可接受默认值。
 
 ## <a name="step-4-create-a-container"></a>步骤 4：创建容器
 
@@ -89,7 +89,7 @@ ms.locfileid: "122965378"
    mount -o sec=sys,vers=3,nolock,proto=tcp <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name>  /mnt/test
    ```
 
-   - 将此命令中出现的 `<storage-account-name>` 占位符替换为存储帐户的名称。  
+   - 将此命令中出现的 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
    - 请将 `<container-name>` 占位符替换为容器的名称。
 
@@ -102,8 +102,8 @@ ms.locfileid: "122965378"
 |`Access denied by server while mounting`|请确保客户端在支持的子网中运行。 请查看[受支持的网络位置](network-file-system-protocol-support.md#supported-network-connections)。|
 |`No such file or directory`| 确保将装载命令及其参数直接键入终端。 如果你将该命令的任何部分从另一个应用程序复制并粘贴到终端，粘贴的信息中的隐藏字符可能会导致出现此错误。|
 |`Permision denied`| 新创建的 NFS v3 容器的默认模式为 0750。 非根用户无法访问卷。 如果需要从非根用户访问，根用户必须将模式更改为 0755。 示例命令：`sudo chmod 0755 /mnt/<newcontainer>`|
-|`EINVAL ("Invalid argument"`) |当客户端尝试执行以下操作时，可能会出现此错误：<li>写入从 blob 终结点创建的 blob。<li>删除具有快照或位于具有活动 WORM（一次写入，多次读取）策略的容器中的 blob。|
-|`EROFS ("Read-only file system"`) |当客户端尝试执行以下操作时，可能会出现此错误：<li>写入 blob 或删除具有活动租约的 blob。<li>写入 blob 或删除具有活动 WORM（一次写入，多次读取）策略的容器中的 blob。 |
+|`EINVAL ("Invalid argument"`) |当客户端尝试执行以下操作时，可能会出现此错误：<li>写入从 blob 终结点创建的 blob。<li>删除具有快照或位于具有活动 WORM（一次写入，多次读取）策略的容器中的 blob。|
+|`EROFS ("Read-only file system"`) |当客户端尝试执行以下操作时，可能会出现此错误：<li>写入 blob 或删除具有活动租约的 blob。<li>写入 blob 或删除具有活动 WORM（一次写入，多次读取）策略的容器中的 blob。 |
 |`NFS3ERR_IO/EIO ("Input/output error"`) |当客户端尝试读取、写入或设置存储在存档访问层中的 blob 的属性时，可能会出现此错误。 |
 |`OperationNotSupportedOnSymLink` 个错误| 在通过 blob 或 Azure Data Lake Storage Gen2 API 执行写入操作时，可能会返回此错误。 不允许使用这些 API 写入或删除使用 NFS 3.0 创建的符号链接。 请确保使用 NFS v3 终结点处理符号链接。 |
 |`mount: /mnt/test: bad option;`| 使用 sudo apt install nfs-common 安装 nfs 帮助程序。|

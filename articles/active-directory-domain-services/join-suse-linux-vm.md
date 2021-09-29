@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: justinha
-ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78a9db37a83c9e53ee336c0b1760b111a78dbcbf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619600"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547004"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 SUSE Linux Enterprise 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -34,6 +34,7 @@ ms.locfileid: "96619600"
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
 * 属于托管域的用户帐户。
+* 独一无二的 Linux VM 名称，最大长度为 15 个字符，可避免名称被截断，名称被截断可能会在 Active Directory 中导致冲突。
 
 ## <a name="create-and-connect-to-a-sle-linux-vm"></a>创建和连接 SLE Linux VM
 

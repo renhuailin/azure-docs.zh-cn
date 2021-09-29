@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a39c2c15107f7bad79a02aaa9e98ee6d5e2b521f
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f3a25e3411182dfb712125dac82c2e41806f52a8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207386"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>教程：Azure Active Directory 与 Veritas Enterprise Vault.cloud SSO 集成
 
@@ -148,7 +148,7 @@ ms.locfileid: "108207386"
 
 * 直接转到 Veritas Enterprise Vault.cloud SSO 登陆 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Veritas Enterprise Vault.cloud SSO”磁贴时，这会重定向到 Veritas Enterprise Vault.cloud SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Veritas Enterprise Vault.cloud SSO”磁贴时，这会重定向到 Veritas Enterprise Vault.cloud SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

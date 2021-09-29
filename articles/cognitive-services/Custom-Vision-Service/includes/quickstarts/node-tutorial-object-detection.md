@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: de8ca0a9410479b4d166a47e5c56742955b7853f
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: af1c2637258a298488107fea9af23b38f4dcda49
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725117"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908389"
 ---
 本指南提供说明和示例代码，以帮助你开始使用适用于 Node.js 的自定义视觉客户端库来构建对象检测模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -172,7 +172,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 node index.js
 ```
 
-应用程序的输出应显示在控制台中。 然后，可以验证是否已正确标记（在 **<sampleDataRoot>/Test/** 中找到的）测试图像，并验证检测区域是否正确。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
+应用程序的输出应显示在控制台中。 然后，可以验证是否已正确标记（在 **\<sampleDataRoot\>/Test/** 中找到的）测试图像，并验证检测区域是否正确。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 09994e329072ab0ed67a9cb29c09ff245b288923
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 4cb943230c0211c67caf5d7a074d21077358c143
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432065"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605442"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -67,6 +67,7 @@ azcopy copy [source] [destination] [flags]
 ```azcopy
 azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
+
 与前面的示例相同，但这一次此命令还会计算文件内容的 MD5 哈希，并将其另存为 Blob 的 Content-MD5 属性：
 
 ```azcopy
@@ -80,13 +81,13 @@ azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[containe
 ```
 
 使用 SAS 令牌和管道（仅限块 Blob）上传单个文件：
-  
+
 ```azcopy
 cat "/path/to/file.txt" | azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]
 ```
 
 使用 SAS 令牌上传整个目录：
-  
+
 ```azcopy
 azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
@@ -98,7 +99,7 @@ azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[p
 ```
 
 使用 SAS 令牌和通配符 (*) 上传一组文件：
- 
+
 ```azcopy
 azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]"
 ```
@@ -109,10 +110,10 @@ azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[cont
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
 
-将文件和目录上传到 Azure 存储帐户，并在 Blob 上设置查询字符串编码标记。 
+将文件和目录上传到 Azure 存储帐户，并在 Blob 上设置查询字符串编码标记。
 
 - 若要设置标记 {key = "bla bla", val = "foo"} 和 {key = "bla bla 2", val = "bar"}，请使用以下语法：`azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
-    
+
 - 键和值是 URL 编码的，键值对之间用与符号（“&”）分隔
 
 - 在 Blob 上设置标记时，SAS 中还有其他权限（“t”表示标记），如果没有这些权限，服务将返回授权错误。
@@ -130,27 +131,27 @@ azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[S
 ```
 
 使用 SAS 令牌下载单个文件，然后通过管道将输出传送到文件（仅限块 Blob）：
- 
+
 ```azcopy
 azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" > "/path/to/file.txt"
-``` 
+```
 
 使用 SAS 令牌下载整个目录：
- 
+
 ```azcopy
 azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive
-``` 
+```
 
 有关在 URL 中使用通配符 (*) 的说明：
 
-仅支持通过两种方式在 URL 中使用通配符。 
+仅支持通过两种方式在 URL 中使用通配符。
 
-- 紧接在 URL 的最后一个正斜杠 (/) 后面使用一个通配符。 通配符的这种用法会将目录中的所有文件直接复制到目标，而不会将其放入子目录。 
+- 紧接在 URL 的最后一个正斜杠 (/) 后面使用一个通配符。 通配符的这种用法会将目录中的所有文件直接复制到目标，而不会将其放入子目录。
 
-- 也可以在容器名称中使用通配符，前提是 URL 只引用容器而不引用 Blob。 可以使用此方法从一部分容器中获取文件。 
+- 也可以在容器名称中使用通配符，前提是 URL 只引用容器而不引用 Blob。 可以使用此方法从一部分容器中获取文件。
 
 下载目录的内容，而不复制包含的目录本身。
- 
+
 ```azcopy
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/folder]/*?[SAS]" "/path/to/dir"
 ```
@@ -173,7 +174,7 @@ azcopy cp "https://[srcaccount].blob.core.windows.net/[container*name]" "/path/t
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-使用 SAS 令牌和身份验证令牌将单个 Blob 复制到另一个 Blob。 必须在源帐户 URL 的末尾使用 SAS 令牌，但如果使用 `azcopy login` 命令登录到 AzCopy，则目标帐户不需要 SAS 令牌。 
+使用 SAS 令牌和身份验证令牌将单个 Blob 复制到另一个 Blob。 必须在源帐户 URL 的末尾使用 SAS 令牌，但如果使用 `azcopy login` 命令登录到 AzCopy，则目标帐户不需要 SAS 令牌。
 
 ```azcopy
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]"
@@ -192,27 +193,27 @@ azcopy cp "https://[srcaccount].blob.core.windows.net?[SAS]" "https://[destaccou
 ```
 
 使用访问密钥和 SAS 令牌将单个对象复制到 Amazon Web Services (AWS) S3 中的 Blob 存储。 首先，为 AWS S3 源设置环境变量 `AWS_ACCESS_KEY_ID` 和 `AWS_SECRET_ACCESS_KEY`。
-  
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 使用访问密钥和 SAS 令牌将整个目录复制到 AWS S3 中的 Blob 存储。 首先，为 AWS S3 源设置环境变量 `AWS_ACCESS_KEY_ID` 和 `AWS_SECRET_ACCESS_KEY`。
- 
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
-    
+
   请参阅 https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html 以更好地了解 [folder] 占位符。
 
 使用访问密钥和 SAS 令牌将所有桶复制到 Amazon Web Services (AWS) 中的 Blob 存储。 首先，为 AWS S3 源设置环境变量 `AWS_ACCESS_KEY_ID` 和 `AWS_SECRET_ACCESS_KEY`。
- 
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
 使用访问密钥和 SAS 令牌将所有桶复制到 Amazon Web Services (AWS) 区域中的 Blob 存储。 首先，为 AWS S3 源设置环境变量 `AWS_ACCESS_KEY_ID` 和 `AWS_SECRET_ACCESS_KEY`。
- 
+
 ```azcopy
 - azcopy cp "https://s3-[region].amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
@@ -223,22 +224,22 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
-将文件和目录传输到 Azure 存储帐户，并在 Blob 上设置给定查询字符串编码标记。 
+将文件和目录传输到 Azure 存储帐户，并在 Blob 上设置给定查询字符串编码标记。
 
 - 若要设置标记 {key = "bla bla", val = "foo"} 和 {key = "bla bla 2", val = "bar"}，请使用以下语法：`azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
-        
+
 - 键和值是 URL 编码的，键值对之间用与符号（“&”）分隔
-    
+
 - 在 Blob 上设置标记时，SAS 中还有其他权限（“t”表示标记），如果没有这些权限，服务将返回授权错误。
 
 使用服务帐户密钥和 SAS 令牌将的单个对象从 Google Cloud Storage 复制到 Blob 存储。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS。
-  
+
 ```azcopy
 azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 使用服务帐户密钥和 SAS 令牌将整个目录从 Google Cloud Storage 复制到 Blob 存储。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS。
- 
+
 ```azcopy
   - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
@@ -256,7 +257,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blo
 ```
 
 通过使用目标的服务帐户密钥和 SAS 令牌，使用 Google Cloud Storage 中 Bucket 名称中的通配符 (*) 复制 Bucket 的子集。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS 和 GOOGLE_CLOUD_PROJECT=<`project-id`>。
- 
+
 ```azcopy
 azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
 ```
@@ -299,7 +300,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--exclude-attributes** 字符串 -（仅限 Windows）排除其属性与属性列表相匹配的文件。 例如：A;S;R
 
-**--exclude-blob-type** 字符串 -（可选）指定从容器或帐户复制 Blob 时要排除的 Blob 类型 (`BlockBlob`/ `PageBlob`/ `AppendBlob`)。 此标志不适用于将数据从非 Azure 服务复制到 Azure 服务。 应使用 `;` 分隔多个 Blob。 
+**--exclude-blob-type** 字符串 -（可选）指定从容器或帐户复制 Blob 时要排除的 Blob 类型 (`BlockBlob`/ `PageBlob`/ `AppendBlob`)。 此标志不适用于将数据从非 Azure 服务复制到 Azure 服务。 应使用 `;` 分隔多个 Blob。
 
 **--exclude-path** 字符串 - 复制时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：`myFolder;myFolder/subDirName/file.pdf`）。 与帐户遍历结合使用时，路径不包含容器名称。
 
@@ -331,7 +332,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--list-of-versions** 字符串指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 AzCopy 会将指定的版本下载到提供的目标文件夹中。 有关详细信息，请参阅[下载以前版本的 blob](./storage-use-azcopy-v10.md#transfer-data)。
 
-**--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：INFO（所有请求/响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为 `INFO`）。 
+**--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：INFO（所有请求/响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为 `INFO`）。
 
 **--metadata** 字符串 - 将这些键值对作为元数据上传到 Azure 存储。
 
@@ -348,7 +349,6 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 --preserve-smb-info   默认为 True。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 只会传输 Azure 文件存储支持的属性位；其他的将被忽略。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
 
 --preserve-permissions                默认为 False。 在感知资源（Windows 和 Azure 文件存储，或 Data Lake Storage Gen 2 到 Data Lake Storage Gen 2）之间保留 ACL。 对于具有分层命名空间的帐户，需要一个拥有“修改所有权”和“修改权限”权限的容器 SAS 或 OAuth 令牌。 对于下载操作，还需要使用 --backup 标志来还原权限，其中新所有者将不是运行 AzCopy 的用户。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如，包含模式）。
-
 
 **--put-md5** - 创建每个文件的 MD5 哈希，并将该哈希另存为目标 Blob 或文件的 Content-MD5 属性。 （默认不会创建哈希。）仅在上传时可用。
 

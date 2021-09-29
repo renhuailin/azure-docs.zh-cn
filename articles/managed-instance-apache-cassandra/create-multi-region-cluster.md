@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 05/05/2021
-ms.openlocfilehash: d2319ee86c356dfc3f145bd7031efe2ff01befa5
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.date: 09/08/2021
+ms.openlocfilehash: b40a2a2a8aaff878fa514ddd0d5b56eb9d5e10a3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109520376"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736234"
 ---
 # <a name="quickstart-create-a-multi-region-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>快速入门：使用 Azure Managed Instance for Apache Cassandra（预览版）创建多区域群集
 
@@ -38,57 +38,84 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
 
 1. 创建名为“cassandra-mi-multi-region”的资源组
 
-    ```azurecli-interactive
-        az group create -l eastus2 -n cassandra-mi-multi-region
-    ```
+   ```azurecli-interactive
+   az group create -l eastus2 -n cassandra-mi-multi-region
+   ```
 
 1. 使用专用子网在美国东部 2 创建第一个 VNet：
 
-    ```azurecli-interactive
-        az network vnet create -n vnetEastUs2 -l eastus2 -g cassandra-mi-multi-region --address-prefix 10.0.0.0/16 --subnet-name dedicated-subnet
-    ```
+   ```azurecli-interactive
+   az network vnet create \
+     -n vnetEastUs2 \
+     -l eastus2 \
+     -g cassandra-mi-multi-region \
+     --address-prefix 10.0.0.0/16 \
+     --subnet-name dedicated-subnet
+   ```
 
 1. 现在，同样使用专用子网在美国东部创建第二个 VNet：
 
-    ```azurecli-interactive
-        az network vnet create -n vnetEastUs -l eastus -g cassandra-mi-multi-region --address-prefix 192.168.0.0/16 --subnet-name dedicated-subnet
-    ```
+   ```azurecli-interactive
+    az network vnet create \
+      -n vnetEastUs \
+      -l eastus \
+      -g cassandra-mi-multi-region \
+      --address-prefix 192.168.0.0/16 \
+      --subnet-name dedicated-subnet
+   ```
 
    > [!NOTE]
    > 我们显式添加了不同的 IP 地址范围，以确保在对等互连时不会出现错误。 
 
 1. 现在，我们需要将第一个 VNet 与第二个 VNet 对等互连：
 
-    ```azurecli-interactive
-        az network vnet peering create -g cassandra-mi-multi-region -n MyVnet1ToMyVnet2 --vnet-name vnetEastUs2 \
-            --remote-vnet vnetEastUs --allow-vnet-access --allow-forwarded-traffic
-    ```
+   ```azurecli-interactive
+   az network vnet peering create \
+     -g cassandra-mi-multi-region \
+     -n MyVnet1ToMyVnet2 \
+     --vnet-name vnetEastUs2 \
+     --remote-vnet vnetEastUs \
+     --allow-vnet-access \
+     --allow-forwarded-traffic
+   ```
 
 1. 若要连接两个 VNet，请在第二个 VNet 和第一个 VNet 之间创建另一个对等互连：
 
-    ```azurecli-interactive
-        az network vnet peering create -g cassandra-mi-multi-region -n MyVnet2ToMyVnet1 --vnet-name vnetEastUs \
-            --remote-vnet vnetEastUs2 --allow-vnet-access --allow-forwarded-traffic  
-    ```
+   ```azurecli-interactive
+   az network vnet peering create \
+     -g cassandra-mi-multi-region \
+     -n MyVnet2ToMyVnet1 \
+     --vnet-name vnetEastUs \
+     --remote-vnet vnetEastUs2 \
+     --allow-vnet-access \
+     --allow-forwarded-traffic  
+   ```
 
    > [!NOTE]
    > 如果要添加更多区域，则每个 VNet 都需要与所有其他 VNet 进行对等互连。 
 
 1. 检查上一个命令的输出，并确保“peeringState”的值现在为“已连接”。 还可以通过运行以下命令来进行检查：
 
-    ```azurecli-interactive
-        az network vnet peering show \
-          --name MyVnet1ToMyVnet2 \
-          --resource-group cassandra-mi-multi-region \
-          --vnet-name vnetEastUs2 \
-          --query peeringState
-    ``` 
+   ```azurecli-interactive
+   az network vnet peering show \
+     --name MyVnet1ToMyVnet2 \
+     --resource-group cassandra-mi-multi-region \
+     --vnet-name vnetEastUs2 \
+     --query peeringState
+   ``` 
 
-1. 接下来，对这两个虚拟网络应用一些特殊权限，这是 Azure Managed Instance for Apache Cassandra 的需求。 运行以下内容并确保将 `<Subscription ID>` 替换为你的订阅 ID：
+1. 接下来，对这两个虚拟网络应用一些特殊权限，这是 Azure Managed Instance for Apache Cassandra 的需求。 运行以下内容并确保将 `<SubscriptionID>` 替换为你的订阅 ID：
 
-    ```azurecli-interactive
-        az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2
-        az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs
+   ```azurecli-interactive
+   az role assignment create \
+     --assignee a232010e-820c-4083-83bb-3ace5fc29d0b \
+     --role 4d97b98b-1d4f-4787-a291-c67834d212e7 \
+     --scope /subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2
+
+   az role assignment create     \
+     --assignee a232010e-820c-4083-83bb-3ace5fc29d0b \
+     --role 4d97b98b-1d4f-4787-a291-c67834d212e7 \
+     --scope /subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs
     ```
    > [!NOTE]
    > 上一命令中的 `assignee` 和 `role` 值是固定值，请完全按照命令中的说明输入这些值。 如果不这样做，则会在创建群集时出错。 如果在执行此命令时遇到任何错误，则你可能没有运行此命令的权限，请与管理员联系以获取权限。
@@ -97,57 +124,57 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
 
 1. 现在，我们已准备好适当的网络，接下来可以部署群集资源（将 `<Subscription ID>` 替换为你的订阅 ID）。 此过程可能需要 5-10 分钟：
 
-    ```azurecli-interactive
-        resourceGroupName='cassandra-mi-multi-region'
-        clusterName='test-multi-region'
-        location='eastus2'
-        delegatedManagementSubnetId='/subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2/subnets/dedicated-subnet'
-        initialCassandraAdminPassword='myPassword'
+   ```azurecli-interactive
+   resourceGroupName='cassandra-mi-multi-region'
+   clusterName='test-multi-region'
+   location='eastus2'
+   delegatedManagementSubnetId='/subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2/subnets/dedicated-subnet'
+   initialCassandraAdminPassword='myPassword'
         
-        az managed-cassandra cluster create \
-           --cluster-name $clusterName \
-           --resource-group $resourceGroupName \
-           --location $location \
-           --delegated-management-subnet-id $delegatedManagementSubnetId \
-           --initial-cassandra-admin-password $initialCassandraAdminPassword \
-           --debug
-    ```
+    az managed-cassandra cluster create \
+      --cluster-name $clusterName \
+      --resource-group $resourceGroupName \
+      --location $location \
+      --delegated-management-subnet-id $delegatedManagementSubnetId \
+      --initial-cassandra-admin-password $initialCassandraAdminPassword \
+      --debug
+   ```
 
-1. 创建群集资源后，即可创建数据中心。 首先，在美国东部 2 创建一个数据中心（将 `<Subscription ID>` 替换为你的订阅 ID）。 此过程最长需要 10 分钟：
+1. 创建群集资源后，即可创建数据中心。 首先，在美国东部 2 创建一个数据中心（将 `<SubscriptionID>` 替换为你的订阅 ID）。 此过程最长需要 10 分钟：
 
-    ```azurecli-interactive
-        resourceGroupName='cassandra-mi-multi-region'
-        clusterName='test-multi-region'
-        dataCenterName='dc-eastus2'
-        dataCenterLocation='eastus2'
-        delegatedManagementSubnetId='/subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2/subnets/dedicated-subnet'
+   ```azurecli-interactive
+   resourceGroupName='cassandra-mi-multi-region'
+   clusterName='test-multi-region'
+   dataCenterName='dc-eastus2'
+   dataCenterLocation='eastus2'
+   delegatedManagementSubnetId='/subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2/subnets/dedicated-subnet'
         
-        az managed-cassandra datacenter create \
-           --resource-group $resourceGroupName \
-           --cluster-name $clusterName \
-           --data-center-name $dataCenterName \
-           --data-center-location $dataCenterLocation \
-           --delegated-subnet-id $delegatedManagementSubnetId \
-           --node-count 3
-    ```
+    az managed-cassandra datacenter create \
+       --resource-group $resourceGroupName \
+       --cluster-name $clusterName \
+       --data-center-name $dataCenterName \
+       --data-center-location $dataCenterLocation \
+       --delegated-subnet-id $delegatedManagementSubnetId \
+       --node-count 3
+   ```
 
-1. 接下来，在美国东部创建一个数据中心（将 `<Subscription ID>` 替换为你的订阅 ID）：
+1. 接下来，在美国东部创建一个数据中心（将 `<SubscriptionID>` 替换为你的订阅 ID）：
 
-    ```azurecli-interactive
-        resourceGroupName='cassandra-mi-multi-region'
-        clusterName='test-multi-region'
-        dataCenterName='dc-eastus'
-        dataCenterLocation='eastus'
-        delegatedManagementSubnetId='/subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs/subnets/dedicated-subnet'
+   ```azurecli-interactive
+   resourceGroupName='cassandra-mi-multi-region'
+   clusterName='test-multi-region'
+   dataCenterName='dc-eastus'
+   dataCenterLocation='eastus'
+   delegatedManagementSubnetId='/subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs/subnets/dedicated-subnet'
         
-        az managed-cassandra datacenter create \
-           --resource-group $resourceGroupName \
-           --cluster-name $clusterName \
-           --data-center-name $dataCenterName \
-           --data-center-location $dataCenterLocation \
-           --delegated-subnet-id $delegatedManagementSubnetId \
-           --node-count 3 
-    ```
+    az managed-cassandra datacenter create \
+      --resource-group $resourceGroupName \
+      --cluster-name $clusterName \
+      --data-center-name $dataCenterName \
+      --data-center-location $dataCenterLocation \
+      --delegated-subnet-id $delegatedManagementSubnetId \
+      --node-count 3 
+   ```
 
 1. 创建第二个数据中心后，请获取节点状态，验证是否已成功显示所有 Cassandra 节点：
 
@@ -156,10 +183,9 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
     clusterName='test-multi-region'
     
     az managed-cassandra cluster node-status \
-        --cluster-name $clusterName \
-        --resource-group $resourceGroupName
+       --cluster-name $clusterName \
+       --resource-group $resourceGroupName
     ```
-
 
 1. 最后，使用 CQLSH [连接群集](create-cluster-cli.md#connect-to-your-cluster)，并使用以下 CQL 查询更新每个密钥空间中的复制策略，使其包含整个群集中的所有数据中心：
 
@@ -190,7 +216,7 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
 1. 从 Azure 门户的左侧菜单中选择“资源组”。
 1. 从列表中选择为本快速入门创建的资源组。
 1. 在资源组的“概述”窗格上，选择“删除资源组” 。
-3. 在下一窗口中输入要删除的资源组的名称，然后选择“删除”  。
+1. 在下一窗口中输入要删除的资源组的名称，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

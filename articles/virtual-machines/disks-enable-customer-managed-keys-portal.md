@@ -2,17 +2,17 @@
 title: Azure 门户 - 使用 SSE 启用客户管理的密钥 - 托管磁盘
 description: 通过 Azure 门户为托管磁盘启用客户管理的密钥。
 author: roygara
-ms.date: 08/31/2021
+ms.date: 09/27/2021
 ms.topic: how-to
 ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 2117fc6d425233ee2de4954173981ad5cfda5f18
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: c5941c8307e5aacc99f6fce627dafc154b6bc786
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318465"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091141"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>使用 Azure 门户为托管磁盘启用使用客户管理的密钥的服务器端加密
 

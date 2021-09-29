@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: d8c94bfaeb3438ef54e745505e51442d6d391929
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cf1da4b583e78ebf9e5cf9e17da4674d9401388
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643169"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770237"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 DocuSign 的集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "105643169"
     > [!NOTE]
     > 括号中的值是占位符。 请将这些占位符替换为实际登录 URL、标识符和回复 URL。 本教程稍后的“查看 SAML 2.0 终结点”部分将会详细描述相关值。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”  。 选择“下载”以下载证书，并将其保存在计算机上。 
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”  。 选择“下载”以下载证书，并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "105643169"
    1. 在“姓名”字段中输入 **B.Simon**。  
    1. 在“用户名”字段中输入 `<username>@<companydomain>.<extension>`。 例如：`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -236,7 +236,7 @@ ms.locfileid: "105643169"
 
 2. 直接转到 DocuSign 登录 URL，并在其中启动登录流。
 
-3. 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“DocuSign”磁贴时，你会自动登录到设置了 SSO 的 DocuSign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+3. 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“DocuSign”磁贴时，你会自动登录到设置了 SSO 的 DocuSign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

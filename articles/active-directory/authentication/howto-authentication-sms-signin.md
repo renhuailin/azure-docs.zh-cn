@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: anjusingh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 284a1c9d8b79a0d4e9c479afea9713a09c8c0fa4
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 6cf0cc0ebc60a5b401ac8bd9726e39d23d8504a0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429608"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766097"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>为用户配置和启用通过 Azure Active Directory 进行基于短信的身份验证 
 
@@ -88,7 +88,7 @@ ms.locfileid: "122429608"
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>为用户帐户设置电话号码
 
-现在已为用户启用了基于短信的身份验证，但必须将其电话号码与 Azure AD 中的用户个人资料相关联，然后用户才能登录。 可以让用户在“我的帐户”中[自己设置此电话号码](../user-help/sms-sign-in-explainer.md)，也可以由你使用 Azure 门户来分配电话号码。 电话号码可由全局管理员、身份验证管理员或特权身份验证管理员进行设置。
+现在已为用户启用了基于短信的身份验证，但必须将其电话号码与 Azure AD 中的用户个人资料相关联，然后用户才能登录。 可以让用户在“我的帐户”中[自己设置此电话号码](https://support.microsoft.com/account-billing/set-up-sms-sign-in-as-a-phone-verification-method-0aa5b3b3-a716-4ff2-b0d6-31d2bcfbac42)，也可以由你使用 Azure 门户来分配电话号码。 电话号码可由全局管理员、身份验证管理员或特权身份验证管理员进行设置。
 
 设置用于短信登录的电话号码后，还可将该电话号码用于 [Azure AD 多重身份验证][tutorial-azure-mfa]和[自助式密码重置][tutorial-sspr]。
 
@@ -137,7 +137,7 @@ ms.locfileid: "122429608"
 
 对于已经为其帐户设置了电话号码的用户，其“我的个人资料”页中会显示一个“启用短信登录”按钮。 选择此按钮，即可将该帐户与基于短信的登录和以前的 Azure AD 多重身份验证或 SSPR 注册配合使用。
 
-若要详细了解最终用户体验，请参阅[电话号码的短信登录用户体验](../user-help/sms-sign-in-explainer.md)。
+若要详细了解最终用户体验，请参阅[电话号码的短信登录用户体验](https://support.microsoft.com/account-billing/set-up-sms-sign-in-as-a-phone-verification-method-0aa5b3b3-a716-4ff2-b0d6-31d2bcfbac42)。
 
 ### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>尝试对用户帐户设置电话号码时出错
 

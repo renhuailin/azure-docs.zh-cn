@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 7cea8695cc475d7e7216f0a5c1d91c7e456eab7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ec288b3a3119dd3cc828c9c64410405e128632a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92520687"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761555"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-riva"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Riva 的集成
 
@@ -127,7 +127,7 @@ ms.locfileid: "92520687"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击“访问面板”中的 Riva 磁贴时，应会自动登录到为其设置了 SSO 的 Riva 。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击“访问面板”中的 Riva 磁贴时，应会自动登录到为其设置了 SSO 的 Riva 。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

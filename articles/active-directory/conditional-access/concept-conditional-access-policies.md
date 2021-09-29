@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a62afbcd120a7404b1677a8c8adb62723a119d5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 674f4cf80d68095ebd7b134c679b60b45ff2a548
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070257"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619337"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
 
@@ -77,9 +77,9 @@ ms.locfileid: "110070257"
 
 #### <a name="client-apps"></a>客户端应用
 
-默认情况下，条件访问策略适用于支持新式身份验证的浏览器应用、移动应用和桌面客户端。 
+默认情况下，所有新创建的条件访问策略都会应用到所有客户端应用类型，即使未配置客户端应用条件。
 
-此分配条件允许条件访问策略将不使用新式身份验证的特定客户端应用程序作为目标。 这些应用程序包括 Exchange ActiveSync 客户端、不使用新式身份验证的旧版 Office 应用程序，以及 IMAP、MAPI、POP 和 SMTP 等邮件协议。
+已于 2020 年 8 月更新了客户端应用条件的行为。 如果你有现有的条件访问策略，这些策略将保持不变。 但是，如果你单击某个现有策略，则会发现“配置”开关已被删除，且该策略所应用到的客户端应用处于选中状态。
 
 #### <a name="device-state"></a>设备状态
 

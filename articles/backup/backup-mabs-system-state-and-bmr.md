@@ -3,12 +3,12 @@ title: 系统状态和裸机恢复保护
 description: 使用 Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 864a20ce806d1bf8e9e728c77a9c8f17adeed18b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021616"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656182"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并将计算机还原成裸机
 
@@ -251,11 +251,11 @@ Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 
 1. 若要获取版本标识符，请在命令提示符下输入：
 
-   ```wbadmin get versions -backuptarget \<servername\sharename\>```
+   `wbadmin get versions -backuptarget \<servername\sharename\>`
 
 1. 使用版本标识符启动系统状态还原。 在命令提示符处，输入：
 
-    ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
+   `wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>`
 
 1. 确认要开始恢复。 可以在命令提示符窗口中查看过程。 将会创建还原日志。
 

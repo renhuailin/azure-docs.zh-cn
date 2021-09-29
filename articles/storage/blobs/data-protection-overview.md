@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: prishet
 ms.subservice: common
-ms.openlocfilehash: afdea12c8eedb25a9a56cda2d57ec3a24a5afc18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d9beb1ce981826eb7555b1a55e00c7c00fb84810
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745046"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766609"
 ---
 # <a name="data-protection-overview"></a>数据保护概述
 
@@ -57,7 +57,7 @@ Azure 存储为 blob 存储和 Azure Data Lake Storage Gen2 提供数据保护�
 
 下表根据所保护的资源总结了 Azure 存储数据保护选项。
 
-| 数据保护选项 | 保护帐户不被删除 | 保护容器不被删除 | 防止删除对象 | 保护覆盖对象 |
+| 数据保护选项 | 保护帐户不被删除 | 保护容器不被删除 | 防止删除对象 | 防止覆盖对象 |
 |--|--|--|--|--|
 | Azure 资源管理器锁定 | 是 | 否<sup>1</sup> | 否 | 否 |
 | blob 版本上的不可变性策略（预览版） | 是<sup>2</sup> | 是<sup>3</sup> | 是 | 是<sup>4</sup> |
@@ -87,7 +87,7 @@ Azure 存储为 blob 存储和 Azure Data Lake Storage Gen2 提供数据保护�
 | 容器 | 恢复软删除容器及其内容<br />[了解详细信息...](soft-delete-container-enable.md) | 已启用容器软删除并且容器软删除保留期尚未过期。 |
 | 容器和 Blob | 还原另一个存储帐户中的数据 | 所有容器和 blob 操作都已有效地复制到另一个存储帐户。 |
 | Blob（任何类型） | 从以前的版本还原 blob<sup>1</sup><br />[了解详细信息...](versioning-enable.md) | 已启用 blob 版本控制，且 blob 具有一个或多个以前版本。 |
-| Blob（任何类型） | 恢复软删除的 blob<br />[了解详细信息...](soft-delete-blob-enable.md) | 已启用 blob 软删除，且软删除保留间隔尚未过期。 |
+| Blob（任何类型） | 恢复已软删除的 blob<br />[了解详细信息...](soft-delete-blob-enable.md) | 已启用 blob 软删除，且软删除保留间隔尚未过期。 |
 | Blob（任何类型） | 从快照还原 blob<br />[了解详细信息...](snapshots-manage-dotnet.md) | Blob 具有一个或多个快照。 |
 | 块 blob 集 | 将一组块 blob 恢复到之前某个时间点的状态<sup>1</sup><br />[了解详细信息...](point-in-time-restore-manage.md) | 已启用时间点还原，且还原点在保留间隔内。 存储帐户未泄露且未损坏。 |
 | Blob 版本 | 恢复软删除的版本<sup>1</sup><br />[了解详细信息...](soft-delete-blob-enable.md) | 已启用 blob 软删除，且软删除保留间隔尚未过期。 |
@@ -104,10 +104,10 @@ Azure 存储为 blob 存储和 Azure Data Lake Storage Gen2 提供数据保护�
 | blob 版本上的不可变性策略（预览版） | 在容器上启用版本级不可变性是免费的。 在 blob 版本上创建、修改或删除基于时间的保留策略或法定保留会产生写入事务费用。 |
 | 容器上的不可变性策略 | 在容器上配置永久性策略是免费的。 |
 | 容器软删除 | 为存储帐户启用容器软删除是免费的。 软删除容器中的数据将按与活动数据相同的费率进行计费，直到软删除容器被永久删除。 |
-| Blob 版本控制 | 为存储帐户启用 blob 版本控制是免费的。 启用 blob 版本控制后，对该帐户中的 blob 进行的每次写入或删除操作都将创建一个新版本，这可能会导致增加容量成本。<br /><br />Blob 版本根据唯一的块或页进行计费。 因此，随着基础 blob 与特定版本分离，成本也会随之增加。 更改 blob 或 blob 版本的层级可能会对计费产生影响。 有关详细信息，请参阅[定价和计费](versioning-overview.md#pricing-and-billing)。<br /><br />根据需要使用生命周期管理来删除旧版本，以控制成本。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](storage-lifecycle-management-concepts.md)。 |
+| Blob 版本控制 | 为存储帐户启用 blob 版本控制是免费的。 启用 blob 版本控制后，对该帐户中的 blob 进行的每次写入或删除操作都将创建一个新版本，这可能会导致增加容量成本。<br /><br />Blob 版本根据唯一的块或页进行计费。 因此，随着基础 blob 与特定版本分离，成本也会随之增加。 更改 blob 或 blob 版本的层级可能会对计费产生影响。 有关详细信息，请参阅[定价和计费](versioning-overview.md#pricing-and-billing)。<br /><br />根据需要使用生命周期管理来删除旧版本，以控制成本。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](./lifecycle-management-overview.md)。 |
 | Blob 软删除 | 为存储帐户启用 blob 软删除是免费的。 软删除 blob 中的数据将按与活动数据相同的费率进行计费，直到软删除 blob 被永久删除。 |
 | 时间点还原 | 为存储帐户启用时间点还原是免费的；但是，启用时间点还原还会启用 blob 版本控制、软删除和更改源，其中每一项都可能产生额外费用。<br /><br />执行还原操作时，会按时间点还原收费。 还原操作的成本取决于要还原的数据量。 有关详细信息，请参阅[定价和计费](point-in-time-restore-overview.md#pricing-and-billing)。 |
-| Blob 快照 | 根据唯一的块或页对快照中的数据计费。 因此，随着基础 blob 与快照分离，成本也会随之增加。 更改 blob 或快照的层级可能会对计费产生影响。 有关详细信息，请参阅[定价和计费](snapshots-overview.md#pricing-and-billing)。<br /><br />根据需要使用生命周期管理来删除旧快照，以控制成本。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](storage-lifecycle-management-concepts.md)。 |
+| Blob 快照 | 根据唯一的块或页对快照中的数据计费。 因此，随着基础 blob 与快照分离，成本也会随之增加。 更改 blob 或快照的层级可能会对计费产生影响。 有关详细信息，请参阅[定价和计费](snapshots-overview.md#pricing-and-billing)。<br /><br />根据需要使用生命周期管理来删除旧快照，以控制成本。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](./lifecycle-management-overview.md)。 |
 | 将数据复制到另一个存储帐户 | 在第二个存储帐户中维护数据将产生容量和事务成本。 如果第二个存储帐户所在的区域不同于源帐户，则将数据复制到第二个帐户将额外产生传出流量费用。 |
 
 ## <a name="disaster-recovery"></a>灾难恢复
@@ -116,7 +116,7 @@ Azure 存储始终保留数据的多个副本，以防范各种计划内和计�
 
 万一数据中心发生故障，如果存储帐户在两个地理区域之间冗余（异地冗余），则可以选择将帐户从主要区域故障转移到次要区域。 有关详细信息，请参阅[灾难恢复和存储帐户故障转移](../common/storage-disaster-recovery-guidance.md)。
 
-对于启用了分层命名空间的存储帐户，目前不支持客户托管的故障转移。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 中提供的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)。
+对于启用了分层命名空间的存储帐户，目前不支持客户托管的故障转移。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 中提供的 Blob 存储功能](./storage-feature-support-in-storage-accounts.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

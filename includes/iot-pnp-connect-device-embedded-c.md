@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
-ms.openlocfilehash: d6df060afb65814175b02137720f7a9f27a6c4eb
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c4e0070a9647412a873953af59338b13f4c653fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122263585"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910469"
 ---
 如果要针对受限制设备进行开发，可以将 IoT 即插即用与以下内容一起使用：
 
@@ -37,9 +37,9 @@ SDK for Embedded C 存储库包含[几个示例](https://github.com/Azure/azure-
 > [!NOTE]
 > 这些示例在 Windows 和 Linux 上演示运行，用于教育和调试目的。 在生产方案中，这些示例仅适用于受限制设备。
 
-- [采用 SDK for Embedded C 的恒温器示例](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/paho_iot_hub_pnp_sample.c)
+- [采用 SDK for Embedded C 的恒温器示例](https://github.com/Azure/azure-sdk-for-c/blob/main/sdk/samples/iot/paho_iot_pnp_sample.c)
 
-- [采用 SDK for Embedded C 的温度控制器示例](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/paho_iot_hub_pnp_component_sample.c)
+- [采用 SDK for Embedded C 的温度控制器示例](https://github.com/Azure/azure-sdk-for-c/blob/main/sdk/samples/iot/paho_iot_pnp_component_sample.c)
 
 ## <a name="using-azure-rtos"></a>使用 Azure RTOS
 

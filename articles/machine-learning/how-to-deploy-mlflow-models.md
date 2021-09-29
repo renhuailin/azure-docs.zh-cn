@@ -3,20 +3,20 @@ title: 将 MLflow 模型部署为 Web 服务
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 机器学习设置 MLflow，以将 ML 模型部署为 Azure Web 服务。
 services: machine-learning
-author: shivp950
-ms.author: shipatel
+author: cjgronlund
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 3dbd0270901ca7d58a9aac28aa1da622d8a26640
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c5dd42aa86b661fc6b1174cf0834610168d92f4c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739191"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819418"
 ---
 # <a name="deploy-mlflow-models-as-azure-web-services"></a>将 MLflow 模型部署为 Azure Web 服务
 
@@ -72,9 +72,9 @@ client.create_deployment(model_uri='runs:/{}/{}'.format(run.id, model_path),
 
 ### <a name="customize-deployment-configuration"></a>自定义部署配置
 
-如果不希望使用默认值，可以使用部署配置 json 文件设置部署配置，该文件使用 [deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法中的参数作为参考。 
+如果不希望使用默认值，可以使用部署 config json 文件设置部署配置，该文件使用 [deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法中的参数作为参考。 
 
-对于部署配置 json 文件，需要以字典的形式定义每个部署配置参数。 下面是一个示例。 [详细了解部署配置 json 文件可包含的内容](reference-azure-machine-learning-cli.md#azure-container-instance-deployment-configuration-schema)。
+对于部署 config json 文件，需要以字典的形式定义每个部署配置参数。 下面是一个示例。 [详细了解部署配置 json 文件可包含的内容。](reference-azure-machine-learning-cli.md#azure-container-instance-deployment-configuration-schema)
 
 ```json
 {"computeType": "aci",

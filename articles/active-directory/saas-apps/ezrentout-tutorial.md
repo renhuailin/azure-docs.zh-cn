@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 3425cce04bfbdace96e72ec76337bb766f543f1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bafa649951e34b587a48158afaa53be38ba3e2bd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92453648"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835476"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezrentout"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EZRentOut 集成
 
@@ -81,7 +81,7 @@ ms.locfileid: "92453648"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.ezrentout.com/users/sign_in`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.ezrentout.com/users/sign_in`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [EZRentOut 客户端支持团队](mailto:support@ezrentout.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -97,7 +97,7 @@ ms.locfileid: "92453648"
     | first_name | user.givenname |
     | last_name | user.surname |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "92453648"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“EZRentOut”磁贴时，应会自动登录到设置了 SSO 的 EZRentOut。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“EZRentOut”磁贴时，应会自动登录到设置了 SSO 的 EZRentOut。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

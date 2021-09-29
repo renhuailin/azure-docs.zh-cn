@@ -1,17 +1,17 @@
 ---
 title: 教程 - 在 Azure API 管理中创建和发布产品
 description: 本教程将在 Azure API 管理中创建和发布产品。 产品发布后，开发人员便可以开始使用其 API。
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: tutorial
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: 7c0d24c667d2c7c46f65d8c6f3bf6e6e3b52fd00
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.author: danlep
+ms.openlocfilehash: f9d4b1565cc217aaa149e34fc278da779a3d869e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669642"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643320"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>教程：创建和发布产品  
 

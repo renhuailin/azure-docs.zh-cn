@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: fb01749b71c89b4290abf71e7f8ed5d95b891cdd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 38f98ab557738031e4c3933a4bc914b31c42cd91
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638006"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814840"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>教程：将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -82,7 +82,7 @@ ms.locfileid: "122638006"
 
 1. 在左窗格中选择“更多服务”，使用“存储”关键字进行筛选，然后选择“存储帐户”。  
 
-    ![搜索存储帐户](media/doc-common-process/search-storage-account.png)
+    :::image type="content" source="media/doc-common-process/search-storage-account.png" alt-text="搜索存储帐户":::
 
 1. 在存储帐户列表中，通过筛选找出你的存储帐户（如果需要），然后选择你的存储帐户。
 
@@ -95,13 +95,13 @@ ms.locfileid: "122638006"
 
 1. 在“存储帐户”窗口中切换到“概览”，然后选择“Blob”。
 
-    ![选择“Blob”选项](media/tutorial-hybrid-copy-powershell/select-blobs.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/select-blobs.png" alt-text="选择“Blob”选项":::
 
 1. 在“Blob 服务”窗口中，选择“容器”。
 
 1. 在“新建容器”窗口的“名称”框中输入“adftutorial”，然后选择“确定”。   
 
-    ![输入容器名称](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/new-container-dialog.png" alt-text="输入容器名称":::
 
 1. 在容器列表中选择“adftutorial”。  
 
@@ -266,21 +266,21 @@ ms.locfileid: "122638006"
 
 1. 在“注册 Integration Runtime (自承载)”窗口中粘贴在上一部分保存的密钥，然后选择“注册”。 
 
-    ![注册集成运行时](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/register-integration-runtime.png" alt-text="注册集成运行时":::
 
 1. 在“新建 Integration Runtime (自承载)节点”窗口中，选择“完成”。 
 
-    ![“新建 Integration Runtime 节点”窗口](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png" alt-text="“新建 Integration Runtime 节点”窗口":::
 
  1. 成功注册自承载 Integration Runtime 后，会显示以下消息：
 
-    ![已成功注册](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/registered-successfully.png" alt-text="已成功注册":::
 
 1. 在“注册 Integration Runtime (自承载)”窗口中，选择“启动配置管理器”。 
 
 1. 将节点连接到云服务后，会显示以下消息：
 
-    ![节点已连接](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/node-is-connected.png" alt-text="节点已连接":::
 
 1. 执行以下操作，测试到 SQL Server 数据库的连接：
 
@@ -299,7 +299,7 @@ ms.locfileid: "122638006"
     g. 输入与用户名关联的密码。
 
     h. 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  
-    ![连接成功](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png" alt-text="连接成功":::
 
     如果连接成功，则会显示绿色复选图标。 否则，会收到与故障相关的错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server 实例。
 
@@ -710,7 +710,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 1. 选择文件夹列表中的 `fromonprem`。
 1. 确认可以看到名为 `dbo.emp.txt` 的文件。
 
-    ![输出文件](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/fromonprem-file.png" alt-text="输出文件":::
 
 
 ## <a name="next-steps"></a>后续步骤

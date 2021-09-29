@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: ca1ea14629b83bc5aa7f169cd3b6a0332c52f2e4
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5bf3a2c743b2065aea975c96a8328556f773a496
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968934"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783342"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-set-up-for-logzio---azure-ad-integration"></a>教程：为 Logz.io - Azure AD Integration 设置 Azure Active Directory 单一登录 (SSO)
 
@@ -244,7 +244,7 @@ Logz.io AAD 应用资源名称会在你键入时自动填充。
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Logz.io Azure AD Integration。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Logz.io Azure AD Integration”磁贴时，应会自动登录到设置了 SSO 的 Logz.io Azure AD Integration。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Logz.io Azure AD Integration”磁贴时，应会自动登录到设置了 SSO 的 Logz.io Azure AD Integration。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ### <a name="next-steps"></a>后续步骤
 

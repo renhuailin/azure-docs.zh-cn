@@ -9,21 +9,23 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 7fe220315f7cccb749fe0974e822f157cf54ca36
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 052b91600f77d50c6ae70c6742aa4fe41c64e552
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821714"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060302"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>映射数据流中的“更改行”转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
+
 使用“更改行”转换来设置针对行的插入、删除、更新和更新插入策略。 可以将一对多条件添加为表达式。 应按优先级顺序指定这些条件，因为每一行都将用与第一个匹配的表达式对应的策略进行标记。 其中的每个条件都可能会导致对行执行插入、更新、删除或更新插入操作。 “更改行”可能会产生对数据库的 DDL 和 DML 操作。
 
-![“更改行”设置](media/data-flow/alter-row1.png "“更改行”设置")
+:::image type="content" source="media/data-flow/alter-row1.png" alt-text="“更改行”设置":::
 
 “更改行”转换将仅对你的数据流中的数据库、REST 或 CosmosDB 接收器进行操作。 在调试会话期间，分配给行的操作（插入、更新、删除、更新插入）不会发生。 在管道中运行“执行数据流”活动，对数据库表执行“更改行”策略。
 
@@ -33,7 +35,7 @@ ms.locfileid: "122821714"
 
 创建一个“更改行”转换，并指定一个条件为 `true()` 的行策略。 与前面定义的任何表达式都不匹配的每个行都将标记为执行指定的行策略。 默认情况下，与任何条件表达式都不匹配的每个行都将标记为执行 `Insert`。
 
-![“更改行”策略](media/data-flow/alter-row4.png "“更改行”策略")
+:::image type="content" source="media/data-flow/alter-row4.png" alt-text="“更改行”策略":::
 
 > [!NOTE]
 > 若要为所有行标记一个策略，可以为该策略创建一个条件，并将条件指定为 `true()`。
@@ -42,7 +44,7 @@ ms.locfileid: "122821714"
 
 使用[调试模式](concepts-data-flow-debug-mode.md)在数据预览窗格中查看“更改行”策略的结果。 “更改行”转换的数据预览不会针对目标产生 DDL 或 DML 操作。
 
-![“更改行”策略](media/data-flow/alter-row3.png "“更改行”策略")
+:::image type="content" source="media/data-flow/alter-row3.png" alt-text="“更改行”策略":::
 
 每个“更改行”策略都由一个图标表示，该图标指示是否会执行插入、更新、更新插入或删除操作。 在预览中，顶部标题会显示每个策略所影响的行数。
 
@@ -50,7 +52,7 @@ ms.locfileid: "122821714"
 
 要使“更改行”策略有效，数据流必须写入到数据库或 Cosmos 接收器。 在接收器的“设置”选项卡中，启用允许该接收器使用的“更改行”策略。
 
-![“更改行”接收器](media/data-flow/alter-row2.png "“更改行”接收器")
+:::image type="content" source="media/data-flow/alter-row2.png" alt-text="“更改行”接收器":::
 
 默认行为是仅允许插入。 若要允许更新、更新插入或删除，请选中接收器中与该条件对应的框。 如果启用更新、更新插入或删除操作，则必须指定接收器中与之匹配的键列。
 
@@ -93,7 +95,7 @@ ms.locfileid: "122821714"
 
 在 UI 中，此转换如下图所示：
 
-![“更改行”示例](media/data-flow/alter-row4.png "“更改行”示例")
+:::image type="content" source="media/data-flow/alter-row4.png" alt-text="“更改行”示例":::
 
 此转换的数据流脚本位于下面的代码片段中：
 

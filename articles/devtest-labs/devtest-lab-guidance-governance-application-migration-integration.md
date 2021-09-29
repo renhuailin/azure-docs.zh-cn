@@ -1,15 +1,15 @@
 ---
-title: Azure 开发测试实验室中的应用程序迁移和集成
+title: 应用程序迁移和集成
 description: 本文提供了有关在应用程序迁移和集成环境中管理 Azure 开发测试实验室基础架构的指导。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 6ad0eb500afad0309d9c5b34d3d8e83319192556
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3dbd2e45074d78bbef535773c17b7036fcaf3e72
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726736"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606412"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
 建立开发/测试实验室环境之后，你需要考虑以下问题：

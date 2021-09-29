@@ -5,16 +5,16 @@ description: 了解如何在 Azure 数据工厂和 Azure Synapse Analytics 中�
 ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 author: lrtoyou1223
 ms.author: lle
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: a9819af196af6df60644a5e25599c6066dc17eaa
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 063d4138a86fb5235562ebb0d2592640f370806e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312334"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760289"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何创建和配置 Azure 集成运行时
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -70,10 +70,10 @@ Azure IR 的类型必须设置为 **托管**。 无需指定计算详细信息�
 3. 在“集成运行时安装”页中选择“Azure，自承载”，然后选择“继续”。  
 
 1. 在下一页上选择“Azure”以创建 Azure IR，然后选择“继续”。
-   ![创建集成运行时](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
+   :::image type="content" source="media/create-azure-integration-runtime/new-azure-integration-runtime.png" alt-text="创建集成运行时":::
 
 1. 输入 Azure IR 的名称，然后选择“创建”。
-   ![创建 Azure IR](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
+   :::image type="content" source="media/create-azure-integration-runtime/create-azure-integration-runtime.png" alt-text="创建 Azure IR":::
 
 1. 创建完成后，会显示一个弹出通知。 在“集成运行时”页上，确保在列表中看到新建的 IR。
 

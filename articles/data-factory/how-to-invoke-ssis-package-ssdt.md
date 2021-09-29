@@ -8,12 +8,12 @@ ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
-ms.openlocfilehash: fef9e8ea1b70dcab9c60d7d01b11e51653ea94a1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7ca8eeda244a75d9fd189425270b2b5525e694f3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733039"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787729"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>从 SSDT 运行 Azure 中的 SSIS 包
 
@@ -33,11 +33,11 @@ ms.locfileid: "121733039"
 
 在 SSDT 上，可以使用“Integration Services 项目（Azure 已启用）”模板创建新的 Azure 已启用的 SSIS 项目。
 
-   ![新的 Azure 已启用的 SSIS 项目](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-new-project.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-new-project.png" alt-text="新的 Azure 已启用的 SSIS 项目":::
 
 创建 Azure 已启用的项目之后，系统会提示连接到 Azure 数据工厂中的 SSIS。
 
-   ![连接 Azure-SSIS IR 提示](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-integration-runtime-connect-prompt.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-integration-runtime-connect-prompt.png" alt-text="连接 Azure-SSIS IR 提示":::
 
 如果要立即连接到 Azure-SSIS IR，请参阅[连接到 Azure-SSIS IR](#connectssisir) 了解更多详细信息。 还可以通过右键单击 SSDT 的解决方案资源管理器窗口中的项目节点弹出菜单来稍后连接。 接下来，在“Azure 数据工厂中的 SSIS”子菜单中，选择“连接到 Azure 数据工厂中的 SSIS”项。 
 
@@ -47,15 +47,15 @@ ms.locfileid: "121733039"
 
 1. 右键单击 SSDT 的解决方案资源管理器窗口中的项目节点，弹出菜单。 接下来，在“Azure 数据工厂中的 SSIS”子菜单中选择“Azure 已启用的项目”项，以启动“Azure 已启用的项目向导”。  
 
-   ![Azure 启用现有 SSIS 项目](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-for-existing-project.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-for-existing-project.png" alt-text="Azure 启用现有 SSIS 项目":::
 
 2. 在“选择 Visual Studio 配置”页上，选择现有的 VS 配置以在 Azure 中应用包执行设置。 还可以创建一个新的 VS 配置（如果尚未执行此操作），请参阅[创建一个新的 VS 配置](/visualstudio/ide/how-to-create-and-edit-configurations)。 我们建议在本地和云环境中至少有两个不同的 VS 配置用于包执行，这样可以针对云配置来 Azure 启用项目。 这样，如果已将项目或包参数化，则可以在运行时基于不同的执行环境（本地计算机上或 Azure 中）为项目或包参数分配不同的值。 例如，请参阅[切换包执行环境](#switchenvironment)。
 
-   ![选择 Visual Studio 配置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png" alt-text="选择 Visual Studio 配置":::
 
 3. Azure启用现有 SSIS 项目需要将其目标服务器版本设置为 Azure-SSIS IR 支持的最新版本。 Azure-SSIS IR 当前基于“SQL Server 2017”。 请确保你的包不包含 SQL Server 2017 上不支持的附加组件。 还要确保还通过自定义设置在 Azure-SSIS IR 上安装了所有兼容的附加组件，请参阅[自定义 Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md)。 选择“下一步”按钮继续操作。
 
-   ![切换目标服务器版本](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png" alt-text="切换目标服务器版本":::
 
 4. 请参阅[连接到 Azure-SSIS IR](#connectssisir) 以完成将项目连接到 Azure-SSIS IR。
 
@@ -65,21 +65,21 @@ ms.locfileid: "121733039"
 
 1. 在“ADF 中的 SSIS 简介”页上，查看简介，然后选择“下一步”按钮继续。 
 
-   ![ADF 中的 SSIS 简介](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard.png" alt-text="ADF 中的 SSIS 简介":::
 
 2. 在“选择 ADF 中的 SSIS IR”页上，选择现有 ADF 和 Azure-SSIS IR 来运行包。 如果没有，也可以新建。
    - 若要选择现有 Azure-SSIS IR，请先选择相关的 Azure 订阅和 ADF。
    - 如果选择没有任何 Azure-SSIS IR 的的现有 ADF，请选择“创建 SSIS IR”按钮，在 ADF 门户上新建一个。 创建后，可以返回到此页来选择新的 Azure-SSIS IR。
    - 如果选择没有任何 ADF 的现有 Azure 订阅，请选择“创建 SSIS IR”按钮来启动“Integration Runtime 创建向导”。  在向导中，可以输入指定的位置和前缀，以便我们以你的名义自动创建新的 Azure 资源组、数据工厂和 SSIS IR，并以以下模式命名：“YourPrefix-RG/DF/IR-YourCreationTime”。 创建后，可以返回到此页来选择新的 ADF 和 Azure-SSIS IR。
 
-   ![选择 ADF 中的 SSIS IR](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png" alt-text="选择 ADF 中的 SSIS IR":::
 
 3. 在“选择 Azure 存储”页上，选择现有的 Azure 存储帐户，将包上传到 Azure 文件存储中。 如果没有，也可以新建一个。
    - 若要选择现有 Azure 存储帐户，请先选择相关的 Azure 订阅。
    - 如果选择与没有任何 Azure 存储帐户的 Azure-SSIS IR 一样的 Azure 订阅，请选择“创建 Azure 存储”按钮。 我们会在与你的 Azure-SSIS IR 相同的位置以你的名义自动创建一个新的，并将你的 Azure-SSIS IR 名称前缀和它的创建日期组合在一起来进行命名。 创建后，可以返回到此页来选择新的 Azure 存储帐户。
    - 如果选择没有任何 Azure 存储帐户的其他 Azure 订阅，请选择“创建 Azure 存储”按钮，在 Azure 门户上新建一个。 创建后，可以返回到此页来选择新的 Azure 存储帐户。
 
-   ![选择“Azure 存储”](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png" alt-text="选择“Azure 存储”":::
 
 4. 选择“连接”按钮，完成将项目连接到 Azure-SSIS IR。 我们会在 SSDT 的解决方案资源管理器窗口中的“链接的 Azure 资源”节点下显示所选 Azure-SSIS IR 和 Azure 存储帐户。 我们还会定期刷新并显示 Azure-SSIS IR 的状态。 管理 Azure-SSIS IR 可以通过右键单击其节点来弹出菜单，然后选择“启动\停止\管理”项转到 ADF 门户来如此操作。
 
@@ -90,26 +90,26 @@ ms.locfileid: "121733039"
 在 Azure 中执行包之前，可以对其进行评估，以发现任何潜在的云兼容性问题。 其中包括应注意的迁移阻止程序和其他信息。 
 -  可以选择在项目中逐个评估单个包或同时评估所有包。
 
-   ![评估包](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png" alt-text="评估包":::
 
-   ![评估项目](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png" alt-text="评估项目":::
 
 -  在 SSDT 的“评估报告”窗口中，可以找到发现的所有潜在的云兼容性问题，每个问题都有其自己的详细说明和建议。 还可以将评估报告导出到 CSV 文件中，该文件可以与可以缓解这些问题的任何人共享。 
 
-   ![评估报告](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png" alt-text="评估报告":::
 
 ### <a name="suppressing-assessment-rules"></a>抑制评估规则
 
 确定某些潜在的云兼容性问题不适用或已在包中适当缓解后，可以抑制发现这些问题的相关评估规则。 这会减少后续评估报告中的干扰。
 -  在 SSDT 的“评估报告”窗口中选择“配置评估规则抑制”链接，弹出“评估规则抑制设置”窗口，可以在其中选择要抑制的评估规则。  
 
-   ![评估规则抑制设置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png" alt-text="评估规则抑制设置":::
 
 -  或者，右键单击 SSDT 的解决方案资源管理器窗口中的项目节点，弹出菜单。 选择“Azure 数据工厂中的 SSIS”子菜单中的“Azure 已启用的设置”项，弹出包含项目属性页的窗口。  在“Azure 已启用的设置”部分中，选择“受抑制评估规则 ID”属性。  最后，选择其省略号（“...”）按钮，弹出“评估规则抑制设置”窗口，可以在其中选择要抑制的评估规则。 
 
-   ![Azure 已启用的设置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png" alt-text="Azure 已启用的设置":::
 
-   ![通过 Azure 已启用的设置进行的评估规则抑制设置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png" alt-text="通过 Azure 已启用的设置进行的评估规则抑制设置":::
 
 ## <a name="execute-ssis-packages-in-azure"></a>在 Azure 中执行 SSIS 包
 
@@ -119,26 +119,26 @@ ms.locfileid: "121733039"
 
 1. 右键单击 SSDT 的解决方案资源管理器窗口中的项目节点，弹出菜单。 接下来，选择“Azure 数据工厂中的 SSIS”子菜单中的“Azure 已启用的设置”项，弹出包含项目属性页的窗口。 
 
-   ![Azure 已启用的设置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png" alt-text="Azure 已启用的设置":::
 
 2. 在“Azure 已启用的设置”部分中选择“启用 Windows 身份验证”属性，然后在其下拉菜单中选择“True”。   接下来，选择“Windows 身份验证凭据”属性，然后选择其省略号（“...”）按钮，弹出“windows 身份验证凭据”窗口。  
 
-   ![启用 Windows 身份验证](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-open.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-open.png" alt-text="启用 Windows 身份验证":::
 
 3. 输入 Windows 身份验证凭据。 例如，若要访问 Azure 文件存储，可以为“域”、“用户名”和“密码”分别输入 `Azure`、`YourStorageAccountName` 和 `YourStorageAccountKey`。  
 
-   ![Windows 身份验证凭据](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-credential.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-credential.png" alt-text="Windows 身份验证凭据":::
 
 ### <a name="starting-package-executions"></a>启动包执行
 
 在将 Azure 已启用的项目连接到 ADF 中的 SSIS，评估其云兼容性并缓解潜在问题之后，可以在 Azure-SSIS IR 上执行/测试包。
 -  选择 SSDT 工具栏中的“启动”按钮，下拉菜单。 接下来，选择“在 Azure 中执行”项。
 
-   ![在 Azure 中执行](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package.png" alt-text="在 Azure 中执行":::
 
 -  或者，右键单击 SSDT 的解决方案资源管理器窗口中的包节点，弹出菜单。 接下来，选择“在 Azure 中执行包”项。
 
-   ![在 Azure 中执行包](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png" alt-text="在 Azure 中执行包":::
 
 > [!NOTE]
 > 若要在 Azure 中执行包，需要有正在运行的 Azure-SSIS IR，这样如果 Azure-SSIS IR 停止，则会弹出一个对话窗口以启动它。 此过程应在 5 分钟内完成（不包括任何自定义设置时间），但对于加入虚拟网络的 Azure-SSIS IR，此过程可能需要大约 20 - 30 分钟。 在 Azure 中执行包后，可以停止 Azure-SSIS IR 以管理其运行成本，方法是通过在 SSDT 的解决方案资源管理器窗口中右键单击其节点来弹出菜单，然后选择“启动\停止\管理”项转到 ADF 门户来如此操作。
@@ -170,23 +170,23 @@ ms.locfileid: "121733039"
 
 1. 假设包中包含一个设置文件属性的文件系统任务。 在本地计算机上运行该文件系统任务时，它设置存储在本地文件系统上的文件的属性。 在 Azure-SSIS IR 上运行时，需要它设置 Azure 文件存储中存储的文件的属性。 首先，创建一个字符串类型的包参数，并将其命名为“FilePath”以保存目标文件路径的值。
 
-   ![创建包参数](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-define-parameters.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-define-parameters.png" alt-text="创建包参数":::
 
 2. 接下来，在“文件系统任务编辑器”窗口的“常规”页上，用“FilePath”包参数来参数化“源连接”部分中的“SourceVariable”属性。     
 
-   ![参数化源连接](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png" alt-text="参数化源连接":::
 
 3. 默认情况下，在名为“开发”的本地环境中有一个现有的 VS 配置用于包执行。 在名为“Azure”的云环境中为包执行创建新的 VS 配置，请参阅 [创建新的 VS 配置](/visualstudio/ide/how-to-create-and-edit-configurations)（如果尚未执行此操作）。
 
 4. 查看包的参数时，请选择“将参数添加到配置”按钮，打开包的“管理参数值”窗口。  接下来，在“开发”和“Azure”配置下，向“FilePath”包参数分配不同的目标文件路径值。  
 
-   ![分配参数值](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-override-parameter.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-override-parameter.png" alt-text="分配参数值":::
 
 5. 针对云配置 Azure 启用项目，请参阅 [Azure 启用的现有 SSIS 项目](#azureenableproject)（如果尚未执行此操作）。 接下来，配置 Azure 已启用的设置以启用 Azure-SSIS IR 的 Windows 身份验证来访问 Azure 文件存储，请参阅 [配置 Azure 已启用的设置](#azureenabledsettings)（如果尚未执行此操作）。
 
 6. 在 Azure 中执行包。 可以通过选择“开发”配置来将包执行环境切换回本地计算机。
 
-   ![切换 Visual Studio 配置](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png" alt-text="切换 Visual Studio 配置":::
 
 ### <a name="using-package-configuration-file"></a>使用包配置文件
 

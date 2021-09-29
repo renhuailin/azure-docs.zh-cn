@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-services
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 93fdb913da430241835d448945747ba5ab736f45
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 907b946dec3112d152212d26a1d3dffca41150fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749910"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828375"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -103,7 +103,7 @@ AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该工�
 
 y-轴是一小时内执行完毕的包数。 请注意，这只是一个内存消耗包的测试结果。 若要了解包的吞吐量，建议你自行执行测试。
 
-![SSIS Integration Runtime 包执行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
+:::image type="content" source="media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png" alt-text="SSIS Integration Runtime 包执行速度":::
 
 ### <a name="configure-for-overall-throughput"></a>配置整体吞吐量
 
@@ -111,7 +111,7 @@ y-轴是一小时内执行完毕的包数。 请注意，这只是一个内存�
 
 y-轴是一小时内执行完毕的包数。 请注意，这只是一个内存消耗包的测试结果。 若要了解包的吞吐量，建议你自行执行测试。
 
-![SSIS Integration Runtime 最大整体吞吐量](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
+:::image type="content" source="media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png" alt-text="SSIS Integration Runtime 最大整体吞吐量":::
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 

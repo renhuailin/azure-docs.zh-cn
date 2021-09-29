@@ -1,14 +1,14 @@
 ---
-title: 使用 Azure 开发测试实验室的认领功能 | Microsoft Docs
+title: 使用声明功能
 description: 了解使用 Azure 开发测试实验室的认领/取消认领功能的不同情况
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 73ed3c0b94a66f5d17b5c8e2561c65bb48579aa1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d50ab660433ac9b2616a897e1110d466eb143a9a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85476523"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559278"
 ---
 # <a name="use-claim-capabilities-in-azure-devtest-labs"></a>使用 Azure 开发测试实验室的认领功能
 Azure 开发测试实验室服务可提高开发人员和测试人员的工作效率和有效性。 本文重点介绍在 Azure 开发测试实验室中认领或取消认领虚拟机的功能。 本文还列出了此功能改进用户体验的各种方式。 在查看可以使用此功能的不同情况之前，让我们来看看“认领”是什么及其工作原理。

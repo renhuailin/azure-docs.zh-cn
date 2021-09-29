@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: 40d1970fa3e1c55fe54845478ed6c7d5abc1faf0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4194c277a8472f8834362de462d804db2a3b406d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637824"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798857"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 
@@ -52,46 +52,46 @@ ms.locfileid: "122637824"
 1. 在 Microsoft Edge 或 Google Chrome 中打开 [Azure 门户](https://portal.azure.com)。
 1. 使用页面顶部的搜索栏搜索“数据工厂”
 
-    ![门户 1](media/lab-data-flow-data-share/portal1.png)
+    :::image type="content" source="media/lab-data-flow-data-share/portal1.png" alt-text="门户 1":::
 1. 单击数据工厂资源打开其资源边栏选项卡。
 
-    ![门户 2](media/lab-data-flow-data-share/portal2.png)
+    :::image type="content" source="media/lab-data-flow-data-share/portal2.png" alt-text="门户 2":::
 1. 单击“创作和监视”打开 ADF UX。 也可以在 adf.azure.com 中访问 ADF UX。
 
-    ![门户 3](media/lab-data-flow-data-share/portal3.png)
+    :::image type="content" source="media/lab-data-flow-data-share/portal3.png" alt-text="门户 3":::
 1. 你将重定向到 ADF UX 的主页。 此页包含快速入门、指导视频和教程链接，以帮助你了解数据工厂的概念。 若要开始创作，请单击左侧栏中的铅笔图标。
 
-    ![门户配置](./media/doc-common-process/get-started-page-author-button.png)
+    :::image type="content" source="./media/doc-common-process/get-started-page-author-button.png" alt-text="门户配置":::
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 
 1. 若要创建链接服务，请选择左侧栏中的“管理”中心，在“连接”窗格中选择“链接服务”，然后选择“新建”以添加新的链接服务   。
 
-    ![门户配置 2](media/lab-data-flow-data-share/configure2.png)
+    :::image type="content" source="media/lab-data-flow-data-share/configure2.png" alt-text="门户配置 2":::
 1. 要配置的第一个链接服务是 Azure SQL 数据库。 可以使用搜索栏来筛选数据存储列表。 单击“Azure SQL 数据库”磁贴，然后单击“继续”。
 
-    ![门户配置 4](media/lab-data-flow-data-share/configure-4.png)
+    :::image type="content" source="media/lab-data-flow-data-share/configure-4.png" alt-text="门户配置 4":::
 1. 在 SQL 数据库配置窗格中，输入“SQLDB”作为链接服务名称。 输入凭据，使数据工厂能够连接到该数据库。 如果使用的是 SQL 身份验证，请输入服务器名称、数据库、用户名和密码。 可以单击“测试连接”来验证连接信息是否正确。 完成后，单击“创建”。
 
-    ![门户配置 5](media/lab-data-flow-data-share/configure5.png)
+    :::image type="content" source="media/lab-data-flow-data-share/configure5.png" alt-text="门户配置 5":::
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>创建 Azure Synapse Analytics 链接服务
 
 1. 重复相同的过程来添加 Azure Synapse Analytics 链接服务。 在“连接”选项卡中，单击“新建”。 选择“Azure Synapse Analytics”磁贴，然后单击“继续”。
 
-    ![门户配置 6](media/lab-data-flow-data-share/configure-6.png)
+    :::image type="content" source="media/lab-data-flow-data-share/configure-6.png" alt-text="门户配置 6":::
 1. 在链接服务配置窗格中，输入“SQLDW”作为链接服务名称。 输入凭据，使数据工厂能够连接到该数据库。 如果使用的是 SQL 身份验证，请输入服务器名称、数据库、用户名和密码。 可以单击“测试连接”来验证连接信息是否正确。 完成后，单击“创建”。
 
-    ![门户配置 7](media/lab-data-flow-data-share/configure-7.png)
+    :::image type="content" source="media/lab-data-flow-data-share/configure-7.png" alt-text="门户配置 7":::
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>创建 Azure Data Lake Storage Gen2 链接服务
 
 1. 本实验所需的最后一个链接服务是 Azure Data Lake Storage Gen2。  在“连接”选项卡中，单击“新建”。 选择“Azure Data Lake Storage Gen2”磁贴，然后单击“继续”。
 
-    ![门户配置 8](media/lab-data-flow-data-share/configure8.png)
+    :::image type="content" source="media/lab-data-flow-data-share/configure8.png" alt-text="门户配置 8":::
 1. 在链接服务配置窗格中，输入“ADLSGen2”作为链接服务名称。 如果使用的是“帐户密钥”身份验证，请从“存储帐户名称”下拉列表中选择你的 ADLS Gen2 存储帐户。 可以单击“测试连接”来验证连接信息是否正确。 完成后，单击“创建”。
 
-    ![门户配置 9](media/lab-data-flow-data-share/configure9.png)
+    :::image type="content" source="media/lab-data-flow-data-share/configure9.png" alt-text="门户配置 9":::
 
 ### <a name="turn-on-data-flow-debug-mode"></a>启用数据流调试模式
 
@@ -99,9 +99,9 @@ ms.locfileid: "122637824"
 
 若要启用调试，请在有数据流活动时单击数据流画布或管道画布顶部栏中的“数据流调试”滑块 。 弹出确认对话框时，请单击“确定”。 启动群集大约需要 5-7 分钟。 当初始化正在进行时，请继续执行“使用复制活动将数据从 Azure SQL 数据库引入 ADLS Gen2”。
 
-![门户配置 10](media/lab-data-flow-data-share/configure10.png)
+:::image type="content" source="media/lab-data-flow-data-share/configure10.png" alt-text="门户配置 10":::
 
-![屏幕截图显示了“数据流调试”滑块的位置。](media/lab-data-flow-data-share/configure-11.png)
+:::image type="content" source="media/lab-data-flow-data-share/configure-11.png" alt-text="屏幕截图显示了“数据流调试”滑块的位置。":::
 
 ## <a name="ingest-data-using-the-copy-activity"></a>使用复制活动引入数据
 
@@ -113,25 +113,25 @@ ms.locfileid: "122637824"
 
 1. 在工厂资源窗格中，单击加号图标打开“新建资源”菜单。 选择“管道”。
 
-    ![门户副本 1](media/lab-data-flow-data-share/copy1.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy1.png" alt-text="门户副本 1":::
 1. 在管道画布的“常规”选项卡中，为管道指定描述性的名称，例如“IngestAndTransformTaxiData”。
 
-    ![门户副本 2](media/lab-data-flow-data-share/copy2.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy2.png" alt-text="门户副本 2":::
 1. 在管道画布的“活动”窗格中，打开“移动和转换”可折叠部分，然后将“复制数据”活动拖到画布上。  为复制活动指定描述性的名称，例如“IngestIntoADLS”。
 
-    ![门户副本 3](media/lab-data-flow-data-share/copy3.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy3.png" alt-text="门户副本 3":::
 
 ### <a name="configure-azure-sql-db-source-dataset"></a>配置 Azure SQL 数据库源数据集
 
 1. 单击复制活动的“源”选项卡。 若要创建新数据集，请单击“新建”。 源是位于前面配置的链接服务“SQLDB”中的表“dbo.TripData”。
 
-    ![门户副本 4](media/lab-data-flow-data-share/copy4.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy4.png" alt-text="门户副本 4":::
 1. 搜索“Azure SQL 数据库”并单击“继续”。
 
-    ![门户副本 5](media/lab-data-flow-data-share/copy-5.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy-5.png" alt-text="门户副本 5":::
 1. 将数据集命名为“TripData”。 选择“SQLDB”作为链接服务。 从表名称下拉列表中选择表名称“dbo.TripData”。 导入架构“从连接/存储”。 完成后，单击“确定”。
 
-    ![门户副本 6](media/lab-data-flow-data-share/copy6.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy6.png" alt-text="门户副本 6":::
 
 现已成功创建了源数据集。 在源设置中，请确保已在“使用查询”字段中选择了默认值“表”。
 
@@ -139,31 +139,31 @@ ms.locfileid: "122637824"
 
 1. 单击复制活动的“接收器”选项卡。 若要创建新数据集，请单击“新建”。
 
-    ![门户副本 7](media/lab-data-flow-data-share/copy7.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy7.png" alt-text="门户副本 7":::
 1. 搜索 **Azure Data Lake Storage Gen2**，然后单击“继续”。
 
-    ![门户副本 8](media/lab-data-flow-data-share/copy8.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy8.png" alt-text="门户副本 8":::
 1. 在“选择格式”窗格中选择“DelimitedText”，因为将要写入到 csv 文件。 单击“继续”。
 
-    ![门户副本 9](media/lab-data-flow-data-share/copy9.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy9.png" alt-text="门户副本 9":::
 1. 将接收器数据集命名为“TripDataCSV”。 选择“ADLSGen2”作为链接服务。 输入要将 csv 文件写入到的位置。 例如，可将数据写入容器 `staging-container` 中的文件 `trip-data.csv`。 将“第一行用作标头”设置为 true，因为你希望输出数据包含标头。 由于目标中尚不存在任何文件，因此请将“导入架构”设置为 **None**。 完成后，单击“确定”。
 
-    ![门户副本 10](media/lab-data-flow-data-share/copy10.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy10.png" alt-text="门户副本 10":::
 
 ### <a name="test-the-copy-activity-with-a-pipeline-debug-run"></a>使用管道调试运行测试复制活动
 
 1. 若要验证复制活动是否正常工作，请单击管道画布顶部的“调试”以执行调试运行。 在将管道发布到数据工厂服务之前，可以使用调试运行对其进行端到端的测试，或者在某个断点位置之前对其进行测试。
 
-    ![门户副本 11](media/lab-data-flow-data-share/copy11.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy11.png" alt-text="门户副本 11":::
 1. 若要监视调试运行，请转到管道画布的“输出”选项卡。 监视屏幕每隔 20 秒自动刷新，或者在手动单击刷新按钮时刷新。 复制活动提供一个特殊的监视视图，可通过单击“操作”列中的眼镜图标来访问该视图。
 
-    ![门户副本 12](media/lab-data-flow-data-share/copy12.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy12.png" alt-text="门户副本 12":::
 1. 复制监视视图提供活动的执行详细信息和性能特征。 可以查看读取/写入的数据量、读取/写入的行数、读取/写入的文件数和吞吐量等信息。 如果正确配置了所有设置，应会看到已将 49,999 行写入 ADLS 接收器中的一个文件。
 
-    ![门户副本 13](media/lab-data-flow-data-share/copy13.png)
+    :::image type="content" source="media/lab-data-flow-data-share/copy13.png" alt-text="门户副本 13":::
 1. 在转到下一部分之前，我们建议通过单击工厂顶部栏中的“全部发布”，来发布对数据工厂服务所做的更改。 Azure 数据工厂支持完整的 Git 集成，不过，本实验不探讨此方案。 使用 Git 集成可以实现版本控制、在存储库中反复保存，以及针对数据工厂展开协作。 有关详细信息，请参阅 [Azure 数据工厂中的源代码管理](./source-control.md#troubleshooting-git-integration)。
 
-    ![门户发布 1](media/lab-data-flow-data-share/publish1.png)
+    :::image type="content" source="media/lab-data-flow-data-share/publish1.png" alt-text="门户发布 1":::
 
 ## <a name="transform-data-using-mapping-data-flow"></a>使用映射数据流转换数据
 
@@ -175,28 +175,28 @@ ms.locfileid: "122637824"
 
 1. 在管道画布的“活动”窗格中，打开“移动和转换”可折叠部分，然后将“数据流”活动拖到画布上。 
 
-    ![门户数据流 1](media/lab-data-flow-data-share/dataflow1.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow1.png" alt-text="门户数据流 1":::
 1. 在打开的边侧窗格中，依次选择“创建新数据流”、“映射数据流”。  单击“确定”。
 
-    ![门户数据流 2](media/lab-data-flow-data-share/dataflow2.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow2.png" alt-text="门户数据流 2":::
 1. 你将定向到数据流画布，可在其中生成转换逻辑。 在“常规”选项卡中，将数据流命名为“JoinAndAggregateData”。
 
-    ![门户数据流 3](media/lab-data-flow-data-share/dataflow3.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow3.png" alt-text="门户数据流 3":::
 
 ### <a name="configure-your-trip-data-csv-source"></a>配置行程数据 csv 源
 
 1. 要做的第一件事是配置两个源转换。 第一个源将指向“TripDataCSV”DelimitedText 数据集。 若要添加源转换，请在画布中单击“添加源”框。
 
-    ![门户数据流 4](media/lab-data-flow-data-share/dataflow4.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow4.png" alt-text="门户数据流 4":::
 1. 将源命名为“TripDataCSV”，从源下拉列表中选择“TripDataCSV”数据集。 如果你记得的话，最初在创建此数据集时，你并未导入架构，因为此数据集不包含任何数据。 由于现在存在 `trip-data.csv`，因此请单击“编辑”转到数据集设置选项卡。
 
-    ![门户数据流 5](media/lab-data-flow-data-share/dataflow5.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow5.png" alt-text="门户数据流 5":::
 1. 转到“架构”选项卡，单击“导入架构”。  选择“从连接/存储”，以直接从文件存储导入。 此时应会显示 14 个字符串类型的列。
 
-    ![门户数据流 6](media/lab-data-flow-data-share/dataflow6.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow6.png" alt-text="门户数据流 6":::
 1. 返回到数据流“JoinAndAggregateData”。 如果调试群集已启动（由调试滑块旁边的绿色圆圈指示），则你可以在“数据预览”选项卡中获取数据的快照。单击“刷新”以提取数据预览。
 
-    ![门户数据流 7](media/lab-data-flow-data-share/dataflow7.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow7.png" alt-text="门户数据流 7":::
 
 > [!Note]
 > 数据预览不会写入数据。
@@ -205,84 +205,84 @@ ms.locfileid: "122637824"
 
 1. 要添加的第二个源将指向 SQL 数据库表“dbo.TripFares”。 在“TripDataCSV”源下，有另一个“添加源”框。 单击此框以添加新的源转换。
 
-    ![门户数据流 8](media/lab-data-flow-data-share/dataflow8.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow8.png" alt-text="门户数据流 8":::
 1. 将此源命名为“TripFaresSQL”。 单击源数据集字段旁边的“新建”，以创建新的 SQL 数据库数据集。
 
-    ![门户数据流 9](media/lab-data-flow-data-share/dataflow9.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow9.png" alt-text="门户数据流 9":::
 1. 选择“Azure SQL 数据库”磁贴，然后单击“继续”。 *注意：你可能注意到，数据工厂中的许多连接器在映射数据流中不受支持。若要从其中的某个源转换数据，请使用复制活动将数据引入受支持的源*。
 
-    ![门户数据流 10](media/lab-data-flow-data-share/dataflow-10.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow-10.png" alt-text="门户数据流 10":::
 1. 将数据集命名为“TripFares”。 选择“SQLDB”作为链接服务。 从表名称下拉列表中选择表名称“dbo.TripFares”。 导入架构“从连接/存储”。 完成后，单击“确定”。
 
-    ![门户数据流 11](media/lab-data-flow-data-share/dataflow11.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow11.png" alt-text="门户数据流 11":::
 1. 若要验证数据，请在“数据预览”选项卡中提取数据预览。
 
-    ![门户数据流 12](media/lab-data-flow-data-share/dataflow12.png)
+    :::image type="content" source="media/lab-data-flow-data-share/dataflow12.png" alt-text="门户数据流 12":::
 
 ### <a name="inner-join-tripdatacsv-and-tripfaressql"></a>内部联接 TripDataCSV 和 TripFaresSQL
 
 1. 若要添加新转换，请单击“TripDataCSV”右下角的加号图标。 在“多个输入/输出”下，选择“联接”。 
 
-    ![门户联接 1](media/lab-data-flow-data-share/join1.png)
+    :::image type="content" source="media/lab-data-flow-data-share/join1.png" alt-text="门户联接 1":::
 1. 将联接转换命名为“InnerJoinWithTripFares”。 从右侧的流下拉列表中选择“TripFaresSQL”。 选择“内部”作为联接类型。 若要详细了解映射数据流中的不同联接类型，请参阅[联接类型](./data-flow-join.md#join-types)。
 
     通过“联接条件”下拉列表选择要从每个流匹配的列。 若要添加更多联接条件，请单击现有条件旁边的加号图标。 默认情况下，所有联接条件将与 AND 运算符相组合，这意味着，必须满足所有条件才视为匹配。 在本实验中，我们想要匹配列 `medallion`、`hack_license`、`vendor_id` 和 `pickup_datetime`
 
-    ![门户联接 2](media/lab-data-flow-data-share/join2.png)
+    :::image type="content" source="media/lab-data-flow-data-share/join2.png" alt-text="门户联接 2":::
 1. 使用数据预览验证是否已成功将 25 列联接到一起。
 
-    ![门户联接 3](media/lab-data-flow-data-share/join3.png)
+    :::image type="content" source="media/lab-data-flow-data-share/join3.png" alt-text="门户联接 3":::
 
 ### <a name="aggregate-by-payment_type"></a>按 payment_type 聚合
 
 1. 完成联接转换后，单击“InnerJoinWithTripFares”旁边的加号图标添加聚合转换。 选择“架构修饰符”下的“聚合”。 
 
-    ![门户聚合 1](media/lab-data-flow-data-share/agg1.png)
+    :::image type="content" source="media/lab-data-flow-data-share/agg1.png" alt-text="门户聚合 1":::
 1. 将聚合转换命名为“AggregateByPaymentType”。 选择 `payment_type` 作为分组依据列。
 
-    ![门户聚合 2](media/lab-data-flow-data-share/agg2.png)
+    :::image type="content" source="media/lab-data-flow-data-share/agg2.png" alt-text="门户聚合 2":::
 1. 转到“聚合”选项卡。在此处指定两个聚合：
     * 按付款类型分组的平均费用
     * 按付款类型分组的总行程距离
 
     首先创建平均费用表达式。 在标有“添加或选择列”的文本框中，输入“average_fare”。
 
-    ![门户聚合 3](media/lab-data-flow-data-share/agg3.png)
+    :::image type="content" source="media/lab-data-flow-data-share/agg3.png" alt-text="门户聚合 3":::
 1. 若要输入聚合表达式，请单击标有“输入表达式”的蓝色框。 此时会打开数据流表达式生成器，在此工具中可以使用输入架构、内置函数和操作以及用户定义的参数来直观创建数据流表达式。 有关表达式生成器的功能的详细信息，请参阅[表达式生成器文档](./concepts-data-flow-expression-builder.md)。
 
     若要获取平均费用，请使用 `avg()` 聚合函数来聚合 `total_amount` 列，然后可使用 `toInteger()` 将此列强制转换为整数。 在数据流表达式语言中，此表达式定义为 `avg(toInteger(total_amount))`。 完成后，单击“保存并完成”。
 
-    ![门户聚合 4](media/lab-data-flow-data-share/agg4.png)
+    :::image type="content" source="media/lab-data-flow-data-share/agg4.png" alt-text="门户聚合 4":::
 1. 若要添加更多聚合表达式，请单击 `average_fare` 旁边的加号图标。 选择“添加列”。
 
-    ![门户聚合 5](media/lab-data-flow-data-share/agg5.png)
+    :::image type="content" source="media/lab-data-flow-data-share/agg5.png" alt-text="门户聚合 5":::
 1. 在标有“添加或选择列”的文本框中，输入“total_trip_distance”。 在最后一个步骤中，打开表达式生成器以输入表达式。
 
     若要获取总行程距离，请使用 `sum()` 聚合函数来聚合 `trip_distance` 列，然后可使用 `toInteger()` 将此列强制转换为整数。 在数据流表达式语言中，此表达式定义为 `sum(toInteger(trip_distance))`。 完成后，单击“保存并完成”。
 
-    ![门户聚合 6](media/lab-data-flow-data-share/agg6.png)
+    :::image type="content" source="media/lab-data-flow-data-share/agg6.png" alt-text="门户聚合 6":::
 1. 在“数据预览”选项卡中测试转换逻辑。可以看到，行数和列数相比前面少了很多。 在此下游延续转换中，仅定义了三个分组依据和聚合列。 由于示例中只有五个付款类型组，因此只输出了五行。
 
-    ![门户聚合 7](media/lab-data-flow-data-share/agg7.png)
+    :::image type="content" source="media/lab-data-flow-data-share/agg7.png" alt-text="门户聚合 7":::
 
 ### <a name="configure-you-azure-synapse-analytics-sink"></a>配置 Azure Synapse Analytics 接收器
 
 1. 完成转换逻辑后，接下来可在 Azure Synapse Analytics 表中接收数据。 在“目标”部分下添加接收器转换。
 
-    ![门户接收器 1](media/lab-data-flow-data-share/sink1.png)
+    :::image type="content" source="media/lab-data-flow-data-share/sink1.png" alt-text="门户接收器 1":::
 1. 将接收器命名为“SQLDWSink”。 单击接收器数据集字段旁边的“新建”，以创建新的 Azure Synapse Analytics 数据集。
 
-    ![门户接收器 2](media/lab-data-flow-data-share/sink2.png)
+    :::image type="content" source="media/lab-data-flow-data-share/sink2.png" alt-text="门户接收器 2":::
 
 1. 选择“Azure Synapse Analytics”磁贴，然后单击“继续”。
 
-    ![门户接收器 3](media/lab-data-flow-data-share/sink-3.png)
+    :::image type="content" source="media/lab-data-flow-data-share/sink-3.png" alt-text="门户接收器 3":::
 1. 将数据集命名为“AggregatedTaxiData”。 选择“SQLDW”作为链接服务。 选择“创建新表”，并将新表命名为 dbo.AggregateTaxiData。 完成后，单击“确定”
 
-    ![门户接收器 4](media/lab-data-flow-data-share/sink4.png)
+    :::image type="content" source="media/lab-data-flow-data-share/sink4.png" alt-text="门户接收器 4":::
 1. 转到接收器的“设置”选项卡。 由于我们要创建新表，因此需要在表操作下选择“重新创建表”。 取消选择“启用暂存”，以便在逐行插入和批量插入之间切换。
 
-    ![门户接收器 5](media/lab-data-flow-data-share/sink5.png)
+    :::image type="content" source="media/lab-data-flow-data-share/sink5.png" alt-text="门户接收器 5":::
 
 现已成功创建数据流。 接下来，可以在管道活动中运行该数据流。
 
@@ -290,19 +290,19 @@ ms.locfileid: "122637824"
 
 1. 返回 **IngestAndTransformData** 管道的选项卡。 请注意“IngestIntoADLS”复制活动中的绿色框。 将此框拖到“JoinAndAggregateData”数据流活动。 这会创建“on success”条件，以便仅在复制成功时才运行该数据流活动。
 
-    ![门户管道 1](media/lab-data-flow-data-share/pipeline1.png)
+    :::image type="content" source="media/lab-data-flow-data-share/pipeline1.png" alt-text="门户管道 1":::
 1. 与对复制活动所做的那样，单击“调试”以执行调试运行。 对于调试运行，数据流活动将使用活动的调试群集，而不是启动新群集。 执行此管道所需的时间略微超过一分钟。
 
-    ![门户管道 2](media/lab-data-flow-data-share/pipeline2.png)
+    :::image type="content" source="media/lab-data-flow-data-share/pipeline2.png" alt-text="门户管道 2":::
 1. 与复制活动一样，数据流提供一个特殊的监视视图，可以在完成活动后单击眼镜图标来访问此视图。
 
-    ![门户管道 3](media/lab-data-flow-data-share/pipeline3.png)
+    :::image type="content" source="media/lab-data-flow-data-share/pipeline3.png" alt-text="门户管道 3":::
 1. 在监视视图中，可以看到一个简化的数据流图形，以及每个执行阶段花费的执行时间和处理的行数。 如果正常完成了操作，则此活动中应已将 49,999 行聚合成 5 行。
 
-    ![门户管道 4](media/lab-data-flow-data-share/pipeline4.png)
+    :::image type="content" source="media/lab-data-flow-data-share/pipeline4.png" alt-text="门户管道 4":::
 1. 可以单击某个转换获取有关其执行的更多详细信息，例如分区信息以及新的/已更新的/已删除的列数。
 
-    ![门户管道 5](media/lab-data-flow-data-share/pipeline5.png)
+    :::image type="content" source="media/lab-data-flow-data-share/pipeline5.png" alt-text="门户管道 5":::
 
 现已完成本实验的数据工厂部分。 若要使用触发器来操作化资源，请发布资源。 你已成功运行一个使用复制活动将数据从 Azure SQL 数据库引入到 Azure Data Lake Storage  的管道，然后将该数据聚合到了 Azure Synapse Analytics。 可以通过查看 SQL Server 本身来验证数据是否已成功写入。
 
@@ -318,13 +318,13 @@ ms.locfileid: "122637824"
 
 1. 使用页面顶部的搜索栏搜索“数据共享”
 
-    ![门户广告](media/lab-data-flow-data-share/portal-ads.png)
+    :::image type="content" source="media/lab-data-flow-data-share/portal-ads.png" alt-text="门户广告":::
 
 1. 选择名称中包含“Provider”的数据共享帐户。 例如 **DataProvider0102**。 
 
 1. 选择“开始共享数据”。
 
-    ![开始共享](media/lab-data-flow-data-share/ads-start-sharing.png)
+    :::image type="content" source="media/lab-data-flow-data-share/ads-start-sharing.png" alt-text="开始共享":::
 
 1. 选择“+创建”开始配置新的数据共享。 
 
@@ -334,17 +334,17 @@ ms.locfileid: "122637824"
 
 1. 在“使用条款”下，指定你希望数据使用者遵守的一系列条款。 示例包括“请勿在你的组织外部分发此数据”或“参考法律协议”。 
 
-    ![共享详细信息](media/lab-data-flow-data-share/ads-details.png)
+    :::image type="content" source="media/lab-data-flow-data-share/ads-details.png" alt-text="共享详细信息":::
 
 1. 选择“继续”。 
 
 1. 选择“添加数据集” 
 
-    ![添加数据集 1](media/lab-data-flow-data-share/add-dataset.png)
+    :::image type="content" source="media/lab-data-flow-data-share/add-dataset.png" alt-text="添加数据集 1":::
 
 1. 选择“Azure Synapse Analytics”，以从 ADF 转换所在的 Azure Synapse Analytics 中选择一个表。
 
-    ![添加数据集 sql](media/lab-data-flow-data-share/add-dataset-sql.png)
+    :::image type="content" source="media/lab-data-flow-data-share/add-dataset-sql.png" alt-text="添加数据集 sql":::
 
 
 1. 在继续操作之前，我们会向你提供一个要运行的脚本。 提供的脚本将在 SQL 数据库中创建一个用户，以允许 Azure Data Share MSI 代表该用户完成身份验证。 
@@ -368,7 +368,7 @@ ms.locfileid: "122637824"
 
 1. 依次选择“添加数据集”、“Azure Data Lake Store Gen2” 
 
-    ![添加数据集 adls](media/lab-data-flow-data-share/add-dataset-adls.png)
+    :::image type="content" source="media/lab-data-flow-data-share/add-dataset-adls.png" alt-text="添加数据集 adls":::
 
 1. 选择“下一步”
 
@@ -386,7 +386,7 @@ ms.locfileid: "122637824"
 
     1. 你所在的 Azure 订阅的电子邮件地址。 
 
-        ![添加收件人](media/lab-data-flow-data-share/add-recipients.png)
+        :::image type="content" source="media/lab-data-flow-data-share/add-recipients.png" alt-text="添加收件人":::
 
     1. 添加名为 *janedoe@fabrikam.com* 的虚构数据使用者。
 
@@ -408,7 +408,7 @@ ms.locfileid: "122637824"
 
 1. 导航到“邀请”选项卡。在此处可以看到等待接受的邀请列表。 
 
-    ![等待接受的邀请](media/lab-data-flow-data-share/pending-invites.png)
+    :::image type="content" source="media/lab-data-flow-data-share/pending-invites.png" alt-text="等待接受的邀请":::
 
 1. 选择发送给 *janedoe@fabrikam.com* 的邀请。 选择“删除”。 如果收件人尚未接受该邀请，他们不再可以接受。 
 
@@ -422,7 +422,7 @@ ms.locfileid: "122637824"
 
 在收到的电子邮件中，单击“查看邀请 >”。 从现在起，你将模拟数据使用者来体验接受数据提供者发出的加入其数据共享的邀请。 
 
-![电子邮件邀请](media/lab-data-flow-data-share/email-invite.png)
+:::image type="content" source="media/lab-data-flow-data-share/email-invite.png" alt-text="电子邮件邀请":::
 
 系统可能会提示选择订阅。 请务必选择在本实验中使用的订阅。 
 
@@ -436,7 +436,7 @@ ms.locfileid: "122637824"
 
 1. 在“收到的共享名”旁边可以看到，默认共享名是数据提供者指定的名称。 为共享指定一个易记名称用于描述要接收的数据，例如 **TaxiDataShare**。
 
-    ![接受邀请](media/lab-data-flow-data-share/consumer-accept.png)
+    :::image type="content" source="media/lab-data-flow-data-share/consumer-accept.png" alt-text="接受邀请":::
 
 1. 可以选择“立即接受并配置”或“稍后接受并配置”。  如果选择“立即接受并配置”，需要指定要将所有数据复制到的存储帐户。 如果选择“稍后接受并配置”，则会取消映射共享中的数据集，因此需要手动映射这些数据集。 稍后我们将选择此选项。 
 
@@ -452,7 +452,7 @@ ms.locfileid: "122637824"
 
 1. 选择“数据集”选项卡。请注意，每个数据集的状态为“未映射”，这意味着，数据没有可复制到的目标。 
 
-    ![未映射的数据集](media/lab-data-flow-data-share/unmapped.png)
+    :::image type="content" source="media/lab-data-flow-data-share/unmapped.png" alt-text="未映射的数据集":::
 
 1. 选择 Azure Synapse Analytics 表，然后选择“+ 映射到目标”。
 
@@ -460,7 +460,7 @@ ms.locfileid: "122637824"
 
     可将 SQL 数据映射到各种数据存储。 在本例中，我们将映射到 Azure SQL 数据库。
 
-    ![mapping](media/lab-data-flow-data-share/mapping-options.png)
+    :::image type="content" source="media/lab-data-flow-data-share/mapping-options.png" alt-text="mapping":::
     
     （可选）选择“Azure Data Lake Store Gen2”作为目标数据类型。 
     
@@ -472,7 +472,7 @@ ms.locfileid: "122637824"
 
 1. 选择前面一直在使用的订阅、资源组和存储帐户。 
 
-    ![映射到 SQL](media/lab-data-flow-data-share/map-to-sqldb.png)
+    :::image type="content" source="media/lab-data-flow-data-share/map-to-sqldb.png" alt-text="映射到 SQL":::
 
 1. 在继续操作之前，需要通过运行提供的脚本在 SQL Server 中创建一个新用户。 首先，将提供的脚本复制到剪贴板。 
 
@@ -494,11 +494,11 @@ ms.locfileid: "122637824"
 
 1. 接下来，选择数据集中包含的 Azure Data Lake Gen2 文件夹，并将其映射到 Azure Blob 存储帐户。 
 
-    ![存储](media/lab-data-flow-data-share/storage-map.png)
+    :::image type="content" source="media/lab-data-flow-data-share/storage-map.png" alt-text="storage":::
 
     映射所有数据集后，接下来可以开始从数据提供者接收数据。 
 
-    ![已映射](media/lab-data-flow-data-share/all-mapped.png)
+    :::image type="content" source="media/lab-data-flow-data-share/all-mapped.png" alt-text="已映射":::
     
 1. 选择“详细信息”。 
 
@@ -506,7 +506,7 @@ ms.locfileid: "122637824"
 
 1. 选择“触发快照”->“完全复制”。 
 
-    ![触发器](media/lab-data-flow-data-share/trigger-full.png)
+    :::image type="content" source="media/lab-data-flow-data-share/trigger-full.png" alt-text="trigger":::
 
     随即开始将数据复制到新的数据共享帐户。 在现实方案中，此数据将来自第三方。 
 

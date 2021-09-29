@@ -1,17 +1,17 @@
 ---
 title: 将数据从流分析流式传输到 Data Lake Storage Gen1 - Azure
 description: 了解如何在一个从 Azure 存储 Blob 读取数据的简单方案中将 Azure Data Lake Storage Gen1 用作 Azure 流分析作业的输出。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
-ms.author: twooley
-ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 22db3b695a053f6133bd6c223e6fd8eeefdff163
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91576210"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606487"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 流分析将 Azure 存储 Blob 中的数据流式传输至 Azure Data Lake Storage Gen1 中
 本文介绍如何使用 Azure Data Lake Storage Gen1 作为 Azure 流分析作业的输出。 本文演示了一个简单的方案：从 Azure 存储 blob（输入）读取数据并将数据写入 Data Lake Storage Gen1（输出）。

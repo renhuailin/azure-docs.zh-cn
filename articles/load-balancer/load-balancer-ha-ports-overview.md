@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 6f089af71e4d32023e9cebd6613872f7db0eed7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec8431c7f84431702a60ef85e32d47c604289b3a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94694953"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678206"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述
 
@@ -46,7 +46,7 @@ HA 端口负载均衡规则可帮助你实现关键方案，例如虚拟网络�
 
 下图显示了中心辐射型虚拟网络部署。 在离开受信任空间之前，辐射使用强制隧道将其流量发送到中心虚拟网络并通过 NVA。 NVA 在采用 HA 端口配置的内部标准负载均衡器后面。 可以处理并相应地转发所有流量。 当如下图所示进行了配置时，HA 端口负载均衡规则还会另外针对入口和出口流量提供流对称。
 
-<a node="diagram"></a>
+<a name="diagram"></a>
 ![包含以 HA 模式部署的 NVA 的中心辐射型虚拟网络的示意图](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]

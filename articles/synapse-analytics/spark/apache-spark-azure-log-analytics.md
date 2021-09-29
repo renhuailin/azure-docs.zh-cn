@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: cc4d6cd7809c58451f95b94970ee8b489f2f9dfe
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a455eb81a804c9eff9dcd84142eccbdfc3ac376c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535348"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804181"
 ---
 # <a name="monitor-apache-spark-applications-with-azure-log-analytics-preview"></a>通过 Azure Log Analytics 监视 Apache Spark 应用程序（预览）
 
@@ -29,7 +29,7 @@ ms.locfileid: "123535348"
 
 参考以下任一资源，创建此工作区：
 - [在 Azure 门户中创建工作区](../../azure-monitor/logs/quick-create-workspace.md)
-- [使用 Azure CLI 创建工作区](../../azure-monitor/logs/quick-create-workspace-cli.md)
+- [使用 Azure CLI 创建工作区](../../azure-monitor/logs/resource-manager-workspace.md)
 - [使用 PowerShell 在 Azure Monitor 中创建和配置工作区](../../azure-monitor/logs/powershell-workspace-configuration.md)
 
 ### <a name="step-2-prepare-a-apache-spark-configuration-file"></a>步骤 2：准备 Apache Spark 配置文件

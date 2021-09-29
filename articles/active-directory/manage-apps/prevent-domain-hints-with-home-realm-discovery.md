@@ -1,5 +1,6 @@
 ---
-title: 使用“主领域发现”策略禁止 Azure AD 中的登录自动加速
+title: 使用“主领域发现”策略禁止登录自动加速
+titleSuffix: Azure AD
 description: 了解如何阻止到联合 IDP 的 domain_hint 自动加速。
 services: active-directory
 author: davidmu1
@@ -11,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: c85c4028c1931c1e5eee061b9be7b2ebffc5b951
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 9f8608330d5f74ef2e1262b7c3dff82be746c884
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566906"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059165"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>在用户使用主领域发现策略登录过程中禁用到联合 IDP 的自动加速
 
@@ -41,7 +42,7 @@ HRD 策略的 DomainHintPolicy 部分是一个 JSON 对象，它允许管理员�
 
 DomainHintPolicy 逻辑在包含域提示的每个传入请求上运行，并基于请求中的两个数据片段 – 域提示中的域以及客户端 ID（应用）。 简而言之，对于域或应用，“遵循”优先于“忽略”给定域或应用程序的域提示的指令。
 
-1. 在没有任何域提示策略的情况下，或者如果 4 个部分都未引用所述的应用或域提示，将[评估其余的 HRD 策略](configure-authentication-for-federated-users-portal.md#priority-and-evaluation-of-hrd-policies)。
+1. 在没有任何域提示策略的情况下，或者如果 4 个部分都未引用所述的应用或域提示，将[评估其余的 HRD 策略](home-realm-discovery-policy.md#priority-and-evaluation-of-hrd-policies)。
 1. 如果 `RespectDomainHintForApps` 或 `RespectDomainHintForDomains` 部分中的任何一个（或两者）在请求中包含应用或域提示，则将根据请求将用户自动加速到联合 IDP。
 1. 如果 `IgnoreDomainHintsForApps` 或 `IgnoreDomainHintsForDomains` 中的任何一个（或两者）在请求中引用应用或域提示，并且“遵循”部分未引用它们，则请求不会自动加速，并且用户将保留在 Azure AD 登录页以提供用户名。
 

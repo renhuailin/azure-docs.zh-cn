@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: f806a700fa9f1788e2435a43d8fdcb19fa8134ce
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b7594a8d5e958b05c001f3943437e86b5830bd80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372647"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667077"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>对 IoT Edge 上的实时视频分析进行故障排除
 
@@ -39,7 +39,7 @@ ms.locfileid: "110372647"
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content <path-to-deployment_manifest.json>
 ```
 如果 JSON 代码格式不正确，则可能会收到以下错误：   
-&nbsp;&nbsp;&nbsp;未能分析参数“content”的文件“<deployment manifest.json>”中的 JSON，出现异常：“额外数据：第 101 行第 1 列 (char 5325)”
+&nbsp;&nbsp;&nbsp;未能分析参数“content”的文件“\<deployment manifest.json\>”中的 JSON，出现异常：“额外数据：第 101 行第 1 列 (char 5325)”
 
 如果遇到此错误，建议检查 JSON 中是否缺少括号或存在文件结构的其他问题。 可以使用客户端（如 [Notepad++ 与 JSON Viewer 插件](https://riptutorial.com/notepadplusplus/example/18201/json-viewer)）或联机工具（如 [JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/)）来验证文件结构。
 

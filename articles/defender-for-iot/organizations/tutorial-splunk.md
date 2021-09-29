@@ -4,14 +4,14 @@ description: 本教程介绍如何将 Splunk 与 Azure Defender for IoT 集成�
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 08/03/2021
+ms.date: 09/12/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 00d4f5c5c432a4b5cccdfbfb83fe81c2844d68e8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2484de315508310729882e46b5e22669d01ec9f8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782105"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814714"
 ---
 # <a name="tutorial-integrate-splunk-with-azure-defender-for-iot"></a>教程：将 Splunk 与 Azure Defender for IoT 集成
 
@@ -33,6 +33,8 @@ Splunk 应用程序可以安装在本地，也可以在云中运行。 Splunk �
 > [!div class="checklist"]
 > * 在 Splunk 中下载 Defender for IoT 应用程序
 > * 将 Defender for IoT 警报发送到 Splunk
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -122,6 +124,10 @@ Defender for IoT 警报提供大量安全事件的相关信息。 这些事件�
     | **密码** | Splunk 服务器密码 |
 
 1. 选择“提交”。 
+
+## <a name="clean-up-resources"></a>清理资源
+
+没有可清理的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 0d37e8308afd75b310893272f338fb5a3245a8ce
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c5232d9ed3e7ab7caec6134e4c5d3e553e2b543c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696519"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818415"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -63,5 +63,7 @@ DCsv2 系列虚拟机可以在公有云中处理数据和代码时帮助保护�
 - [前几代](sizes-previous-gen.md)
 - [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 - [更多磁盘类型](./disks-types.md#ultra-disk)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

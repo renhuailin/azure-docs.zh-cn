@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e01957c04e422f26601eab6f4e53694e317e22a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e097a9860c4e3cde968bc9b7c7bddb7eebd99349
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741883"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624854"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模拟器进行本地 Azure 存储开发
 
@@ -53,7 +53,7 @@ azurite
 
 更改到[版本生成配置](/visualstudio/debugger/how-to-set-debug-and-release-configurations#change-the-build-configuration)，然后运行项目。
 
->[!NOTE]
+> [!NOTE]
 > 如果使用调试生成配置启动项目，则可能会收到错误。 这是因为 Visual Studio 可能会尝试启动 Visual Studio 中内置的旧存储仿真器。 由于 Azurite 正在使用旧存储仿真器所需的侦听端口，因此启动旧仿真器的任何尝试都将被阻止。
 
 下图显示了在运行 Azure Function 项目时显示的命令行输出。
@@ -68,20 +68,20 @@ azurite
 
 也可在浏览器中导航到 [Visual Studio Code 扩展市场](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)。 选择“安装”按钮打开 Visual Studio Code，并直接转到 Azurite 扩展页。
 
-该扩展支持以下 Visual Studio Code 命令。 若要打开命令面板，请在 Visual Studio Code 中按 F1。 
+该扩展支持以下 Visual Studio Code 命令。 若要打开命令面板，请在 Visual Studio Code 中按 F1。
 
    - **Azurite:Clean** - 重置所有 Azurite 服务永久性数据
    - **Azurite:Clean Blob Service** - 清理 Blob 服务
    - **Azurite:Clean Queue Service** - 清理队列服务
-   - Azurite: Clean Table Service - 清理表服务
+   - **Azurite: Clean Table Service** - 清理表服务
    - **Azurite:Close** - 关闭所有 Azurite 服务
    - **Azurite:Close Blob Service** - 关闭 Blob 服务
    - **Azurite:Close Queue Service** - 关闭队列服务
-   - Azurite: Close Table Service - 关闭表服务
+   - **Azurite: Close Table Service** - 关闭表服务
    - **Azurite:Start** - 启动所有 Azurite 服务
    - **Azurite:Start Blob Service** - 启动 Blob 服务
    - **Azurite:Start Queue Service** - 启动队列服务
-   - Azurite: Start Table Service - 启动表服务
+   - **Azurite: Start Table Service** - 启动表服务
 
 若要在 Visual Studio Code 中配置 Azurite，请选择“扩展”窗格。 选择 **Azurite** 所对应的“管理”(齿轮)图标。 选择“扩展设置”。
 
@@ -102,7 +102,7 @@ azurite
    - **Azurite:队列端口** - 队列服务的侦听端口。 默认端口为 10001。
    - **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false** 秒。
    - **Azurite:跳过 API 版本检查** - 跳过请求 API 版本检查。 默认值是 **false** 秒。
-   - Azurite: 表主机 - 表服务侦听终结点，默认情况下设置为 127.0.0.1。
+   - **Azurite: Table Host** - 表服务侦听终结点，默认设置是 127.0.0.1。
    - Azurite: 表端口 - 表服务侦听端口，默认为 10002。
 
 ### <a name="npm"></a>[npm](#tab/npm)
@@ -173,7 +173,7 @@ npm install -g
 ## <a name="run-azurite-from-a-command-line"></a>从命令行运行 Azurite
 
 > [!NOTE]
-> 如果只是安装了 Visual Studio Code 扩展，则无法从命令行运行 Azurite。 请改用 Visual Studio Code 命令面板。 
+> 如果只是安装了 Visual Studio Code 扩展，则无法从命令行运行 Azurite。 请改用 Visual Studio Code 命令面板。
 
 若要立即开始使用命令行，请创建名为 *c:\azurite* 的目录，然后发出以下命令以启动 Azurite：
 
@@ -333,6 +333,8 @@ azurite --location c:\azurite
 azurite -s
 azurite --silent
 ```
+
+
 ### <a name="debug-log"></a>调试日志
 
 **可选** - 调试日志包括有关每个请求和异常堆栈跟踪的详细信息。 在 `-d` 或 `--debug` 开关中提供有效的本地文件路径可以启用调试日志。
@@ -350,6 +352,8 @@ azurite --debug path/debug.log
 azurite -L
 azurite --loose
 ```
+
+
 ### <a name="version"></a>版本
 
 **可选** - 通过使用 `-v` 或 `--version` 开关显示已安装 Azurite 的版本号。
@@ -397,7 +401,6 @@ Azurite 通过为 `--oauth` 开关指定 `basic` 参数来支持基本身份验�
 ```console
 azurite --skipApiVersionCheck
 ```
-
 
 ## <a name="authorization-for-tools-and-sdks"></a>工具和 SDK 的授权
 

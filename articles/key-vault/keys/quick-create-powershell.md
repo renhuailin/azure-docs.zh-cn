@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 083cd20747c5dec9b326707489b2494ff5a89804
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 51b1a255eb538dabd735e77ae6161d53c89e90d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664300"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675832"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure Key Vault 中设置和检索密钥
 
@@ -49,7 +49,7 @@ Login-AzAccount
 Add-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -Name "ExampleKey" -Destination "Software"
 ```
 
-现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此密钥。 使用“https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey”来获取当前版本。 
+现在，可以通过 URI 来引用已添加到 Azure Key Vault 的此密钥。 使用 **`https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey`** 获取当前版本。 
 
 若要查看以前存储的密钥，请使用以下命令：
 

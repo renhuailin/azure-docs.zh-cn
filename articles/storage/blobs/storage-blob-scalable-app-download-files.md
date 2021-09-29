@@ -8,12 +8,12 @@ ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aafea55e2683ab9c78fafbf819c9a67d7cb75a45
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 435bc37a79ea7397bcfd8d1d044c44cd5fde382e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459676"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630719"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>从 Azure 存储下载大量随机数据
 
@@ -22,9 +22,9 @@ ms.locfileid: "110459676"
 在该系列的第三部分中，你会学习如何：
 
 > [!div class="checklist"]
-> * 更新应用程序
-> * 运行应用程序
-> * 验证连接数
+> - 更新应用程序
+> - 运行应用程序
+> - 验证连接数
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -223,8 +223,8 @@ C:\>
 本系列的第三部分介绍了从存储帐户下载大量数据的方法，包括如何：
 
 > [!div class="checklist"]
-> * 运行应用程序
-> * 验证连接数
+> - 运行应用程序
+> - 验证连接数
 
 转到本系列的第四部分，验证门户中的吞吐量和延迟指标。
 

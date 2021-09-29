@@ -10,12 +10,12 @@ ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7e2d71c1f388786c05052e773ea621caab92185e
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: c4dc8b3e079f224dbefde3bc12b5d79a4db32faa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445874"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589599"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
 
@@ -193,7 +193,7 @@ az storage blob restore \
 ```azurecli
 az storage account show \
     --name <storage-account> \
-    --resource-group <resource_group> \ 
+    --resource-group <resource_group> \
     --expand blobRestoreStatus \
     --query blobRestoreStatus.status \
     --output tsv
@@ -259,7 +259,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -TimeToRestore (Get-Date).AddDays(-3)
 ```
 
-默认情况下，Restore-AzStorageBlobRange 命令以异步方式运行。 在异步启动还原操作时，PowerShell 会立即显示此操作的属性表：  
+默认情况下，Restore-AzStorageBlobRange 命令以异步方式运行。 在异步启动还原操作时，PowerShell 会立即显示此操作的属性表：
 
 ```powershell
 Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges

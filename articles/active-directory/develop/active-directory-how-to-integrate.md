@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7ee283ff61753a060e49a3340cd0a795b04faf9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57aefd8cc8a246d485854f72b47c131f75dced0c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755931"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734802"
 ---
 # <a name="integrating-with-the-microsoft-identity-platform"></a>与 Microsoft 标识平台集成
 
@@ -55,7 +55,7 @@ Microsoft 标识平台是 Microsoft 365 和其他 Microsoft 业务服务的授�
 
 **向数百万个已使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些市场的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。 深入了解如何在 [Azure 市场](https://azure.microsoft.com/marketplace/partner-program/)中推广应用程序。
 
-**用户注册应用程序后，该程序会在其 Azure AD 访问面板和 Microsoft 365 应用启动器中显示。**  之后，用户能够快速轻松地返回应用程序，可提高用户参与度。 深入了解 [Azure AD 访问面板](../user-help/my-apps-portal-end-user-access.md)。
+**用户注册应用程序后，该程序会在其 Azure AD 访问面板和 Microsoft 365 应用启动器中显示。**  之后，用户能够快速轻松地返回应用程序，可提高用户参与度。 深入了解 [Azure AD 访问面板](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>保护设备与服务之间以及服务与服务之间的通信
 

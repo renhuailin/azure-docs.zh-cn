@@ -3,7 +3,7 @@ title: 使用 Azure 门户导入 SOAP API | Microsoft Docs
 description: 了解如何导入 SOAP API 的标准 XML 表示形式，以及如何在 Azure 和开发人员门户中测试该 API。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/22/2020
-ms.author: apimpm
-ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: effb8b3820359539045a25244ced9f0dddc83c86
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011058"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629685"
 ---
 # <a name="import-soap-api"></a>导入 SOAP API
 
@@ -32,7 +32,7 @@ ms.locfileid: "96011058"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

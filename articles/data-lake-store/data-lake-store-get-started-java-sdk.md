@@ -1,18 +1,18 @@
 ---
 title: Java SDK - Data Lake Storage Gen1 上的文件系统操作 - Azure
 description: 使用 Azure Data Lake Storage Gen1 Java SDK 在 Data Lake Storage Gen1 上执行文件系统操作，例如创建文件夹、上传和下载数据文件。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.custom: devx-track-java
-ms.author: twooley
-ms.openlocfilehash: a2c55a2d3277bbb6c3cf72f5ea703780d2a5e9bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 83ab4ce998183057420e93b120931807140e5f09
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87318838"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571209"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 对 Azure Data Lake Storage Gen1 执行的文件系统操作
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ ms.locfileid: "87318838"
 
 1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。 
 
-2. 将以下依赖项添加到 Maven pom.xml 文件。 在 **\</project>** 标记前添加以下代码片段：
+2. 将以下依赖项添加到 Maven pom.xml 文件。 在 \</project> 标记前添加以下代码片段：
    
     ```xml
     <dependencies>

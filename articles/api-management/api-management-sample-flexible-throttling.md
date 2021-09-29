@@ -3,7 +3,7 @@ title: 使用 Azure API 管理进行高级请求限制
 description: 了解如何使用 Azure API 管理创建并应用灵活的配额和速率限制策略。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: fc813a65-7793-4c17-8bb9-e387838193ae
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
-ms.author: apimpm
-ms.openlocfilehash: 3f91ed2238a7a23b967cd3e3556c8ade88af0044
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: danlep
+ms.openlocfilehash: 177d393041b397e504c1c8c155fe9b2b1f99b451
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449726"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653678"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>使用 Azure API 管理进行高级请求限制
 限制传入请求是 Azure API 管理的重要功能。 通过控制请求的速率或传输的请求/数据总量，API 管理让 API 提供程序能够保护其 API 不被滥用，为不同的 API 产品层创造价值。

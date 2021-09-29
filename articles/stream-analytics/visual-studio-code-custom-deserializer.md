@@ -6,12 +6,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/22/2020
-ms.openlocfilehash: 1813fb222bca74f355fec52252ce3d77fef06e5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d5787268cd5f7d25b54f8c7bc63f59c20a8495b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98013917"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606981"
 ---
 # <a name="create-custom-net-deserializers-for-azure-stream-analytics-in-visual-studio-code"></a>在 Visual Studio Code 中为 Azure 流分析创建自定义 .NET 反序列化程序
 
@@ -114,7 +114,7 @@ Azure 流分析[内置了对三种数据格式的支持](stream-analytics-parsin
    选择“ProtobufCloudDeserializer”，然后从下拉列表中选择“Azure 流分析” 。
    :::image type="content" source="./media/custom-deserializer/create-launch-file-vscode-2.png" alt-text="创建启动文件 2。":::
 
-   编辑 launch.json 文件，以将 <ASAScript>.asaql 替换为 ProtobufCloudDeserializer.asaql。
+   编辑 launch.json 文件，以将 \<ASAScript\>.asaql 替换为 ProtobufCloudDeserializer.asaql。
    :::image type="content" source="./media/custom-deserializer/configure-launch-file-vscode.png" alt-text="配置启动文件 2。":::
 
 3. 按 **F5** 开始调试。 程序按预期在断点处停止。 此操作适用于本地输入和实时输入数据。

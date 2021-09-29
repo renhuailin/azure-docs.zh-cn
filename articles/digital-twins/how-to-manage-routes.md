@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd63a04616848acfb3971a97f8363498e6ba4e55
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 4e9bfa2dc340f567a6c2b7c4ab5d45cfeaa41e6c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835740"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661006"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>在 Azure 数字孪生中管理终结点和路由
 
@@ -77,7 +77,7 @@ ms.locfileid: "122835740"
 1. 输入终结点的“名称”，并选择“终结点类型”。
 
 1. 完成终结点类型所需的其他详细信息，包括订阅和[上面](#prerequisite-create-endpoint-resources)所述的终结点资源。
-    1. 只有“事件中心”和“服务总线”终结点必须选择“身份验证类型”。 可以使用已预先创建授权规则的基于密钥的身份验证，如果要对 Azure 数字孪生实例使用带[托管标识](concepts-security.md#managed-identity-for-accessing-other-resources-preview)的终结点，也可以使用基于标识的身份验证。 
+    1. 只有“事件中心”和“服务总线”终结点必须选择“身份验证类型”。 可以使用已预先创建授权规则的基于密钥的身份验证，如果要对 Azure 数字孪生实例使用带[托管标识](concepts-security.md#managed-identity-for-accessing-other-resources)的终结点，也可以使用基于标识的身份验证。 
 
     :::row:::
         :::column:::
@@ -132,7 +132,7 @@ az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --s
 
 #### <a name="create-an-endpoint-with-identity-based-authentication"></a>创建使用基于身份的身份验证的终结点
 
-还可以创建具有基于身份的身份验证的终结点，以使用具有[托管标识](concepts-security.md#managed-identity-for-accessing-other-resources-preview)的终结点。 此选项仅适用于事件中心和服务总线类型终结点（事件网格不支持此选项）。
+还可以创建具有基于身份的身份验证的终结点，以使用具有[托管标识](concepts-security.md#managed-identity-for-accessing-other-resources)的终结点。 此选项仅适用于事件中心和服务总线类型终结点（事件网格不支持此选项）。
 
 创建这种类型的终结点的 CLI 命令如下所示。 需要将以下值插入命令中的占位符：
 * Azure 数字孪生实例的 Azure 资源 ID
@@ -235,7 +235,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 #### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>创建使用基于身份的身份验证的死信终结点
 
-还可以创建具有基于身份的身份验证的死信终结点，以使用具有[托管标识](concepts-security.md#managed-identity-for-accessing-other-resources-preview)的终结点。 此选项仅适用于事件中心和服务总线类型终结点（事件网格不支持此选项）。
+还可以创建具有基于身份的身份验证的死信终结点，以使用具有[托管标识](concepts-security.md#managed-identity-for-accessing-other-resources)的终结点。 此选项仅适用于事件中心和服务总线类型终结点（事件网格不支持此选项）。
 
 若要创建这种类型的终结点，请使用与前面相同的 CLI 命令[创建使用基于身份的身份验证的终结点](#create-an-endpoint-with-identity-based-authentication)，并在 JSON 有效负载中为 `deadLetterUri` 添加一个额外字段。
 

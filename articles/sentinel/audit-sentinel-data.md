@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 82d406521ad534c77fc48c095631e07a74bfd080
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 4378065a8d1a91f9051c04dbb71a90e2a4ab862c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252922"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777386"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>审核 Azure Sentinel 查询和活动
 
@@ -47,7 +47,7 @@ Azure Sentinel 的审核日志是在 [Azure 活动日志](../azure-monitor/essen
 
 若要查询 AzureActivity 表，请执行以下操作：
 
-1. 连接 [Azure 活动](connect-azure-activity.md)数据源，开始将审核事件流式传输到“日志”屏幕中的一个名为 AzureActivity 的新表。
+1. 连接 [Azure 活动](./data-connectors-reference.md#azure-activity)数据源，开始将审核事件流式传输到“日志”屏幕中的一个名为 AzureActivity 的新表。
 
 1. 然后，使用 KQL 查询数据，就像对任何其他表进行查询一样。
 

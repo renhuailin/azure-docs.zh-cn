@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: d5b5470b30848fd31be63f25c85c23f88cdaf0c6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f7a6f02a3ac37a1b19558fece7e710f5df6767aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732218"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670417"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC 身份验证 - REST API 参考
 
@@ -66,7 +66,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ### <a name="required-http-request-headers"></a>所需的 HTTP 请求标头
 
-```x-ms-date```[或 ```Date```];```host```;```x-ms-content-sha256```
+`x-ms-date`[或 `Date`];`host`;`x-ms-content-sha256`
 
 任何其他 HTTP 请求标头也可添加到签名。 只需将它们追加到 ```SignedHeaders``` 参数中即可。
 
@@ -76,8 +76,7 @@ x-ms-date;host;x-ms-content-sha256;```Content-Type```;```Accept```
 
 ### <a name="signature"></a>签名
 
-String-To-Sign 的 Base64 编码的 HMACSHA256 哈希。 它使用由 `Credential` 标识的访问密钥。
-```base64_encode(HMACSHA256(String-To-Sign, Secret))```
+String-To-Sign 的 Base64 编码的 HMACSHA256 哈希。 它使用由 `Credential` 标识的访问密钥。 `base64_encode(HMACSHA256(String-To-Sign, Secret))`
 
 ### <a name="string-to-sign"></a>String-To-Sign
 
@@ -237,7 +236,7 @@ using (var client = new HttpClient())
 
 static class HttpRequestMessageExtensions
 {
-    public static HttpRequestMessage Sign(this HttpRequestMessage request, string credential, byte[] secret)
+    public static HttpRequestMessage Sign(this HttpRequestMessage request, string credential, string secret)
     {
         string host = request.RequestUri.Authority;
         string verb = request.Method.ToString().ToUpper();
@@ -256,7 +255,7 @@ static class HttpRequestMessageExtensions
         // Signature
         string signature;
 
-        using (var hmac = new HMACSHA256(secret))
+        using (var hmac = new HMACSHA256(Convert.FromBase64String(secret)))
         {
             signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.ASCII.GetBytes(stringToSign)));
         }

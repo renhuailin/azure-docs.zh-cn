@@ -1,18 +1,19 @@
 ---
 title: 从文件向数据库进行批量复制
 description: 了解如何使用解决方案模板将数据从 Azure Data Lake Storage Gen2 批量复制到 Azure Synapse Analytics/Azure SQL 数据库。
+titleSuffix: Azure Data Factory & Azure Synapse
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 553dbdbed3101e6e07b24082e2bbd94f8dd171d7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 59189f0c197294ca74e01d331663c51fa0e2bd7d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747412"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757888"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>从文件向数据库进行批量复制
 
@@ -39,32 +40,32 @@ ms.locfileid: "121747412"
 
 1. 转到“从文件向数据库进行批量复制”模板。 创建与源 Gen2 存储的新连接。 请注意，“GetMetadataDataset”和“SourceDataset”是对源文件存储的同一连接的引用。
 
-    ![创建与源数据存储的新连接](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/source-connection.png" alt-text="创建与源数据存储的新连接":::
 
 2. 创建与要将数据复制到其中的接收器数据存储的新连接。
 
-    ![创建与接收器数据存储的新连接](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/destination-connection.png" alt-text="创建与接收器数据存储的新连接":::
     
-3. 选择“使用此模板”。
+3. 选择“使用此模板”  。
 
-    ![使用此模板](media/solution-template-bulk-copy-from-files-to-database/use-template.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/use-template.png" alt-text="使用此模板":::
     
 4. 你会看到所创建的管道，如以下示例中所示：
 
-    ![查看管道](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png" alt-text="查看管道":::
 
     > [!NOTE]
     > 如果选择 Azure Synapse Analytics 作为上述步骤 2 中的数据目标，必须按 Azure Synapse Analytics Polybase 的要求输入用于暂存的 Azure Blob 存储的连接 。 如以下屏幕截图所示，模板会自动为 Blob 存储生成存储路径。 检查是否在管道运行后创建了容器。
         
-    ![Polybase 设置](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/staging-account.png" alt-text="Polybase 设置":::
 
-5. 选择“调试”，输入“参数”，然后选择“完成”。
+5. 选择“调试”，输入 **参数**，然后选择“完成”。  
 
-    ![单击“调试”****](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/debug-run.png" alt-text="单击“调试”****":::
 
 6. 管道运行成功完成后，你会看到类似于以下示例的结果：
 
-    ![查看结果](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
+    :::image type="content" source="media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png" alt-text="查看结果":::
 
        
 ## <a name="next-steps"></a>后续步骤

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d47d1c6e720a25855a562b815c8a9c1b62850db
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97606481"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757223"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>教程：Azure Active Directory 与 Infogix Data3Sixty Govern 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "97606481"
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.data3sixty.com`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.data3sixty.com`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Infogix Data3Sixty Govern 客户端支持团队](mailto:data3sixtysupport@infogix.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -123,7 +123,7 @@ ms.locfileid: "97606481"
 
     | 名称 | 源属性|
     | -----------| -------------- |
-    | 名  | user.givenname |
+    | firstname  | user.givenname |
     | 姓 | user.surname |
     | username | user.mail |
 
@@ -141,7 +141,7 @@ ms.locfileid: "97606481"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“ **保存**”。
 
@@ -225,7 +225,7 @@ ms.locfileid: "97606481"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Infogix Data3Sixty Govern 磁贴时，应当会自动登录到你为其设置了 SSO 的 Infogix Data3Sixty Govern。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Infogix Data3Sixty Govern 磁贴时，应当会自动登录到你为其设置了 SSO 的 Infogix Data3Sixty Govern。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

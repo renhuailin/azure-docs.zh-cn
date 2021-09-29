@@ -4,12 +4,12 @@ description: 应用程序性能管理和实时 Web 应用程序的使用情况�
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: a22bbad35fad5c5c4b231636fa2ac434b186a660
-ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+ms.openlocfilehash: 6104cef3a3ba1850163964778e6fa000fc6981b6
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113616480"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060548"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
 Application Insights 是 [Azure Monitor](../overview.md) 的一项功能，是面向开发人员和 DevOps 专业人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时应用程序。 它将自动检测性能异常，并且包含了强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地云、混合云或任何公有云中托管的各种平台（包括 .NET、Node.js、Java 和 Python）上的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 集成来监视和分析移动应用的遥测数据。
@@ -96,6 +96,7 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
   * [**在 Azure Web 应用中托管的 ASP.NET 或 ASP.NET Core 应用程序**](./azure-web-apps.md)
   * [在 Azure VM 或 Azure 虚拟机规模集的 IIS 中托管的 ASP.NET 应用程序](./azure-vm-vmss-apps.md)
   * [在本地服务器的 IIS 中托管的 ASP.NET 应用程序](./status-monitor-v2-overview.md)
+  * [**Java 应用程序**](java-in-process-agent.md)
 * **开发时：将 Application Insights 添加到代码。** 可以自定义遥测数据收集和发送其他遥测数据。
   * [ASP.NET 应用程序](./asp-net.md)
   * [ASP.NET Core 应用程序](./asp-net-core.md)
