@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: c617b4c3558be2409c8bf2272e805a8b8cb9d349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 75061400eb68e3c17a24839e9e155e3a284607c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725320"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589789"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>在 IoT 中心注册 IoT Edge 设备
 
@@ -37,9 +37,9 @@ ms.locfileid: "121725320"
 
 如果你有许多设备要设置，但不想手动预配每个设备，请参阅以下文章之一，了解 IoT Edge 如何与 IoT 中心设备预配服务协同工作：
 
-* [使用 X.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)
+* [使用 X.509 证书创建和预配 IoT Edge 设备](how-to-provision-devices-at-scale-linux-x509.md)
 * [使用 TPM 创建和预配 IoT Edge 设备](how-to-auto-provision-simulated-device-linux.md)
-* [使用对称密钥创建和预配 IoT Edge 设备](how-to-auto-provision-symmetric-keys.md)
+* [使用对称密钥创建和预配 IoT Edge 设备](how-to-provision-devices-at-scale-linux-symmetric.md)
 
 ## <a name="prerequisites"></a>先决条件
 

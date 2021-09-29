@@ -1,19 +1,19 @@
 ---
 title: 快速入门：适用于 .NET 的 Azure Blob 存储客户端库
 description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库在 Blob（对象）存储中创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何列出容器中的所有 blob。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f4c87e418ecaaed61a92ab70bcf5aef3a6e0b040
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 658a3650e917f3786b84e65b5e976e1ef0263f23
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470933"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652863"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11
 
@@ -24,25 +24,25 @@ ms.locfileid: "123470933"
 
 使用适用于 .NET 的 Azure Blob 存储客户端库完成以下操作：
 
-* 创建容器
-* 设置容器权限
-* 在 Azure 存储中创建 blob
-* 将 blob 下载到本地计算机
-* 列出容器中所有的 blob
-* 删除容器
+- 创建容器
+- 设置容器权限
+- 在 Azure 存储中创建 blob
+- 将 blob 下载到本地计算机
+- 列出容器中所有的 blob
+- 删除容器
 
 其他资源：
 
-* [API 参考文档](/dotnet/api/overview/azure/storage)
-* [库源代码](https://github.com/Azure/azure-storage-net/tree/master/Blob)
-* [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
-* [示例](/samples/browse/?products=azure-blob-storage)
+- [API 参考文档](/dotnet/api/overview/azure/storage)
+- [库源代码](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+- [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+- [示例](/samples/browse/?products=azure-blob-storage)
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-* Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
-* 适用于操作系统的最新 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 确保获取 SDK，而不是运行时。
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
+- 适用于操作系统的最新 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 确保获取 SDK，而不是运行时。
 
 ## <a name="setting-up"></a>设置
 
@@ -174,9 +174,9 @@ export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 
 Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。 Blob 存储提供了三种类型的资源：
 
-* 存储帐户。
-* 存储帐户中的容器
-* 容器中的 blob
+- 存储帐户。
+- 存储帐户中的容器
+- 容器中的 blob
 
 以下图示显示了这些资源之间的关系。
 
@@ -184,22 +184,22 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 .NET 类与这些资源进行交互：
 
-* [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount)：`CloudStorageAccount` 类表示 Azure 存储帐户。 借助此类，可使用帐户访问密钥授予对 Blob 存储的访问权限。
-* [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)：`CloudBlobClient` 类提供对代码中 Blob 服务的访问点。
-* [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)：`CloudBlobContainer` 类表示代码中的 blob 容器。
-* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)：`CloudBlockBlob` 对象表示代码中的块 blob。 块 Blob 由可以分别管理的数据块构成。
+- [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount)：`CloudStorageAccount` 类表示 Azure 存储帐户。 借助此类，可使用帐户访问密钥授予对 Blob 存储的访问权限。
+- [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)：`CloudBlobClient` 类提供对代码中 Blob 服务的访问点。
+- [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)：`CloudBlobContainer` 类表示代码中的 blob 容器。
+- [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)：`CloudBlockBlob` 对象表示代码中的块 blob。 块 Blob 由可以分别管理的数据块构成。
 
 ## <a name="code-examples"></a>代码示例
 
 这些示例代码片段演示如何使用适用于 .NET 的 Azure Blob 存储客户端库执行以下步骤：
 
-   * [对客户端进行身份验证](#authenticate-the-client)
-   * [创建容器](#create-a-container)
-   * [设置容器权限](#set-permissions-on-a-container)
-   * [将 blob 上传到容器中](#upload-blobs-to-a-container)
-   * [列出容器中的 blob](#list-the-blobs-in-a-container)
-   * [下载 blob](#download-blobs)
-   * [删除容器](#delete-a-container)
+   - [对客户端进行身份验证](#authenticate-the-client)
+   - [创建容器](#create-a-container)
+   - [设置容器权限](#set-permissions-on-a-container)
+   - [将 blob 上传到容器中](#upload-blobs-to-a-container)
+   - [列出容器中的 blob](#list-the-blobs-in-a-container)
+   - [下载 blob](#download-blobs)
+   - [删除容器](#delete-a-container)
 
 ### <a name="authenticate-the-client"></a>验证客户端
 
@@ -399,5 +399,5 @@ Press any key to delete the example files and example container.
 > [!div class="nextstepaction"]
 > [上传和处理图像](storage-upload-process-images.md)
 
-* 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)（.NET 10 分钟入门）。
-* 若要了解可以通过用于 Windows 的 Visual Studio 部署的示例应用程序，请参阅 [.NET Photo Gallery Web Application Sample with Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)（.NET 照片库 Web 应用程序示例与 Azure Blob 存储）。
+- 若要详细了解 .NET Core，请参阅 [Get started with .NET in 10 minutes](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)（.NET 10 分钟入门）。
+- 若要了解可以通过用于 Windows 的 Visual Studio 部署的示例应用程序，请参阅 [.NET Photo Gallery Web Application Sample with Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)（.NET 照片库 Web 应用程序示例与 Azure Blob 存储）。

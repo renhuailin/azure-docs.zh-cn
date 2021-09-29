@@ -1,21 +1,18 @@
 ---
-title: 将自承载网关部署到 Docker | Microsoft Docs
+title: 将自承载网关部署到 Docker
 description: 了解如何将 Azure API 管理的自承载网关组件部署到 Docker
-services: api-management
-documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: gwallace
-editor: ''
 ms.service: api-management
 ms.topic: article
 ms.date: 04/19/2021
-ms.author: apimpm
-ms.openlocfilehash: 531421726bc1e081d85eca9d535267520d3fea5f
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.author: danlep
+ms.openlocfilehash: 3ef8e0316b6df0b95f2163b6df8ae139ebb8fe6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725596"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580939"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>将 Azure API 管理自承载网关部署到 Docker
 
@@ -43,9 +40,11 @@ ms.locfileid: "107725596"
 6. 选择“环境”旁边的“env.conf”链接以下载该文件。 
 7. 选择“运行”文本框右侧的“复制”图标，将 Docker 命令复制到剪贴板 。
 8. 将该命令粘贴到终端（或命令）窗口。 根据需要调整端口映射和容器名称。 请注意，该命令假定下载的环境文件位于当前目录中。
+
    ```
-       docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
+   docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
    ```
+
 9. 执行命令。 该命令指示 Docker 环境使用从 Microsoft 容器注册表下载的[容器映像](https://aka.ms/apim/sputnik/dhub)运行容器，并将该容器的 HTTP (8080) 和 HTTPS (8081) 端口映射到主机上的端口 80 和 443。
 10. 运行以下命令来检查网关容器是否正在运行：
     ```console
@@ -58,9 +57,9 @@ ms.locfileid: "107725596"
     ![网关状态](media/how-to-deploy-self-hosted-gateway-docker/status.png)
 
 > [!TIP]
-> 使用 <code>console docker container logs <gateway-name></code> 命令查看自承载网关日志的快照。
+> 使用 `console docker container logs <gateway-name>` 命令查看自承载网关日志的快照。
 >
-> 使用 <code>docker container logs --help</code> 命令查看所有日志查看选项。
+> 使用 `docker container logs --help` 命令查看所有日志查看选项。
 
 ## <a name="next-steps"></a>后续步骤
 

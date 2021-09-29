@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2021
 ms.author: yelevin
-ms.openlocfilehash: f776c39a5a1dadde2e6ee01fe211e0769e5e06eb
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: b6e38d6ce5944d09a089404ae1fe2ca81a951c18
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260906"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781286"
 ---
 # <a name="use-azure-functions-to-connect-azure-sentinel-to-your-data-source"></a>使用 Azure Functions 将 Azure Sentinel 连接到数据源
 
-可以将 [Azure Functions](/azure/azure-functions/functions-overview) 与各种编码语言（如 [PowerShell](../azure-functions/functions-reference-powershell.md) 或 Python）结合使用，以创建到兼容数据源 REST API 终结点的无服务器连接器。 然后，Azure Function Apps 允许将 Azure Sentinel 连接到数据源的 REST API 来拉取日志。
+可以将 [Azure Functions](../azure-functions/functions-overview.md) 与各种编码语言（如 [PowerShell](../azure-functions/functions-reference-powershell.md) 或 Python）结合使用，以创建到兼容数据源 REST API 终结点的无服务器连接器。 然后，Azure Function Apps 允许将 Azure Sentinel 连接到数据源的 REST API 来拉取日志。
 
 本文介绍如何使用 Azure Function Apps 来配置 Azure Sentinel。 可能还需要配置源系统，可以在门户中每个数据连接器页或 [Azure Sentinel 数据连接器参考](data-connectors-reference.md)页中的服务部分查找供应商和产品特定信息链接。
 
@@ -213,6 +213,6 @@ ms.locfileid: "123260906"
 
 在本文档，你已了解如何使用基于 Azure Functions 的连接器将 Azure Sentinel 连接到数据源。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](./get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。
+- [使用工作簿](./monitor-your-data.md)监视数据。

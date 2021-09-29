@@ -3,16 +3,17 @@ title: 使用 Azure 数据工厂从 Amazon 简单存储服务 (S3) 移动数据
 description: 了解如何使用 Azure 数据工厂从 Amazon 简单存储服务 (S3) 移动数据。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6d254a535b1db53478772b481bd029a8c4db6f3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9915f2bb83c8d2f1ca6491d3603ff78c8c3df4d4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361340"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655688"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]

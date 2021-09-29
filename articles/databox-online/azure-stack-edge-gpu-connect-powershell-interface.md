@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 1ef18e29abfc479307aa840d5c0f34ed52227aaf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a2a6b7b514cb95eb327235c59bb569ac66f4a5d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740924"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670493"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro GPU 设备
 
@@ -109,7 +109,7 @@ Nvidia GPU 上的多进程服务 (MPS) 提供下述机制：GPU 可供多个作�
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
 
-    请将 <subnet details> 替换为要使用的子网范围。 
+    请将 \<subnet details\> 替换为要使用的子网范围。 
 
 1. 运行此命令后，可以使用 `Get-HcsKubeClusterNetworkInfo` 命令来验证 pod 和服务子网是否已更改。
 
@@ -485,9 +485,11 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
     
 1. 若要更改工作器节点的内存和处理器值，请运行以下命令：
 
-    Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount <核心 数目>
+   ```powershell
+   Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount <No. of cores>
+   ```
 
-    下面是示例输出。 
+   下面是示例输出。 
     
     ```powershell
     [10.100.10.10]: PS>Set-AzureDataBoxEdgeRoleCompute -Name IotRole -MemoryInBytes 32GB -ProcessorCount 16

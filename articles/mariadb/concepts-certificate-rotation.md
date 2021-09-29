@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 105bc7f14f9ddcc4a64564edc1eebcd17b898bc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a8a7fec5b5c5f62fb44f6c0ccf6859b1141295b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698988"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646504"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 的根 CA 更改中的更改
 
@@ -58,8 +58,8 @@ Azure database for MariaDB 用户只能使用位于[此处](https://www.digicert
 
     然后，将原始密钥存储文件替换为新生成的密钥存储文件：
 
-    - System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");
-    - System.setProperty("javax.net.ssl.trustStorePassword","password");
+    - `System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");`
+    - `System.setProperty("javax.net.ssl.trustStorePassword","password");`
 
   - 对于 .NET（MariaDB Connector/NET、MariaDBConnector）用户，请确保 BaltimoreCyberTrustRoot 和 DigiCertGlobalRootG2 都存在于 Windows 证书存储“受信任的根证书颁发机构”中 。 如果有任何证书不存在，请导入缺失的证书。
 

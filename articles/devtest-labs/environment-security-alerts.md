@@ -1,14 +1,14 @@
 ---
-title: Azure 开发测试实验室中环境的安全警报
+title: 环境的安全警报
 description: 本文介绍了“如何查看 DevTest Labs 中环境的安全警报，并采取适当的措施”。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: c9f7cf9fe7ab0e3f573470228ee1962aa92ccaef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 437117e29ac09e52d2cd15740d60d942170b9c0d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91308684"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654188"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Azure DevTest Labs 中环境的安全警报
 作为实验室用户，用户现在可以查看实验室环境的 Azure Security Center 警报。 安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。 [进一步了解 Azure Security Center 内的安全警报](../security-center//security-center-alerts-overview.md)。  

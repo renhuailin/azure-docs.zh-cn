@@ -1,18 +1,18 @@
 ---
 title: 教程 - 连接泛型 Azure IoT 即插即用模块 | Microsoft Docs
 description: 教程 - 在泛型模块中使用示例 C# IoT 即插即用设备代码。
-author: ericmitt
-ms.author: ericmitt
+author: lizross
+ms.author: lizross
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: c5b843a3b87787dbbdbd720f5b127d58d73a3edb
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 3ff845e1ef74e8bf1f98da519d8d2d9657755e96
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405957"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091115"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>教程：连接 IoT 即插即用模块 (C#)
 

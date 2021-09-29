@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: dcc49e10e480e519573d80661248fc60e939efdb
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: b8d9d32fdcb7b6f10ae2742edebd18ebbf798a4c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895053"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801897"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>教程：Azure Active Directory 单一登录 (SSO) 与 O.C. 集成 Tanner - AppreciateHub
 
@@ -125,7 +125,7 @@ ms.locfileid: "111895053"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 O.C. Tanner - AppreciateHub。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“O.C. Tanner - AppreciateHub”磁贴时，你应会自动登录到为其设置了 SSO 的 O.C. Tanner - AppreciateHub。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“O.C. Tanner - AppreciateHub”磁贴时，你应会自动登录到为其设置了 SSO 的 O.C. Tanner - AppreciateHub。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

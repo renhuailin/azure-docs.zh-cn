@@ -1,14 +1,14 @@
 ---
-title: 使用 Azure 开发测试实验室培训 | Microsoft Docs
+title: 使用 Azure 开发测试实验室培训
 description: 本文详细介绍了在 Azure 开发测试实验室中设置培训实验室可以遵循的步骤。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 19d491269b227bc04e178490e48c20790ef6fe8e
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d72d87cf2108a5e6d372edbf698e6adc7b100618
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295556"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629249"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>使用 Azure 开发测试实验室培训
 除开发/测试外，Azure 开发测试实验室可用于执行许多关键方案。 这些方案之一是为培训设置实验室。 Azure 开发测试实验室允许创建实验室，可在其中提供自定义模板，每个学员都可使用该模板创建相同和隔绝的培训环境。 可应用策略以确保为每个学员提供培训环境（需要时）并包含培训所需的足够资源（例如虚拟机）。 最后，可轻松与学员共享实验室（学员通过单击即可访问）。

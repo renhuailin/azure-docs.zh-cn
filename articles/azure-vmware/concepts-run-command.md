@@ -2,13 +2,13 @@
 title: 概念 - Azure VMware 解决方案中的运行命令（预览版）
 description: 了解如何使用 Azure VMware 解决方案中的运行命令。
 ms.topic: conceptual
-ms.date: 08/31/2021
-ms.openlocfilehash: 1e2889254c8711c92efdc53ab181e26d3ac06b43
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/17/2021
+ms.openlocfilehash: a4121f8479b22eb1c0666a1e7d7a23ece4fb3d20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541632"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668842"
 ---
 # <a name="run-command-in-azure-vmware-solution-preview"></a>Azure VMware 解决方案中的运行命令（预览版）
 
@@ -16,11 +16,11 @@ ms.locfileid: "123541632"
 
 Azure VMware 解决方案支持以下操作：
 
-- [安装和卸载 JetStream DR 解决方案](deploy-disaster-recovery-using-jetstream.md)
-
 - [配置外部标识源](configure-identity-source-vcenter.md)
 
 - [查看和设置存储策略](configure-storage-policy.md) 
+
+- [使用 JetStream 部署灾难恢复](deploy-disaster-recovery-using-jetstream.md)
 
 
 >[!NOTE]

@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: 40b1652bec99844675e030cfd12ef8ff28a0f01f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 6778394fa152f22002ef48681942edde4b4ed460
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435449"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219077"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
@@ -44,9 +44,9 @@ ms.locfileid: "123435449"
 >[!Note]
 >若要添加或删除数据工厂连接，你需要具备以下角色。 不支持从管理组继承角色。
 >- 对于在 2021 年 8 月 18 日或之后创建的 Purview 帐户：根集合的“集合管理员”角色 。
->- 对于在 2021 年 8 月 18 日之前创建的 Purview 帐户：“所有者”或“用户访问管理员”角色  。 
+>- 对于在 2021 年 8 月 18 日之前创建的 Purview 帐户：“所有者”或“用户访问管理员”角色  。
 >
-> 此外，用户还需要是数据工厂的“所有者”或“参与者”。 
+> 此外，用户还需要是数据工厂的“所有者”或“参与者”。
 
 按照以下步骤将现有数据工厂连接到 Purview 帐户。 还可[从 ADF 将数据工厂连接到 Purview 帐户](../data-factory/connect-data-factory-to-azure-purview.md)。
 
@@ -62,14 +62,14 @@ ms.locfileid: "123435449"
 
     如果任何选定的数据工厂已连接到其他 Purview 帐户，则将显示一条警告消息。 选择“确定”，将断开与其他 Purview 帐户的数据工厂连接。 无需额外确认。
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="屏幕截图显示断开 Azure 数据工厂连接时的警告。" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="屏幕截图显示断开 Azure 数据工厂连接时的警告。":::
 
 >[!Note]
 >现在支持一次最多添加 10 个数据工厂。 如果希望一次添加 10 个以上的数据工厂，请提交支持票证。
 
 ### <a name="how-authentication-works"></a>身份验证的工作原理
 
-数据工厂的托管标识用于对从数据工厂到 Purview 的世系数据推送操作进行身份验证。 在将数据工厂连接到 UI 上的 Purview 时，会自动添加角色分配。 
+数据工厂的托管标识用于对从数据工厂到 Purview 的世系数据推送操作进行身份验证。 在将数据工厂连接到 UI 上的 Purview 时，会自动添加角色分配。
 
 - 对于在 2021 年 8 月 18 日或之后创建的 Purview 帐户，向数据工厂的托管标识授予 Purview 根集合的“数据管理者”角色  。 详细了解 [Azure Purview 中的访问控制](../purview/catalog-permissions.md)和[添加角色并限制通过集合的访问](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)。
 
@@ -133,7 +133,7 @@ Azure Purview 支持多种世系模式。 生成的世系数据基于数据工�
 - 1 个接收器/输出：Customer1.csv (Azure Blob)
 - 1 个进程：CopyCustomerInfo1\#Customer1.csv（数据工厂复制活动）
 
-:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="屏幕截图显示一对一数据工厂复制操作的世系。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage.png":::
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="屏幕截图显示一对一数据工厂复制操作的世系。":::
 
 ### <a name="data-movement-with-11-lineage-and-wildcard-support"></a>1:1 世系的数据移动（支持通配符）
 

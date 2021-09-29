@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a7f4682be2f7fbf308aba32768efa932f27b7a87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0c139ac775cf0761e1866853c959d7e98b20cf3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181681"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Roadmunk 的集成
 
@@ -171,7 +171,7 @@ Roadmunk 支持由服务提供商 (SP) 和标识提供者 (IDP) 启动的 SSO �
 
 在本部分，我们将使用访问面板测试 Azure AD SSO 配置。
 
-在“我的应用”门户中，选择 Roadmunk 磁贴时，应当会自动登录到为其设置了 SSO 的 Roadmunk 帐户。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
+在“我的应用”门户中，选择 Roadmunk 磁贴时，应当会自动登录到为其设置了 SSO 的 Roadmunk 帐户。 有关详细信息，请参阅[从“我的应用”门户登录和启动应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

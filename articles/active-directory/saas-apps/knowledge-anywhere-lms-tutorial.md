@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 69c6ebe3c1b9b034b2f682f64a55f22e0489b3f5
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 4e97c8253f73ab264d49cfa24403586ca8d573bd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892325"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124802201"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>教程：将 Knowledge Anywhere LMS 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "111892325"
 * 让用户使用其 Azure AD 帐户自动登录到 Knowledge Anywhere LMS。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -84,7 +84,7 @@ ms.locfileid: "111892325"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CLIENTNAME>.knowledgeanywhere.com/`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<CLIENTNAME>.knowledgeanywhere.com/`
 
     > [!NOTE]
     > 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [Knowledge Anywhere LMS 客户端支持团队](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -179,7 +179,7 @@ ms.locfileid: "111892325"
 
 * 直接转到 Knowledge Anywhere LMS 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Knowledge Anywhere LMS”磁贴时，会重定向到 Knowledge Anywhere LMS 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Knowledge Anywhere LMS”磁贴时，会重定向到 Knowledge Anywhere LMS 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

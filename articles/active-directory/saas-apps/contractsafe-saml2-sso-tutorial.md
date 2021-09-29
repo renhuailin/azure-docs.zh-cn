@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 2d236b9910e2eda8e574d020544d625a68aefb81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67337a8326a6eca334489b644454debea782c3c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92455300"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816885"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ContractSafe Saml2 SSO 集成
 
@@ -45,7 +45,7 @@ ms.locfileid: "92455300"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 转到“企业应用程序”，并选择“所有应用程序”。  
+1. 转到“企业应用程序”，并选择“所有应用程序”。 
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“ContractSafe Saml2 SSO“。
 1. 在结果面板中选择“ContractSafe Saml2 SSO”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -142,7 +142,7 @@ ms.locfileid: "92455300"
 
 ## <a name="test-sso"></a>测试 SSO
 
-使用访问面板测试 Azure AD SSO 配置。 选择访问面板中的 ContractSafe Saml2 SSO 磁贴时，应会自动登录到为其设置了 SSO 的 ContractSafe Saml2 SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+使用访问面板测试 Azure AD SSO 配置。 选择访问面板中的 ContractSafe Saml2 SSO 磁贴时，应会自动登录到为其设置了 SSO 的 ContractSafe Saml2 SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

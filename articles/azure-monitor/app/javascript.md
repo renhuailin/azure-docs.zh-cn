@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2d2cf6f53b295d5ac138f86deb765892fd34d907
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 4ce6481a35b8a214a2203a165161183d384b4ea0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234566"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662165"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -20,7 +20,7 @@ ms.locfileid: "112234566"
 ## <a name="adding-the-javascript-sdk"></a>添加 JavaScript SDK
 
 > [!IMPORTANT]
-> 建议使用[连接字符串](./sdk-connection-string.md?tabs=js)替代检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 建议使用[连接字符串](./sdk-connection-string.md?tabs=js)而不是检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 1. 首先需要一个 Application Insights 资源。 如果你尚未获得资源和检测密钥，请遵照[有关创建新资源的说明](create-new-resource.md)。
 2. 复制你要将 JavaScript 遥测数据发送到的资源（从步骤 1）的检测密钥（也称为“iKey”）或[连接字符串](#connection-string-setup)。你需要将该密钥添加到 Application Insights JavaScript SDK 的 `instrumentationKey` 或 `connectionString` 设置。
@@ -279,7 +279,7 @@ cfg: { // Application Insights Configuration
 
 ``` 
 
-如果与客户端通信的任何第三方服务器都不接受 `Request-Id` 和 `Request-Context` 标头，并且你无法更新其配置，则需要通过 `correlationHeaderExcludeDomains` 配置属性将其放入排除列表中。 此属性支持通配符。
+如果与客户端通信的任何第三方服务器都不接受 `Request-Id` 和 `Request-Context` 标头，并且你无法更新其配置，则需要通过 `correlationHeaderExcludedDomains` 配置属性将其放入排除列表中。 此属性支持通配符。
 
 服务器端需要能够接受与所示的这些标头的连接。 根据服务器端的 `Access-Control-Allow-Headers` 配置，通常你需要通过手动添加 `Request-Id` 和 `Request-Context` 来扩展服务器端列表。
 

@@ -3,20 +3,18 @@ title: 如何使用排名显示搜索结果 - 必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用排名显示必应 Web 搜索 API 中的搜索结果。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
-ms.author: scottwhi
-ms.openlocfilehash: 20501d0993cc4566a79d6e916d801911606bea35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c7ffac31f5b5d6fecacb78487f8b7400d109e6d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94380443"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620534"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>如何使用排名显示必应 Web 搜索 API 结果  
 

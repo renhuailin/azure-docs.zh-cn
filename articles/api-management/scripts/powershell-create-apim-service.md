@@ -3,21 +3,21 @@ title: Azure PowerShell 脚本示例 - 创建 APIM 服务 | Microsoft Docs
 description: 了解如何创建 API 管理 (APIM) 服务。 请参阅示例脚本并查看其他可用资源。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 17e1d76e95e38922e081e4a4e44c0a103db101fa
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: f6740e89197b8a2e11285a8c6ea41b593c3ed638
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817125"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641306"
 ---
 # <a name="create-an-api-management-service"></a>创建 API 管理服务
 

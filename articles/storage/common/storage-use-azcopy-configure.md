@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 1f07907d3a4f421fa9f7a03c48d5f74496a1d45a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 8fc9934c5d524550929c3400af9f257c4cbcccc8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303069"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665903"
 ---
 # <a name="find-errors-and-resume-jobs-by-using-log-and-plan-files-in-azcopy"></a>使用 AzCopy 中的日志和计划文件查找错误并恢复作业
 
@@ -24,13 +24,13 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 ## <a name="log-and-plan-files"></a>日志和计划文件
 
-AzCopy 为每个作业创建日志和计划文件。  可以使用这些日志调查并解决任何潜在问题。 
+AzCopy 为每个作业创建日志和计划文件。  可以使用这些日志调查并解决任何潜在问题。
 
 日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED` 和 `DOWNLOADFAILED`）、完整路径和失败的原因。
 
-默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但可更改此位置。 
+默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但可更改此位置。
 
-相关错误不一定是文件中出现的第一个错误。 对于网络错误、超时和服务器忙等错误，AzCopy 将重试最多 20 次，通常重试过程会成功。  你看到的第一个错误可能是已成功重试的无害内容。  因此，请查找 `UPLOADFAILED`、`COPYFAILED` 或 `DOWNLOADFAILED` 附近的错误，而不是查看文件中的第一个错误。 
+相关错误不一定是文件中出现的第一个错误。 对于网络错误、超时和服务器忙等错误，AzCopy 将重试最多 20 次，通常重试过程会成功。  你看到的第一个错误可能是已成功重试的无害内容。  因此，请查找 `UPLOADFAILED`、`COPYFAILED` 或 `DOWNLOADFAILED` 附近的错误，而不是查看文件中的第一个错误。
 
 > [!IMPORTANT]
 > 向 Microsoft 支持部门提交请求时（或者排查涉及第三方的问题时），请告知你想执行的命令的修正版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
@@ -108,7 +108,7 @@ azcopy jobs resume <job-id> --source-sas="<sas-token>" --destination-sas="<sas-t
 
 ## <a name="change-the-default-log-level"></a>更改默认日志级别
 
-AzCopy 日志级别默认设置为 `INFO`。 若要降低日志详细程度以节省磁盘空间，请使用 ``--log-level`` 选项覆盖此设置。 
+AzCopy 日志级别默认设置为 `INFO`。 若要降低日志详细程度以节省磁盘空间，请使用 ``--log-level`` 选项覆盖此设置。
 
 可用的日志级别：`NONE`、`DEBUG`、`INFO`、`WARNING`、`ERROR`、`PANIC` 和 `FATAL`。
 

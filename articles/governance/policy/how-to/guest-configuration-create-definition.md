@@ -3,12 +3,12 @@ title: 如何创建自定义来宾配置策略定义
 description: 了解如何创建来宾配置策略。
 ms.date: 07/22/2021
 ms.topic: how-to
-ms.openlocfilehash: 28ad60284912261510a55438919924138d4e2b5e
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1dd1620d0ef41bf28a276cfe2412ca4bdc09d183
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122868352"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644897"
 ---
 # <a name="how-to-create-custom-guest-configuration-policy-definitions"></a>如何创建自定义来宾配置策略定义
 
@@ -18,7 +18,7 @@ ms.locfileid: "122868352"
 > Azure 虚拟机需要安装来宾配置扩展。 若要在所有计算机上大规模部署此扩展，请分配以下策略计划：`Deploy prerequisites to enable guest configuration policies on
 > virtual machines`
 > 
-> 若要使用应用配置的来宾配置包，需要安装 Azure VM 来宾配置扩展版本 1.29.24 或更高版本，或 Arc 代理 1.10.0 或更高版本 。
+> 若要使用应用配置的来宾配置包，需要安装 Azure VM 来宾配置扩展版本 1.29.24 或更高版本，或者 Arc 代理 1.10.0 或更高版本 。
 >
 > 使用 AuditIfNotExists 的自定义来宾配置策略定义已正式发布，但使用 DeployIfNotExists 的来宾配置定义目前以预览版提供  。
 
@@ -80,7 +80,7 @@ PolicyId 参数 `New-GuestConfigurationPolicy` 需要唯一字符串。 建议�
 
 ```powershell
 New-GuestConfigurationPolicy `
-  -PolicyId 'My GUID'
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'My audit policy.' `
   -Description 'Details about my policy.' `
@@ -94,7 +94,7 @@ New-GuestConfigurationPolicy `
 
 ```powershell
 New-GuestConfigurationPolicy `
-  -PolicyId 'My GUID'
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'My audit policy.' `
   -Description 'Details about my policy.' `
@@ -166,8 +166,8 @@ $PolicyParameterInfo = @(
   }
 )
 
-New-GuestConfigurationPolicy
-  -PolicyId 'My GUID'
+New-GuestConfigurationPolicy `
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'Audit Windows Service.' `
   -Description 'Audit if a Windows Service isn't enabled on Windows machine.' `

@@ -1,19 +1,19 @@
 ---
 title: 快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v10
 description: 使用适用于 JavaScript 的 Azure 存储客户端库 v10 在 Node.js 中创建、上传和删除 blob 与容器
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ddcce3e624de7e8bed62783bdc22c5c4211e19e2
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: be5e67eeec220e2bbb8fa3cb525bb8ec9f224b06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280099"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599062"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v10 SDK 管理 blob
 
@@ -120,7 +120,7 @@ const fs = require('fs');
 const path = require('path');
 ```
 
-这些模块的用途如下所示： 
+这些模块的用途如下所示：
 
 - *fs* 是用于处理文件系统的本机 Node.js 模块
 
@@ -132,6 +132,7 @@ const path = require('path');
 const STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME;
 const ACCOUNT_ACCESS_KEY = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
 ```
+
 下一组常量有助于揭示上载操作期间文件大小计算的意图。
 
 ```javascript
@@ -191,7 +192,7 @@ const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
 const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
 ```
 
-*containerURL* 和 *blockBlobURL* 变量在整个示例中重复使用，以便对存储帐户执行操作。 
+*containerURL* 和 *blockBlobURL* 变量在整个示例中重复使用，以便对存储帐户执行操作。
 
 此时，存储帐户中不存在容器。 *ContainerURL* 的实例表示可以对其执行操作的 URL。 通过使用此实例，可以创建和删除容器。 此容器的位置等同于以下位置：
 
@@ -258,7 +259,7 @@ async function showContainerNames(aborter, serviceURL) {
 }
 ```
 
-响应返回时会迭代 *containerItems*，以将名称记录到控制台。 
+响应返回时会迭代 *containerItems*，以将名称记录到控制台。
 
 ### <a name="upload-text"></a>上传文本
 
@@ -405,7 +406,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 ## <a name="clean-up-resources"></a>清理资源
 
-写入存储帐户的所有数据都会在代码示例结束时自动删除。 
+写入存储帐户的所有数据都会在代码示例结束时自动删除。
 
 ## <a name="next-steps"></a>后续步骤
 

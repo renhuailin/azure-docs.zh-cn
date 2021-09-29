@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 116aaeddb9ca3378c076b70c4a0e53d18fe3244f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ea4b1cb837c481dab1a63850d6eb3753720ae4fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738912"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796393"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>排查从 Azure AD 我的应用登录到应用程序时的问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "121738912"
 
 ## <a name="general-issues-to-check-first"></a>首先要检查的常规问题
 
-- 确保 Web 浏览器满足要求，请参阅[“我的应用”支持的浏览器](../user-help/my-apps-portal-end-user-access.md)。
+- 确保 Web 浏览器满足要求，请参阅[“我的应用”支持的浏览器](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 - 确保用户的浏览器已将应用程序的 URL 添加到其 **受信任的站点**。
 - 务必确认应用程序 **配置** 正确。
 - 确保用户的帐户 **已启用** 登录功能。

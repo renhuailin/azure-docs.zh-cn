@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中使用平台即服务 (PaaS) 服务
+title: 使用平台即服务 (PaaS) 服务
 description: 了解如何在 Azure 开发测试实验室中使用平台即服务 (PaaS) 服务。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d4bcf98d425e322c18e13ec99b525cf1442bc49
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85478733"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548120"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中使用平台即服务 (PaaS) 服务
 通过环境功能在开发测试实验室中支持 PaaS。 Git 存储库中的预配置 Azure 资源管理器模板支持开发测试实验室中的环境。 环境可以同时包含 PaaS 和 IaaS 资源。 利用环境，你可以创建可包含 Azure 资源（例如虚拟机、数据库、虚拟网络和 Web 应用）的复杂系统，可以定制这些资源以协同工作。 通过这些模板，可以利用源代码控制工具以一致方式进行部署并改善环境的管理。 
@@ -78,8 +78,3 @@ ms.locfileid: "85478733"
 - [在 Azure 开发测试实验室中将环境连接到实验室的虚拟网络](connect-environment-lab-virtual-network.md)
 - [将环境集成到 Azure DevOps CI/CD 管道中](integrate-environments-devops-pipeline.md)
  
-
-
-
-
-

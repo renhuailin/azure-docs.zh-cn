@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: af80d68f384869e79ef540d41a6707040dd19f2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfb7bbab830aed588c80fa7f5a75935d78afb510
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92514047"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821925"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ou-campus"></a>教程：Azure Active Directory 与 OU Campus 集成
 
@@ -183,7 +183,7 @@ ms.locfileid: "92514047"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 OU Campus 磁贴时，应当会自动登录到为其设置了 SSO 的 OU Campus。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 OU Campus 磁贴时，应当会自动登录到为其设置了 SSO 的 OU Campus。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

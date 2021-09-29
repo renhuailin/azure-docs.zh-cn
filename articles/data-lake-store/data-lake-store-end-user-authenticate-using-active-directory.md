@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure AD 对 Data Lake Storage Gen1 进行最终用户身份验证
 description: 了解如何使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
+ms.author: normesta
 ms.custom: has-adal-ref
-ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6eb91edef15ec6398b575027d5aa2707e2d4cce4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92103775"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548215"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终身份验证
 > [!div class="op_single_selector"]

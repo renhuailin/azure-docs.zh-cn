@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 321252b656bdb881b259115cdc2572f74ec3d22c
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 74988fccdb5f016de178989f894d044b0e1fba80
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271445"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124790769"
 ---
 # <a name="tutorial-integrate-hype-with-azure-active-directory"></a>教程：将 Hype 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "122271445"
 * 让用户可使用其 Azure AD 帐户自动登录到 Hype。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -135,7 +135,7 @@ ms.locfileid: "122271445"
 
 * 直接转到 Hype 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Hype 磁贴时，会重定向到 Hype 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Hype 磁贴时，会重定向到 Hype 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

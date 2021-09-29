@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b3b4f7737320cc0359192f947271a0f4beb3c478
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7153eb1ee29ea63a17e614f49f287945869c7a7e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502991"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680141"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -37,7 +37,7 @@ AzCopy 是一个命令行工具，用于将数据移入和移出 Azure 存储。
 **--cap-mbps**（浮动）以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
 
 **--help** azcopy 命令的帮助
-      
+
 **--output-type**（字符串）命令输出的格式。 选项包括：text、json。 默认值为 `text`。 （默认 `text`）
 
 **--trusted-microsoft-suffixes**（字符串）指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Microsoft Azure 域。 用分号分隔多个条目。

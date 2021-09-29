@@ -1,7 +1,6 @@
 ---
 title: 参考：表单识别器 2.0 REST API
 description: 使用表单识别器 REST API 创建一个表单处理应用，该应用从自定义文档中提取键/值对和表数据。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -9,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 0d128e4ea61da953c500bed5737a997432b5aa98
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 8bc01edf8c89376fe0757deb0e8813ca53be80cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326279"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641728"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->

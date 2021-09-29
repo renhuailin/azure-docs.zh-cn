@@ -13,12 +13,12 @@ ms.date: 05/06/2021
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5f213c6b41a0a34850b35fb24dd4288c00693511
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 3494401396ebe84731afd0de6d9b980f35220576
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039331"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058797"
 ---
 # <a name="add-app-roles-to-your-application-and-receive-them-in-the-token"></a>将应用角色添加到应用程序中并在令牌中接收它们
 
@@ -30,7 +30,7 @@ ms.locfileid: "123039331"
 
 ## <a name="declare-roles-for-an-application"></a>为应用程序声明角色
 
-使用 [Azure 门户](https://portal.azure.com)定义应用角色。 应用角色通常在表示服务、应用或 API 的应用程序注册上定义。 当用户登录到应用程序时，Azure AD 会针对每个角色发出一个 `roles` 声明。这些角色包括单独授予用户或服务主体的，以及通过组成员身份获得的。 这可用于实现基于声明的授权。 应用角色可以分配[给一个用户或一组用户](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app)。 应用角色也可以分配给另一个应用程序的服务主体，或者[分配给托管标识的服务主体](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)。
+使用 [Azure 门户](https://portal.azure.com)定义应用角色。 应用角色通常在表示服务、应用或 API 的应用程序注册上定义。 当用户登录到应用程序时，Azure AD 会针对每个角色发出一个 `roles` 声明。这些角色包括单独授予用户或服务主体的，以及通过组成员身份获得的。 这可用于实现基于声明的授权。 应用角色可以分配[给一个用户或一组用户](../manage-apps/add-application-portal-assign-users.md)。 应用角色也可以分配给另一个应用程序的服务主体，或者[分配给托管标识的服务主体](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)。
 
 > [!IMPORTANT]
 > 目前，如果将服务主体添加到组，然后将应用角色分配给该组，则 Azure AD 不会将 `roles` 声明添加到它颁发的令牌中。

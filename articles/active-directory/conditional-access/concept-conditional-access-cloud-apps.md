@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/15/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ec4457eeb60029783981824b93d2eadfaa1271b
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d1e409fa879f4a541f1f3da7b1c68c06d01e1f8d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866317"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587112"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>条件访问：云应用、操作和身份验证上下文
 
@@ -175,12 +175,12 @@ Microsoft Azure 管理应用程序包括多个服务。
 
 有关在应用程序中使用身份验证上下文的详细信息，请参阅以下文章。
 
-- [用于保护 SharePoint 网站的 Microsoft 信息保护敏感度标签](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option&preserve-view=true)
+- [用于保护 SharePoint 网站的 Microsoft 信息保护敏感度标签](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#more-information-about-the-dependencies-for-the-authentication-context-option)
 - [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
 - [自定义应用程序](../develop/developer-guide-conditional-access-authentication-context.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [条件访问：条件](concept-conditional-access-conditions.md)
-- [常用条件访问策略](concept-conditional-access-policy-common.md)
+- [条件访问常见策略](concept-conditional-access-policy-common.md)
 - [客户端应用程序依赖关系](service-dependencies.md)

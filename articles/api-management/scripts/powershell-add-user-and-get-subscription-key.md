@@ -3,21 +3,21 @@ title: Azure PowerShell 脚本示例 - 添加用户 | Microsoft Docs
 description: 了解如何在 API 管理中添加用户并获取订阅密钥。 请参阅示例脚本并查看其他可用资源。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 6144d6903046502440d732477729514887bf5fa3
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: a9a8fb6cd6870268e2178d4b481126eb11d37efd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817172"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667695"
 ---
 # <a name="add-a-user"></a>添加用户
 

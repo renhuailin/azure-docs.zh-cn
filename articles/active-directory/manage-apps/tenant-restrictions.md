@@ -1,7 +1,6 @@
 ---
 title: 使用租户限制管理对 SaaS 应用的访问 - Azure AD
 description: 如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。
-services: active-directory
 author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
@@ -12,12 +11,12 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d013d383192b206fdc05f36f320b01fe57526bb8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 19f3017aafdf15905d4418213fd1020545e57880
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737298"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644289"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -83,7 +82,7 @@ ms.locfileid: "121737298"
 > [!TIP]
 > 可在 [Azure Active Directory 门户](https://aad.portal.azure.com/)中找到该目录 ID。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。 
 >
-> 要验证目录 ID 或域名是否引用了同一个租户，请使用该 ID 或域代替 URL `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` 中的 <tenant>。  如果域和 ID 的结果相同，则指同一租户。
+> 要验证目录 ID 或域名是否引用了同一个租户，请使用该 ID 或域代替 URL `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` 中的 \<tenant\>。  如果域和 ID 的结果相同，则指同一租户。
 
 为了防止用户插入其自己的包含未批准租户的 HTTP 标头，代理需要替换 Restrict-Access-To-Tenants 标头（如果传入的请求中已提供此标头）。
 

@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 10/19/2020
-ms.openlocfilehash: a3137d779908bf2791ca396068a8c9edf5d56739
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 09/15/2021
+ms.openlocfilehash: 9ab8626a10e729e5bdf070f355fcc480d6dc4f16
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492223"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646808"
 ---
 # <a name="troubleshoot-azure-reservation-recommendations"></a>Azure 预留建议疑难解答
 

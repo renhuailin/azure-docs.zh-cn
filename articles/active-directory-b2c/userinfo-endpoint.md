@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/07/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 94b00fb293913e5501bd70ecb782304c56314ed9
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 209d2aafbecc81a3c06866569f66edec6e3f43a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113430117"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566570"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo 终结点
 
@@ -218,7 +218,8 @@ UserInfo 终结点是 [OpenID Connect 标准](https://openid.net/specs/openid-co
 ### <a name="4-upload-the-files"></a>4.上传文件
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“标识体验框架”。
 1. 在“自定义策略”页上，选择“上传自定义策略” 。

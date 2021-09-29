@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何将包含相关 ID 的标头添加到入站请求。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
-ms.author: apimpm
-ms.openlocfilehash: 922565d26274aee12c9397c08c19330b4fce00e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 421c4e0e2011f14ac076e4fffd334052e7f16800
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92076294"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670512"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>添加包含相关 ID 的标头
 

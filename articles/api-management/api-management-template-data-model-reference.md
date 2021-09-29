@@ -3,7 +3,7 @@ title: Azure API 管理模板数据模型参考 | Microsoft 文档
 description: 了解数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: b0ad7e15-9519-4517-bb73-32e593ed6380
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 7b5ccd7f539332885cdaae242e9e33416633bea9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86243148"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639064"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
 本主题介绍数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。  
@@ -210,7 +210,7 @@ ms.locfileid: "86243148"
   
 |properties|类型|说明|  
 |--------------|----------|-----------------|  
-|`ApiId`|字符串|当前 API 的 ID。|  
+|`ApiId`|string|当前 API 的 ID。|  
 |`CurrentOperationId`|字符串|当前操作的 ID。|  
 |`Action`|字符串|菜单类型。|  
 |`MenuItems`|[操作菜单项](#MenuItem)实体的集合。|当前 API 的操作。|  

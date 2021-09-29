@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2560c294b63d0554708eda1f804bf279d16d7d74
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 03b2f3a4b0a9876b1880194233c81138589d1331
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257953"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583290"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 配置 itsme OpenID Connect (OIDC)
 
@@ -59,11 +59,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. 若要创建 itsme 帐户，请访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace)上的 itsme。
 
-2. 请通过向 onboarding@itsme.be 发送电子邮件来激活 itsme 帐户。 用户将收到 B2C 设置所需的 **合作伙伴代码** 和 **服务代码**。
+1. 请通过向 onboarding@itsme.be 发送电子邮件来激活 itsme 帐户。 用户将收到 B2C 设置所需的 **合作伙伴代码** 和 **服务代码**。
 
-3. itsme 合作伙伴帐户激活后，用户将收到一封电子邮件，其中包含指向 **客户端密码** 的一次性链接。
+1. itsme 合作伙伴帐户激活后，用户将收到一封电子邮件，其中包含指向 **客户端密码** 的一次性链接。
 
-4. 按照 [itsme](https://business.itsme.be/en) 中的说明完成配置。
+1. 按照 [itsme](https://business.itsme.be/en) 中的说明完成配置。
 
 ## <a name="integrate-with-azure-ad-b2c"></a>与 Azure AD B2C 集成
 
@@ -72,13 +72,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 > [!NOTE]
 > 如果没有租户，请[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
 
-1. 确保你正在使用包含 Azure AD B2C 租户的目录。 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
-
-2. 在“**Azure 服务**”下，选择“**Azure AD B2C**”（或选择“**更多服务**”，并使用“**所有服务**”搜索框来搜索 *Azure AD B2C*）。
-
-3. 选择“标识提供程序”，然后选择“新建 OpenID Connect 提供程序” 。
-
-4. 使用以下信息填写窗体：
+1. 确保你正在使用包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在“**Azure 服务**”下，选择“**Azure AD B2C**”（或选择“**更多服务**”，并使用“**所有服务**”搜索框来搜索 *Azure AD B2C*）。
+1. 选择“标识提供程序”，然后选择“新建 OpenID Connect 提供程序” 。
+1. 使用以下信息填写窗体：
 
    |属性 | 值 |
    |------------ |------- |
@@ -96,25 +94,25 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |Surname | family_name |
    |电子邮件 | 电子邮件|
 
-5. 选择“保存”。
+1. 选择“保存”。
 
 ### <a name="configure-a-user-flow"></a>配置用户流
 
 1. 在 Azure AD B2C 租户中的“**策略**”下，选择“**用户流**”。
 
-2. 选择“**新建用户流**”。
+1. 选择“新建用户流”。
 
-3. 选择“**注册并登录**”，选择一个版本，然后选择“**创建**”。
+1. 选择“**注册并登录**”，选择一个版本，然后选择“**创建**”。
 
-4. 输入“名称”。
+1. 输入“名称”。
 
-5. 在“**标识提供者**”部分中，选择“**itsme**”。
+1. 在“**标识提供者**”部分中，选择“**itsme**”。
 
-6. 选择“创建”。
+1. 选择“创建”  。
 
-7. 选择用户流名称，打开新创建的用户流。
+1. 选择用户流名称，打开新创建的用户流。
 
-8. 选择“**属性**”，并调整以下值：
+1. 选择“**属性**”，并调整以下值：
 
    * 将 **访问与 ID 令牌生存期（分钟）** 更改为 **5**。
    * 将 **刷新令牌滑动窗口生存期** 更改为 **永不过期**。
@@ -123,11 +121,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. 在 B2C 租户中的“**管理**”下，选择“**应用注册**” > “**新建注册**”。
 
-2. 提供应用程序的 **名称**，然后输入 **重定向 URI**。 出于测试目的，请输入 `https://jwt.ms`。
+1. 提供应用程序的 **名称**，然后输入 **重定向 URI**。 出于测试目的，请输入 `https://jwt.ms`。
 
-3. 请确保多重身份验证 **已禁用**。
+1. 请确保多重身份验证 **已禁用**。
 
-4. 选择“注册”。
+1. 选择“注册”。
 
    a. 处于测试目的，选择“**身份验证**”，然后在“**隐式授予**”下，选中“**访问令牌**”和“**ID 令牌**”复选框。  
 
@@ -137,23 +135,23 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. 在 B2C 租户中，在“**策略**”下选择“**用户流**”。
 
-2. 选择前面创建的用户流。
+1. 选择前面创建的用户流。
 
-3. 选择“运行用户流”。
+1. 选择“运行用户流”。
 
    a. **应用程序**：*选择已注册的应用*
 
    b. **回复 URL**：*选择重定向 URL*
 
-4. 此时将显示 itsme **标识自己** 页。  
+1. 此时将显示 itsme **标识自己** 页。  
 
-5. 输入移动电话号码，然后选择“**发送**”。
+1. 输入移动电话号码，然后选择“**发送**”。
 
-6. 确认 itsme 应用中的操作。
+1. 确认 itsme 应用中的操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多信息，请参阅以下文章：
+有关更多信息，请查看以下文章：
 
 * [Azure AD B2C 中的自定义策略](custom-policy-overview.md)
 

@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d93cfc5e31212373149a534b3118eafdf7bce47f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 236456ef88609eb98be22c1230f176d8eb06effd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971826"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653450"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -330,20 +331,20 @@ ms.locfileid: "111971826"
 
 ## <a name="monitor-pipeline"></a>监视管道
 1. 登录到 [Azure 门户](https://portal.azure.com/)后，单击“浏览”，并选择“数据工厂”。 
-     ![“浏览”->“数据工厂”](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
+     :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png" alt-text="“浏览”->“数据工厂”":::
 2. 在“数据工厂”边栏选项卡中，单击创建的数据工厂 (**TutorialFactoryARM**)。    
 3. 在数据工厂的“数据工厂”边栏选项卡中，单击“图示”。 
 
-     ![图示磁贴](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
+     :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png" alt-text="图示磁贴":::
 4. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
    
-   ![图示视图](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png" alt-text="图示视图"::: 
 5. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
    
-    ![显示 AzureBlobOutput 数据集的屏幕截图。](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
-6. 处理完成后，可以看到切片处于“就绪”状态。 创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png" alt-text="显示 AzureBlobOutput 数据集的屏幕截图。":::
+6. 处理完成后，可以看到切片处于“就绪”状态。  创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。
    
-    ![数据集](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
+    数据集    
 7. 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  
 
 有关如何使用 Azure 门户边栏选项卡监视本教程中所创建管道和数据集的说明，请参阅 [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) （监视数据集和管道）。

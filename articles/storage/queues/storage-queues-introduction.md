@@ -1,19 +1,19 @@
 ---
 title: Azure 队列存储简介 - Azure 存储
 description: 查看 Azure 队列存储简介，它是一项可存储大量消息的服务。 队列存储服务包括 URL 格式、存储帐户、队列和消息。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 03/18/2020
 ms.topic: overview
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 32ce5af5371047ae814602e9118f622ee036bd9c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1da3781b3dac4b79d8c8dc49decc669bfa7efde6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276206"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551729"
 ---
 # <a name="what-is-azure-queue-storage"></a>什么是 Azure 队列存储？
 

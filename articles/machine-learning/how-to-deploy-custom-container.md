@@ -5,18 +5,16 @@ description: 了解如何通过自定义容器在 Azure 机器学习中使用开
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: gopalv
-author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 06/16/2021
 ms.topic: how-to
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: 3804839ba5c641d7ed563a0593005f89f0b91812
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: b5438ccfcd84a9574e7e65eb9d0342f947f4d03b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418404"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599461"
 ---
 # <a name="deploy-a-tensorflow-model-served-with-tf-serving-using-a-custom-container-in-a-managed-online-endpoint-preview"></a>在托管联机终结点中使用自定义容器部署通过 TF 服务提供服务的 TensorFlow 模型（预览版）
 

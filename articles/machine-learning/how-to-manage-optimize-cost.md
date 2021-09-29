@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: bf29f435c2d9439659abdcc76a7f8d85cf51c2af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 47f10b542bd2c4eb7965e6dfc25349661ca3c3d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739155"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805247"
 ---
 # <a name="manage-and-optimize-azure-machine-learning-costs"></a>管理和优化 Azure 机器学习成本
 
@@ -28,7 +28,7 @@ ms.locfileid: "121739155"
 - 使用低优先级虚拟机 (VM)
 - 将计算实例计划为自动关闭并启动
 - 使用 Azure 虚拟机预留实例
-- 本地训练
+- 在本地训练
 - 并行化训练
 - 设置数据保留和删除策略
 - 将资源部署到同一区域
@@ -89,7 +89,7 @@ Azure 允许在虚拟机规模集、Batch 和机器学习服务中将未利用�
 
 ## <a name="schedule-compute-instances"></a>计划计算实例
 
-创建[计算实例](concept-compute-instance.md)时，VM 将保持打开状态，以供你操作。  [设置计划](how-to-create-manage-compute-instance.md#schedule)以自动启动和停止计算实例（预览版），以节省非计划使用成本。
+创建[计算实例](concept-compute-instance.md)时，VM 将保持启动状态，以供随时使用。  [设置计划](how-to-create-manage-compute-instance.md#schedule)来自动启动和停止计算实例（预览），以便在未计划使用实例时节省成本。
 
 ## <a name="use-reserved-instances"></a>使用预留实例
 
@@ -109,7 +109,7 @@ Visual Studio Code 提供了一个功能完备的环境，用于开发机器学�
 
 ## <a name="set-data-retention--deletion-policies"></a>设置数据保留和删除策略
 
-每次执行管道时，都会在每个步骤中生成中间数据集。 随着时间的推移，这些中间数据集会占用存储帐户中的空间。 请考虑设置策略，在数据的整个生命周期中管理数据，以存档和删除数据集。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](../storage/blobs/storage-lifecycle-management-concepts.md)。
+每次执行管道时，都会在每个步骤中生成中间数据集。 随着时间的推移，这些中间数据集会占用存储帐户中的空间。 请考虑设置策略，在数据的整个生命周期中管理数据，以存档和删除数据集。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](../storage/blobs/lifecycle-management-overview.md)。
 
 ## <a name="deploy-resources-to-the-same-region"></a>将资源部署到同一区域
 

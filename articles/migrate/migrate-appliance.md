@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: d8aa5f6bf955bcc3ee3fa86c17375d47402628ee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 89cfaadb7d490c1d6ebf9cac21c08a402c9d8997
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725291"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565752"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -364,7 +364,7 @@ SQL 内存使用率百分比| sys.dm_os_process_memory | 未使用
 
 下面是设备从已为无代理依赖项分析启用的每个 Windows Server 收集的连接数据。
 
-数据 | **命令**
+**数据** | **命令**
 --- | ---
 本地端口 | netstat
 本地 IP 地址 | netstat
@@ -587,18 +587,27 @@ NIC 计数 | Win32_PerfFormattedData_Tcpip_NetworkInterface | 获取网络设备
 如果你运行的是任何服务的旧版本，则必须卸载该服务，并手动更新到最新版本。
 
 1. 若要查看最新的设备服务版本，请[下载](https://aka.ms/latestapplianceservices) LatestComponents.json 文件。
+
 2. 下载后，在记事本中打开 LatestComponents.json 文件。
+
 3. 在文件中找到最新服务版本，并找到相应的下载链接。 例如：
 
-    "Name":"ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version":"6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+   `"Name": "ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"`
 
 4. 使用文件中的下载链接下载已过时服务的最新版本。
+
 5. 下载后，在管理员命令窗口中运行以下命令，验证已下载的 MSI 的完整性。
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ``` 例如：C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
+   `C:\> Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]`
+
+    例如：
+
+    `C:\> CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5`
 
 5. 检查命令输出是否与文件中服务的哈希值条目匹配（例如，上述 MD5 哈希值）。
+
 6. 现在，运行 MSI 以安装服务。 此安装是无提示安装，完成后安装窗口将关闭。
+
 7. 安装完成后，可以在“控制面板” > “程序和功能”中查看服务的版本。 现在，服务版本应已升级到 JSON 文件中显示的最新版本。
 
 ## <a name="next-steps"></a>后续步骤

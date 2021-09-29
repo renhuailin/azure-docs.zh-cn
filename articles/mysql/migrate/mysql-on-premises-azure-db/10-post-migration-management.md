@@ -9,12 +9,12 @@ ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
 ms.date: 06/21/2021
-ms.openlocfilehash: bed5253a1d5948e7d016bca9e46236d6b57bac57
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 9894769ecd3d7144fa2cf4bb245575d397c60148
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292948"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824007"
 ---
 # <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-post-migration-management"></a>从本地 MySQL 迁移到 Azure Database for MySQL：迁移后管理
 
@@ -30,7 +30,7 @@ ms.locfileid: "114292948"
 
 Azure Database for MySQL 能够使用基于 Azure 的工具（如[Azure Monitor](../../../azure-monitor/overview.md)、[Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md) 和 [Azure Sentinel](../../../sentinel/overview.md)）监视这两种类型的操作活动。 除了基于 Azure 的工具外，还可配置安全信息和事件管理 (SIEM) 系统以使用这些日志。
 
-无论使用哪种工具来监视新的基于云的工作负载，都需要创建警报，以便在出现任何可疑活动时向 Azure 和数据库管理员发出警告。 如果特定警报事件具有妥善定义的修正路径，则警报可以触发自动化的 [Azure Runbook](../../../automation/automation-quickstart-create-runbook.md) 来处理该事件。
+无论使用哪种工具来监视新的基于云的工作负载，都需要创建警报，以便在出现任何可疑活动时向 Azure 和数据库管理员发出警告。 如果特定警报事件具有妥善定义的修正路径，则警报可以触发自动化的 [Azure Runbook](../../../automation/learn/powershell-runbook-managed-identity.md) 来处理该事件。
 
 创建完全受监视环境的第一步是使 MySQL 日志数据能够流入到 Azure Monitor 中。 有关详细信息，请参阅[在 Azure 门户中配置和访问 Azure Database for MySQL 的审核日志](../../howto-configure-audit-logs-portal.md)。
 

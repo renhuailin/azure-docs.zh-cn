@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 79248c8d389fa004bab0dfc55c3f6fce193c6feb
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 5a770e6f5105dd3525e2aac0e502f35cb6a6f050
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473939"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645828"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>配置对容器和 blob 的匿名公共读取访问
 
@@ -81,7 +81,7 @@ $location = "<location>"
 New-AzStorageAccount -ResourceGroupName $rgName `
     -Name $accountName `
     -Location $location `
-    -SkuName Standard_GRS
+    -SkuName Standard_GRS `
     -AllowBlobPublicAccess $false
 
 # Read the AllowBlobPublicAccess property for the newly created storage account.
@@ -202,7 +202,7 @@ az storage account show \
 1. 从“公共访问级别”下拉列表中选择所需的公共访问级别，然后单击“确定”按钮应用对选定容器所做的更改。
 
     :::image type="content" source="media/anonymous-read-access-configure/configure-public-access-container.png" alt-text="显示如何在门户中设置公共访问级别的屏幕截图。" lightbox="media/anonymous-read-access-configure/configure-public-access-container.png":::
-    
+
 如果禁止对存储帐户的公共访问，则无法设置容器的公共访问级别。 如果你尝试设置容器的公共访问级别，你会发现该设置被禁用，因为帐户不允许公共访问。
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="屏幕截图显示当公共访问被禁止时，不允许设置容器公共访问级别":::
@@ -299,11 +299,11 @@ Get-AzStorageContainer -Context $ctx | Select Name, PublicAccess
 
 ## <a name="feature-support"></a>功能支持
 
-下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png)| ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。

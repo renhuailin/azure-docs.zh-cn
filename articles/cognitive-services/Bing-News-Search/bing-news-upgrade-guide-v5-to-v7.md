@@ -3,19 +3,17 @@ title: 将必应新闻搜索 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
 description: 发现需要更新为使用版本 7 的“必应资讯搜索”应用程序部分。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: scottwhi
-ms.openlocfilehash: a114cb24d79189f9e370fae1962f60ca97241d90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f9688d0c952925fa17867ecd8599d84eee40e71
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96351361"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587036"
 ---
 # <a name="news-search-api-upgrade-guide"></a>新闻搜索 API 升级指南
 

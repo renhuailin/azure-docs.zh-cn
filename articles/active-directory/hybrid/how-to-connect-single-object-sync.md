@@ -11,12 +11,12 @@ ms.date: 06/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dec171c299bdd8ea6c5989794539b6c79e7d3fe
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 34d0a6c4940032bc1957c787e05722586c792417
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229682"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814392"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Azure AD Connect 单一对象同步 
 
@@ -43,7 +43,7 @@ Azure AD Connect 单一对象同步工具是一个 PowerShell cmdlet，可用于
  9. 同步 Active Directory 连接器空间中的对象。 
  10. 将对象从 Azure Active Directory 连接器空间导出到 Azure Active Directory。 
 
-除 JSON 输出外，该工具还会生成 HTML 报表，其中包含同步操作的所有详细信息。 该 HTML 报表位于 **C:\ProgramData\AADConnect\ADSyncObjectDiagnostics\ ADSyncSingleObjectSyncResult-<date>.htm** 中。 此 HTML 报表可以与支持团队共享，以便根据需要进行进一步的故障排除。 
+除 JSON 输出外，该工具还会生成 HTML 报表，其中包含同步操作的所有详细信息。 该 HTML 报表位于 **C:\ProgramData\AADConnect\ADSyncObjectDiagnostics\ ADSyncSingleObjectSyncResult-\<date\>.htm** 中。 此 HTML 报表可以与支持团队共享，以便根据需要进行进一步的故障排除。 
 
 HTML 报表包含以下内容： 
 
@@ -58,7 +58,7 @@ HTML 报表包含以下内容：
 
 若要使用单一对象同步工具，需要使用以下工具：  
  - Azure AD Connect 2021 年 3 月版本 ([1.6.4.0](reference-connect-version-history.md#1640)) 或更高版本。
- -  [PowerShell 5.0](/powershell/scripting/windows-powershell/whats-new/what-s-new-in-windows-powershell-50?view=powershell-7.1)
+ -  [PowerShell 5.0](/powershell/scripting/windows-powershell/whats-new/what-s-new-in-windows-powershell-50)
 
 ### <a name="run-the-single-object-sync-tool"></a>运行单一对象同步工具 
 

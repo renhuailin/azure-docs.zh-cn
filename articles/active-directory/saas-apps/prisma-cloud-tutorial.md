@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: jeedes
-ms.openlocfilehash: d92ca345b0800523d86ce7b42220209a1f237103
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0755554220b324560a2cf8a2a6e352f5d0756763
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651391"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794835"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prisma-cloud-sso"></a>教程：Azure Active Directory 与 Prisma Cloud SSO 的单一登录 (SSO) 集成
 
@@ -77,7 +77,7 @@ ms.locfileid: "101651391"
 
 1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://app2.prismacloud.io/customer/<CUSTOMERID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://app2.prismacloud.io/customer/<CUSTOMERID>`
 
     b. **答复 URL** 值是固定的，并且已在 Azure 门户中预填充。 你需要根据要求选择适当的 URL。
 
@@ -130,7 +130,7 @@ ms.locfileid: "101651391"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Prisma Cloud SSO。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Prisma Cloud SSO”磁贴时，你应会自动登录到设置了 SSO 的 Prisma Cloud SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Prisma Cloud SSO”磁贴时，你应会自动登录到设置了 SSO 的 Prisma Cloud SSO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

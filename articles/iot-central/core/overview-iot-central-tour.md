@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: cffd8e0347f501e82ca6e62d5c120b232869cbc0
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 187db7eefb019584835bd7f67fdb8d6abd91f45c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653314"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083897"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
 
@@ -84,7 +84,7 @@ ms.locfileid: "114653314"
 
 * 若要搜索设备，请输入“搜索”值。
 * 若要更改 UI 语言或主题，请选择“设置”图标。 详细了解[管理应用程序首选项](howto-manage-preferences.md)
-* 若要获取帮助和支持，请选择 **帮助** 下拉列表以显示资源列表。 你可从“关于你的应用”链接中[获取有关应用程序的信息](howto-faq.yml#how-do-i-get-information-about-my-application-)。 在针对免费定价计划的应用程序中，支持资源包括对[实时聊天](howto-show-hide-chat.md)的访问权限。
+* 若要获取帮助和支持，请选择 **帮助** 下拉列表以显示资源列表。 你可从“关于你的应用”链接中[获取有关应用程序的信息](howto-faq.yml#how-do-i-get-information-about-my-application-)。
 * 若要从应用程序中注销，请选择“帐户”图标。
 
 可以为 UI 选择浅色主题或深色主题：

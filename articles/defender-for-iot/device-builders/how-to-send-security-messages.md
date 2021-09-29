@@ -4,12 +4,12 @@ description: 了解如何使用 Defender for IoT 发送安全消息。
 ms.topic: how-to
 ms.date: 2/8/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 2f5c6581772599c5527f037987e34bca643781bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 791e49c4e8f0e503c67f24e440fc229998b7b9da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113014684"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680486"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
 
@@ -26,14 +26,14 @@ ms.locfileid: "113014684"
 
 ## <a name="defender-for-iot-capabilities"></a>Defender for IoT 功能
 
-Defender for IoT 可以处理和分析任何类型的安全消息数据，前提是发送的数据符合 [Defender for IoT 架构](https://aka.ms/iot-security-schemas)并且消息已设置为安全消息。
+Defender for IoT 可以处理和分析任何类型的安全消息数据，前提是发送的数据符合 Defender for IoT 架构并且消息已设置为安全消息。
 
 ## <a name="security-message"></a>安全消息
 
 Defender for IoT 使用以下条件定义安全消息：
 
 - 如果消息是使用 Azure IoT SDK 发送的
-- 如果消息符合[安全消息架构](https://aka.ms/iot-security-schemas)
+- 如果消息符合安全消息架构
 - 如果消息在发送之前已设置为安全消息
 
 每个安全消息都包含发送方的元数据，如 `AgentId`、`AgentVersion`、`MessageSchemaVersion` 和一个安全事件列表。
@@ -85,7 +85,7 @@ Defender for IoT 使用以下条件定义安全消息：
 
 若要从设备发送设备消息以供 Defender for IoT 处理，请使用以下 API 之一来标记消息，以便将消息正确路由到 Defender for IoT 处理管道。
 
-即使已使用正确的标头进行标记，发送的所有数据也必须符合 [Defender for IoT 消息架构](https://aka.ms/iot-security-schemas)。
+即使已使用正确的标头进行标记，发送的所有数据也必须符合 Defender for IoT 消息架构。
 
 ### <a name="send-security-message-api"></a>发送安全消息 API
 

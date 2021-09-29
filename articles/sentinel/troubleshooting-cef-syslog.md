@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2021
 ms.author: bagol
-ms.openlocfilehash: 18166bc22f34fe8bd4757ffd3a0d468c6a75b23c
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 545ab178c99b8d5ab6db1d6619a9859eb3133306
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868280"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781337"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>排查 CEF 或 Syslog 数据连接器的故障
 
@@ -43,7 +43,7 @@ ms.locfileid: "122868280"
 
 ## <a name="validate-cef-connectivity"></a>验证 CEF 连接
 
-[部署日志转发器](connect-common-event-format.md)并[配置安全解决方案以向其发送 CEF 消息](connect-cef-solution-config.md)后，请使用该部分的步骤验证安全解决方案与 Azure Sentinel 之间的连接性。
+[部署日志转发器](connect-common-event-format.md)并[配置安全解决方案以向其发送 CEF 消息](./connect-common-event-format.md)后，请使用该部分的步骤验证安全解决方案与 Azure Sentinel 之间的连接性。
 
 1. 确保你已满足以下先决条件：
 
@@ -269,15 +269,15 @@ ms.locfileid: "122868280"
 
 如果使用 Azure 虚拟机作为 Syslog 收集器，请验证以下内容：
 
-- 设置 Syslog 数据连接器时，请务必关闭对[MMA/OMS 代理](connect-windows-security-events.md#connector-options)的 [Azure 安全中心自动配置设置](/azure/security-center/security-center-enable-data-collection)。
+- 设置 Syslog 数据连接器时，请务必关闭对[MMA/OMS 代理](connect-windows-security-events.md#connector-options)的 [Azure 安全中心自动配置设置](../security-center/security-center-enable-data-collection.md)。
 
     完全设置数据连接器后，可以重新启用它们。
 
-- 在部署[通用事件格式数据连接器 python 脚本](connect-cef-agent.md)之前，请确保虚拟机尚未连接到现有的 Syslog 工作区。 可以在 Log Analytics 工作区虚拟机列表中找到此信息，表中将连接到 Syslog 工作区的 VM 列为“已连接”。
+- 在部署[通用事件格式数据连接器 python 脚本](./connect-log-forwarder.md)之前，请确保虚拟机尚未连接到现有的 Syslog 工作区。 可以在 Log Analytics 工作区虚拟机列表中找到此信息，表中将连接到 Syslog 工作区的 VM 列为“已连接”。
 
 - 确保 Azure Sentinel 已连接到正确的 Syslog 工作区，并安装了 SecurityInsights 解决方案。
 
-    有关详细信息，请参阅[步骤 1：部署日志转发器](connect-cef-agent.md)。
+    有关详细信息，请参阅[步骤 1：部署日志转发器](./connect-log-forwarder.md)。
 
 - 请确保计算机的大小正确，至少满足最低要求的先决条件。 有关详细信息，请参阅 [CEF 先决条件](connect-common-event-format.md#prerequisites)。
 
@@ -299,7 +299,7 @@ Syslog 服务器（rsyslog 或 syslog-ng）转发相关配置文件中定义的�
 
 请务必添加想要将其引入 Azure Sentinel 的设施和严重性日志级别的相关详细信息。 配置过程可能需要大约 20 分钟的时间。
 
-有关详细信息，请参阅[部署脚本说明](connect-cef-agent.md#deployment-script-explained)和[在 Azure 门户中配置 Syslog](/azure/azure-monitor/agents/data-sources-syslog.md)。
+有关详细信息，请参阅[部署脚本说明](./connect-log-forwarder.md#deployment-script-explained)和[在 Azure 门户中配置 Syslog](../azure-monitor/agents/data-sources-syslog.md)。
 
 
 例如，对于 rsyslog 服务器，运行以下命令以显示 Syslog 转发的当前设置，并查看对配置文件的任何更改：
@@ -506,9 +506,9 @@ if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
 
 - 确保可以看到数据包在端口 25524 和/或 25526 上流动
 
-- 确保虚拟机通过 TCP 与端口 443 建立出站连接，或者可以连接到 [Log Analytics 终结点](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
+- 确保虚拟机通过 TCP 与端口 443 建立出站连接，或者可以连接到 [Log Analytics 终结点](../azure-monitor/agents/log-analytics-agent.md#network-requirements)
 
-- 确保可以通过防火墙策略从 Syslog 收集器访问所需的 URL。 有关详细信息，请参阅 [Log Analytics 代理防火墙要求](/azure/azure-monitor/agents/log-analytics-agent##firewall-requirements)。
+- 确保可以通过防火墙策略从 Syslog 收集器访问所需的 URL。 有关详细信息，请参阅 [Log Analytics 代理防火墙要求](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)。
 
 - 请确保 Azure 虚拟机在工作区的虚拟机列表中显示为“已连接”。
 

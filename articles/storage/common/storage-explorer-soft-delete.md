@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/30/2021
 ms.author: chuye
-ms.openlocfilehash: 8a54d02d434ba9a0552668e24022108d3ad561b9
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 0d097e769bfea8ff9c65921e8f0d851372187a02
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452294"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564897"
 ---
 # <a name="azure-storage-explorer-soft-delete-guide"></a>Azure 存储资源管理器软删除指南
 
@@ -20,7 +20,7 @@ ms.locfileid: "123452294"
 
 ## <a name="configuring-delete-retention-policy"></a>配置删除保留策略
 
-你可以在存储资源管理器中为每个存储帐户配置删除保留策略。 在存储帐户下打开任何“blob 容器”节点的关联菜单，然后选择“配置软删除策略...”。 
+你可以在存储资源管理器中为每个存储帐户配置删除保留策略。 在存储帐户下打开任何“blob 容器”节点的关联菜单，然后选择“配置软删除策略...”。
 
 设置新策略可能需要 30 秒才能生效。 如果在不等待新策略生效的情况下删除数据，可能会导致意外的行为。 在活动日志中报告已成功配置的策略之前，存储资源管理器会等待 30 秒。
 
@@ -61,7 +61,7 @@ ms.locfileid: "123452294"
 
 在启用了 HNS 的 blob 容器中，如果已存在同名的活动 blob，则取消删除 blob 将失败。
 
-> [!Note]
+> [!NOTE]
 > 软删除的快照只能通过取消删除基本 blob 来取消删除。 无法取消删除单个快照。
 
 ## <a name="undelete-blobs-by-date-range"></a>按日期范围取消删除 blob
@@ -74,5 +74,5 @@ ms.locfileid: "123452294"
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure 存储资源管理器 Blob 版本控制指南](./storage-explorer-blob-versioning.md)
-* [blob 的软删除](../blobs/soft-delete-blob-overview.md)
+- [Azure 存储资源管理器 Blob 版本控制指南](./storage-explorer-blob-versioning.md)
+- [blob 的软删除](../blobs/soft-delete-blob-overview.md)

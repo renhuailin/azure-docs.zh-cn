@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 1c7143b6d3479cf3083cfc730301c68dcf4eb705
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17670189113e106b4a3d4c5cc288772a49e1f83b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92900817"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816114"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
 
@@ -101,7 +101,6 @@ Azure 资源的托管标识允许 Pod 向支持它的 Azure 服务（如存储�
 
 使用 Key Vault，可存储并定期轮换凭据、存储帐户密钥或证书等机密。 可使用[适用于 Secrets Store CSI 驱动程序的 Azure 密钥保管库提供程序](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)将 Azure 密钥保管库与 AKS 群集集成。 Secrets Store CSI 驱动程序允许 AKS 群集以本机方式检索密钥保管库中的机密内容，并仅将其安全地提供给发出请求的 Pod。 与群集操作员一起将 Secrets Store CSI 驱动程序部署到 AKS 工作器节点上。 可使用 Pod 托管标识来请求访问密钥保管库，并通过 Secrets Store CSI 驱动程序检索所需的机密内容。
 
-带有 Secrets Store CSI 驱动程序的 Azure 密钥保管库可用于要求使用 Kubernetes 版本 1.16 或更高版本的 Linux 节点和 Pod。 Windows 节点和 Pod 要求使用 Kubernetes 版本 1.18 或更高版本。
 
 ## <a name="next-steps"></a>后续步骤
 

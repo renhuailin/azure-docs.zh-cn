@@ -2,13 +2,13 @@
 title: 使用 Blob 存储作为 Azure Stack Hub 上的检查点存储
 description: 本文介绍如何使用 Blob 存储作为 Azure Stack Hub 上事件中心的检查点存储。
 ms.topic: how-to
-ms.date: 12/09/2020
-ms.openlocfilehash: b3abfca771835b05c654025e7c29c359346d2b5c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/28/2021
+ms.openlocfilehash: e3d75d4cd85bbf4e1bc8fc6fd581d510c35b0cb4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003151"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213508"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub"></a>使用 Blob 存储作为检查点存储 - Azure Stack Hub 上的事件中心
 如果你在一个环境中使用 Azure Blob 存储作为检查点存储，该环境支持与 Azure 上通常可用的存储 Blob SDK 版本不同的版本，那么你需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果运行[基于 Azure Stack Hub 版本 2002 的事件中心](/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本为 2017-11-09。 在这种情况下，需要使用代码将存储服务 API 版本设定为 2017-11-09。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅“GitHub 上的这些示例”： 

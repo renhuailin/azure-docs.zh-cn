@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 4bb4e59e4cf2cf7edfec88549e2649f7c09e586a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e938ab1c87e74eb1c7fa43b0ae0bf4e080bc5df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92443388"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124790845"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-honestly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Honestly 的集成
 
@@ -77,9 +77,9 @@ ms.locfileid: "92443388"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://webapp.honestly.de/saml2/<client-id>/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://webapp.honestly.de/saml2/<client-id>/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://webapp.honestly.de/saml2/<client-id>/acs`
 
@@ -88,7 +88,7 @@ ms.locfileid: "92443388"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：`https://webapp.honestly.de/sso` 
+    在“登录 URL”文本框中，键入 URL：`https://webapp.honestly.de/sso`
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -139,7 +139,7 @@ ms.locfileid: "92443388"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Honestly”磁贴时，应当会自动登录到为其设置了 SSO 的 Honestly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的“Honestly”磁贴时，应当会自动登录到为其设置了 SSO 的 Honestly。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

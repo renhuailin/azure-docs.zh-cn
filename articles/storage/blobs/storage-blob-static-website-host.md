@@ -8,30 +8,30 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 15c0cf0b24fef36902806656a2e47a7fda7bb52c
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f222475560c282e7eb63c55a3f827f8f8e48c8ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471059"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549464"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>教程：在 Blob 存储上托管静态网站
 
-本教程介绍如何生成静态网站并将其部署到 Azure 存储。 完成本教程后，你会有一个可供用户公开访问的静态网站。 
+本教程介绍如何生成静态网站并将其部署到 Azure 存储。 完成本教程后，你会有一个可供用户公开访问的静态网站。
 
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 配置静态网站托管
-> * 部署 Hello World 网站
+> - 配置静态网站托管
+> - 部署 Hello World 网站
 
 ## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-> [!NOTE] 
+> [!NOTE]
 > 静态网站现可用于常规用途 v2 标准存储帐户，以及启用了分层命名空间的存储帐户。
 
 本教程使用可供编程人员免费使用的工具 [Visual Studio Code](https://code.visualstudio.com/download) 来生成静态网站并将其部署到 Azure 存储帐户。
@@ -49,15 +49,15 @@ ms.locfileid: "123471059"
 
 ## <a name="configure-static-website-hosting"></a>配置静态网站托管
 
-第一步是配置存储帐户，以便在 Azure 门户中托管静态网站。 配置帐户以便进行静态网站托管时，Azure 存储会自动创建名为 *$web* 的容器。 *$web* 容器会包含静态网站的文件。 
+第一步是配置存储帐户，以便在 Azure 门户中托管静态网站。 配置帐户以便进行静态网站托管时，Azure 存储会自动创建名为 *$web* 的容器。 *$web* 容器会包含静态网站的文件。
 
-1. 在 Web 浏览器中打开 [Azure 门户](https://portal.azure.com/)。 
+1. 在 Web 浏览器中打开 [Azure 门户](https://portal.azure.com/)。
 1. 找到存储帐户并显示帐户概览。
 1. 选择“静态网站”，以显示静态网站的配置页。
 1. 选择“启用”，启用针对存储帐户的静态网站托管功能。
-1. 在“索引文档名称”字段中，指定 *index.html* 的默认索引页。 当用户导航到静态网站的根目录时，会显示默认索引页。  
+1. 在“索引文档名称”字段中，指定 *index.html* 的默认索引页。 当用户导航到静态网站的根目录时，会显示默认索引页。
 1. 在“错误文档路径”字段中，指定默认错误页 *404.html*。 当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
-1. 单击“保存” 。 Azure 门户现在会显示静态网站终结点。 
+1. 单击“ **保存**”。 Azure 门户现在会显示静态网站终结点。
 
     ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "123471059"
 
 接下来，使用 Visual Studio Code 创建 Hello World 网页，并将其部署到在 Azure 存储帐户中托管的静态网站。
 
-1. 在本地文件系统上创建名为 *mywebsite* 的空文件夹。 
+1. 在本地文件系统上创建名为 *mywebsite* 的空文件夹。
 1. 启动 Visual Studio Code，打开刚刚在“资源管理器”面板中创建的文件夹。
 
     ![在 Visual Studio Code 中打开文件夹](media/storage-blob-static-website-host/open-folder-vs-code.png)
@@ -107,11 +107,11 @@ Visual Studio Code 现在会将文件上传到 Web 终结点，并显示成功�
 
 ## <a name="feature-support"></a>功能支持
 
-下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。

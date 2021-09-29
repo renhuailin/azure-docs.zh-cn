@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 4e8f1847459d16f82b029f9719d87b61dd243524
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: ecb99e0add9700bce297f2dfc31e8220e02b0315
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542362"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652958"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用连接监视器进行网络连接监视
 
@@ -74,7 +74,7 @@ ms.locfileid: "123542362"
 
 ### <a name="agents-for-on-premises-machines"></a>本地计算机的代理
 
-若要使连接监视器将本地计算机识别为要监视的源，请在计算机上安装 Log Analytics 代理。  然后启用[网络性能监视器解决方案](/azure-monitor/insights/network-performance-monitor.md#configure-the-solution)。 这些代理是链接到 Log Analytics 工作区的，因此，需要先设置工作区 ID 和主密钥，然后代理才能开始进行监视。
+若要使连接监视器将本地计算机识别为要监视的源，请在计算机上安装 Log Analytics 代理。  然后启用[网络性能监视器解决方案](/azure/azure-monitor/insights/network-performance-monitor#configure-the-solution)。 这些代理是链接到 Log Analytics 工作区的，因此，需要先设置工作区 ID 和主密钥，然后代理才能开始进行监视。
 
 若要安装适用于 Windows 计算机的 Log Analytics 代理，请参阅[在 Windows 上安装 Log Analytics 代理](../azure-monitor/agents/agent-windows.md)。
 

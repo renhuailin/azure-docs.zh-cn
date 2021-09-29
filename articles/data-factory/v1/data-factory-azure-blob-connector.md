@@ -3,16 +3,17 @@ title: 在 Azure Blob 存储中复制/粘贴数据
 description: 了解如何在 Azure 数据工厂中复制 blob 数据。 使用我们的示例：如何将数据复制到 Azure Blob 存储和 Azure SQL 数据库，以及如何从中复制数据。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d42c7cc6498adad251174db7caea11feec82784
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 02b51ff93b14adcbf0dc4c628421a7521fdc49c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753546"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599803"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -122,7 +123,7 @@ ms.locfileid: "108753546"
 
 **BlobSource** 支持 **typeProperties** 部分的以下属性：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 
@@ -188,7 +189,7 @@ ms.locfileid: "108753546"
     4. 选择数据工厂的 **位置**。
     5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。
     6. 单击“创建”。
-3. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：![数据工厂主页](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
+3. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：:::image type="content" source="./media/data-factory-azure-blob-connector/data-factory-home-page.png" alt-text="数据工厂主页":::
 
 ### <a name="copy-wizard"></a>复制向导
 1. 在“数据工厂”主页上，单击“复制数据”磁贴，在单独的选项卡上启动“复制数据向导”。  
@@ -203,27 +204,27 @@ ms.locfileid: "108753546"
     5. 将开始日期时间更改为 2017/04/21。
     6. 将结束日期时间更改为 2017/04/25。 建议直接键入日期而不是浏览日历。
     8. 单击“下一步”。
-        ![复制工具 - 属性页](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png)
+        :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-properties-page.png" alt-text="复制工具 - 属性页":::
 3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。  此页用于指定复制任务的源数据存储。 可使用现有的数据存储链接服务，或指定新的数据存储。 要使用现有链接服务，请选择“来自现有链接服务” ，并选择适当的链接服务。
-    ![复制工具 - 源数据存储页](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
+    :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png" alt-text="复制工具 - 源数据存储页":::
 4. 在“指定 Azure Blob 存储帐户”  页上：
     1. 保留自动生成的名称作为连接名称。 连接名称是 Azure 存储类型的链接服务名称。
     2. 确认为“帐户选择方法”选择了“来自 Azure 订阅”。 
     3. 选择 Azure 订阅或针对 Azure 订阅选择“全选”。
     4. 从所选订阅的可用 Azure 存储帐户列表中，选择一个 **Azure 存储帐户**。 还可选择手动输入存储帐户设置，方法是在“帐户选择方法”中选择“手动输入”选项。
     5. 单击“下一步”。  
-        ![复制工具 - 指定 Azure Blob 存储帐户](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+        :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png" alt-text="复制工具 - 指定 Azure Blob 存储帐户":::
 5. 在“选择输入文件或文件夹”  页上：
     1. 双击“adfblobcontainer”。
     2. 选择“input”，并单击“选择”。 在本演练中，选择输入文件夹。 也可以改为选择文件夹中的 emp.txt 文件。
-        ![复制工具 - 选择输入文件或文件夹 1](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+        :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png" alt-text="复制工具 - 选择输入文件或文件夹 1":::
 6. 在“选择输入文件或文件夹” 页上：
     1. 确认“文件或文件夹”已设置为 adfblobconnector/input。 如果文件位于子文件夹中，例如，2017/04/01、2017/04/02 依此类推，请输入 adfblobconnector/input/{年}/{月}/{日} 作为文件或文件夹。 在文本框外按 Tab 时，会看到三个下拉列表，用于选择年 (yyyy)、月 (MM) 和日 (dd) 的格式。
     2. 请勿设置“以递归方式复制文件”。 选择此选项以递归方式遍历文件夹，寻找要复制到目标的文件。
     3. 请勿选择“二进制复制”选项。 选择此选项将对源文件执行到目标的二进制复制。 请勿对此演练选择该选项，以便在下一页中看到更多选项。
     4. 确认“压缩类型”已设为“无”。 如果源文件使用支持的格式之一进行压缩，请为此选项选择一个值。
     5. 单击“下一步”。
-    ![复制工具 - 选择输入文件或文件夹 2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
+    :::image type="content" source="./media/data-factory-azure-blob-connector/chose-input-file-folder.png" alt-text="复制工具 - 选择输入文件或文件夹 2":::
 7. 在“文件格式设置”页上，可以看到分隔符以及向导通过分析文件自动检测到的架构。
     1. 请确认以下选项：  
         a. “文件格式”已设为“文本格式”。 可在下拉列表中看到所有支持的格式。 例如：JSON、Avro、ORC 和 Parquet。
@@ -236,9 +237,9 @@ ms.locfileid: "108753546"
     3. 在页面底部，查看 emp.txt 文件的数据的“预览”。
     4. 单击底部的“架构”选项卡，查看复制向导通过查看源文件中的数据推断出来的架构。
     5. 检查分隔符并预览数据之后，请单击“下一步”。
-    ![复制工具 - 文件格式设置](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)
+    :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png" alt-text="复制工具 - 文件格式设置":::
 8. 在“目标数据存储”页上，选择“Azure Blob 存储”，并单击“下一步”。 在本演练中，使用 Azure blob 存储同时作为源和目标数据存储。  
-    ![复制工具 - 选择目标数据存储](media/data-factory-azure-blob-connector/select-destination-data-store.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/select-destination-data-store.png" alt-text="复制工具 - 选择目标数据存储":::
 9. 在“指定 Azure Blob 存储帐户”页上：  
     1. 在“连接名称”字段中输入 AzureStorageLinkedService。
     2. 确认为“帐户选择方法”选择了“来自 Azure 订阅”。 
@@ -253,20 +254,20 @@ ms.locfileid: "108753546"
     1. 确认“压缩类型”已设为“无”。
     1. 确认“复制行为”已设为“合并文件”。 如果已存在具有相同名称的输出文件，新内容将添加到相同文件的末尾。
     1. 单击“下一步”。
-       ![复制工具 - 选择输出文件或文件夹](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+       :::image type="content" source="media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png" alt-text="复制工具 - 选择输出文件或文件夹":::
 11. 在“文件格式设置”页上，查看设置，并单击“下一步”。 可在此处选择“向输出文件添加标题”。 如果选择该选项，将添加一个标题行，包含源架构的列名称。 查看源的架构时，可以重命名默认列名称。 例如，可以将第一列改为“名字”，而第二列改为“姓氏”。 然后，将生成输出文件和标题，其中这些名称为列名称。
-    ![复制工具 - 目标的文件格式设置](media/data-factory-azure-blob-connector/file-format-destination.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/file-format-destination.png" alt-text="复制工具 - 目标的文件格式设置":::
 12. 在“性能设置”页上，确认“云单位”和“并行副本”已设为“自动”，并单击“下一步”。 有关这些设置的详细信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md#parallel-copy)。
-    ![复制工具 - 性能设置](media/data-factory-azure-blob-connector/copy-performance-settings.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/copy-performance-settings.png" alt-text="复制工具 - 性能设置":::
 14. 在“摘要”页上，查看所有设置（任务属性、源和目标的设置以及复制设置），并单击“下一步”。
-    ![复制工具 -“摘要”页](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/copy-tool-summary-page.png" alt-text="复制工具 -“摘要”页":::
 15. 在“摘要”页中检查信息，并单击“完成”。  复制向导在数据工厂（即启动该向导的位置）中创建两个链接服务、两个数据集（输入和输出）和一个管道。
-    ![复制工具 -“部署”页](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/copy-tool-deployment-page.png" alt-text="复制工具 -“部署”页":::
 
 ### <a name="monitor-the-pipeline-copy-task"></a>监视管道（复制任务）
 
 1. 单击“部署”页中的链接`Click here to monitor copy pipeline`。
-2. 将以单独的选项卡形式显示“监视和管理应用程序”。![监视和管理应用](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+2. 将以单独的选项卡形式显示“监视和管理应用程序”。:::image type="content" source="media/data-factory-azure-blob-connector/monitor-manage-app.png" alt-text="监视和管理应用":::
 3. 将顶部的“开始”时间更改为 `04/19/2017`，“结束”时间改为 `04/27/2017`，然后单击“应用”。
 4. “活动时段”列表中应会显示五个活动时段。 “WindowStart”时间应包含从管道开始到管道结束时间的所有日子。
 5. 针对“活动时段”列表多次单击“刷新”按钮，直到看到所有活动时段均已设为“就绪”。
@@ -283,11 +284,11 @@ ms.locfileid: "108753546"
 ### <a name="data-factory-entities"></a>数据工厂实体
 现在，切换回具有“数据工厂”主页的选项卡。 请注意，数据工厂中现在有两个链接服务、两个数据集和一个管道。
 
-![“数据工厂”主页和实体](media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png)
+:::image type="content" source="media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png" alt-text="“数据工厂”主页和实体":::
 
 单击“创作和部署”启动数据工厂编辑器。
 
-![数据工厂编辑器](media/data-factory-azure-blob-connector/data-factory-editor.png)
+:::image type="content" source="media/data-factory-azure-blob-connector/data-factory-editor.png" alt-text="数据工厂编辑器":::
 
 数据工厂中应包含以下“数据工厂”实体：
 

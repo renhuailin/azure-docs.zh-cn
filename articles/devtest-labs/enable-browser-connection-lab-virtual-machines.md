@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 开发测试实验室虚拟机上启用浏览器连接
 description: 开发测试实验室现已与 Azure Bastion 集成，作为实验室所有者，你可以启用通过浏览器访问所有实验室虚拟机。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 6d9d631c79c22f1f713cfc4ee7cdd766a4ad8f06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7982c878f062e0b8623bde9da6ea585226a455c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96341166"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624285"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>在 Azure 开发测试实验室虚拟机上启用浏览器连接 
 开发测试实验室与 [Azure Bastion](../bastion/index.yml) 集成，因此你可以通过浏览器连接到虚拟机。 首先需要在实验室虚拟机上启用浏览器连接。

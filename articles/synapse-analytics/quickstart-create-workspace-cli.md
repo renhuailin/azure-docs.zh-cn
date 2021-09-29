@@ -2,19 +2,19 @@
 title: 快速入门：使用 Azure CLI 创建 Synapse 工作区
 description: 按照本指南中的步骤使用 Azure CLI 创建 Synapse 工作区。
 services: synapse-analytics
-author: alehall
+author: rothja
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: workspace
 ms.date: 08/25/2020
-ms.author: alehall
+ms.author: jroth
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d2b0bbe7bb1fbfcc3de0ef39fe0b31b11b6ff10
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 4856142a7c075405930969a3e1f6da5804ef8c6c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407662"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093148"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Synapse 工作区
 

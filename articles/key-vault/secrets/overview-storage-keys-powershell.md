@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 180d367e6175a6f637cd5598e0b1af9a89d0ec30
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 334eb66a6372272b7b5d467c5603e694b1ad8683
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724330"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610933"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 > [!IMPORTANT]
@@ -197,7 +197,7 @@ Tags                :
 -
 ### <a name="set-variables"></a>设置变量
 
-首先，通过以下步骤设置 PowerShell cmdlet 使用的变量。 请务必更新 <YourStorageAccountName> 和 <YourKeyVaultName> 占位符。
+首先，通过以下步骤设置 PowerShell cmdlet 使用的变量。 请务必更新 \<YourStorageAccountName\> 和 \<YourKeyVaultName\> 占位符。
 
 我们还将使用 Azure PowerShell [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext) cmdlet 来获取 Azure 存储帐户的上下文。
 

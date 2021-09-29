@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/29/2021
+ms.date: 09/28/2021
 ms.author: alzam
-ms.openlocfilehash: 57328748f21dda9efe3b2208aeb4854360a76e38
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b0988547105f953c0665ea753007c0725055fe61
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288675"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208694"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 网关点到站点连接实现远程工作
 
@@ -31,7 +31,7 @@ Azure 点到站点解决方案基于云且可快速预配，以满足在家办�
 
 下表显示了客户端操作系统及其可用的身份验证选项。 这些信息可以帮助用户根据已在使用的客户端 OS 选择身份验证方法。 例如，如果混合使用了需要连接的客户端操作系统，请选择使用基于证书的身份验证的 OpenVPN。 另请注意，只有基于路由的 VPN 网关才支持点到站点 VPN。
 
-![显示客户端操作系统和可用身份验证选项的屏幕截图。](./media/working-remotely-support/ostable.png "操作系统")
+![显示客户端操作系统和可用身份验证选项的屏幕截图。](./media/working-remotely-support/os-table.png "操作系统")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>方案 1 - 用户只需访问 Azure 中的资源
 

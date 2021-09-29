@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/23/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: f8d27d30ace8ac29a59df9b77de4b56b5e138f63
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 60f3383c58ab297fd5c2199d532591b1d3a38b8f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185734"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572485"
 ---
 # <a name="configure-authentication-in-a-sample-web-app-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在示例 Web 应用中配置身份验证
 
@@ -75,8 +75,9 @@ OpenID Connect (OIDC) 是在 OAuth 2.0 上构建的身份验证协议。 可以�
 若要创建 Web 应用注册，请执行下列操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-1. 搜索并选择“Azure AD B2C”。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 在“名称”下，输入应用程序的名称（例如 webapp1）。
 1. 在“支持的帐户类型”下，选择“任何标识提供者或组织目录中的帐户(用于通过用户流对用户进行身份验证)” 。 
@@ -113,10 +114,10 @@ git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-op
 
 在项目根文件夹下，打开 appsettings.json 文件。 此文件包含有关 Azure AD B2C 标识提供者的信息。 更新以下应用设置属性： 
 
-|部分  |键  |值  |
+|部分  |密钥  |值  |
 |---------|---------|---------|
 |AzureAdB2C|实例| Azure AD B2C [租户名称](tenant-management.md#get-your-tenant-name)的第一部分（例如 `https://contoso.b2clogin.com`）。|
-|AzureAdB2C|域| Azure AD B2C 租户的完整[租户名称](tenant-management.md#get-your-tenant-name)（例如，`contoso.onmicrosoft.com`）。|
+|AzureAdB2C|域| Azure AD B2C 租户的完整[租户名称](tenant-management.md#get-your-tenant-name)（例如 `contoso.onmicrosoft.com`）。|
 |AzureAdB2C|ClientId| [步骤 2](#step-2-register-a-web-application) 中的 Web API 应用程序 ID。|
 |AzureAdB2C|SignUpSignInPolicyId|用户流，或在[步骤 1](#step-1-configure-your-user-flow) 中创建的自定义策略。|
 
@@ -135,7 +136,7 @@ git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-op
 ## <a name="step-5-run-the-sample-web-app"></a>步骤 5：运行示例 Web 应用
 
 1. 生成并运行该项目。
-1. 转到 [https://localhost:5001](https://localhost:5001)。 
+1. 转到  `https://localhost:5001` 。 
 1. 选择“注册/登录”。
 
     ![项目欢迎页上“注册/登录”按钮的屏幕截图。](./media/configure-authentication-sample-web-app/web-app-sign-in.png)

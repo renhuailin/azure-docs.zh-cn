@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: e4e4a7169d7550523fb2e712560d1bdf86197558
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: b855f8fd464335e368e70f193f27d9baf5a10b11
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112679127"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567495"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows Data Science Virtual Machine 的数据科学
 
@@ -329,7 +329,7 @@ DSVM 中预构建的工具可以满足很多常规数据分析需求。 这能�
 
 - [生成端到端解决方案以检测图像中的产品的操作指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：图像检测是一种能够对图像中的对象进行定位和分类的技术。 这项技术有望在许多现实商业领域带来巨大回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
 
-- [音频深度学习](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure):此教程展示如何使用[城市声音数据集](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)训练用于音频事件检测的深度学习模型。 它还提供有关如何处理音频数据的概述。
+- [音频深度学习](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure):此教程展示如何使用[城市声音数据集](https://urbansounddataset.weebly.com/)训练用于音频事件检测的深度学习模型。 它还提供有关如何处理音频数据的概述。
 
 - [文本文档分类](https://github.com/anargyri/lstm_han)：本演练展示如何生成和训练两种神经网络架构：分层注意网络和长短期记忆 (LSTM) 网络。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 
 

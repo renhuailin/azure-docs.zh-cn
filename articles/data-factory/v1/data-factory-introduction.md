@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: ea7c5a82a6219e673454d627a4350291c5b3f047
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 78ed8c774bc44c7a2756019287cd4364db1fe4d4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761644"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644498"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,7 +35,7 @@ ms.locfileid: "108761644"
 
 该公司需要一个平台，用于创建能够从本地数据存储和云数据存储引入数据的工作流。 该公司还需要能够使用现有的计算服务（例如 Hadoop）来转换或处理数据，以及将结果发布到本地数据存储或云数据存储供 BI 应用程序使用。 
 
-![数据工厂概述](media/data-factory-introduction/what-is-azure-data-factory.png) 
+:::image type="content" source="media/data-factory-introduction/what-is-azure-data-factory.png" alt-text="数据工厂概述"::: 
 
 Azure 数据工厂是适合这些类型的方案的平台。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂可执行以下任务： 
 
@@ -52,7 +53,7 @@ Azure 数据工厂是适合这些类型的方案的平台。 它是基于云的�
 ## <a name="how-does-it-work"></a>工作原理 
 Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下三个步骤：
 
-![Azure 数据工厂的三个阶段](media/data-factory-introduction/three-information-production-stages.png)
+:::image type="content" source="media/data-factory-introduction/three-information-production-stages.png" alt-text="Azure 数据工厂的三个阶段":::
 
 ### <a name="connect-and-collect"></a>连接和收集
 企业有不同类型的数据，位于不同的源中。 构建信息生成系统时，第一步是连接到所有必需的数据源，然后进行处理。 这些源包括：SaaS 服务、文件共享、FTP、Web 服务。 然后，根据需要将数据移到中心位置进行后续处理。
@@ -113,7 +114,7 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 
 ### <a name="relationship-between-data-factory-entities"></a>数据工厂实体之间的关系
 
-![示意图：数据工厂（一种云数据集成服务）- 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+:::image type="content" source="./media/data-factory-introduction/data-integration-service-key-concepts.png" alt-text="示意图：数据工厂（一种云数据集成服务）- 重要概念":::
 
 ## <a name="supported-regions"></a>支持的区域
 目前可在美国西部、美国东部和北欧区域创建数据工厂。 但是，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。

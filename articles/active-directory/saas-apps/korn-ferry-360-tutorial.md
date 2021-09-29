@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 6f1f1e6416c2d47f626e68c6effe51047a7a35be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ec67d8c33431fd3a8bc5f5468e11d4825a6c1cf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92458874"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124790465"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-korn-ferry-360"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Korn Ferry 360 集成
 
@@ -85,7 +85,7 @@ ms.locfileid: "92458874"
     > [!NOTE]
     > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [Korn Ferry 360 客户端支持团队](mailto:george.gold@kornferry.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "92458874"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Korn Ferry 360”磁贴时，应会自动登录到设置了 SSO 的 Korn Ferry 360。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在访问面板中单击“Korn Ferry 360”磁贴时，应会自动登录到设置了 SSO 的 Korn Ferry 360。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

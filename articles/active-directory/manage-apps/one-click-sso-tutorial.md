@@ -12,12 +12,12 @@ ms.date: 06/11/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: ergreenl
-ms.openlocfilehash: bec4df252a98fc105f0eec1480452021fefb0031
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dac32dd14e006b1187f62389d3bc38e3c30a890f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733672"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791453"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>单一登录的一键式应用配置
 
@@ -36,7 +36,7 @@ ms.locfileid: "121733672"
 ## <a name="prerequisites"></a>先决条件
 
 - 用于配置 SSO 的应用程序的有效订阅。 还需要管理员凭据。
-- 在浏览器中安装 Microsoft 所提供的“我的应用安全登录扩展”。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
+- 在浏览器中安装 Microsoft 所提供的“我的应用安全登录扩展”。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="one-click-sso-configuration-steps"></a>一键式 SSO 配置步骤
 
@@ -81,4 +81,4 @@ ms.locfileid: "121733672"
 ## <a name="additional-resources"></a>其他资源
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)
-- [什么是我的应用安全登录浏览器扩展？](../user-help/my-apps-portal-end-user-access.md)
+- [什么是我的应用安全登录浏览器扩展？](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)

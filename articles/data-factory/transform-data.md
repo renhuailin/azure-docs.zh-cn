@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 07/31/2018
-ms.openlocfilehash: de3f582ea6c475a3f571164133b066469f572dc4
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: 6a5500bdcf551fbbb8c3fc612606ec63bce00557
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122270977"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805956"
 ---
 # <a name="transform-data-in-azure-data-factory-and-azure-synapse-analytics"></a>在 Azure 数据工厂和 Azure Synapse Analytics 中转换数据
 
@@ -45,7 +45,7 @@ ms.locfileid: "122270977"
 
 ### <a name="mapping-data-flows"></a>映射数据流
 
-映射数据流指 Azure 数据工厂和 Azure Synapse 中以可视方式设计的数据转换。 使用数据流，数据工程师可以开发图形化数据转换逻辑，无需编写代码。 生成的数据流将作为使用横向扩展 Spark 群集的管道中的活动执行。 可以通过现有的计划、控制、流和监视功能，将数据流活动操作化。 有关详细信息，请参阅[映射数据流](concepts-data-flow-overview.md)。
+映射数据流指 Azure 数据工厂和 Azure Synapse 中以可视方式设计的数据转换。 使用数据流，数据工程师可以开发图形化数据转换逻辑，无需编写代码。 生成的数据流将作为使用横向扩展 Spark 群集的管道中的活动执行。 可以通过服务内现有的计划、控制、流和监视功能，来执行数据流活动。 有关详细信息，请参阅[映射数据流](concepts-data-flow-overview.md)。
 
 ### <a name="data-wrangling"></a>数据整理
 
@@ -62,7 +62,7 @@ Azure 数据工厂中的 Power Query 支持云规模数据整理，使你能够�
 管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。 有关此活动的详细信息，请参阅 [Hive 活动](transform-data-using-hadoop-hive.md)一文。 
 
 ### <a name="hdinsight-pig-activity"></a>HDInsight Pig 活动
-管道中的 HDInsight Pig 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 Pig 查询。 有关此活动的详细信息，请参阅 [Pig 活动](transform-data-using-hadoop-pig.md)一文。 
+管道中的 HDInsight Pig 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Pig 查询。 有关此活动的详细信息，请参阅 [Pig 活动](transform-data-using-hadoop-pig.md)一文。 
 
 ### <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce 活动
 管道中的 HDInsight MapReduce 活动会在自己或基于 Windows/Linux 的按需 HDInsight 群集上执行 MapReduce 程序。 有关此活动的详细信息，请参阅 [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)一文。
@@ -108,12 +108,12 @@ Synapse 管道中的 Azure Synapse Notebook 活动在你的 Azure Synapse 工作
 可以创建一项自定义活动，在安装了 R 的 HDInsight 群集上运行 R 脚本。 请参阅[使用 Azure 数据工厂和 Synapse 管道运行 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)。 
 
 ### <a name="compute-environments"></a>计算环境
-为计算环境创建链接服务，并在定义转换活动时使用该服务。 支持两种类型的计算环境。 
+为计算环境创建链接服务，并在定义转换活动时使用该服务。 有两种受支持的计算环境类型。 
 
-- 按需：此情况下，计算环境由该服务完全托管。 作业提交到进程数据前，该服务会自动创建计算环境，作业完成后则自动将其删除。 针对作业执行、群集管理和启动操作，可以配置和控制按需计算环境的粒度设置。 
-- 自带：此情况下，可将自己的计算环境（例如 HDInsight 群集）注册为链接服务。 计算环境由用户进行管理，该服务使用它执行活动。 
+- **按需**：此情况下，计算环境由该服务完全托管。 作业提交到进程数据前，该服务会自动创建计算环境，作业完成后则自动将其删除。 针对作业执行、群集管理和启动操作，可以配置和控制按需计算环境的粒度设置。 
+- **自带**：此情况下，可将自己的计算环境（例如 HDInsight 群集）注册为链接服务。 计算环境由用户进行管理，该服务使用它执行活动。 
 
-有关受支持的计算服务列表，请参阅[计算链接服务](compute-linked-services.md)一文。 
+有关受支持的计算服务，请参阅[计算链接服务](compute-linked-services.md)一文。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下使用转换活动的示例教程：[教程：使用 Spark 转换数据](tutorial-transform-data-spark-powershell.md)

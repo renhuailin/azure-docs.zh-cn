@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 80de8767d96cacc5fdec95f26efec88c55e2ceb3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b568b11b7e0e630dcceef53e4c0f513dc0a7732c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745684"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547550"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>设置用于 MSIX 应用附加的文件共享
 
@@ -44,12 +44,12 @@ Azure 提供了可用于 MISX 应用附加的多个存储选项。 建议使用 
 - 用于 MSIX 应用附加的存储解决方案应与会话主机位于同一数据中心位置。
 - 若要避免性能瓶颈，请从防病毒扫描中排除以下 VHD、VHDX 和 CIM 文件：
    
-    - <MSIXAppAttachFileShare\>\*.VHD
-    - <MSIXAppAttachFileShare\>\*.VHDX
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.VHD
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.VHDX
-    - <MSIXAppAttachFileShare>.CIM
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.CIM
+    - `<MSIXAppAttachFileShare\>\*.VHD`
+    - `<MSIXAppAttachFileShare\>\*.VHDX`
+    - `\\storageaccount.file.core.windows.net\share*.VHD`
+    - `\\storageaccount.file.core.windows.net\share*.VHDX`
+    - `<MSIXAppAttachFileShare>.CIM`
+    - `\\storageaccount.file.core.windows.net\share**.CIM`
 
 - 将用于 MSIX 应用附加的存储构造与 FSLogix 配置文件容器分离。
 - 所有 VM 系统帐户和用户帐户都必须具有访问文件共享的只读权限。
@@ -107,4 +107,4 @@ MSIX 应用附加文件共享的设置过程在很大程度上与 [FSLogix 配�
 - 请在 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)询问有关此功能的问题。
 - 还可以在 [Azure 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Azure 虚拟桌面的反馈。
 - [MSIX 应用附加术语表](app-attach-glossary.md)
-- [MSIX 应用附加常见问题解答](app-attach-faq.md)
+- [MSIX 应用附加常见问题解答](app-attach-faq.yml)

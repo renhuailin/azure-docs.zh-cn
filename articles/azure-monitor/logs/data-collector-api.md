@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 9c6be388d02ebec99a3ec9ad105cff68c6e3f1bd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e490d3a1b38c70e7d5ed7fa11ac5b5055225fb8b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735829"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059111"
 ---
 # <a name="send-log-data-to-azure-monitor-by-using-the-http-data-collector-api-preview"></a>使用 HTTP 数据收集器 API（预览版）将日志数据发送到 Azure Monitor
 
@@ -24,7 +24,7 @@ ms.locfileid: "121735829"
 
 Log Analytics 工作区中的所有数据都存储为具有某种特定记录类型的记录。  可以将要发送到 HTTP 数据收集器 API 的数据格式化为采用 JavaScript 对象表示法 (JSON) 的多条记录。  提交数据时，将针对请求负载中的每条记录在存储库中创建单独的记录。
 
-![阐释 HTTP 数据收集器概况的屏幕截图。](media/data-collector-api/overview.png)
+![演示 HTTP 数据收集器概况的屏幕截图。](media/data-collector-api/overview.png)
 
 ## <a name="create-a-request"></a>创建请求
 为了使用 HTTP 数据收集器 API，可以创建一个 POST 请求，其中包含要以 JSON 格式发送的数据。 接下来的三个表列出了每个请求所需的属性。 在本文的后面部分将更详细地介绍每个属性。
@@ -51,8 +51,8 @@ Log Analytics 工作区中的所有数据都存储为具有某种特定记录类
 | 授权 |授权签名。 在本文的后面部分，可以了解有关如何创建 HMAC-SHA256 标头的信息。 |
 | Log-Type |指定正在提交的数据的记录类型。 它只能包含字母、数字和下划线 (_) 字符，且长度不能超过 100 个字符。 |
 | x-ms-date |处理请求的日期，采用 RFC 7234 格式。 |
-| x-ms-AzureResourceId | 应与数据关联的 Azure 资源的资源 ID。 它将填充 [_ResourceId](./log-standard-columns.md#_resourceid) 属性，并允许数据包含在[资源-上下文](./design-logs-deployment.md#access-mode)查询中。 如果不指定此字段，则不会将数据包括在资源-上下文的查询中。 |
-| time-generated-field | 数据中包含数据项时间戳的字段名称。 如果指定某一字段，则其内容用于 TimeGenerated。 如果不指定此字段，TimeGenerated 的默认值是引入消息的时间。 消息字段的内容应遵循 ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ。 |
+| x-ms-AzureResourceId | 应与数据关联的 Azure 资源的资源 ID。 它将填充 [_ResourceId](./log-standard-columns.md#_resourceid) 属性，并允许数据包含在[资源上下文](./design-logs-deployment.md#access-mode)查询中。 如果不指定此字段，则不会将数据包含在资源上下文查询中。 |
+| time-generated-field | 数据中包含数据项时间戳的字段名称。 如果指定某个字段，则其内容将用于 TimeGenerated。 如果不指定此字段，TimeGenerated 的默认值是引入消息的时间。 消息字段的内容应遵循 ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ。 |
 | | |
 
 ## <a name="authorization"></a>授权
@@ -140,7 +140,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 | | |
 
 > [!NOTE]
-> 显示为 GUID 的字符串值将被赋予 _g 后缀并格式化为 GUID，即使传入的值不包含短划线也是如此。 例如，“8145d822-13a7-44ad-859c-36f31a84f6dd”和“8145d82213a744ad859c36f31a84f6dd”都被存储为“8145d822-13a7-44ad-859c-36f31a84f6dd”。 此字符串与另一个字符串之间的唯一区别在于名称中的 _g 和插入的短划线（如果它们未在输入中提供）。 
+> 显示为 GUID 的字符串值将被赋予 _g 后缀并格式化为 GUID，即使传入的值不包含短划线也是如此。 例如，“8145d822-13a7-44ad-859c-36f31a84f6dd”和“8145d82213a744ad859c36f31a84f6dd”都存储为“8145d822-13a7-44ad-859c-36f31a84f6dd”。 此字符串与另一个字符串之间仅有的区别在于名称中的 _g 和插入的短划线（如果它们未在输入中提供）。 
 
 Azure Monitor 对每个属性所使用的数据类型取决于新记录的记录类型是否已存在。
 
@@ -155,11 +155,11 @@ Azure Monitor 对每个属性所使用的数据类型取决于新记录的记录
 
 ![示例记录 2 的屏幕截图。](media/data-collector-api/record-02.png)
 
-但是，如果提交了下面的内容，Azure Monitor 会创建新属性 boolean_d 和 string_d。 你无法转换这些值。
+但是，如果提交了下面的内容，Azure Monitor 会创建新属性 boolean_d 和 string_d。 无法转换这些值。
 
 ![示例记录 3 的屏幕截图。](media/data-collector-api/record-03.png)
 
-如果提交了后续条目，在记录类型创建前，Azure Monitor 将创建具有以下三个属性的记录：number_s、boolean_s 和 string_s。 在此条目中，每个初始值都采用字符串的格式：
+如果在记录类型创建前提交了下面的条目，那么，Azure Monitor 将创建具有以下三个属性的记录：number_s、boolean_s 和 string_s。 在此条目中，每个初始值都采用字符串的格式：
 
 ![示例记录 4 的屏幕截图。](media/data-collector-api/record-04.png)
 
@@ -173,14 +173,14 @@ Azure Monitor 对每个属性所使用的数据类型取决于新记录的记录
 
 * 每次发布到 Azure Monitor 数据收集器 API 的数据最大为 30 MB。 这是对单次发布的大小限制。 如果单次发布的数据超过 30 MB，应将数据拆分为较小的区块，并同时发送它们。
 * 字段值最大为 32 KB。 如果字段值大于 32 KB，数据将截断。
-* 建议一个特定的类型最多有 50 个字段。 这是从可用性和搜索体验角度考虑的现实限制。  
+* 建议一个给定的类型最多有 50 个字段。 这是从可用性和搜索体验角度考虑的现实限制。  
 * Log Analytics 工作区中的表最多只支持 500 个列（本文中称为“字段”）。 
 * 列名最多包含 50 个字符。
 
 ## <a name="return-codes"></a>返回代码
 HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作已成功完成。
 
-下表列出了服务可能返回的一系列完整状态代码：
+下表列出了服务可能返回的状态代码的完整集合：
 
 | 代码 | 状态 | 错误代码 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -202,7 +202,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 | | |
 
 ## <a name="query-data"></a>查询数据
-若要查询由 Azure Monitor HTTP 数据收集器 API 提交的数据，请搜索以下记录：Type 等于指定的 LogType 值，并且附加 _CL。 例如，如果使用了 MyCustomLog，则返回具有 `MyCustomLog_CL` 的所有记录。
+若要查询由 Azure Monitor HTTP 数据收集器 API 提交的数据，请搜索以下记录：Type 等于指定的 LogType 值，并且追加了 _CL。 例如，如果使用了 MyCustomLog，则返回具有 `MyCustomLog_CL` 的所有记录。
 
 ## <a name="sample-requests"></a>示例请求
 在接下来的各部分中，将提供一些示例来演示如何使用不同的编程语言将数据提交到 Azure Monitor HTTP 数据收集器 API。
@@ -573,6 +573,7 @@ import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Calendar;
 import java.util.TimeZone;
+import java.util.Locale;
 
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 
@@ -650,9 +651,9 @@ public class ApiExample {
 
 | 替代方法 | 说明 | 最适用于 |
 |---|---|---|
-| [自定义事件](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)：Application Insights 中的基于本机 SDK 的引入 | Application Insights 通常通过应用程序中的 SDK 进行检测，提供通过“自定义事件”发送自定义数据的功能。 | <ul><li> 在应用程序中生成但不由 SDK 通过默认数据类型（请求、依赖项、异常等）之一选取的数据。</li><li> 与 Application Insights 中的其他应用程序数据最常关联的数据。 </li></ul> |
+| [自定义事件](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)：Application Insights 中的基于本机 SDK 的引入 | Application Insights（通常通过应用程序中的 SDK 进行检测）提供通过“自定义事件”发送自定义数据的功能。 | <ul><li> 在应用程序中生成但不由 SDK 通过某种默认数据类型（请求、依赖项、异常等）选取的数据。</li><li> 与 Application Insights 中的其他应用程序数据最常关联的数据。 </li></ul> |
 | Azure Monitor Logs 中的数据收集器 API | Azure Monitor Logs 中的数据收集器 API 是一种用于引入数据的完全开放式方法。 采用 JSON 对象格式的任何数据均可在此处发送。 在发送后，这些数据将进行处理，并在 Monitor Logs 中可用来与 Monitor Logs 中的其他数据关联，或与其他 Application Insights 数据进行对比。 <br/><br/> 将数据作为文件上传到 Azure Blob 存储 blob 相当容易，这些文件将会进行处理并上传到 Log Analytics。 有关示例实现，请参阅[使用数据收集器 API 创建数据管道](./create-pipeline-datacollector-api.md)。 | <ul><li> 不一定是在使用 Application Insights 检测的应用程序中生成的数据。<br>示例包括查找和事实数据表、参考数据、预先聚合的统计信息等。 </li><li> 要针对其他 Azure Monitor 数据（Application Insights、其他 Monitor Logs 数据类型、安全中心、容器见解和虚拟机等）进行交叉引用的数据。 </li></ul> |
-| [Azure 数据资源管理器](/azure/data-explorer/ingest-data-overview) | Azure 数据资源管理器现已正式发布，它是支持 Application Insights Analytics 和 Azure Monitor Logs 的数据平台。 通过使用原始形式的数据平台，你可以十分灵活地对群集的项目（Kubernetes 基于角色的访问控制 (RBAC)、保留率、架构等）执行各项操作（但需要管理开销）。 Azure 数据资源管理器提供许多[数据引入选项](/azure/data-explorer/ingest-data-overview#ingestion-methods)，其中包括 [CSV、TSV 和 JSON](/azure/kusto/management/mappings) 文件。 | <ul><li> 与 Application Insights 或 Monitor Logs 下的任何其他数据无关联的数据。 </li><li> 需要高级引入或处理功能的数据（目前在 Azure Monitor 日志中不可用）。 </li></ul> |
+| [Azure 数据资源管理器](/azure/data-explorer/ingest-data-overview) | Azure 数据资源管理器现已正式发布，它是支持 Application Insights Analytics 和 Azure Monitor Logs 的数据平台。 通过使用原始形式的数据平台，你可以十分灵活地对群集（Kubernetes 基于角色的访问控制 (RBAC)、保留率、架构等）执行各项操作（但需要管理开销）。 Azure 数据资源管理器提供许多[数据引入选项](/azure/data-explorer/ingest-data-overview#ingestion-methods)，其中包括 [CSV、TSV 和 JSON](/azure/kusto/management/mappings) 文件。 | <ul><li> 与 Application Insights 或 Monitor Logs 下的任何其他数据无关联的数据。 </li><li> 需要目前在 Azure Monitor 日志中不可用的高级引入或处理功能的数据。 </li></ul> |
 
 
 ## <a name="next-steps"></a>后续步骤

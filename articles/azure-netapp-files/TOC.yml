@@ -55,10 +55,16 @@
       href: volume-quota-introduction.md
     - name: Azure NetApp 文件网络规划指南
       href: azure-netapp-files-network-topologies.md
-    - name: Azure NetApp 文件快照的工作原理
-      href: snapshots-introduction.md
     - name: 手动 QoS 容量池
       href: manual-qos-capacity-pool-introduction.md
+    - name: Azure NetApp 文件快照的工作原理
+      href: snapshots-introduction.md
+    - name: Azure NetApp 文件备份
+      items:
+        - name: 了解 Azure NetApp 文件备份
+          href: backup-introduction.md
+        - name: Azure NetApp 文件备份的要求和注意事项
+          href: backup-requirements-considerations.md
     - name: 跨区域复制
       items:
         - name: 了解跨区域复制
@@ -173,6 +179,24 @@
               href: snapshots-revert-volume.md
             - name: 删除快照
               href: snapshots-delete.md
+        - name: 管理卷备份
+          items:
+            - name: 配置备份
+              items:
+                - name: 配置基于策略的备份
+                  href: backup-configure-policy-based.md
+                - name: 配置手动备份
+                  href: backup-configure-manual.md
+            - name: 管理备份策略
+              href: backup-manage-policies.md
+            - name: 搜索备份
+              href: backup-search.md
+            - name: 还原备份
+              href: backup-restore-new-volume.md
+            - name: 禁用备份功能
+              href: backup-disable.md
+            - name: 删除备份
+              href: backup-delete.md
         - name: 管理跨区域复制
           items:
             - name: 创建卷复制

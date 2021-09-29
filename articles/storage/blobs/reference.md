@@ -1,18 +1,18 @@
 ---
 title: Azure Blob 存储 API 参考
 description: 查找 Azure Blob 存储 API 参考、自述文件和客户端库包。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: reference
-ms.openlocfilehash: 738081a8f31e50accee17f66272b278e72544916
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 998c8ae6424d170fb0b7cf1b4556ba35da990db5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215350"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622467"
 ---
 # <a name="azure-blob-storage-api-reference"></a>Azure Blob 存储 API 参考
 
@@ -84,7 +84,7 @@ ms.locfileid: "123215350"
 
 |  版本  | 参考文档 | 源代码/自述文件 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [用于 C++ 的 Azure SDK API](https://azure.github.io/azure-sdk-for-cpp/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/storage) | [快速入门：适用于 C++ 的 Azure Blob 存储客户端库 v12](./quickstart-blobs-c-plus-plus.md) |
+| 12.x | [Azure SDK for C++ API](https://azure.github.io/azure-sdk-for-cpp/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/storage) | [快速入门：适用于 C++ 的 Azure Blob 存储客户端库 v12](./quickstart-blobs-c-plus-plus.md) |
 
 ## <a name="rest-apis"></a>REST API
 

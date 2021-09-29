@@ -3,18 +3,18 @@ title: Azure 中 VM 和规模集的自动扩展升级
 description: 了解如何为 Azure 中的虚拟机和虚拟机规模集启用自动扩展升级。
 author: mayanknayar
 ms.service: virtual-machines
-ms.subservice: automatic-extension-upgrade
+ms.subservice: extensions
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 120171f77f9b9895cf58bbadd2f475110d068ffd
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a7368ee52808dc56e3532f2edfb41e00c7737a7e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698222"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216437"
 ---
 # <a name="automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Azure 中 VM 和规模集的自动扩展升级
 

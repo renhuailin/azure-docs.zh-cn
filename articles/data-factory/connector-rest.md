@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: makromer
-ms.openlocfilehash: 16bb4ac7062c39ad57becce4d5280ed227160690
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dc9aec86e01655087a64c3ac0a494d448889f857
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311579"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733072"
 ---
 # <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 REST 终结点复制和转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -57,7 +57,7 @@ ms.locfileid: "123311579"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -92,7 +92,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码  。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -125,7 +125,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -465,7 +465,7 @@ REST 连接器作为接收器时适用于接受 JSON 的 REST API。 数据将�
 
 可以设置 delete、insert、update 和 upsert 方法，以及要发送到 REST 接收器以进行 CRUD 操作的相对行数据。
 
-![数据流 REST 接收器](media/data-flow/data-flow-sink.png)
+:::image type="content" source="media/data-flow/data-flow-sink.png" alt-text="数据流 REST 接收器":::
 
 ## <a name="sample-data-flow-script"></a>示例数据流脚本
 
@@ -586,21 +586,21 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 ### <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
 1. 转到“使用 OAuth 模板从 REST 或 HTTP 复制”模板  。 对于“源连接”，请创建新连接。 
-    ![创建新连接](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png" alt-text="创建新连接":::
 
     下面是新链接服务 (REST) 设置的关键步骤：
     
      1. 在“基 URL”下，为自己的源 REST 服务指定 URL 参数  。 
      2. 对于“身份验证类型”，请选择“匿名”   。
-        ![新建 REST 连接](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+        :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png" alt-text="新建 REST 连接":::
 
 2. 对于“目标连接”，请创建新连接。  
-    ![新建 Gen2 连接](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png" alt-text="新建 Gen2 连接":::
 
 3. 选择“使用此模板”  。
-    ![使用此模板](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png" alt-text="使用此模板":::
 
-4. 此时会看到创建的管道，如以下示例所示：![屏幕截图显示通过模板创建的管道。](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 此时会看到创建的管道，如以下示例所示：:::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png" alt-text="屏幕截图显示通过模板创建的管道。":::
 
 5. 选择“Web”活动  。 在“设置”中，指定相应的“URL”、“方法”、“标头”和“正文”，以便从要从其中复制数据的服务的登录 API 检索 OAuth 持有者令牌      。 模板中的占位符展示了 Azure Active Directory (AAD) OAuth 的示例。 请注意，REST 连接器原生支持 AAD 身份验证，这里只是 OAuth 流的一个示例。 
 
@@ -611,7 +611,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
     | 头文件 | 标头由用户定义，引用 HTTP 请求中的一个标头名称。 | 
     | 正文 | HTTP 请求的正文。 | 
 
-    ![管道](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+    管道
 
 6. 在“复制数据”活动中选择“源”选项卡。可以看到，从上一步骤检索的持有者令牌 (access_token) 将作为“其他标头”下的 Authorization 标头传递到“复制数据”活动    。 在启动管道运行之前，请确认以下属性的设置。
 
@@ -620,20 +620,20 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
     | 请求方法 | HTTP 方法。 允许的值为 Get（默认值）和 Post   。 | 
     | 其他标头 | 附加的 HTTP 请求标头。| 
 
-   ![复制源身份验证](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png" alt-text="复制源身份验证":::
 
 7. 选择“调试”，输入 **参数**，然后选择“完成”。  
-   ![管道运行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png" alt-text="管道运行"::: 
 
-8. 管道运行成功完成后，会看到类似于以下示例的结果：![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. 管道运行成功完成后，会看到类似于以下示例的结果：:::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png" alt-text="管道运行结果"::: 
 
 9. 在“操作”列中单击 WebActivity 的“输出”图标，会看到服务返回的 access_token  。
 
-   ![令牌输出](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png" alt-text="令牌输出"::: 
 
 10. 在“操作”列中单击 CopyActivity 的“输入”图标，会看到 WebActivity 检索的 access_token 已传递到 CopyActivity 进行身份验证  。 
 
-    ![令牌输入](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png" alt-text="令牌输入":::
         
     >[!CAUTION] 
     >若要避免以纯文本格式记录令牌，请在“Web”活动中启用“安全输出”，并在“复制”活动中启用“安全输入”。

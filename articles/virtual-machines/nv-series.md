@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a51801c1eafa5c3992fc0fd4fe33e55bdf8d9387
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 2243222b6e72242cd2bcb1e9746e8fc13571ca2c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696030"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818301"
 ---
 # <a name="nv-series"></a>NV 系列
 
@@ -39,7 +39,6 @@ NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可�
 
 1 GPU = 半块 M60 卡。
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -49,7 +48,9 @@ NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可�
 
 如果选择手动安装 NVIDIA GPU 驱动程序，请参阅[适用于 Windows 的 N 系列 GPU 驱动程序安装](./windows/n-series-driver-setup.md)或[适用于 Linux 的 N 系列 GPU 驱动程序安装](./linux/n-series-driver-setup.md)，了解支持的操作系统、驱动程序以及安装和验证步骤。
 
-## <a name="other-sizes"></a>其他大小
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
@@ -57,6 +58,10 @@ NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可�
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
 
 ## <a name="next-steps"></a>后续步骤
 

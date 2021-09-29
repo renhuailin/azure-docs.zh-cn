@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: 了解可用于 Azure API 管理的 Azure PowerShell 示例脚本，如“添加用户”和“输入 API”。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 10/09/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 531c42b763f234baaf6a93924979b8c7dca57423
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 055080be279c3ea0e8cf72c2e6bcfe41e3e03372
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87905799"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590594"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>适用于 API 管理的 Azure PowerShell 示例
 

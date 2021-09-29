@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkel
-ms.openlocfilehash: 1385e81b5e5a4047a23b47f39d206ea94ec4d79c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 77663500c6a3e4c432506a5859892506f8995de1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414123"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552597"
 ---
 # <a name="tutorial-mount-the-cluster"></a>教程：装载群集
 
@@ -92,7 +92,7 @@ IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在群
 
 要确保无缝装载客户端，请在装载命令中传递这些设置和参数：
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+`mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}`
 
 | 必需设置 | 说明 |
 --- | ---
@@ -101,9 +101,9 @@ IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在群
 ``mountproto=netid`` | 此选项支持对装载操作的网络错误进行适当处理。
 ``retry=n`` | 设置 ``retry=30`` 以避免瞬时装载失败。 （建议在前景装载中使用不同的值。）
 
-| 首选设置  | 说明 |
---- | ---
-``nointr``            | 如果客户端使用支持此选项的早期 OS 内核（2008 年 4 月之前），请使用此选项。 默认选项为“intr”。
+| 首选设置 | 说明 |
+| --- | --- |
+| `nointr` | 如果客户端使用支持此选项的早期 OS 内核（2008 年 4 月之前），请使用此选项。 默认选项为“intr”。 |
 
 ## <a name="next-steps"></a>后续步骤
 

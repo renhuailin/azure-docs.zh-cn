@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/17/2019
   ms.author: kefre
   ms.custom: seodec18
-  ms.openlocfilehash: 2509338fac06a182864777e2ff5825f1092f758c
-  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+  ms.openlocfilehash: b344ae378bc299a737e212205b2d85f6106424a6
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/26/2021
-  ms.locfileid: "122968811"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124824822"
 title: 计算机视觉 API 常见问题解答
 summary: >
   > [!TIP]
@@ -48,7 +48,7 @@ sections:
   - question: >
       我能否将计算机视觉 API 定型为使用自定义标记？  例如，我要提供猫品种图片来“定型”AI，然后通过 AI 请求接收品种值。
     answer: >
-      此功能目前不可用。 可以使用[自定义视觉](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/overview)来训练模型，从而检测用户定义的视觉特征。
+      此功能目前不可用。 可以使用[自定义视觉](../custom-vision-service/overview.md)来训练模型，从而检测用户定义的视觉特征。
   - question: >
       我是否可以在本地部署 OCR（读取）功能？
     answer: >

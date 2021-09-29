@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 7b32e75645c2c930e296bdb4c5448bcb16045d6d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 272575ab5fac1888e6f9c3d84317e0450447f3c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470555"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662640"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob 存储的访问层 - 热、冷和存档
 
@@ -107,7 +107,7 @@ GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之
 
 ### <a name="blob-lifecycle-management"></a>Blob 生命周期管理
 
-Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略可用于将数据转移到最适合的访问层，并在数据的生命周期结束时使数据过期。 请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](storage-lifecycle-management-concepts.md)来了解详细信息。
+Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略可用于将数据转移到最适合的访问层，并在数据的生命周期结束时使数据过期。 请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](./lifecycle-management-overview.md)来了解详细信息。
 
 > [!NOTE]
 > 存储在块 Blob 存储帐户（高级性能）中的数据目前无法使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)或使用 Azure Blob 存储生命周期管理分层到热、冷或存档访问层。
@@ -180,16 +180,14 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略
 
 ## <a name="feature-support"></a>功能支持
 
-下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) |
 | 高级块 blob          | ![否](../media/icons/no-icon.png)|![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -197,4 +195,4 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略
 
 - [如何管理 Azure 存储帐户中 Blob 的层](manage-access-tier.md)
 - [如何管理 Azure 存储帐户的默认帐户访问层](../common/manage-account-default-access-tier.md)
-- [通过自动执行 Azure Blob 存储访问层来优化成本](storage-lifecycle-management-concepts.md)
+- [通过自动执行 Azure Blob 存储访问层来优化成本](./lifecycle-management-overview.md)

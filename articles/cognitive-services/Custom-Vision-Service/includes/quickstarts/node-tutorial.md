@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: fd96054edf376ca19946fc13f9593be72ee0a0ec
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: e2b5a03fdcd82e8a8246a0b9cb29303c276ec81c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107931699"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909509"
 ---
 本指南提供说明和示例代码，以帮助你开始使用适用于 Node.js 的自定义视觉客户端库来构建图像分类模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -190,7 +190,7 @@ Results:
          Japanese Cherry: 0.01%
 ```
 
-然后，可以验证是否已正确标记（在 **<sampleDataRoot>/Test/** 中找到的）测试图像。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
+然后，可以验证是否已正确标记（在 **\<sampleDataRoot\>/Test/** 中找到的）测试图像。 也可返回到[自定义视觉网站](https://customvision.ai)，查看新创建项目的当前状态。
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 

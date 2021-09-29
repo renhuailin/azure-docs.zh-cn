@@ -18,8 +18,11 @@
         - name: 创建容器注册表 - PowerShell
           href: container-registry-get-started-powershell.md
         - name: 创建容器注册表 - ARM 模板
-          displayName: Resource Manager
+          displayName: 'Resource Manager,ARM'
           href: container-registry-get-started-geo-replication-template.md
+        - name: 创建容器注册表 - Bicep
+          displayName: 'Resource Manager,ARM'
+          href: container-registry-get-started-bicep.md
         - name: 将事件发送到事件网格 - CLI
           href: container-registry-event-grid-quickstart.md
         - name: 生成和推送 Java 映像 - CLI

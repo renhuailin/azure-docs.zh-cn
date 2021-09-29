@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: e7114dae2a9cfef4a9b710831beb63a65c862643
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 06d5821fd6841f0fce5b657a49ecbca6fe232be1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785370"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557786"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教程：使用 Hadoop 群集构建用于转换数据的第一个管道
 > [!div class="op_single_selector"]
@@ -51,7 +52,7 @@ ms.locfileid: "104785370"
 
 下面是在本教程中构建的数据工厂示例的 **图示视图**。 **MyFirstPipeline** 包含一个 Hive 类型的活动，该活动使用 **AzureBlobInput** 数据集作为输入并生成 **AzureBlobOutput** 数据集作为输出。
 
-![数据工厂教程中的图示视图](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
+:::image type="content" source="media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png" alt-text="数据工厂教程中的图示视图":::
 
 
 在本教程中，**adfgetstarted** Azure blob 容器的 **inputdata** 文件夹包含名为 input.log 的文件。 此日志文件包含三个月的条目：2016 年 1 月、2 月和 3 月。 以下是针对输入文件中的每个月的示例行。

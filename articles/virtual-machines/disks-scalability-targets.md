@@ -3,16 +3,16 @@ title: VM 磁盘的可伸缩性和性能目标
 description: 了解附加到 VM 的虚拟机磁盘的可伸缩性和性能目标。
 author: roygara
 ms.author: rogarana
-ms.date: 06/29/2021
+ms.date: 09/27/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 864716118cbb0d65c871a5a50071ff08cae0af62
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 773b4dbe5bcabc459b832f450610c395a981650a
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692273"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155149"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks"></a>VM 磁盘的可伸缩性和性能目标
 

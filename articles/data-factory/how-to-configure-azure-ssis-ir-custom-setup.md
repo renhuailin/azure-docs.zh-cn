@@ -8,12 +8,12 @@ author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/30/2021
-ms.openlocfilehash: ec309debca7d3852411318ed56a914d47494fe2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 626afa6926dea10a633a5c7d5438ec8b8c578b6a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735325"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798648"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的安装
 
@@ -74,40 +74,40 @@ ms.locfileid: "121735325"
 
    a. 在“本地和附加”下面，右键单击“存储帐户”并选择“连接到 Azure 存储”。
 
-      ![连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png" alt-text="连接到 Azure 存储":::
 
    b. 依次选择“存储帐户或服务”、“帐户名称和密钥”，然后选择“下一步”。
 
    c. 输入 Azure 存储帐户名和密钥，并依次选择“下一步”、“连接”。 
 
-      ![提供存储帐户名称和密钥](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png" alt-text="提供存储帐户名称和密钥":::
 
    d. 在已连接的 Azure 存储帐户下面，右键单击“Blob 容器”，选择“创建 Blob 容器”，并为新 Blob 容器命名。 
 
-      ![创建 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png" alt-text="创建一个 blob 容器":::
 
    e. 选择新 Blob 容器并上传自定义安装脚本及其关联的文件。 请务必将“main.cmd”上传到 Blob 容器的顶级目录，而不要上传到任何文件夹中。 Blob 容器应该仅包含所需的自定义安装程序文件，以便稍后将这些文件下载到 Azure-SSIS IR 时不会花费太长的时间。 自定义安装的最大持续时间目前设置为 45 分钟，45 分钟后会超时。这包括从 Blob 容器下载所有文件并将其安装在 Azure-SSIS IR 上所花费的时间。 如果安装需要更长的时间，请提交支持票证。
 
-      ![将文件上传到 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png" alt-text="将文件上传到 Blob 容器":::
 
    f. 右键单击 Blob 容器，然后选择“获取共享访问签名”。
 
-      ![获取 Blob 容器的共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png" alt-text="获取 Blob 容器的共享访问签名":::
 
    g. 为 Blob 容器创建一个过期时间足够长且拥有读取/写入/列出权限的 SAS URI。 你需要使用该 SAS URI 来下载并运行自定义安装程序脚本及其关联文件。 每当将 Azure-SSIS IR 的任何节点重置映像或重启时，都会发生这种情况。 你还需要拥有写入权限才能上传安装执行日志。
 
       > [!IMPORTANT]
       > 确保在 Azure-SSIS IR 的整个生命周期内（从创建到删除），尤其是在此期间你经常停止并启动 Azure-SSIS IR 时，SAS URI 不会过期，并且自定义安装资源始终可用。
 
-      ![生成 Blob 容器的共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png" alt-text="生成 Blob 容器的共享访问签名":::
 
-   h. 复制并保存 Blob 容器的 SAS URI。
+   h.如果该值不存在，请单击“添加行”。 复制并保存 Blob 容器的 SAS URI。
 
-      ![复制并保存共享访问签名](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png" alt-text="复制并保存共享访问签名":::
 
 1. 在“Integration Runtime 安装程序”窗格的“高级设置”页上选中“使用其他系统配置/组件安装来自定义 Azure-SSIS Integration Runtime”复选框。 接下来，请在“自定义安装程序容器 SAS URI”文本框中输入 Blob 容器的 SAS URI。
 
-   ![包含自定义安装的高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png" alt-text="包含自定义安装的高级设置":::
 
 标准自定义安装程序完成并且 Azure-SSIS IR 启动之后，可在 Blob 容器的“main.cmd.log”文件夹中找到所有自定义安装程序日志。 它们包括 main.cmd 的标准输出和其他执行日志。
 
@@ -269,7 +269,7 @@ ms.locfileid: "121735325"
 
    a. 在“本地和附加”下面，右键单击“存储帐户”并选择“连接到 Azure 存储”。
 
-      ![连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png" alt-text="连接到 Azure 存储":::
 
    b. 依次选择“Blob 容器”、“共享访问签名 URL (SAS)”，然后选择“下一步”。
 
@@ -283,7 +283,7 @@ ms.locfileid: "121735325"
 
       * 一个 *UserScenarios* 文件夹，其中包含实际用户方案中的多个自定义安装示例。 若要在 Azure-SSIS IR 上安装多个示例，则可以将其自定义安装脚本 (main.cmd) 文件合并到一个文件中，并将其与所有相关文件一起上传到 Blob 容器中。
 
-        ![公共预览版 Blob 容器的内容](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
+        :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png" alt-text="公共预览版 Blob 容器的内容":::
 
    e. 双击“UserScenarios”文件夹以查找以下项：
 
@@ -343,7 +343,7 @@ ms.locfileid: "121735325"
       
         首先，[下载最新的 Zulu OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/)（例如“zulu8.33.0.1-jdk8.0.192-win_x64.zip”），然后将其连同“main.cmd”和“install_openjdk.ps1”一起上传到 Blob 容器中。
 
-        ![用户方案文件夹中的文件夹](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
+        :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png" alt-text="用户方案文件夹中的文件夹":::
 
    f. 若要重用这些标准自定义安装示例，请将选定文件夹的内容复制到 Blob 容器中。
 

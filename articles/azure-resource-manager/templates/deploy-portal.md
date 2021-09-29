@@ -3,12 +3,12 @@ title: 使用 Azure 门户部署资源
 description: 使用 Azure 门户和 Azure 资源管理器将资源部署到订阅中的资源组。
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 718d8be4e51bf41467bea398440b24f98ac1f6e9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 03b1cda06bf6865dda1b8d40096f6b76588d8184
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957891"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762182"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>使用 ARM 模板和 Azure 门户部署资源
 
@@ -126,6 +126,5 @@ ms.locfileid: "111957891"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要查看审核日志，请参阅[使用资源管理器审核操作](../management/view-activity-logs.md)。
 - 若要排查部署错误，请参阅[查看部署操作](deployment-history.md)。
 - 若要从部署或资源组中导出模板，请参阅[导出 ARM 模板](export-template-portal.md)。

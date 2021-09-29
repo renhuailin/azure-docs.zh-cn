@@ -1,15 +1,15 @@
 ---
 title: 为企业采用 Azure 开发测试实验室
 description: 本文提供在企业中采用 Azure 开发测试实验室的规范性指导。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 81767c36b2a5b46eb41be1e516a14fb3ebe3fb7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e5be75d7049d9cfdc97a764fdca8d1e63876aaf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85476982"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671158"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>企业中的开发测试实验室
 鉴于云具有敏捷、灵活、经济等许多[优势](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case)，企业采用云的态势越来越快。 首先，通常要开发和测试工作负载。 Azure 开发测试实验室提供有利于企业并支持[关键开发/测试方案](devtest-lab-guidance-get-started.md)的[功能](devtest-lab-concepts.md)。

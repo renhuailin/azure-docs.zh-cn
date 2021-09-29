@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 88492d914b710c7a738dd6d7f501e22d490065b6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: af5a1a8353435d9f54b28bce46897f55f8b560a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833807"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812660"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
 
@@ -433,7 +433,7 @@ Azure 自动化中的每个图形 Runbook 都有草稿版和发布版。 只能�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始使用图形 Runbook，请参阅[教程：创建图形 Runbook](learn/automation-tutorial-runbook-graphical.md)。
+* 若要开始使用图形 Runbook，请参阅[教程：创建图形 Runbook](./learn/powershell-runbook-managed-identity.md)。
 * 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)。
 * 若要了解如何使用自动化运行方式帐户进行身份验证，请参阅[运行方式帐户](automation-security-overview.md#run-as-account)。
 * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation/#automation)。

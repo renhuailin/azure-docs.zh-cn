@@ -3,16 +3,17 @@ title: Azure 数据工厂中数据管理网关的高可用性
 description: 本文介绍如何通过添加更多节点向外扩展数据管理网关，以及如何通过增加可在节点上运行的并发作业数纵向扩展数据管理网关。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a76479a358366591d1c4edef0755dd26ce23cd81
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 5274c7fe926b1766d0b7767b2b44718a33139b97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289866"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658519"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 > [!NOTE]
@@ -40,7 +41,7 @@ ms.locfileid: "112289866"
 ## <a name="architecture"></a>体系结构 
 下图概述了数据管理网关的可伸缩性和可用性功能的体系结构： 
 
-![数据管理网关 - 高可用性和可伸缩性](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png" alt-text="数据管理网关 - 高可用性和可伸缩性":::
 
 逻辑网关是向 Azure 门户中数据工厂添加的网关。 之前，只能将逻辑网关与一台已安装数据管理网关的本地 Windows 计算机相关联。 这个本地网关计算机被称为节点。 现在，可至多将 4 个物理节点与一个逻辑网关相关联。 包含多个节点的逻辑网关被称为多节点网关。  
 
@@ -61,31 +62,31 @@ ms.locfileid: "112289866"
 
 1. 在[演练](data-factory-move-data-between-onprem-and-cloud.md#create-gateway)中创建逻辑网关时，请启用高可用性和可伸缩性功能。 
 
-    ![数据管理网关 - 启用高可用性和可伸缩性](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-enable-high-availability-scalability.png" alt-text="数据管理网关 - 启用高可用性和可伸缩性":::
 2. 在“配置”页中使用“快速安装”或“手动安装”链接，在第一个节点（本地 Windows 计算机）上安装网关。
 
-    ![数据管理网关 - 快速安装或手动安装](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-express-manual-setup.png" alt-text="数据管理网关 - 快速安装或手动安装":::
 
     > [!NOTE]
     > 如果使用快速安装选项，则在未加密的情况下进行节点到节点通信。 节点名与计算机名相同。 如果需要加密节点到节点的通信或想要指定自己的节点名，请使用手动安装。 稍后不能编辑节点名称。
 3. 如果选择快速安装
     1. 网关成功安装后，会看到以下消息：
 
-        ![数据管理网关 - 快速安装成功](media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/express-setup-success.png" alt-text="数据管理网关 - 快速安装成功":::
     2. 按照[这些说明](data-factory-data-management-gateway.md#configuration-manager)启动网关的数据管理配置管理器。 将看到网关名称、节点名称、状态等。
 
-        ![显示可以在哪里看到网关名称、节点名称和状态的屏幕截图。](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png" alt-text="显示可以在哪里看到网关名称、节点名称和状态的屏幕截图。":::
 4. 如果选择手动安装：
     1. 从 Microsoft 下载中心下载安装包，然后运行它以在计算机上安装网关。
     2. 在“配置”页中使用身份验证密钥注册网关。
     
-        ![显示在何处使用身份验证密钥的屏幕截图。](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-authentication-key.png" alt-text="显示在何处使用身份验证密钥的屏幕截图。":::
     3. 在“新建网关节点”页中，可为网关节点提供自定义名称。 默认情况下，节点名与计算机名相同。    
 
-        ![数据管理网关 - 指定名称](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-name.png" alt-text="数据管理网关 - 指定名称":::
     4. 在下一页中，可以选择是否“对节点到节点的通信启用加密”。 单击“跳过”禁用加密（默认）。
 
-        ![数据管理网关 - 启用加密](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png)  
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-node-encryption.png" alt-text="数据管理网关 - 启用加密":::  
     
         > [!NOTE]
         > 仅当逻辑网关中只有一个网关节点时支持更改加密模式。 若要在网关包含多个节点时更改加密模式，请执行以下步骤：保留一个节点、删除其他所有节点，然后更改加密模式，继而再次添加这些节点。
@@ -93,35 +94,35 @@ ms.locfileid: "112289866"
         > 关于使用 TLS/SSL 证书的要求的列表，请参阅 [TLS/SSL 证书要求](#tlsssl-certificate-requirements)。 
     5. 网关安装成功后，单击“启动配置管理器”：
     
-        ![手动安装 - 启动配置管理器](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png" alt-text="手动安装 - 启动配置管理器":::     
     6. 将在节点（本地 Windows 计算机）中看到数据管理网关配置管理器，它显示连接状态、网关名称和节点名称。  
 
-        ![数据管理网关 - 安装成功](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png" alt-text="数据管理网关 - 安装成功":::
 
         > [!NOTE]
         > 如果要在 Azure VM 上预配网关，可以使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/mutiple-vms-with-data-management-gateway)。 此脚本创建逻辑网关，设置安装有数据管理网关软件的 VM，并将它们注册到逻辑网关。 
 6. 在 Azure 门户中启动“网关”页： 
     1. 在门户的数据工厂主页上单击“链接的服务”。
     
-        ![突出显示“链接服务”磁贴的屏幕截图。](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png" alt-text="突出显示“链接服务”磁贴的屏幕截图。":::
     2. 选择“网关”查看“网关”页：
     
-        ![数据工厂主页](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png" alt-text="数据工厂主页":::
     4. 将看到“网关”页：   
 
-        ![单节点网关视图](media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png) 
+        :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png" alt-text="单节点网关视图"::: 
 7. 单击工具栏上的“添加节点”，向逻辑网关添加一个节点。 如果计划使用快速安装，请从将作为节点添加到网关的本地计算机上执行此步骤。 
 
-    ![数据管理网关 - 添加节点菜单](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png" alt-text="数据管理网关 - 添加节点菜单":::
 8. 步骤与设置第一个节点类似。 如果选择手动安装选项，配置管理器 UI 将允许设置节点名称： 
 
-    ![配置管理器 - 安装第二个网关](media/data-factory-data-management-gateway-high-availability-scalability/install-second-gateway.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/install-second-gateway.png" alt-text="配置管理器 - 安装第二个网关":::
 9. 在节点上成功安装网关后，配置管理器工具将显示以下屏幕：  
 
-    ![配置管理器 - 成功安装第二个网关](media/data-factory-data-management-gateway-high-availability-scalability/second-gateway-installation-successful.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/second-gateway-installation-successful.png" alt-text="配置管理器 - 成功安装第二个网关":::
 10. 如果在门户中打开“网关”页，现将看到两个网关节点： 
 
-    ![门户中的两节点网关](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png" alt-text="门户中的两节点网关":::
 11. 若要删除网关节点，请单击工具栏上的“删除节点”，选择要删除的节点，然后在工具栏中单击“删除”。 此操作将从组中删除所选节点。 请注意，此操作不会从节点（本地 Windows 计算机）删除数据管理网关软件。 在本地计算机的“控制面板”中通过“添加或删除程序”即可卸载网关。 从节点卸载网关时，将在门户中自动删除它。   
 
 ## <a name="upgrade-an-existing-gateway"></a>升级现有网关
@@ -130,18 +131,18 @@ ms.locfileid: "112289866"
 1. 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 安装包，将本地计算机上的网关升级为最新版。 有关详细信息，请参阅[安装](data-factory-data-management-gateway.md#installation)部分。  
 2. 导航到 Azure 门户。 启动数据工厂的“数据工厂”页。 单击“链接的服务”磁贴以启动“链接的服务”页。 选择网关以启动“网关”页。 单击并启用“预览功能”，如下图所示： 
 
-    ![数据管理网关 - 启用预览功能](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png" alt-text="数据管理网关 - 启用预览功能":::   
 2. 在门户中启用预览功能后，请关闭所有页面。 重新打开“网关”页即可查看新的预览用户界面 (UI)。
  
-    ![数据管理网关 - 成功启用预览功能](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview-success.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview-success.png" alt-text="数据管理网关 - 成功启用预览功能":::
 
-    ![数据管理网关 - 预览 UI](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-preview.png" alt-text="数据管理网关 - 预览 UI":::
 
     > [!NOTE]
     > 升级期间，第一个节点的名称为计算机的名称。 
 3. 现添加一个节点。 在“网关”页中单击“添加节点”。  
 
-    ![数据管理网关 - 添加节点菜单](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
+    :::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png" alt-text="数据管理网关 - 添加节点菜单":::
 
     按照上一节中的说明来设置节点。 
 
@@ -174,7 +175,7 @@ ms.locfileid: "112289866"
 ### <a name="multi-node-gateway-monitoring"></a>多节点网关监视
 在 Azure 门户中，可以查看每个节点上资源使用情况（CPU、内存、网络（进/出）等）的近乎实时的快照以及网关节点状态。 
 
-![数据管理网关 - 多节点监视](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png" alt-text="数据管理网关 - 多节点监视":::
 
 可在“网关”页中启用“高级设置”以查看网络（进/出）、角色和凭据状态等高级指标，这有助于调试网关问题以及并发作业数（运行中/上限），可在性能优化期间相应地更改并发作业数。 下表介绍“网关节点”列表中的列：  
 
@@ -189,7 +190,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 并发作业数（运行中/上限） | 每个节点上运行的作业或任务数。 此值为近实时快照。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU/内存/网络未充分利用但活动超时的高级方案中，你可以增加限制以纵向扩展并发作业的执行。此功能也适用于单节点网关，即使可伸缩性和可用性功能未启用也是如此。 有关详细信息，请参阅[扩展注意事项](#scale-considerations)部分。 
 角色 | 角色有两种类型：调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中请求任务/作业，并分派到其他辅助节点（包括其本身）。 
 
-![数据管理网关 - 高级多节点监视](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png" alt-text="数据管理网关 - 高级多节点监视":::
 
 ### <a name="gateway-status"></a>网关状态
 
@@ -210,15 +211,15 @@ Offline | 节点处于脱机状态。
 :----- | :-------
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
-脱机 | 没有节点处于联机状态。
+Offline | 没有节点处于联机状态。
 受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。 
 
 ### <a name="pipeline-activities-monitoring"></a>管道/活动监视
 Azure 门户提供具有粒度节点级别详情的管道监视体验。 例如显示每个节点上运行的活动。 此信息有助于了解特定节点上的性能问题，例如因网络限制而引起的。 
 
-![数据管理网关 - 针对管道的多节点监视](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-pipelines.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-pipelines.png" alt-text="数据管理网关 - 针对管道的多节点监视":::
 
-![数据管理网关 - 管道详细信息](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-pipeline-details.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-pipeline-details.png" alt-text="数据管理网关 - 管道详细信息":::
 
 ## <a name="scale-considerations"></a>扩展注意事项
 
@@ -228,7 +229,7 @@ Azure 门户提供具有粒度节点级别详情的管道监视体验。 例如�
 ### <a name="scale-up"></a>纵向扩展
 如果可用内存和 CPU 未充分利用，但空闲容量为 0，应通过增加节点上可运行的并发作业数进行纵向扩展。 此外，活动因网关重载而超时时，可能也需要进行扩展。 如下图所示，可以增加节点的最大容量。 建议从加倍开始。  
 
-![数据管理网关 - 扩展注意事项](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png)
+:::image type="content" source="media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png" alt-text="数据管理网关 - 扩展注意事项":::
 
 
 ## <a name="known-issuesbreaking-changes"></a>已知问题/重大更改

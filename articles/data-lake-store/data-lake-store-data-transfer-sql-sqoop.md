@@ -1,18 +1,17 @@
 ---
 title: 在 Data Lake Storage Gen1 和 Azure SQL 之间复制数据 - Sqoop | Microsoft Docs
 description: 使用 Sqoop 在 Azure SQL 数据库和 Azure Data Lake Storage Gen1 之间复制数据
-services: data-lake-store
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
-ms.author: twooley
-ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: e19a8e25ef879bef5c50f371e458127e534a2beb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92109181"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648119"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL 数据库之间复制数据
 
@@ -105,7 +104,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经将 HDInsight 群
     sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
     ```
 
-1. 验证数据是否已经传输到 Data Lake Storage Gen1 帐户。 运行下面的命令：
+1. 验证数据是否已经传输到 Data Lake Storage Gen1 帐户。 运行以下命令：
 
     ```console
     hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/

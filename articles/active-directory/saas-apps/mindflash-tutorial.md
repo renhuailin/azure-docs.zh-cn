@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 4fbc79723dd484148ddf2f8836848aa9bc333341
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d776c245600691db24d80ecb705d8bf14d8fd1ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522578"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>教程：Azure Active Directory 与 Mindflash 的集成
 
@@ -177,17 +177,17 @@ ms.locfileid: "92522578"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-mindflash-test-user"></a>创建 Mindflash 测试用户
+### <a name="create-mindflash-test-user&quot;></a>创建 Mindflash 测试用户
 
 为了使 Azure AD 用户能够登录到 Mindflash，必须将其预配到 Mindflash 中。 对于 Mindflash，需要手动执行预配。
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
+### <a name=&quot;to-provision-a-user-accounts-perform-the-following-steps&quot;></a>若要预配用户帐户，请执行以下步骤：
 
 1. 以管理员身份登录到你的 **Mindflash** 公司站点。
 
 1. 转到“管理用户”。 
    
-    ![管理用户](./media/mindflash-tutorial/ic787140.png "管理用户")
+    ![管理用户](./media/mindflash-tutorial/ic787140.png &quot;管理用户")
 
 1. 单击 **“添加用户”**，然后单击 **“新建”**。
 
@@ -211,7 +211,7 @@ ms.locfileid: "92522578"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Mindflash 磁贴时，应会自动登录到为其设置了 SSO 的 Mindflash。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 Mindflash 磁贴时，应会自动登录到为其设置了 SSO 的 Mindflash。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

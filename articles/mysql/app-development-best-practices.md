@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 1ec3d86ea66e436732cd8d1044c0658238ba781f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 22f17c59b93a3defd6c372eb6a871496850ba122
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113086255"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670759"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>使用 Azure Database for MySQL 构建应用程序的最佳做法
 
@@ -45,7 +45,7 @@ ms.locfileid: "113086255"
 
 若要计算 `tmp_table_size` 和 `max_heap_table_size` 的最大可能大小，请使用以下公式：
 
-```(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections```
+`(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections`
 
 > [!NOTE]
 > 总内存指的是服务器在预配的 Vcore 中具有的内存总量。  例如，在常规用途的双 vCore Azure Database for MySQL 服务器中，总内存为 5 GB * 2。 可以在[定价层](./concepts-pricing-tiers.md)文档中找到有关每个层的内存的更多详细信息。
@@ -125,7 +125,7 @@ show global status like 'created_tmp_tables';
 
 若要计算查询溢出到磁盘的工作负荷所占百分比，请在以下公式中使用指标值：
 
-```(created_tmp_disk_tables / (created_tmp_disk_tables + created_tmp_tables)) * 100```
+`(created_tmp_disk_tables / (created_tmp_disk_tables + created_tmp_tables)) * 100`
 
 理想情况下，此百分比应小于 25%。 如果看到百分比为 25% 或更大，则建议修改两个服务器参数：tmp_table_size 和 max_heap_table_size。
 

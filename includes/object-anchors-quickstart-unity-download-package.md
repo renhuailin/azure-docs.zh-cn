@@ -4,12 +4,12 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 06/10/2021
 ms.author: crtreasu
-ms.openlocfilehash: 8ad55355307cfc8656b6f6bf9b074d90daf7e2e8
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: f358fc0d82fe28dd06a0102afcfde7ff29fd9ffe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006882"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796969"
 ---
 下一步是下载适用于 Unity 的 Azure Object Anchors 包。
 
@@ -38,6 +38,6 @@ Azure Object Anchors 包将下载到运行该命令的文件夹。
 
 # <a name="install-with-mixed-reality-feature-tool-beta"></a>[使用混合现实功能工具（beta 版本）进行安装](#tab/unity-package-mixed-reality-feature-tool)
 
-继续执行下一步。 在稍后的步骤中将使用<a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>。
+继续执行下一步。 在稍后的步骤中将使用<a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>。
 
 ---

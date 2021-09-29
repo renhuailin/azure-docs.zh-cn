@@ -7,24 +7,24 @@ ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 52a1931ec567d03d0beaaf9180532a91ff6bed07
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 951bf6704d68ae292b835a5528d099d634eb4226
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259466"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589409"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
 
 本文介绍使用 Azure 文件同步扩展 Windows Server 存储容量的基本步骤。虽然本教程讲述充当 Azure 虚拟机 (VM) 的 Windows Server，但通常会针对本地服务器执行此过程。 若要了解如何在自己的环境中部署 Azure 文件同步，可参阅[部署 Azure 文件同步](file-sync-deployment-guide.md)一文。
 
 > [!div class="checklist"]
-> * 部署存储同步服务
-> * 准备 Windows Server，用于 Azure 文件同步
-> * 安装 Azure 文件同步代理
-> * 将 Windows Server 注册到存储同步服务
-> * 创建同步组和云终结点
-> * 创建服务器终结点
+> - 部署存储同步服务
+> - 准备 Windows Server，用于 Azure 文件同步
+> - 安装 Azure 文件同步代理
+> - 将 Windows Server 注册到存储同步服务
+> - 创建同步组和云终结点
+> - 创建服务器终结点
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "123259466"
 
 ### <a name="create-a-folder-and-txt-file"></a>创建文件夹和 .txt 文件
 
-请在本地计算机上创建名为 _FilesToSync_ 的新文件夹，并添加名为 _mytestdoc.txt_ 的文本文件。 在本教程后面需将该文件上传到文件共享。
+请在本地计算机上创建名为 *FilesToSync* 的新文件夹，并添加名为 *mytestdoc.txt* 的文本文件。 在本教程后面需将该文件上传到文件共享。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -61,7 +61,7 @@ ms.locfileid: "123259466"
 
     ![选择”添加文件共享”按钮](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. 将新文件共享命名为 _afsfileshare_。 输入“5120”作为“配额”，然后选择“创建” 。 配额最高可为 100 TiB，但本教程只需 5 GB。
+1. 将新文件共享命名为 *afsfileshare*。 输入“5120”作为“配额”，然后选择“创建” 。 配额最高可为 100 TiB，但本教程只需 5 GB。
 
     ![为新文件共享提供名称和配额](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "123259466"
 
     ![上传文件](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
-1. 浏览到在其中创建了 .txt 文件的 _FilesToSync_ 文件夹，选择 _mytestdoc.txt_，然后选择“上传”。 
+1. 浏览到在其中创建了 .txt 文件的 *FilesToSync* 文件夹，选择 *mytestdoc.txt*，然后选择“上传”。 
 
     ![浏览文件共享](./media/storage-sync-files-extend-servers/create-file-share-portal6.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "123259466"
 
    ![在门户边栏选项卡上输入 VM 的基本信息](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
-1. 在“实例详细信息”下提供一个 VM 名称  。 例如，使用 _myVM_ 作为名称。
+1. 在“实例详细信息”下提供一个 VM 名称  。 例如，使用 *myVM* 作为名称。
 1. 请勿更改“区域”、“可用性选项”、“映像”和“大小”的默认设置。    
 1. 在“管理员帐户”下，提供 VM 的“用户名”和“密码”。   
 1. 在“入站端口规则”  下，选择“允许所选端口”  ，然后从下拉菜单中选择“RDP (3389)”  和“HTTP”  。
@@ -102,7 +102,7 @@ ms.locfileid: "123259466"
       ![数据磁盘详细信息](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
    1. 选择“确定”  。
-1. 选择“查看 + 创建”  。
+1. 选择“查看 + 创建”。
 1. 选择“创建”  。
 
    可以选择“通知”图标，观察 **部署进度**。  创建新的 VM 可能需要数分钟才能完成。
@@ -140,7 +140,7 @@ ms.locfileid: "123259466"
 
    ![服务器管理器 UI 左侧的“本地服务器”](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-1.png)
 
-1. 在“属性”窗格上，选择“IE 增强的安全性配置”的链接   。  
+1. 在“属性”窗格上，选择“IE 增强的安全性配置”的链接   。
 
     ![服务器管理器 UI 中的“IE 增强的安全配置”窗格](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-2.png)
 
@@ -164,9 +164,9 @@ ms.locfileid: "123259466"
    目前已将磁盘联机并创建一个卷。 在 Windows Server VM 中打开文件资源管理器，确认存在最近添加的数据磁盘。
 
 1. 在 VM 的文件资源管理器中展开“此电脑”，然后打开新驱动器  。 在此示例中，它是 F: 驱动器。
-1. 右键单击并选择“新建”   >   “文件夹”。 将文件夹命名为 _FilesToSync_。
+1. 右键单击并选择“新建”   >   “文件夹”。 将文件夹命名为 *FilesToSync*。
 1. 打开 **FilesToSync** 文件夹。
-1. 右键单击并选择“新建”   >   “文本文档”。 将文本文件命名为 _MyTestFile_。
+1. 右键单击并选择“新建”   >   “文本文档”。 将文本文件命名为 *MyTestFile*。
 
     ![添加新的文本文件](media/storage-sync-files-extend-servers/new-file.png)
 
@@ -217,9 +217,9 @@ ms.locfileid: "123259466"
 
    | 值 | 说明 |
    | ----- | ----- |
-   | **名称** | 存储同步服务的唯一名称（按订阅）。<br><br>就本教程来说，请使用 _afssyncservice02_。 |
+   | **名称** | 存储同步服务的唯一名称（按订阅）。<br><br>就本教程来说，请使用 *afssyncservice02*。 |
    | **订阅** | 用于本教程的 Azure 订阅。 |
-   | **资源组** | 包含存储同步服务的资源组。<br><br>就本教程来说，请使用 _afsresgroup101918_。 |
+   | **资源组** | 包含存储同步服务的资源组。<br><br>就本教程来说，请使用 *afsresgroup101918*。 |
    | **位置** | 美国东部 |
 
 1. 完成后请选择“创建”，部署 **存储同步服务**  。
@@ -262,8 +262,8 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
    | 值 | 说明 |
    | ----- | ----- |
    | **Azure 订阅** | 包含本教程的存储同步服务的订阅。 |
-   | **资源组** | 包含存储同步服务的资源组。 就本教程来说，请使用 _afsresgroup101918_。 |
-   | **存储同步服务** | 存储同步服务的名称。 就本教程来说，请使用 _afssyncservice02_。 |
+   | **资源组** | 包含存储同步服务的资源组。 就本教程来说，请使用 *afsresgroup101918*。 |
+   | **存储同步服务** | 存储同步服务的名称。 就本教程来说，请使用 *afssyncservice02*。 |
 
 1. 选择“注册”，完成服务器注册。 
 1. 在注册过程中，系统会提示进行其他登录。 登录并选择“下一步”。 

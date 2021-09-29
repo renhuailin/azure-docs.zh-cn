@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 85a4305abf1708d45627f775a583ae219db22b8e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 7c984f418ba35290f9c482efad83f3dd4d06c9b8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693985"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823547"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -532,7 +532,7 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
 
 需要显式出站连接的常见方案包括： 
 
-- Windows VM 激活要求你已定义从 VM 实例到 Windows 激活密钥管理服务 (KMS) 的出站连接。 有关详细信息，请参阅[排查 Windows VM 激活问题](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)。  
+- Windows VM 激活要求你已定义从 VM 实例到 Windows 激活密钥管理服务 (KMS) 的出站连接。 有关详细信息，请参阅[排查 Windows VM 激活问题](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)。  
 - 访问存储帐户或 Key Vault。 你还可以通过[专用链接](../private-link/private-link-overview.md)与 Azure 服务建立连接。 
 
 有关定义安全出站连接的更多详细信息，请参阅 [Azure 中的默认出站访问](https://aka.ms/defaultoutboundaccess)。

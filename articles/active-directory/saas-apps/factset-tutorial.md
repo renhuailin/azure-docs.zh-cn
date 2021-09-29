@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c7ca80697f0cf42c94241736ba21a8f12521722b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5dfd36891c52fb85ea7b7921f82059ed629158b8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473238"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835414"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-factset"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FactSet 的集成
 
@@ -128,7 +128,7 @@ ms.locfileid: "110473238"
 
 * 在 Azure 门户中单击“测试此应用程序”，你会自动登录到为其设置了 SSO 的 FactSet。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 FactSet 磁贴时，你会自动登录到为其设置了 SSO 的 FactSet。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 FactSet 磁贴时，你会自动登录到为其设置了 SSO 的 FactSet。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

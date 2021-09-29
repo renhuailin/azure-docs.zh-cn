@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/27/2021
 ms.author: banders
-ms.openlocfilehash: 7388ee42195d93a9b7d9a64567f25be91b0eb38d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 73f40b059e5577ba893b26ab715a8158e3a33482
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111949"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836903"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>将 Azure 订阅更改为其他套餐
 
@@ -108,7 +108,7 @@ Azure 套餐是用户拥有的 Azure 订阅 *类型*。 例如，[具有即用�
 
 #### <a name="quota-increases-are-reset"></a>配额增加被重置
 
-切换套餐时将重置任何[超过默认限制的限额或配额增加](../../azure-portal/supportability/resource-manager-core-quotas-request.md)。 即使更多资源超出默认限制也不会中断服务。 例如，如果订阅使用 200 个内核，那么切换套餐会将内核配额重置回默认的 20 个内核。 使用 200 个内核的 VM 不受影响，将继续运行。 但如果不提出其他增加配额的请求，则将无法预配更多内核。
+切换套餐时将重置任何[超过默认限制的限额或配额增加](../../azure-portal/supportability/regional-quota-requests.md)。 即使更多资源超出默认限制也不会中断服务。 例如，如果订阅使用 200 个内核，那么切换套餐会将内核配额重置回默认的 20 个内核。 使用 200 个内核的 VM 不受影响，将继续运行。 但如果不提出其他增加配额的请求，则将无法预配更多内核。
 
 #### <a name="billing"></a>计费
 

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: baselden
 author: BarbaraSelden
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f2ae8a38305b74f2bccba55b02d98626b5afc1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f8198b7f4bbb7c710e899349766d0345655d7f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724842"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633424"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>规划 Azure Active Directory 设备部署
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 * 改善用户体验 - 通过 Azure AD 中的设备标识，可以支持用户从个人和公司设备轻松访问组织中基于云的资源。 管理员可以启用[企业状态漫游](enterprise-state-roaming-overview.md)，在所有 Windows 设备上提供统一体验。
 
-* 简化部署和管理 - 可通过设备标识管理简化使用以下资源将设备引入 Azure AD 的过程：[Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)、[批量预配](/mem/intune/enrollment/windows-bulk-enroll)和[自助服务：全新安装体验 (OOBE)](../user-help/user-help-join-device-on-network.md)。 你可以使用移动设备管理 (MDM) 工具（如 [Microsoft Intune](/mem/intune/fundamentals/what-is-intune)）及其在 [Azure 门户](https://portal.azure.com/)中的标识来管理这些设备。
+* 简化部署和管理 - 可通过设备标识管理简化使用以下资源将设备引入 Azure AD 的过程：[Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)、[批量预配](/mem/intune/enrollment/windows-bulk-enroll)和[自助服务：全新安装体验 (OOBE)](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)。 你可以使用移动设备管理 (MDM) 工具（如 [Microsoft Intune](/mem/intune/fundamentals/what-is-intune)）及其在 [Azure 门户](https://portal.azure.com/)中的标识来管理这些设备。
 
 ### <a name="training-resources"></a>培训资源
 
@@ -149,7 +149,7 @@ BYOD 和公司拥有的移动设备由安装公司门户应用的用户注册。
 
 * [Azure AD 注册设备](concept-azure-ad-register.md)的概述。
 
-* 关于[在组织的网络上注册个人设备](../user-help/user-help-register-device-on-network.md)的最终用户文档。
+* 关于[在组织的网络上注册个人设备](https://support.microsoft.com/account-billing/register-your-personal-device-on-your-work-or-school-network-8803dd61-a613-45e3-ae6c-bd1ab25bf8a8)的最终用户文档。
 
 ## <a name="azure-ad-join"></a>Azure AD 加入
 
@@ -171,7 +171,7 @@ BYOD 和公司拥有的移动设备由安装公司门户应用的用户注册。
 
 如果设备安装了 Windows 10 专业版或 Windows 10 企业版，则体验将默认为公司所拥有设备的设置过程。
 
-* [Windows 全新体验 (OOBE) 或使用 Windows 设置](../user-help/user-help-join-device-on-network.md)
+* [Windows 全新体验 (OOBE) 或使用 Windows 设置](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)
 
 * [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)
 

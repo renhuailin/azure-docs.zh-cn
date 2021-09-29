@@ -1,20 +1,20 @@
 ---
 title: 教程 - 与已连接到 Azure IoT 解决方案的 IoT 即插即用设备交互 | Microsoft Docs
 description: 教程 - 使用 C#、JavaScript、Java 或 Python 连接到已与 Azure IoT 解决方案连接的 IoT 即插即用设备并与之交互。
-author: ericmitt
-ms.author: ericmitt
+author: lizross
+ms.author: lizross
 ms.date: 09/21/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: b0226802a9a3c60a732a173ceaf8dbdb513af721
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 97905ca31678a5e1918886bc0159a6f5aad463fb
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405953"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092787"
 ---
 # <a name="tutorial-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution"></a>教程：与已连接到解决方案的 IoT 即插即用设备交互
 

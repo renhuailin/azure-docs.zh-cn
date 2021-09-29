@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/04/2021
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 744f6b544e2950c1d026b3b2c6f4208f3067ea45
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eeb0ad2a2f8a20dc964a66d16f9cff15fad091d5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724799"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816378"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zylo"></a>教程：Azure Active Directory 与 Zylo 的单一登录 (SSO) 集成
 
@@ -166,7 +166,7 @@ ms.locfileid: "121724799"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Zylo。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Zylo”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页面来启动登录流；如果它是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Zylo。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Zylo”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页面来启动登录流；如果它是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Zylo。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

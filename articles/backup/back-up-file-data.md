@@ -3,12 +3,12 @@ title: 使用 MABS 备份文件数据
 description: 可以使用 MABS 在服务器和客户端计算机上备份文件数据。
 ms.topic: conceptual
 ms.date: 08/19/2021
-ms.openlocfilehash: 71b12c98713dff2340bdda1baf486dcd5cfdb70a
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 5c5535969340b5612758ee0781e030fad0ec6dc6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868252"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806713"
 ---
 # <a name="back-up-file-data-with-mabs"></a>使用 MABS 备份文件数据
 
@@ -73,7 +73,7 @@ ms.locfileid: "122868252"
 
 1. 在“指定联机保留策略”  中，可指定从每天/每周/每月/每年备份中创建的恢复点在 Azure 中的保留方式。
 
-1. 在“选择联机复制”  中，指定进行数据初始完全复制的方式。 可以通过网络复制，也可以执行脱机备份（脱机设定种子）。 脱机备份使用 Azure 导入功能。 [了解详细信息](/azure/backup/backup-azure-backup-import-export)。
+1. 在“选择联机复制”  中，指定进行数据初始完全复制的方式。 可以通过网络复制，也可以执行脱机备份（脱机设定种子）。 脱机备份使用 Azure 导入功能。 [了解详细信息](./backup-azure-backup-import-export.md)。
 
 1. 在“摘要”  页上，查看设置。 单击“创建组”后，开始进行数据的初始复制。 完成后，保护组状态将在“状态”页上显示为“完成”。 然后，将根据保护组设置开始进行备份。
 

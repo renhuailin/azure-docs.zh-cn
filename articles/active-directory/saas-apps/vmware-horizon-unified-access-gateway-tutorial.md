@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: fde57eb3727eda6f810f861102e47a9f5746d1f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 233cbcec5b22d0bd363756559b4e6d2b681e75a4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955576"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820801"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>教程：Azure Active Directory 单一登录 (SSO) 与 VMware Horizon - Unified Access Gateway 的集成
 
@@ -74,15 +74,15 @@ ms.locfileid: "104955576"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<HORIZON_UAG_FQDN>/portal`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<HORIZON_UAG_FQDN>/portal`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<HORIZON_UAG_FQDN>/portal/samlsso`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<HORIZON_UAG_FQDN>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<HORIZON_UAG_FQDN>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [VMware Horizon - Unified Access Gateway 客户端支持团队](mailto:support@vmware.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -141,7 +141,7 @@ ms.locfileid: "104955576"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 VMware Horizon - Unified Access Gateway 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击“VMware Horizon - Unified Access Gateway”磁贴时，应会自动登录到为其设置了 SSO 的 VMware Horizon - Unified Access Gateway。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击“VMware Horizon - Unified Access Gateway”磁贴时，应会自动登录到为其设置了 SSO 的 VMware Horizon - Unified Access Gateway。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 

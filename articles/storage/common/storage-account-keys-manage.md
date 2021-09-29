@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 600c651601e4281b717c1c8fa7808f3663be4af6
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: cfea2bd15bceb7d1478059d9ef80f4eb33337dc6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093908"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664744"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理存储帐户访问密钥
 
@@ -57,7 +57,7 @@ $storageAccountKey = `
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 列出帐户访问密钥，请调用 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 命令，如以下示例中所示。 请记得将括号中的占位符值替换为你自己的值。 
+若要使用 Azure CLI 列出帐户访问密钥，请调用 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 命令，如以下示例中所示。 请记得将括号中的占位符值替换为你自己的值。
 
 ```azurecli-interactive
 az storage account keys list \
@@ -97,7 +97,7 @@ Microsoft 建议定期轮换访问密钥，以帮助保护存储帐户的安全�
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要创建密钥过期策略，请使用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) 命令，并将 `-KeyExpirationPeriodInDay` 参数设置为访问密钥在其轮换之前处于活动状态的天数。 
+若要创建密钥过期策略，请使用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) 命令，并将 `-KeyExpirationPeriodInDay` 参数设置为访问密钥在其轮换之前处于活动状态的天数。
 
 ```powershell
 $account = Set-AzStorageAccount -ResourceGroupName <resource-group> -Name `
@@ -107,32 +107,31 @@ $account = Set-AzStorageAccount -ResourceGroupName <resource-group> -Name `
 > [!TIP]
 > 创建存储帐户时，还可以通过设置 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 命令的 `-KeyExpirationPeriodInDay` 参数来设置密钥过期策略。
 
-若要验证已应用的策略，请使用上述命令中返回到 `$account` 变量的 [PSStorageAccount](/dotnet/api/microsoft.azure.commands.management.storage.models.psstorageaccount) 的 `KeyPolicy` 属性。 
-  
+若要验证已应用的策略，请使用上述命令中返回到 `$account` 变量的 [PSStorageAccount](/dotnet/api/microsoft.azure.commands.management.storage.models.psstorageaccount) 的 `KeyPolicy` 属性。
+
 ```powershell
 $account.KeyPolicy
-``` 
+```
 
 密钥有效期会显示在控制台输出中。
 
 > [!div class="mx-imgBorder"]
 > ![访问密钥有效期](./media/storage-account-keys-manage/key-policy-powershell.png)
 
-如果现有密钥处于活动状态的时间超过了有效期，可能需要对其进行轮换。 若要查看密钥创建日期，请使用 `KeyCreationTime` 属性。 
-  
+如果现有密钥处于活动状态的时间超过了有效期，可能需要对其进行轮换。 若要查看密钥创建日期，请使用 `KeyCreationTime` 属性。
+
 ```powershell
 $account.KeyCreationTime
-``` 
+```
 
 这两个访问密钥的访问密钥创建时间都会显示在控制台输出中。
 
 > [!div class="mx-imgBorder"]
 > ![访问密匙创建时间](./media/storage-account-keys-manage/key-creation-time-powershell.png)
 
-
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要在现有的存储帐户上创建密钥过期策略，请使用 [az storage account update](/cli/azure/storage/account#az_storage_account_update) 命令，并将 `--key-exp-days` 参数设置为访问密钥在应进行轮换之前处于活动状态的天数。 
+若要在现有的存储帐户上创建密钥过期策略，请使用 [az storage account update](/cli/azure/storage/account#az_storage_account_update) 命令，并将 `--key-exp-days` 参数设置为访问密钥在应进行轮换之前处于活动状态的天数。
 
 ```azurecli-interactive
 az storage account update \
@@ -144,7 +143,7 @@ az storage account update \
 > 创建存储帐户时，还可以通过设置 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令的 `-KeyExpirationPeriodInDay` 参数来设置密钥过期策略。
 
 若要验证已应用的策略，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令，并在 `-query` 参数中使用字符串 `{KeyPolicy:keyPolicy}`。
-  
+
 ```azurecli-interactive
 az storage account show \
   -n <storage-account-name> \
@@ -162,9 +161,8 @@ az storage account show \
 }
 ```
 
-
 如果现有密钥处于活动状态的时间超过了有效期，可能需要对其进行轮换。 若要查看密钥创建日期，请使用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令，并在 -query 参数中使用 `keyCreationTime` 字符串。
-  
+
 ```azurecli-interactive
 az storage account show \
   -n <storage-account-name> \
@@ -176,22 +174,22 @@ az storage account show \
 
 ### <a name="query-for-policy-violations"></a>查询策略冲突
 
-如果创建的诊断设置[将日志发送到 Azure Log Analytics](../blobs/monitor-blob-storage.md#send-logs-to-azure-log-analytics) 工作区，则可使用 Azure Monitor 日志查询来确定密钥是否已过期。 
+如果创建的诊断设置[将日志发送到 Azure Log Analytics](../blobs/monitor-blob-storage.md#send-logs-to-azure-log-analytics) 工作区，则可使用 Azure Monitor 日志查询来确定密钥是否已过期。
 
 若要确定密钥是否已过期，请在“日志搜索”栏中输入以下查询。
 
-```Kusto
+```kusto
 StorageBlobLogs | where KeyExpiryStatus startsWith "Policy Violated". 
 ```
 
 还可以创建一个查询，以帮助确定查询是否即将过期。 以下查询提供此信息。
 
-```Kusto
-resources  
-| where type =~ 'microsoft.storage/storageAccounts' 
-| extend days = datetime_diff('day', now(), todatetime(parse_json(properties).keyCreationTime)) 
-| extend KeyExpiryStatus = iff(days > 180, "Policy Violated", "") 
-| project name, days, KeyExpiryStatus  
+```kusto
+resources 
+| where type =~ 'microsoft.storage/storageAccounts'
+| extend days = datetime_diff('day', now(), todatetime(parse_json(properties).keyCreationTime))
+| extend KeyExpiryStatus = iff(days > 180, "Policy Violated", "")
+| project name, days, KeyExpiryStatus  
 ```
 
 ### <a name="rotate-access-keys"></a>轮换访问密钥
@@ -241,13 +239,13 @@ resources 
     ```azurecli-interactive
     az storage account keys renew \
       --resource-group <resource-group> \
-      --account-name <storage-account>
+      --account-name <storage-account> \
       --key primary
     ```
 
 1. 更新代码中的连接字符串以引用新的主访问密钥。
 
-2. 以相同方式重新生成辅助访问密钥。 若要重新生成辅助密钥，请将 `key2`（而不是 `key1`）用作密钥名称。
+2. 以相同方式重新生成辅助访问密钥。 若要重新生成辅助密钥，请将 `secondary`（而不是 `primary`）用作密钥名称。
 
 ---
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: static-web-apps
 ms.custom:
 - mode-portal
-ms.openlocfilehash: d83a9f96745e798d307c6e5299da84f1ac717e76
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 41be62a4e7baed39cc45011ed055a1abfe097002
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609080"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804592"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>快速入门：在 Azure 门户中构建你的第一个静态站点
 
@@ -99,7 +99,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
     :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="“查看创建”按钮":::
 
     > [!NOTE]
-    > 若要在创建应用后更改这些值，可编辑[工作流文件](github-actions-workflow.md)。
+    > 若要在创建应用后更改这些值，可编辑[工作流文件](build-configuration.md)。
 
 1. 选择“创建”。
 

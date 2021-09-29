@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
-ms.openlocfilehash: 323ecd6a2dd001c3c8df1b2ec15f0ae8402ec70c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db277b475641fec7ea5fddce89d8c9745fac7aa3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87092399"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618203"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC 缓存数据引入 - msrsync 方法
 
@@ -52,4 +52,4 @@ ms.locfileid: "87092399"
 
    例如，此命令可将 64 个进程中的 11,000 个文件从 /test/source-repository 移到 /mnt/hpccache/repository：
 
-   ``mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/hpccache/repository``
+   `mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/hpccache/repository`

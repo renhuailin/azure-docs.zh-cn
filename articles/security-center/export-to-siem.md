@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: f2014d2ecea91ae650ec1fb1d730ee9b64c66c98
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: ad4d401072bc96784b45c0f5fd43d08f3de8ade0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195910"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823831"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>将警报流式传输到 SIEM、SOAR 或 IT 服务管理解决方案
 
@@ -56,7 +56,7 @@ Azure Sentinel 包括 Azure 安全中心在订阅和租户级别的内置连接�
 调查 Azure Sentinel 中的安全中心警报的另一种方法是将审核日志流式传输到 Azure Sentinel：
     - [连接 Windows 安全事件](../sentinel/connect-windows-security-events.md)
     - [使用 Syslog 从基于 Linux 的源收集数据](../sentinel/connect-syslog.md)
-    - [连接 Azure 活动日志中的数据](../sentinel/connect-azure-activity.md)
+    - [连接 Azure 活动日志中的数据](../sentinel/data-connectors-reference.md#azure-activity)
 
 > [!TIP]
 > 我们将根据 Azure Sentinel 中为分析引入的数据量和 Azure Monitor Log Analytics 工作区中存储的数据量对 Azure Sentinel 进行计费。 Azure Sentinel 提供灵活、可预测的定价模型。 [有关详细信息，请参阅 Azure Sentinel 定价页面](https://azure.microsoft.com/pricing/details/azure-sentinel/)。

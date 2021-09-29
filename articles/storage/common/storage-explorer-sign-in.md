@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: marayerm
-ms.openlocfilehash: 92447c4d0c8d0a1fac6e59a11a81dc7beae52516
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: bf7fe9dc4d8c60b7e8779100bd959ee7e85415e0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451459"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583849"
 ---
 # <a name="sign-in-to-storage-explorer"></a>登录到存储资源管理器
 
-登录是使用存储资源管理器访问 Azure 存储资源的建议方式。 通过登录，可利用 Azure AD 支持的权限，例如 RBAC 和 Gen2 POSIX ACL。 
+登录是使用存储资源管理器访问 Azure 存储资源的建议方式。 通过登录，可利用 Azure AD 支持的权限，例如 RBAC 和 Gen2 POSIX ACL。
 
 ## <a name="how-to-sign-in"></a>登录方法
 
@@ -59,5 +59,5 @@ ms.locfileid: "123451459"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md)
-* [排查登录问题](./storage-explorer-troubleshooting.md#sign-in-issues)
+- [使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md)
+- [排查登录问题](./storage-explorer-troubleshooting.md#sign-in-issues)

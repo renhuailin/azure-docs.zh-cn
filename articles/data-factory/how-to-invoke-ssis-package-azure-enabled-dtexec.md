@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 8f30e48db1cafa7ea132de1e19b7ed45990a75b3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2c775706070207ce637b69c2405a3c05c55a85c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740938"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811494"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>使用支持 Azure 的 dtexec 实用工具运行 SQL Server Integration Services 包
 
@@ -34,11 +34,11 @@ AzureDTExec 将包作为数据工厂管道中的“执行 SSIS 包”活动运�
 ## <a name="configure-the-azuredtexec-utility"></a>配置 AzureDTExec 实用工具
 在本地计算机上安装 SSMS 会同时安装 AzureDTExec。 若要配置 AzureDTExec 的设置，请使用“以管理员身份运行”选项启动 SSMS。  然后选择“工具” > “迁移到 Azure” > “配置支持 Azure 的 DTExec”。   
 
-![“配置支持 Azure 的 DTExec”菜单](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png" alt-text="“配置支持 Azure 的 DTExec”菜单":::
 
 如果使用管理特权执行此操作，将会打开一个“AzureDTExecConfig”窗口，并将设置写入 *AzureDTExec.settings* 文件中。  如果不是以管理员身份运行 SSMS，将打开“用户帐户控制(UAC)”窗口。 输入管理员密码以提升特权。
 
-![“配置支持 Azure 的 DTExec”设置](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png" alt-text="“配置支持 Azure 的 DTExec”设置":::
 
 在“AzureDTExecConfig”窗口中，按如下所示输入配置设置： 
 

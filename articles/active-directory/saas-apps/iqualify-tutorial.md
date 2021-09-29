@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bdd68a4f0dafd3b336bf5a3fb34399d725c9ff5c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 399cd4ca84918b8d925de8349b36cac97bbab2c4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626072"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124809527"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>教程：Azure Active Directory 与 iQualify LMS 集成
 
@@ -151,7 +151,7 @@ ms.locfileid: "105626072"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“ **保存**”。
 
@@ -269,7 +269,7 @@ ms.locfileid: "105626072"
 
 单击“使用 Azure AD 登录”按钮，应会自动登录到 iQualify LMS 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 

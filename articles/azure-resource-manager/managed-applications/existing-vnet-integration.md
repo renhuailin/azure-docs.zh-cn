@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
-ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f35e12b62b0efd9f79f83a1832c317d7eabe99b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84260680"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648328"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>通过 Azure 托管应用程序使用现有虚拟网络
 

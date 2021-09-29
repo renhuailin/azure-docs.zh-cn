@@ -4,12 +4,12 @@ ms.author: vimeht
 ms.date: 7/8/2021
 ms.topic: include
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 58977fdfb05a2f2b152d66fb12065d88a98b2b2e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d7970fff815449adf6412c2748e22b2d471e52b0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121803394"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645442"
 ---
  > [!NOTE]
  > 当给定资源或操作没有可调整的限制时，默认限制和最大限制相同。
@@ -37,6 +37,6 @@ ms.locfileid: "121803394"
 | 每个实例的每个提供程序的更新名称数 | 25 | 25 | 否 |
 | 每个实例的每个更新提供程序和名称的更新版本数 | 100 | 100 | 否 |
 | 每个实例的更新总数 | 100 | 100 | 否 |
-| 单个更新文件最大大小 | 800 MB | 800 MB | 否 |
-| 单个导入操作中所有文件的最大组合大小 | 800 MB | 800 MB | 否 |
+| 单个更新文件最大大小 | 2 GB | 2 GB | 否 |
+| 单个导入操作中所有文件的最大组合大小 | 2 GB | 2 GB | 否 |
 | 每个实例的设备组数 | 75 | 75 | 否 |

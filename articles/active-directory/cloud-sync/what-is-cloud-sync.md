@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/11/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58eea2ecc994a0cb97cf8460029e4d87a5b7f74
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 76ebb7ecfb93de1943f9aa20619effd2804b4354
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748918"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771244"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>什么是 Azure AD Connect 云同步？
 Azure AD Connect 云同步是 Microsoft 提供的一个新产品/服务，旨在满足和实现在 Azure AD 中同步用户、组与联系人的混合标识目标。  它使用 Azure AD 云预配代理来实现此目标，而不是使用 Azure AD Connect 应用程序。  但是，它可以与 Azure AD Connect 同步一起使用，并具有以下优势：
@@ -25,7 +25,6 @@ Azure AD Connect 云同步是 Microsoft 提供的一个新产品/服务，旨在
 - 使用轻型预配代理简化安装：代理充当 AD 与 Azure AD 之间的桥梁，所有同步配置托管在云中。 
 - 可以使用多个预配代理来简化高可用性部署，这对于依赖于在 AD 与 Azure AD 之间实现密码哈希同步的组织而言尤其重要。
 - 支持具有多达 5 万成员的大型组。 建议在同步大型组时仅使用 OU 范围筛选器。
-
 
 ![什么是 Azure AD Connect](media/what-is-cloud-sync/architecture-1.png)
 

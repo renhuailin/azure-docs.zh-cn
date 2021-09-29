@@ -3,18 +3,18 @@ title: 使用 PowerShell 对 Azure 虚拟机进行维护控制
 description: 了解如何使用维护控制和 PowerShell 来控制对 Azure VM 应用维护的时间。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ac16882dca7794ede54d440791bed5a28103b9c
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ee4f01928c04d31dfafade9c62068ab608aa1e7b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698815"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215541"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
 
@@ -53,7 +53,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-使用 [New-AzMaintenanceConfiguration](/powershell/module/az.maintenance/new-azmaintenanceconfiguration) 创建维护配置。 此示例创建名为 myConfig 的维护配置，该配置的范围限定为主机。 
+使用 [New-AzMaintenanceConfiguration](/powershell/module/az.maintenance/new-azmaintenanceconfiguration) 创建维护配置。 此示例创建名为 myConfig 的维护配置，该配置的范围限定为主机  。 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -134,7 +134,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-## <a name="check-for-pending-updates"></a>检查是否有挂起的更新
+## <a name="check-for-pending-updates"></a>检查挂起的更新
 
 使用 [Get-AzMaintenanceUpdate](/powershell/module/az.maintenance/get-azmaintenanceupdate) 查看是否存在挂起的更新。 使用 `-subscription` 指定 VM 的 Azure 订阅（如果其订阅不同于你登录到的订阅）。
 

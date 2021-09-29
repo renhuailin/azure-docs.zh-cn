@@ -3,12 +3,12 @@ title: 将机密卷装载到容器组
 description: 了解如何装载机密卷以存储供容器实例访问的敏感信息
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: cd8bd4d59b5e53a0db2455bdfbaf56c05c93d65f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 63fb5ded667ce2d46d97ed51c6b16754c46f2a7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770992"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676269"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载机密卷
 
@@ -110,7 +110,7 @@ az container create \
 以下资源管理器模板定义了一个容器组，其中包含一个容器，该容器在 `/mnt/secrets` 处装载了一个机密卷。 机密卷有两个机密：“mysecret1”和“mysecret2”。
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
-[!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
+[!code-json[volume-secret](~/resourcemanager-templates/container-instances/aci-deploy-volume-secret.json)]
 
 若要使用资源管理器模板进行部署，请将前面的 JSON 保存到名为 `deploy-aci.json` 的文件中，然后使用 `--template-file` 参数执行 [az deployment group create][az-deployment-group-create] 命令：
 

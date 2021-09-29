@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: include 文件
 services: azure-communication-services
 author: tomaschladek
@@ -10,17 +10,17 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 62efd6215dfb83eade0e4ee4e9cfa230d1dd7971
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 414d4ffdf8678ada61048eeefccc34b8097a88a8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113659443"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677265"
 ---
 > [!NOTE]
 > 在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/access-token-quickstart) 上查找此快速入门的最终代码
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-install) 8 或更高版本。
@@ -167,7 +167,7 @@ System.out.println("\nIssued an access token with 'chat' scope that expires at: 
 
 ```java
 // Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-CommunicationUserIdentifier identity = new CommunicationUserIdentifier(existingIdentity);
+CommunicationUserIdentifier identity = new CommunicationUserIdentifier(existingIdentity.getId());
 AccessToken response = communicationIdentityClient.getToken(identity, scopes);
 ```
 

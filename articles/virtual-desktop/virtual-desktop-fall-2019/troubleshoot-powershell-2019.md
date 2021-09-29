@@ -6,17 +6,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6ce64aa104ca261845740f9b448d5d4e7afd10e5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b90ed4a95103aca2962a9ea886353867668a0390
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751642"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818487"
 ---
 # <a name="azure-virtual-desktop-classic-powershell"></a>Azure 虚拟桌面（经典）PowerShell
 
 > [!IMPORTANT]
-> 此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[此文](../troubleshoot-powershell.md)。
+> 此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../troubleshoot-powershell.md)。
 
 请参考本文来解决将 PowerShell 与 Azure 虚拟桌面配合使用时出现的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅 [Azure 虚拟桌面 PowerShell](/powershell/windows-virtual-desktop/overview)。
 
@@ -94,5 +94,5 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 - 若要排查远程桌面客户端的问题，请参阅[排查远程桌面客户端问题](../troubleshoot-client.md)
 - 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup-2019.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../../azure-monitor/essentials/activity-log.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)。

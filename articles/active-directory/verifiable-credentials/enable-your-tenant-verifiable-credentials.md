@@ -11,12 +11,12 @@ ms.subservice: verifiable-credentials
 ms.date: 06/24/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 7b50e17a8c6730aedbc8fea68a2ab4d8685b2fa5
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 9867825794c363b9df53849ad3fd1cb644492677
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228971"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816284"
 ---
 # <a name="tutorial---configure-azure-active-directory-to-issue-verifiable-credentials-preview"></a>教程：配置 Azure Acitive Directory 以颁发可验证凭据（预览版）
 
@@ -249,7 +249,7 @@ ms.locfileid: "114228971"
 1. 提供以下信息来设置组织：
 
       - “组织名称”：输入名称，以便在可验证凭据中引用业务。 此值不面向客户。
-      - “域”：输入的域将添加至 DID 文档服务终结点。 [Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md) 和其他钱包使用该信息验证你的 DID 是否已[链接到你的域](how-to-dnsbind.md)。 如果钱包可以验证 DID，则会显示已验证的符号。 如果钱包无法验证 DID，则会通知用户凭据是由它无法验证的组织颁发的。 域将你的 DID 绑定到用户可能了解的你业务中的内容。
+      - “域”：输入的域将添加至 DID 文档服务终结点。 [Microsoft Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a) 和其他钱包使用该信息验证你的 DID 是否已[链接到你的域](how-to-dnsbind.md)。 如果钱包可以验证 DID，则会显示已验证的符号。 如果钱包无法验证 DID，则会通知用户凭据是由它无法验证的组织颁发的。 域将你的 DID 绑定到用户可能了解的你业务中的内容。
       - “密钥保管库”：输入之前创建的密钥保管库名称。
 
    >[!IMPORTANT]

@@ -1,17 +1,17 @@
 ---
 title: 使用 Data Lake Storage Gen1 创建 Azure HDInsight 群集 - 门户
 description: 在 Azure 门户中创建和使用包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
-ms.openlocfilehash: 666b39e2a600fe6ca004798ed4f8371cdd1dfe5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 1d973597fe646c154d848bf7206ffcc214f8429d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96340248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661728"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 

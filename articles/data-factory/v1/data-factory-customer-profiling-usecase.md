@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b8193039edd21db5a52eabca37c1e61880e49cfe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f763c2ca499d68808c70318d2e3651c99b5b09af
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779743"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664200"
 ---
 # <a name="use-case---customer-profiling"></a>用例 - 客户分析
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关 Cortana Intelligence 的详细信息，请访问 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)（Cortana Intelligence 套件）。 此文档介绍一个简单的用例，帮助你了解 Azure 数据工厂解决常见分析问题的方法。
@@ -30,26 +31,26 @@ Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交�
 1. 创建数据工厂或打开现有数据工厂。 有关创建数据工厂的步骤，请参阅[使用数据工厂将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 2. 在数据工厂的“数据工厂”边栏选项卡中，单击“示例管道”磁贴。
 
-    ![“示例管道”磁贴](./media/data-factory-samples/SamplePipelinesTile.png)
+    :::image type="content" source="./media/data-factory-samples/SamplePipelinesTile.png" alt-text="“示例管道”磁贴":::
 3. 在“示例管道”边栏选项卡中，单击要部署的“客户分析”。
 
-    ![“示例管道”边栏选项卡](./media/data-factory-samples/SampleTile.png)
+    :::image type="content" source="./media/data-factory-samples/SampleTile.png" alt-text="“示例管道”边栏选项卡":::
 4. 指定此示例的配置设置。 例如，Azure 存储帐户名称和密钥、逻辑 SQL Server 名称、数据库、用户 ID 和密码。
 
-    ![“示例”边栏选项卡](./media/data-factory-samples/SampleBlade.png)
+    :::image type="content" source="./media/data-factory-samples/SampleBlade.png" alt-text="“示例”边栏选项卡":::
 5. 指定配置设置后，单击“创建”可以创建/部署示例管道和此管道使用的链接服务/表格。
 6. 可在之前在“示例管道”边栏选项卡上单击的“示例”磁贴上看到部署状态。
 
-    ![部署状态](./media/data-factory-samples/DeploymentStatus.png)
+    :::image type="content" source="./media/data-factory-samples/DeploymentStatus.png" alt-text="部署状态":::
 7. 在此示例的磁贴上看到“已成功部署”消息时，关闭“示例管道”边栏选项卡。  
 8. 在“数据工厂”边栏选项卡上，将看到链接服务、数据集和管道已添加到数据工厂。  
 
-    ![“数据工厂”边栏选项卡](./media/data-factory-samples/DataFactoryBladeAfter.png)
+    :::image type="content" source="./media/data-factory-samples/DataFactoryBladeAfter.png" alt-text="“数据工厂”边栏选项卡":::
 
 ## <a name="solution-overview"></a>解决方案概述
 此简单用例可用作如何使用 Azure 数据工厂来引入、准备、转换、分析和发布数据的示例。
 
-![端到端工作流](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)
+:::image type="content" source="./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png" alt-text="端到端工作流":::
 
 此图描述了部署数据管道后，数据管道在 Azure 门户中的显示方式。
 

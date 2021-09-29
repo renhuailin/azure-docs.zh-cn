@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f15d00f1050177c6255fb5528f03314153c3ed9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9af3d45f99c0397a56721db01c160c866b7e792e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92514647"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124825514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>教程：Azure Active Directory 与 ThirdLight 集成
 
@@ -124,13 +124,13 @@ ms.locfileid: "92514647"
 
     1. **注销 URL**。
 
-### <a name="configure-thirdlight-single-sign-on"></a>配置 ThirdLight 单一登录
+### <a name="configure-thirdlight-single-sign-on&quot;></a>配置 ThirdLight 单一登录
 
 1. 在新的 Web 浏览器窗口中，以管理员身份登录到 ThirdLight 公司站点。
 
 1. 转到“配置” > “系统管理” > “SAML2”：
 
-    ![系统管理](./media/thirdlight-tutorial/ic805843.png "系统管理")
+    ![系统管理](./media/thirdlight-tutorial/ic805843.png &quot;系统管理")
 
 1. 在 SAML2 配置部分中，执行以下步骤。
   
@@ -219,7 +219,7 @@ ms.locfileid: "92514647"
 
 现在，需要使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“ThirdLight”磁贴时，应会自动登录到设置了 SSO 的 ThirdLight 实例。 有关访问面板的详细信息，请参阅[在“我的应用”门户中访问和使用应用](../user-help/my-apps-portal-end-user-access.md)。
+在访问面板中选择“ThirdLight”磁贴时，应会自动登录到设置了 SSO 的 ThirdLight 实例。 有关访问面板的详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="additional-resources"></a>其他资源
 

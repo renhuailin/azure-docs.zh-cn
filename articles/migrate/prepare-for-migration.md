@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 05f82c055a0c98423fb7096a019d7d9d80932142
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 288a78ee3b3e8c0a3d32d72d289c2b3e4c3d4aff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542028"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619008"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -90,7 +90,7 @@ ms.locfileid: "123542028"
 **安装 Windows Azure 来宾代理** <br/><br/> 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理在启用和执行 Azure 虚拟机扩展方面起主要作用，这些扩展支持 VM 的部署后配置，例如安装和配置软件。 |  运行 Windows Server 2008 R2 或更高版本的虚拟机会自动设置。 <br/> 早期版本的操作系统需要手动配置。 | 运行 Windows Server 2008 R2 或更高版本的虚拟机会自动设置。 | 运行 Windows Server 2008 R2 或更高版本的虚拟机会自动设置。
 **在迁移后进行连接**<br/><br/> 若要在迁移后进行连接，请在迁移之前执行一些步骤。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。
 
-[详细了解](/prepare-for-agentless-migration#changes-performed-on-windows-servers)在 Windows 服务器上为无代理 VMware 迁移执行的更改。
+[详细了解](/azure/migrate/prepare-for-agentless-migration#changes-performed-on-windows-servers)在 Windows 服务器上为无代理 VMware 迁移执行的更改。
 
 #### <a name="configure-san-policy"></a>配置 SAN 策略
 
@@ -132,9 +132,9 @@ ms.locfileid: "123542028"
 **删除 udev 规则** | 删除基于 MAC 地址等属性保留接口名称的所有 udev 规则。 | 除以上所示版本之外的所有版本，都需要手动删除。
 **更新网络接口** | 更新网络接口以基于 DHCP.nst 接收 IP 地址 | 除以上所示版本之外的所有版本，都需要手动更新。
 **启用 SSH** | 确保启用 SSH，并将 sshd 服务设置为在重新启动时自动启动。<br/><br/> 确保传入的 SSH 连接请求未被 OS 防火墙或脚本化规则阻止。| 除以上所示版本之外的所有版本，都需要手动启用。
-**安装 Linux Azure 来宾代理** | Microsoft Azure Linux 代理 (waagent) 是一种安全的轻型进程，用于管理 Linux 和 FreeBSD 预配以及 VM 与 Azure 结构控制器的交互。| 除以上所示版本之外的所有版本，都需要手动启用。  <br> 按照说明为其他 OS 版本[手动安装 Linux 代理](/azure/virtual-machines/extensions/agent-linux#installation)。 查看[必需包](/azure/virtual-machines/extensions/agent-linux#requirements)的列表以安装 Linux VM 代理。 
+**安装 Linux Azure 来宾代理** | Microsoft Azure Linux 代理 (waagent) 是一种安全的轻型进程，用于管理 Linux 和 FreeBSD 预配以及 VM 与 Azure 结构控制器的交互。| 除以上所示版本之外的所有版本，都需要手动启用。  <br> 按照说明为其他 OS 版本[手动安装 Linux 代理](../virtual-machines/extensions/agent-linux.md#installation)。 查看[必需包](../virtual-machines/extensions/agent-linux.md#requirements)的列表以安装 Linux VM 代理。 
 
-[详细了解](/azure/migrate/prepare-for-agentless-migration#changes-performed-on-linux-servers)在 Linux 服务器上为无代理 VMware 迁移执行的更改。
+[详细了解](./prepare-for-agentless-migration.md#changes-performed-on-linux-servers)在 Linux 服务器上为无代理 VMware 迁移执行的更改。
 
 下表总结了针对上面列出的操作系统自动执行的步骤。
 

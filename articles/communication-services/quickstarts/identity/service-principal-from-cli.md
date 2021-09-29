@@ -5,16 +5,17 @@ description: 在本快速入门中，我们将创建应用程序和服务主体�
 services: azure-communication-services
 author: jbeauregardb
 ms.service: azure-communication-services
+ms.subservice: identity
 ms.topic: quickstart
 ms.date: 06/30/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: 6e573b455896b2eec6ec8163e1c463ed758279d4
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c2b8dd4a40205178b3656477e89189d6f0f0bfeb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257946"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635520"
 ---
 # <a name="quickstart-authenticate-using-azure-active-directory-azure-cli"></a>快速入门：使用 Azure Active Directory (Azure CLI) 进行身份验证
 

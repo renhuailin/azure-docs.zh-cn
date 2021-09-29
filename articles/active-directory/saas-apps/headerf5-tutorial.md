@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 28040a92d713707204f0651773f7edce9f4daf6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc7df55d9c52b65a0f09569f8e65ff2db5efdd1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651758"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796222"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教程：在 Azure Active Directory 与 F5 之间配置单一登录 (SSO)
 
@@ -144,15 +144,15 @@ ms.locfileid: "101651758"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [F5 客户端支持团队](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -181,9 +181,9 @@ ms.locfileid: "101651758"
 
 在本部分，你将通过授予 B.Simon 访问 F5 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在“应用程序”列表中选择“F5”。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
@@ -201,11 +201,11 @@ ms.locfileid: "101651758"
 
 1. 打开新的 Web 浏览器窗口，以管理员身份登录 F5 (Header Based) 公司站点，并执行以下步骤：
 
-1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”。 指定稍后会在配置中引用的“证书名称”。 在“证书源”中，选择“上传文件”，指定在配置 SAML 单一登录时从 Azure 下载的证书。 单击“导入”  。
+1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”  。 指定稍后会在配置中引用的“证书名称”。 在“证书源”中，选择“上传文件”，指定在配置 SAML 单一登录时从 Azure 下载的证书。 单击“导入”  。
 
     ![显示 SSL 证书列表的屏幕截图，可以在其中选择证书名称和证书源。](./media/headerf5-tutorial/configure12.png)
  
-1. 此外，还需要 **SSL 证书以获取应用程序主机名。导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”** 。 在右下角选择“导入”。 “导入类型”将为“PKCS 12(IIS)” 。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件。 为 PFX 指定“密码”。 单击“导入”  。
+1. 此外，还需要 **SSL 证书以获取应用程序主机名。导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”** 。 在右下角选择“导入”  。 “导入类型”将为“PKCS 12(IIS)” 。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件。 为 PFX 指定“密码”。 单击“导入”  。
 
     >[!NOTE]
     >在此示例中，我们的应用名称是 `Headerapp.superdemo.live`，我们使用通配符证书，我们的密钥名称为 `WildCard-SuperDemo.live`。
@@ -270,7 +270,7 @@ ms.locfileid: "101651758"
 
 该部分针对的是无法使用引导式配置或希望添加/修改其他参数的情况。 你将需要与应用程序主机名相匹配的 TLS/SSL 证书。
 
-1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”。 “导入类型”将为“PKCS 12(IIS)” 。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件。 为 PFX 指定“密码”。 单击“导入”  。
+1. 导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”  。 在右下角选择“导入”  。 “导入类型”将为“PKCS 12(IIS)” 。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件。 为 PFX 指定“密码”。 单击“导入”  。
 
     >[!NOTE]
     >在此示例中，我们的应用名称是 `Headerapp.superdemo.live`，我们使用通配符证书，我们的密钥名称为 `WildCard-SuperDemo.live`。
@@ -453,7 +453,7 @@ ms.locfileid: "101651758"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 F5 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 F5 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 F5。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 F5 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 F5。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 > [!NOTE]
 > F5 BIG-IP APM [立即购买](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview)。

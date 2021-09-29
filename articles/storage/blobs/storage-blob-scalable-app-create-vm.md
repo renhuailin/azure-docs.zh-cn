@@ -8,12 +8,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4b8c52b03cb6dec6096565e9eac26b7b2c4a30e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1674fe3aee6ea336986a9570232d070f47bbb478
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89073244"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620229"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>为可缩放的应用程序创建虚拟机和存储帐户
 
@@ -22,9 +22,9 @@ ms.locfileid: "89073244"
 在该系列的第一部分中，你会学习如何：
 
 > [!div class="checklist"]
-> * 创建存储帐户
-> * 创建虚拟机
-> * 配置自定义脚本扩展
+> - 创建存储帐户
+> - 创建虚拟机
+> - 配置自定义脚本扩展
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "89073244"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -43,7 +43,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
- 
+
 此示例将 50 个大文件上传到 Azure 存储帐户中的 blob 容器。 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数据对象。 使用 [New-AzStorageAccount](/powershell/module/az.Storage/New-azStorageAccount) 命令在创建的资源组中创建存储帐户。
 
 在以下命令中，请将 `<blob_storage_account>` 占位符替换成自己的 Blob 存储帐户的全局唯一名称。
@@ -103,12 +103,12 @@ Write-host "Your public IP address is $($pip.IpAddress)"
 在本教程中，必须在虚拟机上安装一些必备组件。 自定义脚本扩展用于运行完成以下任务的 PowerShell 脚本：
 
 > [!div class="checklist"]
-> * 安装 .NET Core 2.0
-> * 安装 chocolatey
-> * 安装 GIT
-> * 克隆示例存储库
-> * 还原 NuGet 包
-> * 使用随机数据创建 50 个 1 GB 的文件
+> - 安装 .NET Core 2.0
+> - 安装 chocolatey
+> - 安装 GIT
+> - 克隆示例存储库
+> - 还原 NuGet 包
+> - 使用随机数据创建 50 个 1 GB 的文件
 
 运行以下 cmdlet，完成虚拟机的配置。 完成此步骤需要 5-15 分钟。
 
@@ -127,9 +127,9 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 本系列的第一部分中介绍了如何创建存储帐户、部署虚拟机以及如何为虚拟机配置所需的必备组件，例如如何：
 
 > [!div class="checklist"]
-> * 创建存储帐户
-> * 创建虚拟机
-> * 配置自定义脚本扩展
+> - 创建存储帐户
+> - 创建虚拟机
+> - 配置自定义脚本扩展
 
 进入本系列的第二部分，使用指数重试和并行方式将大量数据上传到存储帐户。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: a39371e7a22334b11be1d1a0a9d28557efe177c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c973bdb6fad6b7974e170d455c46a095b4a7754
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654436"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822893"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>教程：将 Aha! 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101654436"
 * 让用户使用其 Azure AD 帐户自动 登录到 Aha!。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -170,7 +170,7 @@ ms.locfileid: "101654436"
 
 * 转到 Aha! 直接登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在访问面板中单击“Aha!” 磁贴在“我的应用”中，这会重定向到 Aha! 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在访问面板中单击“Aha!” 磁贴在“我的应用”中，这会重定向到 Aha! 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 78400f06f0335bb9c7430938ecd4a893ecb79322
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: 2741a3a122821b67d245096ac6994191bef6f998
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428124"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835433"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fabric"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Fabric 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "112428124"
 * 让用户使用其 Azure AD 帐户自动登录到 Fabric。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -106,7 +106,7 @@ ms.locfileid: "112428124"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -140,11 +140,9 @@ ms.locfileid: "112428124"
 
 * 直接转到 Fabric 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”门户中选择“Fabric”磁贴时，将会重定向到 Fabric 登录 URL。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”门户中选择“Fabric”磁贴时，将会重定向到 Fabric 登录 URL。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 配置 Fabric 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
-
-

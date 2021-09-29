@@ -2,17 +2,18 @@
 title: SQL Server 存储过程活动
 description: 了解如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库或 Azure Synapse Analytics 中的存储过程。
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 88a4281d564b7061e831a66b35e768e6377a0115
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: bc69be48f172267c2d8894eb2a82f32a4970386f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397307"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559333"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="转换活动"]
@@ -64,7 +65,7 @@ ms.locfileid: "122397307"
     ```
     `Id` 是唯一标识符，而 `datetimestamp` 列是生成相应 ID 的日期和时间。
     
-    ![示例数据](./media/data-factory-stored-proc-activity/sample-data.png)
+    :::image type="content" source="./media/data-factory-stored-proc-activity/sample-data.png" alt-text="示例数据":::
 
     在此示例中，存储过程在 Azure SQL 数据库中。 如果存储过程在 Azure Synapse Analytics 和 SQL Server 数据库中，则方法非常相似。 对于 SQL Server 数据库，必须安装[数据管理网关](data-factory-data-management-gateway.md)。
     
@@ -87,10 +88,10 @@ ms.locfileid: "122397307"
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中单击“新建”，然后依次单击“智能 + 分析”、“数据工厂”。
 
-    ![新建数据工厂 1](media/data-factory-stored-proc-activity/new-data-factory.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/new-data-factory.png" alt-text="新建数据工厂 1":::
 3. 在“新建数据工厂”边栏选项卡中，输入 **SProcDF** 作为名称。 Azure 数据工厂名称必须 **全局唯一**。 必须将你的姓名作为数据工厂的名称前缀，才能成功创建工厂。
 
-   ![新建数据工厂 2](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/new-data-factory-blade.png" alt-text="新建数据工厂 2":::
 4. 选择 **Azure 订阅**。
 5. 对于 **资源组**，请执行以下步骤之一：
    1. 单击“新建”，然后为资源组输入名称。
@@ -100,7 +101,7 @@ ms.locfileid: "122397307"
 8. 在“新建数据工厂”边栏选项卡中单击“创建”。
 9. 此时可在 Azure 门户的“仪表板”中看到所创建的数据工厂。 成功创建数据工厂后，将看到数据工厂页，其中显示了数据工厂的内容。
 
-   ![数据工厂主页](media/data-factory-stored-proc-activity/data-factory-home-page.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-home-page.png" alt-text="数据工厂主页":::
 
 ### <a name="create-an-azure-sql-linked-service"></a>创建 Azure SQL 链接服务
 创建数据工厂后，创建 Azure SQL 链接服务，将包含 sampletable 表和 usp_sample 存储过程的 Azure SQL 数据库中的数据库链接到数据工厂。
@@ -108,7 +109,7 @@ ms.locfileid: "122397307"
 1. 在 **SProcDF** 的“数据工厂”边栏选项卡中，单击“编写和部署”，启动数据工厂编辑器。
 2. 在命令栏上单击“新建数据存储”并选择“Azure SQL 数据库”。 在编辑器中，应会看到用于创建 Azure SQL 链接服务的 JSON 脚本。
 
-   ![新建数据存储 1](media/data-factory-stored-proc-activity/new-data-store.png)
+   :::image type="content" source="media/data-factory-stored-proc-activity/new-data-store.png" alt-text="新建数据存储 1":::
 3. 在 JSON 脚本中，进行以下更改：
 
    1. 将 `<servername>` 替换为服务器的名称。
@@ -116,17 +117,17 @@ ms.locfileid: "122397307"
    3. 将 `<username@servername>` 替换为有权访问数据库的用户帐户。
    4. 将 `<password>` 替换为用户帐户的密码。
 
-      ![新建数据存储 2](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
+      :::image type="content" source="media/data-factory-stored-proc-activity/azure-sql-linked-service.png" alt-text="新建数据存储 2":::
 4. 若要部署链接服务，请单击命令栏上的“部署”。 确认在左侧的树视图中已显示 AzureSqlLinkedService。
 
-    ![包含链接服务的树视图 1](media/data-factory-stored-proc-activity/tree-view.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/tree-view.png" alt-text="包含链接服务的树视图 1":::
 
 ### <a name="create-an-output-dataset"></a>创建输出数据集
 必须为存储过程活动指定输出数据集，即使存储过程不生成任何数据也是如此。 这是因为活动的计划（活动的运行频率 - 每小时、每天等）取决于输出数据集。 输出数据集必须使用链接服务，其指代 Azure SQL 数据库、Azure Synapse Analytics 或要在其中运行存储过程的 SQL Server 数据库。 输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 在某些情况下，输出数据集可能是虚拟数据集（这种数据集指向实际不包含存储过程输出的表）。 此虚拟数据集仅用于指定运行存储过程活动的计划。
 
 1. 单击工具栏上的“... 更多”，然后依次单击“新建数据集”和“Azure SQL” 。 单击命令栏上的“新建数据集”并选择“Azure SQL”。
 
-    ![包含链接服务的树视图 2](media/data-factory-stored-proc-activity/new-dataset.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/new-dataset.png" alt-text="包含链接服务的树视图 2":::
 2. 将以下 JSON 脚本复制/粘贴到 JSON 编辑器。
 
     ```JSON
@@ -147,7 +148,7 @@ ms.locfileid: "122397307"
     ```
 3. 若要部署数据集，请单击命令栏上的“部署”。 确认树视图中显示了此数据集。
 
-    ![包含链接服务的树视图](media/data-factory-stored-proc-activity/tree-view-2.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/tree-view-2.png" alt-text="包含链接服务的树视图":::
 
 ### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>使用 SqlServerStoredProcedure 活动创建管道
 现在，使用存储过程活动来创建管道。
@@ -197,16 +198,16 @@ ms.locfileid: "122397307"
 ### <a name="monitor-the-pipeline"></a>监视管道
 1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，然后单击“图示”。
 
-    ![图示磁贴 1](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-diagram-tile.png" alt-text="图示磁贴 1":::
 2. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
 
-    ![图示磁贴 2](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-diagram-view.png" alt-text="图示磁贴 2":::
 3. 在“图示视图”中，双击数据集 `sprocsampleout`。 将看到切片处于“就绪”状态。 由于切片是在 JSON 中针对开始时间和结束时间之间的每一小时生成的，因此，应该有 5 个切片。
 
-    ![图示磁贴 3](media/data-factory-stored-proc-activity/data-factory-slices.png)
+    :::image type="content" source="media/data-factory-stored-proc-activity/data-factory-slices.png" alt-text="图示磁贴 3":::
 4. 切片处于“就绪”状态时，对数据库运行 `select * from sampletable` 查询，以验证存储过程是否已将数据插入到表中。
 
-   ![输出数据](./media/data-factory-stored-proc-activity/output.png)
+   :::image type="content" source="./media/data-factory-stored-proc-activity/output.png" alt-text="输出数据":::
 
    如需了解有关监视 Azure 数据工厂管道的详细信息，请参阅[监视管道](data-factory-monitor-manage-pipelines.md)。
 
@@ -300,7 +301,7 @@ ms.locfileid: "122397307"
 
 下表描述了其中的 JSON 属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | name | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |
@@ -313,7 +314,7 @@ ms.locfileid: "122397307"
 ## <a name="passing-a-static-value"></a>传递静态值
 现在，我们可以考虑在包含静态值“Document sample”的表中添加名为“Scenario”的另一个列。
 
-![示例数据 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
+:::image type="content" source="./media/data-factory-stored-proc-activity/sample-data-2.png" alt-text="示例数据 2":::
 
 **表：**
 

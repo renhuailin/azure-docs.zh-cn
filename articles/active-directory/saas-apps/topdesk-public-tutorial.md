@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 15ec0af4e576c33d20208c234bd34cdfd8f65087
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6809e744c2b694f800fc2e542494c9b627098090
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207602"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821273"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "108207602"
 * 让用户使用其 Azure AD 帐户自动登录到 TOPdesk - Public。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -224,7 +224,7 @@ ms.locfileid: "108207602"
 
 * 直接转到 TOPdesk - Public 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“TOPdesk - Public”磁贴时，会重定向到 TOPdesk - Public 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“TOPdesk - Public”磁贴时，会重定向到 TOPdesk - Public 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/20/2021
-ms.openlocfilehash: a2c716479d3b8fd279da855a1df9f280e47c6c5a
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 8c48f5ec6804996cb65428f2e66199cb30127849
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635212"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824116"
 ---
 # <a name="marketplace-categories-and-industries"></a>市场类别和行业
 
@@ -103,6 +103,5 @@ Azure 市场中的类别面向 IT 专业人员和开发人员，而 Microsoft Ap
 
 ## <a name="next-steps"></a>后续步骤
 
-- 要创建产品/服务，请登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)以创建和配置产品/服务。 在合作伙伴中心[创建一个帐户](/azure/marketplace/create-account)（如果尚未创建）。
-- 有关发布产品/服务的分步说明，请参阅商业市场[发布指南（按产品/服务类型）](/azure/marketplace/publisher-guide-by-offer-type)。
-
+- 要创建产品/服务，请登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)以创建和配置产品/服务。 在合作伙伴中心[创建一个帐户](./create-account.md)（如果尚未创建）。
+- 有关发布产品/服务的分步说明，请参阅商业市场[发布指南（按产品/服务类型）](./publisher-guide-by-offer-type.md)。

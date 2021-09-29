@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 44c66f5fa89e7293667c930bfd1720d72dc26bf4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9a194fb1f1db5723643f9f73a6c2018f5daa59f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785064"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665333"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
@@ -40,7 +41,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 
 用户在网站上浏览目录中的产品时，所有数据会汇总起来并输送到产品建议系统以基于客户兴趣和行为提供个性化的建议。 客户还会看到另外一种与寻找的产品相关的产品，这种产品以网站整体使用模式为基础，并不是以一个用户为基础。
 
-![使用案例图](./media/data-factory-product-reco-usecase/diagram-1.png)
+:::image type="content" source="./media/data-factory-product-reco-usecase/diagram-1.png" alt-text="使用案例图":::
 
 在线零售商网站每天会有千兆字节的原始 web 日志文件生成为半结构化文件。 使用数据工厂的全局部署数据移动作式服务，将原始 Web 日志文件以及客户和产品目录信息定期提取到 Azure Blob 存储中。 一天的原始日志文件会在 blob 存储中进行划分归类（按年份和月份）以便长期存储。  [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) 用于在 blob 存储中划分原始日志文件并通过 Hive 和 Pig 脚本处理大规模提取的日志。 已划分的 web 日志数据随后经处理以为机器学习建议系统提取需要的输入，从而生成个性化产品建议。
 

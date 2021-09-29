@@ -3,20 +3,18 @@ title: 将分析添加到必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
 description: 必应统计信息为必应图像搜索 API 提供分析。 分析包括调用量、最常用的查询字符串、地理分布等等。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 02fea02cca5950ef8467377a866e9a765af9e2e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 878a6fd49a46b47c3243b168469a15909102a019
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96349548"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587055"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>将分析添加到必应搜索 API
 

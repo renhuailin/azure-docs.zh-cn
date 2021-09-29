@@ -1,14 +1,14 @@
 ---
-title: 向 Azure 开发测试实验室中的实验室添加 VM | Microsoft 文档
+title: 将 VM 添加到实验室
 description: 了解如何使用 Azure 门户向 Azure 开发测试实验室中的实验室添加虚拟机。 可以选择自定义映像或公式作为基项。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 07efcf93b963009494021b90e6c730c4615301ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f03195a0ad1b9ab69a8274181cacf672b18d1dd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91297617"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675984"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加 VM
 如果已[创建第一个 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)，则很可能从预加载的[市场映像](devtest-lab-configure-marketplace-images.md)执行此操作。 现在，如果要将后续 VM 添加到实验室，还可以选择作为 [自定义映像](devtest-lab-create-template.md)或 [公式](devtest-lab-manage-formulas.md)的 *基本* 映像。 本教程会引导完成使用 Azure 门户向开发测试实验室中的实验室添加 VM 的过程。

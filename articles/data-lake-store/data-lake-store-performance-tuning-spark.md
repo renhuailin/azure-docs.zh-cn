@@ -1,17 +1,17 @@
 ---
 title: 性能优化 - Spark 与 Azure Data Lake Storage Gen1
 description: 了解 Spark on Azure HDInsight 和 Azure Data Lake Storage Gen1 的性能优化指南。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: twooley
-ms.openlocfilehash: 8a39e14b70827947687b7613b9ff86f18017ddfe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 13e6aedc6c54ae8a02f2f1d25524b5193f12f3a5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97722498"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680540"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Spark on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 

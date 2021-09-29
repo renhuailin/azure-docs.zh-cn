@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: ee7a228236ac75acd65f5c5d49f5f4a58f249b1a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0b5224774d7409e8981b855628e6100f0ca0c03d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469094"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>教程：Azure Active Directory 与 EFI Digital StoreFront 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110469094"
 * 让用户使用其 Azure AD 帐户自动登录到 EFI Digital StoreFront。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -130,7 +130,7 @@ ms.locfileid: "110469094"
 
 * 直接转到 EFI Digital StoreFront 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“EFI Digital StoreFront”磁贴时，会重定向到 EFI Digital StoreFront 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“EFI Digital StoreFront”磁贴时，会重定向到 EFI Digital StoreFront 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

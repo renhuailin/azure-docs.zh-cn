@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 00f6de3b18ac4c5abbe87777957ac171617c4a0e
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 536b7812d6ff36211f98086035cd178e36341761
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555737"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124826447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>教程：Azure Active Directory 与 DigiCert 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "111555737"
 * 让用户使用其 Azure AD 帐户自动登录到 DigiCert。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -116,7 +116,7 @@ ms.locfileid: "111555737"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“保存”  。
 
@@ -166,7 +166,7 @@ ms.locfileid: "111555737"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 DigiCert。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 DigiCert 磁贴时，应会自动登录到为其设置了 SSO 的 DigiCert。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 DigiCert 磁贴时，应会自动登录到为其设置了 SSO 的 DigiCert。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

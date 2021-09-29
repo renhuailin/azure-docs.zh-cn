@@ -3,16 +3,16 @@ title: 使用 Azure 门户创建服务总线队列
 description: 在本快速入门中，你将了解如何使用 Azure 门户创建服务总线命名空间并在其中创建队列。
 author: spelluru
 ms.author: spelluru
-ms.date: 08/12/2020
+ms.date: 09/10/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: a52142737146299f78f5e3581830121726cedc05
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 6bfbe4f3a90c5cc62e56da9c1acb845365664b3b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416078"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128664917"
 ---
 # <a name="use-azure-portal-to-create-a-service-bus-namespace-and-a-queue"></a>使用 Azure 门户创建服务总线命名空间和队列
 本快速入门介绍如何使用 [Azure 门户][Azure portal]创建服务总线命名空间和队列。 本快速入门还介绍了如何获取客户端应用程序向队列发送消息或从队列接收消息所使用的授权凭据。 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: pafarley
-ms.openlocfilehash: 0c914429cc98aa06421658b862367b03ce527802
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 9e3408ef27f4ee31f3308754cf5a0352b22c375b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540930"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828775"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "123540930"
 * [自定义语音转文本](./custom-speech-overview.md)
 * [文本转语音](text-to-speech.md)
 * [自定义文本转语音声音](./how-to-custom-voice-create-voice.md)
-* [语音翻译](speech-translation.md)（不包括[文本翻译](../translator/translator-info-overview.md)）
+* [语音翻译](speech-translation.md)（不包括[文本翻译](../translator/translator-overview.md)）
 
 [语音 SDK](speech-sdk.md) 是必应语音客户端库的功能替换，但使用了不同 API。
 

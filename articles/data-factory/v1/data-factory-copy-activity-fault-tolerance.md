@@ -3,16 +3,17 @@ title: 通过跳过不兼容行向 Azure 数据工厂复制活动添加容错
 description: 了解如何在复制时通过跳过不兼容行向 Azure 数据工厂添加容错
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10e4bedae5b7c429152a3503fff2cb2769d66eb5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81e92c73c27d70e2f21ede7d732e5cda4f03289b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377170"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629439"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>通过跳过不兼容行向复制活动添加容错
 
@@ -75,7 +76,7 @@ ms.locfileid: "100377170"
 ## <a name="monitoring"></a>监视
 复制活动运行完成后，可以在监视部分看到跳过的行数：
 
-![监视器跳过的不兼容行](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
+:::image type="content" source="./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png" alt-text="监视器跳过的不兼容行":::
 
 如果配置为记录不兼容行，可以在下列路径中找到日志文件：`https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` 在日志文件中，可以查看跳过的行和导致数据不兼容的根本原因。
 

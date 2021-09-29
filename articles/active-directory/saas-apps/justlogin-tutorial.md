@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: d286a65dd747d22e158ffb6426abe96de6c21390
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e42b038b30c9b69001d2ce399551f68bb1a76ba6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103127"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-justlogin"></a>教程：Azure Active Directory 单一登录 (SSO) 与 JustLogin 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110103127"
 * 让用户使用其 Azure AD 帐户自动登录到 JustLogin。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -77,13 +77,13 @@ ms.locfileid: "110103127"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`JustLoginSAML/<CompanyID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`JustLoginSAML/<CompanyID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://apis.justlogin.com/v1/auth/saml/AssertionConsumerService/<CompanyID>`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://apis.justlogin.com/v1/auth/saml/Login/<CompanyID>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://apis.justlogin.com/v1/auth/saml/Login/<CompanyID>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [JustLogin 客户端支持团队](mailto:support@justlogin.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -142,11 +142,9 @@ ms.locfileid: "110103127"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 JustLogin 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 JustLogin 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 JustLogin。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 JustLogin 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 JustLogin。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 配置 JustLogin 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
-
-

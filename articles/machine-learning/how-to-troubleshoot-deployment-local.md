@@ -5,18 +5,16 @@ description: 尝试将本地模型部署作为排查模型部署错误的第一�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: gvashishtha
-ms.author: gopalv
 ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 68742801234696f104de85832353b98ef33b1b2d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: ca06d475544cb45045d751ede1abe743a3a012ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454395"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553435"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>使用本地模型部署进行故障排除
 

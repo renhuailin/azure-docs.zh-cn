@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 05/07/2021
-  ms.openlocfilehash: bcf07b325d18be53a15806f1a38cae5b61f13b41
-  ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+  ms.openlocfilehash: 6c2119b81b9eea8c4da0caa68f998e70fab4fae1
+  ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/12/2021
-  ms.locfileid: "109813103"
+  ms.lasthandoff: 09/28/2021
+  ms.locfileid: "129154938"
 landingContent:
 - title: 关于静态 Web 应用
   linkLists:
@@ -76,8 +76,8 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 应用程序配置
-      url: configuration.md
+    - text: Configuration
+      url: configuration-overview.md
     - text: 公共 API
       url: apis.md
     - text: 过渡环境

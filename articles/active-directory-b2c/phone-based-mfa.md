@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/01/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc9e0be90c138ba33e1b4dfe11ea6f9c8b7da297
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 112fe68a1d8682b03a9f08839d827b71ebadf1d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033548"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571762"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>保护基于电话的多重身份验证 (MFA)
 
@@ -95,23 +95,20 @@ GitHub 中的 [Azure AD B2C 报表和警报](https://github.com/azure-ad-b2c/sie
 - 从用户验证电话号码的下拉菜单中删除与组织不相关的国家/地区代码（此更改将应用于未来注册）：
     
    1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
-
-   2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-
-   3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
-
-   4. 选择用户流，然后选择“语言”。 选择组织的地理位置所对应的语言，以打开语言详细信息窗格。 （在本示例中，对“美国”选择“英语(en)”）。 选择“多重身份验证页”，然后选择“下载默认值(en)”。
+   1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+   1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+   1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
+   1. 选择用户流，然后选择“语言”。 选择组织的地理位置所对应的语言，以打开语言详细信息窗格。 （在本示例中，对“美国”选择“英语(en)”）。 选择“多重身份验证页”，然后选择“下载默认值(en)”。
  
       ![上传新的重写项，以下载默认值](media/phone-based-mfa/download-defaults.png)
 
-   5. 打开上一步中下载的 JSON 文件。 在文件中，搜索 `DEFAULT` 并将行替换为 `"Value": "{\"DEFAULT\":\"Country/Region\",\"US\":\"United States\"}"`。 务必将 `Overrides` 设置为 `true`。
+   1. 打开上一步中下载的 JSON 文件。 在文件中，搜索 `DEFAULT` 并将行替换为 `"Value": "{\"DEFAULT\":\"Country/Region\",\"US\":\"United States\"}"`。 务必将 `Overrides` 设置为 `true`。
 
    > [!NOTE]
    > 可以自定义 `countryList` 元素中允许的国家/地区代码的列表（请参阅[电话因素身份验证页示例](localization-string-ids.md#phone-factor-authentication-page-example)）。
 
-   7. 保存 JSON 文件。 在语言详细信息窗格中的“上传新的重写项”下，选择已修改的 JSON 文件以将其上传。
-
-   8. 关闭窗口，然后选择“运行用户流”。 在本示例中，请确认下拉列表中仅显示一个国家/地区代码“美国”：
+   1. 保存 JSON 文件。 在语言详细信息窗格中的“上传新的重写项”下，选择已修改的 JSON 文件以将其上传。
+   1. 关闭窗口，然后选择“运行用户流”。 在本示例中，请确认下拉列表中仅显示一个国家/地区代码“美国”：
  
       ![国家/地区代码下拉菜单](media/phone-based-mfa/country-code-drop-down.png)
 

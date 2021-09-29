@@ -3,21 +3,21 @@ title: Azure API 管理实例的容量 | Microsoft Docs
 description: 本文介绍什么是容量指标，以及在是否扩展 Azure API 管理实例方面如何做出明智的决策。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 manager: anneta
 editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
-ms.author: apimpm
+ms.author: danlep
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88909f2f4c7ed6d0b079af53eeaa1f11416d176c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93081053"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629723"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理实例的容量
 

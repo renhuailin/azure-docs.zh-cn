@@ -3,14 +3,14 @@ title: Azure CLI 脚本示例 - 订阅 Azure 订阅 | Microsoft Docs
 description: 本文提供了一个示例 Azure CLI 脚本，演示如何使用 Azure CLI 订阅 Azure 事件网格事件。
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/22/2021
+ms.date: 09/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e6b0fac888b621511f06e15def4d19d22921ad39
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6b12e7e530f83d599037713b2f372a49e9a4b927
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463813"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649409"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>使用 Azure CLI 订阅 Azure 订阅的事件
 

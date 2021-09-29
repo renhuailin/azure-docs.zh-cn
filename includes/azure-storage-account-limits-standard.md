@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/30/2020
+ms.date: 09/07/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 82bf11c530dd9d040fc0f82be570774d543b1987
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f3d3f66f01ce3245fa56712d06867bc35a4114ff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446165"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778809"
 ---
 下表描述了 Azure 常规用途 v1、v2、Blob 存储和块 blob 存储帐户的默认限制。 “流入量”限制是指针对发送到存储帐户的所有数据的限制。 “流出量”限制是指针对从存储帐户接收的所有数据的限制。
 
@@ -33,6 +33,8 @@ ms.locfileid: "114446165"
 | 常规用途 v1 存储帐户的最大流出量（非美国区域） | 如果已启用 RA-GRS/GRS，则为 10 Gbps；对于 LRS/ZRS，为 15 Gbps<sup>2</sup> |
 | 每个存储帐户的虚拟网络规则数目上限 | 200 |
 | 每个存储帐户的最大 IP 地址规则数 | 200 |
+| 每个存储帐户的资源实例规则数目上限 | 200 |
+| 每个存储帐户的专用终结点数目上限 | 200 |
 
 <sup>1</sup> Azure 存储标准帐户根据请求支持更高的容量上限和更高的流入量上限。 若要请求增加帐户限制，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。
 

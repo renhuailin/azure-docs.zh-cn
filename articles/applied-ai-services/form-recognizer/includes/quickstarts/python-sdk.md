@@ -1,7 +1,6 @@
 ---
 title: 快速入门：适用于 Python 的表单识别器客户端库
 description: 使用适用于 Python 的表单识别器客户端库创建一个表单处理应用，该应用从自定义文档中提取键值对和表数据。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -9,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8ed2fd9ff95abcfa5912c5e30662d882330e0ea1
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 050a587ba5fb91ce6c9483d31cccd90f1943e567
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326838"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652494"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->

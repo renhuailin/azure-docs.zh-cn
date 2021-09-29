@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/13/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 072278ab70484eb427bafafc3e644e39e47eb8a8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 91b154604e8d2ec898b45aef43f453d769934464
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960495"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572360"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>使用 Azure AD B2C 中的标识保护来调查风险
 
@@ -86,11 +86,9 @@ Azure AD B2C 标识保护提供两份报告。 风险用户报告：管理员可
 ### <a name="navigating-the-risky-users-report"></a>浏览风险用户报告
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
-
 1. 在“安全性”下，选择“风险用户” 。
 
    ![有风险用户](media/identity-protection-investigate-risk/risky-users.png)

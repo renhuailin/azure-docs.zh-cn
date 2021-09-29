@@ -3,17 +3,18 @@ title: 数据工厂的数据管理网关
 description: 使用 Azure 数据工厂中的数据管理网关移动数据。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 50e9dbddd0a84f104aed9275f985f444990dbc30
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 14f3a838fb5c2893e25828234121f053ee951afc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677157"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661979"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -47,7 +48,7 @@ ms.locfileid: "110677157"
 ### <a name="command-flow-and-data-flow"></a>命令流和数据流
 使用复制活动在本地和云之间复制数据时，该活动使用网关将数据从本地数据源传输到云，反之亦然。
 
-此处是使用数据网关进行复制的高级数据流和步骤摘要：![使用网关的数据流](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+此处是使用数据网关进行复制的高级数据流和步骤摘要：:::image type="content" source="./media/data-factory-data-management-gateway/data-flow-using-gateway.png" alt-text="使用网关的数据流":::
 
 1. 数据开发人员使用 [Azure 门户](https://portal.azure.com) 或 [PowerShell Cmdlet](/powershell/module/az.datafactory/) 为 Azure 数据工厂创建网关。
 2. 通过指定网关，数据开发人员可以为本地数据存储创建链接服务。 作为链接服务设置的一部分，数据开发人员使用设置凭据应用程序来指定身份验证的类型和凭据。 设置凭据应用程序对话框与数据存储进行通信，以测试连接和网关，从而保存凭据。
@@ -108,31 +109,31 @@ ms.locfileid: "110677157"
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>如果已在门户中创建逻辑网关
 1. 在 Azure 门户中，导航到“数据工厂”页，并单击“链接服务”磁贴。
 
-    ![“数据工厂”页](media/data-factory-data-management-gateway/data-factory-blade.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/data-factory-blade.png" alt-text="“数据工厂”页":::
 2. 在“链接服务”页中，选择在门户中创建的逻辑网关。
 
-    ![逻辑网关](media/data-factory-data-management-gateway/data-factory-select-gateway.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/data-factory-select-gateway.png" alt-text="逻辑网关":::
 3. 在“数据网关”页中，单击“下载并安装数据网关”。
 
-    ![在门户中下载链接](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/download-and-install-link-on-portal.png" alt-text="在门户中下载链接":::
 4. 在“配置”页中，单击“重新创建密钥”。 仔细阅读后，在警告消息上单击“是”。
 
-    ![重新创建密钥按钮](media/data-factory-data-management-gateway/recreate-key-button.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/recreate-key-button.png" alt-text="重新创建密钥按钮":::
 5. 单击密钥旁边的“复制”按钮。 密钥被复制到剪贴板。
 
-    ![复制密钥](media/data-factory-data-management-gateway/copy-gateway-key.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/copy-gateway-key.png" alt-text="复制密钥":::
 
 ### <a name="system-tray-icons-notifications"></a>系统托盘图标/通知
 下图显示了一些能够看到的托盘图标。
 
-![系统托盘图标](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-tray-icons.png" alt-text="系统托盘图标":::
 
 如果将光标移动到系统托盘图标/通知消息上，弹出窗口中会显示网关/更新操作状态的相关详情。
 
 ### <a name="ports-and-firewall"></a>端口和防火墙
 需要考虑两个防火墙：在组织的中央路由器上运行的“企业防火墙”和在安装了网关的本地计算机上配置为守护程序的“Windows 防火墙”。
 
-![防火墙](./media/data-factory-data-management-gateway/firewalls2.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/firewalls2.png" alt-text="防火墙":::
 
 在企业防火墙级别，需配置以下域和出站端口：
 
@@ -167,11 +168,11 @@ ms.locfileid: "110677157"
 ### <a name="proxy-server-considerations"></a>代理服务器注意事项
 如果企业网络环境使用代理服务器访问 Internet，配置数据管理网关以使用合适的代理设置。 可以在初始注册阶段设置代理。
 
-![在注册过程中设置代理](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxyDuringRegistration.png" alt-text="在注册过程中设置代理":::
 
 网关使用代理服务器连接云服务。 在初始设置期间单击“更改”链接。 会看到“代理设置”对话框。
 
-![使用配置管理器 1 设置代理](media/data-factory-data-management-gateway/SetProxySettings.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxySettings.png" alt-text="使用配置管理器 1 设置代理":::
 
 有三个配置选项：
 
@@ -190,7 +191,7 @@ ms.locfileid: "110677157"
 
 可以使用配置管理器工具查看和更新 HTTP 代理。
 
-![使用配置管理器 2 设置代理](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxyConfigManager.png" alt-text="使用配置管理器 2 设置代理":::
 
 > [!NOTE]
 > 如果使用 NTLM 身份验证设置代理服务器，网关主机服务会在域帐户下运行。 如果之后更改域帐户密码，请记得更新服务的配置设置，并相应地将其重启。 鉴于此要求，建议使用专用域帐户来访问代理服务器，可以无需经常更新密码。
@@ -260,15 +261,15 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
 数据管理网关配置管理器的“主页”选项卡显示更新计划和上一次网关安装/更新的时间。
 
-![计划更新](media/data-factory-data-management-gateway/UpdateSection.png)
+:::image type="content" source="media/data-factory-data-management-gateway/UpdateSection.png" alt-text="计划更新":::
 
 可以立即安装更新，也可以等待网关在计划时间自动更新。 例如，下图显示网关配置管理器中出现的通知消息，以及“更新”按钮，可以单击此按钮立即安装。
 
-![DMG 配置管理器中的更新](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png" alt-text="DMG 配置管理器中的更新":::
 
 系统托盘中的通知消息如下图所示：
 
-![系统托盘消息](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png" alt-text="系统托盘消息":::
 
 在系统托盘中查看（手动或自动）更新操作的状态。 下一次启动网关配置管理器时，会在通知栏中看到一条消息，显示网关已更新，并附随[新增功能主题](data-factory-gateway-release-notes.md)链接。
 
@@ -347,16 +348,16 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
 1. 在 Azure 门户中，导航到“数据工厂”主页，并单击“链接服务”磁贴。
 
-    ![数据工厂主页](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png" alt-text="数据工厂主页":::
 2. 在“链接服务”页中选择“网关”。
 
-    ![“链接服务”页](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/monitor-linked-services-blade.png" alt-text="“链接服务”页":::
 3. 在“网关”页中，可查看网关的内存和 CPU 使用情况。
 
-    ![网关的 CPU 和内存使用情况](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/gateway-simple-monitoring.png" alt-text="网关的 CPU 和内存使用情况":::
 4. 启用“高级设置”以查看网络使用情况等更多详细信息。
     
-    ![网关的高级监视](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png" alt-text="网关的高级监视":::
 
 下表介绍“网关节点”列表中的列：
 
@@ -390,7 +391,7 @@ Offline | 节点处于脱机状态。
 :----- | :-------
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
-脱机 | 没有节点处于联机状态。
+Offline | 没有节点处于联机状态。
 受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。
 
 ## <a name="scale-up-gateway"></a>向上扩展网关
@@ -406,29 +407,29 @@ Offline | 节点处于脱机状态。
 
 1. 在门户中，导航到“数据工厂主页”，并单击“链接服务”磁贴。
 
-    ![数据网关链接](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/DataGatewaysLink.png" alt-text="数据网关链接":::
 2. 在“链接服务”页的“数据网关”部分选择网关。
 
-    ![已选定网关的“链接服务”页](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png" alt-text="已选定网关的“链接服务”页":::
 3. 在“数据网关”页中，单击“下载并安装数据网关” 。
 
-    ![下载网关链接](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/DownloadGatewayLink.png" alt-text="下载网关链接":::
 4. 在“配置”页中，单击“下载并安装数据网关”，并按照说明在计算机上安装数据网关。
 
-    ![“配置”页](./media/data-factory-data-management-gateway/ConfigureBlade.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/ConfigureBlade.png" alt-text="“配置”页":::
 5. 将“Microsoft 数据管理网关配置管理器”保持为打开状态。
 
-    ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/ConfigurationManager.png" alt-text="Configuration Manager":::
 6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。
 
-    ![重新创建密钥 2](./media/data-factory-data-management-gateway/RecreateKey.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/RecreateKey.png" alt-text="重新创建密钥 2":::
 7. 在计算机上，将“密钥”粘贴到“数据管理网关配置管理器”的“注册网关”页的文本框中。 （可选）单击“显示网关密钥”复选框，以查看密钥文本。
 
-    ![复制密钥和注册](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/CopyKeyAndRegister.png" alt-text="复制密钥和注册":::
 8. 单击“注册”，以通过云服务注册网关。
 9. 在“设置”选项卡上，单击“更改”选择与旧网关一起使用的相同证书，输入 **密码**，并单击“完成”。
 
-   ![指定证书](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
+   :::image type="content" source="./media/data-factory-data-management-gateway/SpecifyCertificate.png" alt-text="指定证书":::
 
    可以通过以下步骤从旧网关导出证书：在旧计算机上启动数据管理网关配置管理器，切换到“证书”选项卡，单击“导出”按钮，并按照说明进行操作。
 10. 成功注册网关后，网关配置管理器的主页上会显示“注册”已设置为“已注册”且“状态”已设置为“已启动”。
@@ -443,7 +444,7 @@ Offline | 节点处于脱机状态。
 5. 在 **connectionString** 中，对“初始目录”属性输入数据库名称。
 6. 单击单击命令栏上的“加密”按钮，启动只需单击一次的“凭据管理器”应用程序。 将显示“设置凭据”对话框。
 
-    ![“设置凭据”对话框](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/setting-credentials-dialog.png" alt-text="“设置凭据”对话框":::
 7. 在“设置凭据”对话框框中，执行以下步骤：
    1. 选择数据工厂服务连接数据库时所需的“身份验证”。
    2. 对于“用户名”设置，输入有权访问数据库的用户的名称。

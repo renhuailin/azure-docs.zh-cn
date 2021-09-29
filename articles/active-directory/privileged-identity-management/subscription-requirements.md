@@ -17,12 +17,12 @@ ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6570e378aa75843c525cb21ed58c9da5fd4fb574
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 5980e535de875e50c2b2c5a890a371183623dac0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445851"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835785"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>使用 Privileged Identity Management 所要满足的许可证要求
 
@@ -73,5 +73,5 @@ ms.locfileid: "122445851"
 - [部署 Privileged Identity Management](pim-deployment-plan.md)
 - [开始使用 Privileged Identity Management](pim-getting-started.md)
 - [无法在 Privileged Identity Management 中管理的角色](pim-roles.md)
-- [在 PIM 中创建 Azure 资源角色的访问评审](pim-resource-roles-start-access-review.md)
-- [在 PIM 中创建 Azure AD 角色的访问评审](pim-how-to-start-security-review.md)
+- [在 PIM 中创建 Azure 资源角色的访问评审](./pim-create-azure-ad-roles-and-resource-roles-review.md)
+- [在 PIM 中创建 Azure AD 角色的访问评审](./pim-create-azure-ad-roles-and-resource-roles-review.md)

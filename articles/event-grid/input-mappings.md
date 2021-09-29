@@ -2,14 +2,14 @@
 title: 将自定义字段映射到 Azure 事件网格架构
 description: 本文介绍当事件数据与事件网格架构不匹配时如何将自定义架构转换为 Azure 事件网格架构。
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6676134f878ea77168ee56f065ec1d4cd5b08505
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 88d1b8f9968859f6aad7b81182a7830af5b636c0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704943"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218311"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>将自定义字段映射到事件网格架构
 

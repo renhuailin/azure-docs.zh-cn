@@ -258,6 +258,8 @@ items:
             href: connector-amazon-marketplace-web-service.md
           - name: Amazon RDS for Oracle
             href: connector-amazon-rds-for-oracle.md
+          - name: Amazon RDS for SQL Server
+            href: connector-amazon-rds-for-sql-server.md
           - name: Amazon Redshift
             href: connector-amazon-redshift.md
           - name: Amazon S3
@@ -292,7 +294,7 @@ items:
             href: connector-azure-databricks-delta-lake.md
           - name: Azure 文件存储
             href: connector-azure-file-storage.md
-          - name: Azure SQL 数据库
+          - name: Azure SQL Database
             href: connector-azure-sql-database.md
             displayName: upsert
           - name: Azure SQL 托管实例

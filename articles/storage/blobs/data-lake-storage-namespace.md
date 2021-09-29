@@ -8,12 +8,12 @@ ms.date: 04/01/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: de7f62dd4d4205e819278e6dc90d905e825580f2
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 4eaee714d079836e0919621b2d2e5661d07dfe80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220498"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664839"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 分层命名空间
 
@@ -35,9 +35,9 @@ ms.locfileid: "106220498"
 
 在帐户上启用分层命名空间后，不能将其还原为平面命名空间。 因此，请考虑根据对象存储工作负载的性质启用分层命名空间是否有意义。
 
-某些工作负载可能无法通过启用分层命名空间获得任何益处。 示例包括备份、图像存储和其他应用程序，其中对象组织与对象本身分开存储（例如，存储在单独的数据库中）。 
+某些工作负载可能无法通过启用分层命名空间获得任何益处。 示例包括备份、图像存储和其他应用程序，其中对象组织与对象本身分开存储（例如，存储在单独的数据库中）。
 
-此外，尽管继续支持 Blob 存储功能和 Azure 服务生态系统，但仍存在一些具有分层命名空间的帐户尚不支持的功能和 Azure 服务。 请参阅[已知问题](data-lake-storage-known-issues.md) 
+此外，尽管继续支持 Blob 存储功能和 Azure 服务生态系统，但仍存在一些具有分层命名空间的帐户尚不支持的功能和 Azure 服务。 请参阅[已知问题](data-lake-storage-known-issues.md)
 
 通常，对于为执行目录操作的文件系统设计的存储工作负载，建议为其启用分层命名空间。 这包括主要用于分析处理的所有工作负荷。 启用分层命名空间对于需要高度整理的数据集同样有益处。
 

@@ -8,13 +8,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 877b2adb2dd61bdbba30ce4d5c84e26380be5b2b
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.date: 09/09/2021
+ms.openlocfilehash: 4c1ec8e8ca10764c630320c1d448b812da7a3cc4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472283"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750721"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -30,7 +30,7 @@ Azure 数据工厂和 Synapse 管道中的映射数据流提供一个无代码�
 
 使用调试模式验证转换逻辑后，以管道中活动的形式端到端地运行数据流。 数据流使用[执行数据流活动](control-flow-execute-data-flow-activity.md)在管道内进行操作化。 相较于其他活动，数据流活动具有独特的监视体验，其中显示了转换逻辑的详细执行计划和性能配置文件。 若要查看数据流的详细监视信息，请单击管道的活动运行输出中的眼镜图标。 有关详细信息，请参阅[监视映射数据流](concepts-data-flow-monitoring.md)。
 
-![数据流监视器](media/data-flow/monitoring-details.png "数据流监视器 2")
+:::image type="content" source="media/data-flow/monitoring-details.png" alt-text="数据流监视器":::
 
 监视数据流性能时，需注意四个潜在瓶颈：
 
@@ -39,7 +39,7 @@ Azure 数据工厂和 Synapse 管道中的映射数据流提供一个无代码�
 * 转换时间
 * 写入接收器 
 
-![数据流监视](media/data-flow/monitoring-performance.png "数据流监视器 3")
+:::image type="content" source="media/data-flow/monitoring-performance.png" alt-text="数据流监视":::
 
 群集启动时间是指启动 Apache Spark 群集所需的时间。 该值位于监视屏幕的右上角。 数据流在实时模型上运行，其中每个作业都使用独立的群集。 该启动时间通常为 3-5 分钟。 对于顺序作业，可以通过启用生存时间值来缩短该时间。 有关详细信息，请参阅 [Integration Runtime 性能](concepts-integration-runtime-performance.md#time-to-live)中的“生存时间”部分。
 
@@ -55,7 +55,7 @@ Azure 数据工厂和 Synapse 管道中的映射数据流提供一个无代码�
 
 “优化”选项卡包含用于配置 Spark 群集的分区方案的设置。 此选项卡存在于数据流的每个转换中，可指定是否要在转换完成后对数据进行重新分区。 调整分区可对跨计算节点的数据分布以及数据局部优化提供控制度，但会对数据流的总体性能同时造成正面影响和负面影响。
 
-![屏幕截图显示“优化”选项卡，其中包含“分区选项”、“分区类型”和“分区数”。](media/data-flow/optimize.png)
+:::image type="content" source="media/data-flow/optimize.png" alt-text="屏幕截图显示“优化”选项卡，其中包含“分区选项”、“分区类型”和“分区数”。":::
 
 默认选中“使用当前分区”，这指示服务保留转换的当前输出分区。 由于对数据进行重新分区需要时间，因此在大多数情况下建议选择“使用当前分区”。 建议对数据进行重新分区的情况包括：“进行会严重倾斜数据的聚合和联接后”或“在 SQL DB 上使用源分区时”。
 
@@ -66,34 +66,34 @@ Azure 数据工厂和 Synapse 管道中的映射数据流提供一个无代码�
 
 以下分区选项在每个转换中都可用：
 
-### <a name="round-robin&quot;></a>轮循机制 
+### <a name="round-robin"></a>轮循机制 
 
 轮循机制将数据平均分布到各个分区。 如果没有适当的候选键用于实施可靠、智能的分区策略，请使用轮循机制。 可以设置物理分区数目。
 
-### <a name=&quot;hash&quot;></a>哈希
+### <a name="hash"></a>哈希
 
 服务将生成列的哈希来生成统一的分区，使包含类似值的行划归到同一分区。 使用“哈希”选项时，请测试是否存在分区倾斜。 可以设置物理分区数目。
 
-### <a name=&quot;dynamic-range&quot;></a>动态范围
+### <a name="dynamic-range"></a>动态范围
 
 动态范围基于提供的列或表达式使用 Spark 动态范围。 可以设置物理分区数目。 
 
-### <a name=&quot;fixed-range&quot;></a>固定范围
+### <a name="fixed-range"></a>固定范围
 
 生成一个表达式用于在分区的数据列中提供值的固定范围。 使用此选项之前，应该充分了解你的数据，以避免分区倾斜。 为表达式输入的值将用作分区函数的一部分。 可以设置物理分区数目。
 
-### <a name=&quot;key&quot;></a>键
+### <a name="key"></a>键
 
 如果你已充分了解数据的基数，则键分区可能是不错的策略。 键分区为列中的每个唯一值创建分区。 无法设置分区数目，因为该数目基于数据中的唯一值。
 
 > [!TIP]
 > 手动设置分区方案会重新组合数据，可能会抵消 Spark 优化器的优势。 最佳做法是不要手动设置分区，除非有需要。
 
-## <a name=&quot;logging-level&quot;></a>日志记录级别
+## <a name="logging-level"></a>日志记录级别
 
-如果不需要数据流活动的每个管道执行完整地记录所有详细的遥测日志，则可根据需要将日志记录级别设置为“基本”或“无”。 在“详细”模式（默认）下执行数据流时，要求服务在数据转换期间完整地记录每个分区级别的活动。 该操作成本昂贵，因此仅在进行故障排除时启用“详细”模式可优化整体数据流和管道性能。 “基本”模式仅记录转换持续时间，而“无”模式仅提供持续时间的摘要。
+如果不需要数据流活动的每个管道执行完整地记录所有详细的遥测日志，则可根据需要将日志记录级别设置为“基本”或“无”。 在“详细”模式（默认）下执行数据流时，要求此服务在数据转换期间完整地记录每个分区级别的活动。 该操作成本昂贵，因此仅在进行故障排除时启用“详细”模式可优化整体数据流和管道性能。 “基本”模式仅记录转换持续时间，而“无”模式仅提供持续时间的摘要。
 
-![日志记录级别](media/data-flow/logging.png &quot;设置日志记录级别")
+:::image type="content" source="media/data-flow/logging.png" alt-text="日志记录级别":::
 
 ## <a name="optimizing-sources"></a>优化源
 
@@ -111,7 +111,7 @@ Azure SQL 数据库有唯一的分区选项，称为“源”分区。 启用源
 > [!TIP]
 > 对于源分区，SQL Server 的 I/O 是瓶颈。 添加太多分区可能会导致源数据库饱和。 通常，使用此选项时，最好添加 4-5 个分区。
 
-![源分区](media/data-flow/sourcepart3.png "源分区")
+:::image type="content" source="media/data-flow/sourcepart3.png" alt-text="源分区":::
 
 #### <a name="isolation-level"></a>隔离级别
 
@@ -125,7 +125,7 @@ Azure SQL 源系统上的读取隔离级别会影响性能。 如果选择“读
 
 使用 Azure Synapse Analytics 时，源选项中有一个名为“启用暂存”的设置。 这允许服务使用 ```Staging``` 从 Synapse 进行读取操作，从而可使用 [Synapse COPY 语句](/sql/t-sql/statements/copy-into-transact-sql)命令大幅提升读取性能，以便获得最高性能的大容量加载功能。 启用 ```Staging``` 需要在数据流活动设置中指定 Azure Blob 存储或 Azure Data Lake Storage Gen2 暂存位置。
 
-![启用暂存](media/data-flow/enable-staging.png "启用暂存")
+:::image type="content" source="media/data-flow/enable-staging.png" alt-text="启用暂存":::
 
 ### <a name="file-based-sources"></a>基于文件的源
 
@@ -159,7 +159,7 @@ Azure SQL 源系统上的读取隔离级别会影响性能。 如果选择“读
 
 可以在映射数据流中的 Azure SQL DB 或 Synapse 接收器内使用 Pre-SQL 和 Post-SQL 脚本来原生完成此操作。
 
-![禁用索引](media/data-flow/disable-indexes-sql.png "禁用索引")
+:::image type="content" source="media/data-flow/disable-indexes-sql.png" alt-text="禁用索引":::
 
 > [!WARNING]
 > 禁用索引时，数据流可有效地控制数据库，此时查询不太可能成功。 因此，大量 ETL 作业会在半夜触发，以避免此冲突。 有关详细信息，请了解[禁用 SQL 索引的约束](/sql/relational-databases/indexes/disable-indexes-and-constraints)
@@ -184,7 +184,7 @@ Azure SQL 源系统上的读取隔离级别会影响性能。 如果选择“读
 
 写入文件时，可以选择命名选项，每个选项都会对性能产生影响。
 
-![接收器选项](media/data-flow/file-sink-settings.png "接收器选项​​")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="接收器选项":::
 
 如果选择“默认”选项，则写入速度最快。 每个分区将等同于具有 Spark 默认名称的文件。 如果只读取文件夹中的数据，这会很有用。
 
@@ -216,7 +216,7 @@ Azure SQL 源系统上的读取隔离级别会影响性能。 如果选择“读
 
 当处理可能需要较长时间才能进行查询的数据源时（如大型数据库查询），建议关闭联接的广播。 当群集尝试广播到计算节点时，查询时间较长的源可能会导致 Spark 超时。 关闭广播的另一种不错的选择是：当数据流中有一个流时，该流正在聚合要在以后的查找转换中使用的值。 此模式可能会迷惑 Spark 优化器并导致超时。
 
-![联接转换优化](media/data-flow/joinoptimize.png "联接优化")
+:::image type="content" source="media/data-flow/joinoptimize.png" alt-text="联接转换优化":::
 
 #### <a name="cross-joins"></a>交叉联接
 
@@ -234,7 +234,7 @@ Azure SQL 源系统上的读取隔离级别会影响性能。 如果选择“读
 
 某些转换（例如联接和聚合）会重新组合数据分区，有时可能会导致数据倾斜。 数据倾斜意味着数据未均匀地分布于各个分区。 数据严重倾斜会导致下游转换和接收器写入变慢。 可以通过单击监视显示器中的转换在数据流运行的任何时间点检查数据的倾斜度。
 
-![倾斜度和峰度](media/data-flow/skewness-kurtosis.png "倾斜度和峰度")
+:::image type="content" source="media/data-flow/skewness-kurtosis.png" alt-text="倾斜度和峰度":::
 
 监视显示器将显示数据如何分布到每个分区，以及倾斜度和峰度两个指标。 倾斜度是数据不对称程度的度量，可以是正、零、负或未定义的值。 负倾斜表示左尾比右尾长。 峰度是表示数据是重尾分布还是轻尾分布的度量。 高峰度值表示不理想。 理想的倾斜度范围在 -3 到 3 之间，而理想的峰度范围则是小于 10。 查看分区图并查看 1 bar 是否明显大于其余部分可轻松理解这些数字。
 

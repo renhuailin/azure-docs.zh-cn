@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 94b6b32a8391bd60e02ea45e16a3de3221fb93f2
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: fef2458a68124cfdac3389c1f52083a8b2b76e3c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123031810"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795215"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>教程：Azure Active Directory 与 MindTickle 集成
 
@@ -144,7 +144,7 @@ MindTickle 还支持自动用户预配，有关如何配置自动用户预配的
 
 * 直接转到 MindTickle 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 MindTickle 磁贴时，会重定向到 MindTickle 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 MindTickle 磁贴时，会重定向到 MindTickle 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

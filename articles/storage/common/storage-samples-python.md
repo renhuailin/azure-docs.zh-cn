@@ -1,19 +1,19 @@
 ---
 title: 使用 Python 的 Azure 存储示例 | Microsoft Docs
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 Python 存储客户端库发现 Blob、队列、表和文件的入门示例。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
-ms.openlocfilehash: f8e5a8593d5b473da8769c1fbeece8c9818e88fa
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 407fa4d21207b705702f2cc567ff44d22be97374
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276681"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549406"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>使用 v12 Python 客户端库的 Azure 存储示例
 
@@ -534,7 +534,6 @@ ms.locfileid: "106276681"
    :::column-end:::
 :::row-end:::
 
-
 ## <a name="table-samples-sdk-v21"></a>表示例 (SDK v2.1)
 
 :::row:::
@@ -571,10 +570,10 @@ ms.locfileid: "106276681"
 
 若要查看完整的 Python 示例库，请转到：
 
-* [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
-* [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
-* [Azure 队列代码示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+- [Azure Blob 代码示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+- [Azure Data Lake 代码示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+- [Azure 文件存储代码示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
+- [Azure 队列代码示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
 
 可以浏览并克隆每个库的 GitHub 存储库。
 
@@ -582,17 +581,17 @@ ms.locfileid: "106276681"
 
 若要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [Python 中的 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-python.md)
-* [Python 中的 Azure 队列服务入门](../queues/storage-quickstart-queues-python.md)
-* [Python 中的 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Python 中的 Azure 文件服务入门](../files/storage-python-how-to-use-file-storage.md)
+- [Python 中的 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-python.md)
+- [Python 中的 Azure 队列服务入门](../queues/storage-quickstart-queues-python.md)
+- [Python 中的 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-python.md)
+- [Python 中的 Azure 文件服务入门](../files/storage-python-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关其他语言的示例的信息：
 
-* .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
-* Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
-* JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
-* C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
-* 所有其他语言：[Azure 存储示例](storage-samples.md)
+- .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
+- Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
+- JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
+- C++：[使用 C++ 的 Azure 存储示例](storage-samples-c-plus-plus.md)
+- 所有其他语言：[Azure 存储示例](storage-samples.md)

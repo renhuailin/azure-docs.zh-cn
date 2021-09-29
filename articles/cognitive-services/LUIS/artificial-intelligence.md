@@ -6,12 +6,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 39f73dd002091451ae832516d525499eae98564d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 623b50bee72f99be4d31159165f1af5b98f67b88
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021365"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750733"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>语言理解 (LUIS) 中的人工智能
 
@@ -39,7 +39,7 @@ LUIS 根据定义的架构，使用人工智能 (AI) 提供对数据的自然语
     * [词汇切分](luis-language-support.md#tokenization)
     * 通过音调符号、标点和单词形式 [API 设置](luis-reference-application-settings.md)配置词态
 * 其他[认知服务](../what-are-cognitive-services.md)提供的查询言语的预处理或后期处理，例如：
-    * [翻译](../translator/translator-info-overview.md)
+    * [翻译](../translator/translator-overview.md)
 
 ## <a name="natural-language-understanding-nlu"></a>自然语言理解 (NLU)
 

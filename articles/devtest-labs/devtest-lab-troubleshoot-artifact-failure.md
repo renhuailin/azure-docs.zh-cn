@@ -1,14 +1,14 @@
 ---
 title: 诊断 Azure 开发测试实验室虚拟机中的项目失败
 description: 开发测试实验室提供了可用于诊断项目失败的信息。 本文介绍如何排查项目失败的问题。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7c343eee8c3484e12139c2bef963fc463ffc28d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85480807"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567442"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
 创建项目后，可检查其为成功还是失败。 Azure 开发测试实验室中的项目日志提供了可用于诊断项目失败的信息。 可通过几个选项查看 Windows VM 的项目日志信息：
@@ -49,4 +49,3 @@ ms.locfileid: "85480807"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[将 Git 存储库添加到实验室](devtest-lab-add-artifact-repo.md)。
-

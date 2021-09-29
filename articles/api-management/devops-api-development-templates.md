@@ -2,17 +2,17 @@
 title: 用于使用 ARM 模板进行 Azure API 管理的 CI/CD
 description: 使用 Azure API 管理的 API DevOps 简介，使用 Azure 资源管理器模板在 CI/CD 管道中管理 API 部署
 services: api-management
-author: miaojiang
+author: dlepow
 ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.author: apimpm
-ms.openlocfilehash: e7d0515262fc06d850b61f257e7cd577797bcf39
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: danlep
+ms.openlocfilehash: 7e1ea1b11304e43a74659221c352f207856369c8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742747"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665751"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>用于使用 Azure 资源管理器模板进行 API 管理的 CI/CD
 

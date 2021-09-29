@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 95e84bbe917a6b1e30ecb9dcf41f1f5e00576c82
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 075bcffd7cb2beb3e64b54536934953c49df9b76
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469175"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813608"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EBSCO 集成
 
@@ -83,7 +83,7 @@ ms.locfileid: "110469175"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
 
     > [!NOTE]
     > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [EBSCO 客户端支持团队](mailto:support@ebsco.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -161,7 +161,7 @@ Azure AD 将所需的数据传递给 EBSCO 应用程序。 EBSCO 的用户预配
 本部分将使用“我的应用”测试 Azure AD 单一登录配置。
 
 1. 单击“我的应用”中的 EBSCO 磁贴时，你会自动登录到 EBSCO 应用程序。
-有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 1. 登录到该应用程序后，单击右上角的“登录”按钮。
 

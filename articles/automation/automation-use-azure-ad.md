@@ -2,15 +2,15 @@
 title: 在 Azure 自动化中使用 Azure AD 以便向 Azure 进行身份验证
 description: 本文介绍如何使用 Azure 自动化中的 Azure AD 作为向 Azure 进行身份验证的提供程序。
 services: automation
-ms.date: 03/30/2020
+ms.date: 09/23/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3150b20e8ddd5fa49f1cc9486d29dd633e443239
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a5bb9b4d8235d48f47b34613c78d68f8bd3a2435
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454863"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079991"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>使用 Azure AD 向 Azure 进行身份验证
 
@@ -51,7 +51,7 @@ ms.locfileid: "112454863"
 
 1. 请确保已在计算机上启用 Microsoft .NET Framework 3.5.x 功能。 计算机可能已安装较新版本，但可启用或禁用较旧版本的 .NET Framework 的后向兼容性。 
 
-2. 安装 64 位版本的 [Microsoft Online Services 登录助手](/microsoft-365/enterprise/connect-to-microsoft-365-powershell?view=o365-worldwide#step-1-install-the-required-software-1)。
+2. 安装 64 位版本的 [Microsoft Online Services 登录助手](/microsoft-365/enterprise/connect-to-microsoft-365-powershell?view=o365-worldwide&preserve-view=true#step-1-install-the-required-software-1)。
 
 3. 以管理员身份运行 Windows PowerShell，创建提升的 Windows PowerShell 命令提示符。
 
@@ -97,10 +97,10 @@ Azure 自动化使用 [PSCredential](/dotnet/api/system.management.automation.ps
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>通过 Azure 自动化 runbook 管理 Azure 资源
 
-可以使用凭据资产通过 Azure 自动化 runbook 管理 Azure 资源。 下面是一个示例 PowerShell runbook，它收集用于停止和启动 Azure 订阅中的虚拟机的凭据资产。 此 runbook 首先使用 `Get-AutomationPSCredential` 来检索用于向 Azure 进行身份验证的凭据。 然后，它会调用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet，以使用凭据连接到 Azure。 此脚本使用 [Select-AzureSubscription](/powershell/module/servicemanagement/azure.service/select-azuresubscription) cmdlet 来选择要使用的订阅。 
+可以使用凭据资产通过 Azure 自动化 runbook 管理 Azure 资源。 下面是一个示例 PowerShell runbook，它收集用于停止和启动 Azure 订阅中的虚拟机的凭据资产。 此 runbook 首先使用 `Get-AutomationPSCredential` 来检索用于向 Azure 进行身份验证的凭据。 然后，它会调用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet，以使用凭据连接到 Azure。 
 
-```azurepowershell
-Workflow Stop-Start-AzureVM 
+```powershell
+Workflow Workflow
 { 
     Param 
     (    
@@ -115,9 +115,25 @@ Workflow Stop-Start-AzureVM
         $Action 
     ) 
      
-    $credential = Get-AutomationPSCredential -Name 'AzureCredential' 
-    Connect-AzAccount -Credential $credential 
-    Select-AzureSubscription -SubscriptionId $AzureSubscriptionId 
+    # Ensures you do not inherit an AzContext in your runbook
+    Disable-AzContextAutosave -Scope Process
+
+    # Connect to Azure with system-assigned managed identity
+    $AzureContext = (Connect-AzAccount -Identity).context
+
+    # set and store context
+    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext 
+
+    # get credential
+    $credential = Get-AutomationPSCredential -Name "AzureCredential"
+
+    # Connect to Azure with credential
+    $AzureContext = (Connect-AzAccount -Credential $credential -TenantId $AzureContext.Subscription.TenantId).context 
+
+    # set and store context
+    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+        -TenantId $AzureContext.Subscription.TenantId `
+        -DefaultProfile $AzureContext
  
     if($AzureVMList -ne "All") 
     { 
@@ -126,14 +142,13 @@ Workflow Stop-Start-AzureVM
     } 
     else 
     { 
-        $AzureVMs = (Get-AzVM).Name 
+        $AzureVMs = (Get-AzVM -DefaultProfile $AzureContext).Name 
         [System.Collections.ArrayList]$AzureVMsToHandle = $AzureVMs 
- 
     } 
  
     foreach($AzureVM in $AzureVMsToHandle) 
     { 
-        if(!(Get-AzVM | ? {$_.Name -eq $AzureVM})) 
+        if(!(Get-AzVM -DefaultProfile $AzureContext | ? {$_.Name -eq $AzureVM})) 
         { 
             throw " AzureVM : [$AzureVM] - Does not exist! - Check your inputs " 
         } 
@@ -144,7 +159,7 @@ Workflow Stop-Start-AzureVM
         Write-Output "Stopping VMs"; 
         foreach -parallel ($AzureVM in $AzureVMsToHandle) 
         { 
-            Get-AzVM | ? {$_.Name -eq $AzureVM} | Stop-AzVM -Force 
+            Get-AzVM -DefaultProfile $AzureContext | ? {$_.Name -eq $AzureVM} | Stop-AzVM -DefaultProfile $AzureContext -Force 
         } 
     } 
     else 
@@ -152,7 +167,7 @@ Workflow Stop-Start-AzureVM
         Write-Output "Starting VMs"; 
         foreach -parallel ($AzureVM in $AzureVMsToHandle) 
         { 
-            Get-AzVM | ? {$_.Name -eq $AzureVM} | Start-AzVM 
+            Get-AzVM -DefaultProfile $AzureContext | ? {$_.Name -eq $AzureVM} | Start-AzVM -DefaultProfile $AzureContext
         } 
     } 
 }

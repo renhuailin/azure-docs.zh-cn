@@ -3,12 +3,12 @@ title: 控制平面和数据平面操作
 description: 介绍控制平面操作和数据平面操作之间的差异。 控制平面操作由 Azure 资源管理器处理。 数据平面操作由服务处理。
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: 40bb3291e4eec589c88bcd6ffd0f94a718ce8d1f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0e1dbf525266fdcf7ca34a449cc51169dda027d5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132082"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755969"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure 控制平面和数据平面
 
@@ -44,7 +44,7 @@ Azure 资源管理器处理所有控制平面请求。 它将自动应用已实�
 * [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure Policy](../../governance/policy/overview.md)
 * [管理锁](lock-resources.md)
-* [活动日志](view-activity-logs.md)
+* [活动日志](../../azure-monitor/essentials/activity-log.md)
 
 对请求进行身份验证后，Azure 资源管理器会将其发送到资源提供程序，该资源提供程序会完成操作。
 

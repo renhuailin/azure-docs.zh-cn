@@ -6,12 +6,12 @@ ms.author: jixin
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 08/24/2021
-ms.openlocfilehash: 0012b17de652d2282cfb2ca21806b95e892b80a7
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 98bb95800596ac54bae01efb501c6016767ca650
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452224"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785090"
 ---
 # <a name="tutorial-create-a-serverless-notification-app-with-azure-functions-and-azure-web-pubsub-service"></a>教程：使用 Azure Functions 和 Azure Web PubSub 服务创建无服务器通知应用
 
@@ -358,7 +358,7 @@ ms.locfileid: "123452224"
 
 1. 将函数项目部署到 Azure：
 
-    在 Azure 中成功创建函数应用后，便可以使用 [func azure functionapp publish](/azure/azure-functions/functions-run-local) 命令部署本地函数项目。
+    在 Azure 中成功创建函数应用后，便可以使用 [func azure functionapp publish](../azure-functions/functions-run-local.md) 命令部署本地函数项目。
 
     ```bash
     func azure functionapp publish <FUNCIONAPP_NAME> --publish-local-settings

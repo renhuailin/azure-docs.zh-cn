@@ -5,12 +5,12 @@ author: bennage
 ms.author: christb
 ms.topic: reference
 ms.date: 06/01/2021
-ms.openlocfilehash: d350c757ec977f743cdcc921770a670863dc9577
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: ec4837091e84ec6cfcb16ba1ace8e4ece7056d8a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515376"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762011"
 ---
 # <a name="azure-video-analyzer-sdks"></a>Azure 视频分析器 SDK
 
@@ -38,7 +38,7 @@ Azure 视频分析器包含两组 SDK。 管理 SDK 用于管理 Azure 资源，
 
 ## <a name="see-also"></a>另请参阅
 
-- 还可以参阅 [Azure 视频分析器 API](https://docs.microsoft.com/rest/api/videoanalyzer/)
+- 还可以参阅 [Azure 视频分析器 API](/rest/api/videoanalyzer/)
 
 <!-- links -->
 [docs-direct-methods]: direct-methods.md

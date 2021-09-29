@@ -1,20 +1,20 @@
 ---
 title: 教程：在 .NET 中使用 Azure 队列存储队列
 description: 有关如何使用 Azure 队列存储创建队列以及如何使用 .NET 代码插入、获取和删除消息的教程。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 06/09/2020
 ms.topic: tutorial
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7d960735ee3ebd056858b93576d219ade514a00
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b563c3c0f481e8a133070f4758a31dc833995127
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459694"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662488"
 ---
 # <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>教程：在 .NET 中使用 Azure 队列存储队列
 

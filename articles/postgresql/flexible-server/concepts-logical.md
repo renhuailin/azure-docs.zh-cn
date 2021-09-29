@@ -6,17 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: e23eaead0d9c8dd162d73176330f620a9ee8e737
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5030abe5dbc93a1b04588d548d353701a5a77ad4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745102"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559259"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的逻辑复制和逻辑解码
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL 灵活服务器以预览版提供
+
 
 Azure Database for PostgreSQL 灵活服务器支持以下逻辑数据提取和复制方法：
 1. **逻辑复制**
@@ -42,21 +41,21 @@ Azure Database for PostgreSQL 灵活服务器支持以下逻辑数据提取和�
 * 不能在 PostgreSQL 实例之间直接发送数据。
 
 >[!NOTE]
-> 此时，灵活服务器不支持跨区域只读副本。 根据工作负载的类型，可以选择将逻辑复制功能用于跨区域灾难恢复 (DR) 目的。
+> 此时，灵活服务器不支持跨区域只读副本。 根据工作负载的类型，你可以选择使用逻辑复制功能进行跨区域灾难恢复 (DR)。
 
 ## <a name="pre-requisites-for-logical-replication-and-logical-decoding"></a>逻辑复制和逻辑解码的先决条件
 
 1. 转到门户中的服务器参数页。
 2. 将服务器参数 `wal_level` 设置为 `logical`。
 3. 如果要使用 pglogical 扩展，请搜索 `shared_preload_libaries` 参数，然后从下拉框中选择 `pglogical`。
-4. 将 `max_worker_processes` 参数值更新为至少 16。 否则，可能会遇到诸如 `WARNING: out of background worker slots` 之类的问题。
+4. 请将 `max_worker_processes` 参数值更新为一个至少 16 的数字。 否则，可能会遇到类似 `WARNING: out of background worker slots` 的问题。
 5. 保存更改并重启服务器以应用 `wal_level` 更改。
 6. 确认 PostgreSQL 实例允许来自连接资源的网络流量。
 7. 授予管理员用户复制权限。
    ```SQL
    ALTER ROLE <adminname> WITH REPLICATION;
    ```
-8. 你可能需要确保你使用的角色对要复制的架构具有[权限](https://www.postgresql.org/docs/current/sql-grant.html)。 否则，可能会遇到诸如 `Permission denied for schema` 之类的错误。 
+8. 你可能希望确保你使用的角色对要复制的架构具有[权限](https://www.postgresql.org/docs/current/sql-grant.html)。 否则，可能会遇到类似 `Permission denied for schema` 的错误。 
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>使用逻辑复制和逻辑解码
 

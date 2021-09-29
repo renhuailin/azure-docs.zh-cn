@@ -16,12 +16,12 @@ ms.date: 02/08/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e31b9ce115ebe0723a9d082aaddd8056e486ed27
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65ccc68585e127741a0acffde54273ae496aea47
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176971"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124817967"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中完成对组和应用程序的访问评审
 
@@ -111,4 +111,4 @@ ms.locfileid: "102176971"
 - [使用 Azure AD 访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)
 - [使用 Azure AD 访问评审管理来宾访问权限](manage-guest-access-with-access-reviews.md)
 - [创建组或应用程序的访问评审](create-access-review.md)
-- [针对充当 Azure AD 管理角色的用户创建访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)
+- [针对充当 Azure AD 管理角色的用户创建访问评审](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md)

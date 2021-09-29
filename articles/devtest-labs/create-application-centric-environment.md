@@ -1,14 +1,14 @@
 ---
-title: 创建以应用程序为中心的环境 - Azure
+title: 创建以应用程序为中心的环境
 description: 本文演示如何使用 Cloud Shell 蚁群和 Microsoft Azure 创建以应用程序为中心的环境。
 ms.topic: how-to
 ms.date: 11/26/2020
-ms.openlocfilehash: 88244f268d5ed038e9bb7082d3d5cc1179e5ec4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b56a39996aa93e10ede28de91ae20857a8eefc0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94918096"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627570"
 ---
 # <a name="create-an-application-centric-environment"></a>创建以应用程序为中心的环境
 

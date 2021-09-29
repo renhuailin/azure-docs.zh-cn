@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: e701ac76672712f98930d0a2d87e3da5b2afdc51
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 222a0f3c327c476ef372117ff0734b6739faf9db
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181428"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588687"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
 
@@ -57,7 +57,7 @@ Azure 块 Blob 存储提供两个不同的性能层：
 
 - **备份和灾难恢复数据集**。 标准性能存储提供经济高效的层，使其成为短期和长期灾难恢复数据集、辅助备份与合规性数据存档的完美用例。
 
-- **媒体内容**。 首次创建并存储图像和视频后，往往会频率地对其进行访问，但一段时间后，对此类内容的使用会越来越少。 标准性能存储提供适当的层来满足媒体内容需求。 
+- **媒体内容**。 首次创建并存储图像和视频后，往往会频率地对其进行访问，但一段时间后，对此类内容的使用会越来越少。 标准性能存储提供适当的层来满足媒体内容需求。
 
 - **批量数据处理**。 此类工作负荷适合使用标准存储，因为它们需要经济高效的高吞吐量存储，而不是一致的低延迟。 较大的原始数据集将会暂存以进行处理，最终会迁移到较冷的层。
 
@@ -74,7 +74,7 @@ Blob 存储生命周期管理提供了丰富的基于规则的策略：
 - **Premium**：在数据生命周期结束时使数据过期。
 - **标准**：将数据转换到最佳访问层，并在其生命周期结束时使数据过期。
 
-若要了解详细信息，请参阅[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)。
+若要了解详细信息，请参阅[管理 Azure Blob 存储生命周期](./lifecycle-management-overview.md)。
 
 无法在热、冷和存档层之间移动存储在高级块 Blob 存储帐户中的数据。 但是，可将块 Blob 存储帐户中的 Blob 复制到不同帐户中的热访问层。 若要将数据复制到另一帐户，请使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) API 或 [AzCopy v10](../common/storage-use-azcopy-v10.md)。 “从 URL 放置块”API 以同步方式复制服务器上的数据。 仅在已将所有数据从原始服务器位置移到目标位置后，调用才会完成。
 

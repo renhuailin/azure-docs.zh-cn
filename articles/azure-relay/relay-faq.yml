@@ -4,13 +4,13 @@ metadata:
   description: 本文提供了一些有关 Azure 中继服务的常见问题解答 (FAQ)。
   ms.topic: article
   ms.service: azure
-  ms.date: 06/23/2021
-  ms.openlocfilehash: fd18d0d36cb07596ba6f8b40e699228bb95a190d
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 09/17/2021
+  ms.openlocfilehash: defbb7c8318b548de3ed5bc4aa6049944a719e6d
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253956"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128637548"
 title: Azure 中继常见问题解答
 summary: >
   本文解答一些关于 [Azure 中继](https://azure.microsoft.com/services/service-bus/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
@@ -42,7 +42,7 @@ sections:
   - question: >
       如何对混合连接和 WCF 中继收费？
     answer: >
-      有关中继定价的完整信息，请参阅服务总线定价详细信息页上的 [混合连接和 WCF 中继][定价预览] 表。 除该页上标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
+      有关中继定价的完整信息，请参阅服务总线定价详细信息页上的[混合连接和 WCF 中继](https://azure.microsoft.com/pricing/details/service-bus)表。 除该页上标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
   - question: >
       使用混合连接时怎样计费？
     answer: "以下是三种示例计费方案，适用于混合连接：\n\n*   应用场景 1：\n    *   有一个侦听器，例如一个混合连接管理器实例，在安装后已持续运行一整月。\n    *   在该月通过连接发送了 3 GB 的数据。 \n    *   总费用是 5 美元。\n*   应用场景 2：\n    *   有一个侦听器，例如一个混合连接管理器实例，在安装后已持续运行一整月。\n    *   在该月通过连接发送了 10 GB 的数据。\n    *   总费用是 7.50 美元。 其中 5 美元是针对连接和第一个 5 GB 的收费，另外 2.50 美元是针对其余 5 GB 数据的收费。\n*   应用场景 3：\n    *   有两个混合连接管理器实例（A 和 B），在安装后已持续运行一整月。\n    *   在该月通过连接 A 发送了 3 GB 的数据。\n    *   在该月通过连接 B 发送了 6 GB 的数据。\n    *   总费用是 10.50 美元。 其中 5 美元是针对连接 A 的收费，5 美元是针对连接 B 的收费，还有 0.50 美元是针对连接 B 额外的 1 GB 数据的收费。\n"
@@ -110,11 +110,11 @@ sections:
   - question: >
       Azure 中继 API 所生成的异常有哪些，可以采用哪些建议操作？
     answer: >
-      有关常见异常以及可以采用的建议操作的说明，请参阅 [中继异常][Relay exceptions]。
+      有关常见异常以及可以采用的建议操作的说明，请参阅[中继异常](relay-exceptions.md)。
   - question: >
       什么是共享访问签名？哪些语言可以用来生成签名？
     answer: >
-      共享访问签名 (SAS) 是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node.js、PHP、Python、Java、C 和 C# 中生成自有签名的信息，请参阅 [使用共享访问签名进行服务总线身份验证][共享访问签名]。
+      共享访问签名 (SAS) 是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node.js、PHP、Python、Java、C 和 C# 中生成自有签名的信息，请参阅[使用共享访问签名进行服务总线身份验证](../service-bus-messaging/service-bus-sas.md)。
   - question: >
       是否可以仅允许某些中继终结点？
     answer: >

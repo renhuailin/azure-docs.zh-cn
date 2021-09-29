@@ -5,17 +5,15 @@ description: 了解如何在 Azure 机器学习中查看托管联机终结点的
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: gopalv
-author: gvashishtha
 ms.date: 05/03/2021
 ms.topic: conceptual
 ms.custom: how-to, deploy, devplatv2
-ms.openlocfilehash: acf8b01a0d1179cb029e0729cbeb57f856b1f11a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: bb07d499007cbbc0cb502611056aaef583cbb16a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448144"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588801"
 ---
 # <a name="view-costs-for-an-azure-machine-learning-managed-online-endpoint-preview"></a>查看 Azure 机器学习托管联机终结点（预览版）的成本
 

@@ -1,14 +1,14 @@
 ---
-title: 使用面向开发人员的 Azure 开发测试实验室 | Microsoft Docs
+title: 使用面向开发人员的 Azure 开发测试实验室
 description: 了解 Azure 开发测试实验室功能（可使用这些功能满足开发人员要求）和设置实验室可遵循的详细步骤。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 96b673cb750f503d531fd1a11d21b13a56397128
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: bc5376c780413f130d5dc812b3bc9e415acd354c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293620"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567639"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用面向开发人员的 Azure 开发测试实验室
 可使用 Azure 开发测试实验室来实现许多关键方案，但其中一个主要方案涉及使用开发测试实验室为开发人员托管开发计算机。 在此方案中，开发测试实验室具有以下优势：

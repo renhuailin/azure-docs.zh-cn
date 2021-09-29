@@ -1,19 +1,19 @@
 ---
 title: 快速入门：Azure 队列存储客户端库 v12 - .NET
 description: 了解如何使用适用于 .NET 的 Azure 队列存储客户端库 v12 创建队列并在该队列中添加消息。 接下来，介绍如何在队列中读取和删除消息。 另外还介绍如何删除队列。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0b03f8a0a9e3aa277ec940c8e65064ef0411ccc
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 23bf626368d172149d8f3efe003b4d7a796f3a2e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107867612"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648424"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure 队列存储客户端库 v12
 

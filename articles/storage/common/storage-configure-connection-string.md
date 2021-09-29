@@ -10,20 +10,20 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 435f5376a0a84cf2d9d706e4391142814b0f0141
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783872"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593071"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
 
 连接字符串包含应用程序在运行时使用共享密钥授权访问 Azure 存储帐户中的数据所需的授权信息。 可以将连接字符串配置为：
 
-* 连接到 Azurite 存储模拟器。
-* 在 Azure 中访问存储帐户。
-* 通过共享访问签名 (SAS) 访问 Azure 中的指定资源。
+- 连接到 Azurite 存储模拟器。
+- 在 Azure 中访问存储帐户。
+- 通过共享访问签名 (SAS) 访问 Azure 中的指定资源。
 
 若要了解如何查看帐户访问密钥并复制连接字符串，请参阅[管理存储帐户访问密钥](storage-account-keys-manage.md)。
 
@@ -33,9 +33,9 @@ ms.locfileid: "92783872"
 
 应用程序需要在运行时访问连接字符串，才能授权对 Azure 存储发出的请求。 可使用多个选项来存储连接字符串：
 
-* 可以将连接字符串存储在环境变量中。
-* 在桌面或设备上运行的应用程序可在 **app.config** 或 **web.config** 文件中存储连接字符串。 将连接字符串添加到这些文件中的 **AppSettings** 节。
-* 在 Azure 云服务中运行的应用程序可在 [Azure 服务配置架构 (.cscfg) 文件](/previous-versions/azure/reference/ee758710(v=azure.100))中存储连接字符串。 将连接字符串添加到服务配置文件的 **ConfigurationSettings** 节。
+- 可以将连接字符串存储在环境变量中。
+- 在桌面或设备上运行的应用程序可在 **app.config** 或 **web.config** 文件中存储连接字符串。 将连接字符串添加到这些文件中的 **AppSettings** 节。
+- 在 Azure 云服务中运行的应用程序可在 [Azure 服务配置架构 (.cscfg) 文件](/previous-versions/azure/reference/ee758710(v=azure.100))中存储连接字符串。 将连接字符串添加到服务配置文件的 **ConfigurationSettings** 节。
 
 在一个配置文件中存储连接字符串可以轻松地更新连接字符串，从而在 [Azurite 存储模拟器](../common/storage-use-azurite.md)和云中的 Azure 存储帐户之间切换。 只需编辑连接字符串，使其指向目标环境。
 
@@ -141,6 +141,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azurite 模拟器进行本地 Azure 存储开发](../common/storage-use-azurite.md)
-* [Azure 存储资源管理器](storage-explorers.md)
-* [使用共享访问签名 (SAS)](storage-sas-overview.md)
+- [使用 Azurite 模拟器进行本地 Azure 存储开发](../common/storage-use-azurite.md)
+- [Azure 存储资源管理器](storage-explorers.md)
+- [使用共享访问签名 (SAS)](storage-sas-overview.md)

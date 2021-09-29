@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: 9d39047d995d6b387b8cc73ef53c7d584e8d41b4
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0a00ad012f38a142332a62846e78c2ae87460464
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123474460"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128659488"
 ---
 # <a name="rebuild-a-studio-classic-experiment-in-azure-machine-learning"></a>在 Azure 机器学习中重新生成工作室（经典）试验
 
@@ -51,7 +51,7 @@ ms.locfileid: "123474460"
 
 1. 调整参数。
     
-    选择每个模块，并在右侧的“模块设置”面板中调整参数。 使用参数重新创建工作室（经典）试验的功能。 有关每个模块的更多信息，请参阅[模块引用](/azure/machine-learning/algorithm-module-reference/module-reference)。
+    选择每个模块，并在右侧的“模块设置”面板中调整参数。 使用参数重新创建工作室（经典）试验的功能。 有关每个模块的更多信息，请参阅[模块引用](./algorithm-module-reference/module-reference.md)。
 
 ## <a name="submit-a-run-and-check-results"></a>提交运行并检查结果
 

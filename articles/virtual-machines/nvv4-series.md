@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: e07ff969e8245d245cf724152b6257904f7cb860
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f1312a27b77c7c9a4c4df75fef3ddd8010b5661c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698470"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823371"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
 
@@ -42,7 +42,7 @@ NVv4 系列虚拟机由 [Amd Radeon INSTINCT MI25](https://www.amd.com/en/produc
 
 <sup>1</sup> NVv4 系列 VM 采用 AMD 同步多线程处理技术
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -50,7 +50,10 @@ NVv4 系列虚拟机由 [Amd Radeon INSTINCT MI25](https://www.amd.com/en/produc
 
 若要手动安装 AMD GPU 驱动程序，请参阅[适用于 Windows 的 N 系列 AMD GPU 驱动程序安装](./windows/n-series-amd-driver-setup.md)，了解受支持的操作系统、驱动程序、安装和验证步骤。
 
-## <a name="other-sizes"></a>其他大小
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
@@ -58,6 +61,10 @@ NVv4 系列虚拟机由 [Amd Radeon INSTINCT MI25](https://www.amd.com/en/produc
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
 
 ## <a name="next-steps"></a>后续步骤
 

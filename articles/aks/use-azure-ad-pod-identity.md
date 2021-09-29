@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 AAD Pod 托
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 1ecf9b45983dbc34938593424644a646dc3d96cb
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: df893949214fc73813bb1b45a663f052ae3ed3c8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123101224"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124829081"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）
 
@@ -73,7 +73,7 @@ az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network
 >     * [节点托管标识 (NMI)](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/)：是在 AKS 群集中每个节点上作为 DaemonSet 运行的 Pod。 NMI 截获每个节点上对 [Azure 实例元数据服务](../virtual-machines/linux/instance-metadata-service.md?tabs=linux)的安全令牌请求，将这些请求重定向到自身并验证 Pod 是否有权访问它为其请求令牌的标识，并代表应用程序从 Azure Active Directory 租户中提取令牌。
 > 2. 托管模式：在此模式下，只有 NMI。 标识需要由用户手动分配和管理。 有关详细信息，请参阅[托管模式下的 Pod 标识](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/)。
 >
->如[安装指南](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/)中所示通过 Helm 图表或 YAML 清单安装 Azure Active Directory Pod 标识时，可以在 `standard` 和 `managed` 模式之间进行选择。 如果决定改为如本文所述使用 [AKS 群集加载项](/azure/aks/use-azure-ad-pod-identity)安装 Azure Active Directory Pod 标识，安装程序将使用 `managed` 模式。
+>如[安装指南](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/)中所示通过 Helm 图表或 YAML 清单安装 Azure Active Directory Pod 标识时，可以在 `standard` 和 `managed` 模式之间进行选择。 如果决定改为如本文所述使用 AKS 群集加载项安装 Azure Active Directory Pod 标识，安装程序将使用 `managed` 模式。
 
 使用 [az aks get-credentials][az-aks-get-credentials] 登录到 AKS 群集。 此命令还会在开发计算机上下载并配置 `kubectl` 客户端证书。
 

@@ -3,12 +3,12 @@ title: 使用 Azure 原生服务监视和保护 VM
 description: 了解如何集成和部署 Microsoft Azure 原生工具，以监视和管理 Azure VMware 解决方案工作负载。
 ms.topic: how-to
 ms.date: 08/15/2021
-ms.openlocfilehash: 36bdb029f61a707f83ae42e66f399f376db23025
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 19453eeb652a0303e0447a80e37b63613aa92255
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323876"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799313"
 ---
 # <a name="monitor-and-protect-vms-with-azure-native-services"></a>使用 Azure 原生服务监视和保护 VM
 
@@ -86,7 +86,7 @@ Azure 自动化中的 [Azure 更新管理](../automation/update-management/overv
    >[!TIP]
    >可以[使用 Azure 资源管理器 (ARM) 模板创建自动化帐户](../automation/quickstart-create-automation-account-template.md)。 与其他部署方法相比，使用 ARM 模板需要的步骤更少。
 
-1. [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。 如果愿意，还可以通过 [CLI](../azure-monitor/logs/quick-create-workspace-cli.md)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md) 或 [Azure 资源管理器模板](../azure-monitor/logs/resource-manager-workspace.md)创建工作区。
+1. [在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。 如果愿意，还可以通过 [CLI](../azure-monitor/logs/resource-manager-workspace.md)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md) 或 [Azure 资源管理器模板](../azure-monitor/logs/resource-manager-workspace.md)创建工作区。
 
 1. [从自动化帐户启用更新管理](../automation/update-management/enable-from-automation-account.md)。 在该过程中，需将 Log Analytics 工作区与自动化帐户链接。 
  

@@ -4,12 +4,12 @@ ms.topic: include
 ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
-ms.openlocfilehash: e96e3fe6a1c93c914e9dec7263852b047a05e38d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 18ff33287be7f5763a23cdf33c6e023501645299
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741724"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056944"
 ---
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
@@ -17,13 +17,13 @@ ms.locfileid: "108741724"
 
 1. 在 Azure 门户的“adftutorial”容器页中选择“刷新”，查看输出文件夹。  
     
-    ![屏幕截图显示了可在其中刷新页面的容器页。](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    :::image type="content" source="media/data-factory-quickstart-verify-output-cleanup/output-refresh.png" alt-text="屏幕截图显示了可在其中刷新页面的容器页。":::
 
 2. 在文件夹列表中，选择“output”。 
 
 3. 确认 **emp.txt** 已复制到 output 文件夹。 
 
-    ![屏幕截图显示了输出文件夹内容。](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    :::image type="content" source="media/data-factory-quickstart-verify-output-cleanup/output-file.png" alt-text="屏幕截图显示了输出文件夹内容。":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

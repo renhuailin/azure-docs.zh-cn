@@ -1,19 +1,19 @@
 ---
 title: 教程 - 将 IoT 即插即用示例设备代码连接到 Azure IoT 中心 | Microsoft Docs
 description: 教程 - 在 Linux 或 Windows 上生成并运行可连接到 IoT 中心的 IoT 即插即用示例设备代码（C、C#、Java、JavaScript 或 Python）。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
-author: ericmitt
-ms.author: ericmitt
+author: lizross
+ms.author: lizross
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-twenty-seven
-ms.openlocfilehash: 88441340b23548e73831d73fe7f96476c12438e6
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 2a5b5dc02387a07b3d9485feddd07d9fce9825dc
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405960"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091932"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub"></a>教程：将 Linux 或 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心
 

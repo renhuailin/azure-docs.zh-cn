@@ -3,16 +3,17 @@ title: 从 OData 源移动数据
 description: 了解如何使用 Azure 数据工厂从 OData 源移动数据。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fae78459a752d78fe47f189bca67667e917ba561
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3d44d8aaf7c83eee7cbd7feab83c2ffdc5d8f2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380060"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580294"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -151,7 +152,7 @@ ms.locfileid: "100380060"
 
 源属于 **RelationalSource** 类型（包括 OData）时，以下属性在 typeProperties 节可用：
 
-| 属性 | 说明 | 示例 | 必须 |
+| 属性 | 说明 | 示例 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 

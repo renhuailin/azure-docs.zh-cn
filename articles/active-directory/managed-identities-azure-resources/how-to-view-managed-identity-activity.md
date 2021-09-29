@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937cdae8c1f191bc8e6b03d680829d8f674b8d62
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 03ab5ed10dcb9127c5b62850228d22222b4225be
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077232"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814430"
 ---
 # <a name="view-update-and-sign-in-activities-for-managed-identities"></a>查看托管标识的更新和登录活动
 
@@ -115,5 +115,5 @@ ms.locfileid: "123077232"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 资源的托管标识](./overview.md)
-* [Azure 活动日志](/azure/azure-monitor/essentials/activity-log)
-* [Azure Active Directory 登录日志](/azure/active-directory/reports-monitoring/concept-sign-ins )
+* [Azure 活动日志](../../azure-monitor/essentials/activity-log.md)
+* [Azure Active Directory 登录日志](../reports-monitoring/concept-sign-ins.md)

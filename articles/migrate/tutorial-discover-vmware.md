@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 520b75e38d7ccf33c3f900c0b30bfd68e6184720
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 3d3fc18ebceb18e7411a68c19e069a0db4889854
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542397"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797108"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>教程：使用 Azure Migrate 发现 VMware 环境中运行的服务器
 
@@ -141,7 +141,7 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 > [!NOTE]
 > 如果无法使用 OVA 模板设置设备，则可以在现有运行的 Windows Server 2016 服务器上使用 PowerShell 脚本进行设置。 了解如何[使用 PowerShell 设置 Azure Migrate 设备](deploy-appliance-script.md#set-up-the-appliance-for-vmware)。 <br/>
-> Azure 政府云不支持“使用 OVA 模板部署设备”的选项。 [详细了解](/azure/migrate/deploy-appliance-script-government)如何为 Azure 政府云部署设备。
+> Azure 政府云不支持“使用 OVA 模板部署设备”的选项。 [详细了解](./deploy-appliance-script-government.md)如何为 Azure 政府云部署设备。
 
 ### <a name="deploy-by-using-an-ova-template"></a>使用 OVA 模板进行部署
 
@@ -318,7 +318,7 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 * [软件清单](how-to-discover-applications.md)识别发现的服务器上存在的 Web 服务器角色。 如果发现服务器已启用 Web 服务器角色，Azure Migrate 将在服务器上执行 Web 应用发现。 Web 应用配置数据每 24 小时更新一次。
 * 在软件盘存过程中，针对服务器循环访问已添加的服务器凭据，并对这些凭据进行验证，以便进行无代理依赖项分析。 完成服务器发现后，可以在门户中对服务器启用无代理依赖项分析。 只能选择验证成功的服务器来启用[无代理依赖项分析](how-to-create-group-machine-dependencies-agentless.md)。
 * 在启动发现后的 24 小时内，ASP.NET Web 应用及 SQL Server 实例和数据库数据将开始在门户中显示。
-* 默认情况下，Azure Migrate 使用最安全的方法连接到 SQL 实例，即 Azure Migrate 通过将 TrustServerCertificate 属性设置为 `true`，对 Azure Migrate 设备和源 SQL Server 实例之间的通信进行加密。 此外，传输层使用 SSL 加密通道并绕过证书链来验证信任。 因此，必须将设备服务器设置为信任证书的根颁发机构。 但是，可以通过在设备上选择“编辑 SQL Server 连接属性”来修改连接设置。[了解详细信息](https://go.microsoft.com/fwlink/?linkid=2158046)以了解要选择的内容。
+* 默认情况下，Azure Migrate 使用最安全的方法连接到 SQL 实例，即 Azure Migrate 通过将 TrustServerCertificate 属性设置为 `true`，对 Azure Migrate 设备和源 SQL Server 实例之间的通信进行加密。 此外，传输层使用 SSL 加密通道并绕过证书链来验证信任。 因此，必须将设备服务器设置为信任证书的根颁发机构。 但是，可以通过在设备上选择“编辑 SQL Server 连接属性”来修改连接设置。[了解详细信息](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)以了解要选择的内容。
 
     :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="显示如何编辑 SQL Server 连接属性的屏幕截图。":::
 

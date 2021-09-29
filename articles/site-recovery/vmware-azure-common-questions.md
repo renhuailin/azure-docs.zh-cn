@@ -3,12 +3,12 @@ title: 有关使用 Azure Site Recovery 进行 VMware 灾难恢复的常见问�
 description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复到 Azure 时出现的常见问题的解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e39cd3b9f06620f2004a2afbc869fe22de04468
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 8480598cc872a051b6b81f928e92740e39353598
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272849"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621204"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "123272849"
 1. 在 Azure 门户中打开保管库。 
 2. 选择“开始”部分下，单击“Site Recovery” 。 
 3. 单击该页面顶部的横幅。 
-
+    
     [![修改 VMware 堆栈步骤 1](./media/vmware-azure-common-questions/change-stack-step-1.png)](./media/vmware-azure-common-questions/change-stack-step-1.png#lightbox)
 
 4. 随即将打开体验选择边栏选项卡。 如果要使用配置服务器，请选择经典体验，然后单击“确定”。 如果不想使用，请关闭该窗格。 

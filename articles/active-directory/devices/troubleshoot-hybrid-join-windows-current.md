@@ -8,16 +8,16 @@ ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6d8ee6769fdffa4cb16a6a8b075c1933a2428374
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 5a89c2dd574c1910d2c35c78aee4f5ee8b561dfc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436493"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592786"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>排查加入混合 Azure AD 的设备问题
 

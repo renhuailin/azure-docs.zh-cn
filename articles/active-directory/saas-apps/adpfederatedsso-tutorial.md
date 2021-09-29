@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: cff4a75468181354a2ff61c0f9ac36bf6c78b9dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab53dc218bee83476811e6d42dec76479559b50b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736116"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803232"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ADP 集成
 
@@ -208,7 +208,7 @@ ms.locfileid: "98736116"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 ADP
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 ADP 磁贴时，应会自动登录到已为其设置了 SSO 的 ADP。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 ADP 磁贴时，应会自动登录到已为其设置了 SSO 的 ADP。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

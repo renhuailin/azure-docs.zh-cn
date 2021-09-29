@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份通过 Azure 导入/导出服务在�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36646c148fb42503b8bdc78cbcd11a1f497127b0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704357"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644061"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 
@@ -116,7 +116,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../import
 
 *AzureOfflineBackupDiskPrep* 实用工具会准备送到最近 Azure 数据中心的 SATA 驱动器。 位于以下路径的 Azure 备份代理安装目录中提供了此实用工具：
 
-```*\Microsoft Azure Recovery Services Agent\Utils\\*```
+`*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. 请转到该目录，将 *AzureOfflineBackupDiskPrep* 目录复制到连接了 SATA 驱动器的另一台计算机上。 在连接了 SATA 驱动器的计算机上，请确保：
 
@@ -131,7 +131,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../import
 
 1. 使用 *AzureOfflineBackupDiskPrep* 实用工具目录作为当前目录，在副本计算机上打开权限提升的命令提示符。 运行以下命令：
 
-    ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
+    `.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>`
 
     | 参数 | 说明 |
     | --- | --- |

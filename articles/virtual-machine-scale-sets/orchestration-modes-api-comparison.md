@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 20278ebae9e590a99293c37df506b7d07ff79ddc
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 9fd4d2171aa54da469aacfaa7090025c296dd0c1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868282"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804075"
 ---
 # <a name="preview-orchestration-modes-api-comparison"></a>预览：业务流程模式 API 比较 
 
@@ -59,7 +59,7 @@ ms.locfileid: "122868282"
 
 ### <a name="flexible-alternative"></a>灵活的替代项 
 调用单个 VM API：
-- [ARM 锁定资源](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources?tabs=json)，用于实例保护类型行为 
+- [ARM 锁定资源](../azure-resource-manager/management/lock-resources.md?tabs=json)，用于实例保护类型行为 
 
 
 ## <a name="list-instances"></a>列出实例 

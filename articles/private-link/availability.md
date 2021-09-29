@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 052a59ede2acc751d6847646ca1b103de0c1b78a
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: aaa013a25e9131ec55f002db089de0d353f13f7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446454"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585759"
 ---
 # <a name="azure-private-link-availability"></a>Azure 专用链接可用性
 
@@ -82,7 +82,7 @@ ms.locfileid: "122446454"
 
 | 支持的服务 | 可用区域 | 其他注意事项 | 状态  |
 | ------------ | ----------------| ------------| ----------------|
-| Azure 自动化  | 所有公共区域<br/> 所有政府区域 |  | 预览 </br> [了解如何为 Azure 自动化服务创建专用终结点。](../automation/how-to/private-link-security.md)|
+| Azure 自动化  | 所有公共区域<br/> 所有政府区域 |  | GA </br> [了解如何为 Azure 自动化服务创建专用终结点。](../automation/how-to/private-link-security.md)|
 |Azure 备份 | 所有公共区域<br/> 所有政府区域   |  | GA <br/> [了解如何为 Azure 备份服务创建专用终结点。](../backup/private-endpoints.md)   |
 
 ### <a name="security"></a>安全性

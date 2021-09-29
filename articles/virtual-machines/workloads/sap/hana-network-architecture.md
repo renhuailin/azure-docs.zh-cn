@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/21/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5add931f71dfdb5034e614b3d6c3ddc8703293a2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6e37ab692b1e8f4a498d4b279ef3e45940e7d7f2
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461565"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708313"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -201,7 +201,7 @@ HANA 大型实例未建立直接 Internet 连接。 这会限制某些功能，�
  - 在不同区域中的 HANA 大型实例单元之间复制备份，以执行系统复制或系统刷新。
 
 
-![连接到了不同 Azure 区域中的 Azure 大型实例模具的虚拟网络](./media/hana-overview-architecture/image8-multiple-regions.png)
+[![连接到了不同 Azure 区域中的 Azure 大型实例模具的虚拟网络](./media/hana-overview-architecture/image8-multiple-regions.png)](./media/hana-overview-architecture/image8-multiple-regions.png#lightbox)
 
 前图显示了两个区域中的虚拟网络如何连接到两条 ExpressRoute 线路。 这些线路用于连接到两个 Azure 区域（灰色线条）中的 Azure SAP HANA（大型实例）。 使用两个交叉连接的原因是为了防止任何一侧出现 MSEE 的故障。 两个 Azure 区域中的两个虚拟网络之间的通信流应通过两个不同区域中的两个虚拟网络（蓝色虚线）的[全球对等互连](/archive/blogs/azureedu/how-to-setup-global-vnet-peering-in-azure)进行处理。 粗红线描述的是 ExpressRoute Global Reach 连接。 利用此连接，不同区域中租户的 HANA 大型实例单元相互之间可以进行通信。 
 

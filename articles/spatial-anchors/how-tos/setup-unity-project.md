@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 03/30/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d87c789b4c5f1decc468838ccabd136cec32cabc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a3c8c3369890bdbbd30a98f6f76c88b9358dcdf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721790"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791795"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>在 Unity 项目中配置 Azure 空间定位点
 
@@ -34,7 +34,7 @@ ms.locfileid: "121721790"
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
 ### <a name="hololens-only-configure-your-unity-project-xr-settings"></a>仅 HoloLens：配置 Unity 项目 XR 设置
-在 HoloLens 上开发 MixedReality 应用时，需要在 Unity 中设置 XR 配置。 有关更多详细信息，请参阅[设置 XR 配置 - 混合现实 | Microsoft Docs](https://docs.microsoft.com/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr) 和[选择 Unity 版本和 XR 插件 - 混合现实 | Microsoft Docs](https://docs.microsoft.com/windows/mixed-reality/develop/unity/choosing-unity-version)。
+在 HoloLens 上开发 MixedReality 应用时，需要在 Unity 中设置 XR 配置。 有关更多详细信息，请参阅[设置 XR 配置 - 混合现实 | Microsoft Docs](/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr) 和[选择 Unity 版本和 XR 插件 - 混合现实 | Microsoft Docs](/windows/mixed-reality/develop/unity/choosing-unity-version)。
 
 Azure 空间定位点 SDK 2.9 或更早版本仅支持 Windows XR 插件 (com.unity.xr.windowsmr)，因此 Azure 空间定位点 HoloLens Unity 包显式依赖于 com.unity.xr.windowsmr 包。
 

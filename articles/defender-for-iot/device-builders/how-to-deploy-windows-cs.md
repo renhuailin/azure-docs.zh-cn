@@ -3,12 +3,12 @@ title: 在 Windows 设备上安装 C# 代理
 description: 了解如何在 32 位或 64 位 Windows 设备上安装 Defender for IoT 代理。
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.openlocfilehash: f76d9122b4f50d475efbbac465096022261a9ef4
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 1a9bab1f9e24fba6a2b04b6d0bb5d9f2560dcc1d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113014508"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643966"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署 Defender for IoT 基于 C# 的安全代理
 
@@ -73,7 +73,7 @@ Get-Help 示例：```Get-Help .\InstallSecurityAgent.ps1```
 
 运行以下命令来检查代理部署状态：
 
-```sc.exe query "ASC IoT Agent"```
+`sc.exe query "ASC IoT Agent"`
 
 ### <a name="uninstall-the-agent"></a>卸载代理
 
@@ -129,7 +129,7 @@ Get-Help 示例：```Get-Help .\InstallSecurityAgent.ps1```
 ## <a name="next-steps"></a>后续步骤
 
 * 阅读 Defender for IoT 服务[概述](overview.md)
-* 详细了解 Defender for IoT [什么是基于代理的设备构建者解决方案](architecture-agent-based.md)
+* 详细了解 Defender for IoT [什么是基于代理的设备生成器解决方案](architecture-agent-based.md)
 * 启用该[服务](quickstart-onboard-iot-hub.md)
 * 阅读 [Azure Defender for IoT 代理常见问题](resources-agent-frequently-asked-questions.md)
 * 了解[警报](concept-security-alerts.md)

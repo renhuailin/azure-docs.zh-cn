@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 07/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50299b64577ed93f7aa1b09f2b5b20ccca88404e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3ccdbb04942e946d251008187693ee948b960178
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472508"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836922"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>从 Webhook 启动 Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "114472508"
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
-若要了解使用 Webhook 的 TLS 1.2 的客户端要求，请参阅[用于 Azure 自动化的 TLS 1.2](automation-managing-data.md#tls-12-for-azure-automation)。
+若要了解具有 Webhook 的 TLS 1.2 的客户端要求，请参阅[针对 Azure 自动化的 TLS 1.2](automation-managing-data.md#tls-12-for-azure-automation)。
 
 ## <a name="webhook-properties"></a>Webhook 属性
 
@@ -32,7 +32,7 @@ ms.locfileid: "114472508"
 |:--- |:--- |
 | 名称 |Webhook 的名称。 可以提供任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
 | URL |Webhook 的 URL。 这是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应该将 URL 视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
-| 到期日期 | Webhook 的到期日期，该日期之后不能再使用它。 创建 Webhook 后，只要它没有到期，就可以修改到期日期。 |
+| 到期日期 | Webhook 的到期日期，该日期之后不能再使用它。 创建 Webhook 后，只要它没有过期，就可以修改到期日期。 |
 | 已启用 | 指示 Webhook 是否在创建后默认启用的设置。 如果将此属性设置为“禁用”，则任何客户端都无法使用 Webhook。 可以在创建 Webhook 或 Webhook 创建后的任何其他时间设置此属性。 |
 
 ## <a name="parameters-used-when-the-webhook-starts-a-runbook"></a>Webhook 启动 Runbook 时使用的参数
@@ -49,18 +49,18 @@ Webhook 可以定义 Runbook 参数的值，当 Runbook 启动时会用到这些
 |:--- |:--- |
 | WebhookName | Webhook 的名称。 |
 | RequestHeader | 包含传入 POST 请求标头的哈希表。 |
-| RequestBody | 传入 POST 请求的主体。 此主体保留任何数据格式，如字符串、JSON、XML 或编码的表单。 编写的 Runbook 必须能够与预期的数据格式配合工作。 |
+| RequestBody | 传入 POST 请求的主体。 此正文保留任何数据格式，例如字符串、JSON、XML，或表单编码格式。 编写的 Runbook 必须能够与预期的数据格式配合工作。 |
 
 无需配置 Webhook 即可支持 `WebhookData` 参数，也不需要 Runbook 来接受它。 如果 Runbook 没有定义该参数，则会忽略从客户端发送的请求的任何详细信息。
 
 > [!NOTE]
 > 调用 Webhook 时，客户端应始终存储任何参数值，以防调用失败。 如果存在网络中断或连接问题，应用程序无法检索失败的 Webhook 调用。
 
-如果在 Webhook 创建时为 `WebhookData` 指定值，则当 Webhook 使用客户端 POST 请求中的数据启动 Runbook 时，将覆盖该值。 即使应用程序不包含请求主体中的任何数据，也是如此。
+如果在创建 Webhook 时为 `WebhookData` 指定了值，则会在 Webhook 使用客户端 POST 请求中的数据启动 Runbook 时重写该值。 即使应用程序未在请求正文中包含任何数据，也会发生这种情况。
 
 如果启动使用 Webhook 以外的机制定义 `WebhookData` 的 Runbook，则可以为 Runbook 识别的 `WebhookData` 提供值。 此值应该是与 `WebhookData` 参数具有相同[属性](#webhook-properties)的对象，这样 Runbook 就可以使用它，如同使用 Webhook 所传递的实际 `WebhookData` 对象一样。
 
-例如，如果要从 Azure 门户启动以下 Runbook，并想要传递一些示例 Webhook 数据进行测试，则必须在用户界面中以 JSON 格式传递数据。
+例如，如果你从 Azure 门户启动以下 Runbook，并想要传递一些示例 Webhook 数据进行测试，则必须在用户界面中传递 JSON 格式的数据。
 
 ![UI 中的 WebhookData 参数](media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
@@ -82,19 +82,19 @@ Webhook 可以定义 Runbook 参数的值，当 Runbook 启动时会用到这些
 
 ## <a name="webhook-security"></a>Webhook 安全性
 
-Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含的安全令牌来调用 Webhook。 如果请求是向正确的 URL 发出的，Azure 自动化不会对请求进行任何身份验证。 因此，客户端不应将 Webhook 用于执行高敏感度操作却不使用用于验证请求的替代方法的 Runbook。
+Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含的安全令牌来调用 Webhook。 只要请求是向正确的 URL 发出的，Azure 自动化就不会对此请求执行任何身份验证。 因此，客户端不应针对执行高度敏感操作的 runbook 使用 Webhook，而不使用验证请求的替代方法。
 
 请考虑以下策略：
 
-* 可以在 Runbook 中包括逻辑，以确定它是否由 Webhook 调用。 让 Runbook 检查 `WebhookData` 参数的 `WebhookName` 属性。 Runbook 还可以执行进一步的验证，只需在 `RequestHeader` 和 `RequestBody` 属性中查找特定信息即可。
+* 可在 runbook 中包含逻辑，以确定它是否由 Webhook 调用。 让 Runbook 检查 `WebhookData` 参数的 `WebhookName` 属性。 Runbook 还可以执行进一步的验证，只需在 `RequestHeader` 和 `RequestBody` 属性中查找特定信息即可。
 
 * 让 Runbook 在收到 Webhook 请求时对外部条件执行某种验证。 例如，当有新的内容提交到 GitHub 存储库时，可通过 GitHub 调用 Runbook。 Runbook 在继续之前，可能会连接到 GitHub 来验证是否有新的提交内容。
 
-* Azure 自动化支持 Azure 虚拟网络服务标记，尤其是 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)。 可以在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制并触发 Webhook。 创建安全规则时，可以使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 GuestAndHybridManagement），可以允许或拒绝自动化服务的流量。 此服务标记不支持通过将 IP 范围限制到特定区域来实现更精细的控制。
+* Azure 自动化支持 Azure 虚拟网络服务标记，尤其是 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)。 可以在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制并触发 Webhook。 创建安全规则时，可以使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 GuestAndHybridManagement），可以允许或拒绝自动化服务的流量。 此服务标记不支持通过将 IP 范围限制到特定区域来实现更精细控制的方法。
 
 ## <a name="create-a-webhook"></a>创建 Webhook
 
-Webhook 需要已发布的 Runbook。 本演练使用通过[创建 Azure 自动化 Runbook](automation-quickstart-create-runbook.md) 创建的 Runbook 的修改版本。 若要继续操作，请使用以下代码编辑 PowerShell Runbook：
+Webhook 需要已发布的 runbook。 本演练使用了从[创建 Azure 自动化 runbook](./learn/powershell-runbook-managed-identity.md) 中创建的 runbook 的修改版本。 要继续本演练，请使用以下代码编辑 PowerShell runbook：
 
 ```powershell
 param
@@ -117,7 +117,7 @@ else {
 }
 ```
 
-然后保存并发布修改后的 Runbook。 以下示例演示如何使用 Azure 门户、PowerShell 和 REST 创建 Webhook。
+然后保存并发布修改后的 runbook。 以下示例展示了如何使用 Azure 门户、PowerShell 和 REST 创建 Webhook。
 
 ### <a name="from-the-portal"></a>从门户
 
@@ -125,40 +125,40 @@ else {
 
 1. 在 Azure 门户中，导航到自动化帐户。
 
-1. 在“流程自动化”下选择“Runbook”，打开 Runbook 页面。
+1. 在“流程自动化”下选择“Runbook”，打开“Runbook”页面  。
 
-1. 从列表中选择 Runbook 以打开 Runbook“概述”页。
+1. 从列表中选择你的 Runbook，打开“Runbook 概述”页面。
 
-1. 选择“添加 Webhook”以打开“添加 Webhook”页。
+1. 选择“添加 Webhook”，打开“添加 Webhook”页面 。
 
-   :::image type="content" source="media/automation-webhooks/add-webhook-icon.png" alt-text="突出显示了“添加 Webhook”的 Runbook“概述”页。":::
+   :::image type="content" source="media/automation-webhooks/add-webhook-icon.png" alt-text="突出显示“添加 Webhook”的“Runbook 概述”页面。":::
 
-1. 在“添加 Webhook”页，选择“创建新 Webhook”。
+1. 在“添加 Webhook”页上，选择“创建新的 Webhook” 。
 
-   :::image type="content" source="media/automation-webhooks/add-webhook-page-create.png" alt-text="突出显示了“创建”的“添加 Webhook”页。":::
+   :::image type="content" source="media/automation-webhooks/add-webhook-page-create.png" alt-text="突出显示“创建”的“添加 Webhook”页面。":::
 
-1. 输入 Webhook 的名称。 字段“过期”的到期日期默认为从当前日期开始算起的一年。
+1. 输入 Webhook 的名称。 “到期日期”字段的到期日期默认为自当前日期起的一年后。
 
-1. 单击复制图标，或按 Ctrl+C<kbd></kbd> 以复制 Webhook 的 URL。 然后，将 URL 保存到安全位置。
+1. 单击“复制”图标，或按 <kbd>Ctrl+C</kbd> 复制 Webhook 的 URL。 然后将 URL 保存到安全位置。
 
-    :::image type="content" source="media/automation-webhooks/create-new-webhook.png" alt-text="突出显示了 URL 的“创建 Webhook”页。":::
+    :::image type="content" source="media/automation-webhooks/create-new-webhook.png" alt-text="突出显示“URL”的“创建 Webhook”页面。":::
 
     > [!IMPORTANT]
     > 一旦创建 Webhook，就不能再次检索该 URL。 请务必按上面所述对其进行复制并记录。
 
-1. 选择“确定”，返回到“添加 Webhook”页。
+1. 选择“确定”，返回到“添加 Webhook”页面 。
 
-1. 从“添加 Webhook”页中，选择“配置参数并运行设置”以打开“参数”页。
+1. 在“添加 Webhook”页上，选择“配置参数和运行设置”，打开“参数”页面  。
 
-   :::image type="content" source="media/automation-webhooks/add-webhook-page-parameters.png" alt-text="突出显示了“参数”的“添加 Webhook”页。":::
+   :::image type="content" source="media/automation-webhooks/add-webhook-page-parameters.png" alt-text="突出显示“参数”的“添加 Webhook”页面。":::
 
-1. 查看“参数”页。 对于本文中使用的示例 Runbook，不需要进行任何更改。 选择“确定”，返回到“添加 Webhook”页。
+1. 查看“参数”页面。 无需对本文中使用的示例 runbook 进行任何更改。 选择“确定”，返回到“添加 Webhook”页面 。
 
-1. 从“添加 Webhook”页中，选择“创建”。 创建 Webhook 后，会返回到 Runbook“概述”页。
+1. 在“添加 Webhook”页上，选择“创建” 。 Webhook 已创建，返回到“Runbook 概述”页面。
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-1. 验证是否已安装最新版本的 PowerShell [Az 模块](/powershell/azure/new-azureps-module-az)。
+1. 验证是否安装了最新版本的 PowerShell [Az 模块](/powershell/azure/new-azureps-module-az)。
 
 1. 使用 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet 以交互方式登录到 Azure，并按照说明进行操作。
 
@@ -171,7 +171,7 @@ else {
     }
     ```
 
-1. 使用 [New-AzAutomationWebhook](/powershell/module/az.automation/new-azautomationwebhook) cmdlet 为自动化 Runbook 创建 Webhook。 为变量提供适当的值，然后执行脚本。
+1. 使用 [New-AzAutomationWebhook](/powershell/module/az.automation/new-azautomationwebhook) cmdlet 创建用于自动化 Runbook 的 Webhook。 为变量提供适当的值，然后执行脚本。
 
     ```powershell
     # Initialize variables with your relevant values
@@ -195,9 +195,9 @@ else {
     $uri
     ```
 
-   输出将是类似于以下内容的 URL：`https://ad7f1818-7ea9-4567-b43a.webhook.wus.azure-automation.net/webhooks?token=uTi69VZ4RCa42zfKHCeHmJa2W9fd`
+   输出将为类似于以下格式的 URL：`https://ad7f1818-7ea9-4567-b43a.webhook.wus.azure-automation.net/webhooks?token=uTi69VZ4RCa42zfKHCeHmJa2W9fd`
 
-1. 还可以使用 PowerShell cmdlet [Get-AzAutomationWebhook](/powershell/module/az.automation/get-azautomationwebhook) 验证 Webhook。
+1. 还可使用 PowerShell cmdlet [Get-AzAutomationWebhook](/powershell/module/az.automation/get-azautomationwebhook) 来验证 Webhook。
 
     ```powershell
     Get-AzAutomationWebhook `
@@ -208,9 +208,9 @@ else {
 
 ### <a name="using-rest"></a>使用 REST
 
-PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/create-or-update) 中。 此示例使用 PowerShell cmdlet [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) 发送 PUT 请求。
+PUT 命令存档在 [Webhook - 创建或更新](/rest/api/automation/webhook/create-or-update)中。 此示例使用 PowerShell cmdlet [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) 发送 PUT 请求。
 
-1. 创建称为 `webhook.json` 的文件，然后粘贴以下代码：
+1. 创建名为 `webhook.json` 的文件，然后将以下代码粘贴到其中：
 
     ```json
     {
@@ -225,9 +225,9 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
     }
     ```
 
-   在运行之前，将 runbook:name 属性的值修改为 Runbook 的实际名称。 如需详细了解这些属性，请查看 [Webhook 属性](#webhook-properties)。
+   在运行代码前，将“runbook:name”属性的值修改为 runbook 的实际名称。 查看 [Webhook 属性](#webhook-properties)，获取有关这些属性的详细信息。
 
-1. 验证是否已安装最新版本的 PowerShell [Az 模块](/powershell/azure/new-azureps-module-az)。
+1. 验证是否安装了最新版本的 PowerShell [Az 模块](/powershell/azure/new-azureps-module-az)。
 
 1. 使用 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet 以交互方式登录到 Azure，并按照说明进行操作。
 
@@ -258,7 +258,7 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
     $restURI = "https://management.azure.com/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Automation/automationAccounts/$automationAccount/webhooks/$restWebhook`?api-version=2015-10-31"
     ```
 
-1. 运行以下脚本以获取访问令牌。 如果访问令牌已过期，则需要重新运行脚本。
+1. 运行以下脚本以获取访问令牌。 如果访问令牌已过期，则需返回脚本。
 
     ```powershell
     # Obtain access token
@@ -282,9 +282,9 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
     $webhookURI
     ```
 
-   输出将是类似于以下内容的 URL：`https://ad7f1818-7ea9-4567-b43a.webhook.wus.azure-automation.net/webhooks?token=uTi69VZ4RCa42zfKHCeHmJa2W9fd`
+   输出是类似于以下格式的 URL：`https://ad7f1818-7ea9-4567-b43a.webhook.wus.azure-automation.net/webhooks?token=uTi69VZ4RCa42zfKHCeHmJa2W9fd`
 
-1. 还可以使用 [Webhook - Get](/rest/api/automation/webhook/get) 来检索由其名称标识的 Webhook。 可运行以下 PowerShell 命令：
+1. 还可使用 [Webhook - 获取](/rest/api/automation/webhook/get)来检索由 Webhook 名称标识的 Webhook。 可运行以下 PowerShell 命令：
 
     ```powershell
     $response = Invoke-RestMethod -Uri $restURI -Method GET -Headers $authHeader
@@ -295,7 +295,7 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
 
 此示例使用 PowerShell cmdlet [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) 将 POST 请求发送到新的 Webhook。
 
-1. 准备值以作为 Webhook 调用的正文传递到 Runbook。 对于相对简单的值，可以按如下所示编写值的脚本：
+1. 准备将传递给 runbook 的值作为 Webhook 调用的主体。 对于相对简单的值，可按以下方式编写脚本中的值：
 
     ```powershell
     $Names  = @(
@@ -307,7 +307,7 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
     $body = ConvertTo-Json -InputObject $Names
     ```
 
-1. 对于较大的集，你可能希望使用文件。 创建名为 `names.json` 的文件，然后粘贴以下代码：
+1. 对于较大的集，建议使用文件。 创建名为 `names.json` 的文件，然后将以下代码粘贴到其中：
 
     ```json
     [
@@ -317,7 +317,7 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
     ]
     ```
 
-    在运行以下 PowerShell 命令之前，将变量 `$file` 的值更改为 JSON 文件的实际路径。
+    在运行以下 PowerShell 命令前，将变量 `$file` 的值更改为 json 文件的实际路径。
 
     ```powershell
     # Revise file path with actual path
@@ -335,9 +335,9 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
     $responseFile
     ```
 
-   为便于说明，为生成正文的两种不同方法进行了两次调用。 对于生产，只使用一个方法。  输出应如下所示（仅显示一个输出）：
+   为方便说明，对生成主体的两种不同方法进行了两次调用。 而对于生产，只使用一种方法。  输出应如下所示（只显示一个输出）：
 
-   :::image type="content" source="media/automation-webhooks/webhook-post-output.png" alt-text="来自 Webhook 调用的输出。":::
+   :::image type="content" source="media/automation-webhooks/webhook-post-output.png" alt-text="Webhook 调用的输出。":::
 
     客户端收到从 `POST` 请求返回的以下代码之一。
 
@@ -345,7 +345,7 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
     |:--- |:--- |:--- |
     | 202 |已接受 |已接受该请求，并已成功将 Runbook 排队。 |
     | 400 |错误的请求 |出于以下原因之一，未接受该请求： <ul> <li>Webhook 已过期。</li> <li>Webhook 已禁用。</li> <li>URL 中的令牌无效。</li>  </ul> |
-    | 404 |未找到 |出于以下原因之一，未接受该请求： <ul> <li>找不到 Webhook。</li> <li>找不到 Runbook。</li> <li>找不到帐户。</li>  </ul> |
+    | 404 |未找到 |出于以下原因之一，未接受该请求： <ul> <li>找不到 Webhook。</li> <li>找不到 runbook。</li> <li>找不到帐户。</li>  </ul> |
     | 500 |内部服务器错误 |URL 有效，但出现了错误。 重新提交请求。 |
 
     假设请求成功，Webhook 响应将包含 JSON 格式的作业 ID，如下所示。 它包含单个作业 ID，但 JSON 格式允许将来可能的增强功能。
@@ -354,7 +354,7 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
     {"JobIds":["<JobId>"]}
     ```
 
-1. PowerShell cmdlet [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) 将用于获取输出。 还可以使用 [Azure 自动化 API](/rest/api/automation/job)。
+1. 使用 PowerShell cmdlet [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) 获取输出。 也可使用 [Azure 自动化 API](/rest/api/automation/job) 获取。
 
     ```powershell
     #isolate job ID
@@ -370,23 +370,23 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
 
    输出应如下所示：
 
-   :::image type="content" source="media/automation-webhooks/webhook-job-output.png" alt-text="来自 Webhook 作业的输出。":::
+   :::image type="content" source="media/automation-webhooks/webhook-job-output.png" alt-text="Webhook 作业的输出。":::
 
 ## <a name="update-a-webhook"></a>更新 Webhook
 
-创建 Webhook 时，其有效期为 10 年，此日期之后它会自动过期。 Webhook 过期后，你无法重新激活它。 只能删除并重新创建它。 可以扩展尚未达到过期时间的 Webhook。 若要扩展 Webhook，请执行以下步骤。
+创建 Webhook 后，其有效期为 10 年，此期限过后，它会自动过期。 Webhook 过期后，你无法重新激活它。 只能删除并重新创建它。 对于尚未到期的 Webhook，可将其延期。 若要延长 Webhook 的有效期，请执行以下步骤。
 
 1. 请导航到包含 Webhook 的 Runbook。
-1. 在“资源”下，选择“Webhook”，然后单击要延期的 Webhook。
-1. 从“Webhook”页中，选择新的到期日期和时间，然后选择“保存”。
+1. 在“资源”下，选择“Webhook”，然后选择需要延期的 Webhook 。
+1. 在“Webhook”页中，选择新的过期日期和时间，然后选择“保存” 。
 
-查看 API 调用 [Webhook - Update](/rest/api/automation/webhook/update) 和 PowerShell cmdlet [Set-AzAutomationWebhook](/powershell/module/az.automation/set-azautomationwebhook)，以进行其他可能的修改。
+查看 API 调用 [Webhook - 更新](/rest/api/automation/webhook/update)和 PowerShell cmdlet [Set-AzAutomationWebhook](/powershell/module/az.automation/set-azautomationwebhook)，了解其他可能的修改。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-下面是从自动化 Runbook 中删除 Webhook 的示例。
+以下是一些从自动化 runbook 中删除 Webhook 的示例。
 
-- 使用 PowerShell 时，可按如下所示使用 [Remove-AzAutomationWebhook](/powershell/module/az.automation/remove-azautomationwebhook) cmdlet。 不返回任何输出。
+- 使用 PowerShell，可按如下所示的方式使用 [Remove-AzAutomationWebhook](/powershell/module/az.automation/remove-azautomationwebhook) cmdlet。 不返回任何输出。
 
     ```powershell
     Remove-AzAutomationWebhook `
@@ -395,19 +395,19 @@ PUT 命令记录在 [Webhook - Create 或 Update](/rest/api/automation/webhook/c
         -Name $psWebhook
     ```
 
-- 使用 REST 时，可按如下所示使用 REST [Webhook - Delete](/rest/api/automation/webhook/delete) API。
+- 使用 REST，可按如下所示的方式使用 REST [Webhook - 删除](/rest/api/automation/webhook/delete) API。
 
     ```powershell
     Invoke-WebRequest -Method Delete -Uri $restURI -Headers $authHeader
     ```
 
-   `StatusCode        : 200` 的输出表示成功删除。
+   输出为 `StatusCode        : 200` 表明删除成功。
 
-## <a name="create-runbook-and-webhook-with-arm-template"></a>使用 ARM 模板创建 Runbook 和 Webhook
+## <a name="create-runbook-and-webhook-with-arm-template"></a>使用 ARM 模板创建 runbook 和 Webhook
 
-也可以使用 [Azure 资源管理器](../azure-resource-manager/templates/overview.md)模板创建自动化 Webhook。 此示例模板创建自动化帐户、四个 Runbook 并为命名 Runbook 创建 Webhook。
+也可使用 [Azure 资源管理器](../azure-resource-manager/templates/overview.md)模板创建自动化 Webhook。 此示例模板会创建一个自动化帐户、四个 runbook 和一个用于指定 runbook 的 Webhook。
 
-1. 创建名为 `webhook_deploy.json` 的文件，然后粘贴以下代码：
+1. 创建名为 `webhook_deploy.json` 的文件，然后将以下代码粘贴到其中：
 
     ```json
     {

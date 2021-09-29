@@ -4,12 +4,12 @@ description: 说明消耗计划和高级计划函数应用的缩放行为。
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: azure-functions
-ms.openlocfilehash: ff7194b5dfda09253526aa79b52be475c131a411
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c67177570906e0122df6116f1a0a159d64f3486b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752275"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571304"
 ---
 # <a name="event-driven-scaling-in-azure-functions"></a>Azure Functions 中的事件驱动缩放
 
@@ -55,7 +55,7 @@ $resource | Set-AzResource -Force
 
 ## <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
 
-函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项一文的“可扩展”部分](functions-best-practices.md#scalability-best-practices)。 还要注意随着函数应用的扩展，连接是如何实施的。 有关详细信息，请参阅[如何在 Azure Functions 中管理连接](manage-connections.md)。
+函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项一文的“可扩展”部分](performance-reliability.md#scalability-best-practices)。 还要注意随着函数应用的扩展，连接是如何实施的。 有关详细信息，请参阅[如何在 Azure Functions 中管理连接](manage-connections.md)。
 
 有关使用 Python 和 Node.js 进行缩放的详细信息，请参阅 [Azure Functions Python 开发人员指南 - 缩放和并发](functions-reference-python.md#scaling-and-performance)和 [Azure Functions Node.js 开发人员指南 - 缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
 

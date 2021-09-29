@@ -4,15 +4,15 @@ description: 此快速入门介绍如何使用 Object Anchors 生成 HoloLens �
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 08/02/2021
+ms.date: 09/08/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 605acf95b521e150456a69e84d2008be7080589a
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2cb1f51d47c95f47f6a1eb3a242b54cf60929b44
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254181"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792086"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>快速入门：在 C++/WinRT 和 DirectX 中使用 Azure Object Anchors 创建 HoloLens 应用
 
@@ -107,3 +107,6 @@ AoaSampleApp 应用现已在 HoloLens设备上运行。 走近（2 米距离内�
 
 > [!div class="nextstepaction"]
 > [转换 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)
+
+> [!div class="nextstepaction"]
+> [排查物体检测问题](../troubleshoot/object-detection.md)

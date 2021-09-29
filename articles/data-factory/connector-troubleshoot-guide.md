@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 27e9f92f7ea2be3ebdafbf973c4d1def179d5636
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0808b52c777389cfdf641094fd152ee9f11b482f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864139"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782715"
 ---
 # <a name="troubleshoot-azure-data-factory-and-azure-synapse-analytics-connectors"></a>排查 Azure 数据工厂 Azure Synapse Analytics 连接器问题
 
@@ -154,7 +154,7 @@ ms.locfileid: "122864139"
 
 - **解决方法**：要解决此问题，请使用暂存复制跳过对 Azure Data Lake Storage Gen1 的传输层安全性 (TLS) 验证。 你需要重现此问题并收集网络监视器 (netmon) 的跟踪数据，然后与网络团队合作来检查本地网络配置。
 
-    ![用于解决问题的 Azure Data Lake Storage Gen1 连接关系图。](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
+    :::image type="content" source="./media/connector-troubleshoot-guide/adls-troubleshoot.png" alt-text="用于解决问题的 Azure Data Lake Storage Gen1 连接关系图。":::
 
 
 ### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>错误消息：远程服务器返回了错误：(403)已禁止
@@ -1208,7 +1208,7 @@ ms.locfileid: "122864139"
 
     2. 打开 diawp.exe.config 文件，然后在 `<runtime>` 部分的末尾添加 `<enforceFIPSPolicy enabled="false"/>`，如下所示：
 
-        ![显示已禁用 FIPS 的 diawp.exe.config 文件部分的屏幕截图。](./media/connector-troubleshoot-guide/disable-fips-policy.png)
+        :::image type="content" source="./media/connector-troubleshoot-guide/disable-fips-policy.png" alt-text="显示已禁用 FIPS 的 diawp.exe.config 文件部分的屏幕截图。":::
 
     3. 保存文件，然后重启自承载 IR 计算机。
 

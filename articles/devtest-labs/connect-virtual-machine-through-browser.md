@@ -1,14 +1,14 @@
 ---
-title: 通过浏览器连接到 虚拟机 - Azure | Microsoft Docs
+title: 通过浏览器连接到虚拟机
 description: 了解如何通过浏览器连接到虚拟机。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 352fc5fd3ff53a00d9f62966ecf21417ad898706
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbbaa4286aac91e362a2024f1705add8f48d566d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87288063"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644992"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>通过浏览器连接到虚拟机 
 

@@ -8,12 +8,12 @@ ms.date: 08/28/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3e793f7a1c2e927be9b0431df05bdc228355429f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 7e235bd04b0693a0fabc9f4432aff01c85b5c67e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110191"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824713"
 ---
 # <a name="how-to-clean-up-ssisdb-logs-automatically"></a>如何自动清理 SSISDB 日志
 
@@ -34,7 +34,7 @@ ms.locfileid: "123110191"
 - **定期删除旧版本**：启用存储项目版本的清理，默认情况下设置为“True”。
 - **每个项目的最大版本数量**：指定存储项目版本的最大数量，默认情况下设置为 10，而较旧的日志会在调用相关的 SSISDB 存储过程时被删除。
 
-![SSISDB 日志清理属性](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-ssisdb-properties.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-ssisdb-properties.png" alt-text="SSISDB 日志清理属性":::
 
 配置 SSISDB 日志清理属性后，可以调用相关的 SSISDB 存储过程 `[internal].[cleanup_server_retention_window_exclusive]` 来清理 SSIS 包执行日志。
 
@@ -55,7 +55,7 @@ ms.locfileid: "123110191"
 ## <a name="clean-up-ssisdb-logs-automatically-via-adf"></a>通过 ADF 自动清理 SSISDB 日志
 无论是否使用 Azure SQL 数据库服务器/托管实例来托管 SSISDB，都可以始终按计划使用 ADF 来自动清理 SSISDB 日志。 为此，可以在 ADF 管道中准备一个具有嵌入包的“执行 SSIS 包”活动，其中包含调用相关 SSISDB 存储过程的单个执行 SQL 任务。 请参阅博客：[在 Azure 数据工厂中使用 SSIS 通过 3 个简单步骤运行任意 SQL](https://techcommunity.microsoft.com/t5/sql-server-integration-services/run-any-sql-anywhere-in-3-easy-steps-with-ssis-in-azure-data/ba-p/2457244) 中的示例 4。
 
-![通过 ADF 清理 SSISDB 日志](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/run-sql-ssis-activity-ssis-parameters-ssisdb-clean-up.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/run-sql-ssis-activity-ssis-parameters-ssisdb-clean-up.png" alt-text="通过 ADF 清理 SSISDB 日志":::
 
 对于 SQLStatementSource 参数，可以输入 `EXEC internal.cleanup_server_retention_window_exclusive` 来清理 SSIS 包执行日志。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "123110191"
 ## <a name="clean-up-ssisdb-logs-automatically-via-azure-sql-managed-instance-agent"></a>通过 Azure SQL 托管实例代理自动清理 SSISDB 日志
 如果使用 Azure SQL 托管实例来托管 SSISDB，还可以使用其内置作业协调程序/计划程序、Azure SQL 托管实例代理来按计划自动清理 SSISDB 日志。 如果最近在 Azure SQL 托管实例中创建了 SSISDB，则还在 Azure SQL 托管实例代理中创建了一个名为“SSIS 服务器维护作业”的 T SQL 作业，用于专门清理 SSIS 包执行日志。 默认情况下，它处于禁用状态并配置为每天运行一次。  若要启用它或重新配置其计划，可以通过使用 SSMS 连接到 Azure SQL 托管实例来实现此目的。 连接后，在 SSMS 的“对象资源管理器”窗口中，可以依次展开“SQL Server 代理”节点、“作业”子节点，然后双击“SSIS 服务器维护作业”来启用/重新配置它   。
 
-![通过 Azure SQL 托管实例代理进行 SSISDB 日志清理](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-maintenance-job.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-maintenance-job.png" alt-text="通过 Azure SQL 托管实例代理进行 SSISDB 日志清理":::
 
 如果 Azure SQL 托管实例代理尚未在其下创建“SSIS 服务器维护作业”，则可以通过在 Azure SQL 托管实例上运行以下 T-SQL 脚本来手动添加它。
 
@@ -147,7 +147,7 @@ EXEC sp_add_jobschedule
 还可以配置现有“SSIS 服务器维护作业”或修改上述 T-SQL 脚本，以通过调用相关的 SSISDB 存储过程来清理 SSIS 作业/IR 操作日志。
 
 ## <a name="clean-up-ssisdb-logs-automatically-via-elastic-database-jobs"></a>通过弹性数据库作业自动清理 SSISDB 日志
-如果使用 Azure SQL 数据库服务器来托管 SSISDB，则它没有内置作业协调程序/计划程序，因此必须使用外部组件（例如 ADF (参见上文) 或弹性数据库作业 (参见本章节的剩余部分) 才能按计划自动清理 SSISDB 日志。
+如果使用 Azure SQL 数据库服务器来托管 SSISDB，则它没有内置作业协调程序/计划程序，因此必须使用外部组件（例如 ADF (参见上文) 或弹性数据库作业 (参见本章节的剩余部分) 才能按计划自动清理 SSISDB 日志）。
 
 弹性数据库作业是一项 Azure 服务，它可以针对一个或一组数据库自动执行和运行作业。 可以使用 Azure 门户、Azure PowerShell、T-SQL 或 REST API 来计划、运行和监视这些作业。 使用弹性数据库作业调用相关 SSISDB 存储过程，从而一次性或按计划清理日志。 可以根据 SSISDB 资源使用情况来选择计划时间间隔，避免数据库负载过重。
 
@@ -375,7 +375,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 在 Azure 门户中监视 SSISDB 日志清理作业。 对于每次执行，都可以查看作业的状态、开始时间和结束时间。
 
-![在 Azure 门户中监视 SSISDB 日志清理作业](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png" alt-text="在 Azure 门户中监视 SSISDB 日志清理作业":::
 
 ### <a name="monitor-ssisdb-log-clean-up-job-using-t-sql"></a>使用 T-SQL 监视 SSISDB 日志清理作业
 

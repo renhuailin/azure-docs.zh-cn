@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 0f639c656207f94b37bbf2768b6c39fc69eb8603
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5a8cbdc77a7570037645b350b62787aeaea7374f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114454566"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821506"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sentry"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sentry 集成
 
@@ -83,7 +83,7 @@ ms.locfileid: "114454566"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://sentry.io/organizations/<ORGANIZATION_SLUG>/`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://sentry.io/organizations/<ORGANIZATION_SLUG>/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用“标识符”、“回复 URL”和“登录 URL”的实际值更新这些值。 有关如何查找这些值的详细信息，请参阅 [Sentry 文档](https://docs.sentry.io/product/accounts/sso/azure-sso/#installation)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -100,7 +100,7 @@ ms.locfileid: "114454566"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -140,7 +140,7 @@ ms.locfileid: "114454566"
 
 #### <a name="either-mode"></a>在任一模式下：
 
-在任一模式下都可以使用“我的应用”门户来测试应用程序。 在“我的应用”中单击“Sentry”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页，从中可以启动登录流。 如果该应用程序是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 Sentry 应用程序。 有关“我的应用”门户的详细信息，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
+在任一模式下都可以使用“我的应用”门户来测试应用程序。 在“我的应用”中单击“Sentry”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页，从中可以启动登录流。 如果该应用程序是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 Sentry 应用程序。 有关“我的应用”门户的详细信息，请参阅[从“我的应用”门户登录和启动应用](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

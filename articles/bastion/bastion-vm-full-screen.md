@@ -5,18 +5,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 34bc70fa88aa3c108a946b4e040bf60f56ec95e1
-ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
+ms.openlocfilehash: 82c763647911037985dc3395a2176e8c43f34114
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113644322"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629571"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>将 VM 会话更改为全屏视图：Azure Bastion
 
-本文可帮助你在浏览器中将虚拟机视图更改为全屏，然后再改回来。 使用 VM 之前，请确保已按照[创建 Bastion 主机](./tutorial-create-host-portal.md)的步骤进行操作。 然后，使用 [RDP](bastion-connect-vm-rdp.md) 或 [SSH](bastion-connect-vm-ssh.md) 连接到要处理的 VM。
+本文可帮助你在浏览器中将虚拟机视图更改为全屏，然后再改回来。 使用 VM 之前，请确保已按照[创建 Bastion 主机](./tutorial-create-host-portal.md)的步骤进行操作。 然后，使用 [RDP](bastion-connect-vm-rdp-windows.md) 或 [SSH](bastion-connect-vm-ssh-linux.md) 连接到要处理的 VM。
 
 ## <a name="launch-the-clipboard-tool"></a>启动剪贴板工具
 

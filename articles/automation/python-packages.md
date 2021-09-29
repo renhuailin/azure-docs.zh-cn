@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 08/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 2d5cf0a3d577949edd9e8174ef74e5fede96e67e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 916cd5fa9251a1f6c14b4518db7b77398c7ab5e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965684"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799978"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>在 Azure 自动化中管理 Python 2 包
 
@@ -93,4 +93,4 @@ for group in groups:
 
 ## <a name="next-steps"></a>后续步骤
 
-要准备 Python runbook，请参阅[创建 Python runbook](learn/automation-tutorial-runbook-textual-python2.md)。
+要准备 Python runbook，请参阅[创建 Python runbook](./learn/automation-tutorial-runbook-textual-python-3.md)。

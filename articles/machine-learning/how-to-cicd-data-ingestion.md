@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 34aa94ea7bef56ecc2e01b792a0f5e8b417804fa
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: fc843d45bbdbcc8ac7de7135eb3534cc606409bd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890179"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212506"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>数据引入管道的 DevOps
 
@@ -122,7 +122,7 @@ Azure 数据工厂管道的 CI 过程是数据引入管道的瓶颈。 不会执
 1. 已被授予权限的人员单击“发布”按钮，从协作分支中的源代码生成 Azure 资源管理器模板。 
 1. 工作区将验证管道（将其视为 Lint 分析和单元测试），生成 Azure 资源管理器模板（将其视为生成），并将生成的模板保存到同一代码存储库中的技术分支 ***adf_publish***（将其视为发布项目）。 此分支由 Azure 数据工厂工作区自动创建。 
 
-有关此过程的详细信息，请参阅 [Azure 数据工厂中的持续集成和交付](../data-factory/continuous-integration-deployment.md)。
+有关此过程的详细信息，请参阅 [Azure 数据工厂中的持续集成和交付](../data-factory/continuous-integration-delivery.md)。
 
 必须确保生成的 Azure 资源管理器模板不区分环境。 这意味着，所有在不同环境中可能会有所不同的值均会参数化。 Azure 数据工厂足够智能，可将大多数此类值作为参数公开。 例如，在以下模板中，Azure 机器学习工作区的连接属性将作为参数公开：
 
@@ -174,7 +174,7 @@ labels = np.array(data['target'])
 
 ![屏幕截图显示了位于顶部的名为“PrepareData”的笔记本和名为“M L Execute Pipeline”的 M L 执行管道，其中选择了下面的“设置”选项卡。](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](../data-factory/continuous-integration-deployment.md#default-parameterization-template)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请使用以下代码片段更新[默认参数化模板](../data-factory/continuous-integration-deployment.md#default-parameterization-template)的 `"Microsoft.DataFactory/factories/pipelines"` 部分，并将结果 JSON 文件放在源文件夹的根目录中：
+Azure 数据工厂工作区默认不会将管道变量作为 Azure 资源管理器模板参数公开。 工作区使用[默认参数化模板](../data-factory/continuous-integration-delivery-resource-manager-custom-parameters.md)，指明应将哪些管道属性作为 Azure 资源管理器模板参数公开。 若要将管道变量添加到列表中，请使用以下代码片段更新[默认参数化模板](../data-factory/continuous-integration-delivery-resource-manager-custom-parameters.md)的 `"Microsoft.DataFactory/factories/pipelines"` 部分，并将结果 JSON 文件放在源文件夹的根目录中：
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
@@ -481,5 +481,5 @@ stages:
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 数据工厂中的源代码管理](../data-factory/source-control.md)
-* [Azure 数据工厂中的持续集成和持续交付](../data-factory/continuous-integration-deployment.md)
+* [Azure 数据工厂中的持续集成和持续交付](../data-factory/continuous-integration-delivery.md)
 * [Azure Databricks 的 DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

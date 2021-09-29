@@ -1,14 +1,14 @@
 ---
 title: 查看和使用虚拟机的 Azure 资源管理器模板
 description: 了解如何使用虚拟机的 Azure 资源管理器模板创建其他 VM
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a72816c19c4d465e5bcb14b377d6f7a7df49f97b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d298ef123fac319ec211d45c877f314c5f008fef
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954007"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646713"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd03ce16f0695c23f30146cb8099eb67614982dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724704"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754420"
 ---
 # <a name="build-resilience-with-credential-management"></a>通过凭据管理来构建复原能力
 
@@ -57,7 +57,7 @@ ms.locfileid: "98724704"
 
 * 部署[无密码凭据](../authentication/howto-authentication-passwordless-deployment.md)（如 Windows Hello 企业版、电话身份验证和 FIDO2 安全密钥）以减少依赖项。
 
-* 将 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)部署为第二个因素。
+* 将 [Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)部署为第二个因素。
 
 * 为从 Windows Server Active Directory 同步的混合帐户启用[密码哈希同步](../hybrid/whatis-phs.md)。 此选项可以随联合身份验证服务（如 AD FS）一起启用，并将在联合身份验证服务发生故障时提供回退。
 

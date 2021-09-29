@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 724b94a44ae289063bbb1c6ebf53b38c0a617b88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed819b22caab25fea8ae002d482cf2df5d0bf60c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799321"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733065"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -22,7 +22,7 @@ LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各�
 
 ## <a name="multi-language-luis-apps"></a>多语言 LUIS 应用
 
-如果需要多语言 LUIS 客户端应用程序（例如聊天机器人），可通过几种方法实现。 如果 LUIS 支持所有语言，则需面向每种语言开发一个 LUIS 应用。 每个 LUIS 应用都具有唯一的应用 ID 和终结点日志。 如果需要为 LUIS 不支持的语言提供语言理解，可使用[翻译器服务](../Translator/translator-info-overview.md)将言语翻译成受支持的语言，接着将言语提交到 LUIS 终结点，然后接收生成的分数。
+如果需要多语言 LUIS 客户端应用程序（例如聊天机器人），可通过几种方法实现。 如果 LUIS 支持所有语言，则需面向每种语言开发一个 LUIS 应用。 每个 LUIS 应用都具有唯一的应用 ID 和终结点日志。 如果需要为 LUIS 不支持的语言提供语言理解，可使用[翻译器服务](../translator/translator-overview.md)将言语翻译成受支持的语言，接着将言语提交到 LUIS 终结点，然后接收生成的分数。
 
 ## <a name="languages-supported"></a>支持的语言
 

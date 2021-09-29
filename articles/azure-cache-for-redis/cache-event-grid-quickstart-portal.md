@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: cache
 ms.custom:
 - mode-portal
-ms.openlocfilehash: b53eb606fc12cf77eeaafcccf7c7286c73d46c64
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 72596521850ba3b3b10ef572aa768672869ec7ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283008"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620913"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：使用 Azure 门户将 Azure Cache for Redis 事件路由到 Web 终结点
 
@@ -27,7 +27,7 @@ Azure 事件网格是针对云的事件处理服务。 在本快速入门中，�
 
 ## <a name="create-an-azure-cache-for-redis-cache-instance"></a>创建 Azure Cache for Redis 缓存实例
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
@@ -107,7 +107,7 @@ Azure 事件网格是针对云的事件处理服务。 在本快速入门中，�
     * 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 首先在一个缩放操作中从 **基本** 缩放到 **标准**，然后在后续的缩放操作中从 **标准** 缩放到 **高级**。
     * 不能从较大的大小减小为 **C0 (250 MB)** 。
 
-    当缓存缩放到新的定价层，会在左侧使用“Azure Cache for Redis”显示“缩放”状态。 缩放完成后，状态将从 **正在缩放** 更改为 **正在运行**。
+    当缓存缩放到新的定价层，会在左侧通过 Azure Cache for Redis 显示“缩放”状态。 缩放完成后，状态将从 **正在缩放** 更改为 **正在运行**。
 
 1. 现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 消息采用 JSON 格式，它包含一个或多个事件的数组。 在以下示例中，JSON 消息包含一个事件的数组。 查看 Web 应用，你将会看到已收到一个“ScalingCompleted”事件。
 

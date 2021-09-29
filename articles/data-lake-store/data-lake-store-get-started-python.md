@@ -1,18 +1,18 @@
 ---
 title: 使用 Python 管理 Azure Data Lake Storage Gen1 帐户
 description: 了解如何使用 Python SDK 进行 Azure Data Lake Storage Gen1 帐户管理操作。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
-ms.author: twooley
+ms.author: normesta
 ms.custom: devx-track-python
-ms.openlocfilehash: 35e71b80c6f47bb13f7a2b490b493b0cb42acf04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2941f2b81826577f0dd2e6d9138ed6bc88d3187
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92103503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580331"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
 > [!div class="op_single_selector"]

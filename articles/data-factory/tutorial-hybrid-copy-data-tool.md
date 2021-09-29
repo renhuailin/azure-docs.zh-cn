@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/08/2021
-ms.openlocfilehash: 3adb1c084276bed35ec7a2f542ee7f9d319f7b2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2311c7e0ab22510211b8fe6c6668b3253d5df28e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638330"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798306"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -80,7 +80,7 @@ ms.locfileid: "122638330"
 
 1. 在左窗格中，选择“所有服务”。 使用“存储”关键字进行筛选，然后选择“存储帐户”。 
 
-    ![存储帐户搜索](media/doc-common-process/search-storage-account.png)
+    :::image type="content" source="media/doc-common-process/search-storage-account.png" alt-text="存储帐户搜索":::
 
 1. 在存储帐户列表中，根据需要通过筛选找出你的存储帐户， 然后选择存储帐户。
 
@@ -93,7 +93,7 @@ ms.locfileid: "122638330"
 
 1. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  。
 
-   ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="新建数据工厂":::
 
 1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
@@ -122,7 +122,7 @@ ms.locfileid: "122638330"
 
 1. 在 Azure 数据工厂主页上，选择“引入”磁贴来启动“复制数据”工具。
 
-   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="屏幕截图显示 Azure 数据工厂主页。":::
 
 1. 在“复制数据”工具的“属性”页上，选择“任务类型”下的“内置复制任务”，然后选择“任务节奏或任务计划”下的“立即运行一次”，再选择“下一步”     。
 
@@ -134,7 +134,7 @@ ms.locfileid: "122638330"
 
 1. 在“集成运行时安装”对话框中选择“自承载” 。 然后选择“继续”。
 
-   ![创建集成运行时](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
+   :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png" alt-text="创建集成运行时":::
 
 1. 在“集成运行时安装”对话框中的“名称”下输入“TutorialIntegrationRuntime”  。 然后选择“创建”。
 
@@ -142,7 +142,7 @@ ms.locfileid: "122638330"
 
 1. 运行下载的应用程序。 窗口中会显示快速安装的状态。
 
-    ![快速安装状态](./media/tutorial-hybrid-copy-data-tool/express-setup-status.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/express-setup-status.png" alt-text="快速安装状态":::
 
 1. 在“新建连接(SQL Server)”对话框中，确认“通过集成运行时连接”下的“TutorialIntegrationRuntime”处于选中状态  。 然后执行以下步骤：
 
@@ -160,7 +160,7 @@ ms.locfileid: "122638330"
 
     g. 测试连接并选择“创建”。
 
-      ![选择的集成运行时](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
+      :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png" alt-text="选择的集成运行时":::
 
 1. 在“源数据存储”页上，确保“连接”块中新创建的“SQL Server”连接处于选中状态  。 然后，在“源表”部分中，选择“现有表”，然后选择列表中的“dbo.emp”表，再选择“下一步”   。 可以根据你的数据库选择任何其他表。
 
@@ -170,7 +170,7 @@ ms.locfileid: "122638330"
 
 1. 在“新建连接”中，搜索并选择“Azure Blob”，然后选择“继续”  。
 
-   ![Blob 存储选择](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
+   :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png" alt-text="Blob 存储选择":::
 
 1. 在“新建连接(Azure Blob 存储)”对话框中，执行以下步骤：
 

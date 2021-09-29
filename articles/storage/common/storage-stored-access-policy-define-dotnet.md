@@ -11,28 +11,28 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c1b6aa0d6bdd98a66a638a216f93a6d81bd6b93
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 1be2b8200cd9e7b83fb3d113966a13c32e126d34
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113726853"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589257"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>使用 .NET 创建存储访问策略
 
 存储访问策略对服务器端的服务级别共享访问签名 (SAS) 提供另一级别的控制。 定义存储访问策略可以将共享访问签名分组到一起，并为通过策略绑定的共享访问签名提供其他限制。 可以使用存储访问策略更改 SAS 的开始时间、到期时间或权限，或者在颁发 SAS 后将其吊销。
-  
-以下 Azure 存储资源支持存储访问策略：  
-  
-- Blob 容器  
-- 文件共享  
-- 队列  
-- 表  
-  
+
+以下 Azure 存储资源支持存储访问策略：
+
+- Blob 容器
+- 文件共享
+- 队列
+- 表
+
 > [!NOTE]
 > 容器上的存储访问策略可以与共享访问签名相关联，后者授予对容器本身的权限，或对它包含的 Blob 的权限。 类似地，文件共享上的存储访问策略可以与共享访问签名相关联，后者授予对共享本身的权限，或对它包含的文件的权限。  
 >
-> 仅服务 SAS 支持存储访问策略。 帐户 SAS 或用户委托 SAS 不支持存储的访问策略。  
+> 仅服务 SAS 支持存储访问策略。 帐户 SAS 或用户委托 SAS 不支持存储的访问策略。
 
 有关存储访问策略的更多信息，请参阅[定义存储访问策略](/rest/api/storageservices/define-stored-access-policy)。
 

@@ -4,18 +4,18 @@ description: 本主题说明如何使用 Azure 视频分析器管理录制策略
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 31b9d4f14a9c60687b9a6e8f32fcc3a1fba82856
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 95e5decc8092c6a40e368c395da61fd8b9904e30
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601582"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761992"
 ---
 # <a name="manage-recording-policy-with-video-analyzer"></a>使用视频分析器管理录制策略
 
-可以使用 Azure 视频分析器在数周、数月或数年的时间内将实时视频[录制](video-recording.md)到云中。 此录制可以是[连续的](continuous-video-recording.md)，也可以是稀疏或[基于事件的](event-based-video-recording-concept.md)。 不管是哪种情况，录制都可以长达数年。 可以使用 Azure 存储中内置的[生命周期管理工具](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)来管理云存档的时间长度（天）。  
+可以使用 Azure 视频分析器在数周、数月或数年的时间内将实时视频[录制](video-recording.md)到云中。 此录制可以是[连续的](continuous-video-recording.md)，也可以是稀疏或[基于事件的](event-based-video-recording-concept.md)。 不管是哪种情况，录制都可以长达数年。 可以使用 Azure 存储中内置的[生命周期管理工具](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal)来管理云存档的时间长度（天）。  
 
-视频分析器帐户链接到 Azure 存储帐户，在录制到视频资源时，媒体数据将写入存储帐户中的容器。 生命周期管理允许你为存储帐户定义[策略](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy)，你可以在其中指定[规则](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules)，如下所示。
+视频分析器帐户链接到 Azure 存储帐户，在录制到视频资源时，媒体数据将写入存储帐户中的容器。 生命周期管理允许你为存储帐户定义[策略](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal)，你可以在其中指定[规则](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal#lifecycle-management-rule-definition)，如下所示。
 
 ```
 {
@@ -53,7 +53,7 @@ ms.locfileid: "114601582"
 以下是生命周期管理的一些已知限制：
 
 * 策略中最多可以有 100 个规则，每个规则最多可以指定 10 个容器。 因此，如果需要使用不同的录制策略（例如，面向停车场的摄像机存档 3天，装货码头的摄像机存档 30 天，收银台后面的摄像机存档 180 天），那么使用一个存储帐户，你最多可以为 1000 个摄像机自定义规则。
-* 生命周期管理策略更新不是即时的。 有关更多详细信息，请参阅[常见问题解答部分](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#faq)。
+* 生命周期管理策略更新不是即时的。 有关更多详细信息，请参阅[常见问题解答部分](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal#faq)。
 * 如果选择应用将 blob 移动到冷访问层的策略，则该存档部分的播放可能会受到影响。 你可能会看到其他延迟，或偶尔发生的错误。 视频分析器不支持在存档层中播放内容。
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1f7a3f31ed67817252f7ba33b9f4a83ef8ccd5c6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 203900e225700055c581ce4c7a100e055d9526b7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114455615"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837435"
 ---
 # <a name="use-existing-runbooks-and-modules"></a>使用现有的 runbook 和模块
 
@@ -131,7 +131,7 @@ Microsoft 建议将 Runbook 添加到你认为对其他客户有用的 PowerShel
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
+* 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](./learn/powershell-runbook-managed-identity.md)。
 * 若要使用 runbook，请参阅[在 Azure 自动化中管理 runbook](manage-runbooks.md)。
 * 有关 PowerShell 脚本的详细信息，请参阅 [Powershell Docs](/powershell/scripting/overview)。
 * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation)。

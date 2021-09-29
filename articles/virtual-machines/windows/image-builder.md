@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 32ed525aec3d7a6b9a223deb8aad0617751f61da
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 83deba3d6fe63f5a63bda04556b911168527b065
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309980"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553054"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder"></a>使用 Azure 映像生成器创建 Windows VM
 
@@ -76,8 +76,6 @@ az provider register -n Microsoft.Network
 imageResourceGroup=myWinImgBuilderRG
 # Region location 
 location=WestUS2
-# Name for the image 
-imageName=myWinBuilderImage
 # Run output name
 runOutputName=aibWindows
 # name of the image to be created
@@ -110,7 +108,7 @@ az identity create -g $imageResourceGroup -n $identityName
 imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName --query clientId -o tsv)
 
 # get the user identity URI, needed for the template
-imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 
 # download preconfigured role definition example
 curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json

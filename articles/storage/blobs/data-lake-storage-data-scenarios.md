@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 4ed2458b09d200542ce8789d90250027a07a970d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7670430d112482addea26c9fc1bc97c2434bc2e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735465"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555334"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
 大数据处理的四个主要阶段：
 
 > [!div class="checklist"]
-> * 实时或批量引入大量数据到数据存储
-> * 处理数据
-> * 下载数据
-> * 可视化数据
+> - 实时或批量引入大量数据到数据存储
+> - 处理数据
+> - 下载数据
+> - 可视化数据
 
 本文重点介绍每个处理阶段的选项和工具。
 
@@ -37,7 +37,7 @@ ms.locfileid: "101735465"
 
 ### <a name="ad-hoc-data"></a>临时数据
 
-这表示可用于形成大数据应用程序原型的较小数据集。 存在数种不同的引入临时数据的方式，具体取决于数据源。 
+这表示可用于形成大数据应用程序原型的较小数据集。 存在数种不同的引入临时数据的方式，具体取决于数据源。
 
 下面是可以用来引入临时数据的工具的列表。
 
@@ -104,13 +104,13 @@ ms.locfileid: "101735465"
 
 ### <a name="really-large-datasets"></a>大型数据集
 
-对于上传兆兆字节范围内的数据集，使用上述方法可能有时速度慢且成本高。 在这种情况下，可以使用 Azure ExpressRoute。  
+对于上传兆兆字节范围内的数据集，使用上述方法可能有时速度慢且成本高。 在这种情况下，可以使用 Azure ExpressRoute。
 
 Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间创建专有连接。 这对传输大量数据提供了可靠的选项。 若要了解详细信息，请参阅 [Azure ExpressRoute 文档](../../expressroute/expressroute-introduction.md)。
 
 ## <a name="process-the-data"></a>处理数据
 
-数据在 Data Lake Storage Gen2 中可用后，可使用支持的大数据应用程序对此数据运行分析。 
+数据在 Data Lake Storage Gen2 中可用后，可使用支持的大数据应用程序对此数据运行分析。
 
 ![分析 Data Lake Storage Gen2 中的数据](./media/data-lake-storage-data-scenarios/analyze-data.png "分析 Data Lake Storage Gen2 中的数据")
 
@@ -129,9 +129,9 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 
 用户可能还希望为一些方案从 Azure Data Lake Storage Gen2 下载或移动数据，例如：
 
-* 将数据移动到其他存储库以便连接现有数据处理管道。 例如，你可能希望从 Data Lake Storage Gen2 将数据移到 Azure SQL 数据库或 SQL Server 实例。
+- 将数据移动到其他存储库以便连接现有数据处理管道。 例如，你可能希望从 Data Lake Storage Gen2 将数据移到 Azure SQL 数据库或 SQL Server 实例。
 
-* 构建应用程序原型时，下载数据到本地计算机以在 IDE 中进行处理。
+- 构建应用程序原型时，下载数据到本地计算机以在 IDE 中进行处理。
 
 ![从 Data Lake Storage Gen2 传出数据](./media/data-lake-storage-data-scenarios/egress-data.png "从 Data Lake Storage Gen2 传出数据")
 

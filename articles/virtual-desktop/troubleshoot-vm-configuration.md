@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d32ea2a26bfcf4f1186cc93f65d67ed10b1eb4e9
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: aa54932a6093c5c1a22285de9449b2faee06fe67
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860789"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818549"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -82,7 +82,7 @@ ms.locfileid: "121860789"
 
 请按照以下说明来确认是否已安装组件并检查是否有错误消息。
 
-1. 通过检查“控制面板” > “程序” > “程序和功能”，确认是否已安装这两个组件  。 如果“Azure 虚拟桌面代理”和“Azure 虚拟桌面代理启动加载器”不可见，则说明 VM 中未安装它们 。
+1. 通过检查“控制面板” > “程序” > “程序和功能”，确认是否已安装这两个组件  。 如果 Azure 虚拟桌面代理和 Azure 虚拟桌面代理启动加载器不可见，则说明 VM 中未安装它们 。
 2. 打开“文件资源管理器”并导航到 C:\Windows\Temp\ScriptLog.log 。 如果缺少该文件，则表示安装了这两个组件的 PowerShell DSC 无法在提供的安全上下文中运行。
 3. 如果文件 C:\Windows\Temp\ScriptLog.log 存在，请将其打开，并检查错误消息。
 
@@ -138,7 +138,7 @@ ms.locfileid: "121860789"
 
 1. 如果已有注册令牌，请使用 Remove-AzWvdRegistrationInfo 将其删除。
 2. 运行 New-AzWvdRegistrationInfo cmdlett 以生成新令牌。
-3. 确认“-ExpriationTime”参数设置为三天。
+3. 确认“-ExpriationTime”参数设置为 3 天。
 
 ### <a name="error-azure-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>错误：运行 Get-AzWvdSessionHost 时，Azure 虚拟桌面代理未报告检测信号
 
@@ -299,11 +299,11 @@ Azure 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Mic
 
 ## <a name="remote-desktop-licensing-mode-isnt-configured"></a>未配置远程桌面许可模式
 
-如果使用管理帐户登录到 Windows 10 企业版多会话，则可能会接收到一条通知，显示“未配置远程桌面许可模式，远程桌面服务将在 X 天内停止工作。 请在连接代理服务器中，使用服务器管理器指定远程桌面许可模式。”
+如果使用管理帐户登录到 Windows 10 企业版多会话，则可能会接收到一条通知，显示“未配置远程桌面许可模式，远程桌面服务将在 X 天后停止工作。 请在连接代理服务器中，使用服务器管理器指定远程桌面许可模式。”
 
 如果时间限制过期，则将出现一条错误消息，显示“由于这台计算机没有远程桌面客户端访问许可证，远程会话被中断。”
 
-如果出现这些消息中的任意一条，则表示该映像未安装最新的 Windows 更新，或者你正在通过组策略设置远程桌面许可模式。 按照下一部分中的步骤检查组策略设置，确定 Windows 10 企业版多会话的版本，并安装相应的更新。
+如果出现上述任一消息，则表示该映像未安装最新的 Windows 更新，或者你正在通过组策略设置远程桌面许可模式。 按照下一部分中的步骤检查组策略设置，确定 Windows 10 企业版多会话的版本，并安装相应的更新。
 
 >[!NOTE]
 >在主机池包含 Windows Server 会话主机时，Azure 虚拟桌面只需要 RDS 客户端访问许可证 (CAL)。 若要了解如何配置 RDS CAL，请参阅[使用客户端访问许可证为 RDS 部署提供许可](/windows-server/remote/remote-desktop-services/rds-client-access-license/)。
@@ -343,7 +343,7 @@ Azure 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Mic
 
 若要详细了解此策略，请参阅[允许通过远程桌面服务登录](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)。
 
-## <a name="i-cant-deploy-the-golden-image"></a>我无法部署黄金映像
+## <a name="i-cant-deploy-the-golden-image"></a>无法部署黄金映像
 
 黄金映像不得包含 Azure 虚拟桌面代理。 只有在部署黄金映像后，才能安装代理。
 
@@ -358,5 +358,5 @@ Azure 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Mic
 - 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-monitor/essentials/activity-log.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

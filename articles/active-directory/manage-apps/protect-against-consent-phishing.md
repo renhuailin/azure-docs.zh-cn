@@ -12,12 +12,12 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: 7f9f5a49a46c4f73dce65f23e8ace278f02fe941
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6d2a6afe4555bc9324241616ae6c22494216a146
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113194"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791434"
 ---
 # <a name="protecting-against-consent-phishing"></a>防范同意钓鱼
 
@@ -48,7 +48,7 @@ ms.locfileid: "123113194"
 1. 调查已禁用应用程序的应用程序活动，包括：
     - 应用程序请求的委托的权限或应用程序权限。
     - 应用程序的活动以及有权使用应用程序的用户的登录活动的 Azure AD 审核日志。
-1. 查看并实施 Microsoft 云产品中[有关抵御非法同意授权的指导](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants?view=o365-worldwide&preserve-view=true)，其中包括对已禁用的应用程序或审核期间发现的任何其他可疑应用审核权限和同意。
+1. 查看并实施 Microsoft 云产品中[有关抵御非法同意授权的指导](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)，其中包括对已禁用的应用程序或审核期间发现的任何其他可疑应用审核权限和同意。
 1. 实施下面所述的有关强化防范同意钓鱼的最佳做法。
 
 
@@ -59,20 +59,20 @@ Microsoft 希望通过提供适当的见解和功能使管理员处于控制地�
 * 培训组织成员，使他们了解权限和同意框架的工作原理
     - 了解应用程序请求的数据和权限，以及 [权限和同意](../develop/v2-permissions-and-consent.md)在平台内部如何工作。
     - 确保管理员知道如何 [管理和评估同意请求](./manage-consent-requests.md)。
-    - 定期在组织内[审核应用和已同意的权限](/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) ，确保所使用的应用程序仅可访问所需数据，并遵循最小特权原则。
+    - 定期在组织内[审核应用和已同意的权限](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) ，确保所使用的应用程序仅可访问所需数据，并遵循最小特权原则。
 * 了解如何发现和阻止常见的同意钓鱼手段
     - 检查拼写和语法是否有误。 如果电子邮件消息或应用程序的同意屏幕出现拼写和语法错误，这可能是可疑应用程序。 在这种情况下，可以使用“在此处报告”链接直接在[同意提示](../develop/application-consent-experience.md#building-blocks-of-the-consent-prompt)上报告它，Microsoft 将进行调查，如果确认是恶意应用程序，会将其禁用。
     - 不要依赖应用名称和域 URL 作为真实性的来源。 攻击者喜欢使用欺骗性的应用名称和域，使它们看起来像是来自合法的服务或公司，促使你同意恶意应用。 你应该验证域 URL 的来源，并尽可能使用来自[经过验证的发布者](../develop/publisher-verification-overview.md)的应用程序。
-    - 通过[使用 Microsoft Defender for Office 365 阻止同意钓鱼电子邮件](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies?view=o365-worldwide&preserve-view=true#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365)，防范攻击者冒充组织中的已知用户的钓鱼活动。
+    - 通过[使用 Microsoft Defender for Office 365 阻止同意钓鱼电子邮件](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365)，防范攻击者冒充组织中的已知用户的钓鱼活动。
     - 配置 Microsoft Cloud App Security 策略（如 [活动策略](/cloud-app-security/user-activity-policies)、 [异常情况检测](/cloud-app-security/anomaly-detection-policy)和  [OAuth 应用策略](/cloud-app-security/app-permission-policy) ），帮助管理组织中的异常应用程序活动并对其执行操作。
-    - 通过遵循有关 [Microsoft 365 Defender 高级搜寻](/microsoft-365/security/defender/advanced-hunting-overview?view=o365-worldwide&preserve-view=true)的指导来调查并搜寻同意钓鱼攻击。
+    - 通过遵循有关 [Microsoft 365 Defender 高级搜寻](/microsoft-365/security/defender/advanced-hunting-overview)的指导来调查并搜寻同意钓鱼攻击。
 * 允许访问你信任的应用，并防范你不信任的应用
     - 使用已由发布者验证的应用程序。 [发布者验证](../develop/publisher-verification-overview.md)可以帮助管理员和最终用户通过 Microsoft 支持的审核流程了解应用程序开发人员的真实身份。
     - [配置用户同意设置](./configure-user-consent.md?tabs=azure-portal)，让用户仅同意你信任的特定应用程序，例如你的组织开发的应用程序，或来自经验证发布者的应用程序。
-    - 创建主动[应用管理](/microsoft-365/compliance/app-governance-manage-app-governance?view=o365-worldwide&preserve-view=true)策略，监视 Microsoft 365 平台上的第三方应用行为，以防范常见的可疑应用行为。
+    - 创建主动[应用管理](/microsoft-365/compliance/app-governance-manage-app-governance)策略，监视 Microsoft 365 平台上的第三方应用行为，以防范常见的可疑应用行为。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [应用同意授权调查](/security/compass/incident-response-playbook-app-consent)
 * [管理对应用的访问](./what-is-access-management.md)
-* [限制 Azure AD 中的用户同意操作](/azure/security/fundamentals/steps-secure-identity#restrict-user-consent-operations)
+* [限制 Azure AD 中的用户同意操作](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations)

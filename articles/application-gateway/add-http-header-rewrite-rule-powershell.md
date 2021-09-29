@@ -2,18 +2,18 @@
 title: 在 Azure 应用程序网关中重写 HTTP 标头
 description: 本文介绍如何使用 Azure PowerShell 重写 Azure 应用程序网关中的 HTTP 标头
 services: application-gateway
-author: abshamsft
+author: KumudD
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
-ms.author: absha
+ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c694a2151f15af52a5380b9a442c1ac27fa1e475
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1a3f64167978196afc5d86b983c44f021b554115
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319586"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836277"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure PowerShell
 

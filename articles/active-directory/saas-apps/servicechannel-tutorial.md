@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 42f6d61d3464b088b7937ba121ac18713a235c78
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 21e296764af1e30b0fcf4a7f698a47493148de97
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802893"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801327"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicechannel"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceChannel 集成
 
@@ -85,7 +85,7 @@ ms.locfileid: "108802893"
 
 1. 角色声明已预先配置，因此不需配置它，但仍需按照此[文章](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)的说明在 Azure AD 中创建它。 有关声明的详细指导，可以参考[此处的](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example) ServiceChannel 指南。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
    ![证书下载链接](common/certificatebase64.png)
 
@@ -131,7 +131,7 @@ ms.locfileid: "108802893"
 
 - 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 ServiceChannel
 
-- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 ServiceChannel 磁贴时，应会自动登录到为其设置了 SSO 的 ServiceChannel。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 ServiceChannel 磁贴时，应会自动登录到为其设置了 SSO 的 ServiceChannel。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

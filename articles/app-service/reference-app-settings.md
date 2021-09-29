@@ -3,12 +3,12 @@ title: 环境变量和应用设置参考
 description: 描述常用的环境变量，以及可以通过应用设置修改的环境变量。
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: 5cba4a7d66f5b2bb705df8c685b6c8be05e04a08
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: b4be8fde0e771414d8b637af0c2aed33eeb48123
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272342"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816022"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Azure 应用服务中的环境变量和应用设置
 
@@ -89,7 +89,7 @@ WEBSITE_CLASSIC_MODE
 | `WEBSITE_RUN_FROM_ZIP` | 已弃用。 使用 `WEBSITE_RUN_FROM_PACKAGE`。 | 
 | `WEBSITE_WEBDEPLOY_USE_SCM` | 设置为 `false`，使 WebDeploy 停止使用 Kudu 部署引擎。 默认为 `true`。 若要使用 Visual Studio (WebDeploy/MSDeploy) 部署到 Linux 应用，请将其设置为 `false`。 |
 | `MSDEPLOY_RENAME_LOCKED_FILES` | 如果 WebDeploy 部署期间无法复制 DLL，则设置为 `1` 以尝试重命名 DLL。 如果将 `WEBSITE_WEBDEPLOY_USE_SCM` 设置为 `false`，则此设置不适用。 |
-| `WEBSITE_DISABLE_SCM_SEPARATION` | 默认情况下，主应用和 Kudu 应用在不同的沙盒中运行。 停止应用时，Kudu 应用仍在运行，可以继续使用 Git 部署和 MSDeploy。 每个应用都有自己的应用 ID。 关闭此分隔（设置为 `false`）是不再完全受支持的旧模式。 |
+| `WEBSITE_DISABLE_SCM_SEPARATION` | 默认情况下，主应用和 Kudu 应用在不同的沙盒中运行。 停止应用时，Kudu 应用仍在运行，可以继续使用 Git 部署和 MSDeploy。 每个应用都有自己的应用 ID。 关闭此分隔（设置为 `true`）是不再完全受支持的旧模式。 |
 | `WEBSITE_ENABLE_SYNC_UPDATE_SITE` | 设置为 `1` 可确保在返回之前，REST API 对更新 `site` 和 `siteconfig` 的调用完全应用到所有实例。 如果使用 ARM 模板进行部署，则默认为 `1`，以免后续 ARM 调用出现争用条件。 |
 | `WEBSITE_START_SCM_ON_SITE_CREATION` | 在 ARM 模板部署中，在 ARM 模板中设置为 `1`，以在应用创建过程中预先启动 Kudu 应用。 |
 | `WEBSITE_START_SCM_WITH_PRELOAD` | 对于 Linux 应用，设置为 `true`，以在对其 URL 执行 ping 操作来启用 Always On 时强制预加载 Kudu 应用。 默认为 `false`。 对于 Windows 应用，始终预加载 Kudu 应用。 |
@@ -486,8 +486,8 @@ WEBSITE_SOCKET_STATISTICS_ENABLED
 | `WEBSITE_AUTH_VALIDATE_NONCE`| `true` 或 `false`。 默认值是 `true`。 此值决不可设置为 `false`，除非交互式登录过程中临时调试[加密 nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) 验证失败。 此应用程序设置适用于 V1（经典）配置体验。 如果使用 V2 身份验证配置架构，则应改用 `login.nonce.validateNonce` 配置值。 |
 | `WEBSITE_AUTH_V2_CONFIG_JSON` | 此环境变量由 Azure 应用服务平台自动填充，并用于配置集成身份验证模块。 此环境变量的值对应于 Azure 资源管理器中当前应用的 V2（非经典）身份验证配置。 它不用于显式配置。 |
 | `WEBSITE_AUTH_ENABLED` | 只读。 注入到 Windows 或 Linux 应用，以指示是否启用了应用服务身份验证。 |
-| `WEBSITE_AUTH_ENCRYPTION_KEY` | 默认情况下，自动生成的密钥用作加密密钥。 若要替代，请设置为所需的密匙。 如果要在多种应用之间共享令牌或会话，建议使用此密匙。 如果指定，它将取代 `MACHINEKEY_DecryptionKey` 设置。 ||
-| `WEBSITE_AUTH_SIGNING_KEY` | 默认情况下，自动生成的密钥用作签名密钥。 若要替代，请设置为所需的密匙。 如果要在多种应用之间共享令牌或会话，建议使用此密匙。 如果指定，它将取代 `MACHINEKEY_ValidationKey` 设置。 ||
+| `WEBSITE_AUTH_ENCRYPTION_KEY` | 默认情况下，自动生成的密钥用作加密密钥。 若要替代，请设置为所需的密匙。 如果要在多种应用之间共享令牌或会话，建议使用此密匙。 如果指定，它将取代 `MACHINEKEY_DecryptionKey` 设置。 |
+| `WEBSITE_AUTH_SIGNING_KEY` | 默认情况下，自动生成的密钥用作签名密钥。 若要替代，请设置为所需的密匙。 如果要在多种应用之间共享令牌或会话，建议使用此密匙。 如果指定，它将取代 `MACHINEKEY_ValidationKey` 设置。 |
 
 <!-- System settings
 WEBSITE_AUTH_RUNTIME_VERSION

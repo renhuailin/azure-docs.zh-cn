@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: c2a704d5e87e5b5813a59f9c5951688f5c3b893a
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: f3498175030be0c6bc7b57db25dece5f8c2d83ea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113300909"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626829"
 ---
 # <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：将实时视频分析与 Intel OpenVINO™ DL Streamer Edge AI 扩展搭配用于分析实时视频 
 
@@ -28,7 +28,7 @@ ms.locfileid: "113300909"
 
 * 包含活动订阅的 Azure 帐户。 如果没有帐户，可[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
   > [!NOTE]
-  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果没有正确的权限，请联系帐户管理员，让其授予适当的权限。 
+  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果你没有正确的权限，请联系帐户管理员，让其授予你适当的权限。 
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
@@ -70,7 +70,7 @@ OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析�
 
 为了构建复杂、高性能的实时视频分析解决方案，IoT Edge 模块上的实时视频分析应与功能强大的推理引擎配合使用，以利用边缘的规模。 在本教程中，推理请求会发送到 [Intel OpenVINO™ DL Streamer Edge AI 扩展]()，这是一个 Edge 模块，旨在与 IoT Edge 上的实时视频分析搭配使用。
 
-在此推理服务器的初始版本中，你可以访问以下[模型](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options)：
+在此推理服务器的初始版本中，你可以访问以下[模型](https://github.com/intel/video-analytics-serving/tree/master/samples/ava_ai_extension#edge-ai-extension-module-options)：
 
 - object_detection for person_vehicle_bike_detection ![用于车辆的对象检测](./media/use-intel-openvino-tutorial/object-detection.png)
 
@@ -321,7 +321,7 @@ gRPC 扩展处理器节点从 Intel OpenVINO™ DL Streamer Edge AI 扩展接收
 * `inferences` 部分指示 `type` 为 `entity`。 本部分包含有关实体的其他数据。
 
 ## <a name="run-the-sample-program-to-detect-persons-or-vehicles-or-bikes"></a>运行实例程序以检测人、车辆或自行车
-若要使用其他模型，你将需要更改部署模板。 若要在支持的模型之间切换，可更改 lvaExtenstion 模块中的环境变量。 有关受支持的值和模型组合，请参阅 [GitHub 上的此文档](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options)。
+若要使用其他模型，你将需要更改部署模板。 若要在支持的模型之间切换，可更改 lvaExtenstion 模块中的环境变量。 有关受支持的值和模型组合，请参阅 [GitHub 上的此文档](https://github.com/intel/video-analytics-serving/tree/master/samples/ava_ai_extension#edge-ai-extension-module-options)。
 
 ```
 "Env":[

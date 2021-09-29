@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 349cc4ed17edeba6bdfabd0369fbef55c1a0f0f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c43a555cb4bb54031caea4a1729751c6e4454f98
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92454212"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>教程：Azure Active Directory 与 eKincare 的集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "92454212"
 
     ![eKincare 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/hul/saml`
 
@@ -136,7 +136,7 @@ ms.locfileid: "92454212"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“保存”  。
 
@@ -217,7 +217,7 @@ ms.locfileid: "92454212"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 eKincare 磁贴时，应当会自动登录到为其设置了 SSO 的 eKincare。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+单击访问面板中的 eKincare 磁贴时，应当会自动登录到为其设置了 SSO 的 eKincare。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

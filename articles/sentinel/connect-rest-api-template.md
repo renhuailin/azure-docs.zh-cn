@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2021
 ms.author: yelevin
-ms.openlocfilehash: cda5595eb2c8b72f6b38ade1feefe84904312412
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: aa30b85047460bffe0177c9154152d18262b44be
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260958"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823853"
 ---
 # <a name="connect-your-data-source-to-azure-sentinels-data-collector-api-to-ingest-data"></a>将数据源连接到 Azure Sentinel 的数据收集器 API 以引入数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "123260958"
 
 - 你必须具有对 Azure Sentinel 工作区的读取和写入权限。
 
-- 必须有工作区的共享密钥的读取权限。 [详细了解工作区密钥](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)。
+- 必须有工作区的共享密钥的读取权限。 [详细了解工作区密钥](../azure-monitor/agents/agent-windows.md)。
 
 ## <a name="configure-and-connect-your-data-source"></a>配置和连接数据源
 

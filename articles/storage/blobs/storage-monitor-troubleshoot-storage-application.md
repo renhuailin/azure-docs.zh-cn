@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45b5a29307ca8aa37f3b369b4e79054a22fa0634
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95544779"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579633"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>监视云存储应用程序并排查其问题
 
@@ -22,10 +22,10 @@ ms.locfileid: "95544779"
 该系列的第 4 部分中介绍了如何：
 
 > [!div class="checklist"]
-> * 启用日志记录和指标
-> * 启用授权错误警报
-> * 使用错误的 SAS 令牌运行测试流量
-> * 下载和分析日志
+> - 启用日志记录和指标
+> - 启用授权错误警报
+> - 使用错误的 SAS 令牌运行测试流量
+> - 下载和分析日志
 
 [Azure 存储分析](../common/storage-analytics.md)为存储帐户提供日志记录和指标数据。 此数据提供对存储帐户运行状况的见解。 若要从 Azure 存储分析收集数据，可以配置日志记录、指标和警报。 此过程包括启用日志记录、配置指标和启用警报。
 
@@ -112,10 +112,10 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 在该系列的第 4 部分也是最后一部分中，可了解如何监视存储帐户并排查其问题，例如，如何：
 
 > [!div class="checklist"]
-> * 启用日志记录和指标
-> * 启用授权错误警报
-> * 使用错误的 SAS 令牌运行测试流量
-> * 下载和分析日志
+> - 启用日志记录和指标
+> - 启用授权错误警报
+> - 使用错误的 SAS 令牌运行测试流量
+> - 下载和分析日志
 
 请访问以下链接，查看预先生成的存储示例。
 

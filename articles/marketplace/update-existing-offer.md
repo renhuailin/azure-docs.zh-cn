@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/09/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ae8cdb3b6f470d8dd9f1500d5dd0af51d594b8e8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d13b76e406398dcad37abb170b1f43439ab8bad4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432281"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662894"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>更新商业市场中的现有产品/服务
 
@@ -32,12 +32,12 @@ ms.locfileid: "123432281"
     - “未完成” - 该部分的更新引入了需要修复的错误或需要提供更多信息。
 2. 选择“发布”以提交更新的产品/服务来进行发布。 你的产品/服务将完成标准[验证和发布步骤](review-publish-offer.md#validation-and-publishing-steps)。
 
+> [!IMPORTANT]
+> 必须在产品/服务预览版可用后进行查看，然后选择“上线”以将更新的产品/服务发布给目标受众（公众或专用受众）。
+
 ## <a name="changing-offer-type"></a>更改产品/服务类型
 
 [!INCLUDE [change-offer-type](includes/change-offer-type.md)]
-
-> [!IMPORTANT]
-> 必须在产品/服务预览版可用后进行查看，然后选择“上线”以将更新的产品/服务发布给目标受众（公众或专用受众）。
 
 ## <a name="add-a-plan-to-an-existing-offer"></a>向现有产品/服务添加新计划
 

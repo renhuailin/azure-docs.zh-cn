@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: 74b81b095ef969715313c79c90821a8c8e8aaf1d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: cfbff4be8048090ec606fd8640281dccd17fe084
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123098245"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128597999"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - 灵活服务器（预览版）有哪些新增功能？
 
@@ -28,11 +28,11 @@ ms.locfileid: "123098245"
 
 - **使用相同区域高可用性的单一区域内的高可用性**
 
-  通过该服务，客户现在可以在启用高可用性时为其备用服务器灵活地选择首选可用性区域。 借助此功能，客户可以将备用服务器放置在与主服务器相同的区域，从而减少主服务器和备用服务器之间的复制延迟。 如果应用程序服务器和数据库服务器位于同一 Azure 区域内，还可以降低它们之间的延迟。 [了解详细信息](https://aka.ms/SameZone-HA)。
+  通过该服务，客户现在可以在启用高可用性时为其备用服务器灵活地选择首选可用性区域。 借助此功能，客户可以将备用服务器放置在与主服务器相同的区域，从而减少主服务器和备用服务器之间的复制延迟。 如果应用程序服务器和数据库服务器位于同一 Azure 区域内，还可以降低它们之间的延迟。 [了解详细信息](/azure/mysql/flexible-server/concepts-high-availability#same-zone-high-availability)。
 
 - **使用区域冗余高可用性选择备用区域**
 
-  现在，客户可通过该服务选择备用服务器区域位置。 使用此功能，客户可以将备用服务器放置在他们选择的区域中。 将备用数据库服务器和备用应用程序共置在同一区域可减少延迟，并让客户能够更好地为灾难恢复情况和“区域故障”场景做好准备。 [了解详细信息](https://aka.ms/standby-selection)。
+  现在，客户可通过该服务选择备用服务器区域位置。 使用此功能，客户可以将备用服务器放置在他们选择的区域中。 将备用数据库服务器和备用应用程序共置在同一区域可减少延迟，并让客户能够更好地为灾难恢复情况和“区域故障”场景做好准备。 [了解详细信息](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)。
 
 - **专用 DNS 区域集成**
 
@@ -44,7 +44,7 @@ ms.locfileid: "123098245"
 
 - **可用性区域中服务器的时间点还原**
 
-  该服务的时间点恢复体验现在支持客户配置可用性区域，将数据库服务器和备用应用程序共置在同一区域中可减少延迟，并使客户能够更好地为灾难恢复情况和“区域故障”情况做好准备。 [了解详细信息](https://aka.ms/standby-selection)。
+  该服务的时间点恢复体验现在支持客户配置可用性区域，将数据库服务器和备用应用程序共置在同一区域中可减少延迟，并使客户能够更好地为灾难恢复情况和“区域故障”情况做好准备。 [了解详细信息](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)。
 
 - validate_password 和 caching_sha2_password 插件在个人预览版中可用。
 
@@ -65,13 +65,6 @@ ms.locfileid: "123098245"
   - 无法在以下区域创建相同区域高可用性服务器：印度中部、东亚、韩国中部、南非北部、瑞士北部。
   - 在极少数情况下和高可用性故障转移后，主服务器将处于 read_only 模式。 在“服务器参数”边栏选项卡中将“read_only”更新为“OFF”可解决此问题。
   - 在“计算+存储”边栏选项卡中成功缩放计算后，IOPS 将重置为 SKU 默认值。 客户可以在计算部署和随后的 IOPS 重置后，在“计算+存储”边栏选项卡中将 IOPS 重新缩放为所需值（先前设置），从而绕过此问题。
-  - 当你尝试启用或部署相同的区域 HA 时，以下区域的部署将失败 
-      - 印度中部
-      - 东亚
-      - 韩国中部
-      - 南非北部
-      - 瑞士北部
-
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -100,7 +93,7 @@ ms.locfileid: "123098245"
 
 - 12 个月免费产品/服务
 
-  截至 2021 年 6 月 15 日，[Azure 免费帐户](https://azure.microsoft.com/free/)为客户提供长达 12 个月的对 Azure Database for MySQL – 灵活服务器的免费访问，每月使用时间为 750 小时，存储空间为 32 GB。 客户可以利用此产品/服务来开发和部署使用 Azure Database for MySQL - 灵活服务器的应用程序。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2165892)。
+  截至 2021 年 6 月 15 日，[Azure 免费帐户](https://azure.microsoft.com/free/)为客户提供长达 12 个月的对 Azure Database for MySQL – 灵活服务器的免费访问，每月使用时间为 750 小时，存储空间为 32 GB。 客户可以利用此产品/服务来开发和部署使用 Azure Database for MySQL - 灵活服务器的应用程序。 [了解详细信息](./how-to-deploy-on-azure-free-account.md)。
 
 - **存储自动增长**
 

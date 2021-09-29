@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: tutorial
 ms.date: 08/17/2021
-ms.openlocfilehash: 03862b42fb181adcf1a6c4edbed66ce61ee49e73
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d6fa48fb35d836fc7f08c98e7b1807068c000d84
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426123"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797020"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>使用双重写入代理实时迁移到 Azure Managed Instance for Apache Cassandra
 
@@ -29,7 +29,6 @@ ms.locfileid: "123426123"
 
 下图演示了该方法。
 
-
 :::image type="content" source="./media/migration/live-migration.gif" alt-text="演示如何将数据实时迁移到 Azure Managed Instance for Apache Cassandra 的动画。" border="false":::
 
 ## <a name="prerequisites"></a>必备条件
@@ -39,7 +38,6 @@ ms.locfileid: "123426123"
 * [在托管的 Cassandra 虚拟网络中预配一个 Azure Databricks 帐户](deploy-cluster-databricks.md)。 确保该帐户可通过网络访问源 Cassandra 群集。 我们将在此帐户中创建一个 Spark 群集用于加载历史数据。
 
 * 确保已将密钥空间/表方案从源 Cassandra 数据库迁移到目标 Cassandra 托管实例数据库。
-
 
 ## <a name="provision-a-spark-cluster"></a>预配 Spark 群集
 
@@ -92,7 +90,7 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> 
 - 源和目标终结点具有相同的用户名和密码。
 - 源和目标终结点实现安全套接字层 (SSL)。
 
-如果源和目标终结点无法满足这些条件，请继续阅读以了解其他配置选项。 
+如果源和目标终结点无法满足这些条件，请继续阅读以了解其他配置选项。
 
 ### <a name="configure-ssl"></a>配置 SSL
 
@@ -109,7 +107,6 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> 
 
 > [!NOTE]
 > 通过代理与数据库建立 SSL 连接时，请确保客户端应用程序使用的密钥存储和密码与双重写入代理所用的密钥存储和密码相同。
-
 
 ### <a name="configure-the-credentials-and-port"></a>配置凭据和端口
 
@@ -165,7 +162,6 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar source-server destination-
 ```
 
 在运行双重写入代理后，需要更改应用程序客户端上的端口并重启。 （或者更改 Cassandra 端口并重启群集，如果已选择此方法的话。）然后，代理会开始将写入转发到目标终结点。 你可以了解代理工具中提供的[监视和指标](https://github.com/Azure-Samples/cassandra-proxy#monitoring)。 
-
 
 ## <a name="run-the-historical-data-load"></a>运行历史数据加载
 
@@ -233,7 +229,6 @@ DFfromSourceCassandra
 ## <a name="validate-the-source-and-target"></a>验证源和目标
 
 历史数据加载完成后，数据库应已同步并准备好进行直接转换。 但是，我们建议对源和目标执行验证，以确保在最终进行直接转换之前请求结果匹配。
-
 
 ## <a name="next-steps"></a>后续步骤
 

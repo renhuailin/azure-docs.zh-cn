@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d88425069839f2a89b9312f09a064b4bc288896
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: a7b878d879524bcf3839ffd811b114b0ba625d62
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867814"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821153"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-traction-guest"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Traction Guest 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "122867814"
 * 让用户使用其 Azure AD 帐户自动登录到 Traction Guest。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -133,11 +133,9 @@ ms.locfileid: "122867814"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Traction Guest
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Traction Guest”磁贴时，应会自动登录到为其设置了 SSO 的 Traction Guest。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Traction Guest”磁贴时，应会自动登录到为其设置了 SSO 的 Traction Guest。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 配置 Traction Guest 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。
-
-

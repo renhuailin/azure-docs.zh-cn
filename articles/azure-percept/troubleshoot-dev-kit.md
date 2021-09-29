@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e644732a90652b1672dc77bfc6db86d7a6b7295a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8db131bd39ae8ebe27720a7d725f6ab8082dfd83
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221087"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780008"
 ---
 # <a name="troubleshoot-the-azure-percept-dk-device"></a>Azure Percept DK 设备故障排除
 
@@ -48,6 +48,9 @@ ms.locfileid: "123221087"
 |edgeAgent 日志 - 记录设备上运行的所有模块的版本号。|当一个或多个模块不工作时收集。|```sudo iotedge logs edgeAgent```|
 |模块容器日志 - 记录有关特定 IoT Edge 模块容器的详细信息|发现模块出现问题时收集|```sudo iotedge logs [container name]```|
 |网络日志 - 一组涵盖 Wi-Fi 服务和网络堆栈的日志。|在发现 Wi-Fi 或网络问题时收集。|```sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd > network_log.txt```<br><br>```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version && rpm -q ztpd > system_ver.txt```<br><br>同时运行这两个命令。 每个命令收集多个日志，并将这些日志置于单个输出中。|
+
+> [!WARNING]
+> `support-bundle` 命令的输出可能包含主机、设备和模块名称、模块记录的信息，等等。如果在公共论坛中共享输出，请注意这一点。
 
 ## <a name="troubleshooting-commands"></a>命令疑难解答
 下面是一组命令，可用于排查开发工具包中可能发现的问题。 若要运行这些命令，必须先[通过 SSH](./how-to-ssh-into-percept-dk.md) 连接到开发工具包。 

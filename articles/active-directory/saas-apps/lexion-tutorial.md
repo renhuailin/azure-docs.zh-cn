@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 313e3d5fda0814b51ca046b9f04ee9752cb416ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40c01f2a1313d3cc3e8b9400b353ed6ef9ab8399
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180769"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822025"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lexion"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Lexion 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "96180769"
 * 使用户能够使用其 Azure AD 帐户自动登录到 Lexion。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -78,7 +78,7 @@ ms.locfileid: "96180769"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.lexion.ai/login`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://app.lexion.ai/login`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [ 客户端支持团队](mailto:support@lexion.ai)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -149,7 +149,7 @@ ms.locfileid: "96180769"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Lexion 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Lexion 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Lexion。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Lexion 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 Lexion。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
 
 ## <a name="next-steps"></a>后续步骤
 

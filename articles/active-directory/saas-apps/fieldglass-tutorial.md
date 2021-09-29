@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2021
 ms.author: jeedes
-ms.openlocfilehash: cb95fbf4c2ff7430249743702c930e065dcf5125
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 9b319b3126048919b31a952edcddac1e3201bd39
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895995"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>教程：Azure Active Directory 与 Fieldglass 的集成
 
@@ -81,8 +81,8 @@ ms.locfileid: "111895995"
     
    | 回复 URL |
    |-----------|
-   | https://www.fieldglass.net/<company name> |
-   | https://<company name>.fgvms.com/<company name> |
+   | `https://www.fieldglass.net/<company name>` |
+   | `https://<company name>.fgvms.com/<company name>` |
    | 
 
     > [!NOTE]
@@ -134,7 +134,7 @@ ms.locfileid: "111895995"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 Fieldglass。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Fieldglass”磁贴时，应会自动登录到为其设置了 SSO 的 Fieldglass。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Fieldglass”磁贴时，应会自动登录到为其设置了 SSO 的 Fieldglass。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 22c9163b0b8e809fba3c870393c03dd7c0d3c194
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: c229bd53dffa079b32d41f52b8450616e55498fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433753"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665580"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>创建不具有公共 IP 地址的 Azure Batch 池
 
@@ -33,9 +33,14 @@ ms.locfileid: "113433753"
 - **身份验证**。 要在[虚拟网络](./batch-virtual-network.md)中使用没有公共 IP 地址的池，则批处理客户端 API 必须使用 Azure Active Directory (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 如果不是在虚拟网络中创建池，则可以使用 Azure AD 身份验证，也可以使用基于密钥的身份验证。
 
 - **一个 Azure VNet**。 如果要在[虚拟网络](batch-virtual-network.md)中创建池，请遵循以下要求和配置。 若要提前准备具有一个或多个子网的 VNet，可以使用 Azure 门户、Azure PowerShell、Azure 命令行接口 (CLI) 或其他方法。
+
   - VNet 必须与用于创建池的 Batch 帐户位于同一订阅和区域中。
+
   - 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。
-  - 必须禁用专用链接服务和终结点网络策略。 这可以使用 Azure CLI 完成：```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resource-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+
+  - 必须禁用专用链接服务和终结点网络策略。 这可以使用 Azure CLI 完成：
+
+    `az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resource-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies`
 
 > [!IMPORTANT]
 > 对于每 100 个专用或低优先级节点，Batch 会分配一个专用链路服务和一个负载平衡器。 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 对于大型池，可能需要为一个或多个此类资源[请求增加配额](batch-quota-limit.md#increase-a-quota)。 此外，不得将资源锁应用于由 Batch 创建的任何资源，因为这可能会由于用户启动的操作（如删除池或者将池大小调整为零）而导致资源清理被阻止。

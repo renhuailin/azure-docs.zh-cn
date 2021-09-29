@@ -2,13 +2,13 @@
 title: Azure 服务总线的网络安全性
 description: 本文介绍网络安全功能，如服务标记、IP 防火墙规则、服务终结点和专用终结点。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: db09ca367d228100eb344c63cca31047fd5e3624
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92310460"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575946"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure 服务总线的网络安全性 
 本文介绍如何在 Azure 服务总线中使用以下安全功能： 

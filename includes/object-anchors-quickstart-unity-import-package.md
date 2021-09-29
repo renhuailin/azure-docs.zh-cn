@@ -4,12 +4,12 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 11/19/2020
 ms.author: crtreasu
-ms.openlocfilehash: c740fa294fe2b3de9687a76b90d90a021d4efdbc
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: a7c50ad6b60e3f3c372d16ecde54573109c50df2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104776"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796968"
 ---
 # <a name="web-download"></a>[Web 下载](#tab/unity-package-web-ui)
 
@@ -24,7 +24,7 @@ ms.locfileid: "105104776"
 此步骤要求<a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>已下载并且可用。
 
 > [!NOTE]
-> <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>目前仅支持 Windows。
+> <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>目前仅支持 Windows。
 
 1. 按照<a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>文档来设置工具，并了解如何使用该工具。
 2. 将“Microsoft Azure Object Anchors”功能包安装到 Unity 项目文件夹中。

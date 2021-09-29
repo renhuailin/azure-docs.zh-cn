@@ -5,12 +5,12 @@ author: yossiy
 ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: yossiy
-ms.openlocfilehash: 8d8a12fe1fcc53b5e268ca412f3e0320cf8d95d9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: cecfa72493545f40c2e7326fece88cb85f99974b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427239"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565406"
 ---
 # <a name="move-a-log-analytics-workspace-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Log Analytics 工作区移到另一个区域
 
@@ -25,7 +25,7 @@ Log Analytics 工作区不能从一个区域移到另一个区域。 但是，�
 - 若要将工作区配置导出到某个可部署到另一个区域的模板，你需要具有 [Log Analytics 参与者](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)或[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)角色或权限更高的角色。
 
 - 查明当前关联到你的工作区的所有资源，包括：
-  - 连接的代理：进入工作区中的“日志”，查询 [heartbeat](../insights/solution-agenthealth.md#heartbeat-records) 表以列出连接的代理。
+  - 连接的代理：进入工作区中的“日志”，查询 [heartbeat](../insights/solution-agenthealth.md#azure-monitor-log-records) 表以列出连接的代理。
     ```kusto
     Heartbeat
     | summarize by Computer, Category, OSType, _ResourceId

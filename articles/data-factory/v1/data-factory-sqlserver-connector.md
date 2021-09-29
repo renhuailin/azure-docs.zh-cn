@@ -4,15 +4,16 @@ description: 了解如何使用 Azure 数据工厂将数据移入/移出本地�
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
-ms.openlocfilehash: 103a3bad91018a2a7b91cbc6a7839e8be56489ba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aaafc0cf6134aa701ef30953460f55fc77fed27a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741396"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661785"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入/移出 SQL Server
 
@@ -51,7 +52,7 @@ ms.locfileid: "108741396"
 
 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -539,12 +540,12 @@ ms.locfileid: "108741396"
 ## <a name="troubleshooting-connection-issues"></a>连接问题故障排除
 1. 将 SQL Server 配置为接受远程连接。 启动 SQL Server Management Studio，右键单击“服务器”，并单击“属性”。 从列表选择“连接”，并选中“允许远程连接到此服务器”。
 
-    ![启用远程连接](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
+    :::image type="content" source="./media/data-factory-sqlserver-connector/AllowRemoteConnections.png" alt-text="启用远程连接":::
 
     有关详细步骤，请参阅[配置远程访问服务器配置选项](/sql/database-engine/configure-windows/configure-the-remote-access-server-configuration-option)。
 2. 启动“SQL Server 配置管理器”。 针对所需实例展开“SQL Server 网络配置”，并选择“MSSQLSERVER 的协议” 。 应会在右侧窗格中看到协议。 右键单击“TCP/IP”，并单击“启用”，可启用 TCP/IP。
 
-    ![启用 TCP/IP](./media/data-factory-sqlserver-connector/EnableTCPProptocol.png)
+    :::image type="content" source="./media/data-factory-sqlserver-connector/EnableTCPProptocol.png" alt-text="启用 TCP/IP":::
 
     有关详细信息和启用 TCP/IP 协议的其他方法，请参阅[启用或禁用服务器网络协议](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol)。
 3. 在同一窗口中，双击“TCP/IP”以启动“TCP/IP 属性”窗口。
@@ -653,7 +654,7 @@ create table dbo.TargetTbl
 | bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
-| Datetime |DateTime |
+| datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | 小数 |小数 |

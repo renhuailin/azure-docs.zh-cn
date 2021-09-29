@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2021
 ms.author: yelevin
-ms.openlocfilehash: b68d2a8219e7aa23aac3187333160dfd4276e7b8
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 090e82a3efd27629633772b0549ee6d2452e159d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182174"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818936"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的高级多阶段攻击检测
 
@@ -746,9 +746,9 @@ MITRE ATT&CK 方法：有效帐户 (T1078)、加密数据以造成影响 (T1486)
 Azure Sentinel 从以下数据源检测到多个不同类型的警报，并且这些警报可能与勒索软件活动相关时，则会生成事件：
 
 - [Azure Defender（Azure 安全中心）](connect-azure-security-center.md)
-- [用于终结点的 Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md)
-- [Microsoft Defender for Identity](connect-azure-atp.md)
-- [Microsoft Cloud App Security](connect-cloud-app-security.md)
+- [用于终结点的 Microsoft Defender](./data-connectors-reference.md#microsoft-defender-for-endpoint)
+- [Microsoft Defender for Identity](./data-connectors-reference.md#microsoft-defender-for-identity)
+- [Microsoft Cloud App Security](./data-connectors-reference.md#microsoft-cloud-app-security-mcas)
 - [Azure Sentinel 计划分析规则](detect-threats-built-in.md#scheduled)。 Fusion 仅考虑包含策略信息的计划分析规则。
 
 此类 Fusion 事件命名为“多个警报可能与检测到的勒索软件活动相关”，这些事件在特定时间范围内检测到相关警报时生成，并与攻击的“执行”和“防御规避”阶段相关联。

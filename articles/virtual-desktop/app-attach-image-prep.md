@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b3e33fecc1df930cf4fb01808b2a8400a210fce8
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: e804168d56092b6e5451aa26c7a2106b96672865
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707158"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587340"
 ---
 # <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>为 Azure 虚拟桌面准备 MSIX 映像
 
@@ -86,7 +86,7 @@ MSIX 包需要采用 VHD 或 VHDX 格式才能正常工作。 这意味着，需
 
     在解压缩完成后，应显示以下消息：
 
-    > 已成功为包 (<package name>.msix) 解压缩并应用 ACL
+    > 已成功为包 (\<package name\>.msix) 解压缩并应用 ACL
 
     >[!NOTE]
     > 如果你在自己的网络上或未连接到 Internet 的设备上使用企业/教育 Microsoft Store 中的包，则需要从 Microsoft Store 下载并安装包许可证才能运行应用。 若要获取许可证，请参阅[脱机使用包](app-attach.md#use-packages-offline)。

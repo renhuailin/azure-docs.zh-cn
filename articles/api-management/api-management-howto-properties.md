@@ -3,17 +3,17 @@ title: 如何在 Azure API 管理策略中使用命名值
 description: 了解如何在 Azure API 管理策略中使用命名值。 命名值可以包含文本字符串、策略表达式和存储在 Azure Key Vault 中的机密。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: a970eb23c171522907b6066454d9ca15d85f0835
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.author: danlep
+ms.openlocfilehash: 65f45758ab00d9e549ac0e52287a198bf5734acd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812257"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671196"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>在 Azure API 管理策略中使用命名值
 

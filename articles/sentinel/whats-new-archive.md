@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: fa985160297cb2bf4efb86068f7db82dc14b7aec
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 07a0848de708f3d01cc081130a02ffa6e11f07db
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424719"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818893"
 ---
 # <a name="archive-for-whats-new-in-azure-sentinel"></a>Azure Sentinel 新增功能存档
 
@@ -132,9 +132,9 @@ Azure 防火墙的检测会持续添加到内置模板库。 若要获取最新�
 在策略可控制的资源属性中，涉及到诊断和审核日志的创建与处理。 Azure Sentinel 现在使用 Azure Policy，可将一组通用的诊断日志设置应用于特定类型的所有（当前和未来）资源，其中你希望将此类型的日志引入到 Azure Sentinel 中。 得益于 Azure Policy，你无需再逐个资源地设置诊断日志设置。
 
 基于 Azure Policy 的连接器现可用于以下 Azure 服务：
-- [Azure Key Vault](connect-azure-key-vault.md)（公共预览版）
-- [Azure Kubernetes 服务](connect-azure-kubernetes-service.md)（公共预览版）
-- [Azure SQL 数据库/服务器](connect-azure-sql-logs.md) (GA)
+- [Azure Key Vault](./data-connectors-reference.md#azure-key-vault)（公共预览版）
+- [Azure Kubernetes 服务](./data-connectors-reference.md#azure-kubernetes-service-aks)（公共预览版）
+- [Azure SQL 数据库/服务器](./data-connectors-reference.md#azure-sql-databases) (GA)
 
 客户仍然可为特定实例手动发送日志，不过无需使用策略引擎。
 
@@ -169,36 +169,36 @@ CMMC 工作簿使安全架构师、工程师、安全操作分析员、管理者
 
 我们的第三方集成集合不断扩大，最近 2 个月添加了 30 款连接器。 列表如下：
 
-- [Agari Phishing Defense 和 Agari Brand Protection](connect-agari-phishing-defense.md)
-- [Akamai 安全事件](connect-akamai-security-events.md)
-- [Alsid for Active Directory](connect-alsid-active-directory.md)
-- [Apache HTTP Server](connect-apache-http-server.md)
-- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [Agari Phishing Defense 和 Agari Brand Protection](./data-connectors-reference.md#agari-phishing-defense-and-brand-protection-preview)
+- [Akamai 安全事件](./data-connectors-reference.md#akamai-security-events-preview)
+- [Alsid for Active Directory](./data-connectors-reference.md#alsid-for-active-directory)
+- [Apache HTTP Server](./data-connectors-reference.md#apache-http-server)
+- [Aruba ClearPass](./data-connectors-reference.md#aruba-clearpass-preview)
 - [Blackberry CylancePROTECT](connect-data-sources.md)
-- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
+- [Broadcom Symantec DLP](./data-connectors-reference.md#broadcom-symantec-data-loss-prevention-dlp-preview)
 - [Cisco Firepower eStreamer](connect-data-sources.md)
-- [Cisco Meraki](connect-cisco-meraki.md)
-- [Cisco Umbrella](connect-cisco-umbrella.md)
-- [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
+- [Cisco Meraki](./data-connectors-reference.md#cisco-meraki-preview)
+- [Cisco Umbrella](./data-connectors-reference.md#cisco-umbrella-preview)
+- [Cisco Unified Computing System (UCS)](./data-connectors-reference.md#cisco-unified-computing-system-ucs-preview)
 - [ESET Enterprise Inspector](connect-data-sources.md)
 - [ESET Security Management Center](connect-data-sources.md)
-- [Google Workspace（之前称为 G Suite）](connect-google-workspace.md)
-- [Imperva WAF 网关](connect-imperva-waf-gateway.md)
-- [Juniper SRX](connect-juniper-srx.md)
+- [Google Workspace（之前称为 G Suite）](./data-connectors-reference.md#google-workspace-g-suite-preview)
+- [Imperva WAF 网关](./data-connectors-reference.md#imperva-waf-gateway-preview)
+- [Juniper SRX](./data-connectors-reference.md#juniper-srx-preview)
 - [Netskope](connect-data-sources.md)
-- [NXLog DNS 日志](connect-nxlog-dns.md)
-- [NXLog Linux 审核](connect-nxlog-linuxaudit.md)
+- [NXLog DNS 日志](./data-connectors-reference.md#nxlog-dns-logs-preview)
+- [NXLog Linux 审核](./data-connectors-reference.md#nxlog-linuxaudit-preview)
 - [Onapsis 平台](connect-data-sources.md)
-- [Proofpoint On Demand Email Security (POD)](connect-proofpoint-pod.md)
+- [Proofpoint On Demand Email Security (POD)](./data-connectors-reference.md#proofpoint-on-demand-pod-email-security-preview)
 - [Qualys 漏洞管理知识库](connect-data-sources.md)
-- [Salesforce 服务云](connect-salesforce-service-cloud.md)
+- [Salesforce 服务云](./data-connectors-reference.md#salesforce-service-cloud-preview)
 - [SonicWall 防火墙](connect-data-sources.md)
-- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
-- [Squid Proxy](connect-squid-proxy.md)
+- [Sophos Cloud Optix](./data-connectors-reference.md#sophos-cloud-optix-preview)
+- [Squid Proxy](./data-connectors-reference.md#squid-proxy-preview)
 - [Symantec Endpoint Protection](connect-data-sources.md)
-- [Thycotic Secret Server](connect-thycotic-secret-server.md)
+- [Thycotic Secret Server](./data-connectors-reference.md#thycotic-secret-server-preview)
 - [Trend Micro XDR](connect-data-sources.md)
-- [VMware ESXi](connect-vmware-esxi.md)
+- [VMware ESXi](./data-connectors-reference.md#vmware-esxi-preview)
 
 ### <a name="ueba-insights-in-the-entity-page-public-preview"></a>实体页中的 UEBA 见解（公共预览版）
 
@@ -264,13 +264,13 @@ Azure Sentinel 现提供 Azure SQL 数据库连接器，可将数据库的审核
 
 Azure SQL 是一个完全托管的平台即服务 (PaaS) 数据库引擎，可在没有用户参与的情况下处理大部分的数据库管理功能，例如升级、修补、备份和监视。
 
-有关详细信息，请参阅[连接 Azure SQL 数据库诊断和审核日志](connect-azure-sql-logs.md)。
+有关详细信息，请参阅[连接 Azure SQL 数据库诊断和审核日志](./data-connectors-reference.md#azure-sql-databases)。
 
 ### <a name="dynamics-365-connector-public-preview"></a>Dynamics 365 连接器（公共预览版）
 
 Azure Sentinel 现提供 Microsoft Dynamics 365 连接器，可将 Dynamics 365 应用程序的用户、管理员和支持活动日志收集到 Azure Sentinel 中。 你可使用此数据来帮助审核正在执行的所有数据处理操作，并分析其是否存在安全漏洞。
 
-有关详细信息，请参阅[将 Dynamics 365 活动日志连接到 Azure Sentinel](connect-dynamics-365.md)。
+有关详细信息，请参阅[将 Dynamics 365 活动日志连接到 Azure Sentinel](./data-connectors-reference.md#dynamics-365)。
 
 ### <a name="improved-incident-comments"></a>改进的事件注释
 
