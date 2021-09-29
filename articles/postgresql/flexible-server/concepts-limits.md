@@ -6,17 +6,16 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: e4e6af7e0fd475d60c38a021d2cefec4cbc39de3
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 54261049799cc02695d1162012cac9b7bff3558f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559240"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的限制
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL 灵活服务器以预览版提供
+
 
 下列各部分介绍数据库服务中的容量和功能限制。 如果想了解资源（计算、内存、存储）层，请参阅[计算和存储](concepts-compute-storage.md)一文。
 

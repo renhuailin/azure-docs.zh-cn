@@ -3,20 +3,20 @@ title: MLflow 和 Azure 机器学习
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 MLflow 和 Azure 机器学习记录 ML 模型的指标和项目，并将 ML 模型部署为 Web 服务。
 services: machine-learning
-author: shivp950
-ms.author: shipatel
+author: cjgronlund
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 05/25/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a4b9810764a0a2d8b421d17e546cd39e93cec582
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: a4ade0567f28cef23fe0752a1aa6ec018464ad01
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113034630"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792061"
 ---
 # <a name="mlflow-and-azure-machine-learning"></a>MLflow 和 Azure 机器学习
 
