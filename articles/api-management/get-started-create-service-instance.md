@@ -32,7 +32,7 @@ API 管理实例
 
 1. 在 Azure 门户菜单中，选择“创建资源”。 还可以在 Azure“主页”上选择“创建资源”。 
    
-   选择“创建资源”:::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="":::
+   选择“创建资源”:::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="-":::
 
    
 1. 在“新建”页上，选择“集成” > “API 管理”。
