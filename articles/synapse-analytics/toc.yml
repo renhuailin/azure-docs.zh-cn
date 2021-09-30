@@ -105,7 +105,7 @@ items:
           - name: 源代码管理
             href: ./cicd/source-control.md
           - name: 持续集成和交付
-            href: ./cicd/continuous-integration-deployment.md
+            href: ./cicd/continuous-integration-delivery.md
           - name: 安全性
             items:
               - name: 安全基线
@@ -279,7 +279,7 @@ items:
             items:
               - name: 概述
                 href: ./sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context
-              - name: 最佳实践
+              - name: 最佳做法
                 href: sql/data-loading-best-practices.md
               - name: 列存储压缩
                 href: sql/data-load-columnstore-compression.md
@@ -766,7 +766,18 @@ items:
               - name: 数据流监视
                 href: ../data-factory/concepts-data-flow-monitoring.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 数据流性能
-                href: ../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                items:
+                  - name: 概述
+                    href: ../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                    displayName: 'merge, timeout'
+                  - name: 优化源
+                    href: ../data-factory/concepts-data-flow-performance-sources.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: 优化接收器
+                    href: ../data-factory/concepts-data-flow-performance-sinks.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: 优化转换
+                    href: ../data-factory/concepts-data-flow-performance-transformations.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: 在管道中使用数据流
+                    href: ../data-factory/concepts-data-flow-performance-pipelines.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Integration Runtime 性能
                 href: ../data-factory/concepts-integration-runtime-performance.md?context=/azure/synapse-analytics/context/context
               - name: 管理图

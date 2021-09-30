@@ -8,46 +8,58 @@ metadata:
   ms.topic: landing-page
   author: robinsh
   ms.author: robinsh
-  manager: eliotgra
-  ms.date: 03/23/2020
-  ms.custom: amqp
-  ms.openlocfilehash: 5c4b17d0e725200250b6a01212edb374d3e21ff9
-  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+  ms.date: 08/11/2021
+  ms.openlocfilehash: 09cd4751e19d9fff925b8cfbe0749180538cf3cd
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/28/2021
-  ms.locfileid: "114731749"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129215180"
 landingContent:
+- title: 了解 IoT 中心
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 IoT 中心？
+      url: about-iot-hub.md
+    - text: IoT 中的重要概念
+      url: iot-concepts.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 使用 Azure 门户创建中心
+    - text: 创建新的中心
       url: iot-hub-create-through-portal.md
-    - text: 使用 CLI 将遥测数据从设备发送到中心
+    - text: 将遥测数据发送到中心
       url: quickstart-send-telemetry-cli.md
-    - text: 控制连接到中心的设备
+    - text: 控制设备
       url: quickstart-control-device.md
   - linkListType: get-started
     links:
-    - text: 设备管理
-      url: iot-hub-node-node-device-management-get-started.md
-    - text: 配置设备
-      url: iot-hub-configuration-best-practices.md
-- title: 同步设备状态
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 通过 Node.js 使用设备孪生
-      url: iot-hub-node-node-twin-getstarted.md
-- title: 缩放解决方案
+    - text: 路由遥测数据
+      url: tutorial-routing.md
+- title: 生成解决方案
   linkLists:
   - linkListType: concept
     links:
-    - text: 选择正确的层
-      url: iot-hub-scaling.md
-    - text: 了解配额和限制
-      url: iot-hub-devguide-quotas-throttling.md
+    - text: 使用设备 SDK 配置设备
+      url: ../iot-develop/about-iot-sdks.md
+    - text: 使用服务 SDK 进行生成
+      url: iot-hub-devguide-sdks.md
+    - text: 使用 IoT Edge 在本地处理设备数据
+      url: ../iot-edge/about-iot-edge.md
+    - text: 通过 Azure 数字孪生为环境建模
+      url: ../digital-twins/overview.md
+    - text: 使用 IoT 中心设备预配服务自动预配设备
+      url: ../iot-dps/about-iot-dps.md
+    - text: 使用 IoT 设备管理大规模管理设备
+      url: iot-hub-automatic-device-management.md
+    - text: 使用 Device Update for IoT Hub 更新设备
+      url: ../iot-hub-device-update/understand-device-update.md
+    - text: 使用 Azure IoT 资源管理器与设备进行交互
+      url: ../iot-fundamentals/howto-use-iot-explorer.md
+    - text: 使用 Azure IoT Tools for VS Code 进行开发
+      url: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
 - title: 选择协议
   linkLists:
   - linkListType: concept
@@ -78,101 +90,15 @@ landingContent:
       url: tutorial-routing-config-message-routing-rm-template.md
     - text: 运行和查看路由结果
       url: tutorial-routing-view-message-routing-results.md
-- title: IoT 中心的设备更新（预览版）
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: IoT 中心的设备更新概述
-      url: ../iot-hub-device-update/understand-device-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: 导入更新
-      url: ../iot-hub-device-update/import-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: 创建更新组
-      url: ../iot-hub-device-update/create-update-group.md
-  - linkListType: how-to-guide
-    links:
-    - text: 部署更新
-      url: ../iot-hub-device-update/deploy-update.md
-- title: Azure Stack Hub 上的 IoT 中心（预览）
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 运算符概述
-      url: /azure-stack/operator/iot-hub-rp-overview
-    - text: 用户概述
-      url: /azure-stack/user/iot-hub-overview
-  - linkListType: how-to-guide
-    links:
-    - text: 安装先决条件
-      url: /azure-stack/operator/iot-hub-rp-prerequisites
-    - text: 如何在 Azure Stack Hub 上安装 IoT 中心
-      url: /azure-stack/operator/iot-hub-rp-install
-- title: 使用 IoT 中心工具
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 使用适用于 VS Code 的 IoT Tools
-      url: iot-hub-create-use-iot-toolkit.md
-    - text: IoT 资源管理器
-      url: ../iot-fundamentals/howto-use-iot-explorer.md
-- title: 对 IoT 中心进行监视和故障排除
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 监视 IoT 中心
-      url: monitor-iot-hub.md
-    - text: 监视 IoT 中心数据引用
-      url: monitor-iot-hub-reference.md
-    - text: 针对与 IoT 中心断开连接的情况进行监视、诊断和故障排除
-      url: iot-hub-troubleshoot-connectivity.md
-    - text: 使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
-      url: iot-hub-how-to-order-connection-state-events.md
-- title: 使用 IoT 安全证书
+- title: 性能和可伸缩性
   linkLists:
   - linkListType: concept
     links:
-    - text: 控制 IoT 中心的访问权限
-      url: iot-hub-devguide-security.md
-    - text: 使用 X.509 CA 证书进行设备身份验证
-      url: iot-hub-x509ca-overview.md
-    - text: 在 IoT 中心设置 X.509 安全性
-      url: ./tutorial-x509-scripts.md
-    - text: X.509 CA 证书安全性概念
-      url: iot-hub-x509ca-concept.md
-- title: 将 Azure CLI 用于 IoT 中心
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 创建 IoT 中心
-      url: iot-hub-create-using-cli.md
-    - text: 管理 IoT 设备
-      url: iot-hub-device-management-iot-extension-azure-cli-2-0.md
-    - text: 配置消息路由
-      url: tutorial-routing-config-message-routing-cli.md
-    - text: 配置文件上传
-      url: iot-hub-configure-file-upload-cli.md
-    - text: 发送遥测和监视
-      url: quickstart-send-telemetry-cli.md
-  - linkListType: reference
-    links:
-    - text: IoT 的 CLI 参考
-      url: /cli/azure/azure-cli-reference-for-IoT
-- title: 将 PowerShell 用于 IoT 中心
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 创建 IoT 中心
-      url: iot-hub-create-using-powershell.md
-    - text: 使用资源管理器模板创建 IoT 中心
-      url: iot-hub-rm-template-powershell.md
-    - text: 配置消息路由
-      url: tutorial-routing-config-message-routing-powershell.md
-    - text: 配置文件上传
-      url: iot-hub-configure-file-upload-powershell.md
-  - linkListType: reference
-    links:
-    - text: 适用于 IoT 的 PowerShell 参考
-      url: /powershell/module/az.iothub#iothub
+    - text: 选择正确的层
+      url: iot-hub-scaling.md
+    - text: 了解配额和限制
+      url: iot-hub-devguide-quotas-throttling.md
+    - text: 定价示例
+      url: iot-hub-devguide-pricing.md
+    - text: 高可用性和灾难恢复
+      url: iot-hub-ha-dr.md

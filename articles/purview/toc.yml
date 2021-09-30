@@ -10,28 +10,30 @@ items:
     items:
       - name: 创建 Purview 帐户
         items:
-          - name: 创建 Purview 帐户 - Azure 门户
+          - name: 创建 Purview 帐户 - 门户
             href: create-catalog-portal.md
-          - name: 创建 Purview 帐户 - Azure PowerShell
+          - name: 创建 Purview 帐户 - PowerShell
             href: create-catalog-powershell.md
           - name: 创建 Purview 帐户 - .NET SDK
             href: create-purview-dotnet.md
           - name: 创建 Purview 帐户 - Python
             href: create-purview-python.md
-      - name: 创建集合 - Azure Purview Studio
+      - name: 创建集合 - 门户
         href: quickstart-create-collection.md
   - name: 教程
     items:
-      - name: 大规模载入 Azure 数据源
+      - name: 大规模载入 Azure 源
         items:
-          - name: 大规模进行 Azure 数据源就绪情况检查
+          - name: 大规模检查 Azure 源就绪情况
             href: tutorial-data-sources-readiness.md
-          - name: 大规模进行 Azure Purview MSI 配置
+          - name: 大规模进行 Purview MSI 配置
             href: tutorial-msi-configuration.md
-      - name: 注册和扫描本地 SQL Server
+      - name: 加入本地 SQL Server
         href: tutorial-register-scan-on-premises-sql-server.md
-      - name: 如何使用 Purview 数据平面的 REST API
+      - name: 对 Purview 数据平面使用 REST API
         href: tutorial-using-rest-apis.md
+      - name: 使用 REST API 进行集合管理
+        href: tutorial-metadata-policy-collections-apis.md
   - name: 概念
     items:
       - name: 使用 Purview Studio
@@ -42,142 +44,122 @@ items:
             href: deployment-best-practices.md
           - name: 集合体系结构
             href: concept-best-practices-collections.md
-      - name: Azure Purview 限制
-        href: how-to-manage-quotas.md
-      - name: 扫描和引入
-        href: concept-scans-and-ingestion.md
-      - name: 弹性数据映射
-        href: concept-elastic-data-map.md
-      - name: 了解资源集
-        href: concept-resource-sets.md
-      - name: 数据世系
-        href: concept-data-lineage.md
-      - name: 支持的数据源和文件类型
-        href: sources-and-scans.md
-      - name: 目录权限
+      - name: Purview 权限
         href: catalog-permissions.md
-      - name: 目录搜索
-        href: concept-search.md
-      - name: 业务术语表
-        href: concept-business-glossary.md
+      - name: 数据映射
+        items:
+          - name: 弹性数据映射
+            href: concept-elastic-data-map.md
+          - name: 资源集
+            href: concept-resource-sets.md
+          - name: 扫描和引入
+            href: concept-scans-and-ingestion.md
+          - name: 数据世系
+            href: concept-data-lineage.md
+      - name: 数据目录
+        items:
+          - name: 目录搜索
+            href: concept-search.md
+          - name: 业务术语表
+            href: concept-business-glossary.md
+          - name: 资产规范化
+            href: concept-asset-normalization.md
       - name: 数据见解
         href: concept-insights.md
-      - name: 支持的浏览器
-        href: supported-browsers.md
-      - name: 资产规范化
-        href: concept-asset-normalization.md
-      - name: 常见问题
-        href: ./frequently-asked-questions.yml
       - name: 已升级 Purview 帐户
         href: concept-account-upgrade.md
   - name: 操作指南
     items:
       - name: 创建和管理集合
         href: how-to-create-and-manage-collections.md
-      - name: 注册和扫描
+      - name: 管理源
         items:
+          - name: 受支持的源
+            href: purview-connector-overview.md
+          - name: 管理数据源
+            href: manage-data-sources.md
           - name: 管理凭据
             href: manage-credentials.md
             displayName: Create and manage Credentials
+      - name: 源
+        items:
+          - name: Azure 多源
+            href: register-scan-azure-multiple-sources.md
+          - name: Azure Synapse Analytics 工作区
+            href: register-scan-synapse-workspace.md
+          - name: Azure Blob 存储
+            href: register-scan-azure-blob-storage-source.md
+            displayName: Register and scan Azure Blob Storage
+          - name: Azure 文件
+            href: register-scan-azure-files-storage-source.md
+            displayName: Register and scan Azure Files
+          - name: Azure Cosmos DB
+            href: register-scan-azure-cosmos-database.md
+            displayName: Register and scan Azure Cosmos DB
+          - name: Azure Database for MySQL
+            href: register-scan-azure-mysql-database.md
+            displayName: Register and scan an Azure database for MySQL
+          - name: Azure Database for PostgreSQL
+            href: register-scan-azure-postgresql.md
+            displayName: Register and scan an Azure database for PostgreSQL
+          - name: Azure 数据资源管理器
+            href: register-scan-azure-data-explorer.md
+            displayName: Register and scan Azure Data Explorer Kusto
+          - name: Azure Data Lake Storage Gen 1
+            href: register-scan-adls-gen1.md
+            displayName: Register and scan Azure Data Lake Storage Gen 1 ADLS
+          - name: Azure Data Lake Storage Gen 2
+            href: register-scan-adls-gen2.md
+            displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
+          - name: Azure SQL 数据库
+            href: register-scan-azure-sql-database.md
+            displayName: Register and scan Azure SQL DB
+          - name: Azure SQL 数据库托管实例
+            href: register-scan-azure-sql-database-managed-instance.md
+            displayName: Register and scan Azure SQL DB Managed Instance
+          - name: Azure 专用 SQL 池（以前称为 SQL DW）
+            href: register-scan-azure-synapse-analytics.md
+          - name: Cassandra
+            href: register-scan-cassandra-source.md
+          - name: Erwin
+            href: register-scan-erwin-source.md
+          - name: Google BigQuery
+            href: register-scan-google-bigquery-source.md
+          - name: Hive 元存储数据库
+            href: register-scan-hive-metastore-source.md
+          - name: Looker
+            href: register-scan-looker-source.md
+          - name: 本地 SQL Server
+            href: register-scan-on-premises-sql-server.md
+          - name: Oracle
+            href: register-scan-oracle-source.md
+          - name: Power BI 租户 - 门户
+            href: register-scan-power-bi-tenant.md
+          - name: SAP ECC
+            href: register-scan-sapecc-source.md
+          - name: SAP S/4HANA
+            href: register-scan-saps4hana-source.md
+          - name: Teradata
+            href: register-scan-teradata-source.md
+          - name: Amazon S3
+            href: register-scan-amazon-s3.md
+      - name: 扫描
+        items:
           - name: 创建扫描规则集
             href: create-a-scan-rule-set.md
+          - name: 资源集模式规则
+            href: how-to-resource-set-pattern-rules.md
           - name: 管理集成运行时
             href: manage-integration-runtimes.md
           - name: 排查连接问题
             href: troubleshoot-connections.md
-          - name: 资源集模式规则
-            href: how-to-resource-set-pattern-rules.md
-          - name: 源
-            items:
-              - name: 管理数据源
-                href: manage-data-sources.md
-              - name: Azure Purview 连接器
-                href: purview-connector-overview.md
-              - name: Azure 多源
-                href: register-scan-azure-multiple-sources.md
-              - name: Azure Synapse Analytics 工作区
-                href: register-scan-synapse-workspace.md
-              - name: Azure Blob 存储
-                href: register-scan-azure-blob-storage-source.md
-                displayName: Register and scan Azure Blob Storage
-              - name: Azure 文件
-                href: register-scan-azure-files-storage-source.md
-                displayName: Register and scan Azure Files
-              - name: Azure Cosmos DB
-                href: register-scan-azure-cosmos-database.md
-                displayName: Register and scan Azure Cosmos DB
-              - name: Azure Database for MySQL
-                href: register-scan-azure-mysql-database.md
-                displayName: Register and scan an Azure database for MySQL
-              - name: Azure Database for PostgreSQL
-                href: register-scan-azure-postgresql.md
-                displayName: Register and scan an Azure database for PostgreSQL
-              - name: Azure 数据资源管理器
-                href: register-scan-azure-data-explorer.md
-                displayName: Register and scan Azure Data Explorer Kusto
-              - name: Azure Data Lake Storage Gen 1
-                href: register-scan-adls-gen1.md
-                displayName: Register and scan Azure Data Lake Storage Gen 1 ADLS
-              - name: Azure Data Lake Storage Gen 2
-                href: register-scan-adls-gen2.md
-                displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL 数据库
-                href: register-scan-azure-sql-database.md
-                displayName: Register and scan Azure SQL DB
-              - name: Azure SQL 数据库托管实例
-                href: register-scan-azure-sql-database-managed-instance.md
-                displayName: Register and scan Azure SQL DB Managed Instance
-              - name: Azure 专用 SQL 池（以前称为 SQL DW）
-                href: register-scan-azure-synapse-analytics.md
-              - name: Cassandra
-                href: register-scan-cassandra-source.md
-              - name: Erwin
-                href: register-scan-erwin-source.md
-              - name: Google BigQuery
-                href: register-scan-google-bigquery-source.md
-              - name: Hive 元存储数据库
-                href: register-scan-hive-metastore-source.md
-              - name: Looker
-                href: register-scan-looker-source.md
-              - name: 本地 SQL Server
-                href: register-scan-on-premises-sql-server.md
-              - name: Oracle
-                href: register-scan-oracle-source.md
-              - name: Power BI 租户 - 门户
-                href: register-scan-power-bi-tenant.md
-              - name: SAP ECC
-                href: register-scan-sapecc-source.md
-              - name: SAP S/4HANA
-                href: register-scan-saps4hana-source.md
-              - name: Teradata
-                href: register-scan-teradata-source.md
-              - name: Amazon S3
-                href: register-scan-amazon-s3.md
-      - name: 业务术语表
-        items:
-          - name: 创建、导入和导出术语表术语
-            href: how-to-create-import-export-glossary.md
-          - name: 管理术语模板
-            href: how-to-manage-term-templates.md
-      - name: 批量编辑
-        items:
-          - name: 批量编辑资产以标记注释和联系人
-            href: how-to-bulk-edit-assets.md
-      - name: 分类
-        items:
-          - name: 创建自定义分类和分类规则
-            href: create-a-custom-classification-and-classification-rule.md
-          - name: 应用分类
-            href: apply-classifications.md
-          - name: 自动为内容添加标签
-            href: create-sensitivity-label.md
-      - name: 搜索与浏览
+      - name: 数据发现
         items:
           - name: 浏览数据目录
             href: how-to-browse-catalog.md
           - name: 搜索数据目录
             href: how-to-search-catalog.md
-          - name: 查看、编辑和删除目录资产
+          - name: 管理目录资产
             href: catalog-asset-details.md
       - name: 沿袭
         items:
@@ -211,10 +193,28 @@ items:
             href: how-to-lineage-sql-server-integration-services.md
           - name: Teradata 世系
             href: how-to-lineage-teradata.md
-      - name: 监视
+      - name: 业务术语表
         items:
-          - name: 使用 Azure Monitor 进行监视
-            href: how-to-monitor-with-azure-monitor.md
+          - name: 创建、导入和导出术语表术语
+            href: how-to-create-import-export-glossary.md
+          - name: 管理术语模板
+            href: how-to-manage-term-templates.md
+      - name: 批量编辑资产
+        href: how-to-bulk-edit-assets.md
+      - name: 分类
+        items:
+          - name: 创建自定义分类
+            href: create-a-custom-classification-and-classification-rule.md
+          - name: 应用分类
+            href: apply-classifications.md
+      - name: 标签
+        items:
+          - name: 在 Azure Purview 中标记
+            href: create-sensitivity-label.md
+          - name: 如何标记数据
+            href: how-to-automatically-label-your-content.md
+          - name: 敏感度标签常见问题解答
+            href: sensitivity-labels-frequently-asked-questions.yml
       - name: 洞察力
         items:
           - name: 查看资产见解
@@ -229,7 +229,7 @@ items:
             href: sensitivity-insights.md
           - name: 查看文件扩展见解
             href: file-extension-insights.md
-      - name: 网络和安全
+      - name: 网络和安全性
         items:
           - name: 专用终结点
             items:
@@ -251,22 +251,34 @@ items:
         href: manage-kafka-dotnet.md
       - name: 灾难恢复
         href: disaster-recovery.md
+      - name: 使用 Azure Monitor 进行监视
+        href: how-to-monitor-with-azure-monitor.md
   - name: 参考
     items:
+      - name: Azure Purview 产品词汇表
+        href: reference-purview-glossary.md
+      - name: 支持的浏览器
+        href: supported-browsers.md
+      - name: 支持的数据源和文件类型
+        href: sources-and-scans.md
+      - name: 支持的分类
+        href: supported-classifications.md
+      - name: Azure Purview 限制
+        href: how-to-manage-quotas.md
       - name: Java
         href: /samples/browse/?products=azure&languages=java&terms=purview
       - name: .NET
         href: /dotnet/api/overview/azure/purviewresourceprovider
+      - name: PowerShell
+        href: /powershell/module/az.purview/
       - name: Python
         href: /python/api/azure-mgmt-purview/
       - name: REST
         href: /rest/api/purview/
-      - name: 支持的分类
-        href: supported-classifications.md
-      - name: Azure Purview 产品词汇表
-        href: reference-purview-glossary.md
       - name: ABAP 函数部署指南
         href: abap-functions-deployment-guide.md
+      - name: 常见问题解答 (FAQ)
+        href: ./frequently-asked-questions.yml
   - name: 资源
     items:
       - name: 定价计算器

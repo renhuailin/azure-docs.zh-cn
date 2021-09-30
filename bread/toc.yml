@@ -255,9 +255,6 @@
         - name: Azure 数字孪生
           tocHref: /azure/digital-twins/
           topicHref: /azure/digital-twins/
-        - name: IoT 解决方案加速器
-          tocHref: /azure/iot-accelerators/
-          topicHref: /azure/iot-accelerators/
         - name: IoT 中心设备预配服务
           tocHref: /azure/iot-dps/
           topicHref: /azure/iot-dps/

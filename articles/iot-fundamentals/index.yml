@@ -107,7 +107,7 @@ conceptualContent:
         - url: ../iot-dps/quick-setup-auto-provision-cli.md
           itemType: quickstart
           text: 设置服务
-        - url: ../iot-dps/quick-create-simulated-device.md
+        - url: ../iot-dps/quick-create-simulated-device-tpm.md
           itemType: quickstart
           text: 预配 TPM 设备
       footerLink:
@@ -168,17 +168,6 @@ conceptualContent:
           text: 规划通往兴趣点的路线
       footerLink:
         url: ../azure-maps/index.yml
-        text: 查看详细信息
-    - title: 自定义预建的 IoT 解决方案
-      links:
-        - url: ../iot-accelerators/about-iot-accelerators.md
-          itemType: overview
-          text: Azure IoT 解决方案加速器是什么？
-        - url: ../iot-accelerators/quickstart-connected-factory-deploy.md
-          itemType: quickstart
-          text: 尝试连接工厂解决方案
-      footerLink:
-        url: ../iot-accelerators/index.yml
         text: 查看详细信息
 tools:
   title: Azure IoT SDK

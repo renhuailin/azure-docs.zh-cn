@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure NetApp 文件文档
-summary: 了解如何使用 Azure NetApp 文件来创建和管理 NetApp 帐户、容量池和卷，如何配置导出策略，如何为虚拟机装载卷，以及如何管理快照。
+summary: 了解如何使用 Azure NetApp 文件创建 NetApp 帐户、容量池和卷，以及如何管理数据保护。
 metadata:
   title: Azure NetApp 文件文档
   description: 了解如何使用 Azure NetApp 文件服务设置、访问和管理卷。
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: b-juche
   ms.author: b-juche
-  ms.date: 08/25/2020
-  ms.openlocfilehash: f44cd7bc6269a7efbaaaaf2788f660363bafcbac
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 09/27/2021
+  ms.openlocfilehash: 479f3bf51e45b03ea9026cb0b37eb01d91991dbd
+  ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91567836"
+  ms.lasthandoff: 09/28/2021
+  ms.locfileid: "129154216"
 landingContent:
 - title: 关于 Azure NetApp 文件
   linkLists:
@@ -42,8 +42,12 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 提交等待列表请求
-      url: azure-netapp-files-register.md#waitlist
+    - text: 注册 NetApp 资源提供程序
+      url: azure-netapp-files-register.md
+    - text: 创建 NetApp 帐户
+      url: azure-netapp-files-create-netapp-account.md
+    - text: 将子网委派给 Azure NetApp 文件
+      url: azure-netapp-files-delegate-subnet.md
   - linkListType: quickstart
     links:
     - text: 设置 Azure NetApp 文件并创建 NFS 卷
@@ -52,21 +56,23 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 创建 NetApp 帐户
-      url: azure-netapp-files-create-netapp-account.md
-    - text: 设置容量池
+    - text: 创建 Active Directory 连接
+      url: create-active-directory-connections.md
+    - text: 创建容量池
       url: azure-netapp-files-set-up-capacity-pool.md
-    - text: 将子网委派给 Azure NetApp 文件
-      url: azure-netapp-files-delegate-subnet.md
-    - text: 创建用于 Azure NetApp 文件的 SMB 卷
-      url: azure-netapp-files-create-volumes-smb.md
-    - text: 创建用于 Azure NetApp 文件的 NFS 卷
+    - text: 创建 NFS 卷
       url: azure-netapp-files-create-volumes.md
+    - text: 创建 SMB 卷
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: 创建双协议卷
+      url: create-volumes-dual-protocol.md
 - title: 开发
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: REST API
       url: azure-netapp-files-develop-with-rest-api.md
+    - text: 通过 PowerShell 使用 REST API
+      url: develop-rest-api-powershell.md
     - text: Azure NetApp 文件 SDK 和 CLI 工具
       url: azure-netapp-files-sdk-cli.md

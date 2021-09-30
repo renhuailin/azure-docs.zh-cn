@@ -202,6 +202,8 @@
               href: map-add-drawing-toolbar.md
             - name: 获取形状数据
               href: map-get-shape-data.md
+            - name: 添加对齐网格
+              href: map-add-snap-grid.md
             - name: 对绘图事件做出反应
               href: drawing-tools-events.md
             - name: 交互类型和键盘快捷键
@@ -394,10 +396,8 @@
           href: /microsoft-iot-central/
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT 解决方案加速器
-          href: ../iot-accelerators/index.yml
         - name: IoT 即插即用
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ./index.yml
         - name: 时序见解

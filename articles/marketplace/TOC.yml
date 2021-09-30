@@ -149,6 +149,8 @@
           href: azure-app-marketing.md
         - name: 按流量计费
           href: marketplace-metering-service-apis.md
+        - name: 配置基于使用情况的每月账单的价格
+          href: azure-vm-pricing.md
         - name: 处理评审反馈
           href: azure-app-review-feedback.md
         - name: 应用程序 API

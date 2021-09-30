@@ -177,8 +177,6 @@
           href: configure-language-ruby.md
         - name: 配置自定义容器
           href: configure-custom-container.md
-        - name: 连接到本地资源
-          href: web-sites-integrate-with-vnet.md
         - name: 配置 Azure 存储（容器）
           href: configure-connect-to-azure-storage.md
     - name: “部署到 Azure”

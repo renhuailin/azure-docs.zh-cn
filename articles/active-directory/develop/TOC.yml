@@ -263,9 +263,9 @@
                   href: scenario-desktop-acquire-token-interactive.md
                 - name: 与 WAM 交互
                   href: scenario-desktop-acquire-token-wam.md
-                - name: 集成的 Windows 身份验证
+                - name: Windows 集成身份验证
                   href: scenario-desktop-acquire-token-integrated-windows-authentication.md
-                - name: 用户名密码
+                - name: 用户名和密码
                   href: scenario-desktop-acquire-token-username-password.md
                 - name: 设备代码流
                   href: scenario-desktop-acquire-token-device-code-flow.md

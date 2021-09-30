@@ -125,7 +125,7 @@ additionalContent:
               text: 使用基于 Azure 存储资源管理器 GUI 的工具
         - title: 控制成本
           links:
-            - url: ./blobs/storage-blob-storage-tiers.md
+            - url: ./blobs/access-tiers-overview.md
               text: 以经济高效的方式对 Blob 数据进行分层（热、冷、存档）
         - title: 共享数据
           links:

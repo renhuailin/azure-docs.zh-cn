@@ -834,12 +834,6 @@ productDirectory:
       azureCategories:
         - iot
       url: iot-hub/index.yml
-    - title: Azure IoT 解决方案加速器
-      summary: 通过用于常见 IoT 方案的模板创建可完全自定义的解决方案
-      imageSrc: ./media/index/iot-solution-accelerators.svg
-      azureCategories:
-        - iot
-      url: iot-accelerators/index.yml
     - title: Azure Maps
       summary: 简单且安全的定位 API 为数据提供地理空间上下文
       imageSrc: 'https://static.docs.com/ui/media/product/azure/maps.svg'
@@ -1189,7 +1183,7 @@ productDirectory:
       imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-explorer.svg'
       azureCategories:
         - storage
-      url: storage/blobs/storage-blob-storage-tiers.md
+      url: storage/blobs/access-tiers-overview.md
     - title: Avere vFXT for Azure
       summary: 在云中运行基于文件的高性能工作负载
       imageSrc: ./media/index/avere.svg

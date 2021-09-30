@@ -44,8 +44,6 @@
                   href: authenticate-managed-identity.md
                 - name: 通过应用程序进行身份验证（预览）
                   href: authenticate-application.md
-        - name: 内置安全控件
-          href: /security/benchmark/azure/baselines/service-bus-messaging-security-baseline?toc=/azure/azure-relay/TOC.json
         - name: 网络安全
           href: network-security.md
     - name: 混合连接协议
