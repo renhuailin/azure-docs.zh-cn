@@ -723,6 +723,8 @@
                   href: index-policy.md
                 - name: 管理索引策略
                   href: sql/how-to-manage-indexing-policy.md
+                - name: 索引指标
+                  href: sql/index-metrics.md
             - name: .NET
               items:
                 - name: .NET SDK v3 性能提示

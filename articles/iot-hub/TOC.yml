@@ -66,71 +66,12 @@
           href: tutorial-x509-test-certificate.md
 - name: 概念
   items:
-    - name: TLS 支持
-      href: iot-hub-tls-support.md
-    - name: 虚拟网络支持
-      href: virtual-network-support.md
-    - name: 消息扩充概述
-      href: iot-hub-message-enrichments-overview.md
-    - name: 设备管理概述
-      href: iot-hub-device-management-overview.md
-    - name: 比较 IoT 中心与事件中心
-      href: iot-hub-compare-event-hubs.md
-    - name: 选择适当的层
-      href: iot-hub-scaling.md
-    - name: 高可用性和灾难恢复
-      href: iot-hub-ha-dr.md
-    - name: 如何将 IoT 中心克隆到另一个区域
-      href: iot-hub-how-to-clone.md
-    - name: 了解 IoT 中心 IP 地址
-      href: iot-hub-understand-ip-address.md
-    - name: 支持其他协议
-      href: iot-hub-protocol-gateway.md
-    - name: 比较消息和事件路由
-      href: iot-hub-event-grid-routing-comparison.md
-    - name: 设备配置最佳做法
-      href: iot-hub-configuration-best-practices.md
-    - name: IoT 中心设备流概述（预览版）
-      href: iot-hub-device-streams-overview.md
-    - name: 开发人员指南
-      href: iot-hub-devguide.md
+    - name: 开发
       items:
         - name: 设备到云的功能指南
           href: iot-hub-devguide-d2c-guidance.md
         - name: 云到设备的功能指南
           href: iot-hub-devguide-c2d-guidance.md
-        - name: 发送和接收消息
-          href: iot-hub-devguide-messaging.md
-          items:
-            - name: 创建和读取 IoT 中心消息
-              href: iot-hub-devguide-messages-construct.md
-            - name: 选择设备通信协议
-              href: iot-hub-devguide-protocols.md
-            - name: 通过内置终结点读取设备到云的消息
-              href: iot-hub-devguide-messages-read-builtin.md
-            - name: 使用消息路由功能发送设备到云的消息
-              href: iot-hub-devguide-messages-d2c.md
-              items:
-                - name: 对设备到云的消息使用自定义终结点和路由规则
-                  href: iot-hub-devguide-messages-read-custom.md
-                - name: 向消息路由添加查询
-                  href: iot-hub-devguide-routing-query-syntax.md
-            - name: 从 IoT 中心发送云到设备的消息
-              href: iot-hub-devguide-messages-c2d.md
-        - name: 通过事件网格来响应 IoT 中心事件
-          href: iot-hub-event-grid.md
-        - name: 从设备上传文件
-          href: iot-hub-devguide-file-upload.md
-        - name: 管理设备标识
-          href: iot-hub-devguide-identity-registry.md
-        - name: 控制 IoT 中心的访问权限
-          items:
-            - name: 概述
-              href: iot-hub-devguide-security.md
-            - name: 使用 Azure AD 控制访问
-              href: iot-hub-dev-guide-azure-ad-rbac.md
-            - name: 使用 SAS 控制访问
-              href: iot-hub-dev-guide-sas.md
         - name: 了解设备孪生
           href: iot-hub-devguide-device-twins.md
         - name: 了解模块孪生
@@ -145,16 +86,80 @@
           href: iot-hub-devguide-query-language.md
         - name: 配额和限制
           href: iot-hub-devguide-quotas-throttling.md
+        - name: 比较 IoT 中心与事件中心
+          href: iot-hub-compare-event-hubs.md
+        - name: 通过事件网格来响应 IoT 中心事件
+          href: iot-hub-event-grid.md
+        - name: 从设备上传文件
+          href: iot-hub-devguide-file-upload.md
+        - name: IoT 中心设备流概述（预览版）
+          href: iot-hub-device-streams-overview.md
+    - name: 管理
+      items:
+        - name: 选择合适的 IoT 中心层级
+          href: iot-hub-scaling.md
         - name: 定价示例
           href: iot-hub-devguide-pricing.md
-        - name: IoT 中心 SDK
-          items:
-            - name: SDK 概述
-              href: iot-hub-devguide-sdks.md
-            - name: 不使用 SDK 进行开发
-              href: iot-hub-devguide-no-sdk.md
-            - name: 管理连接和可靠的消息传送
-              href: iot-hub-reliability-features-in-sdks.md
+    - name: 消息传递
+      items:
+        - name: 发送和接收消息
+          href: iot-hub-devguide-messaging.md
+        - name: 创建和读取 IoT 中心消息
+          href: iot-hub-devguide-messages-construct.md
+        - name: 选择设备通信协议
+          href: iot-hub-devguide-protocols.md
+        - name: 通过内置终结点读取设备到云的消息
+          href: iot-hub-devguide-messages-read-builtin.md
+        - name: 消息扩充概述
+          href: iot-hub-message-enrichments-overview.md
+    - name: 消息路由
+      items:
+        - name: 使用消息路由功能发送设备到云的消息
+          href: iot-hub-devguide-messages-d2c.md
+        - name: 对设备到云的消息使用自定义终结点和路由规则
+          href: iot-hub-devguide-messages-read-custom.md
+        - name: 向消息路由添加查询
+          href: iot-hub-devguide-routing-query-syntax.md
+        - name: 从 IoT 中心发送云到设备的消息
+          href: iot-hub-devguide-messages-c2d.md
+        - name: 比较消息和事件路由
+          href: iot-hub-event-grid-routing-comparison.md
+    - name: 设备管理
+      items:
+        - name: 设备管理概述
+          href: iot-hub-device-management-overview.md
+        - name: 管理设备标识
+          href: iot-hub-devguide-identity-registry.md
+        - name: 设备配置最佳做法
+          href: iot-hub-configuration-best-practices.md
+    - name: 连接
+      items:
+        - name: 了解 IoT 中心 IP 地址
+          href: iot-hub-understand-ip-address.md
+    - name: 缩放和可用性
+      items:
+        - name: 高可用性和灾难恢复
+          href: iot-hub-ha-dr.md
+        - name: 如何将 IoT 中心克隆到另一个区域
+          href: iot-hub-how-to-clone.md
+    - name: 控制 IoT 中心的访问权限
+      items:
+        - name: 概述
+          href: iot-hub-devguide-security.md
+        - name: 使用 Azure AD 控制访问
+          href: iot-hub-dev-guide-azure-ad-rbac.md
+        - name: 使用 SAS 控制访问
+          href: iot-hub-dev-guide-sas.md
+    - name: IoT 中心 SDK
+      items:
+        - name: SDK 概述
+          href: iot-hub-devguide-sdks.md
+        - name: 不使用 SDK 进行开发
+          href: iot-hub-devguide-no-sdk.md
+        - name: 管理连接和可靠的消息传送
+          href: iot-hub-reliability-features-in-sdks.md
+    - name: 协议支持
+      items:
         - name: MQTT 支持
           href: iot-hub-mqtt-support.md
         - name: MQTT 5 支持（预览）
@@ -165,8 +170,14 @@
               href: iot-hub-mqtt-5-reference.md
         - name: AMQP 支持
           href: iot-hub-amqp-support.md
+        - name: 支持其他协议
+          href: iot-hub-protocol-gateway.md
     - name: 安全性
       items:
+        - name: TLS 支持
+          href: iot-hub-tls-support.md
+        - name: 虚拟网络支持
+          href: virtual-network-support.md
         - name: 安全基线
           href: /security/benchmark/azure/baselines/iot-hub-security-baseline?toc=/azure/iot-hub/TOC.json
         - name: 建议
@@ -182,12 +193,12 @@
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-    - name: 使用 X.509 CA 证书进行保护
-      items:
-        - name: X.509 CA 证书安全性概述
-          href: iot-hub-x509ca-overview.md
-        - name: X.509 CA 证书安全性概念
-          href: iot-hub-x509ca-concept.md
+        - name: 使用 X.509 CA 证书进行保护
+          items:
+            - name: X.509 CA 证书安全性概述
+              href: iot-hub-x509ca-overview.md
+            - name: X.509 CA 证书安全性概念
+              href: iot-hub-x509ca-concept.md
 - name: 操作指南
   items:
     - name: 开发
@@ -480,8 +491,6 @@
           href: ../iot-edge/index.yml
         - name: IoT 即插即用
           href: ../iot-develop/index.yml
-        - name: IoT 解决方案加速器
-          href: ../iot-accelerators/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: 时序见解

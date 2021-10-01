@@ -30,8 +30,6 @@
   items:
     - name: 自动化帐户身份验证概述
       href: automation-security-overview.md
-    - name: 自动化中的上下文切换
-      href: context-switching.md
     - name: Runbook 执行概述
       href: automation-runbook-execution.md
     - name: 混合 Runbook 辅助角色概述
@@ -63,6 +61,8 @@
           href: automation-create-standalone-account.md
         - name: 创建自动化帐户 - 资源管理器模板
           href: quickstart-create-automation-account-template.md
+        - name: 禁用本地身份验证
+          href: disable-local-authentication.md
         - name: 托管标识
           items:
             - name: 使用系统分配的托管标识
@@ -165,15 +165,19 @@
               href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: 使用混合 Runbook 辅助角色
           items:
-            - name: 部署 Windows 混合 Runbook 辅助角色
+            - name: 部署基于扩展的辅助角色
+              href: extension-based-hybrid-runbook-worker-install.md
+            - name: 部署基于代理的 Windows 辅助角色
               href: automation-windows-hrw-install.md
-            - name: 部署 Linux 混合 Runbook 辅助角色
+            - name: 部署基于代理的 Linux 辅助角色
               href: automation-linux-hrw-install.md
             - name: 在混合 Runbook 辅助角色中运行 Runbook
               href: automation-hrw-run-runbooks.md
             - name: 使用 Azure Policy 强制执行作业
               href: enforce-job-execution-hybrid-worker.md
-            - name: 排查混合 Runbook 辅助角色问题
+            - name: 排查基于扩展的辅助角色问题
+              href: troubleshoot/extension-based-hybrid-runbook-worker.md
+            - name: 排查基于代理的辅助角色问题
               href: troubleshoot/hybrid-runbook-worker.md
         - name: 使用源代码管理集成
           href: source-control-integration.md

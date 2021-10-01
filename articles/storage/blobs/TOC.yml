@@ -44,7 +44,7 @@ items:
                     href: storage-quickstart-blobs-python.md
                   - name: Python (v2.1 SDK)
                     href: storage-quickstart-blobs-python-legacy.md
-              - name: Javascript
+              - name: JavaScript
                 items:
                   - name: JavaScript（适用于 Node.js 的 v12 SDK）
                     href: storage-quickstart-blobs-nodejs.md
@@ -114,7 +114,7 @@ items:
             href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Python
             href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: Javascript
+          - name: JavaScript
             href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: C++
             href: ../common/storage-samples-c-plus-plus.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -129,7 +129,11 @@ items:
       - name: 概念
         items:
           - name: 存储帐户
-            href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            items:
+              - name: 概述
+                href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              - name: 性能层
+                href: storage-blob-performance-tiers.md
           - name: 授权
             items:
               - name: 授权数据操作
@@ -202,14 +206,12 @@ items:
                 href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: 用于灾难恢复的客户管理的故障转移
                 href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: 访问层和性能层
+          - name: Blob 访问层和生命周期管理
             items:
-              - name: 访问层级
-                href: storage-blob-storage-tiers.md
-              - name: 将存档层中的数据解除冻结
+              - name: 概述
+                href: access-tiers-overview.md
+              - name: 从存档层解除冻结 Blob
                 href: archive-rehydrate-overview.md
-              - name: 性能层
-                href: storage-blob-performance-tiers.md
               - name: 生命周期管理策略
                 href: lifecycle-management-overview.md
           - name: 对象复制
@@ -738,8 +740,6 @@ items:
             href: data-lake-storage-integrate-with-services-tutorials.md
       - name: 概念
         items:
-          - name: 处理大数据
-            href: data-lake-storage-data-scenarios.md
           - name: 最佳做法
             href: data-lake-storage-best-practices.md
           - name: 查询加速
@@ -876,8 +876,6 @@ items:
                 href: data-lake-storage-use-hdfs-data-lake-storage.md
           - name: 与 Azure 服务配合使用
             href: data-lake-storage-integrate-with-services-tutorials.md
-          - name: 优化性能
-            href: data-lake-storage-performance-tuning-guidance.md
       - name: 参考
         items:
           - name: .NET
@@ -886,7 +884,7 @@ items:
             href: 'https://docs.microsoft.com/java/api/overview/azure/storage-file-datalake-readme'
           - name: Python
             href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
-          - name: Javascript
+          - name: JavaScript
             href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
           - name: C++
             href: 'https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-datalake'

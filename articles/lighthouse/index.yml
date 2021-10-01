@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 07/07/2021
-  ms.openlocfilehash: a9bf1e20a15aff374ecffa084dd7224d476079f8
-  ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+  ms.date: 09/28/2021
+  ms.openlocfilehash: 382c085eadaf421b50420bec1aed8ac9ba68ec50
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114389093"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129207299"
 landingContent:
 - title: 关于 Azure Lighthouse
   linkLists:
@@ -115,8 +115,8 @@ landingContent:
   linkLists:
   - linkListType: download
     links:
-    - text: OpenAPI - 2019-06-01
-      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: OpenAPI - 2019-09-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-09-01
     - text: 用于 .NET 的 SDK - NuGet
       url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
     - text: 用于 Python 的 SDK - PyPi

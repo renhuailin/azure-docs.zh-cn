@@ -10,12 +10,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/03/2020
   ms.author: wesmc
-  ms.openlocfilehash: de21c27cd72802eea0a17d07b6abc5282f85561f
-  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+  ms.openlocfilehash: 68caff892694ace7c60519069012779364199608
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94967187"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129270441"
 landingContent:
 - title: 关于 Azure IoT 中心设备预配服务 (DPS)
   linkLists:
@@ -39,10 +39,8 @@ landingContent:
       url: quick-setup-auto-provision.md
   - linkListType: sample
     links:
-    - text: 使用 C 预配模拟对称密钥设备
+    - text: 预配模拟对称密钥设备
       url: quick-create-simulated-device-symm-key.md
-    - text: 使用 Java 预配模拟对称密钥设备
-      url: quick-create-simulated-device-symmetric-key-java.md
   - linkListType: how-to-guide
     links:
     - text: 如何预配多租户

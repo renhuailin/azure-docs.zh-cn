@@ -43,7 +43,7 @@ items:
                     href: hpc-cache-ingest-manual.md
           - name: 编辑存储目标
             href: hpc-cache-edit-storage.md
-          - name: 管理存储目标
+          - name: 查看和管理存储目标
             href: manage-storage-targets.md
       - name: 连接到缓存
         href: hpc-cache-mount.md
