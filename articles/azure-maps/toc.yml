@@ -11,6 +11,8 @@
       href: quick-demo-map-app.md
     - name: 创建 Android 应用
       href: quick-android-map.md
+    - name: 创建 iOS 应用
+      href: quick-ios-app.md
 - name: 教程
   items:
     - name: Web SDK 教程
