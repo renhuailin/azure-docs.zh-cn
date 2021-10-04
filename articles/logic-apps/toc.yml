@@ -211,12 +211,8 @@
           items:
             - name: 交换 EDIFACT 消息
               href: logic-apps-enterprise-integration-edifact.md
-            - name: EDIFACT 编码
-              href: logic-apps-enterprise-integration-edifact-encode.md
-            - name: EDIFACT 解码
-              href: logic-apps-enterprise-integration-edifact-decode.md
-            - name: 处理包含 UNH2.5 段的 EDIFACT 文件
-              href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
+            - name: EDIFACT 消息设置
+              href: logic-apps-enterprise-integration-edifact-message-settings.md
             - name: EDIFACT CONTRL 确认和错误代码
               href: logic-apps-enterprise-integration-edifact-contrl-acknowledgment.md
         - name: RosettaNet 消息传送

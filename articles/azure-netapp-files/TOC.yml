@@ -99,7 +99,7 @@
   items:
     - name: 注册和设置
       items:
-        - name: 注册 Azure NetApp 文件
+        - name: 注册 NetApp 资源提供程序
           href: azure-netapp-files-register.md
         - name: 创建 NetApp 帐户
           href: azure-netapp-files-create-netapp-account.md

@@ -189,8 +189,6 @@ items:
                 href: monitoring-log-analytics-azure-portal-managed-instance.md
               - name: 高可用性
                 href: managed-instance-high-availability.md
-              - name: 时间点还原
-                href: point-in-time-restore.md
               - name: 删除
                 href: delete-managed-instance.md
           - name: Migrate
@@ -199,6 +197,10 @@ items:
                 href: migrate-to-managed-instance.md
               - name: 还原 AdventureWorks
                 href: restore-adventureworks-sample-db.md
+          - name: 配置业务连续性
+            items:
+              - name: 时间点还原
+                href: point-in-time-restore.md
   - name: 参考
     items:
       - name: 发行版本日志
