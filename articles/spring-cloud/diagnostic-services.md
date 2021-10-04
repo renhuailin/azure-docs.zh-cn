@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: e2d903f781e86670139347930289599bec6ee7e7
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 8a462809ca7be524e0e5149808bdcbe28f49dd77
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015552"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649031"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -35,6 +35,7 @@ ms.locfileid: "122015552"
 |----|----|
 | **ApplicationConsole** | 所有客户应用程序的控制台日志。 |
 | **SystemLogs** | 当前，只有 [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) 记录在此类别中。 |
+| IngressLogs | 客户的所有应用程序的[入口日志](#show-ingress-log-entries-containing-a-specific-host)（仅访问日志）。 |
 
 ## <a name="metrics"></a>指标
 
@@ -56,7 +57,7 @@ ms.locfileid: "122015552"
 
 > [!NOTE]
 > 1. 发出日志或指标后，可能需要最多 15 分钟它们才会显示在存储帐户、事件中心或 Log Analytics 中。
-> 1. 如果删除或移动了 Azure Spring Cloud 实例，则该操作将不会级联到诊断设置资源。 必须先手动删除“诊断设置”资源，然后才能对其父级（即 Azure Spring Cloud 实例）进行操作。 否则，如果为新的 Azure Spring Cloud 实例预配了与已删除实例相同的资源 ID，或者将 Azure Spring Cloud 实例移回，则先前的诊断设置资源将继续对其进行扩展。
+> 1. 如果删除或移动了 Azure Spring Cloud 实例，则该操作将不会级联到诊断设置资源。 必须先手动删除诊断设置资源，才能对其父级（Azure Spring Cloud 实例）进行操作。 否则，如果为新的 Azure Spring Cloud 实例预配了与已删除实例相同的资源 ID，或者将 Azure Spring Cloud 实例移回，则先前的诊断设置资源将继续对其进行扩展。
 
 ## <a name="view-the-logs-and-metrics"></a>查看日志和指标
 
@@ -179,13 +180,37 @@ AppPlatformLogsforSpring
 | render piechart
 ```
 
+### <a name="show-ingress-log-entries-containing-a-specific-host"></a>显示包含特定主机的入口日志条目
+
+若要查看特定主机生成的日志条目，请运行以下查询：
+
+```sql
+AppPlatformIngressLogs
+| where TimeGenerated > ago(1h) and Host == "ingress-asc.test.azuremicroservices.io" 
+| project TimeGenerated, RemoteIP, Host, Request, Status, BodyBytesSent, RequestTime, ReqId, RequestHeaders
+| sort by TimeGenerated
+```
+
+使用此查询可查找此特定主机的入口日志的响应 `Status`、`RequestTime` 和其他属性。 
+
+### <a name="show-ingress-log-entries-for-a-specific-requestid"></a>显示特定 requestId 的入口日志条目
+
+若要查看特定 `requestId` 值 \<request_ID> 的日志条目，请运行以下查询：
+
+```sql
+AppPlatformIngressLogs
+| where TimeGenerated > ago(1h) and ReqId == "<request_ID>" 
+| project TimeGenerated, RemoteIP, Host, Request, Status, BodyBytesSent, RequestTime, ReqId, RequestHeaders
+| sort by TimeGenerated
+```
+
 ### <a name="learn-more-about-querying-application-logs"></a>详细了解查询应用程序日志
 
 Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供了广泛的支持。 若要了解有关此服务的详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)。 若要详细了解如何生成查询以分析应用程序日志，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/logs/log-query-overview.md)。
 
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
-### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>如何将多行 Java 堆栈跟踪转换为单行 Java 堆栈跟踪？
+### <a name="how-do-i-convert-multi-line-java-stack-traces-into-a-single-line"></a>如何将多行 Java 堆栈跟踪转换为单行 Java 堆栈跟踪？
 
 有一种变通方法可以将多行堆栈跟踪转换为单行堆栈跟踪。 可以修改 Java 日志输出，重新设置堆栈跟踪消息格式，从而将换行符替换为标记。 如果使用 Java Logback 库，可以通过添加 `%replace(%ex){'[\r\n]+', '\\n'}%nopex` 来重新设置堆栈跟踪消息格式，如下所示：
 
@@ -204,7 +229,7 @@ Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供了广
 </configuration>
 ```
 
-然后可以在 Log Analytics 中再次将换行符替换为标记，如下所示：
+然后可以在 Log Analytics 中将标记替换为换行符，如下所示：
 
 ```sql
 AppPlatformLogsforSpring

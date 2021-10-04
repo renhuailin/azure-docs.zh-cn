@@ -1,18 +1,18 @@
 ---
 title: 如何扫描专用 SQL 池
-description: 本操作方法指南介绍了关于如何扫描专用 SQL 池的详细信息。
+description: 此操作指南详细介绍如何在 Azure Purview 中扫描专用 SQL 池。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 09dc3c20ca95f32ee4c8f01d6b4986adfcd3703e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 26d4327c5763a1296cd492730004b80947269afa
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751916"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218330"
 ---
 # <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>注册并扫描专用 SQL 池（以前称为 SQL DW）
 
@@ -141,7 +141,7 @@ GO
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择已注册的 SQL 专用池源。
 

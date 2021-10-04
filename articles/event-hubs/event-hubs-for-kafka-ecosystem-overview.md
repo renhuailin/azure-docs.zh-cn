@@ -3,12 +3,12 @@ title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Micro
 description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 ms.topic: article
 ms.date: 08/30/2021
-ms.openlocfilehash: f0ea6469d17248a0d37a7ababf767d494545fbbb
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 93bf2af561fda849766c1eccdf351917be14f2e3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123250651"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678338"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供与 Apache Kafka® 生成者和使用者 API 兼容的终结点，大多数现有 Apache Kafka 客户端应用程序可以使用这些 API 作为运行你自己的 Apache Kafka 群集的替代方法。 事件中心 1.0 及更高版本支持 Apache Kafka 的生成者和使用者 API 客户端。
@@ -93,7 +93,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 ## <a name="other-event-hubs-features"></a>其他事件中心功能 
 
-适用于 Apache Kafka 的事件中心功能是在 Azure 事件中心并发提供的三个协议之一，用于补充 HTTP 和 AMQP。 你可以使用这些协议中的任何一种进行写入，也可以使用任何一种进行读取，以便你当前的 Apache Kafka 生成者可以继续通过 Apache Kafka 进行发布，但是你的读取者可以受益于与事件中心的 AMQP 接口的原生集成，例如 Azure 流分析或 Azure Functions。 反过来，你可以轻松地将 Azure 事件中心作为目标终结点集成到 AMQP 路由网络中，但仍通过 Apache Kafka 集成读取数据。  
+适用于 Apache Kafka 的事件中心功能是在 Azure 事件中心并发提供的三个协议之一，用于补充 HTTP 和 AMQP。 你可以使用这些协议中的任何一种进行写入，也可以使用任何一种进行读取，以便你当前的 Apache Kafka 生成者可以继续通过 Apache Kafka 进行发布，但是你的读取者可以受益于与事件中心的 AMQP 接口的原生集成，例如 Azure 流分析或 Azure Functions。 反之，你可以轻松地将 Azure 事件中心作为目标终结点集成到 AMQP 路由网络中，但仍通过 Apache Kafka 集成读取数据。  
 
 此外，事件中心功能（例如[捕获](event-hubs-capture-overview.md)）可通过 Azure Blob 存储和 Azure Data Lake Storage 实现极具成本效益的长期存档，并且[异地灾难恢复](event-hubs-geo-dr.md)也与适用于 Kafka 的事件中心功能一起使用。
 

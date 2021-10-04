@@ -1,14 +1,14 @@
 ---
-title: 排查 VM 和环境故障 - Azure 开发测试实验室
+title: 排查 VM 和环境故障
 description: 了解如何在 Azure 开发测试实验室中排查虚拟机 (VM) 和环境创建失败问题。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0765254110302c6306cd37b9d55b8465510a586
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85476472"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561270"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中排查虚拟机 (VM) 和环境创建失败问题
 如果计算机名称无效或者你会违反实验室策略，则开发测试实验室会发出警告。 有时，实验室 VM 或环境状态旁边会显示红色 `X`，告知你出现错误。  本文提供了一些技巧，可用于查找基本问题，并可能有助于你在将来避免此问题。

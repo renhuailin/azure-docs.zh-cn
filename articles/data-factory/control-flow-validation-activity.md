@@ -1,7 +1,7 @@
 ---
-title: Azure 数据工厂中的 Validation 活动
+title: 验证活动
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Validation 活动在使用用户指定的某些条件验证附加的数据集之前，不会继续执行管道。
+description: Azure 数据工厂和 Synapse Analytics 中的验证活动会延迟管道的执行，直到使用用户定义的条件验证数据集为止。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.openlocfilehash: 9b4c2802808defd5a252a21f17fde9a769a08fad
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: fa98ef27b5dbcc7949f37bf548c414d015224e4c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637759"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750624"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Validation 活动
+# <a name="validation-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Azure 数据工厂和 Synapse Analytics 管道中的验证活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 可以在管道中使用 Validation，以确保管道仅在验证附加数据集引用存在并满足指定条件或已达到超时后才继续执行。
@@ -71,7 +71,7 @@ minimumSize | 文件的最小大小（以字节为单位）。 如果未指定�
 
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动：
+参阅支持的其他控制流活动：
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)

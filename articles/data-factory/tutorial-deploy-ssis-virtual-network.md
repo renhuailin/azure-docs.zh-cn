@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 3b303802d4186f8a7fe42f30f014dc4d06e73146
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 35094effcef3ff773b708e65f234ee1409a8970a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638010"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798230"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>配置 Azure SQL Server Integration Services (SSIS) 集成运行时 (IR) 以加入虚拟网络
 
@@ -92,7 +92,7 @@ ms.locfileid: "122638010"
 
    1. 在左侧选择“资源提供程序”，确认 **Microsoft.Batch** 是注册的提供程序。
 
-   ![确认“已注册”状态](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png" alt-text="确认“已注册”状态":::&quot;&quot;
 
    如果列表中未出现 **Microsoft.Batch**，若要注册该提供程序，请在订阅中 [创建一个空的 Azure Batch 帐户](../batch/batch-account-create-portal.md)。 稍后可以删除该帐户。
 
@@ -104,23 +104,23 @@ ms.locfileid: "122638010"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“数据工厂”。 如果菜单中未显示“数据工厂”，请选择“更多服务”，然后在“智能 + 分析”部分选择“数据工厂”。   
 
-   ![数据工厂列表](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png" alt-text="数据工厂列表":::
 
 1. 在列表中选择包含 Azure-SSIS IR 的数据工厂。 随后会显示该数据工厂的主页。 选择“创作和监视”磁贴。 单独的选项卡中会显示数据工厂 UI。
 
-   ![数据工厂主页](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png" alt-text="数据工厂主页":::
 
 1. 在数据工厂 UI 中切换到“编辑”选项卡，选择“连接”，然后切换到“集成运行时”选项卡。  
 
-   ![“集成运行时”选项卡](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png" alt-text="“集成运行时”选项卡":::&quot;&quot;
 
 1. 如果 Azure SSIS IR 正在运行，请在“集成运行时”列表中的“操作”列内，选择 Azure SSIS IR 对应的“停止”按钮。   只有在停止 Azure-SSIS IR 之后才能对其进行编辑。
 
-   ![停止 IR](media/join-azure-ssis-integration-runtime-virtual-network/stop-ir-button.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/stop-ir-button.png" alt-text="停止 IR":::
 
 1. 在“集成运行时”列表中的“操作”列内，选择 Azure SSIS IR 对应的“编辑”按钮。  
 
-   ![编辑集成运行时](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png" alt-text="编辑集成运行时":::
 
 1. 在集成运行时设置面板上，选择“下一步”按钮进入“常规设置”和“SQL 设置”部分。  
 
@@ -139,7 +139,7 @@ ms.locfileid: "122638010"
 
    1. 选择“VNet 验证”。 如果验证成功，请选择“继续”。
 
-   ![使用虚拟网络的高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png" alt-text="使用虚拟网络的高级设置":::
 
 1. 在“摘要”部分，复查 Azure-SSIS IR 的所有设置。 然后选择“更新”。
 

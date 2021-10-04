@@ -2,7 +2,6 @@
 title: ID - 表单识别器
 titleSuffix: Azure Applied AI Services
 description: 通过表单识别器预生成 ID API 了解与标识文档中的数据提取相关的概念。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: bfa6cb13533a92c65369b8016971e0c1e37cdb61
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 528821649c0c212c869ac74f61a5e13e70f1671a
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326289"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153836"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>表单识别器预生成标识 (ID) 文档模型
 
@@ -62,10 +61,9 @@ ID API 还为 [AI Builder ID 读取器功能](/ai-builder/prebuilt-id-reader)提
 |  DocumentNumber | 字符串 | 相关护照号、驾照编号等。 | “340020013” |
 |  FirstName | 字符串 | 提取的名字和中间名（如适用） | “JENNIFER” |
 |  LastName | 字符串 | 提取的姓氏 | “BROOKS” |
-|  国家/地区 | countryRegion | 符合 ISO 3166 标准的国家/地区或区域代码 | “USA” |
+|  国家/地区 | countryRegion | 符合 ISO 3166 标准的国家或地区代码（仅限护照） | “USA” |
 |  Sex | 字符串 | 可能的提取值包括“M”、“F”和“X” | “F” |
-|  MachineReadableZone | 对象 (object) | 提取的护照 MRZ 包括两行，每行 44 个字符 | “P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816” |
-|  DocumentType | 字符串 | 文档类型，例如护照、驾照 | “passport” |
+|  MachineReadableZone | 对象 (object) | 提取的护照 MRZ 包括两行，每行 44 个字符（仅限护照） | “P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816” |
 |  地址 | 字符串 | 提取的地址（仅限驾照） | “123 STREET ADDRESS YOUR CITY WA 99999-1234”|
 |  区域 | 字符串 | 提取的区域、州、省/直辖市/自治区等（仅限驾照） | “Washington” |
 
@@ -248,11 +246,6 @@ Need to update this with updated APIM links when available
               "#/readResults/0/lines/33/words/4",
               "#/readResults/0/lines/34/words/0"
             ]
-          },
-          "DocumentType": {
-            "type": "string",
-            "text": "passport",
-            "confidence": 0.995
           }
         }
       }

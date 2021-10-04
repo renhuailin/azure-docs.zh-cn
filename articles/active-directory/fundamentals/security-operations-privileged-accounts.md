@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/15/2021
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1944e9f0e8d1ad7a447d12c99aa65a22ccb233d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3c4a9afd9e2470085509c809153fd2abd9a63c27
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741707"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796431"
 ---
 # <a name="security-operations-for-privileged-accounts"></a>特权帐户的安全操作
 
@@ -36,11 +36,11 @@ Azure Active Directory (Azure AD) 使用标识和访问管理 (IAM) 作为控制
 
 ## <a name="where-to-look"></a>查看位置
 
-用于调查和监视的日志文件如下： 
+用于调查和监视的日志文件包括： 
 
 * [Azure AD 审核日志](../reports-monitoring/concept-audit-logs.md)
 
-* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault 见解](../../azure-monitor/insights/key-vault-insights-overview.md)
 
@@ -138,13 +138,13 @@ Azure Active Directory (Azure AD) 使用标识和访问管理 (IAM) 作为控制
 | 登录失败，超出密码阈值 | 高 | Azure AD 登录日志 | 状态 = 失败<br>－和－<br>错误代码 = 50126 | 定义基线阈值，监视并调整以适应组织的行为，并限制生成虚假警报。 |
 | 因不符合 CA 要求而失败 |高 | Azure AD 登录日志 | 状态 = 失败<br>－和－<br>错误代码 = 53003<br>－和－<br>失败原因 = 被 CA 阻止 | 这可能表示攻击者正在尝试入侵帐户 |
 | 未遵循命名策略的特权帐户。| | Azure 订阅 | [使用 Azure 门户列出 Azure 角色分配 - Azure RBAC](../../role-based-access-control/role-assignments-list-portal.md)| 列出订阅的角色分配，并在登录名不符合组织规定的格式时发出警报。 例如，以 ADM_ 作为前缀。 |
-| 中断 |  高/中 | Azure AD 登录 | 状态 = 已中断<br>－和－<br>错误代码 = 50074<br>－和－<br>失败原因 = 需要强身份验证<br>状态 = 已中断<br>－和－<br>错误代码 = 500121<br>失败原因 = 在强身份验证请求期间，身份验证失败 | 这可能表示攻击者拥有该帐户的密码，但无法通过 MFA 质询。 |   |   |
+| 中断 |  高/中 | Azure AD 登录 | 状态 = 已中断<br>－和－<br>错误代码 = 50074<br>－和－<br>失败原因 = 需要强身份验证<br>状态 = 已中断<br>－和－<br>错误代码 = 500121<br>失败原因 = 在强身份验证请求期间，身份验证失败 | 这可能表示攻击者拥有该帐户的密码，但无法通过 MFA 质询。 | 
 | 未遵循命名策略的特权帐户。| 高 | Azure AD 目录 | [列出 Azure AD 角色分配](../roles/view-assignments.md)| 对于 Azure AD 角色警报，在 UPN 不符合组织规定格式时列出角色分配。 例如，以 ADM_ 作为前缀。 |
-| 发现未注册使用 MFA 的特权帐户。 | 高 | Azure AD 图形 API| 对管理员帐户使用 IsMFARegistered eq false 查询。 [列出 credentialUserRegistrationDetails - Microsoft Graph beta 版本](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&tabs=http) | 进行审核与调查，以确定是有意为之还是疏忽所致。 |
+| 发现未注册使用 MFA 的特权帐户。 | 高 | Azure AD 图形 API| 对管理员帐户使用 IsMFARegistered eq false 查询。 [列出 credentialUserRegistrationDetails - Microsoft Graph beta 版本](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http) | 进行审核与调查，以确定是有意为之还是疏忽所致。 |
 | 帐户锁定 | 高 | Azure AD 登录日志 | 状态 = 失败<br>－和－<br>错误代码 = 50053 | 定义基线阈值，监视并调整以适应组织的行为，并限制生成虚假警报。 |
 | 帐户已禁用/被阻止登录 | 低 | Azure AD 登录日志 | 状态 = 失败<br>－和－<br>目标 = 用户 UPN<br>－和－<br>错误代码 = 50057 | 这可能表示有人在离开组织后尝试获取帐户访问权限。 虽然帐户被阻止，但记录这类活动并发出警报仍然很重要。 |
 | MFA 欺诈警报/阻止 | 高 | Azure AD 登录日志/Azure Log Analytics | 是否成功 = false<br>－和－<br>结果详细信息 = MFA 被拒绝<br>－和－<br>目标 = 用户 | 特权用户表示其尚未启动 MFA 提示，并可能表示攻击者拥有该帐户的密码。 |
-| 特权帐户在预期控制之外登录。 |  | Azure AD 登录日志 | 状态 = 失败<br>UserPricipalName = <Admin account><br>位置 = <unapproved location><br>IP 地址 = <unapproved IP><br>设备信息 = <未批准的浏览器、操作系统> | 监视确定为“未批准”的任何条目并发出警报。 |
+| 特权帐户在预期控制之外登录。 |  | Azure AD 登录日志 | 状态 = 失败<br>UserPricipalName = \<Admin account\><br>位置 = \<unapproved location\><br>IP 地址 = \<unapproved IP\><br>设备信息 = \<unapproved Browser, Operating System\> | 监视确定为“未批准”的任何条目并发出警报。 |
 | 在正常登录时间之外 | 高 | Azure AD 登录日志 | 状态 = 成功<br>－和－<br>位置 =<br>－和－<br>时间 = 在工作时间之外 | 监视登录是否发生在预期时间之外，并发出警报。 务必确定每个特权帐户的正常工作模式，并在正常工作时间之外发生计划外更改时发出警报。 在正常工作时间之外登录可能表示存在入侵或可能的内部威胁。 | 
 | 标识保护风险 | 高 | 标识保护日志 | 风险状态 = 有风险<br>－和－<br>风险级别 = 低/中/高<br>－和－<br>活动 = 不熟悉的登录/TOR 等 | 这表示在帐户登录时检测到一些异常，应发出警报。 | 
 | 密码更改 | 高 | Azure AD 审核日志 | 活动参与者 = 管理员/自助服务<br>－和－<br>目标 = 用户<br>－和－<br>状态 = 成功/失败 | 在任何管理员帐户密码更改时发出警报，特别是全局管理员、用户管理员、订阅管理员和紧急访问帐户。 编写针对所有特权帐户的查询。 | 
@@ -187,7 +187,7 @@ Azure Active Directory (Azure AD) 使用标识和访问管理 (IAM) 作为控制
 
 有关如何监视条件访问策略异常的详细信息，请参阅[条件访问见解和报告](../conditional-access/howto-conditional-access-insights-reporting.md)。
 
-有关发现未使用的特权帐户的详细信息，请参阅[在 Privileged Identity Management 中创建对 Azure AD 角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)
+有关发现未使用的特权帐户的详细信息，请参阅[在 Privileged Identity Management 中创建对 Azure AD 角色的访问评审](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md)
 
  
 ## <a name="assignment-and-elevation"></a>特权分配和提升
@@ -261,11 +261,11 @@ Azure Active Directory (Azure AD) 使用标识和访问管理 (IAM) 作为控制
 
 [特权帐户的安全操作](security-operations-privileged-accounts.md)
 
-[Privileged Identity Management 安全操作](security-operations-privileged-identity-management.md)
+[Privileged Identity Management 的安全操作](security-operations-privileged-identity-management.md)
 
 [应用程序的安全操作](security-operations-applications.md)
 
 [设备的安全操作](security-operations-devices.md)
 
  
-[基础结构安全操作](security-operations-infrastructure.md)
+[基础结构的安全操作](security-operations-infrastructure.md)

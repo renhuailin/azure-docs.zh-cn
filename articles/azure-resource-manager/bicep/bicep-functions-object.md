@@ -4,24 +4,17 @@ description: 描述在 Bicep 文件中用于处理对象的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: cc83fcce125a045bbff05147ad22be46a085fe22
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: fd65cc60412d46a734764d3566fa3606a48c7bf6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025964"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758439"
 ---
 # <a name="object-functions-for-bicep"></a>Bicep 的对象函数
 
-资源管理器提供了一些用于处理 Bicep 文件中的对象的函数：
-
-* [contains](#contains)
-* [empty](#empty)
-* [intersection](#intersection)
-* [json](#json)
-* [length](#length)
-* [union](#union)
+本文介绍用于处理对象的 Bicep 函数。
 
 ## <a name="contains"></a>contains
 
@@ -29,9 +22,9 @@ ms.locfileid: "111025964"
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -67,7 +60,7 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -82,9 +75,9 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -108,7 +101,7 @@ output stringEmpty bool = empty(testString)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -122,7 +115,7 @@ output stringEmpty bool = empty(testString)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -163,7 +156,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | objectOutput | 对象 | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -178,7 +171,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |string |要转换为 JSON 的值。 字符串必须是格式正确的 JSON 字符串。 |
 
@@ -232,7 +225,7 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
@@ -268,7 +261,7 @@ output objectLength int = length(objectToTest)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -282,7 +275,7 @@ output objectLength int = length(objectToTest)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -326,7 +319,7 @@ output arrayOutput array = union(firstArray, secondArray)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |

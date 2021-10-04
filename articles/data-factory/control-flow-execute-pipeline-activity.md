@@ -1,7 +1,7 @@
 ---
-title: Azure 数据工厂中的 Execute Pipeline 活动
+title: 执行管道活动
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何使用 Execute Pipeline 活动从一个数据工厂管道调用另一个数据工厂管道。
+description: 了解如何使用执行管道活动从 Azure 数据工厂或 Synapse Analytics 中的一个管道调用另一个管道。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
@@ -9,21 +9,19 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: b46fbddb2a6446eaa711a8ba2c548fff634eee48
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 047548a39c16c5f6b6ee3f7d359a8664c87e7062
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638922"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566589"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Execute Pipeline 活动
+# <a name="execute-pipeline-activity-in-azure-data-factory-and-synapse-analytics"></a>Azure 数据工厂和 Synapse Analytics 中的执行管道活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
-
-
+执行管道活动允许数据工厂或 Synapse 管道调用另一个管道。
 
 ## <a name="syntax"></a>语法
 
@@ -65,11 +63,11 @@ Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
 
 属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
-name | Execute Pipeline 活动的名称。 | String | 是
-type | 必须设置为：**ExecutePipeline**。 | String | 是
+name | Execute Pipeline 活动的名称。 | 字符串 | 是
+type | 必须设置为：**ExecutePipeline**。 | 字符串 | 是
 管道 | 管道引用此管道调用的依赖管道。 管道引用对象具有两个属性：**referenceName** 和 **type**。 referenceName 属性指定引用管道的名称。 type 属性必须设置为 PipelineReference。 | PipelineReference | 是
 parameters | 传递给已调用管道的参数 | 将参数名映射为自变量值的 JSON 对象 | 否
-waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默认值为 false。 | 布尔 | 否
+waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默认为 true。 | 布尔 | 否
 
 ## <a name="sample"></a>示例
 此方案具有两个管道：
@@ -256,7 +254,7 @@ waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默
 
 ```
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+参阅支持的其他控制流活动： 
 
 - [For Each 活动](control-flow-for-each-activity.md)
 - [Get Metadata 活动](control-flow-get-metadata-activity.md)

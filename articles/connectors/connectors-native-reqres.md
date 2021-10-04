@@ -7,12 +7,12 @@ ms.reviewers: estfan, azla
 ms.topic: conceptual
 ms.date: 08/04/2021
 tags: connectors
-ms.openlocfilehash: 8efcbac4b2cdd93c2646ad75a024df79cf5f2623
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 295cfe41e66791233ce7057a55717714902db9a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722590"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806516"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
@@ -29,6 +29,9 @@ ms.locfileid: "121722590"
 本文介绍如何使用请求触发器和响应操作，以便逻辑应用可以接收和响应入站调用。
 
 若要详细了解对逻辑应用的入站调用的安全性、授权和加密（如[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)（旧称为“安全套接字层 (SSL)”）、[Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../active-directory/develop/index.yml)），使用 Azure API Management 公开逻辑应用，或限制源自入站调用的 IP 地址，请参阅[保护访问和数据 - 对基于请求的触发器的入站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
+
+> [!NOTE]
+> 对于单租户 Azure 逻辑应用中的“逻辑应用(标准)”资源类型，Azure AD OAuth 当前不可用于对基于请求的触发器（例如请求触发器和 HTTP Webhook 触发器）进行的入站调用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +57,7 @@ ms.locfileid: "121722590"
 
    ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，用于调用逻辑应用 |
    | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
@@ -178,7 +181,7 @@ ms.locfileid: "121722590"
 
 1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | 否 | 传入的请求在调用逻辑应用时必须使用的方法 |
    | **相对路径** | `relativePath` | 否 | 逻辑应用终结点 URL 可接受的参数的相对路径 |
@@ -219,8 +222,8 @@ ms.locfileid: "121722590"
 
 | JSON 属性名称 | 数据类型 | 说明 |
 |--------------------|-----------|-------------|
-| `headers` | 对象 | 描述请求中的标头的 JSON 对象 |
-| `body` | 对象 | 描述请求中的正文内容的 JSON 对象 |
+| `headers` | Object | 描述请求中的标头的 JSON 对象 |
+| `body` | Object | 描述请求中的正文内容的 JSON 对象 |
 ||||
 
 <a name="add-response"></a>
@@ -270,7 +273,7 @@ ms.locfileid: "121722590"
 
    下面是有关可在“响应”操作中设置的属性的详细信息。
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
    | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包含在响应中的一个或多个标头 |

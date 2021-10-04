@@ -1,29 +1,28 @@
 ---
-title: 使用 Azure 数据工厂从 PostgreSQL 复制数据
+title: 从 PostgreSQL 复制数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 PostgreSQL 复制到支持的接收器数据存储。
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从 PostgreSQL 复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: ff06a443d6bcd6bc2428efdbd7d52ce8ac7cda3f
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 4f9ac376379141f91bacd3c941b15a819f12bb2c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123316897"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824739"
 ---
-# <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 复制数据
+# <a name="copy-data-from-postgresql-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 PostgreSQL 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-postgresql-connector.md)
 > * [当前版本](connector-postgresql.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-
-本文概述了如何使用 Azure 数据工厂中的复制活动从 PostgreSQL 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂和 Synapse Analytics 管道中的复制活动从 PostgreSQL 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -168,7 +167,7 @@ PostgreSQL 链接的服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：PostgreSqlTable | 是 |
-| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -248,4 +247,4 @@ PostgreSQL 链接的服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中的实验室 VM 上启用托管标识
+title: 为实验室 VM 启用托管标识
 description: 本文介绍实验室所有者如何在实验室虚拟机上启用用户分配的托管标识。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0d2c7b944d37160df241e6ca4407c730593f1b62
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 824fc69fd7ff1b8d48de98b16daccc055aa34283
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854029"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624266"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中的实验室虚拟机上启用用户分配的托管标识
 作为实验室所有者，可以在 Azure 开发测试实验室中的实验室虚拟机 (VM) 上启用用户分配的托管标识。
@@ -61,10 +61,3 @@ ms.locfileid: "111854029"
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解托管标识，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。
-
-
-
-
-
-
-

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 07/16/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c53ede7df0fd8ba24ef82e7de5a793a4e55f204
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: c02d7183304ec3474427bf1687d67d7dd7058d44
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393270"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576649"
 ---
 # <a name="use-arm-template-test-toolkit"></a>使用 ARM 模板测试工具包
 
@@ -24,6 +24,10 @@ ms.locfileid: "114393270"
 - [参数文件测试用例](parameter-file-test-cases.md)
 - [createUiDefinition.json 的测试用例](createUiDefinition-test-cases.md)
 - [所有文件的测试用例](all-files-test-cases.md)
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解 ARM 模板测试工具包并获得实际操作指导，请参阅“Microsoft learn”上的[使用 ARM 模板测试工具包验证 Azure 资源](/learn/modules/arm-template-test)。
 
 ## <a name="install-on-windows"></a>在 Windows 上安装
 

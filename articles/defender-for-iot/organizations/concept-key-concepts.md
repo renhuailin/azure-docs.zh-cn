@@ -1,16 +1,16 @@
 ---
 title: 主要优点
 description: 了解 Defender for IoT 的基本概念。
-ms.date: 12/13/2020
+ms.date: 09/09/2021
 ms.topic: article
-ms.openlocfilehash: ca1e5a4d8554b208f5275fd0e7519f2db3fafc08
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: be5c7f31cb652bb40f4bae35fa42b76d7a576276
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016013"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836466"
 ---
-# <a name="basic-concepts"></a>基本概念 
+# <a name="basic-concepts"></a>基本概念
 
 本文介绍 Azure Defender for IoT 的主要优点。
 
@@ -63,9 +63,9 @@ Defender for IoT 在业内独树一帜，它使用专有的网络流量分析 (N
 
 ## <a name="air-gapped-networks"></a>气隙网络
 
-如果你在气隙环境中工作，则 Defender for IoT 中的本地管理控制台将提供与各设施相关的关键 IoT 和 OT 风险指标和警报的实时视图。 它紧密集成了 SOC 工作流和 runbook，可轻松确定缓解活动的优先级和整个站点的威胁风险。  
+如果你在气隙环境中工作，则 Defender for IoT 中的本地管理控制台将提供与各设施相关的关键 IoT 和 OT 风险指标和警报的实时视图。 它紧密集成了 SOC 工作流和 runbook，可轻松确定缓解活动的优先级和整个站点的威胁风险。
 
-Defender for IoT 提供所有设备的合并视图。 它还提供有关设备的关键信息，如类型（PLC、RTU、DCS 等）、制造商、型号和固件修订级别以及警报信息。  
+Defender for IoT 提供所有设备的合并视图。 它还提供有关设备的关键信息，如类型（PLC、RTU、DCS 等）、制造商、型号和固件修订级别以及警报信息。
 
 借助 Defender for IoT，可以有效地管理多个部署和全面统一的网络视图。 Defender for IoT 优化了操作网络安全的警报处理和控制。
 
@@ -113,6 +113,7 @@ Defender for IoT 提供所有设备的合并视图。 它还提供有关设备�
 
 使用基于条件的自定义警报触发和消息传递可帮助查明特定的网络活动，并有效地将最新情况告知安全、IT 和运营团队。
 
+有关受支持协议的完整列表，请参阅[支持的协议](concept-supported-protocols.md#supported-protocols)。
 
 ## <a name="high-availability"></a>高可用性
 

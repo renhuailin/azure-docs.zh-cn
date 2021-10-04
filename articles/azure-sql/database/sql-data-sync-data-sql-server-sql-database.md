@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
-ms.date: 08/20/2019
-ms.openlocfilehash: f0ec1d641fc78e4fde612f987ad319d62bd9eeaf
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.date: 09/09/2021
+ms.openlocfilehash: de90958966fed08b33cf7236384c082e332719fd
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112914222"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059485"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -61,7 +61,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | 方案 | 一些建议的解决方案 |
 |----------|----------------------------|
 | 灾难恢复 | [Azure 异地冗余备份](automated-backups-overview.md) |
-| 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](read-scale-out.md) |
+| 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡](read-scale-out.md) |
 | ETL（OLTP 到 OLAP） | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)或 [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
 | 从 SQL Server 迁移到 Azure SQL 数据库。 但是，可以在迁移完成后使用 SQL 数据同步，以确保源和目标保持同步。  | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
 |||
@@ -81,8 +81,8 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | **优点** | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 <br/>\- Azure SQL 托管实例支持 |
 | **缺点** | - 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
 
-## <a name="private-link-for-data-sync-preview"></a>数据同步的专用链接（预览版）
-使用新的专用链接（预览版）功能，可以选择服务托管的专用终结点，以便在数据同步过程中在同步服务与成员/中心数据库之间建立安全连接。 服务托管的专用终结点是特定虚拟网络和子网中的专用 IP 地址。 在数据同步中，服务托管的专用终结点由 Microsoft 创建，并且由数据同步服务专门用于给定的同步操作。 在设置专用链接之前，请阅读功能的[常规要求](sql-data-sync-data-sql-server-sql-database.md#general-requirements)。 
+## <a name="private-link-for-data-sync"></a>数据同步的专用链接
+使用新的专用链接功能，可以选择服务托管的专用终结点，以便在数据同步过程中在同步服务与成员/中心数据库之间建立安全连接。 服务托管的专用终结点是特定虚拟网络和子网中的专用 IP 地址。 在数据同步中，服务托管的专用终结点由 Microsoft 创建，并且由数据同步服务专门用于给定的同步操作。 在设置专用链接之前，请阅读功能的[常规要求](sql-data-sync-data-sql-server-sql-database.md#general-requirements)。 
 
 ![数据同步的专用链接](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
 
@@ -137,7 +137,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 - 必须同时为同步成员和中心启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
-- 若要将专用链接与数据同步配合使用，成员和中心数据库都必须托管在 Azure 中（相同或不同的区域），且必须托管在相同的云类型中（例如，都在公有云中或都在政府云中）。 此外，若要使用专用链接，必须为托管中心服务器和成员服务器的订阅注册 Microsoft.Network 资源提供程序。 最后，在同步配置期间，必须在 Azure 门户的“专用终结点连接”部分（或通过 PowerShell）手动批准数据同步的专用链接。 有关如何批准专用链接的详细信息，请参阅[设置 SQL 数据同步](./sql-data-sync-sql-server-configure.md)。批准服务托管的专用终结点后，同步服务和成员/中心数据库之间的所有通信都将通过专用链接进行。 可以更新现有同步组以启用此功能。
+- 若要使用数据同步专用链接，成员和中心数据库都必须托管在 Azure 中（相同或不同的区域），且必须托管在相同的云类型中（例如，都在公有云中或都在政府云中）。 此外，若要使用专用链接，必须为托管中心服务器和成员服务器的订阅注册 Microsoft.Network 资源提供程序。 最后，在同步配置期间，必须在 Azure 门户的“专用终结点连接”部分（或通过 PowerShell）手动批准数据同步的专用链接。 有关如何批准专用链接的详细信息，请参阅[设置 SQL 数据同步](./sql-data-sync-sql-server-configure.md)。批准服务托管的专用终结点后，同步服务和成员/中心数据库之间的所有通信都将通过专用链接进行。 可以更新现有同步组以启用此功能。
 
 ### <a name="general-limitations"></a>一般限制
 
@@ -154,7 +154,6 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 截断表不是数据同步支持的操作（不会跟踪更改）。
 - 不支持超大规模数据库。 
 - 不支持内存优化表。
-- 如果中心和成员数据库位于虚拟网络中，则数据同步将无法正常工作，因为负责在中心和成员之间运行同步的同步应用不支持访问客户专用链接内的中心或成员数据库。 当客户还使用“数据同步专用链接”功能时，此限制仍然适用。 
 
 #### <a name="unsupported-data-types"></a>不支持的数据类型
 
@@ -188,7 +187,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 ### <a name="network-requirements"></a>网络要求
 
 > [!NOTE]
-> 如果使用专用链接，则这些网络要求不适用。 
+> 如果使用数据同步专用链接，则这些网络要求不适用。 
 
 在建立同步组后，数据同步服务需要连接到中心数据库。 建立同步组时，Azure SQL Server 的 `Firewalls and virtual networks` 设置必须具有以下配置：
 
@@ -224,10 +223,10 @@ SQL 数据同步在所有区域中都可用。
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>是否可以使用数据同步在 SQL 数据库中属于不同订阅的数据库之间进行同步
 
-是的。 可以在由不同订阅拥有的资源组中的数据库之间同步。
+是的。 可以在属于不同订阅拥有的资源组的数据库之间同步，即使订阅属于不同的租户。
 
 - 如果订阅属于同一租户，并且你对所有订阅都有权限，则可以在 Azure 门户中配置同步组。
-- 否则，必须使用 PowerShell 来添加属于不同订阅的同步成员。
+- 否则，必须使用 PowerShell 来添加同步成员。
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>是否可以使用数据同步在 SQL 数据库中属于不同云（例如 Azure 公有云和 Azure 中国世纪互联）的数据库之间进行同步
 

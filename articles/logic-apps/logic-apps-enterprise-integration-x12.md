@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, divswa, azla
 ms.topic: how-to
 ms.date: 07/16/2021
-ms.openlocfilehash: 5328fad1530ee8dd7b4a2c79581d443488c44b28
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4b1c6d33146233882dd4ee0656c2d1ee7ee6ec79
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453834"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589713"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 交换 X12 消息以实现 B2B 企业集成
 
@@ -348,7 +348,7 @@ ms.locfileid: "114453834"
 
    若要更新架构，请执行以下步骤：
 
-   1. 在 Azure 门户中，转到集成帐户。 查看和下载你的架构。 替换消息类型并重命名架构文件，然后将修改后的架构上载到集成帐户。 有关详细信息，请参阅[编辑架构](../logic-apps/logic-apps-enterprise-integration-schemas.md#edit-schemas)。
+   1. 在 Azure 门户中，转到集成帐户。 查看和下载你的架构。 替换消息类型并重命名架构文件，然后将修改后的架构上载到集成帐户。 有关详细信息，请参阅[编辑架构](logic-apps-enterprise-integration-schemas.md#edit-schema)。
 
    1. 在协议的消息设置中，选择修改后的架构。
 

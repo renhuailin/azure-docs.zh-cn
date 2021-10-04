@@ -1,18 +1,17 @@
 ---
-title: Azure Purview 中的数据世系（预览版）
+title: Azure Purview 中的数据世系
 description: 介绍数据世系的概念。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: da2f34014f3c789762cc2743b971aa76ad1049a9
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.date: 09/27/2021
+ms.openlocfilehash: 37cffe89fc0e0cb10aaadbb8d63f9aa12d0589eb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112574427"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207443"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Azure Purview 数据目录客户端中的数据世系
 
@@ -67,4 +66,4 @@ Purview 数据目录将与其他数据处理、存储和分析系统连接，以
 
 * [快速入门：在 Azure 门户中创建 Azure Purview 帐户](create-catalog-portal.md)
 * [快速入门：使用 Azure PowerShell/Azure CLI 创建 Azure Purview 帐户](create-catalog-powershell.md)
-* [快速入门：使用 Purview Studio](use-purview-studio.md)
+* [使用 Purview Studio](use-purview-studio.md)

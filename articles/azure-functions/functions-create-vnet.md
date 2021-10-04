@@ -3,12 +3,12 @@ title: 使用专用终结点将 Azure Functions 与虚拟网络集成
 description: 本教程介绍如何使用专用终结点将函数连接到 Azure 虚拟网络并将其锁定。
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: a410d6717a73df2c7e947fd15c6c89040f08846c
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 8007fde1d4aaf52a98bf924f607450462a993c1d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204734"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708427"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>教程：使用专用终结点将 Azure Functions 与 Azure 虚拟网络集成
 
@@ -67,7 +67,7 @@ ms.locfileid: "114204734"
 
 1. 选择“转到资源”，查看新的函数应用。 还可选择“固定到仪表板”。 固定可以更轻松地从仪表板返回此函数应用资源。
 
-祝贺你！ 你已成功创建高级函数应用。
+恭喜！ 你已成功创建高级函数应用。
 
 ## <a name="create-azure-resources"></a>创建 Azure 资源
 
@@ -304,6 +304,8 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 1. 选择前面创建的“函数”子网。 选择“确定”。  函数应用现已与虚拟网络集成！
 
+    如果虚拟网络和函数应用在不同的订阅中，你需要首先提供对虚拟网络上的服务主体 Microsoft Azure 应用服务的“参与者”访问权限。
+
     :::image type="content" source="./media/functions-create-vnet/9-connect-app-subnet.png" alt-text="介绍如何将函数应用连接到子网的屏幕截图。":::
 
 ## <a name="configure-your-function-app-settings"></a>配置函数应用设置
@@ -357,7 +359,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 1. 初始部署可能需要几分钟。 成功部署应用后，在“日志”选项卡上，可以看到“成功(活动)”状态消息。 如果需要，请刷新页面。
 
-祝贺你！ 你已成功部署了示例函数应用。
+恭喜！ 你已成功部署了示例函数应用。
 
 ## <a name="lock-down-your-function-app"></a>锁定函数应用
 
@@ -379,7 +381,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 1. 选择“确定”以添加专用终结点。 
  
-祝贺你！ 通过添加专用终结点，你成功保护了函数应用、服务总线和存储帐户的安全！
+恭喜！ 通过添加专用终结点，你成功保护了函数应用、服务总线和存储帐户的安全！
 
 ### <a name="test-your-locked-down-function-app"></a>测试锁定的函数应用
 
@@ -413,7 +415,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
     :::image type="content" source="./media/functions-create-vnet/18-hello-world.png" alt-text="介绍如何使用函数应用的实时指标来查看消息的屏幕截图。":::
 
-祝贺你！ 你已成功使用专用终结点测试了函数应用设置。
+恭喜！ 你已成功使用专用终结点测试了函数应用设置。
 
 ## <a name="understand-private-dns-zones"></a>了解专用 DNS 区域
 你已使用专用终结点连接到 Azure 资源。 你正在连接到专用 IP 地址而不是公共终结点。 现有 Azure 服务配置为使用现有 DNS 连接到公共终结点。 必须覆盖 DNS 配置才能连接到专用终结点。

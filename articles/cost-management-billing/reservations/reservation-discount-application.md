@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 1dec8253d785973aa900434c10f85ec0a63e0599
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c2f8ab7f2f5dc392696cc9e887f401502e906c3b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574866"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559780"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>如何应用预留折扣
 
@@ -25,7 +25,7 @@ ms.locfileid: "99574866"
 
 例如，你可能会在以后创建一个资源，并包含一个利用不足的匹配预留项。 预留折扣将自动应用到新的匹配资源。
 
-如果虚拟机是在注册/帐户的不同订阅中运行，则请选择作为共享的范围。 共享范围允许跨订阅应用预留折扣。 可在购买预留后更改范围。 有关详细信息，请参阅[管理 Azure 预订](manage-reserved-vm-instance.md)。
+如果虚拟机是在注册/帐户的不同订阅中运行，则请选择作为共享的范围。 共享范围允许跨订阅应用预留折扣。 可在购买预留后更改范围。 有关详细信息，请参阅[管理 Azure 预订](manage-reserved-vm-instance.md)。 还可以使用管理组范围。 它将预留折扣应用于同时属于管理组和计费范围的订阅列表中的匹配资源。
 
 预留折扣仅适用于与企业、Microsoft 客户协议、CSP 或采用即用即付费率的订阅相关联的资源。 订阅中运行的其他产品/服务类型的资源无法获得预订折扣。
 

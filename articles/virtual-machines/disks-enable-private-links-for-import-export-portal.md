@@ -4,15 +4,15 @@ description: 使用 Azure 门户为托管磁盘启用专用链接。 这允许�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/19/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b023f7f068d1dc52c073519cc7e7f308e5d86ad0
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c38c1ec60b3a7fbeb65f85e4560c4495ab93a031
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696452"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754824"
 ---
 # <a name="restrict-importexport-access-for-managed-disks-using-azure-private-link"></a>使用 Azure 专用链接限制对托管磁盘的导入/导出访问
 
@@ -88,6 +88,32 @@ ms.locfileid: "122696452"
 1. 选择“保存”。
 
 现已配置了可用于导入和导出托管磁盘的专用链接。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+问：使用专用链接来导出和导入托管磁盘有什么好处？
+
+答：可以使用专用链接将托管磁盘的导出和导入过程限制为仅通过 Azure 虚拟网络进行。
+
+问：如何确保磁盘只能通过专用链接进行导出或导入？
+
+答：必须将 DiskAccessId 属性设置为磁盘访问对象的实例。 此外，还可将 NetworkAccessPolicy 属性设置为 AllowPrivate。 
+
+问：可以将多个虚拟网络链接到同一个磁盘访问对象吗？
+
+**答:** 不是。 目前，只能将磁盘访问对象链接到一个虚拟网络。
+
+问：可以将虚拟网络链接到其他订阅中的磁盘访问对象吗？
+
+**答:** 不是。 目前，只能将一个磁盘访问对象链接到同一订阅中的一个虚拟网络。
+
+问：可同时进行多少个使用同一磁盘访问对象的导出或导入操作？
+
+答：可以同时进行 5 个导出或导入操作。
+
+问：可以使用磁盘或快照的 SAS URI 下载与专用终结点（与磁盘相关联）不属同一子网的 VM 的基础 VHD 吗？
+
+**答:** 不是。 只能对与磁盘相关联的专用终结点所在子网中的 VM 这样做。
 
 ## <a name="next-steps"></a>后续步骤
 

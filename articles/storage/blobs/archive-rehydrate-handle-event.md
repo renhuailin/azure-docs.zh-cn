@@ -10,12 +10,12 @@ ms.date: 08/11/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 658483d1479036c7cc90dbaf439dbee6706dd475
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 3ce2f92f88e24eb634222db5ffab45acaf1a5820
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206175"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577985"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>运行 Azure 函数以响应 Blob 解除冻结事件
 
@@ -50,7 +50,7 @@ ms.locfileid: "122206175"
 
     :::image type="content" source="media/archive-rehydrate-handle-event/create-function-app-basics-tab.png" alt-text="显示如何在 Azure 中创建新的函数应用 -“基本信息”选项卡的屏幕截图":::
 
-1. 完成“基本信息”选项卡后，导航到“托管”选项卡。
+1. 完成“基本信息”选项卡后，导航到“托管”选项卡 。
 1. 在“托管”选项卡上，选择将在其中存储 Azure 函数的存储帐户。 可以选择现有存储帐户，也可以创建新的存储帐户。
 1. 确保将“操作系统”字段设置为“Windows”。
 1. 在“计划类型”字段中，选择“消耗(无服务器)”。 有关此计划的详细信息，请参阅 [Azure Functions 消耗计划托管](../../azure-functions/consumption-plan.md)。
@@ -118,10 +118,10 @@ ms.locfileid: "122206175"
     eventInfo.AppendLine(string.Format("{0} operation occurred.", eventApi));
     eventInfo.AppendLine(string.Format("Blob URL: {0}", eventBlobUrl));
     eventInfo.AppendLine($@"Additional event details:
-        Id=[{eventGridEvent.Id}] 
-        EventType=[{eventGridEvent.EventType}] 
-        EventTime=[{eventGridEvent.EventTime}] 
-        Subject=[{eventGridEvent.Subject}] 
+        Id=[{eventGridEvent.Id}]
+        EventType=[{eventGridEvent.EventType}]
+        EventTime=[{eventGridEvent.EventTime}]
+        Subject=[{eventGridEvent.Subject}]
         Topic=[{eventGridEvent.Topic}]");
 
     // If event was BlobCreated and API call was CopyBlob, respond to the event.
@@ -193,7 +193,7 @@ http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
 
     :::image type="content" source="media/archive-rehydrate-handle-event/trigger-azure-function-postman-headers.png" alt-text="显示用于触发事件的本地请求的标头配置的屏幕截图":::
 
-1. 在 Postman 中，指定请求正文，并将正文类型设置为“JSON”，将格式设置为“原始”。 以下示例模拟“复制 Blob”请求。 将尖括号中的占位符值替换为你自己的值。 请注意，无需更改日期/时间或标识符值，因为这是模拟请求：
+1. 在 Postman 中，指定请求正文，并将正文类型设置为 JSON，将格式设置为原始 。 以下示例模拟“复制 Blob”请求。 将尖括号中的占位符值替换为你自己的值。 请注意，无需更改日期/时间或标识符值，因为这是模拟请求：
 
     ```json
     [{
@@ -221,7 +221,7 @@ http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
     }]
     ```
 
-1. 在 Visual Studio 中，将任何所需断点放入代码，并按 F5 运行调试器。
+1. 在 Visual Studio 中，将任何所需断点放入代码，并按 F5 运行调试程序。
 1. 在 Postman 中，选择“发送”按钮以将请求发送到终结点。
 
 发送请求时，事件网格会调用 Azure 函数，则可以正常进行调试。 有关其他信息和示例，请参阅 Azure Functions 文档中的[手动发送请求](../../azure-functions/functions-bindings-event-grid-trigger.md#manually-post-the-request)。
@@ -236,34 +236,34 @@ http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
 
 按以下步骤发布函数：
 
-1. 在“解决方案资源管理器”中，右键单击 Azure Functions 项目并选择“发布”。
-1. 在“发布”窗口中，选择“Azure”作为目标，然后选择“下一步”。
-1. 选择“Azure 函数应用(Windows)”作为特定目标，然后选择“下一步” 。
+1. 在“解决方案资源管理器”中，选择并按住（或右键单击）Azure Functions 项目并选择“发布”。
+1. 在“发布”窗口中，选择“Azure”作为目标，然后选择“下一步”  。
+1. 选择“Azure 函数应用 (Windows)”作为特定目标，然后选择“下一步” 。
 1. 在“函数实例”选项卡的下拉菜单中选择你的订阅，然后在可用函数应用列表中找到你的 Azure 函数应用。
 1. 确保已选中“从包文件运行”复选框。
 1. 选择“完成”以准备发布函数。
-1. 在“发布”页中，验证配置是否正确。 如果看到一条警告，显示未配置 Application Insights 的服务依赖关系，可以通过此页对其进行配置。
-1. 选择“发布”按钮，以开始将 Azure 函数发布到之前创建的 Azure 函数应用。
+1. 在“发布”页中，验证配置是否正确。 如果看到一条警告，显示未配置 Application Insights 的服务依赖项，可以通过此页对其进行配置。
+1. 选择“发布”按钮，开始将 Azure 函数发布到之前创建的 Azure 函数应用。
 
     :::image type="content" source="media/archive-rehydrate-handle-event/visual-studio-publish-azure-function.png" alt-text="显示从 Visual Studio 发布 Azure 函数的页面的屏幕截图":::
 
-每当对 Azure 函数中的代码进行更改时，都必须将更新的函数发布到 Azure。 
+每当对 Azure 函数中的代码进行更改时，都必须将更新的函数发布到 Azure。
 
 ## <a name="subscribe-to-blob-rehydration-events-from-a-storage-account"></a>从存储帐户订阅 Blob 解除冻结事件
 
 现在，你拥有一个函数应用，其中包含可在响应事件时运行的 Azure 函数。 下一步是从存储帐户创建事件订阅。 事件订阅将存储帐户配置为通过事件网格发布事件，以响应存储帐户中对 Blob 的操作。 然后，事件网格会将事件发送到指定的事件处理程序终结点。 在本例中，事件处理程序即为在上一部分中创建的 Azure 函数。
 
-创建事件订阅时，可以筛选发送到事件处理程序的事件。 解除冻结存档层中的 Blob 时要捕获的事件为“Microsoft.Storage.BlobTierChanged”，它是对[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作的响应，以及“Microsoft.Storage.BlobCreated”，它是对[复制 Blob](/rest/api/storageservices/copy-blob) 或[从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url) 操作的响应。 你可能只需要处理以下事件之一，具体取决于你的方案。
+创建事件订阅时，可以筛选发送到事件处理程序的事件。 解除冻结存档层中的 Blob 时要捕获的事件为“Microsoft.Storage.BlobTierChanged”，它是对[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作的响应，以及“Microsoft.Storage.BlobCreated”，它是对[复制 Blob](/rest/api/storageservices/copy-blob) 或[从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url) 操作的响应 。 你可能只需要处理以下事件之一，具体取决于你的方案。
 
 若要创建事件订阅，请执行以下步骤：
 
 1. 在 Azure 门户中，导航到包含要从存档层解除冻结的 Blob 的存储帐户。
 1. 选择左侧导航窗格中的“事件”设置。
-1. 在“事件”页中，选择“更多选项”。
+1. 在“事件”页中，选择“更多选项” 。
 1. 选择“创建事件订阅”。
-1. 在“创建事件订阅”页的“事件订阅详细信息”部分中，提供事件订阅的名称。
+1. 在“创建事件订阅”页的“事件订阅详细信息”部分中，提供事件订阅的名称 。
 1. 在“主题详细信息”部分中，提供系统主题的名称。 系统主题表示 Azure 存储发布的一个或多个事件。 有关系统主题的详细信息，请参阅 [Azure 事件网格中的系统主题](../../event-grid/system-topics.md)。
-1. 在“事件类型”部分中，选择“已创建 Blob”和“已更改 Blob 层”事件。 根据所选的从存档层中解除冻结 Blob 的方式，将触发这两个事件之一。
+1. 在“事件类型”部分中，选择“已创建 Blob”和“已更改 Blob 层”事件  。 根据所选的从存档层中解除冻结 Blob 的方式，将触发这两个事件之一。
 
     :::image type="content" source="media/archive-rehydrate-handle-event/select-event-types-portal.png" alt-text="显示如何在 Azure 门户中为 Blob 解除冻结事件选择事件类型的屏幕截图":::
 
@@ -278,14 +278,14 @@ http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
 
 ## <a name="test-the-azure-function-event-handler"></a>测试 Azure 函数事件处理程序
 
-若要测试 Azure 函数，可以在包含事件订阅的存储帐户中触发事件。 之前创建的事件订阅正在对两个事件进行筛选，“Microsoft.Storage.BlobCreated”和“Microsoft.Storage.BlobTierChanged”。 当其中任一事件触发时，它将触发 Azure 函数。
+若要测试 Azure 函数，可以在包含事件订阅的存储帐户中触发事件。 之前创建的事件订阅正在对两个事件进行筛选，分别为“Microsoft.Storage.BlobCreated”和“Microsoft.Storage.BlobTierChanged” 。 当其中任一事件触发时，它将触发 Azure 函数。
 
 本文中所显示的 Azure 函数在两个方案中会写入日志 Blob：
 
-- 当事件为“Microsoft.Storage.BlobCreated”且 API 操作为“复制 Blob”。
-- 当事件为“Microsoft.Storage.BlobTierChanged”且 API 操作为“设置 Blob 层”。
+- 当事件为“Microsoft.Storage.BlobCreated”且 API 操作为“复制 Blob” 。
+- 当事件为“Microsoft.Storage.BlobTierChanged”且 API 操作为“设置 Blob 层” 。
 
-若要了解如何通过解除冻结 Blob 来测试函数，请参阅以下两个过程之一：  
+若要了解如何通过解除冻结 Blob 来测试函数，请参阅以下两个过程之一：
 
 - [使用复制操作解除冻结 Blob](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-with-a-copy-operation)
 - [通过更改 Blob 层解除冻结 Blob](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-by-changing-its-tier)

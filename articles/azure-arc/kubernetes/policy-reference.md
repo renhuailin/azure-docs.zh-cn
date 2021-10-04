@@ -1,18 +1,18 @@
 ---
 title: 已启用 Azure Arc 的 Kubernetes 的内置策略定义
 description: 列出已启用 Azure Arc 的 Kubernetes 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.service: azure-arc
 author: mlearned
 ms.author: mlearned
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b76bbaa299ab2e2bbb15db2b432e4c5fdfa65cdb
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 4cb41dd8efed4382eee14cd4eac6507333e115ea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479107"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647608"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 的 Kubernetes 的 Azure Policy 内置定义
 
@@ -20,7 +20,7 @@ ms.locfileid: "123479107"
 
 每个内置策略定义链接（指向 Azure 门户中的策略定义）的名称。 使用“版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
 
-## <a name="arc-enabled-kubernetes"></a>已启用 Arc 的 Kubernetes
+## <a name="azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 的 Kubernetes
 
 [!INCLUDE [azure-policy-reference-rp-aks-kubernetes](../../../includes/policy/reference/byrp/microsoft.kubernetes.md)]
 

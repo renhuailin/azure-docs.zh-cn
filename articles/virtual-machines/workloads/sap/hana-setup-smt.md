@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 06/25/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8793e5d8badc6ef19462651e1e039cdae1e8bac
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 9350b6d2a8b593e224da817bcbc3142605276248
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981369"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599119"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>为 SUSE Linux 安装 SMT 服务器
 
 在本文中，我们将逐步介绍为 Azure SAP HANA 大型实例（也称为“BareMetal 基础结构”）安装 SMT 服务器的步骤。
 
-SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系统提供程序注册此类单元，也无法直接下载并应用更新。 SUSE Linux 的解决方案是在 Azure 虚拟机 (VM) 中安装 SMT 服务器。 你将在连接到 HANA 大型实例 (HLI) 的 Azure 虚拟网络中托管虚拟机。 通过此类 SMT 服务器，HANA 大型实例可以注册并下载更新。 
+SAP HANA 的大型实例不直接连接到 Internet。 因此，无法直接向操作系统提供程序注册此类单元，也无法直接下载并应用更新。 SUSE Linux 的解决方案是在 Azure 虚拟机 (VM) 中安装 SMT 服务器。 你将在连接到 HANA 大型实例 (HLI) 的 Azure 虚拟网络中托管虚拟机。 SMT 服务器到位以后，HANA 大型实例可以注册并下载更新。 
 
 有关 SUSE 的更多信息，请参阅[适用于 SLES 12 SP2 的订阅管理工具](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf)。 
 
@@ -38,7 +38,7 @@ SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系�
 
 ## <a name="install-smt-server-on-an-azure-virtual-machine"></a>在 Azure 虚拟机上安装 SMT 服务器
 
-1. 登录 [SUSE 客户中心](https://scc.suse.com/)。 转到“组织” > “组织凭据” 。 在此部分中，应能找到安装 SMT 服务器所需的凭据。
+1. 登录 [SUSE 客户中心](https://scc.suse.com/)。 转到“组织” > “组织凭据” 。 在该部分，应能找到安装 SMT 服务器所需的凭据。
 
 2. 在 Azure 虚拟网络中安装 SUSE Linux VM。 若要部署此虚拟机，请获取 Azure 的 SLES 12 SP2 库映像（选择 BYOS SUSE 映像）。 在部署过程中，请勿定义 DNS 名称，也不要使用静态 IP 地址。
 
@@ -50,7 +50,7 @@ SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系�
 
     ![屏幕截图显示了 PuTTy 窗口中添加的磁盘。](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
-4. 登录到 HANA 大型实例，维护 /etc/hosts。 检查是否可以访问将通过网络运行 SMT 服务器的 Azure 虚拟机。
+4. 登录到 HANA 大型实例；维护 /etc/hosts。 检查是否可以访问将通过网络运行 SMT 服务器的 Azure 虚拟机。
 
 5. 登录到将运行 SMT 服务器的 Azure 虚拟机。 若要使用 putty 登录虚拟机，在 bash 窗口中运行以下命令序列：
 
@@ -71,7 +71,7 @@ SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系�
     Successfully registered system.
     ```
     
-8. 在虚拟机连接到 SUSE 站点之后，安装 smt 包。 使用以下 putty 命令安装 smt 包。
+8. 在虚拟机连接到 SUSE 站点之后，安装 SMT 包。 使用以下 putty 命令安装 SMT 包。
 
     ```
     smtserver:~ # zypper in smt
@@ -81,28 +81,28 @@ SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系�
     Resolving package dependencies...
     ```
     
-    还可以使用 YAST 工具安装 smt 包。 在 YAST 中，转到“软件维护”并搜索 smt。 选择“smt”后会自动切换到“yast2-smt”。
+    还可以使用 YAST 工具安装 SMT 包。 在 YAST 中，转到“软件维护”并搜索 smt。 选择“smt”后会自动切换到“yast2-smt”。
 
-    ![YAST 中 SMT 的屏幕截图。](./media/hana-installation/image5_smt_in_yast.PNG)
+    [![YAST 中 SMT 的屏幕截图。](./media/hana-installation/image5_smt_in_yast.PNG)](./media/hana-installation/image5_smt_in_yast.PNG#lightbox)
 
     接受 smtserver 上的安装选择。 
 
 
 9. 安装完成后，转到 SMT 服务器配置。 输入之前从 SUSE 客户中心检索到的组织凭据。 此外，还请输入 Azure 虚拟机主机名，作为 SMT 服务器 URL。 本示例中为 https:\//smtserver。
 
-    ![SMT 服务器配置的屏幕截图。](./media/hana-installation/image6_configuration_of_smtserver1.png)
+    [![SMT 服务器配置的屏幕截图。](./media/hana-installation/image6_configuration_of_smtserver1.png)](./media/hana-installation/image6_configuration_of_smtserver1.png#lightbox)
 
 10. 现在，测试与 SUSE 客户中心的连接是否有效。 如以下屏幕截图所示，在此示例中，连接确实有效。
 
-    ![测试与 SUSE 客户中心的连接的屏幕截图。](./media/hana-installation/image7_test_connect.png)
+    [![测试与 SUSE 客户中心的连接的屏幕截图。](./media/hana-installation/image7_test_connect.png)](./media/hana-installation/image7_test_connect.png#lightbox)
 
 11. 在 SMT 安装程序启动后，提供数据库密码。 因为是新安装，所以应定义该密码，如以下屏幕截图所示。
 
-    ![定义数据库密码的屏幕截图。](./media/hana-installation/image8_define_db_passwd.PNG)
+    [![定义数据库密码的屏幕截图。](./media/hana-installation/image8_define_db_passwd.PNG)](./media/hana-installation/image8_define_db_passwd.PNG#lightbox)
 
 12. 创建证书。
 
-    ![为 SMT 服务器创建证书的屏幕截图。](./media/hana-installation/image9_certificate_creation.PNG)
+    [![为 SMT 服务器创建证书的屏幕截图。](./media/hana-installation/image9_certificate_creation.PNG)](./media/hana-installation/image9_certificate_creation.PNG#lightbox)
 
     在配置结束时，可能需要几分钟才能运行同步检查。 安装和配置 SMT 服务器后，在装入点 /srv/www/htdocs 下应当能找到目录存储库。 存储库下还有一些子目录。 
 
@@ -118,13 +118,13 @@ SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系�
 
 1. 重启所有服务后，使用 YAST 在“SMT 管理”中选择相应程序包。 程序包的选择取决于 HANA 大型实例服务器的操作系统映像。 而不依赖于 SLES 版本或运行 SMT 服务器的虚拟机版本。 下面的屏幕截图展示了此选择屏幕的示例。
 
-    ![选择程序包的屏幕截图。](./media/hana-installation/image10_select_packages.PNG)
+    [![选择程序包的屏幕截图。](./media/hana-installation/image10_select_packages.PNG)](./media/hana-installation/image10_select_packages.PNG#lightbox)
 
 2. 开始将所选程序包的初始副本复制到安装的 SMT 服务器上。 在 shell 中使用命令 smt-mirror 触发此次复制。
 
-    ![将程序包下载到 SMT 服务器的屏幕截图](./media/hana-installation/image11_download_packages.PNG)
+   [ ![将包下载到 SMT 服务器的屏幕截图](./media/hana-installation/image11_download_packages.PNG)](./media/hana-installation/image11_download_packages.PNG#lightbox)
 
-    应将程序包复制到装入点 /srv/www/htdocs 下创建的目录。 此过程可能需要一个小时或以上，具体取决于选择的程序包数量。 完成后，继续安装 SMT 客户端。 
+    应将包复制到装入点 /srv/www/htdocs 下创建的目录。 此过程可能需要一个小时或以上，具体取决于选择的程序包数量。 完成后，继续安装 SMT 客户端。 
 
 ## <a name="set-up-the-smt-client-on-hana-large-instances"></a>在 HANA 大型实例上安装 SMT 客户端
 
@@ -132,11 +132,11 @@ SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系�
 
 将此脚本复制到要连接到 SMT 服务器的 HANA 大型实例中。 使用 -h 选项启动此脚本，并将 SMT 服务器名称作为参数。 在本示例中，名称为“smtserver”。
 
-![配置 SMT 客户端的屏幕截图。](./media/hana-installation/image12_configure_client.PNG)
+[![配置 SMT 客户端的屏幕截图。](./media/hana-installation/image12_configure_client.PNG)](./media/hana-installation/image12_configure_client.PNG#lightbox)
 
 客户端从服务器加载证书可能会成功。 但在此示例中，注册失败，如以下屏幕截图所示。
 
-![客户端注册失败的屏幕截图。](./media/hana-installation/image13_registration_failed.PNG)
+[![客户端注册失败的屏幕截图。](./media/hana-installation/image13_registration_failed.PNG)](./media/hana-installation/image13_registration_failed.PNG#lightbox)
 
 如果无法注册，请参阅 [SUSE 支持文档](https://www.suse.com/de-de/support/kb/doc/?id=7006024)，并运行其中所述步骤。
 
@@ -154,7 +154,7 @@ SUSEConnect –cleanup
 
 如果发现需要根据 SUSE 文章的步骤进行修复的问题，请在 HANA 大型实例上重启 clientSetup4SMT.sh。 现在，应该可以成功完成了。
 
-![成功注册客户端的屏幕截图。](./media/hana-installation/image14_finish_client_config.PNG)
+[![成功注册客户端的屏幕截图。](./media/hana-installation/image14_finish_client_config.PNG)](./media/hana-installation/image14_finish_client_config.PNG#lightbox)
 
 你已将 HLI 的 SMT 客户端配置为连接到安装在 Azure VM 上的 SMT 服务器。 现在，使用“zypper up”或“zypper in”将 OS 更新安装到 HANA 大型实例，或者安装其他程序包。 只能在 SMT 服务器上获得之前下载的更新。
 

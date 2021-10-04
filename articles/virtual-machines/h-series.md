@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 09/11/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 8f48e6bd94566922066b277553f64b25f5d55a45
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 75e3dc21c5cb5e8590b63c3382260331bb0bd844
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696335"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754640"
 ---
 # <a name="h-series"></a>H 系列
 
@@ -47,7 +47,7 @@ H 系列 VM 针对由高 CPU 频率或每核心大内存要求驱动的应用程
 
 ## <a name="software-specifications"></a>软件规格
 
-| 软件规格     |HC 系列 VM           |
+| 软件规格     |H 系列 VM           |
 |-----------------------------|-----------------------|
 | 最大 MPI 作业大小            | 4800 个内核（单个虚拟机规模中的 300 个虚拟机，且 singlePlacementGroup = true）  |
 | MPI 支持                 | Intel MPI 5.x、MS-MPI  |
@@ -58,7 +58,7 @@ H 系列 VM 针对由高 CPU 频率或每核心大内存要求驱动的应用程
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
@@ -66,6 +66,11 @@ H 系列 VM 针对由高 CPU 频率或每核心大内存要求驱动的应用程
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息，请参阅 [Azure 有哪些可用的磁盘类型？](disks-types.md)
+
 
 ## <a name="next-steps"></a>后续步骤
 

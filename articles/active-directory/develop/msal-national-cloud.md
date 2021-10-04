@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/22/2019
+ms.date: 09/21/2021
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: c1ecf807d566fd6603f12ebc820c176edf96ec14
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8b8ae31aa2af84a6f8dfd4f93c90a09e58805f73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071828"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598793"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -26,13 +26,20 @@ ms.locfileid: "108071828"
 
 除了 Microsoft 全球云以外，Microsoft 身份验证库 (MSAL) 使得国家/地区云中的应用程序开发人员能够获取令牌，以便进行身份验证并调用受保护的 Web API。 这些 Web API 可以是 Microsoft Graph 或其他 Microsoft API。
 
-包括全球云在内，Azure Active Directory (Azure AD) 在以下国家/地区云中部署：  
+包括全球 Azure 云在内，Azure Active Directory (Azure AD) 在以下国家/地区云中部署： 
 
 - Azure Government
 - Azure 中国世纪互联
-- Azure 德国
+- Azure 德国（[于 2021 年 10 月 29 日关闭](https://www.microsoft.com/cloud-platform/germany-cloud-regions)）
 
 本指南演示了如何登录到工作和学校帐户、获取访问令牌，并在 [Azure 政府云](https://azure.microsoft.com/global-infrastructure/government/)环境中调用 Microsoft Graph API。
+
+## <a name="azure-germany-microsoft-cloud-deutschland"></a>Azure 德国（Microsoft 云德国版）
+
+> [!WARNING]
+> Azure 德国（Microsoft 云德国版）将[于 2021 年 10 月 29 日关闭](https://www.microsoft.com/cloud-platform/germany-cloud-regions)。 你选择不在该日期之前将其迁移到全球 Azure 中的某个区域的服务和应用程序将变得不可访问。
+
+如果尚未从 Azure 德国迁移应用程序，请按[有关如何从 Azure 德国进行迁移的 Azure Active Directory 信息](/microsoft-365/enterprise/ms-cloud-germany-transition-azure-ad)中的说明开始迁移。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -214,4 +221,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure 中国世纪互联](/azure/china/)
-- [Azure 德国](../../germany/index.yml)
+- [Azure 德国（于 2021 年 10 月 29 日关闭）](../../germany/index.yml)

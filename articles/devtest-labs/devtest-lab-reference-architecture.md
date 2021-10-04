@@ -1,15 +1,15 @@
 ---
-title: Azure 开发测试实验室的企业参考体系结构
+title: 企业参考体系结构
 description: 本文提供了面向企业中 Azure 开发测试实验室的参考体系结构指导。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 2a7c98784e230292afdb5cd217c2f0455034ad70
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: e76219222db1dbe6aa7cdc7d7a2ef5be995109e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111814577"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652351"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>面向企业的 Azure 开发测试实验室参考体系结构
 本文提供了参考体系结构，可帮助你根据企业中的 Azure 开发测试实验室部署解决方案。 包括以下各项：

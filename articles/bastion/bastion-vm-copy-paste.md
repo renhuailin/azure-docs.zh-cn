@@ -1,22 +1,22 @@
 ---
-title: 复制并粘贴到虚拟机以及从中进行复制和粘贴：Azure Bastion
-description: 了解如何使用 Bastion 复制并粘贴到 Azure VM 以及从中进行复制和粘贴。
+title: 复制并粘贴到 Windows 虚拟机以及从中进行复制和粘贴：Azure Bastion
+description: 了解如何使用 Bastion 复制并粘贴到 Windows VM 以及从中进行复制和粘贴。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: b8c90e3c8bea7f6471a60804f546957f5236b70b
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5ce8faa76e1ddbd8d1d1adb52759dba0afe9c737
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536006"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629609"
 ---
-# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>复制并粘贴到虚拟机：Azure Bastion
+# <a name="copy-and-paste-to-a-windows-virtual-machine-azure-bastion"></a>复制并粘贴到 Windows 虚拟机：Azure Bastion
 
-本文可帮助你在使用 Azure Bastion 时将内容复制并粘贴到虚拟机，以及从中进行复制和粘贴。 使用 VM 之前，请确保已按照[创建 Bastion 主机](./tutorial-create-host-portal.md)的步骤进行操作。 然后，连接到要通过 [RDP](bastion-connect-vm-rdp.md) 或 [SSH](bastion-connect-vm-ssh.md) 使用的 VM。
+本文可帮助你在使用 Azure Bastion 时将内容复制并粘贴到虚拟机，以及从中进行复制和粘贴。 使用 VM 之前，请确保已按照[创建 Bastion 主机](./tutorial-create-host-portal.md)的步骤进行操作。 然后，连接到要通过 [RDP](bastion-connect-vm-rdp-windows.md) 或 [SSH](bastion-connect-vm-ssh-windows.md) 使用的 VM。
 
 对于支持高级剪贴板 API 访问的浏览器，可以使用在本地设备上的应用程序之间进行复制和粘贴的相同方式在本地设备与远程会话之间复制和粘贴文本。 对于其他浏览器，可以使用 Bastion 剪贴板访问工具面板。
 

@@ -3,37 +3,37 @@ title: 使用 Azure Active Directory B2C 为开发人员帐户授权
 titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员门户的用户授权
 services: api-management
-author: miaojiang
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.date: 07/07/2021
-ms.author: apimpm
-ms.openlocfilehash: 6385f87eec00820d535845df21a44965e1708a55
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.date: 09/28/2021
+ms.author: danlep
+ms.openlocfilehash: 900692d5f38e0ed1796a3cac213407a3bec29660
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568104"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212905"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员帐户授权
 
 
 Azure Active Directory B2C 是一种云标识管理解决方案，适用于面向使用者的 Web 和移动应用程序。 可以使用它来管理对 API 管理开发人员门户的访问。 
 
-本指南说明为了与 Azure Active Directory B2C 集成，需要在 API 管理服务中完成哪些配置。 如果你使用的是被弃用的旧版开发人员门户，则某些步骤会有所不同，如本文所述。
+本教程介绍为了与 Azure Active Directory B2C 集成而需要在 API 管理服务中完成的配置。 如本文后面所述，如果你使用的是已弃用的旧版开发人员门户，则某些步骤会有所不同。
 
 有关使用经典 Azure Active Directory 启用对开发人员门户的访问的信息，请参阅[如何使用 Azure Active Directory 为开发人员帐户授权](api-management-howto-aad.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 要在其中创建应用程序的 Azure Active Directory B2C 租户。 有关详细信息，请参阅 [Azure Active Directory B2C 概述](../active-directory-b2c/overview.md)。
-* 如果你还没有 API 管理服务，请完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
+* API 管理实例。 如果还没有此实例，请[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="configure-sign-up-and-sign-in-user-flow"></a>配置注册和登录用户流
 
-在本部分，请在你的 Azure Active Directory B2C 租户中创建包含注册和登录策略的用户流。 有关详细步骤，请参阅[在 Azure Active Directory B2C 中创建用户流和自定义策略](../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-us)。
+在本部分，需在 Azure Active Directory B2C 租户中创建包含注册和登录策略的用户流。 有关详细步骤，请参阅[在 Azure Active Directory B2C 中创建用户流和自定义策略](../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-us)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，访问你的 Azure Active Directory B2C 租户。
 1. 在“策略”下，选择“用户流” > “+ 新建用户流”。 
@@ -76,11 +76,11 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于面�
    * 将密钥记录在一个安全的位置。 退出此页面后，此机密值永不再显示。
 1. 切换回 API 管理的“添加标识提供者”页面，将密钥粘贴到“客户端机密”文本框中。
 1. 切换回 B2C 应用注册。 在左侧菜单中的“管理”下，选择“身份验证” 。
-    * 在“隐式授权”下，选中“访问令牌”复选框。
+    * 在“隐式授权和混合流”下，选中“访问令牌”和“ID 令牌”复选框 。
     * 选择“保存”。
 1. 切换回 API 管理的“添加标识提供者”页。
     * 在“登录租户”中，指定 Azure Active Directory B2C 租户的域名。
-    * 可以使用“颁发机构”字段控制要使用的 Azure AD B2C 登录 URL。 将值设置为“<your_b2c_tenant_name>.b2clogin.com”。
+    * 可以使用“颁发机构”字段控制要使用的 Azure Active Directory B2C 登录 URL。 将值设置为“<your_b2c_tenant_name>.b2clogin.com”。
     * 在 B2C 租户策略中指定“注册策略”和“登录策略”。
     * 还可以提供“个人资料编辑策略”和“密码重置策略”。 
 
@@ -89,12 +89,12 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于面�
 
 保存更改后，开发人员可以使用 Azure Active Directory B2C 创建新帐户并登录到开发人员门户。
 
-## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>开发人员门户 - 添加 Azure AD B2C 帐户身份验证
+## <a name="developer-portal---add-azure-active-directory-b2c-account-authentication"></a>开发人员门户 - 添加 Azure Active Directory B2C 帐户身份验证
 
 > [!IMPORTANT]
 > 在创建或更新 Azure Active Directory B2C 配置设置时，需要[重新发布开发人员门户](api-management-howto-developer-portal-customize.md#publish)，以使更改生效。
 
-在开发人员门户中，可以使用“登录按钮: OAuth”小组件通过 Azure AD B2C 进行登录。 此小组件已包括在默认开发人员门户内容的登录页上。
+在开发人员门户中，可以使用“登录按钮: OAuth”小组件通过 Azure Active Directory B2C 进行登录。 此小组件已包括在默认开发人员门户内容的登录页上。
 
 1. 若要使用 Azure Active Directory B2C 进行登录，请打开一个新的浏览器窗口并转到开发人员门户。 选择“登录”。
 
@@ -107,29 +107,35 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于面�
 
 :::image type="content" source="media/api-management-howto-aad-b2c/developer-portal-home.png" alt-text="登录到开发人员门户的操作完成":::
 
-尽管每当新用户使用 Azure AD B2C 登录时都会自动创建一个新帐户，但你可以考虑向注册页添加同一个小组件。
+尽管每当新用户使用 Azure Active Directory B2C 登录时都会自动创建一个新帐户，但你可以考虑向注册页添加同一个小组件。
 
 “注册表单：OAuth”小组件表示用于注册 OAuth 的表单。
 
-## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>旧开发人员门户 - 如何使用 Azure AD B2C 注册
+## <a name="legacy-developer-portal---how-to-sign-up-with-azure-active-directory-b2c"></a>旧开发人员门户 - 如何使用 Azure Active Directory B2C 注册
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-1. 若要使用 Azure AD B2C 注册开发人员帐户，请打开新的浏览器窗口并转到旧版开发人员门户。 单击“注册”按钮。
+> [!NOTE]
+> 若要将 B2C 与旧版开发人员门户正确集成，请使用标准 v1 用户流，并且在使用 Azure Active Directory B2C 注册/登录开发人员帐户之前启用[密码重置](/active-directory-b2c/user-flow-self-service-password-reset.md)。 
+
+1. 打开新的浏览器窗口，转到旧版开发人员门户。 单击“注册”按钮。
 
     :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal.png" alt-text="在旧版开发人员门户中注册":::
+
 1. 选择使用 **Azure Active Directory B2C** 注册。
 
     :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal-b2c-button.png" alt-text="使用 Azure Active Directory B2C 进行注册":::
 
-3. 将重定向到在上一部分中配置的注册策略。 选择使用电子邮件地址或现有的某个社交帐户注册。
+1. 系统会将你重定向到在上一部分配置的注册策略。 选择使用电子邮件地址或现有的某个社交帐户注册。
 
    > [!NOTE]
-   > 如果“Azure Active Directory B2C”是发布者门户上“标识”选项卡中启用的唯一选项，将直接重定向到注册策略。
+   > 如果“Azure Active Directory B2C”是发布者门户中“标识”选项卡上启用的唯一选项，系统会将你直接重定向到注册策略。
 
    :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal-b2c-options.png" alt-text="旧版开发人员门户中的注册选项":::
 
    注册完成后，将重定向回到开发人员门户。 现已登录到 API 管理服务实例的开发人员门户。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

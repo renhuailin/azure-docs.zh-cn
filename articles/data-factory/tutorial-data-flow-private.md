@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: e73b2a96d2b051dbb208bb9614569c423f99d8f0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fb7dfc93048d888eb83088ca2a3f458219fdc393
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749824"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617880"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>使用映射数据流安全地转换数据
 
@@ -71,15 +71,15 @@ ms.locfileid: "121749824"
 
 1. 在数据工厂门户中，转到“管理”，然后选择“新建”来新建 Azure IR。
 
-   ![展示了如何新建 Azure IR 的屏幕截图。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/create-new-azure-ir.png" alt-text="展示了如何新建 Azure IR 的屏幕截图。":::
 1. 在“集成运行时安装”页上，根据所需的功能选择要创建的集成运行时。 在本教程中，选择“Azure”、“自承载”，然后单击“继续” 。 
 1. 选择“Azure”，然后单击“继续”以创建 Azure 集成运行时 。
 
-   ![展示了新 Azure IR 的屏幕截图。](./media/tutorial-copy-data-portal-private/azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/azure-ir.png" alt-text="展示了新 Azure IR 的屏幕截图。":::
 
 1. 在“虚拟网络配置(预览)”下，选择“启用” 。
 
-   ![展示了如何启用新 Azure IR 的屏幕截图。](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/enable-managed-vnet.png" alt-text="展示了如何启用新 Azure IR 的屏幕截图。":::
 
 1. 选择“创建”  。
 
@@ -89,19 +89,19 @@ ms.locfileid: "121749824"
 
 1. 在 Azure 数据工厂的主页上，选择“协调”。
 
-   ![屏幕截图显示正在创建管道。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="屏幕截图显示正在创建管道。":::
 
 1. 在管道的“属性”窗格中，输入“TransformMovies”作为管道名称。
 1. 在“活动”窗格中，展开“移动和转换”。 将“数据流”活动从窗格中拖动到管道画布上。
 
 1. 在“添加数据流”弹出窗口中，选中“新建数据流”，然后选择“映射数据流”。 完成后，选择“确定”。
 
-    ![展示了“映射数据流”的屏幕截图。](media/tutorial-data-flow-private/mapping-dataflow.png)
+    :::image type="content" source="media/tutorial-data-flow-private/mapping-dataflow.png" alt-text="展示了“映射数据流”的屏幕截图。":::
 
 1. 在“属性”窗格中，将数据流命名为“TransformMovies”。
 1. 在管道画布的顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
-    ![展示了“数据流调试”滑块的屏幕截图。](media/tutorial-data-flow-private/dataflow-debug.png)
+    :::image type="content" source="media/tutorial-data-flow-private/dataflow-debug.png" alt-text="展示了“数据流调试”滑块的屏幕截图。":::
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>在数据流画布中构建转换逻辑
 
@@ -125,7 +125,7 @@ ms.locfileid: "121749824"
 
 1. 请确保启用“交互式创作”。 它可能需要 1 分钟才能启用。
 
-    ![显示交互式创作的屏幕截图。](./media/tutorial-data-flow-private/interactive-authoring.png)
+    :::image type="content" source="./media/tutorial-data-flow-private/interactive-authoring.png" alt-text="显示交互式创作的屏幕截图。":::
 
 1. 选择“测试连接”。 它应该会失败，因为存储帐户不允许在没有创建和批准专用终结点的情况下访问它。 在错误消息中，应会看到一个用于创建专用终结点的链接，可以通过该链接创建托管的专用终结点。 替代方法是直接转到“管理”选项卡，然后按照[此部分](#create-a-managed-private-endpoint)中的说明操作来创建托管专用终结点。
 
@@ -137,11 +137,11 @@ ms.locfileid: "121749824"
 
 1. 在“创建数据集”屏幕上的“文件路径”字段下，输入文件所在的位置。 在本教程中，文件 moviesDB.csv 位于容器 sample-data 中。 由于此文件有标题，因此请选中“第一行作为标题”复选框。 选择“从连接/存储”，以直接从存储中的文件导入标头架构。 完成后，选择“确定”。
 
-    ![展示了源路径的屏幕截图。](media/tutorial-data-flow-private/source-file-path.png)
+    :::image type="content" source="media/tutorial-data-flow-private/source-file-path.png" alt-text="展示了源路径的屏幕截图。":::
 
 1. 如果调试群集已启动，请转到源转换的“数据预览”选项卡，然后选择“刷新”来获取数据快照。 可以使用数据预览来验证是否已正确配置转换。
 
-    ![展示了“数据预览”选项卡的屏幕截图。](media/tutorial-data-flow-private/data-preview.png)
+    :::image type="content" source="media/tutorial-data-flow-private/data-preview.png" alt-text="展示了“数据预览”选项卡的屏幕截图。":::
 
 #### <a name="create-a-managed-private-endpoint"></a>创建托管专用终结点
 
@@ -155,7 +155,7 @@ ms.locfileid: "121749824"
 1. 转到“托管专用终结点”部分。
 1. 选择“托管专用终结点”下的“+ 新建” 。
 
-    ![显示托管专用终结点“新建”按钮的屏幕截图。](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-data-flow-private/new-managed-private-endpoint.png" alt-text="显示托管专用终结点“新建”按钮的屏幕截图。"::: 
 
 1. 从列表中选择“Azure Data Lake Storage Gen2”磁贴，然后选择“继续”。
 1. 输入创建的存储帐户的名称。
@@ -163,7 +163,7 @@ ms.locfileid: "121749824"
 1. 几秒钟后，应会显示创建的专用链接需要审批。
 1. 选择创建的专用终结点。 可以看到一个超链接，该超链接将引导你在存储帐户级别批准专用终结点。
 
-    ![展示了“管理专用终结点”窗格的屏幕截图。](./media/tutorial-data-flow-private/manage-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-data-flow-private/manage-private-endpoint.png" alt-text="展示了“管理专用终结点”窗格的屏幕截图。"::: 
 
 #### <a name="approval-of-a-private-link-in-a-storage-account"></a>在存储帐户中批准专用链接
 
@@ -171,7 +171,7 @@ ms.locfileid: "121749824"
 
 1. 选中你创建的专用终结点旁边的复选框，然后选择“批准”。
 
-    ![展示了专用终结点“批准”按钮的屏幕截图。](./media/tutorial-data-flow-private/approve-private-endpoint.png)
+    :::image type="content" source="./media/tutorial-data-flow-private/approve-private-endpoint.png" alt-text="展示了专用终结点“批准”按钮的屏幕截图。":::
 
 1. 添加描述，然后选择“是”。
 1. 返回到数据工厂中“管理”选项卡的“托管专用终结点”部分 。
@@ -181,65 +181,65 @@ ms.locfileid: "121749824"
 
 1. 在数据流画布上的源节点旁边，选择加号图标来添加新转换。 要添加的第一个转换是“筛选”。
 
-    ![展示了如何添加筛选的屏幕截图。](media/tutorial-data-flow-private/add-filter.png)
+    :::image type="content" source="media/tutorial-data-flow-private/add-filter.png" alt-text="展示了如何添加筛选的屏幕截图。":::
 1. 将筛选器转换命名为 FilterYears。 选择“筛选依据”旁边的表达式框，以打开表达式生成器。 可在此处指定筛选条件。
 
-    ![展示了 FilterYears 的屏幕截图。](media/tutorial-data-flow-private/filter-years.png)
+    :::image type="content" source="media/tutorial-data-flow-private/filter-years.png" alt-text="展示了 FilterYears 的屏幕截图。":::
 1. 数据流表达式生成器允许你以交互方式生成要用于各种转换的表达式。 表达式可以包含内置函数、输入架构中的列和用户定义的参数。 若要详细了解如何生成表达式，请参阅[数据流表达式生成器](./concepts-data-flow-expression-builder.md)。
 
-    * 在本教程中，你要筛选出在 1910 年到 2000 年之间上映的喜剧流派电影。 由于年份目前是字符串，因此你需要使用 ```toInteger()``` 函数将其转换为整数。 使用大于或等于 (>=) 和小于或等于 (<=) 运算符与字面量年份值 1910 和 2000 进行比较。 将这些表达式与 and (&&) 运算符结合在一起。 表达式如下所示：
+    * 在本教程中，你要筛选出在 1910 年到 2000 年之间上映的喜剧流派电影。 由于年份目前是字符串，因此你需要使用 `toInteger()` 函数将其转换为整数。 使用大于或等于 (>=) 和小于或等于 (<=) 运算符与字面量年份值 1910 和 2000 进行比较。 将这些表达式与 and (&&) 运算符结合在一起。 表达式如下所示：
 
-        ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
+        `toInteger(year) >= 1910 && toInteger(year) <= 2000`
 
-    * 若要找出哪些电影是喜剧，则可以使用 ```rlike()``` 函数在“流派”列中查找“喜剧”模式。 将 rlike 表达式与年份比较结合得到：
+    * 若要找出哪些电影是喜剧，则可以使用 `rlike()` 函数在“流派”列中查找“喜剧”模式。 将 `rlike` 表达式与年份比较结合可得到：
 
-        ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
+        `toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')`
 
     * 如果有处于活动状态的调试群集，则可以通过选择“刷新”来查看表达式输出与所使用的输入之间的比较，以验证逻辑。 关于如何使用数据流表达式语言来实现此逻辑，有多个正确答案。
 
-        ![展示了筛选表达式的屏幕截图。](media/tutorial-data-flow-private/filter-expression.png)
+        :::image type="content" source="media/tutorial-data-flow-private/filter-expression.png" alt-text="展示了筛选表达式的屏幕截图。":::
 
     * 完成表达式后，选择“保存并完成”。
 
 1. 提取“数据预览”以验证筛选器是否正常工作。
 
-    ![展示了筛选后的“数据预览”的屏幕截图。](media/tutorial-data-flow-private/filter-data.png)
+    :::image type="content" source="media/tutorial-data-flow-private/filter-data.png" alt-text="展示了筛选后的“数据预览”的屏幕截图。":::
 
 ### <a name="add-the-aggregate-transformation"></a>添加聚合转换
 
 1. 要添加的下一个转换是“架构修饰符”下的“聚合”转换 。
 
-    ![展示了如何添加聚合的屏幕截图。](media/tutorial-data-flow-private/add-aggregate.png)
+    :::image type="content" source="media/tutorial-data-flow-private/add-aggregate.png" alt-text="展示了如何添加聚合的屏幕截图。":::
 1. 将聚合转换命名为“AggregateComedyRating”。 在“分组依据”选项卡中，从下拉框中选择“年份”，以按电影上映年份对聚合进行分组。
 
-    ![展示了聚合组的屏幕截图。](media/tutorial-data-flow-private/group-by-year.png)
+    :::image type="content" source="media/tutorial-data-flow-private/group-by-year.png" alt-text="展示了聚合组的屏幕截图。":::
 1. 转到“聚合”选项卡。在左侧文本框中，将聚合列命名为 AverageComedyRating。 选择右侧的表达式框，以通过表达式生成器输入聚合表达式。
 
-    ![展示了聚合列名称的屏幕截图。](media/tutorial-data-flow-private/name-column.png)
+    :::image type="content" source="media/tutorial-data-flow-private/name-column.png" alt-text="展示了聚合列名称的屏幕截图。":::
 1. 若要获取 Rating 列的平均值，请使用 ```avg()``` 聚合函数。 由于“评分”是字符串，但 ```avg()``` 接受数字输入，因此必须通过 ```toInteger()``` 函数将值转换为数字。 该表达式如下所示：
 
-    ```avg(toInteger(Rating))```
+    `avg(toInteger(Rating))`
 
 1. 完成后，选择“保存并完成”。
 
-    ![展示了如何保存聚合的屏幕截图。](media/tutorial-data-flow-private/save-aggregate.png)
+    :::image type="content" source="media/tutorial-data-flow-private/save-aggregate.png" alt-text="展示了如何保存聚合的屏幕截图。":::
 1. 转到“数据预览”选项卡以查看转换输出。 请注意，这里只有两个列，year 和 AverageComedyRating 。
 
 ### <a name="add-the-sink-transformation"></a>添加接收器转换
 
 1. 接下来，你需要在“目标”下添加“接收器”转换 。
 
-    ![展示了如何添加接收器的屏幕截图。](media/tutorial-data-flow-private/add-sink.png)
+    :::image type="content" source="media/tutorial-data-flow-private/add-sink.png" alt-text="展示了如何添加接收器的屏幕截图。":::
 1. 将接收器命名为 Sink。 选择“新建”，以创建接收器数据集。
 
-    ![展示了如何创建接收器的屏幕截图。](media/tutorial-data-flow-private/create-sink.png)
+    :::image type="content" source="media/tutorial-data-flow-private/create-sink.png" alt-text="展示了如何创建接收器的屏幕截图。":::
 1. 在“新建数据集”页中，选中“Azure Data Lake Storage Gen2”，然后选择“继续”。
 
 1. 在“选择格式”页上，选中“DelimitedText”，然后选择“继续”。
 
 1. 将接收器数据集命名为 MoviesSink。 对于链接服务，选择你为源转换创建的同一 ADLSGen2 链接服务。 输入要向其写入数据的输出文件夹。 在本教程中，我们将写入到容器 sample-data 中的文件夹 output。 该文件夹不需要事先存在，可以动态创建。 选中“第一行作为标题”复选框，并为“导入架构”选择“无”。 选择“确定”。
 
-    ![展示了接收器路径的屏幕截图。](media/tutorial-data-flow-private/sink-file-path.png)
+    :::image type="content" source="media/tutorial-data-flow-private/sink-file-path.png" alt-text="展示了接收器路径的屏幕截图。":::
 
 现在，你已经完成了数据流的构建。 你已准备好在管道中运行它。
 
@@ -253,7 +253,7 @@ ms.locfileid: "121749824"
 
 1. 在“详细信息”页上，可以看到行数和每个转换步骤所花费的时间。
 
-    ![展示了监视运行的屏幕截图。](media/tutorial-data-flow-private/run-details.png)
+    :::image type="content" source="media/tutorial-data-flow-private/run-details.png" alt-text="展示了监视运行的屏幕截图。":::
 1. 选择转换来获取数据的列和分区的详细信息。
 
 如果已正确遵循本教程，则应在接收器文件夹中写入 83 个行和 2 个列。 可以通过检查 Blob 存储来验证数据是否正确。

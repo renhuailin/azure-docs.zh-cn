@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: 69366f82c746d1d436d437e2892b010331ecf967
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: dcf969745fcc3c98b5bd0a9ba3681be602b73eb1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429021"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210205"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -88,23 +88,26 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
 
-## <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>创建具有公共 DNS 地址的专用 AKS 群集
+## <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>创建具有公共 FQDN 的专用 AKS 群集
 
 先决条件：
 
-* 具有 aks-preview 扩展 0.5.29 或更高版本的 Azure CLI。
+* Azure CLI 版本至少为 2.28.0，或者 Azure CLI 的 aks-preview 扩展版本至少为 0.5.29。
 * 如果使用 ARM 或 REST API，则 AKS API 版本必须是 2021-05-01 或更高版本。
 
 可以利用“公共 DNS”选项来简化专用群集的路由选项。  
 
 ![公共 DNS](https://user-images.githubusercontent.com/50749048/124776520-82629600-df0d-11eb-8f6b-71c473b6bd01.png)
 
-1. 在预配专用 AKS 群集时指定 `--enable-public-fqdn`，AKS 会在 Azure 公共 DNS 中为其 FQDN 创建其他 A 记录。 代理节点仍使用专用 DNS 区域中的 A 记录来解析专用终结点的专用 IP 地址，以便与 API 服务器通信。
+1. 预配专用 AKS 群集时，AKS 默认情况下会在 Azure 公共 DNS 中创建一个额外的公共 FQDN 和相应的 A 记录。 代理节点仍使用专用 DNS 区域中的 A 记录来解析专用终结点的专用 IP 地址，以便与 API 服务器通信。
 
-2. 如果同时使用 `--enable-public-fqdn` 和 `--private-dns-zone none`，则群集将只有公共 FQDN。 使用此选项时，不会创建专用 DNS 区域，也不会将其用于 API 服务器 FQDN 的名称解析。 该 API 的 IP 仍是专用 IP，不可公开路由。
+2. 如果使用 `--private-dns-zone none`，则群集将只有公共 FQDN。 使用此选项时，不会创建专用 DNS 区域，也不会将其用于 API 服务器 FQDN 的名称解析。 该 API 的 IP 仍是专用 IP，不可公开路由。
+
+3. 如果不需要公共 FQDN，可以使用 `--disable-public-fqdn` 禁用它（“none”专用 dns 区域不允许禁用公共 FQDN）。
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <private-dns-zone-mode> --enable-public-fqdn
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <private-dns-zone-mode> --disable-public-fqdn
+az aks update -n <private-cluster-name> -g <private-cluster-resource-group> --disable-public-fqdn
 ```
 
 ## <a name="options-for-connecting-to-the-private-cluster"></a>连接到专用群集的选项
@@ -114,35 +117,17 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 * 在与 AKS 群集相同的 Azure 虚拟网络 (VNet) 中创建 VM。
 * 在单独的网络中使用 VM 并设置[虚拟网络对等互联][virtual-network-peering]。  有关此选项的详细信息，请参阅以下部分。
 * 使用[快速路由或 VPN][express-route-or-VPN] 连接。
-* 使用 [AKS 运行命令功能](#aks-run-command-preview)。
+* 使用 [AKS 运行命令功能](#aks-run-command)。
 
 在与 AKS 群集相同的 VNET 中创建 VM 是最简单的选项。  快速路由和 VPN 会增加成本，且要求额外的网络复杂性。  虚拟网络对等互联要求计划网络 CIDR 范围，以确保不存在重叠范围。
 
-### <a name="aks-run-command-preview"></a>AKS 运行命令（预览版）
+### <a name="aks-run-command"></a>AKS 运行命令
 
 目前，当你需要访问专用群集时，必须在群集虚拟网络、对等互连网络或客户端计算机中访问。 这通常需要通过 VPN 或 Express Route 将计算机连接到群集虚拟网络或在群集虚拟网络中创建的 Jumpbox。 使用 AKS 运行命令可以通过 AKS API 远程调用 AKS 群集中的命令。 此功能提供了一个 API，例如，你可以从远程笔记本电脑为专用群集执行实时命令。 当客户端计算机不在群集专用网络上时，这可以极大地帮助快速及时访问专用群集，同时仍然保留和强制执行相同的 RBAC 控制和专用 API 服务器。
 
-### <a name="register-the-runcommandpreview-preview-feature"></a>注册 `RunCommandPreview` 预览版功能
+### <a name="prerequisites"></a>先决条件
 
-若要使用新的运行命令 API，必须在订阅上启用 `RunCommandPreview` 功能标志。
-
-使用 [az feature register][az-feature-register] 命令注册 `RunCommandPreview` 功能标志，如以下示例所示：
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "RunCommandPreview"
-```
-
-状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/RunCommandPreview')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+* Azure CLI 2.24.0 或更高版本
 
 ### <a name="use-aks-run-command"></a>使用 AKS 运行命令
 
@@ -169,6 +154,8 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f d
 ```azurecli-interactive
 az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update && helm install my-release -f values.yaml bitnami/nginx" -f values.yaml
 ```
+> [!NOTE]
+> 通过创建具有“Microsoft.ContainerService/managedClusters/runcommand/action”权限的自定义角色，并通过将该角色与实时访问或条件访问策略结合使用来将其分配给特定用户和/或组，可以安全地访问 AKS 运行命令。 
 
 ## <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -200,7 +187,6 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitn
 > 如果你[将自带路由表与 kubenet 配合使用](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)，并且将自带 DNS 与专用群集配合使用，群集创建将会失败。 你需要在创建群集失败之后将节点资源组中的 [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) 关联到子网，以使创建能够成功。
 
 ## <a name="limitations"></a>限制 
-* AKS-RunCommand 不适用于启用了 AKS 托管的 AAD 和专用链接的群集。
 * IP 授权范围不能应用于专用 API 服务器终结点，它们仅适用于公共 API 服务器
 * [Azure 专用链接服务限制][private-link-service]适用于专用群集。
 * 不支持具有专用群集的 Azure DevOps Microsoft 托管的代理。 请考虑使用[自托管代理](/azure/devops/pipelines/agents/agents?tabs=browser)。 

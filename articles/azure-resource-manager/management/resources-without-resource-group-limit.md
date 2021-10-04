@@ -3,12 +3,12 @@ title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 07/13/2021
-ms.openlocfilehash: e9145500ade55aa8cb9061b6da125e2bd8a0f5c5
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 123148a863f74a6490a524ecc2d39bc44e65299d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113769240"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807053"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -16,6 +16,7 @@ ms.locfileid: "113769240"
 
 就某些资源类型来说，若要移除 800 个实例的限制，需联系支持部门。 这些资源类型已在本文中注明。
 
+某些资源对每个区域的实例数有限制。 此限制与每个资源组 800 个实例不同。 若要检查每个区域的实例，请使用 Azure 门户。 在左侧窗格中选择你的订阅和“使用情况 + 配额”。 有关详细信息，请参阅[根据限制检查资源使用情况](../../networking/check-usage-against-limits.md)。 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 

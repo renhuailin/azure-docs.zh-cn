@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 09/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 30b00320e9273ecb010239d66a3c056d3f95f332
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: aa47a6b9caaba4b23202390b0cb45a2392b985ea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397692"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764389"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>为 Azure NetApp 文件创建和管理 Active Directory 连接
 
@@ -120,6 +120,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
 * Azure NetApp 文件支持 `user` 和 `resource forest` 类型。
 * 对于同步类型，可以选择 `All` 或 `Scoped`。   
     如果选择 `Scoped`，请确保选择了正确的 Azure AD 组以访问 SMB 共享。  如果不确定，可以使用 `All` 同步类型。
+* 如果对双协议卷使用 AADDS，则必须在自定义 OU 中才能应用 POSIX 属性。 有关详细信息，请参阅[管理 LDAP POSIX 属性](create-volumes-dual-protocol.md#manage-ldap-posix-attributes)。
 
 创建Active Directory 连接时，请注意 AADDS 的以下具体信息：
 
@@ -250,7 +251,30 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 注册功能并显示注册状态。  
+        此外，[Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 分别可用于注册功能和显示注册状态。  
+
+    * **管理员** 
+
+        可以指定将被授予卷管理员权限的用户或组。 
+
+        ![显示 Active Directory 连接窗口的“管理员”框的屏幕截图。](../media/azure-netapp-files/active-directory-administrators.png) 
+        
+        “管理员”功能目前处于预览阶段。 如果第一次使用此功能，请在使用之前注册该功能： 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAdAdministrators
+        ```
+
+        检查功能注册的状态： 
+
+        > [!NOTE]
+        > RegistrationState 可能会处于`Registering`状态长达 60 分钟，然后才更改为`Registered`状态。 请等到状态变为`Registered`后再继续。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAdAdministrators
+        ```
+        
+        还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 注册功能并显示注册状态。 
 
     * 凭证，包括“用户名”和“密码” 
 

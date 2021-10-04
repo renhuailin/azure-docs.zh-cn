@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: aarathin
 ms.author: aarathin
-ms.date: 05/21/2021
-ms.openlocfilehash: 13557124999faeb68cbe009e4bbc3531023c12f9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/27/2021
+ms.openlocfilehash: 4817502ac03074bd1521724fe1d5e76259f3add4
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971307"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083994"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -26,6 +26,23 @@ ms.locfileid: "111971307"
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。
+
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页上，依次选择“+ 新建产品/服务” > “IoT Edge 模块”。
+
+    [ ![左窗格菜单选项和“新建产品/服务”按钮。](./media/iot-edge/new-offer-iot-edge-workspaces.png) ](./media/iot-edge/new-offer-iot-edge-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> 发布产品/服务后，在合作伙伴中心对其进行的任何编辑仅会在重新发布该产品/服务后出现在 Azure 市场中。 对产品/服务进行更改后，请确保一律重新发布该产品/服务。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
 3. 在“概述”页上，依次选择“+ 新建产品/服务” > “IoT Edge 模块”。
@@ -34,6 +51,8 @@ ms.locfileid: "111971307"
 
 > [!IMPORTANT]
 > 发布产品/服务后，在合作伙伴中心对其进行的任何编辑仅会在重新发布该产品/服务后出现在 Azure 市场中。 对产品/服务进行更改后，请确保一律重新发布该产品/服务。
+
+---
 
 ## <a name="new-offer"></a>新产品/服务
 

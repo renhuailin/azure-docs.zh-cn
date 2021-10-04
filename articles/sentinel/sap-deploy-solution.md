@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 555bc5c14a769c6e2ec309347fd40e4e9aa9e1e3
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 301181b291521b8a8b19a7d7266e90fa2c542e49
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681404"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562924"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>部署 SAP 连续威胁监视（公共预览版）
 
@@ -171,26 +171,29 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
       --resource-group $kvgp
     ```
 
-1. 为 VM 的托管标识分配访问策略，包括 GET、LIST 和 SET 权限。
+1. 使用以下方法之一为 VM 的托管标识分配访问策略（包括 GET、LIST 和 SET 权限）。
 
-    在 Azure 密钥保管库中，选择“访问策略” > “添加访问策略 - 机密权限: Get、List 和 Set” > “选择主体”  。 输入 [VM 名称](#deploy-a-linux-vm-for-your-sap-data-connector)，然后选择“添加” > “保存” 。
+    - 通过 Azure 门户：
 
-    有关详细信息，请参阅 [Key Vault 文档](../key-vault/general/assign-access-policy-portal.md)。
+        在 Azure 密钥保管库中，选择“访问策略” > “添加访问策略 - 机密权限: Get、List 和 Set” > “选择主体”  。 输入 [VM 名称](#deploy-a-linux-vm-for-your-sap-data-connector)，然后选择“添加” > “保存” 。
 
-1. 运行以下命令以获取 [VM 的主体 ID](#deploy-a-linux-vm-for-your-sap-data-connector)，输入 Azure 资源组的名称：
+        有关详细信息，请参阅 [Key Vault 文档](../key-vault/general/assign-access-policy-portal.md)。
 
-    ```azurecli
-    VMPrincipalID=$(az vm show -g [resource group] -n [Virtual Machine] --query identity.principalId -o tsv)
-    ```
+    - 通过 Azure CLI：
 
-    将显示你的主体 ID，供你在以下步骤中使用。
+        1. 运行以下命令以获取 [VM 的主体 ID](#deploy-a-linux-vm-for-your-sap-data-connector)，输入 Azure 资源组的名称：
 
-1. 运行以下命令将 VM 的访问权限分配给密钥保管库，输入资源组的名称和上一步返回的主体 ID 值。
+            ```azurecli
+            VMPrincipalID=$(az vm show -g [resource group] -n [Virtual Machine] --query identity.principalId -o tsv)
+            ```
 
-    ```azurecli
-    az keyvault set-policy -n [key vault] -g [resource group] --object-id $VMPrincipalID --secret-permissions get list set
-    ```
+            将显示你的主体 ID，供你在以下步骤中使用。
 
+        1. 运行以下命令将 VM 的访问权限分配给密钥保管库，输入资源组的名称和上一步返回的主体 ID 值。
+
+            ```azurecli
+            az keyvault set-policy -n [key vault] -g [resource group] --object-id $VMPrincipalID --secret-permissions get list set
+            ```
 ## <a name="deploy-your-sap-data-connector"></a>部署 SAP 数据连接器
 
 Azure Sentinel SAP 数据连接器部署脚本会安装[所需的软件](#automatically-installed-software)，然后在[新创建的 VM](#deploy-a-linux-vm-for-your-sap-data-connector) 上安装连接器，将凭据存储在[专用密钥保管库](#create-key-vault-for-your-sap-credentials)中。

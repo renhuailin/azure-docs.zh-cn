@@ -2,13 +2,13 @@
 title: 迁移 Azure 服务总线命名空间 - 从标准到高级
 description: 有关将现有 Azure 服务总线标准命名空间迁移到高级层的指南
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: eea34edddf641e3ee1c07bea92b20364e7aeaf34
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85340738"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602048"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure 服务总线标准命名空间迁移到高级层
 
@@ -90,30 +90,38 @@ ms.locfileid: "85340738"
 使用 Azure 门户进行迁移时的逻辑流与使用命令进行迁移时相同。 执行以下步骤以使用 Azure 门户进行迁移。
 
 1. 在左侧窗格中的“导航”菜单中，选择“迁移到高级层”。   单击“开始”按钮转到下一页。 
-    ![迁移登陆页][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/migrate-premium-page.png" alt-text="该图显示“迁移到高级层”页。":::
+1. 你会看到以下“设置命名空间”页。
 
-1. 完成“设置”。 
-   ![设置命名空间][]
-   1. 创建并分配要将现有标准命名空间迁移到的高级命名空间。
-        ![设置命名空间 - 创建高级命名空间][]
-   1. 选择“迁移后名称”。  迁移完成后，你将使用此名称来访问标准命名空间。
-        ![设置命名空间 - 选择迁移后的名称][]
-   1. 选择“下一步”继续操作。 
-1. 在标准和高级命名空间之间同步实体。
-    ![设置命名空间 - 同步实体 - 开始][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/setup-namespaces-page.png" alt-text="该图显示“设置命名空间”页。":::
+1. 在“设置命名空间”页上，执行以下步骤之一： 
+    1. 如果选择“创建新的高级命名空间”，则请执行以下步骤：
+        1. 在“创建命名空间”页上，输入命名空间名称，然后选择“查看 + 创建”。
+        1. 在“查看 + 创建”页面上，选择“创建”。 
 
-   1. 选择“开始同步”以开始同步实体。 
-   1. 在对话框中选择“是”，以确认并开始同步。 
-   1. 等待同步完成。 状态栏上会显示状态。
-        ![设置命名空间 - 同步实体 - 进度][]
-        >[!IMPORTANT]
-        > 如果出于任何原因需要中止迁移，请查看本文档的“常见问题解答”部分中的中止流。
-   1. 完成同步后，选择页面底部的“下一步”。 
+            :::image type="content" source="./media/service-bus-standard-premium-migration/create-premium-namespace.png" alt-text="该图显示“创建命名空间”页。":::
+    1. 如果选择“选择现有的空高级命名空间”，请执行以下操作：
+        1. 选择具有命名空间的 Azure 订阅和资源组。
+        1. 然后，选择高级命名空间。
+        1. 然后单击“选择”。
+        
+            :::image type="content" source="./media/service-bus-standard-premium-migration/select-existing-namespace.png" alt-text="该图显示选择了现有高级命名空间。":::
+1. 输入一个“迁移后名称”，然后选择“下一步”。  迁移完成后，你将使用此名称来访问标准命名空间。
 
-1. 在摘要页上查看更改。 选择“完成迁移”以切换命名空间并完成迁移。 
-    ![切换命名空间 - 切换菜单][]  
-    迁移完成后，会显示确认页。
-    ![切换命名空间 - 成功][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/enter-post-migration-name.png" alt-text="该图显示标准命名空间的迁移后名称。":::
+1. 选择“开始同步”，以在标准命名空间和高级命名空间之间同步实体。
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/start-sync-button.png" alt-text="该图显示“开始同步”按钮。":::
+1. 在对话框中选择“是”以确认并开始同步，然后等待同步完成。 然后，选择“下一步”  。
+
+    >[!IMPORTANT]
+    > 如果出于任何原因需要中止迁移，请查看本文档的“常见问题解答”部分中的中止流。    
+1. 在“切换”页上选择“完成迁移”。  
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/complete-migration.png" alt-text="该图显示迁移向导的“切换”页。":::
+1. 选择“是”以确认将标准命名空间切换到高级命名空间。 切换完成后，标准命名空间的 DNS 名称将指向高级命名空间。 无法撤消此操作。 迁移完成后，会看到“成功”页。
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/success-page.png" alt-text="该图显示“成功”页。":::
 
 ## <a name="caveats"></a>注意事项
 
@@ -178,8 +186,13 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure 门户
 
-![中止流 - 中止同步][]
-![中止流 - 中止完成][]
+在“同步实体”页上选择“中止”。  
+
+:::image type="content" source="./media/service-bus-standard-premium-migration/abort1.png" alt-text="该图显示“中止”页。":::
+
+完成后，会看到以下页面： 
+
+:::image type="content" source="./media/service-bus-standard-premium-migration/abort3.png" alt-text="该图显示“中止操作完成”页。":::
 
 中止迁移过程时，会中止将标准命名空间中的实体（主题、订阅和筛选器）复制到高级命名空间的过程，并破坏配对。
 
@@ -213,14 +226,3 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 * 详细了解[标准和高级消息传送之间的差异](./service-bus-premium-messaging.md)。
 * 了解[服务总线高级层的高可用性和异地灾难恢复](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)。
 
-[迁移登陆页]: ./media/service-bus-standard-premium-migration/1.png
-[设置命名空间]: ./media/service-bus-standard-premium-migration/2.png
-[设置命名空间 - 创建高级命名空间]: ./media/service-bus-standard-premium-migration/3.png
-[设置命名空间 - 选择迁移后名称]: ./media/service-bus-standard-premium-migration/4.png
-[设置命名空间 - 同步实体 - 开始]: ./media/service-bus-standard-premium-migration/5.png
-[设置命名空间 - 同步实体 - 进度]: ./media/service-bus-standard-premium-migration/8.png
-[切换命名空间 - 切换菜单]: ./media/service-bus-standard-premium-migration/9.png
-[切换命名空间 - 成功]: ./media/service-bus-standard-premium-migration/12.png
-
-[中止流 - 中止同步]: ./media/service-bus-standard-premium-migration/abort1.png
-[中止流 - 中止完成]: ./media/service-bus-standard-premium-migration/abort3.png

@@ -1,39 +1,39 @@
 ---
-title: Azure 数据工厂中复制活动的容错
+title: 复制活动的容错
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过跳过不兼容数据向 Azure 数据工厂中的复制活动添加容错。
+description: 了解如何通过跳过不兼容数据向 Azure 数据工厂和 Synapse Analytics 管道中的复制活动添加容错。
 author: dearandyxu
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 09/09/2021
 ms.author: yexu
-ms.openlocfilehash: 544d298616c8021991fedb1ee47d452cfbc427f3
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c6b5a08cc4f0cc90f8ae827f4f8c2c7469e92b44
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255044"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767558"
 ---
-#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
+#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Azure 数据工厂和 Synapse Analytics 管道中的复制活动的容错
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [当前版本](copy-activity-fault-tolerance.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-将数据从源复制到目标存储时，Azure 数据工厂复制活动提供一定程度的容错，以防止数据移动过程中因出现故障而中断。 例如，你要将数百万行从源复制到目标存储，其中，在目标数据库中创建了主键，但源数据库没有定义任何主键。 当你将重复行从源复制到目标时，将在目标数据库上遇到 PK 冲突故障。 目前，复制活动提供了两种处理此类错误的方法： 
+将数据从源复制到目标存储时，复制活动提供一定程度的容错，以防止数据移动过程中因出现故障而中断。 例如，你要将数百万行从源复制到目标存储，其中，在目标数据库中创建了主键，但源数据库没有定义任何主键。 当你将重复行从源复制到目标时，将在目标数据库上遇到 PK 冲突故障。 目前，复制活动提供了两种处理此类错误的方法： 
 - 如果遇到任何故障，你可以中止复制活动。 
 - 可以通过启用容错以跳过不兼容的数据，继续复制其余部分。 例如，在这种情况下，跳过重复的行。 此外，还可以通过在复制活动中启用会话日志来记录跳过的数据。 有关更多详细信息，可以参阅[复制活动中的会话日志](copy-activity-log.md)。
 
 ## <a name="copying-binary-files"></a>复制二进制文件 
 
-ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，可以选择中止复制活动或继续复制其余内容：
+服务在复制二进制文件时支持以下容错方案。 在以下情况下，可以选择中止复制活动或继续复制其余内容：
 
-1. ADF 要复制的文件同时被其他应用程序删除。
-2. 某些特定文件夹或文件不允许 ADF 访问，因为这些文件或文件夹的 ACL 需要比 ADF 中配置的连接信息更高的权限级别。
-3. 如果在 ADF 中启用数据一致性验证设置，则不会验证一个或多个文件在源和目标存储之间是否一致。
+1. 服务要复制的文件同时被其他应用程序删除。
+2. 某些特定文件夹或文件不允许服务访问，因为这些文件或文件夹的 ACL 需要比配置的连接信息更高的权限级别。
+3. 如果启用数据一致性验证设置，则不会验证一个或多个文件在源和目标存储之间是否一致。
 
 ### <a name="configuration"></a>配置 
 在存储之间复制二进制文件时，可以启用容错，如下所示： 
@@ -76,11 +76,11 @@ ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，
     }
 } 
 ```
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 skipErrorFile | 一组属性，用于指定在数据移动过程中要跳过的失败类型。 | | 否
-fileMissing | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过在复制 ADF 时被其他应用程序删除的文件。 <br/> -True：跳过其他应用程序正在删除的文件，复制其余内容。 <br/> -False：在数据移动过程中，一旦从源存储中删除任何文件则中止复制活动。 <br/>默认情况下，该属性设置为 True。 | True（默认值） <br/>False | 否
-fileForbidden | SkipErrorFile 属性包中的一个键值对，用来确定当这些文件或文件夹的 ACL 需要比 ADF 中配置的连接更高的权限级别时，是否要跳过特定文件。 <br/> -True：要通过跳过文件来复制其余内容。 <br/> -False：在获取文件夹或文件的权限问题后，要中止复制活动。 | True <br/>False（默认值） | 否
+fileMissing | SkipErrorFile 属性包中的键值对之一，用于确定是否要跳过在服务执行复制操作时被其他应用程序删除的文件。 <br/> -True：跳过其他应用程序正在删除的文件，复制其余内容。 <br/> -False：在数据移动过程中，一旦从源存储中删除任何文件则中止复制活动。 <br/>默认情况下，该属性设置为 True。 | True（默认值） <br/>False | 否
+fileForbidden | SkipErrorFile 属性包中的键值对之一，用于确定当特定文件或文件夹的 ACL 需要比配置的连接更高的权限级别时，是否要跳过这些文件。 <br/> -True：要通过跳过文件来复制其余内容。 <br/> -False：在获取文件夹或文件的权限问题后，要中止复制活动。 | True <br/>False（默认值） | 否
 dataInconsistency | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过源和目标存储之间不一致的数据。 <br/> -True：要通过跳过不一致的数据来复制其余内容。 <br/> -False：找到不一致的数据后要中止复制活动。 <br/>请注意，仅当你将 validateDataConsistency 设置为 True 时，此属性才有效。 | True <br/>False（默认值） | 否
 invalidFileName | skipErrorFile 属性包中的一个键值对，用于确定当目标存储的文件名无效时是否要跳过特定文件。 <br/> -True：要通过跳过文件名无效的文件来复制其余内容。 <br/> -False：要在文件具有无效文件名时中止复制活动。 <br/>请注意，将二进制文件从任何存储复制到 ADLS Gen2 或仅将二进制文件从 AWS S3 复制到任何存储时，此属性有效。 | True <br/>False（默认值） | 否
 logSettings  | 当要记录跳过的对象名称时可以指定的一组属性。 | &nbsp; | 否
@@ -133,11 +133,11 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
 
 列 | 说明 
 -------- | -----------  
-时间戳 | ADF 跳过文件时的时间戳。
+时间戳 | 跳过文件时的时间戳。
 级别 | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
-OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
+OperationName | 每个文件上的复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
 OperationItem | 要跳过的文件名。
-消息 | 说明为何要跳过文件的详细信息。
+Message | 说明为何要跳过文件的详细信息。
 
 日志文件的示例如下所示： 
 ```
@@ -145,7 +145,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 2020-03-24 05:35:41.0209942,Warning,FileSkip,"bigfile.csv","File is skipped after read 322961408 bytes: ErrorCode=UserErrorSourceBlobNotExist,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=The required Blob is missing. ContainerName: https://transferserviceonebox.blob.core.windows.net/skipfaultyfile, path: bigfile.csv.,Source=Microsoft.DataTransfer.ClientLibrary,'." 
 2020-03-24 05:38:41.2595989,Warning,FileSkip,"3_nopermission.txt","File is skipped after read 0 bytes: ErrorCode=AdlsGen2OperationFailed,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=ADLS Gen2 operation failed for: Operation returned an invalid status code 'Forbidden'. Account: 'adlsgen2perfsource'. FileSystem: 'skipfaultyfilesforbidden'. Path: '3_nopermission.txt'. ErrorCode: 'AuthorizationPermissionMismatch'. Message: 'This request is not authorized to perform this operation using this permission.'. RequestId: '35089f5d-101f-008c-489e-01cce4000000'..,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Operation returned an invalid status code 'Forbidden',Source=,''Type=Microsoft.Azure.Storage.Data.Models.ErrorSchemaException,Message='Type=Microsoft.Azure.Storage.Data.Models.ErrorSchemaException,Message=Operation returned an invalid status code 'Forbidden',Source=Microsoft.DataTransfer.ClientLibrary,',Source=Microsoft.DataTransfer.ClientLibrary,'." 
 ```
-在上面的日志中，你可以看到已跳过 bigfile.csv，因为在 ADF 复制时，其他应用程序删除了此文件。 已跳过 3_nopermission.txt，因为由于权限问题不允许 ADF 访问它。
+在上面的日志中，你可以看到已跳过 bigfile.csv，因为在服务复制此文件时，其他应用程序已将它删除。 已跳过 3_nopermission.txt，因为由于权限问题，系统不允许服务访问它。
 
 
 ## <a name="copying-tabular-data"></a>复制表格数据 
@@ -199,7 +199,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 }, 
 ```
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 logSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
@@ -229,11 +229,11 @@ path | 包含已跳过行的日志文件的路径。 | 指定要用于记录不�
 
 列 | 说明 
 -------- | -----------  
-时间戳 | ADF 跳过不兼容行时的时间戳
+时间戳 | 跳过不兼容行时的时间戳
 级别 | 此项的日志级别。 如果此项显示跳过的行，它将处于“警告”级别
-OperationName | 每个行上的 ADF 复制活动操作行为。 它将为“TabularRowSkip”以指定已跳过特定不兼容行
+OperationName | 每个行的复制活动操作行为。 它将为“TabularRowSkip”以指定已跳过特定不兼容行
 OperationItem | 源数据存储中的已跳过行。
-消息 | 说明此特定行不兼容性的详细信息。
+Message | 说明此特定行不兼容性的详细信息。
 
 
 下面的示例展示了日志文件内容：
@@ -273,7 +273,7 @@ Timestamp, Level, OperationName, OperationItem, Message
 }
 ```
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否

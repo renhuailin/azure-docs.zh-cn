@@ -12,12 +12,12 @@ ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3b1d7d8b658e0a0ac01789ca8a13ce0a2f779767
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3a530dae026ffe87efe06fb413966df43ce32314
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734532"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588284"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -119,11 +119,11 @@ ms.locfileid: "121734532"
 | AADSTS50048 | SubjectMismatchesIssuer - 使用者与客户端断言中的颁发者声明不匹配。 请联系租户管理员。 |
 | AADSTS50049 | NoSuchInstanceForDiscovery - 未知或无效的实例。 |
 | AADSTS50050 | MalformedDiscoveryRequest - 请求格式不正确。 |
-| AADSTS50053 | 此错误可能由 2 种不同的原因造成： <br><ul><li>IdsLocked - 帐户已锁定，因为用户尝试使用不正确的用户 ID 或密码登录的次数过多。 用户因反复登录尝试而被阻止。 请参阅[修正风险并对用户解除阻止](../identity-protection/howto-identity-protection-remediate-unblock.md)。</li><li>也有可能是由于其来自涉及恶意活动的 IP 地址而导致登录遭到阻止。</li></ul> <br>如要确定导致此错误的失败原因，请登录到 [Azure 门户](https://portal.azure.com)。  导航到 Azure AD 租户，然后单击“监视” -> “登录”。查找登录错误代码为 50053 的失败用户登录，并检查“失败原因”。|
+| AADSTS50053 | 两种不同的原因会导致此错误： <br><ul><li>IdsLocked - 帐户已锁定，因为用户尝试使用不正确的用户 ID 或密码登录的次数过多。 用户因反复登录尝试而被阻止。 请参阅[修正风险并对用户解除阻止](../identity-protection/howto-identity-protection-remediate-unblock.md)。</li><li>也有可能是由于其来自涉及恶意活动的 IP 地址而导致登录遭到阻止。</li></ul> <br>要确定导致此错误的失败原因，请登录到 [Azure 门户](https://portal.azure.com)。  导航到你的 Azure AD 租户，然后选择“监视” -> “登录”。找到登录错误代码为 50053 的失败用户登录，并查看失败原因   。|
 | AADSTS50055 | InvalidPasswordExpiredPassword - 密码已过期。 用户的密码已过期，因此其登录名或会话已结束。 他们有机会重置密码，或者可能要求管理员通过[使用 Azure Active Directory 重置用户密码](../fundamentals/active-directory-users-reset-password-azure-portal.md)来重置密码。 |
 | AADSTS50056 | 密码无效或为 null：密码在此用户的目录中不存在。 应要求用户再次输入其密码。 |
 | AADSTS50057 | UserDisabled - 用户帐户处于禁用状态。 Active Directory 中支持此帐户的用户对象已禁用。 管理员可以通过 [Powershell](/powershell/module/activedirectory/enable-adaccount) 重新启用此帐户 |
-| AADSTS50058 | UserInformationNotProvided - 会话信息不足，无法进行单一登录。 这意味着用户未登录。 这是一个常见的错误，如果用户未经过身份验证并且尚未登录，则预期会出现此错误。</br>如果在用户之前已登录的 SSO 上下文中遇到此错误，这表示 SSO 会话未找到或无效。</br>如果指定了 prompt=none，则可能会在应用程序中返回此错误。 |
+| AADSTS50058 | UserInformationNotProvided - 会话信息不足以进行单一登录。 这意味着用户未登录。 这是一个常见的错误，如果用户未经过身份验证并且尚未登录，则预期会出现此错误。</br>如果在用户之前已登录的 SSO 上下文中遇到此错误，这表示 SSO 会话未找到或无效。</br>如果指定了 prompt=none，则可能会在应用程序中返回此错误。 |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided - 在请求中未找到租户标识信息，或者任何提供的凭据未隐式指定此信息。 用户可以联系租户管理员来帮助解决此问题。 |
 | AADSTS50061 | SignoutInvalidRequest - 无法完成注销。 请求无效。 |
 | AADSTS50064 | CredentialAuthenticationError - 用户名或密码凭据验证失败。 |
@@ -206,6 +206,7 @@ ms.locfileid: "121734532"
 | AADSTS700054 | 没有为应用程序启用响应类型“id_token”。  应用程序从授权终结点请求了 ID 令牌，但未启用 ID 令牌隐式授权。  转到“Azure 门户”>“Azure Active Directory”>“应用注册”>“选择你的应用程序”>“身份验证”>在“隐式授权和混合流”下，确保“ID 令牌”处于选中状态。|
 | AADSTS70007 | UnsupportedResponseMode - 请求令牌时，应用返回了不受支持的 `response_mode` 值。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 刷新令牌由于非活动状态而过期。 该令牌是在 XXX 颁发的，并在特定的时间内处于非活动状态。 |
+| AADSTS700084 | 刷新令牌已颁发给单页应用 (SPA)，因此具有固定、有限的生命周期 {time}，该生命周期无法延长。 刷新令牌现在已经过期，SPA 必须将新的登录请求发送到登录页面。 该令牌于 {issueDate} 颁发。|
 | AADSTS70011 | InvalidScope - 应用请求的范围无效。 |
 | AADSTS70012 | MsaServerError - 对 MSA（使用者）用户进行身份验证时发生服务器错误。 重试。 如果仍然失败，请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 设备流错误。 授权处于挂起状态。 设备将重试轮询请求。 |

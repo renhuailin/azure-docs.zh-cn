@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: f3c845757d6cd251905e39999c9858224ee67269
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be7e52cb093eb9920be5b6e8e9971b7f882f7f06
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724575"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793828"
 ---
 # <a name="conditional-deployment-in-bicep"></a>Bicep 中的条件部署
 
@@ -18,6 +18,10 @@ ms.locfileid: "121724575"
 
 > [!NOTE]
 > 条件部署不会级联到[子资源](child-resource-name-type.md)。 如果要有条件地部署资源及其子资源，需要对每种资源类型应用相同的条件。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解条件并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用条件和循环构建灵活的 Bicep 模板](/learn/modules/build-flexible-bicep-templates-conditions-loops/)。
 
 ## <a name="deploy-condition"></a>部署条件
 

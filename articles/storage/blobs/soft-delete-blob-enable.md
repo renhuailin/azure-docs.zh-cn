@@ -10,12 +10,12 @@ ms.date: 06/29/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 790afdb013d2721bc90238cfe0caf7aa4534c632
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5d5dbb4b3be5eec500a7a0845a9dbc568a113ca3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289497"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599100"
 ---
 # <a name="enable-soft-delete-for-blobs"></a>为 blob 启用软删除
 
@@ -24,7 +24,7 @@ Blob 软删除会在系统中将已删除的数据保留指定的一段时间，
 Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。 若要详细了解 Microsoft 的数据保护建议，请参阅[数据保护概述](data-protection-overview.md)。
 
 > [!NOTE]
-> Blob 软删除还可以保护已启用分层命名空间功能的帐户中的 blob 和目录。 在已启用分层命名空间功能的帐户中进行的 blob 软删除目前为公共预览版，并且在全球所有 Azure 区域内均可用。 
+> Blob 软删除还可以保护已启用分层命名空间功能的帐户中的 blob 和目录。 在已启用分层命名空间功能的帐户中进行的 blob 软删除目前为公共预览版，并且在全球所有 Azure 区域内均可用。
 
 新存储帐户默认禁用 blob 软删除。 你可以使用 Azure 门户、PowerShell 或 Azure CLI 随时启用或禁用存储帐户的软删除。
 
@@ -87,7 +87,7 @@ az storage account blob-service-properties show --account-name <storage-account>
 
 ## <a name="enable-blob-soft-delete-hierarchical-namespace"></a>启用 blob 软删除（分层命名空间）
 
-blob 软删除还可以保护已启用分层命名空间功能的帐户中的 blob 和目录。 
+blob 软删除还可以保护已启用分层命名空间功能的帐户中的 blob 和目录。
 
 > [!IMPORTANT]
 > 在已启用分层命名空间功能的帐户中进行的软删除目前为预览版，并且在全球所有 Azure 区域内均可用。
@@ -109,24 +109,25 @@ blob 软删除还可以保护已启用分层命名空间功能的帐户中的 bl
 1. 保存所做更改。
 
 > [!div class="mx-imgBorder"]
-> ![显示如何在 Azure 门户中对具有分层命名空间的帐户启用软删除的屏幕截图](./media/soft-delete-blob-enable/blob-soft-delete-configuration-portal-hierarchical-namespace.png)
+> ![显示如何在 Azure 门户中对具有分层命名空间的帐户启用软删除的屏幕截图。](./media/soft-delete-blob-enable/blob-soft-delete-configuration-portal-hierarchical-namespace.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 安装最新的 **PowershellGet** 模块。 然后关闭 PowerShell 控制台，接着重新将其打开。
 
     ```powershell
-    install-Module PowerShellGet –Repository PSGallery –Force 
+    install-Module PowerShellGet -Repository PSGallery -Force
     ```
 
-2.  安装 **Az.Storage** 预览版模块。
+2. 安装 **Az.Storage** 预览版模块。
 
     ```powershell
     Install-Module Az.Storage -Repository PsGallery -RequiredVersion 3.7.1-preview -AllowClobber -AllowPrerelease -Force
     ```
+
     有关如何安装 PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)
 
-3. 使用存储帐户密钥、连接字符串或 Azure Active Directory (Azure AD) 获取存储帐户授权。 请参阅[连接到帐户](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account)。
+3. 使用存储帐户密钥、连接字符串或 Azure Active Directory (Azure AD) 获取存储帐户授权。 有关详细信息，请参阅[连接到帐户](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account)。
 
    以下示例使用存储帐户密钥获取授权。
 
@@ -136,11 +137,12 @@ blob 软删除还可以保护已启用分层命名空间功能的帐户中的 bl
 
 4. 若要使用 PowerShell 启用 blob 软删除，请使用 [Enable-AzStorageDeleteRetentionPolicy](/powershell/module/az.storage/enable-azstoragedeleteretentionpolicy) 命令，并指定保持期（以天为单位）。
 
-   下面的示例启用了帐户的软删除功能，并将保持期设置为 4 天。 
+   下面的示例启用了帐户的软删除功能，并将保持期设置为 4 天。
 
    ```powershell
    Enable-AzStorageDeleteRetentionPolicy -RetentionDays 4  -Context $ctx
    ```
+
 5. 若要检查 blob 软删除的当前设置，请使用 `Get-AzStorageServiceProperty` 命令：
 
    ```powershell
@@ -156,14 +158,15 @@ blob 软删除还可以保护已启用分层命名空间功能的帐户中的 bl
    ```azurecli
    az extension add -n storage-preview
    ```
-3. 连接到你的存储帐户。 请参阅[连接到帐户](data-lake-storage-directory-file-acl-cli.md#connect-to-the-account)。
+
+3. 连接到你的存储帐户。 有关详细信息，请参阅[连接到帐户](data-lake-storage-directory-file-acl-cli.md#connect-to-the-account)。
 
    > [!NOTE]
    > 本文中提供的示例演示 Azure Active Directory (Azure AD) 授权操作。 若要详细了解身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md)。
- 
+
 4. 若要在 Azure CLI 中启用软删除，请调用 `az storage fs service-properties update` 命令，并指定保持期（以天为单位）。
 
-   下面的示例启用了 blob 和目录软删除，并将保持期设置为 5 天。 
+   下面的示例启用了 blob 和目录软删除，并将保持期设置为 5 天。
 
    ```azurecli
    az storage fs service-properties update --delete-retention --delete-retention-period 5 --auth-mode login

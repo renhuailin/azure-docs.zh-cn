@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: a7022c9de1449d0c4001b1d814eeb9464b98c24a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c9167111a1799575b5dc0d06cb26bf7cc20002e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769979"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124826806"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -73,7 +73,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
-已启用 Azure Arc 的 Kubernetes 目前[支持系统分配的标识](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。 托管服务标识证书由所有启用了 Azure Arc 的 Kubernetes 代理用于与 Azure 进行通信。
+已启用 Azure Arc 的 Kubernetes 目前[支持系统分配的标识](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。 托管服务标识证书由所有已启用 Azure Arc 的 Kubernetes 代理用于与 Azure 进行通信。
 
 ### <a name="azure-arc-enabled-servers"></a>已启用 Azure Arc 的服务器
 
@@ -84,8 +84,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 所有启用了 Azure Arc 的服务器都有系统分配的标识。 无法在启用了 Azure Arc 的服务器上禁用或更改系统分配的标识。 请参阅以下资源，详细了解如何在启用了 Azure Arc 的服务器上使用托管标识：
 
-- [针对已启用 Arc 的服务器对 Azure 资源进行身份验证](../../azure-arc/servers/managed-identity-authentication.md)
-- [将托管标识用于已启用 Arc 的服务器](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
+- [使用已启用 Azure Arc 的服务器对 Azure 资源进行身份验证](../../azure-arc/servers/managed-identity-authentication.md)
+- [将托管标识用于已启用 Azure Arc 的服务器](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-azure-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Azure 自动管理
 
@@ -301,7 +301,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
 - [Azure CLI](/cli/azure/policy/assignment#az_policy_assignment_create)
-- [Azure Resource Manager 模板](/azure/templates/microsoft.authorization/policyassignments)
+- [Azure 资源管理器模板](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/policy/policyassignments/create)
 
 
@@ -347,7 +347,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager 模板](qs-configure-template-windows-vm.md)
+- [Azure 资源管理器模板](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 
@@ -364,7 +364,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager 模板](qs-configure-template-windows-vm.md)
+- [Azure 资源管理器模板](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 - [Azure SDK](qs-configure-sdk-windows-vm.md)
 
@@ -507,7 +507,6 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | ![可用][check] | 不可用 | 不可用 | 不可用 |
 | 用户分配 | ![可用][check] | 不可用 | 不可用 | 不可用 |
-
 
 > [!NOTE]
 > 使用托管标识对[发送到 Power BI 的 Azure 流分析作业](../../stream-analytics/powerbi-output-managed-identity.md)进行身份验证。

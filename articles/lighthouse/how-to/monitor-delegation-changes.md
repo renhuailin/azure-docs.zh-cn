@@ -1,15 +1,15 @@
 ---
 title: 监视管理租户中的委托更改
 description: 了解如何监视所有针对管理租户的 Azure Lighthouse 委托活动。
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2472e7519a6c45ff62fb0c0280f0886b4aa0ff4d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7eb38ac8ac7f86fd179663fe7bfb3aa1fb4e8830
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077693"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819595"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委托更改
 
@@ -41,7 +41,9 @@ ms.locfileid: "112077693"
 提升自己的访问权限后，可以向帐户分配适当的权限，使它可以查询租户级别的活动日志数据。 需要在管理租户的根范围为此帐户分配[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader) Azure 内置角色。
 
 > [!IMPORTANT]
-> 在根范围授予角色分配意味着相同的权限将应用于租户中的每个资源。 由于此访问级别的范围较广泛，因此建议[将此角色分配给服务主体帐户，并使用该帐户来查询数据](#use-a-service-principal-account-to-query-the-activity-log)。 还可以向单个用户或用户组分配根范围的“监视读取者”角色，使他们可以[直接在 Azure 门户中查看委托信息](#view-delegation-changes-in-the-azure-portal)。 如果这样做，请注意，此访问级别的范围较广泛，应限制为分配给尽量少的用户。
+> 在根范围授予角色分配意味着相同的权限将应用于租户中的每个资源。 由于此访问级别的范围较广泛，因此建议[将此角色分配给服务主体帐户，并使用该帐户来查询数据](#use-a-service-principal-account-to-query-the-activity-log)。
+> 
+> 还可以向单个用户或用户组分配根范围的“监视读取者”角色，使他们可以[直接在 Azure 门户中查看委托信息](#view-delegation-changes-in-the-azure-portal)。 如果这样做，请注意，此访问级别的范围较广泛，应限制为分配给尽量少的用户。
 
 使用以下方法之一来进行根范围的分配。
 

@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8baa5cc0188c590f639135d2a0baeea4f2efa8b
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 20eafed03b9dd63bf6c59445d744d7a3c67c5614
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454845"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601741"
 ---
 # <a name="configure-azure-active-directory-to-meet-fedramp-high-impact-level"></a>配置 Azure Active Directory 以满足 FedRAMP High Impact 级别
 
@@ -54,7 +54,7 @@ FedRAMP High 基线由 [NIST 800-53 安全控制目录修订版 4](https://csrc.
 
 * [Azure 合规性产品/服务](https://aka.ms/azurecompliance)
 
-* [FedRAMP High 蓝图示例概述](../../governance/blueprints/samples/fedramp-h/index.md)
+* [FedRAMP High Azure Policy 内置计划定义](../../governance/policy/samples/fedramp-high.md)
 
 * [Microsoft 365 合规中心](/microsoft-365/compliance/microsoft-365-compliance-center)
 

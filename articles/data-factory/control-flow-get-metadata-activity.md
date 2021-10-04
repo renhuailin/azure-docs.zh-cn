@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/22/2021
 ms.author: jianleishen
-ms.openlocfilehash: 4f619266d225e4dd36bb68ca9ebcaaae366891cb
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 24b303cc93940ee7884a4766ce542aa543ea285e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821885"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083973"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory-or-azure-synapse-analytics"></a>Azure 数据工厂或 Azure Synapse Analytics 中的“获取元数据”活动
 
@@ -66,6 +66,7 @@ ms.locfileid: "122821885"
 
 | 连接器/元数据 | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
+| [Amazon RDS for SQL Server](connector-amazon-rds-for-sql-server.md) | √ | √ | √ |
 | [Azure SQL 数据库](connector-azure-sql-database.md) | √ | √ | √ |
 | [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
@@ -138,7 +139,7 @@ ms.locfileid: "122821885"
 }
 ```
 
-**数据集**
+数据集
 
 ```json
 {

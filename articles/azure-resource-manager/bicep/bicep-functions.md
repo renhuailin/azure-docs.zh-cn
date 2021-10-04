@@ -2,13 +2,13 @@
 title: Bicep 函数
 description: 介绍在 Bicep 文件中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
-ms.date: 06/16/2021
-ms.openlocfilehash: dcc0e71917431ac2a181ae87374499a89a27482c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: bd697d6c1a1eaac7877341ffbbc10b1027882dd6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303978"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794019"
 ---
 # <a name="bicep-functions"></a>Bicep 函数
 
@@ -52,6 +52,13 @@ Bicep 中提供 [any 函数](./bicep-functions-any.md)可帮助解决有关数�
 
 * [部署](./bicep-functions-deployment.md#deployment)
 * [环境](./bicep-functions-deployment.md#environment)
+
+## <a name="file-functions"></a>文件函数
+
+以下函数可用于将外部文件的内容加载到 Bicep 文件中。
+
+* [loadFileAsBase64](bicep-functions-files.md#loadfileasbase64)
+* [loadTextContent](bicep-functions-files.md#loadtextcontent)
 
 ## <a name="logical-functions"></a>逻辑函数
 

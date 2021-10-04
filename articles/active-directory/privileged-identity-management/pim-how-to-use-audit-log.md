@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/03/2021
+ms.date: 09/23/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28b901643e150cf98b97633f0dbec0a348b3995
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: f8ecfa670980015acbdd8f5b639734f538910804
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112232858"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708617"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure AD 角色的审核历史记录
 
@@ -39,7 +39,7 @@ ms.locfileid: "112232858"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![带筛选器的资源审核列表](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![带筛选器的 Azure AD 角色审核列表](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 ## <a name="view-my-audit"></a>查看我的审核
 

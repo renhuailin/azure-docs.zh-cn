@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2568fc2ea133a0cdd49e0a2577ce1e580056a74c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8dc93266244c6dd806d7ab7457893d6d2c89ce13
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783126"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637641"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -60,7 +61,7 @@ ms.locfileid: "104783126"
 
 下图说明数据工厂如何安排数据移动和处理。 它还显示 Batch 如何以并行方式处理数据。 下载并打印该图以便参考（11 x 17 英寸或 A3 大小）。 若要访问该图以便可以打印它，请参阅[使用 Batch 和数据工厂进行的 HPC 和数据业务流程](https://go.microsoft.com/fwlink/?LinkId=717686)。
 
-[![大规模数据处理关系图](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
+:::image type="content" alt-text="大规模数据处理关系图。" source="./media/data-factory-data-processing-using-batch/large-scale-data-processing-diagram.png":::
 
 以下列表提供了该过程的基本步骤。 解决方案包含构建端到端解决方案的代码和说明。
 
@@ -125,7 +126,7 @@ ms.locfileid: "104783126"
 
 1. 如果使用 CloudXplorer，按以下结构创建文件夹和子文件夹：
 
-   ![文件夹和子文件夹结构](./media/data-factory-data-processing-using-batch/image3.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image3.png" alt-text="文件夹和子文件夹结构":::
 
    `Inputfolder` 和 `outputfolder` 是 `mycontainer` 中的顶级文件夹。 `inputfolder` 文件夹具有带日期时间戳 (YYYY-MM-DD-HH) 的子文件夹。
 
@@ -135,7 +136,7 @@ ms.locfileid: "104783126"
 
 1. 将该文件上传到 Blob 存储中的以下输入文件夹：
 
-   ![输入文件夹](./media/data-factory-data-processing-using-batch/image4.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image4.png" alt-text="输入文件夹":::
 
    如果使用存储资源管理器，请将 **file.txt** 文件上传到 **mycontainer**。 选择工具栏上的“复制”，创建 blob 副本。 在“复制 Blob”对话框中，将“目标 blob 名”更改为 `inputfolder/2015-11-16-00/file.txt`。 重复此步骤以创建 `inputfolder/2015-11-16-01/file.txt`、`inputfolder/2015-11-16-02/file.txt`、`inputfolder/2015-11-16-03/file.txt`、`inputfolder/2015-11-16-04/file.txt` 等。 此操作会自动创建文件夹。
 
@@ -397,7 +398,7 @@ public IDictionary<string, string> Execute(
 
 1. 在 **\\bin\\Debug** 文件夹内创建包含所有二进制文件的 zip 文件 **MyDotNetActivity.zip**。 可能需要包括 MyDotNetActivity.**pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
-   ![bin\Debug 文件夹列表](./media/data-factory-data-processing-using-batch/image5.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image5.png" alt-text="bin\Debug 文件夹列表":::
 
 1. 将 **MyDotNetActivity.zip** 作为 blob 上传到 blob 容器：ADFTutorialDataFactory 中 StorageLinkedService 链接服务使用的 Blob 存储中的 `customactivitycontainer`。 如果不存在容器 `customactivitycontainer`，则创建该容器。
 
@@ -541,7 +542,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 成功创建数据工厂后，将看到“数据工厂”页，其中显示了数据工厂的内容。
 
-   ![“数据工厂”页](./media/data-factory-data-processing-using-batch/image6.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image6.png" alt-text="“数据工厂”页":::
 
 #### <a name="step-2-create-linked-services"></a>步骤 2：创建链接服务
 链接服务将数据存储或计算服务链接到数据工厂。 在此步骤中，将存储帐户和 Batch 帐户链接到数据工厂。
@@ -551,13 +552,13 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 选择命令栏上的“新建数据存储”，并选择“Azure 存储”。 用于在编辑器中创建存储链接服务的 JSON 脚本随即出现。
 
-   ![新建数据存储](./media/data-factory-data-processing-using-batch/image7.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image7.png" alt-text="新建数据存储":::
 
 1. 将 **帐户名称** 替换为存储帐户的名称。 将 **帐户密钥** 替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
 1. 选择命令栏上的“部署”，部署链接服务。
 
-   ![部署](./media/data-factory-data-processing-using-batch/image8.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image8.png" alt-text="部署":::
 
 #### <a name="create-an-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
 在此步骤中，为 Batch 帐户创建链接服务，该帐户用于运行数据工厂自定义活动。
@@ -577,7 +578,7 @@ test custom activity Microsoft test custom activity Microsoft
       > [!IMPORTANT]
       > “Batch 帐户”边栏选项卡的 URL 采用以下格式：`<accountname>.<region>.batch.azure.com`。 对于 JSON 脚本中的 `batchUri` 属性，需要从 URL 中删除 `<accountname>.`。 示例为 `"batchUri": "https://eastus.batch.azure.com"`。
 
-      ![“Batch 帐户”边栏选项卡](./media/data-factory-data-processing-using-batch/image9.png)
+      :::image type="content" source="./media/data-factory-data-processing-using-batch/image9.png" alt-text="“Batch 帐户”边栏选项卡":::
 
       对于 **poolName** 属性，也可指定池 ID 而非池名称。
 
@@ -805,27 +806,27 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 在 Azure 门户的“数据工厂”边栏选项卡中，选择“图示”。
 
-   ![图表](./media/data-factory-data-processing-using-batch/image10.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image10.png" alt-text="关系图":::
 
 1. 在“图示”视图中，双击输入数据集“InputDataset”。
 
-   ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image11.png" alt-text="InputDataset":::
 
 1. 会出现已准备好所有五个切片的“InputDataset”边栏选项卡。 请注意每个切片的 **切片开始时间** 和 **切片结束时间**。
 
-   ![输入切片开始和结束时间](./media/data-factory-data-processing-using-batch/image12.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image12.png" alt-text="输入切片开始和结束时间":::
 
 1. 在“图示”视图中，选择“OutputDataset”。
 
 1. 五个输出切片会显示为“就绪”状态（如果它们已生成）。
 
-   ![输出切片开始和结束时间](./media/data-factory-data-processing-using-batch/image13.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image13.png" alt-text="输出切片开始和结束时间":::
 
 1. 使用门户查看与切片关联的任务，并查看每个切片在哪些 VM 上运行。 有关详细信息，请参阅[数据工厂和 Batch 集成](#data-factory-and-batch-integration)部分。
 
 1. 输出文件会出现在 blob 存储中 `outputfolder` 中的 `mycontainer` 下。
 
-   ![存储中的输出文件](./media/data-factory-data-processing-using-batch/image15.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image15.png" alt-text="存储中的输出文件":::
 
    会列出五个输出文件，每个文件对应一个输入切片。 每个输出文件包含与下方输出类似的内容：
 
@@ -834,7 +835,7 @@ test custom activity Microsoft test custom activity Microsoft
     ```
    下图说明了数据工厂切片如何映射到 Batch 中的任务。 在此示例中，一个切片只运行一次。
 
-   ![切片映射图示](./media/data-factory-data-processing-using-batch/image16.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image16.png" alt-text="切片映射图示":::
 
 1. 现在来看看文件夹中存在多个文件的情况。 创建文件 **file2.txt**、**file3.txt**、**file4.txt** 和 **file5.txt**，这些文件与 **2015-11-06-01** 文件夹中 file.txt 文件的内容相同。
 
@@ -842,7 +843,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 在“OutputDataset”边栏选项卡中，右键单击将“切片开始时间”设置为 **2015/11/16 01:00:00 AM** 的切片。 选择“运行”，重新运行/重新处理切片。 该切片现在有五个文件而非一个文件。
 
-    ![运行](./media/data-factory-data-processing-using-batch/image17.png)
+    :::image type="content" source="./media/data-factory-data-processing-using-batch/image17.png" alt-text="运行":::
 
 1. 切片运行且其状态为“就绪”后，验证此切片的输出文件 (**2015-11-16-01.txt**) 中的内容。 输出文件会出现在 blob 存储中 `outputfolder` 中的 `mycontainer` 下。 该切片的每个文件都应有一个行。
 
@@ -862,7 +863,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="data-factory-and-batch-integration"></a>数据工厂和 Batch 集成
 数据工厂服务在 Batch 中创建一个作业，名称为 `adf-poolname:job-xxx`。
 
-![Batch 作业](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+:::image type="content" source="media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png" alt-text="Batch 作业":::
 
 为切片的每个活动运行创建作业中的任务。 如果有 10 个切片准备就绪待处理，在该作业中将创建 10 个任务。 如果在池中有多个计算节点，则可以并行运行多个切片。 如果每个计算节点的最大任务数设置为 大于一，则可以在同一计算上运行多个切片。
 
@@ -870,14 +871,14 @@ test custom activity Microsoft test custom activity Microsoft
 
 使用门户查看 Batch 作业及其与切片关联的任务，并查看每个切片在哪些 VM 上运行。
 
-![Batch 作业任务](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
+:::image type="content" source="media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png" alt-text="Batch 作业任务":::
 
 ### <a name="debug-the-pipeline"></a>调试管道
 调试包括几种基本方法。
 
 1. 如果输入切片未设置为“就绪”，请确认输入文件夹结构正确，并且 file.txt 存在于输入文件夹中。
 
-   ![输入文件夹结构](./media/data-factory-data-processing-using-batch/image3.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image3.png" alt-text="输入文件夹结构":::
 
 1. 在自定义活动的 **Execute** 方法中，使用 **IActivityLogger** 对象记录可帮助解决问题的信息。 记录的消息在 user\_0.log 文件中显示。
 
@@ -885,11 +886,11 @@ test custom activity Microsoft test custom activity Microsoft
 
    选择活动运行时，会显示具有日志文件列表的“活动运行详细信息”边栏选项卡。 在 user\_0.log 文件中会显示记录的消息。 发生错误后，会显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 选择活动运行时，会显示日志文件，可查看文件解决该错误。
 
-   ![OutputDataset 和“数据切片”边栏选项卡](./media/data-factory-data-processing-using-batch/image18.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image18.png" alt-text="OutputDataset 和“数据切片”边栏选项卡":::
 
    在日志文件列表中，选择“user-0.log”。 在右侧面板中会显示使用 **IActivityLogger.Write** 方法的结果。
 
-   ![“活动运行详细信息”边栏选项卡](./media/data-factory-data-processing-using-batch/image19.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image19.png" alt-text="“活动运行详细信息”边栏选项卡":::
 
    检查 system-0.log 是否有任何系统错误消息和异常。
 
@@ -906,13 +907,13 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 在 zip 文件中，自定义活动的所有文件必须在不包含任何子文件夹的顶级目录中。
 
-   ![自定义活动 zip 文件列表](./media/data-factory-data-processing-using-batch/image20.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image20.png" alt-text="自定义活动 zip 文件列表":::
 
 1. 确保 **assemblyName** (MyDotNetActivity.dll)、**entryPoint**(MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService**（应指向包含 zip 文件的 Blob 存储）已设置为正确的值。
 
 1. 如果解决了错误并想要重新处理切片，请在“OutputDataset”边栏选项卡中右键单击该切片，然后选择“运行”。
 
-   ![“OutputDataset”边栏选项卡“运行”选项](./media/data-factory-data-processing-using-batch/image21.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image21.png" alt-text="“OutputDataset”边栏选项卡“运行”选项":::
 
    > [!NOTE]
    > 容器处于名为 `adfjobs` 的 blob 存储中。 不会自动删除此容器，但解决方案测试完成后，可安全删除该容器。 同样，数据工厂解决方案会创建一个名为 `adf-\<pool ID/name\>:job-0000000001` 的 Batch 作业。 测试完解决方案后，可按需删除此作业。

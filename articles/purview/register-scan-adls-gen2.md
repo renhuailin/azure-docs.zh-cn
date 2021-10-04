@@ -4,15 +4,15 @@ description: 本教程介绍如何扫描 Azure Data Lake Storage Gen2。
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 02bdb1812556d08b00885a68fb50443e97d6977c
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 0d2da12eed5bdfe393cb20c489df2591356b9012
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214055"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214857"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>注册和扫描 Azure Data Lake Storage Gen2
 
@@ -98,7 +98,7 @@ Azure Data Lake Storage Gen2 数据源支持以下功能：
 
 ##### <a name="granting-the-service-principal-access-to-your-adls-gen2-account"></a>向服务主体授予对 ADLS gen2 帐户的访问权限
 
-1. 导航到自己的存储帐户。
+1. 导航到存储帐户。
 1. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。 
 1. 选择“+ 添加”。
 1. 将“角色”设置为“存储 Blob 数据读取者”，然后在“选择”输入框下输入服务主体名称或对象 ID。 然后，选择“保存”，以将此角色分配给服务主体。
@@ -119,7 +119,7 @@ Azure Data Lake Storage Gen2 数据源支持以下功能：
 若要在数据目录中注册新的 ADLS Gen2 帐户，请执行以下操作：
 
 1. 导航到你的 Purview 帐户
-2. 在左侧导航中选择“数据映射”。
+2. 在左侧导航区域中选择“数据映射”。
 3. 选择“注册”
 4. 在“注册源”中，选择“Azure Data Lake Storage Gen2” 
 5. 选择“继续”
@@ -138,7 +138,7 @@ Azure Data Lake Storage Gen2 数据源支持以下功能：
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择你注册的 Azure Data Lake Storage Gen2 源。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 270e7f748f0d7fda14d93ac753ba655117f7ad36
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 247b025524a029fcb68fbe0682b365e9b7f240b5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044136"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565166"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>对使用 Azure Sentinel 有用的资源
 
@@ -40,6 +40,19 @@ Azure Sentinel 使用 Azure Monitor Log Analytics 的 Kusto 查询语言 (KQL) �
 使用 Azure 逻辑应用在 Azure Sentinel 中创建自动化，以应对不断扩大的内置 Playbook 库。 
 
 有关详细信息，请参阅 [Azure 逻辑应用连接器](/connectors/)。
+
+## <a name="compare-playbooks-workbooks-and-notebooks"></a>比较 playbook、工作簿和笔记本
+
+下表说明了 Azure Sentinel 中的 playbook、工作簿和笔记本之间的区别：
+
+|  |攻略  |工作簿  |笔记本  |
+|---------|---------|---------|---------|
+|**角色**     |   <ul><li>SOC 工程师</li><li>所有层级的分析师</li></ul>      | <ul><li> SOC 工程师</li><li>所有层级的分析师</li></ul>       | <ul><li>威胁搜寻者和第 2 层/第 3 层分析师</li><li>事件调查者</li><li>数据科学家</li><li>安全研究人员</li></ul>       |
+|**使用**     | 自动完成简单的可重复任务：<ul><li>引入外部数据 </li><li>使用 TI、GeoIP 查找等功能进行数据扩充 </li><li> 调查 </li><li>补救 </li></ul>       | <ul><li>可视化效果</li></ul>        |   <ul><li>查询 Azure Sentinel 数据和外部数据 </li><li>使用 TI、GeoIP 查找、WhoIs 查找等功能进行数据扩充 </li><li> 调查 </li><li> 可视化效果 </li><li> 搜寻 </li><li>机器学习和大数据分析 </li></ul>      |
+|**优点**     |<ul><li> 最适合单个可重复任务 </li><li>无需编码知识  </li></ul>      |<ul><li>最适合 Azure Sentinel 数据的概要视图 </li><li>无需编码知识</li></ul>       | <ul><li>最适合复杂的可重复任务链 </li><li>临时使用，更多过程控制</li><li>可以使用交互功能更轻松地进行透视 </li><li>丰富的 Python 库，适用于数据操作和可视化 </li><li>机器学习和自定义分析 </li><li>易于记录和共享分析证据 </li></ul>       |
+|**挑战**     | <ul><li>不适合临时的和复杂的任务链 </li><li>不适合记录和共享证据</li></ul>        |   <ul><li>不能与外部数据集成 </li></ul>     |    <ul><li> 跨越式的学习曲线，需要编码知识 </li></ul>   |
+|  **详细信息**   | [在 Azure Sentinel 中使用 playbook 实现威胁响应自动化](automate-responses-with-playbooks.md)        | [可视化收集的数据](get-visibility.md)        | [使用 Jupyter 笔记本搜寻安全威胁](notebooks.md)        |
+|     |         |         |         |
 
 ## <a name="comment-on-our-blogs-and-forums"></a>在博客和论坛上发表评论
 

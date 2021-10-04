@@ -1,15 +1,15 @@
 ---
-title: Azure 开发测试实验室中的公司策略和符合性
+title: 公司策略与合规性
 description: 本文提供有关监管 Azure 开发测试实验室基础结构的公司策略与合规性的指导。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 659f025e45ba3101b6bdebb30e9043490e5a3106
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97592341"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623620"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure 开发测试实验室基础结构的监管 - 公司策略与合规性
 本文提供有关监管 Azure 开发测试实验室基础结构的公司策略与合规性的指导。 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/25/2021
-ms.openlocfilehash: 01b5e9930353078406751001300a1baa3c23cf00
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: b6131e3ebe4ce7612d1a9c245605df2e29970257
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690567"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652389"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>使用 Liquid 模板作为 Azure 逻辑应用中的映射来转换 JSON 和 XML
 
@@ -36,7 +36,7 @@ ms.locfileid: "114690567"
 
 * [集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* 关于 [Liquid 模板语言](https://shopify.github.io/liquid/)的基本知识
+* 关于 [Liquid 模板语言](https://shopify.github.io/liquid/)的基本知识。 Azure 逻辑应用使用 DotLiquid 2.0.361。
 
   > [!NOTE]
   > “将 JSON 转换为 JSON - Liquid”操作遵循 [Liquid 的 DotLiquid 实现](https://github.com/dotliquid/dotliquid)，该实现在特定情况下不同于 [Liquid 的 Shopify 实现](https://shopify.github.io/liquid)。 有关详细信息，请参阅 [Liquid 模板注意事项](#liquid-template-considerations)。

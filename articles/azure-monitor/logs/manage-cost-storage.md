@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9967eaa374116ac28bd0db830eed6a4fc2becfa0
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 8cedd159c1c4c8a7d5309024d66ddc104c07506b
+ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771788"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129062085"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -166,7 +166,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 
 ## <a name="log-analytics-and-azure-defender-security-center"></a>Log Analytics 和 Azure Defender（安全中心）
 
-[Azure Defender（安全中心）](../../security-center/index.yml)计费与 Log Analytics 计费密切相关。 当更新管理解决方案未在工作区上运行或解决方案目标已启用时，Azure Defender 会针对以下[安全数据类型](/azure/azure-monitor/reference/tables/tables-category#security)的子集（WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus）以及 Update 和 UpdateSummary 数据类型提供 500 MB/节点/天的分配（[了解详细信息](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance)）。 如果工作区位于旧版按节点定价层中，则将合并 Azure Defender 和 Log Analytics 分配，并将其共同应用于所有可计费的引入数据。  
+[适用于服务器的 Azure Defender（安全中心）](../../security-center/index.yml)计费与 Log Analytics 计费密切相关。 当更新管理解决方案未在工作区上运行或解决方案目标功能已启用时，Azure Defender 会[按受监视服务的数目计费](https://azure.microsoft.com/pricing/details/azure-defender/)并针对下面的一部分[安全数据类型](/azure/azure-monitor/reference/tables/tables-category#security)（WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus）以及 Update 和 UpdateSummary 数据类型提供 500 MB/服务器/天的数据分配（[了解详细信息](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance)）。 受监视服务器的数目按小时粒度计算。 每个受监视服务器的每日数据分配贡献在工作区级别聚合。 如果工作区位于旧版按节点定价层中，则将合并 Azure Defender 和 Log Analytics 分配，并将其共同应用于所有可计费的引入数据。  
 
 ## <a name="change-the-data-retention-period"></a>更改数据保留期
 

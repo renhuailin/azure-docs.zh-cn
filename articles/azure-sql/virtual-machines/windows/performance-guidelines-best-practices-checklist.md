@@ -16,12 +16,12 @@ ms.date: 06/01/2021
 ms.author: dpless
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: 474954faebe62138e234f5bb7a7c1bee7bdcf95b
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: f5c6a0864790003e115d201c1a50b181df63c5ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397172"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666697"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>清单：有关 Azure VM 上 SQL Server 的最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ ms.locfileid: "122397172"
     - 对于日志驱动器，规划容量并测试性能与成本，同时评估[高级 P30 - P80 磁盘](../../../virtual-machines/disks-types.md#premium-ssd)。
       - 如果需要亚毫秒存储延迟，请对事务日志使用 [Azure 超级磁盘](../../../virtual-machines/disks-types.md#ultra-disk)。 
       - 对于 M 系列虚拟机部署，请考虑[写入加速器](../../../virtual-machines/how-to-enable-write-accelerator.md)，而不是使用 Azure 超级磁盘。
-    - 在选择最佳 VM 大小后，请将 [tempdb](/sql/relational-databases/databases/tempdb-database) 放置在大多数 SQL Server 工作负载的本地临时 SSD `D:\` 驱动器上。 
+    - 在选择最佳 VM 大小后，请将 [tempdb](/sql/relational-databases/databases/tempdb-database) 放置在大多数 SQL Server 工作负载的本地临时 SSD（默认 `D:\`）驱动器上。 
       - 如果本地驱动器的容量对 tempdb 来说不足够，请考虑增加 VM 的大小。 有关详细信息，请参阅[数据文件缓存策略](performance-guidelines-best-practices-storage.md#data-file-caching-policies)。
 - 使用[存储空间](/windows-server/storage/storage-spaces/overview)对多个 Azure 数据磁盘进行条纹化，以将 I/O 带宽增加到目标虚拟机的 IOPS 和吞吐量上限。
 - 将数据文件磁盘的[主机缓存](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits)设置为只读。
@@ -146,8 +146,9 @@ ms.locfileid: "122397172"
 * 如果优化 SQL Server VM 性能无法解决意外的故障转移，请考虑放宽对可用性组或故障转移群集实例的[监视](hadr-cluster-best-practices.md#relaxed-monitoring)。 但这样做可能无法解决根本问题，同时可能会降低失败可能性而掩盖症状。 你可能仍需要调查并解决根本原因。 对于 Windows Server 2012 或更高版本，请使用以下建议值： 
    - **租用超时**：使用此公式计算最大租用超时值：   
     `Lease timeout < (2 * SameSubnetThreshold * SameSubnetDelay)`.    
-    首先从 40 秒开始。 如果使用的是之前建议的宽松 `SameSubnetThreshold` 和 `SameSubnetDelay` 值，则租用超时值不超过 80 秒。    
-   - **指定时间段内的最大失败数**：将此值设置为 6。 
+    首先从 40 秒开始。 如果使用的是之前建议的宽松 `SameSubnetThreshold` 和 `SameSubnetDelay` 值，则租用超时值不超过 80 秒。 
+   - 指定时间段内的最大失败数：可以将此值设置为 6。
+   - HealthCheck 超时：你最初可以将此值设置为 60000，然后根据需要进行调整。 
 * 使用虚拟网络名称 (VNN) 连接 HADR 解决方案时，即使群集只跨越一个子网，也请在连接字符串中指定 `MultiSubnetFailover = true`。 
    - 如果客户端不支持 `MultiSubnetFailover = True`，你可能需要设置 `RegisterAllProvidersIP = 0` 和 `HostRecordTTL = 300` 来缓存较短持续时间内的客户端凭据。 但这样做可能会导致对 DNS 服务器进行其他查询。 
 - 要使用分布式网络名称 (DNN) 连接 HADR 解决方案，请考虑以下事项：

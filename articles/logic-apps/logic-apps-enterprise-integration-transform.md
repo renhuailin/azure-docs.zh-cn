@@ -1,5 +1,5 @@
 ---
-title: 转换 B2B 企业集成的 XML
+title: 在企业集成工作流中转换 XML
 description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用映射转换 XML。
 services: logic-apps
 ms.suite: integration
@@ -7,31 +7,19 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 30895da003122b760d6437b3cd14a270482f7a0a
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/15/2021
+ms.openlocfilehash: 027c1f44d756494432a076ec32f06e627f916b99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105227"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553725"
 ---
 # <a name="transform-xml-for-workflows-in-azure-logic-apps"></a>在 Azure 逻辑应用中转换工作流的 XML
 
-在企业集成企业到企业 (B2B) 应用场景中，可能需要在不同格式之间转换 XML。 在 Azure 逻辑应用中，逻辑应用工作流可以使用可扩展样式表语言转换 (XSLT) 映射和“转换 XML”操作来转换 XML。 映射是一个 XML 文档，描述了如何将数据从 XML 转换成另一种格式。 本文档由一个作为输入的源 XML 架构和一个作为输出的目标 XML 架构组成。  可以使用不同的内置函数帮助操作或控制数据，包括字符串操作、条件分配、算术表达式、日期时间格式化程序甚至是循环构造。
+在企业集成企业到企业 (B2B) 应用场景中，可能需要在不同格式之间转换 XML。 逻辑应用工作流可以使用“转换 XML”操作和预定义[映射](logic-apps-enterprise-integration-maps.md)来转换XML。 例如，假设你从使用 YearMonthDay 日期格式 (YYYYMMDD) 的客户那里定期接收 B2B 订单或发票。 但是，你的组织使用的是 MonthDayYear 日期格式 (MMDDYYYY)。 在将订单或发票详细信息存储在客户活动数据库中之前，可以创建并使用一个映射，将 YearMonthDay 格式转换为 MonthDayYear 格式。
 
-例如，假设你从使用 YearMonthDay 日期格式 (YYYYMMDD) 的客户那里定期接收 B2B 订单或发票。 但是，你的组织使用的是 MonthDayYear 日期格式 (MMDDYYYY)。 在将订单或发票详细信息存储在客户活动数据库中之前，可以创建并使用一个映射，将 YearMonthDay 格式转换为 MonthDayYear 格式。
-
-在[创建映射](logic-apps-enterprise-integration-maps.md#create-maps)并确认映射正常工作后，可以将此映射添加到已链接到基于多租户消耗计划的逻辑应用或基于 ISE 计划的逻辑应用的集成帐户，也可以将该映射直接添加到基于单租户标准计划的逻辑应用。 有关详细信息，请参阅[在 Azure 逻辑应用中添加用于 XML 转换的 XSLT 映射](logic-apps-enterprise-integration-maps.md)。 假设你的工作流包含“转换 XML”操作，当工作流被触发以及 XML 内容可用于转换时，将运行该操作。
-
-如果你是刚刚接触逻辑应用，请参阅以下文档：
-
-* [什么是 Azure 逻辑应用 - 资源类型和主机环境](logic-apps-overview.md#resource-type-and-host-environment-differences)
-
-* [使用单租户 Azure 逻辑应用（标准版）创建集成工作流](create-single-tenant-workflows-azure-portal.md)
-
-* [创建单租户逻辑应用工作流](create-single-tenant-workflows-azure-portal.md)
-
-* [适用于 Azure 逻辑应用的使用量计量、计费和定价模型](logic-apps-pricing.md)
+如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](logic-apps-overview.md) 有关 B2B 企业集成的详细信息，请参阅[使用 Azure 逻辑应用和 Enterprise Integration Pack 构建的 B2B 企业集成工作流](logic-apps-enterprise-integration-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,15 +27,24 @@ ms.locfileid: "123105227"
 
 * 一个逻辑应用工作流，已在开始时创建触发器，便于你在工作流中必要时添加“转换 XML”操作。
 
-* 如果你使用的是逻辑应用（标准）资源类型，则不需要集成帐户。 可以在 Azure 门户或 Visual Studio Code 中将映射直接添加到逻辑应用资源。 目前仅支持 XSLT 1.0。 然后，可以在同一逻辑应用资源内的多个工作流中使用这些映射。
-
-* 如果你使用的是逻辑应用（消耗）资源类型，则需有一个[集成帐户资源](logic-apps-enterprise-integration-create-integration-account.md)，用于存储要在企业集成和企业到企业 (B2B) 解决方案中使用的映射和其他项目。 此资源必须满足以下要求：
+* 一个可以在其中定义和存储项目（如贸易合作伙伴、协议、证书等）的[集成帐户资源](logic-apps-enterprise-integration-create-integration-account.md)，用于企业集成和 B2B 工作流。 此资源必须满足以下要求：
 
   * 与逻辑应用资源所在的同一个 Azure 订阅相关联。
 
   * 与你计划在其中使用“转换 XML”操作的逻辑应用资源位于同一个位置或 Azure 区域。
 
-  * 已[链接](logic-apps-enterprise-integration-create-integration-account.md#link-account)到你要在其中使用“转换 XML”操作的逻辑应用资源。
+  * 如果使用的是[“逻辑应用(消耗)”资源类型](logic-apps-overview.md#resource-type-and-host-environment-differences)，则集成帐户需要以下项：
+
+    * 用于转换 XML 内容的[映射](logic-apps-enterprise-integration-maps.md)。
+
+    * [逻辑应用资源的链接](logic-apps-enterprise-integration-create-integration-account.md#link-account)。
+
+  * 如果使用的是[“逻辑应用(标准)”资源类型](logic-apps-overview.md#resource-type-and-host-environment-differences)，则不在集成帐户中存储映射， 但可以使用 Azure 门户或 Visual Studio Code [将映射直接添加到逻辑应用资源](logic-apps-enterprise-integration-maps.md)。 目前仅支持 XSLT 1.0。 然后，可以在同一逻辑应用资源内的多个工作流中使用这些映射。
+
+    你仍需要一个集成帐户，用来存储其他项目（例如合作伙伴、协议和证书），以及使用 [AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](logic-apps-enterprise-integration-edifact.md) 操作。 但是，你不需要将逻辑应用资源链接到集成帐户，因此链接功能不存在。 集成帐户仍必须满足其他要求，例如，使用相同的 Azure 订阅并与逻辑应用资源存在于同一位置。
+
+    > [!NOTE]
+    > 目前，仅“逻辑应用(消耗)”资源类型支持 [RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作。 “逻辑应用(标准)”资源类型不包括 [RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作。
 
 ## <a name="add-transform-xml-action"></a>添加“转换 XML”操作
 
@@ -99,6 +96,8 @@ ms.locfileid: "123105227"
    你现在已经设置好了“转换 XML”操作。 在实际应用中，可能需要将已转换的数据存储在业务线 (LOB) 应用（如 SalesForce）中。 若要将已转换的输出发送到 Salesforce，请添加 Salesforce 操作。
 
 1. 若要测试转换操作，请触发并运行工作流。 例如，对于请求触发器，将请求发送到触发器的终结点 URL。
+
+   “转换 XML”操作在工作流被触发后运行，并且在 XML 内容可用于转换时运行。
 
 ## <a name="advanced-capabilities"></a>高级功能
 

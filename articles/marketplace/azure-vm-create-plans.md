@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/26/2021
-ms.openlocfilehash: a974bf12873d46b7835d861b8c4d7007fb7e72ee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eb94adfa104b68f515374090cfd07f300896a163
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708807"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>为虚拟机产品/服务创建计划
 
@@ -218,6 +218,9 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 3. 若要更新已发布第 1 代的现有 VM，请在“技术配置”页上编辑详细信息。
 
 若要详细了解第 1 代和第 2 代功能之间的差异，请参阅 [Azure 上的第 2 代 VM 支持](../virtual-machines/generation-2.md)。
+
+> [!NOTE]
+> 已发布的代需要至少一个映像版本为客户保留可用。 若要删除整个计划（及其所有代和映像），请在“计划概述”页上选择“弃用计划”（请参阅本文的第一部分）。
 
 ### <a name="vm-images"></a>VM 映像
 

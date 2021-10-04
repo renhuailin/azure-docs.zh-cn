@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ef1c747666b2c75567d88f440cef37a631f64064
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f77c099425aac4f6484db8745e036a6dd1833ed4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730859"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578938"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>保护在 Azure AD B2C 中用作 API 连接器的 API 
 
@@ -47,7 +47,7 @@ HTTP 基本身份验证在 [RFC 2617](https://tools.ietf.org/html/rfc2617) 中�
 3. 选择“API 连接器”，然后选择要配置的“API 连接器” 。
 4. 对于“身份验证类型”，请选择“基本”。 
 5. 提供 REST API 终结点的“用户名”和“密码”。 
-    :::image type="content" source="media/add-api-connector/api-connector-config.png" alt-text="为 API 连接器提供基本的身份验证配置。":::
+    :::image type="content" source="media/add-api-connector/api-connector-config.png" alt-text="为 API 连接器提供基本身份验证配置。":::
 6. 选择“保存”。
 
 ::: zone-end
@@ -59,7 +59,8 @@ HTTP 基本身份验证在 [RFC 2617](https://tools.ietf.org/html/rfc2617) 中�
 要使用 HTTP 基本身份验证配置 REST API 技术配置文件，请创建以下加密密钥来存储用户名和密码：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加” 。
@@ -130,7 +131,7 @@ HTTP 基本身份验证在 [RFC 2617](https://tools.ietf.org/html/rfc2617) 中�
 
 ### <a name="create-a-certificate"></a>创建证书
 
-#### <a name="option-1-use-azure-key-vault-recommended"></a>选项 1：使用 Azure Key Vault（建议）
+#### <a name="option-1-use-azure-key-vault-recommended"></a>选项 1：使用 Azure 密钥保管库（建议）
 
 若要创建证书，可以使用 [Azure 密钥保管库](../key-vault/certificates/create-certificate.md)，其中提供了适用于自签名证书的选项，以及与证书颁发者提供程序相集成以便为证书签名的选项。 建议的设置包括：
 - **使用者**：`CN=<yourapiname>.<tenantname>.onmicrosoft.com`
@@ -179,7 +180,8 @@ API 必须根据发送的客户端证书实现授权，以便保护 API 终结�
 ### <a name="add-a-client-certificate-policy-key"></a>添加客户端证书策略密钥
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加” 。
@@ -285,14 +287,14 @@ Authorization: Bearer <token>
 你需要先注册应用程序，然后技术配置文件才能与 Azure AD 进行交互以获取访问令牌。 Azure AD B2C 依赖于 Azure AD 平台。 你可以在 Azure AD B2C 租户中或在你管理的任何 Azure AD 租户中创建应用。 注册应用程序：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含你的 Azure AD 或 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD 或 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧菜单中，选择“Azure Active Directory”  。 或者选择“所有服务”，搜索并选择“Azure Active Directory”。 
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 输入应用程序的“名称”。 例如 Client_Credentials_Auth_app。
 1. 在“支持的帐户类型”下，选择“仅此组织目录中的帐户” 。
 1. 选择“注册”。
-2. 记录“应用程序(客户端) ID”。 
-
+1. 记录“应用程序(客户端) ID”。
 
 对于客户端凭据流，需要创建应用程序机密。 客户端密码也称为应用程序密码。 应用程序将使用该机密来获取访问令牌。
 
@@ -308,18 +310,19 @@ Authorization: Bearer <token>
 需要存储前面在 Azure AD B2C 租户中记录的客户端 ID 和客户端机密。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-4. 在“概述”页上选择“标识体验框架”。
-5. 选择“策略密钥”，然后选择“添加”。
-6. 对于“选项”，请选择 `Manual`。
-7. 输入策略密钥 `SecureRESTClientId` 的“名称”。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-8. 在“机密”中输入前面记录的客户端 ID。
-9. 在“密钥用法”处选择 `Signature`。
-10. 选择“创建”。
-11. 使用以下设置创建另一个策略密钥：
-    -   **名称**：`SecureRESTClientSecret`。
-    -   **机密**：输入前面记录的客户端机密
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 在“概述”页上选择“标识体验框架”。
+1. 选择“策略密钥”，然后选择“添加”。
+1. 对于“选项”，请选择 `Manual`。
+1. 输入策略密钥 `SecureRESTClientId` 的“名称”。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 在“机密”中输入前面记录的客户端 ID。
+1. 在“密钥用法”处选择 `Signature`。
+1. 选择“创建”。
+1. 使用以下设置创建另一个策略密钥：
+    - **名称**：`SecureRESTClientSecret`。
+    - **机密**：输入前面记录的客户端机密
 
 对于 ServiceUrl，将 your-tenant-name 替换为 Azure AD 租户的名称。 有关所有可用选项，请参阅 [RESTful 技术配置文件](restful-technical-profile.md)参考。
 
@@ -402,12 +405,13 @@ Authorization: Bearer <token>
 若要为 REST API 技术配置文件配置 OAuth2 持有者令牌，请从 REST API 所有者获取访问令牌。 然后，创建以下加密密钥来存储持有者令牌。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加” 。
 1. 对于“选项”，请选择 `Manual`。
-1. 输入策略密钥的 **名称**。 例如，`RestApiBearerToken` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`RestApiBearerToken`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“机密”中，输入前面记录的应用程序机密。
 1. 在“密钥用法”处选择 `Encryption`。
 1. 选择“创建”。
@@ -459,7 +463,7 @@ Authorization: Bearer <token>
 
 ::: zone pivot="b2c-user-flow"
 
-某些服务使用“API 密钥”机制，要求调用方包含一个唯一密钥作为 HTTP 标头或 HTTP 查询参数，以模糊处理在开发过程中对 HTTP 端点的访问。 对于 [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)，可以通过在 API 连接器的“终结点 URL”中将 `code` 添加为查询参数来实现此目的。 例如 `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>。 
+某些服务使用“API 密钥”机制，要求调用方包含一个唯一密钥作为 HTTP 头或 HTTP 查询参数，以模糊处理在开发过程中对 HTTP 端点的访问。 对于 [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)，可以通过在 API 连接器的“终结点 URL”中将 `code` 添加为查询参数来实现此目的。 例如 `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>。 
 
 在生产环境中不应单独使用此机制。 因此，始终需要基本身份验证或证书身份验证的配置。 如果不希望出于开发目的实现任何身份验证方法（不建议），可以在 API 连接器配置中选择“基本”身份验证，并对 `username` 和 `password` 使用临时值，API 在实现适当的授权时可忽略这些值。
 
@@ -474,7 +478,8 @@ API 密钥是用于对要访问 REST API 终结点的用户进行身份验证的
 要为 REST API 技术配置文件配置 API 密钥身份验证，请创建以下加密密钥来存储 API 密钥：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加” 。

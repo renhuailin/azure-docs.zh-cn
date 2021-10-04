@@ -5,15 +5,15 @@ author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/26/2021
+ms.date: 09/13/2021
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 498b304e5b0e1deeca2b923e9f1312ea0cebf6bf
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ad060c3fce28ef70137e0f25e09a1e4ea5fb9a09
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113564"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561471"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>从更改源处理器库迁移到 Azure Cosmos DB .NET V3 SDK
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "123113564"
 1. 使用 `WithProcessorOptions` 的自定义应更新为对时间间隔使用 `WithLeaseConfiguration` 和 `WithPollInterval`、对 [开始时间](./change-feed-processor.md#starting-time)使用 `WithStartTime` 以及使用 `WithMaxItems` 来定义最大项计数。
 1. 将 `GetChangeFeedProcessorBuilder` 上的 `processorName` 设置为与 `ChangeFeedProcessorOptions.LeasePrefix`上配置的值匹配，否则使用 `string.Empty`。
 1. 更改将不再作为 `IReadOnlyList<Document>` 传递，而是作为 `IReadOnlyCollection<T>`，其中 `T` 是需要定义的类型，任何基项类都不再存在。
-1. 若要处理这些更改，你不再需要一个实现，而是需要[定义一个委托](change-feed-processor.md#implementing-the-change-feed-processor)。 委托可以是静态函数，或者，如果需要跨执行维护状态，还可以创建自己的类并传递实例方法作为委托。
+1. 若要处理更改，不再需要实现 `IChangeFeedObserver`，而是需要[定义委托](change-feed-processor.md#implementing-the-change-feed-processor)。 委托可以是静态函数，或者，如果需要跨执行维护状态，还可以创建自己的类并传递实例方法作为委托。
 
 例如，如果用于生成更改源处理器的原始代码如下所示：
 
@@ -38,7 +38,11 @@ ms.locfileid: "123113564"
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorMigrated)]
 
-而委托可以是静态方法：
+对于委托，可以使用静态方法来接收事件。 如果使用的是 `IChangeFeedObserverContext` 中的信息，可以迁移以使用 `ChangeFeedProcessorContext`：
+
+* 可以使用 `ChangeFeedProcessorContext.LeaseToken`，而不是使用 `IChangeFeedObserverContext.PartitionKeyRangeId`
+* 可以使用 `ChangeFeedProcessorContext.Headers`，而不是使用 `IChangeFeedObserverContext.FeedResponse`
+* `ChangeFeedProcessorContext.Diagnostics` 包含有关故障排除的请求延迟的详细信息
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=Delegate)]
 

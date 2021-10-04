@@ -5,13 +5,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/03/2021
-ms.openlocfilehash: c7b9eef946aed1a34bf35342c50315efe1b92688
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/21/2021
+ms.openlocfilehash: f2e4cef0d7ebb728c6e3fc3e07c6b3a344cf03e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537780"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585838"
 ---
 # <a name="whats-new-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场的最新更新
 
@@ -21,7 +21,8 @@ ms.locfileid: "123537780"
 
 | 类别 | 说明 | 日期 |
 | --- | --- | --- |
-| 产品 | Power BI 视觉对象的设置和维护将在本月从 Office 应用商店迁移到商业市场。 [此常见问题解答](/azure/marketplace/power-bi-visual-faq)概括介绍了产品/服务提交过程的改进。 | 2021-09-07 |
+| 分析 | Azure 应用程序产品/服务的发布者可以在服务质量 (QoS) 报告中查看产品/服务部署运行状况。 QoS 可帮助发布者了解产品/服务部署失败的原因，并提供有关其修正的可操作见解。 有关详细信息，请参阅[服务质量 (QoS) 仪表板](quality-of-service-dashboard.md)。 | 2021-09-07 |
+| 产品 | Power BI 视觉对象的设置和维护将在后续数周从 Office 应用商店迁移到商业市场。 [此常见问题解答](/azure/marketplace/power-bi-visual-faq)概括介绍了产品/服务提交过程的改进。 若要开始，请参阅[计划 Power BI 视觉对象产品/服务](marketplace-power-bi-visual.md)。| 2021-09-21 |
 | 产品 | 计划级别的其他属性现在可用于 Azure 虚拟机产品/服务。 有关详细信息，请参阅[虚拟机技术配置属性](azure-vm-create-plans.md#properties)一文。 | 2021-07-26 |
 | 费用 | Microsoft 已更改某些服务的费用。 请参阅[商业市场交易功能](marketplace-commercial-transaction-capabilities-and-considerations.md#examples-of-pricing-and-store-fees)和有关付款和税款的常见问题：“[如何查找当前的商店服务费和付款率？”](/partner-center/payout-faq)。 | 2021-07-14 |
 | 产品 | 发布者可以发布他们在本地构建的虚拟机 (VM)。 有关详细信息，请参阅[使用自己的映像创建虚拟机](./azure-vm-create-using-own-image.md)。 | 2021-06-23 |
@@ -43,7 +44,8 @@ ms.locfileid: "123537780"
 ## <a name="documentation-updates"></a>文档更新
 
 | 类别 | 说明 | 日期 |
-| --- | --- | --- |
+| ------------ | ------------- | ------------- |
+| 产品 | 新文章介绍了[服务质量仪表板](quality-of-service-dashboard.md)上提供的产品/服务部署报告的质量。 | 2021-08-27 |
 | 产品 | [商业市场交易功能](/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)主题现在包含一个流程图，可帮助你确定在商业市场中销售软件的适当可交易产品/服务类型和定价计划。 | 2021-08-18 |
 | 策略 | 更新了[认证](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)策略；请参阅[更改历史记录](/legal/marketplace/offer-policies-change-history)。 | 2021-08-06 |
 | 联合销售 | 为 MACC 计划添加了相关信息，包括要求、我们更新 MACC 状态的频率以及“已注册”和“未注册”的定义。 有关详细信息，请参阅 [Azure 使用量承诺注册](./azure-consumption-commitment-enrollment.md)或[与 Microsoft 销售团队和合作伙伴联合销售概述](./co-sell-overview.md)。 | 2021-06-03 |

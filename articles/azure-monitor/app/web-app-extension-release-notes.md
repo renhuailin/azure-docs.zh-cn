@@ -2,26 +2,24 @@
 title: Azure Web 应用扩展发行说明 - Application Insights
 description: Application Insights 的用于运行时检测的 Azure Web 应用扩展的发行说明。
 ms.topic: conceptual
-author: MS-jgol
-ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8b0ddf90f5e6ffbe685c4aea1239323beea6c106
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042600"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828823"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Application Insights 的 Azure Web 应用扩展发行说明
 
 本文包含 Application Insights 的用于运行时检测的 Azure Web 应用扩展的发行说明。 这仅适用于预安装的扩展。
 
-详细[了解](azure-web-apps.md) Application Insights 的 Azure Web 应用扩展。
+详细了解 [Application Insights 的 Azure Web 应用扩展](azure-web-apps.md)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 - 如何查找当前正在使用的扩展版本？
-    - 转到  `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` 。 有关详细信息，请访问[基于扩展/代理的监视的分步故障排除指南](./azure-web-apps.md?tabs=net#troubleshooting)。
+    - 转到  `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` 。 有关详细信息，请访问 [ASP.NET Core](./azure-web-apps-net-core.md#troubleshooting)、[ASP.NET](./azure-web-apps-net.md#troubleshooting)、[Java](./azure-web-apps-java.md#troubleshooting) 或 [Node.js](./azure-web-apps-nodejs.md#troubleshooting) 的基于扩展/代理的监视的分步故障排除指南。
 
 - 如果我使用的是专用扩展，该怎么办？
     - 卸载专用站点扩展，因为它不再受支持。
@@ -36,7 +34,7 @@ ms.locfileid: "102042600"
 
 ### <a name="2837"></a>2.8.37
 
-- AppSvc Windows 扩展：使 .Net Core 可以与任何版本的 System.Diagnostics.DiagnosticSource.dll 一起使用。
+- AppSvc Windows 扩展：让 .NET Core 可以与任何版本的 System.Diagnostics.DiagnosticSource.dll 一起使用。
 
 ### <a name="2836"></a>2.8.36
 
@@ -93,4 +91,4 @@ ms.locfileid: "102042600"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解如何为 Azure 应用服务配置监视，请访问 [Azure 应用服务文档](azure-web-apps.md)。 
+- 若要详细了解如何为 Azure 应用服务配置监视，请访问 [Azure 应用服务的应用程序监视文档](azure-web-apps.md)。 

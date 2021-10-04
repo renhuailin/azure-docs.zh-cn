@@ -3,12 +3,12 @@ title: 在 Service Fabric 群集中修补 Windows 操作系统
 description: 以下介绍如何启用自动 OS 映像升级以修补 Windows 上运行的 Service Fabric 群集节点。
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 187217a0d8195917d1dfe7d726b987efbb07f8f8
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 5a3b2c78f0a7a3103c2fc56fe518739ac648ad31
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738985"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796488"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -24,6 +24,8 @@ ms.locfileid: "109738985"
 请确保 Service Fabric 群集与 Service Fabric 扩展上的持久性设置匹配，因为不匹配将导致升级错误。 可以通过[此页](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)上概述的指导原则来修改持久性级别。
 
 在青铜级持续性下，无法进行自动 OS 映像升级。 虽然不推荐将[补丁协调应用程序](service-fabric-patch-orchestration-application.md)（仅适用于非 Azure 托管群集）用于白银或更高持续性级别，但对于 Service Fabric 升级域，只能通过它自动执行 Windows 更新。
+
+若要从“修补业务流程应用程序”切换到“自动 OS 映像升级”，必须先弃用“修补业务流程应用程序”。
 
 ## <a name="enable-auto-os-upgrades-and-disable-windows-update"></a>启用自动 OS 升级并禁用 Windows 更新
 

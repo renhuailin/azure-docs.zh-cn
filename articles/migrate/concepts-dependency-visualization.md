@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: 240f87a6b3154995340830e1861c8a76e6e3557f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 55e8efc7b49f14f6eb4cfe399866e53df29e3e36
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259668"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767055"
 ---
 # <a name="dependency-analysis"></a>依赖项分析
 
@@ -31,7 +31,7 @@ ms.locfileid: "123259668"
 
 **选项** | **详细信息** | **公有云** | **Azure Government**
 ----  |---- | ----
-**无代理** | 使用 vSphere API 轮询 VMware 上的服务器中的数据。<br/><br/> 不需要在服务器上安装代理。<br/><br/> 此选项目前为预览版，仅适用于 VMware 上的服务器。 | 支持。 | 支持。
+**无代理** | 使用 vSphere API 轮询 VMware 上的服务器中的数据。<br/><br/> 不需要在服务器上安装代理。<br/><br/> 此选项目前仅适用于 VMware 上的服务器。 | 支持。 | 支持。
 **基于代理的分析** | 使用 Azure Monitor 中的[“服务映射”解决方案](../azure-monitor/vm/service-map.md)来实现依赖项可视化和分析。<br/><br/> 需要在要分析的每个本地服务器上安装代理。 | 支持 | 不支持。
 
 ## <a name="agentless-analysis"></a>无代理分析

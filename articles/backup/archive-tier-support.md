@@ -2,14 +2,14 @@
 title: 存档层支持
 description: 了解对 Azure 备份的存档层支持
 ms.topic: conceptual
-ms.date: 08/31/2021
+ms.date: 09/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 228ab85a0cde5ed37156a5821ad3ac2acd6a7209
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 0468e463caa6d589b22596d2fe845014e96e10b8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260776"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632455"
 ---
 # <a name="archive-tier-support"></a>存档层支持
 
@@ -76,7 +76,7 @@ ms.locfileid: "123260776"
 
     - 对于 Azure 虚拟机中的 SQL Server：
 
-        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
+        `$bckItm = $BackupItemList | Where-Object {$_.FriendlyName -eq '<dbName>' -and $_.ContainerName -match '<vmName>'}`
 
 1. 添加要查看其恢复点的日期范围。 例如，如果要查看过去 124 天到过去 95 天之间的恢复点，请使用以下命令：
 
@@ -88,6 +88,16 @@ ms.locfileid: "123260776"
     >[!NOTE]
     >若要查看不同时间范围的恢复点，请相应地修改开始日期和结束日期。
 ## <a name="use-powershell"></a>使用 PowerShell
+
+### <a name="check-the-archivable-status-of-all-the-recovery-points"></a>检查所有恢复点的可存档状态
+
+现在，可以使用以下 cmdlet 检查备份项的所有恢复点的可存档状态：
+
+```azurepowershell
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() 
+
+$rp | select RecoveryPointId, @{ Label="IsArchivable";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].IsReadyForMove}}, @{ Label="ArchivableInfo";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].AdditionalInfo}}
+```
 
 ### <a name="check-archivable-recovery-points"></a>查看可存档的恢复点
 
@@ -149,7 +159,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 对于存档中的恢复点，Azure 备份提供了集成的还原方法。
 
-集成还原是一个两步过程。 第一步是解除冻结存储在存档中的恢复点，并将其临时存储在保管库标准层中，持续时间（也称为解除冻结持续时间）介于 10 到 30 天之间。 默认值为 15 天。 解除冻结有两个不同的优先级：标准和高优先级。 了解有关[解除冻结优先级](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier)的详细信息。
+集成还原是一个两步过程。 第一步是解除冻结存储在存档中的恢复点，并将其临时存储在保管库标准层中，持续时间（也称为解除冻结持续时间）介于 10 到 30 天之间。 默认值为 15 天。 解除冻结有两个不同的优先级：标准和高优先级。 了解有关[解除冻结优先级](../storage/blobs/archive-rehydrate-overview.md#rehydration-priority)的详细信息。
 
 >[!NOTE]
 >
@@ -171,6 +181,17 @@ Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RehydratePr
 ```azurepowershell
 Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ```
+
+### <a name="move-recovery-points-to-archive-tier-at-scale"></a>将恢复点大规模移到存档层
+
+现在可以使用示例脚本执行大规模操作。 [详细了解](https://github.com/hiaga/Az.RecoveryServices/blob/master/README.md)如何运行示例脚本。 可以从[此处](https://github.com/hiaga/Az.RecoveryServices)下载脚本。
+
+可以使用 Azure 备份提供的示例脚本执行以下操作：
+
+- 将 Azure VM 中 SQL Server 的特定数据库/所有数据库的所有符合条件的恢复点移到存档层。
+- 将已为特定 Azure 虚拟机建议的所有恢复点移到存档层。
+ 
+还可以根据需求编写脚本，或修改上述示例脚本以提取所需的备份项。
 
 ## <a name="use-the-portal"></a>使用门户
 
@@ -211,7 +232,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 | 工作负荷 | 预览 | 正式发布 |
 | --- | --- | --- |
-| Azure VM 中的 SQL Server | 美国东部、美国中南部、美国中北部、西欧 | 澳大利亚东部、印度中部、北欧、东南亚、东亚、澳大利亚东南部、加拿大中部、巴西南部、加拿大东部、法国中部、法国南部、日本东部、日本西部、韩国中部、韩国南部、印度南部、英国西部、英国南部、美国中部、美国东部 2、美国西部、美国西部 2、美国中西部 |
+| Azure VM 中的 SQL Server | 美国中南部、美国中北部、西欧 | 澳大利亚东部、印度中部、北欧、东南亚、东亚、澳大利亚东南部、加拿大中部、巴西南部、加拿大东部、法国中部、法国南部、日本东部、日本西部、韩国中部、韩国南部、印度南部、英国西部、英国南部、美国中部、美国东部 2、美国西部、美国西部 2、美国中西部、美国东部 |
 | Azure 虚拟机 | 美国东部、美国东部 2、美国中部、美国中南部、美国西部、美国西部 2、美国中西部、美国中北部、巴西南部、加拿大东部、加拿大中部、西欧、英国南部、英国西部、东亚、日本东部、印度南部、东南亚、澳大利亚东部、印度中部、北欧、澳大利亚东南部、法国中部、法国南部、日本西部、韩国中部、韩国南部 | 无 |
 
 ## <a name="error-codes-and-troubleshooting-steps"></a>错误代码和故障排除步骤

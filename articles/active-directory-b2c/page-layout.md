@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/25/2021
+ms.date: 09/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa60cf86a8bc59b9eed2adc8ac0ba2cfb89be584
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: b095b0e53b7d9cd76a7bb0cb92258dc9bda34b3d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835608"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588915"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
@@ -56,6 +56,23 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 
 ## <a name="self-asserted-page-selfasserted"></a>自断言页面 (selfasserted)
 
+**2.1.8**
+
+- 声明名称将添加到围绕用户属性输入元素的 `<li>` HTML 元素的 `class` 属性中。 类名允许你创建一个 CSS 选择器来为某个用户属性输入元素选择父 `<li>`。 以下 HTML 标记显示注册页的类属性：
+  
+  ```html
+  <div id="attributeList" class="attr">
+    <ul>
+      <li class="EmailBox email_li">...</li>
+      <li class="Password newPassword_li">...</li>
+      <li class="Password reenterPassword_li">...</li>
+      <li class="TextBox displayName_li">...</li>
+      <li class="TextBox givenName_li">...</li>
+      <li class="TextBox surname_li">...</li>
+      <li class="TextBox extension_age_li">...</li>
+    </ul>
+  </div>
+  ```
 **2.1.7**
 - 修复了导致请求失败的语言编码问题。
 - 修复了一个仅在窗体提交时显示内联错误消息的辅助功能 bug。

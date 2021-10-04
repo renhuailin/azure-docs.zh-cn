@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 525ae8e08965a63b79ed23a706795472743a00c2
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 2e3a51430ef2f57f3d9ea095dee8b297d01187a2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222563"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758382"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -170,30 +170,21 @@ Get-AzAksVersion -Location eastus
 
 |  K8s 版本 | 上游版本  | AKS 预览版  | AKS GA  | 生命周期结束 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.18  | 20-03-23  | 2020 年 5 月   | 2020 年 8 月  | *1.21 GA |
 | 1.19  | 20-08-04  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA |
 | 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
 | 1.21  | 2021 年 4 月 8 日 | 2021 年 5 月   | 2021 年 7 月  | 1.24 GA |
 | 1.22  | Aug-04-21 | 2021 年 9 月   | 2021 年 10 月  | 1.25 GA |
 | 1.23  | 2021 年 12 月 | 2022 年 1 月   | 2022 年 2 月  | 1.26 GA |
 
->[!NOTE]
->在 2021 年 7 月 31 日之前，AKS 版本 1.18 将继续可用。 此日期过后，AKS 将返回到其常规的三版本窗口支持。 请务必注意以下事项，因为从 2021 年 6 月 30 日到 7 月 31 日的支持将存在范围限制。 下面列出了会对用户进行限制的内容：
-> - 在 1.18 上创建新的群集和节点池。
-> - 1\.18 群集上的 CRUD 操作。
-> - 非 Kubernetes 相关的平台问题的 Azure 支持。 平台问题包括在 Azure 上运行的网络、存储或计算方面的问题。 要求进行 K8s 修补和故障排除的任何支持请求都会被要求升级到受支持的版本。
-
 ## <a name="faq"></a>常见问题解答
 
 **Microsoft 如何通知我关于新 Kubernetes 版本的发布？**
 
-在我们的文档、[GitHub](https://github.com/Azure/AKS/releases) 以及向拥有即将不受支持的群集的订阅管理员发送的电子邮件中，AKS 团队发布了包含新 Kubernetes 版本的计划发布日期的预先公告。  除了公告外，AKS 还使用 [Azure 顾问](../advisor/advisor-overview.md) 在 Azure 门户中通知客户，在用户不受支持时向用户发出警报，并就会影响其应用程序或开发过程的已弃用的 API 提醒他们。
+在我们的文档、[GitHub](https://github.com/Azure/AKS/releases) 以及向拥有即将不受支持的群集的订阅管理员发送的电子邮件中，AKS 团队发布了包含新 Kubernetes 版本的计划发布日期的预先公告。  除了公告外，AKS 还使用 [Azure 顾问](../advisor/advisor-overview.md)在 Azure 门户中通知客户，在用户不受支持时向用户发出警报，并就会影响其应用程序或开发过程的已弃用的 API 提醒他们。
 
 **我应该多久升级一次 Kubernetes 版本才能始终获得支持？**
 
 从 Kubernetes 1.19 开始，[开源社区已将支持时间延长到 1 年](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)。 AKS 承诺启用修补程序并提供与上游承诺使用量匹配的支持。 对于版本 1.19 和更高版本的 AKS 群集，你将能够每年至少升级一次，这样就能始终使用受支持的版本。
-
-对于 1.18 或更低版本，支持时间仍为 9 个月，这要求你每 9 个月升级一次才能始终使用受支持的版本。 定期测试新版本，并准备升级到更新的版本，以便在 Kubernetes 中获取最新的稳定增强功能。
 
 **用户升级的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？**
 

@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: c2d0cfc15457d45701f129ae329295064d773a09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a91b334b5494d8db44c86352c95fd7b4d1ea2c14
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604101"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604068"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中创建用户
 
@@ -75,6 +75,14 @@ PostgreSQL 引擎使用权限来控制对数据库对象的访问权限，如 [P
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```
+
+   如果用户创建表“角色”，则此表属于该用户。 如果其他用户需要访问该表，则你必须在表级别向其他用户授予权限。
+
+   例如： 
+
+    ```sql
+    GRANT SELECT ON ALL TABLES IN SCHEMA <schema_name> TO <db_user>;
+    ```
 
 5. 指定选定的数据库并使用新用户名和密码，登录到服务器。 此示例显示了 psql 命令行。 使用此命令，会提示你输入用户名的密码。 替换你自己的服务器名称、数据库名称和用户名。
 

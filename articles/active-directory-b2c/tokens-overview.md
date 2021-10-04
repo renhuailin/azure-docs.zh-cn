@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98ab4a660923f1a399317b9682a231774f310f3c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516354"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546947"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌概述
 
@@ -76,11 +76,11 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 
 - **刷新令牌生存期（天）** - 可以使用刷新令牌获取新的访问令牌或 ID 令牌之前的最大时限。 该时限还包括为应用程序授予了 `offline_access` 范围时获取新刷新令牌的最大时限。 默认值为 14 天。 最小值为 1 天（含）。 最大值为 90 天（含）。
 
-- **刷新令牌的滑动窗口生存期（天）** - 此时限过后，强制用户重新进行身份验证，不考虑应用程序获取的最新刷新令牌的有效期。 仅在此开关设为“有限”时该属性才可用。 它的值必须大于或等于 **刷新令牌生存期（天）** 的值。 如果此开关设置为“无限”，则无法提供特定值。 默认值为 90 天。 最小值为 1 天（含）。 最大值为 365 天（含）。
+- **刷新令牌的滑动窗口生存期（天）** - 此时限过后，强制用户重新进行身份验证，不考虑应用程序获取的最新刷新令牌的有效期。 仅在此开关设为“有限”时该属性才可用。 它的值必须大于或等于 **刷新令牌生存期（天）** 的值。 如果此开关设置为“永不过期”，则无法提供特定值。 默认值为 90 天。 最小值为 1 天（含）。 最大值为 365 天（含）。
 
 以下用例是使用这些属性实现的：
 
-- 只要用户在移动应用程序上持续保持活动状态，允许该用户无限期地保持登录此应用程序。 可将登录用户流中的“刷新令牌的滑动窗口生存期(天)”开关设为“无限”。
+- 只要用户在移动应用程序上持续保持活动状态，允许该用户无限期地保持登录此应用程序。 可将登录用户流中的“刷新令牌的滑动窗口生存期(天)”设为“永不过期”。
 - 通过设置合适的访问令牌生存期来满足行业的安全性和合规性要求。
 
 这些设置不适用于密码重置用户流。
@@ -89,11 +89,11 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 
 以下属性用于[管理令牌兼容性](configure-tokens.md)：
 
-- **颁发者 (iss) 声明** - 此属性标识颁发令牌的 Azure AD B2C 租户。 默认值为 `https://<domain>/{B2C tenant GUID}/v2.0/`。 `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` 值包含令牌请求中使用的 Azure AD B2C 租户和用户流的 ID。 如果应用程序或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](https://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
+- **颁发者 (iss) 声明** - 此属性标识颁发令牌的 Azure AD B2C 租户。 默认值是 `https://<domain>/{B2C tenant GUID}/v2.0/`。 `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` 值包含令牌请求中使用的 Azure AD B2C 租户和用户流的 ID。 如果应用程序或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](https://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
 
 - **使用者 (sub) 声明** - 此属性标识令牌断言其信息的实体。 默认值为 **ObjectID**，即在令牌的 `sub` 声明中填充用户的对象 ID。 **Not supported** 值仅供用于实现后向兼容。 建议尽快改用 **ObjectID**。
 
-- **表示策略 ID 的声明** - 此属性标识要在其中填充令牌请求中使用的策略名称的声明类型。 默认值为 `tfp`。 `acr` 值仅供用于实现后向兼容。
+- **表示策略 ID 的声明** - 此属性标识要在其中填充令牌请求中使用的策略名称的声明类型。 默认值是 `tfp`。 `acr` 值仅供用于实现后向兼容。
 
 ## <a name="pass-through"></a>直通
 

@@ -3,15 +3,15 @@ title: 适用于 Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 输入绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 5566ca21b9ac1f0491673af21d85201a2fd18efc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 50a4e4ecbfb646603411944a2e65944b536aeb43
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451238"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615959"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 
@@ -35,6 +35,7 @@ Azure Cosmos DB 输入绑定会使用 SQL API 检索一个或多个 Azure Cosmos
 * [HTTP 触发器，使用 SqlQuery 从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
 * [HTTP 触发器，使用 SqlQuery 获取多个文档](#http-trigger-get-multiple-docs-using-sqlquery-c)
 * [HTTP 触发器，使用 DocumentClient 获取多个文档](#http-trigger-get-multiple-docs-using-documentclient-c)
+* [HTTP 触发器，使用 CosmosClient（v4 扩展）获取多个文档](#http-trigger-get-multiple-docs-using-cosmosclient-c)
 
 这些示例引用简单的 `ToDoItem` 类型：
 
@@ -351,6 +352,68 @@ namespace CosmosDBSamplesV2
                     log.LogInformation(result.Description);
                 }
             }
+            return new OkResult();
+        }
+    }
+}
+```
+
+<a id="http-trigger-get-multiple-docs-using-cosmosclient-c"></a>
+
+### <a name="http-trigger-get-multiple-docs-using-cosmosclient"></a>HTTP 触发器，使用 CosmosClient 获取多个文档
+
+以下示例演示检索文档列表的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定（在[扩展版本 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 中提供）提供的 `CosmosClient` 实例来读取文档列表。 `CosmosClient` 实例也可用于写入操作。
+
+```csharp
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+
+namespace CosmosDBSamplesV2
+{
+    public static class DocsByUsingCosmosClient
+    {  
+        [FunctionName("DocsByUsingCosmosClient")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post",
+                Route = null)]HttpRequest req,
+            [CosmosDB(
+                databaseName: "ToDoItems",
+                containerName: "Items",
+                Connection = "CosmosDBConnection")] CosmosClient client,
+            ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+
+            var searchterm = req.Query["searchterm"].ToString();
+            if (string.IsNullOrWhiteSpace(searchterm))
+            {
+                return (ActionResult)new NotFoundResult();
+            }
+
+            Container container = client.GetDatabase("ToDoItems").GetContainer("Items");
+
+            log.LogInformation($"Searching for: {searchterm}");
+
+            QueryDefinition queryDefinition = new QueryDefinition(
+                "SELECT * FROM items i WHERE CONTAINS(i.Description, @searchterm)")
+                .WithParameter("@searchterm", searchterm);
+            using (FeedIterator<ToDoItem> resultSet = container.GetItemQueryIterator<ToDoItem>(queryDefinition))
+            {
+                while (resultSet.HasMoreResults)
+                {
+                    FeedResponse<ToDoItem> response = await resultSet.ReadNextAsync();
+                    ToDoItem item = response.First();
+                    log.LogInformation(item.Description);
+                }
+            }
+
             return new OkResult();
         }
     }
@@ -1620,7 +1683,7 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) 特性。
 
-该特性的构造函数采用数据库名称和集合名称。 有关这些设置以及可以配置的其他属性的信息，请参阅[下面的“配置”部分](#configuration)。
+该特性的构造函数采用数据库名称和集合名称。 在[扩展版本 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 中，一些设置和属性已被删除或重命名。 若要了解可以为所有版本配置的设置和其他属性，请参阅[下面的“配置”部分](#configuration)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -1654,10 +1717,10 @@ Python 不支持特性。
 |**direction**     | 不适用 | 必须设置为 `in`。         |
 |**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
-|**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
+|**collectionName** <br> 或 <br> **containerName**|**CollectionName** <br> 或 <br> ContainerName| 包含文档的集合的名称。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `ContainerName`。 |
 |**id**    | Id | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 `id` 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
 |**sqlQuery**  |**SqlQuery**  | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该属性支持运行时绑定，如以下示例中所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 不要同时设置 `id` 和 `sqlQuery` 属性。 如果上述两个属性都未设置，则会检索整个集合。|
-|**connectionStringSetting**     |**ConnectionStringSetting**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。 |
+|**connectionStringSetting** <br> 或 <br> 连接  |**ConnectionStringSetting** <br> 或 <br> **Connection**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `Connection`。 此值是某个应用设置的名称，其中包含连接字符串或包含用于定义连接的配置部分或前缀。 请参阅[连接](./functions-reference.md#connections)。 |
 |**partitionKey**|**PartitionKey**|指定用于查找分区键值。 可以包含绑定参数。 它是在[分区的](../cosmos-db/partitioning-overview.md#logical-partitions)集合中进行查询所需的。|
 |**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，“美国东部,美国中南部,北欧”。 |
 

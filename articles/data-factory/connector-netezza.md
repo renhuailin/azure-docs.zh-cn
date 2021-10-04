@@ -1,34 +1,34 @@
 ---
-title: 使用 Azure 数据工厂从 Netezza 复制数据
+title: 从 Netezza 复制数据
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从 Netezza 复制到支持的接收器数据存储。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Netezza 复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 2a6136d4af030784bac3c45a3a5d631c41830d6c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 588700126d87361e4530c073cdcaf1a5a9339511
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303754"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828168"
 ---
-# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Netezza 复制数据
+# <a name="copy-data-from-netezza-by-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 Netezza 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Netezza 复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
+本文概述如何使用 Azure 数据工厂或 Synapse Analytics 管道中的复制活动从 Netezza 复制数据。 本文是基于概括性介绍复制活动的[复制活动](copy-activity-overview.md)一文编写的。
 
 >[!TIP]
->对于从 Netezza 迁移到 Azure 的数据迁移方案，请从[使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure](data-migration-guidance-netezza-azure-sqldw.md) 了解更多信息。
+>对于从 Netezza 到 Azure 的数据迁移方案，请在[将数据从本地 Netezza 服务器迁移到 Azure](data-migration-guidance-netezza-azure-sqldw.md) 中了解详细信息。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下活动支持此 Netezza 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 
@@ -36,7 +36,7 @@ ms.locfileid: "123303754"
 
 Netezza 连接器支持从源进行并行复制。 有关详细信息，请参阅[从 Netezza 进行并行复制](#parallel-copy-from-netezza)部分。
 
-Azure 数据工厂提供内置驱动程序以启用连接。 无需要手动安装任何驱动程序即可使用此连接器。
+服务提供了内置驱动程序，用来启用连接。 无需要手动安装任何驱动程序即可使用此连接器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +54,7 @@ Azure 数据工厂提供内置驱动程序以启用连接。 无需要手动安�
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -71,7 +71,7 @@ Azure 数据工厂提供内置驱动程序以启用连接。 无需要手动安�
 
 ## <a name="connector-configuration-details"></a>连接器配置详细信息
 
-对于特定于 Netezza 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
+以下部分详述的属性可用于定义特定于 Netezza 连接器的实体。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -145,7 +145,7 @@ Netezza 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**NetezzaTable** | 是 |
-| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -224,17 +224,17 @@ Netezza 链接服务支持以下属性：
 
 数据工厂 Netezza 连接器提供内置的数据分区，用于从 Netezza 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。 
 
-![分区选项的屏幕截图](./media/connector-netezza/connector-netezza-partition-options.png)
+:::image type="content" source="./media/connector-netezza/connector-netezza-partition-options.png" alt-text="分区选项的屏幕截图":::
 
-启用分区复制时，数据工厂将对 Netezza 源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Netezza 数据库检索一部分数据。
+启用分区复制后，服务将对 Netezza 源运行并行查询，以便按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，服务会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Netezza 数据库检索一部分数据。
 
 建议同时启用并行复制和数据分区，尤其是从 Netezza 数据库加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
 | 场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 从大型表进行完整加载。                                   | 分区选项：数据切片。 <br><br/>在执行期间，数据工厂自动根据 [Netezza 的内置数据切片](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)将数据分区，并按分区复制数据。 |
-| 使用自定义查询加载大量数据。                 | 分区选项：数据切片。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`。<br>执行期间，数据工厂将 `?AdfPartitionCount`（并行复制数在复制活动中设置）和 `?AdfDataSliceCondition` 替换为数据切片分区逻辑，并将其发送到 Netezza。 |
-| 使用自定义查询加载大量数据，某个整数列包含均匀分布的范围分区值。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>**分区上限** 和 **分区下限**：指定是否要对分区列进行筛选，以便仅检索介于下限和上限之间的数据。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名和值范围，并将其发送到 Netezza。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则数据工厂会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
+| 从大型表进行完整加载。                                   | 分区选项：数据切片。 <br><br/>在执行期间，服务会自动根据 [Netezza 的内置数据切片](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)将数据分区，并按分区复制数据。 |
+| 使用自定义查询加载大量数据。                 | 分区选项：数据切片。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`。<br>在执行期间，服务会将 `?AdfPartitionCount`（并行复制数在复制活动中设置）和 `?AdfDataSliceCondition` 替换为数据切片分区逻辑，并将其发送到 Netezza。 |
+| 使用自定义查询加载大量数据，某个整数列包含均匀分布的范围分区值。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>**分区上限** 和 **分区下限**：指定是否要对分区列进行筛选，以便仅检索介于下限和上限之间的数据。<br><br>在执行期间，服务会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名称和值范围，并将其发送到 Netezza。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则服务会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
 
 **示例：使用数据切片分区进行查询**
 
@@ -268,4 +268,4 @@ Netezza 链接服务支持以下属性：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。

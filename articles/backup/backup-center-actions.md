@@ -2,13 +2,13 @@
 title: 使用备份中心执行操作
 description: 本文介绍如何使用备份中心执行操作
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: 8c21475e5a52cdce7e38bbeb9d00df3c3ac3a752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/22/2021
+ms.openlocfilehash: e8b357c19caeb20c2a50d9a05f9d8d583bd8f640
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506429"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083613"
 ---
 # <a name="perform-actions-using-backup-center"></a>使用备份中心执行操作
 
@@ -76,7 +76,7 @@ ms.locfileid: "102506429"
 
     ![选择用于 Azure Database for PostgreSQL 服务器还原的数据源](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 
-3. 选择备份实例，然后选择“继续”。 这样你就可以体验与恢复服务保管库一样的还原设置。 [详细了解如何使用备份保管库还原 Azure Database for PostgreSQL 服务器](backup-azure-database-postgresql.md#restore)。
+3. 选择备份实例，然后选择“继续”。 这样你就可以体验与恢复服务保管库一样的还原设置。 [详细了解如何使用备份保管库还原 Azure Database for PostgreSQL 服务器](restore-azure-database-postgresql.md)。
 
 ## <a name="create-a-new-vault"></a>创建新的保管库
 
@@ -116,25 +116,32 @@ ms.locfileid: "102506429"
 
 通过备份中心，可以搜索整个备份资产中的备份实例，并按需执行备份操作。
 
-要触发按需备份，请导航到备份中心，然后选择“备份实例”菜单项。 通过选择此选项，可以查看你有权访问的所有备份实例的详细信息。 可以搜索想要备份的备份实例。 右键单击网格中的某个项会打开可用操作列表。 选择“立即备份”选项以执行按需备份。
+若要停止保护，请导航到“备份中心”，然后选择“备份实例”菜单项。 通过选择此选项，可以查看你有权访问的所有备份实例的详细信息。 可以搜索想要备份的备份实例。 右键单击网格中的某个项会打开可用操作列表。 选择“立即备份”选项以执行按需备份。
 
 ![按需备份](./media/backup-center-actions/backup-center-on-demand-backup.png)
 
 [详细了解如何对 Azure 虚拟机执行按需备份](backup-azure-manage-vms.md#run-an-on-demand-backup)。
 
-[详细了解如何对 Azure Database for PostgreSQL 服务器执行按需备份](backup-azure-database-postgresql.md#on-demand-backup)。
+[详细了解如何对 Azure Database for PostgreSQL 服务器执行按需备份](backup-azure-database-postgresql.md)。
 
 ## <a name="stop-backup-for-a-backup-instance"></a>停止为备份实例备份
 
 在某些情况下，你可能想要停止为备份实例进行备份，例如当正在备份的基础资源不再存在时。
 
-要触发按需备份，请导航到备份中心，然后选择“备份实例”菜单项。 选择此选项可以查看有权访问的所有备份实例的详细信息。 可以搜索想要备份的备份实例。 右键单击网格中的某个项会打开可用操作列表。 选择“停止备份”选项以停止备份实例的备份。
+若要停止保护，请导航到“备份中心”，然后选择“备份实例”菜单项。 选择此选项可以查看有权访问的所有备份实例的详细信息。 可以搜索想要备份的备份实例。 右键单击网格中的某个项会打开可用操作列表。 选择“停止备份”选项以停止备份实例的备份。
 
 ![停止保护](./media/backup-center-actions/backup-center-stop-protection.png)
 
-[详细了解如何停止 Azure 虚拟机的备份](backup-azure-manage-vms.md#stop-protecting-a-vm)。
+- [详细了解](backup-azure-manage-vms.md#stop-protecting-a-vm)如何停止 Azure 虚拟机的备份。
+- [详细了解](manage-azure-managed-disks.md#stop-protection-preview)如何停止磁盘的备份。
+- [详细了解](manage-azure-database-postgresql.md#stop-protection-preview)如何停止 Azure Database for PostgreSQL 服务器的备份。
 
-[详细了解如何停止 Azure Database for PostgreSQL 服务器的备份](backup-azure-database-postgresql.md#stop-protection)
+## <a name="resume-backup"></a>恢复备份
+
+如果你在“停止保护”期间保留了数据，则可以恢复工作负荷的备份。
+
+- [详细了解](manage-azure-database-postgresql.md#resume-protection)如何继续保护磁盘。
+- [详细了解](manage-azure-managed-disks.md#resume-protection)如何继续保护 Azure Database for PostgreSQL 服务器。
 
 ## <a name="next-steps"></a>后续步骤
 

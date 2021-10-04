@@ -3,12 +3,12 @@ title: 使用 Bicep 将资源部署到订阅
 description: 介绍如何创建 Bicep 文件，以将资源部署到 Azure 订阅范围。 它展示了如何创建资源组。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: a683e0c46547be3ecb48a20a88f9a95a5b6c8ef8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: df9938e209e163b19e666a26dec4176e83fc79e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453419"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793733"
 ---
 # <a name="subscription-deployments-with-bicep-files"></a>采用 Bicep 文件的订阅部署
 
@@ -18,6 +18,10 @@ ms.locfileid: "114453419"
 
 > [!NOTE]
 > 可在订阅级别部署中部署到 800 个不同的资源组。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解部署范围并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用 Bicep 将资源部署到订阅、管理组和租户](/learn/modules/deploy-resources-scopes-bicep/)。
 
 ## <a name="supported-resources"></a>支持的资源
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: cb66b9ad3106b9cad5b9b22cbe32838e13f56c28
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0df95d90d0119f8bc513fe2a26ed731d87401b3d
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736403"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154254"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>排查 Azure 专用终结点连接问题
 
@@ -119,7 +119,19 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
       - 从其他源连接到专用终结点。 这样做可厘清任何特定于虚拟机的问题。 
       - 连接到与专用终结点属于同一虚拟网络的任何虚拟机。  
 
-1. 如果问题仍未解决，并且连接问题仍然存在，请联系 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)团队。
+1. 如果专用终结点链接到已链接到负载均衡器的[专用链接服务](./troubleshoot-private-link-connectivity.md)，请检查后端池是否报告正常。 修复负载均衡器运行状况将修复连接到专用终结点时出现的问题。
+
+    - 可以通过转到以下目标来查看相关资源、指标和见解的可视化关系图或[依赖关系视图](../azure-monitor/insights/network-insights-overview.md#dependency-view)：
+        - Azure Monitor
+        - 网络
+        - 专用终结点
+        - “依赖项”视图 
+
+![监视网络](https://user-images.githubusercontent.com/20302679/134994620-0660b9e2-e2a3-4233-8953-d3e49b93e2f2.png)
+
+![DependencyView](https://user-images.githubusercontent.com/20302679/134994637-fb8b4a1a-81d5-4723-b1c3-d7bdc72162f3.png)
+
+9. 如果问题仍未解决，并且连接问题仍然存在，请联系 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)团队。
 
 ## <a name="next-steps"></a>后续步骤
 

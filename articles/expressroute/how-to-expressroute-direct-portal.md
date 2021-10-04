@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: duau
-ms.openlocfilehash: b659fee979fd936a85c0cd5a711390594bbe79b1
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: d5b7bba4774eb81c684875a4db9ffb1afb2a60aa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795739"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811239"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 门户创建 ExpressRoute Direct
 
@@ -135,4 +135,4 @@ ms.locfileid: "108795739"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 ExpressRoute Direct 的详细信息，请参阅[概述](expressroute-erdirect-about.md)。
+创建 ExpressRoute 线路后，可以[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-add-gateway-portal-resource-manager.md)。

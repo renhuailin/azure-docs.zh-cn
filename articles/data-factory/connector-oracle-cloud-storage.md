@@ -1,25 +1,26 @@
 ---
-title: 使用 Azure 数据工厂从 Oracle 云存储复制数据
+title: 从 Oracle 云存储复制数据
+description: 了解如何使用 Azure 数据工厂或 Synapse Analytics 管道将数据从 Oracle 云存储复制到受支持的接收器数据存储。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何使用 Azure 数据工厂将数据从 Oracle 云存储复制到受支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: caf817d8b31743f091a4655f6b9ddcfc0007e130
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 3ace2498c568d5193d110845bc7927983fd419ff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311964"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678737"
 ---
-# <a name="copy-data-from-oracle-cloud-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Oracle 云存储复制数据
+# <a name="copy-data-from-oracle-cloud-storage-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 Oracle 云存储复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何从 Oracle 云存储复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何从 Oracle 云存储复制数据。 有关详细信息，请阅读 [Azure 数据工厂](introduction.md)和 [Synapse Analytics](../synapse-analytics/overview-what-is.md) 的简介文章。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -49,7 +50,7 @@ ms.locfileid: "123311964"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -66,7 +67,7 @@ ms.locfileid: "123311964"
 
 ## <a name="connector-configuration-details"></a>连接器配置详细信息 
 
-以下各部分详细介绍了定义特定于 Oracle 云存储的数据工厂实体时使用的属性。
+以下各部分详细介绍了定义特定于 Oracle 云存储的实体时使用的属性。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -76,7 +77,7 @@ Oracle 云存储链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | “type”属性必须设置为“OracleCloudStorage”。  | 是 |
 | accessKeyId | 机密访问键 ID。 若要查找访问密钥和机密，请参阅[先决条件](#prerequisites)。 |是 |
-| secretAccessKey | 机密访问键本身。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
+| secretAccessKey | 机密访问键本身。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | serviceUrl | 将自定义终结点指定为 `https://<namespace>.compat.objectstorage.<region identifier>.oraclecloud.com`。 请参阅 [此处](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm) 了解详细信息 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 |否 |
 
@@ -229,7 +230,7 @@ Oracle 云存储链接服务支持以下属性：
 
 假设有以下源文件夹结构，并且要复制以粗体显示的文件：
 
-| 示例源结构                                      | FileListToCopy.txt 中的内容                             | 数据工厂配置                                            |
+| 示例源结构                                      | FileListToCopy.txt 中的内容                             | 配置 |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | Bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;元数据<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | 在数据集中：<br>- 桶：`bucket`<br>- 文件夹路径：`FolderA`<br><br>在复制活动源中：<br>- 文件列表路径：`bucket/Metadata/FileListToCopy.txt` <br><br>文件列表路径指向同一数据存储中的一个文本文件，该文件包含要复制的文件列表（每行一个文件，使用数据集中所配置路径的相对路径）。 |
 
@@ -247,4 +248,4 @@ Oracle 云存储链接服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关数据存储（Azure 数据工厂中的复制活动支持将其用作源和接收器）的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

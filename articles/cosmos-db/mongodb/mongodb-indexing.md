@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/26/2021
+ms.date: 09/13/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: 27b051a54fc17b0d7d65fff4d7f02e806baa3fd0
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 8e609268258142875ebbe924f3cfbdebc94911f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033291"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601707"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的用于 MongoDB 的 API 中的索引编制
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -23,11 +23,9 @@ Azure Cosmos DB 的用于 MongoDB 的 API 利用 Azure Cosmos DB 的核心索引
 
 ## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>适用于 MongoDB 服务器 3.6 及更高版本的索引编制功能
 
-Azure Cosmos DB API for MongoDB 服务器版本 3.6+ 会自动为无法删除的 `_id` 字段编制索引。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 在 Azure Cosmos DB 的用于 MongoDB 的 API 中，分片和编制索引是不同的概念。 你无需为分片键编制索引。 但是，与文档中的任何其他属性一样，如果此属性是查询中的常用筛选器，则建议你为分片键编制索引。
+适用于 MongoDB 服务器版本 3.6+ 的 Azure Cosmos DB API 会自动为 `_id` 字段和分片键（仅在分片集合中）编制索引。 API 会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 
 
-若要为其他字段编制索引，请应用 MongoDB 索引管理命令。 与在 MongoDB 中一样，Azure Cosmos DB 的用于 MongoDB 的 API 仅自动为 `_id` 字段编制索引。 此默认索引编制策略不同于 Azure Cosmos DB SQL API，后者在默认情况下会为所有字段编制索引。
-
-要将排序应用于查询，必须对排序操作中使用的字段创建索引。
+API for MongoDB 的行为不同于 Azure Cosmos DB SQL API，后者默认情况下会对所有字段编制索引。
 
 ### <a name="editing-indexing-policy"></a>编辑索引策略
 
@@ -51,11 +49,13 @@ Azure Cosmos DB API for MongoDB 服务器版本 3.6+ 会自动为无法删除的
 
 :::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="在索引策略编辑器中添加名称索引":::
 
-在适用的情况下，一个查询将使用多个单字段索引。 对于每个容器，最多可以创建 500 个单字段索引。
+在适用的情况下，一个查询将使用多个单字段索引。 对于每个集合，最多可以创建 500 个单字段索引。
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>复合索引（MongoDB 服务器版本 3.6+）
+在 API for MongoDB 中，如果查询需要能够同时对多个字段排序，则需要复合索引。 对于包含多个不需要排序的筛选器的查询，请创建多个单字段索引而不是一个复合索引，以便节省索引编制成本。 
 
-Azure Cosmos DB API for MongoDB 支持对使用 3.6 和 4.0 版线路协议的帐户使用复合索引。 一个复合索引中最多可以包含 8 个字段。 与在 MongoDB 中不同，仅当查询需要一次对多个字段进行高效排序时，才应创建复合索引。 对于包含多个不需要排序的筛选器的查询，请创建多个单字段索引，而不是创建单个复合索引。 
+复合索引或复合索引中每个字段的单字段索引会导致在查询中进行筛选的性能相同。
+
 
 > [!NOTE]
 > 不能基于嵌套属性或数组创建复合索引。
@@ -439,5 +439,5 @@ Azure Cosmos DB API for MongoDB 版本 3.6+ 支持使用 `currentOp()` 命令来
 * [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../time-to-live.md)
 * 若要了解分区和编制索引之间的关系，请参阅如何[查询 Azure Cosmos 容器](../how-to-query-container.md)一文。
 * 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
-    * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
-    * 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](estimate-ru-capacity-planner.md)
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)

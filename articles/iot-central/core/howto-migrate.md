@@ -3,20 +3,23 @@ title: 将 V2 Azure IoT Central 应用程序迁移到 V3 | Microsoft Docs
 description: 了解如何将 V2 Azure IoT Central 应用程序迁移到 V3
 author: troyhopwood
 ms.author: troyhop
-ms.date: 01/18/2021
+ms.date: 09/17/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 8d85f5f18ad21b5a27a7fdb48e9ee14ab751f5d5
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 6a7a0d8f6fe2b057baf1fa568700b4139ec31398
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757899"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660892"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>将 V2 IoT Central 应用程序迁移到 V3
 
 现在新创建的 IoT Central 应用程序都是 V3 应用程序。 如果是以前创建的应用程序，则根据具体创建时间，可能是 V2 应用程序。 本文介绍了如何将 V2 迁移到 V3 应用程序，以确保使用最新的 IoT Central 功能。
+
+若要了解详细信息，请参阅[停用公告](/answers/questions/529295/retirement-announcement-upgrade-to-iot-central-v3.html)。
 
 若要了解如何识别 IoT Central 应用程序的版本，请参阅[如何获取有关应用程序的信息？](howto-faq.yml#how-do-i-get-information-about-my-application-)。
 
@@ -28,9 +31,7 @@ ms.locfileid: "113757899"
 
 ## <a name="create-a-new-v3-application"></a>创建新的 V3 应用程序
 
-使用迁移向导创建新的 V3 应用程序。
-
-IoT Central 不支持迁移到现有的 V3 应用程序。 若要自动移动现有设备，请使用迁移向导创建 V3 应用程序。
+IoT Central 不允许你迁移到现有的 V3 应用程序。 若要将现有设备从 V2 应用程序移到 V3 应用程序，请使用迁移向导创建 V3 应用程序。
 
 迁移向导：
 
@@ -68,7 +69,7 @@ IoT Central 不支持迁移到现有的 V3 应用程序。 若要自动移动现
 创建新的 V3 应用程序之后，先完成配置更改，再将设备从 V2 应用程序移到 V3 应用程序。
 
 > [!TIP]
-> 请花些时间[熟悉 V3](overview-iot-central-tour.md#navigate-your-application)，因为它与以前的版本有一些差异。
+> 请花些时间[熟悉 V3](overview-iot-central-tour.md#navigate-your-application)，因为它与 V2 有一些差异。
 
 下面是一些建议考虑的配置步骤：
 

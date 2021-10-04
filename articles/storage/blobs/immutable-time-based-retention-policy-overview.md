@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/22/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1022ebd9166e3e2e92a4c67cd434190c91dd09c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ed76c271590b4f5fbc79c7713b70186a8d9eb426
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778563"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552059"
 ---
 # <a name="time-based-retention-policies-for-immutable-blob-data"></a>不可变 Blob 数据的基于时间的保留策略
 
@@ -98,7 +98,7 @@ ms.locfileid: "121778563"
 
 如果先前版本继承的策略已锁定，则可以延长保留间隔。 无法删除该策略或缩短保留间隔。
 
-如果未针对当前版本配置策略，则先前版本不会继承任何策略。 可为版本配置自定义策略。  
+如果未针对当前版本配置策略，则先前版本不会继承任何策略。 可为版本配置自定义策略。
 
 如果修改针对当前版本的策略，则针对现有先前版本的策略将保持不变，即使该策略是从当前版本继承的。
 
@@ -132,7 +132,7 @@ ms.locfileid: "121778563"
 
 每个启用了基于时间的保留策略的容器都会提供策略审核日志。 审核日志包含已锁定基于时间的保留策略的最多七个基于时间的保留命令。 日志条目包括用户 ID、命令类型、时间戳和保留间隔。 审核日志将根据 SEC 17a-4(f) 法规准则保留与策略生存期相同的时间。
 
-[Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)提供所有管理服务活动的更全面日志。 [Azure 资源日志](../../azure-monitor/essentials/platform-logs-overview.md)保留有关数据操作的信息。 由用户负责根据法规要求或其他要求永久存储这些日志。
+[Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)提供有关所有管理服务活动的更全面日志。 [Azure 资源日志](../../azure-monitor/essentials/platform-logs-overview.md)保留有关数据操作的信息。 由用户负责根据法规要求或其他要求永久存储这些日志。
 
 不会审核对版本级基于时间的保留策略所做的更改。
 

@@ -1,16 +1,16 @@
 ---
-title: 连接同一区域中的多个 Azure VMware 解决方案私有云（预览版）
+title: 连接同一区域中的多个 Azure VMware 解决方案私有云
 description: 了解如何在位于同一区域中的两个或多个 Azure VMware 解决方案私有云之间创建网络连接。
 ms.topic: how-to
-ms.date: 07/02/2021
-ms.openlocfilehash: 562980ce52216f892cb10689206211e23f3c8886
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.date: 09/20/2021
+ms.openlocfilehash: daa4b60c0e42c77f61054d6d9a77898cc0448c37
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586718"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567834"
 ---
-# <a name="connect-multiple-azure-vmware-solution-private-clouds-in-the-same-region-preview"></a>连接同一区域中的多个 Azure VMware 解决方案私有云（预览版）
+# <a name="connect-multiple-azure-vmware-solution-private-clouds-in-the-same-region"></a>连接同一区域中的多个 Azure VMware 解决方案私有云
 
 使用 AVS 互连功能可在位于同一区域中的两个或多个 Azure VMware 解决方案私有云之间创建网络连接。 此功能可在私有云的管理网络和工作负载网络之间创建路由链接，以在云之间启用网络通信。
 
@@ -18,14 +18,9 @@ ms.locfileid: "113586718"
 
 只能连接同一区域中的私有云。 若要连接不同区域中的私有云，请[使用 ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md) 连接私有云并采用将私有云连接到本地线路的相同方式进行连接。 
 
->[!IMPORTANT]
->AVS 互连（预览版）功能目前处于公共预览状态。  
->此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
->有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="supported-regions"></a>支持的区域
 
-AVS 互连（预览版）功能在除美国中南部 (SAT20)、欧洲北部 (DUB21)、东南亚 (SG2) 和英国西部 (CWL20) 外的所有区域供应。 
+AVS 互连功能在除美国中南部 (SAT20)、欧洲北部 (DUB21)、东南亚 (SG2) 和英国西部 (CWL20) 外的所有区域提供。 
 
 ## <a name="prerequisites"></a>先决条件
 

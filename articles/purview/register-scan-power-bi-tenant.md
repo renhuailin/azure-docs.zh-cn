@@ -1,20 +1,20 @@
 ---
-title: 注册并扫描 Power BI 租户（预览版）
+title: 注册并扫描 Power BI 租户
 description: 了解如何使用 Azure Purview 门户注册并扫描 Power BI 租户。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 07/28/2021
-ms.openlocfilehash: c29070f85fe0024113b6d5d4857733b23b522615
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/27/2021
+ms.openlocfilehash: 8290c4c31cca383692a4ce5908d56e1b686c4213
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271438"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211473"
 ---
-# <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户（预览版）
+# <a name="register-and-scan-a-power-bi-tenant"></a>注册并扫描 Power BI 租户
 
 本文介绍如何使用 Azure Purview 门户注册并扫描 Power BI 租户。
 
@@ -60,13 +60,16 @@ ms.locfileid: "122271438"
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="该图显示如何允许服务主体获取只读 Power BI 管理员 API 权限。":::
 
-1. 选择“管理员 API 设置” > “使用详细元数据增强管理员 API 响应”，然后启用切换按钮，以允许 Purview 数据映射在扫描过程中自动发现 Power BI 数据集的详细元数据 
+1. 选择“管理员 API 设置” > “使用详细元数据增强管理员 API 响应”，然后启用切换按钮，以允许 Purview 数据映射在扫描过程中自动发现 Power BI 数据集的详细元数据 。
+
+    > [!IMPORTANT]
+    > 更新 Power BI 租户上的“管理员 API 设置”后，请等待大约 15 分钟，然后再注册扫描和测试连接。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-sub-artifacts.png" alt-text="该图显示用于启用子项目扫描的 Power BI 管理门户配置。":::
 
     > [!Caution]
     > 如果允许创建的安全组（其成员包括 Purview 托管标识）使用只读 Power BI 管理员 API，则还会允许该安全组访问此租户中的所有 Power BI 项目的元数据（例如仪表板和报表名称、所有者、说明等）。 将元数据拉取到 Azure Purview 后，Purview 的权限（而不是 Power BI 权限）会确定谁可以看到该元数据。
-
+  
     > [!Note]
     > 可以从开发人员设置中删除安全组，但不会从 Purview 帐户中删除之前提取的元数据。 如果愿意，可以单独将其删除。
 
@@ -126,7 +129,7 @@ ms.locfileid: "122271438"
 
 1. 下载[托管的扫描 PowerShell 模块](https://github.com/Azure/Purview-Samples/blob/master/Cross-Tenant-Scan-PowerBI/ManagedScanningPowerShell.zip)，并将其内容提取到所选择的位置。
 
-2. 在计算机上，在 Windows 任务栏的搜索框中输入 PowerShell。 在搜索列表中，右键单击“Windows PowerShell”，然后选择“以管理员身份运行” 。
+2. 在计算机上，在 Windows 任务栏的搜索框中输入 PowerShell。 在搜索列表中，选择并按住（或右键单击）“Windows PowerShell”，然后选择“以管理员身份运行”。
 
 
 3. 在计算机中安装并导入模块（如果尚未安装）。
@@ -181,7 +184,7 @@ ms.locfileid: "122271438"
    
    4. 在 Web 浏览器中运行以下 URL，为服务主体构造特定于租户的登录 URL：
    
-     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonece=67890
+     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
     
     请确保将参数替换为正确的信息：<purview_tenant_id> 是预配 Azure Purview 帐户的 Azure Active Directory 租户 ID (GUID)。
     <client_id_to_delegate_the_pbi_admin> 是与服务主体对应的应用程序 ID
@@ -224,6 +227,7 @@ ms.locfileid: "122271438"
 
 -   对于跨租户方案，当前没有可用于跨 Power BI 租户进行注册和扫描的 UX 体验。
 -   通过使用 Purview Studio 编辑在 PowerShell 中跨租户注册的 Power BI，将会篡改数据源注册并出现不一致的扫描行为。
+-   查看 [Power BI 元数据扫描限制](/power-bi/admin/service-admin-metadata-scanning)。
 
         
 ## <a name="next-steps"></a>后续步骤

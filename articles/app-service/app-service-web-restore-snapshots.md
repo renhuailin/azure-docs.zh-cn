@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/02/2021
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: 5d63f7068d7b058280ea2dfd241e547347b71e7e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 48b3d859a73a2d63644e1d5881c3505cee93f9d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435599"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679496"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用
 本文介绍如何在 [Azure 应用服务](../app-service/overview.md)中从快照还原应用。 可以根据应用的某个快照将应用还原到以前的状态。 为实现数据恢复目的，平台会自动保存所有应用的快照，因而无需启用快照。
@@ -27,8 +27,7 @@ ms.locfileid: "123435599"
 
 ## <a name="limitations"></a>限制
 
-- 目前仅以适用于 Windows 应用的公共预览版提供。 不支持 Linux 应用和自定义容器应用。
-- 快照还原支持的最大大小为 30GB。 如果存储大小大于 30GB，快照还原会失败。 例如，若要减小存储大小，请考虑将日志、图像、音频和视频等文件移动到 [Azure 存储](/azure/storage/)。
+- 快照还原支持的最大大小为 30GB。 如果存储大小大于 30GB，快照还原会失败。 例如，若要减小存储大小，请考虑将日志、图像、音频和视频等文件移动到 [Azure 存储](../storage/index.yml)。
 - 快照中不包含[标准备份](manage-backup.md#what-gets-backed-up)支持的任何已连接数据库或[装载的 Azure 存储](configure-connect-to-azure-storage.md?pivots=container-windows)。 请考虑使用连接的 Azure 服务（例如 [SQL 数据库](../azure-sql/database/automated-backups-overview.md)和 [Azure 文件存储](../storage/files/storage-snapshots-files.md)）的本机备份功能。
 - 应用服务在还原快照时会停止目标应用或目标槽。 若要最大限度减少生产应用的停机时间，请首先将快照还原到[过渡槽](deploy-staging-slots.md)，然后交换到生产槽。
 - 最近 30 天的快照可用。 保留期和快照频率不可配置。
@@ -49,7 +48,7 @@ ms.locfileid: "123435599"
     ![显示如何指定还原目标的屏幕截图。](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > 如果选择“覆盖”，则会清除并覆盖应用的当前文件系统中的所有现有数据。 在单击“确定”之前，请确保该操作是想要执行的操作。
+   > 最佳做法是，我们建议还原到新槽，然后执行交换。 如果选择“覆盖”，则会清除并覆盖应用的当前文件系统中的所有现有数据。 在单击“确定”之前，请确保该操作是想要执行的操作。
    > 
    > 
       

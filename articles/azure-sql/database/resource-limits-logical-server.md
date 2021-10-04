@@ -10,13 +10,13 @@ ms.topic: reference
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 08/18/2021
-ms.openlocfilehash: 20ede2b8f12dfdb41d9b07f09f29596876809606
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.date: 09/28/2021
+ms.openlocfilehash: e9db19643252a94513be57c2cd3a18ee6038b742
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429306"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218161"
 ---
 # <a name="resource-management-in-azure-sql-database"></a>Azure SQL Database 中的资源管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "122429306"
 > [!TIP]
 > 有关 Azure SQL 托管实例限制，请参阅[托管实例的资源限制](../managed-instance/resource-limits.md)。
 >
-> 有关 Azure Synapse Analytics 专用 SQL 池限制，请参阅[容量限制](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits)和[内存和并发限制](/azure/synapse-analytics/sql-data-warehouse/memory-concurrency-limits)。
+> 有关 Azure Synapse Analytics 专用 SQL 池限制，请参阅[容量限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)和[内存和并发限制](../../synapse-analytics/sql-data-warehouse/memory-concurrency-limits.md)。
 
 ## <a name="logical-server-limits"></a>逻辑服务器限制
 
@@ -88,11 +88,11 @@ ms.locfileid: "122429306"
 
 ### <a name="memory"></a>内存
 
-与其他资源（CPU、辅助角色、存储）不同，达到内存限制不会对查询性能产生负面影响，也不会导致错误和失败。 如[内存管理体系结构指南](/sql/relational-databases/memory-management-architecture-guide)中所述，按照设计，数据库引擎通常会使用所有可用内存。 内存主要用于缓存数据，以避免更昂贵的存储访问。 因此，较高的内存利用率通常会提高查询性能，因为从内存中读取的速度更快，而从存储中读取的速度更慢。
+与其他资源（CPU、辅助角色、存储）不同，达到内存限制不会对查询性能产生负面影响，也不会导致错误和失败。 如[内存管理体系结构指南](/sql/relational-databases/memory-management-architecture-guide)中所述，按照设计，数据库引擎通常会使用所有可用内存。 内存主要用于缓存数据，以避免速度较慢的存储访问。 因此，较高的内存利用率通常会提高查询性能，因为从内存中读取的速度更快，而从存储中读取的速度更慢。
 
-在数据库引擎启动之后，当工作负载开始从存储中读取数据时，数据库引擎会积极地在内存中缓存数据。 经过这一初始增长期之后，通常可看到 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 中的 `avg_memory_usage_percent` 和 `avg_instance_memory_percent` 列接近或等于 100%，尤其是对于非空闲且不能完全装入内存的数据库。
+在数据库引擎启动之后，当工作负荷开始从存储中读取数据时，数据库引擎会积极地在内存中缓存数据。 经过这一初始增长期之后，通常可看到 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 中的 `avg_memory_usage_percent` 和 `avg_instance_memory_percent` 列接近或等于 100%，尤其是对于非空闲且不能完全装入内存的数据库。
 
-除了数据缓存之外，内存还用于数据库引擎的其他组件。 当有内存需求且所有可用内存已被数据缓存占用时，数据库引擎将动态收缩数据缓存大小以使内存可供其他组件使用，并在其他组件释放内存时动态增加数据缓存。
+除了数据缓存之外，内存还用于数据库引擎的其他组件。 当有内存需求但所有可用内存已被数据缓存占用时，数据库引擎会动态缩减数据缓存大小以使内存可供其他组件使用，并会在其他组件释放内存时动态增加数据缓存。
 
 在极少数情况下，要求十分高的工作负载可能会导致内存不足，从而导致内存不足错误。 这可能发生在内存使用率介于 0% 和 100% 之间的任何级别。 这更有可能发生在具有比例较小的内存限制的较小计算大小和/或使用更多内存进行查询处理的工作负载上，例如在[密集的弹性池](elastic-pool-resource-management.md)中。
 
@@ -124,7 +124,7 @@ Azure SQL 数据库需要使用计算资源来实现核心服务功能，例如�
 
 ## <a name="resource-governance"></a>资源治理
 
-为了强制实施资源限制，Azure SQL 数据库使用基于 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 的资源调控实施，后者经过修改和扩展，可在云中运行。 在 SQL 数据库中，多个[资源池](/sql/relational-databases/resource-governor/resource-governor-resource-pool)和[工作负载组](/sql/relational-databases/resource-governor/resource-governor-workload-group)以及在池和组级别设置的资源限制提供了[均衡的数据库即服务](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)。 用户的工作负载和内部工作负载分为单独的资源池和工作负载组。 主副本和可读次要副本（包括地理副本）上的用户工作负载分为 `SloSharedPool1` 资源库和 `UserPrimaryGroup.DBId[N]` 工作负载组，其中 `N` 代表数据库 ID 值。 此外，还有多个资源库和各种内部工作负载的工作负载组。
+为了强制实施资源限制，Azure SQL 数据库使用基于 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 的资源调控实施，后者经过修改和扩展，可在云中运行。 在 SQL 数据库中，多个[资源池](/sql/relational-databases/resource-governor/resource-governor-resource-pool)和[工作负载组](/sql/relational-databases/resource-governor/resource-governor-workload-group)以及在池和组级别设置的资源限制提供了[均衡的数据库即服务](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)。 用户的工作负载和内部工作负载分为单独的资源池和工作负载组。 主副本和可读辅助副本上的用户工作负荷（包括异地副本）可以分类为 `SloSharedPool1` 资源池和 `UserPrimaryGroup.DBId[N]` 工作负荷组，其中 `[N]` 代表数据库 ID 值。 此外，还有多个资源库和各种内部工作负载的工作负载组。
 
 除了使用 Resource Governor 来治理数据库引擎中的资源，Azure SQL 数据库还使用 Windows [作业对象](/windows/win32/procthread/job-objects)来实现进程级别的资源调控，并使用 Windows [文件服务器资源管理器 (FSRM)](/windows-server/storage/fsrm/fsrm-overview) 进行存储配额管理。
 
@@ -134,30 +134,27 @@ Azure SQL 数据库资源治理本质上是分层的。 自上而下，使用操
 
 数据 IO 治理是 Azure SQL 数据库中的一个过程，用于限制对数据库数据文件的读取和写入物理 IO。 为每个服务级别设置 IOPS 限制，以最大限度地减少“邻近干扰”效应，在多租户服务中提供资源分配公平性，并保持在基础硬件和存储功能范围内。
 
-对于单个数据库，工作负载组限制适用于针对数据库的所有存储 IO，而资源池限制适用于针对同一弹性池中的所有数据库的所有存储 IO，包括 tempdb 数据库。 对于弹性池，工作负载组限制适用于池中的每个数据库，而资源池限制适用于整个弹性池，包括池中所有数据库共享的 tempdb 数据库。 一般来说，由于工作负载组限制低于资源池限制，并且限制 IOPS/吞吐量的速度更快，因此无法通过针对数据库的工作负载（单一或公用）实现资源池限制。 但是，可通过对同一池中的多个数据库的组合工作负载来达到池限制。
+对于单个数据库，工作负荷组限制适用于针对数据库的所有存储 IO。 对于弹性池，工作负荷组限制适用于池中的每个数据库。 此外，资源池限制还适用于弹性池的累积 IO。 Tempdb IO 受限于工作负荷组限制，但“基本”、“标准”和“常规用途”服务层级除外，其中应用了更高的 tempdb IO 限制。 一般来说，由于工作负载组限制低于资源池限制，并且限制 IOPS/吞吐量的速度更快，因此无法通过针对数据库的工作负载（单一或公用）实现资源池限制。 但是，针对同一池中多个数据库的组合工作负荷可能会达到池限制。
 
 例如，如果查询在没有任何 IO 资源治理的情况下生成 1000 IOPS，但工作负载组的最大 IOPS 限制设置为 900 IOPS，则该查询将无法生成超过 900 的 IOPS。 但是，如果资源池的最大 IOPS 限制设置为 1500 IOPS，并且与资源池关联的所有工作负载组的总 IO 超过 1500 IOPS，则同一查询的 IO 可能会降低到 900 IOPS 的工作组限制以下。
 
-[sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图返回的 IOPS 和吞吐量最小/最大值作为限制/上限，而不是保证。 而且，资源治理并不保证任何特定的存储延迟。 给定用户工作负载的最佳可实现延迟、IOPS 和吞吐量不仅取决于 IO 资源治理限制，还取决于所使用的 IO 大小组合以及基础存储的功能。 SQL 数据库使用的 IO 大小在 512 KB 和 4 MB 之间变化。 为了执行 IOPS 限制，除 Azure 存储中包含的数据文件的数据库外，每个 IO 都会被计入，无论其大小如何。 在这种情况下，大于 256 KB 的 IO 计为多个 256-KB IO，以符合 Azure 存储 IO 数据记录。
+[sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图返回的 IOPS 和吞吐量最大值用作限制/上限，而不是保证。 而且，资源治理并不保证任何特定的存储延迟。 给定用户工作负载的最佳可实现延迟、IOPS 和吞吐量不仅取决于 IO 资源治理限制，还取决于所使用的 IO 大小组合以及基础存储的功能。 SQL 数据库使用的 IO 大小在 512 KB 和 4 MB 之间变化。 为了执行 IOPS 限制，除 Azure 存储中包含的数据文件的数据库外，每个 IO 都会被计入，无论其大小如何。 在这种情况下，大于 256 KB 的 IO 计为多个 256-KB IO，以符合 Azure 存储 IO 数据记录。
 
 对于在 Azure 存储中使用数据文件的基础、标准和通用数据库，如果数据库没有足够的数据文件来累计提供此数量的 IOPS，或者如果数据没有在文件之间均匀分布，再或者基础 Blob 的性能层将 IOPS/吞吐量限制到低于资源治理限制，则可能无法实现 `primary_group_max_io` 值。 同样，对于因频繁事务提交而产生的小型日志 IO，由于存在基础 Azure 存储 Blob 的 IOPS 限制，可能无法通过工作负载实现 `primary_max_log_rate` 值。 对于使用 Azure 高级存储的数据库，Azure SQL 数据库使用足够大的存储 Blob 来获取所需的 IOPS/吞吐量，无论数据库大小如何。 对于较大的数据库，将创建多个数据文件，以提高 IOPS/吞吐量总容量。
 
 资源利用率值（如 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 和 [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中报告的 `avg_data_io_percent` 和 `avg_log_write_percent`），被计为最大值资源治理限制的百分比。 因此，当资源治理以外的因素限制 IOPS/吞吐量时，即使报告的资源利用率仍低于 100%，IOPS/吞吐量仍可能随着工作负载的增加而趋于平缓和延迟增加。
 
-若要查看每个数据库文件的读取和写入 IOPS、吞吐量和延迟，请使用 [sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 函数。 此函数将呈现针对数据库的所有 IO，包括后台 IO，此 IO 没有计入 `avg_data_io_percent`，但使用基础存储的 IOPS 和吞吐量并可能会影响观测到的存储延迟。 该函数分别在 `io_stall_queued_read_ms` 和 `io_stall_queued_write_ms` 列中报告由于读取和写入的 IO 资源调控而可能引入的额外延迟。
+若要确定每个数据库文件的读取和写入 IOPS、吞吐量和延迟，请使用 [sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) 函数。 此函数将呈现针对数据库的所有 IO，包括后台 IO，此 IO 没有计入 `avg_data_io_percent`，但使用基础存储的 IOPS 和吞吐量并可能会影响观测到的存储延迟。 该函数分别在 `io_stall_queued_read_ms` 和 `io_stall_queued_write_ms` 列中报告由于读取和写入的 IO 资源调控而可能引入的额外延迟。
 
 ### <a name="transaction-log-rate-governance"></a>事务日志速率调控
 
-事务日志速率调控是 Azure SQL 数据库中的一个进程，用于限制批量插入、SELECT INTO 和索引生成等工作负荷的高引入速率。 无论针对数据文件发出多少 IO，系统都会对日志记录生成速率跟踪并实施这些限制，使其保持在亚秒级以下，并限制吞吐量。  事务日志生成速率当前以线性方式扩大到依赖于硬件和依赖于服务层级的程度。
+事务日志速率调控是 Azure SQL 数据库中的一个进程，用于限制批量插入、SELECT INTO 和索引生成等工作负荷的高引入速率。 无论针对数据文件发出多少 IO，系统都会对日志记录生成速率跟踪并实施这些限制，使其保持在亚秒级以下，并限制吞吐量。 事务日志生成速率当前以线性方式扩大到依赖于硬件和依赖于服务层级的程度。
 
-> [!NOTE]
-> 向事务日志文件发出的实际物理 IO 不会受到调控或限制。
+日志速率的设置应该做到可在各种场合下实现并保持该速率，同时，整个系统可以在尽量减轻对用户负载造成的影响的前提下保持其功能。 日志速率调控可确保事务日志备份保留在已发布的可恢复性 SLA 范围内。 此治理还可防止次要副本上的积压工作过多，而次要副本上的积压工作过多可能会导致故障转移期间停机时间长于预期。
 
-日志速率的设置应该做到可在各种场合下实现并保持该速率，同时，整个系统可以在尽量减轻对用户负载造成的影响的前提下保持其功能。 日志速率调控可确保事务日志备份保留在已发布的可恢复性 SLA 范围内。  这种调控还可以防止次要副本带来过多的积压工作。
+向事务日志文件发出的实际物理 IO 不会受到调控或限制。 生成日志记录后，将评估每个操作，以确定是否要将其延迟，从而保持最大所需日志速率（MB/秒）。 将日志记录刷新到存储时不会增大延迟，日志速率治理是在日志速率生成期间应用的。
 
-生成日志记录后，将评估每个操作，以确定是否要将其延迟，从而保持最大所需日志速率（MB/秒）。 将日志记录刷新到存储时不会增大延迟，日志速率治理是在日志速率生成期间应用的。
-
-在运行时实施的实际日志生成速率还可能受到反馈机制（暂时降低允许的日志速率，使系统保持稳定）的影响。 日志文件空间管理可避免遇到日志空间不间的情况，可用性组复制机制可以暂时降低总体系统限制。
+在运行时实施的实际日志生成速率还可能受到反馈机制（暂时降低允许的日志速率，使系统保持稳定）的影响。 日志文件空间管理可避免遇到日志空间不足的情况，并且数据复制机制可以暂时降低总体系统限制。
 
 可通过以下 wait 类型（在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 视图中公开）查看日志速率调控器流量的形状：
 
@@ -209,7 +206,7 @@ WHERE database_id = DB_ID();
 
 此移动以联机方式发生，类似于数据库缩放操作，并具有类似的[影响](single-database-scale.md#impact)，包括操作结束时的短暂（几秒）故障转移。 此故障转移会终止打开的连接并回退事务，这可能会影响当时使用数据库的应用程序。
 
-由于要将所有数据都复制到另一台计算机上的本地存储卷中，因此移动较大的数据库可能需要大量时间。 在此期间，如果数据库或弹性池或 tempdb 数据库的本地空间消耗增长非常快，则空间耗尽的风险会增加。 该系统以平衡的方式启动数据库移动，以最大限度减少空间耗尽错误，同时避免不必要的故障转移。
+由于要将所有数据都复制到其他计算机上的本地存储卷中，因此移动较大的数据库可能需要大量时间。 在此期间，如果数据库或弹性池或 tempdb 数据库的本地空间消耗增长非常快，则空间耗尽的风险会增加。 该系统以平衡的方式启动数据库移动，以最大限度减少空间耗尽错误，同时避免不必要的故障转移。
 
 > [!NOTE]
 > 由于本地存储不足而导致的数据库移动仅发生在高级或业务关键服务层。 这种情况不会出现在超大规模、常规用途、标准和基本服务层级中，因为在这些层级中，数据文件未存储在本地存储上。

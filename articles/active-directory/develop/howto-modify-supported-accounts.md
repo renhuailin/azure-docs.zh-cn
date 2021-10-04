@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: c89cb9c43ae274170e0cedb01b1908a874b7317e
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 35415a42f6970a7a0aabc0fb210775a15fc1d481
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039943"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585439"
 ---
 # <a name="modify-the-accounts-supported-by-an-application"></a>修改应用程序支持的帐户
 
@@ -35,7 +35,7 @@ ms.locfileid: "123039943"
 若要为现有应用注册支持的帐户类型指定不同的设置，请执行以下操作：
 
 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，切换到在其中注册应用的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”，然后选择你的应用程序 。
 1. 现在，指定可使用该应用程序的人员，这有时称为“登录受众”。

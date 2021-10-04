@@ -4,20 +4,17 @@ description: 描述在 Bicep 文件中用于处理日期的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 3f8715dd0dc1931e9086fd94e99661fb9cfda2d1
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 45e0180a11209b39b4c37f16f9940686c042ee89
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025969"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794113"
 ---
 # <a name="date-functions-for-bicep"></a>Bicep 的日期函数
 
-资源管理器提供以下用于在 Bicep 文件中处理日期的函数：
-
-* [dateTimeAdd](#datetimeadd)
-* [utcNow](#utcnow)
+本文介绍用于处理日期的 Bicep 函数。
 
 ## <a name="datetimeadd"></a>dateTimeAdd
 
@@ -27,7 +24,7 @@ ms.locfileid: "111025969"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | base | 是 | string | 用于相加的起始日期/时间值。 使用 [ISO 8601 时间戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 | duration | 是 | string | 要与 base 相加的时间值。 它可以是负值。 使用 [ISO 8601 持续时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
@@ -89,9 +86,9 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 
 以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (`yyyyMMddTHHmmssZ`) 格式。 **此函数只能在参数的默认值中使用。**
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | format |否 |string |要转换为字符串的 URI 编码值。 使用[标准格式字符串](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
@@ -123,7 +120,7 @@ output utcCustomOutput string = utcCustomValue
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |

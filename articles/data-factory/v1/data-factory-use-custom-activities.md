@@ -2,18 +2,19 @@
 title: 在 Azure 数据工厂管道中使用自定义活动
 description: 了解如何创建自定义活动并在 Azure 数据工厂管道中使用。
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbf5a61e48a36a3eaa92a8c46e9cf943b8892247
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393014"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580634"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure 数据工厂（版本 1）管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -45,7 +46,7 @@ ms.locfileid: "100393014"
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 先决条件
 在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure Batch** 是一个平台服务，适用于在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure Batch 可以计划要在托管的 **虚拟机集合** 上运行的计算密集型工作，并且可以缩放计算资源，使之符合作业的需求。 有关 Azure Batch 服务的详细概述，请参阅 [Azure Batch 基础知识][batch-technical-overview]一文。
 
-本教程会创建一个包含 VM 池的 Azure Batch 帐户。 下面是相关步骤：
+本教程会创建一个包含 VM 池的 Azure Batch 帐户。 步骤如下：
 
 1. 使用 [Azure 门户](https://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
@@ -382,7 +383,7 @@ public IDictionary<string, string> Execute(
     > [!IMPORTANT]
     > 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的 **顶级** 目录中。
 
-    ![二进制输出文件](./media/data-factory-use-custom-activities/Binaries.png)
+    :::image type="content" source="./media/data-factory-use-custom-activities/Binaries.png" alt-text="二进制输出文件":::
 
 13. 创建名为 **customactivitycontainer** 的 Blob 容器（如果不存在）。
 
@@ -428,17 +429,17 @@ test custom activity Microsoft test custom activity Microsoft
    2. 单击“新建”边栏选项卡中的“数据 + 分析”。
    3. 单击“数据分析”边栏选项卡中的“数据工厂”。
 
-      ![“新建 Azure 数据工厂”菜单](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
+      :::image type="content" source="media/data-factory-use-custom-activities/new-azure-data-factory-menu.png" alt-text="“新建 Azure 数据工厂”菜单":::
 2. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为“名称”。 Azure 数据工厂的名称必须全局唯一。 如果收到错误：数据工厂名称“CustomActivityFactory”不可用，请更改数据工厂名称（例如改为 yournameCustomActivityFactory），并再次尝试创建。
 
-    ![“新建 Azure 数据工厂”边栏选项卡](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/new-azure-data-factory-blade.png" alt-text="“新建 Azure 数据工厂”边栏选项卡":::
 3. 单击“资源组名称”，并选择现有资源组或创建资源组。
 4. 验证是否正在使用正确 **订阅**，并验证想在其中创建数据工厂的 **区域** 是否正确。
 5. 在“新建数据工厂”边栏选项卡中单击“创建”。
 6. 此时可在 Azure 门户的“仪表板”中看到正在创建数据工厂。
 7. 成功创建数据工厂后，将看到“数据工厂”边栏选项卡，其中显示数据工厂的内容。
 
-    ![“数据工厂”边栏选项卡](media/data-factory-use-custom-activities/data-factory-blade.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/data-factory-blade.png" alt-text="“数据工厂”边栏选项卡":::
 
 ### <a name="step-2-create-linked-services"></a>步骤 2：创建链接服务
 链接服务将数据存储区或计算服务链接到 Azure 数据工厂。 在此步骤中，将 Azure 存储帐户和 Azure Batch 帐户链接到数据工厂。
@@ -447,16 +448,16 @@ test custom activity Microsoft test custom activity Microsoft
 1. 在 **CustomActivityFactory** 的“数据工厂”边栏选项卡上，单击“作者和部署”磁贴。 随即显示“数据工厂编辑器”。
 2. 单击命令栏上的“新建数据存储”，并选择“Azure 存储”。 在编辑器中，应会看到用于创建 Azure 存储链接服务的 JSON 脚本。
 
-    ![新建数据存储 - Azure 存储](media/data-factory-use-custom-activities/new-data-store-menu.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/new-data-store-menu.png" alt-text="新建数据存储 - Azure 存储":::
 3. 将 `<accountname>` 替换为 Azure 存储帐户的名称，将 `<accountkey>` 替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
-    ![Azure 存储链接服务](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/azure-storage-linked-service.png" alt-text="Azure 存储链接服务":::
 4. 单击命令栏上的“部署”，部署链接服务。
 
 #### <a name="create-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
 1. 在数据工厂编辑器中，单击命令栏上的“... 更多”，并从菜单中依次选择“新建计算”、“Azure Batch”  。
 
-    ![新建计算 - Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
+    :::image type="content" source="media/data-factory-use-custom-activities/new-azure-compute-batch.png" alt-text="新建计算 - Azure Batch":::
 2. 对 JSON 脚本进行以下更改：
 
    1. 指定 **accountName** 属性的 Azure Batch 帐户名称。 “Azure Batch 帐户”边栏选项卡的 **URL** 采用以下格式：`http://accountname.region.batch.azure.com`。 对于 JSON 中的 **batchUri** 属性，需要从 URL 中删除 `accountname.`，并将 `accountname` 用于 `accountName` JSON 属性。
@@ -632,13 +633,13 @@ test custom activity Microsoft test custom activity Microsoft
 ### <a name="monitor-the-pipeline"></a>监视管道
 1. 在 Azure 门户的“数据工厂”边栏选项卡中，单击“图示”。
 
-    ![图示磁贴](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
+    :::image type="content" source="./media/data-factory-use-custom-activities/DataFactoryBlade.png" alt-text="图示磁贴":::
 2. 现在在“图示”视图中，单击“OutputDataset”。
 
-    ![图示视图](./media/data-factory-use-custom-activities/diagram.png)
+    :::image type="content" source="./media/data-factory-use-custom-activities/diagram.png" alt-text="图示视图":::
 3. 应会看到 5 个输出切片处于“就绪”状态。 如果它们不处于“就绪”状态，则表示它们尚未生成。
 
-   ![输出切片](./media/data-factory-use-custom-activities/OutputSlices.png)
+   :::image type="content" source="./media/data-factory-use-custom-activities/OutputSlices.png" alt-text="输出切片":::
 4. 验证输出文件是否在 **adftutorial** 容器的 blob 存储中生成。
 
    ![自定义活动的输出][image-data-factory-output-from-custom-activity]
@@ -669,15 +670,15 @@ test custom activity Microsoft test custom activity Microsoft
 ## <a name="data-factory-and-batch-integration"></a>数据工厂和 Batch 集成
 数据工厂服务在 Azure Batch 中创建一个作业，名称为：**adf-poolname: job-xxx**。 在左侧菜单中单击“作业”。
 
-![Azure 数据工厂 - Batch 作业](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
+:::image type="content" source="media/data-factory-use-custom-activities/data-factory-batch-jobs.png" alt-text="Azure 数据工厂 - Batch 作业":::
 
 为切片的每个活动运行创建任务。 如果有 5 个切片已准备好进行处理，此作业中将创建 5 个任务。 如果批处理池中有多个计算节点，可以并行运行两个或更多个切片。 如果每个计算节点的最大任务数设置为 > 1，则还可在同一计算上运行多个切片。
 
-![Azure 数据工厂 - Batch 作业任务](media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png)
+:::image type="content" source="media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png" alt-text="Azure 数据工厂 - Batch 作业任务":::
 
 下图说明 Azure 数据工厂和 Batch 任务之间的关系。
 
-![数据工厂和 Batch](./media/data-factory-use-custom-activities/DataFactoryAndBatch.png)
+:::image type="content" source="./media/data-factory-use-custom-activities/DataFactoryAndBatch.png" alt-text="数据工厂和 Batch":::
 
 ## <a name="troubleshoot-failures"></a>排查失败
 故障排除包括一些基本技巧：
@@ -1048,7 +1049,7 @@ GitHub 上的 [Azure 数据工厂 - 本地环境](https://github.com/gbrueckl/Az
 
 
 [developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
-[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
+[cmdlet-reference]: /powershell/resourcemanager/Azurerm.DataFactories/v2.2.0/Azurerm.DataFactories
 
 [new-azure-batch-account]: /previous-versions/azure/mt125880(v=azure.100)
 [new-azure-batch-pool]: /previous-versions/azure/mt125936(v=azure.100)

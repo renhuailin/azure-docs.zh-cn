@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b48056b9615bcbf1ecbcdaf3501437a18fcb987b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 72537e46d7d249190585552e0a8ee11c43e40340
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728400"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566551"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>将机密客户端应用程序从 ADAL.NET 迁移到 MSAL.NET
 
@@ -38,7 +38,7 @@ ms.locfileid: "121728400"
    - `resourceId` 字符串。 此变量是要调用的 Web API 的应用 ID URI。
    - `IClientAssertionCertificate` 的一个实例或 `ClientAssertion`。 此实例为应用提供客户端凭据，以证明应用的标识。
 
-1. 确定有应用使用 ADAL.NET 后，安装 MSAL.NET NuGet 包 [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) 并更新项目库引用。 有关详细信息，请参阅[安装 NuGet 包](https://www.bing.com/search?q=install+nuget+package)。
+1. 确定有应用使用 ADAL.NET 后，安装 MSAL.NET NuGet 包 [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) 并更新项目库引用。 有关详细信息，请参阅[安装 NuGet 包](https://www.bing.com/search?q=install+nuget+package)。 如果要使用令牌缓存序列化程序，请同时安装 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web)。
 
 1. 按照机密客户端场景更新代码。 一些步骤是通用的，适用于所有机密客户端场景。 其他步骤对每种场景具有唯一性。 
 
@@ -327,6 +327,10 @@ app.UseInMemoryTokenCaches(); // or a distributed token cache.
 :::row:::
    :::column span="":::
 ```csharp
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+
 public partial class AuthWrapper
 {
  const string ClientId = "Guid (AppID)";
@@ -363,34 +367,51 @@ public partial class AuthWrapper
    :::column-end:::
    :::column span="":::
 ```csharp
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Web;
+using System;
+using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+
 public partial class AuthWrapper
 {
  const string ClientId = "Guid (Application ID)";
- const string authority 
-     = "https://login.microsoftonline.com/{tenant}";
+ const string authority
+    = "https://login.microsoftonline.com/{tenant}";
  private Uri redirectUri = new Uri("host/login_oidc");
  X509Certificate2 certificate = LoadCertificate();
 
- IConfidentialClientApplication app;
-
- public async Task<AuthenticationResult> GetAuthenticationResult(
-  string resourceId,
-  string authorizationCode)
+ public IConfidentialClientApplication CreateApplication()
  {
-  if (app == null)
-  {
-   app = ConfidentialClientApplicationBuilder.Create(ClientId)
-           .WithCertificate(certificate)
-           .WithAuthority(authority)
-           .WithRedirectUri(redirectUri.ToString())
-           .Build();
-  }
+  IConfidentialClientApplication app;
+
+  app = ConfidentialClientApplicationBuilder.Create(ClientId)
+               .WithCertificate(certificate)
+               .WithAuthority(authority)
+               .WithRedirectUri(redirectUri.ToString())
+               .WithLegacyCacheCompatibility(false)
+               .Build();
+
+  // Add a token cache. For details about other serialization
+  // see https://aka.ms/msal-net-cca-token-cache-serialization
+  app.AddInMemoryTokenCache();
+
+  return app;
+ }
+
+ // Called from 'code received event'.
+ public async Task<AuthenticationResult> GetAuthenticationResult(
+      string resourceId,
+      string authorizationCode)
+ {
+  IConfidentialClientApplication app = CreateApplication();
 
   var authResult = await app.AcquireTokenByAuthorizationCode(
-              new [] { $"{resourceId}/.default" },
-              authorizationCode)
-              .ExecuteAsync()
-              .ConfigureAwait(false);
+                  new[] { $"{resourceId}/.default" },
+                  authorizationCode)
+                  .ExecuteAsync()
+                  .ConfigureAwait(false);
 
   return authResult;
  }
@@ -399,7 +420,41 @@ public partial class AuthWrapper
    :::column-end:::
 :::row-end:::
 
-调用 `AcquireTokenByAuthorizationCode` 可向令牌缓存添加令牌。 若要获取其他资源或租户的额外令牌，请在控制器中使用 `AcquireTokenSilent`。
+如果收到授权代码，则会在调用 `AcquireTokenByAuthorizationCode` 时向令牌缓存添加令牌。 若要获取其他资源或租户的额外令牌，请在控制器中使用 `AcquireTokenSilent`。
+
+```csharp
+public partial class AuthWrapper
+{
+ // Called from controllers
+ public async Task<AuthenticationResult> GetAuthenticationResult(
+      string resourceId2,
+      string authority)
+ {
+  IConfidentialClientApplication app = CreateApplication();
+  AuthenticationResult authResult;
+
+  var scopes = new[] { $"{resourceId2}/.default" };
+  var account = await app.GetAccountAsync(ClaimsPrincipal.Current.GetMsalAccountId());
+
+  try
+  {
+   // try to get an already cached token
+   authResult = await app.AcquireTokenSilent(
+               scopes,
+               account)
+                .WithAuthority(authority)
+                .ExecuteAsync().ConfigureAwait(false);
+  }
+  catch (MsalUiRequiredException)
+  {
+   // The controller will need to challenge the user
+   // including asking for claims={ex.Claims}
+   throw;
+  }
+  return authResult;
+ }
+}
+```
 
 #### <a name="benefit-from-token-caching"></a>从令牌缓存中获益
 
@@ -410,6 +465,9 @@ public partial class AuthWrapper
 app.UseInMemoryTokenCaches(); // or a distributed token cache.
 ```
 
+#### <a name="handling-msaluirequiredexception"></a>处理 MsalUiRequiredException
+
+当控制器尝试以静默方式为不同范围/资源获取令牌时，MSAL.NET 可能会引发 `MsalUiRequiredException`。 例如，如果用户需要重新登录，或者对资源的访问由于某种原因（例如，由于存在条件访问策略）而需要更多声明，则会出现这种情况。 有关缓解措施的详细信息，请参阅[如何处理 MSAL.NET 中的错误和异常](msal-error-handling-dotnet.md)。
 
 [详细了解调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)及其在新应用程序中通过 MSAL.NET 或 Microsoft.Identity.Web 实现的方式。
 

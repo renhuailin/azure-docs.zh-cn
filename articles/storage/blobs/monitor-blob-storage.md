@@ -1,5 +1,5 @@
 ---
-title: 监视 Azure Blob 存储 | Microsoft Docs
+title: 监视 Azure Blob 存储
 description: 了解如何监视 Azure Blob 存储的性能和可用性。 监视 Azure Blob 存储数据、了解配置以及分析指标和日志数据。
 author: normesta
 services: storage
@@ -9,26 +9,27 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2fd0e2807697ee417a14d7afa7c07864456a6976
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: bcfd37ff8c030136e37b4289bc37006012891412
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471221"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617538"
 ---
 # <a name="monitoring-azure-blob-storage"></a>监视 Azure Blob 存储
 
 如果你有依赖 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure Blob 存储生成的监视数据，以及如何使用 Azure Monitor 的各种功能分析这些数据的相关警报。
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版支持 blob（包括 Azure Data Lake Storage Gen2）、文件、队列和表日志。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅[存储帐户概述](../common/storage-account-overview.md)。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云和美国政府云区域中用于预览测试。 此预览版支持 blob（包括 Azure Data Lake Storage Gen2）、文件、队列和表的日志。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 有关详细信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。
 
 ## <a name="monitor-overview"></a>Monitor 概述
 
 每种 Blob 存储资源的 Azure 门户“概述”页都包含资源使用情况（例如请求和每小时计费）的简要视图。 这些信息非常有用，但只提供少量监视数据。 创建资源后，其中的某些数据会自动收集，并可供分析。 你可以使用某些配置启用其他数据收集类型。
 
 ## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
-Azure Blob 存储使用 [Azure Monitor](../../azure-monitor/overview.md) 来创建监视数据，Azure Monitor 是 Azure 中的一项完整堆栈监视服务。 Azure Monitor 提供了一整套用于监视 Azure 资源以及其他云和本地资源的功能。 
+
+Azure Blob 存储使用 [Azure Monitor](../../azure-monitor/overview.md) 来创建监视数据，Azure Monitor 是 Azure 中的一项完整堆栈监视服务。 Azure Monitor 提供了一整套用于监视 Azure 资源以及其他云和本地资源的功能。
 
 可先阅读文章[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)，其中介绍了以下内容：
 
@@ -42,19 +43,19 @@ Azure Blob 存储使用 [Azure Monitor](../../azure-monitor/overview.md) 来创�
 
 ## <a name="monitoring-data"></a>监视数据
 
-Azure Blob 存储会收集与其他 Azure 资源类型相同的监视数据，如[监视 Azure 资源中的数据](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述。 
+Azure Blob 存储会收集与其他 Azure 资源类型相同的监视数据，如[监视 Azure 资源中的数据](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述。
 
 有关 Azure Blob 存储创建的指标和日志指标的详细信息，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
 
-Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户。 Azure Monitor 不支持经典存储帐户。 如果要使用经典存储帐户上的指标或日志，则需要迁移到 Azure 资源管理器存储帐户。 请参阅[迁移到 Azure 资源管理器](../../virtual-machines/migration-classic-resource-manager-overview.md)。
+Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户。 Azure Monitor 不支持经典存储帐户。 如果要使用经典存储帐户上的指标或日志，则需要迁移到 Azure 资源管理器存储帐户。 有关详细信息，请参阅[迁移到 Azure 资源管理器](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
 如果需要，可以继续使用经典指标和日志。 实际上，经典指标和日志可与 Azure Monitor 中的指标和日志同时使用。 在 Azure 存储终止旧指标和日志的服务之前，支持范围保持不变。
 
 ## <a name="collection-and-routing"></a>收集和路由
 
-平台指标和活动日志会自动收集，但你可以使用诊断设置将其路由到其他位置。 
+平台指标和活动日志会自动收集，但你可以使用诊断设置将其路由到其他位置。
 
-若要收集资源日志，必须创建诊断设置。 创建设置时，选择“blob”作为要为其启用日志的存储类型。 然后，指定需要收集日志的以下操作类别之一。 
+若要收集资源日志，必须创建诊断设置。 创建设置时，选择“blob”作为要为其启用日志的存储类型。 然后，指定需要收集日志的以下操作类别之一。
 
 | 类别 | 说明 |
 |:---|:---|
@@ -63,16 +64,16 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 | StorageDelete | 对象上的删除操作。 |
 
 > [!NOTE]
-> Data Lake Storage Gen2 不会显示为存储类型。 这是因为 Data Lake Storage Gen2 是适用于 Blob 存储的一组功能。 
+> Data Lake Storage Gen2 不会显示为存储类型。 这是因为 Data Lake Storage Gen2 是适用于 Blob 存储的一组功能。
 
 ## <a name="creating-a-diagnostic-setting"></a>创建诊断设置
 
-可以使用 Azure 门户、PowerShell、Azure CLI、Azure 资源管理器模板或 Azure Policy 创建诊断设置。 
+可以使用 Azure 门户、PowerShell、Azure CLI、Azure 资源管理器模板或 Azure Policy 创建诊断设置。
 
 有关一般指南，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版支持 blob（包括 Azure Data Lake Storage Gen2）、文件、队列和表日志。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅[存储帐户概述](../common/storage-account-overview.md)。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云和美国政府云区域中用于预览测试。 此预览版支持 blob（包括 Azure Data Lake Storage Gen2）、文件、队列和表的日志。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 有关详细信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。
 
 ### <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
@@ -83,7 +84,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 3. 在“监视”部分，单击“诊断设置(预览)”。
 
    > [!div class="mx-imgBorder"]
-   > ![门户 - 诊断日志](media/monitor-blob-storage/diagnostic-logs-settings-pane.png)   
+   > ![门户 - 诊断日志](media/monitor-blob-storage/diagnostic-logs-settings-pane.png)
 
 4. 选择“blob”作为要为其启用日志的存储类型。
 
@@ -103,12 +104,12 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 如果你选择将日志存档到存储帐户，则需要为发送到存储帐户的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-1. 选中“存档到存储帐户”复选框，然后单击“配置”按钮。
+1. 选中“存档到存储帐户”复选框，然后选择“配置”按钮。
 
-   > [!div class="mx-imgBorder"]   
+   > [!div class="mx-imgBorder"]
    > ![“诊断设置”页的存档存储](media/monitor-blob-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
-2. 在“存储帐户”下拉列表中，选择要将日志存档到的存储帐户，单击“确定”按钮，然后单击“保存”按钮。
+2. 在“存储帐户”下拉列表中，选择要将日志存档到的存储帐户，单击“确定”按钮，然后选择“保存”按钮。
 
    [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
@@ -119,20 +120,20 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 如果你选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-1. 选中“流式传输到事件中心”复选框，然后单击“配置”按钮。
+1. 选中“流式传输到事件中心”复选框，然后选择“配置”按钮。
 
-2. 在“选择事件中心”窗格中，选择要将日志流式传输到的事件中心的命名空间、名称和策略名称。 
+2. 在“选择事件中心”窗格中，选择要将日志流式传输到的事件中心的命名空间、名称和策略名称。
 
    > [!div class="mx-imgBorder"]
    > ![“诊断设置”页的事件中心](media/monitor-blob-storage/diagnostic-logs-settings-pane-event-hub.png)
 
-3. 单击“确定”按钮，然后单击“保存”按钮。
+3. 单击“确定”按钮，然后选择“保存”按钮。
 
 #### <a name="send-logs-to-azure-log-analytics"></a>将日志发送到 Azure Log Analytics
 
-1. 选中“发送到 Log Analytics”复选框，选择 Log Analytics 工作区，然后单击“保存”按钮。
+1. 选中“发送到 Log Analytics”复选框，选择 Log Analytics 工作区，然后选择“保存”按钮。
 
-   > [!div class="mx-imgBorder"]   
+   > [!div class="mx-imgBorder"]
    > ![诊断设置页日志分析](media/monitor-blob-storage/diagnostic-logs-settings-pane-log-analytics.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -271,13 +272,13 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 ### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
-可以使用策略定义创建诊断设置。 这样，就可以确保为创建或更新的每一个帐户创建诊断设置。 请参阅 [Azure 存储的 Azure Policy 内置定义](../common/policy-reference.md)。
+可以使用策略定义创建诊断设置。 这样，就可以确保为创建或更新的每一个帐户创建诊断设置。 有关详细信息，请参阅 [Azure 存储的 Azure Policy 内置定义](../common/policy-reference.md)。
 
 ---
 
 ## <a name="analyzing-metrics"></a>分析指标
 
-你可以使用指标资源管理器通过其他 Azure 服务中的指标分析 Azure 存储的指标。 从 Azure Monitor 菜单中选择“指标”，可打开指标资源管理器 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/essentials/metrics-getting-started.md)。 
+你可以使用指标资源管理器通过其他 Azure 服务中的指标分析 Azure 存储的指标。 从 Azure Monitor 菜单中选择“指标”，可打开指标资源管理器 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/essentials/metrics-getting-started.md)。
 
 以下示例演示了如何查看帐户级别的事务。
 
@@ -289,13 +290,12 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 有关 Azure 存储支持的维度的完整列表，请参阅[指标维度](monitor-blob-storage-reference.md#metrics-dimensions)。
 
-Azure Blob 存储的指标位于以下命名空间： 
+Azure Blob 存储的指标位于以下命名空间：
 
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/blobServices
 
 有关所有 Azure Monitor 支持指标（包括 Azure Blob 存储）的列表，请参阅 [Azure Monitor 支持的指标](../../azure-monitor/essentials/metrics-supported.md)。
-
 
 ### <a name="accessing-metrics"></a>访问指标
 
@@ -305,10 +305,10 @@ Azure Blob 存储的指标位于以下命名空间：
 ### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)
 
 Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)，用于读取指标定义和值。 [示例代码](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)演示如何通过不同的参数来使用 SDK。 对于存储指标，需使用 `0.18.0-preview` 或更高版本。
- 
+
 在这些示例中，将 `<resource-ID>` 占位符替换为整个存储帐户或 Blob 存储的资源 ID。 你可以在 Azure 门户中存储帐户的“终结点”页上找到这些资源 ID。
 
-将 `<subscription-ID>` 占位符值替换为你的订阅 ID。 要查看有关如何获取 `<tenant-ID>`、`<application-ID>` 和 `<AccessKey>` 值的指南，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 
+将 `<subscription-ID>` 占位符值替换为你的订阅 ID。 要查看有关如何获取 `<tenant-ID>`、`<application-ID>` 和 `<AccessKey>` 值的指南，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 #### <a name="list-the-account-level-metric-definition"></a>列出帐户级指标定义
 
@@ -322,7 +322,6 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
         var tenantId = "<tenant-ID>";
         var applicationId = "<application-ID>";
         var accessKey = "<AccessKey>";
-
 
         MonitorManagementClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
         IEnumerable<MetricDefinition> metricDefinitions = await readOnlyClient.MetricDefinitions.ListAsync(resourceUri: resourceId, cancellationToken: new CancellationToken());
@@ -448,7 +447,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 你可以列出存储帐户或 Blob 存储服务的指标定义。 请使用 [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) cmdlet。
 
-在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。  你可以在 Azure 门户中存储帐户的“终结点”页上找到这些资源 ID。
+在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。 你可以在 Azure 门户中存储帐户的“终结点”页上找到这些资源 ID。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -469,7 +468,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 #### <a name="list-the-account-level-metric-definition"></a>列出帐户级指标定义
 
 你可以列出存储帐户或 Blob 存储服务的指标定义。 使用 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) 命令。
- 
+
 在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。 你可以在 Azure 门户中存储帐户的“终结点”页上找到这些资源 ID。
 
 ```azurecli-interactive
@@ -483,6 +482,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
+
 ### <a name="template"></a>[模板](#tab/template)
 
 不适用。
@@ -500,7 +500,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 要详细了解这些日志中显示的字段的参考，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 经典存储帐户不受支持。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云和美国政府云区域中用于预览测试。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 经典存储帐户不受支持。
 
 仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有该活动，则仅创建与 Blob 服务有关的日志。 Azure 存储日志包含有关成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。
 
@@ -538,7 +538,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 ### <a name="accessing-logs-in-an-event-hub"></a>访问事件中心内的日志
 
-发送到事件中心的日志并没有存储为文件，但你可以验证事件中心是否收到了日志信息。 在 Azure 门户中，请转到事件中心，然后验证“传入消息”计数是否大于零。 
+发送到事件中心的日志并没有存储为文件，但你可以验证事件中心是否收到了日志信息。 在 Azure 门户中，请转到事件中心，然后验证“传入消息”计数是否大于零。
 
 ![审核日志](media/monitor-blob-storage/event-hub-log.png)
 
@@ -550,7 +550,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](../../azure-monitor/logs/log-analytics-tutorial.md)。
 
-数据存储在 StorageBlobLog 表中。 Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 这是你可以在存储帐户中启用的一组功能。 如果启用了这些功能，日志将继续出现在 StorageBlobLog 表中。 
+数据存储在 StorageBlobLog 表中。 Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 这是你可以在存储帐户中启用的一组功能。 如果启用了这些功能，日志将继续出现在 StorageBlobLog 表中。
 
 #### <a name="sample-kusto-queries"></a>示例 Kusto 查询
 
@@ -561,69 +561,75 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 使用以下查询可帮助你监视 Azure 存储帐户：
 
-* 列出最近三天内 10 个最常见的错误。
+- 列出最近三天内 10 个最常见的错误。
 
-    ```Kusto
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by StatusText
     | top 10 by count_ desc
     ```
-* 列出最近三天内导致大部分错误的前 10 个操作。
 
-    ```Kusto
+- 列出最近三天内导致大部分错误的前 10 个操作。
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by OperationName
     | top 10 by count_ desc
     ```
-* 列出最近三天内端到端延迟最长的前 10 个操作。
 
-    ```Kusto
+- 列出最近三天内端到端延迟最长的前 10 个操作。
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d)
     | top 10 by DurationMs desc
     | project TimeGenerated, OperationName, DurationMs, ServerLatencyMs, ClientLatencyMs = DurationMs - ServerLatencyMs
     ```
-* 列出最近三天内导致服务器端限制错误的所有操作。
 
-    ```Kusto
+- 列出最近三天内导致服务器端限制错误的所有操作。
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and StatusText contains "ServerBusy"
     | project TimeGenerated, OperationName, StatusCode, StatusText
     ```
-* 列出最近三天内使用匿名访问的所有请求。
 
-    ```Kusto
+- 列出最近三天内使用匿名访问的所有请求。
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and AuthenticationType == "Anonymous"
     | project TimeGenerated, OperationName, AuthenticationType, Uri
     ```
-* 创建最近三天内使用的操作的饼图。
-    ```Kusto
+
+- 创建最近三天内使用的操作的饼图。
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d)
     | summarize count() by OperationName
-    | sort by count_ desc 
+    | sort by count_ desc
     | render piechart
     ```
 
 ## <a name="feature-support"></a>功能支持
 
-下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
 
 ### <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png)  <sup>2</sup>|![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
 
 ### <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
@@ -634,7 +640,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-否。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+不是。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 

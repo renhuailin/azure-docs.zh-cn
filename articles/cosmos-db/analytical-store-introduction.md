@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 80818386ccd47619ccb23323474ac76fa2240db2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b2501631c8ccdb6c61d4f31e9179a7e94c2276cb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427707"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210395"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>什么是 Azure Cosmos DB 分析存储？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -149,7 +149,7 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
   * 删除集合中的所有文档不会重置分析存储架构。
   * 架构没有版本控制。 用户将在分析存储中看到的版本是从事务存储中推断出的最后一个版本。
 
-* 目前，Azure Synapse Spark 无法读取下列名称中包含某些特殊字符的属性。 如果是这样，请与 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)联系以了解详细信息。
+* 目前，Azure Synapse Spark 无法读取下列名称中包含某些特殊字符的属性。 Azure Synapse SQL 无服务器不受影响。
   * :（冒号）
   * `（抑音符）
   * ,（逗号）
@@ -161,6 +161,21 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
   * =（等号）
   * "（引号）
  
+* 如果你的属性名称使用上面列出的字符，则可以改用以下方法：
+   * 提前更改数据模型，以避免这些字符。
+   * 由于我们目前不支持架构重置，因此你可以更改应用程序以添加具有相似名称的冗余属性，避免使用这些字符。
+   * 通过更改源在属性名称中创建容器的具体化视图，不使用这些字符。
+   * 将数据加载到数据帧中时，使用全新的 `dropColumn` Spark 选项来忽略受影响的列。 删除名为“FirstName,LastNAme”且包含逗号的假设列的语法为：
+
+```Python
+df = spark.read\
+     .format("cosmos.olap")\
+     .option("spark.synapse.linkedService","<your-linked-service-name>")\
+     .option("spark.synapse.container","<your-container-name>")\
+     .option("spark.synapse.dropColumn","FirstName,LastName")\
+     .load()
+```
+
 * Azure Synapse Spark 现在支持名称中包含空格的属性。
 
 ### <a name="schema-representation"></a>架构表示形式

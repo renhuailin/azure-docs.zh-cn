@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cbc2f30384dc410df56995afd83f7d8c0f964176
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1c645e50a49a268d762b1195e91484783a73367c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469601"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562543"
 ---
 # <a name="soft-delete-for-blobs"></a>blob 的软删除
 
@@ -26,7 +26,6 @@ Blob 软删除通过在系统中将已删除的数据保留指定的一段时间
 >
 >
 > 若要注册预览版，请参阅[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pUOVRVOUpDRUtHVUtDUUtMVTZUR0tUMjZWNy4u)。
-
 
 ## <a name="recommended-data-protection-configuration"></a>推荐的数据保护配置
 
@@ -69,13 +68,13 @@ Azure 存储 REST API 2017-07-29 版及更高版本支持 blob 软删除。
 
 可以在不删除基本 blob 的情况下删除一个或多个活动快照。 在这种情况下，快照被标记为软删除。
 
-如果在启用了分层命名空间功能的帐户中删除目录，则系统会将目录及其所有内容标记为软删除。 
+如果在启用了分层命名空间功能的帐户中删除目录，则系统会将目录及其所有内容标记为软删除。
 
 除非显式显示或列出，否则软删除对象不可见。 有关如何列出软删除对象的详细信息，请参阅[管理和还原软删除的 blob](soft-delete-blob-manage.md)。
 
 ### <a name="how-overwrites-are-handled-when-soft-delete-is-enabled"></a>启用软删除后，覆盖操作将作何处理
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > 本部分不适用于具有分层命名空间的帐户。
 
 调用[放置 Blob](/rest/api/storageservices/put-blob)、[放置块列表](/rest/api/storageservices/put-block-list)或[复制 Blob](/rest/api/storageservices/copy-blob) 等操作可覆盖 blob 中的数据。 启用 blob 软删除后，覆盖 blob 会自动创建写入操作前 blob 状态的软删除快照。 保持期到期后，软删除的快照将被永久删除。
@@ -106,7 +105,7 @@ Blob 软删除不会对存档层中的 blob 提供覆盖保护。 如果存档�
 
 ## <a name="blob-soft-delete-and-versioning"></a>Blob 软删除和版本控制
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > 具有分层命名空间的帐户不支持版本控制。
 
 如果在存储帐户上同时启用 blob 版本控制和 blob 软删除，则覆盖某个 blob 将自动创建一个新版本。 系统不会软删除新版本，并且不会在软删除保留期到期时删除该版本。 不会创建软删除的快照。 删除某个 blob 时，该 blob 的当前版本将成为先前版本，当前版本不复存在。 不会创建新版本，也不会创建软删除的快照。
@@ -122,7 +121,7 @@ Microsoft 建议为你的存储帐户同时启用版本控制和 blob 软删除�
 
 ## <a name="blob-soft-delete-protection-by-operation"></a>Blob 软删除操作保护
 
-下表描述了启用 blob 软删除（无论是否启用 blob 版本控制）后删除和写入操作的预期行为。 
+下表描述了启用 blob 软删除（无论是否启用 blob 版本控制）后删除和写入操作的预期行为。
 
 ### <a name="storage-account-no-hierarchical-namespace"></a>存储帐户（无分层命名空间）
 
@@ -150,16 +149,18 @@ Microsoft 建议为你的存储帐户同时启用版本控制和 blob 软删除�
 
 ## <a name="feature-support"></a>功能支持
 
-下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![否](../media/icons/no-icon.png) | 
-| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![否](../media/icons/no-icon.png) |
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>  <sup>3</sup>            | ![否](../media/icons/no-icon.png) |
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>  <sup>3</sup>            | ![否](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 <sup>2</sup>    功能在预览级别受支持。
+
+<sup>3</sup>    有关详细信息，请参阅 [Azure Data Lake Storage Gen2 的已知问题](data-lake-storage-known-issues.md)。 这些问题适用于已启用分层命名空间功能的所有帐户。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
@@ -173,7 +174,7 @@ Microsoft 建议为你的存储帐户同时启用版本控制和 blob 软删除�
 
 有关 Blob 存储定价的详细信息，请参阅 [Blob 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)页。
 
-## <a name="blob-soft-delete-and-virtual-machine-disks"></a>Blob 软删除和虚拟机磁盘  
+## <a name="blob-soft-delete-and-virtual-machine-disks"></a>Blob 软删除和虚拟机磁盘
 
 Blob 软删除适用于高级和标准非托管磁盘（实际上是页 blob）。 软删除可帮助恢复由“删除 Blob”、“放置 Blob”、“放置块列表”和“复制 Blob”操作删除或覆盖的数据   。
 

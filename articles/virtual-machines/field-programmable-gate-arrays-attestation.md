@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: 034acde1f99409ef7d541d7705bb995e0db00d3b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: dba6962199f61eeb93dfb2f98e3e448c94ff633a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689100"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567093"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>适用于 Azure NP 系列 VM 的 FPGA 证明（预览版）
 
@@ -54,9 +54,9 @@ FPGA 证明服务对 Xilinx 工具集生成的设计检查点文件（称为“�
 
 ## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>将网表文件上传到 Azure Blob 存储  
 
-可通过多种方式复制文件；下面演示了使用 az storage upload cmdlet 的示例。 az 命令在 Linux 和 Windows 上均可运行。 可以选择任何名称作为“Blob”名称，但请确保保留 xclbin 扩展名。 
+可通过多种方式复制文件；下面演示了使用 az storage upload cmdlet 的示例。 az 命令在 Linux 和 Windows 上均可运行。 可以选择任何名称作为“Blob”名称，但请确保保留 `xclbin` 扩展名。
 
-```az storage blob upload --account-name <storage account to receive netlist> --container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
+`az storage blob upload --account-name <storage account to receive netlist> --container-name <blob container name> --name <blob filename> --file <local file with netlist>`
 
 ## <a name="download-the-attestation-scripts"></a>下载证明脚本  
 

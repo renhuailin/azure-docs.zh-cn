@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 08c0e844b941a8b8bc9ed110300b6bc3e5c1474c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e8176095bb50f4ead8337997669f4856de4b5873
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726858"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811592"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
 
@@ -40,14 +40,14 @@ ms.locfileid: "121726858"
 2. 导航到 [Azure 门户](https://portal.azure.com)。 
 3. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
-   ![新建 -> DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png" alt-text="“新建”->“数据工厂”":::
 2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。 
       
-     ![“新建数据工厂”页](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
+     :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png" alt-text="“新建数据工厂”页":::
  
    Azure 数据工厂的名称必须 **全局唯一**。 如果看到名称字段的以下错误，请更改数据工厂的名称（例如，改为 yournameADFTutorialDataFactory）。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
-     ![名称不可用 - 错误](./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png)
+     :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png" alt-text="名称不可用 - 错误":::
 3. 选择要在其中创建数据工厂的 Azure **订阅**。 
 4. 对于 **资源组**，请执行以下步骤之一：
      
@@ -61,10 +61,10 @@ ms.locfileid: "121726858"
 7. 单击“创建”。
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
-     ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
+     :::image type="content" source="media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png" alt-text="“正在部署数据工厂”磁贴":::
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
-     ![数据工厂主页](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+     :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png" alt-text="数据工厂主页":::
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。 
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>使用存储过程活动创建管道
@@ -72,14 +72,14 @@ ms.locfileid: "121726858"
 
 1. 在主页中，单击“协调”： 
 
-    ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+    :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="显示 ADF 主页的屏幕截图。":::
 
 2. 在“活动”工具箱中展开“常规”，将 **存储过程** 活动拖放到管道设计器图面。 
 
-    ![拖放存储过程活动](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png" alt-text="拖放存储过程活动":::
 3. 在存储过程活动的属性窗口中切换到“SQL 帐户”选项卡，然后单击“+ 新建”。 与托管 SSIS 目录（SSIDB 数据库）的 Azure SQL 数据库中的数据库建立连接。 
    
-    ![“新建链接服务”按钮](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png" alt-text="“新建链接服务”按钮":::
 4. 在“新建链接服务”窗口中执行以下步骤： 
 
     1. 选择“Azure SQL 数据库”作为“类型”。
@@ -91,7 +91,7 @@ ms.locfileid: "121726858"
     7. 单击“测试连接”按钮，测试与数据库之间的连接。
     8. 单击“保存”按钮保存链接服务。 
 
-        ![屏幕截图，显示了用于添加新链接服务的过程。](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
+        :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png" alt-text="屏幕截图，显示了用于添加新链接服务的过程。":::
 5. 在属性窗口中，从“SQL 帐户”选项卡切换到“存储过程”选项卡，然后执行以下步骤： 
 
     1. 选择“编辑”。 
@@ -107,29 +107,29 @@ ms.locfileid: "121726858"
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
         ```
 
-        ![Azure SQL 数据库链接服务](./media/how-to-invoke-ssis-package-stored-procedure-activity/stored-procedure-settings.png)
+        :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/stored-procedure-settings.png" alt-text="Azure SQL 数据库链接服务":::
 6. 若要验证管道配置，请单击工具栏中的“验证”。 若要关闭“管道验证报告”，请单击 **>>** 。
 
-    ![验证管道](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png" alt-text="验证管道":::
 7. 单击“全部发布”按钮将管道发布到数据工厂。 
 
-    ![发布](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png" alt-text="发布":::    
 
 ### <a name="run-and-monitor-the-pipeline"></a>运行和监视管道
 在此部分中，将触发管道运行，然后对其进行监视。 
 
 1. 若要触发某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 
 
-    ![立即触发](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+    :::image type="content" source="media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png" alt-text="立即触发":::
 
 2. 在“管道运行”窗口中选择“完成”。  
 3. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”。
 
-    ![管道运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png" alt-text="管道运行":::
 
 3. 在“操作”列中单击“查看活动运行”链接。 此时只显示一个活动运行，因为管道只有一个活动（存储过程活动）。
 
-    ![活动运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png" alt-text="活动运行":::
 
 4. 可在 SQL 数据库中针对 SSISDB 数据库运行以下查询，验证是否执行了该包。 
 
@@ -137,7 +137,7 @@ ms.locfileid: "121726858"
     select * from catalog.executions
     ```
 
-    ![验证包执行](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+    :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png" alt-text="验证包执行":::
 
 
 > [!NOTE]

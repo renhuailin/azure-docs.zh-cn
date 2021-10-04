@@ -9,12 +9,12 @@ ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: ef2d8b68d6fb56f5d9b3508d550303aa9d9526d1
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 1542a8dd6c36c2a623f11179c0871a9fef2e3619
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860484"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665504"
 ---
 # <a name="migrate-azure-cloud-services-classic-to-azure-cloud-services-extended-support"></a>将 Azure 云服务（经典）迁移到 Azure 云服务（外延支持）
 
@@ -63,7 +63,7 @@ ms.locfileid: "121860484"
 平台支持的迁移提供以下重要优势：
 
 - 在大多数情况下，实现平台协调后的无缝迁移无需故障时间。 详细了解[支持的方案](in-place-migration-technical-details.md)。  
-- 通过三个简单步骤迁移现有的云服务：验证、准备、提交（或中止）。 详细了解 [迁移工具的工作原理]in-place-migration-overview.md#migration-steps）。
+- 通过三个简单步骤迁移现有的云服务：验证、准备、提交（或中止）。 详细了解[迁移工具的工作原理](in-place-migration-overview.md#migration-steps)
 - 可以在成功准备后测试已迁移的部署。 提交并完成迁移，同时中止回退迁移。
 
 迁移工具利用相同的 API，其体验与[虚拟机（经典）迁移](../virtual-machines/migration-classic-resource-manager-overview.md)相同。 

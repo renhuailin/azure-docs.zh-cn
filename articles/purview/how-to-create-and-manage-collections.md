@@ -8,23 +8,23 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 824f1f06171e83381b46a6df99d70e3003f08f7d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0a684cec230766119345b8fd8acd3df53cc3f25a
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473039"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213007"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>在 Azure Purview 中创建和管理集合
 
 > [!NOTE]
-> 本指南目前仅适用于在 2021 年 8 月 18 日或之后创建的 Purview 实例。 在 8 月 18 日之前创建的实例可以创建集合，但不可通过这些集合管理权限。 有关为 8 月 18 日之前创建的 Purview 实例创建集合的信息，请参阅页面底部的[旧版集合指南](#legacy-collection-guide)。
+> 本指南目前仅适用于在 2021 年 8 月 18 日或之后创建的 Azure Purview 实例。 在 8 月 18 日之前创建的实例可以创建集合，但不可通过这些集合管理权限。 有关为 8 月 18 日之前创建的 Purview 实例创建集合的信息，请参阅页面底部的[旧版集合指南](#legacy-collection-guide)。
 >
 > 在接下来的几周内，所有旧帐户都会被自动升级。 升级 Purview 帐户时，你将收到电子邮件通知。 有关升级帐户后将发生的更改的信息，请参阅[升级帐户指南](concept-account-upgrade.md)。
 
-Purview 中的集合可用于按业务的流程组织资产和源，但它们也是在整个 Purview 中用于管理访问权限的工具。 本指南将指导你创建和管理这些集合，并介绍注册源以及将资产添加到集合的步骤。
+Azure Purview 中的集合可用于按业务的流程组织资产和源，但它们也是在整个 Purview 中用于管理访问权限的工具。 本指南将指导你创建和管理这些集合，并介绍注册源以及将资产添加到集合的步骤。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -34,7 +34,7 @@ Purview 中的集合可用于按业务的流程组织资产和源，但它们也
 
 ### <a name="check-permissions"></a>检查权限
 
-若要在 Purview 中创建和管理集合，你需要成为 Purview 中的集合管理员。 可以在 [Purview Studio](use-purview-studio.md) 中检查这些权限。 在 [Azure 门户](https://portal.azure.com)中转到你的 Purview 资源，然后在概述页上选择“打开 Purview Studio”磁贴即可找到 Purview Studio。
+若要在 Purview 中创建和管理集合，你需要成为 Purview 中的集合管理员。 可以在 [Purview Studio](https://web.purview.azure.com/resource/) 中检查这些权限。 在 [Azure 门户](https://portal.azure.com)中转到你的 Purview 资源，然后在概述页上选择“打开 Purview Studio”磁贴即可找到 Purview Studio。
 
 1. 在左侧窗格中选择“数据映射”>“集合”打开集合管理页。
 

@@ -1,18 +1,17 @@
 ---
-title: 使用 Azure 应用程序网关重写 HTTP 标头和 URL | Microsoft Docs
+title: 使用 Azure 应用程序网关重写 HTTP 标头和 URL
 description: 本文概述了如何在 Azure 应用程序网关中重写 HTTP 标头和 URL
-services: application-gateway
 author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: b7cf7c98e71da215eb30dcab556a88d6d2701591
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c4e4af8fb14c48988a593261365dcfde6c7a0657
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789440"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577272"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>使用应用程序网关重写 HTTP 标头和 URL
 
@@ -126,20 +125,20 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | ssl_enabled               | 如果连接在 TLS 模式下建立，则为“On”。 否则，将为空字符串。 |
 | uri_path                  | 标识 Web 客户端要访问的主机中特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` 中，uri_path 值将为 `/article.aspx` |
 
-### <a name="mutual-authentication-server-variables-preview"></a>相互身份验证服务器变量（预览）
+### <a name="mutual-authentication-server-variables-preview"></a>相互身份验证服务器变量（预览版）
 
-应用程序网关支持以下用于相互身份验证方案的服务器变量。 这些服务器变量的用法与上述服务器变量相同。 
+应用程序网关支持将以下服务器变量用于相互身份验证方案。 使用这些服务器变量的方式与上面用于其他服务器变量的方式相同。 
 
 |   变量名称    |                   说明                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | client_certificate        | 已建立的 SSL 连接的客户端证书，采用 PEM 格式。 |
 | client_certificate_end_date| 客户端证书的结束日期。 |
-| client_certificate_fingerprint| 已建立的 SSL 连接的客户端证书的 SHA1 指纹。 |
-| client_certificate_issuer | 已建立的 SSL 连接的客户端证书的“颁发者 DN”字符串。 |
-| client_certificate_serial | 已建立的 SSL 连接的客户端证书的序列号。  |
+| client_certificate_fingerprint| 用于已建立 SSL 连接的客户端证书的 SHA1 指纹。 |
+| client_certificate_issuer | 用于已建立 SSL 连接的客户端证书的“颁发者 DN”字符串。 |
+| client_certificate_serial | 用于已建立 SSL 连接的客户端证书的序列号。  |
 | client_certificate_start_date| 客户端证书的开始日期。 |
-| client_certificate_subject| 已建立的 SSL 连接的客户端证书的“使用者 DN”字符串。 |
-| client_certificate_verification| 客户端证书验证结果为：“成功”、“失败:<reason>”或“无”（如果不存在证书）  。 | 
+| client_certificate_subject| 用于已建立 SSL 连接的客户端证书的“使用者 DN”字符串。 |
+| client_certificate_verification| 客户端证书验证的结果：SUCCESS、FAILED:\<reason\> 或 NONE（如果证书不存在）  。 | 
 
 ## <a name="rewrite-configuration"></a>重写配置
 
@@ -161,22 +160,22 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 ## <a name="rewrite-configuration-common-pitfalls"></a>重写配置常见缺陷
 
-* 不允许对基本请求路由规则启用“重新计算路径映射”。 这是为了防止基本路由规则出现无限评估循环。
+* 基本请求传递规则不允许启用“重新评估路径映射”。 这是为了防止基本传递规则出现无限评估循环。
 
-* 需要至少有 1 个条件重写规则或 1 个没有为基于路基的路由规则启用“重新评估路径映射”的重写规则，以防止基于路径的路由规则出现无限评估循环。
+* 需要至少有 1 个带条件的重写规则，或者 1 个未对基于路径的传递规则启用“重新评估路径映射”的重写规则，来防止基本传递规则出现无限评估循环。
 
-* 如果循环是基于客户端输入动态创建的，系统将终止传入的请求并显示错误代码 500。 在这种情况下，应用程序网关继续为其他请求提供服务，而不进行任何降级。
+* 如果根据客户端输入动态创建了循环，则传入的请求会终止，并出现 500 错误代码。 在这种情况下，应用程序网关将继续服务其他请求，不出现任何降级。
 
-### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>将 URL 重写或主机头重写与 Web 应用程序防火墙 (WAF_v2 SKU) 结合使用
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>将 URL 重写或主机标头重写与 Web 应用程序防火墙结合使用 (WAF_v2 SKU)
 
-配置 URL 重写或主机头重写时，WAF 评估将在修改请求头或 URL 参数之后（重写后）发生。 删除应用程序网关上的 URL 重写或主机头重写配置时，WAF 评估将在标头重写之前（重写前）完成。 此顺序可确保将 WAF 规则应用到后端池接收的最终请求。
+配置 URL 重写或主机标头重写时，WAF 评估会在修改请求标头或 URL 参数之后进行（重写后）。 在应用程序网关上删除 URL 重写或主机标头重写配置时，WAF 评估会在标头重写之前进行（重写前）。 此顺序可确保将 WAF 规则应用到后端池接收的最终请求。
 
-例如，假设标头 `"Accept" : "text/html"` 具有以下标头重写规则 - 如果标头的值 `"Accept"` 等于 `"text/html"`，则将值重写为 `"image/png"`。
+例如，假设标头 `"Accept" : "text/html"` 具有以下标头重写规则 - 如果标头 `"Accept"` 的值等于 `"text/html"`，则将该值重写为 `"image/png"`。
 
-在此，只配置了标头重写，系统将在 `"Accept" : "text/html"` 上完成 WAF 评估。 但配置了 URL 重写或主机头重写时，则将在 `"Accept" : "image/png"` 上完成 WAF 评估。
+在此处，如果只配置了标头重写，则会对 `"Accept" : "text/html"` 进行 WAF 评估。 但是在配置了 URL 重写或主机标头重写时，会对 `"Accept" : "image/png"` 进行 WAF 评估。
 
 >[!NOTE]
-> URL 重写操作预计会导致 WAF 应用程序网关的 CPU 利用率出现小幅增加。 建议在 WAF 应用程序网关上启用 URL 重写规则后，在短暂的一段时间内监视 [CPU 利用率指标](high-traffic-support.md)。
+> URL 重写操作预计会导致 WAF 应用程序网关的 CPU 使用率轻微增长。 建议在 WAF 应用程序网关上启用 URL 重写规则后，在一段短暂时间内监视 [CPU 使用率指标](high-traffic-support.md)。
 
 ### <a name="common-scenarios-for-header-rewrite"></a>标头重写的常见方案
 

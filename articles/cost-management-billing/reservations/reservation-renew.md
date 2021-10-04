@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/20/2021
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 3b6f6a0700915263187f4f31b60a4d2d8b72d9fd
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: dbeb1a776aa5d813806cec6622e1ad1e515ccfc5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634200"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623677"
 ---
 # <a name="automatically-renew-reservations"></a>自动续订预留
 
@@ -44,7 +44,7 @@ ms.locfileid: "122634200"
 
 - 你必须是现有预留的所有者。
 - 如果预留局限于单个订阅或资源组，你必须是订阅的所有者。
-- 如果订阅具有共享范围，你必须是订阅的所有者。
+- 如果订阅具有共享范围或管理组范围，你必须是订阅的所有者。
 
 ## <a name="default-renewal-settings"></a>默认续订设置
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: 6fb47cf8c3bea7080151d635620bde549070060d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6ccd231c69d69900f81ab91d39eada1f67c7886f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084981"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792460"
 ---
 # <a name="health-probes"></a>运行状况探测
 
@@ -64,6 +64,8 @@ Azure Front Door 在所有算法中均使用相同的三步过程（如下所示
 
 3. 对于后端池中那些运行状况良好的后端，Front Door 还将额外度量和维护每个后端的延迟（往返时间）。
 
+> [!NOTE]
+> 如果单个终结点是多个后端池的成员，Azure Front Door 会优化发送到后端的运行状况探测的数量，以减少后端的负载。 将根据配置的最小采样间隔发送运行状况探测请求。 所有池中终结点的运行状况将由来自相同运行状况探测的响应确定。
 
 ## <a name="complete-health-probe-failure"></a>完成运行状况探测失败
 

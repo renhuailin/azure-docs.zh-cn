@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: ee0bafdfe7d7caae2d4ba65e9967d9c46e6b3e3c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05ccdc3613141e7b04c3255a6035c7a03ad25995
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736436"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579722"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-flexible-server-data-in-replication"></a>如何配置 Azure Database for MySQL 灵活服务器数据传入复制
 
@@ -28,7 +28,7 @@ ms.locfileid: "121736436"
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server-instance-to-use-as-a-replica"></a>创建要用作副本的 Azure Database for MySQL 灵活服务器实例
 
-1. 创建一个新的 Azure Database for MySQL 灵活服务器实例（例如 “replica.mysql.database.azure.com”）。 参阅[使用 Azure 门户创建 Azure Database for MySQL 灵活服务器服务器](quickstart-create-server-portal.md)，了解如何创建服务器。 此服务器是数据传入复制的“副本”服务器。
+1. 创建一个新的 Azure Database for MySQL 灵活服务器实例（例如，`replica.mysql.database.azure.com`）。 请参阅[使用 Azure 门户创建 Azure Database for MySQL 灵活服务器](quickstart-create-server-portal.md)，了解如何创建服务器。 此服务器是数据传入复制的“副本”服务器。
 
 2. 创建相同的用户帐户和对应的特权。
 
@@ -45,7 +45,7 @@ ms.locfileid: "121736436"
 
     * 如果使用的是专用访问，请确保源服务器与托管副本服务器的 Vnet 之间具有连接。 
     * 请确保使用 [ExpressRoute](../../expressroute/expressroute-introduction.md) 或 [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 提供与本地源服务器的站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](../../virtual-network/index.yml)，尤其是提供了分步详细信息的快速入门文章。
-    * 如果在副本服务器中使用专用访问，并且源是 Azure VM，请确保已建立 VNet 到 VNet 的连接。 支持 VNet-Vnet 对等互连。 也可以使用其他连接方法在跨不同区域的 VNet 之间进行通信，例如 VNet 到 VNet 连接。 有关详细信息，请参阅 [VNet 到 VNet VPN 网关](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+    * 如果在副本服务器中使用专用访问，并且源是 Azure VM，请确保已建立 VNet 到 VNet 的连接。 支持 VNet-Vnet 对等互连。 也可以使用其他连接方法跨不同区域在 Vnet 之间进行通信，例如 VNet 到 VNet 连接。 有关详细信息，请参阅 [VNet 到 VNet VPN 网关](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
     * 确保虚拟网络网络安全组规则不会阻止出站端口 3306（如果 MySQL 在 Azure VM 上运行，也请确保不会阻止入站端口）。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
     * 将源服务器的防火墙规则配置为允许副本服务器 IP 地址。
 

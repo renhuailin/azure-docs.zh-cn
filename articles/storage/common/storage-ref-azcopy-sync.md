@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0d549190558f54137a410808967abc206ed43ad1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9ba814b4188984f3a0f6dbe16e866d6184d8cf2b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433361"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547654"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -66,7 +66,7 @@ azcopy sync <source> <destination> [flags]
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-与前面的示例相同，但还会计算文件内容的 MD5 哈希，然后将该 MD5 哈希另存为 Blob 的 Content-MD5 属性。 
+与前面的示例相同，但还会计算文件内容的 MD5 哈希，然后将该 MD5 哈希另存为 Blob 的 Content-MD5 属性。
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
@@ -120,10 +120,10 @@ azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtua
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
-同步 Azure 文件目录（语法与 Blob 相同）：
+同步 Azure 文件目录：
 
 ```azcopy
-azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
+azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" --recursive=true
 ```
 
 > [!NOTE]
@@ -157,7 +157,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--include-pattern** 字符串   仅包括名称与模式列表相匹配的文件。 例如：`*.jpg;*.pdf;exactName`
 
-**--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：`INFO`（所有请求和响应）、`WARNING`（缓慢响的应）、`ERROR`（仅限失败的请求）和 `NONE`（无输出日志）。 （默认值为 `INFO`）。 
+**--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：`INFO`（所有请求和响应）、`WARNING`（缓慢响的应）、`ERROR`（仅限失败的请求）和 `NONE`（无输出日志）。 （默认值为 `INFO`）。
 
 --mirror-mode          如果此标志设置为 `true`，则禁用基于上次修改时间的比较，并且覆盖目标处有冲突的文件和 blob。 默认值为 `false`。
 
@@ -167,9 +167,9 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--put-md5** - 创建每个文件的 MD5 哈希，并将该哈希另存为目标 Blob 或文件的 Content-MD5 属性。 （默认不会创建哈希。）仅在上传时可用。
 
-**--recursive** - 默认值为 `True`，即，在目录之间同步时，将以递归方式查看子目录。 （默认值为 `True`）。 
+**--recursive** - 默认值为 `True`，即，在目录之间同步时，将以递归方式查看子目录。 （默认值为 `True`）。
 
-**--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层。 请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。 
+**--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层。 请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。
 
 --s2s-preserve-blob-tags      在 blob 存储之间进行服务到服务同步过程中保留索引标记。
 

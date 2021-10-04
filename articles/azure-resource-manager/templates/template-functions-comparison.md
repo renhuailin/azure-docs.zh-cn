@@ -2,13 +2,13 @@
 title: 模板函数 - 比较
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于比较值的函数。
 ms.topic: conceptual
-ms.date: 05/11/2021
-ms.openlocfilehash: 0572ff1815cd8ede87d490457a5cb689bed80467
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/08/2021
+ms.openlocfilehash: 0f9243cdc61ad5e7710663328eb4f85c9471fda5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959729"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812349"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 模板的比较函数
 
@@ -31,10 +31,10 @@ ms.locfileid: "111959729"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
-| 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
+| 其他参数 |否 |int、string、array 或 object | 要测试是否为 null 的其他值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -42,55 +42,13 @@ ms.locfileid: "111959729"
 
 ### <a name="example"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json)显示 coalesce 不同用法的输出。
+以下示例模板显示 coalesce 不同用法的输出。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "null1": null,
-        "null2": null,
-        "string": "default",
-        "int": 1,
-        "object": { "first": "default" },
-        "array": [ 1 ]
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringOutput": {
-      "type": "string",
-      "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
-    },
-    "objectOutput": {
-      "type": "object",
-      "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
-    },
-    "emptyOutput": {
-      "type": "bool",
-      "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/comparison/coalesce.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | 默认值 |
 | intOutput | int | 1 |
@@ -108,7 +66,7 @@ ms.locfileid: "111959729"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要检查是否相等的第一个值。 |
 | arg2 |是 |int、string、array 或 object |要检查是否相等的第二个值。 |
@@ -138,68 +96,9 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="example"></a>示例
 
-下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json)检查不同类型的值是否相等。 所有默认值都返回 True。
+以下示例检查不同类型的值是否相等。 所有默认值都返回 True。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstInt": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "secondInt": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "firstString": {
-      "type": "string",
-      "defaultValue": "a"
-    },
-    "secondString": {
-      "type": "string",
-      "defaultValue": "a"
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "a", "b" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "a", "b" ]
-    },
-    "firstObject": {
-      "type": "object",
-      "defaultValue": { "a": "b" }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": { "a": "b" }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "checkInts": {
-      "type": "bool",
-      "value": "[equals(parameters('firstInt'), parameters('secondInt') )]"
-    },
-    "checkStrings": {
-      "type": "bool",
-      "value": "[equals(parameters('firstString'), parameters('secondString'))]"
-    },
-    "checkArrays": {
-      "type": "bool",
-      "value": "[equals(parameters('firstArray'), parameters('secondArray'))]"
-    },
-    "checkObjects": {
-      "type": "bool",
-      "value": "[equals(parameters('firstObject'), parameters('secondObject'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/comparison/equals.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -210,22 +109,9 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 | checkArrays | Bool | True |
 | checkObjects | Bool | True |
 
-以下 [示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)结合使用 [not](template-functions-logical.md#not) 和 **equals**。
+以下示例模板结合使用 [not](template-functions-logical.md#not) 和 **equals**。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-  ],
-  "outputs": {
-    "checkNotEquals": {
-      "type": "bool",
-      "value": "[not(equals(1, 2))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/not-equals.json":::
 
 前述示例的输出为：
 
@@ -243,7 +129,7 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于比较的第二个值。 |
@@ -254,44 +140,9 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="example"></a>示例
 
-下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json)检查一个值是否大于另一个值。
+以下示例检查一个值是否大于另一个值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstInt": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "secondInt": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "firstString": {
-      "type": "string",
-      "defaultValue": "A"
-    },
-    "secondString": {
-      "type": "string",
-      "defaultValue": "a"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "checkInts": {
-      "type": "bool",
-      "value": "[greater(parameters('firstInt'), parameters('secondInt') )]"
-    },
-    "checkStrings": {
-      "type": "bool",
-      "value": "[greater(parameters('firstString'), parameters('secondString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/comparison/greater.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -310,7 +161,7 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于或等于比较的第二个值。 |
@@ -321,44 +172,9 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="example"></a>示例
 
-下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json)检查一个值是否大于等于另一个值。
+以下示例检查一个值是否大于等于另一个值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstInt": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "secondInt": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "firstString": {
-      "type": "string",
-      "defaultValue": "A"
-    },
-    "secondString": {
-      "type": "string",
-      "defaultValue": "a"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "checkInts": {
-      "type": "bool",
-      "value": "[greaterOrEquals(parameters('firstInt'), parameters('secondInt') )]"
-    },
-    "checkStrings": {
-      "type": "bool",
-      "value": "[greaterOrEquals(parameters('firstString'), parameters('secondString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/comparison/greaterorequals.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -377,7 +193,7 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于比较的第二个值。 |
@@ -388,44 +204,9 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="example"></a>示例
 
-下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json)检查一个值是否小于另一个值。
+以下示例检查一个值是否小于另一个值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstInt": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "secondInt": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "firstString": {
-      "type": "string",
-      "defaultValue": "A"
-    },
-    "secondString": {
-      "type": "string",
-      "defaultValue": "a"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "checkInts": {
-      "type": "bool",
-      "value": "[less(parameters('firstInt'), parameters('secondInt') )]"
-    },
-    "checkStrings": {
-      "type": "bool",
-      "value": "[less(parameters('firstString'), parameters('secondString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/comparison/less.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -444,7 +225,7 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于或等于比较的第二个值。 |
@@ -455,44 +236,9 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 
 ### <a name="example"></a>示例
 
-下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json)检查一个值是否小于等于另一个值。
+以下示例检查一个值是否小于等于另一个值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstInt": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "secondInt": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "firstString": {
-      "type": "string",
-      "defaultValue": "A"
-    },
-    "secondString": {
-      "type": "string",
-      "defaultValue": "a"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "checkInts": {
-      "type": "bool",
-      "value": "[lessOrEquals(parameters('firstInt'), parameters('secondInt') )]"
-    },
-    "checkStrings": {
-      "type": "bool",
-      "value": "[lessOrEquals(parameters('firstString'), parameters('secondString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/comparison/lessorequals.json":::
 
 上述示例中使用默认值的输出为：
 

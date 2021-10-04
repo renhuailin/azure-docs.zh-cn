@@ -2,13 +2,13 @@
 title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
-ms.date: 05/28/2021
-ms.openlocfilehash: 9267a3a27823249116e74c6aba9321cfdfd0e338
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 09/27/2021
+ms.openlocfilehash: 9b78a6ed1e36b925bc5d0205effc00eb1b868f5f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681341"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084163"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -25,11 +25,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 > * 运行按需备份作业
 
 >[!NOTE]
->自 2020 年 8 月 1 日起，适用于 RHEL 的 SAP HANA 备份（7.4、7.6、7.7 和 8.1）已正式发布。
-
->[!NOTE]
->**针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除** 现已推出预览版。<br>
->若要注册预览版，请向 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 发送邮件。
+若要详细了解支持的配置和方案，请参阅 [SAP HANA 备份支持矩阵](sap-hana-backup-support-matrix.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,6 +44,8 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 | Azure 防火墙 FQDN 标记          | 自动管理必需的 FQDN，因此更易于管理 | 只可用于 Azure 防火墙                         |
 | 允许访问服务 FQDN/IP | 无额外成本   <br><br>  适用于所有网络安全设备和防火墙 | 可能需要访问一组广泛的 IP 或 FQDN   |
 | 使用 HTTP 代理                 | 对 VM 进行单点 Internet 访问                       | 通过代理软件运行 VM 带来的额外成本         |
+| [虚拟网络服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)    |     可用于 Azure 存储（= 恢复服务保管）。     <br><br>     提供很大的优势，可优化数据平面流量的性能。          |         不能用于 Azure AD、Azure 备份服务。    |
+| 网络虚拟设备      |      可用于 Azure 存储、Azure AD、Azure 备份服务。 <br><br> **数据平面**   <ul><li>      Azure 存储：`*.blob.core.windows.net`、`*.queue.core.windows.net`  </li></ul>   <br><br>     **管理平面**  <ul><li>  Azure AD：允许访问 [Microsoft 365 Common 与 Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) 的 56 和 59 节中提到的 FQDN。 </li><li>   Azure 备份服务：`.backup.windowsazure.com` </li></ul> <br>详细了解 [Azure 防火墙服务标记](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.)。       |  增加数据平面流量的开销，降低吞吐量/性能。  |
 
 关于使用这些选项的更多细节如下：
 
@@ -95,6 +93,12 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 > 没有服务级代理支持。 也就是说，不支持从少数或所选服务（Azure 备份服务）通过代理的流量。 整个数据或流量可以通过代理路由，也可以不通过代理路由。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+
+## <a name="enable-cross-region-restore"></a>启用跨区域还原
+
+在恢复服务保管库中，可以启用跨区域还原。 在配置和保护 HANA 数据库上的备份之前，必须先启用跨区域还原。 了解[如何启用跨区域还原](/azure/backup/backup-create-rs-vault#set-cross-region-restore)。
+
+[详细了解](/azure/backup/backup-azure-recovery-services-vault-overview)跨区域还原。
 
 ## <a name="discover-the-databases"></a>发现数据库
 

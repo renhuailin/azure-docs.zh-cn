@@ -2,22 +2,17 @@
 title: Bicep 函数 - 范围
 description: 介绍要在 Bicep 文件中用于检索部署范围相关值的函数。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 2bf09aef4e3b59f6718a96c6ce2650d508872106
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 4432aa528dbdd565128a15eb79d4b4c01572c924
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025963"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827443"
 ---
 # <a name="scope-functions-for-bicep"></a>Bicep 的范围函数
 
-资源管理器提供以下用于在 Bicep 文件中获取范围值的函数：
-
-* [managementGroup](#managementgroup)
-* [resourceGroup](#resourcegroup)
-* [subscription](#subscription)
-* [tenant](#tenant)
+本文介绍用于获取范围值的 Bicep 函数。
 
 ## <a name="managementgroup"></a>managementGroup
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 09/27/2021
 ms.author: ryanwi
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: ff363550b44286cb7140f533981229565fdf795f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: cba6644b691c6e702ee25d0302a56ca989aa88d9
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032230"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153858"
 ---
 # <a name="configure-terms-of-service-and-privacy-statement-for-an-app"></a>配置应用的服务条款和隐私声明
 
@@ -61,7 +61,7 @@ ms.locfileid: "123032230"
 1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>，然后选择正确的 Azure AD 租户（而非 B2C）。
 2. 导航到“应用注册”部分，并选择应用。
 3. 在“管理”下，选择“品牌打造” 。
-4. 填写“服务条款 URL”和“隐私声明 URL”字段   。
+4. 填写“服务条款 URL”和“隐私声明 URL”字段 。
 5. 选择“保存”。
 
     ![应用属性包含服务条款和隐私声明 URL](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)

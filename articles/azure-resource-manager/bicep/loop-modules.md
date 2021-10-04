@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/27/2021
-ms.openlocfilehash: 44e5a4356cac0f252b344a7acf8b68a2f51d1ef1
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: f8893fa6716d1b106e54f7eb76002622ce5a4bc3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215236"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793429"
 ---
 # <a name="module-iteration-in-bicep"></a>Bicep 中的模块迭代
 
 本文展示了如何在 Bicep 文件中部署多个[模块](modules.md)实例。 可以在 `module` 声明中添加循环，并动态设置部署该模块的次数。 避免在 Bicep 文件中重复语法。
 
 还可以将循环用于[资源](loop-resources.md)、[属性](loop-properties.md)、[变量](loop-variables.md)和[输出](loop-outputs.md)。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解循环并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用条件和循环构建灵活的 Bicep 模板](/learn/modules/build-flexible-bicep-templates-conditions-loops/)。
 
 ## <a name="syntax"></a>语法
 
@@ -101,7 +105,7 @@ module stgModule './storageAccount.bicep' = [for name in storageNames: {
 
 ## <a name="module-iteration-with-condition"></a>具有条件的模块迭代
 
-以下示例展示带有经过筛选的模块循环的 Bicep 文件。 筛选器必须是计算结果为布尔值的表达式。
+下面的示例展示了一个带有经过筛选的模块循环的 Bicep 文件。 筛选器必须是计算结果为布尔值的表达式。
 
 ```bicep
 param location string = resourceGroup().location
@@ -119,9 +123,9 @@ module stgModule './storageAccount.bicep' = [for i in range(0, storageCount): if
 }]
 ```
 
-在前面的示例中，仅当布尔值为 `true` 时才会调用该模块。
+在上述示例中，只有在布尔值为 `true` 时，才调用模块。
 
-筛选器还必须受[资源循环](loop-resources.md)支持。
+筛选器也支持[资源循环](loop-resources.md)。
 
 ## <a name="deploy-in-batches"></a>批量部署
 
@@ -129,7 +133,7 @@ module stgModule './storageAccount.bicep' = [for i in range(0, storageCount): if
 
 你可能不希望同时更新资源类型的所有实例。 例如，在更新生产环境时，可能需要错开更新，使任何一次仅更新一定数量。 可指定同时批处理和部署其中一部分实例。 其他实例等待该批处理完成。
 
-若要连续部署模块的实例，请添加 [batchSize 修饰器](./file.md#resource-and-module-decorators)。 将其值设置为要并发部署的实例数。 在循环中创建先前实例的依赖关系，使其在上一个批处理完成后才启动批处理。
+若要串行部署模块的实例，请添加 [batchSize 修饰器](./file.md#resource-and-module-decorators)。 将其值设置为并发部署的实例数。 在循环中创建先前实例的依赖关系，使其在上一个批处理完成后才启动批处理。
 
 ```bicep
 param location string = resourceGroup().location
@@ -144,7 +148,7 @@ module stgModule './storageAccount.bicep' = [for i in range(0, 4): {
 }]
 ```
 
-对于纯顺序部署，请将批大小设置为 1。
+对于纯顺序部署，将批大小设置为 1。
 
 ## <a name="next-steps"></a>后续步骤
 

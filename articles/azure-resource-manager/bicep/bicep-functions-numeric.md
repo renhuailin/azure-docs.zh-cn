@@ -4,21 +4,17 @@ description: 描述在 Bicep 文件中用于处理数字的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 2eec27d0317b6cfae4969244d069be6881566942
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 8df0aec96001aa5b1a7cdd7342fe663f0bfa2da0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025966"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758477"
 ---
 # <a name="numeric-functions-for-bicep"></a>Bicep 的数字函数
 
-Resource Manager 提供 Bicep 文件中以下用于处理整数的函数：
-
-* [int](#int)
-* [max](#max)
-* [min](#min)
+本文介绍用于处理整数的 Bicep 函数。
 
 某些 Azure 资源管理器 JSON 数字函数将被替换为 [Bicep 数字运算符](./operators-numeric.md)。
 
@@ -30,7 +26,7 @@ Resource Manager 提供 Bicep 文件中以下用于处理整数的函数：
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |字符串或整数 |要转换为整数的值。 |
 
@@ -62,7 +58,7 @@ output inResult int = int(stringToConvert)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -89,7 +85,7 @@ output intOutput int = max(0,3,2,5,4)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -102,7 +98,7 @@ output intOutput int = max(0,3,2,5,4)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -129,11 +125,11 @@ output intOutput int = min(0,3,2,5,4)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Bicep 文件中各部分的说明，请参阅[了解 Bicep 文件的结构和语法](./file.md)。
+* 有关涉及数字的其他操作，请参阅 [Bicep 数字运算符](./operators-numeric.md)。

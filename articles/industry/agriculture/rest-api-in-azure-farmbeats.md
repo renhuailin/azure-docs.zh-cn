@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ddbe9ff6a3dfa195d0739205c3e32070b170f30
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674506"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560745"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats API
 
@@ -70,15 +70,15 @@ headers = {"Authorization": "Bearer " + **access_token**}
 
 **标头** | **说明和示例**
 --- | ---
-Content-Type  | 请求格式 (Content-Type: application/<format>)。 对于 Azure FarmBeats 数据中心 API，格式为 JSON。 Content-Type: application/json
-授权  | 指定进行 API 调用所需的访问令牌。 Authorization:持有者 <Access-Token>
+Content-Type  | 请求格式 (Content-Type: application/\<format\>)。 对于 Azure FarmBeats 数据中心 API，格式为 JSON。 Content-Type: application/json
+授权  | 指定进行 API 调用所需的访问令牌。 授权：持有者 \<Access-Token\>
 Accept | 响应格式。 对于 Azure FarmBeats 数据中心 API，格式为 JSON。 Accept: application/json
 
 ### <a name="api-requests"></a>API 请求
 
 若要发出 REST API 请求，请将 HTTP（GET、POST 、PUT 或 DELETE）方法、API 服务的 URL、用于查询、提交数据、更新或删除资源的 URI 以及一个或多个 HTTP 请求标头组合在一起。
 
-API 服务的 URL 是用户的 Datahub URL，例如 https://\<yourdatahub-website-name>.azurewebsites.net。
+API 服务的 URL 是你的 Datahub URL，例如 `https://<yourdatahub-website-name>.azurewebsites.net`。
 
 或者，可在 GET 调用中包含查询参数以筛选数据、限制数据的大小，并对响应中的数据进行排序。
 
@@ -158,7 +158,7 @@ Azure FarmBeats Datahub API 返回标准 HTTP 错误。 最常见的错误代码
     - 返回到“**概述**”，并选择“**管理本地目录中的应用程序**”旁边的链接。
     - 请参阅“**属性**”以捕获“**对象 ID**”。
 
-4. 请访问 Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html) 并执行以下操作：
+4. 请访问 Datahub Swagger (`https://<yourdatahub>.azurewebsites.net/swagger/index.html`) 并执行以下操作：
     - 请访问 **RoleAssignment API**。
     - 执行 POST，为刚创建的 **对象 ID** 创建 **RoleAssignment** 对象。
  

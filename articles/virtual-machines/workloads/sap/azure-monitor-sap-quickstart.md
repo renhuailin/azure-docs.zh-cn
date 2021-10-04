@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.date: 07/08/2021
-ms.openlocfilehash: 3acbef6c8521022ae847925e48d3cd42e13dc56e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 85cfe6887ded3844e2143754c31a3c6efee5e132
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965393"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579453"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-by-using-the-azure-portal"></a>使用 Azure 门户部署 Azure Monitor for SAP Solutions
 
@@ -51,77 +51,100 @@ SAP 启动服务提供了许多服务，其中包括监视 SAP 系统。 我们�
 4. 选择相应的配置文件 (DEFAULT.PFL)。
 5. 依次选择“扩展维护” > “更改” 。 
 6. 选择配置文件参数“service/protectedwebmethods”并将其修改为具有以下值，然后单击“复制”：  
- 
-SDEFAULT -GetQueueStatistic -ABAPGetWPTable -EnqGetStatistic -GetProcessList 
 
-7. 返回并选择“配置文件” > “保存” 。
-8. 保存对此参数的更改后，请在 SAP 系统中的每个实例上重新启动 SAPStartSRV 服务。 （重新启动服务不会重新启动 SAP 系统；它只会重新启动 SAPStartSRV 服务 (在 Windows 中) 或守护程序进程(在 Unix/Linux 中)）8a. 在 Windows 系统上，可以在单个窗口中使用 SAP Microsoft 管理控制台 (MMC)/SAP 管理控制台 (MC) 来完成此操作。  右键单击每个实例，然后选择“所有任务”->“重新启动服务”。
-   ![MMC](https://user-images.githubusercontent.com/75772258/126453939-daf1cf6b-a940-41f6-98b5-3abb69883520.png) 8b. 在 Linux 系统上，使用命令：sapcontrol -nr <NN> -function RestartService，其中 NN 是用于重启登录到的主机的 SAP 实例编号。
-9. 重新启动 SAP 服务后，请通过运行以下命令进行检查，以确保已为每个实例应用了更新后的 Web 方法保护排除规则：sapcontrol -nr <NN> -function ParameterValue service/protectedwebmethods -user“<adminUser>”“<adminPassword>”输出应如下所示：- ![SS](https://user-images.githubusercontent.com/75772258/126454265-d73858c3-c32d-4afe-980c-8aba96a0b2a4.png)
-10. 若要进行总结和验证，可以通过登录到每个实例并运行以下命令，对 Web 方法执行测试查询来验证连接：对于所有实例：sapcontrol -nr <NN> -function GetProcessList 对于 ENQUE 实例：sapcontrol -nr <NN> -function EnqGetStatistic 对于 ABAP 实例：sapcontrol -nr <NN> -function ABAPGetWPTable 对于 ABAP/J2EE/JEE 实例：sapcontrol -nr <NN> -function GetQueueStatistic
+   ```service/protectedwebmethods instruction
+      SDEFAULT -GetQueueStatistic -ABAPGetWPTable -EnqGetStatistic -GetProcessList```
+
+7. Go back and select **Profile** > **Save**.
+8. After saving the changes for this parameter, please restart the SAPStartSRV service on each of the instances in the SAP system. (Restarting the services will not restart the SAP system; it will only restart the SAPStartSRV service (in Windows) or daemon process (in Unix/Linux))
+   8a. On Windows systems, this can be done in a single window using the SAP Microsoft Management Console (MMC) / SAP Management Console(MC).  Right-click on each instance and choose All Tasks -> Restart Service.
+![MMC](https://user-images.githubusercontent.com/75772258/126453939-daf1cf6b-a940-41f6-98b5-3abb69883520.png)
+
+   8b. On Linux systems, use the below command where NN is the SAP instance number to restart the host which is logged into.
+   
+   ```RestartService
+   sapcontrol -nr <NN> -function RestartService```
+   
+9. Once the SAP service is restarted, please check to ensure the updated web method protection exclusion rules have been applied for each instance by running the following command: 
+
+**Logged as \<sidadm\>** 
+   `sapcontrol -nr <NN> -function ParameterValue service/protectedwebmethods`
+
+**Logged as different user** 
+   `sapcontrol -nr <NN> -function ParameterValue service/protectedwebmethods -user "<adminUser>" "<adminPassword>"`
+
+   The output should look like :-
+   ![SS](https://user-images.githubusercontent.com/75772258/126454265-d73858c3-c32d-4afe-980c-8aba96a0b2a4.png)
+
+10. To conclude and validate, a test query can be done against web methods to validate the connection by logging into each instance and running the following commands:
+
+    - For all instances : `sapcontrol -nr <NN> -function GetProcessList`
+    - For the ENQUE instance : `sapcontrol -nr <NN> -function EnqGetStatistic`
+    - For ABAP instances : `sapcontrol -nr <NN> -function ABAPGetWPTable`
+    - For ABAP/J2EE/JEE instances : `sapcontrol -nr <NN> -function GetQueueStatistic`
 
 >[!Important] 
->若要取消对 SAPControl Web 方法的保护，在 SAP 系统的每个实例上重新启动 sapstartsrv 服务非常重要。  NetWeaver 提供程序需要这些只读 SOAP API 才能从 SAP 系统中提取指标数据，并且无法取消对这些方法的保护将导致 NetWeaver 指标工作簿上出现空白或缺失的可视化效果。
+>It is critical that the sapstartsrv service is restarted on each instance of the SAP system for the SAPControl web methods to be unprotected.  These read-only SOAP API are required for the NetWeaver provider to fetch metric data from the SAP System and failure to unprotect these methods will lead to empty or missing visualizations on the NetWeaver metric workbook.
    
 >[!Tip]
-> 使用访问控制列表 (ACL) 筛选对服务器端口的访问。 有关详细信息，请参阅[此 SAP 说明](https://launchpad.support.sap.com/#/notes/1495075)。
+> Use an access control list (ACL) to filter the access to a server port. For more information, see [this SAP note](https://launchpad.support.sap.com/#/notes/1495075).
 
-在 Azure 门户上安装 NetWeaver 提供程序：
+To install the NetWeaver provider on the Azure portal:
 
-1. 请确保已完成之前的先决条件步骤，并且服务器已重新启动。
-1. 在 Azure 门户的“Azure Monitor for SAP Solutions”下方，选择“添加提供程序”，然后 ：
+1. Make sure you've completed the earlier prerequisite steps and that the server has been restarted.
+1. On the Azure portal, under **Azure Monitor for SAP Solutions**, select **Add provider**, and then:
 
-   1. 对于“类型”，选择“SAP NetWeaver” 。
+   1. For **Type**, select **SAP NetWeaver**.
 
-   1. 对于“主机名”，输入 SAP 系统的主机名。
+   1. For **Hostname**, enter the host name of the SAP system.
 
-   1. 对于“子域”，输入子域（如果适用）。
+   1. For **Subdomain**, enter a subdomain if one applies.
 
-   1. 对于“实例编号”，输入与输入的主机名对应的实例编号。 
+   1. For **Instance No**, enter the instance number that corresponds to the host name you entered. 
 
-   1. 对于“SID”，输入系统 ID。
+   1. For **SID**, enter the system ID.
    
-   ![显示用于添加 SAP NetWeaver 提供程序的配置选项的屏幕截图。](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
+   ![Screenshot showing the configuration options for adding a SAP NetWeaver provider.](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
 
-1.  完成后，选择“添加提供程序”。 根据需要继续添加提供程序，或者选择“查看 + 创建”完成部署。
+1.    When you're finished, select **Add provider**. Continue to add providers as needed, or select **Review + create** to complete the deployment.
 
 >[!Important]
->如果 SAP 应用程序服务器（即虚拟机）是网络域的一部分，例如 Azure Active Directory 管理的虚拟机，则在“子域”文本框中提供相应的子域非常重要。  虚拟网络内存在的适用于 SAP 收集器 VM 的 Azure Monitor 未加入域中，因此，除非主机名为完全限定的域名，否则将无法解析 SAP 系统内实例的主机名。  如果无法提供此项，将会导致 NetWeaver 工作簿中的可视化效果缺失/不完整。
+>If the SAP application servers (ie. virtual machines) are part of a network domain, such as one managed by Azure Active Directory, then it is critical that the corresponding subdomain is provided in the Subdomain text box.  The Azure Monitor for SAP collector VM that exists inside the Virtual Network is not joined to the domain and as such will not be able to resolve the hostname of instances inside the SAP system unless the hostname is a fully qualified domain name.  Failure to provide this will result in missing / incomplete visualizations in the NetWeaver workbook.
  
->例如，如果 SAP 系统的主机名具有完全限定的域名“myhost.mycompany.global.corp”，请输入“myhost”作为主机名，并提供子域“mycompany.global.corp”。  NetWeaver 提供程序在 SAP 系统上调用 GetSystemInstanceList API 时，SAP 将返回系统中所有实例的主机名。  收集器 VM 将使用此列表进行额外的 API 调用来提取特定于每个实例功能的指标（例如 ABAP、J2EE、MESSAGESERVER、ENQUE、ENQREP 等）。 如果已指定，收集器 VM 将使用子域“mycompany.global.corp”来构建 SAP 系统中每个实例的完全限定的域名。  
+>For example, if the hostname of the SAP system has a fully qualified domain name of "myhost.mycompany.global.corp" then please enter a Hostname of "myhost" and provide a Subdomain of "mycompany.global.corp".  When the NetWeaver provider invokes the GetSystemInstanceList API on the SAP system, SAP returns the hostnames of all instances in the system.  The collector VM will use this list to make additional API calls to fetch metrics specific to each instance's features (e.g.  ABAP, J2EE, MESSAGESERVER, ENQUE, ENQREP, etc…). If specified, the collector VM will then use the subdomain  "mycompany.global.corp" to build the fully qualified domain name of each instance in the SAP system.  
  
->如果 SAP 系统是网络域的一部分，请不要为主机名字段指定 IP 地址。
+>Please DO NOT specify an IP Address for the hostname field if the SAP system is a part of network domain.
 
    
-### <a name="sap-hana-provider"></a>SAP HANA 提供程序 
+### SAP HANA provider 
 
-1. 选择“提供程序”选项卡，添加要配置的提供程序。 可以逐一添加多个提供程序，也可以在部署监视资源后添加它们。 
+1. Select the **Providers** tab to add the providers you want to configure. You can add multiple providers one after another, or add them after you deploy the monitoring resource. 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="显示添加提供程序的选项卡的屏幕截图。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Screenshot showing the tab where you add providers." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
-1. 选择“添加提供程序”，然后进行以下操作：
+1. Select **Add provider**, and then:
 
-   1. 对于“类型”，选择“SAP HANA” 。 
+   1. For **Type**, select **SAP HANA**. 
 
       > [!IMPORTANT]
-      > 确保为 SAP HANA `master` 节点配置了 SAP HANA 提供程序。
+      > Ensure that a SAP HANA provider is configured for the SAP HANA `master` node.
 
-   1. 对于“IP 地址”，输入 HANA 服务器的专用 IP 地址。
+   1. For **IP address**, enter the private IP address for the HANA server.
 
-   1. 对于“数据库租户”，输入要使用的租户的名称。 可以选择任意租户，但我们建议使用 SYSTEMDB，因为它支持的监视区域更广泛。 
+   1. For **Database tenant**, enter the name of the tenant you want to use. You can choose any tenant, but we recommend using **SYSTEMDB** because it enables a wider array of monitoring areas. 
 
-   1. 对于“SQL 端口”，输入与 HANA 数据库关联的端口号。 端口号的格式应为 [3] + [实例编号] + [13]  。 例如 30013。 
+   1. For **SQL port**, enter the port number associated with your HANA database. It should be in the format of *[3]* + *[instance#]* + *[13]*. An example is **30013**. 
 
-   1. 对于“数据库用户名”，输入要使用的用户名。 确保数据库用户已分配有“监视”和“目录读取”角色 。
+   1. For **Database username**, enter the username you want to use. Ensure the database user has the *monitoring* and *catalog read* roles assigned.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="显示用于添加 SAP HANA 提供程序的配置选项的屏幕截图。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Screenshot showing configuration options for adding an SAP HANA provider." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
-1. 完成后，选择“添加提供程序”。 根据需要继续添加提供程序，或者选择“查看 + 创建”完成部署。
+1. When you're finished, select **Add provider**. Continue to add providers as needed, or select **Review + create** to complete the deployment.
 
    
-### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server 提供程序
+### Microsoft SQL Server provider
 
-1. 添加 Microsoft SQL Server 提供程序之前，请在 SQL Server Management Studio 中运行以下脚本，以创建具有配置提供程序所需的相应权限的用户。
+1. Before you add the Microsoft SQL Server provider, run the following script in SQL Server Management Studio to create a user with the appropriate permissions for configuring the provider.
 
    ```sql
    USE [<Database to monitor>]
@@ -172,7 +195,7 @@ SDEFAULT -GetQueueStatistic -ABAPGetWPTable -EnqGetStatistic -GetProcessList
 
 1. 对于“类型”，选择“高可用性群集(Pacemaker)” 。 
    
-1. 在 HA 群集导出程序终结点中输入终结点 URL，为群集的每个节点配置提供程序。 对于基于 SUSE 的群集，输入 http://<IP  address>:9664/metrics 。 对于基于 RHEL 的群集，输入 http://<IP address>:44322/metrics?names=ha_cluster 
+1. 在 HA 群集导出程序终结点中输入终结点 URL，为群集的每个节点配置提供程序。 对于基于 SUSE 的群集，输入 http://\<IP  address\>:9664/metrics 。 对于基于 RHEL 的群集，输入 http://\<IP address\>:44322/metrics?names=ha_cluster 
  
 1. 在相应的框中输入系统 ID、主机名和群集名称。
    

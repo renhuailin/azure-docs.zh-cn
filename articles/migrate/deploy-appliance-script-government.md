@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 97980d07d7dc597b5bfb4b093495b2cb74c4569e
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 84bb24daf4586f874c0caf3994bc59773e663337
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777911"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093585"
 ---
 # <a name="set-up-an-appliance-for-azure-government-cloud"></a>为 Azure 政府云设置设备
 
@@ -26,7 +26,7 @@ ms.locfileid: "122777911"
 > [!NOTE]
 > Azure 政府不支持使用模板（为 VMware 或 Hyper-V 环境中运行的服务器）部署设备的选项。 只需使用安装程序脚本。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 可使用脚本将 Azure Migrate 设备部署到现有物理服务器或虚拟化服务器上。
 
@@ -61,40 +61,40 @@ ms.locfileid: "122777911"
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 
 ### <a name="run-the-script"></a>运行脚本
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
+
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 `
 
 5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上一个已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现、评估和迁移 VMware 环境中运行的服务器  。
 
-    :::image type="content" source="./media/deploy-appliance-script-government/script-vmware-gov-inline.png" alt-text="显示如何为 Vmware 设置具有所需配置的设备的屏幕截图。" lightbox="./media/deploy-appliance-script-government/script-vmware-gov-expanded.png":::
+   :::image type="content" source="./media/deploy-appliance-script-government/script-vmware-gov-inline.png" alt-text="显示如何为 Vmware 设置具有所需配置的设备的屏幕截图。" lightbox="./media/deploy-appliance-script-government/script-vmware-gov-expanded.png":::
 
 6. 此安装程序脚本执行以下操作：
 
-- 安装代理和 Web 应用程序。
-- 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。
-- 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
-- 在路径下创建以下文件：
-    - **配置文件**：%Programdata%\Microsoft Azure\Config
-    - **日志文件**：%Programdata%\Microsoft Azure\Logs
+   - 安装代理和 Web 应用程序。
+   - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
+   - 下载并安装 IIS 可重写模块。
+   - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
+   - 在路径下创建以下文件：
+     - **配置文件**：%Programdata%\Microsoft Azure\Config
+     - **日志文件**：%Programdata%\Microsoft Azure\Logs
 
 成功执行该脚本后，将自动启动设备配置管理器。
-
 
 ### <a name="verify-access"></a>验证访问权限
 
 确保设备可以连接到[政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
-
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>为 Hyper-V 设置设备
 
@@ -122,17 +122,19 @@ ms.locfileid: "122777911"
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140424) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 ### <a name="run-the-script"></a>运行脚本
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
+
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上一个已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估 Hyper-V 环境中运行的服务器  。
 
@@ -180,7 +182,7 @@ ms.locfileid: "122777911"
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 > [!NOTE]
 > 可以使用同一脚本为已连接到公共或专用终结点的 Azure 政府云设置物理设备。
@@ -188,12 +190,14 @@ ms.locfileid: "122777911"
 ### <a name="run-the-script"></a>运行脚本
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
+
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+    `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 `
 
 5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 政府云上已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估物理服务器（或在 AWS、GCP、Xen 等其他云上运行的服务器） 。
 

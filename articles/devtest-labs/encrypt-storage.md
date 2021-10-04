@@ -1,14 +1,14 @@
 ---
-title: 加密 Azure 开发测试实验室中的实验室使用的 Azure 存储帐户
+title: 加密实验室使用的 Azure 存储帐户
 description: 了解如何配置 Azure 开发测试实验室中的实验室使用的 Azure 存储的加密
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 337cd45b20b9fe52bb487a3b36bde905541f840b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92149302"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552578"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>加密 Azure 开发测试实验室中的实验室使用的 Azure 存储
 在 Azure 开发测试实验室中创建的每个实验室都是使用关联的 Azure 存储帐户创建的。 存储帐户用于以下用途： 
@@ -65,7 +65,7 @@ ms.locfileid: "92149302"
 - 从公式创建 VM。
 
 ### <a name="artifact-results"></a>项目结果
-应用项目时，各个项目结果的大小可能会随着时间的推移而增大，具体取决于实验室 VM 上运行的项目的数量和类型。 因此，作为实验室所有者，你可能需要控制此类文档的生命周期。 有关详细信息，请参阅[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。
+应用项目时，各个项目结果的大小可能会随着时间的推移而增大，具体取决于实验室 VM 上运行的项目的数量和类型。 因此，作为实验室所有者，你可能需要控制此类文档的生命周期。 有关详细信息，请参阅[管理 Azure Blob 存储生命周期](../storage/blobs/lifecycle-management-overview.md)。
 
 > [!IMPORTANT]
 > 建议执行此步骤，以减少与 Azure 存储帐户关联的费用。 

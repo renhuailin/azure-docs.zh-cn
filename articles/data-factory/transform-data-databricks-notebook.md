@@ -1,25 +1,25 @@
 ---
 title: 使用 Databricks Notebook 转换数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂中运行 Databricks Notebook 来处理或转换数据。
+description: 了解如何通过在 Azure 数据工厂和 Synapse Analytics 管道中运行 Databricks Notebook 来处理或转换数据。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.custom: synapse
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
-ms.date: 03/15/2018
-ms.openlocfilehash: d4db58e70c31724bac3678eb0f692e13d26211c6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 9f82c1f2e39261ba4ba1072f5da9f807f23a180e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638013"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798458"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Notebook 活动在 Azure Databricks 工作区中运行 Databricks Notebook。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
+[管道](concepts-pipelines-activities.md)中的 Azure Databricks Notebook 活动在 Azure Databricks 工作区中运行 Databricks Notebook。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
 
 ## <a name="databricks-notebook-activity-definition"></a>Databricks Notebook 活动定义
 
@@ -109,15 +109,15 @@ ms.locfileid: "122638013"
 
 有关详细信息，请参阅库类型的 [Databricks 文档](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary)。
 
-## <a name="passing-parameters-between-notebooks-and-data-factory"></a>在笔记本和数据工厂之间传递参数
+## <a name="passing-parameters-between-notebooks-and-pipelines"></a>在笔记本和管道之间传递参数
 
-可以使用 Databricks 活动中的 baseParameters 属性将数据工厂参数传递给笔记本。
+可以使用 Databricks 活动中的 baseParameters 属性将参数传递给笔记本。
 
-在某些情况下，你可能需要将某些值从笔记本传回数据工厂，这些值可用于数据工厂中的控制流（条件检查）或由下游活动使用（大小限制为 2MB）。
+在某些情况下，你可能需要将某些值从笔记本传回服务，这些值可用于服务中的控制流（条件检查）或由下游活动使用（大小限制为 2MB）。
 
-1. 在笔记本中，你可以调用 [dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit)，相应的“returnValue”会返回到数据工厂。
+1. 在笔记本中，可以调用 [dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit)，相应的“returnValue”将会返回到服务。
 
-2. 可以通过表达式（如 `@{activity('databricks notebook activity name').output.runOutput}`）在数据工厂中使用输出。 
+2. 可以使用表达式（如 `@{activity('databricks notebook activity name').output.runOutput}`）在服务中使用该输出。 
 
    > [!IMPORTANT]
    > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例：`@{activity('databricks notebook activity name').output.runOutput.PropertyName}`

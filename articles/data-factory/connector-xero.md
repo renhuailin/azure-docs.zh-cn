@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 数据工厂从 Xero 复制数据
+title: 从 Xero 复制数据
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从 Xero 复制到支持的接收器数据存储。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Xero 复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: c95efb768dc66dd35a88d0cd57d37e4d7e43ce3c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 17b92068145ac07833f7e73cc4d694a89f39ad7f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311124"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779837"
 ---
-# <a name="copy-data-from-xero-using-azure-data-factory"></a>使用 Azure 数据工厂从 Xero 复制数据
+# <a name="copy-data-from-xero-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 Xero 复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Xero 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂或 Synapse Analytics 管道中的复制活动从 Xero 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -78,10 +78,10 @@ Xero 链接服务支持以下属性：
 | 在 `connectionProperties` 下： | | |
 | host | Xero 服务器的终结点 (`api.xero.com`)。  | 是 |
 | authenticationType | 允许的值为 `OAuth_2.0` 和 `OAuth_1.0`。 | 是 |
-| consumerKey | 对于 OAuth 2.0，请指定 Xero 应用程序的客户端 ID。<br>对于 OAuth 1.0，请指定与 Xero 应用程序关联的使用者密钥。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| privateKey | 对于 OAuth 2.0，请指定 Xero 应用程序的客户端密码。<br>对于 OAuth 1.0，若要指定为 Xero 专用应用程序生成的 .pem 文件中的私钥，请参阅[创建公钥/私钥对](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)。 注意：使用 `openssl genrsa -out privatekey.pem 512` 可生成数位为 512 的 privatekey.pem，不支持生成 1024 数位。 包括 .pem 文件中的所有文本，包括 Unix 行尾(\n)，请参见下面的示例。<br/><br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| consumerKey | 对于 OAuth 2.0，请指定 Xero 应用程序的客户端 ID。<br>对于 OAuth 1.0，请指定与 Xero 应用程序关联的使用者密钥。<br>将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| privateKey | 对于 OAuth 2.0，请指定 Xero 应用程序的客户端密码。<br>对于 OAuth 1.0，若要指定为 Xero 专用应用程序生成的 .pem 文件中的私钥，请参阅[创建公钥/私钥对](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)。 注意：使用 `openssl genrsa -out privatekey.pem 512` 可生成数位为 512 的 privatekey.pem，不支持生成 1024 数位。 包括 .pem 文件中的所有文本，包括 Unix 行尾(\n)，请参见下面的示例。<br/><br>将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | tenantId | 与 Xero 应用程序关联的租户 ID。 适用于 OAuth 2.0 身份验证。<br>请参阅[查看你有权访问的租户](https://developer.xero.com/documentation/oauth2/auth-flow)部分，了解如何获取租户 ID。 | 是，适用于 OAuth 2.0 身份验证 |
-| refreshToken | 适用于 OAuth 2.0 身份验证。<br/>OAuth 2.0 刷新令牌与  Xero 应用程序关联，用于刷新访问令牌；访问令牌在 30 分钟后过期。 了解 Xero 授权流的工作原理，并了解如何从[此文](https://developer.xero.com/documentation/oauth2/auth-flow)获取刷新令牌。 若要获取刷新令牌，必须请求 [offline_access 范围](https://developer.xero.com/documentation/oauth2/scopes)。 <br/>**已知限制**：请注意，在将刷新令牌用于访问令牌刷新后，Xero 会将其重置。 对于操作化工作负荷，在每个复制活动运行之前，需要设置有效的刷新令牌供 ADF 使用。<br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，适用于 OAuth 2.0 身份验证 |
+| refreshToken | 适用于 OAuth 2.0 身份验证。<br/>OAuth 2.0 刷新令牌与  Xero 应用程序关联，用于刷新访问令牌；访问令牌在 30 分钟后过期。 了解 Xero 授权流的工作原理，并了解如何从[此文](https://developer.xero.com/documentation/oauth2/auth-flow)获取刷新令牌。 若要获取刷新令牌，必须请求 [offline_access 范围](https://developer.xero.com/documentation/oauth2/scopes)。 <br/>**已知限制**：请注意，在将刷新令牌用于访问令牌刷新后，Xero 会将其重置。 对于操作化工作负荷，在每个复制活动运行之前，需要设置有效的刷新令牌供服务使用。<br/>将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，适用于 OAuth 2.0 身份验证 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |

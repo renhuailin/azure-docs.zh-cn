@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 09/14/2021
 ms.author: memildin
-ms.openlocfilehash: 02690da936190b7d868f54c987939c06b91b1a35
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: fa7076882370b404ea7b1e04cb5c364f22c35fae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854011"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648461"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>保护本地和多云环境中运行的已启用 Azure Arc 的 Kubernetes 群集
 
@@ -29,8 +29,8 @@ Azure Defender for Kubernetes 群集扩展使用为 Azure Kubernetes 服务群�
 |--------|---------|
 | 发布状态 | **预览**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 | 所需的角色和权限 | [安全管理员](../role-based-access-control/built-in-roles.md#security-admin)可以消除警报<br>[安全读取者](../role-based-access-control/built-in-roles.md#security-reader)可以查看结果 |
-| 定价 | 需要 [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) |
-| 支持的 Kubernetes 分布 | [Azure Stack HCI 上的 Azure Kubernetes 服务](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS 引擎](https://github.com/Azure/aks-engine)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/)（4.6 或更高版本）<br> [VMware Tanzu Kubernetes 网格](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes 引擎](https://rancher.com/docs/rke/latest/en/) |
+| 定价 | 免费（预览期间） |
+| 支持的 Kubernetes 分布 | [Azure Stack HCI 上的 Azure Kubernetes 服务](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS 引擎](https://github.com/Azure/aks-engine)<br> [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/)（4.6 或更高版本）<br> [VMware Tanzu Kubernetes 网格](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes 引擎](https://rancher.com/docs/rke/latest/en/) |
 | 限制 | 已启用 Azure Arc 的 Kubernetes 和 Azure Defender 扩展不支持托管 Kubernetes 产品/服务，例如 Google Kubernetes Engine 和 Elastic Kubernetes Service。 [Azure Defender 原生适用于 Azure Kubernetes 服务 (AKS)](defender-for-kubernetes-introduction.md)，且无需将群集连接到 Azure Arc。 |
 | 环境和区域 | 此扩展的可用性与[已启用 Azure Arc 的 Kubernetes](../azure-arc/kubernetes/overview.md) 相同|
 
@@ -46,9 +46,18 @@ Azure Defender for Kubernetes 群集扩展使用为 Azure Kubernetes 服务群�
 
 ## <a name="prerequisites"></a>先决条件
 
-- [已在你的订阅上启用](enable-azure-defender.md) Azure Defender for Kubernetes
-- 你的 Kubernetes 群集已[连接到 Azure Arc](../azure-arc/kubernetes/quickstart-connect-cluster.md)
-- 满足[通用群集扩展文档](../azure-arc/kubernetes/extensions.md#prerequisites)中列出的先决条件。
+部署扩展之前，请确保：
+- [将 Kubernetes 群集连接到 Azure Arc](../azure-arc/kubernetes/quickstart-connect-cluster.md)
+- 完成[通用群集扩展文档中列出的先决条件](../azure-arc/kubernetes/extensions.md#prerequisites)。
+- 在以下终结点上配置“端口 443”用于出站访问：
+    - 对于 Azure 政府云上的群集：
+        - *.ods.opinsights.azure.us
+        - *.oms.opinsights.azure.us
+        - :::no-loc text="login.microsoftonline.us":::
+    - 对于其他 Azure 云部署中的群集：
+        - *.ods.opinsights.azure.com
+        - *.oms.opinsights.azure.com
+        - :::no-loc text="login.microsoftonline.com":::
 
 ## <a name="deploy-the-azure-defender-extension"></a>部署 Azure Defender 扩展
 
@@ -105,7 +114,7 @@ Azure 安全中心的专业建议提供：
 
     | 属性 | 说明 |
     |----------|-------------|
-    | logAnalyticsWorkspaceResourceID | 可选。 你自己的 Log Analytics 工作区的完整资源 ID。<br>如果未提供，将使用区域的默认工作区。<br><br>若要获取完整资源 ID，请运行以下命令，以默认 JSON 格式显示订阅中的工作区列表：<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Log Analytics 工作区资源 ID 采用以下语法：<br>/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.OperationalInsights/workspaces/{your-workspace-name}. <br>在 [Log Analytics 工作区](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces)中了解详细信息 |
+    | logAnalyticsWorkspaceResourceID | 可选。 你自己的 Log Analytics 工作区的完整资源 ID。<br>如果未提供，将使用区域的默认工作区。<br><br>若要获取完整资源 ID，请运行以下命令，以默认 JSON 格式显示订阅中的工作区列表：<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Log Analytics 工作区资源 ID 采用以下语法：<br>/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.OperationalInsights/workspaces/{your-workspace-name}. <br>在 [Log Analytics 工作区](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces)中了解详细信息 |
     | auditLogPath |可选。 审核日志文件的完整路径。<br>如果未提供，将使用默认路径 ``/var/log/kube-apiserver/audit.log``。<br>对于 AKS 引擎，标准路径为 ``/var/log/kubeaudit/audit.log`` |
 
     以下命令显示所有可选字段的示例用法：
@@ -118,7 +127,7 @@ Azure 安全中心的专业建议提供：
 
 ### <a name="use-azure-resource-manager-to-deploy-the-azure-defender-extension"></a>使用 Azure 资源管理器部署 Azure Defender 扩展
 
-若要使用 Azure 资源管理器部署 Azure Defender 扩展，你的订阅中需有一个 Log Analytics 工作区。 在 [Log Analytics 工作区](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces)中了解详细信息。
+若要使用 Azure 资源管理器部署 Azure Defender 扩展，你的订阅中需有一个 Log Analytics 工作区。 在 [Log Analytics 工作区](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces)中了解详细信息。
 
 可以使用安全中心[安装示例](https://aka.ms/kubernetes-extension-installation-examples)中的 azure-defender-extension-arm-template.json 资源管理器模板。
 
@@ -129,7 +138,7 @@ Azure 安全中心的专业建议提供：
 
 ### <a name="use-rest-api-to-deploy-the-azure-defender-extension"></a>使用 REST API 部署 Azure Defender 扩展 
 
-若要使用 REST API 部署 Azure Defender 扩展，你的订阅中需有一个 Log Analytics 工作区。 在 [Log Analytics 工作区](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces)中了解详细信息。
+若要使用 REST API 部署 Azure Defender 扩展，你的订阅中需有一个 Log Analytics 工作区。 在 [Log Analytics 工作区](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces)中了解详细信息。
 
 > [!TIP]
 > 使用 API 部署 Azure Defender 扩展的最简单方法是使用安全中心[安装示例](https://aka.ms/kubernetes-extension-installation-examples)中提供的“Postman 集合 JSON”示例。
@@ -141,7 +150,7 @@ Azure 安全中心的专业建议提供：
 
     其中：
 
-    | 名称            | 在   | 必须 | 类型   | 描述                                  |
+    | 名称            | 在   | 必需 | 类型   | 描述                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | 订阅 ID | path | True     | 字符串 | 已启用 Azure Arc 的 Kubernetes 资源的订阅 ID |
     | 资源组  | path | True     | 字符串 | 包含已启用 Azure Arc 的 Kubernetes 资源的资源组的名称 |
@@ -150,7 +159,7 @@ Azure 安全中心的专业建议提供：
 
     对于 Authentication，头中必须包含一个持有者令牌（与使用其他 Azure API 时一样）。 若要获取持有者令牌，请运行以下命令：
 
-    ```az account get-access-token --subscription <your-subscription-id>``` 对消息正文使用以下结构：
+    `az account get-access-token --subscription <your-subscription-id>` 对消息正文使用以下结构：
     ```json
     { 
     "properties": { 
@@ -324,7 +333,7 @@ Azure 安全中心的专业建议提供：
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名称            | 在   | 必须 | 类型   | 描述                                           |
+| 名称            | 在   | 必需 | 类型   | 描述                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | 订阅 ID | path | True     | 字符串 | 已启用 Arc 的 Kubernetes 群集的订阅 ID |
 | 资源组  | path | True     | 字符串 | 已启用 Arc 的 Kubernetes 群集的资源组  |

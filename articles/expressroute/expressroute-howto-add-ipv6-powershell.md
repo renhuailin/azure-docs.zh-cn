@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 67010d698c51e0eb66abcfa35fc629ec58d28789
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 62616465b98feca1052ac3e45932120fdf0ffd42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424215"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584501"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>使用 Azure PowerShell 添加对专用对等互连的 IPv6 支持（预览版）
 
@@ -154,7 +154,7 @@ ms.locfileid: "123424215"
 ## <a name="limitations"></a>限制
 虽然 IPv6 支持可用于连接到公共 Azure 区域中的部署，但它不支持以下用例：
 
-* 与非区域冗余的现有 ExpressRoute 网关的连接
+* 连接到“非”区域冗余的现有 ExpressRoute 网关。 请注意，使用标准静态 IP 地址新创建的任何 SKU（区域冗余和非区域冗余）ExpressRoute 网关均可用于双堆栈 ExpressRoute 连接
 * ExpressRoute 线路之间的 Global Reach 连接
 * 将 ExpressRoute 用于虚拟 WAN
 * FastPath 与非 ExpressRoute Direct 线路

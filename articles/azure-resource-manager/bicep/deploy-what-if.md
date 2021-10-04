@@ -5,18 +5,22 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: tomfitz
-ms.openlocfilehash: 70151d70c884432c92f49e0f4b3e5e3f873b57ac
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 697a72e33b4f03f7441e51085f2519fa32f88590
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429327"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793676"
 ---
 # <a name="bicep-deployment-what-if-operation"></a>Bicep 部署 what-if 操作
 
 在部署 Bicep 文件之前，可以预览将发生的更改。 Azure 资源管理器提供 What-if 操作，让你在部署 Bicep 文件时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的 Bicep 文件时发生的更改。
 
 可将 what-if 操作与 Azure PowerShell、Azure CLI 或 REST API 操作配合使用。 资源组、订阅、管理组合租户级部署支持 What-if。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解 what-if 操作并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用 what-if 预览 Azure 部署更改](/learn/modules/arm-template-whatif/)。
 
 ## <a name="install-azure-powershell-module"></a>安装 Azure PowerShell 模块
 

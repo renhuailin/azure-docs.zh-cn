@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/03/2021
+ms.date: 09/10/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ffb9e53172835ddcec574802f10a4a4bbbea0e1
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 4153e46df308a6682d3d21e509570a610ab61da7
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112233054"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707914"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中批准或拒绝 Azure AD 角色的请求
 
@@ -41,6 +41,62 @@ ms.locfileid: "112233054"
 
     在“请求激活角色”部分，将看到等待审批的请求列表。
 
+## <a name="view-pending-requests-using-graph-api"></a>使用图形 API 查看待处理请求
+
+### <a name="http-request"></a>HTTP 请求
+
+````HTTP
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignmentScheduleRequests/filterByCurrentUser(on='approver')?$filter=status eq 'PendingApproval' 
+````
+
+### <a name="http-response"></a>HTTP 响应
+
+````HTTP
+{ 
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#Collection(unifiedRoleAssignmentScheduleRequest)", 
+    "value": [ 
+        { 
+            "@odata.type": "#microsoft.graph.unifiedRoleAssignmentScheduleRequest", 
+            "id": "9f2b5ddb-a50e-44a1-a6f4-f616322262ea", 
+            "status": "PendingApproval", 
+            "createdDateTime": "2021-07-15T19:57:17.76Z", 
+            "completedDateTime": "2021-07-15T19:57:17.537Z", 
+            "approvalId": "9f2b5ddb-a50e-44a1-a6f4-f616322262ea", 
+            "customData": null, 
+            "action": "SelfActivate", 
+            "principalId": "d96ea738-3b95-4ae7-9e19-78a083066d5b", 
+            "roleDefinitionId": "88d8e3e3-8f55-4a1e-953a-9b9898b8876b", 
+            "directoryScopeId": "/", 
+            "appScopeId": null, 
+            "isValidationOnly": false, 
+            "targetScheduleId": "9f2b5ddb-a50e-44a1-a6f4-f616322262ea", 
+            "justification": "test", 
+            "createdBy": { 
+                "application": null, 
+                "device": null, 
+                "user": { 
+                    "displayName": null, 
+                    "id": "d96ea738-3b95-4ae7-9e19-78a083066d5b" 
+                } 
+            }, 
+            "scheduleInfo": { 
+                "startDateTime": null, 
+                "recurrence": null, 
+                "expiration": { 
+                    "type": "afterDuration", 
+                    "endDateTime": null, 
+                    "duration": "PT5H30M" 
+                } 
+            }, 
+            "ticketInfo": { 
+                "ticketNumber": null, 
+                "ticketSystem": null 
+            } 
+        } 
+    ] 
+} 
+````
+
 ## <a name="approve-requests"></a>审批请求
 
 1. 找到并选择要审批的请求。 此时将显示“批准或拒绝”页。
@@ -51,7 +107,58 @@ ms.locfileid: "112233054"
 
 1. 选择“批准”。  你将收到 Azure 批准通知。
 
-    ![显示请求已批准的批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
+    ![显示请求已批准的批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+## <a name="approve-pending-requests-using-graph-api"></a>使用图形 API 审批待处理请求
+
+### <a name="get-ids-for-the-steps-that-require-approval"></a>获取需要审批的步骤的 ID
+
+对于特定激活请求，此命令获取需要审批的所有审批步骤。 目前不支持多步审批。
+
+#### <a name="http-request"></a>HTTP 请求
+
+````HTTP
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignmentApprovals/<request-ID-GUID> 
+````
+
+#### <a name="http-response"></a>HTTP 响应
+
+````HTTP
+{ 
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#roleManagement/directory/roleAssignmentApprovals/$entity", 
+    "id": "<request-ID-GUID>",
+    "steps@odata.context": "https://graph.microsoft.com/beta/$metadata#roleManagement/directory/roleAssignmentApprovals('<request-ID-GUID>')/steps", 
+    "steps": [ 
+        { 
+            "id": "<approval-step-ID-GUID>", 
+            "displayName": null, 
+            "reviewedDateTime": null, 
+            "reviewResult": "NotReviewed", 
+            "status": "InProgress", 
+            "assignedToMe": true, 
+            "justification": "", 
+            "reviewedBy": null 
+        } 
+    ] 
+} 
+````
+
+### <a name="approve-the-activation-request-step"></a>审批激活请求步骤
+
+#### <a name="http-request"></a>HTTP 请求
+
+````HTTP
+PATCH 
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignmentApprovals/<request-ID-GUID>/steps/<approval-step-ID-GUID> 
+{ 
+    "reviewResult": "Approve", 
+    "justification": "abcdefg" 
+} 
+ ````
+
+#### <a name="http-response"></a>HTTP 响应
+
+成功的 PATCH 调用会生成空响应。
 
 ## <a name="deny-requests"></a>拒绝请求
 

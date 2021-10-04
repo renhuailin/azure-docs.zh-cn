@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 03fb94571e5e41a99688bf912cab36fa10edd2a4
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d342565972b051dcd5362f192d15678e1817ce78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867523"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818859"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -82,6 +82,8 @@ ms.locfileid: "122867523"
 
 - 检查是否可以修改应用程序以减少元数据操作的数量。
 - 在文件共享上添加虚拟硬盘 (VHD)，并从客户端通过 SMB 装载 VHD，以便对数据执行文件操作。 此方法适用于单个编写器/读取器方案或包含多个读取器且无编写器的方案。 由于文件系统由客户端而不是 Azure 文件存储拥有，因此元数据操作可在本地执行。 安装程序提供的性能与本地直连的存储的性能类似。
+    -   若要在 Windows 客户端上装载 VHD，请使用 [Mount-DiskImage](https://docs.microsoft.com/powershell/module/storage/mount-diskimage) Powershell cmdlet。
+    -   若要在 Linux 上装载 VHD，请参阅 Linux 发行版的文档。     
 
 ### <a name="cause-3-single-threaded-application"></a>原因 3：单线程应用程序
 

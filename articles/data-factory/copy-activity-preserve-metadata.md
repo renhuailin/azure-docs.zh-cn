@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 数据工厂中的复制活动保留元数据和 ACL
+title: 使用复制活动保留元数据和 ACL
+description: 了解如何在使用 Azure 数据工厂和 Synapse Analytics 管道中的复制活动时保留元数据和 ACL。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何使用 Azure 数据工厂中的复制活动在复制期间保留元数据和 ACL。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: b5bb9cc624f298ae4997b46a5cc7b4cf2a0d21ed
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 64608834c5d5b22383242f6739747d955e2feb3a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123250740"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767368"
 ---
-#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的复制活动保留元数据和 ACL
+#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 中的复制活动保留元数据和 ACL
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-当使用 Azure 数据工厂复制活动将数据从源复制到接收器时，在以下情况下，还可以保留元数据和 ACL。
+使用 Azure 数据工厂或 Synapse Analytics 管道的复制活动将数据从源复制到接收器时，在以下情况下，还可以保留元数据和 ACL。
 
 ## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> 保留数据湖迁移的元数据
 
@@ -31,11 +31,11 @@ ms.locfileid: "123250740"
 - **所有客户指定的元数据** 
 - 以及以下五个数据存储内置系统属性： **、** （Amazon S3 除外）、`contentType`、`contentLanguage`、`contentEncoding``contentDisposition``cacheControl`。
 
-**处理元数据的差异：** Amazon S3 和 Azure 存储允许在客户指定的元数据键中使用不同的字符集。 选择使用复制活动保留元数据时，ADF 会自动将无效字符替换为“_”。
+**处理元数据的差异：** Amazon S3 和 Azure 存储允许在客户指定的元数据键中使用不同的字符集。 选择使用复制活动保留元数据时，服务会自动将无效字符替换为“_”。
 
 按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/Azure Blob 存储/Azure 文件存储复制到二进制格式的 Azure Data Lake Storage Gen2/Azure Blob 存储/Azure 文件存储时，可以在用于活动创作的“复制活动” > “设置”选项卡或复制数据工具中的“设置”页上找到“保留”选项   。
 
-![复制活动保留元数据](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
+:::image type="content" source="./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png" alt-text="复制活动保留元数据":::
 
 下面是复制活动 JSON 配置的示例（请参阅 `preserve`）： 
 
@@ -88,17 +88,17 @@ ms.locfileid: "123250740"
 - **所有者**：复制并保留文件和目录的拥有用户。 需要对接收器 Data Lake Storage Gen2 的超级用户访问权限。
 - **组**：复制并保留文件和目录的拥有组。 需要对接收器 Data Lake Storage Gen2 或拥有用户（如果拥有用户也是目标组的成员）的超级用户访问权限。
 
-如果指定从文件夹复制，则 `recursive` 设为 true 时，数据工厂将复制该指定文件夹及其下方的文件和目录中的 ACL。 如果指定从单一文件复制，则复制该文件中的 ACL。
+如果指定从文件夹复制，则当 `recursive` 设置为 true 时，服务会复制该指定文件夹及其下方的文件和目录的 ACL。 如果指定从单一文件复制，则复制该文件中的 ACL。
 
 >[!NOTE]
->使用 ADF 将 ACL 从 Data Lake Storage Gen1/Gen2 保留到 Gen2 时，将覆盖接收器 Gen2 的相应文件夹/文件中的现有 ACL。
+>使用复制活动将 ACL 从 Data Lake Storage Gen1/Gen2 保留到 Gen2 时，将覆盖接收器 Gen2 的相应文件夹/文件的现有 ACL。
 
 >[!IMPORTANT]
->选择保留 ACL 时，请确保为数据工厂授予足够高的权限，以针对接收器 Data Lake Storage Gen2 帐户进行操作。 例如，使用帐户密钥身份验证，或将“存储 Blob 数据所有者”角色分配给服务主体或托管标识。
+>选择保留 ACL 时，请确保为服务授予足够高的权限，以针对接收器 Data Lake Storage Gen2 帐户进行操作。 例如，使用帐户密钥身份验证，或将“存储 Blob 数据所有者”角色分配给服务主体或托管标识。
 
 将源配置为具有二进制格式或二进制复制选项的 Data Lake Storage Gen1/Gen2，并将接收器配置为具有二进制格式或二进制复制选项的 Data Lake Storage Gen2 时，可在“复制数据工具”的“设置”页面上或在用于活动创作的“复制活动” > “设置”选项卡中找到“保留”选项   。
 
-![将 ACL 从 Data Lake Storage Gen1/Gen2 保留到 Gen2](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+:::image type="content" source="./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png" alt-text="将 ACL 从 Data Lake Storage Gen1/Gen2 保留到 Gen2":::
 
 下面是复制活动 JSON 配置的示例（请参阅 `preserve`）： 
 

@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中向实验室发布通告 | Microsoft Docs
+title: 向实验室发布公告
 description: 了解如何在现有实验室中发布自定义公告，以便向用户通知 Azure 开发测试实验室中的实验室最近的更改或新增内容。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d9db6aa78a358307c8132956c166d0c722a237a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88270761"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665295"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室发布通告
 
@@ -71,7 +71,7 @@ ms.locfileid: "88270761"
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 可以将公告指定为 Azure 资源管理器模板的一部分，如以下示例所示：
 
 ```json

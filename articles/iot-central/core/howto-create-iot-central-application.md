@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: c9f9dec23209d8bc401313a7213239dff52a1023
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 70567f3cb1a80c7d23d19bf7de43c80723af0dfe
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586196"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093984"
 ---
 # <a name="create-an-iot-central-application"></a>创建 IoT Central 应用程序
 
@@ -68,7 +68,7 @@ ms.locfileid: "113586196"
 
 - 要使用的 Azure 订阅。
 - 包含要使用的订阅的目录。
-- 托管应用程序的位置。 IoT Central 使用 Azure 地理位置作为位置：美国、欧洲、亚太、澳大利亚、英国或日本。
+- 托管应用程序的位置。 IoT Central 使用 Azure 区域作为位置：澳大利亚东部、美国中部、美国东部、美国东部 2、日本东部、北欧、东南亚、英国南部、西欧、美国西部。
 
 ## <a name="azure-iot-central-site"></a>Azure IoT Central 站点
 

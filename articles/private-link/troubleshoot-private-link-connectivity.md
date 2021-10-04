@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: f44962f1dfdfe3a55272aa19d9399542cb28d736
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9aa0ac4334d50a7b3a55ff992fb3e5a984786384
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736378"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155014"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>排查 Azure 专用链接的连接问题
 
@@ -107,7 +107,17 @@ ms.locfileid: "121736378"
 
        ![验证专用链接服务指标](./media/private-link-tsg/pls-metrics.png)
 
-1. 如果问题仍未解决，并且连接问题仍然存在，请联系 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)团队。
+1. 使用 [Azure Monitor - 网络](../azure-monitor/insights/network-insights-overview.md#dependency-view)获取见解并通过以下方式查看资源的依赖关系视图：
+     - Azure Monitor
+     - 网络
+     - 专用链接服务
+     - “依赖项”视图 
+
+![AzureMonitor](https://user-images.githubusercontent.com/20302679/135001735-56a9484b-f9b4-484b-a503-cfb9d20b264a.png)
+
+![DependencyView](https://user-images.githubusercontent.com/20302679/135001741-8e848c52-d4bb-4646-b0d3-a85614ebe16c.png)
+
+4. 如果问题仍未解决，并且连接问题仍然存在，请联系 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)团队。
 
 ## <a name="next-steps"></a>后续步骤
 

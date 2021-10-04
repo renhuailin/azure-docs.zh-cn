@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cc06556c72a992efd9f0ebd48a1a2c8585b172c7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 884f70367c7e7edaf546b65b4e0e2825dacf0a07
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664959"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577928"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 Blob 的匿名公共读取访问
 
@@ -55,7 +55,7 @@ ms.locfileid: "110664959"
 1. 在“筛选器”对话框中，指定以下值：
     1. 将属性值设置为“身份验证”。
     1. 将“运算符”字段设置为等号 (=)。
-    1. 将“值”字段设置为“匿名”。
+    1. 通过从下拉列表中选择或输入将“值”字段设置为“匿名”。
 1. 在右上角，选择要查看指标的时间间隔。 还可以通过指定从 1 分钟到 1 个月的时间间隔，来指示请求聚合粒度。
 
 配置指标后，匿名请求将开始显示在图形上。 下图显示了在过去 30 分钟内聚合的匿名请求。

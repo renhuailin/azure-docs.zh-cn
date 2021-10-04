@@ -2,14 +2,14 @@
 title: 专用终结点概述
 description: 了解如何使用 Azure 备份的专用终结点以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 959929c92ecea5534930df5c23648062256c6ca4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 3070cb72b6e5949b94972f9dad54d4e57e5bf591
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446588"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154957"
 ---
 # <a name="overview-and-concepts-of-private-endpoints-for-azure-backup"></a>概述和概念：Azure 备份的专用终结点
 
@@ -28,7 +28,7 @@ ms.locfileid: "122446588"
 - 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要[禁用网络策略](../private-link/disable-private-endpoint-network-policy.md)。
 - 如果在 2020 年 5 月 1 日之前注册了恢复服务资源提供程序，则需在订阅中重新注册它。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的“资源提供程序”，然后选择“Microsoft.RecoveryServices”，并选择“重新注册”  。
 - 如果为保管库启用了专用终结点，则不支持对 SQL 和 SAP HANA 数据库备份进行[跨区域还原](backup-create-rs-vault.md#set-cross-region-restore)。
-- 将已使用专用终结点的恢复服务保管库移到新租户时，需要更新恢复服务保管库，以重新创建并重新配置保管库的托管标识，并根据需要创建新的专用终结点（应在新租户）中。 如果不执行此操作，备份和还原操作将会失败。 此外，需要重新配置在订阅中设置的任何基于角色的访问控制 (RBAC) 权限。
+- 将已使用专用终结点的恢复服务保管库移到新租户时，需要更新恢复服务保管库，以重新创建并重新配置保管库的托管标识，并根据需要创建新的专用终结点（应在新租户）中。 如果不执行此操作，备份和还原操作将会失败。 此外，需要重新配置在订阅中设置的任何 Azure 基于角色的访问控制 (Azure RBAC) 权限。
 
 ## <a name="recommended-and-supported-scenarios"></a>推荐和支持的方案
 
@@ -65,8 +65,8 @@ ms.locfileid: "122446588"
 >在上面的文本中，`<geo>` 表示区域代码（例如，eus 表示美国东部，ne 表示欧洲北部）。 参考以下区域代码列表：
 >- [所有公有云](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
 >- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
->- [德国](/azure/germany/germany-developer-guide#endpoint-mapping)
->- [US Gov](/azure/azure-government/documentation-government-developer-guide)
+>- [德国](../germany/germany-developer-guide.md#endpoint-mapping)
+>- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 这两种方案中命中的存储 FQDN 是相同的。 但是，对于具有专用终结点设置的恢复服务保管库，这些保管库的名称解析应返回专用 IP 地址。 这可以通过使用专用 DNS 区域，在主机文件中为存储帐户创建 DNS 条目，或者使用条件转发器通过相应的 DNS 条目自定义 DNS 来实现。 存储帐户的专用 IP 映射会在门户中存储帐户的专用终结点边栏选项卡中列出。
 
@@ -91,14 +91,14 @@ ms.locfileid: "122446588"
 >在上面的文本中，`<geo>` 表示区域代码（例如，eus 表示美国东部，ne 表示欧洲北部）。 参考以下区域代码列表：
 >- [所有公有云](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
 >- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
->- [德国](/azure/germany/germany-developer-guide#endpoint-mapping)
->- [US Gov](/azure/azure-government/documentation-government-developer-guide)
+>- [德国](../germany/germany-developer-guide.md#endpoint-mapping)
+>- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 这些修改后的 URL 对于每个保管库都是特定的。  请参阅 URL 名称中的 `<vault_id>`。 只有注册到此保管库的扩展和代理才能通过这些终结点与 Azure 备份进行通信。 这会限制对此 VNet 中的客户端的访问。 扩展/代理将通过 `*.privatelink.<geo>.backup.windowsazure.com`（需要解析 NIC 中相应的专用 IP）进行通信。
 
 使用“与专用 DNS 区域集成”选项通过 Azure 门户创建恢复服务保管库的专用终结点后，每当分配资源时，都会自动创建 Azure 备份服务的专用 IP 地址所需的 DNS 条目 (`*.privatelink.<geo>backup.windowsazure.com`)。 否则，需要在自定义 DNS 或主机文件中手动为这些 FQDN 创建 DNS 条目。
 
-有关在 VM 发现通信通道（blob/队列）后手动管理 DNS 记录的信息，请参阅[首次注册后 blob 和队列的 DNS 记录（仅适用于自定义 DNS 服务器/主机文件）](/azure/backup/private-endpoints#dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration)。 有关在首次对备份存储帐户 blob 进行备份后手动管理 DNS 记录的信息，请参阅[首次备份后 blob 的 DNS 记录（仅适用于自定义 DNS 服务器/主机文件）](/azure/backup/private-endpoints#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup)。
+有关在 VM 发现通信通道（blob/队列）后手动管理 DNS 记录的信息，请参阅[首次注册后 blob 和队列的 DNS 记录（仅适用于自定义 DNS 服务器/主机文件）](./private-endpoints.md#dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration)。 有关在首次对备份存储帐户 blob 进行备份后手动管理 DNS 记录的信息，请参阅[首次备份后 blob 的 DNS 记录（仅适用于自定义 DNS 服务器/主机文件）](./private-endpoints.md#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup)。
 
 >在为恢复服务保管库创建的专用终结点的专用终结点边栏选项卡中，可以找到 FQDN 的专用 IP 地址。
 
@@ -120,4 +120,4 @@ ms.locfileid: "122446588"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建和使用专用终结点](private-endpoints.md)
+- [创建和使用专用终结点](private-endpoints.md)。

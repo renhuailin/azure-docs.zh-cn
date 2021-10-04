@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c4f2da1bd955f9a0b47519c913f656aa6e8bdce4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c11604ae3fe486be6d471b0218b44eeab26da5c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179651"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588535"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -349,7 +349,7 @@ AutoUpgradeMinorVersion     : True
 
 1. 若要检查 Windows 来宾代理日志，请在 C:\WindowsAzure\Logs\WaAppAgent.log  中查看预配扩展时的活动
 
-2. 查看 C:\WindowsAzure\Logs\Plugins\\<extensionName> 中的实际扩展日志，以了解更多详细信息
+2. 在 `C:\WindowsAzure\Logs\Plugins\<extensionName>` 中查看实际扩展日志，以便获取详细信息
 
 3. 查看特定扩展文档中有关错误代码和已知问题等的故障排除部分。
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5269be27a0e31e9626cd26960092356bce0d8ff4
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: fb80374976752961b5c199fc06a8acba572c4d89
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635027"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129054464"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -221,9 +221,11 @@ ms.locfileid: "122635027"
 
 ## <a name="live-outputs"></a>实时输出
 
-将流传输到实时事件后，可以通过创建[资产](/rest/api/media/assets)、[实时输出](/rest/api/media/liveoutputs)和[流定位符](/rest/api/media/streaminglocators)来启动流事件。 实时输出会存档流，并使观看者可通过[流式处理终结点](/rest/api/media/streamingendpoints)使用该流。  
+将流传输到实时事件后，可以通过创建[资产](/rest/api/media/assets)、[实时输出](/rest/api/media/liveoutputs)和[流定位符](/rest/api/media/streaminglocators)来启动流事件。 实时输出会将流存档，并使观看者可通过[流式处理终结点](/rest/api/media/streamingendpoints)使用该流。 
+
+AMS 的默认分配是每个媒体服务帐户 5 个实时事件。 若要提高此限制，请在 Azure 门户中提交支持票证。 AMS 能够根据流式处理情况和区域数据中心的可用性来提高实时事件限制。
 
 有关实时输出的详细信息，请参阅[使用云 DVR](live-event-cloud-dvr-time-how-to.md)。
 ## <a name="live-event-output-questions"></a>实时事件输出问题
 
-查看[常见问题解答中的实时事件问题](frequently-asked-questions.yml)。
+查看[常见问题解答中的实时事件问题](frequently-asked-questions.yml)。 有关实时事件配额的信息，请参阅[配额和限制](limits-quotas-constraints-reference.md)

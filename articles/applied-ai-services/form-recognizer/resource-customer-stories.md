@@ -2,7 +2,6 @@
 title: 客户聚焦
 titleSuffix: Azure Applied AI Services
 description: 使用表单识别器的客户案例看点。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: bca9462ceb9812618247f03e111b74877ac841e2
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: ba1dd0b77b2f4a1ce74ec24e0770300ba0ffb9b1
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187750"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154900"
 ---
 # <a name="customer-spotlight"></a>客户聚焦
 
@@ -35,6 +34,7 @@ ms.locfileid: "123187750"
 |<font size=5>GEP</font>| [GEP](https://www.gep.com/) 为使用表单识别器的客户开发了发票处理解决方案。 “在 GEP，我们看到 AI 和自动化对采购和供应链产生了深远的影响。 通过将我们的 AI 解决方案与 Microsoft 表单识别器相结合，我们每天为客户自动化处理 4,000 张发票，从而为客户节省数万小时的人工工作量，同时提升全局的准确度、控制权和合规性，”GEP 人工智能副总裁 Sarateudu Sethi 如是表示。 | [博客](https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428)|
 |<font size=5>HCA Healthcare</font>| [HCA Healthcare](https://hcahealthcare.com/) 是美国的领先医疗保健提供商之一，在全美拥有 180 多家医院和 2,000 多个医疗保健单位，每年服务的患者大约为 3500 万名。 现在，他们正在与 Microsoft 合作，并利用 Azure 表单识别器简化和改进患者的登记体验，同时减少向护理中心系统输入重复数据所耗费的管理时间。 | [客户案例](https://customers.microsoft.com/en-us/story/1404891793134114534-hca-healthcare-healthcare-provider-azure)|
 |<font size=5>Instabase</font>| [Instabase](https://instabase.com/) 是一个水平应用程序平台，它提供了同类最佳的机器学习过程，帮助检索、组织、识别和理解大量复杂而散乱的数据，并将其作为组织有序的信息引入业务工作流。 该平台提供了一个可插接式应用程序的存储库，用于协调和利用这些信息，还提供根据需要快速扩展和增强这些应用程序的方法。 Instabase 应用程序已完全容器化，可进行与基础结构无关的广泛部署。 | [客户案例](https://customers.microsoft.com/en-gb/story/1376278902865681018-instabase-partner-professional-services-azure)|
+|<font size=5>Northern Trust</font>| [Northern Trust](https://www.northerntrust.com/) 是一家向公司、机构、富裕家庭和个人提供财富管理、资产服务、资产管理和银行业务的领先提供商。 Northern Trust 启动了人工智能驱动的解决方案，作为对备用资产服务进行数字化的计划的一部分。该解决方案可以从备用资产文档中提取非结构化投资数据并使其可供资产所有者客户端访问和操作。 此专有解决方案是与 Microsoft Azure 应用 AI 服务（可缩短构建 AI 解决方案的企业实现价值的时间）和业务与咨询公司 Neudesic 协作构建的，可将重要信息（例如召集资本通知书、现金和股票分配通知书，以及资本帐户对账单）从各种非结构化格式转换成可供投资团队使用的数字化可操作见解。 | [客户案例](https://www.businesswire.com/news/home/20210914005449/en/Northern-Trust-Automates-Data-Extraction-from-Alternative-Asset-Documentation)|
 |<font size=5>WEX</font>| [WEX](https://www.wexinc.com/) 开发了一款工具，可使用表单识别器处理“福利说明”文档。 产品管理和策略高级副总裁 Matt Dallahan 表示：“这项技术的确令人赞叹。 最初，我担心这种解决方案不可行，但我很快意识到表单识别器几乎可以准确读取任何文档。” | [博客](https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428)|
 |<font size=5>Wilson Allen</font> | [Wilson Allen](https://wilsonallen.com/) 充分利用 AI 容器对 Microsoft Azure 认知服务的支持，并创建了一种功能强大的 AI 解决方案，可帮助世界各地的公司前所未有地深入洞察之前孤立的非结构化数据。 现在，其客户可以使用此数据来支持业务发展并建立客户关系。 | [客户案例](https://customers.microsoft.com/story/814361-wilson-allen-partner-professional-services-azure)|
 |<font size=5>Zelros</font>| [Zelros](http://www.zelros.com/) 为保险行业提供 AI 支持的软件。 保险公司使用 Zelros 平台来填写表格并无缝管理客户注册和理赔申请。 该公司将其技术与 Microsoft Azure 认知服务中的表单识别器相结合，自动从文档中提取键值对和文本。 保险公司可以利用 Zelros 平台更快地处理书面工作，确保高准确度，以前手动提取数据需要花费数千小时，现在可利用此时间更好地为客户提供服务。 | [客户案例](https://customers.microsoft.com/story/816397-zelros-insurance-azure)|

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/24/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 930341b60f785c2c618be4ee235225519a08aaa6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f1797ce848793e8f0d129039f00bb491c09e8308
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530055"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153912"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -34,7 +34,7 @@ ms.locfileid: "107530055"
 * 使用[“授权代码”授权](#authorization-grant)，则最终用户先以资源所有者的身份进行身份验证，将授权委托给客户端来访问资源。 然后，客户端在获取访问令牌时进行身份验证。 令牌有时可以更具体地称为“用户+应用”令牌，因为它同时代表授权客户端应用程序的用户，以及应用程序。
 * 使用[“客户端凭据”授权](#authorization-grant)，则客户端提供唯一的身份验证，在没有资源所有者身份验证/授权的情况下运行，因此该令牌有时可以称为“仅限应用”令牌。
 
-有关更多详细信息，请查看 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
+有关更多详细信息，请参阅[访问令牌参考][AAD-Tokens-Claims]。
 
 ## <a name="application-id-client-id"></a>应用程序 ID（客户端 ID）
 
@@ -113,7 +113,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 [授权服务器](#authorization-server)的[授权终结点](#authorization-endpoint)提供的 [OpenID Connect][OpenIDConnect-ID-Token] [安全令牌](#security-token)，其中包含与最终用户[资源所有者](#resource-owner)的身份验证相关的[声明](#claim)。 与访问令牌一样，ID 令牌也以数字签名的 [JSON Web 令牌 (JWT)][JWT] 形式来表示。 不过，与访问令牌不同的是，ID 令牌的声明并不用于与资源访问相关的用途（具体地说，是访问控制）。
 
-有关更多详细信息，请查看 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
+有关更多详细信息，请参阅 [ID 令牌参考](id-tokens.md)。
 
 ## <a name="microsoft-identity-platform"></a>Microsoft 标识平台
 
@@ -145,6 +145,8 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 由[授权服务器](#authorization-server)颁发的一种[安全令牌](#security-token)，可供[客户端应用程序](#client-application)使用，以便在访问令牌到期之前请求新的[访问令牌](#access-token)。 通常采用 [JSON Web 令牌 (JWT)][JWT] 的形式。
 
 与访问令牌不同，刷新令牌可以撤销。 如果客户端应用程序尝试使用已撤销的刷新令牌请求新的访问令牌，授权服务器会拒绝该请求，客户端应用程序不再具有代表[资源所有者](#resource-owner)访问[资源服务器](#resource-server)的权限。
+
+有关更多详细信息，请参阅[刷新令牌](refresh-tokens.md)。
 
 ## <a name="resource-owner"></a>资源所有者
 

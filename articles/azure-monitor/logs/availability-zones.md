@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: c01e83fbbf117c5491e9e12ac24aa0d5d2fa8b67
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 6e10ace3ca0932cf5803719429a68b89a4118dfa
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446613"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059314"
 ---
 # <a name="availability-zones-in-azure-monitor"></a>Azure Monitor 中的可用性区域
 
@@ -49,9 +49,9 @@ Azure Monitor 支持需要 Log Analytics 工作区的可用性区域，同时此
 针对工作区的任何查询都会根据需要查询这两个群集，以提供单个统一的结果集。 这意味着，所有依赖于工作区（例如工作簿和仪表板）的 Azure Monitor 功能都将根据这两个群集中的数据持续获取完整且统一的结果集。
 
 ## <a name="billing"></a>计费
-[使用专用群集需要支付相应的费用](logs-dedicated-clusters.md#create-a-dedicated-cluster)。 专用群集每日所需的容量预留为 1000 GB， 且此容量预留将于 2021 年 8 月 4 日减少到 500 GB。 
+[使用专用群集需要支付相应的费用](logs-dedicated-clusters.md#create-a-dedicated-cluster)。 专用群集每日所需的容量预留为 500 GB， 
 
-如果你已有一个专用群集，并选择保留其以访问其中数据，则你需要支付这两个群集的费用。 从 2021 年 8 月 4 日起，专用群集每日所需的最小容量预留将减少到 500GB。因此，建议将该最小值应用到旧群集，以减少支出。
+如果你已有一个专用群集，并选择保留其以访问其中数据，则你需要支付这两个群集的费用。 从 2021 年 8 月 4 日起，专用群集每日所需的最小容量预留从 1000GB 减少到 500GB。因此，建议将该最小值应用到旧群集，以减少费用。
 
 新群集在迁移的第一天并不计费，以避免在配置期间重复计费。 只有在迁移完成前引入的数据仍会在迁移日期计费。 
 

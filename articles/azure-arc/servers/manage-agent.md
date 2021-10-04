@@ -3,12 +3,12 @@ title: 管理已启用 Azure Arc 的服务器代理
 description: 本文介绍在已启用 Azure Arc 的服务器 Connected Machine 代理的生命周期内通常会执行的不同管理任务。
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5e80d240c9b5ce8795de8baee3214d256d180e0f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d8a8613a6fc97fd2510779715d392b9534598950
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769847"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807458"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -16,11 +16,11 @@ ms.locfileid: "122769847"
 
 ## <a name="before-uninstalling-agent"></a>卸载代理之前
 
-在从已启用 Arc 的服务器中删除 Connected Machine 代理之前，请考虑以下内容以避免意外问题或在 Azure 帐单中增添费用：
+在从已启用 Azure Arc 的服务器中删除 Connected Machine 代理之前，请考虑以下内容以避免意外问题或在 Azure 帐单中增添费用：
 
-* 如果已将 Azure VM 扩展部署到已启用的服务器，并且删除了 Connected Machine 代理或该资源组中表示已启用 Arc 的服务器的资源，则这些扩展将继续运行并执行其常规操作。
+* 如果已将 Azure VM 扩展部署到已启用的服务器，并且删除了 Connected Machine 代理或删除了资源组中表示已启用 Azure Arc 的服务器的资源，则这些扩展将继续运行并执行其常规操作。
 
-* 如果在资源组中删除了表示已启用 Arc 的服务器的资源，但未卸载 VM 扩展，则在重新注册计算机时，将无法管理已安装的 VM 扩展。
+* 如果在资源组中删除了表示已启用 Azure Arc 的服务器的资源，但未卸载 VM 扩展，则在重新注册计算机时，将无法管理已安装的 VM 扩展。
 
 对于不再希望通过已启用 Azure Arc 的服务器进行管理的服务器或计算机，需要执行以下步骤来成功停止对它们的管理：
 
@@ -30,7 +30,7 @@ ms.locfileid: "122769847"
 
     * 在计算机或者服务器上运行 `azcmagent disconnect` 命令。
 
-    * 在 Azure 门户中已启用 Arc 的所选已注册服务器上，选择顶部栏中的“删除”。
+    * 在 Azure 门户中已启用 Azure Arc 的所选已注册服务器上，选择顶部栏中的“删除”。
 
     * 使用 [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) 或 [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource)。 对于 `ResourceType` 参数，请使用 `Microsoft.HybridCompute/machines`。
 
@@ -40,7 +40,7 @@ ms.locfileid: "122769847"
 
 如果更改连接到已启用 Azure Arc 的服务器的 Linux 或 Windows 计算机的名称，则不会自动识别新名称，因为 Azure 中的资源名称是不可变的。 与其他 Azure 资源一样，必须删除并重新创建资源，才能使用新名称。
 
-对于已启用 Arc 的服务器，在重命名计算机之前，需要先删除 VM 扩展，然后才能继续。
+对于已启用 Azure Arc 的服务器，在重命名计算机之前，需要先删除 VM 扩展，然后才能继续。
 
 > [!NOTE]
 > 尽管在完成此过程后，已安装扩展将继续运行并执行其常规操作，但你无法管理这些扩展。 如果你尝试在计算机上重新部署扩展，可能会遇到不可预知的行为。
@@ -52,17 +52,17 @@ ms.locfileid: "122769847"
 
 2. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除通过 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extensions)安装的 VM 扩展。
 
-3. 结合使用 azcmagent 工具与 [Disconnect](manage-agent.md#disconnect) 参数从 Azure Arc 中断开计算机的连接，然后从 Azure 中删除计算机资源。 从已启用 Arc 的服务器断开计算机的连接不会删除 Connected Machine 代理，并且在此过程中不需要删除该代理。 可以在以交互方式登录时手动运行 azcmagent，或者使用用于加入多个代理的同一服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)来自动运行此内容。 如果你未使用服务主体将计算机注册到已启用 Azure Arc 的服务器，请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)创建服务主体。
+3. 结合使用 azcmagent 工具与 [Disconnect](manage-agent.md#disconnect) 参数从 Azure Arc 中断开计算机的连接，然后从 Azure 中删除计算机资源。 从已启用 Azure Arc 的服务器断开计算机的连接不会删除 Connected Machine 代理，并且你在此过程中不需要删除该代理。 可以在以交互方式登录时手动运行 azcmagent，或者使用用于加入多个代理的同一服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)来自动运行此内容。 如果你未使用服务主体将计算机注册到已启用 Azure Arc 的服务器，请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)创建服务主体。
 
 4. 重命名计算机的计算机名。
 
-5. 将 Connected Machine 代理重新注册到已启用 Arc 的服务器。 使用 [Connect](manage-agent.md#connect) 参数运行 `azcmagent` 工具即可完成此步骤。
+5. 将 Connected Machine 代理重新注册到已启用 Azure Arc 的服务器。 使用 [Connect](manage-agent.md#connect) 参数运行 `azcmagent` 工具即可完成此步骤。
 
-6. 重新部署最初部署到了已启用 Arc 的服务器中的计算机的 VM 扩展。 如果使用 Azure Policy 定义部署了用于 VM 的 Azure Monitor（见解）代理或 Log Analytics 代理，将在下一个[评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署这些代理。
+6. 重新部署最初部署到已启用 Azure Arc 的服务器中的计算机的 VM 扩展。 如果使用 Azure Policy 定义部署了用于 VM 的 Azure Monitor（见解）代理或 Log Analytics 代理，将在下一个[评估周期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)后重新部署这些代理。
 
 ## <a name="upgrading-agent"></a>升级代理
 
-Azure Connected Machine 代理会定期更新以处理 bug 修补程序、稳定性增强功能和新功能。 [Azure 顾问](../../advisor/advisor-overview.md)识别未使用最新版本的计算机代理的资源，并建议升级到最新版本。 当你选择已启用 Arc 的服务器，或通过 Azure 门户访问顾问时，它将通过在“概述”页上提供横幅来通知你。
+Azure Connected Machine 代理会定期更新以处理 bug 修补程序、稳定性增强功能和新功能。 [Azure 顾问](../../advisor/advisor-overview.md)识别未使用最新版本的计算机代理的资源，并建议升级到最新版本。 当你选择已启用 Azure Arc 的服务器或通过 Azure 门户访问顾问时，它会通过在“概述”页上提供横幅来通知你。
 
 适用于 Windows 和 Linux 的 Azure Connected Machine 代理可以手动或自动升级到最新版本，具体取决于你的要求。
 
@@ -218,7 +218,7 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 此参数指定 Azure 资源管理器中的资源，该资源表示已在 Azure 中删除计算机。 它不会从计算机中删除代理，而是单独卸载代理。 断开计算机连接后，如果想要重新将其注册到已启用 Azure Arc 的服务器，请使用 `azcmagent connect`，以便在 Azure 中为其创建新资源。
 
 > [!NOTE]
-> 如果已将一个或多个 Azure VM 扩展部署到已启用 Arc 的服务器，并且在 Azure 中删除了其注册，则仍将安装这些扩展。 务必要了解它们正在主动执行其功能，具体取决于所安装的扩展。 如果计算机将要停用或不再由已启用 Arc 的服务器进行管理，则它们应首先删除这些扩展，再从 Azure 中删除其注册。
+> 如果已将一个或多个 Azure VM 扩展部署到已启用 Azure Arc 的服务器，并且在 Azure 中删除了其注册，则仍会安装这些扩展。 务必要了解它们正在主动执行其功能，具体取决于所安装的扩展。 如果计算机将要停用或不再由已启用 Azure Arc 的服务器进行管理，则应先删除这些扩展，然后再从 Azure 中删除其注册。
 
 若要使用服务主体断开连接，请运行以下命令：
 
@@ -234,10 +234,10 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 
 ## <a name="remove-the-agent"></a>删除代理
 
-执行以下方法之一，从计算机中卸载 Windows 或 Linux Connected Machine 代理。 删除代理不会在已启用 Arc 的服务器中注销计算机，也不会删除已安装的 Azure VM 扩展。 对于不再希望通过已启用 Azure Arc 的服务器进行管理的服务器或计算机，需要执行以下步骤来成功停止对它们的管理： 
+执行以下方法之一，从计算机中卸载 Windows 或 Linux Connected Machine 代理。 删除代理不会在已启用 Azure Arc 的服务器中注销计算机，也不会删除已安装的 Azure VM 扩展。 对于不再希望通过已启用 Azure Arc 的服务器进行管理的服务器或计算机，需要执行以下步骤来成功停止对它们的管理： 
 
 1. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或使用 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除从 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extensions)安装的不想保留在计算机上的 VM 扩展。
-1. 通过运行 `azcmagent disconnect` 取消注册计算机，以删除 Azure 中已启用 Arc 的服务器资源。 如果此命令失败，可以在 Azure 中手动删除该资源。 否则，如果该资源已在 Azure 中删除，你需要在服务器上运行 `azcmagent disconnect --force-local-only` 以删除本地配置。
+1. 通过运行 `azcmagent disconnect` 注销计算机，以删除 Azure 中已启用 Azure Arc 的服务器资源。 如果此命令失败，可以在 Azure 中手动删除该资源。 否则，如果该资源已在 Azure 中删除，你需要在服务器上运行 `azcmagent disconnect --force-local-only` 以删除本地配置。
 
 ### <a name="windows-agent"></a>Windows 代理
 
@@ -306,7 +306,7 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 
 ## <a name="unregister-machine"></a>注销计算机
 
-如果计划在 Azure 中停止使用支持服务来管理计算机，请执行以下步骤在已启用 Arc 的服务器中注销计算机。 可在从计算机中删除 Connected Machine 代理之前或之后执行这些步骤。
+如果计划在 Azure 中停止通过支持服务来管理计算机，请执行以下步骤在已启用 Azure Arc 的服务器中注销计算机。 可在从计算机中删除 Connected Machine 代理之前或之后执行这些步骤。
 
 1. 转到 [Azure 门户](https://aka.ms/hybridmachineportal)以打开已启用 Azure Arc 的服务器。
 
@@ -317,7 +317,7 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 若要将代理配置为在部署后通过代理服务器与服务进行通信或在部署后删除此配置，请使用以下任一方法来完成此任务。 在此情况下，代理使用 HTTP 协议进行出站通信。
 
 > [!NOTE]
-> 已启用 Arc 的服务器不支持使用 [Log Analytics 网关](../../azure-monitor/agents/gateway.md)作为 Connected Machine 代理的代理。
+> 已启用 Azure Arc 的服务器不支持使用 [Log Analytics 网关](../../azure-monitor/agents/gateway.md)作为 Connected Machine 代理的代理。
 >
 
 ### <a name="windows"></a>Windows

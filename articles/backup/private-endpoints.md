@@ -2,14 +2,14 @@
 title: 创建并使用 Azure 备份的专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程，其中使用专用终结点可帮助维护资源安全。
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 09/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df65aad1247f21c4deda3f7ee71f657a3b288168
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: cf26b87d0232b05cd7860981faa58a9b315f3979
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444234"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708256"
 ---
 # <a name="create-and-use-private-endpoints-for-azure-backup"></a>创建并使用 Azure 备份的专用终结点
 
@@ -126,6 +126,8 @@ ms.locfileid: "122444234"
 
 ![Azure 专用 DNS 区域中的 DNS 配置](./media/private-endpoints/dns-configuration.png)
 
+>[!Note]
+>如果使用代理服务器，则可以选择跳过代理服务器或通过代理服务器执行备份。 若要跳过代理服务器，请继续阅读以下各部分。 若要使用代理服务器执行备份，请参阅[恢复服务保管库的代理服务器设置详细信息](#set-up-proxy-server-for-recovery-services-vault-with-private-endpoint)。
 #### <a name="validate-virtual-network-links-in-private-dns-zones"></a>验证专用 DNS 区域中的虚拟网络链接
 
 对于上面列出的 **每个专用 DNS 区域**（备份、Blob 和队列），请执行以下操作：
@@ -158,6 +160,7 @@ ms.locfileid: "122444234"
     > - [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
     > - [德国](../germany/germany-developer-guide.md#endpoint-mapping)
     > - [US Gov](../azure-government/documentation-government-developer-guide.md)
+    > - [地理代码列表 - 示例 XML](scripts/geo-code-list.md)
 
 1. 接下来，需要添加所需的 DNS 记录。 若要查看需要添加到备份 DNS 区域的记录，请导航到前面创建的专用终结点，然后转到左侧导航栏下的“DNS 配置”选项。
 
@@ -522,7 +525,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 若要为 Azure VM 或本地计算机配置代理服务器，请执行以下步骤：
 
-1. 在异常中添加以下域并绕过代理服务器。
+1. 添加需要从代理服务器访问的以下域。
    
    | 服务 | 域名 | 端口 |
    | ------- | ------ | ---- |
@@ -532,7 +535,16 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 1. 允许访问代理服务器中的这些域，将专用 DNS 区域（`*.privatelink.<geo>.backup.windowsazure.com`、`*.privatelink.blob.core.windows.net`、`*.privatelink.queue.core.windows.net`）链接到创建代理服务器的 VNET，或者使用具有相应 DNS 条目的自定义 DNS 服务器。 <br><br> 运行代理服务器的 VNET 和创建专用终结点 NIC 的 VNET 应对等互连，这将允许代理服务器将请求重定向到专用 IP。 
 
-下图显示了使用代理服务器进行的设置，该代理服务器的 VNet 链接到具有所需 DNS 条目的专用 DNS 区域。 代理服务器也可有自己的自定义 DNS 服务器，并且上述域可以有条件地转发到 169.63.129.16。
+   >[!NOTE]
+   >在上面的文本中，`<geo>` 表示区域代码（例如，*eus* 和 *ne* 分别表示美国东部和北欧）。 参考以下区域代码列表：
+   >
+   >- [所有公有云](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
+   >- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+   >- [德国](../germany/germany-developer-guide.md#endpoint-mapping)
+   >- [US Gov](../azure-government/documentation-government-developer-guide.md)
+   >- [地理代码列表 - 示例 XML](scripts/geo-code-list.md)
+
+下图显示了在使用 Azure 专用 DNS 区域时通过代理服务器进行的设置，该代理服务器的 VNet 链接到具有所需 DNS 条目的专用 DNS 区域。 代理服务器也可有自己的自定义 DNS 服务器，并且上述域可以有条件地转发到 169.63.129.16。 如果使用自定义 DNS 服务器/主机文件进行 DNS 解析，请参阅有关如何[管理 DNS 条目](/azure/backup/private-endpoints#manage-dns-records)和[配置保护](/azure/backup/private-endpoints#configure-backup)的部分。
 
 :::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="显示使用代理服务器进行设置的关系图。" lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
 

@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 340121b40845369fe05e36a302556543078629eb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 688fd2391d12f74b46a16954706b3c9e0ee1fb8a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289129"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771803"
 ---
-# <a name="create-and-use-managed-identity-for-document-translation"></a>创建并使用托管标识进行文档翻译
+# <a name="create-and-use-managed-identity"></a>创建并使用托管标识
 
 > [!IMPORTANT]
 >
@@ -28,15 +28,6 @@ ms.locfileid: "114289129"
 
 托管标识支持专用和可公开访问的 Azure blob 存储帐户。  对于具有公共访问权限的存储帐户，你可以选择使用共享访问签名 (SAS) 授予有限访问权限。  本文将探讨如何使用系统分配的托管标识管理对 Azure blob 存储帐户中翻译文档的访问权限。
 
-> [!NOTE]
->
-> 对于使用公共 Internet 上可用的 Azure blob 存储帐户的所有操作，可以在有限时段内提供具有受限权限的共享访问签名 (SAS) URL，并在 POST 请求中传递它：
->
-> * 若要检索 SAS URL，请转到 Azure 门户的存储资源，并选择“存储资源管理器”选项卡。
-> * 导航到你的容器，右键单击，并选择“获取共享访问签名”。 请务必获取容器的 SAS，而不是存储帐户本身的。
-> * 确保选中“读取”、“写入”、“删除”和“列表”权限，然后单击“创建”    。
-> * 然后将“URL”部分中的值复制到临时位置。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
-
 ## <a name="prerequisites"></a>先决条件
 
 若要开始，需要：
@@ -45,11 +36,21 @@ ms.locfileid: "114289129"
 
 * 已分配到非全局区域的[单一服务翻译器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)（而非多服务认知服务）资源 。 如需详细步骤，请参阅[使用 Azure 门户创建认知服务资源](../../cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)。
 
-* 与翻译器资源位于同一区域的 [Azure blob 存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你需创建一个容器，用于存储和整理存储帐户中的 blob 数据。 如果帐户具有防火墙，则必须启用“[受信任的 Azure 服务例外](../../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions)”复选框。
+* 简要了解使用 Azure 门户的 [Azure 基于角色的访问控制 (Azure RBAC)](../../../role-based-access-control/role-assignments-portal.md)。
+
+* 与翻译器资源位于同一区域的 [Azure blob 存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你需创建一个容器，用于存储和整理存储帐户中的 blob 数据。 
+
+* 如果存储帐户位于防火墙后面，则必须启用以下配置： </br>
+
+  * 从存储帐户页上的左侧菜单中选择“安全性 + 网络”→“网络” 。
+    :::image type="content" source="../media/managed-identities/security-and-networking-node.png" alt-text="屏幕截图：“安全性 + 网络”选项卡。":::
+
+  * 在主窗口中，选择“允许从所选网络访问”。
+  :::image type="content" source="../media/managed-identities/firewalls-and-virtual-networks.png" alt-text="屏幕截图：选择了“所选网络”单选按钮。":::
+
+  * 在所选网络页上，导航到“例外”类别，确保已启用[允许受信任的服务列表中的 Azure 服务访问此存储帐户](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions)复选框。 
 
     :::image type="content" source="../media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="屏幕截图：“允许受信任的服务”复选框，门户视图":::
-
-* 简要了解使用 Azure 门户的 [Azure 基于角色的访问控制 (Azure RBAC)](../../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="managed-identity-assignments"></a>托管标识分配
 
@@ -81,11 +82,11 @@ ms.locfileid: "114289129"
 
     :::image type="content" source="../media/managed-identities/azure-role-assignments-page-portal.png" alt-text="屏幕截图：Azure 门户中的“Azure 角色分配”页。":::
 
->[!NOTE]
->
-> 如果由于禁用了“添加”>“添加角色分配”选项而无法在 Azure 门户中分配角色，或者收到“你无权在此范围内添加角色分配”权限错误信息，请检查你目前用于登录的用户是否分配有在存储资源的存储范围内具有 Microsoft.Authorization/roleAssignments/write 权限的角色（例如[所有者](../../../role-based-access-control/built-in-roles.md#owner)或[用户访问管理员](../../../role-based-access-control/built-in-roles.md#user-access-administrator)） 。
+    >[!NOTE]
+    >
+    > 如果由于禁用了“添加”>“添加角色分配”选项而无法在 Azure 门户中分配角色，或者收到“你无权在此范围内添加角色分配”权限错误，请检查你目前用于登录的用户是否分配有在存储资源的存储范围内具有 Microsoft.Authorization/roleAssignments/write 权限的角色（例如[所有者](../../../role-based-access-control/built-in-roles.md#owner)或[用户访问管理员](../../../role-based-access-control/built-in-roles.md#user-access-administrator)） 。
 
-7. 接下来，你需要向翻译器服务资源分配一个存储 Blob 数据参与者角色。 在“添加角色分配”弹出窗口中，按如下所示填写字段，然后选择“保存” ：
+1. 接下来，你需要向翻译器服务资源分配一个存储 Blob 数据参与者角色。 在“添加角色分配”弹出窗口中，按如下所示填写字段，然后选择“保存” ：
 
     | 字段 | 值|
     |------|--------|

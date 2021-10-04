@@ -7,16 +7,16 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 06/14/2021
 ms.author: banders
-ms.openlocfilehash: 402f2b9b8d4e7528e6578f9735e0360b4a049878
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: f2b98768f10ad2c85a1808907e309a99bf685131
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112114523"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646770"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>查看预留购买和退款交易
 
-有几种不同方法可以查看预留购买和退款交易。 可以使用 Azure 门户、Power BI 和 REST API。
+有几种不同方法可以查看预留购买和退款交易。 可以使用 Azure 门户、Power BI 和 REST API。 你可以在事务中将交换的预留视为退款和购买。
 
 ## <a name="view-reservation-purchases-in-the-azure-portal"></a>在 Azure 门户中查看预留购买情况
 

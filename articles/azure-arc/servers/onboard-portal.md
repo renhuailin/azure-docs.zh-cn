@@ -1,16 +1,16 @@
 ---
-title: 从 Azure 门户将混合计算机连接到 Azure
-description: 本文介绍如何安装代理，并通过 Azure 门户使用已启用 Azure Arc 的服务器将计算机连接到 Azure。
+title: 使用部署脚本将混合计算机连接到 Azure
+description: 本文介绍如何安装代理，并通过在 Azure 门户中创建的部署脚本使用已启用 Azure Arc 的服务器将计算机连接到 Azure。
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: bcccb9bbc4db14c2bc5553b1c88099f7b0d7f5d1
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 832e54538c6eb44e90dbd7ccb8ef804e0b0c45b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322304"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651971"
 ---
-# <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
+# <a name="connect-hybrid-machines-to-azure-using-a-deployment-script"></a>使用部署脚本将混合计算机连接到 Azure
 
 可以手动执行一系列步骤，为环境中的一台或少量 Windows 或 Linux 计算机启用已启用 Azure Arc 的服务器。 或者，可以运行我们提供的模板脚本来使用自动化方法。 此脚本可以自动下载和安装两个代理。
 

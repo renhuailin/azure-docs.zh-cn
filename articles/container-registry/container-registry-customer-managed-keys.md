@@ -2,14 +2,14 @@
 title: 使用客户管理的密钥加密注册表
 description: 了解 Azure 容器注册表的静态加密，以及如何使用 Azure Key Vault 中存储的客户管理的密钥来加密高级注册表
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/13/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 399b1940ff3d87fa862e234948742a35d814f558
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: a5fd3140474b1d6d7c36d686c14f2dc4e6a9ef73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634899"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561596"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -93,7 +93,7 @@ identityID=$(az identity show --resource-group <resource-group-name> --name <man
 identityPrincipalID=$(az identity show --resource-group <resource-group-name> --name <managed-identity-name> --query 'principalId' --output tsv)
 ```
 
-### <a name="create-a-key-vault"></a>创建 key vault
+### <a name="create-a-key-vault"></a>创建密钥保管库
 
 使用 [az keyvault create][az-keyvault-create] 创建一个密钥保管库来存储用于加密注册表的客户管理的密钥。 
 
@@ -564,6 +564,12 @@ az acr identity assign -n myRegistry \
 如果在创建加密的注册表后启用密钥保管库防火墙或虚拟网络，则可能会看到“HTTP 403”错误或其他进行映像导入或自动密钥轮换时会发生的错误。 若要解决此问题，请重新配置最初用于加密的托管标识和密钥。 请参阅[轮换密钥](#rotate-key)中的步骤。 
 
 如果此问题仍然存在，请联系 Azure 支持。
+
+### <a name="accidental-deletion-of-key-vault-or-key"></a>意外删除密钥保管库或密钥
+
+删除密钥保管库或密钥（用于通过客户管理的密钥对注册表进行加密）会使注册表的内容无法访问。 如果在密钥保管库中启用了[软删除](../key-vault/general/soft-delete-overview.md)（默认选项），则可以恢复已删除的保管库或密钥保管库对象，继续注册表操作。
+
+有关密钥保管库删除和恢复方案，请参阅[使用软删除和清除保护进行 Azure Key Vault 恢复管理](../key-vault/general/key-vault-recovery.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

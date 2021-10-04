@@ -8,17 +8,17 @@ ms.author: ishansri
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/23/2021
-ms.openlocfilehash: 9142f03f5f23e843018f7d9b702ef8da3d650758
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: c050023c9cb859f3100f7e2165ba3a069ff4e372
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112578677"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784540"
 ---
 # <a name="text-normalization-for-case-insensitive-filtering-faceting-and-sorting"></a>用于不区分大小写的筛选、分面和排序的文本规范化
 
 > [!IMPORTANT] 
-> 此功能根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此功能。
+> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，此功能以公共预览版提供。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此功能。
 
 从 Azure 认知搜索索引搜索和检索文档需要将查询与文档内容进行匹配。 可对内容进行分析，以生成标记用于匹配使用 `search` 参数时的情况，或者与 `$filter`、`facets` 和 `$orderby` 一样，直接用于严格关键字匹配。 这种孤注一掷的方法涵盖大多数情况，但在不经历整个分析链而需要进行大小写调整、删除重音、asciifolding 等简单的预处理时，就不符合标准。
 

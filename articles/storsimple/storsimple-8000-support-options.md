@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69b24272d2a04d19eb8fc419a6a2cbda744f24ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87070334"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588573"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple 解决方案支持
 
@@ -111,16 +111,9 @@ StorSimple 8000 系列存储阵列支持根据 StorSimple 阵列的购买方式�
 
 
 
-*<text>* 高级覆盖范围在所有位置都不可用。在购买 StorSimple Premium 支持之前，请在 SSSupOps\@microsoft.com 上联系 Microsoft 以获取地理覆盖范围。*
+\* 高级支持覆盖范围并不适用于所有位置。 请在购买 StorSimple 高级支持之前与 Microsoft（通过 SSSupOps\@microsoft.com）联系，了解地理覆盖范围。
 
-***必须在高级支持覆盖的区域部署 StorSimple 设备，才能符合免费升级到高级 StorSimple 支持的条件。*
+\** StorSimple 设备必须部署在客户获得高级支持的区域，才有资格免费升级到高级 StorSimple 支持。
 
 
 ASAP+ 客户可切换到包含标准支持的订阅模型。 使用 StorSimple 定价计算器进行订阅定价，如有任何疑问，请联系 SSSupOps@microsoft.com。 只能从 ASAP+ 单向切换到订阅。
-
-
-
-
-
-
- 

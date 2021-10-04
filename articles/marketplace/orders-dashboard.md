@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 08/06/2021
-ms.openlocfilehash: 1cc7e76833ac710ae4bdd511efa3033f8cf8fed7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 95d0ced24ee4f7426cac96ff2e550f2be88d8d02
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724298"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083348"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“订单”仪表板
 
@@ -36,17 +36,45 @@ ms.locfileid: "121724298"
 > [!NOTE]
 > 客户获取产品/服务与合作伙伴中心内进行报告之间的最大延迟为 48 小时。
 
+## <a name="access-the-orders-dashboard"></a>访问“订单”仪表板
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“见解”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“见解”磁贴。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 在左侧菜单中，选择“订单”。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航栏中，选择“商业市场” > “分析” > “订单”  。
+
+---
+
 ## <a name="elements-of-the-orders-dashboard"></a>“订单”仪表板的元素
 
 以下部分介绍如何使用“订单”仪表板以及如何读取数据。
 
-若要访问合作伙伴中心的“订单”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “订单”。
-
 ### <a name="month-range"></a>月份范围
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+可在每页右上角找到月份范围选择。 基于过去 6 个或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，以便自定义“订单”页面图形的输出。 默认月份范围（计算期间）为 6 个月。
+
+[ ![展示“订单”仪表板上的月份筛选器。](./media/orders-dashboard/order-workspace-filters.png) ](./media/orders-dashboard/order-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 可在每页右上角找到月份范围选择。 基于过去 6 个或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，以便自定义“订单”页面图形的输出。 默认月份范围（计算期间）为 6 个月。
 
 :::image type="content" source="./media/orders-dashboard/month-filters.png" alt-text="展示“订单”仪表板上的月份筛选器。":::
+
+---
 
 > [!NOTE]
 > 可视化小组件和导出报表中的所有指标遵循用户选择的计算周期。
@@ -114,7 +142,7 @@ SaaS 产品/服务可对每个计划使用两种定价模型中的一种：统�
 
 ***表 1：数据术语字典***
 
-| 用户界面中的<br>用户界面 | 属性名称 | 定义 | 编程式访问报表中的<br>列名称 |
+| 列名称<br>用户界面 | 属性名称 | 定义 | 编程式访问报表中的<br>列名称 |
 | ------------ | ------------- | ------------- | ------------- |
 | 市场订阅 ID | 市场订阅 ID | 与客户用来购买商业市场产品/服务的 Azure 订阅关联的唯一标识符。 对于基础结构产品/服务，这是客户的 Azure 订阅 GUID。 对于 SaaS 产品/服务，此项显示为零，因为 SaaS 购买不需要 Azure 订阅。 | 市场订阅 ID |
 | MonthStartDate | MonthStartDate | 月份开始日期表示购买月份。 格式为 yyyy-mm-dd。 | MonthStartDate |

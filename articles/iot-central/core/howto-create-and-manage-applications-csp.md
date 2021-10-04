@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 08/28/2021
 ms.topic: how-to
-ms.openlocfilehash: acbaa73fe51bd1de51084d0ec2752702ae96c66a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f0e0e947a91da29048144a94b9651e4584f26b41
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469952"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094099"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>从 CSP 门户创建和管理 Azure IoT Central 应用程序
 
@@ -76,7 +76,7 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 
 ## <a name="location"></a>位置
 
-“位置”是要创建应用程序的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 通常，应选择物理上离设备最近的位置以获得最佳性能。 目前，可以在澳大利亚、亚太、欧洲、美国、英国和日本创建 IoT Central 应用程序     。 选择一个位置后，之后便不能将应用程序移到其他位置。
+“位置”是要创建应用程序的位置。 通常，应选择物理上离设备最近的位置以获得最佳性能。 目前，可以在以下区域创建 IoT Central 应用程序：澳大利亚东部、美国中部、美国东部、美国东部 2、日本东部、北欧、东南亚、英国南部、西欧和美国西部 。 选择一个位置后，之后便不能将应用程序移到其他位置。
 
 ## <a name="application-template"></a>应用程序模板
 

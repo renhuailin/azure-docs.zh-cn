@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 20d5dc867455d46cd7f06f7c436c20430a09b1e5
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: b52f599dd3430f963b03b5fdba41f71abf11ee43
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486205"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707650"
 ---
 # <a name="visualize-data"></a>可视化数据
 Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大数据分析系统中进行见解提取所需的时间。 数据可视化效果是一项关键组件，能够深入了解你的数据。 它有助于人们更轻松地理解大数据和小型数据。 还可使人们更轻松地检测数据组中的模式、趋势和离群值。 
@@ -53,7 +53,7 @@ Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大
 你可以使用 <code>display(df, summary = true)</code> 来查看给定 Apache Spark 数据帧的统计信息摘要，包括列名、列类型、唯一值和每列的缺失值。 还可以选择特定列来查看其最小值、最大值、平均值和标准偏差。
     ![built-in-charts-summary](./media/apache-spark-development-using-notebooks/synapse-built-in-charts-summary.png#lightbox)
    
-### <a name="displayhtmldf-option"></a>displayHTML(df) 选项
+### <a name="displayhtml-option"></a>displayHTML() 选项
 Azure Synapse Analytics 笔记本使用 ```displayHTML``` 函数来支持 HTML 图形。
 
 下图是使用 [D3.js](https://d3js.org/) 创建可视化效果的示例。
@@ -254,14 +254,30 @@ h = plotly.offline.plot(fig, output_type='div')
 # display this html
 displayHTML(h)
 ```
+### <a name="pandas"></a>Pandas
+
+你可以将 Pandas 数据帧的 html 输出视为默认输出，笔记本会自动显示带样式的 html 内容。 
+
+   ![Panda 图示例。](./media/apache-spark-data-viz/support-panda.png#lightbox)
+
+```python
+import pandas as pd 
+import numpy as np 
+
+df = pd.DataFrame([[38.0, 2.0, 18.0, 22.0, 21, np.nan],[19, 439, 6, 452, 226,232]], 
+
+                  index=pd.Index(['Tumour (Positive)', 'Non-Tumour (Negative)'], name='Actual Label:'), 
+
+                  columns=pd.MultiIndex.from_product([['Decision Tree', 'Regression', 'Random'],['Tumour', 'Non-Tumour']], names=['Model:', 'Predicted:'])) 
+
+df 
+```
 
 
 ### <a name="additional-libraries"></a>其他库 
 除了这些库，Azure Synapse Analytics 运行时还包含下面的一组库，通常用于数据可视化效果：
-- [Matplotlib](https://matplotlib.org/)
-- [Bokeh](https://bokeh.org/)
+
 - [Seaborn](https://seaborn.pydata.org/) 
-- [Plotly](https://plotly.com/)
 
 有关可用库和版本的最新信息，请访问 Azure Synapse Analytics 运行时[文档](./spark/../apache-spark-version-support.md)。
 

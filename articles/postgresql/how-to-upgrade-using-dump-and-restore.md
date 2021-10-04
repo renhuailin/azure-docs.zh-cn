@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 7e8e1db98ac79c2be6dbb399a14368ce3e2f898c
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.date: 09/21/2021
+ms.openlocfilehash: b2216754cbdb6081a82f71392aee6e5f8ce2d3ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033491"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648404"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原升级 PostgreSQL 数据库
 
@@ -96,10 +96,10 @@ ms.locfileid: "123033491"
 若要从源服务器转储所有角色，请运行以下命令：
 
 ```azurecli-interactive
-pg_dumpall -r --host=mySourceServer --port=5432 --username=myUser -- dbname=mySourceDB > roles.sql
+pg_dumpall -r --host=mySourceServer --port=5432 --username=myUser --database=mySourceDB > roles.sql
 ```
 
-若要使用 psql 将其还原到目标服务器，请运行以下命令：
+在目标服务器中使用 psql 还原内容之前，编辑 `roles.sql` 并删除 `NOSUPERUSER` 和 `NOBYPASSRLS` 的引用：
 
 ```azurecli-interactive
 psql -f roles.sql --host=myTargetServer --port=5432 --username=myUser
@@ -198,6 +198,14 @@ psql -f roles.sql --host=myTargetServer --port=5432 --username=myUser
 
 > [!TIP]
 > 本文档中提到的过程还可用于升级 Azure Database for PostgreSQL 灵活服务器（现处于预览阶段）。 主要区别是灵活服务器目标的连接字符串没有 `@dbName`。  例如，如果用户名为 `pg`，则连接字符串中的单个服务器用户名将为 `pg@pg-95`，而对于灵活服务器，只需使用 `pg`。
+
+## <a name="post-upgrademigrate"></a>升级/迁移后
+主版本升级完成后，建议在每个数据库中运行 `ANALYZE` 命令以刷新 `pg_statistic` 表。 否则，可能会遇到性能问题。
+
+```SQL
+postgres=> analyze;
+ANALYZE
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 6205867cbcb65a3b5720fefd1356b36bcd8c6838
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 997bf9e2b88269985c85220c4960179d148a4190
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682716"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637465"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft 客户协议价目表中的术语
 
@@ -40,18 +40,18 @@ ms.locfileid: "88682716"
 | includedQuantity | 客户有权在不增加费用的情况下使用的特定服务的数量。 |
 | marketPrice | 给定服务的当前流行市场价格。 |
 | meterId  | 计量的唯一标识符。 |
-| meterCategory  | 计量的分类类别的名称。 例如，“云服务”、“网络”等。   |
+| meterCategory  | 计量的分类类别的名称。 例如，“云服务”、“网络”等。 |
 | meterName  | 计量的名称。 此计量表示 Azure 服务的可部署资源。 |
 | meterSubCategory  | 计量子分类类别的名称。  |
 | meterType  |  计量类型的名称。 |
 | meterRegion  | 提供服务计量的区域的名称。 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。    |
-| Products  | 产生费用的产品的名称。例如：基本 SQL DB 与标准 SQL DB  |
+| 产品  | 产生费用的产品的名称。例如：“基本 SQL 数据库”与“标准 SQL 数据库”  |
 | productId  | 其计量已消耗的产品的唯一标识符。 |
 | productOrderName  | 购买的产品计划的名称。 |
 | serviceFamily  | Azure 服务的类型。例如：计算、分析、安全性 |
 | tierMinimumUnits  | 定义层级范围的下限，这是定义价格的依据。 例如，如果范围为 0 到 100，则 tierMinimumUnits 为 0。  |
 | unitOfMeasure  | 确定用于服务计费的度量单位。 例如，计算服务按小时计费。 |
-| unitPrice  | 计费时的单价（不是有效的混合价），特定于计量和产品订单名称。  注意：如果服务的不同层级中存在价格差异，则单价不同于使用情况详细信息下载内容中的有效价格。  如果服务使用多层级定价，则有效价格是不同层级的混合费率，不显示特定于层级的单价。 混合价格或有效价格是针对多个层级（其中的每个层级有具体的单价）消耗的数量得出的净价格。 |
+| unitPrice  | 计费时的单价（不是有效的混合价），特定于计量和产品订单名称。  请注意：如果服务的不同层级中存在价格差异，则单价不同于使用情况详细信息下载内容中的有效价格。  如果服务使用多层级定价，则有效价格是不同层级的混合费率，不显示特定于层级的单价。 混合价格或有效价格是针对多个层级（其中的每个层级有具体的单价）消耗的数量得出的净价格。 |
 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限

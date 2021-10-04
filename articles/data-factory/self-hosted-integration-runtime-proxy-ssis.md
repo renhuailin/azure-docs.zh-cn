@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 07/19/2021
-ms.openlocfilehash: d015c5182b51c655d45365a2f45a9f9d08db582b
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.date: 09/17/2021
+ms.openlocfilehash: d98d51158981c6b3aa04a0d8ea8b42b16d768d26
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835626"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665485"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>自承载 IR 配置为 Azure 数据工厂中 Azure-SSIS IR 的代理
 
@@ -68,12 +68,12 @@ ms.locfileid: "122835626"
 如果尚未在设置了 Azure-SSIS IR 的数据工厂中创建 Azure Blob 存储链接服务，请执行此操作。 为此，请参阅[创建 Azure 数据工厂链接服务](./quickstart-create-data-factory-portal.md#create-a-linked-service)。 确保执行以下操作：
 - 对于“数据存储”，请选择“Azure Blob 存储”。    
 - 对于“通过集成运行时连接”，请选择“AutoResolveIntegrationRuntime”（而非自承载 IR），这样我们可以将其忽略并改为使用 Azure-SSIS IR 来提取 Azure Blob 存储的访问凭据 。
-- 对于“身份验证方法”，请选择“帐户密钥”、“SAS URI”、“服务主体”、“托管标识”或“用户分配的托管标识”。  
+- 对于“身份验证方法”，请选择“帐户密钥”、“SAS URI”、“服务主体”、“托管标识”或“用户分配的托管标识”     。  
 
 >[!TIP]
->如果选择“服务主体”方法，请至少为你的服务主体授予“存储 Blob 数据参与者”角色。 有关详细信息，请参阅 [Azure Blob 存储 连接器](connector-azure-blob-storage.md#linked-service-properties)。 如果选择“托管标识”/“用户分配的托管标识”方法，请向为 ADF 指定的系统/用户分配的托管标识授予可访问 Azure Blob 存储的适当角色。 有关详细信息，请参阅[使用为 ADF 指定的系统/用户分配的托管标识通过 Azure Active Directory (Azure AD) 身份验证访问 Azure Blob 存储](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)。
+>如果选择“服务主体”方法，请至少为你的服务主体授予“存储 Blob 数据参与者”角色。 有关详细信息，请参阅 [Azure Blob 存储 连接器](connector-azure-blob-storage.md#linked-service-properties)。 如果选择“托管标识”/“用户分配的托管标识”方法，请向为 ADF 指定的系统/用户分配的托管标识授予可访问 Azure Blob 存储的适当角色 。 有关详细信息，请参阅[使用为 ADF 指定的系统/用户分配的托管标识通过 Azure Active Directory (Azure AD) 身份验证访问 Azure Blob 存储](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)。
 
-![准备用于暂存的 Azure Blob 存储链接服务](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
+:::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png" alt-text="准备用于暂存的 Azure Blob 存储链接服务":::
 
 ## <a name="configure-an-azure-ssis-ir-with-your-self-hosted-ir-as-a-proxy"></a>配置使用自承载 IR 作为代理的 Azure-SSIS IR 配置
 
@@ -93,7 +93,7 @@ ms.locfileid: "122835626"
 
    1. 选择“继续”按钮。
 
-   ![自承载 IR 的高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png" alt-text="自承载 IR 的高级设置":::
 
 还可以使用 PowerShell 来配置使用自承载 IR 作为代理的新的或现有 Azure-SSIS IR。
 
@@ -139,30 +139,30 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 在设计包含本地运行的执行 SQL/进程任务的新包时，可以通过在相关任务本身的“属性”窗格中将 `ExecuteOnProxy` 属性设置为 True 来启用该属性。
 
-![启用 ConnectByProxy/ExecuteOnProxy 属性](media/self-hosted-integration-runtime-proxy-ssis/shir-proxy-properties.png)
+:::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-proxy-properties.png" alt-text="启用 ConnectByProxy/ExecuteOnProxy 属性":::
 
 还可以在运行现有包时启用 `ConnectByProxy`/`ExecuteOnProxy` 属性，而无需逐个手动更改它们。 有两个选项：
 - **选项 A**：打开、重新生成并重新部署包含这些包的项目。这些包中包含要在 Azure-SSIS IR 上运行的最新 SSDT。 从 SSMS 运行包时，对于“执行包”弹出窗口的“连接管理器”选项卡上显示的相关连接管理器，还可以通过将 `ConnectByProxy` 属性设置为 True 来启用此属性 。
 
-  ![启用 ConnectByProxy/ExecuteOnProxy property2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png" alt-text="启用 ConnectByProxy/ExecuteOnProxy property2":::
 
   在数据工厂管道中运行包时，对于[执行 SSIS 包活动](./how-to-invoke-ssis-package-ssis-activity.md)的“连接管理器”选项卡上显示的相关连接管理器，还可以通过将 `ConnectByProxy` 属性设置为 True 来启用此属性。
   
-  ![启用 ConnectByProxy/ExecuteOnProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png" alt-text="启用 ConnectByProxy/ExecuteOnProxy property3":::
 
 - **选择 B**：重新部署包含这些包的项目，以在 SSIS IR 上运行。 然后，可以在从 SSMS 运行包时，通过在“执行包”弹出窗口的“高级”选项卡上提供 `ConnectByProxy`/`ExecuteOnProxy` 属性的属性路径 `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`/`\Package\YourExecuteSQLTaskName.Properties[ExecuteOnProxy]`/`\Package\YourExecuteProcessTaskName.Properties[ExecuteOnProxy]`，并将它们设置为 True 作为属性重写，来启用这些属性 。
 
-  ![启用 ConnectByProxy/ExecuteOnProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png" alt-text="启用 ConnectByProxy/ExecuteOnProxy property4":::
 
   在数据工厂管道中运行包时，还可以通过在[执行 SSIS 包活动](./how-to-invoke-ssis-package-ssis-activity.md)的“属性重写”选项卡上提供 `ConnectByProxy`/`ExecuteOnProxy` 属性的属性路径 `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`/`\Package\YourExecuteSQLTaskName.Properties[ExecuteOnProxy]`/`\Package\YourExecuteProcessTaskName.Properties[ExecuteOnProxy]`，并将它们设置为 True 作为属性重写，来启用这些属性。
   
-  ![启用 ConnectByProxy/ExecuteOnProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png" alt-text="启用 ConnectByProxy/ExecuteOnProxy property5":::
 
 ## <a name="debug-the-on-premises-tasks-and-cloud-staging-tasks"></a>调试本地任务和云暂存任务
 
-在自承载 IR 上，可以在 C:\ProgramData\SSISTelemetry 文件夹中找到运行时日志，并在 C:\ProgramData\SSISTelemetry\ExecutionLog 文件夹中找到本地暂存任务和执行 SQL/进程任务的执行日志 。 可以在 SSISDB、指定的日志路径或 Azure Monitor 中找到云暂存任务的执行日志，具体取决于是否将包存储在 SSISDB 中、是否启用 [Azure Monitor 监视](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)等。还可以在云暂存任务的执行日志中找到本地暂存任务的唯一 ID。 
+在自承载 IR 上，可以在 C:\ProgramData\SSISTelemetry 文件夹中找到运行时日志，并在 C:\ProgramData\SSISTelemetry\ExecutionLog 文件夹中找到本地暂存任务和执行 SQL/进程任务的执行日志 。 可以在 SSISDB、指定的日志路径或 Azure Monitor 中找到云暂存任务的执行日志，具体取决于是否将包存储在 SSISDB 中、是否启用 [Azure Monitor 监视](./monitor-ssis.md)等。还可以在云暂存任务的执行日志中找到本地暂存任务的唯一 ID。 
 
-![第一个暂存任务的唯一 ID](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
+:::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png" alt-text="第一个暂存任务的唯一 ID":::
 
 如果你已开具客户支持票证，可以在安装于自承载 IR 上的 Microsoft Integration Runtime Configuration Manager 的“诊断”选项卡上选择“发送日志”按钮，将最新操作/执行日志发送给我们以便调查。  
 
@@ -194,7 +194,7 @@ Azure-SSIS IR 上运行的云暂存任务不单独计费，但是运行中的 Az
 
 ## <a name="enforce-tls-12"></a>执行 TLS 1.2
 
-如果需要在自承载 IR 上同时使用强加密/更安全的网络协议 (TLS 1.2) 并禁用较旧的 SSL/TLS 版本，则可下载并运行 main.cmd 脚本，该脚本可以在公共预览版 Blob 容器的 CustomSetupScript/UserScenarios/TLS 1.2 文件夹中找到 。 使用 [Azure 存储资源管理器](https://storageexplorer.com/)，可以通过输入以下 SAS URI 连接到公共预览版 Blob 容器：
+如果需要访问已配置为仅使用最强加密/最安全网络协议 (TLS 1.2) 的数据存储，包括用于暂存的 Azure Blob 存储，则必须在自承载 IR 上同时只启用 TLS 1.2 并禁用较旧的 SSL/TLS 版本。 为此，你可以下载并运行我们在公共预览版 Blob 容器的“CustomSetupScript/UserScenarios/TLS 1.2”文件夹中提供的 main.cmd 脚本。 使用 [Azure 存储资源管理器](https://storageexplorer.com/)，可以通过输入以下 SAS URI 连接到公共预览版 Blob 容器：
 
 `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 

@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fe5a2114a99b7867ac5e51b6bf9ec542ad47ca13
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2685570bb14cf177f0a658196aa1750f9d8e02a1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257885"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558341"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置 Saviynt 的教程
 
@@ -76,37 +76,22 @@ Saviynt 集成包括以下组件：
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>创建适用于 Saviynt 的 Azure AD 应用程序
 
 1. 登录 [Azure 门户](https://portal.azure.com/#home)。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
+1. 选择“应用注册” > “新建注册”。
+1. 输入应用程序的“名称”。 例如 Saviynt，然后选择“创建”。
+1. 转到“API 权限”并选择“+ 添加权限”。
+1. 会显示“请求获取 API 权限”页。 选择“Microsoft API”选项卡，并选择“Microsoft Graph”作为常用 Microsoft API。
+1. 前往下一页，选择“应用程序权限”。
+1. 选择“目录”，然后选中“Directory.Read.All”和“Directory.ReadWrite.All”复选框。
+1. 选择“添加权限”。 检查添加的权限。
+1. 选择“为默认目录授予管理员许可” > “保存”。
+1. 转到“证书和密码”并选择“+ 添加客户端密码”。 输入客户端密码说明，选择有效期选项，然后选择“添加”。
+1. 将生成密钥，并显示在“客户端密钥”部分。 稍后需要使用它。
 
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-
-3. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
-
-4. 选择“应用注册” > “新建注册”。
-
-5. 输入应用程序的“名称”。 例如 Saviynt，然后选择“创建”。
-
-6. 转到“API 权限”并选择“+ 添加权限”。
-
-7. 会显示“请求获取 API 权限”页。 选择“Microsoft API”选项卡，并选择“Microsoft Graph”作为常用 Microsoft API。
-
-8. 前往下一页，选择“应用程序权限”。
-
-9. 选择“目录”，然后选中“Directory.Read.All”和“Directory.ReadWrite.All”复选框。
-
-10. 选择“添加权限”。 检查添加的权限。
-
-11. 选择“为默认目录授予管理员许可” > “保存”。
-
-12. 转到“证书和密码”并选择“+ 添加客户端密码”。 输入客户端密码说明，选择有效期选项，然后选择“添加”。
-
-13. 将生成密钥，并显示在“客户端密钥”部分。
-
-    >[!NOTE]
-    > 稍后你将需要客户端密钥。
-
-14. 转到“概述”，获取”客户端 ID”和“租户 ID”。
-
-15. 需要租户 ID、客户端 ID 和客户端密码才能完成 Saviynt 中的设置。
+1. 转到“概述”，获取”客户端 ID”和“租户 ID”。
+1. 需要租户 ID、客户端 ID 和客户端密码才能完成 Saviynt 中的设置。
 
 ### <a name="enable-saviynt-to-delete-users"></a>启用 Saviynt 以删除用户
 
@@ -131,7 +116,7 @@ Add-MsolRoleMember -RoleName "Company Administrator" -RoleMemberType ServicePrin
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多信息，请参阅以下文章：
+有关更多信息，请查看以下文章：
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 

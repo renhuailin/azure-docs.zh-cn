@@ -13,12 +13,12 @@ ms.date: 08/28/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: f92df3818a6da63a57d4e0d26f4e145ae4d5c46f
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 216fd3f132464b9866bc1f3b1b61b143de117019
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185698"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083460"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
 
@@ -137,27 +137,39 @@ using Microsoft.Extensions.DependencyInjection;
 
 ```CSharp
 
- private static IConfidentialClientApplication app;
-
-public static async Task<IConfidentialClientApplication> BuildConfidentialClientApplication(
-  string clientId,
-  CertificateDescription certDescription,
-  string tenant)
+public static async Task<AuthenticationResult> GetTokenAsync(string clientId, X509Certificate cert, string authority, string[] scopes)
  {
-  if (app== null)
-  {
      // Create the confidential client application
      app= ConfidentialClientApplicationBuilder.Create(clientId)
        // Alternatively to the certificate you can use .WithClientSecret(clientSecret)
-       .WithCertificate(certDescription.Certificate)
+       .WithCertificate(cert)
        .WithLegacyCacheCompatibility(false)
-       .WithTenantId(tenant)
+       .WithAuthority(authority)
        .Build();
 
-     // Add an in-memory token cache. Other options available: see below
-     app.AddInMemoryTokenCache();
-   }
-   return app;
+     // Add a static in-memory token cache. Other options available: see below
+     app.AddInMemoryTokenCache();  // Microsoft.Identity.Web 1.16+
+   
+     // Make the call to get a token for client_credentials flow (app to app scenario) 
+     return await app.AcquireTokenForClient(scopes).ExecuteAsync();
+     
+     // OR Make the call to get a token for OBO (web api scenario)
+     return await app.AcquireTokenOnBehalfOf(scopes, userAssertion).ExecuteAsync();
+     
+     // OR Make the call to get a token via auth code (web app scenario)
+     return await app.AcquireTokenByAuthorizationCode(scopes, authCode);    
+     
+     // OR, when the user has previously logged in, get a token silently
+     var homeAccountId = GetHomeAccountIdFromClaimsPrincipal(); // uid and utid claims
+     var account = await app.GetAccountAsync(homeAccountId);
+     try
+     {
+          return await app.AcquireTokenSilent(scopes, account).ExecuteAsync();; 
+     } 
+     catch (MsalUiRequiredException)
+     {
+        // cannot get a token silently, so redirect the user to be challenged 
+     }
   }
 ```
 
@@ -273,7 +285,7 @@ var app = ConfidentialClientApplicationBuilder
 
 ### <a name="monitor-cache-hit-ratios-and-cache-performance"></a>监视缓存命中率和缓存性能
 
-MSAL 公开重要指标作为 [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata.md) 对象的一部分： 
+MSAL 公开重要指标作为 [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata) 对象的一部分： 
 
 | 指标       | 含义     | 何时触发警报？    |
 | :-------------: | :----------: | :-----------: |
@@ -581,6 +593,21 @@ namespace CommonCacheMsalV3
 ```
 
 ---
+
+## <a name="plain-text-fallback-mode"></a>纯文本回退模式
+
+MSAL 允许以明文形式存储未加密的令牌。 这仅适用于在开发环境中用于调试目的。 可以通过以下代码模式使用纯文本回退模式。
+
+```csharp
+storageProperties =
+    new StorageCreationPropertiesBuilder(
+        Config.CacheFileName + ".plaintext",
+        Config.CacheDir)
+    .WithUnprotectedFile()
+    .Build();
+
+var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false);
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 预留容量节省 Azure Synapse Analytics 费用
 description: 了解如何通过省钱的预留容量节省 Azure Synapse Analytics 的费用成本。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: bd43b668c318b825c5c5b6f36fc1da1055863bed
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: f738b2e551ecb26426ef25603969fb471ecfa437
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599089"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666583"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>使用预留容量节省 Azure Synapse Analytics 费用成本
 
@@ -52,8 +52,9 @@ Azure Synapse Analytics 预留大小应该基于你消耗的计算数据仓库�
    - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
    - **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
    - **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
-   - 对于企业客户，计费上下文为 EA 注册。
-   - 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。
+       - 对于企业客户，计费上下文为 EA 注册。
+       - 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。
+   - 管理组 - 将预留折扣应用于同时属于管理组和计费范围的订阅列表中的匹配资源。
 5. 选择“区域”，以便选择一个预留容量涵盖的 Azure 区域。
 6. 选择数量。 输入数量 100，作为要购买的数据仓库单位数 (cDWU)。    
    例如，数量为 30 时，会为你提供每小时 3,000 cDWU 的预留容量。

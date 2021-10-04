@@ -1,14 +1,14 @@
 ---
-title: 使用 PowerShell 将 VHD 文件上传到 Azure 开发测试实验室 | Microsoft 文档
+title: 使用 PowerShell 将 VHD 文件上传到 Azure 开发测试实验室
 description: 本文演练了如何使用 PowerShell 将 VHD 文件上传到 Azure 开发测试实验室中。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 2b393b886a50f60a918690ee2a5583f9623dbe39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2ee739dccc60321a814862fabe1b44aac7192dc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88650751"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566343"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>使用 PowerShell 将 VHD 文件上传到实验室的存储帐户
 

@@ -1,14 +1,14 @@
 ---
-title: 使用 Azure Functions 扩展 Azure 开发测试实验室 | Microsoft Docs
+title: 使用 Azure Functions 扩展 Azure 开发测试实验室
 description: 了解如何使用 Azure Functions 扩展 Azure 开发测试实验室。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: e8593453457bf7a077cf555e8d4f35b0c4b8f599
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8a6200dbfce99ee7904dc1a65965e95d81e98471
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300536"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623639"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>使用 Azure Functions 扩展开发测试实验室
 可以使用 Azure Functions 来支持开发测试实验室已支持的方案以外的其他方案。 Azure Functions 可用于扩展服务的内置功能，以满足特定于业务的需求。 以下列表提供了一些可能的方案。 本文介绍如何实现其中的一个示例方案。
@@ -108,11 +108,3 @@ Azure Functions 可以帮助扩展开发测试实验室功能，使其拥有比�
 - [常见问题解答](devtest-lab-faq.yml)
 - [扩展开发测试实验室](devtest-lab-guidance-scale.md)
 - [使用 PowerShell 实现开发测试实验室自动化](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests)
-
-
-
-
-
-
-
-

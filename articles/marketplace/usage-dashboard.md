@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 07/15/2021
-ms.openlocfilehash: c68216675a41a71b21216ce558b03171781dbc43
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: c50a36c521848956577fd0e8f53bdb2dceaaee8f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749468"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084033"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“使用情况”仪表板
 
@@ -36,17 +36,45 @@ ms.locfileid: "121749468"
 > [!NOTE]
 > 合作伙伴中心的使用事件生成和报告之间的最大延迟为 48 小时。
 
+## <a name="access-the-usage-dashboard"></a>访问“使用情况”仪表板
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“见解”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“见解”磁贴。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 在左侧菜单中，选择“使用情况”。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航栏中，选择“商业市场” > “分析” > “使用情况”  。
+
+---
+
 ## <a name="elements-of-the-usage-dashboard"></a>“使用情况”仪表板的元素
 
 下面各部分介绍了如何使用“使用情况”仪表板以及如何读取数据。
 
-若要访问合作伙伴中心的“使用情况”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “使用情况”。
-
 ### <a name="month-range"></a>月份范围
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+可在每页右上角找到月份范围选择。 通过基于过去 6 个或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，自定义“使用情况”页面图的输出内容。 默认月份范围（计算期间）为 6 个月。
+
+[ ![说明了“使用情况”仪表板上的“月份”筛选器。](./media/usage-dashboard/usage-dashboard-filters.png) ](./media/usage-dashboard/usage-dashboard-filters.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 可在每页右上角找到月份范围选择。 通过基于过去 6 个或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，自定义“使用情况”页面图的输出内容。 默认月份范围（计算期间）为 6 个月。
 
 :::image type="content" source="./media/usage-dashboard/month-filter.png" alt-text="使用情况仪表板上的月筛选器图解。":::
+
+---
 
 ### <a name="usage-trend"></a>使用趋势
 

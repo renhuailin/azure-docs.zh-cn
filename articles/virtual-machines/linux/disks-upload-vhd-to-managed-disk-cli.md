@@ -4,16 +4,16 @@ description: 了解如何使用 Azure CLI 通过直接上传将 VHD 上传到 Az
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 06/29/2021
+ms.date: 09/07/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: e78998d089ffe6446e9b7dbdf898b2d4ee4ba3a1
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 08c58a65a8801646d0dd6d0bd51bbab8d57d97e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694927"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754599"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
 
@@ -51,10 +51,10 @@ ms.locfileid: "122694927"
 将 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` 替换为所选值。 `--upload-size-bytes` 参数包含示例值 `34359738880`，请将其替换为适合你的值。
 
 > [!TIP]
-> 如果要创建 OS 磁盘，请将--hyper-v-generation <yourGeneration> 添加到 `az disk create`。
+> 如果要创建 OS 磁盘，请将 `--hyper-v-generation <yourGeneration>` 添加到 `az disk create`。
 
 ```azurecli
-az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
+az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --os-type Linux --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
 若要上传高级 SSD 或标准 SSD，请将 **standard_lrs** 替换为 **premium_LRS** 或 **standardssd_lrs**。 目前不支持超级磁盘。
@@ -102,12 +102,12 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 以下脚本可自动完成此操作，此过程类似于前面所述的步骤，但由于处理的是现有磁盘，因此存在一些差异。
 
 > [!IMPORTANT]
-> 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果不添加此偏移量，复制将会失败。 以下脚本中已添加此偏移量。
+> 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果你不执行此操作，该副本将失败。 以下脚本中已添加此偏移量。
 
 请将 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>` 和 `<yourTargetLocationHere>`（例如，位置值为 uswest2）替换为自己的值，然后运行以下脚本来复制托管磁盘。
 
 > [!TIP]
-> 如果要创建 OS 磁盘，请将--hyper-v-generation <yourGeneration> 添加到 `az disk create`。
+> 如果要创建 OS 磁盘，请将 `--hyper-v-generation <yourGeneration>` 添加到 `az disk create`。
 
 ```azurecli
 sourceDiskName=<sourceDiskNameHere>
@@ -115,10 +115,12 @@ sourceRG=<sourceResourceGroupHere>
 targetDiskName=<targetDiskNameHere>
 targetRG=<targetResourceGroupHere>
 targetLocation=<yourTargetLocationHere>
+#Expected value for OS is either "Windows" or "Linux"
+targetOS=<yourOSTypeHere>
 
 sourceDiskSizeBytes=$(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
-az disk create -g $targetRG -n $targetDiskName -l $targetLocation --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocation --os-type $targetOS --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 

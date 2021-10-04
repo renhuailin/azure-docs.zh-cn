@@ -7,30 +7,35 @@ ms.date: 08/19/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d262f102b12105ece2b5d0d076a7c8c108e7b4e7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bcd9b0f4aa1b4a7f89479270ebce65fba9968e56
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424233"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810711"
 ---
 # <a name="create-and-manage-dashboards"></a>创建和管理仪表板
 
-默认的应用程序仪表板是首次转至应用程序时加载的页面。 管理员最多可以创建 10 个对所有应用程序用户可见的应用程序仪表板。 只有管理员能够创建、编辑和删除应用程序级别的仪表板。
+默认的组织仪表板是首次访问应用程序时加载的页面。 作为管理员，你可以创建与特定组织关联的其他组织仪表板。 组织仪表板仅对有权访问与仪表板相关联的组织的用户可见。 只有具有[组织仪表板权限](howto-manage-users-roles.md#customizing-the-app)的角色中的用户才能创建、编辑和删除组织仪表板。
 
-所有用户可以创建自己的个人仪表板。 用户可以在应用程序仪表板与个人仪表板之间切换。
+> [!TIP]
+> 可以在仪表板设置中查看与仪表板相关联的组织。
+
+所有用户可以创建自己的个人仪表板。 用户可以在组织仪表板与个人仪表板之间切换。
 
 ## <a name="create-a-dashboard"></a>创建仪表板
 
-以下屏幕截图显示从“自定义应用程序”模板创建的应用程序中的仪表板。 可使用个人仪表板替换默认应用程序仪表板。 如果你是管理员，还可以将其替换为另一个应用程序级别的仪表板。 为此，请选择页面左上角的“新建仪表板”：
+以下屏幕截图显示从“自定义应用程序”模板创建的应用程序中的仪表板。 如果你所担任的角色具有适当的权限，你可以自定义默认仪表板。 若要创建新的仪表板，请选择页面左上角的“+ 新建仪表板”：
 
 :::image type="content" source="media/howto-manage-dashboards/dashboard-custom-app.png" alt-text="显示“新建仪表板”按钮的屏幕截图。":::
 
-选择“新建仪表板”打开仪表板编辑器。 在编辑器中，为仪表板命名并从库中选择项。 库包含可用于自定义仪表板的磁贴和仪表板基元：
+在“创建仪表板”面板中，为仪表板指定一个名称，并选择“组织”或“个人”作为仪表板类型。 如果要创建组织仪表板，请选择与该仪表板相关联的[组织](howto-create-organizations.md)。 组织仪表板及其磁贴仅显示对组织及其任何子组织可见的设备。
+
+创建仪表板后，请从库中选择要添加到仪表板的项。 库包含用于自定义仪表板的磁贴和仪表板基元：
 
 :::image type="content" source="media/howto-manage-dashboards/dashboard-library.png" alt-text="该屏幕截图显示仪表板库。":::
 
-如果你是管理员，则可以创建个人仪表板或应用程序仪表板。 所有应用程序用户都可以看到管理员创建的应用程序仪表板。 所有用户都可以创建只有他们才能看到的个人仪表板。
+如果你是管理员，则可以创建个人仪表板或组织仪表板。 用户会看到与他们分配到的组织相关联的组织仪表板。 所有用户可以创建只有他们才能看到的个人仪表板。
 
 输入标题，然后选择要创建的仪表板类型。 [添加磁贴](#add-tiles)以自定义仪表板。
 
@@ -39,17 +44,21 @@ ms.locfileid: "123424233"
 
 ## <a name="manage-dashboards"></a>管理仪表板
 
-可以创建多个个人仪表板并在它们之间进行切换，或者在多个应用程序仪表板中选择一个：
+可以创建多个个人仪表板并在它们之间进行切换，或者在多个组织仪表板中选择一个：
 
 :::image type="content" source="media/howto-manage-dashboards/switch-dashboards.png" alt-text="该屏幕截图显示如何在仪表板之间切换。":::
 
-可以编辑个人仪表板，并删除不需要的仪表板。 如果你是管理员，还可以编辑和删除应用程序级别的仪表板。
+可以编辑个人仪表板，并删除不需要的仪表板。 如果你有正确的[权限](howto-manage-users-roles.md#customizing-the-app)，则还可以编辑或删除组织仪表板。
 
 :::image type="content" source="media/howto-manage-dashboards/delete-dashboards.png" alt-text="显示如何删除仪表板的屏幕截图。":::
 
+若要重命名仪表板或查看为它分配的组织，请选择“仪表板设置”：
+
+:::image type="content" source="media/howto-manage-dashboards/rename-dashboards.png" alt-text="屏幕截图，显示如何重命名仪表板。":::
+
 ## <a name="add-tiles"></a>添加磁贴
 
-以下屏幕截图显示使用“自定义应用程序”模板创建的应用程序中的仪表板。 若要自定义当前仪表板，请选择“编辑”。 若要添加个人仪表板或应用程序仪表板，请选择“新建仪表板”：
+以下屏幕截图显示从“自定义应用程序”模板创建的应用程序中的仪表板。 若要自定义当前仪表板，请选择“编辑”。 若要添加个人仪表板或组织仪表板，请选择“新建仪表板”：
 
 :::image type="content" source="media/howto-manage-dashboards/dashboard-sample-contoso.png" alt-text="显示基于自定义应用程序模板的应用程序仪表板的屏幕截图。":::
 

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
-ms.date: 04/09/2020
-ms.openlocfilehash: 35968a21f0d3143b089cb8418f614e2c776da8cb
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/16/2021
+ms.openlocfilehash: 8e592e40b8885158c0b6700b0014a5982fe2d352
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359630"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548257"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>如何监视 Azure Cosmos DB 中的操作的吞吐量或请求单位用量
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,11 +43,11 @@ ms.locfileid: "113359630"
 
 1. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
 
-   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="选择 Azure Cosmos DB 帐户以查看指标":::
+   :::image type="content" source="./media/monitor-account-key-updates/select-account-scope.png" alt-text="选择要查看指标的帐户范围" border="true":::
 
 1. 接下来，从可用指标的列表中选择“请求单位总数”指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别划分的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，让我们选择“请求单位总数”和“平均”作为聚合值。  除这些详细信息外，还可以选择指标的“时间范围”和“时间粒度”。  可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。 可以查看所选时间段内每分钟消耗的平均请求单位数。  
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="从 Azure 门户中选择指标":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="从 Azure 门户中选择指标" border="true":::
 
 ## <a name="filters-for-request-unit-usage"></a>请求单位用量筛选器
 
@@ -59,7 +59,7 @@ ms.locfileid: "113359630"
 
 若要按集合查看请求单位用量，请选择“应用拆分”并选择集合名称作为筛选器。 在仪表板中将会看到如下所示的图表，其中包含所选的集合。 然后，可以选择特定的集合名称以查看更多详细信息：
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Azure Monitor 中按集合列出的所有操作的 Cosmos DB 请求单位":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Azure Monitor 中按集合列出的所有操作的 Cosmos DB 请求单位" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 

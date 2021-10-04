@@ -4,21 +4,24 @@ description: 本部分介绍发布者可以使用的市场推广服务 - Microso
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2021
+ms.date: 09/23/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: dcd7c7c64c0a686abe88b9e0d5810ff84aab27f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d957adf84bf6f9cf9b48c5d5554d27206d8c382
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742032"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708357"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
 你已将产品/服务发布到 Microsoft 商业市场，现在希望看到它们获得成功。 我们提供销售、技术和营销权益，帮助你加快产品/服务的增加。
 
 在 Microsoft AppSource 或 Azure 市场上发布产品/服务后，请转到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165457)，访问并激活你有资格享受的营销、销售和技术权益。 Marketplace Rewards 权益根据商业市场参与度和销售情况而逐渐增多。 参与得越多，回馈就越多。
+
+> [!NOTE]
+> 本文图像中引用的货币 ($) 是市场奖励权益等级，它基于累积计费销售额或通过 Microsoft AppSource 和 Azure 市场销售的席位数。
 
 ## <a name="marketplace-rewards"></a>Marketplace Rewards
 

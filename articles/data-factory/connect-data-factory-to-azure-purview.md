@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
-ms.date: 09/02/2021
-ms.openlocfilehash: a3f88b7263f264f2ae69892839524207e08e768d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 09/27/2021
+ms.openlocfilehash: 5d5b1ed8a20bc459370a9bb7e437e1f5c977714d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452206"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217946"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>将数据工厂连接到 Azure Purview（预览）
 
@@ -43,7 +43,7 @@ ms.locfileid: "123452206"
 
 如果 Purview 帐户受防火墙保护，请为 Purview 创建托管专用终结点。 详细了解如何使数据工厂[访问安全的 Purview 帐户](how-to-access-secured-purview-account.md)。 你可以在初始连接期间执行，也可以稍后编辑现有连接。
 
-Purview 连接信息存储在数据工厂资源中，如下所示。 若要以编程方式建立连接，可以更新数据工厂并添加 `purviewConfiguration` 设置。
+Purview 连接信息存储在数据工厂资源中，如下所示。 若要以编程方式建立连接，可以更新数据工厂并添加 `purviewConfiguration` 设置。 如果要从 SSIS 活动推送世系，还需要额外添加 `catalogUri` 标记。
 
 ```json
 {
@@ -56,8 +56,11 @@ Purview 连接信息存储在数据工厂资源中，如下所示。 若要以�
             "purviewResourceId": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupname>/providers/Microsoft.Purview/accounts/<PurviewAccountName>"
         }
     },
-    "identity": {...},
     ...
+    "identity": {...},
+    "tags": {
+        "catalogUri": "<PurviewAccountName>.catalog.purview.azure.com //Note: used for SSIS lineage only"
+    }
 }
 ```
 
@@ -77,9 +80,20 @@ Purview 连接信息存储在数据工厂资源中，如下所示。 若要以�
 
     在创作 UI 上将数据工厂连接到 Purview 时，ADF 会尝试自动添加此类角色分配。 如果你拥有 Purview 帐户的 Azure 内置“所有者”或“用户访问管理员”角色，则此操作会成功完成 。
 
-如果你拥有读取 Purview 角色分配信息的权限，但未被授予所需角色，那么可能会看到以下警告。 若要确保为管道世系推送正确设置连接，请转到 Purview 帐户，并检查是否向数据工厂的托管标识授予了“Purview 数据管理者”角色。 否则，请手动添加角色分配。
+## <a name="monitor-purview-connection"></a>监视 Purview 连接
 
-:::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="展示了在注册 Purview 帐户时出现的警告的屏幕截图。":::
+将数据工厂连接到 Purview 帐户后，会看到以下页面，其中包含有关已启用的集成功能的详细信息。
+
+:::image type="content" source="./media/data-factory-purview/monitor-purview-connection-status.png" alt-text="有关监视 Azure 数据工厂和 Purview 之间的集成状态的屏幕截图。":::
+
+对于“数据世系 - 管道”，你可能会看到以下状态之一：
+
+- 已连接：数据工厂已成功连接到 Purview 帐户。 请注意，这表示数据工厂与 Purview 帐户关联并且有权向其推送世系。 如果 Purview 帐户受防火墙保护，则还需确保用于执行活动和进行世系推送的集成运行时可以访问 Purview 帐户。 有关详细信息，请参阅[从 Azure 数据工厂访问受保护的 Azure Purview 帐户](how-to-access-secured-purview-account.md)。
+- 已断开连接：数据工厂无法将世系推送到 Purview，因为尚未将“Purview 数据管护者”角色授予数据工厂的托管标识。 若要解决此问题，请转到 Purview 帐户以检查角色分配，并根据需要手动授予该角色。 有关详细信息，请参阅[设置身份验证](#set-up-authentication)部分。
+- 未知：数据工厂无法检查状态。 可能的原因包括：
+
+    - 无法从当前网络访问 Purview 帐户，因为该帐户受防火墙保护。 可以改为从已连接到 Purview 帐户的专用网络启动 ADF UI。
+    - 你无权检查 Purview 帐户上的角色分配。 可以联系 Purview 帐户管理员来为你检查角色分配。 若要了解所需的 Purview 角色，请参阅[设置身份验证](#set-up-authentication)部分。
 
 ## <a name="report-lineage-data-to-azure-purview"></a>向 Azure Purview 报告世系数据
 

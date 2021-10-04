@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ec09ac444999be23fa0caed741e1e1534117fa0c
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 5fdde23875d49d6bf4329a57081f12f517692062
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105613"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618640"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Azure Cosmos DB 是一个全球分布式数据库服务，也是在[可以使用
 
 * 将复制所有区域中的每个分区。 每个区域均包含一个 Azure Cosmos 容器的所有数据分区，并且在启用了多区域写入时可供读取和写入。  
 
-如果 Azure Cosmos 帐户分布在 N 个 Azure 区域之间，则所有数据至少有 N x 4 个副本。 在超过 2 个区域中拥有 Azure Cosmos 帐户可提高应用程序的可用性，相关区域之间的延迟较低。
+如果 Azure Cosmos 帐户分布在 N 个 Azure 区域之间，则所有数据至少有 N x 4 个副本 。 有关数据分布的更详细概述，请参阅[全球数据分布原理](global-dist-under-the-hood.md)。 在超过 2 个区域中拥有 Azure Cosmos 帐户可提高应用程序的可用性，相关区域之间的延迟较低。
 
 ## <a name="slas-for-availability"></a>可用性 SLA
 
@@ -79,7 +79,7 @@ Azure Cosmos DB 提供综合性的 SLA，涵盖了吞吐量、99% 的情况下�
 * 以前受影响的写入区域恢复后，它将自动用作读取区域。 可以切换回到用作写入区域的已恢复区域。 可以使用 [PowerShell、Azure CLI 或 Azure 门户](how-to-manage-database-account.md#manual-failover)来切换区域。 在切换写入区域之前、期间或之后，**不会丢失数据或可用性**，应用程序将继续保持高可用性。
 
 > [!IMPORTANT]
-> 强烈建议将用于生产工作负载的 Azure Cosmos 帐户配置为“启用自动故障转移”  。 这样，Cosmos DB 将能够自动将帐户数据库故障转移到可用区域。 如果不存在此配置，则帐户在写入区域中断的整个持续时间内会丢失写入可用性，因为手动故障转移会由于缺少区域连接而无法成功。
+> 强烈建议将用于生产工作负载的 Azure Cosmos 帐户配置为“启用自动故障转移”  。 这样，Cosmos DB 就能自动将帐户数据库故障转移到可用区域。 如果不存在此配置，则帐户在写入区域中断的整个持续时间内会丢失写入可用性，因为手动故障转移会由于缺少区域连接而无法成功。
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>配置为使用单个写入区域的多区域帐户（读取区域服务中断）
 

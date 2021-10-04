@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 0d872a60c4aea89e621fe25ade45697244a74fa8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e7356319a875f3289531c24e5a053e745a543c0a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779716"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830148"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -21,10 +21,9 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 
 > [!WARNING]
 > 将 AKS 仪表板外接程序设置为弃用。改为使用 [Azure 门户中的 Kubernetes 资源视图（预览版）][kubernetes-portal]。 
-> * 默认情况下，为运行的 Kubernetes 版本低于 1.18 的群集启用 Kubernetes 仪表板。
-> * 默认情况下，在 Kubernetes 1.18 或更高版本上创建的所有新群集都将禁用仪表板加载项。 
- > * 从 Kubernetes 1.19 预览版开始，AKS 将不再支持安装托管的 kube-dashboard 加载项。 
- > * 启用了加载项的现有群集不会受到影响。 用户能够继续将开源仪表板作为用户安装的软件手动安装。
+> * 默认情况下，所有新群集都将禁用仪表板加载项。
+> * 从 Kubernetes 1.19 预览版开始，AKS 将不再支持安装托管的 kube-dashboard 加载项。 
+> * 启用了加载项的现有群集不会受到影响。 用户能够继续将开源仪表板作为用户安装的软件手动安装。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -34,32 +33,11 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 
 ## <a name="disable-the-kubernetes-dashboard"></a>禁用 Kubernetes 仪表板
 
-默认情况下，在 K8s 版本低于 1.18 的群集上启用 kube-dashboard 加载项。 可以通过运行以下命令禁用加载项。
+可以通过运行以下命令禁用加载项。
 
 ``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
-
-## <a name="start-the-kubernetes-dashboard"></a>启动 Kubernetes 仪表板
-
-> [!WARNING]
-> AKS 仪表板加载项在版本 1.19+ 中已弃用。 请改用 [Azure 门户中的 Kubernetes 资源视图（预览版）][kubernetes-portal]。 
-> * 以下命令现在将打开 Azure 门户资源视图，而不是 1.19 及更高版本的 kubernetes 仪表板。
-
-若要在群集上启动 Kubernetes 仪表板，请使用 [az aks browse][az-aks-browse] 命令。 此命令要求在群集上安装 kube-dashboard 加载项，运行任何低于 Kubernetes 1.18 的版本的群集都默认包含该加载项。
-
-以下示例将为 *myResourceGroup* 资源组中的 *myAKSCluster* 群集打开仪表板：
-
-```azurecli
-az aks browse --resource-group myResourceGroup --name myAKSCluster
-```
-
-此命令在开发系统与 Kubernetes API 之间创建一个代理，并在 Web 浏览器中打开 Kubernetes 仪表板。 如果 Web 浏览器未打开到 Kubernetes 仪表板，请复制并在 Azure CLI 中粘贴所记录的 URL 地址，通常为 `http://127.0.0.1:8001`。
-
-> [!NOTE]
-> 如果在 `http://127.0.0.1:8001` 没有看到仪表板，则可以手动路由到以下地址。 运行 1.16 或更高版本的群集使用 https 并需要单独的终结点。
-> * K8s 1.16 或更高版本：`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-> * K8s 1.15 及更低版本：`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)

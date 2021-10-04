@@ -3,16 +3,16 @@ title: 开发 Azure IoT Edge 模块 | Microsoft Docs
 description: 为 Azure IoT Edge 开发可与运行时和 IoT 中心通信的自定义模块
 author: kgremban
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 09/03/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fafb9475d308863113fa943d4e52cf3c1b5652cd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a04acfdec42319b998b2854be9690bab360558c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728823"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128550526"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>开发你自己的 IoT Edge 模块
 
@@ -81,7 +81,7 @@ IoT Edge 模块可以通过充当本地代理的 IoT Edge 中心将消息发送�
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-使用 MQTT 代理发送设备到云的遥测消息类似于发布有关用户定义的主题的消息，但要对模块使用以下 IoT 中心特殊主题：`devices/<device_name>/<module_name>/messages/events`。 必须正确设置授权。 此外，必须将 MQTT 网桥配置为向云转发有关此主题的消息。
+使用 MQTT 代理发送设备到云的遥测消息类似于发布有关用户定义的主题的消息，但要对模块使用以下 IoT 中心特殊主题：`devices/<device_name>/modules/<module_name>/messages/events`。 必须正确设置授权。 此外，必须将 MQTT 网桥配置为向云转发有关此主题的消息。
 
 ::: moniker-end
 
@@ -90,7 +90,7 @@ IoT Edge 模块可以通过充当本地代理的 IoT Edge 中心将消息发送�
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-使用 MQTT 代理处理消息类似于订阅有关用户定义的主题的消息，但要使用模块输出队列的 IoT Edge 特殊主题：`devices/<device_name>/<module_name>/messages/events`。 必须正确设置授权。 可以选择性地发送有关你选择的主题的新消息。
+使用 MQTT 代理处理消息类似于订阅有关用户定义的主题的消息，但要使用模块输出队列的 IoT Edge 特殊主题：`devices/<device_name>/modules/<module_name>/messages/events`。 必须正确设置授权。 可以选择性地发送有关你选择的主题的新消息。
 
 ::: moniker-end
 
@@ -103,7 +103,7 @@ IoT Edge 模块可以通过充当本地代理的 IoT Edge 中心将消息发送�
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-若要使用任何 MQTT 客户端获取模块孪生体，需要执行稍多一些的操作，因为获取孪生体不是典型的 MQTT 模式。 模块必须先订阅 IoT 中心特殊主题 `$iothub/twin/res/#`。 此主题名称继承自 IoT 中心，并且所有设备/模块需要订阅同一主题。 这并不意味着设备会接收彼此的孪生体。 IoT 中心和 edgeHub 中心知道哪个孪生体应传送到何处，即使所有设备侦听同一个主题名称。 配置订阅后，模块需要使用请求 ID `$iothub/twin/GET/?$rid=1234` 将消息发布到后面的 IoT 中心特殊主题，以请求孪生体。 此请求 ID 是一个任意 ID（即 GUID），IoT 中心会将该 ID 与请求的数据一起发回。 这就是客户端如何将其请求与响应配对。 结果代码是类似于 HTTP 的状态代码，如果状态为成功，则会编码为 200。
+若要使用任何 MQTT 客户端获取模块孪生体，需要执行稍多一些的操作，因为获取孪生体不是典型的 MQTT 模式。 模块必须先订阅 IoT 中心特殊主题 `$iothub/twin/res/#`。 此主题名称继承自 IoT 中心，并且所有设备/模块需要订阅同一主题。 这并不意味着设备会接收彼此的孪生体。 IoT 中心和 edgeHub 知道哪个孪生体应传送到何处，即使所有设备都侦听同一个主题名称。 配置订阅后，模块需要使用请求 ID `$iothub/twin/GET/?$rid=1234` 将消息发布到后面的 IoT 中心特殊主题，以请求孪生体。 此请求 ID 是一个任意 ID（即 GUID），IoT 中心会将该 ID 与请求的数据一起发回。 这就是客户端如何将其请求与响应配对。 结果代码是类似于 HTTP 的状态代码，如果状态为成功，则会编码为 200。
 
 ::: moniker-end
 
@@ -112,7 +112,7 @@ IoT Edge 模块可以通过充当本地代理的 IoT Edge 中心将消息发送�
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-若要使用任何 MQTT 客户端接收模块孪生体补丁，该过程非常相似于接收完整孪生体：客户端需要订阅特殊 IoT 中心主题 `$iothub/twin/PATCH/properties/desired/#`。 配置订阅后，当 IoT 中心发送孪生体所需部分的某项更改时，客户端会接收该更改。
+若要使用任何 MQTT 客户端接收模块孪生体补丁，那么该过程将类似于接收完整孪生体：客户端需要订阅特殊 IoT 中心主题 `$iothub/twin/PATCH/properties/desired/#`。 配置订阅后，当 IoT 中心发送孪生体所需部分的某项更改时，客户端会接收该更改。
 
 ::: moniker-end
 
@@ -165,6 +165,31 @@ IoT Edge 支持多种操作系统、设备体系结构和开发语言，因此�
 IoT Edge 1.1 LTS 是最后一个支持 Windows 容器的发布通道。 从版本 1.2 开始，将不再支持 Windows 容器。
 
 有关通过 Windows 容器进行开发的信息，请参阅本文的 [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) 版本。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+<!--1.2-->
+:::moniker range="iotedge-2020-11"
+
+## <a name="module-security"></a>模块安全性
+
+你应在开发模块时考虑到安全性。 若要详细了解如何保护模块，请参阅 [Docker 安全性](https://docs.docker.com/engine/security/)。
+
+为了帮助提高模块安全性，IoT Edge 会默认禁用一些容器功能。 可以根据需要重写默认值，以便为模块提供特权功能。
+
+### <a name="allow-elevated-docker-permissions"></a>允许提升的 Docker 权限
+
+在 IoT Edge 设备上的 config.toml 文件中，有一个名为 `allow_elevated_docker_permissions` 的参数。 当设置为 true 时，此标志允许 `--privileged` 标志以及在[容器创建选项](how-to-use-create-options.md)的 Docker HostConfig 的 `CapAdd` 字段中定义的任何其他功能。
+
+>[!NOTE]
+>目前，此标志默认为 true，允许部署向模块授予特权权限。 建议将此标志设置为 false，以提高设备安全性。 将来，此标志将默认设置为 false。
+
+### <a name="enable-cap_chown-and-cap_setuid"></a>启用 CAP_CHOWN 和 CAP_SETUID
+
+默认情况下会禁用 Docker 功能 CAP_CHOWN 和 CAP_SETUID。 这些功能可用于将内容写入主机设备上的安全文件，并可能获得根访问权限。
+
+如果需要这些功能，可以在容器创建选项中使用 CapADD 手动重新启用它们。
 
 :::moniker-end
 <!-- end 1.2 -->

@@ -1,15 +1,15 @@
 ---
-title: 协调 Azure 开发测试实验室的实施
+title: 协调实现
 description: 本文提供有关在组织中协调 Azure 开发测试实验室的实施的指导。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10ca9af9f68f6d95181418721ec90dac5dfd4ad4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92330608"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601475"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>协调 Azure 开发测试实验室的实施
 本文提供快速部署和实施 Azure 开发测试实验室的建议方法。 下图突出显示了整个过程（规范性指导），同时反映了支持各种行业要求和方案的灵活性。

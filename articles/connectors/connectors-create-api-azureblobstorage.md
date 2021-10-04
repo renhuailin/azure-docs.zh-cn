@@ -3,20 +3,20 @@ title: 连接到 Azure Blob 存储
 description: 通过使用 Azure 逻辑应用在 Azure 存储账户中创建和管理 Blob。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
+ms.reviewer: estfan, azla
+ms.topic: how-to
 ms.date: 06/23/2021
 tags: connectors
-ms.openlocfilehash: e3d8730976d623b5304a50341bcf257f35047e25
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 7fc6b33248af8b638218858c95d1c0de8b056e76
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359544"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824858"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
-可以在 Azure 逻辑应用中使用 [Azure Blob 存储连接器](/connectors/azureblobconnector/)访问和管理 Azure 存储帐户中以 Blob 形式存储的文件。 此连接器为逻辑应用工作流中的 Blob 操作提供了触发器以及相应操作。 可以使用这些操作来让任务和工作流自动化以便管理存储账户中的文件。 [可用的连接器操作](/connectors/azureblobconnector/#actions)包括检查、删除、读取和上传 Blob。 添加或修改 Blob 时，将触发[可用触发器](/connectors/azureblobconnector/#triggers)。 
+可以在 Azure 逻辑应用中使用 [Azure Blob 存储连接器](/connectors/azureblobconnector/)访问和管理 Azure 存储帐户中以 Blob 形式存储的文件。 此连接器为逻辑应用工作流中的 Blob 操作提供了触发器以及相应操作。 可以使用这些操作来让任务和工作流自动化以便管理存储账户中的文件。 [可用的连接器操作](/connectors/azureblobconnector/#actions)包括检查、删除、读取和上传 Blob。 添加或修改 Blob 时，将触发[可用触发器](/connectors/azureblobconnector/#triggers)。
 
 可以同时从标准型和消耗型逻辑应用资源类型连接到 Blob 存储。 可以将连接器与单租户、多租户或集成服务环境 (ISE) 中的逻辑应用一起使用。 对于单租户环境中的逻辑应用，Blob 存储提供内置操作以及托管连接器操作。
 
@@ -135,7 +135,7 @@ ms.locfileid: "113359544"
 
 你需要连接到存储帐户，然后才能配置 [Blob 存储触发器](#add-blob-storage-trigger) 或 [Blob 存储操作](#add-blob-storage-action)。 连接需要以下属性。
 
-| 属性 | 必须 | 值 | 说明 |
+| 属性 | 必选 | 值 | 说明 |
 |----------|----------|-------|-------------|
 | **连接名称** | 是 | <*connection-name*> | 将要为连接创建的名称 |
 | **Azure Blob 存储连接字符串** | 是 | <*storage-account*> | 从列表中选择存储帐户，或提供一个字符串。 |
@@ -169,7 +169,7 @@ ms.locfileid: "113359544"
 
 ## <a name="access-storage-accounts-behind-firewalls"></a>访问防火墙后的存储帐户
 
-通过[使用防火墙和防火墙规则限制访问](../storage/common/storage-network-security.md)，可以提高 Azure 存储帐户的网络安全性。 但是，此设置会给需要访问存储帐户的 Azure 和其他 Microsoft 服务带来挑战。 数据中心内的本地通信会提取内部 IP 地址，因此无法设置带 IP 限制的防火墙规则。 
+通过[使用防火墙和防火墙规则限制访问](../storage/common/storage-network-security.md)，可以提高 Azure 存储帐户的网络安全性。 但是，此设置会给需要访问存储帐户的 Azure 和其他 Microsoft 服务带来挑战。 数据中心内的本地通信会提取内部 IP 地址，因此无法设置带 IP 限制的防火墙规则。
 
 要使用 Blob 存储连接器访问防火墙后面的存储账户：
 
@@ -183,19 +183,24 @@ ms.locfileid: "113359544"
 
 ### <a name="access-storage-accounts-in-other-regions"></a>访问其他区域中的存储帐户
 
-如果逻辑应用和防火墙后的存储帐户位于同一区域，则逻辑应用无法直接访问这些存储帐户。 一种解决方案是将逻辑应用放在与存储帐户不同的区域。 然后，允许访问[区域中托管连接器的出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)。
+如果逻辑应用和防火墙后的存储帐户位于同一区域，则逻辑应用无法直接访问这些存储帐户。 一种解决方案是将逻辑应用放在与存储帐户不同的区域。 然后，允许访问[区域中托管连接器的出站 IP 地址](/connectors/common/outbound-ip-addresses#azure-logic-apps)。
 
 > [!NOTE]
-> 此解决方案不适用于 Azure 表存储连接器和 Azure 队列存储连接器。 相反的，若要访问表存储或者队列存储，[请使用内置的 HTTP 触发器和操作](../logic-apps/logic-apps-http-endpoint.md)。
+> 此解决方案不适用于 Azure 表存储连接器和 Azure 队列存储连接器。 若要访问表存储或队列存储，请[使用内置的 HTTP 触发器和操作](../logic-apps/logic-apps-http-endpoint.md)。
 
 若要将出站 IP 地址添加到存储帐户防火墙：
 
-1. 请注意逻辑应用所在地区的[出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)。
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 打开存储帐户的页面。 在导航菜单中的“安全性 + 网络”下，选择“网络” 。 
-1. 在“允许的访问来源”下，选择“所选网络”选项。 相关设置现在会显示在页面上。
-1. 在“防火墙”下，添加需要访问的 IP 地址或者范围。 
-    :::image type="content" source="./media/connectors-create-api-azureblobstorage/storage-ip-configure.png" alt-text="Azure 门户中 blob 存储帐户网络页的屏幕截图，显示将 IP 地址和范围添加到允许列表的防火墙设置。":::
+1. 记下逻辑应用所在区域的[托管连接器出站 IP 地址](/connectors/common/outbound-ip-addresses#azure-logic-apps)。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，并找到你的存储帐户资源。
+
+1. 在存储帐户资源菜单上的“安全性 + 网络”下，选择“网络”。
+
+1. 在“允许的访问来源”下，选择“所选网络”。 相关设置现在会显示在页面上。
+
+1. 在“防火墙”下，添加需要访问的 IP 地址或者范围。
+
+   :::image type="content" source="./media/connectors-create-api-azureblobstorage/storage-ip-configure.png" alt-text="Azure 门户中 blob 存储帐户网络页的屏幕截图，显示将 IP 地址和范围添加到允许列表的防火墙设置。":::
 
 ### <a name="access-storage-accounts-through-trusted-virtual-network"></a>通过受信任的虚拟网络访问存储帐户
 

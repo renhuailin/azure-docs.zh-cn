@@ -1,26 +1,26 @@
 ---
 title: 全文查询和索引编制引擎体系结构 (Lucene)
 titleSuffix: Azure Cognitive Search
-description: 检视与 Azure 认知搜索相关的全文搜索的 Lucene 查询处理和文档检索概念。
+description: 浏览与 Azure 认知搜索相关的全文搜索的 Lucene 查询处理和文档检索概念。
 manager: nitinme
 author: yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: b070cc197de1a3e4390d3957cda5b2bd65c754f3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002742"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210414"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure 认知搜索中的全文搜索
 
 本文面向需要更深入了解 Azure 认知搜索中 Lucene 全文搜索工作原理的开发人员。 对于文本查询，在大多数情况下，Azure 认知搜索都会无缝提供预期结果，但偶尔也会提供看上去“不靠谱”的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
 
 > [!Note] 
-> Azure 认知搜索使用 Lucene 进行全文搜索，但 Lucene 集成并不彻底。 我们将有选择地公开和扩展 Lucene 功能，使情景对于 Azure 认知搜索变得重要。 
+> Azure 认知搜索使用 [Apache Lucene](https://lucene.apache.org/) 进行全文搜索，但 Lucene 集成并不彻底。 我们将有选择地公开和扩展 Lucene 功能，使情景对于 Azure 认知搜索变得重要。 
 
 ## <a name="architecture-overview-and-diagram"></a>体系结构概述和关系图
 

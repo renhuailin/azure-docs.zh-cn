@@ -9,12 +9,12 @@ ms.subservice: pipeline
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 37696d2f4054e46125b39f3d5efa794ce54f94b5
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 481d4534f7213d55c795383d6112fd93f7997c9c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567717"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596859"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>快速入门：使用映射数据流转换数据
 
@@ -109,11 +109,11 @@ ms.locfileid: "107567717"
 
     在本快速入门中，你要筛选在 1910 到 2000 年之间上映的喜剧流派电影。 由于年份目前是一个字符串，因此需要使用 ```toInteger()``` 函数将其转换为整数。 使用大于或等于 (>=) 和小于或等于 (<=) 运算符来与文本年份值 1910 和 2000 进行比较。 将这些表达式与 and (&&) 运算符结合在一起。 表达式如下所示：
 
-    ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
+    `toInteger(year) >= 1910 && toInteger(year) <= 2000`
 
-    若要找出哪些电影属于喜剧，可以使用 ```rlike()``` 函数查找 genres 列中的“Comedy”。 将 rlike 表达式与年份比较结合得到：
+    若要找出哪些电影属于喜剧，可以使用 `rlike()` 函数查找 genres 列中的“Comedy”。 将 `rlike` 表达式与年份比较结合可得到：
 
-    ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
+    `toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')`
 
     ![指定筛选条件](media/quickstart-data-flow/visual-expression-builder.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "107567717"
 
 1. 若要获取 Rating 列的平均值，请使用 ```avg()``` 聚合函数。 由于 Rating 为字符串并且 ```avg()``` 采用数字输入，因此必须通过 ```toInteger()``` 函数将该值转换为数字。 该表达式如下所示：
 
-    ```avg(toInteger(Rating))```
+    `avg(toInteger(Rating))`
 
     完成后，单击“保存并完成”
 

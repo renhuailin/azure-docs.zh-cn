@@ -1,14 +1,14 @@
 ---
-title: 管理 Azure 开发测试实验室中用于创建 VM 的公式 | Microsoft Docs
+title: 管理 Azure 开发测试实验室中用于创建 VM 的公式
 description: 本文介绍如何从基项（自定义映像、市场映像或其他公式）或现有 VM 创建公式。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 770bab28d6c000db8860d2de7dfeb8ad912e7c3a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 632e05a566e1891afff3440563a2fabde0b669d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293537"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678528"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 

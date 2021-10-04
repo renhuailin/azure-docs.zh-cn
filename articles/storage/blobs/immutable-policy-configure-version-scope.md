@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 09/10/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 04e05f67787b285dd1286e0c6b7a6b251262ed0f
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7a7ded3df993034963f06b81a0908e68821688cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272234"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584287"
 ---
 # <a name="configure-immutability-policies-for-blob-versions-preview"></a>为 Blob 版本配置不可变性策略（预览版）
 
@@ -159,7 +159,7 @@ $migrationOperation.JobStateInfo.State
 if ($migrationOperation.JobStateInfo.State -eq "Failed") {
 Write-Host $migrationOperation.Error
 }
-The container <container-name> must have an immutability policy set as a default policy 
+The container <container-name> must have an immutability policy set as a default policy
 before initiating container migration to support object level immutability with versioning.
 ```
 
@@ -284,7 +284,7 @@ az storage container immutability-policy create \
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-导航到某个容器时，Azure 门户会显示 Blob 列表。 显示的每个 Blob 表示当前 Blob 版本。 通过选择 blob 的“更多”按钮并选择“查看以前的版本”，可访问以前版本的列表 。  
+导航到某个容器时，Azure 门户会显示 Blob 列表。 显示的每个 Blob 表示当前 Blob 版本。 通过选择 blob 的“更多”按钮并选择“查看以前的版本”，可访问以前版本的列表 。
 
 ### <a name="configure-a-retention-policy-on-the-current-version-of-a-blob"></a>针对当前 Blob 版本配置保留策略
 
@@ -321,6 +321,8 @@ az storage container immutability-policy create \
 
 若要使用 PowerShell 在 blob 版本上配置基于时间的保留策略，请调用 Set-AzStorageBlobImmutabilityPolicy 命令。
 
+以下示例演示如何在 blob 的当前版本上配置解锁的策略。 请记得将尖括号中的占位符替换为你自己的值：
+
 ```azurepowershell
 # Get the storage account context
 $ctx = (Get-AzStorageAccount `
@@ -336,7 +338,25 @@ Set-AzStorageBlobImmutabilityPolicy -Container <container> `
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-空值
+若要使用 Azure CLI 在某个 blob 版本上配置基于时间的保留策略，必须首先安装 0.6.1 或更高版本的 storage-blob-preview 扩展。
+
+```azurecli
+az extension add --name storage-blob-preview
+```
+
+若要详细了解如何安装 Azure CLI 扩展，请参阅[如何安装和管理 Azure CLI 扩展](/cli/azure/azure-cli-extensions-overview)。
+
+接下来，请调用 az storage blob immutability-policy set 命令来配置基于时间的保留策略。 以下示例演示如何在 blob 的当前版本上配置解锁的策略。 请记得将尖括号中的占位符替换为你自己的值：
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-09-20T08:00:00Z \
+    --policy-mode Unlocked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -375,7 +395,7 @@ Set-AzStorageBlobImmutabilityPolicy -Container <container> `
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 PowerShell 修改未锁定的基于时间的保留策略，请使用策略到期的新日期和时间对 blob 版本调用 Set-AzStorageBlobImmutabilityPolicy 命令。
+若要使用 PowerShell 修改未锁定的基于时间的保留策略，请使用策略到期的新日期和时间对 blob 版本调用 Set-AzStorageBlobImmutabilityPolicy 命令。 请记得将尖括号中的占位符替换为你自己的值：
 
 ```azurepowershell
 $containerName = "<container>"
@@ -388,7 +408,7 @@ $blobVersion = Get-AzStorageBlob -Container $containerName `
     -Context $ctx
 
 # Extend the retention interval by five days.
-$blobVersion = $blobVersion | 
+$blobVersion = $blobVersion |
     Set-AzStorageBlobImmutabilityPolicy -ExpiresOn (Get-Date).AddDays(5) `
 
 # View the new policy parameters.
@@ -403,7 +423,27 @@ $blobVersion = $blobVersion | Remove-AzStorageBlobImmutabilityPolicy
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-空值
+若要使用 PowerShell 修改已解锁的基于时间的保留策略，请使用新的策略到期日期和时间对该 blob 版本调用 az storage blob immutability-policy set 命令。 请记得将尖括号中的占位符替换为你自己的值：
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-10-0T18:00:00Z \
+    --policy-mode Unlocked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
+
+若要删除已解锁的保留策略，请调用 az storage blob immutability-policy delete 命令。
+
+```azurecli
+az storage blob immutability-policy delete \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -436,7 +476,7 @@ $blobVersion = Get-AzStorageBlob -Container $containerName `
     -VersionId "2021-08-31T00:26:41.2273852Z" `
     -Context $ctx
 
-$blobVersion = $blobVersion | 
+$blobVersion = $blobVersion |
     Set-AzStorageBlobImmutabilityPolicy `
         -ExpiresOn $blobVersion.BlobProperties.ImmutabilityPolicy.ExpiresOn `
         -PolicyMode Locked
@@ -444,7 +484,17 @@ $blobVersion = $blobVersion |
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-空值
+若要使用 PowerShell 来锁定策略，请调用 az storage blob immutability-policy set 命令并将 `--policy-mode` 参数设置为“Locked”。 也可在锁定策略时更改到期时间。
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-10-0T18:00:00Z \
+    --policy-mode Locked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -486,7 +536,25 @@ Set-AzStorageBlobLegalHold -Container <container> `
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-空值
+若要使用 Azure CLI 配置或清除 blob 版本上的法定保留，请调用 az storage blob set-legal-hold 命令。
+
+```azurecli
+# Set a legal hold
+az storage blob set-legal-hold \
+    --legal-hold \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <account-name> \
+    --auth-mode login
+
+# Clear a legal hold
+az storage blob set-legal-hold \
+    --legal-hold false \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <account-name> \
+    --auth-mode login
+```
 
 ---
 

@@ -2,13 +2,13 @@
 title: 模板函数 - 数组
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中用来处理数组的函数。
 ms.topic: conceptual
-ms.date: 05/11/2021
-ms.openlocfilehash: 12349a52f192305a47913d57bcd760242ea32a70
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 09/08/2021
+ms.openlocfilehash: 25fb249e1840a7538fa1dd14f3b1a930bbefdfee
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451450"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755988"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM 模板的数组函数
 
@@ -50,47 +50,9 @@ ms.locfileid: "123451450"
 
 ### <a name="example"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/array.json)演示如何对不同的类型使用 array 函数。
+以下示例演示如何对不同的类型使用 array 函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "intToConvert": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "stringToConvert": {
-      "type": "string",
-      "defaultValue": "efgh"
-    },
-    "objectToConvert": {
-      "type": "object",
-      "defaultValue": {
-        "a": "b",
-        "c": "d"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "intOutput": {
-      "type": "array",
-      "value": "[array(parameters('intToConvert'))]"
-    },
-    "stringOutput": {
-      "type": "array",
-      "value": "[array(parameters('stringToConvert'))]"
-    },
-    "objectOutput": {
-      "type": "array",
-      "value": "[array(parameters('objectToConvert'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/array.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -123,38 +85,7 @@ ms.locfileid: "123451450"
 
 以下示例演示如何组合两个数组。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [
-        "1-1",
-        "1-2",
-        "1-3"
-      ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [
-        "2-1",
-        "2-2",
-        "2-3"
-      ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "return": {
-      "type": "array",
-      "value": "[concat(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/concat-array.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -162,27 +93,9 @@ ms.locfileid: "123451450"
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json)演示如何组合两个字符串值并返回串联的字符串。
+以下示例演示如何组合两个字符串值并返回串联的字符串。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "prefix": {
-      "type": "string",
-      "defaultValue": "prefix"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "concatOutput": {
-      "type": "string",
-      "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/concat-string.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -211,58 +124,7 @@ ms.locfileid: "123451450"
 
 以下示例演示如何对不同的类型使用 contains：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "OneTwoThree"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'e')]"
-    },
-    "stringFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'z')]"
-    },
-    "objectTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'one')]"
-    },
-    "objectFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'a')]"
-    },
-    "arrayTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'three')]"
-    },
-    "arrayFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'four')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/contains.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -293,52 +155,9 @@ ms.locfileid: "123451450"
 
 ### <a name="example"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/createarray.json)演示如何对不同的类型使用 createArra：
+以下示例演示如何对不同的类型使用 createArray：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringArray": {
-      "type": "array",
-      "value": "[createArray('a', 'b', 'c')]"
-    },
-    "intArray": {
-      "type": "array",
-      "value": "[createArray(1, 2, 3)]"
-    },
-    "objectArray": {
-      "type": "array",
-      "value": "[createArray(parameters('objectToTest'))]"
-    },
-    "arrayArray": {
-      "type": "array",
-      "value": "[createArray(parameters('arrayToTest'))]"
-    },
-    "emptyArray": {
-      "type": "array",
-      "value": "[createArray()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/createarray.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -370,42 +189,7 @@ ms.locfileid: "123451450"
 
 以下示例检查某个数组、对象和字符串是否为空。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": []
-    },
-    "testObject": {
-      "type": "object",
-      "defaultValue": {}
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": ""
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testArray'))]"
-    },
-    "objectEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testObject'))]"
-    },
-    "stringEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/empty.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -435,30 +219,7 @@ ms.locfileid: "123451450"
 
 以下示例演示如何对不同的类型使用 first 函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[first(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[first('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/first.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -487,52 +248,9 @@ ms.locfileid: "123451450"
 
 ### <a name="example"></a>示例
 
-以下示例演示如何对数组和对象使用 intersection：
+以下示例演示如何对数组和对象使用 intersection。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "z",
-        "three": "c"
-      }
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "objectOutput": {
-      "type": "object",
-      "value": "[intersection(parameters('firstObject'), parameters('secondObject'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[intersection(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/intersection.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -561,30 +279,7 @@ ms.locfileid: "123451450"
 
 以下示例演示如何对不同的类型使用 last 函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[last(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[last('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/last.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -611,55 +306,9 @@ ms.locfileid: "123451450"
 
 ### <a name="example"></a>示例
 
-以下示例演示如何对数组和字符串使用 length：
+以下示例演示如何对数组和字符串使用 length。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "propA": "one",
-        "propB": "two",
-        "propC": "three",
-        "propD": {
-          "propD-1": "sub",
-          "propD-2": "sub"
-        }
-      }
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayLength": {
-      "type": "int",
-      "value": "[length(parameters('arrayToTest'))]"
-    },
-    "stringLength": {
-      "type": "int",
-      "value": "[length(parameters('stringToTest'))]"
-    },
-    "objectLength": {
-      "type": "int",
-      "value": "[length(parameters('objectToTest'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/length.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -698,31 +347,9 @@ ms.locfileid: "123451450"
 
 ### <a name="example"></a>示例
 
-以下示例演示如何对整数数组和整数列表使用 max：
+以下示例演示如何对整数数组和整数列表使用 max。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[max(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[max(0,3,2,5,4)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/max.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -749,31 +376,9 @@ ms.locfileid: "123451450"
 
 ### <a name="example"></a>示例
 
-以下示例演示如何对整数数组和整数列表使用 min：
+以下示例演示如何对整数数组和整数列表使用 min。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[min(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[min(0,3,2,5,4)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/min.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -801,31 +406,9 @@ ms.locfileid: "123451450"
 
 ### <a name="example"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/range.json)演示如何使用 range 函数:
+以下示例演示如何使用 range 函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "startingInt": {
-      "type": "int",
-      "defaultValue": 5
-    },
-    "numberOfElements": {
-      "type": "int",
-      "defaultValue": 3
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "rangeOutput": {
-      "type": "array",
-      "value": "[range(parameters('startingInt'),parameters('numberOfElements'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/range.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -854,45 +437,7 @@ ms.locfileid: "123451450"
 
 以下示例跳过数组中指定数目的元素，以及字符串中指定数目的字符。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToSkip": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToSkip": {
-      "type": "int",
-      "defaultValue": 4
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[skip(parameters('testArray'),parameters('elementsToSkip'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[skip(parameters('testString'),parameters('charactersToSkip'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/skip.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -905,9 +450,9 @@ ms.locfileid: "123451450"
 
 `take(originalValue, numberToTake)`
 
-返回一个数组，其中包含从数组开头位置算起的指定数目的元素；或返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符。
+返回数组或字符串。 数组包含指定数目的元素（从数组开头算起）。 字符串包含指定数目的字符（从字符串开头算起）。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -922,45 +467,7 @@ ms.locfileid: "123451450"
 
 以下示例从数组中提取指定数目的元素，并从字符串中提取指定数目的字符。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToTake": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToTake": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[take(parameters('testArray'),parameters('elementsToTake'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[take(parameters('testString'),parameters('charactersToTake'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/take.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -989,52 +496,9 @@ ms.locfileid: "123451450"
 
 ### <a name="example"></a>示例
 
-以下示例演示如何对数组和对象使用 union：
+以下示例演示如何对数组和对象使用 union。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c1"
-      }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": {
-        "three": "c2",
-        "four": "d",
-        "five": "e"
-      }
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "three", "four" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "objectOutput": {
-      "type": "object",
-      "value": "[union(parameters('firstObject'), parameters('secondObject'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[union(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/union.json":::
 
 上述示例中使用默认值的输出为：
 

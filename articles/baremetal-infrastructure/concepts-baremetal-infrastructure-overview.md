@@ -3,13 +3,13 @@ title: 什么是 Azure 中的 BareMetal 基础结构？
 description: 概要介绍 Azure 中的 BareMetal 基础结构。
 ms.custom: references_regions
 ms.topic: conceptual
-ms.date: 07/13/2021
-ms.openlocfilehash: 135de43f26b969d3df79f6ec7348d295493e5134
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.date: 09/27/2021
+ms.openlocfilehash: 744378fc00bc443fdae3babefdf626eacbf486e7
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765815"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154862"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>什么是 Azure 中的 BareMetal 基础结构？
 
@@ -36,8 +36,8 @@ BareMetal 基础结构适用于需要证书才能运行企业应用程序的关�
 BareMetal 基础结构具有以下优势：
 
 - 适用于专用工作负载的认证硬件
-    - SAP（请参阅 [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)）
-    - Oracle（请参阅 [Oracle 文档 ID #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52)）
+    - SAP（请参阅 [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。 你需要一个 SAP 帐户才能访问。）
+    - Oracle（请参阅 [Oracle 文档 ID #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52)。 你需要一个 Oracle 帐户才能访问。）
 - 非虚拟化监控 BareMetal 实例，单租户所有权
 - Azure 托管应用程序 VM 与 BareMetal 实例之间的延迟非常低（0.35 毫秒）
 - 所有闪存 SSD 和 NVMe

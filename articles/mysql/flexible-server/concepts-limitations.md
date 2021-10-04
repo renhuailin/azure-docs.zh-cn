@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 659f62cb8e42a4e2aba2e51dfcfee9826a614923
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: c8460d6df9710e5a8752a0edd50c6b83276725ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588321"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128668578"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的限制
 
@@ -20,7 +20,7 @@ ms.locfileid: "113588321"
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-本文介绍了 Azure Database for MySQL 灵活服务器服务中的限制。 MySQL 数据库引擎中的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html)也适用。 如果想了解资源（计算、内存、存储）层，请参阅[计算和存储](concepts-compute-storage.md)一文。
+本文介绍了 Azure Database for MySQL 灵活服务器服务中的限制。 MySQL 数据库引擎中的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html)也适用。 若要了解资源限制（计算、内存、存储），请参阅[计算和存储](concepts-compute-storage.md)一文。
 
 ## <a name="server-parameters"></a>服务器参数
 
@@ -29,11 +29,9 @@ ms.locfileid: "113588321"
 
 Azure Database for MySQL 支持优化服务器参数的值。 某些参数（例如 `max_connections`、`join_buffer_size`、`query_cache_size`）由服务器的计算层和计算大小确定。 有关这些限制的详细信息，请参阅[服务器参数](./concepts-server-parameters.md)。
 
-该服务不支持密码插件，例如“validate_password”和“caching_sha2_password”。
-
 ## <a name="storage-engines"></a>存储引擎
 
-MySQL 支持许多存储引擎。 在 Azure Database for MySQL 灵活服务器上，支持和不支持的存储引擎如下所示：
+MySQL 支持许多存储引擎。 在 Azure Database for MySQL 灵活服务器上，支持和不支持的存储引擎列表如下所示：
 
 ### <a name="supported"></a>支持
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
@@ -46,8 +44,6 @@ MySQL 支持许多存储引擎。 在 Azure Database for MySQL 灵活服务器�
 - [FEDERATED](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
 ## <a name="privileges--data-manipulation-support"></a>权限和数据操作支持
-
-许多服务器参数和设置可能会无意中导致服务器性能下降或使 MySQL 服务器的 ACID 属性无效。 为了在产品级别维护服务完整性和 SLA，此服务不公开多个角色。 
 
 MySQL 服务不允许直接访问基础文件系统。 不支持某些数据操作命令。 
 
@@ -71,8 +67,6 @@ MySQL 服务不允许直接访问基础文件系统。 不支持某些数据操�
 
 ### <a name="networking"></a>网络
 - 创建服务器后，无法更改连接方法。 如果服务器是使用专用访问（VNet 集成）创建的，则在创建后，不能将其更改为公共访问（允许的 IP 地址），反之亦然 
-- TLS/SSL 默认处于启用状态，并且无法禁用。
-- 服务器支持的最低 TLS 版本为 TLS 1.2。 请参阅[使用 TLS/SSL 连接](./how-to-connect-tls-ssl.md)了解详情。
 
 ### <a name="stopstart-operation"></a>停止/启动操作
 - 区域冗余 HA 配置（主要配置和备用配置）不支持。

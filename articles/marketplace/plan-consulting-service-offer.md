@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ffca17efa59a0544e06bb3bd4fbae1d812f2823
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588465"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819206"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>如何规划商业市场中的咨询服务产品/服务
 
@@ -90,11 +90,11 @@ ms.locfileid: "97588465"
 * 概念证明：进行有限范围的实现，以确定解决方案是否满足客户的要求。
 * 研讨会：在客户场地开展的交互式活动。 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。
 
-服务的持续时间（最多 10 周）应固定且预先确定。 必须在产品/服务列表中清楚标注服务持续时间。
+服务的持续时间（最多 12 个月）应预先确定。 必须在产品/服务列表中显式定义服务持续时间。
 
 ## <a name="customer-leads"></a>潜在顾客
 
-必须将产品/服务连接到客户关系管理 (CRM) 系统以收集客户信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们用于查找产品/服务的在线商店将发送到你配置的 CRM 系统。 商业市场支持不同类型的 CRM 系统，同时支持使用 Azure 表或通过 Power Automate 配置 HTTPS 终结点的选项。
+必须将产品/服务连接到客户关系管理 (CRM) 系统以收集客户信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的在线商店将发送到你配置的 CRM 系统。 商业市场支持不同类型的 CRM 系统，同时支持使用 Azure 表或通过 Power Automate 配置 HTTPS 终结点的选项。
 
 你可以在创建产品/服务期间或之后随时添加或修改 CRM 连接。 有关详细指导，请参阅[来自商业市场产品/服务的客户销售线索](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
@@ -160,7 +160,7 @@ ms.locfileid: "97588465"
 
 搜索关键字（可选）：最多可输入三个搜索关键字，客户可以使用它们在在线商店中查找你的产品/服务。 不需要包含产品/服务的“名称”和“说明” 。
 
-持续时间：你的咨询服务产品/服务必须有一个预定的持续时间（最多 10周）。
+持续时间：你的咨询服务产品/服务必须有一个预定的持续时间（最多 12 个月）。
 
 联系信息：在合作伙伴中心中，系统将要求你提供公司中两名成员的姓名、电子邮件地址和电话号码（你可以是两个联系人之一）。 我们将使用此信息与你沟通有关产品/服务的信息。 此信息不会向客户显示，但可能会提供给云解决方案提供商 (CSP) 合作伙伴。
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: mijos, rarayudu, azla
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: f3ea6476173e7be1a6239e97ef2e5fbb5257aead
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: db99be325d50f89e6e1c96c1471431815b98936d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322214"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824303"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>在 Azure 逻辑应用中设置客户管理的密钥以加密集成服务环境 (ISE) 的静态数据
 
@@ -30,6 +30,8 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
   * Azure 政府：亚利桑那州、弗吉尼亚州和德克萨斯州。
 
 * 只能在创建 ISE 时指定客户管理的密钥，事后无法指定。 创建 ISE 之后无法禁用此密钥。 目前不支持为 ISE 轮换客户管理的密钥。
+
+* 存储客户管理的密钥的密钥保管库必须与 ISE 位于同一 Azure 区域。
 
 * 为了支持客户管理的密钥，ISE 要求启用[系统分配的或用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 ISE 通过此标识验证对位于或连接到 Azure 虚拟网络中的受保护资源（例如虚拟机和其他系统或服务）的访问权限。 这样，无需使用凭据即可登录。
 

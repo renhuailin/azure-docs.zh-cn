@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/08/2021
-ms.openlocfilehash: 62e7f1b770db05f4dcd5d84cdc5f6a769566a4bd
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/16/2021
+ms.openlocfilehash: 7a0b2f24b10ace50d1e994284cb48b50799dfd57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867586"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618184"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -44,7 +44,7 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
 
     授权 IP 范围仅适用于标准负载均衡器。
 
-- > 若要从不同 Azure 订阅附加 AKS 群集，你（你的 Azure AD 帐户）必须被授予 AKS 群集上的“参与者”角色。 查看 [Azure 门户](https://ms.portal.azure.com/)中的访问权限。
+- 若要从不同 Azure 订阅附加 AKS 群集，你（你的 Azure AD 帐户）必须被授予 AKS 群集上的“参与者”角色。 查看 [Azure 门户](https://ms.portal.azure.com/)中的访问权限。
 
 - 如果要使用专用 AKS 群集（使用 Azure 专用链接），则必须先创建群集，然后再将其附加到工作区。 有关详细信息，请参阅[创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
 
@@ -57,9 +57,7 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
     > [!IMPORTANT]
     > 开发/测试群集不适用于生产级别的流量，并且可能会增加推理时间。 开发/测试群集也不保证容错能力。
 
-- 创建或附加群集时，如果该群集将用于生产，则它必须包含至少 12 个虚拟 CPU。 虚拟 CPU 数量的计算公式为群集中的节点数乘以所选 VM 大小提供的核心数。 例如，如果使用的 VM 大小为“Standard_D3_v2”（具有 4 个虚拟核心），则应该为节点数选择 3 个或更大的数字。
-
-    对于开发/测试群集，建议至少拥有 2 个虚拟 CPU。
+- 创建或附加群集时，如果群集将用于生产，则它必须至少包含 3 个节点。 对于“开发测试”群集，它必须至少包含 1 个节点。
 
 - Azure 机器学习 SDK 不支持缩放 AKS 群集。 要缩放群集中的节点，请在 Azure 机器学习工作室中使用 AKS 群集的 UI。 只能更改节点计数，不能更改群集的 VM 大小。 有关缩放 AKS 群集中节点的详细信息，请参阅以下文章：
 

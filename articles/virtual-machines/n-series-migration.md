@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 08/15/2020
 ms.author: iafinder
-ms.openlocfilehash: 7ba99bca79fe25a740d11cfe5d87937d13ccdfd0
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 574118d9bd8c400eccb48ed551d6059c0dfc7bf2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272325"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551674"
 ---
 # <a name="migration-guide-for-gpu-compute-workloads-in-azure"></a>Azure 中 GPU 计算工作负载的迁移指南
 
@@ -95,7 +95,7 @@ NC v2 系列虚拟机原本是针对 AI 和深度学习工作负载设计的旗�
 
 ### <a name="breaking-changes"></a>重大更改
 
-#### <a name="select-target-size-for-migration"></a>选择要迁移到的目标大小
+#### <a name="select-target-size-for-migration"></a>选择迁移的目标大小
 
 评估当前使用情况后，确定需要哪种类型的 GPU VM。 根据工作负载要求，可以使用几个不同的选项。
 
@@ -112,7 +112,7 @@ NC v2 系列虚拟机原本是针对 AI 和深度学习工作负载设计的旗�
 
 #### <a name="resize-the-current-virtual-machine"></a>调整当前虚拟机的大小
 
-可以[通过 Azure 门户或 PowerShell 调整虚拟机的大小](./windows/resize-vm.md)。 也可以[使用 Azure CLI 调整虚拟机的大小](./linux/change-vm-size.md)。
+可以[调整虚拟机大小](resize-vm.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

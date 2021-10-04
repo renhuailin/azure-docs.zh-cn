@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d310b56bf0851c5ef33a05421c731279fedbabbe
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a43758b1c20b3983b4b2c0920481549ddccb0328
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543999"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708845"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
 语音合成标记语言 (SSML) 是一种基于 XML 的标记语言，可让开发人员指定如何使用文本转语音服务将输入文本转换为合成语音。 与纯文本相比，SSML 可让开发人员微调音节、发音、语速、音量以及文本转语音输出的其他属性。 SSML 可自动处理正常的停顿（例如，在句号后面暂停片刻），或者在以问号结尾的句子中使用正确的音调。
 
-SSML 的语音服务实现基于万维网联合会的[语音合成标记语言版本 1.0](https://www.w3.org/TR/speech-synthesis)。
+SSML 的语音服务实现基于万维网联合会的[语音合成标记语言版本 1.0](https://www.w3.org/TR/2004/REC-speech-synthesis-20040907/)。
 
 > [!IMPORTANT]
 > 中文、日语和韩语字符按两个字符计费。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
@@ -127,6 +127,8 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
+* `en-US-SaraNeural`
+* `ja-JP-NanamiNeural`
 * `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
@@ -136,6 +138,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 * `zh-CN-XiaoruiNeural`
+* `zh-CN-XiaoshuangNeural`
 
 可进一步更改说话风格的强度，更好地适应你的使用场景。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。 目前，中文（普通话，简体）神经语音支持说话风格调整。
 
@@ -183,6 +186,12 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
 |                         | `style="newscast"`        | 以通用、随意的语气发布一般新闻   |
 | `en-US-GuyNeural`       | `style="newscast"`        | 以正式专业的语气叙述新闻 |
+| `en-US-SaraNeural`      | `style="cheerful"`        | 表达积极愉快的语气    |
+|                         | `style="sad"`             | 表达悲伤语气   |
+|                         | `style="angry"`           | 表达生气和厌恶的语气   |
+| `ja-JP-NanamiNeural`    | `style="cheerful"`        | 表达积极愉快的语气   |
+|                         | `style="chat"`            | 表达轻松随意的语气   |
+|                         | `style="customerservice"` | 以友好热情的语气为客户提供支持    |
 | `pt-BR-FranciscaNeural` | `style="calm"`            | 以沉着冷静的态度说话。 语气、音调、韵律与其他语音类型相比要统一得多。                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
@@ -243,6 +252,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 | `zh-CN-XiaoruiNeural`   | `style="sad"`             | 以较高的音调、较低的强度和较低的音量表达悲伤的语气。 这种情绪的常见特征是说话时呜咽或哭泣。         |
 |                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
 |                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                       |
+| `zh-CN-XiaoshuangNeural`   | `style="chat"` | 表达轻松随意的语气。 |
 
 使用此表检查支持的角色及其定义。
 
@@ -564,6 +574,9 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 `lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alias` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 </a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。 当 `alias` 与 `phoneme` 元素具有相同的 `grapheme` 元素时，`alias` 具有更高的优先级。
 
+> [!IMPORTANT]
+> `lexeme` 元素在自定义词典中区分大小写。 例如，如果只提供 `lexeme`“Hello”的音素，则它对于 `lexeme`“Hello”不起作用。
+
 词典包含必需的 `xml:lang` 属性，用于指示要应用词典的区域设置。 根据设计，一个自定义词典仅限于一种区域设置，因此将其应用于另一种区域设置将无法正常工作。
 
 需要特别注意的是，不能使用自定义词典直接设置短语的发音。 如果需要设置首字母缩略词或缩写词的发音，请首先提供 `alias`，再将 `phoneme` 与该 `alias` 关联。 例如：
@@ -578,6 +591,8 @@ A good place to start is by trying out the slew of educational apps that are hel
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
+> [!Note]
+> 国际音标中的音节边界为“.”。
 
 也可以直接提供所需的`alias`作为首字母缩略词或缩写词。 例如：
 ```xml
@@ -612,6 +627,8 @@ A good place to start is by trying out the slew of educational apps that are hel
 ```
 
 使用此自定义词典时，“BTW”将读作“By the way”。 “Benigni”将通过提供的 IPA“bɛˈniːnji”朗读。
+
+由于很容易在自定义词典中出错，Microsoft 提供了[用于自定义词典的验证工具](https://github.com/jiajzhan/Custom-Lexicon-Validation)。 它提供可帮助你查找错误的详细错误消息。 在将包含自定义词典的 SSML 发送到语音服务之前，应通过此工具检查自定义词典。 
 
 **限制**
 - 文件大小：自定义词典文件大小的最大限制为 100KB。如果超过此大小，合成请求会失败。

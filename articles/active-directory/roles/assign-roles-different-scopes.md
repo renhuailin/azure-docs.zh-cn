@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 08/12/2021
+ms.date: 09/13/2021
 ms.author: absinh
 ms.reviewer: rolyon
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02c9e92d09ce929b47cd9a71559eabb4e7c40858
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 951431ca79bfeb182eb5d1252851edb767120039
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862755"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658234"
 ---
 # <a name="assign-azure-ad-roles-at-different-scopes"></a>在不同的作用域分配 Azure AD 角色
 
-本文介绍如何在不同的作用域分配 Azure AD 角色。 要了解 Azure AD 中的作用域，请参阅此文档 - [Azure AD 中的 RBAC 概述](custom-overview.md)。 一般情况下，你必须位于希望角色分配被限制的作用域内。 例如，如果要分配[管理单元](administrative-units.md)作用域的支持管理员角色，应转到“Azure AD”>“管理单元”> {administrative unit} >“角色和管理员”，然后进行角色分配。 这会创建一个以管理单元（而不是整个租户）为作用域的角色分配。
+在 Azure Active Directory (Azure AD) 中，通常分配 Azure AD 角色，以便它们应用于整个租户。 但是，还可以为不同的资源（例如管理单元或应用程序注册）分配 Azure AD 角色。 例如，可以分配支持管理员角色，使之仅应用于特定的管理单元，而不是整个租户。 角色分配应用到的资源也称为范围。 本文介绍如何在租户范围、管理单元范围和应用程序注册范围分配 Azure AD 角色。 有关范围的详细信息，请参阅 [Azure AD 中的 RBAC 概述](custom-overview.md#scope)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -123,13 +123,15 @@ ms.locfileid: "121862755"
 
 ## <a name="assign-roles-scoped-to-an-administrative-unit"></a>分配以管理单元为作用域的角色
 
+本部分介绍如何在[管理单元](administrative-units.md)范围分配角色。
+
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
 1. 选择“Azure Active Directory”>“管理单元”查看所有管理单元的列表。
 
-1. 选择一个管理单元。
+1. 选择管理单元。
 
     ![Azure Active Directory 中的管理单元。](./media/assign-roles-different-scopes/admin-units.png)
 
@@ -226,6 +228,8 @@ ms.locfileid: "121862755"
 >此处 directoryScopeId 被指定为 /administrativeUnits/foo，而不是 /foo。 这是默认设置。 作用域 /administrativeUnits/foo 表示主体可以管理管理单元的成员（基于分配给她的角色），而不是管理单元本身。 /foo 作用域表示主体可以管理该 Azure AD 对象本身。 在后续部分中，你将看到作用域为 /foo，因为以应用注册为作用域的角色授予管理对象本身的特权。
 
 ## <a name="assign-roles-scoped-to-an-app-registration"></a>分配以应用注册为作用域的角色
+
+本部分介绍如何在应用程序注册范围分配角色。
 
 ### <a name="azure-portal"></a>Azure 门户
 

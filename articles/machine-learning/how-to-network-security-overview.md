@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 06/11/2021
+ms.date: 09/24/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: f68550d6e72f0c2bd162c10d1d5340edcca61f6f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1844d9a84714231aac7cb399239c31a6af62661c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039019"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093509"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>使用虚拟网络 (VNet) 保护 Azure 机器学习工作区资源
@@ -50,13 +50,13 @@ ms.locfileid: "123039019"
 | 场景 | 工作区 |  关联的资源 | 训练计算环境 | 推理计算环境 |
 |-|-|-|-|-|-|
 |**无虚拟网络**| 公共 IP | 公共 IP | 公共 IP | 公共 IP |
-|**确保虚拟网络中的资源安全**| 专用 IP（专用终结点） | 公共 IP（服务终结点） <br> \- 或 - <br> 专用 IP（专用终结点） | 专用 IP | 专用 IP  | 
+|**确保虚拟网络中的资源安全**| 专用 IP（专用终结点） | 公共 IP（服务终结点） <br> \- 或 - <br> 专用 IP（专用终结点） | 公共 IP | 专用 IP  | 
 
 * 工作区 - 为你的工作区创建专用终结点。 专用终结点通过多个专用 IP 地址将工作区连接到 VNet。
-* **关联的资源**：使用服务终结点或专用终结点连接到工作区资源，如 Azure 存储、Azure Key Vault 和 Azure 容器服务。
+* 关联的资源 - 使用服务终结点或专用终结点连接到工作区资源，如 Azure 存储、Azure Key Vault。 对于 Azure 容器服务，请使用专用终结点。
     * **服务终结点**：为 Azure 服务提供虚拟网络的标识。 在虚拟网络中启用服务终结点后，可以添加虚拟网络规则，以在虚拟网络中保护 Azure 服务资源。 服务终结点使用公共 IP。
     * **专用终结点**：是网络接口，可安全地连接到由 Azure 专用链接提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。
-* **训练计算访问**：使用专用 IP 地址安全访问训练计算目标，如 Azure 机器学习计算实例和 Azure 机器学习计算群集。 
+* 训练计算访问：使用公共 IP 地址安全访问训练计算目标，如 Azure 机器学习计算实例和 Azure 机器学习计算群集。 
 * **推理计算访问**：使用专用 IP 地址访问 Azure Kubernetes 服务 (AKS) 计算群集。
 
 
@@ -74,12 +74,12 @@ ms.locfileid: "123039019"
 
 1. 创建[启用了专用链接的工作区](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)，以启用 VNet 与工作区之间的通信。
 1. 使用服务终结点或专用终结点将以下服务添加到虚拟网络 。 还要允许受信任的 Microsoft 服务访问以下服务：
-    
+
     | 服务 | 终结点信息 | 允许受信任的信息 |
     | ----- | ----- | ----- |
     | __Azure Key Vault__| [服务终结点](../key-vault/general/overview-vnet-service-endpoints.md)</br>[专用终结点](../key-vault/general/private-link-service.md) | [允许受信任的 Microsoft 服务绕过此防火墙](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
-    | __Azure 存储帐户__ | [服务终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)</br>[专用终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) | [授予对受信任的 Azure 服务的访问权限](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
-    | __Azure 容器注册表__ | [服务终结点](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)</br>[专用终结点](../container-registry/container-registry-private-link.md) | [允许受信任的服务](../container-registry/allow-access-trusted-services.md) |
+    | __Azure 存储帐户__ | [服务和专用终结点](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[专用终结点](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [授予对受信任的 Azure 服务的访问权限](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure 容器注册表__ | [专用终结点](../container-registry/container-registry-private-link.md) | [允许受信任的服务](../container-registry/allow-access-trusted-services.md) |
 
 
 ![显示工作区和关联的资源如何通过服务终结点或 VNet 内的专用终结点相互通信的体系结构关系图](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -98,7 +98,7 @@ ms.locfileid: "123039019"
 
 若要保护训练环境，请执行以下步骤：
 
-1. [在虚拟网络中创建 Azure 机器学习计算实例和计算机群集](how-to-secure-training-vnet.md#compute-instance)以运行训练作业。
+1. [在虚拟网络中创建 Azure 机器学习计算实例和计算机群集](how-to-secure-training-vnet.md#compute-cluster)以运行训练作业。
 1. [允许入站通信](how-to-secure-training-vnet.md#required-public-internet-access)，以便管理服务可以将作业提交到你的计算资源。 
 
 ![显示如何确保托管计算群集和实例安全的体系结构示意图](./media/how-to-network-security-overview/secure-training-environment.png)

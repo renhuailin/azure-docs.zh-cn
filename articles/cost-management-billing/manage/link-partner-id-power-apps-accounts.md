@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb6608e03debb7811497a1347c718bb2845cf87c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c7bc61691f0035c9f1aa0361ae3439cfb1e1485e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688206"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604391"
 ---
 # <a name="link-a-partner-id-to-your-power-apps-accounts"></a>将合作伙伴 ID 链接到 Power Apps 帐户
 
@@ -39,7 +39,7 @@ ms.locfileid: "110688206"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 可以在 Azure 门户中[链接到合作伙伴 ID](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade)。
-1. 输入组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。 请务必使用合作伙伴配置文件中显示的“关联 MPN ID”。  
+1. 输入组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。 请务必使用合作伙伴中心配置文件中显示的“关联 MPN ID”。 这通常称为[合作伙伴位置帐户 MPN ID](/partner-center/account-structure)。  
     :::image type="content" source="./media/link-partner-id-power-apps-accounts/link-partner-id.png" alt-text="显示指向合作伙伴 ID 窗口的链接的屏幕截图。" lightbox="./media/link-partner-id-power-apps-accounts/link-partner-id.png" :::
 1. 要将合作伙伴 ID 链接到另一个客户，请切换目录。 在“切换目录”下，选择适当的目录。  
     :::image type="content" source="./media/link-partner-id-power-apps-accounts/switch-directory.png" alt-text="显示可在其中切换目录的“目录 + 订阅”窗口的屏幕截图。" lightbox="./media/link-partner-id-power-apps-accounts/switch-directory.png" :::

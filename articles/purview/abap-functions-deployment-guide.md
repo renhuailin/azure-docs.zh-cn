@@ -6,13 +6,13 @@ ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.openlocfilehash: 9bd3c315fcc15317a9fa483289fdc326ca6aa47f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: f235e4b293c47c9d2833732fa6333a350a1fd272
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614354"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210338"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>部署适用于 SAP R3 系列桥接的元数据提取 ABAP 函数模块
 
@@ -65,7 +65,7 @@ SAP Business Suite 4 HANA (S/4HANA), ECC, 和 R/3 ERP 桥接可用于从 SAP 服
 
 1. 创建函数组后，选中该函数组。
 
-2. 在存储库浏览器中，右键单击函数组名称，选择“创建”，然后选择“函数模块”。
+2. 在存储库浏览器中，选择并按住（或右键单击）函数组名称，选择“创建”，然后选择“函数模块”。
 
 3. 在“函数模块”字段中，输入 `Z_MITI_DOWNLOAD`。 用正确的说明填充“短文本”输入。
 
@@ -112,7 +112,7 @@ SAP Business Suite 4 HANA (S/4HANA), ECC, 和 R/3 ERP 桥接可用于从 SAP 服
 
 7. 保存函数（按 Ctrl+S 或选择“函数模块”，然后在主菜单选择“保存”）。
 
-8. 单击工具栏上的“激活”图标 (Ctrl+F3) 并在对话框窗口中选择“继续”按钮。 如果出现提示，则应选择要随主函数模块一起激活的生成的包含。
+8. 选择工具栏上的“激活”图标 (Ctrl+F3) 并在对话框窗口中选择“继续”按钮。 如果出现提示，则应选择要随主函数模块一起激活的生成的包含。
 
 ### <a name="testing-the-function"></a>测试函数
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 81c6e58e34f30d5736c40c77a308321dee28ae34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14c269ae8cb29d32659f500357bbc7bcd81e6d8c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224259"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578919"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
@@ -48,11 +48,12 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 ## <a name="configure-password-complexity"></a>配置密码复杂性
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-3. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
-4. 选择“用户流”。
-2. 选择一个用户流，然后单击“属性”  。
-3. 在“密码复杂性”  下，将此用户流的密码复杂性更改为“简单”  、“强”  或“自定义”  。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
+1. 选择“用户流”。
+1. 选择一个用户流，然后单击“属性”  。
+1. 在“密码复杂性”  下，将此用户流的密码复杂性更改为“简单”  、“强”  或“自定义”  。
 
 ### <a name="comparison-chart"></a>比较图表
 
@@ -222,12 +223,13 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 ### <a name="upload-the-files"></a>上传文件
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-4. 选择“标识体验框架”。
-5. 在“自定义策略”页上，单击“上传策略”。
-6. 选择“覆盖策略(若存在)”，然后搜索并选择 TrustFrameworkExtensions.xml 文件。
-7. 单击“上载” 。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 选择“标识体验框架”。
+1. 在“自定义策略”页上，单击“上传策略”。
+1. 选择“覆盖策略(若存在)”，然后搜索并选择 TrustFrameworkExtensions.xml 文件。
+1. 单击“上载” 。
 
 ### <a name="run-the-policy"></a>运行策略
 

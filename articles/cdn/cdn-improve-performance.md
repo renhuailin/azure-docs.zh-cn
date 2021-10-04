@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 545125877f8ef8e3b01aa24f6d65dbff6756c391
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 7ab5e46f81e4102428e50a63247e59279a83e899
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445113"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661310"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 文件压缩是提高文件传输速度和增加页面加载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 文件压缩可以减少带宽成本，并为用户提供更快的响应体验。
@@ -97,7 +97,8 @@ ms.locfileid: "122445113"
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Microsoft 的 Azure CDN 标准版配置文件
 
 对于“Microsoft 提供的 Azure CDN 标准版”配置文件，只有符合条件的文件才能进行压缩。 要符合压缩条件，文件必须：
-- 为已[配置为压缩](#enabling-compression)的 MIME 类型。
+- 为已[配置为压缩](#enabling-compression)的 MIME 类型
+- 源响应中只有“标识”Content-Encoding 标头
 - 大于 1 KB
 - 小于 8 MB
 

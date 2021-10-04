@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 10/21/2020
+ms.date: 09/14/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 960cbbac9a1fc8c3a87296ddcb0711564417c647
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 0ec2e8a6e575206dc57ddc1892e83b99295aed17
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548139"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>在 Azure 机器学习中设置带有 Azure Databricks 和 AutoML 的开发环境 
 
@@ -53,7 +53,7 @@ Azure Databricks 与 Azure 机器学习及其 AutoML 功能集成。
 | 设置 |适用于| Value |
 |----|---|---|
 | 群集名称 |通用| yourclustername |
-| Databricks 运行时版本 |通用| Runtime 7.1 (scala 2.21、spark 3.0.0) - 非 ML|
+| Databricks 运行时版本 |通用| 运行时 7.3 LTS 或更低版本 - 非 ML|
 | Python 版本 |通用| 3 |
 | 辅助角色类型 <br>（确定最大并发迭代数） |自动化机器学习<br>（仅限）| 首选内存优化的 VM |
 | 工作节点 |通用| 2 个或以上 |
@@ -97,7 +97,7 @@ Azure Databricks 与 Azure 机器学习及其 AutoML 功能集成。
   ![适用于 Databricks 的 Azure 机器学习 SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>将带有 AutoML 的 Azure ML SDK 添加到 Databricks
-如果使用 Databricks Runtime 7.1 或更高版本（非 ML）创建了该群集，请在笔记本的第一个单元格中运行以下命令，以安装 AML SDK。
+如果群集是使用 Databricks Runtime 7.1 - 7.3 LTS（而不是 ML）创建的，请在笔记本的第一个单元格中运行以下命令以安装 AML SDK。
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 29a97d3f68d9b097bfe5c67f0b5832271fa983e1
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 39b385096fadb5d410520889c0aa8f1a07f1a67a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123031112"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616548"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Azure Cosmos DB 集成缓存 - 概述（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -88,13 +88,17 @@ Azure Cosmos DB 集成缓存是一种内存中缓存，可帮助你在请求量�
 
 ## <a name="integrated-cache-consistency"></a>集成缓存一致性
 
-集成缓存仅支持最终[一致性](consistency-levels.md)。 如果读取具有一致的前缀、会话、有限过期或强一致性，它将始终绕过集成缓存。
+集成缓存仅支持会话和最终[一致性](consistency-levels.md)。 如果读取具有一致的前缀、有限过期或强一致性，它将始终绕过集成缓存。
 
-要为所有读取操作配置最终一致性，最简单的方法是[在帐户级别设置](consistency-levels.md#configure-the-default-consistency-level)最终一致性。 但是，如果只希望某些读取具有最终一致性，也可在[请求级别](how-to-manage-consistency.md#override-the-default-consistency-level)配置一致性。
+若要为所有读取操作配置会话或最终一致性，最简单的方法是[在帐户级别设置最终一致性](consistency-levels.md#configure-the-default-consistency-level)。 但是，如果只希望某些读取具有最终一致性，也可在[请求级别](how-to-manage-consistency.md#override-the-default-consistency-level)配置一致性。
+
+### <a name="session-consistency"></a>会话一致性
+
+[会话一致性](consistency-levels.md#session-consistency)是最广泛用于单个区域以及全球分步式 Azure Cosmos DB 帐户的一致性级别。 使用会话一致性时，单客户端会话可以读取自己的写入内容。 使用集成缓存时，执行写入操作的会话外部的客户端会看到最终一致性。
 
 ## <a name="maxintegratedcachestaleness"></a>MaxIntegratedCacheStaleness
 
-`MaxIntegratedCacheStaleness` 是缓存点读取和查询的最大可接受过期时间。 `MaxIntegratedCacheStaleness` 可在请求级别进行配置。 例如，如果将 `MaxIntegratedCacheStaleness` 设置为 2 小时，则仅当数据的有效期小于 2 小时的时候，请求才会返回缓存数据。 若要增加利用集成缓存进行重复读取的可能性，应将 `MaxIntegratedCacheStaleness` 设置为业务要求允许的最高值。
+`MaxIntegratedCacheStaleness` 是缓存点读取和查询的最大可接受过期时间，而与所选一致性无关。 `MaxIntegratedCacheStaleness` 可在请求级别进行配置。 例如，如果将 `MaxIntegratedCacheStaleness` 设置为 2 小时，则仅当数据的有效期小于 2 小时的时候，请求才会返回缓存数据。 若要增加利用集成缓存进行重复读取的可能性，应将 `MaxIntegratedCacheStaleness` 设置为业务要求允许的最高值。
 
 请注意，在最终填充缓存的请求上配置时，`MaxIntegratedCacheStaleness` 不会影响该请求的缓存时间。 `MaxIntegratedCacheStaleness` 在尝试使用缓存数据时强制执行一致性。 没有全局 TTL 或缓存保留设置，因此，只有在集成缓存已满或新读取运行时间的 `MaxIntegratedCacheStaleness` 低于当前缓存条目的保留期时，才会从缓存中逐出数据。
 
@@ -154,7 +158,7 @@ Azure Cosmos DB 集成缓存是一种内存中缓存，可帮助你在请求量�
 
 ### <a name="i-cant-tell-if-my-requests-are-hitting-the-integrated-cache"></a>我无法判断请求是否命中集成缓存
 
-检查 `IntegratedCacheItemHitRate` 和 `IntegratedCacheQueryHitRate`。 如果这两个值都为零，则请求不会命中集成缓存。 检查是否正在使用专用网关连接字符串，[通过网关模式连接](sql-sdk-connection-modes.md)，并[设置了最终一致性](consistency-levels.md#configure-the-default-consistency-level)。
+检查 `IntegratedCacheItemHitRate` 和 `IntegratedCacheQueryHitRate`。 如果这两个值都为零，则请求不会命中集成缓存。 检查是否正在使用专用网关连接字符串、是否[通过网关模式进行连接](sql-sdk-connection-modes.md)，以及是否[设置了会话或最终一致性](consistency-levels.md#configure-the-default-consistency-level)。
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-small"></a>我想要了解专用网关是否过小
 
@@ -178,5 +182,5 @@ Azure Cosmos DB 集成缓存是一种内存中缓存，可帮助你在请求量�
 - [配置集成缓存](how-to-configure-integrated-cache.md)
 - [专用网关](dedicated-gateway.md)
 - 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
-    - 如果你只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
-    - 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
+    - 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    - 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

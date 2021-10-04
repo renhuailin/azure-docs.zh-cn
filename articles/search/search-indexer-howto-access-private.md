@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: 519181594bd98068cd66413a114a61d794b4d411
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 79bb517faffdda7e9d7ddef45e7b52f5e81dc201
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195616"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589675"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>建立通过专用终结点的索引器连接
 
@@ -43,6 +43,7 @@ Azure 认知搜索通过管理 REST API 提供 [CreateOrUpdate](/rest/api/search
 | Azure 资源 | 组 ID |
 | --- | --- |
 | Azure 存储 - Blob | `blob`|
+| Azure 存储 - Data Lake Storage Gen2 | `dfs` 和 `blob` |
 | Azure 存储 - 表 | `table`|
 | Azure Cosmos DB - SQL API | `Sql`|
 | Azure SQL 数据库 | `sqlServer`|
@@ -53,6 +54,9 @@ Azure 认知搜索通过管理 REST API 提供 [CreateOrUpdate](/rest/api/search
 你还可以使用[受支持的 API 列表](/rest/api/searchmanagement/2021-04-01-preview/private-link-resources/list-supported)查询支持出站专用终结点连接的 Azure 资源。
 
 在本文的剩余部分中，会结合使用 Azure 门户（如果愿意也可使用 [Azure CLI](/cli/azure/)）和 [Postman](https://www.postman.com/)（如果愿意，也可使用类似于 [curl](https://curl.se/) 的任何其他 HTTP 客户端）来演示 REST API 调用。
+
+> [!NOTE]
+> 若要创建与 Azure Data Lake Storage Gen2 的专用终结点连接，需要创建两个专用终结点。 一个具有 groupID“dfs”的专用终结点和另一个具有 groupID“blob”的专用终结点。
 
 ## <a name="set-up-indexer-connection-through-private-endpoint"></a>通过专用终结点设置索引器连接
 

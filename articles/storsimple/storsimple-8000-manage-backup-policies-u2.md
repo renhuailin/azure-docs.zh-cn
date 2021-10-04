@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/05/2017
+ms.date: 09/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 9ec2bbef88ed185c3927676ad2596269783d1850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fde4e0784e81c2127dd8097495b48ce506059bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85515627"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589356"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>在 Azure 门户中使用 StorSimple 设备管理器服务管理备份策略
 
@@ -76,6 +76,23 @@ ms.locfileid: "85515627"
 
 [!INCLUDE [storsimple-8000-add-modify-backup-schedule](../../includes/storsimple-8000-add-modify-backup-schedule-u2.md)]
 
+## <a name="disable-a-schedule"></a>禁用计划
+
+如果需要禁用备份策略，请使用以下过程。 例如，你可能需要禁用已达到备份上限（64 个）的计划，然后添加新计划以进行更多备份。
+
+若要禁用备份策略，请执行以下步骤：
+
+1.  转到 StorSimple 设备并单击“备份策略”。
+
+1.  从备份策略向下钻取到要禁用的计划：
+
+    1. 单击备份策略以打开策略的“计划”。 
+
+    1. 再次单击该策略以打开“计划”对话框。
+
+    1. 单击要禁用的计划以打开“配置计划”。 在“状态”字段中，选择“已禁用” 。
+
+  [ ![此图说明了为 StorSimple 设备上的备份策略禁用某个计划的步骤。每个步骤都进行了编号，并突出显示了屏幕标签和在其上进行了操作的项。](./media/storsimple-8000-manage-backup-policies-u2/modify-schedule-illustration.png) ](./media/storsimple-8000-manage-backup-policies-u2/modify-schedule-illustration.png#lightbox)
 
 ## <a name="add-or-remove-a-volume"></a>添加或删除卷
 

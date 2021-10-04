@@ -2,13 +2,13 @@
 title: Bicep 中的数据类型
 description: 描述 Bicep 中可用的数据类型
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: f520e314aff783a78e1656c16721f0fb8504215b
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/22/2021
+ms.openlocfilehash: 936f17273a95ceb77030497b27f7f73defc37896
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221687"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624391"
 ---
 # <a name="data-types-in-bicep"></a>Bicep 中的数据类型
 
@@ -21,7 +21,7 @@ ms.locfileid: "123221687"
 * array
 * bool
 * int
-* object
+* 对象 (object)
 * secureObject - Bicep 中的修饰符指示
 * secureString - Bicep 中的修饰符指示
 * string
@@ -49,7 +49,7 @@ var mixedArray = [
 ]
 ```
 
-Bicep 中的数组基于 0。 在下面的示例中，表达式 `exampleArray[0]` 的计算结果为 1，`exampleArray[2]` 的计算结果为 3。 索引器的索引本身可能是另一个表达式。 表达式 `exampleArray[index]` 的计算结果为 2。 只允许对数组类型的表达式使用整数索引器。
+Bicep 中的数组下标从零开始。 在下面的示例中，表达式 `exampleArray[0]` 的计算结果为 1，`exampleArray[2]` 的计算结果为 3。 索引器的索引本身可能是另一个表达式。 表达式 `exampleArray[index]` 的计算结果为 2。 只允许对数组类型的表达式使用整数索引器。
 
 ```bicep
 var index = 1
@@ -77,7 +77,7 @@ param exampleBool bool = true
 param exampleInt int = 1
 ```
 
-对于作为内联参数传递的整数，值的范围可能受限于用于部署的 SDK 或命令行工具。 例如，使用 PowerShell 部署 Bicep 时，整数类型的范围可能为 -2147483648 到 2147483647。 为了避免此限制，请在[参数文件](parameter-files.md)中指定大的整数值。 资源类型会针对整数属性应用其自己的限制。
+在 Bicep 中，整数为 64 位整数。 作为内联参数传递时，值的范围可能受用于部署的 SDK 或命令行工具的限制。 例如，使用 PowerShell 部署 Bicep 时，整数类型的范围可能为 -2147483648 到 2147483647。 为了避免此限制，请在[参数文件](parameter-files.md)中指定大的整数值。 资源类型会针对整数属性应用其自己的限制。
 
 目前不支持浮点、十进制或二进制格式。
 
@@ -107,7 +107,7 @@ var a = {
   }
 }
 
-output result1 string = a.b // returns 'Dev' 
+output result1 string = a.b // returns 'Dev'
 output result2 int = a.c // returns 42
 output result3 bool = a.d.e // returns true
 ```
@@ -131,7 +131,7 @@ output accessorResult string = environmentSettings['dev'].name
 
 ## <a name="strings"></a>字符串
 
-在 Bicep 中，字符串用单引号标记，并且必须在单行中声明。 允许码位介于 0 和 10FFFF 之间的所有 Unicode 字符 。
+在 Bicep 中，字符串用单引号标记，并且必须在单行中声明。 允许使用码位在 0 到 10FFFF 之间的所有 Unicode 字符。
 
 ```bicep
 param exampleString string = 'test value'
@@ -141,20 +141,20 @@ param exampleString string = 'test value'
 
 | 转义序列 | 表示的值 | 注释 |
 |:-|:-|:-|
-| \\ | \ ||
-| \' | ' ||
-| \n | 换行 (LF) ||
-| \r | 匹配回车符 (CR) ||
-| \t | 制表符 ||
-| \u{x} | Unicode 码位 x | x 表示介于 0 和 10FFFF（包含这两个值）之间的十六进制码位  。 允许前导零。 FFFF 上方的码位作为代理项对发出。
-| \$ | $ | 只有在后跟 { 时，才需要进行转义。 |
+| `\\` | `\` ||
+| `\'` | `'` ||
+| `\n` | 换行 (LF) ||
+| `\r` | 匹配回车符 (CR) ||
+| `\t` | 制表符 ||
+| `\u{x}` | Unicode 码位 `x` | x 表示 0（含）到 10FFFF（含）之间的十六进制码位值。 允许前导零。 高于 FFFF 的码位以代理项对的形式发出。
+| `\$` | `$` | 仅在后跟 `{` 时进行转义。 |
 
 ```bicep
 // evaluates to "what's up?"
 var myVar = 'what\'s up?'
 ```
 
-Bicep 中的所有字符串都支持内插。 若要注入表达式，请用 ${ 和 *}` 将表达式括起来。 引用的表达式不能跨多行显示。
+Bicep 中的所有字符串都支持内插。 若要注入表达式，请将其括在 `${` 和 `}` 中。 引用的表达式不能跨多行显示。
 
 ```bicep
 var storageName = 'storage${uniqueString(resourceGroup().id)}
@@ -162,7 +162,7 @@ var storageName = 'storage${uniqueString(resourceGroup().id)}
 
 ## <a name="multi-line-strings"></a>多行字符串
 
-在 Bicep 中，多线串定义在 3 个单引号字符 (`'''`) 后跟可选换行符（开始序列）和 3 个单引号字符（`'''` - 结束序列）之间。 在开始序列和结束序列之间输入的字符是逐字读取的，无需或不可能进行转义。
+在 Bicep 中定义多行字符串时，开头使用三个单引号字符 (`'''`)，并且可以选择在其后跟随一个换行符（开始序列），结尾使用三个单引号字符（`'''` - 结束序列）。 在开始序列和结束序列之间输入的字符是逐字读取的，无需或不可能进行转义。
 
 > [!NOTE]
 > 由于 Bicep 分析程序按原样读取所有字符，因此换行符可解释为 `\r\n` 或 `\n`，具体取决于 Bicep 文件的行尾。
@@ -216,6 +216,27 @@ param password string
 @secure()
 param configValues object
 ```
+
+## <a name="data-type-assignability"></a>数据类型可分配性
+
+在 Bicep 中，可以将一个类型（源类型）的值分配给另一个类型（目标类型）。 下表显示哪个源类型（水平列出）可以或不可以分配给哪个目标类型（垂直列出）。 在表中，`X` 表示可分配，空白表示不可分配，`?` 表示仅当其类型兼容时才可分配。
+
+| 类型 | `any` | `error` | `string` | `number` | `int` | `bool` | `null` | `object` | `array` | 命名资源 | 命名模块 | `scope` |
+|-|-|-|-|-|-|-|-|-|-|-|-|-|
+| `any`          |X| |X|X|X|X|X|X|X|X|X|X|
+| `error`        | | | | | | | | | | | | |
+| `string`       |X| |X| | | | | | | | | |
+| `number`       |X| | |X|X| | | | | | | |
+| `int`          |X| | | |X| | | | | | | |
+| `bool`         |X| | | | |X| | | | | | |
+| `null`         |X| | | | | |X| | | | | |
+| `object`       |X| | | | | | |X| | | | |
+| `array`        |X| | | | | | | |X| | | |
+| `resource`     |X| | | | | | | | |X| | |
+| `module`       |X| | | | | | | | | |X| |
+| `scope`        | | | | | | | | | | | |?|
+| 命名资源 |X| | | | | | |?| |?| | |
+| 命名模块   |X| | | | | | |?| | |?| |
 
 ## <a name="next-steps"></a>后续步骤
 

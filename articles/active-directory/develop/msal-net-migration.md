@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: d920cb4fc16f618c0c1945daf8e58246549d8b9d
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 5a3dd6265c9fbefb85cf72b80473538983c682b7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112966547"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214696"
 ---
 # <a name="migrating-applications-to-msalnet-or-microsoftidentityweb"></a>将应用程序迁移到 MSAL.NET 或 Microsoft.Identity.Web
 
@@ -52,7 +52,9 @@ MSAL 具有优于 ADAL 的优势。 下面列出了其中一些优势：
  
 ## <a name="next-steps"></a>后续步骤
 
+- 了解[公共客户端和机密客户端应用程序](msal-client-applications.md)。
 - 了解如何[将基于 ASP.NET MVC 或 .NET Classic 构建的机密客户端应用程序从 ADAL.NET 迁移到 MSAL.NET](msal-net-migration-confidential-client.md)。
+- 了解如何[将基于 .NET 或 .NET Classic 构建的公共客户端应用程序从 ADAL.NET 迁移到 MSAL.NET](msal-net-migration-public-client.md)。
 - 详细了解 [ADAL.NET 与 MSAL.NET 应用之间的差异](msal-net-differences-adal-net.md)。
 - 了解如何将基于 ASP.NET Core 构建的机密客户端应用程序从 ADAL.NET 迁移到 Microsoft.Identity.Web：
   -  [Web 应用](https://github.com/AzureAD/microsoft-identity-web/wiki/web-apps#migrating-from-previous-versions--adding-authentication)

@@ -1,22 +1,22 @@
 ---
 title: 向/从 Azure 表存储复制数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何使用数据工厂将数据从支持的源存储复制到 Azure 表存储，或从表存储复制到支持的接收器存储。
+description: 了解如何使用 Azure 数据工厂或 Synapse Analytics 管道将数据从支持的源存储复制到 Azure 表存储，或从表存储复制到支持的接收器存储。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: d61d2b7799ab715532b703b5c73ad045e8be6226
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: e88b4cfc2d49aa072021ed81dc4c1eb7105c6112
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123313896"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811962"
 ---
-# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
+# <a name="copy-data-to-and-from-azure-table-storage-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 向/从 Azure 表存储复制数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-table-connector.md)
@@ -24,7 +24,7 @@ ms.locfileid: "123313896"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动向/从 Azure 表存储复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
+本文概述如何使用 Azure 数据工厂和 Synapse Analytics 管道中的复制活动向/从 Azure 表存储复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -51,7 +51,7 @@ ms.locfileid: "123313896"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -73,7 +73,7 @@ ms.locfileid: "123313896"
 
 ### <a name="use-an-account-key"></a>使用帐户密钥
 
-可以使用帐户密钥创建 Azure 存储链接服务。 该链接服务将存储的全局访问权限提供给数据工厂。 支持以下属性。
+可以使用帐户密钥创建 Azure 存储链接服务。 帐户密钥会为该服务提供对存储的全局访问权限。 支持以下属性。
 
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
@@ -130,12 +130,12 @@ ms.locfileid: "123313896"
 
 ### <a name="use-shared-access-signature-authentication"></a>使用共享访问签名身份验证
 
-还可以使用共享访问签名创建存储链接服务。 这样，便可以将存储中所有/特定资源的受限/限时访问权限提供给数据工厂。
+还可以使用共享访问签名创建存储链接服务。 共享访问签名会为该服务提供对存储中所有/特定资源的受限/限时访问权限。
 
 共享访问签名对存储帐户中的资源提供委托访问。 可以使用共享访问签名授权客户端在指定时间内，以一组指定权限有限访问存储帐户中的对象。 无需共享帐户访问密钥。 共享访问签名是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 若要使用共享访问签名访问存储资源，客户端只需将共享访问签名传入到相应的构造函数或方法。 有关共享访问签名的详细信息，请参阅[共享访问签名：了解共享访问签名模型](../storage/common/storage-sas-overview.md)。
 
 > [!NOTE]
-> 数据工厂现在同时支持 **服务共享访问签名** 和 **帐户共享访问签名**。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。 
+> 现在支持服务共享访问签名和帐户共享访问签名 。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。 
 
 > [!TIP]
 > 若要为存储帐户生成服务共享访问签名，可以执行以下 PowerShell 命令。 请替换占位符并授予所需的权限。
@@ -147,7 +147,7 @@ ms.locfileid: "123313896"
 | properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
-| sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure Key Vault 中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
+| sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString 以安全存储它。 还可以将 SAS 令牌放在 Azure Key Vault 中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
@@ -205,7 +205,7 @@ ms.locfileid: "123313896"
 
 在创建共享访问签名 URI 时，请注意以下几点：
 
-- 根据链接服务（读取、写入、读/写）在数据工厂中的用法，设置针对对象的适当读/写权限。
+- 根据链接服务（读取、写入、读/写）的用法，设置针对对象的适当读/写权限。
 - 根据需要设置“到期时间”。 确保存储对象的访问权限不会在管道的活动期限内过期。
 - 应该根据需要在正确的表级别创建 URI。
 
@@ -240,12 +240,12 @@ ms.locfileid: "123313896"
 }
 ```
 
-### <a name="schema-by-data-factory"></a>数据工厂的构架
+### <a name="schema-inference-by-the-service"></a>由服务进行的架构推理
 
-对于无架构的数据存储（如 Azure 表），数据工厂将使用下列方式之一推断架构：
+对于无架构的数据存储（如 Azure 表），服务将使用下列方式之一推断架构：
 
-* 如果在复制活动中指定列映射，数据工厂会使用源端列列表来检索数据。 在这种情况下，如果行不包含列的值，则会为其提供 null 值。
-* 如果未在复制活动中指定列映射，则数据工厂使用数据中的第一行来推断架构。 在这种情况下，如果第一行不包含完整架构（例如某些列具有 null 值），则复制操作的结果中会丢失部分列。
+* 如果在复制活动中指定列映射，服务会使用源端列列表来检索数据。 在这种情况下，如果行不包含列的值，则会为其提供 null 值。
+* 如果未在复制活动中指定列映射，服务会使用数据中的第一行来推断架构。 在这种情况下，如果第一行不包含完整架构（例如某些列具有 null 值），则复制操作的结果中会丢失部分列。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -266,7 +266,7 @@ ms.locfileid: "123313896"
 >[!NOTE]
 >[Azure 表服务会强制](/rest/api/storageservices/setting-timeouts-for-table-service-operations) Azure 表查询操作在 30 秒后超时。 通过[针对查询的设计](../storage/tables/table-storage-design-for-query.md)一文了解如何优化查询。
 
-在 Azure 数据工厂中，如果要根据日期/时间类型列筛选数据，请参阅以下示例：
+如果要根据日期/时间类型列筛选数据，请参阅以下示例：
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
@@ -352,11 +352,11 @@ ms.locfileid: "123313896"
 
 ## <a name="data-type-mapping-for-azure-table"></a>Azure 表的数据类型映射
 
-从/向 Azure 表复制数据时，以下映射用于从 Azure 表数据类型映射到数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从/向 Azure 表复制数据时，以下映射用于从 Azure 表数据类型映射到在服务内部使用的临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 将数据移入和移出 Azure 表时，[Azure 表定义的以下映射](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)将从 Azure 表 OData 类型转换为 .NET 类型，反之亦然。
 
-| Azure 表数据类型 | 数据工厂临时数据类型 | 详细信息 |
+| Azure 表数据类型 | 临时服务数据类型 | 详细信息 |
 |:--- |:--- |:--- |
 | Edm.Binary |byte[] |一个字节数组，最大 64 KB。 |
 | Edm.Boolean |bool |一个布尔值。 |
@@ -372,4 +372,4 @@ ms.locfileid: "123313896"
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

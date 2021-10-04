@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37192a38376536143472f406b9fd11c490a98e5b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96741756"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578811"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>监视和查看本地 Azure AD 密码保护环境的日志
 
@@ -124,36 +124,55 @@ PasswordSetErrors               : 1
 > [!NOTE]
 > 此 cmdlet 的工作方式是远程查询每个 DC 代理服务的管理事件日志。 如果事件日志包含大量事件，此 cmdlet 可能需要很长时间才能完成。 此外，对大型数据集执行批量网络查询可能会影响域控制器的性能。 因此，在生产环境中应慎用此 cmdlet。
 
-### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>事件 ID 10014（密码更改成功）的示例事件日志消息
+### <a name="sample-event-log-messages"></a>示例事件日志消息
+
+#### <a name="event-id-10014-successful-password-change"></a>事件 ID 10014（密码更改成功）
 
 ```text
 The changed password for the specified user was validated as compliant with the current Azure password policy.
 
- UserName: BPL_02885102771
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>事件 ID 10017 和 30003（密码设置失败）的示例事件日志消息
-
-10017:
+#### <a name="event-id-10017-failed-password-change"></a>事件 ID 10017（密码更改失败）：
 
 ```text
 The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
 
- UserName: BPL_03283841185
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-30003:
+#### <a name="event-id-30003-failed-password-change"></a>事件 ID 30003（密码更改失败）：
 
 ```text
 The reset password for the specified user was rejected because it matched at least one of the tokens present in the per-tenant banned password list of the current Azure password policy.
 
- UserName: BPL_03283841185
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>事件 ID 30001（由于没有可用的策略，因此已接受密码）的示例事件日志消息
+#### <a name="event-id-10024-password-accepted-due-to-policy-in-audit-only-mode"></a>事件 ID 10024（由于策略处于仅审核模式，因此已接受密码）
+
+``` text
+The changed password for the specified user would normally have been rejected because it did not comply with the current Azure password policy. The current Azure password policy is con-figured for audit-only mode so the password was accepted. Please see the correlated event log message for more details. 
+ 
+UserName: SomeUser
+FullName: Some User
+```
+
+#### <a name="event-id-30008-password-accepted-due-to-policy-in-audit-only-mode"></a>事件 ID 30008（由于策略处于仅审核模式，因此已接受密码）
+
+``` text
+The changed password for the specified user would normally have been rejected because it matches at least one of the tokens present in the per-tenant banned password list of the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted. 
+
+UserName: SomeUser
+FullName: Some User
+
+```
+
+#### <a name="event-id-30001-password-accepted-due-to-no-policy-available"></a>事件 ID 30001（由于没有可用的策略，因此已接受密码）
 
 ```text
 The password for the specified user was accepted because an Azure password policy is not available yet
@@ -180,7 +199,7 @@ This condition may be caused by one or more of the following reasons:%n
    Resolution steps: ensure network connectivity exists to the domain.
 ```
 
-### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>事件 ID 30006（正在实施新策略）的示例事件日志消息
+#### <a name="event-id-30006-new-policy-being-enforced"></a>事件 ID 30006（正在强制实施新策略）
 
 ```text
 The service is now enforcing the following Azure password policy.
@@ -192,13 +211,12 @@ The service is now enforcing the following Azure password policy.
  Enforce tenant policy: 1
 ```
 
-### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>事件 ID 30019（已禁用 Azure AD 密码保护）的示例事件日志消息
+#### <a name="event-id-30019-azure-ad-password-protection-is-disabled"></a>事件 ID 30019（Azure AD 密码保护已禁用）
 
 ```text
 The most recently obtained Azure password policy was configured to be disabled. All passwords submitted for validation from this point on will automatically be considered compliant with no processing performed.
 
 No further events will be logged until the policy is changed.%n
-
 ```
 
 ## <a name="dc-agent-operational-log"></a>DC 代理操作日志

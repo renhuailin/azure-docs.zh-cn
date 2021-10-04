@@ -1,20 +1,19 @@
 ---
 title: 在 Azure 自动化中管理角色权限和安全性
 description: 本文介绍如何使用 Azure 基于角色的访问控制 (Azure RBAC)，这种访问控制可用于对 Azure 资源进行访问管理。
-keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 08/26/2021
-ms.topic: conceptual
+ms.date: 09/10/2021
+ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 30bc4a306eecf8be3177fb045f9904d775cab9bd
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 67f7076852ffe810e213fcc7d8cb6188d6db405d
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215001"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057845"
 ---
-# <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
+# <a name="manage-role-permissions-and-security-in-automation"></a>在自动化中管理角色权限和安全性
 
 Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行访问管理。 使用 [Azure RBAC](../role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅向用户、组和应用程序授予执行作业所需的访问权限。 可以使用 Azure 门户、Azure 命令行工具或 Azure 管理 API 将基于角色的访问权限授予用户。
 
@@ -80,6 +79,12 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 |Microsoft.Resources/deployments/*|创建和管理资源组部署。|
 |Microsoft.Resources/subscriptions/resourceGroups/read|读取资源组部署。|
 |Microsoft.Support/*|创建和管理支持票证。|
+|Microsoft.Insights/ActionGroups/*|读取/写入/删除操作组。|
+|Microsoft.Insights/ActivityLogAlerts/*|读取/写入/删除活动日志警报。|
+|Microsoft.Insights/diagnosticSettings/*|读取/写入/删除诊断设置。|
+|Microsoft.Insights/MetricAlerts/*|读取/写入/删除准实时指标警报。|
+|Microsoft.Insights/ScheduledQueryRules/*|在 Azure Monitor 中读取/写入/删除日志警报。|
+|Microsoft.OperationalInsights/workspaces/sharedKeys/action|列出 Log Analytics 工作区的密钥|
 
 > [!NOTE]
 > 如果针对目标资源设置了适当权限，则可使用“自动化参与者”角色通过托管标识访问任何资源，或者通过运行方式帐户访问。 默认情况下，自动化运行方式帐户配置有订阅的参与者权限。 遵循最小权限原则，仔细分配仅执行 runbook 所需的权限。 例如，如果启动或停止 Azure VM 仅需自动化帐户，则分配给运行方式帐户或托管标识的权限需仅用于启动或停止 VM。 同样，如果 runbook 正在从 Blob 存储读取，则分配只读权限。
@@ -290,15 +295,15 @@ Microsoft 打算从 Log Analytics 参与者角色中删除自动化帐户权限�
 
    ```json
    {
-    "properties": {
-        "roleName": "Automation Account Contributor (Custom)",
-        "description": "Allows access to manage Azure Automation and its resources",
-        "assignableScopes": [
+    "properties": {
+        "roleName": "Automation Account Contributor (Custom)",
+        "description": "Allows access to manage Azure Automation and its resources",
+        "assignableScopes": [
             "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
         ],
-        "permissions": [
+        "permissions": [
             {
-                "actions": [
+                "actions": [
                     "Microsoft.Authorization/*/read",
                     "Microsoft.Insights/alertRules/*",
                     "Microsoft.Insights/metrics/read",
@@ -308,9 +313,9 @@ Microsoft 打算从 Log Analytics 参与者角色中删除自动化帐户权限�
                     "Microsoft.Automation/automationAccounts/*",
                     "Microsoft.Support/*"
                 ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
             }
         ]
       }
@@ -330,28 +335,28 @@ Microsoft 打算从 Log Analytics 参与者角色中删除自动化帐户权限�
 
 1. 将以下 JSON 语法复制并粘贴到某个文件中。 将该文件保存在本地计算机或 Azure 存储帐户中。 在 JSON 文件中，请将 AssignableScopes 属性的值替换为订阅 GUID。
 
-    ```json
-    { 
-        "Name": "Automation account Contributor (custom)",
-        "Id": "",
-        "IsCustom": true,
-        "Description": "Allows access to manage Azure Automation and its resources",
-        "Actions": [
-            "Microsoft.Authorization/*/read",
-            "Microsoft.Insights/alertRules/*",
-            "Microsoft.Insights/metrics/read",
-            "Microsoft.Insights/diagnosticSettings/*",
-            "Microsoft.Resources/deployments/*",
-            "Microsoft.Resources/subscriptions/resourceGroups/read",
-            "Microsoft.Automation/automationAccounts/*",
-            "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "AssignableScopes": [
-            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
-        ] 
-    } 
-    ```
+   ```json
+   { 
+       "Name": "Automation account Contributor (custom)",
+       "Id": "",
+       "IsCustom": true,
+       "Description": "Allows access to manage Azure Automation and its resources",
+       "Actions": [
+           "Microsoft.Authorization/*/read",
+           "Microsoft.Insights/alertRules/*",
+           "Microsoft.Insights/metrics/read",
+           "Microsoft.Insights/diagnosticSettings/*",
+           "Microsoft.Resources/deployments/*",
+           "Microsoft.Resources/subscriptions/resourceGroups/read",
+           "Microsoft.Automation/automationAccounts/*",
+           "Microsoft.Support/*"
+       ],
+       "NotActions": [],
+       "AssignableScopes": [
+           "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+       ] 
+   } 
+   ```
 
 1. 按照[使用 Azure PowerShell 创建或更新 Azure 自定义角色](./../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template)中所述完成剩余步骤。 自定义角色可能需要几分钟的时间才能显示在每个位置。
 

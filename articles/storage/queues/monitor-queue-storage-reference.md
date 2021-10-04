@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 506f5a46688f597b8ac5db341c5bbe5eb5fb67c8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 58f2771cd8bf9704a098cdad5d72131b0a67bad1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763138"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804426"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure 队列存储监视数据参考
 
@@ -61,7 +61,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 ## <a name="resource-logs-preview"></a>资源日志（预览版）
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中用于预览测试。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 不支持经典存储帐户。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云和美国政府云区域中用于预览测试。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 不支持经典存储帐户。
 
 下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure 存储资源日志时这些资源日志的属性。 属性描述了操作、服务以及用来执行该操作的授权类型。
 

@@ -3,16 +3,20 @@ title: 使用 Bicep 将资源部署到租户
 description: 介绍如何在 Bicep 文件中的租户范围内部署资源。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 3f446670cd85daa5b541cc9b5858ab768ac8411d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fe5b8a1a17af47570bb2399172866a1e720b0bab
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453402"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793714"
 ---
 # <a name="tenant-deployments-with-bicep-file"></a>使用 Bicep 文件的租户部署
 
 随着组织的成熟，你可能需要在 Azure AD 租户中定义和分配[策略](../../governance/policy/overview.md)或 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。 通过租户级模板，可以声明的方式在全局级别应用策略和分配角色。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解部署范围并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用 Bicep 将资源部署到订阅、管理组和租户](/learn/modules/deploy-resources-scopes-bicep/)。
 
 ## <a name="supported-resources"></a>支持的资源
 
@@ -146,7 +150,7 @@ resource mgName_resource 'Microsoft.Management/managementGroups@2020-02-01' = {
 
 ### <a name="scope-to-management-group"></a>将范围设定为管理组
 
-若要以租户内的管理组为目标，请添加一个[模块](modules.md)。 使用 [managementGroup 函数](bicep-functions-scope.md#managementgroup)设置其 `scope` 属性。 提供管理组名称。
+若要以租户中的管理组为目标，请添加[模块](modules.md)。 使用 [managementGroup 函数](bicep-functions-scope.md#managementgroup)设置其 `scope` 属性。 提供管理组名称。
 
 ```bicep
 targetScope = 'tenant'

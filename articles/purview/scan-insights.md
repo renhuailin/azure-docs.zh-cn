@@ -4,19 +4,22 @@ description: 本操作指南介绍了如何查看和使用数据的 Purview Insi
 author: SunetraVirdi
 ms.author: suvirdi
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 11/20/2020
-ms.openlocfilehash: 3c5a3b9b312e093d7bee5c0c555e8e2eab0c531b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 17935a3dc4aef3c5cd9d6b1e162a2002b3c06e2c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731140"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211350"
 ---
 # <a name="scan-insights-on-your-data-in-azure-purview"></a>Azure Purview 中的数据扫描见解
 
 本操作指南介绍了如何访问、查看和筛选数据的 Azure Purview 扫描见解报表。
+
+> [!IMPORTANT]
+> Azure Purview 见解目前处于预览阶段。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 在本操作指南中，你将学习如何：
 
@@ -31,7 +34,7 @@ ms.locfileid: "121731140"
 * 设置 Azure 资源，并在该帐户中填充数据。
 * 设置并完成数据源扫描。
 
-有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)。
+有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)。
 
 ## <a name="use-purview-scan-insights"></a>使用 Purview 扫描见解
 
@@ -45,11 +48,11 @@ ms.locfileid: "121731140"
 
    :::image type="content" source="./media/scan-insights/portal-access.png" alt-text="从 Azure 门户启动 Purview":::
 
-1. 在 Purview 的“主页”上，选择“查看见解”磁贴来访问“见解”:::image type="icon" source="media/scan-insights/ico-insights.png" border="false"::: 区域  。
+1. 在 Purview 主页上，选择左侧菜单中的“见解”。
 
    :::image type="content" source="./media/scan-insights/view-insights.png" alt-text="在 Azure 门户中查看见解":::
 
-1. 在“见解”:::image type="icon" source="media/scan-insights/ico-insights.png" border="false"::: 区域中，选择“扫描”以显示 Purview“扫描见解”报表。  
+1. 在“见解”区域中，选择“扫描”以显示 Purview“扫描见解”报表。  
 
 ### <a name="view-high-level-kpis-to-show-count-of-scans-by-status-and-deep-dive-into-each-scan"></a>查看高级 KPI 以按状态显示扫描计数，并深入了解每个扫描
  
@@ -62,7 +65,7 @@ ms.locfileid: "121731140"
 
     :::image type="content" source="./media/scan-insights/main-graph.png" alt-text="查看一段时间内的扫描状态":::
 
-4. 单击“扫描名称”，会将你连接到 Azure Purview 的“数据映射”体验内的扫描历史记录，可进一步探索特定扫描。  在运行历史记录页上，可以获取有助于进一步调查失败的运行 ID。
+4. 选择“扫描名称”，会将你连接到 Azure Purview 的“数据映射”体验内的扫描历史记录，可进一步探索特定扫描。  在运行历史记录页上，可以获取有助于进一步调查失败的运行 ID。
 
     :::image type="content" source="./media/scan-insights/scan-status.png" alt-text="查看扫描详细信息":::
 

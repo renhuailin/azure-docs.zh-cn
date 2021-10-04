@@ -6,13 +6,13 @@ ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: b222e4ff519fbe2fbb4fa58b39555ac9fead0917
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 09/15/2021
+ms.openlocfilehash: 99f3687fc3b43461abb48b85c48cfb15286b262f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352909"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557750"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解如何将预留折扣应用于 Azure 数据资源管理器
 
@@ -20,7 +20,7 @@ ms.locfileid: "96352909"
 
 ## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 
-预留折扣的性质是“不用就会失效”  。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
+预留折扣的性质是“不用就会失效”。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
 
 关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
 
@@ -29,29 +29,29 @@ ms.locfileid: "96352909"
 预留折扣按小时应用于 Azure 数据资源管理器加价使用量。 对于非整小时运行的 Azure 数据资源管理器资源，预留折扣会自动应用到与预留属性匹配的其他数据资源管理器资源。 折扣可以应用到同时运行的 Azure 数据资源管理器资源。 如果与预留属性匹配的 Azure 数据资源管理器资源不是整小时运行，则无法获得该小时的完整预留折扣权益。
 
 > [!NOTE]
-> * 强烈建议为用于 Azure 数据资源管理器群集以最大限度节省预留容量的虚拟机购买[预留容量](../../virtual-machines/prepay-reserved-vm-instances.md)  。
+> * 强烈建议为用于 Azure 数据资源管理器群集以最大限度节省预留容量的虚拟机购买[预留容量](../../virtual-machines/prepay-reserved-vm-instances.md)。
 > * 购买预留会向所有区域应用折扣。
 
 ## <a name="examples"></a>示例
 
 以下示例演示如何根据购买的加价单位及其运行时间来应用 Azure 数据资源管理器预留容量折扣。
-例如，引擎群集大小为2 个 D11_v2 VM 时，按需计费的总费用为每小时四个单位的 Azure 数据资源管理器加价计价器  。
+例如，对于引擎群集大小：2 D11_v2 VM，按需收费的总费用为每小时四个单位的 Azure 数据资源管理器加价计价器。
 
-**应用场景 1**
+**方案 1**
 
 为 8 个 Azure 数据资源管理器加价单位购买 Azure 数据资源管理器预留容量。 运行一个总共 16 个核心、具有 2 个 D13_v2 VM 的引擎群集，该群集与剩余的预留属性匹配，费用为每小时 16 个单位的 Azure 数据资源管理器加价单位。 对于 8 核的 Azure 数据资源管理器计算用量，你需要按即用即付价格付费；对于 8 核的 Azure 数据资源管理器加价单位用量，获得一小时的预留折扣。
 
 余下的示例假设购买的 Azure 数据资源管理器预留容量用于 1 个 16 核的 Azure 数据资源管理器群集，并且剩余的预留属性与正在运行的 Azure 数据资源管理器群集匹配。
 
-**应用场景 2**
+**方案 2**
 
 在两个不同的区域分别运行两个八核的 Azure 数据资源管理器引擎群集，为时一小时。 对这两个群集以及它们使用的 16 个单位的 Azure 数据资源管理器加价单位应用 16 核的预留折扣。
 
-**应用场景 3**
+**方案 3**
 
 下午 1 点到 1:30 运行一个 16 核的 Azure 数据资源管理器引擎群集。 下午 1:30 到 2:00 运行另一个 16 核的 Azure 数据资源管理器引擎群集。 预留折扣同时涵盖这两个数据库。
 
-**应用场景 4**
+**方案 4**
 
 下午 1 点到下午 1:45 运行一个 16 核的 Azure 数据资源管理器引擎群集。 下午 1:30 到 2:00 运行另一个 16 核的 Azure 数据资源管理器引擎群集。 对于 15 分钟的重叠期，向你收取即用即付费用。 预留折扣应用于剩余时间的 Azure 数据资源管理器加价用量。
 

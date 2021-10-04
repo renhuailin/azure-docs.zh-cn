@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f44504e48279d0a8bd8f8e95e98113a4647023
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 10b622a707747e69beba1e2be5f989ee2bcd4804
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515251"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804549"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps"></a>访问 Azure 静态 Web 应用的用户信息
 
@@ -152,6 +152,8 @@ public static class StaticWebAppsAuth
 ```
 
 ---
+
+当用户登录时，`x-ms-client-principal` 标头将通过 Static Web Apps 边缘节点添加到用户信息请求中。
 
 <sup>1</sup>[fetch](https://caniuse.com/#feat=fetch) API 和 [await](https://caniuse.com/#feat=mdn-javascript_operators_await) 运算符在 Internet Explorer 中不支持。
 

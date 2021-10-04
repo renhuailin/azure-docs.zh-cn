@@ -2,13 +2,13 @@
 title: 模板函数 - 字符串
 description: 介绍了可在 Azure 资源管理器模板（ARM 模板）中用来处理字符串的函数。
 ms.topic: conceptual
-ms.date: 05/14/2021
-ms.openlocfilehash: e8b99fa59feeaa3e18916089c71f17fa48627627
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/09/2021
+ms.openlocfilehash: bfb80a03012f5a1a9194789a82efd5cccd1eb18d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959489"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806996"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM 模板的字符串函数
 
@@ -54,9 +54,9 @@ ms.locfileid: "111959489"
 
 返回输入字符串的 base64 表示形式。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |string |要以 base64 表示形式返回的值。 |
 
@@ -66,48 +66,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)演示如何使用 base64 函数。
+以下示例演示如何使用 `base64` 函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -119,9 +84,9 @@ ms.locfileid: "111959489"
 
 将 base64 表示形式转换为 JSON 对象。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |string |要转换为 JSON 对象的 base64 表示形式。 |
 
@@ -131,48 +96,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)使用 base64ToJson 函数转换 base64 值：
+以下示例使用 `base64ToJson` 函数转换 base64 值：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -184,9 +114,9 @@ ms.locfileid: "111959489"
 
 将 base64 表示形式转换为字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |string |要转换为字符串的 base64 表示形式。 |
 
@@ -196,48 +126,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json)使用 base64ToString 函数转换 base64 值：
+以下示例使用 `base64ToString` 函数转换 base64 值：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -249,9 +144,9 @@ ms.locfileid: "111959489"
 
 合并多个字符串值并返回串联的字符串，或合并多个数组并返回串联的数组。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或数组 |要串联的第一个字符串或数组。 |
 | 其他参数 |否 |字符串或数组 |要串联的按顺序排列的其他字符串或数组。 |
@@ -264,72 +159,23 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json)演示如何组合两个字符串值并返回串联的字符串。
+以下示例演示如何组合两个字符串值并返回串联的字符串。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "prefix": {
-      "type": "string",
-      "defaultValue": "prefix"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "concatOutput": {
-      "type": "string",
-      "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/concat-string.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)演示如何组合两个数组。
+以下示例演示如何组合两个数组。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [
-        "1-1",
-        "1-2",
-        "1-3"
-      ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [
-        "2-1",
-        "2-2",
-        "2-3"
-      ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "return": {
-      "type": "array",
-      "value": "[concat(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/concat-array.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -339,9 +185,9 @@ ms.locfileid: "111959489"
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -352,64 +198,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json)演示如何对不同的类型使用 contains：
+以下示例演示如何对不同的类型使用 contains：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "OneTwoThree"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'e')]"
-    },
-    "stringFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'z')]"
-    },
-    "objectTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'one')]"
-    },
-    "objectFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'a')]"
-    },
-    "arrayTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'three')]"
-    },
-    "arrayFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'four')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/contains.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -424,9 +219,9 @@ ms.locfileid: "111959489"
 
 将一个值转换为数据 URI。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |是 |string |要转换为数据 URI 的值。 |
 
@@ -436,39 +231,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json)将值转换为数据 URI，然后将数据 URI 转换为字符串：
+以下示例将值转换为数据 URI，然后将数据 URI 转换为字符串。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "dataFormattedString": {
-      "type": "string",
-      "defaultValue": "data:;base64,SGVsbG8sIFdvcmxkIQ=="
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "dataUriOutput": {
-      "value": "[dataUri(parameters('stringToTest'))]",
-      "type": "string"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[dataUriToString(parameters('dataFormattedString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/datauri.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -479,9 +248,9 @@ ms.locfileid: "111959489"
 
 将采用数据 URI 格式的值转换为字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |是 |string |要转换的数据 URI 值。 |
 
@@ -491,39 +260,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json)将值转换为数据 URI，然后将数据 URI 转换为字符串：
+以下示例模板将值转换为数据 URI，然后将数据 URI 转换为字符串。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "dataFormattedString": {
-      "type": "string",
-      "defaultValue": "data:;base64,SGVsbG8sIFdvcmxkIQ=="
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "dataUriOutput": {
-      "value": "[dataUri(parameters('stringToTest'))]",
-      "type": "string"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[dataUriToString(parameters('dataFormattedString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/datauri.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -534,9 +277,9 @@ ms.locfileid: "111959489"
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -546,48 +289,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json)检查某个数组、对象和字符串是否为空。
+以下示例检查某个数组、对象和字符串是否为空。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": []
-    },
-    "testObject": {
-      "type": "object",
-      "defaultValue": {}
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": ""
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testArray'))]"
-    },
-    "objectEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testObject'))]"
-    },
-    "stringEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/empty.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -599,9 +307,9 @@ ms.locfileid: "111959489"
 
 确定某个字符串是否以某个值结尾。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |string |包含要查找的项的值。 |
 | stringToFind |是 |string |要查找的值。 |
@@ -612,45 +320,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json)演示如何使用 startsWith 和 endsWith 函数：
+以下示例说明如何使用 `startsWith` 和 `endsWith` 函数：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "startsTrue": {
-      "value": "[startsWith('abcdef', 'ab')]",
-      "type": "bool"
-    },
-    "startsCapTrue": {
-      "value": "[startsWith('abcdef', 'A')]",
-      "type": "bool"
-    },
-    "startsFalse": {
-      "value": "[startsWith('abcdef', 'e')]",
-      "type": "bool"
-    },
-    "endsTrue": {
-      "value": "[endsWith('abcdef', 'ef')]",
-      "type": "bool"
-    },
-    "endsCapTrue": {
-      "value": "[endsWith('abcdef', 'F')]",
-      "type": "bool"
-    },
-    "endsFalse": {
-      "value": "[endsWith('abcdef', 'e')]",
-      "type": "bool"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/startsendswith.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -665,9 +341,9 @@ ms.locfileid: "111959489"
 
 返回字符串的第一个字符，或数组的第一个元素。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
@@ -677,36 +353,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json)演示如何对数组和字符串使用 first 函数。
+以下示例演示如何对不同的类型使用 first 函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[first(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[first('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/first.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -717,13 +370,13 @@ ms.locfileid: "111959489"
 
 基于输入值创建带格式的字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | formatString | 是 | string | 复合格式字符串。 |
 | arg1 | 是 | 字符串、整数或布尔值 | 要包含在带格式字符串中的值。 |
-| 其他参数 | 否 | 字符串、整数或布尔值 | 要包含在带格式字符串中的附加值。 |
+| 其他参数 | 否 | 字符串、整数或布尔值 | 要包含在带格式字符串中的其他值。 |
 
 ### <a name="remarks"></a>备注
 
@@ -731,40 +384,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下示例模板演示如何使用 format 函数。
+如何使用此格式函数的演示示例如下。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "greeting": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "name": {
-      "type": "string",
-      "defaultValue": "User"
-    },
-    "numberToFormat": {
-      "type": "int",
-      "defaultValue": 8175133
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "formatTest": {
-      "type": "string",
-      "value": "[format('{0}, {1}. Formatted number: {2:N0}', parameters('greeting'), parameters('name'), parameters('numberToFormat'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/format.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | formatTest | String | Hello, User。 带格式的数字：8,175,133 |
 
@@ -774,12 +400,12 @@ ms.locfileid: "111959489"
 
 基于以参数形式提供的值创建一个采用全局唯一标识符格式的值。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |string |哈希函数中用于创建 GUID 的值。 |
-| 根据需要使用其他参数 |否 |string |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
+| 根据需要使用的其他参数 |否 |string |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
 
 ### <a name="remarks"></a>备注
 
@@ -813,31 +439,9 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json)从 guid 返回结果：
+以下示例返回来自 `guid` 的结果：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "guidPerSubscription": {
-      "value": "[guid(subscription().subscriptionId)]",
-      "type": "string"
-    },
-    "guidPerResourceGroup": {
-      "value": "[guid(resourceGroup().id)]",
-      "type": "string"
-    },
-    "guidPerDeployment": {
-      "value": "[guid(resourceGroup().id, deployment().name)]",
-      "type": "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/guid.json":::
 
 ## <a name="indexof"></a>indexOf
 
@@ -845,9 +449,9 @@ ms.locfileid: "111959489"
 
 返回字符串中某个值的第一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |string |包含要查找的项的值。 |
 | stringToFind |是 |string |要查找的值。 |
@@ -858,41 +462,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json)演示如何使用 indexOf 和 lastIndexOf 函数：
+以下示例说明如何使用 `indexOf` 和 `lastIndexOf` 函数：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "firstT": {
-      "value": "[indexOf('test', 't')]",
-      "type": "int"
-    },
-    "lastT": {
-      "value": "[lastIndexOf('test', 't')]",
-      "type": "int"
-    },
-    "firstString": {
-      "value": "[indexOf('abcdef', 'CD')]",
-      "type": "int"
-    },
-    "lastString": {
-      "value": "[lastIndexOf('abcdef', 'AB')]",
-      "type": "int"
-    },
-    "notFound": {
-      "value": "[indexOf('abcdef', 'z')]",
-      "type": "int"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/indexof.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -914,9 +490,9 @@ ms.locfileid: "111959489"
 
 返回字符串的最后一个字符，或数组的最后一个元素。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -926,36 +502,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json)演示如何对数组和字符串使用 last 函数。
+以下示例演示如何对数组和字符串使用 `last` 函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[last(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[last('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/last.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -966,9 +519,9 @@ ms.locfileid: "111959489"
 
 返回字符串中某个值的最后一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |string |包含要查找的项的值。 |
 | stringToFind |是 |string |要查找的值。 |
@@ -979,41 +532,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json)演示如何使用 indexOf 和 lastIndexOf 函数：
+以下示例说明如何使用 `indexOf` 和 `lastIndexOf` 函数：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "firstT": {
-      "value": "[indexOf('test', 't')]",
-      "type": "int"
-    },
-    "lastT": {
-      "value": "[lastIndexOf('test', 't')]",
-      "type": "int"
-    },
-    "firstString": {
-      "value": "[indexOf('abcdef', 'CD')]",
-      "type": "int"
-    },
-    "lastString": {
-      "value": "[lastIndexOf('abcdef', 'AB')]",
-      "type": "int"
-    },
-    "notFound": {
-      "value": "[indexOf('abcdef', 'z')]",
-      "type": "int"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/indexof.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1027,9 +552,9 @@ ms.locfileid: "111959489"
 
 返回字符串中的字符数、数组中的元素数或对象中的根级属性数。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
@@ -1039,59 +564,13 @@ ms.locfileid: "111959489"
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json)演示如何对数组和字符串使用 length：
+以下示例演示如何对数组和字符串使用 `length` 函数：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "propA": "one",
-        "propB": "two",
-        "propC": "three",
-        "propD": {
-          "propD-1": "sub",
-          "propD-2": "sub"
-        }
-      }
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayLength": {
-      "type": "int",
-      "value": "[length(parameters('arrayToTest'))]"
-    },
-    "stringLength": {
-      "type": "int",
-      "value": "[length(parameters('stringToTest'))]"
-    },
-    "objectLength": {
-      "type": "int",
-      "value": "[length(parameters('objectToTest'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/length.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -1123,75 +602,23 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下示例模板演示一个带有新标识符的参数。
+带有新标识符参数的演示示例如下。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "guidValue": {
-      "type": "string",
-      "defaultValue": "[newGuid()]"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "guidOutput": {
-      "type": "string",
-      "value": "[parameters('guidValue')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/newguid.json":::
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
-以下示例使用 newGuid 函数创建存储帐户的唯一名称。 此模板可能适用于其中的存储帐户生存期较短且未重新部署的测试环境。
+以下示例使用 `newGuid` 函数创建存储帐户的唯一名称。 此模板可能适用于其中的存储帐户生存期较短且未重新部署的测试环境。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "guidValue": {
-      "type": "string",
-      "defaultValue": "[newGuid()]"
-    }
-  },
-  "variables": {
-    "storageName": "[concat('storage', uniqueString(parameters('guidValue')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageName')]",
-      "location": "West US",
-      "apiVersion": "2018-07-01",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "StorageV2",
-      "properties": {}
-    }
-  ],
-  "outputs": {
-    "nameOutput": {
-      "type": "string",
-      "value": "[variables('storageName')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/newguid-storageaccount.json":::
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | nameOutput | string | storagenziwvyru7uxie |
 
@@ -1203,7 +630,7 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToPad |是 |字符串或整数 |要右对齐的值。 |
 | totalLength |是 |int |返回字符串中的字符总数。 |
@@ -1217,31 +644,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json)演示如何通过添加零字符直至达到字符总数，来填充用户提供的参数值。
+以下示例演示如何通过添加零字符直到字符总数，来填充用户提供的参数值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "123"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "stringOutput": {
-      "type": "string",
-      "value": "[padLeft(parameters('testString'),10,'0')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/padleft.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
@@ -1251,9 +660,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 返回其中某个字符串的所有实例均替换为另一个字符串的新字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalString |是 |string |包含某一个字符串的所有实例均替换为另一个字符串的值。 |
 | oldString |是 |string |要从原始字符串中删除的字符串。 |
@@ -1265,35 +674,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json)演示如何从用户提供的字符串中删除所有短划线，以及如何将字符串的一部分替换为其他字符串。
+以下示例演示如何从用户提供的字符串中删除所有短划线，以及如何将字符串的一部分替换为其他字符串。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "123-123-1234"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "firstOutput": {
-      "type": "string",
-      "value": "[replace(parameters('testString'),'-', '')]"
-    },
-    "secondOutput": {
-      "type": "string",
-      "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/replace.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
 | secondOutput | String | 123-123-xxxx |
@@ -1304,9 +691,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 返回一个字符串，其中包含指定字符数后面的所有字符；或者返回一个数组，其中包含指定元素数后面的所有元素。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素数或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
@@ -1317,51 +704,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json)跳过数组中指定数目的元素，以及字符串中指定数目的字符。
+以下示例跳过数组中指定数目的元素，以及字符串中指定数目的字符。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToSkip": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToSkip": {
-      "type": "int",
-      "defaultValue": 4
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[skip(parameters('testArray'),parameters('elementsToSkip'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[skip(parameters('testString'),parameters('charactersToSkip'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/skip.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -1372,9 +721,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 返回包含输入字符串的子字符串的字符串数组，其中的子字符串使用指定的分隔符进行分隔。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |string |要拆分的字符串。 |
 | delimiter |是 |字符串或字符串数组 |用于拆分字符串的分隔符。 |
@@ -1385,42 +734,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json)使用逗号以及使用逗号或分号拆分输入字符串。
+以下示例使用逗号以及使用逗号或分号拆分输入字符串。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstString": {
-      "type": "string",
-      "defaultValue": "one,two,three"
-    },
-    "secondString": {
-      "type": "string",
-      "defaultValue": "one;two,three"
-    }
-  },
-  "variables": {
-    "delimiters": [ ",", ";" ]
-  },
-  "resources": [],
-  "outputs": {
-    "firstOutput": {
-      "type": "array",
-      "value": "[split(parameters('firstString'),',')]"
-    },
-    "secondOutput": {
-      "type": "array",
-      "value": "[split(parameters('secondString'),variables('delimiters'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/split.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1431,9 +751,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 确定某个字符串是否以某个值开头。 比较不区分大小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |string |包含要查找的项的值。 |
 | stringToFind |是 |string |要查找的值。 |
@@ -1444,45 +764,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json)演示如何使用 startsWith 和 endsWith 函数：
+以下示例说明如何使用 `startsWith` 和 `endsWith` 函数：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "startsTrue": {
-      "value": "[startsWith('abcdef', 'ab')]",
-      "type": "bool"
-    },
-    "startsCapTrue": {
-      "value": "[startsWith('abcdef', 'A')]",
-      "type": "bool"
-    },
-    "startsFalse": {
-      "value": "[startsWith('abcdef', 'e')]",
-      "type": "bool"
-    },
-    "endsTrue": {
-      "value": "[endsWith('abcdef', 'ef')]",
-      "type": "bool"
-    },
-    "endsCapTrue": {
-      "value": "[endsWith('abcdef', 'F')]",
-      "type": "bool"
-    },
-    "endsFalse": {
-      "value": "[endsWith('abcdef', 'e')]",
-      "type": "bool"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/startsendswith.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -1497,9 +785,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 将指定的值转换为字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要转换为字符串的值。 可以转换任何类型的值，包括对象和数组。 |
 
@@ -1509,54 +797,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json)演示如何将不同类型的值转换为字符串：
+以下示例演示如何将不同类型的值转换为字符串。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testObject": {
-      "type": "object",
-      "defaultValue": {
-        "valueA": 10,
-        "valueB": "Example Text"
-      }
-    },
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "a",
-        "b",
-        "c"
-      ]
-    },
-    "testInt": {
-      "type": "int",
-      "defaultValue": 5
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "objectOutput": {
-      "type": "string",
-      "value": "[string(parameters('testObject'))]"
-    },
-    "arrayOutput": {
-      "type": "string",
-      "value": "[string(parameters('testArray'))]"
-    },
-    "intOutput": {
-      "type": "string",
-      "value": "[string(parameters('testInt'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/string.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | String | ["a","b","c"] |
@@ -1568,9 +815,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 返回从指定的字符位置开始且包含指定数量的字符的子字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToParse |是 |string |从中提取子字符串的原始字符串。 |
 | startIndex |否 |int |子字符串的从零开始的字符位置。 |
@@ -1597,31 +844,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json)从参数中提取子字符串。
+以下示例从参数中提取子字符串。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "substringOutput": {
-      "value": "[substring(parameters('testString'), 4, 3)]",
-      "type": "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/substring.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
@@ -1629,11 +858,11 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 `take(originalValue, numberToTake)`
 
-返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符；或返回一个数组，其中包含从数组开头位置算起的指定数目的元素。
+返回数组或字符串。 数组包含指定数目的元素（从数组开头算起）。 字符串包含指定数目的字符（从字符串开头算起）。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值为 0 或更小，则返回一个空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
@@ -1644,51 +873,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json)从数组中提取指定数目的元素，并从字符串中提取指定数目的字符。
+以下示例从数组中提取指定数目的元素，并从字符串中提取指定数目的字符。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToTake": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToTake": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[take(parameters('testArray'),parameters('elementsToTake'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[take(parameters('testString'),parameters('charactersToTake'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/take.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -1699,9 +890,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 将指定的字符串转换为小写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |string |要转换为小写的值。 |
 
@@ -1711,35 +902,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json)将参数值转换为小写和大写。
+以下示例将参数值转换为小写和大写。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "toLowerOutput": {
-      "value": "[toLower(parameters('testString'))]",
-      "type": "string"
-    },
-    "toUpperOutput": {
-      "type": "string",
-      "value": "[toUpper(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/tolower.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1750,9 +919,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 将指定的字符串转换为大写。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |string |要转换为大写的值。 |
 
@@ -1762,35 +931,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json)将参数值转换为小写和大写。
+以下示例将参数值转换为小写和大写。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "toLowerOutput": {
-      "value": "[toLower(parameters('testString'))]",
-      "type": "string"
-    },
-    "toUpperOutput": {
-      "type": "string",
-      "value": "[toUpper(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/tolower.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1801,9 +948,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 从指定的字符串中删除所有前导和尾随空白字符。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |是 |string |要剪裁的值。 |
 
@@ -1813,31 +960,13 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json)裁剪掉参数中的空白字符。
+以下示例裁剪掉参数中的空白字符。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "    one two three   "
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "return": {
-      "type": "string",
-      "value": "[trim(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/trim.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | return | String | one two three |
 
@@ -1847,12 +976,12 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 根据作为参数提供的值创建确定性哈希字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |string |哈希函数中用于创建唯一字符串的值。 |
-| 根据需要使用其他参数 |否 |string |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
+| 根据需要使用的其他参数 |否 |string |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
 
 ### <a name="remarks"></a>备注
 
@@ -1899,25 +1028,9 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json)从 `uniquestring` 返回结果：
+以下示例返回来自 `uniquestring` 的结果：
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "uniqueRG": {
-      "value": "[uniqueString(resourceGroup().id)]",
-      "type": "string"
-    },
-    "uniqueDeploy": {
-      "value": "[uniqueString(resourceGroup().id, deployment().name)]",
-      "type": "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uniquestring.json":::
 
 ## <a name="uri"></a>uri
 
@@ -1925,18 +1038,18 @@ newGuid 函数会使用 .NET Framework 中的 [Guid 结构](/dotnet/api/system.g
 
 通过组合 baseUri 和 relativeUri 字符串来创建绝对 URI。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| baseUri |是 |string |基本 uri 字符串。 请注意观察与处理尾随斜杠 (`/`) 有关的行为，如下表所述。  |
+| baseUri |是 |string |基本 uri 字符串。 请注意观察与处理尾随斜杠 (`/`) 有关的行为，如此表后面所述。  |
 | relativeUri |是 |string |要添加到基本 uri 字符串的相对 uri 字符串。 |
 
-* 如果 baseUri 以尾随斜杠结尾，则结果就是 baseUri 后跟 relativeUri。
+* 如果 baseUri 以尾随斜杠结尾，则结果就是 baseUri 后跟 relativeUri 。
 
-* 如果 **baseUri** 不以尾随斜杠结尾，则会出现以下两种情况之一。
+* 如果 baseUri 不以尾随斜杠结尾，则会发生两种情况之一。
 
-   * 如果 baseUri 根本没有斜杠（除了前面的 `//` 之外），则结果就是 baseUri 后跟 relativeUri。
+   * 如果 baseUri 根本没有斜杠（除了靠前的 `//` 之外），则结果为 baseUri 后跟 relativeUri。
 
    * 如果 baseUri 包含一些斜杠，但不是以斜杠结尾，则从最后一个斜杠开始的所有内容都将从 baseUri 中删除，结果是 baseUri 后跟 relativeUri。
 
@@ -1963,38 +1076,13 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)演示如何使用 uri、uriComponent 和 uriComponentToString：
+以下示例模板演示如何使用 `uri`、`uriComponent` 和 `uriComponentToString`。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -2006,9 +1094,9 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 将 URI 编码。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |是 |string |要编码的值。 |
 
@@ -2018,38 +1106,13 @@ URI 编码值的字符串。
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)演示如何使用 uri、uriComponent 和 uriComponentToString：
+以下示例模板演示如何使用 `uri`、`uriComponent` 和 `uriComponentToString`。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -2061,9 +1124,9 @@ URI 编码值的字符串。
 
 返回 URI 编码值的字符串。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |是 |string |要转换为字符串的 URI 编码值。 |
 
@@ -2073,38 +1136,13 @@ URI 编码值的解码后字符串。
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json)演示如何使用 uri、uriComponent 和 uriComponentToString：
+以下示例演示如何使用 `uri`、`uriComponent` 和 `uriComponentToString`。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |

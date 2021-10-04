@@ -4,27 +4,17 @@ description: 介绍 Bicep 文件中用于检索有关资源的值的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: a83c0f442e88bc2fe0320fe8affe5b114a28a897
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/10/2021
+ms.openlocfilehash: 23d205f44b23b71f476f86d8d589f5d99a417a85
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314319"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827540"
 ---
 # <a name="resource-functions-for-bicep"></a>Bicep 的资源函数
 
-资源管理器提供以下用于获取 Bicep 文件中的资源值的函数：
-
-* [extensionResourceId](#extensionresourceid)
-* [getSecret](#getsecret)
-* [list*](#list)
-* [pickZones](#pickzones)
-* [providers（已弃用）](#providers)
-* [reference](#reference)
-* [resourceId](#resourceid)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+本文介绍用于获取资源值的 Bicep 函数。
 
 若要从当前部署中获取值，请参阅[部署值函数](./bicep-functions-deployment.md)。
 
@@ -189,7 +179,7 @@ module sql './sql.bicep' = {
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | apiVersion |否 |string |如果未提供此参数，将使用资源的 API 版本。 仅当需要使用特定版本来运行函数时，才提供自定义 API 版本。 使用 yyyy-mm-dd 格式。 |
-| functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
+| functionValues |否 |对象 (object) | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
 
@@ -425,9 +415,9 @@ sasToken: stg.listAccountSas('2021-04-01', accountSasProperties).accountSasToken
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace | 是 | 字符串 | 要检查是否有区域支持的资源类型的资源提供程序命名空间。 |
-| resourceType | 是 | 字符串 | 要检查是否有区域支持的资源类型。 |
-| location | 是 | 字符串 | 要检查是否有区域支持的地区。 |
+| providerNamespace | 是 | string | 要检查是否有区域支持的资源类型的资源提供程序命名空间。 |
+| resourceType | 是 | string | 要检查是否有区域支持的资源类型。 |
+| location | 是 | string | 要检查是否有区域支持的地区。 |
 | numberOfZones | 否 | integer | 要返回的逻辑区域数。 默认值为 1。 该数字必须是 1 到 3 的正整数。  对于单区域资源，请使用 1。 对于多区域资源，该值必须小于或等于受支持区域的数量。 |
 | offset | 否 | integer | 起始逻辑区域的偏移量。 如果 offset 加上 numberOfZones 超过受支持区域的数量，函数将返回错误。 |
 
@@ -480,7 +470,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 ## <a name="providers"></a>providers
 
-providers 函数已弃用。 我们不再建议使用它。 如果你使用了此函数来获取资源提供程序的 API 版本，建议在模板中提供特定的 API 版本。 如果版本之间的属性发生更改，则使用动态返回的 API 版本可能会破坏模板。
+提供程序函数已弃用。 我们不再建议使用它。 如果你使用了此函数来获取资源提供程序的 API 版本，建议在模板中提供特定的 API 版本。 如果版本之间的属性发生更改，则使用动态返回的 API 版本可能会破坏模板。
 
 ## <a name="reference"></a>reference
 
@@ -666,6 +656,5 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Bicep 文件中各部分的说明，请参阅[了解 Bicep 文件的结构和语法](./file.md)。
+* 若要从当前部署中获取值，请参阅[部署值函数](./bicep-functions-deployment.md)。
 * 若要在创建资源类型时迭代指定的次数，请参阅[在 Bicep 中部署多个资源实例](./loop-resources.md)。
-* 若要了解如何部署已创建的 Bicep 文件，请参阅[使用 Bicep 和 Azure PowerShell 部署资源](./deploy-powershell.md)。
