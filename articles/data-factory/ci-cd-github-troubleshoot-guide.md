@@ -1,7 +1,7 @@
 ---
-title: 在 ADF 中对 CI CD、Azure DevOps 和 GitHub 问题进行故障排除
+title: 排查 CI-CD、Azure DevOps 和 GitHub 问题
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用不同的方法对 ADF 中的 CI CD 问题进行故障排除。
+description: 使用不同的方法来排查 Azure 数据工厂和 Synapse Analytics 中的 CI-CD 问题。
 author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
@@ -9,24 +9,24 @@ ms.service: data-factory
 ms.subservice: ci-cd
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 06/27/2021
-ms.openlocfilehash: 8f94e6b0e4afd06a68263efb0d78f3962bbd8560
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/09/2021
+ms.openlocfilehash: afba2903fc01a8f6e866f91074bdefa427dff7aa
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866398"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217933"
 ---
-# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中对 CI CD、Azure DevOps 和 GitHub 问题进行故障排除 
+# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-azure-data-factory-and-synapse-analytics"></a>排查 Azure 数据工厂和 Synapse Analytics 中的 CI-CD、Azure DevOps 和 GitHub 问题 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文介绍 Azure 数据工厂中针对持续集成和持续部署 (CI-CD)、Azure DevOps 和 GitHub 问题的常见故障排除方法。
+本文介绍了排查 Azure 数据工厂与 Synapse Analytics 中持续集成和持续部署 (CI-CD)、Azure DevOps 和 GitHub 问题的常用方法。
 
 如果在使用源代码管理或 DevOps 技术方面有疑问或问题，下面是一些可能有用的文章：
 
-- 请参阅 [ADF 中的源代码管理](source-control.md)，了解如何在 ADF 中实行源代码管理。 
-- 请参阅 [ADF 中的 CI-CD](continuous-integration-deployment.md)，详细了解如何在 ADF 中实行 DevOps CI-CD。
+- 请参阅[源代码管理](source-control.md)，了解如何在服务中实行源代码管理。 
+- 请参阅 [CI-CD](continuous-integration-delivery.md)，详细了解如何在服务中实行 DevOps CI-CD。
 
 ## <a name="common-errors-and-messages"></a>常见错误和消息
 
@@ -38,7 +38,7 @@ ms.locfileid: "122866398"
 
 #### <a name="cause"></a>原因
 
-我们看到的是，从原始租户那里获得令牌，但 ADF 位于来宾租户并且尝试使用该令牌来访问来宾租户中的 DevOps。 这不属于预期行为。
+我们看到的是，从原始租户那里获得了令牌，但服务位于来宾租户并且尝试使用该令牌来访问来宾租户中的 DevOps。 这不属于预期行为。
 
 #### <a name="recommendation"></a>建议
 
@@ -80,13 +80,13 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="cause"></a>原因
 
-出现此错误是因为目标工厂中名称相同的集成运行时的类型不同。 部署期间集成运行时的类型必须相同。
+出现此错误是因为目标服务实例中同名的集成运行时的类型不同。 部署期间集成运行时的类型必须相同。
 
 #### <a name="recommendation"></a>建议
 
-- 请参阅 [CI/CD 的最佳做法](continuous-integration-deployment.md#best-practices-for-cicd)
+- 请参阅 [CI/CD 的最佳做法](continuous-integration-delivery.md#best-practices-for-cicd)
 
-- 集成运行时不经常更改，并且在 CI/CD 中的所有阶段类似，因此数据工厂需要集成运行时在 CI/CD 的所有阶段都具有相同的名称和类型。 如果名称、类型和属性不同，请确保匹配源和目标集成运行时配置，然后部署发布管道。
+- 集成运行时不会经常更改，并且在 CI/CD 中的所有阶段类似，因此服务需要集成运行时在 CI/CD 的所有阶段都具有相同的名称和类型。 如果名称、类型和属性不同，请确保匹配源和目标集成运行时配置，然后部署发布管道。
 
 - 若要在所有阶段中共享集成运行时，请考虑使用三元工厂，这只是为了包含共享的集成运行时。 可以在所有环境中将此共享工厂用作链接的集成运行时类型。
 
@@ -94,7 +94,7 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="issue"></a>问题
 
-尝试将更改发布到数据工厂时，收到以下错误消息：
+尝试发布更改时收到以下错误消息：
 
 `
 "error": {
@@ -106,7 +106,7 @@ CI/CD 发布管道失败，出现以下错误：
 `
 ### <a name="cause"></a>原因
 
-已取消 Git 配置，并且在选择了“重要资源”标志的情况下再次对其进行设置，这将数据工厂设置为“同步”。 这意味着在发布过程中没有发生任何更改。
+已拆离 Git 配置，并且在选择了“重要资源”标志的情况下再次对其进行设置，这会将服务设置为“同步”。 这意味着在发布过程中没有发生任何更改。
 
 #### <a name="resolution"></a>解决方法
 
@@ -116,9 +116,7 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="issue"></a>问题
 
-未能将数据工厂从一个资源组移到另一个资源组，并出现以下错误：
-
-`
+无法将数据工厂从一个资源组移到另一个资源组，并出现以下错误：`
 {
     "code": "ResourceMoveProviderValidationFailed",
     "message": "Resource move validation failed. Please see details. Diagnostic information: timestamp 'xxxxxxxxxxxxZ', subscription id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', tracking id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', request correlation id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.",
@@ -146,21 +144,21 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="cause"></a>原因
 
-已创建客户角色作为用户，但该角色没有必要的权限。 在 UI 中加载工厂时，将检查工厂的一系列公开控制值。 这种情况下，用户的访问角色无权访问 queryFeaturesValue API。 若要访问此 API，请关闭全局参数功能。 ARM 导出代码路径部分依赖于全局参数功能。
+已创建客户角色作为用户，但该角色没有必要的权限。 加载 UI 时，将检查工厂的一系列公开控制值。 这种情况下，用户的访问角色无权访问 queryFeaturesValue API。 若要访问此 API，请关闭全局参数功能。 ARM 导出代码路径部分依赖于全局参数功能。
 
 #### <a name="resolution"></a>解决方法
 
-为了解决此问题，需要将以下权限添加到角色：Microsoft.DataFactory/factories/queryFeaturesValue/action。 默认情况下，此权限应包含在“数据工厂参与者”角色中。
+为了解决此问题，需要将以下权限添加到角色：Microsoft.DataFactory/factories/queryFeaturesValue/action。 默认情况下，此权限包含在“数据工厂参与者”角色（适用于数据工厂）和“参与者”角色（适用于 Synapse Analytics）中 。
 
 ###  <a name="cannot-automate-publishing-for-cicd"></a>无法针对 CI/CD 进行自动发布 
 
 #### <a name="cause"></a>原因
 
-直到最近，为部署发布 ADF 管道的唯一方法是使用 ADF 门户按钮单击。 现在可以自动执行此过程。 
+在不久前，还只能通过在门户中单击 UI 来为部署发布管道。 现在可以自动完成此过程。
 
 #### <a name="resolution"></a>解决方法
 
-CI/CD 过程已增强。 自动发布功能从 ADF UX 中提取、验证和导出所有 ARM 模板功能。 它通过公共可用的 npm 包 [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) 使该逻辑可供使用。 你可以使用此方法以编程方式触发这些操作，而无需转到 ADF UI 并单击按钮。 此方法为 CI/CD 管道提供了真正的持续集成体验。 有关详细信息，请参阅 [ADF CI/CD 发布改进](./continuous-integration-deployment-improvements.md)。 
+CI/CD 过程已增强。 自动发布功能从 UI 中提取、验证和导出所有 ARM 模板功能。 它通过公共可用的 npm 包 [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) 使该逻辑可供使用。 你可以使用此方法以编程方式触发这些操作，而无需转到 UI 并单击按钮。 此方法为 CI/CD 管道提供了真正的持续集成体验。 有关详细信息，请参阅 [CI/CD 发布改进](./continuous-integration-delivery-improvements.md)。 
 
 ###  <a name="cannot-publish-because-of-4-mb-arm-template-limit"></a>由于 4 MB ARM 模板限制而无法发布  
 
@@ -170,7 +168,7 @@ CI/CD 过程已增强。 自动发布功能从 ADF UX 中提取、验证和导�
 
 #### <a name="cause"></a>原因
 
-Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 但已经超出了限制。 
+Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 已完成对迭代资源定义、变量值和参数值的扩展后，4 MB 的限制将适用于该模板的最终状态。 但已经超出了限制。 
 
 #### <a name="resolution"></a>解决方法
 
@@ -184,38 +182,38 @@ Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4
 
 #### <a name="cause"></a>原因
 
-* 尚未为 ADF 配置 Oauth。 
+* 尚未为服务配置 Oauth。 
 * URL 配置错误。 repoConfiguration 应为 [FactoryGitHubConfiguration](/dotnet/api/microsoft.azure.management.datafactory.models.factorygithubconfiguration?view=azure-dotnet&preserve-view=true) 类型
 
 #### <a name="resolution"></a>解决方法 
 
-首先授予 Oauth 对 ADF 的访问权限。 然后，需要使用正确的 URL 连接到 GIT Enterprise。 该配置必须设置为客户组织。 例如，ADF 将首先尝试 https://hostname/api/v3/search/repositories?q=user%3&lt;customer credential&gt;.... 并失败。 然后，它将尝试 https://hostname/api/v3/orgs/&lt;org&gt;/&lt; repo&gt;... 并成功。  
+首先向服务授予 Oauth 访问权限。 然后，需要使用正确的 URL 连接到 GIT Enterprise。 该配置必须设置为客户组织。 例如，服务将首先尝试 https://hostname/api/v3/search/repositories?q=user%3&lt;customer credential&gt;.... 并失败。 然后，它将尝试 https://hostname/api/v3/orgs/&lt;org&gt;/&lt; repo&gt;... 并成功。 
  
-### <a name="cannot-recover-from-a-deleted-data-factory"></a>无法从已删除的数据工厂恢复
+### <a name="cannot-recover-from-a-deleted-instance"></a>无法从已删除的实例恢复
 
 #### <a name="issue"></a>问题
-客户已删除数据工厂或包含数据工厂的资源组。 客户想知道如何恢复已删除的数据工厂。
+删除了服务实例或包含该实例的资源组，现在需要对其进行恢复。
 
 #### <a name="cause"></a>原因
 
-仅当客户配置了源代码管理配置（DevOps 或 Git），才可以恢复数据工厂。 此操作会引入所有最新的已发布资源，并且不会恢复未发布的管道、数据集和链接服务。 如果没有源代码管理，则不可能从后端恢复已删除的数据工厂，因为一旦服务收到删除的命令，就会删除该实例，并且不会存储任何备份。
+仅当使用 DevOps 或 Git 为实例配置了源代码管理时，才可以恢复该实例。 此操作会引入所有最新的已发布资源，但不会还原任何未发布的管道、数据集或链接服务。 如果没有源代码管理，则无法从 Azure 后端恢复已删除的实例，因为一旦服务收到删除命令，就会永久删除该实例且不进行任何备份。
 
 #### <a name="resolution"></a>解决方法
 
-若要恢复包含源代码管理的已删除数据工厂，请参阅以下步骤：
+若要恢复配置了源代码管理的已删除服务实例，请参考以下步骤：
 
- * 创建新的 Azure 数据工厂。
+ * 创建服务的新实例。
 
- * 使用相同的设置重新配置 Git，但请确保将现有数据工厂资源导入所选存储库，然后选择“新建分支”。
+ * 使用相同的设置重新配置 Git，但请确保将现有资源导入所选存储库，然后选择“新建分支”。
 
  * 创建拉取请求以将更改合并到协作分支并发布。
 
- * 如果客户已删除的 ADF 中有自承载集成运行时，则需要在新的 ADF 中创建新的实例，还需要使用获取的新密钥在其本地计算机/VM 上卸载并重新安装该实例。 安装完 IR 后，客户需要将链接服务更改为指向新 IR 并测试连接，否则该服务将失败并显示错误“引用无效”。
+ * 如果已删除的数据工厂或 Synapse 工作区中有自承载集成运行时，则必须在新的工厂或工作区中创建 IR 的新实例。  必须卸载再重新安装本地或虚拟机 IR 实例，并获取新密钥。 在安装完新 IR 后，必须将链接服务更新为指向新 IR，然后再次测试连接，否则会失败并出现错误“引用无效”。
 
 ### <a name="cannot-deploy-to-different-stage-using-automatic-publish-method"></a>无法使用自动发布方法部署到不同的阶段
 
 #### <a name="issue"></a>问题
-客户遵循了所有必要的步骤，如使用 Azure DevOps 和 ADF 安装 NPM 包并设置更高的阶段。 但不会执行部署。
+客户遵循了所有必要的步骤（例如使用 Azure DevOps 安装 NPM 包并设置更高的阶段），但部署仍然失败。
 
 #### <a name="cause"></a>原因
 
@@ -239,10 +237,10 @@ Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4
 ### <a name="git-repository-or-purview-connection-disconnected"></a>Git 存储库或 Purview 连接已断开
 
 #### <a name="issue"></a>问题
-部署数据工厂时，git 存储库或 purview 连接已断开。
+部署服务实例时，Git 存储库或 Purview 连接断开。
 
 #### <a name="cause"></a>原因
-如果部署全局参数时选择“包含在 ARM 模板中”，则系统会将你的工厂包含在 ARM 模板中。 因此，部署后将删除其他工厂属性。
+如果部署全局参数时选择了“包含在 ARM 模板中”，则系统会将你的服务实例包含在 ARM 模板中。 因此，部署后将删除其他属性。
 
 #### <a name="resolution"></a>解决方法
 取消选择“包含在 ARM 模板中”，并按 CI/CD 中的“全局参数”中所述，使用 PowerShell 部署全局参数。 
@@ -250,13 +248,13 @@ Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4
 ### <a name="extra--left--displayed-in-published-json-file"></a>已发布的 JSON 文件中显示额外的左“[”
 
 #### <a name="issue"></a>问题
-通过 DevOps 发布 ADF 时，多显示一个左“[”。 ADF 自动在 DevOps 的 ARMTemplate 中多添加一个左“[”。 你将在 JSON 文件中看到类似“[[”的表达式。
+通过 DevOps 发布时显示了多余的“[”。 服务自动在 DevOps 的 ARMTemplate 中添加了一个多余的“[”。 你将在 JSON 文件中看到类似“[[”的表达式。
 
 #### <a name="cause"></a>原因
 由于 [ 是 ARM 的保留字符，自动添加额外的 [ 可对“[”进行转义。
 
 #### <a name="resolution"></a>解决方法
-对于 CI/CD，这是 ADF 发布过程中的正常行为。
+对于 CI/CD，这是发布过程中的正常行为。
  
 ### <a name="perform-cicd-during--progressqueued-stage-of-pipeline-run"></a>在管道运行的进度/排队阶段执行 CI/CD
 
@@ -267,26 +265,39 @@ Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4
 当管道处于进度/排队阶段时，你首先需要监视管道和活动。 然后，可以决定等待管道完成，也可以取消管道运行。 
  
 #### <a name="resolution"></a>解决方案
-可以使用 SDK、Azure Monitor 或 [ADF Monitor](./monitor-visually.md) 监视管道。 然后，可以按照 [ADF CI/CD 最佳做法](./continuous-integration-deployment.md#best-practices-for-cicd)进一步指导操作。 
+可以使用 **SDK**、**Azure Monitor** 或 [Monitor](./monitor-visually.md) 来监视管道。 然后，可以进一步按照 [CI/CD 最佳做法](./continuous-integration-delivery.md#best-practices-for-cicd)中的指导进行操作。 
 
-### <a name="perform-unit-testing-during-adf-development-and-deployment"></a>在 ADF 开发和部署期间执行单元测试
+### <a name="perform-unit-testing-during-development-and-deployment"></a>在开发和部署期间执行单元测试
 
 #### <a name="issue"></a>问题
-你想要在 ADF 管道的开发和部署期间执行单元测试。
+你想要在管道的开发和部署期间执行单元测试。
 
 #### <a name="cause"></a>原因
-在开发和部署周期中，可能需要在手动或自动发布管道之前对管道进行单元测试。 通过测试自动化，可以花更少的时间运行更多的测试，并保证可重复性。 在部署之前自动重新测试所有 ADF 管道，可以为你提供一些保护，防止出现回归故障。 自动测试是 CI/CD 软件开发方法的一个关键组成部分：在 Azure 数据工厂的 CI/CD 部署管道中加入自动测试，可显著提高质量。 在长期运行中，经过测试的 ADF 管道工件可以重复使用，为你节省成本和时间。  
+在开发和部署周期中，可能需要在手动或自动发布管道之前对管道进行单元测试。 通过测试自动化，可以花更少的时间运行更多的测试，并保证可重复性。 在部署之前自动重新测试所有管道，可以为你提供一些保护，防止出现回归故障。 自动测试是 CI/CD 软件开发方法的一个关键组成部分：在 CI/CD 部署管道中加入自动测试，可显著提高质量。 从长远看，经过测试的管道工件可以重复使用，为你节省成本和时间。  
  
-#### <a name="resolution"></a>解决方案
-由于客户可能具有包含不同技能集的不同单元测试要求，因此通常的做法是执行以下步骤：
+#### <a name="resolution"></a>解决方法
+由于客户可能具有包含不同技能组的不同单元测试要求，因此通常的做法是执行以下步骤：
 
 1. 设置 Azure DevOps CI/CD 项目或开发 .NET/PYTHON/REST 类型 SDK 驱动的测试策略。
-2. 对于 CI/CD，创建包含所有脚本的生成工件，并在发布管道中部署资源。 对于 SDK 驱动的方法，使用 Python 中的 PyTest、使用 .NET SDK 的 C# Nunit 等开发测试单元。
+2. 对于 CI/CD，创建包含所有脚本的生成工件，并在发布管道中部署资源。 对于 SDK 驱动的方法，使用 Python 中的 PyTest、C# 中的 Nunit（使用 .NET SDK）等工具开发测试单元。
 3. 将单元测试作为发布管道的一部分运行，或使用 ADF Python/PowerShell/.NET/REST SDK 独立运行。 
 
 例如，你想要删除文件中的重复项，然后将策展的文件存储为数据库中的一个表。 为了测试管道，可以使用 Azure DevOps 设置一个 CI/CD 项目。
-你需要设置一个 TEST 管道阶段，在那里部署已开发的管道。 将 TEST 阶段配置为运行 Python 测试，以确保表数据符合预期。 如果不使用 CI/CD，可以使用 Nunit 通过所需测试触发已部署的管道。 如果你对结果感到满意，就可以最终将管道发布到生产数据工厂。 
+你需要设置一个 TEST 管道阶段，在那里部署已开发的管道。 将 TEST 阶段配置为运行 Python 测试，以确保表数据符合预期。 如果不使用 CI/CD，可以使用 Nunit 通过所需测试触发已部署的管道。 如果你对结果感到满意，就可以最终将管道发布到生产实例。 
 
+
+### <a name="pipeline-runs-temporarily-fail-after-cicd-deployment-or-authoring-updates"></a>在完成 CI/CD 部署或创作更新后管道运行发生暂时性失败
+
+#### <a name="issue"></a>问题
+在发生暂时性失败一段时间后，无需任何用户操作，新的管道运行就会开始成功。
+
+#### <a name="cause"></a>原因
+
+有多种情况可能会触发此行为，所有这些情况都涉及到旧的父资源版本调用了新的依赖资源版本。 例如，假设“执行管道”调用的现有子管道已更新为采用所需的参数，而现有父管道已更新为传递这些参数。 如果在父管道执行期间、但在“执行管道”活动发生之前进行部署，则旧管道版本将调用新的子管道版本，并且不会传递所需的参数。 这会导致管道失败并出现 UserError。 其他类型的依赖项也会发生这种情况，例如，如果在引用链接服务的管道运行执行期间对该服务进行了中断性变更。 
+
+#### <a name="resolution"></a>解决方法
+
+父管道的新运行将自动开始成功，因此通常不需要执行任何操作。 但是，为了防止这些错误，客户应在创作和规划部署时考虑到依赖项，以避免发生中断性变更。 
 
 ## <a name="next-steps"></a>后续步骤
 
