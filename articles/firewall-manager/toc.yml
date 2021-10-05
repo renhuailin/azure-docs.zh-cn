@@ -64,6 +64,8 @@
       href: multiple-public-ip-powershell.md
     - name: 定义规则层次结构
       href: rule-hierarchy.md
+    - name: 配置 DDoS 防护计划
+      href: configure-ddos.md
 - name: 参考
   items:
     - name: Azure CLI

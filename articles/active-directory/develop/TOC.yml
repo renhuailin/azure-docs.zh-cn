@@ -320,6 +320,12 @@
               href: scenario-mobile-call-api.md
             - name: 移到生产环境
               href: scenario-mobile-production.md
+    - name: 测试和部署应用
+      items:
+        - name: 设置测试环境
+          href: test-setup-environment.md
+        - name: 限制和服务限制
+          href: test-throttle-service-limits.md
     - name: 使用 Microsoft 身份验证库
       displayName: MSAL
       items:

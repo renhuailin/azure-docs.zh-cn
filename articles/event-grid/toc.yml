@@ -210,6 +210,9 @@
           href: /security/benchmark/azure/baselines/event-grid-security-baseline?toc=/azure/event-grid/toc.json
         - name: Azure Policy 的安全控件
           href: ./security-controls-policy.md
+        - name: Azure Policy 内置策略定义
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
         - name: 对事件处理程序的事件传递进行身份验证
           href: security-authentication.md
         - name: 对发布客户端进行身份验证
@@ -252,7 +255,7 @@
           href: auth0-how-to.md
     - name: 获取主题或域的访问密钥
       href: get-access-keys.md
-    - name: 使用访问密钥发布到自定义主题
+    - name: 使用访问密钥发布事件自定义主题
       href: post-to-custom-topic.md
     - name: 在 HTTP 终结点接收事件
       href: receive-events.md
@@ -348,9 +351,6 @@
           href: /azure/templates/microsoft.eventgrid/topics
     - name: SDK
       href: sdk-overview.md
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

@@ -363,12 +363,17 @@
       items:
         - name: 标记数据
           items:
-            - name: 标记数据
-              displayName: 'data, dataset, labeling'
-              href: how-to-create-labeling-projects.md
+            - name: 设置图像标签
+              displayName: 'data, dataset'
+              href: how-to-create-image-labeling-projects.md
+            - name: 设置文本标签
+              displayName: 'data, dataset'
+              href: how-to-create-text-labeling-projects.md
             - name: 标签图像和文本
               displayName: 'data, dataset, labeling'
               href: how-to-label-data.md
+            - name: 外包标签任务
+              href: how-to-outsource-data-labeling.md
             - name: 创建带标签的数据集
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md

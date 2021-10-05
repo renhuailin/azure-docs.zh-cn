@@ -148,6 +148,8 @@
           href: access-app-virtual-network.md
         - name: 向 Internet 公开应用程序
           href: expose-apps-gateway-azure-firewall.md
+        - name: 配置 Palo Alto
+          href: how-to-configure-palo-alto.md
         - name: 在 VNET 中运行 Azure Spring Cloud 的客户责任
           href: vnet-customer-responsibilities.md
         - name: 在虚拟网络中排除 Azure Spring Cloud 的故障

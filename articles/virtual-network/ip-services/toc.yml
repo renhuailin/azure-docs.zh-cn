@@ -1,0 +1,185 @@
+items:
+  - name: 虚拟网络 IP 服务文档
+    href: index.yml
+  - name: 概述
+    items:
+      - name: 什么是 Azure 虚拟网络 IP 服务？
+        href: ip-services-overview.md
+  - name: 快速入门
+    items:
+      - name: 创建公共 IP 地址 - 门户
+        href: create-public-ip-portal.md
+      - name: 创建公共 IP 地址 - PowerShell
+        href: create-public-ip-powershell.md
+      - name: 创建公共 IP 地址 - Azure CLI
+        href: create-public-ip-cli.md
+      - name: 创建公共 IP 地址 - ARM 模板
+        href: create-public-ip-template.md
+      - name: 创建公共 IP 前缀 - 门户
+        href: create-public-ip-prefix-portal.md
+      - name: 创建公共 IP 前缀 - PowerShell
+        href: create-public-ip-prefix-powershell.md
+      - name: 创建公共 IP 前缀 - Azure CLI
+        href: create-public-ip-prefix-cli.md
+    expanded: true
+  - name: 教程
+    items:
+      - name: 为 VM 配置 Internet 路由首选项
+        items:
+          - name: Azure 门户
+            href: tutorial-routing-preference-virtual-machine-portal.md
+          - name: Azure PowerShell
+            href: configure-routing-preference-virtual-machine-powershell.md
+          - name: Azure CLI
+            href: configure-routing-preference-virtual-machine-cli.md
+      - name: 为 VM 配置混合路由首选项
+        href: routing-preference-mixed-network-adapter-portal.md
+      - name: 为 AKS 群集配置路由首选项
+        href: routing-preference-azure-kubernetes-service-cli.md
+  - name: 概念
+    items:
+      - name: 公共 IP
+        href: public-ip-addresses.md
+      - name: 专用 IP
+        href: private-ip-addresses.md
+      - name: 公共 IP 前缀
+        href: public-ip-address-prefix.md
+      - name: 管理公共 IP 地址
+        href: virtual-network-public-ip-address.md
+      - name: 管理公共 IP 前缀
+        href: manage-public-ip-address-prefix.md
+      - name: 适用于 Azure VNet 的 IPv6
+        href: ipv6-overview.md
+      - name: 默认出站访问
+        href: default-outbound-access.md
+      - name: 路由首选项
+        href: routing-preference-overview.md
+      - name: 不按流量计费的路由首选项
+        href: routing-preference-unmetered.md
+      - name: 安全性
+        items:
+          - name: 公共 IP 安全基线
+        href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
+  - name: 操作说明
+    items:
+      - name: 为 Azure 网络接口配置 IP 地址
+        href: virtual-network-network-interface-addresses.md
+      - name: 资源管理
+        items:
+          - name: 负载均衡器
+            href: configure-public-ip-load-balancer.md
+          - name: NAT 网关
+            href: configure-public-ip-nat-gateway.md
+          - name: 虚拟机
+            href: configure-public-ip-vm.md
+          - name: 防火墙
+            href: configure-public-ip-firewall.md
+          - name: VPN 网关
+            href: configure-public-ip-vpn-gateway.md
+          - name: 应用程序网关
+            href: configure-public-ip-application-gateway.md
+          - name: Bastion
+            href: configure-public-ip-bastion.md
+      - name: 升级公共 IP 地址
+        items:
+          - name: 升级公共 IP 地址 - 门户
+            href: public-ip-upgrade-portal.md
+          - name: 升级公共 IP 地址 - PowerShell
+            href: public-ip-upgrade-powershell.md
+          - name: 升级公共 IP 地址 - Azure CLI
+            href: public-ip-upgrade-cli.md
+          - name: 迁移经典保留 IP
+            href: public-ip-upgrade-classic.md
+      - name: 虚拟机
+        items:
+          - name: 将公共 IP 地址添加到现有 VM
+            href: associate-public-ip-address-vm.md
+          - name: 将公共 IP 地址与 VM 取消关联
+            href: remove-public-ip-address-vm.md
+          - name: 创建 VM - 静态公共 IP
+            items:
+              - name: Azure 门户
+                href: virtual-network-deploy-static-pip-arm-portal.md
+              - name: Azure PowerShell
+                href: virtual-network-deploy-static-pip-arm-ps.md
+              - name: Azure CLI
+                href: virtual-network-deploy-static-pip-arm-cli.md
+          - name: 创建 VM - 静态专用 IP
+            items:
+              - name: Azure 门户
+                href: virtual-networks-static-private-ip-arm-pportal.md
+              - name: Azure PowerShell
+                href: virtual-networks-static-private-ip-arm-ps.md
+              - name: Azure CLI
+                href: virtual-networks-static-private-ip-arm-cli.md
+          - name: 创建 VM - 多个 IP
+            items:
+              - name: Azure 门户
+                href: virtual-network-multiple-ip-addresses-portal.md
+              - name: Azure PowerShell
+                href: virtual-network-multiple-ip-addresses-powershell.md
+              - name: Azure CLI
+                href: virtual-network-multiple-ip-addresses-cli.md
+          - name: 创建 VM - 静态专用 IP（经典）
+            items:
+              - name: Azure 门户
+                href: virtual-networks-static-private-ip-classic-pportal.md
+              - name: Azure PowerShell
+                href: virtual-networks-static-private-ip-classic-ps.md
+          - name: 使用 IPv6 的虚拟机规模集
+            href: ipv6-virtual-machine-scale-set.md
+      - name: 路由首选项
+        items:
+          - name: 创建公共 IP 地址
+            items:
+              - name: Azure 门户
+                href: routing-preference-portal.md
+              - name: Azure PowerShell
+                href: routing-preference-powershell.md
+              - name: Azure CLI
+                href: routing-preference-cli.md
+      - name: 跨区域移动
+        items:
+          - name: 公共 IP
+            href: /resource-mover/tutorial-move-region-virtual-machines?toc=/azure/virtual-network/toc.json
+  - name: 参考
+    items:
+      - name: Azure CLI
+        href: /cli/azure/azure-cli-reference-for-network
+      - name: Azure PowerShell
+        href: /powershell/module/az.network
+      - name: .NET
+        href: /dotnet/api/overview/azure/virtual-network
+      - name: Java
+        href: /java/api/
+      - name: Node.js
+        href: /javascript/azure#azure-sdk
+      - name: Python
+        href: 'https://azure.microsoft.com/develop/python/'
+      - name: REST
+        href: /rest/api/virtual-network
+      - name: 资源管理器模板
+        href: /azure/templates/microsoft.network/allversions
+      - name: 代码示例
+        href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+      - name: Azure Policy 内置策略定义
+        displayName: 'samples, policies, definitions'
+        href: ../policy-reference.md
+  - name: 资源
+    items:
+      - name: 利用 Microsoft Learn 掌握技能
+        href: /learn/browse/
+      - name: Azure 路线图
+        href: 'https://azure.microsoft.com/roadmap/?category=networking'
+      - name: 网络博客
+        href: 'https://azure.microsoft.com/blog/topics/networking'
+      - name: 有关网络的 Microsoft Q&A 问题页面
+        href: /answers/topics/azure-virtual-network.html
+      - name: 网络反馈
+        href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+      - name: 定价
+        href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+      - name: 定价计算器
+        href: 'https://azure.microsoft.com/pricing/calculator/'
+      - name: Stack Overflow
+        href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'

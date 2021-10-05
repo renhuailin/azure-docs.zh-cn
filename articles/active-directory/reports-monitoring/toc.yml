@@ -91,6 +91,8 @@
 - name: 参考
   expanded: true
   items:
+    - name: 登录日志中的基本信息标识符
+      href: reference-basic-info-identifiers.md
     - name: 用于报告的 Azure AD PowerShell cmdlet
       href: reference-powershell-reporting.md
     - name: 审核日志 API 参考

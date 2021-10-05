@@ -78,6 +78,8 @@
           href: howto-conditional-access-policy-compliant-device.md
         - name: 阻止访问
           href: howto-conditional-access-policy-block-access.md
+    - name: 配置复原默认设置
+      href: resilience-defaults.md
     - name: 阻止传统身份验证
       href: block-legacy-authentication.md
     - name: 配置仅限报表模式

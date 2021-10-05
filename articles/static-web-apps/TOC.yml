@@ -60,7 +60,7 @@
           href: add-api.md
         - name: 创建自己的函数
           href: functions-bring-your-own.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 设置专用终结点
           href: private-endpoint.md
@@ -106,6 +106,8 @@
       href: publish-devops.md
     - name: 使用 ARM 模板进行发布
       href: publish-azure-resource-manager.md
+    - name: 添加 Azure Front Door
+      href: front-door-manual.md
 - name: 参考
   items:
     - name: Azure CLI
