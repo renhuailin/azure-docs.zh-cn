@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: 虚拟网络 IP 服务文档
+summary: 了解如何使用 Azure 虚拟网络 IP 服务。 快速入门、教程、示例等介绍如何使用 Azure 中的 IP 服务。
+metadata:
+  title: Azure 虚拟网络 IP 服务文档 - 教程、快速入门、API 参考
+  description: 了解如何使用 Azure 虚拟网络 IP 服务。 快速入门、教程、示例等介绍如何部署 NAT 网关。
+  services: virtual-network
+  ms.service: virtual-network
+  ms.subservice: ip-services
+  ms.topic: landing-page
+  ms.collection: collection
+  author: asudbring
+  ms.author: allensu
+  ms.date: 10/01/2021
+  ms.openlocfilehash: 39bfb032451dad44aaf8c7faa634115776cc66d4
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129367240"
+landingContent:
+- title: 关于虚拟网络 IP 服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 虚拟网络 IP 服务？
+      url: ip-services-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure 中的公共 IP 地址
+      url: public-ip-addresses.md
+    - text: Azure 公共 IP 地址前缀
+      url: public-ip-address-prefix.md
+    - text: Azure 中的专用 IP 地址
+      url: private-ip-addresses.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建公共 IP 地址
+      url: create-public-ip-portal.md
+    - text: 创建公共 IP 地址前缀
+      url: create-public-ip-prefix-portal.md
+  - linkListType: tutorial
+    links:
+    - text: 为 VM 配置路由首选项
+      url: tutorial-routing-preference-virtual-machine-portal.md
+    - text: 为虚拟机配置两个路由首选项选项
+      url: routing-preference-mixed-network-adapter-portal.md
+    - text: 为 Azure Kubernetes 服务配置路由首选项
+      url: routing-preference-azure-kubernetes-service-cli.md
+- title: 管理功能和选项
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 创建、更改或删除 Azure 公共 IP 地址
+      url: virtual-network-public-ip-address.md
+    - text: 创建、更改或删除 Azure 公共 IP 地址前缀
+      url: manage-public-ip-address-prefix.md
+    - text: Azure 虚拟网络 IPv6 是什么？
+      url: ipv6-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 为公共 IP 地址配置路由首选项
+      url: routing-preference-portal.md
+    - text: 升级公共 IP 地址
+      url: public-ip-upgrade-portal.md
+    - text: 将经典保留 IP 地址迁移到公共 IP 地址
+      url: public-ip-upgrade-classic.md
+- title: 虚拟机
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 中的默认出站访问
+      url: default-outbound-access.md
+    - text: 什么是路由首选项？
+      url: routing-preference-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建具有静态公共 IP 地址的虚拟机
+      url: virtual-network-deploy-static-pip-arm-portal.md
+    - text: 为虚拟机配置专用 IP 地址
+      url: virtual-networks-static-private-ip-arm-pportal.md
+    - text: 将多个 IP 地址分配到虚拟机
+      url: virtual-network-multiple-ip-addresses-portal.md
