@@ -4,14 +4,14 @@ description: 保护 Azure 逻辑应用中虚拟网络、存储帐户和单租户
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
-ms.topic: conceptual
-ms.date: 07/25/2021
-ms.openlocfilehash: 4726df91efb18b2d9beec77606db449bd4aee3fa
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.topic: how-to
+ms.date: 08/31/2021
+ms.openlocfilehash: 658d8c8c43bd2795a6a25730ff85ffb6bbd3a63c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652641"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598168"
 ---
 # <a name="secure-traffic-between-virtual-networks-and-single-tenant-workflows-in-azure-logic-apps-using-private-endpoints"></a>使用专用终结点保护 Azure 逻辑应用中虚拟网络和单租户工作流之间的流量
 
@@ -112,7 +112,7 @@ ms.locfileid: "114652641"
 
 - 如果从虚拟网络外部访问，监视视图无法访问触发器和操作中的输入和输出。
 
-- 从 Visual Studio Code 或 Azure CLI 进行的部署只能从虚拟网络内部进行。 可使用部署中心将逻辑应用链接到 GitHub 存储库。 然后，可使用 Azure 基础结构生成和部署代码。 
+- 从 Visual Studio Code 或 Azure CLI 进行的部署只能从虚拟网络内部进行。 可使用部署中心将逻辑应用链接到 GitHub 存储库。 然后，可使用 Azure 基础结构生成和部署代码。
 
   要使 GitHub 集成正常工作，需在逻辑应用中删除 `WEBSITE_RUN_FROM_PACKAGE` 设置，或将该值设置为 `0`。
 
@@ -122,50 +122,57 @@ ms.locfileid: "114652641"
 
 ## <a name="set-up-outbound-traffic-through-private-endpoints"></a>设置通过专用终结点的出站流量
 
-若要保护来自逻辑应用的出站流量，可将逻辑应用与虚拟网络集成。 默认情况下，来自逻辑应用的出站流量进入专用地址（例如`10.0.0.0/8`、`172.16.0.0/12` 和 `192.168.0.0/16`）时，仅受网络安全组 (NSG) 和用户定义的路由 (UDR) 的影响。 但是，通过将所有出站流量路由通过自己的虚拟网络，可使所有出站流量受到 NSG、路由和防火墙的约束。 若要确保集成子网中所有出站流量都受到 NSG 和 UDR 的影响，请将逻辑应用设置 `WEBSITE_VNET_ROUTE_ALL` 设置为 `1`。
+若要保护来自逻辑应用的出站流量，可将逻辑应用与虚拟网络集成。 默认情况下，来自逻辑应用的出站流量进入专用地址（例如`10.0.0.0/8`、`172.16.0.0/12` 和 `192.168.0.0/16`）时，仅受网络安全组 (NSG) 和用户定义的路由 (UDR) 的影响。
+
+如果你将自己的域名服务器 (DNS) 用于虚拟网络，请将逻辑应用资源的 `WEBSITE_DNS_SERVER` 应用设置指定为 DNS 的 IP 地址。 如果你有辅助 DNS，请添加名为 `WEBSITE_DNS_ALT_SERVER` 的另一个应用设置，并将值也设置为 DNS 的 IP。 另外，请更新 DNS 记录以将专用终结点指向内部 IP 地址。 专用终结点会将 DNS 查找发送到专用地址，而不是发送到特定资源的公共地址。 有关详细信息，请查看[专用终结点 - 将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#private-endpoints)。
 
 > [!IMPORTANT]
-> 若要使逻辑应用运行时正常工作，则与后端存储的连接不能间断。 若要使 Azure 托管的托管连接器正常工作，则与托管 API 服务的连接不能间断。
-
-若要确保逻辑应用在虚拟网络中使用专用域名服务器 (DNS) 区域，将 WEBSITE_DNS_SERVER 设置为 168.63.129.16，以确保应用在 vNET 中使用专用 DNS 区域
+> 要使 Azure 逻辑应用运行时正常工作，与后端存储的连接不能中断。 若要使 Azure 托管的托管连接器正常工作，则与托管 API 服务的连接不能间断。
 
 ### <a name="considerations-for-outbound-traffic-through-private-endpoints"></a>通过专用终结点的出站流量的注意事项
 
-设置虚拟网络集成不会影响入站流量，流量会继续使用应用服务共享的终结点。 若要保护入站流量，请查看[设置通过专用终结点的入站流量](#set-up-inbound)。
+设置虚拟网络集成只会影响出站流量。 若要保护继续使用应用服务共享终结点的入站流量，请查看[通过专用终结点设置入站流量](#set-up-inbound)。
 
 有关详细信息，请参阅以下文档：
 
 - [将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)
+
 - [网络安全组](../virtual-network/network-security-groups-overview.md)
+
 - [虚拟网络流量路由](../virtual-network/virtual-networks-udr-overview.md)
 
 ## <a name="connect-to-storage-account-with-private-endpoints"></a>使用专用终结点连接到存储帐户
 
-可限制存储帐户访问，以便只有虚拟网络中的资源才能连接。 Azure 存储支持将专用终结点添加到存储帐户。 然后，逻辑应用工作流可使用这些终结点与存储帐户通信。
+可限制存储帐户访问，以便只有虚拟网络中的资源才能连接。 Azure 存储支持将专用终结点添加到存储帐户。 然后，逻辑应用工作流可使用这些终结点与存储帐户通信。 有关详细信息，请查看[对 Azure 存储使用专用终结点](../storage/common/storage-private-endpoints.md)。
 
-在逻辑应用设置中，选择下面其中一个选项，将 `AzureWebJobsStorage` 设置为具有专用终结点的存储帐户的连接字符串：
+> [!NOTE]
+> 以下步骤要求在存储帐户上暂时启用公共访问。 如果由于组织策略的原因而无法启用公共访问，你仍可以使用专用存储帐户来部署逻辑应用。 但是，必须使用 Azure 资源管理器模板（ARM 模板）进行部署。 有关 ARM 模板示例，请查看[使用安全存储帐户和专用终结点部署逻辑应用](https://github.com/VeeraMS/LogicApp-deployment-with-Secure-Storage)。
 
-- **Azure 门户**：在逻辑应用菜单上，选择“配置”。 用存储帐户的连接字符串更新 `AzureWebJobsStorage` 设置。
+1. 为每个表、队列和 Blob 和文件存储服务创建不同的专用终结点。
 
-- **Visual Studio Code**：在项目根级别 local.settings.json 文件中，用存储帐户的连接字符串更新 `AzureWebJobsStorage` 设置。
+1. 部署逻辑应用时，在存储帐户上启用临时公共访问。
 
- 有关详细信息，请参阅[对 Azure 存储使用专用终结点文档](../storage/common/storage-private-endpoints.md)。
+   1. 在 [Azure 门户](https://portal.azure.com)中，打开你的存储帐户资源。
 
-### <a name="considerations-for-private-endpoints-on-storage-accounts"></a>存储帐户上专用终结点的注意事项
+   1. 在存储帐户资源菜单中的“安全性 + 网络”下，选择“网络” 。
 
-- 为每个表、队列、Blob 和文件存储服务创建不同的专用终结点。
+   1. 在“网络”窗格中的“防火墙和虚拟网络”选项卡上，在“允许从以下位置访问”下，选择“所有网络”   。
 
-- 使用此设置，将所有出站流量路由通过虚拟网络：
+1. 使用 Azure 门户或 Visual Studio Code 部署逻辑应用资源。
 
-  `"WEBSITE_VNET_ROUTE_ALL": "1"`
+1. 部署完成后，在连接到存储帐户的虚拟网络或子网上的逻辑应用和专用终结点之间启用集成。
 
-- 若要使逻辑应用在虚拟网络中使用专用域名服务器 (DNS) 区域，请将逻辑应用的 `WEBSITE_DNS_SERVER` 设置设为 `168.63.129.16`。
+   1. 在 [Azure 门户](https://portal.azure.com)中，打开你的逻辑应用资源。
 
-- 部署自己的逻辑应用时，需要有一个单独的可公开访问的存储帐户。 请确保将 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 设置设为该存储帐户的连接字符串。
+   1. 在逻辑应用资源菜单中的“设置”下，选择“网络” 。
 
-- 如果逻辑应用使用专用终结点，请使用 [GitHub 集成](https://docs.github.com/en/github/customizing-your-github-workflow/about-integrations)进行部署。
+   1. 在逻辑应用与专用终结点 IP 地址之间设置必要的连接。
 
-  如果逻辑应用不使用专用终结点，则可在 Visual Studio Code 中进行部署，并将 `WEBSITE_RUN_FROM_PACKAGE` 设置设为 `1`。 
+   1. 若要通过虚拟网络访问逻辑应用工作流数据，请在逻辑应用资源设置中将 `WEBSITE_CONTENTOVERVNET` 设置指定为 `1`。
+
+   如果你将自己的域名服务器 (DNS) 用于虚拟网络，请将逻辑应用资源的 `WEBSITE_DNS_SERVER` 应用设置指定为 DNS 的 IP 地址。 如果你有辅助 DNS，请添加名为 `WEBSITE_DNS_ALT_SERVER` 的另一个应用设置，并将值也设置为 DNS 的 IP。 另外，请更新 DNS 记录以将专用终结点指向内部 IP 地址。 专用终结点会将 DNS 查找发送到专用地址，而不是发送到特定资源的公共地址。 有关详细信息，请查看[专用终结点 - 将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#private-endpoints)。
+
+1. 应用这些应用设置后，可以从存储帐户中删除公共访问。
 
 ## <a name="next-steps"></a>后续步骤
 

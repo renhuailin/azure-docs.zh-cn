@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: 741f2cc4176914417b02bacc9911988a41c5827d
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: eb5766214fff67bf7e45998c9f89c640433bbe99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427293"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652446"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -51,33 +51,41 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 
 ## <a name="export-destinations"></a>导出目标
 
+在工作区中创建导出规则之前，必须创建数据导出目标。 目标不必要与工作区位于同一个订阅中。 使用 Azure Lighthouse，还可以将数据发送到另一个 Azure Active Directory 租户中的目标。
+
 ### <a name="storage-account"></a>存储帐户
-数据会在其到达 Azure Monitor 时被发送到存储帐户并存储在每小时追加的 Blob 中。 “数据导出配置”为存储帐户中的每个表创建一个容器，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的容器中 。
 
-存储帐户 Blob 路径为 WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json。 由于追加 Blob 在存储中的写入限制为 50K，如果追加的数量很大，则导出的 Blob 的数量可能会增加。 在这种情况下，Blob 的命名模式将为 PT1H_#.json，其中 # 是增量 Blob 计数。
+需要对工作区和目标拥有“写入”权限才能配置数据导出规则。 不应使用存储了其他非监视数据的现有存储帐户，以便能够更好地控制对数据的访问，并防止达到存储引入速率限制和网络限制。 
 
-存储帐户数据格式为 [JSON 行](../essentials/resource-logs-blob-format.md)。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。 
+若要将数据发送到不可变存储，请按照[设置和管理 Blob 存储的不可变性策略](../../storage/blobs/immutable-policy-configure-version-scope.md)中所述为存储帐户设置不可变策略。 必须按照本文中的所有步骤操作，包括启用受保护的追加 blob 写入操作。
+
+存储帐户必须为 StorageV1 或更高版本，并且与工作区位于同一区域。 如果需要将数据复制到其他区域中的其他存储帐户，可以使用任何 [Azure 存储冗余选项](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)，包括 GRS 和 GZRS。
+
+数据会在其到达 Azure Monitor 时被发送到存储帐户并存储在每小时追加的 Blob 中。 导出规则设置将为存储帐户中的每个表创建一个容器，其名称为 am- 后接表名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的容器中 。
+
+从 2021 年 10 月 15 日开始，Blob 将存储在 5 个 minutes 文件夹中，其路径结构如下：WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=\<two-digit 60-minute clock minute\>/PT05M.json。 由于追加 Blob 在存储中的写入限制为 50K，如果追加的数量很大，则导出的 Blob 的数量可能会增加。 在这种情况下，Blob 的命名模式为 PT05M_#.json*，其中 # 是增量 Blob 计数。
+
+存储帐户数据格式位于 [JSON 行](../essentials/resource-logs-blob-format.md)中。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。 
 
 [![存储示例数据](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
-当基于时间的保留策略启用了 allowProtectedAppendWrites 设置时，Log Analytics 数据导出可以将追加 Blob 写入不可变存储帐户。 该设置允许将新块写入追加 Blob，同时维持不可变性保护和合规性。 请参阅[允许受保护的追加 Blob 写入](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)。
-
 ### <a name="event-hub"></a>事件中心
-数据到达 Azure Monitor 时，将准实时地发送到事件中心。 将为导出的每个数据类型创建一个事件中心，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的事件中心中 。 如果要将导出的数据传递到特定事件中心，或者有一个表的名称超过了 47 个字符的限制，则可提供自己的事件中心名称并将定义的表的所有数据导出到该事件中心。
+
+需要对工作区和目标拥有“写入”权限才能配置数据导出规则。 事件中心命名空间的共享访问策略定义了流式传输机制拥有的权限。 流式传输到事件中心需要 Manage、Send 和 Listen 权限。 若要更新导出规则，必须对该事件中心授权规则拥有 ListKey 权限。
+
+事件中心命名空间需要与工作区位于同一区域。
+
+数据到达 Azure Monitor 时，将发送到事件中心。 将为导出的每个数据类型创建一个事件中心，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的事件中心中 。 如果要将导出的数据传递到特定事件中心，或者有一个表的名称超过了 47 个字符的限制，则可提供自己的事件中心名称并将定义的表的所有数据导出到该事件中心。
 
 > [!IMPORTANT]
 > [每个“基本”和“标准”命名空间层支持 10 个事件中心](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers)。 如果导出的表格超过 10 个，则可在多个导出规则之间将表格拆分到不同的事件中心命名空间，或在导出规则中提供事件中心名称，并将所有表格导出到该事件中心。
 
-注意事项：
+事件中心命名空间注意事项：
 1. “基本”事件中心 SKU 支持的事件大小[限制](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers)更低，工作区中的某些日志可能会因超过该限制而被删除。 建议使用“标准”或“专用”事件中心作为导出目标。
 2. 导出的数据量通常会随时间的推移而增加，需要扩大事件中心的规模，以适应更高的传输速率并避免出现限制情况和数据延迟。 应使用事件中心的自动扩充功能来自动进行纵向扩展并增加吞吐量单位数，以满足使用需求。 有关详细信息，请参阅[自动增加 Azure 事件中心吞吐量单位](../../event-hubs/event-hubs-auto-inflate.md)。
 
-## <a name="prerequisites"></a>先决条件
-在配置 Log Analytics 数据导出之前，必须符合下列先决条件：
-
-- 必须在导出规则配置之前创建目标，并且目标应与 Log Analytics 工作区位于同一区域。 如果需要将数据复制到其他存储帐户，可以使用任何 [Azure 存储冗余选项](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)，包括 GRS 和 GZRS。
-- 存储帐户必须是 StorageV1 或更高版本。 不支持经典存储。
-- 如果你已将存储帐户配置为允许从所选网络进行访问，则需要在存储帐户设置中添加一个例外来允许 Azure Monitor 写入存储。
+> [!NOTE]
+> 启用虚拟网络后，Azure Monitor 数据导出无法访问事件中心资源。 必须在事件中心启用“允许受信任的 Microsoft 服务绕过此防火墙”设置，以便授予 Azure Monitor 数据导出访问事件中心资源的权限。 
 
 ## <a name="enable-data-export"></a>启用数据导出
 需要执行以下步骤才能启用 Log Analytics 数据导出。 有关每项的详细信息，请阅读以下各节。
@@ -124,7 +132,7 @@ find where TimeGenerated > ago(24h) | distinct Type
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -400,7 +408,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -432,7 +440,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -479,7 +487,7 @@ Content-type: application/json
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -511,7 +519,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

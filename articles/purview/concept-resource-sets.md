@@ -6,24 +6,22 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 07/23/2021
-ms.openlocfilehash: 6c51a118b0581759f456b243b6dde25890b36f39
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.date: 09/24/2021
+ms.openlocfilehash: d1d15fb4ff3bc2d820311b4f847c21236d83b6f3
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668469"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708736"
 ---
 # <a name="understanding-resource-sets"></a>了解资源集
 
 本文帮助你了解 Azure Purview 如何使用资源集将数据资产映射到逻辑资源。
 ## <a name="background-info"></a>背景信息
 
-大规模数据处理系统通常将单个表作为多个文件存储在磁盘上。 此概念在 Azure Purview 中使用资源集来表示。 资源集是目录中的单个对象，表示存储中的大量资产。
+大规模数据处理系统通常将单个表作为多个文件存储在存储中。 在 Azure Purview 数据目录中，此概念是使用资源集表示的。 资源集是目录中的单个对象，表示存储中的大量资产。
 
 例如，假设 Spark 群集在 Azure Data Lake Storage (ADLS) Gen2 数据源中持久保存某个数据帧。 虽然 Spark 中的表看似是单个逻辑资源，但在磁盘上可能有数千个 Parquet 文件，其中每个文件代表数据帧总体内容的一个分区。 IoT 数据和 Web 日志数据也存在相同的难题。 假设某个传感器每秒会多次输出日志文件。 不久之后，这一个传感器就会输出几十万个日志文件。
-
-为了解决将大量数据资产映射到单个逻辑资源的难题，Azure Purview 使用了资源集。
 
 ## <a name="how-azure-purview-detects-resource-sets"></a>Azure Purview 如何检测资源集
 
@@ -41,23 +39,44 @@ Azure Purview 使用此策略将以下资源映射到同一资源集 `https://my
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/cy_gb/234.json`
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/de_Ch/23434.json`
 
-## <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Azure Purview 不会检测为资源集的文件类型
+### <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Azure Purview 不会检测为资源集的文件类型
 
 Purview 有意地不会尝试将 Word、Excel 或 PDF 等大多数文档文件类型分类为资源集。 例外的格式是 CSV，因为它是常用的分区文件格式。
 
 ## <a name="how-azure-purview-scans-resource-sets"></a>Azure Purview 如何扫描资源集
 
-当 Azure Purview 检测到它认为是资源集一部分的资源时，将从完全扫描切换到样本扫描。 在样本扫描中，它只会打开它认为位于资源集中的文件子集。 对于打开的每个文件，它将使用该文件的架构并运行其分类器。 然后，Azure Purview 在打开的资源中查找最新的资源，并在目录中整个资源集的条目中使用该资源的架构和分类。
+当 Azure Purview 检测到它认为是资源集一部分的资源时，将从完全扫描切换到样本扫描。 样本扫描只会打开它认为位于资源集中的文件子集。 对于打开的每个文件，它将使用该文件的架构并运行其分类器。 然后，Azure Purview 在打开的资源中查找最新的资源，并在目录中整个资源集的条目中使用该资源的架构和分类。
 
-## <a name="what-azure-purview-stores-about-resource-sets"></a>Azure Purview 存储有关资源集的哪些内容
+## <a name="advanced-resource-sets"></a>高级资源集
 
-除了单个架构和分类以外，Azure Purview 还会存储有关资源集的以下信息：
+默认情况下，Azure Purview 根据[资源集文件采样规则](sources-and-scans.md#resource-set-file-sampling)确定资源集的架构和分类。 Azure Purview 可以通过“高级资源集”功能来自定义并进一步扩充资源集资产。 启用高级资源集后，Azure Purview 将运行额外的聚合来计算有关资源集资产的以下信息：
 
-- 它深度扫描的最新分区资源中的数据。
-- 有关构成资源集的分区资源的聚合信息。
-- 分区计数，显示找到的分区资源数。
-- 架构计数，显示它在深度扫描的样本集中找到的唯一架构数。 此值要么是介于 1 和 5 之间的数字，要么是大于 5 的值。
+- 最新的架构和分类，以便准确反映不断变化的元数据导致的架构偏差。
+- 构成资源集的文件中的样本路径。
+- 分区计数，显示构成资源集的文件数。 
+- 模式计数，显示找到了多少个唯一架构。 此值要么是介于 1 和 5 之间的数字，要么是大于 5 的值。
 - 当资源集中包含多个分区类型时的分区类型列表。 例如，IoT 传感器可能会输出 XML 和 JSON 文件，不过，这两种文件类型在逻辑上都是同一个资源集的一部分。
+- 构成资源集的所有文件的总大小。 
+
+可以在资源集的资产详细信息页上找到这些属性。
+
+:::image type="content" source="media/concept-resource-sets/resource-set-properties.png" alt-text="高级资源集打开时计算的属性" border="true":::
+
+启用高级资源集还可以创建[资源集模式规则](how-to-resource-set-pattern-rules.md)，用于自定义在扫描期间 Azure Purview 如何将资源集分组。 
+
+### <a name="turning-on-advanced-resource-sets"></a>打开高级资源集
+
+在所有新的 Azure Purview 实例中，高级资源集默认处于关闭状态。 可以从管理中心的“帐户信息”启用高级资源集。
+
+> [!NOTE]
+> 在 2021 年 8 月 19 日之前创建的所有 Purview 实例默认已打开高级资源集。
+
+:::image type="content" source="media/concept-resource-sets/advanced-resource-set-toggle.png" alt-text="打开高级资源集。" border="true":::
+
+启用高级资源集后，将在所有新引入的资产上进行额外的扩充。 Azure Purview 团队建议在打开该功能后，先等待一小时再扫描新的数据湖数据。
+
+> [!IMPORTANT]
+> 启用高级资源集会影响资产和分类见解的刷新频率。 打开高级资源集后，资产和分类见解每天只会更新两次。
 
 ## <a name="built-in-resource-set-patterns"></a>内置资源集模式
 
@@ -80,7 +99,7 @@ Azure Purview 支持以下资源集模式。 这些模式可能显示为目录�
 | Date(yyyy/mm/dd)InPath  | {Year}/{Month}/{Day} | 跨多个文件夹的年/月/日模式 |
 
 
-## <a name="how-resource-sets-are-displayed-in-the-azure-purview-catalog"></a>资源集在 Azure Purview 目录中的显示方式
+## <a name="how-resource-sets-are-displayed-in-the-azure-purview-data-catalog"></a>资源集在 Azure Purview 数据目录中的显示方式
 
 当 Azure Purview 在资源集中匹配一组资产时，它会尝试提取最有用的信息用作目录中的显示名称。 应用默认命名约定的一些示例： 
 

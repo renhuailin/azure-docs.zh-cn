@@ -7,27 +7,27 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1505837a316943c2d22f82a0107bb7a1990e0e83
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 3922b716a5537838be06f3fec6a9626e59fa929f
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014586"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129055092"
 ---
-# <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Azure Spring Cloud 中的 Application Insights Java 进程内代理（预览版）
+# <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Azure Spring Cloud 中的 Application Insights Java 进程内代理
 
 本文介绍如何使用 Azure Spring Cloud 中的 Application Insights Java 代理监视应用和微服务。
 
 使用此功能，你可以：
 
 * 通过不同的筛选器搜索跟踪数据。
-* 查看微服务的依赖项映射。
+* 查看微服务的依赖关系映射。
 * 检查请求性能。
 * 监视实时指标。
 * 检查请求失败。
 * 检查应用程序指标。
 
-Application Insights 提供了许多可观察的角度，包括：
+Application Insights 提供许多可观察的视角，包括：
 
 * 应用程序映射
 * 性能
@@ -36,25 +36,22 @@ Application Insights 提供了许多可观察的角度，包括：
 * 实时指标
 * 可用性
 
-> [!NOTE]
-> Mooncake 和新区域（例如阿拉伯联合酋长国）中尚不支持此预览功能。
-
 ## <a name="enable-java-in-process-agent-for-application-insights"></a>启用 Application Insights 的 Java 进程内代理
 
-通过以下过程启用 Java 进程内代理预览版功能。
+使用以下过程启用 Java 进程内代理。
 
 1. 转到你的服务实例的服务概述页。
-2. 在“监视”边栏选项卡下选择“Application Insights”条目。
-3. 选择“启用 Application Insights”按钮以启用“Application Insights”集成。
+2. 在“监视”窗格中选择“Application Insights”项 。
+3. 选择“启用 Application Insights”以启用“Application Insights”集成 。
 4. 选择 Application Insights 的一个现有实例，或者创建一个新实例。
-5. 选择“启用 Java 进程内代理”以启用“预览 Java 进程内代理”功能。 你还可以在此处自定义从 0 到 100 的采样率。
-6. 选择“保存”以保存更改。
+   你还可以在此处自定义从 0 到 100 的采样率。
+5. 选择“保存”以保存更改。
 
 ## <a name="portal"></a>门户
 
 1. 转到“服务 | 概述”页，然后在“监视”部分选择“Application Insights”  。
 2. 选择“启用 Application Insights”以在 Azure Spring Cloud 中启用 Application Insights。
-3. 选择“启用 Java 进程内代理”以启用 Java IPA 预览功能。 启用 IPA 预览版功能后，可以配置一个可选的采样率（默认值为 10.0%）。
+3. 启用“Application Insights”后，可以配置一个可选采样率（默认值为 10.0%）。
 
    [ ![IPA 0](media/spring-cloud-application-insights/insights-process-agent-0.png)](media/spring-cloud-application-insights/insights-process-agent-0.png)
 
@@ -62,7 +59,7 @@ Application Insights 提供了许多可观察的角度，包括：
 
 启用 Application Insights 功能后，你可以：
 
-在左侧导航窗格中，选择“Application Insights”以跳转到 Application Insights 的“概述”页。
+在左侧导航窗格中，选择“Application Insights”以跳转到 Application Insights 的“概述”页 。
 
 * 选择“应用程序映射”以查看在应用程序之间进行的调用的状态。
 
@@ -90,9 +87,13 @@ Application Insights 提供了许多可观察的角度，包括：
 
    [ ![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
-## <a name="arm-template"></a>ARM 模板
+## <a name="automation"></a>自动化
 
-若要使用 Azure 资源管理器模板，请将以下内容复制到 `azuredeploy.json`。
+以下部分介绍如何使用 Azure 资源管理器模板（ARM 模板）或 Terraform 自动完成部署。
+    
+### <a name="arm-templates"></a>ARM 模板
+
+若要使用 ARM 模板进行部署，请将以下内容复制到 azuredeploy.json 文件中。 有关详细信息，请参阅 [Microsoft.AppPlatform Spring/monitoringSettings](/azure/templates/microsoft.appplatform/spring/monitoringsettings)。
 
 ```json
 {
@@ -124,27 +125,119 @@ Application Insights 提供了许多可观察的角度，包括：
 }
 ```
 
+### <a name="terraform"></a>Terraform
+
+对于 Terraform 部署，请使用以下模板。 有关详细信息，请参阅 [azurerm_spring_cloud_service](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/spring_cloud_service)。
+
+```terraform
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_application_insights" "example" {
+  name                = "tf-test-appinsights"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  application_type    = "web"
+}
+
+resource "azurerm_spring_cloud_service" "example" {
+  name                = "example-springcloud"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  sku_name            = "S0"
+
+  config_server_git_setting {
+    uri          = "https://github.com/Azure-Samples/piggymetrics"
+    label        = "config"
+    search_paths = ["dir1", "dir2"]
+  }
+
+  trace {
+    connection_string = azurerm_application_insights.example.connection_string
+    sample_rate       = 10.0
+  }
+
+  tags = {
+    Env = "staging"
+  }
+}
+```
+
 ## <a name="cli"></a>CLI
 
-使用 CLI 命令应用 ARM 模板：
+可以使用 Azure CLI 命令管理 Application Insights。 在以下命令中，请务必将 \<placeholder> 文本替换为所述的值。 \<service-name> 占位符表示 Azure Spring Cloud 实例的名称。
 
-* 适用于现有的 Azure Spring Cloud 实例：
+若要在创建 Azure Spring Cloud 实例时配置 Application Insights，请使用以下命令。 对于 `app-insights` 参数，可以指定 Application Insights 名称或资源 ID。
+   
+```azurecli
+az spring-cloud create \
+    --resource-group <resource-group-name> \
+    --name "serviceName" \
+    --app-insights <name-or-resource-ID> \
+    --sampling-rate <sampling-rate>
+```
 
-   ```azurecli
-   az spring-cloud app-insights update [--app-insights/--app-insights-key] "assignedName" [--sampling-rate]    "samplingRate" --name "assignedName" --resource-group "resourceGroupName"
-   ```
+还可以使用 Application Insights 连接字符串（首选）或检测密钥，如以下示例中所示。
+   
+```azurecli
+az spring-cloud create \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --app-insights-key <connection-string-or-instrumentation-key> \
+    --sampling-rate <sampling-rate>
+```
 
-* 适用于新建的 Azure Spring Cloud 实例：
+若要在创建 Azure Spring Cloud 实例时禁用 Application Insights，请使用以下命令：
 
-   ```azurecli
-   az spring-cloud create/update [--app-insights]/[--app-insights-key] "assignedName"    --disable-app-insights false --enable-java-agent true --name "assignedName" --resource-group    "resourceGroupName"
-   ```
+```azurecli
+az spring-cloud create \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --disable-app-insights
+```
 
-* 若要禁用 app-insight，请执行以下命令：
+若要检查现有 Azure Spring Cloud 实例的 Application Insights 设置，请使用以下命令：
 
-   ```azurecli
-   az spring-cloud app-insights update --disable --name "assignedName" --resource-group "resourceGroupName"
-   ```
+```azurecli
+az spring-cloud app-insights show \
+    --resource-group <resource-group-name> \
+    --name <service-name>
+```
+
+若要使用连接字符串（首选）或检测密钥启用 Application Insights，请使用以下命令：
+
+```azurecli
+az spring-cloud app-insights update \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --app-insights-key <connection-string-or-instrumentation-key> \
+    --sampling-rate <sampling-rate>
+```
+
+若要使用资源名称或 ID 启用 Application Insights，请使用以下命令：
+
+```azurecli
+az spring-cloud app-insights update \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --app-insights <name-or-resource-ID> \
+    --sampling-rate <sampling-rate>
+```
+
+若要在现有 Azure Spring Cloud 实例上禁用 Application Insights，请使用以下命令：
+
+```azurecli
+az spring-cloud app-insights update \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --disable
+```
 
 ## <a name="java-agent-updateupgrade"></a>Java 代理更新/升级
 

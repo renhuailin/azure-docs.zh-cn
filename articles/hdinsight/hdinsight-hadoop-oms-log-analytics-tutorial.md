@@ -4,13 +4,13 @@ description: 了解如何使用 Azure Monitor 日志监视在 HDInsight 群集�
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurepowershell, references_regions
-ms.date: 08/02/2021
-ms.openlocfilehash: 0627cbb6c590178c5f393cfd519fb4a4504d050f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 09/21/2021
+ms.openlocfilehash: c4fc351105c82213549fdb357d19b480c5a51ed4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180489"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648024"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure Monitor 日志监视 HDInsight 群集
 
@@ -189,6 +189,8 @@ HDInsight 支持通过导入以下日志类型进行 Azure Monitor 日志的群�
 
 * Log Analytics 工作区。 可将此工作区视为独特的 Azure Monitor 日志环境，包含自身的数据存储库、数据源和解决方案。 有关说明，请参阅[创建 Log Analytics 工作区](../azure-monitor/vm/monitor-virtual-machine.md)。
 
+* 如果你打算在防火墙后的群集上使用 Azure Monitor 集成，需满足[防火墙后的群集的先决条件](#oms-with-firewall)。
+
 * 一个 Azure HDInsight 群集。 当前，可以将 Azure Monitor 日志与以下 HDInsight 群集类型配合使用：
 
   * Hadoop
@@ -285,6 +287,25 @@ az hdinsight monitor show --name $cluster --resource-group $resourceGroup
 ```azurecli
 az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 ```
+## <a name=""></a><a name="oms-with-firewall">防火墙后的群集的先决条件</a>
+
+为了能够在防火墙后成功设置 Azure Monitor 与 HDInsight 的集成，某些客户可能需要启用以下终结点：
+
+|代理资源 | 端口 | 方向 | 绕过 HTTPS 检查 |
+|---|---|---|---|
+| \*.ods.opinsights.azure.com | 端口 443 | 出站 | 是 |
+| \*.oms.opinsights.azure.com |端口 443 | 出站 | 是 |
+| \*.azure-automation.net | 端口 443 | 出站 | 是 |
+
+如果启用通配符存储终结点存在相关的安全限制，可以采用一种替代的做法。 可以改为执行以下操作：
+
+1. 创建专用存储帐户
+2. 在 Log Analytics 工作区上配置专用存储帐户
+3. 在防火墙中启用该专用存储帐户
+
+### <a name="data-collection-behind-a-firewall"></a>防火墙后的数据收集
+成功完成设置后，为数据引入启用所需的终结点非常重要。 建议启用 \*.blob.core.windows.net 终结点，使数据引入能够成功。
+
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>安装 HDInsight 群集管理解决方案
 
@@ -317,6 +338,24 @@ HDInsight 支持通过导入以下日志类型进行 Azure Monitor 日志的群�
 * `log_auth_CL` - 此表提供 SSH 日志，其中显示了成功和失败的登录尝试。
 * `log_ambari_audit_CL` - 此表提供了 Ambari 中的审核日志。
 * `log_ranger_audti_CL`此表提供了针对 ESP 群集的 Apache Ranger 审核日志。
+
+---
+
+## <a name="update-the-log-analytics-oms-agent-used-by-hdinsight-azure-monitor-integration"></a>更新 HDInsight Azure Monitor 集成使用的 Log Analytics (OMS) 代理
+
+在群集上启用 Azure Monitor 集成后，Log Analytics 代理或 Operations Management Suite (OMS) 代理将安装在群集上，除非你禁用再重新启用 Azure Monitor 集成，否则该代理不会更新。 如果需要更新群集上的 OMS 代理，请完成以下步骤。 如果你在防火墙后操作，可能需要先满足[防火墙后的群集的先决条件](#oms-with-firewall)，然后再完成这些步骤。
+
+1. 从 [Azure 门户](https://portal.azure.com/)中，选择群集。 群集将在新的门户页面中打开。
+1. 从左侧的“监视”下，选择“Azure Monitor”。 
+1. 记下当前 Log Analytics 工作区的名称。
+1. 在主视图中的“Azure Monitor 集成”下，禁用切换开关，然后选择“保存” 。 
+1. 保存设置后，重新启用“Azure Monitor 集成”切换开关，并确保选择相同的 Log Analytics 工作区，然后选择“保存” 。
+
+如果已在群集上启用 Azure Monitor 集成，则更新 OMS 代理也会更新开放管理基础结构 (OMI) 版本。 可运行以下命令检查群集上的 OMI 版本： 
+
+```
+ sudo /opt/omi/bin/omiserver –version
+```
 
 ## <a name="next-steps"></a>后续步骤
 

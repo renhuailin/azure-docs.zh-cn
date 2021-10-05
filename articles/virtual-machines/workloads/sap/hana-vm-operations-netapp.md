@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/23/2021
+ms.date: 09/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6b0fa5e1af60b65c513fd3fa6250dba2a978879
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 4683b38ba6a59b0a50f7e0ea4165657407b59b69
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965891"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823185"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷
 
@@ -40,7 +40,7 @@ Azure NetApp 文件提供本机 NFS 共享，可用于 /hana/shared、/hana/data
 - 将虚拟机部署在靠近 Azure NetApp 存储的位置以降低延迟，这一点非常重要。  
 - 所选的虚拟网络必须具有一个委派给 Azure NetApp 文件的子网
 - 请确保从数据库服务器到 ANF 卷的延迟得到测量并低于 1 毫秒
-- Azure NetApp 卷的吞吐量是卷配额和服务级别的函数，如 [Azure NetApp 文件服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量满足 HANA 系统要求
+- Azure NetApp 卷的吞吐量是卷配额和服务级别的函数，如 [Azure NetApp 文件服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量满足 HANA 系统要求。 或者考虑使用[手动 QoS 容量池](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)，其中的卷容量和吞吐量可以单独进行配置和缩放（[此文档](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)中提供了特定于 SAP HANA 的示例）
 - 请尝试“合并”卷以在更大卷中实现更高性能，例如，在可能时将一个卷用于 /sapmnt、/usr/sap/trans… 。  
 - Azure NetApp 文件提供[导出策略](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)：你可以对允许的客户端、访问类型（读写、只读等）进行控制。 
 - Azure NetApp 文件功能尚没有区域感知性。 当前，Azure NetApp 文件功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域的潜在延迟影响。   
@@ -61,7 +61,7 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的函数，如 [Azure Ne
 
 下表表明创建大型“标准”卷来存储备份是有意义的，而创建大于 12 TB 的“超级”卷是没有意义的，因为会超过单个卷的最大物理带宽容量。 
 
-卷和单个 Linux 会话的最大写入吞吐量介于 1.2 与 1.4 GB/秒之间。 如果需要将更大的吞吐量用于 /hana/data，则可以使用 SAP HANA 数据卷分区在数据重新加载期间使 I/O 活动条带化，或者跨位于多个 NFS 共享上的多个 HANA 数据文件使 HANA 保存点条带化。 有关 HANA 数据卷条带化的更多详细信息，请阅读以下文章：
+卷和单个 Linux 会话的最大写入吞吐量介于 1.2 与 1.4 GB/秒之间。 如果需要将更大的吞吐量用于 /hana/data，则可以使用 SAP HANA 数据卷分区在数据重新加载期间使 I/O 活动条带化，或者跨位于多个 NFS 共享上的多个 HANA 数据文件使 HANA 保存点条带化。 若要提高读取吞吐量，可以使用 NFS nconnect 装载选项。 有关 Azure NetApp 文件 Linux 性能和 nconnect 的更多详细信息，请阅读 [Azure NetApp 文件的 Linux NFS 装载选项最佳做法](../../../azure-netapp-files/performance-linux-mount-options.md)。 有关 HANA 数据卷条带化的更多详细信息，请阅读以下文章：
 
 - [HANA 管理员指南](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
 - [有关 SAP HANA 的博客 - 分区数据卷](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
@@ -75,9 +75,11 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的函数，如 [Azure Ne
 | 2 TB | 32 MB/秒 | 128 MB/秒 | 256 MB/秒 |
 | 4 TB | 64 MB/秒 | 256 MB/秒 | 512 MB/秒 |
 | 10 TB | 160 MB/秒 | 640 MB/秒 | 1,280 MB/秒 |
-| 15 TB | 240 MB/秒 | 960 MB/秒 | 1,400 MB/秒 |
-| 20 TB | 320 MB/秒 | 1,280 MB/秒 | 1,400 MB/秒 |
-| 40 TB | 640 MB/秒 | 1,400 MB/秒 | 1,400 MB/秒 |
+| 15 TB | 240 MB/秒 | 960 MB/秒 | 1,400 MB/秒<sup>1</sup> |
+| 20 TB | 320 MB/秒 | 1,280 MB/秒 | 1,400 MB/秒<sup>1</sup> |
+| 40 TB | 640 MB/秒 | 1,400 MB/秒<sup>1</sup> | 1,400 MB/秒<sup>1</sup> |
+
+<sup>1</sup>：写入或单会话读取吞吐量限制（如果未使用 NFS 装载选项 nconnect） 
 
 重要的是需要了解，数据会写入存储后端中的相同 SSD。 创建容量池中的性能配额是为了能够管理环境。
 存储 KPI 对于所有 HANA 数据库大小都是等同的。 在几乎所有情况下，这种假设并不能反映现实和客户期望。 HANA 系统的大小不一定意味着小型系统需要较低的存储吞吐量 – 而大型系统需要较高的存储吞吐量。 但一般而言，对于较大的 HANA 数据库实例，我们可以期望更高的吞吐量要求。 由于 SAP 对底层硬件的大小调整规则，此类较大 HANA 实例在实例重新启动后加载数据等任务中也可提供更多的 CPU 资源和更高的并行性。 因此，应根据客户期望和要求采用卷大小。 而不仅仅将单纯的容量要求作为驱动因素。
@@ -90,9 +92,9 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的函数，如 [Azure Ne
 | 数据卷写入 | 250 MB/秒 | 4 TB | 2 TB |
 | 数据量读取 | 400 MB/秒 | 6.3 TB | 3.2 TB |
 
-由于所有这三个 KPI 都是必需的，因此需要将 /hana/data 卷的大小调整为更大的容量，以满足最低读取要求。
+由于所有这三个 KPI 都是必需的，因此需要将 /hana/data 卷的大小调整为更大的容量，以满足最低读取要求。 使用手动 QoS 容量池时，可以单独定义卷的大小和吞吐量。 由于容量和吞吐量均取自同一个容量池，池的服务级别和大小必须足够大才能保证总体性能（请参阅[此处](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)的示例）
 
-对于不需要高带宽的 HANA 系统，ANF 卷大小可以较小。 如果 HANA 系统需要更多吞吐量，则可以通过联机重设容量大小来调整卷。 没有为备份卷定义 KPI。 但是，备份卷吞吐量对于执行良好的环境是必不可少的。 日志和数据卷性能必须按照客户期望进行设计。
+对于不需要高带宽的 HANA 系统，可以通过较小的卷大小来降低 ANF 卷吞吐量；在使用手动 QoS 的情况下，可以直接调整吞吐量。 如果 HANA 系统需要更多吞吐量，则可以通过联机重设容量大小来调整卷。 没有为备份卷定义 KPI。 但是，备份卷吞吐量对于执行良好的环境是必不可少的。 日志和数据卷性能必须按照客户期望进行设计。
 
 > [!IMPORTANT]
 > 无论在单个 NFS 卷上部署的容量如何，预计吞吐量都将 1.2-1.4 GB/秒的带宽范围（由单个会话中的使用者利用）内稳定下来。 这与 ANF 产品/服务的基础体系结构以及围绕 NFS 的相关 Linux 会话限制有关。 [Azure NetApp 文件的性能基准测试结果](../../../azure-netapp-files/performance-benchmarks-linux.md)一文中记录的性能和吞吐量数针对具有多个客户端 VM 的一个共享 NFS 卷而执行，因此具有多个会话。 这种情况不同于我们在 SAP 中测量的情况。 我们针对 NFS 卷衡量单个 VM 的吞吐量的位置。 托管在 ANF 上。
@@ -141,8 +143,9 @@ ANF 系统更新和升级可在不影响客户环境的情况下进行应用。 
 
 SAP HANA 支持：
 
-- 基于存储的快照备份（从 SAP HANA 1.0 SPS7 开始）
-- 适用于多数据库容器 (MDC) HANA 环境的基于存储的快照备份支持（从 SAP HANA 2.0 SPS4 开始）
+- 为使用 SAP HANA 1.0 SPS7 和更高版本的单容器系统提供基于存储的快照备份支持 
+- 为包含单个租户的、使用 SAP HANA 2.0 SPS1 和更高版本的多数据库容器 (MDC) HANA 环境提供基于存储的快照备份支持
+- 为包含多个租户的、使用 SAP HANA 2.0 SPS4 和更高版本的多数据库容器 (MDC) HANA 环境提供基于存储的快照备份支持
 
 
 创建基于存储的快照备份是简单的四步骤过程， 
@@ -177,8 +180,11 @@ BACKUP DATA FOR FULL SYSTEM CLOSE SNAPSHOT BACKUP_ID 47110815 SUCCESSFUL SNAPSHO
 > [!CAUTION]
 > 快照本身不是受保护的备份，因为它与你刚拍摄快照的卷位于相同物理存储中。 必须每天将至少一个快照“保护”到不同位置。 这可以在同一环境、远程 Azure 区域或 Azure Blob 存储中进行。
 
+可用于基于存储快照的应用程序一致性备份的解决方案：
 
-对于 Commvault 备份产品的用户，第二个选项是 Commvault IntelliSnap V.11.21 和更高版本。 此版本或更高版本的 Commvault 可提供 Azure NetApp 文件支持。 [Commvault IntelliSnap 11.21](https://documentation.commvault.com/11.21/essential/116350_getting_started_with_backup_and_restore_operations_for_azure_netapp_file_services_smb_shares_and_nfs_shares.html) 一文提供了详细信息。
+- Microsoft [Azure 应用程序一致性快照工具 (AzAcSnap)](../../../azure-netapp-files/azacsnap-introduction.md) 是一个命令行工具，可实现对第三方数据库的数据保护，方式是在执行存储快照之前处理所有所需的业务流程以将第三方数据库置于应用程序一致状态，完成快照之后将它们返回到操作状态。 AzAcSnap 支持 HANA 大型实例以及 Azure NetApp 文件的基于快照的备份。 有关更多详细信息，请参阅“什么是 Azure 应用程序一致性快照工具” 
+- 对于 Commvault 备份产品的用户，另一个选项是 Commvault IntelliSnap V.11.21 和更高版本。 此版本或更高版本的 Commvault 提供 Azure NetApp 文件快照支持。 [Commvault IntelliSnap 11.21](https://documentation.commvault.com/11.21/essential/116350_getting_started_with_backup_and_restore_operations_for_azure_netapp_file_services_smb_shares_and_nfs_shares.html) 一文提供了详细信息。
+
 
 
 ### <a name="back-up-the-snapshot-using-azure-blob-storage"></a>使用 Azure blob 存储备份快照

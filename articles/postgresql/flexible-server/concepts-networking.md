@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2021
-ms.openlocfilehash: 3d35eed46082d162afed5a2c9685265812b1e2d7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 768645614035afa852e5d9195666748df9116368
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745110"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577947"
 ---
 # <a name="networking-overview-for-azure-database-for-postgresql---flexible-server-preview"></a>Azure Database for PostgreSQL 灵活服务器（预览版）网络概述
 
@@ -74,7 +74,7 @@ ms.locfileid: "121745110"
   目前，不支持以下情况中的 NSG：ASG 是 Azure Database for PostgreSQL 灵活服务器规则的一部分。 目前建议在 NSG 中使用[基于 IP 的源或目标筛选](../../virtual-network/network-security-groups-overview.md#security-rules)。 
 
   > [!IMPORTANT]
-  > Azure Database for PostgreSQL 灵活服务器的特征要求能够将出站流量发送到目标端口 5432、6432。 如果创建网络安全组 (NSG) 来拒绝来自 Azure Database for PostgreSQL 灵活服务器的出站流量，请确保允许将流量发送到这些目标端口。 
+  > Azure Database for PostgreSQL 灵活服务器的高可用性功能要求能够向部署了 Azure Database for PostgreSQL 灵活服务器的 Azure 虚拟网络子网中的目标端口 5432 和 6432 发送/接收流量，以及能够向 Azure 存储发送流量以便进行日志存档。 如果创建[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) 以拒绝流量流入或流出 Azure Database for PostgreSQL 灵活服务器所部署到的子网，请确保允许使用[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) Azure 存储作为目标，将流量发送到该子网中的目标端口 5432 和 6432 以及 Azure 存储。 
 
 * 专用 DNS 区域集成。 使用 Azure 专用 DNS 区域集成，可以解析当前虚拟网络中或链接专用 DNS 区域的任何区域内对等互连虚拟网络中的专用 DNS。 
 
@@ -85,13 +85,17 @@ ms.locfileid: "121745110"
 如果使用 Azure API、Azure 资源管理器模板（ARM 模板）或 Terraform，请创建以 `postgres.database.azure.com` 结尾的专用 DNS 区域。 在配置具有专用访问权限的灵活服务器时使用这些区域。 有关详细信息，请参阅[专用 DNS 区域概述](../../dns/private-dns-overview.md)。
 
 
+ 对 Azure 虚拟网络使用专用网络访问时，必须通过不同的接口（包括 API、ARM 和 Terraform）提供专用 DNS 区域信息。  因此，若要通过 API、ARM 或 Terraform 创建使用专用网络访问的新 Azure Database for PostgreSQL 灵活服务器，请创建专用 DNS 区域，并在为灵活服务器配置专用访问时使用这些区域。 有关详细信息，请参阅 [Microsoft Azure 的 REST API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/preview/2021-06-01-preview/postgresql.json)。 如果使用 [Azure 门户](./how-to-manage-virtual-network-portal.md)或 [Azure CLI](./how-to-manage-virtual-network-cli.md) 创建灵活服务器，可以提供以前在相同或不同订阅中创建的专用 DNS 区域名称，否则系统会在订阅中自动创建默认的专用 DNS 区域。
+
+
+
 ### <a name="integration-with-a-custom-dns-server"></a>与自定义 DNS 服务器集成
 
 如果使用自定义 DNS 服务器，则必须使用 DNS 转发器来解析 Azure Database for PostgreSQL 灵活服务器的 FQDN。 转发器 IP 地址应为 [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。 
 
 自定义 DNS 服务器应位于虚拟网络内，或可通过虚拟网络的 DNS 服务器设置访问。 有关详细信息，请参阅[使用自己的 DNS 服务器的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
-### <a name="private-dns-zone-and-virtual-network-peering"></a>专用 DNS区域和虚拟网络对等互连
+### <a name="private-dns-zone-and-virtual-network-peering"></a>专用 DNS 区域和虚拟网络对等互连
 
 专用 DNS 区域设置和虚拟网络对等互连彼此独立。 如果要从在另一个虚拟网络（位于相同或不同的区域）中预配的客户端连接到灵活服务器，必须将专用 DNS 区域链接到虚拟网络。 有关详细信息，请参阅[链接虚拟网络](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)。
 
@@ -163,7 +167,10 @@ Azure Database for PostgreSQL 灵活服务器强制使用传输层安全性 (TLS
 
 Azure Database for PostgreSQL 支持 TLS 1.2 和更高版本。 在 [RFC 8996](https://datatracker.ietf.org/doc/rfc8996/) 中，Internet 工程任务组 (IETF) 明确指出不得使用 TLS 1.0 和 TLS 1.1。 这两个协议在 2019 年底已弃用。
 
-使用早期版本的 TLS 协议（例如 TLS 1.0 和 TLS 1.1）的所有传入连接都将被拒绝。
+使用早期版本的 TLS 协议（例如 TLS 1.0 和 TLS 1.1）的所有传入连接默认将被拒绝。 
+
+> [!NOTE]
+> SSL 和 TLS 证书将验证连接是否受到一流加密协议的保护。 在线加密连接可以防止对传输中的数据进行未经授权的访问。 正因如此，我们强烈建议使用最新版本的 TLS 来加密与 Azure Database for PostgreSQL 灵活服务器的连接。 如果需要，可以选择通过将 require_secure_transport 服务器参数更新为 OFF，来对 Azure Database for PostgreSQL 灵活服务器连接禁用 TLS\SSL，不过我们不建议这样做。 还可以通过设置 ssl_min_protocol_version 和 ssl_max_protocol_version 服务器参数来设置 TLS 版本 。
 
 ## <a name="next-steps"></a>后续步骤
 
