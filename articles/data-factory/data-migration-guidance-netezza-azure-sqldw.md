@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: ef86a65a03f27f62de769c599f96e1aa26862984
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 09c4f136d0c3a2e8ed0d2ea47dd23504a434a94e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739468"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208051"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
 
@@ -34,7 +34,7 @@ Azure 数据工厂提供高性能、稳健且经济高效的机制，用于将�
 
 Azure 数据工厂提供一个可在不同级别实现并行度的无服务器体系结构。 开发人员可以生成管道，以充分利用网络带宽和数据库带宽将环境的数据移动吞吐量最大化。
 
-![性能示意图](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/performance.png" alt-text="性能示意图":::
 
 上面的示意图可以解释为：
 
@@ -66,7 +66,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 ### <a name="migrate-data-over-the-public-internet"></a>通过公共 Internet 迁移数据
 
-![通过公共 Internet 迁移数据](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png" alt-text="通过公共 Internet 迁移数据":::
 
 上面的示意图可以解释为：
 
@@ -78,7 +78,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 ### <a name="migrate-data-over-a-private-network"></a>通过专用网络迁移数据 
 
-![通过专用网络迁移数据](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png" alt-text="通过专用网络迁移数据":::
 
 上面的示意图可以解释为：
 
@@ -112,7 +112,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
    
    - 也可以使用[服务主体](./connector-azure-sql-data-warehouse.md#service-principal-authentication)或 [SQL 身份验证](./connector-azure-sql-data-warehouse.md#sql-authentication)。
 
-- 如果不使用 Azure 资源的托管标识，则我们强烈建议[在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)，以便更轻松地集中管理和轮换密钥，而无需修改 Azure 数据工厂链接服务。 这也是 [CI/CD 的最佳做法](./continuous-integration-deployment.md#best-practices-for-cicd)之一。 
+- 如果不使用 Azure 资源的托管标识，则我们强烈建议[在 Azure Key Vault 中存储凭据](./store-credentials-in-key-vault.md)，以便更轻松地集中管理和轮换密钥，而无需修改 Azure 数据工厂链接服务。 这也是 [CI/CD 的最佳做法](./continuous-integration-delivery.md#best-practices-for-cicd)之一。 
 
 ### <a name="migrate-initial-snapshot-data"></a>迁移初始快照数据 
 
@@ -161,7 +161,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 考虑构建了以下管道用于将数据从本地 Netezza 服务器迁移到 Azure Synapse Analytics 数据库：
 
-![定价管道](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png" alt-text="定价管道":::
 
 假设以下陈述属实： 
 
@@ -179,7 +179,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 根据上述假设，预算价格如下： 
 
-![定价表](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
+:::image type="content" source="media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png" alt-text="定价表":::
 
 > [!NOTE]
 > 上表中显示的定价是假构的。 实际价格取决于环境中的实际吞吐量。 不包括 Windows 计算机（装有自承载 IR）的价格。 

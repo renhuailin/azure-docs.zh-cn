@@ -3,12 +3,12 @@ title: 升级 Azure Service Fabric 托管群集
 description: 了解用于更新 Azure Service Fabric 托管群集的选项
 ms.topic: how-to
 ms.date: 08/23/2021
-ms.openlocfilehash: b30f240325eda83428a19377e63d5a7f37f88169
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 3374a67d2b404234feafd4bc621fd5fef745b3f4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122865053"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546690"
 ---
 # <a name="manage-service-fabric-managed-cluster-upgrades"></a>管理 Service Fabric 托管群集升级
 
@@ -53,12 +53,12 @@ Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源
 
 ```json
 {
-"apiVersion": "2021-05-01",
-"type": "Microsoft.ServiceFabric/managedClusters",
-"properties": {
-        "ClusterUpgradeMode": "Manual",
-        "ClusterCodeVersion": "8.0.514.9590"
-        }
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedClusters",
+  "properties": {
+    "clusterUpgradeMode": "Manual",
+    "clusterCodeVersion": "8.0.514.9590"
+  }
 }
 ```
 
@@ -74,12 +74,12 @@ Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源
 
 ```json
 {
-"apiVersion": "2021-05-01",
-"type": "Microsoft.ServiceFabric/managedClusters",
-"properties": {
-        "ClusterUpgradeMode": "Automatic",
-        "clusterUpgradeCadence": "Wave1",
-        }  
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedClusters",
+  "properties": {
+    "clusterUpgradeMode": "Automatic",
+    "clusterUpgradeCadence": "Wave1"
+  }
 }
 ```
 

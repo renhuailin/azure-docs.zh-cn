@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习将经过训练的 ML 模型部署到使用 Azure 应用服务的 Web 应用。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: how-to
 ms.custom: devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 23c0c58fbf7748421444e723c455b4b8828c07a8
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ac882fff79148744f2c05b48113961f5cd830996
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889693"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429711"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure 应用服务（预览版）
 

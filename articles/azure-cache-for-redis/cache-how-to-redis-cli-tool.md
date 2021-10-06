@@ -1,18 +1,18 @@
 ---
 title: 将 redis-cli 与 Azure Cache for Redis 配合使用
 description: 了解如何使用 redis-cli.exe 作为命令行工具与作为客户端的 Azure Cache for Redis 进行交互
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f3b99e7b1db248a09cf20e42391c1bf36584dcb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4e753f23a5dce895260c4b1daea0ae33947cc8f6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128668861"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538195"
 ---
 # <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>将 Redis 命令行工具与 Azure Redis 缓存配合使用
 

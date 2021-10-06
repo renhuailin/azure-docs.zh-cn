@@ -8,12 +8,12 @@ ms.date: 06/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 8613d641f305f93598ac070c5eaaeee5fed81b8d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4b3f85c06c8dccd5873556c8c1ebfe1f0087b11e
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290232"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407601"
 ---
 # <a name="migrate-data-to-azure-with-data-dynamics-storagex"></a>使用 Data Dynamics StorageX 将数据迁移到 Azure
 
@@ -124,7 +124,7 @@ StorageX 服务帐户需要以下特权：
 对于任何 SMB 迁移，在添加任何资源之前，都必须先正确设置 Active Directory。 我们将使用包含新卷的现有 Azure NetApp 文件实施作为迁移目标。 要创建新的 Azure NetApp 文件卷，我们需要首先执行以下操作：
 
 - [创建 Azure NetApp 文件帐户](../../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal#create-a-netapp-account)
-- [创建容量池](../../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal#set-up-a-capacity-pool)
+- [创建容量池](../../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal#create-a-capacity-pool)
 - [将 Azure NetApp 文件帐户加入 Active Directory 域](../../../../azure-netapp-files/create-active-directory-connections.md)
 
 完成 Azure NetApp 文件的配置后，我们便可以创建用于迁移的共享。 

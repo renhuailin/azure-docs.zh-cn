@@ -1,15 +1,15 @@
 ---
 title: 将 Blob 存储事件发送到 Web 终结点 - 模板
 description: 使用 Azure 事件网格和 Azure 资源管理器模板创建 Blob 存储帐户并订阅其事件。 将事件发送到 Webhook。
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 88eb547d2c63bdbe1d534d90d026d6857e91a66b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: cf91594082480cde66fd31016a1e71a4e99df1b6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072650"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230126"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>快速入门：使用 ARM 模板将 Blob 存储事件路由到 Web 终结点
 
@@ -19,7 +19,7 @@ Azure 事件网格是针对云的事件处理服务。 本文将使用 Azure 资
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventgrid%2Fevent-grid-subscription-and-storage%2Fazuredeploy.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventgrid%2Fevent-grid-subscription-and-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 

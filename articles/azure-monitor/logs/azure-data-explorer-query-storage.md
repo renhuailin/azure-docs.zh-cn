@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e3ab2a3bfc6e42e1cba479ee8dacb97d8f46305a
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: b50badbf1353ffbb4c5f6fb347cb3c8b1168c97c
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324750"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407069"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer"></a>使用 Azure 数据资源管理器查询从 Azure Monitor 中导出的数据
 将数据从 Azure Monitor 导出到 Azure 存储帐户可以实现低成本保留，并能够将日志重新分配到不同的区域。 使用 Azure 数据资源管理器可查询从 Log Analytics 工作区导出的数据。 配置后，从你的工作区发送到 Azure 存储帐户的受支持的表将可用作 Azure 数据资源管理器的数据源。
@@ -107,7 +107,7 @@ with
    docstring = "Docs",
    folder = "ExternalTables"
 )
-'@ -f $TableName, $schema, $BlobURL, $ContainerAccessKey, $subscriptionId, $WorkspaceName, $resourcegroupname,$WorkspaceId
+'@ -f $TableName, $schema, $BlobURL, $ContainerAccessKey, $subscriptionId, $WorkspaceName.ToLower(), $resourcegroupname.ToLower(),$WorkspaceId
 
 $createMapping = @'
 .create external table {0} json mapping "{1}" '[{2}]'

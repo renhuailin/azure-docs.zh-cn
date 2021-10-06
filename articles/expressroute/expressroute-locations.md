@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: 7703c1bba0faf69ee5d2640497df64cc1a418564
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c0738fcc9011de7102ecbb60f4834bed910843ec
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128665257"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363520"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 连接合作伙伴和对等互连位置
 
@@ -124,7 +124,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |支持 |支持 |东京 |
 | **[NTT Global DataCenters EMEA](https://hello.global.ntt/)** |支持 |支持 |阿姆斯特丹 2、柏林、法兰克福、伦敦 2 |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |支持 |支持 |大阪 |
-| **[Ooredoo Cloud Connect](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |支持 |支持 |马赛 |
+| **[Ooredoo Cloud Connect](https://www.ooredoo.com.kw/portal/en/b2bOffConnAzureExpressRoute)** |支持 |支持 |马赛 |
 | **[Optus](https://www.optus.com.au/enterprise/)** |支持 |支持 |墨尔本、悉尼 |
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |支持 |支持 |阿姆斯特丹、阿姆斯特丹 2、迪拜 2、法兰克福、香港特别行政区、约翰内斯堡、伦敦、巴黎、圣保罗、硅谷、新加坡、悉尼、东京、华盛顿特区 |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | 支持 | 支持 | 迪拜 2 |

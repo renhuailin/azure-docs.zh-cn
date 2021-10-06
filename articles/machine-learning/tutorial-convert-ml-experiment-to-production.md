@@ -5,16 +5,16 @@ description: 使用 MLOpsPython 代码模板将机器学习试验笔记本转换
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 37778bc096c9089e3706907fcdd6b9c816cc5fbc
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 1e3659f44811c59033a22e1985856f934cd78bba
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817479"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426503"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>教程：将 ML 试验转换为生产 Python 代码
 

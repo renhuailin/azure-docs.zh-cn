@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 02b4341d9eddb039eb44ba964ca2e4a25c4835a7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5a599e80dea9d172ddb42cdfe76325ff5e807fbc
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539303"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378108"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -30,9 +30,8 @@ ms.locfileid: "123539303"
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
 需要先安装 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript 语音 SDK</a>，然后才能执行操作。 根据你的平台，使用以下说明：
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span
-class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 </a>
+- [Node.js](../../../speech-sdk.md?tabs=nodejs#get-the-speech-sdk)
+- [Web 浏览器](../../../speech-sdk.md?tabs=browser#get-the-speech-sdk)
 
 另外，请根据目标环境使用以下项之一：
 

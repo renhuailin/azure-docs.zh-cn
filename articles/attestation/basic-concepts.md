@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 82b40680d5f9aa46514273d8a147971b19cae9c8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bc405fa293eec4f991ca5cab51d3d8f2a4c3c816
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438545"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233251"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -46,7 +46,12 @@ Azure 证明在每个可用区域中提供了一个区域共享提供程序。 �
 | 北欧 | `https://sharedneu.neu.attest.azure.net` | 
 | 西欧| `https://sharedweu.weu.attest.azure.net` | 
 | 美国东部 2 | `https://sharedeus2.eus2.attest.azure.net` | 
-| 美国中部 | `https://sharedcus.cus.attest.azure.net` | 
+| 美国中部 | `https://sharedcus.cus.attest.azure.net` |
+| 东南亚 | `https://sharedsasia.sasia.attest.azure.net` | 
+| 美国中北部 | `https://sharedncus.ncus.attest.azure.net` | 
+| 美国中南部 | `https://sharedscus.scus.attest.azure.net` | 
+| US Gov 弗吉尼亚州 | `https://sharedugv.ugv.attest.azure.us` | 
+| US Gov 亚利桑那州 | `https://shareduga.uga.attest.azure.us` | 
 
 ## <a name="attestation-request"></a>证明请求
 

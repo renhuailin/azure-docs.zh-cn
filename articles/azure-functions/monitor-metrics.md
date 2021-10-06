@@ -3,19 +3,16 @@ title: 将 Monitor 指标与 Azure Functions 配合使用
 description: 了解如何使用 Azure Monitor 指标来查看和查询由 Azure Application Insights 收集并存储在其中的 Azure Functions 遥测数据。
 ms.topic: how-to
 ms.date: 07/4/2021
-ms.openlocfilehash: b5f0b483295cccff8caf97503233e1e7881173cf
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 8f9e80a50e3041ea37d765938613563b31f16af0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568588"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215750"
 ---
 # <a name="using-azure-monitor-metric-with-azure-functions"></a>将 Azure Monitor 指标与 Azure Functions 配合使用
 
 Azure Functions 与 Azure Monitor 指标集成，可让你分析函数应用在执行期间生成的指标。 有关详细信息，请参阅 [Azure Monitor 指标概述](../azure-monitor/essentials/data-platform-metrics.md)。 这些指标指示函数应用在应用服务平台上的运行状况。 可以查看用于估算消耗计划成本的资源消耗数据。 若要调查函数执行后提供的详细遥测数据（包括日志数据），还应使用 Azure Monitor 中的 [Application Insights](functions-monitoring.md)。 
-
-> [!NOTE]
-> 当函数应用在 Linux 上的消耗计划中运行时，目前不支持 Azure Monitor 指标。
 
 ## <a name="available-metrics"></a>可用度量值
 

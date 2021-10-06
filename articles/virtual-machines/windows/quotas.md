@@ -3,16 +3,16 @@ title: Azure 的 vCPU 配额
 description: 了解 Azure 虚拟机的 vCPU 配额。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: quota
+ms.subservice: sizes
 ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 8f032f2f39ea092c22e201fa7993179369ef45f8
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 6a984f044bb77b2a16ea41f34f00bf05d3e5220d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697766"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215997"
 ---
 # <a name="check-vcpu-quotas-using-azure-powershell"></a>使用 Azure PowerShell 检查 vCPU 配额
 
@@ -21,7 +21,7 @@ ms.locfileid: "122697766"
 虚拟机和虚拟机规模集的 vCPU 配额已根据每个区域中的每个订阅划分成两层。 第一层是区域的 vCPU 总数，第二层是各种 VM 大小系列核心（如 D 系列 vCPU）。 每当部署新 VM 时，VM 的 vCPU 数不能超过 VM 大小系列的 vCPU 配额或区域 vCPU 配额总数。 如果超过了上述任一配额，将不允许部署 VM。 此外，区域中的虚拟机总数也有一个配额。 可以在 [Azure 门户](https://portal.azure.com)的“订阅”页的“用量 + 配额”部分中查看其中每项配额的详细信息，或者，可以使用 PowerShell 查询这些值。 
 
 > [!NOTE]
-> 配额基于所使用的核心总数（已分配和已解除分配）进行计算。 如果需要额外核心，则[请求增加配额](../../azure-portal/supportability/resource-manager-core-quotas-request.md)或删除不再需要的 VM。 
+> 配额基于所使用的核心总数（已分配和已解除分配）进行计算。 如果需要额外核心，则[请求增加配额](../../azure-portal/supportability/regional-quota-requests.md)或删除不再需要的 VM。 
  
 ## <a name="check-usage"></a>查看使用情况
 
@@ -77,7 +77,7 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>虚拟机预留实例
 虚拟机预留实例（其范围限定为单个订阅而不具有 VM 大小灵活性）将为 vCPU 配额添加新的方面。 这些值描述一定能够部署在订阅中的所述大小的实例数。 它们在配额系统中用作占位符，确保预留该配额，以便能够在订阅中部署虚拟机预留实例。 例如，如果特定订阅包含 10 个 Standard_D1 虚拟机预留实例，则 Standard_D1 虚拟机预留实例的用量限制将是 10。 这会导致 Azure 确保总区域 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例，并且标准 D 系列 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例。
 
-如果需要增加配额来购买单个订阅 RI，则可以在订阅上[请求增加配额](../../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+如果需要增加配额来购买单个订阅 RI，则可以在订阅上[请求增加配额](../../azure-portal/supportability/regional-quota-requests.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

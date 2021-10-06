@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: lle
-ms.openlocfilehash: b833b8b63415a36fb0ee2862c9dfa261cfeb44ef
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d1b3770d236c7f88090840720e8f88fd453e70cf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864207"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755931"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -32,11 +32,11 @@ ms.locfileid: "122864207"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
     
-    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png" alt-text="“所有管道运行”窗格上的“活动运行”部分的屏幕截图。":::
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png" alt-text="“所有管道运行”&quot;&quot;窗格上的“活动运行”&quot;&quot;部分的屏幕截图。":::
     
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
     
-    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page-synapse.png" alt-text="“所有管道运行”窗格上的“活动运行”部分的屏幕截图。":::
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page-synapse.png" alt-text="“所有管道运行”&quot;&quot;窗格上的“活动运行”&quot;&quot;部分的屏幕截图。":::
     
     ---
     
@@ -48,7 +48,7 @@ ms.locfileid: "122864207"
  
    将打开“与 Microsoft 共享自承载集成运行时 (IR) 日志”窗口。
 
-    ![“与 Microsoft 共享自承载集成运行时 (IR) 日志”窗口的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png" alt-text="“与 Microsoft 共享自承载集成运行时 (IR) 日志”&quot;&quot;窗口的屏幕截图。":::
 
 1. 选择要发送的日志。 
     * 对于“自承载 IR”，你可以上传与失败的活动相关的日志或自承载 IR 节点上的所有日志。 
@@ -56,7 +56,7 @@ ms.locfileid: "122864207"
 
 1. 上传日志时，如果需要进一步的帮助以解决问题，请保留报表 ID 的记录供以后使用。
 
-    ![IR 日志的上传进度窗口中显示的报表 ID 的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png" alt-text="IR 日志的上传进度窗口中显示的报表 ID 的屏幕截图。":::
 
 > [!NOTE]
 > 日志查看和上传请求在所有联机自承载 IR 实例上执行。 如果缺少任何日志，请确保所有自承载 IR 实例都处于联机状态。 
@@ -86,7 +86,7 @@ ms.locfileid: "122864207"
 
 示例场景：并发作业数的最大值当前设置为 24，而你希望增加该值，使作业运行速度更快。 可输入的最小值为 3，可输入的最大值为 32。 将值从 24 增加到 32，然后选择“更新”按钮。 此进程停滞在“正在更新”状态，如下面的屏幕截图所示。 刷新页面，该值仍显示为 24。 它未如你预期的那样更新为 32。
 
-![集成运行时“节点”窗格的屏幕截图，显示进程停滞在“正在更新”状态。](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png" alt-text="集成运行时“节点”窗格的屏幕截图，其中显示了进程停滞在“正在更新”&quot;&quot;状态。":::
 
 #### <a name="cause"></a>原因
 
@@ -119,7 +119,7 @@ ms.locfileid: "122864207"
        
        b. 在文件资源管理器的左侧窗格中，搜索要检查的证书，右键单击它，然后选择“所有任务” > “导出” 。
     
-        ![“管理计算机证书”窗格上为证书选择“所有任务”>“导出”控件的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png" alt-text="“管理计算机证书”&quot;&quot;窗格中证书的“所有任务” > &quot;&quot;“导出”&quot;&quot;控件的屏幕截图。":::
 
     2. 将导出的证书复制到客户端计算机。 
     3. 在客户端的命令提示符窗口中运行以下命令。 请务必将 \<certificate path> 和 \<output txt file path> 替换为实际路径 。
@@ -137,17 +137,17 @@ ms.locfileid: "122864207"
 
         例如： 
 
-        ![TXT 文件末尾的错误摘要的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png" alt-text="TXT 文件末尾的错误摘要的屏幕截图。":::
 
         如果日志文件末尾未显示任何错误（如以下屏幕截图所示），可认为已在客户端计算机中成功生成了证书链。
         
-        ![显示没有错误的日志文件的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png)      
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png" alt-text="显示没有错误的日志文件的屏幕截图。":::      
 
 - 如果证书文件中配置了 AIA（授权信息访问）、CDP（CRL 分发点）或 OCSP（联机证书状态协议）文件扩展名，可采用更直观的方式查看它：
  
     1. 查看证书详细信息即可获取此信息，如以下屏幕截图所示：
     
-        ![证书详细信息的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png" alt-text="证书详细信息的屏幕截图。":::
     
     1. 运行以下命令。 务必将 \<certificate path> 替换为证书的实际路径。
     
@@ -159,7 +159,7 @@ ms.locfileid: "122864207"
         
     1. 要验证带 AIA、CDP 和 OCSP 文件扩展名的证书，请选择“检索”。
 
-        ![URL 检索工具和检索按钮的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png" alt-text="URL 检索工具和检索按钮的屏幕截图。":::
  
         如果来自 AIA 的证书状态为“已验证”，来自 CDP 或 OCSP 的证书状态也为“已验证”，说明已成功生成证书链 。
 
@@ -181,7 +181,7 @@ ms.locfileid: "122864207"
 
 在进程监视器中，可以看到以下结果：
 
-[![进程监视器中的路径列表的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png)](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox" lightbox="media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png" alt-text="进程监视器中的路径列表的屏幕截图。":::
 
 > [!TIP] 
 > 在进程监视器中，你可以按以下屏幕截图所示设置筛选器。
@@ -192,7 +192,7 @@ ms.locfileid: "122864207"
 
 <br>
 
-![“进程监视器筛选器”页面的屏幕截图，其中列出了 DLL 的筛选器。](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png" alt-text="“进程监视器筛选器”&quot;&quot;页的屏幕截图，其中列出了 DLL 的筛选器。":::
 
 #### <a name="resolution"></a>解决方法
 
@@ -219,7 +219,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 “尚未分配身份验证密钥”
 
-![显示“尚未分配身份验证密钥”的集成运行时事件窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png" alt-text="显示“尚未分配身份验证密钥”的集成运行时事件窗格的屏幕截图。":::
 
 #### <a name="cause"></a>原因
 
@@ -230,7 +230,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 如果上述两个原因均不适用，你可前往 %programdata%\Microsoft\Data Transfer\DataManagementGateway 文件夹，检查是否删除了 Configurations 文件 。 如果已删除，请按照 Netwrix 文章[检测从 Windows 文件服务器中删除文件的人员](https://www.netwrix.com/how_to_detect_who_deleted_file.html)中的说明进行操作。
 
-![用于检查 Configurations 文件的事件日志详细信息窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png" alt-text="用于检查 Configurations 文件的事件日志详细信息窗格的屏幕截图。":::
 
 
 ### <a name="cant-use-self-hosted-ir-to-bridge-two-on-premises-datastores"></a>无法使用自承载 IR 桥接两个本地数据存储
@@ -285,7 +285,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
    “更改 Intranet 通信加密模式失败。 证书 \<*certificate name*> 可能没有能够进行密钥交换的私钥，或者进程可能不具有对私钥的访问权限。 有关详细信息，请参阅内部异常。”
 
-    ![“Integration Runtime 配置管理器设置”窗格的屏幕截图，其中显示“私钥缺失”错误消息。](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png" alt-text="“Integration Runtime 配置管理器设置”窗格的屏幕截图，其中显示“私钥缺失”&quot;&quot;错误消息。":::
 
 #### <a name="cause"></a>原因
 
@@ -340,7 +340,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
     1. 在弹出的“证书管理单元”窗格中，选择“计算机帐户”。
     1. 选择“**下一页**”。
     1. 在“选择计算机”窗格中，选择“本地计算机: 运行此控制台的计算机”。
-    1. 选择“完成”。
+    1. 选择“完成”  。
     1. 在“添加或删除管理单元”窗格中选择“确定”。
 
 1. 在 MMC 窗格中，继续执行以下步骤：
@@ -370,7 +370,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 “Integration Runtime (自承载)节点在注册期间遇到错误。 无法连接到 Integration Runtime (自承载)主机服务。”
 
-![“Integration Runtime 配置管理器”窗口的屏幕截图，其中显示 IR 注册错误。](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png" alt-text="“Integration Runtime 配置管理器”窗口的屏幕截图，其中显示 IR 注册错误。":::
 
 #### <a name="cause"></a>原因
 
@@ -380,19 +380,19 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 查看 Integration Runtime 事件日志以检查错误。
 
-![IR 事件日志的屏幕截图，其中显示发生了运行时错误。](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png" alt-text="IR 事件日志的屏幕截图，其中显示发生了运行时错误。":::
 
 * 如果事件日志中的错误为“UnauthorizedAccessException”，请执行以下操作：
 
     1. 在 Windows 服务面板中，勾选 DIAHostService 登录服务帐户。
 
-        ![“登录服务帐户属性”窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png" alt-text="“登录服务帐户属性”窗格的屏幕截图。":::
 
     1. 检查登录服务帐户是否具有对 %programdata%\Microsoft\DataTransfer\DataManagementGateway 文件夹的读取/写入权限：。
 
         - 默认情况下，如果未更改服务登录帐户，则它应具有读取/写入权限。
 
-            ![服务权限窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png)
+            :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png" alt-text="服务权限窗格的屏幕截图。":::
 
         - 如果更改了服务登录帐户，请执行以下操作来缓解此问题：
  
@@ -414,11 +414,11 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
     1. 在 Windows 服务面板中，勾选 DIAHostService 登录服务帐户。
     
-        ![服务帐户的“登录”窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png" alt-text="服务帐户的“登录”&quot;&quot;窗格的屏幕截图。":::
 
     1. 检查登录服务帐户是否具有用于启动 Windows 服务的“以服务形式登录”权限：
 
-        ![“以服务形式登录”属性窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png" alt-text="“以服务形式登录”&quot;&quot;属性窗格的屏幕截图。":::
 
 #### <a name="more-information"></a>详细信息
 
@@ -432,7 +432,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 注册自承载 IR 时，“注册”按钮未显示在“配置管理器”窗格中。
 
-![“配置管理器”窗格的屏幕截图，其中显示一条表明未注册集成运行时节点的消息。](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png" alt-text="“配置管理器”窗格的屏幕截图，其中显示一条表明未注册集成运行时节点的消息。":::
 
 #### <a name="cause"></a>原因
 
@@ -445,7 +445,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
     > [!IMPORTANT] 
     > 在下面的过程中，选择“是”。 在卸载过程中请勿保留数据。
 
-    ![用于从集成运行时删除所有用户数据的“是”按钮的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png" alt-text="用于从集成运行时删除所有用户数据的 &quot;是&quot; 按钮的屏幕截图。":::
 
 1. 如果没有 Integration Runtime 安装程序 MSI 文件，请转到[下载中心](https://www.microsoft.com/en-sg/download/details.aspx?id=39717)以下载最新的 Integration Runtime。
 1. 安装 MSI 文件，并注册 Integration Runtime。
@@ -495,7 +495,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 更改 Intranet 通信加密模式失败:未能向 Integration Runtime 服务帐户授予访问证书 "\<*certificate name*>" 的权限。 错误代码 103
 
-![屏幕截图显示以下错误消息：“…未能向 Integration Runtime 服务帐户授予证书访问权限。”](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png" alt-text="屏幕截图显示以下错误消息：“…未能向 Integration Runtime 服务帐户授予证书访问权限。”&quot;&quot;":::
 
 #### <a name="cause"></a>原因
 
@@ -511,7 +511,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 `Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx`
 
-![用于导入证书的 certutil 命令的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png" alt-text="用于导入证书的 certutil 命令的屏幕截图。":::
 
 **解决方案 2** 
 
@@ -522,9 +522,9 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 转换前后：
 
-![证书转换前的结果的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png" alt-text="证书转换前的结果的屏幕截图。":::
 
-![证书转换后的结果的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png" alt-text="证书转换后的结果的屏幕截图。":::
 
 ### <a name="self-hosted-integration-runtime-version-5x"></a>自承载集成运行时版本 5.x
 若要升级为自承载集成运行时版本 5.x，我们需要 .NET Framework 运行时 4.7.2 或更高版本。 在下载页中，你会发现最新的 4.x 版本和最新的两个 5.x 版本的下载链接。 
@@ -552,7 +552,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 “Integration Runtime (自承载)节点在注册期间遇到错误。”
 
-![“Integration Runtime (自承载)节点在注册期间遇到错误”消息的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png" alt-text="“Integration Runtime (自承载)节点在注册期间遇到错误”消息的屏幕截图。&quot;&quot;":::
 
 #### <a name="cause"></a>原因 
 
@@ -562,7 +562,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 1. 检查集成运行时服务是否正在运行。 如果是，转到步骤 2。
     
-   ![显示自承载 IR 服务正在运行的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png" alt-text="显示自承载 IR 服务正在运行的屏幕截图。":::
     
 1. 如果自承载 IR 上没有配置代理（这是默认设置），请在安装了自承载集成运行时的计算机上运行以下 PowerShell 命令：
 
@@ -575,7 +575,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
             
     下面是预期的响应：
             
-    ![PowerShell 命令响应的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png" alt-text="PowerShell 命令响应的屏幕截图。":::
             
 1. 如果未收到预期的响应，请根据情况使用以下方法之一：
             
@@ -604,7 +604,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 下面是预期的响应：
             
-![预期的 PowerShell 命令响应的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png" alt-text="预期的 PowerShell 命令响应的屏幕截图。":::
 
 > [!NOTE] 
 > 代理注意事项：
@@ -618,7 +618,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 自承载集成运行时节点的状态可能为“非活动”，如以下屏幕截图所示：
 
-![自承载集成运行时节点处于非活动状态的屏幕截图](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png" alt-text="自承载集成运行时节点处于非活动状态的屏幕截图":::
 
 当节点无法相互通信时，会出现此行为。
 
@@ -645,7 +645,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
    
 1. 如果收到以下屏幕截图中显示的命令行错误“无法打开与主机的连接”，请联系 IT 部门帮忙修复此问题。 能成功通过 telnet 连接后，如果集成运行时节点状态仍然存在问题，请联系 Microsoft 支持部门。
         
-   ![“无法打开与主机的连接”命令行错误的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png" alt-text="“无法打开与主机的连接”命令行错误的屏幕截图。&quot;&quot;":::
         
 1. 检查错误日志是否包含以下条目：
 
@@ -665,7 +665,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 有时可能需要对自承载 IR 和数据工厂/Azure Synapse 实例之间的某些连接问题进行故障排除（如以下屏幕截图所示），或者对自承载 IR 与数据源或接收器之间的连接问题进行故障排除。 
 
-![“处理的 HTTP 请求失败”消息的屏幕截图](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png" alt-text="“处理的 HTTP 请求失败”&quot;&quot;消息的屏幕截图":::
 
 在任一种情况中，你都可能会遇到以下错误：
 
@@ -681,15 +681,15 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
     1. 你可以设置筛选器来查看从服务器到客户端的任何重置。 在下面的示例屏幕截图中，可以看到服务器端是数据工厂服务器。
 
-        ![数据工厂服务器的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png" alt-text="数据工厂服务器的屏幕截图。":::
 
     1. 当你获得重置包时，可以按传输控制协议 (TCP) 来查找对话。
 
-        ![TCP 对话的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png" alt-text="TCP 对话的屏幕截图。":::
 
     1. 通过删除筛选器来获取客户端与数据工厂服务器之间的对话。
 
-        ![对话详细信息的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png" alt-text="对话详细信息的屏幕截图。":::
 
 - 对已收集的 Netmon 跟踪的分析表明，生存时间 (TTL) 总计为 64。 根据 [IP 生存时间 (TTL) 和跃点限制基础知识](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)一文中提及的值（摘录在以下列表中），你可以看到是 Linux 系统重置了包并导致连接断开。
 
@@ -702,7 +702,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
     - Windows Server 2019 (2018)：对于 TCP、UDP 和 ICMP，该值为 128
     - macOS (2001)：对于 TCP、UDP 和 ICMP，该值为 64
 
-    ![显示 TTL 值 61 的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png" alt-text="显示 TTL 值 61 的屏幕截图。":::
     
     在上面的示例中，TTL 显示为 61 而不是 64，因为在网络包到达目标时，它需要经过各个跃点（如路由器或网络设备）。 扣除这些路由器或网络设备的数量以获得最终 TTL。
     
@@ -714,7 +714,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 - 在理想情况下，TTL 跃点数为 128，这意味着 Windows 操作系统正在运行你的数据工厂实例。 如以下示例所示，128 减去 107 得 21 个跃点，这意味着在 TCP 3 握手期间，将包的 21 个跃点从数据工厂实例发送到了自承载 IR。
  
-    ![显示 TTL 值 107 的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png" alt-text="显示 TTL 值 107 的屏幕截图。":::
 
     因此，你需要与网络团队合作，以检查从自承载 IR 算起的第四个跃点是什么。 如果它是作为 Linux 系统存在的防火墙，请检查日志来确认设备为何在 TCP 3 握手后重置了包。 
     
@@ -727,9 +727,9 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 尝试通过 telnet 连接 8.8.8.8 888 和收集的 Netmon 跟踪时，会看到以下屏幕截图中的跟踪：
 
-![显示错误消息“无法打开与端口 888 上的主机的连接”的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png" alt-text="显示错误消息“无法打开与端口 888 上的主机的连接”的屏幕截图。&quot;&quot;":::
 
-![显示 Netmon 跟踪的说明的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png" alt-text="显示 Netmon 跟踪的说明的屏幕截图。":::
  
 
 前面的图像显示你无法在端口 888 上与服务器端 8.8.8.8 建立 TCP 连接，因此你会看到两个额外的 SynReTransmit 包  。 由于源 SELF-HOST2 无法通过第一个包连接到 8.8.8.8，它将继续尝试建立连接 。
@@ -739,33 +739,33 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 > 1. 选择“加载筛选器” > “标准筛选器” > “地址” > “IPv4 地址”   。
 > 1. 若要应用筛选器，请输入“IPv4.Address == 8.8.8.8”，然后选择“应用” 。 然后应该能看到从本地计算机到目标 8.8.8.8 的通信。
 
-![显示筛选器地址的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png" alt-text="显示筛选器地址的屏幕截图。":::
         
-![显示更多筛选器地址的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png" alt-text="显示更多筛选器地址的屏幕截图。":::
 
 成功的方案如以下示例所示： 
 
 - 如果可以在没有任何问题的情况下通过 telnet 连接 8.8.8.8 53，则 TCP 3 握手成功，会话以 TCP 4 握手结束。
 
-    ![显示成功连接方案的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png" alt-text="显示成功连接方案的屏幕截图。":::
      
-    ![显示成功连接方案详细信息的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png" alt-text="显示成功连接方案详细信息的屏幕截图。":::
 
 - 前面的 TCP 3 握手产生以下工作流：
 
-    ![TCP 3 握手工作流的关系图。](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png" alt-text="TCP 3 握手工作流的关系图。":::
  
 - 以下工作流说明了完成会话的 TCP 4 握手：
 
-    ![TCP 4 握手详细信息的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png" alt-text="TCP 4 握手详细信息的屏幕截图。":::
 
-    ![TCP 4 握手工作流的关系图。](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png" alt-text="TCP 4 握手工作流的关系图。"::: 
 
 ### <a name="microsoft-email-notification-about-updating-your-network-configuration"></a>有关更新网络配置的 Microsoft 电子邮件通知
 
 你可能会收到以下电子邮件通知，该通知建议于 2020 年 11 月 8 日之前更新网络配置，以允许与 Azure 数据工厂的新 IP 地址进行通信：
 
-   ![请求更新网络配置的 Microsoft 电子邮件通知的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png" alt-text="请求更新网络配置的 Microsoft 电子邮件通知的屏幕截图。":::
 
 #### <a name="determine-whether-this-notification-affects-you"></a>确定此通知是否影响你
 
@@ -789,7 +789,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 - 如果有出站规则限制，请检查是否是在使用服务标记。 如果在使用服务标记，则不会受到影响。 无需更改或添加任何内容，因为新 IP 范围包含在现有服务标记之内。 
 
-  ![显示数据工厂作为目标的目标检查的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png" alt-text="显示数据工厂作为目标的目标检查的屏幕截图。":::
 
 - 如果在 Azure 虚拟网络的 NSG 规则设置上显式启用出站 IP 地址的允许列表，你会受到影响。
 
@@ -819,9 +819,9 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 检查服务的服务器证书最简单方法是在浏览器中打开服务 URL。 例如，在安装了自承载 IR 的计算机上打开[检查服务器证书链接](https://eu.frontend.clouddatahub.net/)，然后查看服务器证书信息。
 
-  ![Azure 数据工厂服务的“检查服务器证书”窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png" alt-text="Azure 数据工厂服务的“检查服务器证书”窗格的屏幕截图。":::
 
-  ![用于检查服务器认证路径的窗口的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png" alt-text="用于检查服务器认证路径的窗口的屏幕截图。":::
 
 #### <a name="cause"></a>原因
 
@@ -830,7 +830,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 - 原因 1：服务的服务器证书的根 CA 在安装了自承载 IR 的计算机上不受信任。 
 - 原因 2：你在环境中使用了代理，代理替代了服务的服务器证书，而安装了自承载 IR 的计算机不信任已替换的服务器证书。
 
-#### <a name="resolution"></a>解决方案
+#### <a name="resolution"></a>解决方法
 
 - 对于原因 1：请确保服务的服务器证书及其证书链在安装了自承载 IR 的计算机上受信任。
 - 对于原因 2：请在自承载 IR 计算机上信任被替换的根 CA，或者将代理配置为不替换服务的服务器证书。
@@ -840,7 +840,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 #### <a name="additional-information"></a>其他信息
 我们推出了一个新的 SSL 证书，该证书从 DigiCert 签名。 查看 DigiCert 全局根 G2 是否在受信任的根 CA 中。
 
-  ![显示“受信任的根证书颁发机构”目录中的“DigiCert 全局根 G2”文件夹的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png" alt-text="显示“受信任的根证书颁发机构”目录中的“DigiCert 全局根 G2”文件夹的屏幕截图。":::
 
 如果此证书不在受信任的根 CA 中，请在[此处下载](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )。 
 
@@ -854,5 +854,5 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A 页](/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)
+*  [Twitter 中有关数据工厂的信息](https://twitter.com/hashtag/DataFactory)
 *  [映射数据流性能指南](concepts-data-flow-performance.md)

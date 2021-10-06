@@ -2,13 +2,13 @@
 title: 合作伙伴加入概述（Azure 事件网格）
 description: 概述如何作为事件网格合作伙伴加入。
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 9af80efc1ba342768f9bb6d504f921b52494d955
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 09/28/2021
+ms.openlocfilehash: 0c4c43673a0ae2f8094f176e57c203051fd0bea4
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890701"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233136"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>合作伙伴加入概述（Azure 事件网格）
 
@@ -147,7 +147,7 @@ ms.locfileid: "107890701"
 | 终结点不正确                 | 404 未找到         |
 | 数组或事件超出大小限制 | 413 有效负载太大 |
 
-## <a name="references"></a>参考资料
+## <a name="references"></a>参考
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM 模板](/azure/templates/microsoft.eventgrid/allversions)

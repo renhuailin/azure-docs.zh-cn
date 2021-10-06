@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 3cfe75edcf338f5248baf396147a5b77803fbfb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46f2811fa3f5a57add9af0b67444d236e3b18519
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655928"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231038"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查询 Avro 数据
 
@@ -170,8 +170,6 @@ U-SQL 中有一个适用于 Avro 的“提取程序”。 有关详细信息，�
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你已学习了如何查询 Avro 数据以高效地将消息从 Azure IoT 中心路由到 Azure 服务。
-
-有关使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器文档](../iot-accelerators/index.yml)。
 
 若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。
 

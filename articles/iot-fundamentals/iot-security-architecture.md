@@ -7,18 +7,17 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: e4e6a60f893108f8fa58d84dabb50c88afcf774c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c820c1a1c037e8f0678b2c0727fb8264202c7dd6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73929608"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234483"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>物联网 (IoT) 安全体系结构
 
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 ## <a name="see-also"></a>另请参阅
-若要详细了解如何保护由 IoT 解决方案加速器创建的解决方案，请参阅[保护 IoT 部署](iot-security-deployment.md)。
 
 阅读 IoT 中心开发人员指南中[控制对 IoT 中心的访问](../iot-hub/iot-hub-devguide-security.md)中关于 IoT 中心安全性的内容。

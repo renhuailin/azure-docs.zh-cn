@@ -1,17 +1,17 @@
 ---
 title: 故障转移和修补 - Azure Cache for Redis
 description: 了解 Azure Cache for Redis 的故障转移、修补和更新过程。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 7eb1855717817da1f7b46e512c1a14268ce1a937
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 3ede36ef718fbe4ef535e9999edf55a0381cfd2e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478475"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538566"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的故障转移和修补
 

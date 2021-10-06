@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: 了解 Azure 机器学习如何与本地 Git 存储库集成，以在训练运行过程中跟踪存储库、分支和当前的提交信息。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 04/08/2021
-ms.openlocfilehash: 37c7d94bfb645e444b4fb937823dcb8d56bcb9c7
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3ff019488bff9d2e1088aae37902bb274f77470b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112457726"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424590"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 

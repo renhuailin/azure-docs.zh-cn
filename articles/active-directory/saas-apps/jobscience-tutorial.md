@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 8fdfa2385851773f30305ca9ec7f5371d39e8089
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: beea6cdb03557a008504e992529c72ff9317cf60
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124765347"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教程：Azure Active Directory 与 Jobscience 集成
 
@@ -111,7 +111,7 @@ ms.locfileid: "124765347"
     在“登录 URL”文本框中，使用以下模式键入 URL：`http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > 此值不是真实值。 使用实际登录 URL 更新此值。 通过 [Jobscience 客户端支持团队](http://www.jobscience.com/support)获取此值，或从 SSO 配置文件可以创建将在教程后面部分进行说明的内容。 
+    > 此值不是真实值。 使用实际登录 URL 更新此值。 通过 [Jobscience 客户端支持团队](https://www.bullhorn.com/technical-support/)获取此值，或从 SSO 配置文件可以创建将在教程后面部分进行说明的内容。 
  
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。 
 

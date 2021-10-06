@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: b57997408112466c45d6ce1364e1ac0a2c358cd1
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: fcba2424c457d97a45096af9a35b5f2afa4086ba
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321026"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407240"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>重设容量池或卷的大小
 如有必要，你可以根据需要更改容量池或卷的大小，例如，当卷或容量池已满时。 
@@ -84,9 +84,9 @@ Azure NetApp 文件的 REST API 规范和示例代码可通过[资源管理器 G
 
 ## <a name="next-steps"></a>后续步骤
 
-- [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
+- [创建容量池](azure-netapp-files-set-up-capacity-pool.md)
 - [管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md)
 - [动态更改卷的服务级别](dynamic-change-volume-service-level.md) 
 - [了解卷配额](volume-quota-introduction.md)
-- [监视卷的容量](monitor-volume-capacity.md)
+- [监视卷容量](monitor-volume-capacity.md)
 - [容量管理常见问题解答](azure-netapp-files-faqs.md#capacity-management-faqs)

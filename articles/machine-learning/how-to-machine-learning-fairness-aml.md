@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Fairlearn 和 Azure 机器学习 Python SDK 评估和修正机器学习模型的公平性。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.author: mesameki
 author: mesameki
 ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: how-to
 ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: 86916a14c79e9e2432dc5fb03da66081d4bab737
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: fa55476edb7e286fece50e0310dba95787c2b569
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014823"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426143"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>将 Azure 机器学习与 Fairlearn 开源程序包配合使用来评估机器学习模型的公平性（预览版）
 
@@ -271,7 +271,7 @@ pip install fairlearn==0.4.6
 
 3. 在本地加载“公平性”仪表板
 
-    在将公平性见解上传到 Azure 机器学习之前，可以在本地调用的“公平性”仪表板中检查这些预测。 
+    在将公平性见解上传到 Azure 机器学习之前，可以在通过本地方式调用的公平性仪表板中检查这些预测。 
 
 
 
@@ -345,7 +345,7 @@ pip install fairlearn==0.4.6
 在单个运行中上传多个模型的公平性见解就可以比较模型的公平性和性能。 你可以单击模型比较图表中显示的任何模型，以查看针对特定模型的详细公平性见解。
 
 
-[![模型比较“公平性”仪表板](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
+[![模型比较公平性仪表板](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
     
 
 ## <a name="next-steps"></a>后续步骤

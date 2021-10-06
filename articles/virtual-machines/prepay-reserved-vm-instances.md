@@ -4,17 +4,17 @@ description: 了解如何购买 Azure 预订虚拟机实例以节省计算成本
 author: vikramdesai01
 manager: vikramdesai01
 ms.service: virtual-machines
-ms.subservice: reserved-instances
+ms.subservice: billing
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 819732043ce035214fc9a56e22a99e9a3dec28a2
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 51608ccc0a05d1c1aac739b48865815cbafc373e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694281"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216046"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>借助 Azure 虚拟机预留实例节省资金
 
@@ -80,7 +80,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 - **云** - 不能在德国或中国区域中购买预留。
 
-- 配额不足 - 其范围仅限单个订阅的预留必须在订阅中具有可用的 vCPU 配额才能获得新的 RI。 例如，如果目标订阅的配额限制为 10 个 vCPU（适用于 D 系列），则不能为 11 个 Standard_D1 实例购买预留。 虚拟机预留实例的配额检查包括已在订阅中部署的 VM。 例如，如果该订阅的配额为针对 D 系列购买 10 个 vCPU，并且已部署两个 Standard_D1 实例，则可在该订阅中为 10 个 Standard_D1 实例购买预留。 可以[创建配额提高请求](../azure-portal/supportability/resource-manager-core-quotas-request.md)来解决此问题。
+- 配额不足 - 其范围仅限单个订阅的预留必须在订阅中具有可用的 vCPU 配额才能获得新的 RI。 例如，如果目标订阅的配额限制为 10 个 vCPU（适用于 D 系列），则不能为 11 个 Standard_D1 实例购买预留。 虚拟机预留实例的配额检查包括已在订阅中部署的 VM。 例如，如果该订阅的配额为针对 D 系列购买 10 个 vCPU，并且已部署两个 Standard_D1 实例，则可在该订阅中为 10 个 Standard_D1 实例购买预留。 可以[创建配额提高请求](../azure-portal/supportability/regional-quota-requests.md)来解决此问题。
 
 - 容量限制 - 在极少数情况下，Azure 会由于区域的容量不足而限制购买部分 VM 大小的新预留项。
 
@@ -106,7 +106,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 | 字段      | 说明|
 |------------|--------------|
 |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P）或 Microsoft 客户协议或采用即用即付费率的个人订阅中担任所有者角色（套餐编号：MS-AZR-0003P 或 MS-AZR-0023P）。 从 Azure 预付款（以前称为货币承诺）余额中扣除费用（如果可用）或按超额收取费用。 对于采用即用即付费率的订阅，将向订阅的信用卡或发票付款方式收取费用。|    
-|范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>**单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li>**单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。</li><li>**共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>|
+|范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>**单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li>**单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。</li><li>**共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li><li>管理组 - 将预留折扣应用于同时属于管理组和计费范围的订阅列表中的匹配资源。</li></ul>|
 |区域    |预订涵盖的 Azure 区域。|    
 |VM 大小     |VM 实例的大小。|
 |优化对象     |默认已选择 VM 实例大小灵活性。 单击“高级设置”可更改实例大小灵活性值，以将预留折扣应用于同一 [VM 大小组](reserved-vm-instance-size-flexibility.md)中的其他 VM。 容量优先级可以对部署优先使用数据中心容量。 它使你在需要时能够更加有把握地启动 VM 实例。 仅当预留范围为单个订阅时，容量优先级才可用。 |

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/20/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: d3317bafa2ff03e83bd79e9a3efa0ecfaffd4124
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 43358ec8c79e09d0701a098a2bd992f2cee8b23f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122752760"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378057"
 ---
 | 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -49,4 +49,4 @@ ms.locfileid: "122752760"
 <sup>8</sup>此限制仅适用于消耗层。 对于其他层，这些类别没有限制。<br/>
 <sup>9</sup>仅适用于消耗层。 包含最长 2048 字节的查询字符串。<br/>
 <sup>10</sup> 若要提高此限制，请联系[客户支持](https://azure.microsoft.com/support/options/)。<br/>
-<sup>11</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](/rest/api/apimanagement/2020-06-01-preview/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。
+<sup>11</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](/rest/api/apimanagement/2021-04-01-preview/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。

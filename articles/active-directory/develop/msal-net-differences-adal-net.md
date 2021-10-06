@@ -13,12 +13,12 @@ ms.date: 06/09/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 39c8f669b8577278a7654db92ae87d55758505ff
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3c9af18a00d4880c34307525b735f8cef4d2685c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787161"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230829"
 ---
 # <a name="differences-between-adalnet-and-msalnet-apps"></a>ADAL.NET 与 MSAL.NET 应用之间的差异
 
@@ -51,8 +51,8 @@ ms.locfileid: "124787161"
 授予                             | MSAL.NET                                                                                                                     | ADAL.NET                                                                                                                                                                                                   |
 --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 交互                       | [在 MSAL.NET 中以交互方式获取令牌](scenario-desktop-acquire-token-interactive.md)    | [交互式身份验证](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows)                                              |
-Windows 集成身份验证 | [Windows 集成身份验证](scenario-desktop-acquire-token-integrated-windows-authentication.md)         | [Windows 上的集成身份验证 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos))  |
-用户名/密码               | [用户名/密码身份验证](scenario-desktop-acquire-token-username-password.md)                      | [使用用户名和密码获取令牌](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)                                        |
+Windows 集成身份验证 | [集成 Windows 身份验证](scenario-desktop-acquire-token-integrated-windows-authentication.md)         | [Windows 上的集成身份验证 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos))  |
+用户名/密码               | [用户名-密码身份验证](scenario-desktop-acquire-token-username-password.md)                      | [使用用户名和密码获取令牌](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)                                        |
 设备代码流                  | [设备代码流](scenario-desktop-acquire-token-device-code-flow.md)                    | [没有 Web 浏览器的设备的设备配置文件](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers)                                |
 
 ### <a name="confidential-client-applications"></a>机密客户端应用程序

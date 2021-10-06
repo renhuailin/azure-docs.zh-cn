@@ -3,14 +3,14 @@ title: 将 Azure Kubernetes 服务用作事件网格源（预览）
 description: 本文介绍了如何将 Azure Kubernetes 服务用作事件网格事件源。 其中提供了架构，以及教程和操作指南文章的链接。
 author: zr-msft
 ms.topic: conceptual
-ms.date: 07/12/2021
+ms.date: 10/04/2021
 ms.author: zarhoads
-ms.openlocfilehash: 16b82ea59e69457475966fecfb8a0ca8d7dd20ce
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 84eb67d9df14efefe753fe40da938e0a7f4f2c6c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733858"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423908"
 ---
 # <a name="azure-kubernetes-service-aks-as-an-event-grid-source-preview"></a>将 Azure Kubernetes 服务 (AKS) 用作事件网格源（预览）
 
@@ -34,14 +34,14 @@ AKS 发出以下事件类型
 
 |     属性          |     类型     |     说明                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-|    `topic`              |    string    |    事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。                                      |
-|    `subject`            |    string    |    事件主题的发布者定义路径。                                                                                              |
+|    `topic`              |    字符串    |    事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。                                      |
+|    `subject`            |    字符串    |    事件主题的发布者定义路径。                                                                                              |
 |    `eventType`          |    字符串    |    此事件源的已注册事件类型之一。                                                                                  |
 |    `eventTime`          |    字符串    |    事件的生成时间，基于提供程序的 UTC 时间。                                                                         |
 |    `id`                 |    字符串    |    事件的唯一标识符。                                                                                                            |
 |    `data`               |    object    |    Blob 存储事件数据。                                                                                                                    |
-|    `dataVersion`        |    string    |    数据对象的架构版本。 发布者定义架构版本。                                                          |
-|    `metadataVersion`    |    string    |    事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。    |
+|    `dataVersion`        |    字符串    |    数据对象的架构版本。 发布者定义架构版本。                                                          |
+|    `metadataVersion`    |    字符串    |    事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。    |
 
 # <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
 
@@ -50,8 +50,8 @@ AKS 发出以下事件类型
 
 |     属性          |     类型     |     说明                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-|    `source`              |    string    |    事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。                                      |
-|    `subject`            |    string    |    事件主题的发布者定义路径。                                                                                              |
+|    `source`              |    字符串    |    事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。                                      |
+|    `subject`            |    字符串    |    事件主题的发布者定义路径。                                                                                              |
 |    `type`          |    字符串    |    此事件源的已注册事件类型之一。                                                                                  |
 |    `time`          |    字符串    |    事件的生成时间，基于提供程序的 UTC 时间。                                                                         |
 |    `id`                 |    字符串    |    事件的唯一标识符。                                                                                                            |
@@ -80,10 +80,7 @@ AKS 发出以下事件类型
     },
     "dataVersion": "1",
     "metadataVersion": "1",
-    "eventTime": "2021-07-01T04:52:57.0000000Z",
-    "EventProcessedUtcTime": "2021-07-02T04:40:04.1049205Z",
-    "PartitionId": 1,
-    "EventEnqueuedUtcTime": "2021-07-01T04:52:58.8650000Z"
+    "eventTime": "2021-07-01T04:52:57.0000000Z"
 }
 ```
 # <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
@@ -102,10 +99,7 @@ AKS 发出以下事件类型
       "latestPreviewKubernetesVersion": "1.21.1"
     },
     "specversion": "1.0",
-    "time": "2021-07-01T04:52:57.0000000Z",
-    "EventProcessedUtcTime": "2021-07-02T04:40:04.1049205Z",
-    "PartitionId": 1,
-    "EventEnqueuedUtcTime": "2021-07-01T04:52:58.8650000Z"
+    "time": "2021-07-01T04:52:57.0000000Z"
 }
 ```
 

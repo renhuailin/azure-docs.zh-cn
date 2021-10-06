@@ -2,7 +2,6 @@
 title: Azure 基于角色的访问控制 - 自定义视觉
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何为自定义视觉项目配置 Azure 基于角色的访问控制。
-services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 050b4011dbc46b6b6567965ed94847dbaf3560c6
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: e2f59dc309181308f409b3533d58d3b6b4b1fdd8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982305"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361896"
 ---
 # <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
@@ -34,7 +33,7 @@ ms.locfileid: "112982305"
 1. 在“成员”选项卡上，选择用户、组、服务主体或托管标识。
 1. 在“查看 + 分配”选项卡上，选择“查看 + 分配”，以分配角色 。
 
-几分钟后，将向目标分配所选作用域中的选定角色。 有关这些步骤的帮助，请参阅[使用 Azure 门户分配 Azure 角色](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+几分钟后，将向目标分配所选作用域中的选定角色。 有关这些步骤的帮助，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="custom-vision-role-types"></a>自定义视觉角色类型
 

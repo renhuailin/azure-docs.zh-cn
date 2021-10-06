@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: conceptual
-ms.date: 07/26/2021
+ms.date: 09/28/2021
 ms.author: baselden
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb94b9589171a5715b1e7bdf9a80ceb0a8b7f45
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e00d6d6486ea5977a38e5e860f2bcd28dbe749fb
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771168"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230107"
 ---
 # <a name="plan-a-privileged-identity-management-deployment"></a>规划 Privileged Identity Management 部署
 
-Privileged Identity Management (PIM) 提供基于时间且基于审批的角色激活，用于缓解重要资源上出现的访问权限过度、不必要或滥用的风险。 这些资源包括 Azure Active Directory (Azure AD)、Azure 和其他 Microsoft Online Services（例如 Microsoft 365 或 Microsoft Intune）中的资源。 还可以将 PIM 用于服务 (SaaS) 应用程序。
+Privileged Identity Management (PIM) 提供基于时间且基于审批的角色激活，用于缓解重要资源上出现的访问权限过度、不必要或滥用的风险。 这些资源包括 Azure Active Directory (Azure AD)、Azure 和其他 Microsoft Online Services（例如 Microsoft 365 或 Microsoft Intune）中的资源。
 
 PIM 使你能够在特定范围内允许一组特定的操作。 主要功能包括：
 

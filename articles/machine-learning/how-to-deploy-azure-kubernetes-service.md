@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure Kubernetes 服务将 Azure 机器学习模型部署为 Web 服务。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/28/2021
-ms.openlocfilehash: 67d28d7f218debde1bd29abf0e4bbdaa0c7c49dd
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: fbacf4317defe999563a936b6c263ea2619f1eab
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867595"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428400"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 
@@ -60,9 +60,6 @@ ms.locfileid: "122867595"
 - 连接到你的工作区的 Azure Kubernetes 服务群集。 有关详细信息，请参阅[创建并附加 Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)。
 
     - 如果要将模型部署到 GPU 节点或 FPGA 节点（或任何特定 SKU），则必须使用该特定 SKU 创建群集。 不支持在现有群集中创建辅助节点池以及在辅助节点池中部署模型。
-
-> [!IMPORTANT]
-> 目前，Azure 机器学习不支持将模型部署到 AKS 版本 1.21.x
 
 ## <a name="understand-the-deployment-processes"></a>了解部署过程
 

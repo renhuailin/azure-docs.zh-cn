@@ -2,13 +2,13 @@
 title: 教程：使用 Azure 事件网格自动调整上载图像的大小
 description: 教程：Azure 事件网格可以触发 Azure 存储中的 blob 上传。 你可以用其将上传到 Azure 存储的图像文件发送到其他服务（如 Azure Functions），以调整大小并进行其他改进。
 ms.topic: tutorial
-ms.date: 07/07/2020
-ms.openlocfilehash: 46e0f9a0b6d98c91f2de203061597c9172f502aa
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.date: 09/28/2021
+ms.openlocfilehash: 74e7905bbf548b0864a9b871eba964a5759a91a6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062106"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234122"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -236,7 +236,7 @@ az functionapp deployment source config --name $functionapp \
     
     ![基于 Azure 门户中的函数创建事件订阅](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | 设置      | 建议的值  | 描述                                        |
+    | 设置      | 建议的值  | 说明                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
     | **名称** | imageresizersub | 标识新事件订阅的名称。 |
     | 主题类型 | 存储帐户 | 选择存储帐户事件提供程序。 |

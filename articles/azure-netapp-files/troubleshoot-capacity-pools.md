@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ca7f042aaa97967d47dd9f35afaa647e0d37361
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251533"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407259"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>排查容量池问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "98251533"
 
 ## <a name="next-steps"></a>后续步骤  
 
-* [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
+* [创建容量池](azure-netapp-files-set-up-capacity-pool.md)
 * [管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md)
 * [动态更改卷的服务级别](dynamic-change-volume-service-level.md)
 * [重设容量池或卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md)

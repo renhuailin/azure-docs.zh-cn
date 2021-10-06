@@ -2,13 +2,13 @@
 title: Azure 事件网格 - 订阅验证疑难解答
 description: 本文介绍如何解决订阅验证问题。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 857760182675d5673a3b09495c2faaf7372a4164
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: 8db9d36b31c96187f985f98c4c2a1c79f4e58218
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94592934"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230487"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>排查 Azure 事件网格订阅验证问题
 在创建事件订阅的过程中，如果看到诸如 `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` 之类的错误消息，则表明验证握手失败。 若要解决此错误，请验证以下各方面：

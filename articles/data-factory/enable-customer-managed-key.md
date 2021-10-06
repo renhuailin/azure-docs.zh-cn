@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.reviewer: mariozi
-ms.openlocfilehash: 3580ae78497426f1399981035e861bc51c912144
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 725ebc0dbb8b037dcfcde8d154353fd7cf0a1a59
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697552"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208080"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>使用客户管理的密钥加密 Azure 数据工厂
 
@@ -149,7 +149,7 @@ Azure 数据工厂对静态数据进行加密，其中包括实体定义和在�
 
   :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="将客户托管密钥设置纳入 ARM 模板的屏幕截图。":::
 
-你将在 ARM 模板中添加以下设置。 通过编辑 [Azure 资源管理器参数配置](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)，可在持续集成和交付管道中将这些属性参数化
+你将在 ARM 模板中添加以下设置。 通过编辑 [Azure 资源管理器参数配置](continuous-integration-delivery-resource-manager-custom-parameters.md)，可在持续集成和交付管道中将这些属性参数化
 
   :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="将客户托管密钥设置纳入 Azure 资源管理器模板的屏幕截图。":::
 

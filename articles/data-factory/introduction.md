@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: overview
 ms.date: 06/08/2021
-ms.openlocfilehash: 745a0b67bf2ac225f62b0e18cadc009a16007ab6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9925b8c01cbaaeaf28815a7188118ff2060d507
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740946"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208013"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
 
@@ -32,7 +32,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 
 此外，还可以将转换的数据发布到数据存储（例如 Azure Synapse Analytics），供商业智能 (BI) 应用程序使用。 最终，通过 Azure 数据工厂，可将原始数据组织成有意义的数据存储和数据湖，以实现更好的业务决策。
 
-![数据工厂的顶级视图](media/data-flow/overview.png)
+:::image type="content" source="media/data-flow/overview.png" alt-text="数据工厂的顶级视图":::
 
 ## <a name="how-does-it-work"></a>工作原理
 
@@ -60,7 +60,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 如果你偏向于手动编写转换代码，ADF 支持使用外部活动在 HDInsight Hadoop、Spark、Data Lake Analytics 和机器学习等计算服务中执行转换。
 
 ### <a name="cicd-and-publish"></a>CI/CD 和发布
-[数据工厂完全支持使用 Azure DevOps 和 GitHub 实现数据管道的 CI/CD](continuous-integration-deployment.md)。 这样，你就可以增量开发和交付 ETL 流程，然后发布成品。 原始数据被优化为业务就绪型可使用的窗体后，请将数据载入 Azure 数据仓库、Azure SQL 数据库、Azure CosmosDB 或业务用户可从其商业智能工具中指向的任何分析引擎。
+[数据工厂完全支持使用 Azure DevOps 和 GitHub 实现数据管道的 CI/CD](continuous-integration-delivery.md)。 这样，你就可以增量开发和交付 ETL 流程，然后发布成品。 原始数据被优化为业务就绪型可使用的窗体后，请将数据载入 Azure 数据仓库、Azure SQL 数据库、Azure CosmosDB 或业务用户可从其商业智能工具中指向的任何分析引擎。
 ### <a name="monitor"></a>监视
 成功地构建和部署数据集成管道后（提供优化数据的业务值），请监视计划的活动和管道，以了解成功率和失败率。 Azure 数据工厂通过 Azure 门户上的 Azure Monitor、API、PowerShell、Azure Monitor 日志和运行状况面板，对管道监视提供内置支持。
 
@@ -107,7 +107,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 ### <a name="pipeline-runs"></a>管道运行
 管道运行是管道执行实例。 管道运行通常是通过将自变量传递给管道中定义的参数来实例化的。 自变量可手动传递，也可在触发器定义中传递。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 参数是只读配置的键值对。  参数是在管道中定义的。 所定义的参数的自变量是在执行期间通过由触发器创建的运行上下文传递的或通过手动执行的管道传递的。 管道中的活动使用参数值。
 
 数据集是强类型参数和可重用/可引用的实体。 活动可以引用数据集并且可以使用数据集定义中所定义的属性。

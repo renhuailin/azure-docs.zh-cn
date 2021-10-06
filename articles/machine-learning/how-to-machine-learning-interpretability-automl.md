@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解自动化 ML 模型如何确定特征重要性并做出预测。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: how-to
 ms.custom: automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 343d6dd27167001ecf98435596837eaab5f50da5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5d172148ec6d293d2a60a03bc60c0f94baa7a577
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739188"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426105"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解释性：自动化机器学习（预览版）中的模型说明
 

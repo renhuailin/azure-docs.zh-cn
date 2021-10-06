@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 35094effcef3ff773b708e65f234ee1409a8970a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a79229537b76dc62bca48985720f9c911de0c68c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798230"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400660"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>配置 Azure SQL Server Integration Services (SSIS) 集成运行时 (IR) 以加入虚拟网络
 
@@ -60,7 +60,7 @@ ms.locfileid: "124798230"
     - 如果使用 Azure ExpressRoute 或用户定义的路由 (UDR)。
     - 如果使用自定义的 Azure-SSIS IR。
     
-    有关详细信息，请查看[虚拟网络配置](join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration)。
+    有关详细信息，请查看[虚拟网络配置](azure-ssis-integration-runtime-virtual-network-configuration.md)。
 
 ## <a name="configure-a-virtual-network"></a>配置虚拟网络
 

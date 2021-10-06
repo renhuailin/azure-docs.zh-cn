@@ -1,17 +1,17 @@
 ---
 title: 配置 Redis 群集功能 - 高级 Azure Cache for Redis
 description: 了解如何为高级层的 Azure Redis 缓存实例创建和管理 Redis 群集功能
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: c4812bb6b352ad57fa07ad766329644ef6af9c57
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: be90a868ca4ef738f0275b06fb49abec761c7a0c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323575"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538177"
 ---
 # <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>为高级 Azure Cache for Redis 实例配置 Redis 群集功能
 
@@ -48,11 +48,11 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
    | **位置** | 单击下拉箭头并选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
    | **缓存类型** | 单击下拉箭头并选择高级缓存来配置高级功能。 有关详细信息，请参阅 [Azure Cache for Redis 定价](https://azure.microsoft.com/pricing/details/cache/)。 |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅[用于 Redis 的 Azure 缓存概述](cache-overview.md)。 |
 
-4. 选择“网络”选项卡，或选择页面底部的“网络”按钮 。
+4. 选择“网络”选项卡，或选择“网络”按钮（位于页面底部） 。
 
 5. 在“网络”选项卡中，选择你的连接方法。 对于高级缓存实例，可以通过公共 IP 地址或服务终结点进行公开连接，也可以通过专用终结点进行私密连接。
 
-6. 选择页面底部的“下一步:高级”选项卡，或者选择页面底部的“下一步:高级”按钮。
+6. 选择“下一步:高级”选项卡，或者选择页面底部的“下一步:高级”按钮 。
 
 7. 在高级缓存实例的“高级”选项卡中，配置非 TLS 端口、群集和数据暂留的设置。 若要选择群集，请选择“启用”。
 

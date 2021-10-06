@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解如何创建 GitHub Actions 工作流以便在 Azure 机器学习上训练模型
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: juliakm
 ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: how-to
 ms.custom: github-actions-azure
-ms.openlocfilehash: 9bc12c74043deea4e9c9ec9bcc457b0b82f09cbc
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ba3ac45c04ef359db56086ff8ddf75b428574062
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889297"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427450"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>将 GitHub Actions 与 Azure 机器学习配合使用
 

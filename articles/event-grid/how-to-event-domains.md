@@ -2,14 +2,14 @@
 title: 使用事件域向 Azure 事件网格发布事件
 description: 展示了如何使用事件域管理 Azure 事件网格中的大型主题集并向其发布事件。
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: eb0c96f0a4f67de87de134a7f53e802c272331e5
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 34109db5d39daed14fc008be12a8785d255a9838
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700641"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232018"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件
 

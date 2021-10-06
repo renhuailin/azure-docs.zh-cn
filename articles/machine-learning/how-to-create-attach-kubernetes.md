@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何通过 Azure 机器学习创建新的 Azure Kubernetes 服务群集，或者如何将现有 AKS 群集附加到工作区。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/16/2021
-ms.openlocfilehash: 7a0b2f24b10ace50d1e994284cb48b50799dfd57
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f7e2a3311f9540413880d20839f56a4932519f1c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618184"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426352"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -83,9 +83,6 @@ Azure Kubernetes 服务允许使用各种 Kubernetes 版本创建群集。 有�
 这些创建 AKS 群集的方法使用默认的群集版本。 当有新的 Kubernetes 版本可用时，默认版本会随时间的推移而改变。
 
 附加现有 AKS 群集时，我们为当前受支持的所有 AKS 版本提供支持。
-
-> [!IMPORTANT]
-> 目前，Azure 机器学习不支持将模型部署到 AKS 版本 1.21.x
 
 > [!IMPORTANT]
 > Azure Kubernetes 服务对 <=1.16 的版本使用 [Blobfuse FlexVolume 驱动程序](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md)，对 >=1.17 的版本使用 [Blob CSI 驱动程序](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md)。 因此，请务必在群集升级后重新部署或[更新 Web 服务](how-to-deploy-update-web-service.md)，以便为群集版本部署正确的 blobfuse 方法。

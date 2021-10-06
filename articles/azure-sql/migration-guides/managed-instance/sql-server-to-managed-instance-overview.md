@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 09/07/2021
-ms.openlocfilehash: 8c44d6e92f2943f3c565e80d42d9d0c474fddd4f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 62f895fdea75ff97154910c177cda04413663d68
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542244"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352038"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>迁移概述：将 SQL Server 到 Azure SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -171,7 +171,7 @@ SQL Server 高可用性功能 Always On 故障转移群集实例和 Always On �
 
 重启服务后，Windows 用户或组登录名将出现在可用于迁移的登录名列表中。 对于迁移的所有 Windows 用户或组登录名，系统都会提示提供关联的域名。 不支持服务用户帐户（域名为 NT AUTHORITY 的帐户）和虚拟用户帐户（域名为 NT SERVICE 的帐户）。 若要了解详细信息，请参阅[如何使用 T-SQL 将 SQL Server 实例中的 Windows 用户和组迁移到 Azure SQL 托管实例](../../managed-instance/migrate-sql-server-users-to-instance-transact-sql-tsql-tutorial.md)。
 
-或者，还可以使用 Microsoft 数据迁移架构师专门设计的 [PowerShell 实用程序](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)。 该实用程序使用 PowerShell 创建一个 T-SQL 脚本来重新创建登录名，并从源中选择数据库用户到目标。 
+或者，还可以使用 Microsoft 数据迁移架构师专门设计的 [PowerShell 实用程序](https://www.microsoft.com/download/details.aspx?id=103111)。 该实用程序使用 PowerShell 创建一个 T-SQL 脚本来重新创建登录名，并从源中选择数据库用户到目标。 
 
 PowerShell 实用程序自动将 Windows Server Active Directory 帐户映射到 Azure AD 帐户，并且可以针对源 Active Directory 实例的每个登录名执行 UPN 查找。 该实用程序脚本自定义服务器和数据库角色，以及角色成员身份和用户权限。 目前不支持所包含的数据库，并且仅对一部分可能的 SQL Server 权限进行脚本编写。 
 

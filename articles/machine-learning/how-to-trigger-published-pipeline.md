@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 通过触发的管道，可以自动执行耗时的例行任务，例如数据处理、训练和监视。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: laobri
 author: lobrien
 ms.date: 01/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 473c6bde1e75070e0103137d9e24849f38c6d684
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3c9343cad720ca240b4bed29e8ad9a265c07ee8e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112466692"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426011"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>触发机器学习管道
 
