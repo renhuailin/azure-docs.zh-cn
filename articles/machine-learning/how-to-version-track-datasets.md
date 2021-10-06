@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何对机器学习数据集进行版本控制以及如何将版本控制用于机器学习管道。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.author: cgronlun
 author: cjgronlund
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: ce1a938b3fac9e22afdf858b37a57ef77a914b35
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 5711d58d8772faf724c8ea82e72356e37af7f12c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734839"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428020"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>对 Azure 机器学习数据集进行版本控制和跟踪
 

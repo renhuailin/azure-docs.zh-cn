@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 01/26/2021
 ms.author: danlep
-ms.openlocfilehash: f651dc7990212347d3179b9d4eddf7bf733ef6fd
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 86b5a62d7aaf16009e59637ebe9a967fce1e0358
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646775"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569580"
 ---
 #### <a name="requirements-for-key-vault-firewall"></a>Key Vault 防火墙要求
 
@@ -25,4 +25,4 @@ ms.locfileid: "123646775"
 * 在 API 管理子网上，启用 Azure Key Vault 的[服务终结点](../articles/key-vault/general/overview-vnet-service-endpoints.md)。
 * 配置一个网络安全组 (NSG) 规则，以允许指向 AzureKeyVault 和 AzureActiveDirectory [服务标记](../articles/virtual-network/service-tags-overview.md)的出站流量。 
 
-有关详细信息，请参阅[连接到虚拟网络](../articles/api-management/api-management-using-with-vnet.md#network-configuration)中的网络配置详细信息。
+有关详细信息，请参阅[连接到虚拟网络](../articles/api-management/api-management-using-with-vnet.md#network-configuration-issues)中的网络配置详细信息。

@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: fa60b6f002e49babc1e1f014bcb941e7953a43a8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8d897c4e4c76b42e980c23f1f18789248f04909a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484772"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129270498"
 ---
 # <a name="backup-to-azure-with-commvault"></a>使用 Commvault 备份到 Azure
 
@@ -35,9 +35,9 @@ ms.locfileid: "107484772"
 | 工作负荷 | GPv2 和 Blob 存储 | 冷层支持 | 存档层支持 | Data Box 系列支持 |
 |-----------------------|--------------------|--------------------|-------------------------|-------------------------|
 | 本地 VM/数据 | v11.5 | v11.5 | v11.10 | v11.10 |
-| Azure VM | v11.5 | v11.5 | v11.5 | 不适用 |
-| Azure Blob | v11.6 | v11.6 | v11.6 | 不适用 |
-| Azure 文件 | v11.6 | v11.6 | v11.6 | 不适用 |
+| Azure VM | v11.5 | v11.5 | v11.5 | 不可用 |
+| Azure Blob | v11.6 | v11.6 | v11.6 | 不可用 |
+| Azure 文件 | v11.6 | v11.6 | v11.6 | 不可用 |
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -87,7 +87,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 
 ### <a name="choose-the-right-storage-options"></a>选择适当的存储选项
 
-使用 Azure 作为备份目标时，将会使用 [Azure Blob 存储](../../../../blobs/storage-blobs-introduction.md)。 Blob 存储是 Microsoft 的对象存储解决方案。 Blob 存储经过优化，可存储海量的非结构化数据（即，不遵循任何数据模型或定义的数据）。 此外，Azure 存储非常持久、高度可用、安全且可缩放。 你可以为工作负载选择适当的存储，以提供满足内部 SLA 的[复原级别](../../../../common/storage-redundancy.md)。 Blob 存储是按用量付费的服务。 它按照存储的数据量、访问这些数据的次数，以及选择冷层和存档层时所需的最短保留期[按月收费](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing)。 下表汇总了适用于备份数据的复原和分层选项。
+使用 Azure 作为备份目标时，将会使用 [Azure Blob 存储](../../../../blobs/storage-blobs-introduction.md)。 Blob 存储是 Microsoft 的对象存储解决方案。 Blob 存储经过优化，可存储海量的非结构化数据（即，不遵循任何数据模型或定义的数据）。 此外，Azure 存储非常持久、高度可用、安全且可缩放。 你可以为工作负载选择适当的存储，以提供满足内部 SLA 的[复原级别](../../../../common/storage-redundancy.md)。 Blob 存储是按用量付费的服务。 它按照存储的数据量、访问这些数据的次数，以及选择冷层和存档层时所需的最短保留期[按月收费](../../../../blobs/access-tiers-overview.md#pricing-and-billing)。 下表汇总了适用于备份数据的复原和分层选项。
 
 **Blob 存储复原选项：**
 
@@ -96,7 +96,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 |**有效副本数**     | 3         | 3         | 6         | 6 |
 |**可用性区域数**     | 1         | 3         | 2         | 4 |
 |**区域数**     | 1         | 1         | 2         | 2 |
-|**手动故障转移到次要区域**     | 不可用         | 不适用         | 是         | 是 |
+|**手动故障转移到次要区域**     | 不可用         | 不可用         | 是         | 是 |
 
 **Blob 存储层：**
 
@@ -104,7 +104,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 | ----------- | ----------- | -----------  | -----------  |
 | **可用性** | 99.9%         | 99%         | Offline      |
 | 使用费 | 存储费用较高，访问和事务费用较低 | 存储费用较低，访问和事务费用较高 | 存储费用最低，访问和事务费用最高 |
-| **所需的最短数据保留期**| 不适用 | 30 天 | 180 天 |
+| **所需的最短数据保留期**| 不可用 | 30 天 | 180 天 |
 | **延迟（距收到第一个字节的时间）** | 毫秒 | 毫秒 | 小时 |
 
 #### <a name="sample-backup-to-azure-cost-model"></a>备份到 Azure 成本模型的示例
@@ -214,10 +214,10 @@ Azure 以 [Azure Monitor](../../../../../azure-monitor/essentials/monitor-azure-
 
 #### <a name="to-open-a-case-with-azure"></a>若要向 Azure 提出案例
 
-在 [Azure 门户](https://portal.azure.com)的顶部搜索栏中搜索“支持”。 选择“帮助+支持” -> “新建支持请求”。 
+在 [Azure 门户](https://portal.azure.com)的顶部搜索栏中搜索“支持”。 选择“帮助 + 支持” -> “新建支持请求” 。
 
 > [!NOTE]
-> 提出案例时，请具体指出需要 Azure 存储或 Azure 网络方面的哪些帮助。 不要指定 Azure 备份。 Azure 备份是 Azure 服务的名称，如果指定，你的案例将移交到错误的人员。
+> 提交案例时，明确指出你需要 Azure 存储或 Azure 网络方面的帮助。 请勿指定 Azure 备份。 Azure 备份是 Azure 服务的名称，如果指定，你的案例将移交到错误的人员。
 
 ### <a name="links-to-relevant-commvault-documentation"></a>相关 Commvault 文档的链接
 

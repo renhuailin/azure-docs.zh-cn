@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4463659077943507651ddd2ad30ee2a1af9cf7a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a2c760e4b1ca923496d11002f2e30b72672f32df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785206"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778393"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions 托管选项
 
@@ -34,8 +34,8 @@ ms.locfileid: "110785206"
 | 计划 | 优点 |
 | --- | --- |  
 |**[消耗计划](consumption-plan.md)**| 在函数运行时自动缩放，你只需为计算资源付费。<br/><br/>在消耗计划中，会根据传入事件数动态添加和删除 Functions 主机的实例。<br/><br/> ✔ 默认托管计划。<br/>✔ 仅当函数运行时才产生费用。<br/>✔ 即使是在负载较高期间也可自动缩放。|  
-|**[高级计划](functions-premium-plan.md)**|使用预热的工作器根据需要自动缩放，这些工作器在空闲后会毫不延迟地运行应用程序，在更强大的实例上运行，并连接到虚拟网络。 <br/><br/>请考虑下列情况中的 Azure Functions 高级计划： <br/><br/>✔ 你的函数应用持续地运行，或者近乎持续地运行。<br/>✔ 你的消耗计划具有大量的小型执行操作，具有较高的执行费用但较低的 GB 秒数。<br/>✔ 你需要的 CPU 或内存选项超出消耗计划提供的选项。<br/>✔ 你的代码所需的运行时间超过消耗计划允许的最长执行时间。<br/>✔ 你需要使用消耗计划中未提供的功能，例如虚拟网络连接。|  
-|**[专用计划](dedicated-plan.md)** |在应用服务计划中以定期[应用服务计划费率](https://azure.microsoft.com/pricing/details/app-service/windows/)运行你的函数。<br/><br/>最适用于不能使用 [Durable Functions](durable/durable-functions-overview.md) 的长时间运行的方案。 对于以下情况，可以考虑使用应用服务计划：<br/><br/>✔ 具有已运行其他应用服务实例的、未充分利用的现成 VM。<br/>✔ 需要提供用于运行函数的自定义映像。 <br/>✔ 需要可预测的缩放和成本。|  
+|**[高级计划](functions-premium-plan.md)**|使用预热的工作器根据需要自动缩放，这些工作器在空闲后会毫不延迟地运行应用程序，在更强大的实例上运行，并连接到虚拟网络。 <br/><br/>请考虑下列情况中的 Azure Functions 高级计划： <br/><br/>✔ 你的函数应用持续地运行，或者近乎持续地运行。<br/>✔ 你的消耗计划具有大量的小型执行操作，具有较高的执行费用但较低的 GB 秒数。<br/>✔ 你需要的 CPU 或内存选项超出消耗计划提供的选项。<br/>✔ 你的代码所需的运行时间超过消耗计划允许的最长执行时间。<br/>✔ 你需要使用消耗计划中未提供的功能，例如虚拟网络连接。<br/>✔ 需要提供用于运行函数的自定义 Linux 映像。 |  
+|**[专用计划](dedicated-plan.md)** |在应用服务计划中以定期[应用服务计划费率](https://azure.microsoft.com/pricing/details/app-service/windows/)运行你的函数。<br/><br/>最适用于不能使用 [Durable Functions](durable/durable-functions-overview.md) 的长时间运行的方案。 对于以下情况，可以考虑使用应用服务计划：<br/><br/>✔ 具有已运行其他应用服务实例的、未充分利用的现成 VM。<br/>✔ 需要可预测的缩放和成本。|  
 
 本文中的比较表还包括以下托管选项，这些选项提供了运行函数应用所需的最大限度的控制和隔离。  
 

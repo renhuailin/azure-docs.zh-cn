@@ -8,12 +8,12 @@ ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 334ae28c160a01032d5403e06f40846e8b9d9ed5
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: e55a9d0bb21a3eded7454f74787f8be9f2f02ece
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839178"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273621"
 ---
 # <a name="backup-to-azure-with-veeam"></a>使用 Veeam 备份到 Azure
 
@@ -90,7 +90,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 
 ### <a name="choose-the-right-storage-options"></a>选择适当的存储选项
 
-使用 Azure 作为备份目标时，将会使用 [Azure Blob 存储](../../../../blobs/storage-blobs-introduction.md)。 Blob 存储是 Microsoft 的对象存储解决方案。 Blob 存储经过优化，可存储海量的非结构化数据（即，不遵循任何数据模型或定义的数据）。 此外，Azure 存储非常持久、高度可用、安全且可缩放。 你可以为工作负载选择适当的存储，以提供满足内部 SLA 的[复原级别](../../../../common/storage-redundancy.md)。 Blob 存储是按用量付费的服务。 它按照存储的数据量、访问这些数据的次数，以及选择冷层和存档层时所需的最短保留期[按月收费](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing)。 下表汇总了适用于备份数据的复原和分层选项。
+使用 Azure 作为备份目标时，将会使用 [Azure Blob 存储](../../../../blobs/storage-blobs-introduction.md)。 Blob 存储是 Microsoft 的对象存储解决方案。 Blob 存储经过优化，可存储海量的非结构化数据（即，不遵循任何数据模型或定义的数据）。 此外，Azure 存储非常持久、高度可用、安全且可缩放。 你可以为工作负载选择适当的存储，以提供满足内部 SLA 的[复原级别](../../../../common/storage-redundancy.md)。 Blob 存储是按用量付费的服务。 它按照存储的数据量、访问这些数据的次数，以及选择冷层和存档层时所需的最短保留期[按月收费](../../../../blobs/access-tiers-overview.md#pricing-and-billing)。 下表汇总了适用于备份数据的复原和分层选项。
 
 **Blob 存储复原选项：**
 
@@ -99,7 +99,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 |**有效副本数**     | 3         | 3         | 6         | 6 |
 |**可用性区域数**     | 1         | 3         | 2         | 4 |
 |**区域数**     | 1         | 1         | 2         | 2 |
-|**手动故障转移到次要区域**     | 不可用         | 不适用         | 是         | 是 |
+|**手动故障转移到次要区域**     | 不可用         | 不可用         | 是         | 是 |
 
 **Blob 存储层：**
 

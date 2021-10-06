@@ -4,7 +4,7 @@ titleSuffix: Azure Machine Learning
 description: 了解如何通过 Azure 机器学习数据集使数据可用于本地或远程计算以训练模型。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.author: yogipandey
 author: ynpandey
 manager: cgronlun
@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 191c76c6ec67112df71d8d5525b2c5938627b3d6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1aa47d7dfbc4a4d43702522a133ae86c8bdbdd1a
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458531"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427260"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>使用 Azure 机器学习数据集来训练模型 
 
@@ -295,9 +295,9 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
   * 如果使用的是 `azureml-sdk<1.12.0`，请升级到最新版本。
   * 如果具有出站 NSG 规则，请确保存在允许服务标记 `AzureResourceMonitor` 的所有流量的出站规则。
 
-**数据集初始化失败: ThrottlingException 引起 StreamAccessException**
+数据集初始化失败：StreamAccessException 是由 ThrottlingException 引起的
 
-对于多节点文件下载，所有节点可能会尝试从 Azure 存储服务下载文件数据集中的所有文件，这会导致限制错误。 若要避免限制，请将环境变量 `AZUREML_DOWNLOAD_CONCURRENCY` 初始设置为 8 倍 CPU 核心数除以节点数的值。 设置此环境变量的值可能需要一些试验，因此上述指导是起点。
+对于多节点文件下载，所有节点可能会尝试从 Azure 存储服务下载文件数据集中的所有文件，这会导致限制错误。 若要避免限制，请首先将环境变量 `AZUREML_DOWNLOAD_CONCURRENCY` 设置为 CPU 核心数除以节点数的 8 倍值。 设置此环境变量的值可能需要一些试验，因此上述指南是一个起点。
 
 以下示例假定有 32 个核心和 4 个节点。
 

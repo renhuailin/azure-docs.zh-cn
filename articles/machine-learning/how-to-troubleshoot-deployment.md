@@ -4,16 +4,16 @@ titleSuffix: Azure Machine Learning
 description: 了解如何规避、解决及排查 Azure Kubernetes 服务和 Azure 容器实例的一些常见 Docker 部署错误。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 0e3163ad1cdc3f75bb40975c57af277339e2a62d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c71aaeea4282ebf265776e7f974841e7385fa75c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620305"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425176"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 

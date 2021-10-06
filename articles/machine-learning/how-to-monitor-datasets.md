@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 学习中设置数据偏移检测。 创建数据集监视器（预览版）、监视数据偏移以及设置警报。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.reviewer: sgilley
 ms.author: wibuchan
 author: buchananwp
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.custom: data4ml, contperf-fy21q2
-ms.openlocfilehash: 5d4c3974bdd1ef90556d19e3ca49cc613d36923d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 66a1b4bf2db3a5840734faed5593114b3ba063b7
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729792"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425480"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 
@@ -102,7 +102,7 @@ Azure 机器学习通过计算单个指标来简化偏移检测，该指标将�
 
 ## <a name="create-target-dataset"></a>创建目标数据集
 
-需要通过数据中的某个列或者派生自文件路径模式的某个虚拟列指定一个时间戳列，为目标数据集设置 `timeseries` 特征。 可通过 [Python SDK](#sdk-dataset) 或 [Azure 机器学习工作室](#studio-dataset)创建带时间戳的数据集。 必须指定表示“时间戳”的列，才能向数据集添加 `timeseries` 特征。 如果数据已分区为包含时间信息的文件夹结构（例如“{yyyy/MM/dd}”），请通过路径模式设置创建虚拟列，并设置为"分区时间戳"以启用时序 API 功能。
+需要通过数据中的某个列或者派生自文件路径模式的某个虚拟列指定一个时间戳列，为目标数据集设置 `timeseries` 特征。 可通过 [Python SDK](#sdk-dataset) 或 [Azure 机器学习工作室](#studio-dataset)创建带时间戳的数据集。 必须指定表示“时间戳”的列，才能向数据集添加 `timeseries` 特征。 如果数据已分区为包含时间信息（例如“{yyyy/MM/dd}”）的文件夹结构，请通过路径模式设置创建虚拟列，并将它设置为"分区时间戳"以启用时序 API 功能。
 
 # <a name="python"></a>[Python](#tab/python)
 <a name="sdk-dataset"></a>
@@ -151,7 +151,7 @@ dset = dset.register(ws, 'target')
 
 :::image type="content" source="media/how-to-monitor-datasets/timestamp.png" alt-text="设置时间戳":::
 
-如果数据已按日期或时间分区，如此处案例所示，还可以指定“分区时间戳”。 这样，就可以更高效地处理日期并启用可在训练期间利用的时序 API。
+如果数据已按日期或时间分区，如此处案例所示，则还可以指定“分区时间戳”。 这样，就可以更高效地处理日期并启用可在训练期间利用的时序 API。
 
 :::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="分区时间戳":::
 

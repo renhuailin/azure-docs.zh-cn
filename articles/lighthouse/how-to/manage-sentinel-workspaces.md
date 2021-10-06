@@ -3,12 +3,12 @@ title: 大规模管理 Azure Sentinel 工作区
 description: Azure Lighthouse 有助于跨委派的客户资源有效地使用 Azure Sentinel。
 ms.date: 08/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 44efc4afeb3ea238b5a8a29d8f12a7bfb4f6d621
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d6eba4cab51fa18164cc5f44e579be23ef8e74a5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324024"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777804"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大规模管理 Azure Sentinel 工作区
 
@@ -85,9 +85,9 @@ MSSP 将管理的每个客户订阅都必须[载入 Azure Lighthouse](onboard-cu
 
 ## <a name="monitor-security-of-office-365-environments"></a>监视 Office 365 环境的安全性
 
-结合使用 Azure Lighthouse 和 Azure Sentinel 来跨租户监视 Office 365 环境的安全性。 首先，[必须在托管租户中启用开箱即用的 Office 365 数据连接器](../../sentinel/connect-office-365.md)，以使 Exchange 和 SharePoint 中的用户和管理活动（包括 OneDrive）的信息可引入到托管租户中的 Azure Sentinel 工作区。 这包括有关操作的详细信息，例如文件下载、发送的访问请求、对组事件的更改和邮箱操作以及有关执行操作的用户的信息。 [Office 365 DLP 警报](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820)也作为内置 office 365 连接器的一部分受到支持。
+结合使用 Azure Lighthouse 和 Azure Sentinel 来跨租户监视 Office 365 环境的安全性。 首先，[必须在托管租户中启用开箱即用的 Office 365 数据连接器](../../sentinel/data-connectors-reference.md#microsoft-office-365)，以使 Exchange 和 SharePoint 中的用户和管理活动（包括 OneDrive）的信息可引入到托管租户中的 Azure Sentinel 工作区。 这包括有关操作的详细信息，例如文件下载、发送的访问请求、对组事件的更改和邮箱操作以及有关执行操作的用户的信息。 [Office 365 DLP 警报](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820)也作为内置 office 365 连接器的一部分受到支持。
 
-可以启用 [Microsoft Cloud App Security (MCAS) 连接器](../../sentinel/connect-cloud-app-security.md)，以将警报和 Cloud Discovery 日志流式传输到 Azure Sentinel。 这使你可以了解云应用程序，获得复杂的分析来识别和应对网络威胁，并控制数据的传输方式。 可以[使用通用事件格式 (CEF) 使用](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849) MCAS 的活动日志。
+可以启用 [Microsoft Cloud App Security (MCAS) 连接器](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas)，以将警报和 Cloud Discovery 日志流式传输到 Azure Sentinel。 这使你可以了解云应用程序，获得复杂的分析来识别和应对网络威胁，并控制数据的传输方式。 可以[使用通用事件格式 (CEF) 使用](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849) MCAS 的活动日志。
 
 设置 Office 365 数据连接器后，可以使用跨租户 Azure Sentinel 功能，如查看和分析工作簿中的数据、使用查询创建自定义警报，以及配置行动手册以应对威胁。
 

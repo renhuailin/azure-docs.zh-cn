@@ -3,19 +3,19 @@ title: 教程：用于访问资源的托管联机终结点
 description: 使用托管联机终结点和系统分配的托管标识来安全地访问用于机器学习模型部署的 Azure 资源。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
 ms.date: 08/05/2021
 ms.topic: tutorial
 ms.custom: tutorial, devplatv2
-ms.openlocfilehash: 681d78d07ac27cb8796f4dad5920d91d9efcb94a
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 7c55e5a5a73a3b9076c1077f36c1f951eeee11cc
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418876"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429977"
 ---
 # <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>教程：使用托管联机终结点和标识（预览版）访问资源
 

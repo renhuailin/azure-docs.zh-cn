@@ -1,20 +1,20 @@
 ---
 title: 通过群集创建高级 Azure Cache for Redis - Azure CLI
 description: 此 Azure CLI 代码示例演示如何创建启用了群集的 6 GB 高级层 Azure Cache for Redis 和两个分片。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9a7dd571e0d2fc27238293ff5776bda6bdc64185
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d992a3550832baf023906c9a68b5b593d755993a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128583210"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532698"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>通过群集创建高级 Azure Redis 缓存
 
@@ -32,7 +32,7 @@ ms.locfileid: "128583210"
 
 此脚本使用以下命令创建资源组并通过启用群集创建高级层 Azure Redis 缓存。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az redis create](/cli/azure/redis) | 创建 Azure Redis 缓存实例。 |

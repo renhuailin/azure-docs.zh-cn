@@ -7,15 +7,15 @@ author: cjgronlund
 ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.date: 11/06/2020
 ms.topic: how-to
-ms.openlocfilehash: c315949adbad946fef57213f38f1cb9d7d45f668
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: d167ea6f71e1f9b47468c81e84e9221e5ec58c75
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107898074"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427621"
 ---
 # <a name="configure-authentication-for-models-deployed-as-web-services"></a>为部署为 Web 服务的模型配置身份验证
 

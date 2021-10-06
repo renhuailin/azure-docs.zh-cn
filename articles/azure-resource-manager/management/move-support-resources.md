@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出了可移动到新资源组、订阅或区域的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 09/08/2021
-ms.openlocfilehash: 14ef825ec2e11d76b90161dc7cf3d8814c8daa04
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/04/2021
+ms.openlocfilehash: b5086256142c4ce72111dddcacaf19c4a40cdc35
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764329"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429331"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -1183,7 +1183,7 @@ ms.locfileid: "124764329"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | connectedclusters | 是 | 是 | 否 |
+> | connectedclusters | 否 | 否 | 否 |
 > | registeredsubscriptions | 否 | 否 | 否 |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft.KubernetesConfiguration

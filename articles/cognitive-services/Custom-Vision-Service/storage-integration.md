@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 06/25/2021
 ms.author: pafarley
-ms.openlocfilehash: f21313a357c5c86087d3505cfdf654d9958d3893
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: d247626607f5fd4b517d7436c21ae33ed5727220
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982359"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353317"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>集成用于通知和备份的 Azure 存储
 
@@ -39,7 +39,7 @@ ms.locfileid: "112982359"
 * 如果你打算使用模型备份功能，请选择“存储 Blob 数据参与者”角色，然后以成员身份添加你的自定义视觉训练资源。 选择“查看 + 分配”以完成。
 * 如果你打算使用通知队列功能，请选择“存储队列数据参与者”角色，然后以成员身份添加你的自定义视觉训练资源。 选择“查看 + 分配”以完成。
 
-有关角色分配的帮助，请参阅[使用 Azure 门户分配 Azure 角色](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+有关角色分配的帮助，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="get-integration-urls"></a>获取集成 URL
 

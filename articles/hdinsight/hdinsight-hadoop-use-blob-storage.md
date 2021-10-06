@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: c4cbce0bce0b495bee9a2f9c717f21de665f29f7
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 5c0a735d01d91de3a114e373791037285c29c09b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112280327"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272654"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -37,7 +37,7 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 不支持将单个 blob 容器共享为多个群集的默认文件系统。
 
 > [!NOTE]  
-> 存档访问层是一个离线层，具有几小时的检索延迟，不建议与 HDInsight 一起使用。 有关详细信息，请参阅[存档访问层](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
+> 存档访问层是一个离线层，具有几小时的检索延迟，不建议与 HDInsight 一起使用。 有关详细信息，请参阅[存档访问层](../storage/blobs/access-tiers-overview.md#archive-access-tier)。
 
 ## <a name="access-files-from-within-cluster"></a>从群集中访问文件
 

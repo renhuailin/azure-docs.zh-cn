@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 排查使用用于推理的预生成 Docker 映像时出现的问题的步骤。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: c4949000cee07e2280d9edc018ff07f20f37a352
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 209a9ffe884fd772fde30bd7a6d4995a15d97f02
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427653"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423474"
 ---
 # <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>用于推理的预生成 Docker 映像（预览版）故障排除
 

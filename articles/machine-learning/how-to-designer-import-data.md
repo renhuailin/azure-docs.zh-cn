@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习数据集和“导入数据”模块将数据导入到 Azure 机器学习设计器中。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 author: likebupt
 ms.author: keli19
 ms.date: 06/13/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 6e0cdbb7511132d4ecd3399e0ef5be7c2541d34b
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 5a08ff4a0fc98ae6c12ef4b4ecab9785b6298af0
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112235898"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424362"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>将数据导入到 Azure 机器学习设计器
 
@@ -99,10 +99,10 @@ ms.locfileid: "112235898"
 
 设计器在内部可以识别以下数据类型：
 
-* 字符串
+* String
 * Integer
 * 小数
-* Boolean
+* 布尔
 * Date
 
 设计器使用一个内部数据类型在模块之间传递数据。 可使用[转换为数据集](algorithm-module-reference/convert-to-dataset.md)模块将数据显式转换为数据表格式。 接受非内部格式的任何模块都将在不提示的情况对数据进行转换，然后再将其传递给下一个模块。

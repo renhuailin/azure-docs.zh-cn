@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: fe9b445a1eccb6c897a1fd7f383e487714c23966
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2563f7addb773b256a56dc67b2ec892b7231372
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575927"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532647"
 ---
 # <a name="associate-a-virtual-machine-scale-set-to-a-capacity-reservation-group-preview"></a>将虚拟机规模集与容量预留组进行关联（预览版）
 
@@ -28,9 +28,6 @@ ms.locfileid: "128575927"
 > 容量预留功能目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="register-for-capacity-reservation"></a>注册容量预留 
-
-必须先[注册预览版订阅](capacity-reservation-overview.md#register-for-capacity-reservation)，然后才能使用容量预留功能。 注册可能需要几分钟才能完成。 可使用 Azure CLI 或 PowerShell 完成功能注册。
 
 ## <a name="limitations-of-scale-sets-in-uniform-orchestration"></a>统一业务流程中的规模集限制 
 

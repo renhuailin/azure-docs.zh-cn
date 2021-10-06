@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c8b82219f2b2aea39bbcd23f030243d9ea8635
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3952dca4cbe7dfd3ea255b4ad1d6483057ff5cb6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861797"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568389"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止向 Azure AD 进行旧身份验证   
 
@@ -38,6 +38,9 @@ Microsoft 身份安全总监 Alex Weinert 在其 2020 年 3 月 12 日的博客�
 ## <a name="prerequisites"></a>先决条件
 
 本文假设你熟悉 Azure AD 条件访问的[基本概念](overview.md)。
+
+> [!NOTE]
+> 完成第一因素身份验证后将强制执行条件访问策略。 在遇到拒绝服务 (DoS) 攻击等情景中，条件访问不应充当组织的第一道防线，但它可以使用这些事件的信号来确定访问权限。
 
 ## <a name="scenario-description"></a>方案描述
 

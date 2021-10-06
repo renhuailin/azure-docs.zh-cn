@@ -1,15 +1,14 @@
 ---
 title: 升级适用于 Azure Service Fabric 的 Linux OS
 description: 了解用于将 Azure Service Fabric 群集迁移到另一个 Linux OS 的选项
-manager: tassb
 ms.topic: conceptual
 ms.date: 09/14/2021
-ms.openlocfilehash: 4a5b1a97fde977fa4ba64a4a23d0c57725595c37
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8f52481e7c457445dc842e86f7b05c3568502da4
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699030"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278004"
 ---
 # <a name="upgrading-linux-os-for-azure-service-fabric"></a>升级适用于 Azure Service Fabric 的 Linux OS
 
@@ -31,7 +30,7 @@ ms.locfileid: "128699030"
 
     * 确保在创建新的目标 OS 节点类型后，现有工作负载可继续正常运行。 如果发现了问题，请在继续删除旧节点类型之前解决应用或预装的计算机包中所需的更改。
 3. 将旧的主节点类型标记为 "isPrimary": false。 这会导致通过一组长时间运行的升级来转换所有种子节点。
-4. （仅适用于铜级持久性节点类型）：通过 [sfctl](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl) / [PowerShell](https://docs.microsoft.com/powershell/module/ServiceFabric/?view=azureservicefabricps) / [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient?view=azure-dotnet) 连接到群集，并禁用旧节点类型中的所有节点。
+4. （仅适用于铜级持久性节点类型）：通过 [sfctl](service-fabric-sfctl.md) / [PowerShell](/powershell/module/ServiceFabric) / [FabricClient](/dotnet/api/system.fabric.fabricclient) 连接到群集，并禁用旧节点类型中的所有节点。
 5. 删除旧节点类型。
 
 > [!NOTE]
@@ -43,9 +42,9 @@ ms.locfileid: "128699030"
 > [!NOTE]
 > 以下步骤演示如何在仅限测试的群集中通过 Az PowerShell cmdlet 快速生成节点类型迁移的原型。 对于面向实际业务流量的生产群集，应通过发出 ARM 升级来完成相同的步骤，以保持可重放性和一致的声明性事实来源。
 
-1. 使用 [Update-AzServiceFabricVmImage](https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricvmimage) 更新 Service Fabric 群集资源上的 vmImage 设置：
+1. 使用 [Update-AzServiceFabricVmImage](/powershell/module/az.servicefabric/update-azservicefabricvmimage) 更新 Service Fabric 群集资源上的 vmImage 设置：
 
-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)：
+    [Azure PowerShell](/powershell/azure/install-az-ps)：
     ```powershell
     # Replace subscriptionId, resourceGroup, clusterName with ones corresponding to your cluster.
     $subscriptionId="cea219db-0593-4b27-8bfa-a703332bf433"

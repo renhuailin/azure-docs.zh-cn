@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: ab030e8e4b86fc669325099e13650f8e1c178986
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 17b3cd2c0257989a220be6b35e93d88db7225188
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835329"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457461"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>SQL Server 到 Azure SQL 数据库迁移的评估规则
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -133,9 +133,6 @@ Azure SQL 数据库不支持跨数据库查询。 建议执行以下操作：
 
 建议   
 请考虑迁移到支持数据库邮件的 Azure SQL 托管实例。  另外，请考虑使用 Azure Functions 和 Sendgrid 在 Azure SQL 数据库上完成邮件功能。
-
-有关详细信息，请参阅[使用 Azure Functions 脚本从 Azure SQL 数据库发送电子邮件](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/AF%20SendMail)
-
 
 ## <a name="database-principal-alias"></a>DATABASE_PRINCIPAL_ALIASES<a id="DatabasePrincipalAlias"></a>
 

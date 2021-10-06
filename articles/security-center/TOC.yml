@@ -127,6 +127,9 @@
         - name: 适用于服务器的 Azure Defender 的概述
           displayName: VM
           href: defender-for-servers-introduction.md
+        - name: 应用 Azure 安全基线
+          displayName: 'VM, guest configuration, vulnerabilities, ASB, benchmark'
+          href: apply-security-baseline.md
         - name: 漏洞扫描
           items:
             - name: 通过集成 VA 扫描程序扫描计算机

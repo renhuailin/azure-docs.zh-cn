@@ -3,19 +3,19 @@ title: 监视 Azure 机器学习 | Microsoft Docs
 description: 了解如何使用 Azure Monitor 查看、分析和创建有关 Azure 机器学习中指标的警报。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: c0f35290aa653d5b9e9be9f1a9a0184854509889
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9c6cb28bd55038f06992d6423785d03ecf30205f
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862213"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424948"
 ---
 # <a name="monitor-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -29,7 +29,7 @@ ms.locfileid: "121862213"
 > * [使用 MLflow 跟踪试验](how-to-use-mlflow.md)
 > * [使用 TensorBoard 将运行可视化](how-to-monitor-tensorboard.md)
 >
-> 如果要监视由部署为 Web 服务的模型生成的信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
+> 如果要监视部署为 Web 服务的模型生成的信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
 
 ## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
 

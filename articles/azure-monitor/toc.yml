@@ -324,8 +324,6 @@
               href: logs/azure-data-explorer-query-storage.md
             - name: 发送到 Excel
               href: logs/log-excel.md
-            - name: 发送到 Power BI
-              href: logs/log-powerbi.md
     - name: 平台日志
       items:
         - name: 概述
@@ -508,7 +506,7 @@
           href: autoscale/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: autoscale/autoscale-webhook-email.md
-        - name: 故障排除
+        - name: 疑难解答
           href: autoscale/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: autoscale/autoscale-resource-log-schema.md
@@ -801,7 +799,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md
@@ -1347,7 +1345,7 @@
         - name: Power BI
           items:
             - name: 导出日志数据
-              href: visualize/powerbi.md
+              href: logs/log-powerbi.md
             - name: 导出应用程序数据
               href: app/export-power-bi.md
         - name: 仪表板

@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c11604ae3fe486be6d471b0218b44eeab26da5c6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8ab6b3d00f748fb5b3935988522191c749fa4fd9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588535"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275271"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -73,8 +73,8 @@ Windows 来宾代理不支持通过代理服务器重定向代理流量请求，
 有许多不同的 VM 扩展可与 Azure VM 配合使用。 若要查看完整列表，请使用 [Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage)。 以下示例列出 *WestUS* 位置的所有可用扩展：
 
 ```powershell
-Get-AzVmImagePublisher -Location "WestUS" | `
-Get-AzVMExtensionImageType | `
+Get-AzVmImagePublisher -Location "WestUS" |
+Get-AzVMExtensionImageType |
 Get-AzVMExtensionImage | Select Type, Version
 ```
 

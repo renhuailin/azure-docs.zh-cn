@@ -3,19 +3,17 @@ title: 默认见解标记 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
 description: 提供必应视觉搜索返回的有关图像的默认见解的详细信息。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: scottwhi
-ms.openlocfilehash: b44b77445192aec68e2be803978ab3aad64906d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9090925785fb32da4934f98b6efd7b249053112
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96486991"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669562"
 ---
 # <a name="default-insights-tag"></a>默认见解标记
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 82ac4e9c4a2f573295790d5d7fa3b02c2e690bbc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8cf212bb6983e561f224aa238ad6afd5e5cf9ac2
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124819862"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274646"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的 Azure 存储 Blob 层
 
@@ -29,11 +29,11 @@ Azure Data Box 通过向你发送专有存储设备来将大量数据移动到 A
 
 冷存储层适用于需要存储至少 30 天的不经常访问的数据。 冷存储层成本低于热存储层，但数据访问费用较高。
 
-Azure 存档存储层是脱机的，其存储成本最低，但访问成本最高。 此层适用于要在存档存储中保留至少 180 天的数据。 有关这些层级和定价模型的详细信息，请转到[存储层的比较](../storage/blobs/storage-blob-storage-tiers.md)。
+Azure 存档存储层是脱机的，其存储成本最低，但访问成本最高。 此层适用于要在存档存储中保留至少 180 天的数据。 有关这些层级和定价模型的详细信息，请转到[存储层的比较](../storage/blobs/access-tiers-overview.md)。
 
 Data Box 或 Data Box Heavy 中的数据会上传到与存储帐户关联的存储层。 创建存储帐户时，可以将访问层指定为“热”或“冷”。 根据工作负荷和成本的访问模式，可以将数据从默认层级移动到另一个存储层。
 
-只能在 Blob 存储或常规用途 v2 (GPv2) 帐户中对对象存储数据分层。 常规用途 v1 (GPv1) 帐户不支持分层。 若要为数据选择适当的存储层，请查看 [Azure Blob 存储：高级、热、冷和存档存储层](../storage/blobs/storage-blob-storage-tiers.md)中详细介绍的注意事项。
+只能在 Blob 存储或常规用途 v2 (GPv2) 帐户中对对象存储数据分层。 常规用途 v1 (GPv1) 帐户不支持分层。 若要为数据选择适当的存储层，请查看 [Azure Blob 存储：高级、热、冷和存档存储层](../storage/blobs/access-tiers-overview.md)中详细介绍的注意事项。
 
 ## <a name="set-a-default-blob-tier"></a>设置默认 Blob 层
 

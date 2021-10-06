@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 91604758ad2e53b3715a5b5c746959b3fe124ba6
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: ff8726ff95bd8e5e3c24fecb90d52ec48529ef7b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403390"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236003"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 术语词汇表
 
@@ -367,10 +367,6 @@ IoT 即插即用桥是一个开源应用程序，它使连接到 Windows 或 Lin
 ### <a name="iot-plug-and-play-device"></a>IoT 即插即用设备
 
 IoT 即插即用设备通常是一种小型的独立计算设备，可收集数据或控制其他设备，并运行实现[设备模型](#device-model)的软件或固件。  例如，IoT 即插即用设备可以是环境监视设备，也可以是智能农业灌溉系统的控制器。 可以直接实现 IoT 即插即用设备，或将其作为 IoT Edge 模块实现。 你可以编写云托管的 IoT 解决方案来命令、控制和接收 IoT 即插即用设备中的数据。
-
-### <a name="iot-solution-accelerators"></a>IoT 解决方案加速器
-
-Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案中。 利用这些解决方案，能够快速开始使用常用 IoT 方案的端到端实现。 有关详细信息，请参阅 [Azure IoT 解决方案加速器是什么？](../iot-accelerators/about-iot-accelerators.md)
 
 ## <a name="j"></a>J
 

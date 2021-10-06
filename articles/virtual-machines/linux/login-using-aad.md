@@ -10,12 +10,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
-ms.openlocfilehash: 6f59bc46ee5b8fb8f14693a0c30350213641be1e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7679c10a5b40edb163974c246fe7fb219ec8effa
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691701"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274627"
 ---
 # <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>已弃用：使用 Azure Active Directory 设备代码流身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -45,7 +46,7 @@ ms.locfileid: "122691701"
 | --- | --- |
 | CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
-| openSUSE | openSUSE Leap 42.3 |
+| OpenSUSE | openSUSE Leap 42.3 |
 | RedHat Enterprise Linux 7 | RHEL 6 和 RHEL 7 | 
 | SUSE Linux Enterprise Server | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |

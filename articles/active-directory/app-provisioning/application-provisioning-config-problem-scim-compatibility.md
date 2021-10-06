@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/25/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9cf7fd49562f83976a10150d953a0afc8b994ed4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 55a7ba39db8dcb255e578a1ba193b6f384ba8224
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102787"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426695"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -106,33 +106,27 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
     "Operations": [
-        {
-            "op": "Add",
-            "path": "nickName",
-            "value": [
-                {
-                    "value": "Babs"
-                }
-            ]
-        }
-    ]
-}   
+    {
+        "op": "Add",
+        "path": "nickName",
+        "value": "Babs"
+     }
+   ]
+}
+
   ```
 
 **有功能标志**
   ```json
-  {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
-    ],
-    "Operations": [
-        {
-            "op": "add",
-            "value": {
-                "nickName": "Babs"
-            }
-        }
-    ]
+{
+  "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+  "Operations": [
+    {
+      "op": "add",
+      "path": "nickName",
+      "value": "Babs"
+    }
+  ]
 }
   ```
 

@@ -2,22 +2,20 @@
 title: 在 Azure VM 上使用 SLES 进行 SAP HANA 横向扩展 HSR-Pacemaker 故障排除 | Microsoft Docs
 description: 本指南介绍如何检查和排查基于 Azure 虚拟机上运行的 SAP HANA 系统复制 (HSR) 和 Pacemaker on SLES 12 SP3 的复杂 SAP HANA 横向扩展高可用性配置
 services: virtual-machines-linux
-documentationcenter: ''
 author: hermanndms
 manager: juergent
-editor: ''
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f4c1de484ce2659a7e84a1546a7c49c1d77a7d56
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bdc19d9bd9208744173735399551bfc6f0fe93f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674483"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359277"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
 
@@ -25,13 +23,13 @@ ms.locfileid: "101674483"
 [sles-hana-scale-out-ha-paper]:https://www.suse.com/documentation/suse-best-practices/singlehtml/SLES4SAP-hana-scaleOut-PerfOpt-12/SLES4SAP-hana-scaleOut-PerfOpt-12.html
 [sap-hana-iaas-list]:https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html
 [suse-pacemaker-support-log-files]:https://www.suse.com/support/kb/doc/?id=7022702
-[azure-linux-multiple-nics]:https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics
+[azure-linux-multiple-nics]:../../linux/multiple-nics.md
 [suse-cloud-netconfig]:https://www.suse.com/c/multi-nic-cloud-netconfig-ec2-azure/
 [sap-list-port-numbers]:https://help.sap.com/viewer/ports
 [sles-12-ha-paper]:https://www.suse.com/documentation/sle-ha-12/pdfdoc/book_sleha/book_sleha.pdf
-[sles-zero-downtime-paper]:https://www.suse.com/media/presentation/TUT90846_towards_zero_downtime%20_how_to_maintain_sap_hana_system_replication_clusters.pdf
+[sles-zero-downtime-paper]:https://www.youtube.com/embed/0FW3J6GbxOk
 [sap-nw-ha-guide-sles]:high-availability-guide-suse.md
-[sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
+[sles-12-for-sap]:https://www.scribd.com/document/377847444/Suse-Linux-Enterprise-Server-for-Sap-Applications-12-Sp1
 
 
 本文旨在帮助用户检查 Azure 虚拟机 (VM) 上运行的 SAP HANA 横向扩展 Pacemaker 群集配置。 群集设置是结合 SAP HANA 系统复制 (HSR) 和 SUSE RPM 包 SAPHanaSR-ScaleOut 完成的。 仅在 SUSE SLES 12 SP3 上执行了所有测试。 本文各个部分介绍不同的方面，并提供了示例命令和配置文件的摘录。 建议使用这些示例来验证和检查整个群集设置。
@@ -46,7 +44,7 @@ SUSE 发布了[这项性能优化设置的详细说明][sles-hana-scale-out-ha-p
 有关 SAP HANA 横向扩展支持的虚拟机类型，请查看 [SAP HANA 认证的 IaaS 目录][sap-hana-iaas-list]。
 
 > [!NOTE]
-> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用该术语。  从软件中删除这些术语后，我们会将其从本文中删除。
+> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用这些术语 。 当这些术语在软件中被删除后，我们会将它们从本文中删除。
 
 结合多个子网和 vNIC 的SAP HANA 横向扩展以及 HSR 的设置存在一个技术问题。 必须使用其中已修复此问题的最新 SAP HANA 2.0 修补程序。 支持以下 SAP HANA 版本： 
 

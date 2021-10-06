@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6365499aff4508e40d8e2aa2ed61471f4fbff2fe
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 1217acb5911366b8e3943d414aeeeaf8a9e5e1e1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721257"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357254"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移支持矩阵
 
@@ -73,15 +73,12 @@ ms.locfileid: "114721257"
 > [!Note]
 > 对于 Linux VM，要成功安装 Microsoft Azure Linux 代理 (waagent)，除了 Internet 连接还请确保已安装以下程序包：
 >- Python 2.6+
->- Python-setuptool
->- systemmd
 >- OpenSSL 1.0+
 >- OpenSSH 5.3+
 >- 文件系统实用程序：sfdisk、fdisk、mkfs、parted
 >- 密码工具：chpasswd、sudo
 >- 文本处理工具：sed、grep
 >- 网络工具：ip-route
->- 在源 VM 上启用 rc.local 服务
 
 > [!TIP]
 >  使用 Azure 门户，一次最多可选择 10 个 VM 来配置复制。 要复制更多的 VM，可使用门户添加要复制的 VM（按每批 10 个 VM 分批复制），也可使用 Azure Migrate PowerShell 接口配置复制。 请确保配置的同时复制的 VM 数不超过支持的同时复制的最大 VM 数量。

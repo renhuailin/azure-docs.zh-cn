@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 08/24/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71784aa5e40cc7af96faa60d0779a779e99f3425
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 78556d5f6d6a203a3d105f971cb7850109daa01a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777844"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570267"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录流
 
@@ -47,7 +47,7 @@ ms.locfileid: "122777844"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中选择“目录 + 订阅”图标。
-1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD B2C 目录，然后选择“切换”。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“策略”下，依次选择“用户流”、“新建用户流”。
 1. 在“创建用户流”页上，选择“登录”用户流 。

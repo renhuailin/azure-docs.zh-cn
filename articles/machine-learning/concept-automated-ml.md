@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解 Azure 机器学习如何通过使用你在自动化机器学习中提供的参数和条件来自动生成模型。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: conceptual
 author: cartacioS
 ms.author: sacartac
 ms.date: 07/01/2021
 ms.custom: automl
-ms.openlocfilehash: 55cf993dd8f4dad17533ef759e135c1604a48901
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 51094590cde45093731e1ac593f4f706e3dad660
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061383"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427013"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -229,7 +229,7 @@ Azure 机器学习提供了以下两种使用自动化 ML 的体验。 请参阅
 
  使用远程计算时，有更多的功能可用，如下表中所示。 
 
-| 功能                                                    | Remote | Local | 
+| Feature                                                    | Remote | Local | 
 |------------------------------------------------------------|--------|-------|
 | 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | 
 | 基于 DNN-BERT 的文本特征化和训练             | ✓      |       |

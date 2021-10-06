@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解如何借助机器学习管道生成、优化和管理机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: caa9d95d57cb8ef6bfe6223a09376614bd254336
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 3eca5b1b70661ef47dfc156a4e4925b45aca1c9b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122604029"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429179"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 

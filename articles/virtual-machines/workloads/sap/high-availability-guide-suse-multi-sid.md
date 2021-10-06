@@ -1,13 +1,9 @@
 ---
 title: SLES 多 SID 上 SAP NetWeaver 的 Azure VM 高可用性指南 | Microsoft Docs
 description: SUSE Linux Enterprise Server for SAP Applications 上 SAP NetWeaver 的多 SID 高可用性指南
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d60ea09896d42fa43a650e210ed3c19d3a99ef4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8442418896f0ce07e601d89a9a1b42ca5b62404a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450629"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569288"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>适用于 SAP 应用程序多 SID 的 SUSE Linux Enterprise Server 上 Azure VM 中的 SAP NetWeaver 的高可用性指南
 
@@ -582,7 +578,7 @@ SAP NetWeaver 要求对传输和配置文件目录等使用共享的存储。 �
 
 1. 测试 HAGetFailoverConfig 和 HACheckFailoverConfig
 
-   在当前运行 ASCS 实例的节点上，以 <sapsid>adm 身份运行以下命令。 如果命令失败，并显示“失败: 内存不足”消息，则原因可能是主机名中存在短划线。 这是一个已知问题，将由 SUSE 在 sap-suse-cluster-connector 包中进行修复。
+   在当前运行 ASCS 实例的节点上，以 \<sapsid\>adm 身份运行以下命令。 如果命令失败，并显示“失败: 内存不足”消息，则原因可能是主机名中存在短划线。 这是一个已知问题，将由 SUSE 在 sap-suse-cluster-connector 包中进行修复。
 
    ```
     slesmsscl1:nw1adm 57> sapcontrol -nr 00 -function HAGetFailoverConfig

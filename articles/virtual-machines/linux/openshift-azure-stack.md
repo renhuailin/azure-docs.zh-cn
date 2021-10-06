@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: ce24fa1e3956d1ebfe7365a89e312bf8586ce770
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4ca662f2d6b0a03f6487e4c4e4452aaaade08151
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695433"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357160"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>在 Azure Stack 中部署 OpenShift 容器平台或 OKD。
 
@@ -49,9 +49,9 @@ ms.locfileid: "122695433"
 
 需将 RHEL 映像（OpenShift 容器平台）或 CentOS 映像 (OKD) 添加到 Azure Stack 环境才能部署 OpenShift 群集。 请联系 Azure Stack 管理员添加这些映像。 可在以下页面中找到说明：
 
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-marketplace-azure-items
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd
+- [在 Azure Stack Hub 中添加和删除自定义 VM 映像](/azure-stack/operator/azure-stack-add-vm-image)
+- [可供 Azure Stack Hub 使用的 Azure 市场项](/azure-stack/operator/azure-stack-marketplace-azure-items)
+- [提供适用于 Azure Stack Hub 的基于 Red Hat 的虚拟机](/azure-stack/operator/azure-stack-redhat-create-upload-vhd)
 
 ## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>使用 OpenShift 容器平台或 OKD 资源管理器模板进行部署
 

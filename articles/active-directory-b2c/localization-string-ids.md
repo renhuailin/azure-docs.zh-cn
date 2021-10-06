@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7e0f3e2ab306c46851e4c2ffcb6acf5824326282
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 88c320d8296972ee84776aa232d688cc9e981f83
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113564349"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349645"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -28,7 +28,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下 ID 用于 ID 为 `api.signuporsignin` 的内容定义和[自断言技术配置文件](self-asserted-technical-profile.md)。
 
 | ID | 默认值 | 页面布局版本 |
-| -- | ------------- | ------ |
+| --- | ------------- | ------ |
 | **forgotpassword_link** | 忘记密码了? | `All` |
 | **createaccount_intro** | 没有帐户？ | `All` |
 | **button_signin** | 登录 | `All` |
@@ -96,14 +96,14 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 ### <a name="sign-up-or-sign-in-error-messages"></a>注册或登录错误消息
 
 | ID | 默认值 |
-| -- | ------------- |
+| --- | ------------- |
 | **UserMessageIfInvalidPassword** | 密码不正确。 |
 | **UserMessageIfPasswordExpired**| 你的密码已过期。|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | 似乎找不到你的帐户。 |
 | **UserMessageIfOldPasswordUsed** | 你可能使用的是旧密码。 |
 | **DefaultMessage** | 无效的用户名或密码。 |
 | **UserMessageIfUserAccountDisabled** | 帐户已锁定。 请联系支持人员解除锁定，然后重试。 |
-| **UserMessageIfUserAccountLocked** | 帐户暂时锁定以防止未经授权的使用。 请稍后再试。 |
+| **UserMessageIfUserAccountLocked** | 帐户暂时锁定以防止未经授权的使用。 请稍后重试。 |
 | **AADRequestsThrottled** | 目前请求过多。 请等待一段时间，然后重试。 |
 
 <a name="signupsigninexample"></a>
@@ -146,7 +146,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下 ID 适用于 ID 为 `api.localaccountsignup` 的内容定义或任何以 `api.selfasserted` 开头的内容定义，例如 `api.selfasserted.profileupdate` 和 `api.localaccountpasswordreset`，以及[自断言技术配置文件](self-asserted-technical-profile.md)。
 
 | ID | 默认值 |
-| -- | ------------- |
+| --- | ------------- |
 | **ver_sent** | 验证码已发送到: |
 | **ver_but_default** | 默认 |
 | **cancel_message** | 用户已取消输入自断言信息 |
@@ -172,7 +172,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **ver_but_verify** | 验证验证码 |
 | **alert_no** | 否 |
 | **ver_info_msg** | 验证码已发送到收件箱。 请将其复制到下面的输入框。 |
-| **day** | 日期 |
+| day | 日期 |
 | **ver_fail_throttled** | 用于验证此电子邮件地址的请求过多。 请稍等片刻，然后重试。 |
 | **helplink_text** | 这是什么？ |
 | **ver_fail_retry** | 验证码不正确。 请重试。 |
@@ -185,7 +185,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 ### <a name="sign-up-and-self-asserted-pages-error-messages"></a>注册和自断言页错误消息
 
 | ID | 默认值 |
-| -- | ------------- |
+| --- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | 已存在具有指定 ID 的用户。 请选择其他用户。 |
 | **UserMessageIfClaimNotVerified** | 未验证声明: {0} |
 | **UserMessageIfIncorrectPattern** | 模式错误: {0} |
@@ -259,7 +259,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下 ID 适用于 ID 为 `api.phonefactor` 的内容定义以及[电话因素技术配置文件](phone-factor-technical-profile.md)。
 
 | ID | 默认值 | 页面布局版本 |
-| -- | ------------- | ------ |
+| --- | ------------- | ------ |
 | **button_verify** | 致电我 | `All` |
 | **country_code_label** | 国家/地区代码 | `All` |
 | **cancel_message** | 用户已取消多重身份验证 | `All` |
@@ -283,7 +283,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **invalid_number** | 请输入有效电话号码 | `All` |
 | **intro_sms** | 我们记录了以下号码。 我们将发送短信验证码来验证你的身份。 | `All` |
 | **intro_entry_mixed** | 请在下面输入一个号码，以便我们能够发送短信验证码或通过电话来验证你的身份。 | `All` |
-| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ | `All` |
+| **number_pattern** | `^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$` | `All` |
 | **intro_sms_p** |我们记录了以下号码。 选择一个号码，以便我们能够发送短信验证码来验证你的身份。 | `All` |
 | **requiredField_countryCode** | 请选择国家/地区代码 | `All` |
 | **requiredField_number** | 请输入电话号码 | `All` |
@@ -361,7 +361,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下是[页面布局版本](page-layout.md)为 2.1.0 或更高版本的[验证显示控件](display-control-verification.md)的 ID。
 
 | ID | 默认值 |
-| -- | ------------- |
+| --- | ------------- |
 |intro_msg <sup>*</sup>| 验证是必需的。 请单击“发送”按钮。|
 |success_send_code_msg | 已发送验证码。 请将其复制到下面的输入框。|
 |failure_send_code_msg | 我们无法验证你的电子邮件地址。 请输入有效的电子邮件地址，然后重试。|
@@ -402,7 +402,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下是[页面布局版本](page-layout.md)为 2.0.0 的[验证显示控件](display-control-verification.md)的 ID。
 
 | ID | 默认值 |
-| -- | ------------- |
+| --- | ------------- |
 |verification_control_but_change_claims |更改 |
 |verification_control_fail_send_code |无法发送代码，请稍后重试。 |
 |verification_control_fail_verify_code |无法验证代码，请稍后重试。 |
@@ -432,7 +432,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下是 [Restful 服务技术配置文件](restful-technical-profile.md)错误消息的 ID：
 
 | ID | 默认值 |
-| -- | ------------- |
+| --- | ------------- |
 |DefaultUserMessageIfRequestFailed | 未能建立与 Restful 服务终结点的连接。 Restful 服务 URL：{0} |
 |UserMessageIfCircuitOpen | {0}Restful 服务 URL：{1} |
 |UserMessageIfDnsResolutionFailed | 未能解析 Restful 服务终结点的主机名。 Restful 服务 URL：{0} |
@@ -457,7 +457,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下是 [Azure AD MFA 技术配置文件](multi-factor-auth-technical-profile.md)错误消息的 ID：
 
 | ID | 默认值 |
-| -- | ------------- |
+| --- | ------------- |
 |UserMessageIfCouldntSendSms | 无法向手机发送短信，请尝试另一个电话号码。 |
 |UserMessageIfInvalidFormat | 电话号码格式无效，请更正，然后重试。|
 |UserMessageIfMaxAllowedCodeRetryReached | 输入错误代码的次数过多，请稍后重试。|
@@ -485,7 +485,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下是 [Azure AD SSPR 技术配置文件](aad-sspr-technical-profile.md)错误消息的 ID：
 
 | ID | 默认值 |
-| -- | ------------- |
+| --- | ------------- |
 |UserMessageIfChallengeExpired | 代码已过期。|
 |UserMessageIfInternalError | 电子邮件服务遇到内部错误，请稍后重试。|
 |UserMessageIfThrottled | 你发送的请求过多，请稍后重试。|
@@ -511,8 +511,8 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 以下是[一次性密码技术配置文件](one-time-password-technical-profile.md)错误消息的 ID
 
-| ID | 默认值 |
-| -- | ------------- |
+| ID | 默认值 | 说明 | 
+| --- | ------------- | ----------- |
 | UserMessageIfSessionDoesNotExist | 否 | 代码验证会话过期后向用户显示的消息。 代码已过期，或从未为给定标识符生成代码。 |
 | UserMessageIfMaxRetryAttempted | 否 | 用户尝试验证的次数超过允许的最大值时显示的消息。 |
 | UserMessageIfMaxNumberOfCodeGenerated | 否 | 当代码生成超出了允许的最大尝试次数时显示给用户的消息。 |
@@ -540,7 +540,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 以下是声明转换错误消息的 ID：
 
 | ID | 声明转换 | 默认值 |
-| -- | ------------- |------------- |
+| --- | ------------- |------------- |
 |UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 声明类型“inputClaim”的布尔声明值比较失败。| 
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 声明值比较失败：提供的左操作数大于右操作数。|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | 使用 StringComparison“OrdinalIgnoreCase”的声明值比较失败。|

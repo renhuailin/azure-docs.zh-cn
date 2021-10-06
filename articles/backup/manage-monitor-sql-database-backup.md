@@ -3,12 +3,12 @@ title: 管理和监视 Azure VM 上的 SQL Server 数据库
 description: 本文介绍如何管理和监视 Azure VM 上运行的 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: e768eae283aaf113d68f425cb306860411a9bcd9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c536b29f731ee646f987dc9ce2d178cb93426c91
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738429"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272003"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -125,13 +125,13 @@ Azure 备份在门户的“备份作业”下显示了所有计划的和按需�
 策略修改将影响所有关联的备份项，并触发相应的 **配置保护** 作业。
 
 >[!Note]
->策略修改还将影响现有恢复点。 <br><br> 对于保留在存档层中未满 180 天的恢复点，删除这些恢复点将导致产生早期删除费用。 [了解详细信息](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)。
+>修改策略还会影响现有恢复点。 <br><br> 对于保留在存档层中未满 180 天的恢复点，删除这些恢复点将导致产生早期删除费用。 [了解详细信息](../storage/blobs/access-tiers-overview.md)。
 
 ### <a name="inconsistent-policy"></a>不一致的策略
 
 有时，修改策略操作可能导致某些备份项出现 **不一致的** 策略版本。 如果在触发修改策略操作后对备份项执行相应的 **配置保护** 作业失败，则会出现这种不一致。 它在备份项视图中显示如下：
 
-  ![策略不一致](./media/backup-azure-sql-database/inconsistent-policy.png)
+  ![不一致的策略](./media/backup-azure-sql-database/inconsistent-policy.png)
 
 只需单击一下鼠标即可修复所有受影响项的策略版本：
 

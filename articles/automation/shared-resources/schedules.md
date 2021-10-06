@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 03/29/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f119c15cbbfd9586bdb06fdffad0b12c9a441eea
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 012380b98987bc09440d025b6533b62cc1a4c043
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832637"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271643"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>管理 Azure 自动化中的计划
 
@@ -25,7 +25,7 @@ ms.locfileid: "107832637"
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>用于访问计划的 PowerShell cmdlet
 
-下表中的 cmdlet 使用 PowerShell 创建和管理自动化计划。 它们作为 [Az 模块](modules.md#az-modules)的一部分提供。
+下表中的 cmdlet 使用 PowerShell 创建和管理自动化计划。 它们作为 Az 模块的一部分提供。
 
 | Cmdlet | 说明 |
 |:--- |:--- |

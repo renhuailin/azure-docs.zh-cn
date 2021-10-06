@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 如何配置自定义 DNS 服务器以使用 Azure 机器学习工作区和专用终结点。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 74c8fd2c096d8a4b236d9f26bdd27737fac897ca
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bbe9f19bcf5925ef6e08829fde75bc2f9032b031
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632987"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429863"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何将工作区用于自定义 DNS 服务器
 
@@ -565,7 +565,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
+本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
 
 * [虚拟网络概述](how-to-network-security-overview.md)
 * [保护工作区资源](how-to-secure-workspace-vnet.md)

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何配置 Azure 机器学习工作室来访问存储在虚拟网络内部的数据。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 07/13/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: 7fe7070611fc9fc94f983a69a6fb9009af0f9c3e
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 6a10384757552108aefc3dd828bf0fd7ddce2f82
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091514"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427488"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习工作室
 
@@ -165,7 +165,7 @@ ms.locfileid: "129091514"
 > 使用 Azure 防火墙服务时，支持 Azure 机器学习工作室。 有关详细信息，请参阅[使用防火墙后面的工作区](how-to-access-azureml-behind-firewall.md)。
 ## <a name="next-steps"></a>后续步骤
 
-本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
+本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
 
 * [虚拟网络概述](how-to-network-security-overview.md)
 * [保护工作区资源](how-to-secure-workspace-vnet.md)

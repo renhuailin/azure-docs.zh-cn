@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 如何在出现运行机器学习管道的错误时进行故障排除。 常见陷阱，以及有助于在远程执行之前和期间调试脚本的提示。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: lobrien
 ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 3a85566f395e97bbe88d52a8b306c7e0aa15669d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: f6fc3ad230c4da9f44c536ec61d8c840374c3ed6
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817334"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429027"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>排查机器学习管道问题
 

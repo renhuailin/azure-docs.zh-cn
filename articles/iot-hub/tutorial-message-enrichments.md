@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 0d6c90120d050b6896161f50332faf447c3ed67b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aca884ebbfc10cc847bade34ea1a9bd73ada18c9
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788846"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458390"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Tutorial:使用 Azure IoT 中心消息扩充
 
@@ -48,7 +48,7 @@ ms.locfileid: "107788846"
 
 ## <a name="retrieve-the-iot-c-samples-repository"></a>检索 IoT C# 示例存储库
 
-从 GitHub 下载 [IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)并将其解压缩。 此存储库中有多个应用程序、脚本和资源管理器模板。 本教程中使用的方法如下：
+从 GitHub 下载 [IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)并将其解压缩。 此存储库中有多个应用程序、脚本和资源管理器模板。 本教程中使用的方法如下：
 
 * 对于手动方法，有一个用于创建资源的 CLI 脚本。 此脚本位于 /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli 中。 此脚本创建资源并配置消息路由。 运行此脚本后，使用 [Azure 门户](https://portal.azure.com)手动创建消息扩充。
 * 对于自动化方法，有一个 Azure 资源管理器模板。 该模板位于 /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.json 中。 此模板创建资源，配置消息路由，然后配置消息扩充。

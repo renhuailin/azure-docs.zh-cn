@@ -1,19 +1,19 @@
 ---
 title: 使用 C++ 客户端库列出 Azure 存储资源
 description: 了解如何在用于 C++ 的 Microsoft Azure 存储客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 72b08a79ead90207c48c4fa682b708a0627b5df3
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c034f8df787d60ab8d260fb9f99c0938d4fb55af
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279623"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560423"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>使用 C++ 列出 Azure 存储资源
 
@@ -24,11 +24,11 @@ ms.locfileid: "106279623"
 
 存储客户端库提供了多种方法，用于列出或查询 Azure 存储中的对象。 本文探讨以下方案：
 
-* 列出帐户中的容器
-* 列出容器或虚拟 blob 目录中的 blob
-* 列出帐户中的队列
-* 列出帐户中的表
-* 查询表中的实体
+- 列出帐户中的容器
+- 列出容器或虚拟 blob 目录中的 blob
+- 列出帐户中的队列
+- 列出帐户中的表
+- 查询表中的实体
 
 使用不同的重载针对不同的方案演示上述每种方法。
 
@@ -59,8 +59,8 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 
 分段列表操作的响应包括：
 
-* *_segment*，其中包含针对列表 API 进行单个调用时返回的结果集。
-* continuation_token，将传递给下一个调用，以获取下一页结果。 当不再有要返回的结果时，继续标记为 null。
+- *_segment*，其中包含针对列表 API 进行单个调用时返回的结果集。
+- continuation_token，将传递给下一个调用，以获取下一页结果。 当不再有要返回的结果时，继续标记为 null。
 
 例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码片段可能如下所示。 我们的 [示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)中提供了该代码：
 
@@ -187,18 +187,18 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 在本文中，我们针对用于 C++ 的存储客户端库中的各种对象，对列表 API 的不同重载进行了讨论。 总结：
 
-* 在出现多个线程的情况下，强烈建议使用异步 API。
-* 大多数情况下，建议使用分段的列表。
-* 在库中提供懒惰列表是将其作为包装器，适合在同步方案中使用。
-* 不建议使用贪婪列表，因此已将其从库中删除。
+- 在出现多个线程的情况下，强烈建议使用异步 API。
+- 大多数情况下，建议使用分段的列表。
+- 在库中提供懒惰列表是将其作为包装器，适合在同步方案中使用。
+- 不建议使用贪婪列表，因此已将其从库中删除。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure 存储以及用于 C++ 的客户端库的详细信息，请参阅以下资源。
 
-* [如何通过 C++ 使用 Blob 存储](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [如何通过 C++ 使用表存储](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [如何通过 C++ 使用队列存储](../queues/storage-c-plus-plus-how-to-use-queues.md)
-* [适用于 C++ 的 Azure 存储客户端库 API 文档。](https://azure.github.io/azure-storage-cpp/)
-* [Azure 存储团队博客](/archive/blogs/windowsazurestorage/)
-* [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)
+- [如何通过 C++ 使用 Blob 存储](../blobs/quickstart-blobs-c-plus-plus.md)
+- [如何通过 C++ 使用表存储](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+- [如何通过 C++ 使用队列存储](../queues/storage-c-plus-plus-how-to-use-queues.md)
+- [适用于 C++ 的 Azure 存储客户端库 API 文档。](https://azure.github.io/azure-storage-cpp/)
+- [Azure 存储团队博客](/archive/blogs/windowsazurestorage/)
+- [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)

@@ -4,25 +4,26 @@ titleSuffix: Azure Machine Learning
 description: 了解现场可编程门阵列。 你可以使用 Azure 机器学习在 FPGA 上部署 Web 服务，以实现超低延迟推断。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: bfb29a00dbef95007eba6ca69f9a38d0f23d2da2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bfebb2dd7a73684887a2fa78d8d82ac26f2b7e50
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736515"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425518"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>使用 Azure 机器学习将 ML 模型部署到现场可编程门阵列 (FPGA) 
 
 在本文中，你将了解 FPGA 以及如何使用来自 [Azure 机器学习](overview-what-is-azure-machine-learning.md)的[硬件加速模型 Python 包](/python/api/azureml-accel-models/azureml.accel)将 ML 模型部署到 Azure FPGA。
 
 ## <a name="what-are-fpgas"></a>什么是 FPGA？
+
 FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的层次结构。 这种互连可以在生产之后以不同方式来配置块。 与其他芯片相比，FPGA 既有可编程性，又有很好的性能。 
 
 可以通过 FPGA 确保实时推理（或模型评分）请求的低延迟。 不需要使用异步请求（批处理）。 批处理可能导致延迟，因为需要处理更多的数据。 实现神经处理单元不需批处理，因此与 CPU 和 GPU 处理器相比，其延迟降低很多倍。

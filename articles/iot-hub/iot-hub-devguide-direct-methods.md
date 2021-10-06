@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1b9b0a86b86ae1e2253da2349bb9e1c3523f5798
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: d497a94173d056633803362239ef3dff07797144
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862216"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278229"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 
@@ -89,7 +89,7 @@ ms.locfileid: "121862216"
 若要开始，请使用[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)创建 SharedAccessSignature。
 
 ```bash
-az iot hub generate-sas-token -n <iothubName> -du <duration>
+az iot hub generate-sas-token -n <iothubName> --du <duration>
 ```
 
 接下来，将 Authorization 标头替换为新生成的 SharedAccessSignature，然后修改 `iothubName`、`deviceId`、`methodName` 和 `payload` 参数，使之与下面的示例 `curl` 命令中的实现匹配。  

@@ -4,18 +4,18 @@ titleSuffix: Azure API Management
 description: 了解如何使用 Azure API 管理中的客户端证书身份验证管理客户端证书以及确保后端服务安全。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9d198f34abe826af2dce0c1ed9950600d4c7bbd3
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 689dbc56eb5f587e124a645895723436a2a7ccd8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812284"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569581"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 

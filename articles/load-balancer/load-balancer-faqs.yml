@@ -8,12 +8,12 @@ metadata:
   ms.topic: article
   ms.date: 04/22/2020
   ms.author: errobin
-  ms.openlocfilehash: 65fdc072fed31da0ad452a3ef5426b6e53f9c47f
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 0a855bf66c705e07d556831b60f7f4ec391e29fd
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128556312"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129272305"
 title: 负载均衡器常见问题解答
 summary: ''
 sections:
@@ -72,7 +72,7 @@ sections:
   - question: >
       是否可以从参与的后端池 VM 访问内部负载均衡器前端？
     answer: >
-      否，Azure 负载均衡器不支持此方案。 若要详细了解此主题，请访问[故障排除页](https://docs.microsoft.com/azure/load-balancer/load-balancer-troubleshoot-backend-traffic#cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm)。
+      否，Azure 负载均衡器不支持此方案。 若要详细了解此主题，请访问[故障排除页](load-balancer-troubleshoot-backend-traffic.md#cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm)。
   - question: >
       与出站连接有关的最佳做法是什么？
     answer: "标准负载均衡器和标准公共 IP 为出站连接引入了功能和不同的行为。 它们不同于基本 SKU。 如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。 这包括在使用内部标准负载均衡器时创建出站连接。 建议始终使用标准公共负载均衡器上的出站规则。 这意味着使用内部标准负载均衡器时，如果需要出站连接，则需要采取步骤为后端池中的 VM 创建出站连接。 在出站连接的上下文中，单个独立 VM、可用性集中的所有 VM、虚拟机规模集中的所有实例都表现得像一个组。 这意味着，如果可用性集中的单个 VM 与标准 SKU 关联，则该可用性集中的所有 VM 实例现在都遵循相同的规则，就好像这些 VM 实例与标准 SKU 相关联一样，即使单个实例与标准 SKU 没有直接关联。 如果独立 VM 有连接到负载均衡器的多个网络接口卡，也会出现此行为。 如果将一个 NIC 添加为独立 NIC，也会有相同的行为。 请仔细查看整个文档以了解整体概念，查看[标准负载均衡器](./load-balancer-overview.md)了解 SKU 之间的差异，并查看[出站规则](load-balancer-outbound-connections.md#outboundrules)。\n使用出站规则可以对出站连接的所有方面进行细化管理控制。\n \n"

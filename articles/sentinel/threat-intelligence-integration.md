@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: 82a2dca4c38a8d8602bf41ee36760e846edb5d78
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ba9d853b6c4bcbe43b81463870a06821dc34d665
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774740"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277606"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel 中的威胁情报集成
 
@@ -67,7 +67,7 @@ Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](work-
 ### <a name="threatconnect"></a>ThreatConnect
 
 - [详细了解 STIX 和 TAXII @ThreatConnect](https://threatconnect.com/stix-taxii/)
-- [TAXII 服务文档 @ThreatConnect](https://docs.threatconnect.com/en/latest/rest_api/taxii/taxii.html)
+- [TAXII 服务文档 @ThreatConnect](https://docs.threatconnect.com/en/latest/rest_api/v2/taxii/taxii.html)
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>集成式威胁情报平台产品
 

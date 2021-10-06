@@ -4,18 +4,18 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 98afd90c44eee488faad8271c12e8d157d1d3d7f
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: e2c6093d1d8d4f1a46f69489d30d003e45ea7173
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405021"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516690"
 ---
 还可以使用以下资源：
 
 - [.Net SDK 参考文档](/dotnet/api/microsoft.azure.devices)
-- [服务客户端示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)
-- [数字孪生示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples)
+- [服务客户端示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/service/PnpServiceSamples)
+- [数字孪生示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/service/DigitalTwinClientSamples)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT 中心服务客户端示例
 

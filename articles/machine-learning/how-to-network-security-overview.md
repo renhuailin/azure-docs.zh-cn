@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 使用隔离的 Azure 虚拟网络 (VNet) 保护 Azure 机器学习工作区资源和计算环境。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 09/24/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 1844d9a84714231aac7cb399239c31a6af62661c
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 1d1389b5627f18c8772a55300a89dca9d0de4917
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093509"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423512"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>使用虚拟网络 (VNet) 保护 Azure 机器学习工作区资源
@@ -168,7 +168,7 @@ ms.locfileid: "129093509"
 
 ### <a name="limitations"></a>限制
 
-[ML 辅助数据标记](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling)不支持虚拟网络背后的默认存储帐户。 相反，对于 ML 辅助数据标记，请使用存储帐户而不是默认帐户。 
+[ML 辅助数据标记](how-to-create-image-labeling-projects.md#use-ml-assisted-data-labeling)不支持虚拟网络背后的默认存储帐户。 相反，对于 ML 辅助数据标记，请使用存储帐户而不是默认帐户。 
 
 > [!TIP]
 > 只要不是默认的存储帐户，数据标签使用的帐户就可以受到虚拟网络的保护。 

@@ -1,7 +1,7 @@
 ---
 title: 从 Azure Blob 存储索引数据
 titleSuffix: Azure Cognitive Search
-description: 设置一个 Azure Blob 索引器，以便自动为 Azure 认知搜索中的全文搜索操作和知识挖掘编制 Blob 内容的索引。
+description: 设置一个 Azure Blob 索引器，从而自动索引 Blob 内容来在 Azure 认知搜索中进行全文搜索操作和知识挖掘。
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 5c19cfd69352d898c6f47c7256b8433164cd7eb9
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 0014c28b57480e8da301c57823cdba79cea67e96
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982989"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274891"
 ---
 # <a name="index-data-from-azure-blob-storage"></a>从 Azure Blob 存储索引数据
 
-本文介绍如何配置 Azure Blob 索引器以提取内容，并使内容在 Azure 认知搜索中可搜索。 此工作流会在 Azure 认知搜索上创建搜索索引，并为从 Azure Blob 存储中提取的现有内容和元数据加载此索引。
+本文介绍如何配置 Azure Blob 索引器来提取内容，并使内容在 Azure 认知搜索中可供搜索。 此工作流在 Azure 认知搜索上创建一个搜索索引，并使用从 Azure Blob 存储中提取的现有内容和元数据加载此索引。
 
-Blob 索引器通常用于执行 [AI 扩充](cognitive-search-concept-intro.md)，在此过程中，附加的[技能组](cognitive-search-working-with-skillsets.md)会添加图像和自然语言处理，以将 blob 容器中的不可搜索内容类型创建为可搜索内容。
+Blob 索引器通常可与 [AI 扩充](cognitive-search-concept-intro.md)联用，其中附加的[技能组](cognitive-search-working-with-skillsets.md)会添加图像和自然语言处理，以在 Blob 容器中从不可搜索的内容类型创建可搜索内容。
 
-本文介绍如何为以文本为中心的索引配置 Azure Blob 索引器。 可以使用以下任一客户端设置 Azure Blob 存储索引器：
+本文介绍如何针对以文本为重点的索引配置 Azure Blob 索引器。 可使用以下任一客户端设置 Azure Blob 存储索引器：
 
 * [Azure 门户](https://ms.portal.azure.com)
 * Azure 认知搜索 [REST API](/rest/api/searchservice/Indexer-operations)
@@ -32,7 +32,7 @@ Blob 索引器通常用于执行 [AI 扩充](cognitive-search-concept-intro.md)�
 
 ## <a name="supported-access-tiers"></a>支持的访问层
 
-Blob 存储[访问层](../storage/blobs/storage-blob-storage-tiers.md)包括热、冷、存档访问层。 索引器只能访问热访问层和冷访问层。 
+Blob 存储[访问层](../storage/blobs/access-tiers-overview.md)包括热、冷、存档访问层。 索引器只能访问热访问层和冷访问层。 
 
 <a name="SupportedFormats"></a>
 
@@ -71,7 +71,7 @@ Blob 数据源定义类似于以下示例：
 
 **完全访问存储帐户连接字符串**：`{ "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>;" }`
 
-可通过导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“安全 + 网络”>“访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
+可导航到“存储帐户”边栏选项卡 >“设置”>“密钥”（对于经典存储帐户）或“安全性 + 网络”>“访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
 
 **存储帐户共享访问签名** (SAS) 连接字符串：`{ "connectionString" : "BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl;" }`
 
@@ -307,7 +307,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有数百万个 blob �
 
 在索引过程中经常发生的错误包括：内容类型不受支持、内容缺失或 blob 过大。
 
-默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能希望即使出现错误也继续进行索引，之后再调试各个文档。 有关索引器错误的详细信息，请参阅[索引器故障排除指南](search-indexer-troubleshooting.md)和[索引器错误和警告](cognitive-search-common-errors-warnings.md)。
+默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能希望即使出现错误也继续进行索引，之后再调试各个文档。 若要详细了解索引器错误，请参阅[索引器故障排除指南](search-indexer-troubleshooting.md)和[索引器错误和警告](cognitive-search-common-errors-warnings.md)。
 
 ### <a name="respond-to-errors"></a>响应错误
 

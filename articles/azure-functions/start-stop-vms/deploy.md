@@ -5,25 +5,22 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c0b3984629376f11692b727bb28b34c15708c596
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc44fc58b8832c30ed1b740eb6637f1fc8ed1413
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733478"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454955"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>部署启动/停止 VM v2（预览版）
 
 请按顺序执行本主题中的步骤，以安装启动/停止 VM v2（预览版）功能。 完成设置过程后，请配置计划，以根据自己的要求对其进行自定义。
 
-> [!NOTE]
-> 如果你在部署过程中遇到问题、在使用“启动/停止 VM v2 (预览版)”时遇到问题，或者有相关的问题，则可在 [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) 上提交问题。 从 [Azure 支持站点](https://azure.microsoft.com/support/options/)提交 Azure 支持事件的功能不适用于此预览版本。 
-
 ## <a name="permissions-considerations"></a>权限注意事项
-在部署之前和部署期间，请牢记以下事项：
-+   该解决方案允许对启动/停止 v2 部署享有适当的基于角色的访问控制 (RBAC) 权限的用户添加、删除和管理启动/停止 v2 范围内虚拟机的各项计划。 此行为是设计使然。 实际上，这意味着在虚拟机上不享有直接 RBAC 权限的用户仍可以在该虚拟机上创建启动、停止和自动停止操作，但前提是他们拥有修改专用于管理该虚拟机的启动/停止 v2 解决方案的 RBAC 权限。
-+ 享有启动/停止 v2 解决方案访问权限的任何用户都有可能发现成本、节省额、操作历史记录及存储在启动/停止 v2 应用程序使用的 Application Insights 实例中的其他数据。
-+ 管理启动/停止 v2 解决方案时，应当考虑到用户对启动/停止 v2 解决方案的使用权限，尤其是在他们无权直接修改目标虚拟机时。
+在部署之前和部署期间，请牢记以下内容：
++   该解决方案允许对启动/停止 v2 部署具有适当的基于角色的访问控制 (RBAC) 权限的用户添加、删除和管理启动/停止 v2 范围下的虚拟机计划。 此行为是设计使然。 实际上，这意味着对虚拟机没有直接 RBAC 权限的用户在拥有 RBAC 权限时仍然可以在该虚拟机上创建启动、停止和自动停止操作，以修改管理它的启动/停止 v2 解决方案。
++ 任何有权访问启动/停止 v2 解决方案的用户都可以发现启动/停止 v2 应用程序所用的 Application Insights 实例中存储的成本、节省、操作历史记录和其他数据。
++ 管理启动/停止 v2 解决方案时，应考虑用户的启动/停止 v2 解决方案权限，特别是当用户无权直接修改目标虚拟机时。
 ## <a name="deploy-feature"></a>部署功能
 
 可于[此处](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)的启动/停止 VM v2 GitHub 组织发起部署。 尽管此功能旨在跨订阅中单个部署的所有资源组管理订阅中的所有 VM，但你可以根据所在组织的操作模型或要求来安装其他实例。 还可以配置此功能，以跨多个订阅集中管理 VM。
@@ -32,6 +29,10 @@ ms.locfileid: "121733478"
 
 > [!NOTE]
 > 此预览版目前不支持指定现有存储帐户或 Application Insights 资源。
+
+
+> [!NOTE]
+> 函数应用和存储帐户的命名格式已更改。 为保证全局唯一性，现在会将唯一的随机字符串追加到这些资源的名称之后。
 
 1. 打开浏览器并导航到启动/停止 VM v2 [GitHub 组织](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)。
 1. 根据你在其中创建 Azure VM 的 Azure 云环境选择部署选项。 Azure 门户中随即将打开“自定义 Azure 资源管理器部署”页面。
@@ -59,10 +60,7 @@ ms.locfileid: "121733478"
     :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="启动/停止 VM 遥测部署资源列表":::
 
 > [!NOTE]
-> 函数应用和存储帐户的命名格式已更改。 为保证全局唯一性，现将一串随机生成的唯一字符串追加到这些资源的名称后面。
-
-> [!NOTE]
-> 我们正在收集操作和检测信号的遥测数据，以便在你联系支持团队进行故障排除时提供更周全的协助。 此外，我们还在收集虚拟机事件历史记录，以验证服务在虚拟机上运行的时间和虚拟机的休眠时长，从而确定服务的有效性。
+> 我们正在收集操作和检测信号遥测数据，以便在你联系支持团队进行任何故障排除时为你提供更好的帮助。 我们还正在收集虚拟机事件历史记录，用于验证服务在虚拟机上的运行时间，以及虚拟机的暂停时间，以确定服务效果。
 
 ## <a name="enable-multiple-subscriptions"></a>启用多个订阅
 
@@ -190,8 +188,11 @@ ms.locfileid: "121733478"
           "/subscriptions/11111111-0000-1111-2222-444444444444/resourceGroups/rg2/providers/Microsoft.ClassicCompute/virtualMachines/vm30"
           
         ]
+      }
     }
     ```
+
+1. 在逻辑应用的“概述”窗格中，选择“启用”。  
 
 ## <a name="sequenced-start-and-stop-scenario"></a>顺序启动和停止方案
 

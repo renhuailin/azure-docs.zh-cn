@@ -1,18 +1,18 @@
 ---
 title: 教程 - 连接泛型 Azure IoT 即插即用模块 | Microsoft Docs
 description: 教程 - 在泛型模块中使用示例 C# IoT 即插即用设备代码。
-author: lizross
-ms.author: lizross
+author: RamIoTMalhotra
+ms.author: ramal
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 3ff845e1ef74e8bf1f98da519d8d2d9657755e96
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 44dca3cd3cd7803271fba6abae72de5c54782c1f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091115"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457404"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>教程：连接 IoT 即插即用模块 (C#)
 
@@ -108,7 +108,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | IOTHUB_DEVICE_SECURITY_TYPE | connectionString |
     | IOTHUB_MODULE_CONNECTION_STRING | 你之前记下的模块连接字符串 |
 
-    若要详细了解示例配置，请参阅[示例自述文件](https://github.com/Azure-Samples/azure-iot-samples-csharp/blob/master/iot-hub/Samples/device/PnpDeviceSamples/readme.md)。
+    若要详细了解示例配置，请参阅[示例自述文件](https://github.com/Azure-Samples/azure-iot-samples-csharp/blob/main/iot-hub/Samples/device/PnpDeviceSamples/readme.md)。
 
 ## <a name="modify-the-code"></a>修改代码
 

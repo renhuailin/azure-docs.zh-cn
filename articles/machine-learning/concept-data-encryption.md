@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解 Azure 机器学习计算和数据存储如何提供静态数据加密和传输中数据加密。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 08/02/2021
-ms.openlocfilehash: 8f4bb5279442abb10a9b19e5cb3e3666a1319bb2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e367f6685e73cb6cdfd9e777e6cb554c186c616c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621581"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429217"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>使用 Azure 机器学习进行数据加密
 

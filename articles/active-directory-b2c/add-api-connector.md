@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 05/03/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1e0af1080a2d56fc01bdeb4bfb5f6475c477b685
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 288cffbaa90db2725d2aa2985c003474b2c7eb7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777736"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570722"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>将 API 连接器添加到注册用户流
 
@@ -45,18 +45,18 @@ ms.locfileid: "122777736"
 若要使用某个 [API 连接器](api-connectors-overview.md)，首先需要创建该 API 连接器，然后在用户流中启用它。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“Azure 服务”下，选择“Azure AD B2C”。
-4. 选择“API 连接器”，再选择“新建 API 连接器”。 
+1. 在“Azure 服务”下，选择“Azure AD B2C”。
+1. 选择“API 连接器”，再选择“新建 API 连接器”。 
 
    ![API 连接器的基本配置的屏幕截图](media/add-api-connector/api-connector-new.png)
 
-5. 为调用提供显示名称。 例如“验证用户信息”。
-6. 为 API 调用提供“终结点 URL”。
-7. 选择“身份验证类型”，并配置用于调用 API 的身份验证信息。 了解如何[保护 API 连接器](secure-rest-api.md)。
+1. 为调用提供显示名称。 例如“验证用户信息”。
+1. 为 API 调用提供“终结点 URL”。
+1. 选择“身份验证类型”，并配置用于调用 API 的身份验证信息。 了解如何[保护 API 连接器](secure-rest-api.md)。
 
    ![API 连接器身份验证配置的屏幕截图](media/add-api-connector/api-connector-config.png)
 
-8. 选择“保存”。
+1. 选择“保存”。
 
 ## <a name="the-request-sent-to-your-api"></a>发送到 API 的请求
 API 连接器具体化为 **HTTP POST** 请求，在 JSON 正文中以键值对的形式发送用户特性（“声明”）。 特性的序列化方式与 [Microsoft Graph](/graph/api/resources/user#properties) 用户属性类似。 
@@ -113,9 +113,9 @@ Content-type: application/json
 遵循以下步骤将 API 连接器添加到注册用户流。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“Azure 服务”下，选择“Azure AD B2C”。
-4. 选择“用户流”，然后选择要将 API 连接器添加到的用户流。
-5. 选择“API 连接器”，然后选择要在执行用户流中的以下步骤时调用的 API 终结点：
+1. 在“Azure 服务”下，选择“Azure AD B2C”。
+1. 选择“用户流”，然后选择要将 API 连接器添加到的用户流。
+1. 选择“API 连接器”，然后选择要在执行用户流中的以下步骤时调用的 API 终结点：
 
    - 在注册期间与标识提供者进行联合之后
    - **创建用户之前**
@@ -123,7 +123,7 @@ Content-type: application/json
 
    ![为用户流中的步骤选择 API 连接器](media/add-api-connector/api-connectors-user-flow-select.png)
 
-6. 选择“保存”。
+1. 选择“保存”。
 
 只有 **注册并登录（推荐）** 和 **注册（推荐）** 中存在这些步骤，但这些步骤仅适用于体验的注册部分。
 

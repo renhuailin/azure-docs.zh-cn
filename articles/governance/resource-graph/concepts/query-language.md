@@ -3,12 +3,12 @@ title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
 ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8d537d0816ef4d32d6ce85cf363e08bece28ec84
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a66bc9167ff3417b6f88442403232490b20733ff
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536078"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425689"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -35,7 +35,7 @@ Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属�
 |DesktopVirtualizationResources |是 |包括与 `Microsoft.DesktopVirtualization` 相关的资源。 |
 |ExtendedLocationResources |否 |包括与 `Microsoft.ExtendedLocation` 相关的资源。 |
 |GuestConfigurationResources |否 |包括与 `Microsoft.GuestConfiguration` 相关的资源。 |
-|HealthResources|是 |包括与 `Microsoft.ResourceHealth/availabilitystatuses` 相关的资源。 |
+|HealthResources|是（预览版） |包括与 `Microsoft.ResourceHealth/availabilitystatuses` 相关的资源。 |
 |IoTSecurityResources |否 |包括与 `Microsoft.IoTSecurity` 相关的资源。 |
 |KubernetesConfigurationResources |否 |包括与 `Microsoft.KubernetesConfiguration` 相关的资源。 |
 |MaintenanceResources |部分可以，仅限联接到。 （预览版） |包括与 `Microsoft.Maintenance` 相关的资源。 |
