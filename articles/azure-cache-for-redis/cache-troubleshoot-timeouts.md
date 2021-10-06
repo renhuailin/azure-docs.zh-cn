@@ -1,18 +1,18 @@
 ---
 title: 排查 Azure Cache for Redis 超时问题
 description: 了解如何解决 Azure Cache for Redis 的常见超时问题，例如 Redis 服务器修补和 StackExchange.Redis 超时异常。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: b4549978925f2e7016b54ce3004eabadaa8e985f
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: fab4587cc6320cc020a1d92eb1c6fc2f8fa3e3af
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113134341"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537378"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>排查 Azure Cache for Redis 超时问题
 

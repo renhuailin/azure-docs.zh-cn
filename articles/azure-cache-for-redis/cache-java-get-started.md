@@ -1,8 +1,8 @@
 ---
 title: 快速入门：在 Java 中使用 Azure Cache for Redis
 description: 本快速入门将创建一个使用 Azure Redis 缓存的新 Java 应用
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.date: 05/22/2020
 ms.topic: quickstart
 ms.service: cache
@@ -13,12 +13,12 @@ ms.custom:
 - seo-java-september2019
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 107e56ccb105981d112ad765f95c85a884994355
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 65848832acba8107e3a24167c1328c65222b9d3a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234728"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538056"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>快速入门：在 Java 中使用 Azure Cache for Redis
 
@@ -35,9 +35,9 @@ ms.locfileid: "112234728"
 
 ## <a name="create-an-azure-cache-for-redis"></a>创建 Azure Redis 缓存
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
 ## <a name="setting-up-the-working-environment"></a>设置工作环境 
 

@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: 37dde9cf2f105c3e8e8c3dc86e59340c205f9254
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 86d6fa3c7c5552c0bb48844e543c20dc3493b15e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "117029132"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361484"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Azure 德国迁移指南概述
 
@@ -22,7 +22,7 @@ ms.locfileid: "117029132"
 
 德国的两个区域完全独立于全球 Azure。 全球 Azure 的云和德国的云具有自己独立的 Azure Active Directory (Azure AD) 实例。 因此，Azure 德国租户独立于全球 Azure 租户。 本文介绍在 *不同* 租户之间迁移时可用的迁移工具。
 
-有关标识/租户的指南适用于仅限 Azure 的客户。 如果使用适用于 Azure 和 Microsoft 365（或其他 Microsoft 产品）的通用 Azure Active Directory (Azure AD) 租户，则标识迁移会有复杂性，应该首先阅读[从 Microsoft 云 Deutschland 迁移的迁移阶段操作和影响](/microsoft-365/enterprise/ms-cloud-germany-transition-phases?view=o365-worldwide)。 如果有疑问，请与帐户管理员或 Microsoft 支持部门联系。
+有关标识/租户的指南适用于仅限 Azure 的客户。 如果使用适用于 Azure 和 Microsoft 365（或其他 Microsoft 产品）的通用 Azure Active Directory (Azure AD) 租户，则标识迁移会有复杂性，应该首先阅读[从 Microsoft 云 Deutschland 迁移的迁移阶段操作和影响](/microsoft-365/enterprise/ms-cloud-germany-transition-phases)。 如果有疑问，请与帐户管理员或 Microsoft 支持部门联系。
 
 Azure 云解决方案提供商需要采取其他步骤，以在转换到新的德国数据中心区域期间和之后支持客户。 详细了解[其他步骤](/microsoft-365/enterprise/ms-cloud-germany-transition-add-csp)。
 
@@ -104,7 +104,7 @@ Azure 德国迁移文章中使用了以下术语：
 
 ## <a name="next-steps"></a>后续步骤
 
-了解用于迁移以下服务类别中的资源的工具、技术和建议：
+了解有关迁移以下服务类别中的资源的工具、技术和建议：
 
 - [计算](./germany-migration-compute.md)
 - [联网](./germany-migration-networking.md)

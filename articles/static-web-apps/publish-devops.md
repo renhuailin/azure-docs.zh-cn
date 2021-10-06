@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 08/17/2021
 ms.author: apedward
-ms.openlocfilehash: 9df037177aac3dd909795f18c6e903eedd1c98a6
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: bc1e6c5ad5423f48eed50c65237b0d42a4e61d7a
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608867"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236211"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>教程：使用 Azure DevOps 发布 Azure Static Web Apps
 
@@ -34,9 +34,6 @@ ms.locfileid: "122608867"
 
   > [!NOTE]
   > 如果你的存储库中已有一个应用，则可以跳到下一部分。
-  
-  > [!NOTE]
-  > 应用程序必须面向 .NET Core 3.1，管道才能成功。
 
 1. 导航到 Azure Repos 中的存储库。
 

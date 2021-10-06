@@ -3,12 +3,12 @@ title: Azure 视频分析器是什么
 description: 本主题概述了 Azure 视频分析器
 ms.topic: overview
 ms.date: 06/01/2021
-ms.openlocfilehash: 4cf2ba0bb9d5388eb6017fd0717929a3f5410a7d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25f289a26743e92f6c904149e296ba6699fcf8b2
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646905"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389091"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Azure 视频分析器是什么？ （预览版）
  
@@ -22,7 +22,7 @@ Azure 视频分析器提供了一个平台，可用于构建跨越边缘和云�
 
 借助视频分析器，你可以继续将 [CCTV 摄像头](https://en.wikipedia.org/wiki/Closed-circuit_television_camera)与现有[视频管理系统 (VMS)](https://en.wikipedia.org/wiki/Video_management_system) 结合使用，并独立地构建视频分析应用。 视频分析器可与计算机视觉 SDK 和工具包结合使用，以构建先进的 IoT 解决方案。 下图对此进行了说明。
 
-![使用视频分析器开发 IoT 解决方案](./media/overview/product-diagram.svg)
+![使用视频分析器开发 IoT 解决方案](./media/overview/product-diagram.png)
 
 ### <a name="concepts"></a>概念
 

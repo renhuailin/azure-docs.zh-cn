@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfdocs
-ms.openlocfilehash: 7a82dfa03c85ecf8ad5c80a7d037431b18a28fed
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 840ac16914196a238bcf8fdaaa518799dcb104e9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "117028953"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275024"
 ---
 # <a name="azure-germany-storage-services"></a>Azure 德国存储服务
 
@@ -40,7 +40,7 @@ ms.locfileid: "117028953"
 | [Azure 文件](../storage/common/storage-introduction.md#azure-files) | GA | GA |
 | [表存储](../storage/common/storage-introduction.md#table-storage) |GA  |GA |
 | [队列存储](../storage/common/storage-introduction.md#queue-storage) |GA | GA |
-| [冷/热 Blob 存储层](../storage/blobs/storage-blob-storage-tiers.md) |GA |GA |
+| [冷/热 Blob 存储层](../storage/blobs/access-tiers-overview.md) |GA |GA |
 | [存储服务加密](../storage/common/storage-service-encryption.md) |GA |GA |
 | 导入/导出 |NA |NA |
 | StorSimple |NA |NA |

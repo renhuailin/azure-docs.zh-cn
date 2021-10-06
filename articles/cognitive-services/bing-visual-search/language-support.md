@@ -3,19 +3,17 @@ title: 语言支持 - 必应视觉搜索 API
 titleSuffix: Azure Cognitive Services
 description: 必应视觉搜索 API 支持的自然语言、国家/地区和区域列表。 必应视觉搜索 API 支持超过 36 个国家/地区，其中很多国家/地区具有多种语言。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: scottwhi
-ms.openlocfilehash: 6d93b6d024fc966f3b260602f4798a2d77669a35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1362f9cf3963416853cf5933ee622d204578d33
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96501152"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669524"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>必应视觉搜索 API 的语言和区域支持
 
@@ -103,7 +101,7 @@ ms.locfileid: "96501152"
 |印度尼西亚|英语|en-ID|
 |意大利|意大利语|it-IT|
 |日本|日语|ja-JP|
-|韩国|朝鲜语|ko-KR|
+|韩国|韩语|ko-KR|
 |马来西亚|英语|en-MY|
 |墨西哥|西班牙语|es-MX|
 |荷兰|荷兰语|nl-NL|

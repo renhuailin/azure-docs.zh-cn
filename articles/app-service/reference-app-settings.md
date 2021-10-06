@@ -3,12 +3,12 @@ title: 环境变量和应用设置参考
 description: 描述常用的环境变量，以及可以通过应用设置修改的环境变量。
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: b4be8fde0e771414d8b637af0c2aed33eeb48123
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d3c34f64aa4e13fe0dce371d9848f6422e7b1f63
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816022"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399805"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Azure 应用服务中的环境变量和应用设置
 
@@ -571,6 +571,9 @@ WEBSITE_AUTH_FILE_PATH
 | `WEBSITE_PUSH_TAG_WHITELIST` | 只读。 包含通知注册中的标记。 |
 | `WEBSITE_PUSH_TAGS_REQUIRING_AUTH` | 只读。 包含通知注册中需要用户身份验证的一系列标记。 |
 | `WEBSITE_PUSH_TAGS_DYNAMIC` | 只读。 包含通知注册中自动添加的一系列标记。 | 
+
+>[!NOTE]
+> 本文包含对术语“允许列表”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 <!-- 
 ## WellKnownAppSettings

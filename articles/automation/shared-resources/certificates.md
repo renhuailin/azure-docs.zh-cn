@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 788f15cd1edad228e695e6e87f5b630b8e4fdf55
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: daed24e27c1dec0a6dec1bf3b12f8290078027b1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834437"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274778"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>在 Azure 自动化中管理证书
 
@@ -22,7 +22,7 @@ Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationC
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>用于访问证书的 PowerShell cmdlet
 
-下表中的 cmdlet 使用 PowerShell 创建和管理自动化证书。 它们作为 [Az 模块](modules.md#az-modules)的一部分提供。
+下表中的 cmdlet 使用 PowerShell 创建和管理自动化证书。 它们作为 Az 模块的一部分提供。
 
 |Cmdlet |说明|
 | --- | ---|

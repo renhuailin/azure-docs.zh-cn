@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da37816b68e9984fdf801e3e84d50a57bf290e96
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94693743"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273545"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将外部负载均衡器移到另一个区域
 
@@ -289,7 +289,7 @@ ms.locfileid: "94693743"
                     }
                 ]
         ```
-       有关负载均衡规则的信息，请参阅[什么是 Azure 负载均衡器？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。
+       有关负载均衡规则的信息，请参阅[什么是 Azure 负载均衡器？](load-balancer-overview.md)。
 
     * 探测。 可以通过在 template.json 文件的 **probes** 节中添加或删除条目，在配置中添加或删除负载均衡器的探测：
 
@@ -309,7 +309,7 @@ ms.locfileid: "94693743"
                     }
                 ],
         ```
-       有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+       有关详细信息，请参阅[负载均衡器运行状况探测](load-balancer-custom-probe-overview.md)。
 
     * 入站 NAT 规则。 可以通过在 template.json 文件的 **inboundNatRules** 节中添加或删除条目，来添加或删除负载均衡器的入站 NAT 规则：
 
@@ -357,7 +357,7 @@ ms.locfileid: "94693743"
             }
         }
         ```
-        有关入站 NAT 规则的信息，请参阅[什么是 Azure 负载均衡器？](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。
+        有关入站 NAT 规则的信息，请参阅[什么是 Azure 负载均衡器？](load-balancer-overview.md)。
 
     * 出站规则。 可以通过编辑 template.json 文件中的 **outboundRules** 属性，在配置中添加或删除出站规则：
 

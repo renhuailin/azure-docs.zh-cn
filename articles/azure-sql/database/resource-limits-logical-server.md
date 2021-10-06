@@ -10,13 +10,13 @@ ms.topic: reference
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 09/28/2021
-ms.openlocfilehash: e9db19643252a94513be57c2cd3a18ee6038b742
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/01/2021
+ms.openlocfilehash: 67983b60457d652a1e4de71c6655f7eedae40542
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218161"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389753"
 ---
 # <a name="resource-management-in-azure-sql-database"></a>Azure SQL Database 中的资源管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "129218161"
 | :--- | :--- |
 | 每个[逻辑服务器](logical-servers.md)的数据库数 | 5000 |
 | 某一区域中每个订阅的逻辑服务器默认数量 | 20 |
-| 某一区域中每个订阅的逻辑服务器最大数量 | 200 |
+| 某一区域中每个订阅的逻辑服务器最大数量 | 250 |
 | 每个逻辑服务器的 DTU/eDTU 配额 | 54,000 |
 | 每个逻辑服务器的 vCore 配额 | 540 |
 | 每个逻辑服务器的最大弹性池数 | 受限于 DTU 或 vCore 数。 例如，如果每个池是 1000 个 DTU，则一个服务器可以支持 54 个池。|

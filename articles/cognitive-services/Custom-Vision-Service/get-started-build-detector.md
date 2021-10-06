@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 05/24/2021
+ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像识别应用, 自定义视觉
-ms.openlocfilehash: 417fda9fac411221212aa472af420f374ffb729f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 95e1e744db159e53e950aa8c1fc0bd52f10214de
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453767"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359331"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>快速入门：使用“自定义视觉”网站生成对象检测器
 

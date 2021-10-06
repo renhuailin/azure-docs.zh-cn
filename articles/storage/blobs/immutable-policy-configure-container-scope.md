@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2aeedab7e8ec7204137ec12fdcc049c0ad01881f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3a28699af7167bfbc6ffd9a00d64b4fbfd593693
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606278"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389373"
 ---
 # <a name="configure-immutability-policies-for-containers"></a>为容器配置不可变性策略
 
@@ -60,8 +60,8 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> `
 若要使用 Azure CLI 在容器上配置基于时间的保留策略，请调用 [az storage container immutability-policy create](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_create) 命令，并提供保留间隔（天）。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```azurecli
-az storage container immutability-policy \
-    --resource-group <resource-group>
+az storage container immutability-policy create \
+    --resource-group <resource-group> \
     --account-name <storage-account> \
     --container-name <container> \
     --period 10
@@ -121,14 +121,14 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group
 若要使用 Azure CLI 修改已解锁的基于时间的保留策略，请调用 [az storage container immutability-policy extend](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_extend) 命令，并提供新的保留间隔（天）。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```azurecli
-$etag=$(az storage container immutability-policy show /
-        --account-name <storage-account> /
-        --container-name <container> /
-        --query etag /
+$etag=$(az storage container immutability-policy show \
+        --account-name <storage-account> \
+        --container-name <container> \
+        --query etag \
         --output tsv)
 
-az storage container immutability-policy \
-    --resource-group <resource-group>
+az storage container immutability-policy extend \
+    --resource-group <resource-group> \
     --account-name <storage-account> \
     --container-name <container> \
     --period 21 \
@@ -176,16 +176,16 @@ Lock-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> 
 若要使用 Azure CLI 锁定策略，请先调用 [az storage container immutability-policy show](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_show) 命令以检索策略的 ETag。 接下来，调用 [az storage container immutability-policy lock](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_lock) 命令并传入 ETag 值以锁定策略。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```azurecli
-$etag=$(az storage container immutability-policy show /
-        --account-name <storage-account> /
-        --container-name <container> /
-        --query etag /
+$etag=$(az storage container immutability-policy show \
+        --account-name <storage-account> \
+        --container-name <container> \
+        --query etag \
         --output tsv)
 
-az storage container immutability-policy lock /
-    --resource-group <resource-group> /
-    --account-name <storage-account> /
-    --container-name <container> /
+az storage container immutability-policy lock \
+    --resource-group <resource-group> \
+    --account-name <storage-account> \
+    --container-name <container> \
     --if-match $etag
 ```
 
@@ -235,20 +235,20 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName <resource-group> `
 若要使用 PowerShell 配置容器上的法定保留，请调用 [az storage container legal-hold set](/cli/azure/storage/container/legal-hold#az_storage_container_legal_hold_set) 命令。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```azurecli
-az storage container legal-hold set /
-    --tags tag1 tag2 /
-    --container-name <container> /
-    --account-name <storage-account> /
+az storage container legal-hold set \
+    --tags tag1 tag2 \
+    --container-name <container> \
+    --account-name <storage-account> \
     --resource-group <resource-group>
 ```
 
 若要清除合法保留，请调用 [az storage container legal-hold clear](/cli/azure/storage/container/legal-hold#az_storage_container_legal_hold_clear) 命令：
 
 ```azurecli
-az storage container legal-hold clear /
-    --tags tag1 tag2 /
-    --container-name <container> /
-    --account-name <storage-account> /
+az storage container legal-hold clear \
+    --tags tag1 tag2 \
+    --container-name <container> \
+    --account-name <storage-account> \
     --resource-group <resource-group>
 ```
 

@@ -7,22 +7,22 @@ ms.custom: seodec18, devx-track-azurecli
 ms.author: sumuth
 author: mksuni
 ms.date: 08/09/2021
-ms.openlocfilehash: db8d8e5faaca0941e8f009a2193301cd2207669a
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: cbb44e7a3b48ec1fae928ac4de14b30b939cf975
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515777"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361708"
 ---
 # <a name="azure-pipelines-for-azure-database-for-mysql-flexible-server"></a>适用于 Azure Database for MySQL 灵活服务器的 Azure Pipelines
 
 每次使用 Azure Pipelines 成功生成管道后，便可将数据库更新自动部署到 Azure Database for MySQL 灵活服务器。  可以通过 Azure CLI 任务，并针对数据库使用 SQL 文件或内联 SQL 脚本来更新数据库。 该任务可在跨平台代理上运行，而这些代理则在 Linux、macOS 或 Windows 操作系统上运行。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 一个 Azure 帐户。 如果没有帐户，可[获取一个免费试用帐户](https://azure.microsoft.com/free/)。
 
-- 到你 Azure 帐户的 [Azure 资源管理器服务连接](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)
+- 到你 Azure 帐户的 [Azure 资源管理器服务连接](/azure/devops/pipelines/library/connect-to-azure)
 - Microsoft 托管代理已预安装 Azure CLI。 但是，如果使用的是专用代理，请在运行生成和发布代理的计算机上[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果代理已在安装了 Azure CLI 的计算机上运行，请重启代理，确保所有相关阶段变量得到更新。
   
 此快速入门使用以下任意指南中创建的资源作为起点：
@@ -96,11 +96,11 @@ ms.locfileid: "122515777"
 |powerShellIgnoreLASTEXITCODE| （可选）若为 false，则行 <code>if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }</code> 将追加到脚本末尾。 这将导致外部命令中的最后一个退出代码作为 PowerShell 的退出代码进行传播。 若为 true，该行将不会追加到脚本末尾。 默认值为 false。 |
 
 
-若在使用 CLI 任务时遇到问题，请参阅[如何排查生成和发布问题](/azure/devops/pipelines/troubleshooting/troubleshooting?view=azure-devops)。
+若在使用 CLI 任务时遇到问题，请参阅[如何排查生成和发布问题](/azure/devops/pipelines/troubleshooting/troubleshooting)。
 
 ## <a name="next-steps"></a>后续步骤 
 以下是要部署到 Azure 的一些相关任务。 
 
-- [Azure 资源组部署](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops)
-- [Azure Web 应用部署](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment?view=azure-devops)
+- [Azure 资源组部署](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
+- [Azure Web 应用部署](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment)
 

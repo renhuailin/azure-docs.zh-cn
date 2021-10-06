@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: d97df947309f9ccc9886e45878cfc91ea6423b23
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5fc2fbf2b0f55f356f6a2f5c4a3eb0fd2c527449
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590359"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545615"
 ---
 # <a name="use-azure-storage-explorer-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理 ACL
 
@@ -30,6 +30,12 @@ ms.locfileid: "128590359"
 - 已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
 
 - 已在本地计算机上安装了 Azure 存储资源管理器。 若要安装适用于 Windows、Macintosh 或 Linux 的 Azure 存储资源管理器，请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+
+- 必须具备以下安全权限中的一种：
+
+  - 你的用户标识在目标容器、存储帐户、父资源组或订阅范围中已分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色。
+
+  - 你是目标容器、目录或 Blob 的所有者用户，并且你计划在其中应用 ACL 设置。
 
 > [!NOTE]
 > 在使用 Azure Data Lake Storage Gen2 时，存储资源管理器会使用 Blob (blob) 和 Data Lake Storage Gen2 (dfs) [终结点](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage)。 如果使用专用终结点配置对 Azure Data Lake Storage Gen2 的访问，请确保为存储帐户创建两个专用终结点：一个具有目标子资源 `blob`，另一个具有目标子资源 `dfs`。

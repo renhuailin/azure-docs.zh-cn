@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe5f9987cb99aa90d1452b4f442e326d4e95bcee
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: 3c4ea1a6b66980081597f301f22243bfd7397630
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687796"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388330"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -273,8 +273,8 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
  在出现紧急情况时，如果组织以前未实施任何缓解或应急计划，但已经使用条件访问策略来强制执行 MFA，则按照[用户锁定应急计划](#contingencies-for-user-lockout)部分中的建议操作。
 如果你的组织使用的是每用户 MFA 旧策略，则可以考虑以下替代方法：
 
-1. 如果有公司网络出站 IP 地址，则可以将它们添加为受信任的 IP，以便仅对公司网络启用身份验证。
-   1. 如果没有出站 IP 地址清单，或需要在公司网络内外均启用访问，则可通过指定 0.0.0.0/1 和 128.0.0.0/1 将整个 IPv4 地址空间添加为可信 IP。
+- 如果有公司网络出站 IP 地址，则可以将它们添加为受信任的 IP，以便仅对公司网络启用身份验证。
+- 如果没有出站 IP 地址清单，或需要在公司网络内外均启用访问，则可通过指定 0.0.0.0/1 和 128.0.0.0/1 将整个 IPv4 地址空间添加为可信 IP。
 
 >[!IMPORTANT]
  > 如果通过扩大受信任 IP 地址的范围来取消阻止访问，则不会生成与 IP 地址关联的风险检测（例如，无法实现的行程或不熟悉的位置）。

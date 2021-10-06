@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d7424b6ad88bc7e77a4b7d191feb54658f67ff21
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: d2fe9cecae13cdd6ff82256466ff1fa045b73189
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220670"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569307"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -113,11 +113,11 @@ ms.locfileid: "114220670"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
+| publisher | Microsoft.Azure.KeyVault | 字符串 |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| pollingIntervalInS | 3600 | 字符串 |
+| certificateStoreName | MY | 字符串 |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine 或 CurrentUser（区分大小写） | string |
 | requireInitialSync | 是 | boolean |
@@ -288,14 +288,14 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
 #### <a name="logs-and-configuration"></a>日志和配置
-Key Vault VM 扩展日志仅存在于本地 VM 上，并且在进行故障排除时最能提供信息
+Key Vault VM 扩展日志仅存在于本地 VM 上，在进行故障排除时能提供最多信息
 
 |位置|说明|
 |--|--|
-| C:\WindowsAzure\Logs\WaAppAgent.log | 显示进行扩展更新的时间。 |
-| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\ | 显示证书下载的状态。 下载位置始终为 Windows 计算机的 MY 存储位置 (certlm.msc)。 |
-| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\RuntimeSettings\ |   Key Vault VM 扩展服务日志显示 akvvm_service 服务的状态。 |
-| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\Status\  | Key Vault VM 扩展服务的配置和二进制文件。 |
+| C:\WindowsAzure\Logs\WaAppAgent.log | 显示何时对扩展进行更新。 |
+| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\ | 显示证书下载的状态。 下载位置将始终是 Windows 计算机的“我的存储”(certlm.msc)。 |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\RuntimeSettings\ | Key Vault VM 扩展服务日志显示 akvvm_service 服务的状态。 |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\Status\    | Key Vault VM 扩展服务的配置和二进制文件。 |
 |||  
 
 

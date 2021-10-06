@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 194c37d38242e3376516b660dd37071d128b77fa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1ba1a97acfe2345ed5632ae6f84caacc525f13e4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128650052"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544804"
 ---
 # <a name="delete-an-azure-billing-payment-method"></a>删除 Azure 账单付款方式
 
@@ -71,7 +71,7 @@ ms.locfileid: "128650052"
 1. 导航回到“成本管理 + 计费” > “计费对象信息” > “付款方式”  。 选择“拆离”。 在“拆离默认付款方式”页面的底部，选择“拆离”。
 
 > [!NOTE]
-> - 取消订阅后，最多可能需要 90 天才能删除该订阅。 如果希望缩短等待时间，请打开 Azure 支持请求，请求立即删除订阅。
+> - 取消订阅后，最多可能需要 90 天才能删除该订阅。
 > - 只有结算了计费对象信息之前所有的费用后，才能删除付款方式。 如果还在有效的计费周期内，则必须等到计费周期结束后才能删除付款方式。 请确保在等待计费周期结束的期间满足其他所有拆离条件。
 
 ## <a name="delete-a-mosp-payment-method"></a>删除 MOSP 付款方式
@@ -95,7 +95,7 @@ ms.locfileid: "128650052"
 1. 导航回到“成本管理 + 计费” > “计费对象信息” > “付款方式”，然后删除付款方式  。
 
 > [!NOTE]
-> 取消订阅后，最多可能需要 90 天才能删除该订阅。 如果希望缩短等待时间，请打开 Azure 支持请求，请求立即删除订阅。
+> 取消订阅后，最多可能需要 90 天才能删除该订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

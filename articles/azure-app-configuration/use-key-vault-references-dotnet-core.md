@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: e02ac9d6abd3358218f268fb3da1e99b90fac7c5
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 9f095bbadf8f395b809d46c8beea5f6665932d12
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568075"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357916"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用 Key Vault 引用
 
@@ -203,7 +203,7 @@ ms.locfileid: "113568075"
 
 Azure 应用程序配置不会访问你的密钥保管库。 应用将直接读取密钥保管库，因此你需要为应用授予对密钥保管库中机密的读取访问权限。 这样，机密始终会保留在你的应用中。 可以使用[密钥保管库访问策略](../key-vault/general/assign-access-policy-portal.md)或 [Azure 基于角色的访问控制](../key-vault/general/rbac-guide.md)来授予访问权限。
 
-在上面的代码中使用 `DefaultAzureCredential`。 它是一个自动尝试多个凭据类型（如 `EnvironmentCredential`、`ManagedIdentityCredential`、`SharedTokenCacheCredential` 和 `VisualStudioCredential`）的聚合令牌凭据。 有关详细信息，请参阅 [DefaultAzureCredential 类](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet)。 可以显式将 `DefaultAzureCredential` 替换为任何凭据类型。 但是，通过使用 `DefaultAzureCredential`，你可以本地和 Azure 环境中运行相同的代码。 例如，你可以授予对密钥保管库的凭据访问权限。 使用 Visual Studio 进行本地开发时，`DefaultAzureCredential` 将自动回退到 `SharedTokenCacheCredential` 或 `VisualStudioCredential`。
+在上面的代码中使用 `DefaultAzureCredential`。 它是一个自动尝试多个凭据类型（如 `EnvironmentCredential`、`ManagedIdentityCredential`、`SharedTokenCacheCredential` 和 `VisualStudioCredential`）的聚合令牌凭据。 有关详细信息，请参阅 [DefaultAzureCredential 类](/dotnet/api/azure.identity.defaultazurecredential)。 可以显式将 `DefaultAzureCredential` 替换为任何凭据类型。 但是，通过使用 `DefaultAzureCredential`，你可以本地和 Azure 环境中运行相同的代码。 例如，你可以授予对密钥保管库的凭据访问权限。 使用 Visual Studio 进行本地开发时，`DefaultAzureCredential` 将自动回退到 `SharedTokenCacheCredential` 或 `VisualStudioCredential`。
 
 或者，可以设置 AZURE_TENANT_ID、AZURE_CLIENT_ID 和 AZURE_CLIENT_SECRET 环境变量，然后，`DefaultAzureCredential` 将使用你通过 `EnvironmentCredential` 获取的客户端机密对密钥保管库进行身份验证。 将应用部署到启用了托管标识的 Azure 服务（例如 Azure 应用服务、Azure Kubernetes 服务或 Azure 容器实例）后，为 Azure 服务的托管标识授予对密钥保管库的访问权限。 当应用在 Azure 中运行时，`DefaultAzureCredential` 会自动使用 `ManagedIdentityCredential`。 可以使用同一个托管标识对应用程序配置和密钥保管库进行身份验证。 有关详细信息，请参阅[如何使用托管标识访问应用程序配置](howto-integrate-azure-managed-service-identity.md)。
 

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: b9067e2f78c8098d4a21263ac89caf03da631274
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88cf9236ca33eddd9f86a60c210aae253f8d9c2c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92677488"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361019"
 ---
 # <a name="query-ingested-telemetry-data"></a>查询引入的遥测数据
 
@@ -118,7 +118,7 @@ FarmBeats 利用 [Azure 时序见解 (TSI)](https://azure.microsoft.com/services
 1. 转到“Azure 门户” > “FarmBeats DataHub 资源组”，选择“时序见解”环境 (tsi-xxxx) >“数据访问策略”   。 添加拥有“读取者”或“参与者”访问权限的用户。
 2. 转到“时序见解”环境 (tsi-xxxx) 的“概述”页，选择“时序见解资源管理器 URL”  。 现在，可将引入的遥测数据可视化。
 
-除了存储、查询和可视化遥测数据以外，TSI 还支持集成到 Power BI 仪表板。 有关详细信息，请参阅[此文]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
+除了存储、查询和可视化遥测数据以外，TSI 还支持集成到 Power BI 仪表板。 有关详细信息，请参阅[此文](../../time-series-insights/how-to-connect-power-bi.md)
 
 ## <a name="next-steps"></a>后续步骤
 

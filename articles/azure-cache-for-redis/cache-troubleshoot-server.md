@@ -1,17 +1,17 @@
 ---
 title: 排查 Azure Cache for Redis 服务器端问题
 description: 了解如何解决 Azure Cache for Redis 的常见服务器端问题，例如内存压力、CPU 过高、命令运行时间过长或带宽限制。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a3eb35ada01612d3a3298b1899d3e9fb7101684b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9c50ac01eb95672b946daf9916f83743d2156b01
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735882"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537402"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>排查 Azure Cache for Redis 服务器端问题
 

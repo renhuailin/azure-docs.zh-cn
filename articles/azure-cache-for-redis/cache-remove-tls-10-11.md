@@ -1,17 +1,17 @@
 ---
 title: 删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 description: 了解如何在与 Azure Cache for Redis 通信时从应用程序中删除 TLS 1.0 和 1.1
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.author: yegu
-ms.openlocfilehash: f9c6f8cc3c973d3172166514815018979f744173
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: cauribeg
+ms.openlocfilehash: 8af62a70d7c33a146c6f749be057f41a500ada58
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744926"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537617"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 
@@ -23,7 +23,7 @@ ms.locfileid: "121744926"
 * **阶段 2：** 我们将停止支持 TLS 1.1 和 TLS 1.0。 在此更改之后，应用程序必须使用 TLS 1.2 或更高版本才能与缓存通信。 如果我们迁移 Azure Cache for Redis 服务以仅支持 TLS 1.2 或更高版本，则该服务应可用。
 
   > [!NOTE]
-  > 阶段 2 由于 COVID-19 而推迟。 我们强烈建议你立即开始规划此更改，并主动更新客户端以支持 TLS 1.2 或更高版本。 
+  > 阶段 2 因新冠疫情而推迟了。 强烈建议你立即开始规划此更改，并主动更新客户端以支持 TLS 1.2 或更高版本。 
   >
 
 在此更改中，我们还将删除对不安全的较早加密套件的支持。 如果为缓存配置最低的版本 TLS 1.2，则受支持的加密套件只有以下套件：
@@ -43,7 +43,7 @@ ms.locfileid: "121744926"
 | Azure 中国世纪互联 |  2020 年 3 月 13 日    | 由于 COVID-19 而推迟  |
 
 > [!NOTE]
-> 阶段 2 由于 COVID-19 而推迟。 确定具体日期后，本文将更新。
+> 阶段 2 因新冠疫情而推迟了。 确定具体日期后，本文将更新。
 >
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>检查应用程序是否已合规

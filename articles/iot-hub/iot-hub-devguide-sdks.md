@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 823cb1ae9afb6af8b8ed0446e58930fa62ee7f07
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e8bfc95d80aa58b9781258c1b87902c2e8d0c37f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740485"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458579"
 ---
 # <a name="azure-iot-hub-sdks"></a>Azure IoT 中心 SDK
 
@@ -41,7 +41,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 | 平台  | 程序包 | 代码存储库 | 示例 |  参考 |
 |---|---|---|---|---|
 | .NET | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp) | [示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) | [引用](/dotnet/api/microsoft.azure.devices) |
-| Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/pnp-service-sample) | [引用](/java/api/com.microsoft.azure.sdk.iot.service) |
+| Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/main/service/iot-service-samples/pnp-service-sample) | [引用](/java/api/com.microsoft.azure.sdk.iot.service) |
 | 节点 | [npm](https://www.npmjs.com/package/azure-iothub) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples) | [引用](/javascript/api/azure-iothub/) |
 | Python | [pip](https://pypi.org/project/azure-iot-hub) | [GitHub](https://github.com/Azure/azure-iot-sdk-python) | [示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub/samples) | [引用](/python/api/azure-iot-hub) |
 | Node.js | [npm](https://www.npmjs.com/package/azure-iot-common) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples/javascript) | [引用](/javascript/api/azure-iothub/) |
@@ -59,7 +59,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 | -----|-----|-----|-----|
 | .NET|[设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/)、[服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) |[GitHub](https://github.com/Azure/azure-iot-sdk-csharp/)|[引用](/dotnet/api/microsoft.azure.devices.provisioning.client) |
 | C|[apt-get、MBED、Arduino IDE 或 iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)|[GitHub](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning\_client)|[引用](/azure/iot-hub/iot-c-sdk-ref/) |
-| Java|[Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk)|[GitHub](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)|[引用](/java/api/com.microsoft.azure.sdk.iot.provisioning.device) |
+| Java|[Maven](https://github.com/Azure/azure-iot-sdk-java/blob/main/doc/java-devbox-setup.md#for-the-service-sdk)|[GitHub](https://github.com/Azure/azure-iot-sdk-java/blob/main/provisioning)|[引用](/java/api/com.microsoft.azure.sdk.iot.provisioning.device) |
 | Node.js|[设备 SDK](https://badge.fury.io/js/azure-iot-provisioning-device)、[服务 SDK](https://badge.fury.io/js/azure-iot-provisioning-service) |[GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)|[引用](/javascript/api/overview/azure/iothubdeviceprovisioning) |
 | Python|[设备 SDK](https://pypi.org/project/azure-iot-device/)、[服务 SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/)|[GitHub](https://github.com/Azure/azure-iot-sdk-python)|[设备引用](/python/api/azure-iot-device/azure.iot.device.provisioningdeviceclient)、[服务引用](/python/api/azure-mgmt-iothubprovisioningservices) |
 

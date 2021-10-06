@@ -1,17 +1,17 @@
 ---
 title: 启用适用于 Azure Cache for Redis 的区域冗余
 description: 了解如何为高级层和企业层 Azure Cache for Redis 实例设置区域冗余
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 522cf0ad115e1149d7746ecadef96ae9494a1d8c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fb68ea362c5b91e5c60578f63c752d1982495efb
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744943"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538073"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>启用适用于 Azure Cache for Redis 的区域冗余
 本文将介绍如何使用 Azure 门户配置区域冗余 Azure 缓存实例。

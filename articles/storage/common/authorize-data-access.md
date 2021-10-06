@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9896cdaf82ca508c5e6a1a444564403ef0f7e1eb
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 490b0b109e4b89b01b748d2d6aa71b4477f8a8ef
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765465"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560582"
 ---
 # <a name="authorize-access-to-data-in-azure-storage"></a>授权访问 Azure 存储中的数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "113765465"
 - 用于 blob、文件、队列和表的 **共享密钥授权**。 使用共享密钥的客户端会随使用存储帐户访问密钥签名的每个请求传递一个标头。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key/)。
 
 - 用于 blob、文件、队列和表的 **共享访问签名**。 共享访问签名 (SAS) 针对存储帐户中的资源提供有限的委托访问权限。 通过对签名的有效时间间隔或对它授予的权限添加约束，可灵活地管理访问权限。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
-- 用于容器和 blob 的 **匿名公共读取访问**。 无需授权。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/anonymous-read-access-configure.md)。  
+- 用于容器和 blob 的 **匿名公共读取访问**。 无需授权。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/anonymous-read-access-configure.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

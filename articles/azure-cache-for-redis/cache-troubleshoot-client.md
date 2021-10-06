@@ -1,17 +1,17 @@
 ---
 title: 排查 Azure Cache for Redis 客户端问题
 description: 了解如何解决 Azure Cache for Redis 的常见客户端问题，例如 Redis 客户端内存压力、流量突发、高 CPU、带宽受限、大型的请求或大型的响应大小。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: da61064fb65db85ebb41b441c228e9c77a1db6fc
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: a41329da9171014b0495498f8757007dbef008ef
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136519"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537421"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>排查 Azure Cache for Redis 客户端问题
 

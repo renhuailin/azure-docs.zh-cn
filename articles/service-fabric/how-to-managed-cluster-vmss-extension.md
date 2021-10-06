@@ -3,12 +3,12 @@ title: 将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类
 description: 下面介绍如何将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型
 ms.topic: article
 ms.date: 8/02/2021
-ms.openlocfilehash: 8755eb7551dd7f7e572632ee50eb57467f675822
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 3b0f15f2f83ddad0b8251642fc63db79581a5a97
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866389"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129547050"
 ---
 # <a name="virtual-machine-scale-set-extension-support-on-service-fabric-managed-cluster-node-types"></a>Service Fabric 托管群集节点类型上的虚拟机规模集扩展支持
 
@@ -21,34 +21,36 @@ Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的�
 
 ```json
 {
-    "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-    "apiVersion": "[variables('sfApiVersion')]",
-    "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
-    "dependsOn": [
-        "[concat('Microsoft.ServiceFabric/managedclusters/', parameters('clusterName'))]"
-    ],
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "isPrimary": true,
-        "vmInstanceCount": 3,
-        "dataDiskSizeGB": 100,
-        "vmSize": "Standard_D2",
-        "vmImagePublisher": "MicrosoftWindowsServer",
-        "vmImageOffer": "WindowsServer",
-        "vmImageSku": "2019-Datacenter",
-        "vmImageVersion": "latest",
-        "vmExtensions": [{
-            "name": "ExtensionA",
-            "properties": {
-                "publisher": "ExtensionA.Publisher",
-                "type": "KeyVaultForWindows",
-                "typeHandlerVersion": "1.0",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                }
-            }
-        }]
-    }
+  "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+  "apiVersion": "[variables('sfApiVersion')]",
+  "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
+  "dependsOn": [
+    "[concat('Microsoft.ServiceFabric/managedclusters/', parameters('clusterName'))]"
+  ],
+  "location": "[resourceGroup().location]",
+  "properties": {
+    "isPrimary": true,
+    "vmInstanceCount": 3,
+    "dataDiskSizeGB": 100,
+    "vmSize": "Standard_D2",
+    "vmImagePublisher": "MicrosoftWindowsServer",
+    "vmImageOffer": "WindowsServer",
+    "vmImageSku": "2019-Datacenter",
+    "vmImageVersion": "latest",
+    "vmExtensions": [
+      {
+        "name": "ExtensionA",
+        "properties": {
+          "publisher": "ExtensionA.Publisher",
+          "type": "KeyVaultForWindows",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 

@@ -1,19 +1,17 @@
 ---
 title: 排查常见的 Azure Automanage 加入错误
 description: 常见的 Automanage 加入错误以及这些错误的故障排除方法
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.author: alsin
-ms.openlocfilehash: 7acca746acf17a6ef6dd837907a159cddb20be10
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 95d2f429c1ecb308d65aa01be0a6f3fa226b6168
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113004189"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458162"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>排查常见的 Automanage 加入错误
 Automanage 可能无法将计算机加入服务中。 本文档介绍如何排查部署失败的问题，分享部署失败的一些常见原因，并描述可能的后续缓解步骤。

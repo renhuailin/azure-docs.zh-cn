@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: db9b8b71ddbdccb2cdc4893ce7ea041304bafba9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 360a634104b7735a90cbae4b41eae9723b723e2e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776607"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532621"
 ---
 # <a name="create-a-capacity-reservation-preview"></a>创建容量预留（预览版）
 
@@ -26,11 +26,6 @@ ms.locfileid: "124776607"
 > [!IMPORTANT]
 > 容量预留功能目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-
-## <a name="register-for-capacity-reservation"></a>注册容量预留 
-
-必须先[注册预览版订阅](capacity-reservation-overview.md#register-for-capacity-reservation)，然后才能使用容量预留功能。 注册可能需要几分钟才能完成。 可以使用 Azure CLI 或 PowerShell 来完成功能注册。
 
 
 ## <a name="considerations"></a>注意事项

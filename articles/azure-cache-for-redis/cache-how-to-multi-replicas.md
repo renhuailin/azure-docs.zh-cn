@@ -1,17 +1,17 @@
 ---
 title: 将副本添加到 Azure Cache for Redis
 description: 了解如何向 Azure Cache for Redis 高级层实例添加更多副本
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 373928398595beb7e6564e3d290fa1ec9f702691
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ca535f7f30db66bf527c00b737dc43ee1a7f1603
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828926"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538242"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis"></a>将副本添加到 Azure Cache for Redis
 
@@ -35,7 +35,7 @@ Azure Cache for Redis 标准和高级层通过将每个缓存托管在两个专�
 
 1. 在“基本信息”页面上，配置新缓存的设置。
 
-    | 设置      | 建议的值  | 描述 |
+    | 设置      | 建议的值  | 说明 |
     | ------------ |  ------- | -------------------------------------------------- |
     | **订阅** | 选择订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 |
     | **资源组** | 选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 |

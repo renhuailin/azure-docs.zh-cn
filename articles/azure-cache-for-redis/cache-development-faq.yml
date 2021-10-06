@@ -2,18 +2,18 @@
 metadata:
   title: Azure Cache for Redis 开发的常见问题解答
   description: 了解帮助你开发 Azure Redis 缓存的常见问题的解答
-  author: yegu-ms
-  ms.author: yegu
+  author: curib
+  ms.author: cauribeg
   ms.service: cache
   ms.topic: conceptual
   ms.custom: devx-track-csharp
   ms.date: 08/06/2020
-  ms.openlocfilehash: 5963fe660a3fed4b084d94abb92b172566988c9f
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 9f033add3a8d0de5320ec7df745242b09d21cd97
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128577026"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129538775"
 title: Azure Cache for Redis 开发的常见问题解答
 summary: 本文提供有关如何开发 Azure Redis 缓存的常见问题的解答。
 sections:

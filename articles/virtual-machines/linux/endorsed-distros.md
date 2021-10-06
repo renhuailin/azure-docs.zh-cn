@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: guybo
-ms.openlocfilehash: b9262d512ed27419bab38b3ad26e1bae8cddee0d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e8694e218bdab1085a35ed65f7a8b1d09d7b0fc4
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696187"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455619"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 认可的 Linux 分发版
 
@@ -75,7 +75,7 @@ Microsoft 为 CoreOS 用户提供了两 (2) 个迁移通道。
 credativ 是一家独立的咨询和服务公司，致力于通过免费软件开发和实施专业解决方案。 credativ 是获得国际认可的开源领域专业先行者，为许多公司的 IT 部门提供支持。 credativ 正在联合 Microsoft 准备 Debian 映像。 这些映像经过专门的设计，可以在 Azure 上运行并可通过该平台轻松进行管理。 credativ 还会通过其开源支持中心为 Azure 的 Debian 映像的维护和更新提供长期支持。
 
 ### <a name="kinvolk"></a>Kinvolk
-[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+[https://www.flatcar-linux.org/](https://www.flatcar-linux.org/)
 
 Kinvolk 是开发 Flatcar Container Linux 的公司，延续了最初的 CoreOS 愿景，为容器化应用程序提供最小、不可变且自动更新的基础。 作为最小发行版，Flatcar 只包含部署容器所需的包。 它的不可变文件系统保证了一致性和安全性，同时它的自动更新功能使你能够始终使用最新的安全修补程序。 
 

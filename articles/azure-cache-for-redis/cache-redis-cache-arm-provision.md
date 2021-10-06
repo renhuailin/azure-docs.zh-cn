@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 资源管理器模板部署 Azure Cache for Redis
 description: 了解如何使用 Azure 资源管理器模板（ARM 模板）部署 Azure Cache for Redis 资源。 为常见方案提供模板。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/28/2021
-ms.openlocfilehash: e9c804868c64d84b8cbe98093f75c4a45d568ec3
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1f284169387209f3783a9621419bf17ea8240619
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458751"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537697"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Redis 缓存
 
@@ -22,7 +22,7 @@ ms.locfileid: "112458751"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cache%2Fredis-cache%2Fazuredeploy.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cache%2Fredis-cache%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "112458751"
 适用于新[高级层](cache-overview.md#service-tiers)的资源管理器模板也已推出。
 
 * [通过群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/redis-premium-cluster-diagnostics/)
-* [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+* [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/redis-premium-persistence/)
 * [Create Premium Redis Cache deployed into a Virtual Network](https://azure.microsoft.com/resources/templates/redis-premium-vnet/)（创建部署到虚拟网络中的高级 Redis 缓存）
 
 若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)并搜索 Azure Cache for Redis。

@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2918a9dc1bbf514b6ab915d9e1d691b9ae4f95d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f044133c3692ef440e69ad4f0a82e5240334129
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729334"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360899"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
@@ -32,7 +32,7 @@ ms.locfileid: "121729334"
 > [!NOTE]
 > 从 2020 年 4 月起，PowerShell 库已弃用了 TLS 1.1 和 TLS 1.0。
 >
-> 有关可能需要的其他先决条件，请参阅 [PowerShell 库 TLS 支持](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support)。
+> 如需了解其他可能需要的先决条件，请参阅 [PowerShell 库 TLS 支持](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support)。
 >
 
 以管理员身份运行 PowerShell。
@@ -41,20 +41,20 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module -Name PowerShellGet -Force
-``` 
+```    
 关闭 PowerShell。
 
 ### <a name="install-application-insights-agent"></a>安装 Application Insights 代理
 以管理员身份运行 PowerShell。
-```powershell   
+```powershell    
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
-``` 
+```    
 
 > [!NOTE]
-> 可通过 `Install-Module` cmdlet 中的 `AllowPrerelease` 开关安装 beta 版本。 
+> `Install-Module` cmdlet 中的 `AllowPrerelease` 开关允许安装 beta 版本。 
 >
-> 有关其他信息，请参阅[安装模块](/powershell/module/powershellget/install-module?view=powershell-7.1#parameters)。
+> 有关更多信息，请参阅 [Install-Module](/powershell/module/powershellget/install-module#parameters)。
 >
 
 ### <a name="enable-monitoring"></a>启用监视

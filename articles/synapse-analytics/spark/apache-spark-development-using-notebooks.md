@@ -10,18 +10,18 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: a0f4a8602b3f4b10ac1ef6ca1ac65e5bedc76210
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 244d7b7d2ff6fe88b883b2e8adbeeaa0e7fb167e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187390"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593223"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse 笔记本
 
 Synapse 笔记本是一种 Web 界面，用于创建包含实时代码、可视化效果和叙述性文本的文件。 笔记本是验证想法并使用快速试验从数据中获取见解的好地方。 笔记本还广泛用于数据准备、数据可视化、机器学习和其他大数据方案。
 
-使用 Synapse 笔记本，可以：
+使用 Synapse 笔记本，可以： 
 
 * 无需设置即可开始工作。
 * 利用内置企业安全功能确保数据安全。
@@ -42,10 +42,11 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 |拖放移动单元格| 不支持 |&#9745;|
 |大纲（目录）| 不支持 |&#9745;|
 |变量资源管理器| 不支持 |&#9745;|
-|通过工具栏按钮设置文本单元格的格式|&#9745;| 不可用 |
+|通过工具栏按钮设置文本单元格的格式|&#9745;| 不支持|
 |代码单元格注释| 不支持 | &#9745;|
 
-
+> [!NOTE]
+> 变量资源管理器仅支持 Python。
 ## <a name="create-a-notebook"></a>创建笔记本
 
 可通过两种方法创建笔记本。 可以从“对象资源管理器”创建新笔记本或将现有笔记本导入到 Synapse 工作区。 Synapse 笔记本可识别标准 Jupyter Notebook IPYNB 文件。
@@ -56,7 +57,7 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 
 笔记本由单元格组成，单元格是单独的代码块或可单独运行或作为组运行的文本块。
 
-我们提供丰富的操作来开发笔记本：
+我们提供有丰富的操作供你开发笔记本：
 + [添加单元格](#add-a-cell)
 + [设置主要语言](#set-a-primary-language)
 + [使用多种语言](#use-multiple-languages)
@@ -64,7 +65,7 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 + [IDE 样式 IntelliSense](#ide-style-intellisense)
 + [代码片段](#code-snippets)
 + [通过工具栏按钮设置文本单元格的格式](#format-text-cell-with-toolbar-buttons)
-+ [撤消单元格操作](#undo-cell-operation)
++ [撤消/重做单元格操作](#undo-redo-cell-operation)
 + [代码单元格注释](#Code-cell-commenting)
 + [移动单元格](#move-a-cell)
 + [删除单元格](#delete-a-cell)
@@ -80,24 +81,21 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 
 1. 展开左上方“+ 单元格”按钮，然后选择“添加代码单元格”或“添加文本单元格”  。
 
-    ![add-cell-with-cell-button 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
+    ![使用单元格按钮添加单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
 2. 将鼠标悬停在两个单元格之间的空白地方，然后选择“添加代码”或“添加文本” 。
 
-    ![add-cell-between-space 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
+    ![在空白之间添加代码的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
 3. 使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 A 在当前单元格上方插入单元格。 按 B 在当前单元格下方插入单元格。
 
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
-1.   展开左上方“+ 单元格”按钮，然后选择“代码单元格”或“Markdown 单元格”。
-    ![add-azure-notebook-cell-with-cell-button 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
-2.  选择单元格开头的加号，然后选择“代码单元格”或“Markdown 单元格”。
+1. 将鼠标悬停在两个单元格之间的空白地方，然后选择“代码”或“Markdown” 。
+    ![使用单元格按钮添加 Azure Notebook 单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
 
-    ![add-azure-notebook-cell-between-space 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
-
-3. 使用 [aznb 命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 A 在当前单元格上方插入单元格。 按 B 在当前单元格下方插入单元格。
+2. 使用 [aznb 命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 A 在当前单元格上方插入单元格。 按 B 在当前单元格下方插入单元格。
 
 ---
 
@@ -105,14 +103,14 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 
 Synapse 笔记本支持四种 Apache Spark 语言：
 
-* pySpark (Python)
+* PySpark (Python)
 * Spark (Scala)
-* SparkSQL
-* .NET for Apache Spark (C#)
+* Spark SQL
+* .NET Spark (C#)
 
 可以从顶部命令栏中的下拉列表为新添加的单元格设置主要语言。
 
-   ![default-synapse-language 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
+   ![默认 Synapse 语言的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
 
 
 <h3 id="use-multiple-languages">使用多种语言</h3>
@@ -128,7 +126,7 @@ Synapse 笔记本支持四种 Apache Spark 语言：
 
 下图是一个示例，说明如何在 Spark(Scala) 笔记本中使用 %%pyspark magic 命令编写 PySpark 查询，或使用 %%sql magic 命令编写 SparkSQL 查询  。 请注意，笔记本的主要语言设置为 pySpark。
 
-   ![Synapse spark magic 命令的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![Synapse Spark magic 命令的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 
 <h3 id="use-temp-tables-to-reference-data-across-languages&quot;>使用临时表跨语言引用数据</h3>
@@ -138,7 +136,7 @@ Synapse 笔记本支持四种 Apache Spark 语言：
 1. 在单元格 1 中，使用 Scala 从 SQL 池连接器读取 DataFrame，并创建一个临时表。
 
    ```scala
-   %%scala
+   %%spark
    val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
@@ -166,8 +164,8 @@ Synapse 笔记本集成了 Monaco 编辑器，将 IDE 样式的 IntelliSense 引
 |Languages| 语法突出显示 | 语法错误标记  | 语法代码补全 | 变量代码补全| 系统函数代码补全| 用户函数代码补全| 智能缩进 | 代码折叠|
 |--|--|--|--|--|--|--|--|--|
 |PySpark (Python)|是|是|是|是|是|是|是|是|
-|Spark (Scala)|是|是|是|是|-|-|-|是|
-|SparkSQL|是|是|-|-|-|-|-|-|
+|Spark (Scala)|是|是|是|是|是|是|-|是|
+|SparkSQL|是|是|是|是|是|-|-|-|
 |.NET for Spark (C#)|是|是|是|是|是|是|是|是|
 
 >[!Note]
@@ -196,28 +194,29 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 ---
 
-<h3 id="undo-cell-operation">撤消单元格操作</h3>
+<h3 id="undo-redo-cell-operation">撤消/重做单元格操作</h3>
 
 # <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 
-单击“撤消” / “恢复”按钮或按 Ctrl+Z / Ctrl+Y 可撤消最近的单元格操作。 现在可以撤消/恢复最近的 20 个历史单元格操作。 
+选择“撤消 / 重做”按钮或按 Ctrl+Z / Ctrl+Y 可撤销最近的单元格操作   。 现在可以撤消/重做最近的 20 个历史单元格操作。 
 
    ![Synapse 撤消单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
-单击“撤消” / “恢复”按钮或按 Z / Shift+Z 可撤消最近的单元格操作。 现在可以撤消/恢复最近的 10 个历史单元格操作。
+选择“撤消 / 重做”按钮或按 Z / Shift+Z 可撤销最近的单元格操作   。 现在可以撤消/重做最近的 10 个历史单元格操作。
 
    ![aznb 的 Synapse 撤消单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-undo-cells-aznb.png)
 
 支持的撤消单元格操作：
-+ 插入/删除单元格：可以通过选择“撤消”来撤消删除操作，文本内容将与单元格一起保留。
-+ 重新排序单元格。
++ 插入/删除单元格：可以通过选择“撤消”来撤销删除操作，文本内容将与单元格一起保留。
++ 对单元格进行重新排序。
 + 切换参数。
-+ 在代码单元格和 Markdown 单元格之间转换。
++ 在代码单元格和 Markdown 单元格之间进行转换。
 
 > [!NOTE]
 > 单元格内文本操作和代码单元格注释操作是不可撤消的。
+> 现在可以撤消/重做最近的 10 个历史单元格操作。
 
 
 ---
@@ -232,15 +231,15 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 目前，我们支持在预览笔记本中对代码单元格进行注释。
 
-1. 选择笔记本工具栏上的“注释”按钮以打开“注释”窗格。
+1. 在笔记本工具栏上选择“注释”按钮以打开“注释”窗格 。
 
    ![Synapse 注释按钮的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-comments-button.png)
 
-2. 在代码单元格中选择代码，单击“注释”窗格中的“新建”，添加注释，然后单击“发布注释”按钮进行保存。
+2. 在代码单元格中选择代码，单击“注释”窗格中的“新建”，添加注释，然后单击“发布注释”按钮以保存  。
 
    ![Synapse 新建注释的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-new-comments.png)
 
-3. 可以通过单击注释旁边的“更多”按钮来执行“编辑注释”、“解析线程”或“删除线程”。 
+3. 可以通过单击注释旁的“更多”按钮来执行“编辑注释”、“解析线程”或“删除线程”的操作   。 
 
    ![Synapse 编辑注释的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-edit-comments.png)
 
@@ -255,7 +254,7 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 还可使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 Ctrl+Alt+↑，上移当前单元格。 按 Ctrl+Alt+↓，下移当前单元格。
 
-   ![move-a-cell 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
+   ![移动单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
@@ -272,7 +271,7 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 还可使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 D,D，删除当前单元格。
   
-   ![delete-a-cell 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
+   ![删除单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
@@ -280,7 +279,7 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 还可使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 Shift+D 删除当前单元格。 
 
-   ![azure-notebook-delete-a-cell 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-delete-cell.png)
+   ![Azure Notebook 删除单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-delete-cell.png)
 
 ---
 
@@ -290,13 +289,13 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 选择当前单元格底部的箭头按钮将其折叠。 若要展开，请在单元格处于折叠状态时选择箭头按钮。
 
-   ![collapse-cell-input 的动画 GIF](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
+   ![折叠单元格输入的动画 GIF](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
- 在单元工具栏上选择“更多命令”省略号 (...) 和“输入”以折叠当前单元格的输入。 若要展开，请在单元格处于折叠状态时选择“隐藏的输入”。
+ 在单元格工具栏上选择“更多命令”省略号 (...) 和“隐藏输入”以折叠当前单元格的输入。 若要展开它，请在单元格处于折叠状态时选择“显示输入”。
 
-   ![azure-notebook-collapse-cell-input 的动画 GIF](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
+   ![Azure Notebook 折叠单元格输入的动画 GIF](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
 
 ---
 
@@ -306,13 +305,13 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 选择当前单元格输出左上角的“折叠输出”按钮，将其折叠。 要展开，请在单元格输出处于折叠状态时选择“显示单元格输出”。
 
-   ![collapse-cell-output 的动画 GIF](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
+   ![折叠单元格输出的动画 GIF](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
- 在单元工具栏上选择“更多命令”省略号 (...) 和“输出”以折叠当前单元格的输出。 要展开，请在单元格输出处于隐藏状态时选择相同的按钮。
+ 在单元格工具栏上选择“更多命令”省略号 (...) 和“隐藏输出”以折叠当前单元格的输出。 若要展开它，请在单元格的输出处于隐藏状态时选择“显示输出”。
 
-   ![azure-notebook-collapse-cell-output 的动画 GIF](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
+   ![Azure Notebook 折叠单元格输出的动画 GIF](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
 
 
 ---
@@ -327,7 +326,7 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 大纲（目录）在边栏窗口中显示任何 markdown 单元的第一个 markdown 标题，用于快速导航。 大纲边栏可根据最适合屏幕的方式调整大小和折叠。 你可以选择笔记本命令栏上的“大纲”按钮，以打开或隐藏边栏
 
-![azure-notebook-outline 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+![Azure Notebook 大纲的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
 
 ---
 
@@ -342,7 +341,7 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 1. 将鼠标悬停在要运行的单元格上，并选择“运行单元格”按钮，或按 Ctrl+Enter 。
 
-   ![run-cell-1 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
+   ![运行单元格 1 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
   
 2. 使用[命令模式下的快捷键](#shortcut-keys-under-command-mode)。 按 Shift+Enter 运行当前单元格并选择下面的单元格。 按 Alt+Enter 运行当前单元格并在下面插入一个新单元格。
 
@@ -351,7 +350,7 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 ### <a name="run-all-cells"></a>运行所有单元格
 选择“全部运行”按钮，按顺序运行当前笔记本中的所有单元格。
 
-   ![run-all-cells 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
+   ![运行所有单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
 ### <a name="run-all-cells-above-or-below"></a>运行上方或下方的所有单元格
@@ -360,13 +359,13 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 若要访问最右侧的其他单元格操作菜单，请选择省略号 (…)。然后选择“运行上方的单元格”，按顺序运行当前单元格上方的所有单元格 。 选择“运行下方的单元格”，按顺序运行当前单元格下方的所有单元格。
 
-   ![run-cells-above-or-below 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
+   ![运行上方或下方单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
 展开“全部运行”中的下拉列表，然后选择“运行上面的单元”，按顺序运行当前单元格上方的所有单元格。  选择“运行下方的单元格”，按顺序运行当前单元格下方的所有单元格。
 
-   ![azure-notebook-run-cells-above-or-below 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+   ![Azure Notebook 运行上方或下方单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
 
 ---
 
@@ -374,12 +373,12 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 # <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 选择“全部取消”按钮可取消正在运行的单元格或在队列中等待的单元格。 
-   ![cancel-all-cells 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+   ![取消所有单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
 选择“全部取消”按钮可取消正在运行的单元格或在队列中等待的单元格。 
-   ![azure-notebook-cancel-all-cells 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
+   ![Azure Notebook 取消所有单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
@@ -400,10 +399,10 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 可以在交互模式和 Synapse 管道中使用笔记本引用。
 
 > [!NOTE]
-> - ```%run``` 命令目前仅支持将绝对路径或笔记本名称作为参数进行传递，不支持相对路径。 
-> - ```%run``` 命令当前仅支持 4 个参数值类型：`int`、`float`、`bool`、`string`，变量替换操作不受支持。
+> - ```%run``` 命令当前只支持将绝对路径或笔记本名称仅作为参数传递，不支持相对路径。 
+> - ```%run``` 命令当前仅支持 4 种参数值类型：`int`、`float`、`bool` 和 `string`，不支持变量替换操作。
 > - 需要发布引用的笔记本。 需要发布笔记本才能引用它们。 Synapse Studio无法识别 Git 存储库中未发布的笔记本。 
-> - 引用的笔记本不支持语句超过五行。
+> - 引用的笔记本不支持超过五行的语句。
 >
 
 ---
@@ -420,7 +419,7 @@ Synapse 笔记本提供内置的变量资源管理器，让你可以在 PySpark 
 
 你可以选择笔记本命令栏上的“变量”按钮，以打开或隐藏变量资源管理器。
 
-![azure-notebook-variable-explorer 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+![Azure Notebook 变量资源管理器的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
 
 
 ---
@@ -429,7 +428,7 @@ Synapse 笔记本提供内置的变量资源管理器，让你可以在 PySpark 
 
 逐步单元格执行状态显示在单元格下方，有助于你查看其当前进度。 单元格运行完成后，将显示具有总持续时间和结束时间的执行摘要，并将其保留在此处供将来参考。
 
-![cell-status 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
+![单元格状态的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
 
 ### <a name="spark-progress-indicator"></a>Spark 进度指示器
 
@@ -437,13 +436,13 @@ Synapse 笔记本仅基于 Spark。 代码单元格在无服务器 Apache Spark 
 每个作业或阶段的任务数有助于识别 spark 作业的并行级别。 你还可以通过选择作业（或阶段）名称上的链接，深入了解特定作业（或阶段）的 Spark UI。
 
 
-![spark-progress-indicator 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
+![Spark 进度指示器的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
 
 ### <a name="spark-session-config"></a>Spark 会话配置
 
 可以在“配置会话”中为当前 Spark 会话指定超时持续时间、数量和执行器的大小。 重启 Spark 会话，以使配置更改生效。 缓存的所有笔记本变量都将被清除。
 
-[![session-management 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
+[![会话管理的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
 
 #### <a name="spark-session-config-magic-command"></a>Spark 会话 config magic 命令
 还可以通过 magic 命令 %%configure 指定 spark 会话设置。 spark 会话需要重启才能使设置生效。 建议你在笔记本开头运行 %%configure。 下面是一个示例，有关有效参数的完整列表，请参阅 https://github.com/cloudera/livy#request-body 。 
@@ -466,7 +465,7 @@ Synapse 笔记本仅基于 Spark。 代码单元格在无服务器 Apache Spark 
 }
 ```
 > [!NOTE]
-> - 建议在 %%configure 中将“DriverMemory”和“ExecutorMemory”设置为相同的值，“driverCores”和“executorCores”也是如此。
+> - 建议在 %%configure 中将“DriverMemory”和“ExecutorMemory”设置为相同的值，对“driverCores”和“executorCores”也进行同样的设置。
 > - 可以在 Synapse 管道中使用 Spark 会话配置 magic 命令。 该命令只有在最高级别调用时才会生效。 将忽略引用的笔记本中使用的 %%configure。
 > - 必须在“conf”正文中使用 Spark 配置属性。 不支持 Spark 配置属性的顶级引用。
 >
@@ -522,7 +521,7 @@ df = spark.read.option("header", "true") \
 
 你可以直接访问主存储帐户中的数据。 无需提供密钥。 在数据资源管理器中，右键单击某个文件，然后选择“新建笔记本”以查看自动生成了数据提取器的新笔记本。
 
-![data-to-cell 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
+![数据引入到单元格的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
 
 ## <a name="ipython-widgets"></a>IPython 小组件
@@ -554,7 +553,7 @@ df = spark.read.option("header", "true") \
    
 3. 运行单元格，小组件将显示在输出区域。
 
-   ![ipython 小组件滑块的屏幕截图](./media/apache-spark-development-using-notebooks/ipython-widgets-slider.png)
+   ![IPython 小组件滑块的屏幕截图](./media/apache-spark-development-using-notebooks/ipython-widgets-slider.png)
 
 4. 你可以使用多个 `display()` 调用来多次呈现同一小组件实例，但它们会相互保持同步。
 
@@ -564,7 +563,7 @@ df = spark.read.option("header", "true") \
    display(slider)
    ```
 
-   ![ipython 小组件滑块的屏幕截图](./media/apache-spark-development-using-notebooks/ipython-widgets-multiple-sliders.png)
+   ![IPython 小组件滑块的屏幕截图](./media/apache-spark-development-using-notebooks/ipython-widgets-multiple-sliders.png)
 
 5. 若要呈现两个彼此独立的小组件，请创建两个小组件实例：
 
@@ -590,7 +589,7 @@ df = spark.read.option("header", "true") \
 
 ### <a name="known-limitations"></a>已知限制
 
-1. 尚不支持以下小部件，可以按照以下相应的解决方法进行操作：
+1. 尚不支持以下小组件，但你可以按照以下相应的解决方法进行操作：
 
    |功能|解决方法|
    |--|--|
@@ -598,8 +597,8 @@ df = spark.read.option("header", "true") \
    |`widgets.jslink()`|可以使用 `widgets.link()` 函数链接两个相似的小组件。|
    |`FileUpload` 小组件| 尚不支持。|
 
-2. Synapse 提供的全局 `display` 函数不支持在 1 次调用（即 `display(a, b)`）中显示多个小部件，这与 IPython `display` 函数不同。
-3. 如果关闭包含 IPython 小组件的笔记本，则在再次执行相应的单元格之前，你将无法看到它或与之交互。
+2. Synapse 提供的全局 `display` 函数不支持在 1 个调用中显示多个小组件（即 `display(a, b)`），这与 IPython `display` 函数不同。
+3. 如果关闭包含 IPython 小组件的笔记本，那么在再次执行相应的单元格之前，你将无法看到它或与之交互。
 
 
 ---
@@ -609,15 +608,15 @@ df = spark.read.option("header", "true") \
 
 1. 要保存对单个笔记本所做的更改，请在笔记本命令栏上选择“发布”按钮。
 
-   ![publish-notebook 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
+   ![发布笔记本的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
 
 2. 要保存工作区中的所有笔记本，请在工作区命令栏上选择“发布所有”按钮。 
 
-   ![publish-all 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-publish-all.png)
+   ![“全部发布”的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-publish-all.png)
 
 在笔记本属性中，可以配置保存时是否包括单元格输出。
 
-   ![notebook-properties 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
+   ![笔记本属性的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>magic 命令
 可以在 Synapse 笔记本中使用熟悉的 Jupyter magic 命令。 查看以下列表了解当前可用的 magic 命令。 告诉我们[你在 GitHub 上的用例](https://github.com/MicrosoftDocs/azure-docs/issues/new)，以便我们可以继续构建更多 magic 命令来满足你的需求。
@@ -657,13 +656,13 @@ df = spark.read.option("header", "true") \
 
 若要对笔记本进行参数化，请选择省略号 (…) 以访问最右侧的其他单元格操作菜单。 然后选择“切换参数单元格”，将该单元格指定为参数单元格。
 
-![toggle-parameter 的屏幕截图](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
+![切换参数的屏幕截图](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
 若要对笔记本进行参数化，选择省略号 (…) 以访问单元格工具栏上的“更多命令”。 然后选择“切换参数单元格”，将该单元格指定为参数单元格。
 
-![azure-notebook-toggle-parameter 的屏幕截图](./media/apache-spark-development-using-notebooks/azure-notebook-toggle-parameter-cell.png)
+![Azure Notebook 切换参数的屏幕截图](./media/apache-spark-development-using-notebooks/azure-notebook-toggle-parameter-cell.png)
 
 ---
 
@@ -686,11 +685,11 @@ Azure 数据工厂查找参数单元格，并将此单元格作为执行时传�
 
 1. 当没有文本光标提示你键入时，单元格处于命令模式。 当单元格处于命令模式时，可以将笔记本作为一个整体进行编辑，但不能键入单独的单元格。 按 `ESC` 或使用鼠标选择单元格编辑器区域外部，进入命令模式。
 
-   ![command-mode 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
+   ![命令模式的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
 2. 编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，可以在单元格中键入。 按 `Enter` 或使用鼠标选择单元格的编辑器区域，进入编辑模式。
    
-   ![edit-mode 的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
+   ![编辑模式的屏幕截图](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>命令模式下的快捷键
 

@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 09/01/2021
-ms.openlocfilehash: 2523d0fc9a8e4843fc0d3d41b5ed35c89bace325
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 8b4ea499766349b3a5ebee340f17f5584303ae16
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430371"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361855"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -89,7 +89,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 | --- | --- | --- |
 | **完整备份** | 完整数据库备份将备份整个数据库。 这种类型的备份可以独立用于还原到特定点。 | 每天最多可以安排一次完整备份。 <br><br> 可以选择以每天或每周间隔安排一次完整备份。 |
 | **差异备份** | 差异备份基于最新的、以前的完整数据备份。 <br><br> 它只捕获自上次完整备份以来更改的数据。 | 每天最多可以安排一次差异备份。  <br><br> 不能在同一天配置完整备份和差异备份。 |
-| **增量备份** | 增量备份基于最近的一次完整/差异/增量数据备份。 <br><br> 它只捕获自上次数据备份以来更改的数据。 | 每天最多可以安排一次增量备份。 <br><br> 不能在一个数据库上同时安排差异备份和增量备份，只能安排一种增量备份类型。 <br><br> 不能在同一天配置完整备份和差异备份。 |k
+| **增量备份** | 增量备份基于最近的一次完整/差异/增量数据备份。 <br><br> 它只捕获自上次数据备份以来更改的数据。 | 每天最多可以安排一次增量备份。 <br><br> 不能在一个数据库上同时安排差异备份和增量备份，只能安排一种增量备份类型。 <br><br> 不能在同一天配置完整备份和差异备份。 |
 | **事务日志备份** | 日志备份可以实现时间点还原，精度可达到特定的秒。 | 最多可以配置为每隔 15 分钟创建事务日志备份。 |
 
 ## <a name="comparison-of-backup-types"></a>备份类型的比较

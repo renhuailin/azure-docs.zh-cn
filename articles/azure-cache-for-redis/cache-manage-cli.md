@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 经典 CLI 管理 Azure Cache for Redis
 description: 了解如何在任何平台上安装 Azure 经典 CLI、如何使用它连接到 Azure 帐户，以及如何从经典 CLI 创建和管理 Azure Redis 缓存。
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1f1be7c257cfd99849fdec21d2731a0a6a1c2b85
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 58ddd016546a6acfd799ada24fe3e2d2a55bbd78
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653572"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538001"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 
