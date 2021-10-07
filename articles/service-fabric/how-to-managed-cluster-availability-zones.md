@@ -3,12 +3,12 @@ title: 跨可用性区域部署 Service Fabric 托管群集
 description: 了解如何跨可用性区域部署 Service Fabric 托管群集以及如何在 ARM 模板中进行配置。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: 5278ea170e0a60907813b9a79b151dde44ab4a12
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b3c4e01ea66aa3a69b14806f2701020f1f529a5e
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956777"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544368"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-across-availability-zones"></a>跨可用性区域部署 Service Fabric 托管群集
 
@@ -58,10 +58,9 @@ Service Fabric 托管群集支持跨多个可用性区域的部署以提供区�
 
 ```json
 {
-    "apiVersion": "2021-05-01",
-    "type": "Microsoft.ServiceFabric/managedclusters",
-    "ZonalResiliency": "true"
-    
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters",
+  "zonalResiliency": "true"
 }
 ```
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png

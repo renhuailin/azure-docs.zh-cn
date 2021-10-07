@@ -1,17 +1,17 @@
 ---
 title: 快速入门：你的第一个 Python 查询
 description: 本快速入门介绍为 Python 启用 Resource Graph 库并运行第一个查询的步骤。
-ms.date: 07/09/2021
+ms.date: 10/01/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: aa64fb646e45c950dcade38ee7cec189b3501f9e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0dfe97eda8244eb0926709d3ed39a514fbb984e9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457369"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355453"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>快速入门：使用 Python 运行你的第一个 Resource Graph 查询
 
@@ -53,6 +53,9 @@ ms.locfileid: "114457369"
 
    # Add the CLI Core library for Python for authentication (development only!)
    pip install azure-cli-core
+
+   # Add the Azure identity library for Python
+   pip install azure.identity
    ```
 
    > [!NOTE]
@@ -62,7 +65,7 @@ ms.locfileid: "114457369"
 
    ```bash
    # Check each installed library
-   pip show azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
+   pip show azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core azure.identity
    ```
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
@@ -76,14 +79,14 @@ ms.locfileid: "114457369"
    import azure.mgmt.resourcegraph as arg
 
    # Import specific methods and models from other libraries
-   from azure.common.credentials import get_azure_cli_credentials
-   from azure.common.client_factory import get_client_from_cli_profile
    from azure.mgmt.resource import SubscriptionClient
+   from azure.identity import AzureCliCredential
 
    # Wrap all the work in a function
    def getresources( strQuery ):
        # Get your credentials from Azure CLI (development only!) and get your subscription list
-       subsClient = get_client_from_cli_profile(SubscriptionClient)
+       credential = AzureCliCredential()
+       subsClient = SubscriptionClient(credential)
        subsRaw = []
        for sub in subsClient.subscriptions.list():
            subsRaw.append(sub.as_dict())
@@ -92,7 +95,7 @@ ms.locfileid: "114457369"
            subsList.append(sub.get('subscription_id'))
 
        # Create Azure Resource Graph client and set options
-       argClient = get_client_from_cli_profile(arg.ResourceGraphClient)
+       argClient = arg.ResourceGraphClient(credential)
        argQueryOptions = arg.models.QueryRequestOptions(result_format="objectArray")
 
        # Create query
@@ -133,7 +136,7 @@ ms.locfileid: "114457369"
 
 ```bash
 # Remove the installed libraries from the Python environment
-pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
+pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core azure.identity
 ```
 
 ## <a name="next-steps"></a>后续步骤

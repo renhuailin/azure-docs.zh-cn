@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习 Python SDK 启动、监视和跟踪机器学习试验运行。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: swinner95
 ms.author: shwinne
 ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: how-to
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: e51e537beb44271d5a1c63e8bc1952455f9a35d9
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 96f66914c22ddb107ab10ec49965e0f5ce8c6e4a
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323855"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424343"
 ---
 # <a name="start-monitor-and-track-run-history"></a>启动、监视和跟踪运行历史记录
 
@@ -37,7 +37,7 @@ ms.locfileid: "122323855"
 
 > [!TIP]
 > 如果要了解如何监视 Azure 机器学习服务及关联的 Azure 服务，请参阅[如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
-> 如果要查找有关监视部署为 Web 服务的模型的信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
+> 如果要了解如何监视部署为 Web 服务的模型，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

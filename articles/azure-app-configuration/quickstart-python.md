@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 36b840cb851ef544d0956ff0dec969ce251855d4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 046f845906845dbf1bf01a1a24de6e65da8a2a7c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748757"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233174"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Python 应用
 
@@ -22,7 +22,7 @@ ms.locfileid: "121748757"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-- Python 2.7、3.6 或更高版本 - 有关在 Windows 上设置 Python 的信息，请参阅 [Windows 上的 Python 文档]( https://docs.microsoft.com/windows/python/)
+- Python 2.7、3.6 或更高版本 - 有关在 Windows 上设置 Python 的信息，请参阅 [Windows 上的 Python 文档](/windows/python/)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 

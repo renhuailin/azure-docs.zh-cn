@@ -10,12 +10,12 @@ ms.date: 07/16/2021
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
-ms.openlocfilehash: eb90f48c78e98284268806aa6f1698a94f57fb4c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a3bae398a5991bbaf79e362e5ebb3942fd2f53e
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728776"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458598"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -62,7 +62,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 可以用来连接到内置的、与事件中心兼容的且由 IoT 中心公开的终结点的 SDK 包括：
 
-| 语言 | SDK 中 IsInRole 中的声明 | 示例 |
+| 语言 | SDK | 示例 |
 | -------- | --- | ------ |
 | .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) |
 | Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java) |
@@ -80,11 +80,11 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 ## <a name="use-amqp-ws-or-a-proxy-with-event-hubs-sdks"></a>将 AMQP-WS 或代理与事件中心 SDK 一起使用
 
-在需要基于 WebSockets 的 AMQP 或通过代理进行读取的环境中，可以使用事件中心 SDK 从内置端点进行读取。 有关详细信息，请参阅以下示例。
+可以使用事件中心 SDK 在需要使用基于 WebSockets 的 AMQP 或需要通过代理进行读取的环境中从内置终结点读取数据。 有关详细信息，请参阅以下示例。
 
 | 语言 | 示例 |
 | -------- | ------ |
-| .NET | [ReadD2cMessages .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/ReadD2cMessages) |
+| .NET | [ReadD2cMessages .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Quickstarts/ReadD2cMessages) |
 | Java | [read-d2c-messages Java](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/read-d2c-messages) |
 | Node.js | [read-d2c-messages Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/iot-hub/Quickstarts/read-d2c-messages) |
 | Python | [read-dec-messages Python](https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages) |

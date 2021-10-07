@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 08/03/2021
+ms.date: 10/03/2021
 ms.author: memildin
-ms.openlocfilehash: 5b2eb0cd1f96ce52a7f27ec961bd08248442827a
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: ca1e75af5f1d5697b84742e3aec207a33a57b1c6
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606855"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407183"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -23,6 +23,342 @@ ms.locfileid: "122606855"
 - 新增功能
 - Bug 修复
 - 已弃用的功能
+
+
+## <a name="april-2021"></a>2021 年 4 月
+
+4 月的更新包括：
+- [刷新了资源运行状况页（预览版）](#refreshed-resource-health-page-in-preview)
+- [现在会每周重新扫描最近拉取的容器注册表映像（正式发布 (GA)）](#container-registry-images-that-have-been-recently-pulled-are-now-rescanned-weekly-released-for-general-availability-ga)
+- [使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview)
+- [Microsoft Defender for Endpoint 与 Azure Defender 的集成现在支持 Windows Server 2019 和 Windows 10 虚拟桌面 (WVD)（正式发布 (GA)）](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga)
+- [关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview)
+- [添加了三个监管合规性标准：Azure CIS 1.3.0、CMMC 级别 3 和限制性的新西兰 ISM](#three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted)
+- [与来宾配置相关的四个新建议（预览版）](#four-new-recommendations-related-to-guest-configuration-in-preview)
+- [CMK 建议移动到最佳做法安全控制](#cmk-recommendations-moved-to-best-practices-security-control)
+- [11 Azure Defender 警报已弃用](#11-azure-defender-alerts-deprecated)
+- [“应用系统更新”安全控制中的两个建议已弃用](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+- [从 Azure Defender 仪表板中删除了适用于计算机上的 SQL 的 Azure Defender 磁贴](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
+- [21 条建议在不同安全控件之间进行了调动](#21-recommendations-moved-between-security-controls)
+
+### <a name="refreshed-resource-health-page-in-preview"></a>刷新了资源运行状况页（预览版）
+
+安全中心的资源运行状况已展开、增强和改进，提供单个资源总体运行状况的快照视图。 
+
+可以查看有关该资源的详细信息以及适用于该资源的所有建议。 如果使用 [Azure Defender](azure-defender.md)，还可查看该特定资源的未解决的安全警报。
+
+若要打开资源的资源运行状况页，请从[资产清单页](asset-inventory.md)中选择任何资源。
+
+安全中心门户页面中的此预览页显示：
+
+1. **资源信息**：资源组及其附加到的订阅，以及地理位置等。
+1. **应用的安全功能**：是否为资源启用 Azure Defender。
+1. **未完成的建议和警报数**：未完成的安全建议和 Azure Defender 警报的数量。
+1. **可操作的建议和警报**：两个选项卡列出适用于资源的建议和警报。
+
+:::image type="content" source="media/investigate-resource-health/resource-health-page-virtual-machine.gif" alt-text="显示虚拟机运行状况信息的 Azure 安全中心的资源运行状况页":::
+
+参阅[教程：调查资源的运行状况](investigate-resource-health.md)，了解更多信息。
+
+
+### <a name="container-registry-images-that-have-been-recently-pulled-are-now-rescanned-weekly-released-for-general-availability-ga"></a>现在会每周重新扫描最近拉取的容器注册表映像（正式发布 (GA)）
+
+适用于容器注册表的 Azure Defender 包含内置漏洞扫描程序。 此扫描程序会立即扫描推送到注册表中的任何映像以及在过去 30 天内拉取的任何映像。
+
+每天都会发现新漏洞。 通过此更新，将每周重新扫描一次过去 30 天内从注册表拉取的容器映像。 这可确保在映像中识别新发现的漏洞。
+
+扫描按映像收费，因此重新扫描不产生额外费用。
+
+可在[使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞](defender-for-container-registries-usage.md)中详细了解此扫描程序。
+
+
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview"></a>使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）
+
+Azure Defender for Kubernetes 正在扩展其威胁防护功能，以便在部署时保护其群集。 这已通过集成[已启用 Azure Arc 的 Kubernetes](../azure-arc/kubernetes/overview.md) 及其新的[扩展功能](../azure-arc/kubernetes/extensions.md)来实现。 
+
+在非 Azure Kubernetes 群集上启用 Azure Arc 后，根据 Azure 安全中心提供的新建议，仅需单击几下，即可将 Azure Defender 扩展部署到其中。
+
+使用建议（启用 Azure Arc 的 Kubernetes 群集应已安装 Azure Defender 的扩展）和扩展保护在其他云提供程序中部署的 Kubernetes 群集，但不支持其托管的 Kubernetes 服务。
+
+Azure 安全中心、Azure Defender 和启用了 Azure Arc 的 Kubernetes 之间的集成将带来以下影响：
+
+- 轻松地将 Azure Defender 扩展预配到未受保护的 Azure Arc 启用 Kubernetes 群集（手动和大规模）
+- 从 Azure Arc 门户监视 Azure Defender 扩展及其预配状态
+- 请转到 Azure Arc 门户的新“安全性”页中，查看所报告的安全中心安全建议
+- 请转到 Azure Arc 门户的新“安全性”页中，查看所报告的 Azure Defender 标识安全威胁
+- 启用 Azure Arc 的 Kubernetes 群集可以集成到 Azure 安全中心平台和体验
+
+有关详细信息，[请参阅通过本地和多云 Kubernetes 群集使用 Azure Defender for Kubernetes](defender-for-kubernetes-azure-arc.md)。
+
+:::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="有关为已启用 Azure Arc 的 Kubernetes 群集部署 Azure Defender 扩展的 Azure 安全中心建议。" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga"></a>Microsoft Defender for Endpoint 与 Azure Defender 的集成现在支持 Windows Server 2019 和 Windows 10 虚拟桌面 (WVD)（正式发布 (GA)）
+
+Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全解决方案。 它提供基于风险的漏洞管理和评估以及终结点检测和响应 (EDR)。 有关将 Defender for Endpoint 与 Azure 安全中心一起使用的好处的完整列表，请参阅[使用安全中心的集成式 EDR 解决方案 (Microsoft Defender for Endpoint) 保护终结点](security-center-wdatp.md)。
+
+为 Windows Server 上的服务器启用 Azure Defender 时，Defender for Endpoint 的许可证会包含在计划在中。 如果已为服务器启用 Azure Defender 并且订阅中有 Windows 2019 服务器，则它们会自动接收包含此更新的 Defender for Endpoint。 无需手动操作。 
+
+支持现在已扩展为包括 Windows Server 2019 和 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)。
+
+> [!NOTE]
+> 如果要在 Windows Server 2019 计算机上启用 Defender for Endpoint，请确保它满足[启用 Microsoft Defender for Endpoint 集成](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)中所述的先决条件。
+
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview"></a>关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）
+
+添加了两项新建议，以简化启用[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md) 和[适用于 DNS 的 Azure Defender](defender-for-dns-introduction.md)：
+
+- **应启用适用于资源管理器的 Azure Defender** - 适用于资源管理器的 Defender 会自动监视组织中的资源管理操作。 Azure Defender 会检测威胁，并向你发出有关可疑活动的警报。
+- **应启用适用于 DNS 的 Azure Defender** - 适用于 DNS 的 Defender 通过持续监视所有来自 Azure 资源的 DNS 查询为云资源额外提供保护层。 Azure Defender 会在 DNS 层向你发出有关可疑活动的警报。
+
+启用 Azure Defender 计划会产生费用。 若要了解各区域的定价详细信息，请访问安全中心的定价页： https://aka.ms/pricing-security-center 。
+
+> [!TIP]
+> 预览版建议不会显示资源运行不正常，并且在计算安全功能分数时不会包含这些建议。 请尽量修正这些建议，以便在预览期结束之后，借助这些建议提高安全功能分数。 如需详细了解如何响应这些建议，请参阅[修正 Azure 安全中心的建议](security-center-remediate-recommendations.md)。
+
+
+### <a name="three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted"></a>添加了三个监管合规性标准：Azure CIS 1.3.0、CMMC 级别 3 和限制性的新西兰 ISM
+
+我们添加了适用于 Azure 安全中心的三个标准。 使用监管合规性仪表板，现在可以根据以下标准来跟踪合规性：
+
+- [CIS Microsoft Azure 基础基准检验 1.3.0](../governance/policy/samples/cis-azure-1-3-0.md)
+- [CMMC 级别 3](../governance/policy/samples/cmmc-l3.md)
+- [受限于新西兰 ISM](../governance/policy/samples/new-zealand-ism.md)
+
+可以按照[在监管合规性仪表板中自定义标准集](update-regulatory-compliance-packages.md)中所述，将这些标准分配给订阅。
+
+:::image type="content" source="media/release-notes/additional-regulatory-compliance-standards.png" alt-text="添加了三个标准，用于 Azure 安全中心的监管合规性仪表板。" lightbox="media/release-notes/additional-regulatory-compliance-standards.png":::
+
+了解详细信息，请参阅：
+- [在监管合规仪表板中自定义标准集](update-regulatory-compliance-packages.md)
+- [教程：提高合规性](security-center-compliance-dashboard.md)
+- [常见问题解答 - 法规合规性仪表板](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
+
+### <a name="four-new-recommendations-related-to-guest-configuration-in-preview"></a>与来宾配置相关的四个新建议（预览版）
+
+Azure 的[来宾配置扩展](../governance/policy/concepts/guest-configuration.md) 向安全中心报告，以帮助确保强化虚拟机的来宾内设置。 已启用 Arc 的服务器不需要该扩展，因为已连接 Arc 的计算机代理中包含该扩展。 扩展需要计算机上系统托管标识。
+
+我们已将四个新建议添加到安全中心，以便充分利用此扩展。
+
+- 这两个建议会提示安装该扩展及其所需的系统托管标识：
+    - **应在计算机上安装来宾配置扩展**
+    - **应使用系统分配的托管标识来部署虚拟机的来宾配置扩展**
+
+- 当扩展已安装并正在运行时，它将开始审核你的计算机，此时系统将提示你强化设置，例如配置操作系统和环境设置。 这两个建议将提示你按如下所述强化 Windows 和 Linux 计算机：
+    - **应在计算机上启用 Windows Defender 攻击防护**
+    - **对 Linux 虚拟机进行身份验证需要 SSH 密钥**
+
+详细[了解 Azure Policy 的来宾配置](../governance/policy/concepts/guest-configuration.md)。
+
+### <a name="cmk-recommendations-moved-to-best-practices-security-control"></a>CMK 建议移动到最佳做法安全控制
+
+每个组织的安全计划都包含数据加密要求。 默认情况下，通过服务托管密钥对 Azure 客户的数据进行静态加密。 但是，客户管理的密钥 (CMK) 通常需要满足法规符合性标准。 通过 CMK 能够使用自己创建并拥有的 [Azure Key Vault](../key-vault/general/overview.md) 密钥对数据进行加密。 你可以完全控制并负责关键生命周期，包括轮换和管理。
+
+Azure 安全中心的安全控制是相关安全建议的逻辑组，反映了你易受攻击的攻击面。 对于每个控制，可以看到为所有资源修正该控制中列出的所有建议后，安全评分可以增加的最高分数。 “实现安全最佳做法”这一安全控制得分为零。 因此，此控制中的建议不会影响安全评分。
+
+下面列出的建议将移到“实现安全最佳做法”这一安全控制，以更好地反应它们的可选性质。 这一移动确保了这些建议都处于最适当的控制之下，以满足其目标。
+
+- Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据
+- Azure 机器学习工作区应使用客户管理的密钥 (CMK) 进行加密
+- 认知服务帐户应启用使用客户管理的密钥 (CMK) 进行数据加密
+- 容器注册表应使用客户管理的密钥 (CMK) 进行加密
+- SQL 托管实例应使用客户管理的密钥进行静态数据加密
+- SQL Server 应使用客户管理的密钥进行静态数据加密
+- 存储帐户应使用客户管理的密钥 (CMK) 进行加密
+
+请在[安全控件及其建议](secure-score-security-controls.md#security-controls-and-their-recommendations)中了解每个安全控件中的建议。
+
+
+### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender 警报已弃用
+
+下面列出的 11 个 Azure Defender 警报已弃用。
+
+- 新警报将取代下面两种警报并扩大覆盖范围：
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | 预览版 - 检测到 MicroBurst 工具包“Get-AzureDomainInfo”函数运行 |
+    | ARM_MicroBurstRunbook    | 预览版 - 检测到 MicroBurst 工具包“Get-AzurePasswords”函数运行  |
+    |                          |                                                                          |
+
+- 下面 9 种警报与已弃用的 Azure Active Directory 标识保护连接器 (IPC) 相关：
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | 不熟悉的登录属性 |
+    | AnonymousLogin      | 匿名 IP 地址          |
+    | InfectedDeviceLogin | 受恶意软件感染的 IP 地址     |
+    | ImpossibleTravel    | 异常位置登录               |
+    | MaliciousIP         | 恶意 IP 地址          |
+    | LeakedCredentials   | 凭据泄露            |
+    | PasswordSpray       | 密码喷射                |
+    | LeakedCredentials   | Azure AD 威胁智能  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
+    > [!TIP]
+    > 这 9 种 IPC 警报绝不是安全中心警报。 它们是 Azure Active Directory (AAD) 标识保护连接器 (IPC) 的一部分，此连接器将这些警警报发送给安全中心。 在过去 2 年中，只看到这些警报的客户就是在 2019 或更早版本中配置了导出（从连接器到 ASC）。 AAD IPC 继续将其显示其专属的警报系统中，并在 Azure Sentinel 中继续提供。 唯一的变化是它们不再出现在安全中心。
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-were-deprecated"></a>“应用系统更新”安全控制中的两项建议已弃用 
+
+下面这两个建议已弃用，这些更改可能会对安全分数产生轻微影响：
+
+- 应重启计算机来应用系统更新
+- **应在计算机上安装监视代理**。 此建议仅与本地计算机相关，其中某些逻辑将转移到另一条建议，即“应在计算机上解决 Log Analytics 代理运行状况问题”
+
+建议检查连续导出和工作流自动化配置，以查看这些建议是否包括在其中。 此外，任何仪表板或其他可能使用它们的监视工具都应该相应地进行更新。
+
+有关这些建议的详细信息，请参阅[安全建议参考页面](recommendations-reference.md)。
+
+### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>从 Azure Defender 仪表板中删除了适用于计算机上的 SQL 的 Azure Defender 磁贴
+
+Azure Defender 仪表板的覆盖区包括对应于环境相关 Azure Defender 计划的磁贴。 由于报告受保护和未受保护资源数量时出现问题，我们决定在解决此问题前暂时删除适用于计算机上的 SQL 的 Azure Defender 的资源覆盖状态。
+
+
+### <a name="21-recommendations-moved-between-security-controls"></a>21 条建议在不同安全控件之间进行了调动 
+
+以下建议已移动到其他的安全控件。 安全控件是相关安全建议的逻辑组，反映了你易受攻击的攻击面。 这一调动确保了每个建议都处于最适当的控制之下，以满足其目标。
+
+请在[安全控件及其建议](secure-score-security-controls.md#security-controls-and-their-recommendations)中了解每个安全控件中的建议。
+
+|建议 |更改和影响  |
+|---------|---------|
+|应对 SQL Server 启用漏洞评估<br>应对 SQL 托管实例启用漏洞评估<br>应立即修正 SQL 数据库的漏洞<br>应修正 VM 中的 SQL 数据库漏洞     |从“修正漏洞”（得 6 分）<br>变为“修正安全配置“（得 4 分）。<br>根据你的环境，这些建议会减少对评分的影响。|
+|应该为你的订阅分配了多个所有者<br>自动化帐户变量应进行加密<br> IoT 设备 - 经审核的进程已停止发送事件<br> IoT 设备 - 操作系统基线验证失败<br> IoT 设备 - 需要进行 TLS 加密套件升级<br> IoT 设备 - 打开设备上的端口<br> IoT 设备 - 在其中一个链中找到了宽容防火墙策略<br> IoT 设备 - 在输入链中找到了宽容防火墙规则<br> IoT 设备 - 在输出链中找到了宽容防火墙规则<br>应启用 IoT 中心的诊断日志<br> IoT 设备 - 代理正在发送未充分利用的消息<br>IoT 设备 - 默认 IP 筛选策略应为“拒绝”<br>IoT 设备 - IP 筛选器规则为“大范围 IP”<br>IoT 设备 - 应调整代理消息间隔和大小<br>IoT 设备 - 完全相同的身份验证凭据<br>IoT 设备 - 经审核的进程停止发送事件<br>IoT 设备 - 应修复操作系统 (OS) 基线配置|移到 **实施安全最佳做法**。<br>如果某条建议移到“实施安全最佳做法”控制（不得分），则这条建议不再影响安全分数。|
+|||
+
+
+## <a name="march-2021"></a>2021 年 3 月
+
+3 月的更新包括：
+
+- [集成到安全中心的 Azure 防火墙管理](#azure-firewall-management-integrated-into-security-center)
+- [SQL 漏洞评估现在包含“禁用规则”体验（预览）](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
+- [集成到安全中心的 Azure Monitor 工作簿以及提供的三个模板](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
+- [法规合规性仪表板现在包含 Azure 审核报告（预览）](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [可以在 Azure Resource Graph 中通过“在 ARG 中浏览”查看建议数据](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
+- [更新部署工作流自动化的的策略](#updates-to-the-policies-for-deploying-workflow-automation)
+- [两条旧版建议不再将数据直接写入 Azure 活动日志](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
+- [建议页面功能增强](#recommendations-page-enhancements)
+
+
+### <a name="azure-firewall-management-integrated-into-security-center"></a>集成到安全中心的 Azure 防火墙管理
+
+打开 Azure 安全中心时，首先显示的是概述页面。 
+
+此交互式仪表板提供了混合云工作负载安全状况的统一视图。 此外，它还显示安全警报、覆盖范围信息等等。
+
+在帮助你通过中心体验查看安全状态的过程中，我们已将 Azure 防火墙管理器集成到此仪表板中。 你现在可以检查所有网络的防火墙覆盖状态，并从安全中心开始集中管理 Azure 防火墙策略。
+
+有关此仪表板的详细信息，请参阅 [Azure 安全中心的概述页面](overview-page.md)。
+
+:::image type="content" source="media/release-notes/overview-dashboard-firewall-manager.png" alt-text="安全中心的概述仪表板，其中包含 Azure 防火墙的磁贴":::
+
+
+### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>SQL 漏洞评估现在包含“禁用规则”体验（预览）
+
+安全中心包含内置漏洞扫描仪，有助于发现、跟踪和修正潜在的数据库漏洞。 评估扫描结果概述了 SQL 计算机的安全状态以及任何安全发现结果的详细信息。
+
+如果组织需要忽略发现结果，而不是修正漏洞，则可以选择禁用发现结果。 禁用发现结果不会影响安全分数，也不会产生有害的噪音。
+
+有关详细信息，请参阅[禁用特定发现结果](defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview)。
+
+
+
+### <a name="azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided"></a>集成到安全中心的 Azure Monitor 工作簿以及提供的三个模板
+
+在 Ignite Spring 2021 召开过程中，我们宣布在安全中心中推出集成式 Azure Monitor 工作簿。
+
+借助新集成，可以开始使用安全中心的库中的现成模板。 通过使用工作簿模板，可以访问并生成动态、可视化报告，以跟踪组织的安全状况。 此外，还可以根据安全中心数据或任何其他受支持的数据类型创建新的工作簿，并且快速部署来自安全中心 GitHub 社区的社区工作簿。
+
+提供了三个模板报告：
+
+- 一段时间内的安全功能分数 - 跟踪订阅的分数以及对资源建议的更改
+- 系统更新 - 按资源、OS 和严重性等查看缺失的系统更新
+- 漏洞评估发现结果 - 查看对 Azure 资源进行漏洞扫描的发现结果
+
+如需了解如何使用这些报告或生成自己的报告，请参阅[创建丰富的交互式安全中心数据报表](custom-dashboards-azure-workbooks.md)。
+
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="一段时间内的安全功能分数报告。":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview"></a>法规合规性仪表板现在包含 Azure 审核报告（预览）
+
+现在可以从法规合规性仪表板的工具栏中下载 Azure 和 Dynamics 认证报告。 
+
+:::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="法规合规性仪表板的工具栏":::
+
+可以选择用于相关报告类型（PCI、SOC 和 ISO 等）的选项卡，然后使用筛选器来查找所需的特定报告。
+
+有关详细信息，请参阅[管理法规合规性仪表板中的标准](update-regulatory-compliance-packages.md)。
+
+:::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="筛选可用 Azure 审核报告的列表。":::
+
+
+
+### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>可以在 Azure Resource Graph 中通过“在 ARG 中浏览”查看建议数据
+
+建议详细信息页现在包含“在 ARG 中浏览”工具栏按钮。 请使用此按钮来打开 Azure Resource Graph 查询，并浏览、导出和共享建议的数据。
+
+使用 Azure Resource Graph (ARG)，可以通过可靠的筛选、分组和排序功能，快速访问你的云环境中的资源信息。 这是以编程方式或从 Azure 门户中查询 Azure 订阅中的信息的一种快速且有效的方式。
+
+详细了解 [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml)。
+
+:::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="在 Azure Resource Graph 中浏览建议数据。":::
+
+
+### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>对部署工作流自动化的的策略的更新
+
+自动执行组织的监视和事件响应流程可以显著缩短调查和缓解安全事件所需的时间。
+
+我们提供三个 Azure Policy“DeployIfNotExist”策略，这些策略可以创建并配置工作流自动化过程，以便你可以在组织内部署自动化：
+
+|目标  |策略  |策略 ID  |
+|---------|---------|---------|
+|安全警报的工作流自动化|[为 Azure 安全中心警报部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+|安全建议的工作流自动化|[为 Azure 安全中心建议部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+|用于法规合规性的工作流自动化发生更改|[部署 Azure 安全中心合规工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
+||||
+
+以下是对这些策略的功能进行的两项更新：
+
+- 分配后，它们将通过强制执行保持启用状态。
+- 现在可以自定义这些策略，并更新任意参数，即使它们已部署，也是如此。 例如，如果用户想添加另一个评估密钥或编辑现有的评估密钥，则可以执行此操作。
+
+开始使用[工作流自动化模板](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)。
+
+了解如何[自动响应安全中心触发器](workflow-automation.md)。
+
+
+### <a name="two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log"></a>两条旧版建议不再将数据直接写入 Azure 活动日志 
+
+安全中心会将几乎所有安全建议的数据都传递到 Azure 顾问，而后者又会将这些数据写入 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)。
+
+对于其中两条建议，数据将同时直接写入 Azure 活动日志。 通过这项更改，安全中心会停止将这些旧版安全建议的数据直接写入活动日志。 而我们要将数据导出到 Azure 顾问，就像我们针对所有其他建议所做的那样。
+
+这两条旧版建议为：
+- 应在计算机上解决 Endpoint Protection 运行状况问题
+- 应该修复计算机上安全配置中的漏洞
+
+如果你一直是在活动日志的“TaskDiscovery 类型的建议”类别中访问这两条建议的信息，现在不再可以这样操作。
+
+
+### <a name="recommendations-page-enhancements"></a>建议页面功能增强 
+
+我们发布了改进版本的建议列表，以便直观地显示更多信息。
+
+此页面现在显示：
+
+1. 每个安全控制措施的最高分数和当前分数。
+1. 图标（代替标记），如“修复”和“预览” 。
+1. 一个新列，显示与每条建议相关的[策略计划](security-policy-concept.md)，在禁用“按控制措施分组”时显示。
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Azure 安全中心的建议页的功能增强 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="Azure 安全中心的建议“平面”列表的功能增强 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
+
+可在 [Azure 安全中心内的安全建议](security-center-recommendations.md)中了解详细信息。
 
 ## <a name="february-2021"></a>2021 年 2 月
 

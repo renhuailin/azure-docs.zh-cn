@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c6fef9319416c902f9c334453bd4a3a2fe4f93a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 936398f324448abfa46b381fc19154117b8d4771
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809972"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232539"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>教程：Azure Active Directory 与 Blackboard Learn - Shibboleth 的集成
 
@@ -86,7 +86,7 @@ ms.locfileid: "124809972"
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 若要获取这些值，请与 [Blackboard Learn - Shibboleth 客户端支持团队](https://www.blackboard.com/forms/contact-us_form.aspx)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 若要获取这些值，请与 [Blackboard Learn - Shibboleth 客户端支持团队](https://www.blackboard.com/contact-us)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -127,7 +127,7 @@ ms.locfileid: "124809972"
 
 ### <a name="create-blackboard-learn---shibboleth-test-user"></a>创建 Blackboard Learn - Shibboleth 测试用户
 
-在本部分中，在 Blackboard Learn - Shibboleth 中创建名为 Britta Simon 的用户。 与 [Blackboard Learn - Shibboleth 支持团队](https://www.blackboard.com/forms/contact-us_form.aspx)协作，在 Blackboard Learn - Shibboleth 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，在 Blackboard Learn - Shibboleth 中创建名为 Britta Simon 的用户。 与 [Blackboard Learn - Shibboleth 支持团队](https://www.blackboard.com/contact-us)协作，在 Blackboard Learn - Shibboleth 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 

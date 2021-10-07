@@ -3,12 +3,12 @@ title: 针对 Service Fabric 托管群集节点选择托管磁盘类型
 description: 了解如何为 Service Fabric 托管群集节点选择托管磁盘类型，并在 ARM 模板中进行配置。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: 054f2b68bfc2a8177e792824dd3c507bf6b4523b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c9daef02b9249d44d5d202f5066bac40f807ec58
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961033"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546323"
 ---
 # <a name="select-managed-disk-types-for-service-fabric-managed-cluster-nodes"></a>针对 Service Fabric 托管群集节点选择托管磁盘类型
 
@@ -42,10 +42,9 @@ Azure Service Fabric 托管群集支持以下托管磁盘类型：
 
 ```json
 {
-    "apiVersion": "2021-05-01",
-    "type": "Microsoft.ServiceFabric/managedclusters",
-    "dataDiskType": "StandardSSD_LRS"
-    
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters",
+  "dataDiskType": "StandardSSD_LRS"
 }
 ```
 

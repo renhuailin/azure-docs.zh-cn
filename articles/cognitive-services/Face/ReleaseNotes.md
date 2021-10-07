@@ -1,32 +1,33 @@
 ---
-title: 人脸服务中有哪些新功能？
+title: Azure 人脸服务有哪些新增功能？
 titleSuffix: Azure Cognitive Services
-description: 人脸服务的发行说明包括各个版本的版本更改历史记录。
+description: 随时了解 Azure 人脸服务的最新版本和更新。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 04/26/2021
+ms.date: 09/27/2021
 ms.author: pafarley
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: fc61f94969311fedaa3fadb8c26e710537198f45
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.custom: contperf-fy21q3, contperf-fy22q1
+ms.openlocfilehash: f727846a13566832d8549b5fa76ae5011a1be2ee
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018594"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351856"
 ---
-# <a name="whats-new-in-face-service"></a>人脸服务中有哪些新功能？
+# <a name="whats-new-in-azure-face-service"></a>Azure 人脸服务有哪些新增功能？
 
-Azure 人脸服务会不断更新。 使用本文可了解最新的功能增强、修复和文档更新。
+Azure 人脸服务会不断更新。 使用本文了解最新的功能、增强功能、修复和文档更新。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
-### <a name="persondirectory"></a>PersonDirectory
+### <a name="persondirectory-data-structure"></a>PersonDirectory 数据结构
 
-* 为执行人脸识别操作（如识别和查找相似对象），人脸 API 客户需要创建一份 Person 对象的分类列表。 新的 PersonDirectory 是一种数据结构，其中包含添加到目录的每个人员标识的唯一 ID、可选名称字符串和可选用户元数据字符串 。 目前，人脸 API 提供 LargePersonGroup 结构，该结构具有相似功能，但仅限添加 100,0000 个标识。 PersonDirectory 结构最多可扩展到 750,00000 个标识。 PersonDirectory 和之前的数据结构之间还存在一个重大差异，即在将人脸添加到 Person 对象后，便无需再执行任何定型调用&mdash;因为更新进程会自动发生 。 有关更多详细信息，请参阅[使用 PersonDirectory 结构](Face-API-How-to-Topics/use-persondirectory.md)。
+* 为执行人脸识别操作（如识别和查找相似对象），人脸 API 客户需要创建一份 Person 对象的分类列表。 新的 PersonDirectory 是一种数据结构，其中包含添加到目录的每个人员标识的唯一 ID、可选名称字符串和可选用户元数据字符串 。 目前，人脸 API 提供 LargePersonGroup 结构，该结构具有相似功能，但仅限添加 100,0000 个标识。 PersonDirectory 结构最多可扩展到 750,00000 个标识。 
+* PersonDirectory 和之前的数据结构之间还存在一个重大差异，即在将人脸添加到 Person 对象后，便无需再执行任何定型调用&mdash;因为更新进程会自动发生 。 有关更多详细信息，请参阅[使用 PersonDirectory 结构](Face-API-How-to-Topics/use-persondirectory.md)。
 
 
 ## <a name="february-2021"></a>2021 年 2 月

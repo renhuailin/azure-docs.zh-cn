@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 0486263551246a794f90867621be0e87d42747c6
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 90f7c99aa82dfc91c9910309b66246439e513c88
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273280"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532642"
 ---
 # <a name="overallocating-capacity-reservation-preview"></a>超量分配产能预留（预览版）
 
@@ -27,9 +27,6 @@ Azure 允许关联超出“产能预留”预留数量的额外 VM，以支持�
 > 产能预留目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
-## <a name="register-for-capacity-reservation"></a>注册产能预留 
-
-必须先[注册预览版订阅](capacity-reservation-overview.md#register-for-capacity-reservation)，然后才能使用产能预留功能。 注册可能需要几分钟才能完成。 可以使用 Azure CLI 或 PowerShell 完成功能注册。
 
 ## <a name="instance-view-for-capacity-reservation-group"></a>产能预留组的实例视图 
 
@@ -156,4 +153,4 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何从产能预留中删除 VM](capacity-reservation-remove-vm.md)
+> [了解如何从容量预留中删除 VM](capacity-reservation-remove-vm.md)

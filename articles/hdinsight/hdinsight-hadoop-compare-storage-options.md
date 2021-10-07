@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b6dd0fd95280a65615d38ab11a2f9814f58586f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d58bfc14e4b61860d239cc3dcfd0ad276aec781
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945856"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273507"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
@@ -32,7 +32,7 @@ ms.locfileid: "98945856"
 |Azure 存储| 常规用途 V2 | 对象 | Blob | 标准 | 热、冷、存档 | 3.6+ | 全部 |
 |Azure 存储| 常规用途 V1 | 对象 | Blob | Standard | 空值 | All | 全部 |
 |Azure 存储| Blob 存储** | 对象 | 块 blob | 标准 | 热、冷、存档 | 全部 | 全部 |
-|Azure Data Lake Storage Gen1| 不适用 | 分层（文件系统） | 不适用 | 不适用 | 不适用 | 仅 3.6 | 全部（HBase 除外） |
+|Azure Data Lake Storage Gen1| 不适用 | 分层（文件系统） | 不适用 | 不可用 | 不适用 | 仅 3.6 | 全部（HBase 除外） |
 |Azure 存储| 块 blob| 对象 | 块 blob | 高级 | 空值| 3.6+ | 仅带有加速写入功能的 HBase|
 |Azure Data Lake Storage Gen2| 块 blob| 分层（文件系统） | 块 blob | 高级 | 空值| 3.6+ | 仅带有加速写入功能的 HBase|
 
@@ -40,7 +40,7 @@ ms.locfileid: "98945856"
 
 若要详细了解 Azure 存储帐户类型，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)
 
-若要详细了解 Azure 存储访问层，请参阅 [Azure Blob 存储：高级存储层（预览）、热存储层、冷存储层和存档存储层](../storage/blobs/storage-blob-storage-tiers.md)
+若要详细了解 Azure 存储访问层，请参阅 [Azure Blob 存储：高级存储层（预览）、热存储层、冷存储层和存档存储层](../storage/blobs/access-tiers-overview.md)
 
 可以使用主要存储和（可选）辅助存储的服务组合来创建群集。 下表总结了 HDInsight 目前支持的群集存储配置：
 

@@ -2,19 +2,17 @@
 title: 教程 - 部署 Azure VMware 解决方案私有云
 description: 了解如何创建和部署 Azure VMware 解决方案私有云
 ms.topic: tutorial
-ms.date: 06/11/2021
-ms.openlocfilehash: d91e9fe9261aa4a04f5e5dffd3505742d9886623
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/29/2021
+ms.openlocfilehash: 164795bddcd7557a90f2d087cdd5a239a95d3a71
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730349"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274076"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>教程：部署 Azure VMware 解决方案私有云
 
 通过使用 Azure VMware 解决方案私有云，可以在 Azure 中部署 vSphere 群集。 默认情况下，对于创建的每个私有云，均有一个 vSAN 群集。 可添加、删除和缩放群集。  每个群集的最小主机数目为 3 个。 可一次添加更多主机，每个群集最多可以包含 16 个主机。 每个私有云的最大群集数目为 4 个。  Azure VMware 解决方案的初始部署有 3 台主机。 
-
-试用群集可用于评估并限制为 3 台主机。 每个私有云有一个试用群集。 可以在评估期内按单个主机缩放试用群集。
 
 可以使用 vSphere 和 NSX-T Manager 来管理群集配置或操作的其他方面。 群集中每个主机的所有本地存储都受 vSAN 控制。
 

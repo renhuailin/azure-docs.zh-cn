@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1c5fd2416c37743dc48544da4bcfd23fc6928cdd
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: d65ef555ff0f05ca8020b3598bc6ac3022a708dd
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112538993"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272711"
 ---
 # <a name="what-is-azure-iot-hub-device-provisioning-service"></a>Azure IoT 中心设备预配服务是什么？
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务 (DPS) 是 IoT 中心的帮助器服务，支持零接触、实时预配到适当的 IoT 中心，不需要人为干预。 使用 DPS 能够以安全且可缩放的方式预配数百万台设备。
@@ -126,6 +126,6 @@ DPS 通过 Azure IoT 中心将设备预配自动化。 了解有关 [IoT 中心]
 
 [使用 Azure 门户设置 IoT 中心设备预配服务](quick-setup-auto-provision.md)
 
-[创建和预配模拟设备](quick-create-simulated-device.md)
+[创建和预配模拟设备](quick-create-simulated-device-tpm.md)
 
 [设置设备以进行预配](tutorial-set-up-device.md)

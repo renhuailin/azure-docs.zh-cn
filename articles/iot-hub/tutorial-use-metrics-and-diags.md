@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: beab67a209c177c91a1c4fcfa44934234b6dbc06
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 139244b8519dcbbc02800b8e22e9c438d1cc2b80
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294804"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458920"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和日志
 
@@ -319,7 +319,7 @@ IoT 中心为几种操作类别发出资源日志；但是，若要查看这些�
 >
 > IoT 中心最多需要 10 分钟才能完全配置和启用警报。 在配置上一个警报和运行模拟设备应用之间，至少等待 10 分钟。
 
-下载 [IoT 设备模拟](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)的解决方案。 可通过此链接下载包含多个应用程序的存储库；要查找的内容位于 iot-hub/Quickstarts/simulated-device/ 中。
+下载 [IoT 设备模拟](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)的解决方案。 可通过此链接下载包含多个应用程序的存储库；要查找的内容位于 iot-hub/Quickstarts/simulated-device/ 中。
 
 1. 在本地终端窗口中，导航到解决方案的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device** 文件夹。
 

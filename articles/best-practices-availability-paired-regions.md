@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 4fe0b913c003ccf4247833ba1dc12c4ec1e7248a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 030197a39ef10193887e3fc9966acd1979137291
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730200"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233117"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -96,7 +96,7 @@ Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地
 ## <a name="cross-region-activities"></a>跨区域活动
 如图 2 所示。
 
-1. **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure 复原技术指南](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)。 
+1. **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 
 
 2. Azure 存储 - 若要使用托管磁盘，请了解如何使用 Azure 备份进行[跨区域备份](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)，以及如何使用 Azure Site Recovery [复制 VM](./site-recovery/azure-to-azure-tutorial-enable-replication.md)（从一个区域复制到另一个区域）。 如果使用的是存储帐户，则在创建 Azure 存储帐户时默认配置异地冗余存储 (GRS)。 使用 GRS 时，数据在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
 

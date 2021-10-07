@@ -3,15 +3,15 @@ title: 为 Azure 自动化帐户使用系统分配的托管标识（预览版）
 description: 本文介绍如何为 Azure 自动化帐户设置托管标识。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/12/2021
+ms.date: 09/23/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 882a55d017ed23dc7abbc9096e38f70abb41c425
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: b84c73e5286dc633b54ade2d59d43957f517361e
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214281"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057655"
 ---
 # <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>为 Azure 自动化帐户使用系统分配的托管标识（预览版）
 
@@ -21,7 +21,7 @@ ms.locfileid: "123214281"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure 自动化帐户。 有关说明，请参阅[创建 Azure 自动化帐户](automation-quickstart-create-account.md)。
+- 一个 Azure 自动化帐户。 有关说明，请参阅[创建 Azure 自动化帐户](./quickstarts/create-account-portal.md)。
 
 - Azure 帐户模块的最新版本。 当前版本为 2.2.8。 （请参阅 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/)，了解此版本的相关详情。）
 
@@ -48,7 +48,7 @@ ms.locfileid: "123214281"
 $sub = Get-AzSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
 {
-    Connect-AzAccount -Identity
+    Connect-AzAccount
 }
 
 # If you have multiple subscriptions, set the one to use
@@ -270,11 +270,17 @@ New-AzRoleAssignment `
 
 ## <a name="authenticate-access-with-system-assigned-managed-identity"></a>使用系统分配的托管标识对访问进行身份验证
 
-为自动化帐户启用托管标识并向标识授予对目标资源的访问权限后，可以在 runbook 中针对支持托管标识的资源指定该标识。 对于标识支持，请使用 Az cmdlet `Connect-AzAccount` cmdlet。 请参阅 PowerShell 参考中的 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount)。 请将 `SubscriptionID` 替换为你的实际订阅 ID，然后执行以下命令：
+为自动化帐户启用托管标识并向标识授予对目标资源的访问权限后，可以在 runbook 中针对支持托管标识的资源指定该标识。 对于标识支持，请使用 Az cmdlet `Connect-AzAccount` cmdlet。 请参阅 PowerShell 参考中的 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount)。
 
 ```powershell
-Connect-AzAccount -Identity
-$AzureContext = Set-AzContext -SubscriptionId "SubscriptionID"
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 ```
 
 > [!NOTE]

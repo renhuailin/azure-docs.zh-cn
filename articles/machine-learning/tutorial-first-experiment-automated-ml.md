@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 在工作室 UI 中使用 Azure 机器学习自动化 ML，在不编写任何代码的情况下训练分类模型。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/01/2021
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 69cbb3923f3a29085b0999bdce44efe99245b3eb
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: e3664e9a42a502509e74c43643d47f18e153ff6e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113491364"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429958"
 ---
 # <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>教程：在 Azure 机器学习工作室中使用无代码 AutoML 训练分类模型
 
@@ -84,7 +84,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
     1. 在“数据存储和文件选择”窗体上，选择在创建工作区期间自动设置的默认数据存储“workspaceblobstore(Azure Blob 存储)”。 你可以在此数据存储中上传数据文件，使其可用于你的工作区。
 
-    1. 选择“浏览”。
+    1. 选择“浏览”  。
     
     1. 选择本地计算机上的 bankmarketing_train.csv 文件。 这是作为[必备组件](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)下载的文件。
 
@@ -149,7 +149,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
             **完成此操作需要数分钟的时间。** 
 
-             ![“设置”页面](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
+             ![“设置”页](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. 创建后，从下拉列表中选择新的计算目标。
 
