@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解如何更改工作区使用的 Azure 存储帐户的访问密钥。 Azure 机器学习使用 Azure 存储帐户来存储数据和模型。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 039baa02a9504d0df9681370f31fef45f6c2ed99
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4108c905148eba0bb718fe372be87e5ec6a342d2
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291005"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425651"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 

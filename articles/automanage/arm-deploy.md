@@ -1,19 +1,17 @@
 ---
 title: 使用 ARM 模板将计算机加入 Azure Automanage
 description: 了解如何使用 Azure 资源管理器模板将计算机加入 Azure Automanage。
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 04/09/2021
-ms.author: alsin
-ms.openlocfilehash: 34f20a50fc62cff98362380222822ac016b76a48
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c86cf4ac8bdc5855248d2ec114f7ba2f050d8346
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746765"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457442"
 ---
 # <a name="onboard-a-machine-to-automanage-with-an-azure-resource-manager-arm-template"></a>使用 Azure 资源管理器 (ARM) 模板将计算机加入 Automanage
 

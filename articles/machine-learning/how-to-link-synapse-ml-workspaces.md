@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何将 Azure Synapse 工作区和 Azure 机器学习工作区相链接并附加 Apache Spark 池，来获得统一的数据整理体验。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 7652f1562050b3253b0df7ee16c4eff5dd6f8e85
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 812475b1a3b3029971dcc440ca6e26af95fdd389
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112376857"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425347"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-and-attach-apache-spark-poolspreview"></a>将 Azure Synapse Analytics 工作区和 Azure 机器学习工作区进行链接并附加 Apache Spark 池（预览）
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 070c9ff8cbca98272be6aa0cf48a97381f4ff6b4
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: ce75b0439bdf14c8894fe91267ae3b88508a89d4
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216605"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400299"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 
@@ -66,7 +66,7 @@ ms.locfileid: "129216605"
 
                 | 传输协议 | 源 | 源端口范围 | 目标 |目标端口范围 |
                 |---|---|---|---|---|
-                |TCP|Azure-SSIS IR 的静态 IP 地址 <br> 有关详细信息，请参阅[为 Azure-SSIS IR 创建自己的公共 IP](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)。|*|VirtualNetwork|3342|
+                |TCP|Azure-SSIS IR 的静态 IP 地址 <br> 有关详细信息，请参阅[为 Azure-SSIS IR 创建自己的公共 IP](azure-ssis-integration-runtime-virtual-network-configuration.md#publicIP)。|*|VirtualNetwork|3342|
 
              1. Azure-SSIS IR 的出站要求，以允许流向 SQL 托管实例的出站流量。
 
@@ -111,7 +111,7 @@ ms.locfileid: "129216605"
         |---|---|---|---|---|---|
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |允许流向 SQL 托管实例的出站流量。 如果连接策略设置为“代理”（而不是“重定向”），那么只需要端口 1433。 |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | 虚拟网络中的 Azure-SSIS IR 节点使用此端口来访问 Azure 服务，如 Azure 存储和 Azure 事件中心。 |
-        | TCP | VirtualNetwork | * | Internet | 80 | （可选）虚拟网络中的 Azure-SSIS IR 节点使用此端口从 Internet 下载证书吊销列表。 如果阻止此流量，可能会在启动 IR 时遇到性能降级，并且无法通过检查证书吊销列表来了解证书使用情况。 若要进一步将目标范围缩小到特定 FQDN，请参阅[使用 Azure ExpressRoute 或用户定义的路由 (UDR)](./join-azure-ssis-integration-runtime-virtual-network.md#route)。|
+        | TCP | VirtualNetwork | * | Internet | 80 | （可选）虚拟网络中的 Azure-SSIS IR 节点使用此端口从 Internet 下载证书吊销列表。 如果阻止此流量，可能会在启动 IR 时遇到性能降级，并且无法通过检查证书吊销列表来了解证书使用情况。 若要进一步将目标范围缩小到特定 FQDN，请参阅[使用 Azure ExpressRoute 或用户定义的路由 (UDR)](./azure-ssis-integration-runtime-virtual-network-configuration.md#route)。|
         | TCP | VirtualNetwork | * | 存储 | 445 | （可选）只有当你要执行存储在 Azure 文件存储中的 SSIS 包时，才需要此规则。 |
         |||||||
 
@@ -123,7 +123,7 @@ ms.locfileid: "129216605"
         | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | （可选）只有当 Microsoft 支持者要求客户打开以进行高级故障排除，并且可以在故障排除后立即关闭时，才需要此规则。 CorpNetSaw 服务标记只允许 Microsoft 企业网络中的安全访问工作站使用远程桌面。 无法在门户中选择此服务标记，只能通过 Azure PowerShell 或 Azure CLI 选择。 <br/><br/> 在 NIC 级别 NSG 处，端口 3389 是默认打开的，允许在子网级别 NSG 处控制端口 3389；但在此期间，Azure-SSIS IR 在每个 IR 节点上的 Windows 防火墙规则处默认禁止端口 3389 出站以实现保护。 |
         |||||||
 
-    1. 有关详细信息，请参阅[虚拟网络配置](join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration)：
+    1. 有关详细信息，请参阅[虚拟网络配置](azure-ssis-integration-runtime-virtual-network-configuration.md)：
         - 如果你为 Azure-SSIS IR 创建自己的公共 IP 地址
         - 如果你使用自己的域名系统 (DNS) 服务器
         - 如果你使用 Azure ExpressRoute 或用户定义的路由 (UDR)

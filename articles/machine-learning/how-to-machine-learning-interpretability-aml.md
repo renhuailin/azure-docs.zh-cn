@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解机器学习模型如何确定特征重要性并做出预测。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: b033b37532bffa92bcc8f427abe4508c5b93aefc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 803a70b01a39d20080a9724b6ab1780c9a81d354
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739197"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425404"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解释性包通过 Python 解释 ML 模型和预测（预览版）
 
@@ -31,7 +31,7 @@ ms.locfileid: "121739197"
 
 * 将解释上传到 Azure 机器学习运行历史记录。
 
-* 在 Jupyter 笔记本和 Azure 机器学习工作室中使用可视化仪表板与模型解释进行交互。
+* 使用可视化仪表板在 Jupyter 笔记本和 Azure 机器学习工作室中与模型解释进行交互。
 
 * 将评分解释器与模型一起部署，以便在推理过程中观察解释。
 
@@ -307,7 +307,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
 可视化效果同时支持有关工程化特征和原始特征的说明。 原始解释基于原始数据集的特征，工程化解释基于应用了特征工程的数据集的特征。
 
-尝试解释与原始数据集相关的模型时，建议使用原始解释，因为每个特征重要性将对应于原始数据集中的一个列。 工程化解释可能有用的一个场景是，从分类特征观察各个类别的影响。 如果对某个分类特征应用了独热编码，则生成的工程化解释会为每个类别包含一个不同的重要性值，为每个独热工程化特征包含一个重要性值。 这种编码在缩小范围以确定数据集的哪一部分提供的信息对模型最有用时很有用。
+尝试解释与原始数据集相关的模型时，建议使用原始解释，因为每个特征重要性将对应于原始数据集中的一个列。 工程化解释可能有用的一个场景是，从分类特征观察各个类别的影响。 如果对某个分类特征应用了独热编码，则生成的工程化解释会为每个类别包含一个不同的重要性值，为每个独热工程化特征包含一个重要性值。 此编码在缩小范围以确定数据集的哪一部分提供的信息对模型最有用时很有用。
 
 > [!NOTE]
 > 工程化解释和原始解释按顺序计算。 首先会基于模型和特征化管道创建一个工程化解释。 然后，通过聚合来自同一原始特征的工程化特征的重要性，基于该工程化解释创建原始解释。

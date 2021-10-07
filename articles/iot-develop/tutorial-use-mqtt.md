@@ -1,18 +1,18 @@
 ---
 title: 教程 - 使用 MQTT 创建 Azure IoT 即插即用设备客户端 | Microsoft Docs
 description: 教程 - 直接使用 MQTT 协议创建 IoT 即插即用设备客户端，而不使用 Azure IoT 设备 SDK
-author: lizross
-ms.author: lizross
+author: ryanwinter
+ms.author: rywinter
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: f04d6521416375674d36d8d028cc3c0ec6aa9aec
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: ac8fb1ec3612d552c6e809d9aedb09a8a38fdf98
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091343"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129364118"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>教程 - 使用 MQTT 开发 IoT 即插即用设备客户端
 

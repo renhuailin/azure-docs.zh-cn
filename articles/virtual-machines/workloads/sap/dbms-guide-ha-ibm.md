@@ -7,19 +7,19 @@ ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: faafce32c3452a5c4ff08783ec2edd28f7f961e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14ace59aa97457fc43f197476f8a1e34cf5e319
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101671887"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355174"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>采用 Pacemaker 的 SUSE Linux Enterprise Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
 
 采用[高可用性和灾难恢复 (HADR) 配置](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html)的 IBM Db2 for Linux、UNIX 和 Windows (LUW) 包含一个运行主数据库实例的节点，以及至少一个运行辅助数据库实例的节点。 对主数据库实例进行的更改将以同步或异步方式复制到辅助数据库实例，具体取决于你的配置。 
 
 > [!NOTE]
-> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用该术语。  从软件中删除这些术语后，我们会将其从本文中删除。
+> 本文包含对术语“主”和“从”的引用，Microsoft 不再使用这些术语 。 当这些术语在软件中被删除后，我们会将它们从本文中删除。
    
 本文介绍如何部署和配置 Azure 虚拟机 (VM) 、安装群集框架，以及安装具有 HADR 配置的 IBM Db2 LUW。 
 
@@ -482,7 +482,7 @@ j2ee/dbhost = db-virt-hostname
 1. 在右框架中，选择密钥 jdbc/pool/\<SAPSID>/url。
 1. 将 JDBC URL 中的主机名更改为虚拟主机名。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. 选择 **添加** 。
+1. 选择“添加”。
 1. 要保存所做的更改，请在左上角选择磁盘图标。
 1. 关闭配置工具。
 1. 重启 Java 实例。
@@ -894,14 +894,14 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
 [sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
 [db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
 [db2-hadr-10.5]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
-[dbms-db2]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm
-[sles-pacemaker]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker
+[dbms-db2]:dbms_guide_ibm.md
+[sles-pacemaker]:high-availability-guide-suse-pacemaker.md
 [sap-instfind]:https://help.sap.com/viewer/9e41ead9f54e44c1ae1a1094b0f80712/ALL/en-US/576f5c1808de4d1abecbd6e503c9ba42.html
-[nfs-ha]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs
+[nfs-ha]:high-availability-guide-suse-nfs.md
 [sles-ha-guide]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP4/
-[ascs-ha]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse
+[ascs-ha]:high-availability-guide-suse.md
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
-[azr-sap-plancheck]:https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist
+[azr-sap-plancheck]:sap-deployment-checklist.md

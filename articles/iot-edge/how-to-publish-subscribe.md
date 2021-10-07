@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f798f8be2989140711cb9122c9d59e7b91248f61
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 899a6c1f0e5f2eb7441ea2035cdb12bed13a4b85
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128600373"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457309"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>使用 Azure IoT Edge 发布和订阅（预览版）
 
@@ -417,7 +417,7 @@ mosquitto_pub \
 
 ### <a name="send-direct-methods"></a>发送直接方法
 
-发送直接方法是 HTTP 调用，因此不需要通过 MQTT 中转站。 若要将直接方法发送到 IoT 中心，请参阅[了解并调用直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。 若要将直接方法本地发送到其他模块，请参阅这一 [Azure IoT C# SDK 直接方法调用示例](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/ModuleClient.cs#L597)。
+发送直接方法是 HTTP 调用，因此不需要通过 MQTT 中转站。 若要将直接方法发送到 IoT 中心，请参阅[了解并调用直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。 若要将直接方法本地发送到其他模块，请参阅这一 [Azure IoT C# SDK 直接方法调用示例](https://github.com/Azure/azure-iot-sdk-csharp/blob/main/iothub/device/src/ModuleClient.cs#L597)。
 
 ## <a name="publish-and-subscribe-between-mqtt-brokers"></a>在 MQTT 中转站之间发布和订阅
 

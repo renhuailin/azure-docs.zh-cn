@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 01e8cec9a77db207e5320386cbc39c8bbcfddd07
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2a73ae4a780836371414401cf4d0114a6a5b220
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621141"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273906"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage 的多协议访问
 
@@ -23,7 +23,7 @@ Blob API 现在兼容有分层命名空间的帐户。 这会对有分层命名�
 
 可以借助 Data Lake Storage 多协议访问，使用由工具、应用程序和服务组成的生态系统来处理数据。 这还包括第三方工具和应用程序。 可以将它们指向具有分层命名空间的帐户，不需修改它们。 这些应用程序即使在调用 Blob API 的情况下也“按原样”运行，因为 Blob API 现在可以对具有分层命名空间的帐户中的数据进行操作。
 
-Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-logging.md)、[访问层](storage-blob-storage-tiers.md)和 [Blob 存储生命周期管理策略](./lifecycle-management-overview.md)）现在适用于具有分层命名空间的帐户。 因此，可以在 Blob 存储帐户上启用分层命名空间，不会失去对这些重要功能的访问权限。
+Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-logging.md)、[访问层](access-tiers-overview.md)和 [Blob 存储生命周期管理策略](./lifecycle-management-overview.md)）现在适用于具有分层命名空间的帐户。 因此，可以在 Blob 存储帐户上启用分层命名空间，不会失去对这些重要功能的访问权限。
 
 > [!NOTE]
 > Data Lake Storage 多协议访问已公开发布，在所有区域提供。 多协议访问启用的某些 Azure 服务或 Blob 存储功能仍为预览版。 这些文章汇总了对 Blob 存储功能和 Azure 服务集成的当前支持。

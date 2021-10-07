@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何为自动化机器学习试验配置数据集拆分和交叉验证
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: how-to
 ms.custom: automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: 82ea26a5522d44bb39adc30f388f996688cb1ad5
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: e6a5893fd6c6fab3dc1631065d63315fe2c6fd84
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180053"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427640"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自动化机器学习中配置数据拆分和交叉验证
 

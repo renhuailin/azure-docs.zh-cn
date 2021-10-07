@@ -1,20 +1,18 @@
 ---
 title: 适用于已启用 Arc 的服务器的 Azure Automanage
 description: 了解适用于已启用 Arc 的服务器的 Azure Automanage
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 06/24/2021
-ms.author: alsin
-ms.openlocfilehash: 990cca45c41eef57f1971c866cdbe1e9efd62f6c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: ce12689548884d4c57363851f7de99b5fb067ef6
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772607"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456226"
 ---
 # <a name="azure-automanage-for-machines-best-practices---arc-enabled-servers"></a>适用于计算机的 Azure Automanage 最佳做法 - 已启用 Arc 的服务器
 

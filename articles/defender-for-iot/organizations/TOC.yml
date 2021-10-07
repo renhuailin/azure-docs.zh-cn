@@ -25,6 +25,8 @@
   items:
     - name: Azure Defender for IoT 试用版设置
       href: tutorial-onboarding.md
+    - name: 集成 ClearPass
+      href: tutorial-clearpass.md
     - name: 集成 CyberArk
       href: tutorial-cyberark.md
     - name: 集成 Forescout

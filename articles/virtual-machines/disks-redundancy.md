@@ -7,13 +7,13 @@ ms.date: 09/01/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 5bb77a9a5c7a1a33fe1d95213d9ceb3f83406ac2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.custom: references_regions
+ms.openlocfilehash: 3748b896956e058e9dc6c01083c19aa8e9c327e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429975"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569345"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>托管磁盘的冗余选项
 
@@ -34,7 +34,7 @@ Azure 托管磁盘提供两个存储冗余选项：区域冗余存储 (ZRS) 和�
 
 ## <a name="zone-redundant-storage-for-managed-disks"></a>托管磁盘的区域冗余存储
 
-区域冗余存储 (ZRS) 在所选区域中的三个 Azure 可用性区域同步复制 Azure 托管磁盘。 每个可用性区域都是一个独立的物理位置，具有独立的电源、冷却系统和网络。 
+区域冗余存储 (ZRS) 在所选区域中的三个 Azure 可用性区域同步复制 Azure 托管磁盘。 每个可用性区域都是一个独立的物理位置，具有独立的电源、冷却系统和网络。
 
 ZRS 磁盘可让你从可用性区域故障中恢复。 如果区域出现故障，可将 ZRS 磁盘附加到另一个区域的虚拟机 (VM)。 还可以在 VM 之间共享 ZRS 磁盘，以提高群集或分布式应用程序（如 SQL FCI、SAP ASCS/SCS 或 GFS2）的可用性。 共享的 ZRS 磁盘可以附加到不同区域中的主 VM 和辅助 VM，以充分利用 ZRS 和[可用性区域](../availability-zones/az-overview.md)。 如果主区域发生故障，就可使用 [SCSI 永久预留](disks-shared-enable.md#supported-scsi-pr-commands)功能快速故障转移到辅助 VM。
 
@@ -44,7 +44,7 @@ ZRS 磁盘可让你从可用性区域故障中恢复。 如果区域出现故障
 
 ### <a name="comparison-with-other-disk-types"></a>与其他磁盘类型的比较
 
-除了写入延迟更长之外，使用 ZRS 的磁盘与使用 LRS 的磁盘完全相同，它们具有相同的缩放目标。 [对磁盘进行基准测试](disks-benchmarks.md)以模拟应用程序的工作负载，并比较 LRS 和 ZRS 磁盘的延迟。 
+除了写入延迟更长之外，使用 ZRS 的磁盘与使用 LRS 的磁盘完全相同，它们具有相同的缩放目标。 [对磁盘进行基准测试](disks-benchmarks.md)以模拟应用程序的工作负载，并比较 LRS 和 ZRS 磁盘的延迟。
 
 ### <a name="limitations"></a>限制
 

@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 03/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9f1ace00356583dbb6102317e3d157fb58682710
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c97d046208b2a2364b38ffd1e01ff0a9d25f7eeb
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832572"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271927"
 ---
 # <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 
@@ -36,7 +36,7 @@ Azure 自动化会安全存储每个加密的变量。 创建变量时，可以�
 
 使用 Azure 门户创建变量时，必须从下拉列表指定一个数据类型，使门户能够显示用于输入变量值的相应控件。 下面是可在 Azure 自动化中使用的变量类型：
 
-* 字符串
+* String
 * Integer
 * DateTime
 * Boolean
@@ -53,7 +53,7 @@ Azure 自动化会安全存储每个加密的变量。 创建变量时，可以�
 
 ## <a name="powershell-cmdlets-to-access-variables"></a>用于访问变量的 PowerShell cmdlet
 
-下表中的 cmdlet 使用 PowerShell 创建和管理自动化变量。 它们作为 [Az 模块](modules.md#az-modules)的一部分提供。
+下表中的 cmdlet 使用 PowerShell 创建和管理自动化变量。 它们作为 Az 模块的一部分提供。
 
 | Cmdlet | 说明 |
 |:---|:---|

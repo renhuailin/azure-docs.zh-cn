@@ -3,19 +3,17 @@ title: 必应见解的示例 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关必应视觉搜索可能如何使用以及如何在 Bing.com 上显示图像见解的示例。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: scottwhi
-ms.openlocfilehash: e0a3bdc7e68301c067b7e1ca80a3e708522e0df1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51248cb5e37e6f109873340cca74c46e4af6a721
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96493349"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669657"
 ---
 # <a name="examples-of-bing-insights-usage"></a>必应见解用法示例
 

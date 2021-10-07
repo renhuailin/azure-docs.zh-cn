@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Cache for Redis 创建 ASP.NET Web 应用
 description: 本快速入门介绍如何使用 Azure Redis 缓存创建 ASP.NET Web 应用
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: quickstart
 ms.date: 09/29/2020
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d32043aa51f798de96468768fd68a924914b621b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f76f350280b0a42f2915d9e9f00357919e5c4f8e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128660721"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533793"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用 
 
@@ -39,7 +39,7 @@ ms.locfileid: "128660721"
 
     b. 选择“ASP.NET Web 应用程序(.NET Framework)”。
 
-    c. 选择“下一步”。
+    c. 选择“**下一步**”。
 
 3. 在“项目名称”框中，为项目提供一个名称。 在此示例中，我们使用了 **ContosoTeamStats**。
 

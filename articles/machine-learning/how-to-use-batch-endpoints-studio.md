@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 在本文中，可了解如何在 Azure 机器学习工作室中创建批处理终结点。 批处理终结点用于连续对大型数据批量评分。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 author: shivanissambare
 ms.author: ssambare
 ms.reviewer: larryfr
 ms.date: 08/16/2021
 ms.custom: how-to, studio, managed-batch-endpoints
-ms.openlocfilehash: f5f5d71b22c505580ed4e6b339f5b9c30e19eb89
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 290d13c050a624c660174e3d8e272c67e90a9207
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122868327"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424135"
 ---
 # <a name="how-to-use-batch-endpoints-preview-in-azure-machine-learning-studio"></a>如何在 Azure 机器学习工作室中使用批处理终结点（预览版）
 

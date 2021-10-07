@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 6fa30a56b3fb6e8b16a50bff7fda4c9349348633
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: a047350f8e91a5ce25d8fe8ee60ffd6aa12aaae7
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403572"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516751"
 ---
 IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现，就能与某个设备的功能交互。 本快速入门介绍如何使用 Java 来连接和控制已与解决方案连接的 IoT 即插即用设备。
 
@@ -36,7 +36,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 
 [!INCLUDE [iot-pnp-environment](iot-pnp-environment.md)]
 
-若要详细了解示例配置，请参阅[示例自述文件](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md)。
+若要详细了解示例配置，请参阅[示例自述文件](https://github.com/Azure/azure-iot-sdk-java/blob/main/device/iot-device-samples/readme.md)。
 
 在本快速入门中，你将使用一个以 Java 编写的示例恒温器设备作为 IoT 即插即用设备。 运行示例设备：
 

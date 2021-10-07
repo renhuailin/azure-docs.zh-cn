@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8e28f56d67b4e92541c636e3b575b2f3404e3140
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 410d5daf67d590d84801a23627b5ce46e26367f5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733837"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357575"
 ---
 # <a name="authorize-access-to-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问队列
 
@@ -65,7 +65,7 @@ Azure RBAC 提供多个内置角色，用于通过 Azure AD 和 OAuth 授权访�
 
 若要了解如何将 Azure 内置角色分配给安全主体，请参阅[分配用于访问队列数据的 Azure 角色](../queues/assign-azure-role-data-access.md)。 若要了解如何列出 Azure RBAC 角色及其权限，请参阅[列出 Azure 角色定义](../../role-based-access-control/role-definitions-list.md)。
 
-有关如何为 Azure 存储定义内置角色的详细信息，请参阅[了解角色定义](../../role-based-access-control/role-definitions.md#management-and-data-operations)。 若要了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。
+有关如何为 Azure 存储定义内置角色的详细信息，请参阅[了解角色定义](../../role-based-access-control/role-definitions.md#control-and-data-actions)。 若要了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。
 
 只有为数据访问显式定义的角色才允许安全主体访问队列数据。 内置角色（例如“所有者”、“参与者”和“存储帐户参与者”）允许安全主体管理存储帐户，但不通过 Azure AD 提供对该帐户内的队列数据的访问权限。 但是，如果角色包括 Microsoft.Storage/storageAccounts/listKeys/action，则分配了该角色的用户可以使用帐户访问密钥通过共享密钥授权来访问存储帐户中的数据。 有关详细信息，请参阅[选择如何在 Azure 门户中授予对 blob 数据的访问权限](../../storage/queues/authorize-data-operations-portal.md)。
 

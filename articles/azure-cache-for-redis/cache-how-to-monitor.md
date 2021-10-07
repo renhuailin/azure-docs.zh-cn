@@ -1,17 +1,17 @@
 ---
 title: 监视用于 Redis 的 Azure 缓存
 description: 了解如何监视用于 Redis 的 Azure 缓存实例的运行状况和性能
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 80290a9214e7d4b2715251f49b407d7456bd1fb6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 64234292051c5f780c33fd55fabf3305f45b756d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293966"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538401"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>监视用于 Redis 的 Azure 缓存
 
@@ -84,7 +84,7 @@ Azure Cache for Redis 实例的指标是使用 Redis [INFO](https://redis.io/com
 1. 选中“存档到存储帐户”。  向存储帐户发送诊断时，会针对存储和事务向你收取正常数据费率。
 1. 选择“配置”  以选择要在其中存储缓存指标的存储帐户。
 1. 在表标题“指标”  下，选中你要存储的行项（例如“AllMetrics”）旁边的复选框。  指定一个“保留期(天)”  策略。 可以指定的最大保留天数为 **365 天**。 但是，如果你要永久保留指标数据，请将“保留期(天)”设置为 0 。
-1. 选择“保存”。
+1. 选择“保存”  。
 
 ![Redis 诊断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
@@ -163,14 +163,16 @@ Azure Cache for Redis 实例的指标是使用 Redis [INFO](https://redis.io/com
 
 有关配置和使用警报的详细信息，请参阅[警报概述](../azure-monitor/alerts/alerts-classic-portal.md)。
 
-## <a name="activity-logs"></a>活动日志
+<!-- 
+## Activity Logs
 
-活动日志提供有关在 Azure Cache for Redis 实例上完成的操作的见解。 活动日志以前称为“审核日志”或“操作日志”。 通过活动日志，可确定对用于 Redis 的 Azure 缓存实例执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。
+Activity logs provide insight into the operations that completed on your Azure Cache for Redis instances. It was previously known as "audit logs" or "operational logs". Using activity logs, you can determine the "what, who, and when" for any write operations (PUT, POST, DELETE) taken on your Azure Cache for Redis instances.
 
 > [!NOTE]
-> 活动日志不包括读取 (GET) 操作。
->
+> Activity logs do not include read (GET) operations.
+> 
 
-若要查看缓存的活动日志，请在“资源”菜单中选择“活动日志” 。
+To view activity logs for your cache, select **Activity logs** from the **Resource menu**.
 
-有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/essentials/platform-logs-overview.md)。
+For more information about Activity logs, see [Overview of the Azure Activity Log](../azure-monitor/essentials/platform-logs-overview.md).
+-->

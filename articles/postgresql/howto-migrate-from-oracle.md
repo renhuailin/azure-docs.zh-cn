@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: c197f5200c3db60a63bfd8c8e4e01ab4881aa5b6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 758199dca165c301322631e0d29b1af2711dc56b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756352"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356948"
 ---
 # <a name="migrate-oracle-to-azure-database-for-postgresql"></a>将 Oracle 迁移到 Azure Database for PostgreSQL
 
@@ -71,7 +71,7 @@ ora2pg 工具将连接 Oracle 数据库，自动对其进行扫描，并提取�
 - 如果可能，请在具体化视图中使用唯一索引。 使用 `REFRESH MATERIALIZED VIEW CONCURRENTLY` 语法时，这些索引可以加快刷新速度。
 
 
-## <a name="pre-migration"></a>预迁移 
+## <a name="pre-migration"></a>迁移前 
 
 在确认你的源环境受支持并且你满足了所有先决条件之后，即准备就绪，可开始预迁移阶段。 开始时，请执行以下操作： 
 
@@ -92,7 +92,7 @@ ora2pg 工具将连接 Oracle 数据库，自动对其进行扫描，并提取�
 - 每个架构中表的大小。
 - 每个包、函数、过程等的代码行数。
 
-从 [github](https://github.com/microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts) 下载相关脚本。
+从 [github](https://github.com/microsoft/DataMigrationTeam/tree/master/Whitepapers) 下载相关脚本。
 
 ### <a name="assess"></a>评估
 

@@ -8,12 +8,12 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
 ms.date: 11/09/2020
-ms.openlocfilehash: eca47e26f497b1e8bb54e99cf49fcf326f9e5255
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d1b0877bf93b18aa60903388a10419833fe6cf35
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110486401"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129300348"
 ---
 此基于 Postman 的快速入门详细介绍如何从知识库获取答案。
 
@@ -110,7 +110,7 @@ ms.locfileid: "110486401"
                     "What is the max size of a knowledge base?",
                     "How many GB of data can a knowledge base hold?"
                 ],
-                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../Concepts/azure-resources.md) for more details.",
                 "score": 68.76,
                 "id": 3,
                 "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
@@ -164,7 +164,7 @@ ms.locfileid: "110486401"
                 "questions": [
                     "How do I share a knowledge base with others?"
                 ],
-                "answer": "Sharing works at the level of a QnA Maker service, that is, all knowledge bases in the service will be shared. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/collaborate-knowledge-base) how to collaborate on a knowledge base.",
+                "answer": "Sharing works at the level of a QnA Maker service, that is, all knowledge bases in the service will be shared.",
                 "score": 56.07,
                 "id": 5,
                 "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
@@ -413,7 +413,7 @@ JSON 响应使用与已发布的知识库查询相同的架构。
                     "What is the max size of a knowledge base?",
                     "How many GB of data can a knowledge base hold?"
                 ],
-                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../Concepts/azure-resources.md) for more details.",
                 "score": 71.1,
                 "id": 3,
                 "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
@@ -442,7 +442,7 @@ JSON 响应使用与已发布的知识库查询相同的架构。
 我们现在支持添加无法用于提取 QnA 的非结构化文档。用户可以在提取查询响应时，选择在 GenerateAnswer API 中包括或排除非结构化数据集。
      
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
-我们不支持 GA 服务中的非结构化数据集。
+我们不支持在 GA 服务中使用非结构化数据集。
 
 # <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
@@ -454,7 +454,7 @@ JSON 响应使用与已发布的知识库查询相同的架构。
        "top": 2
     }
     ```
-2. 响应包括答案源。 
+2. 响应包括解答源。 
     ```json
        {
      "answers": [

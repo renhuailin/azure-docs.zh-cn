@@ -8,12 +8,12 @@ ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: ef74136627f7f7e90e94b91f212438d8e9daf0d6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: cdeff15125a9af306e04baae5efaf758e8cf0b11
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489530"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278210"
 ---
 # <a name="backup-to-azure-with-dobiprotect"></a>使用 DobiProtect 备份到 Azure
 
@@ -74,7 +74,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 
 ### <a name="choose-the-right-storage-options"></a>选择适当的存储选项
 
-使用 Azure 作为备份目标时，将会使用 [Azure Blob 存储](../../../../blobs/storage-blobs-introduction.md)。 Blob 存储是 Microsoft 的对象存储解决方案。 Blob 存储经过优化，可存储海量的非结构化数据（即，不遵循任何数据模型或定义的数据）。 此外，Azure 存储非常持久、高度可用、安全且可缩放。 你可以为工作负载选择适当的存储，以提供满足内部 SLA 的[复原级别](../../../../common/storage-redundancy.md)。 Blob 存储是按用量付费的服务。 它按照存储的数据量、访问这些数据的次数，以及选择冷层和存档层时所需的最短保留期[按月收费](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing)。 下表汇总了适用于备份数据的复原和分层选项。
+使用 Azure 作为备份目标时，将会使用 [Azure Blob 存储](../../../../blobs/storage-blobs-introduction.md)。 Blob 存储是 Microsoft 的对象存储解决方案。 Blob 存储经过优化，可存储海量的非结构化数据（即，不遵循任何数据模型或定义的数据）。 此外，Azure 存储非常持久、高度可用、安全且可缩放。 你可以为工作负载选择适当的存储，以提供满足内部 SLA 的[复原级别](../../../../common/storage-redundancy.md)。 Blob 存储是按用量付费的服务。 它按照存储的数据量、访问这些数据的次数，以及选择冷层和存档层时所需的最短保留期[按月收费](../../../../blobs/access-tiers-overview.md#pricing-and-billing)。 下表汇总了适用于备份数据的复原和分层选项。
 
 **Blob 存储复原选项：**
 
@@ -83,7 +83,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 |**有效副本数**     | 3         | 3         | 6         | 6 |
 |**可用性区域数**     | 1         | 3         | 2         | 4 |
 |**区域数**     | 1         | 1         | 2         | 2 |
-|**手动故障转移到次要区域**     | 不可用         | 不适用         | 是         | 是 |
+|**手动故障转移到次要区域**     | 不可用         | 不可用         | 是         | 是 |
 
 **Blob 存储层：**
 
@@ -91,7 +91,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 | ----------- | ----------- | -----------  | -----------  |
 | **可用性** | 99.9%         | 99%         | Offline      |
 | 使用费 | 存储费用较高，访问和事务费用较低 | 存储费用较低，访问和事务费用较高 | 存储费用最低，访问和事务费用最高 |
-| **所需的最短数据保留期**| 不适用 | 30 天 | 180 天 |
+| **所需的最短数据保留期**| 不可用 | 30 天 | 180 天 |
 | **延迟（距收到第一个字节的时间）** | 毫秒 | 毫秒 | 小时 |
 
 #### <a name="sample-backup-to-azure-cost-model"></a>备份到 Azure 成本模型的示例

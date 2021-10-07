@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 1509fc725f9b2b486f75b69b4d9cb1509abe097f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1493e9166e9d9b1584187fe6d7210936db7cc038
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728775"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234426"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>使用 IoT 中心发送云到设备的消息 (Java)
 
@@ -223,7 +223,5 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，已学习如何发送和接收云到设备的消息。
-
-若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器](https://azure.microsoft.com/documentation/suites/iot-suite/)。
 
 若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。

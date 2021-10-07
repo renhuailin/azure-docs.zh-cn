@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/21/2021
+ms.date: 09/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 33389224bcc4abf05ffbb261e23409eb95896781
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b428b069c0f576109179ecc64bddc409abe29e5f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220867"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568317"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的开发人员说明
 
@@ -55,7 +55,9 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 [代理](../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)| NA | NA | 应用程序调用某个服务或 Web API，而后者又需要调用另一个服务或 Web API。 <br />  <br /> 若要使中间层服务向下游服务发出经过身份验证的请求，请在授权标头中传递一个客户端凭据令牌。 可以有选择地将自定义标头包含在 Azure AD B2C 用户令牌中。  |
 [OpenId Connect](openid-connect.md) | GA | GA | OpenID Connect 引入了 ID 令牌的概念，这是一种安全令牌，可让客户端验证用户的标识。 |
 [OpenId Connect 混合流](openid-connect.md) | GA | GA | 允许 Web 应用程序检索授权请求上的 ID 令牌以及授权代码。  |
-[资源所有者密码凭据 (ROPC)](add-ropc-policy.md) | 预览 | 预览 | 允许移动应用程序通过直接处理用户的密码让用户登录。 |
+[资源所有者密码凭据 (ROPC)](add-ropc-policy.md) | GA | GA | 允许移动应用程序通过直接处理用户的密码让用户登录。 |
+| [注销](session-behavior.md#sign-out)| GA | GA | |
+| [单一登录](session-behavior.md#sign-out)  | NA | 预览 | |
 
 ### <a name="oauth-20-options"></a>OAuth 2.0 选项
 
@@ -66,6 +68,7 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 | 通过 `client_assertion` 将 JSON 插入用户历程| NA| 已放弃 |  |
 | 将 JSON 作为 [id_token_hint](id-token-hint.md) 插入到用户旅程中 | NA | GA | |
 | [向应用程序传递标识提供者令牌](idp-pass-through-user-flow.md)| 预览| 预览| 例如，从 Facebook 到应用。 |
+| [使我保持登录状态 (KMSI)](session-behavior.md#enable-keep-me-signed-in-kmsi)| GA| GA| |
 
 ## <a name="saml2-application-authentication-flows"></a>SAML2 应用程序身份验证流
 
@@ -81,6 +84,7 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 |Feature  |用户流  |自定义策略  |备注  |
 |---------|:---------:|:---------:|---------|
 | [多语言支持](localization.md)| GA | GA | |
+| [自定义域](custom-domain.md)| GA | GA | |
 | [自定义电子邮件验证](custom-email-mailjet.md) | NA | GA| |
 | [使用内置模板自定义用户界面](customize-ui.md) | GA| GA| |
 | [使用自定义模板自定义用户界面](customize-ui-with-html.md) | GA| GA| 通过使用 HTML 模板。 |
@@ -89,6 +93,7 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 | [嵌入的登录体验](embedded-login.md) | NA |  预览| 通过使用内联框架元素 `<iframe>`。 |
 | [密码复杂性](password-complexity.md) | GA | GA | |
 | [禁用电子邮件验证](disable-email-verification.md) | GA|  GA| 不建议在生产环境中使用。 在注册过程中禁用电子邮件验证可能会导致垃圾邮件。 |
+
 
 
 
@@ -147,7 +152,7 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 | [外部登录会话提供程序](custom-policy-reference-sso.md#externalloginssosessionprovider) | GA |  |
 | [SAML SSO 会话提供程序](custom-policy-reference-sso.md#samlssosessionprovider) | GA |  |
 | [OAuth SSO 会话提供程序](custom-policy-reference-sso.md#oauthssosessionprovider)  | GA|  |
-| [单一登录](session-behavior.md#sign-out)  |  预览 |  |
+
 
 ### <a name="components"></a>组件
 
@@ -159,6 +164,7 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 | [Azure Active Directory](active-directory-technical-profile.md) 用作本地目录 | GA |  |
 | [谓词验证](predicates.md) | GA | 例如，密码复杂性。 |
 | [显示控件](display-controls.md) | GA |  |
+| [子旅程](subjourneys.md) | GA | |
 
 ### <a name="developer-interface"></a>开发人员接口
 

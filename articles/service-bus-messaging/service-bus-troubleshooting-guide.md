@@ -4,12 +4,12 @@ description: 了解你在使用 Azure 服务总线时可能遇到的一些问题
 ms.topic: article
 ms.date: 03/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0afb1d7a14867e616623519ec5de2c43e9beba2d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 433383845771fca2b3df1ce1da81e070dd8e75c1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663650"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359391"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供的故障排除技巧和建议适用于你在使用 Azure 服务总线时可能会遇到的一些问题。 
@@ -53,7 +53,7 @@ ms.locfileid: "110663650"
     ```
     如果使用的是其他工具（如 `tnc`、`ping` 等），则可以使用等效的命令。 
 - 如果上述步骤没有帮助，请获取网络跟踪，并使用 [Wireshark](https://www.wireshark.org/) 之类的工具对其进行分析。 如果需要，请联系 [Microsoft 支持部门](https://support.microsoft.com/)。 
-- 若要查找要添加到连接允许列表的正确 IP 地址，请参阅[我需要添加到允许列表的 IP 地址](service-bus-faq.yml#what-ip-addresses-do-i-need-to-add-to-allow-list-)。 
+- 若要查找要添加到连接允许列表的正确 IP 地址，请参阅[我需要添加到允许列表的 IP 地址](service-bus-faq.yml#what-ip-addresses-do-i-need-to-add-to-allowlist-)。 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服务升级/重启时可能出现的问题

@@ -7,16 +7,16 @@ ms.author: nibaccam
 ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.date: 03/08/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python, automl, references_regions
-ms.openlocfilehash: 0eda886537f0cfd6819ca69c53b4cafa44746636
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 3634cce207462695fdb7fadfecfb2f3f520d621f
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540696"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428096"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>对 Python 中的自动化 ML 试验进行故障排除
 

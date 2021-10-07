@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f0412b6e67ff62247feb3f8643553c5a6101ad73
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 2940e407e88239aa1afec84137e72073b7a5028a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892663"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533230"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>快速入门：使用 ARM 模板创建应用服务应用
 
@@ -106,7 +106,7 @@ ms.locfileid: "111892663"
 ::: zone pivot="platform-windows"
 运行以下代码，使用 Azure CLI 在 Windows 上部署 .NET Framework 应用。 
 
-Replace <abbr title="有效的字符是 `a-z`、`0-9` 和 `-`。">`<app-name>`</abbr> 为全局唯一的应用名称。 若要了解其他 <abbr title="还可以使用 Azure 门户、Azure PowerShell 和 REST API。">部署方法</abbr>，请参阅[部署模板](../azure-resource-manager/templates/deploy-powershell.md)。 可以[在此处找到更多 Azure 应用服务模板示例](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites)。
+Replace <abbr title="有效的字符是 `a-z`、`0-9` 和 `-`。"> \<app-name> </abbr> 为全局唯一的应用名称。 若要了解其他 <abbr title="还可以使用 Azure 门户、Azure PowerShell 和 REST API。">部署方法</abbr>，请参阅[部署模板](../azure-resource-manager/templates/deploy-powershell.md)。 可以[在此处找到更多 Azure 应用服务模板示例](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites)。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -118,7 +118,7 @@ az deployment group create --resource-group myResourceGroup \
 ::: zone pivot="platform-linux"
 运行以下代码，在 Linux 上创建 Python 应用。 
 
-Replace <abbr title="有效的字符是 `a-z`、`0-9` 和 `-`。">`<app-name>`</abbr> 为全局唯一的应用名称。
+将 \<app-name\> 替换为全局唯一的应用名称。 有效的字符是 `a-z`、`0-9` 和 `-`。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -153,6 +153,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 ::: zone pivot="platform-linux"
 <details>
 <summary>如何部署其他语言堆栈？</summary>
+ 
 若要部署其他语言堆栈，请使用相应的值更新 `linuxFxVersion`。 下面显示了示例。 若要显示当前版本，请在 Cloud Shell 中运行以下命令：`az webapp config show --resource-group myResourceGroup --name <app-name> --query linuxFxVersion`
 
 | 语言    | 示例：                                              |
@@ -190,4 +191,3 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 - 将 Python 与 Postgres 配合使用
 - [带 MySQL 的 PHP](tutorial-php-mysql-app.md)
 - [使用 Java 连接到 Azure SQL 数据库](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-- [映射自定义域](app-service-web-tutorial-custom-domain-uiex.md)

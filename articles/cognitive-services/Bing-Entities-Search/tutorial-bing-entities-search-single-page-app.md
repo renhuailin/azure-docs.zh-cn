@@ -2,21 +2,19 @@
 title: 教程：必应实体搜索单页 Web 应用
 titleSuffix: Azure Cognitive Services
 description: 本教程介绍如何在单页 Web 应用程序中使用必应实体搜索 API。
-services: cognitive-services
 author: aahill
-manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: f2c15221268635ca1892a9292d5b0c208c13dd34
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 49ac0daf08e2b279396b12fa5fee74e8cdbbed7e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426801"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363538"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
@@ -564,7 +562,7 @@ cors-proxy-server
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应实体搜索 API 参考](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [必应实体搜索 API 参考](/rest/api/cognitiveservices/bing-entities-api-v7-reference)
 
 > [!div class="nextstepaction"]
-> [必应地图 API 文档](//msdn.microsoft.com/library/dd877180.aspx)
+> [必应地图 API 文档](/bingmaps/)

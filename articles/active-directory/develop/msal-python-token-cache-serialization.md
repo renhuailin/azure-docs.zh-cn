@@ -13,12 +13,12 @@ ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 7aaf59377949101ba8dd5c9454b89229e925e859
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbe91d7a25e516766939ba56a9d9cfafff4bf0b5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87846184"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229898"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>适用于 Python 的 MSAL 中的自定义令牌缓存序列化
 
@@ -38,4 +38,4 @@ ms.locfileid: "87846184"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何使用 Windows/Linux Web 应用或 Web API 的令牌缓存的示例，请参阅 [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72)。 该示例适用于调用 Microsoft Graph API 的 Web 应用。
+有关如何使用 Windows/Linux Web 应用或 Web API 的令牌缓存的示例，请参阅 [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.3.0/app.py#L66-L74)。 该示例适用于调用 Microsoft Graph API 的 Web 应用。

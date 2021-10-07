@@ -7,12 +7,15 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aro, openshift, red hat
-ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- devx-track-java
+- devx-track-javaee
+ms.openlocfilehash: 016cc443ac88dce22d8320ceadc3075d4802bdc5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212988"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360087"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 群集上使用 Open Liberty/WebSphere Liberty 部署 Java 应用程序
 
@@ -30,7 +33,7 @@ ms.locfileid: "102212988"
 1. 准备安装了 Unix 之类操作系统（如 Ubuntu、macOS）的本地计算机。
 1. 安装 Java SE 实现（例如 [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)）。
 1. 安装 [Maven](https://maven.apache.org/download.cgi) 3.5.0 或更高版本。
-1. 安装用于 OS 的 [Docker](https://docs.docker.com/get-docker/)。
+1. 安装适用于 OS 的 [Docker](https://docs.docker.com/get-docker/)。
 1. 安装 [Azure CLI](/cli/azure/install-azure-cli) 2.0.75 或更高版本。
 1. 如果未在操作系统中预安装 [`envsubst`](https://command-not-found.com/envsubst)，请检查并安装它。
 1. 在本地系统上克隆此示例的代码。 该示例位于 [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro) 上。
@@ -38,9 +41,9 @@ ms.locfileid: "102212988"
 
    尽管“获取 Red Hat 请求机密”这一步标记为可选步骤，但本文仍需要此步骤。  请求机密允许 Azure Red Hat OpenShift 群集查找 Open Liberty Operator。
 
-   如果你打算在群集上运行内存密集型应用程序，请使用 `--worker-vm-size` 参数为工作器节点指定适当的虚拟机大小。 例如，`Standard_E4s_v3` 是在群集上安装 Elasticsearch Operator 的最小虚拟机大小。 有关详细信息，请参见:
+   如果你打算在群集上运行内存密集型应用程序，请使用 `--worker-vm-size` 参数为工作器节点指定适当的虚拟机大小。 例如，`Standard_E4s_v3` 是在群集上安装 Elasticsearch Operator 的最小虚拟机大小。 有关详细信息，请参阅：
 
-   * [使用 Azure CLI 创建群集](/cli/azure/aro#az-aro-create)
+   * [使用 Azure CLI 创建群集](/cli/azure/aro#az_aro_create)
    * [内存优化支持的虚拟机大小](./support-policies-v4.md#memory-optimized)
    * [安装 Elasticsearch Operator 的先决条件](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
@@ -97,7 +100,7 @@ ms.locfileid: "102212988"
 1. 使用 `kubeadmin` 凭据从浏览器登录到 OpenShift Web 控制台。
 2. 导航到“Operator” > “OperatorHub”并搜索“Open Liberty Operator”  。
 3. 从搜索结果中选择“Open Liberty Operator”。
-4. 选择“安装”。
+4. 选择“安装”  。
 5. 在弹出的“创建 Operator 订阅”中，选中“群集上的所有命名空间(默认)”作为“安装模式”、“Beta”作为“更新通道”、“自动”作为“批准策略”      ：
 
    ![为 Open Liberty Operator 创建 Operator 订阅](./media/howto-deploy-java-liberty-app/install-operator.png)
@@ -241,7 +244,7 @@ docker push ${Container_Registry_URL}/open-liberty-demo/javaee-cafe-simple:1.0.0
    ![ARO Java 包含层次](./media/howto-deploy-java-liberty-app/aro-java-containment.png)
 1. 选择“创建 OpenLibertyApplication”
 1. 将生成的 yaml 替换为自己的，它位于 `<path-to-repo>/2-simple/openlibertyapplication.yaml`。
-1. 选择“创建”  。 你将返回到 OpenLibertyApplications 的列表。
+1. 选择“创建”。 你将返回到 OpenLibertyApplications 的列表。
 1. 选择“javaee-cafe-simple”。
 1. 在页面中间选择“资源”。
 1. 在表中选择“javaee-cafe-simple”的链接，其“种类”为“路由”  。
@@ -265,7 +268,7 @@ docker push ${Container_Registry_URL}/open-liberty-demo/javaee-cafe-simple:1.0.0
 
 1. 使用 Azure AD 用户的凭据从浏览器登录到 OpenShift Web 控制台。
 2. 使用 Azure AD 用户的令牌登录到 OpenShift CLI。
-3. 将目录更改为本地克隆的 `2-simple`，并运行以下命令将 Liberty 应用程序部署到 ARO 4 群集。  命令输出也显示为内联。
+3. 将目录更改为本地克隆的 `2-simple`，并运行以下命令将 Liberty 应用程序部署到 ARO 4 群集。  命令输出也以内联方式显示。
 
    ```bash
    # Switch to namespace "open-liberty-demo" where resources of demo app will belong to
@@ -325,7 +328,7 @@ oc delete -f openlibertyapplication.yaml
 > * 生成应用程序映像
 > * 使用 GUI 和 CLI 在 ARO 4 群集上运行容器化应用程序
 
-可以通过本指南中使用的参考了解更多信息：
+可以通过本指南中使用的参考了解详细信息：
 
 * [Open Liberty](https://openliberty.io/)
 * [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)

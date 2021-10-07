@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43e0d3228937e507f988aa241b6fa0b619892c10
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791890"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273678"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新预配设备
 
@@ -79,7 +79,7 @@ ms.locfileid: "98791890"
 
 注册项上的重新预配策略将确定设备预配服务实例如何处理这些预配请求，以及是否应在重新预配期间迁移设备状态数据。 单个注册和注册组可使用相同的策略：
 
-要通过示例代码了解如何在启动顺序期间发送来自设备的预配请求，请参阅[自动预配模拟设备](quick-create-simulated-device.md)。
+要通过示例代码了解如何在启动顺序期间发送来自设备的预配请求，请参阅[自动预配模拟设备](quick-create-simulated-device-tpm.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
