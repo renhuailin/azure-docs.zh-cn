@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 55e3f464f4494f6afa52b90eb50a1c1c66e6756f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: aefbd7c64ba243166a2122426a31f8a3996dd97d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674616"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361357"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问 Blob
 
@@ -67,7 +67,7 @@ Azure RBAC 提供多个内置角色，用于通过 Azure AD 和 OAuth 授权访�
 
 若要了解如何将 Azure 内置角色分配给安全主体，请参阅[分配用于访问 Blob 数据的 Azure 角色](../blobs/assign-azure-role-data-access.md)。 若要了解如何列出 Azure RBAC 角色及其权限，请参阅[列出 Azure 角色定义](../../role-based-access-control/role-definitions-list.md)。
 
-有关如何为 Azure 存储定义内置角色的详细信息，请参阅[了解角色定义](../../role-based-access-control/role-definitions.md#management-and-data-operations)。 若要了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。
+有关如何为 Azure 存储定义内置角色的详细信息，请参阅[了解角色定义](../../role-based-access-control/role-definitions.md#control-and-data-actions)。 若要了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。
 
 只有为数据访问显式定义的角色才允许安全主体访问 Blob 数据。 内置角色（例如“所有者”、“参与者”和“存储帐户参与者”）允许安全主体管理存储帐户，但不通过 Azure AD 提供对该帐户内的 blob 数据的访问权限。 但是，如果角色包括 Microsoft.Storage/storageAccounts/listKeys/action，则分配了该角色的用户可以使用帐户访问密钥通过共享密钥授权来访问存储帐户中的数据。 有关详细信息，请参阅[选择如何在 Azure 门户中授予对 blob 数据的访问权限](../../storage/blobs/authorize-data-operations-portal.md)。
 
@@ -103,7 +103,7 @@ Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录。 登录后，会�
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
 
 | 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|

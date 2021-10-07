@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: f59eb3296c27e64eb6a4644b2f455e3704381f49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d140f5f71413524dc60d0d07bdc6b646ac552a1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86260828"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351144"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 启动、停止和报告混沌测试服务。
@@ -21,7 +21,7 @@ ms.locfileid: "86260828"
 | [schedule](service-fabric-sfctl-chaos-schedule.md) | 获取和设置 Chaos Schedule。 |
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
 | 活动 | 根据继续标记或时间范围获取 Chaos 事件的下一段。 |
 | get | 获取 Chaos 的状态。 |
@@ -77,7 +77,7 @@ ms.locfileid: "86260828"
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 在群集中启动混沌测试。
 
-如果尚未在群集中运行混沌测试，则使用混沌测试参数中指定的值开始运行混沌测试。 如果进行此调用时运行混沌，调用将失败，错误代码为 FABRIC_E_CHAOS_ALREADY_RUNNING。 有关更多详细信息，请参阅[在 Service Fabric 群集中引入受控的混沌测试](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)一文。
+如果尚未在群集中运行混沌测试，则使用混沌测试参数中指定的值开始运行混沌测试。 如果进行此调用时运行混沌，调用将失败，错误代码为 FABRIC_E_CHAOS_ALREADY_RUNNING。 有关更多详细信息，请参阅[在 Service Fabric 群集中引入受控的混沌测试](service-fabric-controlled-chaos.md)一文。
 
 ### <a name="arguments"></a>参数
 

@@ -1,17 +1,17 @@
 ---
 title: 配置数据暂留 - 高级 Azure Cache for Redis
 description: 了解如何为高级层的 Azure Redis 缓存实例配置和管理数据暂留
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: e167abee5bd98e5dcef702ae4629cd886cb75967
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 472f06a10e76cb557bd5e9350c94a352ebad17b3
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465723"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538119"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>为高级 Azure Cache for Redis 实例配置数据暂留
 
@@ -50,11 +50,11 @@ Azure Cache for Redis 使用 Redis 数据库 (RDB) 和仅追加文件 (AOF) 提�
    | **位置** | 单击下拉箭头并选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
    | **缓存类型** | 单击下拉箭头并选择高级缓存来配置高级功能。 有关详细信息，请参阅 [Azure Cache for Redis 定价](https://azure.microsoft.com/pricing/details/cache/)。 |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅[用于 Redis 的 Azure 缓存概述](cache-overview.md)。 |
 
-4. 选择“网络”选项卡，或选择页面底部的“网络”按钮 。
+4. 选择“网络”选项卡，或选择“网络”按钮（位于页面底部） 。
 
 5. 在“网络”选项卡中，选择你的连接方法。 对于高级缓存实例，可以通过公共 IP 地址或服务终结点公开进行连接。 可以使用专用终结点以私密方式进行连接。
 
-6. 选择页面底部的“下一步: 高级”选项卡，或者选择页面底部的“下一步: 高级”按钮 。
+6. 选择“下一步:高级”选项卡，或者选择页面底部的“下一步:高级”按钮 。
 
 7. 在高级缓存实例的“高级”选项卡中，配置非 TLS 端口、群集和数据暂留的设置。 对于数据暂留，可以选择 RDB 或 AOF 暂留。
 
@@ -157,7 +157,7 @@ RDB 持久性备份频率间隔在先前备份过程已成功完成后才会开�
 
 ### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>进行新备份以后，旧的 RDB 备份会发生什么情况？
 
-除最新备份外的所有 RDB 持久性备份会被自动删除。 这种删除可能不会即刻发生，但旧备份是不会无限期保存。 请注意，如果为存储帐户启用软删除，则会应用软删除设置，而现有备份将继续处于软删除状态。
+除最新备份外的所有 RDB 持久性备份会被自动删除。 这种删除可能不会即刻发生，但旧备份是不会无限期保存。 请注意，如果为存储帐户启用软删除，则将应用软删除设置，并且现有备份将继续处于软删除状态。
 
 ### <a name="when-should-i-use-a-second-storage-account"></a>是否应使用第二个存储帐户？
 
@@ -194,7 +194,7 @@ AOF 文件中存储的数据在每个节点分为多个页 Blob，以便提升�
 
 启用群集时，缓存中的每个分片具有自己的页 Blob 集，如上表所示。 例如，具有 3 个分片的 P2 缓存在 24 个页 Blob 之间（每个分片 8 个页 Blob，共 3 个分片）分配其 AOF 文件。
 
-重写后，存储中存在 2 个 AOF 文件集。 重写在后台进行，并追加到第一个文件集。 在重写期间发送到缓存的设置操作会追加到第二个集。 重写期间如果发生故障，会暂时存储备份。 重写完成后，会立即删除该备份。 请注意，如果为存储帐户启用软删除，则会应用软删除设置，而现有备份将继续处于软删除状态。
+重写后，存储中存在 2 个 AOF 文件集。 重写在后台进行，并追加到第一个文件集。 在重写期间发送到缓存的设置操作会追加到第二个集。 重写期间如果发生故障，会暂时存储备份。 重写完成后，会立即删除该备份。 请注意，如果为存储帐户启用软删除，则将应用软删除设置，并且现有备份将继续处于软删除状态。
 
 ### <a name="will-i-be-charged-for-the-storage-being-used-in-data-persistence"></a>是否需要为数据暂留中使用的存储付费？
 

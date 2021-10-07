@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c7dccf94c1211ef318d538c3a5c74ae16e427e
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685321"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388805"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的资源类管理工作负载
 
@@ -84,8 +84,6 @@ ms.locfileid: "98685321"
 
 > [!NOTE]
 > 定义为 Active Directory 管理员的用户或组也是服务管理员。
->
->
 
 ## <a name="resource-class-operations"></a>资源类操作
 
@@ -107,8 +105,6 @@ ms.locfileid: "98685321"
 
 > [!NOTE]  
 > 针对动态管理视图 (DMV) 或其他系统视图执行的 SELECT 语句不受任何并发限制的约束。 用户可以对系统进行监视，而不用考虑在系统中执行的查询的数目。
->
->
 
 ### <a name="operations-not-governed-by-resource-classes"></a>资源类不会控制的操作
 
@@ -185,8 +181,6 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 
 >[!NOTE]
 >请考虑利用工作负荷管理功能（[工作负荷隔离](sql-data-warehouse-workload-isolation.md)、[分类](sql-data-warehouse-workload-classification.md)和[重要性](sql-data-warehouse-workload-importance.md)），以更好地控制工作负荷和可预测的性能。  
->
->
 
 我们建议创建一个专门用于运行特定类型的查询或负载操作的用户。 为该用户提供永久性的资源类，而不是频繁更改资源类。 静态资源类对工作负荷提供的整体控制度更高，因此，我们建议先使用静态资源类，然后再考虑动态资源类。
 

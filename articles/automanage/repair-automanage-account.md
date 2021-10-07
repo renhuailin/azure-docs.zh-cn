@@ -1,20 +1,18 @@
 ---
 title: 修复损坏的 Azure Automanage 帐户
 description: 如果最近将包含 Automanage 帐户的订阅移动到了新租户，则需要重新配置它。 在本文中，你将了解如何
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.author: alsin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fdfeae56ba1ef46b58fdb8f5beb32f85a6e2fcb4
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 2ce8bc5c26eb99ed19578a036a4569829bc44879
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752312"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458295"
 ---
 # <a name="repair-an-automanage-account"></a>修复 Automanage 帐户
 [Azure Automanage 帐户](./automanage-virtual-machines.md#automanage-account)是执行自动化操作所基于的安全性上下文或标识。 如果最近将包含 Automanage 帐户的订阅移动到了新租户，则需要重新配置该帐户。 若要重新配置该帐户，则需要重置标识类型，并为该帐户分配适当的角色。

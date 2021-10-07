@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: normesta
-ms.openlocfilehash: 758a89e8366e338fe5aaaee7fd6b89d9f7daa588
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e22e7dcfde1782600cdb53814014e6080ffbbfa1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604011"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271624"
 ---
 # <a name="blob-storage-feature-support-in-azure-storage-accounts"></a>Azure 存储帐户中的 Blob 存储功能支持
 
@@ -24,9 +24,9 @@ ms.locfileid: "128604011"
 
 | 存储功能 | Blob 存储（默认支持） | Data Lake Storage Gen2 <sup>1</sup>   | NFS 3.0 <sup>1</sup>  |
 |---------------|-------------------|---|---|
-| [访问层 - 存档](storage-blob-storage-tiers.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
-| [访问层 - 冷访问层](storage-blob-storage-tiers.md)   | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png)|
-| [访问层 - 热访问层](storage-blob-storage-tiers.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
+| [访问层 - 存档](access-tiers-overview.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
+| [访问层 - 冷访问层](access-tiers-overview.md)    | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png)|
+| [访问层 - 热访问层](access-tiers-overview.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 | [匿名公共访问](anonymous-read-access-configure.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png)|
 | [Azure Active Directory 安全](authorize-access-azure-active-directory.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 | [Blob 清单](blob-inventory.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png) <sup>2</sup> |
@@ -70,9 +70,9 @@ ms.locfileid: "128604011"
 
 | 存储功能 | Blob 存储（默认支持） | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> |
 |---------------|-------------------|---|---|
-| [访问层 - 存档](storage-blob-storage-tiers.md)  | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
-| [访问层 - 冷访问层](storage-blob-storage-tiers.md) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
-| [访问层 - 热访问层](storage-blob-storage-tiers.md) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| [访问层 - 存档](access-tiers-overview.md)  | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| [访问层 - 冷访问层](access-tiers-overview.md) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| [访问层 - 热访问层](access-tiers-overview.md) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
 | [匿名公共访问](anonymous-read-access-configure.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 | [Azure Active Directory 安全](authorize-access-azure-active-directory.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 | [Blob 清单](blob-inventory.md) | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png) <sup>2</sup> |

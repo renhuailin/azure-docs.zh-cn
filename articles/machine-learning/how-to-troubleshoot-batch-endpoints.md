@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 帮助你顺利使用批处理终结点的提示。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devplatv2
 ms.reviewer: laobri
 ms.author: tracych
 author: tracych
 ms.date: 05/05/2021
-ms.openlocfilehash: 9fbbc2af3681b6f91ec3c1e0f6adfd46a8598c17
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ba0dfb7c86250a55de5967bbffafd40823709dce
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448299"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425783"
 ---
 # <a name="troubleshooting-batch-endpoints-preview"></a>排查批处理终结点问题（预览版）
 

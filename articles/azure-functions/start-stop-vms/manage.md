@@ -5,12 +5,12 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 40c3d2dba3d41c7651846d09d01dd7afdce15af9
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: cf2461484d290dc05912121a6964b42ca58194cc
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112967054"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455515"
 ---
 # <a name="how-to-manage-startstop-vms-v2-preview"></a>如何管理启动/停止 VM v2（预览版）
 
@@ -21,9 +21,6 @@ ms.locfileid: "112967054"
 每个仪表板中的磁贴做显示的日志数据每隔一小时刷新一次，还有一个即时的手动刷新选项，具体为单击给定可视化效果上的“刷新”图标或刷新整个仪表板。
 
 若要了解如何使用基于日志的仪表板，请参阅以下[教程](../../azure-monitor/visualize/tutorial-logs-dashboards.md)。
-
-> [!NOTE]
-> 如果你在部署过程中遇到问题、在使用“启动/停止 VM v2 (预览版)”时遇到问题，或者有相关的问题，则可在 [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) 上提交问题。 从 [Azure 支持站点](https://azure.microsoft.com/support/options/)提交 Azure 支持事件的功能不适用于此预览版本。 
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 

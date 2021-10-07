@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 10/4/2021
 ms.author: rosouz
-ms.openlocfilehash: caae2c0a5f11dc06b9f4be62fad28209a8b72da9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 0f9c230cc7fe7a21f7b07b74760c7ef03299375d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113294"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455922"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]

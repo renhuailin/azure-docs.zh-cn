@@ -1,20 +1,20 @@
 ---
 title: 获取 Azure Cache for Redis 的详细信息 - Azure CLI
 description: 此 Azure CLI 代码示例演示如何检索 Azure Cache for Redis 实例的详细信息，包括其预配状态。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8901847a1c214b257243c4da0a74897061409bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e41b432fe7259fac9769a70a89bb6357c3d550e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184240"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535365"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>获取 Azure Redis 缓存的详细信息
 
@@ -30,7 +30,7 @@ ms.locfileid: "96184240"
 
 此脚本使用以下命令检索 Azure Redis 缓存实例的详细信息。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az redis show](/cli/azure/redis) | 检索 Azure Redis 缓存实例的详细信息。 |
 

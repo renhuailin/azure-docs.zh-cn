@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 7b64236c27063ad7aab2e22cd2d6fbf9bc534714
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c11c15c5dd206a201c9f535bb49b571c5807514e
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743326"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458617"
 ---
 # <a name="get-started-with-device-management-java"></a>设备管理入门 (Java)
 
@@ -261,7 +261,7 @@ trigger-reboot。 此应用：
     > [!NOTE]
     > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-device-client**。
 
-4. 将以下依赖项添加到 dependencies 节点。 此依赖项为 Apache [SLF4J](https://www.slf4j.org/) 日志记录外观配置 NOP，设备客户端 SDK 使用它实现日志记录。 此配置是可选的，但是如果省略此配置，则在运行该应用时，可能会在控制台中看到警告。 有关设备客户端 SDK 中的日志记录的详细信息，请参阅适用于 Java 的 Azure IoT 设备 SDK 示例自述文件中的[日志记录](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)。
+4. 将以下依赖项添加到 dependencies 节点。 此依赖项为 Apache [SLF4J](https://www.slf4j.org/) 日志记录外观配置 NOP，设备客户端 SDK 使用它实现日志记录。 此配置是可选的，但是如果省略此配置，则在运行该应用时，可能会在控制台中看到警告。 有关设备客户端 SDK 中的日志记录的详细信息，请参阅适用于 Java 的 Azure IoT 设备 SDK 示例自述文件中的[日志记录](https://github.com/Azure/azure-iot-sdk-java/blob/main/device/iot-device-samples/readme.md#logging)。
 
     ```xml
     <dependency>

@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: f79325270dcd33cb451bd1f540ef60e0b1647f4d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 872e55781a55ac15f960e0111f4b197ab380598d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694510"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279120"
 ---
 # <a name="import-your-training-data-into-machine-learning-studio-classic-from-various-data-sources"></a>将训练数据从各种数据源导入机器学习工作室（经典）
 
@@ -153,7 +153,7 @@ ms.locfileid: "122694510"
 > 一般情况下，在此服务选项推出之前创建的任何 Azure 存储帐户应该不受影响。
 > 如果需要创建新帐户，请为“部署模型”选择“经典”或使用“资源管理器”；对于“帐户类型”，请选择“常规用途”而不是“Blob 存储”。   
 >
-> 有关详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../../storage/blobs/storage-blob-storage-tiers.md)。
+> 有关详细信息，请参阅 [Azure Blob 存储：热存储层和冷存储层](../../storage/blobs/access-tiers-overview.md)。
 
 ### <a name="supported-online-data-sources"></a>支持的联机数据源
 机器学习工作室（经典）的“导入数据”模块支持以下数据源：

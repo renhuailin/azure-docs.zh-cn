@@ -6,12 +6,12 @@ ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: cdf20d65347792af4136ea407dd58e563354301d
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 2374755dc1874b1dcd421daa97fc77535ef99286
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729217"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455430"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT 设备 SDK 概述
 
@@ -97,8 +97,8 @@ Azure IoT 设备 SDK 可以由多种语言实现，因此你可以选择你喜�
 #### <a name="java-device-sdk"></a>Java 设备 SDK
 
 * [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-java)
-* [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples)
-* [包](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk)
+* [示例](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples)
+* [包](https://github.com/Azure/azure-iot-sdk-java/blob/main/doc/java-devbox-setup.md#for-the-device-sdk)
 * [参考文档](/java/api/com.microsoft.azure.sdk.iot.device)
 * [Edge 模块参考文档](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)
 
@@ -127,9 +127,9 @@ Azure IoT 还提供服务 SDK，使你能够生成解决方案端应用程序来
 
 [详细了解 IoT 中心](https://azure.microsoft.com/services/iot-hub/) | [尝试控制设备](../iot-hub/quickstart-control-device.md) 
 
-C# IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) | [包](https://www.nuget.org/packages/Microsoft.Azure.Devices/) | [示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service/samples) | [参考文档](/dotnet/api/microsoft.azure.devices)
+C# IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/iothub/service) | [包](https://www.nuget.org/packages/Microsoft.Azure.Devices/) | [示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/iothub/service/samples) | [参考文档](/dotnet/api/microsoft.azure.devices)
 
-Java IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-java/tree/master/service) | [包](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples) | [参考文档](/java/api/com.microsoft.azure.sdk.iot.service)
+Java IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-java/tree/main/service) | [包](https://github.com/Azure/azure-iot-sdk-java/blob/main/doc/java-devbox-setup.md#for-the-service-sdk) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/main/service/iot-service-samples) | [参考文档](/java/api/com.microsoft.azure.sdk.iot.service)
 
 JavaScript IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-node/tree/master/service) | [包](https://www.npmjs.com/package/azure-iothub) | [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples) | [参考文档](/javascript/api/azure-iothub/)
 
@@ -153,11 +153,11 @@ Python ADT 服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-sdk-fo
 
 IoT 中心设备预配服务 (DPS) 是 IoT 中心的帮助器服务，支持零接触、实时预配到适当的 IoT 中心，不需要人为干预。 DPS 能够以安全且可缩放的方式预配数百万台设备。 通过 DPS 服务 SDK，可以生成可以通过创建注册组和执行批量操作来安全管理设备的应用程序。
 
-[有关设备预配服务的详细信息](../iot-dps/index.yml) | [尝试为 X.509 设备创建组注册](../iot-dps/quick-enroll-device-x509-csharp.md) 
+[有关设备预配服务的详细信息](../iot-dps/index.yml) | [尝试为 X.509 设备创建组注册](../iot-dps/quick-enroll-device-x509.md) 
 
-C# 设备预配服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service) | [包](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) | [示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples) | [参考文档](/dotnet/api/microsoft.azure.devices.provisioning.service)
+C# 设备预配服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/provisioning/service) | [包](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) | [示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/provisioning/service/samples) | [参考文档](/dotnet/api/microsoft.azure.devices.provisioning.service)
 
-Java 设备预配服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-service-client/src) | [包](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples#provisioning-service-client) | [参考文档](/java/api/com.microsoft.azure.sdk.iot.provisioning.service)
+Java 设备预配服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-java/tree/main/provisioning/provisioning-service-client/src) | [包](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples#provisioning-service-client) | [参考文档](/java/api/com.microsoft.azure.sdk.iot.provisioning.service)
 
 Node.js 设备预配服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service) | [包](https://www.npmjs.com/package/azure-iot-provisioning-service) | [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples) | [参考文档](/javascript/api/azure-iot-provisioning-service)
 

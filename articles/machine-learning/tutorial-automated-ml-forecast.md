@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 使用 Azure 机器学习的自动化机器学习（自动化 ML）界面，无需编写代码即可训练和部署需求预测模型。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: a5f7c0cf95d62df2d06c91abd99a1827524d5d6b
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: dcf05fe6acdb7f8f60520759b0a1b3e3e99fed3e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210544"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428001"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测需求
 

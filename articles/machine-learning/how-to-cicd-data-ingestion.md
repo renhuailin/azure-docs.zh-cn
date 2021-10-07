@@ -4,7 +4,7 @@ titleSuffix: Azure Machine Learning
 description: 了解如何应用 DevOps 实践来构建数据引入管道，以使用 Azure 数据工厂和 Azure Databricks 来准备数据。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
 ms.author: iefedore
@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: fc843d45bbdbcc8ac7de7135eb3534cc606409bd
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 2c1a2c5372b6ba0875e9da645accb69f2979e85e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212506"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425670"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>数据引入管道的 DevOps
 

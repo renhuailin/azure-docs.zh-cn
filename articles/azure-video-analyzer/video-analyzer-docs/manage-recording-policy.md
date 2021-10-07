@@ -4,12 +4,12 @@ description: 本主题说明如何使用 Azure 视频分析器管理录制策略
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 95e5decc8092c6a40e368c395da61fd8b9904e30
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e4d05733db5739087ac1f6b64f87436a018c5883
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761992"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277833"
 ---
 # <a name="manage-recording-policy-with-video-analyzer"></a>使用视频分析器管理录制策略
 
@@ -43,7 +43,7 @@ ms.locfileid: "124761992"
 上述规则：
 
 * 应用于存储帐户中的所有块 blob。
-* 指定当 blob 期限超过 30 天时，它们将从[热访问层移动到冷访问层](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)。
+* 指定当 blob 期限超过 30 天时，它们将从[热访问层移动到冷访问层](../../storage/blobs/access-tiers-overview.md?tabs=azure-portal)。
 * 如果 blob 期限超过 90 天，则将其删除。
 
 使用视频分析器录制到视频资源时，请指定 `segmentLength` 属性，该属性指定在将视频写入存储帐户之前要聚合的视频的最短持续时间（秒）。 你的视频资源将包含一系列片段，每个片段的创建时间戳都晚于上一个片段 `segmentLength`。 生命周期管理策略启动后，它会删除早于指定阈值的段。 但你可以继续通过视频分析器 API 访问和播放剩余的片段。 有关详细信息，请参阅[播放录制内容](playback-recordings-how-to.md)。 

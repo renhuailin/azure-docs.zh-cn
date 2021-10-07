@@ -1,18 +1,18 @@
 ---
 title: “用于 Redis 的 Azure 缓存”示例
 description: 了解如何通过以下代码示例使用 Azure Cache for Redis：连接到缓存、在缓存中读取和写入数据、ASP.NET Azure Cache for Redis 提供程序。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.custom: devx-track-dotnet
 ms.topic: sample
 ms.date: 01/23/2017
-ms.openlocfilehash: 1fb63e8c537baee8a2b107a0b5451cc5b3e53bce
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 899bf97fc638fa2a763013319e517b76cd37d361
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847846"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537629"
 ---
 # <a name="azure-cache-for-redis-samples"></a>“用于 Redis 的 Azure 缓存”示例
 本文提供了 Azure Cache for Redis 示例列表。 这些示例涵盖了如下所述的方案： 

@@ -3,12 +3,12 @@ title: 将应用程序机密部署到 Service Fabric 托管群集
 description: 了解 Azure Service Fabric 应用程序机密以及如何将这些机密部署到托管群集
 ms.topic: how-to
 ms.date: 8/23/2021
-ms.openlocfilehash: 81fbd254f6aee216661e720a73c97e89351a9fad
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 5b31e06b88d38ab0d5500e69b6733e739e2b3dae
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867343"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544728"
 ---
 # <a name="deploy-application-secrets-to-a-service-fabric-managed-cluster"></a>将应用程序机密部署到 Service Fabric 托管群集
 
@@ -62,26 +62,25 @@ Service Fabric 托管群集支持两种将特定于版本的机密添加到节�
 
 ```json
 {
-    "apiVersion": "2021-05-01",
-    "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-    "properties": {
-        "vmSecrets": [
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+  "properties": {
+    "vmSecrets": [
+      {
+        "sourceVault": {
+          "id": "/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1"
+        },
+        "vaultCertificates": [
           {
-            "sourceVault": {
-              "id": "/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1"
-            },
-            "vaultCertificates": [
-              {
-                "certificateStore": "MY",
-                "certificateUrl": "https://mykeyvault1.vault.azure.net/certificates/{certificatename}/{secret-version}"
-              }
-            ]
+            "certificateStore": "MY",
+            "certificateUrl": "https://mykeyvault1.vault.azure.net/certificates/{certificatename}/{secret-version}"
           }
         ]
-    }    
+      }
+    ]
+  }
 }
 ```
-
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/general/overview.md

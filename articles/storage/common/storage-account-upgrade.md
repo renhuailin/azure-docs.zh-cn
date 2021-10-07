@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0d5d9eb7d2d8097da47d6639b1b6bb6887825207
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ddb061acb98cea775e6d147146646916adf05d68
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649107"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129270593"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -73,7 +73,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 升级到常规用途 v2 存储帐户时，可以指定“热”或“冷”默认帐户访问层，这表示将上传 blob 数据的默认层，就像未指定各个 blob 访问层参数一样。
 
-Blob 访问层允许根据预期使用模式选择最具经济效益的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷、存档存储层](../blobs/storage-blob-storage-tiers.md)。
+Blob 访问层允许根据预期使用模式选择最具经济效益的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷、存档存储层](../blobs/access-tiers-overview.md)。
 
 默认情况下，新存储帐户在热访问层中创建，常规用途 v1 存储帐户可以升级到“热”或“冷”帐户层。 如果升级时未指定帐户访问层，则默认情况下，它将升级到“热”层。 如果正探讨要将哪个访问层用于升级，请考虑当前的数据使用场景。 有两种典型的用户场景适合迁移到常规用途 v2 帐户：
 

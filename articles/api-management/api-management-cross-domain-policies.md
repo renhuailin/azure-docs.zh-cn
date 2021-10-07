@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
 ms.author: danlep
-ms.openlocfilehash: d5f15b6d3ba1b006c3495c6c7db693814f68a823
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f63a8e9f083256cb68a23d69e49d44d9bbfd57de
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601038"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429464"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](./api-management-policies.md)。
@@ -37,7 +37,7 @@ ms.locfileid: "128601038"
 ```xml
 <cross-domain>
     <!-Policy configuration is in the Adobe cross-domain policy file format,
-        see https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->
+        see https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/CrossDomain_PolicyFile_Specification.pdf-->
 </cross-domain>
 ```
 
@@ -53,7 +53,7 @@ ms.locfileid: "128601038"
 
 |名称|说明|必选|
 |----------|-----------------|--------------|
-|cross-domain|根元素。 子元素必须符合 [Adobe 跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|
+|cross-domain|根元素。 子元素必须符合 [Adobe 跨域策略文件规范](https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/CrossDomain_PolicyFile_Specification.pdf)。|是|
 
 ### <a name="usage"></a>使用情况
 此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。

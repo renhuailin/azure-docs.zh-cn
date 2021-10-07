@@ -1,18 +1,18 @@
 ---
 title: 缓存 ASP.NET 会话状态提供程序
 description: 了解如何使用 Azure Cache for Redis 将 ASP.NET 会话状态存储在内存中。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: 78610123c984196740d39cb209d1eff5ca380f06
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: b1bf95295fbaaa72df50b1aa7c42a6e954ef6ee2
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284359"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538811"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 

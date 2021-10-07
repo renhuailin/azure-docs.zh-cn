@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解如何为 Azure 机器学习规划灾难恢复并保持业务连续性。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: ba8904713f9623cf80f259ad096a4dbfaddad393
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: a25cfb69b0de9561de2093a8e9e91bf4e9f8cb98
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112552903"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424276"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>业务连续性和灾难恢复的故障转移
 

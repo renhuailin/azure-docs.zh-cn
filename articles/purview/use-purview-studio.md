@@ -6,12 +6,12 @@ ms.author: nayenama
 ms.service: purview
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 8c2628922391f3b8f6570c011dbc2220b1e7f815
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 2e3bcd7e51226f437f42f03fa43b144bee434f33
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212835"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456131"
 ---
 # <a name="use-purview-studio"></a>使用 Purview Studio
 
@@ -59,7 +59,7 @@ ms.locfileid: "129212835"
    > 有关 Azure Purview 角色的详细信息，请参阅 [Azure Purview 中的访问控制](catalog-permissions.md)。
 
 5. 左侧导航栏可帮助你定位到应用程序的主页面。   
-6. “最近访问的内容”选项卡显示最近访问过的数据资产的列表。 有关访问资产的信息，请参阅[在数据目录中搜索](how-to-search-catalog.md)和[按资产类型浏览](how-to-browse-catalog.md#browse-experience)。  “我的项目”选项卡列出了已登录用户拥有的数据资产。
+6. “最近访问的内容”选项卡显示最近访问过的数据资产的列表。 有关访问资产的信息，请参阅[在数据目录中搜索](how-to-search-catalog.md)和[按资产类型浏览](how-to-browse-catalog.md)。  “我的项目”选项卡列出了已登录用户拥有的数据资产。
 7. “链接”包含指向区域状态、文档、定价、概述和 Purview 状态的链接
 8. 顶部导航栏包含有关发行说明/更新、更改 Purview 帐户、通知、帮助和反馈部分的信息。
 
