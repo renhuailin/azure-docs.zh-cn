@@ -1,20 +1,18 @@
 ---
 title: 使用共享库共享 VM 映像
 description: 了解如何使用共享映像库在整个组织中共享 Linux VM 映像。
-author: axayjo
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
-ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 3e20029511ee6a9a0e6f8482e0d05d7217ec21f9
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: a62c7c80ad2e785e9f09b68d9a5ec9ca7d355800
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451972"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454993"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 
@@ -125,7 +123,7 @@ ms.locfileid: "123451972"
 现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。   可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 虽然我们了解没有两个映像或区域是相同的，但是，需要遵循下面有关如何在区域中使用副本的一般原则：
 
 - 对于非虚拟机规模集部署 - 建议为每 20 个同时创建的 VM 保留一个副本。 例如，如果使用某个区域中的同一映像同时创建 120 个 VM，我们建议你保留至少 6 个映像副本。 
-- 对于虚拟机规模集部署 - 建议为每个包含多达 600 个实例的规模集部署至少保留一个副本。 例如，如果同时创建 5 个规模集，每个规模集具有 600 个使用某个区域中的同一映像的 VM 实例，则建议至少保留 5 个映像副本。 
+- 对于虚拟机规模集部署 - 建议为每个同时创建的规模集保留一个副本。
 
 鉴于映像大小、内容和 OS 类型等因素，我们始终建议保留的副本数应超出该副本数。
 

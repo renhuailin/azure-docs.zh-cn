@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 301181b291521b8a8b19a7d7266e90fa2c542e49
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7b6f68eea2c177ad4e6776723ae0387c0e0da6a1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128562924"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361831"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>部署 SAP 连续威胁监视（公共预览版）
 
@@ -136,7 +136,7 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 1. 使用以下命令作为示例，插入资源组和 VM 名称的值：
 
     ```azurecli
-    az vm create  --resource-group [resource group name]   --name [VM Name] --image UbuntuLTS  --admin-username AzureUser --data-disk-sizes-gb 10 – --size Standard_DS2_– --generate-ssh-keys  --assign-identity
+    az vm create  --resource-group [resource group name]   --name [VM Name] --image UbuntuLTS  --admin-username azureuser --data-disk-sizes-gb 10 – --size Standard_DS2 --generate-ssh-keys  --assign-identity
     ```
 
 1. 在新的 VM 上，安装：
@@ -293,23 +293,13 @@ SAP 数据连接器部署脚本存储在 [Azure Sentinel GitHub 存储库 > Data
 
 如果已使用早期版本的 SAP 数据连接器运行 Docker 容器，请运行 SAP 数据连接器更新脚本以获取可用的最新功能。
 
-1. 确保你拥有来自 Azure Sentinel github 存储库的最新版本的相关部署脚本。 运行：
+确保你拥有来自 Azure Sentinel github 存储库的最新版本的相关部署脚本。 
 
-    ```azurecli
-    wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
-    ```
+运行：
 
-1. 在 SAP 数据连接器计算机上运行以下命令：
-
-    ```azurecli
-    ./ sapcon-instance-update.sh
-    ```
-
-1. 重启 Docker 容器：
-
-    ```bash
-    docker restart sapcon-[SID]
-    ```
+```azurecli
+wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
+```
 
 已更新计算机上的 SAP 数据连接器 Docker 容器。 
 

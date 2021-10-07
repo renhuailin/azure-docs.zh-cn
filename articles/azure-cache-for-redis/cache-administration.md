@@ -1,18 +1,18 @@
 ---
 title: 如何管理 Azure Redis 缓存
 description: 了解如何执行管理任务，如重启 Azure Redis 缓存和为 Azure Redis 缓存计划更新
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c2006c71a9ba9ff24662f27a9f2e4015786197e7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d4532b13389e85be2b506bdc433cf3dc650fdb38
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742682"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538875"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
 
@@ -24,15 +24,15 @@ ms.locfileid: "121742682"
 
 左侧的“重新启动”可重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
 
-:::image type="content" source="media/cache-administration/cache-administration-reboot-2.png" alt-text="屏幕截图：突出显示“重启”菜单选项":::
+:::image type="content" source="media/cache-administration/cache-administration-reboot-2.png" alt-text="突出显示“重启”菜单选项的屏幕截图":::
 
 选择要重新启动的节点，并选择“重新启动”。
 
-:::image type="content" source="media/cache-administration/redis-cache-reboot-2.png" alt-text="屏幕截图：显示可以重启的节点":::
+:::image type="content" source="media/cache-administration/redis-cache-reboot-2.png" alt-text="显示可以重启的节点的屏幕截图":::
 
 如果高级缓存启用了群集功能，则可选择要重新启动的缓存分片。
 
-:::image type="content" source="media/cache-administration/redis-cache-reboot-cluster-2.png" alt-text="屏幕截图：分片选项":::
+:::image type="content" source="media/cache-administration/redis-cache-reboot-cluster-2.png" alt-text="分片选项的屏幕截图":::
 
 要重新启动缓存的一个或多个节点，请选择所需节点，并单击“重新启动”。 如果高级缓存启用了群集功能，请选择要重新启动的分片，并选择“重新启动”。 几分钟后，所选节点将重新启动，再过几分钟后，又会回到联机状态。
 
@@ -83,7 +83,7 @@ ms.locfileid: "121742682"
 > 目前，没有可用于为企业层缓存配置重新启动或计划更新的选项。
 >
 
-:::image type="content" source="media/cache-administration/redis-schedule-updates-2.png" alt-text="屏幕截图：显示计划更新":::
+:::image type="content" source="media/cache-administration/redis-schedule-updates-2.png" alt-text="显示计划更新的屏幕截图":::
 
 要指定维护时段，请选中需要的日期，并指定每天的维护时段开始时间。 选择“确定”。  维护时段使用 UTC 时间。
 

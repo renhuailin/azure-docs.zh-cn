@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ede006b48646e9ddb0fd6b6a8f36cf5e9697fbf
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: b4e96045ec49a337d317583826cb3f50c6161f39
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397319"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276050"
 ---
 # <a name="manage-connections-in-azure-automation"></a>在 Azure 自动化中管理连接
 
@@ -39,7 +39,7 @@ Azure 自动化提供了以下内置连接类型：
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>用于访问连接的 PowerShell cmdlet
 
-下表中的 cmdlet 使用 PowerShell 创建和管理自动化连接。 它们作为 [Az 模块](shared-resources/modules.md#az-modules)的一部分提供。
+下表中的 cmdlet 使用 PowerShell 创建和管理自动化连接。 它们作为 Az 模块的一部分提供。
 
 |Cmdlet|说明|
 |---|---|

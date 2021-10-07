@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d75bd3580f66d7948d28b0d9ff34e247bc51c6b5
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 7c9704549c68dce72c16f0b5386cdb76edb5fe90
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795017"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129406993"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>动态更改卷的服务级别
 
@@ -73,5 +73,5 @@ ms.locfileid: "108795017"
 ## <a name="next-steps"></a>后续步骤  
 
 * [Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md)
-* [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
+* [创建容量池](azure-netapp-files-set-up-capacity-pool.md)
 * [排查更改卷的容量池时的问题](troubleshoot-capacity-pools.md#issues-when-changing-the-capacity-pool-of-a-volume)

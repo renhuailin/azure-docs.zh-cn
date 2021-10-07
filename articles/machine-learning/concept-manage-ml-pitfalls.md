@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 通过 Azure 机器学习的自动化机器学习解决方案，识别和管理 ML 模型的常见错误。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 8945a5766865f4df6175e7330d3bf9c947e1fa0d
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: b942cbb0ada2419dadd71e93a39d069d29225f35
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113600489"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426715"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>通过自动化机器学习防止过度拟合和不均衡数据
 

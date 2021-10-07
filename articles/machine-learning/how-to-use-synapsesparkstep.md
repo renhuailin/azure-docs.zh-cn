@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 将 Azure Synapse Analytics 工作区链接到 Azure 机器学习管道以使用 Apache Spark 进行数据操作。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.author: laobri
 author: lobrien
 ms.date: 03/04/2021
 ms.topic: how-to
 ms.custom: synapse-azureml
-ms.openlocfilehash: 01ac58f4c462861ba422a869f38b9fbf53690886
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 4139b5e2a05ebf4f6355db761d0458b4f367cbaf
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112377271"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425157"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>如何在机器学习管道中使用由 Azure Synapse Analytics 提供支持的 Apache Spark（预览版）
 

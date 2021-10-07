@@ -1,18 +1,18 @@
 ---
 title: 缩放 Azure Cache for Redis 实例
 description: 了解如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具缩放 Azure Cache for Redis 实例
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a1144cd0ccfe6857b88a29ea0f577d760f3addc6
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 5c8bf3839c7bae9b1c93b201bb52a4e7be371904
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431621"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538166"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>缩放 Azure Cache for Redis 实例
 

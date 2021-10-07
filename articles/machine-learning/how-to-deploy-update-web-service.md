@@ -3,17 +3,17 @@ title: " 更新 Web 服务"
 titleSuffix: Azure Machine Learning
 description: 了解如何刷新已在 Azure 机器学习中部署的 Web 服务。 可以更新设置，如模型、环境和入口脚本。
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: c25dbb3c03bb4c03a511b4e526ff8248bd0096c8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cbcda2cc8bf9621ce6b323bc2b80a3af5da12bba
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641990"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428970"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 Web 服务
 

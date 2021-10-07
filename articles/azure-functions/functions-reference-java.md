@@ -4,12 +4,12 @@ description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fc827c8c03edecbdb10769f7830806ff01596bd1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d03a4121394141b7b39ae441d7eb3cf653a0b374
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742639"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232140"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -187,7 +187,7 @@ Maven 还允许指定用于在 Azure 中运行函数应用的操作系统。 使
 
 | 元素 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
-| **`os`** | windows | linux | docker |
+| **`os`** | `windows` | `linux` | `docker` |
 
 以下示例显示了 pom.xml 文件的 `runtime` 部分中的操作系统设置：
 

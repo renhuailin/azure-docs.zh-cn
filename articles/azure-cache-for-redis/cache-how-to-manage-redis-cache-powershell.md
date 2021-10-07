@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure PowerShell 管理 Azure Redis 缓存
 description: 了解如何使用 Azure PowerShell 对 Azure Redis 缓存执行管理任务。
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2d3ee3df3d83307bed781cd8625dab8c07a5cfe
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: ffef2de3825f86bd6bbd3d2e82ee9aeb45c1d5e6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526913"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538429"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 
@@ -154,7 +154,7 @@ ms.locfileid: "111526913"
 | ResourceGroupName |要在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值是：1、2、3、4、5、6、7、8、9、10 | |
-| SKU |指定缓存的 SKU。 有效值是：Basic、Standard、Premium |标准 |
+| SKU |指定缓存的 SKU。 有效值是：Basic、Standard、Premium |Standard |
 | RedisConfiguration |指定 Redis 配置设置。 有关每个设置的详细信息，请参阅以下 [RedisConfiguration 属性](#redisconfiguration-properties)表。 | |
 | EnableNonSslPort |指出是否启用非 SSL 端口。 |False |
 | MaxMemoryPolicy |此参数已弃用 - 请改用 RedisConfiguration。 | |
@@ -387,7 +387,7 @@ ms.locfileid: "111526913"
 > 
 > 
 
-以下示例演示了如何将名为 `myCache` 的缓存缩放为 2.5 GB 缓存。 此命令适用于基本或标准缓存。
+以下示例演示如何将名为 `myCache` 的缓存缩放为 2.5-GB 缓存。 此命令适用于基本或标准缓存。
 
 ```azurepowershell
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB

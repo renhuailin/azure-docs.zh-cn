@@ -2,14 +2,14 @@
 title: 将资源部署到资源组
 description: 介绍如何在 Azure 资源管理器模板中部署资源。 它介绍如何将多个资源组作为目标。
 ms.topic: conceptual
-ms.date: 09/14/2021
+ms.date: 10/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2378baf84b5c86c16580304c994f012db51c3dc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 818ace7b20ed1c4a21748c9c734da4bace100523
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654132"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390038"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>使用 ARM 模板进行资源组部署
 
@@ -64,7 +64,7 @@ New-AzResourceGroupDeployment `
   -Name demoRGDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
-  -storageAccountType Standard_GRS `
+  -storageAccountType Standard_GRS
 ```
 
 ---

@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 790d363a3bd0e961b184cc2511c39833f0eac3d7
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f616fee894c1eb436770cdafbab7b60d7a1417db
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253977"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537135"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>向 Device Update for IoT Hub 新增更新
 了解如何将新的更新添加到 Device Update for IoT Hub。
@@ -162,18 +162,15 @@ ms.locfileid: "122253977"
 
    :::image type="content" source="media/import-update/update-ready.png" alt-text="作业状态" lightbox="media/import-update/update-ready.png":::
 
-## <a name="if-youre-importing-via-apis-instead"></a>如果是改为通过 API 进行导入
-
-如果刚完成了使用以上步骤通过 Azure 门户进行导入的操作，请跳转到下面的“后续步骤”。
-
-如果要使用 [Device Update for IoT Hub Update API](/rest/api/deviceupdate/updates) 来导入更新，而不是通过 Azure 门户进行导入，请注意以下事项：
-  - 在调用更新 API 之前，需要将更新文件上传到 Azure Blob 存储位置。
-  - 可以参考此[示例 API 调用](import-schema.md#example-import-request-body)，该调用使用上面创建的导入清单。
-  - 如果在测试时重复使用相同的 SAS URL，那么，在令牌过期时，就可能会遇到错误。 这是在提交导入清单以及更新内容本身时的情况。
-
-
 ## <a name="next-steps"></a>后续步骤
 
 [创建组](create-update-group.md)
 
 [了解导入概念](import-concepts.md)
+
+## <a name="if-youre-importing-via-apis-instead"></a>如果是改为通过 API 进行导入
+
+如果要使用 [Device Update for IoT Hub Update API](/rest/api/deviceupdate/updates) 来导入更新，而不是通过 Azure 门户进行导入，请注意以下事项：
+  - 在调用更新 API 之前，需要将更新文件上传到 Azure Blob 存储位置。
+  - 可以参考此[示例 API 调用](import-schema.md#example-import-request-body)，该调用使用上面创建的导入清单。
+  - 如果在测试时重复使用相同的 SAS URL，那么，在令牌过期时，就可能会遇到错误。 这是在提交导入清单以及更新内容本身时的情况。

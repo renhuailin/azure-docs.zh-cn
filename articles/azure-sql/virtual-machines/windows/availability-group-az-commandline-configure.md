@@ -14,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 060d09d17bf622af5ca5c062e00d2961a0a2b566
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: ffb9ac3874ae3eb1ab3ec883a8094c57d03b86a8
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572460"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534565"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 PowerShell 或 Az CLI 在 Azure VM 上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,11 +77,11 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 # Create the storage account
 # example: New-AzStorageAccount -ResourceGroupName SQLVM-RG -Name cloudwitness `
 #    -SkuName Standard_LRS -Location West US -Kind StorageV2 `
-#    -AccessTier Hot -EnableHttpsTrafficOnly
+#    -AccessTier Hot -EnableHttpsTrafficOnly $true
 
 New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
     -SkuName Standard_LRS -Location <region> -Kind StorageV2 `
-    -AccessTier Hot -EnableHttpsTrafficOnly
+    -AccessTier Hot -EnableHttpsTrafficOnly $true
 ```
 
 ---
@@ -121,12 +121,13 @@ az sql vm group create -n <cluster name> -l <region ex:eastus> -g <resource grou
 #  -StorageAccountUrl '<ex:https://cloudwitness.blob.core.windows.net/>' `
 #  -StorageAccountPrimaryKey '4Z4/i1Dn8/bpbseyWX'
 
+$storageAccountPrimaryKey = ConvertTo-SecureString -String "<PublicKey>" -AsPlainText -Force
 $group = New-AzSqlVMGroup -Name <name> -Location <regio> 
   -ResourceGroupName <resource group name> -Offer <SQL201?-WS201?> 
   -Sku Enterprise -DomainFqdn <FQDN> -ClusterOperatorAccount <domain account> 
   -ClusterBootstrapAccount <domain account>  -SqlServiceAccount <service account> 
   -StorageAccountUrl '<ex:StorageAccountUrl>' `
-  -StorageAccountPrimaryKey '<PublicKey>'
+  -StorageAccountPrimaryKey $storageAccountPrimaryKey
 ```
 
 ---
@@ -194,7 +195,7 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 
 虽然磁盘见证是最具复原能力的仲裁选项，但它需要 Azure 共享磁盘，这对可用性组施加了一些限制。 因此，对于在 Azure VM 上的 SQL Server 中托管可用性组的群集，推荐使用云见证作为仲裁解决方案。 
 
-如果群集中的投票数为偶数，请配置最适合业务需求的[仲裁解决方案](hadr-cluster-quorum-configure-how-to.md)。 有关详细信息，请参阅 [SQL Server VM 上的仲裁](hadr-windows-server-failover-cluster-overview.md#quorum)。 
+如果群集中的投票数为偶数，请配置最适合你的业务需求的[仲裁解决方案](hadr-cluster-quorum-configure-how-to.md)。 有关详细信息，请参阅 [SQL Server VM 上的仲裁](hadr-windows-server-failover-cluster-overview.md#quorum)。 
 
 
 ## <a name="validate-cluster"></a>验证群集 

@@ -38,12 +38,14 @@ items:
     items:
       - name: 使用 Purview Studio
         href: use-purview-studio.md
-      - name: 最佳做法
+      - name: 最佳做法与准则
         items:
           - name: 部署最佳做法
             href: deployment-best-practices.md
           - name: 集合体系结构
             href: concept-best-practices-collections.md
+          - name: Purview 定价准则
+            href: concept-guidelines-pricing.md
       - name: Purview 权限
         href: catalog-permissions.md
       - name: 数据映射

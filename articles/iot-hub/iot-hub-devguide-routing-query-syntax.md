@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 14a235337a1b3bf26874cffe8893f0c21f2ed9f7
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 814ed1001c39b48a5aa93162cb54ec520050eb66
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517867"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457556"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -147,7 +147,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> 这说明了如何处理 javascript 中正文的编码。 若要查看中 C# 的示例，请下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案 *SimulatedDevice* 的 Program.cs 文件演示如何编码以及如何将消息提交到 IoT 中心。 这是用于测试消息路由的同一示例，如[消息路由教程](tutorial-routing.md)中所述。 在 Program.cs 的底部，它还提供了一个方法，用于在其中一个编码文件中读取内容，对其进行解码，然后将其作为 ASCII 写回，方便你读取。 
+> 这说明了如何处理 javascript 中正文的编码。 若要查看中 C# 的示例，请下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案 *SimulatedDevice* 的 Program.cs 文件演示如何编码以及如何将消息提交到 IoT 中心。 这是用于测试消息路由的同一示例，如[消息路由教程](tutorial-routing.md)中所述。 在 Program.cs 的底部，它还提供了一个方法，用于在其中一个编码文件中读取内容，对其进行解码，然后将其作为 ASCII 写回，方便你读取。 
 
 
 ### <a name="query-expressions"></a>查询表达式
