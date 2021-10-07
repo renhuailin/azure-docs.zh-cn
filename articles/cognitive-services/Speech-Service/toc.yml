@@ -31,6 +31,8 @@
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
         - name: 选择特定的麦克风输入设备
           href: how-to-select-audio-input-devices.md
+        - name: 语言识别
+          href: language-identification.md
         - name: 使用语言识别
           href: how-to-automatic-language-detection.md
         - name: 使用批量听录 API
@@ -97,7 +99,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -196,7 +198,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -241,7 +243,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
         - name: Objective-C
@@ -288,7 +290,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: /java/api/com.microsoft.cognitiveservices.speech
-            - name: Javascript
+            - name: JavaScript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
@@ -330,8 +332,6 @@
       href: keyword-recognition-guidelines.md
     - name: 区域支持
       href: keyword-recognition-region-support.md
-- name: 语言识别
-  href: language-identification.md
 - name: 场景深入介绍
   items:
     - name: 对话方案
@@ -365,7 +365,7 @@
                     - name: Java
                       displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                       href: /java/api/com.microsoft.cognitiveservices.speech
-                    - name: Javascript
+                    - name: JavaScript
                       displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                       href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
                     - name: Objective-C
@@ -589,7 +589,7 @@
               href: /dotnet/api/microsoft.cognitiveservices.speech
             - name: Java
               href: /java/api/com.microsoft.cognitiveservices.speech
-            - name: Javascript
+            - name: JavaScript
               href: /javascript/api/microsoft-cognitiveservices-speech-sdk/
             - name: Objective-C
               href: /objectivec/cognitive-services/speech/

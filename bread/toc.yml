@@ -1005,6 +1005,9 @@
         - name: Microsoft 客户协议
           tocHref: /azure/cost-management-billing/microsoft-customer-agreement/
           topicHref: /azure/cost-management-billing/microsoft-customer-agreement/
+        - name: 范围级别的 Azure 混合权益
+          tocHref: /azure/cost-management-billing/scope-level
+          topicHref: /azure/cost-management-billing/scope-level
     - name: Purview
       tocHref: /azure/purview/
       topicHref: /azure/purview/

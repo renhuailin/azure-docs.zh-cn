@@ -145,6 +145,8 @@
                       href: authenticate-aks-cross-tenant.md
                     - name: 使用 Kubernetes 拉取机密进行身份验证
                       href: container-registry-auth-kubernetes.md
+                - name: 启用未经身份验证的请求访问权限
+                  href: anonymous-pull-access.md
             - name: Azure 基于角色的访问控制
               href: container-registry-roles.md
               displayName: 'permissions, authorization'

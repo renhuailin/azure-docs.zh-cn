@@ -256,6 +256,14 @@
               href: backup-managed-disks-cli.md
             - name: 还原
               href: restore-managed-disks-cli.md
+        - name: 使用 REST API
+          items:
+            - name: 策略
+              href: backup-azure-dataprotection-use-rest-api-create-update-disk-policy.md
+            - name: 备份
+              href: backup-azure-dataprotection-use-rest-api-backup-disks.md
+            - name: 还原
+              href: backup-azure-dataprotection-use-rest-api-restore-disks.md
     - name: Azure Blob 备份
       items:
         - name: 概述
@@ -280,7 +288,7 @@
               href: restore-blobs-storage-account-cli.md
         - name: 使用 REST API
           items:
-            - name: Blob 策略
+            - name: 策略
               href: backup-azure-dataprotection-use-rest-api-create-update-blob-policy.md
             - name: 备份
               href: backup-azure-dataprotection-use-rest-api-backup-blobs.md

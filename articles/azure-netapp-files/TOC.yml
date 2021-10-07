@@ -149,6 +149,8 @@
               href: azure-netapp-files-configure-export-policy.md
             - name: 配置 Unix 权限并更改所有权模式
               href: configure-unix-permissions-change-ownership-mode.md
+            - name: 为卷配置网络功能
+              href: configure-network-features.md
         - name: 装载或卸载卷
           items:
             - name: 装载或卸载卷
@@ -221,6 +223,8 @@
           href: troubleshoot-capacity-pools.md
         - name: 跨区域复制故障排除
           href: troubleshoot-cross-region-replication.md
+        - name: 卷错误的故障排除
+          href: troubleshoot-volumes.md
         - name: SMB 或双重协议卷故障排除
           href: troubleshoot-dual-protocol-volumes.md
         - name: 排查 NFSv4.1 Kerberos 卷问题

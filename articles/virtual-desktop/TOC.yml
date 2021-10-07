@@ -135,7 +135,11 @@
     - name: 设置多媒体重定向（预览版）
       href: multimedia-redirection.md
     - name: 安装语言包
-      href: language-packs.md
+      items:
+        - name: Windows 10 多会话映像
+          href: language-packs.md
+        - name: Windows 11 企业版映像
+          href: windows-11-language-packs.md
     - name: 使用 Azure 顾问
       href: azure-advisor.md
     - name: 解决建议

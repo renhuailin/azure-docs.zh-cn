@@ -1,0 +1,30 @@
+- name: 范围级别的 Azure 混合权益文档
+  href: index.yml?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是 Azure 混合权益的范围级别管理？
+      href: overview-azure-hybrid-benefit-scope.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: 教程
+  expanded: true
+  items:
+    - name: 优化范围级别的 Azure 混合权益
+      href: tutorial-azure-hybrid-benefits-sql.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: 概念
+  expanded: false
+  items:
+    - name: Azure 如何应用分配的许可证
+      href: manage-licenses-centrally.md?toc=/azure/cost-management-billing/scope-level/toc.json
+    - name: SQL Server HADR 与 Azure 混合权益
+      href: sql-server-hadr-licenses.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: 操作指南
+  expanded: false
+  items:
+    - name: 创建 SQL Server 许可证分配
+      href: create-sql-license-assignments.md?toc=/azure/cost-management-billing/scope-level/toc.json
+    - name: 过渡到范围级别的 Azure 混合权益
+      href: transition-existing.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- name: 资源
+  items:
+    - name: 常见问题解答
+      href: faq-azure-hybrid-benefit-scope.yml?toc=/azure/cost-management-billing/scope-level/toc.json

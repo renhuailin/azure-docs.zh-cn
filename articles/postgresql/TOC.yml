@@ -730,6 +730,8 @@
           href: howto-hyperscale-restart.md
         - name: 监视
           items:
+            - name: 查看指标
+              href: howto-hyperscale-monitoring.md
             - name: 针对指标创建警报
               href: howto-hyperscale-alert-on-metric.md
               dispalyName: alerts on hyperscale

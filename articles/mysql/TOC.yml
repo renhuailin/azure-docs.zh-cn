@@ -439,8 +439,6 @@
         - name: 创建数据库和用户
           href: howto-create-users.md
           displayName: users
-        - name: 监视服务器
-          href: flexible-server/how-to-alert-on-metric.md
     - name: 概念
       items:
         - name: 服务器管理
@@ -472,7 +470,7 @@
               href: flexible-server/concepts-business-continuity.md
             - name: 高可用性
               href: flexible-server/concepts-high-availability.md
-        - name: 监视和日志
+        - name: 监视
           items:
             - name: 监视概述
               href: flexible-server/concepts-monitoring.md
@@ -480,6 +478,8 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: 审核日志
               href: flexible-server/concepts-audit-logs.md
+            - name: 工作簿
+              href: flexible-server/concepts-workbooks.md
         - name: 复制
           items:
             - name: 复制中数据
@@ -553,20 +553,14 @@
                   href: flexible-server/how-to-configure-high-availability.md
                 - name: Azure CLI
                   href: flexible-server/how-to-configure-high-availability-cli.md
-        - name: 监视和日志
+        - name: 监视
           items:
-            - name: 配置慢查询日志
-              items:
-                - name: Azure 门户
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-configure-slow-query-log-cli.md
-            - name: 配置审核日志
-              items:
-                - name: Azure 门户
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-configure-audit-log-cli.md
+            - name: 查询性能见解
+              href: flexible-server/tutorial-query-performance-insights.md
+            - name: 审核
+              href: flexible-server/tutorial-configure-audit.md
+            - name: 警报
+              href: flexible-server/how-to-alert-on-metric.md
         - name: 复制
           items:
             - name: 配置复制中数据

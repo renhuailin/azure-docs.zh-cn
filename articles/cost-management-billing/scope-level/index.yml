@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Azure 混合权益范围级别的管理
+summary: Azure 混合权益是一项许可权益，借助该权益，你可以将本地基于内核、带有有效软件保障（或订阅）的 Windows Server 和 SQL Server 许可证引入 Azure。 使用它可显著减少在云中运行工作负载的成本。 在 Azure 门户中，你现在可通过以下方式管理 SQL Server 的 Azure 混合权益：将许可证分配到整个 Azure 订阅或整个计费帐户范围。
+metadata:
+  title: Azure 混合权益文档
+  description: Azure 混合权益是一项许可权益，借助该权益，你可以将本地基于内核、带有有效软件保障（或订阅）的 Windows Server 和 SQL Server 许可证引入 Azure。 使用它可显著减少在云中运行工作负载的成本。 在 Azure 门户中，你现在可通过以下方式管理 SQL Server 的 Azure 混合权益：将许可证分配到整个 Azure 订阅或整个计费帐户范围。
+  ms.service: cost-management-billing
+  ms.subservice: ahb
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.date: 09/30/2021
+  ms.openlocfilehash: ae18a0f65423219f6ba0035c8ebe7fe6df1aeba6
+  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129547165"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是范围级别管理？
+      url: overview-azure-hybrid-benefit-scope.md?toc=/azure/cost-management-billing/scope-level/toc.json
+  - linkListType: tutorial
+    links:
+    - text: 优化范围级别的 Azure 混合权益
+      url: tutorial-azure-hybrid-benefits-sql.md?toc=/azure/cost-management-billing/scope-level/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 创建 SQL Server 许可证分配
+      url: create-sql-license-assignments.md?toc=/azure/cost-management-billing/scope-level/toc.json
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 过渡到范围级别的 Azure 混合权益
+      url: transition-existing.md?toc=/azure/cost-management-billing/scope-level/toc.json
+  - linkListType: reference
+    links:
+    - text: 常见问题解答
+      url: faq-azure-hybrid-benefit-scope.yml?toc=/azure/cost-management-billing/scope-level/toc.json
+- title: 了解更多
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 如何应用分配的许可证
+      url: manage-licenses-centrally.md?toc=/azure/cost-management-billing/scope-level/toc.json
+    - text: SQL Server HADR 与 Azure 混合权益
+      url: sql-server-hadr-licenses.md?toc=/azure/cost-management-billing/scope-level/toc.json
