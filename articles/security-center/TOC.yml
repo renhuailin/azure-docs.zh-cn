@@ -132,7 +132,7 @@
           href: apply-security-baseline.md
         - name: 漏洞扫描
           items:
-            - name: 通过集成 VA 扫描程序扫描计算机
+            - name: 通过集成 Qualys 扫描程序扫描计算机
               displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: 通过 BYOL VA 解决方案扫描 VM
@@ -158,6 +158,9 @@
         - name: 定义计算机的安全应用程序列表
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
+        - name: 查看计算机上安装的应用程序和软件
+          displayName: 'inventory, apps, software inventory, mde, tvm'
+          href: asset-inventory.md#access-a-software-inventory
         - name: 跟踪对文件和注册表的更改
           items:
             - name: 文件完整性监视概述

@@ -147,6 +147,8 @@
           href: azure-app-test-publish.md
         - name: 推销产品/服务
           href: azure-app-marketing.md
+        - name: 托管应用按流量计费
+          href: azure-app-metered-billing.md
         - name: 按流量计费
           href: marketplace-metering-service-apis.md
         - name: 配置基于使用情况的每月账单的价格

@@ -420,6 +420,8 @@
           href: how-to-managed-cluster-app-deployment-template.md
         - name: 将具有托管标识的应用程序部署到托管群集
           href: how-to-managed-cluster-application-managed-identity.md
+        - name: 授予对托管群集上其他 Azure 资源的访问权限
+          href: how-to-managed-cluster-grant-access-other-resources.md
         - name: 将仅无状态节点类型部署到托管群集
           href: how-to-managed-cluster-stateless-node-type.md
         - name: 配置辅助节点类型用于在托管群集上大规模缩放

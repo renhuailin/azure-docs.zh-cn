@@ -318,7 +318,7 @@ items:
             href: connector-azure-databricks-delta-lake.md
           - name: Azure 文件存储
             href: connector-azure-file-storage.md
-          - name: Azure SQL 数据库
+          - name: Azure SQL Database
             href: connector-azure-sql-database.md
             displayName: upsert
           - name: Azure SQL 托管实例
@@ -664,6 +664,8 @@ items:
             href: data-flow-sort.md
           - name: 源
             href: data-flow-source.md
+          - name: 字符串化
+            href: data-flow-stringify.md
           - name: 代理键
             href: data-flow-surrogate-key.md
           - name: Union

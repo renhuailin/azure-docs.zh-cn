@@ -284,6 +284,8 @@
               href: authentication-normalization-schema.md
             - name: DNS 规范化架构
               href: dns-normalization-schema.md
+            - name: DHCP 规范化架构
+              href: dhcp-normalization-schema.md
             - name: 文件事件规范化架构
               href: file-event-normalization-schema.md
             - name: 网络规范化架构

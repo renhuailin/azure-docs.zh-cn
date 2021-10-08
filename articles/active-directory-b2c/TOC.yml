@@ -7,6 +7,8 @@
       href: overview.md
     - name: 技术和功能概述
       href: technical-overview.md
+    - name: 支持的 Azure AD 功能
+      href: supported-azure-ad-features.md
     - name: Docs 中的新增内容
       href: whats-new-docs.md
 - name: 快速入门
@@ -26,7 +28,9 @@
       href: tutorial-register-applications.md
     - name: 3 - 创建用户流和自定义策略
       href: tutorial-create-user-flows.md
-    - name: 清理并删除租户
+    - name: 4 - 管理租户
+      href: tenant-management.md
+    - name: 5 - 清理并删除租户
       href: tutorial-delete-tenant.md
 - name: 示例
   items:
@@ -82,14 +86,14 @@
       href: user-overview.md
     - name: 用户配置文件属性
       href: user-profile-attributes.md
+    - name: 角色和资源访问控制
+      href: roles-resource-access-control.md
     - name: 标识保护和条件访问
       href: conditional-access-identity-protection-overview.md
     - name: 策略密钥
       href: policy-keys-overview.md
 - name: 操作指南
   items:
-    - name: 管理租户
-      href: tenant-management.md
     - name: 应用集成
       items:
         - name: ASP.NET Core Web 应用
@@ -506,7 +510,7 @@
                   href: social-transformations.md
                 - name: StringCollection
                   href: stringcollection-transformations.md
-                - name: String
+                - name: 字符串
                   href: string-transformations.md
             - name: 谓词
               href: predicates.md

@@ -50,3 +50,7 @@
       href: /azure/templates/microsoft.migrate/allversions
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
+- name: 监视
+  items:
+    - name: 监视跨区域移动
+      href: move-across-region-dashboard.md

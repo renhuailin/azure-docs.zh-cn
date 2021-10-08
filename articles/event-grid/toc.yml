@@ -100,6 +100,10 @@
           href: scripts/event-grid-powershell-resource-group.md
         - name: 订阅和筛选资源组事件
           href: scripts/event-grid-powershell-resource-group-filter.md
+        - name: 在 Azure 事件网格中使用 Azure AD 应用保障 WebHook 传递的安全
+          href: scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-app.md
+        - name: 在 Azure 事件网格中使用 Azure AD 用户保障 WebHook 传递的安全
+          href: scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-user.md
     - name: 资源管理器模板
       href: template-samples.md
     - name: 代码示例
