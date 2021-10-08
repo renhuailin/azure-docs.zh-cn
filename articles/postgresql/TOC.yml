@@ -30,6 +30,8 @@
       displayName: 'version, postgresql'
     - name: 主版本升级
       href: how-to-upgrade-using-dump-and-restore.md
+    - name: 为预留容量预付费
+      href: concept-reserved-pricing.md
     - name: 已知问题和限制
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -133,8 +135,6 @@
           items:
             - name: 定价层
               href: concepts-pricing-tiers.md
-            - name: 为预留容量预付费
-              href: concept-reserved-pricing.md
         - name: 安全性
           items:
             - name: 安全概述

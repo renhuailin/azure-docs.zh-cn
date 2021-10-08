@@ -13,6 +13,8 @@
       href: flexible-server/whats-new.md
     - name: 免费试用灵活服务器
       href: flexible-server/how-to-deploy-on-azure-free-account.md
+    - name: 为预留容量预付费
+      href: concept-reserved-pricing.md
     - name: 版本支持策略
       href: concepts-version-policy.md
       displayName: version policy
@@ -31,8 +33,6 @@
           items:
             - name: 定价层
               href: concepts-pricing-tiers.md
-            - name: 为预留容量预付费
-              href: concept-reserved-pricing.md
     - name: 快速入门
       expanded: true
       items:
