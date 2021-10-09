@@ -5,15 +5,15 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 05/17/2021
+ms.date: 09/29/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 8dddf347cfa46b24e990365765e1587526fd084c
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: eb9d1b1221c1a12f88b7f0d766fa5007bfc3b156
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129095890"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378570"
 ---
 | 缩写 | 位置 | 区域 |
 | --- | --- | --- |
@@ -70,6 +70,7 @@ ms.locfileid: "129095890"
 | LIS | 葡萄牙里斯本 | 北欧 |
 | LON | 英国伦敦 | 英国南部（欧洲） |
 | LOS | 尼日利亚拉各斯 | 非洲 |
+| LTS | 英国伦敦 | 英国南部（欧洲） |
 | MAA | 印度钦奈 | 印度中部 |
 | MAD | 西班牙马德里 | 西班牙中部（欧洲） |
 | MAN | 英国曼彻斯特 | 英国西部，欧洲 |
