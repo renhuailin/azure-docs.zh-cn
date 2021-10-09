@@ -7,19 +7,19 @@ ms.topic: article
 ms.service: app-service
 ms.custom: subject-monitoring
 ms.date: 04/16/2021
-ms.openlocfilehash: 537173792c4e14ac1dfdb142d8ab15e3e68e5649
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 1c3ff0fb224d5c1f8fe0133f184044b8aa5b30a3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230579"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837131"
 ---
 # <a name="monitoring-app-service"></a>监视应用服务
 
 当你的关键应用程序和业务流程依赖于 Azure 资源时，你需要监视这些资源的可用性、性能和操作。 本文介绍由应用服务生成的并传送到 [Azure Monitor](../azure-monitor/overview.md) 的监视数据。 你还可以使用[内置诊断来监视资源](troubleshoot-diagnostic-logs.md)，以帮助调试应用服务应用。 如果你不熟悉所有 Azure 服务普遍使用的 Azure Monitor 功能，请参阅[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)。
 
 > [!NOTE]
-> Azure Monitor 与应用服务的集成目前以[预览版](https://aka.ms/appsvcblog-azmon)提供。
+> 诊断设置与应用服务的集成目前以[预览版](https://aka.ms/appsvcblog-azmon)提供。
 >
 
 ## <a name="monitoring-data"></a>监视数据 

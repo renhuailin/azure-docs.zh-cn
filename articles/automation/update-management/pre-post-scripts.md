@@ -3,19 +3,19 @@ title: 在 Azure 的更新管理部署中管理操作前脚本和操作后脚本
 description: 本文介绍如何配置和管理更新部署的操作前脚本和操作后脚本。
 services: automation
 ms.subservice: update-management
-ms.date: 07/20/2021
+ms.date: 09/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57a8158dca53f4f60bc4405e1b95aa0ad9d2cf9b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f94a21268625adf3df4dda2f022868f7cc40f72f
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472087"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060313"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前脚本和后脚本
 
-操作前脚本和操作后脚本是在执行更新部署之前（执行任务前）和之后（执行任务后）要在 Azure 自动化帐户中运行的 runbook。 操作前脚本和操作后脚本在 Azure 上下文中运行，而不是在本地运行。 操作前脚本在更新部署开始时运行。 操作后脚本在部署结束时以及在配置的任何重新启动之后运行。
+操作前脚本和操作后脚本是在执行更新部署之前（执行任务前）和之后（执行任务后）要在 Azure 自动化帐户中运行的 runbook。 操作前脚本和操作后脚本在 Azure 上下文中运行，而不是在本地运行。 操作前脚本在更新部署开始时运行。 在 Windows 上，后脚本在部署结束时和任何配置的重新启动后运行。 对于 Linux，后脚本在部署结束后（而不是在计算机重新启动后）运行。 
 
 ## <a name="pre-script-and-post-script-requirements"></a>操作前脚本和操作后脚本要求
 
@@ -51,16 +51,16 @@ ms.locfileid: "114472087"
 |SoftwareUpdateConfigurationRunId     |GUID | 运行的唯一 ID。        |
 |SoftwareUpdateConfigurationSettings     || 与软件更新配置相关的属性的集合。         |
 |SoftwareUpdateConfigurationSettings.OperatingSystem     |int | 面向更新部署的操作系统。 `1` = Windows，`2` = Linux        |
-|SoftwareUpdateConfigurationSettings.Duration     |时间范围 (HH:MM:SS) | 符合 ISO8601 的更新部署运行的最长持续时间，格式为 `PT[n]H[n]M[n]S`；也称为“维护时段”。<br> 示例：02:00:00         |
+|SoftwareUpdateConfigurationSettings.Duration     |时间跨度 (HH:MM:SS) | 符合 ISO8601 的更新部署运行的最长持续时间，格式为 `PT[n]H[n]M[n]S`；也称为“维护时段”。<br> 示例：02:00:00         |
 |SoftwareUpdateConfigurationSettings.WindowsConfiguration     || 与 Windows 计算机相关的属性的集合。         |
-|SoftwareUpdateConfigurationSettings.WindowsConfiguration.excludedKbNumbers     |字符串 | 从更新部署中排除的 KB 的空格分隔列表。        |
-|SoftwareUpdateConfigurationSettings.WindowsConfiguration.includedKbNumbers     |字符串 | 更新部署中包含的以空格分隔的 KB 列表。        |
-|SoftwareUpdateConfigurationSettings.WindowsConfiguration.UpdateCategories     |整数 | 1 = "Critical";<br> 2 = "Security"<br> 4 = "UpdateRollUp"<br> 8 = "FeaturePack"<br> 16 = "ServicePack"<br> 32 = "Definition"<br> 64 = "Tools"<br> 128 = "Updates"        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.excludedKbNumbers     |字符串 | 从更新部署中排除的知识库的空格分隔列表。        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.includedKbNumbers     |字符串 | 更新部署中包含的知识库的空格分隔列表。        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.UpdateCategories     |整数 | 1 =“关键”；<br> 2 =“安全”<br> 4 =“更新汇总”<br> 8 =“功能包”<br> 16 =“服务包”<br> 32 =“定义”<br> 64 =“工具”<br> 128 =“更新”        |
 |SoftwareUpdateConfigurationSettings.WindowsConfiguration.rebootSetting     |字符串 | 更新部署的重新启动设置。 值为 `IfRequired`、`Never`、`Always`      |
-|SoftwareUpdateConfigurationSettings.LinuxConfiguration     || 与 Linux 计算机相关的属性的集合。         |
-|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageClassifications |整数 |0 = "Unclassified"<br> 1 = "Critical"<br> 2 = "Security"<br> 4 = "Other"|
-|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageNameMasks |字符串 | 更新部署中包含的以空格分隔的包名列表。 |
-|SoftwareUpdateConfigurationSettings.LinuxConfiguration.ExcludedPackageNameMasks |字符串 |从更新部署中排除的包名的空格分隔列表。 |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration     || 与 Linux 计算机相关的属性集合。         |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageClassifications |整数 |0 =“未分类”<br> 1 =“关键”<br> 2 =“安全”<br> 4 =“其他”|
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageNameMasks |字符串 | 更新部署中包含的包名称的空格分隔列表。 |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.ExcludedPackageNameMasks |字符串 |从更新部署中排除的包名称的空格分隔列表。 |
 |SoftwareUpdateConfigurationSettings.LinuxConfiguration.RebootSetting |字符串 |更新部署的重新启动设置。 值为 `IfRequired`、`Never`、`Always`      |
 |SoftwareUpdateConfiguationSettings.AzureVirtualMachines     |字符串数组 | 更新部署中 Azure VM 的 resourceId 的列表。        |
 |SoftwareUpdateConfigurationSettings.NonAzureComputerNames|字符串数组 |更新部署中的非 Azure 计算机 FQDN 的列表。|
@@ -181,7 +181,7 @@ foreach($summary in $finalStatus)
 
 执行前任务和执行后任务作为 runbook 运行，而不是在部署中的 Azure VM 本机上运行。 若要与 Azure VM 交互，必须具有以下各项：
 
-* 一个运行方式帐户
+* [托管标识](../automation-security-overview.md#managed-identities-preview)或运行方式帐户
 * 要运行的 runbook
 
 若要与 Azure 计算机交互，应使用 [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 与 Azure VM 进行交互。 有关如何执行此操作的示例，请参阅 runbook 示例[更新管理 - 使用 Run 命令运行脚本](https://github.com/azureautomation/update-management-run-script-with-run-command)。
@@ -190,7 +190,7 @@ foreach($summary in $finalStatus)
 
 执行前任务和执行后任务在 Azure 上下文中运行，并且无权访问非 Azure 计算机。 若要与非 Azure 计算机交互，必须具有以下项：
 
-* 一个运行方式帐户
+* [托管标识](../automation-security-overview.md#managed-identities-preview)或运行方式帐户
 * 在计算机上安装的混合 Runbook 辅助角色
 * 要在本地运行的 Runbook
 * 父 runbook
@@ -242,7 +242,7 @@ If (<My custom error logic>)
 
 .DESCRIPTION
   This script is intended to be run as a part of Update Management pre/post-scripts.
-  It requires a RunAs account.
+  It requires the Automation account's system-assigned managed identity.
 
 .PARAMETER SoftwareUpdateConfigurationRunContext
   This is a system variable which is automatically passed in by Update Management during a deployment.
@@ -251,21 +251,20 @@ If (<My custom error logic>)
 param(
     [string]$SoftwareUpdateConfigurationRunContext
 )
+
 #region BoilerplateAuthentication
-#This requires a RunAs account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
 
-Add-AzAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
 
-$AzureContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 #endregion BoilerplateAuthentication
 
 #If you wish to use the run context, it must be converted from JSON
-$context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext
+$context = ConvertFrom-Json $SoftwareUpdateConfigurationRunContext
 #Access the properties of the SoftwareUpdateConfigurationRunContext
 $vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines | Sort-Object -Unique
 $runId = $context.SoftwareUpdateConfigurationRunId
@@ -285,6 +284,11 @@ Set-AutomationVariable -Name $runId -Value $vmIds
 $variable = Get-AutomationVariable -Name $runId
 #>
 ```
+
+如果希望 Runbook 使用系统分配的托管标识执行，请按原样保留代码。 如果希望使用用户分配的托管标识，则执行以下操作：
+1. 从第 22 行中删除 `$AzureContext = (Connect-AzAccount -Identity).context`，
+1. 将其替换为 `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context`，然后
+1. 输入客户端 ID。
 
 > [!NOTE]
 > 对于非图形 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](../automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。

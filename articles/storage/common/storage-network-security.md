@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d4f48f8a8c573ac03f5637b74b740c5710af92b3
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 82f860b78a8c0c4114a2250912fb6ec22e040d71
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597679"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606069"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -116,6 +116,7 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow
     ```
+
 ---
 
 ## <a name="grant-access-from-a-virtual-network"></a>允许从虚拟网络进行访问
@@ -126,7 +127,7 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 每个存储帐户最多支持 200 条虚拟网络规则，这些规则可与 [IP 网络规则](#grant-access-from-an-internet-ip-range)组合使用。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 如果删除网络规则中包含的子网，系统将从存储帐户的网络规则中删除该子网。 如果使用相同的名称创建新子网，其将无法访问存储帐户。 若要允许访问，则必须在存储帐户的网络规则中明确授权新子网。
 
 ### <a name="available-virtual-network-regions"></a>可用的虚拟网络区域
@@ -252,21 +253,21 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 以下限制适用于 IP 地址范围。
 
-- IP 网络规则仅适用于公共 Internet IP 地址。 
+- IP 网络规则仅适用于公共 Internet IP 地址。
 
-  IP 规则不允许使用为专用网络保留的 IP 地址范围（如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定义）。 专用网络包括以 _10.*_ 、_172.16.*_  - _172.31.*_ 和 _192.168.*_ 开头的地址。
+  IP 规则不允许使用为专用网络保留的 IP 地址范围（如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定义）。 专用网络包括以 *10.**、*172.16.** - *172.31.** 和 *192.168.** 开头的地址。
 
-- 必须使用 [CIDR 表示法](https://tools.ietf.org/html/rfc4632)以 16.17.18.0/24 的形式，或使用单独的 IP 地址（如 16.17.18.19）提供允许的 Internet 地址范围。 
+- 必须使用 [CIDR 表示法](https://tools.ietf.org/html/rfc4632)以 16.17.18.0/24 的形式，或使用单独的 IP 地址（如 16.17.18.19）提供允许的 Internet 地址范围。
 
-- 不支持使用“/31”或“/32”前缀大小的小型地址范围。 这些范围应使用单独的 IP 地址规则配置。 
+- 不支持使用“/31”或“/32”前缀大小的小型地址范围。 这些范围应使用单独的 IP 地址规则配置。
 
 - 存储防火墙规则的配置仅支持 IPV4 地址。
 
 在以下情况下，不能使用 IP 网络规则：
 
 - 限制对与存储帐户位于同一 Azure 区域中的客户端的访问。
-  
-  IP 网络规则对源自与存储帐户相同的 Azure 区域的请求不起作用。 请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。 
+
+  IP 网络规则对源自与存储帐户相同的 Azure 区域的请求不起作用。 请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。
 
 - 限制对[配对区域](../../best-practices-availability-paired-regions.md)中的客户端（在具有服务终结点的 VNet 中）的访问。
 
@@ -388,7 +389,6 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 > [!NOTE]
 > 资源实例规则目前只能用于 Azure Synapse。 在接下来的几周内，将提供对本文[基于系统分配的托管标识的受信任的访问](#trusted-access-system-assigned-managed-identity)部分列出的其他 Azure 服务的支持。
 
-
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 可以在 Azure 门户中添加或删除资源网络规则。
@@ -399,11 +399,11 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 3. 选择“网络”以显示网络的配置页。
 
-4. 在“资源类型”下拉列表中，选择资源实例的资源类型。 
+4. 在“资源类型”下拉列表中，选择资源实例的资源类型。
 
 5. 在“实例名称”下拉列表中，选择资源实例。 还可以选择包括活动租户、订阅或资源组中的所有资源实例。
 
-6. 单击“保存”应用所做的更改。 资源实例会出现在网络设置页的“资源实例”部分。 
+6. 单击“保存”应用所做的更改。 资源实例会出现在网络设置页的“资源实例”部分。
 
 若要删除资源实例，请选择资源实例旁边的删除图标 (:::image type="icon" source="media/storage-network-security/delete-icon.png":::)。
 
@@ -551,7 +551,7 @@ az storage account network-rule list \
 <a id="exceptions"></a>
 <a id="trusted-microsoft-services"></a>
 
-## <a name="grant-access-to-trusted-azure-services"></a>授予对受信任的 Azure 服务的访问权限 
+## <a name="grant-access-to-trusted-azure-services"></a>授予对受信任的 Azure 服务的访问权限
 
 某些 Azure 服务通过无法包含在网络规则中的网络运行。 可向其中的一部分受信任 Azure 服务授予对存储帐户的访问权限，同时对其他应用保持使用网络规则。 然后，这些受信任的服务会使用强身份验证安全地连接到存储帐户。
 
@@ -566,7 +566,7 @@ az storage account network-rule list \
 
 ### <a name="trusted-access-for-resources-registered-in-your-subscription"></a>已在订阅中注册的资源的受信任的访问权限
 
-某些服务的资源 **在注册到订阅** 后，可在 **同一订阅** 中访问存储帐户以执行特定的操作，例如写入日志或备份。  下表描述了每项服务和允许的操作。 
+某些服务的资源 **在注册到订阅** 后，可在 **同一订阅** 中访问存储帐户以执行特定的操作，例如写入日志或备份。  下表描述了每项服务和允许的操作。
 
 | 服务                  | 资源提供程序名称     | 允许的操作                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
@@ -595,7 +595,6 @@ az storage account network-rule list \
 > [!TIP]
 > 若要授予对特定资源的访问权限，建议的方法是使用资源实例规则。 若要授予对特定资源实例的访问权限，请参阅本文的[授予从 Azure 资源实例进行访问的权限（预览版）](#grant-access-specific-instances)部分。
 
-
 | 服务                        | 资源提供程序名称                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API 管理           | Microsoft.ApiManagement/service        | 使用策略允许 API 管理服务访问防火墙后的存储帐户。 [了解详细信息](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy)。 |
@@ -620,7 +619,7 @@ az storage account network-rule list \
 
 ## <a name="grant-access-to-storage-analytics"></a>授予对存储分析的访问权限
 
-在某些情况下，需要从网络边界外访问读取资源日志和指标。 配置受信任的服务对存储帐户的访问权限时，可以通过创建网络规则例外来允许对日志文件和/或指标表进行读取访问。 有关分步指南，请参阅下面的“管理例外”部分。 若要详细了解如何使用存储分析，请参阅[使用 Azure 存储分析收集日志和指标数据](./storage-analytics.md)。 
+在某些情况下，需要从网络边界外访问读取资源日志和指标。 配置受信任的服务对存储帐户的访问权限时，可以通过创建网络规则例外来允许对日志文件和/或指标表进行读取访问。 有关分步指南，请参阅下面的“管理例外”部分。 若要详细了解如何使用存储分析，请参阅[使用 Azure 存储分析收集日志和指标数据](./storage-analytics.md)。
 
 <a id="manage-exceptions"></a>
 

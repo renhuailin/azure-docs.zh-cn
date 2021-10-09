@@ -9,17 +9,18 @@ ms.author: tchladek
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8718573de0742e69bee723f34ff94fcb20656be4
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: identity
+ms.openlocfilehash: 5fb6632fa31143c26d3cad84d42d1417aaf97496
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251133"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081332"
 ---
 # <a name="quickstart-set-up-and-manage-teams-access-tokens"></a>快速入门：设置和管理 Teams 访问令牌
 
 > [!IMPORTANT]
-> 若要启用或禁用自定义 Teams 终结点体验，请[填写并提交此表单](https://forms.office.com/r/B8p5KqCH19)。
+> 此功能目前仅以预览版提供。 若要启用或禁用自定义 Teams 终结点体验，请[填写并提交此表单](https://forms.office.com/r/B8p5KqCH19)。
 
 在本快速入门中，你将生成一个 .NET 控制台应用程序，以通过使用 Microsoft 身份验证库 (MSAL) 并检索 Azure Active Directory (Azure AD) 用户令牌来对 Microsoft 365 用户进行身份验证。 接下来，你将使用 Azure 通信服务标识 SDK 将该令牌交换为 Teams 访问令牌。 然后，通信服务调用 SDK 可以使用 Teams 访问令牌来生成自定义 Teams 终结点。
 
@@ -191,6 +192,9 @@ dotnet build
 dotnet add package Azure.Communication.Identity
 dotnet add package Microsoft.Identity.Client
 ```
+
+> [!NOTE]
+> 个人预览版的包未在官方包存储库（NPM 或 NuGet.org）中提供。你可以在以下包存储库中找到 SDK：[.net](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&package=Azure.Communication.Identity&protocolType=NuGet&version=1.1.0-alpha.20210531.2) 和 [javascript](https://www.npmjs.com/package/@azure/communication-identity/v/1.1.0-alpha.20210531.1)。
 
 #### <a name="set-up-the-app-framework"></a>设置应用框架
 

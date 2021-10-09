@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 01/08/2021
+ms.date: 08/25/2021
 ms.author: sngun
-ms.openlocfilehash: 3e1391aa0d29e6b6ae50964413195552768d12b7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1cb2b9057a1be20896523eba5e1111046a2901ed
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543045"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798933"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 简介：表 API
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -25,15 +25,16 @@ ms.locfileid: "123543045"
 * 保证高可用性。
 * 自动编制辅助索引。
 
-[Azure 数据表 SDK](https://devblogs.microsoft.com/azure-sdk/announcing-the-new-azure-data-tables-libraries/) 适用于 .NET、Java、Python、Node.js 和 Go。 这些 SDK 可用于以表存储或 Cosmos DB 表为目标。 使用 Azure 数据表 SDK 为 Azure 表存储编写的应用程序可迁移到 Azure Cosmos DB 表 API，无需更改代码即可利用高级功能。
+[Azure 表 SDK](https://devblogs.microsoft.com/azure-sdk/announcing-the-new-azure-data-tables-libraries/) 适用于 .NET、Java、Python、Node.js 和 Go。 这些 SDK 可用于以表存储或 Cosmos DB 表为目标。 使用 Azure 表 SDK 为 Azure 表存储编写的应用程序可迁移到 Azure Cosmos DB 表 API，无需更改代码即可利用高级功能。
 
 > [!NOTE]
 > [无服务器容量模式](../serverless.md)现在在 Azure Cosmos DB 的表 API 上可用。
 
 > [!IMPORTANT]
-> .NET Cosmos DB 表库 [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 目前处于维护模式，不久后将被弃用。 请升级到新的 .NET Azure 数据表库 [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) 以继续获取表 API 支持的最新功能。
+> .NET Cosmos DB 表库 [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 目前处于维护模式，不久后将被弃用。 请升级到新的 .NET Azure 表 SDK [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) 以继续获取表 API 支持的最新功能。
 
 ## <a name="table-offerings"></a>表产品/服务
+
 如果当前使用 Azure 表存储，那么改用 Azure Cosmos DB 表 API 可以获得以下好处：
 
 | Feature | Azure 表存储 | Azure Cosmos DB 表 API |
@@ -49,11 +50,7 @@ ms.locfileid: "123543045"
 
 ## <a name="get-started"></a>入门
 
-在 [Azure 门户](https://portal.azure.com)中创建 Azure Cosmos DB 帐户。 然后开始使用我们的快速入门：[通过 .NET 使用表 API](create-table-dotnet.md)。 
-
-> [!IMPORTANT]
-> 如果已在预览期间创建表 API 帐户，请[新建表 API 帐户](create-table-dotnet.md#create-a-database-account)，这样才能使用正式版表 API SDK。
->
+在 [Azure 门户](https://portal.azure.com)中创建 Azure Cosmos DB 帐户。 然后开始使用我们的快速入门：[通过 .NET 使用表 API](create-table-dotnet.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

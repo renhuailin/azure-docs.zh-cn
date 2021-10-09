@@ -3,12 +3,12 @@ title: 注册表登录故障排除
 description: 登录到 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 6670d127736a97490ab5c01c03699b6a8f077778
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 48b3069911b16fce23017d562d0b99fbd8f0268c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722400"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733008"
 ---
 # <a name="troubleshoot-registry-login"></a>注册表登录故障排除
 
@@ -131,7 +131,7 @@ az acr login --name myregistry
 
 ## <a name="advanced-troubleshooting"></a>高级故障排除
 
-如果在注册表中启用了[收集资源日志](monitor-service.md)，请查看 ContainterRegistryLoginEvents 日志。 此日志存储身份验证事件和状态，包括传入标识和 IP 地址。 查询此日志可获得有关[注册表身份验证失败](monitor-service.md#registry-authentication-failures)的信息。 
+如果在注册表中启用了[收集资源日志](monitor-service.md)，请查看 ContainerRegistryLoginEvents 日志。 此日志存储身份验证事件和状态，包括传入标识和 IP 地址。 查询此日志可获得有关[注册表身份验证失败](monitor-service.md#registry-authentication-failures)的信息。 
 
 相关链接：
 

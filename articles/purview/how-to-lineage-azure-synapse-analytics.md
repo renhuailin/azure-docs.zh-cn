@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: b47efc959518b7a4d35fb5ef79cd04f18cdfaa22
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 02ea61356157c7e2a421c736a1af5bd87a1bcb5c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433505"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212322"
 ---
 # <a name="how-to-get-lineage-from-azure-synapse-analytics-into-azure-purview"></a>如何从 Azure Synapse Analytics 获取世系再转至 Azure Purview
 
@@ -46,7 +46,7 @@ ms.locfileid: "123433505"
 
 ### <a name="step-3-monitor-lineage-reporting-status"></a>步骤 3：监视世系报告状态
 
-运行 Azure Synapse 管道后，在 Synapse 管道监视视图中，可以通过单击以下“世系状态”按钮来检查世系报告状态。 活动输出 JSON -> `reportLineageToPurvew` 部分中也提供了相同的信息。
+运行 Azure Synapse 管道后，在 Synapse 管道监视视图中，可以通过选择以下“世系状态”按钮来检查世系报告状态。 活动输出 JSON -> `reportLineageToPurvew` 部分中也提供了相同的信息。
 
 :::image type="content" source="../data-factory/media/data-factory-purview/monitor-lineage-reporting-status.png" alt-text="在管道监视视图中监视世系报告状态。":::
 

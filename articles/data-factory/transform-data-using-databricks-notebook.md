@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.author: abnarain
 author: nabhishek
 ms.custom: seo-lt-2019
-ms.date: 08/31/2021
-ms.openlocfilehash: 15e08069be22cc71e228a1ad878e5f2b5424ce89
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/08/2021
+ms.openlocfilehash: a2086feece0bb37068c57534740b2c58d072d0ea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541694"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806367"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
 
@@ -87,15 +87,15 @@ ms.locfileid: "123541694"
 
 1.  在主页上，切换到左侧面板中的“管理”选项卡。
 
-    ![显示“管理”选项卡的屏幕截图。](media/doc-common-process/get-started-page-manage-button.png)
+    :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="显示“管理”选项卡的屏幕截图。":::
 
 1.  在“连接”下选择“链接服务”，然后选择“+ 新建”  。
     
-    ![显示如何创建新连接的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-6.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-6.png" alt-text="显示如何创建新连接的屏幕截图。":::
 
 1.  在“新建链接服务”窗口中，选择“计算”&gt;“Azure Databricks”，然后选择“继续”   。
     
-    ![显示如何指定 Databricks 链接服务的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-7.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-7.png" alt-text="显示如何指定 Databricks 链接服务的屏幕截图。":::
 
 1.  在“新建链接服务”窗口中完成以下步骤：
     
@@ -109,7 +109,7 @@ ms.locfileid: "123541694"
 
     1.  至于“访问令牌”，  请从 Azure Databricks 工作区生成。 可以在[此处](https://docs.databricks.com/api/latest/authentication.html#generate-token)找到步骤。
 
-    1.  对于“群集版本”，请选择“4.2”（包含 Apache Spark 2.3.1、Scala 2.11） 。
+    1.  对于“群集版本”，选择要使用的版本。
 
     1.  对于“群集节点类型”  ，请在本教程的“常规用途(HDD)”  类别下选择“Standard\_D3\_v2”  。 
     
@@ -117,23 +117,23 @@ ms.locfileid: "123541694"
     
     1.  选择“创建”。
 
-        ![显示新 Azure Databricks 链接服务配置的屏幕截图。](media/transform-data-using-databricks-notebook/new-databricks-linked-service.png)
+        :::image type="content" source="media/transform-data-using-databricks-notebook/new-databricks-linked-service.png" alt-text="显示新 Azure Databricks 链接服务配置的屏幕截图。":::
 
 ## <a name="create-a-pipeline"></a>创建管道
 
 1.  选择“+ (加)”按钮，然后在菜单上选择“管道”。  
 
-    ![显示用于创建新管道的按钮的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-9.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-9.png" alt-text="显示用于创建新管道的按钮的屏幕截图。":::
 
 1.  创建在 **管道** 中使用的 **参数**。 稍后请将此参数传递给 Databricks Notebook 活动。 在空管道中选择“参数”选项卡，然后选择“+ 新建”并将其命名为“name”  。
 
-    ![显示如何创建新参数的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-10.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-10.png" alt-text="显示如何创建新参数的屏幕截图。":::
 
-    ![显示如何创建名称参数的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-11.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-11.png" alt-text="显示如何创建名称参数的屏幕截图。":::
 
 1.  在“活动”  工具箱中，展开“Databricks”  。 将“Notebook”活动从“活动”工具箱拖到管道设计器图面。  
 
-    ![显示如何将笔记本拖到设计器图面的屏幕截图。](media/transform-data-using-databricks-notebook/new-adf-pipeline.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/new-adf-pipeline.png" alt-text="显示如何将笔记本拖到设计器图面的屏幕截图。":::
 
 1.  在底部 **Databricks** **Notebook** 活动窗口的属性中完成以下步骤：
 
@@ -149,13 +149,13 @@ ms.locfileid: "123541694"
 
        1. 在工作区中创建 **新文件夹**，将其称之为 **adftutorial**。
 
-          ![显示如何创建新文件夹的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
+          :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png" alt-text="显示如何创建新文件夹的屏幕截图。":::        
 
        1. [显示如何创建新笔记本的屏幕截图。](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) 在“adftutorial”文件夹下单击“创建”，然后将其命名为“mynotebook”(Python)  。
 
-          ![显示如何创建新笔记本的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
+          :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png" alt-text="显示如何创建新笔记本的屏幕截图。":::  
 
-          ![显示如何设置新笔记本属性的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png)
+          :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png" alt-text="显示如何设置新笔记本属性的屏幕截图。":::
 
        1. 在新创建的 Notebook“mynotebook”中添加以下代码：
 
@@ -168,7 +168,7 @@ ms.locfileid: "123541694"
            print (y)
            ```
 
-           ![显示如何为参数创建小组件的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image16.png)
+          :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image16.png" alt-text="显示如何为参数创建小组件的屏幕截图。"::: 
 
        1. 在此示例中，“Notebook 路径”为 /adftutorial/mynotebook 。
 
@@ -176,51 +176,51 @@ ms.locfileid: "123541694"
 
     a.  向 Notebook 活动添加参数。 使用的参数与此前添加到“管道”的参数相同。 
 
-       ![显示如何添加参数的屏幕截图。](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
+       :::image type="content" source="media/transform-data-using-databricks-notebook/new-adf-parameters.png" alt-text="显示如何添加参数的屏幕截图。":::
 
     b.  将参数命名为 input，并以 \@pipeline().parameters.name 表达式的形式提供值   。
 
 1.  若要验证管道，请选择工具栏中的“验证”按钮。  若要关闭验证窗口，请选择“关闭”按钮。
 
-    ![显示如何验证管道的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-18.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-18.png" alt-text="显示如何验证管道的屏幕截图。":::
 
 1.  选择“全部发布”。 数据工厂 UI 会将实体（链接服务和管道）发布到 Azure 数据工厂服务。
 
-    ![显示如何发布新数据工厂实体的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-19.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-19.png" alt-text="显示如何发布新数据工厂实体的屏幕截图。":::
 
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 
 选择工具栏中的“添加触发器”，然后选择“立即触发” 。
 
-![显示如何选择“立即触发”命令的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-20.png)
+:::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-20.png" alt-text="显示如何选择“立即触发”命令的屏幕截图。":::
 
 “管道运行”对话框要求提供 name 参数 。 使用 **/path/filename** 作为此处的参数。 选择“确定”。
 
-![显示如何提供 name 参数的值的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-21.png)
+:::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-21.png" alt-text="显示如何提供 name 参数的值的屏幕截图。":::
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 
 1.  切换到“监视”选项卡。  确认可以看到一个管道运行。 创建执行 Notebook 所在的 Databricks 作业群集需要大约 5-8 分钟。
 
-    ![显示如何监视管道的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-22.png" alt-text="显示如何监视管道的屏幕截图。"::: 
 
 1.  定期选择“刷新”以检查管道运行的状态。 
 
-1.  若要查看与管道运行相关联的活动运行，请选择“操作”列中的“查看活动运行”。  
+1.  若要查看与管道运行关联的活动运行，请选择“管道名称”列中的“管道 1”链接 。
 
-    ![显示如何查看活动运行的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image23.png)
+1. 在“活动运行”页面中，选择“活动名称”列中的“输出”以查看每个活动的输出，可以在“输出”窗格中找到“Databricks 日志”的链接，获取更详细的 Spark 日志   。
 
-选择顶部的“管道”链接可以切换回到管道运行视图。 
+1. 可以切换回“管道运行”视图，方法是选择顶部痕迹导航菜单中的“所有管道运行”链接。
 
 ## <a name="verify-the-output"></a>验证输出
 
 可以登录到“Azure Databricks 工作区”  ，转到“群集”，然后就可以看到“作业”状态为“待执行”、“正在运行”或“已终止”。   
 
-![显示如何查看作业群集和作业的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image24.png)
+:::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image24.png" alt-text="显示如何查看作业群集和作业的屏幕截图。"::: 
 
 可以先单击“作业名称”，然后通过导航来查看更多详细信息。  成功运行后，即可验证传递的参数和 Python Notebook 的输出。
 
-![显示如何查看运行详细信息和输出的屏幕截图。](media/transform-data-using-databricks-notebook/databricks-output.png)
+:::image type="content" source="media/transform-data-using-databricks-notebook/databricks-output.png" alt-text="显示如何查看运行详细信息和输出的屏幕截图。"::: 
 
 ## <a name="next-steps"></a>后续步骤
 

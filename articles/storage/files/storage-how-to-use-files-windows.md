@@ -4,16 +4,16 @@ description: 了解如何在 Windows 和 Windows Server 中使用 Azure 文件�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 09/10/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e8b469eb7eb94ad5454f79c4c4893597670867ac
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 8f125a5e1c7a0f26e92ec1e6e2d7afddb4f53a4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588630"
 ---
 # <a name="mount-smb-azure-file-share-on-windows"></a>在 Windows 上装载 SMB Azure 文件共享
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文介绍在 Windows 和 Windows Server 中使用 Azure 文件共享时的注意事项。
@@ -23,16 +23,17 @@ ms.locfileid: "122969503"
 | Windows 版本 | SMB 版本 | Azure 文件存储 SMB 多通道 | 最大 SMB 通道加密 |
 |-|-|-|-|
 | Windows Server 2022 | SMB 3.1.1 | 是 | AES-256-GCM |
-| Windows 10，版本 21H1 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-256-GCM |
+| Windows 11 | SMB 3.1.1 | 是 | AES-256-GCM |
+| Windows 10，版本 21H1 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
 | Windows Server，版本 20H2 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
 | Windows 10 版本 20H2 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
 | Windows Server 版本 2004 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
 | Windows 10 版本 2004 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
 | Windows Server 2019 | SMB 3.1.1 | 是，具有 KB5003703 或更新的版本 | AES-128-GCM |
 | Windows 10 版本 1809 | SMB 3.1.1 | 是，具有 KB5003703 或更新的版本 | AES-128-GCM |
-| Windows Server 2016 | SMB 3.1.1 | 是，具有 KB5004238 或更新的版本 | AES-128-GCM |
-| Windows 10 版本 1607 | SMB 3.1.1 | 是，具有 KB5004238 或更新的版本 | AES-128-GCM |
-| Windows 10 版本 1507 | SMB 3.1.1 | 是，具有 KB5004249 或更新的版本 | AES-128-GCM |
+| Windows Server 2016 | SMB 3.1.1 | 是，具有 KB5004238 或更高版本并且[应用了注册表项](#windows-server-2016-and-windows-10-version-1607) | AES-128-GCM |
+| Windows 10 版本 1607 | SMB 3.1.1 | 是，具有 KB5004238 或更高版本并且[应用了注册表项](#windows-server-2016-and-windows-10-version-1607) | AES-128-GCM |
+| Windows 10 版本 1507 | SMB 3.1.1 | 是，具有 KB5004249 或更高版本并且[应用了注册表项](#windows-10-version-1507) | AES-128-GCM |
 | Windows Server 2012 R2 | SMB 3.0 | 否 | AES-128-CCM |
 | Windows 8.1 | SMB 3.0 | 否 | AES-128-CCM |
 | Windows Server 2012 | SMB 3.0 | 否 | AES-128-CCM |
@@ -131,6 +132,31 @@ Azure 门户为你提供了一个脚本，你可以使用该脚本将文件共�
 选择“还原”，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
 
  ![警告消息中的“还原”按钮](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
+
+## <a name="enable-smb-multichannel"></a>启用 SMB 多通道
+若要在 Azure 文件存储中支持 SMB 多通道，需要确保 Windows 所有相关的修补程序都是最新的。 某些较旧的 Windows 版本（包括 Windows Server 2016、Windows 10 版本 1607 和 Windows 10 版本 1507）要求为所有相关 SMB 多通道修补程序设置额外的注册表项才能应用于完全修补的安装。 如果运行的 Windows 版本高于上述三个版本，则无需执行其他操作。
+
+### <a name="windows-server-2016-and-windows-10-version-1607"></a>Windows Server 2016 和 Windows 10 版本 1607
+要为 Windows Server 2016 和 Windows 10 版本 1607 启用所有 SMB 多通道修复，请运行以下 PowerShell 命令：
+
+```PowerShell
+Set-ItemProperty `
+    -Path "HKLM:SYSTEM\CurrentControlSet\Policies\Microsoft\FeatureManagement\Overrides" `
+    -Name "2291605642" `
+    -Value 1 `
+    -Force
+```
+
+### <a name="windows-10-version-1507"></a>Windows 10 版本 1507
+要为 Windows 10 版本 1507 启用所有 SMB 多通道修复，请运行以下 PowerShell 命令：
+
+```PowerShell
+Set-ItemProperty `
+    -Path "HKLM:\SYSTEM\CurrentControlSet\Services\MRxSmb\KBSwitch" `
+    -Name "{FFC376AE-A5D2-47DC-A36F-FE9A46D53D75}" `
+    -Value 1 `
+    -Force
+```
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接，获取有关 Azure 文件的更多信息：

@@ -1,13 +1,9 @@
 ---
 title: SAP NetWeaver 的 Azure 虚拟机高可用性
 description: 本文介绍适用于 SAP NetWeaver 的高可用性 Azure 虚拟机。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -16,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b63dc024124665e76e27241101de9b70e62fa17
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 2f9d8c2c6b300a13956e3bdf4e4c4591e7f2ee87
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486240"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591266"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>适用于 SAP NetWeaver 的高可用性 Azure 虚拟机
 
@@ -1330,7 +1326,7 @@ _**图 60：** 将 SAP ERS 实例的服务类型更改为自动延迟_
 
 **SAP PR1** 群集组在群集节点 A（例如在 **pr1-ascs-0**）上运行。 将属于 **SAP PR1** 群集组并由 ASCS/SCS 实例使用的共享磁盘驱动器 S 分配到群集节点 A。
 
-![图 61：故障转移群集管理器：SAP <SID> 群集组在群集节点 A 上运行][sap-ha-guide-figure-5000]
+![图 61：故障转移群集管理器：SAP \<SID\> 群集组在群集节点 A 上运行][sap-ha-guide-figure-5000]
 
 _**图 61：** 故障转移群集管理器：SAP <*SID*> 群集组在群集节点 A 上运行_
 
@@ -1359,7 +1355,7 @@ _**图 62：** 在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到
 
    故障转移后，SAP <SID> 群集组在群集节点 B 上运行。例如，在 pr1-ascs-1 上运行。
 
-   ![图 63：在故障转移群集管理器中，SAP <SID> 群集组在群集节点 B 上运行][sap-ha-guide-figure-5002]
+   ![图 63：在故障转移群集管理器中，SAP \<SID\> 群集组在群集节点 B 上运行][sap-ha-guide-figure-5002]
 
    _**图 63**：在故障转移群集管理器中，SAP <*SID*> 群集组在群集节点 B 上运行_
 

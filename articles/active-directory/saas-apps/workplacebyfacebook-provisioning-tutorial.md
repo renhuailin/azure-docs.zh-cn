@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e4091138f51fdd5af4052895cdb75c2390f7ce5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a927232bab058ff461ff1158739a6b4d390e1c56
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459724"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679458"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -89,7 +89,7 @@ ms.locfileid: "114459724"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
@@ -168,6 +168,7 @@ ms.locfileid: "114459724"
 ## <a name="troubleshooting-tips"></a>故障排除提示
 *  如果看到未成功创建用户，并且存在代码为“1789003”的审核日志事件，则表示用户来自未经验证的域。
 *  在某些情况下，用户会收到错误“错误: 缺少电子邮件字段: 必须提供 Facebook 返回的电子邮件错误: 处理 HTTP 请求时发生异常。 有关详细信息，请参阅此异常情况的“Response”属性返回的 HTTP 响应。 此操作已重试 0 次。 操作将在此日期后重试”。 此错误是因为客户将 mail（而不是 userPrincipalName）映射到 Facebook 电子邮件，但某些用户不具有 mail 属性。 要避免这些错误，并成功将失败的用户预配到 Facebook 中的工作区，请将映射到该工作区的属性从 Facebook 电子邮件属性修改到 Coalesce ([mail],[userPrincipalName]) 或取消从 Facebook 的工作区中分配用户，或预配用户的电子邮件地址。  
+*  工作区中提供了一个选项，允许[没有电子邮件地址的用户](https://www.workplace.com/resources/tech/account-management/email-less#enable)存在。 如果在工作区端启用此设置，则必须重启 Azure 端预配，才能在工作区中成功创建没有电子邮件的用户。  
 
 
 ## <a name="change-log"></a>更改日志

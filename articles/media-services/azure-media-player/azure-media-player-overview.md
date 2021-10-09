@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/05/2021
-ms.openlocfilehash: ec36f6bd19728d47b73a0186fb1fb192ba57f4cf
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: faf5bc8a96cb3781ed1d48e9d7f0d1fd7cbc386e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449811"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679572"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述 #
 
@@ -19,7 +19,7 @@ Azure Media Player 是一种 Web 视频播放器，用于在各种浏览器和�
 
 Microsoft Azure 媒体服务允许播放使用 DASH、平滑流式处理和 HLS 流格式提供的内容。 Azure 媒体播放器会考虑这些不同的格式并基于平台/浏览器功能自动播放最佳链接。 Microsoft Azure 媒体服务还允许使用通用加密（PlayReady 或 Widevine）或 AES-128 位信封加密对资产进行动态加密。 Azure 媒体播放器在合理配置时允许对 PlayReady 和 AES-128 位加密的内容进行解密。  若要了解如何配置播放器，请参阅[受保护内容](azure-media-player-protected-content.md)部分。
 
-若要请求新功能，请将意见或反馈提交至 [UserVoice for Azure Media Player](https://aka.ms/ampuservoice)。 如有具体问题、疑问或发现任何 bug，请通过 ampinfo@microsoft.com 与我们联系。
+如果你有具体问题、疑问或发现任何 bug，请使用客户端播放类别[提交支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 > [!NOTE]
 > 请注意，Azure Media Player 仅支持来自 Azure 媒体服务的媒体流。

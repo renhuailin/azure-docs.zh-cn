@@ -9,37 +9,38 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 080217c511470422d563b64f7609d71a4f9a6594
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 7670be8fa34a304d0c7bce3f6a6f3d456d2be397
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802731"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800256"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>教程：Azure Active Directory 与 Zscaler Beta 的集成
 
 本教程介绍如何将 Zscaler Beta 与 Azure Active Directory (Azure AD) 集成。
 将 Zscaler Beta 与 Azure AD 集成后，可以：
 
-- 在 Azure AD 中控制谁有权访问 Zscaler Beta。
-- 可让用户使用其 Azure AD 帐户自动登录到 Zscaler Beta。 这种访问控制称为单一登录 (SSO)。
-- 使用 Azure 门户在一个中心位置管理帐户。
+* 在 Azure AD 中控制谁有权访问 Zscaler Beta。
+* 可让用户使用其 Azure AD 帐户自动登录到 Zscaler Beta。 这种访问控制称为单一登录 (SSO)。
+* 使用 Azure 门户在一个中心位置管理帐户。
 
 ## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Zscaler Beta 的集成，需要以下项：
 
-- 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-- 使用单一登录的 Zscaler Beta 订阅。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 使用单一登录的 Zscaler Beta 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-- Zscaler Beta 支持 SP 发起的 SSO。
-- Zscaler Beta 支持实时用户预配。
+* Zscaler Beta 支持 SP 发起的 SSO。
+* Zscaler Beta 支持实时用户预配。
+* Zscaler Beta 支持[自动用户预配](zscaler-beta-provisioning-tutorial.md)。
 
 ## <a name="adding-zscaler-beta-from-the-gallery"></a>从库中添加 Zscaler Beta
 
@@ -155,13 +156,13 @@ ms.locfileid: "108802731"
 
 4. 转到“管理” > “身份验证” > “身份验证设置”，然后执行以下步骤。  
 
-   ![管理](./media/zscaler-beta-tutorial/ic800206.png "管理")
+   ![管理](./media/zscaler-beta-tutorial/settings.png "管理")
 
    a. 在“身份验证类型”下选择“SAML”。
 
    b. 选择“配置 SAML”。
 
-5. 在“编辑 SAML”窗口中执行以下步骤：![管理用户和身份验证](./media/zscaler-beta-tutorial/ic800208.png "管理用户和身份验证")
+5. 在“编辑 SAML”窗口中执行以下步骤：![管理用户和身份验证](./media/zscaler-beta-tutorial/certificate.png "管理用户和身份验证")
 
    a. 在“SAML 门户 URL”框中，粘贴从 Azure 门户复制的“登录 URL”。
 
@@ -181,7 +182,7 @@ ms.locfileid: "108802731"
 
 6. 在“配置用户身份验证”对话框页上执行以下步骤：
 
-   ![“激活”菜单和“激活”按钮](./media/zscaler-beta-tutorial/ic800207.png)
+   ![“激活”菜单和“激活”按钮](./media/zscaler-beta-tutorial/status.png)
 
    a. 将鼠标悬停在左下角的“激活”菜单上。
 
@@ -195,17 +196,17 @@ ms.locfileid: "108802731"
 
 2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。
 
-   ![“Internet 选项”对话框](./media/zscaler-beta-tutorial/ic769492.png &quot;Internet 选项")
+   ![“Internet 选项”对话框](./media/zscaler-beta-tutorial/connection.png &quot;Internet 选项")
 
 3. 选择“连接”选项卡。
 
-   ![“连接”选项卡](./media/zscaler-beta-tutorial/ic769493.png "连接")
+   ![“连接”选项卡](./media/zscaler-beta-tutorial/server.png "连接")
 
 4. 选择“LAN 设置”打开“局域网(LAN)设置”对话框。
 
 5. 在“代理服务器”部分执行以下步骤：
 
-   ![“代理服务器”部分](./media/zscaler-beta-tutorial/ic769494.png "代理服务器")
+   ![“代理服务器”部分](./media/zscaler-beta-tutorial/network.png "代理服务器")
 
    a. 选中“对 LAN 使用代理服务器”复选框。
 
@@ -226,15 +227,18 @@ ms.locfileid: "108802731"
 > [!Note]
 > 若要手动创建用户，请联系 [Zscaler Beta 支持团队](https://www.zscaler.com/company/contact)。
 
+> [!NOTE]
+> Zscaler Beta 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./zscaler-beta-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-- 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler Beta 登录 URL，可以在其中启动登录流。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler Beta 登录 URL，可以在其中启动登录流。
 
-- 直接转到 Zscaler Beta 登录 URL，并从那里启动登录流。
+* 直接转到 Zscaler Beta 登录 URL，并从那里启动登录流。
 
-- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler Beta 磁贴时，会重定向到 Zscaler Beta 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler Beta 磁贴时，会重定向到 Zscaler Beta 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

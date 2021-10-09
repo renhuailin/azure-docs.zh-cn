@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure DevTest Labs 中的 Automation runbooks 启动虚拟机
+title: 使用自动化 runbook 启动虚拟机
 description: 了解如何使用 Azure Automation runbooks 在 Azure DevTest Labs 的实验室中启动虚拟机。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 84e784c0c5b9845c03cc28591a9ed8d4240fdc6b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: ee3054c5b5434cba526c2025d5649fed0b44d391
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702913"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604758"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>使用 Azure Automation runbooks 按顺序启动实验室中的虚拟机
 使用 DevTest Labs 的“[自动启动](devtest-lab-set-lab-policy.md#set-autostart)”功能，可以将虚拟机配置为在指定时间自动启动。 但是，此功能不支持按特定顺序启动虚拟机。 在某些情况下，这种类型的自动化会很有用。  一种方案是，实验室中的 Jumpbox VM 首先需要在其他虚拟机之前启动，因为 Jumpbox 用作其他虚拟机的访问点。  本文介绍了如何设置 Azure Automation 帐户，其中还介绍了用于执行脚本的 PowerShell runbook。 此脚本使用实验室中的虚拟机上的标记来控制启动顺序，而无需更改脚本。
@@ -21,7 +21,7 @@ ms.locfileid: "110702913"
 按照[本文](../automation/automation-create-standalone-account.md)中的说明创建 Azure Automation 帐户。 创建帐户时，请选择“**Run As Accounts**”选项。 创建自动化帐户后，打开“**模块**”页面，并在菜单栏上选择“**更新 Azure 模块**”。 默认模块是多个旧版本，无需更新脚本即可工作。
 
 ## <a name="add-a-runbook"></a>运行 runbook
-现在，若要将 runbook 添加到自动化帐户，请在左侧菜单中选择“**runbook**”。 在菜单上选择“**添加 runbook**”，并按照说明 [创建 PowerShell runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md)。
+现在，若要将 runbook 添加到自动化帐户，请在左侧菜单中选择“**runbook**”。 在菜单上选择“**添加 runbook**”，并按照说明 [创建 PowerShell runbook](../automation/learn/powershell-runbook-managed-identity.md)。
 
 ## <a name="powershell-script"></a>PowerShell 脚本
 以下脚本采用订阅名称，将实验室名称作为参数。 脚本流用于获取实验室中的所有虚拟机，然后分析出标记信息，以创建虚拟机名称及其启动顺序列表。 该脚本会按顺序浏览虚拟机，并启动虚拟机。 如果有多个虚拟机的特定序号，它们将使用 PowerShell 作业异步启动。 对于没有标记的虚拟机，请将“启动值”设置为最后一个 (10)，默认情况下，它们将启动。  如果实验室不希望自动安装虚拟机，请将标记值设置为 11，虚拟机将被忽略。

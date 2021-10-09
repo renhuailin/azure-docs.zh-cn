@@ -3,12 +3,12 @@ title: 配置公共注册表访问
 description: 配置 IP 规则，以便能够从所选的公共 IP 地址或地址范围访问 Azure 容器注册表。
 ms.topic: article
 ms.date: 07/30/2021
-ms.openlocfilehash: cb48a91190f352154a2f0af1e02dcd3e36f436d5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3a4a4a28dfbcd859cf97be6799e24a8110add436
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722511"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627000"
 ---
 # <a name="configure-public-ip-network-rules"></a>配置公共 IP 网络规则
 
@@ -18,7 +18,7 @@ IP 网络规则在公共注册表终结点上进行配置。 IP 网络规则不�
 
 可在“高级”容器注册表服务层级配置 IP 访问规则。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层级](container-registry-skus.md)。
 
-每个注册表最多支持 100 条网络访问规则。
+每个注册表最多支持 100 个 IP 访问规则。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
@@ -108,15 +108,15 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ## <a name="troubleshoot"></a>故障排除
 
-### <a name="access-behind-https-proxy"></a>从 HTTPS 代理后访问
+### <a name="access-behind-https-proxy"></a>从 HTTPS 代理后面进行访问
 
 如果设置了公用网络规则，或拒绝对注册表的公共访问，则尝试从禁止的公用网络登录注册表会失败。 如果未设置代理的访问规则，则从 HTTPS 代理后面进行的客户端访问也会失败。 你会看到类似于 `Error response from daemon: login attempt failed with status: 403 Forbidden` 或 `Looks like you don't have access to registry` 的错误消息。
 
 如果使用网络访问规则所允许的 HTTPS 代理，但未在客户端环境中正确配置该代理，则也可能会发生这些错误。 检查 Docker 客户端和 Docker 守护程序均已针对代理行为进行了配置。 有关详细信息，请参阅 Docker 文档中的 [HTTP/HTTPS 代理](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)。
 
-### <a name="access-from-azure-pipelines"></a>从 Azure Pipelines 访问
+### <a name="access-from-azure-pipelines"></a>从 Azure Pipelines 进行的访问
 
-如果将 Azure Pipelines 用于限制对特定 IP 地址的访问的 Azure 容器注册表，则管道可能无法访问注册表，因为管道中的出站 IP 地址不是固定的。 默认情况下，管道使用 Microsoft 托管[代理](/azure/devops/pipelines/agents/agents)在具有一组不断变化的 IP 地址的虚拟机池上运行作业。
+如果将 Azure Pipelines 与 Azure 容器注册表结合使用（注册表可将访问权限限制到特定 IP 地址），则由于管道的出站 IP 地址不是固定的，它可能无法访问注册表。 默认情况下，管道会使用 Microsoft 托管的[代理](/azure/devops/pipelines/agents/agents)在具有一组变化的 IP 地址的虚拟机池上运行作业。
 
 一种解决方法是将用于运行管道的代理从 Microsoft 托管更改为自托管。 通过在你管理的 [Windows](/azure/devops/pipelines/agents/v2-windows) 或 [Linux](/azure/devops/pipelines/agents/v2-linux) 计算机上运行的自托管代理，你可以控制管道的出站 IP 地址，并且可以将该地址添加到注册表 IP 访问规则中。
 

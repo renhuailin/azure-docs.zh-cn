@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9c73d8865b2cd019e940a753425d13b67567b39b
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 7cb5d96c7651713f02d606be1038f55cd430162f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471187"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599233"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>Blob 存储的加密范围
 
@@ -36,7 +36,7 @@ ms.locfileid: "123471187"
 
 Azure Policy 提供了一个内置策略，要求加密范围使用客户管理的密钥。 有关详细信息，请参阅 [Azure Policy 内置策略定义](../../governance/policy/samples/built-in-policies.md#storage)中的“存储”部分。
 
-一个存储帐户最多可以有 10,000 个加密范围由其密钥版本自动更新的客户管理密钥进行保护。 如果你的存储帐户已经有 10,000 个加密范围受自动更新的客户管理密钥的保护，则对于受客户管理密钥保护的其他加密范围，必须手动更新其密钥版本。  
+一个存储帐户最多可以有 10,000 个加密范围由其密钥版本自动更新的客户管理密钥进行保护。 如果你的存储帐户已经有 10,000 个加密范围受自动更新的客户管理密钥的保护，则对于受客户管理密钥保护的其他加密范围，必须手动更新其密钥版本。
 
 ### <a name="infrastructure-encryption"></a>基础结构加密
 
@@ -82,11 +82,11 @@ Azure 存储中的基础结构加密支持对数据进行双重加密。 启用�
 
 ## <a name="feature-support"></a>功能支持
 
-下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。

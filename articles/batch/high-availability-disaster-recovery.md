@@ -2,13 +2,13 @@
 title: 高可用性和灾难恢复
 description: 了解如何针对区域性中断问题设计 Batch 应用程序。
 ms.topic: how-to
-ms.date: 12/30/2020
-ms.openlocfilehash: eb3d0cb218e607e38b7478b7cc7956963e450f46
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/08/2021
+ms.openlocfilehash: 5ba56d769344b930cdc3c6500d42456214b32a71
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730199"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799142"
 ---
 # <a name="design-your-batch-application-for-high-availability"></a>设计 Batch 应用程序以实现高可用性
 
@@ -35,6 +35,7 @@ Azure Batch 在所有 Azure 区域提供，但在创建 Batch 帐户时，必须
 - 使用模板和/或脚本在区域中自动部署应用程序。
 - 始终更新所有区域中的应用程序二进制文件和引用数据。 保持更新可确保将区域快速联机，不需等待文件的上传和部署。 例如，如果使用 Batch 应用程序包来存储和引用需安装在池节点中的自定义应用程序，则在生成新版应用程序后，应将其上传到每个 Batch 帐户并通过池配置对其进行引用（或者使新版本成为默认版本）。
 - 在调用 Batch、存储和任何其他服务的应用程序中，可以轻松地将客户端或负载切换到不同的区域。
+- 如果适用，请考虑[跨可用区创建池](create-pool-availability-zones.md)。
 - 在正常操作过程中，请考虑频繁切换到备用区域。 例如，如果两个部署位于不同的区域，则每月切换到备用区域一次。
 
 ## <a name="next-steps"></a>后续步骤

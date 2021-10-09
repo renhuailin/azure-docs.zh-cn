@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: notification-hubs
-author: jwargo
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 01/17/2019
-ms.author: jowargo
+ms.date: 09/07/2021
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 2ec602f056b339a1b1dcb78d6b8d7583aeaf0434
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d33df05e54d9cdeb97631ca479dd8ac9869343c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009089"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126057027"
 ---
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -21,19 +21,19 @@ ms.locfileid: "96009089"
 
       ![Azure 门户 - 选择“通知中心”](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
-1. 在“通知中心”  页面上，在工具栏上选择“添加”  。
+1. 在“通知中心”页面上，在工具栏上选择“创建”。
 
-      ![通知中心 -“添加”工具栏按钮](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+      ![通知中心 -“添加”工具栏按钮](./media/notification-hubs-portal-create-new-hub/create-toolbar-button.png)
 
-1. 在“通知中心”  页面上，执行以下步骤：
+1. 在“通知中心”页面上的“基本信息”选项卡中，执行以下步骤：
 
-    1. 将一个名称输入“通知中心”。   
+    1. 在“订阅”中，选择要使用的 Azure 订阅的名称，然后选择现有资源组或创建新资源组。  
 
-    1. 在“创建新的命名空间”中输入名称。  命名空间包含一个或多个中心。
+    1. 在“命名空间详细信息”中为新命名空间输入唯一名称。 
+    
+    1. 命名空间包含一个或多个通知中心，因此请在“通知中心详细信息”中键入中心的名称。 或从下拉列表中选择一个现有的命名空间。
 
     1. 从“位置”下拉列表框中选择值。  此值指定要在其中创建通知中心的位置。
-
-    1. 在“资源组”中选择现有的资源组，或者为新资源组创建一个名称。 
 
     1. 选择“创建”  。
 

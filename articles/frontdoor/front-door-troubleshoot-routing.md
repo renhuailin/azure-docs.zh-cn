@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/30/2020
+ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: 15cdcefe628a392704e650b560243e2f6a134ec2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed47d310f418936b84c505fcf254947a67f0eb6d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629982"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824399"
 ---
 # <a name="troubleshooting-common-routing-problems"></a>排查常见的路由问题
 
@@ -29,19 +29,27 @@ ms.locfileid: "94629982"
 
 * 未通过 Azure Front Door 发送到后端的常规请求会成功。 通过 Azure Front Door 发送则出现 503 错误响应。
 * 此 Azure Front Door 故障通常会在大约 30 秒后出现。
+* 日志 `ErrorInfo: OriginInvalidResponse` 出现间歇性 503 错误。
 
 ### <a name="cause"></a>原因
 
-此问题的原因可能是以下两种情况之一：
+此问题的原因可能是以下三种情况之一：
  
 * 后端接收来自 Azure Front Door 的请求所用的时间超过配置的超时（默认值为 30 秒）。
-* 后端发送 Azure Front Door 请求的响应所用的时间超过超时值。 
+* 后端发送 Azure Front Door 请求的响应所用的时间超过超时值。
+* 客户端使用 `Accept-Encoding header` 发送了字节范围请求（压缩启用）。
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
-* 直接向后端发送请求（无需通过 Azure Front Door）。 查看后端通常需要多久才能响应。
-* 通过 Azure Front Door 发送请求，查看是否会收到任何 503 响应。 如果没有，则问题可能与超时无关。 联系支持人员。
-* 如果通过 Azure Front Door 发送请求出现 503 错误响应代码，请为 Azure Front Door 配置 `sendReceiveTimeout` 字段。 可以将默认超时延长到 4 分钟（240 秒）。 此设置为 `backendPoolSettings` 下面的 `sendRecvTimeoutSeconds`。 
+* 直接向后端发送请求（不通过 Azure Front Door）。 看后端通常需要多久才能进行响应。
+* 通过 Azure Front Door 发送请求，看是否会收到任何 503 响应。 如果没有收到任何 503 响应，则问题可能与超时无关。 请联系支持人员。
+* 如果通过 Azure Front Door 发送的请求导致 503 错误响应代码，请为 Azure Front Door 配置“发送/接收超时(秒)”设置。 可以将默认超时延长到 4 分钟（240 秒）。 可以通过转到 Front Door 设计器并选择“设置”对此设置进行配置。
+
+    :::image type="content" source=".\media\troubleshoot-route-issues\send-receive-timeout.png" alt-text="Front Door 设计器中发送/接收超时字段的屏幕截图。":::
+
+* 如果超时无法解决问题，请使用 Fiddler 或浏览器开发人员工具等工具来检查客户端是否正在发送包含“Accept-Encoding”标头的字节范围请求，从而导致源使用不同的内容长度做出响应。 如果是，则可以在源/Azure Front Door 上禁用压缩，也可以创建规则集规则以从字节范围请求中删除 `accept-encoding`。
+
+    :::image type="content" source=".\media\troubleshoot-route-issues\remove-encoding-rule.png" alt-text="规则引擎中的接受编码规则的屏幕截图。":::
 
 ## <a name="requests-sent-to-the-custom-domain-return-a-400-status-code"></a>发送到自定义域的请求返回 400 状态代码
 
@@ -52,7 +60,7 @@ ms.locfileid: "94629982"
 
 ### <a name="cause"></a>原因
 
-如果没有为作为前端主机添加的自定义域配置路由规则，则会出现此问题。 需要为该前端主机显式添加路由规则。 即使已为 Azure Front Door 子域 (*.azurefd.net) 下的前端主机配置了路由规则，也是如此。
+如果没有为已添加为前端主机的自定义域配置传递规则，则会出现此问题。 需要为该前端主机显式添加传递规则。 即使已为 Azure Front Door 子域 (*.azurefd.net) 下的前端主机配置了传递规则，也是如此。
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
@@ -62,11 +70,11 @@ ms.locfileid: "94629982"
 
 ### <a name="symptom"></a>症状
 
-Azure Front Door 具有将 HTTP 重定向到 HTTPS 的路由规则，但访问域时仍保持 HTTP 作为协议。
+Azure Front Door 具有将 HTTP 重定向到 HTTPS 的传递规则，但访问域时仍然始终使用 HTTP 作为协议。
 
 ### <a name="cause"></a>原因
 
-如果未正确配置 Azure Front Door 的路由规则，则会发生此行为。 基本而言，当前配置不具有特定性，可能存在冲突的规则。
+如果没有正确地为 Azure Front Door 配置传递规则，则会出现此行为。 基本而言，当前配置不具体，并且可能有冲突的规则。
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 

@@ -9,24 +9,26 @@ ms.devlang: ''
 ms.topic: how-to
 author: scott-kim-sql
 ms.author: scottkim
-ms.reviewer: mathoma
-ms.date: 03/02/2021
-ms.openlocfilehash: 1b79d9f88c61ca4bc11895e26f8ffc4fd69b8a35
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.reviewer: mathoma, wiassaf
+ms.date: 09/14/2021
+ms.openlocfilehash: 89a3f86995d054573897202d2269e4f1f38821e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706555"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631184"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>计划内维护事件的提前通知（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-提前通知（预览版）可用于为[维护时段（预览版）](maintenance-window.md)配置的数据库。 使用提前通知，客户可以将通知配置为最多在发生任何计划事件前的 24 小时内发送。
+提前通知（预览版）可用于配置为使用非默认[维护时段（预览版）](maintenance-window.md)的数据库。 使用提前通知，客户可以将通知配置为最多在发生任何计划事件前的 24 小时内发送。
 
 可以将通知配置为让你在计划内维护开始前 24 小时收到短信、电子邮件、Azure 推送通知和语音邮件。 在维护开始和结束时，将发送其他通知。
 
-> [!Note]
-> 虽然选择维护时段的功能适用于 Azure SQL 托管实例，但提前通知目前不适用于 Azure SQL 托管实例。
+无法为“系统默认”维护时段选项配置提前通知。 选择除“系统默认”以外的其他维护时段，以配置和启用“提前通知”。
+
+> [!NOTE]
+> 虽然选择维护时段的功能适用于 Azure SQL 托管实例，但提前通知目前不适用于 Azure SQL 托管实例。 
 
 ## <a name="create-an-advance-notification"></a>创建提前通知
 

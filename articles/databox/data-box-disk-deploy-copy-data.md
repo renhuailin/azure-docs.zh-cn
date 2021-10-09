@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/14/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1dc4c63d5d19b688a695702a5eb94365ff762a97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125331"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591798"
 ---
 ::: zone target="docs"
 
@@ -283,7 +283,7 @@ ms.locfileid: "92125331"
 
     > [!TIP]
     > - 在两次运行之间请重置工具。
-    > - 如果要处理包含小文件（数 KB）的大型数据集，请使用选项 1。 此选项仅验证文件，因为校验和生成可能需要很长时间，并且执行速度可能会非常慢。
+    > - 如果有包含小文件（大约几 KB）的大型数据集，则校验和过程可能需要更长时间。  如果使用选项 1 并跳过校验和创建，则需要在删除你拥有的任何数据副本之前，最好通过校验和独立验证 Azure 中已上传数据的数据完整性。
 
 3. 如果使用了多个磁盘，请对每个磁盘运行该命令。
 

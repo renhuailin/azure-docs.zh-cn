@@ -6,12 +6,12 @@ ms.date: 09/07/2021
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5d73da041b5ecb5dd2b7089ee898b5bffbe4f512
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: f0f93a43fd74ba38b8be17636b695e287354ed5a
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542976"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218268"
 ---
 # <a name="quickstart-create-an-automation-account-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建自动化帐户
 
@@ -27,7 +27,7 @@ ms.locfileid: "123542976"
 
 1. 在顶部菜单中，选择“+ 创建资源”  。
 
-1. 在“类别”下，选择“IT 和管理工具”，然后选择“自动化” 。
+1. 在“类别”下，选择“IT 和管理工具”，然后选择“自动化”  。
 
    :::image type="content" source="./media/create-account-portal/automation-account-portal.png" alt-text="在门户中查找自动化帐户。":::
 
@@ -38,7 +38,7 @@ ms.locfileid: "123542976"
    |名称| 为其位置和资源组输入唯一的名称。 已删除的自动化帐户的名称可能无法立即可用。 在用户界面中输入帐户名称后，无法对其进行更改。 |
    |订阅| 从下拉列表中，选择帐户的 Azure 订阅。|
    |资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
-   |位置| 从下拉列表中，选择帐户的位置。 如果需要可以部署自动化帐户的位置的已更新列表，请参阅[可使用的产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)|
+   |位置| 从下拉列表中，选择帐户的位置。 有关可将自动化帐户部署到的位置的更新列表，请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)。|
    |创建 Azure 运行方式帐户| 请选择“否”。  自动化帐户中的 Azure 运行方式帐户对于向 Azure 进行身份验证很有用；但是现在可以在自动化帐户中使用托管标识。 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md)为应用程序提供一个标识，可以在连接到支持 Azure Active Directory (Azure AD) 身份验证的资源时使用。 |
 
    :::image type="content" source="./media/create-account-portal/add-automation-account-portal.png" alt-text="用于添加自动化帐户的必填字段":::

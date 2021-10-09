@@ -1,7 +1,6 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Software AG Cloud 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Software AG Cloud 集成
 description: 了解如何在 Azure Active Directory 和 Software AG Cloud 之间配置单一登录。
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: CelesteDG
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 900cb7892331db3e78314a5de6bfb432f40990c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726081"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558468"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Software AG Cloud 集成
 
@@ -151,7 +150,7 @@ ms.locfileid: "98726081"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-假设已将 Microsoft Azure 配置为 Software AG Cloud 中的提供者，请导航至 `www.softwareag.cloud` 并单击“登录”按钮，然后输入环境名称。 在下一个屏幕中，单击“使用 <IDP NAME> 登录”链接并输入凭据。 经过身份验证后，你将登录并转到 Software AG Cloud 主页。
+假设已将 Microsoft Azure 配置为 Software AG Cloud 中的提供者，请导航至 `www.softwareag.cloud` 并单击“登录”按钮，然后输入环境名称。 在下一个屏幕中，单击“使用 \<IDP NAME\> 登录”链接并输入凭据。 经过身份验证后，你将登录并转到 Software AG Cloud 主页。
 
 ## <a name="next-steps"></a>后续步骤
 

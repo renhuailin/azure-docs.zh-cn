@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 HubSpot 的集成 | Microsoft 文档
+title: 教程：Azure AD SSO 与 HubSpot 集成
 description: 了解如何在 Azure Active Directory 与 HubSpot 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 91dfdcef01a121c8282b8fad2e75f67989b75dc3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4e91ab02e02da602010cb06ff0b9e3f88d31c64
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733227"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670060"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教程：Azure Active Directory 与 HubSpot 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-hubspot"></a>教程：Azure AD SSO 与 HubSpot 集成
 
 在本教程中，了解如何将 HubSpot 与 Azure Active Directory (Azure AD) 集成。 将 HubSpot 与 Azure AD 集成后，你可以：
 
@@ -39,10 +39,10 @@ ms.locfileid: "98733227"
 
 HubSpot 支持以下功能：
 
-* **SP 发起的单一登录**
-* **IDP 发起的单一登录**
+* SP 发起的单一登录。
+* IDP 发起的单一登录。
 
-## <a name="adding-hubspot-from-the-gallery"></a>从库中添加 HubSpot
+## <a name="add-hubspot-from-the-gallery"></a>从库中添加 HubSpot
 
 要配置 HubSpot 与 Azure AD 的集成，需要从库中将 HubSpot 添加到托管 SaaS 应用列表。
 
@@ -55,20 +55,18 @@ HubSpot 支持以下功能：
 
 ## <a name="configure-and-test-azure-ad-sso-for-hubspot"></a>配置并测试 HubSpot 的 Azure AD SSO
 
-在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 HubSpot 的 Azure AD 单一登录。 若要运行单一登录，必须在 Azure AD 用户与 HubSpot 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置并测试 HubSpot 的 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 HubSpot 中的相关用户之间建立关联。
 
-若要配置和测试 HubSpot 的 Azure AD 单一登录，必须完成以下构建基块：
+若要配置并测试 HubSpot 的 Azure AD SSO，请执行以下步骤：
 
-| 任务 | 说明 |
-| --- | --- |
-| **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** | 使用户能够使用此功能。 |
-| **[配置 HubSpot 单一登录](#configure-hubspot-single-sign-on)** | 在应用程序中配置单一登录设置。 |
-| **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** | 测试名为 Britta Simon 的用户的 Azure AD 单一登录。 |
-| **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** | 使 Britta Simon 能够使用 Azure AD 单一登录。 |
-| **[创建 HubSpot 测试用户](#create-a-hubspot-test-user)** | 在 HubSpot 中创建 Britta Simon 的对应用户，该用户与 Azure AD 中表示 Britta Simon 的用户相关联。 |
-| **[测试单一登录](#test-single-sign-on)** | 验证配置是否正常工作。 |
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 HubSpot SSO](#configure-hubspot-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 HubSpot 测试用户](#create-hubspot-test-user)** - 在 HubSpot 中创建 B.Simon 的对应用户，将其关联到用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 1. 在 Azure 门户中的 HubSpot 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
@@ -76,13 +74,11 @@ HubSpot 支持以下功能：
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”窗格中，若要配置“IDP 发起模式”，请完成以下步骤：  
+1. 在“基本 SAML 配置”窗格中，若要配置“IDP 发起模式”，请执行以下步骤： 
 
     1. 在“标识符”框中，输入具有以下模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>。
 
     1. 在“回复 URL”框中，输入具有以下模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>。
-
-    ![HubSpot 域和 URL 单一登录信息](common/idp-intiated.png)
 
     > [!NOTE]
     > 若要设置 URL 的格式，还可参考 Azure 门户的“基本 SAML 配置”窗格中显示的模式  。
@@ -93,51 +89,13 @@ HubSpot 支持以下功能：
 
     1. 在“登录 URL”框中，输入“https:\//app.hubspot.com/login”   。
 
-    ![“设置其他 URL”选项](common/metadata-upload-additional-signon.png)
-
 1. 在“设置 SAML 单一登录”窗格的“SAML 签名证书”部分中，选择“证书 (Base64)”旁边的“下载”     。 根据需要选择下载选项。 将证书保存在计算机上。
 
     ![证书 (Base64) 下载选项](common/certificatebase64.png)
 
 1. 在“设置 HubSpot”部分，根据要求复制以下 URL  ：
 
-    * 登录 URL
-    * Azure AD 标识符
-    * 注销 URL
-
     ![复制配置 URL](common/copy-configuration-urls.png)
-
-### <a name="configure-hubspot-single-sign-on"></a>配置 HubSpot 单一登录
-
-1. 在浏览器中打开新选项卡并登录到 HubSpot 管理员帐户。
-
-1. 选择页面右上角的 **设置** 图标。
-
-    ![HubSpot 中的​​设置图标](./media/hubspot-tutorial/config1.png)
-
-1. 选择“帐户默认值”  。
-
-    ![HubSpot 中的“​​帐户默认值”选项](./media/hubspot-tutorial/config2.png)
-
-1. 向下滚动到“安全”部分，然后选择“设置”   。
-
-    ![HubSpot 中的“​​设置”选项](./media/hubspot-tutorial/config3.png)
-
-1. 在“设置单一登录”部分中，完成以下步骤  ：
-
-    1. 在“受众 URl (服务提供程序实体 ID)”框中，选择“复制”以复制值   。 在 Azure 门户的“基本 SAML 配置”窗格中，将值粘贴到“标识符”框中   。
-
-    1. 在“登录 URl、ACS、收件人或重定向”框中，选择“复制”以复制值   。 在 Azure 门户的“基本 SAML 配置”窗格中，将值粘贴到“回复 URL”框中   。
-
-    1. 在 HubSpot 的“标识提供者或证书颁发者 URL”框中，粘贴在 Azure 门户中复制的“Azure AD 标识符”值   。
-
-    1. 在 HubSpot 的“标识提供者单一登录 URL”框中，粘贴在 Azure 门户中复制的“登录 URL”值   。
-
-    1. 在 Windows 记事本中，打开下载的“证书(Base64)”文件。 选择并复制文件的内容。 然后在 HubSpot 中将其粘贴到“X.509 证书”框中  。
-
-    1. 选择“验证”  。
-
-        ![HubSpot 中的“设置单一登录”部分](./media/hubspot-tutorial/config4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -161,9 +119,41 @@ HubSpot 支持以下功能：
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-a-hubspot-test-user"></a>创建 HubSpot 测试用户
+## <a name="configure-hubspot-sso"></a>配置 HubSpot SSO
+
+1. 在浏览器中打开新选项卡并登录到 HubSpot 管理员帐户。
+
+1. 选择页面右上角的 **设置** 图标。
+
+    ![HubSpot 中的​​设置图标](./media/hubspot-tutorial/icon.png)
+
+1. 选择“帐户默认值”  。
+
+    ![HubSpot 中的“​​帐户默认值”选项](./media/hubspot-tutorial/account.png)
+
+1. 向下滚动到“安全”部分，然后选择“设置”   。
+
+    ![HubSpot 中的“​​设置”选项](./media/hubspot-tutorial/security.png)
+
+1. 在“设置单一登录”部分中，执行以下步骤：
+
+    1. 在“受众 URl (服务提供程序实体 ID)”框中，选择“复制”以复制值   。 在 Azure 门户的“基本 SAML 配置”窗格中，将值粘贴到“标识符”框中   。
+
+    1. 在“登录 URL、ACS、收件人或重定向”框中，选择“复制”以复制值 。 在 Azure 门户的“基本 SAML 配置”窗格中，将值粘贴到“回复 URL”框中   。
+
+    1. 在 HubSpot 的“标识提供者或证书颁发者 URL”框中，粘贴在 Azure 门户中复制的“Azure AD 标识符”值   。
+
+    1. 在 HubSpot 的“标识提供者单一登录 URL”框中，粘贴在 Azure 门户中复制的“登录 URL”值   。
+
+    1. 在 Windows 记事本中，打开下载的“证书(Base64)”文件。 选择并复制文件的内容。 然后在 HubSpot 中将其粘贴到“X.509 证书”框中  。
+
+    1. 选择“验证”  。
+
+        ![HubSpot 中的“设置单一登录”部分](./media/hubspot-tutorial/certificate.png)
+
+### <a name="create-hubspot-test-user"></a>创建 HubSpot 测试用户
 
 若要使 Azure AD 用户能够登录到 HubSpot，必须在 HubSpot 中预配该用户。 在 HubSpot 中，预配是一项手动任务。
 
@@ -173,32 +163,32 @@ HubSpot 支持以下功能：
 
 1. 选择页面右上角的 **设置** 图标。
 
-    ![HubSpot 中的​​设置图标](./media/hubspot-tutorial/config1.png)
+    ![HubSpot 中的​​设置图标](./media/hubspot-tutorial/icon.png)
 
 1. 选择“用户和团队”  。
 
-    ![HubSpot 中的“用户和团队”选项](./media/hubspot-tutorial/user1.png)
+    ![HubSpot 中的“用户和团队”选项](./media/hubspot-tutorial/users.png)
 
 1. 选择“创建用户”  。
 
-    ![HubSpot 中的“创建用户”选项](./media/hubspot-tutorial/user2.png)
+    ![HubSpot 中的“创建用户”选项](./media/hubspot-tutorial/teams.png)
 
 1. 在“添加电子邮件地址”框中，按 brittasimon\@contoso.com 的格式输入用户的电子邮件地址，然后选择“下一步”   。
 
-    ![HubSpot 中“创建用户”部分的“添加电子邮件地址”框](./media/hubspot-tutorial/user3.png)
+    ![HubSpot 中“创建用户”部分的“添加电子邮件地址”框](./media/hubspot-tutorial/add-user.png)
 
 1. 在“创建用户”部分中，选择每个选项卡  。在每个选项卡上，为用户设置相关选项和权限。 然后，选择“下一步”  。
 
-    ![HubSpot 中“创建用户”部分的各个选项卡](./media/hubspot-tutorial/user4.png)
+    ![HubSpot 中“创建用户”部分的各个选项卡](./media/hubspot-tutorial/create-user.png)
 
 1. 若要向用户发送邀请，请选择“发送”  。
 
-    ![HubSpot 中的“发送”选项](./media/hubspot-tutorial/user5.png)
+    ![HubSpot 中的“发送”选项](./media/hubspot-tutorial/invitation.png)
 
     > [!NOTE]
     > 用户接受邀请后，将激活用户。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -210,10 +200,9 @@ HubSpot 支持以下功能：
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 HubSpot 
+* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 HubSpot。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 HubSpot 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 HubSpot。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 HubSpot 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 HubSpot。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

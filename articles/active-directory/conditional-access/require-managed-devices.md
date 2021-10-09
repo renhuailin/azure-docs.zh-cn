@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 09/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e39a6bbde587e543afcb10cb910a675bf4c69fc
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 61b5bb4a8cdfa8dddcbdb08283245a6e8d7c93cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867559"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601190"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：通过条件访问要求使用受管理设备进行云应用访问
 
@@ -31,7 +31,7 @@ ms.locfileid: "122867559"
 - **[Azure Active Directory 中的条件访问](./overview.md)** - 此文提供了条件访问的概念性概述和相关术语。
 - **[Azure Active Directory 中的设备管理简介](../devices/overview.md)** - 此文章概述了可以用来将设备置于组织控制下的各种选项。 
 - 如需在 Windows 10 创意者更新（版本 1703）或更高版本中获得 Chrome 支持，请安装 [Windows 10 Accounts 扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
-- 对于 Firefox 支持，请在 Windows 10 版本 1809 或更高版本中启动 Firefox 91，配置 [Windows SSO](https://support.mozilla.org/en-US/kb/windows-sso) 。
+- 对于 Firefox 支持，请在 Windows 10 版本 1809 或更高版本中启动 Firefox 91，配置 [Windows SSO](https://support.mozilla.org/kb/windows-sso) 。
 
 >[!NOTE] 
 > 我们建议使用基于 Azure AD 设备的条件访问策略，在初始设备身份验证后获得最佳实施。 这包括在设备不符合合规性和设备代码流时关闭会话。

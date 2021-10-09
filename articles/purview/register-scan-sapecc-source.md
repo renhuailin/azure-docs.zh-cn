@@ -4,15 +4,15 @@ description: 本文概述了如何在 Azure Purview 中注册 SAP ECC 源并设�
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 2/25/2021
-ms.openlocfilehash: f9cd8601ef3e59de3c11073d7ac73176367f4fc9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 6d6764d98b71c01abef66fbd7392017fe638ba5a
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724257"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212033"
 ---
 # <a name="register-and-scan-sap-ecc-source"></a>注册并扫描 SAP ECC 源
 
@@ -80,7 +80,7 @@ SAP ECC 源支持完全扫描（用于从 SAP ECC 实例中提取元数据），
 
 若要创建并运行新扫描，请执行以下操作：
 
-1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果未设置，请使用[此处](./manage-integration-runtimes.md)所述的步骤来创建自承载集成运行时。
+1.  在管理中心，选择“集成运行时”。 确保设置了自承载集成运行时。 如果未设置，请使用[此处](./manage-integration-runtimes.md)所述的步骤来创建自承载集成运行时。
 
 2.  导航到“源”
 
@@ -110,11 +110,11 @@ SAP ECC 源支持完全扫描（用于从 SAP ECC 实例中提取元数据），
 
     :::image type="content" source="media/register-scan-sapecc-source/scan-sapecc.png" alt-text="扫描 SAPECC" border="true":::
 
-6.  单击“继续”。
+6.  选择“继续”。
 
 7.  选择你的扫描触发器。 可以设置一个计划或运行一次扫描。
 
-8.  查看你的扫描并单击“保存并运行”。
+8.  查看扫描，然后选择“保存并运行”。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>查看扫描和扫描运行
 

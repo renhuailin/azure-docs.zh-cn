@@ -3,12 +3,12 @@ title: 安全概述
 description: 有关已启用 Azure Arc 的服务器的安全信息。
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: 84f3b7cae576f1bedc6de57f94623936cbb0a51c
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 0f3e093dc07c1fddb4598138078003425456c8d1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214252"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832208"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Azure Arc for servers 安全概述
 
@@ -22,9 +22,9 @@ ms.locfileid: "123214252"
 
 授予了对资源的[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色或管理员角色访问权限的用户和应用程序可以对资源进行更改，包括在计算机上部署或删除[扩展](manage-vm-extensions.md)。 扩展可以包含在特权上下文中运行的任意脚本，因此请考虑将 Azure 资源上的任何参与者作为服务器的间接管理员。
 
-Azure Connected Machine Onboarding 角色可用于进行大规模加入，只能在 Azure 中读取或创建新的已启用 Arc 的服务器。 它不能用于删除已注册的服务器或用于管理扩展。 我们建议仅将此角色分配给用于大规模加入计算机的 Azure Active Directory (Azure AD) 服务主体，这是最佳做法。
+Azure Connected Machine Onboarding 角色可用于进行大规模加入，只能在 Azure 中读取或创建新的已启用 Azure Arc 的服务器。 它不能用于删除已注册的服务器或用于管理扩展。 我们建议仅将此角色分配给用于大规模加入计算机的 Azure Active Directory (Azure AD) 服务主体，这是最佳做法。
 
-如果用户是 Azure Connected Machine 资源管理员角色的成员，则可以读取、修改、重新加入和删除计算机。 此角色旨在支持对已启用 Arc 的服务器进行管理，但不支持对资源组或订阅中的其他资源进行管理。
+如果用户是 Azure Connected Machine 资源管理员角色的成员，则可以读取、修改、重新加入和删除计算机。 此角色旨在支持对已启用 Azure Arc 的服务器进行管理，但不支持对资源组或订阅中的其他资源进行管理。
 
 ## <a name="agent-security-and-permissions"></a>安全性和权限
 
@@ -40,9 +40,9 @@ Azure Connected Machine 代理由三个服务组成，这些服务在计算机�
 
 来宾配置和扩展服务在 Windows 上作为本地系统运行，在 Linux 上作为根运行。
 
-## <a name="using-a-managed-identity-with-arc-enabled-servers"></a>将托管标识用于已启用 Arc 的服务器
+## <a name="using-a-managed-identity-with-azure-arc-enabled-servers"></a>将托管标识用于已启用 Azure Arc 的服务器
 
-默认情况下，Arc 使用的 Azure Active Directory 系统分配的标识仅可用于在 Azure 中更新已启用 Arc 的服务器的状态。 例如，最后见到的检测信号的状态。 如果服务器上的应用程序使用系统分配的标识来访问其他 Azure 服务，则可以根据需要向该标识分配其他角色。 若要详细了解如何配置用于访问 Azure 资源的系统分配的托管标识，请参阅[使用已启用 Arc 的服务器对 Azure 资源进行身份验证](managed-identity-authentication.md)。 
+默认情况下，Arc 使用的 Azure Active Directory 系统分配的标识仅可用于在 Azure 中更新已启用 Azure Arc 的服务器的状态。 例如，最后见到的检测信号的状态。 如果服务器上的应用程序使用系统分配的标识来访问其他 Azure 服务，则可以根据需要向该标识分配其他角色。 若要详细了解如何配置用于访问 Azure 资源的系统分配的托管标识，请参阅[使用已启用 Azure Arc 的服务器对 Azure 资源进行身份验证](managed-identity-authentication.md)。 
 
 尽管计算机上运行的任何应用程序都可以访问 Hybrid Instance Metadata Service，但只有经过授权的应用程序才能为系统分配的标识请求 Azure AD 令牌。 第一次尝试访问令牌 URI 时，服务会在文件系统上仅受信任的调用方可以读取的位置中生成随机生成的加密 blob。 然后调用方必须读取文件（证明其具有适当的权限），然后使用授权标头中的文件内容重试请求，以成功检索 Azure AD 令牌。
 
@@ -60,6 +60,6 @@ Azure Connected Machine 代理使用公钥身份验证与 Azure 服务进行通�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在多台混合计算机中评估或启用已启用了 Arc 的服务器之前，请先查看[连接的计算机代理概述](agent-overview.md)，以了解要求、有关代理的技术详细信息以及部署方法。
+* 在多台混合计算机中评估或启用已启用了 Azure Arc 的服务器之前，请先查看[连接的计算机代理概述](agent-overview.md)，以了解要求、有关代理的技术详细信息以及部署方法。
 
 * 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。

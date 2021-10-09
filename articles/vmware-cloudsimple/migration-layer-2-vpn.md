@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 将本地第 2 层网络延伸到私有云
 description: 介绍如何在 CloudSimple 私有云上的 NSX 和本地的独立 NSX Edge 客户端之间设置第 2 层 VPN
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f327e0eecbfe51095f3f533dc787cc9aeedfb1e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97899365"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638304"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 层外延式网络迁移工作负荷
 
@@ -414,7 +414,7 @@ ENCAP       : GENEVE
 
 ## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>获取 NSX 端的 L2VPN 的对等代码
 
-获取 NSX-T 终结点的对等代码。 配置远程终结点时需要该对等代码。 可以从上一节中获取 L2VPN <session-id>。 有关详细信息，请参阅 [NSX-T 2.3 API 指南](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html)。
+获取 NSX-T 终结点的对等代码。 配置远程终结点时需要该对等代码。 可以从上一节中获取 L2VPN \<session-id\>。 有关详细信息，请参阅 [NSX-T 2.3 API 指南](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html)。
 
 ```
 GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes

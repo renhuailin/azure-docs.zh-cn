@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 26ed060e7cc0ccf8bf4e35ddd5ab62b8ba8eef09
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: fc8992e8e602f4a92d870328b6da14dde06af087
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406404"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670816"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
@@ -188,9 +188,84 @@ DTDL：
 }
 ```
 
+### <a name="object-type"></a>对象类型
+
+如果将可写属性定义为对象，则服务必须将完整的对象发送到设备。 设备应通过将足够的信息发送回服务来确认更新，以便服务了解设备对更新的处理方式。 此响应可能包括：
+
+- 整个对象。
+- 仅设备更新的字段。
+- 字段的子集。
+
+对于大型对象，请考虑最大程度地减小确认中包含的对象的大小。
+
+以下示例显示了定义为 `Object`（使用四个字段）的可写属性：
+
+DTDL：
+
+```json
+{
+  "@type": "Property",
+  "name": "samplingRange",
+  "schema": {
+    "@type": "Object",
+    "fields": [
+      {
+        "name": "startTime",
+        "schema": "dateTime"
+      },
+      {
+        "name": "lastTime",
+        "schema": "dateTime"
+      },
+      {
+        "name": "count",
+        "schema": "integer"
+      },
+      {
+        "name": "errorCount",
+        "schema": "integer"
+      }
+    ]
+  },
+  "displayName": "Sampling range"
+  "writable": true
+}
+```
+
+若要更新此可写属性，请从服务发送一个完整的对象，如下所示：
+
+```json
+{
+  "samplingRange": {
+    "startTime": "2021-08-17T12:53:00.000Z",
+    "lastTime": "2021-08-17T14:54:00.000Z",
+    "count": 100,
+    "errorCount": 5
+  }
+}
+```
+
+设备使用一个确认进行响应，如下所示：
+
+```json
+{
+  "samplingRange": {
+    "ac": 200,
+    "av": 5,
+    "ad": "Weighing status updated",
+    "value": {
+      "startTime": "2021-08-17T12:53:00.000Z",
+      "lastTime": "2021-08-17T14:54:00.000Z",
+      "count": 100,
+      "errorCount": 5
+    }
+  }
+}
+```
+
 ### <a name="sample-no-component-writable-property"></a>无组件可写属性示例
 
-设备在单个有效负载中接收到多个报告属性时，可以跨多个有效负载发送报告的属性响应。
+设备在单个有效负载中接收多个所需属性时，可以跨多个有效负载发送报告的属性响应，或将多个响应合并为单个有效负载。
 
 设备或模块可以发送遵循 DTDL v2 规则的任何有效 JSON：
 
@@ -205,6 +280,12 @@ DTDL：
     {
       "@type": "Property",
       "name": "targetTemperature",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "targetHumidity",
       "schema": "double",
       "writable": true
     }
@@ -249,13 +330,16 @@ DTDL：
 }
 ```
 
+> [!NOTE]
+> 可以选择将这两个报告的属性有效负载组合成单个有效负载。
+
 ### <a name="sample-multiple-components-writable-property"></a>多组件可写属性示例
 
 设备或模块必须添加 `{"__t": "c"}` 标记以指示元素引用组件。
 
 发送标记仅用于更新组件中定义的属性。 对默认组件中定义的属性的更新不包括标记，请参阅[无组件可写属性示例](#sample-no-component-writable-property)
 
-设备在单个有效负载中接收到多个报告属性时，可以跨多个有效负载发送报告的属性响应。
+设备在单个有效负载中接收多个报告的属性时，可以跨多个有效负载发送报告的属性响应，或将多个响应合并为单个有效负载。
 
 设备或模块应通过发送报告的属性来确认已接收到属性：
 
@@ -339,6 +423,9 @@ DTDL：
   }
 }
 ```
+
+> [!NOTE]
+> 可以选择将这两个报告的属性有效负载组合成单个有效负载。
 
 ## <a name="commands"></a>命令
 

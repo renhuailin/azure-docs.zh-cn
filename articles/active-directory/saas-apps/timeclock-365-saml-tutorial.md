@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d0c8364cc85cfce900021272d17456527919122b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65a5cb4e202f2610613003b6d4339e0bb5354ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99050798"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733765"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Timeclock 365 SAML 集成
 
@@ -37,7 +37,8 @@ ms.locfileid: "99050798"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Timeclock 365 SAML 支持 SP 发起的 SSO
+* Timeclock 365 SAML 支持 SP 发起的 SSO。
+* Timeclock 365 SAML 支持[自动用户预配](timeclock-365-provisioning-tutorial.md)。
 
 ## <a name="adding-timeclock-365-saml-from-the-gallery"></a>从库中添加 Timeclock 365 SAML
 
@@ -49,7 +50,6 @@ ms.locfileid: "99050798"
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Timeclock 365 SAML” 。
 1. 从结果面板中选择“Timeclock 365 SAML”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-timeclock-365-saml"></a>配置并测试 Timeclock 365 SAML 的 Azure AD SSO
 
@@ -143,6 +143,9 @@ ms.locfileid: "99050798"
 
 1. 单击“创建”按钮创建测试用户。
 
+> [!NOTE]
+> Timeclock 365 SAML 还支持自动用户预配；有关如何配置自动用户预配的更多详细信息，请参见[此处](./timeclock-365-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -151,8 +154,7 @@ ms.locfileid: "99050798"
 
 * 直接转到 Timeclock 365 SAML 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Timeclock 365 SAML 磁贴时，会重定向到 Timeclock 365 SAML 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Timeclock 365 SAML 磁贴时，会重定向到 Timeclock 365 SAML 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: d51ab96f0a9bc09f966890b848201df7091db621
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6c202c3f192e9097eb3f861f53a384a60882dcd1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541416"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657075"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
@@ -337,7 +337,8 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
     EXPOSE 80 2222
     ```
 
-    此配置不允许从外部建立到容器的连接。 容器的端口 2222 只能在专用虚拟网络的桥网络中访问，Internet 上的攻击者无法访问该端口。
+    > [!NOTE] 
+    > 根密码必须恰好是 `Docker!`，因为应用服务使用它以使你能够使用容器访问 SSH 会话。 此配置不允许从外部建立到容器的连接。 容器的端口 2222 只能在专用虚拟网络的桥网络中访问，Internet 上的攻击者无法访问该端口。
 
 - 在容器的启动脚本中启动 SSH 服务器。
 

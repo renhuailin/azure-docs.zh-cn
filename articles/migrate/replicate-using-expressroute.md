@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: c16b4a91f297621fa96e0e18f816d77e9f3b4e2a
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: a1752e1ea264f8abacfee575546f7bdf6b5eb966
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112322397"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624076"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>使用 Azure Migrate: 服务器迁移通过 ExpressRoute 复制数据
 
@@ -156,7 +156,7 @@ ExpressRoute 线路通过连接提供商将本地基础结构连接到 Microsoft
 
 高速缓存存储帐户 的 DNS 解析的说明性示例。 
 
-- 输入 nslookup _storageaccountname_.blob.core.windows.net。 将 <storage-account-name> 替换为用于 Azure Migrate 创建的高速缓存存储帐户的名称。  
+- 输入 nslookup _storageaccountname_.blob.core.windows.net。 将 \<storage-account-name\> 替换为用于 Azure Migrate 创建的高速缓存存储帐户的名称。  
 
     你将收到如下消息：  
 

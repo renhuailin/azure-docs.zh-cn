@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: rolyon
 ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
-ms.openlocfilehash: de71203ab8b61aa3c81d610b231deedab4c63baa
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 43ee281bc9696740c7909ef6b6758d4542808721
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693669"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755220"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>查看 Azure RBAC 更改的活动日志
 
@@ -47,7 +47,7 @@ ms.locfileid: "110693669"
 | 事件类别 | <ul><li>管理</li></ul> |
 | Operation | <ul><li>创建角色分配</li><li>删除角色分配</li><li>创建或更新自定义角色定义</li><li>删除自定义角色定义</li></ul> |
 
-有关活动日志的更多信息，请参阅[查看活动日志以监视对资源的操作](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)。
+有关活动日志的详细信息，请参阅 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)。
 
 
 ## <a name="interpret-a-log-entry"></a>解析日志条目
@@ -235,5 +235,5 @@ AzureActivity
 ![使用高级分析门户的活动日志 - 屏幕截图](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>后续步骤
-* [查看活动日志以监视对资源的操作](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [查看活动日志以监视对资源的操作](../azure-monitor/essentials/activity-log.md)
 * [使用 Azure 活动日志监视订阅活动](../azure-monitor/essentials/platform-logs-overview.md)

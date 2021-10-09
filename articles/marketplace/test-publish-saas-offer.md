@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/25/2021
-ms.openlocfilehash: 7fed85abe42b0366ff2429ba923fc9a3cdf6190a
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/27/2021
+ms.openlocfilehash: 7836792245a9618e2ac8168af697c0151f8e123b
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536425"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080762"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>如何测试 SaaS 产品/服务并将其发布到商业市场
 
@@ -24,10 +24,19 @@ ms.locfileid: "111536425"
 
 ## <a name="submit-your-offer-for-publishing"></a>提交产品/服务进行发布
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)内的商业市场仪表板。
-1. 在“概述”页面上，选择要发布的产品/服务。
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。
+
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页上，选择要发布的产品/服务。
 1. 在门户的右上角，选择“审阅和发布”。
-2. 请确保每个页面的“状态”列都显示“完成”。 可能显示以下三种状态：
+1. 请确保每个页面的“状态”列都显示“完成”。 可能显示以下三种状态：
 
    - 未启动 - 页面不完整。
    - 不完整 - 页面缺少必需的信息或有需要修复的错误。 需要返回该页面并进行更新。
@@ -39,13 +48,32 @@ ms.locfileid: "111536425"
 
 在发布过程中，产品/服务的发布状态会发生变化。 有关此过程的详细信息，请参阅[验证和发布步骤](review-publish-offer.md#validation-and-publishing-steps)。
 
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)内的商业市场仪表板。
+1. 在“概述”页面上，选择要发布的产品/服务。
+1. 在门户的右上角，选择“审阅和发布”。
+1. 请确保每个页面的“状态”列都显示“完成”。 可能显示以下三种状态：
+
+   - 未启动 - 页面不完整。
+   - 不完整 - 页面缺少必需的信息或有需要修复的错误。 需要返回该页面并进行更新。
+   - 完成 - 页面已完成。 已提供所有必需的数据，并且没有错误。
+
+1. 如果任何页面的状态不是“完成”，请选择页面名称，更正问题，保存页面，然后再次选择“审阅和发布”以返回此页面。
+1. 完成所有页面后，请在“认证说明”框中向认证团队提供测试说明，以确保应用已得到正确测试。 提供有助于了解你的应用的补充说明。
+1. 若要启动产品/服务的发布过程，请选择“发布”。 此时将出现“产品/服务概述”页，并显示产品/服务的“发布状态”。
+
+在发布过程中，产品/服务的发布状态会发生变化。 有关此过程的详细信息，请参阅[验证和发布步骤](review-publish-offer.md#validation-and-publishing-steps)。
+
+---
+
 ## <a name="preview-and-test-your-offer"></a>预览和测试产品/服务
 
 当产品/服务已准备就绪，可供你签核时，我们将向你发送一封电子邮件，请求你查看和批准产品/服务预览版。 你还可以在浏览器中刷新“产品/服务概述”页，以查看你的产品/服务是否已到达发布者签核阶段。 如果是，将会提供“上线”按钮和预览版链接。 将出现 Microsoft AppSource 预览版链接、Azure 市场预览版链接或同时出现这两个链接，具体取决于创建产品/服务时选择的选项。 如果你选择通过 Microsoft 销售你的产品/服务，则已添加到预览版受众的任何人都可以测试你的产品/服务的购买和部署，以确保在此阶段符合你的要求。
 
 以下屏幕截图显示了 SaaS 产品/服务的“产品/服务概述”页，其中“上线”按钮下有两个预览版链接。 你将在此页上看到的验证步骤因创建产品/服务时所做的选择而异。
 
-![说明合作伙伴中心中产品/服务的“产品/服务概述”页。 将显示“上线”按钮和预览版链接。 “查看验证报告”链接也显示在“自动验证”下。](./media/review-publish-offer/publish-status-saas.png)
+[ ![说明合作伙伴中心产品/服务的“发布”状态。显示了“上线”按钮。“查看验证报告”链接也显示在“自动验证”下。](./media/review-publish-offer/publish-status-saas.png) ](./media/review-publish-offer/publish-status-saas.png#lightbox)
 
 按照以下步骤预览产品/服务。
 

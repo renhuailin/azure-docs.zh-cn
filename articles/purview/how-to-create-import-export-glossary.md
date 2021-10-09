@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/02/2021
-ms.openlocfilehash: 6796a53ac05e8db606b29447a8792fa509c03d7e
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 09/27/2021
+ms.openlocfilehash: dfb522e5231072e427c14dfe1c8c16889dd3ff9e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284069"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214143"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>如何创建、导入和导出术语表术语
 
@@ -22,7 +22,9 @@ ms.locfileid: "106284069"
 
 若要创建新的术语表术语，请执行以下步骤：
 
-1. 选择主页上左侧导航栏中的术语表图标，以转到术语列表页。
+1. 在主页左侧导航栏中选择“数据目录”，然后选择页面中心的“管理术语表”按钮。
+
+    :::image type="content" source="media/how-to-create-import-export-glossary/find-glossary.png" alt-text="数据目录的屏幕截图，其中突出显示了术语表。" border="true":::
 
 2. 在“术语表术语”页上，选择“+ 新建术语”。 此时会打开一个页面，其中选择了“系统默认”模板。 选择要用来创建术语表术语的模板，然后选择“继续”。
 

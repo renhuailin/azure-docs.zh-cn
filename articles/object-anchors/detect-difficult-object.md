@@ -4,15 +4,15 @@ description: 描述可配置为检测困难对象的机制。
 author: rgarcia
 manager: vrivera
 ms.author: rgarcia
-ms.date: 05/28/2021
-ms.topic: overview
+ms.date: 09/08/2021
+ms.topic: troubleshooting
 ms.service: azure-object-anchors
-ms.openlocfilehash: f7ebff2a9fb45831842b9390e3e72cdbfe58e794
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: cbdf29aa7bb9c342e08b64af0745c689910b26bd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111987829"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791966"
 ---
 # <a name="how-to-detect-a-difficult-object"></a>如何检测困难对象
 
@@ -21,6 +21,8 @@ ms.locfileid: "111987829"
 - 由于对象靠墙而导致大量表面积无法访问时
 - 对象太大并且在该对象周围行走所花费的时间过长时
 - 当设备传感器未检测到对象的表面时
+
+## <a name="adjusting-object-query-values"></a>调整对象查询值
 
 Azure Object Anchors SDK 提供的一些机制可在以下情况下可能有所帮助：
 
@@ -40,3 +42,11 @@ Azure Object Anchors SDK 提供的一些机制可在以下情况下可能有所�
   - 球体（使用 `ObjectSearchArea.FromSphere`）。
 
 有关详细信息，请参阅适用于 [Unity](/dotnet/api/microsoft.azure.objectanchors.objectquery) 或 [HoloLens C++/WinRT](/cpp/api/object-anchors/winrt/objectquery) 的 `ObjectQuery` 类。
+
+## <a name="next-steps"></a>后续步骤
+
+在此故障排除指南中，你了解了如何排查难以检测对象的检测问题。
+下面是一些相关文章：
+
+> [!div class="nextstepaction"]
+> [排查物体检测问题](./troubleshoot/object-detection.md)

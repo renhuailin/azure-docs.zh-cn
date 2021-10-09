@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 09/10/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 239778455f049822bd92a92c811fcacad270ae3e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 547c27b8faf9f282c836bdda2d57bf9d13603423
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076503"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780692"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>以来宾用户身份离开组织
 
@@ -31,9 +31,9 @@ ms.locfileid: "112076503"
 
 1. 执行以下操作之一，转到“我的帐户”页：
 - 如果使用工作或学校帐户，请转到 https://myaccount.microsoft.com 并登录。
-- 如果使用个人帐户，请转到 https://myapps.microsoft.com 并登录，单击右上角的帐户图标，然后选择“查看帐户”。
+- 如果使用个人帐户，请转到 https://myapps.microsoft.com 并登录，单击右上角的帐户图标，然后选择“查看帐户”。 或者，使用包含租户信息的我的帐户 URL 直接转到“我的帐户”页面（以下注释中显示了示例）。  
    > [!NOTE]
-   > 使用个人帐户时，另一个选项是直接转到“我的帐户”页，将租户名称或租户 ID 添加到 URL，例如： `https://myaccount.microsoft.com?tenantId=wingtiptoys.onmicrosoft.com` 或 `https://myaccount.microsoft.com?tenantId=ab123456-cd12-ef12-gh12-ijk123456789`
+   > 如果你在登录时使用电子邮件一次性密码功能，则需要使用包含你的租户名称或租户 ID 的我的帐户 URL，例如：`https://myaccount.microsoft.com?tenantId=wingtiptoys.onmicrosoft.com` 或 `https://myaccount.microsoft.com?tenantId=ab123456-cd12-ef12-gh12-ijk123456789`。
 
 2. 在“组织”下，找到要离开的组织，然后选择“离开组织”   。
 

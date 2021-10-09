@@ -2,21 +2,21 @@
 title: 在 Azure VMware 解决方案中安装 VMware HCX
 description: 在 Azure VMware 解决方案私有云中安装 VMware HCX。
 ms.topic: how-to
-ms.date: 08/12/2021
-ms.openlocfilehash: 2dec92fdee47c242a8e7e5b3df7befc586964910
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.date: 09/16/2021
+ms.openlocfilehash: e3db000661ea310c35d32d988db5cd2001290004
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015624"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600810"
 ---
 # <a name="install-and-activate-vmware-hcx-in-azure-vmware-solution"></a>在 Azure VMware 解决方案中安装并激活 VMware HCX
 
-VMware HCX Advanced 及其关联的云管理器不再预先部署在 Azure VMware 解决方案中， 而是需要通过作为外接程序的 Azure 门户进行安装。 默认为 HCX Advanced，此后，如果需要 Enterprise 版中的功能，你仍可通过客户支持请求安装 VMware HCX Enterprise Edition。 你仍将下载 HCX 连接器 OVA，并在本地 vCenter 上部署虚拟设备。
+VMware HCX Advanced 及其关联的云管理器不再预先部署在 Azure VMware 解决方案中， 而是将通过作为外接程序的 Azure 门户进行安装。 你仍将下载 HCX 连接器 OVA，并在本地 vCenter 上部署虚拟设备。 
 
-HCX Advanced 最多支持三个站点连接（本地到云或云到云）。 如果需要三个以上的站点连接，请使用 HCX Enterprise Edition。 要激活 HCX Enterprise Edition（当前位于 Azure VMware 解决方案的公开预览版中），请打开支持请求以将其启用。 服务正式发布后，你将有 30 天的时间来确定你的后续步骤。 你还可以关闭或选择退出 HCX Enterprise Edition 服务，但将保留 HCX Advanced，因为它是节点成本的一部分。
+任何版本的 VMware HCX 都支持 25 个站点配对（本地到云或云到云）。  默认为 HCX Advanced，但你可以提交[支持请求](https://rc.portal.azure.com/#create/Microsoft.Support)以启用 HCX Enterprise Edition，但后一版本目前为公共预览版。 服务正式发布后，你将有 30 天的时间来确定你的后续步骤。 你还可以关闭或选择退出 HCX Enterprise Edition 服务，但将保留 HCX Advanced，因为它是节点成本的一部分。
 
-在不重新部署的情况下，可以从 HCX Enterprise Edition 降级到 HCX Advanced。 首先，请确保已还原为 HCX Advanced 配置状态，且未使用 Enterprise 功能。 如果计划降级，请确保未计划任何迁移，未使用 RAV、MON 等功能，且站点配对为三个或更少。
+在不重新部署的情况下，可以从 HCX Enterprise Edition 降级到 HCX Advanced。 首先，请确保已还原为 HCX Advanced 配置状态，且未使用 Enterprise 功能。 如果计划降级，请确保未计划任何迁移，未使用 RAV、[HCX 移动优化网络 (MON)](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-0E254D74-60A9-479C-825D-F373C41F40BC.html) 等功能，且站点配对为三个或更少。
 
 >[!TIP]
 >你也可以通过该门户[卸载 HCX Advanced](#uninstall-hcx-advanced)。 卸载 HCX Advanced 时，请确保没有任何正在进行的活动迁移。 删除 HCX Advanced 将向 HCX 虚拟设备所占用的私有云返还资源。
@@ -26,13 +26,15 @@ HCX Advanced 最多支持三个站点连接（本地到云或云到云）。 如
 * 通过 Azure 门户安装 HCX Advanced
 * 下载并部署 VMware HCX 连接器 OVA
 * 使用许可证密钥激活 HCX Advanced
-* 卸载 HCX Advanced
+
 
 完成后，请按照末尾建议的后续步骤继续执行本入门指南的其他步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
 - [HCX 安装准备](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-A631101E-8564-4173-8442-1D294B731CEB.html)
+
+- 如果计划使用 VMware HCX Enterprise，请确保已通过[支持请求](https://portal.azure.com/#create/Microsoft.Support)启用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 附加产品。 这是 Azure VMware 解决方案中的 12 个月免费试用版。
 
 - [VMware 博客系列 - 云迁移](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)
 

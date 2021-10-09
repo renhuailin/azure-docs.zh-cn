@@ -4,19 +4,22 @@ description: 本操作指南介绍了如何查看和使用有关数据的 Purvie
 author: SunetraVirdi
 ms.author: suvirdi
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 11/20/2020
-ms.openlocfilehash: eb1d59ae41b04be60dec90aaee4b2305b6d39ca6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 09/27/2021
+ms.openlocfilehash: 315cfdc60de77ab4d6345c5d579351049c5129a2
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095844"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218893"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>Azure Purview 中有关数据的术语表见解
 
 本操作指南介绍了如何访问、查看和筛选有关数据的 Purview 术语表见解报表。
+
+> [!IMPORTANT]
+> Azure Purview 见解目前处于预览阶段。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 在本操作指南中，你将学习如何：
 
@@ -34,7 +37,7 @@ ms.locfileid: "102095844"
 
 - 设置术语表并将资产附加到术语表术语
 
-有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)。
+有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)。
 
 ## <a name="use-purview-glossary-insights"></a>使用 Purview 术语表见解
 
@@ -44,15 +47,15 @@ ms.locfileid: "102095844"
 
 1. [在 Azure 门户中转到“Azure Purview”实例屏幕](https://aka.ms/purviewportal)，并选择 Purview 帐户。
 
-1. 在“概述”页面的“入门”部分，选择“启动 Purview 帐户”磁贴  。
+1. 在“概述”页上的“入门”部分中，选择“打开 Purview Studio”帐户磁贴  。
 
    :::image type="content" source="./media/glossary-insights/portal-access.png" alt-text="从 Azure 门户启动 Purview":::
 
-1. 在 Purview 的“主页”上，选择“查看见解”磁贴来访问“见解”:::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: 区域  。
+1. 在 Purview 主页上，选择左侧菜单中的“见解”。
 
    :::image type="content" source="./media/glossary-insights/view-insights.png" alt-text="在 Azure 门户中查看见解":::
 
-1. 在“见解”:::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: 区域中，选择“术语表”，显示 Purview“术语表见解”报表  。
+1. 在“见解”区域中，选择“术语表”，显示 Purview“术语表见解”报表  。
 
 术语表见解为企业用户提供有价值的信息，以便为组织维护定义完善的术语表。
 
@@ -63,17 +66,17 @@ ms.locfileid: "102095844"
 
 2. 术语快照部分（如上所示）显示有资产和无资产的术语的状态为“草稿”、“已批准”、“警报”、“已过期” 。
 
-3. 单击“查看更多”以查看术语名称和对应的各种状态，以及关于专员和专家的更多详细信息 。 
+3. 选择“查看更多”以查看术语名称和对应的各种状态，以及关于专员和专家的更多详细信息 。 
 
    :::image type="content" source="./media/glossary-insights/glossary-view-more.png" alt-text="有和没有资产的术语的快照":::  
 
-4. 针对“有资产的已批准术语”，单击“查看更多”时，见解使你可以导航到“术语表术语详细信息”页，从中可进一步导航具有附加术语的资产列表。 
+4. 针对“批准的资产条款”，选择“查看更多”时，见解使你可以导航到“术语表术语详细信息”页，从中可进一步导航到具有附加术语的资产列表。 
 
    :::image type="content" source="./media/glossary-insights/navigate-to-glossary-detail.png" alt-text="术语表见解"::: 
 
 4. 在“术语表见解”页中，查看“不完整的术语”的分布（按缺少的信息）。 图中显示具有“缺少定义”、“缺少专家”、“缺少专员”和“缺少多项”字段的术语的计数。
 
-1. 在“不完整的术语”中单击“查看更多”，以查看缺少信息的术语。 你可以导航到“术语表术语详细信息”页，输入缺少的信息并确保术语表术语是完整的。
+1. 在“不完整的术语”中选择“查看更多”，以查看缺少信息的术语。 你可以导航到“术语表术语详细信息”页，输入缺少的信息并确保术语表术语是完整的。
 
 ## <a name="next-steps"></a>后续步骤
 

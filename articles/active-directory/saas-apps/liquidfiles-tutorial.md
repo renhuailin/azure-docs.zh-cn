@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 LiquidFiles 集成 | Microsoft Docs
+title: 教程：Azure AD 与 LiquidFiles 的 SSO 集成
 description: 了解如何在 Azure Active Directory 和 LiquidFiles 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/02/2021
+ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 482d47c69da61ce932127d1e450f106ee02b4172
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 2c20c03e61d7fa7055d1044d69cacc8b234ad8f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111571612"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636641"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>教程：Azure Active Directory 与 LiquidFiles 集成
+# <a name="tutorial-azure-ad-sso-integration-with-liquidfiles"></a>教程：Azure AD 与 LiquidFiles 的 SSO 集成
 
 本教程介绍如何将 LiquidFiles 与 Azure Active Directory (Azure AD) 进行集成。 将 LiquidFiles 与 Azure AD 集成后，可以：
 
@@ -32,6 +32,9 @@ ms.locfileid: "111571612"
 
 * 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用单一登录的 LiquidFiles 订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 

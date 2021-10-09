@@ -2,14 +2,14 @@
 title: Azure 服务总线中事务处理概述
 description: 本文概要介绍了 Azure 服务总线中的事务处理和“发送方式”功能。
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 09/21/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5eb3bf6eef551fd13788f7659eb8becede8e250d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183737"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666205"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 
@@ -22,7 +22,7 @@ ms.locfileid: "102183737"
 
 一个 *事务* 将两个或更多操作组合成执行作用域  。 就本质而言，此类事务必须确保所有操作属于给定的操作组，无论联合成功还是失败。 在这方面，事务作为一个单元进行操作，通常称为原子性  。
 
-服务总线是事务性消息代理，并确保针对其消息存储的所有内部操作的事务完整性。 服务总线内部的所有消息传输，如将消息移到 [dead-letter queue](service-bus-dead-letter-queues.md) 或在实体之间[自动转发](service-bus-auto-forwarding.md)消息，都是事务性的。 因此，如果服务总线接受一条消息，则该消息已存储并标有一个序列号。 从那时起，服务总线内的任何消息传输都是实体之间协调的操作，将从不会导致消息丢失（源成功而目标失败）或重复（源失败而目标成功）。
+服务总线是事务性消息代理，并确保针对其消息存储的所有内部操作的事务完整性。 服务总线内部的所有消息传输，如将消息移到[死信队列](service-bus-dead-letter-queues.md)或在实体之间[自动转发](service-bus-auto-forwarding.md)消息，都是事务性的。 因此，如果服务总线接受一条消息，则该消息已存储并标有一个序列号。 从那时起，服务总线内的任何消息传输都是实体之间协调的操作，将从不会导致消息丢失（源成功而目标失败）或重复（源失败而目标成功）。
 
 服务总线支持对事务作用域内的消息传送实体（队列、主题、订阅）执行分组操作。 例如，可以从事务作用域内将多条消息发送到一个队列，在事务成功完成时，这些消息将仅提交到该队列的日志。
 
@@ -30,10 +30,14 @@ ms.locfileid: "102183737"
 
 可以在事务作用域内执行的操作如下所示：
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** ：`Send`、`SendAsync`、`SendBatch` 和 `SendBatchAsync`
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** ：`Complete`、`CompleteAsync`、`Abandon`、`AbandonAsync`、`Deadletter`、`DeadletterAsync`、`Defer``DeferAsync`、`RenewLock` 和 `RenewLockAsync` 
+- 发送
+- 完成
+- 放弃
+- 死信
+- 延迟
+- 续订锁
 
-不包括接收操作，因为假定应用程序在某个接收循环内使用 [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式或通过 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 回调获取消息，而且只有那时才打开用于处理消息的事务作用域。
+接收操作不包括在内，因为它假定应用程序使用 peek-lock 模式在某个接收循环内或使用回调获取消息，然后才打开用于处理消息的事务作用域。
 
 然后，消息的处置（完成、放弃、死信、延迟）会在事务作用域内进行，并依赖于在事务处理的整体结果。
 
@@ -49,49 +53,25 @@ ms.locfileid: "102183737"
 
 若要设置此类传输，需创建通过传输队列以目标队列为目标的消息发送方。 还将设置接收方，以便从该同一队列拉取消息。 例如：
 
-```csharp
-var connection = new ServiceBusConnection(connectionString);
-
-var sender = new MessageSender(connection, QueueName);
-var receiver = new MessageReceiver(connection, QueueName);
-```
-
-简单事务处理随后使用这些元素，如以下示例所示。 若要参考完整示例，请参阅 [GitHub 上的源代码](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)：
+简单事务处理随后使用这些元素，如以下示例所示。 若要参考完整示例，请参阅 [GitHub 上的源代码](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/servicebus/Azure.Messaging.ServiceBus/samples/Sample06_Transactions.md#transactions-across-entities)：
 
 ```csharp
-var receivedMessage = await receiver.ReceiveAsync();
+var options = new ServiceBusClientOptions { EnableCrossEntityTransactions = true };
+await using var client = new ServiceBusClient(connectionString, options);
+
+ServiceBusReceiver receiverA = client.CreateReceiver("queueA");
+ServiceBusSender senderB = client.CreateSender("queueB");
+
+ServiceBusReceivedMessage receivedMessage = await receiverA.ReceiveMessageAsync();
 
 using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 {
-    try
-    {
-        // do some processing
-        if (receivedMessage != null)
-            await receiver.CompleteAsync(receivedMessage.SystemProperties.LockToken);
-
-        var myMsgBody = new MyMessage
-        {
-            Name = "Some name",
-            Address = "Some street address",
-            ZipCode = "Some zip code"
-        };
-
-        // send message
-        var message = myMsgBody.AsMessage();
-        await sender.SendAsync(message).ConfigureAwait(false);
-        Console.WriteLine("Message has been sent");
-
-        // complete the transaction
-        ts.Complete();
-    }
-    catch (Exception ex)
-    {
-        // This rolls back send and complete in case an exception happens
-        ts.Dispose();
-        Console.WriteLine(ex.ToString());
-    }
+    await receiverA.CompleteMessageAsync(receivedMessage);
+    await senderB.SendMessageAsync(new ServiceBusMessage());
+    ts.Complete();
 }
 ```
+
 
 ## <a name="timeout"></a>超时
 事务在 2 分钟后超时。 事务计时器在事务中的第一个操作启动时启动。 

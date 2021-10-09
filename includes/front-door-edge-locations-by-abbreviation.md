@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: ded1479b6967d7cf3b9957e83b7bb38472ebcc0c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8dddf347cfa46b24e990365765e1587526fd084c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110481961"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129095890"
 ---
 | 缩写 | 位置 | 区域 |
 | --- | --- | --- |
@@ -54,6 +54,7 @@ ms.locfileid: "110481961"
 | GVA | 瑞士日内瓦 | 瑞士北部（欧洲） |
 | HEL | 赫尔辛基，芬兰 | 西欧 |
 | HK  | 中国香港（中国香港特别行政区） | 东亚 |
+| HKB | 中国香港（中国香港特别行政区） | 东亚 |
 | HKG | 柴湾（中国香港特别行政区） | 东亚 |
 | HNL | 美国夏威夷州火奴鲁鲁 | 美国西部（美国） |
 | HOU | 美国德克萨斯州休斯顿 | 美国中部（美国） |

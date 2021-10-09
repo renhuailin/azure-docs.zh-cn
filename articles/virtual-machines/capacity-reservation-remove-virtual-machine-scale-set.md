@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: f615cf25f30cc0bad6a8317b08126c05fe22f047
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 03b89b1b8c0221795f58ff28addd4fdeaad5053e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273284"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532588"
 ---
 # <a name="remove-a-virtual-machine-scale-set-association-from-a-capacity-reservation-group"></a>从容量预留组中删除虚拟机规模集关联 
 
@@ -28,14 +28,6 @@ ms.locfileid: "123273284"
 > [!IMPORTANT]
 > 容量预留功能目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="register-for-capacity-reservation"></a>注册容量预留 
-
-必须先[注册预览版订阅](capacity-reservation-overview.md#register-for-capacity-reservation)，然后才能使用容量预留功能。 注册可能需要几分钟才能完成。 可使用 Azure CLI 或 PowerShell 完成功能注册。
-
-> [!NOTE]
-> 按需容量预留仅适用于特选区域中统一业务流程模式下的虚拟机规模集。 若要查看你所在区域是否受到支持，请转到[统一虚拟机规模集部署跟踪器](https://aka.ms/vmssuniformdeploymenttracker)。
-
 
 ## <a name="deallocate-the-virtual-machine-scale-set"></a>解除分配虚拟机规模集
 
@@ -56,7 +48,7 @@ ms.locfileid: "123273284"
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/update?api-version=2021-04-01
     ```
-    在请求正文中，将 `capacityReservationGroup` 属性设置为空，以删除组的虚拟机规模集关联：
+    在请求正文中，将 `capacityReservationGroup` 属性设置为 NULL，以删除组的虚拟机规模集关联：
 
     ```json
     {
@@ -65,7 +57,7 @@ ms.locfileid: "123273284"
         "virtualMachineProfile": {
             "capacityReservation": {
                 "capacityReservationGroup":{
-                    "id":""    
+                    "id":null    
                 }
             }
         }
@@ -83,7 +75,7 @@ ms.locfileid: "123273284"
     -VMScaleSetName "myVmss"
     ```
 
-1. 更新规模集以删除与容量预留组的关联。 将 `CapacityReservationGroupId` 属性设置为空会删除规模集与容量预留组的关联： 
+1. 更新规模集以删除与容量预留组的关联。 将 `CapacityReservationGroupId` 属性设置为 NULL 会删除规模集与容量预留组的关联： 
 
     ```powershell-interactive
     $vmss =
@@ -95,7 +87,7 @@ ms.locfileid: "123273284"
     -ResourceGroupName "myResourceGroup"
     -VMScaleSetName "myvmss"
     -VirtualMachineScaleSet $vmss
-    -CapacityReservationGroupId ""
+    -CapacityReservationGroupId $null
     ```
 
 若要了解详细信息，请转到 Azure PowerShell 命令 [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss)、[Get-AzVmss](/powershell/module/az.compute/get-azvmss) 和 [Update-AzVmss](/powershell/module/az.compute/update-azvmss)。
@@ -139,7 +131,7 @@ ms.locfileid: "123273284"
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/update?api-version=2021-04-01
     ```
 
-    在请求正文中，将 `capacityReservationGroup` 属性设置为空以删除关联：
+    在请求正文中，将 `capacityReservationGroup` 属性设置为 NULL 以删除关联：
     
     ```json
     {
@@ -148,7 +140,7 @@ ms.locfileid: "123273284"
         "virtualMachineProfile": {
             "capacityReservation": {
                 "capacityReservationGroup":{
-                    "id":""
+                    "id":null
                 }
             }
         }
@@ -158,23 +150,17 @@ ms.locfileid: "123273284"
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
->[!NOTE]
-> 命令 `Update-AzCapacityReservation` 在预览期间不可用。 使用 `New-AzCapacityReservation` 修改现有容量预留。
-
 1. 将预留数量更新为零：
 
     ```powershell-interactive
-    New-AzCapacityReservation
+    Update-AzCapacityReservation
     -ResourceGroupName "myResourceGroup"
-    -Location "eastus"
-    -Zone "1"
     -ReservationGroupName "myCapacityReservationGroup"
     -Name "myCapacityReservation"
-    -Sku "Standard_D2s_v3"
     -CapacityToReserve 0
     ```
 
-2. 通过将 `CapacityReservationGroupId` 属性设置为空，更新规模集以删除与容量预留组的关联： 
+2. 通过将 `CapacityReservationGroupId` 属性设置为 NULL，更新规模集以删除与容量预留组的关联： 
 
     ```powershell-interactive
     $vmss =
@@ -186,7 +172,7 @@ ms.locfileid: "123273284"
     -ResourceGroupName "myResourceGroup"
     -VMScaleSetName "myvmss"
     -VirtualMachineScaleSet $vmss
-    -CapacityReservationGroupId ""
+    -CapacityReservationGroupId $null
     ```
 
 要了解详细信息，请转到 Azure PowerShell 命令 [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)、[Get-AzVmss](/powershell/module/az.compute/get-azvmss) 和 [Update-AzVmss](/powershell/module/az.compute/update-azvmss)。

@@ -8,23 +8,21 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/02/2021
-ms.openlocfilehash: 4e23862e78fb6b3de9dd360ee54bb229c76bc8b4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: f80a4a5961c0506f423da4d4f1578b8cf8999b51
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537961"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755237"
 ---
 # <a name="quickstart-create-a-knowledge-store-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建知识存储
 
-知识存储是 Azure 认知搜索的一项功能，它可以将输出从 [AI 扩充管道](cognitive-search-concept-intro.md)发送到 Azure 存储，供后续分析或进行下游处理。
+[知识存储](knowledge-store-concept-intro.md)是 Azure 认知搜索的一项功能，它可以将输出从 [AI 扩充管道](cognitive-search-concept-intro.md)发送到 Azure 存储。 管道创建的扩充内容（例如已翻译的文本、OCR 文本、已识别的实体和其他扩充内容）投影到表或 Blob 中，任何连接到 Azure 存储的应用或工作负载都可以在其中访问这些内容。
 
-扩充管道接受非结构化文本和图像内容，应用认知服务提供技术支持的 AI 处理，并输出之前不存在的新结构和信息。 管道创建的物理数据结构之一是[知识存储](knowledge-store-concept-intro.md)，可以通过连接到 Azure 存储的任何工具、应用或进程访问它。
-
-在本快速入门中，你将设置数据，然后运行 **导入数据** 向导来创建一个同样会生成知识存储的扩充管道。 知识存储将包含从源提取的原始文本内容，以及 AI 生成的内容，包括情绪标签、关键短语提取和非英语客户评论的文本翻译。
+在本快速入门中，你将设置数据，然后运行 **导入数据** 向导来创建一个同样会生成知识存储的扩充管道。 知识存储将包含从源（客户对酒店的评论）提取的原始文本内容，以及 AI 生成的内容，包括情绪标签、关键短语提取和非英语客户评论的文本翻译。
 
 > [!NOTE]
-> 本快速入门是在 Azure 存储中完成知识存储的最快途径。 有关更详细的介绍，请改为参阅[在 REST 中创建知识存储](knowledge-store-create-rest.md)。
+> 本快速入门展示了在 Azure 存储中完成知识存储的最快途径。 有关每个步骤更详细的说明，请改为参阅[在 REST 中创建知识存储](knowledge-store-create-rest.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -161,29 +159,21 @@ ms.locfileid: "123537961"
 
 在 Azure 门户中，切换到 Azure 存储帐户并使用存储资源管理器查看新的表。 应会看到三个表，每个表对应于“添加扩充”页的“保存扩充”部分提供的每个投影。
 
-+ 文档表包含文档扩充树的所有第一级节点。
++ `hotelReviewssDocument` 包含文档扩充树中所有不是集合的第一级节点。
 
-+ 如果指定“pages”或“sentences”级别的粒度，则会创建 pages 表（或 sentences 表）。 在页面或句子级别执行的技能会将输出投影到此表。
++ `hotelReviewssPages` 包含在从文档拆分的每个页面上创建的扩充字段。 页面级扩充由情绪标签和已翻译的文本组成。 当你在技能集定义中选择“pages”粒度时，系统会创建一个 pages 表；如果指定 sentences 这个特定级别的粒度，则会创建一个 sentences 表。 在页面或句子级别执行的技能会将输出投影到此表。
 
-+ 输出集合（数组）（例如关键短语和实体）的技能将在独立表中输出。
++ `hotelReviewssKeyPhrases` 包含一长串从所有评论中提取的关键短语。 输出集合（数组）（例如关键短语和实体）的技能会将输出发送到一个独立的表。
 
-同一投影组内的所有表都包含交叉引用信息，以支持其他工具和应用中的表关系。
+所有这些表都包含 ID 列，以支持其他工具和应用中的表关系。 打开表时，滚动浏览这些字段可查看管道添加的内容字段。
 
 本快速入门中的表应类似于以下屏幕截图：
 
    :::image type="content" source="media/knowledge-store-create-portal/azure-table-hotel-reviews.png" alt-text="存储资源管理器中生成的表的屏幕截图" border="true":::
 
-每个表都是使用在查询中交叉链接表所需的 ID 生成的。 打开表时，滚动浏览这些字段可查看管道添加的内容字段。
-
-| 表 | 说明 |
-|-------|-------------|
-| hotelReviewssDocument | 包含从 CSV 结转的字段，例如 reviews_date 和 reviews_text。 |
-| hotelReviewssPages | 包含由技能集创建的扩充字段，例如情绪标签和已翻译的文本。 |
-| hotelReviewssKeyPhrases | 包含仅包含关键短语的长列表。 |
-
 ## <a name="clean-up"></a>清理
 
-使用自己的订阅时，最好在项目结束时确定是否仍然需要所创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
 可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 

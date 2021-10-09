@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224b0685b922e6ddd833637ddc1b628f0479ec70
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 61703654b11543f2c0f41fa68964cae287d940b8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112200809"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563748"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>使用 Azure Active Directory 进行 LDAP 同步
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) 可使用 Azure AD Connect 来替换 LDAP 同�
 
 * **Web 应用**：依赖于 LDAP v3 目录的应用程序。
 
-* **Azure AD**：Azure AD 通过 Azure AD Connect 从组织的本地 LDAP 目录中同步标识信息（用户、组、密码）。 
+* Azure AD：Azure AD 通过 Azure AD Connect 从组织的本地 LDAP 目录同步标识信息（用户、组）。 
 
 * Azure AD Connect：用于将本地标识基础结构连接到 Microsoft Azure AD 的工具。 向导和引导式体验可帮助部署和配置进行连接所需要的必备项和组件。 
 

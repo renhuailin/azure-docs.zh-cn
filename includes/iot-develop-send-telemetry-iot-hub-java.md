@@ -7,23 +7,23 @@ ms.topic: include
 ms.date: 08/03/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 21adc3edb161aba5d315b7429fdf5ff244574bc2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6eb78c0601efd305a7fa6983f06ec703a18d0760
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744325"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516712"
 ---
-[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
-本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 你将使用 Azure CLI 创建 Azure IoT 中心和设备。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到中心，并发送遥测数据。
+本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 使用 Azure CLI 和 IoT 资源管理器创建 Azure IoT 中心和设备。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到中心，并发送遥测数据。
 
 ## <a name="prerequisites"></a>先决条件
 - 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Git](https://git-scm.com/downloads)。
 - 具有 Java SE 开发工具包 8 或更高版本的开发计算机。 你可以从[下载 OpenJDK 的 Zulu 版本](https://www.azul.com/downloads/zulu-community/)为多个平台下载 Java 8 (LTS) JDK。 在安装程序中，选择“添加到路径”选项。
 - [Apache Maven 3](https://maven.apache.org/download.cgi)。 将下载内容提取到本地文件夹后，将 Maven /bin 文件夹的完整路径添加到 Windows PATH 变量中。
-- [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases)：用于监视和管理 Azure IoT 的跨平台实用工具 
+- [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases)：用于监视和管理 Azure IoT 的基于 GUI 的跨平台实用工具。 
 - Azure CLI。 在本快速入门中，有两个选项可用于运行 Azure CLI 命令：
     - 使用 Azure Cloud Shell，这是一个交互式 Shell，可在浏览器中运行 CLI 命令。 建议使用此选项，因为无需安装任何插件。 如果是首次使用 Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。 按照 [Cloud Shell 快速入门](../articles/cloud-shell/quickstart.md)中的步骤启动 Cloud Shell 并选择 Bash 环境。
     - （可选）在本地计算机上运行 Azure CLI。 如果已安装 Azure CLI，请运行 `az upgrade` 以将 CLI 和扩展升级到当前版本。 要安装 Azure CLI，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
@@ -34,7 +34,7 @@ ms.locfileid: "121744325"
 在本部分中，使用 Java SDK 将消息从模拟设备发送到 IoT 中心。 你将运行一个示例，该示例实现了具有两个恒温器传感器的温度控制器。
 
 ### <a name="configure-your-environment"></a>配置环境
-1. 打开控制台以安装 Azure IoT Java 设备 SDK，并运行代码示例。
+1. 打开控制台以安装 Azure IoT Java 设备 SDK，并运行代码示例。 在后续步骤中，你将使用此控制台。
 
     > [!NOTE]
     > 如果使用的是 Azure CLI 的本地安装，则现在可能会打开两个控制台窗口。 请确保在刚刚打开的控制台中输入此部分中的命令，而不是用于 CLI 的命令。
@@ -60,7 +60,7 @@ ms.locfileid: "121744325"
     ```
 
 ### <a name="build-the-sample"></a>生成示例
-1. 在控制台中，将 Azure IoT Java 设备 SDK 克隆到本地计算机：
+1. 将 Azure IoT Java 设备 SDK 克隆到本地计算机：
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-java.git
     ```
@@ -72,11 +72,11 @@ ms.locfileid: "121744325"
     此操作需要几分钟才能完成。
 
 ### <a name="run-the-code"></a>运行代码
-1. 在 Java 控制台中，导航到示例目录。
+1. 导航到示例目录。
     ```console
     cd device/iot-device-samples/pnp-device-sample/temperature-controller-device-sample
     ```
-1. 在 Java 控制台中，运行以下代码示例。
+1. 运行以下代码示例。
 
     ```console
     mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
@@ -111,7 +111,7 @@ ms.locfileid: "121744325"
 
 若要使用 Azure CLI 查看设备遥测数据：
 
-1. 在 CLI 应用中，运行 [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) 命令以监视从模拟设备发送到 IoT 中心的事件。 使用之前在 Azure IoT 中为设备和 IoT 中心创建的名称。
+1. 运行 [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) 命令以监视从模拟设备发送到 IoT 中心的事件。 使用之前在 Azure IoT 中为设备和 IoT 中心创建的名称。
 
     ```azurecli
     az iot hub monitor-events --output table --device-id mydevice --hub-name {YourIoTHubName}

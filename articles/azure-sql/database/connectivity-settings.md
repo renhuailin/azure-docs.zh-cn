@@ -11,20 +11,20 @@ ms.author: rohitna
 ms.reviewer: mathoma, vanto
 ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 77b629f5fb354ee94d06055999ece59aea05e592
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: de6af2c8581c157634ee1f8676e3dbc84ccd1803
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750146"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590661"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 连接设置
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]
 
 本文介绍的设置可用于控制 Azure Synapse Analytics 中与 Azure SQL 数据库和[专用 SQL 池（以前的 SQL DW）](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md)的服务器的连接。 这些设置适用于所有与服务器关联的 SQL 数据库和专用 SQL 池（以前的 SQL DW）数据库。
 
 > [!IMPORTANT]
-> 本文不适用于 Azure SQL 托管实例。
+> 本文不适用于 Azure SQL 托管实例。 本文也不适用于 Azure Synapse Analytics 工作区中的专用 SQL 池。 有关如何使用工作区为 Azure Synapse Analytics 配置 IP 防火墙规则的指南，请参阅 [Azure Synapse Analytics IP 防火墙规则](../../synapse-analytics/security/synapse-workspace-ip-firewall.md)。
 
 可从“防火墙和虚拟网络”屏幕访问连接设置，如以下屏幕截图所示：
 
@@ -124,7 +124,7 @@ Login failed with invalid TLS version
 
 ## <a name="set-the-minimal-tls-version-in-azure-portal"></a>在 Azure 门户中设置最低 TLS 版本
 
-在 [Azure 门户](https://portal.azure.com)中，转到你的 SQL Server 资源。 在“安全”设置下，选择“防火墙和虚拟网络” 。 选择与服务器关联的所有 SQL 数据库所需的最低 TLS 版本，然后选择“保存” 。
+在 [Azure 门户](https://portal.azure.com)中，转到你的 SQL Server 资源。 在“安全性”设置下，选择“防火墙和虚拟网络” 。 选择与服务器关联的所有 SQL 数据库所需的最低 TLS 版本，然后选择“保存” 。
 
 ## <a name="set-the-minimal-tls-version-via-powershell"></a>通过 PowerShell 设置最低 TLS 版本
 

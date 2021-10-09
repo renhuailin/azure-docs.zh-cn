@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82c6b6cd0dde6b321e4de8a87f99e1adad69040d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97106965"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662108"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>教程：将资源添加到 ARM 模板
 
@@ -50,7 +50,7 @@ ms.locfileid: "97106965"
 
 其他属性因资源类型和 API 版本而异。 了解 API 版本与可用属性之间的关联非常重要，因此，让我们直接了解详情。
 
-在本教程中，你已将一个存储帐户添加到了模板。 可以在 [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts) 中看到该 API 版本。 请注意，你并未将所有属性添加到模板。 许多属性是可选的。 `Microsoft.Storage` 资源提供程序可能发布了新的 API 版本，但要部署的版本不需要更改。 可以继续使用该版本，部署的结果是一致的。
+在本教程中，你已将一个存储帐户添加到了模板。 可以在 [storageAccounts 2021-04-01](/azure/templates/microsoft.storage/2021-04-01/storageaccounts) 中看到该 API 版本。 请注意，你并未将所有属性添加到模板。 许多属性是可选的。 `Microsoft.Storage` 资源提供程序可能发布了新的 API 版本，但要部署的版本不需要更改。 可以继续使用该版本，部署的结果是一致的。
 
 如果查看较旧的 API 版本（例如 [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)），你会发现提供了一个较小的属性集。
 

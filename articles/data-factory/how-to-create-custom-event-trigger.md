@@ -8,12 +8,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 046d94202769845f58c7f528bddb37e29e0c312a
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: dcad59c6434f6751cba8633868a9dc9969ffc0ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514425"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610519"
 ---
 # <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory"></a>创建自定义事件触发器以在 Azure 数据工厂中运行管道
 
@@ -96,7 +96,7 @@ ms.locfileid: "122514425"
 
 ## <a name="advanced-filtering"></a>高级筛选
 
-自定义事件触发器支持高级筛选功能，类似于[事件网格高级筛选](../event-grid/event-filtering.md#advanced-filtering)。 这些条件筛选器允许管道基于事件有效负载的值进行触发。 例如，事件有效负载中可能有一个名为 _Department 的字段，管道仅应在 Department 等于 Finance 时触发。  你还可以指定复杂的逻辑，例如，date 字段在列表 [1, 2, 3, 4, 5] 中，month 字段不在列表 [11, 12] 中，tag 字段包含 ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] 中的任意一项。
+自定义事件触发器支持高级筛选功能，类似于[事件网格高级筛选](../event-grid/event-filtering.md#advanced-filtering)。 这些条件筛选器允许管道基于事件有效负载的值进行触发。 例如，事件有效负载中可能有一个名为“Department”的字段，管道仅应在“Department”等于“Finance”时触发。   你还可以指定复杂的逻辑，例如，date 字段在列表 [1, 2, 3, 4, 5] 中，month 字段不在列表 [11, 12] 中，tag 字段包含 ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] 中的任意一项。
 
  :::image type="content" source="media/how-to-create-custom-event-trigger/custom-event-5-advanced-filters.png" alt-text="屏幕截图显示了如何为客户事件触发器设置高级筛选器":::
 

@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.author: rohogue
   ms.custom: references_regions
-  ms.openlocfilehash: 1d5230119afa33c05878d11e407e80acdc10f15a
-  ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+  ms.openlocfilehash: a826f96396a4275b07598564281060dea0bf7b1a
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/13/2021
-  ms.locfileid: "113657014"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129351414"
 title: Avere vFXT for Azure FAQ
 summary: 本文回答了系列问题，帮助你确定 Avere vFXT for Azure 是否满足你的需求。 本文提供了有关 Avere vFXT 的基本信息，并解释了它如何与其他 Azure 组件以及来自外部供应商的产品一起工作。
 sections:
@@ -80,15 +80,6 @@ sections:
       Avere vFXT 是否高度可用？
     answer: >
       是的，Avere vFXT 专门作为 HA 解决方案运行。
-  - question: >
-      Avere vFXT for Azure 是否也支持其他云服务？
-    answer: >
-      是的，客户可以在 Avere vFXT 集群中使用多个云提供商的产品/服务。 它支持 AWS S3 标准存储桶和 Google 云服务标准存储桶以及 Azure Blob 容器。
-
-
-      > [!NOTE]
-
-      > 在 AWS 或 Google 云存储中使用 Avere vFXT，需要支付软件费用。 使用 Azure Blob 存储不需要支付额外的软件费用。
 - name: 技术方面：计算
   questions:
   - question: >
@@ -101,7 +92,7 @@ sections:
   - question: >
       Avere vFXT 环境是否可以缩放？
     answer: >
-      Avere vFXT 群集可以小到三个虚拟机节点或大到 24 个节点。 如果你认为需要超过九个节点的群集，请与 Azure 技术支持部门联系以帮助规划。 较大数量的节点需要更大的部署体系结构。
+      Avere vFXT 群集可以小到三个虚拟机节点或大到 20 个节点。 如果需要帮助规划工作流的适当群集大小，请联系 Azure 技术支持。
   - question: >
       Avere vFXT 环境是否“自动缩放”？
     answer: >
@@ -214,7 +205,7 @@ sections:
       Avere vFXT 不是存储。 它是用于从多个存储目标（称为核心文件管理器）读取和写入数据的缓存。 Avere vFXT 的高级 SSD 盘上存储的数据是瞬态的，最终冲往后端核心文件管理器存储。
   - question: >
       Avere vFXT 支持哪些核心文件管理器？
-    answer: "概括地说，Avere vFXT for Azure 支持以下系统作为核心文件管理器：\n\n* Dell EMC Isilon（OneFS 7.1、7.2、8.0 和 8.1） \n* NetApp ONTAP（群集模式 9.4、9.3、9.2、9.1P1、8.0-8.3）和（7-Mode 7.*、8.0-8.3）\n\n* Azure blob 容器（仅本地冗余存储）\n* AWS S3 存储桶\n* Google Cloud 存储桶\n"
+    answer: "概括地说，Avere vFXT for Azure 支持以下系统作为核心文件管理器：\n\n* Dell EMC Isilon（OneFS 7.1、7.2、8.0 和 8.1） \n* NetApp ONTAP（群集模式 9.4、9.3、9.2、9.1P1、8.0-8.3）和（7-Mode 7.*、8.0-8.3）\n\n* Azure blob 容器（仅本地冗余存储）\n"
   - question: >
       为何 Avere vFXT 不支持所有 NFS 文件管理器？
     answer: >
@@ -248,7 +239,7 @@ sections:
       通常不建议 Avere vFXT for Azure 核心文件管理器使用冷层 Blob 存储。 冷层的存储成本较低，但运营成本更高。 （有关详细信息，请参阅[块 Blob 定价](<https://azure.microsoft.com/pricing/details/storage/blobs/>)。）如果需要频繁访问和修改或删除数据，请考虑使用热层。
 
 
-      有关何时使用冷层存储作为 vFXT 核心文件管理器较为合理的详细信息，请参阅[访问层](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier)。
+      有关何时使用冷层存储作为 vFXT 核心文件管理器较为合理的详细信息，请参阅[访问层](../storage/blobs/access-tiers-overview.md)。
   - question: >
       如何对 Blob 容器进行加密？
     answer: "可以在 Azure（首选）或 Avere vFXT 核心文件管理器级配置 Blob 加密。  \n"

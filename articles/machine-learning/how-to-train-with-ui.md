@@ -11,18 +11,18 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 06/22/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 4da4cb933f24a0ca172c6b0fd6b8b9827d615859
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 94eb2beb95a43e422e8bff6c3ab53f7d2e6c208b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823460"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094702"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>使用作业创建 UI（预览版）创建训练作业
 
 可通过多种方式使用 Azure 机器学习来创建训练作业。 可以使用 CLI（参阅[使用 CLI (v2)（预览版）训练模型（创建作业）](how-to-train-cli.md)）、REST API（参阅[使用 REST 训练模型（预览版）](how-to-train-with-rest.md)），或者可以使用 UI 直接创建训练作业。 本文介绍如何使用你自己的数据和代码，通过 Azure 机器学习工作室中的作业创建 UI 训练机器学习模型。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "122823460"
 
 有关创建各种类型的计算的详细信息，请参阅：
 
-| 计算类型 | 操作方法 | 
+| 计算类型 | 如何 | 
 | --- | --- | 
 | 计算实例 | [创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md) | 
 | 计算群集 | [创建 Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md) | 
@@ -85,7 +85,7 @@ ms.locfileid: "122823460"
 
 ### <a name="curated-environments"></a>特选环境
 
-特选环境是 Azure 定义的、在常见 ML 工作负载中使用的 Python 包集合。 默认情况下，特选环境在工作区中可用。 这些环境由缓存的 Docker 映像支持，降低了运行准备开销。 “特选环境”页中的卡显示了每个环境的详细信息。 
+特选环境是 Azure 定义的、在常见 ML 工作负载中使用的 Python 包集合。 默认情况下，特选环境在工作区中可用。 这些环境由缓存的 Docker 映像支持，降低了运行准备开销。 “特选环境”页中的卡显示了每个环境的详细信息。 有关详细信息，请参阅 [Azure 机器学习中的特选环境](resource-curated-environments.md)。
 
  [![特选环境](media/how-to-train-with-ui/curated-env.png)](media/how-to-train-with-ui/curated-env.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "122823460"
 
 指定环境后，可以使用其他设置配置作业。 
 
-|字段| 描述|
+|字段| 说明|
 |------| ------|
 |作业名称| 作业名称字段用于唯一标识作业。 它还用作作业的显示名称。 此字段是可选的；如果你未输入任何内容，Azure 将为作业生成 GUID 名称。 注意：作业名称必须唯一。|
 |实验名称| 这有助于在 Azure 机器学习工作室中组织作业。 每个作业的运行记录将组织到工作室“试验”选项卡中的相应试验下。默认情况下，Azure 会将作业放在“默认”试验中。|

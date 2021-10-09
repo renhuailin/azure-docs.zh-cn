@@ -17,12 +17,12 @@ ms.date: 04/30/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7ccca25bf140a51755c229f8c438e053a7ac7de
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 73ccb2ddb9e229faea69ae3f67ed8285b0256808
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319246"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581259"
 ---
 # <a name="audit-logs-in-azure-active-directory"></a>Azure Active Directory 中的审核日志 
 
@@ -95,7 +95,7 @@ ms.locfileid: "108319246"
 - 安全读取者
 - 报表读取者
 - 全局读取者
-- 全局管理员角色
+- 全局管理员
 
 ## <a name="where-can-i-find-it"></a>在哪里可以找到这样的脚本？
 
@@ -103,13 +103,13 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 
 ![打开审核日志](./media/concept-audit-logs/audit-logs-menu.png)
 
-此外，可以使用[此链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/ProvisioningEvents)直接访问审核日志。
+此外，可使用[此链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/ProvisioningEvents)直接访问审核日志。
 
 
 还可以通过 Microsoft Graph API 访问审核日志。
 
 
-## <a name="what-is-the-default-view&quot;></a>什么是默认视图？
+## <a name="what-is-the-default-view"></a>什么是默认视图？
 
 审核日志有一个默认列表视图，用于显示：
 
@@ -120,7 +120,7 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 - 目标
 - 活动的发起者/参与者（人员）
 
-![审核日志](./media/concept-audit-logs/listview.png &quot;审核日志")
+![审核日志](./media/concept-audit-logs/listview.png "审核日志")
 
 单击工具栏中的“列”即可自定义列表视图。 
 
@@ -227,6 +227,9 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 可以从 [Microsoft 365 管理中心](/office365/admin/admin-overview/about-the-admin-center)查看 Microsoft 365 活动日志。 尽管 Microsoft 365 活动日志和 Azure AD 活动日志共享大量的目录资源，但只有 Microsoft 365 管理中心提供 Microsoft 365 活动日志的完整视图。 
 
 还可以使用 [Office 365 管理 API](/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Microsoft 365 活动日志。
+
+> [!NOTE]
+> 大多数独立或捆绑 Microsoft 365 订阅都对 Microsoft 365 数据中心边界内的某些子系统具有后端依赖关系。 这些依赖关系需要一些信息写回以使目录保持同步，实质上有助于在 Exchange Online 的订阅选择加入中实现轻而易举的加入。 对于这些写回，审核日志条目显示由 Microsoft Substrate Management 采取的操作。 这些审核日志条目指由 Exchange Online 对 Azure AD 执行的创建/更新/删除操作。 这些条目是信息性条目，不需要任何操作。
 
 ## <a name="next-steps"></a>后续步骤
 

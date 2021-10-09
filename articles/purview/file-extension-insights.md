@@ -4,19 +4,22 @@ description: 本操作指南介绍了如何查看并使用数据的 Purview 文�
 author: batamig
 ms.author: bagol
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 01/17/2021
-ms.openlocfilehash: f581594e6830efcf849f4ba51b218ce849bf3f9c
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/27/2021
+ms.openlocfilehash: 706c27603233369836368239645cf28222da8eaa
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396953"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208515"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure Purview 中有关数据的文件扩展名见解 
 
 本操作指南介绍了如何访问、查看和筛选数据中找到的有关文件扩展名或文件类型的见解。
+
+> [!IMPORTANT]
+> Azure Purview 见解目前处于预览阶段。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 支持的数据源包括：Azure Blob 存储、Azure Data Lake Storage (ADLS) 第 1 代、Azure Data Lake Storage (ADLS) 第 2 代、Amazon S3 Bucket
 
@@ -26,18 +29,18 @@ ms.locfileid: "122396953"
 > - 查看有关数据的文件扩展名见解
 > - 向下钻取更多有关数据的文件扩展名详细信息
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 在开始利用 Purview 见解之前，请确保已完成以下步骤：
 
 - 设置 Azure 资源并用测试数据填充相关帐户
 
-- 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
+- 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
 
 - 使用具有 [Data Reader 或 Data Curator 角色](catalog-permissions.md#roles)的帐户登录到 Purview。
 
 
-有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)。
+有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)。
 
 ## <a name="use-purview-file-extension-insights"></a>查看 Purview 文件扩展名见解
 

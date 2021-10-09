@@ -3,14 +3,14 @@ title: 如何规划和部署已启用 Azure Arc 的服务器
 description: 了解如何在已启用 Azure Arc 的服务器中启用大量计算机，以简化 Azure 中不可或缺的安全、管理和监视功能的配置。
 ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a31a886d4eb687c92d73c39617a6993e4b3f835
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: a7494bb45eeed9392a44aef400483cd9cfcfb091
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104914"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788926"
 ---
-# <a name="plan-and-deploy-arc-enabled-servers"></a>规划和部署已启用 Arc 的服务器
+# <a name="plan-and-deploy-azure-arc-enabled-servers"></a>规划和部署已启用 Azure Arc 的服务器
 
 对于任何一家公司而言，部署 IT 基础结构服务或业务应用程序都充满了挑战。 若要顺利执行此任务并避免任何意外变故和计划外成本，需要进行全面的规划，确保做好尽量充分的准备。 若要规划已启用 Azure Arc 的服务器的任何规模的部署，应该考虑到需要满足的设计和部署条件，以便能够成功完成任务。
 
@@ -35,7 +35,7 @@ ms.locfileid: "123104914"
 
 * 计算机运行 Connected Machine Agent [支持的操作系统](agent-overview.md#supported-operating-systems)。
 * 计算机可以直接或者通过代理服务器从本地网络或其他云环境连接到 Azure 中的资源。
-* 若要安装并配置已启用 Arc 的服务器 Connected Machine Agent，需要创建一个在计算机上拥有提升特权的帐户（即管理员或 root 帐户）。
+* 若要安装并配置已启用 Azure Arc 的服务器 Connected Machine 代理，计算机上需要有具备提升特权的帐户（即，管理员或使用 root 身份）。
 * 若要将计算机加入，你必须是 **Azure Connected Machine 加入** 角色的成员。
 * 若要读取、修改和删除计算机，你需是“Azure Connected Machine 资源管理员”角色的成员。
 
@@ -56,22 +56,22 @@ ms.locfileid: "123104914"
 
 ## <a name="phase-1-build-a-foundation"></a>第 1 阶段：构建基础
 
-在此阶段，系统工程师或管理员将在其组织的 Azure 订阅中启用核心功能，以便在启用计算机（让已启用 Arc 的服务器和其他 Azure 服务进行管理）之前开始打下基础。
+在此阶段，系统工程师或管理员会在其组织 Azure 订阅中启用核心功能，以便在已启用 Azure Arc 的服务器和其他 Azure 服务能够管理计算机之前先做好基础准备。
 
 |任务 |详细信息 |持续时间 |
 |-----|-------|---------|
-| [创建资源组](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | 一个专用的资源组，仅包含已启用 Arc 的服务器，并对这些资源进行集中式管理和监视。 | 一小时 |
-| 应用[标记](../../azure-resource-manager/management/tag-resources.md)来帮助对计算机进行组织。 | 评估并制定一个与 IT 部门相协调的[标记策略](/azure/cloud-adoption-framework/decision-guides/resource-tagging/)，以帮助降低管理已启用 Arc 的服务器的复杂性，并简化管理决策。 | 一天 |
+| [创建资源组](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | 专用的资源组，只包含已启用 Azure Arc 的服务器，并对这些资源进行集中式管理和监视。 | 一小时 |
+| 应用[标记](../../azure-resource-manager/management/tag-resources.md)来帮助对计算机进行组织。 | 评估并制定符合 IT 部门要求的[标记策略](/azure/cloud-adoption-framework/decision-guides/resource-tagging/)，以帮助降低管理已启用 Azure Arc 的服务器的复杂性，并简化管理决策。 | 一天 |
 | 设计并部署 [Azure Monitor 日志](../../azure-monitor/logs/data-platform-logs.md) | 评估[设计和部署注意事项](../../azure-monitor/logs/design-logs-deployment.md)，确定组织是应该使用现有的 Log Analytics 工作区还是实施另一个 Log Analytics 工作区来存储从混合服务器和计算机收集的日志数据。<sup>1</sup> | 一天 |
 | [制定 Azure Policy](../../governance/policy/overview.md) 监管计划 | 确定如何使用 Azure Policy 在订阅或资源组范围实施混合服务器和计算机的监管。 | 一天 |
-| 配置[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) | 制定一个访问计划，用于控制谁有权管理已启用 Arc 的服务器并能够从其他 Azure 服务和解决方案查看这些服务器的数据。 | 一天 |
+| 配置[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) | 制定访问计划，用于控制谁有权管理已启用 Azure Arc 的服务器并能够从其他 Azure 服务和解决方案查看这些服务器的数据。 | 一天 |
 | 确定已装有 Log Analytics 代理的计算机 | 在 [Log Analytics](../../azure-monitor/logs/log-analytics-overview.md) 中运行以下日志查询，以支持将现有 Log Analytics 代理部署转换为扩展托管的代理：<br> 检测信号 <br> &#124; where TimeGenerated > ago(30d) <br> &#124; where ResourceType == "machines" and (ComputerEnvironment == "Non-Azure") <br> &#124; summarize by Computer, ResourceProvider, ResourceType, ComputerEnvironment | 一小时 |
 
 <sup>1</sup> 在评估 Log Analytics 工作区设计的过程中，一个重要考虑因素是与 Azure 自动化（用于支持工作区的更新管理以及更改跟踪和清单功能）、Azure 安全中心和 Azure Sentinel 的集成。 如果你的组织已有一个自动化帐户并已启用其与 Log Analytics 工作区关联的管理功能，请评估是否可以集中化和简化管理操作，并利用这些现有资源来最大程度地降低成本，而不是创建重复的帐户、工作区等资源。
 
-## <a name="phase-2-deploy-arc-enabled-servers"></a>第 2 阶段：部署已启用 Arc 的服务器
+## <a name="phase-2-deploy-azure-arc-enabled-servers"></a>第 2 阶段：部署已启用 Azure Arc 的服务器
 
-接下来，我们通过准备并部署已启用 Arc 的服务器 Connected Machine Agent，在第 1 阶段打下的基础上补充内容。
+接下来，我们通过准备并部署已启用 Azure Arc 的服务器 Connected Machine Agent，在第 1 阶段打下的基础上补充内容。
 
 |任务 |详细信息 |持续时间 |
 |-----|-------|---------|
@@ -85,10 +85,10 @@ ms.locfileid: "123104914"
 
 |任务 |详细信息 |持续时间 |
 |-----|-------|---------|
-|创建资源运行状况警报 |如果某台服务器有 15 分钟以上停止向 Azure 发送检测信号，则可能表示该服务器处于脱机状态、网络连接已被阻止，或者代理未运行。 制定一个计划来规定如何应对和调查这些事件，并使用[资源运行状况警报](../..//service-health/resource-health-alert-monitor-guide.md)以便在这些事件开始发生时收到通知。<br><br> 配置警报时请指定以下设置：<br> **资源类型** = **已启用 Azure Arc 的服务器**<br> **当前资源状态** = **不可用**<br> **以前的资源状态** = **可用** | 一小时 |
+|创建资源运行状况警报 |如果某台服务器有 15 分钟以上停止向 Azure 发送检测信号，则可能表示该服务器处于脱机状态、网络连接已被阻止，或者代理未运行。 制定一个计划来规定如何应对和调查这些事件，并使用[资源运行状况警报](../..//service-health/resource-health-alert-monitor-guide.md)以便在这些事件开始发生时收到通知。<br><br> 配置警报时请指定以下设置：<br> 资源类型 = 已启用 Azure Arc 的服务器 <br> **当前资源状态** = **不可用**<br> **以前的资源状态** = **可用** | 一小时 |
 |创建 Azure 顾问警报 | 为获得最佳体验和最新的安全修复和 bug 修复，我们建议将已启用 Azure Arc 的服务器代理保持使用最新版本。 将使用 [Azure 顾问警报](../../advisor/advisor-alerts-portal.md)来识别已过时的代理。<br><br> 配置警报时请指定以下设置：<br> **建议类型** = **升级到最新版本的 Azure Connected Machine Agent** | 一小时 |
 |在订阅或资源组范围[分配 Azure 策略](../../governance/policy/assign-policy-portal.md) |在订阅或资源组范围分配“启用用于 VM 的 Azure Monitor”[策略](../../azure-monitor/vm/vminsights-enable-policy.md)（以及符合需求的其他策略）。 借助 Azure Policy，你可以分配策略定义，以便在整个环境中为 VM 见解安装所需的代理。| 多种多样 |
-|[为已启用 Arc 的服务器启用更新管理](../../automation/update-management/enable-from-automation-account.md) |在 Azure 自动化中配置更新管理，以管理注册到了已启用 Arc 的服务器的 Windows 和 Linux 虚拟机的操作系统更新。 | 15 分钟 |
+|[为已启用 Azure Arc 的服务器启用更新管理](../../automation/update-management/enable-from-automation-account.md) |在 Azure 自动化中配置更新管理，以管理注册到了已启用 Azure Arc 的服务器的 Windows 和 Linux 虚拟机的操作系统更新。 | 15 分钟 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure 策略大规模应用群集配置
 keywords: Kubernetes、Arc、Azure、K8s、容器
-ms.openlocfilehash: 7a6892c4b89128abe698573960b61d08c2ac2f35
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 986af919b4cd61f6f180232598a74561c00a6954
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609626"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799788"
 ---
 # <a name="use-azure-policy-to-apply-gitops-configurations-at-scale"></a>使用 Azure Policy 大规模应用 GitOps 配置
 

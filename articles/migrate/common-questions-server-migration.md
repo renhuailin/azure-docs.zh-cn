@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 33e332b05cbb6c0d20b73a13134590ed3cda4f38
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8d5feae71fc6b901f761e6a52805a7ac5fad04a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112298774"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673533"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate 服务器迁移：常见问题
 
@@ -181,7 +181,7 @@ Azure Migrate 服务器迁移功能目前支持对等性的迁移。 我们不�
 
 ### <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>如何限制复制过程使用 Azure Migrate 设备进行无代理 VMware 复制？  
 
-可以使用 NetQosPolicy 进行限制。 例如：
+可以使用 NetQosPolicy 进行限制。 请注意，这种限制仅适用于来自 Azure Migrate 设备的出站连接。 例如：
 
 要在 NetQosPolicy 中使用的 AppNamePrefix 为“GatewayWindowsService.exe”。 可按如下所示在 Azure Migrate 设备上创建一个策略，以限制来自设备的复制流量：
 

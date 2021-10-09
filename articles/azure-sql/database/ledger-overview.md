@@ -1,27 +1,26 @@
 ---
 title: Azure SQL 数据库账本概述
 description: 了解 Azure SQL 数据库账本功能的基础知识。
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 6b8ca057d896cc7fa353e8b09b1d1667b87cc273
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5651981c663ba5d119a5ae4089ab3f693dad1552
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727055"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646449"
 ---
 # <a name="azure-sql-database-ledger"></a>Azure SQL 数据库账本
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Azure SQL 数据库账本目前为公共预览版，在欧洲西部、巴西南部和美国中西部提供。
+> Azure SQL 数据库账本目前以公共预览版提供。
 
 对于管理财务、医疗或其他敏感数据的所有组织来说，围绕存储在数据库系统中的数据的完整性建立信任一直是一个长期存在的问题。 [Azure SQL 数据库](sql-database-paas-overview.md)的账本功能在数据库中提供防篡改功能。 你能够以加密方式向其他方（如审核员或其他业务参与方）证明你的数据未篡改。
 
@@ -61,7 +60,7 @@ ms.locfileid: "121727055"
 
 数据库接收的每个事务都会进行加密哈希处理 (SHA-256)。 哈希函数使用事务值以及前一个事务的哈希作为哈希函数的输入。 （该值包括事务中包含的行的哈希。）该函数以加密方式将所有事务链接在一起，类似于区块链。 
 
-加密哈希（[数据库摘要](#database-digests)）表示数据库的状态。 这些状态会定期生成，并存储在 Azure SQL 数据库外部的防篡改存储位置。 存储位置的示例包括 [Azure Blob 存储的不可变存储功能](../../storage/blobs/immutable-storage-overview.md)或 [Azure 机密账本](../../confidential-ledger/index.yml)。 数据库摘要稍后会用于验证数据库的完整性，方法是将摘要中的哈希值与数据库中计算出的哈希值进行比较。 
+加密哈希[数据库摘要](#database-digests)表示数据库的状态。 这些状态会定期生成，并存储在 Azure SQL 数据库外部的防篡改存储位置。 存储位置的示例包括 [Azure Blob 存储的不可变存储功能](../../storage/blobs/immutable-storage-overview.md)或 [Azure 机密账本](../../confidential-ledger/index.yml)。 数据库摘要稍后会用于验证数据库的完整性，方法是将摘要中的哈希值与数据库中计算出的哈希值进行比较。 
 
 账本功能以两种形式引入 Azure SQL 数据库中的表：
 

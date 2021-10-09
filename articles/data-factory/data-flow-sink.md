@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/24/2021
-ms.openlocfilehash: 39c8ed3f8d8b11839964ac376ac35badd6546411
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/10/2021
+ms.openlocfilehash: afdc363c53790f1710ee274d5430416e415059fd
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824621"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059941"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 转换数据后，使用接收器转换将其写入目标存储。 每个数据流至少需要一个接收器转换，但你可根据需要写入任意多个接收器来完成转换流。 若要写入更多接收器，请通过新的分支和有条件拆分创建新数据流。
 
@@ -35,7 +37,7 @@ ms.locfileid: "122824621"
 
 若要使用内联数据集，请在“接收器类型”选择器中选择所需的格式。 选择要与其连接的链接服务，而不是选择接收器数据集。
 
-![显示已选择“内联”的屏幕截图。](media/data-flow/inline-selector.png "显示已选择“内联”的屏幕截图。")
+:::image type="content" source="media/data-flow/inline-selector.png" alt-text="显示已选择“内联”的屏幕截图。":::
 
 ## <a name="workspace-db-synapse-workspaces-only"></a>工作区 DB（仅 Synapse 工作区）
 
@@ -44,7 +46,7 @@ ms.locfileid: "122824621"
 > [!NOTE]
 > Azure Synapse 工作区 DB 连接器目前为公共预览版，只能与 Spark Lake 数据库配合使用
 
-![显示选定工作区 DB 的屏幕截图。](media/data-flow/syms-sink.png "显示已选择“内联”的屏幕截图。")
+:::image type="content" source="media/data-flow/syms-sink.png" alt-text="显示选定工作区 DB 的屏幕截图。":::
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> 支持的接收器类型
 
@@ -76,11 +78,12 @@ ms.locfileid: "122824621"
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
-![显示“接收器”设置的屏幕截图。](media/data-flow/sink-settings.png "显示“接收器”设置的屏幕截图。")
+:::image type="content" source="media/data-flow/sink-settings.png" alt-text="显示“接收器”设置的屏幕截图。":::
 
 架构偏差：[架构偏差](concepts-data-flow-schema-drift.md)是指在无需显式定义列更改的情况下，服务在数据流中以原生方式处理灵活架构的能力。 启用“允许架构偏差”在接收器数据架构中定义的内容之上写入额外的列。
 
-**验证架构**：如果选择了“验证架构”，但在源投影中未找到传入源架构的任何列，或者数据类型不匹配，则数据流将失败。 使用此设置可强制要求源数据满足定义的投影的协定。 非常适用于在数据库源方案中指示列名称或类型已发生更改。
+**验证架构**：如果选择了验证架构，则如果接收器投影中的任一列在接收器存储中未找到，或者数据类型不匹配，数据流将失败。 使用此设置可强制要求接收器架构满足定义的投影的协定。 非常适用于在数据库接收器方案中指示列名称或类型已发生更改。
+
 
 ## <a name="cache-sink"></a>缓存接收器
 
@@ -90,11 +93,11 @@ ms.locfileid: "122824621"
 
 若要写入缓存接收器，请添加接收器转换，然后选择“缓存”作为接收器类型。 与其他接收器类型不同，由于不写入外部存储，因此无需选择数据集或链接服务。 
 
-![选择缓存接收器](media/data-flow/select-cache-sink.png "选择缓存接收器")
+:::image type="content" source="media/data-flow/select-cache-sink.png" alt-text="选择缓存接收器":::
 
 在接收器设置中，可以根据需要指定缓存接收器的键列。 在缓存查找中使用 `lookup()` 函数时，这些用作匹配条件。 如果指定键列，则不能在缓存查找中使用 `outputs()` 函数。 若要了解有关缓存查找语法的详细信息，请参阅[缓存查找](concepts-data-flow-expression-builder.md#cached-lookup)。
 
-![缓存接收器键列](media/data-flow/cache-sink-key-columns.png "缓存接收器键列")
+:::image type="content" source="media/data-flow/cache-sink-key-columns.png" alt-text="缓存接收器键列":::
 
 例如，如果在名为 `cacheExample` 的缓存接收器中指定一个键列 `column1`，则调用 `cacheExample#lookup()` 时将有一个参数指定匹配缓存接收器中的哪一行。 函数输出一个复杂列，其中每个映射的列都有子列。
 
@@ -113,12 +116,12 @@ ms.locfileid: "122824621"
 
 默认情况下，数据以不确定的顺序写入多个接收器。 转换逻辑完成时，执行引擎并行写入数据，并且接收器排序可能会在每次运行时发生变化。 若要指定确切的接收器排序，请在数据流的“常规”选项卡上启用“自定义接收器排序” 。 启用后，接收器按递增顺序写入。
 
-![显示自定义接收器排序的屏幕截图。](media/data-flow/custom-sink-ordering.png "显示自定义接收器排序的屏幕截图。")
+:::image type="content" source="media/data-flow/custom-sink-ordering.png" alt-text="显示自定义接收器排序的屏幕截图。":::
 
 > [!NOTE]
 > 使用[缓存查询](./concepts-data-flow-expression-builder.md#cached-lookup)时，请确保接收器排序已将缓存接收器设置为 1，即排序中最低的一个（或第一个）。
 
-![自定义接收器排序](media/data-flow/cache-2.png "自定义接收器排序")
+:::image type="content" source="media/data-flow/cache-2.png" alt-text="自定义接收器排序":::
 
 ### <a name="sink-groups"></a>接收器组
 

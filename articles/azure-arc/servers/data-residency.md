@@ -4,12 +4,12 @@ description: 数据驻留和有关已启用 Azure Arc 的服务器的信息。
 ms.topic: reference
 ms.date: 08/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 05dbea8ce3d91e46bbb566f9d9989dec648c9853
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 36aa97dc55879e61caf2b7c19aac21cae4091433
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770966"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832185"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>已启用 Azure Arc 的服务器：数据驻留
 
@@ -34,7 +34,7 @@ ms.locfileid: "122770966"
 * 托管标识的公钥
 * 策略符合性状态和详细信息（如果使用来宾配置策略）
 
-在已启用 Arc 的服务器上，可指定存储数据的区域。 Microsoft 可能会将数据复制到其他区域来提高数据复原能力，但 Microsoft 不会将数据复制或移动到相应地理位置之外。 此数据存储在配置了 Azure Arc 计算机资源的区域中。 例如，如果计算机在美国东部区域注册了 Arc，则此数据存储在美国区域中。
+在已启用 Azure Arc 的服务器上，可指定存储数据的区域。 Microsoft 可能会将数据复制到其他区域来提高数据复原能力，但 Microsoft 不会将数据复制或移动到相应地理位置之外。 此数据存储在配置了 Azure Arc 计算机资源的区域中。 例如，如果计算机在美国东部区域注册了 Arc，则此数据存储在美国区域中。
 
 > [!NOTE] 
 > 对于东南亚地区，数据不会复制到此区域之外。 

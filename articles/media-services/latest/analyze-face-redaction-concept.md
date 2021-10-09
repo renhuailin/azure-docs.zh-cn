@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 977dcbed29f74e97de3e61842b1b559a05ad8fdb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 2c434720863a7ecff4192720874547f6f8c2e8ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955465"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621407"
 ---
 # <a name="find-and-redact-blur-faces-with-the-face-detector-preset"></a>使用人脸检测器预设查找和编修（模糊处理）人脸
 
@@ -31,7 +31,7 @@ Azure 媒体服务 v3 API 包含一个人脸检测器预设，该预设在云中
 
 ## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
 
-作为一项重要提醒，在 Azure 媒体服务中使用分析时必须遵守所有适用的法律。 不得以违反他人权利的方式使用 Azure 媒体服务或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到 Azure 媒体服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解 Azure 媒体服务中的合规性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)提供。 使用 Azure 媒体服务即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束
+作为一项重要提醒，在 Azure 媒体服务中使用分析时必须遵守所有适用的法律。 不得以违反他人权利的方式使用 Azure 媒体服务或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到 Azure 媒体服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解 Azure 媒体服务中的合规性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.yml)提供。 使用 Azure 媒体服务即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束
 
 ## <a name="face-redaction-modes"></a>面部修订模式
 
@@ -54,12 +54,13 @@ Azure 媒体服务 v3 API 包含一个人脸检测器预设，该预设在云中
 ### <a name="analyze-mode"></a>分析模式
 
 双阶段工作流的“分析”阶段采用视频输入并生成一个 JSON 文件，其中包含检测到的每张人脸的人脸位置、人脸 ID 和 jpg 图像列表。
+请注意，在后续运行分析传递时，不保证人脸 ID 的相同。
 
 | 阶段 | 文件名 | 说明 |
 | --- | --- | --- |
 | 输入资产 |"ignite-sample.mp4" |WMV、MPV 或 MP4 格式的视频 |
 | 预设配置 |人脸检测器配置 |**mode**：FaceRedactorMode.Analyze，**resolution**：AnalysisResolution.SourceResolution|
-| 输出资产 |ignite-sample_annotations.json |JSON 格式的面部位置批注数据。 用户可编辑此数据，以修改模糊边界框。 请查看以下示例。 |
+| 输出资产 |ignite-sample_annotations.json |JSON 格式的面部位置批注数据。 在后续运行分析传递时，不保证人脸 ID 的相同。 用户可编辑此数据，以修改模糊边界框。 请查看以下示例。 |
 | 输出资产 |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |裁剪后的 jpg 文件，显示每个检测到的面部，其中的数字指示面部的标签 ID |
 
 #### <a name="output-example"></a>输出示例
@@ -132,6 +133,7 @@ Azure 媒体服务 v3 API 包含一个人脸检测器预设，该预设在云中
 #### <a name="example-output"></a>示例输出
 
 这是来自选择了一个 ID 的 ID 列表的输出。
+在后续运行分析传递时，不保证人脸 ID 的相同。
 
 示例 foo_IDList.txt
 

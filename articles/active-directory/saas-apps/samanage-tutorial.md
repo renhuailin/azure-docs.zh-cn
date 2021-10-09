@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: d10ff0f9ca4fde80557341c0b5d29b3f7c26c970
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: d1e3f0b9b7d61a2984914cbbbe0b9d3b2832f7b1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982771"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780388"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>教程：Azure Active Directory 与 SolarWinds Service Desk（以前称为 Samanage）集成
 
@@ -41,6 +41,7 @@ ms.locfileid: "111982771"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * SolarWinds 支持 **SP** 发起的 SSO。
+* SolarWinds 支持[自动用户预配](samanage-provisioning-tutorial.md)。
 
 ## <a name="add-solarwinds-from-the-gallery"></a>从库中添加 SolarWinds
 
@@ -179,6 +180,9 @@ ms.locfileid: "111982771"
    >[!NOTE]
    >Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。 可以使用 SolarWinds 提供的任何其他 SolarWinds 用户帐户创建工具或 API 来预配 Azure Active Directory 用户帐户。
 
+> [!NOTE]
+> SolarWinds 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./samanage-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -187,7 +191,7 @@ ms.locfileid: "111982771"
 
 * 直接转到 SolarWinds 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SolarWinds”磁贴时，会重定向到 SolarWinds 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SolarWinds”磁贴时，会重定向到 SolarWinds 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

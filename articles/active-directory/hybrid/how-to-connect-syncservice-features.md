@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 9/14/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 676eb07a031aeae0e03d4352639a690bdc9b4cae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94410532"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612560"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
 
@@ -85,6 +85,15 @@ Get-MsolDirSyncFeatures -Feature EnableSoftMatchOnUpn
 
 ```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
+```
+
+## <a name="blocksoftmatch"></a>BlockSoftMatch
+启用此功能后，它将阻止软匹配功能。 建议客户启用此功能，并将其保持启用状态，直到租户再次需要软匹配。 在任何软匹配已完成且不再需要后，应再次启用此标志。
+
+示例 - 若要阻止租户中的软匹配，请运行此 cmdlet：
+
+```
+PS C:\> Set-MsolDirSyncFeature -Feature BlockSoftMatch -Enable $True
 ```
 
 ## <a name="synchronize-userprincipalname-updates"></a>同步 userPrincipalName 更新

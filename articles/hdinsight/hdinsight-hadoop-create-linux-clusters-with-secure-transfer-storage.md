@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: a02da7237252811d89e2c19a29f49f0bf9bb3804
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: deb10f2b3e4e2b5e7d911992a601f66e1e557268
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945725"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211644"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户的 Apache Hadoop 群集
 
@@ -35,9 +35,24 @@ ms.locfileid: "98945725"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-对于 Azure CLI 命令 [az storage account create](/cli/azure/storage/account#az-storage-account-create)，请确保将 `--https-only` 参数设置为 `true`。
+对于 Azure CLI 命令 [az storage account create](/cli/azure/storage/account#az_storage_account_create)，请确保将 `--https-only` 参数设置为 `true`。
 
 若要使用 Azure CLI 更新现有存储帐户，请参阅[需要使用 Azure CLI 进行安全传输](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
+
+### <a name="secure-transfer-errors"></a>安全传输错误
+
+
+如果在创建 HDInsight 群集后意外启用了“需要安全传输”选项，则可能会看到如下错误消息：
+
+`com.microsoft.azure.storage.StorageException: The account being accessed does not support http.`
+
+仅对于 Hbase 群集，可尝试以下步骤来还原群集功能：
+1. 从 Ambari 停止 HBase。
+2. 从 Ambari 停止 HDFS。
+3. 在 Ambari 中，导航到“HDFS”-->“配置”-->“高级”-->“fs.defaultFS”
+4. 将 wasb 更改为 wasbs，并保存它。
+5. 如果使用加速写入功能，则还需要将 hbase 配置下的“hbase.rootDir”从 wasb 更改为 wasbs。
+6. 重启所有必需的服务。
 
 ## <a name="add-additional-storage-accounts"></a>添加其他存储帐户
 

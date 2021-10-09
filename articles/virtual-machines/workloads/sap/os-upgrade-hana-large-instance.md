@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/24/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a7f066a350eae18b9c847d206310cfc3ab8bd57
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 4e980417c2c48455e43143fb2f870a63d6395f94
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112913376"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546199"
 ---
 # <a name="operating-system-upgrade"></a>操作系统升级
 本文详细介绍 HANA 大型实例 (HLI) 操作系统 (OS) 升级，也称为 BareMetal 基础结构。
@@ -28,7 +28,7 @@ ms.locfileid: "112913376"
 >由你负责升级 OS。 Microsoft 运营支持团队可以指导你明确升级的关键方面，但在计划升级时你也可以咨询操作系统供应商。
 
 在 HLI 预配期间，Microsoft 运营团队会安装操作系统。
-你需要维护操作系统。 例如，需要在 HLI 上执行修补、优化、升级等操作。 在对操作系统进行重大更改（例如，将 SP1 升级到 SP2）之前，可通过提交支持工单与 Microsoft 运营团队联系。 然后，他们可以与你进行协商。 建议至少在升级前一周提交此工单。 
+你需要维护操作系统。 例如，需要在 HLI 上执行修补、优化、升级等操作。 在对操作系统进行重大更改（例如，将 SP1 升级到 SP2）之前，可通过提交支持工单与 Microsoft 运营团队联系。 他们会与你协商。 建议至少在升级前一周提交此工单。 
 
 在票证中提供：
 

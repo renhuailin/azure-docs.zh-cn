@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中创建实验室的活动日志警报
+title: 为实验室创建活动日志警报
 description: 本文介绍在 Azure 开发测试实验室中创建实验室的活动日志警报的步骤。
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: f774e3291961c58f55a9ed24026535e076235b98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ebb5ae118d6485afd697ff9b5db7113a101b358
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588767"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628159"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室的活动日志警报
 本文介绍如何在 Azure 开发测试实验室中创建实验室的活动日志警报（例如：创建 VM 或删除 VM 时）。
@@ -79,4 +79,3 @@ ms.locfileid: "100588767"
 - 要了解有关使用不同操作类型创建操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../azure-monitor/alerts/action-groups.md)。
 - 要了解有关活动日志的详细信息，请参阅 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)。
 - 要了解有关如何根据活动日志设置警报的信息，请参阅[根据活动日志发出警报](../azure-monitor/alerts/activity-log-alerts.md)。
-

@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: d3f353693aeafb3093a2a8edce017cc24c0aca49
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d9e634597d82b6cac52237f0c800cdfc33bc883a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370678"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635406"
 ---
 # <a name="rest-api"></a>REST API
 本文介绍了 IoT Edge 上的 Azure 事件网格的 REST API。
@@ -29,26 +29,26 @@ IoT Edge 上的事件网格通过 HTTP（端口 5888）和 HTTPS（端口 4438�
 ### <a name="request-query-string"></a>请求查询字符串
 所有 API 请求都需要以下查询字符串参数：
 
-```?api-version=2019-01-01-preview```
+`?api-version=2019-01-01-preview`
 
 ### <a name="request-content-type"></a>请求内容类型
 所有 API 请求都必须具有 Content-Type。
 
 对于 EventGridSchema 或 CustomSchema，Content-Type 的值可以是下列值之一：
 
-```Content-Type: application/json```
+`Content-Type: application/json`
 
-```Content-Type: application/json; charset=utf-8```
+`Content-Type: application/json; charset=utf-8`
 
 对于结构化模式下的 CloudEventSchemaV1_0，Content-Type 的值可以是下列值之一：
 
-```Content-Type: application/cloudevents+json```
+`Content-Type: application/cloudevents+json`
     
-```Content-Type: application/cloudevents+json; charset=utf-8```
+`Content-Type: application/cloudevents+json; charset=utf-8`
     
-```Content-Type: application/cloudevents-batch+json```
+`Content-Type: application/cloudevents-batch+json`
     
-```Content-Type: application/cloudevents-batch+json; charset=utf-8```
+`Content-Type: application/cloudevents-batch+json; charset=utf-8`
 
 对于二进制模式下的 CloudEventSchemaV1_0，请参考[此文档](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md)来了解详细信息。
 
@@ -760,19 +760,19 @@ TopicName：
 * queueName：要将内容发布到其中的存储队列的名称。
 * connectionString：存储队列所在的存储帐户的连接字符串。
 
-    >[!NOTE]
-    > 不同于事件中心、服务总线队列和服务总线主题，用于存储队列的连接字符串不特定于实体。 相反，它必须是存储帐户的连接字符串。
+  >[!NOTE]
+  > 不同于事件中心、服务总线队列和服务总线主题，用于存储队列的连接字符串不特定于实体。 它必须是存储帐户的连接字符串。
 
-    ```json
-        {
-          "properties": {
-            "destination": {
-              "endpointType": "storageQueue",
-              "properties": {
-                "queueName": "<your-storage-queue-name>",
-                "connectionString": "<your-storage-account-connection-string>"
-              }
-            }
-          }
+  ```json
+  {
+    "properties": {
+      "destination": {
+        "endpointType": "storageQueue",
+        "properties": {
+          "queueName": "<your-storage-queue-name>",
+          "connectionString": "<your-storage-account-connection-string>"
         }
-    ```
+      }
+    }
+  }
+  ```

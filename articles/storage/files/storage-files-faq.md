@@ -3,16 +3,16 @@ title: Azure 文件常见问题解答 (FAQ) | Microsoft Docs
 description: 获取 Azure 文件存储常见问题的解答。 你可以在云或本地的 Windows、Linux 和 macOS 部署上同时装载 Azure 文件共享。
 author: roygara
 ms.service: storage
-ms.date: 02/23/2020
+ms.date: 09/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 3a19493657e368bf65921f4be7bdd5c9154b77a4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: f3ce223174bc92fefd9f31c53709665749eca112
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536772"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627893"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件存储](storage-files-introduction.md)会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)（预览）进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -165,7 +165,7 @@ ms.locfileid: "123536772"
   **为什么分层文件在 Windows 资源管理器中未显示缩略图或预览？**  
     对于分层文件，不会在服务器终结点显示缩略图和预览。 此行为正常，因为 Windows 中的缩略图缓存功能有意跳过读取具有脱机属性的文件。 启用云分层后，阅览分层文件将导致它们被下载（召回）。
 
-    此行为不特定于 Azure 文件同步，Windows 资源管理器会为设置了脱机属性的任何文件显示“灰色 X”。 通过 SMB 访问文件时，将看到 X 图标。 有关此行为的详细说明，请参阅 [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+    此行为不特定于 Azure 文件同步，Windows 资源管理器会为设置了脱机属性的任何文件显示“灰色 X”。 通过 SMB 访问文件时，将看到 X 图标。 有关此行为的详细说明，请参阅[为什么无法获取标记为脱机的文件的缩略图？](https://devblogs.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
     有关如何管理分层文件的问题，请参阅[如何管理分层文件](../file-sync/file-sync-how-to-manage-tiered-files.md)。
 
@@ -372,7 +372,7 @@ ms.locfileid: "123536772"
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
 
-    否。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
+    不是。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
 
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
@@ -503,7 +503,7 @@ ms.locfileid: "123536772"
 
 * <a id="nested-shares"></a>
 **是否可以设置嵌套共享？也就是说，能否在共享下使用共享？**  
-    否。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
+    不是。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
 
 * <a id="ibm-mq"></a>
 **如何将 Azure 文件与 IBM MQ 配合使用？**  

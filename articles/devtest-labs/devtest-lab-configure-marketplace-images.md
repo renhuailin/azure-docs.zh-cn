@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中配置 Azure 市场映像设置
+title: 配置 Azure 市场映像设置
 description: 在 Azure 开发测试实验室中创建 VM 时，配置可以使用哪个 Azure 市场映像
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a5158ed33bf253db1dbe0eb3232bc43d27ce15e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a42326662758e045e8a36d6de1ec2b7170b8d1cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86512429"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645011"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置 Azure 市场映像设置
 开发测试实验室支持基于 Azure 市场映像创建 VM，具体取决于配置的 Azure 市场映像在实验室中的使用方式。 本文演示如何指定在实验室中创建 VM 时可使用哪些 Azure 市场映像（如果有的话）。 这可确保团队仅有权访问所需的市场映像。 
@@ -49,4 +49,3 @@ ms.locfileid: "86512429"
 
 ## <a name="next-steps"></a>后续步骤
 配置了创建 VM 时允许 Azure 市场映像的方式后，下一步是[将 VM 添加到实验室](devtest-lab-add-vm.md)。
-

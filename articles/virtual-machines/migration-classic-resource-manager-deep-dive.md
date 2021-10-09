@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: af032e52886772de6238d1f6dff456189e7e8b3e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 90486f944c2c891415b61fd29731f6f485ca0f04
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698119"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673153"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>有关平台支持的从经典部署模型到 Azure Resource Manager 的迁移的技术深入探讨
 
@@ -168,7 +168,7 @@ ms.locfileid: "122698119"
 | 虚拟网络 |虚拟网络 |虚拟网络将连同其所有属性一起迁移到 Resource Manager 部署模型。 将创建名为 `-migrated` 的新资源组。 |
 | 保留 IP |具有静态分配方法的公共 IP 地址 |与负载均衡器关联的保留 IP 会在迁移云服务或虚拟机的过程中一起迁移。 可以使用 [Move-AzureReservedIP](/powershell/module/servicemanagement/azure.service/move-azurereservedip) 迁移未关联的保留 IP。  |
 | 每个 VM 的公共 IP 地址 |具有动态分配方法的公共 IP 地址 |与 VM 关联的公共 IP 地址将转换为公共 IP 地址资源，分配方法将设置为静态。 |
-| NSG |NSG |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的网络安全组。 在迁移期间不会删除经典部署模型中的 NSG。 但是，当迁移正在进行时，会阻止 NSG 的管理平面操作。 可以使用 [Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup) 迁移未关联的 NSG。|
+| NSG |NSG |在迁移到 Resource Manager 部署模型的过程中，将克隆与虚拟机或子网关联的网络安全组。 在迁移期间不会删除经典部署模型中的 NSG。 但是，当迁移正在进行时，会阻止 NSG 的管理平面操作。 可以使用 [Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup) 迁移未关联的 NSG。|
 | DNS 服务器 |DNS 服务器 |与虚拟网络或 VM 关联的 DNS 服务器会在迁移相应资源的过程中连同所有属性一起迁移。 |
 | UDR |UDR |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的用户定义路由。 在迁移期间不会删除经典部署模型中的 UDR。 但是，当迁移正在进行时，会阻止 UDR 的管理平面操作。 可以使用 [Move-AzureRouteTable](/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable) 迁移未关联的 UDR。 |
 | VM 网络配置中的 IP 转发属性 |NIC 中的 IP 转发属性 |VM 上的 IP 转发属性在迁移期间将转换为网络接口上的属性。 |

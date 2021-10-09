@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0cd1d38bf2a96e8530c9647a6b09ad55893e569a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fa34a8e5e801080f354e13b632917a1a05eabf43
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748741"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832631"
 ---
 # <a name="connectivity-modes-and-requirements"></a>连接模式和要求
 
@@ -119,6 +119,34 @@ HTTPS
 
 无
 
+### <a name="helm-chart-used-to-create-data-controller-in-direct-connected-mode"></a>用于在直接连接模式下创建数据控制器的 helm 图表
+
+用于预配 Azure Arc 数据控制器引导程序和群集级别对象（如自定义资源定义、群集角色和群集角色绑定）的 helm 图表从 Azure 容器注册表中提取。
+
+#### <a name="connection-source"></a>连接源
+
+每个 Kubernetes 节点上的 Kubernetes kubelet 都会拉取容器映像。
+
+#### <a name="connection-target"></a>连接目标
+
+`arcdataservicesrow1.azurecr.io`
+
+#### <a name="protocol"></a>协议
+
+HTTPS
+
+#### <a name="port"></a>端口
+
+443
+
+#### <a name="can-use-proxy"></a>可以使用代理
+
+是
+
+#### <a name="authentication"></a>Authentication
+
+无
+
 ### <a name="azure-resource-manager-apis"></a>Azure 资源管理器 API
 Azure Data Studio 和 Azure CLI 连接到 Azure 资源管理器 API，以在 Azure 中传输和检索数据，从而获取某些功能。
 
@@ -195,4 +223,3 @@ Azure Active Directory
 > 目前，所有发送到用于运行 `az arcdata dc export` 命令的数据控制器和发送到 Grafana 和 Kibana 仪表板的浏览器 HTTPS/443 连接均使用自签名证书进行 SSL 加密。  未来将推出一项功能，让你能够提供自己的证书来加密这些 SSL 连接。
 
 从 Azure Data Studio 到 Kubernetes API 服务器的连接使用你已建立的 Kubernetes 身份验证和加密。  使用 Azure Data Studio 或 CLI 的每个用户都必须拥有到 Kubernetes API 的已经过身份验证的连接，才能执行与已启用 Azure Arc 的数据服务相关的许多操作。
-

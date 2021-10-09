@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 如何为数据提供数据库保护和数�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/16/2021
 ms.author: mjbrown
-ms.openlocfilehash: ee5b5421ea0cb43371f790eecc31f22cc4ae7142
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 818c380d1ec2b3d7095eccec94b8e6f324cb45d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257805"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614993"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 安全性 - 概述
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -99,7 +99,7 @@ ms.locfileid: "123257805"
 
 ### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> 密钥轮换和重新生成
 
-密钥轮换和重新生成的过程非常简单。 首先，请确保应用程序始终使用主密钥或辅助密钥来访问你的 Azure Cosmos DB 帐户。 然后，执行以下所述的步骤。
+密钥轮换和重新生成的过程非常简单。 首先，请确保应用程序始终使用主密钥或辅助密钥来访问你的 Azure Cosmos DB 帐户。 然后，执行以下所述的步骤。 若要监视帐户的密钥更新和密钥重新生成，请参阅文章[使用指标和警报监视密钥更新](monitor-account-key-updates.md)。
 
 # <a name="sql-api"></a>[SQL API](#tab/sql-api)
 
@@ -169,7 +169,7 @@ ms.locfileid: "123257805"
 
     :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
 
-# <a name="cassandra-api"></a>[Cassandra API](#tab/Cassandra-api)
+# <a name="cassandra-api"></a>[Cassandra API](#tab/cassandra-api)
 
 #### <a name="if-your-application-is-currently-using-the-primary-key"></a>如果你的应用程序当前正在使用主密钥
 
@@ -272,6 +272,21 @@ ms.locfileid: "123257805"
     :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
 
 ---
+
+## <a name="track-the-status-of-key-regeneration"></a>跟踪密钥重新生成的状态
+
+在轮换或重新生成密钥后，可以从活动日志中跟踪该密钥的状态。 请使用以下步骤来跟踪状态：
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)并导航到你的 Azure Cosmos DB 帐户。
+
+1. 打开“活动日志”窗格并设置以下筛选器：
+
+   * 将“资源类型”设置为“Azure Cosmos DB 帐户” 。
+   * 将“操作”设置为“轮换密钥” 。
+
+   :::image type="content" source="./media/database-security/track-key-regeneration-status.png" alt-text="活动日志中密钥重新生成的状态" border="true":::
+
+1. 你应该会看到密钥重新生成事件及其状态、发出操作的时间、启动密钥重新生成的用户的详细信息。 密钥生成操作在启动时的状态为“已接受”，然后该状态会更改为“已启动”，并且在操作完成时会更改为“已成功”  。
 
 ## <a name="next-steps"></a>后续步骤
 

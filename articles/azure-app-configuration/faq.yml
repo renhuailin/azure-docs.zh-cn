@@ -9,12 +9,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: alkemper
   ms.custom: references_regions
-  ms.openlocfilehash: 6dd7cff8408d89cfca117241ebb434f6976a32fb
-  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+  ms.openlocfilehash: fdfc62b4b5c61cd1b064e6623464147d01dbc58e
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/27/2021
-  ms.locfileid: "123112033"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128603099"
 title: Azure 应用程序配置常见问题解答
 summary: 本文解答有关 Azure 应用程序配置的常见问题。
 sections:
@@ -107,6 +107,8 @@ sections:
 
       - 美国西部 2
 
+      - 美国西部 3
+
       - 加拿大中部
 
       - 法国中部
@@ -138,7 +140,9 @@ sections:
 
       * 超出了免费层中存储量的每日请求限额。
 
-      * 由于标准层中存储的请求速率过高，产生了临时限制。
+      * 超出了标准层中存储量的每小时请求限额。
+
+      * 由于请求大量突发而出现暂时性限制†。
 
       * 过度使用带宽。
 
@@ -146,12 +150,15 @@ sections:
 
 
       检查 429 响应的正文，以了解请求失败的具体原因。
+
+
+      †由于某个配置存储收到大量突发性请求，可能会面临暂时性限制。 应用程序配置客户端（如 Azure SDK、配置提供程序库和 Azure 管道任务）会自动重试受限制的请求。 对于使用这些客户端之一的任何应用程序，或会重试受限请求的自定义客户端，如果发生此暂时性限制，应不会受影响。
   - question: 为何无法创建与我刚刚删除的应用程序配置存储同名的应用程序配置存储？
     answer: >
       删除标准层应用程序配置存储后，该存储的名称会保留七天。 在保留期结束之前可以重新创建同名的存储，但必须在与原始存储相同的订阅、资源组和区域中创建。 如果删除了包含原始存储的资源组，则需要先在同一订阅中重新创建该资源组，然后才能在其中重新创建存储。
 
 
-      在保持期已过之前，无法在不同的订阅/资源组中创建应用程序配置存储。 但是，可以在原始订阅/资源组中重新创建资源，然后按照[这些说明](/azure/azure-resource-manager/management/move-resource-group-and-subscription#use-the-portal)将资源移动到新的订阅/资源组。
+      在保持期已过之前，无法在不同的订阅/资源组中创建应用程序配置存储。 但是，可以在原始订阅/资源组中重新创建资源，然后按照[这些说明](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)将资源移动到新的订阅/资源组。
 
 
       目前仅支持通过 Azure CLI 使用[此处](/cli/azure/appconfig?view=azure-cli-latest#az_appconfig_create)详述的 `az appconfig create` 命令，在保持期内重新创建应用程序配置存储。

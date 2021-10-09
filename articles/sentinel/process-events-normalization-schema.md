@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: 2f7425d987e878d843271b7222d00f4e326d6478
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: dd9f0c69b610b54ae6f07661ba15d9f0cf22b3ea
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515694"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407202"
 ---
 # <a name="azure-sentinel-process-event-normalization-schema-reference-public-preview"></a>Azure Sentinel 进程事件规范化架构参考（公共预览版）
 
@@ -108,6 +108,7 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>“TimeGenerated” | datetime | 报告设备生成事件的时间。|
 | “_ResourceId”   | guid     | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
+| **类型** | String | 从中提取记录的原始表。 当同一事件可通过多个通道传入不同的表，并且具有相同的 EventVendor 和 EventProduct 值时，此字段很有用。<br><br>例如，Sysmon 事件可以传入 Event 表或 WindowsEvent 表。 |
 | | | |
 
 > [!NOTE]
@@ -118,7 +119,7 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 
 事件字段通用于所有架构，描述活动本身和报告设备。
 
-| 字段               | 实例       | 类型       |  描述        |
+| 字段               | 类       | 类型       |  说明        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | 可选    | 字符串     |     一般消息或说明，包含在记录中或者根据记录生成。   |
 | “EventCount”          | 必需   | Integer    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。   |
@@ -155,7 +156,7 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 - “TargetUser”。 其凭据用于创建新进程的用户。
 - “ParentProcess”。 启动 Actor 进程的进程。
 
-| 字段          | 实例        | 类型       | 说明   |
+| 字段          | 类        | 类型       | 说明   |
 |---------------|--------------|------------|-----------------|
 | **用户**           | Alias        |            | [TargetUsername](#targetusername) 的别名。 <br><br>示例： `CONTOSO\dadmin`     |
 | **处理**        | Alias        |            | [TargetProcessName](#targetprocessname) 的别名 <br><br>示例： `C:\Windows\System32\rundll32.exe`|
@@ -176,12 +177,12 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 | “ActingProcessFileOriginalName” | 可选     | 字符串     |操作进程映像文件的版本信息中的产品原始文件名。       <br><br> 示例：`Notepad++.exe` |
 | “ActingProcessIsHidden”          | 可选     | 布尔    |      指示操作进程是否处于隐藏模式。  |
 | “ActingProcessInjectedAddress”   | 可选     | 字符串     |      在其中存储负责的操作进程的内存地址。           |
-| “ActingProcessId”| 必需    | int        | 操作进程的进程 ID (PID)。<br><br>示例：`48610176`           <br><br>注意：类型定义为“字符串”以支持不同的系统，但在 Windows 和 Linux 上，此值必须是数字。 <br><br>如果使用的是 Windows 或 Linux 计算机并使用了其他类型，请务必转换值。 例如，如果使用了十六进制值，请将其转换为十进制值。    |
+| “ActingProcessId”| 必需    | 字符串        | 操作进程的进程 ID (PID)。<br><br>示例：`48610176`           <br><br>注意：类型定义为“字符串”以支持不同的系统，但在 Windows 和 Linux 上，此值必须是数字。 <br><br>如果使用的是 Windows 或 Linux 计算机并使用了其他类型，请务必转换值。 例如，如果使用了十六进制值，请将其转换为十进制值。    |
 | “ActingProcessGuid”              | 可选     | string     |  操作进程的生成的唯一标识符 (GUID)。 可用于跨系统标识进程。  <br><br> 示例： `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
 | “ActingProcessIntegrityLevel”    | 可选     | 字符串     |       每个进程都有一个在其令牌中表示的完整性级别。 完整性级别确定保护或访问的进程级别。 <br><br> Windows 定义了以下完整性级别：“低”、“中”、“高”和“系统”。    标准用户接收“中”完整性级别，提升的用户接收“高”完整性级别。  <br><br> 有关详细信息，请参阅[必需完整性控制 - Win32 应用](/windows/win32/secauthz/mandatory-integrity-control)。 |
 | “ActingProcessMD5”               | 可选     | 字符串     |操作进程映像文件的 MD5 哈希。  <br><br>示例：`75a599802f1fa166cdadb360960b1dd0`|
 | “ActingProcessSHA1”              | 可选     | SHA1       | 操作进程映像文件的 SHA-1 哈希。             <br><br>  示例： `d55c5a4df19b46db8c54c801c4665d3338acdab0`  |
-| “ActingProcessSHA256”            | 可选     | SHA256     | 操作进程映像文件的 SHA-256 哈希。    <br><br> 例如： <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274`   |
+| “ActingProcessSHA256”            | 可选     | SHA256     | 操作进程映像文件的 SHA-256 哈希。    <br><br> 示例： <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274`   |
 | “ActingProcessSHA512”            | 可选     | SHA521     |       操作进程映像文件的 SHA-512 哈希。       |
 | “ActingProcessIMPHASH”           | 可选     | 字符串     |       操作进程使用的所有库 DLL 的导入哈希。    |
 | “ActingProcessCreationTime”      | 可选     | DateTime   |       操作进程的开始日期和时间。 |
@@ -192,14 +193,14 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 | “ParentProcessFileDescription”   | 可选     | 字符串     |  父进程映像文件中的版本信息中的说明。    <br><br>示例： `Notepad++ : a free (GPL) source code editor`|
 | “ParentProcessFileProduct”       | 可选     | 字符串     |父进程映像文件中的版本信息中的产品名称。    <br><br>  示例：`Notepad++`  |
 | “ParentProcessFileVersion”       | 可选     | 字符串     | 父进程映像文件中的版本信息中的产品版本。    <br><br> 示例：`7.9.5.0` |
-| “ParentProcessIsHidden”          | 可选     | 布尔值    |   指示父进程是否处于隐藏模式。  |
+| “ParentProcessIsHidden”          | 可选     | Boolean    |   指示父进程是否处于隐藏模式。  |
 | “ParentProcessInjectedAddress”   | 可选     | 字符串     |    在其中存储负责的父进程的内存地址。           |
-| “ParentProcessId”| 必需    | integer    | 父进程的进程 ID (PID)。   <br><br>     示例：`48610176`    |
+| “ParentProcessId”| 必需    | 字符串    | 父进程的进程 ID (PID)。   <br><br>     示例：`48610176`    |
 | “ParentProcessGuid”              | 可选     | 字符串     |  父进程的生成的唯一标识符 (GUID)。  可用于跨系统标识进程。    <br><br> 示例： `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
 | “ParentProcessIntegrityLevel”    | 可选     | 字符串     |   每个进程都有一个在其令牌中表示的完整性级别。 完整性级别确定保护或访问的进程级别。 <br><br> Windows 定义了以下完整性级别：“低”、“中”、“高”和“系统”。    标准用户接收“中”完整性级别，提升的用户接收“高”完整性级别。  <br><br> 有关详细信息，请参阅[必需完整性控制 - Win32 应用](/windows/win32/secauthz/mandatory-integrity-control)。 |
 | “ParentProcessMD5”               | 可选     | MD5        | 父进程映像文件的 MD5 哈希。  <br><br>示例： `75a599802f1fa166cdadb360960b1dd0`|
 | “ParentProcessSHA1”              | 可选     | SHA1       | 父进程映像文件的 SHA-1 哈希。       <br><br> 示例：`d55c5a4df19b46db8c54c801c4665d3338acdab0`   |
-| “ParentProcessSHA256”            | 可选     | SHA256     |父进程映像文件的 SHA-256 哈希。      <br><br>  例如： <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274` |
+| “ParentProcessSHA256”            | 可选     | SHA256     |父进程映像文件的 SHA-256 哈希。      <br><br>  示例： <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274` |
 | “ParentProcessSHA512”            | 可选     | SHA512     |    父进程映像文件的 SHA-512 哈希。       |
 | “ParentProcessIMPHASH”           | 可选     | 字符串     |    父进程使用的所有库 DLL 的导入哈希。    |
 | “ParentProcessTokenElevation”    | 可选     | 字符串     |指示是否存在应用于父进程的用户访问控制 (UAC) 特权提升的令牌。     <br><br>  示例： `None` |
@@ -221,7 +222,7 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 | “TargetProcessInjectedAddress”   | 可选     | 字符串     |    在其中存储负责的目标进程的内存地址。           |
 | “TargetProcessMD5”               | 可选     | MD5        | 目标进程映像文件的 MD5 哈希。   <br><br> 示例：`75a599802f1fa166cdadb360960b1dd0`|
 | “TargetProcessSHA1”              | 可选     | SHA1       | 目标进程映像文件的 SHA-1 哈希。       <br><br>  示例：`d55c5a4df19b46db8c54c801c4665d3338acdab0`   |
-| “TargetProcessSHA256”            | 可选     | SHA256     | 目标进程映像文件的 SHA-256 哈希。      <br><br>  例如： <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274` |
+| “TargetProcessSHA256”            | 可选     | SHA256     | 目标进程映像文件的 SHA-256 哈希。      <br><br>  示例： <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274` |
 | TargetProcessSHA512            | 可选     | SHA512     |   目标进程映像文件的 SHA-512 哈希。       |
 | “TargetProcessIMPHASH”           | 可选     | 字符串     |    目标进程使用的所有库 DLL 的导入哈希。    |
 | <a name="targetprocesscommandline"></a>“TargetProcessCommandLine”       | 必需    | 字符串     | 用于运行目标进程的命令行。   <br><br> 示例：`"choco.exe" -v`  |

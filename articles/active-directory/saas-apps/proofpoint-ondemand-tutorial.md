@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Proofpoint on Demand 集成 | Microsoft Docs
+title: 教程：Azure AD 与 Proofpoint on Demand 的 SSO 集成
 description: 了解如何在 Azure Active Directory 和 Proofpoint on Demand 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/29/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: e9beb2c9e265982a9e10f3e6abee6bc3cba4a4a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09a7544db8717b2d26d495bbecda04df4c88cfd7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648452"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676630"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>教程：Azure Active Directory 与 Proofpoint on Demand 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-proofpoint-on-demand"></a>教程：Azure AD 与 Proofpoint on Demand 的 SSO 集成
 
 在本教程中，你将了解如何将 Proofpoint on Demand 与 Azure Active Directory (Azure AD) 集成。 将 Proofpoint on Demand 与 Azure AD 集成后，可以：
 
@@ -40,7 +40,7 @@ ms.locfileid: "101648452"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Proofpoint on Demand 支持“SP”发起的 SSO
+* Proofpoint on Demand 支持“SP”发起的 SSO。
 
 ## <a name="add-proofpoint-on-demand-from-the-gallery"></a>从库中添加 Proofpoint on Demand
 
@@ -66,7 +66,7 @@ ms.locfileid: "101648452"
     1. **[创建 Proofpoint on Demand 测试用户](#create-proofpoint-on-demand-test-user)** - 在 Proofpoint on Demand 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -78,16 +78,14 @@ ms.locfileid: "101648452"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    ![Proofpoint on Demand 域和 URL 单一登录信息](common/sp-identifier-reply.png)
+    a. 在“标识符”框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com/ppssamlsp`
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com/ppssamlsp_hostname`。
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com/ppssamlsp`
-
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<hostname>.pphosted.com/ppssamlsp_hostname`。
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Proofpoint on Demand 客户端支持团队](https://www.proofpoint.com/us/support-services)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [Proofpoint on Demand 客户端支持团队](https://www.proofpoint.com/us/support-services)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -121,7 +119,7 @@ ms.locfileid: "101648452"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-proofpoint-on-demand-sso"></a>配置 Proofpoint on Demand SSO
+## <a name="configure-proofpoint-on-demand-sso"></a>配置 Proofpoint on Demand SSO
 
 若要在“Proofpoint on Demand”端配置单一登录，需要将下载的“证书 (Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Proofpoint on Demand 支持团队](https://www.proofpoint.com/us/support-services)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
@@ -129,7 +127,7 @@ ms.locfileid: "101648452"
 
 在本部分中，会在 Proofpoint on Demand 中创建一个名为“Britta Simon”的用户。 协助 [Proofpoint on Demand 客户端支持团队](https://www.proofpoint.com/us/support-services)将用户添加到 Proofpoint on Demand 平台。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -137,8 +135,8 @@ ms.locfileid: "101648452"
 
 * 直接转到 Proofpoint on Demand 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Proofpoint on Demand”磁贴时，应会自动登录到设置了 SSO 的 Proofpoint on Demand。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Proofpoint on Demand”磁贴时，会重定向到 Proofpoint on Demand 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Proofpoint on Demand 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Proofpoint on Demand 后，可以强制实施会话控制，以实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

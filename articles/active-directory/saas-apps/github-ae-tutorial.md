@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 721c13ea31f812dd5f5b5c335373884766764c80
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9e542c7d9e78ea73dc96809d7d1fa06d60f15283
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750667"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599993"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>教程：Azure Active Directory 与 GitHub AE 的单一登录 (SSO) 集成
 
@@ -37,8 +37,9 @@ ms.locfileid: "108750667"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* GitHub AE 支持 SP 和 IDP 发起的 SSO 
-* GitHub AE 支持实时用户预配
+* GitHub AE 支持 SP 和 IDP 发起的 SSO 。
+* GitHub AE 支持实时用户预配。
+* GitHub AE 支持[自动用户预配](github-ae-provisioning-tutorial.md)。
 
 ## <a name="adding-github-ae-from-the-gallery"></a>从库中添加 GitHub AE
 
@@ -150,6 +151,8 @@ ms.locfileid: "108750667"
 
 在本部分，将在 GitHub AE 中创建一个名为 B.Simon 的用户。 GitHub AE 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 GitHub AE 中尚不存在用户，那么在身份验证后会新建一个用户。
 
+GitHub AE 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./github-ae-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -164,7 +167,7 @@ ms.locfileid: "108750667"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应该会自动登录到为其设置了 SSO 的 GitHub AE 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 GitHub AE 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 GitHub AE。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在点击“我的应用”中的 GitHub AE 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应该会自动登录到为其设置了 SSO 的 GitHub AE。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

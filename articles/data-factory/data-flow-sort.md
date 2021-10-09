@@ -1,7 +1,7 @@
 ---
 title: 映射数据流中的排序转换
+description: 了解 Azure 数据工厂和 Synapse Analytics 管道中的映射数据排序转换。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure 数据工厂映射数据排序转换
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 04/14/2020
-ms.openlocfilehash: 88253393820892f20544f5cbf6a83b21e24e8ec8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 8781836be58403dfef130f55fa698b281360e641
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638646"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059871"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>映射数据流中的排序转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 借助排序转换，可对当前数据流上的传入行进行排序。 可以选择各个列，然后按升序或降序对其进行排序。
 
@@ -28,7 +30,7 @@ ms.locfileid: "122638646"
 
 ## <a name="configuration"></a>Configuration
 
-![排序设置](media/data-flow/sort.png "排序")
+:::image type="content" source="media/data-flow/sort.png" alt-text="排序设置":::
 
 **不区分大小写：** 对字符串或文本字段排序时是否要忽略大小写
 
@@ -55,7 +57,7 @@ ms.locfileid: "122638646"
 
 ### <a name="example"></a>示例
 
-![排序设置](media/data-flow/sort.png "排序")
+:::image type="content" source="media/data-flow/sort.png" alt-text="排序设置":::
 
 以上排序配置的数据流脚本位于下面的代码片段中。
 

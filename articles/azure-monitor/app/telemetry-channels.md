@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bba7516637bedf6e81747cbb27f926964c63f53
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937359"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556502"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 
@@ -111,7 +111,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 `ServerTelemetryChannel` 在内存中缓冲区内存储抵达的项。 每隔 30 秒或每当缓冲了 500 个项时，这些项将序列化、压缩并存储到 `Transmission` 实例中。 单个 `Transmission` 实例最多包含 500 个项，表示通过 Application Insights 服务的单个 HTTPS 调用发送的遥测数据批。
 
-默认情况下，最多可以并行发送 10 个 `Transmission` 实例。 如果遥测数据以更快的速度抵达，或者网络或 Application Insights 后端速度缓慢，则 `Transmission` 将存储到内存中。 此内存中 `Transmission` 缓冲区的默认容量为 5 MB。 超过内存中容量时，`Transmission` 实例将存储在本地磁盘上（不超过 50 MB）。 出现网络问题时，`Transmission` 实例也会存储在本地磁盘上。 当应用程序崩溃时，只有存储在本地磁盘中的项才能幸存。 每当应用程序再次启动时，将发送这些项。
+默认情况下，最多可以并行发送 10 个 `Transmission` 实例。 如果遥测数据以更快的速度抵达，或者网络或 Application Insights 后端速度缓慢，则 `Transmission` 将存储到内存中。 此内存中 `Transmission` 缓冲区的默认容量为 5 MB。 超过内存中容量时，`Transmission` 实例将存储在本地磁盘上（不超过 50 MB）。 出现网络问题时，`Transmission` 实例也会存储在本地磁盘上。 当应用程序崩溃时，只有存储在本地磁盘中的项才能幸存。 每当应用程序再次启动时，将发送这些项。 如果网络问题仍然存在，则 `ServerTelemetryChannel` 在重试发送遥测数据之前，将使用指数回退逻辑，范围从 10 秒到 1 小时。 
 
 ## <a name="configurable-settings-in-channels"></a>通道中的可配置设置
 

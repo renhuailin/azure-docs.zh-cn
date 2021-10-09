@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/10/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 836802e65c8eb76f17bbf053e54ed9dbedf54049
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3e3cb266e9da128e9379d6868d189ac72408c4f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740032"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605822"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
 
@@ -75,7 +75,8 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 获取应用程序 ID：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“所有应用程序” 。
 1. 选择 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 应用程序。
@@ -88,7 +89,8 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 获取应用程序属性：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“所有应用程序” 。
 1. 选择 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 应用程序。
@@ -128,10 +130,11 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 ## <a name="upload-your-custom-policy"></a>上传你的自定义策略
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD 租户的目录，方法是：选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
-4. 选择“标识体验框架”。
-5. 选择“上传自定义策略”，然后上传你已更改的 TrustFrameworkExtensions.xml 策略文件。
+1. 确保你正在使用包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
+1. 选择“标识体验框架”。
+1. 选择“上传自定义策略”，然后上传你已更改的 TrustFrameworkExtensions.xml 策略文件。
 
 > [!NOTE]
 > Azure AD 技术配置文件首次将声明保存到目录时，它会检查自定义属性是否存在。 如果不存在，它会创建自定义属性。  

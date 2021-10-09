@@ -4,12 +4,12 @@ description: 自定义映像池是配置计算节点以运行 Batch 工作负载
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ab3affbfff9039689354763080abfb1dc5b15af2
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 19a6168c2d6d2a37458dbbe9d8917f6e679da47f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450226"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827487"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共享映像库创建自定义映像池
 
@@ -81,7 +81,7 @@ ms.locfileid: "123450226"
 
 ### <a name="create-a-vm-snapshot"></a>创建 VM 快照
 
-快照是 VHD 的完整只读副本。 若要创建 VM OS 磁盘或数据磁盘的快照，可以使用 Azure 门户或命令行工具。 有关创建快照的步骤和选项，请参阅适用于 [Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md) 或 [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md) VM 的指导。
+快照是 VHD 的完整只读副本。 若要创建 VM OS 磁盘或数据磁盘的快照，可以使用 Azure 门户或命令行工具。 有关创建快照的步骤和选项，请参阅适用于 [VM](../virtual-machines/snapshot-copy-managed-disk.md) 的指导。
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>基于一个或多个快照创建映像
 
@@ -214,7 +214,7 @@ client.pool.add(new_pool)
 1. 选择“池”，然后选择“添加”，以便创建新池。 
 1. 在“映像类型”部分，选择“共享映像库”。 
 1. 使用托管映像的相关信息完成剩余部分。
-1. 选择“确定”。
+1. 选择“确定” 。
 
 ![通过门户使用共享映像创建池。](media/batch-sig-images/create-custom-pool.png)
 

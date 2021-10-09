@@ -5,18 +5,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 6/04/2021
-ms.openlocfilehash: abcb95cc3646addacc2bd0e123a59b285d6059f4
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: e8f049349491b4716a485996ba2c5dd4a4d86c47
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111560075"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208622"
 ---
 ## <a name="viewing-your-scans-and-scan-runs"></a>查看扫描和扫描运行
 
 若要查看现有扫描，请执行以下操作：
 
-1. 转到 Purview Studio。 选择左窗格下的“数据映射”选项卡。
+1. 转到 [Purview Studio](https://web.purview.azure.com/resource/)。 选择左窗格下的“数据映射”选项卡。
 
 1. 选择所需的数据源。 你将在“最近扫描”下看到该数据源上的现有扫描列表，或者可以在“扫描”选项卡下查看所有扫描。
 
@@ -28,7 +28,7 @@ ms.locfileid: "111560075"
 
 若要管理或删除扫描，请执行以下操作：
 
-1. 转到 Purview Studio。 选择左窗格下的“数据映射”选项卡。
+1. 转到 [Purview Studio](https://web.purview.azure.com/resource/)。 选择左窗格下的“数据映射”选项卡。
 
 1. 选择所需的数据源。 你将在“最近扫描”下看到该数据源上的现有扫描列表，或者可以在“扫描”选项卡下查看所有扫描。
 

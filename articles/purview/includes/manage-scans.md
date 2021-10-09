@@ -5,12 +5,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 1/20/2021
-ms.openlocfilehash: 876e30eec31918489b174aaf4eec77508b2c5a71
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 388de1966832b21d8134a671f23840841de198e5
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112362226"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209717"
 ---
 ## <a name="creating-and-running-a-scan"></a>创建和运行扫描
 
@@ -19,7 +19,7 @@ ms.locfileid: "112362226"
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择所注册的数据源。
 

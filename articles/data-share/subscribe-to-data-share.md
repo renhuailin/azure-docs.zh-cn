@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 03/24/2021
-ms.openlocfilehash: d063a0870616b5b977df18c56d9d66515b03d0a5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 09/10/2021
+ms.openlocfilehash: 035b6c9b12df69395409c1c0aa70be219bc2533e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870852"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760187"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
@@ -94,9 +94,11 @@ ms.locfileid: "107870852"
 
    若要直接从 Azure 门户打开邀请，请在 Azure 门户中搜索“数据共享邀请”  。 此操作会转到“Data Share 邀请”列表。
 
+   如果你是租户的来宾用户，则在首次查看 Data Share 邀请之前，系统会要求你验证租户的电子邮件地址。 验证后，它将在 12 个月内有效。
+
    ![邀请列表](./media/invitations.png "邀请列表") 
 
-1. 选择要查看的共享。 
+1. 选择要查看的邀请。 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

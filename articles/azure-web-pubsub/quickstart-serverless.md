@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 03/11/2021
-ms.openlocfilehash: e4dd54ef01cf93ffa0bb47d4bbdccb1d14695934
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 787a0e4990988f35ca8e2c98eab1d9c77bea9c1b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434930"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576328"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>教程：使用 Azure Functions 和 Azure Web PubSub 服务创建无服务器实时聊天应用
 
@@ -151,7 +151,7 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
     func new -n negotiate -t HttpTrigger
     ```
     > [!NOTE]
-    > 本示例使用 [AAD](/azure/app-service/configure-authentication-user-identities) 用户标识标头 `x-ms-client-principal-name` 来检索 `userId`。 这在本地函数中不起作用。 在本地运行时，可以将其清空或改为使用其他方式获取或生成 `userId`。 例如，让客户端键入用户名，并在调用 `negotiate` 函数以获取服务连接 URL 时将其传递到 `?user={$username}` 之类的查询中。 在 `negotiate` 函数中，将 `userId` 设置为值 `{query.user}`。
+    > 本示例使用 [AAD](../app-service/configure-authentication-user-identities.md) 用户标识标头 `x-ms-client-principal-name` 来检索 `userId`。 这在本地函数中不起作用。 在本地运行时，可以将其清空或改为使用其他方式获取或生成 `userId`。 例如，让客户端键入用户名，并在调用 `negotiate` 函数以获取服务连接 URL 时将其传递到 `?user={$username}` 之类的查询中。 在 `negotiate` 函数中，将 `userId` 设置为值 `{query.user}`。
     
     # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - 更新 `negotiate/function.json` 并复制以下 json 代码。
@@ -374,14 +374,14 @@ Use the following commands to create these items.
 
 1. 将函数项目部署到 Azure：
 
-    在 Azure 中成功创建函数应用后，便可以使用 [func azure functionapp publish](/azure-functions/functions-run-local) 命令部署本地函数项目。
+    在 Azure 中成功创建函数应用后，便可以使用 [func azure functionapp publish](./../azure-functions/functions-run-local.md) 命令部署本地函数项目。
 
     ```bash
-    func azure functionapp publish <FUNCIONAPP_NAME> --publish-local-settings
+    func azure functionapp publish <FUNCIONAPP_NAME>
     ```
+1. 配置函数应用的 `WebPubSubConnectionString`：
 
-    > [!NOTE]
-    > 在这里，我们将本地设置 `local.settings.json` 与命令参数 `--publish-local-settings` 一起部署。 如果你使用的是 Microsoft Azure 存储模拟器，可以在出现以下提示消息后键入 `no`，跳过在 Azure 上覆盖此值的步骤：`App setting AzureWebJobsStorage is different between azure and local.settings.json, Would you like to overwrite value in azure? [yes/no/show]`。 除此之外，你还可以在“Azure 门户” -> “设置” -> “配置”中更新函数应用设置。
+   首先，从“Azure 门户”中找到你的 Web PubSub 资源，并复制出“密钥”下的连接字符串 。 然后，导航到“Azure 门户” -> “设置” -> “配置”中的函数应用设置  。 并在“应用程序设置”下添加一个新项目，其名称等于 `WebPubSubConnectionString`，值为你的 Web PubSub 资源连接字符串。
 
 ## <a name="configure-the-web-pubsub-service-event-handler"></a>配置 Web PubSub 服务 `Event Handler`
 
@@ -409,10 +409,10 @@ Use the following commands to create these items.
 
 此处选择 `Microsoft` 作为标识提供者，它将在 `negotiate` 函数中使用 `x-ms-client-principal-name` 作为 `userId`。 此外，可以按照以下链接配置其他标识提供者，并且不要忘记相应地更新 `negotiate` 函数中的 `userId` 值。
 
-* [Microsoft(Azure AD)](/azure/app-service/configure-authentication-provider-aad)
-* [Facebook](/azure/app-service/configure-authentication-provider-facebook)
-* [Google](/azure/app-service/configure-authentication-provider-google)
-* [Twitter](/azure/app-service/configure-authentication-provider-twitter)
+* [Microsoft(Azure AD)](../app-service/configure-authentication-provider-aad.md)
+* [Facebook](../app-service/configure-authentication-provider-facebook.md)
+* [Google](../app-service/configure-authentication-provider-google.md)
+* [Twitter](../app-service/configure-authentication-provider-twitter.md)
 
 ## <a name="try-the-application"></a>尝试运行应用程序
 

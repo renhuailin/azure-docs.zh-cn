@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: 78e142fd97158fb64387950f9515ac168c216e5d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6b860e40acd118bc708ab00001707755272525b6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108664"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663604"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -268,7 +268,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 配置特定于 Python 函数应用。 将其设置为 `1` 后，工作线程能够加载 requirements.txt 中定义的 [Python工作线程扩展](functions-reference-python.md#python-worker-extensions)。 通过该扩展，函数应用能够访问第三方包提供的新功能。 它也可能改变函数在应用中加载和调用的行为。 请确保所选扩展可靠，因为你需要承担使用它所带来的风险。 Azure Functions 不提供针对任何扩展的明示保证。 有关如何使用扩展的详细说明，请访问相关扩展的手册页或自述文件。此值默认设置为 `0`。
 
-|键|值|说明|
+|密钥|值|说明|
 |---|-----|-----------|
 |PYTHON\_ENABLE\_WORKER\_EXTENSIONS|`0`| 禁用任何 Python 工作线程扩展。 |
 |PYTHON\_ENABLE\_WORKER\_EXTENSIONS|`1`| 允许 Python 工作线程从 requirements.txt 加载扩展。 |
@@ -335,7 +335,7 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 
 仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
 
-在部署期间使用 Azure 资源管理器模板创建函数应用时，请勿在该模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。
+在部署期间使用 Azure 资源管理器模板创建函数应用时，请勿在该模板中包括 WEBSITE_CONTENTSHARE。 此槽设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 

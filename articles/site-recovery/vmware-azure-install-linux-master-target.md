@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: b8264221db1fcfee8d47ac0d8f159d6b7a6140fe
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: d766903d6de975a10dfd29bdf367ac2831321e50
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577080"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777424"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -195,7 +195,12 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 #### <a name="download-the-master-target-installation-packages"></a>下载主目标安装包
 
-[下载最新的 Linux 主目标安装程序](https://aka.ms/latestlinuxmobsvc)。
+[下载](https://aka.ms/latestlinuxmobsvc)适用于 Ubuntu 20.04 的最新 Linux 主目标安装程序。
+
+[下载](https://aka.ms/oldlinuxmobsvc)适用于 Ubuntu 16.04 的旧版 Linux 主目标安装程序。
+
+> [!NOTE]
+> 建议使用最新的 Ubuntu 操作系统版本来设置主目标服务器。
 
 若要使用 Linux 下载该安装程序，请键入：
 

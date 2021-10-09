@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 05/11/2021
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 7bcaf46ef6860a9546179b86d6293d24c0064c0c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 3319d0e407c6661ee0727944035b315e77ea512f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751520"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626525"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>什么是 Azure Web 应用程序防火墙？
 
@@ -35,3 +35,4 @@ WAF 可以通过 Microsoft 的 Azure 应用程序网关、Azure Front Door 和 A
 - 有关应用程序网关上的 Web 应用程序防火墙的详细信息，请参阅 [Azure 应用程序网关上的 Web 应用程序防火墙](./ag/ag-overview.md)。
 - 有关 Azure Front Door 服务上的 Web 应用程序防火墙的详细信息，请参阅 [Azure Front Door 服务上的 Web 应用程序防火墙](./afds/afds-overview.md)。
 - 有关 Azure CDN 服务上的 Web 应用程序防火墙的详细信息，请参阅 [Azure CDN 服务上的 Web 应用程序防火墙](./cdn/cdn-overview.md)。
+- 若要了解有关 Web 应用程序防火墙的详细信息，请参阅[学习模块：Azure Web 应用程序防火墙简介](/learn/modules/introduction-azure-web-application-firewall/)。

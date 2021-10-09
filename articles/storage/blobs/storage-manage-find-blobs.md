@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: a03cf3039d996c79b3a6ada3394acae5e6459fa1
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: fa2284e03c8d69bacb40a2fe99d3c3cb10a73828
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470519"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154634"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>通过 Blob 索引标记管理和查找 Azure Blob 数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "123470519"
 
 - 根据索引标记的计算来指定 Blob API 的条件行为
 
-- 将索引标记用于功能上的高级控件（例如 [Blob 生命周期管理](storage-lifecycle-management-concepts.md)）
+- 将索引标记用于功能上的高级控件（例如 [Blob 生命周期管理](./lifecycle-management-overview.md)）
 
 思考这样一种场景：你的存储帐户中有数百万个 Blob，许多不同的应用程序对其进行访问。 你想要从单个项目中查找所有相关数据。 由于数据可分散在具有不同命名约定的多个容器中，因此你不确定哪些在查找范围内。 不过，你的应用程序会基于其项目上传包含标记的所有数据。 你可将 `Project = Contoso` 用作发现条件，而不是搜索数百万个 Blob，再对名称和属性进行比较。 Blob 索引会筛选你的整个存储帐户中的所有容器来快速查找，并且只从 `Project = Contoso` 范围一个包含 50 个 Blob 的集。
 
@@ -67,10 +67,7 @@ Blob 索引标记是可应用于存储帐户中的新对象或现有对象的键
 
 也可在 Blob 上应用多个标记，使数据更具描述性。
 
-> "Project" = 'Contoso'  
-> "Classified" = 'True'  
-> "Status" = 'Unprocessed'  
-> "Priority" = '01'
+> "Project" = 'Contoso' "Classified" = 'True' "Status" = 'Unprocessed' "Priority" = '01'
 
 若要修改现有索引标记属性，请检索现有标记属性，修改这些属性，然后通过[设置 Blob 标记](/rest/api/storageservices/set-blob-tags)操作替换它们。 若要从 Blob 中删除所有索引标记，请在未指定任何标记属性的情况下调用`Set Blob Tags`操作。 Blob 索引标记是 Blob 数据内容的子资源，因此`Set Blob Tags`不会修改任何基础内容，也不会更改 Blob 的上次修改时间或 eTag。 可以为所有当前基本 Blob 创建或修改索引标记。 索引标记也会为以前的版本保留，但不会传递给 Blob 索引引擎，因此无法通过查询索引标记来检索以前的版本。 无法修改快照或已软删除的 Blob 上的标记。
 
@@ -163,7 +160,7 @@ Blob 索引筛选需遵守以下条件：
 
 下表显示了条件操作的有效运算符：
 
-|  运算符  |  说明  | 示例 |
+|  运算符  |  描述  | 示例 |
 |------------|---------------|---------|
 |     =      |     等于     | `"Status" = 'In Progress'` |
 |     <>     |   不等于   | `"Status" <> 'Done'` |
@@ -179,7 +176,7 @@ Blob 索引筛选需遵守以下条件：
 
 ## <a name="platform-integrations-with-blob-index-tags"></a>带有 Blob 索引标记的平台集成
 
-Blob 索引标记不仅有助于对 Blob 数据进行分类、管理和搜索，还可提供与其他 Blob 存储功能（如[生命周期管理](storage-lifecycle-management-concepts.md)）的集成。
+Blob 索引标记不仅有助于对 Blob 数据进行分类、管理和搜索，还可提供与其他 Blob 存储功能（如[生命周期管理](./lifecycle-management-overview.md)）的集成。
 
 ### <a name="lifecycle-management"></a>生命周期管理
 
@@ -260,7 +257,7 @@ Blob 索引标记是 Blob 数据的子资源。 具有读取或写入 Blob 的�
 | [获取 Blob 标记](/rest/api/storageservices/get-blob-tags)           | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read     |
 | [按标记查找 Blob](/rest/api/storageservices/find-blobs-by-tags) | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 
-要执行索引标记操作，需具备与基础 Blob 数据分开的其他权限。 向[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)授予这三个 Blob 索引标记操作的权限。 向[存储 Blob 数据读取者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)仅授予`Find Blobs by Tags` 和`Get Blob Tags`操作的权限。
+要执行索引标记操作，需具备与基础 Blob 数据分开的其他权限。 向[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)授予这三个 Blob 索引标记操作的权限。 
 
 ### <a name="sas-permissions"></a>SAS 权限
 
@@ -293,7 +290,7 @@ Blob 索引标记是 Blob 数据的子资源。 具有读取或写入 Blob 的�
 |              |   Metadata   |   Blob 索引标记  |
 |--------------|--------------|--------------------|
 | **限制**      | 无数值限制，总共 8 KB，不区分大小写 | 每个 Blob 最多 10 个标记，每个标记 768 个字节，区分大小写 |
-| **更新**    | 不可用于存档层，`Set Blob Metadata`会替换所有现有元数据，`Set Blob Metadata`会更改 Blob 的上次修改时间 | 可用于存档层，`Set Blob Tags`会替换所有现有标记，但`Set Blob Tags`不更改 Blob 的上次修改时间 |
+| **更新**    | 不可用于存档层，`Set Blob Metadata` 会替换所有现有元数据，`Set Blob Metadata` 会更改 Blob 的上次修改时间 | 可用于存档层，`Set Blob Tags` 会替换所有现有标记，但 `Set Blob Tags` 不更改 Blob 的上次修改时间 |
 | **存储**     | 与 Blob 数据存储在一起 | Blob 数据的子资源 |
 | **索引和查询** | 必须使用单独的服务，例如 Azure 搜索 | 索引和查询功能内置于 Blob 存储中 |
 | **加密** | 使用 Blob 数据所用的加密密钥进行静态加密 | 使用 Microsoft 管理的加密密钥进行静态加密 |
@@ -310,11 +307,11 @@ Blob 索引标记是 Blob 数据的子资源。 具有读取或写入 Blob 的�
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
 | 高级块 blob          | ![否](../media/icons/no-icon.png)|![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
@@ -327,7 +324,7 @@ Blob 索引标记是 Blob 数据的子资源。 具有读取或写入 Blob 的�
 
 - 上传带有索引标记的页 blob 不会保留标记。 请在上传页 blob 后设置标记。
 
-- 如果启用了 Blob 存储版本控制，仍可在当前版本上使用索引标记。 索引标记也会为以前的版本保留，但这些标记不会传递给 Blob 索引引擎，因此无法使用它们来检索以前的版本。 如果将以前的版本升级为当前版本，则该先前版本的标记将成为当前版本的标记。 由于这些标记与当前版本相关联，因此会传递到 Blob 索引引擎，你可以查询它们。 
+- 如果启用了 Blob 存储版本控制，仍可在当前版本上使用索引标记。 索引标记也会为以前的版本保留，但这些标记不会传递给 Blob 索引引擎，因此无法使用它们来检索以前的版本。 如果将以前的版本升级为当前版本，则该先前版本的标记将成为当前版本的标记。 由于这些标记与当前版本相关联，因此会传递到 Blob 索引引擎，你可以查询它们。
 
 - 没有 API 用于确定索引标记是否已索引。
 
@@ -353,4 +350,4 @@ Blob 索引标记仅支持字符串数据类型，且查询按字典顺序返回
 
 有关如何使用 Blob 索引的示例，请参阅[使用 Blob 索引管理和查找数据](storage-blob-index-how-to.md)。
 
-了解[生命周期管理](storage-lifecycle-management-concepts.md)和设置带有 Blob 索引匹配的规则。
+了解[生命周期管理](./lifecycle-management-overview.md)和设置带有 Blob 索引匹配的规则。

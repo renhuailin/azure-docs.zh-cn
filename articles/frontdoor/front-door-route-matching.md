@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aaabce5dc13098d183ee595d27b5b45a3fd0caa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449207"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586281"
 ---
 # <a name="how-requests-are-matched-to-a-routing-rule"></a>请求如何与传递规则匹配
 
@@ -29,7 +29,7 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 以下属性确定传入的请求是否与传递规则（或左侧）匹配：
 
 * HTTP 协议 (HTTP/HTTPS)
-* 主机（例如，www\.foo.com、\*.bar.com）
+* 主机（例如 www\.foo.com、\*.bar.com）
 * 路径（例如，/\*、/users/\*/file.gif）
 
 这些属性会在内部扩展，因此协议/主机/路径的每种组合都是潜在的匹配集。
@@ -69,8 +69,8 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 ### <a name="path-matching"></a>路径匹配
 确定特定前端主机并将可能的传递规则过筛选到仅具有该前端主机的路由后，Front Door 会根据请求路径筛选传递规则。 使用与前端主机类似的逻辑：
 
-1. 在路径上查找具有完全匹配项的任何传递规则
-2. 如果没有完全匹配的路径，请查找具有匹配的通配符路径的传递规则
+1. 在路径上查找具有完全匹配项的任何传递规则。
+2. 如果没有完全匹配的路径，请查找具有匹配的通配符路径的传递规则。
 3. 如果找不到具有匹配路径的传递规则，则拒绝该请求并返回“400：错误请求”错误 HTTP 应答。
 
 >[!NOTE]
@@ -123,7 +123,8 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 > | profile.domain.com/other | 无。 错误 400：错误请求 |
 
 ### <a name="routing-decision"></a>路由决策
-匹配了单个 Front Door 路由规则之后，就需要选择如何处理请求。 对于匹配的传递规则，如果 Front Door 具有可用的缓存应答，则将相同的服务返回给客户端。 否则，下一步就需要评估是否为匹配的传递规则配置了 [URL 重写（自定义转发路径）](front-door-url-rewrite.md)。 如果未定义自定义转发路径，则请求将按原样转发到配置的后端池中的相应后端。 另外，系统会按照定义的[自定义转发路径](front-door-url-rewrite.md)更新请求路径，然后将其转发到后端。
+
+匹配了单个 Front Door 路由规则后，请选择如何处理请求。 如果 Front Door 有可用于匹配路由规则的缓存响应，则该缓存响应将返回给客户端。 如果 Front Door 没有匹配路由规则的缓存响应，接下来评估的是你是否已为匹配的路由规则配置了 [URL wewrite（一种自定义转发路径）](front-door-url-rewrite.md)。 如果未定义自定义转发路径，则请求将按原样转发到配置的后端池中的相应后端。 如果定义了自定义转发路径，则会根据定义的[自定义转发路径](front-door-url-rewrite.md)更新请求路径，然后转发到后端。
 
 ## <a name="next-steps"></a>后续步骤
 

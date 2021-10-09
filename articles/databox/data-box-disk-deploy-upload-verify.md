@@ -1,7 +1,6 @@
 ---
-title: 教程：验证从 Azure Data Box Disk 上传到存储帐户的数据 | Microsoft Docs
+title: 教程：验证从 Azure Data Box Disk 上传到存储帐户的数据
 description: 使用本教程来了解如何验证从 Azure Data Box Disk 上传到 Azure 存储帐户的数据。
-services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.localizationpriority: high
 ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53e2db3728d92a862fce64ba1fc379a2ae2205ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322727"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591627"
 ---
 ::: zone target="docs"
 
@@ -85,11 +84,11 @@ ms.locfileid: "91322727"
 
 - Azure 存储帐户。 将数据复制到 Data Box 时，会根据类型将数据将上传到 Azure 存储帐户中的以下路径之一。
 
-    - **对于块 blob 和页 blob**： https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
+    - 对于块 Blob 和页 Blob：`https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
 
-    - **对于 Azure 文件存储**： https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
+    - 对于 Azure 文件：`https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
-- 托管磁盘资源组。 创建托管磁盘时，会将 VHD 作为页 Blob 上传，然后将其转换为托管磁盘。 托管磁盘会附加到在创建排序时指定的资源组上。
+- 托管磁盘资源组。 创建托管磁盘时，VHD 作为页 blob 进行上传，然后转换为托管磁盘。 托管磁盘会附加到在创建排序时指定的资源组上。
 
 ::: zone-end
 

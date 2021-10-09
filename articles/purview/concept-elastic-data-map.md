@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 80706316490cde805ef19b0f1c90f2870dc195ab
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 00b6429e14dcb04a76abbc1a8d49a29b220c7c06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445789"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607059"
 ---
 # <a name="elastic-data-map-in-azure-purview"></a>Azure Purview 中的弹性数据映射
 
@@ -21,7 +21,7 @@ Azure Purview 数据映射为数据发现和数据治理奠定了基础。 它�
 
 ## <a name="elastic-data-map"></a>弹性数据映射
 
-所有 Azure Purview 帐户都有一个可弹性增长的数据映射，其起始大小为一个容量单位。 弹性数据映射根据弹性窗口中的请求负载进行纵向扩展和缩减（[查看当前限制](how-to-manage-quotas.md)）。 如果你正在使用极大的数据集或大规模的环境，因而需要更大的容量，可以通过填写[此调查表](https://aka.ms/PurviewProdSurvey)来请求增大弹性窗口的容量。
+所有 Azure Purview 帐户都有一个可弹性增长的数据映射，其起始大小为一个容量单位。 弹性数据映射根据弹性窗口中的请求负载进行纵向扩展和缩减（[查看当前限制](how-to-manage-quotas.md)）。 这些限制应涵盖大多数数据环境。 但是，如果需要更大的容量，[可以创建支持票证](#request-capacity)。
 
 ## <a name="data-map-capacity-unit"></a>数据映射容量单位
 
@@ -47,8 +47,6 @@ Azure Purview 数据映射为数据发现和数据治理奠定了基础。 它�
 - 可自动缩放的弹性数据映射 – 数据映射的大小最初只是一个容量单位，但可根据负载自动缩放。 对于大多数组织而言，此功能可以实现更大的节省，同时还能以较低的价格启动数据治理项目。 此功能会影响定价。
 
 - 增强的扫描和引入 – 可以通过扫描和引入过程来跟踪和控制数据资产、分类与世系的数量分布。 此功能会影响定价。
-
-- 高级资源集 – 可以通过处理数据湖中的分区文件以使其被视为单个数据资产（称为[资源集](concept-resource-sets.md)），来减少数据映射的大小。 这是一项可选功能，它会影响定价。
 
 ## <a name="scenario"></a>方案
 
@@ -110,7 +108,17 @@ Claudia 可以创建一个 Purview 帐户，其默认数据映射大小为 1 个
 >[!Important]
 >Purview 数据映射可以在弹性窗口内自动纵向扩展和缩减（[查看当前限制](how-to-manage-quotas.md)）。 若要获取下一个级别的弹性窗口，需要创建支持票证。
 
-## <a name="summary"></a>“摘要”
+## <a name="request-capacity"></a>请求容量
+
+如果你正在使用极大的数据集或大规模的环境，因而需要更大的容量来实现弹性数据映射，可以通过[创建支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)来请求增大弹性窗口的容量。
+
+选择“服务和订阅限制(配额)”，并通过选择要为其请求更大容量的 Purview 帐户来完成屏幕上的说明。
+
+:::image type="content" source="./media/concept-elastic-data-map/increase-limit.png" alt-text="显示支持案例创建的屏幕，其中选择了“增加限制”选项。":::
+
+在说明中，尽可能多地提供有关你的环境的信息，以及你希望请求的额外容量。
+
+## <a name="summary"></a>总结
 
 Purview 通过弹性数据映射为客户提供低成本的解决方案，让客户不受阻碍地开启数据治理历程。
 Purview 数据映射可以从低至 1 个容量单位的大小开始按照即用即付模式弹性增长。

@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a02624f4e5cf3ebbcd2f476372707f58c1d99f69
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73468556"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664060"
 ---
 # <a name="azure-data-share-concepts"></a>Azure Data Share 概念 
 
@@ -27,7 +27,7 @@ Azure Data Share 引入了一些与数据共享有关的新术语。 本文介�
 
 ## <a name="data-share"></a>Data Share
 
-数据共享是作为单个实体共享的一组数据集。 数据集可来自 Azure Data Share 支持的多个 Azure 数据源。 目前，Azure Data Share 支持 Azure Blob 存储和 Azure Data Lake Store。 
+数据共享是作为单个实体共享的一组数据集。 数据集可来自 Azure Data Share 支持的多个 Azure 数据源。 目前，Azure 数据共享[支持数据存储](supported-data-stores.md#supported-data-stores)。 
 
 ## <a name="share-subscription"></a>共享订阅 
 

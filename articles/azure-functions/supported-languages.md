@@ -3,27 +3,22 @@ title: Azure Functions 中支持的语言
 description: 了解支持哪些语言 (GA)，哪些是预览语言，以及将 Functions 开发扩展到其他语言的方法。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 02a416fa669cd71702e991c79677575bd4563bfb
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: d0db327a1f5b4189f9715687e3efa8fbe5b668db
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113493220"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599922"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言
 
 本文介绍为可用于 Azure Functions 的语言提供的支持级别。 它还介绍了使用不受本机支持的语言创建函数时可使用的策略。
 
-## <a name="levels-of-support"></a>支持级别
-
-有两个级别的支持：
-
-* **正式发布 (GA)** - 完全支持并获得批准在生产中使用。
-* **预览** - 尚不支持，但将来应达到 GA 状态。
+[!INCLUDE [functions-support-levels](../../includes/functions-support-levels.md)]
 
 ## <a name="languages-by-runtime-version"></a>按运行时版本列出的语言 
 
-[三个版本的 Azure Functions 运行时](functions-versions.md)都可用。 下表显示每个运行时版本支持的语言。
+[几个版本的 Azure Functions 运行时](functions-versions.md)都可用。 下表显示每个运行时版本支持的语言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 

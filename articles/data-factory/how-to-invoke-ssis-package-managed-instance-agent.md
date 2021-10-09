@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lrtoyou1223
 ms.date: 04/14/2020
-ms.openlocfilehash: 4bcce019e5b659f7af4056e861631a7a6ed31efb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b16cc04837fef57d5510d9c34be94f76dd87033d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733026"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730758"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>使用 Azure SQL 托管实例代理运行 SSIS 包
 
@@ -36,17 +36,17 @@ ms.locfileid: "121733026"
 1. 在最新版 SSMS 中，连接到 SQL 托管实例。
 1. 创建新的代理作业和新的作业步骤。 在“SQL Server 代理”下，右键单击“作业”文件夹，然后选择“新建作业”  。
 
-   ![用于创建新代理作业的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="用于创建新代理作业的选项":::
 
 1. 在“新建作业步骤”页上，选择“SQL Server Integration Services 包”作为类型 。
 
-   ![用于创建新 SSIS 作业步骤的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="用于创建新 SSIS 作业步骤的选项":::
 
 1. 在“包”选项卡上，选择“SSIS 目录”作为包位置 。
 1. 由于 SSISDB 位于 SQL 托管实例中，因此不需要指定身份验证。
 1. 指定 SSISDB 中的某个 SSIS 包。
 
-   ![“包”选项卡，其中包含包源类型选项](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png" alt-text="“包”选项卡，其中包含包源类型选项":::
 
 1. 在“配置”选项卡上，可执行以下操作：
   
@@ -54,7 +54,7 @@ ms.locfileid: "121733026"
    - 替代“连接管理器”下的值。
    - 替代该属性，然后在“高级”下选择日志记录级别。
 
-   ![“配置”选项卡，其中包含包源类型选项](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png" alt-text="“配置”选项卡，其中包含包源类型选项":::
 
 1. 选择“确定”以保存代理作业配置。
 1. 启动代理作业以运行 SSIS 包。
@@ -66,11 +66,11 @@ ms.locfileid: "121733026"
 1. 在最新版 SSMS 中，连接到 SQL 托管实例。
 1. 创建新的代理作业和新的作业步骤。 在“SQL Server 代理”下，右键单击“作业”文件夹，然后选择“新建作业”  。
 
-   ![用于创建新代理作业的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="用于创建新代理作业的选项":::
 
 1. 在“新建作业步骤”页上，选择“SQL Server Integration Services 包”作为类型 。
 
-   ![用于创建新 SSIS 作业步骤的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="用于创建新 SSIS 作业步骤的选项":::
 
 1. 在“包”选项卡上：
 
@@ -80,7 +80,7 @@ ms.locfileid: "121733026"
 
       - 如果包是上传到 Azure 文件存储，请选择“Azure 文件共享”。
 
-        ![文件源类型的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
+        :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png" alt-text="文件源类型的选项":::
 
         包路径为 `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`。
 
@@ -111,11 +111,11 @@ ms.locfileid: "121733026"
 1. 在最新版 SSMS 中，连接到 SQL 托管实例。
 1. 创建新的代理作业和新的作业步骤。 在“SQL Server 代理”下，右键单击“作业”文件夹，然后选择“新建作业”  。
 
-   ![用于创建新代理作业的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="用于创建新代理作业的选项":::
 
 1. 在“新建作业步骤”页上，选择“SQL Server Integration Services 包”作为类型 。
 
-   ![用于创建新 SSIS 作业步骤的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="用于创建新 SSIS 作业步骤的选项":::
 
 1. 在“包”选项卡上：
 
@@ -125,7 +125,7 @@ ms.locfileid: "121733026"
 
       包路径为 `<package store name>\<folder name>\<package name>`。
 
-      ![包存储类型的选项](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-package-store.png)
+      :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-package-store.png" alt-text="包存储类型的选项":::
 
    1. 如果包文件是使用密码加密的，请选择“加密密码”并输入密码。
 1. 在“配置”选项卡中，如果需要通过配置文件来运行 SSIS 包，请输入配置文件路径。
@@ -152,7 +152,7 @@ ms.locfileid: "121733026"
    如果 SSIS 包位于 SSISDB 中，则使用 ssisdb.internal.execution_parameter_values 作为作业执行表。 如果 SSIS 包位于文件系统中，则使用 ssisdb.internal.execution_parameter_values_noncatalog。
 1. 右键单击 SSISDB 目录，然后选择“活动操作”。
 
-   ![SSISDB 目录的快捷菜单上的“活动操作”](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png" alt-text="SSISDB 目录的快捷菜单上的“活动操作”":::&quot;&quot;
 
 1. 基于 executionId 停止相应的操作。
 

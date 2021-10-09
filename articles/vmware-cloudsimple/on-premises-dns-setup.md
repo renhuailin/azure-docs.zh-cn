@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f7537790c22bf09da89cd02ba213b1573f19d9c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a14d99a81aaad48c8daf0c0bf0d49b3a7e229f3d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177415"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600278"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>为从本地工作站访问私有云 vCenter 的名称解析，配置 DNS。
 
@@ -43,7 +43,7 @@ ms.locfileid: "108177415"
 
 要配置的特定文件和参数可能因单独的 DNS 设置而异。
 
-例如，对于默认的 BIND 服务器配置，请在 DNS 服务器上编辑/etc/named.conf 文件并添加以下区域信息。
+例如，对于默认的 BIND 服务器配置，请在 DNS 服务器上编辑 `/etc/named.conf` 文件并添加以下区域信息。
 
 > [!NOTE]
 >本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。

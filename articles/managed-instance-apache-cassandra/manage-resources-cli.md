@@ -1,17 +1,19 @@
 ---
-title: 使用 Azure CLI 管理 Azure Managed Instance for Apache Cassandra 资源
+title: 使用 Azure CLI 管理资源 - Azure 资源管理器 | Microsoft Docs
 description: 了解使用 Azure CLI 自动管理 Azure Managed Instance for Apache Cassandra 的常用命令。
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/17/2021
 ms.author: thvankra
-ms.openlocfilehash: ee35faf70066ece0f1c799b7d04317a8cd28729d
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: azure resource manager cli
+ms.openlocfilehash: 72cada375a6c88f5a3401acb77f0a982d231d0a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517201"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663718"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>使用 Azure CLI 管理 Azure Managed Instance for Apache Cassandra 资源（预览版）
 
@@ -120,7 +122,7 @@ az managed-cassandra cluster list\
 
 ```azurecli-interactive
 # set your subscription id
-az account set -s <subscription id>
+az account set -s <subscriptionID>
 
 az managed-cassandra cluster list
 ```
@@ -136,7 +138,6 @@ az managed-cassandra cluster list
 * [更新或缩放数据中心](#update-datacenter)
 * [更新 Cassandra 配置](#update-yaml)
 
-
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>创建数据中心
 
 通过使用 [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_create) 命令来创建数据中心：
@@ -146,7 +147,7 @@ resourceGroupName='MyResourceGroup'
 clusterName='cassandra-hybrid-cluster'
 dataCenterName='dc1'
 dataCenterLocation='eastus2'
-delegatedSubnetId='/subscriptions/<Subscription_ID>/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/dc1-subnet'
+delegatedSubnetId='/subscriptions/<SubscriptionID>/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/dc1-subnet'
 
 az managed-cassandra datacenter create \
     --resource-group $resourceGroupName \

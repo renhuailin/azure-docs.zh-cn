@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: e884869b77398ab32987363bb85367d46a958380
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 738c60663f80fd036f50c7bd354ca0e3b1d9284e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638383"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757813"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -40,7 +40,7 @@ ms.locfileid: "122638383"
 ## <a name="overview"></a>概述
 下面是高级解决方案示意图：
 
-![以增量方式加载数据](media/tutorial-Incremental-copy-portal/incrementally-load.png)
+:::image type="content" source="media/tutorial-Incremental-copy-portal/incrementally-load.png" alt-text="以增量方式加载数据":::
 
 下面是创建此解决方案所要执行的重要步骤：
 
@@ -151,7 +151,7 @@ END
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 2. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ：
 
-   ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="在“新建”窗格中选择“数据工厂”":::
 
 3. 在“新建数据工厂”页中，输入 ADFIncCopyTutorialDF 作为 **名称**。
 
@@ -179,12 +179,12 @@ END
 
 1. 在数据工厂 UI 的主页上，单击“协调”磁贴。
 
-   ![此屏幕截图显示了数据工厂 UI 的主页。](./media/doc-common-process/get-started-page.png)    
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="此屏幕截图显示了数据工厂 UI 的主页。":::    
 3. 在“常规”面板的“属性”中，将名称指定为 IncrementalCopyPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
 
 4. 请添加第一个查找活动，获取旧水印值。 在“活动”工具箱中展开“常规”， 将 **查找** 活动拖放到管道设计器图面。 将活动的名称更改为 **LookupOldWaterMarkActivity**。
 
-   ![第一个查找活动 - 名称](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-portal/first-lookup-name.png" alt-text="第一个查找活动 - 名称":::
 5. 切换到“设置”选项卡，针对“源数据集”单击“+ 新建”。 在此步骤中，请创建一个代表 **watermarktable** 中数据的数据集。 此表包含在前一复制操作中使用过的旧水印。
 
 6. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。   此时可以看到为数据集打开了一个新窗口。
@@ -201,11 +201,11 @@ END
     6. 单击“完成”。
     7. 对于“链接服务”，确认选择了“AzureSqlDatabaseLinkedService”。
 
-        ![“新建链接服务”窗口](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png" alt-text="“新建链接服务”窗口":::
     8. 选择“完成”。
 9. 在“连接”选项卡中，对于“表”，选择“[dbo].[watermarktable]”。 若要预览表中的数据，请单击“预览数据”。
 
-    ![水印数据集 - 连接设置](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png" alt-text="水印数据集 - 连接设置":::
 10. 通过单击顶部的管道选项卡，或者单击左侧树状视图中管道的名称，切换到管道编辑器。 在 **查找** 活动的属性窗口中，确认对于“源数据集”字段，是否已选择 **WatermarkDataset**。
 
 11. 在“活动”工具箱中展开“常规”， 将另一 **查找** 活动拖放到管道设计器图面，然后在属性窗口的“常规”选项卡中将名称设置为 **LookupNewWaterMarkActivity**。 此“查找”活动从特定表获取新的水印值，该表包含的源数据可以复制到目标。
@@ -223,12 +223,12 @@ END
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
     ```
 
-    ![第二个查找活动 - 查询](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/query-for-new-watermark.png" alt-text="第二个查找活动 - 查询":::
 19. 在“活动”工具箱中，展开“移动和转换”，然后从“活动”工具箱拖放“复制”活动，并将名称设置为“IncrementalCopyActivity”。
 
 20. 通过将附加到“查找”活动的 **绿色按钮** 拖至“复制”活动，**将两个“查找”活动都连接到“复制”活动**。 看到“复制”活动的边框颜色变为蓝色时，松开鼠标按键。
 
-    ![将“查找”活动连接到“复制”活动](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png" alt-text="将“查找”活动连接到“复制”活动":::
 21. 选择 **“复制”活动**，确认在“属性”窗口看到活动的属性。
 
 22. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤：
@@ -241,7 +241,7 @@ END
         select * from data_source_table where LastModifytime > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and LastModifytime <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'
         ```
 
-        ![“复制”活动 - 源](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/copy-activity-source.png" alt-text="“复制”活动 - 源":::
 23. 切换到“接收器”选项卡。对于“接收器数据集”字段，请单击“+ 新建”。
 
 24. 在本教程中，接收器数据存储属于“Azure Blob 存储”类型。 因此，请在“新建数据集”窗口中选择“Azure Blob 存储”，然后单击“继续”。
@@ -273,9 +273,9 @@ END
         | 名称 | 类型 | 值 |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | TableName | 字符串 | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-        ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png" alt-text="存储过程活动 - 存储过程设置":::
 27. 若要验证管道设置，请单击工具栏中的“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”窗口，请单击 >>。   
 
 28. 选择“全部发布”按钮，将实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 等待“发布成功”消息出现。
@@ -296,7 +296,7 @@ END
 ## <a name="review-the-results"></a>查看结果
 1. 使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)之类的工具连接到 Azure 存储帐户。 验证 **adftutorial** 容器的 **incrementalcopy** 文件夹中是否创建了一个输出文件。
 
-    ![第一个输出文件](./media/tutorial-incremental-copy-portal/first-output-file.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/first-output-file.png" alt-text="第一个输出文件":::
 2. 打开输出文件，请注意，所有数据已从 **data_source_table** 复制到 Blob 文件。
 
     ```

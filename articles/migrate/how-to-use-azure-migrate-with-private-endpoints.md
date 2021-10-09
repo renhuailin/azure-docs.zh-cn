@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 10f46f5788cd2f17be4b46c2f655fb4e05fed1d9
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: efe9f6ce21e59df3d7f8009b7ff540a77b4cc50a
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965939"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094493"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>使用结合专用终结点的 Azure Migrate
 
@@ -27,7 +27,7 @@ ms.locfileid: "122965939"
 
 ### <a name="supported-geographies"></a>支持的地理区域
 
-此功能现已在所有[公有云区域](./migrate-support-matrix.md#supported-geographies-public-cloud)中处于预览阶段。
+该功能现已在受支持的[公有云](/azure/migrate/migrate-support-matrix#supported-geographies-public-cloud)和[政府云地理区域](/azure/migrate-support-matrix#supported-geographies-azure-government)中提供预览版。
 
 ### <a name="required-permissions"></a>所需的权限
 
@@ -121,7 +121,7 @@ ms.locfileid: "122965939"
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2160648) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2160648) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 > [!NOTE]
 > 可使用相同的脚本针对任何所选的场景（如 VMware、Hyper-V、物理或其他场景）设置具有专用终结点连接的设备，以部署具有所需配置的设备。
@@ -131,16 +131,18 @@ ms.locfileid: "122965939"
 #### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
-2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
-3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
-4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+
+3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+
+4. 通过运行以下命令，运行名为“`AzureMigrateInstaller.ps1`”的脚本：
+
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. 从场景、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 公有云上已建立专用终结点连接的 Azure Migrate 项目中，设置一个设备用于发现和评估 VMware 环境中运行的服务器  。
 
-    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-inline.png" alt-text="显示如何为专用终结点设置具有所需配置的设备的屏幕截图。" lightbox="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-expanded.png":::
+   :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-inline.png" alt-text="显示如何为专用终结点设置具有所需配置的设备的屏幕截图。" lightbox="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-expanded.png":::
 
 成功执行该脚本后，将自动启动设备配置管理器。
 
@@ -302,7 +304,7 @@ Azure 资源管理器的角色权限根据存储帐户的类型而有所不同�
 
 接下来，按照这些说明[查看和启动复制](./tutorial-migrate-physical-virtual-machines.md#replicate-machines)并[执行迁移](./tutorial-migrate-physical-virtual-machines.md#run-a-test-migration)。
 
-
 ## <a name="next-steps"></a>后续步骤
+
 - 完成[迁移过程](./tutorial-migrate-physical-virtual-machines.md#complete-the-migration)。
 - 查看[迁移后的最佳做法](./tutorial-migrate-physical-virtual-machines.md#post-migration-best-practices)。

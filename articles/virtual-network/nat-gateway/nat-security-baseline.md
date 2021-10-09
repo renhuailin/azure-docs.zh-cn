@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 862c21e162ce43e6d7de6aa6485b01925edbe465
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5edab35023afeca68cff20a82307afaf4bbad535
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114288190"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784235"
 ---
 # <a name="azure-security-baseline-for-virtual-network-nat"></a>虚拟网络 NAT 的 Azure 安全基线
 
@@ -28,9 +28,9 @@ ms.locfileid: "114288190"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：监视和记录虚拟网络、子网和 NIC 的配置与流量
 
-**指导**：虚拟网络 NAT 不支持使用网络安全组 (NSG) 控制出站流量。  仅允许入站流量响应出站源流。
+指导：虚拟网络 NAT 支持使用网络安全组 (NSG) 控制出站流量。  仅允许入站流量响应出站源流。
 
-但是，网络安全组 (NSG) 流日志可与 NAT 网关资源一起使用，以监视出站源流量。
+网络安全组 (NSG) 流日志还可与 NAT 网关资源一起使用，以监视出站源流量。
 
 使用 Azure 安全中心并遵循网络保护建议来帮助保护 Azure 网络资源。 启用网络安全组流日志，并将日志发送到 Azure 存储帐户进行审核。 你还可以将流日志发送到 Log Analytics 工作区，然后使用流量分析来提供有关 Azure 云中流量模式的见解。 流量分析的优势包括能够可视化网络活动、识别热点和安全威胁、了解通信流模式，以及查明网络不当配置。 
 

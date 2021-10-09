@@ -1,17 +1,17 @@
 ---
 title: 为具有预留容量的计算资源预付费用 - Azure Cache for Redis
 description: 为具有预留容量的 Azure Cache for Redis 计算资源预付费用
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: d9fcb8567d9f7593a059567df6edc279b6fa701c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ce88d3e6916a2b8a802fe390ac256e00dfc29aec
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782938"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537646"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>为具有预留容量的 Azure Cache for Redis 计算资源预付费用
 
@@ -53,7 +53,7 @@ ms.locfileid: "110782938"
 | 字段 | 说明 |
 | :------------ | :------- |
 | 订阅   | 用于支付 Azure Cache for Redis 预留容量预订费用的订阅。 订阅付款方式是收取 Azure Cache for Redis 预留容量的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将按订阅上的信用卡或发票付款方式收取费用。
-| 范围 | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： </br></br> 共享，预留折扣将应用到计费上下文内任何订阅中运行的 Azure Cache for Redis 实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> 单个订阅，预留折扣将应用到此订阅中的 Azure Cache for Redis 实例。 </br></br> 单个资源组，预留折扣将应用到所选订阅中的 Azure Cache for Redis 实例，以及该订阅内的所选资源组。
+| 范围 | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： </br></br> 共享，预留折扣将应用到计费上下文内任何订阅中运行的 Azure Cache for Redis 实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> 单个订阅，预留折扣将应用到此订阅中的 Azure Cache for Redis 实例。 </br></br> 单个资源组，预留折扣将应用到所选订阅中的 Azure Cache for Redis 实例，以及该订阅内的所选资源组。</br></br>管理组，将预留折扣应用于同时属于管理组和计费范围的订阅列表中的匹配资源。
 | 区域 | 预订的 Azure Cache for Redis 预留容量涵盖的 Azure 区域。
 | 定价层 | Azure Cache for Redis 服务器的服务层级。
 | 术语 | 一年或三年

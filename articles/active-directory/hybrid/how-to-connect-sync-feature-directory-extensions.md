@@ -16,12 +16,12 @@ ms.date: 08/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2415ad3109863a9cd80df413723b317e880a7063
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3ab5eba7cebe03ff59cfa442c454da855788ebad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751619"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768603"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
 通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](/graph/extensibility-overview
@@ -47,9 +47,8 @@ ms.locfileid: "121751619"
 * 单值属性：String、Boolean、Integer、Binary
 * 多值属性：String、Binary
 
-
->[!NOTE]
-> Azure AD Connect 将多值 Active Directory 属性作为多值属性扩展同步到 Azure AD 后，可以将该属性包含到 SAML 声明。 但无法通过 API 调用来使用此数据。
+> [!NOTE]
+> 并非 Azure Active Directory 中的所有功能都支持多值扩展属性。 请参阅你计划使用这些属性确认它们受支持的功能文档。
 
 属性列表是从安装 Azure AD Connect 期间创建的架构缓存中读取的。 如果已使用附加属性扩展了 Active Directory 架构，则必须[刷新架构](how-to-connect-installation-wizard.md#refresh-directory-schema)，然后这些新属性才可见。
 

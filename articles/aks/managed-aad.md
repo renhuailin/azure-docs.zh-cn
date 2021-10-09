@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 7a5bea7e555bf4f388a06668b2e349045692a941
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: a4739276cd05ffae6015fb2464e464d0a9f15955
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123106621"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272041"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
@@ -394,6 +394,15 @@ aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
 aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
 aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 ```
+### <a name="apply-just-in-time-access-at-the-namespace-level"></a>在命名空间级别应用即时访问
+
+1. 将 AKS 群集与 [Azure RBAC](manage-azure-rbac.md) 集成。
+2. 通过角色分配将要与即时访问集成的组与群集中的命名空间相关联。
+
+```azurecli-interactive
+az role assignment create --role "Azure Kubernetes Service RBAC Reader" --assignee <AAD-ENTITY-ID> --scope $AKS_ID/namespaces/<namespace-name>
+```
+3. 将刚刚在命名空间级别配置的组与 PIM 关联以完成配置。
 
 ### <a name="troubleshooting"></a>疑难解答
 

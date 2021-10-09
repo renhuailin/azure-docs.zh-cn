@@ -1,25 +1,25 @@
 ---
 title: 从 Oracle Eloqua 复制数据（预览版）
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从 Oracle Eloqua 复制到支持的接收器数据存储。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle Eloqua 复制到支持的接收器数据存储。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 7bc1dc9d1b7eb11f5db09f8095015c97cbd691f0
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: e987244624939a5582523317b732527d99d5a2e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311815"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831680"
 ---
-# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Oracle Eloqua 复制数据（预览版）
+# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-or-synapse-analytics-preview"></a>使用 Azure 数据工厂或 Synapse Analytics 从 Oracle Eloqua 复制数据（预览版）
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle Eloqua 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂或 Synapse Analytics 管道中的复制活动从 Oracle Eloqua 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
 > 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
@@ -33,7 +33,7 @@ ms.locfileid: "123311815"
 
 可以将数据从 Oracle Eloqua 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
+该服务提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
 
@@ -47,7 +47,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -75,7 +75,7 @@ Oracle Eloqua 链接服务支持以下属性：
 | type | type 属性必须设置为：Eloqua  | 是 |
 | endpoint | Eloqua 服务器的终结点。 Eloqua 支持多个数据中心，用于确定终结点、使用凭据登录 https://login.eloqua.com ，然后通过 `xxx.xxx.eloqua.com` 模式从重定向 URL 复制“基 URL”  部分。 | 是 |
 | username | Eloqua 帐户的站点名称和用户名采用以下格式：`SiteName\Username`，例如 `Eloqua\Alice`。  | 是 |
-| password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
@@ -172,10 +172,10 @@ Oracle Eloqua 链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂支持的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关服务中支持的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

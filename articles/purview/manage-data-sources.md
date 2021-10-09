@@ -1,36 +1,36 @@
 ---
-title: 在 Azure Purview（预览版）中管理数据源
-description: 了解如何在 Azure Purview（预览版）中注册新数据源、管理数据源的集合以及查看源。
+title: 如何管理多云数据源
+description: 了解如何在 Azure Purview 中注册新数据源、管理数据源的集合以及查看源。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 11/25/2020
-ms.openlocfilehash: c1e60ae792921ef4e218918f093001ee9947975d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: c7ef1849859dca48f5d2489f2ac8668c3cd0fc31
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724267"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215110"
 ---
-# <a name="manage-data-sources-in-azure-purview-preview"></a>在 Azure Purview（预览版）中管理数据源
+# <a name="manage-data-sources-in-azure-purview"></a>在 Azure Purview 中管理数据源
 
-本文介绍如何在 Azure Purview（预览版）中注册新数据源、管理数据源的集合以及查看源
+本文介绍如何在 Azure Purview 中注册新数据源、管理数据源的集合以及查看源。
 
 ## <a name="register-a-new-source"></a>注册新源
 
 请使用以下步骤注册新源。
 
-1. 打开 Purview Studio，选择“注册源”磁贴。
+1. 打开 [Purview Studio](https://web.purview.azure.com/resource/)，导航到“数据映射”、“源”，然后选择“注册”。  
 
    :::image type="content" source="media/manage-data-sources/purview-studio.png" alt-text="Azure Purview Studio":::
 
-1. 选择“注册”，然后选择源类型。 本示例使用 Azure Blob 存储。 选择“继续”。
+1. 选择源类型。 本示例使用 Azure Blob 存储。 选择“继续”。
 
    :::image type="content" source="media/manage-data-sources/select-source-type.png" alt-text="在“注册源”页中选择数据源类型":::
 
-2. 在“注册源”页上填写表单。 为源选择一个名称，并输入相关信息。 如果选择“从 Azure 订阅”作为帐户选择方法，随即会以下拉列表的形式显示订阅中的源。 
+2. 在“注册源”页上填写表单。 为源选择一个名称，并输入相关信息。 如果选择“从 Azure 订阅”作为帐户选择方法，随即会以下拉列表的形式显示订阅中的源。
 
    :::image type="content" source="media/manage-data-sources/register-sources-form.png" alt-text="数据源信息表单":::
 
@@ -46,9 +46,9 @@ ms.locfileid: "121724267"
 
 :::image type="content" source="media/manage-data-sources/map-view.png" alt-text="Azure Purview 数据源地图视图":::
 
-### <a name="list-view"></a>列表视图
+### <a name="table-view"></a>“表”视图
 
-在列表视图中，可以看到可排序的源列表。 将鼠标悬停在源上方，可显示编辑、开始新扫描或删除等选项。
+在表视图中，可以看到可排序的源列表。 将鼠标悬停在源上方，可显示编辑、开始新扫描或删除等选项。
 
 :::image type="content" source="media/manage-data-sources/list-view.png" alt-text="Azure Purview 数据源列表视图":::
 
@@ -58,7 +58,7 @@ ms.locfileid: "121724267"
 
 若要将源添加到集合，请选择源上的“编辑”铅笔，然后从“选择集合”下拉菜单中选择一个集合 。
 
-若要创建集合的层次结构，请将高级别的集合分配为低级别集合的父级。 下图中，Fabrikam 是 Finance 集合的父级，后者包含 Azure Blob 存储数据源 。 可以通过单击级别之间的箭头上所附的圆圈来折叠或展开集合。
+若要创建集合的层次结构，请将高级别的集合分配为低级别集合的父级。 下图中，Fabrikam 是 Finance 集合的父级，后者包含 Azure Blob 存储数据源 。 可以通过选择级别之间的箭头上所附的圆圈来折叠或展开集合。
 
 :::image type="content" source="media/manage-data-sources/collections.png" alt-text="Azure Purview Studio 中集合的层次结构":::
 

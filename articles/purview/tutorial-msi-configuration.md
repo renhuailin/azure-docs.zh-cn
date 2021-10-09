@@ -1,23 +1,20 @@
 ---
-title: 按比例配置对Azure Purview MSI 数据源的访问权限（预览版）
+title: 大规模配置对 Azure Purview MSI 数据源的访问权限
 description: 在本教程中，你将按照 Azure 数据源订阅配置 Azure MSI 设置。
 author: zeinam
 ms.author: zeinam
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
-ms.date: 05/28/2021
-ms.openlocfilehash: 952f69d7d33ae695103ee42de4462bdaa30c2538
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 09/27/2021
+ms.openlocfilehash: 101d18cdecdc4fc7d4fb33b824500350f53b7b3f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109190"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213387"
 ---
-# <a name="tutorial-configure-access-to-data-sources-for-azure-purview-msi-at-scale-preview"></a>教程：按比例配置对Azure Purview MSI 数据源的访问权限（预览版）
-
-> [!IMPORTANT]
-> Azure Purview 目前处于预览阶段。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+# <a name="tutorial-configure-access-to-data-sources-for-azure-purview-msi-at-scale"></a>教程：大规模配置对 Azure Purview MSI 数据源的访问权限
 
 若要扫描数据源，Azure Purview 需要访问这些数据源。 本教程适用于 Azure 订阅所有者和 Azure Purview 数据源管理员。 有助你确定所需的访问权限，并为 Azure Purview 跨 Azure 数据源设置所需的身份验证和网络规则。
 
@@ -70,7 +67,7 @@ ms.locfileid: "113109190"
 
 1. [将 Azure Purview MSI 配置脚本下载](https://github.com/Azure/Purview-Samples/tree/master/Data-Source-MSI-Configuration)到所选的位置。
 
-2. 在计算机上，在 Windows 任务栏的搜索框中输入 PowerShell。 在搜索列表中，右键单击“Windows PowerShell”，然后选择“以管理员身份运行”。
+2. 在计算机上，在 Windows 任务栏的搜索框中输入 PowerShell。 在搜索列表中，选择并按住（或右键单击）Windows PowerShell，然后选择“以管理员身份运行” 。
 
 3. 在 PowerShell 窗口中输入以下命令。 （将 `<path-to-script>` 替换为提取的脚本文件的文件夹路径。）
 
@@ -96,7 +93,7 @@ PowerShell 安装所需的模块可能最多需要一分钟时间。
 
 在运行 PowerShell 脚本以验证数据源订阅的就绪状态之前，请获取脚本中要使用的以下参数的值：
 
-- `AzureDataType`：选择以下任一选项作为数据源类型，以检查你的订阅中数据类型的准备情况： 
+- `AzureDataType`：选择以下任一选项作为数据源类型，以检查你的订阅中数据类型的就绪情况： 
     
     - `BlobStorage`
 

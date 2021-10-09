@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/20/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e2f5689b476e4b6bf1c707c2c630879af4962fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0717ed4934bd2a8ff9c0dbc4b893710aaaff870b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471707"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650793"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Coda 集成
 
@@ -40,6 +40,8 @@ ms.locfileid: "110471707"
 * Coda 支持 IDP 发起的 SSO。
 
 * Coda 支持实时用户预配。
+
+* Coda 支持[自动用户预配](coda-provisioning-tutorial.md)。
 
 ## <a name="add-coda-from-the-gallery"></a>从库中添加 Coda
 
@@ -155,13 +157,15 @@ ms.locfileid: "110471707"
 
 在本部分，我们将在 Coda 中创建名为 B.Simon 的用户。 Coda 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Coda 中尚不存在用户，身份验证后会创建一个新用户。
 
+Coda 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./coda-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 * 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 Coda。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Coda 磁贴时，你会自动登录到为其设置了 SSO 的 Coda。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Coda 磁贴时，你会自动登录到为其设置了 SSO 的 Coda。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

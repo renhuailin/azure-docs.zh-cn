@@ -3,17 +3,17 @@ title: 将门户用于维护通知
 description: 使用门户查看在 Azure 中运行的虚拟机的维护通知并启动自助维护。
 author: shants123
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 11/19/2019
+ms.date: 09/08/2021
 ms.author: shants
-ms.openlocfilehash: 8ec87f5377fad1e42ad5b6e96f32a4dae241a4ca
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a027014500fa9e4a6ca1f68e2da5fb62df37e5ec
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698788"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216035"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用门户处理计划内维护通知
 
@@ -27,9 +27,7 @@ ms.locfileid: "122698788"
 
 2. 在左侧导航栏中，单击“虚拟机”。
 
-3. 在“虚拟机”窗格中，选择“编辑列”按钮以打开可用列列表。
-
-4. 选择并添加以下列：
+3. 在“虚拟机”窗格中，选择“维护”->“虚拟机维护”按钮以打开包含维护列的列表。
 
    **维护状态**：显示 VM 的维护状态。 下面是可能的值：
       

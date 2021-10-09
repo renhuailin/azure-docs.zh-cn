@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 2a9cf8f74410f69d95b0f6944025220de2c94c08
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 308cd5186d97e87ff044db496809b04def41265b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588140"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667102"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-to-iot-central-application"></a>如何使用 X.509 证书将设备连接到 IoT Central 应用程序
 
@@ -78,7 +78,7 @@ IoT Central 支持共享的访问签名 (SAS) 和 X.509 证书，以保护设备
 
 1. 打开 IoT Central 应用程序并导航到左侧窗格中的“管理”，然后选择“设备连接”。
 
-1. 选择“+ 创建注册组”，然后创建一个名为“MyX509Group”的新注册组，其证明类型为“证书 (X.509)”。
+1. 选择“+ 新建”，然后创建一个名为“MyX509Group”的新注册组，其证明类型为“证书(X.509)”。
 
 1. 打开创建的注册组，并选择“管理主要证书”。
 
@@ -102,7 +102,7 @@ IoT Central 支持共享的访问签名 (SAS) 和 X.509 证书，以保护设备
 
 ### <a name="run-sample-device-code&quot;></a>运行示例代码
 
-:::zone pivot="programming-language-csharp"
+:::zone pivot=&quot;programming-language-csharp&quot;
 
 如果使用的是 Windows，则 X.509 证书必须位于 Windows 证书存储中，这样才能正常运行该示例。 若要将证书添加到存储中，请执行以下操作：
 
@@ -124,8 +124,8 @@ IoT Central 支持共享的访问签名 (SAS) 和 X.509 证书，以保护设备
     ```csharp
     [Option(
         'x',
-        "CertificatePath",
-        HelpText = "(Required if DeviceSecurityType is \"dps\"). \nThe device PFX file to use during device provisioning." +
+        &quot;CertificatePath&quot;,
+        HelpText = &quot;(Required if DeviceSecurityType is \"dps\"). \nThe device PFX file to use during device provisioning." +
         "\nDefaults to environment variable \"IOTHUB_DEVICE_X509_CERT\".")]
     public string CertificatePath { get; set; } = Environment.GetEnvironmentVariable("IOTHUB_DEVICE_X509_CERT");
 
@@ -387,7 +387,7 @@ IoT Central 支持共享的访问签名 (SAS) 和 X.509 证书，以保护设备
 1. 执行脚本，验证设备预配是否成功：
 
     ```cmd/sh
-    node simple_thermostat.js
+    node pnpTemperatureController.js
     ```
 
 :::zone-end
@@ -508,7 +508,7 @@ IoT Central 支持共享的访问签名 (SAS) 和 X.509 证书，以保护设备
 
 ### <a name="run-a-sample-individual-enrollment-device"></a>运行示例单独注册设备
 
-1. 将“mytestselfcertprimary_key.pem”和“mytestselfcertprimary_cert.pem”文件复制到包含“simple_thermostat.js”应用程序的“azure-iot-sdk-node/device/samples/pnp”文件夹中 。 你在完成[连接设备 (JavaScript) 教程](./tutorial-connect-device.md)后使用过此应用程序。
+1. 将 mytestselfcertprimary_key.pem 和 mytestselfcertprimary_cert.pem 文件复制到包含 pnpTemperatureController.js 应用程序的 azure-iot-sdk-node/device/samples/pnp 文件夹。 你在完成[连接设备 (JavaScript) 教程](./tutorial-connect-device.md)后使用过此应用程序。
 
 1. 按如下所示修改上述示例中使用的环境变量：
 
@@ -566,7 +566,7 @@ IoT Central 支持共享的访问签名 (SAS) 和 X.509 证书，以保护设备
     sudo systemctl restart iotedge
     ```
 
-有关详细信息，请参阅[使用 X.509 证书创建和预配 IoT Edge 设备](../../iot-edge/how-to-auto-provision-x509-certs.md)。
+有关详细信息，请参阅[使用 X.509 证书在 Linux 上大规模创建和预配 IoT Edge 设备](../../iot-edge/how-to-provision-devices-at-scale-linux-x509.md)。
 
 ## <a name="connect-an-iot-edge-leaf-device"></a>连接 IoT Edge 叶设备
 

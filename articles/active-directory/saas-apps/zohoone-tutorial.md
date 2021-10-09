@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Zoho One 的集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 Zoho One 集成
 description: 了解如何在 Azure Active Directory 和 Zoho One 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 12ac4d9fbf30873f0392a6d767d7568129bad112
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 032586f43a43b57b14044aea98ce5719cbb3be93
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650636"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632778"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教程：Azure Active Directory 与 Zoho One 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-zoho-one"></a>教程：Azure AD SSO 与 Zoho One 集成
 
 本教程介绍如何将 Zoho One 与 Azure Active Directory (Azure AD) 进行集成。 将 Zoho One 与 Azure AD 集成后，你可以：
 
@@ -37,7 +37,7 @@ ms.locfileid: "101650636"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Zoho One 支持 **SP** 和 **IDP** 发起的 SSO
+* Zoho One 支持 SP 和 IDP 发起的 SSO 。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -66,7 +66,7 @@ ms.locfileid: "101650636"
     1. **[创建 Zoho One 测试用户](#create-zoho-one-test-user)** - 在 Zoho One 中创建 B.Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -78,7 +78,7 @@ ms.locfileid: "101650636"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”文本框中键入 URL：`one.zoho.com`
+    a. 在“标识符”文本框中键入以下值：`one.zoho.com`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
@@ -128,7 +128,7 @@ ms.locfileid: "101650636"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-zoho-one-sso"></a>配置 Zoho One SSO
+## <a name="configure-zoho-one-sso"></a>配置 Zoho One SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoho One 公司站点。
 
@@ -192,7 +192,7 @@ ms.locfileid: "101650636"
 
     c. 单击“添加”  。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -206,7 +206,7 @@ ms.locfileid: "101650636"
 
 * 在 Azure 门户中单击“测试此应用程序”，你应该会自动登录到为其设置了 SSO 的 Zoho One。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击 Zoho One 磁贴时，如果这是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果这是在 IDP 模式下配置的，系统会让你自动登录到为其设置了 SSO 的 Zoho One。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击 Zoho One 磁贴时，如果这是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果这是在 IDP 模式下配置的，系统会让你自动登录到为其设置了 SSO 的 Zoho One。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

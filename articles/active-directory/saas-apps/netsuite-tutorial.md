@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: d99a19efcef0cae518d8d21d3371adaf37d32ff7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a38d2ced173e74263cdf159a1f3243e00ce0911b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625475"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776537"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教程：将 Azure AD 单一登录 (SSO) 与 NetSuite 集成
 
@@ -41,6 +41,7 @@ NetSuite 支持：
 
 * IDP 发起的 SSO。
 * JIT（实时）用户预配。
+* NetSuite 支持[自动用户预配](netsuite-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 由于此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -56,11 +57,11 @@ NetSuite 支持：
 1. 在“从库中添加”部分的搜索框中，键入“NetSuite”   。
 1. 在结果窗格中选择“NetSuite”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-netsuite"></a>配置并测试 NetSuite 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-netsuite"></a>配置并测试 NetSuite 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置和测试 NetSuite 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 NetSuite 相关用户之间建立链接关系。
 
-若要配置和测试 NetSuite 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 NetSuite 的 Azure AD SSO，请执行以下步骤：
 
 1. [配置 Azure AD SSO](#configure-azure-ad-sso)，使用户能够使用此功能。
     * [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以使用 B.Simon 用户测试 Azure AD 单一登录。  
@@ -79,23 +80,7 @@ NetSuite 支持：
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分的“回复 URL”文本框中，键入采用以下格式之一的 URL：  
-
-    ```https
-    https://<Instance ID>.NetSuite.com/saml2/acs
-    https://<Instance ID>.na1.NetSuite.com/saml2/acs
-    https://<Instance ID>.na2.NetSuite.com/saml2/acs
-    https://<Instance ID>.sandbox.NetSuite.com/saml2/acs
-    https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs
-    https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs
-    ```
-
-    * 我们将在 Netsuite 配置节中获取 **<`Instance ID`>** 值，本教程稍后将在 Netsuite 配置下的步骤 8 中对此进行说明。 我们将找到确切的域（例如，在本例中为 system.na0.netsuite.com）。
-
-        ![屏幕截图显示了“SAML 安装”页面，你可以从其中获取域。](./media/NetSuite-tutorial/domain-value.png)
-
-        > [!NOTE]
-        > 上述 URL 中的值不是真实值。 请使用实际回复 URL 更新这些值。 若要获取该值，请联系 [NetSuite 客户端支持团队](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)。 还可参考 Azure 门户中的“基本 SAML 配置”部分显示的格式。 
+1. 在“基本 SAML 配置”部分的“回复 URL”文本框中，键入以下 URL： `https://system.netsuite.com/saml2/acs`
 
 1. NetSuite 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -131,7 +116,7 @@ NetSuite 支持：
    a. 在“名称”框中，输入 **B.Simon**。  
    b. 在“用户名”框中，输入 username@companydomain.extension（例如 B.Simon@contoso.com）  。  
    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。    
-   d. 选择“创建”。
+   d. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -246,13 +231,15 @@ NetSuite 支持：
 
 本部分将在 NetSuite 中创建一个名为 B.Simon 的用户。 NetSuite 支持在默认情况下保持启用的实时用户预配。 此部分不存在任何操作项。 如果 NetSuite 中不存在用户，则会在身份验证后创建一个新用户。
 
+NetSuite 还支持自动用户预配；有关如何配置自动用户预配的更多详细信息，请参阅[此处](./netsuite-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 - 在 Azure 门户中单击“测试此应用程序”后，你应当会自动登录到为其设置了 SSO 的 NetSuite
 
-- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 NetSuite 磁贴时，你应当会自动登录到为其设置了 SSO 的 NetSuite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 NetSuite 磁贴时，你应当会自动登录到为其设置了 SSO 的 NetSuite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

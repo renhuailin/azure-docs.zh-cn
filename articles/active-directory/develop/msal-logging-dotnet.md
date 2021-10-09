@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b4eb89c9c30915f72f45ebe9a26e063c8a44bce2
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 518fc85aff920ffece511e383b2322d8e81266ee
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164410"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091856"
 ---
 # <a name="logging-in-msalnet"></a>在 MSAL.NET 中进行日志记录
 
@@ -26,11 +26,11 @@ ms.locfileid: "108164410"
 
 ## <a name="configure-logging-in-msalnet"></a>在 MSAL.NET 中配置日志记录
 
-在 MSAL 3.x 中，日志记录是在创建应用时使用 `.WithLogging` 生成器修饰符按应用程序设置的。 该方法采用以下可选参数：
+在 MSAL 中，使用 `.WithLogging` 生成器修饰符在创建应用程序时设置日志记录。 该方法采用以下可选参数：
 
 - `Level` 用于确定你需要哪种级别的日志记录。 将其设置为“Errors”时，就只会获得错误
-- `PiiLoggingEnabled` 在设置为 true 的情况下可以记录个人和组织数据。 默认情况下，此项设置为 false，不允许应用程序记录个人数据。
-- `LogCallback` 设置为一个执行日志记录的委托。 如果 `PiiLoggingEnabled` 为 true，则此方法会接收消息两次：第一次时 `containsPii` 参数为 false，消息没有个人数据；第二次时 `containsPii` 参数为 true，消息可能包含个人数据。 在某些情况下（消息不含个人数据），消息是相同的。
+- 如果设置为 true，`PiiLoggingEnabled` 用于记录个人和组织数据 (PII)。 默认情况下，此项设置为 false，不允许应用程序记录个人数据。
+- `LogCallback` 设置为一个执行日志记录的委托。 如果 `PiiLoggingEnabled` 为 true，此方法将接收可能包含 PII 的消息，在这种情况下 `containsPii` 标志将设置为 true。
 - `DefaultLoggingEnabled` 为平台启用默认日志记录。 默认为 false。 如果将它设置为 true，它会在桌面/UWP 应用程序中使用事件跟踪，在 iOS 上使用 NSLog，在 Android 上使用 logcat。
 
 ```csharp

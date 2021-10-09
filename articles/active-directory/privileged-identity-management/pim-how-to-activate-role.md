@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2021
+ms.date: 09/10/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3926fb277251f7020539942c76d9c97f0ce46d75
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 677de5e28ed4dcae5081f362804ef18e0971c322
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736169"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639691"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>在 PIM 中激活我的 Azure AD 角色
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
     ![Azure AD 角色 - 激活页面包含持续时间和范围](./media/pim-how-to-activate-role/activate-page.png)
 
-1. 选择“需要附加验证”，并按照说明提供其他安全验证。 在每个会话中只需执行身份验证一次。
+1. 选择“需要进行附加验证”，并按照说明提供任何其他安全验证。 在每个会话中只需执行身份验证一次。
 
     ![用于提供安全验证（例如 PIN 码）的屏幕](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
@@ -69,7 +69,127 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
     ![“激活请求正在等待审批”通知](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="view-the-status-of-your-requests-for-new-version"></a>查看新版本的请求状态
+## <a name="activate-a-role-using-graph-api"></a>使用 Graph API 激活角色
+
+### <a name="get-all-eligible-roles-that-you-can-activate"></a>获取可激活的所有符合条件的角色
+
+当用户通过组成员身份获取其角色资格时，此 Graph 请求不会返回其资格。
+
+#### <a name="http-request"></a>HTTP 请求
+
+````HTTP
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleEligibilityScheduleRequests/filterByCurrentUser(on='principal')  
+````
+
+#### <a name="http-response"></a>HTTP 响应
+
+为了节省空间，我们将只显示一个角色的响应，但会列出你可以激活的所有符合条件的角色分配。
+
+````HTTP
+{ 
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#Collection(unifiedRoleEligibilityScheduleRequest)", 
+    "value": [ 
+        { 
+            "@odata.type": "#microsoft.graph.unifiedRoleEligibilityScheduleRequest", 
+            "id": "<request-ID-GUID>", 
+            "status": "Provisioned", 
+            "createdDateTime": "2021-07-15T19:39:53.33Z", 
+            "completedDateTime": "2021-07-15T19:39:53.383Z", 
+            "approvalId": null, 
+            "customData": null, 
+            "action": "AdminAssign", 
+            "principalId": "<principal-ID-GUID>", 
+            "roleDefinitionId": "<definition-ID-GUID>", 
+            "directoryScopeId": "/", 
+            "appScopeId": null, 
+            "isValidationOnly": false, 
+            "targetScheduleId": "<schedule-ID-GUID>", 
+            "justification": "test", 
+            "createdBy": { 
+                "application": null, 
+                "device": null, 
+                "user": { 
+                    "displayName": null, 
+                    "id": "<user-ID-GUID>" 
+                } 
+            }, 
+            "scheduleInfo": { 
+                "startDateTime": "2021-07-15T19:39:53.3846704Z", 
+                "recurrence": null, 
+                "expiration": { 
+                    "type": "noExpiration", 
+                    "endDateTime": null, 
+                    "duration": null 
+                } 
+            }, 
+            "ticketInfo": { 
+                "ticketNumber": null, 
+                "ticketSystem": null 
+            } 
+        },
+} 
+````
+
+### <a name="activate-a-role-assignment-with-justification"></a>激活具有理由的角色分配
+
+#### <a name="http-request"></a>HTTP 请求
+
+````HTTP
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignmentScheduleRequests 
+
+{ 
+    "action": "SelfActivate", 
+    "justification": "adssadasasd", 
+    "roleDefinitionId": "<definition-ID-GUID>", 
+    "directoryScopeId": "/", 
+    "principalId": "<principal-ID-GUID>" 
+} 
+````
+
+#### <a name="http-response"></a>HTTP 响应
+
+````HTTP
+{ 
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#roleManagement/directory/roleAssignmentScheduleRequests/$entity", 
+    "id": "f1ccef03-8750-40e0-b488-5aa2f02e2e55", 
+    "status": "PendingApprovalProvisioning", 
+    "createdDateTime": "2021-07-15T19:51:07.1870599Z", 
+    "completedDateTime": "2021-07-15T19:51:17.3903028Z", 
+    "approvalId": "<approval-ID-GUID>", 
+    "customData": null, 
+    "action": "SelfActivate", 
+    "principalId": "<principal-ID-GUID>", 
+    "roleDefinitionId": "<definition-ID-GUID>", 
+    "directoryScopeId": "/", 
+    "appScopeId": null, 
+    "isValidationOnly": false, 
+    "targetScheduleId": "<schedule-ID-GUID>", 
+    "justification": "test", 
+    "createdBy": { 
+        "application": null, 
+        "device": null, 
+        "user": { 
+            "displayName": null, 
+            "id": "<user-ID-GUID>" 
+        } 
+    }, 
+    "scheduleInfo": { 
+        "startDateTime": null, 
+        "recurrence": null, 
+        "expiration": { 
+            "type": "afterDuration", 
+            "endDateTime": null, 
+            "duration": "PT5H30M" 
+        } 
+    }, 
+    "ticketInfo": { 
+        "ticketNumber": null, 
+        "ticketSystem": null 
+    } 
+} 
+````
+
+## <a name="view-the-status-of-activation-requests"></a>查看激活请求的状态
 
 可以查看等待激活的请求的状态。
 
@@ -95,9 +215,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
    ![突出显示“取消”操作的“我的请求”列表](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot-for-new-version"></a>对新版本进行故障排除
+## <a name="troubleshoot-portal-delay"></a>排查门户延迟问题
 
-### <a name="permissions-are-not-granted-after-activating-a-role"></a>激活角色后，权限未被授予
+### <a name="permissions-arent-granted-after-activating-a-role"></a>激活角色后，未授予权限
 
 在 Privileged Identity Management 中激活角色时，激活可能不会立即传播到需要特权角色的所有门户。 有时，即使更改已传播，门户中的 Web 缓存也可能会导致更改不能立即生效。 如果激活延迟，请从尝试执行该操作的门户注销，然后重新登录。 在 Azure 门户中，PIM 会自动注销并重新登录。
 

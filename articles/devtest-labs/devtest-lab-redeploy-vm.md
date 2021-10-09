@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室的实验室中重新部署 VM | Microsoft Docs
+title: 在实验室中重新部署 VM
 description: 了解如何在 Azure 开发测试实验室中重新部署虚拟机（从一个 Azure 节点移动到另一个 Azure 节点）。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 375b70d3058a8fb0e23e65f4b96b4601aad12723
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90530312"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591570"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中重新部署 VM
 如果无法在实验室中通过远程桌面连接来连接到虚拟机 (VM)，请重新部署 VM，然后重试连接。 重新部署 VM 时，开发测试实验室会将 VM 从在其上运行该 VM 的节点移动到 Azure 基础结构中的新节点。 然后启动 VM，同时保留所有配置选项和关联资源。 此功能可为你节省排查远程桌面连接问题或在实验室中通过应用程序访问基于 Windows 的 VM 所用的时间。 
@@ -30,5 +30,3 @@ ms.locfileid: "90530312"
 
 ## <a name="next-steps"></a>后续步骤
 若要了解如何在 Azure 开发测试实验室中调整 VM 大小，请参阅[调整 VM 大小](devtest-lab-resize-vm.md)。
-
-

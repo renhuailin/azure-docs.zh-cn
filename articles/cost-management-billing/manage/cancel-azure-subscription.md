@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 05/20/2021
 ms.author: banders
-ms.openlocfilehash: 71070f56eaa8b9e1d0a4bef42d609b10ac28b7e5
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: c8961575a4055c94a36a89da0d99d2aed4c6e50c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112321623"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563576"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
@@ -70,22 +70,20 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 取消订阅后，Microsoft 会先等待 30 - 90 天，然后才会永久删除用户的数据，这样做是考虑到用户可能需要访问这些数据，或者改变了主意。 我们不会因为保留这些数据而向你收费。 若要了解详细信息，请参阅 [Microsoft Trust Center - How we manage your data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)（Microsoft 信任中心 - 我们如何管理用户的数据）。
 
-## <a name="delete-free-account-or-pay-as-you-go-subscription"></a>删除免费帐户或即用即付订阅
+## <a name="delete-free-trial-or-pay-as-you-go-subscriptions"></a>删除免费试用版订阅或即用即付订阅
 
-如果你有免费帐户或即用即付订阅，则无需等待 30 到 90 天，订阅就会被自动删除。 “删除”选项在你取消订阅 3 天后可用。 3 天后，如果取消的订阅下没有任何资源，则可以删除该订阅。
+如果你有免费试用版订阅或即用即付订阅，则无需等待 90 天的订阅自动删除期。 你可以在取消订阅三天后将其删除。 “删除订阅”选项在你取消订阅三天后才可用。
 
-请按以下步骤删除订阅：
+1. 取消订阅后，请等待三天。
+1. 在 Azure 门户中的[“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)上选择你的订阅。
+1. 选择要删除的订阅。
+1. 选择“概述”，然后选择“删除订阅” 。
 
-1. 取消订阅后，请等待 3 天。
-2. 在尝试删除订阅之前，请确保该订阅下没有任何资源。
-3. 在 Azure 门户中，转到 [订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-4. 选择要删除的订阅。
-5. 选择“概述”，然后选择“删除” 。
-6. 在确认提示中键入订阅名称，然后选择“删除订阅”。
+注意：在取消订阅 90 天后，将自动删除订阅。
 
 ## <a name="delete-other-subscriptions"></a>删除其他订阅
 
-你唯一可以手动删除的订阅类型是免费帐户或即用即付订阅。 其他所有订阅类型只能通过[订阅取消](#cancel-subscription-in-the-azure-portal)过程删除。 换句话说，除非订阅是免费帐户或即用即付订阅，否则无法直接删除该订阅。 但是，取消订阅后，可以创建一个 [Azure 支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)，要求立即删除该订阅。
+你唯一可以手动删除的订阅类型是免费试用版订阅和即用即付订阅。 其他所有订阅类型只能通过[订阅取消](#cancel-subscription-in-the-azure-portal)过程删除。 换句话说，除非订阅是免费试用版订阅或即用即付订阅，否则无法直接删除该订阅。 但是，取消订阅后，可以创建一个 [Azure 支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)，要求立即删除该订阅。
 
 ## <a name="reactivate-a-subscription"></a>重新激活订阅
 

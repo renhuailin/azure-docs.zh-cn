@@ -8,12 +8,12 @@ author: lrtoyou1223
 ms.author: lle
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: c64f71e6cdd008efa74d7279e3dc275bd24825f0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1a05322a43f791ad9058659ea6e0cd53839196c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738126"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814757"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>使用本地 PowerShell 脚本自动安装自承载集成运行时
 若要在本地计算机（而不是在可以通过资源管理器模板实现自动安装的 Azure VM 上）上自动安装自承载集成运行时，可以使用本地 PowerShell 脚本。 本文将介绍两个可用于实现自动安装的脚本。
@@ -31,9 +31,9 @@ ms.locfileid: "121738126"
 > 以下脚本通过自承载集成运行时中[记录的命令行实用工具](./create-self-hosted-integration-runtime.md#set-up-an-existing-self-hosted-ir-via-local-powershell)创建。 如果需要，可以相应地自定义这些脚本以满足其自动化需求。
 > 脚本需要应用于每个节点，因此确保在高可用性设置（2 个或更多节点）的情况下跨所有节点运行脚本。
 
-* 自动安装：使用 [InstallGatewayOnLocalMachine.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1) 安装并注册新的自承载集成运行时节点 - 该脚本可用于安装自承载集成运行时节点，并使用身份验证密钥对其进行注册。 脚本接受两个参数，第一个指定本地磁盘上的[自承载集成运行时](https://www.microsoft.com/download/details.aspx?id=39717)的位置，第二个指定身份验证密钥（用于注册自承载 IR 节点）  。
+* 自动安装：使用 [InstallGatewayOnLocalMachine.ps1](https://github.com/Azure/Azure-DataFactory/blob/main/SamplesV2/SelfHostedIntegrationRuntime/AutomationScripts/InstallGatewayOnLocalMachine.ps1) 安装并注册新的自承载集成运行时节点 - 该脚本可用于安装自承载集成运行时节点，并使用身份验证密钥对其进行注册。 脚本接受两个参数，第一个指定本地磁盘上的[自承载集成运行时](https://www.microsoft.com/download/details.aspx?id=39717)的位置，第二个指定身份验证密钥（用于注册自承载 IR 节点）  。
 
-* 自动执行手动更新：使用 [script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1) 特定版本或最新版本更新自承载 IR 节点 - 如果你已关闭自动更新或需要对更新有更多的控制，此方法也同样受支持。 该脚本可用于将自承载集成运行时节点更新到最新版本或指定的更高版本（无法降级）。 它接受用于指定版本号的参数（例如 -version 3.13.6942.1）。 未指定版本时，它始终将自承载 IR 更新到[下载页面](https://www.microsoft.com/download/details.aspx?id=39717)中可用的最新版本。
+* 自动执行手动更新：使用 [script-update-gateway.ps1](https://github.com/Azure/Azure-DataFactory/blob/main/SamplesV2/SelfHostedIntegrationRuntime/AutomationScripts/script-update-gateway.ps1) 特定版本或最新版本更新自承载 IR 节点 - 如果你已关闭自动更新或需要对更新有更多的控制，此方法也同样受支持。 该脚本可用于将自承载集成运行时节点更新到最新版本或指定的更高版本（无法降级）。 它接受用于指定版本号的参数（例如 -version 3.13.6942.1）。 未指定版本时，它始终将自承载 IR 更新到[下载页面](https://www.microsoft.com/download/details.aspx?id=39717)中可用的最新版本。
     > [!NOTE]
     > 只能指定上 3 个版本。 最好使用此脚本将现有节点更新到最新版本。 本脚本假设你已有一个经过注册的自承载 IR。 
 
@@ -52,10 +52,10 @@ ms.locfileid: "121738126"
     > 将“username”替换为你的用户名。
     > 运行此脚本时，指定“InstallGatewayOnLocalMachine.ps1”文件的位置。 在本例中，我们将其存储在桌面上。
 
-1. 如果计算机上有一个预安装的自承载 IR，此脚本自动将其卸载，然后配置一个新的自承载 IR。 系统会弹出以下窗口：![配置集成运行时](media/self-hosted-integration-runtime-automation-scripts/integration-runtime-configure.png)
+1. 如果计算机上有一个预安装的自承载 IR，此脚本自动将其卸载，然后配置一个新的自承载 IR。 系统会弹出以下窗口：:::image type="content" source="media/self-hosted-integration-runtime-automation-scripts/integration-runtime-configure.png" alt-text="配置集成运行时":::
 
 1. 安装和密钥注册完成后，PowerShell 中会显示“网关安装成功”和“网关注册成功”结果 。
-        [![脚本 1 运行结果](media/self-hosted-integration-runtime-automation-scripts/script-1-run-result.png)](media/self-hosted-integration-runtime-automation-scripts/script-1-run-result.png#lightbox)
+        [:::image type="content" source="media/self-hosted-integration-runtime-automation-scripts/script-1-run-result.png#lightbox" alt-text="脚本 1 运行结果](media/self-hosted-integration-runtime-automation-scripts/script-1-run-result.png)":::
 
 ### <a name="for-automating-manual-updates"></a>自动执行手动更新
 此脚本用于更新/安装和注册最新的自承载集成运行时。 该脚本运行执行以下步骤：
@@ -76,4 +76,4 @@ ms.locfileid: "121738126"
    PS C:\windows\system32> C:\Users\username\Desktop\script-update-gateway.ps1 -version 3.13.6942.1
    ``` 
    如果当前版本已经是最新版本，系统会显示以下结果，表明不需要更新。   
-    [![脚本 2 运行结果](media/self-hosted-integration-runtime-automation-scripts/script-2-run-result.png)](media/self-hosted-integration-runtime-automation-scripts/script-2-run-result.png#lightbox)
+    [:::image type="content" source="media/self-hosted-integration-runtime-automation-scripts/script-2-run-result.png#lightbox" alt-text="脚本 2 运行结果](media/self-hosted-integration-runtime-automation-scripts/script-2-run-result.png)":::

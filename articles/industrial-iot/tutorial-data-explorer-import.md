@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 6/16/2021
-ms.openlocfilehash: 4ab409c067d83e44cb22c3a22589eca0a4a7785a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4abf1d9236d236f9d19d9336bb3173ca14bb3c61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291288"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665162"
 ---
 # <a name="tutorial-using-industrial-iot-to-pull-data-into-azure-data-explorer"></a>教程：使用工业 IoT 将数据拉取到 Azure 数据资源管理器
 
@@ -165,7 +165,7 @@ opcua_telemetry
 
 ## <a name="create-line-graph-of-the-data"></a>创建数据的折线图
 
-现在，让我们通过将所有数据强制转换为浮点数来创建数据的折线图。 如果强制转换失败，则会忽略数据。 使用托管的 Azure 数据资源管理器仪表板执行此操作。 单击“在 Web UI 中打开”，在新窗口中单击“仪表板”，然后依次选择“创建新仪表板”、“添加磁贴”   。 然后选择“数据源”，并以 https://<YourInstanceName>.<Your RegionName>.kusto.windows.net 格式输入 Azure 数据资源管理器实例的名称。 选择你的数据库并点击“应用”。 然后输入以下查询。
+现在，让我们通过将所有数据强制转换为浮点数来创建数据的折线图。 如果强制转换失败，则会忽略数据。 使用托管的 Azure 数据资源管理器仪表板执行此操作。 单击“在 Web UI 中打开”，在新窗口中单击“仪表板”，然后依次选择“创建新仪表板”、“添加磁贴”   。 然后选择“数据源”，并以 `https://<YourInstanceName>.<Your RegionName>.kusto.windows.net` 格式输入 Azure 数据资源管理器实例的名称。 选择你的数据库并点击“应用”。 然后输入以下查询。
 
 ```
 opcua_telemetry

@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 1e62937a4240448f85cc7ab147d642b29bb0a2a9
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 47e9e221bd57453a0c799318f939de59b84feb86
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226060"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356065"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
@@ -60,24 +60,109 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 
 ## <a name="deploying-your-app"></a>部署应用
 
-可以使用[适用于 Maven 的 Azure Web 应用插件](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)来部署 .war 或 .jar 文件。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) 或 [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) 还支持通过流行的 IDE 进行部署。
+### <a name="build-tools"></a>生成工具
 
-否则，则部署方法将取决于存档类型：
+#### <a name="maven"></a>Maven
+使用[适用于 Azure Web 应用的 Maven 插件](https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，可以在项目根中使用一个命令来轻松为 Azure Web 应用准备 Maven Java 项目：
 
-### <a name="java-se"></a>Java SE
+```shell
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
+```
+
+此命令会提示你选择现有的或创建新的 Azure Web 应用，通过这种方式来添加 `azure-webapp-maven-plugin` 插件和相关配置。 然后可以使用以下命令将 Java 应用部署到 Azure：
+```shell
+mvn package azure-webapp:deploy
+```
+
+下面是 `pom.xml` 中的示例配置：
+```xml
+<plugin> 
+  <groupId>com.microsoft.azure</groupId>  
+  <artifactId>azure-webapp-maven-plugin</artifactId>  
+  <version>2.2.0</version>  
+  <configuration>
+    <subscriptionId>111111-11111-11111-1111111</subscriptionId>
+    <resourceGroup>spring-boot-xxxxxxxxxx-rg</resourceGroup>
+    <appName>spring-boot-xxxxxxxxxx</appName>
+    <pricingTier>B2</pricingTier>
+    <region>westus</region>
+    <runtime>
+      <os>Linux</os>      
+      <webContainer>Java SE</webContainer>
+      <javaVersion>Java 11</javaVersion>
+    </runtime>
+    <deployment>
+      <resources>
+        <resource>
+          <type>jar</type>
+          <directory>${project.basedir}/target</directory>
+          <includes>
+            <include>*.jar</include>
+          </includes>
+        </resource>
+      </resources>
+    </deployment>
+  </configuration>
+</plugin> 
+```
+
+#### <a name="gradle"></a>Gradle
+1. 通过将[适用于 Azure Web 应用的 Gradle 插件](https://github.com/microsoft/azure-gradle-plugins/tree/master/azure-webapp-gradle-plugin)添加到 `build.gradle` 来设置该插件：
+    ```groovy
+    plugins {
+      id "com.microsoft.azure.azurewebapp" version "1.2.0"
+    }
+    ```
+
+1. 配置 Web 应用详细信息，相应的 Azure 资源将会被创建（如果不存在）。
+下面是示例配置，有关详细信息，请参考此[文档](https://github.com/microsoft/azure-gradle-plugins/wiki/Webapp-Configuration)。
+    ```groovy
+    azurewebapp {
+        subscription = '<your subscription id>'
+        resourceGroup = '<your resource group>'
+        appName = '<your app name>'
+        pricingTier = '<price tier like 'P1v2'>'
+        region = '<region like 'westus'>'
+        runtime {
+          os = 'Linux'
+          webContainer = 'Tomcat 9.0' // or 'Java SE' if you want to run an executable jar
+          javaVersion = 'Java 8'
+        }
+        appSettings {
+            <key> = <value>
+        }
+        auth {
+            type = 'azure_cli' // support azure_cli, oauth2, device_code and service_principal
+        }
+    }
+    ```
+
+1. 使用一个命令进行部署。
+    ```shell
+    gradle azureWebAppDeploy
+    ```
+    
+### <a name="ides"></a>IDE
+Azure 在常用 Java IDE 中提供了无缝的 Java 应用服务开发体验，这些 IDE 包括：
+- VS Code：[使用 Visual Studio Code 的 Java Web 应用](https://code.visualstudio.com/docs/java/java-webapp#_deploy-web-apps-to-the-cloud)
+- IntelliJ IDEA：[使用 IntelliJ 创建适用于 Azure 应用服务的 Hello World Web 应用](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)
+- Eclipse：[使用 Eclipse 创建适用于 Azure 应用服务的 Hello World Web 应用](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)
+
+### <a name="kudu-api"></a>Kudu API
+#### <a name="java-se"></a>Java SE
 
 若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/publish/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-warjarear-packages)。 
 
 > [!NOTE]
 >  必须将 .jar 应用程序命名为 `app.jar`，应用服务才能识别并运行该应用程序。 在部署过程中，（上述）Maven 插件会自动重命名应用程序。 如果不希望将 JAR 重命名为 app.jar，可使用命令上传 shell 脚本来运行 .jar 应用。 将此脚本的绝对路径粘贴到门户的“配置”部分的[启动文件](/azure/app-service/faq-app-service-linux#built-in-images)文本框中。 启动脚本不从放置它的目录运行。 因此，请始终使用绝对路径在启动脚本中引用文件（例如：`java -jar /home/myapp/myapp.jar`）。
 
-### <a name="tomcat"></a>Tomcat
+#### <a name="tomcat"></a>Tomcat
 
 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-warjarear-packages)。
 
 ::: zone pivot="platform-linux"
 
-### <a name="jboss-eap"></a>JBoss EAP
+#### <a name="jboss-eap"></a>JBoss EAP
 
 若要将 .war 文件部署到 JBoss，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-warjarear-packages)。
 
@@ -206,7 +291,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 若要设置分配的内存或其他 JVM 运行时选项，请使用这些选项创建名为 `JAVA_OPTS` 的[应用设置](configure-common.md#configure-app-settings)。 应用服务在启动时，会将此设置作为环境变量传递给 Java 运行时。
 
-在 Azure 门户中，在 Web 应用的“应用设置”下为 Java SE 创建一个名为 `JAVA_OPTS` 的新应用设置，或为包括 `-Xms512m -Xmx1204m` 等其他设置的 Tomcat 创建一个 `CATALINA_OPTS`。
+在 Azure 门户中，在 Web 应用的“应用程序设置”下，为 Java SE 创建名为 `JAVA_OPTS` 的新应用设置，或者为 Tomcat 创建包括 `-Xms512m -Xmx1204m` 之类的其他设置的 `CATALINA_OPTS`。
 
 若要通过 Maven 插件配置应用设置，请在 Azure 插件部分中添加设置/值标记。 以下示例设置特定的最小和最大 Java 堆大小：
 
@@ -311,7 +396,7 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
-按照[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)中的说明上传现有的 TLS/SSL 证书，并将与应用的域名绑定。 默认情况下，该应用仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 TLS/SSL。
+按照[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)中的说明，上传现有的 TLS/SSL 证书，并将其绑定到应用程序的域名。 在默认情况下，应用程序仍会允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 TLS/SSL。
 
 ### <a name="use-keyvault-references"></a>使用 Key Vault 引用
 

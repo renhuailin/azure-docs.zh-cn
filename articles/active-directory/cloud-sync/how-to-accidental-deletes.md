@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2021
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da54bd28c1d9ea933e88b6c86cf6092c10d036a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5055b847eab1ee53688abfa308b5969f7526f668
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98785159"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742679"
 ---
 # <a name="accidental-delete-prevention"></a>防止意外删除
 
@@ -27,6 +27,10 @@ ms.locfileid: "98785159"
 - 设置通知电子邮件地址，以便此方案中相关同步作业被置于隔离状态后，用户可以收到电子邮件通知 
 
 要使用此功能，请设置对象数的阈值（如果被删除，同步应停止）。  这样，如果达到此数量，同步将停止，并会向指定的电子邮件发送通知。  通过此通知可以调查发送的状况。
+
+有关其他信息和示例，请参阅以下视频。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mV]
 
 
 ## <a name="configure-accidental-delete-prevention"></a>配置防止意外删除

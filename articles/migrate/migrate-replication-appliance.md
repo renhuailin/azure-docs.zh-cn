@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5f63b033c3995932662fc9b68c1397bf57b0326e
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 4a06267aae473ecc1b42812f7ed07405faafd7aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714967"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607463"
 ---
 # <a name="replication-appliance"></a>复制设备
 
@@ -58,7 +58,7 @@ RAM | 16 GB
 操作系统区域设置 | 英语 (en-us)
 TLS | 应启用 TLS 1.2。
 .NET Framework | 计算机上必须安装 .NET Framework 4.6 或更高版本（已启用强加密）。
-MySQL | 必须在设备上安装 MySQL。<br/> 应安装 MySQL。 可以手动安装，或者让 Site Recovery 在设备部署期间进行安装。
+MySQL | 必须在设备上安装 MySQL。<br/> 应安装 MySQL。 可以手动安装，或者让 Azure Migrate 在设备部署期间进行安装。
 其他应用 | 请勿在复制设备上运行其他应用。
 Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V
 组策略 | 请勿启用以下组策略： <br> - 阻止访问命令提示符。 <br> - 阻止访问注册表编辑工具。 <br> - 信任文件附件的逻辑。 <br> - 打开脚本执行。 <br> [了解详细信息](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))

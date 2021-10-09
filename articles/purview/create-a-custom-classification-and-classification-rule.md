@@ -1,18 +1,18 @@
 ---
-title: 创建自定义分类和分类规则（预览版）
+title: 创建自定义分类和分类规则
 description: 了解如何创建自定义分类来定义数据资产中 Azure Purview 的组织独有的数据类型。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 3/24/2021
-ms.openlocfilehash: fff9f128e6a533d8a8926093ca58a79ef2e974d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 12af9165b8393291b67fd0cbe4cb2ced6ae77a17
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748111"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212110"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview 中的自定义分类
 
@@ -33,9 +33,9 @@ Azure Purview 数据目录提供了大量默认系统分类，这些分类表示
 
 若要创建自定义分类，请执行以下步骤：
 
-1. 从目录的左侧菜单中选择“管理中心”。
+1. 从目录的左侧菜单中选择“数据映射”。
 
-2. 在“元数据管理”下选择“分类”。
+2. 在“注释管理”下选择“分类”。
 
 3. 选择“+ 新建”
 
@@ -85,15 +85,15 @@ Contoso 可以通过创建自定义分类规则将扫描系统配置为查找这
 
 1. 按照上一部分中的说明创建自定义分类。 你将在分类规则配置中添加此自定义分类，以便系统在列中找到匹配项时应用它。
 
-2. 选择“管理中心”图标。
+2. 选择“数据映射”图标。
 
 3. 选择“分类规则”部分。
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classificationrules.png" alt-text="分类规则磁贴" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classification-rules.png" alt-text="分类规则磁贴" border="true":::
 
 4. 选择“新建”。
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="添加新的分类规则" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification-rule.png" alt-text="添加新的分类规则" border="true":::
 
 5. 此时将打开“新建分类规则”对话框。 填充字段并决定是创建正则表达式规则还是创建字典规则。
 

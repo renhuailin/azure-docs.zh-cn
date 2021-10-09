@@ -6,18 +6,22 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 73ff2c609438ead1e1fa42468e97be801a76e7e2
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 95d07e313b5b8d970b2d8471295ed00c29961b96
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450280"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626088"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM 模板部署 What-if 操作
 
 在部署 Azure 资源管理器模板（ARM 模板）之前，可以预览将要进行的更改。 Azure 资源管理器提供 what-if（假设）操作，让你在部署模板时了解资源发生的更改。 what-if 操作不会对现有资源进行任何更改， 而是预测在部署指定的模板时发生的更改。
 
 可将 what-if 操作与 Azure PowerShell、Azure CLI 或 REST API 操作配合使用。 资源组、订阅、管理组合租户级部署支持 What-if。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解 what-if 并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用 what-if 预览 Azure 部署更改](/learn/modules/arm-template-whatif)。
 
 ## <a name="install-azure-powershell-module"></a>安装 Azure PowerShell 模块
 

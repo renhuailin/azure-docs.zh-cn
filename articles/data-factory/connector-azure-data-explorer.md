@@ -1,29 +1,29 @@
 ---
 title: 向/从 Azure 数据资源管理器复制数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动来向/从 Azure 数据资源管理器复制数据。
-ms.author: susabat
-author: ssabat
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动来向/从 Azure 数据资源管理器复制数据。
+ms.author: orspodek
+author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 4f3718699e7438b3b45c84eebebbbbf75126d793
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 511e1d58e3abf3c44025a02059c5d6aa947809c0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304520"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771890"
 ---
-# <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
+# <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 向/从 Azure 数据资源管理器复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文介绍如何在 Azure 数据工厂中使用复制活动向/从 [Azure 数据资源管理器](/azure/data-explorer/data-explorer-overview)复制数据。 本文是在总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文的基础之上编写的。
+本文介绍如何使用 Azure 数据工厂和 Synapse Analytics 管道中的复制活动向/从 [Azure 数据资源管理器](/azure/data-explorer/data-explorer-overview)复制数据。 本文是在总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文的基础之上编写的。
 
 >[!TIP]
->通常，对于 Azure 数据工厂和 Azure 数据资源管理器的集成，请从[将 Azure 数据资源管理器与 Azure 数据工厂集成](/azure/data-explorer/data-factory-integration)了解更多信息。
+>若要详细了解 Azure 数据资源管理器如何与服务集成，请参阅[集成 Azure 数据资源管理器](/azure/data-explorer/data-factory-integration)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -46,7 +46,7 @@ ms.locfileid: "123304520"
 ## <a name="getting-started"></a>入门
 
 >[!TIP]
->有关 Azure 数据资源管理器连接器的演练，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](/azure/data-explorer/data-factory-load-data)和[从数据库大容量复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-template)。
+>有关此 Azure 数据资源管理器连接器概览，请参阅[向/从 Azure 数据资源管理器复制数据](/azure/data-explorer/data-factory-load-data)以及[将数据从数据库大容量复制到 Azure 数据资源管理器。](/azure/data-explorer/data-factory-template)
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "123304520"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -100,7 +100,7 @@ Azure 数据资源管理器连接器支持以下身份验证类型。 请参阅�
     - **作为接收器**：至少向数据库授予“数据库引入者”角色 
 
 >[!NOTE]
->使用数据工厂 UI 创作时，登录用户帐户默认用于列出 Azure 数据资源管理器群集、数据库和表。 可以选择使用服务主体列出对象，方法是单击“刷新”按钮旁边的下拉列表，或者手动输入名称（如果没有这些操作的权限）。
+>使用 UI 创作时，登录用户帐户默认用于列出 Azure 数据资源管理器群集、数据库和表。 可以选择使用服务主体列出对象，方法是单击“刷新”按钮旁边的下拉列表，或者手动输入名称（如果没有这些操作的权限）。
 
 Azure 数据资源管理器链接服务支持以下属性：
 
@@ -111,7 +111,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 | database | 数据库的名称。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 此 ID 在 [Kusto 连接字符串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中称为“颁发机构 ID”。 将鼠标指针悬停在 Azure 门户右上角进行检索。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 此 ID 在[Kusto 连接字符串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中称为“AAD 应用程序客户端 ID”。 | 是 |
-| servicePrincipalKey | 指定应用程序的密钥。 此密钥在[Kusto 连接字符串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中称为“AAD 应用程序密钥”。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中，或 [引用存储在 Azure Key Vault 中的安全数据](store-credentials-in-key-vault.md)。 | 是 |
+| servicePrincipalKey | 指定应用程序的密钥。 此密钥在[Kusto 连接字符串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中称为“AAD 应用程序密钥”。 请将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的安全数据](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：使用服务主体密钥身份验证**
@@ -135,13 +135,13 @@ Azure 数据资源管理器链接服务支持以下属性：
 }
 ```
 
-### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a>系统分配的托管标识身份验证
+### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> 系统分配的托管标识身份验证
 
 若要详细了解 Azure 资源托管标识，请参阅 [Azure 资源托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 若要使用系统分配的托管标识身份验证，请按照以下步骤授予权限：
 
-1. 通过复制与工厂一起生成的 **托管标识对象 ID** 的值，[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
+1. 通过复制与工厂或 Synapse 工作区一起生成的“托管标识对象 ID”值，[检索托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. 在 Azure 数据资源管理器中向托管标识授予正确的权限。 有关角色和权限以及管理权限的详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](/azure/data-explorer/manage-database-permissions)。 一般情况下，必须授予以下权限：
 
@@ -149,7 +149,7 @@ Azure 数据资源管理器链接服务支持以下属性：
     - **作为接收器**：至少向数据库授予“数据库引入者”角色 
 
 >[!NOTE]
->使用数据工厂 UI 创作时，登录用户帐户用于列出 Azure 数据资源管理器群集、数据库和表。 如果你没有权限执行这些操作，请手动输入名称。
+>使用 UI 创作时，登录用户帐户用于列出 Azure 数据资源管理器群集、数据库和表。 如果你没有权限执行这些操作，请手动输入名称。
 
 Azure 数据资源管理器链接服务支持以下属性：
 
@@ -178,14 +178,14 @@ Azure 数据资源管理器链接服务支持以下属性：
 ### <a name="user-assigned-managed-identity-authentication"></a>用户分配的托管标识身份验证
 若要详细了解 Azure 资源托管标识，请参阅 [Azure 资源托管标识](../active-directory/managed-identities-azure-resources/overview.md)
 
-若要使用用户分配的托管标识身份验证，请按照以下步骤操作：
+若要使用用户分配的托管标识身份验证，请执行以下步骤：
 
 1. [创建一个或多个用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，并在 Azure 数据资源管理器中授予权限。 有关角色和权限以及管理权限的详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](/azure/data-explorer/manage-database-permissions)。 一般情况下，必须授予以下权限：
 
     - **作为源**：至少向数据库授予“数据库查看者”角色 
     - **作为接收器**：至少向数据库授予“数据库引入者”角色 
      
-2. 为数据工厂分配一个或多个用户分配的托管标识，并为每个用户分配的托管标识[创建凭据](data-factory-service-identity.md#credentials)。
+2. 为数据工厂或 Synapse 工作区分配一个或多个用户分配的托管标识，并为每个用户分配的托管标识[创建凭据](data-factory-service-identity.md#credentials)。
 
 Azure 数据资源管理器链接服务支持以下属性：
 
@@ -217,7 +217,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅 [Azure 数据工厂中的数据集](concepts-datasets-linked-services.md)。 本部分列出了 Azure 数据资源管理器数据集支持的属性。
+有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)。 本部分列出了 Azure 数据资源管理器数据集支持的属性。
 
 若要将数据复制到 Azure 数据资源管理器，请将数据集的 type 属性设置为 **AzureDataExplorerTable**。
 
@@ -249,7 +249,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅 [Azure 数据工厂中的管道和活动](concepts-pipelines-activities.md)。 本部分提供了 Azure 数据资源管理器源和接收器支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道和活动](concepts-pipelines-activities.md)。 本部分提供了 Azure 数据资源管理器源和接收器支持的属性列表。
 
 ### <a name="azure-data-explorer-as-source"></a>Azure 数据资源管理器作为源
 
@@ -347,6 +347,6 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+* 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
 
-* 详细了解如何[将数据从 Azure 数据工厂复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-load-data)。
+* 详细了解如何[将数据从 Azure 数据工厂和 Synapse Analytics 复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-load-data)。

@@ -1,5 +1,5 @@
 ---
-title: 教程：将 Azure Active Directory 与 SAP Cloud Platform 集成 | Microsoft Docs
+title: 教程：Azure AD 与 SAP Cloud Platform 的 SSO集成
 description: 了解如何在 Azure Active Directory 和 SAP Cloud Platform 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: b15c5a9f9f1e4e144caa2ddaa36d42a2a225b31b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 939bc772a46a35a1d702bf972d42467be8c86dee
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97964042"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547165"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
+# <a name="tutorial-azure-ad-sso-integration-with-sap-cloud-platform"></a>教程：Azure AD 与 SAP Cloud Platform 的 SSO 集成
 
 在本教程中，了解如何将 SAP Cloud Platform 与 Azure Active Directory (Azure AD) 集成。 将 SAP Cloud Platform 与 Azure AD 集成后，可以：
 
@@ -26,14 +26,12 @@ ms.locfileid: "97964042"
 * 让用户使用其 Azure AD 帐户自动登录到 SAP Cloud Platform。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 SAP Cloud Platform 的集成，需要具有以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 SAP Cloud Platform 单一登录的订阅
-
-完成本教程后，已向 SAP Cloud Platform 分配的 Azure AD 用户能够使用[访问面板简介](../user-help/my-apps-portal-end-user-access.md)单一登录到该应用程序。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 SAP Cloud Platform 单一登录 (SSO) 的订阅。
 
 >[!IMPORTANT]
 >用户需要部署自己的应用程序或订阅 SAP Cloud Platform 帐户上的应用程序来测试单一登录。 在本教程中，会在帐户中部署应用程序。
@@ -43,9 +41,9 @@ ms.locfileid: "97964042"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* SAP Cloud Platform 支持 SP 发起的 SSO 
+* SAP Cloud Platform 支持 SP 发起的 SSO。
 
-## <a name="adding-sap-cloud-platform-from-the-gallery"></a>从库中添加 SAP Cloud Platform
+## <a name="add-sap-cloud-platform-from-the-gallery"></a>从库中添加 SAP Cloud Platform
 
 若要配置 SAP Cloud Platform 与 Azure AD 的集成，需要从库中将 SAP Cloud Platform 添加到托管 SaaS 应用列表。
 
@@ -69,7 +67,7 @@ ms.locfileid: "97964042"
     1. **[创建 SAP Cloud Platform 测试用户](#create-sap-cloud-platform-test-user)** - 在 SAP Cloud Platform 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -81,36 +79,40 @@ ms.locfileid: "97964042"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    ![SAP Cloud Platform 域和 URL 单一登录信息](common/sp-identifier-reply.png)
+    a. 在“标识符”文本框，使用以下模式之一键入 SAP Cloud Platform 的 URL：  
 
-    a. 在“登录 URL”  文本框中，键入用户用于登录“SAP Cloud Platform”应用程序的 URL  。 这是“SAP Cloud Platform”应用程序中受保护资源的特定于帐户的 URL。 URL 基于以下模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    | **Identifier** |
+    |-----------|
+    | `https://hanatrial.ondemand.com/<instancename>` |
+    | `https://hana.ondemand.com/<instancename>` |
+    | `https://us1.hana.ondemand.com/<instancename>` |
+    | `https://ap1.hana.ondemand.com/<instancename>` |
+
+    b. 在“回复 URL”文本框中，使用以下一种模式键入 URL：
+
+    | 回复 URL |
+    |----------|
+    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
+    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.us1.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.ap1.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>` |
+
+    c. 在“登录 URL”  文本框中，键入用户用于登录“SAP Cloud Platform”应用程序的 URL  。 这是“SAP Cloud Platform”应用程序中受保护资源的特定于帐户的 URL。 URL 基于以下模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
     >[!NOTE]
     >这是“SAP Cloud Platform”应用程序中要求用户进行身份验证的 URL。
     > 
 
-    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
-    - `https://<subdomain>.hana.ondemand.com/<instancename>`
-
-    b. 在“标识符”文本框，使用以下模式之一键入 SAP Cloud Platform 的 URL：  
-
-    - `https://hanatrial.ondemand.com/<instancename>`
-    - `https://hana.ondemand.com/<instancename>`
-    - `https://us1.hana.ondemand.com/<instancename>`
-    - `https://ap1.hana.ondemand.com/<instancename>`
-
-    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：
-
-    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
-    - `https://<subdomain>.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.us1.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.ap1.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>`
+    | **登录 URL** |
+    |------|
+    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
+    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
 
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SAP Cloud Platform 客户端支持团队](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html)获取登录 URL 和标识符。 可以从“信任管理”部分获取回复 URL，本教程稍后将会介绍。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [SAP Cloud Platform 客户端支持团队](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html)获取登录 URL 和标识符。 可以从“信任管理”部分获取回复 URL，本教程稍后将会介绍。
     > 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -146,11 +148,11 @@ ms.locfileid: "97964042"
 
 2. 单击“信任”  选项卡。
    
-    ![信任](./media/sap-hana-cloud-platform-tutorial/ic790800.png "信任")
+    ![信任](./media/sap-hana-cloud-platform-tutorial/account.png "信任")
 
 3. 在“信任管理”部分中的“本地服务提供程序”下，执行以下步骤： 
 
-    ![显示选择了“本地服务提供程序”选项卡并突出显示了所有文本框的“信任管理”部分的屏幕截图。](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
+    ![显示选择了“本地服务提供程序”选项卡并突出显示了所有文本框的“信任管理”部分的屏幕截图。](./media/sap-hana-cloud-platform-tutorial/service.png "信任管理")
    
     a. 单击 **“编辑”** 。
 
@@ -168,7 +170,7 @@ ms.locfileid: "97964042"
 
 4. 保存“本地服务提供程序”设置后，执行以下步骤获取回复 URL： 
    
-    ![获取元数据](./media/sap-hana-cloud-platform-tutorial/ic793930.png "获取元数据")
+    ![获取元数据](./media/sap-hana-cloud-platform-tutorial/certificate.png "获取元数据")
 
     a. 单击“获取元数据”下载 SAP Cloud Platform 元数据文件  。
 
@@ -178,7 +180,7 @@ ms.locfileid: "97964042"
 
 5. 单击“受信任的标识提供者”  选项卡，并单击“添加受信任的标识提供者”  。
    
-    ![显示选择了“受信任标识提供者”的“信任管理”页的屏幕截图。](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信任管理")
+    ![显示选择了“受信任标识提供者”的“信任管理”页的屏幕截图。](./media/sap-hana-cloud-platform-tutorial/add-service.png "信任管理")
    
     >[!NOTE]
     >若要管理受信任的标识提供者的列表，需要已在本地服务提供程序部分中选择自定义配置类型。 如果选择“默认”配置类型，则对 SAP ID 服务有不可编辑的隐式信任。 如果选择“无”，则不具有任何信任设置。
@@ -187,7 +189,7 @@ ms.locfileid: "97964042"
 
 6. 单击“常规”  选项卡，并单击“浏览”  以上载已下载的元数据文件。
     
-    ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793932.png "信任管理")
+    ![信任管理](./media/sap-hana-cloud-platform-tutorial/general.png "信任管理")
     
     >[!NOTE]
     >上传元数据文件后，会自动填充“单一登录 URL”、“单一注销 URL”和“签名证书”的值。   
@@ -197,7 +199,7 @@ ms.locfileid: "97964042"
 
 8. 在“属性”  选项卡中，执行以下步骤：
     
-    ![属性](./media/sap-hana-cloud-platform-tutorial/ic790804.png "属性") 
+    ![属性](./media/sap-hana-cloud-platform-tutorial/principal-attribute.png "属性") 
 
     a. 单击“添加基于断言的属性”  ，并添加以下基于断言的属性：
        
@@ -207,9 +209,9 @@ ms.locfileid: "97964042"
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |姓 |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |电子邮件 |
    
-     >[!NOTE]
-     >属性的配置取决于如何开发 SCP 上的应用程序，即它们应在 SAML 响应中预期哪些属性，以及它们在哪个名称（主体属性）下通过代码访问此属性。
-     > 
+    >[!NOTE]
+    >属性的配置取决于如何开发 SCP 上的应用程序，即它们应在 SAML 响应中预期哪些属性，以及它们在哪个名称（主体属性）下通过代码访问此属性。
+    > 
     
     b. 屏幕截图中的 **默认属性** 仅用于说明目的。 它并不是使方案正常工作所必需的。  
  
@@ -235,7 +237,7 @@ ms.locfileid: "97964042"
 
 2. 执行以下操作：
    
-    ![授权](./media/sap-hana-cloud-platform-tutorial/ic790805.png "授权")
+    ![授权](./media/sap-hana-cloud-platform-tutorial/roles.png "授权")
    
     a. 单击“授权”  。
 
@@ -255,7 +257,7 @@ ms.locfileid: "97964042"
 
 * 直接转到 SAP Cloud Platform 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 SAP Cloud Platform 磁贴时，应会自动登录到为其设置了 SSO 的 SAP Cloud Platform。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 SAP Cloud Platform 磁贴时，应会自动登录到为其设置了 SSO 的 SAP Cloud Platform。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,20 +4,20 @@ titleSuffix: Azure Digital Twins
 description: 请参阅如何将 Azure 数字孪生实例从一个 Azure 区域移动到另一个 Azure 区域。
 author: baanders
 ms.author: baanders
-ms.date: 08/26/2020
+ms.date: 9/8/2021
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 9617fc3cc7668d8449a9ec3b46e6c82228783e9d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9fc28555be055fe74f183c965190b2c784c4533b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447142"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676782"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>将 Azure 数字孪生实例移动到其他 Azure 区域
 
-如果需要将 Azure 数字孪生实例从一个区域移动到另一个区域，当前过程是在新区域中重新创建资源，然后删除原始资源。 此过程结束时，除了更新的位置以外，将使用的新 Azure 数字孪生实例与第一个实例完全相同。
+如果需要将 Azure 数字孪生实例从一个区域移动到另一个区域，当前过程是在新区域中重新创建资源。 在新区域中重新创建资源后，将删除原始资源。 此过程结束时，除了更新的位置以外，将使用的新 Azure 数字孪生实例与第一个实例完全相同。
 
 本文提供了有关如何执行完整的移动和复制所需的全部数据以使新实例与原始实例相匹配的指导。
 
@@ -67,11 +67,11 @@ ms.locfileid: "114447142"
 
 :::image type="content" source="media/includes/azure-digital-twins-explorer-portal-access.png" alt-text="显示 Azure 数字孪生实例概述页面的 Azure 门户的屏幕截图。其中的“转到 Explorer (预览版)”按钮突出显示。" lightbox="media/includes/azure-digital-twins-explorer-portal-access.png":::
 
-这将打开连接到此实例的 Azure Digital Twins Explorer 窗口。
+设置此按钮将打开连接到此实例的 Azure Digital Twins Explorer 窗口。
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="Internet 浏览器中 Azure 门户的屏幕截图。门户显示 Azure Digital Twins Explorer，它不包含任何数据。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
-按照 Azure Digital Twins Explorer 说明[导出图和模型](how-to-use-azure-digital-twins-explorer.md#export-graph-and-models)。 这会将一个 JSON 文件下载到你的计算机，其中包含模型、孪生体和关系的代码（包括图中当前未使用的模型）。
+按照 Azure Digital Twins Explorer 说明[导出图和模型](how-to-use-azure-digital-twins-explorer.md#export-graph-and-models)。 按照这些说明操作可以将一个 JSON 文件下载到你的计算机，其中包含模型、孪生体和关系的代码（包括图中当前未使用的模型）。
 
 ## <a name="move"></a>移动
 
@@ -90,11 +90,11 @@ ms.locfileid: "114447142"
 
 #### <a name="upload-models-twins-and-graph-with-azure-digital-twins-explorer"></a>通过 Azure Digital Twins Explorer 上传模型、孪生体和图
 
-在本部分中，可以将模型、孪生体和图形重新上传到新实例。 如果原始实例中没有任何模型、孪生体或图形，或者不想将它们移动到新实例，则可以跳到[下一部分](#re-create-endpoints-and-routes)。
+在本部分中，可以将模型、孪生体和图形重新上传到新实例。 如果原始实例中没有任何模型、孪生体或图形，或者不想将它们移动到新实例，则可以跳到[下一部分](#recreate-endpoints-and-routes)。
 
 首先，在 [Azure 门户](https://portal.azure.com)中导航到“Azure 数字孪生资源管理器”以查看新实例。 
 
-按照 Azure Digital Twins Explorer 说明中关于[将文件导入到 Azure Digital Twins Explorer](how-to-use-azure-digital-twins-explorer.md#import-file-to-azure-digital-twins-explorer) 的步骤，将本文前面[下载的 JSON 文件](#download-models-twins-and-graph-with-azure-digital-twins-explorer)导入到新实例。 这会将原始实例中的所有模型、孪生体和关系上传到新实例。
+将本文前面[下载的 JSON 文件](#download-models-twins-and-graph-with-azure-digital-twins-explorer)导入到新实例。 为此，可以按照 Azure Digital Twins Explorer 说明中的步骤操作，[将文件导入到 Azure Digital Twins Explorer](how-to-use-azure-digital-twins-explorer.md#import-file-to-azure-digital-twins-explorer)。 可以通过这些步骤将原始实例中的所有模型、孪生体和关系上传到新实例。
 
 若要验证是否成功上传所有内容，请切换回“孪生图”选项卡，然后选择“查询资源管理器”框中的“运行查询”按钮以运行默认查询，以便显示图形中的所有孪生体和关系。   此操作还会刷新“模型”面板中的模型列表。
 
@@ -106,9 +106,9 @@ ms.locfileid: "114447142"
 
 通过这些视图，可以确认模型、孪生体和图形已重新上传到目标区域中的新实例。
 
-#### <a name="re-create-endpoints-and-routes"></a>重新创建终结点和路由
+#### <a name="recreate-endpoints-and-routes"></a>重新创建终结点和路由
 
-如果原始实例拥有终结点或路由，则需要在新实例中重新创建它们。 如果原始实例中没有任何终结点或路由，或者不想将它们移动到新实例，则可以跳到[下一部分](#relink-connected-resources)。
+如果原始实例拥有终结点或路由，则需要在新实例中重新创建它们。 否则，如果原始实例中没有任何终结点或路由，或者不想将它们移动到新实例，则可以跳到[下一部分](#relink-connected-resources)。
 
 否则，请按照[管理终结点和路由](how-to-manage-routes.md)中的步骤，使用新实例进行操作。 请记住以下几点：
 

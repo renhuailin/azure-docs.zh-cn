@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b53333ff9d61e6ee5bbc98bb4756199ca07486d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97093632"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630065"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 存储报告数据多长时间？
 
@@ -73,8 +73,11 @@ ms.locfileid: "97093632"
 
 | 报表         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--                 | :--                 |
-| 有风险的用户  | 7 天        | 30 天             | 90 天             |
+| 有风险用户    | 无限制      | 无限制            | 无限制            |
 | 有风险的登录 | 7 天        | 30 天             | 90 天             |
+
+> [!NOTE]
+> 在风险得到修正之前，不会删除有风险的用户。
 
 ---
 

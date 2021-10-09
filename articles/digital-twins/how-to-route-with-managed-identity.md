@@ -1,5 +1,5 @@
 ---
-title: 使用托管标识（预览版）路由事件
+title: 使用托管标识路由事件
 titleSuffix: Azure Digital Twins
 description: 了解如何使用 Azure 门户或 CLI 为 Azure 数字孪生启用系统分配的标识，并使用该标识转发事件。
 author: baanders
@@ -8,16 +8,16 @@ ms.date: 6/15/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: subject-rbac-steps, contperf-fy21q4
-ms.openlocfilehash: 8990536b4ddc09f5673fe00a70bc4f12f4f4a169
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4d50c40426d5fb687b28a965b9d921ef6fc4df38
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468786"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651899"
 ---
-# <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview"></a>启用用于路由 Azure 数字孪生事件的托管标识（预览版）
+# <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events"></a>启用用于路由 Azure 数字孪生事件的托管标识
 
-本文介绍如何启用 [Azure 数字孪生实例的系统分配的标识](concepts-security.md#managed-identity-for-accessing-other-resources-preview)（目前为预览版），并在将事件转发到受支持的路由目标使用该标识。 虽然路由不强制要求设置托管标识，但它可以帮助实例轻松访问其他受 Azure AD 保护的资源，例如[事件中心](../event-hubs/event-hubs-about.md)、[服务总线](../service-bus-messaging/service-bus-messaging-overview.md) 目标和 [Azure 存储容器](../storage/blobs/storage-blobs-introduction.md)。
+本文介绍如何启用 [Azure 数字孪生实例的系统分配的标识](concepts-security.md#managed-identity-for-accessing-other-resources)，并在将事件转发到受支持的路由目标时使用该标识。 虽然路由不强制要求设置托管标识，但它可以帮助实例轻松访问其他受 Azure AD 保护的资源，例如[事件中心](../event-hubs/event-hubs-about.md)、[服务总线](../service-bus-messaging/service-bus-messaging-overview.md) 目标和 [Azure 存储容器](../storage/blobs/storage-blobs-introduction.md)。
 
 本文中所涉及的步骤如下： 
 
@@ -45,7 +45,7 @@ ms.locfileid: "114468786"
 
 在此选项卡中，选择“系统托管标识”对应的“打开”选项以打开此功能。 
 
-:::image type="content" source="media/how-to-enable-managed-identities/create-instance-advanced.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生的“创建资源”对话框的“高级”选项卡。系统托管标识已启用。":::
+:::image type="content" source="media/how-to-route-with-managed-identity/create-instance-advanced.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生的“创建资源”对话框的“高级”选项卡。系统托管标识已启用。":::
 
 然后，可以使用底部的导航按钮继续完成余下的实例设置。
    
@@ -71,13 +71,13 @@ az dt create --dt-name <new-instance-name> --resource-group <resource-group> --a
 
 1. 在门户搜索栏中搜索你的实例名称，然后选择该实例查看其详细信息。
 
-1. 在左侧菜单中选择“标识(预览版)”。
+1. 在左侧菜单中选择“标识”。
 
 1. 在此页上，选择“打开”选项以打开此功能。
 
 1. 选择“保存”按钮，然后点击“是”以确认 。
 
-    :::image type="content" source="media/how-to-enable-managed-identities/identity-digital-twins.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生实例的“标识(预览版)”页。":::
+    :::image type="content" source="media/how-to-route-with-managed-identity/identity-digital-twins.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生实例的“标识”页。":::
 
 保存更改后，此页将显示新标识的更多字段：“对象 ID”和“权限”。 
 

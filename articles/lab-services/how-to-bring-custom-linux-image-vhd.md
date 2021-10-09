@@ -3,12 +3,12 @@ title: Azure 实验室服务 - 如何从物理实验室环境引入 Linux 自定
 description: 描述如何从物理实验室环境中引入 Linux 自定义映像。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: afaaf1d28043a7b88e627f730a619daf46c59e0d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 9a8591d383ac5230085bc83d1d791e9de830a99e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451684"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771358"
 ---
 # <a name="bring-a-linux-custom-image-from-your-physical-lab-environment"></a>从物理实验室环境中引入 Linux 自定义映像
 
@@ -38,7 +38,7 @@ Azure 认可多种[分发和版本](../virtual-machines/linux/endorsed-distros.m
     - VM 必须创建为第 1 代 VM。
     - 使用“默认交换机”网络配置选项允许 VM 连接到 Internet。
     - 在“连接虚拟硬盘”设置中，磁盘的“大小”不得超过 128 GB，如下图所示 。
-       
+
         :::image type="content" source="./media/upload-custom-image-shared-image-gallery/connect-virtual-hard-disk.png" alt-text="显示“连接虚拟硬盘”的屏幕截图。":::
 
     - 在“安装选项”设置中，选择之前从 Ubuntu 下载的 .iso 文件。
@@ -52,7 +52,7 @@ Azure 认可多种[分发和版本](../virtual-machines/linux/endorsed-distros.m
     按照上述步骤进行操作时，需要重点介绍几个要点：
     - 运行 deprovision+user 命令时，这些步骤将创建[通用](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)映像。 但无法保证映像中的所有敏感信息均已清除，或该映像适合再分发。
     - 最后一步是将 VHDX 文件转换为 VHD 文件。 下面是说明如何通过 Hyper-V 管理器执行此操作的等效步骤：
-        
+
         1. 转到“Hyper-V 管理器” > “操作” > “编辑磁盘”  。
         1. 接下来，将磁盘从 VHDX 转换为 VHD。
         1. 对于“磁盘类型”，选择“固定大小”。 
@@ -61,18 +61,18 @@ Azure 认可多种[分发和版本](../virtual-machines/linux/endorsed-distros.m
 
 为了帮助调整 VHD 大小并将其转换为 VHDX，还可使用以下 PowerShell cmdlet：
 
-- [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=windowsserver2019-ps)
-- [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=windowsserver2019-ps)
+- [Resize-VHD](/powershell/module/hyper-v/resize-vhd)
+- [Convert-VHD](/powershell/module/hyper-v/convert-vhd)
 
 ## <a name="upload-the-custom-image-to-a-shared-image-gallery"></a>将自定义映像上传到共享映像库
 
 1. 将 VHD 上传到 Azure 以创建托管磁盘。
     1. 可以使用存储资源管理器，或在命令行中使用 AzCopy，如[将 VHD 上传到 Azure 或将托管磁盘复制到其他区域](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)中所示。
 
-    1. 上传 VHD 后，现在应具有可在 Azure 门户看到的托管磁盘。 
-    
+    1. 上传 VHD 后，现在应具有可在 Azure 门户看到的托管磁盘。
+
     如果计算机进入睡眠或锁定状态，上传过程可能会中断和失败。 此外，请确保在 AzCopy 完成后，撤销 SAS 对磁盘的访问权限。 否则，你在尝试从磁盘创建映像时会看到错误：“状态为‘活动上传’的磁盘‘磁盘名称’不支持‘创建映像’操作。 错误代码：OperationNotAllowed*。”
-    
+
     使用 Azure 门户中托管磁盘的“大小和性能”选项卡来更改磁盘大小。 如前所述，大小不能超过 128 GB。
 
 1. 在共享映像库中，创建映像定义和版本：
@@ -80,29 +80,28 @@ Azure 认可多种[分发和版本](../virtual-machines/linux/endorsed-distros.m
         - 对于“VM 代系”，选择“第 1 代”。
         - 选择“Linux”作为“操作系统” 。
         - 选择“通用”作为“操作系统状态” 。
-     
-    若要详细了解可以为映像定义指定的值，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-definitions)。 
-    
+
+    若要详细了解可以为映像定义指定的值，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-definitions)。
+
     还可以选择使用现有映像定义，并创建自定义映像的新版本。
-    
+
 1. [创建映像版本](../virtual-machines/image-version.md)：
-   - “版本号”属性采用以下格式：MajorVersion.MinorVersion.Patch。 使用实验室服务创建实验室并选择自定义映像时，将自动使用最新版本的映像。 依次根据版本最高的 MajorVersion、MinorVersion 和 Patch 选择最新版本。
+    - “版本号”属性采用以下格式：MajorVersion.MinorVersion.Patch。 使用实验室服务创建实验室并选择自定义映像时，将自动使用最新版本的映像。 依次根据版本最高的 MajorVersion、MinorVersion 和 Patch 选择最新版本。
     - 对于“源”，从下拉列表中选择“磁盘和/或快照” 。
     - 对于“OS 磁盘”属性，选择在先前步骤中创建的磁盘。
-    
+
     有关可为映像定义指定的值的详细信息，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-versions)。
 
 ## <a name="create-a-lab"></a>创建实验室
-   
+
 在实验室服务中[创建实验室](tutorial-setup-classroom-lab.md)，并从共享映像库中选择自定义映像。
 
-如果在原始 Hyper-V VM 上安装操作系统后扩展了磁盘，则还需要在 Linux 文件系统中扩展分区，才能使用未分配的磁盘空间：
-- 登录到实验室的模板 VM，并执行与[扩展磁盘分区和文件系统](../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem)中所示内容类似的步骤。
-    
+如果在原始 Hyper-V VM 上安装操作系统后扩展了磁盘，则还需要在 Linux 文件系统中扩展分区，才能使用未分配的磁盘空间。  登录到实验室的模板 VM，并执行与[扩展磁盘分区和文件系统](../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem)中所示内容类似的步骤。
+
 OS 磁盘通常位于 /dev/sad2 分区上。 若要查看 OS 磁盘分区的当前大小，请使用命令：df -h。
-    
+
 ## <a name="next-steps"></a>后续步骤
 
-* [共享映像库概述](../virtual-machines/shared-image-galleries.md)
-* [附加或分离共享映像库](how-to-attach-detach-shared-image-gallery.md)
-* [使用共享映像库](how-to-use-shared-image-gallery.md)
+- [共享映像库概述](../virtual-machines/shared-image-galleries.md)
+- [附加或分离共享映像库](how-to-attach-detach-shared-image-gallery.md)
+- [使用共享映像库](how-to-use-shared-image-gallery.md)

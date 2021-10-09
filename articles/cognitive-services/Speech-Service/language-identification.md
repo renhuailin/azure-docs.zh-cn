@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/27/2021
 ms.author: lajanuar
 zone_pivot_groups: programming-languages-cs-cpp-py
-ms.openlocfilehash: e7ad9593ddc77947c3d5c48afa04723e33a261a2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6830ded4b6a074a29de9741eee957b0a4a1ff4b3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537033"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588117"
 ---
-# <a name="language-identification"></a>语言识别
+# <a name="language-identification-preview"></a>语音识别（预览版）
 
 语言识别用于确定在与所提供的语言列表比较时，传递到语音 SDK 的音频中所说的语言。 
 
-进行[语音翻译](./get-started-speech-translation.md#multi-lingual-translation-with-language-identification)或[在语音识别期间执行语言标识](/azure/cognitive-services/speech-service/how-to-automatic-language-detection)时，也可使用语言标识。 
+进行[语音翻译](./get-started-speech-translation.md#multi-lingual-translation-with-language-identification)或[在语音识别期间执行语言标识](./how-to-automatic-language-detection.md)时，也可使用语言标识。 
 
 若要查看哪些语言可用，请参阅[语言支持](language-support.md)。
 

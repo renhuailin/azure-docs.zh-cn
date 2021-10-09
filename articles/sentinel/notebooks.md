@@ -10,18 +10,20 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/24/2021
-ms.openlocfilehash: 7b1202648db3aed73ea040fb60610879a6816dd9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d57941c06f4917c8ff3b27f5e566fc9d5f95474b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737568"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272996"
 ---
-# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>使用 Jupyter Notebook 搜寻安全威胁
+# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>使用 Jupyter 笔记本搜寻安全威胁
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel 的基础是数据存储；它结合了高性能查询和动态架构并可扩展到大规模数据卷。 Azure 门户和所有 Azure Sentinel 工具都使用一个公共 API 来访问此数据存储。 同一 API 也可用于 [Jupyter](https://jupyter.org/) 笔记本和 Python 等外部工具。 虽然可以在门户中执行许多常见任务，但 Jupyter 扩展了可对此数据执行的操作范围。 它将完整的可编程性与用于机器学习、可视化效果和数据分析的大量库集合组合在一起。 这些属性使 Jupyter 成为安全调查和搜寻的引人注目的工具。
+Azure Sentinel 的基础是数据存储；它结合了高性能查询和动态架构并可扩展到大规模数据卷。 Azure 门户和所有 Azure Sentinel 工具都使用一个公共 API 来访问此数据存储。
+
+同一 API 也可用于 [Jupyter](https://jupyter.org/) 笔记本和 Python 等外部工具。 虽然可以在门户中执行许多常见任务，但 Jupyter 扩展了可对此数据执行的操作范围。 它将完整的可编程性与用于机器学习、可视化效果和数据分析的大量库集合组合在一起。 这些属性使 Jupyter 成为安全调查和搜寻的引人注目的工具。
 
 例如，使用笔记本可以进行以下操作：
 
@@ -29,14 +31,20 @@ Azure Sentinel 的基础是数据存储；它结合了高性能查询和动态�
 - 创建非内置于 Azure Sentinel 的数据可视化效果（例如，自定义时间线和进程树）
 - 集成 Azure Sentinel 外部的数据源（例如，本地数据集）。
 
-我们已将 Jupyter 体验集成到 Azure 门户中，使你可以轻松地创建和运行笔记本来分析数据。 Kqlmagic 库提供了一种连接，使你可以从 Azure Sentinel 获取查询并直接在笔记本中运行它们。 查询使用 [Kusto 查询语言](https://kusto.azurewebsites.net/docs/kusto/query/index.html)。 Microsoft 的某些安全分析师开发的几个笔记本打包在 Azure Sentinel 中。 其中一些笔记本专门用于特定方案，可以按原样使用。 其他笔记本用作示例，以说明可以复制或修改以便在自己的笔记本中使用的技术和功能。 其他笔记本还可从 Azure Sentinel GitHub 社区导入。
+我们已将 Jupyter 体验集成到 Azure 门户中，使你可以轻松地创建和运行笔记本来分析数据。 Kqlmagic 库提供了一种连接，使你可以从 Azure Sentinel 获取 [KQL](https://kusto.azurewebsites.net/docs/kusto/query/index.html) 查询并直接在笔记本中运行它们。
 
-集成的 Jupyter 体验使用 [Azure Notebooks](https://notebooks.azure.com/) 存储、共享和执行笔记本。 如果你的计算机上或其他 JupyterHub 环境（例如，Azure Databricks）有 Python 环境和 Jupyter，也可以以本地方式运行这些笔记本。
+Microsoft 的某些安全分析师开发的几个笔记本打包在 Azure Sentinel 中：
+
+- 其中一些笔记本专门用于特定方案，可以按原样使用。
+- 其他笔记本用作示例，以说明可以复制或修改以便在自己的笔记本中使用的技术和功能。
+
+还有一些笔记本也可以从 [Azure Sentinel GitHub 社区](https://github.com/Azure/Azure-Sentinel-Notebooks/)导入。
 
 
 ## <a name="notebook-components"></a>笔记本组件
 
 笔记本包括两个组件：
+
 - **基于浏览器的界面**，你可以在其中输入和运行查询和代码，执行结果也显示在此处。
 - ***内核***，负责分析和执行代码本身。
 
@@ -49,23 +57,29 @@ Azure Sentinel 笔记本使用许多常见的 Python 库（例如，pandas、mat
 - 统计和数字计算
 - 机器学习和深度学习
 
-我们还在 [msticpy](https://github.com/Microsoft/msticpy/) 包中发布了一些开放源代码 Jupyter 安全工具。 此包可用于许多随附的笔记本。 Msticpy 工具专为帮助创建用于搜寻和调查的笔记本而设计，我们正在积极地致力于提供新功能和改进。 有关详细信息，请参阅 [MSTIC Jupyter 和 Python 安全工具文档](https://msticpy.readthedocs.io/)。
+为了避免将复杂而重复的代码键入或粘贴到笔记本单元格中，大多数 Python 笔记本依赖于名为包的第三方库。 若要使用笔记本中的包，需要安装和导入包。 Azure ML 计算预先安装了最常见的包。 请确保导入包或包的相关部分，如模块、文件、函数或类。
 
-[Azure Sentinel GitHub 社区存储库](https://github.com/Azure/Azure-Sentinel)是存储任何未来的 Azure Sentinel 笔记本的位置，这些笔记本由 Microsoft 生成或由社区提供。
+Azure Sentinel 笔记本使用名为 [MSTICPy](https://github.com/Microsoft/msticpy/) 的 Python 包，它是用于数据检索、分析、扩充和可视化的网络安全工具集合。 
 
+MSTICPy 工具专为帮助创建用于搜寻和调查的笔记本而设计，我们正在积极地致力于提供新功能和改进。 有关详细信息，请参阅：
+
+- [MSTIC、Jupyter 和 Python 安全工具文档](https://msticpy.readthedocs.io/)
+- [教程：开始使用 Azure Sentinel 中的 Jupyter Notebook 和 MSTICPy](notebook-get-started.md)
+- [适用于 Azure Sentinel 中的 Jupyter Notebook 和 MSTICPy 的高级配置](notebooks-msticpy-advanced.md)
+
+[Azure Sentinel GitHub 社区存储库](https://github.com/Azure/Azure-Sentinel-Notebooks/)是存储任何未来的 Azure Sentinel 笔记本的位置，这些笔记本由 Microsoft 生成或由社区提供。
 
 ## <a name="manage-access-to-azure-sentinel-notebooks"></a>管理对 Azure Sentinel 笔记本的访问
 
-若要使用笔记本，首先必须具有适当的权限，具体取决于用户角色。
+若要在 Azure Sentinel 中使用 Jupyter 笔记本，首先必须具有适当的权限，具体取决于用户角色。
 
-在 [Azure 机器学习](../machine-learning/overview-what-is-azure-machine-learning.md) (Azure ML) 平台上运行 Azure Sentinel 笔记本时，必须对 Azure Sentinel 工作区和 [Azure ML 工作区](../machine-learning/concept-workspace.md)均具有适当的访问权限。
+虽然可以在 JupyterLab 或 Jupyter 经典中运行 Azure Sentinel 笔记本，但在 Azure Sentinel 中，笔记本在 [Azure 机器学习](../machine-learning/overview-what-is-azure-machine-learning.md) (Azure ML) 平台上运行。 要运行 Azure Sentinel 笔记本，必须对 Azure Sentinel 工作区和 [Azure ML 工作区](../machine-learning/concept-workspace.md)均具有适当的访问权限。
 
 |权限  |说明  |
 |---------|---------|
 |**Azure Sentinel 权限**     |   与其他 Azure Sentinel 资源一样，若要访问 Azure Sentinel Notebooks 边栏选项卡上的笔记本，则需要 Azure Sentinel 读取者、Azure Sentinel 响应者或 Azure Sentinel 参与者角色。 <br><br>有关详细信息，请参阅 [Azure Sentinel 中的权限](roles.md)。|
 |**Azure 机器学习权限**     | Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样，创建新的 Azure 机器学习工作区时，它附带了默认角色。 可以将用户添加到工作区，并将他们分配给这些内置角色之一。 有关详细信息，请参阅 [Azure 机器学习默认角色](../machine-learning/how-to-assign-roles.md)和 [Azure 内置角色](../role-based-access-control/built-in-roles.md)。 <br><br>   **重要说明**：在 Azure 中可将角色访问权限划分为多个级别。 例如，对工作区具有所有者访问权限的人可能没有对包含工作区的资源组的所有者访问权限。 有关详细信息，请参阅 [Azure RBAC 工作原理](../role-based-access-control/overview.md)。 <br><br>如果你是 Azure ML 工作区的所有者，可以添加和删除工作区的角色，并将角色分配给用户。 有关详细信息，请参阅：<br>    - [Azure 门户](../role-based-access-control/role-assignments-portal.md)<br>    - [PowerShell](../role-based-access-control/role-assignments-powershell.md)<br>    - [Azure CLI](../role-based-access-control/role-assignments-cli.md)<br>   - [REST API](../role-based-access-control/role-assignments-rest.md)<br>    - [Azure 资源管理器模板](../role-based-access-control/role-assignments-template.md)<br> - [Azure 机器学习 CLI](../machine-learning/how-to-assign-roles.md#manage-workspace-access)<br><br>如果内置角色不足，还可以创建自定义角色。 自定义角色可能具有该工作区中的读取、写入、删除和计算资源权限。 可以使角色在特定工作区级别、特定资源组级别或特定订阅级别可用。 有关详细信息，请参阅[创建自定义角色](../machine-learning/how-to-assign-roles.md#create-custom-role)。 |
 |     |         |
-
 
 ## <a name="create-an-azure-ml-workspace-from-azure-sentinel"></a>从 Azure Sentinel 创建 Azure ML 工作区
 
@@ -108,7 +122,13 @@ Azure Sentinel 笔记本使用许多常见的 Python 库（例如，pandas、mat
 
 创建 AML 工作区后，请在 Azure Sentinel 的 Azure ML 工作区中开始启动笔记本。
 
-**启动笔记本**：
+> [!NOTE]
+> 可以将笔记本视为静态文档，例如在 GitHub 内置静态笔记本呈现器中。 但是，若要在笔记本中运行代码，你必须将笔记本连接到名为 Jupyter 内核的后端进程。 内核运行代码，并保存代码创建的所有变量和对象。 浏览器是此数据的查看器。
+>
+> 在 Azure ML 中，内核在名为 Azure ML 计算的虚拟机上运行。 计算实例可以支持同时运行多个笔记本。
+>
+
+从 Azure Sentinel 启动笔记本：
 
 1. 在 Azure 门户中，导航到“Azure Sentinel” > “威胁管理” > “笔记本”，可在此处看到 Azure Sentinel 提供的笔记本  。
 
@@ -137,45 +157,205 @@ Azure Sentinel 笔记本使用许多常见的 Python 库（例如，pandas、mat
 
     > [!TIP]
     > 如果要创建新的计算实例以测试笔记本，请创建“常规用途”类别的实例。
+    >
+    > 内核还显示在 Azure ML 窗口右上角。 如果未选择所需的内核，请从下拉列表中选择其他版本。
+    >
 
 1. 创建并启动笔记本服务器后，可以开始运行笔记本单元格。 在每个单元格中，选择“运行”图标以运行笔记本代码。
 
     有关详细信息，请参阅[命令模式快捷方式](../machine-learning/how-to-run-jupyter-notebooks.md)
 
-1. 如果需要重启笔记本内核并从头重新运行笔记本单元格，请选择“内核操作” > “重启内核” 。 例如：
+1. 如果笔记本挂起或者你希望从头开始，可以重启内核，并从头开始重新运行笔记本单元格。 选择“内核操作” > “重启内核”。 例如：
 
     :::image type="content" source="media/notebooks/sentinel-notebooks-restart-kernel.png" alt-text="重启笔记本内核。":::
 
-## <a name="troubleshooting"></a>故障排除
+    > [!IMPORTANT]
+    > 重启内核将擦除所有变量和其他状态。 重新启动后，需要重新运行任何初始化和身份验证单元格。
+    >
+
+## <a name="run-code-in-your-notebook"></a>将代码粘贴到笔记本中
+
+在笔记本中：
+
+- “Markdown”单元格包含文本，包括 HTML 和静态图像。
+- “代码”单元格包含代码。 选择某一代码单元格后，通过选择该单元格左侧的“播放”图标或按 SHIFT+ENTER 来运行该单元格中的代码。
+
+> [!IMPORTANT]
+> 始终按顺序运行笔记本代码单元格。 跳过单元格可能会导致错误。
+>
+
+例如，在笔记本中运行以下代码单元格：
+
+```python
+# This is your first code cell. This cell contains basic Python code.
+
+# You can run a code cell by selecting it and then selecting
+# the Play button to the left of the cell, or by pressing SHIFT+ENTER.
+# Code output displays below the code.
+
+print("Congratulations, you just ran this code cell")
+
+y = 2 + 2
+
+print("2 + 2 =", y)
+
+```
+
+上面所示的示例代码生成以下输出：
+
+```python
+Congratulations, you just ran this code cell
+
+2 + 2 = 4
+```
+
+笔记本代码单元格中的变量集在单元格格之间保持不变，这样可以将单元格链接在一起。 例如，下面的代码单元格使用上一个单元格中的 `y` 值：
+
+```python
+# Note that output from the last line of a cell is automatically
+# sent to the output cell, without needing the print() function.
+
+y + 2
+```
+
+输出为：
+
+```output
+6
+```
+
+## <a name="download-all-azure-sentinel-notebooks"></a>下载所有 Azure Sentinel 笔记本
+
+本部分介绍如何使用 Git 从 Azure Sentinel 笔记本内部将 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel-Notebooks/)提供的所有笔记本直接下载到 Azure ML 工作区。
+
+将 Azure Sentinel 笔记本存储在 Azure ML 工作区中，可以轻松更新它们。
+
+1. 在 Azure Sentinel 笔记本中，将以下代码输入空单元格中，然后运行该单元格：
+
+    ```python
+    !git clone https://github.com/Azure/Azure-Sentinel-Notebooks.git azure-sentinel-nb
+    ```
+
+    GitHub 存储库内容的副本是在 Azure ML 工作区中用户文件夹的 azure-sentinel-nb 目录中创建的。
+
+1. 将所需的笔记本从此文件夹复制到工作目录。
+
+1. 若要使用 GitHub 中的最近更改来更新笔记本，请运行：
+
+    ```python
+    !cd azure-sentinel-nb && git pull
+    ```
+
+
+## <a name="troubleshooting"></a>疑难解答
+
+通常，笔记本无缝创建或附加到内核，无需进行任何手动更改。 如果收到错误，或者笔记本似乎未运行，则可能需要检查内核的版本和状态。
 
 如果笔记本遇到问题，请参阅 [Azure 机器学习故障排除](../machine-learning/how-to-run-jupyter-notebooks.md#troubleshooting)。
+
+### <a name="force-caching-for-user-accounts-and-credentials-between-notebook-runs"></a>在笔记本运行之间强制缓存用户帐户和凭据
+
+默认情况下，即使对于同一会话，也不会在笔记本运行之间缓存用户帐户和凭据。
+
+在会话期间强制缓存：
+
+1. 使用 Azure CLI 进行身份验证。 在空笔记本单元格中，输入并运行以下代码：
+
+    ```python
+    !az login
+    ```
+
+    随即显示以下输出：
+
+    ```python
+    To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the 9-digit device code to authenticate.
+    ```
+
+1. 选择并复制输出中的九个字符令牌，并选择 `devicelogin` URL 以跳到指示的页面。 
+
+1. 将令牌粘贴到对话框中，并在出现提示时继续登录。
+
+    成功登录后，将看到以下输出：
+
+    ```python
+    Subscription <subscription ID> 'Sample subscription' can be accessed from tenants <tenant ID>(default) and <tenant ID>. To select a specific tenant when accessing this subscription, use 'az login --tenant TENANT_ID'.
+
+> [!NOTE]
+> The following tenants don't contain accessible subscriptions. Use 'az login --allow-no-subscriptions' to have tenant level access.
+>
+> ```
+> <tenant ID> 'foo'
+><tenant ID> 'bar'
+>[
+> {
+>    "cloudName": "AzureApp",
+>    "homeTenantId": "<tenant ID>",
+>    "id": "<ID>",
+>    "isDefault": true,
+>    "managedByTenants": [
+>    ....
+>```
+>
+### Error: *Runtime dependency of PyGObject is missing*
+
+If the *Runtime dependency of PyGObject is missing* error appears when you load a query provider, try troubleshooting using the following steps:
+
+1. Proceed to the cell with the following code and run it:
+
+    ```python
+    qry_prov = QueryProvider("AzureSentinel")
+    ```
+
+    将显示类似于下面的警告，指示缺少 Python 依赖项 (`pygobject`)：
+
+    ```output
+    Runtime dependency of PyGObject is missing.
+
+    Depends on your Linux distribution, you can install it by running code similar to the following:
+    sudo apt install python3-gi python3-gi-cairo gir1.2-secret-1
+
+    If necessary, see PyGObject's documentation: https://pygobject.readthedocs.io/en/latest/getting_started.html
+
+    Traceback (most recent call last):
+      File "/anaconda/envs/azureml_py36/lib/python3.6/site-packages/msal_extensions/libsecret.py", line 21, in <module>
+    import gi  # https://github.com/AzureAD/microsoft-authentication-extensions-for-python/wiki/Encryption-on-Linux
+    ModuleNotFoundError: No module named 'gi'
+    ```
+
+1. 使用位于 Azure Sentinel 笔记本 GitHub 存储库中的 [aml-compute-setup.sh](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/HowTos/aml-compute-setup.sh) 脚本，在计算实例的所有笔记本和 Anaconda 环境中自动安装 `pygobject`。
+
+> [!TIP]
+> 还可以通过从笔记本运行以下代码来解决此警告：
+>
+> ```python
+> !conda install --yes -c conda-forge pygobject
+> ```
+>
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过浏览一些笔记本模板（例如 [Azure Log Analytics 上的凭据扫描](https://www.youtube.com/watch?v=OWjXee8o04M)和“引导式调查 - 处理警报”）详细了解在威胁搜寻和调查中如何使用笔记本 。 
+在 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel-Notebooks)中共享的笔记本旨在用作开发自己的笔记本时可以使用的有用工具、插图和代码示例。
 
-    在 Azure Sentinel >“笔记本” > “模板”选项卡中找到笔记本模板 。
+欢迎提供反馈、建议、功能请求、笔记本、bug 报告或对现有笔记本的改进和补充。 请前往 [Azure Sentinel GitHub 社区](https://github.com/Azure/Azure-Sentinel)创建问题或分支并上传贡献。
 
-- 有关详细信息，请参阅 [Azure Sentinel Github 存储库](https://github.com/Azure/Azure-Sentinel-Notebooks)：
+- 通过浏览一些笔记本模板（例如 [Azure Log Analytics 上的凭据扫描](https://www.youtube.com/watch?v=OWjXee8o04M)和“引导式调查 - 处理警报”）详细了解在威胁搜寻和调查中如何使用笔记本。
+
+    在 Azure Sentinel >“笔记本” > “模板”选项卡中找到更多笔记本模板。
+
+- 有关更多笔记本，请参阅 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel-Notebooks)：
 
     - [**Sample-Notebooks**](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/Sample-Notebooks) 目录中保存了示例笔记本以及可用于显示预期输出的数据。
 
     - [**HowTos**](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/HowTos) 目录包含描述设置默认 Python 版本、从笔记本创建 Azure Sentinel 书签等概念的笔记本。
 
-    有关详细信息，请参阅 [Azure ML 笔记本和 Azure Sentinel 入门](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/A%20Getting%20Started%20Guide%20For%20Azure%20Sentinel%20ML%20Notebooks.ipynb)指南。
-
-> [!NOTE]
-> 在 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel-Notebooks)中共享的笔记本旨在用作开发自己的笔记本时可以使用的有用工具、插图和代码示例。
->
-> 欢迎提供反馈、建议、功能请求、笔记本、bug 报告或对现有笔记本的改进和补充。 请前往 [Azure Sentinel GitHub 社区](https://github.com/Azure/Azure-Sentinel)创建问题或分支并上传贡献。
->
 
 有关详细信息，请参阅：
 
+  - [教程：开始使用 Azure Sentinel 中的 Jupyter Notebook 和 MSTICPy](notebook-get-started.md)
+- [教程：Azure Sentinel 笔记本 - 入门](https://www.youtube.com/results?search_query=azazure+sentinel+notebooks)（视频）
+- [教程：在不离开 Azure ML 工作室的情况下编辑和运行 Jupyter 笔记本](https://www.youtube.com/watch?v=AAj-Fz0uCNk)（视频）
 - [网络研讨会：Azure Sentinel 笔记本基础](https://www.youtube.com/watch?v=rewdNeX6H94)
-- [教程：Azure Sentinel 笔记本 - 入门](https://www.youtube.com/results?search_query=azazure+sentinel+notebooks)
 - [主动搜寻威胁](hunting.md)
 - [在搜寻时使用书签保存感兴趣的信息](bookmarks.md)
 - [Jupyter、msticpy 和 Microsoft Azure Sentinel](https://msticpy.readthedocs.io/en/latest/getting_started/JupyterAndAzureSentinel.html)
-- [教程：在不离开 Azure ML 工作室的情况下编辑和运行 Jupyter 笔记本](https://www.youtube.com/watch?v=AAj-Fz0uCNk)

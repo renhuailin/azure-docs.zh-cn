@@ -1,14 +1,14 @@
 ---
-title: 基于 VM 创建 Azure 开发测试实验室自定义映像 | Microsoft Docs
+title: 基于 VM 创建 Azure 开发测试实验室自定义映像
 description: 介绍如何通过 Azure 门户在 Azure 开发测试实验室中基于预配的 VM 创建自定义映像
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 8bc41f267709950a4ec6766b439ec1e6493b25ea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 61d57b458151d2832b32917d39e7ab07953451c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740764"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673875"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>从 VM 创建自定义映像
 

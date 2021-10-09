@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/16/2021
-ms.openlocfilehash: fd0fb07ad96d9897859281ef368452c96798d542
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 68c43d149da28f7a140ac4f4fd32d76fe53f3e2d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428643"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663300"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>用于 Azure 数据工厂的 Azure 专用链接
 
@@ -143,7 +143,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 
 9. 选择“查看 + 创建”  选项卡，或选择“查看 + 创建”  按钮。
 
-10. 选择“创建”。
+10. 选择“创建”  。
 
 ### <a name="create-a-virtual-machine-for-the-self-hosted-integration-runtime-shir"></a>为自承载集成运行时 (SHIR) 创建一个虚拟机
 你还必须创建或分配现有虚拟机，以在上述新子网中运行自承载集成运行时。
@@ -224,7 +224,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 
     | 设置 | 值 |
     | ------- | ----- |
-    | **联网** |  |
+    | **网络** |  |
     | 虚拟网络 | 选择上述创建的虚拟网络。 |
     | 子网 | 选择上述创建的子网。 |
     | **专用 DNS 集成** |  |

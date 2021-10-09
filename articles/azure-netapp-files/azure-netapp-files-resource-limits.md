@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 0b05b934b4dc57b4db941755cfcfb2f8d21fc2c6
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 4a97b89957a4f451aaa9c7305535f87980234db2
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824960"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094284"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -50,7 +50,11 @@ ms.locfileid: "122824960"
 |  每个卷的最大导出策略规则数     |    5  |    否    | 
 |  分配给手动 QoS 卷的最小吞吐量     |    1 MiB/s   |    否    |    
 |  分配给手动 QoS 卷的最大吞吐量     |    4,500 MiB/s    |    否    |    
-|  跨区域复制数据保护卷（目标卷）的数量     |    5    |    是    |     
+|  跨区域复制数据保护卷（目标卷）的数量     |    10    |    是    |     
+|  每个卷的基于策略（计划）备份的最大数量  | <ul><li> 每日保留计数：1（最小值）到 1019（最大值） </li> <li> 每周保留计数：1（最小值）到 1019（最大值） </li> <li> 每月保留计数：1（最小值）到 1019（最大值） </ol></li> <br> 每日、每周和每月备份保留计数 *组合最大值* 为 1019。  |  N  |
+|  保护卷的大小上限  |  100 TiB  |  N  |
+|  每个订阅可备份的卷的最大数目   |  5  |  Y  |
+|  每天每个卷的手动备份最大数量 |  5  |  Y  |
 
 有关详细信息，请参阅[容量管理的常见问题解答](azure-netapp-files-faqs.md#capacity-management-faqs)。
 

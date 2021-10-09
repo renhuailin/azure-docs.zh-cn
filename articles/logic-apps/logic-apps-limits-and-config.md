@@ -1,26 +1,26 @@
 ---
 title: 限制和配置参考指南
-description: Azure 逻辑应用的限制和配置信息的参考指南
+description: Azure 逻辑应用的限制和配置信息的参考指南。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: rohithah, rarayudu, azla
 ms.topic: reference
-ms.date: 08/30/2021
-ms.openlocfilehash: da7c4b159111165b1dabb6ff3ca45715b442daba
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/16/2021
+ms.openlocfilehash: 77bbfb886f04c7917154ee5817b21ee1b2053d79
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219901"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675794"
 ---
 # <a name="limits-and-configuration-reference-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置参考
 
-> 对于 Power Automate，请参阅 [Power Automate 中的限制和配置](/power-automate/limits-and-config)。
+> 对于 Power Automate，请查看[Power Automate 中的限制和配置](/power-automate/limits-and-config)。
 
 本文介绍 Azure 逻辑应用和相关资源的限制和配置信息。 若要创建逻辑应用工作流，请根据你的情况、解决方案要求、所需功能以及要在其中运行工作流的环境，选择逻辑应用资源类型。
 
 > [!NOTE]
-> 这些主机环境中的许多限制都是相同的，但请注意，它们存在的位置有所不同。 如果你的情况需要其他限制，请[与逻辑应用团队联系](mailto://logicappspm@microsoft.com)以讨论你的要求。
+> 在运行 Azure 逻辑应用的可用环境中，许多限制是相同的，但也存在不同之处。 
 
 下表简要概述了原始逻辑应用（消耗版）资源类型和逻辑应用（标准版）资源类型之间的差异 。 你还将了解单租户环境与多租户和集成服务环境 (ISE) 在部署、托管和运行逻辑应用工作流方面的比较情况  。
 
@@ -359,13 +359,14 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 ## <a name="custom-connector-limits"></a>自定义连接器限制
 
-仅在多租户和集成服务环境中，可以创建和使用[自定义托管连接器](/connectors/custom-connectors)，这些连接器是现有 REST API 或 SOAP API 的包装器。 仅在单租户中，可以创建和使用[自定义内置连接器](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)。
+仅在多租户 Azure 逻辑应用和集成服务环境中，可以创建和使用[自定义托管连接器](/connectors/custom-connectors)，这些连接器是现有 REST API 或 SOAP API 的包装器。 在单租户 Azure 逻辑应用中，只能创建和使用[自定义内置连接器](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)。
 
 下表列出了自定义连接器的值：
 
 | 名称 | 多租户 | 单租户 | 集成服务环境 | 注释 |
 |------|--------------|---------------|---------------------------------|-------|
 | 自定义连接器 | 每个 Azure 订阅 1,000 | 无限制 | 每个 Azure 订阅 1,000 ||
+| 自定义连接器 - API 数量 | 基于 SOAP：50 | 不适用 | 基于 SOAP：50 ||
 | 自定义连接器每分钟的请求数 | 每分钟每个连接 500 个请求 | 取决于你的实现 | 每分钟每个自定义连接器 2,000 个请求 ||
 | 连接超时值 | 2 分钟 | 空闲连接： <br>4 分钟 <p><p>活动连接： <br>10 分钟 | 2 分钟 ||
 ||||||
@@ -417,7 +418,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 > [!NOTE]
 > 免费层仅用于探索场景，不用于生产场景。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
 
-| 项目 | 免费 | 基本 | 标准 |
+| 项目 | 免费 | 基本 | Standard |
 |----------|------|-------|----------|
 | EDI 贸易协议 | 10 | 1 | 1,000 |
 | EDI 参与方 | 25 | 2 | 1,000 |
@@ -443,7 +444,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-| 运行时终结点 | 免费 | 基本 | 标准 | 说明 |
+| 运行时终结点 | 免费 | 基本 | Standard | 说明 |
 |------------------|------|-------|----------|-------|
 | 每 5 分钟的读取调用数 | 3,000 | 30,000 | 60,000 | 此限制适用于从逻辑应用的运行历史记录获取原始输入和输出的调用。 你可根据需要在多个帐户之间分配工作负荷。 |
 | 每 5 分钟调用的调用数 | 3,000 | 30,000 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 |
@@ -507,7 +508,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 * 如果你的逻辑应用在访问使用[防火墙和防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户时遇到问题，可采用[多种其他方式来实现访问](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 
-  例如，逻辑应用不能直接访问使用防火墙规则的存储帐户，因此存在于同一区域中。 但是，如果允许[区域中托管连接器的出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)，则逻辑应用可以访问其他区域中的存储帐户，除非你使用 Azure 表存储或 Azure 队列存储连接器。 若要访问表存储或队列存储，则可改用 HTTP 触发器和操作。 有关其他选项，请参阅[访问防火墙后的存储帐户](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
+  例如，逻辑应用不能直接访问使用防火墙规则的存储帐户，因此存在于同一区域中。 但是，如果允许[区域中托管连接器的出站 IP 地址](/connectors/common/outbound-ip-addresses)，则逻辑应用可以访问其他区域中的存储帐户，除非你使用 Azure 表存储或 Azure 队列存储连接器。 若要访问表存储或队列存储，则可改用 HTTP 触发器和操作。 有关其他选项，请参阅[访问防火墙后的存储帐户](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 
 <a name="inbound"></a>
 
@@ -589,7 +590,10 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 ### <a name="outbound-ip-addresses"></a>出站 IP 地址
 
-此部分列出了 Azure 逻辑应用服务的出站 IP 地址。 如果使用的是 Azure 政府，请参阅 [Azure 政府 - 出站 IP 地址](#azure-government-outbound)。
+此部分列出了 Azure 逻辑应用服务的出站 IP 地址。 如果使用的是 Azure 政府，请参阅 [Azure 政府 - 出站 IP 地址](#azure-government-outbound)。 如果工作流使用[托管连接器](../connectors/managed.md)（例如 Office 365 Outlook 连接器或 SQL 连接器），或使用[自定义连接器](/connectors/custom-connectors/)，则防火墙还需要允许从逻辑应用所在 Azure 区域中的所有[托管连接器出站 IP 地址](/connectors/common/outbound-ip-addresses)进行访问。 如果工作流使用通过 [Azure 中的本地数据网关资源](logic-apps-gateway-connection.md)来访问本地资源的自定义连接器，则需要设置网关安装，以便允许从相应的[托管连接器出站 IP 地址](/connectors/common/outbound-ip-addresses)进行访问。 若要详细了解如何设置网关的通信设置，请参阅以下主题：
+
+* [调整本地数据网关的通信设置](/data-integration/gateway/service-gateway-communication)
+* [为本地数据网关配置代理设置](/data-integration/gateway/service-gateway-proxy)
 
 > [!TIP]
 > 为帮助你更简单地创建安全规则，可选择性地使用[服务标记](../virtual-network/service-tags-overview.md) LogicApps，而不是为每个区域指定出站逻辑应用 IP 地址前缀。 此外，还可以使用托管连接器的 AzureConnectors 服务标记，这些托管连接器对其各自的服务（例如 Azure 存储或 Azure 事件中心）进行出站调用，而不是为每个区域指定出站托管连接器 IP 地址前缀。 这些标记适用于可使用逻辑应用服务的区域。

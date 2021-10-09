@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 59bbaa4a41df59ba303be3d0f219bf9d68f81f21
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 438a5fde1129e49ea99123be4a6814c55fde04a2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476804"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654727"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -18,6 +18,7 @@ ms.locfileid: "123476804"
 |[Azure SignalR 服务应已禁用本地身份验证方法](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff70eecba-335d-4bbc-81d5-5b17b03d498f) |禁用本地身份验证方法可确保 Azure SignalR 服务仅将 Azure Active Directory 标识作为身份验证方法，从而提高安全性。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_DisableLocalAuth_AuditDeny.json) |
 |[Azure SignalR 服务应使用支持专用链接的 SKU](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Azure 专用链接可让你在源或目标位置没有公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务，从而使你的资源免遭公共数据泄露风险。 此策略将你限制为对 Azure SignalR 服务使用支持专用链接的 SKU。 请访问 [https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md)，详细了解专用链接。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |
 |[Azure SignalR 服务应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53503636-bcc9-4748-9663-5348217f160f) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到 Azure SignalR 服务资源而不是整个服务，可降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md)。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_Audit.json) |
+|[配置 Azure SignalR 服务以禁用本地身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F702133e5-5ec5-4f90-9638-c78e22f13b39) |禁用本地身份验证方法，以便 Azure SignalR 服务仅需要 Azure Active Directory 标识进行身份验证。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_DisableLocalAuth_Modify.json) |
 |[将专用终结点配置到 Azure SignalR 服务](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef45854f-b33f-49a3-8041-9057e915d88f) |专用终结点可在源或目标位置没有公共 IP 地址的情况下将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到 Azure Synapse 服务资源，可以降低数据泄露风险。 更多信息请访问 [https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_DeployIfNotExists.json) |
 |[部署 - 为连接到 Azure SignalR 服务的专用终结点配置专用 DNS 区域](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0e86710-7fb7-4a6c-a064-32e9b829509e) |使用专用 DNS 区域来替代专用终结点的 DNS 解析。 专用 DNS 区域会链接到要解析为 Azure SignalR 服务资源的虚拟网络。 有关详细信息，请访问：[https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointDNSZone_DeployIfNotExists.json) |
 |[修改 Azure SignalR 服务资源以禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F62a3ae95-8169-403e-a2d2-b82141448092) |若要提高 Azure SignalR 服务资源的安全性，请确保它不会公开到公共 Internet，并且只能从专用终结点访问。 如 [https://aka.ms/asrs/networkacls](../../../../articles/azure-signalr/howto-network-access-control.md) 中所述禁用公共网络访问属性。 此选项禁止访问 Azure IP 范围之外的任何公共地址空间，并拒绝与 IP 或基于虚拟网络的防火墙规则匹配的所有登录。 这样会降低数据泄露风险。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_Modify.json) |

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 56b18d27f3048e0e26737294b861a28f7a2be6e5
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 534e922436ef279c849ccd80eb32387222c9be15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652950"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588402"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -47,8 +47,8 @@ ms.locfileid: "114652950"
 > 如果要手动配置应用程序和代码示例，请执行以下过程。
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，以切换到要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 对于“名称”，请输入应用程序名称。 例如，输入 AspNetCore-Quickstart。 应用的用户会看到此名称，你稍后可对其进行更改。
 > 1. 对于“重定向 URI”，请输入 https://localhost:44321/signin-oidc 。

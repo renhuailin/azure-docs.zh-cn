@@ -1,16 +1,16 @@
 ---
 title: 传感器合作伙伴集成
 description: 本文介绍传感器合作伙伴集成。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 99b87fd0066d67d09979965bab3a67d1b549afd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179742"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599499"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
 
@@ -95,13 +95,13 @@ access_token = token_response.get('access_token')
 
 **标头** | **说明和示例**
 --- | ---
-Content-Type | 请求格式 (Content-Type: application/<format>)。 对于 FarmBeats 数据中心 API，格式为 JSON。 Content-Type: application/json
-授权 | 指定进行 API 调用所需的访问令牌。 Authorization:持有者 <Access-Token>
+Content-Type | 请求格式 (Content-Type: `application/<format>`)。 对于 FarmBeats 数据中心 API，格式为 JSON。 Content-Type: application/json
+授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 \<Access-Token\>
 Accept | 响应格式。 对于 FarmBeats 数据中心 API，格式为 JSON。 Accept: application/json
 
 **API 请求**
 
-若要发出 REST API 请求，请将 HTTP（GET、POST 或 PUT）方法、API 服务的 URL、用于查询、提交数据、更新或删除的资源的统一资源标识符 (URI) 以及一个或多个 HTTP 请求标头组合在一起。 API 服务的 URL 是提供的 API 终结点。 下面是一个示例： https://\<yourdatahub-website-name>.azurewebsites.net
+若要发出 REST API 请求，请将 HTTP（GET、POST 或 PUT）方法、API 服务的 URL、用于查询、提交数据、更新或删除的资源的统一资源标识符 (URI) 以及一个或多个 HTTP 请求标头组合在一起。 API 服务的 URL 是提供的 API 终结点。 下面是一个示例：`https://\<yourdatahub-website-name>.azurewebsites.net`
 
 或者，可在 GET 调用中包含查询参数以筛选数据、限制数据的大小，并对响应中的数据进行排序。
 

@@ -8,12 +8,13 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: a840aa9ac67ff751ef6889c5375c5b79880e79b9
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: pstn
+ms.openlocfilehash: b03779f9c56d2ebcc4d070165cdf29a54e78d269
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251202"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060946"
 ---
 # <a name="azure-direct-routing-infrastructure-requirements"></a>Azure 直接路由基础结构要求 
 
@@ -155,16 +156,13 @@ SBC 发出 DNS 查询来解析 sip.pstnhub.microsoft.com。 系统将根据 SBC 
 
 ## <a name="media-traffic-media-processors-geography"></a>媒体流量：媒体处理器地域
 
-媒体流量通过称为媒体处理器的组件实现流动。 媒体处理器与 SIP 代理位于相同的数据中心。 还有其他用于优化媒体流的媒体处理器。 例如，我们现在在澳大利亚没有 SIP 代理组件（SIP 流量通过新加坡或香港 SAR 流动），但是我们在澳大利亚本地有媒体处理器。 本地对媒体处理器的需求由我们远程发送流量（例如从澳大利亚到新加坡或香港 SAR）所经历的延迟来决定。 在流量从澳大利亚流向香港 SAR 或新加坡的示例中，虽然延迟对于 SIP 流量来说是可接受的（可保持良好呼叫质量），但对于实时媒体流量来说并非如此。
-
-部署 SIP 代理和媒体处理器组件的位置：
+媒体流量通过称为媒体处理器的组件实现流动。 媒体处理器与 SIP 代理位于相同的数据中心：
 - 美国（两个在美国西部和美国东部数据中心）
 - 欧洲（阿姆斯特丹和都柏林数据中心）
 - 亚洲（新加坡和香港 SAR 数据中心）
 - 澳大利亚（澳大利亚东部和东南部数据中心）
-
-仅部署媒体处理器的位置（SIP 通过上面列出的最近数据中心流动）：
 - 日本（日本东部和西部数据中心）
+
 
 
 ## <a name="media-traffic-codecs"></a>媒体流量：编解码器

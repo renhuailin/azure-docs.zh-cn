@@ -1,18 +1,18 @@
 ---
 title: 快速入门：创建 Redis Enterprise 缓存
 description: 本快速入门介绍如何在企业层中创建 Azure Cache for Redis 的实例
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: f1cf254aa6b8f03b5ea50a0adaa83ea56ba8f44a
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 7733f9df7f314dfdc0369075b96477e301825ce6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746746"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537318"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>快速入门：创建 Redis Enterprise 缓存
 
@@ -35,11 +35,11 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
 
 1. 在“新建 Redis 缓存”页上配置新缓存的设置。
 
-   | 设置      | 建议的值  | 说明 |
+   | 设置      |  选择值  | 说明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 |
    | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 |
-   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名将为 \<DNS name>.<Azure region>.redisenterprise.cache.azure.net。 |
+   | **DNS 名称** | 输入在区域中唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名将为 \<DNS name\>.\<Azure region\>.redisenterprise.cache.azure.net。 |
    | **位置** | 单击下拉箭头并选择一个位置。 | 企业层在所选 Azure 区域中可用。 |
    | **缓存类型** | 下拉并选择 Enterprise 或 Enterprise Flash 层和大小 。 |  此层决定可用于缓存的大小、性能和功能。 |
 

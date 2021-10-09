@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/25/2021
+ms.date: 09/27/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6a8a503f5357ec69a1bab007f4ae2849582fed3b
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: de89ce807b69cf9d9ef7db180b32dd1b7fe1d50c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835583"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091142"
 ---
 如果你是第一次执行此操作，则为磁盘设置客户托管密钥时将要求你按特定顺序创建资源。 首先，需要创建并设置 Azure Key Vault。
 
@@ -73,3 +73,11 @@ ms.locfileid: "122835583"
 1. 选择“审阅 + 创建”，然后选择“创建” 。
 
     :::image type="content" source="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png" alt-text="“磁盘加密创建”窗格的屏幕截图。显示订阅、资源组、磁盘加密集名称、区域以及密钥保管库 + 密钥选择器。" lightbox="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png":::
+
+1. 部署磁盘加密集后，导航到该加密集，然后选择显示的警报。
+
+    :::image type="content" source="media/virtual-machines-disk-encryption-portal/disk-encryption-set-perm-alert.png" alt-text="用户选择“若要将磁盘、映像或快照与此磁盘加密集关联，必须授予对密钥保管库的权限”警报的屏幕截图。" lightbox="media/virtual-machines-disk-encryption-portal/disk-encryption-set-perm-alert.png":::
+
+1. 这会向磁盘加密集授予密钥保管库权限。
+
+    :::image type="content" source="media/virtual-machines-disk-encryption-portal/disk-encryption-set-perm-confirmation.png" alt-text="确认已授予权限的屏幕截图。" lightbox="media/virtual-machines-disk-encryption-portal/disk-encryption-set-perm-confirmation.png":::

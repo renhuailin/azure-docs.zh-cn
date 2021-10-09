@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/11/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 1588dedad6778993bc2db6307103e614a8f772ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 845e852f2ef3155fce451f7e80f5c8f43eb8abf6
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739110"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355221"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -91,6 +91,7 @@ env = Environment.get(workspace=ws, name="AzureML-sklearn-0.24-ubuntu18.04-py37-
 curated_clone = env.clone("customize_curated")
 ```
 
+
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>使用 Conda 依赖项或 pip 要求文件
 
 可以通过 Conda 规范或 pip 要求文件创建环境。 使用 [`from_conda_specification()`](/python/api/azureml-core/azureml.core.environment.environment#from-conda-specification-name--file-path-) 方法或 [`from_pip_requirements()`](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) 方法。 在方法参数中包含所需文件的环境名称和文件路径。 
@@ -107,14 +108,7 @@ myenv = Environment.from_pip_requirements(name = "myenv",
 
 ### <a name="enable-docker"></a>启用 Docker
 
-当你启用 Docker 时，Azure 机器学习会生成一个 Docker 映像，并根据你的规范在该容器中创建一个 Python 环境。 Docker 映像会被缓存并重复使用：在新环境中首次运行的时间通常比构建映像的时间更长。
-
-使用 Azure 机器学习 `Environment` 类的 [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection)，可以精细地自定义和控制运行训练的来宾操作系统。 可以使用 `arguments` 变量来指定要传递到 Docker run 命令的额外参数。
-
-```python
-# Creates the environment inside a Docker container.
-myenv.docker.enabled = True
-```
+Azure 机器学习会生成一个 Docker 映像，并根据你的规范在该容器中创建一个 Python 环境。 Docker 映像会被缓存并重复使用：在新环境中首次运行的时间通常比构建映像的时间更长。 对于本地运行，在 [RunConfiguration](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true#variables) 中指定 Docker。 
 
 默认情况下，新生成的 Docker 映像显示在与工作区关联的容器注册表中。  存储库名称的格式为“azureml/azureml_\<uuid\>”。 该名称的唯一标识符 (*uuid*) 部分对应于基于环境配置计算出的哈希。 这种对应使得服务能够确定给定的环境是否已存在可重复使用的映像。
 
@@ -264,12 +258,6 @@ conda_dep.add_pip_package("pillow")
 myenv.python.conda_dependencies=conda_dep
 ```
 
-还可以将环境变量添加到环境。 然后，可以在训练脚本中使用 os.environ.get 让它们变得可用。
-
-```python
-myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
-```
-
 >[!IMPORTANT]
 > 如果你对另一个运行使用相同的环境定义，Azure 机器学习服务将重复使用环境的已缓存映像。 如果创建了一个包含未固定包依赖项（例如 ```numpy```）的环境，该环境将继续使用创建环境时安装的包版本。 此外，将来包含匹配定义的任何环境将继续使用旧版本。 有关详细信息，请参阅[生成、缓存和重复使用环境](./concept-environments.md#environment-building-caching-and-reuse)。
 
@@ -345,7 +333,7 @@ build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=Tr
 
 ### <a name="utilize-adminless-azure-container-registry-acr-with-vnet"></a>将无管理 Azure 容器注册表 (ACR) 与 VNet 结合使用
 
-在 VNet 方案中，用户不再需要在其工作区附加的 ACR 上启用管理模式。 确保计算上的派生映像生成时间小于 1 小时，以便成功生成。 将映像推送到工作区 ACR 后，现在只能使用计算标识访问此映像。 有关设置的详细信息，请参阅[如何将托管标识与 Azure 机器学习结合使用](./how-to-use-managed-identities.md)。
+在 VNet 方案中，用户不再需要在其工作区附加 ACR 上启用管理模式。 确保计算资源上的派生映像生成时间小于 1 小时，以便能够成功生成。 将映像推送到工作区 ACR 后，现在只能使用计算标识访问此映像。 有关设置的详细信息，请参阅[如何将托管标识与 Azure 机器学习结合使用](./how-to-use-managed-identities.md)。
 
 ## <a name="use-environments-for-training"></a>使用环境进行训练
 

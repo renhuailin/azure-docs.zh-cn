@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/03/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 4a392ab735368b9850397e1e921590f898d273c1
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 198d11d85cacb984808db5449524812a151d82b7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557457"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821297"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-templafy-saml2"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Templafy SAML2 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "111557457"
 * 让用户使用其 Azure AD 帐户自动登录到 Templafy SAML2。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -39,6 +39,7 @@ ms.locfileid: "111557457"
 
 * Templafy SAML2 支持 SP 发起的 SSO。
 * Templafy SAML2 支持实时用户预配。
+* Templafy SAML2 支持[自动用户预配](templafy-saml-2-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -108,7 +109,7 @@ ms.locfileid: "111557457"
     | NameIdentifier | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -144,6 +145,8 @@ ms.locfileid: "111557457"
 
 在本部分中，我们会在 Templafy SAML2 中创建一个名为 B.Simon 的用户。 Templafy SAML2 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Templafy SAML2 中不存在用户，则会在身份验证后创建一个新用户。
 
+Templafy SAML2 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./templafy-saml-2-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -152,7 +155,7 @@ ms.locfileid: "111557457"
 
 * 直接转到 Templafy SAML2 登录 URL，从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Templafy SAML2”磁贴时，会重定向到 Templafy SAML2 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Templafy SAML2”磁贴时，会重定向到 Templafy SAML2 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 09/08/2021
 ms.author: banders
-ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 60c7acf1f88f37d44ef38516480640eeebd220b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728043"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662032"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议帐单
 
@@ -42,7 +42,7 @@ ms.locfileid: "107728043"
 当计费周期中发生以下任何事件时，将收到 Azure 发票：
 
 - **服务超额**：组织的使用费超过了信用余额。
-- **单独计费**：组织使用的服务未包括在信用额度中。 无论信用余额如何，都会为以下服务开具发票：
+- **单独计费**：组织使用的服务未包括在信用额度中。 无论信用余额如何，都会为以下服务开发票。 显示的服务是单独计费的服务示例。 你可以通过提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)获取完整的单独计费服务列表。
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -75,7 +75,7 @@ ms.locfileid: "107728043"
 当发生以下任何事件时，将收到一张或多张 Azure 发票：
 
 - **服务超额**：组织的使用费超过了信用余额。
-- **单独计费**：组织使用的服务未包括在信用额度中。 将为以下服务开发票：
+- **单独计费**：组织使用的服务未包括在信用额度中。 将为以下服务开发票。 显示的服务是单独计费的服务示例。 你可以通过提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)获取单独计费服务的完整列表。
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -368,7 +368,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
 ### <a name="to-access-microsoft-azure-consumption-insights"></a>若要访问 Microsoft Azure Consumption Insights：
 
-1. 转到 [Microsoft Azure Consumption Insights](https://app.powerbi.com/getdata/services/azureconsumption?cpcode=MicrosoftAzureConsumptionInsights&amp;getDataForceConnect=true&amp;WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26)。
+1. 转到 Microsoft Azure Consumption Insights。
 1. 选择“立即获取”。
 1. 提供注册编号和月数，然后选择“下一步”。
 1. 提供要连接的 API 访问密钥。 可以在 [Enterprise 门户](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26)中找到注册的密钥。

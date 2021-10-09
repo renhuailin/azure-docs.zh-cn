@@ -2,19 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c1bfb3d6540a0c30185e4b9251f6aba826d062a9
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 3c863facc6e1eb0bd381936164dc1cdae54e9caf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476780"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654705"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
+|[Azure IoT 中心应为服务 API 禁用本地身份验证方法](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F672d56b3-23a7-4a3c-a233-b77ed7777518) |禁用本地身份验证方法可确保 Azure IoT 中心仅将 Azure Active Directory 标识作为服务 API 身份验证方法，从而提高安全性。 有关详细信息，请访问：[https://aka.ms/iothubdisablelocalauth](../../../../articles/iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_DisableLocalAuth_AuditDeny.json) |
 |[\[预览\]：Azure IoT 中心应使用客户管理的密钥进行静态数据加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |使用客户管理的密钥对 IoT 中心内的数据进行静态加密可以在默认的服务管理的密钥基础上增加另一层加密，使客户能够控制密钥、自定义轮换策略，并能够通过密钥访问控制来管理对数据的访问。 在创建 IoT 中心期间必须配置客户管理的密钥。 有关如何配置客户管理的密钥的详细信息，请参阅 [https://aka.ms/iotcmk](../../../../articles/iot-hub/iot-hub-customer-managed-keys.md)。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
+|[配置 Azure IoT 中心以禁用本地身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9f8ba900-a70f-486e-9ffc-faf907305376) |禁用本地身份验证方法，使 Azure IoT 中心仅需要 Azure Active Directory 标识进行身份验证。 有关详细信息，请访问：[https://aka.ms/iothubdisablelocalauth](../../../../articles/iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_DisableLocalAuth_Modify.json) |
 |[将 IoT 中心设备预配实例配置为使用专用 DNS 区域](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faaa64d2d-2fa3-45e5-b332-0b031b9b30e8) |使用专用 DNS 区域来替代专用终结点的 DNS 解析。 专用 DNS 区域链接到虚拟网络，以便对 IoT 中心设备预配服务实例进行解析。 有关详细信息，请访问：[https://aka.ms/iotdpsvnet](../../../../articles/iot-dps/virtual-network-support.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateDnsZoneForPrivateEndpoint_Deploy.json) |
 |[将 IoT 中心设备预配服务实例配置为禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F859dfc91-ea35-43a6-8256-31271c363794) |对 IoT 中心设备预配实例禁用公用网络访问，以防止通过公共 Internet 对其进行访问。 这可以降低数据泄露风险。 有关详细信息，请访问：[https://aka.ms/iotdpsvnet](../../../../articles/iot-dps/virtual-network-support.md)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DisablePublicNetworkAccess_Modify.json) |
 |[为 IoT 中心设备预配服务实例配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9b75ea5b-c796-4c99-aaaf-21c204daac43) |专用终结点可在源或目标位置没有公共 IP 地址的情况下将虚拟网络连接到 Azure 服务。 将专用终结点映射到 IoT 中心设备预配服务可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://aka.ms/iotdpsvnet](../../../../articles/iot-dps/virtual-network-support.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateEndpoint_Deploy.json) |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: eee7204413face46870de049b38a79061de28347
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 754a4540bc7164e672abd4fc81d8ecb86e2359a9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929788"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737360"
 ---
 # <a name="get-started-with-azure-application-consistent-snapshot-tool"></a>Azure 应用程序一致性快照工具入门
 
@@ -164,7 +164,7 @@ gpg: Good signature from "Microsoft (Release signing)
 
 - [存储快照的先决条件有哪些](azacsnap-installation.md#prerequisites-for-installation)
   - [启用与存储的通信](azacsnap-installation.md#enable-communication-with-storage)
-  - [启用与 SAP HANA 的通信](azacsnap-installation.md#enable-communication-with-sap-hana)
+  - [启用与数据库的通信](azacsnap-installation.md#enable-communication-with-database)
 - [如何手动生成快照](azacsnap-tips.md#take-snapshots-manually)
 - [如何设置自动快照备份](azacsnap-tips.md#setup-automatic-snapshot-backup)
 - [如何监视快照](azacsnap-tips.md#monitor-the-snapshots)

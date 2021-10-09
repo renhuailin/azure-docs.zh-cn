@@ -4,27 +4,27 @@ titleSuffix: Azure Digital Twins
 description: 请参阅如何编写客户端应用程序中的验证码
 author: baanders
 ms.author: baanders
-ms.date: 8/26/2021
+ms.date: 9/1/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a1b2465f29ae659f3e255a4843a2abd5f9ab75b2
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: a1e397acfe8118c339b45d6c786ae2c0b2cc82e8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224859"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827020"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用验证码
 
 [设置 Azure 数字孪生实例和身份验证](how-to-set-up-instance-portal.md)后，可创建将用于与实例进行交互的客户端应用程序。 设置入门客户端项目后，需要针对 Azure 数字孪生实例在该客户端应用中编写代码以对应用进行身份验证。
 
-Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)执行身份验证。 若要对 SDK 进行身份验证，需要获取具有 Azure 数字孪生正确权限的持有者令牌，并将其与 API 调用一起传递。 
+Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)进行身份验证。 若要对 SDK 进行身份验证，需要获取具有 Azure 数字孪生正确权限的持有者令牌，并将其与 API 调用一起传递。 
 
 本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍的是 C# 代码示例（例如你为 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 编写的内容），但无论你使用的是何种 SDK，都可以使用 `Azure.Identity` 版本（有关可用于 Azure 数字孪生的 SDK 的详细信息，请参阅 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)）。
 
 ## <a name="prerequisites"></a>先决条件
 
-首先，请完成[设置实例和身份验证](how-to-set-up-instance-portal.md)中的设置步骤。 这将确保你拥有 Azure 数字孪生实例，并且你的用户具有访问权限。 完成此设置后，便可编写客户端应用代码。
+首先，请完成[设置实例和身份验证](how-to-set-up-instance-portal.md)中的设置步骤。 此设置将确保你拥有 Azure 数字孪生实例，并且你的用户具有访问权限。 完成此设置后，便可编写客户端应用代码。
 
 若要继续，你需要一个可在其中编写代码的客户端应用项目。 如果尚未设置客户端应用项目，请使用你选择的语言创建一个基本项目，以在本教程中使用。
 
@@ -155,7 +155,7 @@ Azure 数字孪生是一项仅支持一个 [Azure Active Directory (Azure AD) �
 
 ## <a name="other-credential-methods"></a>其他凭据方法
 
-如果上面突出显示的身份验证方案不能满足你的应用需求，可浏览 Microsoft 标识平台中提供的其他类型的身份验证。 此平台的文档介绍了按应用程序类型组织的更多身份验证方案。
+如果上面突出显示的身份验证方案不能满足你的应用需求，可浏览 [Microsoft 标识平台](../active-directory/develop/v2-overview.md#getting-started)中提供的其他类型的身份验证。 此平台的文档介绍了按应用程序类型组织的更多身份验证方案。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,19 +4,19 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: a87fbbb276fd8813492cc293bc08b958ee3d6b7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d3c7cdcebc244aefb6ef5b2ceb7b931344a8960
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99070241"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593682"
 ---
 使用 Azure CLI [az keyvault create](/cli/azure/keyvault#az_keyvault_create) 命令在上一步骤的资源组中创建 Key Vault。 需要提供某些信息：
 
 - Key Vault 名称：由 3 到 24 个字符构成的字符串，只能包含数字 (0-9)、字母（a-z、A-Z）和连字符 (-)
 
   > [!Important]
-  > 每个密钥保管库必须具有唯一的名称。 在以下示例中，将 <your-unique-keyvault-name> 替换为密钥保管库的名称。
+  > 每个密钥保管库必须具有唯一的名称。 在下面的示例中，将 \<your-unique-keyvault-name\> 替换为密钥保管库的名称。
 
 - 资源组名称：myResourceGroup。
 - 位置：EastUS。

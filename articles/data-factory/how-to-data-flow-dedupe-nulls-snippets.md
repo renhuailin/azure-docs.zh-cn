@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 116b1e2afded3ceee0d249e326e721ca420dcf17
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7940d48edb94bfa89ccc3310172a09519ffc729a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638570"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831366"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>使用数据流代码片段删除重复行和查找 null
 
@@ -30,7 +30,7 @@ ms.locfileid: "122638570"
 
 1. 选择“源设置”选项卡，添加源转换，然后将其连接到某个数据集。
 
-    ![用于添加源类型的“源设置”窗格的屏幕截图。](media/data-flow/snippet-adf-2.png)
+    :::image type="content" source="media/data-flow/snippet-adf-2.png" alt-text="用于添加源类型的“源设置”&quot;&quot;窗格的屏幕截图。":::
 
     重复数据删除和 null 检查代码片段使用利用数据流架构偏差的一般模式。 代码片段适用于数据集中的任何架构，或没有预定义架构的数据集。
 
@@ -38,7 +38,7 @@ ms.locfileid: "122638570"
 
 1. [转到“数据流脚本”文档页，复制不同行的代码片段。](./data-flow-script.md#distinct-row-using-all-columns)
 
-    ![源代码片段的屏幕截图。](media/data-flow/snippet-adf-3.png)
+    :::image type="content" source="media/data-flow/snippet-adf-3.png" alt-text="源代码片段的屏幕截图。":::
 
 1. 在脚本中，在 `source1` 的定义后，按 Enter，然后粘贴代码片段。
 
@@ -48,7 +48,7 @@ ms.locfileid: "122638570"
 
    * 或者，可以通过从图中的新转换节点选择传入流，在设计器中连接新转换。
 
-     ![“有条件拆分设置”窗格的屏幕截图。](media/data-flow/snippet-adf-4.png)
+     :::image type="content" source="media/data-flow/snippet-adf-4.png" alt-text="“有条件拆分设置”&quot;&quot;窗格的屏幕截图。":::
 
    现在，数据流将使用聚合转换从源删除重复行，聚合转换通过对所有列值使用通用哈希来按所有行分组。
     
@@ -60,7 +60,7 @@ ms.locfileid: "122638570"
 
    数据流图现在应如下所示：
 
-    ![数据流图的屏幕截图。](media/data-flow/snippet-adf-1.png)
+    :::image type="content" source="media/data-flow/snippet-adf-1.png" alt-text="数据流图的屏幕截图。":::
 
   现在，你已通过从数据流脚本库中获取现有代码片段并将其添加到现有设计中，创建了一个包含通用重复数据删除和 null 检查的工作数据流。
 

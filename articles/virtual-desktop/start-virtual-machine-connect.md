@@ -3,19 +3,19 @@ title: 连接时启动虚拟机 - Azure
 description: 如何配置连接时启动虚拟机功能。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 09/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 301a2b0626b6dd40f90a8b693e3284c12d948fa1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 85110db5b3f9e11105fa27a9ed8767d3d7e9e2bd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728459"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592235"
 ---
 # <a name="start-virtual-machine-on-connect"></a>连接时启动虚拟机
 
-通过“连接时启动虚拟机 (VM)”功能，你可以让最终用户只在需要 VM 时才将其打开，从而节省成本。 然后，你可以在不需要 VM 时将其关闭。
+通过“连接时启动虚拟机 (VM)”功能，你可以让最终用户仅在需要 VM 时才将其打开，从而节省成本。 然后，你可以在不需要 VM 时将其关闭。
 
 >[!NOTE]
 >Azure 虚拟桌面（经典）不支持此功能。
@@ -27,11 +27,11 @@ ms.locfileid: "121728459"
 以下远程桌面客户端支持“连接时启动 VM”功能：
 
 - [Web 客户端](./user-documentation/connect-web.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
-- [Windows 客户端（1.2.2061 或更高版本）](./user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Windows 客户端（版本 1.2.2061 或更高版本）](./user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 - [Android 客户端（版本 10.0.10 或更高版本）](./user-documentation/connect-android.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 - [macOS 客户端（版本 10.6.4 或更高版本）](./user-documentation/connect-macos.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
-- [iOS 客户端（10.2.5 或更高版本）](./user-documentation/connect-ios.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
-- [Microsoft Store 客户端（10.2.2005.0 或更高版本）](./user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [iOS 客户端（版本 10.2.5 或更高版本）](./user-documentation/connect-ios.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Microsoft Store 客户端（版本 10.2.2005.0 或更高版本）](./user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 - [瘦客户端支持](./user-documentation/linux-overview.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)中列出的瘦客户端
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>为连接时启动 VM 创建自定义角色
@@ -51,10 +51,16 @@ ms.locfileid: "121728459"
 
 3. 接下来，为自定义角色命名并添加说明。 建议将其命名为“连接时启动 VM”。
 
-4. 在“权限”选项卡上，将以下权限添加到要向其分配角色的订阅： 
+4. 在“权限”选项卡上，将以下两组权限添加到要向其分配角色的订阅： 
  
    - Microsoft.Compute/virtualMachines/start/action
-   - Microsoft.Compute/virtualMachines/read
+   - Microsoft.Compute/virtualMachines/read 
+   - Microsoft.Compute/virtualMachines/instanceView/read 
+
+   也可以改用以下权限：
+
+   - Microsoft.Compute/virtualMachines/start/action
+   - Microsoft.Compute/virtualMachines/*/read 
 
 5. 完成后，选择“确定”。
 
@@ -85,7 +91,7 @@ ms.locfileid: "121728459"
   "Description": "Start VM on connect with AVD (Custom)",
   "Actions": [
     "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/read"
+    "Microsoft.Compute/virtualMachines/*/read"
   ],
   "NotActions": [],
   "DataActions": [],
@@ -96,13 +102,13 @@ ms.locfileid: "121728459"
 }
 ```
 
-要使用 JSON 模板，请保存 JSON 文件，将相关订阅信息添加到“可分配范围”，然后在 PowerShell 中运行以下 cmdlet：
+若要使用 JSON 模板，请保存 JSON 文件，将相关订阅信息添加到可分配范围，然后在 PowerShell 中运行以下 cmdlet：
 
 ```powershell
 New-AzRoleDefinition -InputFile "C:\temp\filename"
 ```
 
-要详细了解创建自定义角色，请参阅[使用 Azure PowerShell 创建或更新 Azure 自定义角色](../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template)。
+若要详细了解如何创建自定义角色，请参阅[使用 Azure PowerShell 创建或更新 Azure 自定义角色](../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template)。
 
 ## <a name="configure-the-start-vm-on-connect-feature"></a>配置连接时启动 VM 功能
 

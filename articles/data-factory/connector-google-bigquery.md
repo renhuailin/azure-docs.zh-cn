@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure 数据工厂从 Google BigQuery 复制数据
+title: 从 Google BigQuery 复制数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何使用数据工厂管道中的复制活动，将数据从 Google BigQuery 复制到支持的接收器数据存储。
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从 Google BigQuery 复制到支持的接收器数据存储。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 368427d087f5ae609c50ec2c2de27e0af690e20c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: aa59787675870483941f271778bbf5b907467668
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312728"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815139"
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
+# <a name="copy-data-from-google-bigquery-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 Google BigQuery 存储复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Google BigQuery 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂和 Synapse Analytics 管道中的复制活动从 Google BigQuery 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "123312728"
 
 可以将数据从 Google BigQuery 复制到任何支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-数据工厂提供内置驱动程序以启用连接。 因此，无需要手动安装驱动程序即可使用此连接器。
+服务提供了内置驱动程序，用来启用连接。 因此，无需要手动安装驱动程序即可使用此连接器。
 
 >[!NOTE]
 >此 Google BigQuery 连接器在 BigQuery API 的基础上构建。 请注意，BigQuery 会限制传入请求的最大速率并按项目强制实施适当的配额，请参阅[配额和限制 - API 请求](https://cloud.google.com/bigquery/quotas#api_requests)。 请确保不会触发过多的帐户并发请求。
@@ -47,7 +47,7 @@ ms.locfileid: "123312728"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -84,8 +84,8 @@ Google BigQuery 链接服务支持以下属性。
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | clientId | 应用程序的 ID，用于生成刷新令牌。 | 否 |
-| clientSecret | 应用程序的机密，用于生成刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
-| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 BigQuery。 从[获取 OAuth 2.0 访问令牌](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)和[此社区博客](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)了解如何获取刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
+| clientSecret | 应用程序的机密，用于生成刷新令牌。 将此字段标记为 SecureString 以安全地存储它，或[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
+| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 BigQuery。 从[获取 OAuth 2.0 访问令牌](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)和[此社区博客](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)了解如何获取刷新令牌。 将此字段标记为 SecureString 以安全地存储它，或[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 
 **示例：**
 
@@ -221,9 +221,9 @@ Google BigQuery 链接服务支持以下属性。
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

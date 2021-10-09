@@ -5,14 +5,14 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 02/18/2021
-ms.author: qixwang
-ms.openlocfilehash: 4690a513494d794377ee0c2e8cfb101e8fd66a0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/08/2021
+ms.author: duau
+ms.openlocfilehash: b49d7d051b099c47fa6bfe65ed8c0ee8f4b03872
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098792"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792335"
 ---
 # <a name="troubleshooting-common-routing-problems-with-azure-front-door-standardpremium"></a>排查 Azure Front Door Standard/Premium 的常见路由问题
 
@@ -24,19 +24,31 @@ ms.locfileid: "101098792"
 
 * 未通过 Azure Front Door 发送到后端的常规请求会成功。 通过 Azure Front Door 发送则出现 503 错误响应。
 * 此 Azure Front Door 故障通常会在大约 30 秒后出现。
+* 日志 `ErrorInfo: OriginInvalidResponse` 出现间歇性 503 错误。
 
 ### <a name="cause"></a>原因
 
-此问题的原因可能是以下两种情况之一：
+此问题的原因可能是以下三种情况之一：
  
 * 源接收来自 Azure Front Door 的请求所用的时间超过配置的超时（默认值为 30 秒）。
-* 它发送对 Azure Front Door 请求的响应所用的时间超过了超时值。 
+* 它发送对 Azure Front Door 请求的响应所用的时间超过了超时值。
+* 客户端使用 `Accept-Encoding header` 发送了字节范围请求（压缩启用）。
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 
 * 直接向后端发送请求（不通过 Azure Front Door）。 看后端通常需要多久才能进行响应。
-* 通过 Azure Front Door 发送请求，看是否会收到任何 503 响应。 如果没有收到任何 503 响应，则问题可能与超时无关。 联系支持人员。
-* 如果通过 Azure Front Door 发送请求出现 503 错误响应代码，请为 Azure Front Door 配置 `sendReceiveTimeout` 字段。 可以将默认超时延长到 4 分钟（240 秒）。 此设置位于 `Endpoint Setting` 下，名为“`Origin response timeout`”。 
+* 通过 Azure Front Door 发送请求，看是否会收到任何 503 响应。 如果没有收到任何 503 响应，则问题可能与超时无关。 请联系支持人员。
+* 如果通过 Azure Front Door 发送的请求导致 503 错误响应代码，请为终结点配置“源响应超时(秒)”。 可以将默认超时延长到 4 分钟（240 秒）。 可以通过转到“Endpoint Manager”并选择“编辑终结点”对此设置进行配置。
+
+    :::image type="content" source="..\media\troubleshoot-route-issues\origin-response-timeout-1.png" alt-text="从 Endpoint Manager 中选择“编辑终结点”的屏幕截图。":::
+
+    然后选择“终结点属性”以配置“源响应超时”：
+
+    :::image type="content" source="..\media\troubleshoot-route-issues\origin-response-timeout-2.png" alt-text="选择“终结点属性”和“源响应超时”字段的屏幕截图。" lightbox="..\media\troubleshoot-route-issues\origin-response-timeout-2-expanded.png":::
+
+* 如果超时无法解决问题，请使用 Fiddler 或浏览器开发人员工具等工具来检查客户端是否正在发送包含“Accept-Encoding”标头的字节范围请求，从而导致源使用不同的内容长度做出响应。 如果是，则可以在源/Azure Front Door 上禁用压缩，也可以创建规则集规则以从字节范围请求中删除 `accept-encoding`。
+
+    :::image type="content" source="..\media\troubleshoot-route-issues\remove-encoding-rule.png" alt-text="规则集中的接受编码规则的屏幕截图。":::
 
 ## <a name="requests-sent-to-the-custom-domain-return-a-400-status-code"></a>发送到自定义域的请求返回 400 状态代码
 
@@ -90,4 +102,4 @@ Azure Front Door 具有将 HTTP 重定向到 HTTPS 的传递规则，但访问�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[创建 Front Door Standard/Premium](create-front-door-portal.md)。
+了解如何[创建 Front Door 标准版/高级版](create-front-door-portal.md)。

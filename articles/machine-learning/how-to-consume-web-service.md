@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何调用从 Azure 机器学习部署模型时生成的 Web 服务终结点。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.custom: devx-track-python,devx-track-csharp
-ms.openlocfilehash: 1d037931125dd60fc285588f31228a748008d25c
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 1c55a73735300b0dae9dd495677725979534d528
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112114904"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428340"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 

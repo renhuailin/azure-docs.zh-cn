@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed4dfc315ae953c99db2ebe2eaa009f9ef072a7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86259962"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620267"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 选择、管理和操作 Service Fabric 群集。
@@ -259,7 +259,7 @@ ms.locfileid: "86259962"
 | --aad | 使用 Azure Active Directory 进行身份验证。 |
 | --ca | 视为有效的 CA 证书目录的绝对路径，或 CA 捆绑文件的路径。 如果使用 CA 证书目录，则必须首先运行 OpenSSL 提供的 `c_rehash <directory>` 以计算证书哈希值并创建相应的符号链接。 这用于验证群集返回的证书是否有效。 |
 | --cert | 客户端证书文件的绝对路径。 |
-| --endpoint | 群集终结点 URL，包括端口和 HTTP 或 HTTPS 前缀。 通常，终结点看起来类似于 https\://<your-url>\:19080。 如果未指定任何终结点，则默认为 http\://localhost\:19080。  默认终结点 \: http\://localhost\:19080。 |
+| --endpoint | 群集终结点 URL，包括端口和 HTTP 或 HTTPS 前缀。 通常，终结点类似于 `https\://<your-url>\:19080`。 如果未指定任何终结点，则默认为 `http\://localhost\:19080`。 |
 | --key | 客户端证书密钥文件的绝对路径。 |
 | --no-verify | 使用 HTTPS 时禁用证书验证。注意\: 这是一个不安全的选项，不应该用于生产环境。 |
 | --pem | 客户端证书（.pem 文件）的绝对路径。 |

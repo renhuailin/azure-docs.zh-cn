@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 89cb9122da21887165b2330f75dd316c184de823
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bb061fb11fbc770d751f60e15c81ce31c6a07440
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779685"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666319"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -44,7 +44,7 @@ ms.locfileid: "121779685"
 
 任何 [Azure Database for MySQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)中都可以有源服务器。  源服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了哪些副本区域可用，具体取决于源区域。
 
-[ :::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="只读副本区域":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="只读副本区域":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
 
@@ -81,7 +81,7 @@ ms.locfileid: "121779685"
 | 南非北部* | :heavy_check_mark: |
 
 > [!Note] 
-> *在这些区域中，Azure Database for MySQL 具有公共预览版的常规用途存储 v2  <br /> *对于这些 Azure 区域，可选择在常规用途存储 v1 和 v2 中创建服务器。 对于使用公共预览版的常规用途存储 v2 创建的服务器，只能在支持常规用途存储 v2 的 Azure 区域中创建副本服务器。
+> *在这些区域中，Azure Database for MySQL 公共预览版中拥有常规用途存储 v2  <br /> *对于这些 Azure 区域，可选择在常规用途存储 v1 和 v2 中创建服务器。 对于使用公共预览版的常规用途存储 v2 创建的服务器，只能在支持常规用途存储 v2 的 Azure 区域中创建副本服务器。
 
 ### <a name="paired-regions"></a>配对区域
 
@@ -99,9 +99,9 @@ ms.locfileid: "121779685"
 ## <a name="create-a-replica"></a>创建副本
 
 > [!IMPORTANT]
-> 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 服务器。 请确保源服务器位于其中一个定价层中。
+> * 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 服务器。 请确保源服务器位于其中一个定价层中。
+> * 如果源服务器没有现有的副本服务器，则源服务器可能需要重启才能为复制做好自身准备，具体取决于使用的存储 (v1/v2)。 请考虑服务器重启，并在非高峰时段执行此操作。 有关更多详细信息，请参阅[源服务器重启](./concepts-read-replicas.md#source-server-restart)。 
 
-如果源服务器没有现有的副本服务器，该源服务器会先重启，以便为复制做好自身准备。
 
 启动“创建副本”工作流时，将创建空白的 Azure Database for MySQL 服务器。 新服务器中会填充源服务器上的数据。 创建时间取决于源服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。 始终会在与源服务器相同的资源组和订阅中创建副本服务器。 如果要将副本服务器创建到不同的资源组或不同的订阅，可以在创建后[移动副本服务器](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
@@ -198,7 +198,9 @@ MySQL 支持两种类型的事务：GTID 事务（使用 GTID 标识）和匿名
 
 ### <a name="source-server-restart"></a>源服务器重启
 
-在为没有现有副本的源创建副本时，该源服务器会先重启，以便为复制做好自身准备。 请考虑这一点并在非高峰期执行这些操作。
+具有常规用途存储 v1 的服务器，`log_bin` 参数在默认情况下将处于关闭状态。 该值将会在你创建第一个只读副本时打开。 如果源服务器没有现有的只读副本，该源服务器会先重启，以便为复制做好自身准备。 请考虑服务器重启，并在非高峰时段执行此操作。
+
+具有常规用途存储 v2 的源服务器，`log_bin` 参数在默认情况下将处于打开状态，并且在你添加只读副本时不需要重启。 
 
 ### <a name="new-replicas"></a>新副本
 

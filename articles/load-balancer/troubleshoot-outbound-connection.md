@@ -7,16 +7,16 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: anavin
-ms.openlocfilehash: e51a74ef4f01bda57e7cdef026aed9aa85111ca3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ba421e8996e37e79bf7044709d53be8d6f2a01f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437393"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549951"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> 排查出站连接故障
 
-本文旨在为 Azure 负载均衡器的出站连接可能出现的常见问题提供解决方法。 客户遇到的大多数出站连接问题是由于源网络地址转换 (SNAT) 端口耗尽和连接超时导致数据包丢失。 本文提供了用于缓解上述每个问题的步骤。
+本文旨在为 Azure 负载均衡器的出站连接可能出现的常见问题提供解决方法。 客户遇到的大多数出站连接问题都是由于源网络地址转换 (SNAT) 端口耗尽和连接超时（导致数据包丢失）。 本文提供了用于缓解上述每个问题的步骤。
 
 ## <a name="avoid-snat"></a>避免 SNAT
 

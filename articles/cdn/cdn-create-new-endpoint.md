@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: d98b7050b2472c1dd0405c213b450c719bcd8572
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e045a7df3389dc58fe8ac2298f2f51b0337a5f94
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322441"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775505"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>快速入门：创建 Azure CDN 配置文件和终结点
 
@@ -62,6 +62,9 @@ ms.locfileid: "122322441"
    ![CDN 终结点](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
    终结点传播所用的时间取决于创建配置文件时选择的定价层。 “标准 Akamai”通常在一分钟内完成，“标准 Microsoft”通常在 10 分钟内完成，“标准 Verizon”和“高级 Verizon”通常在 30 分钟内完成   。
+
+> [!NOTE]
+> 对于 Verizon CDN 终结点，当终结点因任何原因被禁用或被停止时，通过 Verizon 补充门户配置的所有资源都将被清除。 无法通过重启终结点来自动恢复这些配置。 你将需要重新进行这些配置更改。
 
 ## <a name="clean-up-resources"></a>清理资源
 

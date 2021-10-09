@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 8/20/2021
-ms.openlocfilehash: c65d2947e6e0f9505f1827ec8dbb32f59855d332
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 9/13/2021
+ms.openlocfilehash: 72996a44892d17a44ea58405e92bb9ac6cc52c68
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633884"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546430"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL 超大规模 (Citus) 中的日志
 
@@ -55,6 +55,15 @@ AzureDiagnostics
 ```
 
 将上述示例中的服务器名称替换为你的服务器名称。 协调器节点名称具有后缀 `-c`，而工作节点则以 `-w0`、`-w1` 等后缀命名。
+
+可以通过不同方式筛选 Azure 日志。 下面介绍如何查找过去一天中消息与正则表达式匹配的日志。
+
+```kusto
+AzureDiagnostics
+| where TimeGenerated > ago(24h)
+| order by TimeGenerated desc
+| where Message matches regex ".*error.*"
+```
 
 ## <a name="next-steps"></a>后续步骤
 

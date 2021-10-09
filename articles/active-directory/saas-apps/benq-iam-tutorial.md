@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 BenQ IAM 集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 BenQ IAM 集成
 description: 了解如何在 Azure Active Directory 和 BenQ IAM 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/30/2021
+ms.date: 09/16/2021
 ms.author: jeedes
-ms.openlocfilehash: cbe0dbe25956c097abd780f8f8da6213d231a3c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1adfc67567176be0d5cda6124392f8069e7b962e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782055"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629976"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benq-iam"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BenQ IAM 集成
+# <a name="tutorial-azure-ad-sso-integration-with-benq-iam"></a>教程：Azure AD SSO 与 BenQ IAM 集成
 
 本教程介绍如何将 BenQ IAM 与 Azure Active Directory (Azure AD) 集成。 将 BenQ IAM 与 Azure AD 集成后，可以：
 
@@ -75,9 +75,9 @@ ms.locfileid: "121782055"
 
 1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://service-portaltest.benq.com/saml/init/<ID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://service-portal.benq.com/saml/init/<ID>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://service-portaltest.benq.com/saml/consume/<ID>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://service-portal.benq.com/saml/consume/<ID>`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -131,7 +131,30 @@ ms.locfileid: "121782055"
 
 ## <a name="configure-benq-iam-sso"></a>配置 BenQ IAM SSO
 
-若要在 BenQ IAM 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [BenQ IAM 支持团队](mailto:benqcare.us@benq.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 使用 BenQ 管理员帐户登录 BenQ IAM，单击“帐户管理”部分中的“SSO 设置”。
+
+    ![SSO 设置的屏幕截图](./media/benq-iam-tutorial/sso-setting.png)
+
+1. 在弹出窗口中选择“SAML SSO”作为 SSO 设置，然后单击“下一步” 。
+
+    ![SAML SSO 的屏幕截图](./media/benq-iam-tutorial/sso-by-saml.png)
+
+1. 在“SSO 设置”页中，执行以下步骤。
+
+    ![SSO 配置的屏幕截图](./media/benq-iam-tutorial/saml-configuration.png)
+
+    a. 在“登录/SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
+
+    b. 在“标识符/实体 ID”文本框中，粘贴从 Azure 门户复制的“标识符”值 。
+
+    c. 在记事本中打开从 Azure 门户下载的“证书 (Base64)”，将内容粘贴到“证书 (Base64)”文本框中 。
+
+    d. 复制“标识符”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中  。
+
+    e. 复制“回复URL”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中  。
+
+    f. 单击“下一步”  。
+
 
 ### <a name="create-benq-iam-test-user"></a>创建 BenQ IAM 测试用户
 
@@ -151,7 +174,7 @@ ms.locfileid: "121782055"
 
 * 在 Azure 门户中单击“测试此应用程序”，你应会自动登录到为其设置了 SSO 的 BenQ IAM。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 BenQ IAM 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 BenQ IAM。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 BenQ IAM 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 BenQ IAM。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

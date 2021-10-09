@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: b92603e5aa9f7c42a2e4789353077058b1fc6ea9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6ee619e6036b9d8bc3b0323bc793903dab0a2735
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730928"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207306"
 ---
 # <a name="azure-synapse-access-control"></a>Azure Synapse 访问控制 
 
@@ -48,7 +48,7 @@ Azure 角色用于控制对以下项的管理：
 Synapse 支持两种开发模型。
 
 - Synapse 实时开发。 在 Synapse Studio 中开发和调试代码，然后发布代码以保存和执行。  Synapse 服务是代码编辑和执行的事实来源。  关闭 Synapse Studio 时，任何未发布的工作将丢失。  
-- 启用 Git 的开发。 在 Synapse Studio 中开发和调试代码，并提交对 Git 存储库的工作分支的更改。 一个或多个分支的工作会集成到协作分支中，从该分支将工作发布到服务。 Git 存储库是代码编辑的事实来源，而服务是执行的事实来源。 必须在关闭 Synapse Studio 前，将更改提交到 Git 存储库或发布到服务。 [详细了解](../cicd/continuous-integration-deployment.md)如何将 Synapse Analytics 和 Git 结合使用。
+- 启用 Git 的开发。 在 Synapse Studio 中开发和调试代码，并提交对 Git 存储库的工作分支的更改。 一个或多个分支的工作会集成到协作分支中，从该分支将工作发布到服务。 Git 存储库是代码编辑的事实来源，而服务是执行的事实来源。 必须在关闭 Synapse Studio 前，将更改提交到 Git 存储库或发布到服务。 [详细了解](../cicd/continuous-integration-delivery.md)如何将 Synapse Analytics 和 Git 结合使用。
 
 在这两种开发模型中，任何有权访问 Synapse Studio 的用户都可以创建代码项目。 但是，你需要其他权限来将项目发布到服务、读取已发布的项目、向 Git 提交更改、执行代码以及访问受凭据保护的关联数据。
 
@@ -76,7 +76,7 @@ Synapse 角色可以在工作区范围内或在更精细的范围内分配，以
 
 **无服务器 SQL 池**：Synapse 管理员已被授予对无服务器 SQL 池“Built-in”的 `db_owner` (`DBO`) 权限。 若要授予其他用户访问无服务器 SQL 池的权限，Synapse 管理员需要在每个无服务器池上运行 SQL 脚本。  
 
-**专用 SQL 池**：向工作区创建者和工作区 MSI 授予 Active Directory 管理员权限。  不会自动授予访问专用 SQL 池的权限。 若要授予其他用户或组对专用 SQL 池的访问权限，Active Directory 管理员必须针对每个专用 SQL 池运行 SQL 脚本。
+专用 SQL 池：Synapse 管理员已被授予对专用 SQL 池的 `db_owner` (`DBO`) 权限。 向工作区创建者和工作区 MSI 授予 Active Directory 管理员权限。  不会自动授予访问专用 SQL 池的权限。 若要授予其他用户或组对专用 SQL 池的访问权限，Active Directory 管理员必须针对每个专用 SQL 池运行 SQL 脚本。
 
 请参阅[如何设置 Synapse 访问控制](./how-to-set-up-access-control.md)，了解在 SQL 池中授予 SQL 权限的 SQL 脚本的示例。  
 

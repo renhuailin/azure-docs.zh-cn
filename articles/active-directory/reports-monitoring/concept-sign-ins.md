@@ -17,12 +17,12 @@ ms.date: 07/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9ed7b31625275c808555534fcd49314444ab0ad
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 4ce1aecb88f595b7edba2e1f89d82c06e1fbbc69
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388140"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622277"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory 中的登录日志
 
@@ -69,7 +69,7 @@ ms.locfileid: "114388140"
 
 ## <a name="what-azure-ad-license-do-you-need"></a>需要什么 Azure AD 许可证？
 
-[Azure AD 的所有版本](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)中均提供登录活动报告，也可通过 Microsoft Graph API 访问这些报告。
+[所有版本的 Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) 中都提供了登录活动报告。 如果有 Azure Active Directory P1 或 P2 许可证，还可以通过 Microsoft Graph API 访问登录活动报告。
 
 
 ## <a name="where-can-you-find-it-in-the-azure-portal"></a>在 Azure 门户中的何处可以找到日志？

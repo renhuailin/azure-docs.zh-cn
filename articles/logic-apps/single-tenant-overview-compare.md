@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: 61dbf2f83ad135cfdef6fffcc3a8c162d0a4c0cd
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/13/2021
+ms.openlocfilehash: fa1ea33e2e7987daa79267fb197981931ce1c2fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111448"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606259"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的单租户与多租户和集成服务环境的比较情况
 
@@ -121,12 +121,16 @@ Azure 逻辑应用是一个基于云的平台，用于创建和运行集成应�
 
   如果需要保留、查看或引用来自先前事件的数据，则创建有状态工作流。 这些工作流将每个操作的所有输入和输出及其状态保存并传输到外部存储，这样就可以在每个运行完成后查看运行详细信息和历史记录。 如果服务中断，有状态工作流提供高复原能力。 在服务和系统还原后，你可从已保存的状态重新构造中断的运行，并再次运行工作流来完成操作。 有状态工作流可以比无状态工作流持续运行更长的时间。
 
+  默认情况下，多租户和单租户 Azure 逻辑应用中的有状态工作流以异步方式运行。 所有基于 HTTP 的操作都遵循标准[异步操作模式](/azure/architecture/patterns/async-request-reply)。 该模式指定在 HTTP 操作调用某个终结点、服务、系统或 API 或向其发送请求后，接收方立即返回[“202 已接受”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)响应。 此代码确认接收方已接受请求，但尚未完成处理。 响应可能包括一个 `location` 标头，该标头指定的 URI 和刷新 ID 可供调用方用于轮询或检查异步请求的状态，直到接收方停止处理并返回[“200 正常”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)成功响应或其他非 202 响应。 但是，调用方不必等待请求完成处理即可继续运行下一操作。 有关详细信息，请参阅[异步微服务集成强制实施微服务自治](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)。
+
 * *无状态*
 
-  如果不需要在每个运行完成后保留、查看或引用外部存储中的先前事件的数据（供以后查看），请创建无状态工作流。 这些工作流将每个操作的所有输入和输出及其状态仅保存在内存中，而不保存在外部存储中。 结果就是，由于运行详细信息和历史记录未保存在外部存储中，因此无状态工作流的运行时间更短（通常不到 5 分钟）、性能更高、响应时间更短、吞吐量更高且运行成本更低。 不过，如果服务中断，已中断的运行不会自动还原，因此调用方需要重新手动提交已中断的运行。 这些工作流只能同步运行。
+  如果不需要在每个运行完成后保留、查看或引用外部存储中的先前事件的数据（供以后查看），请创建无状态工作流。 这些工作流将每个操作的所有输入和输出及其状态仅保存在内存中，而不保存在外部存储中。 结果就是，由于运行详细信息和历史记录未保存在外部存储中，因此无状态工作流的运行时间更短（通常不到 5 分钟）、性能更高、响应时间更短、吞吐量更高且运行成本更低。 不过，如果服务中断，已中断的运行不会自动还原，因此调用方需要重新手动提交已中断的运行。
 
   > [!IMPORTANT]
   > 无状态工作流在处理总大小不超过 64 KB 的数据或内容（如文件）时提供最佳性能。 内容较大（例如，多个大型附件）可能会显著降低工作流的性能，甚至会由于内存不足异常而导致工作流崩溃。 如果工作流可能需要处理较大的内容，请改用有状态工作流。
+
+  无状态工作流仅同步运行，因此不使用有状态工作流使用的标准[异步操作模式](/azure/architecture/patterns/async-request-reply)。 相反，所有返回[“202 已接受”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)响应的基于 HTTP 的操作都会继续完成工作流执行过程中的下一步。 如果响应包含 `location` 标头，则无状态工作流不会轮询指定的 URI 来检查状态。 若要遵循标准异步操作模式，请改用有状态工作流。
 
   为了简化调试，你可为无状态工作流启用运行历史记录（这对性能有一些影响），然后在完成时再禁用运行历史记录。 有关详细信息，请参阅[在 Visual Studio Code 中创建基于单租户的工作流](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless)或[在 Azure 门户中创建基于单租户的工作流](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless)。
 
@@ -137,19 +141,19 @@ Azure 逻辑应用是一个基于云的平台，用于创建和运行集成应�
 
 ### <a name="nested-behavior-differences-between-stateful-and-stateless-workflows"></a>有状态和无状态工作流之前的嵌套行为差异
 
-可使用[请求触发器](../connectors/connectors-native-reqres.md)、[HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)，或者具有 [ApiConnectionWebhook 类型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)且可接收 HTTPS 请求的托管连接器触发器，将工作流设置为可从同一“逻辑应用（标准版）”资源中存在的其他工作流[调用](../logic-apps/logic-apps-http-endpoint.md)。
+可使用[请求触发器](../connectors/connectors-native-reqres.md)、[HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)，或者具有 [ApiConnectionWebhook 类型](logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)且可接收 HTTPS 请求的托管连接器触发器，将工作流设置为可从同一“逻辑应用（标准版）”资源中存在的其他工作流[调用](logic-apps-http-endpoint.md)。
 
 下面是在父工作流调用子工作流之后，嵌套工作流可遵循的行为模式：
 
 * 异步轮询模式
 
-  父工作流不会等待对其初始调用的响应，而是会继续检查子工作流的运行历史记录，直到子工作流完成运行为止。 默认情况下，有状态工作流采用这种模式，它非常适合可能会超出[请求超时限制](../logic-apps/logic-apps-limits-and-config.md)的长期运行的子工作流。
+  父工作流不会等待对其初始调用的响应，而是会继续检查子工作流的运行历史记录，直到子工作流完成运行为止。 默认情况下，有状态工作流采用这种模式，它非常适合可能会超出[请求超时限制](logic-apps-limits-and-config.md)的长期运行的子工作流。
 
 * 同步模式（“触发并忘记”）
 
   子工作流通过立即返回 `202 ACCEPTED` 响应来确认调用，而父工作流继续执行下一操作，不等待从子工作流返回结果， 而是在子工作流完成运行时接收结果。 不包含响应操作的有状态子工作流始终采用同步模式。 对于有状态子工作流，你可查看其运行历史记录。
 
-  若要启用此行为，请在工作流的 JSON 定义中，将 `operationOptions` 属性设置为 `DisableAsyncPattern`。 有关详细信息，请查看[触发器和操作类型 - 操作选项](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)。
+  若要启用此行为，请在工作流的 JSON 定义中，将 `operationOptions` 属性设置为 `DisableAsyncPattern`。 有关详细信息，请查看[触发器和操作类型 - 操作选项](logic-apps-workflow-actions-triggers.md#operation-options)。
 
 * 触发并等待
 
@@ -173,7 +177,7 @@ Azure 逻辑应用是一个基于云的平台，用于创建和运行集成应�
 
 * 通过[超过 400 个托管连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)，针对本地系统的服务型软件 (SaaS) 应用、平台即服务 (PaaS) 和服务加连接器创建逻辑应用及其工作流。
 
-  * 现在，更多托管连接器作为内置操作提供，并以类似于其他内置操作（如 Azure Functions）的方式运行。 内置操作在单租户 Azure 逻辑应用运行时上以本机方式运行。 例如，新的内置操作包括 Azure 服务总线、Azure 事件中心、SQL Server 和 MQ。
+  * 现在，更多托管连接器作为内置操作提供，并以类似于其他内置操作（如 Azure Functions）的方式运行。 内置操作在单租户 Azure 逻辑应用运行时上以本机方式运行。 例如，新的内置操作包括 Azure 服务总线、Azure 事件中心、SQL Server、MQ、DB2 和 IBM Host File。
 
     > [!NOTE]
     > 对于内置 SQL Server 版本，只有“执行查询”操作可以直接连接到 Azure 虚拟网络，而不需要使用[本地数据网关](logic-apps-gateway-connection.md)。
@@ -191,10 +195,12 @@ Azure 逻辑应用是一个基于云的平台，用于创建和运行集成应�
     > [!NOTE]
     > 若要在单租户 Azure 逻辑应用（标准版）中使用这些操作，需要有 Liquid 映射、XML 映射或 XML 架构。 可以在 Azure 门户中，从逻辑应用的资源菜单的“项目”（下其中包括“架构”和“映射”部分），上传这些项目  。 或者，可以使用相应的“映射”和“架构”文件夹，将这些项目添加到 Visual Studio Code 项目的“项目”文件夹  。 然后，可以在同一逻辑应用资源中跨多个工作流使用这些项目。
 
-  * 逻辑应用（标准版）资源可以在任何位置运行，因为 Azure 逻辑应用可生成共享访问签名 (SAS) 连接字符串，而这些逻辑应用可使用这些字符串将请求发送到云连接运行时终结点。 Azure 逻辑应用服务会将这些连接字符串随其他应用程序设置一起保存，这样你在 Azure 中部署时，可在 Azure Key Vault 中轻松存储这些值。
+  * “逻辑应用(标准)”资源可以在任何位置运行，因为 Azure 逻辑应用可生成共享访问签名 (SAS) 连接字符串，而这些逻辑应用可使用这些字符串将请求发送到云连接运行时终结点。 Azure 逻辑应用服务会将这些连接字符串随其他应用程序设置一起保存，这样你在 Azure 中部署时，可在 Azure Key Vault 中轻松存储这些值。
 
     > [!NOTE]
-    > 默认情况下，逻辑应用（标准版）资源具有[系统分配的托管标识](../logic-apps/create-managed-service-identity.md)，该标识已自动启用以在运行时对连接进行身份验证。 该标识与你在创建连接时使用的身份验证凭据或连接字符串不同。 如果禁用该标识，则运行时连接无效。 若要查看此设置，请在逻辑应用菜单的“设置”下，选择“标识” 。
+    > 默认情况下，“逻辑应用(标准)”资源类型具有[系统分配的托管标识](create-managed-service-identity.md)，该标识已自动启用以在运行时对连接进行身份验证。 该标识与你在创建连接时使用的身份验证凭据或连接字符串不同。 如果禁用该标识，则运行时连接无效。 若要查看此设置，请在逻辑应用菜单的“设置”下，选择“标识” 。
+    >
+    > 用户分配的托管标识当前在“逻辑应用(标准)”资源类型中不可用。
 
 * 可在 Visual Studio Code 开发环境中本地运行、测试和调试逻辑应用及其工作流。
 
@@ -218,7 +224,7 @@ Azure 逻辑应用是一个基于云的平台，用于创建和运行集成应�
 
 对于逻辑应用（标准版）资源，下列功能已经过更改，它们目前功能受限、不可用或不受支持：
 
-* **触发器和操作**：内置触发器和操作在单租户 Azure 逻辑应用运行时中以本机方式运行，而托管连接器在 Azure 中托管和运行。 某些内置触发器不可用，例如“滑动窗口”和“批处理”。 若要启动有状态或无状态工作流，请使用[内置的重复周期、请求HTTP、HTTP Webhook、事件中心或服务总线触发器](../connectors/apis-list.md)。 在设计器中，内置触发器和操作显示在“内置”选项卡下。
+* 触发器和操作：内置触发器和操作在 Azure 逻辑应用中以原生方式运行，而托管连接器在 Azure 中托管和运行。 某些内置触发器和操作不可用，例如滑动窗口、Batch、Azure 应用服务和 Azure API 管理。 若要启动有状态或无状态工作流，请使用[内置的重复周期、请求HTTP、HTTP Webhook、事件中心或服务总线触发器](../connectors/apis-list.md)。 在设计器中，内置触发器和操作显示在“内置”选项卡下。
 
   对于有状态工作流，除了下面列出的不可用操作外，[托管连接器触发器和操作](../connectors/managed.md)显示在“Azure”选项卡下。 对于无状态工作流，选择触发器时不会显示“Azure”选项卡。 仅可选择[托管连接器操作，不可选择触发器](../connectors/managed.md)。 虽然可为无状态工作流启用 Azure 托管的托管连接器，但设计器不会显示任何托管连接器触发器供你添加。
 
@@ -242,11 +248,17 @@ Azure 逻辑应用是一个基于云的平台，用于创建和运行集成应�
 
     * [Azure 逻辑应用 - 创建逻辑应用工作流](logic-apps-http-endpoint.md)这一内置操作现在名为“工作流操作 - 在此工作流应用中调用工作流”。
 
-    * [集成帐户的某些内置触发器和操作](../connectors/managed.md#integration-account-connectors)不可用，例如平面文件编码和解码操作。
+    * 某些[适用于集成帐户的触发器和操作](../connectors/managed.md#integration-account-connectors)不可用，例如平面文件操作、AS2 (V2) 操作和 RosettaNet 操作。
 
     * 当前不支持[自定义托管连接器](../connectors/apis-list.md#custom-apis-and-connectors)。 但是，在使用 Visual Studio Code 时，可以创建自定义内置操作。 有关详细信息，请查看[使用 Visual Studio Code 创建基于单租户的工作流](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring)。
 
-* 对于 XML 转换，对通过映射引用程序集的支持当前不可用。 此外，当前仅支持 XSLT 1.0。
+* 身份验证：以下身份验证类型目前不适用于“逻辑应用(标准)”资源类型：
+
+  * Azure Active Directory 开放式身份验证 (Azure AD OAuth)，用于对基于请求的触发器（例如请求触发器和 HTTP Webhook 触发器）进行入站调用。
+
+  * 用户分配的托管标识。 目前，只有系统分配的托管标识可用并且会自动启用。
+
+* XML 转换：对通过映射引用程序集的支持当前不可用。 此外，当前仅支持 XSLT 1.0。
 
 * **Visual Studio Code 中的断点调试**：虽然可在工作流的 workflow.json 文件中添加和使用断点，但目前仅可对操作使用断点，不可将其用于触发器。 有关详细信息，请参阅[在 Visual Studio Code 中创建基于单租户的工作流](create-single-tenant-workflows-visual-studio-code.md#manage-breakpoints)。
 
@@ -254,7 +266,7 @@ Azure 逻辑应用是一个基于云的平台，用于创建和运行集成应�
 
 * **缩放控件**：目前不可在设计器上使用缩放控件。
 
-* **部署目标**：无法将逻辑应用（标准版）资源类型部署到 [集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 或 Azure 部署槽位。
+* **部署目标**：无法将逻辑应用（标准版）资源类型部署到 [集成服务环境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) 或 Azure 部署槽位。
 
 * **Azure API 管理**：当前无法将逻辑应用（标准版）资源类型导入 Azure API 管理。 但可以导入逻辑应用（消耗版）资源类型。
 

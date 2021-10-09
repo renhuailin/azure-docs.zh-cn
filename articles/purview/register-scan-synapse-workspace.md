@@ -1,18 +1,18 @@
 ---
-title: 如何扫描 Azure Synapse Analytics 工作区
+title: 如何注册和扫描 Azure Synapse Analytics 工作区
 description: 了解如何扫描 Azure Purview 数据目录中的 Azure Synapse 工作区。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 06/18/2021
-ms.openlocfilehash: a74e88d72d1e7109b6e0acfa81485476eed9e00b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8a7b23089e9b17e35b56b04991c76b37baedf231
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731145"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207785"
 ---
 # <a name="register-and-scan-azure-synapse-analytics-workspaces"></a>注册和扫描 Azure Synapse Analytics 工作区
 
@@ -138,6 +138,7 @@ Azure Synapse Analytics 工作区扫描支持捕获元数据和架构，以在�
     EXEC sp_addrolemember 'db_datareader', [PurviewAccountName]
     GO
     ```
+
 #### <a name="use-a-managed-identity-for-serverless-sql-databases"></a>将托管标识用于无服务器 SQL 数据库
 
 1. 转到 Azure Synapse 工作区。
@@ -148,6 +149,14 @@ Azure Synapse Analytics 工作区扫描支持捕获元数据和架构，以在�
     CREATE USER [PurviewAccountName] FOR LOGIN [PurviewAccountName];
     ALTER ROLE db_datareader ADD MEMBER [PurviewAccountName]; 
     ```
+
+#### <a name="grant-permission-to-use-credentials-for-external-tables"></a>授予对外部表使用凭据的权限
+
+如果 Azure Synapse 工作区中有任何外部表，需要为 Azure Purview 托管标识授予对外部表范围凭据的“引用”权限。 通过“引用”权限，Azure Purview 可以读取外部表中的数据。
+
+```sql
+GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewAccountName];
+```
 
 #### <a name="use-a-service-principal-for-dedicated-sql-databases"></a>将服务主体用于专用 SQL 数据库
 
@@ -199,7 +208,7 @@ Azure Synapse Analytics 工作区扫描支持捕获元数据和架构，以在�
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左侧窗格中，选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左侧窗格中，选择“数据映射”选项卡。
 
 1. 选择所注册的数据源。
 
@@ -232,11 +241,11 @@ Azure Synapse Analytics 工作区扫描支持捕获元数据和架构，以在�
 
     * “状态栏”显示有关子资源运行状态的简短摘要。 状态显示在工作区级别扫描中。  
     * 绿色表示扫描运行成功，红色表示扫描运行失败，灰色表示扫描仍在运行。  
-    * 可以通过单击它们来查看有关扫描运行的更详细信息。
+    * 可以通过选择扫描运行来查看有关扫描运行的更详细信息。
 
       :::image type="content" source="media/register-scan-synapse-workspace/synapse-scan-details.png" alt-text="Azure Synapse Analytics 扫描详细信息页的屏幕截图。" lightbox="media/register-scan-synapse-workspace/synapse-scan-details.png"::: 
 
-    * 可以在“源详细信息”页面底部查看最近失败的扫描运行摘要。 同样，可以通过单击它们来查看有关扫描运行的更详细信息。
+    * 可以在“源详细信息”页面底部查看最近失败的扫描运行摘要。 同样，可以通过选择扫描运行来查看有关扫描运行的更详细信息。
 
 #### <a name="manage-your-scans"></a>管理扫描
 

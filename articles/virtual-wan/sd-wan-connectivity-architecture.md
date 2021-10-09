@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: 08e20a497c7fddfe00e70fcf1d9d4c6e5f76054f
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 4711e63e1d9309d3111e3207f6cb824704ac4290
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122321840"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652787"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>带有 Azure 虚拟 WAN 的 SD-WAN 连接体系结构
 
@@ -71,5 +71,5 @@ SD-WAN CPE 仍然是实现和强制实施流量优化和路径选择的地方。
 
 ## <a name="additional-information"></a>其他信息
 
-* [包括常见问题解答](virtual-wan-faq.md)
+* [Azure 虚拟 WAN 常见问题解答](virtual-wan-faq.md)
 * [解决远程连接性问题](work-remotely-support.md)

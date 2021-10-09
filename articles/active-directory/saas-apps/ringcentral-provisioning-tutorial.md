@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: 1dd3f9d7462dc8594cf8b6e37db6df725196b899
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 9e8385faadc4c3c9d34471741cc238e964ed67a2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760081"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589143"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教程：为 RingCentral 配置自动用户预配
 
@@ -47,6 +47,10 @@ ms.locfileid: "113760081"
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 RingCentral 以支持通过 Azure AD 进行预配
 
 需要一个 [RingCentral](https://www.ringcentral.com/office/plansandpricing.html) 管理员帐户才能在步骤 5 的“管理凭据”部分授权。
+
+在 RingCentral 管理门户中，在“帐户设置”->“目录集成”下，将“目录提供程序”设置设置为“SCIM” 
+![图像](https://user-images.githubusercontent.com/49566142/134523440-20320d8e-3c25-4358-9ace-d4888ce8e4ea.png)
+
 
 > [!NOTE]
 > 若要将许可证分配给用户，请参阅[此处](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)的视频链接。
@@ -82,7 +86,7 @@ ms.locfileid: "113760081"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

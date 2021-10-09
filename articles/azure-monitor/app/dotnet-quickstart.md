@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/11/2021
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 90d4fd76350d03bd876d97a7191011079b11845e
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 03506bd066ee81eb61c2d44f0d31f1336bd44f05
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300883"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081104"
 ---
 # <a name="quickstart-monitor-an-aspnet-core-app-with-azure-monitor-application-insights"></a>快速入门：使用 Azure Monitor Application Insights 监视 ASP.NET Core 应用
 
@@ -100,12 +100,12 @@ ms.locfileid: "112300883"
 
 1. 使用 `dotnet run` 或 IDE 运行 Web 应用。
 1. 在 Azure 门户中查看 Application Insights 资源时，请选择“调查”下的“实时指标”。
-1. 在应用中重复选择“主页”和“隐私”链接。
+1. 在应用 (`http://localhost:5000`) 中，重复选择“主页”和“隐私”链接 。
 1. 当在应用中发出请求时，查看“实时指标”显示上的活动。
 
 ## <a name="next-steps"></a>后续步骤
 
-祝贺！ 现在可以使用你的应用发送的遥测数据来执行以下操作：
+祝贺你！ 现在可以使用你的应用发送的遥测数据来执行以下操作：
 
 - [查找运行时异常](tutorial-runtime-exceptions.md)。
 - [查找性能问题](tutorial-performance.md)。

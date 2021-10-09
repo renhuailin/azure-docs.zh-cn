@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 数据工厂从 HDFS 复制数据
+title: 从 HDFS 复制数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 HDFS 源复制到支持的接收器数据存储。
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从云或本地 HDFS 源复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 8b02fb7fddd64bd9ce7bbc7cd7a64ae6dfef4681
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 8bf95b8f237cbaaa81f520c150154d93fbc0c173
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308338"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831774"
 ---
-# <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 服务器复制数据
+# <a name="copy-data-from-the-hdfs-server-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 HDFS 服务器复制数据
 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
 > * [版本 1](v1/data-factory-hdfs-connector.md)
@@ -24,7 +24,7 @@ ms.locfileid: "123308338"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何从 Hadoop 分布式文件系统 (HDFS) 服务器复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何从 Hadoop 分布式文件系统 (HDFS) 服务器复制数据。 有关详细信息，请阅读 [Azure 数据工厂](introduction.md)和 [Synapse Analytics](../synapse-analytics/overview-what-is.md) 的简介文章。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -87,7 +87,7 @@ HDFS 链接服务支持以下属性：
 | url |HDFS 的 URL |是 |
 | authenticationType | 允许的值为 Anonymous 或 Windows 。 <br><br> 若要设置本地环境，请参阅[对 HDFS 连接器使用 Kerberos 身份验证](#use-kerberos-authentication-for-the-hdfs-connector)部分。 |是 |
 | userName |Windows 身份验证的用户名。 对于 Kerberos 身份验证，请指定 **\<username>@\<domain>.com**。 |是（对于 Windows 身份验证） |
-| password |Windows 身份验证的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（对于 Windows 身份验证） |
+| password |Windows 身份验证的密码。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure 密钥保管库中的机密](store-credentials-in-key-vault.md)。 |是（对于 Windows 身份验证） |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 若要了解详细信息，请参阅[先决条件](#prerequisites)部分。 如果未指定集成运行时，服务会使用默认的 Azure Integration Runtime。 |否 |
 
 **示例：使用匿名身份验证**
@@ -136,7 +136,7 @@ HDFS 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅 [Azure 数据工厂中的数据集](concepts-datasets-linked-services.md)。 
+若要查看可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)。 
 
 [!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
@@ -176,7 +176,7 @@ HTTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅 [Azure 数据工厂中的管道和活动](concepts-pipelines-activities.md)。 本部分提供 HDFS 源支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道和活动](concepts-pipelines-activities.md)。 本部分提供 HDFS 源支持的属性列表。
 
 ### <a name="hdfs-as-source"></a>以 HDFS 作为源
 
@@ -203,7 +203,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 | DistCp 设置 |  | |
 | distcpSettings | 使用 HDFS DistCp 时将使用的属性组。 | 否 |
 | resourceManagerEndpoint | YARN (Yet Another Resource Negotiator) 终结点 | 是（如果使用 DistCp） |
-| tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件由数据工厂生成，将在复制作业完成后删除。 | 是（如果使用 DistCp） |
+| tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件将生成并在复制作业完成后删除。 | 是（如果使用 DistCp） |
 | distcpOptions | 提供给 DistCp 命令的其他选项。 | 否 |
 
 **示例：**
@@ -259,13 +259,13 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 | `Folder*`  | （为空，使用默认值） | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | （为空，使用默认值） | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | `*.csv`              | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | 是      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | `*.csv`              | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ### <a name="file-list-examples"></a>文件列表示例
 
 本部分介绍了在复制活动源中使用文件列表路径时产生的行为。 假设有以下源文件夹结构，并且要复制粗体类型的文件：
 
-| 示例源结构                                      | FileListToCopy.txt 中的内容                             | Azure 数据工厂配置                                            |
+| 示例源结构                                      | FileListToCopy.txt 中的内容                             | 配置 |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | root<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;元数据<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **在数据集中：**<br>- 文件夹路径：`root/FolderA`<br><br>**在复制活动源中：**<br>- 文件列表路径：`root/Metadata/FileListToCopy.txt` <br><br>文件列表路径指向同一数据存储中的一个文本文件，该文件包含要复制的文件列表（每行一个文件，带有数据集中所配置路径的相对路径）。 |
 
@@ -273,7 +273,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) 是 Hadoop 本机命令行工具，用于在 Hadoop 群集中进行分布式复制。 在 Distcp 中运行某个命令时，该命令首先列出要复制的所有文件，然后在 Hadoop 群集中创建多个 Map 作业。 每个 Map 作业会将数据以二进制格式从源复制到接收器。
 
-复制活动支持使用 DistCp 将文件按原样复制到 Azure Blob 存储（包括[暂存复制](copy-activity-performance.md)）或 Azure Data Lake Store。 在这种情况下，DistCp 可以利用群集的功能，而不必在自承载集成运行时上运行。 使用 DistCp 可以提供更高的复制吞吐量，尤其是在群集非常强大的情况下。 根据数据工厂中的配置，复制活动会自动构造 DistCp 命令，将其提交到 Hadoop 群集并监视复制状态。
+复制活动支持使用 DistCp 将文件按原样复制到 Azure Blob 存储（包括[暂存复制](copy-activity-performance.md)）或 Azure Data Lake Store。 在这种情况下，DistCp 可以利用群集的功能，而不必在自承载集成运行时上运行。 使用 DistCp 可以提供更高的复制吞吐量，尤其是在群集非常强大的情况下。 根据配置，复制活动会自动构造 DistCp 命令，将其提交到 Hadoop 群集并监视复制状态。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -339,7 +339,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 **在 KDC 服务器上：**
 
-创建供 Azure 数据工厂使用的主体，然后指定密码。
+创建主体并指定密码。
 
 > [!IMPORTANT]
 > 用户名应不包含主机名。
@@ -370,7 +370,7 @@ Kadmin> addprinc <username>@<REALM.COM>
         kdc = <your_kdc_server_address>
     ```
 
-**在数据工厂中：**
+在数据工厂或 Synapse 工作区中：
 
 * 将 Windows 身份验证与 Kerberos 主体名称及密码一起使用来配置 HDFS 连接器，以连接到 HDFS 数据源。 有关配置详细信息，请查看 [HDFS 链接服务属性](#linked-service-properties)部分。
 
@@ -459,7 +459,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
     c. 选择需要在连接到 KDC 服务器时使用的加密算法。 可以选择所有选项。
 
-    ![“网络安全:配置 Kerberos 允许的加密类型”窗格的屏幕截图](media/connector-hdfs/config-encryption-types-for-kerberos.png)
+    :::image type="content" source="media/connector-hdfs/config-encryption-types-for-kerberos.png" alt-text="&quot;网络安全:配置 Kerberos 允许的加密类型&quot;窗格的屏幕截图":::
 
     d. 使用 `Ksetup` 命令可指定要在指定领域使用的加密算法。
 
@@ -477,7 +477,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
     d. 从领域中添加主体。
 
-       ![“安全标识映射”窗格](media/connector-hdfs/map-security-identity.png)
+       :::image type="content" source="media/connector-hdfs/map-security-identity.png" alt-text="&quot;安全身份映射&quot;窗格的屏幕截图":::
 
 **在自承载集成运行时计算机上：**
 
@@ -488,22 +488,22 @@ Kadmin> addprinc <username>@<REALM.COM>
    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
    ```
 
-**在数据工厂中：**
+在数据工厂或 Synapse 工作区中：
 
 * 将 Windows 身份验证与域帐户或 Kerberos 主体一起使用来配置 HDFS 连接器，以连接到 HDFS 数据源。 有关配置详细信息，请参阅 [HDFS 链接服务属性](#linked-service-properties)部分。
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 
-有关查找活动属性的信息，请参阅 [Azure 数据工厂中的查找活动](control-flow-lookup-activity.md)。
+有关 Lookup 活动属性的详细信息，请参阅 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="delete-activity-properties"></a>Delete 活动属性
 
-有关删除活动属性的信息，请参阅 [Azure 数据工厂中的删除活动](delete-activity.md)。
+有关 Delete 活动属性的详细信息，请参阅 [Delete 活动](delete-activity.md)。
 
 ## <a name="legacy-models"></a>旧模型
 
 >[!NOTE]
->仍会按原样支持以下模型，以实现后向兼容性。 建议你使用前面讨论的新模型，因为 Azure 数据工厂创作 UI 已切换到生成新模型。
+>仍会按原样支持以下模型，以实现后向兼容性。 建议你使用前面讨论的新模型，因为创作 UI 已切换到生成新模型。
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
@@ -558,7 +558,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 *true*（默认值）和 *false*。 | 否 |
 | distcpSettings | 使用 HDFS DistCp 时的属性组。 | 否 |
 | resourceManagerEndpoint | YARN 资源管理器终结点 | 是（如果使用 DistCp） |
-| tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件由数据工厂生成，将在复制作业完成后删除。 | 是（如果使用 DistCp） |
+| tempScriptPath | 用于存储临时 DistCp 命令脚本的文件夹路径。 脚本文件将生成并在复制作业完成后删除。 | 是（如果使用 DistCp） |
 | distcpOptions | 提供给 DistCp 命令的其他选项。 | 否 |
 | maxConcurrentConnections | 活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否 |
 
@@ -576,4 +576,4 @@ Kadmin> addprinc <username>@<REALM.COM>
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关可供 Azure 数据工厂中的复制活动用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Copy 活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

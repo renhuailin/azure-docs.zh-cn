@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 660d233c4fc0690799e8ec25e6a07e516035a90b
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: 11428df3662bb03d7d74decbd7230be0fdffa44f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113506324"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742648"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>安装 Azure AD Connect 预配代理
 本文将指导你完成 Azure Active Directory (Azure AD) Connect 预配代理的安装过程，以及如何在 Azure 门户中对其进行初始配置。
@@ -26,6 +26,10 @@ ms.locfileid: "113506324"
 
 >[!NOTE]
 >本文介绍了如何使用向导安装预配代理。 有关使用命令行界面 (CLI) 安装 Azure AD Connect 预配代理的信息，请参阅[使用 CLI 和 PowerShell 安装 Azure AD Connect 预配代理](how-to-install-pshell.md)。
+
+有关其他信息和示例，请参阅以下视频。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mR]
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
 组托管服务帐户 (gMSA) 是一种托管的域帐户，提供自动密码管理、简化的服务主体名称 (SPN) 管理以及将管理委派给其他管理员的功能。 它还在多个服务器上扩展了此功能。 Azure AD Connect 云同步支持并建议使用组托管服务帐户运行此代理。 有关组托管服务帐户的详细信息，请参阅[组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)。

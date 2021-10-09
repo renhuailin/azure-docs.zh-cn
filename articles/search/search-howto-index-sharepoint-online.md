@@ -1,5 +1,5 @@
 ---
-title: 为 SharePoint Online 中的数据编制索引（预览版）
+title: 从 SharePoint Online 索引数据（预览版）
 titleSuffix: Azure Cognitive Search
 description: 设置 SharePoint Online 索引器，以自动索引 Azure 认知搜索中的文档库内容。
 author: MarkHeff
@@ -7,17 +7,17 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 61e9787c0a85ad412d3e70cfb2452d288a48d36a
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 3a6bb0fd360b334299c6cd1be2795121a3b53203
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983043"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777519"
 ---
-# <a name="index-data-from-sharepoint-online"></a>为 SharePoint Online 中的数据编制索引
+# <a name="index-data-from-sharepoint-online"></a>从 SharePoint Online 索引数据
 
 > [!IMPORTANT] 
-> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，SharePoint Online 支持目前为公共预览版。 [请求访问](https://aka.ms/azure-cognitive-search/indexer-preview)此功能，并在启用访问后，使用[预览版 REST API（2020-06-30-preview 或更高版本）](search-api-preview.md)为内容编制索引。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，SharePoint Online 支持目前为公共预览版。 [请求访问](https://aka.ms/azure-cognitive-search/indexer-preview)此功能，并在启用访问权限后，使用[预览版 REST API（2020-06-30-preview 或更高版本）](search-api-preview.md)索引内容。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
 本文介绍了如何使用 Azure 认知搜索将 SharePoint Online 文档库中存储的文档（如 PDF、Microsoft Office 文档和其他几种常见格式）索引到 Azure 认知搜索索引中。 首先，本文介绍了设置和配置索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
 
@@ -28,7 +28,6 @@ ms.locfileid: "112983043"
 
 Azure 认知搜索中的索引器是一种爬网程序，可从数据源中提取可搜索的数据和元数据。 SharePoint Online 索引器将连接到你的 SharePoint Online 站点，并从一个或多个文档库索引文档。 该索引器提供以下功能：
 + 从一个或多个 SharePoint Online 文档库中索引内容。
-+ 从你的 Azure 认知搜索服务所在的租户中的 SharePoint Online 文档库中索引内容。 索引器将不适用于与你的 Azure 认知搜索服务分处不同租户的 SharePoint 站点。 
 + 索引器支持增量索引，这意味着它将标识文档库中出现了更改的内容，并在今后索引运行时只索引已更新的内容。 例如，如果索引器最初索引了 5 个 PDF，随后 1 个 PDF 更新了，那么再次运行索引器时，它将只索引已更新的那一个 PDF。
 + 默认情况下，将从已编制索引的文档中提取文本和规范化图像。 可选择将技能组添加到管道中来进一步扩充内容。 有关技能组的详细信息，可查看 [Azure 认知搜索中的技能组概念](cognitive-search-working-with-skillsets.md)一文。
 
@@ -50,8 +49,11 @@ Azure 认知搜索 SharePoint Online 索引器可从以下文档格式提取文�
  
 > [!VIDEO https://www.youtube.com/embed/QmG65Vgl0JI]
 
-### <a name="step-1-enable-system-assigned-managed-identity"></a>步骤 1：启用系统分配的托管标识
-启用系统分配的托管标识后，Azure 将为搜索服务创建一个可供索引器使用的标识。
+### <a name="step-1-optional-enable-system-assigned-managed-identity"></a>步骤 1（可选）：启用系统分配的托管标识
+
+启用系统分配的托管标识后，Azure 将为搜索服务创建一个可供索引器使用的标识。 此标识用于自动检测在其中预配搜索服务的租户。
+
+如果 SharePoint Online 站点与搜索服务位于同一租户中，则需要为搜索服务启用系统分配的托管标识。 如果 SharePoint Online 站点与搜索服务位于不同租户中，则不需要启用系统分配的托管标识。
 
 ![启用系统分配的托管标识](media/search-howto-index-sharepoint-online/enable-managed-identity.png "启用系统分配的托管标识")
 
@@ -117,10 +119,13 @@ api-key: [admin key]
 {
     "name" : "sharepoint-datasource",
     "type" : "sharepoint",
-    "credentials" : { "connectionString" : "SharePointOnlineEndpoint=[SharePoint Online site url];ApplicationId=[AAD App ID]" },
+    "credentials" : { "connectionString" : "SharePointOnlineEndpoint=[SharePoint Online site url];ApplicationId=[AAD App ID];TenantId=[SharePoint Online site tenant id]" },
     "container" : { "name" : "defaultSiteLibrary", "query" : null }
 }
 ```
+
+> [!NOTE]
+> 如果 SharePoint Online 站点与搜索服务位于同一租户中，并且启用了系统分配的托管标识，则 `TenantId` 无需包含在连接字符串中。 如果 SharePoint Online 站点与搜索服务位于不同租户中，则必须包含 `TenantId`。
 
 ### <a name="step-4-create-an-index"></a>步骤 4：创建索引
 索引指定文档、属性和其他构造中可以塑造搜索体验的字段。

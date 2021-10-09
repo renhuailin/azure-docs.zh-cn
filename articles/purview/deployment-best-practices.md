@@ -4,15 +4,14 @@ description: 本文介绍了部署 Azure Purview 的最佳做法。 使用 Azure
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 4aa2a22f6e7bfef4a04eb65ac6063c81077b6153
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d357a85449a6ae734b3311f2649180b36646d4f4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739100"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214325"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure Purview 部署最佳做法
 
@@ -110,7 +109,7 @@ Purview 可用于集中管理跨云和本地环境的组织数据资产的数据
 
 这些方案必须具体、可操作和可执行，并且产生的结果可度量。 一些可用的方案包括：
 
-|场景|详细信息|角色|
+|方案|详细信息|角色|
 |---------|---------|---------|
 |目录中的业务关键型资产|我需要获取每个数据集的相关信息，以便了解每个数据集。 此方案包括目录中数据集的业务和技术元数据数据。 数据源包括 Azure Data Lake Storage Gen2、Azure Synapse DW 和/或 Power BI。 此方案还包括本地资源，如 SQL Server。|业务分析师、数据科学家、数据工程师|
 |发现业务关键型资产|我需要有一个搜索引擎，以便可以在目录内的所有元数据中进行搜索。 我应该能够使用技术术语、业务术语以及包含通配符的简单或复杂搜索进行搜索。|业务分析师、数据科学家、数据工程师、数据管理员|
@@ -168,7 +167,6 @@ Purview 可用于集中管理跨云和本地环境的组织数据资产的数据
 |任务|详细信息|持续时间|
 |---------|---------|---------|
 |收集和认可要求|与所有利益干系人讨论，收集所有要求。 各种角色都必须参与，以便于认可项目的每个阶段要完成的一系列要求。|1 周|
-|设置初学者工具包|查看 [Purview 快速入门](create-catalog-portal.md)，设置 [Purview 初学者工具包](tutorial-scan-data.md)，以向所有利益干系人演示 Purview。|1 天|
 |在 Purview 中导航|了解如何在主页中使用 Purview。|1 天|
 |配置 ADF 以获得沿袭|确定关键管道和数据资产。 收集连接到内部 ADF 帐户所需的所有信息。|1 天|
 |扫描数据源，如 Azure Data Lake Storage|添加数据源并设置扫描。 确保扫描成功检测到所有资产。|2 天|
@@ -199,7 +197,7 @@ Purview 可用于集中管理跨云和本地环境的组织数据资产的数据
 |[扫描 Power BI](register-scan-power-bi-tenant.md)|如果组织使用 Power BI，则可以扫描 Power BI，以便收集要求包含存储层的沿袭的数据科学家或数据分析师所使用的所有数据资产。|1-2 周|
 |[导入术语表术语](how-to-create-import-export-glossary.md)|在大多数情况下，组织可能已开发了一套术语表术语和资产术语分配。 这样就需要通过 .csv 文件导入到 Purview。|1 周|
 |为资产添加联系人|对于顶级资产，需要创建一个流程，以便允许其他角色分配联系人，或通过 REST API 导入。|1 周|
-|添加敏感度标签并扫描|此步骤对于某些组织是可选的，具体取决于 M365 标记的使用情况。|1-2 周|
+|添加敏感度标签并扫描|此步骤对于某些组织是可选的，具体取决于 Microsoft 365 标记的使用情况。|1-2 周|
 |获取分类和敏感见解|若要在 Purview 中获取报告和见解，你可以访问此功能，以获得各种报告并向管理层展示。|1 天|
 |通过 Purview 托管用户加入更多用户|此步骤需要 Purview 管理员与 Azure Active Directory 管理员合作，创建新的安全组以便授予对 Purview 的访问权限。|1 周|
 
@@ -267,5 +265,5 @@ MVP 阶段完成后，接下来要为到达预生产里程碑制定规划。 组
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：运行初学者工具包并扫描数据](tutorial-scan-data.md)
-- [教程：在主页中导航并搜索资产](tutorial-asset-search.md)
+- [集合最佳做法](concept-best-practices-collections.md)
+- [在主页中导航并搜索资产](tutorial-asset-search.md)

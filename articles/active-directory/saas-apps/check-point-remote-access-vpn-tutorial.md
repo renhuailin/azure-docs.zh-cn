@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 39072747cd2e6b9daa62f02b198a201c5b1782ea
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef52547bb8ec27bd759a238d742173f6b8fc3994
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451398"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591967"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Check Point Remote Secure Access VPN 的集成
 
@@ -270,44 +270,64 @@ ms.locfileid: "110451398"
 1. 设置标识提供者浏览器模式（可选）。默认情况下，Windows 客户端使用其嵌入式浏览器，而 macOS 客户端使用 Safari 在标识提供者的门户上进行身份验证。
 要使 Windows 客户端改变此行为以改用 Internet Explorer，请执行以下操作：
 
-    1.  在客户端计算机上，以管理员身份打开一个纯文本编辑器。
-    2.  在文本编辑器中打开 trac.defaults 文件。
-        * 在 32 位 Windows 上：``%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults``
-        * 在 64 位 Windows 上：``%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults``
-    3.  将 idp_browser_mode 特性值从“embedded”更改为“IE”：
-    4.  保存该文件。
-    5.  重启 Check Point Endpoint Security VPN 客户端服务。
-以管理员身份打开 Windows 命令提示符并运行以下命令：
+   1. 在客户端计算机上，以管理员身份打开一个纯文本编辑器。
 
-        `# net stop TracSrvWrapper `
+   2. 在文本编辑器中打开 `trac.defaults` 文件。
 
-        `# net start TracSrvWrapper`
- 
+      - 在 32 位 Windows 上：
+
+        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - 在 64 位 Windows 上：
+
+        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+
+    3. 将 `idp_browser_mode` 属性的值从 `embedded` 更改为 `IE`。
+
+    4. 保存该文件。
+
+    5. 重启 Check Point Endpoint Security VPN 客户端服务。
+
+   以管理员身份打开 Windows 命令提示符并运行以下命令：
+
+   `# net stop TracSrvWrapper`
+
+   `# net start TracSrvWrapper`
 
 1. 使用后台运行的浏览器开始身份验证：
 
-    1.  在客户端计算机上，以管理员身份打开一个纯文本编辑器。
-    2.  在文本编辑器中打开 trac.defaults 文件。
-        * 在 32 位 Windows 上：`%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
-        * 在 64 位 Windows 上：`%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+   1. 在客户端计算机上，以管理员身份打开一个纯文本编辑器。
 
-        * 在 macOS 上：`/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/Trac.defaults`
+   2. 在文本编辑器中打开 `trac.defaults` 文件。
 
-    3.  将 idp_show_browser_primary_auth_flow 的值更改为 false 
-    4.  保存该文件。
-    5.  重启 Check Point Endpoint Security VPN 客户端服务
-        * 在 Windows 客户端上，以管理员身份打开 Windows 命令提示符并运行以下命令：
+      - 在 32 位 Windows 上：
 
-            `# net stop TracSrvWrapper`
+        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - 在 64 位 Windows 上：
+
+        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - 在 macOS 上：
+      
+        `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
+
+    3. 将 `idp_show_browser_primary_auth_flow` 的值更改为 `false`。
+
+    4. 保存该文件。
+
+    5. 重启 Check Point Endpoint Security VPN 客户端服务。
+       - 在 Windows 客户端上，以管理员身份打开 Windows 命令提示符并运行以下命令：
+
+         `# net stop TracSrvWrapper`
         
-            `# net start TracSrvWrapper`
+         `# net start TracSrvWrapper`
 
-        * 在 macOS 客户端上
+       - 在 macOS 客户端上，运行：
 
-            `sudo launchctl stop com.checkpoint.epc.service`
+         `sudo launchctl stop com.checkpoint.epc.service`
 
-            `sudo launchctl start com.checkpoint.epc.service`
-
+         `sudo launchctl start com.checkpoint.epc.service`
 
 ### <a name="create-check-point-remote-secure-access-vpn-test-user"></a>创建 Check Point Remote Secure Access VPN 测试用户
 
@@ -328,5 +348,3 @@ ms.locfileid: "110451398"
 ## <a name="next-steps"></a>后续步骤
 
 配置 Check Point Remote Secure Access VPN 后，可以强制实施会话控制，从而实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
-
-

@@ -2,13 +2,13 @@
 title: 用于部署 Azure 资源的 Bicep 语言
 description: 介绍了用于将基础结构部署到 Azure 的 Bicep 语言。 它通过使用 JSON 来开发模板，提供改进的创作体验。
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: 93aea8ee92d1f15ac45bd5978e7cbf68261e5a69
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.date: 09/09/2021
+ms.openlocfilehash: ace417bb8a71a277bbcb4ef178c6aaf24b97533b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429107"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831956"
 ---
 # <a name="what-is-bicep"></a>什么是 Bicep？
 
@@ -112,8 +112,7 @@ Bicep 文件的结构比 JSON 模板更灵活。 可以在文件中的任意位�
 
 ## <a name="known-limitations"></a>已知的限制
 
-- 不支持单行对象和数组。 例如，`['a', 'b', 'c']` 不受支持。 有关详细信息，请参阅[数组](data-types.md#arrays)和[对象](data-types.md#objects)。
-- 不支持将长行分解为多行。 例如：
+- Bicep 区分换行符。 例如：
 
     ```bicep
     resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {

@@ -1,22 +1,22 @@
 ---
-title: Azure 数据工厂中的 ORC 格式
+title: ORC 格式支持
+description: 本主题介绍了如何处理 Azure 数据工厂和 Synapse Analytics 管道中的 ORC 格式。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 本主题介绍了如何处理 Azure 数据工厂中的 ORC 格式。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 72c81c2e8eec02be96512ce4100e3b9c48b96318
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: f0bd3840d7c1b1d3fde7c93f11e39d236a954847
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252971"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743792"
 ---
-# <a name="orc-format-in-azure-data-factory"></a>Azure 数据工厂中的 ORC 格式
+# <a name="orc-format-in-azure-data-factory-and-synapse-analytics"></a>Azure 数据工厂和 Synapse Analytics 中的 ORC 格式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -159,7 +159,7 @@ OrcSource sink(
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，本地与云数据存储之间）提供支持的复制，如果不是 **按原样** 复制 ORC 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK** 和 **Microsoft Visual C++ 2010 Redistributable Package**。 请查看以下段落以了解更多详细信息。
 
-对于使用 ORC 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
+对于使用 ORC 文件序列化/反序列化在自承载集成运行时上运行的复制，该服务将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
 
 - **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
@@ -168,9 +168,9 @@ OrcSource sink(
 > [!TIP]
 > 如果使用自承载集成运行时将数据复制为 ORC 格式或从 ORC 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机中添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道。
 
-![在自承载 IR 上设置 JVM 堆大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+:::image type="content" source="./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png" alt-text="在自承载 IR 上设置 JVM 堆大小":::
 
-示例：将变量 `_JAVA_OPTIONS` 的值设置为 `-Xms256m -Xmx16g`。 标志 `Xms` 指定 Java 虚拟机 (JVM) 的初始内存分配池，而 `Xmx` 指定最大内存分配池。 这意味着 JVM 初始内存为 `Xms`，并且能够使用的最多内存为 `Xmx`。 默认情况下，ADF 最少使用 64 MB 且最多使用 1G。
+示例：将变量 `_JAVA_OPTIONS` 的值设置为 `-Xms256m -Xmx16g`。 标志 `Xms` 指定 Java 虚拟机 (JVM) 的初始内存分配池，而 `Xmx` 指定最大内存分配池。 这意味着 JVM 初始内存为 `Xms`，并且能够使用的最多内存为 `Xmx`。 默认情况下，该服务最少使用 64 MB 且最多使用 1G。
 
 ## <a name="next-steps"></a>后续步骤
 

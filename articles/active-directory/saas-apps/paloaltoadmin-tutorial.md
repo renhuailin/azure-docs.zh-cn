@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 的集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 Palo Alto Networks - Admin UI 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Palo Alto Networks - 管理 UI 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,37 +9,36 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: aceaed29b83a190e4e943f0ec1ae99a8daa44682
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9699f985d0e18153c224977b39900b67aaf205c5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727594"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124746824"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure AD SSO 与 Palo Alto Networks - Admin UI 集成
 
-在本教程中，了解如何将 Palo Alto Networks - 管理 UI 与 Azure Active Directory (Azure AD) 进行集成。
-将 Palo Alto Networks - 管理 UI 与 Azure AD 集成可提供以下好处：
+在本教程中，了解如何将 Palo Alto Networks - Admin UI 与 Azure Active Directory (Azure AD) 进行集成。 将 Palo Alto Networks - Admin UI 与 Azure AD 集成后，可以：
 
-* 可在 Azure AD 中控制谁有权访问 Palo Alto Networks - 管理 UI。
-* 可以让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks - 管理 UI（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Palo Alto Networks - Admin UI。
+* 让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks - Admin UI。
+* 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Palo Alto Networks - 管理 UI 的集成，需具有以下项目：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了单一登录的 Palo Alto Networks - 管理 UI 订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 启用了单一登录 (SSO) 的 Palo Alto Networks - Admin UI 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Palo Alto Networks - 管理 UI 支持 **SP** 发起的 SSO
-* Palo Alto Networks - 管理 UI 支持 **实时** 用户预配
+* Palo Alto Networks - Admin UI 支持 SP 发起的 SSO。
+* Palo Alto Networks - Admin UI 支持实时用户预配。
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>从库添加 Palo Alto Networks - 管理 UI
 
@@ -52,7 +51,7 @@ ms.locfileid: "121727594"
 1. 在“从库中添加”部分中，在搜索框中键入“Palo Alto Networks - Admin UI”。 
 1. 在结果面板中选择“Palo Alto Networks - Admin UI”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-palo-alto-networks---admin-ui"></a>配置并测试 Palo Alto Networks - Admin UI 的 Azure AD SSO
 
 在本部分中，将基于名为 **B.Simon** 的测试用户配置并测试“Palo Alto Networks - Admin UI”的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Palo Alto Networks - 管理 UI 中相关用户之间建立链接关系。
@@ -60,10 +59,10 @@ ms.locfileid: "121727594"
 若要为 Palo Alto Networks - Admin UI 配置和测试 Azure AD 单一登录，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Palo Alto Networks - Admin UI SSO](#configure-palo-alto-networks---admin-ui-sso)** - 在应用程序端配置单一登录。
-    * **[创建 Palo Alto Networks - Admin UI 测试用户](#create-palo-alto-networks---admin-ui-test-user)** - 在 Palo Alto Networks - Admin UI 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 Palo Alto Networks - Admin UI 测试用户](#create-palo-alto-networks---admin-ui-test-user)** - 在 Palo Alto Networks - Admin UI 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -78,14 +77,14 @@ ms.locfileid: "121727594"
 
 1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/php/login.php`。
+    a. 在“标识符”框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>:443/SAML20/SP`
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>:443/SAML20/SP`
+    b. 在“回复 URL”文本框中，使用以下格式键入断言使用者服务 (ACS) URL：`https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
 
-    c. 在“回复 URL”文本框中，使用以下格式键入断言使用者服务 (ACS) URL：`https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/php/login.php`。
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - 管理 UI 客户端支持团队](https://support.paloaltonetworks.com/support)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - 管理 UI 客户端支持团队](https://support.paloaltonetworks.com/support)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
     >
     > “标识符”和“回复 URL”中必须有端口 443，因为这些值硬编码到 Palo Alto Firewall 中。 如果删除端口号，则在登录期间将导致错误。
 
@@ -122,7 +121,6 @@ ms.locfileid: "121727594"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -153,15 +151,15 @@ ms.locfileid: "121727594"
 
 2. 选择“设备”选项卡。
 
-    ![“设备”选项卡](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin1.png)
+    ![屏幕截图显示“设备”选项卡。](./media/paloaltoadmin-tutorial/device.png)
 
 3. 在左窗格中选择“SAML 标识提供者”，然后选择“导入”以导入元数据文件。
 
-    ![“导入元数据文件”按钮](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin2.png)
+    ![屏幕截图显示“导入元数据文件”按钮。](./media/paloaltoadmin-tutorial/admin.png)
 
 4. 在“SAML 标识提供者服务器配置文件导入”窗口中执行以下操作：
 
-    ![“SAML 标识提供者服务器配置文件导入”窗口](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
+    ![屏幕截图显示“SAML 标识提供者服务器配置文件导入”窗口。](./media/paloaltoadmin-tutorial/profile.png)
 
     a. 在“配置文件名称”框中提供一个名称（例如 **AzureAD Admin UI**）。
 
@@ -175,11 +173,11 @@ ms.locfileid: "121727594"
 
 5. 在左窗格中选择“SAML 标识提供者”，然后选择在上一步骤中创建的 SAML 标识提供者配置文件（例如 **AzureAD Admin UI**）。
 
-    ![SAML 标识提供者配置文件](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
+    ![屏幕截图显示“SAML 标识提供者配置文件”](./media/paloaltoadmin-tutorial/azure.png)
 
 6. 在“SAML 标识提供者服务器配置文件”窗口中执行以下操作：
 
-    ![“SAML 标识提供者服务器配置文件”窗口](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
+    ![屏幕截图显示“SAML 标识提供者服务器配置文件”窗口。](./media/paloaltoadmin-tutorial/server.png)
   
     a. 在“标识提供者 SLO URL”框中，将前面导入的 SLO URL 替换为以下 URL：`https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
   
@@ -191,7 +189,7 @@ ms.locfileid: "121727594"
 
 9. 在“管理员角色配置文件”窗口中的“名称”框内，为管理员角色提供一个名称（例如 **fwadmin**）。  此管理员角色名称应与标识提供者发送的 SAML 管理员角色属性名称匹配。 管理员角色名称和值是在 Azure 门户中的“用户属性”部分中创建的。
 
-    ![配置 Palo Alto 网络管理员角色](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
+    ![配置 Palo Alto Networks 管理员角色。](./media/paloaltoadmin-tutorial/role.png)
   
 10. 在 Firewall's Admin UI 中选择“设备”，然后选择“身份验证配置文件”。
 
@@ -199,7 +197,7 @@ ms.locfileid: "121727594"
 
 12. 在“身份验证配置文件”窗口中，执行以下操作： 
 
-    ![“身份验证配置文件”窗口](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
+    ![屏幕截图显示“身份验证配置文件”窗口。](./media/paloaltoadmin-tutorial/authentication.png)
 
     a. 在“名称”框中提供一个名称（例如 **AzureSAML_Admin_AuthProfile**）。
 
@@ -207,26 +205,26 @@ ms.locfileid: "121727594"
 
     c. 在“IdP 服务器配置文件”下拉列表中，选择合适的 SAML 标识提供者服务器配置文件（例如 **AzureAD Admin UI**）。
 
-    c. 选中“启用单一注销”复选框。
+    d. 选中“启用单一注销”复选框。
 
-    d. 在“管理员角色属性”框中输入属性名称（例如 **adminrole**）。
+    e. 在“管理员角色属性”框中输入属性名称（例如 **adminrole**）。
 
-    e. 选择“高级”选项卡，然后在“允许列表”下面选择“添加”。  
+    f. 选择“高级”选项卡，然后在“允许列表”下面选择“添加”。  
 
-    ![“高级”选项卡上的“添加”按钮](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_allowlist.png)
+    ![屏幕截图显示“高级”选项卡上的“添加”按钮。](./media/paloaltoadmin-tutorial/allowlist.png)
 
-    f. 选中“所有”复选框，或者选择可以通过此配置文件进行身份验证的用户和组。  
+    g. 选中“所有”复选框，或者选择可以通过此配置文件进行身份验证的用户和组。  
     当用户进行身份验证时，防火墙将根据此列表中的条目来匹配关联的用户名或组。 如果你未添加条目，则没有用户可以进行身份验证。
 
-    g. 选择“确定”。
+    h.如果该值不存在，请单击“添加行”。 选择“确定”。
 
 13. 若要使管理员能够通过 Azure 使用 SAML SSO，请选择“设备” > “设置”。 在“设置”窗格中选择“管理”选项卡，然后在“身份验证设置”下面选择“设置”（齿轮图标）按钮。   
 
-    ![“设置”按钮](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
+    ![屏幕截图显示了“设置”按钮。](./media/paloaltoadmin-tutorial/setup.png)
 
 14. 选择在“身份验证配置文件”窗口中创建的 SAML 身份验证配置文件（例如 **AzureSAML_Admin_AuthProfile**）。
 
-    ![“身份验证配置文件”字段](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
+    ![屏幕截图显示“身份验证配置文件”字段。](./media/paloaltoadmin-tutorial/settings.png)
 
 15. 选择“确定”。
 
@@ -244,8 +242,7 @@ Palo Alto Networks - Admin UI 支持实时用户预配。 如果用户尚不存�
 
 * 直接转到 Palo Alto Networks - Admin UI 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Palo Alto Networks - Admin UI”磁贴时，应当会自动登录到已为其设置了 SSO 的 Palo Alto Networks - Admin UI。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Palo Alto Networks - Admin UI”磁贴时，应当会自动登录到已为其设置了 SSO 的 Palo Alto Networks - Admin UI。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

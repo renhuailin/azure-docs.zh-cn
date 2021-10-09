@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: f9ce6f3c7898a492400f6a8cec62e65ab8777e15
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 129c0af62663fcc37621db0d2f37e5fdee55d05c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770858"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209635"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建演示应用（Azure 认知搜索）
 
@@ -133,7 +133,7 @@ ms.locfileid: "122770858"
 
 ## <a name="next-steps"></a>后续步骤
 
-演示应用适用于原型制作，这是因为你无需编写 JavaScript 或前端代码即可模拟最终用户体验。 有关前端功能的详细信息，请从分面导航开始：
+演示程序可用于原型制作，因为你可以在无需编写 JavaScript 或前端代码的情况下模拟最终用户体验，但当你在自己的项目中将要进行概念证明时，请查看其中一个反映实际应用的端到端代码示例：
 
 > [!div class="nextstepaction"]
-> [如何生成分面筛选器](search-filters-facets.md)
+> [向 Web 应用添加搜索](tutorial-csharp-overview.md)

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/16/2021
+ms.date: 09/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 13a63da9abf37f57842b34f32c3ff442f4214062
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: cc034689e2c3cd6846986680225ca7ca21ac41c8
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114402768"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407525"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp 文件的指标
 
@@ -83,9 +83,6 @@ Azure NetApp 文件提供有关已分配的存储、实际存储使用情况、�
 
 - 卷复制是否正在传输    
     卷复制的状态是否为“正在传输”。 
- 
-- 卷复制延隔时间   
-    镜像上的数据落后于源的时间（秒）。 
 
 - 卷复制上次传输持续时间   
     上次传输完成所用的时间（秒）。 
@@ -122,9 +119,25 @@ Azure NetApp 文件提供有关已分配的存储、实际存储使用情况、�
 * 其他吞吐量   
     未读取或写入的其他吞吐量（以字节/秒为单位）。
 
+## <a name="volume-backup-metrics"></a>卷备份指标  
+
+* 卷备份是否已启用   
+    显示是否对卷启用了备份。 已启用 `1`。 `0` 表示禁用该作业。
+
+* 卷备份操作是否已完成   
+    显示最后一个卷备份或还原操作是否成功完成。  `1` 表示成功。 `0` 表示未成功。
+
+* *卷备份是否已暂停*   
+    显示卷的备份策略是否已暂停。  `1` 表示未暂停。 `0` 表示已暂停。
+
+* 卷备份字节数   
+    为此卷备份的总字节数。
+
+* 卷备份上次传输的字节数   
+    上次备份或还原操作传输的总字节数。  
 
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)
-* [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
+* [创建容量池](azure-netapp-files-set-up-capacity-pool.md)
 * [为 Azure NetApp 文件创建卷](azure-netapp-files-create-volumes.md)

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 GitHub Enterprise Cloud 组织集成 | Microsoft Docs
+title: 教程：Azure AD 与 GitHub Enterprise Cloud 组织的 SSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 GitHub Enterprise Cloud 组织之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 12d80ee98ceef33221b7713703e8106bada6470c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdd62a5acdc0c470b8b675d650b88839093dcbf4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750432"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834173"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>教程：Azure Active Directory 单一登录 (SSO) 与 GitHub Enterprise Cloud 组织的集成
+# <a name="tutorial-azure-ad-sso-integration-with-a-github-enterprise-cloud-organization"></a>教程：Azure AD 与 GitHub Enterprise Cloud 组织的 SSO 集成
 
 本教程介绍如何将 GitHub Enterprise Cloud 组织与 Azure Active Directory (Azure AD) 集成。 将 GitHub Enterprise Cloud 组织与 Azure AD 集成，可以实现以下目的：
 
@@ -27,19 +27,18 @@ ms.locfileid: "121750432"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 GitHub Enterprise Cloud 组织的集成，需要以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* GitHub 支持 **SP** 发起的 SSO
+* GitHub 支持 **SP** 发起的 SSO。
 
-* GitHub 支持 [**自动** 用户预配（组织邀请）](github-provisioning-tutorial.md)
-
+* GitHub 支持 [**自动** 用户预配（组织邀请）](github-provisioning-tutorial.md)。
 
 ## <a name="adding-github-from-the-gallery"></a>从库中添加 GitHub
 
@@ -83,9 +82,8 @@ ms.locfileid: "121750432"
 
     c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>/sso` 
 
-
     > [!NOTE]
-    > 请注意，这些不是实际值。 必须使用实际登录 URL、标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“GitHub 管理”部分检索这些值。
+    > 请注意，这些不是实际值。 必须使用实际标识符、回复 URL 和登录 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“GitHub 管理”部分检索这些值。
 
 5. GitHub 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中“唯一用户标识符(名称 ID)”通过 user.userprincipalname 进行映射 。 GitHub 应用程序要求通过 user.mail 对“唯一用户标识符(名称 ID)”进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
@@ -98,7 +96,6 @@ ms.locfileid: "121750432"
 7. 在“设置 GitHub”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -137,7 +134,7 @@ ms.locfileid: "121750432"
 
 3. 选中“启用 SAML 身份验证”框（这样可显示“单一登录”配置字段），执行以下步骤：
 
-    ![显示“SAML 单一登录”部分的屏幕截图，其中突出显示了“启用 SAML 身份验证”和 URL 文本框。](./media/github-tutorial/saml-sso.png)
+    ![显示“SAML 单一登录”部分的屏幕截图，其中突出显示了“启用 SAML 身份验证”和 URL 文本框。](./media/github-tutorial/authentication.png)
 
     a. 复制“单一登录 URL”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”的“登录 URL”文本框中  。
     
@@ -157,11 +154,11 @@ ms.locfileid: "121750432"
     
     e. 从默认 URL 更新“断言使用者服务 URL (回复 URL)”，以便 GitHub 中的 URL 与 Azure 应用注册中的 URL 匹配。
 
-    ![image](./media/github-tutorial/tutorial_github_sha.png)
+    ![显示图像的屏幕截图。](./media/github-tutorial/certificate.png)
 
 5. 单击“测试 SAML 配置”，确认在 SSO 期间未发生验证失败错误。
 
-    ![设置](./media/github-tutorial/test.png)
+    ![显示“设置”的屏幕截图。](./media/github-tutorial/test.png)
 
 6. 单击“保存”
 
@@ -182,13 +179,13 @@ ms.locfileid: "121750432"
 
 3. 单击“邀请成员”。
 
-    ![邀请用户](./media/github-tutorial/invite-member.png "邀请用户")
+    ![显示“邀请用户”的屏幕截图。](./media/github-tutorial/invite-member.png "邀请用户")
 
 4. 在“邀请成员”对话框页上，执行以下步骤：
 
     a. 在“电子邮件”文本框中，键入 Britta Simon 帐户的电子邮件地址。
 
-    ![邀请人员](./media/github-tutorial/email-box.png "邀请人员")
+    ![显示“邀请人员”的屏幕截图。](./media/github-tutorial/email-box.png "邀请人员")
 
     b. 单击“发送邀请”。
 
@@ -205,7 +202,7 @@ ms.locfileid: "121750432"
 
 * 直接转到 GitHub 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 GitHub 磁贴时，会重定向到 GitHub 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 GitHub 磁贴时，会重定向到 GitHub 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

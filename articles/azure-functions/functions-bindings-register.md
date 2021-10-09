@@ -3,14 +3,14 @@ title: 注册 Azure Functions 绑定扩展
 description: 了解如何根据你的环境注册 Azure Functions 绑定扩展。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 08/16/2020
+ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: bfcefb23fa68e2aa70d4680fcca2462b24322014
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 262e0fc02632465a03391dbfeaa0902d1b6b9ec3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730518"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609741"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
 
@@ -20,7 +20,7 @@ ms.locfileid: "121730518"
 
 下表指明了何时以及如何注册绑定。
 
-| 开发环境 |在<br/> Functions 1.x 中注册  |在<br/> Functions 3.x/2.x 中注册  |
+| 开发环境 |在<br/> Functions 1.x 中注册  |在<br/> Functions 2.x 或更高版本中注册  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure 门户|自动|自动<sup>*</sup>|
 |非 .NET 语言|自动|使用[扩展捆绑](#extension-bundles)（推荐）或[显式安装扩展](#explicitly-install-extensions)|

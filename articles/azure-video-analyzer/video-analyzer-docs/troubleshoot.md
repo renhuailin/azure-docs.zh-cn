@@ -3,12 +3,12 @@ title: Azure 视频分析器故障排除 - Azure
 description: 本文介绍 Azure 视频分析器的故障排除步骤。
 ms.topic: troubleshooting
 ms.date: 07/15/2021
-ms.openlocfilehash: 0d3a089fee6d374dd8109f2430cfdb9fec19bc30
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: be8bbe61bd9d33557184b11c722141cfbc880fed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429345"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563612"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Azure 视频分析器故障排除
 
@@ -155,6 +155,17 @@ IoT Edge 模块的容器日志应包含诊断信息，以帮助调试模块运�
 1. [配置视频分析器模块以收集详细日志](#configure-video-analyzer-module-to-collect-verbose-logs)
 1. [启用调试日志](#video-analyzer-debug-logs)
 1. 再现问题
+1. 重启视频分析器边缘模块。 
+    > [!NOTE]
+    > 此步骤用于正常终止边缘模块，并在不删除任何事件的情况下采用可用格式获取所有日志文件。   
+    
+    在 IoT Edge 设备上，使用视频分析器边缘模块名称替换 `<avaedge>` 之后，使用以下命令：
+    
+    ```cmd
+    sudo iotedge restart <avaedge>
+    ```
+
+   还可从 Azure 门户远程重启模块。 有关详细信息，请参阅[在 Azure 门户中对 IoT Edge 设备进行监视和故障排除](../../iot-edge/troubleshoot-in-portal.md)。
 1. 从门户中的“IoT 中心”页连接到虚拟机
 
    1. 压缩 debugLogs 文件夹中的所有文件。

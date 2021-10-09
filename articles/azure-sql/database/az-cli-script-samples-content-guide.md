@@ -1,23 +1,24 @@
 ---
-title: Azure CLI 脚本示例
+title: 适用于 Azure SQL 数据库和托管实例的 Azure CLI 示例 | Microsoft Docs
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: 创建和管理 Azure SQL 数据库和 Azure SQL 托管实例的 Azure CLI 脚本示例
+description: 找到用于创建和管理 Azure SQL 数据库和 Azure SQL 托管实例的 Azure CLI 脚本示例。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: deployment-configuration
-ms.custom: overview-samples, mvc, sqldbrb=2, devx-track-azurecli
+ms.custom: overview-samples, mvc, sqldbrb=2, devx-track-azurecli, seo-azure-cli
 ms.devlang: azurecli
 ms.topic: sample
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
-ms.date: 02/03/2019
-ms.openlocfilehash: f0300464054a3417951c0283536e5506a12612bf
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 09/17/2021
+keywords: sql 数据库, 托管实例, azure cli 示例, azure cli 示例, azure cli 代码示例, azure cli 脚本示例
+ms.openlocfilehash: adc7f1db28fa1b0e8cafb2b3363876b1e316f8bd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690459"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662146"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>适用于 Azure SQL 数据库和 SQL 托管实例的 Azure CLI 示例 
  

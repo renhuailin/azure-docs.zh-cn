@@ -4,12 +4,12 @@ description: 详细了解 Defender for IoT 安全服务、适用于 C# 的安全
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: c83aec4772942aeb269f04804d55fd887e552925
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 810ca270fed350da8beaa1c63fafe39df4ab6a61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113014558"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658259"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>了解本地配置文件（C# 代理）
 
@@ -77,7 +77,7 @@ C# 安全代理使用多个配置文件：
 | moduleName | string | Defender-IoT-micro-agent 标识的名称。 此名称必须与设备中的模块标识名称相对应。 |
 | deviceId | string | 设备的 ID（已注册到 Azure IoT 中心）。 |
 | schedulerInterval | 时间跨度字符串 | 内部计划程序间隔。 |
-| gatewayHostname | string | Azure Iot 中心的主机名。 通常是 <my-hub>.azure-devices.net |
+| gatewayHostname | string | Azure Iot 中心的主机名。 通常为 \<my-hub\>.azure-devices.net |
 | filePath | 字符串 - 文件路径 | 包含身份验证机密的文件的路径。|
 | type | “SymmetricKey”、“SelfSignedCertificate” | 用于身份验证的用户机密。 如果用户机密是对称密钥，请选择“SymmetricKey”；如果密码是自签名证书，请选择“self-signed certificate”。 |
 | 标识 | “DPS”、“Module”、“Device” | 身份验证标识 - 如果通过 DPS 进行身份验证，则该值为“DPS”；如果使用模块凭据进行身份验证，则该值为“Module”；如果使用设备凭据进行身份验证，则该值为“Device”。

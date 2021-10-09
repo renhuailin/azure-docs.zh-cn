@@ -1,14 +1,14 @@
 ---
-title: 使用 AzCopy 将 VHD 文件上传到 Azure 开发测试实验室 | Microsoft Docs
+title: 使用 AzCopy 将 VHD 文件上传到 Azure 开发测试实验室
 description: 本文演练了如何使用 AzCopy 命令行实用程序将 VHD 文件上传到 Azure 开发测试实验室中实验室的存储帐户。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39dcac5dffdd4aa041437ccb541b528ee8612881
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88650768"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658310"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>使用 AzCopy 将 VHD 文件上传到实验室的存储帐户
 

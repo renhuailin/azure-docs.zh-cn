@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Key Vault 中创建和检索托管密钥的属性 - Azure PowerShell
 description: 本快速入门展示了如何使用 Azure PowerShell 在 Azure Key Vault 中设置和检索托管密钥
-services: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 01/26/2021
@@ -11,12 +10,12 @@ ms.subservice: keys
 tags:
 - azure-resource-manager
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 6f2588ce3dc2add87b845d5c4ff6255171b6af08
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0658d715c7d7b2e7a34cd8fbd9ec3f76d9a67d10
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670007"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128550435"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>快速入门：使用 PowerShell 在 Azure Key Vault 中设置和检索托管密钥
 
@@ -56,7 +55,7 @@ Get-AzADUser -UserPrincipalName "<your@email.address>"
 - 托管 HSM 名称：由 3 到 24 个字符构成的字符串，只能包含数字 (0-9)、字母（a-z、A-Z）和连字符 (-)
 
   > [!Important]
-  > 每个托管 HSM 都必须具有唯一名称。 在以下示例中，将 <your-unique-managed-hsm-name> 替换为托管 HSM 的名称。
+  > 每个托管 HSM 都必须具有唯一名称。 在以下示例中，将 \<your-unique-managed-hsm-name\> 替换为托管 HSM 的名称。
 
 - 资源组名称：myResourceGroup。
 - 位置：EastUS。

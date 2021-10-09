@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 83c3c4b9d3ab4f2497b919a2a929ad87f3cadbea
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1f444ca13224c27918812c12f0a9e86a50e0b994
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535556"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644669"
 ---
 # <a name="create-and-use-your-voice-model"></a>创建和使用语音模型
 
@@ -90,7 +90,7 @@ ms.locfileid: "123535556"
 
 问题分为三种类型。 请参考以下三个表来检查相应错误类型。
 
-必须手动修复下表中列出的第一类错误，否则训练期间将排除含有这些错误的数据。
+请手动修复下表中列出的第一类错误，否则训练期间将排除包含这些错误的数据。
 
 | 类别 | 名称 | 说明 |
 | --------- | ----------- | --------------------------- |
@@ -146,20 +146,37 @@ ms.locfileid: "123535556"
 
 默认情况下，语音模式使用训练数据所采用的语言进行训练。 还可以选择为语音模型创建辅助语言（预览版）。  检查自定义神经语音和跨语言功能支持的语言：[用于自定义的语言](language-support.md#customization)。
 
+训练自定义神经语音不免费。 有关详细信息，请查看[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 但是，如果你在 2021 年 3 月 31 日之前使用 S0 语音资源部署了统计参数或拼接声音模型，我们将为你的 Azure 订阅提供免费神经网络训练额度，你可以免费训练 5 个不同版本的神经语音。
+
 3. 接下来，选择要用于训练的数据，并指定一个说话人文件。
 
 >[!NOTE]
 >- 你需要选择至少 300 个言语才能创建自定义神经语音。
 >- 若要训练神经语音，必须指定配音员配置文件，其中包含配音员提供的语音同意文件，确认使用他/她的语音数据来训练自定义语音模型。 自定义神经语音只能在有限的访问权限下使用。 请确保你了解[负责任的 AI 使用原则](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)并[在此处应用访问权限](https://aka.ms/customneural)。
->- 在此页上，你还可以选择上传脚本以进行测试。 测试脚本必须是小于 1 Mb 的 txt 文件。 支持的编码格式包括 ANSI/ASCII、UTF-8、UTF-8-BOM、UTF-16-LE 或 UTF-16-BE。 每个言语段落生成一个单独的音频。 如果要将所有句子合并为一个音频，请将它们放在一个段落中。
 
-4. 然后，输入名称和说明以帮助识别此模型 。
+4. 然后，选择测试脚本。
+
+每次训练都会自动生成 100 个示例音频文件，以便你使用默认脚本来测试模型。 你还可以提供自己的测试脚本作为可选脚本。 测试脚本必须排除文件名（每条言语的 ID），否则会说出这些 ID。 以下示例演示如何在一个 .txt 文件中组织言语：
+
+```
+This is the waistline, and it's falling.
+We have trouble scoring.
+It was Janet Maslin.
+```
+
+每个言语段落生成一个单独的音频。 如果要将所有句子合并为一个音频，请将它们放在一个段落中。
+
+>[!NOTE]
+>- 测试脚本必须是小于 1 MB 的 txt 文件。 支持的编码格式包括 ANSI/ASCII、UTF-8、UTF-8-BOM、UTF-16-LE 或 UTF-16-BE。  
+>- 生成的音频是上传的测试脚本和默认测试脚本的组合。
+
+5. 请输入有助于识别此模型的名称和说明 。
 
 请谨慎选择名称。 此处输入的名称将是在 SSML 输入过程中在请求中指定语音合成所需语音时使用的名称。 只允许字母、数字以及少量的标点字符，例如 -、_ 和 (', ')。 请对不同的神经语音模型使用不同名称。
 
 通常使用“说明”字段来记录用于创建模型的数据的名称。
 
-5. 查看设置，然后选择“提交”开始对模型进行训练。
+6. 查看设置，然后选择“提交”开始对模型进行训练。
 
 > [!NOTE]
 > 在训练中将会删除重复的音频名称。 确保你选择的数据在多个 .zip 文件中不包含相同的音频名称。
@@ -177,17 +194,17 @@ ms.locfileid: "123535556"
 训练持续时间因要训练的数据量而异。 训练自定义神经语音平均需要约 40 个计算小时。 
 
 > [!NOTE]
-> 训练自定义神经语音不免费。 请在此处查看[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 标准订阅 (S0) 用户可以同时训练三个语音。 如果达到限制，请先等待，直至至少其中一种语音字体训练完毕，然后再试。 
+> 标准订阅 (S0) 用户可以同时训练三个语音。 如果达到限制，请先等待，直至至少其中一种语音模型训练完毕，然后再试。 
 
-6. 成功完成模型训练后，可以查看模型详细信息。
+7. 成功完成模型训练后，可以查看模型详细信息。
 
-每次训练都将自动生成 100 个示例音频文件，以帮助你测试模型。 成功生成语音模型以后，可以对其先测试后部署，然后就可以使用了。
+成功生成语音模型以后，可以使用生成的示例音频文件对其先测试后部署，然后就可以使用了。
 
 语音质量取决于多种因素，包括训练数据的大小、录制内容的质量、脚本文件的准确性、训练数据中录制的语音与为预期用例设计的语音个性化匹配的程度，等等。 [查看此处以了解有关技术的功能和限制的详细信息，以及提高模型质量的最佳做法](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
 
 ## <a name="create-and-use-a-custom-neural-voice-endpoint"></a>创建并使用自定义语音终结点
 
-成功创建并测试语音模型以后，即可在自定义的文本转语音终结点中部署它。 然后即可在通过 REST API 发出文本转语音请求时使用此终结点来替代常用的终结点。 只能通过部署字体时所用的订阅来调用自定义终结点。
+成功创建并测试语音模型以后，即可在自定义的文本转语音终结点中部署它。 然后即可在通过 REST API 发出文本转语音请求时使用此终结点来替代常用的终结点。 只能通过部署模型时所用的订阅来调用自定义终结点。
 
 可以执行以下操作来创建自定义神经语音终结点。
 

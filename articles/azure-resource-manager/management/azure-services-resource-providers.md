@@ -2,14 +2,14 @@
 title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
-ms.date: 08/05/2021
+ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dc33b3354f5cd2a4a0e2f03c1e0d46a05c205211
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: c10fb3e92b4d7c31a311cad980ffdfca9b891c9c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540174"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657968"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -99,7 +99,8 @@ ms.locfileid: "123540174"
 | Microsoft.HanaOnAzure | [Azure 上的 SAP HANA 大型实例](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure 专用 HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
-| Microsoft.HealthcareApis | [适用于 FHIR 的 Azure API](../../healthcare-apis/fhir/index.yml) |
+| Microsoft.HealthcareApis (Azure API for FHIR) | [适用于 FHIR 的 Azure API](../../healthcare-apis/azure-api-for-fhir/index.yml) |
+| Microsoft.HealthcareApis (Healthcare APIs) | [医疗保健 API](../../healthcare-apis/index.yml) |
 | Microsoft.HybridCompute | [已启用 Azure Arc 的服务器](../../azure-arc/servers/index.yml) |
 | Microsoft.HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.HybridNetwork  | [网络功能管理器](../../network-function-manager/index.yml) |

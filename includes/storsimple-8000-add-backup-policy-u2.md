@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 09/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 23ce17844a0113f63931c6ece7d36bfefedc2de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88ef9534c1a0048ef113ce0666ddcdd47171c234
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100552746"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589357"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>添加 StorSimple 备份策略
 
@@ -42,6 +42,9 @@ ms.locfileid: "100552746"
        4. 输入备份策略开始的时间和日期。
 
        5. 单击“确定”来定义计划。
+       
+       > [!NOTE]
+       > 当你的计划达到 64 个备份并希望保留这些备份时，你可以[禁用该计划](..\articles\storsimple\storsimple-8000-manage-backup-policies-u2.md#disable-a-schedule)，然后添加一个最多保留 64 个备份的新计划。 在达到每个卷 256 个备份的限制之前，此解决方法将一直有效。 此时，你需要先删除旧备份，然后才能进行新备份。
 
    5. 单击“创建”来创建备份策略。
    

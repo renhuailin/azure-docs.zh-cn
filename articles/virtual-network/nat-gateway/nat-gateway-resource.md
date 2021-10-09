@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 366d7210c499c2f0ab523b687b07edcb8f1719bd
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 79abb40532ad4b7940ecf94552b5ee5c0727f2b6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297117"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636622"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 网关资源设计虚拟网络
 
@@ -180,7 +180,7 @@ NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整
 #### <a name="zone-isolation-with-zonal-stacks"></a>使用局部区域堆栈实现区域隔离
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="提供区域隔离的虚拟网络 NAT，创建多个“区域堆栈” "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="实现了区域隔离的虚拟网络 NAT，创建了多个局部区域性堆栈">
 </p>
 
 图：  实现了区域隔离的虚拟网络 NAT，创建了多个“局部区域性堆栈”

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 462ba0ccbd5d7e7048c2c7fcb9c5bece04adaebe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a6a4eeac50a7818eea5637b81788b1b11397bce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98661757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631943"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>通过预留容量预付 Azure Database for MariaDB 计算资源费用
 
@@ -21,7 +21,7 @@ ms.locfileid: "98661757"
 
 可在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for MariaDB 预留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买预留容量：
 
-* 必须至少是一个采用即用即付费率的企业或个人订阅的所有者角色。
+* 必须具有至少一个采用即用即付费率的企业或个人订阅的所有者角色。
 * 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 * 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 Azure Database for MariaDB 预留容量。 </br>
 
@@ -32,7 +32,7 @@ ms.locfileid: "98661757"
 
 预留容量的大小应基于特定区域中使用相同性能层和硬件代次的现有或即将部署的数据库实例所用的计算资源总量。</br>
 
-例如，假设你要运行一个常规用途的第 5 代 32 vCore MariaDB 数据库，以及两个内存优化的第 5 代 16 vCore MariaDB 数据库。 此外，假设你打算在下个月额外部署一个常规用途的第 5 代 32 vCore 数据库服务器，以及一个内存优化的第 5 代 16 vCore 数据库服务器。 我们假设你知道在至少 1 年的时间内，都需要这些资源。 在这种情况下，应该购买 64 (2x32) 个 vCore、1 年的常规用途 - 第 5 代单一数据库的预留容量，以及 48 (2x16 + 16) 个 vCore、1 年的内存优化 - 第 5 代单一数据库的预留容量
+例如，假设你要运行一个常规用途的第 5 代 32 vCore MariaDB 数据库，以及两个内存优化的第 5 代 16 vCore MariaDB 数据库。 此外，假设你打算在下个月额外部署一个常规用途的第 5 代 32 vCore 数据库服务器，以及一个内存优化的第 5 代 16 vCore 数据库服务器。 我们假设你知道在至少 1 年的时间内，你都需要这些资源。 在这种情况下，应该购买 64 (2x32) 个 vCore、1 年的常规用途 - 第 5 代单一数据库的预留容量，以及 48 (2x16 + 16) 个 vCore、1 年的内存优化 - 第 5 代单一数据库的预留容量
 
 
 ## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>购买 Azure Database for MariaDB 预留容量
@@ -50,8 +50,8 @@ ms.locfileid: "98661757"
 
 | 字段 | 说明 |
 | :------------ | :------- |
-| 订阅   | 用于支付 Azure Database for MariaDB 预留容量预订费用的订阅。 订阅付款方式是收取 Azure Database for MariaDB 预留容量的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将从订阅上的信用卡或发票付款方式收取费用。
-| 范围 | vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： </br></br> “共享”，vCore 预留折扣将应用到计费上下文中任何订阅中运行的 Azure Database for MariaDB 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> “单个订阅”，vCore 预留折扣将应用到此订阅中的 Azure Database for MariaDB 服务器。 </br></br> “单个资源组”，预留折扣将应用到所选订阅中的 Azure Database for MariaDB 服务器，以及该订阅内的所选资源组。
+| 订阅   | 用于支付 Azure Database for MariaDB 预留容量预订费用的订阅。 订阅付款方式是收取 Azure Database for MariaDB 预留容量的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将按订阅上的信用卡或发票付款方式收取费用。
+| 范围 | vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： </br></br> “共享”，vCore 预留折扣将应用到计费上下文中任何订阅中运行的 Azure Database for MariaDB 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br>管理组，预留折扣将应用于同时属于管理组和计费范围的订阅列表中的匹配资源。</br></br> “单个订阅”，vCore 预留折扣将应用到此订阅中的 Azure Database for MariaDB 服务器。 </br></br> “单个资源组”，预留折扣将应用到所选订阅中的 Azure Database for MariaDB 服务器，以及该订阅内的所选资源组。
 | 区域 | 预订的 Azure Database for MariaDB 预留容量涵盖的 Azure 区域。
 | 部署类型 | 要为其购买预留容量的 Azure Database for MariaDB 资源类型。
 | 性能层 | Azure Database for MariaDB 服务器的服务层。

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 544275ce4c9ab31fa65fe17351eed495895569e2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ece8300ee9d44699dfcce8fd89b1e07b94d99df9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432155"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823275"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -53,25 +53,25 @@ ms.locfileid: "123432155"
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="create-site-to-site-vpn-gateway"></a><a name="gateway"></a>创建站点到站点 VPN 网关
+## <a name="configure-a-site-to-site-gateway"></a><a name="gateway"></a>配置站点到站点网关
 
-在本部分中，你会配置站点到站点连接设置，然后继续创建中心和 S2S VPN 网关。 创建中心和网关可能需要花费大约 30 分钟。
+在本部分中，你会配置站点到站点连接设置，然后继续创建中心和站点到站点 VPN 网关。 创建中心和网关可能需要花费大约 30 分钟。
 
 [!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
-## <a name="create-site"></a><a name="site"></a>创建站点
+## <a name="create-a-site"></a><a name="site"></a>创建站点
 
 在本部分，你将创建站点。 站点对应于你的物理位置。 请根据需要创建任意数量的站点。 例如，如果你在纽约、伦敦和洛杉矶各有一个分支机构，请创建三个独立的站点。 这些站点包含本地 VPN 设备终结点。 在虚拟 WAN 中，每个虚拟中心最多可创建 1000 个站点。 如果有多个中心，则可以为每个中心创建 1000 个站点。 如果你有虚拟 WAN 合作伙伴 CPE 设备，请咨询这些合作伙伴以了解他们对 Azure 进行的自动化。 通常，自动化意味着只需执行简单的单击操作即可将大规模分支信息导出到 Azure 中，并设置从 CPE 到 Azure 虚拟 WAN VPN 网关的连接。 有关详细信息，请参阅[从 Azure 到 CPE 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connect-vpn-site-to-hub"></a><a name="connectsites"></a>将 VPN 站点连接到中心
+## <a name="connect-the-vpn-site-to-a-hub"></a><a name="connectsites"></a>将 VPN 站点连接到中心
 
 在本部分中，你会将 VPN 站点连接到中心。
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="connect-vnet-to-hub"></a><a name="vnet"></a>将 VNet 连接到中心
+## <a name="connect-a-vnet-to-the-hub"></a><a name="vnet"></a>将 VNet 连接到中心
 
 在本部分中，你会创建中心与 VNet 之间的连接。
 

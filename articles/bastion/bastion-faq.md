@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8ff219e326f7c8a2bbc075594ff8ffb30e9b04f5
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d44ccec62a9da63fccc45a0735ff16f615dfbb4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289170"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643130"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion 常见问题解答
 
@@ -126,6 +126,9 @@ Azure Bastion 是在 VNet 或对等的 VNet 中部署的，与 Azure 区域相�
 可以，对于单个租户的跨不同订阅的对等互连 VNet，通过 Bastion 进行的连接会继续正常工作。 不支持跨两个不同租户的订阅。 若要在“连接”下拉菜单中查看 Bastion，用户必须在“订阅”>“全局订阅”中选择他们有权访问的订阅。
 
 :::image type="content" source="./media/bastion-faq/global-subscriptions.png" alt-text="全局订阅筛选器。" lightbox="./media/bastion-faq/global-subscriptions.png":::
+
+### <a name="does-bastion-support-connectivity-to-azure-virtual-desktop"></a>Bastion 是否支持连接到 Azure 虚拟桌面？
+否，Bastion 不支持连接到 Azure 虚拟桌面。
 
 ### <a name="i-have-access-to-the-peered-vnet-but-i-cant-see-the-vm-deployed-there"></a>我有权访问对等互连 VNet，但看不到在其中部署的 VM。
 

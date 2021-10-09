@@ -8,12 +8,12 @@ ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d6d173188c147e04a688ff7c373a1a253393ee87
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 932e3e0cc51c5b74e10d86bffa5785e5f65564cf
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204509"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278645"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2
 
@@ -21,7 +21,7 @@ ms.locfileid: "114204509"
 
 Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细信息，请查看[官方公告](https://azure.microsoft.com/updates/action-required-switch-to-azure-data-lake-storage-gen2-by-29-february-2024/)。 如果使用 Azure Data Lake Storage Gen1，请确保在该日期之前迁移到 Azure Data Lake Storage Gen2。 本文介绍如何执行该操作。
 
-‎Azure Data Lake Storage Gen2 以 [Azure Blob 存储](storage-blobs-introduction.md)为基础而构建，能够提供一组专用于大数据分析的功能。 [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) 将 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) 中的功能（例如文件系统语义、目录、文件级安全性和规模）与 [Azure Blob 存储](storage-blobs-introduction.md)中的低成本分层存储、高可用性/灾难恢复功能进行了组合。
+Azure Data Lake Storage Gen2 以 [Azure Blob 存储](storage-blobs-introduction.md)为基础而构建，能够提供一组专用于大数据分析的功能。 [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) 将 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) 中的功能（例如文件系统语义、目录、文件级安全性和规模）与 [Azure Blob 存储](storage-blobs-introduction.md)中的低成本分层存储、高可用性/灾难恢复功能进行了组合。
 
 > [!NOTE]
 > 为了便于阅读，本文使用术语 Gen1 来指代 Azure Data Lake Storage Gen1，并使用术语 Gen2 来指代 Azure Data Lake Storage Gen2 。
@@ -39,17 +39,17 @@ Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细�
 :heavy_check_mark: 步骤4：从 Gen1 转换为 Gen2
 
 > [!NOTE]
-> Gen1 和 Gen2 是不同的服务，没有就地升级体验，需要进行有意的迁移工作。 
+> Gen1 和 Gen2 是不同的服务，没有就地升级体验，需要进行有意的迁移工作。
 
 ### <a name="step-1-assess-readiness"></a>步骤1：评估准备情况
 
-1. 了解 [Data Lake Storage Gen2 产品/服务](https://azure.microsoft.com/services/storage/data-lake-storage/)：它的优势、成本和常规体系结构。 
+1. 了解 [Data Lake Storage Gen2 产品/服务](https://azure.microsoft.com/services/storage/data-lake-storage/)：它的优势、成本和常规体系结构。
 
-2. 将 Gen1 的功能与 Gen2 的功能[进行比较](#gen1-gen2-feature-comparison)。 
+2. 将 Gen1 的功能与 Gen2 的功能[进行比较](#gen1-gen2-feature-comparison)。
 
 3. 查看[已知问题](data-lake-storage-known-issues.md)的列表，评估功能间的任何差距。
 
-4. Gen2 支持[诊断日志记录](../common/storage-analytics-logging.md)、[访问层](storage-blob-storage-tiers.md)和 [Blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)等 Blob 存储功能。 如果你对使用其中任何一种功能感兴趣，请查看[当前支持级别](./data-lake-storage-supported-blob-storage-features.md)。
+4. Gen2 支持[诊断日志记录](../common/storage-analytics-logging.md)、[访问层](access-tiers-overview.md)和 [Blob 存储生命周期管理策略](./lifecycle-management-overview.md)等 Blob 存储功能。 如果你对使用其中任何一种功能感兴趣，请查看[当前支持级别](./storage-feature-support-in-storage-accounts.md)。
 
 5. 查看 [Azure 生态系统支持](./data-lake-storage-multi-protocol-access.md)的当前状态，确保 Gen2 支持解决方案所依赖的任何服务。
 
@@ -58,12 +58,12 @@ Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细�
 1. 确定要迁移的数据集。
 
    利用此机会清理不再使用的数据集。 除非计划一次迁移所有数据，否则请花些时间来确定可以分阶段迁移的数据逻辑组。
-   
+
 2. 确定迁移将对你的业务造成的影响。
 
    例如，请考虑进行迁移时是否可以承受任何停机时间。 这些注意事项可以帮助你确定适当的迁移模式，并选择最合适的工具。
 
-3. 创建迁移计划。 
+3. 创建迁移计划。
 
    建议采用这些[迁移模式](#migration-patterns)。 可以选择其中一种模式，将它们组合在一起，或者设计自己的自定义模式。
 
@@ -71,12 +71,12 @@ Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细�
 
 使用你喜欢的模式迁移数据、工作负载和应用程序。 建议以增量方式验证方案。
 
-1. [创建存储帐户](create-data-lake-storage-account.md)启用分层命名空间功能。 
+1. [创建存储帐户](create-data-lake-storage-account.md)启用分层命名空间功能。
 
-2. 迁移数据。 
+2. 迁移数据。
 
-3. 将[工作负载中的服务](./data-lake-storage-supported-azure-services.md)配置为指向 Gen2 终结点。 
-   
+3. 将[工作负载中的服务](./data-lake-storage-supported-azure-services.md)配置为指向 Gen2 终结点。
+
 4. 更新应用程序以使用 Gen2 API。 请参阅以下指南：
 
 | 环境 | 项目 |
@@ -87,16 +87,16 @@ Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细�
 |Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录和文件](data-lake-storage-directory-file-acl-python.md)|
 |JavaScript (Node.js)|[使用 Node.js 中的 JavaScript SDK 管理 Azure Data Lake Storage Gen2 中的目录和文件](data-lake-storage-directory-file-acl-javascript.md)|
 |REST API |[Azure Data Lake Store REST API](/rest/api/storageservices/data-lake-storage-gen2)|
-   
+
 5. 更新脚本以使用 Data Lake Storage Gen2 [PowerShell cmdlet](data-lake-storage-directory-file-acl-powershell.md) [Azure CLI 命令](data-lake-storage-directory-file-acl-cli.md)。
-   
-6. 搜索代码文件、Databricks 笔记本、Apache Hive HQL 文件或其他任何用作工作负载一部分的文件中包含字符串 `adl://` 的 URI 引用。 将这些引用替换为新存储帐户的 [Gen2 格式 URI](data-lake-storage-introduction-abfs-uri.md)。 例如，Gen1 URI：`adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` 可能会变为 `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile`。 
+
+6. 搜索代码文件、Databricks 笔记本、Apache Hive HQL 文件或其他任何用作工作负载一部分的文件中包含字符串 `adl://` 的 URI 引用。 将这些引用替换为新存储帐户的 [Gen2 格式 URI](data-lake-storage-introduction-abfs-uri.md)。 例如，Gen1 URI：`adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` 可能会变为 `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile`。
 
 7. 在帐户上配置安全性，以包括 [Azure 角色](assign-azure-role-data-access.md)、[文件和文件夹级别安全性](data-lake-storage-access-control.md)，以及 [Azure 存储防火墙和虚拟网络](../common/storage-network-security.md)。
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>步骤 4：从 Gen1 转换为 Gen2
 
-确信应用程序和工作负载在 Gen2 上稳定后，可以开始使用 Gen2 来满足业务场景。 关闭 Gen1 上运行的任何剩余管道，并停用 Gen1 帐户。 
+确信应用程序和工作负载在 Gen2 上稳定后，可以开始使用 Gen2 来满足业务场景。 关闭 Gen1 上运行的任何剩余管道，并停用 Gen1 帐户。
 
 <a id="gen1-gen2-feature-comparison"></a>
 
@@ -130,10 +130,10 @@ Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细�
 |**双向同步**|类似于双管道，但具有更具阶段性的方法，适用于更复杂的管道。|
 
 我们来详细了解每种模式。
- 
+
 ### <a name="lift-and-shift-pattern"></a>直接迁移模式
 
-这是最简单的模式。 
+这是最简单的模式。
 
 1. 停止对 Gen1 的所有写入操作。
 
@@ -170,7 +170,6 @@ Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细�
 4. 停用 Gen1。
 
 请查看[增量复制迁移示例](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md)中的增量复制模式示例代码。
-
 
 > [!div class="mx-imgBorder"]
 > ![增量复制模式](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
@@ -221,12 +220,12 @@ Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细�
 
 #### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>使用双向同步模式时的注意事项：
 
-:heavy_check_mark: 非常适用于涉及大量管道和依赖项的复杂方案，其中分阶段方法可能更有意义。  
+:heavy_check_mark: 非常适用于涉及大量管道和依赖项的复杂方案，其中分阶段方法可能更有意义。
 
 :heavy_check_mark: 迁移工作量很大，但它为 Gen1 和 Gen2 提供并行支持。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解为存储帐户设置安全性的各个部分。 请参阅 [Azure 存储安全指南](./security-recommendations.md)。
+- 了解为存储帐户设置安全性的各个部分。 有关详细信息，请参阅 [Azure 存储安全指南](./security-recommendations.md)。
 - 优化 Data Lake Store 的性能。 请参阅[优化 Azure Data Lake Storage Gen2 性能](data-lake-storage-performance-tuning-guidance.md)。
 - 查看管理 Data Lake Store 的最佳做法。 请参阅[使用 Azure Data Lake Storage Gen2 的最佳做法](data-lake-storage-best-practices.md)

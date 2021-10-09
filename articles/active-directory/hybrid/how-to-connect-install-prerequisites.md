@@ -16,12 +16,12 @@ ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2ff57c06fba085fd28e7e0b13ec6e503517cab7
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 665ca1dca46dbfcf1cdc5e07b0c4672f79dc586a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768677"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546807"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -75,7 +75,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 - 如果全局管理员已启用 MFA，URL https://secure.aadcdn.microsoftonline-p.com 必须在受信任的站点列表中。 在显示 MFA 质询提示之前，系统会先提示将此 URL 添加到受信任的站点列表中（如果尚未添加）。 可以使用 Internet Explorer 将它添加到受信任站点。
 - 如果你计划使用 Azure AD Connect Health 进行同步，请确保也满足 Azure AD Connect Health 的先决条件。 有关详细信息，请参阅 [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)。
 
-#### <a name="harden-your-azure-ad-connect-server"></a>强化 Azure AD Connect 服务器 
+### <a name="harden-your-azure-ad-connect-server"></a>强化 Azure AD Connect 服务器 
 建议强化 Azure AD Connect 服务器来减小 IT 环境中的此关键组件的安全攻击面。 遵循这些建议有助于降低组织的部分安全风险。
 
 - 将 Azure AD Connect 与域控制器和其他第 0 层资源同等对待。 有关详细信息，请参阅 [Active Directory 管理层模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)。
@@ -87,6 +87,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 - 为具有组织信息系统的特权访问权限的所有人员实现专用的[特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)。 
 - 按照以下[附加指南](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)操作，以减少 Active Directory 环境的攻击面。
 - 按照[监视联合身份验证配置的更改](how-to-connect-monitor-federation-changes.md)中的要求设置警报，以监视对在 Idp 与 Azure AD 之间建立的信任的更改。 
+- 为在 Azure AD 或 AD 中具有特权访问权限的所有用户启用多重身份验证 (MFA)。 使用 AADConnect 的一个安全问题是，如果攻击者可以控制 Azure AD Connect 服务器，他们就可以操纵 Azure AD 中的用户。 为了防止攻击者使用这些功能来接管 Azure AD 帐户，MFA 提供了保护，以便即使攻击者设法（例如）使用 Azure AD Connect 重置用户密码，他们仍然无法绕过第二个因素。
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect 所使用的 SQL Server
 * Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 默认安装 SQL Server 2019 Express LocalDB（轻量版本的 SQL Server Express）。 SQL Server Express 有 10-GB 的大小限制，允许管理大约 100,000 个对象。 如果需要管理更多的 Directory 对象，请将安装向导指向不同的 SQL Server 安装。 SQL Server 安装的类型可能会影响 [Azure AD Connect 的性能](./plan-connect-performance-factors.md#sql-database-factors)。

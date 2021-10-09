@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 0223b78ac34d2cfffa6a307f220c4d207c7f8b15
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 450eca8a589f6184bcac5e5d986fc7a5f4d49128
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068430"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745134"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>教程：Azure Active Directory 与 Zscaler One 的集成
 
@@ -40,6 +40,8 @@ ms.locfileid: "110068430"
 * Zscaler One 支持 SP 发起的 SSO。
 
 * Zscaler One 支持实时用户预配。
+
+* Zscaler One 支持[自动用户预配](zscaler-one-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -229,6 +231,9 @@ ms.locfileid: "110068430"
 > [!Note]
 > 如果需要手动创建用户，请联系 [Zscaler One 支持团队](https://www.zscaler.com/company/contact)。
 
+> [!NOTE]
+> Zscaler One 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./zscaler-one-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -237,7 +242,7 @@ ms.locfileid: "110068430"
 
 * 直接转到 Zscaler One 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler One 磁贴时，会重定向到 Zscaler One 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler One 磁贴时，会重定向到 Zscaler One 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

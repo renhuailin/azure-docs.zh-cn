@@ -1,27 +1,20 @@
 ---
 title: Azure AD Connect：已具有 Azure AD 时 | Microsoft 文档
 description: 本主题介绍当存在现有的 Azure AD 租户时如何使用 Connect。
-services: active-directory
-documentationcenter: ''
 author: billmath
-manager: daveba
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61785fbdf4fe3e79b2c36a5ffa6a9ccb43259666
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93420523"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272807"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect：如果你有现有的租户
 有关如何使用 Azure AD Connect 的大多数主题假设一开始使用的是新 Azure AD 租户，其中不包含任何用户或其他对象。 但是，如果一开始使用的 Azure AD 租户中填充了用户和其他对象，现在想要使用 Connect，那么，本主题适合你阅读。
@@ -56,16 +49,18 @@ Azure AD 中的对象在云中 (Azure AD) 或本地掌控。 对于单个对象�
 ### <a name="hard-match-vs-soft-match"></a>硬匹配与软匹配
 对于全新的 Connect 安装，软匹配与硬匹配之间没有实质的差别。 主要差别在于灾难恢复情形。 如果解除了装有 Azure AD Connect 的服务器，可以重新安装一个新实例，而不会丢失任何数据。 在初始安装期间，会向 Connect 发送一个包含 sourceAnchor 的对象。 然后，客户端 (Azure AD Connect) 便可以评估匹配，与在 Azure AD 中执行相同的操作相比，速度要快得多。 硬匹配同时由 Connect 和 Azure AD 评估。 软匹配只由 Azure AD 评估。
 
+ 我们添加了一个配置选项来禁用 Azure AD Connect 中的软匹配功能。 建议客户禁用软匹配，除非他们需要它来接管仅限云的帐户。 [此文](/powershell/module/msonline/set-msoldirsyncfeature)介绍了如何禁用软匹配。
+
 ### <a name="other-objects-than-users"></a>除用户以外的其他对象
 对于启用了邮件的组和联系人，可以根据 proxyAddresses 进行软匹配。 硬匹配不适用，因为只能对用户更新 sourceAnchor/immutableID（使用 PowerShell）。 对于未启用邮件的组，目前不支持软匹配和硬匹配。
 
 ### <a name="admin-role-considerations"></a>管理员角色注意事项
 为了防止不受信任的本地用户与担任管理员角色的云用户进行匹配，Azure AD Connect 不会将本地用户对象与担任管理员角色的对象进行匹配。 这是默认设置。 若要解决此行为，可以执行以下操作：
 
-1.  从仅限云的用户对象中删除目录角色。
-2.  如果用户同步尝试失败，请硬删除云中已隔离的对象。
-3.  触发同步。
-4.  可以在进行匹配以后将目录角色添加回云中的用户对象。
+1.    从仅限云的用户对象中删除目录角色。
+2.    如果用户同步尝试失败，请硬删除云中已隔离的对象。
+3.    触发同步。
+4.    可以在进行匹配以后将目录角色添加回云中的用户对象。
 
 
 

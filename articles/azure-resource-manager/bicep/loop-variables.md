@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: bf182379c9cc10db11e451f908df552a16520b45
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 14721057379217ae9d14b97c94483435dde08203
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225197"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831983"
 ---
 # <a name="variable-iteration-in-bicep"></a>Bicep 中的变量迭代
 
 本文展示了如何为 Bicep 文件中的变量创建多个值。 可以在 `variables` 声明中添加循环，并动态设置变量的项数。 避免在 Bicep 文件中重复使用语法。
 
 还可以将复制与 [modules](loop-modules.md)、[resources](loop-resources.md)、[资源中的 properties](loop-properties.md) 和 [outputs](loop-outputs.md) 配合使用。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解循环并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用条件和循环构建灵活的 Bicep 模板](/learn/modules/build-flexible-bicep-templates-conditions-loops/)。
 
 ## <a name="syntax"></a>语法
 

@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 798d0aaa6f4423679576c37a0af7bf64de37a313
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: f128aac2135b85c3e612ce1249766b7e5db29f05
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428804"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549612"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>配置 Azure 文件同步网络终结点
 Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用于访问 Azure 文件共享： 
@@ -30,7 +30,7 @@ Azure 文件存储和 Azure 文件同步提供两种主要类型的终结点用�
 本文假设：
 - 你有一个 Azure 订阅。 如果还没有订阅，则请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 已在要从本地连接到的存储帐户中创建了一个 Azure 文件共享。 若要了解如何创建 Azure 文件共享，请参阅[创建 Azure 文件共享](../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)。
-- 已经创建一个存储同步服务并通过它注册了 Windows 文件服务器。 若要了解如何部署 Azure 文件同步，请参阅[部署 Azure 文件同步](file-sync-deployment-guide.md)。
+- 允许域流量传输到以下终结点，请参阅 [Azure 服务终结点](../file-sync/file-sync-firewall-and-proxy.md#firewall)：
 
 此外：
 - 如果你打算使用 Azure PowerShell，请[安装最新版本](/powershell/azure/install-az-ps)。

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 09/15/2021
 ms.author: justinha
-ms.openlocfilehash: 3ff8ffe39a84f9a1eeddd7de01ad8db44f73d52c
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 2080cf50a5837b2b4347f03a77496f5d6215e958
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112199171"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605385"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建和配置 Azure Active Directory 域服务托管域
 
@@ -41,11 +41,12 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 需要在 Azure AD 目录中拥有“全局管理员”特权才能启用 Azure AD DS。
 * 需要在 Azure 订阅中拥有“参与者”特权才能创建所需的 Azure AD DS 资源。
+* 具有 DNS 服务器的虚拟网络，可以查询所需的基础结构，例如存储。 无法执行常规 Internet 查询的 DNS 服务器可能会阻止创建托管域的功能。 
 
 尽管 Azure AD DS 不需要，但建议为 Azure AD 租户[配置自助式密码重置 (SSPR)][configure-sspr]。 用户可以在没有 SSPR 的情况下更改其密码，但如果用户忘记其密码并需要重置密码，SSPR 会有所帮助。
 
 > [!IMPORTANT]
-> 创建托管域后，无法将托管域移到其他资源组、虚拟网络、订阅等。部署托管域时，请注意选择最合适的订阅、资源组、区域和虚拟网络。
+> 创建托管域后，无法将其移动到其他订阅、资源组、区域、虚拟网络或子网。 部署托管域时，请注意选择最合适的订阅、资源组、区域、虚拟网络和子网。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -55,7 +56,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 若要启动“启用 Azure AD 域服务”向导，请完成以下步骤：
 
-1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
 1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。
 1. 在“Azure AD 域服务”页上选择“创建”。 “启用 Azure AD 域服务”向导随即启动。
 1. 选择要在其中创建托管域的 Azure“订阅”。

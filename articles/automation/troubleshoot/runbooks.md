@@ -2,15 +2,15 @@
 title: 排查 Azure 自动化 Runbook 问题
 description: 本文介绍如何排查和解决 Azure 自动化 Runbook 的问题。
 services: automation
-ms.date: 07/27/2021
+ms.date: 09/16/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: a7711d30a71cc5b637a1fc755609d3f5c48683d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 436282ad8a2816e3307d2ad270209980b2fa0427
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738619"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058430"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -50,19 +50,19 @@ ms.locfileid: "121738619"
 
 ## <a name="scenario-access-blocked-to-azure-storage-or-azure-key-vault-or-azure-sql"></a>场景：阻止访问 Azure 存储、Azure Key Vault 或 Azure SQL
 
-此方案使用 [Azure 存储](../../storage/common/storage-network-security.md)作为示例；但是，此信息同样适用于 [Azure Key Vault](../../key-vault/general/network-security.md) 和 [Azure SQL](../../azure-sql/database/firewall-configure.md)。
+此场景使用 [Azure 存储](../../storage/common/storage-network-security.md)作为示例。但是，该信息同样适用于 [Azure Key Vault](../../key-vault/general/network-security.md) 和 [Azure SQL](../../azure-sql/database/firewall-configure.md)。
 
 ### <a name="issue"></a>问题
 
-尝试从 runbook 访问 Azure 存储会导致类似于以下消息的错误：`The remote server returned an error: (403) Forbidden. HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation.`
+尝试从 Runbook 访问 Azure 存储会导致类似于以下消息的错误：`The remote server returned an error: (403) Forbidden. HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation.`
 
 ### <a name="cause"></a>原因
 
-启用了 Azure 存储上的 Azure 防火墙。
+已启用 Azure 存储上的 Azure 防火墙。
 
 ### <a name="resolution"></a>解决方案
 
-在 [Azure 存储](../../storage/common/storage-network-security.md)、[Azure Key Vault](../../key-vault/general/network-security.md) 或 [Azure SQL](../../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙会阻止从 Azure 自动化 runbook 访问这些服务。 即使启用了允许受信任 Microsoft 服务的防火墙例外，访问也将被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
+在 [Azure 存储](../../storage/common/storage-network-security.md)、[Azure Key Vault](../../key-vault/general/network-security.md) 或 [Azure SQL](../../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙会阻止从 Azure 自动化 runbook 访问这些服务。 即使启用了允许受信任的 Microsoft 服务的防火墙例外，访问也会被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>场景：Runbook 失败并出现“无权限”或“禁止 403”错误
 
@@ -210,26 +210,11 @@ The subscription named <subscription name> cannot be found.
 * 订阅名称无效。
 * 尝试获取订阅详细信息的 Azure AD 用户未配置为订阅的管理员。
 * cmdlet 不可用。
+* 发生上下文切换。
 
 ### <a name="resolution"></a>解决方法
 
-执行以下步骤来确定是否已在 Azure 中完成身份验证并有权访问你尝试选择的订阅：
-
-1. 为确保脚本可单独正常运行，请在 Azure 自动化外部对其进行测试。
-1. 确保脚本先运行 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet，再运行 `Select-*` cmdlet。
-1. 将 `Disable-AzContextAutosave -Scope Process` 添加到 runbook 的开头。 此 cmdlet 可以确保任何凭据都仅适用于当前 runbook 的执行。
-1. 如果仍看到该错误消息，请通过为 `Connect-AzAccount` 添加 `AzContext` 参数来修改代码，然后执行代码。
-
-   ```powershell
-   Disable-AzContextAutosave -Scope Process
-
-   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-
-   $context = Get-AzContext
-
-   Get-AzVM -ResourceGroupName myResourceGroup -AzContext $context
-    ```
+有关上下文切换，请参阅 [Azure 自动化中的上下文切换](../context-switching.md)。
 
 ## <a name="scenario-runbooks-fail-when-dealing-with-multiple-subscriptions"></a><a name="runbook-auth-failure"></a>场景：处理多个订阅时，Runbook 失败
 
@@ -251,33 +236,19 @@ Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automat
    ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
 ```
 
+或如下所示：
+
+```error
+Get-AzureRmResource : Resource group "SomeResourceGroupName" could not be found.
+... resources = Get-AzResource -ResourceGroupName $group.ResourceGro ...
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-AzResource], CloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.GetAzureResourceCmdlet
+```
+
 ### <a name="resolution"></a>解决方法
 
-当某个 Runbook 调用多个 Runbook 时，订阅上下文可能会丢失。 若要避免意外尝试访问不正确的订阅，应遵循以下指导。
-
-* 为避免引用错误的订阅，请在每个 runbook 的开头使用以下代码来禁用自动化 runbook 中的上下文保存。
-
-   ```azurepowershell-interactive
-   Disable-AzContextAutosave -Scope Process
-   ```
-
-* Azure PowerShell cmdlet 支持 `-DefaultProfile` 参数。 该支持已添加到所有 Az 和 AzureRm cmdlet 中，以支持在同一进程中运行多个 PowerShell 脚本，因此你可以指定上下文和要用于每个 cmdlet 的订阅。 使用 runbook 时，应在创建 runbook（即帐户登录）时以及每次更改时将上下文对象保存在 runbook 中，并在指定 Az cmdlet 时引用上下文。
-
-   > [!NOTE]
-   > 即使在使用 [Set-AzContext](/powershell/module/az.accounts/Set-AzContext) 或 [Select-AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription) 之类的 cmdlet 直接操作上下文时，也应该传递上下文对象。
-
-   ```azurepowershell-interactive
-   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
-   $context = Add-AzAccount `
-             -ServicePrincipal `
-             -TenantId $servicePrincipalConnection.TenantId `
-             -ApplicationId $servicePrincipalConnection.ApplicationId `
-             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
-             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
-   $context = Set-AzContext -SubscriptionName $subscription `
-       -DefaultProfile $context
-   Get-AzVm -DefaultProfile $context
-   ```
+若要避免意外尝试访问错误的订阅，请参阅 [Azure 自动化中的上下文切换](../context-switching.md)。
   
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>场景：无法在 Azure 中进行身份验证，因为已启用多重身份验证
 
@@ -693,7 +664,7 @@ Operation returned an invalid status code 'Forbidden'
 
 #### <a name="not-using-a-run-as-account"></a>未使用运行方式帐户
 
-执行[步骤 5 - 添加身份验证来管理 Azure 资源](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources)，以确保使用运行方式帐户访问 Key Vault。
+执行[步骤 5 - 添加身份验证来管理 Azure 资源](../learn/powershell-runbook-managed-identity.md#assign-permissions-to-managed-identities)，以确保使用运行方式帐户访问 Key Vault。
 
 #### <a name="insufficient-permissions"></a>权限不足
 

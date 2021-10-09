@@ -7,12 +7,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: a7c809803df1e84528cc7cd8eb41574591aab8c1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6fa350757ff1d4595c0eaa9c3dffb1c7299fb116
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638540"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835983"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Office 365 加载数据
 
@@ -24,11 +24,11 @@ ms.locfileid: "122638540"
 
 1. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：   
    
-   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png" alt-text="在“新建”窗格中选择“数据工厂”":::&quot;&quot;
 
 2. 在“新建数据工厂”页中，为下图中所示的字段提供值  ：
       
-   ![“新建数据工厂”页](./media/load-office-365-data/new-azure-data-factory.png)
+   :::image type="content" source="./media/load-office-365-data/new-azure-data-factory.png" alt-text="“新建数据工厂”页":::
  
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 LoadFromOffice365Demo  不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **LoadFromOffice365Demo**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
@@ -47,7 +47,7 @@ ms.locfileid: "122638540"
 
 1. 在主页上，选择“协调”。
  
-    ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+    :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="显示 ADF 主页的屏幕截图。":::
 
 2. 在管道的“常规”  选项卡中，输入“CopyPipeline”作为管道的 **名称**。
 
@@ -61,7 +61,7 @@ ms.locfileid: "122638540"
  
 3. 现在位于“复制活动配置”选项卡中。单击 Office 365 数据集旁边的“编辑”  按钮以继续配置数据。
 
-    ![配置 Office 365 数据集 - 常规](./media/load-office-365-data/transition-to-edit-dataset.png)
+    :::image type="content" source="./media/load-office-365-data/transition-to-edit-dataset.png" alt-text="配置 Office 365 数据集 - 常规":::
  
 4. 此时可以看到为 Office 365 数据集打开了一个新选项卡。 在“属性”窗口底部的“常规”选项卡中，输入“SourceOffice365Dataset”作为名称。 
  
@@ -69,11 +69,11 @@ ms.locfileid: "122638540"
 
 6. 在“新建链接服务”窗口中，输入“Office365LinkedService”作为名称，输入服务主体 ID 和服务主体密钥，然后测试连接并选择“创建”  以部署链接服务。
 
-    ![新建 Office 365 链接服务](./media/load-office-365-data/new-office-365-linked-service.png)
+    :::image type="content" source="./media/load-office-365-data/new-office-365-linked-service.png" alt-text="新建 Office 365 链接服务":::
  
 7. 在创建链接服务后，会返回到数据集设置。 在“表”  旁边，选择向下箭头展开可用的 Office 365 数据集列表，然后从下拉列表中选择“BasicDataSet_v0.Message_v0”：
 
-    ![配置 Office 365 数据集 - 表](./media/load-office-365-data/edit-dataset.png)
+    :::image type="content" source="./media/load-office-365-data/edit-dataset.png" alt-text="配置 Office 365 数据集 - 表":::
 
 8. 现在返回到  “管道” > “源”选项卡  ，以继续配置用于 Office 365 数据提取的其他属性。  用户范围和用户范围筛选器是可选谓词，你可以定义这些谓词来限制要从 Office 365 中提取的数据。 有关如何配置这些设置的说明，请参阅 [Office 365 数据集属性](./connector-office-365.md#dataset-properties)部分。
 
@@ -81,7 +81,7 @@ ms.locfileid: "122638540"
 
 10. 单击“导入架构”  选项卡以导入消息数据集的架构。
 
-    ![配置 Office 365 数据集 - 架构](./media/load-office-365-data/edit-source-properties.png)
+    :::image type="content" source="./media/load-office-365-data/edit-source-properties.png" alt-text="配置 Office 365 数据集 - 架构":::
 
 ### <a name="configure-sink"></a>配置接收器
 
@@ -97,7 +97,7 @@ ms.locfileid: "122638540"
 
 6. 在“新建链接服务”窗口中，输入“AzureStorageLinkedService”作为名称，从身份验证方法下拉列表中选择“服务主体”，填写“服务终结点”、“租户”、“服务主体 ID”和“服务主体密钥”，然后选择“保存”以部署链接服务。  请参阅[此文](connector-azure-blob-storage.md#service-principal-authentication)，了解如何为 Azure Blob 存储设置服务主体身份验证。
 
-    ![新建 Blob 链接服务](./media/load-office-365-data/configure-blob-linked-service.png)
+    :::image type="content" source="./media/load-office-365-data/configure-blob-linked-service.png" alt-text="新建 Blob 链接服务":::
 
 
 ## <a name="validate-the-pipeline"></a>验证管道
@@ -110,7 +110,7 @@ ms.locfileid: "122638540"
 
 在顶部工具栏中，选择“全部发布”  。 此操作将所创建的实体（数据集和管道）发布到数据工厂。
 
-![发布更改](./media/load-office-365-data/publish-changes.png) 
+:::image type="content" source="./media/load-office-365-data/publish-changes.png" alt-text="发布更改"::: 
 
 ## <a name="trigger-the-pipeline-manually"></a>手动触发管道
 
@@ -120,24 +120,24 @@ ms.locfileid: "122638540"
 
 转到左侧的“监视”选项卡。  此时会看到由手动触发器触发的管道运行。 可以使用“操作”列中的链接来查看活动详细信息以及重新运行该管道。 
 
-![监视管道](./media/load-office-365-data/pipeline-status.png) 
+:::image type="content" source="./media/load-office-365-data/pipeline-status.png" alt-text="监视管道"::: 
 
 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。  此示例中只有一个活动，因此列表中只看到一个条目。 有关复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。 
 
-![监视活动](./media/load-office-365-data/activity-status.png) 
+:::image type="content" source="./media/load-office-365-data/activity-status.png" alt-text="监视活动"::: 
 
 如果这是你首次请求此上下文（要访问的数据表、要将数据加载到的目标帐户和发出数据访问请求的用户标识的组合）的数据，则复制活动状态将显示为“正在进行”；仅当单击“操作”下的“详细信息”链接时，状态才显示为“正在请求许可”。    在继续执行数据提取之前，数据访问审批者组的成员需要在 Privileged Access Management 中审批该请求。
 
 _正在请求许可状态：_ 
-![活动执行详细信息 - 请求许可](./media/load-office-365-data/activity-details-request-consent.png) 
+:::image type="content" source="./media/load-office-365-data/activity-details-request-consent.png" alt-text="活动执行详细信息 - 请求许可"::: 
 
 _正在提取数据状态：_
 
-![活动执行详细信息 - 提取数据](./media/load-office-365-data/activity-details-extract-data.png) 
+:::image type="content" source="./media/load-office-365-data/activity-details-extract-data.png" alt-text="活动执行详细信息 - 提取数据"::: 
 
 提供许可后，数据提取将会继续，一段时间后，管道运行将显示为“成功”。
 
-![监视管道 - 成功](./media/load-office-365-data/pipeline-monitoring-succeeded.png) 
+:::image type="content" source="./media/load-office-365-data/pipeline-monitoring-succeeded.png" alt-text="监视管道 - 成功"::: 
 
 现在，请转到目标 Azure Blob 存储，并验证是否已提取二进制格式的 Office 365 数据。
 

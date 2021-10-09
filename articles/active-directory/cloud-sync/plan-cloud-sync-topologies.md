@@ -7,22 +7,26 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd14ed8d149cdc5296229c52ceb74afb2ce7b23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70a480fba6b7923ffb327b22822e4baa3a54acdc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98613033"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749945"
 ---
 # <a name="azure-ad-connect-cloud-sync-supported-topologies-and-scenarios"></a>Azure AD Connect 云同步支持的拓扑和方案
 本文介绍了使用 Azure AD Connect 云同步的各种本地和 Azure Active Directory (Azure AD) 拓扑。本文仅介绍支持的配置和方案。
 
 > [!IMPORTANT]
 > Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 云同步。 任何这些配置或操作都可能会导致 Azure AD Connect 云同步出现不一致或不受支持的状态。因此，Microsoft 不能为这种部署提供技术支持。
+
+有关详细信息，请观看以下视频。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWJ8l5]
 
 ## <a name="things-to-remember-about-all-scenarios-and-topologies"></a>有关所有方案和拓扑的注意事项
 下面是选择解决方案时要记住的信息列表。

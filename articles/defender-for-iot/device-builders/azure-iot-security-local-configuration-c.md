@@ -3,12 +3,12 @@ title: 安全代理本地配置 (C)
 description: 了解适用于 C 的 Defender for IoT 代理本地配置。
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 7cd230b188c7c1d644ec03cff2d084ff7ea57139
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 24445ce60b3a6d070805cf04a23d7834c24f01e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113014562"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680485"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>了解 LocalConfiguration.json 文件 - C 代理
 
@@ -32,7 +32,7 @@ Defender for IoT 安全代理使用来自本地配置文件的配置。
 | 标识 | “DPS”、“SecurityModule”、“Device” | 身份验证标识 - 如果通过 DPS 进行身份验证，则该值为“DPS”；如果通过 Defender-IoT-micro-agent 凭据进行身份验证，则该值为“SecurityModule”；如果使用设备凭据进行身份验证，则该值为“Device” |
 | AuthenticationMethod | “SasToken”、“SelfSignedCertificate” | 用于身份验证的用户机密 - 如果用户机密是对称密钥，请选择“SasToken”；如果机密是自签名证书，请选择“SelfSignedCertificate”  |
 | 文件路径 | 文件路径（字符串） | 包含身份验证机密的文件的路径 |
-| HostName | string | Azure IoT 中心的主机名。 通常是 <my-hub>.azure-devices.net |
+| HostName | string | Azure IoT 中心的主机名。 通常为 \<my-hub\>.azure-devices.net |
 | DeviceId | string | 设备的 ID（已注册到 Azure IoT 中心） |
 | DPS | JsonObject | DPS 相关配置 |
 | IDScope | string | DPS 的 ID 范围 |

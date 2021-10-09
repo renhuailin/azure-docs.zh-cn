@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 08/02/2021
 ms.author: amverma
-ms.openlocfilehash: 8a718f315324638f834316eb6dae46a9497ec48e
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 2d14b9b3adb9905cc87408db33018746e1479a1b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515778"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680084"
 ---
 # <a name="migrate-your-hb-series-virtual-machines-by-august-31-2024"></a>在 2024 年 8 月 31 日前迁移 HB 系列虚拟机
 由于 Microsoft Azure 已针对高性能计算 (HPC) 推出 HBv2 和 HBv3 系列虚拟机，因此我们建议你将原始 HB 系列虚拟机中的工作负载迁移至我们较新的产品。  
@@ -57,4 +57,4 @@ Azure [HBv2](hbv2-series.md) 和 [HBv3](hbv3-series.md) 虚拟机具有以下优
 
 
 ### <a name="resize-the-current-virtual-machine"></a>调整当前虚拟机的大小
-可以[使用 PowerShell](./windows/resize-vm.md)、[Azure CLI](./linux/change-vm-size.md) 或通过 Azure 门户调整虚拟机的大小。
+可以[重设虚拟机大小](resize-vm.md)。

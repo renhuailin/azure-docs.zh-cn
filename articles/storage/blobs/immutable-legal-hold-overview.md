@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/22/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1434f689f8f629fd04ec0c0b059a1298b32d5ac9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 39108c5c5fd823e313ce616fbb4f6d6135e7d81e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779774"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645752"
 ---
 # <a name="legal-holds-for-immutable-blob-data"></a>不可变 Blob 数据的法定保留
 
@@ -53,7 +53,7 @@ ms.locfileid: "121779774"
 
 #### <a name="audit-logging"></a>审核日志
 
-每个具有有效法定保留的容器都提供一个策略审核日志。  该日志包含用户 ID、命令类型、时间戳和法定保留标记。 审核日志将根据 SEC 17a-4(f) 法规准则保留与策略生存期相同的时间。
+每个具有有效法定保留的容器都提供一个策略审核日志。 该日志包含用户 ID、命令类型、时间戳和法定保留标记。 审核日志将根据 SEC 17a-4(f) 法规准则保留与策略生存期相同的时间。
 
 [Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)提供有关所有管理服务活动的更全面日志。 [Azure 资源日志](../../azure-monitor/essentials/platform-logs-overview.md)保留有关数据操作的信息。 由用户负责根据法规要求或其他要求永久存储这些日志。
 

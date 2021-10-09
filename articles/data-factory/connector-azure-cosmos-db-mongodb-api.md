@@ -1,26 +1,26 @@
 ---
 title: 从 Azure Cosmos DB 的 API for MongoDB 复制数据
+description: 了解如何使用 Azure 数据工厂或 Synapse Analytics 管道将数据从受支持的源数据存储复制到受支持的接收器存储或从 Azure Cosmos DB 的用于 MongoDB 的 API 复制到受支持的接收器存储。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何使用数据工厂将数据从受支持的源数据存储复制到受支持的接收器存储或从 Azure Cosmos DB 的用于 MongoDB 的 API 复制到受支持的接收器存储。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 0147782482308ac8b625926e51c59315f084237d
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 6720bcfdd4e0ce804bfd15803e1ed186d94e5181
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304628"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762073"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据
+# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动从/向 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
+本文概述如何使用 Azure 数据工厂和 Synapse Analytics 管道中的复制活动从/向 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据。 本文是基于概括性介绍复制活动的[复制活动](copy-activity-overview.md)一文编写的。
 
 >[!NOTE]
 >此连接器仅支持向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据。 有关 SQL API，请参阅 [Cosmos DB SQL API 连接器](connector-azure-cosmos-db.md)。 目前不支持其他 API 类型。
@@ -193,7 +193,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **CosmosDbMongoDbApiSink**。 |是 |
-| writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />备注：如果未在原始文档中或通过列映射指定 `_id`，则数据工厂会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
+| writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />注意：如果未在原始文档中指定或未通过列映射指定 `_id`，则服务会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
 | writeBatchSize | **writeBatchSize** 属性控制每个批中可写入的文档大小。 可尝试增大 **writeBatchSize** 的值以提高性能，并在文档大小较大时减小该值。 |否<br />（默认值为 **10,000**） |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。允许的值为 timespan。 | 否<br/>（默认值为 **00:30:00** - 30 分钟） |
 
@@ -237,7 +237,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 使用此 Azure Cosmos DB 连接器，可以轻松地：
 
 * 在两个 Azure Cosmos DB 集合之间按原样复制文档。
-* 将各种源（包括 MongoDB、Azure Blob 存储、Azure Data Lake Store 或 Azure 数据工厂所支持的其他基于文件的存储）中的 JSON 文档导入 Azure Cosmos DB。
+* 将各种源（包括 MongoDB、Azure Blob 存储、Azure Data Lake Store 和服务所支持的其他基于文件的存储）中的 JSON 文档导入 Azure Cosmos DB。
 * 将 JSON 文档从 Azure Cosmos DB 集合导出到各种基于文件的存储。
 
 若要实现“架构不可知”复制，请执行以下操作：
@@ -251,16 +251,16 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 具体而言，在写入到 Cosmos DB 时，为了确保使用源数据中的正确对象 ID 填充 Cosmos DB（例如，SQL 数据库表中包含一个“id”列，你想要使用该列的值作为 MongoDB 中的文档 ID 以完成插入/更新插入操作），需要根据 MongoDB 严格模式定义 (`_id.$oid`) 设置适当的架构映射，如下所示：
 
-![MongoDB 接收器中的映射 ID](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
+:::image type="content" source="./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png" alt-text="MongoDB 接收器中的映射 ID":::
 
 完成复制活动的执行后，接收器中将生成以下 BSON ObjectId：
 
 ```json
 {
-    "_id&quot;: ObjectId(&quot;592e07800000000000000000")
+    "_id": ObjectId("592e07800000000000000000")
 }
 ``` 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

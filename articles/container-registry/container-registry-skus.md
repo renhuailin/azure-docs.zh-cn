@@ -2,13 +2,13 @@
 title: 注册表服务层级和功能
 description: 了解 Azure 容器注册表的基本、标准和高级服务层 (SKU) 中的功能和限制（配额）。
 ms.topic: article
-ms.date: 06/24/2021
-ms.openlocfilehash: 8c27426cae6d80e31aef3d7ef9b75d28a14bd923
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 08/12/2021
+ms.openlocfilehash: 7f9fe5d461dede4510d3fc8069f42e7950803984
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113437533"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582322"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure 容器注册表服务层级
 
@@ -62,6 +62,26 @@ Azure 容器注册表分为多个服务层级（也称为 SKU）。 这些层级
 当注册表确定请求速率超出注册表的服务层级允许的限制时，你可能会遇到拉取或推送操作的限制。 你可能会看到类似于 `Too many requests` 的 HTTP 429 错误。
 
 当你在非常短的时间内生成大量映像拉取或推送操作时，即使读写操作的平均速率未超出注册表限制，也可能会暂时出现限制。 你可能需要在代码中通过一些回退操作来实现重试逻辑，或者降低对注册表的请求的最大速率。
+
+## <a name="show-registry-usage"></a>显示注册表使用情况
+
+使用 [az acr show-usage](/cli/az/acr#az_acr_show_usage) 命令或者 [List Usages](/rest/api/containerregstry/registries/list-usages) REST API 获取注册表当前对存储和其他资源的使用情况快照，并与该注册表的服务层限制相比较。 门户的资源表“概述”页上也会显示存储使用情况。
+
+当注册表接近限制时，使用情况信息可帮助你决定是否[服务层](#changing-tiers)。 此信息还可帮助你[管理使用](container-registry-best-practices.md#manage-registry-size)。 
+
+> [!NOTE]
+> 注册表的存储使用情况应该只能用作指导，可能不会反映最近的注册表操作。 监视注册表的 [StorageUsed 指标](monitor-service-reference.md#container-registry-metrics)以获取最新数据。 
+
+使用情况信息包含以下部分或全部内容以及该层的限制，具体取决于注册表的服务层：
+
+* 使用的存储空间（字节）<sup>1</sup>
+* [Webhook](container-registry-webhook.md) 数
+* [异地复制](container-registry-geo-replication.md)数（包括主区域副本）
+* [专用终结点](container-registry-private-link.md)数
+* [IP 访问规则](container-registry-access-selected-networks.md)数
+* [虚拟网络规则](container-registry-vnet.md)数
+
+<sup>1</sup>在异地复制的注册表中，会显示主区域的存储使用情况。 乘以使用的总存储量的复制数。
 
 ## <a name="changing-tiers"></a>更改层级
 

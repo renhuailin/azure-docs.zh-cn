@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Adobe Sign 集成 | Microsoft Docs
+title: 教程：Azure AD 与 Adobe Sign 的 SSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Adobe Sign 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/19/2021
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 7162c38aae2fec4ea21aae56fa8c3649f7a55425
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62791850857770cba44eabf54719176e80cea48b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649940"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803411"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
+# <a name="tutorial-azure-ad-sso-integration-with-adobe-sign"></a>教程：Azure AD 与 Adobe Sign 的 SSO 集成
 
 本教程介绍如何将 Adobe Sign 与 Azure Active Directory (Azure AD) 集成。 将 Adobe Sign 与 Azure AD 集成后，可以：
 
@@ -37,7 +37,7 @@ ms.locfileid: "101649940"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Adobe Sign 支持 SP 发起的 SSO 
+* Adobe Sign 支持 SP 发起的 SSO。
 
 ## <a name="add-adobe-sign-from-the-gallery"></a>从库中添加 Adobe Sign
 
@@ -64,7 +64,7 @@ ms.locfileid: "101649940"
     1. **[创建 Adobe Sign 测试用户](#create-adobe-sign-test-user)** - 在 Adobe Sign 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
@@ -119,7 +119,7 @@ ms.locfileid: "101649940"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-adobe-sign-sso"></a>配置 Adobe Sign SSO
+## <a name="configure-adobe-sign-sso"></a>配置 Adobe Sign SSO
 
 1. 在配置之前，请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，以便将域添加到 Adobe Sign 允许列表中。 下面介绍如何添加域：
 
@@ -144,13 +144,13 @@ ms.locfileid: "101649940"
 
 1. 在 SAML 菜单中，选择“帐户设置”   >   “SAML 设置”。
 
-    ![Adobe Sign SAML 设置页的屏幕截图](./media/adobe-echosign-tutorial/settings.png "帐户")
+    ![Adobe Sign SAML 设置页的屏幕截图。](./media/adobe-echosign-tutorial/settings.png "帐户")
 
 1. 在“SAML 设置”部分执行以下步骤  ：
 
-    ![突出显示“SAML 设置”（包括“SAML 强制”）的屏幕截图。](./media/adobe-echosign-tutorial/saml1.png "SAML 设置")
+    ![突出显示“SAML 设置”（包括“SAML 强制”）的屏幕截图。](./media/adobe-echosign-tutorial/profile.png "SAML 设置")
 
-   ![SAML 设置的屏幕截图](./media/adobe-echosign-tutorial/saml.png "SAML 设置")
+   ![SAML 设置的屏幕截图。](./media/adobe-echosign-tutorial/certificate.png "SAML 设置")
 
    a. 在“SAML 模式”下  ，选择“SAML 强制”  。
 
@@ -200,7 +200,7 @@ ms.locfileid: "101649940"
 
 * 直接转到 Adobe 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Adobe Sign 磁贴时，应会自动登录到为其设置了 SSO 的 Adobe Sign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Adobe Sign 磁贴时，应会自动登录到为其设置了 SSO 的 Adobe Sign。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

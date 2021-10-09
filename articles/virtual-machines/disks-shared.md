@@ -4,15 +4,15 @@ description: 了解如何跨多个 Linux VM 共享 Azure 托管磁盘。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0c72a263ff9d20f0cb70a0721625446b6a2e0ff9
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 56ba97d5a13744ee034024f510eac70d4f343877
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689349"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129052797"
 ---
 # <a name="share-an-azure-managed-disk"></a>共享 Azure 托管磁盘
 
@@ -58,7 +58,7 @@ WSFC 上运行的热门应用程序包括：
 ### <a name="linux"></a>Linux
 
 支持 Azure 共享磁盘的版本包括：
-- [SUSE SLE for SAP 和 SUSE SLE HA 15 SP1 及更高版本](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
+- [SUSE SLE HA 15 SP1 及更高版本](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18.04 和更高版本](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
 - [任何 RHEL 8 版本上的 RHEL 开发人员预览版](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
 - [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
@@ -152,6 +152,44 @@ Linux 群集可以使用群集管理器，例如 [Pacemaker](https://wiki.cluste
 #### <a name="ultra-pricing"></a>超级共享磁盘定价
 
 超级共享磁盘的定价依据为：预配的容量、总预配 IOPS (diskIOPSReadWrite + diskIOPSReadOnly) 和总预配吞吐量 MBps (diskMBpsReadWrite + diskMBpsReadOnly)。 每次额外的 VM 装载均不收取额外费用。 例如，配置为 diskSizeGB：1024、DiskIOPSReadWrite：10000、DiskMBpsReadWrite：600、DiskIOPSReadOnly：100、DiskMBpsReadOnly：1 的超级共享磁盘按 1024 GiB、10100 IOPS 和 601 MBps 进行收费，而不管它是装载到 2 个 VM 还是 5 个 VM。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+问：非托管磁盘或页 blob 是否支持共享磁盘功能？
+
+**答:** 不是。 只有超级磁盘和高级 SSD 托管磁盘才支持该功能。
+
+问：哪些区域支持共享磁盘？
+
+答：有关区域信息，请参阅我们的[概念文章](/azure/virtual-machines/disks-shared)。
+
+问：共享磁盘是否可用作 OS 磁盘？
+
+**答:** 不是。 只有数据磁盘才支持共享磁盘。
+
+问：哪些磁盘大小支持共享磁盘？
+
+答：有关支持的大小，请参阅我们的[概念文章](/azure/virtual-machines/disks-shared)。
+
+问：如果我有现有的磁盘，是否可以在其上启用共享磁盘？
+
+答：使用 API 版本 2019-07-01 或更高版本创建的所有托管磁盘都可以启用共享磁盘。 为此，你必须从磁盘附加到的所有 VM 中卸载磁盘。 然后，编辑该磁盘上的 maxShares 属性。
+
+问：如果我不想再使用共享模式下的磁盘，该如何禁用它？
+
+答：从磁盘附加到的所有 VM 中卸载磁盘。 然后将磁盘上的 maxShare 属性更改为 1。
+
+问：是否可以对共享磁盘重设大小？
+
+**答:** 是的。
+
+问：是否可以在同时启用了共享磁盘的磁盘上启用写入加速器？
+
+**答:** 不是。 不能在同时启用了共享磁盘的磁盘上启用写入加速器。
+
+问：是否可以为启用了共享磁盘的磁盘启用主机缓存？
+
+答：唯一支持的主机缓存选项为“无”。 
 
 ## <a name="next-steps"></a>后续步骤
 

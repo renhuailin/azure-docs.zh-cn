@@ -1,20 +1,20 @@
 ---
 title: 将数据加载到 Azure Synapse Analytics 中
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用 Azure 数据工厂或 Synapse 管道将数据复制到 Azure Synapse Analytics 中
+description: 使用 Azure 数据工厂或 Azure Synapse 管道将数据复制到 Azure Synapse Analytics 中。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: b297e47e3b1cb890312b6f7a566eb4f033e6612a
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: e91d2dbae4f73e99a5e341330c0841e8173cedc8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824117"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819912"
 ---
 # <a name="load-data-into-azure-synapse-analytics-using-azure-data-factory-or-a-synapse-pipeline"></a>使用 Azure 数据工厂或 Synapse 管道将数据加载到 Azure Synapse Analytics 中
 
@@ -71,7 +71,7 @@ ms.locfileid: "122824117"
 
 2. 在“属性”页上，选择“任务类型”下的“内置复制任务”，然后选择“下一步”   。
 
-    ![“属性”页](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png" alt-text="“属性”页":::
 
 3. 在“源数据存储”页上，完成以下步骤：
     >[!TIP]
@@ -82,17 +82,17 @@ ms.locfileid: "122824117"
 
     1. 从库中选择“Azure SQL 数据库”，然后选择“继续” 。 可以在搜索框中键入“SQL”以筛选连接器。
 
-        ![选择 Azure SQL DB](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png" alt-text="选择 Azure SQL DB":::
     
     1. 在“新建连接（Azure SQL 数据库）”页上，从下拉列表中选择服务器名称和 DB 名称，指定用户名和密码。 选择“测试连接”以验证设置，然后选择“创建” 。
 
-        ![配置 Azure SQL DB](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png" alt-text="配置 Azure SQL DB":::
     
     1. 在“源数据存储”页上的“连接”部分中，选择新创建的连接作为源 。
 
     1. 在“源表”部分中，输入 SalesLT 以筛选表。  选中“(全选)”复选框以便对副本使用所有表，然后选择“下一步”。
 
-    ![显示“源数据存储”页配置的屏幕截图。](./media/load-azure-sql-data-warehouse/source-data-store-page.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/source-data-store-page.png" alt-text="显示“源数据存储”页配置的屏幕截图。":::
 
 4. 在“应用筛选器”页中，指定你的设置或选择“下一步”。 选择此页上的“预览数据”按钮即可预览数据并查看输入数据的架构。 
 
@@ -107,21 +107,21 @@ ms.locfileid: "122824117"
 
     1. 从库中选择“Azure Synapse Analytics”，然后选择“继续” 。
 
-        ![选择 Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png" alt-text="选择 Azure Synapse Analytics":::
 
     1. 在“新建连接 (Azure Synapse Analytics)”页上，从下拉列表中选择服务器名称和 DB 名称，指定用户名和密码。 选择“测试连接”以验证设置，然后选择“创建” 。
 
-        ![配置 Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png" alt-text="配置 Azure Synapse Analytics":::
 
     1. 在“目标数据存储”上的“连接”部分中选择新创建的连接作为接收器 。
 
 6. 在“表映射”选项中查看内容并选择“下一步”。  此时会显示智能表映射。 源表已根据表名映射到目标表。 如果目标中不存在表，则默认情况下，服务将创建一个具有相同名称的目标表。 还可以将源表映射到现有目标表。
 
-   ![显示“目标数据存储”页配置的屏幕截图。](./media/load-azure-sql-data-warehouse/destination-data-store-page.png)
+   :::image type="content" source="./media/load-azure-sql-data-warehouse/destination-data-store-page.png" alt-text="显示“目标数据存储”页配置的屏幕截图。":::
 
 1. 在“列映射”页中，查看内容并选择“下一步”。 智能表映射基于列名。 如果自动创建的表的服务、源和目标存储之间存在不兼容时，可能发生数据类型转换。 如果在源列与目标列之间进行不受支持的数据类型转换，会显示错误消息以及相应的表。
 
-    ![“列映射”页](./media/load-azure-sql-data-warehouse/schema-mapping.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/schema-mapping.png" alt-text="“列映射”页":::
 
 1. 在“设置”页上，完成以下步骤：
 
@@ -132,7 +132,7 @@ ms.locfileid: "122824117"
 
     1. 取消选择“使用类型默认值”选项，然后选择“下一步” 。
 
-    ![配置 PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-polybase.png" alt-text="配置 PolyBase":::
 
 8. 在“摘要”页中检查设置，然后选择“下一步”。
 
@@ -150,15 +150,15 @@ ms.locfileid: "122824117"
 
 --- 
 
-12. 若要切换回到管道运行视图，请选择顶部的“所有管道运行”链接。 选择“刷新”可刷新列表。
+12. 若要切换回到管道运行视图，请选择顶部的“所有管道运行”链接。 选择“刷新”可刷新列表。 
 
-    ![监视活动运行](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/activity-monitoring.png" alt-text="监视活动运行":::
 
 1. 若要监视每个复制活动的执行详情，请在活动运行视图中选择“活动名称”下的“详细信息”链接（眼镜图标）。  可以监视详细信息，例如，从源复制到接收器的数据量、吞吐量、执行步骤以及相应的持续时间和使用的配置。
 
-    ![首次监视活动运行详细信息](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png" alt-text="首次监视活动运行详细信息":::
 
-    ![第二次监视活动运行详细信息](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png" alt-text="第二次监视活动运行详细信息":::
 
 ## <a name="next-steps"></a>后续步骤
 

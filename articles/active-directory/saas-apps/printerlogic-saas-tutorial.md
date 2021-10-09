@@ -9,36 +9,38 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d43a3fddec2c72302ecd607dedec9e4cb340ad3
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 4e4529fccf6051a3376b3b3ecda715e672c61a90
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802911"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124756368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PrinterLogic 集成
 
 本教程介绍如何将 PrinterLogic 与 Azure Active Directory (Azure AD) 集成。 将 PrinterLogic 与 Azure AD 集成后，可以：
 
-- 在 Azure AD 中控制谁有权访问 PrinterLogic。
-- 让用户使用其 Azure AD 帐户自动登录到 PrinterLogic。
-- 在一个中心位置（Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 PrinterLogic。
+* 让用户使用其 Azure AD 帐户自动登录到 PrinterLogic。
+* 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
-- 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-- 启用了 PrinterLogic 单一登录 (SSO) 的订阅。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 启用了 PrinterLogic 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-- PrinterLogic 支持 **SP 和 IDP** 发起的 SSO。
-- PrinterLogic 支持 **实时** 用户预配。
+* PrinterLogic 支持 **SP 和 IDP** 发起的 SSO。
+* PrinterLogic 支持 **实时** 用户预配。
+
+* PrinterLogic 支持[自动用户预配](printer-logic-saas-provisioning-tutorial.md)。
 
 ## <a name="add-printerlogic-from-the-gallery"></a>从库中添加 PrinterLogic
 
@@ -76,7 +78,7 @@ ms.locfileid: "108802911"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-   a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://gw.app.printercloud.com/<my_instance>/authn/idp/azuread/saml2/metadata`
+   a. 在“标识符”文本框中，使用以下模式键入 URL：`https://gw.app.printercloud.com/<my_instance>/authn/idp/azuread/saml2/metadata`
 
    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://gw.app.printercloud.com/<my_instance>/authn/idp/azuread/saml2/acs`
 
@@ -140,21 +142,23 @@ ms.locfileid: "108802911"
 
 在本部分，你将在 PrinterLogic 中创建名为 Britta Simon 的用户。 PrinterLogic 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 PrinterLogic 中尚不存在用户，身份验证后会创建一个新用户。
 
+PrinterLogic 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./printer-logic-saas-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-- 在 Azure 门户中单击“测试此应用程序”。 此操作会重定向到 PrinterLogic 登录 URL，你可在其中启动登录流。
+* 在 Azure 门户中单击“测试此应用程序”。 此操作会重定向到 PrinterLogic 登录 URL，你可在其中启动登录流。
 
-- 直接转到 PrinterLogic 登录 URL，并从此处启动登录流。
+* 直接转到 PrinterLogic 登录 URL，并从此处启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-- 在 Azure 门户中单击 **测试此应用程序** 后，你应会自动登录到为其设置了 SSO 的 PrinterLogic。
+* 在 Azure 门户中单击 **测试此应用程序** 后，你应会自动登录到为其设置了 SSO 的 PrinterLogic。
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 PrinterLogic 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 PrinterLogic。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 PrinterLogic 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 PrinterLogic。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

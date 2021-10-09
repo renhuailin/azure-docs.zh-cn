@@ -4,15 +4,15 @@ description: 本文介绍排查 Azure Purview 中的连接问题的步骤。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 06/04/2021
-ms.openlocfilehash: 586c6988372d6ae6310367ba6a3c0c2f0fa4d9e0
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.date: 09/27/2021
+ms.openlocfilehash: cfcac68bfc09a4c3b6d4794469734d0634b3ad0c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090540"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213451"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>排查 Azure Purview 中的连接问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "113090540"
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 - [SQL Server](register-scan-on-premises-sql-server.md#setting-up-authentication-for-a-scan)
 - [Power BI](register-scan-power-bi-tenant.md)
-- [Amazon S3](register-scan-amazon-s3.md#create-a-purview-credential-for-your-aws-bucket-scan)
+- [Amazon S3](register-scan-amazon-s3.md#create-a-purview-credential-for-your-aws-s3-scan)
 
 ## <a name="verifying-azure-role-based-access-control-to-enumerate-azure-resources-in-azure-purview-studio"></a>验证 Azure 基于角色的访问控制，以枚举 Azure Purview Studio 中的 Azure 资源
 
@@ -63,7 +63,7 @@ ms.locfileid: "113090540"
 > [!IMPORTANT]
 > 扫描包含如 Azure SQL 数据库这样具有“拒绝公共网络访问权限”的数据库的多个数据源将失败。 若要使用专用终结点扫描这些数据源，请改为使用注册单个数据源选项。
 
-有关设置自承载集成运行时的详细信息，请参阅[引入专用终结点和扫描源](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources)
+有关设置自承载集成运行时的详细信息，请参阅[引入专用终结点和扫描源](catalog-private-link-ingestion.md#deploy-self-hosted-integration-runtime-ir-and-scan-your-data-sources)
 
 有关如何在 Azure Purview 中创建新凭据的详细信息，请参阅 [Azure Purview 中的源身份验证凭据](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
 
@@ -76,7 +76,7 @@ ms.locfileid: "113090540"
 1. 导航到你的 Key Vault。
 1. 选择“设置” > “机密”。
 1. 选择要用于针对要扫描的数据源进行身份验证的机密。
-1. 选择要使用的版本，并单击“显示机密值”来验证密码或帐户密钥是否正确。 
+1. 选择要使用的版本，并选择“显示机密值”来验证密码或帐户密钥是否正确。 
 
 ## <a name="verify-permissions-for-the-purview-managed-identity-on-your-azure-key-vault"></a>验证 Azure Key Vault 上的 Purview 托管标识的权限
 

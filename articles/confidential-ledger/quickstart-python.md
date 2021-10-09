@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 552e8a4565710cb22f65ee5abf493c5471d89f3c
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 1fd69155a6131565b81ba9684e5c2c077a5420d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585512"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671519"
 ---
 # <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>快速入门：适用于 Python 的 Microsoft Azure 机密账本客户端库
 
@@ -99,7 +99,7 @@ credential = DefaultAzureCredential()
 我们将通过设置要在应用程序中使用的某些变量来完成设置：资源组 (myResourceGroup)、要创建的账本名称以及数据平面客户端库使用的两个 url。
 
   > [!Important]
-  > 每个账本必须具有全局唯一名称。 在以下示例中，将 <your-unique-keyvault-name> 替换为账本名称。
+  > 每个账本必须具有全局唯一名称。 在以下示例中，将 \<your-unique-keyvault-name\> 替换为你的账本的名称。
 
 ```python
 resource_group = "myResourceGroup"

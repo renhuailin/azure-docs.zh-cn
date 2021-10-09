@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: nabhishek
 ms.author: abnarain
 ms.date: 06/07/2021
-ms.openlocfilehash: b417b4bb45c4c5ace4985c2bcf221dcd998896de
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 22b6aad6d57fd2dc6e53313ea65a1813781ead9f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726831"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124769667"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 
@@ -85,14 +85,14 @@ ms.locfileid: "121726831"
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。 
    
-   ![在“新建”窗格中选择“数据工厂”](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png" alt-text="在“新建”窗格中选择“数据工厂”":::
 1. 在“新建数据工厂”  窗格的“名称”下输入 **ADFTutorialDataFactory**  。 
       
-   ![“新建数据工厂”窗格](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png" alt-text="“新建数据工厂”窗格":::
  
    Azure 数据工厂的名称必须 *全局唯一*。 如果看到以下错误，请更改数据工厂的名称。 （例如，使用 **&lt;yourname&gt;ADFTutorialDataFactory**）。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
-   ![名称不可用时出错](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/name-not-available-error.png" alt-text="名称不可用时出错":::
 1. 对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。  
 1. 对于“资源组”，请执行以下步骤之一： 
      
@@ -100,7 +100,7 @@ ms.locfileid: "121726831"
    - 选择“新建”，并输入资源组的名称。   
          
    本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-1. 对于“版本”，选择“V2”。  
+1. 对于“版本”，选择“V2”。 
 1. 对于“位置”，请选择数据工厂所在的位置。  
 
    若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 HDInsight）可以位于其他区域。
@@ -109,7 +109,7 @@ ms.locfileid: "121726831"
 
 1. 创建完成后，会显示“数据工厂”页。  选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。 
 
-    ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
+    :::image type="content" source="./media/tutorial-transform-data-spark-portal/data-factory-home-page.png" alt-text="数据工厂的主页，其中包含“创作和监视”图块":::
 
 ## <a name="create-linked-services"></a>创建链接服务
 在本部分创作两个链接服务： 
@@ -121,17 +121,17 @@ ms.locfileid: "121726831"
 
 1. 在主页上，切换到左侧面板中的“管理”选项卡。 
 
-   ![屏幕截图显示了“管理”选项卡。](media/doc-common-process/get-started-page-manage-button.png)
+   :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="屏幕截图显示了“管理”选项卡。":::
 
 1. 选择窗口底部的“连接”，然后选择“+ 新建”。   
 
-   ![用于创建新连接的按钮](./media/tutorial-transform-data-spark-portal/new-connection.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/new-connection.png" alt-text="用于创建新连接的按钮":::
 1. 在“新建链接服务”窗口中，选择“数据存储” > “Azure Blob 存储”，然后选择“继续”。 
 
-   ![选择“Azure Blob 存储”磁贴](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/select-azure-storage.png" alt-text="选择“Azure Blob 存储”图块":::
 1. 至于“存储帐户名称”，请从列表中选择名称，然后选择“保存”。 
 
-   ![指定存储帐户名称的框](./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png" alt-text="指定存储帐户名称的框":::
 
 
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>创建按需 HDInsight 链接服务
@@ -139,7 +139,7 @@ ms.locfileid: "121726831"
 1. 再次选择“+ 新建”按钮，创建另一个链接服务。 
 1. 在“新建链接服务”窗口中，选择“计算” > “Azure HDInsight”，然后选择“继续”。 
 
-   ![选择“Azure HDInsight”磁贴](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png" alt-text="选择“Azure HDInsight”图块":::
 1. 在“新建链接服务”  窗口中完成以下步骤： 
 
    a. 至于“名称”，请输入 **AzureHDInsightLinkedService**。
@@ -166,7 +166,7 @@ ms.locfileid: "121726831"
    
    k. 选择“完成”。 
 
-   ![HDInsight 链接服务设置](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png" alt-text="HDInsight 链接服务设置":::
 
 > [!NOTE]
 > Azure HDInsight 限制可在其支持的每个 Azure 区域中使用的核心总数。 对于按需 HDInsight 链接服务，将在用作其主存储的同一 Azure 存储位置创建 HDInsight 群集。 请确保有足够的核心配额，以便能够成功创建群集。 有关详细信息，请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 
@@ -175,39 +175,39 @@ ms.locfileid: "121726831"
 
 1. 选择“+ (加)”按钮，然后在菜单上选择“管道”。  
 
-   ![用于创建新管道的按钮](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png" alt-text="用于创建新管道的按钮":::
 1. 在“活动”工具箱中，展开“HDInsight”。 将“Spark”活动从“活动”工具箱拖到管道设计器图面。 
 
-   ![拖动 Spark 活动](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png" alt-text="拖动 Spark 活动":::
 1. 在底部“Spark”活动窗口的属性中完成以下步骤： 
 
    a. 切换到“HDI 群集”选项卡。
    
    b. 选择 **AzureHDInsightLinkedService**（在上一过程中创建）。 
         
-   ![指定 HDInsight 链接服务](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png" alt-text="指定 HDInsight 链接服务":::
 1. 切换到“脚本/Jar”选项卡，然后完成以下步骤： 
 
    a. 对于“作业链接服务”，请选择“AzureBlobStorage1”。
    
    b. 选择“浏览存储”。
 
-   ![在“脚本/Jar”选项卡上指定 Spark 脚本](./media/tutorial-transform-data-spark-portal/specify-spark-script.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/specify-spark-script.png" alt-text="在“脚本/Jar”选项卡上指定 Spark 脚本":::
    
    c. 浏览到“adftutorial/spark/script”文件夹，选择“WordCount_Spark.py”，然后选择“完成”。      
 
 1. 若要验证管道，请选择工具栏中的“验证”按钮。  选择 **>>** （右键头）按钮，关闭验证窗口。 
     
-   ![“验证”按钮](./media/tutorial-transform-data-spark-portal/validate-button.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/validate-button.png" alt-text="“验证”按钮":::
 1. 选择“全部发布”。  数据工厂 UI 会将实体（链接服务和管道）发布到 Azure 数据工厂服务。 
     
-   ![“全部发布”按钮](./media/tutorial-transform-data-spark-portal/publish-button.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/publish-button.png" alt-text="“全部发布”按钮":::
 
 
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 选择工具栏中的“添加触发器”，然后选择“立即触发”。   
 
-![“触发器”和“立即触发”按钮](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
+:::image type="content" source="./media/tutorial-transform-data-spark-portal/trigger-now-menu.png" alt-text="“触发器”和“立即触发”按钮":::
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 
@@ -215,20 +215,20 @@ ms.locfileid: "121726831"
    
 1. 定期选择“刷新”以检查管道运行的状态。  
 
-   ![用于监视管道运行的选项卡，其中包含“刷新”按钮](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/monitor-tab.png" alt-text="用于监视管道运行的选项卡，其中包含“刷新”按钮":::
 
 1. 若要查看与管道运行相关联的活动运行，请选择“操作”列中的“查看活动运行”。  
 
-   ![管道运行状态](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png" alt-text="管道运行状态"::: 
 
    选择顶部的“所有管道运行”链接可以切换回到管道运行视图。
 
-   ![“活动运行”视图](./media/tutorial-transform-data-spark-portal/activity-runs.png)
+   :::image type="content" source="./media/tutorial-transform-data-spark-portal/activity-runs.png" alt-text="“活动运行”视图":::
 
 ## <a name="verify-the-output"></a>验证输出
 验证 adftutorial 容器的 spark/otuputfiles/wordcount 文件夹中是否创建了一个输出文件。 
 
-![输出文件的位置](./media/tutorial-transform-data-spark-portal/verity-output.png)
+:::image type="content" source="./media/tutorial-transform-data-spark-portal/verity-output.png" alt-text="输出文件的位置":::
 
 该文件应包含输入文本文件中的每个单词，以及该单词在该文件中出现的次数。 例如： 
 

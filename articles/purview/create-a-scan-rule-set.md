@@ -4,15 +4,15 @@ description: 在 Azure Purview 中创建一个扫描规则集，以便快速扫�
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 12/02/2020
-ms.openlocfilehash: 9662652a6a40285ad382857975ec0dd04b8ba8be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 0b9175a2795ac926c7adf93dc81f84ff7b5a4472
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96552142"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207356"
 ---
 # <a name="create-a-scan-rule-set"></a>创建扫描规则集
 
@@ -24,7 +24,7 @@ ms.locfileid: "96552142"
 
 要创建扫描规则集，请执行以下操作：
 
-1. 从 Azure Purview 目录中，选择“管理中心”。
+1. 在 Azure [Purview Studio](https://web.purview.azure.com/resource/) 中，选择“数据映射”。
 
 1. 从左窗格中选择“扫描规则集”，然后选择“新建”。 
 

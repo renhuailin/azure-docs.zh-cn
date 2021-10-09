@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: be1ffdecb727426f914a74970a720f4f19e51824
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 378ba28eaa4b68cb1d05fa0af5c11ca95bd52a8b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322380"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210319"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door 标准版/高级版（预览版）常见问题解答
 
@@ -126,6 +126,8 @@ Azure Front Door 是全球分布式多租户服务。 Front Door 的基础结构
         </system.webServer>
     </configuration>
     ```
+
+* Azure Front Door 还支持 AzureFrontDoor.Frontend 服务标记，该标记提供客户端在连接到 Front Door 时使用的 IP 地址的列表。 在你控制应该被允许连接到部署在 Azure Front Door 之后的服务的出站流量时，可使用 AzureFrontDoor.Frontend 服务标记。 Azure Front Door 还支持一个额外的服务标记 AzureFrontDoor.FirstParty，以与其他 Azure 服务在内部集成。 有关 Azure Front Door 服务标记用例的更多详细信息，请参阅[可用服务标记](../../virtual-network/service-tags-overview.md#available-service-tags)。
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>任意播 IP 在 Front Door 的生存期内是否可能更改？
 

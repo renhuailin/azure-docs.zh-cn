@@ -6,15 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 43ce147cc1d8cb9cb6bcc389ad02cfcf71038e34
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 09/27/2021
+ms.openlocfilehash: 6056259817c24079ae1a2efc912a8251feeaa1ad
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110547519"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081980"
 ---
-# <a name="how-to-create-a-dynamics-365-for-business-central-offer"></a>如何创建 Dynamics 365 for Business Central 产品/服务
+# <a name="create-a-dynamics-365-for-business-central-offer"></a>创建 Dynamics 365 for Business Central 产品/服务
 
 本文介绍如何创建 [Dynamics 365 for Business Central](https://dynamics.microsoft.com/business-central/overview) 产品/服务。 此产品/服务类型是一个企业资源计划 (ERP) 服务，用于支持财务、运营、供应链、CRM、项目管理和电子商务等各种业务流程。 Dynamics 365 的所有产品/服务都必须通过我们的认证流程。
 
@@ -26,18 +26,39 @@ ms.locfileid: "110547519"
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。
+
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Business Central”。
+
+    [ ![展示“新建产品/服务”按钮。Dynamics 365 Business Central 产品/服务类型突出显示。](media/dynamics-365/new-offer-dynamics-365-business-central-workspaces.png) ](media/dynamics-365/new-offer-dynamics-365-business-central-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> 发布某个产品/服务后，在合作伙伴中心对其进行的任何编辑都不会出现在 Microsoft AppSource 中，除非重新发布该产品和服务。 对产品/服务进行更改后，请确保一律重新发布该产品/服务。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
-2. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
-3. 在“概述”页上，选择“+ 新建产品/服务” > “Dynamics 365 for Business Central” 。
+1. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
+1. 在“概述”页上，选择“+ 新建产品/服务” > “Dynamics 365 for Business Central” 。
 
     :::image type="content" source="media/dynamics-365/new-offer-dynamics-365-business-central.png" alt-text="左窗格菜单选项和“新产品/服务”按钮。":::
 
 > [!IMPORTANT]
 > 发布某个产品/服务后，在合作伙伴中心对其进行的任何编辑都不会出现在 Microsoft AppSource 中，除非重新发布该产品和服务。 对产品/服务进行更改后，请确保一律重新发布该产品/服务。
 
+---
+
 ## <a name="new-offer"></a>新产品/服务
 
-输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。
+在显示的对话框中，输入一个产品/服务 ID。 这是你帐户中的每个产品/服务的唯一标识符。
 
 - 客户可以在产品/服务及 Azure 资源管理器模板的 web 地址中看到此 ID（如有）。
 - 只使用小写字母和数字。 该 ID 可以包含连字符和下划线字符，但不能包含空格，并且不得超过 50 个字符。 例如，如果发布者 ID 为 `testpublisherid`，你输入“test-offer-1”，则产品/服务 web 地址为 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1`。

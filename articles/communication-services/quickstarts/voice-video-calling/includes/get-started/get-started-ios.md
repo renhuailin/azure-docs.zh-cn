@@ -6,12 +6,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 2c1340e41471ab25f00d7ad0a9e678dfeb65470f
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: be6dbd899f91df5a19878d0491f14b3eb636f8eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122970216"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671654"
 ---
 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK 开始通话。
 
@@ -38,8 +38,11 @@ ms.locfileid: "122970216"
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>使用 CocoaPods 安装包和依赖项
 
-1. 若要为应用程序创建 Podfile，请打开终端并导航到项目文件夹，然后运行 ```pod init```
-3. 将以下代码添加到 Podfile 并保存（确保“目标对象”与项目名称匹配）：
+1. 若要为应用程序创建 Podfile，请打开终端并导航到项目文件夹，然后运行：
+
+   `pod init`
+
+1. 将以下代码添加到 Podfile 并保存（确保“目标对象”与项目名称匹配）：
 
    ```
    platform :ios, '13.0'
@@ -50,8 +53,9 @@ ms.locfileid: "122970216"
    end
    ```
 
-3. 运行 `pod install`。
-3. 使用 Xcode 打开 `.xcworkspace`。
+1. 运行 `pod install`。
+
+1. 使用 Xcode 打开 `.xcworkspace`。
 
 ### <a name="request-access-to-the-microphone"></a>请求访问麦克风
 

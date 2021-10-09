@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/29/2021
+ms.date: 09/20/2021
 ms.author: tomfitz
-ms.openlocfilehash: 735f19f1c9f66db6d311c42528b36a44bf924ec0
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0375a43e2cee9c973a957d96a9f74353d9f1ac2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227282"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909727"
 ---
 使用专用链接，可以通过虚拟网络中的专用终结点访问 Azure 服务。 将专用链接与 Azure 资源管理器的操作相结合时，可阻止不在特定终结点的用户管理资源。 如果恶意用户获取订阅中帐户的凭据，则该用户会因未在特定终结点而无法管理资源。
 
@@ -17,6 +17,9 @@ ms.locfileid: "123227282"
 
 * **专用访问** - 用户可以通过专用终结点从专用网络管理资源。
 * **数据外泄** - 拒绝用户访问范围内未包含的资源。
+
+> [!NOTE]
+> Azure Kubernetes Service (AKS) 当前不支持 ARM 专用终结点实现。
 
 ## <a name="understand-architecture"></a>了解体系结构
 

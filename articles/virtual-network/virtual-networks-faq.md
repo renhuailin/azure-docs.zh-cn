@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: ec65980e3886b62b8718799d1566a11d5c13a679
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 936e031e72a98f2329202df4fb3b7a97e7f9d237
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721761"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754471"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -80,7 +80,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 - x.x.x.0：网络地址
 - x.x.x.1：由 Azure 为默认网关保留
 - x.x.x.2、x.x.x.3：由 Azure 保留以将 Azure DNS IP 映射到 VNet 空间
-- x.x.x.255：大小大于或等于 /25 的子网的网络广播地址。 在较小的子网中，这将是一个不同的地址。 
+- x.x.x.255：大小为 /25 及更大的子网的网络广播地址。 在较小子网中，这将是不同地址。 
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet 和子网的最小和最大容量是多少？
 支持的最小 IPv4 子网为 /29，最大为 /2（使用 CIDR 子网定义）。  IPv6 子网的大小必须是 /64。  
@@ -258,7 +258,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 - Redis 缓存 
 - 应用程序网关 (v1) SKU
 - Service Fabric
-- API 管理
+- API 管理 (stv1)
 - Active Directory 域服务 (ADDS)
 - 逻辑应用
 - HDInsight

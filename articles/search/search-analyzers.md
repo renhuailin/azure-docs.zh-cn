@@ -7,18 +7,18 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 09/08/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d40dd0b91f9dcfb7bf5b6e8f084f25ee4f90d780
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68b6f6794a690313648dfaaaaf49fdd3150b6171
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596546"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735318"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>用于 Azure 认知搜索中文本处理的分析器
 
-“分析器”是[全文搜索](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 文本处理（也称为词法分析）具有转换性，可通过以下操作等修改查询字符串：
+“分析器”是[全文搜索引擎](search-lucene-query-architecture.md)的一个组件，负责在编制索引和查询执行期间处理字符串。 文本处理（也称为词法分析）具有转换性，可通过以下等操作修改字符串：
 
 + 删除非必需字（非索引字）和标点
 + 将短语和用连字符连接的词语拆分为组成部分
@@ -37,7 +37,7 @@ ms.locfileid: "104596546"
 
 ## <a name="default-analyzer"></a>默认分析器  
 
-在 Azure 认知搜索查询中，分析器会自动调用标记为“可搜索”的所有字符串字段。 
+在 Azure 认知搜索中，分析器会自动调用标记为“可搜索”的所有字符串字段。 
 
 Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
 
@@ -99,7 +99,7 @@ Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)]
 
 由于分析器用于标记术语，因此在创建字段时应分配一个分析器。 实际上，不允许将分析器或 indexAnalyzer 分配到已实际创建的字段（但可以随时更改 searchAnalyzer 属性，而不会对索引造成影响）。
 
-若要更改现有字段的分析器，必须[重新生成整个索引](search-howto-reindex.md)（不能重新生成单个字段）。 对于生产环境中的索引，可以通过分配新分析器创建一个新字段并开始使用该字段取代旧字段，以推迟重新生成。 使用 [Update Index](/rest/api/searchservice/update-index) 合并新字段，使用 [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) 填充该字段。 之后在计划索引服务中，可清除索引以删除过时字段。
+若要更改现有字段的分析器，必须删除并重新创建整个索引（不能重新生成单个字段）。 对于生产环境中的索引，可以通过分配新分析器创建一个新字段并开始使用该字段取代旧字段，以推迟重新生成。 使用 [Update Index](/rest/api/searchservice/update-index) 合并新字段，使用 [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) 填充该字段。 之后在计划索引服务中，可清除索引以删除过时字段。
 
 若要将新字段添加到现有索引，请调用 [Update Index](/rest/api/searchservice/update-index) 添加该字段，并使用 [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) 填充字段。
 
@@ -382,7 +382,7 @@ private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 
 若要了解有关分析器的详细信息，请参阅以下文章：
 
-+ [语言分析器](index-add-language-analyzers.md)
-+ [自定义分析器](index-add-custom-analyzers.md)
++ [添加语言分析器](index-add-language-analyzers.md)
++ [添加自定义分析器](index-add-custom-analyzers.md)
 + [创建搜索索引](search-what-is-an-index.md)
 + [创建多语言索引](search-language-support.md)

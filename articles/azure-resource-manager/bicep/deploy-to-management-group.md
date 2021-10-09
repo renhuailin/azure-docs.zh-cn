@@ -3,18 +3,22 @@ title: 使用 Bicep 将资源部署到管理组
 description: 介绍如何创建一个在管理组范围内部署资源的 Bicep 文件。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: afa4a0f266eb7720a569df123c9828fd151d21e0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c0e2f6682ff5da0e0cc2bd3b7f16b3ab23af476
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453593"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659885"
 ---
 # <a name="management-group-deployments-with-bicep-files"></a>使用 Bicep 文件进行管理组部署
 
 本文介绍如何在部署到管理组时使用 Bicep 来设置范围。
 
 随着组织的不断发展，可以部署 Bicep 文件来创建管理组级别的资源。 例如，你可能需要为管理组定义和分配[策略](../../governance/policy/overview.md)或 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。 使用管理组级别的模板，可以声明方式在管理组级别应用策略和分配角色。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解部署范围并获得实际操作的指导，请参阅 Microsoft Learn 上的[使用 Bicep 将资源部署到订阅、管理组和租户](/learn/modules/deploy-resources-scopes-bicep/)。
 
 ## <a name="supported-resources"></a>支持的资源
 
@@ -128,7 +132,7 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01'
 }
 ```
 
-若要以其他管理组作为目标，请添加[模块](modules.md)。 使用 [managementGroup 函数](bicep-functions-scope.md#managementgroup)设置 `scope` 属性。 提供管理组名称。
+若要以另一个管理组为目标，请添加[模块](modules.md)。 使用 [managementGroup 函数](bicep-functions-scope.md#managementgroup)设置 `scope` 属性。 提供管理组名称。
 
 ```bicep
 targetScope = 'managementGroup'
@@ -269,7 +273,7 @@ param allowedLocations array = [
   'australiacentral'
 ]
 
-resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01' = {
+resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2020-09-01' = {
   name: 'locationRestriction'
   properties: {
     policyType: 'Custom'
@@ -289,7 +293,7 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01'
   }
 }
 
-resource policyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
+resource policyAssignment 'Microsoft.Authorization/policyAssignments@2020-09-01' = {
   name: 'locationAssignment'
   properties: {
     policyDefinitionId: policyDefinition.id

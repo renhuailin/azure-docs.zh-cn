@@ -2,13 +2,13 @@
 title: 管理和监视 Azure VM 备份
 description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备份。
 ms.topic: conceptual
-ms.date: 07/27/2021
-ms.openlocfilehash: 015ce2a16359f3a99fcd71c8ea7f97142c2d54e6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/17/2021
+ms.openlocfilehash: 1fe5b1511147b8db3b0c46504ee88d99dd272287
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728987"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271795"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -97,7 +97,7 @@ ms.locfileid: "121728987"
 * 按需备份的保留期范围是你在触发备份时指定的保留期值。
 
 > [!NOTE]
-> Azure 备份服务支持每天最多创建三个按需备份，另外还支持创建一个计划的备份。
+> Azure 备份建议每天对 VM 进行四次备份 - 根据备份策略进行一次计划备份，以及三次按需备份。 但是，为了允许用户在尝试失败时重试，按需备份的硬限制设置为 9 次尝试。
 
 若要触发按需备份，请执行以下操作：
 
@@ -142,7 +142,7 @@ ms.locfileid: "121728987"
 若要停止保护并删除 VM 的数据，请执行以下操作：
 
 >[!Note]
->对于保留在存档层中未满 180 天的恢复点，删除这些恢复点将导致产生早期删除费用。 [了解详细信息](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)。
+>对于保留在存档层中未满 180 天的恢复点，删除这些恢复点将导致产生早期删除费用。 [了解详细信息](../storage/blobs/access-tiers-overview.md)。
 
 
 1. 在[保管库项的仪表板](#view-vms-on-the-dashboard)上，选择“停止备份”。

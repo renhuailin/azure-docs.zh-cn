@@ -1,62 +1,35 @@
 ---
-title: 快速入门：使用 Azure PowerShell/Azure CLI 创建 Azure Purview 帐户（预览版）
+title: 快速入门：使用 PowerShell/Azure CLI 创建 Purview 帐户
 description: 本快速入门介绍如何使用 Azure PowerShell/Azure CLI 创建 Azure Purview 帐户。
 author: hophanms
 ms.author: hophan
-ms.date: 11/23/2020
+ms.date: 09/27/2021
 ms.topic: quickstart
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.custom:
 - mode-api
-ms.openlocfilehash: 6266aedaec8f171a1a6ff3e0d15abdad0263767a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0e3cb8399e42dc651a48ada6018c58cb4f48e5d8
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530879"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217346"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>快速入门：使用 Azure PowerShell/Azure CLI 创建 Azure Purview 帐户
 
-> [!IMPORTANT]
-> Azure Purview 当前以预览版提供。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+在本快速入门中，你将使用 Azure PowerShell/Azure CLI 创建 Azure Purview 帐户。 可以使用 [Purview 的 PowerShell 参考](/powershell/module/az.purview/)，但本文将指导你完成使用 PowerShell 创建帐户所需的所有步骤。
 
-在本快速入门中，你将使用 Azure PowerShell/Azure CLI 创建 Azure Purview 帐户。
+Azure Purview 是一种数据管理服务，可帮助你管理和治理数据环境。 通过跨本地源、多云源和服务型软件 (SaaS) 源连接到数据，Purview 创建了最新的信息地图。 它对敏感数据进行标识和分类，并提供端到端的沿袭。 数据使用者能够发现整个组织的数据，而数据管理员能够审核数据、保护数据和确保对你的数据的正确使用。
 
-## <a name="prerequisites"></a>先决条件
+有关 Purview 的详细信息，[请参阅概述页](overview.md)。 有关在组织中部署 Purview 的详细信息，[请参阅部署最佳做法](deployment-best-practices.md)。
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [purview-quickstart-prerequisites](includes/purview-quickstart-prerequisites.md)]
 
-* 用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
+### <a name="install-powershell"></a>安装 PowerShell
 
-* 你拥有 [Azure Active Directory 租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
+ 在客户端计算机上安装 Azure PowerShell 或 Azure CLI 以部署模板：[命令行部署](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
 
-* 在客户端计算机上安装 Azure PowerShell 或 Azure CLI 以部署模板：[命令行部署](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
-
-## <a name="sign-in-to-azure"></a>登录 Azure
-
-使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
-
-## <a name="configure-your-subscription"></a>配置订阅
-
-如有必要，请按照以下步骤配置订阅，以启用 Azure Purview 在订阅中运行：
-
-   1. 在 Azure 门户中，搜索并选择“订阅”。
-
-   1. 从订阅列表中选择要使用的订阅。 需要订阅的管理访问权限。
-
-      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="显示如何在 Azure 门户中选择订阅的屏幕截图。":::
-
-   1. 对于订阅，选择“资源提供程序”  。 在“资源提供程序”窗格上，搜索并注册所有三个资源提供程序： 
-       1. Microsoft.Purview
-       1. **Microsoft.Storage**
-       1. **Microsoft.EventHub** 
-      
-      如果尚未注册，请选择“注册”以进行注册。
-
-      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="显示如何在 Azure 门户中注册 Microsoft dot Azure Purview 资源提供程序的屏幕截图。":::
-
-## <a name="create-an-azure-purview-account-instance"></a>创建 Azure Purview 帐户实例
+## <a name="create-an-azure-purview-account"></a>创建 Azure Purview 帐户
 
 1. 使用 Azure 凭据登录
 
@@ -166,7 +139,8 @@ ms.locfileid: "107530879"
 
 本快速入门介绍了如何创建 Azure Purview 帐户。
 
-请继续阅读下一篇文章，了解如何允许用户访问 Azure Purview 帐户。 
+请按照接下来的这些文章学习如何导航 Purview Studio、创建集合以及授予对 Purview 的访问权限。
 
-> [!div class="nextstepaction"]
-> [将用户添加到 Azure Purview 帐户](catalog-permissions.md)
+* [如何使用 Purview Studio](use-purview-studio.md)
+* [创建集合](quickstart-create-collection.md)
+* [将用户添加到 Azure Purview 帐户](catalog-permissions.md)

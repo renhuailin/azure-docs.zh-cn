@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: 67c4a99dbdb370202e4bbf080f32c626b71093b1
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 28aa16d5f65891df063db7b43211e466855dfeec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123213830"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832045"
 ---
 # <a name="output-iteration-in-bicep"></a>Bicep 中的输出迭代
 
 本文展示了如何为 Bicep 文件中的输出创建多个值。 可以在文件的 `output` 部分添加循环，并在部署期间动态返回多个项。
 
 你还可以将循环用于[模块](loop-modules.md)、[资源](loop-resources.md)[资源中的属性](loop-properties.md)和[变量](loop-variables.md)。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解循环并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用条件和循环构建灵活的 Bicep 模板](/learn/modules/build-flexible-bicep-templates-conditions-loops/)。
 
 ## <a name="syntax"></a>语法
 

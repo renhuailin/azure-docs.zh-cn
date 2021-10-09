@@ -5,12 +5,12 @@ ms.date: 02/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6737e2500b96d1c1872432c39761f8578de0ba02
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 9450a140d6c2fec93ccd836309690e15337b588b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319730"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638798"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>教程：部署本地 ARM 模板
 
@@ -44,7 +44,7 @@ ms.locfileid: "108319730"
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> 存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。 该名称必须是唯一的。 在模板中，存储帐户名称是追加了“store”的项目名称，项目名称的长度必须介于 3 到 11 个字符之间。 因此，项目名称必须符合存储帐户名称要求，且短于 11 个字符。
+> 存储帐户名称必须唯一，长度介于 3 到 24 个字符，只能使用数字和小写字母。  示例模板的 `storageAccountName` 变量将 `projectName` 参数的最多 11 个字符与 13 个字符的 [uniqueString](./template-functions-string.md#uniquestring) 值组合。
 
 以 .json 为扩展名将模板的副本保存到本地计算机，例如 azuredeploy.json 。 稍后在本教程中将部署此模板。
 

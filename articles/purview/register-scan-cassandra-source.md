@@ -1,20 +1,20 @@
 ---
-title: 在 Azure Purview 中将 Cassandra 注册为源并设置扫描
+title: 将 Cassandra 注册为源并设置扫描
 description: 本文概述如何在 Azure Purview 中注册 Cassandra 服务器并设置扫描。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 8/06/2021
-ms.openlocfilehash: 8e2136cdb4cca53d81412335f7f5878fd8d70b86
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: dcc0ef65654d8100a1c96cdb0c84a6ac758587a2
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121783293"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212717"
 ---
-# <a name="register-and-scan-a-cassandra-source"></a>注册并扫描 Cassandra 源 
+# <a name="register-and-scan-a-cassandra-source-preview"></a>注册并扫描 Cassandra 源（预览版）
 
 本文概述如何在 Purview 中注册 Cassandra 服务器并设置扫描。
 
@@ -52,14 +52,14 @@ Cassandra 源支持完全扫描，以从 Cassandra 服务器中提取元数据�
 3. 在“端口”字段中输入 Cassandra 服务器使用的端口。
 4. 选择一个集合或创建新集合（可选）
 
-5.  单击“注册”。
+5.  选择“注册”  。
     :::image type="content" source="media/register-scan-cassandra-source/configure-sources.png" alt-text="配置 Cassandra 源" border="true":::
 
 ## <a name="creating-and-running-a-scan"></a>创建和运行扫描
 
 若要创建并运行新扫描，请执行以下操作：
 
-1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
+1.  在管理中心，选择“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
 
 2.  导航到“源”。
 
@@ -96,13 +96,13 @@ Cassandra 源支持完全扫描，以从 Cassandra 服务器中提取元数据�
     g. **最大可用内存**：客户 VM 上可供扫描进程使用的最大内存 (GB)。 这取决于要扫描的 Cassandra 的大小。
         :::image type="content" source="media/register-scan-cassandra-source/scan.png" alt-text="扫描 Cassandra 源" border="true":::
 
-6.  单击“测试连接”。
+6.  选择“测试连接”。
 
-7.  单击“继续”。
+7.  选择“继续”。
 
 8.  选择你的扫描触发器。 可以设置一个计划或运行一次扫描。
 
-9.  查看你的扫描并单击“保存并运行”。
+9.  查看扫描，然后选择“保存并运行”。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>查看扫描和扫描运行
 

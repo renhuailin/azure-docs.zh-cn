@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中将 Git 存储库添加到实验室 | Microsoft Docs
+title: 将 Git 存储库添加到实验室
 description: 了解如何在 Azure 开发测试实验室中为自定义项目源添加 GitHub 或 Azure DevOps Services Git 存储库。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 2024c94c433559f067874fa852478a37e41eb53d
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 20fa9f872b4e1ef4650dcdb114f92616a2f1bbe0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539882"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668709"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>添加 Git 存储库以存储自定义项目和资源管理器模板
 

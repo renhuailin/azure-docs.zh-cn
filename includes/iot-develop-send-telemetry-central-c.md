@@ -4,29 +4,31 @@ description: include 文件
 author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 05/06/2021
+ms.date: 09/10/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 9b383086eb9a53f061f445b26fe2bcd1242524ae
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0665035b31142f5be7fa825a83d8575b49e8e717
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121802673"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909850"
 ---
 [![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 
-本快速入门介绍一种基本的 Azure IoT 应用程序开发工作流。 首先，创建适用于托管设备的 Azure IoT Central 应用程序。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到 IoT Central，并发送遥测数据。
+本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 首先，创建适用于托管设备的 Azure IoT Central 应用程序。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到 IoT Central，并发送遥测数据。
 
-## <a name="prerequisites"></a>先决条件
-- 可以在 Linux 或 Windows 上运行此快速入门。 Shell 命令使用标准 Linux 路径分隔符 `/`。 如果使用 Windows，请将这些分隔符替换为 Windows 路径分隔符 `\`。
+## <a name="prerequisites"></a>必备条件
+本快速入门在 Windows、Linux 和 Raspberry Pi 上运行。 它已在以下 OS 和设备版本上进行了测试：
+
+- Windows 10
+- 在适用于 Linux 的 Windows 子系统 (WSL) 上运行的 Ubuntu 20.04 LTS
+- 在 Raspberry Pi 3 Model B+ 上运行的 Raspberry Pi OS 版本 10 (buster)
 
 为操作系统安装剩余必备组件。
 
-### <a name="linux"></a>Linux
-本教程中的步骤已使用 Ubuntu Linux 18.04 进行了测试。
-
-要在 Linux 上完成本快速入门，需在本地 Linux 环境上安装以下软件：
+### <a name="linux-or-raspberry-pi-os"></a>Linux 或 Raspberry Pi OS
+若要在 Linux 和 Raspberry Pi OS 上完成本快速入门教程，请安装以下软件：
 
 使用 `apt-get` 命令安装“GCC”、“Git”、“cmake”和必要的依赖项  ：
 
@@ -59,9 +61,9 @@ gcc --version
 
 ### <a name="configure-your-environment"></a>配置环境
 
-1. 打开控制台以安装 Azure IoT C 设备 SDK，并运行代码示例。 对于 Windows，请选择“开始”，键入“适用于 VS 2019 的开发人员命令提示”，然后打开控制台。 对于 Linux，打开 Bash。 
+1. 打开控制台以安装 Azure IoT C 设备 SDK，并运行代码示例。 对于 Windows，请选择“开始”，键入“适用于 VS 2019 的开发人员命令提示”，然后打开控制台。 对于 Linux 和 Raspberry Pi OS，打开 Bash 命令终端。 
 
-1. 使用控制台的适当命令设置以下环境变量。 模拟设备使用这些值连接到 IoT Central。 对于 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY` 和 `IOTHUB_DEVICE_DPS_DEVICE_ID`，请使用之前保存的设备连接值。
+1. 使用适用于你的控制台的适当命令设置以下环境变量。 模拟设备使用这些值连接到 IoT Central。 对于 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY` 和 `IOTHUB_DEVICE_DPS_DEVICE_ID`，请使用之前保存的设备连接值。
 
     **CMD**
 
@@ -87,6 +89,8 @@ gcc --version
     ```
 
 ### <a name="install-the-sdk-and-samples"></a>安装 SDK 和示例
+
+1. 导航到要用于克隆示例存储库的本地文件夹。
 
 1. 将 Azure IoT C 设备 SDK 复制到本地计算机。
 
@@ -119,7 +123,7 @@ gcc --version
 
     **Bash**
     ```bash
-    cmake/iothub_client/samples/pnp/pnp_temperature_controller/Debug/pnp_temperature_controller
+    cmake/iothub_client/samples/pnp/pnp_temperature_controller/pnp_temperature_controller
     ```
 
     模拟设备连接到 IoT Central 应用程序后，它会连接到在该应用程序中创建的设备实例，并开始发送遥测数据。 控制台中显示了连接详细信息和遥测输出： 

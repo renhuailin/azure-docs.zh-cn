@@ -1,14 +1,14 @@
 ---
-title: 如何从 Azure 开发测试实验室中删除和导出个人数据
+title: 如何删除和导出个人数据
 description: 了解如何从 Azure 开发测试实验室服务中删除和导出个人数据，以帮助履行一般数据保护条例 (GDPR) 中规定的义务。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 21c2187b603794f60f736c89d06983f5784730ce
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6b9d96e21d01e5e2c91768e7162fcb0621c1e006
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112282810"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600601"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>从 Azure 开发测试实验室中导出或删除个人数据
 本文提供从 Azure 开发测试实验室服务中删除和导出个人数据的步骤。 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 TalentLMS 集成 | Microsoft Docs
+title: 教程：Azure AD 与 TalentLMS 的 SSO 集成
 description: 了解如何在 Azure Active Directory 和 TalentLMS 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/25/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 055c3774acfa3930e7fa1663a46629e80448c25f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689345"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606000"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>教程：Azure Active Directory 与 TalentLMS 集成
+# <a name="tutorial-azure-ad-sso-integration-with-talentlms"></a>教程：Azure AD 与 TalentLMS 的 SSO 集成
 
 本教程介绍如何将 TalentLMS 与 Azure Active Directory (Azure AD) 集成。 将 TalentLMS 与 Azure AD 集成后，可以：
 
@@ -37,7 +37,7 @@ ms.locfileid: "101689345"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* TalentLMS 支持 SP 发起的 SSO
+* TalentLMS 支持 SP 发起的 SSO。
 
 ## <a name="add-talentlms-from-the-gallery"></a>从库中添加 TalentLMS
 
@@ -63,7 +63,7 @@ ms.locfileid: "101689345"
     1. **[创建 TalentLMS 测试用户](#create-talentlms-test-user)** - 在 TalentLMS 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -75,14 +75,12 @@ ms.locfileid: "101689345"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    ![TalentLMS 域和 URL 单一登录信息](common/sp-identifier.png)
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<tenant-name>.talentlms.com`
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.TalentLMSapp.com` 
-
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<tenant-name>.talentlms.com`
+    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.TalentLMSapp.com` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [TalentLMS 客户端支持团队](https://www.talentlms.com/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [TalentLMS 客户端支持团队](https://www.talentlms.com/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“SAML 签名证书”  部分中，单击“编辑”  按钮以打开“SAML 签名证书”  对话框。
 
@@ -120,19 +118,19 @@ ms.locfileid: "101689345"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name=&quot;configure-talentlms-sso&quot;></a>配置 TalentLMS SSO
+## <a name=&quot;configure-talentlms-sso&quot;></a>配置 TalentLMS SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 TalentLMS 公司站点。
 
 1. 在“帐户与设置” 部分中，单击“用户”选项卡。
 
-    ![帐户与设置](./media/talentlms-tutorial/IC777296.png &quot;帐户与设置")
+    ![帐户与设置](./media/talentlms-tutorial/user.png &quot;帐户与设置")
 
 1. 单击 **“单一登录(SSO)”**。
 
 1. 在“单一登录”部分中，执行以下步骤：
 
-    ![单一登录](./media/talentlms-tutorial/saml.png "单一登录")
+    ![单一登录](./media/talentlms-tutorial/certificate.png "单一登录")
 
     a. 从 **“SSO 集成类型”** 列表中，选择 **SAML 2.0**。
 
@@ -168,7 +166,7 @@ ms.locfileid: "101689345"
 
 1. 在“添加用户”对话框页上，执行以下步骤：
 
-    ![添加用户](./media/talentlms-tutorial/IC777299.png "添加用户")  
+    ![添加用户](./media/talentlms-tutorial/account.png "添加用户")  
 
     a. 在“名字”文本框中，输入用户的名字（如“`Britta`”）。
 
@@ -181,7 +179,7 @@ ms.locfileid: "101689345"
 > [!NOTE]
 > 可以使用任何其他 TalentLMS 用户帐户创建工具或 TalentLMS 提供的 API 来预配 Azure AD 用户帐户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -189,7 +187,7 @@ ms.locfileid: "101689345"
 
 * 直接转到 TalentLMS 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 TalentLMS 磁贴时，会重定向到 TalentLMS 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 TalentLMS 磁贴时，会重定向到 TalentLMS 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

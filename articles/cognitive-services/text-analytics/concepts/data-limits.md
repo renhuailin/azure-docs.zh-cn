@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/07/2021
+ms.date: 09/16/2021
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: b583caa4fdb2a1e72833d4e24c317282be041513
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: fd8347acf6f5fb67de5c011692d893416d5ac068
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822128"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677504"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文本分析 API 的数据和速率限制
 <a name="data-limits"></a>
@@ -31,10 +31,12 @@ ms.locfileid: "122822128"
 > * 数据和速率限制基于发送到 API 的文档数。 如果需要分析的文档的大小超出限制，则可将文本拆分成较小的文本块，然后再将其发送到 API。 
 >   * 文档是由文本字符构成的单个字符串。  
 
+
+
 | 限制 | 值 |
 |------------------------|---------------|
 | 单个文档的最大大小 | 5,120 个字符，通过 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 进行度量。 也适用于运行状况文本分析。 |
-| 单个文档的最大大小（`/analyze` 终结点）  | 12.5 万个字符，通过 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 进行度量。 不适用于运行状况文本分析。 |
+| 每个请求的最大字符数（`/analyze` 终结点）  | 根据 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)（最多 25 个文档）测量所有提交的文档 125000 个字符。 不适用于运行状况文本分析。 |
 | 整个请求的最大大小 | 1MB。 也适用于运行状况文本分析。 |
 
 

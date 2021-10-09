@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/02/2021
-ms.openlocfilehash: acad54727ecb441cce64021ecba395d41820659a
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a19fd4aad4ee8e5bac7dc7cde2a5be4609a346fc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535251"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796564"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>使用 REST 和 Postman 创建知识库
 
@@ -380,7 +380,7 @@ ms.locfileid: "123535251"
 
    :::image type="content" source="media/knowledge-store-create-rest/knowledge-store-tables.png" alt-text="存储资源管理器中知识存储表的屏幕截图" border="true":::
 
-在本演练中，知识存储由各种表组成，显示了形成和构建表的不同方式。 第一组三个表使用整形程序技能的输出来确定列和行。 第二组演示嵌入在投影本身中的内嵌整形命令。 可以使用这两种方法获得相同的结果。
+在本演练中，知识存储由各种表组成，显示了形成和构建表的不同方式。 表 1 到表 3 使用整形程序技能的输出来确定列和行。 表 4 到 6 基于嵌入在投影本身的内联整形指令创建。 可以使用这两种方法获得相同的结果。
 
 | 表 | 说明 |
 |-------|-------------|
@@ -393,7 +393,7 @@ ms.locfileid: "123535251"
 
 ## <a name="clean-up"></a>清理
 
-使用自己的订阅时，最好在项目结束时确定是否仍然需要所创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
 可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 

@@ -4,13 +4,13 @@ description: 使用 Bicep 属性循环在创建资源属性时进行迭代。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 6e9d41136401b28cf330bc828947d35a67c69a43
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/23/2021
+ms.openlocfilehash: a845ab0b650b6b22459b3dace90bbc09a98de0a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225966"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625594"
 ---
 # <a name="property-iteration-in-bicep"></a>Bicep 中的属性迭代
 
@@ -19,6 +19,10 @@ ms.locfileid: "123225966"
 你只能对顶级资源使用循环，即使在将循环应用到属性时也是如此。 若要了解如何将子资源更改为顶级资源，请参阅[子资源的迭代](loop-resources.md#iteration-for-a-child-resource)。
 
 还可以将循环用于 [modules](loop-modules.md)、[resources](loop-resources.md)、[variables](loop-variables.md) 和 [outputs](loop-outputs.md)。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解循环并获得实际操作的指导，请参阅 Microsoft Learn 上的[使用条件和循环构建灵活的 Bicep 模板](/learn/modules/build-flexible-bicep-templates-conditions-loops/)。
 
 ## <a name="syntax"></a>语法
 
@@ -52,7 +56,10 @@ ms.locfileid: "123225966"
 
 ## <a name="loop-limits"></a>循环限制
 
-Bicep 文件的循环迭代不能为负数，也不能超过 800 次。 
+Bicep 循环有以下限制：
+
+- 无法在多个级别的属性上循环。
+- 循环迭代不能为负数，也不能超过 800 次。
 
 ## <a name="loop-array"></a>循环数组
 

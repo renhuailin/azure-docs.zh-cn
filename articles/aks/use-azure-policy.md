@@ -5,12 +5,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 09/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a5eef5304c8bceac2bd26d6ccf0e90974641a9ff
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: eb2f85064413f3d4700fea01aa4ead81508dd8c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432992"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631488"
 ---
 # <a name="secure-your-cluster-with-azure-policy"></a>通过 Azure Policy 保护群集
 
@@ -52,7 +52,7 @@ ms.locfileid: "123432992"
 > [!NOTE]
 > Azure Policy 现在利用名为 templateInfo 的新属性，用户可以使用该属性定义约束模板的源类型。 通过在策略定义中定义 templateInfo，用户无需定义 constraintTemplate 或 constraint 属性  。 用户仍需要定义 apiGroups 和 kinds 。 有关详细信息，请参阅[了解 Azure Policy 效果][azure-policy-effects-audit]。
 
-创建自定义策略定义后，请参阅 [分配策略定义][azure-policy-tutorial-assign]，获取有关将策略分配到 Kubernetes 群集的分步演练。
+创建自定义策略定义后，请参阅[分配策略定义][custom-policy-tutorial-assign]，获取有关将策略分配到 Kubernetes 群集的分步演练。
 
 ## <a name="validate-a-azure-policy-is-running"></a>验证是否有 Azure Policy 正在运行
 
@@ -197,6 +197,6 @@ kubectl delete -f nginx-unprivileged.yaml
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
 [azure-policy-effects-audit]: ../governance/policy/concepts/effects.md#audit-properties
 [custom-policy-tutorial-create]: ../governance/policy/tutorials/create-custom-policy-definition.md
-[custom-policy-tutorial-assign]: https://docs.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
+[custom-policy-tutorial-assign]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
 [azure-policy-samples]: ../governance/policy/samples/index.md
 [azure-policy-definition-structure]: ../governance/policy/concepts/definition-structure.md

@@ -11,16 +11,20 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4976deea08b8d0edc9a484f8a8ad4c07ad4512c
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a77fe42c1a828ef044f04ad4e292f14618f94f1f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070508"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757356"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>将用户迁移到 Azure AD B2C
 
 从另一标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C) 可能还需要迁移现有的用户帐户。 本文介绍两种迁移方法：预迁移和无缝迁移。  无论使用哪种方法，都需要编写一个应用程序或脚本，以使用 [Microsoft Graph API](microsoft-graph-operations.md) 在 Azure AD B2C 中创建用户帐户。
+
+观看此视频以了解 Azure AD B2C 用户迁移策略和要考虑的步骤。
+
+>[!Video https://www.youtube.com/embed/lCWR6PGUgz0]
 
 ## <a name="pre-migration"></a>预迁移
 

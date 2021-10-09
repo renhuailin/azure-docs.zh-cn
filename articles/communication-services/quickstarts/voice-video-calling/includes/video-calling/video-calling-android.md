@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: rifox
-ms.openlocfilehash: 927fcadc97ec689e477198e87b690a50e3c9e28f
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: d53c9a7d265366531cc22d6de726f84ddb9f7a50
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965975"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908296"
 ---
 通过使用通信服务呼叫客户端库向应用添加一对一视频呼叫，开启 Azure 通信服务使用旅程。 你将了解如何使用适用于 Android 的 Azure 通信服务呼叫 SDK 发起和应答视频呼叫。
 
@@ -239,7 +239,9 @@ import android.content.Context;
 import com.azure.android.communication.calling.CallState;
 import com.azure.android.communication.calling.CallingCommunicationException;
 import com.azure.android.communication.calling.CameraFacing;
+import com.azure.android.communication.calling.ParticipantsUpdatedListener;
 import com.azure.android.communication.calling.PropertyChangedEvent;
+import com.azure.android.communication.calling.PropertyChangedListener;
 import com.azure.android.communication.calling.VideoDeviceInfo;
 import com.azure.android.communication.common.CommunicationUserIdentifier;
 import com.azure.android.communication.common.CommunicationIdentifier;
@@ -263,6 +265,7 @@ import com.azure.android.communication.calling.RemoteVideoStream;
 import com.azure.android.communication.calling.RemoteVideoStreamsEvent;
 import com.azure.android.communication.calling.RendererListener;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -281,6 +284,8 @@ public class MainActivity extends AppCompatActivity {
     VideoStreamRendererView preview;
     final Map<Integer, StreamData> streamData = new HashMap<>();
     private boolean renderRemoteVideo = true;
+    private ParticipantsUpdatedListener remoteParticipantUpdatedListener;
+    private PropertyChangedListener onStateChangedListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -441,8 +446,10 @@ private void startCall() {
             options);
     
     //Subcribe to events on updates of call state and remote participants
-    call.addOnRemoteParticipantsUpdatedListener(this::handleRemoteParticipantsUpdate);
-    call.addOnStateChangedListener(this::handleCallOnStateChanged);
+    remoteParticipantUpdatedListener = this::handleRemoteParticipantsUpdate;
+    onStateChangedListener = this::handleCallOnStateChanged;
+    call.addOnRemoteParticipantsUpdatedListener(remoteParticipantUpdatedListener);
+    call.addOnStateChangedListener(onStateChangedListener);
 }
 ```
 
@@ -512,8 +519,10 @@ private void answerIncomingCall() {
     }
 
     //Subcribe to events on updates of call state and remote participants
-    call.addOnRemoteParticipantsUpdatedListener(this::handleRemoteParticipantsUpdate);
-    call.addOnStateChangedListener(this::handleCallOnStateChanged);
+    remoteParticipantUpdatedListener = this::handleRemoteParticipantsUpdate;
+    onStateChangedListener = this::handleCallOnStateChanged;
+    call.addOnRemoteParticipantsUpdatedListener(remoteParticipantUpdatedListener);
+    call.addOnStateChangedListener(onStateChangedListener);
 }
 ```
 
@@ -522,8 +531,12 @@ private void answerIncomingCall() {
 发起呼叫或应答传入呼叫时，需要订阅 `addOnRemoteParticipantsUpdatedListener` 事件以处理远程参与者。 
 
 ```java
-call.addOnRemoteParticipantsUpdatedListener(this::handleRemoteParticipantsUpdate);
+remoteParticipantUpdatedListener = this::handleRemoteParticipantsUpdate;
+call.addOnRemoteParticipantsUpdatedListener(remoteParticipantUpdatedListener);
 ```
+使用在同一类中定义的事件侦听器时，请将侦听器绑定到变量。 将变量作为参数传入以添加和删除侦听器方法。
+
+如果尝试直接将侦听器作为参数传入，你将丢失对该侦听器的引用。 Java 将创建这些侦听器的新实例，而不是引用以前创建的实例。 这些侦听器仍会正常触发，但无法删除，因为你将不再有对它们的引用。
 
 ### <a name="remote-participant-and-remote-video-stream-update"></a>远程参与者和远程视频流更新
 

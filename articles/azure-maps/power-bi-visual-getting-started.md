@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9dda6433f5f16ec71b086f606927d9f27c83098b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 6a26361cc09a4dd420930725b29a1d346769270a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430461"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744622"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI 视觉对象入门
 
-<Token>适用于：![绿色复选标记。](media/power-bi-visual/yes.png) 面向使用者的 Power BI 服务![绿色复选标记。](media/power-bi-visual/yes.png) 面向设计者和开发人员的 Power BI 服务![绿色复选标记。](media/power-bi-visual/yes.png) Power BI Desktop ![X 表示不适用。](media/power-bi-visual/no.png) 需要专业版或高级版许可证</Token>
+适用于：![绿色选中标记。](media/power-bi-visual/yes.png) 面向使用者的 Power BI 服务![绿色选中标记。](media/power-bi-visual/yes.png) 面向设计人员和开发人员的 Power BI 服务![绿色选中标记。](media/power-bi-visual/yes.png) Power BI Desktop ![X 指示“否”。](media/power-bi-visual/no.png) 需要专业版或高级版许可证
 
 本文介绍如何使用 Microsoft Azure Maps Power BI 视觉对象。
 

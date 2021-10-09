@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 04/22/2021
-ms.openlocfilehash: 57b5e5f483ce8076622e4705a3a5b566e2e3aa1f
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 09/10/2021
+ms.openlocfilehash: da746d14d891c875c9bed49c94e8b408d956e29e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987877"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811248"
 ---
 # <a name="troubleshoot-common-problems-in-azure-data-share"></a>排查 Azure Data Share 中的常见问题 
 
@@ -35,6 +35,8 @@ ms.locfileid: "107987877"
 * **邀请会发送到你的电子邮件别名而不是 Azure 登录电子邮件地址。** 如果你已注册 Azure Data Share 服务或已在 Azure 租户中创建 Data Share 资源，但仍无法看到邀请，则可能是你的电子邮件别名列为了收件人。 请联系你的数据提供者，确保将邀请发送到你的 Azure 登录电子邮件地址而非电子邮件别名处。
 
 * **已接受邀请。** 电子邮件中的链接将你转到 Azure 门户中的“Data Share 邀请”页面。 此页面仅列出待定邀请。 页面上不显示接受的邀请。 若要查看接收的共享并配置目标 Azure 数据资源管理器群集设置，请转到你用于接受邀请的“Data Share”资源。
+
+* 你是租户的来宾用户。 如果你是租户的来宾用户，则需要在查看邀请之前验证租户的电子邮件地址。 验证后，它将在12 个月内有效。 
 
 ## <a name="creating-and-receiving-shares"></a>创建和接收共享
 

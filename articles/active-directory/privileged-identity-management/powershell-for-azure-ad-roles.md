@@ -16,12 +16,12 @@ ms.date: 06/30/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 936351dd9f2b19fab4ea95012b118d00d0c87299
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1c53899c8a513d623fc11d7494c3473cf2878d71
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749056"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609909"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>适用于 Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -49,7 +49,7 @@ ms.locfileid: "121749056"
     ![在 Azure AD 组织的属性中查找组织 ID](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 以下部分提供了简单的示例来帮助你开始操作。 可以在 [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) 中找到有关以下 cmdlet 的更详细文档。 但是，必须将 providerID 参数中的“azureResources”替换为“aadRoles”。 此外，还需要记得使用 Azure AD 组织的租户 ID 作为 resourceId 参数。
+> 以下部分提供了简单的示例来帮助你开始操作。 有关以下 cmdlet 的更详细文档，请参阅 [/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management)。 但是，必须将 providerID 参数中的“azureResources”替换为“aadRoles”。 此外，还需要记得使用 Azure AD 组织的租户 ID 作为 resourceId 参数。
 
 ## <a name="retrieving-role-definitions"></a>检索角色定义
 
@@ -112,10 +112,16 @@ $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
 
 ## <a name="activate-a-role-assignment"></a>激活角色分配
 
-使用以下 cmdlet 激活符合条件的分配。
+使用以下 cmdlet 在普通用户的上下文中激活符合条件的分配：
 
 ```powershell
-Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas"
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -Schedule $schedule -Reason "Business Justification for the role assignment"
+``` 
+
+如果需要以管理员角色激活符合条件的分配，请为 `Type` 参数指定 `adminAdd`：
+
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Active' -Schedule $schedule -Reason "Business Justification for the role assignment"
 ``` 
 
 此 cmdlet 与用于创建角色分配的 cmdlet 几乎完全相同。 这些 cmdlet 的主要差别在于，对于 -Type 参数，激活类型为“userAdd”而不是“adminAdd”。 另一个差别是，-AssignmentState 参数是“Active”而不是“Eligible”。

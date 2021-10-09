@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 999ddb3e5f97953d563660ded72716e2ef9075ea
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a188812751552532ae1536529b12e54d55a24a2b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646696"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056439"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -40,7 +40,7 @@ Azure 重新发布的 GRID 驱动程序不适用于非 NV 系列 VM，如 NCv2�
 
 请注意，Nvidia 扩展将始终安装最新的驱动程序。 我们在此处为依赖于旧版本的客户提供了上一版本的链接。
 
-对于 Windows Server 2019、Windows Server 2016 1607、1709 和 Windows 10 (直至版本 20H2）：
+对于 Windows Server 2019、Windows Server 2016 1607、1709 和 Windows 10 (直至版本 21H1）：
 - [GRID 13 (471.68)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
 - [GRID 12.2 (462.31)](https://download.microsoft.com/download/0/0/1/001f0edf-d852-4297-9cb7-10b31b1abf45/462.31_grid_win10_server2016_server2019_64bit_azure_swl.exe) (.exe) 
 

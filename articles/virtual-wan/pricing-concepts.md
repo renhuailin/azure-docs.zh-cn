@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: cherylmc
 ms.custom: references_pricing
-ms.openlocfilehash: 88a9c96cd2888f738251439df4d5da5343e8bf1d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 853005cdc9e44357661cdb0b3b50e7f6ba5a0bbf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451277"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730102"
 ---
 # <a name="about-virtual-wan-pricing"></a>关于虚拟 WAN 定价
 
@@ -179,7 +179,7 @@ Azure 虚拟 WAN 是一个网络服务，其中整合了多种网络、安全和
 
 * 基本虚拟 WAN，用户可在其中部署多个中心并使用 VPN 站点到站点连接。 基本虚拟 WAN 没有高级功能，例如完全网格化中心、ExpressRoute 连接、用户 VPN/点到站点 VPN 连接、VNet 到 VNet 传递性连接、VPN 和 ExpressRoute 传输连接或 Azure 防火墙。 基本虚拟 WAN 中的中心不产生基本费用或数据处理费用。
 
-* 标准虚拟 WAN 提供了高级功能，例如完全网格化中心、ExpressRoute 连接、用户 VPN/点到站点 VPN 连接、VNet 到 VNet 传递连接、VPN 和 ExpressRoute 传输连接、Azure 防火墙等。所有虚拟中心路由都由在虚拟中心内启用多个服务的路由器提供。 中心会产生基本费用，价格为 0.25 美元/小时。 对于 VNet 到 VNet 传输连接，还会对虚拟中心路由器中的数据处理收费。 虚拟中心路由器的数据处理费用不适用于本文中所述的分支到分支传输（方案 2、3），或通过同一 vWAN 中心进行的 VNet 到分支传输（方案 1）。 
+* 标准虚拟 WAN 提供了高级功能，例如完全网格化中心、ExpressRoute 连接、用户 VPN/点到站点 VPN 连接、VNet 到 VNet 传递连接、VPN 和 ExpressRoute 传输连接、Azure 防火墙等。所有虚拟中心路由都由在虚拟中心内启用多个服务的路由器提供。 中心会产生基本费用，价格为 0.25 美元/小时。 对于 VNet 到 VNet 传输连接，还会对虚拟中心路由器中的数据处理收费。 如[定价组件](#pricing)中所示，虚拟中心路由器中的数据处理费用不适用于分支到分支传输（方案 2、2'、3），或通过同一 vWAN 中心进行的 VNet 到分支传输（方案 1、1'）。 
 
 ## <a name="next-steps"></a>后续步骤
 

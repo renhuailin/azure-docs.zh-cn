@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: conceptual
 ms.date: 08/27/2021
 ms.custom: template-concept
-ms.openlocfilehash: a2953402d95822e8392bf8a0b607d8427e03cb88
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: b528e4a4b96e0dbe5f8b2eca748420a23f3c2950
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123481395"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208884"
 ---
 # <a name="azure-purview-account-upgrade-information"></a>Azure Purview 帐户升级信息
 
@@ -39,15 +39,15 @@ Azure Purview 在 2021 年 8 月 18 日发布了一些新功能，包括弹性�
 
 集合存在于旧的 Purview 帐户中，但在升级后的 Purview 帐户中具有新的功能，并以不同的方式进行管理。
 
-旧集合是在 Purview 帐户中整理数据源和项目的一种方式。 集合仍用于自定义 Purview 数据映射来匹配业务环境，但它们现在也包括访问控制。 通过集合，你的访问管理体验将与数据映射相匹配，而不是在数据映射外大致控制访问。
+[旧集合](how-to-create-and-manage-collections.md#legacy-collection-guide)是在 Purview 帐户中组织数据源和项目的一种方式。 集合仍用于自定义 Purview 数据映射来匹配业务环境，但它们现在也包括访问控制。 通过集合，你的访问管理体验将与数据映射相匹配，而不是在数据映射外大致控制访问。
 
-利用集合可对数据源进行精细控制，但也可对可发现性进行精细控制。 用户将只会看到自己有权访问的集合中的资产，因此只会看到其所需的信息。
+使用[集合](how-to-create-and-manage-collections.md)，你可以对数据源进行精细控制，但也可对可发现性进行精细控制。 用户将只会看到自己有权访问的集合中的资产，因此只会看到其所需的信息。
 
 Purview 帐户升级后，集合也将进行更新。 所有当前资产都将迁移到这些新集合中。 在下面的部分中，将介绍可在哪里找到集合和现有资产。
 
 ### <a name="locate-and-manage-collections"></a>查找和管理集合
 
-为了查找新集合，我们将从 [Purview Studio](use-purview-studio.md) 开始。 在 [Azure 门户](https://portal.azure.com)中转到 Purview 资源，然后在概述页面选择“打开 Purview Studio”磁贴，即可找到 Purview Studio。
+为了查找新集合，我们将从 [Purview Studio](https://web.purview.azure.com/resource/) 开始。 在 [Azure 门户](https://portal.azure.com)中转到 Purview 资源，然后在概述页面选择“打开 Purview Studio”磁贴，即可找到 Purview Studio。
 
 在左侧窗格中选择“数据映射”>“集合”，打开集合管理页。
 
@@ -72,7 +72,7 @@ Purview 帐户升级后，集合也将进行更新。 所有当前资产都将�
 
 若要详细了解已升级的帐户中的集合，请阅读[创建和管理指南](how-to-create-and-manage-collections.md)。
 
-### <a name="what-happens-to-your-collections-during-upgrade"></a>集合在升级期间的变化
+### <a name="what-happens-to-your-collections-during-upgrade"></a>集合在升级期间会发生什么变化？
 
 1. 会创建一个根集合。 根集合是集合列表中的顶级集合，与 Purview 资源同名。 在以下示例中，该集合名为 Contoso Purview。
 
@@ -80,7 +80,7 @@ Purview 帐户升级后，集合也将进行更新。 所有当前资产都将�
 
 1. 之前存在的集合将连接到该根集合。 你将看到根集合下列出这些集合，并且可在此处与它们交互。
 
-### <a name="what-happens-to-your-sources-during-upgrade"></a>源在升级期间的变化
+### <a name="what-happens-to-your-sources-during-upgrade"></a>源在升级期间会发生什么变化？
 
 1. 之前未与集合关联的源都会自动添加到根集合中。
 
@@ -98,7 +98,7 @@ Purview 帐户升级后，集合也将进行更新。 所有当前资产都将�
 
 对于一次性扫描，需要手动重新运行这些扫描，在集合中填充资产。
 
-1. 在 Purview Studio 中，打开“数据映射”，然后选择“源”。 选择要扫描的源。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 中，打开“数据映射”，然后选择“源”。 选择要扫描的源。
 
     :::image type="content" source="./media/concept-account-upgrade/select-sources.png" alt-text="Purview Studio 窗口的屏幕截图，其中已打开“数据映射”并突出显示了源。" border="true":::
 
@@ -109,6 +109,53 @@ Purview 帐户升级后，集合也将进行更新。 所有当前资产都将�
 1. 选择“立即运行扫描”，来再次运行扫描。
 
     :::image type="content" source="./media/concept-account-upgrade/run-scan-now.png" alt-text="Purview Studio 窗口的屏幕截图，其中已打开一个扫描并突出显示了“立即运行扫描”。" border="true":::
+
+### <a name="what-happens-when-your-upgraded-account-doesnt-have-a-collection-admin"></a>如果升级的帐户没有集合管理员，会发生什么情况？
+
+如果进程可以按照以下顺序标识至少一个用户或组，则升级后的 Purview 帐户会具有默认的集合管理员： 
+
+1. 所有者（已显式分配）
+
+1. 用户访问管理员（已显式分配）
+
+1. 数据源管理员和数据管护者
+
+如果你的帐户没有与上述标准匹配的任何用户或组，则升级后的 Purview 帐户将没有集合管理员。 
+
+你仍可使用管理 API 手动添加集合管理员。 调用此 API 的用户必须具有 Purview 帐户的“所有者”或“用户访问管理员”权限，才能执行写入操作。 你需要知道要通过 API 提交的新集合管理员的 `objectId`。
+
+#### <a name="request"></a>请求
+
+   ```
+    POST https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Purview/accounts/<accountName>/addRootCollectionAdmin?api-version=2021-07-01
+   ```    
+    
+#### <a name="request-body"></a>请求正文
+
+   ```json
+    {
+        "objectId": "<objectId>"
+    }
+   ```    
+
+`objectId` 是要添加的新集合管理员的 objectId。
+
+#### <a name="response-body"></a>响应正文
+
+如果成功，你会收到一个包含 `200` 代码的空正文响应。
+
+如果失败，响应正文的格式将如下所示。
+
+   ```json
+    {
+        "error": {
+            "code": "19000",
+            "message": "The caller does not have Microsoft.Authorization/roleAssignments/write permission on resource: [/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>].",
+            "target": null,
+            "details": []
+        }
+    }
+   ```
 
 ## <a name="permissions"></a>权限
 

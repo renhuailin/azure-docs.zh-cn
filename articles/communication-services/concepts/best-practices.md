@@ -8,12 +8,12 @@ ms.author: srahaman
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 7b0ac0fdb6ee5b734d642612c1fea16665e07684
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 47d690b53b6e8fe9ccc2660e48283ce05e262d30
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435503"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154178"
 ---
 # <a name="best-practices-azure-communication-services-calling-sdks"></a>最佳做法：Azure 通信服务呼叫 SDK
 本文介绍了与 Azure 通信服务 (ACS) 呼叫 SDK 相关的最佳做法。
@@ -55,9 +55,16 @@ document.addEventListener("visibilitychange", function() {
 });
  ```
 
-### <a name="hang-up-the-call-on-microphonemuteunexpectedly-ufd"></a>挂断对 microphoneMuteUnexpectedly UFD 的呼叫
-当 iOS/Safari 用户收到 PSTN 呼叫时，Azure 通信服务失去麦克风访问权限。 Azure 通信服务将引发 `microphoneMuteUnexpectedly` 呼叫诊断事件，此时，通信服务将无法重新获得对麦克风的访问权限。
-建议在出现这种情况时挂断呼叫 (`call.hangUp`)。
+### <a name="handle-os-muting-call-when-phone-call-comes-in"></a>来电时处理操作系统静音呼叫。
+在 ACS 通话中（适用于 iOS 和 Android），如果有来电，操作系统会自动将用户的麦克风和摄像头静音。 在 Android 上，通话在电话呼叫结束后自动取消静音，视频会重新开始。 在 iOS 上，则要求用户再次执行“取消静音”和“启动视频”操作。 可以通过质量事件 `microphoneMuteUnexpectedly` 来侦听麦克风意外静音的通知。 请注意，为了能够正确重新加入通话，需要使用 SDK 1.2.2-beta.1 或更高版本。
+```JavaScript
+const latestMediaDiagnostic = call.api(SDK.Features.Diagnostics).media.getLatest();
+const isIosSafari = (getOS() === OSName.ios) && (getPlatformName() === BrowserName.safari);
+if (isIosSafari && latestMediaDiagnostic.microphoneMuteUnexpectedly && latestMediaDiagnostic.microphoneMuteUnexpectedly.value) {
+  // received a QualityEvent on iOS that the microphone was unexpectedly muted - notify user to unmute their microphone and to start their video stream
+}
+ ```
+应用程序应调用 `call.startVideo(localVideoStream);` 来启动视频流，并且应该使用 `this.currentCall.unmute();` 取消音频的静音。
 
 ### <a name="device-management"></a>设备管理
 可以使用 Azure 通信服务 SDK 来管理设备和媒体操作。

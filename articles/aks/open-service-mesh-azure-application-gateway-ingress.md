@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: ac0d8adff819e51be8c5649130447590741bc082
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 765eb53098f757d29072d736d50086f31bb11dc3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439810"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649744"
 ---
 # <a name="deploy-an-application-managed-by-open-service-mesh-osm-using-azure-application-gateway-ingress-aks-add-on"></a>使用 Azure 应用程序网关入口 AKS 加载项部署由 Open Service Mesh (OSM) 管理的应用程序
 
@@ -29,7 +29,7 @@ ms.locfileid: "123439810"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本演练中详细介绍的步骤假定你之前已为 AKS 群集启用了 OSM AKS 附加产品。 如果未启用，请在继续操作前查看[部署 OSM AKS 加载项](./open-service-mesh-deploy-add-on.md)一文。 此外，你的 AKS 群集必须是 Kubernetes `1.19+` 和更高版本，已启用 Kubernetes RBAC，与该群集建立了 `kubectl` 连接（如果需要获取有关任意这些项的帮助，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)），并且安装了 AKS OSM 附加产品。
+本演练中详细介绍的步骤假定你之前已为 AKS 群集启用了 OSM AKS 附加产品。 如果未启用，请在继续操作前查看[部署 OSM AKS 加载项](./open-service-mesh-deploy-addon-az-cli.md)一文。 此外，你的 AKS 群集必须是 Kubernetes `1.19+` 和更高版本，已启用 Kubernetes RBAC，与该群集建立了 `kubectl` 连接（如果需要获取有关任意这些项的帮助，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)），并且安装了 AKS OSM 附加产品。
 
 必须已安装以下资源：
 
@@ -100,10 +100,10 @@ spec:
 
 在本教程中，我们将使用具有以下应用程序组件的 OSM bookstore 应用程序：
 
-- bookbuyer
-- bookthief
-- bookstore
-- bookwarehouse
+- `bookbuyer`
+- `bookthief`
+- `bookstore`
+- `bookwarehouse`
 
 为每个应用程序组件创建命名空间。
 
@@ -111,7 +111,7 @@ spec:
 for i in bookstore bookbuyer bookthief bookwarehouse; do kubectl create ns $i; done
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 namespace/bookstore created
@@ -175,9 +175,9 @@ service/bookwarehouse created
 deployment.apps/bookwarehouse created
 ```
 
-## <a name="update-the-bookbuyer-service"></a>更新 bookbuyer 服务
+## <a name="update-the-bookbuyer-service"></a>更新 `Bookbuyer` 服务
 
-将 bookbuyer 服务更新为具有以下服务清单的正确入站端口配置。
+将 `bookbuyer` 服务更新为具有以下服务清单的正确入站端口配置。
 
 ```azurecli-interactive
 kubectl apply -f - <<EOF
@@ -199,22 +199,22 @@ EOF
 
 ## <a name="verify-the-bookstore-application"></a>验证 Bookstore 应用程序
 
-到目前为止，我们部署了 bookstore 多容器应用程序，但只能从 AKS 群集中访问它。 稍后我们将添加 Azure 应用程序网关入口控制器，以在 AKS 群集外公开应用程序。 为了验证此应用程序是否正在群集中运行，我们将使用端口转发来查看 bookbuyer 组件 UI。
+到目前为止，我们部署了 bookstore 多容器应用程序，但只能从 AKS 群集中访问它。 稍后我们将添加 Azure 应用程序网关入口控制器，以在 AKS 群集外公开应用程序。 为了验证此应用程序是否正在群集中运行，我们将使用端口转发来查看 `bookbuyer` 组件 UI。
 
-首先，让我们获取 bookbuyer Pod 的名称
+首先，让我们获取 `bookbuyer` Pod 的名称
 
 ```azurecli-interactive
 kubectl get pod -n bookbuyer
 ```
 
-应该会看到与下面类似的输出。 bookbuyer Pod 会附加一个唯一名称。
+应该会看到与下面类似的输出。 `bookbuyer` Pod 会附加一个唯一名称。
 
 ```Output
 NAME                         READY   STATUS    RESTARTS   AGE
 bookbuyer-7676c7fcfb-mtnrz   2/2     Running   0          7m8s
 ```
 
-获取 Pod 的名称后，现在可以使用 port-forward 命令来设置从本地系统到 AKS 群集中的应用程序的隧道。 运行以下命令，为本地系统端口 8080 设置端口转发。 再次使用特定 bookbuyer Pod 名称。
+获取 Pod 的名称后，现在可以使用 port-forward 命令来设置从本地系统到 AKS 群集中的应用程序的隧道。 运行以下命令，为本地系统端口 8080 设置端口转发。 再次使用特定 `bookbuyer` Pod 名称。
 
 ```azurecli-interactive
 kubectl port-forward bookbuyer-7676c7fcfb-mtnrz -n bookbuyer 8080:14001
@@ -227,11 +227,11 @@ Forwarding from 127.0.0.1:8080 -> 14001
 Forwarding from [::1]:8080 -> 14001
 ```
 
-当端口转发会话就绪时，从浏览器导航到以下 URL：`http://localhost:8080`。 现在，你应该可以在浏览器中看到 bookbuyer 应用程序 UI，如下图所示。
+当端口转发会话就绪时，从浏览器导航到以下 URL：`http://localhost:8080`。 现在，你应该可以在浏览器中看到 `bookbuyer` 应用程序 UI，如下图所示。
 
 ![用于应用程序网关 的 OSM bookbuyer 应用程序的 UI 图像](./media/aks-osm-addon/osm-agic-bookbuyer-img.png)
 
-## <a name="create-an-azure-application-gateway-to-expose-the-bookbuyer-application"></a>创建 Azure 应用程序网关，以公开 bookbuyer 应用程序 
+## <a name="create-an-azure-application-gateway-to-expose-the-bookbuyer-application"></a>创建 Azure 应用程序网关，以公开 `bookbuyer` 应用程序
 
 > [!NOTE]
 > 按照以下说明创建用于入口的 Azure 应用程序网关的新实例。 如果要使用现有 Azure 应用程序网关，请跳到有关启用应用程序网关入口控制器附加产品一节。
@@ -287,9 +287,9 @@ appGWVnetId=$(az network vnet show -n myVnet -g myResourceGroup -o tsv --query "
 az network vnet peering create -n AKStoAppGWVnetPeering -g $nodeResourceGroup --vnet-name $aksVnetName --remote-vnet $appGWVnetId --allow-vnet-access
 ```
 
-## <a name="expose-the-bookbuyer-service-to-the-internet"></a>在 Internet 上公开 bookbuyer 服务
+## <a name="expose-the-bookbuyer-service-to-the-internet"></a>向 Internet 公开 `bookbuyer` 服务
 
-将以下入口清单应用到 AKS 群集，通过 Azure 应用程序网关在 Internet 上公开 bookbuyer 服务。
+将以下入口清单应用到 AKS 群集，通过 Azure 应用程序网关在 Internet 上公开 `bookbuyer` 服务。
 
 ```azurecli-interactive
 kubectl apply -f - <<EOF
@@ -326,7 +326,7 @@ Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.2
 ingress.extensions/bookbuyer-ingress created
 ```
 
-由于入口清单中的主机名是用于测试的伪名称，因此 DNS 名称在 Internet 上将不可用。 或者，我们可以使用 curl 程序，将主机名标头传递到 Azure 应用程序网关公共 IP 地址并接收 200 代码，以确认我们已成功连接到 bookbuyer 服务。
+由于入口清单中的主机名是用于测试的伪名称，因此 DNS 名称在 Internet 上将不可用。 或者，我们可以使用 curl 程序，将主机名标头传递到 Azure 应用程序网关公共 IP 地址并接收 200 代码，以确认我们已成功连接到 `bookbuyer` 服务。
 
 ```azurecli-interactive
 appGWPIP=$(az network public-ip show -g MyResourceGroup -n myPublicIp -o tsv --query "ipAddress")

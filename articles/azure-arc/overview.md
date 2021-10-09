@@ -3,12 +3,12 @@ title: Azure Arc 概述
 description: 了解什么是 Azure Arc，以及它如何帮助客户使用其他 Azure 服务和功能对混合资源进行管理和治理。
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 878e1b9166a10a071d3870edcc70d1775fbcd914
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 7a900a7a0454f4dff5cdfe98f611982c33617c1d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867118"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832346"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概述
 
@@ -56,7 +56,7 @@ Azure Arc 的主要功能包括：
 
 下面是 Azure Arc 目前可用功能的定价详细信息。
 
-### <a name="arc-enabled-servers"></a>已启用 Arc 的服务器
+### <a name="azure-arc-enabled-servers"></a>已启用 Azure Arc 的服务器
 
 提供以下 Azure Arc 控制平面功能，而无需额外费用：
 
@@ -70,11 +70,11 @@ Azure Arc 的主要功能包括：
 
 * 更新管理。
 
-在已启用 Arc 的服务器上使用的任何 Azure 服务（例如 Azure 安全中心或 Azure Monitor）都将按照该服务的定价收费。 有关详细信息，请参阅 [Azure 定价页](https://azure.microsoft.com/pricing/)。
+在已启用 Azure Arc 的服务器上使用的任何 Azure 服务（例如 Azure 安全中心或 Azure Monitor）都将按照该服务的定价收费。 有关详细信息，请参阅 [Azure 定价页](https://azure.microsoft.com/pricing/)。
 
 ### <a name="azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 的 Kubernetes
 
-在已启用 Arc 的 Kubernetes 上使用的任何 Azure 服务（例如 Azure 安全中心或 Azure Monitor）都将按照该服务的定价收费。 有关已启用 Azure Arc 的 Kubernetes 上的配置定价的详细信息，请参阅 [Azure 定价页](https://azure.microsoft.com/pricing/)。
+在已启用 Azure Arc 的 Kubernetes 上使用的任何 Azure 服务（例如 Azure 安全中心或 Azure Monitor）都将按照该服务的定价收费。 有关已启用 Azure Arc 的 Kubernetes 上的配置定价的详细信息，请参阅 [Azure 定价页](https://azure.microsoft.com/pricing/)。
 
 ### <a name="azure-arc-enabled-data-services"></a>已启用 Azure Arc 的数据服务
 

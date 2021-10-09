@@ -4,12 +4,12 @@ description: 本文介绍如何更新容器见解以启用自定义指标功能�
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1921a0cc0aa15a5e877d64cbe2c7ad094f9e144f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cff5933db1d74e9853120a07444e399005b2e498
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745847"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620818"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>如何更新容器见解以启用指标
 
@@ -77,6 +77,7 @@ ms.locfileid: "121745847"
 
 1. 使用 Azure CLI 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。  运行命令 `az aks show` 后会返回 **clientIdOfSPN** 的值，如以下示例所示。
 
+
     ```azurecli
     az login
     az account set --subscription "<subscriptionName>"
@@ -84,7 +85,9 @@ ms.locfileid: "121745847"
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ```
 
+
     要获取 clientIdOfSPNOrMsi 的值，可以运行命令 `az aks show`，如下例所示。 如果 servicePrincipalProfile 对象具有有效的 clientid 值，则可以使用该值。 否则，如果将其设置为 msi，则需要从 `addonProfiles.omsagent.identity.clientId` 传入 clientid。
+
 
     ```azurecli
     az login
@@ -92,6 +95,11 @@ ms.locfileid: "121745847"
     az aks show -g <resourceGroupName> -n <clusterName> 
     az role assignment create --assignee <clientIdOfSPNOrMsi> --scope <clusterResourceId> --role "Monitoring Metrics Publisher"
     ```
+
+
+
+>[!NOTE]
+>如果使用你的用户帐户并想要执行角色分配，请使用 --assignee 参数，如下例所示。 否则，如果使用 SPN 登录并想要执行角色分配，则使用 --assignee-object-id --assignee-principal-type 参数，而不是 --assignee 参数。
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>使用 Azure PowerShell 升级所有群集
 

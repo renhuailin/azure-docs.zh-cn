@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: be45eaa692b0b8235541c798cf82ca26b14b9f3f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ec68ca976b52c50c09bf86c90c56304f05051b66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691505"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740261"
 ---
 # <a name="tutorial-configure-security-analytics-for-azure-active-directory-b2c-data-with-azure-sentinel"></a>教程：通过 Azure Sentinel 配置 Azure Active Directory B2C 数据的安全性分析
 
@@ -40,7 +40,7 @@ ms.locfileid: "122691505"
 
 在Azure AD B2C 租户中启用 Azure AD 中的诊断设置，以定义应将资源的日志和指标发送到的位置。
 
-然后，[将 Azure AD B2C 配置为将日志发送到 Azure Monitor](https://docs.microsoft.com/azure/active-directory-b2c/azure-monitor)。
+然后，[将 Azure AD B2C 配置为将日志发送到 Azure Monitor](./azure-monitor.md)。
 
 ## <a name="deploy-an-azure-sentinel-instance"></a>部署 Azure Sentinel 实例
 
@@ -73,13 +73,13 @@ ms.locfileid: "122691505"
 
 你已启用 Azure Sentinel，将在 Azure AD B2C 租户中发生可疑情况时收到通知。
 
-可以创建[自定义分析规则](../sentinel/tutorial-detect-threats-custom.md)，以发现环境中存在的威胁和异常行为。 这些规则将搜索特定事件或事件集，在达到特定事件阈值或条件时发出警报。 然后，生成事件供进一步调查。
+可以创建[自定义分析规则](../sentinel/detect-threats-custom.md)，以发现环境中存在的威胁和异常行为。 这些规则将搜索特定事件或事件集，在达到特定事件阈值或条件时发出警报。 然后，生成事件供进一步调查。
 
 在下面的示例中，我们将阐释这样一种情况：当有人尝试强制访问你的环境但不成功时，你收到通知。 这可能意味着暴力攻击。 你想要在 60 秒内收到两个或更多不成功的登录时收到通知。
 
 1. 从 Azure Sentinel 导航菜单中，选择“分析”。
 
-2. 在顶部的操作栏中，选择“+创建”，然后选择“计划查询规则”。 这会打开“分析规则向导”。
+2. 在顶部的操作栏中，选择“+创建”，然后选择“计划查询规则”。 此时会打开“分析规则向导”。
 
 ![显示选择创建计划查询规则的图像](./media/azure-sentinel/create-scheduled-rule.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "122691505"
 8. 查看新的 Azure AD B2C 不成功登录规则的结果。 转到“事件”页，你可以在其中对威胁进行会审、调查和修正。 一个事件可以包含多个警报。 它是用于特定调查的所有相关证据的聚合。 可以在事件级别中设置严重性和状态等属性。
 
 >[!Note]
->[事件调查](../sentinel/tutorial-investigate-cases.md)是 Azure Sentinel 的一项关键功能。
+>[事件调查](../sentinel/investigate-cases.md)是 Azure Sentinel 的一项关键功能。
 
 9. 若要开始调查，请选择一个特定的事件。 在右侧，可以查看此事件的详细信息，包括其严重性、涉及的实体、触发此事件的原始事件以及事件的唯一 ID。
 

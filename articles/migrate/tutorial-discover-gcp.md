@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: 187808cacd40d2be0b122263e4c10672ef90fff3
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ea7c3e1efac5b0710cdcf7e59f496b6c23468194
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412450"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128594908"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现 Google Cloud Platform（GCP）实例
 
@@ -185,16 +185,20 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 按如下所示运行脚本：
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的计算机中运行该脚本。
-2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
-3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
-4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    - 对于公有云： 
+2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+
+3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+
+4. 运行以下命令，以运行名为 `AzureMigrateInstaller.ps1` 的脚本：
+
+   - 对于公有云： 
     
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
-    - 对于 Azure 政府： 
+     `PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1`
+
+   - 对于 Azure 政府： 
     
-        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
+     `PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1`
 
     脚本将在成功完成时启动设备 Web 应用程序。
 

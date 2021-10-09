@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 集成 | Microsoft Docs
+title: 教程：Azure AD 与 JIRA SAML SSO by Microsoft (V5.2) 的 SSO 集成
 description: 了解如何在 Azure Active Directory 和 JIRA SAML SSO by Microsoft (V5.2) 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 7b85cc064babf44b14e80abc02669573b4730da2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5254b7bcf851685572adbdc3d18c1fc5560a34d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736879"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633143"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 集成
+# <a name="tutorial-azure-ad-sso-integration-with-jira-saml-sso-by-microsoft-v52"></a>教程：Azure AD 与 JIRA SAML SSO by Microsoft (V5.2) 的 SSO 集成
 
 本教程介绍如何将 JIRA SAML SSO by Microsoft (V5.2) 与 Azure Active Directory (Azure AD) 集成。 将 JIRA SAML SSO by Microsoft (V5.2) 与 Azure AD 集成时，你可以：
 
@@ -34,14 +34,14 @@ ms.locfileid: "98736879"
 
 若要配置 Azure AD 与 JIRA SAML SSO by Microsoft (V5.2) 的集成，需要以下项：
 
-- Azure AD 订阅
-- 应在 Windows 64 位版本上安装并配置 JIRA Core and Software 5.2
-- JIRA 服务器已启用 HTTPS
+- 一个 Azure AD 订阅。
+- 应在 Windows 64 位版本上安装并配置 JIRA Core and Software 5.2。
+- JIRA 服务器已启用 HTTPS。
 - 请注意，下面部分列出了支持 JIRA 插件版本。
-- JIRA 服务器应当可以访问 Internet，尤其是访问用于身份验证的 Azure AD 登录页，还应当可以接收来自 Azure AD 的令牌
-- 在 JIRA 中 设置管理员凭据
-- 在 JIRA 中禁用 WebSudo
-- 在 JIRA 服务器应用程序中创建的测试用户
+- JIRA 服务器应当可以访问 Internet，尤其是访问用于身份验证的 Azure AD 登录页，还应当可以接收来自 Azure AD 的令牌。
+- 在 JIRA 中 设置管理员凭据。
+- 在 JIRA 中禁用 WebSudo。
+- 在 JIRA 服务器应用程序中创建的测试用户。
 
 > [!NOTE]
 > 不建议使用 JIRA 生产环境测试本教程中的步骤。 首先在应用程序的开发环境或过渡环境中测试集成，然后使用生产环境。
@@ -49,12 +49,12 @@ ms.locfileid: "98736879"
 测试本教程中的步骤应遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可在此处获取一个月的试用版：[试用产品/服务](https://azure.microsoft.com/pricing/free-trial/)。
+- 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="supported-versions-of-jira"></a>支持的 JIRA 版本
 
-* JIRA Core and Software：5.2
-* JIRA 还支持 6.0 到 7.12。 有关更多详细信息，请单击 [JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md)
+* JIRA Core 和 Software：5.2。
+* JIRA 还支持 6.0 到 7.12。 有关更多详细信息，请单击 [JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md)。
 
 > [!NOTE]
 > 请注意，JIRA 插件还适用于 Ubuntu 版本 16.04。
@@ -63,7 +63,7 @@ ms.locfileid: "98736879"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* JIRA SAML SSO by Microsoft (V5.2) 支持 **SP** 发起的 SSO
+* JIRA SAML SSO by Microsoft (V5.2) 支持 **SP** 发起的 SSO。
 
 ## <a name="adding-jira-saml-sso-by-microsoft-v52-from-the-gallery"></a>从库中添加 JIRA SAML SSO by Microsoft (V5.2)
 
@@ -99,11 +99,11 @@ ms.locfileid: "98736879"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
+    a. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 JIRA 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
@@ -142,23 +142,23 @@ ms.locfileid: "98736879"
 
 2. 将鼠标悬停在小齿轮上，并单击“外接程序”  。
 
-    ![屏幕截图显示“设置”菜单中处于选中状态的“加载项”。](./media/jira52microsoft-tutorial/addon1.png)
+    ![屏幕截图显示“设置”菜单中处于选中状态的“加载项”。](./media/jira52microsoft-tutorial/menu.png)
 
 3. 在“加载项”选项卡部分，单击“管理加载项”  。
 
-    ![屏幕截图显示在“加载项”选项卡中选择了“管理加载项”。](./media/jira52microsoft-tutorial/addon7.png)
+    ![屏幕截图显示在“加载项”选项卡中选择了“管理加载项”。](./media/jira52microsoft-tutorial/dashboard.png)
 
 4. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=56521)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/servicesagreement/)涵盖了插件下载。
 
-    ![屏幕截图显示“管理加载项”，其中标注了“上传加载项”链接。](./media/jira52microsoft-tutorial/addon12.png)
+    ![屏幕截图显示“管理加载项”，其中标注了“上传加载项”链接。](./media/jira52microsoft-tutorial/service.png)
 
 5. 插件安装后，会显示在“用户已安装”加载项部分  。 单击“配置”  配置新的插件。
 
-    ![屏幕截图显示“Jira 的 Azure AD SAML 单一登录”部分，其中“配置”处于选中状态。](./media/jira52microsoft-tutorial/addon13.png)
+    ![屏幕截图显示“Jira 的 Azure AD SAML 单一登录”部分，其中“配置”处于选中状态。](./media/jira52microsoft-tutorial/configure-plugin.png)
 
 6. 在配置页上执行下列步骤：
 
-    ![屏幕截图显示“Microsoft Jira SSO 连接器”配置页。](./media/jira52microsoft-tutorial/addon52.png)
+    ![屏幕截图显示“Microsoft Jira SSO 连接器”配置页。](./media/jira52microsoft-tutorial/configuration.png)
 
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
@@ -197,19 +197,19 @@ ms.locfileid: "98736879"
 
 2. 将鼠标悬停在小齿轮上，并单击“用户管理”  。
 
-    ![屏幕截图显示“设置”菜单中处于选中状态的“用户管理”。](./media/jira52microsoft-tutorial/user1.png)
+    ![屏幕截图显示“设置”菜单中处于选中状态的“用户管理”。](./media/jira52microsoft-tutorial/user.png)
 
 3. 重定向到“管理员访问权限”页后，输入密码，  并单击“确认”按钮。
 
-    ![屏幕截图显示“管理员访问权限”页，可在其中输入凭据。](./media/jira52microsoft-tutorial/user2.png)
+    ![屏幕截图显示“管理员访问权限”页，可在其中输入凭据。](./media/jira52microsoft-tutorial/access.png)
 
 4. 在“用户管理”  选项卡部分，单击“创建用户”  。
 
-    ![屏幕截图显示“用户管理”选项卡，可在其中“创建用户”。](./media/jira52microsoft-tutorial/user3.png) 
+    ![屏幕截图显示“用户管理”选项卡，可在其中“创建用户”。](./media/jira52microsoft-tutorial/create-user.png) 
 
 5. 在“新建用户”对话框页中，执行以下步骤：
 
-    ![屏幕截图显示“新建用户”对话框，可在其中输入此步骤中的信息。](./media/jira52microsoft-tutorial/user4.png)
+    ![屏幕截图显示“新建用户”对话框，可在其中输入此步骤中的信息。](./media/jira52microsoft-tutorial/new-user.png)
 
     a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
@@ -217,7 +217,7 @@ ms.locfileid: "98736879"
 
     c. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    d. 在“密码”文本框中，键入用户的密码。
+    d. 在“密码”文本框中，键入用户的密码。 
 
     e. 单击“创建用户”  。
 
@@ -229,8 +229,7 @@ ms.locfileid: "98736879"
 
 * 直接转到 JIRA SAML SSO by Microsoft (V5.2) 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中 JIRA SAML SSO by Microsoft (V5.2) 磁贴时，这将通过 Microsoft 登录 URL 重定向到 JIRA SAML SSO (V5.2)。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+* 你可使用 Microsoft 的“我的应用”。 当单击“我的应用”中 JIRA SAML SSO by Microsoft (V5.2) 磁贴时，这将通过 Microsoft 登录 URL 重定向到 JIRA SAML SSO (V5.2)。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

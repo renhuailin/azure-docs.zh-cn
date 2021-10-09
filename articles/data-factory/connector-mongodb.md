@@ -1,29 +1,29 @@
 ---
 title: 从 MongoDB 复制数据或将数据复制到其中
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 MongoDB 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 MongoDB。
-ms.author: chez
-author: chez-charlie
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从 MongoDB 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 MongoDB。
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 6788de24c3e8fc74ac69f73b5e91c13b56843eda
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 5642577cf8b8e1edf741c09bf4e1968d5cd69770
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307312"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831720"
 ---
-# <a name="copy-data-from-or-to-mongodb-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂从 MongoDB 复制数据或将数据复制到其中
+# <a name="copy-data-from-or-to-mongodb-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从/向 MongoDB 复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据和将数据复制到其中。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂或 Synapse Analytics 管道中的复制活动从/向 MongoDB 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!IMPORTANT]
->ADF 发布了这个新版本的 MongoDB 连接器，它提供更好的本机 MongoDB 支持。 如果在解决方案中使用的是以前的 MongoDB 连接器，且该连接器“按原样”支持后向兼容性，请参阅 [MongoDB 连接器（旧版）](connector-mongodb-legacy.md)一文。
+>新的 MongoDB 连接器提供改进的本机 MongoDB 支持。 如果在解决方案中使用了旧的 MongoDB 连接器，且该连接器仅“按原样”支持后向兼容性，请参阅 [MongoDB 连接器（旧版）](connector-mongodb-legacy.md)一文。
 
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -147,7 +147,7 @@ MongoDB 链接的服务支持以下属性：
 | batchSize | 指定从 MongoDB 实例的每批响应中返回的文档数量。 大多数情况下，修改批大小不会影响用户或应用程序。 Cosmos DB 限制每个批不能超过 40 MB（这是文档大小的 batchSize 数量的总和），因此如果文档很大，请减小此值。 | 否<br/>（默认值为 **100**） |
 
 >[!TIP]
->ADF 支持在 **严格模式** 下使用 BSON 文档。 请确保筛选器查询处于严格模式，而不是 Shell 模式。 有关详细说明，请参阅 [MongoDB 手册](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)。
+>服务支持在严格模式下使用 BSON 文档。 请确保筛选器查询处于严格模式，而不是 Shell 模式。 有关详细说明，请参阅 [MongoDB 手册](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)。
 
 **示例：**
 
@@ -191,10 +191,10 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的“type”属性必须设置为“MongoDbV2Sink” 。 |是 |
-| writeBehavior |介绍如何将数据写入 MongoDB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />备注：如果未在原始文档中或通过列映射指定 `_id`，则数据工厂会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
+| writeBehavior |介绍如何将数据写入 MongoDB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />注意：如果未在原始文档中指定 `_id`，或未通过列映射指定 `_id`，则服务会自动为文档生成 _id。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
 | writeBatchSize | **writeBatchSize** 属性控制每个批中可写入的文档大小。 可尝试增大 **writeBatchSize** 的值以提高性能，并在文档大小较大时减小该值。 |否<br />（默认值为 **10,000**） |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。允许的值为 timespan。 | 否<br/>（默认值为 **00:30:00** - 30 分钟） |
 
@@ -238,7 +238,7 @@ MongoDB 链接的服务支持以下属性：
 可以使用此 MongoDB 连接器轻松完成以下操作：
 
 * 在两个 MongoDB 集合之间按原样复制文档。
-* 将各种源（包括 Azure Cosmos DB、Azure Blob 存储、Azure Data Lake Store 和 Azure 数据工厂所支持的其他基于文件的存储）中的 JSON 文档导入到 MongoDB。
+* 将各种源（包括 Azure Cosmos DB、Azure Blob 存储、Azure Data Lake Store 和其他受支持的基于文件的存储）中的 JSON 文档导入 MongoDB。
 * 将 JSON 文档从 MongoDB 集合导出到各种基于文件的存储。
 
 若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射  。
@@ -250,4 +250,4 @@ MongoDB 链接的服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

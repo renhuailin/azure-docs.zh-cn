@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/15/2020
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: fa46d6e5c7f1007e3a90e22eb9d4f46e18251a28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f66c2019e85640f1eaaeded5040fb925d070044a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729806"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655783"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>教程：Azure Active Directory 单一登录与 Cloud Academy - SSO 的集成
 
@@ -39,6 +39,7 @@ ms.locfileid: "98729806"
 
 * Cloud Academy - SSO 支持 SP 发起的 SSO
 * Cloud Academy - SSO 支持“实时”用户预配
+* Cloud Academy - SSO 支持[自动用户预配](cloud-academy-sso-provisioning-tutorial.md)。
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>从库中添加 Cloud Academy - SSO
 
@@ -106,7 +107,7 @@ ms.locfileid: "98729806"
    1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="grant-access-to-the-test-user"></a>向测试用户授予访问权限
 
@@ -153,6 +154,8 @@ ms.locfileid: "98729806"
 
 在本部分中，我们将在 Cloud Academy - SSO 中创建一个名为 Britta Simon 的用户。 Cloud Academy - SSO 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Cloud Academy - SSO 中不存在用户，则会在身份验证后创建一个新用户。
 
+Cloud Academy - SSO 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./cloud-academy-sso-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -161,7 +164,7 @@ ms.locfileid: "98729806"
 
 * 直接转到 Cloud Academy - SSO 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Cloud Academy - SSO 磁贴时，将会重定向到 Cloud Academy - SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Cloud Academy - SSO 磁贴时，将会重定向到 Cloud Academy - SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 VIDA 集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 VIDA 集成
 description: 了解如何在 Azure Active Directory 和 VIDA 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/16/2021
+ms.date: 09/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 6d75ea3bae1561df1d60beb068c352131ff565fa
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6d1850ce3c0f8e9fb69159f6677bad3e3bfd0d57
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112305754"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351548"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vida"></a>教程：Azure Active Directory 单一登录 (SSO) 与 VIDA 集成
+# <a name="tutorial-azure-ad-sso-integration-with-vida"></a>教程：Azure AD SSO 与 VIDA 集成
 
 本教程介绍如何将 VIDA 与 Azure Active Directory (Azure AD) 集成。 将 VIDA 与 Azure AD 集成后，可以：
 
@@ -26,7 +26,7 @@ ms.locfileid: "112305754"
 * 让用户使用其 Azure AD 帐户自动登录到 VIDA。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -78,10 +78,16 @@ ms.locfileid: "112305754"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://vitruevida.com/?teamid=<ID>&idp=<IDP_NAME>`
+    a. 在“标识符(实体 ID)”文本框中，键入值：`urn:amazon:cognito:sp:eu-west-2_IDmTxjGr6`
+    
+    b. 在“回复 URL”文本框中键入 URL：`https://vitruevida.auth.eu-west-2.amazoncognito.com/saml2/idpresponse`
+    
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL： 
+    
+    `https://vitruevida.com/?teamid=<ID>&idp=<IDP_NAME>`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [VIDA 客户端支持团队](mailto:support@vitruehealth.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [VIDA 客户端支持团队](mailto:support@vitruehealth.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. VIDA 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 
@@ -92,9 +98,6 @@ ms.locfileid: "112305754"
     | 名称 | 源属性|
     | ---------------- | --------- |
     | assignedroles | user.assignedroles |
-
-    > [!NOTE]
-    > VIDA 要求为分配到应用程序的用户设置角色。 请在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -112,7 +115,7 @@ ms.locfileid: "112305754"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -126,7 +129,106 @@ ms.locfileid: "112305754"
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-role-based-single-sign-on-in-vida"></a>在 VIDA 中配置基于角色的单一登录
+
+1. 若要将 VIDA 角色与 Azure AD 用户相关联，必须执行以下步骤在 Azure AD 中创建一个角色：
+
+    a. 登录到 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
+
+    b. 单击“修改权限”以获取创建角色所需的权限。 
+
+    ![图形配置 1](./media/vida-tutorial/graph.png)
+
+    c. 从列表中选择以下权限，然后单击“修改权限”，如下图所示。 
+
+    ![图形配置 2](./media/vida-tutorial/modify-permissions.png)
+
+    >[!NOTE]
+    >授予权限后，再次登录到 Graph 资源管理器。
+
+    d. 在“Graph 资源管理器”页上，从第一个下拉列表中选择“GET”，从第二个下拉列表中选择“beta”。   在下拉列表旁边的字段中输入 `https://graph.microsoft.com/beta/servicePrincipals`，然后单击“运行查询”。 
+
+    ![图形配置。](./media/vida-tutorial/get-beta.png)
+
+    >[!NOTE]
+    >如果使用多个目录，可以在查询字段中输入 `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`。
+
+    e. 在“响应预览”部分，从“服务主体”中提取 appRoles 属性，供以后使用。 
+
+    ![响应预览。](./media/vida-tutorial/preview.png)
+
+    >[!NOTE]
+    >在查询字段中输入 `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` 可以找到 appRoles 属性。 请注意，`objectID` 是从 Azure AD 的“属性”页复制的对象 ID。 
+
+    f. 返回 Graph 资源管理器，将方法从 **GET** 更改为 **PATCH**，将以下内容粘贴到“请求正文”部分，然后单击“运行查询”：  
+    
+   ```
+   { 
+   "appRoles": [
+       {
+           "allowedMemberTypes": [
+           "User"
+           ],
+           "description": "User",
+           "displayName": "User",
+           "id": "18d14569-c3bd-439b-9a66-3a2aee01****",
+           "isEnabled": true,
+           "origin": "Application",
+           "value": null
+       },
+       {
+           "allowedMemberTypes": [
+           "User"
+           ],
+           "description": "msiam_access",
+           "displayName": "msiam_access",
+           "id": "b9632174-c057-4f7e-951b-be3adc52****",
+           "isEnabled": true,
+           "origin": "Application",
+           "value": null
+       },
+       {
+       "allowedMemberTypes": [
+           "User"
+       ],
+       "description": "VIDACompanyAdmin",
+       "displayName": "VIDACompanyAdmin",
+       "id": "293414bb-2215-48b4-9864-64520937d437",
+       "isEnabled": true,
+       "origin": "ServicePrincipal",
+       "value": "VIDACompanyAdmin"
+       },
+       {
+       "allowedMemberTypes": [
+           "User"
+       ],
+       "description": "VIDATeamAdmin",
+       "displayName": "VIDATeamAdmin",
+       "id": "2884f1ae-5c0d-4afd-bf28-d7d11a3d7b2c",
+       "isEnabled": true,
+       "origin": "ServicePrincipal",
+       "value": "VIDATeamAdmin"
+       },
+       {
+       "allowedMemberTypes": [
+           "User"
+       ],
+       "description": "VIDAUser",
+       "displayName": "VIDAUser",
+       "id": "37b3218c-0c06-484f-90e6-4390ce5a8787",
+       "isEnabled": true,
+       "origin": "ServicePrincipal",
+       "value": "VIDAUser"
+       }
+   ]
+   }
+   ```
+   > [!NOTE]
+   > Azure AD 会在 SAML 响应中将这些角色的值作为声明值发送。 但是，对于修补操作，只能在 `msiam_access` 部分的后面添加新角色。 若要顺利完成创建过程，我们建议使用 ID 生成器（例如 GUID 生成器）实时生成 ID。
+
+   g. 使用所需的角色修补“服务主体”后，请遵循本教程的“分配 Azure AD 测试用户”部分所述的步骤，将角色附加到 Azure AD 用户 (B.Simon)。
 
 ## <a name="configure-vida-sso"></a>配置 VIDA SSO
 
@@ -149,5 +251,4 @@ ms.locfileid: "112305754"
 ## <a name="next-steps"></a>后续步骤
 
 配置 VIDA 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。
-
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 2f5537ec3ad34e3f0ad7eff32d32762ed6fedef3
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 0ac1f38d65542ac6c8a892a6469cd8c9301dd463
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273283"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532594"
 ---
 # <a name="remove-a-vm-association-from-a-capacity-reservation-group-preview"></a>从容量预留组中删除 VM 关联（预览版）
 
@@ -28,11 +28,6 @@ ms.locfileid: "123273283"
 > [!IMPORTANT]
 > 容量预留功能目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="register-for-capacity-reservation"></a>注册容量预留 
-
-必须先[注册预览版订阅](capacity-reservation-overview.md#register-for-capacity-reservation)，然后才能使用容量预留功能。 注册可能需要几分钟才能完成。 可使用 Azure CLI 或 PowerShell 完成功能注册。
-
 
 ## <a name="deallocate-the-vm"></a>解除分配 VM
 
@@ -51,7 +46,7 @@ ms.locfileid: "123273283"
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/update?api-version=2021-04-01
     ```
-    在请求正文中，将 `capacityReservationGroup` 属性设置为空以删除与组的 VM 关联：
+    在请求正文中，将 `capacityReservationGroup` 属性设置为 NULL 以删除与组的 VM 关联：
 
     ```json
      {
@@ -59,7 +54,7 @@ ms.locfileid: "123273283"
     "properties": {
         "capacityReservation": {
             "capacityReservationGroup": {
-                "id":""
+                "id":null
             }
         }
     }
@@ -91,7 +86,7 @@ ms.locfileid: "123273283"
 
     当状态更改为“已停止(已解除分配)”时，虚拟机已解除分配。
 
-1. 通过将 `CapacityReservationGroupId` 属性设置为空，更新 VM 以删除与容量预留组的关联：
+1. 通过将 `CapacityReservationGroupId` 属性设置为 Null，更新 VM 以删除与容量预留组的关联：
 
     ```powershell-interactive
     $VirtualMachine =
@@ -102,7 +97,7 @@ ms.locfileid: "123273283"
     Update-AzVM
     -ResourceGroupName "myResourceGroup"
     -VM $VirtualMachine
-    -CapacityReservationGroupId " "
+    -CapacityReservationGroupId $null
     ```
 
 若要了解详细信息，请转到 Azure PowerShell 命令 [Stop-AzVM](/powershell/module/az.compute/stop-azvm)、[Get-AzVM](/powershell/module/az.compute/get-azvm) 和 [Update-AzVM](/powershell/module/az.compute/update-azvm)。
@@ -144,7 +139,7 @@ ms.locfileid: "123273283"
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{VirtualMachineName}/update?api-version=2021-04-01
     ```
 
-    在请求正文中，将 `capacityReservationGroup` 属性设置为空以删除关联：
+    在请求正文中，将 `capacityReservationGroup` 属性设置为 NULL 以删除关联：
     
     ```json
     {
@@ -152,7 +147,7 @@ ms.locfileid: "123273283"
     "properties": {
         "capacityReservation": {
             "capacityReservationGroup": {
-                "id":""
+                "id":null
             }
         }
     }
@@ -176,23 +171,17 @@ ms.locfileid: "123273283"
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
->[!NOTE]
-> 命令 `Update-AzCapacityReservation` 在预览期间不可用。 使用 `New-AzCapacityReservation` 修改现有容量预留。
-
 1. 将预留数量更新为零
 
     ```powershell-interactive
-    New-AzCapacityReservation
+    Update-AzCapacityReservation
     -ResourceGroupName "myResourceGroup"
-    -Location "eastus"
-    -Zone "1"
     -ReservationGroupName "myCapacityReservationGroup"
     -Name "myCapacityReservation"
-    -Sku "Standard_D2s_v3"
     -CapacityToReserve 0
     ```
 
-1. 通过将 `CapacityReservationGroupId` 属性设置为空，更新 VM 以删除与容量预留组的关联：
+1. 通过将 `CapacityReservationGroupId` 属性设置为 Null，更新 VM 以删除与容量预留组的关联：
 
     ```powershell-interactive
     $VirtualMachine =
@@ -203,7 +192,7 @@ ms.locfileid: "123273283"
     Update-AzVM
     -ResourceGroupName "myResourceGroup"
     -VM $VirtualMachine
-    -CapacityReservationGroupId " "
+    -CapacityReservationGroupId $null
     ```
 
 要了解详细信息，请转到 Azure PowerShell 命令 [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)、[Get-AzVM](/powershell/module/az.compute/get-azvm) 和 [Update-AzVM](/powershell/module/az.compute/update-azvm)。

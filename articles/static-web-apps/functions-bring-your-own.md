@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/07/2021
 ms.author: cshoe
-ms.openlocfilehash: 6c56a9dd3a39f26fe4f050114145e0ebcbc083b2
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7925bd70488106943f0030e6b26534938fbc7d36
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556129"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570884"
 ---
 # <a name="bring-your-own-functions-to-azure-static-web-apps"></a>将自己的函数引入 Azure Static Web Apps
 
@@ -43,7 +43,7 @@ https://red-sea-123.azurestaticapps.net/api/getProducts
 
 在关联现有 Functions 应用之前，首先需要根据静态 Web 应用的配置进行调整。
 
-1. 在`""`工作流配置[文件中，将 `api_location` 值设置为空白字符串（](./github-actions-workflow.md)）。
+1. 在`""`工作流配置[文件中，将 `api_location` 值设置为空白字符串（](./build-configuration.md)）。
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开静态 Web 应用实例。
 
@@ -62,7 +62,7 @@ https://red-sea-123.azurestaticapps.net/api/getProducts
     :::image type="content" source="media/functions-bring-your-own/azure-static-web-apps-link-existing-functions-app.png" alt-text="链接现有 Functions 应用":::
 
 > [!IMPORTANT]
-> 在链接现有的 Functions 应用程序之前，请确保在[工作流配置](./github-actions-workflow.md)文件中，将 `api_location` 值设置为空白字符串（`""`）。
+> 在链接现有的 Functions 应用程序之前，请确保在[工作流配置](./build-configuration.md)文件中，将 `api_location` 值设置为空白字符串（`""`）。
 
 ## <a name="deployment"></a>部署
 
@@ -84,7 +84,7 @@ https://red-sea-123.azurestaticapps.net/api/getProducts
 ## <a name="restrictions"></a>限制
 
 - 一个 Azure Functions Web 应用只能供一个静态 Web 应用使用。
-- [工作流配置](./github-actions-workflow.md)中的 `api_location` 值必须设置为空白字符串。
+- [工作流配置](./build-configuration.md)中的 `api_location` 值必须设置为空白字符串。
 - 仅在静态 Web 应用生产环境中受支持。
 - 虽然 Azure Functions 应用可能会响应各种触发器，但静态 Web 应用只能通过 Http 终结点访问函数。
 

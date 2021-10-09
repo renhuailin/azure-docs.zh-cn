@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, has-adal-ref
-ms.openlocfilehash: b752339d854123f39d50e0cd475c5a63eb1ea584
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: bb5b6068b935be2f437b10e4fcbccf7c6a86219d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428934"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637981"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
 
@@ -94,7 +94,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 ### <a name="choose-the-azure-ad-tenant"></a>选择 Azure AD 租户
 
 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，以切换到要在其中注册应用程序的租户。
 
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>注册客户端应用 (dotnet-web-daemon-v2)
@@ -203,7 +203,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>创建 dotnet-web-daemon-v2 并将其发布到 Azure 网站
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 在左上角，选择“创建资源”。
 1. 选择“Web” > “Web 应用”，然后为网站命名。  例如，将它命名为 **dotnet-web-daemon-v2-contoso.azurewebsites.net**。
 1. 选择“订阅”、“资源组”和“应用服务计划和位置”的信息。   为“OS”选择“Windows”，为“发布”选择“代码”。   
@@ -215,7 +215,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    1. 转到 **dotnet-web-daemon-v2** 项目。
    1. 在解决方案资源管理器中右键单击该项目，然后选择“发布”。
    1. 在底部栏上选择“导入配置文件”，然后导入先前下载的发布配置文件。
-1. 选择“配置”。
+1. 选择“配置” 。
 1. 在“连接”选项卡上更新目标 URL，使其使用“https”。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。 选择“**下一页**”。
 1. 在“设置”选项卡上，确保已清除“启用组织身份验证”。 
 1. 选择“保存”。 在主屏幕上选择“发布”。

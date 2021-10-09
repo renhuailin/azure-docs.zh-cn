@@ -1,7 +1,7 @@
 ---
 title: 映射数据流中的平展转换
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 利用平展转换使分层数据非规范化
+description: 在 Azure 数据工厂和 Synapse Analytics 管道中使用平展转换对分层数据进行非规范化。
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -9,25 +9,29 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: e632260e8af6e4bac9fac9ec43f25bf636b98b4d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/29/2021
+ms.openlocfilehash: 4fb8d5ea1bfaa9534f7db27296d3cb7f61d0c4fb
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638357"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274948"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>映射数据流中的平展转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
+
 使用平展转换获取层次结构（如 JSON）中的数组值，并将其展开到各个行。 此过程称为非规范化。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWLX9j]
 
 ## <a name="configuration"></a>Configuration
 
 平展转换包含以下配置设置
 
-![平展设置](media/data-flow/flatten1.png "平展设置")
+:::image type="content" source="media/data-flow/flatten1.png" alt-text="平展设置":::
 
 ### <a name="unroll-by"></a>Unroll by
 
@@ -47,7 +51,7 @@ ms.locfileid: "122638357"
 
 平展转换支持基于规则的映射，使你能够创建动态和灵活的转换，根据规则平展数组，并根据层次结构级别平展结构。
 
-![平展模式](media/data-flow/flatten-pattern.png "平展模式")
+:::image type="content" source="media/data-flow/flatten-pattern.png" alt-text="平展模式":::
 
 ### <a name="matching-condition"></a>匹配条件
 
@@ -55,7 +59,7 @@ ms.locfileid: "122638357"
 
 ### <a name="deep-column-traversal"></a>深层列遍历
 
-可选设置通知 ADF 逐个处理复杂对象的所有子列，而不是将复杂对象作为一个整列处理。
+可选设置通知服务逐个处理复杂对象的所有子列，而不是将复杂对象作为一个整列处理。
 
 ### <a name="hierarchy-level"></a>层次结构级别
 

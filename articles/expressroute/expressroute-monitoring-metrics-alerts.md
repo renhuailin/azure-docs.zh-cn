@@ -4,14 +4,14 @@ description: 了解使用 Azure Monitor（其中集中了 Azure 的所有指标�
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 04/07/2021
+ms.date: 09/14/2021
 ms.author: duau
-ms.openlocfilehash: abcec496f6bf3fdcd42dcffa66ecfb67533c7052
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: ebb661500fdf14d19218704906d24f391389bec8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449488"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667194"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -27,6 +27,11 @@ ms.locfileid: "123449488"
 
 选择指标后，将应用默认聚合。 （可选）可以应用拆分，它将显示具有不同维度的指标。
 
+> [!IMPORTANT]
+> 在 Azure 门户中查看 ExpressRoute 指标时，请选择 5 分钟或更大的时间粒度以获得最佳结果。
+> 
+> :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/metric-granularity.png" alt-text="时间粒度选项的屏幕截图。":::
+
 ### <a name="aggregation-types"></a>聚合类型：
 
 指标资源管理器支持 SUM、MAX、MIN、AVG 和 COUNT 作为[聚合类型](../azure-monitor/essentials/metrics-charts.md#aggregation)。 查看每个 ExpressRoute 指标的见解时，应该使用建议的聚合类型。
@@ -37,33 +42,59 @@ ms.locfileid: "123449488"
 * 最小值：在聚合间隔期间捕获的最小值。 
 * 最大值：在聚合间隔期间捕获的最大值。 
 
-### <a name="available-metrics"></a>可用指标
+### <a name="expressroute-circuit"></a>ExpressRoute 线路
 
-|**指标**|**类别**|**维度**|**功能**|
-| --- | --- | --- | --- |
-|ARP 可用性|可用性|<ul><li>对等机（主要/辅助 ExpressRoute 路由器）</li><li> 对等互连类型（专用/公共/Microsoft）</li></ul>|ExpressRoute|
-|BGP 可用性|可用性|<ul><li> 对等机（主要/辅助 ExpressRoute 路由器）</li><li> 对等互连类型</li></ul>|ExpressRoute|
-|BitsInPerSecond|交通|<ul><li> 对等互连类型 (ExpressRoute)</li><li>链路 (ExpressRoute Direct)</li></ul>|<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute 网关连接</li></ul>|
-|BitsOutPerSecond|交通| <ul><li>对等互连类型 (ExpressRoute)</li><li> 链路 (ExpressRoute Direct)</li></ul> |<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute 网关连接</li></ul>|
-|CPU 使用率|性能| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
-|每秒数据包数|性能| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
-|播发到对等方的路由计数 |可用性| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
-|从对等方获知的路由计数 |可用性| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
-|路由更改频率 |可用性| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
-|虚拟网络中的 VM 数 |可用性| 不可用 |ExpressRoute 虚拟网络网关|
-|GlobalReachBitsInPerSecond|交通|<ul><li>对等互连线路密钥（服务密钥）</li></ul>|Global Reach|
-|GlobalReachBitsOutPerSecond|交通|<ul><li>对等互连线路密钥（服务密钥）</li></ul>|Global Reach|
-|AdminState|物理连接|链接|ExpressRoute Direct|
-|LineProtocol|物理连接|链接|ExpressRoute Direct|
-|RxLightLevel|物理连接|<ul><li>链接</li><li>通道</li></ul>|ExpressRoute Direct|
-|TxLightLevel|物理连接|<ul><li>链接</li><li>通道</li></ul>|ExpressRoute Direct|
+| 指标 | 类别 | 计价单位 | 聚合类型 | 说明 | 维度 |  是否可通过诊断设置导出？ | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| [Arp 可用性](#arp) | 可用性 | 百分比 | 平均值 | 从 MSEE 到所有对等方的 ARP 可用性。 | PeeringType, Peer |  是 | 
+| [Bgp 可用性](#bgp) | 可用性 | 百分比 | 平均值 | 从 MSEE 到所有对等方的 BGP 可用性。 | PeeringType, Peer |  是 | 
+| [BitsInPerSecond](#circuitbandwidth) | 交通 | BitsPerSecond | 平均值 | 每秒流入 Azure 的位数 | PeeringType | 否 | 
+| [BitsOutPerSecond](#circuitbandwidth) | 交通 | BitsPerSecond | 平均值 | 每秒流出 Azure 的位数 | PeeringType | 否 | 
+| DroppedInBitsPerSecond | 交通 | BitsPerSecond | 平均值 | 每秒丢弃的数据流入位数 | 对等互连类型 | 是 | 
+| DroppedOutBitsPerSecond | 交通 | BitPerSecond | 平均值 | 每秒丢弃的数据流出位数 | 对等互连类型 | 是 | 
+| GlobalReachBitsInPerSecond | 交通 | BitsPerSecond | 平均值 | 每秒流入 Azure 的位数 | PeeredCircuitSKey | 否 | 
+| GlobalReachBitsOutPerSecond | 交通 | BitsPerSecond | 平均值 | 每秒流出 Azure 的位数 | PeeredCircuitSKey | 否 | 
+
 >[!NOTE]
 >只有在至少建立了一个 Global Reach 连接的情况下，才能使用 *GlobalGlobalReachBitsInPerSecond* 和 *GlobalGlobalReachBitsOutPerSecond*。
 >
 
+### <a name="expressroute-gateways"></a>ExpressRoute 网关
+
+| 指标 | 类别 | 计价单位 | 聚合类型 | 说明 | 维度 | 是否可通过诊断设置导出？ | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| [CPU 使用率](#cpu) | 性能 | 计数 | 平均值 | ExpressRoute 网关的 CPU 使用率 | roleInstance | 是 | 
+| [每秒的数据包数](#packets) | 性能 | 每秒计数 | 平均值 | ExpressRoute 网关的数据包计数 | roleInstance | 否 | 
+| [播发到对等机的路由计数](#advertisedroutes) | 可用性 | 计数 | 最大值 | ExpressRouteGateway 播发到对等方的路由计数 | roleInstance | 是 | 
+| [从对等机获知的路由计数](#learnedroutes)| 可用性 | 计数 | 最大值 | ExpressRouteGateway 从对等方获知的路由计数 | roleInstance | 是 | 
+| [路由更改频率](#frequency) | 可用性 | 计数 | 总计 | ExpressRoute 网关中的路由更改频率 | roleInstance | 否 | 
+| [虚拟网络中的 VM 数量](#vm) | 可用性 | 计数 | 最大值 | 虚拟网络中的 VM 数 | 无维度 | 否 | 
+
+### <a name="expressroute-gateway-connections"></a>ExpressRoute 网关连接
+
+| 指标 | 类别 | 计价单位 | 聚合类型 | 说明 | 维度 | 是否可通过诊断设置导出？ | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| [BitsInPerSecond](#connectionbandwidth) | 交通 | BitsPerSecond | 平均值 | 每秒流入 Azure 的位数 | ConnectionName | 否 | 
+| [BitsOutPerSecond](#connectionbandwidth) | 交通 | BitsPerSecond | 平均值 | 每秒流出 Azure 的位数 | ConnectionName | 否 | 
+| DroppedInBitsPerSecond | 交通 | BitsPerSecond | 平均值 | 每秒丢弃的数据流入位数 | ConnectionName | 是 | 
+| DroppedOutBitsPerSecond | 交通 | BitPerSecond | 平均值 | 每秒丢弃的数据流出位数 | ConnectionName | 是 | 
+
+### <a name="expressroute-direct"></a>ExpressRoute Direct
+
+| 指标 | 类别 | 计价单位 | 聚合类型 | 说明 | 维度 | 是否可通过诊断设置导出？ | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| [BitsInPerSecond](#directin) | 交通 | BitsPerSecond | 平均值 | 每秒流入 Azure 的位数 | 链接 | 是 | 
+| [BitsOutPerSecond](#directout) | 交通 | BitsPerSecond | 平均值 | 每秒流出 Azure 的位数 | 链接 | 是 | 
+| DroppedInBitsPerSecond | 交通 | BitsPerSecond | 平均值 | 每秒丢弃的数据流入位数 | 链接 | 是 | 
+| DroppedOutBitsPerSecond | 交通 | BitPerSecond | 平均值 | 每秒丢弃的数据流出位数 | 链接  | 是 | 
+| [AdminState](#admin) | 物理连接 | 计数 | 平均值 | 端口的管理状态 | 链接 | 是 | 
+| [LineProtocol](#line) | 物理连接 | 计数 | 平均值 | 端口的线路协议状态 | 链接 | 是 | 
+| [RxLightLevel](#rxlight) | 物理连接 | 计数 | 平均值 | Rx 光能级（以 dBm 为单位） | Link, Lane | 是 | 
+| [TxLightLevel](#txlight) | 物理连接 | 计数 | 平均值 | Tx 光能级（以 dBm 为单位） | Link, Lane | 是 |
+
 ## <a name="circuits-metrics"></a>线路指标
 
-### <a name="bits-in-and-out---metrics-across-all-peerings"></a>进位和出位 - 所有对等互连的指标
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a><a name = "circuitbandwidth"></a>进位和出位 - 所有对等互连的指标
 
 聚合类型：Avg
 
@@ -79,7 +110,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="每个对等互连的指标":::
 
-### <a name="bgp-availability---split-by-peer"></a>BGP 可用性 - 按对等机拆分  
+### <a name="bgp-availability---split-by-peer"></a><a name = "bgp"></a>BGP 可用性 - 按对等机拆分  
 
 聚合类型：Avg
 
@@ -87,7 +118,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="每个对等机的 BGP 可用性":::
 
-### <a name="arp-availability---split-by-peering"></a>ARP 可用性 - 按对等互连拆分  
+### <a name="arp-availability---split-by-peering"></a><a name = "arp"></a>ARP 可用性 - 按对等互连拆分  
 
 聚合类型：Avg
 
@@ -97,7 +128,7 @@ ms.locfileid: "123449488"
 
 ## <a name="expressroute-direct-metrics"></a>ExpressRoute Direct 指标
 
-### <a name="admin-state---split-by-link"></a>管理状态 - 按链路拆分
+### <a name="admin-state---split-by-link"></a><a name = "admin"></a>管理状态 - 按链路拆分
 
 聚合类型：Avg
 
@@ -105,7 +136,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="ER Direct 管理状态":::
 
-### <a name="bits-in-per-second---split-by-link"></a>每秒传入位数 - 按链路拆分
+### <a name="bits-in-per-second---split-by-link"></a><a name = "directin"></a>每秒传入位数 - 按链路拆分
 
 聚合类型：Avg
 
@@ -113,7 +144,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="ER Direct 每秒传入位数":::
 
-### <a name="bits-out-per-second---split-by-link"></a>每秒传出位数 - 按链路拆分
+### <a name="bits-out-per-second---split-by-link"></a><a name = "directout"></a>每秒传出位数 - 按链路拆分
 
 聚合类型：Avg
 
@@ -121,7 +152,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="ER Direct 每秒传出位数":::
 
-### <a name="line-protocol---split-by-link"></a>线路协议 - 按链路拆分
+### <a name="line-protocol---split-by-link"></a><a name = "line"></a>线路协议 - 按链路拆分
 
 聚合类型：Avg
 
@@ -129,7 +160,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="ER Direct 线路协议":::
 
-### <a name="rx-light-level---split-by-link"></a>Rx 轻型级别 - 按链路拆分
+### <a name="rx-light-level---split-by-link"></a><a name = "rxlight"></a>Rx 轻型级别 - 按链路拆分
 
 聚合类型：Avg
 
@@ -137,7 +168,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="ER Direct 线路 Rx 轻型级别":::
 
-### <a name="tx-light-level---split-by-link"></a>Tx 轻型级别 - 按链路拆分
+### <a name="tx-light-level---split-by-link"></a><a name = "txlight"></a>Tx 轻型级别 - 按链路拆分
 
 聚合类型：Avg
 
@@ -160,7 +191,7 @@ ms.locfileid: "123449488"
 
 我们强烈建议为每个指标设置警报，以便了解网关在什么情况下会出现性能问题。
 
-### <a name="cpu-utilization---split-instance"></a>CPU 使用率 - 拆分实例
+### <a name="cpu-utilization---split-instance"></a><a name = "cpu"></a>CPU 使用率 - 拆分实例
 
 聚合类型：Avg
 
@@ -168,7 +199,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="CPU 利用率 - 拆分指标的屏幕截图。":::
 
-### <a name="packets-per-second---split-by-instance"></a>每秒数据包数 - 按实例拆分
+### <a name="packets-per-second---split-by-instance"></a><a name = "packets"></a>每秒数据包数 - 按实例拆分
 
 聚合类型：Avg
 
@@ -176,7 +207,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="每秒数据包数量 - 拆分指标的屏幕截图。":::
 
-### <a name="count-of-routes-advertised-to-peer---split-by-instance"></a>播发到对等方的路由计数 - 按实例拆分
+### <a name="count-of-routes-advertised-to-peer---split-by-instance"></a><a name = "advertisedroutes"></a>播发到对等机的路由计数 - 按实例拆分
 
 聚合类型：Count
 
@@ -184,7 +215,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/count-of-routes-advertised-to-peer.png" alt-text="播发到对等机的路由计数的屏幕截图。":::
 
-### <a name="count-of-routes-learned-from-peer---split-by-instance"></a>从对等方获知的路由计数 - 按实例拆分
+### <a name="count-of-routes-learned-from-peer---split-by-instance"></a><a name = "learnedroutes"></a>从对等机获知的路由计数 - 按实例拆分
 
 聚合类型：Max
 
@@ -192,7 +223,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/count-of-routes-learned-from-peer.png" alt-text="从对等机获知的路由计数的屏幕截图。":::
 
-### <a name="frequency-of-routes-change---split-by-instance"></a>路由更改频率 - 按实例拆分
+### <a name="frequency-of-routes-change---split-by-instance"></a><a name = "frequency"></a>路由更改频率 - 按实例拆分
 
 聚合类型：Sum
 
@@ -200,7 +231,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/frequency-of-routes-changed.png" alt-text="路由更改频率指标的屏幕截图。":::
 
-### <a name="number-of-vms-in-the-virtual-network"></a>虚拟网络中的 VM 数
+### <a name="number-of-vms-in-the-virtual-network"></a><a name = "vm"></a>虚拟网络中的 VM 数
 
 聚合类型：Max
 
@@ -208,7 +239,7 @@ ms.locfileid: "123449488"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/number-of-virtual-machines-virtual-network.png" alt-text="虚拟网络中虚拟机数量指标的屏幕截图。":::
 
-## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute 网关连接（以位/秒为单位）
+## <a name="expressroute-gateway-connections-in-bitsseconds"></a><a name = "connectionbandwidth"></a>ExpressRoute 网关连接（以位/秒为单位）
 
 聚合类型：Avg
 
@@ -245,14 +276,14 @@ ms.locfileid: "123449488"
 
 还可以通过导航到 ExpressRoute 线路资源并选择“日志”选项卡来查看 ExpressRoute 指标。对于你查询的任何指标，输出将包含以下列。
 
-|**列**|类型|**说明**|
-| --- | --- | --- |
-|TimeGrain|字符串|PT1M（每分钟推送一次指标值）|
-|Count|real|通常等于 2（每个 MSEE 每分钟推送一个指标值）|
-|最低配置|real|两个 MSEE 推送的两个指标值中的最小值|
-|最大值|real|两个 MSEE 推送的两个指标值中的最大值|
-|平均值|real|等于 (最小值 + 最大值)/2|
-|总计|real|来自两个 MSEE 的两个指标值的总和（所查询指标的需关注的主要值）|
+| **列** | 类型 | **说明** | 
+|  ---  |  ---  |  ---  | 
+| TimeGrain | 字符串 | PT1M（每分钟推送一次指标值） | 
+| Count | real | 通常等于 2（每个 MSEE 每分钟推送一个指标值） | 
+| 最低配置 | real | 两个 MSEE 推送的两个指标值中的最小值 | 
+| 最大值 | real | 两个 MSEE 推送的两个指标值中的最大值 | 
+| 平均值 | real | 等于 (最小值 + 最大值)/2 | 
+| 总计 | real | 来自两个 MSEE 的两个指标值的总和（所查询指标的需关注的主要值） | 
   
 ## <a name="next-steps"></a>后续步骤
 

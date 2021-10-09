@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 88ac65c35b29c2113576594788f820973331d64b
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 5f92ecca8ccecda0f4ba6e7e87dc0287c75ed41b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515008"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761612"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>从保管库访问策略迁移到 Azure 基于角色的访问控制权限模型
 
@@ -31,7 +31,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 是在 [Azure 资源管理器](..
 
 Azure RBAC 的缺点：
 - 角色分配延迟 - 可能需要几分钟才能应用角色分配。 保管库访问策略会立即分配。
-- 角色分配数量有限 - 每个订阅 2000 个角色分配，每个 Key Vault 有 1024 个访问策略
+- 角色分配数量有限 - Azure RBAC 对于每个订阅仅允许 2000 个角色分配，每个 Key Vault 有 1024 个访问策略
 
 ## <a name="access-policies-to-azure-roles-mapping"></a>Azure 角色映射的访问策略
 

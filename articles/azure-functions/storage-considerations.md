@@ -3,12 +3,12 @@ title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 的要求和存储数据加密。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: ad9e7979eddac3fc102d9fddae68c230a7418762
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: dfbaf2947dd3eaacd155a240541a6abae3894b35
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259562"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599974"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -78,7 +78,7 @@ ms.locfileid: "123259562"
 * 应用不能使用 Functions 运行时 v1
 * 客户端（例如 Azure 门户）中的日志流式处理体验默认使用文件系统日志。 你应该改为依赖 Application Insights 日志。
 
-如果正确考虑到了上述要求，则可以创建不使用 Azure 文件存储的应用。 在不指定 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 应用程序设置的情况下创建函数应用。
+如果正确考虑到了上述要求，则可以创建不使用 Azure 文件存储的应用。 在不指定 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 应用程序设置的情况下创建函数应用。 可以为标准部署生成 ARM 模板，删除这两个设置，然后部署此模板，从而实现这一目的。 
 
 ## <a name="mount-file-shares"></a>装载文件共享
 

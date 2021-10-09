@@ -1,23 +1,16 @@
 ---
 title: Azure 视频分析器媒体版（以前称为视频索引器）发行说明 | Microsoft Docs
 description: 为了让大家随时了解最新的开发成果，本文提供了 Azure 视频分析器媒体版（以前称为视频索引器）的最新更新。
-services: azure-video-analyzer
-documentationcenter: ''
-author: Juliako
-manager: femila
-editor: ''
-ms.workload: na
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 69d0190454a1b5948e894c5bc5a03a235daca78d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3bfe1e7f18f50723eed9d456eac8a773f06a34bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752145"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552559"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>视频分析器媒体版发行说明
 
@@ -29,6 +22,19 @@ ms.locfileid: "121752145"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="re-index-video-or-audio-files"></a>为视频或音频文件重新编制索引
+
+现在有一个选项可以为在索引过程中失败的视频或音频文件重新编制索引。
+
+### <a name="improve-accessibility-support"></a>改进辅助功能支持
+
+修复了与 CSS、主题设置和辅助功能相关的 bug：
+
+* 高对比度
+* [门户](https://www.videoindexer.ai)中的帐户设置和见解视图。  
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -106,7 +112,7 @@ Azure 视频分析器媒体版现在可检测视频中观测到的人员，并�
 
 ### <a name="new-developer-portal"></a>新的开发人员门户 
 
-视频分析器媒体版有新的[开发人员门户](https://api-portal.videoindexer.ai/)，你可在其中试用新的视频分析器媒体版 API，并在一个位置查找所有相关资源：[GitHub 存储库](https://github.com/Azure-Samples/media-services-video-indexer)、[Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer)、[视频分析器媒体版技术社区](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer)（提供相关博客文章）、[视频分析器媒体版常见问题解答](faq.md)、[User Voice](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016)（用于提供你的反馈和功能建议）以及[“CodePen”链接](https://codepen.io/videoindexer)（提供小组件代码示例）。 
+视频分析器媒体版有新的[开发人员门户](https://api-portal.videoindexer.ai/)，你可在其中试用新的视频分析器媒体版 API，并在一个位置查找所有相关资源：[GitHub 存储库](https://github.com/Azure-Samples/media-services-video-indexer)、[Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer)、[视频分析器媒体版技术社区](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer)（提供相关博客文章）、[视频分析器媒体版常见问题解答](faq.yml)、[User Voice](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016)（用于提供你的反馈和功能建议）以及[“CodePen”链接](https://codepen.io/videoindexer)（提供小组件代码示例）。 
  
 ### <a name="advanced-customization-capabilities-for-insight-widget"></a>见解小组件的高级自定义功能 
 

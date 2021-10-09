@@ -4,13 +4,13 @@ description: 介绍适用于 Azure 资源管理器部署的 Bicep 运算符。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 80fc9e4e1285d86858a476feba30621a7afe1c79
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/10/2021
+ms.openlocfilehash: 13591112171919d6c58959c40dffa1340f3e8ebd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221039"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764307"
 ---
 # <a name="bicep-operators"></a>Bicep 运算符
 
@@ -38,7 +38,9 @@ ms.locfileid: "123221039"
 | `?` `:` | 条件表达式（三元） | 从右到左
 | `??` | Coalesce | 从左到右
 
-将表达式用 `(` 和 `)` 括住，可替代默认 Bicep 运算符优先级。 例如，表达式 x + y/z 先计算除法，然后计算加法。 但表达式 (x + y)/z 则首先计算加法，然后计算除法。
+## <a name="parentheses"></a>括号
+
+将表达式用括号括住，可替代默认 Bicep 运算符优先级。 例如，表达式 `x + y / z` 先计算除法，然后计算加法。 但表达式 `(x + y) / z` 则首先计算加法，然后计算除法。
 
 ## <a name="accessor"></a>访问器
 
@@ -74,7 +76,7 @@ ms.locfileid: "123221039"
 | ---- | ---- | ---- |
 | `&&` | [And](./operators-logical.md#and-) | 如果所有值为 true，则返回 `true`。 |
 | `||`| [Or](./operators-logical.md#or-) | 确定任一值为 true，则返回 `true`。 |
-| `!` | [Not](./operators-logical.md#not-) | 对布尔值求反。 |
+| `!` | [Not](./operators-logical.md#not-) | 对布尔值求反。 采用一个操作数。 |
 | `??` | [Coalesce](./operators-logical.md#coalesce-) | 返回第一个非 NULL 值。 |
 | `?` `:` | [条件表达式](./operators-logical.md#conditional-expression--) | 计算条件的结果为 true 还是 false，并返回值。 |
 
@@ -88,8 +90,8 @@ ms.locfileid: "123221039"
 | `/` | [除](./operators-numeric.md#divide-) | 两个整数相除。 |
 | `%` | [取模](./operators-numeric.md#modulo-) | 两个整数相除并返回余数。 |
 | `+` | [添加](./operators-numeric.md#add-) | 两个整数相加。 |
-| `-` | [减](./operators-numeric.md#subtract--) | 两个整数相减。 |
-| `-` | [一元减法](./operators-numeric.md#minus--) | 将一个整数乘以 `-1`。 |
+| `-` | [减](./operators-numeric.md#subtract--) | 从另一个整数减去一个整数。 采用两个操作数。 |
+| `-` | [减法](./operators-numeric.md#minus--)（一元） | 将一个整数乘以 `-1`。 采用一个操作数。 |
 
 > [!NOTE]
 > 减法和一元减法运算使用同一个运算符。 但功能不同，减法使用两个操作数，而一元减法只使用一个操作数。

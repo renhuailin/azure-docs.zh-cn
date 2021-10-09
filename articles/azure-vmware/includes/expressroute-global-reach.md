@@ -6,12 +6,12 @@ ms.date: 08/10/2021
 author: shortpatti
 ms.author: v-patsho
 ms.service: azure-vmware
-ms.openlocfilehash: 569beec244e2ccf80aae3e4bb3f7a3e2cf65980a
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c80e256691066239d89b101f206f758725809fad
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122070712"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909035"
 ---
 <!-- Used in articles\azure-vmware\introduction.md and articles\azure-vmware\concepts-networking.md 
 
@@ -19,7 +19,9 @@ articles\azure-vmware\includes\azure-vmware-solution-networking-description.md
 
 -->
 
-[ExpressRoute Global Reach](../../expressroute/expressroute-global-reach.md) 用于将私有云连接到本地环境。 它直接在 Microsoft Enterprise Edge (MSEE) 级别连接线路，因此要实现该连接，你的订阅中必须存在一个使用 ExpressRoute 线路（连接到本地）的虚拟网络。  原因是 vNet 网关（ExpressRoute 网关）无法传输流量，这意味着可以将两条线路附加到同一个网关，但网关不会将流量从一条线路发送到另一条线路。
+[ExpressRoute Global Reach](../../expressroute/expressroute-global-reach.md) 用于将私有云连接到本地环境。 它直接在 Microsoft Enterprise Edge (MSEE) 级别连接线路。 要实现该连接，你的订阅中必须存在一个使用 ExpressRoute 线路（连接到本地）的虚拟网络 (vNet)。  原因是 vNet 网关（ExpressRoute 网关）无法传输流量，这意味着可以将两条线路附加到同一个网关，但网关不会将流量从一条线路发送到另一条线路。
+
+每个 Azure VMware 解决方案环境是其自己的 ExpressRoute 区域（其自己的虚拟 MSEE 设备），这使你能够将 Global Reach 连接到“本地”对等互连位置。  这使你能够将一个区域中的多个 Azure VMware 解决方案实例连接到同一对等互连位置。 
 
 >[!NOTE]
 >对于未启用 ExpressRoute Global Reach（例如，由于本地法规）的位置，必须使用 Azure IaaS VM 构建路由解决方案。 若要查看一些示例，请参阅 [AzureCAT-AVS/networking](https://github.com/Azure/AzureCAT-AVS/tree/main/networking)。

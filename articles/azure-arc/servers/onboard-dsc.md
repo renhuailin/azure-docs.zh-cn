@@ -3,12 +3,12 @@ title: 使用 Windows PowerShell DSC 安装 Connected Machine Agent
 description: 本文介绍如何使用 Windows PowerShell DSC 通过已启用 Azure Arc 的服务器将计算机连接到 Azure。
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a6e955df43e3589c97091cb111699ce402723d0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 357d89a989efbc3b8deded193808d47753b722d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323797"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789078"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安装 Connected Machine Agent
 
@@ -20,7 +20,7 @@ ms.locfileid: "122323797"
 
 - [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc) DSC 模块
 
-- 用于以非交互方式将计算机连接到已启用 Azure Arc 的服务器的服务主体。 如果尚未为已启用 Arc 的服务器创建服务主体，请按照[为大规模加入创建服务主体](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)部分中的步骤进行操作。
+- 用于以非交互方式将计算机连接到已启用 Azure Arc 的服务器的服务主体。 如果尚未为已启用 Azure Arc 的服务器创建服务主体，请按照[为大规模加入创建服务主体](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)部分中的步骤进行操作。
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>安装 ConnectedMachine DSC 模块
 

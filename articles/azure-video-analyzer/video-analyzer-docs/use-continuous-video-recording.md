@@ -2,13 +2,13 @@
 title: 连续视频录制和播放教程 - Azure 视频分析器
 description: 本教程介绍如何使用 Azure 视频分析器将视频连续录制到云中并播放该录制内容。
 ms.topic: tutorial
-ms.date: 06/01/2021
-ms.openlocfilehash: 2f3fc2421a2341974aa7ea7bdafeaf0123ea983e
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 09/14/2021
+ms.openlocfilehash: 1ecba5892c3112ae12916c8b831eee994d4b5766
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602921"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644137"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>教程：连续视频录制和播放
 
@@ -69,8 +69,46 @@ ms.locfileid: "114602921"
 1. 清理资源。
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境
-[!INCLUDE [setup development environment](./includes/set-up-dev-environment/csharp/csharp-set-up-dev-env.md)]
-  
+
+
+### <a name="get-the-sample-code"></a>获取示例代码
+
+1. 克隆 [AVA C# 示例存储库](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp)。
+1. 启动 Visual Studio Code，然后打开下载的存储库所在的文件夹。
+1. 在 Visual Studio Code 中，浏览到 src/cloud-to-device-console-app 文件夹，然后创建一个名为 appsettings.json 的文件。 该文件包含运行程序所需的设置。
+1. 浏览到上述设置步骤中创建的存储帐户中的文件共享，并找到“deployment-output”文件共享下的“appsettings.json”文件。 单击该文件，然后点击“下载”按钮。 应在新的浏览器选项卡中打开内容，如下所示：
+
+   ```
+   {
+       "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",
+       "deviceId" : "avasample-iot-edge-device",
+       "moduleId" : "avaedge"
+   }
+   ```
+
+   借助 IoT 中心连接字符串，可以使用 Visual Studio Code 通过 Azure IoT 中心将命令发送到 Edge 模块。 将上述 JSON 复制到“src/cloud-to-device-console-app/appsettings.json”文件中。
+
+### <a name="connect-to-the-iot-hub"></a>连接到 IoT 中心
+
+1. 在 Visual Studio Code 中，通过选择左下角“Azure IoT 中心”窗格旁边的“更多操作”图标，设置 IoT 中心连接字符串 。 从 src/cloud-to-device-console-app/appsettings.json 文件复制该字符串。
+
+    <!-- commenting out the image for now ![Set IoT Hub connection string]()./media/quickstarts/set-iotconnection-string.png-->
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
+1. 大约 30 秒后，在左下部分刷新 Azure IoT 中心。 你应会看到已部署以下模块的边缘设备 `avasample-iot-edge-device`：
+    - Edge 中心（模块名称为“edgeHub”）
+    - Edge 代理（模块名称为“edgeAgent”）
+    - 视频分析器（模块名称为“avaedge”）
+    - RTSP 模拟器（模块名称为“rtspsim”）
+
+### <a name="prepare-to-monitor-the-modules"></a>准备监视模块
+
+运行本快速入门或教程时，事件将发送到 IoT 中心。 若要查看这些事件，请执行以下步骤：
+
+1. 在 Visual Studio Code 中打开“资源管理器”窗格，然后在左下角查找“Azure IoT 中心”。
+1. 展开“设备”节点。
+1. 右键单击 `avasample-iot-edge-device`，然后选择“开始监视内置事件终结点”。
+
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 ## <a name="examine-the-sample-files"></a>检查示例文件
 
@@ -95,7 +133,7 @@ ms.locfileid: "114602921"
     `"topologyName" : "CVRToVideoSink"`  
 1. 在浏览器中打开[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json)，查看 videoName（硬编码为 `sample-cvr-video`）。 对于教程来说，这是可以接受的。 在生产环境中，应注意确保每个唯一的 RTSP 相机都会录制到一个具有唯一名称的视频资源中。
 1. 选择 F5 以启动调试会话。 在“终端”窗口中，你将看到一些输出的消息。
-1. operations.json 文件首先调用 `pipelineTopologyList` 和 `livePipelineList`。 如果在先前的快速入门或教程后清理了资源，此操作会返回空列表，然后暂停以便你能够选择 Enter，如下所示：
+1. operations.json 文件首先调用 `pipelineTopologyList` 和 `livePipelineList`。 如果在先前的快速入门或教程后清理了资源，此操作会返回空列表，如下所示：
 
     ```
     --------------------------------------------------------------------------
@@ -109,11 +147,10 @@ ms.locfileid: "114602921"
       "value": []
     }
     --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
+
     ```
 
-1. 在“终端”窗口中选择 Enter 后，会执行下一组直接方法调用 ：
+1. 然后进行下一组直接方法调用：
    * 使用上述 `topologyUrl` 对 `pipelineTopologySet` 的调用
    * 使用以下正文对 `livePipelineSet` 的调用
      
@@ -141,21 +178,18 @@ ms.locfileid: "114602921"
        }
      }
      ```
-   * 对 `livePipelineActivate` 的调用，用于启动实时管道和视频流
-   * 对 `livePipelineList` 的第二次调用，显示实时管道处于运行状态 
+   * 调用 `livePipelineActivate` 以启动实时管道和启动视频流，然后暂停，以便你能够在“终端”窗口中选择“Enter” 
 1. “终端”窗口中的输出现在会在出现“按 Enter 继续”提示时暂停 。 此时请勿选择 Enter。 向上滚动，查看调用的直接方法的 JSON 响应有效负载。
-1. 如果现在切换到 Visual Studio Code 中的“输出”窗口，将看到视频分析器 Edge 模块向 IoT 中心发送的消息。
-
-
-   下节中讨论了这些消息。
+1. 如果现在切换到 Visual Studio Code 中的“输出”窗口，将看到视频分析器 Edge 模块向 IoT 中心发送的消息。 下节中讨论了这些消息。
 1. 实时管道将继续运行并录制视频。 RTSP 模拟器不断循环源视频。 若要停止录制，请返回到“终端”窗口并选择 Enter 。 接下来会使用以下方法执行一系列调用，以清理资源：
 
    * 调用 `livePipelineDeactivate` 停用实时管道。
    * 调用 `livePipelineDelete` 删除实时管道。
+   * 对 `livePipelineList` 的第二次调用，显示实时管道处于运行状态。
    * 调用 `pipelineTopologyDelete` 删除拓扑。
    * 对 `pipelineTopologyList` 的最后一次调用显示该列表现为空。
 
-## <a name="interpret-the-results"></a>解释结果 
+## <a name="interpret-the-results"></a>解释结果
 
 运行实时管道时，视频分析器 Edge 模块会将某些诊断和操作事件发送到 IoT Edge 中心。 这些事件即你在 Visual Studio Code 的“输出”窗口中看到的消息。 这些事件包含 `body` 部分和 `applicationProperties` 部分。 要了解这些部分表示的内容，请参阅[创建和读取 IoT 中心消息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 

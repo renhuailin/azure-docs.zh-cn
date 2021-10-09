@@ -1,29 +1,29 @@
 ---
-title: Azure 数据工厂（旧版）中支持的文件格式
+title: 支持的文件格式（旧版）
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。
+description: 了解 Azure 数据工厂和 Synapse Analytics 中基于文件的连接器支持的文件格式和压缩编解码器。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: cf1df8645a6b5c7a33305c87732a9c3b108b523d
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/09/2021
+ms.openlocfilehash: c998e64656ed26a3fa42761169c70b81270628dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256637"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792745"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
+# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-and-synapse-analytics-legacy"></a>Azure 数据工厂和 Synapse Analytics 中支持的文件格式和压缩编解码器（旧版）
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文适用于以下连接器：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
 >[!IMPORTANT]
->数据工厂引入基于新格式的数据集模型，有关详细信息，请参阅对应格式的文章： <br>- [Avro 格式](format-avro.md)<br>- [二进制格式](format-binary.md)<br>- [带分隔符的文本格式](format-delimited-text.md)<br>- [JSON 格式](format-json.md)<br>- [ORC 格式](format-orc.md)<br>- [Parquet 格式](format-parquet.md)<br>依旧支持本文中提到的其余配置，以实现后向兼容性。 建议你今后使用新模型。 
+>该服务引入基于新格式的数据集模型，有关详细信息，请参阅相应格式的文章： <br>- [Avro 格式](format-avro.md)<br>- [二进制格式](format-binary.md)<br>- [带分隔符的文本格式](format-delimited-text.md)<br>- [JSON 格式](format-json.md)<br>- [ORC 格式](format-orc.md)<br>- [Parquet 格式](format-parquet.md)<br>依旧支持本文中提到的其余配置，以实现后向兼容性。 建议你今后使用新模型。 
 
 ## <a name="text-format-legacy"></a><a name="text-format"></a> 文本格式（旧版）
 
@@ -40,7 +40,7 @@ ms.locfileid: "123256637"
 | quoteChar |将字符串值用引号括起来的字符。 引号字符内的列和行分隔符将被视为字符串值的一部分。 此属性适用于输入和输出数据集。<br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
 | nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认** 值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
 | encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](/dotnet/api/system.text.encoding)。 例如：windows-1250 或 shift_jis。 **默认** 值为 **UTF-8**。 |否 |
-| firstRowAsHeader |指定是否将第一行视为标头。 对于输入数据集，数据工厂将读取第一行作为标头。 对于输出数据集，数据工厂将写入第一行作为标头。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>False（默认值）</b> |否 |
+| firstRowAsHeader |指定是否将第一行视为标头。 对于输入数据集，服务将读取第一行作为标头。 对于输出数据集，服务将写入第一行作为标头。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>False（默认值）</b> |否 |
 | skipLineCount |指示从输入文件读取数据时要跳过的非空行数  。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |否 |
 | treatEmptyAsNull |指定是否在从输入文件读取数据时将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
 
@@ -347,7 +347,7 @@ ms.locfileid: "123256637"
 
 **请注意以下几点：**
 
-* 如果未在数据工厂数据集中定义 `structure` 和 `jsonPathDefinition`，复制活动将检测第一个对象的架构，并平展整个对象。
+* 如果未在数据集中定义 `structure` 和 `jsonPathDefinition`，复制活动将检测第一个对象的架构，并平展整个对象。
 * 如果 JSON 输入包含数组，则默认情况下，复制活动会将整个数组值转换为字符串。 可以选择使用 `jsonNodeReference` 和/或 `jsonPathDefinition` 通过它提取数据，也可以不在 `jsonPathDefinition` 中指定它，从而将它跳过。
 * 如果同一级别存在重复的名称，复制活动将选择最后一个名称。
 * 属性名称区分大小写。 名称相同但大小写不同的两个属性被视为两个不同的属性。
@@ -424,12 +424,12 @@ ms.locfileid: "123256637"
 
 * 不支持复杂数据类型（MAP、LIST）。
 * 不支持列名称中的空格。
-* Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持以这些压缩格式中的任意一种格式从 Parquet 文件中读取数据 - 但 LZO 格式除外，它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。
+* Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 该服务支持以这些压缩格式中的任意一种格式从 Parquet 文件中读取数据 - 但 LZO 格式除外，它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，服务会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。
 
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是 **按原样** 复制 Parquet 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
 
-对于使用 Parquet 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
+对于使用 Parquet 文件序列化/反序列化在自承载集成运行时上运行的复制，该服务将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
 
 - **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
@@ -437,13 +437,13 @@ ms.locfileid: "123256637"
 >[!TIP]
 >如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道  。
 
-![在自承载 IR 上设置 JVM 堆大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+:::image type="content" source="./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png" alt-text="在自承载 IR 上设置 JVM 堆大小":::
 
-示例：将变量 `_JAVA_OPTIONS` 的值设置为 `-Xms256m -Xmx16g`。 标志 `Xms` 指定 Java 虚拟机 (JVM) 的初始内存分配池，而 `Xmx` 指定最大内存分配池。 这意味着 JVM 初始内存为 `Xms`，并且能够使用的最多内存为 `Xmx`。 默认情况下，ADF 最少使用 64MB 且最多使用 1G。
+示例：将变量 `_JAVA_OPTIONS` 的值设置为 `-Xms256m -Xmx16g`。 标志 `Xms` 指定 Java 虚拟机 (JVM) 的初始内存分配池，而 `Xmx` 指定最大内存分配池。 这意味着 JVM 初始内存为 `Xms`，并且能够使用的最多内存为 `Xmx`。 默认情况下，该服务最少使用 64 MB 且最多使用 1 G。
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Parquet 文件的数据类型映射
 
-| 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
+| 临时服务数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
 |:--- |:--- |:--- |:--- |
 | 布尔 | 布尔 | 空值 | 空值 |
 | SByte | Int32 | Int8 | Int8 |
@@ -484,19 +484,19 @@ ms.locfileid: "123256637"
 
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）。
 * 不支持列名称中的空格。
-* ORC 文件有三个[压缩相关的选项](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
+* ORC 文件有三个[压缩相关的选项](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 该服务支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，该服务会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
 
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是 **按原样** 复制 ORC 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
 
-对于使用 ORC 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
+对于使用 ORC 文件序列化/反序列化在自承载 IR 上运行的复制，该服务将通过首先检查 JRE 的注册表项 `(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)` 来查找 Java 运行时，如果未找到，则会检查系统变量 `JAVA_HOME` 来查找 OpenJDK。
 
 - **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
 
 ### <a name="data-type-mapping-for-orc-files"></a>ORC 文件的数据类型映射
 
-| 数据工厂临时数据类型 | ORC 类型 |
+| 临时服务数据类型 | ORC 类型 |
 |:--- |:--- |
 | 布尔 | 布尔 |
 | SByte | Byte |
@@ -540,7 +540,7 @@ ms.locfileid: "123256637"
 
 ## <a name="compression-support-legacy"></a><a name="compression-support"></a> 压缩支持（旧版）
 
-在复制期间，Azure 数据工厂支持压缩/解压缩数据。 在输入数据集中指定 `compression` 属性时，复制活动从源读取压缩的数据并对其进行解压缩；在输出数据集中指定属性时，复制活动将压缩数据并将其写入到接收器。 下面是一些示例方案：
+在复制期间，该服务支持压缩/解压缩数据。 在输入数据集中指定 `compression` 属性时，复制活动从源读取压缩的数据并对其进行解压缩；在输出数据集中指定属性时，复制活动将压缩数据并将其写入到接收器。 下面是一些示例方案：
 
 * 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，然后将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
 * 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 使用值为 GZip 的 `compression` `type` 属性定义输出 Azure Blob 数据集。
@@ -584,11 +584,11 @@ ms.locfileid: "123256637"
     有关详细信息，请参阅 [Compression Level](/dotnet/api/system.io.compression.compressionlevel)（压缩级别）主题。
 
 > [!NOTE]
-> 目前采用 **AvroFormat**、**OrcFormat** 或 **ParquetFormat** 的数据不支持压缩设置。 读取采用这些格式的文件时，数据工厂将检测并使用元数据中的压缩编解码器。 在采用这些格式的文件中写入数据时，数据工厂将选择适用于该格式的默认压缩编解码器。 例如，为 OrcFormat 使用 ZLIB，为 ParquetFormat 使用 SNAPPY。
+> 目前采用 **AvroFormat**、**OrcFormat** 或 **ParquetFormat** 的数据不支持压缩设置。 读取采用这些格式的文件时，该服务将检测并使用元数据中的压缩编解码器。 在采用这些格式的文件中写入数据时，服务将选择适用于该格式的默认压缩编解码器。 例如，为 OrcFormat 使用 ZLIB，为 ParquetFormat 使用 SNAPPY。
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>不支持的文件类型和压缩格式
 
-可以使用 Azure 数据工厂的可扩展性功能来转换不受支持的文件。
+可以使用可扩展性功能来转换不受支持的文件。
 两个选项包括 Azure Functions 和使用 Azure Batch 的自定义任务。
 
 可以看到一个示例，它使用 Azure 函数[提取 tar 文件的内容](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)。 有关详细信息，请参阅 [Azure Functions 活动](./control-flow-azure-function-activity.md)。

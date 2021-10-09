@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7b415b161dd719dabd02ccde4bf0a57da6485c09
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 690991f637c33ec4b66fd2bc591deb5474900d57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730727"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657341"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全
 
@@ -141,7 +141,7 @@ ms.locfileid: "121730727"
 > [!NOTE]
 > Microsoft.Azure.Services.AppAuthentication 不再被推荐用于新的 Azure SDK。 已将其替换为新的 Azure 标识客户端库（可用于 .NET、Java、TypeScript 和 Python），应将此库用于所有新的开发。 有关如何迁移到 `Azure Identity` 的信息，请参阅：[AppAuthentication 到 Azure.Identity 的迁移指南](/dotnet/api/overview/azure/app-auth-migration)。
 
-1. 在 Visual Studio 中，打开包管理器控制台，并添加 NuGet 包 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)：
+1. 在 Visual Studio 中，打开包管理器控制台，并添加 NuGet 包 [Azure.Identity](https://www.nuget.org/packages/Azure.Identity)：
 
     ```powershell
     Install-Package Microsoft.Data.SqlClient -Version 2.1.2

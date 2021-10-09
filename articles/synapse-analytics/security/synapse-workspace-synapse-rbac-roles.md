@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: cc516b917d56d6b41f83e0c81354453dafc41f42
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 6b6c2cbf04b0e68f86bd11b8295c54b8c65d0360
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822920"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352779"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC 角色
 
@@ -27,9 +27,6 @@ ms.locfileid: "122822920"
 - 引入了 **新的更加精细的 Synapse RBAC 角色**，专注于支持开发和操作角色，而不是特定的分析运行时。  
 - 为多个角色引入了新的较低级别范围。  这些范围允许将角色限制为使用特定的资源或对象。
 
->[!Note]
->新的 Synapse RBAC 角色和较低级别的范围目前处于预览阶段。  建议你使用这些完全受支持的新角色和范围，并提供有关使用情况的反馈。
-
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>内置 Synapse RBAC 角色和范围
 
 下表描述了内置角色和可以使用这些角色的范围。
@@ -37,9 +34,12 @@ ms.locfileid: "122822920"
 >[!Note]
 > 在任何范围内具有任意 Synapse RBAC 角色的用户在工作区范围内自动具有 Synapse 用户角色。 
 
+> [!IMPORTANT]
+> Synapse RBAC 角色不会授予在 Synapse 工作区中创建和管理 SQL 池、Apache Spark 池和集成运行时的权限。 这些操作需要资源组上的 Azure 所有者或 Azure 参与者角色。
+
 |角色 |权限|作用域|
 |---|---|-----|
-|Synapse 管理员  |对无服务器 SQL 池、Apache Spark 池和集成运行时的完全 Synapse 访问。  包括对所有已发布代码项目的创建、读取、更新和删除访问权限。  包括对工作区系统标识凭据的计算操作员、链接数据管理员和凭据用户权限。  包括分配 Synapse RBAC 角色。 除了 Synapse 管理员以外，Azure 所有者也可以分配 Synapse RBAC 角色。 创建、删除和管理计算资源需要 Azure 权限。 </br></br>可以读写工件 </br>可以对 Spark 活动执行所有操作</br>。可以查看 Spark 池日志</br> 可以查看保存的笔记本和管道输出</br> 可以使用链接服务或凭据存储的机密</br> 可以在当前范围内分配和撤销 Synapse RBAC 角色|工作区 </br> Spark 池<br/>集成运行时 </br>链接服务</br>凭据 |
+|Synapse 管理员  |对 SQL 池、Apache Spark 池和集成运行时的完全 Synapse 访问。  包括对所有已发布代码项目的创建、读取、更新和删除访问权限。  包括对工作区系统标识凭据的计算操作员、链接数据管理员和凭据用户权限。  包括分配 Synapse RBAC 角色。 除了 Synapse 管理员以外，Azure 所有者也可以分配 Synapse RBAC 角色。 创建、删除和管理计算资源需要 Azure 权限。 </br></br>可以读写工件 </br>可以对 Spark 活动执行所有操作</br>。可以查看 Spark 池日志</br> 可以查看保存的笔记本和管道输出</br> 可以使用链接服务或凭据存储的机密</br> 可以在当前范围内分配和撤销 Synapse RBAC 角色|工作区 </br> Spark 池<br/>集成运行时 </br>链接服务</br>凭据 |
 |Synapse Apache Spark 管理员</br>|对 Apache Spark 池的完全 Synapse 访问权限。  对已发布的 Spark 作业定义、笔记本及其输出以及对库、链接服务和凭据的创建、读取、更新和删除访问权限。  包括对所有其他已发布代码项目的读取权限。 不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>_可以对 Spark 项目执行所有操作</br>可以对 Spark 活动执行所有操作_|工作区</br>Spark 池|
 |Synapse SQL 管理员|对无服务器 SQL 池的完全 Synapse 访问权限。  对已发布的 SQL 脚本、凭据和链接服务的创建、读取、更新和删除访问权限。  包括对所有其他已发布代码项目的读取权限。  不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>*可以对 SQL 脚本执行所有操作<br/>可以通过 SQL `db_datareader``db_datawriter``connect` 和 `grant` 权限连接到 SQL 无服务器终结点*|工作区|
 |Synapse 参与者|对 Apache Spark 池和集成运行时的完全 Synapse 访问权限。 包括对所有已发布项目及其输出（包括凭据和链接的服务）的创建、读取、更新和删除访问权限。  包括计算操作员权限。 不包括使用凭据和运行管道的权限。 不包括授予访问权限。 </br></br>_可以读取和写入项目</br>可以查看已保存的笔记本和管道输出</br>可以对 Spark 活动执行所有操作</br>可以查看 Spark 池日志_|工作区 </br> Spark 池<br/> 集成运行时|
@@ -60,7 +60,7 @@ ms.locfileid: "122822920"
 
 角色|操作
 --|--
-Synapse 管理员|workspaces/read</br>workspaces/roleAssignments/write, delete</br>workspaces/managedPrivateEndpoint/write, delete</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action</br>workspaces/linkedServices/useSecret/action</br>workspaces/credentials/useSecret/action|
+Synapse 管理员|workspaces/read</br>workspaces/roleAssignments/write, delete</br>workspaces/managedPrivateEndpoint/write, delete</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action</br>workspaces/linkedServices/useSecret/action</br>workspaces/credentials/useSecret/action|
 |Synapse Apache Spark 管理员|workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/notebooks/viewOutputs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete|
 |Synapse SQL 管理员|workspaces/read</br>workspaces/artifacts/read</br>workspaces/sqlScripts/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete|
 |Synapse 参与者|workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
@@ -82,7 +82,8 @@ workspaces/roleAssignments/write, delete|Synapse 管理员
 workspaces/managedPrivateEndpoint/write, delete|Synapse 管理员</br>Synapse 链接数据管理员
 workspaces/bigDataPools/useCompute/action|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse 参与者</br>Synapse 计算操作员 
 workspaces/bigDataPools/viewLogs/action|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse 参与者</br>Synapse 计算操作员 
-workspaces/integrationRuntimes/useCompute/action|Synapse 管理员</br>Synapse 参与者</br>Synapse 计算操作员 
+workspaces/integrationRuntimes/useCompute/action|Synapse 管理员</br>Synapse 参与者</br>Synapse 计算操作员
+workspaces/integrationRuntimes/viewLogs/action|Synapse 管理员</br>Synapse 参与者</br>Synapse 计算操作员
 workspaces/artifacts/read|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse SQL 管理员</br>Synapse 参与者</br>Synapse 项目发布者</br>Synapse 项目用户
 workspaces/notebooks/write, delete|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse 参与者</br>Synapse 项目发布者
 workspaces/sparkJobDefinitions/write, delete|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse 参与者</br>Synapse 项目发布者
@@ -92,8 +93,8 @@ workspaces/pipelines/write, delete|Synapse 管理员</br>Synapse 参与者</br>S
 workspaces/triggers/write, delete|Synapse 管理员</br>Synapse 参与者</br>Synapse 项目发布者
 workspaces/datasets/write, delete|Synapse 管理员</br>Synapse 参与者</br>Synapse 项目发布者
 workspaces/libraries/write, delete|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse 参与者</br>Synapse 项目发布者
-workspaces/linkedServices/write, delete|Synapse 管理员</br>Synapse 参与者</br>Synapse 项目发布者</br>Synapse 链接数据管理员
-workspaces/credentials/write, delete|Synapse 管理员</br>Synapse 参与者</br>Synapse 项目发布者</br>Synapse 链接数据管理员
+workspaces/linkedServices/write, delete|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse SQL 管理员</br>Synapse 参与者</br>Synapse 项目发布者</br>Synapse 链接数据管理员
+workspaces/credentials/write, delete|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse SQL 管理员</br>Synapse 参与者</br>Synapse 项目发布者</br>Synapse 链接数据管理员
 workspaces/notebooks/viewOutputs/action|Synapse 管理员</br>Synapse Apache Spark 管理员</br>Synapse 参与者</br>Synapse 项目发布者</br>Synapse 项目用户
 workspaces/pipelines/viewOutputs/action|Synapse 管理员</br>Synapse 参与者</br>Synapse 项目发布者</br>Synapse 项目用户
 workspaces/linkedServices/useSecret/action|Synapse 管理员</br>Synapse 凭据用户

@@ -3,18 +3,20 @@ title: 使用服务终结点限制访问
 description: 使用 Azure 虚拟网络中的服务终结点限制对 Azure 容器注册表的访问。 服务终结点访问是高级服务层级的一项功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 8a67a011c75a192df9ad3460458fd766b5ec1ec1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0fa721a4a4cf59c93123c98c500b693f05667054
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773453"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641610"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虚拟网络中的服务终结点限制对容器注册表的访问
 
 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)为 Azure 资源和本地资源提供安全的专用网络。 使用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)可以保护容器注册表的公共 IP 地址，仅在自己的虚拟网络中对其进行访问。 此终结点为流量提供通过 Azure 主干网络到达资源的最优路径。 虚拟网络和子网的标识也随每个请求进行传输。
 
 本文介绍如何在虚拟网络中配置容器注册表服务终结点（预览版）。 
+
+每个注册表最多支持 100 条虚拟网络规则。
 
 > [!IMPORTANT]
 > Azure 容器注册表现支持 [Azure 专用链接](container-registry-private-link.md)，允许将来自虚拟网络的专用终结点放置在注册表上。 可以使用专用 IP 地址从虚拟网络内部访问专用终结点。 在大多数网络方案中，我们建议使用专用终结点，而不是服务终结点。

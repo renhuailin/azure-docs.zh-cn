@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 548dcc59ae0303022f4807add5764b55b313f683
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 275013b82866b7cb49488edfc0e63e71a04e364a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438941"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670341"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -104,22 +104,17 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 |[引用](/cli/azure/keyvault/secret)<br>[快速入门](../secrets/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../secrets/quick-create-powershell.md)|[引用](/rest/api/keyvault/#secret-operations)|[引用](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[快速入门](../secrets/quick-create-template.md)|[引用](/dotnet/api/azure.security.keyvault.secrets)<br>[快速入门](../secrets/quick-create-net.md)|[引用](/python/api/overview/azure/keyvault-secrets-readme)<br>[快速入门](../secrets/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[快速入门](../secrets/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-secrets/)<br>[快速入门](../secrets/quick-create-node.md)|
 
 ### <a name="secrets-usage"></a>机密使用情况
-Azure Key Vault 机密组件只能用于为应用程序存储机密。 对于任何非机密对象，应使用 [Azure 应用程序配置](https://docs.microsoft.com/azure/azure-app-configuration/overview)。
+Azure Key Vault 机密只能用于存储应用程序的机密。 
 
-- 应存储在 Key Vault 中的机密的示例：
+应存储在 Key Vault 中的机密的示例：
     - 客户端应用程序机密
     - 连接字符串
     - 密码
     - 共享访问密钥
     - SSH 密钥
 
-- 应存储在应用程序配置中的非机密的示例：
-    - 客户端应用程序 ID
-    - IP 地址
-    - 服务终结点
-    - 服务配置参数
-    - 用户名
-
+此外，任何与机密相关的信息（如用户名、应用程序 ID）都可以作为标记存储在机密中。 对于任何其他敏感配置设置，应使用 [Azure 应用配置](../../azure-app-configuration/overview.md)。
+ 
 ### <a name="references"></a>参考 
 
 有关安装包和源代码的信息，请参阅[客户端库](client-libraries.md)。
@@ -135,17 +130,17 @@ Azure Key Vault 机密组件只能用于为应用程序存储机密。 对于任
 
 ##### <a name="certificates"></a>证书：
 - 通过 Key Vault VM 扩展，可自动刷新 Azure Key Vault 库中存储的证书。 
-    - [适用于 Windows 的 Key Vault 虚拟机扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)
-    - [适用于 Linux 的 Key Vault 虚拟机扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
-    - [适用于已启用 Azure Arc 的服务器的 Key Vault 虚拟机扩展](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#azure-key-vault-vm-extension)
+    - [适用于 Windows 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-windows.md)
+    - [适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md)
+    - [适用于已启用 Azure Arc 的服务器的 Key Vault 虚拟机扩展](../../azure-arc/servers/manage-vm-extensions.md#azure-key-vault-vm-extension)
  - Azure 应用服务 Key Vault 证书集成，可从 Key Vault 导入并自动刷新证书
      - [通过 Key Vault 部署 Azure Web 应用证书](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 
 ##### <a name="secrets"></a>机密：
 - 将 Key Vault 机密用于应用服务应用程序设置
-    - [使用应用服务和 Azure Functions 的 Key Vault 引用](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)
+    - [使用应用服务和 Azure Functions 的 Key Vault 引用](../../app-service/app-service-key-vault-references.md)
 - 将 Key Vault 机密与应用程序配置服务用于托管在 Azure VM 中的应用程序
-    - [使用应用程序配置和 Key Vault 配置应用程序](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/app-secrets-configuration/)
+    - [使用应用程序配置和 Key Vault 配置应用程序](/samples/azure/azure-sdk-for-net/app-secrets-configuration/)
 
 ## <a name="code-examples"></a>代码示例
 

@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 3e2ffebf0b414d4b59178fe04fb109530365786b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68f4437ce75bfe2a9017133ed523bb5e9ce10a8c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98064702"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787123"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化公共客户端应用程序
 
@@ -30,6 +30,25 @@ ms.locfileid: "98064702"
 - 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
 - 如果你仅在为组织编写业务线应用程序（也称为单租户应用程序），则为租户 ID。
 - 对于 Web 应用，有时对于公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
+
+## <a name="default-reply-uri"></a>默认回复 URI
+
+在 MSAL.NET 4.1+ 中，默认重定向 URI（回复 URI）现在可以通过 `public PublicClientApplicationBuilder WithDefaultRedirectUri()` 方法进行设置。 此方法会将公共客户端应用程序的重定向 URI 属性设置为建议的默认值。
+
+此方法的行为取决于当前使用的平台。 下表描述了在某些平台上设置的重定向 URI：
+
+平台  | 重定向 URI  
+---------  | --------------
+桌面应用 (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` 的值
+.NET Core | `http://localhost`
+
+对于 UWP 平台，增强体验的方式是通过将值设置为 `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` 的结果，使用浏览器来启用 SSO。 
+
+对于 .NET Core，MSAL.Net 会将值设置为本地主机，使用户能够使用系统浏览器进行交互式身份验证。
+
+> [!NOTE]
+> 对于桌面方案中的嵌入式浏览器，MSAL 会截获使用的重定向 URI，以检测是否从标识提供者处返回了一个响应（即是否已返回授权代码）。 因此，可以在任何云中使用此 URI，而不会看到到该 URI 的实际重定向。 这意味着你可以并且应该在任何云中使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。 如果你愿意，你也可以使用任何其他 URI，前提是在 MSAL 和应用注册中正确配置重定向 URI。 在应用程序注册中指定默认 URI 意味着 MSAL 中的设置量会最少。
 
 
 .NET Core 控制台应用程序可以具有以下 *appsettings.json* 配置文件：

@@ -5,18 +5,22 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 04/07/2021
-ms.openlocfilehash: 761dcc36e684aa8f024cb650929441b54dddb790
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a42798f5af63d9ec43760511a749861a955518cf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952916"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643073"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
 了解服务中的新增功能。 这些项包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="august-2021"></a>2021 年 8 月
+* 挪威东部[发布区域](luis-reference-regions.md#publishing-to-europe).
+* 美国西部 3 [发布区域](luis-reference-regions.md#other-publishing-regions)。
 
 ### <a name="april-2021"></a>2021 年 4 月
 

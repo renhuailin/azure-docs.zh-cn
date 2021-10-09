@@ -4,12 +4,12 @@ description: 本文介绍了为了使用 Azure Site Recovery 执行 VMware 到 A
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/01/2021
-ms.openlocfilehash: f1c5182cc06fa0065c266cdd03ffe85717c0d496
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 940cfb52985e956a283e8278c572569e4f350f55
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536790"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084182"
 ---
 # <a name="deploy-azure-site-recovery-replication-appliance---preview"></a>部署 Azure Site Recovery 复制设备（预览版）
 
@@ -19,7 +19,10 @@ ms.locfileid: "123536790"
 >[!NOTE]
 > 请确保创建新的恢复服务保管库以设置预览版设备。 请勿使用现有保管库。
 
-使用 [Azure Site Recovery](site-recovery-overview.md) 进行 VMware VM 和物理服务器到 Azure 的灾难恢复时，需要部署本地复制设备。
+>[!NOTE]
+> 此预览版不支持为物理计算机启用复制。 
+
+使用 [Azure Site Recovery](site-recovery-overview.md) 进行 VMware VM 到 Azure 的灾难恢复时，需要部署本地复制设备。
 
 - 复制设备会协调本地 VMware 与 Azure 之间的通信。 它还管理数据复制。
 - [了解](vmware-azure-architecture-preview.md)有关 Azure Site Recovery 复制设备组件和过程的详细信息。
@@ -47,7 +50,7 @@ FIPS（联邦信息处理标准） | 不要启用 FIPS 模式|
 
 |**组件** | **要求**|
 |--- | ---|
-|IP 地址类型 | 静态|
+|完全限定的域名 (FQDN) | 静态|
 |端口 | 443（控制通道协调）<br>9443（数据传输）|
 |NIC 类型 | VMXNET3（如果设备是 VMware VM）|
 
@@ -74,11 +77,36 @@ FIPS（联邦信息处理标准） | 不要启用 FIPS 模式|
 > [!NOTE]
 > 预览版本不支持私有链接。
 
+## <a name="folder-exclusions-from-antivirus-program"></a>防病毒程序中的文件夹排除
+
+### <a name="if-antivirus-software-is-active-on-appliance"></a>如果防病毒软件在设备上处于活动状态
+
+为了平稳进行复制并避免出现连接问题，请从防病毒软件中排除以下文件夹。
+
+C:\ProgramData\Microsoft Azure <br>
+C:\ProgramData\ASRLogs <br>
+C:\Windows\Temp\MicrosoftAzure C:\Program Files\Microsoft Azure Appliance Auto Update <br>
+C:\Program Files\Microsoft Azure Appliance Configuration Manager <br>
+C:\Program Files\Microsoft Azure Push Install Agent <br>
+C:\Program Files\Microsoft Azure RCM Proxy Agent <br>
+C:\Program Files\Microsoft Azure Recovery Services Agent <br>
+C:\Program Files\Microsoft Azure Server Discovery Service <br>
+C:\Program Files\Microsoft Azure Site Recovery Process Server <br>
+C:\Program Files\Microsoft Azure Site Recovery Provider <br>
+C:\Program Files\Microsoft Azure to On-Premise Reprotect agent <br>
+C:\Program Files\Microsoft Azure VMware Discovery Service <br>
+C:\Program Files\Microsoft On-Premise to Azure Replication agent <br>
+E:\ <br>
+
+### <a name="if-antivirus-software-is-active-on-source-machine"></a>如果防病毒软件在源计算机上处于活动状态
+
+如果源计算机具有处于活动状态的防病毒软件，则应排除安装文件夹。 因此，为了平稳进行复制，请排除文件夹 C:\ProgramData\ASR\agent。
+
 ## <a name="prepare-azure-account"></a>准备 Azure 帐户
 
 若要创建并注册 Azure Site Recovery 复制设备，需要具有以下权限的帐户：
 
-- 关于 Azure 订阅的参与者或所有者权限。
+- Azure 订阅的参与者或所有者权限。
 - 用于注册 Azure Active Directory (AAD) 应用的权限。
 - 用于创建密钥保管库的所有者或参与者以及 Azure 订阅上的用户访问管理员权限，可在向 Azure 注册 Azure Site Recovery 复制设备时使用。
 
@@ -147,6 +175,9 @@ OVF 模板启动具有所需规范的虚拟机。
 4. 选择“完成”，系统将重新启动，你可以使用管理员用户帐户登录。
 
 ### <a name="set-up-the-appliance-through-powershell"></a>通过 PowerShell 设置设备
+
+>[!NOTE]
+> 此预览版不支持为物理计算机启用复制。 
 
 如果存在任何组织限制，可以通过 PowerShell 手动设置 Site Recovery 复制设备。 执行以下步骤：
 

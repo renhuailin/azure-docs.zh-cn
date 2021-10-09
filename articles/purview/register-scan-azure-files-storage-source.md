@@ -1,18 +1,18 @@
 ---
-title: 如何扫描 Azure 文件
-description: 本操作指南详细介绍了如何扫描 Azure 文件。
+title: 如何注册和扫描 Azure 文件存储
+description: 本操作指南详细介绍了如何在 Azure Purview 中扫描 Azure 文件存储。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 06/22/2021
-ms.openlocfilehash: dbb29fea5253bbd00e66f0ed3d123ddc38533b8e
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2db2b5343b8a55e29881bf0908fded0a48b90b78
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256451"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209901"
 ---
 # <a name="register-and-scan-azure-files"></a>注册 Azure 文件并进行扫描
 
@@ -56,7 +56,7 @@ Azure 文件支持完整扫描和增量扫描，以根据系统默认规则和�
 要在数据目录中注册新的 Azure 文件帐户，请执行以下操作：
 
 1. 导航到 Purview Data Studio。
-1. 在左侧导航中选择“数据映射”。
+1. 在左侧导航区域中选择“数据映射”。
 1. 选择“注册”
 1. 在“注册源”上，选择“Azure 文件” 
 1. 选择“继续”
@@ -77,7 +77,7 @@ Azure 文件支持完整扫描和增量扫描，以根据系统默认规则和�
 
 若要创建并运行新扫描，请执行以下步骤：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择已注册的 Azure 文件存储源。
 

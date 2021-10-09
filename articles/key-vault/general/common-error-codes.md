@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9ae13b88d767e43c425ceb86d0be455cebc0e6ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd66619c65dd39e32a11b81096d4b763430fc16c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462527"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553672"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault 的常见错误代码
 
@@ -23,7 +23,7 @@ Azure 密钥保管库上的操作可能返回下表中列出的错误代码
 | 错误代码 | 用户消息 |
 |--|--|
 | VaultAlreadyExists |  由于指定名称已在使用中，因此尝试创建具有该名称的新密钥保管库失败。 如果最近删除了具有此名称的密钥保管库，则该密钥保管库可能仍处于软删除状态。 你可以在[此处](./key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)验证它是否处于软删除状态 |
-| VaultNameNotValid |  保管库名称应为 24 个字符，可为字母数字，并以字母开头 |
+| VaultNameNotValid |  保管库名称应为由 3 到 24 个字符构成的字符串，并且只能包含数字 (0-9)、字母（a-z、A-Z）和连字符 (-) |
 | AccessDenied |  你可能在访问策略中缺少执行该操作的权限。 |
 | ForbiddenByFirewall |  客户端地址未获授权，调用方不是受信任的服务。 |
 | ConflictError |  你请求对同一项进行多个操作。  |

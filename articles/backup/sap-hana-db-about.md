@@ -2,13 +2,13 @@
 title: 关于 Azure VM 中的 SAP HANA 数据库备份
 description: 本文介绍如何备份在 Azure 虚拟机上运行的 SAP HANA 数据库。
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: efb9c3f786e429df404e261f053a9c9a9b032e11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 053d57518e91292105475753279e6fefec19e7a4
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96296448"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081028"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>关于 Azure VM 中的 SAP HANA 数据库备份
 
@@ -29,13 +29,15 @@ Azure 备份由 SAP 进行了 [Backint 认证](https://www.sap.com/dmc/exp/2013_
 
 ## <a name="backup-architecture"></a>备份体系结构
 
+可以备份在 Azure VM 内运行的 SAP HANA 数据库，并将备份数据直接流式传输到 Azure 恢复服务保管库。
+
 ![备份体系结构关系图](./media/sap-hana-db-about/backup-architecture.png)
 
 * 备份过程开始时将首先在 Azure 中[创建恢复服务保管库](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault)。 此保管库将用来存储随时间推移创建的备份和恢复点。
-* 运行 SAP HANA 服务器的 Azure VM 向保管库进行注册，并且将[发现](./tutorial-backup-sap-hana-db.md#discover-the-databases)要备份的数据库。 若要使 Azure 备份服务能够发现数据库，必须在 HANA 服务器上以 root 用户身份运行[预注册脚本](https://aka.ms/scriptforpermsonhana)。
-* 此脚本在 **hdbuserstore** 中创建 **AZUREWLBACKUPHANAUSER** DB 用户和一个同名的对应键。 若要详细了解该脚本的功能，请参阅[预注册脚本的功能](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
+* 运行 SAP HANA 服务器的 Azure VM 向保管库进行注册，并且将[发现](./tutorial-backup-sap-hana-db.md#discover-the-databases)要备份的数据库。 若要使 Azure 备份服务能够发现数据库，必须在 HANA 服务器上以 root 用户身份运行[预注册脚本](https://go.microsoft.com/fwlink/?linkid=2173610)。
+* 此脚本创建 AZUREWLBACKUPHANAUSER 数据库用户/使用你已创建的自定义备份用户，然后创建具有 hdbuserstore 中相同名称的对应键 。 请[详细了解](/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does)该脚本的功能。
 * Azure 备份服务现在在已注册的 SAP HANA 服务器上安装 **适用于 HANA 的 Azure 备份插件**。
-* **适用于 HANA 的 Azure 备份插件** 使用由预注册脚本创建的 **AZUREWLBACKUPHANAUSER** DB 用户执行所有备份和还原操作。 如果你尝试在不运行此脚本的情况下配置 SAP HANA DB 的备份，可能会收到以下错误：**UserErrorHanaScriptNotRun**。
+* 适用于 HANA 的 Azure 备份插件使用由预注册脚本创建的 AZUREWLBACKUPHANAUSER 数据库用户/你已创建（并添加为预注册脚本的输入）的自定义备份用户来执行所有的备份和还原操作 。 如果尝试在不运行此脚本的情况下为 SAP HANA 数据库配置备份，则可能会收到 UserErrorHanaScriptNotRun 错误。
 * 若要在发现的数据库上[配置备份](./tutorial-backup-sap-hana-db.md#configure-backup)，请选择所需的备份策略并启用备份。
 
 * 配置备份后，Azure 备份服务将在受保护的 SAP HANA 服务器上在数据库级别设置以下 Backint 参数：

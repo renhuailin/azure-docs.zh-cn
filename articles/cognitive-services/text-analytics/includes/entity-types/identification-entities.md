@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 08/11/2021
+ms.date: 09/09/2021
 ms.author: aahi
-ms.openlocfilehash: 35af9d16ff5c3e0fdfc4fe2c62abfd232439520e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 621d74d37ef8593ee109aa9e5e099bcc2b381383
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734079"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672550"
 ---
 ### <a name="financial-account-identification"></a>财务帐户标识
 
@@ -110,7 +110,7 @@ ms.locfileid: "121734079"
     :::column span="":::
         **实体**
 
-        信用卡
+        国际银行帐号
 
     :::column-end:::
     :::column span="2":::

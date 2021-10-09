@@ -6,12 +6,12 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 7602392b78f53e5b896e92058836fca60de39d64
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c0f6c1b0fce97bc835cb63a47d8827d7fab8ed56
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448876"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599822"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>采样替代（预览版）- 适用于 Java 的 Azure Monitor Application Insights
 
@@ -189,16 +189,17 @@ ms.locfileid: "106448876"
 |---|---|---|
 | `http.method` | string | HTTP 请求方法。|
 | `http.url` | string | 完整的 HTTP 请求 URL（采用 `scheme://host[:port]/path?query[#fragment]` 格式）。 片段通常不通过 HTTP 传输。 但如果片段是已知的，则应将其包含在内。|
-| `http.status_code` | 数值 | [HTTP 响应状态代码](https://tools.ietf.org/html/rfc7231#section-6)。|
 | `http.flavor` | string | HTTP 协议的类型。 |
 | `http.user_agent` | string | 客户端发送的 [HTTP User-Agent](https://tools.ietf.org/html/rfc7231#section-5.5.3) 标头的值。 |
+
+请注意，`http.status_code` 不能用于采样决策，因为它不能在范围开始时使用。
 
 ### <a name="jdbc-spans"></a>JDBC 范围
 
 | 属性  | 类型 | 说明  |
 |---|---|---|
-| `db.system` | 字符串 | 正在使用的数据库管理系统 (DBMS) 产品的标识符。 |
-| `db.connection_string` | 字符串 | 用于连接到数据库的连接字符串。 建议删除嵌入的凭据。|
+| `db.system` | string | 正在使用的数据库管理系统 (DBMS) 产品的标识符。 |
+| `db.connection_string` | string | 用于连接到数据库的连接字符串。 建议删除嵌入的凭据。|
 | `db.user` | string | 用于访问数据库的用户名。 |
 | `db.name` | string | 用于报告正在访问的数据库的名称的字符串。 对于用于切换数据库的命令，应当将此字符串设置为目标数据库（即使该命令失败）。|
-| `db.statement` | 字符串 | 正在运行的数据库语句。|
+| `db.statement` | string | 正在运行的数据库语句。|

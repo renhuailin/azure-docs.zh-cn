@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Purview 中注册 Teradata 源并设置扫描
+title: 注册 Teradata 源并设置扫描
 description: 本文概述了如何在 Azure Purview 中注册 Teradata 源并设置扫描。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 2/25/2021
-ms.openlocfilehash: 3d6f30e3d50fa79ac394460f9b13e1127cf16168
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 5ba69e4b20edc74dfd9de43f19b2ba582b196353
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740265"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211287"
 ---
 # <a name="register-and-scan-teradata-source"></a>注册并扫描 Teradata 源
 
@@ -70,9 +70,9 @@ Teradata 源支持完全扫描，以从 Teradata 数据库中提取元数据，�
 
 若要创建并运行新扫描，请执行以下操作：
 
-1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
+1.  在管理中心，选择“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
 
-2.  在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+2.  在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 3.  选择已注册的 Teradata 源。
 
@@ -111,11 +111,11 @@ Teradata 源支持完全扫描，以从 Teradata 数据库中提取元数据，�
 
     :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="设置扫描" border="true":::
 
-6.  单击“继续”。
+6.  选择“继续”。
 
 7.  选择你的扫描触发器。 可以设置一个计划或运行一次扫描。
 
-8.  查看你的扫描并单击“保存并运行”。
+8.  查看扫描，然后选择“保存并运行”。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>查看扫描和扫描运行
 

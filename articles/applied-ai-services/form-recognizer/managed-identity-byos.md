@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8ecd6ae9578f719707c3d52ba8348cda5af3e08d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 43220ce85bf02919a0ccf069bc9646a16c3a0a26
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326257"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155346"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>为表单识别器资源创建和使用托管标识
 
@@ -45,10 +45,19 @@ Azure 托管标识是一项服务主体，用于创建 Azure 受管理资源的 
 
 * Azure 门户中的[表单识别器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)或[认知服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)。  如需详细步骤，请参阅[使用 Azure 门户创建认知服务资源](../../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)。
 
-* 一个 [**Azure Blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你将创建一个容器，以便存储和组织存储帐户中的 Blob 数据。 如果帐户具有防火墙，则必须启用“[受信任的 Azure 服务例外](../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions)”复选框。
+* 与表单识别器资源位于同一区域的 [Azure blob 存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你需创建一个容器，用于存储和整理存储帐户中的 blob 数据。 
+
+  * 如果存储帐户位于防火墙后面，则必须启用以下配置： </br></br>
+
+  * 从存储帐户页上的左侧菜单中选择“安全性 + 网络”→“网络” 。
+    :::image type="content" source="media/managed-identities/security-and-networking-node.png" alt-text="屏幕截图：“安全性 + 网络”选项卡。":::
+
+  * 在主窗口中，选择“允许从所选网络访问”。
+  :::image type="content" source="media/managed-identities/firewalls-and-virtual-networks.png" alt-text="屏幕截图：选择了“所选网络”单选按钮。":::
+
+  * 在所选网络页上，导航到“例外”类别，确保已启用[允许受信任的服务列表中的 Azure 服务访问此存储帐户](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions)复选框。 
 
     :::image type="content" source="media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="屏幕截图：“允许受信任的服务”复选框，门户视图":::
-
 * 简要了解使用 Azure 门户的 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="managed-identity-assignments"></a>托管标识分配

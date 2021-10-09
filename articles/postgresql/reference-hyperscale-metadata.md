@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 74403365fe48584fa5d1db0e349c9dfc3772d874
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8213ca39f85a50d7e5354948467f3fbd66cb4797
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652839"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094721"
 ---
 # <a name="system-tables-and-views"></a>系统表和视图
 
@@ -38,7 +38,7 @@ pg\_dist\_partition 表存储有关数据库中的分布式表的元数据。 �
 | logicalrelid | regclass | 此行对应的分布式表。 此值引用 pg_class 系统目录表中的 relfilenode 列。                                                                                                                   |
 | partmethod   | char     | 用于分区/分布的方法。 与不同分布方法对应的此列值是追加：“a”，哈希：“h”，引用表：“n”                                                                          |
 | partkey      | text     | 有关分布列的详细信息，包括列号、类型和其他相关信息。                                                                                                                                      |
-| colocationid | 整型  | 此表所属的归置组。 同一组中的表允许在其他优化之间实现归置联接和分布式汇总。 此值引用 pg_dist_colocation 表中的 colocationid 列。                      |
+| colocationid | integer  | 此表所属的归置组。 同一组中的表允许在其他优化之间实现归置联接和分布式汇总。 此值引用 pg_dist_colocation 表中的 colocationid 列。                      |
 | repmodel     | char     | 用于数据复制的方法。 此列与不同复制方法相对应的值包括：Citus 基于语句的复制：“c”，postgresql 流式处理复制：“s”，两阶段提交（适用于引用表）：“t” |
 
 ```
@@ -153,12 +153,12 @@ citus.pg\_dist\_object 表包含在协调器节点上创建并传播到工作器
 |-----------------------------|---------|------------------------------------------------------|
 | classid                     | oid     | 分布式对象的类                      |
 | objid                       | oid     | 分布式对象的对象 ID                  |
-| objsubid                    | 整型 | 分布式对象的对象子 ID，例如 attnum |
-| type                        | text    | 在 pg 升级过程中使用的稳定地址的一部分   |
+| objsubid                    | integer | 分布式对象的对象子 ID，例如 attnum |
+| 类型                        | text    | 在 pg 升级过程中使用的稳定地址的一部分   |
 | object_names                | text[]  | 在 pg 升级过程中使用的稳定地址的一部分   |
 | object_args                 | text[]  | 在 pg 升级过程中使用的稳定地址的一部分   |
-| distribution_argument_index | 整型 | 仅对分布式函数/过程有效      |
-| colocationid                | 整型 | 仅对分布式函数/过程有效      |
+| distribution_argument_index | integer | 仅对分布式函数/过程有效      |
+| colocationid                | integer | 仅对分布式函数/过程有效      |
 
 “稳定地址”唯一标识独立于特定服务器的对象。 超大规模 (Citus) 使用通过 [pg\_identify\_object\_as\_address()](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-OBJECT-TABLE) 函数创建的稳定地址在 PostgreSQL 升级过程中跟踪对象。
 
@@ -482,7 +482,38 @@ backend\_type          | client backend
 > 如果在没有事务块的情况下执行路由器查询（例如多租户应用程序中的单租户，“SELECT
 > * FROM table WHERE tenant_id = X”），则 master\_query\_host\_name 和 master\_query\_host\_port 列在 citus\_worker\_stat\_activity 中会为 NULL。
 
-若要查看 `citus_lock_waits` 的工作情况，可以手动生成锁定情况。 首先，我们会从协调器设置一个测试表：
+下面是可以使用 `citus_worker_stat_activity` 生成的有用查询示例：
+
+```postgresql
+-- active queries' wait events on a certain node
+
+SELECT query, wait_event_type, wait_event
+  FROM citus_worker_stat_activity
+ WHERE query_hostname = 'xxxx' and state='active';
+
+-- active queries' top wait events
+
+SELECT wait_event, wait_event_type, count(*)
+  FROM citus_worker_stat_activity
+ WHERE state='active'
+ GROUP BY wait_event, wait_event_type
+ ORDER BY count(*) desc;
+
+-- total internal connections generated per node by Citus
+
+SELECT query_hostname, count(*)
+  FROM citus_worker_stat_activity
+ GROUP BY query_hostname;
+
+-- total internal active connections generated per node by Citus
+
+SELECT query_hostname, count(*)
+  FROM citus_worker_stat_activity
+ WHERE state='active'
+ GROUP BY query_hostname;
+```
+
+下个视图为 `citus_lock_waits`。 若要查看它的工作情况，可以手动生成锁定情况。 首先，我们会从协调器设置一个测试表：
 
 ```postgresql
 CREATE TABLE numbers AS

@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 570305de41d190852e5acaa178d838c21fba2347
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 092e42a5f9c1779fc5968b9fc733d260d405a90a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439800"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625898"
 ---
 # <a name="manage-an-existing-application-with-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>使用 Open Service Mesh (OSM) Azure Kubernetes 服务 (AKS) 加载项管理现有应用程序
 
 ## <a name="before-you-begin"></a>开始之前
 
-本演练中详细介绍的步骤假定你之前已为 AKS 群集启用了 OSM AKS 附加产品。 如果未启用，请在继续操作前查看[部署 OSM AKS 加载项](./open-service-mesh-deploy-add-on.md)一文。 此外，你的 AKS 群集必须是 Kubernetes `1.19+` 和更高版本，已启用 Kubernetes RBAC，与该群集建立了 `kubectl` 连接（如果需要获取有关任意这些项的帮助，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)），并且安装了 AKS OSM 附加产品。
+本演练中详细介绍的步骤假定你之前已为 AKS 群集启用了 OSM AKS 加载项。 如果未启用，请在继续操作前查看[部署 OSM AKS 加载项](./open-service-mesh-deploy-addon-az-cli.md)一文。 此外，你的 AKS 群集必须是 Kubernetes `1.19+` 和更高版本，已启用 Kubernetes RBAC，与该群集建立了 `kubectl` 连接（如果需要获取有关任意这些项的帮助，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)），并且安装了 AKS OSM 附加产品。
 
 必须已安装以下资源：
 
@@ -84,7 +84,7 @@ spec:
     useHTTPSIngress: false
 ```
 
-如果 enablePermissiveTrafficPolicyMode 配置为 true，则可以安全地加入命名空间，而不会中断任何服务间通信 。 如果 enablePermissiveTrafficPolicyMode 配置为 false，则需要确保已部署正确的 [SMI](https://smi-spec.io/) 流量访问策略清单，并确保具有表示命名空间中部署的每个服务的服务帐户 。 有关宽松流量模式的更多详细信息，请访问并阅读[宽松流量策略模式](https://docs.openservicemesh.io/docs/guides/traffic_management/permissive_mode/)一文。
+如果 enablePermissiveTrafficPolicyMode 配置为 true，则可以安全地加入命名空间，而不会中断任何服务间通信 。 如果 enablePermissiveTrafficPolicyMode 配置为 false，则需确保已部署正确的 [SMI](https://smi-spec.io/) 流量访问策略清单 。 你还需确保有一个表示命名空间中部署的每个服务的服务帐户。 有关宽松流量模式的更多详细信息，请访问并阅读[宽松流量策略模式](https://docs.openservicemesh.io/docs/guides/traffic_management/permissive_mode/)一文。
 
 ## <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-true"></a>在 Open Service Mesh (OSM) 宽松流量策略配置为 true 的情况下加入现有已部署应用程序
 
@@ -100,7 +100,7 @@ osm namespace add bookstore
 Namespace [bookstore] successfully added to mesh [osm]
 ```
 
-接下来，我们将看一下命名空间中的当前 Pod 部署。 运行以下命令，查看指定命名空间中的 Pod。
+接下来，我们看一下命名空间中的当前 Pod 部署。 运行以下命令，查看 `bookbuyer` 命名空间中的 Pod。
 
 ```azurecli-interactive
 kubectl get pod -n bookbuyer
@@ -119,7 +119,7 @@ bookbuyer-78666dcff8-wh6wl   1/1     Running   0          43s
 kubectl get deployment -n bookbuyer
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 NAME        READY   UP-TO-DATE   AVAILABLE   AGE
@@ -132,7 +132,7 @@ bookbuyer   1/1     1            1           23h
 kubectl rollout restart deployment bookbuyer -n bookbuyer
 ```
 
-应会看到以下输出：
+应该会看到以下输出：
 
 ```Output
 deployment.apps/bookbuyer restarted
@@ -188,7 +188,7 @@ Containers:
 
 ## <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-false"></a>在 Open Service Mesh (OSM) 宽松流量策略配置为 false 的情况下加入现有已部署应用程序
 
-如果 OSM 宽松流量策略配置设置为 `false`，OSM 将需要部署显式 [SMI](https://smi-spec.io/) 流量访问策略，群集内的服务间通信才能进行。 目前，OSM 还使用 Kubernetes 服务帐户来授权服务间通信。 为确保现有已部署应用程序由 OSM 网格管理时能够正常通信，我们需要验证要使用的服务帐户是否存在，还需要使用服务帐户信息更新应用程序部署并应用 [SMI](https://smi-spec.io/) 流量访问策略。
+如果 OSM 宽松流量策略配置设置为 `false`，OSM 将需要部署显式 [SMI](https://smi-spec.io/) 流量访问策略，群集内的服务间通信才能进行。 目前，OSM 还使用 Kubernetes 服务帐户来授权服务间通信。 为确保现有已部署应用程序由 OSM 网格管理时能够通信，我们现在验证要使用的服务帐户是否存在，使用服务帐户信息更新应用程序部署，并应用 [SMI](https://smi-spec.io/) 流量访问策略。
 
 ### <a name="verify-kubernetes-service-accounts"></a>验证 Kubernetes 服务帐户
 
@@ -198,7 +198,7 @@ Containers:
 kubectl get serviceaccounts -n bookbuyer
 ```
 
-下面的输出显示了 bookbuyer 命名空间中有一个名为 `bookbuyer` 的服务帐户。
+下面的输出显示了 `bookbuyer` 命名空间中有一个名为 `bookbuyer` 的服务帐户。
 
 ```Output
 NAME        SECRETS   AGE
@@ -206,7 +206,7 @@ bookbuyer   1         25h
 default     1         25h
 ```
 
-如果列出的服务帐户并非默认帐户，则需要为应用程序创建一个服务帐户。 例如，使用以下命令在应用程序的已部署命名空间中创建服务帐户。
+如果列出的服务帐户并非默认帐户之外的帐户，则需为应用程序创建一个。 例如，使用以下命令在应用程序的已部署命名空间中创建服务帐户。
 
 ```azurecli-interactive
 kubectl create serviceaccount myserviceaccount -n bookbuyer
@@ -218,7 +218,7 @@ serviceaccount/myserviceaccount created
 
 ### <a name="view-your-applications-current-deployment-specification"></a>查看应用程序的当前部署规范
 
-如果你必须创建上一节中的服务帐户，原因可能是应用程序部署的部署规范中未配置特定的 `serviceAccountName`。可以使用以下命令来查看应用程序的部署规范：
+如果你必须创建上一节中的服务帐户，则可能是因为未使用部署规范中的特定 `serviceAccountName` 对应用程序部署进行配置。可以使用以下命令来查看应用程序的部署规范：
 
 ```azurecli-interactive
 kubectl get deployment -n bookbuyer
@@ -231,13 +231,13 @@ NAME        READY   UP-TO-DATE   AVAILABLE   AGE
 bookbuyer   1/1     1            1           25h
 ```
 
-现在，我们将对部署运行 describe 命令，以查看“Pod Template”部分中是否列出了服务帐户。
+我们将对部署运行 describe 命令，以查看“Pod Template”部分是否列出了服务帐户。
 
 ```azurecli-interactive
 kubectl describe deployment bookbuyer -n bookbuyer
 ```
 
-在此特定部署中，你可以看到，“Pod Template”部分下方列出了与部署关联的服务帐户。 此部署使用服务帐户 bookbuyer。 如果看不到“Serivce Account:”属性，则表明部署未配置为使用服务帐户。
+在此特定部署中，你可以看到，“Pod Template”部分列出了与部署关联的服务帐户。 此部署使用服务帐户 `bookbuyer`。 如果看不到“Service Account:”属性，则表明部署未配置为使用服务帐户。
 
 ```Output
 Pod Template:
@@ -284,7 +284,7 @@ spec:
     namespace: bookbuyer
 ```
 
-在上面的 TrafficTarget 规范中，`destination` 表示为目标源服务配置的服务帐户。 请记住，先前添加到部署的服务帐户将用于授予对其附加到的部署的访问权限。 在此特定示例中，`rules` 部分定义了允许通过连接的 HTTP 流量类型。 可以为 HTTP 标头配置精细的正则表达式模式，以具体定义允许通过 HTTP 的流量。 `sources` 部分表示发起通信的服务。 此规范读取 bookbuyer 需求以与 bookstore 通信。
+在上面的 TrafficTarget 规范中，`destination` 表示为目标源服务配置的服务帐户。 请记住，先前添加到部署的服务帐户将用于授予对其附加到的部署的访问权限。 在此特定示例中，`rules` 部分定义了允许通过连接的 HTTP 流量类型。 可以为 HTTP 标头配置精细的正则表达式模式，以具体定义允许通过 HTTP 的流量。 `sources` 部分表示发起通信的服务。 此规范读取 `bookbuyer` 需求以与 bookstore 通信。
 
 HTTPRouteGroup 资源包含 HTTP 标头信息的一个或一组匹配项，并且是 TrafficTarget 规范的要求。在以下示例中，你可以看到 HTTPRouteGroup 授权三个 HTTP 操作：两个 GET 和一个 POST。
 
@@ -383,7 +383,7 @@ EOF
 
 ## <a name="manage-the-applications-namespace-with-osm"></a>使用 OSM 管理应用程序的命名空间
 
-接下来，我们将配置 OSM 以管理命名空间，并重启部署以获取随应用程序一起注入的 Envoy 挎斗代理。
+接下来，我们将确保通过 OSM 来管理命名空间，并重启部署以获取随应用程序一起注入的 Envoy 挎斗代理。
 
 运行以下命令，配置要由 OSM 管理的 `azure-vote` 命名空间。
 
@@ -407,4 +407,4 @@ deployment.apps/azure-vote-front restarted
 deployment.apps/azure-vote-back restarted
 ```
 
-如果查看 `azure-vote` 命名空间的 Pod，我们可以看到 `azure-vote-front` 和 `azure-vote-back` 的 READY 列都显示 2/2，表示 Envoy 挎斗代理已随应用程序一起注入。
+如果查看 `azure-vote` 命名空间的 Pod，我们可以看到 `azure-vote-front` 和 `azure-vote-back` 的 READY 列都显示为 2/2，表示 Envoy 挎斗代理已随应用程序一起注入。

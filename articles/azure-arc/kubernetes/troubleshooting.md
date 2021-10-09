@@ -6,14 +6,14 @@ ms.date: 05/21/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: 排查已启用 Arc 的 Kubernetes 群集的常见问题。
-keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: e1a04e95924f4a217cdceca383637bcee7ea368a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+description: 排查已启用 Azure Arc 的 Kubernetes 群集的常见问题。
+keywords: Kubernetes、Arc、Azure、容器
+ms.openlocfilehash: f6f29b30f3a62653c032b7aae40cac5afdcf96b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743824"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546502"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>已启用 Azure Arc 的 Kubernetes 故障排除
 
@@ -77,6 +77,19 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 
 将群集连接到 Azure 需要对 Azure 订阅的访问权限和对目标群集的 `cluster-admin` 访问权限。 如果你无法访问该群集或权限不足，那么在将群集连接到 Azure Arc 时就会失败。
 
+### <a name="azure-cli-is-unable-to-download-helm-chart-for-azure-arc-agents"></a>Azure CLI 无法下载 Azure Arc 代理的 Helm 图表
+
+如果你使用的是 Helm 版本 3.7.0 或更高版本，则在运行 `az connectedk8s connect` 以将集群连接到 Azure Arc 时会遇到以下错误：
+
+```console
+$ az connectedk8s connect -n AzureArcTest -g AzureArcTest
+
+Unable to pull helm chart from the registry 'mcr.microsoft.com/azurearck8s/batch1/stable/azure-arc-k8sagents:1.4.0': Error: unknown command "chart" for "helm"
+Run 'helm --help' for usage.
+```
+
+在这种情况下，你将需要安装先前版本的 [Helm 3](https://helm.sh/docs/intro/install/)，其中版本 &lt; 3.7.0。 之后，再次运行 `az connectedk8s connect` 命令以将群集连接到 Azure Arc。
+
 ### <a name="insufficient-cluster-permissions"></a>群集权限不足
 
 如果提供的 kubeconfig 文件没有足够的权限来安装 Azure Arc 代理，则 Azure CLI 命令将会返回错误。
@@ -119,7 +132,7 @@ This operation might take a while...
 Helm `v3.3.0-rc.1` 版本存在一个[问题](https://github.com/helm/helm/pull/8527)，即，helm install/upgrade（由 `connectedk8s` CLI 扩展使用）导致运行所有挂钩，出现以下错误：
 
 ```console
-$ az connectedk8s connect -n shasbakstest -g shasbakstest
+$ az connectedk8s connect -n AzureArcTest -g AzureArcTest
 Ensure that you have the latest helm version installed before proceeding.
 This operation might take a while...
 
@@ -198,6 +211,7 @@ metadata:
   resourceVersion: ""
   selfLink: ""
 ```
+
 ## <a name="monitoring"></a>监视
 
 适用于容器的 Azure Monitor 需要在特权模式下运行它的 DaemonSet。 如果要成功设置用于监视的 Canonical Charmed Kubernetes 群集，请运行以下命令：
@@ -229,7 +243,7 @@ Unable to fetch oid of 'custom-locations' app. Proceeding without enabling the f
         az connectedk8s connect -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId>   
         ```
 
-    - 如果在现有的启用了 Arc 的 Kubernetes 群集上启用自定义位置功能，请运行以下命令：
+    - 如果在现有的启用了 Azure Arc 的 Kubernetes 群集上启用自定义位置功能，请运行以下命令：
 
         ```console
         az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
@@ -237,7 +251,7 @@ Unable to fetch oid of 'custom-locations' app. Proceeding without enabling the f
 
 授予上述权限后，现在可以继续在群集上[启用自定义位置功能](custom-locations.md#enable-custom-locations-on-cluster)。
 
-## <a name="arc-enabled-open-service-mesh"></a>启用了 Arc 的开放式服务网格
+## <a name="azure-arc-enabled-open-service-mesh"></a>启用了 Azure Arc 的开放式服务网格
 
 以下故障排除步骤提供了有关验证群集上所有开放服务网格扩展组件的部署的指南。
 

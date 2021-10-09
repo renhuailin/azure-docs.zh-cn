@@ -1,7 +1,6 @@
 ---
 title: 快速入门 - 在 Azure Key Vault 中设置和检索机密
 description: 快速入门介绍如何使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
-services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
@@ -10,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: dc5fa0eeabc437f16ca64c34b4bb72e62c0c3b21
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: cae19bc96cc689a3cb10f1c9820f95e13c9b4e4a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815011"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593701"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 
@@ -25,7 +24,7 @@ ms.locfileid: "107815011"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - 本快速入门需要 Azure CLI 版本 2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+本快速入门需要 Azure CLI 版本 2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -47,9 +46,9 @@ az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "Exampl
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>从 Key Vault 检索机密
 
-现在，可以通过使用密码的 URI，引用已添加到 Azure Key Vault 的此密码。 使用“https://<your-unique-keyvault-name>.vault.azure.net/secrets/ExamplePassword”来获取当前版本。
+现在，可以通过使用密码的 URI，引用已添加到 Azure Key Vault 的此密码。 使用 **`https://<your-unique-keyvault-name>.vault.azure.net/secrets/ExamplePassword`** 获取当前版本。
 
-若要查看机密中包含的纯文本形式的值，请执行以下命令：
+若要以纯文本格式查看机密中包含的值，请使用 Azure CLI [az keyvault secret show](/cli/azure/keyvault/secret#az_keyvault_secret_show) 命令：
 
 ```azurecli
 az keyvault secret show --name "ExamplePassword" --vault-name "<your-unique-keyvault-name>" --query "value"

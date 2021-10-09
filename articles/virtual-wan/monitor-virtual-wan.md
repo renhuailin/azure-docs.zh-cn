@@ -7,24 +7,31 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: d3cffbe9ebaa71ca5c4dfd8681159f83ff06eb38
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: d1ac031b79372987561651044e81da2e3d2d2779
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821462"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636467"
 ---
 # <a name="monitoring-virtual-wan"></a>监视虚拟 WAN
 
-你可以使用 Azure Monitor 监视 Azure 虚拟 WAN。 虚拟 WAN 是一个网络服务，其中整合了多种网络、安全和路由功能，提供单一操作界面。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。
+你可以使用 Azure Monitor 监视 Azure 虚拟 WAN。 虚拟 WAN 是一个网络服务，其中整合了多种网络、安全和路由功能，提供单一操作界面。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 
 
 本文讨论了可通过门户获得的指标和诊断。 指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。
 
 ### <a name="monitoring-secured-hub-azure-firewall"></a>监视受保护的中心（Azure 防火墙） 
 
-可以使用 Azure 防火墙日志监视受保护的中心。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。
-
 如果已选择使用 Azure 防火墙保护虚拟中心，则可访问以下链接了解相关的日志和指标：[Azure 防火墙日志和指标](../firewall/logs-and-metrics.md)。
+可以使用 Azure 防火墙日志和指标监视受保护的中心。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。
+对于保护并转换为安全中心的每个 Azure 虚拟 WAN，都会在该中心所在的资源组中创建一个显式防火墙资源对象。 
+
+:::image type="content" source="./media/monitor-virtual-wan/firewall-resources-portal.png" alt-text="屏幕截图显示 vWAN 中心资源组中的防火墙资源。":::
+
+诊断和日志记录配置必须通过访问“诊断设置”选项卡完成：
+
+:::image type="content" source="./media/monitor-virtual-wan/firewall-diagnostic-settings.png" alt-text="屏幕截图显示防火墙诊断设置。":::
+
 
 ## <a name="metrics"></a>指标
 
@@ -96,11 +103,11 @@ Azure ExpressRoute 网关提供以下指标：
 
 1. 在门户中，导航到具有网关的虚拟中心。
 
-2. 选择“VPN (站点到站点)”以查找站点到站点网关，选择“ExpressRoute”以查找 ExpressRoute 网关，或选择“用户 VPN (点到站点)”以查找点到站点网关。 在页面上，你可以看到网关信息。 复制此信息。 稍后你将使用它通过 Azure Monitor 来查看诊断。
+2. 选择“VPN (站点到站点)”以查找站点到站点网关，选择“ExpressRoute”以查找 ExpressRoute 网关，或选择“用户 VPN (点到站点)”以查找点到站点网关。
 
 3. 选择“指标”。
 
-   :::image type="content" source="./media/monitor-virtual-wan/metrics.png" alt-text="屏幕截图显示了站点到站点 VPN 窗格，其中选择了“在 Azure Monitor 中查看”。":::
+   :::image type="content" source="./media/monitor-virtual-wan/view-metrics.png" alt-text="屏幕截图显示了一个站点到站点 VPN 窗格，其中选择了 Azure Monitor 中的“视图”。":::
 
 4. 在“指标”页上，你可以查看感兴趣的指标。
 
@@ -129,35 +136,51 @@ Azure 点到站点 VPN 网关提供以下诊断：
 | **IKE 诊断日志** | 用于 IPsec 连接的特定于 IKE 的诊断。|
 | **P2S 诊断日志** | 这是用户 VPN（点到站点）P2S 配置和客户端事件。 它们包括客户端连接/断开连接、VPN 客户端地址分配以及其他诊断。|
 
-### <a name="view-diagnostic-logs"></a><a name="diagnostic-steps"></a>查看诊断日志
+### <a name="express-route-gateways"></a>Express Route 网关
 
-以下步骤可帮助你查找和查看诊断：
+不支持 Azure 虚拟 WAN 中 Express Route 网关的诊断日志。
 
-1. 在门户中，导航到你的虚拟 WAN 资源。 在门户的“虚拟 WAN”页面的“概览”部分，选择“基本信息”以展开视图并获取资源组信息。 复制资源组信息。
+### <a name="view-diagnostic-logs-configuration"></a><a name="diagnostic-steps"></a>查看诊断日志配置
 
-   :::image type="content" source="./media/monitor-virtual-wan/3.png" alt-text="屏幕截图显示了“概览”部分，其中有一个箭头指向“复制”按钮。":::
+以下步骤可帮助你创建、编辑和查看诊断设置：
 
-2. 从搜索栏导航到“监视”，在“设置”部分选择“诊断设置”，然后输入资源组、资源类型和资源信息。 这是在本文前面[查看网关指标](#metrics-steps)部分的步骤 2 中复制的资源组信息。
+1. 在门户中，导航到虚拟 WAN 资源，然后在“连接”组中选择“中心”。 
 
-   :::image type="content" source="./media/monitor-virtual-wan/4.png" alt-text="屏幕截图显示了“监视”部分，其中有一个箭头指向“资源”下拉列表。":::
+   :::image type="content" source="./media/monitor-virtual-wan/select-hub.png" alt-text="显示 vWAN 门户中的中心选择的屏幕截图。":::
 
-3. 在结果页上，选择“+ 添加诊断设置”，然后选择一个选项。 你可以选择发送到 Log Analytics、流式传输到事件中心，或者直接存档到某个存储帐户。
+2. 在左侧的“连接”组下，选择要检查诊断的网关：
 
-   :::image type="content" source="./media/monitor-virtual-wan/5.png" alt-text="“指标”页":::
+   :::image type="content" source="./media/monitor-virtual-wan/select-hub-gateway.png" alt-text="显示中心的“连接”部分的屏幕截图。":::
+
+3. 在页面右侧，单击“在 Azure Monitor 中查看”链接到“日志”，然后选择一个选项。 你可以选择发送到 Log Analytics、流式传输到事件中心，或者直接存档到某个存储帐户。
+
+   :::image type="content" source="./media/monitor-virtual-wan/view-hub-gateway-logs.png" alt-text="日志的 Azure Monitor 中的选择视图的屏幕截图。":::
+
+4. 在此页中，可以创建新的诊断设置（“+ 添加诊断设置”）或编辑现有诊断设置（“编辑设置”）。 可以选择将诊断日志发送到 Log Analytics（如下面的示例所示）、流式传输到事件中心、发送到第 3 方解决方案或存档到存储帐户。
+
+    :::image type="content" source="./media/monitor-virtual-wan/select-gateway-settings.png" alt-text="选择诊断日志设置的屏幕截图。":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Log Analytics 示例查询
 
-日志位于“Azure Log Analytics 工作区”中。 你可以在 Log Analytics 中设置查询。 以下示例包含一个查询，用于获取站点到站点路由诊断。
+如果选择将诊断数据发送到 Log Analytics 工作区，则可以使用类似 SQL 的查询（如下面的示例）来检查数据。 有关详细信息，请参阅 [Log Analytics 查询语言](/services-hub/health/log_analytics_query_language)。
 
-```AzureDiagnostics | where Category == "RouteDiagnosticLog"```
+以下示例包含一个查询，用于获取站点到站点路由诊断。
 
-根据需要，替换下面位于 **= =** 之后的值。
+`AzureDiagnostics | where Category == "RouteDiagnosticLog"`
+
+根据本文前面部分中所报告的表，根据需要替换 = = 之后的以下值。
 
 * "GatewayDiagnosticLog"
 * "IKEDiagnosticLog"
 * "P2SDiagnosticLog”
 * "TunnelDiagnosticLog"
 * "RouteDiagnosticLog"
+
+若要执行查询，必须打开配置为接收诊断日志的 Log Analytics 资源，然后在窗格左侧的“常规”选项卡下选择“日志”：
+
+:::image type="content" source="./media/monitor-virtual-wan/log-analytics-query-samples.png" alt-text="Log Analytics 查询示例。":::
+
+有关 Azure VPN 网关（站点到站点和点到站点）的其他 Log Analytics 查询示例，可以访问页面[使用诊断日志对 Azure VPN 网关进行故障排除](../vpn-gateway/troubleshoot-vpn-with-azure-diagnostics.md)。 对于 Azure 防火墙，提供了一个[工作簿](../firewall/firewall-workbook.md)以简化日志分析。 使用其图形界面，无需手动编写任何 Log Analytics 查询即可调查诊断数据。 
 
 ## <a name="activity-logs"></a><a name="activity-logs"></a>活动日志
 

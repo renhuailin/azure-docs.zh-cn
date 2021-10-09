@@ -9,37 +9,39 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/06/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d440a765ba9504ecae351477c1583a45f293b967
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 8e8395fc16d4228969d8fd90eccbc50ceeddfc36
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804406"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794816"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教程：Azure Active Directory 与 Zscaler Two 集成
 
 本教程介绍如何将 Zscaler Two 与 Azure Active Directory (Azure AD) 集成。 将 Zscaler Two 与 Azure AD 集成后，你可以：
 
-- 在 Azure AD 中控制谁有权访问 Zscaler Two。
-- 让用户使用其 Azure AD 帐户自动登录到 Zscaler Two。
-- 在一个中心位置（Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Zscaler Two。
+* 让用户使用其 Azure AD 帐户自动登录到 Zscaler Two。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Zscaler Two 的集成，需要以下项：
 
-- 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-- 已启用单一登录的 Zscaler Two 订阅。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用单一登录的 Zscaler Two 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-- Zscaler Two 支持 SP 发起的 SSO。
+* Zscaler Two 支持 SP 发起的 SSO。
 
-- Zscaler Two 支持实时用户预配。
+* Zscaler Two 支持实时用户预配。
+
+* Zscaler Two 支持[自动用户预配](zscaler-two-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -184,7 +186,7 @@ ms.locfileid: "108804406"
 
    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
 
-   h. 单击“ **保存**”。
+   h. 单击“保存”  。
 
 6. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
@@ -233,15 +235,18 @@ ms.locfileid: "108804406"
 > [!Note]
 > 如果需要手动创建用户，请联系 [Zscaler Two 支持团队](https://www.zscaler.com/company/contact)。
 
+> [!NOTE]
+> Zscaler Two 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./zscaler-two-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-- 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler Two 登录 URL，可以在其中启动登录流。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler Two 登录 URL，可以在其中启动登录流。
 
-- 直接转到 Zscaler Two 登录 URL，并从那里启动登录流。
+* 直接转到 Zscaler Two 登录 URL，并从那里启动登录流。
 
-- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler Two 磁贴时，会重定向到 Zscaler Two 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler Two 磁贴时，会重定向到 Zscaler Two 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

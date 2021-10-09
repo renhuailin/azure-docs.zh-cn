@@ -1,7 +1,7 @@
 ---
 title: 映射数据流中的查找转换
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用映射数据流中的查找转换从另一个源引用数据。
+description: 在 Azure 数据工厂和 Synapse Analytics 管道的映射数据流中使用查找转换从另一个源引用数据。
 author: kromerm
 ms.reviewer: daperlov
 ms.author: makromer
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 02/19/2021
-ms.openlocfilehash: f6250b15f854870d14d9977c8eebd7c71e565635
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 8c5371fee2b0e7c4440762f9d7e609bf2dd496be
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638823"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060112"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>映射数据流中的查找转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 使用查找转换引用数据流中另一个源的数据。 查找转换会将匹配数据中的列追加到源数据中。
 
@@ -29,7 +31,7 @@ ms.locfileid: "122638823"
 
 ## <a name="configuration"></a>配置
 
-![屏幕截图显示“查找设置”选项卡，其中包含下文所述的标签。](media/data-flow/lookup1.png "查找")
+:::image type="content" source="media/data-flow/lookup1.png" alt-text="屏幕截图显示“查找设置”选项卡，其中包含下文所述的标签。":::
 
 **主流：** 传入的数据流。 此流等效于联接的左侧。
 
@@ -47,13 +49,13 @@ ms.locfileid: "122638823"
 
 若要在查找条件中使用条件运算符，例如不等于 (!=) 或大于 (>)，请在两列之间更改运算符下拉菜单。 非等值联接要求使用“优化”选项卡中的“固定”广播来广播两个流中的至少一个流 。
 
-![非等值查找](media/data-flow/non-equi-lookup.png "非等值查找")
+:::image type="content" source="media/data-flow/non-equi-lookup.png" alt-text="非等值查找":::
 
 ## <a name="analyzing-matched-rows"></a>分析匹配的行
 
 查找转换后，可以使用函数 `isMatch()` 来查看查找是否匹配单个行。
 
-![查找模式](media/data-flow/lookup111.png "查找模式")
+:::image type="content" source="media/data-flow/lookup111.png" alt-text="查找模式":::
 
 此模式的一个示例是使用有条件拆分转换来拆分 `isMatch()` 函数。 在上面的示例中，匹配行经过最顶部的流，而不匹配的行则流过 ```NoMatch``` 流。
 
@@ -63,7 +65,7 @@ ms.locfileid: "122638823"
 
 ## <a name="broadcast-optimization"></a>广播优化
 
-![广播联接](media/data-flow/broadcast.png "广播联接")
+:::image type="content" source="media/data-flow/broadcast.png" alt-text="广播联接":::
 
 在联接、查找和存在转换中，如果工作器节点内存可容纳一个数据流或同时容纳两个数据流，则可以通过启用“广播”来优化性能。 默认情况下，Spark 引擎将自动决定是否广播一侧。 若要手动选择要广播的一侧，请选择“固定”。
 
@@ -89,7 +91,7 @@ ms.locfileid: "122638823"
 ```
 ### <a name="example"></a>示例
 
-![屏幕截图显示以下代码的“查找设置”选项卡。](media/data-flow/lookup-dsl-example.png "查找")
+:::image type="content" source="media/data-flow/lookup-dsl-example.png" alt-text="屏幕截图显示以下代码的“查找设置”选项卡。":::
 
 以上查找配置的数据流脚本位于下面的代码片段中。
 

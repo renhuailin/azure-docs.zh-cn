@@ -2,17 +2,91 @@
 title: Azure Monitor 文档中的新增内容
 description: Azure Monitor 文档中的新增内容
 ms.topic: conceptual
-ms.date: 08/15/2021
-ms.openlocfilehash: 1db9662322c6e4d8ba16eb29b13689a44ad1278b
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.date: 09/07/2021
+ms.openlocfilehash: ff893ade0664df13c8e849957cb7d7877d91a910
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252416"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788413"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中的新增内容
 
 本文列出了对 Azure Monitor 文档的重大更改。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="agents"></a>代理
+
+**更新的文章**
+
+- [从 Log Analytics 代理进行迁移](agents/azure-monitor-agent-migration.md)
+- [Azure Monitor 代理概述](agents/azure-monitor-agent-overview.md)
+
+### <a name="alerts"></a>警报
+
+**更新的文章**
+
+- [排查 Azure Monitor 指标警报的问题](alerts/alerts-troubleshoot-metric.md)
+- [在 Azure CLI 中创建指标警报监视器](azure-cli-metrics-alert-sample.md)
+- [使用 Azure Monitor 创建、查看和管理活动日志警报](alerts/alerts-activity-log.md)
+
+
+### <a name="application-insights"></a>Application Insights
+
+**更新的文章**
+
+- [使用 Azure Monitor Application Insights 监视 Azure Functions](app/monitor-functions.md)
+- [Azure 应用服务的应用程序监视](app/azure-web-apps.md)
+- [为 ASP.NET 网站配置 Application Insights](app/asp-net.md)
+- [Application Insights 可用性测试](app/availability-overview.md)
+- [使用 .NET 进行 Application Insights 日志记录](app/ilogger.md)
+- [地理位置和 IP 地址处理](app/ip-collection.md)
+- [通过 URL ping 测试监视可用性](app/monitor-web-app-availability.md)
+
+### <a name="essentials"></a>Essentials
+
+**更新的文章**
+
+- [Azure Monitor 支持的指标](essentials/metrics-supported.md)
+- [Azure 资源日志支持的类别](essentials/resource-logs-categories.md)
+- [使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标](essentials/collect-custom-metrics-linux-telegraf.md)
+
+### <a name="insights"></a>洞察力
+
+**更新的文章**
+
+- [Azure Monitor 网络见解](insights/network-insights-overview.md)
+
+### <a name="logs"></a>日志
+
+**新文章**
+
+- [适用于日志的 Azure AD 身份验证](logs/azure-ad-authentication-logs.md)
+- [使用 Azure 门户将 Log Analytics 工作区移到另一个区域](logs/move-workspace-region.md)
+- [Azure Monitor 中的可用性区域](logs/availability-zones.md)
+- [在 Azure CLI 中管理 Azure Monitor 日志](logs/azure-cli-log-analytics-workspace-sample.md)
+
+**更新的文章**
+
+- [设计专用链接设置](logs/private-link-design.md)
+- [Azure Monitor 日志专用群集](logs/logs-dedicated-clusters.md)
+- [使用 Azure 门户将 Log Analytics 工作区移到另一个区域](logs/move-workspace-region.md)
+- [配置专用链接](logs/private-link-configure.md)
+- [使用 Azure 专用链接将网络连接到 Azure Monitor](logs/private-link-security.md)
+- [Azure Monitor 日志中的标准列](logs/log-standard-columns.md)
+- [Azure Monitor 客户管理的密钥](logs/customer-managed-keys.md)
+- [Azure Monitor 日志数据安全性](logs/data-security.md)
+- [使用 HTTP 数据收集器 API（预览版）将日志数据发送到 Azure Monitor](logs/data-collector-api.md)
+- [Azure Monitor 中的日志查询入门](logs/get-started-queries.md)
+- [Azure Monitor 日志概览](logs/data-platform-logs.md)
+- [Log Analytics 教程](logs/log-analytics-tutorial.md)
+
+### <a name="virtual-machines"></a>虚拟机
+
+**更新的文章**
+
+- [使用 Azure Monitor 监视虚拟机：警报](vm/monitor-virtual-machine-alerts.md)
 
 ## <a name="july-2021"></a>2021 年 7 月
 

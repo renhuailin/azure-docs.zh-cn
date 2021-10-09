@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中使用共享映像添加 VM | Microsoft Docs
+title: 使用共享映像添加 VM
 description: 了解如何在 Azure 开发测试实验室中使用附加的共享映像库中的映像添加虚拟机 (VM)
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7107fd22142f00e422e0f302520962537d65b10e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483850"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621804"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>使用附加的共享映像库中的映像添加 VM
 Azure 开发测试实验室允许你将共享映像库附加到实验室，然后将库中的映像用作在实验室中创建的 VM 的基础。 若要了解如何将共享映像库附加到实验室，请参阅[配置共享映像库](configure-shared-image-gallery.md)。 本文介绍如何通过使用附加的共享映像库中的映像作为基础将 VM 添加到实验室。 

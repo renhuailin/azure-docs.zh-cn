@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 08/24/2021
+  ms.date: 09/07/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: bfdbb966783e4f95945933c074265d8c45ee1f61
-  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+  ms.openlocfilehash: 7a4344ed0aa7346d3c87d36d96e4772c08080327
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/25/2021
-  ms.locfileid: "122867604"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124763550"
 title: Azure 导入/导出服务：常见问题解答
 summary: >
   下面是你在使用 Azure 导入/导出服务将数据传输到 Azure 存储时可能会提出的问题及其解答。
@@ -88,18 +88,7 @@ sections:
       请仅在寄送包裹中寄送硬盘驱动器。 不要包括电源线或 USB 电缆之类的物品。
   - question: >
       是否必须通过 FedEx 或 DHL 寄送我的驱动器？
-    answer: >
-      可以通过任何知名的快递商（例如 FedEx、DHL、UPS 或美国邮政总局）将驱动器寄送到 Azure 数据中心。 但是，为了能够从数据中心将驱动器回寄给你，你必须提供：
-
-
-      - 在美国和欧洲的 FedEx 帐户编号，或者
-
-      - 在亚洲和澳大利亚区域的 DHL 帐户编号。
-
-
-      > [!NOTE]
-
-      > 印度的数据中心需要有你信头的声明信（发送凭证）才能回寄驱动器。 若要安排所需的出入许可证，还必须与选定的承运商预约取件并与数据中心分享详细信息。
+    answer: "可通过任何知名的快递商将驱动器寄送到 Azure 数据中心。 建议使用 FedEx、DHL 或 UPS。 如果你使用美国邮政服务，请注意该设备将被递送到最近的美国邮局，而不是数据中心，这可能会导致严重的延迟。\n\n为了能够从数据中心将驱动器回寄给你，你必须提供： \n\n- 在美国和欧洲的 FedEx 帐户编号，或者\n- 在亚洲和澳大利亚区域的 DHL 帐户编号。\n\n> [!NOTE]\n> 印度的数据中心需要有你信头的声明信（发送凭证）才能回寄驱动器。 若要安排所需的出入许可证，还必须与选定的承运商预约取件并与数据中心分享详细信息。\n    \n"
   - question: >
       跨国寄送和返还驱动器是否存在限制？
     answer: >

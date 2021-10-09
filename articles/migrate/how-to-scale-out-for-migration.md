@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 56f79028b2424d8383a0a4a3cb27639f3924ff90
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 187ed49a116b99524f6cfca408bdb0d7e15a47ca
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779617"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092578"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>缩放将 VMware 虚拟机迁移到 Azure 的无代理迁移过程
 
@@ -70,16 +70,19 @@ ms.locfileid: "122779617"
 > 2. 运行以下命令以生成 zip 文件的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. 如果计算出的哈希值与以下字符串不匹配，请从门户下载最新版本的横向扩展设备安装程序：CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+> 3. 如果计算出的哈希值与以下字符串不匹配，请从门户下载最新版本的横向扩展设备安装程序：BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3.运行 Azure Migrate 安装程序脚本
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
-2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
-3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
-4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+
+3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+
+4. 通过运行以下命令，运行名为“`AzureMigrateInstaller.ps1`”的脚本：
+
+  `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 `
 
 5. 从方案、云、配置和连接选项中进行选择，以部署所需的设备。 例如，下面所示的选择会在 Azure 公有云上一个已建立默认（公共终结点）连接的 Azure Migrate 项目中设置一个横向扩展设备，用于在 VMware 环境中运行的服务器上启动并发复制  。
 
@@ -141,14 +144,17 @@ ms.locfileid: "122779617"
 若要完成横向扩展设备的注册，请单击“导入”以从主设备获取必要的配置文件。
 
 1. 单击“导入”会打开一个弹出窗口，其中包含有关如何从主设备导入必要配置文件的说明。
+
 :::image type="content" source="./media/how-to-scale-out-for-migration/import-modal-scale-out.png" alt-text="导入配置模式":::
+
 1. 登录（远程桌面）到主设备并执行以下 PowerShell 命令：
 
-    ``` PS cd 'C:\Program Files\Microsoft Azure Appliance Configuration Manager\Scripts\PowerShell' ```
+   `PS cd 'C:\Program Files\Microsoft Azure Appliance Configuration Manager\Scripts\PowerShell' `
     
-    ``` PS .\ExportConfigFiles.ps1 ```
+    `PS .\ExportConfigFiles.ps1 `
 
 1. 将通过运行上述命令创建的 zip 文件复制到横向扩展设备。 zip 文件包含注册横向扩展设备所需的配置文件。
+
 1. 在上一步打开的弹出窗口中，选择复制的配置 zip 文件的位置，然后单击“保存”。
 
 成功导入文件之后，横向扩展设备的注册就完成了，它会显示上次成功导入的时间戳。 还可以通过单击“查看详细信息”来查看注册详细信息。

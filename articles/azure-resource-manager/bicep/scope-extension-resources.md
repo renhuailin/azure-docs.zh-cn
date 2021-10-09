@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: dbc349b907e8141af30012271c22c9c99d5a0298
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2b1fb9960caf81a51c80dae312979d90f6eb5f4d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722972"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733431"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>在 Bicep 中设置扩展资源的范围
 
@@ -23,11 +23,15 @@ ms.locfileid: "121722972"
 > [!NOTE]
 > scope 属性仅适用于扩展资源类型。 若要为非扩展类型的资源类型指定不同的范围，请使用[模块](modules.md)。
 
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解扩展资源以及实践指南，请参阅 Microsoft Learn 中的[使用 Bicep 部署子资源和扩展资源](/learn/modules/child-extension-bicep-templates)。
+
 ## <a name="apply-at-deployment-scope"></a>在部署范围内应用
 
 若要在目标部署范围内应用扩展资源类型，请将该资源添加到模板中，就像应用任何其他资源类型一样。 可用的范围是[资源组](deploy-to-resource-group.md)、[订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)和[租户](deploy-to-tenant.md)。 部署范围必须支持该资源类型。
 
-部署到资源组时，以下模板会将一个锁添加到该资源组。
+部署到资源组时，以下模板会向该资源组添加锁定。
 
 ```bicep
 resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
@@ -39,7 +43,7 @@ resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 ```
 
-下一个示例将角色分配给它所部署到的订阅。
+下一个示例为部署该资源组的订阅分配角色。
 
 ```bicep
 targetScope = 'subscription'
@@ -119,13 +123,10 @@ resource roleAssignStorage 'Microsoft.Authorization/roleAssignments@2020-04-01-p
     principalId: principalId
   }
   scope: demoStorageAcct
-  dependsOn: [
-    demoStorageAcct
-  ]
 }
 ```
 
-可以将扩展资源应用于现有资源。 以下示例将一个锁添加到现有存储帐户。
+可以将扩展资源应用于现有资源。 以下示例向现有存储帐户添加锁定。
 
 ```bicep
 resource demoStorageAcct 'Microsoft.Storage/storageAccounts@2021-04-01' existing = {

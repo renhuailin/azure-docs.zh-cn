@@ -3,14 +3,14 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 06/24/2021
+ms.date: 09/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0190d5501b95c0c70606978586edf30ff3d39b79
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: fed1ce7f236b568458f1eb1b25ce5420c2ad5501
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112676601"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092144"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -30,19 +30,21 @@ Microsoft 还有其他功能，有助于管理 Azure 虚拟机或 Azure 虚拟�
 
 下图说明了更新管理如何评估安全更新并将其应用于所有连接的 Windows 服务器和 Linux 服务器。
 
-![更新管理工作流](./media/overview/update-mgmt-updateworkflow.png)
+![更新管理工作流](./media/overview/update-mgmt-workflow.png)
 
-更新管理集成了 Azure Monitor 日志，以日志数据的形式存储已分配的 Azure 计算机和非 Azure 计算机中的更新评估和更新部署结果。 为了收集这些数据，系统会绑定自动化帐户和 Log Analytics 工作区，同时，计算机上需要适用于 Windows 和 Linux 的 Log Analytics 代理，且需要将其配置为向此工作区报告。 更新管理支持从连接到工作区的 System Center Operations Manager 管理组中的代理收集有关系统更新的信息。 不支持在多个 Log Analytics 工作区（也称为多宿主）中对计算机注册更新管理。
+更新管理集成了 Azure Monitor 日志，以日志数据的形式存储已分配的 Azure 计算机和非 Azure 计算机中的更新评估和更新部署结果。 为了收集这些数据，系统会绑定自动化帐户和 Log Analytics 工作区，同时，计算机上需要适用于 Windows 和 Linux 的 Log Analytics 代理，且需要将其配置为向此工作区报告。 
+
+更新管理支持从连接到工作区的 System Center Operations Manager 管理组中的代理收集有关系统更新的信息。 不支持在多个 Log Analytics 工作区（也称为多宿主）中对计算机注册更新管理。
 
 下表汇总了具有更新管理的受支持的已连接源。
 
 | 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
-| Windows |是 |更新管理通过使用 Log Analytics 代理并安装所需的更新，从 Windows 计算机收集有关系统更新的信息。 |
-| Linux |是 |更新管理通过使用 Log Analytics 代理并在受支持的发行版上安装所需的更新，从 Linux 计算机收集有关系统更新的信息。 |
+| Windows |是 |更新管理通过使用 Log Analytics 代理并安装所需的更新，从 Windows 计算机收集有关系统更新的信息。<br> 计算机需要向 Microsoft 更新或 Windows Server Update Services (WSUS) 报告。 |
+| Linux |是 |更新管理通过使用 Log Analytics 代理并在受支持的发行版上安装所需的更新，从 Linux 计算机收集有关系统更新的信息。<br> 计算机需要向本地或远程存储库报告。 |
 | Operations Manager 管理组 |是 |更新管理从已连接的管理组中的代理收集有关软件更新的信息。<br/><br/>从 Operations Manager 代理到 Azure Monitor 日志的直接连接不是必需的。 系统会将日志数据从管理组转发到 Log Analytics 工作区。 |
 
-分配给更新管理的计算机根据将其配置为与之同步的源报告其最新状态。 可以将 Windows 计算机配置为向 Windows Server Update Services 或 Microsoft 更新报告，并且可以将 Linux 计算机配置为向本地或公共存储库报告。 此外，还可以将更新管理与 Microsoft Endpoint Configuration Manager 一起使用，相关详情请参阅[集成更新管理与 Windows Endpoint Configuration Manager](mecmintegration.md)。 
+分配给更新管理的计算机根据将其配置为与之同步的源报告其最新状态。 Windows 计算机需要配置为向 [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) 或 [Microsoft 更新](https://www.update.microsoft.com)报告，Linux 计算机需要配置为向本地或公共存储库报告。 此外，还可以将更新管理与 Microsoft Endpoint Configuration Manager 一起使用，相关详情请参阅[集成更新管理与 Windows Endpoint Configuration Manager](mecmintegration.md)。 
 
 如果将 Windows 计算机上的 Windows Update Agent (WUA) 配置为向 WSUS 报告，则结果可能不同于 Microsoft 更新所显示的内容，具体取决于 WSUS 上次与 Microsoft 更新同步的时间。 对于配置为向本地存储库（而非公共存储库）报告的 Linux 计算机来说，情况亦是如此。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。 对于 Linux 计算机，符合性扫描默认情况下每小时执行一次。 如果 Log Analytics 代理重启，则会在 15 分钟内启动符合性扫描。 当计算机完成更新合规性扫描时，代理会将信息批量转发到 Azure Monitor 日志。 
 
@@ -77,6 +79,14 @@ Microsoft 还有其他功能，有助于管理 Azure 虚拟机或 Azure 虚拟�
 更新管理托管的每个 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 这些组使用 `Hostname FQDN_GUID` 命名约定。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试，则尝试会失败。 这些组仅用于为更新管理提供支持。 若要详细了解如何查看配置为混合 Runbook 辅助角色的 Windows 计算机的列表，请参阅[查看混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)。
 
 如果对更新管理和混合 Runbook 辅助角色组成员身份使用同一帐户，则可以将 Windows 计算机添加到自动化帐户中的用户混合 Runbook 辅助角色组，为自动化 runbook 提供支持。 此功能是在 7.2.12024.0 版本的混合 Runbook 辅助角色中添加的。
+
+### <a name="external-dependencies"></a>外部依赖关系
+
+Azure 自动化更新管理依赖于以下外部依赖项来提供软件更新。
+
+* 在基于 Windows 的计算机上，软件更新包和软件更新适用性扫描需要 Windows Server Update Services (WSUS) 或 Microsoft 更新。
+* 在基于 Windows 的计算机上，需要有 Windows 更新代理 (WUA) 客户端，这样这些计算机才能连接到 WSUS 服务器或 Microsoft 更新。
+* 本地或远程存储库，用于检索 OS 更新并在基于 Linux 的计算机上安装这些更新。
 
 ### <a name="management-packs"></a>管理包
 
@@ -151,7 +161,7 @@ sudo yum -q --security check-update
 基于 OVAL 文件将 Linux 更新分类为“安全性”或“其他”，其中包括用于解决安全问题或漏洞的更新 。 但是，当运行更新计划时，会在 Linux 计算机上使用适当的包管理器（例如 YUM、APT 或 ZYPPER）安装更新。 Linux 发行版的包管理器可能具有不同的机制来对更新进行分类，其结果可能与更新管理从 OVAL 文件获得的结果有所不同。 若要通过包管理器手动检查计算机并了解哪些更新与安全性有关，请参阅 [Linux 更新部署故障排除](../troubleshoot/update-management.md#updates-linux-installed-different)。
 
 >[!NOTE]
-> 对于“更新管理”支持的 Linux 发行版，可能无法正常执行按更新分类来部署更新的操作。 这是由一个已确定的 OVAL 文件命名架构问题所导致的，这会导致“更新管理”无法正确根据筛选规则来匹配分类。 由于在安全更新评估中使用的逻辑不同，结果可能与部署期间应用的安全更新不同。 如果将分类设置为“严重”和“安全性”，更新部署会按预期工作 。 在评估期间，只有“更新的分类”会受到影响。
+> 对于“更新管理”支持的 Linux 发行版，可能无法正常执行按更新分类来部署更新的操作。 这是由 OVAL 文件的命名架构确定的问题导致的，会阻止更新管理根据筛选规则正确匹配分类。 由于在安全更新评估中使用的逻辑不同，结果可能与部署期间应用的安全更新不同。 如果将分类设置为“严重”和“安全性”，则更新部署会按预期工作。 在评估期间，只有“更新的分类”会受影响。
 >
 > Windows Server 计算机的更新管理不受影响；更新分类和部署保持不变。
 

@@ -9,12 +9,12 @@ ms.author: anwolter
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.reviewer: vanto
-ms.openlocfilehash: 64c012373187059792174618920b797b2d081aa2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: cfb24ee98bf00fa46f75b0bef321a7b1694e2113
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537195"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630255"
 ---
 # <a name="azure-sql-database-server-roles-for-permission-management"></a>用于权限管理的 Azure SQL 数据库服务器角色
 
@@ -56,7 +56,7 @@ Azure SQL 数据库目前提供三个固定的服务器角色。 无法更改被
 
 每个内置的服务器级角色都分配有特定的权限。 下表显示了分配给服务器级角色的权限。 如果数据库中存在用户帐户，则还会显示继承的数据库级权限。
   
-|服务器级的固定角色|服务器级别权限|数据库级权限（如果数据库用户存在）  
+|服务器级的固定角色|服务器级别权限|数据库级别权限（如果存在与登录名匹配的数据库用户）  
 |-------------|----------|-----------------|  
 |##MS_DefinitionReader##|查看任何数据库、查看任何定义、查看任何安全定义|查看定义，查看安全定义|  
 |##MS_ServerStateReader##|查看服务器状态、查看服务器性能状态、查看服务器安全状态|查看数据库状态、查看数据库性能状态、查看数据库安全状态|  

@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor 指标的指标聚合和显示说明
+title: Azure Monitor 指标聚合和显示说明
 description: 有关如何在 Azure Monitor 中聚合指标的详细信息
 author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 03/10/2021
-ms.openlocfilehash: 9c543b1bebfdeb47c1a1e1326f49247d8103191f
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 08/31/2021
+ms.openlocfilehash: 71c348d313c236d438521d70ca135feee647bb32
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861256"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744532"
 ---
-# <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor 指标的指标聚合和显示说明
+# <a name="azure-monitor-metrics-aggregation-and-display-explained"></a>Azure Monitor 指标聚合和显示说明
 
 本文介绍支持 Azure Monitor [平台指标](../data-platform.md)和[自定义指标](../essentials/metrics-custom-overview.md)的 Azure Monitor 时序数据库中指标的聚合。 本文还适用于标准 [Application Insights 指标](../app/app-insights-overview.md)。 
 

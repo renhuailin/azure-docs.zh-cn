@@ -1,15 +1,15 @@
 ---
-title: PowerShell - 将市场映像添加到 Azure 开发测试实验室中的实验室
+title: PowerShell - 将市场映像添加到实验室
 description: 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 543f20af270769dd16e4a1ecf6ee93e9259cdfd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffb2baa4f82d3246f7193bfe0edad66122b5ed99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96022264"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637249"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将市场映像添加到 Azure 开发测试实验室中的实验室
 

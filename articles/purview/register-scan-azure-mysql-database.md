@@ -1,23 +1,22 @@
 ---
 title: 注册并扫描 Azure MySQL 数据库
-description: 本教程介绍如何扫描 Azure MySQL 数据库
+description: 本教程介绍如何在 Azure Purview 中注册和扫描 Azure MySQL 数据库。
 author: evwhite
 ms.author: evwhite
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
-ms.date: 06/30/2021
-ms.openlocfilehash: ed3a0abc6bdd99e5c86e67a410d7c9ecadf7a718
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8f4a5480b76e03a57ff810c88a0a1660ae561071
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737647"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209846"
 ---
 # <a name="register-and-scan-an-azure-mysql-database"></a>注册并扫描 Azure MySQL 数据库
 
 本文介绍如何注册并扫描 Azure MySQL 数据库。
-
 
 ## <a name="supported-capabilities"></a>支持的功能
 - 完全扫描和增量扫描，用于从 Azure MySQL 数据库捕获元数据和分类。
@@ -73,7 +72,7 @@ Purview 仅支持 Azure MySQL 数据库的 SQL 身份验证。
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择你已注册的 Azure Database for MySQL 源。
 

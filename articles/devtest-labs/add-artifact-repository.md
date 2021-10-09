@@ -1,15 +1,15 @@
 ---
-title: 将项目存储库添加到 Azure 开发测试实验室中的实验室 | Microsoft Docs
+title: 将项目存储库添加到实验室
 description: 了解如何为 Azure 开发测试实验室中的实验室指定自己的项目存储库，以存储公共项目存储库中不可用的工具。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0915254b5dbaabfc32a47b9b07713499a26c16a5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 83a1cbb6c25c76d23977219d8e3b46491bbb363b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954166"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644441"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>将项目存储库添加到开发测试实验室中的实验室
 通过开发测试实验室，可以指定在创建 VM 时或创建 VM 之后要添加到 VM 的项目。 此项目可能是要在 VM 上安装的工具或应用程序。 项目在从 GitHub 或 Azure DevOps Git 存储库加载的 JSON 文件中定义。

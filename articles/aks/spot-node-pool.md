@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c943db2577de8fc1e4adc0e9cfbf408bffb5f2c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181119"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585365"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>将现成节点池添加到 Azure Kubernetes 服务 (AKS) 群集
 
@@ -69,7 +69,7 @@ az aks nodepool add \
 该命令还将启用[群集自动缩放程序][cluster-autoscaler]，此程序建议用于现成节点池。 根据群集中运行的工作负载，群集自动缩放程序将纵向扩展和缩减节点池中的节点数。 对于现成节点池，如果仍需要更多节点，则群集自动缩放程序将在逐出之后纵向扩展节点数。 如果更改节点池可以具有的最大节点数，还需要调整与群集自动缩放程序关联的 `maxCount` 值。 如果不使用群集自动缩放程序，则在逐出时，现成池最终将减小到零，且需要手动操作才能接收任何额外的现成节点。
 
 > [!Important]
-> 仅在可处理中断的现成节点池上计划工作负载，如批处理作业和测试环境。 建议在现成节点池上设置[排斥和容许][taints-tolerations]，以确保仅在现成节点池上计划可处理节点逐出的工作负载。 例如，上述命令 ny 默认情况下会添加排斥 kubernetes.azure.com/scalesetpriority=spot:NoSchedule，因此在此节点上仅计划具有相应容许的 pod。
+> 仅在可处理中断的现成节点池上计划工作负载，如批处理作业和测试环境。 建议在现成节点池上设置[排斥和容许][taints-tolerations]，以确保仅在现成节点池上计划可处理节点逐出的工作负载。 例如，上述命令默认情况下会添加排斥 kubernetes.azure.com/scalesetpriority=spot:NoSchedule，因此在此节点上仅计划具有相应容许的 pod。
 
 ## <a name="verify-the-spot-node-pool"></a>验证现成节点池
 
@@ -113,7 +113,7 @@ spec:
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az_aks_nodepool_add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

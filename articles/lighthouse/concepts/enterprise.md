@@ -1,14 +1,14 @@
 ---
 title: 企业应用场景中的 Azure Lighthouse
 description: Azure Lighthouse 的功能可以简化使用多个 Azure AD 租户的企业中的跨租户管理。
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12a6c2f03c06fbd69e77e32b236258bc6a6c8fbe
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f83e5d84eee0c3ed7f159778630e3598274e4916
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768301"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768774"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>企业应用场景中的 Azure Lighthouse
 
@@ -20,7 +20,7 @@ ms.locfileid: "113768301"
 
 某些组织可能需要使用多个 Azure AD 租户。 这可能是一种暂时性的情况，比如发生收购后并尚未定义长期租户合并策略。 其他情况下，由于子公司完全独立、地理位置、法律要求或其他注意事项，组织可能需要持续维护多个租户。
 
-如果需要多租户体系结构，Azure Lighthouse 可帮助集中处理和简化管理操作。 通过使用 [Azure 委托的资源管理](architecture.md)，一个管理租户中的用户可以采用集中、可缩放的方式执行[跨租户管理功能](cross-tenant-management-experience.md)。
+如果需要多租户体系结构，Azure Lighthouse 可帮助集中处理和简化管理操作。 通过使用 Azure Lighthouse，一个管理租户中的用户可以采用集中、可缩放的方式执行[跨租户管理功能](cross-tenant-management-experience.md)。
 
 ## <a name="tenant-management-architecture"></a>租户管理体系结构
 

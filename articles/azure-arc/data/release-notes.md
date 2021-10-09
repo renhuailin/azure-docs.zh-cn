@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 08/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5c8918870274cb0ea443dd1f4c93f39c301c6287
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d91b14057937275338ee1c96ee4025d66af6251d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446500"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794591"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>发行说明 - 已启用 Azure Arc 的数据服务
 
@@ -140,7 +140,7 @@ ms.locfileid: "122446500"
 
 ##### <a name="point-in-time-restorepitr-supportability-and-limitations"></a>时间点还原 (PITR) 的支持和限制：
     
--  不支持从一个已启用 Azure Arc 的 SQL 托管实例还原到另一个启用 Azure Arc 的 SQL 托管实例。  只能将数据库还原到创建备份时所在的同一个启用 Arc 的 SQL 托管实例。
+-  不支持从一个已启用 Azure Arc 的 SQL 托管实例还原到另一个启用 Azure Arc 的 SQL 托管实例。  只能将数据库还原到创建备份时所在的同一个启用 Azure Arc 的 SQL 托管实例。
 -  为了执行时间点还原，目前不支持重命名数据库。
 -  目前没有 CLI 命令或 API 可以用来提供时间点还原的允许时间窗口信息。 你可以提供从数据库创建时间起合理时段内的一个时间，如果时间戳有效，则还原可以正常执行。 如果时间戳无效，系统将通过错误消息提供允许的时间窗口。
 -  不支持还原启用 TDE 的数据库。
@@ -188,7 +188,7 @@ az extension add --name arcdata
 
 对于已启用 Azure Arc 的超大规模 PostgreSQL，请将 `azdata arc sql postgres...` 替换为 `az postgres arc-server...`。
 
-除了 `azdata` 命令中用过的参数以外，`arcdata` Azure CLI 扩展中的相同命令还需要有一些新参数，如 `--k8s-namespace` 和 `--use-k8s`。 `--use-k8s` 参数将用于区分何时应将命令发送到 Kubernetes API 或 ARM API。 目前，启用 Arc 的数据服务的所有 Azure CLI 命令仅针对 Kubernetes API。
+除了 `azdata` 命令中用过的参数以外，`arcdata` Azure CLI 扩展中的相同命令还需要有一些新参数，如 `--k8s-namespace` 和 `--use-k8s`。 `--use-k8s` 参数将用于区分何时应将命令发送到 Kubernetes API 或 ARM API。 目前，启用 Azure Arc 的数据服务的所有 Azure CLI 命令仅针对 Kubernetes API。
 
 已删除或更改这些参数名称的一些简短形式（例如 `--core-limit` 简写为 `-cl`）。 使用新的参数短名称或长名称。
 
@@ -204,7 +204,7 @@ az extension add --name arcdata
 
 #### <a name="crd-version-bump-to-v1beta1"></a>CRD 版本升级为 `v1beta1`
 
-对于此版本，所有 CRD 的版本均已从 `v1alpha1` 升级为 `v1beta1`。 如果你已经部署 2021 年 6 月版之前的启用 Arc 的数据服务，请务必在卸载过程中删除所有 CRD。 随 2021 年 6 月版部署的新 CRD 将采用 v1beta1 版本。
+对于此版本，所有 CRD 的版本均已从 `v1alpha1` 升级为 `v1beta1`。 如果你已经部署 2021 年 6 月版之前的启用 Azure Arc 的数据服务，请务必在卸载过程中删除所有 CRD。 随 2021 年 6 月版部署的新 CRD 将采用 v1beta1 版本。
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
 
@@ -218,13 +218,13 @@ az extension add --name arcdata
 
 #### <a name="data-controller"></a>数据控制器
 
-- 简化了从 Azure 门户在直接连接模式下部署数据控制器的用户体验。 Kubernetes 群集启用 Arc 后，使用 Arc 数据控制器创建向导，只需一个动作就可以完全从门户部署数据控制器。 此部署还会创建自定义位置和启用 Arc 的数据服务扩展（引导程序）。 你也可以预先创建自定义位置和/或扩展，并将数据控制器部署配置为使用它们。
+- 简化了从 Azure 门户在直接连接模式下部署数据控制器的用户体验。 Kubernetes 群集启用 Azure Arc 后，使用 Arc 数据控制器创建向导，只需一个动作就可以完全从门户部署数据控制器。 此部署还会创建自定义位置和启用 Azure Arc 的数据服务扩展（引导程序）。 你也可以预先创建自定义位置和/或扩展，并将数据控制器部署配置为使用它们。
 - 部署 Arc 数据控制器时，新的 `Infrastructure` 属性是必需属性。 需要有此属性才能进行计费。 正式发布时，我们会提供详细信息。
 - Azure 门户中的数据控制器用户体验在可用性方面有诸多改进，包括能够更好地查看 Kubernetes 群集上处于部署过程中资源的部署状态。
 - 数据控制器会自动上传日志（可选），现在还可以在直接连接模式下自动将指标上传至 Azure。
 - 监视堆栈（指标和日志数据库/仪表板）现已打包到其自定义资源定义 (CRD) 中，即 `monitors.arcdata.microsoft.com`。 创建此自定义资源时，系统将创建监视堆栈 Pod。 删除自定义资源时，也将删除监视堆栈 Pod。 创建数据控制器时，系统将自动创建监视器自定义资源。
 - 支持直接连接模式（预览版）的新区域：美国东部 2、美国西部 2、美国中南部、英国南部、法国中部、东南亚、澳大利亚东部。
-- 现在“概述”边栏选项卡上的自定义位置资源图表会显示已部署的启用 Arc 的数据服务资源。
+- 现在“概述”边栏选项卡上的自定义位置资源图表会显示已部署的启用 Azure Arc 的数据服务资源。
 - 已将诊断和解决方案添加到数据控制器的 Azure 门户。
 - 已向所有与 Arc 相关的自定义资源添加新属性 `Observed Generation`。
 - 现在引入了凭据管理器服务，可以向数据控制器管理的所有服务自动分发证书。
@@ -235,7 +235,7 @@ az extension add --name arcdata
 - Azure Arc PostgreSQL Hyperscale 部署现在支持通过 nodeSelector、nodeAffinity 和 anti-affinity 向节点分配策略提供 Kubernetes pod。
 - 现在，可以在部署 PostgreSQL Hyperscale 服务器组时，或在从 Azure Data Studio 和 Azure 门户部署后，按角色（协调员或辅助角色）配置计算参数（vCore 和内存）。
 - 现在，可以在 Azure 门户中查看 PostgreSQL Hyperscale 服务器组上创建的 PostgreSQL 扩展列表。
-- 在 Azure 门户中，可以删除直接连接到 Azure 的数据控制器上启用 Arc 的 PostgreSQL Hyperscale 组。
+- 在 Azure 门户中，可以删除直接连接到 Azure 的数据控制器上已启用 Azure Arc 超大规模 PostgreSQL 组。
 
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
@@ -273,7 +273,7 @@ az extension add --name arcdata
 
 - 从 Azure 门户创建和删除数据控制器、SQL 托管实例和 PostgreSQL 超大规模服务器组。
 - 删除 Azure Arc 数据服务时验证门户操作。 例如，如果存在使用数据控制器部署的 SQL 托管实例，当你尝试删除数据控制器时，门户就会发出警报。
-- 在使用 Azure 门户部署启用 Arc 的数据控制器时，创建自定义配置文件以支持自定义设置。
+- 在使用 Azure 门户部署启用 Azure Arc 的数据控制器时，创建自定义配置文件以支持自定义设置。
 - （可选）在直接连接模式下自动将日志上传到 Azure Log analytics 工作区。
 
 #### <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL
@@ -287,7 +287,7 @@ az extension add --name arcdata
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
 
-- 适用于启用 Arc 的 SQL 托管实例的新 [Azure CLI 扩展](/cli/azure/azure-cli-extensions-overview)具有与 `az sql mi-arc <command>` 相同的命令。 所有启用 Arc 的 SQL 托管实例命令均位于 `az sql mi-arc`。 在未来的版本中，将弃用所有与 Arc 相关的 `azdata` 命令并将其移动到 Azure CLI。
+- 适用于启用 Azure Arc 的 SQL 托管实例的新 [Azure CLI 扩展](/cli/azure/azure-cli-extensions-overview)具有与 `az sql mi-arc <command>` 相同的命令。 所有启用 Azure Arc 的 SQL 托管实例命令均位于 `az sql mi-arc`。 在未来的版本中，将弃用所有与 Arc 相关的 `azdata` 命令并将其移动到 Azure CLI。
 
    添加扩展：
 
@@ -484,7 +484,7 @@ Azure 数据 CLI (`azdata`) 版本号：20.2.3。 可以从[安装 Azure 数据 
 
 ## <a name="september-2020"></a>2020 年 9 月
 
-已启用 Azure Arc 的数据服务已发布公共预览版。 启用 Arc 的数据服务允许你在任意位置管理数据服务。
+已启用 Azure Arc 的数据服务已发布公共预览版。 启用 Azure Arc 的数据服务允许你在任意位置管理数据服务。
 
 - SQL 托管实例
 - PostgreSQL 超大规模

@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/30/2021
+ms.date: 09/03/2021
 ms.author: cynthn
-ms.openlocfilehash: e5ceb8e4db1d2b94d746303a2185bea2015467a0
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 324373fc56ae1a57adfb522ca77f06f2c080074c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691009"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776512"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
@@ -112,17 +112,12 @@ cat /sys/class/ptp/ptp0/clock_name
 在 Ubuntu 19.10 及更高版本、Red Hat Enterprise Linux 和 CentOS 8.x 上，[chrony](https://chrony.tuxfamily.org/) 配置为使用 PTP 源时钟。 旧的 Linux 发行版使用网络时间协议守护程序 (ntpd)（不支持 PTP 源），而不是使用 chrony。 若要在这些版本中启用 PTP，必须使用以下语句手动安装并配置 chrony（在 chrony.conf 中）：
 
 ```bash
-refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
+refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0 stratum 2
 ```
-如上所述，如果提供了 /dev/ptp_hyperv 符号链接，请使用该符号链接而不是 /dev/ptp0，以避免与 Mellanox mlx5 驱动程序创建的 /dev/ptp 设备相混淆。
 
-有关 Ubuntu 和 NTP 的详细信息，请参阅[时间同步](https://ubuntu.com/server/docs/network-ntp)。
+如果提供了 /dev/ptp_hyperv 符号链接，请使用该符号链接而不是 /dev/ptp0，以避免与 Mellanox mlx5 驱动程序创建的 /dev/ptp 设备相混淆。
 
-有关 Red Hat 和 NTP 的详细信息，请参阅[配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)。 
-
-有关 chrony 的详细信息，请参阅[使用 chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)。
-
-如果同时启用了 chrony 和 VMICTimeSync 源，则可将一个源标记为“首选”，这样就会将另一个源设置为“备用”。 由于 NTP 服务在遇到大偏差时更新时钟需要很长时间，因此可以使用 VMICTimeSync，后者在出现 VM 暂停事件时恢复时钟的速度远远快于单独使用基于 NTP 的工具的速度。
+层次信息不会自动从 Azure 主机传送到 Linux 来宾。 前面的配置行指定将 Azure 主机时间源视为“层次 2”，从而导致 Linux 来宾将自身报告为“层次 3”。 如果希望 Linux 来宾以不同的方式报告自身，则可以在配置行中更改层次设置。
 
 默认情况下，chronyd 会加快或减慢系统时钟以修复任何时间偏移。 如果偏移量过大，chrony 将无法修复偏移。 若要解决此问题，可以更改 /etc/chrony.conf 中的 `makestep` 参数，以便在偏移量超过指定的阈值时强制进行时间同步。
 
@@ -135,6 +130,12 @@ makestep 1.0 -1
 ```bash
 systemctl restart chronyd
 ```
+
+有关 Ubuntu 和 NTP 的详细信息，请参阅[时间同步](https://ubuntu.com/server/docs/network-ntp)。
+
+有关 Red Hat 和 NTP 的详细信息，请参阅[配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)。 
+
+有关 chrony 的详细信息，请参阅[使用 chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)。
 
 ### <a name="systemd"></a>systemd 
 

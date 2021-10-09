@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 09/21/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ad7238f5bb5301e14cfaca518b2bd7d9bc7139fb
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5719554a64ed7d028f09fd7263425d91bb221ba2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206148"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625271"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -52,6 +52,8 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b
 ```json
 [{ "b": false }]  
 ```  
+> [!NOTE]
+> GeoJSON 规范要求多边形内的点按逆时针顺序指定。 以顺时针顺序指定的多边形表示其中的区域倒转。
 
 ## <a name="next-steps"></a>后续步骤
 

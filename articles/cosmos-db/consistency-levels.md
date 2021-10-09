@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 4d0197e76659e864ab0f5553317b64b2d74b867d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/20/2021
+ms.openlocfilehash: ae45647369cde2cc0b427fe128f4fea44de79bf4
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725470"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058911"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性级别
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -96,6 +96,7 @@ Azure Cosmos DB 可保证 100% 的读取请求满足所选一致性级别的一�
 - 对于具有单个写入区域的帐户，不同区域中的客户端的一致性为“一致前缀”
 - 对于具有多个写入区域的帐户，写入单个区域的客户端的一致性为“一致前缀”
 - 对于具有多个写入区域的帐户，写入多个区域的客户端的一致性为“最终”
+- 使用 [Azure Cosmos DB 集成缓存](integrated-cache.md)的客户端的一致性 = 最终
 
   “会话一致性”是最广泛用于单个区域以及全球分步式应用程序的一致性级别。 它不仅提供与最终一致性相当的写入延迟、可用性和读取吞吐量，还提供一致性保证，从而满足了编写为在用户上下文中运行的应用程序的需求。 下图以乐谱形式演示了会话一致性。 “美国西部 2 写入器”和“美国西部 2 读取器”正在使用同一个会话（会话 A），因此它们会同时读取相同的数据。 而“澳大利亚东部”区域正在使用“会话 B”，因此，它会稍后才会接收到数据，但接收顺序与写入顺序相同。
 
@@ -154,7 +155,7 @@ Azure Cosmos DB 可保证 100% 的读取请求满足所选一致性级别的一�
 
 - 对于强一致性和有限过期一致性，将针对一个四副本集中的两个副本（少数仲裁）进行读取，以提供一致性保证。 会话一致性、一致前缀一致性和最终一致性执行单副本读取。 结果是，在请求单位数量相同的情况下，强一致性和有限过期一致性的读取吞吐量是其他一致性级别的一半。
 
-- 对于给定类型的写入操作（例如插入、替换、更新插入和删除），所有一致性级别为请求单元提供的写入吞吐量是相同的。
+- 对于给定类型的写入操作（例如插入、替换、更新插入和删除），所有一致性级别为请求单元提供的写入吞吐量是相同的。 为了实现强一致性，需要在每个区域（全局多数）提交更改，而对于其他所有一致性级别，则使用本地多数（四副本集中的三个副本）。 
 
 |**一致性级别**|**仲裁读取**|**仲裁写入**|
 |--|--|--|

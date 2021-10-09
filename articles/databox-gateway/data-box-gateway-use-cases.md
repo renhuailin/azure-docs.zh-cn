@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 3bf137f968082e677f45c20947793232b9181220
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7dfc80ba0117e5481370bacd18941bf622a99edb
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98786606"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274342"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的用例
 
@@ -40,7 +40,7 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 若要在云中长期保留数据，请使用 Data Box Gateway。 可以使用存储的存档层长期保留数据。
 
-存档层已经过优化，可以将鲜少访问的数据存储至少 180 天。 存档层的存储成本最低，但访问成本最高。 有关详细信息，请转到[存档访问层](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
+存档层已经过优化，可以将鲜少访问的数据存储至少 180 天。 存档层的存储成本最低，但访问成本最高。 有关详细信息，请转到[存档访问层](../storage/blobs/access-tiers-overview.md#archive-access-tier)。
 
 ### <a name="move-data-to-the-archive-tier"></a>将数据移至存档层
 
@@ -50,12 +50,12 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 - 上传数据后，需要将其移至存档层。 可以通过两种方式设置 Blob 层：使用 Azure PowerShell 脚本或 Azure 存储生命周期管理策略。  
     - 如果使用 Azure PowerShell，请按照这些[步骤](../databox/data-box-how-to-set-data-tier.md#use-azure-powershell-to-set-the-blob-tier)将数据移至存档层。
     - 如果使用 Azure 生命周期管理，请按照以下步骤将数据移至存档层。
-        - [注册](../storage/blobs/storage-lifecycle-management-concepts.md) Blob 生命周期管理服务预览版以使用存档层。
-        - 使用以下策略[在引入时存档数据](../storage/blobs/storage-lifecycle-management-concepts.md#archive-data-after-ingest)。
+        - 通过 [Blob 生命周期管理服务](../storage/blobs/lifecycle-management-overview.md)使用存档层。
+        - 使用以下策略[在引入时存档数据](../storage/blobs/lifecycle-management-overview.md#archive-data-after-ingest)。
 - 将 Blob 标记为存档后，除非将它们移至热层或冷层，否则网关无法再修改它们。 如果文件位于本地存储中，则对本地副本所做的任何更改（包括删除）都不会上传到存档层。
 - 若要读取存档存储中的数据，必须通过将 Blob 层更改为热层或冷层来解除数据冻结。 在网关上[刷新共享](data-box-gateway-manage-shares.md#refresh-shares)不会将 Blob 解除冻结。
 
-有关详细信息，请详细了解如何[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。
+有关详细信息，请详细了解如何[管理 Azure Blob 存储生命周期](../storage/blobs/lifecycle-management-overview.md)。
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>初始批量传输后进行增量传输
 

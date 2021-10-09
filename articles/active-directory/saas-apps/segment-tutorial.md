@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: ab3afec6b849288a87ba8aa194d5b180a49dc184
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 52b944e60edbdc3eb784fcc91736bfca531340a0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557628"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801631"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Segment 集成
 
@@ -39,6 +39,7 @@ ms.locfileid: "111557628"
 
 * Segment 支持 SP 和 IDP 发起的 SSO。
 * Segment 支持实时用户预配。
+* Segment 支持[自动用户预配](segment-provisioning-tutorial.md)。
 
 ## <a name="add-segment-from-the-gallery"></a>从库中添加 Segment
 
@@ -76,7 +77,7 @@ ms.locfileid: "111557628"
 
 1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`urn:auth0:segment-prod:samlp-<CUSTOMER_VALUE>`
+    a. 在“标识符”文本框中，使用以下模式键入值：`urn:auth0:segment-prod:samlp-<CUSTOMER_VALUE>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://segment-prod.auth0.com/login/callback?connection=<CUSTOMER_VALUE>`
 
@@ -85,7 +86,7 @@ ms.locfileid: "111557628"
     在“登录 URL”文本框中，键入 URL：`https://app.segment.com`
 
     > [!NOTE]
-    > 这些值是占位符。 需要使用实际的标识符、回复 URL 和登录 URL。 获取这些值的步骤稍后在本教程中介绍。
+    > 这些值是占位符。 需要使用实际的标识符和回复 URL。 获取这些值的步骤稍后在本教程中介绍。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
@@ -157,6 +158,8 @@ ms.locfileid: "111557628"
 
 在本部分中，将在 Segment 中创建一个名为 B.Simon 的用户。 Segment 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Segment 中尚不存在用户，将在身份验证后创建一个新用户。
 
+Segment 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./segment-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -171,7 +174,7 @@ ms.locfileid: "111557628"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Segment。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Segment”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 Segment。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Segment”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 Segment。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

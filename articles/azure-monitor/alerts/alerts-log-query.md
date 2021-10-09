@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: e15b3f81cf5f29efa739939fe29df25f338187cc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 82f40d33d0465a7981105472ccd0487e7e24da80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475251"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635121"
 ---
 # <a name="optimizing-log-alert-queries"></a>优化日志警报查询
 本文介绍如何编写和转换[日志警报](./alerts-unified-log.md)查询，以获得最佳性能。 经过优化的查询可降低延迟并加载频繁运行的警报。
@@ -47,7 +47,7 @@ SecurityEvent
 
 对日志预警规则的查询应始终以表开始，以定义明确的范围，从而提高查询性能和结果的相关性。 预警规则中的查询经常运行，因此使用 `search` 和 `union` 会造成额外开销，并增加警报的延迟，因为它需要扫描多个表。 这些运算符还会降低警报服务优化查询的性能。
 
-除了跨资源查询，我们不支持创建或修改使用 `search` 或 `union` 运算符的日志预警规则。
+除了跨资源查询，我们不支持创建或修改使用 `search` 或 `union` 运算符的日志警报规则。
 
 例如，以下警报查询的范围限定为 SecurityEvent 表，并搜索特定的事件 ID。 这是查询必须处理的唯一的表。
 

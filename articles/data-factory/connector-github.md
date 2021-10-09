@@ -7,20 +7,20 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jingwang
-ms.openlocfilehash: 8d765a5150180303f55cc669da3ddb84deea68da
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: e68cb1e537fcf89a947a06ac11ff08f3ca6bec9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312817"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815227"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>使用 GitHub 读取 Common Data Model 实体引用
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 数据工厂中的 GitHub 连接器仅用于接收映射数据流中 [Common Data Model](format-common-data-model.md) 格式的实体引用架构。
+Azure 数据工厂和 Synapse Analytics 管道中的 GitHub 连接器仅用于接收映射数据流中 [Common Data Model](format-common-data-model.md) 格式的实体引用架构。
 
 ## <a name="create-a-linked-service-to-github-using-ui"></a>使用 UI 创建一个到 GitHub 的链接服务
 
@@ -30,7 +30,7 @@ Azure 数据工厂中的 GitHub 连接器仅用于接收映射数据流中 [Comm
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 

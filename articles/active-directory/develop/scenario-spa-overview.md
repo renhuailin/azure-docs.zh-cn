@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: be14a8cb9d72c439f5ba127858ccd3a3249b8a14
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 9df07381d620c2176115636852c6ed912dd1fc38
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770768"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786496"
 ---
 # <a name="scenario-single-page-application"></a>方案：单页应用程序
 
-了解生成单页应用程序 (SPA) 所需的一切。
+了解生成单页应用程序 (SPA) 所需的一切。 有关 Azure Static Web Apps 的说明，请改为参阅 [Static Web Apps 的身份验证和授权](../../static-web-apps/authentication-authorization.md)。
 
 ## <a name="getting-started"></a>入门
 

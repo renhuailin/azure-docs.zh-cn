@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 09/09/2021
 ms.author: memildin
-ms.openlocfilehash: 9f1fdfeadd56b070c942c023a7373b43363a1916
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ef37d84d2fcef851e13837ae40da14db9fb2412f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734969"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777443"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -30,12 +30,12 @@ ms.locfileid: "121734969"
 
 ## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>自适应应用程序控制有哪些优势？
 
-通过定义已知安全应用程序列表，并在执行任何其他内容时生成警报，可以实现多个强化目标：
+通过定义已知安全的应用程序列表，并在执行任何其他内容时生成警报，可以实现多个监督和符合性目标：
 
 - 识别潜在的恶意软件，甚至是反恶意软件解决方案可能遗漏的任何恶意软件
 - 改进对规定仅使用许可软件的本地安全策略的遵从性
-- 避免运行旧的或不受支持的应用程序
-- 防止使用组织禁止的特定软件
+- 识别过时或不受支持的应用程序版本 
+- 识别被你的组织禁止但仍在你的计算机上运行的软件
 - 加强对访问敏感数据的应用的监管
 
 目前无强制选项可用。 自适应应用程序控制旨在提供安全警报，前提是运行的任何应用程序不是你定义为安全的应用程序。

@@ -7,21 +7,23 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/15/2021
-ms.openlocfilehash: 0860d59d7d04354b6236d02126492468dec5921b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/22/2021
+ms.openlocfilehash: 73fe862475b866e625d4bf2bdce3c044b6dcc87b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638819"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061573"
 ---
 # <a name="data-flow-script-dfs"></a>数据流脚本 (DFS)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
+
 数据流脚本 (DFS) 是基础元数据，类似于编码语言，用于执行映射数据流中包含的转换。 每次转换均由一系列属性表示，这些属性提供正常运行作业所需的信息。 通过单击浏览器 UI 顶部功能区上的“脚本”按钮，可从 ADF 查看和编辑该脚本。
 
-![“脚本”按钮](media/data-flow/scriptbutton.png "“脚本”按钮")
+:::image type="content" source="media/data-flow/scriptbutton.png" alt-text="“脚本”按钮":::
 
 例如，源转换中的 `allowSchemaDrift: true,` 会指示服务将源数据集中的所有列包含在数据流中，即使这些列未包含在架构投影中。
 
@@ -35,7 +37,7 @@ DFS 由用户界面自动生成。 可以单击“脚本”按钮来查看并自
 
 生成要与 PowerShell 或 API 结合使用的数据流脚本时，必须将格式化文本折叠为一行。 可以将制表符和换行符作为转义字符。 但必须对文本进行格式化，才能容纳到 JSON 属性中。 脚本编辑器 UI 底部有一个按钮，该按钮可将脚本的格式设置为一行。
 
-![“复制”按钮](media/data-flow/copybutton.png "“复制”按钮")
+:::image type="content" source="media/data-flow/copybutton.png" alt-text="“复制”按钮":::
 
 ## <a name="how-to-add-transforms"></a>如何添加转换
 添加转换需要三个基本步骤：添加核心转换数据、重新路由输入流，然后重新路由输出流。 通过示例可轻松阐明这些步骤。
@@ -277,6 +279,19 @@ window(over(stocksymbol),
 
 ```
 aggregate(each(match(true()), $$ = countDistinct($$))) ~> KeyPattern
+```
+
+### <a name="compare-previous-or-next-row-values"></a>比较上一个或下一个行值
+此示例代码片段演示如何使用窗口转换将当前行上下文中的列值与当前行之前和之后的行中的列值进行比较。 在此示例中，派生列用于生成虚拟值以启用跨整个数据集的窗口分区。 代理键转换用于为每一行分配一个唯一的键值。 将此模式应用于数据转换时，如果你希望按某个列排序，则可以删除代理键，如果有某些列可用于数据分区依据，则可以删除派生列。
+
+```
+source1 keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey1
+SurrogateKey1 derive(dummy = 1) ~> DerivedColumn1
+DerivedColumn1 window(over(dummy),
+    asc(sk, true),
+    prevAndCurr = lag(title,1)+'-'+last(title),
+        nextAndCurr = lead(title,1)+'-'+last(title)) ~> leadAndLag
 ```
 
 ## <a name="next-steps"></a>后续步骤

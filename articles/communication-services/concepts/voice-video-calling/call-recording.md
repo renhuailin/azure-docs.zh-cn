@@ -10,12 +10,13 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: fef4972271046f7435140fd2d9ba3d18c7c3b11c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: a6e5f1ecb5686145718d83febf3faf5c520db6fe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254742"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609510"
 ---
 # <a name="calling-recording-overview"></a>通话录制概述
 
@@ -55,7 +56,7 @@ ms.locfileid: "123254742"
 通常在录制过程完成（例如会议结束，录制停止）后几分钟可检索录像，此时会发布事件网格通知 `Microsoft.Communication.RecordingFileStatusUpdated`。 录制事件通知包括 `contentLocation` 和 `metadataLocation`，用于检索录制的媒体和录制元数据文件。
 
 ### <a name="notification-schema-reference"></a>通知架构引用
-```
+```typescript
 {
     "id": string, // Unique guid for event
     "topic": string, // Azure Communication Services resource id
@@ -89,6 +90,6 @@ ms.locfileid: "123254742"
 针对个人数据维护的法规要求能够导出用户数据。 为了满足这些要求，在 `participants` 数组中记录包含每个通话参与者 participantId 的元数据文件。 可以在 `participants` 中交叉引用 MRI，通过内部用户标识来标识通话中的参与者。 下面提供了一个记录元数据文件的示例供你参考。
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请查看[通话录制快速入门示例](../../quickstarts/voice-video-calling/call-recording-sample.md)。
+有关详细信息，请查看[通话录制快速入门](../../quickstarts/voice-video-calling/call-recording-sample.md)。
 
 详细了解[通话自动化 API](./call-automation-apis.md)。

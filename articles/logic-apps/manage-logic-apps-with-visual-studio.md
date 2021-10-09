@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 04/23/2021
-ms.openlocfilehash: 443dd0a1172c98b67282b50659ffeb3611470413
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: fff316c328ac61f48693e635745ca42a9c773c4d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163762"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646618"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
@@ -127,7 +127,7 @@ ms.locfileid: "108163762"
 
 1. 在 Visual Studio 中，打开逻辑应用所在的 Azure 资源组项目。
 
-1. 在解决方案资源管理器中打开 **<logic-app-name>.json** 文件的快捷菜单，然后选择“使用逻辑应用设计器打开”。 （键盘：Ctrl + L）
+1. 在解决方案资源管理器中，打开 \<logic-app-name\>.json 文件的快捷菜单，然后选择“使用逻辑应用设计器打开” 。 （键盘：Ctrl + L）
 
    ![使用逻辑应用设计器打开逻辑应用的 .json 文件](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -158,7 +158,7 @@ ms.locfileid: "108163762"
 若要更改逻辑应用的位置类型或位置，必须使用逻辑应用设计器从解决方案资源管理器中打开逻辑应用的工作流定义 (.json) 文件。 不能使用 Cloud Explorer 更改这些属性。
 
 > [!IMPORTANT]
-> 将位置类型从“区域”更改为[集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)会影响逻辑应用的[定价模型](logic-apps-pricing.md#fixed-pricing)，此模型用于计费、[限制](logic-apps-limits-and-config.md#integration-account-limits)、[集成帐户支持](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)等。 在选择其他位置类型之前，请确保理解对逻辑应用产生的影响。
+> 将位置类型从“区域”更改为[集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)会影响逻辑应用的[定价模型](logic-apps-pricing.md#ise-pricing)，此模型用于计费、[限制](logic-apps-limits-and-config.md#integration-account-limits)、[集成帐户支持](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)等。 在选择其他位置类型之前，请确保理解对逻辑应用产生的影响。
 
 1. 在 Visual Studio 中，打开逻辑应用所在的 Azure 资源组项目。
 
@@ -289,7 +289,7 @@ ms.locfileid: "108163762"
 
 * 逻辑应用服务不会创建或运行新的工作流实例。
 
-* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用已删除工作流的工作流。 这样，调用方就会获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将会失败，并出现 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
 若要从 Azure 门户删除逻辑应用，请在 Cloud Explorer 中打开逻辑应用的快捷菜单，并选择“删除”。
 

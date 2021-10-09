@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/10/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 348d71bec02f70da656b2cc5af262ab31c64d673
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: e6bc2a97e1f7839721b67269b8486fc39f58aa8a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983200"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776132"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Nintex Promapp 集成
 
@@ -39,6 +39,8 @@ ms.locfileid: "111983200"
 
 * Nintex Promapp 支持 SP 和 IDP 发起的 SSO。
 * Nintex Promapp 支持实时用户预配。
+
+* Nintex Promapp 支持[自动用户预配](promapp-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -162,6 +164,8 @@ ms.locfileid: "111983200"
 
 在本部分，我们将在 Nintex Promapp 中创建名为 B.Simon 的用户。 Nintex Promapp 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Nintex Promapp 中尚不存在用户，身份验证后会创建一个新用户。
 
+Nintex Promapp 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./promapp-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -176,7 +180,7 @@ ms.locfileid: "111983200"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Nintex Promapp。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Nintex Promapp 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Nintex Promapp。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Nintex Promapp 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Nintex Promapp。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

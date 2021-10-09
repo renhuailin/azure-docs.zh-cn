@@ -2,14 +2,14 @@
 title: 用于实现高可用性的区域冗余注册表
 description: 了解如何在 Azure 容器注册表中启用区域冗余。 在 Azure 可用性区域中创建容器注册表或副本。 区域冗余是高级服务层级的一项功能。
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 09/13/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 69714f25263b0b26fe4854b0303c3c9106b18f9a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ca475f61c3164f54682a22f459e1f8f768073f1f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741068"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586810"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>启用 Azure 容器注册表中的区域冗余以实现复原能力和高可用性
 
@@ -21,7 +21,12 @@ ms.locfileid: "121741068"
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* 目前支持在以下区域中使用：美国东部、美国东部 2、美国西部 2、北欧、西欧、日本东部。
+* 目前在以下地区受支持： 
+  
+    |美洲  |欧洲  |非洲  |亚太区  |
+    |---------|---------|---------|---------|
+    |巴西南部<br/>加拿大中部<br/>美国中部<br/>美国东部<br/>美国东部 2<br/>美国中南部<br/>美国弗吉尼亚州政府<br/>美国西部 2<br/>美国西部 3     |法国中部<br/>德国中西部<br/>北欧<br/>挪威东部<br/>西欧<br/>英国南部      |南非北部<br/>        |澳大利亚东部<br/>印度中部<br/>Japan East<br/>韩国中部<br/>  |
+
 * 当前不支持将区域转换到可用性区域。 若要在区域中启用可用性区域支持，必须在所需区域中创建注册表并启用可用性区域支持，或者必须添加已复制区域并启用可用性区域支持。
 * 无法在区域中禁用区域冗余。
 * [Azure 容器注册表任务](container-registry-tasks-overview.md)尚不支持可用性区域。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/30/2021
-ms.openlocfilehash: 70bb18984f5ed3ca6887fd01ec0e98e6f3d41595
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 8773957a2b34851babb42c6804fc21d6a9d5112b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110547505"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657455"
 ---
 # <a name="plan-an-iot-edge-modules-offer"></a>规划 IoT Edge 模块产品/服务
 
@@ -42,7 +42,7 @@ IoT Edge 模块仅发布到 Azure 市场；AppSource 不适用。 有关在线�
 
 ## <a name="technical-requirements"></a>技术要求
 
-若要详细了解帮助 IoT Edge 模块获得认证并在 Azure 市场中发布的主要技术要求，请参阅[准备 IoT Edge 模块技术资产](iot-edge-technical-asset.md)。
+若要详细了解帮助 IoT Edge 模块获得认证并在 Azure 市场中发布的技术要求，请参阅[准备 IoT Edge 模块技术资产](iot-edge-technical-asset.md)。
 
 ## <a name="eligibility-prerequisites"></a>资格先决条件
 
@@ -114,5 +114,4 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 ## <a name="next-steps"></a>后续步骤
 
-- 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
 - 在合作伙伴中心[创建 IoT Edge 模块产品/服务](./iot-edge-offer-setup.md)。

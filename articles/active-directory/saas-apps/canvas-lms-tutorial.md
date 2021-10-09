@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Canvas 集成 | Microsoft Docs
+title: 教程：Azure AD 与 Canvas 的 SSO 集成
 description: 了解如何在 Azure Active Directory 与 Canvas 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: a71dac55c860348f31ce8da27ab050a6c71a5c68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b91f6c186be774110b52fab75b742dcb73925f03
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653006"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622155"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教程：Azure Active Directory 与 Canvas 集成
+# <a name="tutorial-azure-ad-sso-integration-with-canvas"></a>教程：Azure AD 与 Canvas 的 SSO 集成
 
 本教程介绍如何将 Canvas 与 Azure Active Directory (Azure AD) 集成。 将 Canvas 与 Azure AD 集成后，可以：
 
@@ -37,7 +37,7 @@ ms.locfileid: "101653006"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Canvas 支持 SP 发起的 SSO 
+* Canvas 支持 SP 发起的 SSO。
 
 ## <a name="add-canvas-from-the-gallery"></a>从库中添加 Canvas
 
@@ -63,7 +63,7 @@ ms.locfileid: "101653006"
     1. **[创建 Canvas 测试用户](#create-canvas-test-user)** - 在 Canvas 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -73,16 +73,14 @@ ms.locfileid: "101653006"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    ![Canvas 域和 URL 单一登录信息](common/sp-identifier.png)
+    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.instructure.com` 
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.instructure.com` 
-
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<tenant-name>.instructure.com/saml2`
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Canvas 客户端支持团队](https://community.canvaslms.com/community/help)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [Canvas 客户端支持团队](https://community.canvaslms.com/community/help)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“SAML 签名证书”  部分中，单击“编辑”  按钮以打开“SAML 签名证书”  对话框。
 
@@ -120,17 +118,17 @@ ms.locfileid: "101653006"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name=&quot;configure-canvas-sso&quot;></a>配置 Canvas SSO
+## <a name=&quot;configure-canvas-sso&quot;></a>配置 Canvas SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Canvas 公司站点。
 
 2. 转到“课程” **\>“托管帐户”\>** “Microsoft”。
 
-    ![画布](./media/canvas-lms-tutorial/ic775990.png &quot;画布")
+    ![画布](./media/canvas-lms-tutorial/course.png &quot;画布")
 
 3. 在左侧导航窗格中，选择“身份验证”，并单击“添加新 SAML 配置”。  
 
-    ![身份验证](./media/canvas-lms-tutorial/ic775991.png "身份验证")
+    ![身份验证](./media/canvas-lms-tutorial/tools.png "身份验证")
 
 4. 在“当前集成”页上，执行以下步骤：
 
@@ -162,19 +160,19 @@ ms.locfileid: "101653006"
 
 2. 转到“课程” **\>“托管帐户”\>** “Microsoft”。
 
-   ![画布](./media/canvas-lms-tutorial/ic775990.png "画布")
+   ![画布](./media/canvas-lms-tutorial/course.png "画布")
 
 3. 单击“用户”  。
 
-   ![屏幕截图显示已选择“用户”的 Canvas 菜单。](./media/canvas-lms-tutorial/ic775995.png "用户")
+   ![屏幕截图显示已选择“用户”的 Canvas 菜单。](./media/canvas-lms-tutorial/user.png "用户")
 
 4. 单击“添加新用户”。 
 
-   ![屏幕截图显示“添加新用户”按钮。](./media/canvas-lms-tutorial/ic775996.png "用户")
+   ![屏幕截图显示“添加新用户”按钮。](./media/canvas-lms-tutorial/add-user.png "用户")
 
 5. 在“添加新用户”对话框页上，执行以下步骤：
 
-   ![添加用户](./media/canvas-lms-tutorial/ic775997.png "添加用户")
+   ![添加用户](./media/canvas-lms-tutorial/name.png "添加用户")
 
    a. 在“全名”  文本框中输入用户的姓名，例如 BrittaSimon  。
 
@@ -189,7 +187,7 @@ ms.locfileid: "101653006"
 > [!NOTE]
 > 可以使用 Canvas 提供的任何其他 Canvas 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -197,7 +195,7 @@ ms.locfileid: "101653006"
 
 * 直接转到 Canvas 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Canvas 磁贴时，应会自动登录到为其设置了 SSO 的 Canvas。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Canvas 磁贴时，应会自动登录到为其设置了 SSO 的 Canvas。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

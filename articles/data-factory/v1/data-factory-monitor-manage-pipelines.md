@@ -5,14 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 0744a7d915d6bee868b160abc29964d58947dd28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9310b08a41932e92ab57728c2c55476c67f086b1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779624"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601627"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -42,42 +44,42 @@ ms.locfileid: "104779624"
 本部分还介绍数据集切片如何从一个状态转换为另一状态。   
 
 ### <a name="navigate-to-your-data-factory"></a>导航到数据工厂
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，单击“数据工厂”。 如未看到，请单击“更多服务 >”，并在“智能 + 分析”类别下单击“数据工厂”。
 
-   ![“浏览全部”->“数据工厂”](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png" alt-text="“浏览全部”->“数据工厂”":::
 3. 在“数据工厂”边栏选项卡中，选择感兴趣的数据工厂。
 
-    ![选择数据工厂](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/select-data-factory.png" alt-text="选择数据工厂":::
 
    应显示该数据工厂的主页。
 
-   ![“数据工厂”边栏选项卡](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/data-factory-blade.png" alt-text="“数据工厂”边栏选项卡":::
 
 #### <a name="diagram-view-of-your-data-factory"></a>数据工厂的图示视图
 数据工厂的 **图示** 视图提供单个窗格来监视和管理数据工厂及其资产。 若要查看数据工厂的 **图示** 视图，请在数据工厂的主页上单击“图示”。
 
-![图示视图](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/diagram-view.png" alt-text="图示视图":::
 
 可放大、缩小、缩放到合适大小、缩放到 100%、锁定图示布局，还可自动放置管道和数据集。 还可看到数据沿袭信息（即，显示选定项的上下游项）。
 
 ### <a name="activities-inside-a-pipeline"></a>管道中的活动
 1. 右键单击管道，并单击“打开管道”查看管道中的所有活动以及该活动的输入和输出数据集。 如果管道包含多个活动且用户想要了解单个管道的操作沿袭，此功能非常有用。
 
-    ![“打开管道”菜单](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png" alt-text="“打开管道”菜单":::     
 2. 在下面的示例中，可看到管道中的复制活动以及输入和输出。 
 
-    ![管道中的活动](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png" alt-text="管道中的活动":::
 3. 通过在左上角痕迹导航中单击“数据工厂”链接，可向后导航到数据工厂主页。
 
-    ![向后导航到数据工厂](./media/data-factory-monitor-manage-pipelines/navigate-back-to-data-factory.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/navigate-back-to-data-factory.png" alt-text="向后导航到数据工厂":::
 
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>查看管道中每个活动的状态
 通过查看活动生成的任意数据集状态，可查看该活动的当前状态。
 
 在“图示”中双击“OutputBlobTable”，可查看管道内不同活动运行所生成的所有切片。 可以看到过去 8 小时成功运行了复制活动，并生成了处于“就绪”状态的切片。  
 
-![管道状态](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png" alt-text="管道状态":::
 
 数据工厂中的数据集切片可以具有以下任一状态：
 
@@ -131,10 +133,10 @@ ms.locfileid: "104779624"
 <td>就绪</td><td>-</td><td>切片已就绪，可供使用。</td>
 </tr>
 <tr>
-<td>已跳过</td><td>None</td><td>未在处理切片。</td>
+<td>已跳过</td><td>无</td><td>未在处理切片。</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>切片过去一直以不同状态存在，但已被重置。</td>
+<td>无</td><td>-</td><td>切片过去一直以不同状态存在，但已被重置。</td>
 </tr>
 </table>
 
@@ -142,20 +144,20 @@ ms.locfileid: "104779624"
 
 通过在“最近更新的切片”边栏选项卡中单击切片条目，可查看该切片的详细信息。
 
-![切片详细信息](./media/data-factory-monitor-manage-pipelines/slice-details.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/slice-details.png" alt-text="切片详细信息":::
 
 如果已多次执行切片，则会在“活动运行”列表中看到多行。 通过在“活动运行”列表中单击运行条目，可以查看有关活动运行的详细信息。 该列表会显示所有日志文件以及一条错误消息（如果有）。 此功能对于查看和调试日志（而无需离开数据工厂）非常有用。
 
-![活动运行详细信息](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/activity-run-details.png" alt-text="活动运行详细信息":::
 
 如果切片状态不是“就绪”，可以在“未就绪的上游切片”列表中看到未就绪且阻止当前切片执行的上游切片。 如果切片处于“等待”状态，并且希望了解等待中切片的上游依赖关系，此功能非常有用。
 
-![未就绪的上游切片](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png" alt-text="未就绪的上游切片":::
 
 ### <a name="dataset-state-diagram"></a>数据集状态图
 部署数据工厂且管道拥有有效的活动期后，数据集切片便会从某一状态转换为另一种状态。 当前，切片状态如以下状态图所示：
 
-![状态图](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/state-diagram.png" alt-text="状态图":::
 
 数据工厂中的数据集状态转换流如下：“等待”->“正在进行/正在进行（正在验证）”->“就绪/失败”。
 
@@ -203,13 +205,13 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>使用 Azure 门户调试错误
 1. 在“表”边栏选项卡中，单击“状态”设置为“失败”的问题切片。
 
-   ![包含问题切片的“表”边栏选项卡](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png" alt-text="包含问题切片的“表”边栏选项卡":::
 2. 在“数据切片”边栏选项卡中，单击失败的活动运行。
 
-   ![出现错误的数据切片](./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png" alt-text="出现错误的数据切片":::
 3. 在“活动运行详细信息”边栏选项卡中，可以下载与 HDInsight 处理关联的文件。 单击“状态/stderr”所对应的“下载”可下载包含错误详细信息的错误日志文件。
 
-   ![出现错误的“活动运行详细信息”边栏选项卡](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png" alt-text="出现错误的“活动运行详细信息”边栏选项卡":::     
 
 #### <a name="use-powershell-to-debug-an-error"></a>使用 PowerShell 调试错误
 1. 启动 **PowerShell**。
@@ -277,11 +279,11 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 排除和调试管道中的故障后，便可通过导航到错误切片并在命令栏上单击“运行”按钮来重新运行失败命令。
 
-![重新运行失败的切片](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/rerun-slice.png" alt-text="重新运行失败的切片":::
 
 在切片因策略失败（例如：如果数据不可用）而未通过验证的情况下，在命令栏上单击“验证”按钮，可以解决故障并再次验证。
 
-![修复错误并验证](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png" alt-text="修复错误并验证":::
 
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 可使用 Set-AzDataFactorySliceStatus cmdlet 来返回失败。 有关该 cmdlet 的语法和其他详细信息，请参阅 [Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) 主题。
@@ -299,37 +301,37 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
 1.  登录到 Azure 门户，然后依次选择“监视器”->“警报”以打开“警报”页。
 
-    ![打开“警报”页。](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image1.png" alt-text="打开“警报”页。":::
 
 2.  选择“+ 创建新的预警规则”，创建新的警报。
 
-    ![新建警报](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image2.png" alt-text="新建警报":::
 
 3.  定义警报条件。 （确保在“按资源类型筛选”字段中选择“数据工厂”。）你还可以指定“维度”的值。
 
-    ![定义警报条件 - 选择目标](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image3.png" alt-text="定义警报条件 - 选择目标":::
 
-    ![定义警报条件 - 添加警报条件](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image4.png" alt-text="定义警报条件 - 添加警报条件":::
 
-    ![定义警报条件 - 添加警报逻辑](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image5.png" alt-text="定义警报条件 - 添加警报逻辑":::
 
 4.  定义警报详细信息。
 
-    ![定义警报详细信息](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image6.png" alt-text="定义警报详细信息":::
 
 5.  定义操作组。
 
-    ![定义操作组 - 新建操作组](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image7.png" alt-text="定义操作组 - 新建操作组":::
 
-    ![定义操作组 - 设置属性](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image8.png" alt-text="定义操作组 - 设置属性":::
 
-    ![定义操作组 - 创建的新操作组](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image9.png" alt-text="定义操作组 - 创建的新操作组":::
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>将数据工厂移到其他资源组或订阅
 通过使用数据工厂主页上的“移动”命令栏按钮，可以将数据工厂移动到其他资源组或其他订阅。
 
-![移动数据工厂](./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png" alt-text="移动数据工厂":::
 
 还可移动任何相关资源（如与数据工厂关联的警报）以及数据工厂。
 
-![“移动资源”对话框](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/MoveResources.png" alt-text="“移动资源”对话框":::

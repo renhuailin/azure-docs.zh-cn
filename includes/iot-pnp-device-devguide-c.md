@@ -3,13 +3,13 @@ author: dominicbetts
 ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
-ms.date: 11/19/2020
-ms.openlocfilehash: 451a6f1e4b90b2e307125c6aae6d2ac03ae90c83
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/07/2021
+ms.openlocfilehash: 0ef257d82d892f2b8eb620c96744fb5bf26d9b5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397981"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580439"
 ---
 ## <a name="model-id-announcement"></a>模型 ID 公告
 
@@ -31,7 +31,7 @@ iothubResult = IoTHubDeviceClient_LL_SetOption(
 
 ## <a name="dps-payload"></a>DPS 有效负载
 
-使用[设备预配服务 (DPS)](../articles/iot-dps/about-iot-dps.md) 的设备可以包含要在使用以下 JSON 有效负载的预配过程中使用的 `modelId`。
+使用[设备预配服务 (DPS)](../articles/iot-dps/about-iot-dps.md) 的设备可以包含要在使用以下 JSON 有效负载的预配过程中使用的 `modelId`：
 
 ```json
 {
@@ -41,11 +41,11 @@ iothubResult = IoTHubDeviceClient_LL_SetOption(
 
 ## <a name="use-components"></a>使用组件
 
-如[了解 IoT 即插即用模型中的组件](../articles/iot-develop/concepts-modeling-guide.md)一文中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循以下各部分所述的规则。
+如[了解 IoT 即插即用模型中的组件](../articles/iot-develop/concepts-modeling-guide.md)一文中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循以下各部分所述的规则：
 
 ## <a name="telemetry"></a>遥测
 
-默认组件不需要任何特殊属性。
+默认组件不需要向遥测消息添加任何特殊属性。
 
 使用嵌套组件时，设备必须使用组件名称设置消息属性：
 
@@ -108,7 +108,7 @@ IOTHUB_CLIENT_RESULT iothubClientResult = IoTHubDeviceClient_LL_SendReportedStat
     strlen(maxTemperatureSinceRebootProperty), NULL, NULL));
 ```
 
-使用下一个报告的属性更新设备孪生：
+使用以下报告属性更新设备孪生：
 
 ```json
 {
@@ -118,7 +118,7 @@ IOTHUB_CLIENT_RESULT iothubClientResult = IoTHubDeviceClient_LL_SendReportedStat
 }
 ```
 
-使用嵌套组件时，必须在组件名称中创建属性：
+使用嵌套组件时，属性必须在组件名称中创建并包括标记：
 
 ```c
 STRING_HANDLE PnP_CreateReportedProperty(
@@ -199,7 +199,7 @@ void PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(
 PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHandle1, deviceClient);
 ```
 
-使用下一个报告的属性更新设备孪生：
+使用以下报告属性更新设备孪生：
 
 ```json
 {
@@ -215,6 +215,8 @@ PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHand
 ## <a name="writable-properties"></a>可写属性
 
 这些属性可以由设备设置或通过解决方案更新。 如果解决方案更新属性，客户端会接收到通知，即在 `DeviceClient` 或 `ModuleClient` 中的回调。 若要遵循 IoT 即插即用约定，设备必须通知服务属性已成功接收。
+
+如果属性类型为 `Object`，则服务必须将完整的对象发送到设备，即使它只更新对象字段的子集，也是如此。 设备发送的确认也可以是一个完整的对象。
 
 ### <a name="report-a-writable-property"></a>报告可写属性
 
@@ -238,7 +240,7 @@ iothubClientResult = IoTHubDeviceClient_LL_SendReportedState(
     strlen(targetTemperatureResponseProperty), NULL, NULL);
 ```
 
-使用下一个报告的属性更新设备孪生：
+使用以下报告属性更新设备孪生：
 
 ```json
 {
@@ -315,7 +317,7 @@ iothubClientResult = IoTHubDeviceClient_LL_SendReportedState(
 STRING_delete(jsonToSend);
 ```
 
-使用下一个报告的属性更新设备孪生：
+使用以下报告属性更新设备孪生：
 
 ```json
 {
@@ -335,7 +337,7 @@ STRING_delete(jsonToSend);
 
 ### <a name="subscribe-to-desired-property-updates"></a>订阅所需的属性更新
 
-服务可以更新所需的属性，从而在连接的设备上触发通知。 此通知包括更新后的所需属性，其中包括用于标识更新的版本号。 设备必须使用与报告的属性相同的 `ack` 消息进行响应。
+服务可以更新所需的属性，从而在连接的设备上触发通知。 此通知包括更新后的所需属性，其中包括用于标识更新的版本号。 设备必须在发送回服务的 `ack` 消息中包含此版本号。
 
 默认组件会查看单个属性，并使用收到的版本创建报告的 `ack`：
 
@@ -384,7 +386,7 @@ iothubResult = IoTHubDeviceClient_LL_SetDeviceTwinCallback(
     deviceHandle, Thermostat_DeviceTwinCallback, (void*)deviceHandle))
 ```
 
-设备孪生在所需部分和报告部分显示属性：
+嵌套组件的设备孪生显示了所需部分和报告部分，如下所示：
 
 ```json
 {
@@ -590,7 +592,9 @@ deviceClient = PnP_CreateDeviceClientLLHandle(&g_pnpDeviceConfiguration);
 
 ### <a name="request-and-response-payloads"></a>请求和响应有效负载
 
-命令使用类型定义其请求和响应有效负载。 设备必须反序列化传入的输入参数并串行化响应。 下面的示例演示如何实现具有在有效负载中定义的复杂类型的命令：
+命令使用类型定义其请求和响应有效负载。 设备必须反序列化传入的输入参数并串行化响应。
+
+下面的示例演示如何实现具有在有效负载中定义的复杂类型的命令：
 
 ```json
 {

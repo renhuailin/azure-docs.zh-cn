@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 10df7f8db2a787300787f8995ac0ea3a33736e68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5b03a7c713203dd61eb95fd5422b3002939e9011
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745053"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208730"
 ---
 # <a name="source-control-in-synapse-studio"></a>Synapse Studio 中的源代码管理
 
@@ -23,6 +23,9 @@ ms.locfileid: "121745053"
 
 > [!NOTE]
 > Synapse Studio git 集成在 Azure 政府云中不可用。
+
+## <a name="prerequisites"></a>先决条件
+用户必须在 Synapse 工作区中具有 Azure 参与者 (Azure RBAC) 或更高级角色才能配置、编辑设置以及断开 Git 存储库与 Synapse 的连接。 
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>在 Synapse Studio 中配置 Git 存储库 
 
@@ -39,9 +42,6 @@ ms.locfileid: "121745053"
 转到 Synapse Studio 的管理中心。 选择“源代码管理”部分的“Git 配置”。 如果没有连接的存储库，请单击“配置”。
 
 ![通过管理中心配置代码存储库设置](media/configure-repo-2.png)
-
-> [!NOTE]
-> 被授予工作区参与者、所有者或更高级别角色的用户可以在 Azure Synapse Studio 中进行配置，还可以编辑设置和断开 git 存储库的连接 
 
 你可以在工作区中连接 Azure DevOps 或 GitHub git 存储库。
 
@@ -100,10 +100,10 @@ GitHub 与 Synapse Studio 的集成支持公共 GitHub（即 [https://github.com
 
 ### <a name="github-settings"></a>GitHub 设置
 
-连接到 git 存储库时，首先在存储库类型中选择“GitHub”，然后提供 GitHub 帐户、GitHub Enterprise Server URL（如果使用 GitHub Enterprise Server）或 GitHub Enterprise 组织名称（如果使用 GitHub Enterprise Cloud）。 选择“继续”。
+连接到 git 存储库时，首先选择存储库类型作为 GitHub，然后提供 GitHub 帐户、GitHub Enterprise 服务器 URL（如果使用的是 GitHub Enterprise 服务器）或 GitHub Enterprise 组织名称（如果使用的是 GitHub Enterprise Cloud）。 选择“继续”。
 
 > [!NOTE]
-> 如果使用的是 GitHub Enterprise Cloud，请清除“GitHub Enterprise Server”复选框。 
+> 如果使用的是 GitHub Enterprise Cloud，请清除“使用 GitHub Enterprise 服务器”复选框。 
 
 ![GitHub 存储库设置](media/connect-with-github-repo-1.png)
 
@@ -161,9 +161,13 @@ GitHub 与 Synapse Studio 的集成支持公共 GitHub（即 [https://github.com
 
 ### <a name="creating-feature-branches"></a>创建功能分支
 
-与 Synapse Studio 关联的每个 Git 存储库都有一个协作分支。 （默认协作分支为 `main` 或 `master`）。 用户还可以通过单击分支下拉列表中的“+ 新建分支”来创建功能分支。 出现“新建分支”窗格后，输入功能分支的名称。
+与 Synapse Studio 关联的每个 Git 存储库都有一个协作分支。 （默认协作分支为 `main` 或 `master`）。 用户还可以通过单击分支下拉列表中的“+ 新建分支”来创建功能分支。 
 
 ![创建新分支](media/create-new-branch.png)
+
+“新建分支”窗格出现后，输入功能分支的名称，然后选择一个分支作为工作的基础。
+
+![基于专用分支创建分支 ](media/create-branch-from-private-branch.png)
 
 准备好将功能分支的更改合并到协作分支时，单击分支下拉列表并选择“创建拉取请求”。 此操作会将你转到 Git 提供程序，你可以在其中发起拉取请求、完成代码评审，以及将更改合并到协作分支。 只能从协作分支发布到 Synapse 服务。 
 
@@ -243,4 +247,4 @@ Synapse Studio 一次只能有一个发布分支。 指定新的发布分支时�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要实现持续集成和部署，请参阅[持续集成和交付 (CI/CD)](continuous-integration-deployment.md)。
+* 若要实现持续集成和部署，请参阅[持续集成和交付 (CI/CD)](continuous-integration-delivery.md)。

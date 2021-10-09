@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 025d8d2007501f858b0f80e770ce6b8a230650bf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d7e2c61dc4d725ec98cf3267cf62ffc3e3d99c47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130550"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648347"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortes-change-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Fortes Change Cloud 的集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "108130550"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Fortes Change Cloud 支持 **SP 和 IDP** 发起的 SSO。
+* Fortes Change Cloud 支持[自动用户预配](fortes-change-cloud-provisioning-tutorial.md)。
 
 ## <a name="adding-fortes-change-cloud-from-the-gallery"></a>从库中添加 Fortes Change Cloud
 
@@ -46,7 +47,7 @@ ms.locfileid: "108130550"
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中键入“Fortes Change Cloud” 。
 1. 从结果面板中选择“Fortes Change Cloud”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
@@ -75,22 +76,22 @@ ms.locfileid: "108130550"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<UNIQUE_IDENTIFIER>.fortes-online.com/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<UNIQUE_IDENTIFIER>.fortes-online.com/saml/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<UNIQUE_IDENTIFIER>.fortes-online.com/`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<UNIQUE_IDENTIFIER>.fortes-online.com/saml/SSO`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<UNIQUE_IDENTIFIER>.fortes-online.com/saml/SSO`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Fortes Change Cloud 客户端支持团队](mailto:support@fortes.nl)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Fortes Change Cloud 客户端支持团队](mailto:support@fortes.nl)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. Fortes Change Cloud 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Fortes Change Cloud 应用程序要求通过 user.mail 对唯一用户标识符进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
     ![image](common/edit-attribute.png)
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -110,9 +111,9 @@ ms.locfileid: "108130550"
 
 在本部分中，你将通过授予 B.Simon 访问 Fortes Change Cloud 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Fortes Change Cloud”。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
@@ -125,6 +126,8 @@ ms.locfileid: "108130550"
 ### <a name="create-fortes-change-cloud-test-user"></a>创建 Fortes Change Cloud 测试用户
 
 在本部分，我们在 Fortes Change Cloud 中创建一个名为 Britta Simon 的用户。 与 [Fortes Change Cloud 支持团队](mailto:support@fortes.nl)协作，在 Fortes Change Cloud 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+
+Fortes Change Cloud 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./fortes-change-cloud-provisioning-tutorial.md)。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -140,7 +143,7 @@ ms.locfileid: "108130550"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Fortes Change Cloud 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Fortes Change Cloud 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Fortes Change Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Fortes Change Cloud 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Fortes Change Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

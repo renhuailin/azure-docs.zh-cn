@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室的实验室中重启 VM | Microsoft Docs
+title: 在实验室中重启 VM
 description: 本文提供了在 Azure 开发测试实验室中快速轻松地重启虚拟机 (VM) 的步骤。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: d2bcbcbea613aa84da91789fb9f118afd7023fab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07d580421c4f4bca8fbf81e7d300d1e38873c386
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481980"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625176"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中重启 VM
 遵循本文所述步骤，可以轻松快速地在开发测试实验室中重启虚拟机。 在重启 VM 之前请考虑以下内容：

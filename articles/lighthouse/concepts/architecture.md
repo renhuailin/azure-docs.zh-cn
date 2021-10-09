@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 体系结构
 description: 了解 Azure Lighthouse 中租户之间的关系，以及在客户租户中创建的支持这种关系的资源。
-ms.date: 05/11/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: bdcd1057d4ba2adfe8ab312228acd562b384b09d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 92890199b11da69fac58ec4ff2bccc1ab347d076
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795398"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629116"
 ---
 # <a name="azure-lighthouse-architecture"></a>Azure Lighthouse 体系结构
 
@@ -51,7 +51,7 @@ Azure Lighthouse 创建从一个租户到另一个租户的资源逻辑投影。
 
 ## <a name="how-azure-lighthouse-works"></a>Azure Lighthouse 的工作原理
 
-概括而言，Azure Lighthouse 的工作原理如下：
+概括而言，Azure Lighthouse 为管理租户工作的原理如下：
 
 1. 确定你的组、服务主体或用户在管理客户的 Azure 资源时所需的[角色](tenants-users-roles.md#role-support-for-azure-lighthouse)。
 2. 通过[向 Azure 市场发布托管服务产品/服务](../how-to/publish-managed-services-offers.md)或 [部署 Azure 资源管理器模板](../how-to/onboard-customer.md)，指定此访问权限并将客户加入 Azure Lighthouse。 此加入过程在客户的租户中创建上述两个资源（注册定义和注册分配）。
@@ -61,6 +61,6 @@ Azure Lighthouse 创建从一个租户到另一个租户的资源逻辑投影。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看 [Azure CLI](/cli/azure/managedservices/assignment) 和 [Azure Powershell](/powershell/module/az.managedservices/new-azmanagedservicesdefinition) 命令，以使用注册定义和注册分配。
+- 查看 [Azure CLI](/cli/azure/managedservices) 和 [Azure Powershell](/powershell/module/az.managedservices) 命令，以使用注册定义和注册分配。
 - 了解适用于 Azure Lighthouse 的[增强的服务和场景](cross-tenant-management-experience.md#enhanced-services-and-scenarios)。
 - 详细了解[租户、用户和角色](tenants-users-roles.md)如何使用 Azure Lighthouse。

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/27/2021
-ms.openlocfilehash: a3fe8707df1270f8571ad86fe07406376f71ab93
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 7f784773ff2f29b7f5b9c244811f818861f5ae42
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743230"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080608"
 ---
 # <a name="azure-consumption-commitment-enrollment"></a>Azure 使用量承诺注册
 
@@ -35,6 +35,27 @@ _Microsoft Azure 使用量承诺 (MACC)_ 计划适用于发布到 Azure 市场�
 
 ## <a name="how-to-see-if-your-offer-is-enrolled-in-the-macc-program"></a>如何查看你的产品/服务是否已注册 MACC 计划
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页上，选择要查看的产品/服务。
+1. 在“产品/部分概述”页面的“市场计划”部分中，“Microsoft Azure 使用量承诺”状态将显示“已注册”或“未注册”。
+
+    [ ![合作伙伴中心内“产品/服务概述”页的屏幕截图，其中显示了“Microsoft Azure 消耗量承诺”状态。](media/azure-benefit/enrolled-workspaces.png) ](media/azure-benefit/enrolled-workspaces.png#lightbox)
+
+    ***图1：MACC 计划中注册的产品/服务***
+
+> [!NOTE]
+> 发布到 Azure 市场的产品/服务的 MACC 计划状态每周更新一次，在周一更新。 这意味着，如果发布了一个满足 MACC 计划资格要求的产品/服务，其在“合作伙伴中心”中的状态直到下一个周一时才会显示“已注册”状态。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 1. 在左侧导航菜单中，选择“商业市场” > “概述” 。
 1. 在“产品/服务”部分中，选择要查看的产品/服务。
@@ -46,6 +67,8 @@ _Microsoft Azure 使用量承诺 (MACC)_ 计划适用于发布到 Azure 市场�
 
 > [!NOTE]
 > 发布到 Azure 市场的产品/服务的 MACC 计划状态每周更新一次，在周一更新。 这意味着，如果发布了一个满足 MACC 计划资格要求的产品/服务，其在“合作伙伴中心”中的状态直到下一个周一时才会显示“已注册”状态。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

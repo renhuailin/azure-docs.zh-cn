@@ -1,26 +1,26 @@
 ---
-title: Azure 数据工厂中的 Avro 格式
+title: Avro 格式
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 本主题介绍了如何处理 Azure 数据工厂中的 Avro 格式。
+description: 本主题介绍了如何处理 Azure 数据工厂和 Synapse Analytics 中的 Avro 格式。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 6a4e3f033583f70250e12702b948fcd30875fb65
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 45c96b1e0777dd42bd1a7175a057e5a48f691ff4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123250693"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779666"
 ---
-# <a name="avro-format-in-azure-data-factory"></a>Azure 数据工厂中的 Avro 格式
+# <a name="avro-format-in-azure-data-factory-and-synapse-analytics"></a>Azure 数据工厂和 Synapse Analytics 中的 Avro 格式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-如果要 **分析 Avro 文件或以 Avro 格式写入数据**，请遵循本文中的说明。 
+若要分析 Avro 文件或将数据写入 Avro 格式，请按照本文的说明操作。 
 
 以下连接器支持 Avro 格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 兼容存储](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle 云存储](connector-oracle-cloud-storage.md)和 [SFTP](connector-sftp.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "123250693"
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 **Avro**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
-| avroCompressionCodec | 写入到 Avro 文件时要使用的压缩编解码器。 当从 Avro 文件进行读取时，数据工厂会基于文件元数据自动确定压缩编解码器。<br>支持的类型为“none”  （默认值）、“deflate”  、“snappy”  。 请注意，当前复制活动在读取/写入 Avro 文件时不支持 Snappy。 | 否       |
+| avroCompressionCodec | 写入到 Avro 文件时要使用的压缩编解码器。 当从 Avro 文件进行读取时，该服务会基于文件元数据自动确定压缩编解码器。<br>支持的类型为“none”  （默认值）、“deflate”  、“snappy”  。 请注意，当前复制活动在读取/写入 Avro 文件时不支持 Snappy。 | 否       |
 
 > [!NOTE]
 > Avro 文件不支持列名称中包含空格。

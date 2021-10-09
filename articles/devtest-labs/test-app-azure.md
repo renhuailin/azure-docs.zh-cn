@@ -1,14 +1,14 @@
 ---
-title: 如何在 Azure 中测试应用 | Microsoft Docs
+title: 如何在 Azure 中测试应用
 description: 了解如何在实验室中创建文件共享并将其装载到实验室中的本地计算机和虚拟机，然后将桌面/Web 应用程序部署到该文件共享并对其进行测试。
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9d4e78bf0ebe5e28ac9bb180acafae3fcdd0f08
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282239"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604372"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 中测试应用 
 本文提供有关使用开发测试实验室在 Azure 中测试应用程序的步骤。 首先，在实验室中设置一个文件共享，并将其作为驱动器装载到实验室中的本地开发计算机和 VM 上。 然后，使用 Visual Studio 2019 将应用部署到文件共享，以便可以在实验室中的 VM 上运行该应用。  

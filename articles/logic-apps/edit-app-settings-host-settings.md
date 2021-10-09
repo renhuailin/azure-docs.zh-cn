@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 08/18/2021
-ms.openlocfilehash: 731fe8f29fc4e67e2d74d46702768e642928ae09
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 228e0ac6243ae25463a81967c6d5cbcd903ad2ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514567"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824155"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>在单租户 Azure 逻辑应用中编辑逻辑应用的主机和应用设置
 
@@ -234,7 +235,8 @@ az logicapp config appsettings set --name MyLogicApp --resource-group MyResource
 | 设置 | 默认值 | 说明 |
 |---------|---------------|-------------|
 | `Runtime.Backend.DefaultAppendArrayItemsLimit` | `100000` <br>（10 万个数组项） | 设置数组类型的变量中的最大项数。 |
-| `Runtime.Backend.VariableOperation.MaximumVariableSize` | 有状态工作流：`104857600` 个字符 <p><p>无状态工作流：`1024` 个字符 | 设置变量可存储的内容的最大字符数。 |
+| `Runtime.Backend.VariableOperation.MaximumVariableSize` | 有状态工作流：`104857600` 个字符 | 当在有状态工作流中使用时，设置变量可存储的内容的最大字符数。 |
+| `Runtime.Backend.VariableOperation.MaximumStatelessVariableSize` | 无状态工作流：`1024` 个字符 | 当在无状态工作流中使用时，设置变量可存储的内容的最大字符数。 |
 ||||
 
 <a name="http-webhook"></a>

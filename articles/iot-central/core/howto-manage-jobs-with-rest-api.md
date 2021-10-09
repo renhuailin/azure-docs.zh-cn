@@ -7,12 +7,12 @@ ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89dd9c60e28db55ad1cab65fd5554d77244ff777
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 47548b3c7e1fa7503e3f30c155755d6fe4f29031
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123480743"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667039"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-create-and-manage-jobs"></a>如何使用 IoT Central REST API 来创建和管理作业
 
@@ -29,7 +29,12 @@ ms.locfileid: "123480743"
 
 每个 IoT Central REST API 调用都需要授权标头。 有关详细信息，请参阅[如何对 IoT Central REST API 调用进行身份验证和授权](howto-authorize-rest-api.md)。
 
-有关 IoT Central REST API 的参考文档，请参阅 [Azure IoT Central REST API 参考资料](/rest/api/iotcentral/)。
+有关 IoT Central REST API 的参考文档，请参阅 [Azure IoT Central REST API 参考](/rest/api/iotcentral/)。
+
+> [!TIP]
+> [预览 API](/rest/api/iotcentral/1.1-previewdataplane/jobs) 支持新的[组织功能](howto-create-organizations.md)。
+
+若要了解如何在 UI 中创建和管理作业，请参阅[在 Azure IoT Central 应用程序中批量管理设备](howto-manage-devices-in-bulk.md)。
 
 ## <a name="job-payloads"></a>作业有效负载
 

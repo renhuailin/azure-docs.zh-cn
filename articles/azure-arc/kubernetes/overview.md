@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的概述。
 keywords: Kubernetes、Arc、Azure、容器
-ms.openlocfilehash: 80d1b741c4a3a1d60cc44e3afdeac22a61a7db4b
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 7a3d2c4465961984371abf17bff98d33f7b185a8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768281"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812565"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>什么是已启用 Azure Arc 的 Kubernetes？
 

@@ -9,12 +9,12 @@ ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: f1eae19bda4fae0744483a647eed47104e366e52
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: ac4d4ba50b9da33040fc1da27775d72c0156cba2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867046"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547760"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -211,9 +211,9 @@ az storage account update --name <yourStorageAccountName> -g <yourResourceGroup>
 
 “quota”属性表示高级和标准文件共享之间略有不同：
 
-- 标准文件共享是 Azure 文件共享的上限，最终用户不能超越此上限。 如果未指定配额，则标准文件共享最多可以涵盖 100 TiB 的空间；如果未为存储帐户设置大型文件共享属性，则最多可以涵盖 5 TiB。 如果未创建启用了大型文件共享的存储帐户，请参阅[在现有帐户中启用大型文件共享](#enable-large-files-shares-on-an-existing-account)以了解如何启用 100 TiB 文件共享。 收到的性能 (IOPs/Mbps) 取决于你设置的配额。
+- 标准文件共享是 Azure 文件共享的上限，最终用户不能超越此上限。 如果未指定配额，则标准文件共享最多可以涵盖 100 TiB 的空间；如果未为存储帐户设置大型文件共享属性，则最多可以涵盖 5 TiB。 如果未创建启用了大型文件共享的存储帐户，请参阅[在现有帐户中启用大型文件共享](#enable-large-files-shares-on-an-existing-account)以了解如何启用 100 TiB 文件共享。 
 
-- 对于高级文件共享，配额表示预配的大小。 预配的大小是将要对你计费的数量，与实际使用情况无关。 有关如何规划高级文件共享的详细信息，请参阅[预配高级文件共享](understanding-billing.md#provisioned-model)。
+- 对于高级文件共享，配额表示预配的大小。 预配的大小是将要对你计费的数量，与实际使用情况无关。 高级文件共享上可用的 IOPS 和吞吐量是基于预配大小。 有关如何规划高级文件共享的详细信息，请参阅[预配高级文件共享](understanding-billing.md#provisioned-model)。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 如果你刚刚创建了存储帐户，可以在部署屏幕中选择“转到资源”导航到该存储帐户。 在存储帐户中，在存储帐户的目录中选择“文件共享”。

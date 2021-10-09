@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
-ms.date: 04/07/2020
-ms.openlocfilehash: 883552a556ce0cde191cb3dfeccca0ac09c96a10
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/16/2021
+ms.openlocfilehash: bd1dcc24533e7d537a350d7f8fd516e697b3fdb5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359616"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593812"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>如何监视 Azure Cosmos DB 容器或帐户中的操作的服务器端延迟
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -30,17 +30,17 @@ ms.locfileid: "113359616"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
    
-2. 在左侧导航栏中选择“监视”，然后选择“指标”。 
+1. 在左侧导航栏中选择“监视”，然后选择“指标”。 
 
-   :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Azure Monitor 中的“指标”窗格":::
+   :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Azure Monitor 中的“指标”窗格" border="true":::
 
-3. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
+1. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
    
-   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="选择 Azure Cosmos DB 帐户以查看指标":::
+   :::image type="content" source="./media/monitor-account-key-updates/select-account-scope.png" alt-text="选择要查看指标的帐户范围" border="true":::
 
-4. 接下来，从可用指标的列表中选择“服务器端延迟”指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别划分的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，让我们选择“服务器端延迟”和“平均”作为聚合值。 除这些详细信息外，还可以选择指标的“时间范围”和“时间粒度”。  可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。 可以查看所选时间段内每分钟的服务器端延迟。  
+1. 接下来，从可用指标的列表中选择“服务器端延迟”指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别划分的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，让我们选择“服务器端延迟”和“平均”作为聚合值。 除这些详细信息外，还可以选择指标的“时间范围”和“时间粒度”。  可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。 可以查看所选时间段内每分钟的服务器端延迟。  
 
-   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="从 Azure 门户中选择服务器端延迟指标":::
+   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="从 Azure 门户中选择服务器端延迟指标" border="true":::
 
 ## <a name="filters-for-server-side-latency"></a>服务器端延迟的筛选器
 
@@ -50,7 +50,7 @@ ms.locfileid: "113359616"
 
 每个操作的服务器端延迟指标如下图所示的那样显示：
 
-:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="服务器端延迟指标的筛选器":::
+:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="服务器端延迟指标的筛选器" border="true":::
 
 也可以使用“应用拆分”选项对指标进行分组。  
 

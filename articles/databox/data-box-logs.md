@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/10/2021
+ms.date: 08/24/2021
 ms.author: alkohli
-ms.openlocfilehash: d98141c52acc3cd0628943d17a89ec9822299d48
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 842a6572ca7daf3c0039b088f25d538f709a1df7
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738133"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "129208602"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>跟踪 Azure Data Box 和 Azure Data Box Heavy 导入订单并记录其事件
 
@@ -32,6 +32,9 @@ Data Box 或 Data Box Heavy 导入订单会经历以下步骤：订购、设置�
 | 从设备中擦除数据   | [查看监护日志链](#get-chain-of-custody-logs-after-data-erasure)，包括审核日志和订单历史记录                |
 
 本文将详细介绍用于跟踪和审核 Data Box 或 Data Box Heavy 导入订单的各种机制或工具。 本文中的信息同时适用于 Data Box 和 Data Box Heavy 导入订单。 在后续部分，有关 Data Box 的任何参考信息也适用于 Data Box Heavy。
+
+> [!NOTE]
+> [!INCLUDE [data-box-copy-logs-behind-firewall](../../includes/data-box-copy-logs-behind-firewall.md)]
 
 ## <a name="set-up-access-control-on-the-order"></a>针对订单设置访问控制
 
@@ -79,7 +82,7 @@ Data Box 或 Data Box Heavy 导入订单会经历以下步骤：订购、设置�
 请确保复制作业已完成且未出错。 如果复制过程中出错，请从“连接和复制”页下载日志。
 
 - 如果将未经 512 字节对齐的文件复制到 Data Box 上的托管磁盘文件夹，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会显示一条错误。 请删除该文件，并复制经过 512 字节对齐的文件。
-- 如果复制了 VHDX、动态 VHD 或差异 VHD（不支持这些文件类型），则会在日志中看到错误。
+- 如果复制了 VHDX、动态 VHD 或差异 VHD，则会在日志中看到错误。 不支持这些文件类型。
 
 下面是复制到托管磁盘时出现的不同错误的 *error.xml* 示例。
 
@@ -210,6 +213,9 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 复制日志路径也会显示在门户的“概述”边栏选项卡上。
 
 ![完成后“概述”边栏选项卡中显示的复制日志路径](media/data-box-logs/copy-log-path-1.png)
+
+> [!NOTE]
+> [!INCLUDE [data-box-copy-logs-behind-firewall](../../includes/data-box-copy-logs-behind-firewall.md)]
 
 ### <a name="upload-completed-successfully"></a>上传已成功完成
 

@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2086351f1e66cbd2ef41ac98b2ab86fe7275823b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98231836"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621350"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 网络服务远程进行工作
 
@@ -52,7 +52,7 @@ Azure VPN 网关支持点到站点 (P2S) 和站点到站点 (S2S) VPN 连接。 
 
 若要聚合大规模 VPN 连接，以支持不同本地全局位置和不同区域性中心辐射型虚拟网络中的资源之间的任意点到任意点连接，并优化多个家庭宽带网络的利用率，可以使用 Azure 虚拟 WAN。 有关详细信息，请参阅[正在奋力满足在家工作的需求？Azure 虚拟 WAN 可以提供帮助](../virtual-wan/work-remotely-support.md)。
 
-支持远程工作的另一种方式是部署 Azure 虚拟网络中托管的、通过 Azure 防火墙保护的虚拟桌面基础结构 (VDI)。 例如，Windows 虚拟桌面 (WVD) 是在 Azure 中运行的桌面和应用虚拟化服务。 使用 Windows 虚拟桌面，可以在 Azure 订阅中设置可缩放的灵活环境，而无需运行任何额外的网关服务器。 你只负责虚拟网络中的 WVD 虚拟机。 有关详细信息，请参阅 [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)。 
+支持远程工作的另一种方式是部署 Azure 虚拟网络中托管的、通过 Azure 防火墙保护的虚拟桌面基础结构 (VDI)。 例如，Azure 虚拟桌面 (AVD) 是在 Azure 中运行的桌面和应用虚拟化服务。 使用 Azure 虚拟桌面，可以在 Azure 订阅中设置可缩放的灵活环境，而无需运行任何额外的网关服务器。 你只负责虚拟网络中的 AVD 虚拟机。 有关详细信息，请参阅 [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)。 
 
 Azure 还有众多的生态系统合作伙伴。 Azure 上的合作伙伴网络虚拟设备也能够帮助缩放 VPN 连接。 有关详细信息，请参阅[用于远程工作的网络虚拟设备 (NVA) 的注意事项](../vpn-gateway/nva-work-remotely-support.md)。
 

@@ -9,37 +9,39 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 74c65a28688906b4c9cfecf786f5862e31143ead
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: ac32f01849054017394d420668d1361e7c597dfb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804333"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>教程：Azure Active Directory 与 Zscaler ZSCloud 的集成
 
 本教程介绍如何将 Zscaler ZSCloud 与 Azure Active Directory (Azure AD) 集成。 将 Zscaler ZSCloud 与 Azure AD 集成后，你可以：
 
-- 在 Azure AD 中控制谁有权访问 Zscaler ZSCloud。
-- 让用户使用其 Azure AD 帐户自动登录到 Zscaler ZSCloud。
-- 在一个中心位置（Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Zscaler ZSCloud。
+* 让用户使用其 Azure AD 帐户自动登录到 Zscaler ZSCloud。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Zscaler ZSCloud 的集成，需要提供以下项：
 
-- 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-- 已启用 Zscaler ZSCloud 单一登录的订阅。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Zscaler ZSCloud 单一登录的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-- Zscaler ZSCloud 支持 **SP** 发起的 SSO
+* Zscaler ZSCloud 支持 SP 发起的 SSO。
 
-- Zscaler ZSCloud 支持 **实时** 用户预配
+* Zscaler ZSCloud 支持实时用户预配。
+
+* Zscaler ZSCloud 支持[自动用户预配](zscaler-zscloud-provisioning-tutorial.md)。
 
 ## <a name="adding-zscaler-zscloud-from-the-gallery"></a>从库添加 Zscaler ZSCloud
 
@@ -141,15 +143,15 @@ ms.locfileid: "108804333"
 4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 5. 在“用户和组”对话框中，从列表中选择用户（例如“Britta Simon”），然后单击屏幕底部的“选择”按钮    。
 
-   ![显示“用户和组”对话框的屏幕截图，你可以在其中选择用户。](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_users.png)
+   ![显示“用户和组”对话框的屏幕截图，你可以在其中选择用户。](./media/zscaler-zscloud-tutorial/users.png)
 
 6. 从“选择角色”对话框中，选择列表中合适的用户角色，然后单击屏幕底部的“选择”按钮   。
 
-   ![显示“选择角色”对话框的屏幕截图，你可以在其中选择用户角色。](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_roles.png)
+   ![显示“选择角色”对话框的屏幕截图，你可以在其中选择用户角色。](./media/zscaler-zscloud-tutorial/roles.png)
 
 7. 在“添加分配”  对话框中，选择“分配”  按钮。
 
-   ![显示“添加分配”对话框的屏幕截图，你可以在其中选择“分配”。](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_assign.png)
+   ![显示“添加分配”对话框的屏幕截图，你可以在其中选择“分配”。](./media/zscaler-zscloud-tutorial/assignment.png)
 
    > [!NOTE]
    > 默认访问角色使中断预配，因此不受支持；分配用户时无法选择默认角色。
@@ -168,7 +170,7 @@ ms.locfileid: "108804333"
 
 4. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤： 
 
-   ![显示包含所述步骤的 Zscaler 站点的屏幕截图。](./media/zscaler-zscloud-tutorial/ic800206.png "管理")
+   ![显示包含所述步骤的 Zscaler 站点的屏幕截图。](./media/zscaler-zscloud-tutorial/setting.png "管理")
 
    a. 在“身份验证类型”下选择“SAML”。 
 
@@ -176,7 +178,7 @@ ms.locfileid: "108804333"
 
 5. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。   
 
-   ![管理用户和身份验证](./media/zscaler-zscloud-tutorial/ic800208.png "管理用户和身份验证")
+   ![管理用户和身份验证](./media/zscaler-zscloud-tutorial/attributes.png "管理用户和身份验证")
 
    a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
@@ -192,11 +194,11 @@ ms.locfileid: "108804333"
 
    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
 
-   h. 单击“ **保存**”。
+   h. 单击“保存”  。
 
 6. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
-   ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-zscloud-tutorial/ic800207.png)
+   ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-zscloud-tutorial/active.png)
 
    a. 将鼠标悬停在左下角附近的“激活”菜单上。 
 
@@ -210,17 +212,17 @@ ms.locfileid: "108804333"
 
 2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。   
 
-   ![Internet 选项](./media/zscaler-zscloud-tutorial/ic769492.png &quot;Internet 选项")
+   ![Internet 选项](./media/zscaler-zscloud-tutorial/network.png &quot;Internet 选项")
 
 3. 单击“连接”  选项卡。
 
-   ![连接](./media/zscaler-zscloud-tutorial/ic769493.png "连接")
+   ![连接](./media/zscaler-zscloud-tutorial/server.png "连接")
 
 4. 单击“LAN 设置”  ，打开“LAN 设置”  对话框。
 
 5. 在“代理服务器”部分中，执行以下步骤：
 
-   ![代理服务器](./media/zscaler-zscloud-tutorial/ic769494.png "代理服务器")
+   ![代理服务器](./media/zscaler-zscloud-tutorial/internet-options.png "代理服务器")
 
    a. 选择“为 LAN 使用代理服务器”。 
 
@@ -241,15 +243,18 @@ ms.locfileid: "108804333"
 > [!Note]
 > 如需手动创建用户，请联系 [Zscaler ZSCloud 支持团队](https://help.zscaler.com/)。
 
+> [!NOTE]
+> Zscaler ZSCloud 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./zscaler-zscloud-provisioning-tutorial.md)。
+
 ### <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-- 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler ZSCloud 登录 URL，可以在其中启动登录流。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler ZSCloud 登录 URL，可以在其中启动登录流。
 
-- 直接转到 Zscaler ZSCloud 登录 URL，并从那里启动登录流。
+* 直接转到 Zscaler ZSCloud 登录 URL，并从那里启动登录流。
 
-- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler ZSCloud 磁贴时，会重定向到 Zscaler ZSCloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler ZSCloud 磁贴时，会重定向到 Zscaler ZSCloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

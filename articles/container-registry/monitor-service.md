@@ -6,13 +6,13 @@ ms.author: danlep
 ms.topic: how-to
 ms.custom: subject-monitoring
 ms.service: container-registry
-ms.date: 03/19/2021
-ms.openlocfilehash: 1b7f8a13a7d372fe67e5ca7c235febfa52294432
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/13/2021
+ms.openlocfilehash: ff82571b791f20cf46150be06e583af29f13dbd5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294943"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586961"
 ---
 # <a name="monitor-azure-container-registry"></a>监视 Azure 容器注册表
 
@@ -20,7 +20,7 @@ ms.locfileid: "114294943"
 
 ## <a name="monitor-overview"></a>Monitor 概述
 
-每个注册表的 Azure 门户中的“概述”页面上均有一个显示最近资源使用情况和活动（例如推送和拉取操作）的简要视图。 这些高级别信息非常有用，但只显示少量监视数据。 
+每个注册表的 Azure 门户中的“概述”页面上均有一个显示最近资源使用情况和活动（例如推送和拉取操作）的简要视图。 这些高级别信息非常有用，但只显示少量数据。 
 
 :::image type="content" source="media/monitor-service/metrics-overview.png" alt-text="注册表指标概述"::: 
 
@@ -76,7 +76,6 @@ Azure 容器注册表收集与 [Azure 资源中的监视数据](../azure-monitor
 
 以下 Azure CLI 命令可用于获取有关指标 Azure 容器注册表的信息。
 
-* [az acr show-usage](/cli/azure/acr/#az_acr_show_usage) - 显示 Azure 容器注册表使用的当前存储
 * [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) - 列出指标定义和维度
 * [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) - 检索指标值
 
@@ -202,9 +201,10 @@ If you are creating or running an application which run on <*service*> [Azure Mo
     1. 输入操作组的详细信息。
     1. 在“通知”选项卡上，选择“电子邮件/短信/推送/语音”并输入收件人，例如 admin@contoso.com。  选择“查看 + 创建”。
 1. 输入警报规则的名称和说明，然后选择严重级别。
-1. 选择“创建预警规则”。
+1. 选择“创建警报规则”。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Azure 容器注册表创建的指标、日志和其他重要值的参考，请参阅 [Azure 容器注册表监视数据参考](monitor-service-reference.md)。
 - 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)。
+- 有关如何获取注册表中存储使用情况和其他资源消耗的快照的信息，请参阅[显示注册表使用情况](container-registry-skus.md#show-registry-usage)。

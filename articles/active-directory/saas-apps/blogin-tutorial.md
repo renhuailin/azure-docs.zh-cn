@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: bba164ea19f1a4d4f70fb9151ae4f833ecd01515
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ef77d3001d09364e754a38897c769a41feaa0db3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891097"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679477"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BlogIn 的集成
 
@@ -39,6 +39,7 @@ ms.locfileid: "111891097"
 
 * BlogIn 支持 SP 和 IDP 发起的 SSO。
 * BlogIn 支持实时用户预配。
+* BlogIn 支持[自动用户预配](blogin-provisioning-tutorial.md)。
 
 ## <a name="add-blogin-from-the-gallery"></a>从库中添加 BlogIn
 
@@ -76,7 +77,7 @@ ms.locfileid: "111891097"
 
 1. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.blogin.co/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.blogin.co/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.blogin.co/sso/saml/callback`
 
@@ -145,6 +146,8 @@ ms.locfileid: "111891097"
 
 本部分将在 BlogIn 中创建一个名为 B.Simon 的用户。 BlogIn 支持默认启用的实时用户设置。 此部分不存在任何操作项。 如果 BlogIn 中尚不存在用户，则会在身份验证后创建一个新用户。
 
+BlogIn 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./blogin-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -159,7 +162,7 @@ ms.locfileid: "111891097"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 BlogIn。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“BlogIn”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 BlogIn。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“BlogIn”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 BlogIn。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

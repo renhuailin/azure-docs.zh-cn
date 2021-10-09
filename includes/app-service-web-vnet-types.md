@@ -1,15 +1,15 @@
 ---
-author: ccompy
+author: madsd
 ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
-ms.author: ccompy
-ms.openlocfilehash: 1c3542332fbdad13d56a141d677e91b68f7e99d0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: madsd
+ms.openlocfilehash: 8d4c2968e3b21269d233f584747856804f8ff9c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728103"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641916"
 ---
 * 支持除独立定价计划以外的全部定价计划的多租户系统。
 * 部署到 VNet 中且支持独立定价计划应用的应用服务环境。
@@ -19,7 +19,7 @@ VNet 集成功能用于多租户应用。 如果应用在[应用服务环境][AS
 VNet 集成允许应用访问 VNet 中的资源，但不允许通过 VNet 对应用进行入站专用访问。 专用站点访问指的是仅可从专用网络（例如 Azure 虚拟网络）对应用进行访问。 VNet 集成仅用来从应用对 VNet 进行出站调用。 VNet 集成功能可以用于同一区域中的 VNet，也可用于其他区域中的 VNet，这两种情况下的行为有所不同。 VNet 集成功能有两种变体：
 
 * **区域 VNet 集成**：连接到同一区域中的 Azure 资源管理器虚拟网络时，必须在要与之集成的 VNet 中具有专用子网。
-* **需要网关的 VNet 集成**：连接到其他区域中的 VNet 或同一区域中的经典虚拟网络时，需要在目标 VNet 中预配 Azure 虚拟网关。
+* 需要网关的 VNet 集成：直接连接到其他区域中的 VNet 或同一区域中的经典虚拟网络时，需要在目标 VNet 中预配 Azure 虚拟网关。
 
 VNet 集成功能：
 

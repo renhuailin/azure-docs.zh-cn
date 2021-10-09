@@ -1,15 +1,15 @@
 ---
-title: PowerShell - 在 Azure 开发测试实验室的实验室中创建自定义角色
+title: PowerShell - 在实验室中创建自定义角色
 description: 本文提供了一个 Azure PowerShell 脚本，它在 Azure 开发测试实验室的实验室中创建自定义角色。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 3757d6c16a762a0f76f4718f117da93322af074c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f217ac5a0e65d0952942a15b30f1f6727af24599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021191"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654207"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 在 Azure 开发测试实验室的实验室中创建自定义角色
 

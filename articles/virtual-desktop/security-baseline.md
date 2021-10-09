@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b9a0d2b785f98555d723c81c6beecaa85313881e
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 0adc8638eeffedf1f8b2b31357b43fc38e67773f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728650"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546326"
 ---
 # <a name="azure-security-baseline-for-azure-virtual-desktop"></a>Azure 虚拟桌面的 Azure 安全基线
 
@@ -20,7 +20,7 @@ ms.locfileid: "114728650"
 
 Azure 虚拟桌面服务包括服务本身、适用于多会话虚拟 SKU 的 Windows 10 企业版以及 FSLogix。 有关 FSLogix 相关的安全建议，请参阅“[存储安全基线](../storage/common/security-baseline.md)”。 该服务在虚拟机上运行代理，但由于虚拟机完全受客户控制，因此请遵循[有关计算的安全性建议](../virtual-machines/windows/security-baseline.md)
 
-若要查看 Azure 虚拟桌面如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 虚拟桌面安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
+如果要查看 Azure 虚拟桌面如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 虚拟桌面安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全
 
@@ -28,19 +28,19 @@ Azure 虚拟桌面服务包括服务本身、适用于多会话虚拟 SKU 的 Wi
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
-指南：部署要注册到 Azure 虚拟桌面的虚拟机时，必须创建或使用现有虚拟网络。 确保所有 Azure 虚拟网络都遵循与业务风险相匹配的企业分段原则。 任何可能会给组织带来更高风险的系统都应隔离在其自己的虚拟网络中，并通过网络安全组或 Azure 防火墙进行充分保护。
+**指南**：部署要注册到 Azure 虚拟桌面的虚拟机时，必须创建或使用现有虚拟网络。 确保所有 Azure 虚拟网络都遵循与业务风险相匹配的企业分段原则。 任何可能会给组织带来更高风险的系统都应隔离在其自己的虚拟网络中，并通过网络安全组或 Azure 防火墙进行充分保护。
 
 请使用 Azure 安全中心中的自适应网络强化功能，针对网络安全组配置提出建议来根据外部流量规则限制端口和源 IP。
 
 考虑应用程序和企业分段策略的实际情况，根据网络安全组规则限制或允许内部资源之间的流量传递。 对于明确定义的特定应用程序（例如 3 层应用），可采用高度安全的“默认拒绝，允许例外”方法。 如果有多个应用程序和终结点彼此交互，那么这种方法的扩展性可能并不好。 如果需要在大量企业分段或分支（中心辐射型拓扑）上进行集中管理，也可使用 Azure 防火墙
 
-对于与虚拟机（属于 Azure 虚拟桌面的一部分）子网关联的网络安全组，必须允许传出流量到特定终结点。 
+对于与虚拟机（属于 Azure 虚拟桌面的一部分）子网关联的网络安全组，必须允许传出流量传输到特定终结点。 
 
 - [了解需要哪些 URL 才能访问 Azure 虚拟桌面](safe-url-list.md)
 
 - [Azure 安全中心内的自适应网络强化](../security-center/security-center-adaptive-network-hardening.md) 
 
-- [适用于 Azure 虚拟桌面的 Azure 防火墙](../firewall/protect-windows-virtual-desktop.md)
+- [适用于 Azure 虚拟桌面的 Azure 防火墙](../firewall/protect-azure-virtual-desktop.md)
 
 - [如何创建包含安全规则的网络安全组](../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -104,7 +104,7 @@ Azure 虚拟桌面不运行 Web 应用程序，并且不需要配置任何其他
 
 ### <a name="ns-6-simplify-network-security-rules"></a>NS-6：简化网络安全规则
 
-指南：使用 Azure 虚拟网络服务标记，在为 Azure 虚拟桌面资源配置的网络安全组或 Azure 防火墙上定义网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应源字段或目标字段中指定服务标记名（例如，WindowsVirtualDesktop），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指南**：使用 Azure 虚拟网络服务标记，在为 Azure 虚拟桌面资源配置的网络安全组或 Azure 防火墙上定义网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应源字段或目标字段中指定服务标记名（例如，WindowsVirtualDesktop），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 - [了解并使用服务标记](../virtual-network/service-tags-overview.md)
 
@@ -144,9 +144,9 @@ Azure AD 支持外部标识，因此，没有 Microsoft 帐户的用户可以使
 
 ### <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自动地管理应用程序标识
 
-指南：Azure 虚拟桌面支持非人工帐户（例如服务或自动化）的 Azure 托管标识。 建议使用 Azure 托管身份功能，而不是创建功能更强大的人工帐户来访问或执行资源。 
+**指南**：Azure 虚拟桌面支持非人工帐户（例如服务或自动化）的 Azure 托管标识。 建议使用 Azure 托管身份功能，而不是创建功能更强大的人工帐户来访问或执行资源。 
 
-Azure 虚拟桌面建议使用 Azure Active Directory (Azure AD) 在资源级别创建具有受限权限的服务主体，以使用证书凭据配置服务主体，并回退到客户端密码。 在这两种情况下，都可以将 Azure 密钥保管库与 Azure 托管标识结合使用，以便运行时环境（例如 Azure 函数）可以从密钥保管库中检索凭据。
+Azure 虚拟桌面建议使用 Azure Active Directory (Azure AD) 在资源级别创建具有受限权限的服务主体，以使用证书凭据配置服务主体，并回退到客户端机密。 在这两种情况下，都可以将 Azure 密钥保管库与 Azure 托管标识结合使用，以便运行时环境（例如 Azure 函数）可以从密钥保管库中检索凭据。
 
 - [支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
@@ -162,7 +162,7 @@ Azure 虚拟桌面建议使用 Azure Active Directory (Azure AD) 在资源级别
 
 ### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
 
-指南：Azure 虚拟桌面使用 Azure Active Directory (Azure AD) 来提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 此内容包括企业标识（例如员工）以及外部标识（如合作伙伴和供应商）。 这样，单一登录 (SSO) 便可以管理和保护对本地和云中的组织数据和资源的访问。 将你的所有用户、应用程序和设备连接到 Azure AD，以便实现无缝的安全访问以及更好的可见性和控制。
+**指南**：Azure 虚拟桌面使用 Azure Active Directory (Azure AD) 来提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 此内容包括企业标识（例如员工）以及外部标识（如合作伙伴和供应商）。 这样，单一登录 (SSO) 便可以管理和保护对本地和云中的组织数据和资源的访问。 将你的所有用户、应用程序和设备连接到 Azure AD，以便实现无缝的安全访问以及更好的可见性和控制。
 
 - [了解 Azure AD 的应用程序 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -172,7 +172,7 @@ Azure 虚拟桌面建议使用 Azure Active Directory (Azure AD) 在资源级别
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制 
 
-指南：Azure 虚拟桌面使用 Azure Active Directory (Azure AD)，后者支持通过多重身份验证进行的强身份验证控制，并且支持强无密码方法。
+**指南**：Azure 虚拟桌面使用 Azure Active Directory (Azure AD)，后者支持通过多重身份验证进行的强身份验证控制，并且支持强无密码方法。
 
 - 多重身份验证 - 启用 Azure AD 多重身份验证并遵循 Azure 安全中心标识和访问管理建议，以在多重身份验证设置中推行一些最佳做法。 可对所有用户或选定用户强制执行多重身份验证，也可根据登录条件和风险因素在每个用户级别这样做。
 
@@ -196,7 +196,7 @@ Azure 虚拟桌面支持旧式基于密码的身份验证，例如采用基线�
 
 ### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：监视并提醒帐户异常
 
-指南：Azure 虚拟桌面与提供以下数据源的 Azure Active Directory (Azure AD) 集成：
+**指南**：Azure 虚拟桌面与提供以下数据源的 Azure Active Directory (Azure AD) 集成：
 
 - 登录 - 登录报告提供有关托管应用程序使用情况和用户登录活动的信息。
 
@@ -222,7 +222,7 @@ Azure 虚拟桌面支持旧式基于密码的身份验证，例如采用基线�
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：基于条件限制 Azure 资源访问
 
-指南：Azure 虚拟桌面支持使用 Azure Active Directory (Azure AD) 进行条件访问，提供基于用户定义条件的粒度访问控制。 例如，可以要求来自某些 IP 范围的用户登录使用多重身份验证才能进行访问。 
+**指南**：Azure 虚拟桌面支持使用 Azure Active Directory (Azure AD) 进行条件访问，提供基于用户定义的条件的精细访问控制。 例如，可以要求来自某些 IP 范围的用户登录使用多重身份验证才能进行访问。 
 
 此外，精细身份验证会话管理策略还可用于不同的用例。
 
@@ -244,7 +244,7 @@ Azure 虚拟桌面支持旧式基于密码的身份验证，例如采用基线�
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
-指南：Azure 虚拟桌面使用 Azure 基于角色的访问控制 (Azure RBAC) 来隔离对业务关键型系统的访问。 确保还限制了对业务关键型资产具有管理访问权限的管理、标识和安全系统的访问，这些资产包括在业务关键型系统上安装了代理的 Active Directory 域控制器、安全工具和系统管理工具。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
+**指南**：Azure 虚拟桌面使用 Azure 基于角色的访问控制 (Azure RBAC) 来隔离对业务关键型系统的访问。 确保还限制了对业务关键型资产具有管理访问权限的管理、标识和安全系统的访问，这些资产包括在业务关键型系统上安装了代理的 Active Directory 域控制器、安全工具和系统管理工具。 入侵这些管理和安全系统的攻击者可以立即将它们用作损害业务关键型资产的武器。
 
 所有类型的访问控制都应符合企业分段策略，确保访问控制保持一致。
 
@@ -262,7 +262,7 @@ Azure 虚拟桌面支持旧式基于密码的身份验证，例如采用基线�
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-指南：Azure 虚拟桌面使用 Azure Active Directory (Azure AD) 帐户来定期管理其资源、审查用户帐户和访问权限分配，以确保帐户及其访问权限有效。
+**指南**：Azure 虚拟桌面使用 Azure Active Directory (Azure AD) 帐户来定期管理其资源、审查用户帐户和访问权限分配，以确保帐户及其访问权限有效。
 
 使用 Azure AD 访问评审来审查组成员身份、对企业应用程序的访问权限和角色分配。 Azure AD 报告提供日志来帮助发现过时的帐户。
 
@@ -282,7 +282,7 @@ Azure 虚拟桌面支持旧式基于密码的身份验证，例如采用基线�
 
 ### <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中设置紧急访问
 
-指南：Azure 虚拟桌面使用 Azure Active Directory (Azure AD) 管理其资源。 为了防止意外退出 Azure AD 组织，请设置一个紧急访问帐户，以便在正常管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
+**指南**：Azure 虚拟桌面使用 Azure Active Directory (Azure AD) 管理其资源。 为了防止意外退出 Azure AD 组织，请设置一个紧急访问帐户，以便在正常管理帐户无法使用时进行访问。 紧急访问帐户通常拥有较高的权限，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。
 
 应确保妥善保管紧急访问帐户的凭据（例如密码、证书或智能卡），仅将其告诉只能在紧急情况下有权使用它们的个人。
 
@@ -294,7 +294,7 @@ Azure 虚拟桌面支持旧式基于密码的身份验证，例如采用基线�
 
 ### <a name="pa-5-automate-entitlement-management"></a>PA-5：将权利管理自动化 
 
-指南：Azure 虚拟桌面已与 Azure Active Directory (Azure AD) 集成，以管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 此外，还支持双重或多阶段审批。
+**指南**：Azure 虚拟桌面已与 Azure Active Directory (Azure AD) 集成，以管理其资源。 使用 Azure AD 的权利管理功能可自动执行访问请求工作流，包括访问权限分配、审查和过期。 此外，还支持双重或多阶段审批。
 
 - [什么是 Azure AD 访问评审](../active-directory/governance/access-reviews-overview.md) 
 
@@ -320,7 +320,7 @@ Azure 虚拟桌面支持旧式基于密码的身份验证，例如采用基线�
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则） 
 
-指南：Azure 虚拟桌面已与 Azure 基于角色的访问控制 (Azure RBAC) 集成，以管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 
+**指南**：Azure 虚拟桌面已与 Azure 基于角色的访问控制 (Azure RBAC) 集成，以管理其资源。 使用 Azure RBAC，可通过角色分配来管理 Azure 资源访问。 可以将这些角色分配给用户、组服务主体和托管标识。 某些资源具有预定义的内置角色，可以通过工具（例如 Azure CLI、Azure PowerShell 或 Azure 门户）来清点或查询这些角色。 
 
 通过 Azure RBAC 分配给资源的特权应始终限制为角色所需的特权。 这是对 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 的实时 (JIT) 方法的补充，应定期进行审查。
 
@@ -492,7 +492,7 @@ Azure 信息保护 (AIP) 提供的监视功能针对已分类并标记的信息�
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
-指南：使用 Azure 安全中心内置威胁检测功能，并为 Azure 虚拟桌面资源启用 Azure Defender（正式称为 Azure 高级威胁防护）。 适用于 Azure 虚拟桌面的 Azure Defender 提供额外的安全智能层，可检测是否存在访问或攻击 Azure 虚拟桌面资源的异常和潜在有害尝试行为。
+**指南**：使用 Azure 安全中心内置威胁检测功能，并为 Azure 虚拟桌面资源启用 Azure Defender（正式称为 Azure 高级威胁防护）。 适用于 Azure 虚拟桌面的 Azure Defender 提供额外的安全智能层，可检测是否存在访问或攻击 Azure 虚拟桌面资源的异常和潜在有害尝试行为。
 
 将 Azure 虚拟桌面中的任何日志转发到可用于设置自定义威胁检测的安全信息事件管理 (SIEM) 解决方案。 确保正在监视不同类型的 Azure 资产，以发现潜在的威胁和异常情况。 专注于获取高质量警报以减少误报，便于分析人员进行分类整理。 警报可能源自日志数据、代理或其他数据。
 
@@ -534,7 +534,7 @@ Azure 安全中心还可针对某些可疑活动（例如失败的身份验证�
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：为 Azure 网络活动启用日志记录
 
-指南：Azure 虚拟桌面不会生成或处理域名服务 (DNS) 查询日志。 但注册到此服务的资源可以生成流日志。
+**指南**：Azure 虚拟桌面不会生成或处理域名服务 (DNS) 查询日志。 但注册到此服务的资源可以生成流日志。
 
 启用并收集网络安全组资源和流日志、Azure 防火墙日志和 Web 应用程序防火墙 (WAF) 日志进行安全分析，从而支持事件调查、威胁搜寻和安全警报生成。 可将流日志发送到 Azure Monitor Log Analytics 工作区，然后使用流量分析提供见解。
 
@@ -552,7 +552,7 @@ Azure 安全中心还可针对某些可疑活动（例如失败的身份验证�
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-指南：自动启用的活动日志包含针对 Azure 虚拟桌面资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
+**指南**：自动启用的活动日志包含针对 Azure 虚拟桌面资源的所有写入操作（PUT、POST、DELETE），但读取操作 (GET) 除外。 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
@@ -640,9 +640,7 @@ Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使
 
 Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提供一个事例管理门户来管理事件的整个生命周期。 调查过程中的情报信息可与事件相关联，以便进行跟踪和报告。 
 
-- [Windows 计算机的磁盘快照](../virtual-machines/windows/snapshot-copy-managed-disk.md)
-
-- [Linux 计算机的磁盘快照](../virtual-machines/linux/snapshot-copy-managed-disk.md)
+- [拍摄计算机磁盘的快照](../virtual-machines/windows/snapshot-copy-managed-disk.md)
 
 - [Microsoft Azure 支持诊断信息和内存转储收集](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 
 
@@ -724,7 +722,7 @@ Azure 安全中心还可在容器映像中扫描漏洞，并根据中心 Interne
 
 ### <a name="pv-5-securely-store-custom-operating-system-and-container-images"></a>PV-5：安全存储自定义操作系统和容器映像
 
-指南：通过 Azure 虚拟桌面，客户可以管理操作系统映像。 请使用 Azure 基于角色的访问控制 (Azure RBAC) 来确保只有授权用户才能访问自定义映像。 使用 Azure 共享映像库，可以将映像共享给组织内的不同用户、服务主体或 Active Directory 组。 将容器映像存储在 Azure 容器注册表中，并使用 RBAC 来确保只有经过授权的用户才能进行访问。
+**指南**：通过 Azure 虚拟桌面，客户可以管理操作系统映像。 请使用 Azure 基于角色的访问控制 (Azure RBAC) 来确保只有授权用户才能访问自定义映像。 使用 Azure 共享映像库，可以将映像共享给组织内的不同用户、服务主体或 Active Directory 组。 将容器映像存储在 Azure 容器注册表中，并使用 RBAC 来确保只有经过授权的用户才能进行访问。
 
 - [了解 Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md) 
 
@@ -738,7 +736,7 @@ Azure 安全中心还可在容器映像中扫描漏洞，并根据中心 Interne
 
 ### <a name="pv-6-perform-software-vulnerability-assessments"></a>PV-6：执行软件漏洞评估
 
-指南：通过 Azure 虚拟桌面，你可以部署自己的虚拟机并将其注册到服务，还可以在环境中运行 SQL 数据库。
+**指南**：通过 Azure 虚拟桌面，你可以部署自己的虚拟机并将其注册到服务，还可以在环境中运行 SQL 数据库。
 
 Azure 虚拟桌面使用第三方解决方案对网络设备和 Web 应用程序执行漏洞评估。 执行远程扫描时，不要使用单个永久管理帐户。 请考虑为扫描帐户实现 JIT 预配方法。 扫描帐户的凭据应受到保护、监视，并且仅用于漏洞扫描。
 
@@ -759,7 +757,7 @@ Azure 虚拟桌面使用第三方解决方案对网络设备和 Web 应用程序
 
 ### <a name="pv-7-rapidly-and-automatically-remediate-software-vulnerabilities"></a>PV-7：快速自动修正软件漏洞
 
-指南：Azure 虚拟桌面不使用或不需要任何第三方软件。 但是，通过 Azure 虚拟桌面，你可以部署自己的虚拟机并将其注册到服务。
+**指南**：Azure 虚拟桌面不使用或不需要任何第三方软件。 但是，通过 Azure 虚拟桌面，你可以部署自己的虚拟机并将其注册到服务。
 
 请使用 Azure 自动化更新管理或第三方解决方案确保在 Windows Server 虚拟机上安装最新的安全更新。 对于 Windows 虚拟机，请确保已启用 Windows 更新并将其设置为自动更新。
 
@@ -777,7 +775,7 @@ Azure 虚拟桌面使用第三方解决方案对网络设备和 Web 应用程序
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8：执行定期攻击模拟
 
-指南：Azure 虚拟桌面不允许客户在其 Azure 虚拟桌面资源上执行自己的渗透测试。
+**指南**：Azure 虚拟桌面不允许客户在其 Azure 虚拟桌面资源上执行自己的渗透测试。
 
 **Azure 安全中心监视**：不适用
 
@@ -789,7 +787,7 @@ Azure 虚拟桌面使用第三方解决方案对网络设备和 Web 应用程序
 
 ### <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1：使用终结点检测和响应 (EDR)
 
-指南：Azure 虚拟桌面不为终结点检测和响应 (EDR) 过程提供任何特定功能。 但注册到此服务的资源可以从终结点检测和响应功能中获益。 
+**指南**：Azure 虚拟桌面不为终结点检测和响应 (EDR) 过程提供任何特定功能。 但注册到此服务的资源可以从终结点检测和响应功能中获益。 
 
 为服务器和客户端启用终结点检测和响应功能，并将其与安全信息和事件管理 (SIEM) 解决方案和安全操作过程集成。
 
@@ -809,7 +807,7 @@ Microsoft Defender 高级威胁防护在企业终结点安全平台中提供了�
 
 ### <a name="es-2-use-centrally-managed-modern-anti-malware-software"></a>ES-2：使用集中管理的新式反恶意软件
 
-指南：使用集中管理的新式终结点反恶意软件解决方案保护 Azure 虚拟桌面资源，该解决方案支持实时和定期扫描。
+**指南**：使用集中管理的新式终结点反恶意软件解决方案保护 Azure 虚拟桌面资源，该解决方案支持实时和定期扫描。
 
 Azure 安全中心可以自动识别针对虚拟机的多种常用反恶意软件解决方案的使用情况，并报告终结点保护运行状态和提出建议。
 

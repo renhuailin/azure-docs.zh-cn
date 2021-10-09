@@ -3,14 +3,14 @@ title: Azure 自动化更新管理部署计划
 description: 本文介绍了准备部署 Azure 自动化更新管理的注意事项和决策。
 services: automation
 ms.subservice: update-management
-ms.date: 06/07/2021
+ms.date: 09/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4c29ff09b6d353072cb8486e17ffa605ceff9aea
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: bac463aa01a997122d86e32e140b135938d589da
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769352"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093281"
 ---
 # <a name="plan-your-update-management-deployment"></a>计划更新管理部署
 
@@ -56,9 +56,9 @@ ms.locfileid: "122769352"
 
 若要创建和管理更新部署，需要特定的权限。 若要了解这些权限，请参阅[基于角色的访问 - 更新管理](../automation-role-based-access-control.md#update-management-permissions)。
 
-## <a name="step-7---windows-update-client"></a>步骤 7 - Windows 更新客户端
+## <a name="step-7---windows-update-agent"></a>步骤 7 - Windows 更新代理
 
-Azure 自动化更新管理依赖 Windows 更新客户端来下载和安装 Windows 更新。 计算机上的 Windows 更新代理 (WUA) 使用特定的组策略设置来连接到 Windows Server Update Services (WSUS) 或 Microsoft 更新。 这些组策略设置还用于成功扫描软件更新的符合性，以及自动更新软件更新。 若要查看我们的建议，请参阅[为更新管理配置 Windows 更新设置](configure-wuagent.md)。
+Azure 自动化更新管理依赖 Windows 更新代理来下载和安装 Windows 更新。 计算机上的 Windows 更新代理 (WUA) 使用特定的组策略设置来连接到 Windows Server Update Services (WSUS) 或 Microsoft 更新。 这些组策略设置还用于成功扫描软件更新的符合性，以及自动更新软件更新。 若要查看我们的建议，请参阅[为更新管理配置 Windows 更新设置](configure-wuagent.md)。
 
 ## <a name="step-8---linux-repository"></a>步骤 8 - Linux 存储库
 

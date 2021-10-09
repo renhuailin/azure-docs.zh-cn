@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 10/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 298d935b9b673e0b77bdd3e66cc3d348e2d52a07
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789189"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361534"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>教程：创建 Azure Data Box 的导出命令
 
@@ -101,17 +102,16 @@ Azure Data Box 是一种混合解决方案，可让将 Azure 中的数据移到�
     |存储帐户     | 要从中导入数据的 Azure 存储帐户。 |
     |导出类型     | 指定要从 **所有对象** 导出并 **使用 XML 文件** 的数据类型。<ul><li> **所有对象** -指定作业根据用户选择的“**传输选项**”导出所有数据。</li><li> **使用 XML 文件** –指定一个 XML 文件，其中包含要从存储帐户导出的 blob 和/或文件的一组路径和前缀。 该 XML 文件需要位于所选存储帐户的容器中，并且当前不支持从文件共享中进行选择。 文件必须为非空 .xml 文件。</li></ul>        |
     |传输选项     |  指定“**全选**”、“**所有 blob**”和“**所有文件**”中的数据传输选项。 <ul><li> **全选** -指定导出所有 Blob 和 Azure 文件。 如果用户使用的存储帐户仅支持 blob（Blob 存储帐户），则“**所有文件**”选项将不可选择。</li><li> **所有 Blob** -指定仅导出块和页 blob。</li><li> **所有文件** -指定导出所有文件时不包括 blob。 已有的存储帐户类型（GPv1 和 GPv2、高级存储或 blob 存储）可确定可导出的数据类型。 有关详细信息，请参阅“[支持的存储帐户导出](../import-export/storage-import-export-requirements.md#supported-storage-types)”。</li></ul>         |
-    |包括详细日志     | 指示是否需要一个详细日志文件，其中包含已成功导出的所有文件的列表。        |
+    |包括详细日志     | 指示是否需要一个详细日志文件，其中包含已成功导出的所有文件的列表。 有关导出工单的复制日志和详细日志的详细信息，请参阅[查看日志](data-box-export-logs.md#view-logs-during-data-copy)。 |
 
     > [!NOTE]
-    >
-    > 如果选择“**将 XML 文件** 用于 **导出类型**”设置，则需要确保 XML 包含有效路径和/或前缀。 必须构造和提供 XML 文件。  如果文件无效或没有任何数据与指定的路径相匹配，则该顺序将以部分数据终止或未导出任何数据。
+    > 如果为“导出类型”设置选择“使用 XML 文件”，则需要确保 XML 文件包含有效路径和/或前缀 。 必须构造和提供 XML 文件。 如果文件无效或没有任何数据与指定的路径相匹配，则该顺序将以部分数据终止或未导出任何数据。 有关指导，请参阅[创建 XML 文件](#create-xml-file)。
 
     若要查看如何将 XML 文件添加到容器，请参阅 [使用 XML 文件导出命令](data-box-deploy-export-ordered.md#export-order-using-xml-file)。
 
    ![选择导出选项](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-   若要查看 xml 输入示例，请参阅“[示例 XML 输入](data-box-deploy-export-ordered.md#sample-xml-file)”
+   若要查看 XML 输入示例，请参阅[创建 XML 文件](#create-xml-file)
 
 9. 在“**数据选择**”中，查看设置，然后选“**下一步：安全>** ”以继续。
 
@@ -228,7 +228,9 @@ Azure Data Box 是一种混合解决方案，可让将 Azure 中的数据移到�
 
 ## <a name="export-order-using-xml-file"></a>使用 XML 文件创建导出命令
 
-如果选择“**使用 XML 文件**”，则可以指定要导出的（页面和块）的特定容器和 blob。 若要设置 XML 格式，需遵循“[示例 XML 文件表](#sample-xml-file)”规范。 下面的步骤演示了如何使用 XML 文件导出数据：
+如果选择“**使用 XML 文件**”，则可以指定要导出的（页面和块）的特定容器和 blob。 以下步骤说明如何使用 XML 文件导出数据。 若要构造 XML 文件，请遵循[创建 XML 文件](#create-xml-file)中的指导。
+
+若要使用 XML 文件导出数据，请执行以下操作：
 
 1. 对于“**导出类型**”，请选择“**使用 XML 文件**”。 这是 XML 文件，用于指定要导出的特定 blob 和 Azure 文件。 若要添加 XML 文件，请选择“**单击此处以选择 XML 文件**”。
 
@@ -262,6 +264,109 @@ Azure Data Box 是一种混合解决方案，可让将 Azure 中的数据移到�
 
    ![已将 XML 文件添加到容器](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
+## <a name="create-xml-file"></a>创建 XML 文件
+
+如果你使用 XML 文件来选择要导出的 Blob 和文件，请遵循以下指导原则创建 XML 文件：
+- 示例 XML 文件选项卡：复制示例 XML 文件，其中包含每个标记的示例。
+- XML 文件概述选项卡：查看 XML 文件的标记要求。
+- 前缀示例选项卡：查看选择多个要导出的 Blob 和文件的有效前缀示例。
+
+### <a name="sample-xml-file"></a>[示例 XML 文件](#tab/sample-xml-file)
+
+此示例 XML 文件包含每个 XML 标记（用于选择要在 Data Box 导出工单中导出的 Blob 和文件）的示例。 
+
+- 若要查看 XML 文件要求，请转到“XML 文件概述”选项卡。
+- 若要查看有效 Blob 和文件前缀的更多示例，请转到“前缀示例”选项卡。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+   <!--BlobList selects individual blobs (BlobPath) and multiple blobs (BlobPathPrefix) in Blob storage for export.-->
+   <BlobList>
+      <BlobPath>/container1/blob.txt</BlobPath> <!-- Exports /container1/blob.txt -->
+      <BlobPathPrefix>/container2/</BlobPathPrefix> <!--Exports all blobs in container2 -->
+      <BlobPathPrefix>/container</BlobPathPrefix>  <!-- Exports all containers beginning with prefix: "container" -->
+      <BlobPathPrefix>/container1/2021Q2</BlobPathPrefix> <!-- Exports all blobs in container1 with prefix: "2021Q2" -->
+   </BlobList>
+   
+   <!--AzureFileList selects individual files (FilePath) and multiple files (FilePathPrefix) in Azure File storage for export.-->
+   <AzureFileList>
+      <FilePath>/fileshare1/file.txt</FilePath> <!-- Exports /fileshare1/file.txt -->
+      <FilePathPrefix>/fileshare1/</FilePath> <!-- Exports all directories and files in fileshare1 -->
+      <FilePathPrefix>/fileshare</FilePathPrefix> <!-- Exports all directories and files in any fileshare with prefix: "fileshare" -->
+      <FilePathPrefix>/fileshare2/contosowest</FilePathPrefix> <!-- Exports all directories and files in fileshare2 with prefix: "contosowest" -->
+   </AzureFileList>
+```
+
+### <a name="xml-file-overview"></a>[XML 文件概述](#tab/xml-file-overview)
+
+为导出工单构造 XML 文件时，请遵循以下指导原则。 错误的标记格式会导致导出失败。
+
+有关在下达导出工单时上传 XML 文件的步骤，请参阅[使用 XML 文件的导出工单](#export-order-using-xml-file)。
+
+#### <a name="path-vs-prefix"></a>路径与前缀
+
+若要在 XML 文件中正确使用 XML 标记格式，需要了解路径与前缀之间的差别：
+
+* 路径会选择并筛选单个 Blob 或文件。
+* 前缀会选择并筛选多个 Blob 或多个文件。
+
+若要查看格式正确的前缀示例，请转到“前缀示例”选项卡。
+
+#### <a name="tag-usage"></a>标记用法
+
+在 Data Box 导出工单的 XML 文件中使用以下 XML 标记：
+
+| XML 标记           |说明 |
+|-------------------|------------|
+|`<BlobList>`       |&lt;BlobPath &gt; 和 &lt; BlobPathPrefix&gt; 标记的父标记。|
+|`<BlobPath>`       |选择单个 Blob。 |
+|`<BlobPathPrefix>` |选择具有通用前缀的 Blob。 若要查看示例，请转到“前缀示例”选项卡。|
+|`<AzureFileList>`  |&lt;FilePath&gt; 和 &lt; FilePathPrefix&gt; 标记的父标记。|
+|`<FilePath>`       |选择单个文件。 |
+|`<FilePathPrefix>` |选择具有通用前缀的文件。 若要查看示例，请转到“前缀示例”选项卡。|
+
+若要查看上下文中的标记，请转到“示例 XML 文件”选项卡。
+
+#### <a name="xml-tag-requirements"></a>XML 标记要求
+
+* 所有 XML 标记区分大小写，需要与上表中的标记完全匹配。
+* 开始和结束标记必须匹配。
+* 错误的 XML 标记或格式可能导致数据导出失败。
+* 如果 Blob 前缀或文件前缀无效，则不会导出任何数据。 若要查看有效前缀的示例，请转到“前缀示例”选项卡。
+
+### <a name="prefix-examples"></a>[前缀示例](#tab/prefix-examples)
+
+这些示例路径显示了构造前缀以选择多个要导出的 Blob 或文件的各种方法。
+
+#### <a name="valid-blob-path-prefixes"></a>有效的 Blob 路径前缀
+
+以下示例路径与 &lt;BlobPathPrefix&gt; 标记一起使用，以在 Azure Blob 存储中选择要导出的多个 Blob。
+
+|Blob 路径前缀        |说明                                                                     |标记示例                         |
+|------------------------|--------------------------------------------------------------------------------|------------------------------------|
+|/                       |导出存储帐户中的所有 Blob。                                       |`<BlobPathPrefix>/</BlobPathPrefix>`|
+|/$root/                 |导出根容器中的所有 Blob。                                        |`<BlobPathPrefix>/$root/</BlobPathPrefix>`|
+|/container2/            |导出容器 container2 中的所有 Blob。                              |`<BlobPathPrefix>/container2/</BlobPathPrefix>`|
+|/container          |导出以前缀 container 开头的任何容器中的所有 Blob。      |`<BlobPathPrefix>/container</BlobPathPrefix>`|
+|/container1/2021Q2      |导出容器 container1 中以前缀 2021Q2 开头的所有 Blob 。|`<BlobPathPrefix>/container1/2021Q2</BlobPathPrefix>`|
+
+若要选择单个要导出的 Blob，请使用具有容器路径和 Blob 名称的 &lt;BlobPath&gt; 标记。 例如，若要选择 container1 容器中的 blob.txt，请使用以下标记： `<BlobPath>/container1/blob.txt</BlobPath>`。
+
+#### <a name="valid-file-path-prefixes"></a>有效的文件路径前缀
+
+以下示例路径与 &lt;FilePathPrefix&gt; 标记一起使用，以选择多个要导出的 Azure 文件。
+
+|文件路径前缀        |说明                                                                                          |标记示例|
+|------------------------|-----------------------------------------------------------------------------------------------------|-----------|
+|/                       |导出存储帐户中的所有文件和目录。 |`<FilePathPrefix>/</FilePath>Prefix>`|
+|/fileshare1/            |导出名为 fileshare1 的共享中的所有文件和目录。                                                 |`<FilePathPrefix>/fileshare1/</FilePath>Prefix>`|
+|/fileshare              |导出以前缀 fileshare 开头的任何文件共享中的所有文件和目录。 |`<FilePathPrefix>/fileshare</FilePath>Prefix>`|
+|/fileshare2/contosowest |导出文件共享 fileshare2 中以前缀 contosowest 开头的所有文件和目录 。|`<FilePathPrefix>/fileshare2/contosowest</FilePath>Prefix>`|
+
+若要选择单个要导出的 Blob，请使用具有共享路径和文件名的 &lt;FilePath&gt; 标记。 例如，若要选择 fileshare1 中的 file.txt，请使用以下标记： `<FilePath>/fileshare1/file.txt</FilePath>`
+
+---
+
 ## <a name="track-the-order"></a>跟踪订单
 
 下单后，可以从 Azure 门户跟踪订单状态。 转到你的 Data Box 订单，然后转到“概述”来查看状态。 门户中会显示订单处于“已订购”状态。
@@ -273,6 +378,11 @@ Azure Data Box 是一种混合解决方案，可让将 Azure 中的数据移到�
 Data Box 复制源存储帐户的数据。 数据复制完成后，Data Box 被锁定，门户将显示订单处于“**复制已完成**”状态。
 
 ![Data Box 导出命令，数据复制完成](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
+
+从 Azure 存储到 Data Box 的数据导出有时会失败。 请确保这些 blob 不是存档 blob，因为不支持导出这些 blob。 
+
+> [!NOTE]
+> 对于存档 blob，需要先将这些 blob 解除冻结，然后才能将其从 Azure 存储帐户导出到 Data Box。 有关详细信息，请参阅[将存档 blob 解除冻结]( ../storage/blobs/storage-blob-rehydration.md)。
 
 如果没有设备可以使用，用户会收到通知。 如果设备有货，Microsoft 会确定要发货的设备，并准备发货。 在设备准备期间，会执行以下操作：
 
@@ -295,129 +405,6 @@ Data Box 复制源存储帐户的数据。 数据复制完成后，Data Box 被�
 下单后，只要订单状态尚未标记为“已处理”，就可以随时取消订单。
 
 若要删除已取消的订单，请转到“概况”，然后在命令栏中选择“删除” 。
-
-## <a name="sample-xml-file"></a>示例 XML 文件
-
-以下 xml 显示了采用 xml 格式的 blob 名称、blob 前缀和 Azure 文件的示例，当用户选择“**使用 XML 文件**”选项时，导出顺序将使用该XML格式:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
-   <BlobList>
-      <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
-      <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
-      <BlobPathPrefix>/1tbfilepageblob</BlobPathPrefix>
-      <BlobPathPrefix>/1tbfile/</BlobPathPrefix>
-      <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
-      <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
-   </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
-   <AzureFileList>
-      <FilePathPrefix>/64mbfiles/</FilePathPrefix>
-      <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>
-      <FilePathPrefix>/1tbfile/prefix</FilePathPrefix>
-   </AzureFileList>
-```
-
-有关 xml 文件的一些要点：
-
-* Xml 标记区分大小写，并且需要完全匹配以上示例中指定的内容。
-* 开始和结束标记必须匹配。
-* xml 标记或格式不正确可能会导致数据导出失败。
-* 如果 blob 和/或文件前缀无效，则不会导出任何数据。
-
-### <a name="examples-of-valid-blob-paths"></a>有效 blob 路径示例
-
-下表显示有效 Blob 路径的示例：
-
-   | 选择器 | Blob 路径 | 说明 |
-   | --- | --- | --- |
-   | 开头为 |/ |导出存储帐户中的所有 Blob |
-   | 开头为 |/$root/ |导出根容器中的所有 Blob |
-   | 开头为 |/容器 |导出任何容器中以前缀 **containers** 开头的所有 blob |
-   | 开头为 |/容器名称/ |导出 **容器名称** 中的所有 blob |
-   | 开头为 |/容器名称/前缀 |导出容器中 **容器名称** 以前缀 **和前缀** 开头的所有blob |
-   | 等于 |$root/logo.bmp |导出根容器中的 Blob logo.bmp |
-   | 等于 |8tbpageblob/mydata.txt |导出容器 **8tbpageblob** 中的 blob **mydata.txt** |
-
-## <a name="sample-log-files"></a>示例日志文件
-
-本部分提供了在导出过程中生成的示例日志文件。 错误日志会自动生成。 若要生成详细日志文件，需要在配置导出顺序时选择“在 Azure 门户中 **列入详细日志**”。
-有关复制日志和详细日志的详细信息，请参阅“[复制日志](data-box-deploy-export-copy-data.md#copy-data-from-data-box)”。
-
-<!-- ### Verbose log
-
-The following log files show examples of verbose logging when you select **Include verbose log**:
-
-```xml
-<File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3.4" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/helloEndWithDot..txt" Size="11" crc64="7320094093915972193"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test..txt" Size="12" crc64="17906086011702236012"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test1" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/.......txt" Size="11" crc64="7320094093915972193"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/copylogb08fa3095564421bb550d775fff143ed====..txt" Size="53638" crc64="1147139997367113454"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/testmaxChars-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-12345679" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file0" Size="0" crc64="0"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file1" Size="0" crc64="0"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file4096_000001" Size="4096" crc64="16969371397892565512"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file4096_000000" Size="4096" crc64="16969371397892565512"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/64KB-Seed10.dat" Size="65536" crc64="10746682179555216785"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/LiveSiteReport_Oct.xlsx" Size="7028" crc64="6103506546789189963"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/NE_Oct_GeoReport.xlsx" Size="103197" crc64="13305485882546035852"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/64KB-Seed1.dat" Size="65536" crc64="3140622834011462581"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/1mbfiles-0-0" Size="1048576" crc64="16086591317856295272"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file524288_000001" Size="524288" crc64="8908547729214703832"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/4mbfiles-0-0" Size="4194304" crc64="1339017920798612765"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file524288_000000" Size="524288" crc64="8908547729214703832"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/8mbfiles-0-1" Size="8388608" crc64="3963298606737216548"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/1mbfiles-0-1" Size="1048576" crc64="11061759121415905887"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/XLS-10MB.xls" Size="1199104" crc64="2218419493992437463"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/8mbfiles-0-0" Size="8388608" crc64="1072783424245035917"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/4mbfiles-0-1" Size="4194304" crc64="9991307204216370812"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/VL_Piracy_Negtive10_TPNameAndGCS.xlsx" Size="12398699" crc64="13526033021067702820"></File>
-```
-
-### Copy logs
-
-For more information regarding copy logs, see [Copy logs](data-box-deploy-export-copy-data.md#copy-data-from-data-box). -->
-
-<!-- The following xml shows an example of the copy log when the export is successful:
-
-```xml
-<CopyLog Summary="Summary">
-  <Status>Succeeded</Status>
-    <TotalFiles_Blobs>27</TotalFiles_Blobs>
-    <FilesErrored>0</FilesErrored>
-</CopyLog>
-```
-
-For more information regarding copy logs, see [Copy logs](data-box-deploy-export-copy-data.md#copy-data-from-data-box).
-
-The following xml shows an example of the copy log when the export has errors:
-
-```xml
-<ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/xunit.console.Primary_2020-05-07_03-54-42-PM_27444.hcsml">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/xunit.console.Primary_2020-05-07_03-54-42-PM_27444 (1).hcsml">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><CopyLog Summary="Summary">
-  <Status>Failed</Status>
-  <TotalFiles_Blobs>4</TotalFiles_Blobs>
-  <FilesErrored>3</FilesErrored>
-</CopyLog>
-``` -->
 
 ## <a name="next-steps"></a>后续步骤
 

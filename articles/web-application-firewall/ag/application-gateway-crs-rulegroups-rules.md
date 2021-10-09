@@ -5,19 +5,19 @@ description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2021
+ms.date: 09/02/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a3908710febab64b8f4bb41692397f87eaee5613
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ad8b70e7a5b07b2e933bc01af42dca0e89683959
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434495"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638000"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
-出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 3.2、3.1、3.0 或 2.2.9 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
+出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 3.2、3.1、3.0 或 2.2.9 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。 在极少数情况下需要更新已发布的规则集，它将在此处记录。
 
 ## <a name="core-rule-sets"></a>核心规则集
 
@@ -805,7 +805,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="29-rule-sets"></a><a name="owasp229"></a> 2.9 规则集
+## <a name="229-rule-sets"></a><a name="owasp229"></a> 2.2.9 规则集
 
 ### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 

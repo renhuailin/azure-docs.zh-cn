@@ -3,17 +3,17 @@ title: Azure 对第 2 代 VM 的支持
 description: 第 2 代 VM 的 Azure 支持概述
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: generation-2-vm
+ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 6135d675f2f719f7fa471a886715bce5d6036eb7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 48dd300148cdcccc9caf754a5e5bcc69e7c5c0e7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425595"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216548"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -27,7 +27,7 @@ Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无�
 
 ## <a name="generation-2-vm-sizes"></a>第 2 代 VM 的大小
 
-Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列和 Msv2 和 Mdsv2 中型内存系列 VM 除外）。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
+Azure 目前为以下选定 VM 系列提供第 2 代支持：
 
 
 * [B 系列](sizes-b-series-burstable.md)
@@ -53,11 +53,13 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列和 Msv2 和 Mdsv2
 * [NCv2 系列](ncv2-series.md) 
 * [NCv3 系列](ncv3-series.md)
 * [ND 系列](nd-series.md)
+* [ND A100 v4 系列](nda100-v4-series.md)
+* [NDv2 系列](ndv2-series.md)
 * [NVv3 系列](nvv3-series.md)
 * [NVv4 系列](nvv4-series.md)
 * [NCasT4_v3 系列](nct4-v3-series.md)
 
-<sup>1</sup> Mv2 系列、Msv2 和 Mdsv2 系列中型内存不支持第 1 代 VM 映像，仅支持一部分第 2 代映像。 有关详细信息，请参阅 [Mv2 系列文档](mv2-series.md)和 [Msv2 和 Mdsv2 中型内存系列](msv2-mdsv2-series.md)。
+<sup>1</sup> Mv2 系列、DC 系列、NDv2 系列、Msv2 和 Mdsv2 系列中型内存不支持第 1 代 VM 映像，仅支持一部分第 2 代映像。 有关详细信息，请参阅 [Mv2 系列文档](mv2-series.md)、[DSv2 系列](dv2-dsv2-series.md)、[ND A100 v4 系列](nda100-v4-series.md)、[NDv2 系列](ndv2-series.md)和 [Msv2 和 Mdsv2 中型内存系列](msv2-mdsv2-series.md)。
 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure 市场中的第 2 代 VM 映像
@@ -74,7 +76,7 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列和 Msv2 和 Mdsv2
 * Oracle Linux 7.7、7.7-CI、7.8
 
 > [!NOTE]
-> Mv2 系列等特定虚拟机大小可能仅支持这些映像的子集 - 请查看相关的虚拟机大小文档以了解完整详细信息。
+> Mv2 系列、DC 系列、ND A100 v4 系列、NDv2 系列、Msv2 系列和 Mdsv2 系列等特定虚拟机大小可能仅支持这些映像的子集 - 请查看相关的虚拟机大小文档以了解完整详细信息。
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>本地与Azure 第 2 代 VM
 
@@ -176,7 +178,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     是的。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
-   否。
+   不是。
 
 * **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：

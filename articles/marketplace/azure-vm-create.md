@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 04/08/2021
-ms.openlocfilehash: 6565fff19d68b42aa102431c6e1afe7bb4b3b4d7
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 09/27/2021
+ms.openlocfilehash: f29e9a41872c64598d53ff2b6110e5ffffd5d690
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601064"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083291"
 ---
 # <a name="create-a-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场中创建虚拟机产品/服务
 
@@ -25,6 +25,37 @@ ms.locfileid: "114601064"
 查看[规划虚拟机产品/服务](marketplace-virtual-machines.md)（如果尚未这样做）。 其中说明了虚拟机的技术要求，并列出了创建产品/服务时所需的信息和资产。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。
+
+1. 在“主页”上，选择“市场产品/服务”图块。
+
+    [ ![图片展示了合作伙伴中心主页上的“市场产品/服务”图块。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页面上，依次选择“+ 新建产品/服务” > “Azure 容器” 。
+
+    [ ![显示左窗格菜单选项和“新建产品/服务”按钮的屏幕截图。](./media/create-vm/new-offer-azure-virtual-machine-workspaces.png) ](./media/create-vm/new-offer-azure-virtual-machine-workspaces.png#lightbox)
+
+> [!NOTE]
+> 发布产品/服务后，在合作伙伴中心对其进行的任何编辑仅会在重新发布该产品/服务后出现在 Azure 市场中。 确保对其进行更改后始终重新发布产品/服务。
+
+输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。
+
+- 客户可以在 Azure 市场产品/服务、Azure PowerShell 和 Azure CLI 的 Web 地址中看到此 ID（若有）。
+- 只使用小写字母和数字。 该 ID 可以包含连字符和下划线字符，但不能包含空格，并且不得超过 50 个字符。 例如，如果你输入“test-offer-1”，则产品/服务 Web 地址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 在选择“创建”后，就无法更改产品/服务 ID 了。
+
+输入“产品/服务别名”。 该产品/服务别名是用于合作伙伴中心内产品/服务的名称。
+
+- 此名称不会在 Azure 市场中使用。 它不同于向客户显示的产品/服务名称和其他值。
+
+选择“创建”，以生成产品/服务，并继续操作。 将打开合作伙伴中心的“产品/服务设置”页。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧窗格中，选择“商业市场” > “概述”。
@@ -46,6 +77,8 @@ ms.locfileid: "114601064"
 - 此名称不会在 Azure 市场中使用。 它不同于向客户显示的产品/服务名称和其他值。
 
 选择“创建”，以生成产品/服务，并继续操作。 将打开合作伙伴中心的“产品/服务设置”页。
+
+---
 
 ## <a name="test-drive-optional"></a>体验版（可选）
 

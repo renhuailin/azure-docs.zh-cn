@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: fae63c61949302e25c9dee2899577fa4f0d2a975
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4621b73c8b71ba3bb4b42801de5e306cfa3562e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94965572"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573098"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 
@@ -72,6 +72,33 @@ DNS 名称解析是一个多步骤过程，该过程失败存在多种原因。 
 * [将域委托给 Azure DNS](dns-domain-delegation.md)
 
 
+## <a name="unhealthy-dns-zones"></a>DNS 区域运行不正常
+
+配置错误可能导致 DNS 区域的运行变得不正常。 下面是可能导致此行为的场景：
+
+* 不正常的委托 - 区域包含 NS 委托记录，这些记录帮助将流量从主要区域委托给子区域。 如果父区域中存在其中任何 NS 记录，则 DNS 服务器应会屏蔽该委托下除 glue 记录以外的其他记录。 但是，如果此区域包含该委托下的其他记录，则会将此区域标记为运行不正常。
+
+    下表提供了当区域包含 NS 委托记录时的场景及其对应的区域运行状况结果。
+
+    | 场景 | 区域包含</br>NS 委派记录？ | 区域包含</br>glue 记录？ | 区域包含委托</br>下的其他</br>记录？ | 区域运行状况 |
+    |----------|-------------------------------------|-----------------------------|--------------------------------------------------|-------------|
+    | 1        | 否                                  | -                           | -                                                | 正常     |
+    | 2        | 是                                 | 是                         | 否                                               | 正常     |
+    | 3        | 是                                 | 否                          | 否                                               | 正常     |
+    | 4        | 是                                 | 否                          | 是                                              | 不正常   |
+    | 5        | 是                                 | 是                         | 是                                              | 不正常   |
+
+    建议：删除区域中委托记录下除 glue 记录以外的所有记录。
+
+* 零 TTL - TTL（生存时间）可设置 DNS 解析程序在请求新查询之前缓存查询的时间。 然后，递归或本地解析程序在 TTL 持续时间内将收集的信息存储在其缓存中，在此之后，解析程序将返回收集新的和更新的详细信息。
+
+    如果在配置中将 TTL 设置为 0，则可能会遇到以下问题之一：
+
+    * 响应时间长。
+    * DNS 流量和成本增加。
+    * 易受 DDoS 攻击。
+
+    建议：确保 TTL 值不会设置为“0”。 
 
 ## <a name="how-do-i-specify-the-service-and-protocol-for-an-srv-record"></a>如何为 SRV 记录指定“服务”和“协议”？
 

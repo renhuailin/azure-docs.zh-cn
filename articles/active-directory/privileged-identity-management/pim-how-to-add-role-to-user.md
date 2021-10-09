@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/03/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: a741ce7fff528fbe1f4120f4138a88d7b6e2e915
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 1b8338986c6120747018ec43e26baf68cf587aa8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112233000"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615294"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure AD 角色
 
@@ -59,6 +59,10 @@ Privileged Identity Management 支持内置角色和自定义 Azure AD 角色。
 
 1. 若要指定特定分配持续时间，请添加开始和结束日期与时间框。 完成后，选择“分配”以创建新的角色分配。
 
+    - “永久”分配没有到期日期。 对于经常需要角色权限的永久工作人员，请使用此选项。
+
+    - “有时限”分配将会在指定时间段结束时过期。 此选项用于临时或合同制工作人员，例如，项目结束日期和时间已知的工作人员。
+
     ![成员身份设置 - 日期和时间](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
 1. 分配角色后，会显示分配状态通知。
@@ -89,6 +93,148 @@ Privileged Identity Management 支持内置角色和自定义 Azure AD 角色。
 
 有关创建管理单元的详细信息，请参阅[添加和删除管理单元](../roles/admin-units-manage.md)。
 
+## <a name="assign-a-role-using-graph-api"></a>使用 Graph API 分配角色
+
+有关使用 PIM API 所需的权限，请参阅[了解 Privileged Identity Management API](pim-apis.md)。 
+
+### <a name="eligible-with-no-end-date"></a>符合条件，无结束日期
+
+下面是示例 HTTP 请求，用于创建无结束日期的符合条件的分配。 有关 API 命令的详细信息，包括 C# 和 JavaScript 等示例，请参阅[创建 unifiedRoleEligibilityScheduleRequest](/graph/api/unifiedroleeligibilityschedulerequest-post-unifiedroleeligibilityschedulerequests?view=graph-rest-beta&tabs=http&preserve-view=true)。
+
+#### <a name="http-request"></a>HTTP 请求
+
+````HTTP
+POST https://graph.microsoft.com/beta/rolemanagement/directory/roleEligibilityScheduleRequests 
+
+    "action": "AdminAssign", 
+    "justification": "abcde", 
+    "directoryScopeId": "/", 
+    "principalId": "<principal-ID-GUID>", 
+    "roleDefinitionId": "<definition-ID-GUID>", 
+    "scheduleInfo": { 
+        "startDateTime": "2021-07-15T19:15:08.941Z", 
+        "expiration": { 
+            "type": "NoExpiration"        } 
+    } 
+{ 
+} 
+````
+
+#### <a name="http-response"></a>HTTP 响应
+
+下面是响应的示例。 为便于阅读，此处显示的响应对象可能会缩短。
+
+````HTTP
+{ 
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#roleManagement/directory/roleEligibilityScheduleRequests/$entity", 
+    "id": "<schedule-ID-GUID>", 
+    "status": "Provisioned", 
+    "createdDateTime": "2021-07-15T19:47:41.0939004Z", 
+    "completedDateTime": "2021-07-15T19:47:42.4376681Z", 
+    "approvalId": null, 
+    "customData": null, 
+    "action": "AdminAssign", 
+    "principalId": "<principal-ID-GUID>", 
+    "roleDefinitionId": "<definition-ID-GUID>", 
+    "directoryScopeId": "/", 
+    "appScopeId": null, 
+    "isValidationOnly": false, 
+    "targetScheduleId": "<schedule-ID-GUID>", 
+    "justification": "test", 
+    "createdBy": { 
+        "application": null, 
+        "device": null, 
+        "user": { 
+            "displayName": null, 
+            "id": "<user-ID-GUID>" 
+        } 
+    }, 
+    "scheduleInfo": { 
+        "startDateTime": "2021-07-15T19:47:42.4376681Z", 
+        "recurrence": null, 
+        "expiration": { 
+            "type": "noExpiration", 
+            "endDateTime": null, 
+            "duration": null 
+        } 
+    }, 
+    "ticketInfo": { 
+        "ticketNumber": null, 
+        "ticketSystem": null 
+    } 
+}   
+````
+
+### <a name="active-and-time-bound"></a>活动并且有时限
+
+下面是示例 HTTP 请求，用于创建有时限的活动分配。 有关 API 命令的详细信息，包括 C# 和 JavaScript 等示例，请参阅[创建 unifiedRoleEligibilityScheduleRequest](/graph/api/unifiedroleeligibilityschedulerequest-post-unifiedroleeligibilityschedulerequests?view=graph-rest-beta&tabs=http&preserve-view=true)。
+
+#### <a name="http-request"></a>HTTP 请求
+
+````HTTP
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignmentScheduleRequests 
+
+{ 
+    "action": "AdminAssign", 
+    "justification": "abcde", 
+    "directoryScopeId": "/", 
+    "principalId": "<principal-ID-GUID>", 
+    "roleDefinitionId": "<definition-ID-GUID>", 
+    "scheduleInfo": { 
+        "startDateTime": "2021-07-15T19:15:08.941Z", 
+        "expiration": { 
+            "type": "AfterDuration", 
+            "duration": "PT3H" 
+        } 
+    } 
+} 
+````
+
+#### <a name="http-response"></a>HTTP 响应
+
+下面是响应的示例。 为便于阅读，此处显示的响应对象可能会缩短。
+
+````HTTP
+{ 
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#roleManagement/directory/roleAssignmentScheduleRequests/$entity", 
+    "id": "<schedule-ID-GUID>", 
+    "status": "Provisioned", 
+    "createdDateTime": "2021-07-15T19:15:09.7093491Z", 
+    "completedDateTime": "2021-07-15T19:15:11.4437343Z", 
+    "approvalId": null, 
+    "customData": null, 
+    "action": "AdminAssign", 
+    "principalId": "<principal-ID-GUID>", 
+    "roleDefinitionId": "<definition-ID-GUID>", 
+    "directoryScopeId": "/", 
+    "appScopeId": null, 
+    "isValidationOnly": false, 
+    "targetScheduleId": "<schedule-ID-GUID>", 
+    "justification": "test", 
+    "createdBy": { 
+        "application": null, 
+        "device": null, 
+        "user": { 
+            "displayName": null, 
+            "id": "<user-ID-GUID>" 
+        } 
+    }, 
+    "scheduleInfo": { 
+        "startDateTime": "2021-07-15T19:15:11.4437343Z", 
+        "recurrence": null, 
+        "expiration": { 
+            "type": "afterDuration", 
+            "endDateTime": null, 
+            "duration": "PT3H" 
+        } 
+    }, 
+    "ticketInfo": { 
+        "ticketNumber": null, 
+        "ticketSystem": null 
+    } 
+} 
+````
+
 ## <a name="update-or-remove-an-existing-role-assignment"></a>更新或删除现有的角色分配
 
 按照以下步骤更新或删除现有的角色分配。 **仅限 Azure AD P2 授权客户**：不要通过 Azure AD 和 Privileged Identity Management (PIM) 为角色分配活动组。 有关详细说明，请参阅[已知问题](../roles/groups-concept.md#known-issues)。
@@ -106,6 +252,59 @@ Privileged Identity Management 支持内置角色和自定义 Azure AD 角色。
     ![更新或删除角色分配](./media/pim-how-to-add-role-to-user/remove-update-assignments.png)
 
 1. 选择“更新”或“删除”以更新或删除角色分配。
+
+## <a name="remove-eligible-assignment-via-api"></a>通过 API 删除符合条件的分配
+
+### <a name="request"></a>请求
+
+````HTTP
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleEligibilityScheduleRequests 
+
+ 
+
+{ 
+    "action": "AdminRemove", 
+    "justification": "abcde", 
+    "directoryScopeId": "/", 
+    "principalId": "d96ea738-3b95-4ae7-9e19-78a083066d5b", 
+    "roleDefinitionId": "88d8e3e3-8f55-4a1e-953a-9b9898b8876b" 
+} 
+````
+
+### <a name="response"></a>响应
+
+````HTTP
+{ 
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#roleManagement/directory/roleEligibilityScheduleRequests/$entity", 
+    "id": "fc7bb2ca-b505-4ca7-ad2a-576d152633de", 
+    "status": "Revoked", 
+    "createdDateTime": "2021-07-15T20:23:23.85453Z", 
+    "completedDateTime": null, 
+    "approvalId": null, 
+    "customData": null, 
+    "action": "AdminRemove", 
+    "principalId": "d96ea738-3b95-4ae7-9e19-78a083066d5b", 
+    "roleDefinitionId": "88d8e3e3-8f55-4a1e-953a-9b9898b8876b", 
+    "directoryScopeId": "/", 
+    "appScopeId": null, 
+    "isValidationOnly": false, 
+    "targetScheduleId": null, 
+    "justification": "test", 
+    "scheduleInfo": null, 
+    "createdBy": { 
+        "application": null, 
+        "device": null, 
+        "user": { 
+            "displayName": null, 
+            "id": "5d851eeb-b593-4d43-a78d-c8bd2f5144d2" 
+        } 
+    }, 
+    "ticketInfo": { 
+        "ticketNumber": null, 
+        "ticketSystem": null 
+    } 
+} 
+````
 
 ## <a name="next-steps"></a>后续步骤
 

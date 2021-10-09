@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: be43dda1e1fdf6d23031f2d2bf75a7f126ddef7a
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7e16fd0d1c6370cb0ab973760c988c600f42888c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272828"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153513"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -103,7 +103,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
 按如下所述准备此帐户：
 
 1. 准备一个在 VM 上具有安装权限的域或本地帐户。
-2. 对于 Windows VM，如果使用的不是域帐户，请在本地计算机上禁用远程用户访问控制：在注册表中的 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** 下，添加 DWORD 项 **LocalAccountTokenFilterPolicy** 并将值设为 。
+2. 对于 Windows VM，如果使用的不是域帐户，请执行以下操作在本地计算机上禁用远程用户访问控制：在注册表中的 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 下，添加 DWORD 项 LocalAccountTokenFilterPolicy，并将值设为 1 。
 3. 对于 Linux VM，请在源 Linux 服务器上准备一个 root 帐户。
 
 
@@ -354,7 +354,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
 
 ## <a name="complete-the-migration"></a>完成迁移
 
-1. 完成迁移后，右键单击该 VM 并选择“停止迁移”。 这样会执行以下操作：
+1. 完成迁移后，右键单击该 VM 并选择“停止复制”。 这样会执行以下操作：
     - 停止本地计算机的复制。
     - 从 Azure Migrate 的“复制服务器”计数中删除该计算机：服务器迁移。
     - 清除 VM 的复制状态信息。

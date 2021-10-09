@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2021
-ms.openlocfilehash: 7afdd852bebc4eeff24671d8d60cb8805f86f29c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/17/2021
+ms.openlocfilehash: e31fff677b6e1363d0afda420d521d31b2cf4247
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736490"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657550"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何面向商业市场规划 SaaS 产品/服务
 
@@ -170,7 +170,7 @@ ms.locfileid: "121736490"
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 摘要
+8. 总结
 9. 说明
 10. 屏幕截图/视频
 11. 文档
@@ -265,12 +265,8 @@ SaaS 应用产品/服务支持通过 Microsoft 进行销售，每月或每年按
 | Azure 使用费用（D1/1 核） | 直接向发布者而不是客户收费 |
 | 由 Microsoft 向客户收费 | $100.00 美元/月（发布者必须将所有产生的或者转嫁的基础结构费用纳入许可证费用中） |
 | **Microsoft 收费** | **$100 美元/月** |
-| Microsoft 将许可证费用的 80% 支付给你<br>`*` 对于符合资格的 SaaS 应用，Microsoft 支付许可证费用的 90%| 80.00 美元/月<br>``*`` 90.00 美元/月 |
-|||
-
-`*` 减少市场服务费 - 对于在商业市场中发布的某些 SaaS 产品/服务，Microsoft 会将其市场服务费从 20%（根据 Microsoft 发布者协议中规定）降低到 10%。 对于符合资格的产品/服务，Microsoft 必须已将其指定为 Azure IP 联合销售激励。 最晚必须在每个日历月结束前五 (5) 个工作日满足资格，才能享受“减少市场服务费用”。 一旦满足资格，减少服务费用将自下个月第一天起对所有交易生效，一直到失去 Azure IP 联合销售激励状态为止。 有关 IP 联合销售资格的详细信息，请参阅[联合销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 减少市场服务费用也适用于纳入 Azure IP 联合销售激励的 VM、托管应用，以及通过商业市场提供的任何其他符合资格的可交易 IaaS 产品/服务。
-
-## <a name="preview-audience"></a>预览版受众
+| Microsoft 收取 3% 的市场服务费用，并向您支付 97% 的许可费用 | 97.00 美元/月 |
+|
 
 预览版受众可以在你的产品/服务尚未在在线商店实时发布之前提前访问。 他们可以在实时发布之前看到产品/服务在商业市场中的外观，并测试端到端功能。 
 

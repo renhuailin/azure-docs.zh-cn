@@ -10,20 +10,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d88f3ed4dbeafc935e58096fb094518b8b0274b4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b4635b461441b4ac4ed193a48cbd8e14790ac835
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411496"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060661"
 ---
 # <a name="about-azure-key-vault"></a>关于 Azure Key Vault
 
 Azure Key Vault 有助于解决以下问题：
 
 - **机密管理** - Azure Key Vault 可以用来安全地存储令牌、密码、证书、API 密钥和其他机密，并对其访问进行严格控制
-- **密钥管理** - Azure Key Vault 也可用作密钥管理解决方案。 可以通过 Azure Key Vault 轻松创建和控制用于加密数据的加密密钥。 
-- 证书管理 - Azure Key Vault 也是一项服务，可用来轻松注册、管理和部署公用和专用传输层安全性/安全套接字层 (TLS/SSL) 证书，这些证书可以与 Azure 以及内部连接资源配合使用。
+- 密钥管理 - Azure Key Vault 可用作密钥管理解决方案。 可以通过 Azure Key Vault 轻松创建和控制用于加密数据的加密密钥。
+- 证书管理 - Azure Key Vault 可用来轻松预配、管理和部署公用和专用传输层安全性/安全套接字层 (TLS/SSL) 证书，以用于 Azure 以及内部连接资源。
 
 Azure Key Vault 具有两个服务层级：标准层（使用软件密钥加密）和高级层（包含受硬件安全模块 [HSM] 保护的密钥）。 若要查看标准层和高级层之间的比较，请参阅 [Azure Key Vault 定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
 

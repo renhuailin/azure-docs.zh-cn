@@ -8,13 +8,13 @@ ms.topic: overview
 author: yorek
 ms.author: damauri
 ms.reviewer: ''
-ms.date: 7/27/2021
-ms.openlocfilehash: 9fa0a964033439a4b1c5276bf4310528dd345ff8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/24/2021
+ms.openlocfilehash: e2785f965cdbb94af081e937f0b2290578c04796
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722902"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059523"
 ---
 # <a name="hyperscale-secondary-replicas"></a>“超大规模”次要副本
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -22,13 +22,13 @@ ms.locfileid: "121722902"
 如[分布式函数体系结构](service-tier-hyperscale.md)中所述，Azure SQL 数据库超大规模提供两种不同类型的计算节点（也称为副本）：
 
 - 主要副本：为读取和写入操作提供服务
-- 次要副本：提供读取横向扩展、高可用性和异地复制
+- 次要副本：提供[读取扩展](read-scale-out.md)、[高可用性](high-availability-sla.md)和[异地复制](active-geo-replication-overview.md)
 
 次要副本始终为只读，可以是三种不同类型的副本：
 
 - 高可用性副本
-- 命名副本（预览版）
-- 异地副本（预览版）
+- 命名副本（[预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)）
+- 异地副本（[预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)）
 
 每种类型具有不同的体系结构、功能集、用途和成本。 根据你需要的功能，可以只使用其中的一种类型，也可以将所有三种类型一起使用。
 
@@ -63,7 +63,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 - 最多支持 30 个命名副本（对于每个主要副本而言）;
 - 支持通过在托管命名副本的逻辑服务器上创建不同的登录名，对每个命名副本使用不同的身份验证和授权方法。
 
-命名副本的主要目标是实现大规模的 OLTP 读取扩展方案，并改进混合事务和分析处理 (HTAP) 工作负载。 下面提供了有关如何创建此类解决方案的示例：
+命名副本的主要目标是支持大规模的 OLTP [读取扩展](read-scale-out.md)场景，并改进混合事务和分析处理 (HTAP) 工作负载。 下面提供了有关如何创建此类解决方案的示例：
 
 - [OLTP 横向扩展示例](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout)
 - [HTAP 横向扩展示例](https://github.com/Azure-Samples/azure-sql-db-named-replica-htap)

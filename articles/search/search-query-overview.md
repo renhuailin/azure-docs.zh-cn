@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9ca2a4ba836adacb81a82ad59a11c21ffd6c3fb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609269"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216871"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure 认知搜索中的查询
 
@@ -89,7 +89,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 |-----------------|-------------|
 | 范围筛选器 | 在 Azure 认知搜索中，范围查询是使用筛选器参数生成的。 有关详细信息和示例，请参阅[范围筛选器示例](search-query-simple-examples.md#example-5-range-filters)。 |
 | 地理位置搜索 | 如果可搜索字段为 [Edm.GeographyPoint 类型](/rest/api/searchservice/supported-data-types)，可以为“查找附近”或基于地图的搜索控件创建筛选器表达式。 驱动地理搜索的字段包含坐标。 有关详细信息及示例，请参阅[地理搜索示例](search-query-simple-examples.md#example-6-geo-search)。 |
-| 多面导航 | 调用筛选器以响应平面上的 `onclick` 事件时，平面导航结构在用户定向导航中变得很有用。 因此，平面和筛选器是相辅相成的。 如果添加平面导航，则需要筛选器才能完成体验。 有关详细信息，请参阅[如何构建平面筛选器](search-filters-facets.md)。 |
+| 多面导航 | 在[分面导航](search-faceted-navigation.md)树中，用户可以选择构面，这样每次点击都会缩小结果的范围。 每个构面都由筛选器支持，筛选器可排除不再符合条件的文档。 |
 
 > [!NOTE]
 > 查询处理过程中不会分析筛选器表达式中使用的文本。 文本输入假定为逐字区分大小写的字符模式，该模式在匹配时要么成功要么失败。 筛选器表达式是使用 [OData 语法](query-odata-filter-orderby-syntax.md)构造的，并传入索引中的所有可筛选字段中的 `filter` 参数中。 有关详细信息，请参阅 [Azure 认知搜索中的筛选器](search-filters.md)。

@@ -1,15 +1,15 @@
 ---
 title: 了解适用于 Kubernetes 的 Azure Policy
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
-ms.date: 09/01/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b5e010ec6f024838a0407f2cafae1d28bdcf1e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 55a8f2f1cbb67c80c82e367a870cd61d76178518
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436061"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556320"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -463,6 +463,99 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 ```
 
 有关详细信息，请参阅 Gatekeeper 文档中的[调试 Gatekeeper](https://open-policy-agent.github.io/gatekeeper/website/docs/debug/)。
+
+## <a name="view-gatekeeper-artifacts"></a>查看 Gatekeeper 项目
+
+在外接程序下载策略分配并在群集上安装约束模板和约束后，会通过 Azure 策略信息（如策略分配 ID）和策略定义 ID 进行注释。 若要配置客户端以查看外接程序相关项目，请使用以下步骤：
+
+1. 群集的设置 `kubeconfig`。
+
+   对于 Azure Kubernetes 服务群集，请使用以下 Azure CLI：
+
+   ```azurecli-interactive
+   # Set context to the subscription
+   az account set --subscription <YOUR-SUBSCRIPTION>
+
+   # Save credentials for kubeconfig into .kube in your home folder
+   az aks get-credentials --resource-group <RESOURCE-GROUP> --name <CLUSTER-NAME>
+   ```
+
+1. 测试群集连接。
+
+   运行 `kubectl cluster-info` 命令。 成功运行后，每项服务都会使用其运行位置的 URL 进行响应。
+
+### <a name="view-the-add-on-constraint-templates"></a>查看外接程序约束模板
+
+若要查看外接程序下载的约束模板，请运行 `kubectl get constrainttemplates`。
+以 `k8sazure` 开头的约束模板是由外接程序安装的约束模板。
+
+### <a name="get-azure-policy-mappings"></a>获取 Azure Policy 映射
+
+若要确定下载到群集的约束模板与策略定义之间的映射，请使用 `kubectl get constrainttemplates <TEMPLATE> -o yaml`。 结果类似于以下输出：
+
+```yaml
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+    annotations:
+    azure-policy-definition-id: /subscriptions/<SUBID>/providers/Microsoft.Authorization/policyDefinitions/<GUID>
+    constraint-template-installed-by: azure-policy-addon
+    constraint-template: <URL-OF-YAML>
+    creationTimestamp: "2021-09-01T13:20:55Z"
+    generation: 1
+    managedFields:
+    - apiVersion: templates.gatekeeper.sh/v1beta1
+    fieldsType: FieldsV1
+...
+```
+
+`<SUBID>` 是订阅 ID，`<GUID>` 是映射的策略定义的 ID。
+`<URL-OF-YAML>` 是外接程序下载的要安装在群集上的约束模板的源位置。
+
+### <a name="view-constraints-related-to-a-constraint-template"></a>查看与约束模板相关的约束
+
+获得[外接程序的已下载约束模板](#view-the-add-on-constraint-templates)的名称后，可以使用该名称查看相关约束。 使用 `kubectl get <constraintTemplateName>` 获取列表。
+外接程序安装的约束将以 `azurepolicy-` 开头。
+
+### <a name="view-constraint-details"></a>查看约束详细信息
+
+该约束包含有关冲突以及与策略定义和分配之间的映射的详细信息。 要查看详细信息，请使用`kubectl get <CONSTRAINT-TEMPLATE> <CONSTRAINT> -o yaml`。 结果类似于以下输出：
+
+```yaml
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAzureContainerAllowedImages
+metadata:
+  annotations:
+    azure-policy-assignment-id: /subscriptions/<SUB-ID>/resourceGroups/<RG-NAME>/providers/Microsoft.Authorization/policyAssignments/<ASSIGNMENT-GUID>
+    azure-policy-definition-id: /providers/Microsoft.Authorization/policyDefinitions/<DEFINITION-GUID>
+    azure-policy-definition-reference-id: ""
+    azure-policy-setdefinition-id: ""
+    constraint-installed-by: azure-policy-addon
+    constraint-url: <URL-OF-YAML>
+  creationTimestamp: "2021-09-01T13:20:55Z"
+spec:
+  enforcementAction: deny
+  match:
+    excludedNamespaces:
+    - kube-system
+    - gatekeeper-system
+    - azure-arc
+  parameters:
+    imageRegex: ^.+azurecr.io/.+$
+status:
+  auditTimestamp: "2021-09-01T13:48:16Z"
+  totalViolations: 32
+  violations:
+  - enforcementAction: deny
+    kind: Pod
+    message: Container image nginx for container hello-world has not been allowed.
+    name: hello-world-78f7bfd5b8-lmc5b
+    namespace: default
+  - enforcementAction: deny
+    kind: Pod
+    message: Container image nginx for container hello-world has not been allowed.
+    name: hellow-world-89f8bfd6b9-zkggg
+```
 
 ## <a name="troubleshooting-the-add-on"></a>对加载项进行故障排除
 

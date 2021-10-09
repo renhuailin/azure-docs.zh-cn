@@ -9,31 +9,53 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/17/2021
+ms.date: 09/16/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f333b4ca86e24c845a8a91c621a2b3f7c8c984e
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: a34e2d16edb4a8ec9ba40a4426fcbbd9b2127b16
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590397"
 ---
-# <a name="content-aware-encoding-preset"></a>内容感知编码预设
+# <a name="content-aware-encoding"></a>内容感知型编码
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-若要准备通过[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)传送的内容，需以多个比特率（从高到低）编码视频。 这可以确保质量的平稳降级，因为比特率会降低，而视频的分辨率也会降低。 此类多比特率编码利用所谓的编码梯度 – 分辨率和比特率的表；请参阅媒体服务的[内置编码预设](/rest/api/media/transforms/createorupdate#encodernamedpreset)。
+## <a name="overview-of-the-content-aware-encoding-preset"></a>内容感知编码预设概述
 
-应该了解自己正在处理的内容，并根据单个视频的复杂性自定义/优化编码梯度。 在每种分辨率下有一个比特率，超过该比特率会感知不到任何质量提升 – 编码器将以此最佳比特率运行。 下一级优化是基于内容选择分辨率 – 例如，降到 720p 以下不会使 PowerPoint 演示文稿的视频受益。 接下来，可以进一步在编码器中优化视频中每个拍摄画面的设置。 
+若要使用[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)准备要传送的内容，需要以多种比特率（从高到低）和多种分辨率将视频编码。 此项技术使得当今 Apple iOS、Android、Windows 和 Mac 上的新式视频播放器能够使用流式处理协议来流畅地流式传输内容，而不需要缓冲内容。 这些使用不同显示大小（分辨率）和质量（比特率）的再现技术使播放器能够选择当前网络条件支持的最佳视频版本。 LTE、4G、5G、公共 Wi-Fi 和家庭网络的差异很大。
 
-Microsoft 的[自适应流式处理](encode-autogen-bitrate-ladder.md)预设部分解决了源视频质量和分辨率变化的问题。 我们的客户混合使用不同的内容，其中某些内容的分辨率为 1080p，有些为 720p，还有少部分为标清或更低分辨率。 此外，并非所有源内容都是电影或电视演播室提供的高质量夹层文件。 自适应流式处理预设解决了这些问题，它可以确保比特率梯度永不超过输入夹层文件的分辨率或平均比特率。 但是，此预设不会检查除分辨率和比特率以外的源属性。
+将内容编码为多个再现内容的过程需要生成“编码梯度”— 一个包含分辨率和比特率的表，用于告知编码器要生成哪些内容。 有关这种梯度的示例，请参阅媒体服务的[内置编码预设](/rest/api/media/transforms/createorupdate#encodernamedpreset)。
 
-## <a name="the-content-aware-encoding-preset"></a>内容感知编码预设
+在理想情况下，需要知道你正在编码的内容的类型。 使用此信息可以优化编码梯度，以便与源视频中的复杂度和动作相匹配。 这意味着，在使用梯度中的每种显示大小（分辨率）时，应该有一个参照比特率，如果超过该比特率，质量的任何提升都不会被感知到 — 编码器将按照这个最佳比特率值运行。
 
-内容感知编码预设扩展了“自适应比特率流式处理”机制，它可以整合自定义逻辑，使编码器能够查找给定分辨率的最佳比特率值，但不需要进行大量的计算分析。 此预设将生成一组 GOP 对齐的 MP4 文件。 在提供任何输入内容的情况下，服务将对输入内容执行初始的轻量分析，并使用结果来确定最佳层数，以及自适应流式处理适合传送的比特率和分辨率设置。 此预设特别适用于中低复杂性的视频，其中的输出文件的比特率低于自适应流式处理预设，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件
+可以做出的下一级优化是基于内容选择分辨率 — 例如，如果将包含小字号文本的 PowerPoint 演示文稿视频编码为高度小于 720 像素的行，则该视频会显得很模糊。 此外，你可能还会有这样的视频：它会根据其拍摄和编辑方式不断地改变动作和复杂度。  这就需要在每个场景或镜头边界处优化和调整编码设置。 可将智能编码器设定为优化视频中每个镜头的编码设置。
 
-以下示例图形显示了使用 [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) 和 [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion) 等质量指标做出的比较。 源的创建方式是将电影和电视节目中的高复杂性拍摄画面的简短剪辑相连接，旨在给编码器提供压力。 按照定义，此预设产生的结果因内容而异 – 这也意味着，对于某些内容，比特率可能不会显著降低，或者质量不会显著提高。
+Azure 媒体服务提供[自适应流式处理](encode-autogen-bitrate-ladder.md)预设，可以部分解决源视频比特率和分辨率变化的问题。 但是，此预设不会分析源内容来确定其复杂度或其包含的动作丰富程度。 
+
+内容感知编码预设在更静态的“自适应比特率流式处理”编码预设的基础上有所改进，因为其中添加了一个逻辑，使编码器能够寻找适用于给定分辨率的最佳比特率值，而不需要进行大量的计算分析。 此预设基于源文件输出 GOP 对齐的 MP4 的唯一“梯度”。 在给定了源视频的情况下，预设将对输入内容执行初始快速分析，并使用结果确定所需的最佳层数、比特率和分辨率，以提供最高质量的自适应比特率流式处理体验。 此预设对于中低复杂度视频非常有效，其中输出文件的比特率低于更静态的自适应流式处理预设，但质量仍可确保为受众提供良好的体验。 输出文件夹将包含多个 MP4 文件，这些文件包含已准备好流式传输的视频和音频。
+
+## <a name="configure-output-settings"></a>配置输出设置
+
+此外，在确定用于为自适应比特率流式处理梯度编码的最佳设置时，开发人员还可以控制内容感知编码预设使用的输出范围。
+
+使用 PresetConfigurations 类，开发人员可以将一组约束和选项传入内容感知编码预设，以控制编码器生成的结果文件。 如果你想要将所有编码限制为特定的最大分辨率，以控制编码作业的体验或成本，则属性特别有用。  如果能够控制受众在移动网络或带宽受限的全球区域中可支持的最大和最小比特率，则也很有帮助。
+
+## <a name="supported-codecs"></a>支持的编解码器
+
+内容感知编码预设可与以下编解码器配合使用：
+-  H.264
+-  HEVC (H.265)
+
+## <a name="how-to-use"></a>使用方法
+
+有关在代码中使用该预设的详细信息以及完整示例的链接，请参阅[内容感知编码操作指南](./encode-content-aware-How-to.md)。
+
+## <a name="technical-details-on-content-aware-preset"></a>内容感知预设的技术细节
+
+现在，让我们更深入地了解内容感知编码预设的工作原理。  以下示例图形显示了使用 [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio)和 [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion) 等质量指标做出的比较。 源的创建方式是将电影和电视节目中的高复杂性拍摄画面的简短剪辑相连接，旨在给编码器提供压力。 按照定义，此预设产生的结果因内容而异 – 这也意味着，对于某些内容，比特率可能不会显著降低，或者质量不会显著提高。
 
 ![使用 PSNR 的速率失真 (RD) 曲线](media/encode-content-aware-concept/msrv1.png)
 
@@ -43,7 +65,7 @@ Microsoft 的[自适应流式处理](encode-autogen-bitrate-ladder.md)预设部�
 
 图 2：**使用高复杂性源的 VMAF 指标的速率失真 (RD) 曲线**
 
-下面是另一个源内容类别的结果，其中，编码器可以确定输入质量较差（由于比特率较低，因此生成了很多压缩项目）。 请注意，使用内容感知预设时，编码器确定只生成一个输出层 – 该层的比特率足够低，使大多数客户端能够播放流，而不会出现停顿。
+下面是另一个源内容类别的结果，其中，编码器可以确定输入质量较差（由于比特率较低，因此生成了很多压缩项目）。 使用内容感知预设时，编码器确定只生成一个输出层 – 该层的比特率足够低，使大多数客户端能够播放流，而不会出现停顿。
 
 ![使用 PSNR 的 RD 曲线](media/encode-content-aware-concept/msrv3.png)
 
@@ -53,16 +75,7 @@ Microsoft 的[自适应流式处理](encode-autogen-bitrate-ladder.md)预设部�
 
 图 4：**使用低质量输入的 VMAF 的 RD 曲线（分辨率为 1080p）**
 
-## <a name="8-bit-hevc-h265-support"></a>8 位 HEVC (H.265) 支持
-
-Azure 媒体服务的标准编码器现在支持 8 位 HEVC (H.265) 编码。 可以通过动态打包器使用“hev1”格式传送和打包 HEVC 内容。
-
-[media-services-v3-dotnet GitHub 存储库](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)中提供了有关使用 HEVC 实现 .NET 自定义编码的新示例。 除了自定义编码，AMS 还支持其他新的内置 HEVC 编码预设，可以在 [2021 年 2 月发行说明](https://docs.microsoft.com/azure/media-services/latest/release-notes#february-2021)中查看这些预设。
   
 ## <a name="next-steps"></a>后续步骤
-
+* [如何使用内容感知编码预设](encode-content-aware-how-to.md)
 * [教程：使用媒体服务 v3 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
-* [教程：基于 URL 对远程文件进行编码并流式传输视频 - REST](stream-files-tutorial-with-rest.md)
-* [教程：基于 URL 对远程文件进行编码并流式传输视频 - CLI](stream-files-cli-quickstart.md)
-* [教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET](stream-files-dotnet-quickstart.md)
-* [教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js](stream-files-nodejs-quickstart.md)

@@ -5,13 +5,12 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.custom: ''
-ms.openlocfilehash: c4a4b0fa982945b20616d576af4b3e8039d828c0
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 85dff004bdaf61297d9f88766e4cadc97f7d6b88
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397817"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624247"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 
@@ -91,8 +90,8 @@ access_token = token_response.get('access_token')
 
 **标头** | **说明和示例**
 --- | ---
-Content-Type  | 请求格式 (Content-Type: application/<format>)。 对于 FarmBeats 数据中心 API，格式为 JSON。 Content-Type: application/json
-授权 | 指定进行 API 调用所需的访问令牌。 Authorization:持有者 <Access-Token>
+Content-Type  | 请求格式 (Content-Type: application/\<format\>)。 对于 FarmBeats 数据中心 API，格式为 JSON。 Content-Type: application/json
+授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 \<Access-Token\>
 Accept  | 响应格式。 对于 FarmBeats 数据中心 API，格式为 JSON。 Accept: application/json
 
 
@@ -112,7 +111,7 @@ Accept  | 响应格式。 对于 FarmBeats 数据中心 API，格式为 JSON。 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>”
+"Authorization: Bearer <Access-Token>"
 ```
 
 大多数 GET、POST 和 PUT 调用都需要 JSON 请求正文。
@@ -136,20 +135,22 @@ JSON 是一种与语言无关的常见数据格式，该格式提供任意数据
 
 合作伙伴具有连接到 FarmBeats Datahub 的凭据后，合作伙伴在转换器组件中执行以下步骤。
 
-1.  根据要上传的图像的类型，为以下字段创建新的扩展类型：
+1. 根据要上传的图像的类型，为以下字段创建新的扩展类型：
 
-    - 场景源：例如 drone_partner_name
-    - 场景类型：例如无人机
-    - 场景文件类型：例如叶绿素指数
-    - 场景文件内容类型：例如 image/tiff
+   - 场景源：例如 drone_partner_name
+   - 场景类型：例如无人机
+   - 场景文件类型：例如叶绿素指数
+   - 场景文件内容类型：例如 image/tiff
 
-2.  调用 /Farms API，从 Azure FarmBeats 系统中获取农场列表。
-3.  让客户能够从农场列表中选择单个农场。
+2. 调用 /Farms API，从 Azure FarmBeats 系统中获取农场列表。
 
-    合作伙伴系统必须在合作伙伴软件中显示该农场，才能执行路径规划及无人机飞行和图像收集。
+3. 让客户能够从农场列表中选择单个农场。
 
-4.  调用 /Scene API 并提供所需的详细信息，以创建具有唯一场景 ID 的新场景。
-5.  接收一个 blob SAS URL，以将所需的图像上传到 FarmBeats 系统中所选农场的上下文中的 FarmBeats Datahub 中。
+   合作伙伴系统必须在合作伙伴软件中显示该农场，才能执行路径规划及无人机飞行和图像收集。
+
+4. 调用 /Scene API 并提供所需的详细信息，以创建具有唯一场景 ID 的新场景。
+
+5. 接收一个 blob SAS URL，以将所需的图像上传到 FarmBeats 系统中所选农场的上下文中的 FarmBeats Datahub 中。
 
 下面是有关 API 调用的详细流。
 

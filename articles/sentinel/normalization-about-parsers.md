@@ -15,19 +15,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: a08fff90197315edbfb78cb76a1c41bc84f90d69
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: b3dc1575258c495a2be63eced6aa141c60bb6631
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538338"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659431"
 ---
 # <a name="azure-sentinel-information-model-asim-parsers-public-preview"></a>Azure Sentinel 信息模型 (ASIM) 分析程序（公共预览版）
 
 在 Azure Sentinel 中，查询时需分析和[规范化](normalization.md)数据。 分析器生成为 [KQL 用户定义的函数](/azure/data-explorer/kusto/query/functions/user-defined-functions)，这些函数将现有表（例如 CommonSecurityLog）、自定义日志表或 Syslog 中的数据转换为规范化架构。 将分析程序保存为工作区函数后，可以像使用任何 Azure Sentinel 表一样使用该函数。
 
+> [!TIP]
+> 另请观看[关于 Azure Sentinel 规范化分析程序和规范化内容的深入探讨网络研讨会](https://www.youtube.com/watch?v=zaqblyjQW6k)或查看[幻灯片](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)。 有关详细信息，请参阅[后续步骤](#next-steps)。
+>
+
 > [!IMPORTANT]
-> ASIM 当前为预览版。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+> ASIM 当前处于预览状态。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 >
 
 ## <a name="source-agnostic-and-source-specific-parsers"></a>源不可知和源特定分析程序
@@ -277,12 +281,13 @@ let DnsGeneric=(starttime:datetime=datetime(null), endtime:datetime=datetime(nul
 >
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"></a>后续步骤
 
 本文介绍 Azure Sentinel 信息模型 (ASIM) 分析程序。
 
 有关详细信息，请参阅：
 
+- 观看[关于 Azure Sentinel 规范化分析程序和规范化内容的深入探讨网络研讨会](https://www.youtube.com/watch?v=zaqblyjQW6k)或查看[幻灯片](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)
 - [Azure Sentinel 信息模型概述](normalization.md)
 - [Azure Sentinel 信息模型架构](normalization-about-schemas.md)
 - [Azure Sentinel 信息模型内容](normalization-content.md)

@@ -1,18 +1,18 @@
 ---
 title: 应用服务环境网络
 description: 应用服务环境网络详细信息
-author: ccompy
+author: madsd
 ms.assetid: 6f262f63-aef5-4598-88d2-2f2c2f2bfc24
 ms.topic: article
 ms.date: 06/30/2021
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 89a14dc204e10231a134477650081396fc8e433f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 177a9095a6a1cfb15a7bd17e106406521d1eda14
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723037"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639009"
 ---
 # <a name="app-service-environment-networking"></a>应用服务环境网络
 
@@ -21,7 +21,19 @@ ms.locfileid: "121723037"
 > 
 
 
-应用服务环境 (ASE) 是托管 web 应用、api 应用和函数应用的 Azure 应用服务的单个租户部署。 安装 ASE 时，需要选择要在其中部署的 Azure 虚拟网络 (VNet)。 所有入站和出站流量应用程序都将位于你指定的 VNet 中。 ASE 部署到 VNet 的单个子网中。 不能将任何其他组件部署到同一子网中。 需将该子网委托给 Microsoft.Web/HostingEnvironments
+应用服务环境 (ASE) 是托管 web 应用、api 应用和函数应用的 Azure 应用服务的单个租户部署。 安装 ASE 时，需要选择要在其中部署的 Azure 虚拟网络 (VNet)。 所有入站和出站流量应用程序都将位于你指定的 VNet 中。 ASE 部署到 VNet 的单个子网中。 不能将任何其他组件部署到同一子网中。
+
+## <a name="subnet-requirements"></a>子网要求
+
+子网必须委托给 Microsoft.Web/hostingEnvironments，并且必须为空。
+
+子网的大小会影响 ASE 中应用服务计划实例的缩放限制。 建议为子网使用 /24 地址空间（256 个地址）以确保有足够的地址来支持生产规模。
+
+若要使用较小的子网，应了解以下有关 ASE 和网络设置的详细信息。
+
+任何给定的子网都有五个保留用于管理目的的地址。 在管理地址之上，ASE 将动态缩放支持基础结构，并将根据配置、规模和负载使用 4 到 27 个地址。 其余地址可用于应用服务计划中的实例。 子网的最小大小是 /27 地址空间（32 个地址）。
+
+地址用完的后果是，可能会限制你在 ASE 中横向扩展应用服务计划，或者如果我们无法扩展支持基础结构，可能会在密集的流量负载期间遇到延迟增加。
 
 ## <a name="addresses"></a>地址 
 
@@ -32,7 +44,7 @@ ms.locfileid: "121723037"
 | ASE 虚拟网络 | ASE 部署到的 VNet |
 | ASE 子网 | ASE 部署到的子网 |
 | 域后缀 | 在此 ASE 中创建的应用使用的域后缀 |
-| 虚拟 IP | 这是 ASE 使用的 VIP 类型。 两个可能的值为“内部”和“外部” |
+| 虚拟 IP | 此设置是 ASE 使用的 VIP 类型。 两个可能的值为“内部”和“外部” |
 | 入站地址 | 入站地址是用于访问此 ASE 上的应用的地址。 如果你有内部 VIP，则此地址是 ASE 子网中的地址。 如果该地址是外部地址，则它是面向公众的地址 |
 | 默认出站地址 | 在向 Internet 发出出站调用时，此 ASE 中的应用默认使用此地址。 |
 

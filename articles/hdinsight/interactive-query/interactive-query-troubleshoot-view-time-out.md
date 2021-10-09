@@ -4,12 +4,12 @@ description: 在 Azure HDInsight 中提取查询结果时，Apache Hive 视图�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: a43109a59353fd09ea2f29add07457d324768b16
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 5b1ec7fec182d5b0b6f2d68467d6e3e84fdb5f3c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112290514"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601399"
 ---
 # <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>场景：在 Azure HDInsight 中提取查询结果时，Apache Hive 视图超时
 
@@ -30,15 +30,18 @@ Hive 视图默认超时值可能不适用于正在运行的查询。 指定的�
 
 ## <a name="resolution"></a>解决方法
 
-通过在 `/etc/ambari-server/conf/ambari.properties` 中设置以下属性来增加 Apache Ambari Hive 视图超时。
+1. 通过在中 `/etc/ambari-server/conf/ambari.properties` 为这两个头节点设置以下属性，增大 Apache Ambari Hive 视图的超时值。
+  ```
+  views.ambari.request.read.timeout.millis=300000
+  views.request.read.timeout.millis=300000
+  views.ambari.hive.<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
+  ```
+  `HIVE_VIEW_INSTANCE_NAME` 的值可在 Hive 视图 URL 的末尾找到。
 
-```
-views.ambari.request.read.timeout.millis=300000
-views.request.read.timeout.millis=300000
-views.ambari.hive.<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
-```
-
-`HIVE_VIEW_INSTANCE_NAME` 的值可在 Hive 视图 URL 的末尾找到。
+2. 通过运行以下命令重新启动活动的 Ambari 服务器。 如果收到一条错误消息，指出它不是活动的 Ambari 服务器，只需通过 ssh 连接到下一个头节点并重复此步骤。
+  ```
+  sudo ambari-server restart
+  ```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: e03f343444aed0c3aafac28deccb0f38c35e2478
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: e90171faf59daf70bde2150036fdf0a757e53979
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515055"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621388"
 ---
 # <a name="normalization-and-the-azure-sentinel-information-model-asim-public-preview"></a>规范化和 Azure Sentinel 信息模型 (ASIM)（公共预览版）
 
@@ -78,7 +78,7 @@ Azure Sentinel 信息模型包括以下组件：
 
 Azure Sentinel 信息模型使用以下术语：
 
-|术语  |描述  |
+|术语  |说明  |
 |---------|---------|
 |**报告设备**     |   向 Azure Sentinel 发送记录的系统。 此系统可能不是要为其发送记录的主题系统。      |
 |**记录**     |从报告设备发送的数据单位。 记录通常称为 `log`、`event` 或 `alert`，但也可以是其他类型的数据。         |
@@ -91,7 +91,7 @@ Azure Sentinel 信息模型使用以下术语：
 
 开始使用 ASIM：
 
-1. 从 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers)中以 `ASim*` 开始的文件夹部署 ASIM 分析程序。
+1. 从 [Azure Sentinel GitHub 存储库](https://aka.ms/AzSentinelASim)快速部署所有 ASIM 分析程序。
 
 1. 激活使用 ASIM 的分析规则模板。 有关详细信息，请参阅 [Azure Sentinel 信息模型 (ASIM) 内容列表](normalization-content.md#builtin)。
 
@@ -103,7 +103,7 @@ Azure Sentinel 信息模型使用以下术语：
 
     - 通过为自定义源[编写分析程序](normalization-about-parsers.md)并将其[添加](normalization-about-parsers.md#include)到相关的源不可知分析程序，使自定义数据能够使用内置分析。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"></a>后续步骤
 
 本文概述了 Azure Sentinel 和 Azure Sentinel 信息模型中的规范化。
 

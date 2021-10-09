@@ -10,16 +10,16 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: f696a6b071d353c98e87387d5640e35ff579460e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b2a5a0f6f97d402c55cd47293ea668284e77363e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477803"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593128"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>查询加速 SQL 语言参考
 
-查询加速支持使用类似 ANSI SQL 的语言表示对 blob 内容的查询。  查询加速 SQL 方言是 ANSI SQL 的一个子集，支持的数据类型、运算符等有限，但它也在 ANSI SQL 上扩展以支持对层次结构半结构化数据格式（如 JSON）的查询。 
+查询加速支持使用类似 ANSI SQL 的语言表示对 blob 内容的查询。 查询加速 SQL 方言是 ANSI SQL 的一个子集，支持的数据类型、运算符等有限，但它也在 ANSI SQL 上扩展以支持对层次结构半结构化数据格式（如 JSON）的查询。
 
 ## <a name="select-syntax"></a>SELECT 语法
 
@@ -29,28 +29,26 @@ ms.locfileid: "110477803"
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-对于 CSV 格式的数据，表必须为 `BlobStorage`。  这意味着，将针对 REST 调用中指定的任何 blob 运行查询。
-对于 JSON 格式的数据，表是“表描述符”。   请参阅本文的[表描述符](#table-descriptors)部分。
+对于 CSV 格式的数据，表必须为 `BlobStorage`。 这意味着，将针对 REST 调用中指定的任何 blob 运行查询。 对于 JSON 格式的数据，表是“表描述符”。   请参阅本文的[表描述符](#table-descriptors)部分。
 
 在以下示例中，对于 WHERE 表达式为其返回 true 的每一行，此语句将返回通过计算每个投影表达式而得到的新行。
 
-
 ```sql
-SELECT expression [, expression …] FROM table [WHERE expression] [LIMIT limit]
+SELECT expression [, expression ...] FROM table [WHERE expression] [LIMIT limit]
 ```
 
-可以将一个或多个特定列指定为 SELECT 表达式的一部分（例如：`SELECT Title, Author, ISBN`）。 
+可以将一个或多个特定列指定为 SELECT 表达式的一部分（例如：`SELECT Title, Author, ISBN`）。
 
 > [!NOTE]
-> 可在 SELECT 表达式中使用的特定列的最大数目为 49。 如果需要 SELECT 语句返回超过 49 列，请为 SELECT 表达式使用通配符 (`*`)（例如：`SELECT *`）。 
+> 可在 SELECT 表达式中使用的特定列的最大数目为 49。 如果需要 SELECT 语句返回超过 49 列，请为 SELECT 表达式使用通配符 (`*`)（例如：`SELECT *`）。
 
-以下示例在表达式返回 true 的每一行上返回聚合计算（例如特定列的平均值）。 
+以下示例在表达式返回 true 的每一行上返回聚合计算（例如特定列的平均值）。
 
 ```sql
 SELECT aggregate_expression FROM table [WHERE expression] [LIMIT limit]
 ```
 
-以下示例为拆分 CSV 格式的 blob 返回合适的偏移量。  请参阅本文的 [Sys.Split](#sys-split)部分。
+以下示例为拆分 CSV 格式的 blob 返回合适的偏移量。 请参阅本文的 [Sys.Split](#sys-split)部分。
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
@@ -68,15 +66,15 @@ SELECT sys.split(split_size)FROM BlobStorage
 |TIMESTAMP|时间点。                           |
 |BOOLEAN  |True 或 False。                             |
 
-从 CSV 格式的数据读取值时，所有值都作为字符串读取。  使用 CAST 表达式可以将字符串值转换为其他类型。  根据上下文，值可以隐式强制转换为其他类型。 有关详细信息，请参阅[数据类型优先级 (transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)。
+从 CSV 格式的数据读取值时，所有值都作为字符串读取。 使用 CAST 表达式可以将字符串值转换为其他类型。 根据上下文，值可以隐式强制转换为其他类型。 有关详细信息，请参阅[数据类型优先级 (transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)。
 
 ## <a name="expressions"></a>表达式
 
 ### <a name="referencing-fields"></a>引用字段
 
-对于 JSON 格式的数据或带有标题行的 CSV 格式的数据，可以按名称引用字段。  字段名称可以带引号或不带引号。 带引号的字段名称用双引号字符 (") 括起来，可以包含空格，并且区分大小写。  未加引号的字段名称不区分大小写，并且不能包含任何特殊字符。
+对于 JSON 格式的数据或带有标题行的 CSV 格式的数据，可以按名称引用字段。 字段名称可以带引号或不带引号。 带引号的字段名称将用双引号字符 (`"`) 括起来，可以包含空格，并且区分大小写。 未加引号的字段名称不区分大小写，并且不能包含任何特殊字符。
 
-在 CSV 格式的数据中，字段也可以按序号引用，并以下划线 (_) 字符作为前缀。  例如，第一个字段可引用为 _1，或者第 11 个字段可引用为 _11。  按序号引用字段适用于不包含标题行的 CSV 格式的数据，在这种情况下，按序号引用是引用特定字段的唯一方法。
+在 CSV 格式的数据中，字段也可以按序号引用，并以下划线 (`_`) 字符作为前缀。 例如，第一个字段可引用为 `_1`，或者第 11 个字段可引用为 `_11`。 按序号引用字段适用于不包含标题行的 CSV 格式的数据，在这种情况下，按序号引用是引用特定字段的唯一方法。
 
 ### <a name="operators"></a>运算符
 
@@ -84,36 +82,36 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 |运算符|说明|
 |--|--|
-|[=](/sql/t-sql/language-elements/equals-transact-sql)    |比较两个表达式的等价性（比较运算符）。|
-|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |测试某个表达式是否不等于另一个表达式（比较运算符）。|
-|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |比较两个表达式，表示不等于（比较运算符）。|
-|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |比较两个表达式，表示小于（比较运算符）。|
-|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |比较两个表达式，表示小于或等于（比较运算符）。|
-|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |比较两个表达式，表示大于（比较运算符）。 |
-|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |比较两个表达式以得出大于或等于的结果（比较运算符）。|
-|[+](/sql/t-sql/language-elements/add-transact-sql)    |两个数相加。 这个加法算术运算符也可以将一个以天为单位的数字加到日期中。|
-|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |将两个数相减（减法算术运算符）。 |
-|[/](/sql/t-sql/language-elements/divide-transact-sql)    |用一个数除以另一个数（算术除法运算符）。|
-|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |两个表达式相乘（算术乘法运算符）。|
-|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |返回两数相除后的余数。|
-|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |在两个整数值之间执行“逻辑位与”运算。|
-|[或者](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |将两个指定的整数值转换为二进制表达式后执行逻辑位或运算。|
-|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |对布尔型输入取反。|
-|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |将一种数据类型的表达式转换为另一种。|
-|[BETWEEN](/sql/t-sql/language-elements/between-transact-sql)    |指定测试范围。|
-|[IN](/sql/t-sql/language-elements/in-transact-sql)    |确定指定的值是否与子查询或列表中的值相匹配。|
-|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |如果两个指定的表达式相等，则返回空值。|
-|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |按顺序计算变量并返回最初不等于 NULL 的第一个表达式的当前值。|
+|[`=`](/sql/t-sql/language-elements/equals-transact-sql)    |比较两个表达式的等价性（比较运算符）。|
+|[`!=`](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |测试某个表达式是否不等于另一个表达式（比较运算符）。|
+|[`<>`](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |比较两个表达式，表示不等于（比较运算符）。|
+|[`<`](/sql/t-sql/language-elements/less-than-transact-sql)    |比较两个表达式，表示小于（比较运算符）。|
+|[`<=`](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |比较两个表达式，表示小于或等于（比较运算符）。|
+|[`>`](/sql/t-sql/language-elements/greater-than-transact-sql)    |比较两个表达式，表示大于（比较运算符）。 |
+|[`>=`](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |比较两个表达式以得出大于或等于的结果（比较运算符）。|
+|[`+`](/sql/t-sql/language-elements/add-transact-sql)    |两个数相加。 这个加法算术运算符也可以将一个以天为单位的数字加到日期中。|
+|[`-`](/sql/t-sql/language-elements/subtract-transact-sql)    |将两个数相减（减法算术运算符）。 |
+|[`/`](/sql/t-sql/language-elements/divide-transact-sql)    |用一个数除以另一个数（算术除法运算符）。|
+|[`*`](/sql/t-sql/language-elements/multiply-transact-sql)    |两个表达式相乘（算术乘法运算符）。|
+|[`%`](/sql/t-sql/language-elements/modulo-transact-sql)    |返回两数相除后的余数。|
+|[`AND`](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |在两个整数值之间执行“逻辑位与”运算。|
+|[`OR`](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |将两个指定的整数值转换为二进制表达式后执行逻辑位或运算。|
+|[`NOT`](/sql/t-sql/language-elements/not-transact-sql)    |对布尔型输入取反。|
+|[`CAST`](/sql/t-sql/functions/cast-and-convert-transact-sql)    |将一种数据类型的表达式转换为另一种。|
+|[`BETWEEN`](/sql/t-sql/language-elements/between-transact-sql)    |指定测试范围。|
+|[`IN`](/sql/t-sql/language-elements/in-transact-sql)    |确定指定的值是否与子查询或列表中的值相匹配。|
+|[`NULLIF`](/sql/t-sql/language-elements/nullif-transact-sql)    |如果两个指定的表达式相等，则返回空值。|
+|[`COALESCE`](/sql/t-sql/language-elements/coalesce-transact-sql)    |按顺序计算变量并返回最初不等于 NULL 的第一个表达式的当前值。|
 
 如果运算符左侧和右侧的数据类型不同，则将根据此处指定的规则执行自动转换：[数据类型优先级 (Transact-SQL) ](/sql/t-sql/data-types/data-type-precedence-transact-sql)。
 
-查询加速 SQL 语言仅支持本文中讨论的数据类型的一小部分。  请参阅本文的[数据类型](#data-types)部分。
+查询加速 SQL 语言仅支持本文中讨论的数据类型的一小部分。 请参阅本文的[数据类型](#data-types)部分。
 
 ### <a name="casts"></a>转换
 
-根据此处的规则：[数据类型转换（数据库引擎）](/sql/t-sql/data-types/data-type-conversion-database-engine)，查询加速 SQL 语言支持 CAST 运算符。  
+根据此处的规则：[数据类型转换（数据库引擎）](/sql/t-sql/data-types/data-type-conversion-database-engine)，查询加速 SQL 语言支持 CAST 运算符。
 
-查询加速 SQL 语言仅支持本文中讨论的数据类型的很小一部分。  请参阅本文的[数据类型](#data-types)部分。
+查询加速 SQL 语言仅支持本文中讨论的数据类型的很小一部分。 请参阅本文的[数据类型](#data-types)部分。
 
 ### <a name="string-functions"></a>字符串函数
 
@@ -145,22 +143,28 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 支持以下标准 SQL 日期函数：
 
-``DATE_ADD``, ``DATE_DIFF``, ``EXTRACT``, ``TO_STRING``, ``TO_TIMESTAMP``.
+- `DATE_ADD`
+- `DATE_DIFF`
+- `EXTRACT`
+- `TO_STRING`
+- `TO_TIMESTAMP`
 
-目前，我们转换了所有[标准 IS08601 的日期格式](https://www.w3.org/TR/NOTE-datetime)。 
+目前，所有[标准 IS08601 的日期格式](https://www.w3.org/TR/NOTE-datetime)都会被转换。
 
 #### <a name="date_add-function"></a>DATE_ADD 函数
 
-对于 ``DATE_ADD`` 函数，查询加速 SQL 语言支持年、月、日、小时、分钟和秒。
+对于 `DATE_ADD` 函数，查询加速 SQL 语言支持年、月、日、小时、分钟和秒。
 
 示例：
 
-``sql DATE_ADD(datepart, quantity, timestamp) DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
+```sql
+DATE_ADD(datepart, quantity, timestamp)
+DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 ```
 
-#### DATE_DIFF function
+#### <a name="date_diff-function"></a>DATE_DIFF 函数
 
-The query acceleration SQL language supports year, month, day, hour, minute, second for the ``DATE_DIFF`` function.
+对于 `DATE_DIFF` 函数，查询加速 SQL 语言支持年、月、日、小时、分钟和秒。
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -169,7 +173,7 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 #### <a name="extract-function"></a>EXTRACT 函数
 
-对于 EXTRACT，除 ``DATE_ADD`` 函数支持的日期部分外，查询加速 SQL 语言还支持将 timezone_hour 和 timezone_minute 作为日期部分。
+对于 EXTRACT，除 `DATE_ADD` 函数支持的日期部分外，查询加速 SQL 语言还支持将 timezone_hour 和 timezone_minute 作为日期部分。
 
 示例：
 
@@ -187,7 +191,7 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-下表描述了可用于指定 ``TO_STRING`` 函数的输出格式的字符串。
+下表描述了可用于指定 `TO_STRING` 函数的输出格式的字符串。
 
 |格式字符串    |输出                               |
 |-----------------|-------------------------------------|
@@ -231,12 +235,11 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> 还可以使用 ``UTCNOW`` 函数获取系统时间。
-
+> 还可以使用 `UTCNOW` 函数获取系统时间。
 
 ## <a name="aggregate-expressions"></a>聚合表达式
 
-SELECT 语句可能包含一个或多个投影表达式或单个聚合表达式。  支持以下聚合表达式：
+SELECT 语句可能包含一个或多个投影表达式或单个聚合表达式。 支持以下聚合表达式：
 
 |表达式|说明|
 |--|--|
@@ -249,13 +252,13 @@ SELECT 语句可能包含一个或多个投影表达式或单个聚合表达式�
 
 ### <a name="missing"></a>MISSING
 
-``IS MISSING`` 运算符是查询加速 SQL 语言支持的唯一非标准用法。  对于 JSON 数据，如果特定输入记录中缺少某个字段，则表达式字段 ``IS MISSING`` 将计算为布尔值 true。
+`IS MISSING` 运算符是查询加速 SQL 语言支持的唯一非标准用法。 对于 JSON 数据，如果特定输入记录中缺少某个字段，则表达式字段 `IS MISSING` 将计算为布尔值 true。
 
 <a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>表描述符
 
-对于 CSV 数据，表名称始终为 `BlobStorage`。  例如：
+对于 CSV 数据，表名称始终为 `BlobStorage`。 例如：
 
 ```sql
 SELECT * FROM BlobStorage
@@ -329,16 +332,16 @@ SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 这是 SELECT 语句的一种特殊形式，仅适用于 CSV 格式的数据。
 
 ```sql
-SELECT sys.split(split_size)FROM BlobStorage
+SELECT sys.split(split_size) FROM BlobStorage
 ```
 
-如果要成批下载并批处理 CSV 数据记录，请使用此语句。 通过这种方式，你可以并行处理记录，而无需一次下载所有记录。 此语句不从 CSV 文件返回记录。 而是返回批大小的集合。 然后，可以使用每个批大小检索一批数据记录。 
+如果要成批下载并批处理 CSV 数据记录，请使用此语句。 通过这种方式，你可以并行处理记录，而无需一次下载所有记录。 此语句不从 CSV 文件返回记录。 而是返回批大小的集合。 然后，可以使用每个批大小检索一批数据记录。
 
-使用 split_size 参数可指定每个批包含的字节数。 例如，如果希望一次只处理 10 MB 的数据，则语句将如下所示：`SELECT sys.split(10485760)FROM BlobStorage`，因为 10 MB 等于 10,485,760 字节。 每个批最多可容纳 10 MB 的记录。 
+使用 split_size 参数可指定每个批包含的字节数。 例如，如果希望一次只处理 10 MB 的数据，则语句将如下所示：`SELECT sys.split(10485760)FROM BlobStorage`，因为 10 MB 等于 10,485,760 字节。 每个批最多可容纳 10 MB 的记录。
 
 在大多数情况下，每个批的大小将略高于你指定的数字。 这是因为批不能包含部分记录。 如果批中的最后一条记录在阈值结束之前开始，则该批需要更大的容量才能包含完整记录。 最后一个批的大小可能小于指定的大小。
 
->[!NOTE]
+> [!NOTE]
 > split_size 必须至少为 10 MB (10485760)。
 
 ## <a name="see-also"></a>请参阅

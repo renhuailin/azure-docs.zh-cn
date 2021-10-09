@@ -4,19 +4,21 @@ description: 本操作指南介绍如何查看和使用有关数据的 Purview �
 author: batamig
 ms.author: bagol
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/17/2021
-ms.openlocfilehash: 057d097eb66eddffc15bb65bfb9e6fb64209e5f8
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/27/2021
+ms.openlocfilehash: 642611a680e0848208aa7e42493fee6fc16fb4d7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397441"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208829"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>有关 Azure Purview 中的数据的分类见解
 
 本操作指南介绍如何访问、查看和筛选有关数据的 Purview 分类见解报表。
+
+> [!IMPORTANT]
+> Azure Purview 见解目前处于预览阶段。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 支持的数据源包括：Azure Blob 存储、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、Azure Cosmos DB (SQL API)、Azure Synapse Analytics（原 SQL DW）、Azure SQL 数据库、Azure SQL 托管实例、SQL Server、Amazon S3 存储桶
 
@@ -33,11 +35,11 @@ ms.locfileid: "122397441"
 
 - 设置 Azure 资源并用测试数据填充相关帐户
 
-- 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
+- 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
 
 - 使用具有 [Data Reader 或 Data Curator 角色](catalog-permissions.md#roles)的帐户登录到 Purview。
 
-有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)。
+有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)。
 
 ## <a name="use-purview-classification-insights"></a>使用 Purview 分类见解
 
@@ -52,13 +54,13 @@ Purview 使用与 Microsoft 365 相同的敏感信息类型，可让你将现有
 
 1. [在 Azure 门户中转到“Azure Purview”实例屏幕](https://aka.ms/purviewportal)，并选择 Purview 帐户。
 
-1. 在“概述”页面上的“入门”部分中，选择“启动 Purview 帐户”磁贴。  
+1. 在“概述”页上的“入门”部分中，选择“Purview Studio”磁贴  。
 
 1. 在 Purview 中，选择左侧的“见解”(:::image type="icon" source="media/insights/ico-insights.png" border="false":::) 菜单项以访问“见解”区域。
 
 1. 在“见解”(:::image type="icon" source="media/insights/ico-insights.png" border="false":::) 区域中，选择“分类”以显示 Purview“分类见解”报表  。
 
-   :::image type="content" source="./media/insights/select-classification-labeling-small.png" alt-text="“分类见解”报表" lightbox="media/insights/select-classification-labeling.png":::
+   :::image type="content" source="./media/insights/select-classification-labeling.png" alt-text="“分类见解”报表" lightbox="media/insights/select-classification-labeling.png":::
 
    “分类见解”主页显示以下区域：
 
@@ -83,7 +85,7 @@ Purview 使用与 Microsoft 365 相同的敏感信息类型，可让你将现有
 
 例如：
 
-:::image type="content" source="media/insights/view-classifications-small.png" alt-text="查看所有分类" lightbox="media/insights/view-classifications.png":::
+:::image type="content" source="media/insights/view-classifications-small.png" alt-text="查看所有分类":::
 
 若要了解详细信息，请执行以下任一操作：
 

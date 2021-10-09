@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 418f0797343a64728c4e48084b09bd0e426cec62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0954f438f21229b16800847f5d248909a61df051
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686404"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573947"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的语言自定义
 
@@ -37,6 +37,10 @@ ms.locfileid: "101686404"
 
 > [!NOTE]
 > 如果使用自定义用户属性，需要提供自己的翻译。 有关详细信息，请参阅[自定义字符串](#customize-your-strings)。
+
+观看此视频，了解如何使用 Azure AD B2C 来本地化或自定义语言。
+
+>[!Video https://www.youtube.com/embed/yqrX5_tA7Ms]
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -184,7 +188,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>添加自定义语言
 
-还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为用户流中的所有字符串提供翻译。 语言和区域设置代码仅限于 ISO 639-1 标准中的代码。 区域设置代码格式应为 "ISO_639-1_code"-"CountryCode"，例如 `en-GB`。 有关区域设置 ID 格式的详细信息，请参阅 https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
+还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为用户流中的所有字符串提供翻译。 语言和区域设置代码仅限于 ISO 639-1 标准中的代码。 区域设置代码格式应为 "ISO_639-1_code"-"CountryCode"，例如 `en-GB`。 有关详细信息，请参阅 [区域设置 ID 格式](/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a)。
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 2. 单击想要添加自定义语言的用户流，然后单击“语言”  。
@@ -416,12 +420,13 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 </ContentDefinitions>
 ```
 
-##  <a name="upload-and-test-your-updated-custom-policy"></a>上传并测试已更新的自定义策略
+## <a name="upload-and-test-your-updated-custom-policy"></a>上传并测试已更新的自定义策略
 
 ### <a name="upload-the-custom-policy"></a>上传自定义策略
 
 1. 保存扩展文件。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 搜索并选择“Azure AD B2C”。
 1. 在“策略”下，选择“Identity Experience Framework”。 
 1. 选择“上传自定义策略”。

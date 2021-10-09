@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 虚拟机备份解决方案进行选
 ms.topic: conceptual
 ms.date: 05/13/2021
 ms.custom: references_regions , devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bc309311db421a22a845b273d3816e7c51e3ce76
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: e23c0729f44128172e4afd4902ce60e9c2ecb29c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112817"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128613073"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>适用于 Azure 虚拟机的选择性磁盘备份和还原
 
@@ -257,6 +257,9 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ```azurepowershell
 Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
+
+> [!NOTE]
+> 如果命令失败，并出现表明需要策略参数的错误，请检查备份项的保护状态。 很可能是因为保护已停止，因而需要使用策略来恢复保护，还需要重置以前的所有磁盘排除设置。
 
 ### <a name="restore-selective-disks-with-powershell"></a>使用 PowerShell 还原选择性磁盘
 

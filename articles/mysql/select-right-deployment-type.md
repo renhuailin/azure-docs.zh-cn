@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 4cfa90e2863583cf920df333fd2e5dbd7d7b46c6
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: ee18a405ca6c6a9d2e6a3a6cceb5c0ff89b5cf73
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113084599"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748589"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择适当的 MySQL Server 选项
 
@@ -31,44 +31,98 @@ ms.locfileid: "113084599"
 
   - [灵活服务器（预览版）](flexible-server/overview.md)是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 通常，与基于用户需求的单一服务器部署相比，该服务提供更大的灵活性和更高程度的服务器配置自定义。 灵活服务器体系结构允许用户选择单个可用性区域内以及跨多个可用性区域的高可用性。 灵活服务器还提供了更好的成本优化控制，具有启动/停止服务器和可突发 SKU 的功能，非常适合无需持续全计算容量的工作负载。
 
-  灵活服务器最适用于：
+灵活服务器最适用于：
 
   - 需要更好地控制和自定义 MySQL 引擎的应用程序开发。
   - 区域冗余高可用性
   - 托管维护时段
-
-- **Azure VM 上的 MySQL**。 此选项属于 IaaS 行业类别。 使用此服务可以在 Azure 云平台上的托管虚拟机中运行 MySQL 服务器。 所有最新版本的 MySQL 都可以安装在该虚拟机中。
+ 
+  - **Azure VM 上的 MySQL**。 此选项属于 IaaS 行业类别。 使用此服务可以在 Azure 云平台上的托管虚拟机中运行 MySQL 服务器。 所有最新版本的 MySQL 都可以安装在该虚拟机中。
 
 ## <a name="comparing-the-mysql-deployment-options-in-azure"></a>比较 Azure 中的 MySQL 部署选项
 
 下表列出了这些选项之间的主要差别：
 
-| 属性          | Azure Database for MySQL<br/>单台服务器 |Azure Database for MySQL<br/>灵活服务器  |Azure VM 上的 MySQL                      |
-|:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
-| MySQL 版本支持 | 5.6、5.7 和 8.0| 5.7 和 8.0 | 任何版本|
+| 属性          | Azure Database for MySQL<br/>单台服务器 |Azure Database for MySQL<br/>灵活服务器  |Azure VM 上的 MySQL |
+|:-------------------|:-------------------------------------------|:---------------------------------------------|:------------------|
+| [**常规**](flexible-server/overview.md)  | | | |
+| 正式版 | 2018 年正式发布 | 公共预览版 | GA |
+| 服务级别协议 (SLA) | 99.99% 可用性 SLA |预览版中没有 SLA| 99.99% 使用可用性区域|
+| 基础 O/S | Windows | Linux  | 用户管理 |
+| MySQL 版本 | Community Edition | Community Edition | Community 或 Enterprise Edition |
+| MySQL 版本支持 | 5.6（已停用）、5.7 和 8.0| 5.7 和 8.0 | 任何版本|
+| 应用程序场地租用的可用性区域选择 | 否 | 是 | 是 |
+| 连接字符串中的用户名 | `<user_name>@server_name`. 例如： `mysqlusr@mypgServer` | 只需用户名。 例如： `mysqlusr` | 只需用户名。 例如： `mysqlusr` | 
+| [**计算与存储缩放**](flexible-server/concepts-compute-storage.md) | | | |
+| 计算层级 | “基本”、“常规用途”、“内存优化” | “可突发”、“常规用途”、“内存优化” | “可突发”、“常规用途”、“内存优化” |
 | 计算缩放 | 支持（不支持从基本层缩放和缩放到基本层）| 支持 | 支持|
 | 存储大小 | 5 GiB 到 16 TiB| 20 GiB 到 16 TiB | 32 GiB 到 32,767 GiB|
 | 联机存储缩放 | 支持| 支持| 不支持|
 | 自动存储缩放 | 支持| 支持| 不支持|
-| 额外 IOPs 缩放 | 不支持| 支持| 不支持|
+| IOP 缩放 | 不支持| 支持| 不支持|
+| [**成本优化**](https://azure.microsoft.com/pricing/details/mysql/flexible-server/) | | | |
+| 预留实例定价 | 支持 | 支持 | 支持 |
+| 停止/启动服务器进行开发 | 服务器最多可停止 7 天 | 服务器最多可停止 30 天 | 支持 |
+| 低成本可突增 SKU | 不支持 | 支持 | 支持 |
+| [**网络/安全性**](concepts-security.md) | | | |
 | 网络连接 | - 具有服务器防火墙的公共终结点。<br/> - 具有专用链接支持的专用访问。|- 具有服务器防火墙的公共终结点。<br/> - 具有虚拟网络集成的专用访问。| - 具有服务器防火墙的公共终结点。<br/> - 具有专用链接支持的专用访问。|
-| 服务级别协议 (SLA) | 99.99% 可用性 SLA |预览版中没有 SLA| 99.99% 使用可用性区域|
-| 操作系统修补| 自动  | 通过自定义维护时段控制自动执行 | 由最终用户管理 |
-| MySQL 修补     | 自动  | 通过自定义维护时段控制自动执行 | 由最终用户管理 |
-| 高可用性 | 单个可用性区域内的内置 HA| 可用性区域内和跨可用性区域的内置 HA | 使用群集、复制等进行自定义托管|
-| 区域冗余 | 不支持 | 支持 | 支持|
-| 区域位置 | 不支持 | 支持 | 支持|
-| 混合场景 | 支持，并可使用[数据传入复制](./concepts-data-in-replication.md)| 支持，并可使用[数据传入复制](./flexible-server/concepts-data-in-replication.md) | 由最终用户管理 |
-| 只读副本 | 受支持（最多 5 个副本）| 受支持（最多 10 个副本）| 由最终用户管理 |
-| Backup | 自动执行，保留 7-35 天 | 自动执行，保留 1-35 天 | 由最终用户管理 |
-| 监视数据库操作 | 支持 | 支持 | 由最终用户管理 |
-| 灾难恢复 | 支持，可以使用异地冗余备份存储和跨区域只读副本 | 即将推出| 使用复制技术进行自定义托管 |
-| 查询性能见解 | 支持 | 不适用于预览版| 由最终用户管理 |
-| 预留实例定价 | 支持 | 即将推出 | 支持 |
-| Azure AD 身份验证 | 支持 | 不适用于预览版 | 不支持|
-| 静态数据加密 | 支持客户管理的密钥 | 支持服务托管密钥 | 不支持|
 | SSL/TLS | 默认情况下已启用，支持 TLS v1.2、1.1 和 1.0 | 默认情况下已启用，支持 TLS v1.2、1.1 和 1.0| 在 TLS v1.2、1.1 和 1.0 中受支持 |
+| 静态数据加密 | 支持客户管理的密钥 (BYOK) | 支持服务托管密钥 | 不支持|
+| Azure AD 身份验证 | 支持 | 不支持 | 不支持|
+| Azure Defender 支持 | 是 | 否 | 否 |
+| 服务器审核 | 支持 | 支持 | 用户管理 |
+| [**修补和维护**](flexible-server/concepts-maintenance.md) | | |
+| 操作系统修补| 自动  | 自动  | 用户管理 |
+| MySQL 次要版本升级  | 自动  | 自动 | 用户管理 |
+| MySQL 就地主版本升级 | 支持从 5.6 到 5.7 | 不支持 | 用户管理 |
+| 维护控制 | 系统管理 | 由客户管理 | 用户管理 |
+| 维护时段 | 15 小时内的任何时间 | 1 小时 | 用户管理 |
+| 计划内维护通知 | 3 天 | 5 天 | 用户管理 |
+| [**高可用性**](flexible-server/concepts-high-availability.md) | | | |
+| 高可用性 | 内置 HA（无热备用服务器）| 内置 HA（无热备用服务器），同区域和具有热备用服务器的区域冗余 HA | 用户管理 |
+| 区域冗余 | 不支持 | 支持 | 支持|
+| 备用区域放置 | 不支持 | 支持 | 支持|
+| 自动故障转移 | 是（启动另一台服务器）| 是 | 用户管理|
+| 强制故障转移 | 否 | 是 | 用户管理 |
+| 透明应用程序故障转移 | 是 | 是 | 用户管理|
+| [**复制**](flexible-server/concepts-read-replicas.md) | | | |
+| 支持只读副本 | 是 | 是 | 用户管理 |
+| 支持的只读副本数 | 5 | 10 | 用户管理 |
+| 复制模式 | 异步 | 异步 | 用户管理 |
+| 对只读副本的 Gtid 支持 | 支持 | 支持 | 用户管理 |
+| 跨区域支持（异地复制） | 是 | 不支持 | 用户管理 |
+| 混合场景 | 支持，并可使用[数据传入复制](./concepts-data-in-replication.md)| 支持，并可使用[数据传入复制](./flexible-server/concepts-data-in-replication.md) | 用户管理 |
+| 对数据输入复制的 Gtid 支持 | 支持 | 不支持 | 用户管理 |
+| 数据输出复制 | 不支持 | 预览 | 支持 |
+| [**备份和恢复**](flexible-server/concepts-backup-restore.md) | | | |
+| 自动备份 | 是 | 是 | 否 |
+| 备份保留期 | 7 - 35 天 | 1-35 天 | 用户管理 |
+| 长期保留备份 | 用户管理 | 用户管理 | 用户管理 |
+| 导出备份 | 支持使用逻辑备份 | 支持使用逻辑备份 | 支持 |
+| 在保留期内可通过时间点还原功能还原到任意时间 | 是 | 是 | 用户管理 |
+| 能否在不同的区域中还原 | 不支持 | 是 | 是 |
+| 能否还原到不同的 VNET | 否 | 是 | 是 |
+| 能否还原到不同的区域 | 是（异地冗余） | 否 | 用户管理 |
+| 能否还原已删除的服务器 | 是 | 否 | 否 |
+| [**灾难恢复**](flexible-server/concepts-business-continuity.md) | | | | 
+| 跨 Azure 区域的灾难恢复 | 使用跨区域只读副本，异地冗余备份 | 不支持 | 用户管理 |
+| 自动故障转移 | 否 | 不支持 | 否 |
+| 可以使用同一个 r/w 终结点 | 否 | 不支持 | 否 |
+| [**监视**](flexible-server/concepts-monitoring.md) | | | |
+| Azure Monitor 集成和警报 | 支持 | 支持 | 用户管理 |
+| 监视数据库操作 | 支持 | 支持 | 用户管理 |
+| 查询性能见解 | 支持 | 不支持 | 用户管理 |
+| 服务器日志 | 支持 | 支持（使用诊断日志） | 用户管理 |
+| 审核日志 | 支持 | 支持 | 支持 | 
+| 错误日志 | 不支持 | 支持 | 支持 |
+| Azure 顾问支持 | 支持 | 不支持 | 不支持 |
+| **插件** | | | |
+| validate_password | 不支持 | 预览 | 支持 |
+| caching_sha2_password | 不支持 | 预览 | 支持 |
+| [**开发人员工作效率**](flexible-server/quickstart-create-server-cli.md) | | | |
 | 群队管理 | 在 Azure CLI、PowerShell、REST 和 Azure 资源管理器中受支持 | 在 Azure CLI、PowerShell、REST 和 Azure 资源管理器中受支持  | 装有 Azure CLI、PowerShell、REST 和 Azure 资源管理器的 VM 支持此功能 |
+| Terraform 支持 | 支持 | 不支持 | 支持 |
+| GitHub 操作 | 支持 | 支持 | 用户管理 |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>选择 PaaS 或 IaaS 的业务动机
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 8d28ceb5b323a811f44599f9d4f0205c6aaf4f87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6486445fcda372d76686fef26c63d3c07e03ffbd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647013"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733780"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sigma-computing"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 Sigma Computing 的集成
 
@@ -37,8 +37,9 @@ ms.locfileid: "101647013"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Sigma Computing 支持 SP 和 IDP 发起的 SSO
-* Grok Learning 支持实时用户预配
+* Sigma Computing 支持 SP 和 IDP 发起的 SSO。
+* Sigma Computing 支持实时用户预配。
+* Sigma Computing 支持[自动用户预配](sigma-computing-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -53,7 +54,6 @@ ms.locfileid: "101647013"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Sigma Computing” 。
 1. 从结果面板中选择 Sigma Computing，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-sigma-computing"></a>配置并测试 Sigma Computing 的 Azure AD SSO
 
@@ -80,7 +80,7 @@ ms.locfileid: "101647013"
 
 1. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式之一键入 URL：
 
@@ -101,6 +101,7 @@ ms.locfileid: "101647013"
 1. 在“设置 Sigma Computing”部分中，根据需要复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -149,6 +150,8 @@ ms.locfileid: "101647013"
 
 本部分将在 Sigma Computing 中创建名为 Britta Simon 的用户。 Sigma Computing 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Sigma Computing 中尚不存在用户，则会在身份验证后创建一个新用户。
 
+Sigma Computing 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./sigma-computing-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -163,7 +166,7 @@ ms.locfileid: "101647013"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Sigma Computing 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Sigma Computing 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Sigma Computing。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Sigma Computing 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Sigma Computing。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

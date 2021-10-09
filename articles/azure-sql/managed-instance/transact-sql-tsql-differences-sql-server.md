@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: mathoma, bonova, danil
 ms.date: 8/18/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 005984260532ddf0a349380f290a65313e371336
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 7f9067d2f568c3f3d65b89508d85046970c9e334
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397100"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273412"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,6 +70,7 @@ SQL 托管实例包含自动备份，因此用户可以创建完整数据库 `CO
 - 使用 SQL 托管实例可将实例数据库备份到最多包含 32 个条带的备份，如果使用备份压缩，则这种方法对于不超过 4 TB 的数据库而言已足够。
 - 不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。 使用自动备份和时间点还原，或者改用[客户管理的 (BYOK) TDE](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
 - 无法将托管实例上进行的本机备份恢复到 SQL Server。 这是因为与任何版本的 SQL Server 相比，托管实例具有更高的内部数据库版本。
+- 若要将数据库备份到 Azure 存储或从 Azure 存储中还原数据库，必须创建一个共享访问签名 (SAS) 和一个向你授予 Azure 存储资源的受限访问权限的 URI。[了解相关详细信息](restore-sample-database-quickstart.md#restore-from-a-backup-file-using-t-sql)。 不支持对这些场景使用访问密钥。
 - 在 SQL 托管实例中使用 `BACKUP` 命令最大可以设置 195 GB 的备份条带大小（即最大 Blob 大小）。 增加备份命令中的带状线数量以缩小单个带状线大小，将其保持在限制范围内。
 
     > [!TIP]
@@ -491,7 +492,7 @@ Service Broker 默认处于启用状态，并且无法禁用。 不支持以下 
   - `remote data archive`
   - `remote proc trans`
   - `scan for startup procs`
-- 以下 [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) 选项会被忽略，因此不起作用： 
+- 以下 [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) 选项将被忽略，且不起作用： 
   - `Ole Automation Procedures`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
 - 不支持 `xp_cmdshell`。 请参阅 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。

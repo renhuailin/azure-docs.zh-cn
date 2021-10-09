@@ -4,23 +4,25 @@ description: 介绍如何定义和使用模块，以及如何使用模块范围�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/15/2021
-ms.openlocfilehash: 5e092a0b7f27379cf9fdc488c7a56a295ce17d25
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/14/2021
+ms.openlocfilehash: 53bc8d80f1954694b8bdb262cdec25bb4506b221
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752250"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672830"
 ---
 # <a name="use-bicep-modules"></a>使用 Bicep 模块
 
-使用 Bicep 可将复杂的解决方案分解为模块。 Bicep 模块是要一起部署的一个或多个资源的集合。 模块会抽象出原始资源声明的复杂细节，从而提高可读性。 这些模块可以重复使用，并与他人共享。 Bicep 模块被转译为包含用于部署的[嵌套模板](../templates/linked-templates.md#nested-template)的一个 ARM 模板。
+使用 Bicep 可将复杂的解决方案分解为模块。 Bicep 模块只是从另一个 Bicep 文件部署的 Bicep 文件。 可以将资源声明的复杂详细信息封装在一个模块中，从而提高使用该模块的文件的可读性。 这些模块可以重复使用，并与他人共享。 Bicep 模块被转换为单个 Azure 资源管理器模板，其中包含用于部署的[嵌套模板](../templates/linked-templates.md#nested-template)。
+
+本文介绍如何定义和使用模块。
 
 有关教程，请参阅[使用 Bicep 模板部署 Azure 资源](/learn/modules/deploy-azure-resources-by-using-bicep-templates/)。
 
 ## <a name="define-modules"></a>定义模块
 
-每个 Bicep 文件都可以作为模块使用。 模块仅将参数和输出作为协定公开给其他 Bicep 文件。 参数和输出都是可选的。
+每个 Bicep 文件都可以用作模块。 模块仅将参数和输出作为协定公开给其他 Bicep 文件。 参数和输出都是可选的。
 
 以下 Bicep 文件可以直接部署，以创建存储帐户或将作为模块使用。  下一节将演示如何使用模块：
 
@@ -71,7 +73,7 @@ output storageEndpoint object = stg.properties.primaryEndpoints
 param namePrefix string
 param location string = resourceGroup().location
 
-module stgModule './storageAccount.bicep' = {
+module stgModule 'storageAccount.bicep' = {
   name: 'storageDeploy'
   params: {
     storagePrefix: namePrefix
@@ -118,22 +120,11 @@ module dnsZone 'dnszones.bicep' = if (deployZone) {
 }
 ```
 
+可以使用循环多次部署模块。 有关详细信息，请参阅 [Bicep 中的模块迭代](loop-modules.md)。
+
 ## <a name="configure-module-scopes"></a>配置模块作用域
 
-声明模块时，可以提供 _作用域_ 属性来设置部署模块的作用域：
-
-```bicep
-module stgModule './storageAccount.bicep' = {
-  name: 'storageDeploy'
-  scope: resourceGroup('someOtherRg') // pass in a scope to a different resourceGroup
-  params: {
-    storagePrefix: namePrefix
-    location: location
-  }
-}
-```
-
-当模块目标作用域和父目标作用域相同时，可以省略 _作用域_ 属性。 未提供 scope 属性时，将在父级的目标范围部署模块。
+声明模块时，可以为模块设置一个与包含 Bicep 文件的范围不同的范围。 使用 `scope` 属性设置模块的范围。 未提供 scope 属性时，将在父级的目标范围部署模块。
 
 以下 Bicep 文件显示了如何创建资源组，及如何将模块部署到资源组：
 
@@ -166,15 +157,59 @@ module stgModule './storageAccount.bicep' = {
 output storageEndpoint object = stgModule.outputs.storageEndpoint
 ```
 
-scope 属性必须设置为有效的范围对象。 如果 Bicep 文件部署资源组、订阅或管理组，可以将模块的范围设置为该资源的符号名称。 上一个示例演示了此方法，其中创建了资源组，并用于模块的范围。
+下一个示例部署到现有资源组。
 
-或者，可使用 scope 函数获取有效的范围。 这些函数包括：
+```bicep
+targetScope = 'subscription'
+
+resource firstRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
+  name: 'demogroup1'
+}
+
+resource secondRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
+  name: 'demogroup2'
+}
+
+module storage1 'storageAccount.bicep' = {
+  name: 'westusdeploy'
+  scope: firstRG
+  params: {
+    storagePrefix: 'stg1'
+    location: 'westus'
+  }
+}
+
+module storage2 'storageAccount.bicep' = {
+  name: 'eastusdeploy'
+  scope: secondRG
+  params: {
+    storagePrefix: 'stg2'
+    location: 'eastus'
+  }
+}
+```
+
+scope 属性必须设置为有效的范围对象。 如果 Bicep 文件部署资源组、订阅或管理组，可以将模块的范围设置为该资源的符号名称。 或者，可使用 scope 函数获取有效的范围。 
+
+这些函数包括：
 
 - [resourceGroup](bicep-functions-scope.md#resourcegroup)
 - [subscription](bicep-functions-scope.md#subscription)
 - [managementGroup](bicep-functions-scope.md#managementgroup)
 - [tenant](bicep-functions-scope.md#tenant)
 
+下面的示例使用 `managementGroup` 函数设置范围。
+
+```bicep
+param managementGroupName string
+
+module  'module.bicep' = {
+  name: 'deployToMG'
+  scope: managementGroup(managementGroupName)
+}
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-- 若要浏览教程，请参阅[使用 Bicep 模板部署 Azure 资源](/learn/modules/deploy-azure-resources-by-using-bicep-templates/)。
+- 若要将敏感值传递给模块，请使用 [getSecret](bicep-functions-resource.md#getsecret) 函数。
+- 可以使用循环多次部署模块。 有关详细信息，请参阅 [Bicep 中的模块迭代](loop-modules.md)。

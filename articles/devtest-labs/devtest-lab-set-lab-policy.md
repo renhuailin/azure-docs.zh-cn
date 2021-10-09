@@ -1,14 +1,14 @@
 ---
-title: 管理 Azure 开发测试实验室中的实验室策略 | Microsoft 文档
+title: 管理实验室策略
 description: 了解如何定义实验室策略，例如 VM 大小、每个用户的最大VM 以及自动化关闭。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 166e3fd1717268e3af1f72ae297e76c45af0f6f9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90530346"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612161"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中的某个实验室的所有策略
 

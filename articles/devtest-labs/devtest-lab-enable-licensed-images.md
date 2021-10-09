@@ -1,14 +1,14 @@
 ---
-title: 启用 Azure 开发测试实验室中自己的实验室中的已授权映像 | Microsoft Docs
+title: 在实验室中启用已授权映像
 description: 了解如何使用 Azure 门户在 Azure 开发测试实验室中启用已授权映像
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 32ecbfc37d47835766d863b54d823be95fffb008
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4c96661688d7b64884f0a02e15eb2c7b208bdfba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750901"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643947"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
 

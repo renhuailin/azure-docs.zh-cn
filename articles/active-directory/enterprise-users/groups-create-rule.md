@@ -14,17 +14,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25019d00fc38cb58d928bcbc52209bd5ec54f0e9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: cff9855b97dc1afc1ba9e4dc1beeb7320e6b1e0b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438617"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785983"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>在 Azure Active Directory 中创建或更新动态组
 
 在 Azure Active Directory (Azure AD) 中，可以使用规则根据用户或设备属性确定组成员资格。 本文介绍如何为 Azure 门户中的动态组设置一项规则。
-支持为安全组或 Microsoft 365 组启用动态成员身份。 应用组成员身份规则时，将会对用户和设备属性进行评估，确定其是否与成员身份规则匹配。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行成员身份更改。 如果用户和设备符合组的条件，则会对其执行添加或删除操作。 安全组可以用于设备或用户，但 Microsoft 365 组只能是用户组。 需要 Azure AD 高级 P1 许可证才能使用动态组。 有关更多详细信息，请参阅[组的动态成员身份规则](./groups-dynamic-membership.md)。 
+支持为安全组或 Microsoft 365 组启用动态成员身份。 应用组成员身份规则时，将会对用户和设备属性进行评估，确定其是否与成员身份规则匹配。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行成员身份更改。 如果用户和设备符合组的条件，则会对其执行添加或删除操作。 安全组可以用于设备或用户，但 Microsoft 365 组只能是用户组。 使用动态组需要 Azure AD premium P1 许可证或 Intune for Education 许可证。 有关更多详细信息，请参阅[组的动态成员身份规则](./groups-dynamic-membership.md)。 
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure 门户中的规则生成器
 

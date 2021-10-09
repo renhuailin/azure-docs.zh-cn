@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 8044df075fc5c5666bd30af3b7a01ee7e28c958d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 38d6f8d8b96526c8ba190559a639985bedf96cff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537529"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798553"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -36,7 +36,7 @@ ms.locfileid: "123537529"
 
 3. 一个计划触发器，用于每隔一小时执行一次管道。
 
-   ![此图显示了具有计划触发器的管道。 在此管道中，复制活动可通过流向输入数据集来流向 AWS S3 链接服务，还可以通过流向输出数据集来流向 Azure 存储链接服务。](media/pricing-concepts/scenario1.png)
+   :::image type="content" source="media/pricing-concepts/scenario1.png" alt-text="关系图显示含计划触发器的管道。在此管道中，复制活动可通过流向输入数据集来流向 AWS S3 链接服务，还可以通过流向输出数据集来流向 Azure 存储链接服务。":::
 
 | **操作** | **类型和单元** |
 | --- | --- |
@@ -67,7 +67,7 @@ ms.locfileid: "123537529"
 2. 一个用于数据转换的 Azure Databricks 活动。
 3. 一个计划触发器，用于每隔一小时执行一次管道。
 
-![此图显示了具有计划触发器的管道。 在此管道中，复制活动会流向输入数据集、输出数据集和 DataBricks 活动（在 Azure Databricks 上运行）。 输入数据集会流向 AWS S3 链接服务。 输出数据集会流向 Azure 存储链接服务。](media/pricing-concepts/scenario2.png)
+:::image type="content" source="media/pricing-concepts/scenario2.png" alt-text="关系图显示具有计划触发器的管道。在管道中，将活动流复制到输入数据集、输出数据集和 DataBricks 活动，该活动在 Azure Databricks 上运行。输入数据集流向 A W S S3 链接服务。输出数据集流向 Azure 存储链接的服务。":::
 
 | **操作** | **类型和单元** |
 | --- | --- |
@@ -101,7 +101,7 @@ ms.locfileid: "123537529"
 3. 一个用于数据转换的 Azure Databricks 活动。
 4. 一个计划触发器，用于每隔一小时执行一次管道。
 
-![此图显示了具有计划触发器的管道。 在此管道中，复制活动会流向输入数据集、输出数据集和查找活动（流向在 Azure Databricks 上运行的 DataBricks 活动）。 输入数据集会流向 AWS S3 链接服务。 输出数据集会流向 Azure 存储链接服务。](media/pricing-concepts/scenario3.png)
+:::image type="content" source="media/pricing-concepts/scenario3.png" alt-text="关系图显示具有计划触发器的管道。在管道中，将活动流复制到输入数据集、输出数据集和流向 DataBricks 活动的查找活动，该活动在 Azure Databricks 上运行。输入数据集流向 A W S S3 链接服务。输出数据集流向 Azure 存储链接的服务。":::
 
 | **操作** | **类型和单元** |
 | --- | --- |
@@ -130,7 +130,7 @@ ms.locfileid: "123537529"
 
 Azure-SSIS 集成运行时 (IR) 是 Azure 虚拟机 (VM) 的一个专用群集，用于在 Azure 数据工厂 (ADF) 中执行 SSIS 包。 当你进行预配后，它将是你专用的，因此，只要你保持它的运行状态，无论你是否用它来执行 SSIS 包，它都会像任何其他专用 Azure VM 一样被收取费用。 有关其运行成本，可以在 ADF 门户的“设置”窗格中看到每小时估算值，例如：  
 
-![SSIS 定价示例](media/pricing-concepts/ssis-pricing-example.png)
+:::image type="content" source="media/pricing-concepts/ssis-pricing-example.png" alt-text="SSIS 定价示例":::
 
 在以上示例中，如果使 Azure-SSIS IR 保持运行状态 2 小时，则费用为：2（小时）x 1.158 美元/小时 = 2.316 美元。
 
@@ -181,7 +181,8 @@ Azure-SSIS 集成运行时 (IR) 是 Azure 虚拟机 (VM) 的一个专用群集�
 
 ## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Azure 数据工厂托管 VNET 中的数据集成
 在此方案中，你想要删除 Azure Blob 存储中的原始文件并将数据从 Azure SQL 数据库复制到 Azure Blob 存储。 你将在不同的管道上两次执行此操作。 这两个管道的执行时间重叠。
-![方案 4](media/pricing-concepts/scenario-4.png) 若要完成此方案，你需要创建两个包含以下项的管道：
+:::image type="content" source="media/pricing-concepts/scenario-4.png" alt-text="方案 4":::
+若要完成此方案，你需要创建两个包含以下项的管道：
   - 一个管道活动 - 删除活动。
   - 一个复制活动，它使用要从 Azure Blob 存储复制的数据的输入数据集。
   - Azure SQL 数据库中的数据的输出数据集。

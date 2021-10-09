@@ -2,13 +2,13 @@
 title: 使用 Azure CLI 备份 Azure 托管磁盘
 description: 了解如何使用 Azure CLI 备份 Azure 托管磁盘。
 ms.topic: conceptual
-ms.date: 06/18/2021
-ms.openlocfilehash: 42bbc54a545cdddf049163b3040d9701f4304a52
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.date: 09/17/2021
+ms.openlocfilehash: ce1e4b3f88e844165581c95f74955de04686855b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112381205"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659682"
 ---
 # <a name="back-up-azure-managed-disks-using-azure-cli"></a>使用 Azure CLI 备份 Azure 托管磁盘
 
@@ -283,7 +283,7 @@ az dataprotection backup-vault update -g testBkpVaultRG --vault-name TestBkpVaul
 
 ### <a name="assign-permissions"></a>分配权限
 
-你需要通过 RBAC 向保管库（保管库 MSI 表示）、相关磁盘和/或磁盘 RG 分配少量权限。 可以通过 Azure 门户或 CLI 执行上述操作。 [配置备份](backup-managed-disks.md#configure-backup)的第 1、2、3 点详细介绍了所有相关权限。
+你需要通过 RBAC 向保管库（保管库 MSI 表示）、相关磁盘和/或磁盘 RG 分配少量权限。 可以通过 Azure 门户或 CLI 执行上述操作。 若要分配相关权限，请参阅[配置托管磁盘备份的先决条件](backup-managed-disks-ps.md#assign-permissions)。
 
 ### <a name="prepare-the-request"></a>准备请求
 

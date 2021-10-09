@@ -2,17 +2,35 @@
 title: Azure VMware 解决方案的平台更新
 description: 了解 Azure VMware 解决方案的平台更新。
 ms.topic: reference
-ms.date: 07/23/2021
-ms.openlocfilehash: 01667e4a22dc220e9895071d047210e8487ff2bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/21/2021
+ms.openlocfilehash: 3159323fa567bc622c9627ded4e8f70bfac20b4f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750088"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636109"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Azure VMware 解决方案的平台更新
 
 从 2021 年 3 月开始，Azure VMware 解决方案将应用重要更新。 你将通过 Azure 服务运行状况收到通知，其中包括维护时间线。 有关详细信息，请参阅[主机维护和生命周期管理](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management)。
+
+## <a name="september-21-2021"></a>2021 年 9 月 21 日
+根据 VMware 安全公告 [VMSA-2021-0020](https://www.vmware.com/security/advisories/VMSA-2021-0020.html)，VMware vCenter Server 中的多个漏洞已报告给 VMware。
+ 
+为了解决 VMware 安全公告 [VMSA-2021-0020](https://www.vmware.com/security/advisories/VMSA-2021-0020.html) 中报告的漏洞（CVE-2021-21980、CVE-2021-21991、CVE-2021-21992、CVE-2021-21993、CVE-2021-22005、CVE-2021-22006、CVE-2021-22007、CVE-2021-22008、CVE-2021-22009、CVE-2021-22010、CVE-2021-22011、CVE-2021-22012、CVE-2021-22013、CVE-2021-22014、CVE-2021-22015、CVE-2021-22016、CVE-2021 -22017、CVE-2021-22018、CVE-2021-22019、CVE-2021-22020），vCenter Server 已在所有 Azure VMware 解决方案私有云中更新到 6.7 Update 3o。 所有新的 Azure VMware 解决方案私有云都使用 vCenter Server 版本 6.7 Update 3o 进行部署。
+ 
+有关详细信息，请参阅 [VMware vCenter Server 6.7 Update 3o 发行说明](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-vcenter-server-67u3o-release-notes.html)
+ 
+无需进一步执行操作。
+
+## <a name="september-10-2021"></a>2021 年 9 月 10 日
+
+所有新的 Azure VMware 解决方案私有云现在都使用 ESXi 版本 ESXi670-202103001（生成号：17700523）进行部署。 现有私有云中的 ESXi 主机已修补到此版本。
+
+有关此 ESXi 版本的详细信息，请参阅 [VMware ESXi 6.7 补丁版本 ESXi670-202103001](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/esxi670-202103001.html)。
+
+
+
 
 ## <a name="july-23-2021"></a>2021 年 7 月 23 日
 

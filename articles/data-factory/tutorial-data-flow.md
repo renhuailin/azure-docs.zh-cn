@@ -9,12 +9,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: b5d28b5e625bc7822469511ae83d5dabd5824fa0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5ff1ea92056b4fe5f090442df72e7c39d53368b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638817"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626220"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -49,7 +49,7 @@ ms.locfileid: "122638817"
 1. 打开 **Microsoft Edge** 或 **Google Chrome**。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 2. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ：
 
-   ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="&quot;新建&quot;窗格中的“数据工厂”选项":::
 
 3. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
@@ -76,18 +76,18 @@ ms.locfileid: "122638817"
 
 1. 在 Azure 数据工厂的主页上，选择“协调”。
 
-   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="显示 ADF 主页的屏幕截图。":::
 
 1. 在管道的“常规”选项卡中，输入 TransformMovies 作为管道的名称  。
 1. 在“活动”窗格中，展开“移动和转换”可折叠部分 。 将“数据流”活动从该窗格拖放到管道画布上。
 
-    ![显示管道画布的屏幕截图，你可以在其中放置数据流活动。](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="显示管道画布的屏幕截图，你可以在其中放置数据流活动。":::
 1. 在“添加数据流”弹出窗口中，选择“创建新数据流”，然后将数据流命名为 TransformMovies  。 完成操作后，请单击“完成”。
 
-    ![显示在创建新数据流时对数据流进行命名的位置的屏幕截图。](media/tutorial-data-flow/activity2.png)
+    :::image type="content" source="media/tutorial-data-flow/activity2.png" alt-text="显示在创建新数据流时对数据流进行命名的位置的屏幕截图。":::
 1. 在管道画布的顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
-    ![数据流活动](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="数据流活动":::
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>在数据流画布中构建转换逻辑
 
@@ -95,87 +95,87 @@ ms.locfileid: "122638817"
 
 1. 在数据流画布中，通过单击“添加源”框来添加源。
 
-    ![显示“添加源”框的屏幕截图。](media/tutorial-data-flow/dataflow2.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow2.png" alt-text="显示“添加源”框的屏幕截图。":::
 1. 将源命名为 MoviesDB。 单击“新建”以创建新的源数据集。
 
-    ![显示在命名源后选择“新建”的位置的屏幕截图。](media/tutorial-data-flow/dataflow3.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow3.png" alt-text="显示在命名源后选择“新建”的位置的屏幕截图。":::
 1. 选择 Azure Data Lake Storage Gen2。 单击“继续”(Continue)。
 
-    ![显示 Azure Data Lake Storage Gen2 磁贴位置的屏幕截图。](media/tutorial-data-flow/dataset1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset1.png" alt-text="显示 Azure Data Lake Storage Gen2 磁贴位置的屏幕截图。":::
 1. 选择 DelimitedText。 单击“继续”(Continue)。
 
-    ![显示 DelimitedText 磁贴的屏幕截图。](media/tutorial-data-flow/dataset2.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset2.png" alt-text="显示 DelimitedText 磁贴的屏幕截图。":::
 1. 将数据集命名为 MoviesDB。 在链接服务下拉列表中，选择“新建”。
 
-    ![显示“链接服务”下拉列表的屏幕截图。](media/tutorial-data-flow/dataset3.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset3.png" alt-text="显示“链接服务”下拉列表的屏幕截图。":::
 1. 在链接服务创建屏幕中，将 ADLS Gen2 链接服务命名为 ADLSGen2，并指定身份验证方法。 然后输入连接凭据。 在本教程中，我们将使用帐户密钥连接到存储帐户。 可以单击“测试连接”以验证是否已正确输入凭据。 完成后，单击“创建”。
 
-    ![链接服务](media/tutorial-data-flow/ls1.png)
+    :::image type="content" source="media/tutorial-data-flow/ls1.png" alt-text="链接服务":::
 1. 返回数据集创建屏幕后，请在“文件路径”字段下输入文件所在的位置。 在本教程中，文件 moviesDB.csv 位于容器 sample-data 中。 由于文件具有标头，请选择“第一行作为标头”。 选择“从连接/存储”，以直接从存储中的文件导入标头架构。 完成后单击“确定”。
 
-    ![数据集](media/tutorial-data-flow/dataset4.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset4.png" alt-text="数据集":::
 1. 如果调试群集已启动，请转到源转换的“数据预览”选项卡，然后单击“刷新”以获取数据的快照 。 可以使用数据预览来验证是否已正确配置转换。
 
-    ![显示你可以在何处预览数据以验证是否已正确配置转换的屏幕截图。](media/tutorial-data-flow/dataflow4.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow4.png" alt-text="显示你可以在何处预览数据以验证是否已正确配置转换的屏幕截图。":::
 1. 在数据流画布上的源节点旁边，单击加号图标以添加新转换。 要添加的第一个转换是“筛选器”。
 
-    ![数据流画布](media/tutorial-data-flow/dataflow5.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow5.png" alt-text="数据流画布":::
 1. 将筛选器转换命名为 FilterYears。 单击“筛选依据”旁的表达式框以打开表达式生成器。 可在此处指定筛选条件。
 
-    ![显示“筛选依据”表达式框的屏幕截图。](media/tutorial-data-flow/filter1.png)
+    :::image type="content" source="media/tutorial-data-flow/filter1.png" alt-text="显示“筛选依据”表达式框的屏幕截图。":::
 1. 数据流表达式生成器允许你以交互方式生成要用于各种转换的表达式。 表达式可以包含内置函数、输入架构中的列和用户定义的参数。 有关如何生成表达式的详细信息，请参阅[数据流表达式生成器](concepts-data-flow-expression-builder.md)。
 
-    在本教程中，你要筛选在 1910 到 2000 年之间上映的喜剧流派电影。 由于年份目前是一个字符串，因此需要使用 ```toInteger()``` 函数将其转换为整数。 使用大于或等于 (>=) 和小于或等于 (<=) 运算符来与文本年份值 1910 和 2000 进行比较。 将这些表达式与 and (&&) 运算符结合在一起。 表达式如下所示：
+    在本教程中，你要筛选在 1910 到 2000 年之间上映的喜剧流派电影。 由于年份目前是一个字符串，因此需要使用 `toInteger()` 函数将其转换为整数。 使用大于或等于 (>=) 和小于或等于 (<=) 运算符来与文本年份值 1910 和 2000 进行比较。 将这些表达式与 and (&&) 运算符结合在一起。 表达式如下所示：
 
-    ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
+    `toInteger(year) >= 1910 && toInteger(year) <= 2000`
 
-    若要找出哪些电影属于喜剧，可以使用 ```rlike()``` 函数查找 genres 列中的“Comedy”。 将 rlike 表达式与年份比较结合得到：
+    若要找出哪些电影属于喜剧，可以使用 `rlike()` 函数查找 genres 列中的“Comedy”。 将 `rlike` 表达式与年份比较结合得到：
 
-    ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
+    `toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')`
 
     如果调试群集处于活动状态，则可以通过单击“刷新”来查看表达式输出与所使用的输入之间的比较，以验证逻辑。 关于如何使用数据流表达式语言实现这个逻辑，有多个正确答案。
 
-    ![筛选器](media/tutorial-data-flow/filter2.png)
+    :::image type="content" source="media/tutorial-data-flow/filter2.png" alt-text="Filter":::
 
     在完成表达式后，单击“保存并完成”。
 
 1. 提取“数据预览”以验证筛选器是否正常工作。
 
-    ![显示你提取的数据预览的屏幕截图。](media/tutorial-data-flow/filter3.png)
+    :::image type="content" source="media/tutorial-data-flow/filter3.png" alt-text="显示你提取的数据预览的屏幕截图。":::
 1. 要添加的下一个转换是“架构修饰符”下的“聚合”转换 。
 
-    ![显示聚合架构修饰符的屏幕截图。](media/tutorial-data-flow/agg1.png)
+    :::image type="content" source="media/tutorial-data-flow/agg1.png" alt-text="显示聚合架构修饰符的屏幕截图。":::
 1. 将聚合转换命名为 AggregateComedyRatings。 在“分组依据”选项卡中，从下拉列表中选择“年份”，按电影上映的年份对聚合进行分组 。
 
-    ![显示聚合设置下“分组依据”选项卡中年份选项的屏幕截图。](media/tutorial-data-flow/agg2.png)
+    :::image type="content" source="media/tutorial-data-flow/agg2.png" alt-text="显示聚合设置下“分组依据”选项卡中年份选项的屏幕截图。":::
 1. 转到“聚合”选项卡。在左侧文本框中，将聚合列命名为 AverageComedyRating。 单击右侧的表达式框，通过表达式生成器输入聚合表达式。
 
-    ![显示聚合设置下“聚合”选项卡中年份选项的屏幕截图。](media/tutorial-data-flow/agg3.png)
+    :::image type="content" source="media/tutorial-data-flow/agg3.png" alt-text="显示聚合设置下“聚合”选项卡中年份选项的屏幕截图。":::
 1. 若要获取 Rating 列的平均值，请使用 ```avg()``` 聚合函数。 由于 Rating 为字符串并且 ```avg()``` 采用数字输入，因此必须通过 ```toInteger()``` 函数将该值转换为数字。 该表达式如下所示：
 
-    ```avg(toInteger(Rating))```
+    `avg(toInteger(Rating))`
 
     完成后，单击“保存并完成”
 
-    ![显示保存的表达式的屏幕截图。](media/tutorial-data-flow/agg4.png)
+    :::image type="content" source="media/tutorial-data-flow/agg4.png" alt-text="显示保存的表达式的屏幕截图。":::
 1. 转到“数据预览”选项卡以查看转换输出。 请注意，这里只有两个列，year 和 AverageComedyRating 。
 
-    ![聚合](media/tutorial-data-flow/agg3.png)
+    :::image type="content" source="media/tutorial-data-flow/agg3.png" alt-text="聚合":::
 1. 接下来，你需要在“目标”下添加“接收器”转换 。
 
-    ![显示在目标下添加接收器转换的位置的屏幕截图。](media/tutorial-data-flow/sink1.png)
+    :::image type="content" source="media/tutorial-data-flow/sink1.png" alt-text="显示在目标下添加接收器转换的位置的屏幕截图。":::
 1. 将接收器命名为 Sink。 单击“新建”以创建接收器数据集。
 
-    ![显示你可以在何处命名接收器并创建新接收器数据集的屏幕截图。](media/tutorial-data-flow/sink2.png)
+    :::image type="content" source="media/tutorial-data-flow/sink2.png" alt-text="显示你可以在何处命名接收器并创建新接收器数据集的屏幕截图。":::
 1. 选择 Azure Data Lake Storage Gen2。 单击“继续”(Continue)。
 
-    ![显示你可以选择的 Azure Data Lake Storage Gen2 磁贴的屏幕截图。](media/tutorial-data-flow/dataset1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataset1.png" alt-text="显示你可以选择的 Azure Data Lake Storage Gen2 磁贴的屏幕截图。":::
 1. 选择 DelimitedText。 单击“继续”(Continue)。
 
-    ![数据集](media/tutorial-data-flow/dataset2.png)
+    数据集
 1. 将接收器数据集命名为 MoviesSink。 对于链接服务，请选择在步骤 6 中创建的 ADLS gen2 链接服务。 输入要向其写入数据的输出文件夹。 在本教程中，我们将写入容器“sample-data”中的文件夹“output”。 该文件夹不需要事先存在，可以动态创建。 将“第一行作为标头”设置为 true，并为“导入架构”选择“无”  。 单击“完成”。
 
-    ![接收器](media/tutorial-data-flow/sink3.png)
+    :::image type="content" source="media/tutorial-data-flow/sink3.png" alt-text="接收器":::
 
 现在，你已经完成了数据流的构建。 你已准备好在管道中运行它。
 
@@ -185,16 +185,16 @@ ms.locfileid: "122638817"
 
 1. 转到管道画布。 单击“调试”以触发调试运行。
 
-    ![显示管道画布的屏幕截图，起哄突出显示了“调试”。](media/tutorial-data-flow/pipeline1.png)
+    :::image type="content" source="media/tutorial-data-flow/pipeline1.png" alt-text="显示管道画布的屏幕截图，起哄突出显示了“调试”。":::
 1. 数据流活动的管道调试使用活动调试群集，但仍至少需要一分钟的时间来初始化。 可以通过“输出”选项卡跟踪进度。运行成功后，单击眼镜图标打开监视窗格。
 
-    ![管道](media/tutorial-data-flow/pipeline2.png)
+    管道
 1. 在监视窗格中，你可以看到每个转换步骤中的行数和所用时间。
 
-    ![显示监视窗格的屏幕截图，可在其中看到每个转换步骤中的行数和所用时间。](media/tutorial-data-flow/pipeline3.png)
+    :::image type="content" source="media/tutorial-data-flow/pipeline3.png" alt-text="显示监视窗格的屏幕截图，可在其中看到每个转换步骤中的行数和所用时间。":::
 1. 单击转换可获取有关列和数据分区的详细信息。
 
-    ![监视](media/tutorial-data-flow/pipeline4.png)
+    :::image type="content" source="media/tutorial-data-flow/pipeline4.png" alt-text="Monitoring":::
 
 如果已正确遵循本教程，则应在接收器文件夹中写入 83 个行和 2 个列。 可以通过检查 Blob 存储来验证数据是否正确。
 

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
-ms.date: 01/07/2021
-ms.openlocfilehash: d3fe29f94cf874d7ede2b5d7f85199c2d9df65f2
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/16/2021
+ms.openlocfilehash: e7e52208602ed2e82fed8201d1b4ba91c295946d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359652"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593850"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何监视 Azure Cosmos 容器或帐户的规范化 RU/秒
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -38,17 +38,17 @@ ms.locfileid: "113359652"
 
 2. 在左侧导航栏中选择“监视”，然后选择“指标”。 
 
-   :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure Monitor 中的“指标”窗格":::
+   :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure Monitor 中的“指标”窗格" border="true":::
 
 3. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="选择一个 Azure Cosmos 帐户来查看指标":::
+   :::image type="content" source="./media/monitor-account-key-updates/select-account-scope.png" alt-text="选择要查看指标的帐户范围" border="true":::
 
 4. 接下来，可以从可用指标列表中选择一个指标。 可以选择特定于请求单位、存储、延迟、可用性、Cassandra 和其他方面的指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别列出的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，我们选择“规范化 RU 消耗”指标，并选择“最大值”作为聚合值。
 
    除了这些详细信息之外，还可以选择指标的时间范围和时间粒度。 可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="从 Azure 门户中选择指标":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="从 Azure 门户中选择指标" border="true":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>针对规范化请求单位消耗的筛选器
 
@@ -58,7 +58,7 @@ ms.locfileid: "113359652"
 
 而是显示每个容器的规范化请求单位消耗指标，如下图所示：
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="对规范化请求单位消耗指标应用筛选器":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="对规范化请求单位消耗指标应用筛选器" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 

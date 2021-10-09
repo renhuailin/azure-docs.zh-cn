@@ -2,18 +2,18 @@
 title: 购买 Azure 预留
 description: 了解帮助购买 Azure 预留项的要点。
 author: bandersmsft
-ms.reviewer: yashar
+ms.reviewer: primattal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/12/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: d9de6322ac84a86902b5ef218df9abe8528b95a9
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: bbd57ed54171785ab8f2aedea93fa8c56cc0319c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113231478"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653357"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -41,16 +41,18 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
     - 对于企业协议客户，计费上下文为注册。 预留共享范围会在注册中包含多个 Active Directory 租户。
     - 对于 Microsoft 客户协议客户，计费范围为计费对象信息。
     - 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
+- 管理组 - 将预留折扣应用于同时属于管理组和计费范围的订阅列表中的匹配资源。 若要为管理组购买预留，你必须至少具有对管理组的“读取”权限，并且必须是计费订阅上的预留所有者或预留买方。
 
 对用途应用预留折扣时，Azure 将按以下顺序处理预留：
 
 1. 具有单个资源组范围的预留
 2. 具有单个订阅范围的预留
-3. 具有共享范围（多个订阅）的预留，如前所述
+3. 预留范围限定为管理组
+4. 具有共享范围（多个订阅）的预留，如前所述
 
 始终可在购买预留项后更新范围。 为此，请转到该预留项，单击“配置”，然后重新设置预留范围。 重新设置预留范围不属于商业交易。 预留条款不会有变化。 有关更新范围的详细信息，请参阅[在购买预留项后更新范围](manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
-![演示如何更改预留范围的示例](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
+:::image type="content" source="./media/prepare-buy-reservation/rescope-reservation-management-group.png" alt-text="演示如何更改预留范围的示例" lightbox="./media/prepare-buy-reservation/rescope-reservation-management-group.png" :::
 
 ## <a name="discounted-subscription-and-offer-types"></a>打折的订阅和套餐类型
 

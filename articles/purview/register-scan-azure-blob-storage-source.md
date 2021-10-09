@@ -1,18 +1,18 @@
 ---
-title: 如何扫描 Azure 存储 blob
+title: 如何注册和扫描 Azure Blob 存储
 description: 了解如何在 Azure Purview 数据目录中扫描 Azure Blob 存储。
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 7b295fd67052d91c229977571056b3ea95d56773
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 40105f18cce8fe515350903837f49d273bd39d03
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122177852"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209977"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>注册和扫描 Azure Blob 存储
 
@@ -116,7 +116,7 @@ Azure Blob 存储支持通过完整扫描和增量扫描来捕获元数据和架
 
 若要在数据目录中注册新的 blob 帐户，请执行以下操作：
 
-1. 从门户中的 Purview 帐户导航到 Purview Studio。
+1. 从门户中的 Purview 帐户导航到 [Purview Studio](https://web.purview.azure.com/resource/)。
 1. 在 Purview Studio 主页上选择“注册源”。
 1. 选择“注册”
 1. 在“注册源”上，选择“Azure Blob 存储”
@@ -136,7 +136,7 @@ Azure Blob 存储支持通过完整扫描和增量扫描来捕获元数据和架
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择你已注册的 Azure Blob 数据源。
 

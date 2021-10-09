@@ -1,18 +1,18 @@
 ---
 title: 注册和扫描 Azure Database for PostgreSQL
-description: 本教程介绍如何扫描 Azure Database for PostgreSQL 数据库
+description: 本教程介绍如何在 Azure Purview 中扫描 Azure Database for PostgreSQL 数据库。
 author: evwhite
 ms.author: evwhite
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.openlocfilehash: 622e89392dc10f12fe81ed1c1085e5b9cc524999
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: abc676fbff551781f720db5937a9c35c7c8f81ea
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181294"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209789"
 ---
 # <a name="register-and-scan-an-azure-database-for-postgresql"></a>注册和扫描 Azure Database for PostgreSQL
 
@@ -73,7 +73,7 @@ Purview 仅支持 Azure Database for PostgreSQL 的 SQL 身份验证。
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择你已注册的 Azure Database for PostgreSQL 源。
 

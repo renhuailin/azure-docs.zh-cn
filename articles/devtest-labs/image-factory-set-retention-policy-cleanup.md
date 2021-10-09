@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中设置保留策略 | Microsoft Docs
+title: 设置保留策略
 description: 了解如何在开发测试实验室中配置保留策略、清理工厂和停用旧映像。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 4e642d7dc0733e55caa4ed62e3382ef4422030f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 91baf275a1ff85cadd0e1226ceb2f1ff529189c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727529"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642864"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中设置保留策略
 本文介绍如何在组织的所有其他开发测试实验室中设置保留策略、清理工厂和停用旧映像。 
@@ -67,4 +67,3 @@ ms.locfileid: "105727529"
 1. [计划生成/发布](/azure/devops/pipelines/build/triggers?tabs=designer)以便定期运行映像工厂。 它会定期刷新工厂生成的映像。
 2. 为工厂创建更多黄金映像。 你还可以考虑[创建项目](devtest-lab-artifact-author.md)以编写 VM 设置任务的其他部分的脚本，并将项目包括在工厂映像中。
 4. 创建 [单独的生成/发布](/azure/devops/pipelines/overview)来单独运行 **DistributeImages** 脚本。 你可以在对 Labs.json 进行更改时运行此脚本，将映像复制到目标实验室，无需重新创建所有映像。
-

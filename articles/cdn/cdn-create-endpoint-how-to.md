@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/12/2018
+ms.date: 09/09/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7bbd54ed68863a4704319a25af96b6463ad2377b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18f4276c3013f50ceacf74f4c8cec068f0de88cb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98539712"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775524"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>创建 Azure CDN 终结点
 本文介绍现有 CDN 配置文件中用于创建 [Azure 内容分发网络 (CDN)](cdn-overview.md) 终结点的所有设置。 创建配置文件和终结点以后，即可将内容交付给客户。 有关如何创建配置文件和终结点的快速入门，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
@@ -100,6 +100,9 @@ ms.locfileid: "98539712"
     - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 30 分钟内完成 。 
    
     如果尝试在终结点配置传播到接入点 (POP) 服务器之前使用 CDN 域名，则可能会收到 HTTP 404 响应状态。 如果在创建终结点数小时后依然收到 404 响应状态，请参阅[排查 Azure CDN 终结点返回 404 状态代码的问题](cdn-troubleshoot-endpoint.md)。
+
+> [!NOTE]
+> 对于 Verizon CDN 终结点，当终结点因任何原因被禁用或被停止时，通过 Verizon 补充门户配置的所有资源都将被清除。 无法通过重启终结点来自动恢复这些配置。 你将需要重新进行这些配置更改。
 
 ## <a name="clean-up-resources"></a>清理资源
 若要删除不再需要的终结点，请将其选中，然后选择“删除”。 

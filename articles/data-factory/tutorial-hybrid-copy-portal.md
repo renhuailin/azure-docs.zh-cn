@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 55b0d4246616dd862cfcf9fb15069f13f130e857
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ae3b89391a4932ac4e77287185c761b4c4e31cea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638303"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798287"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -79,7 +79,7 @@ ms.locfileid: "122638303"
 
 1. 在左窗格中，选择“所有服务”。 使用“存储”关键字进行筛选，然后选择“存储帐户”。 
 
-    ![存储帐户搜索](media/doc-common-process/search-storage-account.png)
+    :::image type="content" source="media/doc-common-process/search-storage-account.png" alt-text="存储帐户搜索":::
 
 1. 在存储帐户列表中，根据需要通过筛选找出你的存储帐户， 然后选择存储帐户。
 
@@ -92,7 +92,7 @@ ms.locfileid: "122638303"
 
 1. 在“存储帐户”窗口中，转到“概览”，然后选择“容器”。
 
-    ![选择“Blob”选项](media/tutorial-hybrid-copy-powershell/select-blobs.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/select-blobs.png" alt-text="选择“Blob”选项":::
 
 1. 在“容器”窗口中，选择“+ 容器”来新建容器。
 
@@ -108,7 +108,7 @@ ms.locfileid: "122638303"
 1. 打开 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ：
 
-   ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="在“新建”窗格中选择“数据工厂”":::
 
 1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
@@ -126,7 +126,7 @@ ms.locfileid: "122638303"
      若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 1. 在“版本”下选择“V2”。 
 1. 在“位置”下选择数据工厂的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
-1. 选择“创建”。
+1. 选择“创建”  。
 
 1. 创建完以后，会看到图中所示的“数据工厂”页：
 
@@ -139,7 +139,7 @@ ms.locfileid: "122638303"
 
 1. 在 Azure 数据工厂主页上，选择“协调”。 系统会自动创建一个管道。 可以在树状视图中看到该管道，并且其编辑器已打开。
 
-   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="屏幕截图显示 Azure 数据工厂主页。":::
 
 1. 在“常规”面板的“属性”中，将“名称”指定为 SQLServerToBlobPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
 
@@ -148,7 +148,7 @@ ms.locfileid: "122638303"
 1. 在“属性”窗口中转到“源”选项卡，然后选择“+ 新建”。  
 
 1. 在“新建数据集”对话框中搜索“SQL Server”。  选择“SQL Server”，然后选择“继续”。
-    ![新建 SqlServer 数据集](./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png" alt-text="新建 SqlServer 数据集":::
 
 1. 在“设置属性”对话框中的“名称”下，输入 **SqlServerDataset**。 在“链接服务”下，选择“+新建”。 执行此步骤来与源数据存储（SQL Server 数据库）建立连接。
 
@@ -159,11 +159,11 @@ ms.locfileid: "122638303"
 1. 在“名称”下，输入 **TutorialIntegrationRuntime**。 然后选择“创建”。
 
 1. 对于“设置”，选择“单击此处对此计算机启动快速安装”。 此操作在计算机上安装集成运行时，并将其注册到数据工厂。 或者，可以使用手动安装选项来下载安装文件、运行该文件，并使用密钥来注册集成运行时。
-    ![集成运行时安装](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png" alt-text="集成运行时安装":::
 
 1. 在过程完成时，在“Integration Runtime (自承载)快速安装”窗口中，选择“关闭”。 
 
-    ![Integration Runtime(自承载)快速安装](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png" alt-text="Integration Runtime(自承载)快速安装":::
 
 1. 在“新建链接服务(SQL Server)”对话框中，确认在“通过集成运行时连接”下选择了 **TutorialIntegrationRuntime**。 然后执行以下步骤：
 
@@ -181,7 +181,7 @@ ms.locfileid: "122638303"
 
     g. 若要保存链接服务，请选择“创建”。
  
-    ![新建链接服务 (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png" alt-text="新建链接服务 (SQL Server)":::
 
 1. 创建链接服务后，将会返回到 SqlServerDataset 的“设置属性”页。 执行以下步骤：
 
@@ -199,7 +199,7 @@ ms.locfileid: "122638303"
 
 1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。 
 
-    ![数据格式选择](./media/doc-common-process/select-data-format.png)
+    :::image type="content" source="./media/doc-common-process/select-data-format.png" alt-text="数据格式选择":::
 
 1. 在“设置属性”对话框中，输入 **AzureBlobDataset** 作为名称。 在“链接服务”文本框旁边，选择“+ 新建”。 
 
@@ -214,14 +214,14 @@ ms.locfileid: "122638303"
     b. 在 **文件路径** 中，输入 **adfTutorial/fromonprem** 作为“容器/目录”部分。 如果 adftutorial 容器中不包含 output 文件夹，数据工厂会自动创建 output 文件夹。
 
     c. 对于“文件”部分，选择“添加动态内容”。
-    ![用于解析文件名的动态表达式](./media/tutorial-hybrid-copy-portal/file-name.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/file-name.png" alt-text="用于解析文件名的动态表达式":::
 
     d. 添加 `@CONCAT(pipeline().RunId, '.txt')`，然后选择“完成”。 此操作会将文件重命名为 PipelineRunID.txt。
 
 1. 转到已打开该管道的选项卡，或者在树状视图中选择该管道。 在“接收器数据集”中，确认选择了“AzureBlobDataset”。 
 
 1. 若要验证管道设置，请在工具栏中选择该管道对应的“验证”。 若要关闭管道验证输出，请选择 **>>** 图标。
-    ![验证管道](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/validate-pipeline.png" alt-text="验证管道":::
     
 
 1. 若要将创建的实体发布到数据工厂，请选择“全部发布”。
@@ -237,7 +237,7 @@ ms.locfileid: "122638303"
 1. 转到“监视”选项卡。此时会看到在上一步手动触发的管道。
 
 1. 若要查看与管道运行关联的活动运行，请选择“管道名称”下的“SQLServerToBlobPipeline”链接。 
-    ![监视管道运行](./media/tutorial-hybrid-copy-portal/pipeline-runs.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-portal/pipeline-runs.png" alt-text="监视管道运行":::
 
 1. 在“活动运行”页面上，选择“详细信息”（眼镜图像）链接来查看有关复制操作的详细信息。 若要回到“管道运行”视图，请选择顶部的“所有管道运行”。
 

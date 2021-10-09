@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 3693fcf7783bd66bebe5b7d792a12eefaad66286
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a63eaf3047dec956755616e06e1c250d88825772
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437141"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609776"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器
 借助 [Azure 逻辑应用](../../logic-apps/index.yml) 和 [Power Automate](https://flow.microsoft.com)，可以使用数百个操作为多种服务创建自动化工作流。 使用 Azure Monitor 日志连接器，可以在 Azure Monitor 中生成可从 Log Analytics 工作区或 Application Insights 应用程序检索数据的工作流。 本文介绍该连接器附带的操作，并演练如何使用这些数据生成工作流。
@@ -25,7 +25,7 @@ Azure Monitor 日志连接器具有以下限制：
 * 最大查询超时 110 秒
 * 图表可视化效果可能在“日志”页中可用，但在连接器中丢失，因为连接器和“日志”页当前使用的图表库不同
 
-根据使用的查询和结果大小，连接器可能会达到限制。 通常可以通过调整流重复周期以根据较小时间范围更频繁地运行或者聚合数据以减小结果大小，来避免这种情况。 由于缓存的限制，不建议使用小于 100 秒的间隔频繁运行查询。
+根据使用的查询和结果大小，连接器可能会达到限制。 通常可以通过调整流重复周期以根据较小时间范围更频繁地运行或者聚合数据以减小结果大小，来避免这种情况。 由于缓存的限制，不建议使用小于 120 秒的间隔频繁运行查询。
 
 ## <a name="actions"></a>操作
 下表描述了 Azure Monitor 日志连接器附带的操作。 可通过这两个操作对 Log Analytics 工作区或 Application Insights 应用程序运行日志查询。 两者的差异在于返回数据的方式。

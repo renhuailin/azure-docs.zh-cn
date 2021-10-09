@@ -7,12 +7,12 @@ ms.date: 08/26/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b90e96975dadc1f7fb168345aa89b98bb6a22b9c
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1068bd5f5a97c4eeab702add9c305b38a8084464
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473579"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079635"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>使用工作流将 Azure IoT Central 应用程序与其他云服务相集成
 
@@ -22,6 +22,7 @@ ms.locfileid: "123473579"
 
 - 当在 Azure IoT Central 应用中触发了某个规则时，该规则可以触发 Power Automate 或 Azure 逻辑应用中的工作流。 这些工作流可以运行其他云服务（例如 Microsoft 365）或第三方服务中的操作。
 - 另一云服务（例如 Microsoft 365）中的事件可以触发 Power Automate 或 Azure 逻辑应用中的工作流。 这些工作流可以从你的 IoT Central 应用程序中运行操作或检索数据。
+- Azure IoT Central V3 连接器与普遍可用的 [1.0 REST API](/rest/api/iotcentral/) 表面保持一致。 所有连接器操作都支持 [DTDLv2 格式](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)，并且正在弃用对基于 DTDLv1 的模型的支持。 有关最新信息和最新更新的详细信息，请参阅当前连接器版本的[发行说明](/connectors/azureiotcentral/#release-notes)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,18 +37,17 @@ ms.locfileid: "123473579"
 
 需要先在 IoT Central 应用程序中配置一个规则，然后才能触发 Power Automate 或 Azure 逻辑应用中的工作流。 有关详细信息，请参阅[在 Azure IoT Central 中配置规则和操作](./howto-configure-rules.md)。
 
-若要将“Azure IoT Central V3 - 预览版”连接器添加为 Power Automate 中的触发器：
+若要将“Azure IoT Central V3”连接器添加为 Power Automate 中的触发器，请执行以下操作：
 
 1. 在 Power Automate 中选择“+ 创建”，然后选择“自定义”选项卡。 
-1. 搜索“IoT Central”，然后选择“Azure IoT Central V3 - 预览版”连接器。
+1. 搜索“IoT Central”，然后选择“Azure IoT Central V3”连接器。
 1. 在触发器列表中，选择“触发规则时(预览版)”。
 1. 在“触发规则时”步骤中，选择你的 IoT Central 应用程序以及所用的规则。
 
-若要将“Azure IoT Central V3 - 预览版”连接器添加为 Azure 逻辑应用中的触发器：
+若要将“Azure IoT Central V3”连接器添加为 Azure 逻辑应用中的触发器，请执行以下操作：
 
 1. 在“逻辑应用设计器”中，选择“空白逻辑应用”模板。 
-1. 在设计器中，选择“自定义”选项卡。
-1. 搜索“IoT Central”，然后选择“Azure IoT Central V3 - 预览版”连接器。
+1. 在设计器中，搜索“IoT Central”，然后选择“Azure IoT Central V3”连接器。
 1. 在触发器列表中，选择“触发规则时(预览版)”。
 1. 在“触发规则时”步骤中，选择你的 IoT Central 应用程序以及所用的规则。
 
@@ -57,12 +57,12 @@ ms.locfileid: "123473579"
 
 ## <a name="run-an-action"></a>运行操作
 
-可以通过 Power Automate 和 Azure 逻辑应用工作流运行 IoT Central 应用程序中的操作。 首先，请创建工作流，并使用连接器来定义用于启动该工作流的触发器。 然后，将“Azure IoT Central V3 - 预览版”连接器用作操作。
+可以通过 Power Automate 和 Azure 逻辑应用工作流运行 IoT Central 应用程序中的操作。 首先，请创建工作流，并使用连接器来定义用于启动该工作流的触发器。 然后，将“Azure IoT Central V3”连接器用作操作。
 
-若要将“Azure IoT Central V3 - 预览版”连接器添加为 Power Automate 中的操作：
+若要将“Azure IoT Central V3”连接器添加为 Power Automate 中的操作，请执行以下操作：
 
 1. 在 Power Automate 的“选择操作”面板中，选择“自定义”选项卡。 
-1. 搜索“IoT Central”，然后选择“Azure IoT Central V3 - 预览版”连接器。
+1. 搜索“IoT Central”，然后选择“Azure IoT Central V3”连接器。
 1. 在操作列表中，选择要使用的 IoT Central 操作。
 1. 在操作步骤中，完成所选操作的配置。 再选择“保存”。
 
@@ -77,7 +77,8 @@ ms.locfileid: "123473579"
 
 ## <a name="list-of-actions"></a>操作列表
 
-以下列表显示了“Azure IoT Central V3 - 预览版”连接器中的所有可用 IoT Central 操作及其配置选项。 许多字段可以包含动态生成的内容。 例如，前一步骤可能确定了当前步骤处理的设备 ID。
+有关连接器支持的操作的完整列表，请参阅[操作](/connectors/azureiotcentral/#actions)。
+
 
 ### <a name="create-or-update-a-device"></a>创建或更新设备
 

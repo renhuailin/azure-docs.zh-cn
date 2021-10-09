@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 有关使用示例命令行应用程序生成 Azure 数字孪生方案的教程
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 9/1/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e795b8d34b46fc3df0e31e12a1de0bccdab74e6a
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 4d75685ce62258c18d3c501ae08acd2678e177a6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252703"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658367"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>教程：使用示例客户端应用创建 Azure 数字孪生图
 
@@ -41,7 +41,7 @@ ms.locfileid: "122252703"
 
 控制台窗口随即打开，执行身份验证，然后等待命令。 
 
-下面是项目控制台的外观的屏幕截图：
+下面是项目控制台外观的屏幕截图：
 
 :::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="来自命令行应用的欢迎消息的屏幕截图。" lightbox="media/tutorial-command-line/app/command-line-app.png":::
 
@@ -69,11 +69,11 @@ ms.locfileid: "122252703"
 
 ### <a name="upload-models-to-azure-digital-twins"></a>将模型上传到 Azure 数字孪生
 
-设计模型后，需要将其上传到 Azure 数字孪生实例。 这将使用你自己的自定义域词汇来配置 Azure 数字孪生服务实例。 上传模型后，可以创建使用这些模型的孪生实例。
+设计模型后，需要将其上传到 Azure 数字孪生实例。 这将使用你自己的自定义领域词汇来配置 Azure 数字孪生服务实例。 上传模型后，可以创建使用这些模型的孪生实例。
 
 1. 在编辑上一部分的 Room.json 文件后，再次开始运行控制台应用。
 
-1. 在项目控制台窗口中，运行以下命令以上传更新后的 Room 模型和 Floor 模型，你将在下一节中使用这些模型创建不同类型的孪生 。
+1. 在项目控制台窗口中，运行以下命令以上传更新后的 Room 模型和 Floor 模型，你将在下一节中使用这些模型创建不同类型的孪生。
 
     ```cmd/sh
     CreateModels Room Floor
@@ -81,7 +81,7 @@ ms.locfileid: "122252703"
     
     输出应指示模型已成功创建。
 
-1. 通过运行命令 `GetModels true` 来验证模型是否已创建。 这将在 Azure 数字孪生实例中查询所有已上传的模型，并打印出其完整信息。 在结果中寻找经过编辑的 Room 模型：
+1. 通过运行命令 `GetModels true` 来验证模型是否已创建。 此命令将输出已上传到 Azure 数字孪生实例的所有模型的完整信息。 在结果中寻找经过编辑的 Room 模型：
 
     :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="GetModels 中的结果的屏幕截图，其中显示了已更新的 Room 模型。" lightbox="media/tutorial-command-line/app/output-get-models.png":::
 
@@ -89,13 +89,13 @@ ms.locfileid: "122252703"
 
 该示例应用程序还处理服务中的错误。 
 
-重新运行 `CreateModels` 命令，尝试再次重新上传刚刚上传的其中一个相同模型：
+重新运行 `CreateModels` 命令，尝试再次重新上传已上传的其中一个相同模型：
 
 ```cmd/sh
 CreateModels Room
 ```
 
-由于无法覆盖模型，此操作现在将返回服务错误。
+由于无法覆盖模型，此命令现在将返回服务错误。
 有关如何删除现有模型的详细信息，请参阅[管理 DTDL 模型](how-to-manage-model.md)。
 ```cmd/sh
 Response 409: Service request failed.
@@ -132,6 +132,8 @@ Content-Type: application/json; charset=utf-8
 
 1. 可以运行 `Query` 命令来验证是否已创建孪生。 此命令在 Azure 数字孪生实例中查询其包含的所有数字孪生。 在结果中查找 room0、room1、floor0 和 floor1 孪生。
 
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
+
 ### <a name="modify-a-digital-twin"></a>修改数字孪生
 
 你可以修改已创建的孪生的属性。 
@@ -160,7 +162,7 @@ Content-Type: application/json; charset=utf-8
 
 接下来，你可以在这些孪生之间创建某种关系，以将它们连接到孪生图 。 孪生图用于表示整个环境。 
 
-可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [Floor 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可有一个名为 contains 的关系类型。 因此，可以创建从每个 Floor 孪生到它所包含的相应房间的 *contains* 类型的关系。
+可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [Floor 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可以有一个名为 contains 的关系类型，因此可以创建从每个 Floor 孪生到它所包含的相应房间的 contains 类型的关系。
 
 要添加关系，请使用 `CreateRelationship` 命令。 指定该关系的来源孪生、关系类型，以及该关系要连接到的孪生。 最后，为该关系指定唯一的 ID。
 
@@ -182,7 +184,7 @@ Content-Type: application/json; charset=utf-8
     
     :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="CreateRelationship 命令结果摘录的屏幕截图，其中包括 relationship0 和 relationship1。" lightbox="media/tutorial-command-line/app/output-create-relationship.png":::
 
-1. 可以使用以下任一命令来验证关系，这些命令将查询 Azure 数字孪生实例中的关系。
+1. 可以使用以下任一命令来验证关系，这些命令将输出 Azure 数字孪生实例中的关系。
     * 若要查看源自每个楼层的所有关系（从一端查看关系）：
         ```cmd/sh
         GetRelationships floor0
@@ -207,6 +209,8 @@ Content-Type: application/json; charset=utf-8
 
 Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query-language.md)孪生图，以解答有关环境的问题。 
 
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
+
 在正在运行的项目控制台中运行以下命令，回答有关示例环境的一些问题。
 
 1. **在我的环境中，用 Azure 数字孪生表示的所有实体都有哪些？** （查询所有）
@@ -219,7 +223,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
     :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="显示孪生查询部分结果的屏幕截图，其中包括 room0 和 floor1。":::
 
-    >[!NOTE]
+    >[!TIP]
     >在示例项目中，不带任何附加参数的命令 `Query` 相当于 `Query SELECT * FROM DIGITALTWINS`。 若要使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)查询实例中的所有孪生体，请使用较长的（完整）查询。
 
 1. **我的环境中的所有房间都有哪些？** （按模型查询）

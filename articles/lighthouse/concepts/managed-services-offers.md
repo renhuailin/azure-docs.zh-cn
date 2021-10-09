@@ -1,14 +1,14 @@
 ---
 title: Azure 市场中的托管服务产品
 description: 通过 Azure 市场中的托管服务产品/服务向客户提供 Azure Lighthouse 管理服务。
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: df3cd76d840e37e711bdd92d93c2499d701afef9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 5d96a23f1dbdba74eefbf4f483a441c25e2dd47b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074766"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732926"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 
@@ -18,7 +18,7 @@ ms.locfileid: "112074766"
 
 托管服务产品简化了将客户加入 Azure Lighthouse 的过程。 客户在 Azure 市场中购买产品/服务时，他们将能够指定应加入哪些订阅和/或资源组。
 
-之后，你所在组织中的用户将能够根据你在创建产品时定义的访问权限，通过 [Azure 委托资源管理](architecture.md)从你的管理租户中对这些资源执行操作。 这主要通过清单来完成，该清单指定了有权访问客户资源的 Azure Active Directory (Azure AD) 用户、组和服务主体，以及定义其访问级别的[角色](tenants-users-roles.md)。
+对于每个产品/服务，你将定义你的组织中的用户必须具有哪些访问权限才能处理客户租户中的资源。 这主要通过清单来完成，该清单指定了有权访问客户资源的 Azure Active Directory (Azure AD) 用户、组和服务主体，以及定义其访问级别的[角色](tenants-users-roles.md)。
 
 > [!NOTE]
 > 在 Azure 政府版和其他国家云中，托管服务产品可能不可用。
@@ -37,7 +37,7 @@ ms.locfileid: "112074766"
 如果需要，可以在同一个产品/服务中包括公用和专用计划。
 
 > [!IMPORTANT]
-> 一旦某个计划已发布为公用，就无法将其更改为专用。 若要控制哪些客户可以接受产品/服务并委派资源，请使用专用计划。 使用公用计划时，不能将其可用性限制为特定客户，甚至不能限制特定数量的客户（不过，如果选择这样做，可完全停止销售计划）。 仅当在发布产品/服务时，包含将“角色定义”设置为[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的“授权”的情况下，才能在客户接受产品/服务后[删除对委派的访问权限](../how-to/remove-delegation.md)。 你还可以与客户联系，要求他们[删除你的访问权限](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+> 一旦某个计划已发布为公用，就无法将其更改为专用。 若要控制哪些客户可以接受产品/服务并委派资源，请使用专用计划。 使用公用计划时，不能将其可用性限制为特定客户，甚至不能限制特定数量的客户（不过，如果选择这样做，可完全停止销售计划）。 仅当在发布产品/服务时，包含将“角色定义”设置为[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的“授权”的情况下，才能在客户接受产品/服务后[删除对委派的访问权限](../how-to/remove-delegation.md)。 你还可以与客户联系，要求他们[删除你的访问权限](../how-to/view-manage-service-providers.md#remove-service-provider-offers)。
 
 ## <a name="publish-managed-service-offers"></a>发布托管服务产品
 

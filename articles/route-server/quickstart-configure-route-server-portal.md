@@ -5,20 +5,23 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 09/01/2021
+ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: 36be075345dcacdf8246f46462a2665718f27e7e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a6714867b5b863f608e3282c5e6f3bb0d2425969
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424791"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091476"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并配置路由服务器
 
 本文可帮助你使用 Azure 门户将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 Azure 路由服务器将会从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 Azure 路由服务器还会将虚拟网络路由播发到 NVA。 有关详细信息，请阅读 [Azure 路由服务器](overview.md)。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure 门户的路由服务器部署环境示意图。" border="false":::
+
+> [!IMPORTANT]
+> 如果在 9 月 1 日之前创建了 Azure 路由服务器，并且未关联公共 IP 地址，则需要重新创建路由服务器，以便它可以获取 IP 地址用于管理目的。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +36,7 @@ ms.locfileid: "123424791"
 
 ### <a name="create-a-route-server"></a>创建路由服务器
 
-1. 转到  https://aka.ms/routeserver 。
+1. 登录到 [Azure 门户](https://portal.azure.com)，搜索并选择“路由服务器”。
 
 1. 选择“+ 新建路由服务器”。
 

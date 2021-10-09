@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 09/01/2021
+ms.date: 09/23/2021
 ms.author: duau
-ms.openlocfilehash: e17d49654b3c658ed133686e11d70c72b7f7f3b8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: fa5ea8f191c0b2ea9c7db483eb4d7b9c5a679be0
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426015"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094360"
 ---
 # <a name="azure-route-server-faq"></a>Azure 路由服务器常见问题解答
 
@@ -48,6 +48,10 @@ Azure 路由服务器仅支持边界网关协议 (BGP)。 NVA 需要支持多跃
 
 Azure 路由器服务器需要确保与管理路由服务器配置的后端服务的连接，因此需要公共 IP 地址。 
 
+### <a name="does-azure-route-server-support-ipv6"></a>Azure 路由服务器是否支持 IPv6？
+
+不是。 我们未来会增加 IPv6 支持。 
+
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>如果 Azure 路由服务器接收来自多个 NVA 的相同路由，它会如何处理这些路由？
 
 如果路由的 AS 路径长度相同，Azure 路由服务器会将路由的多个副本（每个副本有不同的下一个跃点）编入虚拟网络中的 VM。 当 VM 将流量发送到此路由的目标位置时，VM 主机将执行等价多路径 (ECMP) 路由。 但是，如果一个 NVA 发送的路由的 AS 路径长度比其他 NVA 的短，则 Azure 路由服务器只会将下一个跃点设置为此 NVA 的路由编入虚拟网络中的 VM。
@@ -55,6 +59,9 @@ Azure 路由器服务器需要确保与管理路由服务器配置的后端服�
 ### <a name="does-azure-route-server-preserve-the-bgp-communities-of-the-route-it-receives"></a>Azure 路由服务器是否保留其接收的路由的 BGP 社区？
 
 是的，Azure 路由服务器按原样传播路由及 BGP 社区。
+
+### <a name="what-is-the-bgp-timer-setting-of-azure-route-server"></a>Azure 路由服务器的 BGP 计时器设置是什么？
+“保持活动状态”计时器设置为 60 秒，“保持关闭”计时器设置为 180 秒。
 
 ### <a name="what-autonomous-system-numbers-asns-can-i-use"></a>我可以使用哪些自治系统编号 (ASN)？
 
@@ -71,9 +78,13 @@ Azure 或 IANA 保留的 ASN 如下所示：
 
 不能，Azure 路由服务器仅支持 16 位（2 字节）ASN。
 
-### <a name="can-i-configure-a-user-defined-route-udr-in-the-azurerouteserver-subnet"></a>是否可以在 AzureRouteServer 子网中配置用户定义的路由 (UDR)？
+### <a name="can-i-associate-a-user-defined-route-udr-to-the-routeserversubnet"></a>是否可以将用户定义的路由 (UDR) 关联到 RouteServerSubnet？
 
-不行，Azure 路由服务器不支持在 AzureRouteServer 子网中配置 UDR。
+不能，Azure 路由服务器不支持在 RouteServerSubnet 中配置 UDR。
+
+### <a name="can-i-associate-a-network-security-group-nsg-to-the-routeserversubnet"></a>是否可以将网络安全组 (NSG) 关联到 RouteServerSubnet？
+
+不能，Azure 路由服务器不支持将 NSG 关联到 RouteServerSubnet。
 
 ### <a name="can-i-peer-two-route-servers-in-two-peered-virtual-networks-and-enable-the-nvas-connected-to-the-route-servers-to-talk-to-each-other"></a>能否在两个对等互连的虚拟网络中将两个路由服务器对等互连，使连接到路由服务器的 NVA 能够相互通信？ 
 

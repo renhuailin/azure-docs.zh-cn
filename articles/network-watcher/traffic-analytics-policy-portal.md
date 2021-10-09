@@ -3,21 +3,18 @@ title: 使用 Azure Policy 部署和管理流量分析
 titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用内置策略来管理流量分析的部署
 services: network-watcher
-documentationcenter: na
 author: moagra
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2021
 ms.author: moagra
-ms.openlocfilehash: 3be6d5b30d270c9687b7100c07ee675268cee5c0
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 9d916122714b1dddab7d1d9b6d13e6fd58d14d46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609146"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619356"
 ---
 # <a name="deploy-and-manage-traffic-analytics-using-azure-policy"></a>使用 Azure Policy 部署和管理流量分析 
 
@@ -112,7 +109,7 @@ Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Pol
 - 存储 ID：存储帐户的完整资源 ID。 此存储帐户应与 NSG 位于同一区域。
 - 网络观察程序 RG：包含网络观察程序资源的资源组的名称。 如果尚未对其进行重命名，可输入默认值“NetworkWatcherRG”。
 - 网络观察程序名称：区域网络观察程序服务的名称。 格式：NetworkWatcher_RegionName。 示例：NetworkWatcher_centralus。
-- 工作区资源 ID：必须在其中启用流量分析的工作区的资源 ID。 格式为“/subscriptions/<SubscriptionID>/resourceGroups/<ResouceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>”
+- 工作区资源 ID：必须在其中启用流量分析的工作区的资源 ID。 格式为 `/subscriptions/<SubscriptionID>/resourceGroups/<ResouceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>`
 - WorkspaceID：工作区 GUID
 - WorkspaceRegion：工作区的区域（请注意，它不需要与 NSG 的区域相同）
 - TimeInterval：将处理的日志推送到工作区的频率。 当前允许的值为 60 分钟和 10 分钟。 默认值为 60 分钟。

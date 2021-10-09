@@ -1,18 +1,18 @@
 ---
 title: 在 Azure IoT Central 应用程序中分析设备数据 | Microsoft Docs
 description: 在 Azure IoT Central 应用程序中分析设备数据。
-author: ankitscribbles
-ms.author: ankitgup
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1a664ac69ba05cc44aba9d18ffc436a98dbab154
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ad16a831b22097e98bd02b606e3a6596cf4e48f5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431093"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810946"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何使用分析功能来分析设备数据
 
@@ -23,6 +23,9 @@ Azure IoT Central 提供丰富的分析功能，用于分析历史趋势并关�
 分析用户界面由三个主要组件构成：
 
 - 数据配置面板：在配置面板上，选择要分析其数据的设备组。 接下来选择要分析的遥测项，并为每个遥测项选择聚合方法。 “分组依据”控件有助于以设备属性作为维度来分组数据。
+
+    > [!TIP]
+    > 如果设备使用组织，则看到的设备组取决于你的组织成员身份。
 
 - 时间控件：用于选择要分析数据的持续时间。 可以拖动时间滑块的任何一端来选择时间跨度。 时间控件还有一个“间隔大小”滑块，可控制用于聚合数据的存储桶或间隔大小。
 

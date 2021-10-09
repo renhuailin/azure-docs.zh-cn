@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 92385ec5cbcc6489dfa4d9ae03727874898d2926
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: d0f72055932a4dbbcc4eb4e42dd447ca17a93320
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476781"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654709"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -27,6 +27,7 @@ ms.locfileid: "123476781"
 |[证书应使用允许的密钥类型](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |通过限制允许用于证书的密钥类型，管理组织的符合性要求。 |审核、拒绝、已禁用 |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json) |
 |[使用椭圆曲线加密的证书应使用允许的曲线名称](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd78111f-4953-4367-9fd5-7e08808b54bf) |管理密钥保管库中存储的 ECC 证书可用的椭圆曲线名称。 可在 [https://aka.ms/akvpolicy](../../../../articles/key-vault/general/azure-policy.md) 找到更多信息。 |审核、拒绝、已禁用 |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_EC_AllowedCurveNames.json) |
 |[使用 RSA 加密的证书应具有指定的最小密钥大小](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee51871-e572-4576-855c-047c820360f0) |通过指定存储在密钥保管库中的 RSA 证书的最小密钥大小，管理组织的符合性要求。 |审核、拒绝、已禁用 |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_RSA_MinimumKeySize.json) |
+|[\[预览\]：配置 Azure Key Vault 托管 HSM 以禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F84d327c3-164a-4685-b453-900478614456) |禁用对 Azure Key Vault 托管 HSM 的公用网络访问，确保无法通过公共 Internet 对其进行访问。 这样可以减少数据泄露风险。 有关详细信息，请访问：[https://docs.microsoft.com/azure/key-vault/managed-hsm/private-link#allow-trusted-services-to-access-managed-hsm](../../../../articles/key-vault/managed-hsm/private-link.md#allow-trusted-services-to-access-managed-hsm)。 |修改，已禁用 |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_FirewallEnabled_Modify.json) |
 |[\[预览\]：为 Azure Key Vault 托管 HSM 配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd1d6d8bb-cc7c-420f-8c7d-6f6f5279a844) |在没有公共 IP 地址的情况下，专用终结点可在源或目标位置将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到 Azure Key Vault 托管 HSM，可以降低数据泄露风险。 有关详细信息，请访问：[https://docs.microsoft.com/azure/key-vault/managed-hsm/private-link](../../../../articles/key-vault/managed-hsm/private-link.md)。 |DeployIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Should_Use_PrivateEndpoint_DINE.json) |
 |[\[预览\]：将 Azure 密钥保管库配置为使用专用 DNS 区域](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac673a9a-f77d-4846-b2d8-a57f8e1c01d4) |使用专用 DNS 区域来替代专用终结点的 DNS 解析。 专用 DNS 区域会链接到虚拟网络，以解析到密钥保管库。 有关详细信息，请访问：[https://aka.ms/akvprivatelink](../../../../articles/key-vault/general/private-link-service.md)。 |DeployIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVault_AutoConfigure_PrivateDNSZone_DINE.json) |
 |[\[预览\]：为 Azure 密钥保管库配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d4fad1f-5189-4a42-b29e-cf7929c6b6df) |在没有公共 IP 地址的情况下，专用终结点可在源或目标位置将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到密钥保管库，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://aka.ms/akvprivatelink](../../../../articles/key-vault/general/private-link-service.md)。 |DeployIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVault_Should_Use_PrivateEndpoint_DINE.json) |

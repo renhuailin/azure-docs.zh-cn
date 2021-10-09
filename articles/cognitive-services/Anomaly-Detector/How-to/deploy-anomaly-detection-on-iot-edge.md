@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0fd02fbdd8f6c02ce86a4e0c1ee3eabec69e56c3
-ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+ms.openlocfilehash: f1ef5d40ccf6339d909f2cad6388186ddb5a0a04
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2021
-ms.locfileid: "113296714"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355950"
 ---
 # <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>将异常检测器单变量模块部署到 IoT Edge
 
@@ -58,7 +58,7 @@ ms.locfileid: "113296714"
 
 6. 选择“更新”
 
-7. 选择“下一步: 路由”以定义路由。 将来自所有模块的所有消息定义为传递到 Azure IoT 中心。
+7. 选择“下一步: 路由”以定义路由。 将来自所有模块的所有消息定义为传递到 Azure IoT 中心。 若要了解如何声明路由，请参阅[在 IoT Edge 中建立路由](../../../iot-edge/module-composition.md?view=iotedge-2020-11&preserve-view=true)。
 
 8. 选择“下一步: 审阅 + 创建”。 可以预览用于定义部署到 IoT Edge 设备的所有模块的 JSON 文件。
     
@@ -68,7 +68,7 @@ ms.locfileid: "113296714"
 
 11. 向下滚动并查看列出的模块。 检查新模块的运行时状态是否为“正在运行”。 
 
-若要解决 IoT Edge 设备的运行时状态问题，请参阅[故障排除指南](../../../iot-edge/troubleshoot.md)
+若要解决 IoT Edge 设备的运行时状态问题，请参阅[故障排除指南](../../../iot-edge/troubleshoot.md)。
 
 ## <a name="test-anomaly-detector-on-an-iot-edge-device"></a>在 IoT Edge 设备上测试异常检测器
 

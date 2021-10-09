@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: dde247ff3ced36b34f9746cd710af3ad2d228ec5
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: ceb7c2fcec92e89c65e03fa11db142af514090af
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108801921"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619849"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-manager"></a>教程：Azure Active Directory 与 AppNeta Performance Manager 的单一登录 (SSO) 集成
 
@@ -38,7 +38,6 @@ ms.locfileid: "108801921"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 - AppNeta Performance Manager 支持 SP 发起的 SSO
-
 - AppNeta Performance Manager 支持即时用户预配
 
 > [!NOTE]
@@ -76,20 +75,22 @@ ms.locfileid: "108801921"
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
-   ![编辑基本 SAML 配置](common/edit-urls.png)
+   ![编辑基本 SAML 配置](./media/appneta-tutorial/edit-urls.png)
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.pm.appneta.com` 
 
+   b. 在“回复 URL (断言使用者服务 URL)”字段中，输入：`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
+
    > [!NOTE]
-   > 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [AppNeta Performance Manager 客户端支持团队](mailto:support@appneta.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+   > 上面的“登录 URL”值是一个示例。 使用实际登录 URL 更新此值。 请联系 [AppNeta Performance Manager 客户支持团队](mailto:support@appneta.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. AppNeta Performance Manager 应用程序需要特定格式的 SAML 断言，这要求你向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+1. AppNeta Performance Manager 应用程序需要特定格式的 SAML 断言，这要求你向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表：
 
-   ![图像](common/edit-attribute.png)
+   ![屏幕截图显示了 SAML 令牌的默认属性。](./media/appneta-tutorial/edit-attribute.png)
 
-1. 除了上述属性，AppNeta Performance Manager 应用程序还要求在 SAML 响应中传递回更多属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+1. 除上述属性以外，AppNeta Performance Manager 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
    | 名称      | 源属性       |
    | --------- | ---------------------- |
@@ -102,30 +103,22 @@ ms.locfileid: "108801921"
    | title     | user.jobtitle          |
    |           |                        |
 
-   > [!NOTE]
-   > **groups** 引用 Appneta 中已映射到 Azure AD 中的“角色”的安全组。 请参阅[此文档](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)，其中介绍了如何在 Azure AD 中创建自定义角色。
+1. 若要正确传递“组”SAML 断言，你需要配置应用角色并设置值，以匹配 AppNeta Performance Manager 中设置的角色映射。 在“Azure Active Directory” > “应用注册” >  “所有应用程序”  下，选择“Appneta Performance Manager”。
+1. 在左侧窗格中单击“应用角色”。
+1. 单击“创建应用角色”。
+1. 在“创建应用角色”窗格中，完成以下步骤：
+   1. 在“显示名称”中，输入角色的名称。
+   1. 在“允许的成员类型”中，选择“用户/组”。
+   1. 在“值”中，输入 AppNeta Performance Manager 角色映射中设置的安全组的值。
+   1. 在“说明”中，为角色输入说明。
+   1. 单击“应用” 。
 
-   1. 单击“添加新声明”  以打开“管理用户声明”  对话框。
-
-   1. 在“名称”文本框中，键入为该行显示的属性名称。 
-
-   1. 将“命名空间”留空  。
-
-   1. 选择“源”作为“属性”  。
-
-   1. 在“源属性”  列表中，键入为该行显示的属性值。
-
-   1. 单击“确定” 
-
-   1. 单击“ **保存**”。
-
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
+1. 创建角色后，需要将角色映射到用户和组。 转到“Azure Active Directory” > “企业应用程序” > “Appneta Performance Manger” > “用户和组”。
+1. 选择用户或组，然后为该用户或组分配相关的应用角色。
+1. 映射应用角色后，转到“Azure Active Directory” > “企业应用程序” > “Appneta Performance Manger” > “单一登录”。
+1. 在“使用 SAML 设置单一登录”窗格的“SAML 签名证书”部分中，找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存到计算机上   。
 
    ![证书下载链接](common/metadataxml.png)
-
-1. 在“设置 AppNeta Performance Manager”部分，根据要求复制相应的 URL。
-
-   ![复制配置 URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -148,16 +141,19 @@ ms.locfileid: "108801921"
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果已如上述所示设置角色，可从“选择角色”下拉列表中选择角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 如果已按照上述说明设置角色，可从“选择角色”下拉列表中选择角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+   > [!NOTE]
+   > 在实践中，你将向应用程序添加组而不是单个用户。
 
 ## <a name="configure-appneta-performance-manager-sso"></a>配置 AppNeta Performance Manager SSO
 
-要在 AppNeta Performance Manager 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [AppNeta Performance Manager 支持团队](mailto:support@appneta.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 AppNeta Performance Manager 端配置单一登录，需要将下载的“联合元数据 XML”发送给 [AppNeta Performance Manager 支持团队](mailto:support@appneta.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-appneta-performance-manager-test-user"></a>创建 AppNeta Performance Manager 测试用户
 
-在本部分，我们将在 AppNeta Performance Manager 中创建名为 Britta Simon 的用户。 AppNeta Performance Manager 支持默认已启用的即时用户预配。 此部分不存在任何操作项。 如果 AppNeta Performance Manager 中尚不存在用户，身份验证后会创建一个新用户。
+在本部分，你将在 AppNeta Performance Manager 中创建一个名为 B.Simon 的用户。 AppNeta Performance Manager 支持默认已启用的即时用户预配。 此部分不存在任何操作项。 如果 AppNeta Performance Manager 中尚不存在用户，身份验证后会创建一个新用户。
 
 > [!Note]
 > 如果需要手动创建用户，请联系 [AppNeta Performance Manager 支持团队](mailto:support@appneta.com)。
@@ -166,11 +162,11 @@ ms.locfileid: "108801921"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-- 在 Azure 门户中单击“测试此应用程序”。 此操作会重定向到 AppNeta Performance Manager 登录 URL，你可在其中启动登录流。
+- 在 Azure 门户中，选择“测试此应用程序”。 这会重定向到 AppNeta Performance Manager 登录 URL，可从此处启动登录流。
 
 - 直接转到 AppNeta Performance Manager 登录 URL，并从那里启动登录流。
 
-- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 AppNeta Performance Manager 磁贴时，将重定向到 AppNeta Performance Manager 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+- 你可使用 Microsoft 的“我的应用”。 单击“我的应用”门户中的 AppNeta Performance Manager 磁贴时，会重定向到 AppNeta Performance Manager 登录 URL。 有关“我的应用”门户的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

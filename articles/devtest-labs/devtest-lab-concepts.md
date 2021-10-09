@@ -1,14 +1,14 @@
 ---
-title: 开发测试实验室概念 | Microsoft Docs
+title: Azure 开发测试实验室概念
 description: 了解开发测试实验室的基本概念及其如何轻松地创建、管理和监视 Azure 虚拟机
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: e505ecb8ce4dc070b4ed79cd55514c4ef8ba0ead
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0363eaec2d9485b34cc8dee10f50373363d43d51
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954108"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637230"
 ---
 # <a name="devtest-labs-concepts"></a>开发测试实验室概念
 ## <a name="overview"></a>概述

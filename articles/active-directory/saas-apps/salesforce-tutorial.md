@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 0f800d2d42d0d8815021f1582b04750d87aa5abc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be90f5bdbd34201672cd2b39c7bbbe53e4de38cf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651384"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572023"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Salesforce 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101651384"
 * 让用户使用其 Azure AD 帐户自动登录到 Salesforce。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -177,6 +177,14 @@ ms.locfileid: "101651384"
 
     ![配置单一登录启用用户预配](./media/salesforce-tutorial/salesforcexml.png)
 
+    > [!NOTE]
+    > 如果配置了 SAML JIT，则必须完成[配置 Azure AD SSO](#configure-azure-ad-sso) 部分中的一个额外步骤。 Salesforce 应用程序需要特定的 SAML 断言，这要求你在 SAML 令牌属性配置中具有特定属性。 以下屏幕截图显示了 Salesforce 所需属性的列表。
+    
+    ![显示 JIT 所需属性窗格的屏幕截图。](./media/salesforce-tutorial/just-in-time-attributes-required.png)
+    
+    如果在为用户预配 SAML JIT 方面仍有问题，请参阅[实时预配要求和 SAML 断言字段](https://help.salesforce.com/s/articleView?id=sf.sso_jit_requirements.htm&type=5)。 通常，如果 JIT 失败，你可能会看到类似 `We can't log you in because of an issue with single sign-on. Contact your Salesforce admin for help.` 的错误
+
+
 1. 在 Salesforce 的左侧导航窗格中，单击“公司设置”展开相关部分，然后单击“我的域”。
 
     ![配置单一登录我的域](./media/salesforce-tutorial/sf-my-domain.png)
@@ -204,11 +212,11 @@ ms.locfileid: "101651384"
 
 * 直接转到 Salesforce 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Salesforce 磁贴时，应当会自动登录到为其设置了 SSO 的 Salesforce。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”门户中的 Salesforce 磁贴时，应当会自动登录到为其设置了 SSO 的 Salesforce。 有关“我的应用”门户的详细信息，请参阅[“我的应用”门户简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="test-sso-for-salesforce-mobile"></a>测试 Salesforce（移动）的 SSO
 
-1. 打开 Salesforce 移动应用程序。 在登录页上，单击“使用自定义域”。
+1. 打开 Salesforce 移动应用程序。 在登录页面上，单击“使用自定义域”。
 
     ![Salesforce 移动应用使用自定义域](media/salesforce-tutorial/mobile-app1.png)
 
@@ -230,4 +238,4 @@ ms.locfileid: "101651384"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Salesforce 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
+配置 Salesforce 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)

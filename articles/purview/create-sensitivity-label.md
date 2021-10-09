@@ -1,230 +1,80 @@
 ---
-title: 自动对数据应用敏感度标签
-description: 了解如何创建敏感度标签并在扫描过程中自动将其应用于数据。
+title: Azure Purview 中的标记
+description: 开始利用敏感度标签和分类来增强 Purview 资产
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/09/2021
-ms.openlocfilehash: 5f6e2474a533f5619d5544b674a87b6412323cc3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 09/27/2021
+ms.openlocfilehash: 7a94d82c3ec2a47869c64520e20bed6cdf58ebdb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166728"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210511"
 ---
-# <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure Purview 中自动标记数据
+# <a name="labeling-in-azure-purview"></a>Azure Purview 中的标记
 
-本文介绍如何创建 Microsoft 信息保护 (MIP) 敏感度标签，以及如何将其自动应用于 Azure Purview 中的 Azure 资产。
+> [!IMPORTANT]
+> Azure Purview 敏感度标签目前以预览版提供。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+>
 
-## <a name="what-are-sensitivity-labels"></a>什么是敏感度标签？ 
+为了完成工作，组织中的人员会与组织内外的其他人员进行协作。 数据并非始终保存在云中，而是经常在设备、应用和服务之间到处漫游。 当你的数据处于漫游状态时，你仍希望按照组织的业务与合规策略为其提供安全保护。</br>
 
-为了完成工作，组织中的人员会与组织内外的其他人员进行协作。 数据并非始终保存在云中，而是经常在设备、应用和服务之间到处漫游。 
+将敏感度标签应用于你的内容，可以通过指明组织中特定数据的敏感程度来确保数据安全。 这样还会抽象化数据本身，使你可以使用标签来跟踪数据的类型，而无需在另一个平台上透露敏感数据。</br>
 
-数据漫游时，你希望它以一种安全、受保护的方式进行，以符合组织的业务和合规性策略。
+例如，将敏感度标签“高度机密”应用于包含社会安全号码和信用卡号的文档有助于识别文档的敏感度，而不需要知道文档中的实际数据。
 
-应用敏感度标签可以说明组织中某些数据的敏感度。 例如，特定项目名称在你的组织内可能是高度机密的，而同一术语对其他组织则不是机密。 
+## <a name="benefits-of-labeling-in-azure-purview"></a>Azure Purview 中的标记的优点
 
-### <a name="sensitivity-labels-in-azure-purview"></a>Azure Purview 中的敏感度标签
+Azure Purview 允许你将敏感度标签应用于资产，使你能够对数据进行分类和保护。
 
-在 Purview 中，分类类似于主题标签，用于标记和标识扫描期间在数据资产中发现的特定类型的数据。
+* 标签随数据一起传输：目前可以在 Microsoft 365、SharePoint、Teams、Power BI 和 SQL 中识别 Purview 中使用的敏感度标签。 如果在 Purview 中的资产上应用了某个标签，将数据传输到任何其他平台（例如 Power BI 或 Office）时，该标签也会随数据一起传输。 同样，如果在 Word 文档上应用某个标签，然后 Purview 扫描该文档，则该标签会流向 Purview。
+* 数据资产概述：Purview 通过预先准备的报告提供数据见解。 当你扫描 Purview 中的数据时，我们将使用有关你拥有的资产、扫描历史记录、在数据中找到的分类、应用的标签、术语表术语等信息来生成报告。
+* 自动标记：可以基于数据敏感度自动应用标签。 扫描资产中的敏感数据时，将使用自动标记规则来确定要应用哪个敏感度标签。 可为每个敏感度标签创建自动标记规则，定义构成标签的分类/敏感信息类型。
+* 将标签应用于文件和数据库列：可将标签应用于 Azure Data Lake、Azure 文件存储等存储中的文件以及架构化数据（例如 Azure SQL DB、Cosmos DB 等中的列）。
 
-Purview 使用与 Microsoft 365 相同的分类，也称为敏感信息类型。  MIP 敏感度标签在 Microsoft 365 安全与合规中心 (SCC) 中创建。 这使你可以将现有的敏感度标签扩展到整个 Azure Purview 资产。
+敏感度标签是可应用于资产以便对数据进行分类和保护的标签。 在[此处](/microsoft-365/compliance/create-sensitivity-labels.md)详细了解敏感度标签。
 
-分类是直接匹配的，例如社会安全号码，它属于“社会安全号码”分类 。 
+## <a name="how-to-apply-labels-to-assets-in-azure-purview"></a>如何将标签应用于 Azure Purview 中的资产
 
-相反，如果一个或多个分类和条件同时出现，将应用敏感度标签。 在这种情况下，[条件](/microsoft-365/compliance/apply-sensitivity-label-automatically)指的是可为非结构化数据定义的所有参数，例如与另一分类的接近度以及置信度百分比 。 
+:::image type="content" source="media/create-sensitivity-label/apply-label-flow.png" alt-text="将标签应用于 Azure Purview 中的资产的流程。创建标签、注册资产、扫描资产、查找分类、应用标签。":::
 
-使用 Azure Purview 中的敏感度标签，可以将标签自动应用于文件和数据库列。
+若要将标签应用于 Azure Purview 中的资产，需要执行以下步骤：
 
-有关详细信息，请参见:
+1. 在 Microsoft 365 合规中心，[为 Azure Purview 创建敏感度标签或扩展其现有敏感度标签](how-to-automatically-label-your-content.md)。 创建敏感度标签的过程包括创建自动标记规则，以便告知我们应该根据在数据中找到的分类应用哪个标签。
+1. 在 Azure Purview 中[注册和扫描资产](how-to-automatically-label-your-content.md#scan-your-data-to-apply-sensitivity-labels-automatically)。
+1. Azure Purview 应用分类：当你针对某个资产计划扫描时，Azure Purview 会扫描该资产中的数据类型，并在数据目录中对这些数据应用分类。 应用分类的过程将由 Azure Purview 自动完成，你无需执行任何操作。
+1. Azure Purview 应用标签：在资产上找到分类后，Azure Purview 将根据自动标记规则向资产应用标签。 应用标签的过程将由 Azure Purview 自动完成，只要你在步骤 1 中创建了具有自动标记规则的标签，就不需要执行任何操作。
 
-- Microsoft 365 文档中的[了解敏感度标签](/microsoft-365/compliance/sensitivity-labels)
-- [什么是自动标记规则？](#what-are-auto-labeling-rules)
-- [Azure Purview 中支持敏感度标签的数据类型](#supported-data-types-for-sensitivity-labels-in-azure-purview)
-- [标记 SQL 数据库列](#labeling-for-sql-database-columns)
+> [!NOTE]
+> 自动标记规则是你指定的条件，指明何时应用特定的标签。 如果满足这些条件，则将标签自动分配到数据。 创建标签时，请确保针对文件和数据库列定义自动标记规则，以在每次扫描时自动应用标签。
+>
 
-#### <a name="what-are-auto-labeling-rules"></a>什么是自动标记规则？
+## <a name="supported-data-sources"></a>支持的数据源
 
-数据在不断增长和变化。 跟踪当前未标记的数据，并采取行动手动应用标签不仅麻烦，而且也是不必要的累赘。 
-
-自动标记规则是你指定的条件，说明应何时应用特定标签。 满足这些条件后，标签就会自动大规模分配给数据，并在数据上保留一致的敏感度标签。
-
-创建标签时，请确保针对[文件](#define-auto-labeling-rules-for-files)和[数据库列](#define-auto-labeling-rules-for-database-columns)定义自动标记规则，以在每次数据扫描时自动应用标签。 
-
-在 Purview 中扫描数据后，可以在“Purview 目录和见解”报表中查看自动应用的标签。
-#### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Azure Purview 中支持敏感度标签的数据类型
-
-在 Azure Purview 中，以下数据类型支持敏感度标签：
+在 Azure Purview 中，以下数据源支持敏感度标签：
 
 |数据类型  |源  |
 |---------|---------|
-|自动标记文件     |      - Azure Blob 存储  </br>- Azure Data Lake Storage Gen 1 和 Gen 2  |
-|自动标记数据库列     |  - SQL Server </br>- Azure SQL 数据库 </br>- Azure SQL 数据库托管实例   <br> - Azure Synapse  <br> - Azure Cosmos DB <br><br>有关详细信息，请参阅下面的[标记 SQL 数据库列](#labeling-for-sql-database-columns)。  |
+|自动标记文件     |    - Azure Blob 存储</br>- Azure 文件存储</br>- Azure Data Lake Storage Gen 1 和 Gen 2</br>- Amazon S3|
+|自动标记数据库列     |  - SQL Server</br>- Azure SQL 数据库</br>- Azure SQL 数据库托管实例</br>- Azure Synapse Analytics 工作区</br>- Azure Cosmos DB (SQL API)</br> - Azure Database for MySQL</br> - Azure Database for PostgreSQL</br> - Azure 数据资源管理器</br>  |
 | | |
 
-#### <a name="labeling-for-sql-database-columns"></a>标记 SQL 数据库列
+## <a name="labeling-for-sql-databases"></a>SQL 数据库标记
 
 除了 Purview 标记数据库列外，Microsoft 还支持使用 [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) 中的 SQL 数据分类标记 SQL 数据库列。 Purview 使用全局 [MIP 敏感度标签](/microsoft-365/compliance/sensitivity-labels)，而 SSMS 仅使用本地定义的标签。
 
 Purview 中的标记和 SSMS 中的标记是独立的进程，当前不会彼此交互。 因此，SSMS 中应用的标签不会显示在 Purview 中，反之亦然。 建议使用 Azure Purview 标记 SQL 数据库，因为它使用可跨多个平台应用的全局 MIP 标签。
 
-有关详细信息，请参阅 [SQL 数据发现和分类文档](/sql/relational-databases/security/sql-data-discovery-and-classification)。
-
-## <a name="how-to-create-sensitivity-labels-in-microsoft-365"></a>如何在 Microsoft 365 中创建敏感度标签
-
-如果还没有敏感度标签，则需要创建它们并使它们可用于 Azure Purview。 此外，也可以修改现有的敏感度标签，以使它们可用于 Azure Purview。
-
-有关详细信息，请参见:
-
-- [许可要求](#licensing-requirements)
-- [将敏感度标签扩展到 Azure Purview](#extending-sensitivity-labels-to-azure-purview)
-- [创建新的敏感度标签或修改现有标签](#creating-new-sensitivity-labels-or-modifying-existing-labels)
-### <a name="licensing-requirements"></a>许可要求
-
-MIP 敏感度标签在 Microsoft 365 安全与合规中心中创建和管理。 若要创建在 Azure Purview 中使用的敏感度标签，必须具有活动的 Microsoft 365 E5 许可证。
-
-如果还没有所需的许可证，则可以注册试用 [Microsoft 365 E5](https://www.microsoft.com/microsoft-365/business/compliance-solutions#midpagectaregion)。
-
-### <a name="extending-sensitivity-labels-to-azure-purview"></a>将敏感度标签扩展到 Azure Purview
-
-默认情况下，MIP 敏感度标签仅适用于 Microsoft 365 中的资产（将其应用于文件和电子邮件）。
-
-若要将 MIP 敏感度标签应用于 Azure Purview 中的 Azure 资产，你必须明确同意扩展标签，并选择希望在 Purview 中可用的特定标签。
-
-通过将 MIP 敏感度标签扩展到 Azure Purview，组织现在可以发现、分类并深入了解更广泛数据源中的敏感度，从而最大程度地降低合规性风险。
-
-> [!NOTE]
-> 由于 Microsoft 365 和 Azure Purview 是独立的服务，因此它们可能会部署在不同的区域中。 标签名称和自定义敏感信息类型名称均视为客户数据，默认情况下会保存在同一地理位置，以保护数据的敏感度并避免违反隐私法律。
->
-> 因此，默认情况下，不会将标签和自定义敏感信息类型共享给 Azure Purview，并且需要获得你的同意才能在 Azure Purview 中使用它们。
-
-若要将敏感度标签扩展到 Purview，请执行以下步骤：
-
-通过以下步骤，你可以在 Azure Purview 中使用敏感度标签，在 Azure Purview 中可将敏感度标签应用于诸如 SQL 列、Azure Blob 存储中的文件等资产。
-
-1. 在 Microsoft 365 中，导航到“信息保护”页面。 
-1. 在“将标签扩展到 Azure Purview 中的资产”中，选择“打开”按钮，然后在显示的确认对话框中选择“是”  。
-
-例如：
-
-:::image type="content" source="media/create-sensitivity-label/extend-sensitivity-labels-to-purview-small.png" alt-text="选择“打开”以将敏感度标签扩展到 Purview" lightbox="media/create-sensitivity-label/extend-sensitivity-labels-to-purview.png":::
- 
-将标签扩展到 Azure Purview 中的资产后，可以选择希望在 Purview 中可用的标签。 有关详细信息，请参阅[创建新的敏感度标签或修改现有标签](#creating-new-sensitivity-labels-or-modifying-existing-labels)。
-### <a name="creating-new-sensitivity-labels-or-modifying-existing-labels"></a>创建新的敏感度标签或修改现有标签
-
-当针对 Windows、macOS、iOS 和 Android 上的 Office 应用使用敏感度标签时，用户会在四个小时内看到新标签，而针对 Web 上的 Office，则会在一小时内看到新标签。 但是，允许最多花费 24 小时将更改复制到所有应用和服务。
-
-> [!IMPORTANT]
-> 除非你了解某标签对用户的影响，否则不要删除该标签。 有关详细信息，请参阅 Microsoft 365 文档中的[删除标签](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels)。
->
-
-若要创建新的敏感度标签或修改现有标签，请执行以下步骤：
-
-1. 打开 [Microsoft 365 安全与合规中心](https://protection.office.com/homepage)。 
-
-1. 在“解决方案”下，选择“信息保护”，然后选择“创建标签”  。 
-
-    :::image type="content" source="media/create-sensitivity-label/create-sensitivity-label-full-small.png" alt-text="在 Microsoft 365 安全与合规中心内创建敏感度标签" lightbox="media/create-sensitivity-label/create-sensitivity-label-full.png":::
-
-1. 命名标签。 然后，在“定义此标签的范围”下：
-
-    - 在所有情况下，均选择“Azure Purview 资产”。
-    - 若要标记文件，请同时选择“文件和电子邮件”。 若仅标记数据库资产，则不需要此选项。 
-    
-    :::image type="content" source="media/create-sensitivity-label/create-label-scope-small.png" alt-text="在 Microsoft 365 安全与合规中心内创建标签" lightbox="media/create-sensitivity-label/create-label-scope.png":::
-
-1. 按照向导中的其余提示设置标签。 
-
-    具体而言，针对文件和数据库列定义自动标记规则：
-
-    - [定义针对文件的自动标记规则](#define-auto-labeling-rules-for-files)
-    - [定义针对数据库列的自动标记规则](#define-auto-labeling-rules-for-database-columns)
-
-    有关向导选项的详细信息，请参阅 Microsoft 365 文档中的[敏感度标签能执行的操作](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do)。
-
-1. 重复上面列出的步骤以创建更多标签。 
-
-    若要创建子标签，请选择父标签 >“...” > “更多操作” > “添加子标签”  。
-
-1. 若要修改现有标签，请浏览至“信息保护” > “标签”，然后选择标签 。 
-
-    然后，选择“编辑标签”以再次打开“编辑敏感度标签”向导，其中包含创建该标签时定义的所有设置 。
-
-    :::image type="content" source="media/create-sensitivity-label/edit-sensitivity-label-full-small.png" alt-text="编辑现有的敏感度标签" lightbox="media/create-sensitivity-label/edit-sensitivity-label-full.png":::
-
-1. 所有标签创建完成后，请确保查看标签顺序，并根据需要对其重新排序。 
-
-    若要更改标签的顺序，请选择“...”>“更多操作” > “上移”或“下移”   。 
-
-    有关详细信息，请参阅 Microsoft 365 文档中的[标签优先级（顺序问题）](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters)。
-
-
-继续[扫描数据以自动应用标签](#scan-your-data-to-apply-labels-automatically)，然后：
-
-- [查看资产上的标签](#view-labels-on-assets)
-- [查看“见解”报表中的分类和敏感性标签](#view-insight-reports-for-the-classifications-and-sensitivity-labels)
-
-#### <a name="define-auto-labeling-rules-for-files"></a>定义针对文件的自动标记规则
-
-创建或编辑标签时，请在向导中定义针对文件的自动标记规则。 
-
-在“自动标记 Office 应用”页上，启用“自动标记 Office 应用”，然后定义希望自动将标签应用于数据的条件 。
-
-例如：
-
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="在 Microsoft 365 安全与合规中心内定义针对文件的自动标记规则" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
- 
-有关详细信息，请参阅 Microsoft 365 文档中的[自动将敏感度标签应用于数据](/microsoft-365/compliance/apply-sensitivity-label-automatically#how-to-configure-auto-labeling-for-office-apps)。 
-
-#### <a name="define-auto-labeling-rules-for-database-columns"></a>定义针对数据库列的自动标记规则
-
-创建或编辑标签时，请在向导中定义针对数据库列的自动标记规则。 
-
-在“Azure Purview 资产(预览版)”选项下：
-
-1. 选择“自动标记数据库列”滑块。
-
-1. 选择“检查敏感信息类型”以选择要应用于标签的敏感信息类型。
-
-例如：
-        
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="在 Microsoft 365 安全与合规中心内定义针对 SQL 列的自动标记规则" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
-
-## <a name="scan-your-data-to-apply-labels-automatically"></a>扫描数据以自动应用标签
-
-根据定义的自动标记规则，扫描 Azure Purview 中的数据以自动应用创建的标签。 
-
-有关如何设置针对 Azure Purview 中各种资产的扫描的详细信息，请参阅：
-
-|源  |参考  |
-|---------|---------|
-|**Azure Blob 存储**     |[注册和扫描 Azure Blob 存储](register-scan-azure-blob-storage-source.md)         |
-|**Azure Data Lake 存储**     |[注册和扫描 Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[注册和扫描 Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |
-|**Azure SQL 数据库**|[注册并扫描 Azure SQL 数据库](register-scan-azure-sql-database.md) </br>[注册和扫描 Azure SQL 数据库托管实例](register-scan-azure-sql-database-managed-instance.md)|
-| | |
-
-## <a name="view-labels-on-assets"></a>查看资产上的标签
-
-在 Microsoft 365 中定义标签的自动标记规则并扫描 Azure Purview 中的数据后，标签将自动应用于资产。 
-
-若要在“Azure Purview 目录”中查看应用于资产的标签，请执行以下步骤：
-
-在“Azure Purview 目录”中，使用“标签”筛选选项以仅显示带有特定标签的文件。 例如： 
-
-:::image type="content" source="media/create-sensitivity-label/filter-search-results-small.png" alt-text="按标签搜索资产" lightbox="media/create-sensitivity-label/filter-search-results.png":::
-
-例如：
-
-:::image type="content" source="media/create-sensitivity-label/view-labeled-files-blob-storage-small.png" alt-text="查看 Azure Blob 存储中文件上的敏感度标签" lightbox="media/create-sensitivity-label/view-labeled-files-blob-storage.png":::
-
-## <a name="view-insight-reports-for-the-classifications-and-sensitivity-labels"></a>查看“见解”报表中的分类和敏感性标签
-
-使用“分类”和“敏感度标签”报表，在 Azure Purview 中查找有关已分类和已标记数据的见解 。
+有关详细信息，请参阅 [SQL 数据发现和分类文档](/sql/relational-databases/security/sql-data-discovery-and-classification)。 </br></br>
 
 > [!div class="nextstepaction"]
-> [分类见解](./classification-insights.md)
+> [如何自动标记内容](./how-to-automatically-label-your-content.md)
 
 > [!div class="nextstepaction"]
 > [敏感度标签见解](sensitivity-insights.md)
+
+> [!div class="nextstepaction"]
+> [标记常见问题解答](sensitivity-labels-frequently-asked-questions.yml)

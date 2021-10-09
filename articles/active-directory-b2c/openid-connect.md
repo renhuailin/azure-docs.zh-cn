@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 32154904a78062f5e3afdb6217351f39151b36b8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab62cae223b60103043df0c9dd79acf64e552358
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729400"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588934"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -282,7 +282,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | 参数 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | {tenant} | 是 | Azure AD B2C 租户的名称 |
-| {policy} | 是 | 想要用于从应用程序中注销用户的用户流。 |
+| {policy} | 是 | 已在授权请求中使用的用户流。 例如，如果用户使用 `b2c_1_sign_in` 用户流登录，请在注销请求中指定 `b2c_1_sign_in`。 |
 | id_token_hint| 否 | 以前颁发的 ID 令牌，该令牌将作为有关最终用户当前与客户端建立的身份验证会话的提示传递给注销终结点。 `id_token_hint` 确保 `post_logout_redirect_uri` 是 Azure AD B2C 应用程序设置中的已注册回复 URL。 有关详细信息，请参阅[保护注销重定向](#secure-your-logout-redirect)。 |
 | client_id | 否* | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。<br><br>\*使用 `Application` 隔离 SSO 配置并且注销请求中的所需 ID 令牌设置为 `No` 时，这是必需的。 |
 | post_logout_redirect_uri | 否 | 用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 除非提供 `id_token_hint`，否则不应在 Azure AD B2C 应用程序设置中将此 URL 注册为回复 URL。 |

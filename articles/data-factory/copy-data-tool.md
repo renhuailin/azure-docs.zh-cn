@@ -1,43 +1,47 @@
 ---
-title: Azure 数据工厂中的“复制数据”工具
+title: 复制数据工具
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 提供有关 Azure 数据工厂 UI 中“复制数据”工具的信息
+description: 了解 Azure 数据工厂和 Synapse Analytics UI 中的“复制数据”工具。
 author: dearandyxu
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 09/09/2021
 ms.author: yexu
-ms.openlocfilehash: 165d799e6bc2cc6a5f7e064b909ca7e80f819c42
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d4ae44d3c3121ff5cc0240ea9dac0ed11e1580ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637803"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760286"
 ---
-# <a name="copy-data-tool-in-azure-data-factory"></a>Azure 数据工厂中的“复制数据”工具
+# <a name="copy-data-tool-in-azure-data-factory-and-synapse-analytics"></a>Azure 数据工厂和 Synapse Analytics 中的“数据复制”工具
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data Lake 的过程，这通常是端到端数据集成方案的第一步。  这可节省时间，尤其是首次使用 Azure 数据工厂引入数据源中的数据时。 下面是使用此工具的一些优势：
+“复制数据”工具可简化并优化将数据引入 Data Lake 的过程，这通常是端到端数据集成方案的第一步。  这可节省时间，尤其是首次使用服务引入数据源中的数据时。 下面是使用此工具的一些优势：
 
-- 使用 Azure 数据工厂“复制数据”工具时，无需了解链接的数据、数据集、管道、活动和触发器的数据工厂定义。 
-- 对于将数据加载到 Data Lake 中，“复制数据”工具的流程非常直观。 该工具会自动创建将数据从所选源数据存储复制到所选目标/接收器数据存储所需的所有数据工厂资源。 
+- 使用“复制数据”工具时，无需了解链接的数据、数据集、管道、活动和触发器的服务定义。 
+- 对于将数据加载到 Data Lake 中，“复制数据”工具的流程非常直观。 该工具会自动创建将数据从所选源数据存储复制到所选目标/接收器数据存储所需的所有资源。 
 - “复制数据”工具有助于在创作时验证正在引入的数据，从而在开始时避免出现任何潜在错误。
-- 如果需要实现复杂的业务逻辑，以便将数据加载到 Data Lake 中，仍可使用数据工厂 UI 中的“每活动创作”来编辑“复制数据”工具创建的数据工厂资源。 
+- 如果需要实现复杂的业务逻辑，以便将数据加载到 Data Lake 中，仍可使用 UI 中的“每活动创作”来编辑“复制数据”工具创建的数据工厂资源。 
 
-下表提供了有关在何时使用数据工厂 UI 中的“复制数据”工具与“每活动创作”的指南： 
+下表提供了有关在何时使用 UI 中的“复制数据”工具与“每活动创作”的指南： 
 
 | 复制数据工具 | 每活动（复制活动）创作 |
 | -------------- | -------------------------------------- |
-| 需要轻松构建数据加载任务，而无需了解 Azure 数据工厂实体（链接的服务、数据集和管道等） | 需要实现复杂而灵活的逻辑，将数据加载到 Lake 中。 |
+| 需要轻松构建数据加载任务，而无需了解实体（链接的服务、数据集和管道等） | 需要实现复杂而灵活的逻辑，将数据加载到 Lake 中。 |
 | 需要将大量数据项目快速加载到 Data Lake 中。 | 需要将复制活动与后续活动链接在一起，以清理或处理数据。 |
 
-若要启动“复制数据”工具，请单击数据工厂主页上的“引入”磁贴。
+要启动“复制数据”工具，请单击数据工厂或 Synapse Analytics UI 的主页上的“引入”磁贴。
 
-![屏幕截图，显示主页 - 指向“复制数据”工具的链接。](./media/doc-common-process/get-started-page.png)
+# <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+:::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="屏幕截图，显示主页 - 指向“复制数据”工具的链接。":::
+# <a name="synapse-analytics"></a>[Synapse Analytics](#tab/synapse-analytics)
+:::image type="content" source="./media/doc-common-process/get-started-page-synapse.png" alt-text="屏幕截图，显示主页 - 指向“复制数据”工具的链接。":::
 
-在启动“复制数据”工具后，将出现两种类型的任务：一种是内置复制任务，另一种是元数据驱动的复制任务 。 内置复制任务会引导你在 5 分钟内创建管道来复制数据，无需了解 Azure 数据工厂实体。  元数据驱动的复制任务会简化创建参数化管道和外部控制表的历程，以便设法大规模复制大量对象（例如成千上万个表）。 在[元数据驱动的复制数据](copy-data-tool-metadata-driven.md)中可以看到更多详细信息。
+---
+在启动“复制数据”工具后，将出现两种类型的任务：一种是内置复制任务，另一种是元数据驱动的复制任务 。 内置复制任务会引导你在 5 分钟内创建管道来复制数据，无需了解实体。  元数据驱动的复制任务会简化创建参数化管道和外部控制表的历程，以便设法大规模复制大量对象（例如成千上万个表）。 在[元数据驱动的复制数据](copy-data-tool-metadata-driven.md)中可以看到更多详细信息。
 
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>将数据加载到 Data Lake 中的直观流程
 使用此工具，可通过一个直观的流程在数分钟内轻松地将数据从各种源移动到目标：  
@@ -46,21 +50,21 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 2. 配置“目标”的设置。 
 3. 配置复制操作的高级设置，如列映射、性能设置和容错设置。 
 4. 指定数据加载任务的“计划”。 
-5. 查看要创建的数据工厂实体的摘要。 
+5. 查看要创建的实体的摘要。 
 6. 编辑管道，根据需要更新复制活动的设置。 
 
    该工具从设计之初就考虑到了大数据，支持多种数据和对象类型。 可利用该工具移动数百个文件夹、文件或表。 该工具支持自动数据预览、构架捕获和自动映射，以及筛选数据。
 
-![复制数据工具](./media/copy-data-tool/copy-data-tool.png)
+:::image type="content" source="./media/copy-data-tool/copy-data-tool.png" alt-text="复制数据工具":::
 
 ## <a name="automatic-data-preview"></a>自动数据预览
 可从选定的源数据存储预览部分数据，这样便可验证正在复制的数据。 此外，如果源数据在文本文件中，“复制数据”工具会分析文本文件，以自动检测行和列分隔符以及架构。
 
-![文件设置](./media/copy-data-tool/file-format-settings.png)
+:::image type="content" source="./media/copy-data-tool/file-format-settings.png" alt-text="文件设置":::
 
 检测后，选择“预览数据”：
 
-![已检测的文件设置和预览](./media/copy-data-tool/after-detection.png)
+:::image type="content" source="./media/copy-data-tool/after-detection.png" alt-text="已检测的文件设置和预览":::
 
 ## <a name="schema-capture-and-automatic-mapping"></a>架构捕获和自动映射
 在很多情况下，数据源的架构可能与数据目标的架构不同。 在这种情况下，需要将源架构中的列映射到目标架构中的列。
@@ -76,7 +80,7 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 ### <a name="filter-data-in-a-database"></a>筛选数据库中的数据
 以下屏幕截图显示用于筛选数据的 SQL 查询。
 
-![筛选数据库中的数据](./media/copy-data-tool/filter-data-in-database.png)
+:::image type="content" source="./media/copy-data-tool/filter-data-in-database.png" alt-text="筛选数据库中的数据":::
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>筛选 Azure Blob 文件夹中的数据
 可在文件夹路径中使用变量来复制文件夹中的数据。 支持的变量包括：{year}、{month}、{day}、{hour} 和 {minute}    。 例如：inputfolder/{year}/{month}/{day}。 
@@ -94,7 +98,7 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 
 然后，请用 {year} 代替 2016、{month} 代替 03、{day} 代替 01、{hour} 代替 02，并按 Tab 键        。 在“文件加载行为”部分选择“增量加载: 按时间分区的文件夹名称/文件名”并在“属性”页上选择“计划”或“翻转窗口”时，你应该看到用于选择这四个变量的格式的下拉列表：
 
-![筛选文件或文件夹](./media/copy-data-tool/filter-file-or-folder.png)
+:::image type="content" source="./media/copy-data-tool/filter-file-or-folder.png" alt-text="筛选文件或文件夹":::
 
 创建管道时，“复制数据”工具生成包含表达式、函数和系统变量的参数，用于表示 {year}、{month}、{day}、{hour} 和 {minute}。
 
@@ -103,7 +107,7 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 
 一次性复制操作仅支持一次性将数据从源移动到目标。 它适用于任何大小的数据和任何受支持的格式。 使用计划的复制，可按指定的重复周期复制数据。 可使用丰富的设置（例如，重试、超时和警报）来配置计划的复制。
 
-![计划选项](./media/copy-data-tool/scheduling-options.png)
+:::image type="content" source="./media/copy-data-tool/scheduling-options.png" alt-text="计划选项":::
 
 
 ## <a name="next-steps"></a>后续步骤

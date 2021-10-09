@@ -4,15 +4,15 @@ description: 本文介绍了创建和管理 Azure Purview 中的集成运行时�
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 1b2748664046c97258ee3414b741075627064bbc
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/27/2021
+ms.openlocfilehash: 1a51af8fd34516ca87d7ab98332221a308480193
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867478"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217122"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -24,13 +24,36 @@ ms.locfileid: "122867478"
 > [!IMPORTANT]
 > 如果在 2021 年 8 月 18 日之后创建了 Azure Purview 帐户，请确保从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并安装最新版本的自承载集成运行时。
 
+## <a name="prerequisites"></a>先决条件
+
+- 支持的 Windows 版本为：
+  - Windows 8.1
+  - Windows 10
+  - Windows Server 2012
+  - Windows Server 2012 R2
+  - Windows Server 2016
+  - Windows Server 2019
+
+不支持在域控制器上安装自承载集成运行时。
+
+- 自承载集成运行时需要带有 .NET Framework 4.7.2 或更高版本的 64 位操作系统。 有关详细信息，请参阅 [.NET Framework 系统需求](/dotnet/framework/get-started/system-requirements)。
+- 对于自承载集成运行时计算机，建议的最低配置为 4 核 2 GHz 处理器，8 GB RAM，80 GB 可用硬盘空间。 有关系统要求的详细信息，请参阅[下载](https://www.microsoft.com/download/details.aspx?id=39717)。
+- 如果主机计算机进入休眠状态，则自承载集成运行时不会响应数据请求。 安装自承载集成运行时之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则自承载集成运行时安装程序会通过消息发出提示。
+- 只有计算机管理员才能成功安装和配置自承载集成运行时。
+- 扫描运行按照你设置的计划的特定频率发生。 计算机上的处理器和 RAM 使用率遵循相同的高峰期和空闲期模式。 此外，资源使用率在很大程度上取决于扫描的数据量。 进行多个扫描作业时，会看到资源使用率在高峰期上升。
+- 在提取 Parquet、ORC 或 Avro 格式的数据时，任务可能会失败。
+
+## <a name="setting-up-a-self-hosted-integration-runtime"></a>设置自承载集成运行时
+
+若要创建和设置自承载集成运行时，请使用以下过程。
+
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
 
-1. 在 Purview Studio 的 "主页" ，从左侧导航窗格中选择 " **管理中心** "。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的“主页”上，从左侧导航窗格中选择“数据映射”。
 
 2. 在左侧窗格中的 " **源和扫描** " 下，选择 " **集成运行时**"，然后选择 " **+ 新建**"。
 
-   :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="单击 IR。":::
+   :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="选择 IR。":::
 
 3. 在 **集成运行时设置** 页面，选择 **“自承载”** 以创建自承载 IR，然后选择 **“继续”** 。
 
@@ -98,13 +121,13 @@ ms.locfileid: "122867478"
 
 ## <a name="manage-a-self-hosted-integration-runtime"></a>管理自承载的集成运行时
 
-可通过导航到 **管理中心** 中的 "**集成运行时**"，选择 IR，然后单击 "编辑"，编辑自承载集成运行时。 你现在可以更新说明，复制密钥，或者重新生成新密钥。
+可通过导航到“管理中心”的“集成运行时”，选择 IR，然后选择“编辑”，编辑自承载集成运行时。 你现在可以更新说明，复制密钥，或者重新生成新密钥。
 
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime.png" alt-text="编辑 IR。":::
 
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime-settings.png" alt-text="编辑 IR 详细信息。":::
 
-可通过导航到管理中心中的 "**集成运行时**"，选择 IR，然后单击 **"删除"** ，删除自承载集成运行时。 一旦删除 IR，任何依赖于它的扫描都会失败。
+可通过导航到“管理中心”的“集成运行时”，选择“IR”，然后选择“删除”，删除自承载集成运行时。 一旦删除 IR，任何依赖于它的扫描都会失败。
 
 ## <a name="next-steps"></a>后续步骤
 

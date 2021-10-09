@@ -3,12 +3,12 @@ title: 从 Windows Admin Center 将混合计算机连接到 Azure
 description: 本文介绍如何从 Windows Admin Center 中安装代理并通过使用已启用 Azure Arc 的服务器将计算机连接到 Azure。
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1abfe2e69a8f3e7b2ab1abcc2d34c79877b750d3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: cc5e47c1f52f0a35048cc796015184d2a0d2dda7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323268"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788945"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>从 Windows Admin Center 将混合计算机连接到 Azure
 
@@ -16,7 +16,7 @@ ms.locfileid: "122323268"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 已启用 Arc 的服务器 - 请查看[先决条件](agent-overview.md#prerequisites)，并验证你的订阅、Azure 帐户和资源是否符合要求。
+* 已启用 Azure Arc 的服务器 - 请查看[先决条件](agent-overview.md#prerequisites)，并验证你的订阅、Azure 帐户和资源是否符合要求。
 
 * Windows Admin Center - 请查看[准备环境](/windows-server/manage/windows-admin-center/deploy/prepare-environment)以部署和[配置 Azure 集成](/windows-server/manage/windows-admin-center/azure/azure-integration)的要求。
 
@@ -30,7 +30,7 @@ ms.locfileid: "122323268"
 
 ## <a name="deploy"></a>部署
 
-请执行以下步骤来配置具有已启用 Arc 的服务器的 Windows 服务器。
+请执行以下步骤来配置具有已启用 Azure Arc 的服务器的 Windows 服务器。
 
 1. 登录到 Windows Admin Center。
 

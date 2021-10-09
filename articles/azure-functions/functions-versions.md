@@ -3,26 +3,32 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 05/19/2021
-ms.openlocfilehash: 901297e34f259f9246b79ace2cc914f46b7d3b45
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/22/2021
+ms.openlocfilehash: 85df4bec5eb4802820a8837a1bb23394851aca42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251492"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637606"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
-Azure Functions 当前支持三个版本的运行时主机：3.x、2.x 和 1.x。 生产方案支持所有三个版本。  
+Azure Functions 当前支持多个版本的运行时主机。 下表详细说明了可用版本、它们的支持级别以及何时应使用它们：
 
-> [!IMPORTANT]
-> 版本 1.x 处于维护模式，仅支持在 Azure 门户、Azure Stack Hub 门户或本地 Windows 计算机上进行开发。 仅在更高版本中提供增强功能。 
+| 版本 | 支持级别 | 说明 |
+| --- | --- | --- |
+| 4.x | 预览 | 支持所有语言。 使用此版本[在 .NET 6.0 上运行 C# 函数](functions-dotnet-class-library.md#supported-versions)。 |
+| 3.x | GA | 适用于所有语言的函数的建议运行时版本。 |
+| 2.x | GA | 支持[旧版本 2.x 应用](#pinning-to-version-20)。 此版本处于维护模式，仅在更高版本中提供增强功能。|
+| 1.x | GA | 建议仅用于必须使用 .NET Framework 且仅支持在 Azure 门户、Azure Stack Hub 门户或本地 Windows 计算机上开发的 C# 应用。 此版本处于维护模式，仅在更高版本中提供增强功能。 |
 
-本文详细介绍了不同版本之间的一些差异、如何创建每个版本，以及如何更改版本。
+本文详细介绍了这些版本之间的一些差异、如何创建每个版本以及如何更改运行函数的版本。
+
+[!INCLUDE [functions-support-levels](../../includes/functions-support-levels.md)]
 
 ## <a name="languages"></a>语言
 
-从版本 2.x 开始，运行时使用语言扩展性模型，并且函数应用中的所有函数必须共享同一语言。 函数应用中的函数语言是在创建应用时选择的，并且在 [FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) 设置中进行维护。 
+从版本 2.x 开始，运行时使用语言扩展性模型，并且函数应用中的所有函数必须共享同一语言。 创建应用时，可以在函数应用中选择函数的语言。 函数应用的语言在 [FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) 设置中维护，并且在存在函数时不应更改。 
 
 下表指示每个运行时版本目前支持的编程语言。
 
@@ -42,6 +48,7 @@ Azure 中的已发布应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 | Value | 运行时目标 |
 | ------ | -------- |
+| `~4` | 4.x（预览版） |
 | `~3` | 3.x |
 | `~2` | 2.x |
 | `~1` | 1.x |
@@ -63,15 +70,74 @@ Azure 中的已发布应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 任何固定到 `~2.0` 的函数应用都将继续在 .NET Core 2.2（不再接收安全性更新和其他更新）上运行。 有关详细信息，请参阅 [Functions v2.x 注意事项](functions-dotnet-class-library.md#functions-v2x-considerations)。   
 
+## <a name="migrating-from-3x-to-4x-preview"></a><a name="migrating-from-3x-to-4x"></a>从 3.x 迁移到 4.x（预览版）
+
+Azure Functions 版本 4.x（预览版）向后高度兼容版本 3.x。  许多应用应该能够安全地升级到 4.x，而无需更改任何代码。 在更改生产应用的主版本之前，请务必运行大量测试。
+
+若要将应用从 3.x 迁移到 4.x，请执行以下操作：
+
+- 使用以下 Azure CLI 命令将 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置设为 `~4`：
+
+    ```bash
+    az functionapp config appsettings set --settings FUNCTIONS_EXTENSION_VERSION=~4 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
+    ```
+
+- 对于 Windows 函数应用，运行时需要使用以下 Azure CLI 命令启用 .NET 6.0：
+
+    ```bash
+    az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
+    ```
+
+### <a name="breaking-changes-between-3x-and-4x"></a>3\.x 和 4.x 之间的中断性变更
+
+以下是在将 3.x 应用升级到 4.x 之前需要注意的一些更改。 如需完整列表，请参阅标有 [*中断性变更：已批准*](https://github.com/Azure/azure-functions/issues?q=is%3Aissue+label%3A%22Breaking+Change%3A+Approved%22+is%3A%22closed+OR+open%22)的 Azure Functions GitHub 问题。 预计在预览期间会有更多变更。 订阅[应用服务公告](https://github.com/Azure/app-service-announcements/issues)以获取更新。
+
+#### <a name="runtime"></a>运行时
+
+- 4\.x 不再支持 Azure Functions 代理。 建议使用 [Azure API Management](../api-management/import-function-app-as-api.md)。
+
+- 4\.x 不再支持使用 AzureWebJobsDashboard 登录到 Azure 存储。 建议使用 [Application Insights](./functions-monitoring.md)。
+
+- Azure Functions 4.x 强制执行扩展的[最低版本要求](https://github.com/Azure/Azure-Functions/issues/1987)。 升级到受影响的扩展的最新版本。 对于非 .NET 语言，请[升级](./functions-bindings-register.md#extension-bundles)到扩展包版本 2.x 或更高版本。
+
+- 现在，在 4.x Linux 消费函数应用程序中强制执行默认和最大超时。
+
+#### <a name="languages"></a>语言
+
+# <a name="c"></a>[C\#](#tab/csharp)
+
+当前未报告任何内容。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+当前未报告任何内容。
+
+# <a name="python"></a>[Python](#tab/python)
+
+- Azure Functions 4.x 中默认启用共享内存传输。
+
+---
+
 ## <a name="migrating-from-2x-to-3x"></a>从 2.x 迁移到 3.x
 
-Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该能够安全地升级到 3.x，无需更改任何代码。  虽然建议迁移到 3.x，但在生产应用的主版本中进行更改之前，务必运行大量测试。
+Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用无需任何代码更改即可安全地升级到 3.x。 虽然建议迁移到 3.x，但在更改生产应用的主版本之前需要运行大量测试。
 
 ### <a name="breaking-changes-between-2x-and-3x"></a>2\.x 和 3.x 之间的中断性变更
 
-下面是在将 2.x 应用升级到 3.x 之前要注意的变更。
+以下是在将 2.x 应用升级到 3.x 之前需要注意的特定于语言的更改。
 
-#### <a name="javascript"></a>Javascript
+# <a name="c"></a>[C\#](#tab/csharp)
+
+运行 .NET 类库函数时，版本之间的主要区别在于 .NET Core 运行时。 Functions 版本 2.x 专门用于在 .NET Core 2.2 上运行，版本 3.x 专门用于在 .NET Core 3.1 上运行。  
+
+* [默认情况下会禁用同步服务器操作](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
+
+* .NET Core 在[版本 3.1](/dotnet/core/compatibility/3.1) 和[版本 3.0](/dotnet/core/compatibility/3.0) 中引入的中断性变更并非特定于 Functions，但可能仍会影响你的应用。
+
+>[!NOTE]
+>由于 .NET Core 2.2 的支持问题，固定到版本 2 (`~2`) 的函数应用实质上是在 .NET Core 3.1 上运行。 有关详细信息，请参阅 [Functions v2.x 兼容性模式](functions-dotnet-class-library.md#functions-v2x-considerations)。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 * 通过 `context.done` 或返回值分配的输出绑定现在与在 `context.bindings` 中进行设置具有相同的行为。
 
@@ -83,16 +149,11 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 * Node.js 8 不再受支持，并且在 3.x 函数中不会执行。
 
-#### <a name="net-core"></a>.NET Core
+# <a name="python"></a>[Python](#tab/python)
 
-运行 .NET 类库函数时，版本之间的主要区别在于 .NET Core 运行时。 Functions 版本 2.x 专门用于在 .NET Core 2.2 上运行，版本 3.x 专门用于在 .NET Core 3.1 上运行。  
+无。
 
-* [默认情况下会禁用同步服务器操作](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
-
-* .NET Core 在[版本 3.1](/dotnet/core/compatibility/3.1) 和[版本 3.0](/dotnet/core/compatibility/3.0) 中引入的中断性变更并非特定于 Functions，但可能仍会影响你的应用。
-
->[!NOTE]
->由于 .NET Core 2.2 的支持问题，固定到版本 2 (`~2`) 的函数应用实质上是在 .NET Core 3.1 上运行。 有关详细信息，请参阅 [Functions v2.x 兼容性模式](functions-dotnet-class-library.md#functions-v2x-considerations)。
+---
 
 ## <a name="migrating-from-1x-to-later-versions"></a>从 1.x 迁移到更高版本
 
@@ -138,7 +199,17 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 在 Visual Studio 中，可在创建项目时选择运行时版本。 用于 Visual Studio 的 Azure Functions 工具支持这三个主要运行时版本。 基于项目设置进行调试和发布时，将使用正确的版本。 版本设置在 `.csproj` 文件中的以下属性内定义：
 
-##### <a name="version-3x"></a>3\.x 版
+# <a name="version-4x-preview"></a>[版本 4.x（预览版）](#tab/v4)
+
+```xml
+<TargetFramework>net6.0</TargetFramework>
+<AzureFunctionsVersion>v4</AzureFunctionsVersion>
+```
+
+> [!NOTE]
+> Azure Functions 4.x 要求 `Microsoft.NET.Sdk.Functions` 扩展至少为 `4.0.0`。
+
+# <a name="version-3x"></a>[3\.x 版](#tab/v3)
 
 ```xml
 <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -148,19 +219,20 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 > [!NOTE]
 > Azure Functions 3.x 和 .NET 要求 `Microsoft.NET.Sdk.Functions` 扩展至少为 `3.0.0`。
 
-##### <a name="version-2x"></a>版本 2.x
+# <a name="version-2x"></a>[版本 2.x](#tab/v2)
 
 ```xml
 <TargetFramework>netcoreapp2.1</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-##### <a name="version-1x"></a>版本 1.x
+# <a name="version-1x"></a>[版本 1.x](#tab/v1)
 
 ```xml
 <TargetFramework>net472</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
+---
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>在 Visual Studio 中将 2.x 应用更新到 3.x
 

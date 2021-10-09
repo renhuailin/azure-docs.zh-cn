@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 31a653df08108bc4f5d75e6dbbc6f31144be8b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa73892fb74e329b8d02abf90f149595686bcf37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956020"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738036"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thrive-lxp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Thrive LXP 的集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "104956020"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Thrive LXP 支持 **SP** 发起的 SSO。
+* Thrive LXP 支持[自动用户预配](thrive-lxp-provisioning-tutorial.md)。
 
 ## <a name="adding-thrive-lxp-from-the-gallery"></a>从库中添加 Thrive LXP
 
@@ -49,7 +50,6 @@ ms.locfileid: "104956020"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **Thrive LXP**。
 1. 在结果面板中选择“Thrive LXP”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-thrive-lxp"></a>配置并测试 Thrive LXP 的 Azure AD SSO
 
@@ -92,6 +92,7 @@ ms.locfileid: "104956020"
 1. 在“设置 Thrive LXP”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -124,6 +125,8 @@ ms.locfileid: "104956020"
 
 在本部分，我们将在 Thrive LXP 中创建名为 Britta Simon 的用户。 与 [Thrive LXP 支持团队](mailto:support@thrivelearning.com)协作，在 Thrive LXP 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
+Thrive LXP 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./thrive-lxp-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -132,7 +135,7 @@ ms.locfileid: "104956020"
 
 * 直接转到 Thrive LXP 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Thrive LXP”磁贴时，会重定向到 Thrive LXP 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Thrive LXP”磁贴时，会重定向到 Thrive LXP 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

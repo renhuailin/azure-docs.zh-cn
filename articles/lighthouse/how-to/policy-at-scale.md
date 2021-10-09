@@ -1,15 +1,15 @@
 ---
 title: 将 Azure Policy 大规模部署到委托订阅
 description: Azure Lighthouse 如何便于跨多个租户部署策略定义和策略分配。
-ms.date: 05/11/2021
+ms.date: 06/13/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d1a14a7f4db1fe70949f0e1caf41479b159ac86c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e45feb45da482aa960516abec8c339d61016c758
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075522"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673571"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>将 Azure Policy 大规模部署到委托订阅
 
@@ -22,7 +22,7 @@ ms.locfileid: "112075522"
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>使用 Azure Resource Graph 在客户租户之间执行查询
 
-你可以使用 [Azure Resource Graph](../../governance/resource-graph/index.yml) 在所管理的客户租户的所有订阅中执行查询。 在此示例中，我们将在这些订阅中识别当前不需要 HTTPS 流量的所有存储帐户。  
+你可以使用 [Azure Resource Graph](../../governance/resource-graph/overview.md) 在所管理的客户租户的所有订阅中执行查询。 在此示例中，我们将在这些订阅中识别当前不需要 HTTPS 流量的所有存储帐户。  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"

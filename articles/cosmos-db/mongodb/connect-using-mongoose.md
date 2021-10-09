@@ -9,12 +9,12 @@ ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 4e5abd957f65fd62bd3933c9f67288b063a6274f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 39e2e9c0258be13698d3569dcc6e64d02bff8f42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039724"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554492"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -54,12 +54,14 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 
 1. 若要在所选的文件夹中创建 Node.js 应用程序，请在 node 命令提示符下运行以下命令。
 
-    ```npm init```
+   `npm init`
 
-    回答以下问题，然后即可开始创建项目。
+   回答以下问题，然后即可开始创建项目。
 
 2. 将一个新文件添加到该文件夹，并将此文件命名为 ```index.js```。
+
 3. 使用一个 ```npm install``` 选项安装所需的包：
+
    * Mongoose：```npm install mongoose@5 --save```
 
      > [!Note]
@@ -70,7 +72,7 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
      >[!Note]
      > ```--save``` 标志将依赖项添加到 package.json 文件。
 
-4. 导入 index.js 文件中的依赖项。
+4. 导入 `index.js` 文件中的依赖项。
 
     ```JavaScript
    var mongoose = require('mongoose');
@@ -326,8 +328,8 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 - 了解如何将 [Studio 3T](connect-using-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 了解如何将 [Robo 3T](connect-using-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](nodejs-console-app.md)。
-- 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
-    - 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
-    - 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](estimate-ru-capacity-planner.md)
+- 尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    - 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    - 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)
 
 [dbleveltp]: ./media/connect-using-mongoose/db-level-throughput.png

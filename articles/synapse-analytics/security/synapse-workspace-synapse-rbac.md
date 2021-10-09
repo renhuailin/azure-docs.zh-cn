@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: dda885d55f2102f1fae478c8d214f2bca44f52f2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e2a49fb9de3c4f63edc483724769c5c726d3a63c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737425"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081845"
 ---
 # <a name="what-is-synapse-role-based-access-control-rbac"></a>什么是 Synapse 基于角色的访问控制 (RBAC)？
 
@@ -28,7 +28,7 @@ Synapse RBAC 用于管理可以执行以下操作的人员：
 - 监视或取消作业执行、查看作业输出和执行日志。  
 
 >[!Note]
->尽管 Synapse RBAC 用于管理对已发布的 SQL 脚本的访问，但它仅提供对无服务器 SQL 池的有限访问控制，不用于控制对专用 SQL 池的访问。  对 SQL 池的访问主要通过 SQL 安全来控制。
+>尽管 Synapse RBAC 用于管理对已发布的 SQL 脚本的访问，但它仅提供对无服务器和专用 SQL 池的访问。 对 SQL 池的访问主要通过 SQL 安全来控制。
 
 ## <a name="what-can-i-do-with-synapse-rbac"></a>Synapse RBAC 有什么用途？
 

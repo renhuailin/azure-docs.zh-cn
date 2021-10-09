@@ -3,13 +3,13 @@ title: 规划 Azure VMware 解决方案部署
 description: 了解如何规划 Azure VMware 解决方案部署。
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
-ms.date: 07/07/2021
-ms.openlocfilehash: 4f0f59a01ff53646a23809efa129a154bfba81ee
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/27/2021
+ms.openlocfilehash: 6528727fda867f5f07d7d83b09df1bbf70df6b92
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444209"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079459"
 ---
 # <a name="plan-the-azure-vmware-solution-deployment"></a>规划 Azure VMware 解决方案部署
 
@@ -34,7 +34,7 @@ ms.locfileid: "122444209"
 标识你计划用来部署 Azure VMware 解决方案的订阅。  你可以创建新订阅，也可以使用现有订阅。
 
 >[!NOTE]
->订阅必须与 Microsoft 企业协议 (EA) 或云解决方案提供商 (CSP) Azure 计划相关联。 有关详细信息，请参阅[资格条件](request-host-quota-azure-vmware-solution.md#eligibility-criteria)。
+>订阅必须与 Microsoft 企业协议 (EA)、云解决方案提供商 (CSP) Azure 计划或 Microsoft 客户协议 (MCA) 相关联。 有关详细信息，请参阅[资格条件](request-host-quota-azure-vmware-solution.md#eligibility-criteria)。
 
 ## <a name="identify-the-resource-group"></a>确定别资源组
 
@@ -65,7 +65,7 @@ ms.locfileid: "122444209"
 
 
 >[!NOTE]
->若要了解每个群集的主机数、每个私有云的群集数以及每个私有云的主机数方面的限制，请查看 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-vmware-solution-limits)。
+>若要了解每个群集的主机数、每个私有云的群集数以及每个私有云的主机数方面的限制，请查看 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-vmware-solution-limits)。
 
 ## <a name="request-a-host-quota"></a>请求主机配额 
 

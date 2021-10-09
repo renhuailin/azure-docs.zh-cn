@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce43a9b518224e7458551139dc1f708dabc5b3e3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e0a3c2b380160ef68655f0727f4d47280cd5cd02
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746088"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754289"
 ---
 # <a name="security-operations-for-infrastructure"></a>基础结构安全操作
 
@@ -45,13 +45,13 @@ ms.locfileid: "121746088"
 
 * [登录日志](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview) 
 
-* [Azure 密钥保管库日志](../../key-vault/general/logging.md?tabs=Vault)
+* [Azure Key Vault 日志](../../key-vault/general/logging.md?tabs=Vault)
 
 在 Azure 门户中，可以查看 Azure AD 审核日志，并将其作为逗号分隔值 (CSV) 或 JavaScript 对象表示法 (JSON) 文件下载。 Azure 门户提供多种方法用于将 Azure AD 日志与其他便于更好地自动执行监视和警报的工具相集成：
 
-* [Azure Sentinel](../../sentinel/overview.md) – 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
+* [Azure Sentinel](../../sentinel/overview.md) – 提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
 
 * [Azure Monitor](../../azure-monitor/overview.md) – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿来合并来自不同源的数据。
 
@@ -174,18 +174,18 @@ Azure AD 使用 Microsoft SQL Server 数据引擎或 SQL 来存储 Azure AD Conn
 
 | 要监视的内容| Where| 说明 |
 | - | - | - |
-| mms_management_agent| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
-| mms_partition| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
-| mms_run_profile| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
-| mms_server_configuration| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
-| mms_synchronization_rule| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
+| mms_management_agent| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records) |
+| mms_partition| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records) |
+| mms_run_profile| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records) |
+| mms_server_configuration| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records) |
+| mms_synchronization_rule| SQL 服务审核记录| 参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records) |
 
 
 有关要监视的配置信息内容和监视方法的信息，请参阅：
 
-* 对于 SQL Server，请参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)。
+* 对于 SQL Server，请参阅 [SQL Server 审核记录](/sql/relational-databases/security/auditing/sql-server-audit-records)。
 
-* 对于 Azure Sentinel，请参阅[连接到 Windows 服务器以收集安全事件](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)。 
+* 对于 Azure Sentinel，请参阅[连接到 Windows 服务器以收集安全事件](/sql/relational-databases/security/auditing/sql-server-audit-records)。 
 
 * 有关配置和使用 Azure AD Connect 的信息，请参阅[什么是 Azure AD Connect？](../hybrid/whatis-azure-ad-connect.md)
 
@@ -215,7 +215,7 @@ Azure AD 使用 Microsoft SQL Server 数据引擎或 SQL 来存储 Azure AD Conn
 
 
 
-* 有关记录 PowerShell 脚本操作的详细信息，请参阅 PowerShell 参考文档中的[启用脚本块日志记录](/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-7.1)。
+* 有关记录 PowerShell 脚本操作的详细信息，请参阅 PowerShell 参考文档中的[启用脚本块日志记录](/powershell/module/microsoft.powershell.core/about/about_logging_windows)。
 
 * 有关配置 PowerShell 日志记录以通过 Splunk 进行分析的详细信息，请参阅[将数据引入 Splunk User Behavior Analytics](https://docs.splunk.com/Documentation/UBA/5.0.4.1/GetDataIn/AddPowerShell)。
 
@@ -275,7 +275,7 @@ DC 代理管理日志是软件行为方式信息的主要来源。 跟踪日志�
 
 [特权帐户的安全操作](security-operations-privileged-accounts.md)
 
-[Privileged Identity Management 安全操作](security-operations-privileged-identity-management.md)
+[Privileged Identity Management 的安全操作](security-operations-privileged-identity-management.md)
 
 [应用程序的安全操作](security-operations-applications.md)
 

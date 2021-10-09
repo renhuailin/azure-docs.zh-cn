@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dbaead6f8f3c730cac1393491bb2883f2889e87
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: f78765e7b0d26b2767dabf4b1fdc4ccdd6873123
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707491"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803604"
 ---
 # <a name="azure-active-directory-security-operations-for-user-accounts"></a>Azure Active Directory 用户帐户安全操作
 
@@ -81,7 +81,7 @@ ms.locfileid: "114707491"
 
 * [登录日志](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault 日志](../../key-vault/general/logging.md?tabs=Vault)
 
@@ -89,17 +89,17 @@ ms.locfileid: "114707491"
 
 * [UserRiskEvents 日志](../identity-protection/howto-identity-protection-investigate-risk.md)
 
-在 Azure 门户中，可以查看 Azure AD 审核日志，并将下载为逗号分隔值 (CSV) 或 JavaScript 对象表示法 (JSON) 文件。 Azure 门户提供多种方法来将 Azure AD 日志与其他工具相集成，以便更好地自动执行监视和警报：
+在 Azure 门户中，可以查看 Azure AD 审核日志，并将下载为逗号分隔值 (CSV) 或 JavaScript 对象表示法 (JSON) 文件。 Azure 门户提供多种方法,将 Azure AD 日志与其他工具相集成，以便更好地自动执行监视和警报：
 
-* [Azure Sentinel](../../sentinel/overview.md) – 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
+* [Azure Sentinel](../../sentinel/overview.md) - 通过提供安全信息和事件管理 (SIEM) 功能，实现企业级智能安全分析。 
 
-* [Azure Monitor](../../azure-monitor/overview.md) – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿合并来自不同源的数据。
+* [Azure Monitor](../../azure-monitor/overview.md) – 实现对各种情况的自动监视和警报。 可以创建或使用工作簿来合并来自不同源的数据。
 
-* 与 SIEM 集成的 [Azure 事件中心](../../event-hubs/event-hubs-about.md)- 通过 Azure 事件中心集成，[可将 Azure AD 日志集成到其他 SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)，例如 Splunk、ArcSight、QRadar 和 Sumo Logic。
+* 与 SIEM 集成的 [Azure 事件中心](../../event-hubs/event-hubs-about.md)- 通过 Azure 事件中心集成[可将 Azure AD 日志集成到其他 SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)，例如 Splunk、ArcSight、QRadar 和 Sumo Logic。
 
 * [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) – 支持发现和管理应用、跨应用和资源进行治理以及检查云应用合规性。 
 
-监视和发出警报的大部分内容由条件访问策略决定。 可以使用[条件访问见解和报告工作簿](../conditional-access/howto-conditional-access-insights-reporting.md)来检查一个或多个条件访问策略对登录的影响以及包括设备状态在内的策略结果。 通过此工作簿，可查看影响摘要并确定特定时间段的影响。 此外，还可以使用此工作簿来调查特定用户的登录情况。 
+大部分你将监视和发出警报的内容由条件访问策略决定。 可以使用[条件访问见解和报告工作簿](../conditional-access/howto-conditional-access-insights-reporting.md)来检查一个或多个条件访问策略对登录的影响以及包括设备状态在内的策略结果。 可通过此工作簿查看影响摘要并确定特定时间段的影响。 还可以使用此工作簿来调查特定用户的登录情况。 
 
  本文接下来将按威胁类型介绍应该监视和发出相关警报的对象。 如果有特定预生成解决方案，我们会链接到这些解决方案，或在表格之后提供示例。 除此之外，可以使用前面的工具来生成警报。 
 
@@ -186,22 +186,22 @@ ms.locfileid: "114707491"
 
 | 要监视的内容 | 风险级别 | Where | 筛选器/子筛选器 | 说明 |
 | - | - | - | - | - |
-| 用户风险检测的凭据泄露| 高| Azure AD 风险检测日志| UX：凭据泄漏 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| Azure AD 威胁情报用户风险检测| 高| Azure AD 风险检测日志| UX：Azure AD 威胁情报 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 匿名 IP 地址登录风险检测| 多种多样| Azure AD 风险检测日志| UX：匿名 IP 地址 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 异常位置登录风险检测| 多种多样| Azure AD 风险检测日志| UX：异常位置登录 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 异常令牌| 多种多样| Azure AD 风险检测日志| UX：异常令牌 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 受恶意软件感染的 IP 地址登录风险检测| 多种多样| Azure AD 风险检测日志| UX：受恶意软件感染的 IP 地址 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 可疑浏览器登录风险检测| 多种多样| Azure AD 风险检测日志| UX：可疑浏览器 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 不熟悉的登录属性登录风险检测| 多种多样| Azure AD 风险检测日志| UX：不熟悉的登录属性 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 恶意 IP 地址登录风险检测| 多种多样| Azure AD 风险检测日志| UX：恶意 IP 地址<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 可疑收件箱操作规则登录风险检测| 多种多样| Azure AD 风险检测日志| UX：可疑收件箱操作规则<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 密码喷射登录风险检测| 高| Azure AD 风险检测日志| UX：密码喷射<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 不可能旅行登录风险检测| 多种多样| Azure AD 风险检测日志| UX：不可能旅行<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 新国家/地区登录风险检测| 多种多样| Azure AD 风险检测日志| UX：新国家/地区<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 来自匿名 IP 地址的活动登录风险检测| 多种多样| Azure AD 风险检测日志| UX：来自匿名 IP 地址的活动<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| 可疑收件箱转发登录风险检测| 多种多样| Azure AD 风险检测日志| UX：可疑收件箱转发<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
-| Azure AD 威胁情报登录风险检测| 高| Azure AD 风险检测日志| UX：Azure AD 威胁情报<br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta.md)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 用户风险检测的凭据泄露| 高| Azure AD 风险检测日志| UX：凭据泄漏 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| Azure AD 威胁情报用户风险检测| 高| Azure AD 风险检测日志| UX：Azure AD 威胁情报 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 匿名 IP 地址登录风险检测| 多种多样| Azure AD 风险检测日志| UX：匿名 IP 地址 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 异常位置登录风险检测| 多种多样| Azure AD 风险检测日志| UX：异常位置登录 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 异常令牌| 多种多样| Azure AD 风险检测日志| UX：异常令牌 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 受恶意软件感染的 IP 地址登录风险检测| 多种多样| Azure AD 风险检测日志| UX：受恶意软件感染的 IP 地址 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 可疑浏览器登录风险检测| 多种多样| Azure AD 风险检测日志| UX：可疑浏览器 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 不熟悉的登录属性登录风险检测| 多种多样| Azure AD 风险检测日志| UX：不熟悉的登录属性 <br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 恶意 IP 地址登录风险检测| 多种多样| Azure AD 风险检测日志| UX：恶意 IP 地址<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 可疑收件箱操作规则登录风险检测| 多种多样| Azure AD 风险检测日志| UX：可疑收件箱操作规则<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 密码喷射登录风险检测| 高| Azure AD 风险检测日志| UX：密码喷射<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 不可能旅行登录风险检测| 多种多样| Azure AD 风险检测日志| UX：不可能旅行<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 新国家/地区登录风险检测| 多种多样| Azure AD 风险检测日志| UX：新国家/地区<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 来自匿名 IP 地址的活动登录风险检测| 多种多样| Azure AD 风险检测日志| UX：来自匿名 IP 地址的活动<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| 可疑收件箱转发登录风险检测| 多种多样| Azure AD 风险检测日志| UX：可疑收件箱转发<br><br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
+| Azure AD 威胁情报登录风险检测| 高| Azure AD 风险检测日志| UX：Azure AD 威胁情报<br>API：请参阅 [riskDetection 资源类型 - Microsoft Graph beta 版本](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| 请参阅[什么是风险？Azure AD 标识保护](../identity-protection/concept-identity-protection-risks.md) |
 
 有关详细信息，请访问[什么是标识保护](../identity-protection/overview-identity-protection.md)。 
 
@@ -272,11 +272,11 @@ ms.locfileid: "114707491"
 | 要监视的内容| 风险级别| Where| 筛选器/子筛选器| 说明 |
 | - |- |- |- |- |
 | 多重身份验证 (MFA) 欺诈警报。| 高| Azure AD 登录日志| 状态 = 失败<br>－和－<br>详细信息 = 已拒绝 MFA<br>| 监视任何条目并发出警报。 |
-| 来自未运营的国家/地区的身份验证失败。| 中等| Azure AD 登录日志| 位置 = <unapproved location>| 监视任何条目并发出警报。 |
+| 来自未运营的国家/地区的身份验证失败。| 中等| Azure AD 登录日志| 位置 = \<unapproved location\>| 监视任何条目并发出警报。 |
 | 由于使用旧版协议或未使用协议，身份验证失败。| 中等| Azure AD 登录日志| 状态 = 失败<br>－和－<br>客户端应用程序 = 其他客户端、POP、IMAP、MAPI、SMTP、ActiveSync| 监视任何条目并发出警报。 |
 | 被 CA 阻止的失败。| 中等| Azure AD 登录日志| 错误代码 = 53003 <br>－和－<br>失败原因 = 被 CA 阻止| 监视任何条目并发出警报。 |
 | 增加了任何类型的失败身份验证。| 中等| Azure AD 登录日志| 捕获跨板块失败的增加情况。 即，今天的失败总数比上周同一天高 10% 以上。| 如果没有设定阈值，则监视失败次数是否增加 10% 或更高并发出警报。 |
-| 一周中国家/地区未执行正常业务操作的时间和日期进行的身份验证。| 低| Azure AD 登录日志| 捕获未按照正常操作日期\时间进行的交互身份验证。 <br>状态 = 成功<br>－和－<br>位置 = <location><br>－和－<br>日期\时间 = <not normal working hours>| 监视任何条目并发出警报。 |
+| 一周中国家/地区未执行正常业务操作的时间和日期进行的身份验证。| 低| Azure AD 登录日志| 捕获未按照正常操作日期\时间进行的交互身份验证。 <br>状态 = 成功<br>－和－<br>位置 = \<location\><br>－和－<br>日期\时间 = \<not normal working hours\>| 监视任何条目并发出警报。 |
 | 帐户已禁用/被阻止登录| 低| Azure AD 登录日志| 状态 = 失败<br>－和－<br>错误代码 = 50057，该用户帐户已被禁用。| 这可能指示有人在他们离开组织后试图获取帐户访问权限。 虽然该帐户已被阻止，但记录这类活动并发出警报仍然很重要。 |
 
 
@@ -284,10 +284,10 @@ ms.locfileid: "114707491"
 
  | 要监视的内容| 风险级别| Where| 筛选器/子筛选器| 说明 |
 | - |- |- |- |- |
-| 超出预期控制的特权帐户身份验证。| 高| Azure AD 登录日志| 状态 = 成功<br>－和－<br>UserPricipalName = <Admin account><br>－和－<br>位置 = <unapproved location><br>－和－<br>IP 地址 = <unapproved IP><br>设备信息 = <未批准的浏览器、操作系统><br>| 监视特权帐户超出预期控制的成功身份验证并发出警报。 下面列出了三项常用控制。 |
+| 超出预期控制的特权帐户身份验证。| 高| Azure AD 登录日志| 状态 = 成功<br>－和－<br>UserPricipalName = \<Admin account\><br>－和－<br>位置 = \<unapproved location\><br>－和－<br>IP 地址 = \<unapproved IP\><br>设备信息 = \<unapproved Browser, Operating System\><br>| 监视特权帐户超出预期控制的成功身份验证并发出警报。 下面列出了三项常用控制。 |
 | 仅需要单重身份验证时。| 低| Azure AD 登录日志| 状态 = 成功<br>身份验证要求 = 单重身份验证| 定期监视此行为，并确保这是预期行为。 |
-| 发现未注册使用 MFA 的特权帐户。| 高| Azure Graph API| 对管理员帐户查询 IsMFARegistered eq false。 <br>[列出 credentialUserRegistrationDetails - Microsoft Graph beta 版本 | Microsoft Docs](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&tabs=http)| 进行审核与调查，以确定是有意为之还是疏忽所致。 |
-| 来自组织未运营的国家/地区的成功身份验证。| 中等| Azure AD 登录日志| 状态 = 成功<br>位置 = <unapproved country>| 监视不等于提供的城市名称的任何条目并发出警报。 |
+| 发现未注册使用 MFA 的特权帐户。| 高| Azure Graph API| 对管理员帐户查询 IsMFARegistered eq false。 <br>[列出 credentialUserRegistrationDetails - Microsoft Graph beta 版本 | Microsoft Docs](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http)| 进行审核与调查，以确定是有意为之还是疏忽所致。 |
+| 来自组织未运营的国家/地区的成功身份验证。| 中等| Azure AD 登录日志| 状态 = 成功<br>位置 = \<unapproved country\>| 监视不等于提供的城市名称的任何条目并发出警报。 |
 | 身份验证成功，会话被 CA 阻止。| 中等| Azure AD 登录日志| 状态 = 成功<br>－和－<br>错误代码 = 53003 – 失败原因，被 CA 阻止| 监视和调查身份验证成功但会话被 CA 阻止的情况。 |
 | 禁用旧式身份验证后身份验证成功。| 中等| Azure AD 登录日志| 状态 = 成功 <br>－和－<br>客户端应用程序 = 其他客户端、POP、IMAP、MAPI、SMTP、ActiveSync| 如果组织已禁用旧式身份验证，则监视成功执行旧式身份验证的情况并发出警报。 |
 
@@ -296,8 +296,8 @@ ms.locfileid: "114707491"
 
 | 要监视的内容| 风险级别| Where| 筛选器/子筛选器| 说明 |
 | - | - |- |- |- |
-| 使用单重身份验证的 MBI 和 HBI 应用的身份验证。| 低| Azure AD 登录日志| 状态 = 成功<br>－和－<br>应用 ID = <HBI app> <br>－和－<br>身份验证要求 = 单重身份验证。| 查看并确认此配置是否有意为之。 |
-| 一周或一年中国家/地区未执行正常业务操作的日期和时间进行的身份验证。| 低| Azure AD 登录日志| 捕获未按照正常操作日期\时间进行的交互身份验证。 <br>状态 = 成功<br>位置 = <location><br>日期/时间 = <not normal working hours>| 监视一周或一年中国家/地区未执行正常业务操作的身份验证日期和时间，并发出警报。 |
+| 使用单重身份验证的 MBI 和 HBI 应用的身份验证。| 低| Azure AD 登录日志| 状态 = 成功<br>－和－<br>应用 ID = \<HBI app\> <br>－和－<br>身份验证要求 = 单重身份验证。| 查看并确认此配置是否有意为之。 |
+| 一周或一年中国家/地区未执行正常业务操作的日期和时间进行的身份验证。| 低| Azure AD 登录日志| 捕获未按照正常操作日期\时间进行的交互身份验证。 <br>状态 = 成功<br>位置 = \<location\><br>日期/时间 = \<not normal working hours\>| 监视一周或一年中国家/地区未执行正常业务操作的身份验证日期和时间，并发出警报。 |
 | 可量化的成功登录增加情况。| 低| Azure AD 登录日志| 捕获跨板块成功身份验证的增加情况。 即，今天的成功总数比上周同一天高 10% 以上。| 如果没有设置的阈值，则监视成功身份验证是否增加 10% 或更高并发出警报。 |
 
 ## <a name="next-steps"></a>后续步骤
@@ -309,10 +309,10 @@ ms.locfileid: "114707491"
 
 [特权帐户的安全操作](security-operations-privileged-accounts.md)
 
-[Privileged Identity Management 安全操作](security-operations-privileged-identity-management.md)
+[Privileged Identity Management 的安全操作](security-operations-privileged-identity-management.md)
 
 [应用程序的安全操作](security-operations-applications.md)
 
 [设备的安全操作](security-operations-devices.md)
  
-[基础结构安全操作](security-operations-infrastructure.md)
+[基础结构的安全操作](security-operations-infrastructure.md)

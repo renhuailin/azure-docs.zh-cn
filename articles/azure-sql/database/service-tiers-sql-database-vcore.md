@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
-ms.date: 07/14/2021
+ms.date: 09/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3e80c1153737514575017685310b6e5306a47167
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a92dd67011d7ef7d5ad162983de51b98839c4a84
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730815"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621975"
 ---
 # <a name="vcore-purchase-model-overview---azure-sql-database"></a>vCore 购买模型概述 - Azure SQL 数据库 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,14 @@ vCore 购买模型中的服务层级选项包括“常规用途”、“业务�
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |它使用多个独立副本为商业应用程序提供最高级别的故障恢复能力，为每个数据库副本提供最高的 I/O 性能。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，提供更高的故障恢复能力。 |
 |存储|使用远程存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB|使用本地 SSD 存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB|可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
 |IOPS 和吞吐量（近似值）|**SQL 数据库**：请查看 [单一数据库](resource-limits-vcore-single-databases.md)和 [弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。|请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。|超大规模是具有多个级别缓存的多层体系结构。 有效的 IOPS 和吞吐量将取决于工作负载。|
-|可用性|1 个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](read-scale-out.md)|
-|备份|[读取访问异地冗余存储 (RA-GRS)](../../storage/common/geo-redundant-design.md)，1-35 天（默认为 7 天）|[RA-GRS](../..//storage/common/geo-redundant-design.md)，1-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
+|可用性|1 个副本，无读取缩放副本， <br/>区域冗余高可用性 (HA)（预览版）|3 个副本，1 个[读取缩放副本](read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](read-scale-out.md)|
+|备份|选择地理冗余、区域冗余\*或本地冗余\*备份存储，1 到 35 天保留期（默认为 7 天）|选择地理冗余、区域冗余\*或本地冗余\*备份存储，1 到 35 天保留期（默认为 7 天）|选择地理冗余、区域冗余\*\*或本地冗余备份存储\*\*，7 天保留期。<p>Azure 远程存储中基于快照的备份。 还原使用快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时）。|
 |内存中|不支持|支持|部分支持。 支持内存优化表类型、表变量和原生编译模块。|
 |||
 
+\* 预览版
+
+\*\*在预览版中，仅适用于新的超大规模数据库
 
 ### <a name="choosing-a-service-tier"></a>选择服务层级
 

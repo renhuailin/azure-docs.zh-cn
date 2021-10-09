@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: e071298ce1ed191f79e071f18916d8afba10d625
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: a0dd6e3e8f4c2a7645da1ceccf77f7607d2b84b3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478799"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656942"
 ---
 # <a name="connection-resilience"></a>连接复原能力
 
@@ -26,17 +26,19 @@ ms.locfileid: "123478799"
 
 ## <a name="configure-appropriate-timeouts"></a>配置适当的超时
 
-将客户端库配置为使用 10 到 15 秒的连接超时和 5 秒的命令超时 。 连接超时是指客户端等待与 Redis 服务器建立连接的时间。 大多数客户端库为命令超时（客户端等待 Redis 服务器做出响应的时间）使用另一种超时配置。
+在连接复原能力方面必须考虑两个超时值：[连接超时](#connect-timeout)和[命令超时](#command-timeout)。
 
-某些库的命令超时默认设置为 5 秒。 请根据自己的情况以及缓存中存储的值大小，考虑将此超时设置得更高或更低。
+### <a name="connect-timeout"></a>连接超时
 
-如果命令超时太小，则连接可能不稳定。 但是，如果命令超时太大，则应用程序可能需要等待很长时间才能确定命令是否将要超时。
+`connect timeout` 是指客户端等待与 Redis 服务器建立连接的时间。 将客户端库配置为使用 5 秒的 `connect timeout`，以便即使在 CPU 负载较高的情况下，系统也有足够的时间建立连接。
 
-将客户端库配置为使用至少 15 秒的连接超时，以便即使在 CPU 负载较高的情况下，系统也有足够的时间建立连接。 如果连接超时值很小，则无法保证在该期限内建立连接。
+如果 `connection timeout` 值很小，则无法保证在该期限内建立连接。 如果出现问题（客户端 CPU 负载过高、服务器 CPU 负载过高等），则使用很短的 `connection timeout` 值会导致连接尝试失败。 此行为通常会使问题变得更糟。 使用较短的超时不仅无助于解决问题，而且会加剧问题，这会强制系统重启尝试重新连接的进程，从而可能导致出现“连接 -> 失败 -> 重试”循环。
 
-如果出现问题（客户端 CPU 负载高、服务器 CPU 负载高等），则使用很短的连接超时值会导致连接尝试失败。 此行为通常会使问题变得更糟。 使用较短的超时不仅无助于解决问题，而且会加剧问题，这会强制系统重启尝试重新连接的进程，从而可能导致出现“连接 -> 失败 -> 重试”循环。
+### <a name="command-timeout"></a>命令超时
 
-我们通常建议将连接超时保留为 15 秒或更长。 让连接尝试在 15 或 20 秒后成功，比让它只是为了重试而快速失败更有利。 与最初让系统花费更长时间尝试连接相比，这种重试循环可能会导致服务中断的持续时间变长。
+大多数客户端库为 `command timeouts`（客户端等待 Redis 服务器做出响应的时间）使用另一种超时配置。 尽管我们建议在不到 5 秒的时间内进行初始设置，但请考虑根据你的方案和存储在缓存中的值的大小来设置 `command timeout` 较高或较低的值。
+
+如果 `command timeout` 太小，则连接可能不稳定。 但是，如果 `command timeout` 太大，则应用程序可能需要等待很长时间才能确定命令是否将要超时。
 
 ## <a name="avoid-client-connection-spikes"></a>避免出现客户端连接高峰
 
@@ -66,3 +68,9 @@ ms.locfileid: "123478799"
 ## <a name="idle-timeout"></a>空闲超时
 
 Azure Cache for Redis 目前的连接空闲超时为 10 分钟，因此客户端应用程序中的空闲超时设置应小于 10 分钟。 大多数常用客户端库都有一个配置设置，客户端库可通过此设置自动定期将 Redis `PING` 命令发送到 Redis 服务器。 但是，如果使用的客户端库没有这种类型的设置，则客户应用程序本身将负责保持连接的活动状态。
+
+## <a name="next-steps"></a>后续步骤
+
+- [开发的最佳做法](cache-best-practices-development.md)
+- [Azure Cache for Redis 开发常见问题解答](cache-development-faq.yml)
+- [故障转移和修补](cache-failover.md)

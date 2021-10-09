@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de0aa3f3149141ddacd7906297656d58b8fad24c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91631216"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633994"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
  
@@ -131,6 +131,8 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 - 请求资源的 IP 地址在密钥保管库的防火墙设置中未被批准。
 
 如果客户的应用程序未使用客户端 ID，但客户认为已使用，则往往会出现 HTTP 403。 这通常意味着，未为实际调用方标识正确设置访问策略。
+
+如果在向访问策略添加标识后立即收到 403 错误，可以通过添加定期重试来进行处理。
 
 ### <a name="troubleshooting-403"></a>排除故障 403
 

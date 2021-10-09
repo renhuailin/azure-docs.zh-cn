@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 1d0459e8ac0002f69ac0e4d33a921bd64fc385d5
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2d02399daf6a7ea56c41f936544697f9df91a62c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178108"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601266"
 ---
 # <a name="azure-storage-migration-overview"></a>Azure 存储迁移概述
 
@@ -53,8 +53,7 @@ ms.locfileid: "122178108"
 |--------------------------------------------|----------------------------------------------------------------------------------|
 | 选择目标存储服务            | - Azure Blob 存储和 Data Lake Storage<br>- Azure 文件存储<br>- Azure NetApp 文件<br>- ISV 解决方案 |
 | **选择迁移方法**                  | - 联机<br>- 脱机<br> - 上述两种方法的组合                                  |
-| **为作业选择最佳迁移工具** | - 商用工具（Azure 和 ISV）<br> - 开源                             
-
+| **为作业选择最佳迁移工具** | - 商用工具（Azure 和 ISV）<br> - 开源
 
 有多个商用 (ISV) 工具可帮助完成评估阶段。 请参阅[比较矩阵](../solution-integration/validated-partners/data-management/migration-tools-comparison.md)。
 
@@ -116,7 +115,9 @@ ms.locfileid: "122178108"
 
 基于块的设备迁移通常是在迁移虚拟机或物理主机的过程中完成的。 一个常见的错误认知是将块存储决策推迟到迁移之后。 在适当考虑工作负载要求的情况下提前做出这些决策可以更顺利地迁移到云中。
 
-若要了解可迁移的工作负载和可采用的方法，请参阅 [Azure 磁盘存储文档](../../virtual-machines/disks-types.md)，以及[磁盘存储产品页](https://azure.microsoft.com/services/storage/disks/#resources)上的资源。 可以了解哪些磁盘符合你的要求，以及[磁盘突发](../../virtual-machines/disk-bursting.md)等最新功能。 若要详细了解如何将虚拟机连同基于块的基础设备一起进行迁移，请参阅 [Azure Migrate](../../migrate/index.yml) 文档。
+若要了解可迁移的工作负载和可采用的方法，请参阅 [Azure 磁盘存储文档](../../virtual-machines/disks-types.md)，以及[磁盘存储产品页](https://azure.microsoft.com/services/storage/disks/#resources)上的资源。 可以了解哪些磁盘符合你的要求，以及[磁盘突发](../../virtual-machines/disk-bursting.md)等最新功能。 可通过两种方式迁移基于块的设备：
+- 若要将完整虚拟机连同基于块的基础设备一起迁移，请参阅 [Azure Migrate](../../migrate/index.yml) 文档
+- 若要仅迁移基于块的设备以及更复杂的用例，请使用 [Cirrus Migrate Cloud](../solution-integration/validated-partners/data-management/cirrus-data-migration-guide.md)。
 
 ## <a name="see-also"></a>另请参阅
 

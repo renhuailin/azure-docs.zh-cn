@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 8/24/2021
+ms.date: 9/13/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: fbd02fb70a16250d427afc2f60343ad6758ea8dc
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 0662431d950e0b65cce749697597e5ef9e9e8f3f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258675"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589219"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -67,8 +67,8 @@ ms.locfileid: "123258675"
 - 支持服务器重命名  
     - 如果重命名了已注册的服务器，Azure 文件同步将在门户中显示新的服务器名称。 如果在 v13 版本之前重命名了服务器，门户中的服务器名称现在将更新为显示正确的服务器名称。
 
-- 支持 Windows Server 2022 预览版  
-    - Windows Server 2022 预览版 20348 或更高版本现在支持 Azure 文件同步代理。
+- 对 Windows Server 2022 的支持  
+    - Windows Server 2022 现在支持 Azure 文件同步代理。
 
     > [!Note]  
     > Windows Server 2022 添加了对 TLS 1.3 的支持，而 TLS 1.3 目前不受 Azure 文件同步的支持。如果通过组策略管理 [TLS 设置](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)，则必须将服务器配置为支持 TLS 1.2。 
@@ -90,7 +90,7 @@ ms.locfileid: "123258675"
 - 如果代理版本低于版本 12.0，则需要重启现已安装 Azure 文件同步代理的服务器。
 - 代理安装包必须使用提升的（管理员）权限进行安装。
 - Nano Server 部署选项不支持此代理。
-- 此代理仅在 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 和 Windows Server 2022 预览版上受支持。
+- 此代理仅在 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 和 Windows Server 2022 上受支持。
 - 代理需要至少 2 GiB 的内存。 如果服务器在启用了动态内存的虚拟机中运行，则至少应当为该 VM 配置 2048 MiB 内存。 有关详细信息，请参阅[推荐使用的系统资源](file-sync-planning.md#recommended-system-resources)。
 - 存储同步代理 (FileSyncSvc) 服务不支持进行了系统卷信息 (SVI) 目录压缩的卷上的服务器终结点。 此配置会导致意外结果。
 

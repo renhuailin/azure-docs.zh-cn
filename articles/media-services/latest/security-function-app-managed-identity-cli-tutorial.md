@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 09/13/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6352c86581da356f4b2bab1a80dd463d502a9ae3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: dc05d6488978004eebee68b901214ab71f0fffd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481728"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656638"
 ---
 # <a name="tutorial-give-an-azure-function-app-access-to-a-media-services-account"></a>教程：向 Azure Functions 应用授予访问媒体服务帐户的权限
 
@@ -25,7 +25,7 @@ ms.locfileid: "110481728"
 
 本教程使用 2020-05-01 媒体服务 API。
 
-## <a name="sign-in-to-azure"></a>登录到 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 要使用本文中的任何命令，首先必须登录到要使用的订阅。
 
@@ -44,9 +44,9 @@ ms.locfileid: "110481728"
 
 ## <a name="resource-names"></a>资源名称
 
-在开始之前，确定要创建的资源名称。  为这些资源命名时应使其易于识别为一组，尤其是在完成测试后不打算再使用它们。 许多资源类型的命名规则是不同的，因此最好始终采用全小写形式。 例如，用“mediatest1rg”代表资源组名称，用“mediatest1stor”代表存储帐户名称。 在本文的每个步骤中使用相同的名称。
+在开始之前，确定要创建的资源名称。  为这些资源命名时应使其易于识别为一组，尤其是在完成测试后不打算再使用它们。 许多资源类型的命名规则是不同的，因此最好始终采用全小写形式。 例如，“mediatest1rg”表示资源组名称，而“mediatest1stor”表示存储帐户名称。 对本文中的每个步骤使用相同的名称。
 
-将在以下命令中引用这些名称。  所需资源名称有：
+你将看到以下命令中引用了这些名称。  所需资源名称包括：
 
 - your-resource-group-name
 - your-storage-account-name
@@ -73,13 +73,13 @@ ms.locfileid: "110481728"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-要创建的资源必须属于某个资源组。 首先创建资源组。 你将在媒体服务帐户的创建步骤和后续步骤中使用 `your-resource-group-name`。
+你将创建的资源必须属于资源组。 首先创建资源组。 你将在媒体服务帐户创建步骤和后续步骤中使用 `your-resource-group-name`。
 
 [!INCLUDE [Create a resource group with the CLI](./includes/task-create-resource-group-cli.md)]
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-要创建的媒体服务帐户必须具有与之关联的存储帐户。 首先为媒体服务帐户创建存储帐户。 你将在后续步骤中使用 `your-storage-account-name`。
+你将创建的媒体服务帐户必须具有与之关联的存储帐户。 首先为媒体服务帐户创建存储帐户。 你将在后续步骤中使用 `your-storage-account-name`。
 
 [!INCLUDE [Create a Storage account with the CLI](./includes/task-create-storage-account-cli.md)]
 
@@ -117,34 +117,35 @@ func new --name OnAir --template "HTTP trigger" --authlevel "anonymous"
 
 ## <a name="configure-the-functions-project"></a>配置函数项目
 
-### <a name="add-items-to-the-csproj-file"></a>将项添加到 .csproj 文件
+### <a name="install-media-services-and-other-extensions"></a>安装媒体服务和其他扩展
 
-在自动生成的“.csproj”文件中，将以下行添加到第一个 `<ItemGroup>`：
+在终端窗口中运行 dotnet add package 命令，在项目中安装所需的扩展包。 以下命令安装媒体服务和 Azure 标识包。
 
-```xml
-<PackageReference Include="Microsoft.Azure.Management.Fluent" Version="1.37.0" />
-<PackageReference Include="Microsoft.Azure.Management.Media" Version="3.0.4" />
+```bash
+dotnet add package Microsoft.Azure.Management.Media
+dotnet add package Azure.Identity
 ```
 
 ### <a name="edit-the-onaircs-code"></a>编辑 OnAir.cs 代码
 
 更改 `OnAir.cs` 文件。 将 `subscriptionId`、`resourceGroup` 和 `mediaServicesAccountName` 变量更改为之前确定的变量。
 
-```aspx-csharp
-using System.Threading.Tasks;
+```csharp
+using Azure.Core;
+using Azure.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Management.Media;
+using Microsoft.Azure.Management.Media.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Management.Media;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
-using Microsoft.Azure.Management.Media.Models;
+using Microsoft.Rest;
+using System.Threading.Tasks;
 
 namespace MediaServicesLiveMonitor
 {
-    public static class LatestAsset
+    public static class OnAir
     {
         [FunctionName("OnAir")]
         public static async Task<IActionResult> Run(
@@ -159,14 +160,18 @@ namespace MediaServicesLiveMonitor
             {
                 return new BadRequestObjectResult("Missing 'name' URL parameter");
             }
-            
-            var credentials = SdkContext.AzureCredentialsFactory.FromSystemAssignedManagedServiceIdentity(
-                MSIResourceType.AppService,
-                AzureEnvironment.AzureGlobalCloud);
 
-            var subscriptionId = "00000000-0000-0000-000000000000";    // Update
-            var resourceGroup = "<your-resource-group-name>";                                    // Update
-            var mediaServicesAccountName = "<your-media-services-account-name>";                    // Update
+            var credential = new ManagedIdentityCredential();
+            var accessTokenRequest = await credential.GetTokenAsync(
+                new TokenRequestContext(
+                    scopes: new string[] { "https://management.core.windows.net" + "/.default" }
+                    )
+                );
+            ServiceClientCredentials credentials = new TokenCredentials(accessTokenRequest.Token, "Bearer");
+
+            var subscriptionId = "00000000-0000-0000-000000000000";                 // Update
+            var resourceGroup = "<your-resource-group-name>";                       // Update
+            var mediaServicesAccountName = "<your-media-services-account-name>";    // Update
 
             var mediaServices = new AzureMediaServicesClient(credentials)
             {
@@ -179,7 +184,7 @@ namespace MediaServicesLiveMonitor
             {
                 return new NotFoundResult();
             }
-            
+
             return new OkObjectResult(liveEvent.ResourceState == LiveEventResourceState.Running ? "On air" : "Off air");
         }
     }
@@ -260,6 +265,6 @@ az ams live-event start live1
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算使用创建的资源，请删除资源组。
+如果不打算使用已创建的资源，请删除资源组。
 
 [!INCLUDE [Create a Media Services account with the CLI](./includes/clean-up-resources-cli.md)]

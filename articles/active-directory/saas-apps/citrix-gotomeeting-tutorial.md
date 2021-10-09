@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/16/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ce4e1942bc2b61a874a57d5ffefb388922f6e806
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 27e8c3bf2f54541d8c96528472fbcb8d092aeca3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112293898"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670607"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>教程：Azure Active Directory 与 GoToMeeting 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "112293898"
 * 让用户使用其 Azure AD 帐户自动登录到 GoToMeeting。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,6 +38,7 @@ ms.locfileid: "112293898"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * GoToMeeting 支持 **IDP** 发起的 SSO。
+* GoToMeeting 支持[自动用户预配](citrixgotomeeting-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -112,7 +113,7 @@ ms.locfileid: "112293898"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -143,15 +144,17 @@ ms.locfileid: "112293898"
 > [!NOTE]
 > 如果需要手动创建用户，请联系 [GoToMeeting 支持团队](https://support.logmeininc.com/gotomeeting)
 
+> [!NOTE]
+>GoToMeeting 还支持自动用户预配；有关如何配置自动用户预配的更多详细信息，请参阅[此处](./citrixgotomeeting-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 GoToMeeting。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 GoToMeeting 磁贴时，应当会自动登录到已为其设置了 SSO 的 GoToMeeting。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 GoToMeeting 磁贴时，应当会自动登录到已为其设置了 SSO 的 GoToMeeting。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 
 配置 GoToMeeting 后，即可强制实施会话控制，实时防止组织的敏感数据遭受外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。
-

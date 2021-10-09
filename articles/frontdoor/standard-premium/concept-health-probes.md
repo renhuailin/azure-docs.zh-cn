@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 30a8208babab2991c9d9e86cc419ac50e1530d7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a856ae7d38439d11ba0ddd65ebecdda7a3d2ce48
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098753"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750196"
 ---
 # <a name="azure-front-door-standardpremium-preview-health-probe-monitoring"></a>Azure Front Door 标准/高级（预览）运行状况探测监视
 
@@ -62,6 +62,8 @@ Azure Front Door 在所有算法中均使用相同的三步过程（如下所示
 
 1. 对于后端池中那些运行状况良好的后端，Front Door 还将额外度量和维护每个后端的延迟（往返时间）。
 
+> [!NOTE]
+> 如果单个终结点是多个后端池的成员，Azure Front Door 会优化发送到后端的运行状况探测的数量，以减少后端的负载。 将根据配置的最小采样间隔发送运行状况探测请求。 所有池中终结点的运行状况将由来自相同运行状况探测的响应确定。
 
 ## <a name="complete-health-probe-failure"></a>完成运行状况探测失败
 
@@ -75,4 +77,4 @@ Azure Front Door 在所有算法中均使用相同的三步过程（如下所示
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[创建 Front Door Standard/Premium](create-front-door-portal.md)。
+了解如何[创建 Front Door 标准版/高级版](create-front-door-portal.md)。

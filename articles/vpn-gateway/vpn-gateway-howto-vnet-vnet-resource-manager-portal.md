@@ -6,22 +6,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/21/2021
+ms.date: 09/23/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3e8c2846b58499e5aabdec80f8fcd75cab3e6eb5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 92ec3349f5e2e2f06fdbe7f56468a7145452276d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729496"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667058"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
-本文介绍如何使用 VNet 到 VNet 连接类型来连接虚拟网络 (VNet)。 虚拟网络可位于不同的区域和不同的订阅中。 从不同的订阅连接 VNet 时，订阅不需要与相同的 Active Directory 租户相关联。 
+本文介绍如何通过 Azure 门户使用 VNet 到 VNet 连接类型来连接虚拟网络 (VNet)。 虚拟网络可位于不同的区域和不同的订阅中。 从不同的订阅连接 VNet 时，订阅不需要与相同的 Active Directory 租户相关联。 这种类型的配置在两个虚拟网络网关之间创建连接。 本文不适用于 VNet 对等互连。 有关 VNet 对等互连，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)一文。 
 
 :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNet 到 VNet 关系图":::
 
-本文中的步骤适用于 Azure [资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)，并使用 Azure 门户。 可使用以下文章中所述的选项，通过不同的部署工具或模型创建此配置：
+可以使用各种工具创建此配置，具体取决于 VNet 的部署模型。 本文中的步骤适用于 Azure [资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)和 Azure 门户。 若要切换到不同的部署模型或部署方法文章，请使用下拉列表。 
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -41,7 +41,9 @@ ms.locfileid: "121729496"
 
 配置 VNet 到 VNet 连接是连接 VNet 的简单方式。 使用 VNet 到 VNet 连接类型 (VNet2VNet) 将一个虚拟网络连接到另一个虚拟网络类似于与本地位置建立站点到站点 IPsec 连接。 这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道，两者在通信时的运行方式相同。 但是，两者在本地网络网关的配置方式上有差别。 
 
-创建 VNet 到 VNet 连接时，不会自动创建和填充本地网络网关地址空间。 如果更新一个 VNet 的地址空间，另一个 VNet 会自动路由到更新的地址空间。 与创建站点到站点连接相比，创建 VNet 到 VNet 连接通常速度更快且更容易。
+创建 VNet 到 VNet 连接时，不会自动创建和填充本地网络网关地址空间。 如果更新一个 VNet 的地址空间，另一个 VNet 会自动路由到更新的地址空间。 与创建站点到站点连接相比，创建 VNet 到 VNet 连接通常速度更快且更容易。 但是，本地网络网关在此配置中不可见。 
+* 如果你知道要为本地网关指定其他地址空间，或计划稍后添加其他连接，并且需要调整本地网络网关，则应使用站点到站点步骤创建配置。 
+* VNet 到 VNet 连接不包括点到站点客户端池地址空间。 如果需要对点到站点客户端的传递路由，则在虚拟网络网关之间创建站点到站点连接，或使用 VNet 对等互连。
 
 ### <a name="site-to-site-ipsec"></a>站点到站点 (IPsec)
 
@@ -49,7 +51,10 @@ ms.locfileid: "121729496"
 
 ### <a name="vnet-peering"></a>VNet 对等互连
 
-也可以使用 VNet 对等互连来连接 VNet。 VNet 对等互连不使用 VPN 网关，并且具有不同的约束。 另外，[VNet 对等互连定价](https://azure.microsoft.com/pricing/details/virtual-network)的计算不同于 [VNet 到 VNet VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)的计算。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。
+也可以使用 VNet 对等互连来连接 VNet。
+* VNet 对等互连不使用 VPN 网关，并且具有不同的约束。
+* [VNet 对等互连定价](https://azure.microsoft.com/pricing/details/virtual-network)的计算方式不同于 [VNet 到 VNet VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)。
+* 有关 VNet 对等互连的详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)一文。
 
 ## <a name="why-create-a-vnet-to-vnet-connection"></a>为何创建 VNet 到 VNet 连接？
 

@@ -2,18 +2,18 @@
 title: 从 Azure IoT Central 中导出数据 | Microsoft Docs
 description: 如何使用新的数据导出功能将 IoT 数据导出到 Azure 和自定义云目标。
 services: iot-central
-author: viv-liu
-ms.author: viviali
+author: dominicbetts
+ms.author: dobett
 ms.date: 06/04/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 0435fece7394c0a1494e51581bce263cbf1e068a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4006a144dfba6a0332c69d160943294b3447ae7f
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461172"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153570"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出功能将 IoT 数据导出到云目标
 
@@ -140,14 +140,14 @@ ms.locfileid: "114461172"
     |--------------|------------------|
     |遥测|<ul><li>按设备名称、设备 ID、设备模板以及设备是否模拟进行筛选</li><li>筛选流以仅包含符合筛选条件的遥测数据</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的遥测数据</li><li>筛选流以仅包含消息属性符合筛选条件的遥测数据。 消息属性（也称为应用程序属性）将在每个遥测消息上的键值对包中发送，该消息由使用设备 SDK 的设备选择性发送 。 若要创建消息属性筛选器，请输入要查找的消息属性键，并指定条件。 只导出属性与指定筛选条件匹配的遥测消息。 [从 IoT 中心文档中详细了解应用程序属性](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
     |属性更改|<ul><li>按设备名称、设备 ID、设备模板以及设备是否模拟进行筛选</li><li>筛选流以仅包含符合筛选条件的属性更改</li></ul>|
-    |设备连接|<ul><li>按设备名称、设备 ID、设备模板以及设备是否模拟进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
+    |设备连接|<ul><li>按设备名称、设备 ID、设备模板、组织以及设备是否模拟进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
     |设备生命周期|<ul><li>按设备名称、设备 ID、设备模板以及设备是否预配、启用或模拟进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
     |设备模板生命周期|<ul><li>按设备模板进行筛选</li></ul>|
     
 1. （可选）使用额外的键值对元数据来扩充导出的消息。 以下扩充可用于遥测、属性更改、设备连接和设备生命周期数据导出类型：<a name="DataExportEnrichmnents"></a>
     - 自定义字符串：向每条消息添加一个自定义静态字符串。 输入任意键，并输入任意字符串值。
     - 属性，将添加到每条消息中：
-       - 设备元数据，例如设备名称、设备模板名称、是否启用、预配和模拟
+       - 设备元数据，例如设备名称、设备模板名称、是否启用、组织、预配和模拟。
        - 将当前设备报告的属性或云属性值添加到每条消息中。 如果导出的消息来自没有指定属性的设备，则导出的消息不会得到扩充。
 
 1. 添加新目标或你已经创建的目标。 选择“新建一个”链接，然后添加以下信息：

@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 关节, 应用程序, 第一个
-ms.openlocfilehash: bdf8ee7a14bf59a151dfa316b11159830b4f63b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7667157e90e9920130084e26c23a7628c7f55b11
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "76756238"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755675"
 ---
 # <a name="quickstart-build-an-azure-kinect-body-tracking-application"></a>快速入门：生成 Azure Kinect 人体跟踪应用程序
 
@@ -36,9 +36,9 @@ ms.locfileid: "76756238"
   - [k4abt_tracker_shutdown()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga94036969ef94cbc414c78b3f6d04bfa5.html#ga94036969ef94cbc414c78b3f6d04bfa5)
   - [k4abt_tracker_destroy()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gab2c9afca092130976cd66077c0557ed1.html#gab2c9afca092130976cd66077c0557ed1)
 
-## <a name="headers"></a>头文件
+## <a name="headers"></a>标头
 
-人体跟踪使用单个头文件 `k4abt.h`。 请包含此头文件以及 `k4a.h`。 确保所选的编译器已针对传感器 SDK 和人体跟踪 SDK `lib` 与 `include` 文件夹进行设置。 还需要链接到 `k4a.lib` 和 `k4abt.lib` 文件。 运行该应用程序需要 `k4a.dll`、`k4abt.dll`、`onnxruntime.dll` 和 `dnn_model.onnx` 位于应用程序执行路径中。
+人体跟踪使用单个标头 `k4abt.h`。 请包含此标头以及 `k4a.h`。 确保所选的编译器已针对传感器 SDK 和人体跟踪 SDK `lib` 与 `include` 文件夹进行设置。 还需要链接到 `k4a.lib` 和 `k4abt.lib` 文件。 运行该应用程序需要 `k4a.dll`、`k4abt.dll`、`onnxruntime.dll` 和 `dnn_model.onnx` 位于应用程序执行路径中。
 
 ```C
 #include <k4a/k4a.h>
@@ -85,12 +85,13 @@ k4abt_tracker_create(&sensor_calibration, tracker_config, &tracker);
 
 ```C
 // Capture a depth frame
-k4a_device_get_capture(device, &capture, TIMEOUT_IN_MS);
+k4a_capture_t sensor_capture;
+k4a_device_get_capture(device, &sensor_capture, TIMEOUT_IN_MS);
 ```
 
 ## <a name="enqueue-the-capture-and-pop-the-results"></a>将捕获排入队列并弹出结果
 
-跟踪器在内部维护一个输入队列和一个输出队列，以便更有效地以异步方式处理 Azure Kinect DK 捕获。 下一步是使用 `k4abt_tracker_enqueue_capture()` 函数将新的捕获添加到输入队列。 使用 `k4abt_tracker_pop_result()` 函数弹出输出队列的结果。 超时值与应用程序相关，控制队列等待时间。
+跟踪器在内部维护一个输入队列和一个输出队列，以便更有效地以异步方式处理 Azure Kinect DK 捕获。 下一步是使用 `k4abt_tracker_enqueue_capture()` 函数将新的捕获添加到输入队列。 使用 `k4abt_tracker_pop_result()` 函数弹出输出队列的结果。 超时值与应用程序相关，控制排队等待时间。
 
 第一个人体跟踪应用程序使用实时处理模式。 有关其他模式的详细说明，请参阅[获取人体跟踪结果](get-body-tracking-results.md)。
 
@@ -125,7 +126,7 @@ size_t num_bodies = k4abt_frame_get_num_bodies(body_frame);
 printf("%zu bodies are detected!\n", num_bodies);
 ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 最后一步是关闭人体跟踪器并释放人体跟踪对象。 此外，还需要停止并关闭设备。
 

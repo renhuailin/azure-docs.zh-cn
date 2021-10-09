@@ -1,15 +1,15 @@
 ---
-title: Azure CLI 脚本示例 - 在实验室中启动虚拟机 | Microsoft Docs
+title: Azure CLI 脚本示例 - 在实验室中启动虚拟机
 description: 此 Azure CLI 脚本在 Azure 开发测试实验室的实验室中启动虚拟机。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: f82d43fc212da034d978ee3d65236d806daeb008
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f28427c13587af7654f56fb728a44ea42cce5f5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764974"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557555"
 ---
 # <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>使用 Azure CLI 在 Azure 开发测试实验室的实验室中启动虚拟机
 

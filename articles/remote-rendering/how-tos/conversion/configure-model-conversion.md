@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 263531d24d50c27309163f0671a41ff7aacd36c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92205313"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601361"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
 
@@ -109,13 +109,13 @@ ms.locfileid: "92205313"
 ### <a name="scene-parameters"></a>场景参数
 
 * `sceneGraphMode` - 定义如何转换源文件中的场景图：
-  * `dynamic`（默认值）：文件中的所有对象都作为 API 中的[实体](../../concepts/entities.md)公开，并可独立转换。 运行时的节点层次结构与源文件中的结构相同。
-  * `static`：所有对象都在 API 中公开，但无法独立转换。
+  * `dynamic`（默认值）：文件中的所有对象都作为 API 中的[实体](../../concepts/entities.md)公开，并可任意转换和重新设置父级。 运行时的节点层次结构与源文件中的结构相同。
+  * `static`：与 `dynamic` 类似，但场景图中的对象不能在运行时动态地重新成为其他对象的父级。 对于具有许多移动部件的动态模型（例如“爆炸视图”），`dynamic`选项会生成一个更高效的模型来呈现，但`static`模式仍允许单个部件转换。 如果不需要动态重设父级，则`static`选项最适合具有多个单独部件的模型。
   * `none`：场景图折叠为一个对象。
 
-每个模式具有不同的运行时性能。 在 `dynamic` 模式下，即使没有移动部件，性能开销也会随图形中[实体](../../concepts/entities.md)的数量线性缩放。 仅当需要单独移动部件时（例如在“爆炸视图”动画中）使用 `dynamic` 模式。
+每个模式具有不同的运行时性能。 在 `dynamic` 模式下，即使没有移动部件，性能开销也会随图形中[实体](../../concepts/entities.md)的数量线性缩放。 仅当同时移动多个部件或大型子图（例如“炸视图”动画）时，才使用`dynamic`模式。
 
-`static` 模式将导出整个场景图，但此图内的部件相对于其根部件具有恒定的转换。 但是，仍可移动、旋转或缩放对象的根节点，而不产生显著的性能开销。 而且，[空间查询](../../overview/features/spatial-queries.md)将返回各个部件，并且可以通过[状态重写](../../overview/features/override-hierarchical-state.md)来修改每个部件。 在此模式下，每个对象的运行时开销可忽略不计。 它非常适用于仍需要按对象检查但不需要按对象转换的大型场景。
+`static`模式还会导出完整的场景图。 [空间查询](../../overview/features/spatial-queries.md)将返回各个部件，并且可以通过[状态重写](../../overview/features/override-hierarchical-state.md)来修改每个部件。 在此模式下，每个对象的运行时开销可忽略不计。 它适用于下面的大型场景：需要按对象检查，偶尔对单个部件进行转换更改，但不重新设置对象父级。
 
 `none` 模式的运行时开销最小，并且加载时间也稍微快一些。 在此模式下无法检查或转换单个对象。 用例可以是一开始没有有意义场景图的摄影测量模型。
 

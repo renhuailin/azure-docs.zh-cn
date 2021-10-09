@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 07/20/2021
 ms.author: mesrivas
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: 7e54c654428d86e77f3bad3a92ade0c33a278856
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 55585013df7c0fde6cb2eea1a9598d494cb4b2cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225061"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583630"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics 工作区的加密
 
@@ -33,7 +33,7 @@ Azure 服务的第一层加密是通过平台管理的密钥实现的。 默认�
 本部分将帮助你更好地了解如何在 Synapse 工作区中启用并强制实施客户管理的密钥加密。 此加密使用 Azure Key Vault 中生成的现有密钥或新密钥。 使用单个密钥对工作区中的所有数据进行加密。 Synapse 工作区支持 RSA 2048 和3072 字节大小的密钥，以及 RSA-HSM 密钥。
 
 > [!NOTE]
-> Synapse 工作区不支持使用 EC、EC-HSM、RSA-HSM 和 oct-HSM 密钥进行加密。 
+> Synapse 工作区不支持使用 EC、EC-HSM 和 oct-HSM 密钥进行加密。 
 
 以下 Synapse 组件中的数据是通过在工作区级别配置的客户管理的密钥加密的：
 * SQL 池
@@ -101,3 +101,4 @@ SQL 透明数据加密 (TDE) 可用于工作区中未启用双重加密的专用
 
 [使用内置的 Azure 策略实现 Synapse 工作区的加密保护](../policy-reference.md)
 
+[使用 ARM 模板创建 Azure 密钥保管库和密钥](../../key-vault/keys/quick-create-template.md)

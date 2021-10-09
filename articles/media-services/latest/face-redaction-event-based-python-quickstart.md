@@ -9,12 +9,12 @@ ms.workload: ''
 ms.topic: quickstart
 ms.date: 5/21/2021
 ms.author: inhenkel
-ms.openlocfilehash: c9cb10722e618c4476ed11d66b95e509030c38de
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: 198009abab7e1c5f663a454eb23debc55c81d7f3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138956"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730794"
 ---
 # <a name="event-based-face-redaction"></a>基于事件的人脸编修
 
@@ -28,12 +28,12 @@ ms.locfileid: "113138956"
 
 完成本快速入门后即可对视频中的人脸进行编修：
 
-<img src="./media/face-redaction-event-based-python-quickstart/output-redacted.gif" alt="Example output" style="border: 1px solid #C3C3C3;" /> 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/output-redacted.gif" alt-text="示例输出":::
 
 ## <a name="solution-overview"></a>解决方案概述
 
-<img src="./media/face-redaction-event-based-python-quickstart/architecture.png" alt="Architecture overview of solution" style="border: 1px solid #C3C3C3;" /> 
-          
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/architecture.png" alt-text="解决方案的体系结构概述":::
+
 本快速入门演示如何部署上文的解决方案概述中提到的解决方案。 本解决方案以一个存储帐户 (Azure Data Lake Storage Gen2) 开始，并且连接了一个事件侦听器（事件网格），当新的 .mp4 文件上传到存储帐户时便会触发 Azure Functions。 Azure Functions 将在 Azure 媒体服务将作业提交给预先配置的转换。 生成的编修视频将存储在 Blob 存储帐户中。
 
 ## <a name="prerequisites"></a>先决条件
@@ -131,9 +131,8 @@ az role assignment create --assignee $object_id --role "Storage Blob Data Reader
  
 ## <a name="enable-github-actions-pipeline"></a>启用 GitHub Actions 管道
  此存储库中的工作流文件包含执行此解决方案部署的步骤。 若要启动工作流，需要为你自己的存储库启用工作流。 若要启用工作流，请转到存储库的“操作”选项卡，然后选择“我了解我的工作流，继续并启用”。
- 
- <img src="./media/face-redaction-event-based-python-quickstart/activate-workflow.png" alt="Enable workflow" style="border: 1px solid #C3C3C3;" /> 
- 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/activate-workflow.png" alt-text="启用工作流":::
+
 启用 GitHub Actions 后，可在以下位置找到工作负载文件：[.github/workflows/main.yml](https://github.com/Azure-Samples/media-services-v3-python/blob/main/.github/workflows/main.yml)。  除了触发器之外，还有一个生成作业，其中有几个步骤。 包括以下步骤：
 - Env：此处定义了多个环境变量，引用我们之前添加的 GitHub 机密。
 - 读取环境文件：读取环境文件以用于生成作业。
@@ -141,30 +140,31 @@ az role assignment create --assignee $object_id --role "Storage Blob Data Reader
 - Azure 登录：此步骤使用 GitHub 机密以通过服务主体详细信息登录 Azure CLI。
 - 使用 Azure CLI 脚本文件部署 Azure 资源：运行用于预配 Azure 资源的部署脚本
 - 部署 Azure Functions 代码：此步骤将封装 Azure Functions 并部署在“./azure-function”目录中。 成功部署 Azure Functions 后，函数应该会显示在 Azure 门户中，名称为“EventGrid_AMSJob”：
-<img src="./media/face-redaction-event-based-python-quickstart/azurefunction.png" alt="Azure Function visible in Azure Portal" style="border: 1px solid #C3C3C3;" /> 
+
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/azurefunction.png" alt-text="Azure 门户中可见的 Azure 函数":::
 
 - 使用 Azure CLI 脚本文件配置 Azure 资源：如果一切正确，最后一步是配置部署的 Azure 服务以激活事件侦听器。
 
 启用工作流后，选择“部署 Azure 媒体服务 FaceRedaction 解决方案”工作流，然后选择“运行工作流”。 现在，将使用前面步骤中添加的变量来部署解决方案。 等待几分钟，并验证其是否成功运行。
 
-<img src="./media/face-redaction-event-based-python-quickstart/run-workflow.png" alt="Run workflow" style="border: 1px solid #C3C3C3;" /> 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/run-workflow.png" alt-text="运行工作流":::
 
 ## <a name="test-your-solution"></a>测试解决方案
 在 Azure 门户中转到 ADLS Gen2 的存储资源管理器。 将一个视频上传到 Raw 容器。 如果要查找测试视频，可以从[该网站](https://www.pexels.com/search/videos/group/)下载一个。 有关将视频上传到 ADLS Gen2 存储帐户的指导，请参见下图：
 
-<img src="./media/face-redaction-event-based-python-quickstart/upload-test-data.png" alt="Uploading Video" style="border: 1px solid #C3C3C3;" /> 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/upload-test-data.png" alt-text="正在上传视频":::
 
 在 Azure 媒体服务实例中验证是否创建了作业，方法是：访问 Azure 媒体服务帐户并从菜单中选择“转换 + 作业”。 然后选择人脸编修器转换。
 
-<img src="./media/face-redaction-event-based-python-quickstart/ams-transform.png" alt="AMS Transform" style="border: 1px solid #C3C3C3;" /> 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/ams-transform.png" alt-text="AMS 转换":::
 
 此页应显示 Azure Functions 触发的作业。 作业可以已经完成，也可能仍在处理。
 
-<img src="./media/face-redaction-event-based-python-quickstart/ams-job.png" alt="AMS Job" style="border: 1px solid #C3C3C3;" />  
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/ams-job.png" alt-text="AMS 作业":::
 
 通过选择作业，你将看到有关特定作业的一些详细信息。 如果选择“输出资产名称”，然后使用存储容器的链接（链接到存储容器），则在作业完成时可以看到已处理的视频。
 
-<img src="./media/face-redaction-event-based-python-quickstart/ams-output.png" alt="AMS Output" style="border: 1px solid #C3C3C3;" />  
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/ams-output.png" alt-text="AMS 输出":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

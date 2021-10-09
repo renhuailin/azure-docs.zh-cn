@@ -1,18 +1,18 @@
 ---
 title: 注册和扫描 Azure SQL 数据库托管实例
-description: 本教程介绍如何扫描 Azure SQL 数据库托管实例
+description: 本教程介绍如何在 Azure Purview 中扫描 Azure SQL 数据库托管实例。
 author: hophanms
 ms.author: hophan
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
 ms.date: 05/08/2021
-ms.openlocfilehash: 06f3ee8b820d732c0f605adc3201cff57fa70b42
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c633d95c615298876a8bedd76ecbd9c96a4f54da
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739081"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209676"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>注册和扫描 Azure SQL 数据库托管实例
 
@@ -31,8 +31,9 @@ Azure SQL 数据库托管实例数据源支持以下功能：
 - 创建新 Purview 帐户（如果还没有该帐户）。
 
 - [在 Azure SQL 托管实例中配置公共终结点](../azure-sql/managed-instance/public-endpoint-configure.md)
+
     > [!Note]
-    > 你的组织必须能够允许公共终结点，因为 Purview 尚不支持专用终结点。 如果使用专用终结点，扫描将不会成功。
+    > 现在，支持使用 Azure Purview 引入专用终结点和自承载集成运行时 VM 扫描配置了专用终结点的 Azure SQL 数据库托管实例。 有关与先决条件相关的详细信息，请参阅[私密且安全地连接到你的 Azure Purview 并扫描数据源](./catalog-private-link-end-to-end.md)
 
 ### <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 

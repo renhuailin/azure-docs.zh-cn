@@ -2,13 +2,13 @@
 title: 排查连接问题 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何排查 Azure 事件中心的连接问题。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 48c96cf2e0a142c96e1413bb62730ef2e31aa7ca
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.date: 09/15/2021
+ms.openlocfilehash: a07b98f9913e0ef82edd88e2aa0dad6c5f3b238b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416627"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600411"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>排查连接问题 - Azure 事件中心
 客户端应用程序无法连接到事件中心的原因有很多。 你遇到的连接问题可能是永久性的，也可能是暂时性的。 如果问题一直发生（永久性的），则可能需要检查连接字符串、组织的防火墙设置、IP 防火墙设置、网络安全设置（服务终结点、专用终结点等），等等。 对于暂时性问题，升级到最新版本的 SDK、运行命令来检查丢弃的数据包以及获取网络跟踪可能有助于解决问题。 
@@ -28,8 +28,8 @@ ms.locfileid: "112416627"
 
 [!INCLUDE [event-hubs-connectivity](./includes/event-hubs-connectivity.md)]
 
-### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>验证网络安全组中是否允许使用 AzureEventGrid 服务标记
-如果你的应用程序在子网内运行，并且存在关联的网络安全组，请确认是否允许 Internet 出站或是否允许 AzureEventGrid 服务标记。 请参阅[虚拟网络服务标记](../virtual-network/service-tags-overview.md)并搜索 `EventHub`。
+### <a name="verify-that-eventhub-service-tag-is-allowed-in-your-network-security-groups"></a>验证网络安全组中是否允许使用 EventHub 服务标记
+如果你的应用程序在子网内运行，并且存在关联的网络安全组，请确认是否允许 Internet 出站或是否允许 EventHub 服务标记。 请参阅[虚拟网络服务标记](../virtual-network/service-tags-overview.md)并搜索 `EventHub`。
 
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>检查应用程序是否需要在 vnet 的特定子网中运行
 确认应用程序在有权访问该命名空间的虚拟网络子网中运行。 如果没有，请在有权访问命名空间的子网中运行应用程序或将运行应用程序的计算机的 IP 地址添加到 [IP 防火墙](event-hubs-ip-filtering.md)。 

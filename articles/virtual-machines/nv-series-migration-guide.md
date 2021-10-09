@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 3fc9607a6882ddae42c2606abb60903dbcb05108
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 3f37a9c14a66156b908eb1d046f98301add07c20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436457"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562376"
 ---
 # <a name="nv-series-migration-guide"></a>NV 系列迁移指南
 
@@ -90,7 +90,7 @@ NVv4 VM 目前只支持 Windows 来宾操作系统。 有关最新的规格，�
 
 ### <a name="resize-the-current-vm"></a>重设当前 VM 大小
 
-可以[通过 Azure 门户或 PowerShell 重设 VM 大小](./windows/resize-vm.md)。 还可[使用 Azure CLI 重设 VM 大小](./linux/change-vm-size.md)。 
+可以[重设 VM 大小](resize-vm.md)。
 
 ## <a name="faq"></a>常见问题解答
 问：应为目标 VM 大小使用哪种 GPU 驱动程序？ 

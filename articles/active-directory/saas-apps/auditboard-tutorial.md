@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/10/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: fbe50ecdc116a203b09d023312a18686f43b7aef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 928aa9bc71fefce85ffea5dbf230a9b072b7070c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099993"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>教程：Azure Active Directory 与 AuditBoard 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "110099993"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * AuditBoard 支持 SP 和 IDP 发起的 SSO。
+* AuditBoard 支持[自动用户预配](auditboard-provisioning-tutorial.md)。
 
 ## <a name="add-auditboard-from-the-gallery"></a>从库中添加 AuditBoard
 
@@ -75,7 +76,7 @@ ms.locfileid: "110099993"
 
 4. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置部分”中执行以下步骤   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
 
@@ -122,6 +123,8 @@ ms.locfileid: "110099993"
 
 在本部分中，需在 AuditBoard 中创建名为 Britta Simon 的用户。 请与 [AuditBoard 支持团队](mailto:support@auditboard.com)协作，将用户添加到 AuditBoard 平台。 使用单一登录前，必须先创建并激活用户。
 
+AuditBoard 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./auditboard-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -136,7 +139,7 @@ ms.locfileid: "110099993"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 AuditBoard。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“AuditBoard”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页，从中可以启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 AuditBoard。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“AuditBoard”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页，从中可以启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 AuditBoard。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

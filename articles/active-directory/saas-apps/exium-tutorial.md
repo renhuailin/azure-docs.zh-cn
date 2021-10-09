@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/16/2021
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: bcbf68523fda8ccd8041d5147f9904f0b8520521
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 36829f44d818356bbe61fe3f37265c2a76ed6f8a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147960"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617975"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exium"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Exium 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "108147960"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Exium 支持 **SP** 发起的 SSO。
+* Exium 支持[自动用户预配](exium-provisioning-tutorial.md)。
 
 ## <a name="adding-exium-from-the-gallery"></a>从库中添加 Exium
 
@@ -85,7 +86,7 @@ ms.locfileid: "108147960"
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Exium 客户端支持团队](mailto:support@exium.net)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -149,6 +150,9 @@ ms.locfileid: "108147960"
 
     ![用于创建具有保存按钮的测试用户字段的屏幕截图](./media/exium-tutorial/add-user-2.png)
 
+> [!NOTE]
+>Exium 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./exium-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -157,7 +161,7 @@ ms.locfileid: "108147960"
 
 * 直接转到 Exium 登录 URL，并从这里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Exium 磁贴时，会重定向到 Exium 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Exium 磁贴时，会重定向到 Exium 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

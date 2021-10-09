@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f76a82715bd4599b17e0ea164a1282b92a13aa3c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 6375d522089f7ff4d77761f941a8b754cfa528bc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287529"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748680"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端密钥库
 
@@ -141,15 +141,15 @@ python kv_keys.py
 ```
 
 - 如果遇到权限错误，请确保已运行 [`az keyvault set-policy` 命令](#grant-access-to-your-key-vault)。
-- 重新运行具有相同密钥名称的代码可能会产生错误：“(冲突)密钥 <name> 当前处于已删除但可恢复的状态。” 使用其他密钥名称。
+- 重新运行具有相同密钥名称的代码可能会产生错误：“(冲突)密钥 \<name\> 当前处于已删除但可恢复的状态。” 使用其他密钥名称。
 
 ## <a name="code-details"></a>代码详细信息
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
 
-本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 ['DefaultAzureCredential()' ](/python/api/azure-identity/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关详细信息，请参阅[默认 Azure 凭据身份验证](https://docs.microsoft.com/python/api/overview/azure/identity-readme)。 
+在下面的示例中，密钥保管库的名称扩展为密钥保管库 URI，格式为 `https://\<your-key-vault-name\>.vault.azure.net`。 此示例使用 ['DefaultAzureCredential()' ](/python/api/azure-identity/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关详细信息，请参阅[默认 Azure 凭据身份验证](/python/api/overview/azure/identity-readme)。 
 
 
 ```python

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9e16037c1fc0b2addc825718e4fecb13a270129
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 31759756a886093c53d1537db609bfc58fb4af8b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541560"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610458"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -153,7 +153,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 我们强烈建议在发布音频数据时进行流式（分块）上传，这可以显著减少延迟。 请参阅[不同编程语言的示例代码](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)以了解如何启用流式处理。
 
 >[!NOTE]
-> 发音评估功能当前支持 `en-US` 语言，可用于所有[语音转文本区域](regions.md#speech-to-text)。 对 `en-GB` 和 `zh-CN` 语言的支持现为预览版，可用于 `westus`、`eastasia` 和 `centralindia` 区域。
+> 发音评估功能当前支持 `en-US` 语言，可用于所有[语音转文本区域](regions.md#speech-to-text)。 对 `en-GB` 和 `zh-CN` 语言的支持现为预览版。
 
 ### <a name="sample-request"></a>示例请求
 

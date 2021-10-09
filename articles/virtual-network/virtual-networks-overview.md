@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 927ff80a544ef8fbff348aeb8781f8a55c84e109
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 57d719f5ea56123c4b237e48f07f1e82fd885b3b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061887"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624797"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
@@ -74,6 +74,9 @@ Azure 资源采用下述某种方式安全地相互通信：
 ## <a name="azure-vnet-limits"></a>Azure VNet 的限制
 
 可部署的 Azure 资源数存在一定的限制。 大多数 Azure 网络限制设置在最大值。 但是，你可以根据 [VNet 限制页](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)中的指定，[提高某些网络限制](../azure-portal/supportability/networking-quota-requests.md)。 
+
+## <a name="virtual-networks-and-availability-zones"></a>虚拟网络和可用性区域
+虚拟网络和子网跨越一个区域中的所有可用性区域。 无需按可用性区域来划分它们以容纳区域性资源。 例如，如果你配置了一个区域 VM，则在为该 VM 选择可用性区域时，无需考虑虚拟网络。 对于其他区域性资源也是如此。
 
 ## <a name="pricing"></a>定价
 

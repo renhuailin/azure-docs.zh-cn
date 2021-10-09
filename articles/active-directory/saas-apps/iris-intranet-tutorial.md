@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 59e7d6dcf8a5b384b82c5d3294d5f627d990fb7b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d6925b0f4e9f871444e85a1369be541fd1172af9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745468"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iris-intranet"></a>教程：Azure Active Directory 与 Iris Intranet 集成
 
@@ -40,6 +40,8 @@ ms.locfileid: "111745468"
 * Iris Intranet 支持 SP 发起的 SSO。
 
 * Iris Intranet 支持实时用户预配。
+
+* Iris Intranet 支持[自动用户预配](iris-intranet-provisioning-tutorial.md)。
 
 ## <a name="add-iris-intranet-from-the-gallery"></a>从库中添加 Iris Intranet
 
@@ -96,7 +98,7 @@ ms.locfileid: "111745468"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -120,6 +122,8 @@ ms.locfileid: "111745468"
 
 在本部分，我们将在 Iris Intranet 中创建名为 Britta Simon 的用户。 Iris Intranet 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Iris Intranet 中尚不存在用户，身份验证后会创建一个新用户。
 
+Iris Intranet 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./iris-intranet-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -128,7 +132,7 @@ ms.locfileid: "111745468"
 
 * 直接转到 Iris Intranet 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Iris Intranet”磁贴时，会重定向到 Iris Intranet 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Iris Intranet”磁贴时，会重定向到 Iris Intranet 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

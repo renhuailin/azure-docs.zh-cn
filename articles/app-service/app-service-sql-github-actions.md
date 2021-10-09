@@ -1,19 +1,19 @@
 ---
-title: 教程：使用 GitHub Actions 部署到用于容器的应用服务并连接到数据库
+title: 教程：使用 GitHub Actions 部署到应用服务自定义容器并连接到数据库
 description: 了解如何使用 GitHub Actions 将 ASP.NET Core 应用部署到 Azure 和 Azure SQL 数据库
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: jukullam
 ms.custom: github-actions-azure
-ms.openlocfilehash: f8048dab26451fea85b52caa3ffdc27d7e0a677a
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 24001d71721f2e3ee243248705ed8d4b64571c83
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111894139"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675395"
 ---
-# <a name="tutorial-use-github-actions-to-deploy-to-app-service-for-containers-and-connect-to-a-database"></a>教程：使用 GitHub Actions 部署到用于容器的应用服务并连接到数据库
+# <a name="tutorial-use-github-actions-to-deploy-to-an-app-service-custom-container-and-connect-to-a-database"></a>教程：使用 GitHub Actions 部署到应用服务自定义容器并连接到数据库
 
 本教程逐步介绍如何设置一个 GitHub Actions 工作流，以使用 [Azure SQL 数据库](../azure-sql/database/sql-database-paas-overview.md)后端部署容器化的 ASP.NET Core 应用程序。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。 首先，你将使用 [ARM 模板](../azure-resource-manager/templates/overview.md) GitHub Actions 工作流创建 Azure资源。
 

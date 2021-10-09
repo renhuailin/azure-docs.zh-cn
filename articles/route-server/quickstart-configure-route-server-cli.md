@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 1682a1b80f3b2d85e0d263b9ea2648da2b57a561
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ca21e367752451f01c7ee8d1fc9596cfcb74029b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430893"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094436"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建并配置路由服务器 
 
@@ -20,7 +20,10 @@ ms.locfileid: "123430893"
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure CLI 的路由服务器部署环境示意图。" border="false":::
 
-##  <a name="prerequisites"></a>先决条件 
+> [!IMPORTANT]
+> 如果在 9 月 1 日之前创建了 Azure 路由服务器，并且未关联公共 IP 地址，则需要重新创建路由服务器，以便它可以获取 IP 地址用于管理目的。
+
+##  <a name="prerequisites"></a>必备条件 
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 * 请确保具有最新的 Azure CLI，或者可以在门户中使用 Azure Cloud Shell。 

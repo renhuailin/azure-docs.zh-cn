@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/26/2021
 ms.author: hobruche
-ms.openlocfilehash: 6e486623db264ec02c0a15abf11366acfcba8d5c
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 71dde25230c2a474a42872f7b2830c60439738c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072460"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630767"
 ---
 # <a name="sap-cloud-appliance-library"></a>SAP Cloud Appliance Library
 
@@ -31,14 +31,18 @@ ms.locfileid: "122072460"
 
 | 解决方案 | 链接 |
 | -------------- | :--------- | 
-| SAP S/4HANA 2020 FPS02，完全激活的设备  2021 年 4 月 20 日 | [创建实例](https://cal.sap.com/registration?sguid=d48af08b-e2c6-4409-82f8-e42d5610e918&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
-|此设备包含 SAP S/4HANA 2020 (FPS02)（其中带有预激活的 SAP Best Practices for SAP S/4HANA 核心功能），以及适用于 Service、Master Data Governance (MDG)、Transportation Mgmt. (TM)、Portfolio Mgmt. (PPM)、Human Capital Management (HCM)、Analytics、Migration Cockpit 等工具的进一步方案。 用户访问通过 SAP Fiori、SAP GUI、SAP HANA Studio、Windows 远程桌面或后端操作系统进行，以实现完全的管理访问。 |  [详细信息](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/d48af08b-e2c6-4409-82f8-e42d5610e918) | 
+| SAP S/4HANA 2020 FPS02，已完全激活的设备  2021 年 7 月 27 日 | [创建实例](https://cal.sap.com/registration?sguid=d48af08b-e2c6-4409-82f8-e42d5610e918&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|此设备包含 SAP S/4HANA 2020 (FPS02)（其中带有预激活的 SAP Best Practices for SAP S/4HANA 核心功能），以及适用于 Service、Master Data Governance (MDG)、Transportation Mgmt. (TM)、Portfolio Mgmt. (PPM)、Human Capital Management (HCM)、Analytics、Migration Cockpit 等工具的进一步方案。 用户访问通过 SAP Fiori、SAP GUI、SAP HANA Studio、Windows 远程桌面或后端操作系统进行，以实现完全的管理访问。 |  [详细信息]( https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/d48af08b-e2c6-4409-82f8-e42d5610e918) |
 | SAP S/4HANA 2020 FPS01，完全激活的设备  2021 年 4 月 20 日 | [创建实例](https://cal.sap.com/registration?sguid=a0b63a18-0fd3-4d88-bbb9-4f02c13dc343&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 |此设备包含 SAP S/4HANA 2020 (FPS01)（其中带有预激活的 SAP Best Practices for SAP S/4HANA 核心功能），以及适用于 Service、Master Data Governance (MDG)、Transportation Mgmt. (TM)、Portfolio Mgmt. (PPM)、Human Capital Management (HCM)、Analytics、Migration Cockpit 等工具的进一步方案。 用户访问通过 SAP Fiori、SAP GUI、SAP HANA Studio、Windows 远程桌面或后端操作系统进行，以实现完全的管理访问。 |  [详细信息](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/a0b63a18-0fd3-4d88-bbb9-4f02c13dc343) | 
 | SAP S/4HANA 2020 FPS02  2021 年 6 月 10 日 | [创建实例](https://cal.sap.com/registration?sguid=c7cff775-cbf7-4cd1-a907-6eeca95a0946&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 | 此解决方案作为标准 S/4HANA 系统安装提供，包括一个用于轻松地进行前端访问的远程桌面。 它在客户端 100 中包含了已预配置且激活的 SAP S/4HANA Fiori UI，并且根据 SAP 说明 3045635“在 SAP S/4HANA 2020 FPS02 中为 SAP Fiori 进行快速激活”激活了必备组件。 请参阅“详细信息”链接。 | [详细信息](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/c7cff775-cbf7-4cd1-a907-6eeca95a0946) | 
 | SAP BW/4HANA 2.0 SP07，包括 BW/4HANA Content 2.0 SP06  2020 年 2 月 24 日 | [创建实例](https://cal.sap.com/registration?sguid=0f2f20f4-d012-4f76-81af-6ff15063db66&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 |此解决方案提供对 SAP BW/4HANA 的见解。 SAP BW/4HANA 是针对 HANA 进行了优化的下一代数据仓库。 除了基本的 BW/4HANA 选项外，该解决方案还提供了一系列 HANA 优化 W/4HANA 内容，以及 SAP 数据仓库云混合方案的下一步骤。 因为系统已预先配置，所以你可以直接开始实现你的方案。| [详细信息](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/0f2f20f4-d012-4f76-81af-6ff15063db66) | 
+| SAP Business One 10.0 PL02，适用于 SAP HANA 的版本 2020 年 8 月 4 日  | [创建实例](https://cal.sap.com/registration?sguid=371edc8c-56c6-4d21-acb4-2d734722c712&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|SAP Business One 得到了 170 多个国家/地区中超过 70,000 家中小型企业的信任，是一种灵活、经济并且可缩放的 ERP 解决方案，具备 SAP HANA 的功能。 该解决方案预配置为使用 31 天试用版授权，并且预先安装了你选择的某个演示数据库。 请参阅入门指南，以了解该解决方案的范围以及如何轻松添加新的演示数据库。 |  [详细信息](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/371edc8c-56c6-4d21-acb4-2d734722c712) |
+| SAP Data Custodian v2106 的信息检测程序 2021 年 8 月 30 日  | [创建实例](https://cal.sap.com/registration?sguid=db44680c-8a2a-405d-8963-838db38fa7dd&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|SAP Data Custodian 的信息检测程序可用于自动对云资源进行数据标记。 信息检测程序会在基础结构资源中进行搜索，并确定这些资源是否包含某些类型的信息。 |  [详细信息](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/db44680c-8a2a-405d-8963-838db38fa7dd) |
 | SAP Yard Logistics 2009 for SAP S/4HANA  2021 年 7 月 28 日 | [创建实例](https://cal.sap.com/registration?sguid=9cdf4f13-73a5-4743-a213-82e0d1a68742&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 |使用 SAP Yard Logistics 应用程序运行更高效且能实现更高盈利的供应链物流。 使用一系列可视化和报告工具，让你最大程度地了解所有场流程并预览计划内工作负荷，因此你可以优化资源使用情况，并通过单个系统支持规划、执行和计费。|  [详细信息](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/9cdf4f13-73a5-4743-a213-82e0d1a68742) | 
 | SAP S/4HANA 2020 FPS02，完全激活的设备  2021 年 7 月 27 日 | [创建实例](https://cal.sap.com/registration?sguid=d48af08b-e2c6-4409-82f8-e42d5610e918&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) | 

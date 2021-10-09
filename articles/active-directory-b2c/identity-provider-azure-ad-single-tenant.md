@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7a213198421597e444a55c53d85cdb6e427425a3
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f3296d1c2d04111985bada09486315d72997b88d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178052"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571857"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -37,7 +37,7 @@ ms.locfileid: "122178052"
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ### <a name="verify-the-applications-publisher-domain"></a>验证应用程序的发布者域
-从 2020 年 11 月开始，新的应用程序注册在用户同意提示中会显示为未验证，除非[应用程序的发布者域已经过验证](../active-directory/develop/howto-configure-publisher-domain.md)，并且公司标识已使用 Microsoft 合作伙伴网络进行验证并且与应用程序相关联。 （[详细了解](../active-directory/develop/publisher-verification-overview.md)此更改。）请注意，对于 Azure AD B2C 用户流，发布者域仅在使用 [Microsoft 帐户](../active-directory-b2c/identity-provider-microsoft-account.md)或其他 Azure AD 租户作为标识提供者时才会显示。 为了满足这些新要求，请执行以下操作：
+从 2020 年 11 月开始，新的应用程序注册在用户同意提示中会显示为未验证，除非[应用程序的发布者域已经过验证](../active-directory/develop/howto-configure-publisher-domain.md)，并且公司标识已使用 Microsoft 合作伙伴网络进行验证并且与应用程序相关联。 （[详细了解](../active-directory/develop/publisher-verification-overview.md)此更改。）请注意，对于 Azure AD B2C 用户流，发布者域仅在使用 [Microsoft 帐户](../active-directory-b2c/identity-provider-microsoft-account.md)或其他 Azure AD 租户作为标识提供者时才会显示。 为了满足这些新要求，请执行下列操作：
 
 1. [使用 Microsoft 合作伙伴网络 (MPN) 帐户验证公司标识](/partner-center/verification-responses)。 此过程会验证有关贵公司和贵公司主要联系人的信息。
 1. 使用以下选项之一完成发布者验证过程，以便将 MPN 帐户与应用注册相关联：
@@ -49,7 +49,8 @@ ms.locfileid: "122178052"
 若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 Azure AD 帐户的特定 Azure AD 组织用户启用登录，则需要在 [Azure 门户](https://portal.azure.com)中创建应用程序。 有关详细信息，请参阅[将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用的是包含组织 Azure AD 租户的目录（例如，contoso.com）。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
+1. 请确保使用的是包含组织 Azure AD 租户（例如，contoso.com）的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“新注册”。
 1. 输入应用程序的 **名称**。 例如，`Azure AD B2C App`。
@@ -89,7 +90,8 @@ ms.locfileid: "122178052"
 
 ## <a name="configure-azure-ad-as-an-identity-provider"></a>将 Azure AD 配置为标识提供者
 
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“标识提供程序”，然后选择“新建 OpenID Connect 提供程序” 。
 1. 输入“名称”。 例如，输入“Contoso Azure AD”。
@@ -113,7 +115,7 @@ ms.locfileid: "122178052"
     - 显示名称：name
     - 给定名称：given_name
     - 姓氏：family_name
-    - 电子邮件：preferred_username
+    - **电子邮件**：*email*
 
 1. 选择“保存”。
 
@@ -130,7 +132,7 @@ ms.locfileid: "122178052"
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页面上，选择“Contoso Azure AD”以使用 Azure AD Contoso 帐户登录。
 
-如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
+如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 
@@ -140,7 +142,8 @@ ms.locfileid: "122178052"
 
 需将创建的应用程序密钥存储在 Azure AD B2C 租户中。
 
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“策略”下，选择“Identity Experience Framework”。 
 1. 选择“策略密钥”，然后选择“添加”。

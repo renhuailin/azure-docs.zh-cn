@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/25/2021
+ms.date: 08/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3342198600c3549a7ce5e1e52111233d4fa920d8
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 2b28456a15227ab41a2e4c3c07c6df9125409ca9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110164"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645353"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Envoy 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "113110164"
 * 让用户使用其 Azure AD 帐户自动登录到 Envoy。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -40,6 +40,8 @@ ms.locfileid: "113110164"
 * Envoy 支持 SP 发起的 SSO。
 
 * Envoy 支持实时用户预配。
+
+* Envoy 支持[自动用户预配](envoy-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -105,7 +107,7 @@ ms.locfileid: "113110164"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -154,6 +156,8 @@ ms.locfileid: "113110164"
 
 在本部分，我们将在 Envoy 中创建一个名为 Britta Simon 的用户。 Envoy 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 Envoy 中尚不存在用户，身份验证后会创建一个新用户。
 
+Envoy 还支持自动用户预配；有关如何配置自动用户预配的更多详细信息，请参阅[此处](./envoy-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -162,7 +166,7 @@ ms.locfileid: "113110164"
 
 * 直接转到 Envoy 登录 URL，并从这里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Envoy”磁贴时，系统会重定向到 Envoy 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Envoy”磁贴时，系统会重定向到 Envoy 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

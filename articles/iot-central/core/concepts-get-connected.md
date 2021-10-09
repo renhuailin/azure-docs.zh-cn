@@ -3,7 +3,7 @@ title: Azure IoT Central 中的设备连接 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 中的设备连接相关的重要概念
 author: dominicbetts
 ms.author: dobett
-ms.date: 1/15/2020
+ms.date: 09/07/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 0609b2e39576850665937246afa6954f2580d195
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: bf35868d67dab2cb48aee5c85b964f86abd912e3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449596"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653771"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -189,6 +189,16 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 ```json
 "@id": "dtmi:com:example:Thermostat;1"
 ```
+
+使用以下 DPS 有效负载将设备关联到设备模板：
+
+```json
+{
+  "modelId":"dtmi:com:example:TemperatureController;2"
+}
+```
+
+若要详细了解 DPS 有效负载，请参阅[教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)中使用的示例代码。
 
 ## <a name="device-status-values"></a>设备状态值
 

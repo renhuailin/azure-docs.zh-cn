@@ -9,18 +9,57 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 08/18/2021
-ms.openlocfilehash: 1f3ed6e3c661e0238b6a29284a2da7254edab6c4
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: f4c7c43c0406ed7a6c05c3d83e467bc335c43093
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824837"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628102"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro) 参考页。
 
 __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在页面更新时收到通知：`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-09-07"></a>2021-09-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1340"></a>适用于 Python v1.34.0 的 Azure 机器学习 SDK
+  + **azureml-automl-core**
+    + 添加了重新调整以前训练的预测管道的支持。
+    + 添加了针对预测用训练数据获取预测（样本内预测）的功能。
+  + **azureml-automl-runtime**
+    + 添加了从 AutoML 分类器模型的已部署终结点返回预测的概率的支持。
+    + 添加了一个预测选项，允许用户指定所有预测应为整数。
+    + 删除了目标列名，使其不再是使用 training_data_label_column_name
+    + 作为数据集输入的本地试验的模型说明功能名称的一部分。
+    + 添加了重新调整以前训练的预测管道的支持。
+    + 添加了针对预测用训练数据获取预测（样本内预测）的功能。
+  + **azureml-core**
+    + 添加了在表格数据集中设置流列类型、装载和下载流列的支持。
+    + 为 Kubernetes.attach_configuration(identity_type=None, identity_ids=None) 添加了新的可选字段，这些字段允许通过 SystemAssigned 或 UserAssigned 标识附加 KubernetesCompute。 调用 print(compute_target) 或 compute_target.serialize() 时将包含新的标识字段：identity_type、identity_id、principal_id 和 tenant_id/client_id。
+  + **azureml-dataprep**
+    + 添加了为表格数据集设置流列类型的支持。 添加了在表格数据集中装载和下载流列的支持。
+  + **azureml-defaults**
+    + 依赖项 `azureml-inference-server-http==0.3.1` 已添加到 `azureml-defaults` 中。
+  + **azureml-mlflow**
+    + 允许通过添加 `max_results` 和 `page_token` 可选参数对 list_experiments API 进行分页。 有关文档，请参阅 MLflow 官方文档。
+  + **azureml-sdk**
+    + 替换了依赖项，不再依赖 azureml-sdk 中的已弃用包 (azureml-train)。
+    + 将 azureml-responsibleai 添加到 azureml-sdk 附加项
+  + **azureml-train-automl-client**
+    + 公开 `AutoMLConfig` 中的 `test_data` 和 `test_size` 参数。 这些参数可用于在模型训练阶段完 
+    + 成后自动启动测试运行。 测试运行将使用最佳模型来计算预测，并将根据这些预测生成指标。
+
+## <a name="2021-08-24"></a>2021-08-24
+
+### <a name="azure-machine-learning-experimentation-user-interface"></a>Azure 机器学习试验用户界面
+  + 运行删除
+    + 运行删除是一项新功能，它允许用户从其工作区中删除一个或多个运行。
+    + 此功能可以通过定期直接从 UI 中删除运行和试验，来帮助用户减少存储成本和管理存储容量。
+  + 批量取消运行
+    + 批量取消运行是一项新功能，它允许用户从运行列表中选择一个或多个要取消的运行。 
+    + 此功能可帮助用户取消多个排队运行并在其群集上释放空间。
 
 ## <a name="2021-08-18"></a>2021-08-18
 

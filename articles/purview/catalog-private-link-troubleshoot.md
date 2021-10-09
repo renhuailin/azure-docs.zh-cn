@@ -6,18 +6,20 @@ ms.author: zeinam
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 09/02/2021
-ms.openlocfilehash: 89627b97a5c2e8ae068db18583fab38aeb6fe5f6
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: c077eb0c1639089fcc7196693a617e32c01d9a9a
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434549"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230449"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>对 Purview 帐户的专用终结点配置进行故障排除
 
-本指南总结与使用 Azure Purview 专用终结点相关的已知限制，并列出排除某些最常见相关问题的步骤和解决方案。 
+> [!IMPORTANT]
+> 如果在 2021 年 9 月 27 日 15:30 (UTC) 之前创建了 Purview 帐户的门户专用终结点，则需按[为门户专用终结点重新配置 DNS](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints) 中的详细说明执行所需操作。 必须在 2021 年 10 月 11 日之前完成这些操作，否则会导致现有门户专用终结点停止运行。
 
+本指南总结与使用 Azure Purview 专用终结点相关的已知限制，并列出排除某些最常见相关问题的步骤和解决方案。 
 
 ## <a name="known-limitations"></a>已知的限制
 
@@ -44,7 +46,7 @@ ms.locfileid: "123434549"
 
 2. 如果已部署门户专用终结点，确保同时部署帐户专用终结点。
 
-3. 如果已部署门户专用终结点，并在 Azure Purview 帐户中将“公用网络访问”设置为“拒绝”，则确保从内部网络启动 Azure Purview Studio。 
+3. 如果已部署门户专用终结点，并在 Azure Purview 帐户中将“公用网络访问”设置为“拒绝”，请确保从内部网络启动 [Azure Purview Studio](https://web.purview.azure.com/resource/)。
   <br>
     - 若要验证名称解析是否正确，可使用 NSlookup.exe 命令行工具查询 `web.purview.azure.com`。 结果必须返回一个属于门户专用终结点的专用 IP 地址。 
     - 若要验证网络连接，可以使用任何网络测试工具测试端口 443 的 `web.purview.azure.com` 终结点出站连接。 连接必须成功。    
@@ -140,14 +142,14 @@ ms.locfileid: "123434549"
 
 10. 如果已在本地网络中部署管理计算机和自承载集成运行时虚拟机，并已在自己的环境中设置 DNS 转发器，则在自己的环境中验证 DNS 和网络设置。 
 
-11. 如果使用引入专用终结点，则确保自承载集成运行时已在 Purview 帐户中成功注册，并同时在自承载集成运行时虚拟机和 Azure Purview Studio 中显示为正在运行。
+11. 如果使用引入专用终结点，请确保自承载集成运行时已在 Purview 帐户中成功注册，并同时在自承载集成运行时 VM 和 [Purview Studio](https://web.purview.azure.com/resource/) 中显示为“正在运行”。
 
 ## <a name="common-errors-and-messages"></a>常见错误和消息
 
 ### <a name="issue"></a>问题 
 运行扫描时，可能会收到以下错误消息：
 
-  ```Internal system error. Please contact support with correlationId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx System Error, contact support.```
+`Internal system error. Please contact support with correlationId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx System Error, contact support.`
 
 ### <a name="cause"></a>原因 
 这可能指示运行自承载集成运行时的虚拟机与 Azure Purview 受管理资源存储帐户或事件中心之间存在连接或名称解析相关问题。
@@ -159,10 +161,10 @@ ms.locfileid: "123434549"
 ### <a name="issue"></a>问题 
 运行新扫描时，可能会收到以下错误消息：
 
-  ```message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)```
+  `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>原因 
-这可能指示运行的自承载集成运行时的版本较旧。 如果已在 2021 年 8 月 18 日之后创建 Azure Purview 帐户，则需要使用自承载集成运行时 5.9.7885.3 版。
+这可能指示运行的自承载集成运行时的版本较旧。 如果 Azure Purview 帐户是在 2021 年 8 月 18 日之后创建的，则需要使用自承载集成运行时 5.9.7885.3 版。
 
 ### <a name="resolution"></a>解决方法 
 将自承载集成运行时升级到 5.9.7885.3 版。

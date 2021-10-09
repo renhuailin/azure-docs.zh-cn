@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 应用程序中单独管理设备 | Microsoft Docs
 description: 了解如何在 Azure IoT Central 应用程序中单独管理设备。 创建、删除和更新设备。
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/08/2021
+ms.date: 08/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 22d433a874e1fc53d8b034c3efe1eb2837df485c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0ca2190bf5994edec56dce638d7361d90d2da2de
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442597"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810672"
 ---
 # <a name="manage-individual-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理单个设备
 
@@ -29,13 +29,16 @@ ms.locfileid: "114442597"
 
 若要查看单个设备：
 
-1. 在左侧窗格中选择“设备”。 在此处可以看到所有设备和设备模板的列表。
+1. 在左侧窗格中选择“设备”。 此处显示了设备模板的列表，以及你的组织可以访问的所有设备的列表。
 
 1. 选择一个设备模板。
 
-1. 在“设备”页的右侧窗格中，可以看到从该设备模板创建的设备列表。 选择单个设备以查看该设备的“设备详细信息”页：
+1. 在“设备”页面的右侧窗格中，你会看到根据该设备模板创建的你的组织可以访问的设备的列表。 选择单个设备以查看该设备的“设备详细信息”页：
 
     :::image type="content" source="media/howto-manage-devices-individually/device-list.png" alt-text="显示设备列表的屏幕截图。":::
+
+    > [!TIP]
+    > 可使用此页上的筛选器工具来查看某个特定组织中的设备。
 
 ## <a name="add-a-device"></a>添加设备
 
@@ -51,9 +54,30 @@ ms.locfileid: "114442597"
 
 1. 将“模拟”开关切换为“打开”或“关闭”。 真实设备是指要连接到 Azure IoT Central 应用程序的物理设备。 模拟设备包含 Azure IoT Central 生成的示例数据。
 
+1. 如果应用程序使用组织，请选择该设备所属的组织。
+
+    > [!TIP]
+    > 可以设置要显示在组织下拉列表中的[默认组织](howto-create-organizations.md#default-organization)。
+
 1. 选择“创建”  。
 
 1. 此设备随即显示在此模板的设备列表中。 选择设备查看设备详细信息页，其中包含该设备的所有视图。
+
+## <a name="change-organization"></a>更改组织
+
+若要将设备移动到不同组织，对于源组织和目标组织都必须有访问权限。 若要移动设备，请执行以下操作：
+
+1. 在左侧窗格中选择“设备”。
+
+1. 在设备列表中选择要移动的设备。
+
+1. 选择“组织”。
+
+1. 为该设备选择新组织：
+
+    :::image type="content" source="media/howto-manage-devices-individually/change-device-organization.png" alt-text="显示如何将设备移动到新组织的屏幕截图。":::
+
+1. 选择“保存”。
 
 ## <a name="migrate-devices-to-a-template"></a>将设备迁移到模板
 

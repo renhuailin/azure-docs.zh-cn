@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d913d0312b75542fa52e73e68170e9a3b91cf5d
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 88597690ca4b3bf9cfd51b6e56eb9395df8ee1ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823342"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583665"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>了解在 Synapse 中执行常见任务所需的角色
 
@@ -27,7 +27,7 @@ ms.locfileid: "122823342"
 
 ### <a name="resource-management"></a>资源管理
 
-- 如果你是工作区的 Azure 所有者或参与者，则可以创建 SQL 池、Apache Spark 池和集成运行时。
+- 如果你是工作区的 Azure 所有者或参与者，则可以创建 SQL 池、Apache Spark 池和集成运行时。 使用 ARM 模板进行自动部署时，需要成为资源组的 Azure 参与者。
 - 如果你是工作区或该资源的 Azure 所有者或参与者，则可以暂停或缩放专用 SQL 池、配置 Spark 池或集成运行时。
 
 ### <a name="viewing-and-editing-code-artifacts"></a>查看和编辑代码项目

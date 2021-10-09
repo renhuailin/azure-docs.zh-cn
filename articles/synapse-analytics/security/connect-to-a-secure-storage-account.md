@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 02/10/2021
 ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 11127453c67a41dd4b5f8677d02a10f749f516f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 103aaa913511c8d61e8e2a28ede81973fca98d1a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745041"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774628"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>从 Synapse 工作区连接到安全 Azure 存储帐户
 
@@ -29,7 +29,13 @@ Azure 存储提供分层的安全模型，使你能够保护和控制对存储�
 ## <a name="access-a-secured-storage-account"></a>访问受保护的存储帐户
 Synapse 从不能包含在网络规则中的网络进行操作。 若要实现从工作区访问安全存储帐户，需要执行以下操作。
 
-* 创建一个与托管虚拟网络关联了的 Azure Synapse 工作区，并从该工作区创建托管专用终结点到安全存储帐户
+* 创建与托管虚拟网络关联了的 Azure Synapse 工作区，并从该工作区创建托管专用终结点到安全存储帐户。 
+
+    如果使用 Azure 门户来创建工作区，可以在“网络”选项卡下启用托管虚拟网络，如下所示。 如果启用托管的虚拟网络，或者，如果 Synapse 确定主存储帐户是安全存储帐户，则可以选择创建针对该安全存储帐户的托管专用终结点连接请求，如下所示。 存储帐户所有者将需要批准该连接请求，以便建立专用链接。 或者，如果在工作区中创建 Apache Spark 池的用户具有批准连接请求的足够权限，Synapse 将会批准此连接请求。
+![启用托管 VNet 和托管专用终结点](./media/connect-to-a-secure-storage-account/enable-managed-virtual-network-managed-private-endpoint.png) 
+    
+
+
 * 允许 Azure Synapse 工作区作为受信任的 Azure 服务访问安全存储帐户。 然后 Azure Synapse 作为受信任服务会使用强身份验证安全地连接到存储帐户。   
 
 ### <a name="create-a-synapse-workspace-with-a-managed-virtual-network-and-create-managed-private-endpoints-to-your-storage-account"></a>创建具有托管虚拟网络的 Synapse 工作区，并创建托管专用终结点到存储帐户

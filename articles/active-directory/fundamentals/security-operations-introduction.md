@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bef4e1b8f4524e9b883bfe4aa5ef7b2a0e2bcf83
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: df71173837075c786d7c8f9907e0ed3cac576b16
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746084"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676250"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory 安全操作指南
 
@@ -92,7 +92,7 @@ Microsoft 提供了许多产品和服务，可自定义 IT 环境以满足你的
 
    * [使用 Azure Active Directory 标识保护来调查风险](../identity-protection/howto-identity-protection-investigate-risk.md) 
 
-   * [将 Azure AD 标识保护数据连接到 Azure Sentinel](../../sentinel/connect-azure-ad-identity-protection.md)
+   * [将 Azure AD 标识保护数据连接到 Azure Sentinel](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 
 * Active Directory 域服务 (AD DS)
 
@@ -110,7 +110,7 @@ Microsoft 提供了许多产品和服务，可自定义 IT 环境以满足你的
 
 * [登录日志](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide)
+* [Microsoft 365 审核日志](/microsoft-365/compliance/auditing-solutions-overview)
 
 * [Azure Key Vault 日志](../../key-vault/general/logging.md?tabs=Vault)
 
@@ -158,7 +158,7 @@ Microsoft 提供了许多产品和服务，可自定义 IT 环境以满足你的
 
 * Azure AD Connect 同步引擎 - 本地组件，也称为同步引擎。 有关该功能的信息，请参阅 [Azure AD Connect 同步服务功能](../hybrid/how-to-connect-syncservice-features.md)。
 
-* 密码保护 DC 代理 – Azure 密码保护 DC 代理用于帮助监视和报告事件日志消息。 有关信息，请参阅 ../authentication/concept-password-ban-bad-on-premises.md。
+* 密码保护 DC 代理 – Azure 密码保护 DC 代理用于帮助监视和报告事件日志消息。 有关信息，请参阅[为 Active Directory 域服务强制实施本地 Azure AD 密码保护](../authentication/concept-password-ban-bad-on-premises.md)。 
 
 * 密码筛选器 DLL – DC 代理的密码筛选器 DLL 接收来自操作系统的用户密码验证请求。 筛选器将这些请求转发到在 DC 上本地运行的 DC 代理服务。 有关使用 DLL 的信息，请参阅[为 Active Directory 域服务强制实施本地 Azure AD 密码保护](../authentication/concept-password-ban-bad-on-premises.md)。 
 

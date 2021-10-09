@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 190f1eeb27d4e9a86b3104b977f1068a3da4d3b1
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d8f2176065b8a9726cc0496756a22ccefbf0f0c8
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123117263"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155451"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用程序
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -50,6 +50,10 @@ ms.locfileid: "123117263"
 - [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)。
 - [Git](https://www.git-scm.com/downloads)。 
 - [用于 Python 的 Azure Cosmos DB SQL API SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
+
+## <a name="important-update-on-python-2x-support"></a>Python 2.x 支持的重要更新
+
+从 2022 年 1 月 1 日开始，此 SDK 的新版本不支持 Python 2.x。 有关详细信息，请查看 [CHANGELOG](./sql-api-sdk-python.md)。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 

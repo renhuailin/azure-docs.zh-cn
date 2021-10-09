@@ -4,12 +4,12 @@ description: 本参考文章介绍了如何将视频分析器播放器小组件�
 ms.service: azure-video-analyzer
 ms.topic: reference
 ms.date: 06/01/2021
-ms.openlocfilehash: b70bfc9a10e357c6f1e64c1737fdb4c049b505f5
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: ffc17e756a303723fe1d21c6ba221fed31147eaa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037438"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620566"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>使用 Azure 视频分析器播放器小组件
 
@@ -30,89 +30,9 @@ ms.locfileid: "123037438"
 
 * 具有活动订阅的 Azure 帐户。 如果没有帐户，可[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [Visual Studio Code](https://code.visualstudio.com/) 或适用于 HTML 文件的其他编辑器。
-* [连续视频录制和播放](./use-continuous-video-recording.md)或[在边缘设备上检测移动并录制视频](./detect-motion-record-video-clips-cloud.md)。
-
-另外，建议熟悉以下资源：
-
-- [Web 组件](https://developer.mozilla.org/docs/Web/Web_Components)
-- [TypeScript](https://www.typescriptlang.org)
-
-## <a name="create-a-token"></a>创建令牌
-
-在本节中，你将创建一个 JSON Web 令牌 (JWT)，稍后将在本文中使用该令牌。 你将使用一个会生成 JWT 令牌的示例应用程序，它会提供创建访问策略所需的所有字段。
-
-> [!NOTE] 
-> 如果你知道如何基于 RSA 或 ECC 证书生成 JWT 令牌，可跳过此部分。
-
-1. 克隆 [AVA C# 示例存储库](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp)。 然后，前往 src/jwt-token-issuer 文件夹，并找到 JWTTokenIssuer 应用程序。
-
-    > [!NOTE] 
-    > 有关配置受众值的详细信息，请参阅[访问策略](./access-policies.md)。
-
-2. 打开 Visual Studio Code，然后转到你下载了 JWTTokenIssuer 应用程序的文件夹。 此文件夹应包含 \*.csproj 文件。
-3. 在“资源管理器”窗格中，转到 program.cs 文件。
-4. 在第 77 行，将受众更改为 Azure 视频分析器终结点，后跟 /videos/\*。 该消息应类似于：
-
-   ```
-   https://{Azure Video Analyzer Account ID}.api.{Azure Long Region Code}.videoanalyzer.azure.net/videos/*
-   ```
-
-   > [!NOTE] 
-   > 可以在 Azure 门户的视频分析器资源的概述部分找到视频分析器终结点。 本文后面的[列出视频资源](#list-video-resources)中将该值引用为 `clientApiEndpointUrl`。
-
-   :::image type="content" source="media/player-widget/client-api-url.png" alt-text="显示播放器小组件终结点的屏幕截图。":::
-    
-5. 在第 78 行，将颁发者更改为证书的颁发者值（例如，`https://contoso.com`）。
-6. 保存文件。 系统可能会提示以下消息：“jwt 令牌颁发者”中缺少用于生成和调试的必要资产。是否添加它们? 选择 **“是”** 。
-   
-   :::image type="content" source="media/player-widget/visual-studio-code-required-assets.png" alt-text="显示 Visual Studio Code 中所需资产提示的屏幕截图。":::
-   
-7. 打开命令提示符窗口，浏览到包含 JWTTokenIssuer 文件的文件夹。 运行以下两个命令：`dotnet build`，接着是 `dotnet run`。 如果你的 Visual Studio Code 上有 C# 扩展，还可以选择 F5 以运行 JWTTokenIssuer 应用程序。
-
-这将生成并运行应用程序。 生成应用程序后，它会创建一个自签名证书，并从该证书生成 JWT 令牌信息。 你还可以运行 JWTTokenIssuer.exe 文件，此文件位于生成了 JWTTokenIssuer 的目录的调试文件夹中。 运行应用程序的好处是可以指定输入选项，如下所示：
-
-- `JwtTokenIssuer [--audience=<audience>] [--issuer=<issuer>] [--expiration=<expiration>] [--certificatePath=<filepath> --certificatePassword=<password>]`
-
-JWTTokenIssuer 将创建 JWT 和以下必需的组件：
-
-- `Issuer`, `Audience`, `Key Type`, `Algorithm`, `Key Id`, `RSA Key Modulus`, `RSA Key Exponent`, `Token`
-
-请务必复制并保存这些值供以后使用。
-
-## <a name="create-an-access-policy"></a>创建访问策略
-
-访问策略定义了访问特定视频流的权限和持续时间。 在本教程中，你将在 Azure 门户中为视频分析器配置访问策略。  
-
-1. 登录到 Azure 门户，然后转到视频分析器帐户所在的资源组。
-1. 选择视频分析器资源。
-1. 在“视频分析器”下，选择“访问策略” 。
-
-   :::image type="content" source="./media/player-widget/portal-access-policies.png" alt-text="显示“访问策略”选项的屏幕截图。":::
-   
-1. 选择“新建”，然后输入以下信息：
-
-   - 访问策略名称：可以选择任何名称。
-
-   - 颁发者：此值必须与 JWT 颁发者一致。 
-
-   - 受众：JWT 的受众。 `${System.Runtime.BaseResourceUrlPattern}` 为默认值。 若要详细了解受众和 `${System.Runtime.BaseResourceUrlPattern}`，请参阅[访问策略](./access-policies.md)。
-
-   - **密钥类型**：RSA 
-
-   - 算法：支持的值为 RS256、RS384 和 RS512。
-
-   - 密钥 ID - 此 ID 从证书生成。 有关详细信息，请参阅[创建令牌](#create-a-token)。
-
-   - RSA 密钥模数：此值从证书生成。 有关详细信息，请参阅[创建令牌](#create-a-token)。
-
-   - RSA 密钥指数：此值从证书生成。 有关详细信息，请参阅[创建令牌](#create-a-token)。
-
-   :::image type="content" source="./media/player-widget/access-policies-portal.png" alt-text="显示访问策略门户的屏幕截图。"::: 
-   
-   > [!NOTE] 
-   > 这些值来自上一步中创建的 JWTTokenIssuer 应用程序。
-
-1. 选择“保存”。
+* [连续视频录制和播放](./use-continuous-video-recording.md)或[在边缘设备上检测移动并录制视频](./detect-motion-record-video-clips-cloud.md)
+* 创建[令牌](./access-policies.md#creating-a-token)
+* 创建[访问策略](./access-policies.md#creating-an-access-policy)
 
 ## <a name="list-video-resources"></a>列出视频资源
 
@@ -132,7 +52,7 @@ function getVideos()
 }
 ```
    > [!NOTE]
-   >`clientApiEndPoint` 和令牌是在[创建令牌](#create-a-token)这一部分中收集的。
+   >`clientApiEndPoint` 和令牌通过[创建令牌](./access-policies.md#creating-a-token)进行收集
 
 ## <a name="add-the-video-analyzer-player-component"></a>添加视频分析器播放器组件
 
@@ -161,6 +81,33 @@ function getVideos()
 1. 将视频加载到播放器中以开始。
    ```javascript
    avaPlayer.load();
+   ```
+   
+## <a name="add-the-zone-drawer-component"></a>添加区域抽屉组件
+
+1. 将 AVA-Zone-Drawer 元素添加到文档中：
+   ```html
+   <ava-zone-drawer width="720px" id="zoneDrawer"></ava-zone-drawer>
+   ```
+1. 获取指向页面中视频分析器区域抽屉的链接：
+   ```javascript
+   const zoneDrawer = document.getElementById("zoneDrawer");
+   ```
+1. 将区域抽屉加载到播放器：
+   ```javascript
+   zoneDrawer.load();
+   ```
+1. 若要创建和保存区域，必须在此处添加事件侦听器：
+   ```javascript
+   zoneDrawer.addEventListener('ZONE_DRAWER_ADDED_ZONE', (event) => {
+            console.log(event);
+            document.getElementById("zoneList").value = JSON.stringify(event.detail);
+        });
+
+        zoneDrawer.addEventListener('ZONE_DRAWER_SAVE', (event) => {
+            console.log(event);
+            document.getElementById("zoneList").value = JSON.stringify(event.detail);
+        });
    ```
 
 ## <a name="put-it-all-together"></a>将其放在一起
@@ -192,6 +139,19 @@ function getVideos()
             videoName: document.getElementById("videoName").value
         } );
         avaPlayer.load();
+    
+        const zoneDrawer = document.getElementById("zoneDrawer");
+        zoneDrawer.load();
+
+        zoneDrawer.addEventListener('ZONE_DRAWER_ADDED_ZONE', (event) => {
+            console.log(event);
+            document.getElementById("zoneList").value = JSON.stringify(event.detail);
+        });
+
+        zoneDrawer.addEventListener('ZONE_DRAWER_SAVE', (event) => {
+            console.log(event);
+            document.getElementById("zoneList").value = JSON.stringify(event.detail);
+        });
     }
 </script>
 Client API endpoint URL: <input type="text" id="clientApiEndpointUrl" /><br><br>
@@ -200,7 +160,10 @@ Token: <input type="text" id="token" /><br><br>
 <textarea rows="20" cols="100" id="videoList"></textarea><br><br>
 Video name: <input type="text" id="videoName" /><br><br>
 <button type="submit" onclick="playVideo()">Play Video</button><br><br>
-<ava-player width="720px" id="avaPlayer"></ava-player>
+<textarea rows="5" cols="100" id="zoneList"></textarea><br><br>
+<ava-zone-drawer width="720px" id="zoneDrawer">
+    <ava-player id="avaPlayer"></ava-player>
+</ava-zone-drawer>
 </body>
 </html>
 ```
@@ -270,7 +233,8 @@ npm install @azure/video-analyzer/widgets
 或者，可以在应用程序代码中使用适用于 TypeScript 的以下语句导入它：
 
 ```typescript
-import { Player } from '@video-analyzer/widgets';
+import { Player } from '@azure/video-analyzer-widgets';
+import { ZoneDrawer } from '@azure/video-analyzer-widgets';
 ```
 
 如果要动态创建播放器小组件，可以使用适用于 Javascript 的以下语句：
@@ -278,22 +242,29 @@ import { Player } from '@video-analyzer/widgets';
 <script async type="module" src="https://unpkg.com/@azure/video-analyzer-widgets@latest/dist/global.min.js"></script>
 ```
 
-如果要使用此方法来导入，在导入完成后，需要以编程方式创建播放器对象。 在前面的示例中，你使用 `ava-player` HTML 标记将模块添加到了页面。 若要通过代码创建播放器对象，可在 JavaScript 中运行以下代码：
+
+如果要使用此方法来导入，在导入完成后，需要以编程方式创建区域抽屉和播放器对象。  在前面的示例中，你使用 `ava-player` HTML 标记将模块添加到了页面。 若要通过代码创建区域抽屉和播放器对象，可在 JavaScript 中运行以下代码：
+
 
 ```javascript
-const avaPlayer = new ava.widgets.player();
+const zoneDrawer = new window.ava.widgets.zoneDrawer();
+document.firstElementChild.appendChild(zoneDrawer);
+const playerWidget = new window.ava.widgets.player();
+zoneDrawer.appendChild(playerWidget);
 ```
 
 或在 TypeScript 中运行以下代码：
 
 ```typescript
 const avaPlayer = new Player();
+const zoneDrawer = new ZoneDrawer();
 ```
 
 然后必须将其添加到 HTML：
 
 ```javascript
-document.firstElementChild.appendChild(avaPlayer);
+document.firstElementChild.appendChild(zoneDrawer);
+zoneDrawer.appendChild(playerWidget);
 ```
 
 ## <a name="next-steps"></a>后续步骤

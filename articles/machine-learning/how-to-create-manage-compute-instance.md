@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 08/30/2021
-ms.openlocfilehash: cad2ac9319eb674cb8022ff5ce3d2df2a57df648
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/22/2021
+ms.openlocfilehash: 4897b557626be5071a21d2cc1a6a8194eaed8994
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224693"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154273"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -123,10 +123,11 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 1. <a name="advanced-settings"></a> 如果要执行以下操作，请选择“下一步: 高级设置”：
 
     * 启用 SSH 访问。  按照下面[详细的 SSH 访问说明](#enable-ssh)操作。
-    * 启用虚拟网络。 指定 **资源组**、**虚拟网络** 和 **子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](./how-to-secure-training-vnet.md)。 
+    * 启用虚拟网络。 指定 **资源组**、**虚拟网络** 和 **子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 还可以选择“无公共 IP”（预览）以防止创建了需要专用链接工作区的公共 IP 地址。 还必须满足虚拟网络设置的这些[网络要求](./how-to-secure-training-vnet.md)。 
     * 将计算机分配给其他用户。 有关分配给其他用户的详细信息，请参阅[代表他人创建](#on-behalf)。
     * 使用安装脚本进行预配（预览）- 若要详细了解如何创建和使用安装脚本，请参阅[使用脚本自定义计算实例](#setup-script)。
     * 添加计划（预览）。 计划计算实例自动启动和/或关闭的时间。 请参阅下面的[计划详细信息](#schedule)。
+
 
 ---
 
@@ -265,8 +266,50 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     // the ranges shown above or two numbers in the range separated by a 
     // hyphen (meaning an inclusive range). 
     ```
-
+### <a name="azure-policy-support-to-default-a-schedule"></a>Azure Policy 支持将某个计划设为默认计划
 使用 Azure Policy 为订阅中的每个计算实例强制执行已存在的关闭计划；如果不存在任何计划，则强制执行默认设置的某个计划。
+下面是一个示例策略，可将一个在太平洋时间晚上 10:10 进行的关闭计划设为默认计划。
+```json
+{
+    "mode": "All",
+    "policyRule": {
+     "if": {
+      "allOf": [
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/computeType",
+        "equals": "ComputeInstance"
+       },
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/schedules",
+        "exists": "false"
+       }
+      ]
+     },
+     "then": {
+      "effect": "append",
+      "details": [
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/schedules",
+        "value": {
+         "computeStartStop": [
+          {
+           "triggerType": "Cron",
+           "cron": {
+            "startTime": "2021-03-10T21:21:07",
+            "timeZone": "Pacific Standard Time",
+            "expression": "0 22 * * *"
+           },
+           "action": "Stop",
+           "status": "Enabled"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    }
+}    
+```
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> 使用脚本自定义计算实例（预览版）
 

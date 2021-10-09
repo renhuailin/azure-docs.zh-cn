@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7cf1a8f329ff735e9c82ca6361bedbcb8e25f4ac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 937a42d6ebdf3d2ccb87451a2db07df199655005
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782085"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586772"
 ---
 # <a name="tutorial-migrate-your-data-to-a-cassandra-api-account"></a>教程：将数据迁移到 Cassandra API 帐户
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -77,7 +77,13 @@ ms.locfileid: "121782085"
 
 [CQL COPY 命令](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html#cqlshrc)用于将本地数据复制到 Azure Cosmos DB 中的 Cassandra API 帐户。
 
-1. 获取 Cassandra API 帐户的连接字符串信息：
+1. 为确保 csv 文件包含正确的文件结构，请使用 `COPY TO` 命令将数据直接从源 Cassandra 表导出到 csv 文件（确保 cqlsh 使用适当凭据连接到源表）：
+
+   ```bash
+   COPY exampleks.tablename TO 'data.csv' WITH HEADER = TRUE;   
+   ```
+
+1. 现在获取 Cassandra API 帐户的连接字符串信息：
 
    * 登录到 [Azure 门户](https://portal.azure.com)，并转到你的 Azure Cosmos DB 帐户。
 
@@ -85,11 +91,13 @@ ms.locfileid: "121782085"
 
 1. 使用门户中的连接信息登录到 `cqlsh`。
 
-1. 使用 `CQL` `COPY` 命令将本地数据复制到 Cassandra API 帐户。
+1. 使用 `CQL` `COPY FROM` 命令复制 `data.csv`（仍位于安装 `cqlsh` 时所用的用户根目录中）：
 
    ```bash
-   COPY exampleks.tablename FROM filefolderx/*.csv 
+   COPY exampleks.tablename FROM 'data.csv' WITH HEADER = TRUE;
    ```
+
+
 
 ### <a name="migrate-data-by-using-spark"></a>使用 Spark 迁移数据 
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3a2f51d0d15ebd00335f7685d3983e527a3e8b7d
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 8e85133b8c476f2de046a8396ba171d563751bd7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643095"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128579758"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP (Laravel) 应用和 MySQL 灵活服务器（预览版）
 
@@ -33,11 +33,12 @@ ms.locfileid: "122643095"
 > * 更新数据模型并重新部署应用
 > * 在 Azure 门户中管理应用
 
-如果还没有 [Azure 订阅](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
 1. [安装 Git](https://git-scm.com/)
 2. [安装 PHP 5.6.4 或更高版本](https://php.net/downloads.php)
@@ -284,7 +285,7 @@ git commit -m "database.php updates"
 
 若要配置部署用户，请在 Azure Cloud Shell 中运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) 命令。 将 &lt;username> 和 &lt;password> 替换为你的部署用户名和密码 。
 
-用户名在 Azure 中必须唯一，并且为了本地Git推送，不能包含“@”符号。
+用户名在 Azure 中必须唯一，并且对于本地 Git 推送，不能包含“@”符号。
 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
 
 ```bash
@@ -332,7 +333,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 现在你已经创建了一个新的空 Web 应用并启用了 Git 部署。
 
 > [!NOTE]
-> Git 远程库的 URL 显示在 deploymentLocalGitUrl 属性中，格式为 https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git。 保存此 URL，后续将会用到。
+> Git 远程的 URL 将显示在 deploymentLocalGitUrl 属性中，其格式为 `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`。 保存此 URL，后续将会用到。
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 

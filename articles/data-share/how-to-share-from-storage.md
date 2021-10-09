@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 04/20/2021
-ms.openlocfilehash: 59c1ca67c9e93b62890512cda647ffcdf7712f9a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 09/10/2021
+ms.openlocfilehash: 61189ba63c072f2c08acc55047d494b076288953
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819261"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743255"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>从 Azure Blob 和 Azure Data Lake Storage 共享和接收数据
 
@@ -58,7 +58,7 @@ Azure Data Share 支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享�
 
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | 订阅 | 订阅 | 选择 Data Share 帐户的 Azure 订阅。|
+    | 订阅 | 你的订阅 | 选择 Data Share 帐户的 Azure 订阅。|
     | 资源组 | *test-resource-group* | 使用现有资源组或创建一个资源组。 |
     | 位置 | *美国东部 2* | 选择 Data Share 帐户的区域。
     | 名称 | *datashareaccount* | 命名 Data Share 帐户。 |
@@ -143,6 +143,8 @@ Azure Data Share 支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享�
 1. 若要从电子邮件打开邀请，请检查收件箱中是否有来自数据提供程序的邀请。 邀请来自 Microsoft Azure，标题为“来自 \<yourdataprovider\@domain.com> 的 Azure Data Share 邀请”。 选择“查看邀请”，在 Azure 中查看邀请。 
 
    若要从 Azure 门户打开邀请，请搜索“Data Share 邀请”。 此时会显示 Data Share 邀请的列表。
+
+   如果你是租户的来宾用户，则在首次查看 Data Share 邀请之前，系统会要求你验证租户的电子邮件地址。 验证后，它将在12 个月内有效。
 
    ![显示 Azure 门户中的邀请列表的屏幕截图。](./media/invitations.png "邀请列表。") 
 

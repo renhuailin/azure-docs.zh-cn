@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/14/2021
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2, contperf-fy21q4
-ms.openlocfilehash: 340e7f1b026605a06799dcc79f9fe99e2ad080cf
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: c608856e6238844638e63c3a719b3d534b98d33b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112578948"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615313"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -43,8 +43,8 @@ Microsoft 标识平台仅对已注册的应用程序执行标识和访问管理 
 按照以下步骤创建应用注册：
 
 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-1. 如果你有权访问多个租户，请在顶部菜单中，使用“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 选择要在其中注册应用程序的租户。
-1. 搜索并选择“Azure Active Directory”  。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，以切换到要在其中注册应用程序的租户。
+1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的显示名称。 应用程序的用户在使用应用时（例如，在登录过程中）可能会看到显示名称。
    你可以随时更改显示名称，多个应用注册可共享同一名称。 应用注册自动生成的应用程序（客户端）ID（而不是其显示名称）在标识平台中唯一地标识应用。
@@ -65,7 +65,7 @@ Microsoft 标识平台仅对已注册的应用程序执行标识和访问管理 
 注册完成后，Azure 门户会显示应用注册的“概述”窗格。 你会看到应用程序（客户端）ID。 此值也被称为客户端 ID，它可唯一地标识 Microsoft 标识平台中的应用程序。
 
 > [!IMPORTANT]
-> 默认情况下，新应用注册对用户隐藏。 当你准备好让用户在其[“我的应用”页](../user-help/my-apps-portal-end-user-access.md)上查看该应用时，可以将其启用。 若要启用该应用，请在 Azure 门户中导航到“Azure Active Directory” > “企业应用程序”并选择该应用。 然后，在“属性”页上将“对用户可见?”切换为“是”。
+> 默认情况下，新应用注册对用户隐藏。 当你准备好让用户在其[“我的应用”页](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)上查看该应用时，可以将其启用。 若要启用该应用，请在 Azure 门户中导航到“Azure Active Directory” > “企业应用程序”并选择该应用。 然后，在“属性”页上将“对用户可见?”切换为“是”。
 
 应用程序的代码（更多情况下通常是应用程序中使用的身份验证库）也会使用客户端 ID。 在验证它从标识平台中接收的安全令牌时，会使用此 ID。
 

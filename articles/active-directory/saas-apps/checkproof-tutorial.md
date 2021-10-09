@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/06/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d6e1c99bd70cedd678cbf3dcef4ef66a594d969
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 631d65b7119d071961b6fd48bd13e152ac7f2321
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728410"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661538"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-checkproof"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CheckProof 的集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "121728410"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * CheckProof 支持 IDP 发起的 SSO。
+* CheckProof 支持[自动用户预配](checkproof-provisioning-tutorial.md)。
 
 ## <a name="add-checkproof-from-the-gallery"></a>从库中添加 CheckProof
 
@@ -135,13 +136,16 @@ ms.locfileid: "121728410"
 
     ![CheckProof 创建用户页。](./media/checkproof-tutorial/user.png)
 
+> [!NOTE]
+>CheckProof 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./checkproof-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 CheckProof。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“CheckProof”磁贴时，你应该会自动登录到设置了 SSO 的 CheckProof。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“CheckProof”磁贴时，你应该会自动登录到设置了 SSO 的 CheckProof。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

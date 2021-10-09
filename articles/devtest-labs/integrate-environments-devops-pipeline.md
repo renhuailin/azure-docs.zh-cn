@@ -1,14 +1,14 @@
 ---
-title: 将环境集成到 Azure 开发测试实验室中的 Azure Pipelines
+title: 将环境集成到 Azure Pipelines
 description: 了解如何将 Azure 开发测试实验室环境集成到 Azure DevOps 持续集成 (CI) 和持续交付 (CD) 管道。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 18f334fe85b6a38c38fc41d55c711ee6d6629760
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 4f205fb70978a667df8a8fe82beea38e492828a0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006124"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651113"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>将环境集成到 Azure DevOps CI/CD 管道中
 你可以使用安装在 Azure DevOps Services 中的 Azure DevTest Labs Tasks 扩展，轻松地将持续集成 (CI)/持续交付 (CD) 生成和发布管道与 Azure 开发测试实验室集成。 这些扩展便于你为特定测试任务快速部署[环境](devtest-lab-test-env.md)，并在测试完成后将其删除。 
@@ -72,4 +72,3 @@ ms.locfileid: "112006124"
 - [使用资源管理器模板创建多 VM 环境](devtest-lab-create-environment-from-arm.md)。
 - 有关适用于开发测试实验室自动化的资源管理器模板快速入门，请参阅[开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)。
 - [VSTS 故障排除页](/azure/devops/pipelines/troubleshooting)
-

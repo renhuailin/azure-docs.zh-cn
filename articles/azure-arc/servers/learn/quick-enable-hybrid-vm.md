@@ -3,12 +3,12 @@ title: 使用启用了 Azure Arc 的服务器连接混合计算机
 description: 了解如何使用启用了 Azure Arc 的服务器连接和注册混合计算机。
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: d5f1699447093f148b0dadbdd23857c9e16e13a3
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: fc645f930fe37f8a3eca10d1647d40eb9c7a2280
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772652"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807641"
 ---
 # <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>快速入门：使用启用了 Azure Arc 的服务器连接混合计算机
 

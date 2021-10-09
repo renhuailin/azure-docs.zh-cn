@@ -1,25 +1,25 @@
 ---
 title: 从 Square 复制数据（预览版）
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从 Square 复制到支持的接收器数据存储。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Square 复制到支持的接收器数据存储。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 2d69f55189174cc11e4808be063ddf3b1dbd6a28
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: b15fb7fce767d5d17e80d2f265f295b1e3aff5bd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304506"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820124"
 ---
-# <a name="copy-data-from-square-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Square 复制数据
+# <a name="copy-data-from-square-using-azure-data-factory-or-synapse-analytics-preview"></a>使用 Azure 数据工厂或 Synapse Analytics（预览版）从 Square 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Square 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂或 Synapse Analytics 管道中的复制活动从 Square 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
 > 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
@@ -33,7 +33,7 @@ ms.locfileid: "123304506"
 
 可以将数据从 Square 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
+该服务提供用于启用连接的内置驱动程序，因此使用此连接器无需手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
 
@@ -47,7 +47,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -77,9 +77,9 @@ Square 链接的服务支持以下属性：
 | 在 `connectionProperties` 下： | | |
 | host | Square 实例的 URL。 （即 mystore.mysquare.com）  | 是 |
 | clientId | 与 Square 应用程序关联的客户端 ID。  | 是 |
-| clientSecret | 与 Square 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| accessToken | 从 Square 获得的访问令牌。 通过向经过身份验证的用户请求显式权限，授予对 Square 帐户的有限访问权限。 OAuth 访问令牌在发布后 30 天过期，但刷新令牌不会过期。 刷新令牌可以刷新访问令牌。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。  | 是 |
-| refreshToken | 从 Square 获得的刷新令牌。 用于在当前的访问令牌过期时获取新的访问令牌。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
+| clientSecret | 与 Square 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| accessToken | 从 Square 获得的访问令牌。 通过向经过身份验证的用户请求显式权限，授予对 Square 帐户的有限访问权限。 OAuth 访问令牌在发布后 30 天过期，但刷新令牌不会过期。 刷新令牌可以刷新访问令牌。<br>将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。  | 是 |
+| refreshToken | 从 Square 获得的刷新令牌。 用于在当前的访问令牌过期时获取新的访问令牌。<br>将此字段标记为 SecureString 以安全地将其存储在工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 TLS 进行连接时是否要求服务器证书中的主机名与服务器的主机名匹配。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 TLS 进行连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
@@ -89,7 +89,7 @@ Square 支持两种类型的访问令牌：个人和 OAuth 。
 - 个人访问令牌用于对自己 Square 帐户中的资源进行无限制的 Connect API 访问。
 - OAuth 访问令牌用于对任何 Square 帐户进行经过身份验证且在范围内的 Connect API 访问。 当应用以帐户所有者名义访问其他 Square 帐户中的资源时，请使用它们。 OAuth 访问令牌还可用于访问自己 Square 帐户中的资源。
 
-在数据工厂中，通过个人访问令牌进行身份验证只需使用 `accessToken`，而通过 OAuth 进行身份验证则需要 `accessToken` 和 `refreshToken`。 在[此处](https://developer.squareup.com/docs/build-basics/access-tokens)了解如何获取访问令牌。
+通过个人访问令牌进行身份验证仅需要 `accessToken`，而通过 OAuth 进行身份验证则需要 `accessToken` 和 `refreshToken`。 在[此处](https://developer.squareup.com/docs/build-basics/access-tokens)了解如何获取访问令牌。
 
 **示例：**
 
@@ -159,7 +159,7 @@ Square 支持两种类型的访问令牌：个人和 OAuth 。
 
 要从 Square 复制数据，请将复制活动中的源类型设置为“SquareSource”  。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**SquareSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Business"`。 | 否（如果指定了数据集中的“tableName”） |
@@ -196,9 +196,9 @@ Square 支持两种类型的访问令牌：个人和 OAuth 。
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

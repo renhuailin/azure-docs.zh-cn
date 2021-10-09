@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/17/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 474bb5582011c9e701a188f227a54238a9f19b57
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: f41736ac221ee7d7cdce5ac776e70f96aa16536e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112285564"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575088"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -42,9 +42,9 @@ ms.locfileid: "112285564"
 
 若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 Azure AD 帐户的用户启用登录，则需要在 [Azure 门户](https://portal.azure.com)中创建应用程序。 有关详细信息，请参阅[将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。
 
-
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用的是包含组织 Azure AD 租户的目录（例如，contoso.com）。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含组织 Azure AD 租户（例如，contoso.com）的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“新注册”。
 1. 输入应用程序的 **名称**。 例如，`Azure AD B2C App`。
@@ -78,13 +78,14 @@ ms.locfileid: "112285564"
 
 ## <a name="optional-verify-your-app-authenticity"></a>[可选] 验证应用真实性
 
-[发布者验证](../active-directory/develop/publisher-verification-overview.md)旨在帮助你的用户了解你[注册](#register-an-azure-ad-app)的应用的真实性。 经过验证的应用是指应用的发布者已使用其 MPN Microsoft 合作伙伴网络 (MPN) [验证](/partner-center/verification-responses)其标识。 了解如何[将应用标记为“发布者已验证”](../active-directory/develop/mark-app-as-publisher-verified.md)。 
+[发布者验证](../active-directory/develop/publisher-verification-overview.md)可帮助用户了解[已注册](#register-an-azure-ad-app)应用的真实性。 已验证应用意味着应用的发布者已使用其 Microsoft 合作伙伴网络 (MPN) [验证](/partner-center/verification-responses)其标识。 了解如何[将应用标记为“发布者已验证”](../active-directory/develop/mark-app-as-publisher-verified.md)。 
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
 需将创建的应用程序密钥存储在 Azure AD B2C 租户中。
 
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“策略”下，选择“Identity Experience Framework”。 
 1. 选择“策略密钥”，然后选择“添加”。

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/27/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 594b04c96ddbc166c7c3f95b7b04ebc1b1a3784b
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: ecbb461e45b19630319622e978ad3bd49a376e74
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223437"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092730"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -58,7 +58,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 为了启用这种基于 ACL 的授权模式，Azure AD 不要求应用程序必须经过授权才能从另一个应用程序获取令牌。 因此，可以在没有 `roles` 声明的情况下颁发仅限应用的令牌。 公开 API 的应用程序必须实现权限检查才能接受令牌。
 
-如果要阻止应用程序获取应用程序的无角色仅限应用的令牌，[请确保为应用启用用户分配要求](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 这将阻止未分配角色的用户和应用程序获取此应用程序的令牌。 
+如果要阻止应用程序获取应用程序的无角色仅限应用的令牌，[请确保为应用启用用户分配要求](../manage-apps/assign-user-or-group-access-portal.md)。 这将阻止未分配角色的用户和应用程序获取此应用程序的令牌。 
 
 ### <a name="application-permissions"></a>应用程序权限
 
@@ -69,13 +69,13 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 * 以任何用户的身份发送邮件
 * 读取目录数据
 
-若要将应用程序权限用于自己的 API（与 Microsoft Graph 相反），必须首先通过在 Azure 门户中 API 的应用注册中定义作用域来[公开 API](quickstart-configure-app-expose-web-apis.md)。 然后，通过在客户端应用程序的应用注册中选择这些权限来[配置对 API 的访问](quickstart-configure-app-access-web-apis.md)。 如果你在 API 的应用注册中没有公开任何作用域，则将无法在 Azure 门户中的客户端应用程序的应用注册中为该 API 指定应用程序权限。
+若要将应用程序权限用于自己的 API（与 Microsoft Graph 相反），必须首先通过在 Azure 门户中 API 的应用注册中定义作用域来[公开 API](howto-add-app-roles-in-azure-ad-apps.md)。 然后，通过在客户端应用程序的应用注册中选择这些权限来[配置对 API 的访问](howto-add-app-roles-in-azure-ad-apps.md#assign-app-roles-to-applications)。 如果你在 API 的应用注册中没有公开任何作用域，则将无法在 Azure 门户中的客户端应用程序的应用注册中为该 API 指定应用程序权限。
 
-以应用程序形式（不同于与以用户身份）进行身份验证时，不能使用“委托的权限”（用户授予的范围）。 必须使用“应用程序权限”（也称为“角色”），这些权限是由管理员为应用程序授予的（或通过 Web API 预授权来授予的）。
+作为应用程序（而不是作为用户）进行身份验证时，不能使用委托的权限（用户授予的范围），因为应用不能代表任何用户行事。 必须使用“应用程序权限”（也称为“角色”），这些权限是由管理员为应用程序授予的（或通过 Web API 预授权来授予的）。
 
 有关应用程序权限的详细信息，请参阅[权限和许可](v2-permissions-and-consent.md#permission-types)。
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
+#### <a name="recommended-sign-the-admin-into-your-app-to-have-app-roles-assigned"></a>建议：将管理员登录到应用，以分配应用角色
 
 在构建使用应用程序权限的应用程序时，应用通常需要一个页面或视图，使管理员能够批准应用的权限。 此页面可以是应用登录流的一部分、应用设置的一部分，或者专用的“连接”流。 在许多情况下，合理的结果是应用只在用户使用工作或学校 Microsoft 帐户登录之后才显示此“连接”视图。
 
@@ -114,7 +114,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 如果管理员批准了应用程序的权限，成功响应如下所示：
 
 ```HTTP
-GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=12345&admin_consent=True
+GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
 | 参数 | 说明 |

@@ -8,15 +8,15 @@ ms.service: role-based-access-control
 ms.subservice: conditions
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2021
+ms.date: 09/24/2021
 ms.author: rolyon
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 57a4c866681f9970982a34545081549a407377db
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 7401b7369d766df5513100b30b7b65c324517fbe
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592027"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091973"
 ---
 # <a name="add-or-edit-azure-role-assignment-conditions-using-the-azure-portal-preview"></a>使用 Azure 门户添加或编辑 Azure 角色分配条件（预览版）
 
@@ -50,9 +50,9 @@ ms.locfileid: "111592027"
 
 1. 要[使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)，请遵循以下步骤。
 
-1. 在“条件”选项卡上，单击“添加条件” 。
+1. 在“条件(可选)”选项卡上，单击“添加条件” 。
 
-    如果看不到“条件”选项卡，请确保已选择支持条件的角色。
+    如果看不到“条件(可选)”选项卡，请确保已选择支持条件的角色。
 
    ![“添加角色分配”页面的屏幕截图，含预览体验的“添加添加”选项卡。](./media/shared/condition.png)
 

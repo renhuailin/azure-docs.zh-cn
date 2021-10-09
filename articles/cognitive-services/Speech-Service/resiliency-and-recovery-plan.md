@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/28/2021
 ms.author: mitagaki
-ms.openlocfilehash: db50dba270157aa6365be359da6c9aa189c8f614
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0f540025561b6e452371a74093133bf3e1183b1b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439714"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744127"
 ---
-# <a name="backup-and-recover-speech-customization-resources"></a>备份和恢复语音自定义资源
+# <a name="back-up-and-recover-speech-customization-resources"></a>备份和恢复语音自定义资源
 
-语音服务[可在各个区域中均可使用](/azure/cognitive-services/speech-service/regions)。 服务订阅密钥将绑定到单个区域。 获取密钥时，请选择数据、模型和部署所在的特定区域。
+语音服务[可在各个区域中均可使用](./regions.md)。 服务订阅密钥将绑定到单个区域。 获取密钥时，请选择数据、模型和部署所在的特定区域。
 
 数据集（包含客户创建的数据资产，如自定义语音模型和自定义语音字体）也仅在部署服务的区域中可用。 此类资产包括：
 
@@ -44,14 +44,14 @@ ms.locfileid: "123439714"
 
 请按照以下步骤将客户端配置为监视错误：
 
-1.  在文档中[查找各区域的可用终结点列表](/azure/cognitive-services/speech-service/rest-speech-to-text)。
+1.  在文档中[查找各区域的可用终结点列表](./rest-speech-to-text.md)。
 2.  从列表中选择一个主要区域以及一个或多个次要/备份区域。
 3. 从 Azure 门户为每个区域创建语音服务资源。
-    -  如果已设置特定配额，还可以考虑在备份区域中设置相同的配额。 请参阅[语音服务配额和限制](/azure/cognitive-services/speech-service/speech-services-quotas-and-limits)，了解详细信息。
+    -  如果已设置特定配额，还可以考虑在备份区域中设置相同的配额。 请参阅[语音服务配额和限制](./speech-services-quotas-and-limits.md)，了解详细信息。
 
 4.  请注意，每个区域都有自己的 STS 令牌服务。 对于主要区域以及任何备份区域，客户端配置文件需要知道以下内容：
     -  区域语音服务终结点
-    -  [区域订阅密钥和区域代码](/azure/cognitive-services/speech-service/rest-speech-to-text)
+    -  [区域订阅密钥和区域代码](./rest-speech-to-text.md)
 
 5.  配置代码用于监视连接错误（常见错误为连接超时和服务不可用）。 以下是 C# 中的示例代码：[GitHub：添加示例用于显示切换区域的可能候选项](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/fa6428a0837779cbeae172688e0286625e340942/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L965)。
 
@@ -72,8 +72,8 @@ ms.locfileid: "123439714"
 
 1.  在某一主要区域中创建自定义模型。
 2.  运行[模型复制 API](https://eastus2.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)，将自定义模型复制到所有备用（次要）区域。
-3.  转到 Speech Studio 以加载复制的模型，然后在次要区域中创建新的终结点。 若要了解如何部署新模型，请参阅[训练和部署自定义语音识别模型](/azure/cognitive-services/speech-service/how-to-custom-speech-train-model)。
-    -  如果已设置特定配额，还可以考虑在备份区域中设置相同的配额。 请参阅[语音服务配额和限制](/azure/cognitive-services/speech-service/speech-services-quotas-and-limits)，了解详细信息。
+3.  转到 Speech Studio 以加载复制的模型，然后在次要区域中创建新的终结点。 若要了解如何部署新模型，请参阅[训练和部署自定义语音识别模型](./how-to-custom-speech-train-model.md)。
+    -  如果已设置特定配额，还可以考虑在备份区域中设置相同的配额。 请参阅[语音服务配额和限制](./speech-services-quotas-and-limits.md)，了解详细信息。
 4.  应按照用于默认终结点的相同步骤，将客户端配置为对持续性错误进行故障转移。
 
 客户端代码可以监视主要区域中已部署模型的可用性，并在主要区域发生故障时将其音频流量重定向到次要区域。 如果不需要实时故障转移，仍可按照以下步骤为手动故障转移做好准备。
@@ -82,7 +82,7 @@ ms.locfileid: "123439714"
 
 如果不需要实时故障转移，可以决定导入数据，稍后在次要区域中创建和部署模型，同时请了解这些任务需要一些时间才能完成。
 
-#### <a name="failover-tests"></a>故障转移测试
+#### <a name="failover-time-requirements"></a>故障转移时间要求
 
 本部分提供有关用时的一般指导。 以下是使用[代表性测试数据集](https://github.com/microsoft/Cognitive-Custom-Speech-Service)估计脱机故障转移用时的记录。
 
@@ -103,7 +103,7 @@ ms.locfileid: "123439714"
 
 当自定义语音实时合成失败时，则故障转移到公共语音（客户端示例代码：[GitHub：将自定义语音故障转移到公共语音](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_samples.cs#L899)）。
 
-检查[可用的公共语音](/azure/cognitive-services/speech-service/language-support#neural-voices)。 如果需要故障转移到其他语音或其他区域，还可以更改上面的示例代码。
+检查[可用的公共语音](./language-support.md#neural-voices)。 如果需要故障转移到其他语音或其他区域，还可以更改上面的示例代码。
 
 选项 2：故障转移到另一区域中的自定义语音。
 

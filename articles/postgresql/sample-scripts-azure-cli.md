@@ -1,19 +1,20 @@
 ---
-title: Azure CLI 示例 - Azure Database for PostgreSQL（单一服务器）
+title: Azure CLI 示例 - Azure Database for PostgreSQL - 单一服务器 | Microsoft Docs
 description: 本文列出了用于与 Azure Database for PostgreSQL - 单个服务器交互的一系列 Azure CLI 代码示例。
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: sample, mvc, devx-track-azurecli
-ms.date: 5/6/2019
-ms.openlocfilehash: 17e86669ae764006fddafaa05490f9021fdc5859
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: sample, mvc, devx-track-azurecli, seo-azure-cli
+ms.date: 09/17/2021
+keywords: azure cli 示例, azure cli 代码示例, azure cli 脚本示例
+ms.openlocfilehash: 4207fa2d844164a5d84964e8815a538cd2ac06e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607382"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610887"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单个服务器的 Azure CLI 示例
 下表包含指向示例 Azure CLI 脚本的链接，这些脚本针对用于 PostgreSQL 的 Azure 数据库。

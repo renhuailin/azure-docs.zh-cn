@@ -6,18 +6,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 09/24/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2591e3468999bfb48fc125bd6edfe17da8eecefd
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: be0dc81d20bf62eb0033691e5d4eac5f406a7c0f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728137"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214611"
 ---
-# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何处理和提取 AI 扩充方案中的图像中的信息
+# <a name="extract-text-and-information-from-images-in-ai-enrichment-scenarios"></a>提取 AI 扩充方案中的图像中的文本和信息
 
-Azure 认知搜索有多项适用于图像和图像文件的功能。 在[文档破解](search-indexer-overview.md#document-cracking)过程中，可以使用 imageAction 参数从包含字母数字文本的照片或图片中提取文本，例如停车标志中的“停”字样。 其他场景包括：生成图像的文本表示形式，例如代表蒲公英照片的“蒲公英”字样，或者“黄色”颜色。 还可以提取图像的元数据，例如其大小。
+Azure 认知搜索有多项适用于图像和图像文件的功能。 在[文档破解](search-indexer-overview.md#document-cracking)过程中，可以使用 imageAction 参数从包含字母数字文本的照片或图片中提取文本，例如停车标志中的“STOP”字样。 其他场景包括：生成图像的文本表示形式，例如代表蒲公英照片的“蒲公英”字样，或者“黄色”颜色。 还可以提取图像的元数据，例如其大小。
 
 本文详细介绍图像处理，并提供了在 AI 扩充管道中处理图像的指南。
 

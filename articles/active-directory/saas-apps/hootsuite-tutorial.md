@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/31/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 1c656df5f301e5f5ea65be100b80c7f06da67435
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7d6b297f0075de0b6a5550f58978150ada2411d5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556399"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607583"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hootsuite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Hootsuite 的集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "111556399"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Hootsuite 支持 SP 和 IDP 发起的 SSO。
+* Hootsuite 支持[自动用户预配](hootsuite-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -133,6 +134,8 @@ ms.locfileid: "111556399"
 
 本部分需在 Hootsuite 中创建名为“Britta Simon”的用户。 与 [Hootsuite 支持团队](https://hootsuite.com/about/contact-us#)协作，在 Hootsuite 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
+Hootsuite 还支持自动用户预配；有关如何配置自动用户预配的更多详细信息，请参阅[此处](./hootsuite-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -147,7 +150,7 @@ ms.locfileid: "111556399"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Hootsuite。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“Hootsuite”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 Hootsuite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“Hootsuite”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 Hootsuite。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

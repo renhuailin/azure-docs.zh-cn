@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 9d7c018319003ef9671d9403c2e17642ec70a5d4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bd6b11956ffe32a2ae59cd6d6ab262ab3013832f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476395"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>教程：Azure Active Directory 与 Reward Gateway 集成
 
@@ -38,6 +38,8 @@ ms.locfileid: "110476395"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Reward Gateway 支持 IDP 发起的 SSO。
+
+* Reward Gateway 支持[自动用户预配](reward-gateway-provisioning-tutorial.md)。
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>从库中添加 Reward Gateway
 
@@ -138,13 +140,15 @@ ms.locfileid: "110476395"
 
 在本部分中，会在 Reward Gateway 中创建一个名为“Britta Simon”的用户。 请与 [Reward Gateway 支持团队](mailto:clientsupport@rewardgateway.com)协作，将用户添加到 Reward Gateway 平台。 使用单一登录前，必须先创建并激活用户。
 
+Reward Gateway 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./reward-gateway-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 Reward Gateway。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Reward Gateway”磁贴时，应会自动登录到为其设置了 SSO 的 Reward Gateway。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Reward Gateway”磁贴时，应会自动登录到为其设置了 SSO 的 Reward Gateway。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

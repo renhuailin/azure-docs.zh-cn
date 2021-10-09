@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 07/08/2021
 ms.author: inhenkel
-ms.openlocfilehash: bac6d089f34cd916b0bd7f621958aaf6d30a82eb
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: ae414b91ef1c24df64d1201a5d171b065cdc268b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113601076"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646035"
 ---
 # <a name="handling-event-grid-events"></a>处理事件网格事件
 
@@ -31,6 +31,15 @@ ms.locfileid: "113601076"
 事件网格使用[事件订阅](../../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。
 
 有关详细信息，请参阅[媒体服务事件架构](../media-services-event-schemas.md)。
+
+## <a name="samples-and-how-to"></a>示例和操作说明
+
+媒体服务 [.NET 示例存储库](https://github.com/Azure-Samples/media-services-v3-dotnet)演示了如何使用最新的事件网格和事件中心客户端库在你自己的自定义应用程序中接收事件。
+
+此外，以下操作说明文章演示了通过 CLI 和 Azure 门户使用事件网格。
+
+* [监视事件 - 门户](../monitor-events-portal-how-to.md)
+* [监视事件 - CLI](../job-state-events-cli-how-to.md)
 
 ## <a name="practices-for-consuming-events"></a>使用事件的做法
 

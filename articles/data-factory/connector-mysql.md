@@ -1,29 +1,29 @@
 ---
-title: 使用 Azure 数据工厂从 MySQL 复制数据
+title: 从 MySQL 复制数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解 Azure 数据工厂中可用于将数据从 MySQL 数据库复制到支持用作接收器的数据存储的 MySQL 连接器。
+description: 了解 Azure 数据工厂和 Synapse Analytics 中可用于将数据从 MySQL 数据库复制到支持用作接收器的数据存储的 MySQL 连接器。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 56a52c597de5715bf0ca1761a9ae88554deed162
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 98211fd52546f0301552641fc57badddc92fcae3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123315686"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831695"
 ---
-# <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
+# <a name="copy-data-from-mysql-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 MySQL 复制数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-mysql-connector.md)
 > * [当前版本](connector-mysql.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 MySQL 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂和 Synapse Analytics 管道中的复制活动从 MySQL 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!NOTE]
 >若要从或向 [Azure Database for MySQL](../mysql/overview.md) 服务复制数据，请使用专用的 [Azure Database for MySQL 连接器](connector-azure-database-for-mysql.md)。
@@ -32,7 +32,7 @@ ms.locfileid: "123315686"
 
 以下活动支持此 MySQL 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 MySQL 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -87,7 +87,7 @@ MySQL 链接的服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 说明 | 选项 | 必须 |
+| 属性 | 说明 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |
 | SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`。| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | SSLCert | 包含用于证明客户端身份的 SSL 证书的 .pem 文件的完整路径和名称。 <br/> 若要在将此证书发送到服务器之前，指定私钥来加密此证书，请使用 `SSLKey` 属性。| | 是（如果使用双向 SSL 验证）。 |
@@ -244,9 +244,9 @@ MySQL 链接的服务支持以下属性：
 
 ## <a name="data-type-mapping-for-mysql"></a>MySQL 的数据类型映射
 
-从 MySQL 复制数据时，以下映射用于从 MySQL 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从 MySQL 复制数据时，以下映射用于从 MySQL 数据类型映射到在服务内部使用的临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-| MySQL 数据类型 | 数据工厂临时数据类型 |
+| MySQL 数据类型 | 临时服务数据类型 |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -295,4 +295,4 @@ MySQL 链接的服务支持以下属性：
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

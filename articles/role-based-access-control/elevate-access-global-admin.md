@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/09/2020
+ms.date: 09/10/2021
 ms.author: rolyon
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9a7897590f8803be105eabb5cdee194e6574e8b9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 96e2f7176f85d5571ce73c4efdd592dd3964400d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696663"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781506"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -327,6 +327,93 @@ az role assignment list --role "User Access Administrator" --scope "/"
     ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
     ```
+
+## <a name="view-elevate-access-logs"></a>查看提升访问权限日志
+
+当访问权限提升时，会将一个条目添加到日志中。 作为 Azure AD 中的全局管理员，你可能需要检查提升访问权限的时间和操作者。 提升访问权限日志条目不会出现在标准活动日志中，而是显示在目录活动日志中。 本节介绍了查看提升访问权限日志的不同方式。
+
+### <a name="view-elevate-access-logs-using-the-azure-portal"></a>使用 Azure 门户查看提升访问权限日志
+
+1. 按照本文前面的步骤提升你的访问权限。
+
+1. 以全局管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
+
+1. 打开“监视” > “活动日志”。 
+
+1. 将“活动”列表更改为“目录活动”。 
+
+1. 搜索以下表示提升访问权限动作的操作。
+
+    `Assigns the caller to User Access Administrator role`
+
+    ![显示“监视”中的目录活动日志的屏幕截图。](./media/elevate-access-global-admin/monitor-directory-activity.png)
+
+1. 按照本文前面的步骤取消已提升的访问权限。
+
+### <a name="view-elevate-access-logs-using-azure-cli"></a>使用 Azure CLI 查看提升访问权限日志
+
+1. 按照本文前面的步骤提升你的访问权限。
+
+1. 使用 [az login](/cli/azure/reference-index#az_login) 命令以全局管理员身份登录。
+
+1. 使用 [az rest](/cli/azure/reference-index#az_rest) 命令进行以下调用，你将必须按示例时间戳所示的日期进行筛选，并指定要在存储日志的文件名。
+
+    `url` 调用 API 来检索 Microsoft.Insights 中的日志。 输出将保存到你指定的文件中。
+
+    ```azurecli
+    az rest --url "https://management.azure.com/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2021-09-10T20:00:00Z'" > output.txt
+    ```
+
+1.  在输出文件中，搜索 `elevateAccess`。
+
+    日志将类似于以下内容，可以在其中查看操作发生时间的时间戳和调用者。
+
+    ```json
+      "submissionTimestamp": "2021-08-27T15:42:00.1527942Z",
+      "subscriptionId": "",
+      "tenantId": "33333333-3333-3333-3333-333333333333"
+    },
+    {
+      "authorization": {
+        "action": "Microsoft.Authorization/elevateAccess/action",
+        "scope": "/providers/Microsoft.Authorization"
+      },
+      "caller": "user@example.com",
+      "category": {
+        "localizedValue": "Administrative",
+        "value": "Administrative"
+      },
+    ```
+
+1. 按照本文前面的步骤取消已提升的访问权限。
+
+### <a name="delegate-access-to-a-group-to-view-elevate-access-logs-using-azure-cli"></a>使用 Azure CLI 委派对组的访问权限以查看提升访问权限日志
+
+如果希望能够定期获得提升访问权限日志，则可以委派对组的访问权限，然后使用 Azure CLI。
+
+1. 打开“Azure Active Directory” > “组”。
+
+1. 创建新的安全组，并记下组对象 ID。
+
+1. 按照本文前面的步骤提升你的访问权限。
+
+1. 使用 [az login](/cli/azure/reference-index#az_login) 命令以全局管理员身份登录。
+
+1. 使用 [az role assign create](/cli/azure/role/assignment#az_role_assignment_create) 命令将[读者](built-in-roles.md#reader)角色分配给只能在目录级别读取日志的组，这些日志位于 `Microsoft/Insights`。
+
+    ```azurecli
+    az role assignment create --assignee "{groupId}" --role "Reader" --scope "/providers/Microsoft.Insights"
+    ```
+
+1. 将读取日志的用户添加到之前创建的组中。
+
+1. 按照本文前面的步骤取消已提升的访问权限。
+
+组中的用户现在可以定期运行 [az rest](/cli/azure/reference-index#az_rest) 命令来查看提升访问权限日志。
+
+```azurecli
+az rest --url "https://management.azure.com/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2021-09-10T20:00:00Z'" > output.txt
+```
 
 ## <a name="next-steps"></a>后续步骤
 

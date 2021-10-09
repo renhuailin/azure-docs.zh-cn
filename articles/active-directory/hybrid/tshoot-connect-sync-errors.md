@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe6c04cf29a4c45436948eaea6fc8d0276ec16f
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ff1b95ac26be1697e5211c024bc148222823e36d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895777"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622087"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>排查同步过程中发生的错误
 将标识数据从 Windows Server Active Directory (AD DS) 同步到 Azure Active Directory (Azure AD) 时可能会发生错误。 本文概述不同类型的同步错误、导致这些错误的某些可能情况，以及这些错误的可能解决方法。 本文介绍常见错误类型，不一定涵盖所有可能的错误。
@@ -180,6 +180,15 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 
 #### <a name="related-articles"></a>相关文章
 * [通过与 Microsoft 365 进行目录同步来准备预配用户](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+
+## <a name="deletion-access-violation-and-password-access-violation-errors"></a>删除访问冲突和密码访问冲突错误
+
+Azure Active Directory 能够保护仅限云端的对象，防止通过 Azure AD Connect 进行更新。 虽然无法通过 Azure AD Connect 更新这些对象，但可以直接调用 AADConnect 云端后端以尝试更改仅限云端的对象。 执行此操作时，可能会返回以下错误：
+
+* 此同步操作 Delete 无效。 请与技术支持部门联系。
+* 无法处理此更新，因为当前请求中包含了一个或多个仅云用户凭据更新。
+* 不支持删除仅云对象。 请与 Microsoft 客户支持服务部门联系。
+* 无法执行密码更改请求，因为它包含对一个或多个仅云用户对象的更改，不支持此操作。 请与 Microsoft 客户支持服务部门联系。
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>说明

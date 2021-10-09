@@ -8,15 +8,15 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c06de5c1d466db26e756029d2046286bd55d4e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704617"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674521"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>具有中高速网络带宽的大型数据集的数据传输
- 
+
 本文概述了在环境中有中高速网络带宽并且正在计划传输大型数据集时的数据传输解决方案。 本文还介绍了针对此情况的推荐数据传输选项和相应的关键功能矩阵。
 
 若要查看所有可用数据传输选项的概述，请转到[选择一个 Azure 数据传输解决方案](storage-choose-data-transfer-solution.md)。
@@ -33,17 +33,16 @@ ms.locfileid: "98704617"
 
 使用中速网络带宽，需要预测通过该网络传输数据的时间。
 
-使用下表估计时间，并根据此时间，在离线传输或脱机传输之间进行选择。 下表显示各种可用网络带宽（假设利用率为 90%）的网络数据传输的预测时间。  
+使用下表估计时间，并根据此时间，在离线传输或脱机传输之间进行选择。 下表显示各种可用网络带宽（假设利用率为 90%）的网络数据传输的预测时间。
 
 ![网络传输或脱机传输](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
 - 如果预测网络传输速度很慢，应使用物理设备。 在这种情况下，推荐的选项是 Azure Data Box 系列的离线传输设备或使用自己的磁盘执行 Azure 导入/导出。
 
-    - **用于脱机传输的 Azure Data Box 系列** – 当受到时间、网络可用性或成本的限制时，使用 Microsoft 提供的 Data Box 设备将大量数据移动到 Azure。 使用工具（例如 Robocopy）复制本地数据。 可从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择，具体取决于要传输的数据的大小。
-    - **Azure 导入/导出** - 通过寄送自己的磁盘驱动器，使用 Azure 导入/导出服务安全地将大量数据导入 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到磁盘驱动器，然后再寄送到本地站点。
+  - “用于脱机传输的 Azure Data Box 系列” - 当受到时间、网络可用性或成本的限制时，使用 Microsoft 提供的 Data Box 设备将大量数据移动到 Azure。 使用工具（例如 Robocopy）复制本地数据。 可从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择，具体取决于要传输的数据的大小。
+  - **Azure 导入/导出** - 通过寄送自己的磁盘驱动器，使用 Azure 导入/导出服务安全地将大量数据导入 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到磁盘驱动器，然后再寄送到本地站点。
 
 - 如果预测出网络传输比较合理，那么可以使用以下在[高速网络带宽](#high-network-bandwidth)中详细介绍的工具。
-
 
 ### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>高速网络带宽 (1 Gbps - 100 Gbps)
 
@@ -78,7 +77,6 @@ ms.locfileid: "98704617"
 | **数据移动时使用**     |在商务区域内|在商务区域内|在商务区域内|跨地理区域，例如美国到欧洲|
 |    **定价**                          |    [定价](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定价](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定价](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
-
 如果使用在线数据传输，请使用以下部分中的表格获得高速网络带宽。
 
 ### <a name="high-network-bandwidth"></a>高速网络带宽
@@ -96,16 +94,16 @@ ms.locfileid: "98704617"
 ## <a name="next-steps"></a>后续步骤
 
 - [了解如何使用导入/导出转移数据](../../import-export/storage-import-export-data-to-blobs.md)。
-- 了解如何
 
-    - [使用 Data Box Disk 传输数据](../../databox/data-box-disk-quickstart-portal.md)。
-    - [使用 Data Box 传输数据](../../databox/data-box-quickstart-portal.md)。
-- [使用 AzCopy 传输数据](./storage-use-azcopy-v10.md)。
 - 了解如何：
-    - [使用 Data Box Gateway 传输数据](../../databox-gateway/data-box-gateway-deploy-add-shares.md)。
-    - [在将数据发送到 Azure 之前使用 Data Box Edge 转换数据](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
-- [了解如何使用 Azure 数据工厂传输数据](../../data-factory/quickstart-create-data-factory-portal.md)。
-- 使用 REST API 传输数据
+  - [使用 Data Box Disk 传输数据](../../databox/data-box-disk-quickstart-portal.md)。
+  - [使用 Data Box 传输数据](../../databox/data-box-quickstart-portal.md)。
+  - [使用 AzCopy 传输数据](./storage-use-azcopy-v10.md)。
+  - [使用 Data Box Gateway 传输数据](../../databox-gateway/data-box-gateway-deploy-add-shares.md)。
+  - [在将数据发送到 Azure 之前使用 Data Box Edge 转换数据](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
 
-    - [在 .NET 中](/dotnet/api/overview/azure/storage)
-    - [在 Java 中](/java/api/overview/azure/storage)
+- [了解如何使用 Azure 数据工厂传输数据](../../data-factory/quickstart-create-data-factory-portal.md)。
+
+- 使用 REST API 传输数据：
+  - [在 .NET 中](/dotnet/api/overview/azure/storage)
+  - [在 Java 中](/java/api/overview/azure/storage)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2b3dff6331e235d0c4b608a38038a89996c35b4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97093254"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217762"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft.ApplicationInsights.SnapshotCollector 的发行说明
 
@@ -21,6 +21,30 @@ ms.locfileid: "97093254"
 对于 bug 报告和反馈，请在 GitHub 上通过 https://github.com/microsoft/ApplicationInsights-SnapshotCollector 提出问题
 
 ## <a name="release-notes"></a>发行说明
+
+## <a name="142"></a>[1.4.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.4.2)
+用于解决用户报告的 bug 的单点版本。
+### <a name="bug-fixes"></a>Bug 修复
+- 修复 [ArgumentException：委托必须是同一类型。](https://github.com/microsoft/ApplicationInsights-SnapshotCollector/issues/16)
+
+## <a name="141"></a>[1.4.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.4.1)
+用于还原 1.4.0 中引入的中断性变更的单点版本。
+### <a name="bug-fixes"></a>Bug 修复
+- 修复[在 WebJobs 中找不到方法](https://github.com/microsoft/ApplicationInsights-SnapshotCollector/issues/15)
+
+## <a name="140"></a>[1.4.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.4.0)
+解决了多项改进，并且针对 Application Insights 引入添加了对 Azure Active Directory (AAD) 身份验证的支持。
+### <a name="changes"></a>更改
+- Snapshot Collector 包的大小减小了 60%。 从 10.34 MB 减小到了 4.11 MB。
+- 在 Snapshot Collector 中只针对目标 netstandard2.0。
+- 将 Application Insights SDK 依赖项升级到 2.15.0。
+- 在写入转储时添加回 MinidumpWithThreadInfo。
+- 添加了 CompatibilityVersion，以改进有关中断性变更的 Snapshot Collector 代理和上传程序之间的同步。
+- 更改 SnapshotUploader LogFile 命名算法，以避免应用服务中文件 I/O 过多。
+- 将 pid、角色名称和进程开始时间添加到上传的 Blob 元数据。
+- 在 Snapshot Collector 和 Snapshot Uploader 中请尽可能使用 System.Diagnostics.Process。
+### <a name="new-features"></a>新增功能
+- 为 SnapshotCollector 添加了 Azure Active Directory 身份验证。 请在[此处](./azure-ad-authentication.md)详细了解 Application Insights 中的 Azure AD 身份验证。
 
 ## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
 用于从 1.4.0-pre 版本向后移植修补程序的若干修正发布。

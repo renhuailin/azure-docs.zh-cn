@@ -1,20 +1,20 @@
 ---
-title: 在 Azure Purview 中注册 Erwin Mart 并设置扫描
+title: 注册 Erwin Mart 并设置扫描
 description: 本文概述如何在 Azure Purview 中注册 Erwin Mart 并设置扫描。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 7/16/2021
-ms.openlocfilehash: 2b6c9f621c4c18a172e12bc93387eb75451cb851
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8077658b644853f9ce0789a1d0863b3bde902818
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736332"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211515"
 ---
-# <a name="register-and-scan-erwin-mart-server-preview"></a>注册并扫描 erwin Mart 服务器（预览版）
+# <a name="register-and-scan-erwin-mart-server-preview"></a>注册并扫描 Erwin Mart 服务器（预览版）
 
 本文概述如何在 Purview 中注册 Erwin Mart 服务器并设置扫描。
 
@@ -71,7 +71,7 @@ erwin Mart 源唯一支持的身份验证是用户名和密码形式的服务器
 4.  输入“应用程序名称”
 
     >[!Note]
-    > 可以通过导航到 erwin Data Modeler 找到上述详细信息。 单击“Mart”-\>“连接”，查看与服务器名称、端口和应用程序名称相关的详细信息。
+    > 可以通过导航到 erwin Data Modeler 找到上述详细信息。 选择“Mart”-\>“连接”，查看与服务器名称、端口和应用程序名称相关的详细信息。
 
     :::image type="content" source="media/register-scan-erwin-source/erwin-details.png" alt-text="查找 erwin 详细信息" border="true":::
     
@@ -86,7 +86,7 @@ erwin Mart 源唯一支持的身份验证是用户名和密码形式的服务器
 
 若要创建并运行新扫描，请执行以下操作：
 
-1.  在“管理中心”，单击“集成运行时”。 确保在运行 erwin Mart 实例的 VM 上设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
+1.  在管理中心，选择“集成运行时”。 确保在运行 erwin Mart 实例的 VM 上设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
 
 2.  导航到“源”。
 
@@ -124,13 +124,13 @@ erwin Mart 源唯一支持的身份验证是用户名和密码形式的服务器
     :::image type="content" source="media/register-scan-erwin-source/setup-scan.png" alt-text="触发扫描" border="true":::
    
 
-6.  单击“测试连接”。
+6.  选择“测试连接”。
 
-7.  单击“继续”。
+7.  选择“继续”。
 
 8.  选择你的扫描触发器。 可以设置一个计划或运行一次扫描。
 
-9.  查看你的扫描并单击“保存并运行”。
+9.  查看扫描，然后选择“保存并运行”。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>查看扫描和扫描运行
 

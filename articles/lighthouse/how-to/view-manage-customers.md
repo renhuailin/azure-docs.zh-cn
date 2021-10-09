@@ -1,14 +1,14 @@
 ---
 title: 查看和管理 Azure 门户中的客户及委派资源
 description: 作为使用 Azure Lighthouse 的服务提供商或企业，你可以通过转到 Azure 门户中的“我的客户”，查看所有委派的资源和订阅。
-ms.date: 08/12/2021
+ms.date: 09/17/2021
 ms.topic: how-to
-ms.openlocfilehash: a29f34983bc42d74efd65a45605bb99944897345
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 4cce38b435ee2613b885dfad959871579579ddce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861007"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673596"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources-in-the-azure-portal"></a>查看和管理 Azure 门户中的客户及委派资源
 
@@ -72,14 +72,18 @@ ms.locfileid: "121861007"
 
 1. 选择 Azure 门户顶部附近的“目录 + 订阅”或“设置”图标 。
 1. 在[“目录 + 订阅”设置页](../../azure-portal/set-preferences.md#directories--subscriptions)中，请确保“高级筛选器”切换开关为[关闭状态](../../azure-portal/set-preferences.md#subscription-filters)。
-1. 在“默认订阅筛选器”部分，选择合适的目录和订阅。
+1. 在“默认订阅筛选器”部分，选择合适的目录和订阅。 （如果已向你授予访问一个或多个资源组的权限，而非访问整个订阅的权限，请选择该资源组所属的订阅。 然后，可在该订阅的上下文中操作，但只能访问委派资源组。）
 
-:::image type="content" source="../media/subscription-filter-delegated.png" alt-text="显示已委托订阅的筛选器的屏幕截图。":::
+:::image type="content" source="../media/subscription-filter-delegated.png" alt-text="默认订阅筛选器的屏幕截图，其中选择了一个委托订阅。":::
 
-如果之后访问支持[跨租户管理体验](../concepts/cross-tenant-management-experience.md)的服务，该服务将默认为包含在筛选器中的已委派订阅的上下文。 可通过执行上述步骤并选中“全选”框（或选择要处理的一个或多个订阅），来对此进行更改。
+之后访问支持[跨租户管理体验](../concepts/cross-tenant-management-experience.md)的服务时，该服务将默认为包含在筛选器中的已委派订阅的上下文。
 
-> [!NOTE]
-> 如果已向你授予访问一个或多个资源组的权限，而非访问整个订阅的权限，请选择该资源组所属的订阅。 然后，可在该订阅的上下文中操作，但只能访问委派资源组。
+通过执行上述步骤并选择其他订阅或选择多个订阅，可随时更改默认订阅。 如果希望筛选器包含你有权访问的所有订阅，还可以选择“所有目录”，然后选中“全选”框。
+
+:::image type="content" source="../media/subscription-filter-all.png" alt-text="默认订阅筛选器的屏幕截图，其中选择了所有目录和订阅":::
+
+> [!IMPORTANT]
+> 选中“全选”框时，会将筛选器设置为显示当前你有权访问的所有订阅。 如果之后获得其他订阅的访问权限（例如，在将新的客户加入 Azure Lighthouse 后），不会自动将这些订阅添加到筛选器。 需要返回到“目录 + 订阅”并选择其他订阅（或者取消选中并重新选中“全选”）。
 
 还可以选择单个服务中的订阅或资源组，来访问与服务（支持跨租户管理体验）中已委派订阅或资源组相关的功能。
 

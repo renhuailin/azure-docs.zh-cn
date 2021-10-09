@@ -3,12 +3,12 @@ title: 快速入门：入门
 description: 在本快速入门中，你将开始了解 Defender for IoT 部署的基本工作流。
 ms.topic: quickstart
 ms.date: 06/06/2021
-ms.openlocfilehash: cae5b1db400cebe341463dbc752fe5559b779380
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 32565bfcf87facb957dc4e8b1fc73f52eb1c7ac2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437649"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836409"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>快速入门：Defender for IoT 入门
 
@@ -63,6 +63,8 @@ Azure Defender for IoT 支持物理和虚拟部署。 对于物理部署，你�
 - 定义已提交设备。
 - 下载本地管理控制台的激活文件。
 
+你还可以使用试用订阅免费监视 1000 台设备 30 天。 有关详细信息，请参阅[加入试用订阅](how-to-manage-subscriptions.md#onboard-a-trial-subscription)。
+
 若要注册，请执行以下操作：
 
 1. 转到 Azure Defender for IoT 门户。
@@ -74,6 +76,8 @@ Azure Defender for IoT 支持物理和虚拟部署。 对于物理部署，你�
 1. 选择“下载本地管理控制台”选项卡，并保存已下载的激活文件。 此文件包含你定义的聚合提交设备。 首次登录后，文件将上传到管理控制台。
 
 要详细了解如何登出订阅，请参阅[登出订阅](how-to-manage-subscriptions.md#offboard-a-subscription)。
+
+
 
 ## <a name="install-and-set-up-the-on-premises-management-console"></a>安装并设置本地管理控制台
 

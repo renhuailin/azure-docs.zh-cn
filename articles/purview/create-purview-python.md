@@ -4,40 +4,35 @@ description: 使用 Python 创建 Azure Purview 帐户。
 author: nayenama
 ms.author: nayenama
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/02/2021
-ms.openlocfilehash: ec1f8890d9626ca1ed96f538bd464da7c30caf17
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 09/27/2021
+ms.openlocfilehash: 7a6d13da2ee3138e6dfc5eca4a5b75f454f90457
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983781"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212470"
 ---
 # <a name="quickstart-create-a-purview-account-using-python"></a>快速入门：使用 Python 创建 Purview 帐户
 
-本快速入门介绍如何使用 Python 创建 Purview 帐户。 
+在本快速入门中，使用 Python 以编程方式创建一个 Purview 帐户。 可以使用 [Purview 的 Python 参考](/python/api/azure-mgmt-purview/)，但本文将指导你完成使用 Python 创建帐户所需的所有步骤。
 
-## <a name="prerequisites"></a>必备条件
+Azure Purview 是一种数据管理服务，可帮助你管理和治理数据环境。 通过跨本地源、多云源和服务型软件 (SaaS) 源连接到数据，Purview 创建了最新的信息地图。 它对敏感数据进行标识和分类，并提供端到端的沿袭。 数据使用者能够发现整个组织的数据，而数据管理员能够审核数据、保护数据和确保对你的数据的正确使用。
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+有关 Purview 的详细信息，[请参阅概述页](overview.md)。 有关在组织中部署 Purview 的详细信息，[请参阅部署最佳做法](deployment-best-practices.md)。
 
-* 你拥有 [Azure Active Directory 租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
-
-* 你的帐户必须有权在订阅中创建资源
-
-* 如果 Azure Policy 阻止所有应用程序创建存储帐户和 EventHub 命名空间，则需要使用标记设置策略例外，可以在创建 Purview 帐户的过程中输入此信息  。 主要原因是，对于创建的每个 Purview 帐户，它需要创建一个托管资源组，并在此资源组中创建存储帐户和 EventHub 命名空间。 有关详细信息，请参阅[创建目录门户](create-catalog-portal.md)
-
+[!INCLUDE [purview-quickstart-prerequisites](includes/purview-quickstart-prerequisites.md)]
 
 ## <a name="install-the-python-package"></a>安装 Python 包
 
-1. 使用管理员特权打开一个终端或命令提示符。 
+1. 使用管理员特权打开一个终端或命令提示符。
 2. 首先，安装 Azure 管理资源的 Python 包：
 
     ```python
     pip install azure-mgmt-resource
     ```
+
 3. 若要为 Purview 安装 Python 包，请运行以下命令：
 
     ```python
@@ -51,9 +46,10 @@ ms.locfileid: "112983781"
     ```python
     pip install azure-identity
     ```
-    > [!NOTE] 
-    > 在某些常见依赖关系上，“azure-identity”包可能与“azure-cli”冲突。 如果遇到任何身份验证问题，请删除“azure-cli”及其依赖关系，或使用未安装“azure-cli”包的初始状态计算机，以确保“azure-identity”包正常工作。
-    
+
+    > [!NOTE]
+    > 在某些常见依赖关系上，“azure-identity”包可能与“azure-cli”冲突。 如果遇到任何身份验证问题，请删除“azure-cli”及其依赖关系，或使用未安装“azure-cli”包的初始状态计算机。
+
 ## <a name="create-a-purview-client"></a>创建 Purview 客户端
 
 1. 创建 purview.py 文件。 添加以下语句来添加对命名空间的引用。
@@ -67,8 +63,8 @@ ms.locfileid: "112983781"
     import time
     ```
 
-2. 将以下代码添加到“Main”方法，此方法可创建 PurviewManagementClient 类的实例。 你可以使用此对象创建 purview 帐户、删除 purview 帐户、检查名称可用性和其他资源提供程序操作。
- 
+2. 将以下代码添加到“Main”方法，此方法可创建 PurviewManagementClient 类的实例。 使用此对象创建 Purview 帐户、删除 Purview 帐户、检查名称可用性，以及执行其他资源提供程序操作。
+
     ```python
     def main():
     
@@ -184,10 +180,7 @@ main()
 
 ## <a name="run-the-code"></a>运行代码
 
-生成并启动应用程序，然后验证管道执行。
-
-控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 请等到出现包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具检查 blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
-
+生成并启动应用程序。 控制台将打印 Purview 帐户创建的进度。 等待它完成。
 下面是示例输出：
 
 ```console
@@ -199,11 +192,11 @@ Succeeded
 
 ## <a name="verify-the-output"></a>验证输出
 
-转到 Azure 门户的“Purview 帐户”页，并验证使用上述代码创建的帐户。 
+转到 Azure 门户的“Purview 帐户”页，并验证使用上述代码创建的帐户。
 
 ## <a name="delete-purview-account"></a>删除 Purview 帐户
 
-若要删除 Purview 帐户，请在计划中添加以下代码：
+若要删除 Purview 帐户，请向程序添加以下代码，然后运行：
 
 ```python
 pa = purview_client.accounts.begin_delete(rg_name, purview_name).result()
@@ -213,7 +206,8 @@ pa = purview_client.accounts.begin_delete(rg_name, purview_name).result()
 
 本教程中的代码创建和删除 Purview 帐户。 你现可下载 python SDK，并了解你可以对 Purview 帐户执行的其他资源提供程序操作。
 
-请继续阅读下一篇文章，了解如何允许用户访问 Azure Purview 帐户。 
+请按照接下来的这些文章学习如何导航 Purview Studio、创建集合以及授予对 Purview 的访问权限。
 
-> [!div class="nextstepaction"]
-> [将用户添加到 Azure Purview 帐户](catalog-permissions.md)
+* [如何使用 Purview Studio](use-purview-studio.md)
+* [创建集合](quickstart-create-collection.md)
+* [将用户添加到 Azure Purview 帐户](catalog-permissions.md)

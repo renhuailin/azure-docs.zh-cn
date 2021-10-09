@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 2c711188343be5ee52e1bac217f8b31dc6756d3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45ec57871be8160c2bfde34c20137bd6c7afd6c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654385"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738593"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-olfeo-saas"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 Olfeo SAAS 的集成
 
@@ -37,7 +37,9 @@ ms.locfileid: "101654385"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Olfeo SAAS 支持 SP 发起的 SSO
+* Olfeo SAAS 支持 SP 发起的 SSO。
+
+* Olfeo SAAS 支持[自动用户预配](olfeo-saas-provisioning-tutorial.md)。
 
 ## <a name="adding-olfeo-saas-from-the-gallery"></a>从库中添加 Olfeo SAAS
 
@@ -49,7 +51,6 @@ ms.locfileid: "101654385"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Olfeo SAAS” 。
 1. 从结果面板中选择“Olfeo SAAS”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-olfeo-saas"></a>配置并测试 Olfeo SAAS 的 Azure AD SSO
 
@@ -85,7 +86,7 @@ ms.locfileid: "101654385"
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Olfeo SAAS 客户端支持团队](mailto:equipe-rd@olfeo.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -121,6 +122,8 @@ ms.locfileid: "101654385"
 
 本部分需在 Olfeo SAAS 中创建名为“Britta Simon”的用户。 与 [Olfeo SAAS 支持团队](mailto:equipe-rd@olfeo.com)协作，在 Olfeo SAAS 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
+Olfeo SAAS 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./olfeo-saas-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -129,8 +132,7 @@ ms.locfileid: "101654385"
 
 * 直接转到 Olfeo SAAS 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Olfeo SAAS 磁贴时，会重定向到 Olfeo SAAS 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Olfeo SAAS 磁贴时，会重定向到 Olfeo SAAS 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

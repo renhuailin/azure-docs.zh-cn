@@ -8,17 +8,17 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 24a925b0d16dc1650398e6211aaff42cd47620eb
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: a8adfef720d446c3ae2a45d27cee72a8135edb70
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112369404"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595040"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>使用 Azure Front Door 标准版/高级版（预览版）进行缓存
 
 > [!Note]
-> 本文档适用于 Azure Front Door 标准/高级（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
+> 本文档适用于 Azure Front Door 标准版/高级版（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
 
 本文介绍启用缓存时 Front Door 标准版/高级版（预览版）路由和规则集的行为。 Azure Front Door 是具有动态站点加速和负载均衡功能的新式内容分发网络 (CDN)。
 
@@ -42,7 +42,7 @@ Front Door 会在收到任何区块后将区块缓存，因此整个文件无需
 
 ## <a name="file-compression"></a>文件压缩
 
-请参阅“通过在 Azure Front Door 中压缩文件来提高性能”。
+请参阅[通过在 Azure Front Door 中压缩文件来提高性能](how-to-compression.md)。
 
 ## <a name="query-string-behavior"></a>查询字符串行为
 
@@ -71,9 +71,20 @@ Front Door 会在收到任何区块后将区块缓存，因此整个文件无需
 * Content-Length
 * Transfer-Encoding
 
-## <a name="cache-duration"></a>缓存持续时间
+## <a name="cache-behavior-and-duration"></a>缓存行为和持续时间
 
-你可在规则集中配置缓存持续时间。 通过规则集设置的缓存持续时间是真正的缓存替代。 这意味着无论源响应头是什么，它都将使用替代值。
+可以在 Front Door 设计器传递规则和规则引擎中配置缓存行为和持续时间。 规则引擎缓存配置将始终替代 Front Door 设计器传递规则配置。
+
+* 禁用缓存后，无论源响应指令是什么，Front Door 都不会缓存响应内容。
+
+* 启用缓存后，对于“使用缓存默认持续时间”的不同值，缓存行为会有所不同。
+    * 当“使用缓存默认持续时间”设置为“是”时，Front Door 始终采用源响应标头指令。 如果缺少源指令，Front Door 将缓存 1 到 3 天内任何位置的内容。
+    * 当“使用缓存默认持续时间”设置为“否”时，Front Door 将始终替代“缓存持续时间”（必填字段），这意味着它将缓存缓存持续时间的内容，而忽略源响应指令中的值。 
+
+> [!NOTE]
+> * 在 Front Door 设计器传递规则中设置的“缓存持续时间”是“最小缓存持续时间”。 如果源的缓存控制标头的 TTL 大于替代值，则此替代将不起作用。
+> * 如果缓存内容的请求频率不高，可能会在它们过期之前将其从 Azure Front Door 中逐出，以便为更频繁请求的内容腾出空间。
+>
 
 ## <a name="next-steps"></a>后续步骤
 

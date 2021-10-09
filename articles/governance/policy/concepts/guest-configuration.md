@@ -3,12 +3,12 @@ title: 了解 Azure Policy 的来宾配置功能
 description: 了解 Azure Policy 如何使用来宾配置功能来审核或配置虚拟机内部的设置。
 ms.date: 07/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12e23b8db546d2bc34bbe17871ac5fbebd7a2de8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d9da1454fa531bcc6526cc11dda3b341be0688df
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769640"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092616"
 ---
 # <a name="understand-the-guest-configuration-feature-of-azure-policy"></a>了解 Azure Policy 的来宾配置功能
 
@@ -78,8 +78,8 @@ Azure Policy 可以审核或配置计算机（Azure 中运行的计算机和[已
 |发布者|名称|版本|
 |-|-|-|
 |Amazon|Linux|2|
-|Canonical|Ubuntu Server|14.04 - 20.x|
-|Credativ|Debian|8 - 10.x|
+|Canonical|Ubuntu Server|16.04 - 20.x|
+|Credativ|Debian|9 - 10.x|
 |Microsoft|Windows Server|2012 - 2019|
 |Microsoft|Windows 客户端|Windows 10|
 |Oracle|Oracle-Linux|7.x-8.x|

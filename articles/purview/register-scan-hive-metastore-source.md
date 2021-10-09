@@ -4,15 +4,15 @@ description: 本文概述了如何在 Azure Purview 中注册 Hive 元存储数�
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 5/17/2021
-ms.openlocfilehash: 0a7d8a22cf8f9dcdaac9d3fe07bd6ab006e61818
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 7552b562e930e39ba4a0f848ba095762d3838c22
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751901"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214098"
 ---
 # <a name="register-and-scan-hive-metastore-database"></a>注册并扫描 Hive 元存储数据库
 
@@ -75,7 +75,7 @@ Hive 元存储数据库唯一支持的身份验证是 **基本身份验证。**
 
 若要创建并运行新扫描，请执行以下操作：
 
-1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
+1.  在管理中心，选择“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
 
 2.  导航到“源”。
 
@@ -161,11 +161,11 @@ Hive 元存储数据库唯一支持的身份验证是 **基本身份验证。**
 
         :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="扫描 hive 源" border="true":::
 
-6.  单击“继续”。
+6.  选择“继续”。
 
 7.  选择你的扫描触发器。 可以设置一个计划或运行一次扫描。
 
-8.  查看你的扫描并单击“保存并运行”。
+8.  查看扫描，然后选择“保存并运行”。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>查看扫描和扫描运行
 

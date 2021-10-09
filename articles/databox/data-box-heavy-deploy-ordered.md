@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 09/08/2021
 ms.author: alkohli
 ms.localizationpriority: high
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: d5334314626d29dc9e3047bc382d41fcfa318a1d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0bf9eb2eab829e22e72f19fc4da4575166ea2755
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469511"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743344"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教程：订购 Azure Data Box Heavy
 
@@ -62,6 +62,8 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 ## <a name="order-data-box-heavy"></a>订购 Data Box Heavy
 
 [!INCLUDE [order-data-box-via-portal](../../includes/data-box-order-portal.md)]
+
+Data Box 团队将与你联系，获取有关你的要求的更多信息，以便他们确定所需位置是否提供 Data Box Heavy 服务。 在他们查看订单时，订单仍处于“已下单”状态。 如果出于某种原因无法填写订单，他们会通知你。
 
 ## <a name="track-the-order"></a>跟踪订单
 

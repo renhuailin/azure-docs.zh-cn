@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 8dd140b65e1ad4940d207011014f4e6d4e28bc7d
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: fd1447abfeab0cd7ab77df42fff19e092713e156
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603053"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>教程：Azure Active Directory 单一登录 (SSO) 与 zeroheight 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "114603053"
 * 让用户使用其 Azure AD 帐户自动登录到 zeroheight。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -84,17 +84,18 @@ ms.locfileid: "114603053"
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [zeroheight 客户端支持团队](mailto:support@zeroheight.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. zeroheight 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
+1. zeroheight 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 找到具有默认属性的以下部分。
 
-    ![图像](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
-1. 除上述属性以外，zeroheight 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+1. zeroheight 不使用任何默认属性。 请改为添加以下属性，以在 SAML 响应中传回。 这些属性应该预先填充，但可以根据要求查看它们。
     
     | 名称 |  源属性|
     | ---------- | --------- |
     | 电子邮件 | user.mail |
+    | FirstName | user.givenname |
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -106,7 +107,7 @@ ms.locfileid: "114603053"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -138,7 +139,7 @@ ms.locfileid: "114603053"
 
 * 直接转到 zeroheight 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 如果在“我的应用”中单击 zeroheight 磁贴，则会重定向到 zeroheight 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 如果在“我的应用”中单击 zeroheight 磁贴，则会重定向到 zeroheight 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

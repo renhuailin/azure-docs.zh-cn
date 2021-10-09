@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 65f4963f23d97ca2e3af34febb0d5dbea652fc12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c579f87cd9fc8bc071b0abf8acc8ffe5f7d538b0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646956"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801061"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Shopify Plus 的集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "101646956"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Shopify Plus 支持 SP 和 IDP 发起的 SSO。
+* Shopify Plus 支持[自动用户预配](shopify-plus-provisioning-tutorial.md)。
 
 ## <a name="add-shopify-plus-from-the-gallery"></a>从库中添加 Shopify Plus
 
@@ -73,9 +74,9 @@ ms.locfileid: "101646956"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://accounts.shopify.com/saml/consume/organization/<ORGANIZATION_ID>`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://accounts.shopify.com/saml/consume/organization/<ORGANIZATION_ID>` 
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -133,6 +134,9 @@ ms.locfileid: "101646956"
 
 在本部分中，将在 Shopify Plus 中创建名为 B.Simon 的用户。 返回到“用户”部分，并通过输入用户的电子邮件和访问权限来添加用户。 使用单一登录前，必须先创建并激活用户。
 
+> [!NOTE]
+> Shopify Plus 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./shopify-plus-provisioning-tutorial.md)。
+
 ### <a name="enforce-saml-authentication"></a>强制执行 SAML 身份验证
 
 > [!NOTE]
@@ -165,7 +169,7 @@ ms.locfileid: "101646956"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Shopify Plus。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Shopify Plus 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Shopify Plus。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Shopify Plus 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Shopify Plus。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

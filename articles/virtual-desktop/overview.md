@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 773e0053512026f6a92a2981d43340b68e708186
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f988fafbdd381c88a3f8da60fb48fa3320a82876
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757712"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674445"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>什么是 Azure 虚拟桌面？
 
@@ -123,6 +123,8 @@ Azure 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 M
 
 Azure 虚拟桌面遵循 [Microsoft 生命周期策略](/lifecycle/)，并支持以下 x64 操作系统映像：
 
+* Windows 11 企业版多会话（预览版）
+* Windows 11 企业版（预览版）
 * Windows 10 Enterprise 多会话
 * Windows 10 企业版
 * Windows 7 Enterprise
@@ -136,6 +138,8 @@ Azure 虚拟桌面不支持 x86（32 位）、Windows 10 Enterprise N、Windows 
 
 |操作系统|Azure 映像库|手动 VM 部署|Azure 资源管理器模板集成|在 Azure 市场中预配主机池|
 |--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 11 企业版多会话（预览版）|是|是|是|是|
+|Windows 11 企业版（预览版）|是|是|是|是|
 |Windows 10 Enterprise 多会话版本 1909 和更高版本|是|是|是|是|
 |Windows 10 Enterprise 版本 1909 和更高版本|是|是|是|是|
 |Windows 7 Enterprise|是|是|否|否|

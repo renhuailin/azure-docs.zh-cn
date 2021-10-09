@@ -6,15 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 04/30/2021
-ms.openlocfilehash: 1a4bd560603b16a1a2b9fe0a66bc4f1adce25a73
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/27/2021
+ms.openlocfilehash: 72505a4e3c9003032c29b55e8cfa2152617bc928
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867469"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080088"
 ---
-# <a name="how-to-create-a-dynamics-365-for-customer-engagement--power-apps-offer"></a>如何创建 Dynamics 365 for Customer Engagement 和 Power App 产品/服务
+# <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
 
 本文介绍如何创建 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务。 Dynamics 365 的所有产品/服务都必须通过我们的认证流程。 试用体验允许用户将你的解决方案部署到实时 Dynamics 365 环境中。
 
@@ -26,7 +26,25 @@ ms.locfileid: "122867469"
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Customer Engagement 和 Power Apps”。
+
+    [ ![显示了“新建产品/服务”按钮以及选择的“Customer Engagement 和 Power Apps”产品/服务类型。](./media/dynamics-365/new-offer-dynamics-365-customer-engagement-workspaces.png) ](./media/dynamics-365/new-offer-dynamics-365-customer-engagement-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> 发布某个产品/服务后，在合作伙伴中心对其进行的任何编辑都不会出现在 Microsoft AppSource 中，除非重新发布该产品和服务。 对产品/服务进行更改后，请确保一律重新发布该产品/服务。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
 3. 在“概述”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Customer Engagement 和 Power Apps”。
 
@@ -34,6 +52,8 @@ ms.locfileid: "122867469"
 
 > [!IMPORTANT]
 > 发布某个产品/服务后，在合作伙伴中心对其进行的任何编辑都不会出现在 Microsoft AppSource 中，除非重新发布该产品和服务。 对产品/服务进行更改后，请确保一律重新发布该产品/服务。
+
+---
 
 ## <a name="new-offer"></a>新产品/服务
 

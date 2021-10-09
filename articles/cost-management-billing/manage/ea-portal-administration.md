@@ -3,18 +3,18 @@ title: Azure EA 门户管理
 description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/25/2021
+ms.date: 09/28/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: sapnakeshari
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: bf887ad515f8c4349fcff54d25be1c70a30d018f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ede22b400b597c8cc474d49f65341bb5b24ea118
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123098314"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216757"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -198,7 +198,7 @@ ms.locfileid: "123098314"
 
 1. 以企业管理员身份登录到 Azure EA 门户。
 1. 在左侧导航区域中选择“管理”。
-1. 选择“部门”。
+1. 选择“帐户”。
 1. 将鼠标悬停在包含帐户的行上，然后选择右侧的铅笔图标。
 1. 从下拉菜单中选择部门。
 1. 选择“保存”。

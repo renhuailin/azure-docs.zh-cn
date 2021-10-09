@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/1/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 0327e725534f7b56171814e99098cee365785d8c
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: b6a430c70d59ff980063139e71daf76d1ede220a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205006"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610137"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-with-azure-cli"></a>通过 Azure CLI 在 Azure Database for MySQL 灵活服务器中管理区域冗余高可用性
 
@@ -30,7 +30,9 @@ ms.locfileid: "114205006"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+- 具有活动订阅的 Azure 帐户。 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - 安装 Azure CLI 或将其升级到最新版本。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 - 使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure 帐户。 请注意 id 属性，该属性指的是 Azure 帐户的订阅 ID。
 
@@ -46,20 +48,23 @@ ms.locfileid: "114205006"
 
 ## <a name="enable-high-availability-during-server-creation"></a>在服务器创建过程中启用高可用性
 
-只能使用具有高可用性的常规用途或内存优化定价层创建服务器。 只能在创建时为服务器启用高可用性。
+只能使用具有高可用性的常规用途或内存优化定价层创建服务器。 只能在创建时为服务器启用区域冗余高可用性。
 
 **用法：**
 
    ```azurecli
-    az mysql flexible-server create [--high-availability {Disabled, Enabled}]
+    az mysql flexible-server create [--high-availability {Disabled, SameZone, ZoneRedundant}]
+                                    [--sku-name]
+                                    [--tier]
                                     [--resource-group]
+                                    [--location]
                                     [--name]
    ```
 
 **示例：**
 
    ```azurecli
-    az mysql flexible-server create --name myservername --sku-name Standard-D2ds_v4 --resource-group myresourcegroup --high-availability Enabled
+    az mysql flexible-server create --name myservername --sku-name Standard_D2ds_v4 --tier Genaralpurpose --resource-group myresourcegroup --high-availability ZoneRedundant --location eastus
    ```
 
 ## <a name="disable-high-availability"></a>禁用高可用性
@@ -67,10 +72,12 @@ ms.locfileid: "114205006"
 你可以使用 [az mysql flexible-server update](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update) 命令禁用高可用性。 请注意，仅当创建了具有高可用性的服务器时才支持禁用高可用性。 
 
 ```azurecli
-az mysql flexible-server update [--high-availability {Disabled, Enabled}]
+az mysql flexible-server update [--high-availability {Disabled, SameZone, ZoneRedundant}]
                                 [--resource-group]
                                 [--name]
 ```
+>[!Note]
+>如果要从 ZoneRedundant 移动到 SameZone，首先必须禁用高可用性，然后启用同一区域。
 
 **示例：**
 

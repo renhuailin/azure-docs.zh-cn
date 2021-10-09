@@ -2,14 +2,14 @@
 title: 删除资源组和资源
 description: 介绍如何删除资源组和资源。 它介绍删除资源组时 Azure 资源管理器如何为资源的删除排序。 它描述响应代码以及资源管理器如何处理它们以确定是否成功删除。
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 09/28/2021
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ccf5a9b1fac50dbf96d648acbf625b360bafb249
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 7995539ededec882b0b69e5ba3d1c5ef42adbcdc
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315230"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211226"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure 资源管理器资源组和资源删除
 
@@ -119,13 +119,13 @@ az resource delete \
 
 ---
 
-## <a name="required-access"></a>所需访问权限
+## <a name="required-access-and-deletion-failures"></a>所需的访问权限和删除失败
 
 若要删除资源组，你需要访问“Microsoft.Resources/subscriptions/resourceGroups”资源的删除操作。 还需要资源组中所有资源的删除权限。
 
 有关操作的列表，请参阅 [Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。 有关内置角色的列表，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
-如果拥有所需的访问权限，但删除请求失败，则可能是因为资源组上存在[锁](lock-resources.md)。
+如果你具有所需的访问权限，但删除请求失败，则可能是因为[资源或资源组上存在锁定](lock-resources.md)。 即使未手动锁定资源组，它也可能已[由相关服务自动锁定](lock-resources.md#managed-applications-and-locks)。 或如果资源连接到其他未删除的资源组中的资源，则删除可能会失败。 例如，不能删除子网仍被某个虚拟机使用的虚拟网络。
 
 ## <a name="next-steps"></a>后续步骤
 

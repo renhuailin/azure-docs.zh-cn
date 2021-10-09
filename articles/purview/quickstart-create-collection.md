@@ -1,28 +1,28 @@
 ---
 title: 快速入门：创建集合
-description: 本文介绍如何在 Azure Purview 中创建集合并添加权限和源
+description: 集合用于访问控制和 Azure Purview 中的资产组织。 本文介绍如何创建集合和添加权限、注册源和将资产注册到集合。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: quickstart
-ms.date: 08/18/2021
+ms.date: 09/27/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: a1a62bb6253aa2788d8dad41d506ca898a049283
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 47db60e99048d5be58eb1aae6707caa6ae9c4d6e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475685"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218725"
 ---
 # <a name="quickstart-create-a-collection-and-assign-permissions-in-purview"></a>快速入门：在 Purview 中创建集合并分配权限
 
 > [!NOTE]
-> 本快速入门目前仅适用于在 2021 年 8 月 18 日或之后创建的 Purview 实例。 在 8 月 18 日之前创建的实例可以创建集合，但不会通过这些集合管理权限。 有关为 8 月 18 日之前创建的 Purview 实例创建集合的信息，请参阅页面底部的[旧版集合指南](#legacy-collection-guide)。
+> 本快速入门目前仅适用于在 2021 年 8 月 18 日或之后创建的 Azure Purview 实例。 在 8 月 18 日之前创建的实例可以创建集合，但不会通过这些集合管理权限。 有关为 8 月 18 日之前创建的 Purview 实例创建集合的信息，请参阅页面底部的[旧版集合指南](#legacy-collection-guide)。
 > 
 > 在接下来的几周内，所有旧帐户都会被自动升级。 升级 Purview 帐户时，你将收到电子邮件通知。 有关升级帐户后将发生的更改的信息，请参阅[升级帐户指南](concept-account-upgrade.md)。
 
-集合是 Purview 的一种工具，用于跨资产、源和信息管理所有权和访问控制。 它们还会将源和资产整理到为了匹配你的数据管理经验而自定义的类别中。 本指南说明如何设置第一个集合和集合管理员，从而为组织准备好 Purview 环境。
+集合是 Azure Purview 的一种工具，用于跨资产、源和信息管理所有权和访问控制。 它们还会将源和资产整理到为了匹配你的数据管理经验而自定义的类别中。 本指南说明如何设置第一个集合和集合管理员，从而为组织准备好 Purview 环境。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "123475685"
 
 1. 在左侧窗格中选择“数据映射”>“集合”打开集合管理页。
 
-    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Purview Studio 窗口的屏幕截图，其中已打开“数据映射”并选择了“集合”选项卡。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Purview Studio 的屏幕截图，其中已打开“数据映射”并选择了“集合”选项卡。" border="true":::
 
 1. 选择你的根集合。 这是你的集合列表中的顶级集合，与你的 Purview 资源同名。 在以下示例中，该集合名为 Contoso Purview。
 
@@ -58,9 +58,12 @@ ms.locfileid: "123475685"
 
 1. 在左侧窗格中选择“数据映射”>“集合”打开集合管理页。
 
-    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Purview Studio 窗口的屏幕截图，其中已打开“数据映射”并选择了“集合”选项卡。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/find-collections-2.png" alt-text="Purview Studio 窗口的屏幕截图，其中已打开“数据映射”并选择了“集合”选项卡。" border="true":::
 
 1. 选择“+ 添加集合”。
+
+    :::image type="content" source="./media/quickstart-create-collection/select-add-collection.png" alt-text="Purview Studio 窗口的屏幕截图，其中已打开“数据映射”并选择了“集合”选项卡、突出显示了“添加集合”。" border="true":::
+
 1. 在右侧面板中，输入集合的名称和描述，然后搜索要添加为集合管理员的用户。
 
     :::image type="content" source="./media/quickstart-create-collection/create-collection.png" alt-text="Purview Studio 窗口的屏幕截图，其中显示了“新建集合”窗口，选择了显示名称和集合管理员，并突出显示了“创建”按钮。" border="true":::

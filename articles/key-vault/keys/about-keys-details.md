@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7dc8d113b8d47ea75938cc7fcd7c24c8a132a3b4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3f3db4b694dd825b15cf80be247bf43780e1d381
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471746"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562994"
 ---
 # <a name="key-types-algorithms-and-operations"></a>密钥类型、算法和操作
 
@@ -75,7 +75,7 @@ Key Vault 支持两种资源类型：保管库和托管 HSM。 这两种资源�
 
 ##  <a name="key-operations"></a>密钥操作
 
-托管 HSM 支持对密钥对象执行以下操作：  
+密钥保管库（包括托管 HSM）支持对密钥对象执行以下操作：  
 
 -   **创建**：允许客户端在 Key Vault 中创建密钥。 密钥的值由 Key Vault 生成，存储但不发布到客户端。 可在 Key Vault 中创建非对称密钥。  
 -   **导入**：允许客户端将现有密钥导入到 Key Vault。 非对称密钥可以使用 JWK 构造中的多种不同的打包方法导入到 Key Vault。 

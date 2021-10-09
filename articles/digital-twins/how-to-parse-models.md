@@ -4,22 +4,22 @@ titleSuffix: Azure Digital Twins
 description: 了解如何使用分析程序库分析 DTDL 模型。
 author: baanders
 ms.author: baanders
-ms.date: 8/13/2021
+ms.date: 9/2/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 584d4ba9de922cd035a70850f723550b02863e16
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: e77fc64277cd0210a4741bc6828b5f1f72cf0e73
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606593"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830996"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>使用 DTDL 分析程序库分析和验证模型
 
 Azure 数字孪生中的[模型](concepts-models.md)是使用基于 JSON-LD 的数字孪生定义语言 (DTDL) 定义的。 **建议先离线验证你的模型，然后再将其上传到你的 Azure 数字孪生实例。**
 
-为帮助你执行此操作，NuGet 上提供了一个 .NET 客户端 DTDL 分析库：[Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 
+为帮助你验证模型，NuGet 上提供了一个 .NET 客户端 DTDL 分析库：[Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 
 
 你可以直接在 C# 代码中使用分析程序库，也可以使用基于分析程序库构建的与语言无关的代码示例项目：[DTDL 验证程序示例](/samples/azure-samples/dtdl-validator/dtdl-validator)。
 

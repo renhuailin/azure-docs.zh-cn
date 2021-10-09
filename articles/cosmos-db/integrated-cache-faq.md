@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 7fee5b4133cc048576ff0b794d441fac3ee162e6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: a8d1dc69ef64726f55dffd20221a19c3f3114964
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035938"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595135"
 ---
 # <a name="azure-cosmos-db-integrated-cache-frequently-asked-questions"></a>Azure Cosmos DB 集成缓存常见问题解答
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -56,11 +56,15 @@ Azure Cosmos DB 集成缓存是内置于 Azure Cosmos DB 的内存中缓存。 �
 
 长期路线图上规划了将集成缓存扩展到 SQL API 之外，但会超出集成缓存的初始公共预览版的范围。
 
+### <a name="what-consistency-does-the-integrated-cache-support"></a>集成缓存支持什么一致性？
+
+集成缓存支持会话和最终一致性。 还可以配置可选的 [MaxIntegratedCacheStaleness](integrated-cache.md#maxintegratedcachestaleness)，这将对缓存的数据设置上限。
+
 ## <a name="next-steps"></a>后续步骤
 
 - [集成缓存](integrated-cache.md)
 - [配置集成缓存](how-to-configure-integrated-cache.md)
 - [专用网关](dedicated-gateway.md)
-- 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量计划。
-    - 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+- 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    - 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
     - 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

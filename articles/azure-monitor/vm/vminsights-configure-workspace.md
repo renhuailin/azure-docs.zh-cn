@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: 0a4b6e1f90e24b3289b453e849b4ad979b10e202
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: a5a65f99fec0bb0db245450ead9747776e194b46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319910"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614422"
 ---
 # <a name="configure-log-analytics-workspace-for-vm-insights"></a>配置 VM 见解的 Log Analytics 工作区
 VM 见解从 Azure Monitor 中的一个或多个 Log Analytics 工作区收集其数据。 在加入代理之前，必须创建并配置一个工作区。 本文介绍工作区的要求，以及如何为 VM 见解配置工作区。
@@ -38,15 +38,13 @@ VM 见解从 Azure Monitor 中的一个或多个 Log Analytics 工作区收集�
 
 
 * [Azure 门户](../logs/quick-create-workspace.md)
-* [Azure CLI](../logs/quick-create-workspace-cli.md)
+* [Azure CLI](../logs/resource-manager-workspace.md)
 * [PowerShell](../logs/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../logs/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>支持的区域
-VM 见解支持 [Log Analytics 所支持的任何区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)中的 Log Analytics 工作区，但以下区域除外：
+VM 见解支持 [Log Analytics 所支持的任何区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)中的 Log Analytics 工作区。
 
-- 德国中西部
-- 韩国中部
 
 >[!NOTE]
 >可以监视任何区域中的 Azure VM。 VM 本身并不局限于 Log Analytics 工作区支持的区域。

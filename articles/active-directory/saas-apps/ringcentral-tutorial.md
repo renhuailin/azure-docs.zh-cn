@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c8126c051457d740d1a5414a130b4ee3fffcd8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f18ebeb71f597bc7988c8f97840ac1a1e38ebb9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954116"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830319"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>教程：将 RingCentral 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "104954116"
 * 让用户使用其 Azure AD 帐户自动登录到 RingCentral。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -41,6 +41,8 @@ ms.locfileid: "104954116"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * RingCentral 支持 IDP 发起的 SSO。
+
+* RingCentral 支持[自动用户预配](ringcentral-provisioning-tutorial.md)。
 
 ## <a name="add-ringcentral-from-the-gallery"></a>从库添加 RingCentral
 
@@ -183,13 +185,15 @@ ms.locfileid: "104954116"
 
 在本部分，请在 RingCentral 中创建一个名为“Britta Simon”的用户。 请与 [RingCentral 客户端支持团队](https://success.ringcentral.com/RCContactSupp)协作，在 RingCentral 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
+RingCentral 还支持自动用户预配；有关如何配置自动用户预配的更多详细信息，请参阅[此处](./ringcentral-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 RingCentral。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“RingCentral”磁贴时，你应该会自动登录到为其设置了 SSO 的 RingCentral。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“RingCentral”磁贴时，你应该会自动登录到为其设置了 SSO 的 RingCentral。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

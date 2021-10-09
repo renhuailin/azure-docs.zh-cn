@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: bc6c64c7ce8f3a836e1a2fc002e423536f55e48c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be4aa228ff5882f0068bb0a7ffb436359e62f80a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638879"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771605"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>使用 PowerShell 根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -57,13 +57,13 @@ ms.locfileid: "122638879"
 
 1. **首次加载：** 创建一个包含复制活动的管道，将完整数据从源数据存储（Azure SQL 数据库）复制到目标数据存储（Azure Blob 存储）。
 
-    ![完整地加载数据](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-load-flow-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/full-load-flow-diagram.png" alt-text="完整地加载数据":::
 1.  **增量加载：** 创建一个包含以下活动的管道并定期运行。
     1. 创建 **两项查找活动**，从 Azure SQL 数据库获取旧的和新的 SYS_CHANGE_VERSION，然后将其传递至复制活动。
     2. 创建 **一项复制活动**，将两个 SYS_CHANGE_VERSION 值之间的插入/更新/删除数据从 Azure SQL 数据库复制到 Azure Blob 存储。
     3. 创建 **一项存储过程活动**，更新 SYS_CHANGE_VERSION 的值，以便进行下一次的管道运行。
 
-    ![增量加载流程图](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png" alt-text="增量加载流程图":::
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -441,26 +441,26 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“所有服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。 
 
-    ![数据工厂菜单](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png" alt-text="数据工厂菜单":::
 3. 在数据工厂列表中搜索 **你的数据工厂**，然后选择它来启动“数据工厂”页。
 
-    ![搜索你的数据工厂](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png" alt-text="搜索你的数据工厂":::
 4. 在“数据工厂”页中，单击“监视和管理”磁贴。
 
-    ![“监视和管理”磁贴](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png" alt-text="“监视和管理”图块":::    
 5. **数据集成应用程序** 在单独的选项卡中启动。可以看到所有 **管道运行** 及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”列可以看到链接。 单击“操作”列中的链接。
 
-    ![屏幕截图显示了数据工厂的管道运行。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png" alt-text="屏幕截图显示了数据工厂的管道运行。":::    
 6. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有 **活动运行**。
 
-    ![屏幕截图显示了已标注“管道”链接的数据工厂的活动运行。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png" alt-text="屏幕截图显示了已标注“管道”链接的数据工厂的活动运行。":::
 7. 若要切换回“管道运行”视图，请单击“管道”，如图所示。
 
 
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到名为 `incremental-<GUID>.txt` 的文件。
 
-![来自完整复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png" alt-text="来自完整复制的输出文件":::
 
 该文件应包含数据库中的数据：
 
@@ -626,16 +626,16 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ### <a name="monitor-the-incremental-copy-pipeline"></a>监视增量复制管道
 1. 在 **数据集成应用程序** 中，刷新“管道运行”视图。 确认在列表中看到 IncrementalCopyPipeline。 单击“操作”列中的链接。  
 
-    ![屏幕截图显示了数据工厂的管道运行，包括你的管道。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png" alt-text="屏幕截图显示了数据工厂的管道运行，包括你的管道。":::    
 2. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有 **活动运行**。
 
-    ![屏幕截图显示了数据工厂的管道运行，其中几个已标记为“成功”。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png" alt-text="屏幕截图显示了数据工厂的管道运行，其中几个已标记为“成功”。":::
 3. 若要切换回“管道运行”视图，请单击“管道”，如图所示。
 
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到第二个文件。
 
-![来自增量复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png" alt-text="来自增量复制的输出文件":::
 
 该文件应该只包含数据库中的增量数据。 带 `U` 的记录是数据库中的更新行，带 `I` 的记录是添加的行。
 

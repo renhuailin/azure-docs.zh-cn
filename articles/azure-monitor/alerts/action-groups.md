@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: ff6d911b85558e5efe9cc8302b9cb857cb7a9706
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: cc5d5aa589b56fb6e6fda1845e50606ff492fbdd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830655"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217876"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor、服务运行状况和 Azure 顾问警报使用操作组来通知用户已经触发了警报。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -24,6 +24,8 @@ ms.locfileid: "122830655"
 * **详细信息**：因“类型”而异的相应详细信息。
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](./action-groups-create-resource-manager-template.md)。
+
+操作组是“全球”服务，因此不依赖于特定的 Azure 区域。 来自客户端的请求可以由任何区域的操作组服务处理，这意味着如果一个区域的服务宕机，流量将自动由其他区域进行路由和处理。 作为一项全球服务，它可以帮助客户不必担心灾难恢复。 
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>使用 Azure 门户创建操作组
 

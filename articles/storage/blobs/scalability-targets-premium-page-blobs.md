@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 09/24/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 23a176bfa5e3861dbc4ad5c03ea54fc847d3f56b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9d669d583563e81fa55d3626e6505ebe108340c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96922542"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153456"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>高级页 blob 存储帐户的可伸缩性和性能目标
 
@@ -31,11 +31,13 @@ ms.locfileid: "96922542"
 
 | 总帐户容量                            | 本地冗余存储帐户的总带宽                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| 磁盘容量：4 TB（单个磁盘）/35 TB（所有磁盘的累计总数） <br>快照容量：10 TB | 为入站<sup>1</sup> 和出站<sup>2</sup> 流量提供最高 50 Gbps 的带宽 |
+| 磁盘容量：4 TB（单个磁盘）/35 TB（所有磁盘的累计总数） <br>快照容量：10 TB<sup>3</sup> | 为入站<sup>1</sup> 和出站<sup>2</sup> 流量提供最高 50 Gbps 的带宽 |
 
 <sup>1</sup> 发送到存储帐户的所有数据（请求）
 
 <sup>2</sup> 从存储帐户接收的所有数据（响应）
+
+<sup>3</sup> 单个页 Blob 可以具有的快照总数为 100。
 
 高级页 blob 帐户是针对高级性能配置的常规用途帐户。 建议使用常规用途 v2 存储帐户。
 

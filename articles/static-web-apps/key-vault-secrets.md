@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/17/2021
 ms.author: cshoe
-ms.openlocfilehash: 3f373122d6d68e6435cfe7083115c91718e05a09
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1d6aa4d6e8a04a65366d6f109fd755be4f075d6b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737471"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777139"
 ---
 # <a name="securing-authentication-secrets-in-azure-key-vault"></a>保护 Azure Key Vault 中的身份验证机密
 
@@ -29,7 +29,10 @@ ms.locfileid: "121737471"
 Key Vault 集成不适用于：
 
 - [静态 Web 应用的过渡版本](./review-publish-pull-requests.md)。 Key Vault 集成仅在生产环境中受支持。
-- [使用托管函数的静态 Web 应用](./apis.md)。 
+- [使用托管函数的静态 Web 应用](./apis.md)。
+
+> [!NOTE]
+> 只能在 Azure Static Web Apps 标准计划中使用托管标识。
 
 ## <a name="prerequisites"></a>先决条件
 

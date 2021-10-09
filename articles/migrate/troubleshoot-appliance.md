@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 07/01/2020
-ms.openlocfilehash: c67ad02737fc8a40895f99cd3acf05ba98e7643e
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: d6d87d7503a68091e72f1aa84703966ab28f32b5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305888"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654511"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance"></a>排查 Azure Migrate 设备问题
 
@@ -275,10 +275,7 @@ $HostIntance | fl *
 
 - 如果出现此错误，请确保已将设备配置管理器上提供的用户帐户（域/本地）添加到以下组：“远程管理用户”、“性能监视器用户”和“性能日志用户”。
 - 如果远程管理用户组不存在，请将用户帐户添加到 WinRMRemoteWMIUsers_ 组。
-- 还可以在目标服务器的命令提示符中运行以下命令，检查在服务器上是否启用了 WS-Management 协议：
-    
-    ```` winrm qc ````
-
+- 还可以在目标服务器的命令提示符中运行以下命令，检查在服务器上是否启用了 WS-Management 协议：`winrm qc`
 - 如果仍然出现该问题，请确保用户帐户有权访问 WMI 控制面板中的 CIMV2 命名空间和子命名空间。 可按照以下步骤设置访问权限：
 
     1. 转到设备上验证失败的服务器。

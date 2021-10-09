@@ -3,16 +3,16 @@ title: 教程 - 使用 Azure Monitor VM 见解来监视混合计算机
 description: 了解如何在 Azure Monitor 的混合计算机中收集和分析数据。
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: 8ab801885e86ed90d5f28c2ce90a994828b358a0
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5489e459bc4d407b818c1f55afe0f7fa3c9acbb8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772616"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807533"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-vm-insights"></a>教程：使用 VM 见解监视混合计算机
 
-[Azure Monitor](../../../azure-monitor/overview.md) 可以直接从混合计算机将数据收集到 Log Analytics 工作区，以便进行详细分析和关联。 通常，这需要遵循配置管理标准，使用脚本、手动或自动方法在计算机上安装 [Log Analytics 代理](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent)。 已启用 Arc 的服务器最近引入了支持安装用于 Windows 和 Linux 的 Log Analytics 和依赖项代理 [VM 扩展](../manage-vm-extensions.md)，从而使 [VM 见解](../../../azure-monitor/vm/vminsights-overview.md)能够从非 Azure VM 收集数据。
+[Azure Monitor](../../../azure-monitor/overview.md) 可以直接从混合计算机将数据收集到 Log Analytics 工作区，以便进行详细分析和关联。 通常，这需要遵循配置管理标准，使用脚本、手动或自动方法在计算机上安装 [Log Analytics 代理](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent)。 已启用 Azure Arc 的服务器最近引入了支持安装用于 Windows 和 Linux 的 Log Analytics 和依赖项代理 [VM 扩展](../manage-vm-extensions.md)，从而使 [VM 见解](../../../azure-monitor/vm/vminsights-overview.md)能够从非 Azure VM 收集数据。
 
 本教程介绍如何通过简化的一组步骤启用 VM 见解来配置和收集 Linux 或 Windows 计算机中的数据，这可以简化体验并缩短时间。  
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: b67003db0953a8246a49ec8551d6e0fab4dc8251
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: cb38f70c20ad8a45ed1cb91d93e7a6f09a7d51df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362948"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644365"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
 
@@ -153,9 +153,9 @@ ms.locfileid: "114362948"
       > [!IMPORTANT]
       > 如果使用的是 Visual Studio 并且看不到任何可供选择的批接收方，请检查先前是否创建了批接收方并将其部署到 Azure。 如果未部署，请了解[如何将批接收方逻辑应用部署到 Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)。
 
-   1. 从操作列表中，选择以下操作：**Batch_messages - <*your-logic-app-name*>**
+   1. 在操作列表中选择此操作：“Batch_messages - \<*your-logic-app-name*\>”
 
-      ![选择以下操作：“Batch_messages - <your-logic-app>”](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![选择此操作：“Batch_messages - \<逻辑应用\>”](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 1. 设置批发送方的属性：
 

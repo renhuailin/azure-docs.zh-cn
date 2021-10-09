@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 11/20/2020
+ms.date: 09/13/2021
 ms.author: rolyon
-ms.reviewer: vincesm
+ms.reviewer: abhijeetsinha
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f376a8e5d61b9bb3fda39184f4ff0873c48c8b43
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 21e1b91c10d687b0b82626372510dcaf2a0611ef
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732332"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601780"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory 中基于角色的访问控制概述
 
@@ -52,32 +52,46 @@ Azure AD 支持两种类型的角色定义：
 
 ## <a name="role-assignment"></a>角色分配
 
-角色分配是一种 Azure AD 资源，它将角色定义附加到特定范围的用户，以授予对 Azure AD 资源的访问权限。   通过创建角色分配来授予访问权限，通过删除角色分配来撤销访问权限。 角色分配的核心包含三个要素：
+角色分配是一种 Azure AD 资源，它将角色定义附加到特定范围的安全主体，以授予对 Azure AD 资源的访问权限  。 通过创建角色分配来授予访问权限，通过删除角色分配来撤销访问权限。 角色分配的核心包含三个要素：
 
-- Azure AD 用户
-- 角色定义
-- 资源范围
+- 安全主体 - 获取权限的标识。 它可能是用户、组或服务主体。 
+- 角色定义 - 权限的集合。 
+- 范围 - 一种限制这些权限的适用范围的方法。
 
-可以使用 Azure 门户、Azure AD PowerShell 或图形 API 创建[角色分配](custom-create.md)。 还可以[列出角色分配](view-assignments.md)。
+可以使用 Azure 门户、Azure AD PowerShell 或图形 API 创建[角色分配](manage-roles-portal.md)。 还可以[列出角色分配](view-assignments.md)。
 
-下图显示了角色分配的示例。 在此示例中，在 Contoso Widget Builder 应用注册范围为 Chris Green 分配了“应用注册管理员”自定义角色。 此分配仅授予 Chris 对此特定应用注册的“应用注册管理员”角色权限。
+下图显示了角色分配的示例。 在此示例中，在 Contoso Widget Builder 应用注册范围为 Chris 分配了“应用注册管理员”自定义角色。 此分配仅授予 Chris 对此特定应用注册的“应用注册管理员”角色权限。
 
-![角色分配是指如何强制实施权限，具有三个部分](./media/custom-overview/rbac-overview.png)
+![角色分配是指如何强制实施权限，具有三个部分。](./media/custom-overview/rbac-overview.png)
 
 ### <a name="security-principal"></a>安全主体
 
-安全主体表示分配了对 Azure AD 资源的访问权限的用户。 用户是在 Azure Active Directory 中具有配置文件的个人。
+安全主体表示获权访问 Azure AD 资源的用户、组或服务主体。 用户是在 Azure Active Directory 中具有配置文件的个人。 组是一个新的 Microsoft 365 或安全组，其 isAssignableToRole 属性设置为 true（当前处于预览状态）。 服务主体是为与应用程序、托管服务和自动化工具配合使用以访问 Azure AD 资源而创建的标识。
 
-### <a name="role"></a>角色
+### <a name="role-definition"></a>角色定义
 
 角色定义（或角色）是权限的集合。 角色定义列出可对 Azure AD 资源执行的操作，例如创建、读取、更新和删除。 在 Azure AD 中有两种类型的角色：
 
 - Microsoft 创建的内置角色（无法更改）。
 - 由组织创建和管理的自定义角色。
 
-### <a name="scope"></a>作用域
+### <a name="scope"></a>范围
 
-范围是指允许对角色分配中的特定 Azure AD 资源执行的操作的限制。 分配角色时，可以指定一个范围来限制管理员对特定资源的访问。 例如，如果要为开发人员授予某个自定义角色，但仅允许该开发人员管理特定的应用程序注册，则你可以在角色分配中包含特定的应用程序注册作为范围。
+范围是一种在角色分配过程中，限制对一组特定资源执行允许的操作的方法。 例如，如果要向开发人员分配某个自定义角色，但仅允许该开发人员管理特定的应用程序注册，则可以在角色分配中包含特定的应用程序注册作为范围。
+
+分配角色时，请指定以下类型的范围之一：
+
+- 租户
+- [管理单元](administrative-units.md)
+- Azure AD 资源
+
+如果将 Azure AD 资源指定为范围，则它可以是以下项之一：
+
+- Azure AD 组
+- 企业应用程序
+- 应用程序注册
+
+有关详细信息，请参阅[在不同的范围分配 Azure AD 角色](assign-roles-different-scopes.md)。
 
 ## <a name="license-requirements"></a>许可要求
 
@@ -86,5 +100,5 @@ Azure AD 支持两种类型的角色定义：
 ## <a name="next-steps"></a>后续步骤
 
 - [了解 Azure AD 角色](concept-understand-roles.md)
-- 使用 [Azure 门户、Azure AD PowerShell 或图形 API](custom-create.md) 创建自定义角色分配
-- [列出角色分配](view-assignments.md)
+- [向用户分配 Azure AD 角色](manage-roles-portal.md)
+- [创建和分配自定义角色](custom-create.md)

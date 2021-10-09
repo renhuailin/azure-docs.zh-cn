@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: references_regions
 ms.service: postgresql
 ms.topic: overview
-ms.date: 07/30/2021
-ms.openlocfilehash: 5423af2f148a56e978bfbe6a1584b3e281f9a1a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/21/2021
+ms.openlocfilehash: f5b1caaef90a25e6635c30d1e3272438a408393b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740294"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589618"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>发行说明 - Azure Database for PostgreSQL - 灵活服务器
 
@@ -20,6 +20,15 @@ ms.locfileid: "121740294"
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
+
+## <a name="release-september-2021"></a>发布：2021 年 9 月
+
+* 支持 [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_flexible_server)。
+* 支持印度中部和日本西部两个[新区域](overview.md#azure-regions)。
+* 支持使用新的 `require_secure_transport` 服务器参数建立非 SSL 连接模式。
+* 支持在每个日志行的开头添加字符串的 `log_line_prefix` 服务器参数。
+* 支持 [Azure 资源运行状况](../../service-health/resource-health-overview.md)，以进行灵活服务器运行状况诊断并获得支持。
+* 修复了多个 bug，并提升了稳定性和性能。
 
 ## <a name="release-july-2021"></a>发布：2021 年 7 月
 
@@ -29,7 +38,7 @@ ms.locfileid: "121740294"
 * 支持 `pg_stat_reset_shared('bgwriter');` 和 `pg_stat_reset_shared('archiver');` 以重置显示在 `pg_stat_bgwriter` 和 `pg_stat_archiver` 视图中的计数器 <sup>$</sup>。
 * 修复了多个 bug，并提升了稳定性和性能<sup>$</sup>。
 
-<sup> **$** </sup> 新服务器会自动获取这些功能。 在现有的服务器中，这些功能在服务器的未来维护时段内启用。
+<sup> **$**</sup> 新服务器会自动获取这些功能。 在现有的服务器中，这些功能在服务器的未来维护时段内启用。
 
 ## <a name="release-june-2021"></a>发布时间：2021 年 6 月
 
@@ -41,7 +50,7 @@ ms.locfileid: "121740294"
 * 支持 lo 扩展。 有关每个主版本支持的版本，请参阅[扩展页](./concepts-extensions.md)<sup>$</sup>。
 * 修复了多个 bug，并提升了稳定性和性能<sup>$</sup>。
   
-<sup> **$** </sup> 新服务器会自动获取这些功能。  你的现有服务器将自动升级到受支持的最新次要版本，还会在服务器将来的维护时段内启用新功能。
+<sup> **$**</sup> 新服务器会自动获取这些功能。  你的现有服务器将自动升级到受支持的最新次要版本，还会在服务器将来的维护时段内启用新功能。
 
 ## <a name="release-may-2021"></a>发布时间：2021 年 5 月
 

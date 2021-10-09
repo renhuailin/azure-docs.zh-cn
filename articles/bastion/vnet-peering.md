@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: ccbee86e8f5ae2ab514c8ec7ece4d41e1e890e4e
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 4e5f474f08116cea39b565e76a9736b3e94eec9f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733279"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668785"
 ---
 # <a name="vnet-peering-and-azure-bastion"></a>VNet 对等互连和 Azure Bastion
 
@@ -45,17 +45,17 @@ Azure Bastion 使用以下类型的对等互连：
    * NIC 上的读者角色（使用虚拟机的专用 IP）。
    * Azure Bastion 资源上的读者角色。
    * 虚拟网络上的读者角色（如果没有对等互连虚拟网络，则不需要）。
-3. 若要在“连接”下拉菜单中查看 Bastion，必须在“订阅”>“全局订阅”中选择有权访问的订阅。
+3. 若要在“连接”下拉菜单中查看 Bastion，你必须在“订阅”>“全局订阅” 中选择你有权访问的订阅。
 4. 选择要连接到的虚拟机。
 5. 在对等互连的 VNet 中会顺利检测到 Azure Bastion。
 6. 单击一下，在浏览器中打开 RDP/SSH 会话。
 
-  :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="“连接”":::
+若要详细了解如何通过 Azure Bastion 连接到 VM，请参阅：
 
-   若要详细了解如何通过 Azure Bastion 连接到 VM，请参阅：
-
-   * [连接到 VM - RDP](bastion-connect-vm-rdp.md)。
-   * [连接到 VM - SSH](bastion-connect-vm-ssh.md)。
+   * [连接到 Windows VM - RDP](bastion-connect-vm-rdp-windows.md)
+   * [连接到 Windows VM - SSH](bastion-connect-vm-ssh-windows.md)
+   * [连接到 Linux VM - SSH](bastion-connect-vm-ssh-linux.md)
+   * [连接到 Linux VM - RDP](bastion-connect-vm-rdp-linux.md)
 
 ## <a name="faq"></a>常见问题解答
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 9/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 894d16e1a72243bee9aff1fff2778ec75c2af6ec
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0e1193dea6826e4188a7d8f933d2c0a2637a72c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227146"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650147"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>自动注册到 SQL IaaS 代理扩展
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -94,13 +94,17 @@ Unregister-AzProviderFeature -FeatureName BulkRegistration -ProviderNamespace Mi
 1. 保存[此脚本](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/EnableBySubscription.ps1)。
 1. 使用管理命令提示符或 PowerShell 窗口导航到保存脚本的位置。 
 1. 连接到 Azure (`az login`)。
-1. 执行此脚本，并传入 SubscriptionIds 作为参数，例如   
-   `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
+1. 执行此脚本，并传入 SubscriptionIds 作为参数。 如果未指定订阅，脚本将为用户帐户中的所有订阅启用自动注册。    
 
-   例如： 
+   以下命令将为两个订阅启用自动注册： 
 
    ```console
    .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb
+   ```
+   以下命令将为所有订阅启用自动注册： 
+
+   ```console
+   .\EnableBySubscription.ps1
    ```
 
 注册失败的错误存储在 `RegistrationErrors.csv` 中，它与保存和执行 `.ps1` 脚本的位置位于相同的目录中。 

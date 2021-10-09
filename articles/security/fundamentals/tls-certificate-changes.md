@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 09/13/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 9e4edbcfd9e4180e727cd885902d9f0150a967ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01acde63371fea6a8c3f752caf31fa883e5e617e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389393"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641211"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 证书更改  
 
@@ -28,13 +28,13 @@ Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发
 
 - [Azure Active Directory](../../active-directory/index.yml) (Azure AD) 服务在 2020 年 7 月 7 日开始此过渡。
 - [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub)和 [DPS](../../iot-dps/index.yml) 将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)。
-- [Azure 存储](../../storage/index.yml)将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)。
+- 对于 [Azure 存储](../../storage/index.yml)，[请单击此处获取详细信息](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-critical-changes-are-almost-here-and-why-you/ba-p/2741581)。
 - [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) 将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](../../azure-cache-for-redis/cache-whats-new.md)。
 - Azure 实例元数据服务将继续使用 Baltimore CyberTrust 根 CA，但其中间 CA 将会更改。 [单击此处了解详细信息](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html)。
 
 > [!IMPORTANT]
-> 进行此更改之后，客户可能需要更新其应用程序，以防止在尝试连接到 Azure 服务时出现连接故障。
-
+> 进行此更改之后，客户可能需要更新其应用程序，以防止在尝试连接到 Azure 存储时出现连接故障。
+https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-critical-changes-are-almost-here-and-why-you/ba-p/2741581
 ## <a name="what-is-changing"></a>有什么变化？
 
 如今，Azure 服务使用的大多数 TLS 证书都链接到以下根 CA：

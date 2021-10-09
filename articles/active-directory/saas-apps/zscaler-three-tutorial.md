@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d30b4e60ef93b8dccc7e9ed4966eeb7d9570df43
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2b75a4d4973a1aed74c1280dfab50753086eee37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096907"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807845"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler Three 集成
 
@@ -40,6 +40,8 @@ ms.locfileid: "110096907"
 * Zscaler Three 支持 SP 发起的 SSO。
 
 * Zscaler Three 支持实时用户预配。
+
+* Zscaler Three 支持[自动用户预配](zscaler-three-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -214,6 +216,9 @@ ms.locfileid: "110096907"
 > [!Note]
 > 如果需要手动创建用户，请联系 [Zscaler Three 支持团队](https://www.zscaler.com/company/contact)。
 
+> [!NOTE]
+> Zscaler Three 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./zscaler-three-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -222,7 +227,7 @@ ms.locfileid: "110096907"
 
 * 直接转到 Zscaler Three 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler Three 磁贴时，会重定向到 Zscaler Three 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler Three 磁贴时，会重定向到 Zscaler Three 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

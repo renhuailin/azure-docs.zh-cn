@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9015e3ce69042a2e7d96588956becff889827ab3
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 3feae35a4b7c98ea317bb9cec5dd54ca3f5db63c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225178"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562507"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -72,7 +72,7 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 1. 选择要连接到的资源类型。
 1. 选择“共享访问签名(SAS)”。 选择“下一步”。
 1. 输入你收到的 SAS URL，并输入连接的唯一显示名称。 选择“下一步”，然后选择“连接” 。
- 
+
 有关连接到资源的详细信息，请参阅[连接到单个资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource)。
 
 ### <a name="recommended-azure-built-in-roles"></a>建议的 Azure 内置角色
@@ -115,11 +115,11 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 可以尝试执行以下步骤查找它们：
 
 1. 安装 OpenSSL。
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html)：任何精简版本均可。
-    * Mac 和 Linux：应包含在操作系统中。
+    - [Windows](https://slproweb.com/products/Win32OpenSSL.html)：任何精简版本均可。
+    - Mac 和 Linux：应包含在操作系统中。
 2. 运行 OpenSSL。
-    * Windows:打开安装目录，选择“/bin/”，然后双击“openssl.exe” 。
-    * Mac 和 Linux：从终端运行 `openssl`。
+    - Windows:打开安装目录，选择“/bin/”，然后双击“openssl.exe” 。
+    - Mac 和 Linux：从终端运行 `openssl`。
 3. 对于存储资源隐藏的任何 Microsoft 或 Azure 主机名，请运行以下命令：`s_client -showcerts -connect <hostname>:443`。 可在此处找到存储资源管理器经常访问的主机名列表。
 4. 查找自签名证书。 如果主题 `("s:")` 和颁发者 `("i:")` 相同，则证书很可能是自签名证书。
 5. 找到自签名证书后，将每个证书中从 `-----BEGIN CERTIFICATE-----`（含）到 `-----END CERTIFICATE-----`（含）的所有内容复制并粘贴到新的 .cer 文件中。
@@ -192,7 +192,7 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 1. 打开存储资源管理器
 2. 删除所有帐户，然后关闭存储资源管理器。
 3. 从计算机中删除 `.IdentityService` 文件夹。 在 Windows 中，该文件夹位于 `C:\users\<username>\AppData\Local`。 对于 Mac 和 Linux，可以在用户目录的根目录中找到该文件夹。
-4. 如果运行 Mac 或 Linux，则还需要从操作系统的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是 *Gnome Keychain* 应用程序。 对于 Linux，该应用程序通常称为 _Keyring_，但名称可能会有所不同，具体取决于分发版。
+4. 如果运行 Mac 或 Linux，则还需要从操作系统的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是 *Gnome Keychain* 应用程序。 对于 Linux，该应用程序通常称为 *Keyring*，但名称可能会有所不同，具体取决于分发版。
 6. 重启存储资源管理器并再次尝试登录。
 
 ### <a name="macos-keychain-errors-or-no-sign-in-window"></a>macOS：密钥链错误或无登录窗口
@@ -225,19 +225,19 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 如果成功登录后无法检索订阅，请尝试以下故障排除方法：
 
-* 验证你的帐户是否有权访问所需的订阅。 可以通过登录到尝试使用的 Azure 环境的门户，来验证是否能够访问这些订阅。
-* 请确保已通过正确的 Azure 环境登录（Azure、Azure 中国 21Vianet、Azure 德国、Azure 美国政府或自定义环境）。
-* 如果使用代理服务器，请确保已正确配置存储资源管理器代理。
-* 尝试删除并重新添加帐户。
-* 如果有“更多信息”或“错误详细信息”链接，请查看针对失败的租户报告的错误消息。 如果你不确定如何处理错误消息，请随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+- 验证你的帐户是否有权访问所需的订阅。 可以通过登录到尝试使用的 Azure 环境的门户，来验证是否能够访问这些订阅。
+- 请确保已通过正确的 Azure 环境登录（Azure、Azure 中国 21Vianet、Azure 德国、Azure 美国政府或自定义环境）。
+- 如果使用代理服务器，请确保已正确配置存储资源管理器代理。
+- 尝试删除并重新添加帐户。
+- 如果有“更多信息”或“错误详细信息”链接，请查看针对失败的租户报告的错误消息。 如果你不确定如何处理错误消息，请随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
 ## <a name="cant-remove-an-attached-storage-account-or-resource"></a>无法删除附加的存储帐户或资源
 
 如果无法通过 UI 删除附加的帐户或存储资源，可以通过删除以下文件夹来手动删除所有附加的资源：
 
-* Windows： `%AppData%/StorageExplorer`
-* macOS：`/Users/<your_name>/Library/Application Support/StorageExplorer`
-* Linux：`~/.config/StorageExplorer`
+- Windows： `%AppData%/StorageExplorer`
+- macOS：`/Users/<your_name>/Library/Application Support/StorageExplorer`
+- Linux：`~/.config/StorageExplorer`
 
 > [!NOTE]
 > 先关闭存储资源管理器，然后删除这些文件夹。
@@ -280,9 +280,9 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 1. 将你的网络工具配置为在本地主机上运行的代理服务器。 如果必须继续在实际代理后面工作，则必须将网络工具配置为通过代理进行连接。
 2. 检查网络服务工具使用的端口号。
 3. 配置存储资源管理器代理设置，以便使用本地主机和网络工具的端口号（例如“localhost:8888”）。
- 
+
 当设置正确时，你的网络工具会记录存储资源管理器向管理和服务终结点发出的网络请求。
- 
+
 如果你的网络工具看起来没有记录存储资源管理器流量，请尝试使用不同的应用程序来测试你的工具。 例如，在 Web 浏览器中输入存储资源之一的终结点 URL（例如 `https://contoso.blob.core.windows.net/`），然后就会收到类似于以下内容的响应：
 
   ![代码示例](./media/storage-explorer-troubleshooting/4022502_en_2.png)
@@ -295,8 +295,8 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 如果代理设置正确，则可能需要与代理服务器管理员联系，以便：
 
-* 确保代理不会阻止到 Azure 管理或资源终结点的流量。
-* 验证代理服务器使用的身份验证协议。 存储资源管理器仅支持基本身份验证协议。 存储资源管理器不支持 NTLM 代理。
+- 确保代理不会阻止到 Azure 管理或资源终结点的流量。
+- 验证代理服务器使用的身份验证协议。 存储资源管理器仅支持基本身份验证协议。 存储资源管理器不支持 NTLM 代理。
 
 ## <a name="unable-to-retrieve-children-error-message"></a>“无法检索子级”错误消息
 
@@ -317,17 +317,17 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 1. 启动存储资源管理器。 在顶部菜单中，转到“帮助” > “切换开发人员工具”。
 2. 在打开的窗口中的“应用程序”选项卡上，转到“本地存储”（左侧）>“file://”。  
 3. 根据遇到问题的连接类型，查找其密钥并将其值复制到文本编辑器。 该值是自定义连接名称的数组，如下所示：
-    * 存储帐户
-        * `StorageExplorer_CustomConnections_Accounts_v1`
-    * Blob 容器
-        * `StorageExplorer_CustomConnections_Blobs_v1`
-        * `StorageExplorer_CustomConnections_Blobs_v2`
-    * 文件共享
-        * `StorageExplorer_CustomConnections_Files_v1`
-    * 队列
-        * `StorageExplorer_CustomConnections_Queues_v1`
-    * 表
-        * `StorageExplorer_CustomConnections_Tables_v1`
+    - 存储帐户
+        - `StorageExplorer_CustomConnections_Accounts_v1`
+    - Blob 容器
+        - `StorageExplorer_CustomConnections_Blobs_v1`
+        - `StorageExplorer_CustomConnections_Blobs_v2`
+    - 文件共享
+        - `StorageExplorer_CustomConnections_Files_v1`
+    - 队列
+        - `StorageExplorer_CustomConnections_Queues_v1`
+    - 表
+        - `StorageExplorer_CustomConnections_Tables_v1`
 4. 保存当前连接名称后，将开发人员工具中的值设置为 `[]`。
 
 若要保留未损坏的连接，可以使用以下步骤来查找损坏的连接。 如果你不介意丢失所有现有连接，则可以跳过以下步骤，并按照平台特定说明清除连接数据。
@@ -366,9 +366,9 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 如果通过 SAS URL 连接到服务时遇到错误：
 
-* 请确认 URL 提供了读取或列出资源所需的权限。
-* 请确认 URL 未过期。
-* 如果 SAS URL 基于访问策略，请确认访问策略尚未吊销。
+- 请确认 URL 提供了读取或列出资源所需的权限。
+- 请确认 URL 未过期。
+- 如果 SAS URL 基于访问策略，请确认访问策略尚未吊销。
 
 如果意外附加了无效的 SAS URL，并且现在无法分离，请执行以下步骤：
 
@@ -400,49 +400,53 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 - Ubuntu 18.04 x64
 - Ubuntu 16.04 x64
 
-存储资源管理器要求在系统上安装 .NET Core。 建议安装 .NET Core 2.1，但存储资源管理器也可使用 .NET Core 2.2。
+存储资源管理器要求在系统上安装 .NET Core 3.1。
 
 > [!NOTE]
-> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则至少需要 .NET Core 2.1。
+> 存储资源管理器 1.8.0 到 1.20.1 的版本需要安装 .Net Core 2.1。 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。
 
 ### <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. 下载存储资源管理器 .tar.gz 文件。
 2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
 
 ### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下载存储资源管理器 .tar.gz 文件。
 2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
 
 ### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下载存储资源管理器 .tar.gz 文件。
 2. 安装 [.NET Core 运行时](/dotnet/core/install/linux)：
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
+
 ---
 
 存储资源管理器所需的许多库都已随 Canonical 的 Ubuntu 标准安装进行预安装。 自定义环境可能缺少其中某些库。 如果在启动存储资源管理器时遇到问题，建议确保以下包已安装在系统上：
@@ -470,16 +474,16 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 3. 将包解压缩。
 4. 打开 `streamjsonrpc.1.5.43/lib/netstandard1.1/` 文件夹。
 5. 将 `StreamJsonRpc.dll` 复制到存储资源管理器文件夹中的以下位置：
-   * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
-   * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
+   - `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+   - `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-the-azure-portal-doesnt-work"></a>Azure 门户中的“在资源管理器中打开”不起作用
 
 如果在 Azure 门户上单击“在资源管理器中打开”按钮不起作用，请确保使用兼容的浏览器。 以下浏览器已通过兼容性测试：
-* Microsoft Edge
-* Mozilla Firefox
-* Google Chrome
-* Microsoft Internet Explorer
+- Microsoft Edge
+- Mozilla Firefox
+- Google Chrome
+- Microsoft Internet Explorer
 
 ## <a name="gathering-logs"></a>收集日志
 
@@ -558,7 +562,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 第 2 部分：重现问题
 1. 关闭除 Fiddler 以外的所有应用
 2. 清除 Fiddler 日志（左上角的 X 图标，“视图”菜单附件）
-3. 可选/建议：让 Fiddler 设置几分钟，如果看到网络调用出现，请右键单击它们，然后选择“立即筛选”>“隐藏 <process name>”
+3. 可选/建议：让 Fiddler 设置几分钟，如果看到出现与存储资源管理器无关的网络调用，请右键单击它们，然后选择“立即筛选”>“隐藏(进程名称)”
 4. 启动存储资源管理器
 5. 再现问题
 6. 单击“文件”>“保存”>“所有会话…”，保存在不会忘记的某个位置

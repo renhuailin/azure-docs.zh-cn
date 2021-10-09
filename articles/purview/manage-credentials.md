@@ -4,15 +4,15 @@ description: 了解在 Azure Purview 中创建和管理凭据的步骤。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 14b11cca3eca6f3d0b89889a4eb1abf3f04f5715
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: f3367883b35e35a4dd726b92af48a92f863cfa5d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487644"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207842"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview 中用于源身份验证的凭据
 
@@ -29,8 +29,8 @@ ms.locfileid: "113487644"
 在 Azure Purview 中，有几个选项可用作身份验证方法来扫描数据源，例如以下选项：
 
 - Azure Purview 托管标识
-- 账户密钥（使用 Key Vault）
-- SQL 身份验证（使用 Key Vault）
+- 帐户密钥（使用密钥保管库）
+- SQL 身份验证（使用密钥保管库）
 - 服务主体（使用 Key Vault）
 
 在创建任何凭据之前，请考虑数据源类型和网络要求，确定方案需要哪种身份验证方法。 查看以下决策树，查找最适合的凭据：
@@ -52,7 +52,7 @@ ms.locfileid: "113487644"
 
 在创建凭据之前，首先需要将一个或多个现有 Azure 密钥保管库实例与 Azure Purview 帐户相关联。
 
-1. 在 [Azure 门户](https://portal.azure.com)中选择你的 Azure Purview 帐户，然后打开 Azure Purview Studio。 在 Azure Purview Studio 中导航到“管理中心”，然后导航到“凭据”。 
+1. 在 [Azure 门户](https://portal.azure.com)中选择你的 Azure Purview 帐户，然后打开 [Purview Studio](https://web.purview.azure.com/resource/)。 在 Studio 中导航到“管理中心”，然后导航到“凭据”。 
 
 2. 在“凭据”页中选择“管理密钥保管库连接”。 
 

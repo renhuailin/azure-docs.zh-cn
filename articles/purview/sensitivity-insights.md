@@ -4,19 +4,22 @@ description: 本操作指南介绍了如何查看和使用针对数据的 Purvie
 author: batamig
 ms.author: bagol
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 01/17/2021
-ms.openlocfilehash: d3b828aab13a822c307119dca64dac81c9201d5b
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/27/2021
+ms.openlocfilehash: cf3540f439396f3e4308eae10077693de440827f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397800"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213949"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>有关 Azure Purview 中的数据的敏感度标签见解
 
 本操作指南介绍了如何访问、查看和筛选应用于数据的敏感度标签提供的安全见解。
+
+> [!IMPORTANT]
+> Azure Purview 敏感度标签见解目前以预览版提供。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 支持的数据源包括：Azure Blob 存储、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、SQL Server、Azure SQL 数据库、Azure SQL 托管实例、Amazon S3 Bucket
 
@@ -40,11 +43,11 @@ ms.locfileid: "122397800"
 
 - [将 Microsoft 365 敏感度标签扩展到 Azure Purview 中的资产](create-sensitivity-label.md)，并创建或选择要应用于数据的标签。
 
-- 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
+- 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
 
-- 已使用具有[“数据读取者”或“数据策展者”角色](catalog-permissions.md#roles)的帐户登录到 Purview。
+- 使用具有 [Data Reader 或 Data Curator 角色](catalog-permissions.md#roles)的帐户登录到 Purview。
 
-有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)和[在 Azure Purview 中自动标记数据](create-sensitivity-label.md)。
+有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)和[在 Azure Purview 中自动标记数据](create-sensitivity-label.md)。
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>使用 Purview 敏感度标记见解
 
@@ -74,7 +77,7 @@ Purview 使用与 Microsoft 365 相同的分类，也称为[敏感信息类型](
     > [!NOTE]
     > 如果此报表为空，则你可能尚未将敏感度标签扩展到 Azure Purview。 有关详细信息，请参阅[在 Azure Purview 中自动标记数据](create-sensitivity-label.md)。
 
-   :::image type="content" source="media/insights/sensitivity-labeling-insights-small.png" alt-text="敏感度标记见解" lightbox="media/insights/sensitivity-labeling-insights.png":::
+   :::image type="content" source="media/insights/sensitivity-labeling-insights-small.png" alt-text="敏感度标记见解":::
 
    “敏感度标记见解”主页面显示以下区域：
 
@@ -99,7 +102,7 @@ Purview 使用与 Microsoft 365 相同的分类，也称为[敏感信息类型](
 
 例如：
 
-:::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="敏感度标签向下钻取" lightbox="media/insights/sensitivity-label-drilldown.png":::
+:::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="敏感度标签向下钻取":::
 
 若要了解详细信息，请执行以下任一操作：
 

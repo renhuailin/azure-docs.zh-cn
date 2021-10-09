@@ -3,21 +3,21 @@ title: 快速入门：向 Java Web 应用添加 Microsoft 登录功能 | Azure
 titleSuffix: Microsoft identity platform
 description: 在本快速入门中，你将了解如何使用 OpenID Connect 向 Java Web 应用添加 Microsoft 登录功能。
 services: active-directory
-author: sangonzal
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/09/2019
-ms.author: sagonzal
+ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 6ba0052aec7e0938443560f5f0868431907c1b27
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 196500eb70a559339bd237670434ad8f562eda8c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580847"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551163"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -49,8 +49,8 @@ ms.locfileid: "112580847"
 > 若要注册应用程序并手动向其中添加应用的注册信息，请执行以下步骤：
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，以切换到要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册”。
 > 1. 选择“新注册”。
 > 1. 输入应用程序的名称（例如 java-webapp） 。 应用的用户可能会看到此名称。 稍后可对其进行更改。

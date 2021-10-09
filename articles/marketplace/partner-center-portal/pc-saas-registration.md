@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+author: saasguide
+ms.author: souchak
+ms.openlocfilehash: 3e2c92d5fed23480f102f1c96631c3a8c9a2e2c8
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048334"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456492"
 ---
 # <a name="register-a-saas-application"></a>注册 SaaS 应用程序
 
@@ -109,7 +109,14 @@ Azure AD 应用 ID 与你的发布者 ID 相关联，因此，请确保在你所
   }
 ```
 
-响应中的 `"access_token"` 字段值是 `<access_token>`。在调用所有 SaaS 履行和市场计量 API 时，该值将作为授权参数传递。
+| 元素 | 说明 |
+| ------- | ----------- |
+| `access_token` | 此元素是 `<access_token>`，在调用所有 SaaS 履行和市场计量 API 时，该值将作为授权参数传递。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
+| `expires_in` | 访问令牌在过期之前保持有效的秒数，从颁发时间开始算起。 可在令牌的 `iat` 声明中找到颁发时间。 |
+| `expires_on` | 访问令牌过期的时间范围。 该日期表示为自“1970-01-01T0:0:0Z UTC”开始的秒数（对应于令牌的 `exp` 声明）。 |
+| `not_before` | 访问令牌生效且可被接受的时间范围。 该日期表示为自“1970-01-01T0:0:0Z UTC”开始的秒数（对应于令牌的 `nbf` 声明）。 |
+| `resource` | 请求访问令牌时所针对的资源，与请求的 `resource` 查询字符串参数匹配。 |
+| `token_type` | 令牌的类型，这是一个“持有者”访问令牌，意味着资源可向此令牌的持有者授予访问权限。 |
 
 ## <a name="next-steps"></a>后续步骤
 

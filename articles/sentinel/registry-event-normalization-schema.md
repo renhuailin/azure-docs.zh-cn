@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 07/01/2021
 ms.author: bagol
-ms.openlocfilehash: 38ab651ec864060aeb3bfcfd7f89a387d604723c
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: d10d1e9408db7ab29a7fe01e5bf906e9023124c7
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515132"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407221"
 ---
 # <a name="azure-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Azure Sentinel 注册表事件规范化架构参考（公共预览版）
 
@@ -67,12 +67,13 @@ Azure Sentinel 提供了 [通过 IFEO 注册表项持久化](https://github.com/
 ### <a name="log-analytics-fields"></a>Log Analytics 字段
 
 
-Log Analytics 针对每条记录生成以下字段，在创建自定义连接器时可以替代这些字段。
+Log Analytics 针对每条记录生成以下字段，在创建自定义连接器时可以重写这些字段。
 
 | 字段         | 类型     | 讨论 (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| <a name="timegenerated"></a>**TimeGenerated** | datetime | 报告设备生成事件的时间。|
-| _ResourceId   | guid     | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
+| <a name="timegenerated"></a>“TimeGenerated” | datetime | 报告设备生成事件的时间。|
+| “_ResourceId”   | guid     | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
+| **类型** | String | 从中提取记录的原始表。 当同一事件可通过多个通道传入不同的表，并且具有相同的 EventVendor 和 EventProduct 值时，此字段很有用。<br><br>例如，Sysmon 事件可以传入 Event 表或 WindowsEvent 表。 |
 
 
 > [!NOTE]
@@ -84,27 +85,27 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 
 事件字段通用于所有架构，描述活动本身和报告设备。
 
-| 字段               | 实例       | 类型       |  描述        |
+| 字段               | 类       | 类型       |  说明        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | 可选    | 字符串     |     一般消息或说明，包含在记录中或者根据记录生成。   |
-| EventCount          | 必需   | Integer    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。   |
-| **EventStartTime**      | 必需   | 日期/时间  |      如果源支持聚合并且记录表示多个事件，则此字段指定生成第一个事件的时间。 <br><br>否则，此字段将别名化 [TimeGenerated](#timegenerated) 字段。 |
+| “EventCount”          | 必需   | Integer    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。   |
+| **EventStartTime**      | 必需   | 日期/时间  |      如果源支持聚合且记录表示多个事件，则此字段将指定生成第一个事件的时间。 <br><br>否则，此字段将别名化 [TimeGenerated](#timegenerated) 字段。 |
 | **EventEndTime**        | 必需   | Alias      |      [TimeGenerated](#timegenerated) 字段的别名。    |
 | **EventType**           | 必需   | Enumerated |    描述记录报告的操作。 <br><br>对于注册表记录，支持的值包括： <br>- `RegistryKeyCreated` <br>- `RegistryKeyDeleted`<br>- `RegistryKeyRenamed` <br>- `RegistryValueDeleted` <br>- `RegistryValueSet`|
 | **EventOriginalUid**    | 可选    | 字符串     |   原始记录的唯一 ID（如果已由源提供）。<br><br>示例： `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
-| **EventOriginalType**   | 可选    | 字符串     |   原始事件类型或 ID（如果已由源提供）。<br><br>示例： `4657`|
-| <a name ="eventproduct"></a>EventProduct        | 必需   | 字符串     |             生成事件的产品。 <br><br>示例： `Sysmon`<br><br>注意：源记录中可能未提供此字段。 在这种情况下，此字段必须由分析器设置。           |
+| “EventOriginalType”   | 可选    | 字符串     |   原始事件类型或 ID（如果已由源提供）。<br><br>示例： `4657`|
+| <a name ="eventproduct"></a>“EventProduct”        | 必需   | 字符串     |             生成事件的产品。 <br><br>示例： `Sysmon`<br><br>注意：此字段在源记录中可能不可用。 在这种情况下，此字段必须由分析器设置。           |
 | **EventProductVersion** | 可选    | 字符串     | 生成事件的产品的版本。 <br><br>示例： `12.1`      |
-| **EventVendor**         | 必需   | 字符串     |           生成事件的产品的供应商。 <br><br>示例： `Microsoft`  <br><br>注意：源记录中可能未提供此字段。 在这种情况下，此字段必须由分析器设置。  |
+| **EventVendor**         | 必需   | 字符串     |           生成事件的产品的供应商。 <br><br>示例： `Microsoft`  <br><br>注意：此字段在源记录中可能不可用。 在这种情况下，此字段必须由分析器设置。  |
 | **EventSchemaVersion**  | 必需   | 字符串     |    架构的版本。 此处记录的架构版本为 `0.1`         |
 | **EventReportUrl**      | 可选    | 字符串     | 在资源的事件中提供的 URL，提供有关该事件的其他信息。|
-| **Dvc** | 必需       | 字符串     |               发生该事件的设备的唯一标识符。 <br><br>此字段可以别名化 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。         |
+| “Dvc” | 必需       | 字符串     |               发生该事件的设备的唯一标识符。 <br><br>此字段可以别名化 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。         |
 | <a name ="dvcipaddr"></a>DvcIpAddr           | 建议 | IP 地址 |         发生注册表事件的设备的 IP 地址。  <br><br>示例： `45.21.42.12`    |
-| <a name ="dvchostname"></a>DvcHostname         | 建议 | 主机名   |               发生注册表事件的设备的主机名。 <br><br>示例： `ContosoDc.Contoso.Azure`               |
-| <a name ="dvcid"></a>DvcId               | 可选    | 字符串     |  发生注册表事件的设备的唯一 ID。 <br><br>示例： `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
+| <a name ="dvchostname"></a>“DvcHostname”         | 建议 | 主机名   |               发生注册表事件的设备的主机名。 <br><br>示例： `ContosoDc.Contoso.Azure`               |
+| <a name ="dvcid"></a>“DvcId”               | 可选    | 字符串     |  发生注册表事件的设备的唯一 ID。 <br><br>示例： `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
 | **DvcMacAddr**          | 可选    | MAC        |   发生注册表事件的设备的 MAC。  <br><br>示例： `00:1B:44:11:3A:B7`       |
-| **DvcOs**               | 可选    | 字符串     |         发生注册表事件的设备上运行的操作系统。    <br><br>示例： `Windows`    |
-| **DvcOsVersion**        | 可选    | 字符串     |   发生注册表事件的设备上的操作系统版本。 <br><br>示例： `10` |
+| “DvcOs”               | 可选    | 字符串     |         发生注册表事件的设备上运行的操作系统。    <br><br>示例： `Windows`    |
+| “DvcOsVersion”        | 可选    | 字符串     |   发生注册表事件的设备上的操作系统版本。 <br><br>示例： `10` |
 | **AdditionalFields**    | 可选    | 动态    | 如果源提供了值得保留的其他信息，请使用原始字段名称保留这些信息，或者创建动态“AdditionalFields”字段，并在其中以键/值对的形式添加这些额外信息。    |
 
 
@@ -114,11 +115,11 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 
 有关详细信息，请参阅 Windows 文档中的[注册表结构](/windows/win32/sysinfo/structure-of-the-registry)。
 
-| 字段          | 实例        | 类型       | 说明   |
+| 字段          | 类        | 类型       | 说明   |
 |---------------|--------------|------------|-----------------|
-|<a name="registrykey"></a>**RegistryKey**     |     必需    |   字符串      |与操作关联的注册表项，规范化为标准根密钥命名约定。 有关详细信息，请参阅[根密钥](#root-keys)。<br><br>注册表项类似于文件系统中的文件夹。 <br><br>例如： `HKEY_LOCAL_MACHINE\SOFTWARE\MTG`        |
-|**RegistryValue**     |    建议     |  字符串       |与操作关联的注册表值。 注册表值类似于文件系统中的文件。 <br><br>例如： `Path`        |
-|<a name="registryvaluetype"></a>**RegistryValueType**     |    建议     |    字符串     | 注册表值的类型，规范化为标准格式。 有关更多信息，请参阅[值类型](#value-types)。<br><br>例如： `Reg_Expand_Sz`        |
+|<a name="registrykey"></a>**RegistryKey**     |     必需    |   字符串      |与操作关联的注册表项，规范化为标准根密钥命名约定。 有关详细信息，请参阅[根密钥](#root-keys)。<br><br>注册表项类似于文件系统中的文件夹。 <br><br>例如：`HKEY_LOCAL_MACHINE\SOFTWARE\MTG`        |
+|**RegistryValue**     |    建议     |  字符串       |与操作关联的注册表值。 注册表值类似于文件系统中的文件。 <br><br>例如：`Path`        |
+|<a name="registryvaluetype"></a>**RegistryValueType**     |    建议     |    字符串     | 注册表值的类型，规范化为标准格式。 有关更多信息，请参阅[值类型](#value-types)。<br><br>例如：`Reg_Expand_Sz`        |
 |**RegistryValueData**     | 建议       |      字符串   |  存储在注册表值中的数据。 <br><br>示例： `C:\Windows\system32;C:\Windows;`       |
 |<a name="registrypreviouskey"></a>**RegistryPreviousKey**     |  建议       |   字符串      |  对于修改注册表的操作，原始注册表项规范化为标准根项命名。 有关详细信息，请参阅[根密钥](#root-keys)。 <br><br>**注意**：如果操作更改了其他字段（例如值），但项保持不变，则 [RegistryPreviousKey](#registrypreviouskey) 将具有与 [RegistryKey](#registrykey) 相同的值。<br><br>示例： `HKEY_LOCAL_MACHINE\SOFTWARE\MTG`       |
 |<a name="registrypreviousvalue"></a>**RegistryPreviousValue**     | 建议        | 字符串        | 对于修改注册表的操作，原始值类型规范化为标准格式。 有关更多信息，请参阅[值类型](#value-types)。 <br><br>如果类型未更改，则此字段具有与 [RegistryValueType](#registryvaluetype) 字段相同的值。  <br><br>示例： `Path`       |
@@ -127,16 +128,16 @@ Log Analytics 针对每条记录生成以下字段，在创建自定义连接器
 |**用户** | Alias | |[ActorUsername](#actorusername) 字段的别名。 <br><br>示例： `CONTOSO\ dadmin` |
 |**处理**     |  Alias       |         |  [ActingProcessName](#actingprocessname) 字段的别名。<br><br>示例： `C:\Windows\System32\rundll32.exe`       |
 | <a name="actorusername"></a>ActorUsername  | 必需    | 字符串     | 发起事件的用户的用户名。 <br><br>示例： `CONTOSO\WIN-GG82ULGC9GO$`     |
-| **ActorUsernameType**              | 必需    | Enumerated |   指定 [ActorUsername](#actorusername) 字段中存储的用户名的类型。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。 <br><br>示例： `Windows`       |
-| <a name="actoruserid"></a>ActorUserId    | 建议  | 字符串     |   操作者的唯一 ID。 具体的 ID 取决于生成事件的系统。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。  <br><br>示例： `S-1-5-18`    |
-| **ActorUserIdType**| 建议  | 字符串     |  [ActorUserId](#actoruserid) 字段中存储的 ID 的类型。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。 <br><br>示例： `SID`         |
-| **ActorSessionId** | 可选     | 字符串     |   操作者登录会话的唯一 ID。  <br><br>示例： `999`<br><br>注意：类型定义为字符串以支持不同的系统，但在 Windows 上，此值必须是数字。 如果你使用的是 Windows 计算机并且源发送其他类型，请务必转换值。 例如，如果源发送的是十六进制值，请将其转换为十进制值。   |
+| “ActorUsernameType”              | 必需    | Enumerated |   指定 [ActorUsername](#actorusername) 字段中存储的用户名的类型。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。 <br><br>示例： `Windows`       |
+| <a name="actoruserid"></a>“ActorUserId”    | 建议  | 字符串     |   Actor 的唯一 ID。 特定的 ID 取决于生成事件的系统。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。  <br><br>示例： `S-1-5-18`    |
+| “ActorUserIdType”| 建议  | 字符串     |  [ActorUserId](#actoruserid) 字段中存储的 ID 的类型。 有关详细信息，请参阅[用户实体](normalization-about-schemas.md#the-user-entity)。 <br><br>示例： `SID`         |
+| “ActorSessionId” | 可选     | 字符串     |   Actor 登录会话的唯一 ID。  <br><br>示例： `999`<br><br>注意：类型定义为字符串以支持不同的系统，但在 Windows 上，此值必须是数字。 如果你使用的是 Windows 计算机并且源发送其他类型，请务必转换值。 例如，如果源发送的是十六进制值，请将其转换为十进制值。   |
 | <a name="actingprocessname"></a>ActingProcessName              | 可选     | 字符串     |   操作进程映像文件的文件名。 此名称通常被视为进程名称。  <br><br>示例： `C:\Windows\explorer.exe`  |
-| **ActingProcessId**| 必需    | Integer        | 操作进程的进程 ID (PID)。<br><br>示例：`48610176`           <br><br>注意：类型定义为字符串以支持不同的系统，但在 Windows 和 Linux 上，此值必须是数字。 <br><br>如果你使用的是 Windows 或 Linux 计算机并使用了其他类型，请务必转换值。 例如，如果使用了十六进制值，请将其转换为十进制值。    |
-| **ActingProcessGuid**              | 可选     | 字符串     |  为操作进程生成的唯一标识符 (GUID)。   <br><br> 示例： `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
+| **ActingProcessId**| 必需    | 字符串        | 操作进程的进程 ID (PID)。<br><br>示例：`48610176`           <br><br>注意：类型定义为“字符串”以支持不同的系统，但在 Windows 和 Linux 上，此值必须是数字。 <br><br>如果使用的是 Windows 或 Linux 计算机并使用了其他类型，请务必转换值。 例如，如果使用了十六进制值，请将其转换为十进制值。    |
+| “ActingProcessGuid”              | 可选     | 字符串     |  为操作进程生成的唯一标识符 (GUID)。   <br><br> 示例： `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
 | **ParentProcessName**              | 可选     | 字符串     |  父进程映像文件的文件名。 此值通常被视为进程名称。    <br><br>示例： `C:\Windows\explorer.exe` |
-| **ParentProcessId**| 必需    | Integer    | 父进程的进程 ID (PID)。   <br><br>     示例：`48610176`    |
-| **ParentProcessGuid**              | 可选     | 字符串     |  父进程的生成的唯一标识符 (GUID)。     <br><br> 示例： `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
+| **ParentProcessId**| 必需    | 字符串    | 父进程的进程 ID (PID)。   <br><br>     示例：`48610176`    |
+| “ParentProcessGuid”              | 可选     | 字符串     |  父进程的生成的唯一标识符 (GUID)。     <br><br> 示例： `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
 
 
 

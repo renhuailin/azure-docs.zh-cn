@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/27/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 31f4390541020a7315d9168369898dff1cd854f7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52197330ae274cf8cb338328d3202d7367fe431d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727487"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>教程：Azure Active Directory 与 Proxyclick 的集成
 
@@ -38,6 +38,8 @@ ms.locfileid: "121727487"
 本教程在测试环境中配置并测试 Azure AD 单一登录。
 
 * Proxyclick 支持 SP 和 IdP 发起的 SSO。
+
+* Proxyclick 支持[自动用户预配](proxyclick-provisioning-tutorial.md)。
 
 ## <a name="add-proxyclick-from-the-gallery"></a>从库中添加 Proxyclick
 
@@ -176,6 +178,9 @@ ms.locfileid: "121727487"
 
     1. 选择“添加用户”。 
 
+> [!NOTE]
+> Proxyclick 还支持自动用户预配；有关如何配置自动用户预配的更多详细信息，请参阅[此处](./proxyclick-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -190,7 +195,7 @@ ms.locfileid: "121727487"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Proxyclick。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Proxyclick”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你应会自动登录到为其设置了 SSO 的 Proxyclick。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Proxyclick”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你应会自动登录到为其设置了 SSO 的 Proxyclick。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

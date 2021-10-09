@@ -7,12 +7,12 @@ ms.topic: article
 author: navits09
 ms.author: navits
 ms.date: 08/13/2021
-ms.openlocfilehash: 1048aa89e13f22e6708a3cb86eaa1cb4332bc2a1
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: cc7f4e983ab766577af41497c2e270694361605a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326331"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784748"
 ---
 # <a name="private-plans-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场中的专用计划
 
@@ -45,10 +45,10 @@ ms.locfileid: "122326331"
 
 专用计划可以重复使用已为公共计划发布的基础映像和/或产品（服务）元数据。 此选项可让发布者创建公共产品/服务的多个专用变体，而无需发布相同基本映像和产品/服务元数据的多个版本。 （仅适用于 Azure 虚拟机和 Azure 应用程序产品/服务）当某个专用计划与公共计划共享基本映像时，对产品/服务基本映像所做的任何更改将使用该基本映像在所有公共和专用计划之间传播。
 
-对于仅包含专用计划的新产品/服务，发布者可与往常一样创建产品/服务，然后将计划标记为专用。 对于仅包含专用计划的产品/服务，不与该产品/服务关联的客户无法在 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)中发现或访问它。
+对于仅包含专用计划的新产品/服务，发布者可与往常一样创建产品/服务，然后将计划标记为专用。 对于仅包含专用计划的产品/服务，不与该产品/服务关联的客户无法在 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)或 [Microsoft AppSource](https://appsource.microsoft.com/) 中发现或访问它。
 
 >[!NOTE]
->仅包含专用计划的产品/服务不会显示在公共 Azure 市场或 AppSource 中。
+>仅包含专用计划的产品/服务不会显示在公共 Azure 市场中。
 
 ## <a name="target-customers-with-private-plans"></a>确定专用计划的目标客户
 
@@ -66,7 +66,7 @@ ms.locfileid: "122326331"
 1. 在左侧导航栏中，选择“专用计划”。
 
 > [!NOTE]
-> 只能在 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)中发现专用计划。 它们不会显示在 [Microsoft AppSource](https://appsource.microsoft.com/) 或 [Azure 市场](https://azuremarketplace.microsoft.com)中。 若要详细了解如何发布到不同的商业市场在线商店，请参阅[列表选项简介](./determine-your-listing-type.md)。
+> 只能在 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)或 [Microsoft AppSource](https://appsource.microsoft.com/) 中发现专用计划。 专用计划不会显示在 [Azure Marketplace](https://azuremarketplace.microsoft.com) 中。 若要详细了解如何发布到不同的商业市场在线商店，请参阅[列表选项简介](./determine-your-listing-type.md)。
 
 专用计划也会显示在搜索结果中，并与任何其他产品/服务一样，可以通过命令行和 Azure 资源管理器模板进行部署。
 

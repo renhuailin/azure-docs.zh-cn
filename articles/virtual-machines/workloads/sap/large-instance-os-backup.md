@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5685f7932b49f8af57faf159a51a8cb634128337
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: e7d2621aab6d49c8bd6f4b6083c35d5e7299bf50
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217478"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630502"
 ---
 # <a name="os-backup-and-restore"></a>OS 备份和还原
 
@@ -117,12 +117,12 @@ BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/cra
 
 ### <a name="take-a-manual-backup"></a>创建手动备份
 
-请按照以[什么是 Azure 应用程序一致性快照工具](../../../azure-netapp-files/azacsnap-introduction.md)开头的一系列文章中的说明，获取 Microsoft Snapshot Tools for SAP HANA，并按照以下文章中的说明对其进行配置和测试：
+请按照以[什么是 Azure 应用程序一致性快照工具](../../../azure-netapp-files/azacsnap-introduction.md)开头的一系列文章中的说明，获取最新 Microsoft Snapshot Tools for SAP HANA。 按照以下文章中的说明对其进行配置和测试：
 
 - [配置 Azure 应用程序一致的快照工具](../../../azure-netapp-files/azacsnap-cmd-ref-configure.md)
 - [测试 Azure 应用程序一致性快照工具](../../../azure-netapp-files/azacsnap-cmd-ref-test.md) 
 
-如[使用 Azure 应用程序一致性快照工具进行备份](../../../azure-netapp-files/azacsnap-cmd-ref-backup.md)中所述，通过 `crontab` 定期运行。 
+此评审将使你准备好按照[使用 Azure 应用程序一致性快照工具进行备份](../../../azure-netapp-files/azacsnap-cmd-ref-backup.md)中所述，通过 `crontab` 定期运行备份。 
 
 有关详细信息，请参阅以下参考：
 

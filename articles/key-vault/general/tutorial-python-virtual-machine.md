@@ -1,7 +1,6 @@
 ---
 title: 教程 - 将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用 | Microsoft Docs
 description: 在本教程中，将为虚拟机配置一个 Python 应用程序，以便从密钥保管库读取机密。
-services: key-vault
 author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 25182105db831724565c6bf3dbbbb79832b677f7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 463474d13f0df50aebd775e119918e0db7ad65c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772053"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597299"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用
 
@@ -109,7 +108,7 @@ az keyvault set-policy --name "<your-unique-keyvault-name>" --object-id "<system
 若要登录到虚拟机，请按照[连接并登录到运行 Linux 的 Azure 虚拟机](../../virtual-machines/linux/login-using-aad.md)或[连接并登录到运行 Windows 的 Azure 虚拟机](../../virtual-machines/windows/connect-logon.md)中的说明操作。
 
 
-若要登录到 Linux VM，可以使用 ssh 命令以及在[创建虚拟机](#create-a-virtual-machine)步骤中提供的“<publicIpAddress>”：
+若要登录到 Linux VM，可以使用 ssh 命令以及在[创建虚拟机](#create-a-virtual-machine)步骤中提供的 \<publicIpAddress\>：
 
 ```terminal
 ssh azureuser@<PublicIpAddress>
@@ -129,7 +128,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>创建并编辑示例 Python 脚本
 
-在虚拟机上，创建名为 sample.py 的 Python 文件。 编辑文件以包含以下代码，将“<your-unique-keyvault-name>”替换为 Key Vault 的名称：
+在虚拟机上，创建名为 sample.py 的 Python 文件。 编辑文件以包含以下代码，将 \<your-unique-keyvault-name\> 替换为密钥保管库的名称：
 
 ```python
 from azure.keyvault.secrets import SecretClient

@@ -9,12 +9,12 @@ metadata:
   ms.custom: hdinsightactive,seoapr2020
   ms.topic: conceptual
   ms.date: 11/20/2019
-  ms.openlocfilehash: 84e2065a89c66277b14c86aa15a63c239acdf1a3
-  ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+  ms.openlocfilehash: 22754fcddcb7a5eb75e10e2ae09dfa768f2ec2bb
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/23/2021
-  ms.locfileid: "112560893"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124819725"
 title: Azure HDInsight：常见问题
 summary: >
   本文提供有关如何运行 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) 的一些最常见问题的解答。
@@ -203,6 +203,10 @@ sections:
 
 
       - [教程：为 Azure Active Directory 域服务托管域配置安全 LDAP](../active-directory-domain-services/tutorial-configure-ldaps.md)
+  - question: >
+      能否在 ESP 群集中安装 Data Analytics Studio (DAS)？
+    answer: >
+      否，ESP 群集不支持 DAS。
   - question: >
       如何拉取 Ranger 中显示的登录活动？
     answer: >

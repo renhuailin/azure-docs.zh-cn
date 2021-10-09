@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 09/10/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa2356cf45c1b1a04fac14bff2888d031ca5a423
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 5b7e00a892398ed8a644d3a65e2d9b9338fd2fbd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750980"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780673"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>邀请内部用户参与 B2B 协作
 
@@ -36,8 +36,7 @@ ms.locfileid: "109750980"
 - **本地同步的用户**：对于在本地与云之间同步的用户帐户，本地目录在被邀请使用 B2B 协作后仍会保留授权源。 对本地帐户所做的任何更改都将同步到云帐户，包括禁用或删除帐户。 因此，如果要阻止用户登录到本地帐户，同时还要保留其云帐户，那么只是删除本地帐户无法做到这一点。 相反，你可以将本地帐户密码设置为随机 GUID 或其他未知值。
 
 > [!NOTE]
-> 如果使用 Azure AD Connect 云同步，默认情况下会有一条规则将 OnPremUserPrincipalName 写入用户。 需修改该规则，确保其不会为要从内部用户转换为外部用户的用户编写此属性。
-
+在 Azure AD Connect 同步中，有一个将 [onPremisesUserPrincipalName 属性](../hybrid/reference-connect-sync-attributes-synchronized.md#notes)写入用户对象的默认规则。 由于存在此属性会阻止用户使用外部凭据进行登录，因此会阻止具有此属性的用户对象进行内部到外部的转换。 如果使用的是 Azure AD Connect 并且希望能够邀请内部用户参与 B2B 协作，则需要[修改默认规则](../hybrid/how-to-connect-sync-change-the-configuration.md)，使 onPremisesUserPrincipalName 属性不会写入用户对象。
 ## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>如何邀请内部用户进行 B2B 协作
 
 可以使用 PowerShell 或邀请 API 将 B2B 邀请发送给内部用户。 请确保要用于邀请的电子邮件地址设置为内部用户对象上的外部电子邮件地址。

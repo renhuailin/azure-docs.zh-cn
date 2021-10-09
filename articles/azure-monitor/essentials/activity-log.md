@@ -4,22 +4,31 @@ description: 查看 Azure 活动日志，并将其发送到 Azure Monitor 日志
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 09/09/2021
 ms.author: bwren
-ms.openlocfilehash: d9628c9d10818b2b7a8a731b14537e4b533af74e
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 61640d3abc371a92d5588c8b14308ba74152a442
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862098"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799750"
 ---
 # <a name="azure-activity-log"></a>Azure 活动日志
-活动日志是 Azure 中的一种[平台日志](./platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应当创建诊断设置，以便将活动日志发送到 [Azure Monitor 日志](../logs/data-platform-logs.md)，发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
+活动日志是 Azure 中的一种[平台日志](./platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。   本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
+
+对于其他功能，出于以下原因，你应该创建诊断设置以将“活动”日志发送到这些位置中的一个或多个： 
+-   发送到 [Azure Monitor 日志](../logs/data-platform-logs.md)，以进行更复杂的查询和提醒以及延长保留期限（最长 2 年） 
+-   发送到 Azure 事件中心以在 Azure 外部转发
+-   发送到 Azure 存储以实现更经济的长期存档。
 
 有关创建诊断设置的详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](./diagnostic-settings.md)。
 
 > [!NOTE]
 > 活动日志中的条目是系统生成的，无法更改或删除。
+
+## <a name="retention-period"></a>保持期 
+
+活动日志事件在 Azure 中保留 90 天，然后被删除。 在此期间，日志项都是免费存储的，与卷无关。 要实现附加功能（例如更长的保留时间），则应该创建一个诊断设置并根据需要将日志项路由到另一个位置。 请参阅本文前面部分中的条件。 
 
 ## <a name="view-the-activity-log"></a>查看活动日志
 可以从 Azure 门户中的大多数菜单访问活动日志。 你从中打开它的菜单确定了它的初始筛选器。 如果从“监视器”菜单打开它，则唯一的筛选器将基于订阅。 如果从某个资源的菜单打开它，则筛选器将设置为该资源。 你始终可以更改筛选器来查看所有其他条目。 单击“添加筛选器”可向筛选器添加其他属性。
@@ -59,9 +68,9 @@ ms.locfileid: "121862098"
 - 将来自多个 Azure 订阅和租户的活动日志合并到同一位置一起进行分析。
 - 使用日志查询来执行复杂分析，并深入了解活动日志条目。
 - 将日志警报与活动条目配合使用，从而可以使用更复杂的警报逻辑。
-- 将活动日志条目存储 90 天以上。
+- 活动日志项的存储时间需要长于活动日志保留期。
 - Log Analytics 工作区中存储的活动日志数据不产生数据引入费用。
-- Log Analytics 工作区中存储的活动日志数据在 90 天内不会产生数据保留费用。
+- 在给定日志项的活动日志保留期到期之前，不会收取数据保留费用。
 
 [创建诊断设置](./diagnostic-settings.md)，以便将活动日志发送到 Log Analytics 工作区。 可以将任一订阅中的活动日志发送到最多五个工作区。 
 
@@ -144,8 +153,8 @@ AzureActivity
 ```
 
 
-## <a name="send-to--azure-storage"></a>发送到 Azure 存储
-如果要将日志数据保留 90 天以上以进行审核、静态分析或备份，请将活动日志发送到 Azure 存储帐户。 如果只需将事件保留 90 天或更短的时间，则无需设置为存档到存储帐户，因为活动日志事件保留在 Azure 平台中的时间是 90 天。
+## <a name="send-to-azure-storage"></a>发送到 Azure 存储
+如果希望保留日志数据的时间长于活动日志保留期，请将活动日志发送到 Azure 存储帐户以进行审核、静态分析或备份。 除非出于以下原因之一需要保留日志项，否则无需设置 Azure 存储。  
 
 将活动日志发送到 Azure 时，一旦发生事件，就会在存储帐户中创建一个存储容器。 容器中的 blob 使用以下命名约定：
 
@@ -204,7 +213,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | 属性 | 必须 | 说明 |
+    | 属性 | 必选 | 说明 |
     | --- | --- | --- |
     | 名称 |是 |日志配置文件的名称。 |
     | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -247,7 +256,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | 属性 | 必须 | 说明 |
+    | 属性 | 必选 | 说明 |
     | --- | --- | --- |
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |

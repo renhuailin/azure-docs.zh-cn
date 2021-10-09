@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/30/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 58e7357552be9c209dec81cc9ace23fcfd82ea2d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 146a3a252a0f8105245c2a6826876e1400efdc13
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467127"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766979"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>教程：在虚拟网络中创建 Azure Database for PostgreSQL 灵活服务器和应用服务 Web 应用
 
@@ -96,8 +96,8 @@ az webapp up --resource-group demoresourcegroup --location westus2 --plan testap
 ```
 
 > [!NOTE]
-> - 对于 --location 参数，请使用与上一节中数据库相同的位置。
-> - 将 <app-name> 替换为在整个 Azure 中唯一的名称。 <app-name> 允许的字符包括“A-Z”、“0-9”和“-”。 良好的模式是结合使用公司名称和应用标识符。
+> - 对于 --location 参数，请使用与上一节中的数据库相同的位置。
+> - 将 \<app-name\> 替换为在整个 Azure 中唯一的名称。 \<app-name\> 允许的字符为 A-Z、0-9 和 -。 良好的模式是结合使用公司名称和应用标识符。
 
 此命令将执行以下操作，可能需要花几分钟的时间：
 
@@ -135,7 +135,7 @@ az webapp vnet-integration add --resource-group demoresourcegroup -n  mywebapp -
 az webapp config appsettings set  --name mywebapp --settings DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="postgres" DBUSER="<username>" DBPASS="<password>" 
 ```
 - 为新创建的灵活服务器命令替换 postgres-server-name、username 和 password  。
-- 将 **<username>** 和 **<password>** 替换为命令也为你生成的凭据。
+- 将 **\<username\>** 和 **\<password\>** 替换为命令也为你生成的凭据。
 - 资源组和应用名称是从“.azure/config”文件中的缓存值中提取的。
 - 此命令会创建名为 DBHOST、DBNAME、DBUSER 和 DBPASS 的设置  。 如果应用程序代码对数据库信息使用了不同的名称，则如代码中所述，对应用设置使用这些名称。
 

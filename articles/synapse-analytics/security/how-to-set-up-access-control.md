@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 6a604c4e2a3b1f12fa5d296558023be9bc31cd96
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 513b2edd432a274f155e79362e715fbc426a9f9e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862242"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081503"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>如何为 Azure Synapse 工作区设置访问控制 
 
@@ -129,7 +129,7 @@ Azure Synapse 工作区将默认存储容器用于：
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>步骤 4：向工作区 MSI 授予对默认存储容器的访问权限
 
-若要运行管道和执行系统任务，Azure Synapse 要求工作区托管服务标识 (MSI) 需要访问默认 ADLS Gen2 帐户中的 `container1`。 有关详细信息，请参阅 [Azure Synapse 工作区托管标识](synapse-workspace-managed-identity.md)。
+为了运行管道和执行系统任务，Azure Synapse 会要求工作区托管服务标识 (MSI) 访问默认 ADLS Gen2 帐户中的 `container1`。 有关详细信息，请参阅 [Azure Synapse 工作区托管标识](synapse-workspace-managed-identity.md)。
 
 - 打开 Azure 门户
 - 找到存储帐户 `storage1`，然后找到 `container1`
@@ -139,7 +139,7 @@ Azure Synapse 工作区将默认存储容器用于：
     
     | 设置 | 值 |
     | --- | --- |
-    | 角色 | 存储 Blob 参与者 |
+    | 角色 | 存储 Blob 数据参与者 |
     | 将访问权限分配到 | MANAGEDIDENTITY |
     | 成员 | 托管标识名称  |
 
@@ -181,16 +181,16 @@ Azure Synapse 工作区将默认存储容器用于：
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>步骤 7：授予对 SQL 池的访问权限
 
-默认情况下，被分配“Synapse 管理员”角色的所有用户也会被分配 SQL `db_owner` 角色（在无服务器 SQL 池“Built-in”及其所有数据库中）。
+默认情况下，所有被分配了 Synapse 管理员角色的用户也会被分配工作区中专用和无服务器 SQL 池上的 SQL `db_owner` 角色。
 
 对于其他用户和工作区 MSI，可以使用 SQL 权限来控制对 SQL 池的访问。  分配 SQL 权限要求在每个已创建的 SQL 数据库上运行 SQL 脚本。  下面三种情况需要你运行这些脚本：
 1. 向其他用户授予对无服务器 SQL 池、“Built-in”及其数据库的访问权限
-2. 授予任何用户对专用池数据库的访问权限
+2. 授予任何用户访问专用 SQL 池数据库的权限
 3. 向工作区 MSI 授予对 SQL 池数据库的访问权限，使那些需要 SQL 池访问权限的管道能够成功运行。
 
 下面包含了示例 SQL 脚本。
 
-若要授予对专用 SQL 池数据库的访问权限，可以让工作区创建者或 `workspace1_SQLAdmins` 组的任何成员运行这些脚本。  
+若要授予对专用 SQL 池数据库的访问权限，工作区创建者或 `workspace1_SQLAdmins` 组或 `workspace1_SynapseAdministrators` 组的任何成员都可以运行脚本。  
 
 若要授予对无服务器 SQL 池“Built-in”的访问权限，可以让 `workspace1_SQLAdmins` 组或 `workspace1_SynapseAdministrators` 组的任何成员运行这些脚本。 
 

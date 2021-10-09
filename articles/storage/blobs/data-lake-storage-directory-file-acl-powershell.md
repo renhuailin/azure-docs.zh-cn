@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 552d53ff0257105ff61397e281504c5270512319
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f03426ab734101657ad5609fcd7782f7c75a6f9b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573857"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553196"
 ---
 # <a name="use-powershell-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
@@ -27,20 +27,20 @@ ms.locfileid: "103573857"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 订阅。 有关详细信息，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 - 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
-- 已安装 .NET Framework 4.7.2 或更高版本。 请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
+- 已安装 .NET Framework 4.7.2 或更高版本。 有关详细信息，请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 
 - PowerShell `5.1` 或更高版本。
 
 ## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
-1. 使用以下命令验证安装的 PowerShell 版本是否为 `5.1` 或以上。    
+1. 使用以下命令验证安装的 PowerShell 版本是否为 `5.1` 或以上。
 
    ```powershell
-   echo $PSVersionTable.PSVersion.ToString() 
+   echo $PSVersionTable.PSVersion.ToString()
    ```
 
    若要升级 PowerShell 版本，请参阅[升级现有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
@@ -55,7 +55,7 @@ ms.locfileid: "103573857"
 
 ## <a name="connect-to-the-account"></a>连接到帐户
 
-选择希望命令如何获取存储帐户的授权。 
+选择希望命令如何获取存储帐户的授权。
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-azure-ad"></a>选项 1：使用 Azure Active Directory (Azure AD) 获取授权
 
@@ -71,7 +71,7 @@ ms.locfileid: "103573857"
 
    ```powershell
    Select-AzSubscription -SubscriptionId <subscription-id>
-   ``` 
+   ```
 
 3. 获取存储帐户上下文。
 
@@ -89,7 +89,7 @@ $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -Storag
 
 ## <a name="create-a-container"></a>创建容器
 
-容器充当文件的文件系统。 可以使用 `New-AzStorageContainer` cmdlet 创建一个文件系统。 
+容器充当文件的文件系统。 可以使用 `New-AzStorageContainer` cmdlet 创建一个文件系统。
 
 此示例创建一个名为 `my-file-system` 的容器。
 
@@ -100,7 +100,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 ## <a name="create-a-directory"></a>创建目录
 
-使用 `New-AzDataLakeGen2Item` cmdlet 创建目录引用。 
+使用 `New-AzDataLakeGen2Item` cmdlet 创建目录引用。
 
 此示例将名为 `my-directory` 的目录添加到容器中。
 
@@ -110,7 +110,7 @@ $dirname = "my-directory/"
 New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Directory
 ```
 
-此示例添加相同的目录，但同时还会设置权限、umask、属性值和元数据值。 
+此示例添加相同的目录，但同时还会设置权限、umask、属性值和元数据值。
 
 ```powershell
 $dir = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
@@ -151,7 +151,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 > [!NOTE]
 > 如果要直接覆盖而不触发系统提示，请使用 `-Force` 参数。
 
-此示例将名为 `my-directory` 的目录移到名为 `my-subdirectory` 的 `my-directory-2` 子目录。 
+此示例将名为 `my-directory` 的目录移到名为 `my-subdirectory` 的 `my-directory-2` 子目录。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -169,7 +169,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 ```powershell
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
-Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $dirname 
+Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $dirname
 ```
 
 可以使用 `-Force` 参数删除文件，而不会看到提示。
@@ -199,7 +199,7 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -OutputUserPrincipalName
 ```
 
-下面的示例列出目录中每个项的 `ACL`、`Permissions`、`Group` 和 `Owner` 属性。 获取 `ACL` 属性的值需要 `-FetchProperty` 参数。 
+下面的示例列出目录中每个项的 `ACL`、`Permissions`、`Group` 和 `Owner` 属性。 获取 `ACL` 属性的值需要 `-FetchProperty` 参数。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -218,14 +218,14 @@ $properties.Owner
 
 使用 `New-AzDataLakeGen2Item` cmdlet 将文件上传到目录。
 
-此示例将名为 `upload.txt` 的文件上传到名为 `my-directory` 的目录。 
+此示例将名为 `upload.txt` 的文件上传到名为 `my-directory` 的目录。
 
 ```powershell
 $localSrcFile =  "upload.txt"
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
 $destPath = $dirname + (Get-Item $localSrcFile).Name
-New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $destPath -Source $localSrcFile -Force 
+New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $destPath -Source $localSrcFile -Force
 ```
 
 此示例上传同一文件，但随后会设置目标文件的权限、umask、属性值和元数据值。 此示例还会将这些值输出到控制台。
@@ -262,12 +262,12 @@ $file.Properties.Metadata
 
 使用 `Remove-AzDataLakeGen2Item` cmdlet 删除文件。
 
-此示例删除名为 `upload.txt` 的文件。 
+此示例删除名为 `upload.txt` 的文件。
 
 ```powershell
 $filesystemName = "my-file-system"
 $filepath = "upload.txt"
-Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $filepath 
+Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $filepath
 ```
 
 可以使用 `-Force` 参数删除文件，而不会看到提示。

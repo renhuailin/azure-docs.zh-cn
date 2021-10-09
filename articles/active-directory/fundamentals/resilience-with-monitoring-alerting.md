@@ -13,16 +13,20 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccb3876799c0a1473f06c1838536df17eab03398
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648511"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754378"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>通过监视和分析实现复原能力
 
 监视可以最大程度地提高应用程序和服务的可用性和性能。 它提供了一个全面的解决方案，用于从你的基础结构和应用程序收集、分析和处理遥测数据。 当发现你的服务或应用程序出现问题时，警报会主动通知你。 有了警报，你就可以在服务的最终用户注意到问题之前确定并解决这些问题。 [Azure AD Log Analytics](https://azure.microsoft.com/services/monitor/?OCID=AID2100131_SEM_6d16332c03501fc9c1f46c94726d2264:G:s&ef_id=6d16332c03501fc9c1f46c94726d2264:G:s&msclkid=6d16332c03501fc9c1f46c94726d2264#features) 可帮助你分析、搜索审核日志和登录日志，以及构建自定义视图。
+
+观看此视频，了解如何使用 Azure Monitor 在 Azure AD B2C 中设置监视和报告。
+
+>[!Video https://www.youtube.com/embed/Mu9GQy-CbXI]
 
 ## <a name="monitor-and-get-notified-through-alerts"></a>通过警报进行监视并获得通知
 

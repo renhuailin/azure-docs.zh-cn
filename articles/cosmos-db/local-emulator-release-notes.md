@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 23abc9cd391548a4a97622e6cb7110de828498f2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ca9606f3e4a431a60b1373cae72f1f1b4e427938
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180261"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736937"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,10 @@ ms.locfileid: "122180261"
 |**入门**|[使用 Azure Cosmos DB 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2143-8-september-2021"></a>2.14.3（2021 年 9 月 8 日）
+
+ - 此版本更新了 Cosmos 仿真器后台服务以匹配 Azure Cosmos DB 的最新在线功能，修复了收集的遥测数据的几个问题，并重置了 Linux Cosmos 仿真器 Docker 映像的基础映像。
 
 ### <a name="2142-12-august-2021"></a>2.14.2（2021 年 8 月 12 日）
 

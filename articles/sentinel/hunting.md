@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2021
+ms.date: 08/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 78662bf6dbc6d4be4f0ea0890993530f772d2114
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ecb8559af1d2aaf70bee0031930a748ff534f1c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746233"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622524"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>使用 Azure Sentinel 搜寻威胁
 
@@ -111,9 +111,51 @@ ms.locfileid: "121746233"
 
 ## <a name="use-notebooks-to-power-investigations"></a>使用笔记本为调查提供支持
 
-笔记本提供一种自带内核的虚拟沙盒环境。 可以将笔记本与机器学习、可视化和数据分析配合使用来增强搜寻和调查。 可以在笔记本中执行完整调查，封装原始数据、对其运行的代码、结果及其可视化效果，然后保存所有内容，以便可与组织中的其他人共享并让他们重复使用。
+当搜寻和调查变得更加复杂时，使用 Azure Sentinel 笔记本的机器学习、可视化和数据分析功能来增强活动。
 
-有关详细信息，请参阅[使用 Jupyter Notebook 搜寻安全威胁](notebooks.md)。
+笔记本提供一种虚拟沙盒，它配备有自己的内核，可在其中执行完整的调查。 笔记本可以包含原始数据、对该数据运行的代码、结果及其可视化效果。 保存笔记本，从而可与他人共享并在组织中重用它们。
+
+当搜寻或调查变得太大而难以记住或无法查看详细信息，或者需要保存查询和结果时，笔记本可能会很有帮助。 为了帮助你创建和共享笔记本，Azure Sentinel 提供了 [Jupyter Notebook](https://jupyter.org)，它是一个开源的、交互式开发和数据操作环境，直接集成在 Azure Sentinel“笔记本”页中。
+
+有关详细信息，请参阅：
+
+- [使用 Jupyter Notebook 搜寻安全威胁](notebooks.md)
+- [Jupyter 项目文档](https://jupyter.org/documentation)
+- [Jupyter 简介文档](https://jupyter.readthedocs.io/en/latest/tryjupyter.html)
+- [Infosec Jupyter 书籍](https://infosecjupyterbook.com)
+- [Real Python 教程](https://realpython.com)
+
+下表介绍了一些使用 Juypter Notebook 的方法，以便为 Azure Sentinel 中的进程提供帮助：
+
+|方法  |说明  |
+|---------|---------|
+|数据暂留、可重复性和回溯     |  如果正在处理许多查询和结果集，则很可能遭遇无法连接的情况。 需要确定要保留哪些查询和结果，以及如何在单个报告中累积有用的结果。 <br><br> 使用 Jupyter Notebook 在运行时保存查询和数据，使用变量重新运行具有不同值或日期的查询，或保存查询以在将来的调查中重新运行。       |
+|**脚本和编程**     |    使用 Jupyter Notebook 向查询添加编程，包括： <br><br>- [Kusto 查询语言 (KQL)](/azure/kusto/query/) 或 SQL 等“声明性”语言，以在可能比较复杂的单个语句中对逻辑进行编码。<br>- “过程”编程语言，以在一系列步骤中运行逻辑。 <br><br>将逻辑拆分为步骤有助于查看和调试中间结果，添加查询语言中可能不可用的功能以及在之后的处理步骤中重用部分结果。     |
+|指向外部数据的链接     | 尽管 Azure Sentinel 表包含大多数遥测数据和事件数据，但 Jupyter Notebook 可以链接到通过网络或文件访问的任何数据。 使用 Jupyter Notebook 可以包括以下数据： <br><br>- 不拥有的外部服务数据，例如地理位置数据或威胁情报源<br>- 仅存储在组织内部的敏感数据，例如人力资源数据库或高价值资产列表<br>- 尚未迁移到云的数据。        |
+|专用数据处理、机器学习和可视化工具     | Jupyter Notebook 提供其他可视化效果、机器学习库以及数据处理和转换功能。 <br><br>例如，将 Jupyter Notebook 与以下 [Python](https://python.org) 功能结合使用：<br>- [pandas](https://pandas.pydata.org/)，用于数据处理、清理和工程<br>- [Matplotlib](https://matplotlib.org)、[HoloViews](https://holoviews.org) 和 [Plotly](https://plot.ly)，用于可视化效果<br>- [NumPy](https://www.numpy.org) 和 [SciPy](https://www.scipy.org)，用于高级数值和科学处理<br>- [scikit-learn](https://scikit-learn.org/stable/index.html)，用于机器学习<br>- [TensorFlow](https://www.tensorflow.org/)、[PyTorch](https://pytorch.org) 和 [Keras](https://keras.io/)，用于深度学习<br><br>提示：Jupyter Notebook 支持多种语言内核。 通过 *magics*，可以使用其他语言执行单个单元格，从而在同一个笔记本中混合使用不同语言。 例如，可以使用 PowerShell 脚本单元格检索数据，采用 Python 处理数据，并使用 JavaScript 呈现可视化效果。        |
+|     |         |
+
+### <a name="mstic-jupyter-and-python-security-tools"></a>MSTIC、Jupyter 和 Python 安全工具
+
+[Microsoft 威胁情报中心 (MSTIC)](https://msrc-blog.microsoft.com/tag/mstic/) 是由 Microsoft 安全分析师和工程师组成的团队，他们为多个 Microsoft 平台创作安全检测，并负责威胁识别和调查。
+
+MSTIC 构建了 [MSTICPy](https://github.com/Microsoft/msticpy)，它是用于在 Jupyter Notebook 中进行信息安全调查和搜寻的库。 MSTICPy 提供可重用的功能，旨在加快笔记本创建速度，让用户更轻松地在 Azure Sentinel 中读取笔记本。
+
+例如，MSTICPy 可以：
+
+- 查询来自多个源的日志数据。
+- 使用威胁情报、地理位置和 Azure 资源数据扩充数据。
+- 从日志中提取活动指标 (IoA)，并解压缩编码数据。
+- 执行复杂的分析，例如异常会话检测和时序分解。
+- 使用交互式时间线、进程树和多维变形图表可视化数据。
+
+MSTICPy 还包括一些省时的笔记本工具，例如用于设置查询时间边界、从列表选择和显示项以及配置笔记本环境的小组件。
+
+有关详细信息，请参阅：
+
+- [MSTICPy 文档](https://msticpy.readthedocs.io/en/latest/)
+- [教程：开始使用 Azure Sentinel 中的 Jupyter Notebook 和 MSTICPy](notebook-get-started.md)
+- [适用于 Azure Sentinel 中的 Jupyter Notebook 和 MSTICPy 的高级配置](notebooks-msticpy-advanced.md)
 
 
 ## <a name="useful-operators-and-functions"></a>有用的运算符和函数

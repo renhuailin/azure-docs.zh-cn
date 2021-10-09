@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 718648be0f4a5ec9dd3520127552138b8471d57c
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 31a65c31558940ba7e39e21c8b6e33ffa8e7c9b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114710485"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633650"
 ---
 # <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>排查常见的 Azure 虚拟桌面代理问题
 
@@ -113,7 +113,7 @@ ms.locfileid: "114710485"
 请参阅“事件查看器” > “Windows 日志” > “应用程序”  。 如果看到 ID 为 3703 的事件在说明中显示“RD 网关 URL：无法访问”，则表明代理无法访问网关 URL。 若要成功连接到会话主机，并允许到这些终结点的网络流量绕过限制，则必须取消阻止[所需 URL 的列表](safe-url-list.md)中的 URL。 此外，请确保防火墙或代理设置不会阻止这些 URL。 使用 Azure 虚拟桌面需要取消阻止这些 URL。
 
 若要解决此问题，请验证防火墙和/或 DNS 设置是否未阻止这些 URL：
-1. [使用 Azure 防火墙保护 Azure 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
+1. [使用 Azure 防火墙保护 Azure 虚拟桌面部署](../firewall/protect-azure-virtual-desktop.md)。
 2. 配置 [Azure 防火墙 DNS 设置](../firewall/dns-settings.md)。
 
 ## <a name="error-3019"></a>错误：3019
@@ -243,7 +243,7 @@ Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostp
 3. 转到“控制面板”   > “程序”   > “程序和功能”  。
 4. 卸载远程桌面服务 SxS 网络堆栈的最新版本或“HKEY_LOCAL_MACHINE” > “SYSTEM” > “CurrentControlSet” > “Control” > “Terminal Server” > “WinStations”中“ReverseConnectListener”下列出的版本       。
 5. 以管理员身份打开控制台窗口并转到“Program Files” > “Microsoft RDInfra” 。
-6. 选择“SxSStack”组件或运行“msiexec /i SxsStack-<version>.msi”命令来安装该 MSI 。
+6. 选择“SxSStack”组件或运行 `msiexec /i SxsStack-<version>.msi` 命令来安装 MSI 。
 8. 重新启动 VM。
 9. 返回到命令提示并运行“qwinsta”命令。
 10. 验证步骤 6 中安装的堆栈组件的旁边是否显示“侦听”。
@@ -353,7 +353,7 @@ VM 的名称已经注册，可能是重复的。
 2. 右键单击下载的代理和启动加载程序安装程序。
 3. 选择“属性”。
 4. 选择“取消阻止”。
-5. 选择“确定”  。
+5. 选择“确定”。
 6. 运行代理安装程序。
 7. 在安装程序要求提供注册令牌时，请从剪贴板粘贴注册密钥。 
 
@@ -381,5 +381,5 @@ VM 的名称已经注册，可能是重复的。
 - 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-monitor/essentials/activity-log.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

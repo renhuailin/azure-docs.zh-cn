@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 07b106630cffae75c5e4588d14de7ae938945614
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7d2f09d3990f9e71e55b29b1eac771266627237a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534114"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791282"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>有关 Azure 资源的托管标识的常见问题解答 - Azure AD
 
@@ -38,11 +38,12 @@ ms.locfileid: "107534114"
 az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
 ```
 
+### <a name="what-azure-rbac-permissions-are-required-to-work-with-managed-identities"></a>使用托管标识时需要哪些 Azure RBAC 权限？ 
 
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>在资源上进行标识托管需要什么 Azure RBAC 权限？ 
-
-- 系统分配的托管标识：需要针对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 此操作包含在特定于资源的内置角色（如[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)）中。
-- 用户分配的托管标识：需要对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 除了针对托管标识分配的[托管标识操作员](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色外。
+- 系统分配的托管标识：需要针对资源的写入权限。 例如，对于虚拟机，你需要 `Microsoft.Compute/virtualMachines/write`。 此操作包含在特定于资源的内置角色（如[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)）中。
+- 将用户分配的托管标识分配给资源：需要有资源的写入权限。 例如，对于虚拟机，你需要 `Microsoft.Compute/virtualMachines/write`。 还需要对用户分配的标识执行 `Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action` 操作。 此操作包含在[托管标识操作员](../../role-based-access-control/built-in-roles.md#managed-identity-operator)内置角色中。
+- 管理用户分配的标识：若要创建或删除用户分配的托管标识，你需要[托管标识参与者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色分配。
+- 管理托管标识的角色分配：对于你将向其授予访问权限的资源，你需要[所有者](../../role-based-access-control/built-in-roles.md#all)或[用户访问管理员](../../role-based-access-control/built-in-roles.md#all)角色分配。 对于使用系统分配的标识的资源，或者对于会被授予角色分配的用户分配的标识，你需要[读取者](../../role-based-access-control/built-in-roles.md#all)角色分配。 如果没有读取访问权限，则可以按“用户、组或服务主体”进行搜索，以便查找标识的后备服务主体，而不是在添加角色分配时按托管标识进行搜索。 [详细了解如何分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>如何阻止创建用户分配的托管标识？
 

@@ -4,15 +4,15 @@ description: 有关 Azure Object Anchors 服务的常见问题解答。
 author: craigktreasure
 manager: vriveras
 ms.author: crtreasu
-ms.date: 04/01/2020
+ms.date: 09/10/2021
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: cb64f2be26abc1d3ccaf80b90a85f279c7930c94
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 18069157b4c7f38216c01649a33ed5f999dc7577
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114710730"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638380"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>有关 Azure Object Anchors 的常见问题解答
 
@@ -45,13 +45,9 @@ A：模型文件大小应小于 150 MB。 有关详细信息，请参阅[资产�
 
 答：当前支持 `fbx`、`ply`、`obj`、`glb` 和 `gltf` 文件类型。 有关详细信息，请参阅[资产要求](overview.md)。
 
-**问：模型转换服务需要的重力方向和单位是什么？如何计算？**
+**问：模型转换服务需要的重力方向和单位是什么？**
 
-答：引力方向是指向地球的向下矢量。 对于 CAD 模型，引力方向通常与向上方向相反。 例如，在许多情况下，+Z 表示向上，其中 -Z 或 `Vector3(0.0, 0.0, -1.0)` 表示重力方向。 确定重力时，不仅应考虑模型，还应考虑模型在运行时期间显示的方向。 如果尝试在现实世界的一个平面上检测椅子，重力可能是 `Vector3(0.0, 0.0, -1.0)`。 但是，如果椅子位于 45 度的斜面上，则重力可能是 `Vector3(0.0, -Sqrt(2)/2, -Sqrt(2)/2)`。
-
-重力方向可以通过 3D 渲染工具进行推理，例如 [MeshLab](http://www.meshlab.net/)。
-
-单位表示模型的度量单位。 可以使用 **Microsoft.Azure.ObjectAnchors.Conversion.AssetLengthUnit** 枚举找到支持的单位。
+**答：** 重力方向是指向地球的向下矢量，度量单位表示模型的标度。 转换模型时，必须[确保重力方向和资产尺寸单位正确无误](./troubleshoot/object-detection.md#ensure-the-gravity-direction-and-asset-dimension-unit-are-correct)。
 
 **问：转换 CAD 模型需要多长时间？**
 
@@ -73,7 +69,8 @@ A：模型文件大小应小于 150 MB。 有关详细信息，请参阅[资产�
 
 问：在 HoloLens 上检测对象需要多长时间？
 
-答：这取决于对象大小以及扫描进程。 若要获得更快的检测，请尝试遵循最佳做法进行全面扫描。 对于每个维度中 2 米以内的小型对象，可能会在几秒内检测到。 对于较大对象（如汽车），用户应绕着对象走一圈才能获得可靠检测，这意味着检测可能需要几十秒。
+答：这取决于对象大小以及扫描进程。 若要获得更快的检测，请尝试遵循最佳做法进行全面扫描。
+对于每个维度中 2 米以内的小型对象，可能会在几秒内检测到。 对于较大对象（如汽车），用户应绕着对象走一圈才能获得可靠检测，这意味着检测可能需要几十秒。
 
 问：在 HoloLens 应用程序中使用 Object Anchors 的最佳做法是什么？
 
@@ -95,7 +92,7 @@ A：模型文件大小应小于 150 MB。 有关详细信息，请参阅[资产�
 
 问：估计姿态的准确性如何？
 
-答：这取决于对象的大小、材质、环境等。对于小型对象，估计姿态误差在 2 厘米内。 对于大型对象（如汽车），误差最多可达 2-8 厘米。
+**答：** 这取决于对象的大小、材质、环境等。对于小型对象，估计姿态误差在 2 厘米内。 对于大型对象（如汽车），误差最多可达 2-8 厘米。
 
 问：Object Anchors 是否可以处理移动对象？
 
@@ -105,35 +102,21 @@ A：模型文件大小应小于 150 MB。 有关详细信息，请参阅[资产�
 
 答：可以处理部分，具体取决于对象形状或几何形状因变形或接合而改变的程度。 如果对象的几何形状变化幅度很大，用户可以为该配置创建另一个模型，然后将其用于检测。
 
-问：Object Anchors 可以同时检测多少个不同对象？
+**问：Object Anchors 可以同时检测多少个不同模型？**
 
-答：目前支持一次检测单个对象模型。
+**答：** 为确保最佳用户体验，我们目前支持一次检测三个模型，但不强制实施限制。
 
 问：Object Anchors 是否可以检测到同一对象模型的多个实例？
 
-答：是的，可以检测到最多 3 个同一模型类型的对象。 应用程序可以通过不同的查询多次调用 `ObjectObserver.DetectAsync` 来检测同一模型的多个实例。
+**答：** 可以。为确保最佳用户体验，我们支持检测最多三个相同模型类型的实例，但不强制实施限制。 你可以在每个搜索区域检测一个对象实例。 通过调用 `ObjectQuery.SearchAreas.Add`，可以向查询添加更多搜索区域，以检测更多实例。 你可以对多个查询调用 `ObjectObserver.DetectAsync` 来检测多个模型。
 
 问：如果 Object Anchors 运行时无法检测到我的对象，我该怎么办？
 
-**答:**
-
-* 通过添加一些海报，确保房间具有足够纹理。
-* 更全面地扫描对象。
-* 按如下所述调整模型参数。
-* 提供一个紧密的边界框作为搜索区域，包括对象的全部或大部分。
-* 清除空间映射缓存并重新扫描对象。
-* 捕获诊断并将数据发送给我们。
-* 调整 `MinSurfaceCoverage` 类中的 `ObjectQuery` 属性。 有关详细信息，请参阅[如何检测难以检测的对象](detect-difficult-object.md)。
+**答：** 有许多因素可能会导致无法正确检测对象：环境、模型转换配置、查询设置等。 详细了解如何[排查对象检测问题](./troubleshoot/object-detection.md)。
 
 问：如何选择对象查询参数？
 
-**答:**
-
-* 提供严格的搜索区域，理想情况下涵盖完整的对象以提高检测速度和准确性。
-* 对象模型中的默认 `ObjectQuery.MinSurfaceCoverage` 通常良好，否则请使用较小的值来快速检测。
-* 如果预计对象是直立的，则使用 `ObjectQuery.ExpectedMaxVerticalOrientationInDegrees` 较小值。
-* 应用应始终使用 `1:1` 对象模型进行检测。 估计的数值范围应接近 1，理想情况下误差不超过 1%。 应用可以将 `ObjectQuery.MaxScaleChange` 设置为 `0` 或 `0.1`，以禁用或启用小数位数估算，并定性评估实例姿态。
-* 有关详细信息，请参阅[如何检测难以检测的对象](detect-difficult-object.md)。
+**答：** 这里有一些[常规指南](./troubleshoot/object-detection.md#adjust-object-query-values)，以及针对[难以检测的对象](./detect-difficult-object.md)的更详细的指南。
 
 问：如何从 HoloLens 获取 Object Anchors 诊断数据？
 
@@ -153,7 +136,7 @@ A：模型文件大小应小于 150 MB。 有关详细信息，请参阅[资产�
 
 问：是否可以在没有 Internet 连接的情况下使用 Object Anchors？
 
-**答:** 
+**答:**
 * 模型转换和训练需要连接，因为此操作在云中进行。
 * 运行时会话完全在设备上，无需连接，因为所有计算都在 HoloLens 2 上发生。
 
@@ -161,3 +144,14 @@ A：模型文件大小应小于 150 MB。 有关详细信息，请参阅[资产�
 问：Azure Object Anchors 如何存储数据？
 
 答：我们仅存储系统元数据，它使用 Microsoft 管理的数据加密密钥进行静态加密。
+
+## <a name="next-steps"></a>后续步骤
+
+本文介绍了一些常见问题的答案，让你可以在使用 Azure Object Anchors 时获得最佳结果。
+下面是一些相关文章：
+
+> [!div class="nextstepaction"]
+> [最佳做法](./best-practices.md)
+
+> [!div class="nextstepaction"]
+> [排查物体检测问题](./troubleshoot/object-detection.md)

@@ -1,32 +1,32 @@
 ---
 title: 使用存储过程活动转换数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 说明如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库/数据仓库中的存储过程。
+description: 说明如何使用 SQL Server 存储过程活动从 Azure 数据工厂或 Synapse Analytics 管道调用 Azure SQL 数据库/数据仓库中的存储过程。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 11/27/2018
-ms.openlocfilehash: c3815bfca83d6dcf789a780a2d82ff1d4bb62285
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: d2dacc3379d1587352c7593c3766294613229fad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271975"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798344"
 ---
-# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
+# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory-or-synapse-analytics"></a>在 Azure 数据工厂或 Synapse Analytics 中使用 SQL Server 存储过程活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-stored-proc-activity.md)
 > * [当前版本](transform-data-using-stored-procedure.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-可使用数据工厂[管道](concepts-pipelines-activities.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是数据工厂支持的转换活动之一。 本文基于[转换数据](transform-data.md)一文编写，它概述了数据转换和数据工厂中支持的转换活动。
+可使用数据工厂或 Synapse Analytics [管道](concepts-pipelines-activities.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是管道支持的转换活动之一。 本文基于[转换数据](transform-data.md)一文编写，它概述了数据转换和支持的转换活动。
 
 > [!NOTE]
-> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习以下教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
+> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习以下教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。  若要详细了解 Synapse Analytics，请阅读[什么是 Azure Synapse Analytics](../synapse-analytics/overview-what-is.md)。
 
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程： 
 
@@ -76,7 +76,7 @@ ms.locfileid: "122271975"
 | storedProcedureParameters | 指定存储过程的参数值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 传递数据源支持的参数值及其类型。 如果需要为参数传递 null，请使用 `"param1": { "value": null }`（全部小写）。 | 否       |
 
 ## <a name="parameter-data-type-mapping"></a>参数数据类型映射
-为参数指定的数据类型是 Azure 数据工厂类型，该类型映射到正在使用的数据源中的数据类型。 可以在连接器文档中找到所述数据源的数据类型映射。 例如：
+为参数指定的数据类型是映射到你使用的数据源中的数据类型的内部服务类型。 可以在连接器文档中找到所述数据源的数据类型映射。 例如：
 
 - [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#data-type-mapping-for-azure-synapse-analytics)
 - [Azure SQL 数据库数据类型映射](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Achieve3000 集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 Achieve3000 集成
 description: 了解如何在 Azure Active Directory 和 Achieve3000 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 09/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 9af00fef9c15ada44a5475bb419387b32b06d139
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92a6d77820e1b37d98b005ecc9be4750f73a1a31
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92313362"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647891"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-achieve3000"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Achieve3000 集成
+# <a name="tutorial-azure-ad-sso-integration-with-achieve3000"></a>教程：Azure AD SSO 与 Achieve3000 集成
 
 在本教程中，了解如何将 Achieve3000 与 Azure Active Directory (Azure AD) 集成。 将 Achieve3000 与 Azure AD 集成后，可以：
 
 * 在 Azure AD 中控制谁有权访问 Achieve3000。
 * 让用户使用其 Azure AD 帐户自动登录到 Achieve3000。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,27 +37,27 @@ ms.locfileid: "92313362"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Achieve3000 支持 **SP** 发起的 SSO
+* Achieve3000 支持 SP 发起的 SSO。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-achieve3000-from-the-gallery"></a>从库中添加 Achieve3000
+## <a name="add-achieve3000-from-the-gallery"></a>从库中添加 Achieve3000
 
 若要配置 Achieve3000 与 Azure AD 的集成，需从库中将 Achieve3000 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Achieve3000”。
 1. 从结果面板中选择“Achieve3000”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-achieve3000"></a>配置和测试 Achieve3000 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-achieve3000"></a>配置并测试 Achieve3000 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置和测试 Achieve3000 的 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 Achieve3000 相关用户之间建立关联。
 
-若要配置和测试 Achieve3000 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Achieve3000 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -72,17 +70,17 @@ ms.locfileid: "92313362"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Achieve3000”应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在 Azure 门户的“Achieve3000”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://saml.achieve3000.com/district/<District Identifier>` 
+    a. 在“标识符(实体 ID)”文本框中，键入值：`achieve3000-saml`
 
-    b. 在“标识符(实体 ID)”文本框中，键入值：`achieve3000-saml`
+    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://saml.achieve3000.com/district/<District Identifier>` 
 
     > [!NOTE]
     > 登录 URL 值不是真实值。 请使用实际登录 URL 更新此值。 联系 [Achieve3000 客户端支持团队](https://www.achieve3000.com/contact-us/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -124,13 +122,7 @@ ms.locfileid: "92313362"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“Achieve3000”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。
@@ -145,16 +137,14 @@ ms.locfileid: "92313362"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中单击“Achieve3000”磁贴时，应会自动登录到设置了 SSO 的 Achieve3000。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这将重定向到 Achieve3000 登录 URL，你可以从那里启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 Achieve3000 登录 URL，并从那里启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Achieve3000”磁贴时，会重定向到 Achieve3000 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [在 Azure AD 中试用 Achieve3000](https://aad.portal.azure.com/)
+配置 Achieve3000 后，即可强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 03/17/2021
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4d37cabb8b74fea3a72ddafdf3322d20379f8d29
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: c0c436a2e36edbd6feb433074efc2d746ee38f18
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860981"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091818"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中的专用 SQL 池的最佳做法
 
-本文提供了一系列最佳做法，有助于你在 Azure Synapse Analytics 中实现专用 SQL 池的最佳性能。 下面你将找到构建解决方案时需要关注的基本指南和重要领域。 每部分都介绍了一个概念，并为你指出了更深入介绍该概念的更详细的文章。
+本文提供了一系列最佳做法，有助于你在 Azure Synapse Analytics 中实现专用 SQL 池的最佳性能。  如果正在使用无服务器 SQL 池，请参阅[无服务器 SQL 池的最佳做法](best-practices-serverless-sql-pool.md)以获取具体指导。你将在下面找到基本指导和构建解决方案时需要关注的重要方面。 每部分都介绍了一个概念，并为你指出了更深入介绍该概念的更详细的文章。
 
 ## <a name="dedicated-sql-pools-loading"></a>专用 SQL 池加载
 
@@ -39,12 +39,11 @@ ms.locfileid: "121860981"
 
 有关统计信息的其他信息，请参阅[管理表统计信息](develop-tables-statistics.md)、[CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) 和 [UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) 文章。
 
-## <a name="tune-query-performance-with-new-product-enhancements"></a>利用新产品增强功能优化查询性能
+## <a name="tune-query-performance"></a>调整查询性能
 
 - [通过具体化视图进行性能优化](../sql-data-warehouse/performance-tuning-materialized-views.md)
 - [通过有序聚集列存储索引进行性能优化](../sql-data-warehouse/performance-tuning-ordered-cci.md)
 - [通过结果集缓存进行性能优化](../sql-data-warehouse/performance-tuning-result-set-caching.md)
-
 
 ## <a name="group-insert-statements-into-batches"></a>将 INSERT 语句分组为批
 
@@ -79,7 +78,7 @@ Polybase 不是查询的最佳选项。 专用 SQL 池的 Polybase 表目前只�
 
 ## <a name="hash-distribute-large-tables"></a>哈希分布大型表
 
-默认情况下，表是以轮循机制分布的。   此默认设置让用户可以轻松开始创建表，而不必确定表的分布方式。 轮循机制表的性能应可满足某些工作负载的要求。 但在大多数情况下，分布列提供的性能更好。  
+默认情况下，表是以轮循机制分布的。 此默认设置让用户可以轻松开始创建表，而不必确定表的分布方式。 轮循机制表的性能应可满足某些工作负载的要求。 但在大多数情况下，分布列提供的性能更好。  
 
 按列分布的表的性能高于轮循机制表的最常见例子是联接两个大型事实表。  
 
@@ -205,4 +204,3 @@ SQL 池使用资源组作为将内存分配给查询的一种方式。 最初，
 
 我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  如果你更喜欢在 Stack Overflow 上提问，还可以访问 [Azure Synapse Analytics Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-synapse)。
 
-对于功能请求，请使用 [Azure Synapse Analytics 反馈](https://feedback.azure.com/forums/307516-sql-data-warehouse)页面。  添加请求或对其他请求投赞成票有助于我们将重点放在最需要的功能上。

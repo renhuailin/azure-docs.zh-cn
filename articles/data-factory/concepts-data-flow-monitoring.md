@@ -1,46 +1,46 @@
 ---
 title: 监视映射数据流
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 如何以可视化方式监视 Azure 数据工厂中的映射数据流
+description: 如何以可视化方式监视 Azure 数据工厂和 Synapse Analytics 中的映射数据流
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 06/18/2021
-ms.openlocfilehash: b64ed4b59c2aba13640dec2f19dfa4e42696ce59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: a86faad201b2a00e288cd20c34b7e44152baac58
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638930"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812043"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-完成数据流的生成和调试之后，需要在管道上下文中将数据流安排为按计划执行。 可以使用触发器从 Azure 数据工厂计划管道。 要测试和调试管道中的数据流，可以使用工具栏功能区上的“调试”按钮或 Azure 数据工厂管道生成器中的“立即触发”选项来执行单次运行，以测试管道上下文中的数据流。
+完成数据流的生成和调试之后，需要在管道上下文中将数据流安排为按计划执行。 可以使用触发器来调控管道。 要测试和调试管道中的数据流，可以使用工具栏功能区上的“调试”按钮或管道生成器中的“立即触发”选项来执行单次运行，以测试管道上下文中的数据流。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4P5pV]
 
-执行管道时，可以监视该管道及其包含的所有活动，包括数据流活动。 在 Azure 数据工厂 UI 的左侧面板中单击监视图标。 可以看到下面所示的屏幕。 使用突出显示的图标可以深入到管道中的活动，包括数据流活动。
+执行管道时，可以监视该管道及其包含的所有活动，包括数据流活动。 在左侧 UI 面板中单击监视图标。 可以看到下面所示的屏幕。 使用突出显示的图标可以深入到管道中的活动，包括数据流活动。
 
-![屏幕截图显示了为管道选择以获取详细信息的图标。](media/data-flow/monitor-new-001.png "数据流监视")
+:::image type="content" source="media/data-flow/monitor-new-001.png" alt-text="屏幕截图显示了为管道选择以获取详细信息的图标。":::
 
 还可以看到此级别的统计信息，包括运行次数和状态。 活动级别的运行 ID 不同于管道级别的运行 ID。 上一级别的运行 ID 适用于管道。 选择眼镜图标可以查看有关数据流执行的深入详细信息。
 
-![屏幕截图显示了查看数据流执行详细信息的眼镜图标。](media/data-flow/monitoring-details.png "数据流监视")
+:::image type="content" source="media/data-flow/monitoring-details.png" alt-text="屏幕截图显示了查看数据流执行详细信息的眼镜图标。":::
 
 在图形节点监视视图中，可以看到数据流图形的简化只读版本。 若要查看包含转换阶段标签的较大图形节点的详细信息视图，请使用画布右侧的缩放滑块。 还可使用右侧的搜索按钮在图中查找部分数据流逻辑。
 
-![屏幕截图显示图形的仅查看版本。](media/data-flow/mon003.png "数据流监视")
+:::image type="content" source="media/data-flow/mon003.png" alt-text="屏幕截图显示图形的仅查看版本。":::
 
 ## <a name="view-data-flow-execution-plans"></a>查看数据流执行计划
 
-在 Spark 中执行数据流时，Azure 数据工厂会根据数据流的完整性确定最佳代码路径。 此外，执行路径可能出现在不同的横向扩展节点和数据分区上。 因此，监视图形表示流的设计，它考虑到了转换的执行路径。 选择单个节点时，可以看到表示在群集上一起执行过的代码的“阶段”。 你看到的计时和计数表示这些组或阶段，而不是设计中的单个步骤。
+在 Spark 中执行数据流时，该服务会根据数据流的完整性确定最佳代码路径。 此外，执行路径可能出现在不同的横向扩展节点和数据分区上。 因此，监视图形表示流的设计，它考虑到了转换的执行路径。 选择单个节点时，可以看到表示在群集上一起执行过的代码的“阶段”。 你看到的计时和计数表示这些组或阶段，而不是设计中的单个步骤。
 
-![屏幕截图显示了数据流页面。](media/data-flow/monitor-new-005.png "数据流监视")
+:::image type="content" source="media/data-flow/monitor-new-005.png" alt-text="屏幕截图显示了数据流页面。":::
 
 * 在监视窗口中选择空白区域时，底部窗格中的统计信息会显示每个接收器的计时和行数，以及生成转换沿袭的接收器数据的转换。
 
@@ -61,13 +61,13 @@ ms.locfileid: "122638930"
   * 群集启动时间：为数据流执行获取 JIT Spark 计算环境所需的时间量
   * 转换次数：在流中执行的转换步骤数
   
-![屏幕截图显示了“刷新”选项。](media/data-flow/monitornew.png "数据流监视（新）")
+:::image type="content" source="media/data-flow/monitornew.png" alt-text="屏幕截图显示了“刷新”选项。":::
 
 ## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>总接收器处理时间与转换处理时间
 
 每个转换阶段都包括在每个分区执行时间汇总后完成该阶段的总时间。 单击接收器时，将显示“接收器处理时间”。 此时间包括转换时间总计加上将数据写入目标存储所花费的 I/O 时间。 接收器处理时间与转换总时间之间的差异是写入数据的 I/O 时间。
 
-如果在 ADF 管道监视视图中打开数据流活动的 JSON 输出，则还可以查看每个分区转换步骤的详细计时。 JSON 包含每个分区的毫秒计时，而 UX 监视视图是添加在一起的分区的聚合计时：
+如果在管道监视视图中打开数据流活动的 JSON 输出，则还可以查看每个分区转换步骤的详细计时。 JSON 包含每个分区的毫秒计时，而 UX 监视视图是添加在一起的分区的聚合计时：
 
 ```
  {
@@ -98,16 +98,16 @@ ms.locfileid: "122638930"
 
 在数据流接收器中启用错误行处理将反映在监视输出中。 将接收器设置为“出错时报告成功”时，如果单击接收器监视节点，监视输出将显示成功和失败行数。
 
-![屏幕截图显示了错误行。](media/data-flow/error-row-2.png "错误行监视成功")
+:::image type="content" source="media/data-flow/error-row-2.png" alt-text="屏幕截图显示了错误行。":::
 
 选择“出错时报告失败”时，相同的输出将仅显示在活动监视输出文本中。 这是因为数据流活动将返回执行失败，详细监视视图将不可用。
 
-![屏幕截图显示了活动中的错误行。](media/data-flow/error-rows-4.png "错误行监视失败")
+:::image type="content" source="media/data-flow/error-rows-4.png" alt-text="屏幕截图显示了活动中的错误行。":::
 
 ## <a name="monitor-icons"></a>监视图标
 
 此图标表示转换数据已在群集中缓存，因此计时和执行路径已考虑到这种情况：
 
-![屏幕截图显示了磁盘图标。](media/data-flow/mon005.png "数据流监视")
+:::image type="content" source="media/data-flow/mon005.png" alt-text="屏幕截图显示了磁盘图标。":::
 
 在转换中还会看到绿色的圆圈图标。 它们表示数据流入的接收器数目。

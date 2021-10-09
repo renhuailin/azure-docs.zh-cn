@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/10/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 2a76ee1c5009091247d9629bdbb0edc0b8c8a217
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d1a46cd010f0a629e787a7ebabcfe002837b7ad3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738074"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811165"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure 防火墙高级版功能
 
@@ -47,7 +47,7 @@ Azure 防火墙高级版终止出站和东-西 TLS 连接。 允许端到端加�
 
 网络入侵检测和防护系统 (IDPS) 使你可以监视网络是否出现恶意活动，记录有关此活动的信息，予以报告，选择性地尝试阻止。 
 
-Azure 防火墙高级版提供基于签名的 IDPS，允许通过查找特定模式（例如网络流量中的字节序列或恶意软件使用的已知恶意指令序列）来快速检测攻击。 IDPS 签名适用于应用程序和网络级别流量（第 4-7 层），它们是完全托管的，并会持续更新。 IDPS 可应用于入站流量、分支到分支（东-西）流量和出站流量。
+Azure 防火墙高级版提供基于签名的 IDPS，允许通过查找特定模式（例如网络流量中的字节序列或恶意软件使用的已知恶意指令序列）来快速检测攻击。 IDPS 签名同时适用于应用程序和网络级别流量（第 4-7 层），它们是完全托管的，并会持续更新。 IDPS 可应用于入站流量、分支到分支（东-西）流量和出站流量。
 
 Azure 防火墙签名/规则集包括：
 - 侧重于对实际恶意软件、命令和控制、攻击工具包以及传统防护方法遗漏的疯狂恶意活动进行指纹识别。
@@ -144,7 +144,7 @@ Azure 防火墙高级版存在以下已知问题：
 |客户端证书 (TLS)|客户端证书用于在客户端与服务器之间建立相互的身份信任。 TLS 协商期间使用客户端证书。 Azure 防火墙会重新协商与服务器的连接，并且无权访问客户端证书的私钥。|无|
 |QUIC/HTTP3|QUIC 是 HTTP 的新的主版本。 它是基于 UDP 的通过 80 (PLAN) 和 443 (SSL) 端口的协议。 将不支持 FQDN/URL/TLS 检查。|配置作为网络规则传递 UDP 80/443。|
 不受信任的客户签名证书|一旦从基于 Intranet 的 Web 服务器接收客户签名的证书，防火墙将不信任它们。|我们正在研究修复措施。
-|使用适于 HTTP 的 IDPS 的警报中源 IP 地址错误（未经 TLS 检查）。|当使用纯文本 HTTP 流量，IDPS 发出新的警报，并且目标是公用的 IP 地址时，显示的源 IP 地址错误（显示内部 IP 地址，而不是原始 IP 地址）。|我们正在研究修复措施。|
+|使用适于 HTTP 的 IDPS 的警报中源 IP 地址错误（未经 TLS 检查）。|当正在使用纯文本 HTTP 流量，IDPS 发出新的警报，并且目标是公共 IP 地址时，显示的源 IP 地址错误（显示内部 IP 地址，而不是原始 IP 地址）。|我们正在研究修复措施。|
 |证书传播|将 CA 证书应用于防火墙后，证书可能需要 5 到 10 分钟生效。|我们正在研究修复措施。|
 |TLS 1.3 支持|TLS 1.3 部分受支持。 从客户端到防火墙的 TLS 隧道基于 TLS 1.2，从防火墙到外部 Web 服务器的 TLS 隧道基于 TLS 1.3。|正在调查更新。|
 |KeyVault 专用终结点|KeyVault 支持专用终结点访问以限制其网络曝光。 如果按照 [KeyVault 文档](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)中的说明配置了例外，则受信任的 Azure 服务可以绕过此限制。 Azure 防火墙当前未列为受信任服务，因此无法访问 Key Vault。|我们正在研究修复措施。|

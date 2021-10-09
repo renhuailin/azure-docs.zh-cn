@@ -1,18 +1,20 @@
 ---
-title: 使用 Azure CLI 和模板部署资源
-description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
+title: Azure 部署模板和 Azure CLI - Azure 资源管理器 | Microsoft Docs
+description: 使用 Azure 资源管理器和 Azure CLI 创建资源组并将其部署到 Azure。 这些资源在 Azure 部署模板中定义。
 ms.topic: conceptual
-ms.date: 07/15/2021
-ms.openlocfilehash: 8ecb8bb2e6b24571d91e97157ff91ba931b0719d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: Azure CLI 部署 ARM 模板，创建资源组 Azure，Azure 部署模板，部署资源，ARM 模板，Azure ARM 模板
+ms.openlocfilehash: 5b7734e3b91f7e842f17888f3f3c67d05655fc97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296766"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585007"
 ---
-# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
+# <a name="how-to-use-azure-resource-manager-arm-deployment-templates-with-azure-cli"></a>如何在 Azure CLI 中使用 Azure 资源管理器 (ARM) 部署模板
 
-本文介绍了如何将 Azure CLI 与 Azure 资源管理器模板（ARM 模板）配合使用，以便将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
+本文介绍了如何将 Azure CLI 与 Azure 资源管理器模板（ARM 模板）配合使用，以便将资源部署到 Azure。  如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
 
 部署命令在 Azure CLI 版本 2.2.0 中已更改。 本文中的示例需要 [Azure CLI 2.20.0 或更高版本](/cli/azure/install-azure-cli)。
 
@@ -22,7 +24,7 @@ ms.locfileid: "114296766"
 
 ## <a name="deployment-scope"></a>部署范围
 
-可将部署目标设定为资源组、订阅、管理组或租户。 根据部署范围使用不同的命令。
+可将 Azure 部署模板设定为资源组、订阅、管理组或租户。 根据部署范围使用不同的命令。
 
 * 若要部署到资源组，请使用 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)：
 
@@ -58,7 +60,7 @@ ms.locfileid: "114296766"
 
 ## <a name="deploy-local-template"></a>部署本地模板
 
-可以部署本地计算机中的模板，也可以部署存储在外部的模板。 本节介绍如何部署本地模板。
+可以部署本地计算机中的 ARM 模板，也可以部署存储在外部的模板。 本节介绍如何部署本地模板。
 
 如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
 
@@ -76,7 +78,7 @@ az deployment group create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-部署可能需要几分钟才能完成。 完成之后，会看到一条包含以下结果的消息：
+Azure 部署模板可能需要几分钟才能完成。 完成之后，会看到一条包含以下结果的消息：
 
 ```output
 "provisioningState": "Succeeded",
@@ -118,9 +120,9 @@ az deployment group create \
 
 有关详细信息，请参阅[对链接模板使用相对路径](./linked-templates.md#linked-template)。
 
-## <a name="deployment-name"></a>部署名称
+## <a name="azure-deployment-template-name"></a>Azure 部署模板名称
 
-部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为“azuredeploy.json”的模板，但未指定部署名称，则该部署将命名为“`azuredeploy`”。
+部署 ARM 模板时，可以为 Azure 部署模板指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为“azuredeploy.json”的模板，但未指定部署名称，则该部署将命名为“`azuredeploy`”。
 
 每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
 
@@ -175,7 +177,7 @@ az deployment group create \
 
 ## <a name="preview-changes"></a>预览更改
 
-在部署模板之前，可以预览模板将对环境做出的更改。 使用[假设操作](./deploy-what-if.md)验证模板是否进行了预期的更改。 模拟操作还验证模板是否有错误。
+在部署 ARM 模板之前，可以预览模板将对环境做出的更改。 使用[假设操作](./deploy-what-if.md)验证模板是否进行了预期的更改。 模拟操作还验证模板是否有错误。
 
 ## <a name="parameters"></a>parameters
 

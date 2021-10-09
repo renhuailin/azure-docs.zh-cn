@@ -3,16 +3,17 @@ title: '教程：使用复制向导创建管道 '
 description: 在本教程中，通过使用数据工厂所支持的复制向导，创建带有复制活动的 Azure 数据工厂管道。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 16618276abc5e7933e5a434fd8537b09ad104d7b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 91951af14a24c29bc6d3247f333f73f3e225ba57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753400"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653469"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -43,13 +44,13 @@ ms.locfileid: "108753400"
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击左上角的“创建资源”，单击“数据 + 分析”，然后单击“数据工厂”。 
    
-   ![新建 -> DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
+   :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png" alt-text="“新建”->“数据工厂”":::
 2. 在“新建数据工厂”  边栏选项卡中：
    
    1. 输入 **ADFTutorialDataFactory** 作为 **名称**。
        Azure 数据工厂的名称必须全局唯一。 如果收到错误`Data factory name "ADFTutorialDataFactory" is not available`，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactoryYYYYMMDD），并重新尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
       
-       ![数据工厂名称不可用](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
+       :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png" alt-text="数据工厂名称不可用":::    
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一： 
       
@@ -61,10 +62,10 @@ ms.locfileid: "108753400"
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
    6. 单击“创建”。
       
-       ![“新建数据工厂”边栏选项卡](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
+       :::image type="content" source="media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png" alt-text="“新建数据工厂”边栏选项卡":::            
 3. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
    
-   ![数据工厂主页](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
+   :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png" alt-text="数据工厂主页":::
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
 1. 在“数据工厂”边栏选项卡上，单击“复制数据”以启动“复制向导”。  
@@ -78,10 +79,10 @@ ms.locfileid: "108753400"
    3. 更改“开始日期时间”和“结束日期时间”，使结束日期设置为当天，开始日期设置为五天前。   
    4. 单击“下一步”。  
       
-      ![复制工具 - 属性页](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
+      :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png" alt-text="复制工具 - 属性页"::: 
 3. 在“源数据存储”页上，单击“Azure Blob 存储”磁贴。  此页用于指定复制任务的源数据存储。 
    
-    ![复制工具 - 源数据存储页](./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png)
+    :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png" alt-text="复制工具 - 源数据存储页":::
 4. 在“指定 Azure Blob 存储帐户”  页上：
    
    1. 输入 **AzureStorageLinkedService** 作为 **链接服务名称**。
@@ -89,22 +90,22 @@ ms.locfileid: "108753400"
    3. 选择 **Azure 订阅**。  
    4. 从所选订阅的可用 Azure 存储帐户列表中，选择一个 **Azure 存储帐户**。 还可选择手动输入存储帐户设置，方法是在“帐户选择方法”中选择“手动输入”选项，并单击“下一步”。   
       
-      ![复制工具 - 指定 Azure Blob 存储帐户](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
+      :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png" alt-text="复制工具 - 指定 Azure Blob 存储帐户":::
 5. 在“选择输入文件或文件夹”  页上：
    
    1. 双击“adftutorial”（文件夹）。
    2. 选择“emp.txt”，并单击“选择” 
       
-      ![屏幕截图显示了输入文件的“选择”选项。](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
+      :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png" alt-text="屏幕截图显示了输入文件的“选择”选项。":::
 6. 在“选择输入文件或文件夹”页中，单击“下一步”。  请不要选择“二进制副本” 。 
    
-    ![屏幕截图显示了输入的“二进制副本”选项。](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
+    :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png" alt-text="屏幕截图显示了输入的“二进制副本”选项。"::: 
 7. 在“文件格式设置”页上，可以看到分隔符以及向导通过分析文件自动检测到的架构。 也可以手动输入分隔符，使复制向导停止自动检测或覆盖设置。 检查分隔符并预览数据之后，请单击“下一步”。 
    
-    ![复制工具 - 文件格式设置](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
+    :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png" alt-text="复制工具 - 文件格式设置":::  
 8. 在“目标数据存储”页上，选择“Azure SQL 数据库”，并单击“下一步”。 
    
-    ![复制工具 - 选择目标存储](./media/data-factory-copy-data-wizard-tutorial/choose-destination-store.png)
+    :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/choose-destination-store.png" alt-text="复制工具 - 选择目标存储":::
 9. 在“指定 Azure SQL 数据库”  页中：
    
    1. 在“连接名称”字段中输入 **AzureSqlLinkedService**。
@@ -114,31 +115,31 @@ ms.locfileid: "108753400"
    5. 输入 **用户名** 和 **密码**。
    6. 单击“下一步”。  
       
-      ![复制工具 - 指定 Azure SQL 数据库](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
+      :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png" alt-text="复制工具 - 指定 Azure SQL 数据库":::
 10. 在“表映射”页上，在“目标”字段中通过下拉列表中选择“emp”，单击 **向下箭头** 查看架构并预览数据（可选）。  
     
-     ![复制工具 - 表映射](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
+     :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png" alt-text="复制工具 - 表映射"::: 
 11. 在“架构映射”页上，单击“下一步”。 
     
-    ![复制工具 - 架构映射](./media/data-factory-copy-data-wizard-tutorial/schema-mapping-page.png)
+    :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/schema-mapping-page.png" alt-text="复制工具 - 架构映射":::
 12. 在“性能设置”页上，单击“下一步”。  
     
-    ![屏幕截图显示了“性能设置”页，你可以在其中选择“下一步”。](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
+    :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/performance-settings.png" alt-text="屏幕截图显示了“性能设置”页，你可以在其中选择“下一步”。":::
 13. 在“摘要”页中检查信息，并单击“完成”。  复制向导在数据工厂（即启动该向导的位置）中创建两个链接服务、两个数据集（输入和输出）和一个管道。 
     
-    ![屏幕截图显示了“摘要”页，你可以在其中选择“下一步”。](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
+    :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/summary-page.png" alt-text="屏幕截图显示了“摘要”页，你可以在其中选择“下一步”。":::
 
 ## <a name="launch-monitor-and-manage-application"></a>启动监视器和管理应用程序
 1. 在“部署”页上单击以下链接：`Click here to monitor copy pipeline`。
    
-   ![复制工具 - 部署成功](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
+   :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png" alt-text="复制工具 - 部署成功":::  
 2. 监视应用程序会在 Web 浏览器的单独选项卡中启动。   
    
-   ![监视应用](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)   
+   :::image type="content" source="./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png" alt-text="监视应用":::   
 3. 若要查看小时切片的最新状态，请单击“活动时段”列表底部的“刷新”按钮。  可以看到五个活动窗口，对应于管道开始时间和结束时间之间的五天。 列表不会自动刷新，因此可能需要单击“刷新”多次，才能看到所有活动窗口都处于“就绪”状态。 
 4. 在列表中选择一个活动窗口。 可以在右侧的 **活动窗口资源管理器** 中查看其详细信息。
 
-    ![活动窗口详细信息](media/data-factory-copy-data-wizard-tutorial/activity-window-details.png)    
+    :::image type="content" source="media/data-factory-copy-data-wizard-tutorial/activity-window-details.png" alt-text="活动窗口详细信息":::    
 
     请注意，11、12、13、14、15 这几个日期的颜色为绿色，表明已生成这些日期的每日输出切片。 也可在图示视图的管道和输出数据集上看到该颜色编码。 请注意，在上一步中，两个切片已生成，一个切片当前正在处理，还有两个切片正在等待处理（根据颜色编码判断）。 
 

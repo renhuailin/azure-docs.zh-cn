@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 05/31/2021
-ms.openlocfilehash: ed0560d85d267de90ff23d8aa66c1f628c90e3c6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c19bff913f38503dbd99f86757ad6cda0ee5cb5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967434"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658215"
 ---
 # <a name="azure-migrate-agentless-migration-of-vmware-virtual-machines"></a>使用 Azure Migrate 无代理迁移 VMware 虚拟机
 
@@ -60,7 +60,7 @@ Azure 组件：下表汇总了使用 VMware VM 无代理迁移方法时创建的
 | 服务总线 | 目标区域 | Azure Migrate 项目订阅 | 用于云服务与 Azure Migrate 设备之间的通信 |
 | 日志存储帐户 | 目标区域 | Azure Migrate 项目订阅 | 用于存储复制数据，该等数据由相关服务读取并将应用于客户的托管磁盘 |
 | 网关存储帐户 | 目标区域 | Azure Migrate 项目订阅 | 用于存储复制期间的计算机状态 |
-| 密钥保管库 | 目标区域 | Azure Migrate 项目订阅 | 管理日志存储帐户密钥，以及存储服务总线连接字符串 |
+| 密钥保管库 | 目标区域 | Azure Migrate 项目订阅 | 管理服务总线的连接字符串，以及日志存储帐户的访问密钥 |
 | Azure 虚拟机 | 目标区域 | 目标订阅 | 迁移时，在 Azure 中创建的 VM |
 | Azure 托管磁盘 | 目标区域 | 目标订阅 | 附加到 Azure VM 的托管磁盘 |
 | 网络接口卡数 | 目标区域 | 目标订阅 | 附加到在 Azure 中创建的 VM 的 NIC |
@@ -121,13 +121,12 @@ VM 在执行复制时，可能会出现以下几种状态：
 > [!Note]
 > 初始复制完成后，调度逻辑将有所变化。 初始复制完成后，立即安排进入第一个增量周期，后续周期则遵循上述调度逻辑。
 
-
 - 触发迁移后，系统将在迁移前，先对 VM 执行按需增量复制周期（预先进行增量复制周期故障转移）。
 
 **不同复制阶段的 VM 优先级**
 
 - 先处理正在进行的 VM 复制，再处理已安排的复制（新复制）
-- 一律最先执行预迁移（按需增量复制）周期，随后是初始复制周期， 最后执行增量复制周期。
+- 一律最先执行预故障转移（按需增量复制）周期，随后是初始复制周期， 最后执行增量复制周期。
 
 也就是说，每当触发迁移操作时，即会安排 VM 执行按需复制周期，而此时正在进行的其他复制也不得与之争用资源。
 
@@ -146,7 +145,7 @@ Azure Migrate 支持并发复制 500 台虚拟机。 如果你计划复制超过
 ![横向扩展配置。](./media/concepts-vmware-agentless-migration/scale-out-configuration.png)
 
 
-在配置主设备直到能够并发复制 300 台 VM 时，你即可随时部署横向扩展设备。 不过，若要并发复制 300 台 VM，则必须先部署横向扩展设备方可继续。
+在配置主设备（但并非必需）直到能够并发复制 300 台 VM 时，你即可随时部署横向扩展设备。 不过，若要并发复制 300 台 VM，则必须先部署横向扩展设备方可继续。
 
 ## <a name="stop-replication"></a>停止复制
 
@@ -173,7 +172,7 @@ Azure Migrate 支持并发复制 500 台虚拟机。 如果你计划复制超过
 
 可按如下所示在 Azure Migrate 设备上创建一个策略，以限制来自设备的复制流量：
 
-```New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB```
+`New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB`
 
 > [!NOTE]
 > 这适用于使用 Azure Migrate 设备同时进行复制的所有 VM。
@@ -182,7 +181,7 @@ Azure Migrate 支持并发复制 500 台虚拟机。 如果你计划复制超过
 
 ### <a name="blackout-window"></a>中断窗口
 
-Azure Migrate 提供一种基于配置的机制，客户可以通过该机制指定中止任何复制的时间间隔。 此时间间隔即称为“中断窗口”。 许多方案都需要中断窗口，例如源环境受资源限制、客户希望只在非营业时间进行复制等情况。
+Azure Migrate 提供一种基于配置的机制，客户可以通过该机制指定中止任何复制的时间间隔。 此时间间隔即称为“中断窗口”。 许多方案都需要中断窗口，例如源环境受资源限制，或者客户希望只在非营业时间进行复制等情况。
 
 > [!NOTE]
 > 在中断窗口开始时，当前仍在进行的复制周期将在复制暂停前完成。

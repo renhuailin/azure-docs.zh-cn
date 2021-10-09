@@ -7,32 +7,22 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.date: 07/01/2021
+ms.subservice: automl
+ms.date: 09/27/2021
 ms.topic: how-to
-ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack
-ms.openlocfilehash: 2da9b19bb0d2bcdf09cb478898590d55398b2cc9
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
+ms.openlocfilehash: 340c558d695a9a63bc5fe818e48b6f6ed76df144
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180067"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429160"
 ---
 # <a name="set-up-automl-training-with-python"></a>使用 Python 设置自动化机器学习训练
 
-在本指南中，了解如何使用 Azure 机器学习自动化机器学习将自动化机器学习训练设置为通过 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 来运行。 自动化 ML 将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置这些类型的试验。
+在本指南中，了解如何使用 Azure 机器学习自动化机器学习将自动化机器学习训练设置为通过 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 来运行。 自动化 ML 将自动选择算法和超参数，并生成随时可用于部署的模型。 本指南提供了可用于配置自动化机器学习试验的各种选项的详细信息。
 
 有关端到端示例，请参阅[教程：自动化机器学习 - 训练回归模型](tutorial-auto-train-models.md)。
-
-自动化机器学习提供的配置选项：
-
-* 选择试验类型：分类、回归或时序预测
-* 数据源、格式和提取数据
-* 选择计算目标：本地或远程
-* 自动化机器学习试验设置
-* 运行自动化机器学习试验
-* 探索模型指标
-* 注册和部署模型
 
 如果你更喜欢无代码体验，还可以 [在 Azure 机器学习工作室中设置无代码自动化机器学习训练](how-to-use-automated-ml-for-ml-models.md)。
 
@@ -86,7 +76,8 @@ Azure 机器学习数据集公开的功能可以：
 from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
-  ```
+```
+
 **对于本地计算试验**，我们建议使用 pandas 数据帧以提高处理速度。
 
   ```python
@@ -113,19 +104,19 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="large-data"></a>大型数据 
 
-自动化 ML 支持使用有限数量的算法针对大型数据进行训练，这样可以在小型虚拟机上成功生成大数据的模型。 自动化 ML 启发式方法取决于数据大小、虚拟机内存大小、试验超时和特征化设置等属性，以确定是否应该应用这些大型数据算法。 [详细了解自动化 ML 支持哪些模型](#supported-models)。 
+自动化 ML 支持使用有限数量的算法针对大型数据进行训练，以便在小型虚拟机上成功生成大数据的模型。 自动化 ML 启发式方法依据数据大小、虚拟机内存大小、试验超时和特征化设置等属性来确定是否应该应用这些大型数据算法。 [详细了解自动化 ML 支持哪些模型](#supported-models)。 
 
-* 对于回归，[联机梯度下降回归量](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest)和[快速线性回归量](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)
+* 适用于回归的[联机梯度下降回归量](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest)和[快速线性回归量](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)
 
-* 对于分类，[平均感知器分类器](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)和[线性 SVM 分类器](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)；其中，线性 SVM 分类器同时具有大型数据和小型数据版本。
+* 适用于分类的[平均感知器分类器](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)和[线性 SVM 分类器](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)；其中，线性 SVM 分类器同时具有大型数据和小型数据版本。
 
 如果要替代这些启发式方法，请应用以下设置： 
 
 任务 | 设置 | 说明
 |---|---|---
-阻止数据流式处理算法&nbsp; | `AutoMLConfig` 对象中的 `blocked_models`，并列出不需要使用的模型。 | 导致运行失败或长时间运行
-使用数据流式处理算法&nbsp;&nbsp;&nbsp;| `AutoMLConfig` 对象中的 `allowed_models`，并列出需要使用的模型。| 
-使用数据流式处理算法&nbsp;&nbsp;&nbsp; <br> [（工作室 UI 试验）](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)|阻止除要使用的大数据算法之外的所有模型。 |
+阻止&nbsp;数据流式处理算法 | 在 `AutoMLConfig` 对象中使用 `blocked_models`，并列出不希望使用的模型。 | 导致运行失败或运行时间过长
+使用&nbsp;数据&nbsp;流式&nbsp;处理算法| 在 `AutoMLConfig` 对象中使用 `allowed_models`，并列出要使用的模型。| 
+使用&nbsp;数据&nbsp;流式&nbsp;处理算法 <br> [（工作室 UI 试验）](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)|阻止除要使用的大数据算法之外的所有模型。 |
 
 ## <a name="compute-to-run-experiment"></a>用于运行试验的计算环境
 
@@ -133,7 +124,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 * **本地** 台式机或便携式计算机等本地计算机 – 如果数据集较小，并且你仍然处于探索阶段，则通常使用此选项。 有关本地计算示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)。 
  
-* 云中的 **远程** 计算机 – [Azure 机器学习托管计算](concept-compute-target.md#amlcompute)是一个托管服务，可用于在 Azure 虚拟机的群集上训练机器学习模型。 
+* 云中的 **远程** 计算机 – [Azure 机器学习托管计算](concept-compute-target.md#amlcompute)是一个托管服务，可用于在 Azure 虚拟机的群集上训练机器学习模型。 计算实例也支持作为计算目标。
 
     有关使用 Azure 机器学习托管计算的远程示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)。 
 
@@ -145,42 +136,28 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 可以使用多个选项来配置自动化机器学习试验。 通过实例化 `AutoMLConfig` 对象来设置这些参数。 有关参数的完整列表，请参阅 [AutoMLConfig 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)。
 
-示例包括：
+以下示例是针对分类任务的。 该试验使用加权 AUC 作为[主要指标](#primary-metric)，并将试验超时设置为 30 分钟，且包含 2 折交叉验证。
 
-1. 使用 AUC 作为主要指标加权的分类实验，其中实验超时分钟数设置为 30 分钟，且包含 2 折交叉验证。
+```python
+    automl_classifier=AutoMLConfig(task='classification',
+                                   primary_metric='AUC_weighted',
+                                   experiment_timeout_minutes=30,
+                                   blocked_models=['XGBoostClassifier'],
+                                   training_data=train_data,
+                                   label_column_name=label,
+                                   n_cross_validations=2)
+```
+你还可以配置需要额外设置的预测任务。 有关更多详细信息，请参阅[为时序预测设置自动化机器学习](how-to-auto-train-forecast.md)一文。 
 
-   ```python
-       automl_classifier=AutoMLConfig(task='classification',
-                                      primary_metric='AUC_weighted',
-                                      experiment_timeout_minutes=30,
-                                      blocked_models=['XGBoostClassifier'],
-                                      training_data=train_data,
-                                      label_column_name=label,
-                                      n_cross_validations=2)
-   ```
-1. 下面是设置为 60 分钟后结束的回归试验示例，其中包含 5 折交叉验证。
-
-   ```python
-      automl_regressor = AutoMLConfig(task='regression',
-                                      experiment_timeout_minutes=60,
-                                      allowed_models=['KNN'],
-                                      primary_metric='r2_score',
-                                      training_data=train_data,
-                                      label_column_name=label,
-                                      n_cross_validations=5)
-   ```
-
-
-1. 预测任务需要额外设置，有关更多详细信息，请参阅[为时序预测设置自动化机器学习](how-to-auto-train-forecast.md)一文。 
-
-    ```python
+```python
     time_series_settings = {
-        'time_column_name': time_column_name,
-        'time_series_id_column_names': time_series_id_column_names,
-        'forecast_horizon': n_test_periods
-    }
+                            'time_column_name': time_column_name,
+                            'time_series_id_column_names': time_series_id_column_names,
+                            'forecast_horizon': n_test_periods
+                           }
     
-    automl_config = AutoMLConfig(task = 'forecasting',
+    automl_config = AutoMLConfig(
+                                 task = 'forecasting',
                                  debug_log='automl_oj_sales_errors.log',
                                  primary_metric='normalized_root_mean_squared_error',
                                  experiment_timeout_minutes=20,
@@ -189,8 +166,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
                                  n_cross_validations=5,
                                  path=project_folder,
                                  verbosity=logging.INFO,
-                                 **time_series_settings)
-    ```
+                                 **time_series_settings
+                                )
+```
     
 ### <a name="supported-models"></a>支持的模型
 
@@ -201,7 +179,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 下表按任务类型汇总了支持的模型。 
 
 > [!NOTE]
-> 如果你计划将自动化 ML 创建的模型导出为 [ONNX 模型](concept-onnx.md)，则只有标有 *（星号）的算法才能被转换为 ONNX 格式。 详细了解[如何将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)。 <br> <br> 另请注意，ONNX 目前只支持分类和回归任务。 
+> 如果计划将自动化 ML 创建的模型导出为 [ONNX 模型](concept-onnx.md)，则只有那些标有 *（星号）的算法才能转换为 ONNX 格式。 详细了解[如何将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)。 <br> <br> 另请注意，ONNX 目前只支持分类和回归任务。 
 
 分类 | 回归 | 时序预测
 |-- |-- |--
@@ -224,22 +202,16 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
 
 ### <a name="primary-metric"></a>主要指标
-`primary metric` 参数决定了将在模型训练期间用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
 
-选择自动化机器学习要优化的主要指标取决于许多因素。 建议主要考虑选择最能体现业务需求的指标。 然后考虑指标是否适用于数据集配置文件（数据大小、范围、类分布等）。
+`primary_metric` 参数决定了将在模型训练期间用于优化的指标。 可以选择的可用指标由选择的任务类型决定。
+
+选择自动化机器学习要优化的主要指标取决于许多因素。 建议主要考虑选择最能体现业务需求的指标。 然后考虑指标是否适用于数据集配置文件（数据大小、范围、类分布等）。 以下部分根据任务类型和业务方案总结了推荐的主要指标。 
 
 如需了解上述指标的具体定义，请参阅[了解自动化机器学习结果集](how-to-understand-automated-ml.md)。
 
-|分类 | 回归 | 时序预测
-|--|--|--
-|`accuracy`| `spearman_correlation` | `normalized_root_mean_squared_error`
-|`AUC_weighted` | `normalized_root_mean_squared_error` | `r2_score`
-|`average_precision_score_weighted` | `r2_score` | `normalized_mean_absolute_error`
-|`norm_macro_recall` | `normalized_mean_absolute_error` | 
-|`precision_score_weighted` |
-
 #### <a name="metrics-for-classification-scenarios"></a>分类方案的指标 
-如果数据集小、类倾斜非常大（类不均衡），或者预期的指标值非常接近 0.0 或 1.0，则阈值后指标（如 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall` 和 `precision_score_weighted`）可能也不是最优的。 在这些情况下，对于主要指标，`AUC_weighted` 可能是更好的选择。 自动机器学习完成后，可以根据最能满足你业务需求的指标选择所需模型。
+
+对于类别偏斜严重（类别不均衡）的小型数据集或预期的指标值非常接近 0.0 或 1.0 时，发布的阈值指标（如 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall` 和 `precision_score_weighted`）可能也不是最优的。 在这些情况下，对于主要指标，`AUC_weighted` 可能是更好的选择。 自动机器学习完成后，可以根据最能满足你业务需求的指标选择所需模型。
 
 | 指标 | 示例用例 |
 | ------ | ------- |
@@ -263,6 +235,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 | `normalized_mean_absolute_error` |  |
 
 #### <a name="metrics-for-time-series-forecasting-scenarios"></a>时序预测方案的指标
+
 这些建议与针对回归方案提供的建议类似。 
 
 | 指标 | 示例用例 |
@@ -300,15 +273,15 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ```python
 automl_classifier = AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        training_data=data_train,
-        label_column_name=label,
-        n_cross_validations=5,
-        enable_voting_ensemble=False,
-        enable_stack_ensemble=False
-        )
+                                 task='classification',
+                                 primary_metric='AUC_weighted',
+                                 experiment_timeout_minutes=30,
+                                 training_data=data_train,
+                                 label_column_name=label,
+                                 n_cross_validations=5,
+                                 enable_voting_ensemble=False,
+                                 enable_stack_ensemble=False
+                                )
 ```
 
 若要更改默认集成行为，可以将多个默认参数作为 `kwargs` 在 `AutoMLConfig` 对象中提供。
@@ -333,27 +306,27 @@ automl_classifier = AutoMLConfig(
 
 ```python
 ensemble_settings = {
-    "ensemble_download_models_timeout_sec": 600
-    "stack_meta_learner_type": "LogisticRegressionCV",
-    "stack_meta_learner_train_percentage": 0.3,
-    "stack_meta_learner_kwargs": {
-        "refit": True,
-        "fit_intercept": False,
-        "class_weight": "balanced",
-        "multi_class": "auto",
-        "n_jobs": -1
-    }
-}
+                     "ensemble_download_models_timeout_sec": 600
+                     "stack_meta_learner_type": "LogisticRegressionCV",
+                     "stack_meta_learner_train_percentage": 0.3,
+                     "stack_meta_learner_kwargs": {
+                                                    "refit": True,
+                                                    "fit_intercept": False,
+                                                    "class_weight": "balanced",
+                                                    "multi_class": "auto",
+                                                    "n_jobs": -1
+                                                  }
+                    }
 
 automl_classifier = AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        training_data=train_data,
-        label_column_name=label,
-        n_cross_validations=5,
-        **ensemble_settings
-        )
+                                 task='classification',
+                                 primary_metric='AUC_weighted',
+                                 experiment_timeout_minutes=30,
+                                 training_data=train_data,
+                                 label_column_name=label,
+                                 n_cross_validations=5,
+                                 **ensemble_settings
+                                )
 ```
 
 <a name="exit"></a> 
@@ -371,7 +344,7 @@ automl_classifier = AutoMLConfig(
 ## <a name="run-experiment"></a>运行试验
 
 > [!WARNING]
-> 如果多次使用相同的配置设置和主要指标运行一个试验，你可能会发现每个试验最终指标分数与生成的模型之间的差异。 自动化 ML 使用的算法本身具有随机性，这可能会导致试验输出的模型与建议的模型最终指标分数（如准确度）之间出现细微差异。 你也可能会看到模型名称相同，但使用的超参数不同的结果。 
+> 如果多次使用相同的配置设置和主要指标运行试验，你可能会发现每个试验的最终指标分数与生成的模型之间存在差异。 自动化 ML 使用的算法本身具有随机性，这可能会导致试验输出的模型与建议的模型的最终指标分数（如准确度）之间出现细微差异。 你看到的结果也可能会模型名称相同但使用的超参数不同。 
 
 对于自动化 ML，可以创建 `Experiment` 对象，这是 `Workspace` 中用于运行实验的命名对象。
 
@@ -405,7 +378,8 @@ run = experiment.submit(automl_config, show_output=True)
 
 为了管理子运行及其执行时间，建议你为每个试验创建一个专用群集，使试验的 `max_concurrent_iterations` 数与群集中的节点数匹配。 这样就可以同时使用群集的所有节点以及所需数量的并发子运行/迭代。
 
-在 `AutoMLConfig` 对象中配置 `max_concurrent_iterations`。 如果未进行配置，则默认情况下每个试验仅允许一个并发子运行/迭代。  
+在 `AutoMLConfig` 对象中配置 `max_concurrent_iterations`。 如果未进行配置，则默认情况下每个试验仅允许一个并发子运行/迭代。
+对于计算实例，可以将 `max_concurrent_iterations` 设置为与计算实例 VM 上的核心数相同。
 
 ## <a name="explore-models-and-metrics"></a>探索模型和指标
 
@@ -443,7 +417,7 @@ def print_model(model, prefix=""):
             print()   
 ```
 
-对于刚刚在同一个试验笔记本中提交和训练的本地或远程运行，可以使用 `get_output()` 方法传入最佳模型。 
+对于在同一个试验笔记本中提交和训练的本地或远程运行，可以使用 `get_output()` 方法传入最佳模型。 
 
 ```python
 best_run, fitted_model = run.get_output()
@@ -559,9 +533,9 @@ model = run.register_model(model_name = model_name,
 
 模型可解释性让你可以了解模型进行预测的原因，以及基础特征重要性值。 SDK 包括各种包，这些包用于在训练和推理时间为本地和已部署的模型启用模型可解释性功能。
 
-有关如何在自动化机器学习实验中专门启用可解释性特征的代码示例，请参阅[操作指南](how-to-machine-learning-interpretability-automl.md)。
+了解如何专门在自动化机器学习试验中[启用可解释性特征](how-to-machine-learning-interpretability-automl.md)。
 
-有关如何在自动化机器学习之外的其他 SDK 区域中启用模型解释和特征重要性的基本信息，请参阅可解释性方面的[概念](how-to-machine-learning-interpretability.md)文章。
+有关如何在自动化机器学习之外的 SDK 其他区域中启用模型解释和特征重要性的一般信息，请参阅[关于可解释性的概念文章](how-to-machine-learning-interpretability.md)。
 
 > [!NOTE]
 > 解释客户端目前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回解释仪表板，并且不支持按需解释运行。

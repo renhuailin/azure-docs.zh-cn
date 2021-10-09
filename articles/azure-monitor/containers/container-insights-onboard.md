@@ -3,25 +3,24 @@ title: 启用容器见解 | Microsoft Docs
 description: 本文介绍如何启用和配置容器见解，以便你能够了解容器的性能以及已经发现了哪些与性能相关的问题。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e0544232f40e93cce0705fff6814d29697a96218
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 04bc88034c3537431c4c1972611d0c4d93e4cda4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782092"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631393"
 ---
 # <a name="enable-container-insights"></a>启用容器见解
 
 本文概述了可用于设置容器见解的选项，这些选项用于监视部署到 Kubernetes 环境并托管在以下位置的工作负荷的性能：
 
 - [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)  
-- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 版本 3.x 和 4.x  
-- [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) 版本 4.x  
-- [启用了 Arc 的 Kubernetes 群集](../../azure-arc/kubernetes/overview.md)
+- [已启用 Arc 的 Kubernetes 群集](../../azure-arc/kubernetes/overview.md)
+   - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) 或本地
+   - [AKS 引擎](https://github.com/Azure/aks-engine)
+   - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 版本 4.x  
+   - [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) 版本 4.x  
 
-你也可以监视部署到自托管 Kubernetes 群集的工作负载的性能，这些群集托管在以下位置上：
-- Azure（通过使用 [AKS 引擎](https://github.com/Azure/aks-engine)）
-- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) 或本地（通过使用 AKS 引擎）。
 
 通过使用以下受支持的任意方法，可以为 Kubernetes 的新部署或者一个或多个现有的部署启用容器见解：
 
@@ -29,6 +28,8 @@ ms.locfileid: "107782092"
 - Azure PowerShell
 - Azure CLI
 - [Terraform 和 AKS](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
+
+对于任何非 AKS kubernetes 群集，需要先将群集连接到 [Azure Arc](../../azure-arc/kubernetes/overview.md)，然后再启用监视。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -71,7 +72,8 @@ ms.locfileid: "107782092"
 容器见解正式支持以下配置：
 
 - 环境：Azure Red Hat OpenShift、本地 Kubernetes，以及 Azure 和 Azure Stack 上的 AKS 引擎。 有关详细信息，请参阅 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)。
-- Kubernetes 和支持策略的版本与 [Azure Kubernetes 服务 (AKS) 中支持的版本](../../aks/supported-kubernetes-versions.md)相同。 
+- Kubernetes 和支持策略的版本与 [Azure Kubernetes 服务 (AKS) 中支持的版本](../../aks/supported-kubernetes-versions.md)相同。
+- 建议将群集连接到 [Azure Arc](../../azure-arc/kubernetes/overview.md)，并经由 Azure Arc 通过容器见解启用监视。
 
 ## <a name="network-firewall-requirements"></a>网络防火墙要求
 
@@ -125,15 +127,14 @@ ms.locfileid: "107782092"
 | | [使用 Terraform 创建 AKS 群集](container-insights-enable-new-cluster.md#enable-using-terraform)| 可以为使用开源工具 Terraform 创建的新 AKS 群集启用监视。 |
 | | [使用 Azure 资源管理器模板创建 OpenShift 群集](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 你可为使用预先配置的 Azure 资源管理器模板创建的新 OpenShift 群集启用监视。 |
 | | [使用 Azure CLI 创建 OpenShift 群集](/cli/azure/openshift#az_openshift_create) | 你可在使用 Azure CLI 部署新的 OpenShift 群集时启用监视。 |
-| 现有 Kubernetes 群集 | [使用 Azure CLI 启用对 AKS 群集的监视](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | 可以使用 Azure CLI 为已部署的 AKS 群集启用监视。 |
+| 现有 AKS 群集 | [使用 Azure CLI 启用对 AKS 群集的监视](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | 可以使用 Azure CLI 为已部署的 AKS 群集启用监视。 |
 | |[使用 Terraform 为 AKS 群集启用](container-insights-enable-existing-clusters.md#enable-using-terraform) | 可以使用开源工具 Terraform 为已部署的 AKS 群集启用监视。 |
 | | [从 Azure Monitor 为 AKS 群集启用](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| 可以从 Azure Monitor 的多群集页为一个或多个已部署的 AKS 群集启用监视。 |
 | | [从 AKS 群集启用](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| 可以直接从 Azure 门户中的 AKS 群集启用监视。 |
 | | [使用 Azure 资源管理器模板为 AKS 群集启用](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| 可以使用预先配置的 Azure 资源管理器模板为 AKS 群集启用监视。 |
-| | [为混合 Kubernetes 群集启用](container-insights-hybrid-setup.md) | 可以为托管在 Azure Stack 上的 AKS 引擎或为托管在本地的 Kubernetes 群集启用监视。 |
-| | [为启用了 Arc 的 Kubernetes 群集启用](container-insights-enable-arc-enabled-clusters.md)。 | 你可为托管在 Azure 外部并启用了 Azure Arc 的 Kubernetes 群集启用监视。 |
-| | [为使用 Azure 资源管理器模板部署的 OpenShift 群集启用](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | 你可为使用预先配置的 Azure 资源管理器模板部署的现有 OpenShift 群集启用监视。 |
-| | [为从 Azure Monitor 部署的 OpenShift 群集启用](container-insights-azure-redhat-setup.md#from-the-azure-portal) | 你可为已从 Azure Monitor 中的“多群集”页部署的一个或多个 OpenShift 群集启用监视。 |
+| 现有的非 AKS Kubernetes 群集 | [通过使用 Azure CLI 来为非 AKS Kubernetes 群集启用](container-insights-enable-arc-enabled-clusters.md#create-extension-instance-using-azure-cli)。 | 可以为托管在 Azure 外部并且已启用 Azure Arc 的 Kubernetes 群集启用监视，这些群集中包括使用 Azure CLI 的混合、OpenShift 和多云。 |
+| | [通过使用 Azure 资源管理器模板来为非 AKS Kubernetes 群集启用](container-insights-enable-arc-enabled-clusters.md#create-extension-instance-using-azure-resource-manager) | 可以通过使用预先配置的 Azure 资源管理器模板来为已启用 Arc 的群集启用监视。 |
+| | [从 Azure Monitor 中为非 AKS Kubernetes 群集启用](container-insights-enable-arc-enabled-clusters.md#create-extension-instance-using-azure-portal) | 可以为一个或多个已从 Azure Monitor 中多群集页部署的已启用 Arc 的群集启用监视。 |
 
 ## <a name="next-steps"></a>后续步骤
 

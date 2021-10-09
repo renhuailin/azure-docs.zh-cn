@@ -5,13 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 08/31/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: f7193489c35384a9ede10606a9ad335ea69bb974
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 3f6af0beb887f66f4696707dcc0e0f408004509a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434873"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827615"
 ---
 # <a name="what-is-auto-instrumentation-for-azure-monitor-application-insights"></a>什么是 Azure Monitor 应用程序洞察自动检测？
 
@@ -41,15 +40,15 @@ Application Insights 与各种资源提供程序集成，可在不同的环境�
 
 ### <a name="windows"></a>Windows
 
-Windows 上 Azure 应用服务的应用程序监视可用于 [.NET](./azure-web-apps.md?tabs=net)（默认启用）、[.NET Core](./azure-web-apps.md?tabs=netcore)、[Java](./azure-web-apps.md?tabs=java)和 [Node.js](./azure-web-apps.md?tabs=nodejs) 应用程序   。 若要监视 Python 应用，请将 [SDK](./opencensus-python.md) 添加到代码。
+Windows 上 Azure 应用服务的应用程序监视可用于 [ASP.NET](./azure-web-apps-net.md)（默认启用）、[ASP.NET Core](./azure-web-apps-net-core.md)、[Java](./azure-web-apps-java.md)（公共预览版）和 [Node.js](./azure-web-apps-nodejs.md) 应用程序。 若要监视 Python 应用，请将 [SDK](./opencensus-python.md) 添加到代码。
 
 > [!NOTE]
 > 对于 Windows，应用程序监视目前在应用服务中可用于基于代码的服务/托管的服务。 尚不支持通过与 Application Insights 的集成来监视应用服务上的 Windows 容器上的应用。
 
 ### <a name="linux"></a>Linux
-可以通过门户在应用服务中为 Linux 上运行的 [Java](./azure-web-apps.md?tabs=java) 和 [Node.js](./azure-web-apps.md?tabs=nodejs) 应用启用监视，这两种语言的体验均为正式发布版本，在所有区域中都可用 。 
+你可以通过门户，在应用服务中启用对在 Linux 上运行的 [Java](./azure-web-apps-java.md?)、[Node.js](./azure-web-apps-nodejs.md?tabs=linux) 和 [ASP.NET Core](./azure-web-apps-net-core.md?tabs=linux)（预览版）应用的监视。 
 
-对于其他语言（[.Net Core](./asp-net-core.md) 和 [Python](./opencensus-python.md)），请使用 SDK。
+对于 [Python](./opencensus-python.md)，请使用 SDK。
 
 ## <a name="azure-functions"></a>Azure Functions
 

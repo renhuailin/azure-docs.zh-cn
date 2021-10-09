@@ -1,16 +1,17 @@
 ---
-title: Azure CLI 示例 - Azure Functions
-description: Azure CLI 示例 - Azure Functions
+title: 适用于 Azure Functions 的 Azure CLI 示例 | Microsoft Docs
+description: 找到使用 Azure CLI 的 Azure Functions 的 bash 脚本的链接。 了解如何创建允许集成和部署的函数应用。
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
-ms.date: 01/09/2018
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 619e974240b19465d50e394f87a7476efec41e45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/17/2021
+ms.custom: mvc, devx-track-azurecli, seo-azure-cli
+keywords: functions, azure cli 示例, azure cli 示例, azure cli 代码示例
+ms.openlocfilehash: 8f6f5e45be61746cf33bf79e144403631892da9d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87504494"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618697"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 

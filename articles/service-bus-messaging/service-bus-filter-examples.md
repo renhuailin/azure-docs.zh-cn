@@ -2,13 +2,13 @@
 title: 在 Azure 服务总线中设置订阅筛选器 | Microsoft Docs
 description: 本文提供了有关在“Azure 服务总线”主题订阅上定义筛选器和操作的示例。
 ms.topic: how-to
-ms.date: 02/17/2021
-ms.openlocfilehash: 8146e1be1af354b820ea0d3fed7ba9434a4d4e1d
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.date: 09/07/2021
+ms.openlocfilehash: d73a8cdade8600a793911acfefc54a8e1e1530b6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302601"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754975"
 ---
 # <a name="set-subscription-filters-azure-service-bus"></a>设置订阅筛选器（Azure 服务总线）
 本文提供了一些有关在“服务总线”主题订阅上设置筛选器的示例。 有关筛选器的概念性信息，请参阅[筛选器](topic-filters.md)。
@@ -72,7 +72,9 @@ sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','S
 有关 C# 示例，请参阅 [GitHub 上的主题筛选器示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)。
 
 
-## <a name="correlation-filter-using-correlationid"></a>使用 CorrelationID 的关联筛选器
+## <a name="correlation-filters"></a>关联筛选器
+
+### <a name="correlation-filter-using-correlationid"></a>使用 CorrelationID 的关联筛选器
 
 ```csharp
 new CorrelationFilter("Contoso");
@@ -80,16 +82,24 @@ new CorrelationFilter("Contoso");
 
 它将筛选 `CorrelationID` 设置为 `Contoso` 的消息。 
 
-## <a name="correlation-filter-using-system-and-user-properties"></a>使用系统属性和用户属性的关联筛选器
+> [!NOTE]
+> .NET 中的 [CorrelationRuleFilter](/dotnet/api/azure.messaging.servicebus.administration.correlationrulefilter) 类位于 [Azure.Messaging.ServiceBus.Administration](/dotnet/api/azure.messaging.servicebus.administration) 命名空间中。 有关展示如何使用 .NET 创建筛选器的示例代码，请参阅 [GitHub 上的此代码](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters/Program.cs#L179)。
+
+
+### <a name="correlation-filter-using-system-and-user-properties"></a>使用系统属性和用户属性的关联筛选器
 
 ```csharp
-var filter = new CorrelationFilter();
+var filter = new CorrelationRuleFilter();
 filter.Label = "Important";
 filter.ReplyTo = "johndoe@contoso.com";
 filter.Properties["color"] = "Red";
 ```
 
 它等效于 `sys.ReplyTo = 'johndoe@contoso.com' AND sys.Label = 'Important' AND color = 'Red'`
+
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下示例： 

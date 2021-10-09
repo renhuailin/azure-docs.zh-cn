@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 06/10/2021
 adobe-target: true
 ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a5bc3ebfb58a41761b4a41439b6482592c58a7b0
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c20c5f96820ae4cbf8aa361b29483fac260ec5ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037300"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824179"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>快速入门：创建 Azure 机器学习入门所需的工作区资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "123037300"
 工作区是机器学习活动的顶级资源，为使用 Azure 机器学习时创建的所有项目提供一个集中的查看和管理位置。 计算资源提供预配置的基于云的环境，可用于训练、部署、自动执行、管理和跟踪机器学习模型。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "123037300"
 
 查看左侧导航栏上的工作室部分：
 
-* 工作室的“创建者”部分包含多个创建机器学习模型的方法。  你可以：
+* 工作室的“创建者”部分包含多个创建机器学习模型的方法。  方法：
 
     * 通过“笔记本”部分，可以创建 Jupyter 笔记本、复制示例笔记本以及运行笔记本和 Python 脚本。
     * 通过“自动化 ML”步骤，可以创建机器学习模型，而无需编写代码。

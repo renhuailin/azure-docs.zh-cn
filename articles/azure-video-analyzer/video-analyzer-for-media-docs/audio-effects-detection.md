@@ -1,20 +1,15 @@
 ---
 title: 音频效果检测
-titleSuffix: Azure Video Analyzer
 description: 音频效果检测是 Azure 视频分析器媒体版 AI 功能之一。 它可以检测各种声学事件，并将它们分类为不同的声学类别（例如，枪声、尖叫和人群反应等）。
-author: Juliako
-manager: femila
-ms.service: azure-video-analyzer
-ms.subservice: azure-video-analyzer-media
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2021
 ms.author: juliako
-ms.openlocfilehash: d576408cc0d65cc908a24b27ae2a6a50ed7aa9ee
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 689abf9c61c0b1a462cfafe02c461906626e516b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121550"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632531"
 ---
 #  <a name="audio-effects-detection-preview"></a>音频效果检测（预览版）
 
@@ -109,7 +104,7 @@ audioEffects: [{
 |---|---|
 |SRT |00:00:00,000  00:00:03,671<br/>[Gunshot]|
 |VTT |00:00:00.000  00:00:03.671<br/>[Gunshot]|
-|TTML|置信度：0.9047 <br/> <p begin="00:00:00.000" end="00:00:03.671">[Gunshot]</p>|
+|TTML|置信度：0.9047 <br/> `<p begin="00:00:00.000" end="00:00:03.671">[Gunshot]</p>`|
 |TXT |[Gunshot]|
 |CSV |0.9047,00:00:00.000,00:00:03.671, [Gunshot]|
 

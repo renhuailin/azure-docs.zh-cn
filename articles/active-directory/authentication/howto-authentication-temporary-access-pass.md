@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/11/2021
+ms.date: 09/23/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb911bb58413e6551224d98371cf56ecbd8e01f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e8b0279e0f97f3440bdef04046c2cb6eb35b6573
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737321"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605784"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>在 Azure AD 中配置临时访问密码，以注册无密码身份验证方法（预览版）
 
@@ -26,7 +26,6 @@ ms.locfileid: "121737321"
 - 使用临时访问密码 (TAP) 
 
 临时访问密码是由管理员颁发的一种有时间限制的密码，可满足强身份验证要求，并可用于载入其他身份验证方法（包括无密码方法）。 当用户丢失或忘记自己的强身份验证因素（如 FIDO2 安全密钥或 Microsoft Authenticator 应用），但需要登录以注册新的强身份验证方法时，也可以使用临时访问密码，更轻松地进行恢复。
-
 
 本文介绍了如何通过 Azure 门户在 Azure AD 中启用和使用临时访问密码。 还可以使用 REST API 来执行这些操作。 
 
@@ -120,13 +119,23 @@ c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True        
 用户现已登录，可以更新或注册方法，例如 FIDO2 安全密钥。 如果是因丢失凭据或设备而要更新其身份验证方法，用户应确保删除原先的身份验证方法。
 用户还可以使用其密码继续登录；“点击”操作不会替换用户的密码。
 
-用户还可以使用自己的临时访问密码，直接从 Authenticator 应用中注册无密码手机登录。 有关详细信息，请参阅[将工作或学校帐户添加到 Microsoft Authenticator 应用](../user-help/user-help-auth-app-add-work-school-account.md)。
+### <a name="passwordless-phone-sign-in"></a>无密码的手机登录
+
+用户还可以使用自己的临时访问密码，直接从 Authenticator 应用中注册无密码手机登录。 有关详细信息，请参阅[将工作或学校帐户添加到 Microsoft Authenticator 应用](https://support.microsoft.com/account-billing/add-your-work-or-school-account-to-the-microsoft-authenticator-app-43a73ab5-b4e8-446d-9e54-2a4cb8e4e93c)。
 
 ![显示了如何使用工作或学校帐户输入临时访问密码的屏幕截图](./media/how-to-authentication-temporary-access-pass/enter-work-school.png)
 
-## <a name="delete-a-temporary-access-pass"></a>删除临时访问密码
+### <a name="guest-access"></a>来宾访问
 
-临时访问密码过期后，将无法使用。 在用户对应的“身份验证方法”下，“详细信息”列中显示了临时访问密码的过期时间。 可以使用以下步骤，删除已过期的临时访问密码：
+如果临时访问密码满足主租户身份验证要求，则来宾用户可以使用其主租户颁发的临时访问密码登录到资源租户。 如果资源租户需要 MFA，来宾用户需要执行 MFA 才能访问资源。
+
+### <a name="expiration"></a>过期时间
+
+过期或删除的临时访问密码不能用于交互式或非交互式身份验证。 临时访问密码过期或删除后，用户需要使用不同的身份验证方法重新进行身份验证。 
+
+## <a name="delete-an-expired-temporary-access-pass"></a>删除过期的临时访问密码
+
+在用户对应的“身份验证方法”下，“详细信息”列中显示了临时访问密码的过期时间。 可以使用以下步骤，删除已过期的临时访问密码：
 
 1. 在 Azure AD 门户中，浏览到“用户”并选择一个用户（例如“Tap User”），然后选择“身份验证方法”。
 1. 在列表中显示的“临时访问密码(预览版)”身份验证方法的右侧，选择“删除”。
@@ -152,7 +161,6 @@ Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -
 请牢记这些限制：
 
 - 使用一次性临时访问密码来注册无密码方法（如 FIDO2 或手机登录）时，用户必须在登录 10 分钟内使用一次性临时访问密码完成注册。 此限制不适用于可多次使用的临时访问密码。
-- 来宾用户无法使用临时访问密码进行登录。
 - 临时访问密码为公共预览版，目前不可用于 Azure 美国政府版。
 - 自助式密码重置 (SSPR) 注册策略或[标识保护多重身份验证注册策略](../identity-protection/howto-identity-protection-configure-mfa-policy.md)范围内的用户在使用临时访问密码登录后，需要注册身份验证方法。 这些策略范围内的用户将重定向到[合并注册的中断模式](concept-registration-mfa-sspr-combined.md#combined-registration-modes)。 此体验当前不支持 FIDO2 和手机登录注册。 
 - 临时访问密码不能与网络策略服务器 (NPS) 扩展、Active Directory 联合身份验证服务 (AD FS) 适配器或 Windows 安装/全新体验 (OOBE) 及 Autopilot 一起使用，或用于部署 Windows Hello 企业版。 
@@ -173,4 +181,3 @@ Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Azure Active Directory 中规划无密码身份验证部署](howto-authentication-passwordless-deployment.md)
-

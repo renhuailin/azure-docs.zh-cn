@@ -1,22 +1,25 @@
 ---
-title: Azure Purview 中的数据资产见解（预览版）
+title: Azure Purview 中的数据资产见解
 description: 本操作方法指南介绍了如何查看和使用有关数据的 Purview 见解资产报表。
 author: SunetraVirdi
 ms.author: suvirdi
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 11/20/2020
-ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8879edc7d1858cff5871c5339da4857d81f5c2d8
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183074"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216997"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Azure Purview 中的数据资产见解
 
 本操作方法指南介绍了如何访问、查看和筛选有关数据的 Purview 资产见解报表。
+
+> [!IMPORTANT]
+> Azure Purview 见解目前处于预览阶段。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 在本操作指南中，你将学习如何：
 
@@ -33,7 +36,7 @@ ms.locfileid: "102183074"
 
 * 在源类型上设置并完成扫描。
 
-有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)。
+有关详细信息，请参阅[在 Azure Purview 中管理数据源](manage-data-sources.md)。
 
 ## <a name="use-purview-asset-insights"></a>使用 Purview 资产见解
 
@@ -48,11 +51,11 @@ ms.locfileid: "102183074"
 
    :::image type="content" source="./media/asset-insights/portal-access.png" alt-text="从 Azure 门户启动 Purview":::
 
-1. 在 Purview 的“主页”上，选择“查看见解”磁贴来访问“见解”:::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: 区域  。
+1. 在 Purview 主页上，选择左侧菜单中的“见解”。
 
    :::image type="content" source="./media/asset-insights/view-insights.png" alt-text="在 Azure 门户中查看见解":::
 
-1. 在“见解”:::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: 区域中，选择“扫描”以显示 Purview“扫描见解”报表  。
+1. 在“见解”区域中，选择“资产”以显示 Purview“资产见解”报表  。
 
 ### <a name="view-asset-insights"></a>查看资产见解
 
@@ -90,7 +93,7 @@ ms.locfileid: "102183074"
    > [!NOTE]
    > 如果扫描在过去的 30 天内只运行一次，或任何目录在 30 天内仅发生一次更改（例如分类添加/删除），上述更改信息将显示为空白。
 
-1. 单击“源类型”时，请查看最高资产计数发生了更改的顶级文件夹。
+1. 选择源类型时，请查看最高资产计数发生了更改的顶级文件夹。
 
 1. 选择资产列表的查看路径。
 

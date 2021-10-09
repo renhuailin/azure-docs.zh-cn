@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 07/12/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d02d18bec76578ec93d238d6dba284a8447428e9
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: b8dd3f6a81317abff79dce906c4a9c8ef6ea6484
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901644"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680236"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>选择如何使用 Azure CLI 授权 Blob 数据访问
 
@@ -35,7 +35,7 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何授权
 若要使用 `--auth-mode` 参数，请确保已安装 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 以查看已安装版本。
 
 > [!NOTE]
-> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许为该存储帐户执行[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 出于此原因，在使用 ReadOnly 锁锁定了帐户时，还没有帐户密钥的用户必须使用 Azure AD 凭据来访问 Blob 数据。
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许对该存储帐户执行[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 出于此原因，在使用 ReadOnly 锁锁定了帐户时，尚没有帐户密钥的用户必须使用 Azure AD 凭据来访问 blob 数据。
 
 > [!IMPORTANT]
 > 如果省略 `--auth-mode` 参数或将其设置为 `key`，则 Azure CLI 会尝试使用帐户访问密钥进行授权。 在这种情况下，Microsoft 建议在命令或 AZURE_STORAGE_KEY 环境变量中提供访问密钥。 有关环境变量的详细信息，请参阅标题为[为授权参数设置环境变量](#set-environment-variables-for-authorization-parameters)的部分。
@@ -52,7 +52,7 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何授权
 
 Azure 存储扩展支持针对 blob 数据的操作。 可调用的操作取决于向 Azure AD 安全主体授予的权限，此安全主体用于登录 Azure CLI。 对 Azure 存储容器的权限通过 Azure RBAC 进行分配。 例如，如果为你分配了“存储 Blob 数据读取者”角色，你可以运行从容器读取数据的脚本命令。 如果为你分配了“存储 Blob 数据参与者”角色，你可以运行脚本命令来读取、写入或删除容器或其所包含的数据。
 
-若要详细了解针对容器的每个 Azure 存储操作所需的权限，请参阅[使用 OAuth 令牌调用存储操作](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
+若要详细了解针对容器的每个 Azure 存储操作所需的权限，请参阅[使用 OAuth 令牌调用存储操作](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。
 
 ### <a name="example-authorize-an-operation-to-create-a-container-with-azure-ad-credentials"></a>示例：授权操作使用 Azure AD 凭据创建容器
 

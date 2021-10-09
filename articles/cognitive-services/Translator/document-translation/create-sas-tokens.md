@@ -1,19 +1,19 @@
 ---
-title: 使用 Microsoft 存储资源管理器创建容器和 Blob 的共享访问签名 (SAS) 令牌
-description: 如何使用 Microsoft 存储资源管理器与 Azure 门户创建容器和 Blob 的共享访问令牌 (SAS)
+title: 使用 Microsoft 存储资源管理器生成容器和 Blob 的共享访问签名 (SAS) 令牌
+description: 如何使用 Microsoft 存储资源管理器与 Azure 门户生成容器和 Blob 的共享访问签名令牌 (SAS)。
 ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 03/05/2021
-ms.openlocfilehash: 8a91829ce79c5cd9e32efefc809dd23a19382f49
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/16/2021
+ms.openlocfilehash: ecc62d7b45bfb3b0b108057d5e3e25b189297165
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360264"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653298"
 ---
-# <a name="create-sas-tokens-for-your-storage-containers"></a>创建存储容器的 SAS 令牌
+# <a name="generate-sas-tokens-for-your-storage-containers"></a>生成存储容器的 SAS 令牌
 
 本文介绍如何使用 Azure 存储资源管理器或 Azure 门户创建共享访问签名令牌 (SAS)。 SAS 令牌提供对 Azure 存储帐户中资源的安全委托式访问。
 
@@ -63,9 +63,6 @@ ms.locfileid: "113360264"
 ---
 
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>在 Azure 门户中创建 Blob 的 SAS 令牌
-
-> [!NOTE]
-> 目前不支持直接在 Azure 门户中创建容器的 SAS 令牌。 但是，可以使用 [**Azure 存储资源管理器**](#create-your-sas-tokens-with-azure-storage-explorer)创建 SAS 令牌，或者 [以编程方式](../../../storage/blobs/sas-service-create.md)完成该任务。
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>先决条件

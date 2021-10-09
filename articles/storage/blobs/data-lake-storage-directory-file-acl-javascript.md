@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 678af3e2fb4111593ece0cc2cdf3811cf0e793a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7e753f248e9de1c2812cabed5c1cf432e726f59
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774756"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593204"
 ---
 # <a name="use-javascript-sdk-in-nodejs-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Node.js 中的 JavaScript SDK 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
@@ -26,7 +26,7 @@ ms.locfileid: "104774756"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 订阅。 有关详细信息，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 - 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
@@ -40,7 +40,7 @@ ms.locfileid: "104774756"
 npm install @azure/storage-file-datalake
 ```
 
-将此语句放置在代码文件的顶部，以导入 `storage-file-datalake` 包。 
+将此语句放置在代码文件的顶部，以导入 `storage-file-datalake` 包。
 
 ```javascript
 const {
@@ -50,13 +50,13 @@ StorageSharedKeyCredential
 } = require("@azure/storage-file-datalake");
 ```
 
-## <a name="connect-to-the-account"></a>连接到帐户 
+## <a name="connect-to-the-account"></a>连接到帐户
 
-若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 
+若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。
 
 ### <a name="connect-by-using-an-account-key"></a>使用帐户密钥进行连接
 
-这是连接到帐户的最简单方法。 
+这是连接到帐户的最简单方法。
 
 此示例使用帐户密钥创建 DataLakeServiceClient 实例。
 
@@ -64,14 +64,14 @@ StorageSharedKeyCredential
 
 function GetDataLakeServiceClient(accountName, accountKey) {
 
-  const sharedKeyCredential = 
+  const sharedKeyCredential =
      new StorageSharedKeyCredential(accountName, accountKey);
-  
+
   const datalakeServiceClient = new DataLakeServiceClient(
       `https://${accountName}.dfs.core.windows.net`, sharedKeyCredential);
 
-  return datalakeServiceClient;             
-}      
+  return datalakeServiceClient;
+}
 
 ```
 
@@ -82,17 +82,17 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 可以使用[适用于 JS 的 Azure 标识客户端库](https://www.npmjs.com/package/@azure/identity)，通过 Azure AD 对应用程序进行身份验证。
 
-此示例使用客户端 ID、客户端密码和租户 ID 创建 DataLakeServiceClient 实例。  若要获取这些值，请参阅[从 Azure AD 获取用于请求客户端应用程序授权的令牌](../common/storage-auth-aad-app.md)。
+此示例使用客户端 ID、客户端密码和租户 ID 创建 DataLakeServiceClient 实例。 若要获取这些值，请参阅[从 Azure AD 获取用于请求客户端应用程序授权的令牌](../common/storage-auth-aad-app.md)。
 
 ```javascript
 function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantID) {
 
   const credential = new ClientSecretCredential(tenantID, clientID, clientSecret);
-  
+
   const datalakeServiceClient = new DataLakeServiceClient(
       `https://${accountName}.dfs.core.windows.net`, credential);
 
-  return datalakeServiceClient;             
+  return datalakeServiceClient;
 }
 ```
 
@@ -103,17 +103,17 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 
 容器充当文件的文件系统。 可以通过获取 **FileSystemClient** 实例，然后调用 **FileSystemClient.Create** 方法来创建一个。
 
-此示例创建一个名为 `my-file-system` 的容器。 
+此示例创建一个名为 `my-file-system` 的容器。
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
 
   const fileSystemName = "my-file-system";
-  
+
   const fileSystemClient = datalakeServiceClient.getFileSystemClient(fileSystemName);
 
   const createResponse = await fileSystemClient.create();
-        
+
 }
 ```
 
@@ -121,13 +121,13 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 可以通过获取 **DirectoryClient** 实例，然后调用 **DirectoryClient.create** 方法来创建目录引用。
 
-此示例将名为 `my-directory` 的目录添加到容器中。 
+此示例将名为 `my-directory` 的目录添加到容器中。
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
-   
+
   const directoryClient = fileSystemClient.getDirectoryClient("my-directory");
-  
+
   await directoryClient.create();
 
 }
@@ -135,26 +135,26 @@ async function CreateDirectory(fileSystemClient) {
 
 ## <a name="rename-or-move-a-directory"></a>重命名或移动目录
 
-可以通过调用 **DirectoryClient.rename** 方法来重命名或移动目录。 以参数形式传递所需目录的路径。 
+可以通过调用 **DirectoryClient.rename** 方法来重命名或移动目录。 以参数形式传递所需目录的路径。
 
 此示例将某个子目录重命名为名称 `my-directory-renamed`。
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {
 
-  const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
+  const directoryClient = fileSystemClient.getDirectoryClient("my-directory");
   await directoryClient.move("my-directory-renamed");
 
 }
 ```
 
-此示例将名为 `my-directory-renamed` 的目录移到名为 `my-directory-2` 的目录的子目录中。 
+此示例将名为 `my-directory-renamed` 的目录移到名为 `my-directory-2` 的目录的子目录中。
 
 ```javascript
 async function MoveDirectory(fileSystemClient) {
 
-  const directoryClient = fileSystemClient.getDirectoryClient("my-directory-renamed"); 
-  await directoryClient.move("my-directory-2/my-directory-renamed");      
+  const directoryClient = fileSystemClient.getDirectoryClient("my-directory-renamed");
+  await directoryClient.move("my-directory-2/my-directory-renamed");
 
 }
 ```
@@ -163,12 +163,12 @@ async function MoveDirectory(fileSystemClient) {
 
 可以通过调用 **DirectoryClient.delete** 方法来删除目录。
 
-此示例删除名为 `my-directory` 的目录。   
+此示例删除名为 `my-directory` 的目录。
 
 ```javascript
 async function DeleteDirectory(fileSystemClient) {
 
-  const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
+  const directoryClient = fileSystemClient.getDirectoryClient("my-directory");
   await directoryClient.delete();
 
 }
@@ -183,17 +183,17 @@ async function DeleteDirectory(fileSystemClient) {
 ```javascript
 async function UploadFile(fileSystemClient) {
 
-  const fs = require('fs') 
+  const fs = require('fs')
 
   var content = "";
-  
-  fs.readFile('mytestfile.txt', (err, data) => { 
-      if (err) throw err; 
+
+  fs.readFile('mytestfile.txt', (err, data) => {
+      if (err) throw err;
 
       content = data.toString();
 
-  }) 
-  
+  })
+
   const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt");
   await fileClient.create();
   await fileClient.append(content, 0, content.length);
@@ -204,7 +204,7 @@ async function UploadFile(fileSystemClient) {
 
 ## <a name="download-from-a-directory"></a>从目录下载
 
-首先，创建表示要下载的文件的一个 **FileSystemClient** 实例。 使用 **FileSystemClient.read** 方法读取该文件。 然后，写入该文件。 此示例使用 Node.js `fs` 模块来执行该操作。 
+首先，创建表示要下载的文件的一个 **FileSystemClient** 实例。 使用 **FileSystemClient.read** 方法读取该文件。 然后，写入该文件。 此示例使用 Node.js `fs` 模块来执行该操作。
 
 > [!NOTE]
 > 此文件下载方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，请参阅[适用于 JavaScript 的 Azure Storage File Data Lake 客户端库](https://www.npmjs.com/package/@azure/storage-file-datalake)自述文件来查看有关如何在浏览器中执行此操作的示例。
@@ -217,7 +217,7 @@ async function DownloadFile(fileSystemClient) {
   const downloadResponse = await fileClient.read();
 
   const downloaded = await streamToString(downloadResponse.readableStreamBody);
- 
+
   async function streamToString(readableStream) {
     return new Promise((resolve, reject) => {
       const chunks = [];
@@ -229,8 +229,8 @@ async function DownloadFile(fileSystemClient) {
       });
       readableStream.on("error", reject);
     });
-  }   
-  
+  }
+
   const fs = require('fs');
 
   fs.writeFile('mytestfiledownloaded.txt', downloaded, (err) => {
@@ -246,13 +246,13 @@ async function DownloadFile(fileSystemClient) {
 
 ```javascript
 async function ListFilesInDirectory(fileSystemClient) {
-  
+
   let i = 1;
 
   let iter = await fileSystemClient.listPaths({path: "my-directory", recursive: true});
 
   for await (const path of iter) {
-    
+
     console.log(`Path ${i++}: ${path.name}, is directory: ${path.isDirectory}`);
   }
 

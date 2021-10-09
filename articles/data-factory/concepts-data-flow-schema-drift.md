@@ -1,7 +1,7 @@
 ---
 title: 映射数据流中的架构偏差
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用架构偏差在 Azure 数据工厂中生成可复原的数据流
+description: 使用架构偏差在 Azure 数据工厂和 Synapse Analytics 管道中生成可复原的数据流
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 04/15/2020
-ms.openlocfilehash: 4af9a815b2107126cdda1f15d37a9718e50fa3fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: f82d28ba819e03e1e4c01b6fda11eeab7ede6e0e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638678"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815388"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射数据流中的架构偏差
 
@@ -33,17 +33,17 @@ Azure 数据工厂本机支持随执行而变化的灵活架构，这样你就�
 
 需要在数据流中做出体系结构方面的决策，使整个流接受架构偏差。 这样做可以防范源中发生架构更改。 但是，整个数据流中列和类型的前期绑定将会丢失。 Azure 数据工厂将架构偏差流视为后期绑定流，因此，当你生成转换时，整个流的架构视图中不会显示偏差列名。
 
-此视频介绍了使用数据流的架构偏差功能可以在 ADF 中轻松构建的某些复杂的解决方案。 此示例基于灵活的数据库架构生成可重用模式：
+此视频介绍了使用数据流的架构偏差功能可在 Azure 数据工厂或 Synapse Analytics 管道中轻松生成的某些复杂的解决方案。 此示例基于灵活的数据库架构生成可重用模式：
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>源中的架构偏差
 
-当源投影中不存在的列通过源定义进入数据流时，它们被定义为“偏差”。 可以从源转换的“投影”选项卡中查看源投影。 为源选择数据集时，ADF 会自动从数据集中获取架构，并基于该数据集架构定义创建投影。
+当源投影中不存在的列通过源定义进入数据流时，它们被定义为“偏差”。 可以从源转换的“投影”选项卡中查看源投影。 为源选择数据集时，该服务会自动从数据集中获取架构，并基于该数据集架构定义创建投影。
 
 在源转换中，架构偏差定义为读取数据集架构中未定义的列。 若要启用架构偏差，请在源转换中选中“允许架构偏差”。
 
-![架构偏差源](media/data-flow/schemadrift001.png "架构偏差源")
+:::image type="content" source="media/data-flow/schemadrift001.png" alt-text="架构偏差源":::
 
 启用架构偏差后，将在执行过程中从源读取所有传入字段，并将其通过整个流传递到接收器。 默认情况下，所有新检测到的列（称为偏差列）将作为字符串数据类型到达。 如果希望数据流自动推断偏差列的数据类型，请在源设置中选中“推断偏差列类型”。
 
@@ -51,11 +51,11 @@ Azure 数据工厂本机支持随执行而变化的灵活架构，这样你就�
 
 在“接收器”转换中，架构偏差是指在接收器数据架构中定义的内容的基础上写入额外的列。 若要启用架构偏差，请在“接收器”转换中选中“允许架构偏差”。
 
-![架构偏差接收器](media/data-flow/schemadrift002.png "架构偏差接收器")
+:::image type="content" source="media/data-flow/schemadrift002.png" alt-text="架构偏差接收器":::
 
 如果启用了架构偏差，请确保“映射”选项卡中的“自动映射”滑块处于开启状态。 开启此滑块时，所有传入列都将写入你的目标位置。 否则，必须使用基于规则的映射来写入偏差列。
 
-![接收器自动映射](media/data-flow/automap.png "接收器自动映射")
+:::image type="content" source="media/data-flow/automap.png" alt-text="接收器自动映射":::
 
 ## <a name="transforming-drifted-columns"></a>转换偏差列
 
@@ -71,11 +71,11 @@ Azure 数据工厂本机支持随执行而变化的灵活架构，这样你就�
 
 若要显式引用偏移列，可以通过数据预览快速操作快速生成这些列的映射。 [调试模式](concepts-data-flow-debug-mode.md)后，转到“数据预览”选项卡，然后单击“刷新”以提取数据预览。 如果数据工厂检测到存在偏差列，则可以单击“映射偏差”并生成一个派生列，用于在下游的架构视图中引用所有偏差列。
 
-![屏幕截图显示“数据预览”选项卡，其中专门标出了“映射偏差”。](media/data-flow/mapdrifted1.png "映射偏差")
+:::image type="content" source="media/data-flow/mapdrifted1.png" alt-text="屏幕截图显示“数据预览”选项卡，其中专门标出了“映射偏差”。":::
 
 在生成的“派生列”转换中，每个偏差列都映射到其检测到的名称和数据类型。 在上述数据预览中，“movieId”列检测为整数。 单击“映射偏差”后，movieId 在“派生列”中定义为 `toInteger(byName('movieId'))`，并包含在下游转换的架构视图中。
 
-![屏幕截图显示派生列的“设置”选项卡。](media/data-flow/mapdrifted2.png "映射偏差")
+:::image type="content" source="media/data-flow/mapdrifted2.png" alt-text="屏幕截图显示派生列的“设置”选项卡。":::
 
 ## <a name="next-steps"></a>后续步骤
 在[数据流表达式语言](data-flow-expression-functions.md)中，你将找到用于列模式和架构偏差的其他功能，包括“byName”和“byPosition”。

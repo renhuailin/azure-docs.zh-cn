@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 154680d5f62140b95e7ada3a37678ee3be1c5b24
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: de9488a475998b50d06d26f1d8b02bcdb1b21290
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015491"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780825"
 ---
 # <a name="about-virtual-hub-routing"></a>关于虚拟中心路由
 
@@ -41,7 +41,7 @@ ms.locfileid: "122015491"
 
 使用 Azure 防火墙管理器为公共和专用流量设置策略的客户现在可以使用路由意向和路由策略以简单得多的方式设置其网络。
 
-路由意向和路由策略用于指定虚拟 WAN 中心如何转发 Internet 绑定流量和专用（点到站点、站点到站点、ExpressRoute、虚拟 WAN 中心和虚拟网络中的网络虚拟设备）流量。 有两种类型的路由策略：Internet 流量路由策略和专用流量路由策略。 每个虚拟 WAN 中心最多可以有一个 Internet 流量路由策略和一个专用流量路由策略，每个策略都有一个“下一个跃点”资源。 
+路由意向和路由策略用于指定虚拟 WAN 中心如何转发 Internet 绑定和专用（点到站点、站点到站点、ExpressRoute、虚拟 WAN 中心和虚拟网络中的网络虚拟设备）流量。 有两种类型的路由策略：Internet 流量路由策略和专用流量路由策略。 每个虚拟 WAN 中心最多可以有一个 Internet 流量路由策略和一个专用流量路由策略，每个策略都有一个“下一个跃点”资源。 
 
 虽然专用流量同时包含分支和虚拟网络地址前缀，但路由策略将它们视为路由意向概念中的一个实体。
 
@@ -112,7 +112,7 @@ ms.locfileid: "122015491"
 * 所有分支连接都需要将它们的路由传播到同一组路由表。 例如，如果你决定分支应传播到默认路由表，则此配置应在所有分支间保持一致。 因此，与默认路由表关联的所有连接都可以访问所有分支。
 * 当前不支持分支到分支通过 Azure 防火墙。
 * 在多个区域使用 Azure 防火墙时，所有辐射虚拟网络都必须关联到同一路由表。 例如，不可能出现让其中一部分 VNet 通过 Azure 防火墙，而同一虚拟中心的其他 VNet 绕过 Azure 防火墙的情况。
-* 每个 VNet 连接都可配置一个下一跃点 IP。
+* 可以在单个虚拟网络连接上指定多个下一个跃点 IP 地址。 但是，如果某个包含下一个跃点 IP 的路由指定为公共 IP 地址或 0.0.0.0/0 (Internet)，则虚拟网络连接不支持“多重/唯一”下一个跃点 IP 指向支路虚拟网络中的同一个网络虚拟设备
 * 与 0.0.0.0/0 路由有关的所有信息均限制在本地中心的路由表中。 此路由不会跨中心传播。
 ## <a name="next-steps"></a>后续步骤
 

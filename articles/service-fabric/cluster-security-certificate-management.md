@@ -4,12 +4,12 @@ description: 了解如何在使用 X.509 证书保护的 Service Fabric 群集�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 2674e0e01432fdd45ae01632c69ada66222247f6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 580831c402c8d07eead9f3b90215faa106640bfc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293262"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601969"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric 群集中的证书管理
 
@@ -449,7 +449,7 @@ A 的 SAN 列表已完全包含在 C 的该列表中，因此 A.renewal = C.thum
 
 若要缓解此类事件，我们建议你采取以下措施：
   - 不要混合使用不同保管库证书的 SAN，每个保管库证书应具有不同的用途，且其使用者和 SAN 应通过特异性反映出相关情况
-  - 在 SAN 列表中包括使用者公用名称（按原义，即 "CN =<subject common name>"）  
+  - 在 SAN 列表中包括使用者公用名称（按原义，即 `CN=<subject common name>`）  
   - 在不确定的情况下，禁用通过 KVVM 扩展预配的证书的续订链接 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>为什么使用用户分配的托管标识？ 使用它会产生什么影响？

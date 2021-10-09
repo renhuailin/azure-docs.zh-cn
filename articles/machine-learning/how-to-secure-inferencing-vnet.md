@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 使用独立的 Azure 虚拟网络保护 Azure 机器学习推理环境。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 07/13/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 27c2b5d5af181aea982a6aed735997f5ac866b6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d16c42f7f50d8b9270cabf136a0c3080e678f862
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739141"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425309"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
@@ -59,6 +59,10 @@ ms.locfileid: "121739141"
 * 在虚拟网络中使用 Azure 容器实例时，虚拟网络必须与 Azure 机器学习工作区位于同一资源组中。 其他情况下，虚拟网络可以位于不同的资源组中。
 * 如果工作区具有专用终结点，则用于 Azure 容器实例的虚拟网络必须与工作区专用终结点使用的虚拟网络相同。
 * 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表 (ACR) 不能在该虚拟网络中。
+
+### <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
+
+* 如果工作区具有专用终结点，则 Azure Kubernetes 服务群集必须与工作区位于同一 Azure 区域中。
 
 <a id="aksvnet"></a>
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1131b42b58e1ed751a7563b4c59e71981b722305
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0d95def7048b3077232bb728a97c28107ec80313
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643094"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128654454"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>教程：在虚拟网络中创建 Azure Database for MySQL 灵活服务器（预览版）和应用服务 Web 应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "122643094"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -89,7 +89,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 
 > [!NOTE]
 > - 对于 --location 参数，请使用与上一节中数据库相同的位置。
-> - 请将 &lt;app-name> 替换为在整个 Azure 中唯一的名称（服务器终结点为 https://\<app-name>.azurewebsites.net）。 <app-name> 允许的字符包括“A-Z”、“0-9”和“-”。 良好的模式是结合使用公司名称和应用标识符。
+> - 将 _\<app-name\>_ 替换为在整个 Azure 中唯一的名称（服务器终结点是 `https://\<app-name>.azurewebsites.net`）。 \<app-name\> 允许的字符为 A-Z、0-9 和 -。 良好的模式是结合使用公司名称和应用标识符。
 > - 应用服务基本层不支持 VNET 集成。 请使用“标准”或“高级”。 
 
 此命令将执行以下操作，可能需要花几分钟的时间：

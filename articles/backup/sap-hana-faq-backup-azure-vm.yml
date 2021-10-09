@@ -4,13 +4,13 @@ metadata:
   description: 本文介绍有关如何使用 Azure 备份服务备份 SAP HANA 数据库的常见问题解答。
   ms.topic: article
   ms.service: backup
-  ms.date: 09/01/2021
-  ms.openlocfilehash: f216b4b9015f90a388ecbea04e514cbaf1f196d6
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.date: 09/27/2021
+  ms.openlocfilehash: 2b1a7e39c1cf4a7e6c5b1da6f748c7e143608104
+  ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123426312"
+  ms.lasthandoff: 09/27/2021
+  ms.locfileid: "129080677"
 title: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
 summary: 本文介绍有关如何使用 Azure 备份服务备份 SAP HANA 数据库的常见问题解答。
 sections:
@@ -34,9 +34,16 @@ sections:
     answer: >
       现在，成功的备份作业不会生成警报。 只会针对失败的备份作业生成警报。 [了解如何](backup-azure-monitoring-built-in-monitor.md)使用 Azure 门户查看备份警报。
   - question: >
+      如何检查我的备份（计划/按需）是否成功执行？
+    answer: "可从以下任一位置检查备份（计划/按需）的状态：\n\n1. 备份作业：Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触发的作业。  <br><br>   Azure 门户中显示的作业包括数据库发现和注册操作，以及备份和还原操作。 计划作业（包括日志备份）不会显示在此部分中。 从 SAP HANA 本机客户端 (Studio/Cockpit/DBA Cockpit) 手动触发的备份也不会显示在此处。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/manually-triggered-jobs.png\" alt-text=\"显示 Azure 门户的“备份作业”部分中手动触发的作业的屏幕截图。\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/jobs-and-operations-list.png\" alt-text=\"显示作业的屏幕截图，这些作业包括数据库发现和注册，以及备份和还原操作。\":::\n \n1. 备份警报：警报可帮助你监视 SAP HANA 数据库的备份。 这些警报使你可以将注意力放在所需的事件上，因而无需花费精力频繁检查备份生成的大量事件。 有关更多详细信息，请参阅[查看备份警报](/azure/backup/sap-hana-db-manage#view-backup-alerts)。\n\n1. 备份报告：报告是查看备份作业状态的另一种方式。 报告包括：\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports.png\" alt-text=\"显示 Azure 门户中某种类型的报告的屏幕截图。\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports-mabs.png\" alt-text=\"显示 Azure 门户中另一种类型的报告的屏幕截图。\":::\n\n   了解[如何配置 Azure 备份报告](/azure/backup/configure-reports)。\n\n1. SAP HANA 本机客户端：如果你是 SAP HANA 客户，则还可以使用 HANA Studio - 最常用的 HANA 客户端之一。 在此客户端中，导航到“备份控制台” -> “备份目录”查看“备份状态”。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/sap-hana-native-client-reports.png\" alt-text=\"显示 SAP HANA 本机客户端中的报告的屏幕截图。\":::\n"
+  - question: >
       “备份作业”菜单中是否会显示计划的备份作业？
     answer: >
       “备份作业”菜单仅显示正在进行、成功或失败的按需备份作业。 对于计划的作业，请使用 [Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md)。
+  - question: >
+      由于 LSNValidation 错误而触发的自动修复完整备份的保留期有多长？
+    answer: >
+      Azure 备份不会对自动修复完整备份设置显式保留期。 此备份会一直保留到你保留了从属增量备份（差异或增量）和日志备份为止。 删除此自动修复备份上的最后一个从属备份后，也会删除自动修复备份。
   - question: >
       未来的数据库会自动添加备份吗？
     answer: >
@@ -106,7 +113,7 @@ sections:
 
       - 在主节点上[停止保护](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)（使用保留数据）
 
-      - 在辅助节点上运行[预注册脚本](https://aka.ms/scriptforpermsonhana)
+      - 在辅助节点上运行[预注册脚本](https://go.microsoft.com/fwlink/?linkid=2173610)
 
       - 在辅助节点上[发现数据库](tutorial-backup-sap-hana-db.md#discover-the-databases)并在其上[配置备份](tutorial-backup-sap-hana-db.md#configure-backup)
 
@@ -148,7 +155,33 @@ sections:
 
       >[!Note]
 
-      >使用自定义备份用户作为输入来[运行预注册脚本](/azure/backup/tutorial-backup-sap-hana-db#prerequisites)有助于更好地管理 HSR 备份。 原因是，这样确保了 HSR 设置的两个节点具有相同的备份密钥，从而减少了备份同步和失败问题。
+      >使用自定义备份用户作为输入来[运行预注册脚本](./tutorial-backup-sap-hana-db.md#prerequisites)有助于更好地管理 HSR 备份。 原因是，这样确保了 HSR 设置的两个节点具有相同的备份密钥，从而减少了备份同步和失败问题。
+  - question: >
+      如果我不在 HSR 设置中的辅助/非活动节点上停止保护（但保留数据），会发生什么情况？
+    answer: >
+      1. 对于 HANA 系统复制 (HSR)，辅助节点根本不接受任何连接。 配置备份后，Azure 备份服务会定期运行 ping 并失败。 有时，这些失败的尝试会反映在主节点上。 多次失败后，用户将被锁定，然后主节点开始失败并出现 ODBCConnectionError。   <br><br>我们发现并非所有用户都会遇到此问题。 我们建议你/SAP 调查当辅助节点上的用户连接失败时，在主节点上锁定用户的原因。
+
+
+      1. 运行注册前脚本后，将使用主节点上的新密码更新用户信息。 然后将重新建立连接以尝试备份。 但是，你可能会再次遇到相同的情况。
+
+
+      1. 此外，辅助节点上失败的备份（完整备份）会创建警报。
+
+
+      为避免上述问题，我们建议在某个节点成为辅助节点后对其停止保护（这样就不会尝试连接，并且不会锁定用户），并在该节点成为主节点后为其恢复保护。 如果你在 HSR 设置上未遇到这种锁定情况，并且对引发的警报不感到担忧，则可以在这两个节点上配置备份，让服务处理接管和故障回复。
+  - question: >
+      Azure 备份提供多高的备份和还原吞吐量性能，如何设置 HANA 系统以使用此最大吞吐量？
+    answer: >
+      请参阅 Azure 备份为 HANA 工作负载提供的[备份和还原吞吐量性能](/azure/backup/tutorial-backup-sap-hana-db#understanding-backup-and-restore-throughput-performance)。 <br><br> 若要设置 HANA 系统以利用改进的性能，请使用以下资源：
+
+       - [选择 Azure IaaS VM 的磁盘类型 - 托管磁盘](/azure/virtual-machines/disks-types#premium-ssd)
+       - [Azure 托管磁盘的性能层](/azure/virtual-machines/disks-change-performance)
+       - [M 系列](/azure/virtual-machines/m-series)
+       - [SAP HANA Azure 虚拟机存储配置](/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)
+
+      >[!Note]
+
+      >还可以限制备份吞吐量性能。 [了解详细信息](/azure/backup/tutorial-backup-sap-hana-db#limiting-backup-throughput-performance)。
 - name: 还原
   questions:
   - question: >

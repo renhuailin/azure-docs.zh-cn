@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 07/01/2021
 ms.author: allensu
-ms.openlocfilehash: 78412ba9e71465761d68899e0d48e95864f444f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e17bc129268f8bc93d107492912c868e8efebae1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732759"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671139"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>使用源网络地址转换 (SNAT) 实现出站连接
 
-某些方案要求虚拟机或计算实例与 Internet 建立出站连接。 可使用 Azure 公共负载均衡器的前端 IP 为后端实例提供到 Internet 的出站连接。 此配置使用源网络地址转换 (SNAT)，因为源或虚拟机的专用 IP 将转换为公共 IP 地址。 SNAT 将后端的 IP 地址映射到负载均衡器的公共 IP 地址。 SNAT 可以防止外部源直接访问后端实例。  
+某些方案要求虚拟机或计算实例与 Internet 建立出站连接。 可使用 Azure 公共负载均衡器的前端 IP 为后端实例提供到 Internet 的出站连接。 此配置使用源网络地址转换 (SNAT) 将虚拟机的专用 IP 将转换为负载均衡器的公共 IP 地址。 SNAT 将后端的 IP 地址映射到负载均衡器的公共 IP 地址。 SNAT 可以防止外部源直接访问后端实例。  
 
 ## <a name="azures-outbound-connectivity-methods"></a><a name="scenarios"></a>Azure 的出站连接方法
 
@@ -41,7 +41,7 @@ ms.locfileid: "121732759"
 此配置可实现：
 
 - IP 伪装
-- 简化允许列表。
+- 简化允许列表
 - 减少用于部署的公共 IP 资源的数量。
 
 使用出站规则，你可以完全声明性地控制出站 Internet 连接。 通过出站规则，你可以根据特定需要微调和调整此功能。
@@ -59,7 +59,7 @@ ms.locfileid: "121732759"
 
 有关 Azure 虚拟网络 NAT 的详细信息，请参阅[什么是 Azure 虚拟网络 NAT](../virtual-network/nat-gateway/nat-overview.md)。
 
-##  <a name="assigning-a-public-ip-to-the-virtual-machine"></a>将公共 IP 分配到虚拟机
+##  <a name="assigning-a-public-ip-to-the-virtual-machine"></a>向虚拟机分配公共 IP
 
  | 关联 | 方法 | IP 协议 |
  | ---------- | ------ | ------------ |
@@ -92,27 +92,27 @@ ms.locfileid: "121732759"
 * 已配置的 NAT 网关
 * 负载均衡器
 
-通过默认 SNAT 创建出站连接。 这称为默认出站访问。 另一个使用默认 SNAT 的场景示例是 Azure 中的虚拟机（没有上述关联）。 在这种情况下，出站连接是由默认出站访问 IP 提供的。 这是 Azure 分配的动态 IP，你无法对其进行控制。 对于生产工作负载，不建议使用默认 SNAT
+通过默认 SNAT 创建出站连接。 这称为默认出站访问。 另一个使用默认 SNAT 的场景示例是 Azure 中的虚拟机（没有上述关联）。 在这种情况下，出站连接是由默认出站访问 IP 提供的。 这是 Azure 分配的动态 IP，你无法对其进行控制。 对于生产工作负载，不建议使用默认 SNAT。
 
 ### <a name="what-are-snat-ports"></a>什么是 SNAT 端口？
 
 端口用于生成用于维护不同流的唯一标识符。 Internet 使用五元组来提供这种区别。
 
-如果一个端口用于入站连接，它将有一个用于该端口上入站连接请求的侦听器。 此端口不能用于出站连接。 若要建立出站连接，使用临时端口为目标提供一个端口，在该端口上进行通信并维护不同的通信流。 当这些临时端口用于执行 SNAT 时，它们称为 SNAT 端口 
+如果一个端口用于入站连接，它将有一个用于该端口上入站连接请求的侦听器。 此端口不能用于出站连接。 若要建立出站连接，使用临时端口为目标提供一个端口，在该端口上进行通信并维护不同的通信流。 当这些临时端口用于执行 SNAT 时，它们称为 SNAT 端口。
 
 根据定义，每个 IP 地址具有 65,535 个端口。 每个端口都可以用于 TCP（传输控制协议）和 UDP（用户数据报协议）的入站或出站连接。 将公共 IP 地址作为前端 IP 添加到负载均衡器时，有 64,000 个端口可用作 SNAT。
 
-用于负载均衡或入站 NAT 规则的端口使用 64,000 个端口中的 8 个端口。 这种用法可以减少可用作 SNAT 的端口数。 如果负载均衡或入站 NAT 规则与其他规则使用相同的八个端口，则它不会使用额外的端口。 
+用于负载均衡或入站 NAT 规则的端口占用 64,000 个端口中的 8 个端口。 这种用法可以减少可用作 SNAT 的端口数。 如果负载均衡或入站 NAT 规则与其他规则使用相同的八个端口，则不会使用额外的端口。 
 
 ### <a name="how-does-default-snat-work"></a>默认 SNAT 的工作原理是什么？
 
-当 VM 创建出站流时，Azure 将源 IP 地址转换为临时 IP 地址。 此转换通过 [SNAT](#snat) 完成。 
+当 VM 创建出站流时，Azure 会将源 IP 地址转换为临时 IP 地址。 此转换通过 [SNAT](#snat) 完成。 
 
 如果通过负载均衡规则使用 SNAT，则会预分配 SNAT 端口，如[默认 SNAT 端口分配表](#snatporttable)中所述。
  
 使用标准内部负载均衡器时，不会将临时 IP 地址用于 SNAT。 默认情况下，此功能支持安全性。 此功能可确保资源使用的所有 IP 地址都可配置并可保留。 
 
-若要在使用标准内部负载均衡器时实现与 Internet 的出站连接，请配置：
+若要在使用标准内部负载均衡器时实现到 Internet 的出站连接，请配置：
 
 - 实例层级公共 IP 地址 
 - NAT 网关
@@ -163,7 +163,7 @@ ms.locfileid: "121732759"
 
 作为负载均衡器的前端 IP 分配的每个公共 IP 都会为其后端池成员分配 64,000 个 SNAT 端口。 这些端口无法与后端池成员共享。 一系列的 SNAT 端口只能由单个后端实例使用，这样才可确保正确路由返回包。 
 
-如果选择通过负载均衡规则自动分配出站 SNAT，分配表将定义每个 IP 的端口分配。
+如果选择通过负载均衡规则自动分配出站 SNAT，则分配表将为每个 IP 定义端口分配。
 
 下表<a name="snatporttable"></a>显示了针对后端池大小的层级的 SNAT 端口预分配情况：
 
@@ -175,6 +175,14 @@ ms.locfileid: "121732759"
 | 201-400 | 128 |
 | 401-800 | 64 |
 | 801-1,000 | 32 | 
+
+## <a name="manual-port-allocation"></a><a name="preallocatedports"></a> 手动端口分配
+
+根据后端池大小和 frontendIPConfigurations 的数量手动分配 SNAT 端口可以帮助避免 SNAT 耗尽。 
+
+可以按“每个实例的端口数”或“后端实例的最大数量”手动分配 SNAT 端口。 如果后端有虚拟机，建议按“每个实例的端口数”分配端口以获得最大 SNAT 端口使用率。 每个实例的端口数的计算方式应如下所示： 前端 IP 数 * 64K / 后端实例数。 否则，如果后端有虚拟机规模集，建议按“后端实例的最大数量”分配端口。 
+
+但是，如果添加到后端的 VM 多于允许的剩余 SNAT 端口，则可能会阻止 VMSS 纵向扩展，或者新 VM 将无法获得足够的 SNAT 端口。 
 
 ## <a name="constraints"></a>约束
 

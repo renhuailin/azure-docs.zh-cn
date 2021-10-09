@@ -1,26 +1,22 @@
 ---
 title: 邀请用户加入 Azure 视频分析器媒体版（旧称为视频分析器媒体版） - Azure
-titleSuffix: Azure Media Services
 description: 本文介绍如何邀请用户加入 Azure 视频分析器媒体版（旧称为视频分析器媒体版）。
-services: media-services
-author: Juliako
-manager: femila
 ms.topic: quickstart
-ms.date: 02/03/2021
-ms.author: juliako
-ms.openlocfilehash: 9f10decf9ae90d91f57eda2da84be8910d7b9fc7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 09/14/2021
+ms.openlocfilehash: 791e9e7d3090aaa79cd754135f26e79fae3a9e0a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384946"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650764"
 ---
 # <a name="quickstart-invite-users-to-video-analyzer-for-media"></a>快速入门：邀请用户加入视频分析器媒体版
 
 若要与同事协作，可以邀请他们加入你的 Azure 视频分析器媒体版（旧称为视频索引器）帐户。 
 
 > [!NOTE]
-> 只有帐户管理员可以添加或删除用户。
+> 只有帐户管理员可以添加或删除用户。</br>
+> 使用付费帐户时，只能邀请 Azure AD 用户。
 
 ## <a name="invite-new-users"></a>邀请新用户
 

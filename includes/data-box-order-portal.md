@@ -3,15 +3,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: databox
 ms.topic: include
-ms.date: 08/26/2021
+ms.date: 09/08/2021
 ms.author: alkohli
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: cce8075187517377efc406ce3b452e8a5c33a817
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 6f784c075d24fe26b7ec1ea9d5921dfb460e5298
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468405"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743324"
 ---
 要订购设备，请在 Azure 门户中执行以下步骤：
 
@@ -36,9 +36,13 @@ ms.locfileid: "123468405"
 
     [ ![启动 Azure Data Box 导入订单](media/data-box-order-portal/data-box-import-03.png) ](media/data-box-order-portal/data-box-import-03.png#lightbox)
 
-5. 选择要订购的 Data Box 产品，是 Data Box（如下所示）还是 Data Box Heavy。 对于 Data Box，单次最多可订购的容量是 80 TB。 对于 Data Box Heavy，单次最多可订购的容量是 770 TB。 可以创建多个订单，以增加数据大小。
+5. 选择要订购的 Data Box 产品，是 Data Box（如下所示）还是 Data Box Heavy。 
 
     [ ![屏幕截图显示用于选择 Azure Data Box 产品的屏幕。突出显示了 Data Box 的“选择”按钮](media/data-box-order-portal/data-box-import-04.png) ](media/data-box-order-portal/data-box-import-04.png#lightbox)
+
+    对于 Data Box，单次最多可订购的容量是 80 TB。 对于 Data Box Heavy，单次最多可订购的容量是 770 TB。 可以创建多个订单，以增加数据大小。
+
+    如果选择“Data Box Heavy”，则 Data Box 团队会检查你的区域中的设备可用性。 他们将通知你何时可以继续处理你的订单。
 
 6. 在“订单”中，转到“基本信息”选项卡，输入或选择以下信息 。 然后，选择“下一步: 数据目标>”。
 

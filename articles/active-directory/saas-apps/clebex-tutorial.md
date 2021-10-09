@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/22/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: b0c73206d69f8902fdd9ef9306a35b3fccacc8ec
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c9addd08254ceedd0938448084120456f20a9d4e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888244"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598073"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clebex"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Clebex 集成
 
@@ -41,8 +41,10 @@ ms.locfileid: "111888244"
 
 * Clebex 支持实时用户预配。
 
+* Clebex 支持[自动用户预配](clebex-provisioning-tutorial.md)。
 
-## <a name="adding-clebex-from-the-gallery"></a>从库中添加 Clebex
+
+## <a name="add-clebex-from-the-gallery"></a>从库中添加 Clebex
 
 若要配置 Clebex 与 Azure AD 的集成，需要从库中将 Clebex 添加到托管 SaaS 应用列表。
 
@@ -148,6 +150,8 @@ ms.locfileid: "111888244"
 
 在本部分中，我们会在 Clebex 中创建一个名为 Britta Simon 的用户。 Clebex 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Clebex 中不存在用户，则会在身份验证后创建一个新用户。
 
+Clebex 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./clebex-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -156,7 +160,7 @@ ms.locfileid: "111888244"
 
 * 直接转到 Clebex 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Clebex 磁贴时，会重定向到 Clebex 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Clebex 磁贴时，会重定向到 Clebex 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 
 ## <a name="next-steps"></a>后续步骤

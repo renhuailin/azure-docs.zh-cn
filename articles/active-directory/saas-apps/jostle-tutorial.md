@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/14/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c01da0df248579fb6d0bd4563f15e67cd05d3f8
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: a81a2ebba0f55eda9b7b3e18eff73b15553ee1bb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112201439"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>教程：Azure Active Directory 与 Jostle 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "112201439"
 * 让用户使用其 Azure AD 帐户自动登录到 Jostle。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,6 +38,8 @@ ms.locfileid: "112201439"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Jostle 支持 SP 发起的 SSO。
+
+* Jostle 支持[自动用户预配](jostle-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -100,7 +102,7 @@ ms.locfileid: "112201439"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -124,6 +126,8 @@ ms.locfileid: "112201439"
 
 在本部分中，会在 Jostle 中创建一个名为“Britta Simon”的用户。 与 [Jostle 支持团队](mailto:support@jostle.me)协作，在 Jostle 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
+Jostle 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./jostle-provisioning-tutorial.md)。
+
 > [!NOTE]
 > Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
 
@@ -135,7 +139,7 @@ ms.locfileid: "112201439"
 
 * 直接转到 Jostle 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Jostle 磁贴时，会重定向到 Jostle 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Jostle 磁贴时，会重定向到 Jostle 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

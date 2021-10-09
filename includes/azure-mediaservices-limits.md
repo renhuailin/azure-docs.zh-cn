@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: 0c60b111483d896ad2beb008d165b9fb84160b35
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 10de63c842eeb60f5e7e725457c88961581370f0
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835556"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129063842"
 ---
 >[!NOTE]
 >对于不固定的资源，请开具支持票证，要求增加配额。 请不要尝试通过创建更多 Azure 媒体服务帐户来提高配额限制。
@@ -23,14 +23,14 @@ ms.locfileid: "122835556"
 | 每个任务的资产数 | 50 |
 | 每个作业的资产数 | 100 |
 | 一次与一个资产关联的唯一定位符数 | 5<sup>4</sup> |
-| 每个媒体服务帐户的直播频道数 |5|
+| 每个媒体服务帐户的直播频道数 |5<sup>5</sup>|
 | 每个频道的停止状态节目数 |50|
 | 每个频道的运行状态节目数 |3|
 | 每个媒体服务帐户的流式处理端点数（已停止或正在运行）|2|
 | 每个流式处理终结点的流式处理单位数 |10 |
-| 存储帐户 | 100<sup>5</sup>（已修复） |
-| 策略 | 1,000,000<sup>6</sup> |
-| 文件大小| 在某些情况下，支持在媒体服务中处理的最大文件大小存在限制。<sup>7</sup> |
+| 存储帐户 | 100<sup>6</sup>（固定） |
+| 策略 | 1,000,000<sup>7</sup> |
+| 文件大小| 在某些情况下，支持在媒体服务中处理的最大文件大小存在限制。<sup>8</sup> |
 
 <sup>1</sup>如果更改类型（例如，从 S1 更改为 S2），则会重置最大预留单位限制。
 
@@ -42,19 +42,14 @@ ms.locfileid: "122835556"
 
 <sup>4</sup>定位符不用于管理按用户的访问控制。 要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。 有关详细信息，请参阅[使用 Azure 媒体服务保护内容](../articles/media-services/latest/drm-content-protection-concept.md)。
 
-<sup>5</sup>存储帐户必须来自同一 Azure 订阅。
+<sup>5</sup>根据所选的流式处理用例和区域数据中心，AMS 能够为每个媒体服务帐户提供 5 个以上的直播频道。 请提交支持请求以增加帐户配额。
 
-<sup>6</sup>不同媒体服务策略的策略数限为 1,000,000 个。 例如，对于定位器策略或 ContentKeyAuthorizationPolicy。 
+<sup>6</sup>存储帐户必须来自同一 Azure 订阅。
+
+<sup>7</sup>不同媒体服务策略的策略数限制为 1,000,000 个。 例如，对于定位器策略或 ContentKeyAuthorizationPolicy。 
 
 >[!NOTE]
 > 如果始终使用相同的天数和访问权限，则使用相同的策略 ID。 有关信息和示例，请参阅[使用媒体服务 .NET SDK 管理资产](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies)。
 
-<sup>7</sup>在 Azure Blob 存储中，单个 Blob 目前支持的最大大小为 5 TB。 媒体服务会根据服务使用的 VM 大小应用其他限制。 大小限制适用于你上传的文件，也适用于由于媒体服务处理（编码或分析）而生成的文件。 如果源文件大于 260 GB，作业可能会失败。 
+<sup>8</sup>在 Azure Blob 存储中，单个 Blob 目前支持的最大大小为 5 TB。 媒体服务会根据服务使用的 VM 大小应用其他限制。 大小限制适用于你上传的文件，也适用于由于媒体服务处理（编码或分析）而生成的文件。 如果源文件大于 260 GB，作业可能会失败。 
 
-下表显示了媒体保留单位（S1、S2 和 S3）的限制。 如果源文件大于表中定义的限制，则编码作业将失败。 编码持续时间较长的 4K 分辨率源时，需要使用 S3 媒体保留单位才能达到所需的性能。 如果 S3 媒体保留单位上的 4K 内容大于 260-GB 限制，请开具支持票证。
-
-|媒体保留单位类型    |最大输入大小 (GB)|
-|---|---|
-|S1 |    26|
-|S2    | 60|
-|S3    |260|

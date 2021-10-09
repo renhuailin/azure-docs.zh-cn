@@ -4,19 +4,19 @@ description: 介绍比较值的 Bicep 比较运算符。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: db9c01cf87fcf2c268e9685589bf13674af27184
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/07/2021
+ms.openlocfilehash: 1a28da26a3c97982bb0e06deebae6ae68b1eb7d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026021"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744405"
 ---
 # <a name="bicep-comparison-operators"></a>Bicep 比较运算符
 
 比较运算符比较值并返回 `true` 或 `false`。 若要运行这些示例，请使用 Azure CLI 或 Azure PowerShell 来[部署 Bicep 文件](./quickstart-create-bicep-use-visual-studio-code.md#deploy-the-bicep-file)。
 
-| 操作员 | 名称 |
+| 运算符 | 名称 |
 | ---- | ---- |
 | `>=` | [大于或等于](#greater-than-or-equal-) |
 | `>`  | 大于 |
@@ -231,6 +231,82 @@ output boolEqual bool = firstBool == secondBool
 | `stringEqual` | boolean | 是 |
 | `boolEqual` | boolean | 是 |
 
+比较数组时，两个数组的元素个数和顺序必须相同。 数组之间不需要相互赋值。
+
+```bicep
+var array1 = [
+  1
+  2
+  3
+]
+
+var array2 = [
+  1
+  2
+  3
+]
+
+var array3 = array2
+
+var array4 = [
+  3
+  2
+  1
+]
+
+output sameElements bool = array1 == array2 // returns true because arrays are defined with same elements
+output assignArray bool = array2 == array3 // returns true because one array was defined as equal to the other array
+output differentOrder bool = array4 == array1 // returns false because order of elements is different
+```
+
+示例中的输出：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ---- |
+| sameElements | bool | true |
+| assignArray | bool | true |
+| differentOrder | bool | false |
+
+比较对象时，属性名称和值必须相同。 属性不需要以相同的顺序定义。
+
+```bicep
+var object1 = {
+  prop1: 'val1'
+  prop2: 'val2'
+}
+
+var object2 = {
+  prop1: 'val1'
+  prop2: 'val2'
+}
+
+var object3 = {
+  prop2: 'val2'
+  prop1: 'val1'
+}
+
+var object4 = object3
+
+var object5 = {
+  prop1: 'valX'
+  prop2: 'valY'
+}
+
+output sameObjects bool = object1 == object2 // returns true because both objects defined with same properties
+output differentPropertyOrder bool = object3 == object2 // returns true because both objects have same properties even though order is different
+output assignObject bool = object4 == object1 // returns true because one object was defined as equal to the other object
+output differentValues bool = object5 == object1 // returns false because values are different
+```
+
+示例中的输出：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ---- |
+| sameObjects | bool | true |
+| differentPropertyOrder | bool | true |
+| assignObject | bool | true |
+| differentValues | bool | false |
+
 ## <a name="not-equal-"></a>不等于 !=
 
 `operand1 != operand2`
@@ -274,6 +350,8 @@ output boolNotEqual bool = firstBool != secondBool
 | `intNotEqual` | boolean | 是 |
 | `stringNotEqual` | boolean | 是 |
 | `boolNotEqual` | boolean | 是 |
+
+对于数组和对象，请参见 [equals](#equals-) 中的示例。
 
 ## <a name="equal-case-insensitive-"></a>等于不区分大小写 =~
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 基于角色的访问控制 (Azure RBAC) 来访问 Azure 机器学习工作区。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: Blackmist
-ms.author: nigup
-author: nishankgu
+ms.author: johwu
+author: johnwu0604
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 2e0b503cd305697a808c08a2fe903d0f27972448
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1089589dabd91d9f273b71f0b89bbf0ad3488e95
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745298"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427773"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
@@ -34,19 +34,18 @@ ms.locfileid: "121745298"
 
 ## <a name="default-roles"></a>默认角色
 
-Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样，当创建新的 Azure 机器学习工作区时，它附带三个默认角色。 可以将用户添加到工作区，并将他们分配给这些内置角色之一。
+Azure 机器学习工作区具有四个默认可用的内置角色。 将用户添加到工作区时，可以为他们分配下述内置角色之一。
 
 | 角色 | 访问级别 |
 | --- | --- |
+| **AzureML 数据科学家** | 可以在 Azure 机器学习工作区中执行所有操作，但创建或删除计算资源及修改工作区本身除外。 |
 | **读者** | 工作区中的只读操作。 读取者可以在工作区中列出和查看资产，包括[数据存储](how-to-access-data.md)凭据。 读取者不能创建或更新这些资产。 |
 | **参与者** | 在工作区中查看、创建、编辑或删除（如果适用）资产。 例如，参与者可以创建试验、创建或附加计算群集、提交运行和部署 Web 服务。 |
 | **所有者** | 对工作区的完全访问权限，包括能够在工作区中查看、创建、编辑或删除（如果适用）资产。 此外，还可以更改角色分配。 |
-| **自定义角色** | 允许你自定义对工作区中特定控件或数据平面操作的访问权限。 例如，提交运行、创建计算、部署模型或注册数据集。 |
 
 > [!IMPORTANT]
 > 在 Azure 中，角色访问的作用域可以限定为多个级别。 例如，对工作区具有所有者访问权限的人可能没有对包含工作区的资源组的所有者访问权限。 有关详细信息，请参阅 [Azure RBAC 工作原理](../role-based-access-control/overview.md#how-azure-rbac-works)。
 
-当前没有特定于 Azure 机器学习的其他内置角色。 有关内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md)。
 
 ## <a name="manage-workspace-access"></a>管理工作区访问权限
 
@@ -56,21 +55,6 @@ Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一�
 - [Azure CLI](../role-based-access-control/role-assignments-cli.md)
 - [REST API](../role-based-access-control/role-assignments-rest.md)
 - [Azure Resource Manager 模板](../role-based-access-control/role-assignments-template.md)
-
-如果已安装 [Azure 机器学习 CLI](reference-azure-machine-learning-cli.md)，则可使用 CLI 命令为用户分配角色：
-
-```azurecli-interactive 
-az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
-```
-
-`user` 字段是 Azure Active Directory 实例中现有用户的电子邮件地址，该实例中包含工作区父订阅。 下面是此命令的用法示例：
-
-```azurecli-interactive 
-az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
-```
-
-> [!NOTE]
-> “az ml workspace share”命令对 Azure Active Directory B2B 的联合帐户不起作用。 请使用 Azure UI 门户而不是命令。
 
 ## <a name="create-custom-role"></a>创建自定义角色
 
@@ -118,11 +102,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 az role definition create --role-definition data_scientist_role.json
 ```
 
-部署后，此角色在指定工作区中可用。 现在，可以在 Azure 门户中添加和分配此角色。 或者，可以使用 `az ml workspace share` CLI 命令将此角色分配给用户：
-
-```azurecli-interactive
-az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist Custom" --user jdoe@contoson.com
-```
+部署后，此角色在指定工作区中可用。 现在，可以在 Azure 门户中添加和分配此角色。
 
 有关自定义角色的详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。 
 

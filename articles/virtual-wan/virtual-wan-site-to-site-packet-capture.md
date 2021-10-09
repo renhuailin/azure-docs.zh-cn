@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: wellee
 Customer intent: As someone with a networking background using Virtual WAN, I want to perform a packet capture on my Site-to-site VPN Gateway.
-ms.openlocfilehash: 765285a8b7c2434c64d1513e510f1cf06b513291
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 8970a275e295a54581876f13a2d4b0112c0116d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598057"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581978"
 ---
 # <a name="perform-packet-capture-on-the-azure-virtual-wan-site-to-site-vpn-gateway"></a>在 Azure 虚拟 WAN 站点到站点 VPN 网关上执行数据包捕获 
 
@@ -78,7 +78,16 @@ Start-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name "<name of the Gatew
 > 请注意，只能同时在 5 个 VPN 连接上运行数据包捕获。
 
 
-请运行以下命令。 通过导航到虚拟中心，单击“连接”下的 VPN（站点到站点），可以找到站点到站点 VPN 连接的名称。 然后，导航到要在其上执行数据包捕获的 VPN 站点，然后单击右侧的三个点。 在弹出的菜单中，单击“编辑 VPN 连接”。
+若要查找 VPN 站点连接的名称，请使用以下 PowerShell 命令。
+
+   ```azurepowershell-interactive
+$connections = Get-AzVpnConnection -ResourceGroupName $rg -ParentResourceName "<name of the Gateway"
+$connections
+$connections.name
+   ```
+在上面的 Powershell 块中，本地变量 connections 包含连接到站点到站点 VPN 网关的所有 VPN 站点的数组。 请找到要在其中执行数据包捕获的 VPN 站点所对应的条目。 复制“名称”字段，并在以下 Start-AzVpnConnectionPacketCapture 命令中将它用作 -Name 参数 。 或者，可通过访问 connections.name 来查看所有连接的名称。 
+
+若要查找链接的名称，请执行以下步骤。 导航到虚拟中心，单击“连接”下的“VPN (站点到站点)”。 然后，导航到要在其上执行数据包捕获的 VPN 站点，然后单击右侧的三个点。 在弹出的菜单中，单击“编辑 VPN 连接”。
 
 :::image type="content" source="./media/virtual-wan-pcap-screenshots/sample-connection.png" alt-text="显示如何查找 VPN 连接名称的图像。" lightbox="./media/virtual-wan-pcap-screenshots/sample-connection.png":::
 

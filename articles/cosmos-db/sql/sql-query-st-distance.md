@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1edb20524327841125461b7b0d4a85cac4567160
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b1cf5bdad567a82bd3936f2b2a187375259407ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206316"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625331"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -56,6 +56,9 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 ## <a name="remarks"></a>备注
 
 此系统函数将从[地理空间索引](../index-policy.md#spatial-indexes)中受益，但包含聚合的查询除外。
+
+> [!NOTE]
+> GeoJSON 规范要求多边形内的点按逆时针顺序指定。 以顺时针顺序指定的多边形表示其中的区域倒转。
 
 ## <a name="next-steps"></a>后续步骤
 

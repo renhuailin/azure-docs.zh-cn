@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的网络，包括 kubenet 
 ms.topic: conceptual
 ms.date: 03/11/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56c98163434fbe2d29cf49bf750d6f7d1cfe0d2b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: bdedde17692aca614c3d33b884950a4cd01b02e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105334"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610705"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -135,6 +135,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 | 访问服务终结点保护的资源                                             | 支持 | 支持 |
 | 使用负载均衡器服务、应用程序网关或入口控制器公开 Kubernetes 服务 | 支持 | 支持 |
 | 默认的 Azure DNS 和专用区域                                                          | 支持 | 支持 |
+| 对 Windows 节点池的支持                                                               | 不支持 | 支持 |
 
 关于 DNS，kubenet 和 Azure CNI 插件 DNS 都由 CoreDNS 提供，后者是一个在 AKS 中运行的部署，有其自己的自动缩放程序。 有关 Kubernetes 上的 CoreDNS 的详细信息，请参阅[自定义 DNS 服务](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)。 默认情况下，CoreDNS 配置为将未知域转发到部署 AKS 群集的 Azure 虚拟网络的 DNS 功能。 因此，Azure DNS 和专用区域将适用于在 AKS 中运行的 Pod。
 

@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 14ac7953654941de176bf74bd38787b33b9c864c
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8f65fff40419ef11dcb5d90c670d10573a114fd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225766"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657056"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务配置 Node.js 应用
 
@@ -351,7 +351,7 @@ if (req.secure) {
 
 ## <a name="monitor-with-application-insights"></a>使用 Application Insights 进行监视
 
-利用 Application Insights，可以监视应用程序的性能、异常和使用情况，而无需进行任何代码更改。 若要附加 App Insights 代理，请转到门户中的 Web 应用并选择“设置”下的“Application Insights”，然后选择“打开 Application Insights”  。 接下来，请选择现有的或创建一个新的 App Insights 资源。 最后，选择底部的“应用”。 若要使用 PowerShell 来检测 Web 应用，请参阅[这些说明](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell)
+利用 Application Insights，可以监视应用程序的性能、异常和使用情况，而无需进行任何代码更改。 若要附加 App Insights 代理，请转到门户中的 Web 应用并选择“设置”下的“Application Insights”，然后选择“打开 Application Insights”  。 接下来，请选择现有的或创建一个新的 App Insights 资源。 最后，选择底部的“应用”。 若要使用 PowerShell 来检测 Web 应用，请参阅[这些说明](../azure-monitor/app/azure-web-apps-nodejs.md#enable-through-powershell)
 
 此代理将会监视服务器端 Node.js 应用程序。 若要监视客户端 JavaScript，请[将 JavaScript SDK 添加到项目](../azure-monitor/app/javascript.md)。 
 
@@ -369,6 +369,23 @@ if (req.secure) {
     - 某些 Web 框架可以在生产模式下通过各种方式部署静态文件。
     - 在生产模式下运行时，某些 Web 框架可能会使用自定义的启动脚本。
 - 在开发模式下，在应用服务中运行你的应用。 例如，在 [MEAN.js](https://meanjs.org/) 中，可以通过[设置 `NODE_ENV` 应用设置](configure-common.md)在运行时中将应用设置为开发模式。
+
+::: zone pivot="platform-windows"
+
+#### <a name="you-do-not-have-permission-to-view-this-directory-or-page"></a>你无权查看此目录或页面
+
+将 Node.js 代码部署到应用服务中的本机 Windows 应用后，导航到应用的 URL 时，可能会在浏览器中看到消息 `You do not have permission to view this directory or page.`。 这很可能是因为没有 web.config 文件（请参阅[模板](https://github.com/projectkudu/kudu/blob/master/Kudu.Core/Scripts/iisnode.config.template)和[示例](https://github.com/Azure-Samples/nodejs-docs-hello-world/blob/master/web.config)）。
+
+如果你使用 Git 部署文件，或者使用[启用了生成自动化](deploy-zip.md#enable-build-automation-for-zip-deploy)的 ZIP 部署，那么在满足以下条件之一时，部署引擎会在应用的 Web 根目录 (`%HOME%\site\wwwroot`) 中自动生成 web.config：
+
+- 你的项目根具有一个 package.json，它定义包含 JavaScript 文件路径的 `start` 脚本。
+- 项目根具有 server.js 或 app.js。
+
+生成的 web.config 是根据检测到的启动脚本定制的。 对于其他部署方法，请手动添加此 web.config。 请确保文件格式正确。 
+
+如果使用 [ZIP 部署](deploy-zip.md)（例如，通过 Visual Studio Code），请务必[启用生成自动化](deploy-zip.md#enable-build-automation-for-zip-deploy)，因为默认情况下不启用。 [`az webapp up`](/cli/azure/webapp#az_webapp_up) 使用启用了生成自动化的 ZIP 部署。
+
+::: zone-end
 
 ::: zone pivot="platform-linux"
 

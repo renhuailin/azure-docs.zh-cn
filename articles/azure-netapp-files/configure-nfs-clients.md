@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/17/2021
+ms.date: 09/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 44a1dd3e5d95e8ab31c9a7716f5026ceb429e084
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 2d0e323271cbc465f2f46c4904f01d5c1654426d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287886"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576755"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFS 客户端
 
@@ -157,6 +157,15 @@ ms.locfileid: "112287886"
     `krb5_realm = CONTOSO.COM (domain name in caps)`   
     `krb5_kpasswd = winad2016.contoso.com (same as AD address which is added in /etc/hosts)`   
     `use_fully_qualified_names = false`   
+    
+    在上面的 `[domain/contoso-ldap]` 配置中：
+    * `id_provider` 设置为 `ldap`，而非 `ad`。
+    * 该配置已指定用于搜索的搜索库及用户类和组类。
+    * `ldap_sasl_authid` 是 `klist -kte` 中的计算机帐户名称。
+    * `use_fully_qualified_names` 设置为 `false`。  此设置表示在使用短名称时使用此配置。
+    * `ldap_id_mapping` 未指定，默认为 `false`。
+
+    该 `realm join` 配置由客户端生成，如下所示：
  
     `[domain/contoso.com]  (Do not edit or remove any of the following information. This information is automatically generated during the realm join process.)`   
     `ad_domain = contoso.com`   
@@ -170,6 +179,11 @@ ms.locfileid: "112287886"
     `use_fully_qualified_names = True`   
     `fallback_homedir = /home/%u@%d`   
     `access_provider = ad`   
+    
+    在上面的 `[domain/contoso.com]` 配置中：
+    * 将 `id_provider` 设置为 `ad`。
+    * 将 `ldap_id_mapping` 设置为 `true`。 它使用 SSSD 生成的 ID。 或者，如果要对所有用户名样式使用 POSIX UID，可将此值设置为 `false`。 可根据客户端配置来确定该值。 
+    * `use_fully_qualified_names` 为 `true`。 此设置表示 `user@CONTOSO.COM` 将使用此配置。
 
 4. 确保 `/etc/nsswitch.conf` 具有 `sss` 条目：   
 

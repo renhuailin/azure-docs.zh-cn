@@ -4,15 +4,15 @@ description: 本操作指南详细介绍如何扫描 Azure Cosmos 数据库 (SQL
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 5cbf179cd28a36705379049a66010d02d2e7cf24
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 14799d5a3ae5878461775e8f581fdda44c140d30
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739088"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209958"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>注册并扫描 Azure Cosmos 数据库 (SQL API)
 
@@ -52,7 +52,7 @@ Azure Cosmos 数据库 (SQL API) 支持通过完全扫描和增量扫描来捕�
 要在数据目录中注册新的 Azure Cosmos 数据库 (SQL API) 帐户，请执行以下操作：
 
 1. 导航到你的 Purview 帐户
-1. 在左侧导航中选择“数据映射”。
+1. 在左侧导航区域中选择“数据映射”。
 1. 选择“注册”
 1. 在“注册资源”上选择“Azure Cosmos DB (SQL API)” 
 1. 选择“继续”
@@ -74,7 +74,7 @@ Azure Cosmos 数据库 (SQL API) 支持通过完全扫描和增量扫描来捕�
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择你已注册的 Azure Cosmos DB 数据源。
 

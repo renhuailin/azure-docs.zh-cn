@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 07/06/2021
-ms.openlocfilehash: 89414731ca230a2753a2c3e426e453a647d2de8d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 30b7bdc80de2b6623d7eb2c285c477cc35bc7b5a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638342"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737051"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -39,7 +39,7 @@ ms.locfileid: "122638342"
 ## <a name="end-to-end-workflow"></a>端到端工作流
 在本方案中，Azure SQL 数据库中包含一些需要复制到 Azure Synapse Analytics 的表。 下面是管道中发生的工作流中的逻辑步骤顺序：
 
-![工作流](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
+:::image type="content" source="media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png" alt-text="Workflow":::
 
 * 第一个管道查找需要复制到接收器数据存储的表列表。  也可以维护一个元数据表用于列出要复制到接收器数据存储的所有表。 然后，该管道触发另一个管道，后者循环访问数据库中的每个表并执行数据复制操作。
 * 第二个管道执行实际复制。 它使用表列表作为参数。 对于列表中的每个表，为获得最佳性能，会使用[通过 Blob 存储和 PolyBase 进行的分阶段复制](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)，将 Azure SQL 数据库中的特定表复制到 Azure Synapse Analytics 中的相应表。 在本示例中，第一个管道传递表列表作为参数值。 
@@ -63,7 +63,7 @@ ms.locfileid: "122638342"
 1. 转到 [Azure 门户](https://portal.azure.com)。 
 1. 在 Azure 门户菜单的左侧，选择“创建资源” > “集成” > “数据工厂”  。 
 
-   ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="在“新建”窗格中选择“数据工厂”":::
 1. 在“新建数据工厂”页上，输入 ADFTutorialBulkCopyDF 作为 **名称**。  
  
    Azure 数据工厂的名称必须 **全局唯一**。 如果看到名称字段的以下错误，请更改数据工厂的名称（例如，改为 yournameADFTutorialBulkCopyDF）。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
@@ -164,10 +164,10 @@ ms.locfileid: "122638342"
 
 1. 在左窗格中选择“+”（加号），然后选择“数据集” 。 
 
-    ![“新建数据集”菜单](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/new-dataset-menu.png" alt-text="“新建数据集”菜单":::
 1. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。 
     
-1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDatabaseDataset**。 在“链接服务”下选择“AzureSqlDatabaseLinkedService”。 然后单击“确定”。
+1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDatabaseDataset**。 在“链接服务”下选择“AzureSqlDatabaseLinkedService”。 。
 
 1. 切换到“连接”选项卡，然后选择任何表作为“表”。 此表是一个虚拟表。 在创建管道时指定一个针对源数据集的查询。 该查询用于从数据库提取数据。 也可以单击“编辑”复选框，然后输入 **dbo.dummyName** 作为表名称。 
  
@@ -176,13 +176,13 @@ ms.locfileid: "122638342"
 
 1. 单击左窗格中的“+ (加)”，然后单击“数据集”。 
 1. 在“新建数据集”窗口中，选择“Azure Synapse Analytics”，然后单击“继续”  。
-1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDWDataset**。 在“链接服务”下选择“AzureSqlDWLinkedService”。 然后单击“确定”。
+1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDWDataset**。 在“链接服务”下选择“AzureSqlDWLinkedService”。 。
 1. 切换到“参数”选项卡，单击“+ 新建”，并输入 **DWTableName** 作为参数名称。 再次单击“+新建”，然后输入 DWSchema 作为参数名称 。 如果从页面中复制/粘贴此名称，请确保 DWTableName 和 DWSchema 末尾没有尾随空格字符 。 
 1. 切换到“连接”选项卡。 
 
     1. 对于“表”，请选中“编辑”选项。 选择进入第一个输入框，单击下面的“添加动态内容”链接。 在“添加动态内容”页面中，单击“参数”下面的 DWSchema，这将自动填充顶部的表达式文本框 `@dataset().DWSchema`，然后单击“完成”   。  
     
-        ![数据集连接表名称](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png" alt-text="数据集连接表名称":::
 
     1. 选择进入第二个输入框，单击下面的“添加动态内容”链接。 在“添加动态内容”页面中，单击“参数”下面的 DWTAbleName，这将自动填充顶部的表达式文本框 `@dataset().DWTableName`，然后单击“完成”   。 
     
@@ -203,7 +203,7 @@ ms.locfileid: "122638342"
 
 1. 在左窗格中单击“+ (加)”，然后单击“管道”。 
 
-    ![“新建管道”菜单](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/new-pipeline-menu.png" alt-text="“新建管道”菜单":::
  
 1. 在“常规”面板中的“属性”下，指定 IterateAndCopySQLTables 作为名称  。 然后通过单击右上角的“属性”图标来折叠面板。
 
@@ -223,15 +223,15 @@ ms.locfileid: "122638342"
 
     c. 在“添加动态内容”页面中，折叠“系统变量”和“函数”部分，单击“参数”下的 **tableList**，这会将顶部的表达式文本框自动填充为 `@pipeline().parameter.tableList`。 然后单击“完成”。 
 
-    ![Foreach 参数生成器](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png" alt-text="Foreach 参数生成器":::
     
     d. 切换到“活动”选项卡，单击 **铅笔图标** 向 **ForEach** 活动添加子活动。
     
-    ![Foreach 活动生成器](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/for-each-activity-builder.png" alt-text="Foreach 活动生成器":::
 
 1. 在“活动”工具箱中，展开“移动并传输”，将“复制数据”活动拖放到管道设计器图面中。 请注意顶部的痕迹导航菜单。 **IterateAndCopySQLTable** 是管道名称，**IterateSQLTables** 是 ForEach 活动名称。 设计器处于活动范围内。 若要从 ForEach 编辑器切换回管道编辑器，可单击痕迹导航菜单中的链接。 
 
-    ![在 ForEach 中复制](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/copy-in-for-each.png" alt-text="在 ForEach 中复制":::
 
 1. 切换到“源”选项卡，然后执行以下步骤：
 
@@ -257,7 +257,7 @@ ms.locfileid: "122638342"
         IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
-        ![复制接收器设置](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/copy-sink-settings.png" alt-text="复制接收器设置":::
 
 1. 切换到“设置”选项卡，然后执行以下步骤： 
 
@@ -294,12 +294,12 @@ ms.locfileid: "122638342"
         ```
     1. 清除“仅第一行”字段对应的复选框。
 
-        ![查找活动 - 设置页](./media/tutorial-bulk-copy-portal/lookup-settings-page.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/lookup-settings-page.png" alt-text="查找活动 - 设置页":::
 1. 将“执行管道”活动从“活动”工具箱拖放到管道设计器图面，然后将名称设置为 **TriggerCopy**。
 
 1. 若要将“查找”活动 **连接** 到“执行管道”活动，请将附加到“查找”活动的 **绿框** 拖至“执行管道”活动左侧。
 
-    ![连接“查找”和“执行管道”活动](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png" alt-text="连接“查找”和“执行管道”活动":::
 
 1. 切换到“执行管道”活动的“设置”选项卡，并执行以下步骤： 
 
@@ -307,7 +307,7 @@ ms.locfileid: "122638342"
     1. 清除“等待完成”复选框。
     1. 在“参数”部分，单击“值”下的输入框，选择下面的“添加动态内容”，输入 `@activity('LookupTableList').output.value` 作为表名值，然后选择“完成”  。 你是在将“查找”活动的结果列表设置为第二个管道的输入。 结果列表包含一系列表，这些表的数据需要复制到目标。 
 
-        ![“执行管道”活动 - 设置页](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png" alt-text="“执行管道”活动 - 设置页":::
 
 1. 若要验证管道，请单击工具栏中的“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”，请单击 **>>** 。
 
@@ -324,7 +324,7 @@ ms.locfileid: "122638342"
 1. 切换到“监视”选项卡。单击“刷新”，直至看到解决方案中两个管道的运行。 持续刷新列表，直至看到“成功”状态。 
 
 1. 若要查看与 **GetTableListAndTriggerCopyData** 管道关联的活动运行，请单击该管道的管道名称链接。 此时会看到该管道运行的两个活动运行。 
-    ![监视管道运行](./media/tutorial-bulk-copy-portal/monitor-pipeline.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/monitor-pipeline.png" alt-text="监视管道运行":::
 1. 若要查看“查找”活动的输出，请单击“活动名称”列下该活动旁边的“输出”链接。 可以最大化和还原“输出”窗口。 查看后，单击“X”关闭“输出”窗口。
 
     ```json

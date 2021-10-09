@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: security
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 7ea57756eb272da42470fa60af2e4a0d5cd1abea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b94ceb3bc190f57e3e5190e89e1018fc8a6e77f6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637785"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831144"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管道活动中使用 Azure Key Vault 机密
 
@@ -28,19 +28,19 @@ ms.locfileid: "122637785"
 
 1. 打开数据工厂的属性，然后复制“托管标识应用程序 ID”值。
 
-    ![托管标识值](media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png" alt-text="托管标识值":::
 
 2. 打开密钥保管库访问策略，并添加托管标识权限以获取和列出机密。
 
-    ![屏幕截图显示“访问策略”页，其中突出显示了“添加访问策略”操作。](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png" alt-text="屏幕截图显示&quot;&quot;&quot;&quot;“访问策略”页，其中突出显示了“添加访问策略”操作。":::
 
-    ![Key Vault 访问策略](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png" alt-text="Key Vault 访问策略":::
 
     单击“添加”，再单击“保存”。
 
 3. 导航到 Key Vault 机密并复制机密标识符。
 
-    ![机密标识符](media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png" alt-text="机密标识符":::
 
     记下要在数据工厂管道运行期间获取的机密 URI。
 
@@ -49,12 +49,12 @@ ms.locfileid: "122637785"
     |属性  |值  |
     |---------|---------|
     |安全输出     |正确         |
-    |代码     |[Your secret URI value]?api-version=7.0         |
+    |URL     |[Your secret URI value]?api-version=7.0         |
     |方法     |GET         |
     |身份验证     |MSI         |
     |资源        |https://vault.azure.net       |
 
-    ![Web 活动](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png" alt-text="Web 活动":::
 
     > [!IMPORTANT]
     > 必须将“？api version=7.0” 添加到机密 URI 的末尾。  
@@ -64,7 +64,7 @@ ms.locfileid: "122637785"
 
 5. 若要使用另一个活动中的值，请使用以下代码表达式“@activity('Web1').output.value”。
 
-    ![代码表达式](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png" alt-text="代码表达式":::
 
 ## <a name="next-steps"></a>后续步骤
 

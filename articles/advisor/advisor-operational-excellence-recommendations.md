@@ -3,12 +3,12 @@ title: 使用顾问改进卓越运营
 description: 使用 Azure 顾问为 Azure 订阅优化和完善卓越运营。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 0b938a0c7a42182bb8d2a50b48d65a0844d952a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 151edab6c389e32abaaa73fec3012fa3bdcdf75a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579950"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650413"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>使用 Azure 顾问实现卓越运营
 
@@ -69,6 +69,8 @@ Azure 顾问检测到太多的主机池启用了验证环境。 若要使验证�
 ## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>启用流量分析以深入了解 Azure 资源中的流量模式
 流量分析是一种基于云的解决方案，可用于洞察 Azure 中的用户和应用程序活动。 流量分析可分析网络观察程序网络安全组 (NSG) 流日志，帮助洞察流量流。 借助流量分析，你可查看 Azure 部署和非 Azure 部署中的主要通信者，调查环境中的开放端口、协议和恶意流，并优化网络部署来提高性能。 可按 10 和 60 分钟的处理时间间隔处理流日志，从而更快地分析流量。 一种好的做法是为 Azure 资源启用流量分析。 
 
+## <a name="increase-vcpu-limits-for-your-deployments-for-pay-as-you-go-subscription-preview"></a>增加即用即付订阅的部署的 vCPU 限制（预览版）
+已经创造了这种体验，可提供一种简单的方法来增加配额，从而帮助你满足不断增长的需求，并避免因配额限制导致的任何部署问题。 我们为有限订阅启用了“快速修复”选项，提供了一键便可将 vCPU 配额从 10 增加到 20 的便利选项。 这种简化的方法代表用户调用[配额 REST API](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670) 来增加配额。
 
 ## <a name="next-steps"></a>后续步骤
 

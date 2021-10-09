@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 09/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 167c6f7eab4c9b553cf74779d4a4ad11c9f58dfb
-ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
+ms.openlocfilehash: 5f58c9c5c58b2706d0861aeef4a2dac2af64274f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113640612"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605157"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure Bastion 主机
 
@@ -59,6 +59,9 @@ ms.locfileid: "113640612"
    ```azurepowershell-interactive
    $bastion = New-AzBastion -ResourceGroupName "myBastionRG" -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
    ```
+## <a name="disassociate-the-vm-public-ip-address"></a>取消关联公共 IP 地址
+
+Azure Bastion 不使用公共 IP 地址连接到客户端 VM。 如果 VM 不需要公共 IP 地址，则可以使用本文中的步骤取消关联公共 IP 地址：[将公共 IP 地址与 Azure VM 取消关联](../virtual-network/remove-public-ip-address-vm.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

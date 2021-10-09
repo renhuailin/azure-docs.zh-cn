@@ -6,19 +6,19 @@ ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 013dea780c1f5819d9b9caefeec3b66066d1f44c
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 93ef2ea1bcb10c08cfe6dc47027d12eeae3002b7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113033544"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547478"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
 Azure 虚拟桌面服务建议将 FSLogix 配置文件容器用作用户配置文件解决方案。 FSLogix 设计用于在远程计算环境（如 Azure 虚拟桌面）中漫游配置文件。 它将完整的用户配置文件存储在单个容器中。 登录时，此容器将动态附加到使用原生支持的虚拟硬盘 (VHD) 和 Hyper-V 虚拟硬盘 (VHDX) 的计算环境。 用户配置文件随时可用并在系统中显示，就像本机用户配置文件一样。 本文介绍如何在 Azure 虚拟桌面中将 FSLogix 配置文件容器与 Azure 文件存储功能配合使用。
 
->[!NOTE]
->如果你正在寻找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅 [FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
+> [!NOTE]
+> 如果你正在寻找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅 [FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
 ## <a name="user-profiles"></a>用户配置文件
 
@@ -77,7 +77,7 @@ S2D 群集需要一个已修补、已更新并保持处于安全状态的操作�
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure 文件存储与 Azure Active Directory 域服务的集成
 
-FSLogix 配置文件容器的性能和功能利用了云。 2019 年 8 月 7 日，Microsoft Azure 文件存储宣告正式发布[使用 Azure Active Directory 域服务 (AD DS) 进行 Azure 文件存储身份验证](../storage/files/storage-files-active-directory-overview.md)的功能。 使用 Azure AD DS 身份验证的 Azure 文件存储满足了成本和管理开销方面的需求，是适用于 Azure 虚拟桌面服务中用户配置文件的高级解决方案。
+FSLogix 配置文件容器的性能和功能利用了云。 2019 年 8 月 7 日，Microsoft Azure 文件存储宣告正式发布[使用 Azure Active Directory 域服务 (Azure AD DS) 进行 Azure 文件存储身份验证](../storage/files/storage-files-active-directory-overview.md)的功能。 使用 Azure AD DS 身份验证的 Azure 文件存储满足了成本和管理开销方面的需求，是适用于 Azure 虚拟桌面服务中用户配置文件的高级解决方案。
 
 ## <a name="best-practices-for-azure-virtual-desktop"></a>有关 Azure 虚拟桌面的最佳做法
 

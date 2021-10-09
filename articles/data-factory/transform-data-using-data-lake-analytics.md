@@ -1,39 +1,39 @@
 ---
 title: 使用 U-SQL 脚本转换数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。
+description: 了解如何通过在 Azure Data Lake Analytics 计算服务上使用 Azure 数据工厂和 Synapse Analytics 运行 U-SQL 脚本来处理或转换数据。
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/01/2018
-ms.openlocfilehash: abb3d151e943dd539fe7c2e349b662412ab24f7c
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: fae713e7998a2a5e9686b38bba1ae40b40a2bf32
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271972"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806316"
 ---
-# <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来处理数据 
+# <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics-with-azure-data-factory-and-synapse-analytics"></a>通过在 Azure Data Lake Analytics 上使用 Azure 数据工厂和 Synapse Analytics 运行 U-SQL 脚本来处理数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-usql-activity.md)
 > * [当前版本](transform-data-using-data-lake-analytics.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍在 **Azure Data Lake Analytics** 计算链接服务上运行 **U-SQL** 脚本的 **Data Lake Analytics U-SQL 活动**。 
+Azure 数据工厂或 Synapse Analytics 工作区中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍在 **Azure Data Lake Analytics** 计算链接服务上运行 **U-SQL** 脚本的 **Data Lake Analytics U-SQL 活动**。 
 
 在使用 Data Lake Analytics U-SQL 活动创建管道之前，先创建 Azure Data Lake Analytics 帐户。 若要了解 Azure Data Lake Analytics，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
-创建 **Azure Data Lake Analytics** 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
+创建 Azure Data Lake Analytics 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂或 Synapse Analytics 工作区。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
 
 下表介绍了 JSON 定义中使用的一般属性。 
 
-| properties                 | 说明                              | 必须                                 |
+| properties                 | 说明                              | 必选                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | **accountName**          | Azure Data Lake Analytics 帐户名。  | 是                                      |
@@ -52,7 +52,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必须 |
+| 属性                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
@@ -87,7 +87,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 若要了解有关链接服务的详细信息，请参阅[计算链接服务](compute-linked-services.md)。
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
-以下 JSON 代码段定义了具有 Data Lake Analytics U-SQL 活动的管道。 活动定义具有对之前创建的 Azure Data Lake Analytics 链接服务的引用。 若要执行 Data Lake Analytics U-SQL 脚本，数据工厂会将你指定的脚本提交到 Data Lake Analytics，Data Lake Analytics 的脚本中将定义所需的输入和输出，以便提取和输出。 
+以下 JSON 代码段定义了具有 Data Lake Analytics U-SQL 活动的管道。 活动定义具有对之前创建的 Azure Data Lake Analytics 链接服务的引用。 若要执行 Data Lake Analytics U-SQL 脚本，该服务会将你指定的脚本提交到 Data Lake Analytics，Data Lake Analytics 的脚本中将定义所需的输入和输出，以便提取和输出。 
 
 ```json
 {
@@ -123,7 +123,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 | type                | 对于 Data Lake Analytics U-SQL 活动，活动类型是 **DataLakeAnalyticsU-SQL**。 | 是      |
 | linkedServiceName   | Azure Data Lake Analytics 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  |是       |
 | scriptPath          | 包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 | 是      |
-| scriptLinkedService | 将包含脚本的 **Azure Data Lake Store** 或 **Azure 存储** 链接到数据工厂的链接服务 | 是      |
+| scriptLinkedService | 链接服务链接包含脚本的 Azure Data Lake Store 或 Azure 存储 | 是      |
 | degreeOfParallelism | 同时用于运行作业的最大节点数。 | 否       |
 | priority            | 确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 | 否       |
 | parameters          | 要传入 U-SQL 脚本的参数。    | 否       |
@@ -161,7 +161,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-在上面的脚本示例中，脚本的输入和输出分别在 \@in 和 \@out 参数中定义。 数据工厂使用“parameters”部分动态传递 U-SQL 脚本中 \@in 和 \@out 参数的值。 
+在上面的脚本示例中，脚本的输入和输出分别在 \@in 和 \@out 参数中定义。 该服务使用“parameters”部分动态传递 U-SQL 脚本中 \@in 和 \@out 参数的值。 
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 
@@ -195,5 +195,5 @@ OUTPUT @rs1
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [ML 工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习工作室（经典版）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

@@ -1,14 +1,14 @@
 ---
 title: 建议的安全做法
 description: 使用 Azure Lighthouse 时，请务必考虑安全性和访问控制。
-ms.date: 03/12/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 897f09c41d550d6200cc3d78743bb3b010f2c402
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 52bc5301633f8e9d92aeaeee22ecf34b6458fccb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768263"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782359"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
 
@@ -44,6 +44,9 @@ ms.locfileid: "113768263"
 创建这些组之后，即可根据需要分配用户。 仅添加真正需要访问权限的用户。 请确保定期查看组成员身份，并删除不再适合或不再需要的任何用户。
 
 请记住，[通过公共托管服务产品载入客户](../how-to/publish-managed-services-offers.md)时，包含的任何组（或用户或服务主体）都将具有与每位购买计划的客户的相同权限。 若要分配不同的组以与每位客户合作，将需要发布专属于每位客户的单独专用计划，或使用 Azure 资源管理器单独载入客户。 例如，可以发布访问权限限制极少的公用计划，然后使用自定义 Azure 资源模板（可根据需要授予更多访问权限）直接与客户一起载入其资源以获取更多访问权限。
+
+> [!TIP]
+> 还可以创建合格授权，使管理租户中的用户能够临时提升其角色。 使用合格的授权可以最大程度地减少永久将用户分配到特权角色的次数，帮助降低租户中的用户运用访问特权所带来的安全风险。 此功能目前以公共预览版提供，具有特定的许可要求。 有关详细信息，请参阅[创建合格授权](../how-to/create-eligible-authorizations.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2021
 ms.author: thwimmer
-ms.openlocfilehash: 3f3b6fa4a1dcd87371fe2c75de2dc89b60d92eb1
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5648c84fceb0c6d17375b712a4f3a86561296d4d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544550"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128709035"
 ---
 # <a name="tutorial-configure-schoolstream-asa-for-automatic-user-provisioning-in-schoolstream-asa"></a>教程：在 SchoolStream ASA 中为 SchoolStream ASA 配置自动用户预配
 
@@ -28,7 +28,8 @@ ms.locfileid: "123544550"
 > [!div class="checklist"]
 > * 在 SchoolStream ASA 中创建用户 
 > * 在用户不再有访问需求的情况下，在 SchoolStream ASA 中删除用户。
-> * 使用户特性在 Azure AD 和 SchoolStream ASA 之间保持同步
+> * 使用户特性在 Azure AD 和 SchoolStream ASA 之间保持同步。
+> * 在 SchoolStream ASA 中预配组和组成员身份。
 > * [单一登录](../manage-apps/add-application-portal-setup-oidc-sso.md)到 SchoolStream ASA（建议）。
 
 
@@ -56,11 +57,11 @@ ms.locfileid: "123544550"
 若要在 Azure AD 中开始管理 SchoolStream ASA 的预配，需要从 Azure AD 应用程序库添加 SchoolStream ASA。 
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
-2. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-3. 导航到“企业应用程序”，选择“所有应用程序”   。
-4. 若要添加新的应用程序，请选择“新建应用程序”  。
-5. 在“浏览 Azure AD 库”部分的搜索框中，键入“SchoolStream ASA” 。
-6. 在结果面板中选择“SchoolStream ASA”，然后注册该应用 。 在该应用添加到租户时等待几秒钟。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“浏览 Azure AD 库”部分的搜索框中，键入“SchoolStream ASA” 。
+1. 在结果面板中选择“SchoolStream ASA”，然后注册该应用 。 在该应用添加到租户时等待几秒钟。
 
 
 如果以前针对 SSO 设置过 SchoolStream ASA，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
@@ -144,7 +145,19 @@ ms.locfileid: "123544550"
    |externalId|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串| 
 
-13. 选择“保存”按钮以提交任何更改。 可以返回“应用程序”选项卡，然后选择“编辑预配”以继续 。
+
+1. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 UNIFI” 。
+
+1. 在“属性映射”部分中，查看从 Azure AD 同步到 UNIFI 的组属性。 选为“匹配”属性的特性用于匹配 UNIFI 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+
+      |Attribute|类型|支持筛选|
+      |---|---|---|
+      |displayName|字符串|&check;
+      |members|参考|
+      |externalId|字符串|      
+
+
+1. 选择“保存”按钮以提交任何更改。 可以返回“应用程序”选项卡，然后选择“编辑预配”以继续 。
 
 1. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
@@ -167,7 +180,11 @@ ms.locfileid: "123544550"
 
 * 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
 * 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
-* 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。  
+* 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](../app-provisioning/application-provisioning-quarantine-status.md)。  
+
+## <a name="change-log"></a>更改日志
+
+* 2020/09/24 - 已启用组预配。
 
 ## <a name="more-resources"></a>更多资源
 

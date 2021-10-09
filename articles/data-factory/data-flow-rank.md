@@ -1,7 +1,7 @@
 ---
 title: 映射数据流中的排名转换
+description: 了解如何使用映射数据流排名转换在 Azure 数据工厂或 Synapse Analytics 管道中生成排名列。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 如何使用 Azure 数据工厂的映射数据流排名转换生成排名列
 author: kromerm
 ms.author: makromer
 ms.reviewer: makromer
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 10/05/2020
-ms.openlocfilehash: 6577425827668f0eaddb19b276e940fff7dafa1a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: c3af0355a02badb5aaa5d5b13a51b74392c931d8
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638889"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059865"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>映射数据流中的排名转换 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 根据用户指定的排序条件，使用排名转换生成已排序的排名。 
 
@@ -27,7 +29,7 @@ ms.locfileid: "122638889"
 
 ## <a name="configuration"></a>Configuration
 
-![排名设置](media/data-flow/rank-configuration.png "排名设置")
+:::image type="content" source="media/data-flow/rank-configuration.png" alt-text="排名设置":::
 
 不区分大小写：如果排序列的类型为 string，则大小写会影响排名结果。 
 
@@ -57,7 +59,7 @@ ms.locfileid: "122638889"
 
 ### <a name="example"></a>示例
 
-![排名设置](media/data-flow/rank-configuration.png "排名设置")
+:::image type="content" source="media/data-flow/rank-configuration.png" alt-text="排名设置":::
 
 以上排名配置的数据流脚本在下面的代码片段中。
 

@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c150f4bf18f9c4f5b9215122a45df1de32f48c32
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: 9587c60cc37badc29a9a9f3ba80a77f6f193a3a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113506234"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583038"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent-by-using-a-cli-and-powershell"></a>通过使用 CLI 和 PowerShell 来安装 Azure AD Connect 预配代理
 本文介绍如何通过使用 PowerShell cmdlet 安装 Azure Active Directory (Azure AD) Connect 预配代理。
@@ -35,12 +35,12 @@ Windows 服务器必须启用 TLS 1.2，然后你才能使用 PowerShell cmdlet 
 
  1. 登录到 Azure 门户，然后选择“Azure Active Directory”。
  1. 在左侧菜单中，选择“Azure AD Connect”。
- 1. 选择“管理预配(预览版)” > “查看所有代理”。
+ 1. 选择“管理预配” > “查看所有代理” 。
  1. 从 Azure 门户下载 Azure AD Connect 预配代理。
 
     ![显示如何下载本地代理的屏幕截图。](media/how-to-install/install-9.png)</br>
 
- 1. 为了进行这些说明，该代理已下载到 C:\ProvisioningSetup 文件夹。 
+ 1. 为了进行这些说明，该代理已下载到 C:\temp 文件夹。 
  1. 在静默模式下安装预配代理。
 
        ```

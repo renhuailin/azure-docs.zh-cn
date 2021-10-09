@@ -2,13 +2,13 @@
 title: 注册最佳做法
 description: 通过遵循这些最佳做法，了解如何有效使用 Azure 容器注册表。
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 0811cc4a5bffc21ffba19e64a3887eab6bc36fbb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 08/13/2021
+ms.openlocfilehash: 1b713ac047b575c68cd8ed539187e3caac13a322
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784130"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626962"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 
@@ -74,28 +74,37 @@ Azure 容器注册表支持组织中的安全做法，以将职责和特权分�
 
 每个[容器注册表服务层级][container-registry-skus]的存储约束旨在与典型方案保持一致：基本层级适用于入门，标准层级适用于大部分生产应用程序，高级层级适用于超大规模性能和[异地复制][container-registry-geo-replication]  。 在注册表的整个生命周期中，应定期删除未使用的内容，管理注册表大小。
 
-使用 Azure CLI 命令 [az acr show-usage][az-acr-show-usage] 显示注册表的当前大小：
+使用 Azure CLI 命令 [az acr show-usage][az-acr-show-usage] 显示注册表中存储和其他资源的当前消耗量：
 
 ```azurecli
 az acr show-usage --resource-group myResourceGroup --name myregistry --output table
 ```
 
-```output
-NAME      LIMIT         CURRENT VALUE    UNIT
---------  ------------  ---------------  ------
-Size      536870912000  185444288        Bytes
-Webhooks  100                            Count
+示例输出：
+
+```
+NAME                        LIMIT         CURRENT VALUE    UNIT
+--------------------------  ------------  ---------------  ------
+Size                        536870912000  215629144        Bytes
+Webhooks                    500           1                Count
+Geo-replications            -1            3                Count
+IPRules                     100           1                Count
+VNetRules                   100           0                Count
+PrivateEndpointConnections  10            0                Count
 ```
 
-此外，在 Azure 门户的注册表“概述”中，还可以找到当前已用存储：
+此外，在 Azure 门户中注册表的“概述”中，还可以找到当前已用存储：
 
 ![Azure 门户中的注册表使用情况信息][registry-overview-quotas]
+
+> [!NOTE]
+> 在[异地复制的](container-registry-geo-replication.md)注册表中，会显示主区域的存储使用情况。 乘以消耗的总注册表存储量的复制数。
 
 ### <a name="delete-image-data"></a>删除映像数据
 
 Azure 容器注册表支持多种从容器注册表中删除映像数据的方法。 可以按标记或程序清单摘要删除映像，也可以删除整个存储库。
 
-有关从注册表中删除映像数据（包括无标记映像，有时称为“无关联”映像或“孤立”映像）的详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
+有关从注册表中删除映像数据（包括无标记映像，有时称为“无关联”映像或“孤立”映像）的详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。 还可以为未标记的清单设置[保留策略](container-registry-retention-policy.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

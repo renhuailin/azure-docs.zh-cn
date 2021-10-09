@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: def73d137f3cc2c79ae8417995ec6bdf6c519b7d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 09/10/2021
+ms.openlocfilehash: 605405965e4c6bc17321401245866f9b21f3a988
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812617"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760054"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share 中支持的数据存储
 
@@ -68,7 +68,7 @@ Azure Data Share 支持从 Azure SQL 数据库和 Azure Synapse Analytics（以�
 有关详细信息，请参阅[从 Azure SQL 数据库和 Azure Synapse Analytics 共享和接收数据](how-to-share-from-sql.md)。
 
 ## <a name="share-from-data-explorer"></a>从数据资源管理器进行共享
-Azure Data Share 支持从 Azure 数据资源管理器群集就地共享数据库的功能。 数据提供程序可以在数据库级别或群集级别共享。 
+Azure Data Share 支持从 Azure 数据资源管理器群集就地共享数据库的功能。 数据提供程序可以在数据库级别或群集级别共享。 如果正在使用 Data Share API 来共享数据，则还可以共享特定表。  
 
 当数据在数据库级别共享时，数据使用者只能访问该数据提供程序共享的数据库。 当提供程序在群集级别共享数据时，数据使用者可以从提供程序的群集访问所有数据库，包括数据提供程序创建的任何未来数据库。
 

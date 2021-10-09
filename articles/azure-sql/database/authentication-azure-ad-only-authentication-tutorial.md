@@ -1,19 +1,20 @@
 ---
-title: 启用 Azure SQL 中的仅限 Azure Active Directory 身份验证
-description: 本文将引导你启用 Azure SQL 数据库和 Azure SQL 托管实例中的“仅限 Azure Active Directory (Azure AD) 身份验证”功能。
+title: 启用仅 Azure Active Directory 身份验证
+description: 本文将引导你在 Azure SQL 数据库和 Azure SQL 托管实例中启用仅 Azure Active Directory (Azure AD) 身份验证功能
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 06/30/2021
-ms.openlocfilehash: 6ea0da3b8a6ddcc2f41bd9e779742f3e2d9cbe4d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 08/31/2021
+ms.openlocfilehash: 76425e37c83ea5ac44653e20753e35606b89d370
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470756"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643225"
 ---
 # <a name="tutorial-enable-azure-active-directory-only-authentication-with-azure-sql"></a>教程：启用 Azure SQL 中的仅限 Azure Active Directory 身份验证
 
@@ -184,7 +185,7 @@ ms.locfileid: "114470756"
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用这些命令可以检查是否为 SQL 数据库逻辑服务器或 SQL 托管实例启用了“仅限 Azure AD 身份验证”。 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)和 [SQL 托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)角色的成员可以使用这些命令检查“仅限 Azure AD 身份验证”的状态，但不能启用或禁用该功能。
+这些命令可用于检查是否为 Azure SQL 数据库或 SQL 托管实例的[逻辑服务器](logical-servers.md)启用了仅 Azure AD 身份验证。 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)和 [SQL 托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)角色的成员可以使用这些命令检查“仅限 Azure AD 身份验证”的状态，但不能启用或禁用该功能。
 
 ## <a name="check-status-in-sql-database"></a>检查 SQL 数据库中的状态
 
@@ -240,7 +241,7 @@ ms.locfileid: "114470756"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用这些命令可以检查是否为 SQL 数据库逻辑服务器或 SQL 托管实例启用了“仅限 Azure AD 身份验证”。 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)和 [SQL 托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)角色的成员可以使用这些命令检查“仅限 Azure AD 身份验证”的状态，但不能启用或禁用该功能。
+这些命令可用于检查是否为 Azure SQL 数据库或 SQL 托管实例的[逻辑服务器](logical-servers.md)启用了仅 Azure AD 身份验证。 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)和 [SQL 托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)角色的成员可以使用这些命令检查“仅限 Azure AD 身份验证”的状态，但不能启用或禁用该功能。
 
 如果已启用该功能，则状态将返回 True；如果已禁用，则返回 False 。
 
@@ -401,3 +402,4 @@ Additional information:
 
 - [Azure SQL 中的“仅限 Azure AD 身份验证”](authentication-azure-ad-only-authentication.md)
 - [在 Azure SQL 中创建启用了仅限 Azure AD 的身份验证的服务器](authentication-azure-ad-only-authentication-create-server.md)
+- [使用 Azure Policy 强制 Azure SQL 实施仅 Azure Active Directory 身份验证](authentication-azure-ad-only-authentication-policy-how-to.md)

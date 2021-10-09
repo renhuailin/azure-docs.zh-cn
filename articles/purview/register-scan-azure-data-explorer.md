@@ -1,18 +1,18 @@
 ---
-title: 如何扫描 Azure 数据资源管理器
-description: 本操作指南详细介绍了如何扫描 Azure 数据资源管理器。
+title: 如何注册并扫描 Azure 数据资源管理器
+description: 本操作指南详细介绍了如何在 Azure Purview 中扫描 Azure 数据资源管理器。
 author: nayenama
 ms.author: nayenama
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 05/08/2021
-ms.openlocfilehash: adf9f3da66908dc473388f9b3da14439de86ddcb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 28ed2e82108cce48ac7ce6988bd9e9833253855a
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740277"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209922"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>注册并扫描 Azure 数据资源管理器
 
@@ -63,16 +63,14 @@ Azure 数据资源管理器支持完整和增量扫描以捕获元数据和架�
 
 1. 导航到 Azure 门户。 然后导航到 Azure 数据资源管理器实例。
 
-1. 将服务主体添加到“权限”选项卡中的“AllDatabasesViewer”角色，如下面的屏幕截图所示。 
-
-    :::image type="content" source="./media/register-scan-azure-data-explorer/permissions-auth.png" alt-text="在权限中添加服务主体的屏幕截图" border="true":::
+1. 将服务主体添加到“权限”选项卡中的“AllDatabasesViewer”角色。 
 
 ## <a name="register-an-azure-data-explorer-account"></a>注册 Azure 数据资源管理器帐户
 
 要在数据目录中注册新的 Azure 数据资源管理器 (Kusto) 帐户，请执行以下操作：
 
 1. 导航到你的 Purview 帐户
-1. 在左侧导航区域中选择“源”。
+1. 在左侧导航区域中选择“数据映射”。
 1. 选择“注册”
 1. 在“注册源”上选择“Azure 数据资源管理器” 
 1. 选择“继续”
@@ -93,7 +91,7 @@ Azure 数据资源管理器支持完整和增量扫描以捕获元数据和架�
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择你已注册的 Azure 数据资源管理器数据源。
 

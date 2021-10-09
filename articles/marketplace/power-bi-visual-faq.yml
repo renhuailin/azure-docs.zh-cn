@@ -5,16 +5,16 @@ metadata:
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: conceptual
-  ms.date: 09/03/2021
+  ms.date: 09/27/2021
   author: posurnis
   ms.author: pooja.surnis
   ms.reviewer: pooja.surnis
-  ms.openlocfilehash: a86d692daa794aed6130e7e1e4f84b74f04285a6
-  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+  ms.openlocfilehash: a30f4e7e5807393e5a7d0293b4a3752021ce27f2
+  ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/07/2021
-  ms.locfileid: "123544499"
+  ms.lasthandoff: 09/27/2021
+  ms.locfileid: "129080128"
 title: Power BI 视觉对象常见问题解答
 summary: Power BI 视觉对象产品/服务将移动到合作伙伴中心商业市场，以简化产品/服务管理体验。 Microsoft 将在 2021 年 9 月完成移动，此时间之后所有现有和新的 Power BI 视觉产品/服务都将在商业市场中提供。 本文解答有关产品/服务管理体验的移动和增强功能的常见问题。
 sections:
@@ -89,35 +89,12 @@ sections:
       我们将移动 Office 应用商店中支持的所有 Power BI 视觉对象产品/服务，无论它们的状态是“草稿”还是“上线”。 移动后，Power BI 视觉对象产品/服务将被锁定，无法在 Office 应用商店中进行编辑。
   - question: >
       为什么在合作伙伴中心找不到我的 Power BI 视觉对象产品/服务？
-    answer: >
-      将产品/服务移到商业市场后，你将不能从 Office 应用商店访问产品/服务。 在“合作伙伴中心”中看到的内容取决于你注册的计划、你所属的帐户以及分配给你的用户角色和权限。 有很多合作伙伴中心计划可用，且你可以注册多个计划。 你还可以访问具有相同用户凭据的多个帐户。
-
-
-      你在 Office 应用商店中创建的 Power BI 视觉对象产品/服务将在商业市场中可用，使用的帐户与创建原始产品/服务的帐户相同。 若要确保查看的是正确的计划和正确的帐户，请按照以下步骤进行操作。 有关其他故障排除提示，请参阅[管理合作伙伴中心帐户](/partner-center/partner-center-account-setup)。
-
-
-      **在合作伙伴中心访问正确的计划**
-
-
-      1. 使用与之前相同的凭据登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。 左侧导航菜单显示与你注册的计划关联的选项，例如 MPN 计划、Office 应用商店和商业市场。
-
-
-      1. 选择“商业市场” > “概述”，以访问你的产品/服务（如果未在左侧导航菜单中看到商业市场，则可能使用了错误的帐户）：
-
-         :::image type="content" source="media/power-bi-visual/overview-tab.png" alt-text="显示合作伙伴中心的“概览”选项卡。":::
-
-      **在合作伙伴中心内访问正确的帐户**
-
-
-      如果有多个帐户，合作伙伴中心会在左侧导航菜单中显示帐户选取器按钮。 选择此按钮可查看你所属的帐户。 选择一个帐户以切换到该帐户并查看与该帐户有关的所有计划和信息。 如果在导航菜单中未看到帐户选取器，说明你只有一个帐户。
-
-
-      :::image type="content" source="media/power-bi-visual/account-picker.png" alt-text="在合作伙伴中心的左侧导航菜单中显示帐户选取器按钮。":::
+    answer: "将产品/服务移到商业市场后，你将不能从 Office 应用商店访问产品/服务。 在“合作伙伴中心”中看到的内容取决于你注册的计划、你所属的帐户以及分配给你的用户角色和权限。 有很多合作伙伴中心计划可用，且你可以注册多个计划。 你还可以访问具有相同用户凭据的多个帐户。\n\n默认情况下，你在 Office 应用商店中创建的 Power BI 视觉对象产品/服务将在商业市场中可用，使用的帐户与创建原始产品/服务的帐户相同。 请注意，你的帐户需要在商业市场中注册，才能查看迁移后的 Power BI 视觉对象产品/服务。 如果你不想将产品/服务迁移到用于 Office 应用商店的帐户，而是迁移到其他帐户，请联系[支持人员](support.md)。 若要确保查看的是正确的计划和正确的帐户，请按照以下步骤进行操作。 有关其他故障排除提示，请参阅[管理合作伙伴中心帐户](/partner-center/partner-center-account-setup)。\n\n**在合作伙伴中心访问正确的计划**\n\n[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]\n\n#### <a name=\"workspaces-view\"></a>[工作区视图](#tab/workspaces-view)\n\n1. 使用与之前相同的凭据登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。 你将看到与你注册的计划关联的磁贴，例如 MPN 计划、Office 应用商店和商业市场。 \n\n1. 若要在主页上访问你的产品/服务，请选择“市场产品/服务”磁贴。 \n\n    [ ![展示了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)\n\n    如果注册了多个市场计划，则会在“市场产品/服务”页面顶部看到相应的选项卡。 如果是这样，请确保选择“商业市场”选项卡。 如果没有看到“商业市场”选项卡，则表示你尚未在商业市场中注册，而只注册了 Office 应用商店。\n\n    [ ![展示了“市场产品/服务”页面上的“商业市场”选项卡。](media/workspaces/commercial-marketplace-tab.png) ](media/workspaces/commercial-marketplace-tab.png#lightbox)\n\n#### <a name=\"current-view\"></a>[当前视图](#tab/current-view)\n\n1. 使用与之前相同的凭据登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。 左侧导航菜单显示与你注册的计划关联的选项，例如 MPN 计划、Office 应用商店和商业市场。\n\n1. 选择“商业市场” > “概述”以访问你的产品/服务。 如果你在左侧导航菜单中没有看到商业市场，则表示你的帐户尚未在商业市场中注册。\n\n   :::image type=\"content\" source=\"media/power-bi-visual/overview-tab.png\" alt-text=\"显示合作伙伴中心的“概览”选项卡。\":::\n\n---\n\n**在合作伙伴中心内访问正确的帐户**\n\n如果你有多个帐户，可以在它们之间进行切换。 若要了解如何操作，请参阅[在合作伙伴中心切换帐户](switch-accounts.md)。\n"
   - question: >
       有关使用合作伙伴中心的说明位于何处？
     answer: >
-      转到商业市场[欢迎页面](https://aka.ms/MigrationFAQs)，然后展开“创建并管理产品/服务”部分。
+      转到商业市场[欢迎页面](./index.yml)，然后展开“创建并管理产品/服务”部分。
   - question: >
       发布和产品/服务管理之间有哪些区别？
-    answer: "以下是在 Office 应用商店和商业市场中发布 Power BI 视觉对象产品/服务的主要区别：\n\n1. **简化了包提交过程**\n\n   对于在合作伙伴中心中提交到商业市场的任何新产品/服务，可以直接在“技术配置”页面上传两个包文件：`.pbix` 和 `.pbiviz`。 不再需要与 PBI 支持团队合作处理 XML 清单文件。 不再需要使用 XML 文件提交产品/服务。 这种简化的提交过程减少了准备和提交 Power BI 视觉对象产品/服务的时间。\n\n   :::image type=\"content\" source=\"media/power-bi-visual/technical-config.png\" alt-text=\"显示合作伙伴中心的技术配置页。\":::\n\n1. **强化预览选项**\n\n   商业市场提供的比较功能改进了筛选选项，你可使用这些选项在发布产品/服务之前查看更改，并将其与处于预览状态或客户可用的功能进行比较。 未发布的更新将保存为草稿。 有关比较功能的详细信息，请参阅[更新商业市场中的现有产品/服务](update-existing-offer.md#compare-changes-to-your-offer)\n\n   :::image type=\"content\" source=\"media/power-bi-visual/enhanced-preview.png\" lightbox=\"media/power-bi-visual/enhanced-preview.png\" alt-text=\"显示合作伙伴中心的产品/服务比较页面。\":::\n\n1. **品牌和导航更改**\n\n   你将注意到有一些品牌方面的更改。 例如，“产品”在商业市场中为“产品/服务”：\n\n   :::image type=\"content\" source=\"media/power-bi-visual/branding-navigation.png\" alt-text=\"显示合作伙伴中心的产品/服务概述页面。\":::\n\n1. **分析**\n\n   - 合作伙伴中心的“市场见解”仪表板将获得以下增强功能：\n\n     - 行动号召趋势\n\n       - 添加同意点击量分析。 同意点击量表示在产品/服务列表页面上完成的所有同意点击次数。 用户单击“行动号召”按钮，如“立即获取”、“免费试用”、“与我联系”或“体验版”后，会计入单击次数。\n\n         :::image type=\"content\" source=\"media/power-bi-visual/analytics-graphs.png\" alt-text=\"显示合作伙伴中心的同意点击量分析图表。\":::\n\n     - 页面访问和行动号召\n     \n     - 表格数据已修改\n\n       - 添加“同意点击量”列。 使用此信息了解产品/服务的转化率。\n\n       - 在推荐域视图中添加了“平台”列。 使用此信息可了解产品/服务的页面浏览量、行动号召和同意点击量在网站和嵌入式客户端平台上有何不同。\n\n       - 添加“漏斗视图”，以显示从页面浏览量到同意点击量的转化率\n\n         :::image type=\"content\" source=\"media/power-bi-visual/funnel-view.png\" alt-text=\"显示合作伙伴中心的漏斗视图分析的图表。\":::\n\n   - Office 应用商店页中的分析\n\n     - Office 应用商店中的分析将仅显示客户端内应用商店的采集遥测数据。 迁移产品/服务后，Web 商店的分析将显示在商业市场的“市场见解”报告中。\n     \n"
+    answer: "以下是在 Office 应用商店和商业市场中发布 Power BI 视觉对象产品/服务的主要区别：\n\n1. **简化了包提交过程**\n\n   对于在合作伙伴中心中提交到商业市场的任何新产品/服务，可以直接在“技术配置”页面上传两个包文件：`.pbix` 和 `.pbiviz`。 不再需要与 PBI 支持团队合作处理 XML 清单文件。 不再需要使用 XML 文件提交产品/服务。 这种简化的提交过程减少了准备和提交 Power BI 视觉对象产品/服务的时间。\n\n   :::image type=\"content\" source=\"media/power-bi-visual/technical-configuration.png\" alt-text=\"显示合作伙伴中心的技术配置页。\":::\n\n1. **强化预览选项**\n\n   商业市场提供的比较功能改进了筛选选项，你可使用这些选项在发布产品/服务之前查看更改，并将其与处于预览状态或客户可用的功能进行比较。 未发布的更新将保存为草稿。 有关比较功能的详细信息，请参阅[更新商业市场中的现有产品/服务](update-existing-offer.md#compare-changes-to-your-offer)\n\n   :::image type=\"content\" source=\"media/power-bi-visual/enhanced-preview.png\" lightbox=\"media/power-bi-visual/enhanced-preview.png\" alt-text=\"显示合作伙伴中心的产品/服务比较页面。\":::\n\n1. **品牌和导航更改**\n\n    #### <a name=\"workspaces-view\"></a>[工作区视图](#tab/workspaces-view)   \n\n    你将注意到有一些品牌方面的更改。 例如，“产品”在商业市场中为“产品/服务”：\n\n    :::image type=\"content\" source=\"media/power-bi-visual/branding-navigation-workspaces.png\" alt-text=\"显示合作伙伴中心的产品/服务概述页面。\":::\n\n    #### <a name=\"current-view\"></a>[当前视图](#tab/current-view)\n\n    你将注意到有一些品牌方面的更改。 例如，“产品”在商业市场中为“产品/服务”：\n\n    :::image type=\"content\" source=\"media/power-bi-visual/branding-navigation.png\" alt-text=\"显示合作伙伴中心的产品/服务概述页面。\":::\n\n    ---    \n\n1. **分析**\n\n   - 合作伙伴中心的“市场见解”仪表板将获得以下增强功能：\n\n     - 行动号召趋势\n\n       - 添加同意点击量分析。 同意点击量表示在产品/服务列表页面上完成的所有同意点击次数。 用户单击“行动号召”按钮，如“立即获取”、“免费试用”、“与我联系”或“体验版”后，会计入单击次数。\n\n         :::image type=\"content\" source=\"media/power-bi-visual/analytics-graphs.png\" alt-text=\"显示合作伙伴中心的同意点击量分析图表。\":::\n\n     - 页面访问和行动号召\n     \n     - 表格数据已修改\n\n       - 添加“同意点击量”列。 使用此信息了解产品/服务的转化率。\n\n       - 在推荐域视图中添加了“平台”列。 使用此信息可了解产品/服务的页面浏览量、行动号召和同意点击量在网站和嵌入式客户端平台上有何不同。\n\n       - 添加“漏斗视图”，以显示从页面浏览量到同意点击量的转化率\n\n         :::image type=\"content\" source=\"media/power-bi-visual/funnel-view.png\" alt-text=\"显示合作伙伴中心的漏斗视图分析的图表。\":::\n\n   - Office 应用商店页中的分析\n\n     - Office 应用商店中的分析将仅显示客户端内应用商店的采集遥测数据。 迁移产品/服务后，Web 商店的分析将显示在商业市场的“市场见解”报告中。\n     \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n- 若要获取更多帮助，请与[客户支持](https://partner.microsoft.com/support/?stage=2&topicid=dfd204c3-8357-c8d6-4dff-186bd183058c)联系\n\n<!--\n- [Create a Power BI visual offer in Partner Center](marketplace-power-bi-visual.md) -->"

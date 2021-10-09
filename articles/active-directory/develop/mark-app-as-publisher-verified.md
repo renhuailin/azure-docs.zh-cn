@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb1347b0dfcb2be5c485e503fb87c5a70dd7d30c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92363447"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153779"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>将应用标记为“发布者已验证”
 
@@ -46,7 +46,7 @@ ms.locfileid: "92363447"
 
     - 在合作伙伴中心，该用户必须拥有以下[角色](/partner-center/permissions-overview)之一。MPN 管理员、帐户管理员或全局管理员（这是 Azure AD 中主导的共享角色）。 
 
-1. 导航到应用注册门户：  
+1. 导航到“应用注册”边栏选项卡：  
 
 1. 单击想要标记为“发布者已验证”的应用，然后打开“品牌打造”边栏选项卡。 
 

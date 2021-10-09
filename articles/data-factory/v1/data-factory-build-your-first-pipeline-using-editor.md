@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 9794aa0750a886803aac3fec7622f6b3770acf9d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a13309631d2fbd971021c3307f8ebe129e6a3a3e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785574"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592406"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -52,11 +53,11 @@ ms.locfileid: "104785574"
 
 1. 选择“新建” > “数据 + 分析” > “数据工厂”。
 
-   ![“创建”边栏选项卡](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png" alt-text="“创建”边栏选项卡":::
 
 1. 在“新建数据工厂”边栏选项卡的“名称”下，输入 **GetStartedDF**。 
 
-   ![“新建数据工厂”边栏选项卡](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png" alt-text="“新建数据工厂”边栏选项卡":::
 
    > [!IMPORTANT]
    > 数据工厂的名称必须全局唯一。 如果收到错误“数据工厂名称 GetStartedDF 不可用”，请更改数据工厂名称。 例如，使用 yournameGetStartedDF，然后再次创建数据工厂。 有关命名规则的详细信息，请参阅[数据工厂：命名规则](data-factory-naming-rules.md)。
@@ -80,11 +81,11 @@ ms.locfileid: "104785574"
    >
 1. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴：    
 
-   ![“正在部署数据工厂”状态](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png" alt-text="“正在部署数据工厂”状态":::
 
 1. 创建数据工厂后，会看到“数据工厂”页，其中显示了数据工厂的内容。     
 
-    ![“数据工厂”边栏选项卡](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png" alt-text="“数据工厂”边栏选项卡":::
 
 在数据工厂中创建管道之前，需要先创建一些数据工厂项。 先创建链接服务，将数据存储/计算链接到数据存储。 然后，定义输入和输出数据集，表示链接数据存储中的输入/输出数据。 最后创建管道，其中包含使用这些数据集的活动。
 
@@ -96,32 +97,32 @@ ms.locfileid: "104785574"
 
 1. 在 **GetStartedDF** 的“数据工厂”边栏选项卡中，选择“创作和部署”。  随即显示“数据工厂编辑器”。
 
-   ![“编写和部署”磁贴](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png" alt-text="“编写和部署”磁贴":::
 
 1. 选择“新建数据存储”并选择“Azure 存储”。 
 
-   ![“新建数据存储”边栏选项卡](./media/data-factory-build-your-first-pipeline-using-editor/new-data-store-azure-storage-menu.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/new-data-store-azure-storage-menu.png" alt-text="“新建数据存储”边栏选项卡":::
 
 1. 此时会在编辑器中看到用于创建存储链接服务的 JSON 脚本。
 
-   ![存储链接服务](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png" alt-text="存储链接服务":::
 
 1. 将 **帐户名称** 替换为存储帐户的名称。 将 **帐户密钥** 替换为存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
 1. 选择命令栏上的“部署”，部署链接服务。
 
-    ![部署按钮](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png" alt-text="部署按钮":::
 
    成功部署链接服务以后，“草稿-1”窗口会消失。 此时会在左侧的树状视图中看到 **AzureStorageLinkedService**。
 
-    ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)    
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png" alt-text="AzureStorageLinkedService":::    
 
 ### <a name="create-an-hdinsight-linked-service"></a>创建 HDInsight 链接服务
 在此步骤中，将按需 HDInsight 群集链接到数据工厂。 HDInsight 群集是在运行时自动创建的。 该群集在处理完毕并空闲指定的时间后删除。
 
 1. 在数据工厂编辑器中，选择“更多” > “新建计算” > “按需 HDInsight 群集”。
 
-    ![新建计算](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png" alt-text="新建计算":::
 
 1. 将以下代码片段复制并粘贴到“草稿 1”窗口。 该 JSON 代码片段描述用于创建按需 HDInsight 群集的属性。
 
@@ -163,11 +164,11 @@ ms.locfileid: "104785574"
 
 1. 选择命令栏上的“部署”，部署链接服务。
 
-    ![“部署”选项](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png" alt-text="“部署”选项":::
 
 1. 确认左侧树视图中出现了 **AzureStorageLinkedService** 和 **HDInsightOnDemandLinkedService**。
 
-    ![显示 AzureStorageLinkedService 与 HDInsightOnDemandLinkedService 链接在一起的屏幕截图。](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png" alt-text="显示 AzureStorageLinkedService 与 HDInsightOnDemandLinkedService 链接在一起的屏幕截图。":::
 
 ## <a name="create-datasets"></a>创建数据集
 此步骤创建数据集来代表 Hive 处理的输入和输出数据。 这些数据集引用前面在本教程中创建的 AzureStorageLinkedService。 链接服务指向存储帐户。 数据集在存储输入和输出数据的存储中指定容器、文件夹和文件名称。   
@@ -175,7 +176,7 @@ ms.locfileid: "104785574"
 ### <a name="create-the-input-dataset"></a>创建输入数据集
 1. 在数据工厂编辑器中，选择“更多” > “新建数据集” > “Azure Blob 存储”。
 
-    ![新建数据集](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png" alt-text="新建数据集":::
 
 1. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 代码片段中，创建名为 **AzureBlobInput** 的数据集，表示管道中活动的输入数据。 此外，指定将输入数据放在名为 **adfgetstarted** 的 Blob 容器及名为 **inputdata** 的文件夹中。
 
@@ -252,14 +253,14 @@ ms.locfileid: "104785574"
 
 1. 验证是否已成功创建数据集。
 
-    ![包含链接服务的树视图](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-data-set.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/tree-view-data-set.png" alt-text="包含链接服务的树视图":::
 
 ## <a name="create-a-pipeline"></a>创建管道
 此步骤创建第一个具有 HDInsight Hive 活动的管道。 输入切片每月提供（frequency 为 Month，interval 为 1）。 每月生成输出切片。 活动的计划程序属性也设置为每月一次。 输出数据集的设置必须与活动计划程序匹配。 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。 本部分结尾说明以下 JSON 代码片段中使用的属性。
 
 1. 在数据工厂编辑器中，选择“更多” > “新建管道”。
 
-    ![“新建管道”选项](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png" alt-text="“新建管道”选项":::
 
 1. 将以下代码片段复制并粘贴到“草稿 1”窗口。
 
@@ -339,7 +340,7 @@ ms.locfileid: "104785574"
 
 1. 确认树视图中显示了该管道。
 
-    ![包含管道的树视图](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-pipeline.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/tree-view-pipeline.png" alt-text="包含管道的树视图":::
 
 
 
@@ -347,35 +348,35 @@ ms.locfileid: "104785574"
 ### <a name="monitor-a-pipeline-by-using-the-diagram-view"></a>使用“图示”视图来监视管道
 1. 在“数据工厂”边栏选项卡中，选择“图示”。 
 
-    ![图示磁贴](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png" alt-text="图示磁贴":::
 
 1. 在“图示”视图中，可以看到管道的概述，以及本教程中使用的数据集。
 
-    ![图示视图](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png" alt-text="图示视图":::
 
 1. 若要查看管道中的所有活动，请右键单击图示中的管道，然后选择“打开管道”。
 
-    ![“打开管道”菜单](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png" alt-text="“打开管道”菜单":::
 
 1. 确认管道中显示了“Hive 活动”。
 
-    ![“打开管道”视图](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png" alt-text="“打开管道”视图":::
 
     若要返回到上一视图，请选择顶部菜单中的“数据工厂”。
 
 1. 在“图示”视图中，双击数据集 **AzureBlobInput**。 确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”。 如果一段时间后未显示此状态，请检查是否已将输入文件 (**input.log**) 放置在正确的容器 (**adfgetstarted**) 和文件夹 (**inputdata**) 中。
 
-   ![输入切片处于“就绪”状态](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png" alt-text="输入切片处于“就绪”状态":::
 
 1. 关闭“AzureBlobInput”边栏选项卡。
 
 1. 在“图示”视图中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
 
-   ![数据集处理正在进行](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png" alt-text="数据集处理正在进行":::
 
 1. 处理完成后，可以看到切片处于“就绪”状态。
 
-   ![数据集处于“就绪”状态](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)  
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png" alt-text="数据集处于“就绪”状态":::  
 
    > [!IMPORTANT]
    > 创建按需 HDInsight 群集通常需要大约 20 分钟。 预期管道需要花大约 30 分钟来处理切片。
@@ -384,15 +385,15 @@ ms.locfileid: "104785574"
 
 1. 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  
 
-   ![输出数据](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png" alt-text="输出数据":::
 
 1. 选择切片即可在“数据切片”边栏选项卡中查看其详细信息。
 
-    ![数据切片信息](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png" alt-text="数据切片信息":::
 
 1. 在“活动运行”列表中，选择要查看其详细信息的活动运行。 （在此方案中，该活动为 Hive 活动。）此信息显示在“活动运行详细信息”边栏选项卡中。   
 
-    ![“活动运行详细信息”窗口](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)    
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png" alt-text="“活动运行详细信息”窗口":::    
 
    在日志文件中，可以看到已执行的 Hive 查询和状态信息。 可以使用这些日志来排查任何问题。
    有关详细信息，请参阅[使用 Azure 门户边栏选项卡监视和管理管道](data-factory-monitor-manage-pipelines.md)。
@@ -407,15 +408,15 @@ ms.locfileid: "104785574"
 
 1. 在数据工厂的主页上选择“监视和管理”磁贴。
 
-    ![“监视和管理”磁贴](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png" alt-text="“监视和管理”图块":::
 
 1. 在“监视和管理”应用程序中，更改“开始时间”和“结束时间”，使之与管道的开始时间和结束时间匹配。  选择“应用”。
 
-    ![“监视和管理”应用](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png" alt-text="“监视和管理”应用":::
 
 1. 在“活动窗口”列表中选择一个活动窗口，查看其信息。
 
-    ![“活动窗口”列表](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png" alt-text="“活动窗口”列表":::
 
 ## <a name="summary"></a>总结
 本教程通过在 HDInsight Hadoop 群集上运行 Hive 脚本，创建了一个数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下操作：  

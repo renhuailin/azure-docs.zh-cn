@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: 2aa4fe3e7e2f7637060996b53748391da03879ec
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 07a47b432470b683680c315f2d1d741cc607774f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032275"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214592"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>异常检测器中的新增功能
 
@@ -19,6 +19,10 @@ ms.locfileid: "123032275"
 我们还增加了一些用户生成的内容的链接。 那些项将标有 [UGC] 标记。 其中一些托管在 Microsoft 外部的网站上，Microsoft 不对其中的内容负责。 在参考这些资源时，请谨慎使用。 如果希望我们删除内容，请联系 AnomalyDetector@microsoft.com 或在 GitHub 上提出问题。
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="september-2021"></a>2021 年 9 月
+* 异常检测器（单变量）已在印度西部的 Jio 推出。
+* 部署在另外五个区域的多变量异常情况检测 API：东亚、美国西部、印度中部、韩国中部、德国中西部。
 
 ### <a name="august-2021"></a>2021 年 8 月
 
@@ -70,9 +74,6 @@ ms.locfileid: "123032275"
 * 2019 年 8 月 20 日：[通过容器支持使异常检测器可在本地使用](https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support) - AI 演示（主讲人：Qun ing 和 Seth Juarez）
 * 2019 年 8 月 13 日：[Azure 异常检测器简介](https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner) - AI 演示（主讲人：Qun Ying 和 Seth Juarez）
 
-## <a name="open-source-projects"></a>开放源代码项目
-
-* 2019 年 6 月 3 日 [UGC]：[演示异常情况检测和流式传输到 Power BI 的 Jupyter Notebook](https://github.com/marvinbuss/MS-AnomalyDetector) - Marvin Buss
 
 ## <a name="service-updates"></a>服务更新
 

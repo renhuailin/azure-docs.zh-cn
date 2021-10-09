@@ -4,15 +4,15 @@ description: 商业应用商店中的体验版类型
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: b1ca1b1caa1da1c38e0a7af8ec714c3734ca1191
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 09/09/2021
+ms.openlocfilehash: 7825dff873afaf223cab7b86c73083027caccc72
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110288"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363627"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 
@@ -306,39 +306,46 @@ ms.locfileid: "113110288"
 
    如果没有租户 ID，请在 Azure Active Directory 中创建一个新的 ID。 有关设置租户的帮助，请参阅“[快速入门：设置租户](../active-directory/develop/quickstart-create-new-tenant.md)”。
 
-3. **Azure AD 应用 ID** — 创建并注册新的应用程序。 我们将使用此应用程序对体验版实例执行操作。
+3. 将 Microsoft 体验版应用程序预配到租户。 我们将使用此应用程序对体验版资源执行操作。
+    1. 如果尚未安装，请安装 [Azure Az PowerShell 模块](/powershell/azure/install-az-ps)。
+    1. 添加 Microsoft 测试体验版应用程序的服务主体。
+        1. 运行 `Connect-AzAccount` 并提供凭据以登录 Azure 帐户，这需要 Azure Active Directory 全局管理员[内置角色](/azure/active-directory/roles/permissions-reference#global-administrator)。 
+        1. 创建新服务主体：`New-AzADServicePrincipal -ApplicationId d7e39695-0b24-441c-a140-047800a05ede -DisplayName 'Microsoft TestDrive' -SkipAssignment`。
+        1. 确保已创建服务主体：`Get-AzADServicePrincipal -DisplayName 'Microsoft TestDrive'`。
+      ![显示用于验证服务主体的代码](media/test-drive/commands-to-verify-service-principal.png)
 
-   1. 导航到新建的目录或现有目录，然后在过滤器窗格中选择“Azure Active Directory”。
-   2. 搜索“**应用注册**”，然后单击“**添加**”。
-   3. 提供应用程序名称。
-   4. 选择“**Web 应用/API**”的“**类型**”。
-   5. 提供“登录 URL”中的任何值，则不使用此字段。
-   6. 选择“创建”  。
-   7. 创建应用程序后，选择“**属性**” > “**将应用程序设为多租户**”，然后单击“**保存**”。
+4. 对于 Azure AD 应用 ID，请粘贴此应用程序 ID：`d7e39695-0b24-441c-a140-047800a05ede`。
+5. 对于 Azure AD 应用密钥，由于不需要机密，因此请插入虚拟机密，例如“no-secret”。
+6. 由于我们要使用该应用程序部署到订阅，因此，需要从 Azure 门户或 PowerShell 将应用程序添加为订阅中的参与者：
 
-4. 选择“保存”。
+   1. 通过 Azure 门户：
 
-5. 然后是获取已注册应用的应用程序 ID，并将其粘贴到此处的体验版字段中。
+       1. 选择要用于体验版的“订阅”。
+       1. 选择“访问控制 (IAM)”。<br>
 
-   ![Azure AD 应用程序 ID 详细信息](media/test-drive/azure-ad-application-id-detail.png)
+          ![添加一个新的访问控制 (IAM) 参与者](media/test-drive/access-control-principal.png)
 
-6. 由于我们要使用该应用程序部署到订阅，因此，需将该应用程序添加为订阅中的参与者。
+       1. 选择“角色分配”选项卡，然后选择“+ 添加角色分配”。
 
-   1. 选择要用于体验版的“**订阅**”类型。
-   1. 选择“访问控制 (IAM)”。
-   1. 选择“**角色分配**”选项卡，然后选择“**添加角色分配**”。
+          ![在“选择访问控制 (IAM)”窗口中，显示如何选择“角色分配”选项卡，然后选择“+ 添加角色分配”。](media/test-drive/access-control-principal-add-assignments.jpg)
 
-      ![添加新的访问控制主体](media/test-drive/access-control-principal.jpg)
+       1. 输入此 Azure AD 应用程序名称：`Microsoft TestDrive`。 选择要将“**参与者**”角色分配给的应用程序。
 
-   1. 设置“**角色**”并“**将访问权限分配给**”，如下所示。 在“**选择**”字段中，输入 Azure AD 应用程序的名称。 选择要将“**参与者**”角色分配给的应用程序。
+          ![如何分配参与者角色](media/test-drive/access-control-permissions.jpg)
 
-      ![添加权限](media/test-drive/access-control-permissions.jpg)
+       1. 选择“保存”。
+   1. 如果使用 PowerShell：
+      1. 运行此代码可获取 ServicePrincipal object-id：`(Get-AzADServicePrincipal -DisplayName 'Microsoft TestDrive').id`。
+      1. 使用 ObjectId 和订阅 ID 运行此代码：`New-AzRoleAssignment -ObjectId <objectId> -RoleDefinitionName Contributor -Scope /subscriptions/<subscriptionId>`。
 
-   1. 选择“保存”。
-
-7. 生成“**Azure AD 应用**”的身份验证密钥。 在“**密钥**”下，添加“**密钥说明**”，将“持续时间”设置为“**永不过期**”（过期密钥将在生产中中断体验版），然后选择“**保存**”。 复制此值，并将其粘贴到所需的体验版字段中。
-
-![显示 Azure AD 应用程序密钥](media/test-drive/azure-ad-app-keys.png)
+> [!NOTE]
+> 在删除旧的 appID 之前，请转到 Azure 门户，然后转到“资源组”，并搜索 `CloudTry_`。 检查“事件发起者”列。
+>
+> :::image type="content" source="media/test-drive/event-initiated-by-field.png" lightbox="media/test-drive/event-initiated-by-field.png" alt-text="显示“事件发起者”字段":::
+>
+> 除非至少有一个资源（操作名称）设置为 Microsoft TestDrive，否则不要删除旧的 appID。
+>
+> 若要删除 appID，请在左侧导航菜单中选择“Azure Active Directory” >  **“应用注册”** ，然后选择“所有应用程序”选项卡。选择你的应用程序并选择“删除”。
 
 ## <a name="republish"></a>重新发布
 

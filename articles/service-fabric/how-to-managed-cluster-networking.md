@@ -3,12 +3,12 @@ title: 配置 Service Fabric 托管群集的网络设置
 description: 了解如何为 Service Fabric 托管群集配置 NSG 规则、RDP 端口访问、负载均衡规则，等等。
 ms.topic: how-to
 ms.date: 8/23/2021
-ms.openlocfilehash: d953e9cd96c509a2410087588125b023613b380c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0299118a7715a566cccc0dd1fb7bc83aa9c5e06c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867354"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545653"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>配置 Service Fabric 托管群集的网络设置
 
@@ -38,62 +38,62 @@ Service Fabric 托管群集使用默认网络配置创建。 此配置包括一�
 使用 Microsoft.ServiceFabric/managedclusters 资源（版本 `2021-05-01` 或更高版本）的 [networkSecurityRules](/azure/templates/microsoft.servicefabric/managedclusters#managedclusterproperties-object) 属性来分配 NSG 规则。 例如：
 
 ```json
-            "apiVersion": "2021-05-01",
-            "type": "Microsoft.ServiceFabric/managedclusters",
-            ...
-            "properties": {
-                ...
-                "networkSecurityRules" : [
-                    {
-                        "name": "AllowCustomers",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33000-33499",
-                        "access": "Allow",
-                        "priority": 2001,
-                        "direction": "Inbound"
-                    },
-                    {
-                        "name": "AllowARM",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "AzureResourceManager",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33500-33699",
-                        "access": "Allow",
-                        "priority": 2002,
-                        "direction": "Inbound"
-                    },
-                    {
-                        "name": "DenyCustomers",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33700-33799",
-                        "access": "Deny",
-                        "priority": 2003,
-                        "direction": "Outbound"
-                    },
-                    {
-                        "name": "DenyRDP",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "*",
-                        "destinationAddressPrefix": "VirtualNetwork",
-                        "destinationPortRange": "3389",
-                        "access": "Deny",
-                        "priority": 2004,
-                        "direction": "Inbound",
-                        "description": "Override for optional SFMC_AllowRdpPort rule. This is required in tests to avoid Sev2 incident for security policy violation."
-                    }
-                ],
-                "fabricSettings": [
-                ...
-                ]
-            }
+{
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters",
+  "properties": {
+    "networkSecurityRules": [
+      {
+        "name": "AllowCustomers",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "Internet",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33000-33499",
+        "access": "Allow",
+        "priority": 2001,
+        "direction": "Inbound"
+      },
+      {
+        "name": "AllowARM",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "AzureResourceManager",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33500-33699",
+        "access": "Allow",
+        "priority": 2002,
+        "direction": "Inbound"
+      },
+      {
+        "name": "DenyCustomers",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "Internet",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33700-33799",
+        "access": "Deny",
+        "priority": 2003,
+        "direction": "Outbound"
+      },
+      {
+        "name": "DenyRDP",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "VirtualNetwork",
+        "destinationPortRange": "3389",
+        "access": "Deny",
+        "priority": 2004,
+        "direction": "Inbound",
+        "description": "Override for optional SFMC_AllowRdpPort rule. This is required in tests to avoid Sev2 incident for security policy violation."
+      }
+    ],
+    "fabricSettings": [
+      "..."
+    ]
+  }
+}
 ```
 
 ## <a name="clientconnection-and-httpgatewayconnection-default-and-optional-rules"></a>ClientConnection 和 HttpGatewayConnection 默认规则与可选规则
@@ -199,7 +199,9 @@ Service Fabric 托管群集会为节点类型中的每个实例自动创建入�
 
    ![入站 NAT 规则][Inbound-NAT-Rules]
 
-   默认情况下，对于 Windows 群集，前端端口在 50000 及更大范围内，目标端口是端口 3389，此端口已映射到目标节点的 RDP 服务。
+   默认情况下，对于 Windows 群集，前端端口分配从 50000 开始，目标端口是端口 3389，该端口映射到目标节点上的 RDP 服务。
+   >[!NOTE]
+   > 如果使用的是 BYOLB 功能并且希望使用 RDP，那么必须单独配置 NAT 池才能这样做。 这不会自动为这些节点类型创建任何 NAT 规则。
 
 4. 远程连接到特定节点（规模集实例）。 可以使用创建群集时设置的用户名和密码，也可使用已配置的其他任意凭据。
 
@@ -315,7 +317,7 @@ Service Fabric 托管群集为 Fabric 网关端口以及在托管群集属性的
             }
    ```
 
-2. 部署已启用 IPv6 的托管群集。 根据需要自定义[示例模板](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-IPv6/AzureDeploy.json)，或生成你自己的模板。
+2. 部署已启用 IPv6 的托管群集。 根据需要自定义[示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-IPv6)，或生成你自己的模板。
    在以下示例中，我们将在 `westus` 中创建名为 `MyResourceGroup` 的资源组，并部署启用了此功能的群集。
    ```powershell
     New-AzResourceGroup -Name MyResourceGroup -Location westus
@@ -403,7 +405,7 @@ Service Fabric 托管群集为 Fabric 网关端口以及在托管群集属性的
    > [!NOTE]
    > VNetRoleAssignmentID 必须是一个 [GUID](../azure-resource-manager/templates/template-functions-string.md#examples-16)。 如果再次部署包含此角色分配的模板，请确保该 GUID 与最初使用的 GUID 相同。 建议单独运行此代码，或者在部署后从群集模板中删除此资源，因为它只需创建一次。
 
-   下面是完整的示例 [Azure 资源管理器 (ARM) 模板，它可以创建 VNet 子网，并执行可用于此步骤的角色分配](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-BYOVNET/SFMC-VNet-RoleAssign.json)。
+   下面是完整的示例 [Azure 资源管理器 (ARM) 模板，它可以创建 VNet 子网，并执行可用于此步骤的角色分配](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOVNET/createVNet-assign-role.json)。
 
 3. 设置角色后，按下面所示配置群集部署的 `subnetId` 属性：
 
@@ -419,7 +421,7 @@ Service Fabric 托管群集为 Fabric 网关端口以及在托管群集属性的
             ...
             }
    ```
-   参阅[自带 VNet 群集示例模板](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-BYOVNET/AzureDeploy.json)或自定义你自己的模板。
+   参阅[自带 VNet 群集示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOVNET)或自定义你自己的模板。
 
 4. 部署配置的托管群集 Azure 资源管理器 (ARM) 模板。
 
@@ -437,7 +439,7 @@ Service Fabric 托管群集为 Fabric 网关端口以及在托管群集属性的
 
 * 使用预配置的负载均衡器静态 IP 地址传送专用或公共流量
 * 将负载均衡器映射到特定的节点类型
-* 为每个节点类型配置 NSG 规则，因为每个节点类型将部署在其自己的 VNET 中
+* 为每个节点类型配置网络安全组规则，因为每个节点类型都部署在具有唯一 NSG 的自己的子网中 
 * 维护可能已实施的现有策略和控制措施
 
 > [!NOTE]
@@ -445,7 +447,7 @@ Service Fabric 托管群集为 Fabric 网关端口以及在托管群集属性的
 
 功能要求
  * 支持基本和标准 SKU Azure 负载均衡器类型
- * 现有 Azure 负载均衡器上必须配置后端和 NAT 池。 请参阅[此处有关创建和分配角色的完整示例](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role)。 
+ * 现有 Azure 负载均衡器上必须配置后端和 NAT 池。 请参阅[此处有关创建和分配角色的完整示例](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json)。 
 
 下面是客户可以使用此功能的几个示例场景：
 
@@ -532,7 +534,7 @@ Service Fabric 托管群集为 Fabric 网关端口以及在托管群集属性的
 
 5. （可选）配置应用于节点类型的托管群集 NSG 规则，以允许 Azure 负载均衡器上配置的任何所需流量，否则会阻止流量。
 
-   有关如何打开入站规则的示例，请参阅[自带负载均衡器示例 Azure 资源管理器 (ARM) 模板](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-BYOLB/AzureDeploy.json)。
+   有关如何打开入站规则的示例，请参阅[自带负载均衡器示例 Azure 资源管理器 (ARM) 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB)。
 
 6. 部署已配置的托管群集 ARM 模板
 

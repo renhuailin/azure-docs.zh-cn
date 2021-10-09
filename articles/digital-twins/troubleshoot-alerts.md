@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 请了解如何在 Azure 数字孪生指标上启用警报。
 author: baanders
 ms.author: baanders
-ms.date: 7/28/2020
+ms.date: 9/15/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 55dcda4c323700caa030fb87768d36a702d1c501
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6a5397a2387b7fb55b0e03664ddb9f52ec8baf59
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476747"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642752"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>排查 Azure 数字孪生的问题：警报
 
@@ -28,15 +28,19 @@ Azure 数字孪生会收集服务实例的[指标](troubleshoot-metrics.md)，�
 
 2. 从菜单中选择“警报”，然后选择“+ 新建警报规则” 。
 
+   :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Azure 门户的屏幕截图，其中显示了用于在 Azure 数字孪生实例的“警报”部分创建新警报规则的按钮。" lightbox="media/troubleshoot-alerts/alerts-pre.png":::
+
 3. 在接下来的“创建警报规则”页上，可以按照提示来定义条件、要触发的操作和警报详细信息。     
     * “范围”详细信息中应会自动填写实例的详细信息
     * 你将定义“条件”和“操作组”详细信息，以自定义警报触发器和响应 
-    * 在“警报规则详细信息”部分，输入规则的名称和可选说明。 如果希望警报在创建后立即生效，可选中“在创建后启用警报规则”复选框。
-        - 还可以在这里选择资源组和“严重性”级别 。
+    * 在“警报规则详细信息”部分，输入规则的名称和可选说明。 
+        - 如果希望警报在创建后立即生效，可选中“在创建后启用警报规则”复选框。
+        - 如果希望在不再满足条件时解决警报，则可以选中“自动解决警报”复选框。
+        - 还可以在此部分选择“订阅”、“资源组”和“严重性”级别。
 
 4. 选择“创建警报规则”按钮，以创建警报规则。
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="显示“创建警报规则”页的 Azure 门户屏幕截图，其中包含范围、条件、操作组和警报规则详细信息等部分。" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+   :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="显示“创建警报规则”页的 Azure 门户屏幕截图，其中包含范围、条件、操作组和警报规则详细信息等部分。" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 有关填写这些字段的引导式演练，请参阅 Microsoft Azure 中的警报概述。 下面是演示 Azure 数字孪生步骤的一些示例。
 

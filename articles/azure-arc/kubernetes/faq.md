@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: 本文包含与已启用 Azure Arc 的 Kubernetes 相关的常见问题解答列表
 keywords: Kubernetes, Arc, Azure, 容器, 配置, GitOps, faq
-ms.openlocfilehash: f678bd23bc4e9e40f718d72ccde8069c36673ac6
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 750b783d3234bb5ea61ed12dc4cf0471b7b231e4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272918"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215047"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>常见问题解答 - 已启用 Azure Arc 的 Kubernetes
 
@@ -27,19 +27,19 @@ AKS 是 Azure 提供的托管 Kubernetes 服务。 AKS 通过将大量的复杂�
 
 ## <a name="do-i-need-to-connect-my-aks-clusters-running-on-azure-to-azure-arc"></a>是否需要将在 Azure 上运行的 AKS 群集连接到 Azure Arc？
 
-在群集上运行已启用 Arc 的服务（如应用程序服务和数据服务）仅需要将 Azure Kubernetes 服务 (AKS) 群集连接到 Azure Arc。 可以使用已启用 Arc 的 Kubernetes 的[自定义位置](custom-locations.md)功能完成此操作。 目前这是一个时间点限制，在 AKS 群集上本机引入群集扩展和自定义位置之前，无法使用此功能。
+在群集上运行已启用 Azure Arc 的服务（如应用程序服务和数据服务）仅需要将 Azure Kubernetes 服务 (AKS) 群集连接到 Azure Arc。 可以使用已启用 Azure Arc 的 Kubernetes 的[自定义位置](custom-locations.md)功能完成此操作。 目前这是一个时间点限制，在 AKS 群集上本机引入群集扩展和自定义位置之前，无法使用此功能。
 
 如果不想使用自定义位置，而只想使用 Azure Monitor 和 Azure Policy (Gatekeeper) 等管理功能，则可在 AKS 上本机使用这些功能，并且在这种情况下不需要连接到 Azure Arc。
     
-## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>是否应将我在 Azure Stack Hub 和 Azure Stack Edge 上的 AKS-HCI 群集和 Kubernetes 群集连接到 Azure Arc？
+## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-edge-to-azure-arc"></a>是否应将我在 Azure Stack Edge 上的 AKS-HCI 群集和 Kubernetes 群集连接到 Azure Arc？
 
-是，将 Azure Stack Edge 或 Azure Stack Hub 上的 AKS-HCI 群集或 Kubernetes 群集连接到 Azure Arc，可在 Azure 资源管理器中为群集提供资源表示形式。 此资源表示形式可以将群集配置、Azure Monitor 和 Azure Policy (Gatekeeper) 等功能扩展到连接的 Kubernetes 群集。
+是，将 Azure Stack Edge 上的 AKS-HCI 群集或 Kubernetes 群集连接到 Azure Arc，可在 Azure 资源管理器中为群集提供资源表示形式。 此资源表示形式可以将群集配置、Azure Monitor 和 Azure Policy (Gatekeeper) 等功能扩展到连接的 Kubernetes 群集。
 
 如果已启用 Azure Arc 的 Kubernetes 群集位于 Azure Stack Edge、Azure Stack HCI 上的 AKS（>= 2021 年 4 月更新）或 Windows Server 2019 数据中心上的 AKS（>= 2021 年 4 月更新）上，则免费包含 Kubernetes 配置。
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>如何处理过期的已启用 Azure Arc 的 Kubernetes 资源？
 
-与已启用 Azure Arc 的 Kubernetes 群集关联的系统分配的托管标识仅由 Arc 代理用于与 Azure Arc 服务通信。 与此系统分配的托管标识关联的证书的有效期为 90 天，代理可在第 46 天到第 90 天之间尝试续订此证书。 此证书过期后，资源将被视为 `Expired`，并且所有功能（例如配置、监视和策略）在此群集上停止工作，然后你需要删除该群集，重新将群集连接到 Azure Arc。 因此，建议让群集在 46 天到第 90 天之间至少联机一次，以确保续订托管标识证书。
+与已启用 Azure Arc 的 Kubernetes 群集关联的系统分配的托管标识仅由 Azure Arc 代理用于与 Azure Arc 服务通信。 与此系统分配的托管标识关联的证书的有效期为 90 天，代理可在第 46 天到第 90 天之间尝试续订此证书。 此证书过期后，资源将被视为 `Expired`，并且所有功能（例如配置、监视和策略）在此群集上停止工作，然后你需要删除该群集，重新将群集连接到 Azure Arc。 因此，建议让群集在 46 天到第 90 天之间至少联机一次，以确保续订托管标识证书。
 
 若要检查任何给定群集的证书何时过期，请运行以下命令：
 
@@ -82,8 +82,12 @@ CI/CD 管道对于事件驱动的 Kubernetes 群集部署（例如，推送到 G
 
 此功能在整个 Kubernetes 群集清单中应用基准配置（例如网络策略、角色绑定和 Pod 安全策略），以满足合规性和治理要求。
 
+## <a name="does-azure-arc-enabled-kubernetes-store-any-customer-data-outside-of-the-clusters-region"></a>已启用 Azure Arc 的 Kubernetes 是否会将任何客户数据存储在群集区域之外？
+
+将客户数据存储到一个区域的功能目前仅适用于亚太地区的东南亚区域（新加坡）和巴西地区的巴西南部区域（圣保罗州）。 对于其他所有区域，客户数据存储在以下地域。 有关详细信息，请参阅[信任中心](https://azure.microsoft.com/global-infrastructure/data-residency/)。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 参考快速入门[将 Kubernetes 群集连接到 Azure Arc](./quickstart-connect-cluster.md)。
-* 已将 Kubernetes 群集连接到 Azure Arc？ [在已启用 Arc 的 Kubernetes 群集上创建配置](./tutorial-use-gitops-connected-cluster.md)。
+* 已将 Kubernetes 群集连接到 Azure Arc？ 在已启用 Azure Arc 的 Kubernetes 群集上[创建配置](./tutorial-use-gitops-connected-cluster.md)。
 * 了解如何[使用 Azure Policy 大规模应用配置](./use-azure-policy.md)。

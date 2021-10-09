@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 7d2f32b4bb730d0c698950ecdf82283d1bf88274
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c3770c9d0d9e051417ca160e454976599f3bb334
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638912"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771738"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 门户根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -54,13 +54,13 @@ ms.locfileid: "122638912"
 
 1. **首次加载：** 创建一个包含复制活动的管道，将完整数据从源数据存储（Azure SQL 数据库）复制到目标数据存储（Azure Blob 存储）。
 
-    ![完整地加载数据](media/tutorial-incremental-copy-change-tracking-feature-portal/full-load-flow-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-portal/full-load-flow-diagram.png" alt-text="完整地加载数据":::
 1.  **增量加载：** 创建一个包含以下活动的管道并定期运行。
     1. 创建 **两项查找活动**，从 Azure SQL 数据库获取旧的和新的 SYS_CHANGE_VERSION，然后将其传递至复制活动。
     2. 创建 **一项复制活动**，将两个 SYS_CHANGE_VERSION 值之间的插入/更新/删除数据从 Azure SQL 数据库复制到 Azure Blob 存储。
     3. 创建 **一项存储过程活动**，更新 SYS_CHANGE_VERSION 的值，以便进行下一次的管道运行。
 
-    ![增量加载流程图](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-load-flow-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-load-flow-diagram.png" alt-text="增量加载流程图":::
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -154,11 +154,11 @@ ms.locfileid: "122638912"
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”：
 
-   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png" alt-text="在“新建”窗格中选择“数据工厂”":::
 
 2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。
 
-     ![“新建数据工厂”页](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
+     :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png" alt-text="“新建数据工厂”页":::
 
    Azure 数据工厂的名称必须全局唯一。 如果收到错误，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
 
@@ -176,7 +176,7 @@ ms.locfileid: "122638912"
 7. 单击“创建”。      
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。
 
-    ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png" alt-text="“正在部署数据工厂”磁贴":::
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
 
    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
@@ -184,7 +184,7 @@ ms.locfileid: "122638912"
 10. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独的标签页中启动 Azure 数据工厂用户界面 (UI)。 
 11. 在主页中，切换到左侧面板中的“管理”选项卡，如下图所示：
 
-    ![显示“管理”按钮的屏幕截图。](media/doc-common-process/get-started-page-manage-button.png)
+    :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="显示“管理”按钮的屏幕截图。":::
 
 ## <a name="create-linked-services"></a>创建链接服务
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，创建 Azure 存储帐户和 Azure SQL 数据库中数据库的链接服务。
@@ -194,17 +194,17 @@ ms.locfileid: "122638912"
 
 1. 依次单击“连接”、“+ 新建”。 
 
-   ![“新建连接”按钮](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png" alt-text="“新建连接”按钮":::
 2. 在“新建链接服务”窗口中，选择“Azure Blob 存储”，然后单击“继续”。
 
-   ![选择“Azure Blob 存储”](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png" alt-text="选择“Azure Blob 存储”":::
 3. 在“新建链接服务”窗口中执行以下步骤：
 
     1. 输入 **AzureStorageLinkedService** 作为 **名称**。
     2. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。
     3. 单击“ **保存**”。
 
-   ![Azure 存储帐户设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png" alt-text="Azure 存储帐户设置":::
 
 
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
@@ -222,7 +222,7 @@ ms.locfileid: "122638912"
     6. 单击“测试连接”以测试连接。
     7. 单击“保存”保存链接服务。
 
-       ![Azure SQL 数据库链接服务设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
+       :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png" alt-text="Azure SQL 数据库链接服务设置":::
 
 ## <a name="create-datasets"></a>创建数据集
 在此步骤中，请创建表示数据源和数据目标的数据集， 并创建用于存储 SYS_CHANGE_VERSION 的位置。
@@ -232,39 +232,39 @@ ms.locfileid: "122638912"
 
 1. 在树状视图中，依次单击“+”（加号）、“数据集”。
 
-   ![“新建数据集”菜单](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-dataset-menu.png)
-2. 选择“Azure SQL 数据库”，然后单击“完成”。 
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/new-dataset-menu.png" alt-text="“新建数据集”菜单":::
+2. 选择“Azure SQL 数据库”，然后单击“完成”。
 
-   ![源数据集类型 - Azure SQL 数据库](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-sql-database.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-sql-database.png" alt-text="源数据集类型 - Azure SQL 数据库":::
 3. 此时会显示用于配置数据集的新选项卡。 树状视图中也会显示数据集。 在“属性”窗口中，将数据集的名称更改为 **SourceDataset**。
 
-   ![源数据集名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-name.png)    
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-name.png" alt-text="源数据集名称":::    
 4. 切换到“连接”选项卡，然后执行以下步骤：
 
     1. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
     2. 为“表”选择“[dbo].[data_source_table]”。
 
-   ![源连接](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-connection.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-connection.png" alt-text="源连接":::
 
 ### <a name="create-a-dataset-to-represent-data-copied-to-sink-data-store"></a>创建一个数据集，用于表示复制到接收器数据存储的数据。
 在此步骤中，请创建一个数据集，代表从源数据存储复制的数据。 在执行先决条件中的步骤时，你已在 Azure Blob 存储中创建了 adftutorial 容器。 创建容器（如果不存在），或者将容器设置为现有容器的名称。 在本教程中，输出文件名是使用表达式 `@CONCAT('Incremental-', pipeline().RunId, '.txt')` 动态生成的。
 
 1. 在树状视图中，依次单击“+”（加号）、“数据集”。 
 
-   ![“新建数据集”菜单](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-dataset-menu.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/new-dataset-menu.png" alt-text="“新建数据集”菜单":::
 2. 选择“Azure Blob 存储”，然后单击“完成”。
 
-   ![接收器数据集类型 - Azure Blob 存储](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-type.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-type.png" alt-text="接收器数据集类型 - Azure Blob 存储":::
 3. 此时会显示用于配置数据集的新选项卡。 树状视图中也会显示数据集。 在“属性”窗口中，将数据集的名称更改为 **SinkDataset**。
 
-   ![接收器数据集 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-name.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-name.png" alt-text="接收器数据集 - 名称":::
 4. 在“属性”窗口中切换到“连接”选项卡，然后执行以下步骤：
 
     1. 为“链接服务”选择“AzureStorageLinkedService”。
     2. 输入 **adftutorial/incchgtracking** 作为 **filePath** 的 **文件夹** 部分。
     3. 输入 \@CONCAT('Incremental-', pipeline().RunId, '.txt') 作为 filePath 的文件部分。  
 
-       ![接收器数据集 - 连接](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
+       :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png" alt-text="接收器数据集 - 连接":::
 
 ### <a name="create-a-dataset-to-represent-change-tracking-data"></a>创建用于表示更改跟踪数据的数据集
 在此步骤中，请创建用于存储更改跟踪版本的数据集。  在执行先决条件中的步骤时，你已创建了 table_store_ChangeTracking_version 表。
@@ -282,51 +282,51 @@ ms.locfileid: "122638912"
 
 1. 依次单击左窗格中的“+”（加号）、“管道”。
 
-    ![屏幕截图显示数据工厂的“管道”选项。](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png" alt-text="屏幕截图显示数据工厂的“管道”选项。":::
 2. 此时会显示用于配置管道的新选项卡。 树状视图中也会显示管道。 在“属性”窗口中，将管道的名称更改为 **FullCopyPipeline**。
 
-    ![屏幕截图显示已输入名称的管道。](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png" alt-text="屏幕截图显示已输入名称的管道。":::
 3. 在“活动”工具箱中展开“数据流”，将“复制”活动拖放到管道设计器图面，然后设置名称 **FullCopyActivity**。
 
-    ![完整复制活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png" alt-text="完整复制活动 - 名称":::
 4. 切换到“源”选项卡，为“源数据集”字段选择“SourceDataset”。
 
-    ![“复制”活动 - 源](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-source.png)
-5. 切换到“接收器”选项卡，为“接收器数据集”字段选择“SinkDataset”。  
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-source.png" alt-text="“复制”活动 - 源":::
+5. 切换到“接收器”选项卡，为“接收器数据集”字段选择“SinkDataset”。
 
-    ![复制活动 - 接收器](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-sink.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-sink.png" alt-text="复制活动 - 接收器":::
 6. 若要验证管道定义，请单击工具栏中的“验证”。 确认没有任何验证错误。 单击 **>>** 关闭“管道验证报告”。
 
-    ![验证管道](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png" alt-text="验证管道":::
 7. 若要发布实体（链接服务、数据集和管道），请单击“发布”。 等待发布成功。
 
-    ![屏幕截图显示已标注“全部发布”按钮的数据工厂。](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png" alt-text="屏幕截图显示已标注“全部发布”按钮的数据工厂。":::
 8. 等待“已成功发布”消息出现。
 
-    ![发布成功](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png" alt-text="发布成功":::
 9. 此外，可以通过单击左侧的“显示通知”按钮来查看通知。 若要关闭通知窗口，请单击“X”。
 
-    ![显示通知](./media/tutorial-incremental-copy-change-tracking-feature-portal/show-notifications.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/show-notifications.png" alt-text="显示通知":::
 
 
 ### <a name="run-the-full-copy-pipeline"></a>运行完整的复制管道
 在工具栏中单击管道对应的“触发器”，然后单击“立即触发”。
 
-![屏幕截图显示了从“触发器”菜单中选择的“立即触发”选项。](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
+:::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png" alt-text="屏幕截图显示了从“触发器”菜单中选择的“立即触发”选项。":::
 
 ### <a name="monitor-the-full-copy-pipeline"></a>监视完整的复制管道
 
 1. 单击左侧的“监视”选项卡。 可以在列表中查看管道运行及其状态。 若要刷新列表，请单击“刷新”。 使用“操作”列中的链接可以查看与管道运行关联的活动运行，以及重新运行管道。
 
-    ![屏幕截图显示了数据工厂的管道运行。](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png" alt-text="屏幕截图显示了数据工厂的管道运行。":::
 2. 若要查看与管道运行关联的活动运行，请单击“操作”列中的“查看活动运行”链接。 该管道中只有一个活动，因此列表中只显示了一个条目。 若要切换回到管道运行视图，请单击顶部的“管道”链接。
 
-    ![屏幕截图显示了已标注“管道”链接的数据工厂的活动运行。](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png" alt-text="屏幕截图显示了已标注“管道”链接的数据工厂的活动运行。":::
 
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到名为 `incremental-<GUID>.txt` 的文件。
 
-![来自完整复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png" alt-text="来自完整复制的输出文件":::
 
 该文件应包含数据库中的数据：
 
@@ -359,19 +359,19 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 
 1. 在数据工厂 UI 中，切换到“编辑”选项卡。依次单击左窗格中的“+”（加号）、“管道”。
 
-    ![屏幕截图显示了如何在数据工厂中创建管道。](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png" alt-text="屏幕截图显示了如何在数据工厂中创建管道。":::
 2. 此时会显示用于配置管道的新选项卡。 树状视图中也会显示管道。 在“属性”窗口中，将管道的名称更改为 **IncrementalCopyPipeline**。
 
-    ![管道名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png" alt-text="管道名称":::
 3. 在“活动”工具箱中展开“常规”， 将 **查找** 活动拖放到管道设计器图面。 将活动的名称设置为 **LookupLastChangeTrackingVersionActivity**。 此活动获取在上次复制操作中使用的、存储在 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
 
-    ![屏幕截图显示了包含查找活动的管道。](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png" alt-text="屏幕截图显示了包含查找活动的管道。":::
 4. 在“属性”窗口中切换到“设置”，为“源数据集”字段选择“ChangeTrackingDataset”。
 
-    ![屏幕截图显示了“属性”窗口中的“设置”选项卡。](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png" alt-text="屏幕截图显示了“属性”窗口中的“设置”选项卡。":::
 5. 将“查找”活动从“活动”工具箱拖放到管道设计器图面。 将活动的名称设置为 **LookupCurrentChangeTrackingVersionActivity**。 此活动获取当前的更改跟踪版本。
 
-    ![屏幕截图显示了包含两个查找活动的管道。](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png" alt-text="屏幕截图显示了包含两个查找活动的管道。":::
 6. 在“属性”窗口中切换到“设置”选项卡，然后执行以下步骤：
 
    1. 对于“源数据集”字段，请选择“SourceDataset”。
@@ -382,10 +382,10 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
        ```
 
-      ![屏幕截图显示了已添加到“属性”窗口中的“设置”选项卡的查询。](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png" alt-text="屏幕截图显示了已添加到“属性”窗口中的“设置”选项卡的查询。":::
 7. 在“活动”工具箱中展开“数据流”，将“复制”活动拖放到管道设计器图面。 将活动的名称设置为 **IncrementalCopyActivity**。 此活动将上次跟踪版本与当前更改跟踪版本之间的数据复制到目标数据存储。
 
-    ![复制活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png" alt-text="复制活动 - 名称":::
 8. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤：
 
    1. 为“源数据集”选择“SourceDataset”。 
@@ -396,19 +396,19 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
        select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
        ```
 
-      ![复制活动 - 源设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
+      :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png" alt-text="复制活动 - 源设置":::
 9. 切换到“接收器”选项卡，为“接收器数据集”字段选择“SinkDataset”。
 
-    ![复制活动 - 接收器设置](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png" alt-text="复制活动 - 接收器设置":::
 10. 逐个地 **将两个“查找”活动连接到“复制”活动**。 将附加到“查找”活动的 **绿色** 按钮拖放到“复制”活动。
 
-    ![连接“查找”和“复制”活动](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-lookup-and-copy.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-lookup-and-copy.png" alt-text="连接“查找”和“复制”活动":::
 11. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。  将活动的名称设置为 **StoredProceduretoUpdateChangeTrackingActivity**。 此活动更新 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
 
-    ![存储过程活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png" alt-text="存储过程活动 - 名称":::
 12. 切换到“SQL 帐户”\*选项卡，为“链接服务”选择“AzureSqlDatabaseLinkedService”。
 
-    ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png" alt-text="存储过程活动 - SQL 帐户":::
 13. 切换到“存储过程”选项卡，然后执行以下步骤：
 
     1. 至于“存储过程名称”，请选择 **Update_ChangeTracking_Version**。  
@@ -420,36 +420,36 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | 字符串 | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |
 
-        ![存储过程活动 - 参数](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png" alt-text="存储过程活动 - 参数":::
 14. **将“复制”活动连接到存储过程活动**。 将附加到“复制”活动的 **绿色** 按钮拖放到“存储过程”活动。
 
-    ![连接“复制”和“存储过程”活动](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-copy-stored-procedure.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-copy-stored-procedure.png" alt-text="连接“复制”和“存储过程”活动":::
 15. 在工具栏中单击“验证”。 确认没有任何验证错误。 单击 **>>** 关闭“管道验证报告”窗口。
 
-    ![“验证”按钮](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png" alt-text="“验证”按钮":::
 16. 单击“全部发布”按钮，将实体（链接服务、数据集和管道）发布到数据工厂服务。 等到“发布成功”消息出现。
 
-       ![屏幕截图显示了数据工厂的“全部发布”按钮。](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png" alt-text="屏幕截图显示了数据工厂的“全部发布”按钮。":::    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>运行增量复制管道
 1. 在工具栏中单击管道对应的“触发器”，然后单击“立即触发”。
 
-    ![屏幕截图显示了一个包含活动的管道以及从“触发器”菜单中选择的“立即触发”选项。](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png" alt-text="屏幕截图显示了一个包含活动的管道以及从“触发器”菜单中选择的“立即触发”选项。":::
 2. 在“管道运行”窗口中选择“完成”。 
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>监视增量复制管道
 1. 单击左侧的“监视”选项卡。 可以在列表中查看管道运行及其状态。 若要刷新列表，请单击“刷新”。 使用“操作”列中的链接可以查看与管道运行关联的活动运行，以及重新运行管道。
 
-    ![屏幕截图显示了数据工厂的管道运行，包括你的管道。](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png" alt-text="屏幕截图显示了数据工厂的管道运行，包括你的管道。":::
 2. 若要查看与管道运行关联的活动运行，请单击“操作”列中的“查看活动运行”链接。 该管道中只有一个活动，因此列表中只显示了一个条目。 若要切换回到管道运行视图，请单击顶部的“管道”链接。
 
-    ![屏幕截图显示了数据工厂的管道运行，其中几个已标记为“成功”。](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png" alt-text="屏幕截图显示了数据工厂的管道运行，其中几个已标记为“成功”。":::
 
 
 ### <a name="review-the-results"></a>查看结果
 可以在 `adftutorial` 容器的 `incchgtracking` 文件夹中看到第二个文件。
 
-![来自增量复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png" alt-text="来自增量复制的输出文件":::
 
 该文件应该只包含数据库中的增量数据。 带 `U` 的记录是数据库中的更新行，带 `I` 的记录是添加的行。
 

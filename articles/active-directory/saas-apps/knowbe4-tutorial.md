@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 KnowBe4 安全意识培训集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 KnowBe4 Security Awareness Training集成
 description: 了解如何在 Azure Active Directory 和 KnowBe4 安全意识培训之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,43 +9,42 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/22/2020
+ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 77d810fc8327e3777102f2a09f0ca32835aad4b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b4ffdc24a4a1e41d0db0c5e816b67909b125dc4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180755"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676658"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>教程：Azure Active Directory 与 KnowBe4 安全意识培训集成
+# <a name="tutorial-azure-ad-sso-integration-with-knowbe4-security-awareness-training"></a>教程：Azure AD SSO 与 KnowBe4 Security Awareness Training集成
 
-本教程介绍如何将 KnowBe4 安全意识培训与 Azure Active Directory (Azure AD) 集成。
-将 KnowBe4 安全意识培训与 Azure AD 集成具有以下优势：
+本教程介绍如何将 KnowBe4 Security Awareness Training与 Azure Active Directory (Azure AD) 集成。 将 KnowBe4 Security Awareness Training与 Azure AD 集成后，可以：
 
-* 可在 Azure AD 中控制谁有权访问 KnowBe4 安全意识培训。
-* 可使用户使用其 Azure AD 帐户自动登录到 KnowBe4 Security Awareness Training（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 KnowBe4 Security Awareness Training。
+* 让用户使用其 Azure AD 帐户自动登录到 KnowBe4 Security Awareness Training。
+* 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 KnowBe4 安全意识培训的集成，需要以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 KnowBe4 Security Awareness Training 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 KnowBe4 Security Awareness Training 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* KnowBe4 Security Awareness Training 支持 **SP** 发起的 SSO
+* KnowBe4 Security Awareness Training 支持 SP 发起的 SSO。
 
-* KnowBe4 Security Awareness Training 支持 **恰时** 用户预配
+* KnowBe4 Security Awareness Training 支持实时用户预配。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-knowbe4-from-the-gallery"></a>从库中添加 KnowBe4
+## <a name="add-knowbe4-from-the-gallery"></a>从库添加 KnowBe4
 
 要配置 KnowBe4 与 Azure AD 的集成，需要从库中将 KnowBe4 添加到托管 SaaS 应用列表。
 
@@ -56,7 +55,7 @@ ms.locfileid: "96180755"
 1. 在“从库中添加”部分的搜索框中，键入“KnowBe4” 。
 1. 从结果面板中选择“KnowBe4”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-knowbe4-security-awareness-training"></a>配置并测试 KnowBe4 Security Awareness Training 的 Azure AD SSO
 
 在本部分中，将基于名为 Britta Simon 的测试用户配置并测试 KnowBe4 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 KnowBe4 中的相关用户之间建立链接关系。
@@ -64,23 +63,23 @@ ms.locfileid: "96180755"
 若要配置并测试 KnowBe4 的 Azure AD 单一登录，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD SSO。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使用户 Britta Simon 能够使用 Azure AD SSO。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD SSO。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使用户 Britta Simon 能够使用 Azure AD SSO。
 2. **[配置 KnowBe4 Security Awareness Training SSO](#configure-knowbe4-security-awareness-training-sso)** - 在应用程序端配置 SSO 设置。
-    * **[创建 KnowBe4 Security Awareness Training 测试用户](#create-knowbe4-security-awareness-training-test-user)** - 在 KnowBe4 Security Awareness Training 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 KnowBe4 Security Awareness Training 测试用户](#create-knowbe4-security-awareness-training-test-user)** - 在 KnowBe4 Security Awareness Training 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 Azure 门户的 KnowBe4 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”  部分中，执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.KnowBe4.com/auth/saml/<instancename>` 
 
@@ -127,16 +126,16 @@ ms.locfileid: "96180755"
 
 在本部分中，将在 KnowBe4 中创建名为 Britta Simon 的用户。 KnowBe4 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 KnowBe4 中尚不存在用户，身份验证后会创建一个新用户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 KnowBe4 登录 URL，可以从那里启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 KnowBe4 Security Awareness Training 登录 URL，可在其中启动登录流。 
 
-2. 直接转到 KnowBe4 登录 URL，并从那里启动登录流。
+* 直接转到 KnowBe4 Security Awareness Training 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 KnowBe4 磁贴时，将会重定向到 KnowBe4 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 KnowBe4 Security Awareness Training 磁贴时，会重定向到 KnowBe4 Security Awareness Training 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 KnowBe4 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 KnowBe4 Security Awareness Training 后，可以强制实施会话控制，实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

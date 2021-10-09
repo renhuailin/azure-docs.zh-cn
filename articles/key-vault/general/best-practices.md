@@ -9,18 +9,22 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7cfa2059cc03b96db39183cfa5056c9934a02290
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 0461228678762adbc4db936c35849f16a482c1a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814345"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605499"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
 
 ## <a name="use-separate-key-vaults"></a>使用单独的密钥保管库
 
 我们的建议是对每个环境（开发环境、预生产环境和生产环境）的每个应用程序使用一个保管库。 这可以帮助你避免在不同环境之间共享机密，并可在出现安全漏洞时降低威胁。
+
+### <a name="why-we-recommend-separate-key-vaults"></a>为何建议使用单独的密钥保管库
+
+访问策略是 Azure Key Vault 中的“全部或无”概念。 如果身份具有特定权限（例如，Get），则该身份可以获取保管库中的任何机密、密钥或证书。 这意味着，将敏感数据分组到同一保管库会增加安全事件的冲击半径，因为攻击可能能够跨关注点访问敏感信息。 若要缓解这种情况，请考虑特定应用程序应有权访问哪些敏感信息，然后根据此描述分离密钥保管库。 按应用分离密钥保管库是最常见的边界。
 
 ## <a name="control-access-to-your-vault"></a>控制对保管库的访问权限
 
@@ -57,3 +61,6 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 1. 启用[软删除](soft-delete-overview.md)。
 2. 如果要防止强制删除机密/保管库，即使启用软删除后，也要启用清除保护。
+
+## <a name="learn-more"></a>了解更多
+- [Key Vault 中机密管理的最佳做法](../secrets/secrets-best-practices.md)

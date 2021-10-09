@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.author: jgao
 ms.date: 06/23/2021
-ms.openlocfilehash: 28050d926bf5b4042ceb5b94796550bc517eb977
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 1c8817fcc6a0cf24a0983f2df60f02cc42b79200
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289208"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764367"
 ---
 # <a name="integrate-bicep-with-azure-pipelines"></a>将 Bicep 与 Azure Pipelines 集成
 
@@ -87,5 +87,6 @@ Azure CLI 任务采用以下输入：
 
 ## <a name="next-steps"></a>后续步骤
 
+* 若要详细了解如何结合使用 Bicep 和 Azure Pipelines，并获得实践指导，请参阅 Microsoft Learn 上的[使用 Azure Pipelines 生成第一个 Bicep 部署管道](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/)。
 * 要在管道中使用 What-if 操作，请参阅[在管道中使用 What-If 测试 ARM 模板](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/)。
 * 若要了解如何将 Bicep 文件与 GitHub Actions 结合使用，请参阅[使用 GitHub Actions 部署 Bicep 文件](./deploy-github-actions.md)。

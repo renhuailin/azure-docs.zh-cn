@@ -1,19 +1,19 @@
 ---
 title: 通过预购优化 Azure Databricks 成本
 description: 了解如何预付 Azure Databricks 费用，以便通过预留容量来节省资金。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 8047c57c929deeffcb69943ce17fa5fe81d31af1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599170"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645049"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>通过预购优化 Azure Databricks 成本
 
@@ -53,6 +53,7 @@ Databricks 预购适用于所有 Databricks 工作负荷和层。 可以将预�
     - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
     - **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
     - **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。
+    - 管理组 - 将预留折扣应用于同时属于管理组和计费范围的订阅列表中的匹配资源。
 1. 选择要购买多少 Azure Databricks 提交单位，然后完成购买。
 
 

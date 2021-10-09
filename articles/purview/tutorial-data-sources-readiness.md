@@ -1,23 +1,20 @@
 ---
-title: 大规模检查数据源就绪情况（预览）
+title: 大规模检查数据源就绪情况
 description: 在本教程中，将在注册前验证 Azure 数据源的就绪情况，然后在 Azure Purview 中对其进行扫描。
 author: zeinam
 ms.author: zeinam
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
-ms.date: 05/28/2021
-ms.openlocfilehash: d7dc8ab7987f149747df30834f426ce6d119eb5c
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 09/27/2021
+ms.openlocfilehash: 1eaca951a5abe43bda2621043321537cee2daa13
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105914"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213406"
 ---
-# <a name="tutorial-check-data-source-readiness-at-scale-preview"></a>教程：大规模检查数据源就绪情况（预览）
-
-> [!IMPORTANT]
-> Azure Purview 目前处于预览阶段。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+# <a name="tutorial-check-data-source-readiness-at-scale"></a>教程：大规模检查数据源就绪情况
 
 若要扫描数据源，Azure Purview 需要访问这些数据源。 它使用凭据获取此访问权限。 凭据是可供 Azure Purview 用来对已注册的数据源进行身份验证的身份验证信息。 有几种方法设置 Azure Purview 凭据的方法，包括： 
 - 分配到 Azure Purview 帐户的托管标识。
@@ -75,7 +72,7 @@ ms.locfileid: "113105914"
 
 1. 将 [Azure Purview 数据源就绪情况清单脚本下载](https://github.com/Azure/Purview-Samples/tree/master/Data-Source-Readiness)到你选择的位置。
 
-2. 在计算机上，在 Windows 任务栏的搜索框中输入 PowerShell。 在搜索列表中，右键单击“Windows PowerShell”，然后选择“以管理员身份运行”。
+2. 在计算机上，在 Windows 任务栏的搜索框中输入 PowerShell。 在搜索列表中，选择并按住（或右键单击）Windows PowerShell，然后选择“以管理员身份运行” 。
 
 3. 在 PowerShell 窗口中输入以下命令。 （将 `<path-to-script>` 替换为提取的脚本文件的文件夹路径。）
 

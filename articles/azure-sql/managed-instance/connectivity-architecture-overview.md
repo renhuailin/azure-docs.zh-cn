@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova
 ms.date: 04/29/2021
-ms.openlocfilehash: d9958d30fff09ba0d6c66b71143ea68468dd0363
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a9775691780a855824569f77a0bf4a1d3bf295b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751256"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657759"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL 托管实例的连接体系结构
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -105,6 +105,11 @@ Azure 使用一个管理终结点来管理 SQL 托管实例。 此终结点位�
 - **网络安全组 (NSG)** ：NSG 需与 SQL 托管实例的子网相关联。 当 SQL 托管实例配置为使用重定向连接时，可使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对 SQL 托管实例数据终结点的访问。 该服务会自动预配并保留当前的[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
 - **用户定义的路由 (UDR) 表：** UDR 表需与 SQL 托管实例的子网相关联。 可将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。 服务会自动预配并保留当前的[条目](#mandatory-user-defined-routes-with-service-aided-subnet-configuration)，使管理流量能够不间断地流动。
 - **足够的 IP 地址：** SQL 托管实例子网必须至少有 32 个 IP 地址。 有关详细信息，请参阅[确定 SQL 托管实例的子网大小](vnet-subnet-determine-size.md)。 根据 [SQL 托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](vnet-existing-add-subnet.md)中。 否则，请创建[新的网络和子网](virtual-network-subnet-create-arm-template.md)。
+- 解锁的资源：虚拟网络（包含委托给 SQL 托管实例的子网）不得在虚拟网络资源、其父资源组或订阅上放置任何[写入或删除锁](../../azure-resource-manager/management/lock-resources.md)。 在虚拟网络或其父资源上放置锁可能会阻止 SQL 托管实例完成其常规维护，导致性能下降、bug 修复延迟、合规性损失、SLO 外部操作以及实例不可用。
+- Azure 策略允许：如果利用 [Azure Policy](../../governance/policy/overview.md) 在包括虚拟网络（其子网已委托给 SQL 托管实例）的范围内通过拒绝效果来控制资源的创建、修改和删除，则需要采取措施来确保此类策略不会阻止 SQL 托管实例部署或执行定期维护。 如果 SQL 托管实例无法创建或管理这些资源类型的资源，则它可能无法部署或在维护操作后变得不可用。 需要从拒绝效果中排除的资源类型包括：  
+  - Microsoft.Network/serviceEndpointPolicies
+  - Microsoft.Network/networkIntentPolicies
+  - Microsoft.Network/virtualNetworks/subnets/contextualServiceEndpointPolicies
 
 > [!IMPORTANT]
 > 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。 下面的规则仅供参考，不应使用 ARM 模板/PowerShell/CLI 部署它们。 如果要使用最新的官方模板，你始终可以[从门户中检索它](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 2feee9beb6232320cc5265227754b0803d248bae
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: a5cb80924daf3328da6a3a9fd7fc1c7c7212bed6
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028228"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090925"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建公共负载均衡器，以对 VM 进行负载均衡
 
@@ -54,7 +54,7 @@ ms.locfileid: "112028228"
 - [**Microsoft.Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines)（3 个）。
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)。
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)（3 个）。
 - [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3)：用于配置 Internet Information Server (IIS) 和网页。
 
@@ -140,4 +140,4 @@ ms.locfileid: "112028228"
 若要了解详细信息，请继续学习与 Azure 负载均衡器相关的教程。
 
 > [!div class="nextstepaction"]
-> [Azure 负载均衡器教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Azure 负载均衡器教程](./quickstart-load-balancer-standard-public-portal.md)

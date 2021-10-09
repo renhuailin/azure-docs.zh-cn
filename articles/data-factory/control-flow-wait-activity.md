@@ -1,22 +1,22 @@
 ---
-title: Azure 数据工厂中的等待活动
+title: Wait 活动
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 等待活动在一段指定的时间内暂停管道的执行。
+description: Azure 数据工厂和 Synapse Analytics 中的 Wait 活动可在指定的时间段暂停执行管道。
 author: chez-charlie
 ms.author: chez
 ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/12/2018
-ms.openlocfilehash: b5f4835be17a28fabe9b8d553226baebef76a6d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: dfc74e9ada7715f9c954123892a93611df7eca9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638369"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798914"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行等待活动
+# <a name="execute-wait-activity-in-azure-data-factory-and-synapse-analytics"></a>在 Azure 数据工厂和 Synapse Analytics 中执行 wait 活动
 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,7 +46,7 @@ waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | Intege
 ## <a name="example"></a>示例
 
 > [!NOTE]
-> 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
+> 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-wait-activity"></a>等待活动的管道
 在此示例中，管道包含两个活动：**Until** 和 **Wait**。 等待活动被配置为等待 1 秒。 管道循环运行 Web 活动，在每次运行之间等待 1 秒。 
@@ -100,7 +100,7 @@ waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | Intege
 ```
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+参阅支持的其他控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)

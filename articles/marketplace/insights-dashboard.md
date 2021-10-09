@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 03/23/2021
-ms.openlocfilehash: a4bd78c15d2015eabf95926e2b4bcf43d6cbcdcb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: a8ee69e0c9c196f42a733c4cb6c3079228238b21
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735049"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082911"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“市场见解”仪表板
 
@@ -36,17 +36,45 @@ ms.locfileid: "121735049"
 > [!NOTE]
 > 用户访问 Azure 市场或 AppSource 上的产品/服务和报告出现在合作伙伴中心这两者之间的最大延迟为 48 小时。
 
+## <a name="access-the-marketplace-insights-dashboard"></a>访问“市场见解”仪表板
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“见解”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“见解”磁贴。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 在左侧菜单中，选择“市场见解”。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航栏中，选择“商业市场” > “分析” > “市场见解”  。
+
+---
+
 ## <a name="elements-of-the-marketplace-insights-dashboard"></a>“市场见解”仪表板的元素
 
 “市场见解”仪表板在两个单独的选项卡中显示 Azure 市场和 AppSource 的 Web 遥测详细信息。 以下部分介绍了如何使用“市场见解”仪表板以及如何读取数据。
 
-若要访问合作伙伴中心的“市场见解”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “市场见解”  。
-
 ### <a name="month-range"></a>月份范围
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+可在每页右上角找到月份范围选择。 通过基于过去 6 个或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，自定义“市场见解”页面图的输出内容。 默认月份范围（计算期间）为 6 个月。
+
+[ ![展示“市场见解”仪表板上的月份筛选器。](./media/insights-dashboard/marketplace-insights-filters.png) ](./media/insights-dashboard/marketplace-insights-filters.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 可在每页右上角找到月份范围选择。 通过基于过去 6 个或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，自定义“市场见解”页面图的输出内容。 默认月份范围（计算期间）为 6 个月。
 
 :::image type="content" source="./media/insights-dashboard/month-filters.png" alt-text="展示“市场见解”仪表板上的月份筛选器。":::
+
+---
 
 > [!NOTE]
 > 可视化小组件和导出报表中的所有指标都使用用户选择的计算期间。
@@ -63,29 +91,39 @@ ms.locfileid: "121735049"
 
 ### <a name="call-to-actions-trend"></a>行动号召次数趋势
 
-此数字表示在产品/服务列表页（产品详细信息页）上完成的“行动号召”按钮单击计数。 当用户选择“立即获取”、“免费试用”、“与我联系”或“体验版”按钮时，其操作会计入“行动号召单击次数”   。
+此数字表示在产品/服务列表页（产品详细信息页）上完成的“行动号召”按钮单击计数。 当用户选择“立即获取”、“免费试用”、“与我联系”或“体验版”按钮时，其操作会计入“行动号召单击次数”   。 “同意”表示客户提供给 Microsoft 或合作伙伴的同意的总点击次数，等于为产品/服务获取的客户数。 以下两个示例显示了“同意”点击的显示位置：
 
-[![展示“市场见解”仪表板上的“行动号召”图表。](./media/insights-dashboard/call-to-actions-trend.png)](./media/insights-dashboard/call-to-actions-trend.png#lightbox)
+:::image type="content" source="./media/insights-dashboard/consent-screen.png" alt-text="说明选择同意按钮的位置。":::
+
+下图显示了“CTA”与“同意”指标： 
+
+:::image type="content" source="./media/insights-dashboard/consent-given-graph.png" alt-text="显示包含“行动号召”与“同意”的示例图。":::
 
 ### <a name="page-visits-and-call-to-actions-against-offers-referral-domains-and-campaign-ids"></a>针对产品/服务、推荐域和市场活动 ID 的页面访问次数和行动号召次数
 
-**推荐域**：选择特定的推荐域会在右侧的图表上显示页面访问次数和行动号召单击次数的每月趋势。
+#### <a name="offers"></a>产品
 
-:::image type="content" source="./media/insights-dashboard/referral-domain.png" alt-text="展示“市场见解”仪表板上的“推荐域”图表。":::
+选择特定的产品/服务即可在图表上查看页面访问次数、行动号召和同意点击次数的每月趋势。
 
-**产品/服务**：选择特定的产品/服务即可在右侧的图表上查看页面访问次数和行动号召单击次数的每月趋势。
+:::image type="content" source="./media/insights-dashboard/offers-funnel-graph.png" alt-text="显示产品/服务的示例漏斗图。":::
 
-:::image type="content" source="./media/insights-dashboard/offer-alias.png" alt-text="展示“市场见解”仪表板上的“产品/服务别名”图表。":::
+#### <a name="referral-domains"></a>推荐域
 
-**市场活动 ID**：应该可以通过选择特定的市场活动 ID 来了解市场活动的成功率。 对于每个市场活动，你应该可以在右侧的图表上查看页面访问次数和行动号召单击次数的每月趋势。
+选择特定的推荐域会在图表右侧显示页面访问次数、行动号召和同意点击次数的每月趋势。 此外，还有一个“平台 - 网站和客户端”列，仅为 AppSource 产品/服务显示。 漏斗图视图描述了图表上页面视图、行动号召和同意点击次数之间的转换率。
 
-:::image type="content" source="./media/insights-dashboard/campaign.png" alt-text="展示“市场见解”仪表板上的“市场活动”图表。":::
+:::image type="content" source="./media/insights-dashboard/referral-domains-funnel-graph.png" alt-text="显示推荐域的示例漏斗图。":::
+
+#### <a name="campaign-ids"></a>市场活动 ID
+
+应该可以通过选择特定的市场活动 ID 来了解市场活动的成功率。 对于每个市场活动，你应该可以在图表上查看页面访问次数、行动号召和同意点击次数的每月趋势。
+
+:::image type="content" source="./media/insights-dashboard/campaign-id-funnel-graph.png" alt-text="展示“市场见解”仪表板上的“市场活动”图表。":::
 
 ### <a name="marketplace-insights-by-geography"></a>按地域分类的市场见解
 
 对于所选的计算期间，热度地图显示页面访问次数、唯一访问者数量和行动号召单击次数 (CTA)。 地图上的由浅到深的颜色代表唯一访问者数量从低到高的值。 选择表中的记录以放大国家/地区。
 
-:::image type="content" source="./media/insights-dashboard/geographical-spread.png" alt-text="展示“市场见解”仪表板上的地理分布图。":::
+[ ![展示“市场见解”仪表板上的地理分布图。](./media/insights-dashboard/geographical-spread.png) ](./media/insights-dashboard/geographical-spread.png#lightbox)
 
 注意以下事项：
 
@@ -117,6 +155,8 @@ ms.locfileid: "121735049"
 | 体验版 | 体验版 | 特定日期的产品/服务页面上“体验版”CTA 的单击次数。 | TestDrive |
 | 免费试用版 | 免费试用版 | 特定日期的产品/服务页面上“免费试用版”CTA 的单击次数。 | FreeTrial |
 | 活动 | 营销活动的名称 | 能够理解 Web 遥测（页面访问和 CTA 点击量）。 | 活动 |
+| 同意 | 同意 | 客户提供给 Microsoft 或合作伙伴的同意的总点击次数 | consentGivenCount |
+| 平台 | 平台 | 指示网站或客户端（产品内存储），作为页面视图、CTA 或同意点击次数的源 | platforms |
 | 不适用 | 站点 | 进行了页面访问或 CTA 点击的店面的名称。 可能的值包括：<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | 站点 |
 |
 

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 08/16/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e315542d8d58a58fa4e2cea8bbab4768af0596eb
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: b84ff908404c2d18f86ddd63fa14a9854fdf72d6
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252386"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079326"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>向/从服务总线队列发送/接收消息 (.NET)
 本快速入门指南显示如何使用 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET 库向服务总线队列发送消息和接收来自该队列的消息。
@@ -25,7 +25,7 @@ ms.locfileid: "122252386"
 - **创建服务总线命名空间和队列**。 按照[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文的步骤创建服务总线命名空间和队列。 
 
     > [!IMPORTANT]
-    > 记下服务总线命名空间的连接字符串以及创建的队列的名称 。 本教程后面会用到它们。 
+    > 记下服务总线命名空间的 [**主连接字符串**](./service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)以及创建的队列的名称。 本教程后面会用到它们。 
 
 
 ## <a name="send-messages"></a>发送消息
@@ -59,7 +59,7 @@ ms.locfileid: "122252386"
 ### <a name="add-code-to-send-messages-to-the-queue"></a>添加将消息发送到队列的代码
 
 1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤。  
-    1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
+    1. 使用命名空间的主连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
     1. 对 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象调用 [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) 方法，从而为特定的“服务总线”队列创建 [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) 对象。     
     1. 使用 [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) 方法创建 [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) 对象。
     1. 使用 [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) 将消息添加到该批次。 
@@ -134,7 +134,7 @@ ms.locfileid: "122252386"
             }
         }   
         ``` 
-1. 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串。 并将 `<QUEUE NAME>` 替换为你的队列的名称。
+1. 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的主连接字符串。 并将 `<QUEUE NAME>` 替换为你的队列的名称。
 1. 生成项目并确保没有错误。 
 1. 运行程序并等待出现确认消息。
     
@@ -182,7 +182,7 @@ ms.locfileid: "122252386"
 
 1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤。
     下面是代码中的重要步骤：
-    1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
+    1. 使用命名空间的主连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
     1. 对 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象调用 [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) 方法，从而为指定的“服务总线”队列创建 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) 对象。 
     1. 为 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) 对象的 [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) 和 [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) 事件指定处理程序。 
     1. 通过对 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) 对象调用 [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) 以开始处理消息。 
@@ -272,7 +272,7 @@ ms.locfileid: "122252386"
             }
         }
         ```
-1. 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串。 并将 `<QUEUE NAME>` 替换为你的队列的名称。 
+1. 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的主连接字符串。 并将 `<QUEUE NAME>` 替换为你的队列的名称。 
 1. 生成项目并确保没有错误。
 1. 运行接收器应用程序。 你应该会看到接收的消息。 按任意键来停止使用接收器和应用程序。 
 

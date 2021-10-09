@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
-ms.openlocfilehash: b2ba640fec6f9bf2cd09611456967e15ed8f7ade
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05eca5bb95906ebb34e51f79d70a33cc003f2220
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732893"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091628"
 ---
 # <a name="manage-iot-central-from-azure-cli-or-powershell"></a>通过 Azure CLI 或 PowerShell 管理 IoT Central
 
@@ -78,7 +78,7 @@ az iot central app create \
 | 参数         | 说明 |
 | ----------------- | ----------- |
 | resource-group    | 包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-| location          | 此命令默认使用资源组中的位置。 目前，可以在澳大利亚、亚太、欧洲、美国、英国和日本创建 IoT Central 应用程序     。 |
+| location          | 此命令默认使用资源组中的位置。 目前，可以在以下区域创建 IoT Central 应用程序：澳大利亚东部、美国中部、美国东部、美国东部 2、日本东部、北欧、东南亚、英国南部、西欧和美国西部 。 |
 | name              | 应用程序在 Azure 门户中的名称。 避免使用特殊字符，而应改用小写字母 (a-z)、数字 (0-9) 和破折号 (-)。|
 | subdomain         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 `https://mysubdomain.azureiotcentral.com`。 |
 | sku               | 目前，可以使用 ST1 或 ST2 。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
@@ -108,7 +108,7 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |参数         |说明 |
 |------------------|------------|
 |ResourceGroupName |包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-|位置 |此 cmdlet 默认使用资源组中的位置。 目前，可以在澳大利亚、亚太、欧洲、美国、英国和日本创建 IoT Central 应用程序     。 |
+|位置 |此 cmdlet 默认使用资源组中的位置。 目前，可以在以下区域创建 IoT Central 应用程序：澳大利亚东部、美国中部、美国东部、美国东部 2、日本东部、北欧、东南亚、英国南部、西欧和美国西部 。 |
 |名称              |应用程序在 Azure 门户中的名称。 避免使用特殊字符，而应改用小写字母 (a-z)、数字 (0-9) 和破折号 (-)。 |
 |子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 `https://mysubdomain.azureiotcentral.com`。 |
 |SKU               |目前，可以使用 ST1 或 ST2 。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |

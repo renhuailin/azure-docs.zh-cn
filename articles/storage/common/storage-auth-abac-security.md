@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 895f53ca3e8e1c68fa01ef44ffc47d88604bbea5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46be6327052aa280b9d23bc05764550a05739c5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070851"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627912"
 ---
 # <a name="security-considerations-for-azure-role-assignment-conditions-in-azure-storage-preview"></a>Azure 存储中 Azure 角色分配条件的安全注意事项（预览版）
 
@@ -28,7 +28,7 @@ ms.locfileid: "110070851"
 
 本文介绍应在角色分配条件中考虑到的安全注意事项。
 
-## <a name="use-of-other-authorization-mechanisms"></a>其他授权机制的使用 
+## <a name="use-of-other-authorization-mechanisms"></a>其他授权机制的使用
 
 仅当使用 Azure RBAC 进行授权时才评估角色分配条件。 如果允许使用备用授权方法进行访问，则可以绕过这些条件：
 - [共享密钥](/rest/api/storageservices/authorize-with-shared-key)授权
@@ -116,4 +116,3 @@ ms.locfileid: "110070851"
 - [使用 Azure 角色分配条件授予对 Blob 的访问权限（预览版）](storage-auth-abac.md)
 - [Azure 存储中 Azure 角色分配条件的操作和特性（预览版）](storage-auth-abac-attributes.md)
 - [什么是 Azure 基于特性的访问控制 (Azure ABAC)（预览版）？](../../role-based-access-control/conditions-overview.md)
-

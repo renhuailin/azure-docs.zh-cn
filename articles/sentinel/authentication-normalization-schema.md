@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: b2eeec44054f57857e0da08134f6bada3aaf24f6
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: e0cab6a9d2d4c341cf326383e11b289bf606d37a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514765"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755169"
 ---
 # <a name="azure-sentinel-authentication-normalization-schema-reference-public-preview"></a>Azure Sentinel 身份验证规范化架构参考（公共预览版）
 
@@ -76,10 +76,11 @@ Azure Sentinel 提供以下内置的特定于产品的身份验证事件分析�
 
 Log Analytics 会为每条记录生成以下字段，在创建自定义连接器时可以替代这些字段。
 
-|字段  |类型  |描述  |
+|字段  |类型  |说明  |
 |---------|---------|---------|
 |<a name ="timegenerated"></a>TimeGenerated     |  datetime       |报告设备生成事件的时间。         |
-|_ResourceId     | guid        |  报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。       |
+|“_ResourceId”     | guid        |  报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。       |
+| **类型** | 字符串 | 从中提取记录的原始表。 当同一事件可通过多个通道传入不同的表，并且具有相同的 EventVendor 和 EventProduct 值时，此字段很有用。<br><br>例如，Sysmon 事件可以传入 Event 表或 WindowsEvent 表。 |
 |     |         |         |
 
 > [!NOTE]
@@ -90,11 +91,11 @@ Log Analytics 会为每条记录生成以下字段，在创建自定义连接器
 
 事件字段是所有架构的通用字段，用于描述活动本身和报告设备。
 
-| 字段               | 实例       | 类型       |  说明        |
+| 字段               | 类       | 类型       |  说明        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | 可选    | 字符串     |     一般消息或说明，包含在记录中或者根据记录生成。   |
-| EventCount          | 必需   | Integer    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。 <br><br>**注意**：出于一致性目的，包括此字段，但它通常不用于身份验证事件。  |
-| **EventStartTime**      | 必需   | 日期/时间  |      如果源支持聚合并且记录表示多个事件，则此字段指定生成第一个事件的时间。 否则，此字段将别名化 [TimeGenerated](#timegenerated) 字段。<br><br>**注意**：出于一致性目的，包括此字段，但它通常不用于身份验证事件。  |
+| “EventCount”          | 必需   | Integer    |     记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，设置为 `1`。 <br><br>**注意**：出于一致性目的，包括此字段，但它通常不用于身份验证事件。  |
+| **EventStartTime**      | 必需   | 日期/时间  |      如果源支持聚合且记录表示多个事件，则此字段将指定生成第一个事件的时间。 否则，此字段将别名化 [TimeGenerated](#timegenerated) 字段。<br><br>**注意**：出于一致性目的，包括此字段，但它通常不用于身份验证事件。  |
 | **EventEndTime**        | 必需   | Alias      |      [TimeGenerated](#timegenerated) 字段的别名。    |
 | **EventType**           | 必需   | Enumerated |    描述记录报告的操作。 <br><br>对于身份验证记录，支持的值包括： <br>- `Logon` <br>- `Logoff`<br><br>注意：可以在源记录中使用不同字词提供该值，这些字词应规范化为这些值。 原始值应存储在 [EventOriginalType](#eventoriginaltype) 字段中。|
 | <a name ="eventoriginaltype"></a>EventOriginalType           | 可选   | 字符串 |    源记录中提供的事件类型或 ID。 <br><br>示例： `4625`|
@@ -103,14 +104,14 @@ Log Analytics 会为每条记录生成以下字段，在创建自定义连接器
 | **EventSubType**    | 可选    | 字符串     |   登录类型，通常用于 Windows 登录类型。 <br><br>示例： `Interactive`|
 | EventOriginalResultDetails    | 可选    | 字符串     |  [EventResultDetails](#eventresultdetails) 的原始记录中提供的值（如果已由源提供）。|
 | **EventOriginalUid**    | 可选    | 字符串     |   原始记录的唯一 ID（如果已由源提供）。|
-| EventOriginalType   | 可选    | 字符串     |   原始事件类型或 ID（如果已由源提供）。<br><br>示例： `4624`|
-| <a name ="eventproduct"></a>EventProduct        | 必需   | 字符串     |             生成事件的产品。 <br><br>示例： `Windows`<br><br>注意：源记录中可能未提供此字段。 在这种情况下，此字段必须由分析器设置。           |
-| **EventProductVersion** | 可选    | 字符串     | 生成事件的产品的版本。 <br><br>示例： `10` <br><br>注意：源记录中可能未提供此字段。 在这种情况下，此字段必须由分析器设置。     |
-| **EventVendor**         | 必需   | 字符串     |           生成事件的产品的供应商。 <br><br>示例： `Microsoft`  <br><br>注意：源记录中可能未提供此字段。 在这种情况下，此字段必须由分析器设置。  |
+| **EventOriginalType**   | 可选    | 字符串     |   原始事件类型或 ID（如果已由源提供）。<br><br>示例： `4624`|
+| <a name ="eventproduct"></a>“EventProduct”        | 必需   | 字符串     |             生成事件的产品。 <br><br>示例： `Windows`<br><br>注意：此字段在源记录中可能不可用。 在这种情况下，此字段必须由分析器设置。           |
+| **EventProductVersion** | 可选    | 字符串     | 生成事件的产品的版本。 <br><br>示例： `10` <br><br>注意：此字段在源记录中可能不可用。 在这种情况下，此字段必须由分析器设置。     |
+| **EventVendor**         | 必需   | 字符串     |           生成事件的产品的供应商。 <br><br>示例： `Microsoft`  <br><br>注意：此字段在源记录中可能不可用。 在这种情况下，此字段必须由分析器设置。  |
 | **EventSchemaVersion**  | 必需   | 字符串     |    架构的版本。 此处记录的架构版本为 `0.1`         |
 | **EventReportUrl**      | 可选    | 字符串     | 在资源的事件中提供的 URL，提供有关该事件的其他信息。|
 | <a name ="dvc"></a>Dvc | 必需       | 字符串     |              发生该事件的设备的唯一标识符。 <br><br>此字段可能又称为 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。             |
-| <a name ="dvcipaddr"></a>DvcIpAddr           | 建议 | IP 地址 |         发生进程事件的设备的 IP 地址。  <br><br>示例： `45.21.42.12`  <br><br>注意：如果标识符可用但类型未知，请不要使用此字段。 有关详细信息，请参阅 [Dvc](#dvc)。  |
+| <a name ="dvcipaddr"></a>“DvcIpAddr”           | 建议 | IP 地址 |         发生进程事件的设备的 IP 地址。  <br><br>示例： `45.21.42.12`  <br><br>注意：如果标识符可用但类型未知，请不要使用此字段。 有关详细信息，请参阅 [Dvc](#dvc)。  |
 | <a name ="dvchostname"></a>DvcHostname         | 建议 | 主机名   |               发生进程事件的设备的主机名。 <br><br>示例： `ContosoDc.Contoso.Azure`      <br><br>注意：如果标识符可用但类型未知，请不要使用此字段。 有关详细信息，请参阅 [Dvc](#dvc)。          |
 | <a name ="dvcid"></a>DvcId               | 可选    | 字符串     |  发生进程事件的设备的唯一 ID。 <br><br>示例： `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
 | **AdditionalFields**    | 可选    | 动态    | 如果源提供了值得保留的附加信息，请使用原始字段名称保留这些信息，或者创建动态“AdditionalFields”字段，并在其中以键/值对的形式添加这些附加信息。    |
@@ -134,7 +135,7 @@ Log Analytics 会为每条记录生成以下字段，在创建自定义连接器
 
 “参与者”(Actor) 在“源设备”(SrcDvc) 上运行“操作应用程序”(ActingApp)，尝试向“目标设备”(TargetDvc) 上的“目标应用程序”(TargetApp) 对“目标用户”(TargetUser) 进行身份验证  。
 
-| 字段          | 实例        | 类型       | 说明   |
+| 字段          | 类        | 类型       | 说明   |
 |---------------|--------------|------------|-----------------|
 |**LogonMethod** |可选 |字符串 |用于执行身份验证的方法。 <br><br>示例： `Username & Password` |
 |LogonProtocol |可选 |字符串 |用于执行身份验证的协议。 <br><br>示例： `NTLM` |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/11/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 1ab437afbd8e0dd3035837da47bbbb89e358103f
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 38ab873af949d2cf648ba0a129fd548cd6dbc534
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272303"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800491"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TravelPerk 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "122272303"
 * 让用户能够使用其 Azure AD 帐户自动登录到 TravelPerk。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -40,6 +40,8 @@ ms.locfileid: "122272303"
 * TravelPerk 支持 SP 启动的 SSO。
 
 * TravelPerk 支持实时用户预配。
+
+* TravelPerk 支持[自动用户预配](travelperk-provisioning-tutorial.md)。
 
 ## <a name="add-travelperk-from-the-gallery"></a>从库中添加 TravelPerk
 
@@ -130,6 +132,8 @@ ms.locfileid: "122272303"
 
 在本部分中，将在 TravelPerk 中创建一个名为“B.Simon”的用户。 TravelPerk 支持默认启用的实时预配。 此部分不存在任何操作项。 在你尝试访问 TravelPerk 时会新建一个用户（如果该用户尚不存在于 TravelPerk 中）。
 
+TravelPerk 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./travelperk-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -138,7 +142,7 @@ ms.locfileid: "122272303"
 
 * 直接转到 TravelPerk 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 TravelPerk 磁贴时，会重定向到 TravelPerk 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 TravelPerk 磁贴时，会重定向到 TravelPerk 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

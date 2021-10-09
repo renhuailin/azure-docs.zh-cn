@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/20/2021
 ms.author: sngun
-ms.openlocfilehash: 2f25cfa8f2c9c70b6cc97dc96d504b41078f5b5f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 55e84478d8744aae05f8f3a0df89aac605d6de12
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114667665"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779913"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的诊断设置监视 Azure Cosmos DB 数据
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
    |CassandraRequests     |   Cassandra      |    记录来自前端的由用户发起的请求，以处理发送到 Azure Cosmos DB 的用于 Cassandra 的 API 的请求。 在启用此类别时，请确保禁用 DataPlaneRequests。     |     `operationName`, `requestCharge`, `piiCommandText`    |
    |GremlinRequests     |    Gremlin    |     记录来自前端的由用户发起的请求，以处理发送到 Azure Cosmos DB 的用于 Gremlin 的 API 的请求。 在启用此类别时，请确保禁用 DataPlaneRequests。    |   `operationName`, `requestCharge`, `piiCommandText`, `retriedDueToRateLimiting`       |
    |QueryRuntimeStatistics     |   SQL      |     此表详细介绍了针对 SQL API 帐户执行的查询操作。 默认情况下，会对查询文本及其参数进行模糊处理，以免记录个人数据以及可以通过请求访问的全文查询日志记录。    |    `databasename`, `partitionkeyrangeid`, `querytext`    |
-   |PartitionKeyStatistics     |    所有 API     |   通过表示分区键的存储大小 (KB) 来记录逻辑分区键的统计信息。 此表在排查存储倾斜的问题时非常有用。 仅当满足以下条件时才发出此 PartitionKeyStatistics 日志： <br/><ul><li> 至少有 1% 的文档具有相同的逻辑分区键。 </li><li> 在所有键中，PartitionKeyStatistics 日志会捕获存储大小最大的前 3 个键。 </li></ul> 如果不符合上述条件，分区键统计数据将不可用。 如果你的帐户不满足上述条件，也没关系，这通常表明你没有逻辑分区存储偏差。 |   `subscriptionId`, `regionName`, `partitionKey`, `sizeKB`      |
+   |PartitionKeyStatistics     |    所有 API     |   通过表示分区键的估计存储大小 (KB) 来记录逻辑分区键的统计信息。 此表在排查存储倾斜的问题时非常有用。 仅当满足以下条件时才发出此 PartitionKeyStatistics 日志： <br/><ul><li> 物理分区中至少有 1% 的文档具有相同的逻辑分区键。 </li><li> 在物理分区的所有键中，PartitionKeyStatistics 日志会捕获存储大小最大的前 3 个键。 </li></ul> 如果不符合上述条件，分区键统计数据将不可用。 如果帐户不满足上述条件也没关系，这通常表示不存在逻辑分区存储倾斜。 <br/><br/>注意：使用采样方法计算分区键的估计大小，该方法假定物理分区中的文档的大小大致相同。 如果物理分区中的文档的大小不一致，则估计的分区键大小可能不准确。  |   `subscriptionId`, `regionName`, `partitionKey`, `sizeKB`      |
    |PartitionKeyRUConsumption     |   SQL API    |     记录分区键的每秒 RU 聚合消耗量。 此表对于排查热分区的问题很有用。 目前，Azure Cosmos DB 仅报告 SQL API 帐户的分区键，以及时点读取/写入和存储过程操作。   |     `subscriptionId`, `regionName`, `partitionKey`, `requestCharge`, `partitionKeyRangeId`   |
    |ControlPlaneRequests     |   所有 API       |    记录有关控制平面操作（即，创建帐户、添加或删除区域、更新帐户复制设置等）的详细信息。     |    `operationName`, `httpstatusCode`, `httpMethod`, `region`       |
    |TableApiRequests     |   表 API    |     记录来自前端的由用户发起的请求，以处理发送到 Azure Cosmos DB 的用于表的 API 的请求。 在启用此类别时，请确保禁用 DataPlaneRequests。       |    `operationName`, `requestCharge`, `piiCommandText`     |

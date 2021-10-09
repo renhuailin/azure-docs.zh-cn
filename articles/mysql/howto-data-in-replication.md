@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/08/2021
-ms.openlocfilehash: 95db93d0233b22117984bd705dd6ec8d54c4581a
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: fb12a8617396eb0c582ed2b00f856af7f91765fb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122651750"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611407"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
 
@@ -29,7 +29,7 @@ ms.locfileid: "122651750"
 
 ## <a name="create-an-azure-database-for-mysql-single-server-instance-to-use-as-a-replica"></a>创建要用作副本的 Azure Database for MySQL 单一服务器实例
 
-1. 创建一个新的 Azure Database for MySQL 单一服务器实例（例如 “replica.mysql.database.azure.com”）。 请参阅[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)，了解如何创建服务器。 此服务器是数据传入复制的“副本”服务器。
+1. 创建一个新的 Azure Database for MySQL 单一服务器实例（例如 `replica.mysql.database.azure.com`）。 请参阅[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)，了解如何创建服务器。 此服务器是数据传入复制的“副本”服务器。
 
    > [!IMPORTANT]
    > 必须在“常规用途”或“内存优化”定价层中创建 Azure Database for MySQL 服务器，因为数据传入复制只在这些层中受支持。

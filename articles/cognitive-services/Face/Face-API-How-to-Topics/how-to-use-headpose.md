@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/23/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c53686338ae45971519735edce0ac62a0544ac2e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bbb43768aee85d5c3cde83563645fa649a4cbcc4
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744782"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092179"
 ---
 # <a name="use-the-headpose-attribute"></a>使用 HeadPose 属性
 
@@ -25,7 +25,7 @@ ms.locfileid: "121744782"
 
 随每个检测到的人脸返回的人脸矩形用于标记人脸在图像中的位置和大小。 默认情况下，此矩形始终与图像（其边分为垂直边和水平边）对齐；在给有一定角度的人脸配框时，这可能导致效率不高。 在需要以编程方式对图像中的人脸进行裁剪的情况下，最好是能够旋转要裁剪的矩形。
 
-[认知服务人脸 WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) 示例应用使用 HeadPose 属性来旋转其检测到的人脸矩形。
+[认知服务人脸 WPF (Windows Presentation Foundation)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) 示例应用使用 HeadPose 属性来旋转其检测到的人脸矩形。
 
 ### <a name="explore-the-sample-code"></a>探索示例代码
 

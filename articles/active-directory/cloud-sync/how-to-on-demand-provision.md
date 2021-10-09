@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20719182a9b97bc783ef2bdc16ccad327dba79aa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554269"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742581"
 ---
 # <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Azure AD Connect 云同步中的按需预配
 
@@ -24,6 +24,10 @@ ms.locfileid: "102554269"
 
 > [!IMPORTANT] 
 > 使用按需预配时，范围筛选器不会应用于所选用户。 你可以在指定的组织单位之外的用户上使用按需预配。
+
+有关其他信息和示例，请参阅以下视频。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mW]
 
 ## <a name="validate-a-user"></a>验证用户
 若要使用按需预配，请执行以下步骤：

@@ -1,19 +1,20 @@
 ---
-title: 适用于 Azure Cosmos DB Core (SQL) API 的 Azure CLI 示例
-description: 适用于 Azure Cosmos DB Core (SQL) API 的 Azure CLI 示例
+title: 用于 Azure Cosmos DB 的 Azure CLI 示例 | Microsoft Docs
+description: 本文列出了一些可用于与 Azure Cosmos DB 交互的 Azure CLI 代码示例。 查看 API 特定的 CLI 示例。
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/13/2020
+ms.date: 09/17/2021
 ms.author: mjbrown
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5f68f09b8d97e9d653f1551c2ca1fe5ed5a47b0e
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: cosmos db, azure cli 示例, azure cli 代码示例, azure cli 脚本示例
+ms.openlocfilehash: 4529b51ff5109bfa6b8814b23e7e82844e7fb95c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123117379"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567711"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>适用于 Azure Cosmos DB Core (SQL) API 的 Azure CLI 示例
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]

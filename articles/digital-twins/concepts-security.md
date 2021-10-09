@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a2d81d9ffbb79d0f05c8e0bf44fbe9d8967cf02f
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 253d763cffc8b70d134182c13678320f4ac50f4c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253770"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586317"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure 数字孪生安全性
 
@@ -84,7 +84,7 @@ Azure 提供了两个 Azure 内置角色，用于授权对 Azure 数字孪生[�
 
 如果用户尝试执行其角色不允许的操作，则可能会收到服务请求错误，显示为 `403 (Forbidden)`。 有关详细信息和故障排除步骤，请参阅故障排除：Azure 数字孪生请求失败，状态为：403 (禁用)。
 
-## <a name="managed-identity-for-accessing-other-resources-preview"></a>用于访问其他资源的托管标识（预览）
+## <a name="managed-identity-for-accessing-other-resources"></a>用于访问其他资源的托管标识
 
 为 Azure 数字孪生实例设置 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 托管标识，便于实例轻松访问其他受 Azure AD 保护的资源，例如 [Azure 密钥保管库](../key-vault/general/overview.md)。 该标识由 Azure 平台托管，无需预配或转交任何机密。 有关 Azure AD 托管标识的详细信息，请参阅 Azure 资源的托管标识。 
 

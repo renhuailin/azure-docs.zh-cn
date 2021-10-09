@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ea75273694eb5c13b5cd8c4812aa58508fa9f62
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c6a9b193983d58bb8e9cc2964e3ae45160056c4c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130673"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592843"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
@@ -192,6 +192,8 @@ ms.locfileid: "108130673"
 2. 输入 `dsregcmd /status`。
 3. 确保“AzureAdJoined”和“DomainJoined”均设置为“是”。
 4. 可以使用 DeviceId，并使用 Azure 门户或 PowerShell 比较服务的状态。
+
+对于下层设备，请参阅[排查已加入混合 Azure Active Directory 的下层设备的问题](troubleshoot-hybrid-join-windows-legacy.md#step-1-retrieve-the-registration-status)一文
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 

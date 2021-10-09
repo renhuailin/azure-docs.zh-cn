@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: cc3c837c4dddf744f141ad930a1e52a5e9f684c7
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/27/2021
+ms.openlocfilehash: d7606595adb5c0d20b348bbe323d27af64e8d9cb
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542281"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082092"
 ---
 # <a name="test-and-publish-an-azure-application-offer"></a>测试和发布 Azure 应用程序产品/服务
 
@@ -21,7 +21,27 @@ ms.locfileid: "111542281"
 
 ## <a name="submit-the-offer-for-publishing"></a>提交要发布的产品/服务
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)内的商业市场仪表板。
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页上，选择要发布的产品/服务。
+1. 在门户的右上角，选择“审阅和发布”。
+1. 请确保每个页面的“状态”列都显示“完成”。 可能显示以下三种状态：
+    - 未启动 - 页面不完整。
+    - 不完整 - 页面缺少必需的信息或有需要修复的错误。 需要返回该页面并进行更新。
+    - 完成 - 页面已完成。 已提供所有必需的数据，并且没有错误。
+1. 如果任何页面的状态不是“完成”，请选择页面名称，更正问题，保存页面，然后再次选择“审阅和发布”以返回此页面。
+1. 完成所有页面后，请在“认证说明”框中向认证团队提供测试说明，以确保应用已得到正确测试。 提供有助于了解你的应用的补充说明。
+1. 若要启动产品/服务的发布过程，请选择“发布”。 此时将出现“产品/服务概述”页，并显示产品/服务的“发布状态”。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的商业市场。
 1. 在“概述”页面上，选择要发布的产品/服务。
 1. 在门户的右上角，选择“审阅和发布”。
 1. 请确保每个页面的“状态”列都显示“完成”。 可能显示以下三种状态：
@@ -31,6 +51,8 @@ ms.locfileid: "111542281"
 1. 如果任何页面的状态不是“完成”，请选择页面名称，更正问题，保存页面，然后再次选择“审阅和发布”以返回此页面。
 1. 完成所有页面后，请在“认证说明”框中向认证团队提供测试说明，以确保应用已得到正确测试。 提供有助于了解你的应用的补充说明。
 1. 若要启动产品/服务的发布过程，请选择“发布”。 此时将出现“产品/服务概述”页，并显示产品/服务的“发布状态”。
+
+---
 
 在发布过程中，产品/服务的发布状态会发生变化。 有关此过程的详细信息，请参阅[验证和发布步骤](review-publish-offer.md#validation-and-publishing-steps)。
 

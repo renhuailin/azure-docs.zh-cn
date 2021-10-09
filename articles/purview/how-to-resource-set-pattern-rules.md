@@ -4,19 +4,19 @@ description: 了解如何创建资源集模式规则，以覆盖资产分组到�
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 04/15/2021
-ms.openlocfilehash: 00b3abc14207e2cb20d61f20639bf326a426cf37
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.date: 09/27/2021
+ms.openlocfilehash: c2d6f90bf9a3e3b3f7c03db1ab0a4fbf258703eb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813602"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218862"
 ---
 # <a name="create-resource-set-pattern-rules"></a>创建资源集模式规则
 
-大规模数据处理系统通常将单个表作为多个文件存储在磁盘上。 此概念在 Azure Purview 中使用资源集来表示。 资源集是数据目录中的单个对象，表示存储中的大量资产。 若要了解详细信息，请参阅[了解资源集](concept-resource-sets.md)。
+大规模数据处理系统通常将单个表作为多个文件存储在存储中。 此概念在 Azure Purview 中使用资源集来表示。 资源集是数据目录中的单个对象，表示存储中的大量资产。 若要了解详细信息，请参阅[了解资源集](concept-resource-sets.md)。
 
 扫描存储帐户时，Azure Purview 使用一组定义的模式来确定一组资产是否为资源集。 在某些情况下，Azure Purview 的资源集分组可能无法准确反映数据资产。 通过资源集模式规则，可自定义或替代 Azure Purview 检测哪些资产可分组为资源集的方式，以及其在目录中的显示方式。
 
@@ -26,12 +26,13 @@ ms.locfileid: "111813602"
 - Azure 文件
 - Amazon S3
 
+必须启用高级资源集功能集才能创建资源集模式规则。 若要了解详细信息，请参阅[了解高级资源集](concept-resource-sets.md#advanced-resource-sets)。
 
 ## <a name="how-to-create-a-resource-set-pattern-rule"></a>如何创建资源集模式规则
 
 按照以下步骤创建新的资源集模式规则：
 
-1. 转到管理中心。 从“资源集”标题下的菜单中选择“模式规则”。 选择“+ 新建”以创建新规则集。
+1. 转到数据映射。 从“源管理”标题下的菜单中选择“模式规则”。 选择“+ 新建”以创建新规则集。
 
    :::image type="content" source="media/how-to-resource-set-pattern-rules/create-new-scoped-resource-set-rule.png" alt-text="创建新的资源集模式规则" border="true":::
 
@@ -53,7 +54,7 @@ ms.locfileid: "111813602"
 
       :::image type="content" source="media/how-to-resource-set-pattern-rules/scoped-resource-set-rule-example.png" alt-text="创建新配置规则。" border="true":::
 
-1. 单击“添加”以保存规则。
+1. 选择“添加”以保存规则。
 
 > [!NOTE]
 > 创建模式规则后，所有新扫描将在引入过程中应用规则。 数据目录中的现有资产将通过后台进程进行更新，该过程可能需要几个小时。 

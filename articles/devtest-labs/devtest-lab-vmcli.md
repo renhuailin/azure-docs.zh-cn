@@ -1,14 +1,14 @@
 ---
-title: 使用 Azure CLI 在开发测试实验室中创建和管理虚拟机
+title: 使用 Azure CLI 在 Azure 开发测试实验室中创建和管理虚拟机
 description: 了解如何通过 Azure 开发测试实验室，使用 Azure CLI 创建和管理虚拟机
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 95e0add8ce14e47c609b1ae951673c261316293f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 52d98993de35ccc4b02fb95579719fb68b4017ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763534"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599537"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
 本快速入门将指导你在实验室中进行创建、启动、连接、更新和清理开发计算机的操作。 

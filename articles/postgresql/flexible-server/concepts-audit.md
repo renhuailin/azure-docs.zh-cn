@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b344e2a845a9da8333860599bd4ff9041108202f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4659e44475c09a1a42c06041e3f180357af9ee2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588253"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556012"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的审核日志记录
 
@@ -27,12 +27,30 @@ Azure Database for PostgreSQL 灵活服务器中数据库活动的审核日志�
 
 若要了解如何设置将日志记录到 Azure 存储、事件中心或 Azure Monitor 日志的功能，请访问[服务器日志文章](concepts-logging.md)的资源日志部分。
 
-## <a name="enabling-pgaudit"></a>启用 pgAudit
+## <a name="installing-pgaudit"></a>安装 pgAudit
 
-若要启用 pgAudit，需要使用客户端（如 psql）连接到服务器，并通过运行以下命令启用 pgAudit 扩展：
-```SQL
-CREATE EXTENSION pgaudit;
-```
+若要安装 pgAudit，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要重启服务器才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md) 或 [REST API](/rest/api/postgresql/singleserver/configurations/createorupdate) 更改参数。
+
+使用 [Azure 门户](https://portal.azure.com)：
+
+   1. 选择你的 Azure Database for PostgreSQL - 灵活服务器。
+   2. 在侧栏中选择“服务器参数”。 
+   3. 搜索 `shared_preload_libraries` 参数。
+   4. 选择 **pgaudit**。
+     :::image type="content" source="./media/concepts-audit/shared-preload-libraries.png" alt-text="显示 Azure Database for PostgreSQL - 为 pgaudit 启用 shared_preload_libraries 的屏幕截图":::
+   5. 可以通过在 psql 中执行以下查询来检查 pgaudit 是否已加载到 shared_preload_libraries 中：
+        ```SQL
+      show shared_preload_libraries;
+      ```
+      你应该在返回 shared_preload_libraries 的查询结果中看到 pgaudit
+
+   6. 使用客户端（例如 psql）连接到服务器并启用 pgAudit 扩展
+      ```SQL
+      CREATE EXTENSION pgaudit;
+      ```
+
+> [!TIP]
+> 如果看到错误，请确认是否已在保存 `shared_preload_libraries` 后重启服务器。
 
 ## <a name="pgaudit-settings"></a>pgAudit 设置
 
@@ -41,7 +59,16 @@ CREATE EXTENSION pgaudit;
 > [!NOTE]
 > pgAudit 设置在全局范围指定，不能在数据库或角色级别指定。
 
-[启用 pgAudit](#enabling-pgaudit) 以后，即可配置其参数，以便开始日志记录。 [pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)提供每个参数的定义。 请先测试参数，确认获取的是预期的行为。
+[启用 pgAudit](#installing-pgaudit) 以后，即可配置其参数，以便开始日志记录。 若要配置 pgAudit，可以按照以下说明进行操作。 使用 [Azure 门户](https://portal.azure.com)：
+
+   1. 选择你的 Azure Database for PostgreSQL 服务器。
+   2. 在侧栏中选择“服务器参数”。 
+   3. 搜索 `pg_audit` 参数。
+   4. 选取要编辑的适当设置参数。 例如，若要开始日志记录，请将 `pgaudit.log` 设置为 `WRITE`。:::image type="content" source="./media/concepts-audit/pgaudit-config.png" alt-text="此屏幕截图显示 Azure Database for PostgreSQL - 使用 pgaudit 配置日志记录":::
+   5. 单击“保存”按钮保存所做的更改
+
+
+[pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)提供每个参数的定义。 请先测试参数，确认获取的是预期的行为。
 
 > [!NOTE]
 > 将 `pgaudit.log_client` 设置为 ON 会将日志重定向到客户端进程（例如 psql）而不是写入文件。 通常应让此设置保持禁用状态。 <br> <br>

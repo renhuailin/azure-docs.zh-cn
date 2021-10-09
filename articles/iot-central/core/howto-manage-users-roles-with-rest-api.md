@@ -7,12 +7,12 @@ ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 97f97206b5071824f8bde8733d208078ddaf72bb
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 54917fced3fb561add82d8e1f78078e7562858e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473309"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680445"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-users-and-roles"></a>如何使用 IoT Central REST API 管理用户和角色
 
@@ -21,6 +21,9 @@ ms.locfileid: "123473309"
 每个 IoT Central REST API 调用都需要授权标头。 有关详细信息，请参阅[如何对 IoT Central REST API 调用进行身份验证和授权](howto-authorize-rest-api.md)。
 
 有关 IoT Central REST API 的参考文档，请参阅 [Azure IoT Central REST API 参考](/rest/api/iotcentral/)。
+
+> [!TIP]
+> [预览 API](/rest/api/iotcentral/1.1-previewdataplane/users) 支持新的[组织功能](howto-create-organizations.md)。
 
 ## <a name="manage-roles"></a>管理角色
 
@@ -183,7 +186,7 @@ PUT https://{your app subdomain}.azureiotcentral.com/api/users/user-001?api-vers
 }
 ```
 
-如果需要对 REST API 调用使用服务主体身份验证，还可以添加服务主体用户。 有关详细信息，请参阅[添加或更新服务主体用户](/rest/api/iotcentral/1.0/users/create#add-or-update-a-service-principal-user)。
+如果需要对 REST API 调用使用服务主体身份验证，还可以添加服务主体用户。 有关详细信息，请参阅[添加或更新服务主体用户](/rest/api/iotcentral/1.0dataplane/users/create#add-or-update-a-service-principal-user)。
 
 ### <a name="change-the-role-of-a-user"></a>更改用户的角色
 

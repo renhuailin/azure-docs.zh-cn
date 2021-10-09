@@ -7,13 +7,13 @@ ms.reviewer: stmummer
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 02/18/2021
-ms.openlocfilehash: 66e4d498ff7584188d680e35c89c6f10cc43c9cb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 09/22/2021
+ms.openlocfilehash: 63c820a7dd4bcbe1322478a46043963edc45dd2b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604485"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129054255"
 ---
 # <a name="reference-architecture-diagram"></a>参考体系结构示意图
 
@@ -24,6 +24,8 @@ ms.locfileid: "104604485"
 构建体系结构示意图的一个很有帮助的起点是利用 [Azure 体系结构模型](/azure/architecture/browse/)。
 
 ## <a name="typical-components-of-a-reference-architecture-diagram"></a>参考体系结构示意图的典型组件
+
+该示意图必须清楚地将你的 IP 标识为部署在 Microsoft Azure 上并推动其使用的解决方案、应用程序或服务代码。 此代码必须高度可重用，并且不依赖于每个部署的大量自定义。
 
 - 托管和与产品/服务交互的云服务，包括使用 Azure 资源的服务
 - 你的产品/服务使用的数据连接、数据层和数据服务
@@ -39,4 +41,4 @@ ms.locfileid: "104604485"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)
+- [配置商业市场产品/服务的联合销售](./co-sell-configure.md)

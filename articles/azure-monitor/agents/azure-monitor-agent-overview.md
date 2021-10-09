@@ -4,14 +4,14 @@ description: Azure Monitor 代理概述，该代理从虚拟机的来宾操作�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/22/2021
+ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: ccd194df39f0fff4bdabe4ae91e911dd030673e6
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 46c3aca1c2f983d857be59d2d69b0cadfb433303
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662169"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655973"
 ---
 # <a name="azure-monitor-agent-overview"></a>Azure Monitor 代理概述
 Azure Monitor 代理 (AMA) 从 Azure 虚拟机的来宾操作系统中收集监视数据，并将数据交付给 Azure Monitor。 本文概述了 Azure Monitor 代理，提供了有关如何安装它以及如何配置数据收集的信息。
@@ -78,13 +78,14 @@ Azure Monitor 代理在所有支持 Log Analytics 的公共区域及 Azure 政�
 | Azure 服务 | 当前支持 | 详细信息 |
 |:---|:---|:---|
 | [Azure 安全中心](../../security-center/security-center-introduction.md) | 个人预览版 | [注册链接](https://aka.ms/AMAgent) |
-| [Azure Sentinel](../../sentinel/overview.md) | 个人预览版 | [注册链接](https://aka.ms/AMAgent) |
+| [Azure Sentinel](../../sentinel/overview.md) | <ul><li>Windows 事件转发 (WEF)：个人预览版</li><li>Windows 安全事件：[公共预览版](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[注册链接](https://aka.ms/AMAgent) </li><li>不需要注册</li></ul> |
 
 下表显示了 Azure Monitor 功能对 Azure Monitor 代理的当前支持。
 
 | Azure Monitor 功能 | 当前支持 | 详细信息 |
 |:---|:---|:---|
-| [VM 见解](../vm/vminsights-overview.md) | 个人预览版  | [注册链接](https://forms.office.com/r/jmyE821tTy) |
+| [VM 见解](../vm/vminsights-overview.md) | 个人预览版  | [注册链接](https://aka.ms/amadcr-privatepreviews) |
+| [使用专用链接或 AMPLS 进行连接](../logs/private-link-security.md) | AMA 的个人预览版 | [注册链接](https://aka.ms/amadcr-privatepreviews) |
 | [VM 见解来宾运行状况](../vm/vminsights-health-overview.md) | 公共预览版 | 仅在新代理上可用 |
 | [SQL 见解](../insights/sql-insights-overview.md) | 公共预览版 | 仅在新代理上可用 |
 
@@ -108,15 +109,15 @@ Azure Monitor 代理不收取任何费用，但引入的数据可能产生费用
 ## <a name="data-sources-and-destinations"></a>数据源和目标
 下表列出了当前可以使用数据收集规则通过 Azure Monitor 代理收集的数据类型，以及可以将该数据发送到的位置。 若要获取见解、解决方案的列表以及使用 Azure Monitor 代理收集其他类型的数据的其他解决方案的列表，请参阅 [Azure Monitor 监视哪些内容？](../monitor-reference.md)。
 
-Azure Monitor 代理会将数据发送到 Azure Monitor 指标或发送到支持 Azure Monitor 日志的 Log Analytics 工作区。
+Azure Monitor 代理会将数据发送到 Azure Monitor 指标（预览版）或发送到支持 Azure Monitor 日志的 Log Analytics 工作区。
 
 | 数据源 | Destinations | 说明 |
 |:---|:---|:---|
-| 性能        | Azure Monitor 指标<sup>1</sup><br>Log Analytics 工作区 | 度量操作系统和工作负荷的各方面性能的数值 |
+| 性能        | Azure Monitor 指标（预览版）<sup>1</sup><br>Log Analytics 工作区 | 度量操作系统和工作负荷的各方面性能的数值 |
 | Windows 事件日志 | Log Analytics 工作区 | 发送到 Windows 事件日志记录系统的信息 |
 | Syslog             | Log Analytics 工作区 | 发送到 Linux 事件日志记录系统的信息 |
 
-<sup>1</sup> 目前，适用于 Linux 的 Azure Monitor 代理存在限制。 不支持将 Azure Monitor 指标用作唯一目标。 将其与 Azure Monitor 日志一起使用是可行的。 此限制将在下一扩展更新中解决。
+<sup>1</sup> [单击此处](../essentials/metrics-custom-overview.md#quotas-and-limits)可查看使用 Azure Monitor 指标时的其他限制。 在 Linux 上，v.1.10.9.0 或更高版本支持使用 Azure Monitor 指标作为唯一目标。 
 
 ## <a name="security"></a>安全性
 Azure Monitor 代理无需任何密钥，而是需要[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。 部署代理之前，必须在每个虚拟机上启用系统分配的托管标识。
@@ -127,6 +128,9 @@ Azure Monitor 代理支持 Azure 服务标记。 AzureMonitor 和 AzureResourceM
 ### <a name="proxy-configuration"></a>代理配置
 
 Windows 和 Linux 的 Azure Monitor 代理扩展可以使用 HTTPS 协议通过代理服务器或 Log Analytics 网关与 Azure Monitor 进行通信。 请将其用于 Azure 虚拟机、Azure 虚拟机规模集和 Azure Arc for servers。 将扩展设置用于配置，如以下步骤所述。 匿名身份验证和基本身份验证（使用用户名/密码）都受支持。
+
+> [!IMPORTANT]
+> [Azure Monitor 指标（预览版）](../essentials/metrics-custom-overview.md)不支持代理配置作为目标。 因此，如果将指标发送到此目标，则将使用公共互联网而没有任何代理。
 
 1. 使用此流程图，首先确定 setting 和 protectedSetting 参数的值 。
 

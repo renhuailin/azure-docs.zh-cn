@@ -2,18 +2,18 @@
 title: Azure 托管磁盘的服务器端加密
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 可以使用客户管理的密钥通过自己的密钥来管理加密，也可以依赖 Microsoft 托管的密钥来加密你的托管磁盘。
 author: roygara
-ms.date: 06/29/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7f4ae0dfb8e03add64f450d98c15f85da33eaef3
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 98bbc2f84b0f56c4e50e98e99e7bcaf86588fb48
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696463"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803972"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
 
@@ -92,6 +92,48 @@ Azure 存储加密不会影响托管磁盘的性能，并且不会产生额外�
 [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)利用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能或 Windows 的 [BitLocker](/windows/security/information-protection/bitlocker/bitlocker-overview) 功能，在来宾 VM 中使用客户管理的密钥来加密托管磁盘。  使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 > [!IMPORTANT]
 > 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会转移到新租户，因此，客户托管密钥可能不再有效。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+问：创建托管磁盘时，是否会默认启用服务器端加密？
+
+**答:** 是的。 托管磁盘通过使用平台托管密钥和平台管理的密钥进行加密。
+
+问：默认情况下，托管磁盘上的引导卷是否会加密？
+
+**答:** 是的。 默认情况下，所有托管磁盘均已加密，包括 OS 磁盘。
+
+**问：加密密钥由谁管理？**
+
+答：平台托管密钥由 Microsoft 管理。 你还可以使用和管理 Azure 密钥保管库中存储的你自己的密钥。
+
+问：是否可以为托管磁盘禁用服务器端加密？
+
+**答:** 不是。
+
+问：服务器端加密是否仅适用于特定区域？
+
+**答:** 不是。 在可以使用 Azure 托管磁盘的所有区域中，均可使用使用平台管理的密钥和客户管理的密钥的服务器端加密。
+
+问：对于本地到 Azure 和 Azure 到 Azure 灾难恢复方案，Azure Site Recovery 是否支持使用客户托管密钥的服务器端加密？
+
+**答:** 是的。
+
+问：能否使用 Azure 备份服务来备份由使用客户管理的密钥的服务器端加密加密的托管磁盘？
+
+**答:** 是的。
+
+问：是否已加密托管快照和映像？
+
+**答:** 是的。 所有托管快照和映像均会自动加密。
+
+是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？
+
+**答:** 是的。
+
+问：是否同时会加密从托管磁盘或快照导出的 VHD？
+
+**答:** 不是。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。
 
 ## <a name="next-steps"></a>后续步骤
 

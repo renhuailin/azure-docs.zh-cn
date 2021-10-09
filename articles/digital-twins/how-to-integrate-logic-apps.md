@@ -4,27 +4,27 @@ titleSuffix: Azure Digital Twins
 description: 了解如何使用自定义连接器将逻辑应用连接到 Azure 数字孪生
 author: baanders
 ms.author: baanders
-ms.date: 9/11/2020
+ms.date: 9/1/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 7aca72097e1d6aee40e5e9ead0c60be34d3e65d5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: aa8ea41233cad42bcad9fc387b8f984503c6e75e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437822"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797712"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自定义连接器与逻辑应用集成
 
 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)是一项云服务，可帮助你跨应用和服务自定义工作流。 通过将逻辑应用连接到 Azure 数字孪生 API，可以围绕 Azure 数字孪生及其数据创建这样的自动化流程。
 
-Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接器。 当前通过 Azure 数字孪生使用逻辑应用的过程是，使用自定义 Azure 数字孪生 Swagger 创建经修改可用于逻辑应用的[自定义逻辑应用连接器](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)。
+Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接器。 而当前通过 Azure 数字孪生使用逻辑应用的过程是，使用修改后可用于逻辑应用的[自定义 Azure 数字孪生 Swagger](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) 定义文件创建[自定义逻辑应用连接器](../logic-apps/custom-connector-overview.md)。
 
 > [!NOTE]
-> 上面链接的自定义 Swagger 示例包含多个版本的 Swagger。 可在具有最近日期的子文件夹中找到最新版本，但仍支持示例中包含的较旧版本。
+> 上面链接的自定义 Swagger 示例包含多个版本的 Swagger 定义文件。 可在具有最近日期的子文件夹中找到最新版本，但仍支持示例中包含的较旧版本。
 
-在本文中，你将使用 [Azure 门户](https://portal.azure.com)创建自定义连接器，此连接器可用于将逻辑应用连接到 Azure 数字孪生实例。 然后，你将创建使用此连接作为示例方案的逻辑应用，其中由计时器触发的事件会自动更新 Azure 数字孪生实例中的一个孪生体。 
+在本文中，你将使用 [Azure 门户](https://portal.azure.com)创建自定义连接器，此连接器可用于将逻辑应用连接到 Azure 数字孪生实例。 然后，你将创建对示例方案使用此连接的逻辑应用。在此方案中，由计时器触发的事件会自动更新 Azure 数字孪生实例中的一个孪生体。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,9 +54,9 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
 
 ## <a name="create-custom-logic-apps-connector"></a>创建自定义逻辑应用连接器
 
-现在，你已准备好为 Azure 数字孪生 API 创建[自定义逻辑应用连接器](../logic-apps/custom-connector-overview.md)。 完成此操作后，在下一部分中创建逻辑应用时，可以挂接 Azure 数字孪生。
+现在，你已准备好为 Azure 数字孪生 API 创建[自定义逻辑应用连接器](../logic-apps/custom-connector-overview.md)。 完成此操作后，在下一部分创建逻辑应用时，就可以挂接 Azure 数字孪生。
 
-导航到 Azure 门户中的[逻辑应用自定义连接器](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis)页面（可使用此链接，也可以在门户搜索栏中搜索它）。 选择“+ 添加”。
+导航到 Azure 门户中的[逻辑应用自定义连接器](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis)页面（可使用此链接，也可以在门户搜索栏中搜索它）。 选择“+ 新建”。 
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure 门户中“逻辑应用自定义连接器”页面的屏幕截图。突出显示了“添加”按钮。":::
 
@@ -64,7 +64,7 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
 
 :::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure 门户中的“创建逻辑应用自定义连接器”页面的屏幕截图。":::
 
-你将转到“查看 + 创建”选项卡，可在其中选择底部的“创建”以创建资源。 
+这样做会转到“查看 + 创建”选项卡，可在其中选择底部的“创建”以创建资源。 
 
 :::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Azure 门户中“创建逻辑应用自定义连接器”页面的“查看 + 创建”选项卡的屏幕截图。":::
 
@@ -76,10 +76,10 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
 
 首先，下载经修改适用于逻辑应用的自定义 Azure 数字孪生 Swagger。 选择“下载 ZIP”按钮，下载 [Azure 数字孪生自定义 Swagger（逻辑应用连接器）示例](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)。 导航到已下载的 Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip 文件夹，然后将其解压缩。 
 
-此教程的自定义 Swagger 位于 Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps 文件夹中。 此文件夹包含名为 stable 和 preview 的子文件夹，其中都包含 Swagger 的不同版本，按日期排列。  具有最近日期的文件夹包含 Swagger 的最新副本。 无论选择哪个版本，Swagger 文件的名称都是 digitaltwins.json。
+此教程的自定义 Swagger 位于 digital-twins-custom-swaggers-main\LogicApps 文件夹中。 此文件夹包含名为 stable 和 preview 的子文件夹，其中都包含 Swagger 的不同版本，按日期排列。  具有最新日期的文件夹将包含 Swagger 定义文件的最新副本。 无论选择哪个版本，Swagger 文件的名称都是 digitaltwins.json。
 
 > [!NOTE]
-> 除非你要使用预览功能，否则一般建议使用 Swagger 的最新 stable 版本。 不过，也支持 Swagger 的较旧版本和预览版本。 
+> 除非你要使用预览功能，否则一般建议使用 Swagger 文件的最新稳定版本。 不过，也仍然支持 Swagger 文件的较旧版本和预览版本。 
 
 接下来，在 [Azure 门户](https://portal.azure.com)中转到连接器的“概述”页，然后选择“编辑”。
 
@@ -89,11 +89,12 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
 * **自定义连接器**
     - API 终结点：REST（保留默认值）
     - 导入模式：OpenAPI 文件（保留默认值）
-    - 文件：这将是你先前下载的自定义 Swagger 文件。 选择“导入”，找到计算机上的文件 (Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps\...\digitaltwins.json)，然后选择“打开”。
+    - 文件：此配置将是你先前下载的自定义 Swagger 文件。 选择“导入”，找到计算机上的文件 (Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps\...\digitaltwins.json)，然后选择“打开”。
 * **常规信息**
-    - 图标：上传你喜欢的图标
+    - 图标：上传你喜欢的图标。
     - 图标背景色：为所选颜色以“#xxxxxx”格式输入十六进制代码作。
     - 说明：填写你想要的任何值。
+    - 通过本地数据网关连接：已关闭（保留默认值）
     - 方案：HTTPS（保留默认值）
     - 主机：Azure 数字孪生实例的主机名。
     - 基 URL：/（保留默认值）
@@ -114,15 +115,15 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
     - 作用域：Directory.AccessAsUser.All
     - 重定向 URL：（暂时保留默认值）
 
-注意“重定向 URL”字段显示“保存自定义连接器以生成重定向 URL”。 现在可通过选择窗格顶部的“更新连接器”以确认连接器设置，立即执行此操作。
+“重定向 URL”字段显示“保存自定义连接器以生成重定向 URL”。 可通过选择窗格顶部的“更新连接器”以确认连接器设置，立即生成它。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="“编辑逻辑应用自定义连接器”页面顶部的屏幕截图。突出显示了“更新连接器”按钮。":::
 
-返回到“重定向 URL”字段，复制已生成的值。 将在下一步中使用它。
+返回到“重定向 URL”字段，复制已生成的值。 在下一步骤中将使用它。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="“编辑逻辑应用自定义连接器”页面中的“重定向 URL”字段的屏幕截图。突出显示了用于复制该值的按钮。":::
 
-这是创建连接器所需的全部信息（无需在“安全性”之后继续执行“定义”步骤）。 可以关闭“编辑逻辑应用自定义连接器”窗格。
+现在你已输入创建连接器所需的全部信息（无需在“安全性”之后继续执行“定义”步骤）。 可以关闭“编辑逻辑应用自定义连接器”窗格。
 
 >[!NOTE]
 >返回到你最初在其中选择了“编辑”的连接器“概述”页，注意，再次选择“编辑”将重启输入配置选择的整个过程。 它不会填充上次操作时填写的值，因此，如果要保存包含任何更改后的值的更新的配置，还必须重新输入其他所有值，以免其被默认值覆盖。
@@ -147,15 +148,15 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
 
 接下来，你将创建一个逻辑应用，该应用将使用新连接器自动执行 Azure 数字孪生更新。
 
-在 [ Azure 门户](https://portal.azure.com)的门户搜索栏中搜索“逻辑应用”。 选择它应会转到“逻辑应用”页。 选择“创建逻辑应用”按钮以创建新的逻辑应用。
+在 [ Azure 门户](https://portal.azure.com)的门户搜索栏中搜索“逻辑应用”。 选择它应会转到“逻辑应用”页。 选择“+ 添加”以创建新的逻辑应用。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure 门户中“逻辑应用”页的屏幕截图，突出显示了“创建逻辑应用”按钮。":::
 
-在随后的“逻辑应用”页面中，输入你的订阅和资源组。 另外，为逻辑应用选择一个名称，然后选择部署位置。
+在随后的“逻辑应用”页面中，输入你的订阅和资源组。 在“实例详细信息”下，选择“消耗”实例类型，为逻辑应用选择名称，然后选择部署位置。  选择是启用还是禁用日志分析。
 
 选择“查看 + 创建”按钮。
 
-将转到“查看 + 创建”选项卡，可在其中查看详细信息，并选择底部的“创建”以创建资源。 
+这样做会转到“查看 + 创建”选项卡，可在其中查看详细信息，并选择底部的“创建”以创建资源。 
 
 你将被转到逻辑应用的部署页面。 完成部署后，请选择“转到资源”按钮以继续访问逻辑应用设计器，你将在其中填写工作流的逻辑。 
 
@@ -165,15 +166,15 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure 门户中的“逻辑应用设计器”页的屏幕截图，突出显示了“定期”通用触发器。":::
 
-在随即显示的“逻辑应用设计器”页中，将“定期”频率更改为“秒”，以便每 3 秒触发一次事件。  这样，以后就可以轻松地查看结果，而无需等待很长时间。
+在随即显示的“逻辑应用设计器”页中，将“定期”频率更改为“秒”，以便每 3 秒触发一次事件。  选择此频率就可以轻松地查看结果，无需长时间等待。
 
 选择“+新建步骤”。
 
-随即将打开“选择操作”框。 切换到“自定义”选项卡。你应会在顶部框中看到前面的自定义连接器。
+这样做会打开“选择操作”框。 切换到“自定义”选项卡。你应会在顶部框中看到前面的自定义连接器。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="在 Azure 门户中的逻辑应用设计器中创建流的屏幕截图。突出显示了自定义连接器。":::
 
-选择它以显示该连接器中包含的 API 列表。 使用搜索栏或滚动浏览列表来选择“DigitalTwins_Add”。 （本文中使用此 API，但你也可以选择任何其他 API 作为逻辑应用连接的有效选项）。
+选择它以显示该连接器中包含的 API 列表。 使用搜索栏或滚动浏览列表来选择“DigitalTwins_Add”。 （DigitalTwins_Add 操作是本文中使用的 API 调用，但你也可以选择任何其他 API 作为逻辑应用连接的有效选项）。
 
 系统可能会要求你用 Azure 凭据登录以连接到连接器。 如果看到“请求的权限”对话框，请按照提示为你的应用授予同意并接受。
 
@@ -190,7 +191,7 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
 
 ## <a name="query-twin-to-see-the-update"></a>查询孪生体以查看更新
 
-现在，你已创建逻辑应用，你在逻辑应用设计器中定义的孪生体更新事件应每 3 秒发生一次。 这意味着，3 秒后，你应该能够查询孪生体，并看到反映出修补后的新值。
+现在，你已创建逻辑应用，你在逻辑应用设计器中定义的孪生体更新事件应每 3 秒发生一次。 这个已配置的频率意味着，3 秒后，你应该能够查询孪生体，并看到修补后的新值反映出来。
 
 可以通过你选择的方法（如[自定义客户端应用](tutorial-command-line-app.md)、[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md)、[SDK 和 API](concepts-apis-sdks.md) 或 [CLI](concepts-cli.md)）来查询孪生体。 
 
@@ -198,6 +199,6 @@ Azure 数字孪生当前没有针对逻辑应用的已认证（预建）连接�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你创建了一个逻辑应用，它会用你提供的修补程序定期更新 Azure 数字孪生实例中的孪生体。 可以尝试在自定义连接器中选择其他 API，为对实例的各种操作创建逻辑应用。
+在本文中，你创建了一个逻辑应用，它会用你提供的修补程序定期更新 Azure 数字孪生实例中的孪生体。 可以尝试在自定义连接器中选择其他 API，为实例上进行的各种操作创建逻辑应用。
 
 若要详细了解可用的 API 操作及其所需的详细信息，请访问 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)。

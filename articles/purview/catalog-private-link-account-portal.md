@@ -6,20 +6,23 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/18/2021
-ms.openlocfilehash: 26b98ad9c4c042c1e6bf60889625a4d23090f6f5
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 09/27/2021
+ms.openlocfilehash: 0da3f53c41296f3cb467c00bb13649288ebd53c6
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515770"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213816"
 ---
 # <a name="connect-privately-and-securely-to-your-purview-account"></a>私密且安全地连接到你的 Purview 帐户
-通过本指南，你将了解如何为 Purview 帐户部署专用终结点，以便仅从 VNet 和专用网络连接到 Azure Purview 帐户。 若要实现此目标，需要为 Azure Purview 帐户部署帐户、门户并引入专用终结点。
+通过本指南，你将了解如何为 Purview 帐户部署专用终结点，以便仅从 VNet 和专用网络连接到 Azure Purview 帐户。 若要实现此目标，需要为 Azure Purview 帐户部署“帐户”和“门户”专用终结点。
 
 借助 Azure Purview 帐户专用终结点，你可以仅允许来自虚拟网络内部的客户端调用访问 Azure Purview 帐户，从而额外增加一层安全层。 此专用终结点也是门户专用终结点的一个必备组件。
 
-若要使用专用网络连接到 Azure Purview Studio，需要使用 Azure Purview 门户专用终结点。
+若要使用专用网络连接到 [Azure Purview Studio](https://web.purview.azure.com/resource/)，需要使用 Azure Purview“门户”专用终结点。
+
+> [!NOTE]
+> 如果只创建“帐户”和“门户”专用终结点，你将无法运行任何扫描。 若要在专用网络上启用扫描，你还需要[创建一个引入专用终结点](catalog-private-link-end-to-end.md)。
 
    :::image type="content" source="media/catalog-private-link/purview-private-link-account-portal.png" alt-text="显示 Azure Purview 和专用链接体系结构的关系图。":::
 
@@ -49,30 +52,32 @@ ms.locfileid: "122515770"
 
 3. 在“帐户和门户”下，选择“+ 添加”为 Azure Purview 帐户添加专用终结点 。
 
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-1.png" alt-text="显示“为帐户和门户创建专用终结点”页面选项的屏幕截图。":::
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account-portal.png" alt-text="显示“为帐户和门户创建专用终结点”页面选项的屏幕截图。":::
 
 4. 在“创建专用终结点”页上，为“Purview 子资源”选择创建位置，提供帐户专用终结点的名称，然后选择“帐户” 。 在“网络”下，选择虚拟网络和子网，然后选择“与专用 DNS 区域集成”（可选）以创建新的 Azure 专用 DNS 区域 。 
    
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-2.png" alt-text="显示“创建帐户专用终结点”页面的屏幕截图。":::
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account.png" alt-text="显示“创建帐户专用终结点”页面的屏幕截图。":::
 
-
-   > [!NOTE]
-   > 你也可以使用现有的 Azure 专用 DNS 区域，或稍后在 DNS 服务器中手动创建 DNS 记录。 有关详细信息，请参阅[为专用终结点配置 DNS 名称解析](./catalog-private-link-name-resolution.md)
+      > [!NOTE]
+      > 你也可以使用现有的 Azure 专用 DNS 区域，或稍后在 DNS 服务器中手动创建 DNS 记录。 有关详细信息，请参阅[为专用终结点配置 DNS 名称解析](./catalog-private-link-name-resolution.md)
 
 5. 选择“确定”。
    
 6. 在“创建 Purview 帐户”向导下，再次选择“+ 添加”，以添加门户专用终结点 。
      
 7. 在“创建专用终结点”页上，为“Purview 子资源”选择创建位置，提供门户专用终结点的名称，然后选择“门户” 。 在“网络”下，选择虚拟网络和子网，然后选择“与专用 DNS 区域集成”（可选）以创建新的 Azure 专用 DNS 区域 。 
+
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-portal.png" alt-text="显示“创建门户专用终结点”页的屏幕截图。":::
    
    > [!NOTE]
    > 你也可以使用现有的 Azure 专用 DNS 区域，或稍后在 DNS 服务器中手动创建 DNS 记录。 有关详细信息，请参阅[为专用终结点配置 DNS 名称解析](./catalog-private-link-name-resolution.md)
 
 8.  选择“确定”。
    
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-3.png" alt-text="显示“创建专用终结点”查看页面的屏幕截图。":::
-
 9.  选择“查看 + 创建”  。 在“查看 + 创建”页面上，Azure 会验证你的配置。
+      
+      :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account-portal-2.png" alt-text="显示“创建专用终结点”查看页面的屏幕截图。":::
+
 
 10. 看到“验证通过”的消息后，选择“创建”。
 
@@ -85,9 +90,9 @@ ms.locfileid: "122515770"
 
 ### <a name="use-the-azure-portal-azure-purview-account"></a>使用 Azure 门户（Azure Purview 帐户）
 
-1. 转到 [Azure 门户](https://portal.azure.com)，然后单击进入 Azure Purview 帐户，在“设置”下选择“网络”，然后选择“专用终结点连接”  。
+1. 转到 [Azure 门户](https://portal.azure.com)，选择 Azure Purview 帐户，在“设置”下选择“网络”，然后选择“专用终结点连接”  。
 
-    :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="显示创建帐户专用终结点的屏幕截图。":::
+    :::image type="content" source="media/catalog-private-link/purview-pe-add-to-existing.png" alt-text="显示创建帐户专用终结点的屏幕截图。":::
 
 2. 选择“+ 专用终结点”创建新的专用终结点。
 

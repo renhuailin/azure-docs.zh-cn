@@ -1,34 +1,29 @@
 ---
-title: 快速入门：在 Azure 门户中创建 Azure Purview 帐户
+title: 快速入门：在 Azure 门户中创建 Purview 帐户
 description: 本快速入门介绍如何创建 Azure Purview 帐户并配置权限以开始使用它。
 author: nayenama
 ms.author: nayenama
-ms.date: 08/18/2021
+ms.date: 09/27/2021
 ms.topic: quickstart
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 4f0ef5010a0862b1fa5514d83f6570eefa2c4e10
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c1a8b47df487cb3159ee1ac7492cf5eb04c1dec6
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102526"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217422"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Purview 帐户
 
-Azure Purview 是一种统一数据治理工具，可帮助你管理数据环境。 本快速入门介绍如何在 Azure 门户中创建 Azure Purview 帐户，以及如何在 Purview 中开始分类、保护和发现数据的过程！
+本快速入门介绍如何在 Azure 门户中创建 Azure Purview 帐户，以及如何在 Purview 中开始分类、保护和发现数据的过程！
 
-## <a name="prerequisites"></a>先决条件
+Azure Purview 是一种数据管理服务，可帮助你管理和治理数据环境。 通过跨本地源、多云源和服务型软件 (SaaS) 源连接到数据，Purview 创建了最新的信息地图。 它对敏感数据进行标识和分类，并提供端到端的沿袭。 数据使用者能够发现整个组织的数据，而数据管理员能够审核数据、保护数据和确保对你的数据的正确使用。
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+有关 Purview 的详细信息，[请参阅概述页](overview.md)。 有关在组织中部署 Purview 的详细信息，[请参阅部署最佳做法](deployment-best-practices.md)。
 
-* 用于登录 Azure 的用户帐户必须是 Azure 订阅的参与者、所有者或管理员。
-
-* 你拥有 [Azure Active Directory 租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
-
-* 没有任何阻止创建存储帐户或事件中心命名空间的 [Azure 策略](../governance/policy/overview.md)。 Purview 将在创建时部署托管存储帐户和事件中心。 如果存在阻止策略且需要保留，请按照我们的 [Purview 异常标记指南](create-purview-portal-faq.md)准备环境。
+[!INCLUDE [purview-quickstart-prerequisites](includes/purview-quickstart-prerequisites.md)]
 
 ## <a name="create-an-azure-purview-account"></a>创建 Azure Purview 帐户
 

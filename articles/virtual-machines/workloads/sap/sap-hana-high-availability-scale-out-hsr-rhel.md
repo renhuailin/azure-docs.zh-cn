@@ -1,26 +1,22 @@
 ---
 title: 在 RHEL 上用 HSR 和 Pacemaker 进行 SAP HANA 横向扩展 | Microsoft Docs
 description: 在 RHEL 上用 HSR 和 Pacemaker 进行 SAP HANA 横向扩展
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/26/2021
+ms.date: 09/24/2021
 ms.author: radeltch
-ms.openlocfilehash: 75ab5bb14ad06a7396ee549ebb773328160754d1
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 36925ac45d4773407d28020b58ef4d7ac8b279e1
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534489"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129053063"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 SAP HANA 横向扩展系统的高可用性 
 
@@ -30,7 +26,6 @@ ms.locfileid: "110534489"
 
 [anf-azure-doc]:../../../azure-netapp-files/index.yml
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -324,12 +319,13 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
 
 2. **[A]** 安装 NFS 客户端包。  
 
-    ```yum install nfs-utils ```
+   `yum install nfs-utils`
 
 
 3. **[AH]** Red Hat for HANA 配置。  
 
-    如 <https://access.redhat.com/solutions/2447641> 和以下 SAP 说明中所述配置 RHEL：  
+   如 <https://access.redhat.com/solutions/2447641> 和以下 SAP 说明中所述配置 RHEL：
+
    - [2292690 - SAP HANA DB: Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)（2292690 - SAP HANA DB：RHEL 7 的建议 OS 设置）
    - [2777782 - SAP HANA DB：建议用于 RHEL 8 的操作系统设置](https://launchpad.support.sap.com/#/notes/2777782)
    - [2455582 - Linux：运行使用 GCC 6.x 编译的 SAP 应用程序](https://launchpad.support.sap.com/#/notes/2455582)
@@ -341,7 +337,7 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
 
 在此示例中，共享 HANA 文件系统部署在 Azure NetApp 文件上，并通过 NFSv4 装载。  
 
-1. **[AH]** 为 HANA 数据库卷创建装入点。  
+1. **[AH]** 为 HANA 数据库卷创建装入点。
 
     ```bash
     mkdir -p /hana/shared
@@ -542,7 +538,7 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
      * 对于“选择系统使用情况/输入索引[4]”：输入 4（用于自定义）
      * 对于“数据卷的位置”[/hana/data/HN1]：按 Enter 接受默认值
      * 对于“日志卷的位置”[/hana/log/HN1]：按 Enter 接受默认值
-     * 对于“是否限制最大内存分配?” [n]：输入 n
+     * 对于“是否限制最大内存分配？” [n]：输入 n
      * 对于“主机 hana-s1-db1 的证书主机名”[hana-s1-db1]：按 Enter 接受默认值
      * 对于“SAP 主机代理用户 (sapadm) 密码”：输入密码
      * 对于“确认 SAP 主机代理用户 (sapadm) 密码”：输入密码
@@ -621,11 +617,11 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
      * 对于“输入根用户名 [root]”：按 Enter 接受默认值
      * 对于“选择主机 'hana-s1-db2' 的角色 [1]”：1（适用于辅助角色）
      * 对于“输入主机 'hana-s1-db2' 的主机故障转移组 [默认值]”：按 Enter 接受默认值
-     * 对于“输入主机 'hana-s1-db2' 的存储分区号 [<<assign automatically>>]”：按 Enter 接受默认值
+     * 对于“输入主机 'hana-s1-db2' 的存储分区号 [\<\<assign automatically\>\>]”：按 Enter 接受默认值
      * 对于“输入主机 'hana-s1-db2' 的辅助角色组 [默认值]”：按 Enter 接受默认值
      * 对于“选择主机 'hana-s1-db3' 的角色 [1]”：1（适用于辅助角色）
      * 对于“输入主机 'hana-s1-db3' 的主机故障转移组 [默认值]”：按 Enter 接受默认值
-     * 对于“输入主机 'hana-s1-db3' 的存储分区号 [<<assign automatically>>]”：按 Enter 接受默认值
+     * 对于“输入主机 'hana-s1-db3' 的存储分区号 [\<\<assign automatically\>\>]”：按 Enter 接受默认值
      * 对于“输入主机 'hana-s1-db3' 的辅助角色组 [默认值]”：按 Enter 接受默认值
      * 对于“系统管理员 (hn1adm) 密码”：输入密码
      * 对于“输入 SAP 主机代理用户 (sapadm) 密码”：输入密码
@@ -922,12 +918,13 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
 
 3. **[AH]** 群集需要在群集节点上为 <sid\>adm 配置 sudoers。 在此示例中，通过创建新文件来实现此目的。 以 `root` 身份执行命令。    
     ```bash
-    cat << EOF > /etc/sudoers.d/20-saphana
-    # SAPHanaSR-ScaleOut needs for srHook
-     Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
-     Cmnd_Alias SFAIL = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SFAIL -t crm_config -s SAPHanaSR
-     hn1adm ALL=(ALL) NOPASSWD: SOK, SFAIL
-     EOF
+    sudo visudo -f /etc/sudoers.d/20-saphana
+    # Insert the following lines and then save
+    Cmnd_Alias HANA_S1_SOK   = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S1 -v SOK -t crm_config -s SAPHanaSR
+    Cmnd_Alias HANA_S1_SFAIL = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S1 -v SFAIL -t crm_config -s SAPHanaSR
+    Cmnd_Alias HANA_S2_SOK   = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S2 -v SOK -t crm_config -s SAPHanaSR
+    Cmnd_Alias HANA_S2_SFAIL = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S2 -v SFAIL -t crm_config -s SAPHanaSR
+    hn1adm ALL=(ALL) NOPASSWD: HANA_S1_SOK, HANA_S1_SFAIL, HANA_S2_SOK, HANA_S2_SFAIL
     ```
 
 4. **[1,2]** 在两个复制站点上启动 SAP HANA。 以 <sid\>adm 身份执行。  

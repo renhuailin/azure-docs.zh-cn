@@ -1,15 +1,15 @@
 ---
-title: 在 Azure 开发测试实验室中自动添加实验室用户 | Microsoft Docs
+title: 自动执行添加实验室用户
 description: 本文介绍如何使用 Azure 资源管理器模板、PowerShell 和 CLI 自动将用户添加到 Azure 开发测试实验室中的实验室。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 70f8e2740a53c7bb855d3796efa438e9c9ff0ffa
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8582c6cf807a9a96f2cc7da78c93de988d14792b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965213"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592254"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>自动将实验室用户添加到 Azure 开发测试实验室中的实验室
 通过 Azure 开发测试实验室，可以使用 Azure 门户快速创建自助服务开发测试环境。 但是，如果你有多个团队和多个开发测试实验室实例，则自动执行创建过程可以节省时间。 使用 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/Environments)，可以创建实验室、实验室 VM、自定义映像、公式，并自动添加用户。 本文专门介绍如何将用户添加到开发测试实验室实例。
@@ -160,7 +160,8 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName 'email@company.com').Id
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
 ```
 
-请务必注意，组部署名称和角色分配 GUID 必须是唯一的。 如果尝试使用非唯一 GUID 部署资源分配，则会出现 `RoleAssignmentUpdateNotPermitted` 错误。
+> [!NOTE] 
+> 组部署名称和角色分配 GUID 必须是唯一的。 如果尝试使用非唯一 GUID 部署资源分配，则会出现 `RoleAssignmentUpdateNotPermitted` 错误。
 
 如果计划多次使用该模板将多个 Active Directory 对象添加到实验室的“开发测试实验室用户”角色，请考虑在 PowerShell 命令中使用动态对象。 以下示例使用 [New-Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid) cmdlet 动态指定资源组部署名称和角色分配 GUID。
 

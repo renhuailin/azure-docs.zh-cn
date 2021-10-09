@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/28/2021
 ms.author: victorh
-ms.openlocfilehash: 30ae9e7bf915e558a806d9297fbcc35700b64ce1
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 2dbcb4d42372c97b12d4a71ef43ee1e10f1232bf
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111571074"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209540"
 ---
 # <a name="configure-azure-firewall-rules"></a>配置 Azure 防火墙规则
 可以使用经典规则或防火墙策略在 Azure 防火墙上配置 NAT 规则、网络规则和应用程序规则。 默认情况下，Azure 防火墙会拒绝所有流量，除非手动配置规则以允许流量。
@@ -53,7 +53,7 @@ ms.locfileid: "111571074"
 |ChAppRC2      |     应用程序规则集合    |2000         |7         |-|
 |ChDNATRC3     | DNAT 规则集合        | 3000        |  2       |-|
 
-将按以下顺序处理规则：DNATRC1、DNATRC3、ChDNATRC3、NetworkRC1、NetworkRC2、ChNetRC1、ChNetRC2、AppRC2、ChAppRC1、ChAppRC2
+规则处理将按以下顺序进行：DNATRC1、DNATRC3、ChDNATRC3、NetworkRC1、NetworkRC2、ChNetRC1、ChNetRC2、AppRC2、ChAppRC1、ChAppRC2
 
 ### <a name="threat-intelligence"></a>威胁智能
 
@@ -65,31 +65,31 @@ ms.locfileid: "111571074"
 
 在“警报和拒绝”模式下配置 IDPS 时，IDPS 引擎内联并在规则处理引擎之后激活 。 因此，这两个引擎都会生成警报，并且可能会阻止匹配流。  
 
-IDPS 执行的会话删除会以无提示方式阻止流。 因此，不会在 TCP 级别发送 RST。由于 IDPS 始终在匹配网络/应用程序规则（允许/拒绝）并在日志中标记后检查流量，因此可能会记录另一条“删除”消息，其中 IDPS 因为签名匹配而决定拒绝会话。 
+IDPS 执行的会话删除会以无提示方式阻止流。 因此，不会在 TCP 级别发送 RST。由于 IDPS 总是在匹配了网络/应用程序规则（允许/拒绝）并在日志中标记之后检查流量，因此，当 IDPS 决定通过签名匹配拒绝会话时，可能会记录另一条删除消息。 
 
-启用 TLS 检查后，会对未加密和加密的流量进行检查。  
+如果启用 TLS 检查，则会检查未加密和加密的流量。  
 
 ## <a name="outbound-connectivity"></a>出站连接
 
 ### <a name="network-rules-and-applications-rules"></a>网络规则和应用程序规则
 
-如果配置了网络规则和应用程序规则，则会在应用程序规则之前先按优先级顺序应用网络规则。 规则将终止。 因此，如果在网络规则中找到了匹配项，则不会处理其他规则。 如果已配置，将对所有经过的流量执行 IDPS，并且在签名匹配时，IDPS 可能会发出警报或/和阻止可疑流量。  
+如果配置了网络规则和应用程序规则，则会在应用程序规则之前先按优先级顺序应用网络规则。 规则将终止。 因此，如果在网络规则中找到了匹配项，则不会处理其他规则。 如果已配置 IDPS，则会对所有经过的流量执行 IDPS，并且在签名匹配时，IDPS 可能会警报或阻止可疑流量。  
 
-如果没有网络规则匹配项，并且协议是 HTTP、HTTPS 或 MSSQL，则应用程序规则会按优先级顺序评估数据包。  
+如果没有网络规则匹配项，并且，如果协议是 HTTP、HTTPS 或 MSSQL，则应用程序规则会按优先级顺序评估数据包。  
 
 对于 HTTP，Azure 防火墙根据主机标头查找应用程序规则匹配项。 对于 HTTPS，Azure 防火墙仅根据 SNI 查找应用程序规则匹配项。  
 
-对于 HTTP 和 TLS 检查的 HTTPS，防火墙会忽略目标 IP 地址的数据包，并使用主机头中 DNS 解析的 IP 地址。 防火墙期望获取主机头中的端口号，否则假定标准端口 80。 如果实际 TCP 端口与主机头中的端口之间存在端口不匹配，则将丢弃流量。DNS 解析由 Azure DNS 或自定义 DNS （如果在防火墙上配置）来完成。  
+在 HTTP 和 TLS 检查的 HTTPS 情况下，防火墙会忽略数据包的目标 IP 地址并使用主机标头中 DNS 解析的 IP 地址。 防火墙期望获取主机标头中的端口号，否则它采用标准端口 80。 如果实际 TCP 端口与主机标头中的端口之间存在端口不匹配，则将删除流量。DNS 解析由 Azure DNS 或自定义 DNS（如果在防火墙上配置）完成。  
 
 > [!NOTE]
 > HTTP 和 HTTPS 协议（使用 TLS 检查）始终由 Azure 防火墙填充，其 XFF (X-Forwarded-For) 标头等于原始源 IP 地址。  
 
-当应用程序规则包含 TLS 检查时，防火墙规则引擎将处理 SNI、主机头以及 URL 以匹配规则。 
+当应用程序规则包含 TLS 检查时，防火墙规则引擎会处理 SNI、主机标头以及 URL，以匹配规则。 
 
 如果在应用程序规则中仍未找到匹配项，则会根据基础结构规则集合评估数据包。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。 
 
 > [!NOTE]
-> 可以为 TCP、 UDP、 ICMP 或任意 IP 协议配置网络规则  **  **  **  **  。 “任意”IP 协议包括 Internet 数字分配机构 (IANA) 协议编号文档中定义的所有 IP 协议。 如果显式配置了目标端口，则会将规则转换为 TCP+UDP 规则。 在 2020 年 11 月 9 日之前，“任意”是指 TCP、UDP 或 ICMP **  。 因此，你可能在该日期之前配置了协议为“任意”、目标端口为“*”的规则 。 如果不打算像当前定义一样允许任意 IP 协议，请修改规则以显式配置所需的协议（TCP、UDP 或 ICMP）。 
+> 可以为 TCP、UDP、ICMP 或“任意”IP 协议配置网络规则 **  **  **  **  。 “任意”IP 协议包括 Internet 数字分配机构 (IANA) 协议编号文档中定义的所有 IP 协议。 如果显式配置了目标端口，则会将规则转换为 TCP+UDP 规则。 在 2020 年 11 月 9 日之前，“任意”是指 TCP、UDP 或 ICMP 协议 **  。 因此，你可能在该日期之前配置了“协议为任意”、且“目标端口为 *”的规则 。 如果不打算像当前定义一样允许任意 IP 协议，请修改规则以显式配置所需的协议（TCP、UDP 或 ICMP）。 
 
 ## <a name="inbound-connectivity"></a>入站连接
 
@@ -159,6 +159,14 @@ IDPS 执行的会话删除会以无提示方式阻止流。 因此，不会在 T
 ## <a name="rule-changes"></a>规则更改
 
 如果更改规则以拒绝以前允许的流量，则会删除任何相关的现有会话。
+
+## <a name="3-way-handshake-behavior"></a>三向握手行为
+
+作为有状态服务，Azure 防火墙为从源到目标的允许流量完成 TCP 三向握手。例如，VNet-A 到 VNet-B。
+
+创建从 VNet-A 到 VNet-B 的允许规则并不意味着允许从 VNet-B 到 VNet-A 的新启动连接。
+
+因此，无需创建从 VNet-B 到 VNet-A 的显式拒绝规则。 如果创建此拒绝规则，将中断从 VNet-A 到 VNet-B 的初始允许规则的三向握手。 
 
 ## <a name="next-steps"></a>后续步骤
 

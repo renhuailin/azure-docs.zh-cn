@@ -8,44 +8,48 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: ba95c22a773a382a3c03aab18f8f885e6a2791d8
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 948d375c0f580a71dbd27fa10660c0c7e0046a10
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122831006"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219147"
 ---
-# <a name="active-and-inactive-events"></a>活动和非活动事件
+# <a name="defer-event-activation"></a>延迟事件激活
 
-活动事件是对排名的任何调用，其中你知道要向客户显示结果并确定奖励分数。 此选项为默认行为。
+通过延迟激活事件，你可以创建个性化网站或邮件营销活动，这是因为用户实际上可能永远不会查看相关页面或打开相关电子邮件。 在此类情况下，应用程序可能需要先调用排名，然后才能知道是使用结果还是向用户显示结果。 如果内容不会显示给用户，则不应采用供应用程序从中进行学习的默认奖励（通常为零）。
+通过延迟激活，你可以在某个时间点使用排名调用的结果，决定是应从以后开始了解该事件，还是应在代码中的其他位置了解该事件。
 
-非活动事件是对排名的调用，其中你不确定用户是否将由于业务逻辑而看到建议的操作。 这样就可以放弃事件，以便个性化体验创建服务无需默认奖励即可训练。 非活动事件不应调用奖励 API。
+## <a name="typical-scenarios-for-deferred-activation"></a>延迟激活的典型场景
 
-学习循环应知道事件的实际类型，这一点很重要。 非活动事件不会有奖励调用。 活动事件应有奖励调用，但如果从未发出 API 调用，则会应用默认奖励分数。 知道事件会影响用户体验后，即会将事件的状态从“非活动”更改为“活动”。
+在以下示例场景中，可以将事件延迟激活：
 
-## <a name="typical-active-events-scenario"></a>典型的活动事件方案
+* 你要为用户预先呈现个性化网页，但用户可能永远看不到它，因为某些业务逻辑可能会替代个性化体验创建服务的操作选择。
+* 你要将网页中“需要向下滚动鼠标才能看到”的内容个性化，并且用户很可能不会查看该内容。
+* 你要将营销电子邮件个性化，并且需要避免从用户从未打开过的电子邮件进行训练。
+* 你对动态媒体频道进行了个性化，但用户可能会在该频道播放个性化体验创建服务选择的歌曲或视频之前停止播放该频道。 
 
-当应用程序调用排名 API 时，你会收到操作，应用程序应在 rewardActionId 字段中显示该操作。  从那时之后，个性化体验创建服务需要使用具有相同 eventId 的奖励分数进行奖励调用。 奖励分数用于为将来的排名调用训练模型。 如果没有收到针对 eventId 的奖励调用，则应用默认奖励。 在 Azure 门户的个性化体验创建服务资源上设置[默认奖励](how-to-settings.md#configure-rewards-for-the-feedback-loop)。
+一般来说，以下情况会出现这些场景：
 
-## <a name="other-event-type-scenarios"></a>其他事件类型方案
+* 你要预先呈现 UI，但用户可能会查看该 UI，也可能会因 UI 或时间约束而不会查看该 UI。
+* 应用程序在执行预测性的个性化，在该个性化中，你在进行排名调用之前并不知道你是否会使用输出。
 
-在某些情况下，应用程序可能需要先调用排名，然后才能知道是使用结果还是向用户显示结果。 这可能会在某些情况下发生，例如，升级内容的页面呈现被市场营销活动覆盖。 如果排名调用的结果从未使用过，并且用户从未看到过，则不发送相应的奖励调用。
+## <a name="how-to-defer-activation-and-later-activate-events"></a>如何延迟激活事件，以及如何稍后激活事件
 
-通常会在以下情况下发生：
+若要对某个事件延迟激活，请在请求正文中使用 `deferActivation = True` 调用[排名](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)。
 
-* 你正在预呈现不一定可让用户看到的 UI。
-* 应用程序正在执行预测个性化，其中的排名调用是使用实时性不够高的上下文发出的，应用程序不一定会使用输出。
+一旦你知道已经为用户显示了个性化内容或媒体，并且应该有奖励，就必须激活该事件。 为此，请使用 eventId 调用[激活 API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Activate)。
 
-在这些情况下，使用个性化体验创建服务调用排名，请求事件为“非活动”。 个性化体验创建服务不需要此事件的奖励，也不会应用默认奖励。
 
-稍后在业务逻辑中，如果应用程序使用排名调用中的信息，则只需激活事件。 一旦事件处于活动状态，个性化体验创建服务就需要事件奖励。 如果对奖励 API 没有显式调用，则个性化体验创建服务将应用默认奖励。
+必须在“奖励等待时间”时间窗口到期之前收到与该 EventID 调用对应的[激活 API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Activate) 调用。
 
-## <a name="inactive-events"></a>非活动事件
+### <a name="behavior-with-deferred-activation"></a>延迟激活的行为 
 
-若要禁用事件训练，请使用 `learningEnabled = False` 调用排名。
-
-对于非活动事件，如果为 eventId 发送奖励或为该 eventId 调用 `activate` API，则会隐式激活学习。
+个性化体验创建服务会从事件和奖励中进行学习，如下所述：
+* 如果你使用 `deferActivation = True` 调用排名，但不调用该 eventId 的 `Activate` API，而是调用奖励，则个性化体验创建服务无法从事件中进行学习。
+* 如果你使用 `deferActivation = True` 调用排名，并且调用该 eventId 的 `Activate` API，同时调用奖励，则个性化体验创建服务会根据指定的奖励分数从事件中进行学习。
+* 如果你使用 `deferActivation = True` 调用排名，并且调用该 eventId 的 `Activate` API，但省略调用奖励的步骤，则个性化体验创建服务会根据在配置中设置的默认奖励分数从事件中进行学习。
 
 ## <a name="next-steps"></a>后续步骤
-
+* 如何配置[默认奖励](how-to-settings.md#configure-rewards-for-the-feedback-loop)。
 * 了解[如何确定奖励分数以及要考虑的数据](concept-rewards.md)。

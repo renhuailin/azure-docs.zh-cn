@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解如何检索、更新和删除各个孪生体和关系。
 author: baanders
 ms.author: baanders
-ms.date: 10/21/2020
+ms.date: 9/13/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0873d6f0bfff73fc0bdc44ce90b322af23d4df28
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 4be8ef1085d6a940e7f2d95f43a75d1b4e7c11f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835731"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611680"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -40,14 +40,13 @@ ms.locfileid: "122835731"
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwinCall":::
 
 若要创建数字孪生体，需要提供：
-* 所需的数字孪生体的 ID（在此阶段定义）
+* 要分配给数字孪生体的 ID 值（在创建孪生体时定义该 ID）
 * 要使用的[模型](concepts-models.md)
-
-（可选）为数字孪生体的所有属性提供初始值。 属性视为可选项，可在以后设置，但在设置后才会显示为孪生体的一部分。
-
->[!NOTE]
->尽管不需要初始化孪生体的属性，但在创建孪生体时，需要设置孪生体上的所有[组件](concepts-models.md#elements-of-a-model)。 它们可以是空对象，但组件本身必须存在。
-
+* 任何所需的孪生体数据初始化，包括...
+    - 属性（可选初始化）：如果需要，可以为数字孪生体的属性设置初始值。 属性视为可选项，可在以后设置，但在设置后才会显示为孪生体的一部分。
+    - 遥测（建议初始化）：还可以为孪生体上的遥测字段设置初始值。 尽管不需要初始化遥测，但在设置遥测字段之前，这些字段也不会显示为孪生体的一部分。 这意味着，除非已事先初始化孪生体的遥测值，否则无法编辑这些值。
+    - 组件（如果存在于孪生体中则需要初始化）：如果你的孪生体包含任何[组件](concepts-models.md#elements-of-a-model)，则必须在创建孪生体时初始化这些组件。 它们可以是空对象，但组件本身必须存在。
+    
 模型和任何初始属性值都是通过 `initData` 参数提供的，该参数是一个包含相关数据的 JSON 字符串。 有关构造此对象的详细信息，请转到下一节。
 
 > [!TIP]
@@ -146,7 +145,7 @@ ms.locfileid: "122835731"
 
 ## <a name="view-all-digital-twins"></a>查看所有数字孪生体
 
-若要查看实例中的所有数字孪生体，请使用[查询](how-to-query-graph.md)。 可使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)来运行查询。
+若要查看实例中的所有数字孪生体，请使用[查询](how-to-query-graph.md)。 可使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_query)来运行查询。
 
 下方是一个基本查询的正文，它将返回一个包含实例中所有数字孪生体的列表：
 

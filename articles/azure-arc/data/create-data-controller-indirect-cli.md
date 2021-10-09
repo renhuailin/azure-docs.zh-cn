@@ -9,12 +9,12 @@ ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: c2d67cd8e62a0b74ed5959cebfe691ffb044d975
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 195325ff9bad726ed62c5955b393d31e4c457f2e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737166"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836770"
 ---
 # <a name="create-azure-arc-data-controller-using-the-cli"></a>使用 CLI 创建 Azure Arc 数据控制器
 
@@ -117,10 +117,7 @@ az arcdata dc create --profile-name azure-arc-aks-default-storage --k8s-namespac
 
 #### <a name="configure-storage-azure-stack-hci-with-aks-hci"></a>配置存储（包含 AKS-HCI 的 Azure Stack HCI）
 
-如果使用包含 AKS-HCI 的 Azure Stack HCI，请根据 Azure Stack HCA AKS-HCI 版本执行以下操作之一：
-
-- 对于版本 1.20 及更高版本，请使用 `fsGroupPolicy:File` 创建自定义存储类（有关详细信息 - https://kubernetes-csi.github.io/docs/support-fsgroup.html) 。 
-- 对于版本 1.19，请使用： 
+如果使用包含 AKS-HCI 的 Azure Stack HCI，请使用 `fsType` 创建一个自定义存储类。
 
    ```json
    fsType: ext4
@@ -232,7 +229,7 @@ az arcdata dc create --path ./custom  --k8s-namespace <namespace> --use-k8s --na
 如果要自定义部署配置文件以指定特定的存储类和/或服务类型，请首先运行以下命令，基于 kubeadm 部署配置文件创建新的自定义部署配置文件。 此命令将在当前工作目录中创建一个目录 `custom`，并在该目录中创建一个自定义部署配置文件 `control.json`。
 
 ```azurecli
-az arcdata dc config init --source azure-arc-kubeadm --path ./custom --k8s-namespace <namespace> --use-k8s
+az arcdata dc config init --source azure-arc-kubeadm --path ./custom 
 ```
 
 你可以运行以下命令，查找可用的存储类。

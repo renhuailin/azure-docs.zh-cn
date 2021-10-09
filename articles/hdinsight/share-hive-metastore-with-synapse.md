@@ -4,13 +4,13 @@ description: 了解如何与 Azure Synapse Spark 池共享现有的 Azure HDInsi
 keywords: 外部 Hive 元存储, 共享, Synapse
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/22/2020
-ms.openlocfilehash: 69168ff4bd02800115560e2a91988289d0ca2d67
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/09/2021
+ms.openlocfilehash: ae48734d19b200386a0750d0756cc774bc003c68
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439907"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736857"
 ---
 # <a name="share-hive-metastore-with-synapse-spark-pool-preview"></a>与 Synapse Spark 池共享 Hive 元存储（预览）
 
@@ -20,10 +20,11 @@ Azure Synapse Analytics 允许同一工作区中的 Apache Spark 池共享一个
 
 此功能对 Spark 2.4 和 Spark 3.0 都适用。 下表显示了每个 Spark 版本支持的 Hive 元存储服务 (HMS) 版本。
 
-|Spark 版本|HMS 1.2.X|HMS 2.1.X|HMS 3.1.X|
-|--|--|--|--|
-|2.4|是|是|否|
-|3|是|是|是|
+
+|Spark 版本|HMS 1.2.X|HMS 2.1.X|HMS 2.3.x|HMS 3.1.X|
+|--|--|--|--|--|
+|2.4|是|是|是|否|
+|3|是|是|是|是|
 
 > [!NOTE]
 > 可以从 HDInsight 群集（3.6 和 4.0 群集）使用现有外部 Hive 元存储。 请参阅[在 Azure HDInsight 中使用外部元数据存储](./hdinsight-use-external-metadata-stores.md)。
@@ -74,6 +75,9 @@ try {
 成功创建到外部 Hive 元存储的链接服务后，需要在 Spark 中设置一些配置以使用外部 Hive 元存储。 可以在 Spark 池级别或 Spark 会话级别设置配置。 
 
 下面是配置和说明：
+
+> [!NOTE]
+> 默认 Hive 元存储版本为 2.3。 如果 Hive 元存储版本为 2.3，则无需设置 `spark.sql.hive.metastore.version` 和 `spark.sql.hive.metastore.jars`。 只需要 `spark.hadoop.hive.synapse.externalmetastore.linkedservice.name`。
 
 |Spark 配置|说明|
 |--|--|
@@ -163,7 +167,7 @@ spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name
 - Synapse Studio 对象资源管理器将继续显示托管的 Synapse 元存储（而不是外部 HMS）中的对象，我们正在改进这方面的体验。
 - 在使用外部 HMS 时，[SQL <-> Spark 同步](../synapse-analytics/sql/develop-storage-files-spark-tables.md)不起作用。  
 - 仅支持 Azure SQL 数据库作为外部 Hive 元存储数据库。 仅支持 SQL 身份验证。
-- 目前，Spark 仅适用于外部 Hive 表和非过渡/非 ACID 托管的 Hive 表。 它目前不支持 Hive ACID/事务表。
+- 目前，Spark 只适用于外部 Hive 表和非过渡/非 ACID 托管的 Hive 表。 它目前不支持 Hive ACID/事务表。
 - 目前还不支持 Apache Ranger 集成。
 
 ## <a name="troubleshooting"></a>疑难解答
@@ -214,4 +218,4 @@ spark.hadoop.hive.synapse.externalmetastore.schema.usedefault false
 如果要与 HDInsight 4.0 中的 Spark 群集共享 Hive 目录，请确保 Synapse Spark 中的属性 `spark.hadoop.metastore.catalog.default` 与 HDInsight Spark 中的值一致。 默认值为 `Spark`。
 
 ### <a name="when-sharing-the-hive-metastore-with-hdinsight-40-hive-clusters-i-can-list-the-tables-successfully-but-only-get-empty-result-when-i-query-the-table"></a>与 HDInsight 4.0 Hive 群集共享 Hive 元存储时，我可以成功列出表，但在查询表时只获得空结果
-如限制中所述，Synapse Spark 池仅支持外部 Hive 表和非过渡/ACID 托管表，它目前不支持 Hive ACID/事务表。 默认情况下，在 HDInsight 4.0 Hive 群集中，所有托管表都默认被创建为 ACID/事务表，这就是你在查询这些表时获得空结果的原因。 
+如限制中所述，Synapse Spark 池只支持外部 Hive 表和非事务/ACID 托管表，它目前不支持 Hive ACID/事务表。 默认情况下，在 HDInsight 4.0 Hive 群集中，所有托管表都默认被创建为 ACID/事务表，这就是你在查询这些表时获得空结果的原因。 

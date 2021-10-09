@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 09/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfb09f383d8425a644d3e2e87d190b350f5f41a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c47530e3fd7626674297a2d910ff9c39722c228b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564630"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650831"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置特权访问组设置（预览）
 
@@ -30,7 +30,7 @@ ms.locfileid: "105564630"
 
 遵循以下步骤打开 Azure 特权访问组角色的设置。
 
-1. 使用具有[特权角色管理员](../roles/permissions-reference.md#privileged-role-administrator)角色的用户登录到 [Azure 门户](https://portal.azure.com/)。
+1. 以[全局管理员](../roles/permissions-reference.md#global-administrator)角色或者被指定为组所有者的角色登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
@@ -90,21 +90,21 @@ ms.locfileid: "105564630"
 > [!NOTE]
 > 资源管理员可续订具有特定结束日期的所有分配。 此外，用户也可启动自助服务请求来[扩展或续订角色分配](pim-resource-roles-renew-extend.md)。
 
-## <a name="require-multi-factor-authentication"></a>需要多重身份验证
+## <a name="require-multifactor-authentication"></a>要求多重身份验证
 
 Privileged Identity Management 提供了两种不同的可选 Azure AD 多重身份验证强制执行方案。
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>要求在活动分配时进行多重身份验证
+### <a name="require-multifactor-authentication-on-active-assignment"></a>要求在活动分配时进行多重身份验证
 
-在某些情况下，你可能希望为用户或组分配短期（例如，一天）角色。 在这种情况下，分配的成员不需要请求激活。 在这种情况下，Privileged Identity Management 无法在用户使用其角色分配时强制实施多重身份验证，因为从分配角色时起，用户就已经在角色中处于活动状态。
+此选项要求管理员必须在创建活动角色分配（而不是合格角色分配）之前完成多重身份验证。 Privileged Identity Management 无法在用户使用其角色分配时强制实施多重身份验证，因为从分配角色时起，用户就已经在角色中处于活动状态。
 
-为确保完成分配的资源管理员是其本人，可以通过选中“在活动分配时要求进行多重身份验证”  框来对活动分配强制执行多重身份验证。
+若要在创建活动角色分配时要求多重身份验证，请选中“要求在活动分配时进行多重身份验证”复选框。
 
-### <a name="require-multi-factor-authentication-on-activation"></a>要求在激活时进行多重身份验证
+### <a name="require-multifactor-authentication-on-activation"></a>要求在激活时进行多重身份验证
 
-可以要求符合角色条件的用户通过 Azure AD 多重身份验证来证明其身份，然后才允许其激活。 多重身份验证能够以合理的确定性确保用户是其本人。 强制执行此选项可以在用户帐户可能已遭入侵的情况下保护关键资源。
+可以要求符合角色条件的用户通过 Azure AD 多重身份验证来证明其身份，然后才允许其激活。 多重身份验证可以在相当程度上确保用户是本人。 强制执行此选项可以在用户帐户可能已遭入侵的情况下保护关键资源。
 
-若要在激活前要求进行多重身份验证，请选中“在激活时要求进行多重身份验证”  框。
+若要在激活前要求进行多重身份验证，请选中“要求在激活时进行多重身份验证”框。
 
 有关详细信息，请参阅[多重身份验证和 Privileged Identity Management](pim-how-to-require-mfa.md)。
 
@@ -120,7 +120,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure AD 多重身
 
 如果要求批准以激活角色，请按照以下步骤操作。
 
-1. 选中“需要批准以激活”  复选框。
+1. 选中“需要批准以激活”复选框。
 
 1. 选择“选择审批者”打开“选择成员或组”页   。
 

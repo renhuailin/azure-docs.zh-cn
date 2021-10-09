@@ -1,29 +1,25 @@
 ---
-title: Azure Purview（预览版）简介
+title: Azure Purview 简介
 description: 本文概述 Azure Purview，包括其功能和旨在解决的问题。 使用 Azure Purview，任何用户均可注册、发现、了解和使用数据源。
 author: hophanms
 ms.author: hophan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: a4ca7c318dc1ac9d135c43c6d063a0f8a45276fe
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: ff8acfc01999a25079da5928f6e0642b6c5793c3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729753"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218691"
 ---
 # <a name="what-is-azure-purview"></a>什么是 Azure Purview？
-
-> [!IMPORTANT]
-> Azure Purview 当前以预览版提供。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 Azure Purview 是一项统一的数据治理服务，可帮助你管理本地、多云和软件即服务 (SaaS) 数据并对其进行治理。 通过自动化的数据发现、敏感数据分类和端到端数据世系，轻松创建数据领域的整体最新映射。 使数据使用者能够查找重要的可信数据。
 
 Azure Purview 数据映射为数据发现和有效的数据治理奠定了基础。 Purview 数据映射是一项云原生 PaaS 服务，可捕获有关本地和云中的分析和操作系统存在的企业数据的元数据。 Purview 数据映射通过内置的自动扫描和分类系统自动保持最新。 商务用户可以通过直观的 UI 配置和使用 Purview 数据映射，而开发人员可以使用开放源代码 Apache Atlas 2.0 API 以编程方式与数据映射进行交互。
 
-Azure Purview 数据映射作为 Purview Studio 中的统一体验，为 Purview 数据目录和 Purview 数据见解提供了强大的支持。
+Azure Purview 数据映射作为 [Purview Studio](https://web.purview.azure.com/resource/) 中的统一体验，为 Purview 数据目录和 Purview 数据见解提供了强大的支持。
  
 借助 Purview 数据目录，商务用户和技术用户均可使用基于各种可重用功能区（如术语表、分类、敏感度标签等）的筛选器的搜索体验，快速轻松地查找相关数据。 对于行业专家、数据专员和管理人员，Purview 数据目录提供了数据管理功能，例如业务术语表管理以及使用术语表术语自动标记数据资产的功能。 数据使用者和生成者还可以直观地跟踪数据资产的世系，从本地操作系统开始，到移动、转换和扩充云中的各种数据存储和处理系统，再到在 Power BI 等分析系统中使用。
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: 9bb3bdc7254fb3f9da62936df6429d8cba6b3bd5
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: f9dacea4d80591b6ec5b83ae93564cd8b03aff9c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450048"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212449"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 
@@ -200,7 +200,7 @@ ms.locfileid: "123450048"
 
 + 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
 
-+ “评分”字段为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](./search-faceted-navigation.md#filter-based-on-a-range)。
++ “评分”字段为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅 [REST API 中的“查询参数”](/rest/api/searchservice/search-documents#query-parameters)。
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 突出显示搜索结果
 

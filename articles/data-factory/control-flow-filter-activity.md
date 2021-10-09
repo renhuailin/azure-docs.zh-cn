@@ -1,7 +1,7 @@
 ---
-title: Azure 数据工厂中的 Filter 活动
+title: 筛选活动
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Filter 活动将筛选输入。
+description: 筛选器活动可筛选 Azure 数据工厂和 Synapse Analytics 管道的输入。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/04/2018
-ms.openlocfilehash: 2ec871aeb6fb7146e66c3d3124ed8bba3400d4c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: d5a78ca89841abc1d6f060a2f84b7db5ec3758e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638895"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831625"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
+# <a name="filter-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>筛选 Azure 数据工厂和 Synapse Analytics 管道中的活动
 可以在管道中使用 Filter 活动将筛选器表达式应用到输入数组。 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -112,7 +112,7 @@ items | 应该应用筛选器的输入数组。 | 表达式 | 是
 ```
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+参阅支持的其他控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)

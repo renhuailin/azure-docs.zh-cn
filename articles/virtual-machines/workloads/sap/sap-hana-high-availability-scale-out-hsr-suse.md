@@ -1,13 +1,9 @@
 ---
 title: 在 SLES 上用 HSR 和 Pacemaker 进行 SAP HANA 横向扩展 | Microsoft Docs
 description: 在 SLES 上用 HSR 和 Pacemaker 进行 SAP HANA 横向扩展。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/26/2021
 ms.author: radeltch
-ms.openlocfilehash: 211fa45626a8ca4db8e555795adccc55bc6c0a3e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ab66bcdc834fd894d7d258ab9c7c08a0049b07ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534455"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673134"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>在 SUSE Linux Enterprise Server 上使用 HSR 实现 SAP HANA 横向扩展系统的高可用性 
 
@@ -30,7 +26,6 @@ ms.locfileid: "110534455"
 
 [anf-azure-doc]:../../../azure-netapp-files/index.yml
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -543,7 +538,7 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
      * 对于“选择系统使用情况/输入索引[4]”：输入 4（用于自定义）
      * 对于“数据卷的位置”[/hana/data/HN1]：按 Enter 接受默认值
      * 对于“日志卷的位置”[/hana/log/HN1]：按 Enter 接受默认值
-     * 对于“是否限制最大内存分配?” [n]：输入 n
+     * 对于“是否限制最大内存分配？” [n]：输入 n
      * 对于“主机 hana-s1-db1 的证书主机名”[hana-s1-db1]：按 Enter 接受默认值
      * 对于“SAP 主机代理用户 (sapadm) 密码”：输入密码
      * 对于“确认 SAP 主机代理用户 (sapadm) 密码”：输入密码
@@ -622,11 +617,11 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
      * 对于“输入根用户名 [root]”：按 Enter 接受默认值
      * 对于“选择主机 'hana-s1-db2' 的角色 [1]”：1（适用于辅助角色）
      * 对于“输入主机 'hana-s1-db2' 的主机故障转移组 [默认值]”：按 Enter 接受默认值
-     * 对于“输入主机 'hana-s1-db2' 的存储分区号 [<<assign automatically>>]”：按 Enter 接受默认值
+     * 对于“输入主机‘hana-s1-db2’的存储分区号 [\<\<assign automatically\>\>]”：按 Enter 接受默认值
      * 对于“输入主机 'hana-s1-db2' 的辅助角色组 [默认值]”：按 Enter 接受默认值
      * 对于“选择主机 'hana-s1-db3' 的角色 [1]”：1（适用于辅助角色）
      * 对于“输入主机 'hana-s1-db3' 的主机故障转移组 [默认值]”：按 Enter 接受默认值
-     * 对于“输入主机 'hana-s1-db3' 的存储分区号 [<<assign automatically>>]”：按 Enter 接受默认值
+     * 对于“输入主机‘hana-s1-db3’的存储分区号 [\<\<assign automatically\>\>]”：按 Enter 接受默认值
      * 对于“输入主机 'hana-s1-db3' 的辅助角色组 [默认值]”：按 Enter 接受默认值
      * 对于“系统管理员 (hn1adm) 密码”：输入密码
      * 对于“输入 SAP 主机代理用户 (sapadm) 密码”：输入密码

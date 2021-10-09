@@ -9,12 +9,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 53ea8657535cb353b2da0f2a5b35398aa972128a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 75b89acff320b3083c098a0546882d80bdcfc5ad
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745337"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060889"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>检索 IoT Edge 部署中的日志
 
@@ -385,7 +385,7 @@ az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| 状态 | string | `NotStarted`、`Running`、`Completed`、`Failed`、“Cancelled”或 `Unknown` 之一。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 

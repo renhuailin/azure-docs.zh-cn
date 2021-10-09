@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a095d2f6e05957e4a3daac76f3ac745e5a20de4a
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 8a6fe163ade61df65f6ff0d9ba4f2862866094b7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228981"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631678"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>了解实时 (JIT) VM 访问
 
@@ -47,7 +47,7 @@ ms.locfileid: "122228981"
 当用户请求访问 VM 时，安全中心会检查用户是否对该 VM 具有 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果请求获得批准，安全中心将配置网络安全组 (NSG) 和 Azure 防火墙，以便允许在指定的时间量内从相关 IP 地址（或范围）发往所选端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 已经建立的连接不会中断。
 
 > [!NOTE]
-> JIT 不支持由 [Azure 防火墙管理器](../firewall-manager/overview.md)控制的 Azure 防火墙保护的 VM。
+> JIT 不支持由 [Azure 防火墙管理器](../firewall-manager/overview.md)控制的 Azure 防火墙保护的 VM。  Azure 防火墙必须配置规则（经典），并且不能使用防火墙策略。
 
 
 

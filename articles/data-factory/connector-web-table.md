@@ -1,28 +1,28 @@
 ---
-title: 使用 Azure 数据工厂从 Web 表复制数据
+title: 从 Web 表复制数据
+description: 了解 Web 表连接器，可通过它将数据从 Web 表复制到 Azure 数据工厂和 Synapse Analytics 以接收器形式支持的数据存储中。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解 Azure 数据工厂的 Web 表连接器，可通过它将数据从 Web 表复制到数据工厂支持作为接收器的数据存储中。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 680ea9139a17f20038b78f0399fe849ca0990532
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: af6423b58cb2eba4fca0d902270afee03a733637
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311155"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782677"
 ---
-# <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
+# <a name="copy-data-from-web-table-by-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 Web 表复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-web-table-connector.md)
 > * [当前版本](connector-web-table.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Web 表数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂或 Synapse Analytics 管道中的复制活动从 Web 表数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 此 Web 表连接器、[REST 连接器](connector-rest.md)和 [HTTP 连接器](connector-http.md)之间的区别如下：
 
@@ -184,24 +184,24 @@ Web 表链接的服务支持以下属性：
 1. 启动 **Excel 2016**，并切换到“数据”  选项卡。
 2. 单击工具栏中的“新建查询”  ，指向“从其他源”  ，并单击“从 Web”  。
 
-    ![Power Query 菜单](./media/copy-data-from-web-table/PowerQuery-Menu.png)
+    :::image type="content" source="./media/copy-data-from-web-table/PowerQuery-Menu.png" alt-text="Power Query 菜单":::
 3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如  ：AFI%27s_100_Years...100_Movies），并单击“确定”  。
 
-    ![“从 Web”对话框](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
+    :::image type="content" source="./media/copy-data-from-web-table/FromWeb-DialogBox.png" alt-text="“从 Web”对话框":::
 
     此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和 **身份验证**，并单击“连接”  。
 
-   ![“访问 Web 内容”对话框](./media/copy-data-from-web-table/AccessWebContentDialog.png)
+   :::image type="content" source="./media/copy-data-from-web-table/AccessWebContentDialog.png" alt-text="“访问 Web 内容”对话框":::
 5. 单击树视图中的“表”  项，查看表中的内容，并单击底部的“编辑”  按钮。  
 
-   ![“导航器”对话框](./media/copy-data-from-web-table/Navigator-DialogBox.png)
+   :::image type="content" source="./media/copy-data-from-web-table/Navigator-DialogBox.png" alt-text="“导航器”对话框":::
 6. 在“查询编辑器”  窗口中，单击工具栏上的“高级编辑器”  按钮。
 
-    ![“高级编辑器”按钮](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
+    :::image type="content" source="./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png" alt-text="“高级编辑器”按钮":::
 7. 在“高级编辑器”对话框中，“源”旁边的编号为索引。
 
-    ![高级编辑器 - 索引](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
+    :::image type="content" source="./media/copy-data-from-web-table/AdvancedEditor-Index.png" alt-text="高级编辑器 - 索引":::
 
 如果使用的是 Excel 2013，请使用 [Microsoft Power Query for Excel](https://www.microsoft.com/download/details.aspx?id=39379) 获取索引。 有关详细信息，请参阅[连接到网页](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8)一文。 如果使用的是 [Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/)，步骤与之类似。
 
@@ -211,4 +211,4 @@ Web 表链接的服务支持以下属性：
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

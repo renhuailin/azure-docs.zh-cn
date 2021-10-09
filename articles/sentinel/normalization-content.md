@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 6ff0d40fbfa75eb6ae40766a4be42891c11156dd
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: deb5377aef61736a14ce8110e96c16e5352096cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432191"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552248"
 ---
 # <a name="azure-sentinel-information-model-asim-security-content--public-preview"></a>Azure Sentinel 信息模型 (ASIM) 安全内容（公共预览版）
 
@@ -30,8 +30,12 @@ Azure Sentinel 中的规范化安全内容包括分析规则、搜寻查询以�
 
 本文列出了已配置为支持 ASIM 的内置 Azure Sentinel 内容。  虽然下面提供了 Azure Sentinel GitHub 存储库的链接作为参考，但也可在 [Azure Sentinel Analytics 规则库](detect-threats-built-in.md)中找到这些规则。 请使用链接的 GitHub 页复制任何相关的搜寻查询。
 
+> [!TIP]
+> 另请观看[关于 Azure Sentinel 规范化分析程序和规范化内容的深入探讨网络研讨会](https://www.youtube.com/watch?v=zaqblyjQW6k)或查看[幻灯片](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)。 有关详细信息，请参阅[后续步骤](#next-steps)。
+>
+
 > [!IMPORTANT]
-> ASIM 当前为预览版。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+> ASIM 当前处于预览状态。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 >
 
 ## <a name="authentication-security-content"></a>身份验证安全内容
@@ -52,7 +56,10 @@ ASIM 规范化支持以下内置 DNS 查询内容。
 
 ### <a name="analytics-rules"></a>分析规则
 
- - [NXDOMAIN DNS 查询过多（规范化 DNS）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_ExcessiveNXDOMAINDNSQueries.yaml)
+ - （预览）DNS 事件（规范化 DNS）的 TI 映射域实体
+ - （预览）DNS 事件（规范化 DNS）的 TI 映射 IP 实体
+ - [检测到可能的 DGA (ASimDNS)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_HighNXDomainCount_detection.yaml)
+  - [NXDOMAIN DNS 查询过多（规范化 DNS）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_ExcessiveNXDOMAINDNSQueries.yaml)
  - [与挖掘池相关的 DNS 事件（规范化 DNS）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDNS_Miners.yaml)
  - [与 ToR 代理相关的 DNS 事件（规范化 DNS）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDNS_TorProxies.yaml)
  - [已知的 Barium 域](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/BariumDomainIOC112020.yaml)
@@ -185,12 +192,13 @@ imDns
 | extend timestamp = TimeGenerated, IPCustomEntity = SrcIpAddr
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"></a>后续步骤
 
 本文介绍 Azure Sentinel 信息模型 (ASIM) 内容。
 
 有关详细信息，请参阅：
 
+- 观看[关于 Azure Sentinel 规范化分析程序和规范化内容的深入探讨网络研讨会](https://www.youtube.com/watch?v=zaqblyjQW6k)或查看[幻灯片](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)
 - [Azure Sentinel 信息模型概述](normalization.md)
 - [Azure Sentinel 信息模型架构](normalization-about-schemas.md)
 - [Azure Sentinel 信息模型分析器](normalization-about-parsers.md)

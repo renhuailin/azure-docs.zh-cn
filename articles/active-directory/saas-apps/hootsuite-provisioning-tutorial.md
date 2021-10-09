@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: thwimmer
-ms.openlocfilehash: c60f2ccc9325183fdcbc4edc533c7418e36eb6bf
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 34d1d765dbb5f2267c4c56d4dd91daa31f8799a7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113763608"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629846"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教程：为 Hootsuite 配置自动用户预配
 
@@ -45,7 +45,7 @@ ms.locfileid: "113763608"
 
 ## <a name="step-2-configure-hootsuite-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Hootsuite 以支持通过 Azure AD 进行预配
 
-与 dev.support@hootsuite.com 联系，以获取在后续步骤中需要使用的长生存期机密令牌。 
+如果在后续步骤中需要持久令牌，请与 Hootsuite CSM 联系。
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库中添加 Hootsuite
 

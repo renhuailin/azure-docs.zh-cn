@@ -1,23 +1,23 @@
 ---
-title: Azure 数据工厂中的 If Condition 活动
+title: If 条件活动
 titleSuffix: Azure Data Factory & Azure Synapse
-description: If Condition 活动允许你控制基于条件的处理流。
+description: 通过 If 条件活动，可基于 Azure 数据工厂或 Synapse Analytics 管道中的条件来控制处理流。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: cc897e9657120b3a290c151a4c6582f29e905b4e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04c0a91a7f4848f2422c0f6ed1e117686345bf78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638831"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811690"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
+# <a name="if-condition-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Azure 数据工厂和 Synapse Analytics 管道中的 If 条件活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会执行一组活动；当条件计算结果为 `false` 时，它会执行另一组活动。 
@@ -76,7 +76,7 @@ ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。
 此示例中的管道可将数据从输入文件夹复制到一个输出文件夹。 输出文件夹由管道参数的值决定：routeSelection。 如果 routeSelection 的值为 true，数据将复制到 outputPath1。 而如果 routeSelection 的值为 false，数据将复制到 outputPath2。 
 
 > [!NOTE]
-> 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
+> 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>管道与 IF-Condition 活动 (Adfv2QuickStartPipeline.json)
 
@@ -287,7 +287,7 @@ $result.Error -join "`r`n"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+参阅支持的其他控制流活动： 
 
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)

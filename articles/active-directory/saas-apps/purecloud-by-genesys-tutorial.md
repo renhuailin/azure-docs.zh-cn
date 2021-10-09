@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/26/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: fdc6e6839af33a154f331940bba354c05e6b3f64
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: e2d6619f1dce9ad7ef68f07ec614f36d409c6831
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110580262"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124746515"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-genesys-cloud-for-azure"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Genesys Cloud for Azure 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110580262"
 * 让用户使用其 Azure AD 帐户自动登录到 Genesys Cloud for Azure。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,6 +38,8 @@ ms.locfileid: "110580262"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Genesys Cloud for Azure 支持 SP 和 IDP 发起的 SSO。
+
+* Genesys Cloud for Azure 支持[自动用户预配](purecloud-by-genesys-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -142,7 +144,7 @@ ms.locfileid: "110580262"
    1. 在“名称”  字段中，输入 `B.Simon`。  
    1. 在“用户名字段”中，按以下格式输入用户名：username@companydomain.extension  。 例如：`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -206,6 +208,9 @@ ms.locfileid: "110580262"
 
     c. 选择“创建”  。
 
+> [!NOTE]
+> Genesys Cloud for Azure 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./purecloud-by-genesys-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -220,7 +225,7 @@ ms.locfileid: "110580262"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 Genesys Cloud for Azure。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Genesys Cloud for Azure”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页，从中可以启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 Genesys Cloud for Azure。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Genesys Cloud for Azure”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页，从中可以启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 Genesys Cloud for Azure。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

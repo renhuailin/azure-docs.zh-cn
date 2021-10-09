@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 09/09/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: f9993521e26250b5d296e1dddb982fdc43e317a5
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 7b6c30d967576ac78fb29986c1638ead99f5989b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112516877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626335"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 Angular SPA 中登陆并获取访问令牌
 
-在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript Angular 单页应用程序 (SPA) 如何使用授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。 
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript Angular 单页应用程序 (SPA) 如何使用授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。
 
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
-本快速入门将 MSAL Angular v2 与授权代码流配合使用。 若要查看将 MSAL Angular 1.x 与隐式流结合使用的类似快速入门，请参阅[快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-angular.md)。
+本快速入门将 MSAL Angular v2 与授权代码流配合使用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,15 +50,15 @@ ms.locfileid: "112516877"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，以切换到要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
-> 1. 选择“注册”。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
+> 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
-> 1. 将“重定向 URI”值设置为 `http://localhost:4200/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 
+> 1. 将“重定向 URI”值设置为 `http://localhost:4200/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。
 > 1. 选择“配置”来应用更改。
 > 1. 在“平台配置”下，展开“单页应用程序” 。
 > 1. 确认在授权类型![已配置](media/quickstart-v2-javascript/green-check.png)下，重定向 URI 符合带有 PKCE 的授权代码流的条件。
@@ -94,7 +94,7 @@ ms.locfileid: "112516877"
 >   return new PublicClientApplication({
 >     auth: {
 >       clientId: 'Enter_the_Application_Id_Here',
->       authority: 'Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here',
+>       authority: 'Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here',
 >       redirectUri: 'Enter_the_Redirect_Uri_Here'
 >     },
 >     cache: {
@@ -116,7 +116,7 @@ ms.locfileid: "112516877"
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
 >
 >    若要查找“应用程序(客户端) ID”的值，请转到 Azure 门户中应用注册的“概览”页面 。
-> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
+> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 设置为以下选项之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
 >
@@ -141,7 +141,7 @@ ms.locfileid: "112516877"
 
 > [!div renderon="docs"]
 >
-> 在同一文件中向下滚动并更新 `graphMeEndpoint`。 
+> 在同一文件中向下滚动并更新 `graphMeEndpoint`。
 > - 将字符串 `Enter_the_Graph_Endpoint_Herev1.0/me` 替换为 `https://graph.microsoft.com/v1.0/me`
 > - `Enter_the_Graph_Endpoint_Herev1.0/me` 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，请输入 `https://graph.microsoft.com/`（包括末尾的正斜杠）。 有关详细信息，请参阅[本文档](/graph/deployments)。
 >
@@ -182,7 +182,7 @@ ms.locfileid: "112516877"
 
 ### <a name="msaljs"></a>msal.js
 
-MSAL.js 库会让用户登录并请求用于访问受 Microsoft 标识平台保护的 API 的令牌。 
+MSAL.js 库会让用户登录并请求用于访问受 Microsoft 标识平台保护的 API 的令牌。
 
 如果已安装 Node.js，则可通过 Node.js 包管理器 (npm) 下载最新版本：
 

@@ -7,12 +7,12 @@ ms.date: 08/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9ba337203aedbc2b9f27c2147f68c1d810f57d23
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 39c96be31a8a8be0cf1c2fc4f16fcbfa7468cb41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479843"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584230"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>如何对 IoT Central REST API 调用进行身份验证和授权
 
@@ -63,13 +63,13 @@ az account get-access-token --resource https://apps.azureiotcentral.com
 
 ## <a name="get-an-api-token"></a>获取 API 令牌
 
-若要获取 API 令牌，可以使用 IoT Central UI 或 REST API 调用。
+若要获取 API 令牌，可以使用 IoT Central UI 或 REST API 调用。 与根组织关联的管理员以及被分配了正确角色的用户可以创建 API 令牌。
 
 在 IoT Central UI 中：
 
 1. 导航到“管理”>“API 令牌”。
 1. 选择“+ 创建令牌”。
-1. 输入令牌的名称并选择一个角色。
+1. 输入令牌的名称并选择一个角色和[组织](howto-create-organizations.md)。
 1. 然后选择“生成”  。
 1. IoT Central 将显示如以下示例所示的令牌：
 
@@ -77,7 +77,7 @@ az account get-access-token --resource https://apps.azureiotcentral.com
 
     API 令牌只会在此屏幕中显示一次，如果丢失此令牌，则需要生成新令牌。
 
-API 令牌的有效期大约为一年。 可以在 IoT Central 应用程序中为内置角色和自定义角色生成令牌。
+API 令牌的有效期大约为一年。 可以在 IoT Central 应用程序中为内置角色和自定义角色生成令牌。 在创建 API 令牌时选择的组织决定了 API 可以访问哪些设备。 在将任何组织添加到应用程序之前创建的任何 API 令牌都与根组织相关联。
 
 如果需要撤销访问权限，可以在 IoT Central UI 中删除 API 令牌。
 
@@ -146,6 +146,9 @@ API 令牌的有效期大约为一年。 可以在 IoT Central 应用程序中�
     只能通过此响应访问此 API 令牌一次，如果丢失此令牌，则需要生成新令牌。
 
 可以使用 REST API 列出和删除应用程序中的 API 令牌。
+
+> [!TIP]
+> [预览 API](/rest/api/iotcentral/1.1-previewdataplane/api-tokens) 支持新的[组织功能](howto-create-organizations.md)。
 
 ## <a name="use-a-bearer-token"></a>使用持有者令牌
 

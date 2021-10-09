@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 0ab04c21cb904baf7ede72fd69f6d6b8375b07cc
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 872f6efb6cc8df8ed63fec23af3807a18dde6201
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289894"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708468"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>教程：使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -87,9 +87,10 @@ ms.locfileid: "114289894"
     | 虚拟网络 | 选择 TestVNet。 |
     | 公共 IP 地址 | 选择“新建”。|
     | 公共 IP 地址名称 | 为公共 IP 地址提供一个名称。 |
+    | 公用 IP 地址 SKU | 为公共 IP 地址提供一个 SKU。 对于双堆栈网关，选择“标准”。 |
 
     > [!IMPORTANT]
-    > 如果计划在 ExpressRoute 上使用基于 IPv6 的专用对等互连，请参阅 [PowerShell 文档](./expressroute-howto-add-gateway-resource-manager.md)，创建具有标准、静态类型的公共 IP 地址的网关。
+    > 如果计划在 ExpressRoute 上使用基于 IPv6 的专用对等互连，请确保创建具有标准、静态类型的公共 IP 地址的网关。
     > 
     > 
 

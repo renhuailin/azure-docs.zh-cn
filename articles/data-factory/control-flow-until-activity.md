@@ -1,26 +1,26 @@
 ---
-title: Azure 数据工厂中的 Until 活动
+title: Until 活动
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Until 活动将在循环中执行一组活动，直到与活动相关联的条件的计算结果为 true 或超时。
+description: Azure 数据工厂和 Synapse Analytics 管道中的 Until 活动将在循环中执行一组活动，直到与活动相关联的条件的计算结果为 true 或超时。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 2191dd75f2dbf24a59dbb7c43f8ef9ec62705aee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d31e6c5b5a21f3064abf16779bd0a44e877b2737
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637953"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814991"
 ---
-# <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
+# <a name="until-activity-in-azure-data-factory-and-synapse-analytics"></a>Azure 数据工厂和 Synapse Analytics 中的 Until 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Until 活动提供的功能与 do-until 循环结构以编程语言提供的功能相同。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。 
+Until 活动提供的功能与 do-until 循环结构以编程语言提供的功能相同。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 可以为 Until 活动指定超时值。 
 
 ## <a name="syntax"></a>语法
 
@@ -55,7 +55,7 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
 name | `Until` 活动的名称。 | String | 是
-type | 必须设置为 Until。 | String | 是
+type | 必须设置为 Until。 | 字符串 | 是
 表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
 timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为 90 天。 | 否
 活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  是
@@ -63,10 +63,10 @@ timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。
 ## <a name="example-1"></a>示例 1
 
 > [!NOTE]
-> 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
+> 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-until-activity"></a>包含 Until 活动的管道
-在此示例中，管道包含两个活动：**Until** 和 **Wait**。 在循环中运行 Web 活动之前，Wait 活动会等待指定的期间。 若要了解数据工厂中的表达式和函数，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。 
+在此示例中，管道包含两个活动：**Until** 和 **Wait**。 在循环中运行 Web 活动之前，Wait 活动会等待指定的期间。 若要了解表达式和函数，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。 
 
 ```json
 {
@@ -287,7 +287,7 @@ while ($True) {
 ```
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+参阅支持的其他控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)

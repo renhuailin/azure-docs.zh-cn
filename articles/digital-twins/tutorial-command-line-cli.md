@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 26e90482ad03406bbf586c7c9a8f2fdcc31cad7c
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 50e5a8fb09a3bd54dd4131f6c60de6b315233e86
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254010"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557644"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure 数字孪生图
 
@@ -161,6 +161,8 @@ az dt model create --dt-name <Azure-Digital-Twins-instance-name> --models Room.j
     
     :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Cloud Shell 的屏幕截图，其中显示了孪生查询的部分结果，结果中包括 room0 和 room1。" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
+
 ### <a name="modify-a-digital-twin"></a>修改数字孪生
 
 你可以修改已创建的孪生的属性。 
@@ -217,7 +219,7 @@ az dt model create --dt-name <Azure-Digital-Twins-instance-name> --models Room.j
     
     每个命令的输出将显示有关已成功创建的关系的信息。
 
-1. 可以使用以下任一命令来验证关系，这些命令将查询 Azure 数字孪生实例中的关系。
+1. 可以使用以下任一命令来验证关系，这些命令将输出 Azure 数字孪生实例中的关系。
     * 若要查看源自每个楼层的所有关系（从一端查看关系）：
         ```azurecli-interactive
         az dt twin relationship list --dt-name <Azure-Digital-Twins-instance-name> --twin-id floor0
@@ -241,6 +243,8 @@ az dt model create --dt-name <Azure-Digital-Twins-instance-name> --models Room.j
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>查询孪生图以回答环境问题
 
 Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query-language.md)孪生图，以解答有关环境的问题。 在 Azure CLI 中，这是使用 [az dt twin query](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_query) 命令来实现的。
+
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 在 Cloud Shell 中运行以下查询可以回答有关示例环境的一些问题。
 
@@ -278,7 +282,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
     :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="Cloud Shell 的屏幕截图，其中显示了关系查询的结果，结果中包括 room0。" lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
 
     > [!NOTE]
-    > 请注意，已使用元数据字段 `$dtId` 查询了孪生的 ID（类似于上述查询中的 floor0）。 
+    > 已使用元数据字段 `$dtId` 查询了孪生的 ID（类似于上述查询中的 floor0）。 
     >
     >使用 Cloud Shell 针对类似于这样的以 `$` 开头的元数据字段运行查询时，应使用反撇号将 `$` 转义，让 Cloud Shell 知道它不是变量，应将其作为查询文本中的文本来使用。 以上屏幕截图反映了这种转义方式。
 

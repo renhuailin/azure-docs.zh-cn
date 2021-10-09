@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: dc42882a15b70d7d656decebf8c7b2346c516c6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 48a695f4217c7300c4d7db6edc23452ad4eaa55f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734882"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631697"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -67,22 +67,22 @@ ms.locfileid: "121734882"
 ## <a name="simulate-alerts-on-your-azure-vms-linux"></a>模拟 Azure VM (Linux) 上的警报 <a name="validate-linux"></a>
 
 在计算机上安装安全中心代理以后，请在想让其成为受攻击的警报资源的计算机上执行以下步骤：
-1. 复制一个可执行文件到方便操作的位置，然后将其重命名为“./asc_alerttest_662jfi039n”，例如：
 
-    ```cp /bin/echo ./asc_alerttest_662jfi039n```
+1. 将可执行文件复制到一个方便的位置，并将其重命名为 `./asc_alerttest_662jfi039n`。 例如：
+
+    `cp /bin/echo ./asc_alerttest_662jfi039n`
 
 1. 打开命令提示符并执行此文件：
 
-    ```./asc_alerttest_662jfi039n testing eicar pipe```
+    `./asc_alerttest_662jfi039n testing eicar pipe`
 
-1. 等待 5 到 10 分钟，然后打开安全中心警报。 应该会出现警报。
-
+1. 等待 5 到 10 分钟，然后打开“安全中心警报”。 应该会出现警报。
 
 ## <a name="simulate-alerts-on-kubernetes"></a>模拟 Kubernetes 上的警报 <a name="validate-kubernetes"></a>
 
 如果已将 Azure Kubernetes 服务与安全中心集成，则可以使用以下 kubectl 命令测试警报是否正常运行：
 
-```kubectl get pods --namespace=asc-alerttest-662jfi039n```
+`kubectl get pods --namespace=asc-alerttest-662jfi039n`
 
 有关保护 Kubernetes 节点和群集的详细信息，请参阅 [Azure Defender for Kubernetes 简介](defender-for-kubernetes-introduction.md)
 

@@ -5,20 +5,22 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 09/24/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: ae854f35326be99c0b6e1ac88db9c56fba865787
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 03a493807b0f7eb0f6e1f08794a53b18b3a7dbe4
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113509"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060510"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>为 Azure Cosmos DB 帐户中启用笔记本（预览版）
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
+> 目前，笔记本功能暂时禁用。 Azure Cosmos DB 团队正在开发修补程序。  
+>
 > Azure Cosmos DB 的内置笔记本当前在 [29 个区域](#supported-regions)中提供。 若要使用笔记本，请在其中某一个区域中[创建新 Cosmos 帐户](#create-a-new-cosmos-account)或[在现有帐户上启用笔记本](#enable-notebooks-in-an-existing-cosmos-account)。 
 
 使用 Azure Cosmos DB 中的内置 Jupyter 笔记本可以从 Azure 门户分析和可视化数据。 本文介绍了如何为 Azure Cosmos DB 帐户启用此功能。

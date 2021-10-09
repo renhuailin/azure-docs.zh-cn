@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 216ebdeb843f2faa76751f333e838c3cc32a6664
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 7fc4bb71327b2621d60a525ab277305ef13f40c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539261"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673229"
 ---
 # <a name="optimize-costs-for-azure-files-with-reserved-capacity"></a>使用预留容量优化 Azure 文件存储的成本
 可以通过产能预留来节省 Azure 文件共享的存储成本。 如果你承诺预留一年或三年，Azure 文件存储预留容量可提供容量折扣，以节省存储成本。 预留在预留期内提供固定数量的存储容量。
@@ -37,7 +37,7 @@ Azure 文件存储预留容量可大幅降低在 Azure 文件共享中存储数�
 可以每月 10 TiB（1 年期）或 100 TiB（3 年期）为单位购买 Azure 文件存储预留容量。
 
 ### <a name="reservation-scope"></a>预留范围
-Azure 文件存储预留容量可用于单个订阅或多个订阅（共享范围）。 当范围为单个订阅时，预留折扣仅适用于所选订阅。 当范围为多个订阅时，预留折扣将在客户的计费背景下在这些订阅之间共享。 预留适用于在所购买的范围内使用，且不能仅限于订阅中的特定存储帐户、容器或对象。
+Azure 文件存储预留容量可用于单个订阅、多个订阅（共享范围）和管理组。 当范围为单个订阅时，预留折扣仅适用于所选订阅。 当范围为多个订阅时，预留折扣将在客户的计费背景下在这些订阅之间共享。 当范围限定为管理组时，预留折扣应用于同时属于管理组和计费范围的订阅。 预留适用于在所购买的范围内使用，且不能仅限于订阅中的特定存储帐户、容器或对象。
 
 Azure 文件存储的产能预留仅涵盖订阅或共享资源组中存储的数据量。 预留中不包括事务、带宽和数据传输费用。 购买预留后，与预留属性匹配的容量费用将以折扣率（而不是按即用即付费率）计收。 有关 Azure 预留的详细信息，请参阅[什么是 Azure 预留？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)。
 

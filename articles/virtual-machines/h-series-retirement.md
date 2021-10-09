@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 08/02/2021
 ms.author: amverma
-ms.openlocfilehash: 023fb8a352e1e02023fe0ce16afba9531625e370
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 98465066f79f93777255a3072c472d342b557bdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515774"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600221"
 ---
 # <a name="migrate-your-h-and-h_promo-series-virtual-machines-by-august-31-2022"></a>在 2022 年 8 月 31 日前迁移 H 和 H_Promo 系列虚拟机
 由于 Microsoft Azure 已经推出新一代高性能计算 (HPC)、常规用途和内存优化虚拟机，因此我们建议你将原始 H 系列（包括 H 系列促销）虚拟机中的工作负载迁移至我们较新的产品/服务。
@@ -54,4 +54,4 @@ Azure [HC](hc-series.md)、[HBv2](hbv2-series.md)、[HBv3](hbv3-series.md)、[Dv
 
 
 ### <a name="resize-the-current-virtual-machine"></a>调整当前虚拟机的大小
-可以[使用 PowerShell](./windows/resize-vm.md)、[Azure CLI](./linux/change-vm-size.md) 或通过 Azure 门户调整虚拟机的大小。
+可以[调整虚拟机大小](resize-vm.md)。

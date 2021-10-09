@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/10/2021
-ms.openlocfilehash: 8bd100826564ac865a17bf869ad54ce3f9ceef5d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8004ef319efc08610f9c1a5de16b7c430d51d666
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779686"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209119"
 ---
 # <a name="view-edit-and-delete-assets-in-purview-catalog"></a>查看、编辑和删除 Purview 目录中的资产
 
@@ -71,7 +71,7 @@ ms.locfileid: "121779686"
 
 ## <a name="editing-assets"></a>编辑资产
 
-可单击资产左上角的编辑图标来编辑资产。
+可选择资产左上角的编辑图标来编辑资产。
 
 :::image type="content" source="media/catalog-asset-details/asset-edit-delete.png" alt-text="资产编辑和删除按钮":::
 
@@ -89,7 +89,7 @@ ms.locfileid: "121779686"
 
 ## <a name="deleting-assets"></a>删除资产
 
-可单击资产名称下的删除图标来删除资产。
+可选择资产名称下的删除图标来删除资产。
 
 ### <a name="delete-behavior-explained"></a>删除行为说明
 

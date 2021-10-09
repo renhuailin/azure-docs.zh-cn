@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 数据工厂更新 Azure 机器学习工作室（经典版）模型
+title: 更新 Azure 机器学习工作室（经典版）模型
+description: 介绍如何将 Azure 机器学习工作室（经典版）与 Azure 数据工厂或 Synapse Analytics 配合使用来创建预测管道
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 介绍如何使用 Azure 数据工厂和 Azure 机器学习工作室（经典版）创建预测管道
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
@@ -9,30 +9,30 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.openlocfilehash: 0afbd758022805735231b415e0e06643722488cd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 2d8db7d24ac11d4024a990a201086633133aeb89
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637949"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124769572"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习工作室（经典版）模型
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文是对[使用 Azure 机器学习工作室（经典版）和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)的补充，后者是一篇有关 Azure 数据工厂与 Azure 机器学习工作室（经典版）集成的主要文章。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
+本文是对主要的 Azure 机器学习工作室（经典版）集成文章“[使用 Azure 机器学习工作室（经典版）创建预测管道](transform-data-using-machine-learning.md)”的补充。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
 
 ## <a name="overview"></a>概述
 在操作化 Azure 机器学习工作室（经典版）模型的过程中会训练并保存模型。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。
 
 使用 Azure 机器学习工作室（经典版）创建的模型通常不是静态的。 当新数据变得可用时，或当 API 使用者拥有其自己的数据时，需要重新训练模型。 
 
-重新训练可能会经常发生。 通过“批处理执行”活动和“更新资源”活动，可以操作化 Azure 机器学习工作室（经典版）模型，以使用数据工厂来重新训练和更新预测性 Web 服务。
+重新训练可能会经常发生。 通过批处理执行活动和更新资源活动，可以使 Azure 机器学习工作室（经典版）模型可操作化，重新训练和更新预测性 Web 服务。
 
 下图描述了训练与预测性 Web 服务之间的关系。
 
-![Web 服务](./media/update-machine-learning-models/web-services.png)
+:::image type="content" source="./media/update-machine-learning-models/web-services.png" alt-text="Web 服务":::
 
 ## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure 机器学习工作室（经典版）更新资源活动
 
@@ -72,14 +72,14 @@ ms.locfileid: "122637949"
 
 对模型进行重新训练以及更新预测性 Web 服务的整个操作过程涉及以下步骤：
 
-- 使用 **“批处理执行”活动** 调用 **训练 Web 服务**。 调用训练 Web 服务的过程与根据[使用 Azure 机器学习工作室（经典版）和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述调用预测性 Web 服务相同。 训练 Web 服务的输出是一个 iLearner 文件，可以用来更新预测性 Web 服务。
+- 使用 **“批处理执行”活动** 调用 **训练 Web 服务**。 调用训练 Web 服务的过程与[使用 Azure 机器学习工作室（经典版）和批处理执行活动创建预测性管道](transform-data-using-machine-learning.md)中介绍的调用预测性 Web 服务是相同的。 训练 Web 服务的输出是一个 iLearner 文件，可以用来更新预测性 Web 服务。
 - 通过使用 **“更新资源”活动** 调用 **预测性 Web 服务** 的 **更新资源终结点** 来使用新训练的模型更新 Web 服务。
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure 机器学习工作室（经典版）链接服务
 
 若要使上面提到的端到端工作流能够工作，需要创建两个 Azure 机器学习工作室（经典版）链接服务：
 
-1. 训练 Web 服务的 Azure 机器学习工作室（经典版）链接服务。此链接服务由“批处理执行”活动使用，使用方法与[使用 Azure 机器学习工作室（经典版）和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中提到的方法相同。 不同之处是训练 Web 服务的输出是一个 iLearner 文件，“更新资源”活动随后使用该文件来更新预测性 Web 服务。
+1. 链接训练 Web 服务的 Azure 机器学习工作室（经典版）链接服务，此链接服务由批处理执行活动使用，使用方式与[使用 Azure 机器学习工作室（经典版）和批处理执行活动创建预测性管道](transform-data-using-machine-learning.md)中提到的方式相同。 不同之处是训练 Web 服务的输出是一个 iLearner 文件，“更新资源”活动随后使用该文件来更新预测性 Web 服务。
 2. 预测性 Web 服务的更新资源终结点的 Azure 机器学习工作室（经典版）链接服务。 此链接服务由“更新资源”活动用来使用上一步骤中返回的 iLearner 文件更新预测性 Web 服务。
 
 对于第二个 Azure 机器学习工作室（经典版）链接服务，当 Azure 机器学习工作室（经典版）Web 服务是经典 Web 服务与当该服务是新的 Web 服务时，配置是不同的。 下面的各部分分别讨论了不同之处。
@@ -126,7 +126,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 }
 ```
 
-以下方案提供更多详细信息。 它包含一个从 Azure 数据工厂管道重新训练和更新 Azure 机器学习工作室（经典版）模型的示例。
+以下方案提供更多详细信息。 其中包含从管道重新训练和更新 Azure 机器学习工作室（经典版）模型的示例。
 
 
 ## <a name="sample-retraining-and-updating-an-azure-machine-learning-studio-classic-model"></a>示例：重新训练和更新 Azure 机器学习工作室（经典版）模型
@@ -175,7 +175,7 @@ Azure 存储保留以下数据：
 2. 在 Web 服务列表中，单击“定型 Web 服务”。
 3. 单击“API 密钥”文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
 4. 在 Azure 机器学习工作室（经典版）中，单击“批处理执行”链接 。
-5. 从“请求”分区复制“请求 URI”，然后将其粘贴到数据工厂 JSON 编辑器。
+5. 从“请求”部分复制“请求 URI”，然后将其粘贴到 JSON 编辑器中 。
 
 ### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Azure 机器学习工作室（经典版）可更新评分终结点的链接服务：
 以下 JSON 代码片段定义了指向评分 Web 服务的可更新终结点的 Azure 机器学习工作室（经典版）链接服务。

@@ -5,14 +5,14 @@ author: yegu-ms
 manager: maiye
 ms.service: cache
 ms.topic: conceptual
-ms.date: 01/22/2020
+ms.date: 09/15/2021
 ms.author: yegu
-ms.openlocfilehash: 5f9e0a18db0920acd35ebd7b133ed3fe5d0eaee9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 46363d3bed85c275a39fea174191fad18d95d753
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352943"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609415"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>预留折扣如何应用于 Azure Cache for Redis
 
@@ -30,7 +30,7 @@ Azure Cache for Redis 预留容量折扣每小时应用于缓存。 购买的预
 
 以下示例说明如何根据购买的缓存数目及其运行时间，来应用 Azure Cache for Redis 预留容量折扣。
 
-**示例 1**：你为 6 GB 缓存购买了 Azure Cache for Redis 预留容量。 如果运行的 13 GB 缓存与其他预留属性匹配，则按照即用即付价格为 7 GB Azure Cache for Redis 计算用量付费，并获得一小时的 6 GB 缓存计算用量的预留折扣。
+* 示例 1：你为 6 GB 缓存购买了 Azure Cache for Redis 预留容量。 如果运行的 13 GB 缓存与其他预留属性匹配，则按照即用即付价格为 7 GB Azure Cache for Redis 计算用量付费，并获得一小时的 6 GB 缓存计算用量的预留折扣。
 
 剩余的示例假设购买的 Azure Cache for Redis 预留容量用于 26 GB 缓存，并且其他预留属性与正在运行的缓存相匹配。
 

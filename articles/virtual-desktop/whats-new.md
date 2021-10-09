@@ -3,17 +3,17 @@ title: Azure 虚拟桌面中有哪些新增功能？ - Azure
 description: Azure 虚拟桌面的新增功能和产品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/30/2021
+ms.date: 09/27/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 88c94a3f1b6329c80cddcec49c7ebb445a21d8e0
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 438a3f4091afbfb885e2f585196193ce91f13f4a
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318134"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154539"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Azure 虚拟桌面中有哪些新增功能？
 
@@ -42,6 +42,10 @@ Azure 虚拟桌面代理每月至少更新一次。
 
 请参阅 Azure 虚拟桌面代理的更改：
 
+- 版本 1.0.3373.2600：此更新发布于 2021 年 9 月，包含以下更改：
+    - 常规代理改进。
+    - 修复了在 Windows 7 VM 上重启代理时出现的问题。
+    - 修复了 WVDAgentHealthStatus 表中的字段未正确显示的问题。
 - 版本 1.0.3130.2900：此更新发布于 2021 年 7 月，包含以下更改：
     - 一般改进和 bug 修复。
     - 修复了获取 Intune 注册的主机池路径时出现的问题。
@@ -67,25 +71,43 @@ Azure 虚拟桌面代理每月至少更新一次。
 
 想知道 FSLogix 的最新更新吗？ 请查看 [FSLogix 的新增功能](/fslogix/whats-new)。
 
+## <a name="september-2021"></a>2021 年 9 月
+
+以下是 2021 年 9 月的更改。
+
+### <a name="azure-portal-updates"></a>Azure 门户更新
+
+现在可以将 Azure 资源管理器模板用于要在部署后应用于会话主机的任何更新。 可以通过在创建主机池时选择“虚拟机”选项卡来访问此功能。
+
+现在还可以在创建主机池时（而不是之后）设置主机池、应用组和工作区诊断设置。 在主机池创建过程中配置这些设置时，还会自动为 Azure 虚拟桌面见解设置报告数据。
+
+### <a name="azure-active-directory-domain-join"></a>Azure Active Directory 域加入
+
+Azure Active Directory 域加入现已正式发布。 此服务允许你将会话主机加入 Azure Active Directory。 域加入还允许你作为 Microsoft Endpoint Manager 的一部分自动注册到 Intune。 你可以在 Azure 公有云中访问此功能，但不能在政府云或 Azure 中国访问。 有关详细信息，请参阅[我们的博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-azure-ad-joined-vms-support/ba-p/2751083)。
+
+### <a name="azure-china"></a>Azure 中国
+
+Azure 虚拟桌面现已在 Azure 中国云中正式发布。 有关详细信息，请参阅[我们的博客文章](https://azure.microsoft.com/updates/general-availability-azure-virtual-desktop-is-now-available-in-the-azure-china-cloud/)。
+
+### <a name="automatic-migration-module-tool"></a>自动迁移模块工具
+
+借助自动迁移工具，只需几个 PowerShell 命令，就可以将组织从 Azure 虚拟桌面（经典）迁移到 Azure 虚拟桌面。 此功能目前为公共预览版，你可以在[自动迁移](automatic-migration.md)中了解更多信息。
+
 ## <a name="august-2021"></a>2021 年 8 月
 
 以下是 2021 年 8 月的更改：
 
-### <a name="windows-11-preview-on-avd"></a>AVD 上的 Windows 11（预览版）
+### <a name="windows-11-preview-for-azure-virtual-desktop"></a>适用于 Azure 虚拟桌面的 Windows 11（预览版）
 
 Windows 11（预览版）映像现已在 Azure 市场中提供，供客户使用 Azure 虚拟桌面进行测试和验证。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/windows-11-preview-is-now-available-on-azure-virtual-desktop/ba-p/2666468)。
 
-### <a name="multimedia-redirection-mmr-is-now-in-public-preview"></a>多媒体重定向 (MMR) 现在提供公共预览版
+### <a name="multimedia-redirection-is-now-in-public-preview"></a>多媒体重定向现在提供公共预览版
 
-多媒体重定向 (MMR) 可让你在 Azure 虚拟桌面 Web 浏览器中观看视频时流畅地播放视频，并且可与 Microsoft Edge 和 Google Chrome 配合使用。 有关详细信息，请参阅[我们的博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/public-preview-announcing-public-preview-of-multimedia/m-p/2663244#M7692)。
+多媒体重定向可让你在 Azure 虚拟桌面 Web 浏览器中观看视频时流畅地播放视频，并且可与 Microsoft Edge 和 Google Chrome 配合使用。 有关详细信息，请参阅[我们的博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/public-preview-announcing-public-preview-of-multimedia/m-p/2663244#M7692)。
 
-### <a name="ip-virtualization-support-for-windows-server-2019"></a>对 Windows Server 2019 的 IP 虚拟化支持
+### <a name="windows-defender-application-control-and-azure-disk-encryption-support"></a>Windows Defender 应用程序控制和 Azure 磁盘加密支持
 
-Windows Server 2008 R2 及更高版本支持 IP 虚拟化。 若要将 IP 虚拟化用于 Windows Server 2019，则需要执行额外的步骤。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/ip-virtualization-support-for-windows-server-2019/m-p/2658650)。
-
-### <a name="windows-defender-application-control-and-azure-disk-encryption-is-now-supported"></a>现在支持 Windows Defender 应用程序控制和 Azure 磁盘加密
-
-Azure 虚拟桌面现在支持使用 Windows Defender 应用程序控制来控制哪些驱动程序和应用程序可在 Windows VM 上运行，并支持通过使用 Windows BitLocker 的 Azure 磁盘加密为 VM 的操作系统和数据磁盘提供卷加密。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/support-for-windows-defender-application-control-and-azure-disk/m-p/2658633#M7685)。
+Azure 虚拟桌面现在支持使用 Windows Defender 应用程序控制来控制哪些驱动程序和应用程序可在 Windows 虚拟机 (VM) 上运行，并支持通过使用 Windows BitLocker 的 Azure 磁盘加密为 VM 的操作系统和数据磁盘提供卷加密。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/support-for-windows-defender-application-control-and-azure-disk/m-p/2658633#M7685)。
  
 ### <a name="signing-into-azure-ad-using-smart-cards-are-now-supported-in-azure-virtual-desktop"></a>Azure 虚拟桌面现在支持使用智能卡登录 Azure AD
 
@@ -93,7 +115,7 @@ Azure 虚拟桌面现在支持使用 Windows Defender 应用程序控制来控�
 
 ### <a name="screen-capture-protection-is-now-generally-available"></a>屏幕捕获保护功能现已正式发布
 
-使用 AVD 中的屏幕捕获保护功能，防止客户端终结点上运行的软件从屏幕捕获敏感信息。 有关详细信息，请参阅我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-screen-capture-protection-for/m-p/2699684)。
+使用 Azure 虚拟桌面中的屏幕捕获保护功能，防止客户端终结点上运行的软件从屏幕捕获敏感信息。 有关详细信息，请参阅我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-screen-capture-protection-for/m-p/2699684)。
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -540,7 +562,7 @@ Azure 政府云现已正式发布。 有关详细信息，请参阅[我们的博
 
 ### <a name="autoscaling-tool-update"></a>自动缩放工具更新
 
-自动缩放工具的最新版本（之前处于预览状态）现已正式发布。 此工具使用 Azure 自动化帐户和 Azure 逻辑应用来自动关闭和重新启动主机池中的会话主机虚拟机 (VM)，从而降低基础结构成本。 有关详细信息，请参阅[使用 Azure 自动化来改变会话主机规模](set-up-scaling-script.md)。
+自动缩放工具的最新版本（之前处于预览状态）现已正式发布。 此工具使用 Azure 自动化帐户和 Azure 逻辑应用来自动关闭和重启主机池中的会话主机 VM，从而降低基础结构成本。 有关详细信息，请参阅[使用 Azure 自动化来改变会话主机规模](set-up-scaling-script.md)。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -581,7 +603,7 @@ Azure 虚拟桌面现已集成到 Azure 资源管理器中。 在最新更新中
 
 - 在此更新中，不再需要重复运行 Azure 市场或 GitHub 模板来扩展主机池。 要扩展主机池，只需在 Azure 门户中转到该主机池，然后选择“+ 添加”以部署其他会话主机即可。
 
-- 主机池部署现已与 [Azure 共享映像库](../virtual-machines/shared-image-galleries.md)完全集成。 共享映像库是一项单独的 Azure 服务，用于存储虚拟机 (VM) 映像定义，包括映像版本控制。 还可以使用全球复制将映像复制并发送到其他 Azure 区域，以进行本地部署。
+- 主机池部署现已与 [Azure 共享映像库](../virtual-machines/shared-image-galleries.md)完全集成。 共享映像库是一项单独的 Azure 服务，用于存储 VM 映像定义，包括映像版本控制。 还可以使用全球复制将映像复制并发送到其他 Azure 区域，以进行本地部署。
 
 - 过去通过 PowerShell 或诊断服务 Web 应用完成的监视功能现已移至 Azure 门户中的 Log Analytics。 现在还可以通过两个选项可视化报表。 可以运行 Kusto 查询并使用工作簿创建视觉对象报表。
 

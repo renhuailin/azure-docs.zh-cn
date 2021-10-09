@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 119540738ac2703afd79891d9bf8a4a9ff0c7472
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47215f936ebc43b7aa720bc68f2caba294f03d46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952756"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595344"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在条件访问中使用 What If 工具进行故障排除
 
@@ -67,6 +67,9 @@ ms.locfileid: "104952756"
 ### <a name="cloud-apps"></a>云应用
 
 此设置的默认值为“所有云应用”。 默认设置执行对环境中所有可用策略的评估。 可以将范围缩小到影响特定云应用的策略。
+
+> [!NOTE]
+> 使用 What If 工具时，它不会针对[条件访问服务依赖项](service-dependencies.md)进行测试。 例如，如果使用 What If 来测试 Microsoft Teams 的条件访问策略，则结果将不会考虑适用于 Office 365 Exchange Online（Microsoft Teams 的条件访问服务依赖项）的任何策略。
 
 ### <a name="ip-address"></a>IP 地址
 

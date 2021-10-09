@@ -1,7 +1,7 @@
 ---
 title: 映射数据流中的存在转换
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用 Azure 数据工厂映射数据流中的存在转换检查现有行
+description: 使用 Azure 数据工厂和 Synapse Analytics 映射数据流中的存在转换检查现有行
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 05/07/2020
-ms.openlocfilehash: 7ad68638862c8ff348538b2cf9d73a533854f984
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 747a873e64bd143d988173f236f27d7246f6deeb
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638077"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058711"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中的存在转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 存在转换是一个行筛选转换，用于检查数据是否存在于另一个源或流中。 输出流包括左侧流中存在或不存在于右侧流中的所有行。 存在转换类似于 ```SQL WHERE EXISTS``` 和 ```SQL WHERE NOT EXISTS```。
 
@@ -32,7 +34,7 @@ ms.locfileid: "122638077"
 1. 选择是否需要“自定义表达式”。
 1. 选择要作为存在条件进行比较的键列。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉菜单上，然后选择“计算列”。
 
-![存在设置](media/data-flow/exists.png "存在 1")
+:::image type="content" source="media/data-flow/exists.png" alt-text="存在设置":::
 
 ### <a name="multiple-exists-conditions"></a>多个存在条件
 
@@ -44,11 +46,11 @@ ms.locfileid: "122638077"
 
 若要创建包含除“and”与“equals to”之外的其他运算符的自由格式表达式，请选择“自定义表达式”字段。 单击蓝色框，通过数据流表达式生成器输入自定义表达式。
 
-![存在自定义设置](media/data-flow/exists1.png "存在自定义")
+:::image type="content" source="media/data-flow/exists1.png" alt-text="存在自定义设置":::
 
 ## <a name="broadcast-optimization"></a>广播优化
 
-![广播联接](media/data-flow/broadcast.png "广播联接")
+:::image type="content" source="media/data-flow/broadcast.png" alt-text="广播联接":::
 
 在联接、查找和存在转换中，如果工作器节点内存可容纳一个数据流或同时容纳两个数据流，则可以通过启用“广播”来优化性能。 默认情况下，Spark 引擎将自动决定是否广播一侧。 若要手动选择要广播的一侧，请选择“固定”。
 
@@ -71,9 +73,9 @@ ms.locfileid: "122638077"
 
 下面的示例是一个名为 `checkForChanges` 的存在转换，它采用左侧流 `NameNorm2` 和右侧流 `TypeConversions`。  存在条件为表达式 `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`，如果每个流中的 `EMPID` 和 `Region` 列均匹配，则返回 true。 由于我们将检查是否存在，`negate` 为 false。 我们未在“优化”选项卡中启用任何广播，因此 `broadcast` 的值为 `'none'`。
 
-在数据工厂 UX 中，此转换如下图所示：
+在 UI 体验中，此转换如下图所示：
 
-![存在示例](media/data-flow/exists-script.png "存在示例")
+:::image type="content" source="media/data-flow/exists-script.png" alt-text="存在示例":::
 
 此转换的数据流脚本位于下面的代码片段中：
 

@@ -3,14 +3,14 @@ title: 检查作业和任务错误
 description: 了解要检查的错误，以及如何对作业和任务进行故障排除。
 author: mscurrell
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 09/08/2021
 ms.author: markscu
-ms.openlocfilehash: d8cf3b5e28d4455e00e0bdcbae2063771d3e8acd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31ca874ebb4e3d11d46ff47e775605ffdd015f63
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95736793"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815382"
 ---
 # <a name="job-and-task-error-checking"></a>作业和任务错误检查
 
@@ -25,7 +25,7 @@ ms.locfileid: "95736793"
 添加作业时，可以指定以下影响作业失败方式的参数：
 
 - [作业约束](/rest/api/batchservice/job/add#jobconstraints)
-  - 可以选择指定 `maxWallClockTime` 属性，用于设置作业可处于活动或运行状态的最大时间量。 如果超过此限制，作业将终止，并在作业的 [executionInfo](/rest/api/batchservice/job/get#cloudjob) 中设置 `terminateReason` 属性。
+  - 可以选择指定 `maxWallClockTime` 属性，用于设置作业可处于活动或运行状态的最大时间量。 如果超过此限制，作业将终止，并在作业的 [executionInfo](/rest/api/batchservice/job/get#jobexecutioninformation) 中设置 `terminateReason` 属性。
 - [作业准备任务](/rest/api/batchservice/job/add#jobpreparationtask)
   - 如果指定此参数，则在第一次为节点上的作业运行任务时运行作业准备任务。 作业准备任务可能会失败，这会导致任务未运行且作业未完成。
 - [作业发布任务](/rest/api/batchservice/job/add#jobreleasetask)
@@ -41,7 +41,7 @@ ms.locfileid: "95736793"
 
 ### <a name="job-preparation-tasks"></a>作业准备任务
 
-如果为作业指定作业准备任务，那么，当第一次在节点上运行作业的任务时，将运行该任务的实例。 对作业配置的作业准备任务可以看作是一个任务模板，可以运行多个作业准备任务实例，最多可运行一个池中的节点数。
+如果为作业指定了[作业准备任务](batch-job-prep-release.md#job-preparation-task)，那么，当第一次在节点上运行作业的任务时，将运行该作业准备任务的实例。 对作业配置的作业准备任务可以看作是一个任务模板，可以运行多个作业准备任务实例，最多可运行一个池中的节点数。
 
 应检查作业准备任务实例，确定是否存在错误：
 
@@ -51,7 +51,7 @@ ms.locfileid: "95736793"
 
 ### <a name="job-release-tasks"></a>作业发布任务
 
-如果为某个作业指定了作业释放任务，则当终止某个作业时，会在运行了作业准备任务的每个池节点上运行作业释放任务的实例。 应检查作业发布任务实例，确定是否存在错误：
+如果为某个作业指定了[作业释放任务](batch-job-prep-release.md#job-release-task)，则当终止某个作业时，会在运行了作业准备任务的每个池节点上运行作业释放任务的实例。 应检查作业发布任务实例，确定是否存在错误：
 
 - 可以使用[列出准备和发布任务状态](/rest/api/batchservice/job/listpreparationandreleasetaskstatus) API 从作业中获取所有正在运行的作业发布任务实例。 与任何任务一样，[执行信息](/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation)可与 `failureInfo`、`exitCode` 和 `result` 等属性一起使用。
 - 如果一个或多个作业发布任务失败，该作业仍会终止，并变为 `completed` 状态。
@@ -92,4 +92,4 @@ ms.locfileid: "95736793"
 ## <a name="next-steps"></a>后续步骤
 
 - 检查应用程序是否实现了全面的错误检查；及时检测和诊断问题非常重要。
-- 详细了解[作业和任务](jobs-and-tasks.md)。
+- 详细了解[作业和任务](jobs-and-tasks.md)以及[作业准备和释放任务](batch-job-prep-release.md)。

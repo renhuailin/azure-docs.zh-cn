@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/18/2021
+ms.date: 09/16/2021
 ms.author: justinha
-ms.openlocfilehash: 935abb1a1eae362e3036c323da35aa5fd7b9b018
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: a02dbe66e255cd56865a0ce75310260fd690b069
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707963"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546985"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>管理 DNS 并在 Azure Active Directory 域服务托管域中创建条件转发器
 
@@ -28,9 +28,9 @@ Azure AD DS 包括为托管域提供名称解析的域名系统 (DNS) 服务器�
 本文介绍了如何安装 DNS 服务器工具，然后使用 DNS 控制台来管理记录，并在 Azure AD DS 中创建条件转发器。
 
 >[!NOTE]
->不支持创建或更改服务器级 DNS 转发器，并且会导致 Azure AD DS 托管域出现问题。
+>不支持创建或更改根提示或服务器级 DNS 转发器，并且会导致 Azure AD DS 托管域出现问题。 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 需有以下资源和特权才能完成本文：
 

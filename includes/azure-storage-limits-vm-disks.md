@@ -2,16 +2,16 @@
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/13/2021
+ms.date: 09/27/2021
 ms.author: rogarana
-ms.openlocfilehash: f22094b86018f318e82b2e0a7e31ef6854562734
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: aedfaf0606547653e88ad6e120f51a542dabdb95
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122263322"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155150"
 ---
-可以将多个数据磁盘附加到 Azure 虚拟机。 根据 VM 数据磁盘的可伸缩性和性能目标，可以确定满足性能和容量要求所需的磁盘数量和类型。
+可以将多个数据磁盘附加到 Azure 虚拟机 (VM)。 根据 VM 数据磁盘的可伸缩性和性能目标，可以确定满足性能和容量要求所需的磁盘数量和类型。
 
 > [!IMPORTANT]
 > 为了获得最佳性能，需要限制附加到虚拟机的、重度使用的磁盘数，以避免可能的性能限制。 如果附加的所有磁盘未在同时重度使用，则虚拟机可以支持更多的磁盘。
@@ -25,13 +25,15 @@ ms.locfileid: "122263322"
 > | 标准托管磁盘 | 50,000 |
 > | 标准 SSD 托管磁盘 | 50,000 |
 > | 高级托管磁盘 | 50,000 |
-> | 标准 LRS 快照 | 75,000 |
-> | Standard_ZRS snapshots | 75,000 |
+> | Standard_LRS 快照<sup>1</sup> | 75,000 |
+> | Standard_ZRS 快照<sup>1</sup> | 75,000 |
 > | 托管映像 | 50,000 |
 
-**对于标准存储帐户：** 标准存储帐户的总请求率上限为 20,000 IOPS。 在标准存储帐户中，所有虚拟机磁盘的 IOPS 总数不应超过此限制。
+<sup>1</sup> 单个磁盘可能具有的完整磁盘快照总数为 200。 单个磁盘还可能有 200 个增量快照，这些快照与完整磁盘快照分开计数。 
+
+对于标准存储帐户：标准存储帐户的最大总请求速率为 20,000 IOPS。 在标准存储帐户中，所有虚拟机磁盘的 IOPS 总数不应超过此限制。
   
 可以根据请求率的限制，大致计算单个标准存储帐户可支持的重度使用磁盘数。 例如，对于基本层 VM，高使用率的磁盘数上限约为 66，即每个磁盘 20,000/300 IOPS。 对于标准层 VM，高使用率的磁盘数上限约为 40，即每个磁盘 20,000/500 IOPS。 
 
-**对于高级存储帐户：** 高级存储帐户的总吞吐量速率上限为 50 Gbps。 所有 VM 磁盘的总吞吐量不应超过此限制。
+**高级存储帐户：** 高级存储帐户的总吞吐量速率上限为 50 Gbps。 所有 VM 磁盘的总吞吐量不应超过此限制。
 

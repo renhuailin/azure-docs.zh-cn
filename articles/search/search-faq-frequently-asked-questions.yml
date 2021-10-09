@@ -8,17 +8,17 @@ metadata:
   ms.author: heidist
   ms.service: cognitive-search
   ms.topic: conceptual
-  ms.date: 04/10/2020
-  ms.openlocfilehash: 2bfa41d8a68d9640995ae6989ebd79a4b44c7c24
-  ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+  ms.date: 09/24/2021
+  ms.openlocfilehash: 782c8d8801935779222903f52d3ffaa6ba6f7007
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123449083"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129210914"
 title: Azure 认知搜索 - 常见问题解答 (FAQ)
 summary: 查找与 Azure 认知搜索有关的概念、代码和方案的常见问题的解答。
 sections:
-- name: 平台
+- name: 搜索服务
   questions:
   - question: >
       Azure 认知搜索与 DBMS 中的全文搜索有何不同？
@@ -49,7 +49,7 @@ sections:
   - question: >
       能否根据用户身份限制搜索索引访问？
     answer: >
-      可以使用 `search.in()` 筛选器实现[安全筛选器](./search-security-trimming-for-azure-search.md)。 使用 [Azure Active Directory(AAD) 等标识管理服务](./search-security-trimming-for-azure-search-with-aad.md)可很好地编写筛选器，并基于定义的用户组成员身份裁剪搜索结果。 你还可注册[基于角色的访问](search-security-rbac.md)（当前为公共预览版）。
+      可以使用 `search.in()` 筛选器实现[安全筛选器](./search-security-trimming-for-azure-search.md)。 使用 [Azure Active Directory (Azure AD) 等标识管理服务](./search-security-trimming-for-azure-search-with-aad.md)可很好地编写筛选器，并基于定义的用户组成员身份裁剪搜索结果。 你还可注册[基于角色的访问](search-security-rbac.md)（当前为公共预览版）。
   - question: >
       为什么确定有效的术语没有匹配项？
     answer: >
@@ -60,7 +60,7 @@ sections:
   - question: >
       通配符搜索速度较慢。
     answer: >
-      大多数通配符搜索查询（如前缀、模糊和正则表达式）会使用搜索索引中匹配的词在内部重写。 这一扫描搜索索引的额外处理会增加延迟时间。 此外，广泛搜索查询（例如 `a*`），可能会使用许多词重写，因此速度可能会非常慢。 对于高性能通配符搜索，请考虑定义[自定义分析器](/rest/api/searchservice/custom-analyzers-in-azure-search)。
+      大多数通配符搜索查询（如前缀、模糊和正则表达式）会使用搜索索引中匹配的词在内部重写。 这种额外的处理会增加延迟。 此外，广泛搜索查询（例如 `a*`），可能会使用许多词重写，因此速度可能会非常慢。 对于高性能通配符搜索，请考虑定义[自定义分析器](/rest/api/searchservice/custom-analyzers-in-azure-search)。
   - question: >
       为什么每个搜索词的搜索优先级是一个常数，或都等于 1.0？
     answer: >

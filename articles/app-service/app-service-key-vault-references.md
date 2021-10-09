@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/11/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 15b5974aff53303ca0245fc6100ea22eebc70c6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 381cc0d1114e60cbb9678c0df9a66176f3b51e99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752471"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627589"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
@@ -25,7 +25,7 @@ ms.locfileid: "121752471"
 
 1. 为应用程序创建一个[托管标识](overview-managed-identity.md)。
 
-    默认情况下，Key Vault 引用将使用应用系统分配的标识，但你可以[指定用户分配的标识](#access-vaults-with-a-user-assigned-identity)。
+    默认情况下，Key Vault 引用将使用应用的系统分配的标识，但你可以指定[用户分配的标识](#access-vaults-with-a-user-assigned-identity)。
 
 1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/general/security-features.md#privileged-access)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
 
@@ -42,6 +42,9 @@ ms.locfileid: "121752471"
     ```
 
 2. 请确保该保管库的配置将你的应用访问该保管库时所用的网络或子网纳入考量。
+
+> [!NOTE]
+> Windows 容器当前不支持通过 VNet 集成的 Key Vault 引用。
 
 ### <a name="access-vaults-with-a-user-assigned-identity"></a>使用用户分配的标识访问保管库
 

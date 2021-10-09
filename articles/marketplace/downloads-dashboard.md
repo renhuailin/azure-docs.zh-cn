@@ -7,13 +7,13 @@ ms.topic: article
 author: shganesh-dev
 ms.author: shganesh
 ms.reviewer: sroy
-ms.date: 08/21/2020
-ms.openlocfilehash: b0771ee85fc486d4fbcc4fb181b1ce0b7b7d47dd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 34d8746939b1ec4a957d72b089541eb6b5c0b5dd
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731193"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080206"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“下载”仪表板
 
@@ -28,9 +28,27 @@ ms.locfileid: "121731193"
 
 每当请求包含 1000 多行数据的下载时，你将收到一个弹出通知，其中包含一个指向“下载”仪表板的链接。 这些数据下载将在 30 天内可用，然后将被删除。
 
-## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>商业市场 Analytics 报表的生存期导出
+## <a name="access-the-downloads-dashboard"></a>访问“下载”仪表板
 
-若要访问“下载”仪表板，请在商业市场下打开[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)仪表板。
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“见解”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“见解”磁贴。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 在左侧菜单中，选择“下载”。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航栏中，选择“商业市场” > “分析” > “下载”  。
+
+---
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>商业市场 Analytics 报表的生存期导出
 
 在“下载”页上，最终用户可以执行以下操作：
 
@@ -48,9 +66,17 @@ ms.locfileid: "121731193"
 | 使用情况 | ![黑色 X 标记](media/downloads-dashboard/check-black-no.png) | 最长一年 |
 |
 
-用户可以从“下载”部分计划报表的异步下载：
+用户可以在“下载”仪表板中计划报表的异步下载。
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+[![从“下载”页计划报表的异步下载](media/downloads-dashboard/download-reports-workspaces.png)](media/downloads-dashboard/download-reports.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 [![从“下载”部分计划报表的异步下载](media/downloads-dashboard/download-reports.png)](media/downloads-dashboard/download-reports.png#lightbox)
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

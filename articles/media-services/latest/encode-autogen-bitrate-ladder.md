@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/21/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5b973d17e10f3dbb75f5208d9003b4f8118b37c7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7fc9731769f568107a1ce6dacb5658fe164bd616
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110868"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657501"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>使用自动生成的比特率阶梯进行编码
 
@@ -31,13 +31,13 @@ ms.locfileid: "106110868"
 
 ### <a name="encoding-for-streaming"></a>编码用于流式处理
 
-在“转换”中使用“AdaptiveStreaming”预设时，会获取适合通过流式处理协议（例如 HLS 和 DASH）传递的输出。 使用此预设时，此服务可智能地确定要生成的视频层数，并确定比特率和分辨率。 输出内容包含 MP4 文件，其中无 AAC 编码的音频和 H.264 编码的视频交错。
+在“转换”中使用 AdaptiveStreaming 或 H265AdaptiveStreaming 预设时，会获取适合通过流式处理协议（例如 HLS 和 DASH）传递的输出。 使用这两个预设之一时，此服务可智能地确定要生成的视频层数，并确定比特率和分辨率。 输出内容包含 MP4 文件，其中 AAC 编码的音频和 H.264 编码的视频（在 AdaptiveStreaming 预设的情况下）或 H.265/HEVC（在 H265AdaptiveStreaming 预设的情况下）。 输出 MP4 文件是非交错的。
 
 若要查看有关如何使用此预设的示例，请参阅[流式传输文件](stream-files-dotnet-quickstart.md)。
 
 ## <a name="output"></a>输出
 
-此部分显示媒体服务编码器生成的输出视频层的三个示例，是使用“AdaptiveStreaming”预设进行编码得来的。 在所有情况下，输出包含仅音频 MP4 文件，其中立体声音频以 128 kbps 进行编码。
+此部分显示媒体服务编码器生成的输出视频层的三个示例，是使用 AdaptiveStreaming (H.264) 或 H265AdaptiveStreaming (HEVC) 预设进行编码得来的。 在所有情况下，输出包含仅音频 MP4 文件，其中立体声音频以 128 kbps 进行编码。
 
 ### <a name="example-1"></a>示例 1
 高度为“1080”，帧速率为“29.970”的源生成 6 个视频层：
@@ -71,7 +71,15 @@ ms.locfileid: "106110868"
 |2|270|480|440|
 |3|180|320|230|
 
+
+## <a name="content-aware-encoding-comparison"></a>内容感知编码比较
+
+[内容感知编码预设](./encode-content-aware-concept.md)通过在确定要在阶梯中使用的正确输出比特率和分辨率集之前分析源内容，为自适应流式处理预设提供更好的解决方案。
+建议在使用自适应比特率流式处理预设提供的更多静态和固定阶梯之前，先测试[内容感知编码预设](./encode-content-aware-concept.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [流式传输文件](stream-files-dotnet-quickstart.md)
+> [使用内容感知编码预设](./encode-content-aware-concept.md)
+> [如何使用内容感知编码](./encode-content-aware-how-to.md)

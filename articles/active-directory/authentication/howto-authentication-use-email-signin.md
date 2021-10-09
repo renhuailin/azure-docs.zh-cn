@@ -10,12 +10,12 @@ ms.author: justinha
 author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0a4ad5d9aaa9bb851a651ddc77bd1acb773b6019
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 0e925e520b5136750dc7ef9151d7e5741176525c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113485700"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595610"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID 登录到 Azure AD（预览版）
 
@@ -70,7 +70,8 @@ ms.locfileid: "113485700"
     * Skype for Business
     * macOS 版 Microsoft Office
     * Web 上的 Microsoft Teams
-    * OneDrive（登录流不涉及多重身份验证时）
+    * OneDrive（登录流不涉及多重身份验证时）。
+    * Microsoft 365 管理门户
 
 * 不支持的应用 - 如果某些第三方应用程序假定 `unique_name` 或 `preferred_username` 声明不变或将始终匹配特定的用户属性（如 UPN），则这些应用程序可能无法按预期正常运作。
 

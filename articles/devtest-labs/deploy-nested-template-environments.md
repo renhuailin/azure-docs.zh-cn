@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中部署嵌套模板环境
+title: 部署嵌套模板环境
 description: 了解如何部署嵌套 Azure 资源管理器模板以提供 Azure 开发测试实验室环境。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 39002e286fafd4f813333a14ed86256a517897e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 170c9adac15de9e8429ce994021e94fd80b347aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481334"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662977"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>部署用于测试环境的嵌套 Azure 资源管理器模板
 通过嵌套部署，你可从主资源管理器模板内执行其他 Azure 资源管理器模板。 这让你能够将部署分解为一组有针对性的特定目的模板。 它在测试、重复使用和可读性方面具有一定优势。 [部署 Azure 资源时使用链接模板](../azure-resource-manager/templates/linked-templates.md)一文很好地概述了此解决方案，其中包含多个代码示例。 本文提供了特定于 Azure 开发测试实验室的示例。 

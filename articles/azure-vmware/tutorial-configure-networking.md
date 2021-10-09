@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中创建和配置在部署私有云时所需
 ms.topic: tutorial
 ms.custom: contperf-fy22q1
 ms.date: 07/30/2021
-ms.openlocfilehash: 61a1c1c45455c9edc402aca1e5471f3ed95a8d66
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 99389c55ab13b6c6c181a4d7d1bcf14c3b8ba08d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069547"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597790"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教程：在 Azure 中为 VMware 私有云配置网络
 
@@ -27,8 +27,9 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 
 >[!NOTE]
 >创建新 vNet 之前，请评估 Azure 中是否已有现有的 vNet 并计划使用它连接到 Azure VMware 解决方案；或者是否完全创建新 vNet。  
->* 若要使用现有 vNet，请使用“连接”下的[“Azure vNet 连接”](#select-an-existing-vnet)选项卡。 
->* 若要创建新 vNet，请[“Azure vNet 连接”](#create-a-new-vnet)选项卡或[手动](#create-a-vnet-manually)创建一个。
+>* 若要在与 Azure VMware 解决方案相同的 Azure 订阅中使用现有的 vNet，请使用“连接”下的“[Azure vNet 连接](#select-an-existing-vnet)”选项卡 。 
+>* 若要在与 Azure VMware 解决方案不同的其他 Azure 订阅中使用现有的 vNet，请使用有关[手动连接到私有云](#connect-to-the-private-cloud-manually)的指南。 
+>* 若要在与 Azure VMware 解决方案相同的 Azure 订阅中创建新的 vNet，请使用“[Azure vNet 连接](#create-a-new-vnet)”选项卡或[手动](#create-a-vnet-manually)创建一个。
 
 ## <a name="connect-with-the-azure-vnet-connect-feature"></a>使用 Azure vNet 连接功能进行连接
 

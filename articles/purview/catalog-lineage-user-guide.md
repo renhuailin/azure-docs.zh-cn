@@ -1,18 +1,17 @@
 ---
-title: 数据目录世系用户指南（预览版）
+title: 数据目录世系用户指南
 description: 本文概述了 Azure Purview 的目录世系功能。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 08/25/2021
-ms.openlocfilehash: 38f150a99b2145968569e986ea158b1aa552593a
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 09/27/2021
+ms.openlocfilehash: e2923e29652a92de188366168140bf9def43c082
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968597"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209422"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview 数据目录世系用户指南
 
@@ -112,7 +111,7 @@ Azure Purview 支持数据集和进程的资产级世系。 若要查看资产�
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-switch-to-asset.png" alt-text="屏幕截图显示如何在世系数据资产中选择“切换到资产”。" lightbox="./media/catalog-lineage-user-guide/select-switch-to-asset.png":::
 
-2. 对于常用的数据集，世系画布可能会变得很复杂。 为避免混乱，默认视图将仅显示受关注资产的五个级别的世系。 其余世系可以通过单击世系画布中的气泡展开。 数据使用者还可以隐藏不感兴趣的画布中的资产。 若要进一步减少混乱，请关闭世系画布顶部的切换键“更多世系”。 此操作将隐藏世系画布中的所有气泡。
+2. 对于常用的数据集，世系画布可能会变得很复杂。 为避免混乱，默认视图将仅显示受关注资产的五个级别的世系。 其余世系可以通过选择世系画布中的气泡展开。 数据使用者还可以隐藏不感兴趣的画布中的资产。 若要进一步减少混乱，请关闭世系画布顶部的切换键“更多世系”。 此操作将隐藏世系画布中的所有气泡。
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png" alt-text="屏幕截图显示如何切换“更多世系”。" lightbox="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png":::
 

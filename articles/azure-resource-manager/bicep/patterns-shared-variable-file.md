@@ -5,12 +5,12 @@ author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
 ms.date: 08/18/2021
-ms.openlocfilehash: 812cb0b861418d3bd3d13959cf074442d9a81538
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: eb9a24c0c5b6b7bd037fe5da13fe108878f55a15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446633"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648309"
 ---
 # <a name="shared-variable-file-pattern"></a>共享变量文件模式
 
@@ -24,7 +24,7 @@ ms.locfileid: "122446633"
 
 ## <a name="solution"></a>解决方案
 
-用户可以创建一个 JSON 文件，其中包含需要共享的变量。 使用 `json()` 和 `loadTextContent()` Bicep 函数加载此文件并访问这些变量。 对于数组变量，可使用 `concat()` 函数将共享值与特定资源的所有自定义值组合在一起。
+用户可以创建一个 JSON 文件，其中包含需要共享的变量。 使用 [`json()` 函数](bicep-functions-object.md#json)和 [`loadTextContent()` 函数](bicep-functions-files.md#loadtextcontent)加载此文件并访问这些变量。 对于数组变量，可使用 [`concat()` 函数](bicep-functions-array.md#concat)函数将共享值与特定资源的所有自定义值组合在一起。
 
 ## <a name="example-1-naming-prefixes"></a>示例 1：命名前缀
 

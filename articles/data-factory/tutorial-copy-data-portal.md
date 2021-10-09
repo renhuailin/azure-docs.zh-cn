@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: ed91fcaf566e31df2a1c9b57178c2e60d9206ad5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dd7a38070b13cb762bc22e954c47703ef5366b84
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637720"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805484"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
 
@@ -111,13 +111,13 @@ ms.locfileid: "122637720"
 
 1. 在主页上，选择“协调”。
 
-   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="显示 ADF 主页的屏幕截图。":::
 
 1. 在“常规”面板的“属性”中，将名称指定为 CopyPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
 
 1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖放到管道设计器图面。   指定 **CopyFromBlobToSql** 作为 **名称**。
 
-    ![复制活动](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/drag-drop-copy-activity.png" alt-text="Copy 活动":::
 
 ### <a name="configure-source"></a>配置源
 
@@ -141,7 +141,7 @@ ms.locfileid: "122637720"
 
 1. 选择“确定”。 将自动导航到管道页。 在“源”选项卡中，确认已选择“SourceBlobDataset”。  若要预览此页上的数据，请选择“预览数据”。
 
-    ![源数据集](./media/tutorial-copy-data-portal/source-dataset-selected.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/source-dataset-selected.png" alt-text="源数据集":::
 
 ### <a name="configure-sink"></a>配置接收器
 >[!TIP]
@@ -170,13 +170,13 @@ ms.locfileid: "122637720"
 
     g. 选择“创建”以部署链接服务。
 
-    ![保存新建链接服务](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png" alt-text="保存新建链接服务":::
 
 1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。 然后选择“确定”。
 
 1. 转到包含管道的选项卡。在“接收器数据集”中，确认已选中“OutputSqlDataset”。 
 
-    ![“管道”选项卡](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
+    :::image type="content" source="./media/tutorial-copy-data-portal/pipeline-tab-2.png" alt-text="“管道”选项卡":::       
 
 可以选择按照[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)中所述将源架构映射到对应的目标架构。
 
@@ -201,11 +201,11 @@ ms.locfileid: "122637720"
 
 1. 转到左侧的“监视”选项卡。 此时会看到由手动触发器触发的管道运行。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。
 
-    [![监视管道运行](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox" alt-text="监视管道运行](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)":::
 
 1. 若要查看与管道运行关联的活动运行，请选择“管道名称”列下的“CopyPipeline”链接。 此示例中只有一个活动，因此列表中只看到一个条目。 有关复制操作的详细信息，请选择“活动名称”列下的“详细信息”链接（眼镜图标）。  选择顶部的“所有管道运行”，回到“管道运行”视图。 若要刷新视图，请选择“刷新”。
 
-    [![监视活动运行](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox" alt-text="监视活动运行](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)":::
 
 1. 验证是否又向数据库的 emp 表添加了两行。
 
@@ -243,7 +243,7 @@ ms.locfileid: "122637720"
 
 1. 转到左侧的“监视”选项卡，查看触发的管道运行。
 
-    [![触发的管道运行](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox" alt-text="触发的管道运行](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)":::
 
 1. 若要从“管道运行”视图切换到“触发器运行”视图，请选择窗口左侧的“触发器运行”。  
 

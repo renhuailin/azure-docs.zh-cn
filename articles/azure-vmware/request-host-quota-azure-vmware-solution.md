@@ -3,13 +3,13 @@ title: 为 Azure VMware 解决方案请求主机配额
 description: 了解如何为 Azure VMware 解决方案请求主机配额/容量。 还可以在现有 Azure VMware 解决方案私有云中请求更多主机。
 ms.topic: how-to
 ms.custom: contperf-fy21q3
-ms.date: 08/06/2021
-ms.openlocfilehash: 92ebc79193525802c1e7c7ede9287e3300799a10
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.date: 09/27/2021
+ms.openlocfilehash: 2b3e2291726f37f3c802d1db24429381e7a2b7d1
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322454"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083232"
 ---
 # <a name="request-host-quota-for-azure-vmware-solution"></a>为 Azure VMware 解决方案请求主机配额
 
@@ -26,7 +26,7 @@ ms.locfileid: "122322454"
 
 - Microsoft [Azure 企业协议 (EA)](../cost-management-billing/manage/ea-portal-agreements.md) 下的订阅。
 - 通过现有 CSP Azure 产品/服务合同或 Azure 计划购买的云解决方案提供商 (CSP) 托管订阅。
-- 与 Microsoft 签署的[现代商业协议](../cost-management-billing/understand/mca-overview.md)。
+- 与 Microsoft 的 [Microsoft 客户协议](../cost-management-billing/understand/mca-overview.md)。
 
 ## <a name="request-host-quota-for-ea-customers"></a>为 EA 客户请求主机配额
 

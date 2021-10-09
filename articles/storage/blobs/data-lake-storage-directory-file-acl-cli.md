@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 08e1976a1bc97ae83d1b9d45700fd614420be0c2
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8dec2e939c6f39169d4c8fbbdfbcdf08d4d42599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413062"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651572"
 ---
 # <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
@@ -27,7 +27,7 @@ ms.locfileid: "111413062"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 订阅。 有关详细信息，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 - 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
@@ -43,7 +43,7 @@ ms.locfileid: "111413062"
     az --version
    ```
 
-   如果 Azure CLI 版本低于 `2.6.0`，则安装更高版本。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+   如果 Azure CLI 版本低于 `2.6.0`，则安装更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="connect-to-the-account"></a>连接到帐户
 
@@ -72,7 +72,7 @@ ms.locfileid: "111413062"
 
 ## <a name="create-a-container"></a>创建容器
 
-容器充当文件的文件系统。 可以使用 `az storage fs create` 命令创建文件系统。 
+容器充当文件的文件系统。 可以使用 `az storage fs create` 命令创建文件系统。
 
 此示例创建一个名为 `my-file-system` 的容器。
 
@@ -102,7 +102,7 @@ az storage fs file list -f my-file-system --account-name mystorageaccount --auth
 
 使用 `az storage fs delete` 命令删除容器。
 
-此示例删除一个名为 `my-file-system` 的容器。 
+此示例删除一个名为 `my-file-system` 的容器。
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -110,7 +110,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 ## <a name="create-a-directory"></a>创建目录
 
-使用 `az storage fs directory create` 命令创建目录引用。 
+使用 `az storage fs directory create` 命令创建目录引用。
 
 此示例将名为 `my-directory` 的目录添加到名为 `my-file-system` 的容器中，该容器位于名为 `mystorageaccount` 的帐户下。
 
@@ -146,27 +146,27 @@ az storage fs directory move -n my-directory -f my-file-system --new-directory "
 
 使用 `az storage fs directory delete` 命令删除目录。
 
-此示例删除名为 `my-directory` 的目录。 
+此示例删除名为 `my-directory` 的目录。
 
 ```azurecli
-az storage fs directory delete -n my-directory -f my-file-system  --account-name mystorageaccount --auth-mode login 
+az storage fs directory delete -n my-directory -f my-file-system  --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="check-if-a-directory-exists"></a>检查目录是否存在
 
 使用 `az storage fs directory exists` 命令确定容器中是否存在特定的目录。
 
-此示例显示 `my-file-system` 容器中是否存在名为 `my-directory` 的目录。 
+此示例显示 `my-file-system` 容器中是否存在名为 `my-directory` 的目录。
 
 ```azurecli
-az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
+az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="download-from-a-directory"></a>从目录下载
 
 使用 `az storage fs file download` 命令从目录下载文件。
 
-此示例从名为 `my-directory` 的目录中下载名为 `upload.txt` 的文件。 
+此示例从名为 `my-directory` 的目录中下载名为 `upload.txt` 的文件。
 
 ```azurecli
 az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\myFolder\download.txt" --account-name mystorageaccount --auth-mode login
@@ -176,7 +176,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 使用 `az storage fs file list` 命令列出目录内容。
 
-此示例列出名为 `my-directory` 的目录的内容，该目录位于名为 `mystorageaccount` 的存储帐户的 `my-file-system` 容器中。 
+此示例列出名为 `my-directory` 的目录的内容，该目录位于名为 `mystorageaccount` 的存储帐户的 `my-file-system` 容器中。
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -186,7 +186,7 @@ az storage fs file list -f my-file-system --path my-directory --account-name mys
 
 使用 `az storage fs file upload` 命令将文件上传到目录。
 
-此示例将名为 `upload.txt` 的文件上传到名为 `my-directory` 的目录。 
+此示例将名为 `upload.txt` 的文件上传到名为 `my-directory` 的目录。
 
 ```azurecli
 az storage fs file upload -s "C:\myFolder\upload.txt" -p my-directory/upload.txt  -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -217,7 +217,7 @@ az storage fs file move -p my-file.txt -f my-file-system --new-path my-file-syst
 下面的示例删除名为 `my-file.txt` 的文件
 
 ```azurecli
-az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
+az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="see-also"></a>另请参阅

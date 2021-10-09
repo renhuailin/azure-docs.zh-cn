@@ -1,18 +1,18 @@
 ---
-title: 对资产应用分类（预览版）
+title: 对资产应用分类
 description: 本文档介绍如何对资产应用分类。
 author: SunetraVirdi
 ms.author: suvirdi
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 11/19/2020
-ms.openlocfilehash: d12a7d52562fe32126e12a844c2d36c14cf01431
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 8ec7d456c5bb2eb78c9e1729e38d918c6ac222ee
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96552183"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210877"
 ---
 # <a name="apply-classifications-on-assets-in-azure-purview"></a>在 Azure Purview 中对资产应用分类
 

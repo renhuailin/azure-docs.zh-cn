@@ -1,7 +1,7 @@
 ---
-title: Azure 数据工厂映射数据流中的列模式
+title: 映射数据流中的列模式
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用 Azure 数据工厂映射数据流中的列模式创建通用数据转换模式
+description: 在 Azure 数据工厂或 Synapse Analytics 中使用映射数据流中的列模式创建通用数据转换模式。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/21/2021
-ms.openlocfilehash: 0b99e1cc31464aabe2519da172f250dc7a6f7c8d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 32d39c956121881da0073b53fe5b4196dbc179de
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637834"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828500"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>使用映射数据流中的列模式
 
@@ -32,24 +32,24 @@ ms.locfileid: "122637834"
 
 若要在“派生列”、“聚合”或“窗口”转换中添加列模式，请单击列表上方的“添加”或现有派生列旁的加号图标。 选择“添加列模式”。
 
-![屏幕截图显示“添加”列模式的加号图标。](media/data-flow/add-column-pattern.png "列模式")
+:::image type="content" source="media/data-flow/add-column-pattern.png" alt-text="屏幕截图显示“添加”列模式的加号图标。":::
 
 使用[表达式生成器](concepts-data-flow-expression-builder.md)输入匹配条件。 基于列的 `name`、`type`、`stream`、`origin` 和 `position` 创建与列匹配的布尔表达式。 模式将影响条件返回 true 的任何列（偏差列或定义的列）。
 
 
-![屏幕截图显示派生列的“设置”选项卡。](media/data-flow/edit-column-pattern.png "列模式")
+:::image type="content" source="media/data-flow/edit-column-pattern.png" alt-text="屏幕截图显示派生列的“设置”选项卡。":::
 
 上述列模式匹配双精度类型的每个列，并为每个匹配创建一个派生列。 通过将 `$$` 声明为列名称字段，每个匹配的列将使用相同的名称进行更新。 每列的值是现有值，四舍五入为两位小数。
 
 若要验证匹配条件是否正确，可以在“检查”选项卡中验证已定义列的输出架构，或在“数据预览”选项卡中获取数据的快照 。 
 
-![屏幕截图显示“输出架构”选项卡。](media/data-flow/columnpattern3.png "列模式")
+:::image type="content" source="media/data-flow/columnpattern3.png" alt-text="屏幕截图显示“输出架构”选项卡。":::
 
 ### <a name="hierarchical-pattern-matching"></a>分层模式匹配
 
 还可以在复杂的分层结构中生成模式匹配。 展开 `Each MoviesStruct that matches` 部分，该部分将提示数据流中的每个层次结构。 然后，你可以为所选层次结构中的属性生成匹配的模式。
 
-![屏幕截图显示分层结构列模式。](media/data-flow/patterns-hierarchy.png "层次结构中的列模式")
+:::image type="content" source="media/data-flow/patterns-hierarchy.png" alt-text="屏幕截图显示分层结构列模式。":::
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>“选择”和“接收器”转换中基于规则的映射
 
@@ -57,11 +57,11 @@ ms.locfileid: "122637834"
 
 若要添加基于规则的映射，请单击“添加映射”，然后选择“基于规则的映射” 。
 
-![屏幕截图显示从“添加映射”中选择的“基于规则的映射”。](media/data-flow/rule2.png "基于规则的映射")
+:::image type="content" source="media/data-flow/rule2.png" alt-text="屏幕截图显示从“添加映射”中选择的“基于规则的映射”。":::
 
 每个基于规则的映射需要两个输入：要匹配的条件以及每个映射列的名称。 这两个值都是通过[表达式生成器](concepts-data-flow-expression-builder.md)输入的。 在左侧表达式框中，输入布尔值匹配条件。 在右侧的表达式框中，指定要将匹配的列映射到的项。
 
-![屏幕截图显示映射。](media/data-flow/rule-based-mapping.png "基于规则的映射")
+:::image type="content" source="media/data-flow/rule-based-mapping.png" alt-text="屏幕截图显示映射。":::
 
 使用 `$$` 语法来引用匹配列的输入名称。 以上图为例，假设用户想要在名称长度不到 6 个字符的所有字符串列上进行匹配。 如果一个传入列被命名为 `test`，则表达式 `$$ + '_short'` 会将列重命名为 `test_short`。 如果这是存在的唯一映射，则所有不符合该条件的列都将从输出的数据中删除。
 
@@ -71,7 +71,7 @@ ms.locfileid: "122637834"
 
 如果单击向下的 V 形图标，可指定正则表达式映射条件。 对于与指定的正则表达式条件匹配的列名称，正则表达式映射条件与所有这些名称全部匹配。 这可与标准的基于规则的映射结合使用。
 
-![屏幕截图显示具有层次结构级别和名称匹配的正则表达式映射条件。](media/data-flow/regex-matching.png "基于规则的映射")
+:::image type="content" source="media/data-flow/regex-matching.png" alt-text="屏幕截图显示具有层次结构级别和名称匹配的正则表达式映射条件。":::
 
 上述示例与正则表达式模式 `(r)` 或任何包含小写 r 的列名匹配。 与基于规则的标准映射类似，所有匹配的列都使用 `$$` 语法由右侧的条件进行更改。
 
@@ -79,7 +79,7 @@ ms.locfileid: "122637834"
 
 如果定义的投影具有层次结构，则可使用基于规则的映射来映射层次结构子列。 指定匹配条件和要映射其子列的复杂列。 每个匹配的子列都将使用右侧指定的“名称为”规则进行输出。
 
-![屏幕截图显示对层次结构使用的基于规则的映射。](media/data-flow/rule-based-hierarchy.png "基于规则的映射")
+:::image type="content" source="media/data-flow/rule-based-hierarchy.png" alt-text="屏幕截图显示对层次结构使用的基于规则的映射。":::
 
 上面的示例与复杂列 `a` 的所有子列匹配。 `a` 包含两个子列 - `b` 和 `c`。 输出架构将包含 `b` 和 `c` 两个列，因为“名称为”条件是 `$$`。
 

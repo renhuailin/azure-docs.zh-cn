@@ -1,15 +1,15 @@
 ---
-title: PowerShell - 从 Azure 实验室服务中的 VHD 文件创建自定义映像
+title: PowerShell - 从 VHD 创建自定义映像
 description: 此 PowerShell 脚本从 Azure 实验室服务中的 VHD 文件创建自定义映像。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: d22e6e1d226e826bf114a0fdb378879b828d9b4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05f2e83352e932853395da3d8bd4d934f7d90213
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96022228"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661690"
 ---
 # <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>使用 PowerShell 从 Azure 实验室服务中的 VHD 文件创建自定义映像
 

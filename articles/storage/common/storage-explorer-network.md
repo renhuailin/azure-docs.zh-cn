@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: marayerm
-ms.openlocfilehash: a4afdc8897e15fcb563812bda9da378c66ca4bd9
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 2731f4473b726e7433167fe15c9e1f29c775d9cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432421"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627874"
 ---
 # <a name="network-connections-in-storage-explorer"></a>存储资源管理器中的网络连接
 
@@ -21,30 +21,31 @@ ms.locfileid: "113432421"
 ## <a name="hostnames-accessed-by-storage-explorer"></a>存储资源管理器访问的主机名
 
 存储资源管理器向正在使用中的各个终结点发出请求。 以下列表详细说明了存储资源管理器向其发出请求的常见主机名：
+
 - ARM 终结点：
-    - `management.azure.com`（全球 Azure）
-    - `management.chinacloudapi.cn`（Azure 中国）
-    - `management.microsoftazure.de`（Azure 德国）
-    - `management.usgovcloudapi.net`（Azure 美国政府）
+  - `management.azure.com`（全球 Azure）
+  - `management.chinacloudapi.cn`（Azure 中国）
+  - `management.microsoftazure.de`（Azure 德国）
+  - `management.usgovcloudapi.net`（Azure 美国政府）
 - 登录终结点：
-    - `login.microsoftonline.com`（全球 Azure）
-    - `login.chinacloudapi.cn`（Azure 中国）
-    - `login.microsoftonline.de`（Azure 德国）
-    - `login.microsoftonline.us`（Azure 美国政府）
+  - `login.microsoftonline.com`（全球 Azure）
+  - `login.chinacloudapi.cn`（Azure 中国）
+  - `login.microsoftonline.de`（Azure 德国）
+  - `login.microsoftonline.us`（Azure 美国政府）
 - Graph 终结点：
-    - `graph.windows.net`（全球 Azure）
-    - `graph.chinacloudapi.cn`（Azure 中国）
-    - `graph.cloudapi.de`（Azure 德国）
-    - `graph.windows.net`（Azure 美国政府）
+  - `graph.windows.net`（全球 Azure）
+  - `graph.chinacloudapi.cn`（Azure 中国）
+  - `graph.cloudapi.de`（Azure 德国）
+  - `graph.windows.net`（Azure 美国政府）
 - Azure 存储终结点：
-    - `(blob|file|queue|table|dfs).core.windows.net`（全球 Azure）
-    - `(blob|file|queue|table|dfs).core.chinacloudapi.net`（Azure 中国）
-    - `(blob|file|queue|table|dfs).core.cloudapi.net`（Azure 德国）
-    - `(blob|file|queue|table|dfs).core.cloudapi.net`（Azure 美国政府）
-- 存储资源管理器更新：`storageexplorerpublish.blob.core.windows.net` 
+  - `(blob|file|queue|table|dfs).core.windows.net`（全球 Azure）
+  - `(blob|file|queue|table|dfs).core.chinacloudapi.cn`（Azure 中国）
+  - `(blob|file|queue|table|dfs).core.cloudapi.de`（Azure 德国）
+  - `(blob|file|queue|table|dfs).core.usgovcloudapi.net`（Azure 美国政府）
+- 存储资源管理器更新：`storageexplorerpublish.blob.core.windows.net`
 - Microsoft 链接转发：
-    - `aka.ms`
-    - `go.microsoft.com`
+  - `aka.ms`
+  - `go.microsoft.com`
 - 资源所在的任何自定义域、专用链接或特定于 Azure Stack 实例的终结点
 - 远程仿真器主机名
 
@@ -151,55 +152,55 @@ ms.locfileid: "113432421"
 - 检查和下载更新
 - 列出订阅
 - 存储帐户功能
-    - 正在列出
+  - 正在列出
 - Blob 功能
-    - 容器
-        - 创建
-        - 正在列出
-        - 管理存储的访问策略
-        - 更改公共访问级别
-        - 租用
-        - 属性
-        - 删除
-    - Blob
-        - 正在列出
-        - 统计信息
-        - 未删除
-    - ADLS Gen2 Blob
-        - 正在列出
-        - 统计信息
-        - 管理 ACL（仅限查看和修改现有实体）
-        - 传播 ACL
-        - 移动
-        - 重命名
-        - 创建文件夹
+  - 容器
+    - 创建
+    - 正在列出
+    - 管理存储的访问策略
+    - 更改公共访问级别
+    - 租用
+    - 属性
+    - 删除
+  - Blob
+    - 正在列出
+    - 统计信息
+    - 未删除
+  - ADLS Gen2 Blob
+    - 正在列出
+    - 统计信息
+    - 管理 ACL（仅限查看和修改现有实体）
+    - 传播 ACL
+    - 移动
+    - 重命名
+    - 创建文件夹
 - 队列功能
-    - 队列
-        - 创建
-        - 正在列出
-        - 管理访问策略
-        - 属性
-        - 删除
-        - 清除
-    - 队列消息
-        - 正在列出
-        - 移动
-        - 添加
-        - 取消排队
+  - 队列
+    - 创建
+    - 正在列出
+    - 管理访问策略
+    - 属性
+    - 删除
+    - 清除
+  - 队列消息
+    - 正在列出
+    - 移动
+    - 添加
+    - 取消排队
 - 文件共享功能
-    - 文件和文件夹
-        - 新建文件夹
-        - 属性
+  - 文件和文件夹
+    - 新建文件夹
+    - 属性
 - 磁盘功能
-    - 列出资源组
-    - 列出磁盘
-    - 上传磁盘
-    - 下载磁盘
-    - 复制磁盘
-    - 创建快照
-    - 删除磁盘
+  - 列出资源组
+  - 列出磁盘
+  - 上传磁盘
+  - 下载磁盘
+  - 复制磁盘
+  - 创建快照
+  - 删除磁盘
 
 ## <a name="next-steps"></a>后续步骤
 
-* [排查代理问题](./storage-explorer-troubleshooting.md#proxy-issues)
-* [排查证书问题](./storage-explorer-troubleshooting.md#ssl-certificate-issues)
+- [排查代理问题](./storage-explorer-troubleshooting.md#proxy-issues)
+- [排查证书问题](./storage-explorer-troubleshooting.md#ssl-certificate-issues)

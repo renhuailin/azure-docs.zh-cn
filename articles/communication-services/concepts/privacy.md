@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b8500ed6c43149e47a82b58e9b25a07ac7eef59
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 06817450cb0957e845b5b9fecde21d94080183ac
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258050"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060984"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
 
@@ -22,6 +22,9 @@ Azure 通信服务致力于帮助我们的客户满足他们的隐私和个人�
 ## <a name="data-residency"></a>数据驻留
 
 创建通信服务资源时，需要指定一个地理位置（非 Azure 数据中心）。 通信服务静态存储的所有聊天消息和资源数据都将保留在该地理位置（由通信服务在内部选择的数据中心中）。 数据可在异地传输或处理。 必需使用这些全局终结点来向最终用户提供高性能、低延迟的体验，无论他们位于何处。
+
+> [!NOTE]
+> 对于 PSTN 和短信，服务操作和计费所需的呼叫和消息数据记录可以存储在美国。
 
 ## <a name="data-collection"></a>数据收集
 
@@ -75,11 +78,11 @@ Azure 通信服务维护与通信服务资源关联的电话号码目录。 使�
 
 ### <a name="pstn-voice-calling"></a>PSTN 语音呼叫
 
-音频和视频通信由服务临时处理，不会在 Azure Monitor 日志以外的其他资源中保留任何数据。
+音频和视频通信由服务临时处理，不会在 Azure Monitor 日志以外的其他资源中保留任何呼叫处理数据。
 
 ### <a name="internet-voice-and-video-calling"></a>Internet 语音和视频呼叫
 
-音频和视频通信由服务临时处理，不会在 Azure Monitor 日志以外的其他资源中保留任何数据。
+音频和视频通信由服务临时处理，不会在 Azure Monitor 日志以外的其他资源中保留任何呼叫处理数据。
 
 ### <a name="call-recording"></a>通话记录
 

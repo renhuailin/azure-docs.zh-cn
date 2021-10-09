@@ -1,13 +1,9 @@
 ---
 title: 在 RHEL 上通过 Azure NetApp 文件部署具有备用节点的 SAP HANA 横向扩展系统 | Microsoft Docs
 description: 有关使用适用于 SAP 应用程序的 Azure NetApp 文件实现 Red Hat Enterprise Linux 上的 SAP NetWeaver 高可用性的指南
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: 4947585b1f20b8142c51d9d7e28c6d8504b6d6d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 204760390d47547e076384da349a84f70b0f8495
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669639"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552982"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统 
 
@@ -28,9 +24,8 @@ ms.locfileid: "101669639"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-azure-doc]:/azure/azure-netapp-files/
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -127,23 +122,19 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 
 有关 Azure NetApp 文件在各 Azure 区域的可用性的信息，请参阅[按 Azure 区域划分的 Azure NetApp 文件可用性][anf-avail-matrix]。  
 
-在部署 Azure NetApp 文件之前，请按照[注册 Azure NetApp 文件说明][anf-register]请求加入 Azure NetApp 文件。 
-
 ### <a name="deploy-azure-netapp-files-resources"></a>部署 Azure NetApp 文件资源  
 
-以下说明假定你已部署 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)。 Azure NetApp 文件资源和 VM（将装载 Azure NetApp 文件资源）必须部署在同一 Azure 虚拟网络或对等 Azure 虚拟网络中。  
+以下说明假定你已部署 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)。 Azure NetApp 文件资源和 VM（将装载 Azure NetApp 文件资源）必须部署在同一 Azure 虚拟网络或对等 Azure 虚拟网络中。   
 
-1. 如果尚未部署资源，请请求[加入 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-register.md)。  
+1. 按照[创建 NetApp 帐户](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)中的说明，在所选的 Azure 区域中创建一个 NetApp 帐户。  
 
-2. 按照[创建 NetApp 帐户](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)中的说明，在所选的 Azure 区域中创建一个 NetApp 帐户。  
-
-3. 按照[设置 Azure NetApp 文件容量池](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)中的说明，设置 Azure NetApp 文件容量池。  
+2. 按照[设置 Azure NetApp 文件容量池](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)中的说明，设置 Azure NetApp 文件容量池。  
 
    本文中介绍的 HANA 体系结构使用超高性能服务级别的单个 Azure NetApp 文件容量池。 对于 Azure 上的 HANA 工作负载，建议使用 Azure NetApp 文件超高性能或高级[服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)。  
 
-4. 按照[将子网委派给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)中的说明所述，将子网委派给 Azure NetApp 文件。  
+3. 按照[将子网委派给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)中的说明所述，将子网委派给 Azure NetApp 文件。  
 
-5. 按照[为 Azure NetApp 文件创建 NFS 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)中的说明，部署 Azure NetApp 文件卷。  
+4. 按照[为 Azure NetApp 文件创建 NFS 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)中的说明部署 Azure NetApp 文件卷。  
 
    部署卷时，请务必选择“NFSv4.1”版本。 将卷部署在指定的 Azure NetApp 文件[子网](/rest/api/virtualnetwork/subnets)中。 将自动分配 Azure NetApp 卷的 IP 地址。 
    
@@ -167,7 +158,7 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 - 所选的虚拟网络必须具有一个委派给 Azure NetApp 文件的子网。
 - Azure NetApp 文件卷的吞吐量取决于卷配额和服务级别，如 [Azure NetApp 文件的服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量满足 HANA 系统要求。  
 - 通过 Azure NetApp 文件[导出策略](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)，可以对允许的客户端、访问类型（读写、只读等）进行控制。 
-- Azure NetApp 文件功能尚没有区域感知性。 当前，该功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域的潜在延迟影响。  
+- Azure NetApp 文件功能尚没有区域感知性。 目前，该功能未在 Azure 区域中的所有可用性区域中部署。 请注意某些 Azure 区域的潜在延迟影响。  
 
 > [!IMPORTANT]
 > 对于 SAP HANA 工作负载，低延迟至关重要。 与 Microsoft 代表合作，确保虚拟机和 Azure NetApp 文件卷在邻近的地方部署。  
@@ -188,7 +179,7 @@ Azure NetApp 文件卷的吞吐量取决于卷大小和服务级别，如 [Azure
 
 为了符合数据和日志的 SAP 最低吞吐量要求以及 /hana/shared 准则，建议的大小为：
 
-| 音量 | 大小<br>高级存储层 | 大小<br>超级存储层 | 支持的 NFS 协议 |
+| 数据量(Volume) | 大小<br>高级存储层 | 大小<br>超级存储层 | 支持的 NFS 协议 |
 | --- | --- | --- | --- |
 | /hana/log/ | 4 TiB | 2 TiB | v4.1 |
 | /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
@@ -196,7 +187,7 @@ Azure NetApp 文件卷的吞吐量取决于卷大小和服务级别，如 [Azure
 
 本文中所述的使用 Azure NetApp 文件超高性能存储层的布局的 SAP HANA 配置为：
 
-| 音量 | 大小<br>超级存储层 | 支持的 NFS 协议 |
+| 数据量(Volume) | 大小<br>超级存储层 | 支持的 NFS 协议 |
 | --- | --- | --- |
 | /hana/log/mnt00001 | 2 TiB | v4.1 |
 | /hana/log/mnt00002 | 2 TiB | v4.1 |
@@ -573,7 +564,7 @@ Azure NetApp 文件卷的吞吐量取决于卷大小和服务级别，如 [Azure
      * 对于“根用户名”[root]：按 Enter 接受默认值
      * 对于主机 hanadb2 的角色：输入 1（表示辅助角色）
      * 对于主机 hanadb2 的“主机故障转移组”[默认值]：按 Enter 接受默认值
-     * 对于主机 hanadb2 的“存储分区号”[<<assign automatically>>]：按 Enter 接受默认值
+     * 对于主机 hanadb2 的“存储分区号”[\<\<assign automatically\>\>]：按 Enter 接受默认值
      * 对于主机 hanadb2 的“辅助角色组”[默认值]：按 Enter 接受默认值
      * 对于主机 hanadb3 的“选择角色”：输入 2（表示备用角色） 
      * 对于主机 hanadb3 的“主机故障转移组”[默认值]：按 Enter 接受默认值

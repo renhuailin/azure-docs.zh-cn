@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/30/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a2cf8ef27efb6e368390f23d4011e5dcb7c1e939
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 10c914847da1f466ae88ea4ec7ffe269560c8e5d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425043"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671082"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,6 +36,8 @@ Azure Cosmos DB 提供了三种方法来控制对数据的访问。
 
 > [!NOTE]
 > 以下步骤介绍为 SQL API 轮换和重新生成密钥的步骤。 如果使用的是其他 API，请参阅 [Azure Cosmos DB API for Mongo DB](database-security.md?tabs=mongo-api#key-rotation)、[Cassandra API](database-security.md?tabs=cassandra-api#key-rotation)、[Gremlin API](database-security.md?tabs=gremlin-api#key-rotation)或 [表 API](database-security.md?tabs=table-api#key-rotation) 部分。
+>
+> 若要监视帐户的密钥更新和密钥重新生成，请参阅文章[使用指标和警报监视密钥更新](monitor-account-key-updates.md)。
 
 密钥轮换和重新生成的过程非常简单。 首先，请确保应用程序始终使用主密钥或辅助密钥来访问你的 Azure Cosmos DB 帐户。 然后，执行以下所述的步骤。
 

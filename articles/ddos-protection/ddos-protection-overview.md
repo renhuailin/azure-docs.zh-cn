@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 2cee2aed6922a5a5d3f457c9f14fb54c07b18cd3
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 1aa06faa180f884a2b5848181f9b1a3a5a785c11
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310499"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665276"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -38,7 +38,7 @@ Azure DDoS 防护标准与应用程序设计最佳做法相结合，提供增强
 - **自适应优化：** 智能流量分析了解一段时间的应用程序流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。
 - **多层保护：** 与 Web 应用程序防火墙 (WAF) 一起部署时，DDoS 防护标准在网络层（由 Azure DDoS 防护标准提供支持的第 3 层和第 4 层）和应用程序层（由 WAF 提供支持的第 7 层）均提供保护。 WAF 产品/服务包括 Azure [应用程序网关 WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以及 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中提供的第三方 Web 应用程序防火墙产品/服务。
 - **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
-- **攻击分析**：在攻击期间以五分钟为增量获取详细报告，在攻击结束后获取完整摘要。 将缓解流日志流式传输到 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) 或离线安全信息和事件管理 (SIEM) 系统，以便在攻击期间进行近实时监视。
+- **攻击分析**：在攻击期间以五分钟为增量获取详细报告，在攻击结束后获取完整摘要。 将缓解流日志流式传输到 [Azure Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection) 或离线安全信息和事件管理 (SIEM) 系统，以便在攻击期间进行近实时监视。
 - **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。
 - **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报会集成到操作软件中，如 Microsoft Azure Monitor 日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
 - **DDoS 快速响应**：联系 DDoS 防护快速响应 (DRR) 团队，以获取攻击调查和分析帮助。 要了解详细信息，请参阅 [DDoS 快速响应](ddos-rapid-response.md)。
@@ -58,5 +58,5 @@ DDoS 防护标准面向[虚拟网络中部署的服务](../virtual-network/virtu
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [创建 DDoS 防护计划](manage-ddos-protection.md)
+* [快速入门：创建 DDoS 保护计划](manage-ddos-protection.md)
+* [学习模块：Azure DDoS 防护简介](/learn/modules/introduction-azure-ddos-protection/)

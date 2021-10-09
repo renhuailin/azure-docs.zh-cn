@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/11/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: bf52db4950fd14e15cbd52d94b2e4ffbb9d225bb
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dc687c2f3d14c2da02fa3ce5b3a3357292977771
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314541"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648955"
 ---
 # <a name="preview-flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>预览：Azure 中虚拟机规模集的灵活业务流程
 
@@ -54,13 +54,11 @@ ms.locfileid: "123314541"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在适用于规模集的灵活业务流程模式的预览期，使用以下步骤中的链接访问预览版 Azure 门户。 
-
-1. 通过 https://preview.portal.azure.com 登录到 Azure 门户。
+1. 通过 https://portal.azure.com 登录到 Azure 门户。
 1. 转到你的订阅。
 1. 选择订阅的名称，导航到你要在灵活业务流程模式下为其创建规模集的订阅的详细信息页。
 1. 在菜单中的“设置”下，选择“预览功能” 。
-1. 选择要启用的四个业务流程协调程序功能：VMOrchestratorSingleFD、VMOrchestratorMultiFD、VMScaleSetFlexPreview 和SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview   。
+1. 选择要启用的四个业务流程协调程序功能：VMOrchestratorSingleFD、VMOrchestratorMultiFD、VMScaleSetFlexPreview 和 SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview   。
 1. 选择“注册”  。
 
 为订阅注册功能后，通过将更改传播到计算资源提供程序来完成选用过程。 
@@ -86,6 +84,12 @@ Register-AzProviderFeature -FeatureName SkipPublicIpWriteRBACCheckForVMNetworkIn
 Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute
 ```
 
+为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。
 
@@ -102,6 +106,11 @@ az feature register --namespace Microsoft.Compute --name SkipPublicIpWriteRBACCh
 az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 ```
 
+为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
+```
 
 ## <a name="get-started-with-flexible-orchestration-mode"></a>开始使用灵活业务流程模式
 
@@ -123,22 +132,27 @@ az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 
     创建 VM 时，可以选择性地指定要将该 VM 添加到虚拟机规模集。 只能在创建 VM 时将其添加到规模集。
 
+灵活的业务流程模式可与支持[内存保留更新或实时迁移](../virtual-machines/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)的 VM SKU 一起使用，包括 Azure 中部署的 90% 的 IaaS VM。 从广义上说，这包括常规用途的型号系列，例如 B、D、E 和 F 系列 VM。 目前，灵活模式无法协调 VM SKU 或不支持内存保留更新的系列，包括 G、H、L、M、N 系列 VM。 你可以使用[计算资源 SKU API](/rest/api/compute/resource-skus/list) 来确定是否支持特定的 VM SKU。
+
+```azurecli-interactive
+az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[name, value]" -o table
+```
 
 ## <a name="explicit-network-outbound-connectivity-required"></a>需要显式网络出站连接 
 
 为了增强默认网络安全，带有灵活业务流程的虚拟机规模集要求通过以下方法之一，为通过自动缩放配置文件隐式创建的实例显式定义出站连接： 
 
 - 对于大多数方案，我们建议使用[已附加到子网的 NAT 网关](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md)。
-- 对于安全要求较高的方案，或者在使用 Azure 防火墙或网络虚拟设备 (NVA) 时，可以将自定义的用户定义路由指定为防火墙中的下一个跃点。 
-- 实例位于标准 SKU Azure 负载均衡器的后端池中。 
+- 对于安全要求较高的方案，或者在使用 Azure 防火墙或网络虚拟设备 (NVA) 时，你可以将自定义的用户定义路由指定为防火墙中的下一个跃点。 
+- 实例位于标准 SKU 实例 Azure 负载均衡器的后端池。 
 - 将公共 IP 地址附加到实例网络接口。 
 
-对于带有统一业务流程的单实例 VM 和虚拟机规模集，会自动提供出站连接。 
+使用具有统一业务流程的单实例 VM 和虚拟机规模集时，系统会自动提供出站连接。 
 
-需要显式出站连接的常见场景包括： 
+需要显式出站连接的常见方案包括： 
 
-- Windows VM 激活要求你已定义从 VM 实例到 Windows 激活密钥管理服务 (KMS) 的出站连接。 有关详细信息，请参阅[排查 Windows VM 激活问题](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)。  
-- 访问存储帐户或密钥保管库。 还可以通过[专用链接](../private-link/private-link-overview.md)来与 Azure 服务建立连接。 
+- Windows VM 激活要求你已定义从 VM 实例到 Windows 激活密钥管理服务 (KMS) 的出站连接。 有关详细信息，请参阅[排查 Windows VM 激活问题](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)。  
+- 访问存储帐户或 Key Vault。 你还可以通过[专用链接](../private-link/private-link-overview.md)与 Azure 服务建立连接。 
 
 有关定义安全出站连接的更多详细信息，请参阅 [Azure 中的默认出站访问](https://aka.ms/defaultoutboundaccess)。
 
@@ -207,7 +221,7 @@ az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 | 将 VM 分配到特定的容错域 | 是 |
 | 加速网络 | 否（在预览期） |
 | 来宾安全修补 | 是 |
-| 现成实例和定价  | 是，可以配置“现成”和“常规”优先级实例 |
+| “零星”实例和定价  | 是，可以配置“现成”和“常规”优先级实例 |
 | 混合操作系统 | 是，Linux 和 Windows 可以驻留在同一个灵活规模集中 |
 | 监视应用程序运行状况 | 应用程序运行状况扩展 |
 | UltraSSD 磁盘  | 是 |

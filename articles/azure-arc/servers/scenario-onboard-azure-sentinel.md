@@ -3,12 +3,12 @@ title: 将已启用 Azure Arc 的服务器加入 Azure Sentinel
 description: 了解如何将已启用 Azure Arc 的服务器添加到 Azure Sentinel，并主动监视其安全状态。
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: df3e6f9bb18618e490f482facf3c5837098f5001
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d37a6b62a5a3d95cc02090b4536db2076b2e1b5c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182927"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837226"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>将已启用 Azure Arc 的服务器加入 Azure Sentinel
 
@@ -26,11 +26,11 @@ ms.locfileid: "122182927"
 
 ## <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>将已启用 Azure Arc 的服务器加入 Azure Sentinel
 
-Azure Sentinel 附带了许多 Microsoft 解决方案的连接器，这些连接器立即可用并且提供实时集成。 对于计算机和虚拟机，可以安装用于收集日志并将其转发到 Azure Sentinel 的 Log Analytics 代理。 已启用 Arc 的服务器支持使用以下方法部署 Log Analytics 代理：
+Azure Sentinel 附带了许多 Microsoft 解决方案的连接器，这些连接器立即可用并且提供实时集成。 对于计算机和虚拟机，可以安装用于收集日志并将其转发到 Azure Sentinel 的 Log Analytics 代理。 已启用 Azure Arc 的服务器支持使用以下方法部署 Log Analytics 代理：
 
 - 使用 VM 扩展框架。
 
-    利用已启用 Azure Arc 的服务器中的这项功能，可以将 Log Analytics 代理 VM 扩展部署到非 Azure Windows 和/或 Linux 服务器。 在由已启用 Arc 的服务器管理的混合计算机或服务器上，可以使用以下方法来管理 VM 扩展：
+    利用已启用 Azure Arc 的服务器中的这项功能，可以将 Log Analytics 代理 VM 扩展部署到非 Azure Windows 和/或 Linux 服务器。 在由已启用 Azure Arc 的服务器管理的混合计算机或服务器上，可以使用以下方法来管理 VM 扩展：
 
     - [Azure 门户](manage-vm-extensions-portal.md)
     - [Azure CLI](manage-vm-extensions-cli.md)
@@ -39,12 +39,12 @@ Azure Sentinel 附带了许多 Microsoft 解决方案的连接器，这些连接
 
 - 使用 Azure Policy。
 
-    在使用此方法时，请使用 Azure Policy [将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略来审核已启用 Arc 的服务器是否已安装 Log Analytics 代理。 如果该代理未安装，则会使用修正任务来自动部署该代理。 或者，如果你计划通过用于 VM 的 Azure Monitor 来监视计算机，请改为使用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划来安装和配置 Log Analytics 代理。
+    在使用此方法时，请使用 Azure Policy [将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略来审核已启用 Azure Arc 的服务器是否已安装 Log Analytics 代理。 如果该代理未安装，则会使用修正任务来自动部署该代理。 或者，如果你计划通过用于 VM 的 Azure Monitor 来监视计算机，请改为使用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划来安装和配置 Log Analytics 代理。
 
 建议使用 Azure Policy 来安装适用于 Windows 或 Linux 的 Log Analytics 代理。
 
-在连接已启用 Arc 的服务器后，数据会开始流式传输到 Azure Sentinel，并会准备就绪供你开始使用。 你可以在[内置仪表板](/azure/azure-arc/servers/articles/sentinel/get-visibility.md)中查看日志并开始在 Log Analytics 中构建查询以[调查数据](/azure/azure-arc/servers/articles/sentinel/investigate-cases.md)。
+在连接已启用 Arc 的服务器后，数据会开始流式传输到 Azure Sentinel，并会准备就绪供你开始使用。 你可以在[内置仪表板](../../sentinel/get-visibility.md)中查看日志并开始在 Log Analytics 中构建查询以[调查数据](../../sentinel/investigate-cases.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-开始[使用 Azure Sentinel 检测威胁](/azure/azure-arc/servers/articles/sentinel/detect-threats-built-in.md)。
+开始[使用 Azure Sentinel 检测威胁](../../sentinel/detect-threats-built-in.md)。

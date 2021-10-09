@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/20/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 7468b544f36645609e1da344aef583c33157da7d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 680b383cee86ec4233579b9305c47e60ad4d5ff4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206155"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625330"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -102,11 +102,30 @@ FROM f
 ]
 ```
 
-不支持查询包含使用 `DISTINCT` 的聚合系统函数和子查询。 例如，不支持以下查询：
+只有特定的 SDK 版本支持使用聚合系统函数和具有 `DISTINCT` 的子查询的查询。 例如，只有以下特定的 SDK 版本支持具有以下特征的查询：
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+支持的 SDK 版本：
+
+|**SDK**|**支持的版本**|
+|-------|----------------------|
+|.NET SDK|3.18.0 或更高版本|
+|Java SDK|4.19.0 或更高版本|
+|Node.js SDK|不支持|
+|Python SDK|不支持|
+
+对于使用聚合系统函数和具有 `DISTINCT` 的子查询的查询，存在一些附加限制：
+
+|**限制**|**示例**|
+|-------|----------------------|
+|外部查询中的 WHERE 子句|SELECT COUNT(1) FROM (SELECT DISTINCT VALUE c.lastName FROM c) AS lastName WHERE lastName = "Smith"|
+|外部查询中的 ORDER BY 子句|SELECT VALUE COUNT(1) FROM (SELECT DISTINCT VALUE c.lastName FROM c) AS lastName ORDER BY lastName|
+|外部查询中的 GROUP BY 子句|SELECT COUNT(1) as annualCount, d.year FROM (SELECT DISTINCT c.year, c.id FROM c) AS d GROUP BY d.year|
+|嵌套的子查询|SELECT COUNT(1) FROM (SELECT y FROM (SELECT VALUE StringToNumber(SUBSTRING(d.date, 0, 4 FROM (SELECT DISTINCT c.date FROM c) d) AS y WHERE y > 2012)|
+|多个聚合|SELECT COUNT(1) as AnnualCount, SUM(d.sales) as TotalSales FROM (SELECT DISTINCT c.year, c.sales, c.id FROM c) AS d|
 
 ## <a name="like"></a>LIKE
 

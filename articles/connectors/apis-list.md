@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 09/13/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: f8db25d79784b1a2ca2b63ace57f729271271a43
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: cccd744e8c123cd9441ff9aca47d2341ea9d80fb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113218864"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679856"
 ---
 # <a name="about-connectors-in-azure-logic-apps"></a>关于 Azure 逻辑应用中的连接器
 
@@ -46,7 +46,7 @@ ms.locfileid: "113218864"
 
 ## <a name="connector-categories"></a>连接器类别
 
-在逻辑应用中，大多数触发器和操作都可在内置版本或托管连接器版本中使用 。 这两个版本都提供少量的触发器和操作。 可用版本取决于你创建的是多租户逻辑应用还是单租户逻辑应用，单租户逻辑应用当前仅在[单租户 Azure 逻辑应用](../logic-apps/single-tenant-overview-compare.md)中可用。
+在 Azure 逻辑应用中，大多数触发器和操作都可在内置版本或托管连接器版本中使用 。 这两个版本都提供少量的触发器和操作。 可用版本取决于你创建的是多租户逻辑应用还是单租户逻辑应用，单租户逻辑应用当前仅在[单租户 Azure 逻辑应用](../logic-apps/single-tenant-overview-compare.md)中可用。
 
 [内置触发器和操作](built-in.md)在逻辑应用运行时中以本机方式运行（无需创建连接），并执行以下类型的任务：
 
@@ -61,13 +61,27 @@ ms.locfileid: "113218864"
 - [集成帐户连接器](managed.md#integration-account-connectors)，支持企业对企业 (B2B) 通信方案。
 - [集成服务环境 (ISE) 连接器](managed.md#ise-connectors)，这是一小组[仅适用于 ISE 的托管连接器](#ise-and-connectors)。
 
+<a name="connection-configuration"></a>
+
 ## <a name="connection-configuration"></a>连接配置
 
-大多数连接器都要求先创建指向目标服务或系统的连接，然后才能在工作流中使用它的触发器或操作。 若要创建连接，必须使用帐户凭据（有时是其他连接信息）对标识进行身份验证。 例如，必须先为指向该帐户的连接授权，然后工作流才可访问和使用 Office 365 Outlook 电子邮件帐户。
+若要创建或管理逻辑应用资源和连接，你需要某些权限，这些权限是使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 通过角色提供的。 可以将内置或自定义角色分配给有权访问 Azure 订阅的成员。 Azure 逻辑应用具有以下特定角色：
+
+* [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)：允许管理逻辑应用，但不允许更改其访问权限。
+
+* [逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)：允许你读取、启用和禁用逻辑应用，但不能对其进行编辑或更新。
+
+* [参与者](../role-based-access-control/built-in-roles.md#contributor)：授予管理所有资源所需的完全访问权限，但不允许在 Azure RBAC 中分配角色、在 Azure 蓝图中管理分配或共享映像库。
+
+  例如，假设你必须使用并非你创建的逻辑应用，并对该逻辑应用的工作流使用的连接进行身份验证。 Azure 订阅需要具备包含该逻辑应用资源的资源组的参与者权限。 如果创建逻辑应用资源，则会自动具有参与者访问权限。
+
+大多数连接器都要求先创建到目标服务或系统的连接，然后才能在工作流中使用连接器的触发器或操作。 若要从逻辑应用工作流中创建连接，必须使用帐户凭据（有时是其他连接信息）对标识进行身份验证。 例如，必须先为指向该帐户的连接授权，然后工作流才可访问和使用 Office 365 Outlook 电子邮件帐户。 对于少量内置操作和托管连接器，可以[设置并使用托管标识进行身份验证](../logic-apps/create-managed-service-identity.md#triggers-actions-managed-identity)，而不必提供凭据。
+
+<a name="connection-security-encyrption"></a>
 
 ### <a name="connection-security-and-encryption"></a>连接安全和加密
 
-对于使用 Azure Active Directory (Azure AD) OAuth 的连接器（例如 Office 365、Salesforce 或 GitHub），必须登录其访问令牌[已加密](../security/fundamentals/encryption-overview.md)并安全存储在 Azure 机密中的服务。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样也会[进行加密并安全存储在 Azure 中](../security/fundamentals/encryption-overview.md)。
+连接配置详细信息（如服务器地址、用户名和密码、凭据以及机密）会[加密并存储在受保护的 Azure 环境中](../security/fundamentals/encryption-overview.md)。 此信息仅可用在逻辑应用资源中，并且仅可供对连接资源（使用链接访问检查强制实施）具有权限的客户端使用。 使用 Azure Active Directory 开放式身份验证 (Azure AD OAuth)（如 Office 365、Salesforce 和 GitHub）的连接要求你登录，但 Azure 逻辑应用仅存储访问令牌和刷新令牌作为机密，而不存储登录凭据。
 
 只要目标服务或系统允许，建立的连接就可以访问该服务或系统。 对于使用 Azure AD OAuth 连接的服务（例如 Office 365 和 Dynamics），逻辑应用服务会无限期地刷新访问令牌。 其他服务可能会限制在不刷新令牌的情况下，逻辑应用能够使用该令牌的时长。 某些操作（例如更改密码）会使所有访问令牌失效。
 
@@ -76,11 +90,13 @@ ms.locfileid: "113218864"
 > [!TIP]
 > 如果组织不允许通过逻辑应用连接器连接到特定资源，可使用 [Azure Policy](../governance/policy/overview.md) [阻止用于创建这些连接的功能](../logic-apps/block-connections-connectors.md)。
 
+若要详细了解如何保护逻辑应用和连接，请参阅[保护 Azure 逻辑应用中的访问和数据](../logic-apps/logic-apps-securing-a-logic-app.md)。
+
 <a name="firewall-access"></a>
 
 ### <a name="firewall-access-for-connections"></a>连接的防火墙访问
 
-如果使用限制流量的防火墙，而逻辑应用工作流需要通过该防火墙进行通信，需要将防火墙设置为允许访问该逻辑应用工作流所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)和[出站](../logic-apps/logic-apps-limits-and-config.md#outbound) IP 地址。 如果工作流还使用托管连接器（例如 Office 365 Outlook 连接器或 SQL 连接器），或使用自定义连接器，则防火墙还需要允许访问该逻辑应用所在的 Azure 区域中的所有[托管连接器出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 有关详细信息，请查看[防火墙配置](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)。
+如果使用限制流量的防火墙，而逻辑应用工作流需要通过该防火墙进行通信，需要将防火墙设置为允许访问该逻辑应用工作流所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)和[出站](../logic-apps/logic-apps-limits-and-config.md#outbound) IP 地址。 如果工作流还使用托管连接器（例如 Office 365 Outlook 连接器或 SQL 连接器），或使用自定义连接器，则防火墙还需要允许访问该逻辑应用所在的 Azure 区域中的所有[托管连接器出站 IP 地址](/connectors/common/outbound-ip-addresses#azure-logic-apps)。 有关详细信息，请查看[防火墙配置](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)。
 
 ## <a name="recurrence-behavior"></a>定期触发行为
 

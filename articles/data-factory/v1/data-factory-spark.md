@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73e20cfcdd0c56f2136b4ce658f7d2d2bed53022
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 65d7a45ab8e0432fa62d5e298fe50be50580804e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397313"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667248"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
 
@@ -83,7 +84,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 1. 创建数据工厂后，会看到“数据工厂”页，其中显示了数据工厂的内容。 如果未看到“数据工厂”页，请在仪表板上选择数据工厂的磁贴。
 
-    ![“数据工厂”边栏选项卡](./media/data-factory-spark/data-factory-blade.png)
+    :::image type="content" source="./media/data-factory-spark/data-factory-blade.png" alt-text="“数据工厂”边栏选项卡":::
 
 ### <a name="create-linked-services"></a>创建链接服务
 此步骤创建两个链接服务。 一个服务将 Spark 群集链接到数据工厂，另一个服务将存储链接到数据工厂。
@@ -95,11 +96,11 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 1. 选择“新建数据存储”并选择“Azure 存储”。 
 
-   ![新建数据存储](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
+   :::image type="content" source="./media/data-factory-spark/new-data-store-azure-storage-menu.png" alt-text="新建数据存储":::
 
 1. 编辑器中随即出现用于创建存储链接服务的 JSON 脚本。
 
-   ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
+   :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png" alt-text="AzureStorageLinkedService":::
 
 1. 将 **帐户名称** 和 **帐户密钥** 替换为存储帐户的名称和访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
@@ -110,7 +111,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 1. 在数据工厂编辑器中，选择“更多” > “新建计算” > “HDInsight 群集”。
 
-    ![创建 HDInsight 链接的服务](media/data-factory-spark/new-hdinsight-linked-service.png)
+    :::image type="content" source="media/data-factory-spark/new-hdinsight-linked-service.png" alt-text="创建 HDInsight 链接的服务":::
 
 1. 将以下代码片段复制并粘贴到“草稿 1”窗口。 在 JSON 编辑器中，执行以下步骤：
 
@@ -232,13 +233,13 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 ### <a name="monitor-a-pipeline"></a>监视管道
 1. 在“数据工厂”边栏选项卡上，选择“监视和管理”，在另一个选项卡中启动监视应用程序。
 
-    ![“监视和管理”磁贴](media/data-factory-spark/monitor-and-manage-tile.png)
+    :::image type="content" source="media/data-factory-spark/monitor-and-manage-tile.png" alt-text="“监视和管理”磁贴":::
 
 1. 在顶部将“开始时间”筛选器更改为“2/1/2017”，然后选择“应用”。
 
 1. 之所以只显示一个活动时段，是因为在管道的开始时间 (2017-02-01) 与结束时间 (2017-02-02) 之间只有一天。 确认数据切片处于“就绪”状态。
 
-    ![监视管道](media/data-factory-spark/monitor-and-manage-app.png)
+    :::image type="content" source="media/data-factory-spark/monitor-and-manage-app.png" alt-text="监视管道":::
 
 1. 在“活动窗口”列表中，选择一个活动运行可查看其详细信息。 如果存在错误，则会在右侧的窗格中看到关于该错误的详细信息。
 
@@ -248,7 +249,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 1. 选择“新建” > “PySpark”以启动新的 Notebook。 
 
-    ![Jupyter 新建 notebook](media/data-factory-spark/jupyter-new-book.png)
+    :::image type="content" source="media/data-factory-spark/jupyter-new-book.png" alt-text="Jupyter 新建 notebook":::
 
 1. 通过复制并粘贴以下文本，并在第二个语句结束时按 Shift+Enter 运行以下命令：
 
@@ -259,7 +260,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
     ```
 1. 确认看到来自 hvac 表的数据。
 
-    ![Jupyter 查询结果](media/data-factory-spark/jupyter-notebook-results.png)
+    :::image type="content" source="media/data-factory-spark/jupyter-notebook-results.png" alt-text="Jupyter 查询结果":::
 
 <!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
 有关详细说明，请参阅[运行 Spark SQL 查询](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)部分。
@@ -272,15 +273,15 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 1. 转到  `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster` 。
 
-    ![YARN UI 应用程序](media/data-factory-spark/yarnui-application.png)
+    :::image type="content" source="media/data-factory-spark/yarnui-application.png" alt-text="YARN UI 应用程序":::
 
 1. 针对某个运行尝试选择“日志”。
 
-    ![应用程序页面](media/data-factory-spark/yarn-applications.png)
+    :::image type="content" source="media/data-factory-spark/yarn-applications.png" alt-text="应用程序页面":::
 
 1. 将在日志页中看到以下附加的错误信息：
 
-    ![日志错误](media/data-factory-spark/yarnui-application-error.png)
+    :::image type="content" source="media/data-factory-spark/yarnui-application-error.png" alt-text="日志错误":::
 
 以下部分提供有关要在数据工厂中使用 Spark 群集和 Spark 活动的数据工厂实体的信息。
 
@@ -321,7 +322,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 下表描述了 JSON 定义中使用的 JSON 属性。
 
-| 属性 | 描述 | 必需 |
+| 属性 | 说明 | 必需 |
 | -------- | ----------- | -------- |
 | name | 管道中活动的名称。 | 是 |
 | description | 描述活动用途的文本。 | 否 |
@@ -341,7 +342,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 在 HDInsight 链接服务引用的 Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 Python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Blob 存储中的以下文件夹结构：
 
-| 路径 | 描述 | 必需 | 类型 |
+| 路径 | 说明 | 必需 | 类型 |
 | ---- | ----------- | -------- | ---- |
 | . | Spark 作业在存储链接服务中的根路径。 | 是 | 文件夹 |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径。 | 是 | 文件 |

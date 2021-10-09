@@ -8,12 +8,12 @@ ms.date: 07/06/2021
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: faa4c57a4fc5e75d0e6262833c27833e9069fb30
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 9def9f39e28851498c7bf87d5b6b2e7d0a26f2c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418709"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599404"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的应用程序
 
@@ -157,16 +157,16 @@ Spring Boot 版本 | Spring Cloud 版本
 > - 请将 Spring Boot 升级到 2.5.2 或 2.4.8，以解决以下 CVE 报告的问题：[CVE-2021-22119：使用 spring-security-oauth2-client 时出现拒绝服务攻击](https://tanzu.vmware.com/security/cve-2021-22119)。 如果使用的是 Spring Security，请将其升级到 5.5.1、5.4.7、5.3.10 或 5.2.11。
 > - 我们发现 Spring Boot 2.4.0 在应用与 Spring Cloud 服务注册表之间的 TLS 身份验证上存在问题，请使用 2.4.1 或更高版本。 如果坚持使用 2.4.0，请参阅[常见问题解答](./faq.md?pivots=programming-language-java#development)以获取解决方法。
 
-### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot 版本 2.2/2.3 的依赖项
+### <a name="dependencies-for-spring-boot-version-23"></a>Spring Boot 版本 2.3 的依赖项
 
-对于 Spring Boot 版本 2.2，请将以下依赖项添加到应用程序 POM 文件中。
+对于 Spring Boot 版本 2.3，请将以下依赖项添加到应用程序 POM 文件中。
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.4.RELEASE</version>
+        <version>2.3.4.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -183,9 +183,9 @@ Spring Boot 版本 | Spring Cloud 版本
     </dependencyManagement>
 ```
 
-### <a name="dependencies-for-spring-boot-version-24"></a>Spring Boot 版本 2.4 的依赖项
+### <a name="dependencies-for-spring-boot-version-2425"></a>Spring Boot 版本 2.4/2.5 的依赖项
 
-对于 Spring Boot 版本 2.2，请将以下依赖项添加到应用程序 POM 文件中。
+对于 Spring Boot 版本 2.4/2.5，请将以下依赖项添加到应用程序 POM 文件中。
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -292,41 +292,10 @@ public class GatewayApplication {
  > [!WARNING]
  > 请在配置属性中指定 `spring.jmx.enabled=true`。 否则，无法在 Azure 门户中直观显示指标。
 
-### <a name="distributed-tracing"></a>分布式跟踪
-
-还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 若要了解如何将 Application Insights 与 Azure Spring Cloud 配合使用，请参阅[有关分布式跟踪的文档](./how-to-distributed-tracing.md)。
-
-#### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
-
-在 pom.xml 文件的 dependencies 节中包括下面的 `spring-cloud-starter-sleuth` 和 `spring-cloud-starter-zipkin` 依赖项：
-
-```xml
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-sleuth</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-zipkin</artifactId>
-</dependency>
-```
-
-#### <a name="spring-boot-24"></a>Spring Boot 2.4
-
-在 pom.xml 文件的 dependencies 节中包括下面的 `spring-cloud-sleuth-zipkin` 依赖项：
-
-```xml
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-</dependency>
-```
-
 ## <a name="see-also"></a>另请参阅
 
 * [分析应用程序日志和指标](./diagnostic-services.md)
 * [设置配置服务器](./how-to-config-server.md)
-* [将分布式跟踪与 Azure Spring Cloud 配合使用](./how-to-distributed-tracing.md)
 * [Spring 快速入门指南](https://spring.io/quickstart)
 * [Spring Boot 文档](https://spring.io/projects/spring-boot)
 

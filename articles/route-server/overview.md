@@ -5,18 +5,21 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: overview
-ms.date: 09/01/2021
+ms.date: 09/27/2021
 ms.author: duau
-ms.openlocfilehash: f2c4a31f4c1c0ec53e76ffaf6f4670d9179e9505
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 34835f8f3e536b875c7eb4afd176ab00fb1f417c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436781"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091419"
 ---
 # <a name="what-is-azure-route-server"></a>什么是 Azure 路由服务器？ 
 
 Azure 路由服务器简化了网络虚拟设备 (NVA) 与虚拟网络之间的动态路由。 利用此功能，可以在 Azure 虚拟网络 (VNET) 中任何支持 BGP 路由协议的 NVA 与 Azure 软件定义的网络 (SDN) 之间，直接通过“边界网关协议 (BGP)”路由协议交换路由信息，而无需手动配置或维护路由表。 Azure 路由服务器是一项完全托管的服务，并且配置为具有高可用性。
+
+> [!IMPORTANT]
+> 如果在 9 月 1 日之前创建了 Azure 路由服务器，并且未关联公共 IP 地址，则需要重新创建路由服务器，以便它可以获取 IP 地址用于管理目的。
 
 ## <a name="how-does-it-work"></a>它是如何工作的？
 

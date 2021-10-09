@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 安全使用 Azure 机器学习：身份验证、授权、网络安全性、数据加密和监视。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
-ms.author: jmartens
+ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/02/2021
-ms.openlocfilehash: 27bd8124c0b78d1fecd1f7027104c3b5c9b8a8a1
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/22/2021
+ms.openlocfilehash: 5a6ee4c0e1a73642323dab67efbfc4b0efe1f1aa
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541518"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426956"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure 机器学习的企业安全性和治理
 
@@ -62,9 +62,9 @@ ms.locfileid: "111541518"
 > 
 > 如果工作区已附加 AKS 群集，并且这些群集是在 2021 年 5 月 14 日之前创建的，请不要删除此 Azure AD 帐户。 在这种情况下，必须先删除并重新创建 AKS 群集，然后才能删除 Azure AD 帐户。
 
-你可以将工作区预配为使用用户分配的托管标识，并将其他角色授予托管标识，以便访问所需目标（例如，访问你自己的 Azure 容器注册表以获取基础 Docker 映像）。 有关详细信息，请参阅[使用托管标识进行访问控制](how-to-use-managed-identities.md)。
+可以将工作区预配为使用用户分配的托管标识，并将其他角色授予托管标识，以便访问所需目标（例如，访问你自己的 Azure 容器注册表以获取基础 Docker 映像）。 有关详细信息，请参阅[使用托管标识进行访问控制](how-to-use-managed-identities.md)。
 
-你还可以将托管标识配置为与 Azure 机器学习计算群集配合使用。 此托管标识独立于工作区托管标识。 使用计算群集时，可以使用托管标识来访问运行训练作业的用户可能无权访问的资源，例如安全数据存储。 有关详细信息，请参阅[对 Azure 上的存储服务进行基于标识的数据访问](how-to-identity-based-data-access.md)。
+还可以将托管标识配置为与 Azure 机器学习计算群集配合使用。 此托管标识独立于工作区托管标识。 使用计算群集时，可以使用托管标识来访问运行训练作业的用户可能无权访问的资源，例如安全数据存储。 有关详细信息，请参阅[对 Azure 上的存储服务进行基于标识的数据访问](how-to-identity-based-data-access.md)。
 
 > [!TIP]
 > 在 Azure 机器学习中使用 Azure AD 和 Azure RBAC 有一些例外：
@@ -115,6 +115,7 @@ Azure 机器学习使用 Azure 平台上的各种计算资源和数据存储。 
 
 ## <a name="next-steps"></a>后续步骤
 
+* [Azure 机器学习企业安全最佳做法](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-enterprise-security)
 * [使用 TLS 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [将 Azure 机器学习与 Azure 防火墙配合使用](how-to-access-azureml-behind-firewall.md)

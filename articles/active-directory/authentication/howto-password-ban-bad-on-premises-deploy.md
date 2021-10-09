@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81e40a295d9572fb38a1289d4bdf661095b9ca7a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2bb017cd4532d4739b563d4a22a50a731268407f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449116"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759712"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>计划和部署本地 Azure Active Directory 密码保护
 
@@ -95,6 +95,9 @@ Azure AD 密码保护 DC 代理软件的设计缓解了与高可用性相关的�
     | --- | --- |
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
+
+> [!NOTE]
+> 本文不讨论某些终结点（如 CRL 终结点）。 有关所有受支持终结点的列表，请参阅 [Microsoft 365 URL 和 IP 地址范围](/microsoft-365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)。
 
 ### <a name="azure-ad-password-protection-dc-agent"></a>Azure AD 密码保护 DC 代理
 

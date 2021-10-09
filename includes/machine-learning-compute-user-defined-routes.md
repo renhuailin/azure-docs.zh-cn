@@ -2,23 +2,27 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 08/12/2021
+ms.date: 08/26/2021
 ms.author: larryfr
-ms.openlocfilehash: 8f60a29adcdf8e679a523748a97a24ba2f06cbdd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e8f3a2b9fbca1a0b0756a4e1ec2e98212d4f0399
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739143"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633958"
 ---
-使用 Azure 机器学习计算实例或计算群集时，允许来自 Azure Batch 管理和 Azure 机器学习服务的入站流量 。 为此流量创建用户定义的路由时，可以使用 IP 地址或服务标记来路由流量 。
+在使用 Azure 机器学习计算实例（具有公共 IP）或计算群集时，允许来自 Azure Batch 管理和 Azure 机器学习服务的入站流量 。 无公共 IP 的计算实例（预览版）不需要此入站通信。 系统会为你动态创建允许此流量的网络安全组，但如果你有防火墙，则可能还需要创建用户定义的路由 (UDR)。 在为此流量创建 UDR 时，可以使用 IP 地址或服务标记来路由该流量 。
 
 > [!IMPORTANT]
-> 结合使用服务标记与用户定义的路由目前处于预览阶段，可能不完全受支持。 有关详细信息，请参阅[虚拟网络路由](/azure/virtual-network/virtual-networks-udr-overview.md#service-tags-for-user-defined-routes-preview)。
+> 结合使用服务标记与用户定义的路由目前处于预览阶段，可能不完全受支持。 有关详细信息，请参阅[虚拟网络路由](../articles/virtual-network/virtual-networks-udr-overview.md#service-tags-for-user-defined-routes-preview)。
+
+> [!TIP]
+> 虽然没有公共 IP 的计算实例（预览功能）不需要此入站流量的 UDR，但如果你还会使用计算群集或具有公共 IP 的计算实例，则仍将需要这些 UDR。
+
 
 # <a name="ip-address-routes"></a>[IP 地址路由](#tab/ipaddress)
 
-对于 Azure 机器学习服务，必须添加主要和次要区域的 IP 地址 。 若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](/azure/best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于“美国东部 2”，则次要区域是“美国中部”。 
+对于 Azure 机器学习服务，必须添加主要和次要区域的 IP 地址 。 若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](../articles/best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于“美国东部 2”，则次要区域是“美国中部”。 
 
 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
@@ -63,4 +67,4 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 
 ---
 
-有关配置 UDR 的信息，请参阅[使用路由表路由网络流量](/azure/virtual-network/tutorial-create-route-table-portal.md)。
+有关配置 UDR 的信息，请参阅[使用路由表路由网络流量](/azure/virtual-network/tutorial-create-route-table-portal)。

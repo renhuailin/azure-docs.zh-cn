@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: c14af3698826405244b65bc8fef6f241f7f0032f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d1f276723b6ea48aeed474c1893fb5cfe3ad881
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181317"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808210"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tribeloo"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Tribeloo 的集成
 
@@ -37,7 +37,8 @@ ms.locfileid: "96181317"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Tribeloo 支持 **SP** 发起的 SSO
+* Tribeloo 支持 SP 发起的 SSO。
+* Tribeloo 支持[自动用户预配](tribeloo-provisioning-tutorial.md)。
 
 ## <a name="adding-tribeloo-from-the-gallery"></a>从库中添加 Tribeloo
 
@@ -49,7 +50,6 @@ ms.locfileid: "96181317"
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Tribeloo” 。
 1. 在结果面板中选择“Tribeloo”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-tribeloo"></a>配置并测试 Tribeloo 的 Azure AD SSO
 
@@ -70,7 +70,7 @@ ms.locfileid: "96181317"
 
 1. 在 Azure 门户的“Tribeloo”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -85,6 +85,7 @@ ms.locfileid: "96181317"
 1. 在“设置 Tribeloo”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -117,6 +118,8 @@ ms.locfileid: "96181317"
 
 在本部分，我们将在 Tribeloo 中创建名为 Britta Simon 的用户。 请与 [Tribeloo 支持团队](mailto:support@tribeloo.com)协作，将用户添加到 Tribeloo 平台。 使用单一登录前，必须先创建并激活用户。
 
+Tribeloo 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./tribeloo-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -125,8 +128,7 @@ ms.locfileid: "96181317"
 
 * 直接转到 Tribeloo 登录 URL，并在其中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Tribeloo 磁贴时，会重定向到 Tribeloo 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Tribeloo 磁贴时，会重定向到 Tribeloo 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

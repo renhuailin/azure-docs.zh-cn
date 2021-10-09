@@ -1,25 +1,26 @@
 ---
 title: 映射数据流中的透视转换
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用 Azure 数据工厂映射数据流透视转换将数据从行透视到列
+description: 使用 Azure 数据工厂和 Synapse Analytics 管道中的映射数据流透视转换将数据从行透视到列。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 07/17/2020
-ms.openlocfilehash: bb46b41e72d98be0a3b474f109adfa7303bd8f2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: c6aa95864ad12d5776a8e90eb2b1bd8dac1f04a2
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638613"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059922"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>映射数据流中的透视转换
 
-
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 借助透视转换，可根据单个列的唯一行值创建多个列。 透视是一种聚合转换，需选择分组依据列并使用[聚合函数](data-flow-expression-functions.md#aggregate-functions)生成透视键。
 
@@ -31,7 +32,7 @@ ms.locfileid: "122638613"
 
 ### <a name="group-by"></a>Group by
 
-![Group by 选项](media/data-flow/pivot2.png "Group By 选项")
+:::image type="content" source="media/data-flow/pivot2.png" alt-text="Group by 选项":::
 
 选择要在其基础上聚合已透视列的列。 输出数据会将所有具有相同分组依据值的行分组为一行。 在已透视列中完成的聚合将在每个组上进行。
 
@@ -39,7 +40,7 @@ ms.locfileid: "122638613"
 
 ### <a name="pivot-key"></a>透视键
 
-![透视键](media/data-flow/pivot3.png "透视键")
+:::image type="content" source="media/data-flow/pivot3.png" alt-text="透视键":::
 
 透视键是将其行值透视到新列的列。 默认情况下，透视转换将为每个唯一的行值创建一个新列。
 
@@ -47,7 +48,7 @@ ms.locfileid: "122638613"
 
 ### <a name="pivoted-columns"></a>已透视列
 
-![已透视列](media/data-flow/pivot4.png "已透视列")
+:::image type="content" source="media/data-flow/pivot4.png" alt-text="已透视列":::
 
 对于变成列的每个唯一透视键值，将为每个组生成一个聚合的行值。 你可以为每个透视键创建多个列。 每个透视列必须至少包含一个[聚合函数](data-flow-expression-functions.md#aggregate-functions)。
 
@@ -61,7 +62,7 @@ ms.locfileid: "122638613"
 
 以下帮助图形显示了不同透视组件之间的交互方式
 
-![透视帮助图形](media/data-flow/pivot5.png "透视帮助图形")
+:::image type="content" source="media/data-flow/pivot5.png" alt-text="透视帮助图形":::
 
 ## <a name="pivot-metadata"></a>透视元数据
 
@@ -73,7 +74,7 @@ ms.locfileid: "122638613"
 
 透视基于行值动态生成新的列名称。 可以将这些新列添加到元数据中，以便稍后在数据流中引用。 为此，请使用数据预览中的[映射偏移列](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action)快速操作。 
 
-![透视列](media/data-flow/newpivot1.png "映射偏移透视列")
+:::image type="content" source="media/data-flow/newpivot1.png" alt-text="透视列":::
 
 ### <a name="sinking-pivoted-columns"></a>接收已透视列
 

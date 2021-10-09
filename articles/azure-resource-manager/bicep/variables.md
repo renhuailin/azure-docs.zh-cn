@@ -4,13 +4,13 @@ description: 说明如何在 Bicep 中定义变量
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: a652d2efb3f97791d075f078637801e4d20aad47
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/10/2021
+ms.openlocfilehash: 040e40d20fe81bb72493f087c9d0583a911b1ee7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425049"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733338"
 ---
 # <a name="variables-in-bicep"></a>Bicep 中的变量
 
@@ -49,6 +49,8 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 
 :::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variables.bicep":::
 
+可以使用循环来声明具有动态元素数的数组变量。 有关详细信息，请参阅 [Bicep 中的变量迭代](loop-variables.md)。
+
 ## <a name="use-variable"></a>使用变量
 
 以下示例演示如何使用资源属性的变量。 通过提供变量的名称 `storageName` 来引用变量的值。
@@ -83,3 +85,4 @@ output stgOutput string = storageName
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解变量的可用属性，请参阅[了解 Bicep 文件的结构和语法](file.md)。
+- 若要了解如何在变量声明中使用循环，请参阅 [Bicep 中的变量迭代](loop-variables.md)。

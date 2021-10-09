@@ -2,13 +2,13 @@
 title: 模板函数 - 逻辑
 description: 介绍 Azure 资源管理器模板（ARM 模板）中用于确定逻辑值的函数。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: c69e10b660d5b7cbf768ea31fda6678d07053224
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/09/2021
+ms.openlocfilehash: b94f7aa38c708278f2ccf54a5592016873fcd285
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959638"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744353"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
@@ -30,13 +30,13 @@ ms.locfileid: "111959638"
 
 Bicep 不支持 `and` 函数，请改用 [&& 运算符](../bicep/operators-logical.md#and-)。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
-| 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
+| 更多参数 |否 |boolean |用于检查是否为 true 的更多参数。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -44,29 +44,9 @@ Bicep 不支持 `and` 函数，请改用 [&& 运算符](../bicep/operators-logic
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)演示如何使用逻辑函数。
+以下示例演示如何使用逻辑函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "andExampleOutput": {
-      "type": "bool",
-      "value": "[and(bool('true'), bool('false'))]"
-    },
-    "orExampleOutput": {
-      "type": "bool",
-      "value": "[or(bool('true'), bool('false'))]"
-    },
-    "notExampleOutput": {
-      "type": "bool",
-      "value": "[not(bool('true'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/andornot.json":::
 
 前述示例的输出为：
 
@@ -84,7 +64,7 @@ Bicep 不支持 `and` 函数，请改用 [&& 运算符](../bicep/operators-logic
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
@@ -98,33 +78,9 @@ Bicep 不支持 `and` 函数，请改用 [&& 运算符](../bicep/operators-logic
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json)演示如何对字符串或整数使用 bool。
+以下示例演示如何对字符串或整数使用 bool。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "trueString": {
-      "type": "bool",
-      "value": "[bool('true')]",
-    },
-    "falseString": {
-      "type": "bool",
-      "value": "[bool('false')]"
-    },
-    "trueInt": {
-      "type": "bool",
-      "value": "[bool(1)]"
-    },
-    "falseInt": {
-      "type": "bool",
-      "value": "[bool(0)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/bool.json":::
 
 上述示例中使用默认值的输出为：
 
@@ -155,19 +111,7 @@ false 函数不接受任何参数。
 
 下面的示例返回一个 false 输出值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "falseOutput": {
-      "type": "bool",
-      "value": "[false()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/false.json":::
 
 前述示例的输出为：
 
@@ -185,7 +129,7 @@ Bicep 不支持 `if` 函数。 请改用 [?: 运算符](../bicep/operators-logic
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
@@ -201,30 +145,9 @@ Bicep 不支持 `if` 函数。 请改用 [?: 运算符](../bicep/operators-logic
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json)演示如何使用 `if` 函数。
+以下示例演示如何使用 `if` 函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-  ],
-  "outputs": {
-    "yesOutput": {
-      "type": "string",
-      "value": "[if(equals('a', 'a'), 'yes', 'no')]"
-    },
-    "noOutput": {
-      "type": "string",
-      "value": "[if(equals('a', 'b'), 'yes', 'no')]"
-    },
-    "objectOutput": {
-      "type": "object",
-      "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/if.json":::
 
 前述示例的输出为：
 
@@ -290,9 +213,9 @@ Bicep 不支持 `if` 函数。 请改用 [?: 运算符](../bicep/operators-logic
 
 Bicep 不支持 `not` 函数，请改用 [! 运算符](../bicep/operators-logical.md#not-)。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要转换的值。 |
 
@@ -302,29 +225,9 @@ Bicep 不支持 `not` 函数，请改用 [! 运算符](../bicep/operators-logica
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)演示如何使用逻辑函数。
+以下示例演示如何使用逻辑函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "andExampleOutput": {
-      "type": "bool",
-      "value": "[and(bool('true'), bool('false'))]",
-    },
-    "orExampleOutput": {
-      "type": "bool",
-      "value": "[or(bool('true'), bool('false'))]"
-    },
-    "notExampleOutput": {
-      "type": "bool",
-      "value": "[not(bool('true'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/andornot.json":::
 
 前述示例的输出为：
 
@@ -334,22 +237,9 @@ Bicep 不支持 `not` 函数，请改用 [! 运算符](../bicep/operators-logica
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-以下 [示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)结合使用 **not** 和 [equals](template-functions-comparison.md#equals)。
+以下示例结合使用 `not` 和 [equals](template-functions-comparison.md#equals)。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-  ],
-  "outputs": {
-    "checkNotEquals": {
-      "type": "bool",
-      "value": "[not(equals(1, 2))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/not-equals.json":::
 
 前述示例的输出为：
 
@@ -365,13 +255,13 @@ Bicep 不支持 `not` 函数，请改用 [! 运算符](../bicep/operators-logica
 
 Bicep 不支持 `or` 函数，请改用 [|| 运算符](../bicep/operators-logical.md#or-)。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
-| 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
+| 更多参数 |否 |boolean |用于检查是否为 true 的更多参数。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -379,29 +269,9 @@ Bicep 不支持 `or` 函数，请改用 [|| 运算符](../bicep/operators-logica
 
 ### <a name="examples"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)演示如何使用逻辑函数。
+以下示例演示如何使用逻辑函数。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "andExampleOutput": {
-      "value": "[and(bool('true'), bool('false'))]",
-      "type": "bool"
-    },
-    "orExampleOutput": {
-      "value": "[or(bool('true'), bool('false'))]",
-      "type": "bool"
-    },
-    "notExampleOutput": {
-      "value": "[not(bool('true'))]",
-      "type": "bool"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/andornot.json":::
 
 前述示例的输出为：
 
@@ -431,19 +301,7 @@ true 函数不接受任何参数。
 
 下面的示例返回一个 true 输出值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "trueOutput": {
-      "type": "bool",
-      "value": "[true()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/true.json":::
 
 前述示例的输出为：
 

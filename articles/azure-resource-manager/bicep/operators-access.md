@@ -4,13 +4,13 @@ description: 介绍 Bicep 资源访问运算符和属性访问运算符。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: b5eebb9b5dd6d39ae790b8fda7133e94ecd0cdb5
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/10/2021
+ms.openlocfilehash: f3ed1ca46c2dfbcab8bfbdc720ff7ab448cbc742
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224275"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744461"
 ---
 # <a name="bicep-accessor-operators"></a>Bicep 访问器运算符
 
@@ -25,11 +25,15 @@ ms.locfileid: "123224275"
 
 ## <a name="index-accessor"></a>索引访问器
 
-`array[index]`
+`array[integerIndex]`
 
-`object['index']`
+`object['stringIndex']`
 
-要获取数组中的元素，请使用 `[index]` 并为索引提供一个整数。
+使用索引访问器从数组中获取元素或从对象中获取属性。
+
+对于数组，以整数形式提供索引。 该整数与要检索的元素的从零开始的位置相匹配。
+
+对于对象，以字符串形式提供索引。 该字符串与要检索的对象的名称相匹配。
 
 以下示例获取数组中的元素。
 
@@ -49,7 +53,7 @@ output accessorResult string = arrayVar[1]
 | ---- | ---- | ---- |
 | accessorResult | 字符串 | 'Contoso' |
 
-也可使用索引访问器按名称获取对象属性。 必须为索引使用字符串，而不是整数。 以下示例获取对象的属性。
+下一个示例获取对象的属性。
 
 ```bicep
 var environmentSettings = {

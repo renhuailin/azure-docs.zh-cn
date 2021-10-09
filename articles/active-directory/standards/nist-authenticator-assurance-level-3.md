@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d95bfadd23e1a8e0d2db70952c81667d24dc4230
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: e8821d2c3390ddfd07c7230b20e27b46330e6229
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771020"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816152"
 ---
 # <a name="achieve-nist-authenticator-assurance-level-3-by-using-azure-active-directory"></a>使用 Azure Active Directory 满足 NIST 验证器保证等级 3 要求
 
@@ -38,7 +38,7 @@ Microsoft 提供的身份验证方法有助于满足所需的 NIST 验证器类�
 | FIDO2 安全密钥<br>或<br> 智能卡（Active Directory 联合身份验证服务 [AD FS]）<br>或<br>带硬件 TPM 的 Windows Hello 企业版| 多重加密硬件 |
 | 其他方法|   |
 | 密码<br> 和<br>（已联接硬件 TPM 的混合 Azure AD <br>或 <br> 已联接硬件 TPM 的 Azure AD）| 记住的密码<br>和<br> 单因素加密硬件 |
-| 密码 <br>和<br>（单因素一次性密码硬件（来自 OTP 制造商） <br>或<br>已联接软件 TPM 的混合 Azure AD <br>或 <br> 已联接软件 TPM 的 Azure AD <br>或<br> 兼容的托管设备）| 记住的密码 <br>和<br>单因素一次性密码硬件<br> 和<br>单因素加密软件 |
+| 密码 <br>和<br>单因素一次性密码硬件（来自 OTP 制造商） <br>和<br>（已联接软件 TPM 的混合 Azure AD <br>或 <br> 已联接软件 TPM 的 Azure AD <br>或<br> 兼容的托管设备）| 记住的密码 <br>和<br>单因素一次性密码硬件<br> 和<br>单因素加密软件 |
 
 ### <a name="our-recommendations"></a>我们的建议 
 

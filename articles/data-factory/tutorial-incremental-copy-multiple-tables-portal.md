@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 75ddd0ebf1a4d796cf59f087399ea94957916349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a961b008406c487b1543ee827fe1c33d3e435645
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638410"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767434"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 
@@ -58,7 +58,7 @@ ms.locfileid: "122638410"
 
     下面是高级解决方案示意图： 
 
-    ![以增量方式加载数据](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png" alt-text="以增量方式加载数据":::
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -234,7 +234,7 @@ END
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 2. 在左侧菜单中，选择“创建资源” > “集成” > “数据工厂”  ： 
    
-   ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="在“新建”窗格中选择“数据工厂”":::
 
 3. 在“新建数据工厂”页中，输入 ADFMultiIncCopyTutorialDF 作为 **名称**。  
  
@@ -262,11 +262,11 @@ END
 
 1. 在 Azure 数据工厂 UI 的主页上，从最左侧的窗格选择[“管理”选项卡](./author-management-hub.md)。
 
-   ![主页“管理”按钮](media/doc-common-process/get-started-page-manage-button.png)
+   :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="主页“管理”按钮":::
 
 1. 在左窗格中选择“集成运行时”，然后选择“+ 新建” 。
 
-   ![创建集成运行时](media/doc-common-process/manage-new-integration-runtime.png)
+   :::image type="content" source="media/doc-common-process/manage-new-integration-runtime.png" alt-text="创建集成运行时":::
 
 1. 在“Integration Runtime 安装”窗口中，选择“执行数据移动并将活动分发到外部计算”，然后单击“继续”。   
 
@@ -275,10 +275,10 @@ END
 
 1. 在“选项 1: 快速安装”部分中单击“单击此处对此计算机启动快速安装” 。 
 
-   ![单击“快速安装”链接](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png" alt-text="单击“快速安装”链接":::
 1. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。  
 
-   ![集成运行时安装 - 成功](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png" alt-text="集成运行时安装 - 成功":::
 1. 在 Web 浏览器中的“集成运行时安装”窗口中，单击“完成”。  
 
  
@@ -302,7 +302,7 @@ END
     1. 对于“服务器名称”，请输入装有 SQL Server 数据库的计算机的名称。
     1. 对于“数据库名称”，请输入 SQL Server 中包含源数据的数据库的名称。 已按照先决条件创建一个表并将数据插入到此数据库中。 
     1. 对于“身份验证类型”，请选择需要用于连接到数据库的 **身份验证的类型**。 
-    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 例如 `mydomain\\myuser`。
+    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 示例为 `mydomain\\myuser`。
     1. 至于“密码”，请输入用户的 **密码**。 
     1. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
     1. 若要保存链接服务，请单击“完成”。
@@ -324,7 +324,7 @@ END
 
 1. 确认在列表中看到两个链接服务。 
    
-    ![两个链接服务](./media/tutorial-incremental-copy-multiple-tables-portal/two-linked-services.png) 
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/two-linked-services.png" alt-text="两个链接服务"::: 
 
 ## <a name="create-datasets"></a>创建数据集
 在此步骤中，请创建多个数据集，分别表示数据源、数据目标以及用于存储水印的位置。
@@ -339,7 +339,7 @@ END
 
 1. 在“属性”窗口中切换到“连接”选项卡，然后选择 **SqlServerLinkedService** 作为“链接服务”。  不要选择此处的表。 管道中的 Copy 活动使用 SQL 查询来加载数据，而不是加载整个表。
 
-   ![源数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-connection.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-connection.png" alt-text="源数据集 - 连接":::
 
 
 ### <a name="create-a-sink-dataset"></a>创建接收器数据集
@@ -354,14 +354,14 @@ END
     1. 在“创建/更新参数”部分单击“新建”。  
     1. 输入 **SinkTableName** 作为 **名称**，输入 **字符串** 作为 **类型**。 此数据集采用 **SinkTableName** 作为参数。 SinkTableName 参数由管道在运行时动态设置。 管道中的 ForEach 活动循环访问一个包含表名的列表，每一次迭代都将表名传递到此数据集。
    
-        ![接收器数据集 - 属性](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png" alt-text="接收器数据集 - 属性":::
 1. 在“属性”窗口中切换到“连接”选项卡，然后选择 **AzureSqlDatabaseLinkedService** 作为“链接服务”。  对于“表”属性，单击“添加动态内容”。   
     
 1. 在“添加动态内容”窗口的“参数”部分中选择 **SinkTableName**。  
  
 1. 单击“完成”后，可以看到表名为“@dataset().SinkTableName”。
 
-   ![接收器数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png" alt-text="接收器数据集 - 连接":::
 
 ### <a name="create-a-dataset-for-a-watermark"></a>为水印创建数据集
 在此步骤中，创建用于存储高水印值的数据集。 
@@ -376,7 +376,7 @@ END
     1. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
     1. 对于“表”，请选择 **[dbo].[watermarktable]** 。
 
-        ![水印数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png" alt-text="水印数据集 - 连接":::
 
 ## <a name="create-a-pipeline"></a>创建管道
 此管道使用表名列表作为参数。 ForEach 活动循环访问包含表名的列表，并执行以下操作： 
@@ -405,7 +405,7 @@ END
 
 1. 切换到“设置”选项卡，输入 `@pipeline().parameters.tableList` 作为 **项**。 ForEach 活动循环访问一系列表，并执行增量复制操作。 
 
-    ![ForEach 活动 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png" alt-text="ForEach 活动 - 设置":::
 
 1. 在管道中选择 **ForEach** 活动（如果尚未选择）。 单击“编辑(铅笔图标)”按钮。
 
@@ -421,7 +421,7 @@ END
         select * from watermarktable where TableName  =  '@{item().TABLE_NAME}'
         ```
 
-        ![第一个查找活动 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png" alt-text="第一个查找活动 - 设置":::
 1. 从“活动”工具箱拖放 **查找** 活动，然后输入 **LookupNewWaterMarkActivity** 作为 **名称**。
         
 1. 切换到“设置”选项卡。
@@ -434,12 +434,12 @@ END
         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
         ```
     
-        ![第二个查找活动 - 设置](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png" alt-text="第二个查找活动 - 设置":::
 1. 从“活动”工具箱拖放 **复制** 活动，然后输入 **IncrementalCopyActivity** 作为 **名称**。 
 
 1. 逐个地将“查找”活动连接到“复制”活动。  若要进行连接，可以开始将附加到“查找”活动的 **绿色** 框拖放到“复制”活动。 “复制”活动的边框颜色变为 **蓝色** 时，松开鼠标按键。
 
-    ![将“查找”活动连接到“复制”活动](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png" alt-text="将“查找”活动连接到“复制”活动":::
 1. 选择管道中的“复制”活动。 切换到“属性”窗口中的“源”选项卡。  
 
     1. 为“源数据集”选择“SourceDataset”。  
@@ -450,7 +450,7 @@ END
         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
         ```
 
-        ![复制活动 - 源设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png" alt-text="复制活动 - 源设置":::
 1. 切换到“接收器”选项卡，然后选择“SinkDataset”作为“接收器数据集”。   
         
 1. 执行以下步骤：
@@ -460,14 +460,14 @@ END
     1. 至于“表类型”属性，请输入 `@{item().TableType}`。
     1. 至于“表类型参数名称”，请输入 `@{item().TABLE_NAME}`。
 
-        ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png" alt-text="复制活动 - 参数":::
 1. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。  将“复制”活动连接到“存储过程”活动。  
 
 1. 在管道中选择“存储过程”活动，然后在“属性”窗口的“常规”选项卡中输入 **StoredProceduretoWriteWatermarkActivity** 作为 **名称**。  
 
 1. 切换到“SQL 帐户”选项卡。至于“链接服务”，请选择 **AzureSqlDatabaseLinkedService**。 
 
-    ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png" alt-text="存储过程活动 - SQL 帐户":::
 1. 切换到“存储过程”选项卡，然后执行以下步骤：
 
     1. 至于“存储过程名称”，请选择`[dbo].[usp_write_watermark]`。 
@@ -477,9 +477,9 @@ END
         | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | 字符串 | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-        ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png" alt-text="存储过程活动 - 存储过程设置":::
 1. 选择“全部发布”，以便将创建的实体发布到数据工厂服务。 
 
 1. 等待“已成功发布”消息出现。 若要查看通知，请单击“显示通知”链接。 单击“X”关闭通知窗口。
@@ -508,7 +508,7 @@ END
     ]
     ```
 
-    ![管道运行自变量](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-run-arguments.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-run-arguments.png" alt-text="管道运行自变量":::
 
 ## <a name="monitor-the-pipeline"></a>监视管道
 

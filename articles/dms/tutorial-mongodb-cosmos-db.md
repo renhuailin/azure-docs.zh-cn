@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
-ms.date: 08/26/2021
-ms.openlocfilehash: 87f211976f74fef5ed2c0cef992d82099e141a29
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.date: 09/21/2021
+ms.openlocfilehash: 6714446d42a256f6948b8e0f6e69b6bc2be60b6e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038164"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664345"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-api-for-mongodb-offline"></a>教程：将 MongoDB 脱机迁移到适用于 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -50,6 +50,10 @@ ms.locfileid: "123038164"
 
 * [完成预迁移](../cosmos-db/mongodb-pre-migration.md)步骤，如估计吞吐量和选择分区键。
 * [为 MongoDB 的 Azure Cosmos DB API 创建帐户](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
+
+  > [!NOTE]
+  > 如果要迁移到用无服务器模式预配的 MongoDB 帐户的 API，目前不支持 DMS。
+
 * 使用 Azure 资源管理器部署模型，为 Azure 数据库迁移服务创建 Microsoft Azure 虚拟网络。 此部署模型通过使用 [Azure ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 提供与本地源服务器的站点到站点连接。 有关创建虚拟网络的详细信息，请参阅 [Azure 虚拟网络文档](../virtual-network/index.yml)，尤其是提供分步详细信息的“快速入门”文章。
 
     > [!NOTE]
@@ -166,7 +170,7 @@ ms.locfileid: "123038164"
 
    ![显示指定源详细信息的屏幕截图。](media/tutorial-mongodb-to-cosmosdb/dms-specify-source.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 

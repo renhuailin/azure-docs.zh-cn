@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma
-ms.date: 09/07/2021
-ms.openlocfilehash: 85bf8c07da9d283011d17f1f96ad76e0fa411213
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/21/2021
+ms.openlocfilehash: 2928ce1f58ddefce368a361b32fe65f9c79994cc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535304"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630236"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>使用日志重播服务（预览版）将数据库从 SQL Server 迁移到 SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,11 +89,6 @@ LRS 监视 Blob 存储中是否有在还原完整备份后添加的任何新的�
 - 预配的 Azure Blob 存储容器
 - 具有为 Blob 存储容器生成的读取和列出权限的共享访问签名 (SAS) 安全令牌
 
-### <a name="migration-of-multiple-databases"></a>迁移多个数据库
-不同数据库的备份文件必须放在 Blob 存储上的不同文件夹中。
-
-通过指向 Blob 存储上的相应文件夹，为每个数据库单独启动 LRS。 对于每个托管实例，LRS 最多可以支持 100 个同时还原过程。
-
 ### <a name="azure-rbac-permissions"></a>Azure RBAC 权限
 通过系统提供的客户端运行 LRS 需要以下 Azure 角色之一：
 - “订阅所有者”角色
@@ -108,6 +103,7 @@ LRS 监视 Blob 存储中是否有在还原完整备份后添加的任何新的�
 - 启用备份压缩。
 - 使用 Cloud Shell 运行脚本，因为它始终更新到最新发布的 cmdlet。
 - 计划在启动 LRS 后的 36 小时内完成迁移。 这是一个宽限期，可防止安装系统管理的软件补丁。
+- 将单个数据库的所有备份文件放置到一个文件夹中。 不要对同一数据库使用子文件夹。
 
 > [!IMPORTANT]
 > - 在迁移过程完成之前，不能使用正在通过 LRS 还原的数据库。 
@@ -215,7 +211,7 @@ Azure Blob 存储用作 SQL Server 与 SQL 托管实例之间的备份文件的�
 
    > [!IMPORTANT]
    > 不要选择任何其他权限。 否则，LRS 将无法启动。 此安全要求是设计使然。
-7. 选择“创建”。
+7. 选择“创建”  。
 
    :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="该屏幕截图显示了 SAS 令牌到期时间、时区和权限的选择以及“创建”按钮。":::
 
@@ -385,6 +381,22 @@ Complete-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
 az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last-backup-name "backup.bak"
 ```
 
+### <a name="migration-of-multiple-databases"></a>迁移多个数据库
+不同数据库的备份文件必须放在 Azure Blob 存储容器内的不同文件夹中。 单个数据库的所有备份文件必须放在同一文件夹中，因为单个数据库不能存在子文件夹。 对于指向 Azure Blob 存储容器的完整 URI 路径和单个数据库文件夹的每个数据库，必须单独启动 LRS。
+
+下面是为多个数据库调用 LRS 时所需的文件夹结构和 URI 规范的示例。 为每个数据库单独启动 LRS，以指定 Azure Blob 存储容器的完整 URI 路径和单个数据库文件夹。
+
+```URI
+-- Place all backup files for database 1 in its own separate folder within a storage container. No further subfolders are allowed under database1 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database1/<all database 1 backup files>
+
+-- Place all backup files for database 2 in its own separate folder within a storage container. No further subfolders are allowed under database2 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database2/<all database 2 backup files>
+
+-- Place all backup files for database 2 in its own separate folder within a storage container. No further subfolders are allowed under database3 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database3/<all database 3 backup files>
+```
+
 ## <a name="functional-limitations"></a>功能限制
 
 LRS 的功能限制如下：
@@ -394,7 +406,8 @@ LRS 的功能限制如下：
 - LRS 将使用的 SAS 令牌必须是为整个 Azure Blob 存储容器生成的，并且必须仅具有读取和列出权限。
 - 不同数据库的备份文件必须放在 Blob 存储上的不同文件夹中。
 - LRS 不能使用文件名中包含 % 和 $ 字符的备份文件。 请考虑重命名此类文件名。
-- 对于指向 Blob 存储上包含备份文件的不同文件夹的每个数据库，必须为其单独启动 LRS。
+- 不支持将备份放入单个数据库的子文件夹。 单个数据库的所有备份都必须放置在单个文件夹的根目录下。
+- 如果有多个数据库，备份文件必须放置在每个数据库的单独文件夹中。 对于指向包含单个数据库文件夹的完整 URI 路径的每个数据库，必须单独启动 LRS。 
 - 对于每个托管实例，LRS 最多可以支持 100 个同时还原过程。
 
 ## <a name="troubleshooting"></a>疑难解答

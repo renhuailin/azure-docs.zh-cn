@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Snowflake 的集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 Snowflake 集成
 description: 了解如何在 Azure Active Directory 和 Snowflake 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 3e16dde56b2fd136eb6c76528e1c0ba406219628
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 32e150a9a3db521fb097426f1c5ec5fb38fa6064
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182942"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677928"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教程：Azure Active Directory 与 Snowflake 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-snowflake"></a>教程：Azure AD SSO 与 Snowflake 集成
 
 本教程将介绍如何将 Snowflake 与 Azure Active Directory (Azure AD) 相集成。 将 Snowflake 与 Azure AD 集成后，可以：
 
@@ -30,17 +30,20 @@ ms.locfileid: "122182942"
 
 若要配置 Azure AD 与 Snowflake 的集成，需要以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 Snowflake 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Snowflake 单一登录的订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD 单一登录。
 
-- Snowflake 支持 **SP 和 IDP** 发起的 SSO
-- Snowflake 支持[自动用户预配和取消预配](snowflake-provisioning-tutorial.md)（推荐）
+* Snowflake 支持 SP 和 IDP 发起的 SSO。
+* Snowflake 支持[自动用户预配和取消设置](snowflake-provisioning-tutorial.md)（推荐）。
 
-## <a name="adding-snowflake-from-the-gallery"></a>从库中添加 Snowflake
+## <a name="add-snowflake-from-the-gallery"></a>从库中添加 Snowflake
 
 要配置 Snowflake 与 Azure AD 的集成，需要从库中将 Snowflake 添加到托管 SaaS 应用列表。
 
@@ -55,7 +58,7 @@ ms.locfileid: "122182942"
 
 使用名为 B.Simon 的测试用户配置并测试 Snowflake 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Snowflake 中的相关用户之间建立链接关系。
 
-若要配置和测试 Snowflake 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Snowflake 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -64,7 +67,7 @@ ms.locfileid: "122182942"
     1. **[创建 Snowflake 测试用户](#create-snowflake-test-user)** - 在 Snowflake 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -96,7 +99,6 @@ ms.locfileid: "122182942"
 6. 在“设置 Snowflake”部分中，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -131,11 +133,11 @@ ms.locfileid: "122182942"
     > [!NOTE]
     > 这与你在右上角“用户名”下选择的上下文不同。
     
-    ![Snowflake 管理员](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Snowflake 管理员](./media/snowflake-tutorial/account.png)
 
 1. 在记事本中打开 **下载的 Base 64 证书**。 复制“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”之间的值，并将其粘贴到下面 **证书** 旁边的引号中。 在 **ssoUrl** 中，粘贴从 Azure 门户复制的“登录 URL”值  。 选择“所有查询”  ，然后单击“运行”  。
 
-   ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
+   ![Snowflake sql](./media/snowflake-tutorial/certificate.png)
 
    ```
    use role accountadmin;
@@ -148,7 +150,6 @@ ms.locfileid: "122182942"
    alter account set sso_login_page = TRUE;
    ```
 
-
 ### <a name="create-snowflake-test-user"></a>创建 Snowflake 测试用户
 
 为了使 Azure AD 用户能够登录到 Snowflake，必须将其预配到 Snowflake 中。 在 Snowflake 中，预配属手动任务。
@@ -159,18 +160,18 @@ ms.locfileid: "122182942"
 
 2. 通过单击页面右上方的“配置文件”，使用“切换角色”将角色切换为“ACCOUNTADMIN”    。  
 
-    ![Snowflake 管理员](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Snowflake 管理员](./media/snowflake-tutorial/account.png)
 
 3. 通过运行以下 SQL 查询来创建用户，确保“登录名”设置为工作表上的 Azure AD 用户名，如下所示。
 
-    ![Snowflake adminsql](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+    ![Snowflake adminsql](./media/snowflake-tutorial/user.png)
 
     ```
     use role accountadmin;
     CREATE USER britta_simon PASSWORD = '' LOGIN_NAME = 'BrittaSimon@contoso.com' DISPLAY_NAME = 'Britta Simon';
     ```
 
-### <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -182,11 +183,10 @@ ms.locfileid: "122182942"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Snowflake 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Snowflake。 
 
 还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Snowflake 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Snowflake。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-
 ## <a name="next-steps"></a>后续步骤
 
-配置 Snowflake 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
+配置 Snowflake 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

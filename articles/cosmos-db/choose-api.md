@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/12/2021
-ms.openlocfilehash: 8e512c06901a533ef381bc389def45f07e8a028d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6d13f5f79da2906d1b994d4ab83e06d0593eaefe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123101992"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586628"
 ---
 # <a name="choose-an-api-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中选择 API
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,8 +51,8 @@ Core (SQL) API 已原生随附在 Azure Cosmos DB 中。
 ### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>针对迁移到 API for MongoDB 的容量计划
 
 尝试为从现有数据库群集迁移到 Azure Cosmos DB SQL API 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
-    * 若只知道现有分片和复制数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
-    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
+* 如果只知道现有分片和复制数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md)。
+* 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](estimate-ru-with-capacity-planner.md)。
 
 ## <a name="api-for-mongodb"></a>适用于 MongoDB 的 API
 
@@ -65,8 +65,8 @@ Core (SQL) API 已原生随附在 Azure Cosmos DB 中。
 ### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>针对迁移到 API for MongoDB 的容量计划
 
 尝试为从现有数据库群集迁移到 Azure Cosmos DB API for MongoDB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
-    * 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
-    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](./mongodb/estimate-ru-capacity-planner.md)
+* 如果只知道现有数据库群集中 vCore 和服务器的数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md)。
+* 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](./mongodb/estimate-ru-capacity-planner.md)。
 
 ## <a name="cassandra-api"></a>Cassandra API
 
@@ -84,7 +84,7 @@ Azure Cosmos DB 的 Gremlin API 基于 [Apache TinkerPop](https://tinkerpop.apac
 
 此 API 以键/值格式存储数据。 如果你当前正在使用 Azure 表存储，可能会发现在延迟、缩放、吞吐量、全局分发、索引管理、低查询性能等方面存在一些限制。 表 API 克服了这些限制，如果你要利用 Azure Cosmos DB 的功能，建议迁移应用。 表 API 仅支持 OLTP 场景。
 
-为 Azure 表存储编写的应用程序只需经过少量的代码更改即可迁移到表 API，然后便可利用高级功能。 有关详细信息，请参阅[表 API](introduction.md) 一文。
+为 Azure 表存储编写的应用程序只需经过少量的代码更改即可迁移到表 API，然后便可利用高级功能。 有关详细信息，请参阅[表 API](table/introduction.md) 一文。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -94,5 +94,5 @@ Azure Cosmos DB 的 Gremlin API 基于 [Apache TinkerPop](https://tinkerpop.apac
 * [Azure Cosmos DB Gremlin API 入门](create-graph-dotnet.md)
 * [Azure Cosmos DB 表 API 入门](create-table-dotnet.md)
 * 尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
-    * 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
     * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

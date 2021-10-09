@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: ec395bfaf8b4d2bba235b1ce99c909b5cb81c51b
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: f5763606d289c679ea9d1883e97ab30b47368ac8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397868"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580443"
 ---
 ## <a name="model-id-announcement"></a>模型 ID 公告
 
@@ -44,7 +44,7 @@ await client.open();
 
 ## <a name="telemetry"></a>遥测
 
-默认组件不需要任何特殊属性。
+默认组件不需要向遥测消息添加任何特殊属性。
 
 使用嵌套组件时，设备必须使用组件名称设置消息属性：
 
@@ -82,7 +82,7 @@ deviceTwin.properties.reported.update(patchThermostat, function (err) {
 });
 ```
 
-使用下一个报告的属性更新设备孪生：
+使用以下报告属性更新设备孪生：
 
 ```json
 {
@@ -92,7 +92,7 @@ deviceTwin.properties.reported.update(patchThermostat, function (err) {
 }
 ```
 
-使用嵌套组件时，必须在组件名称中创建属性：
+使用嵌套组件时，属性必须在组件名称中创建并包括标记：
 
 ```nodejs
 helperCreateReportedPropertiesPatch = (propertiesToReport, componentName) => {
@@ -118,7 +118,7 @@ deviceTwin.properties.reported.update(patchThermostat1Info, function (err) {
 });
 ```
 
-使用下一个报告的属性更新设备孪生：
+使用以下报告属性更新设备孪生：
 
 ```json
 {
@@ -134,6 +134,8 @@ deviceTwin.properties.reported.update(patchThermostat1Info, function (err) {
 ## <a name="writable-properties"></a>可写属性
 
 这些属性可以由设备设置或通过解决方案更新。 如果解决方案更新属性，客户端会接收到通知，即在 `Client` 或 `ModuleClient` 中的回调。 若要遵循 IoT 即插即用约定，设备必须通知服务属性已成功接收。
+
+如果属性类型为 `Object`，则服务必须将完整的对象发送到设备，即使它只更新对象字段的子集，也是如此。 设备发送的确认也必须是完整的对象。
 
 ### <a name="report-a-writable-property"></a>报告可写属性
 
@@ -156,7 +158,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 });
 ```
 
-使用下一个报告的属性更新设备孪生：
+使用以下报告属性更新设备孪生：
 
 ```json
 {
@@ -190,7 +192,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 });
 ```
 
-使用下一个报告的属性更新设备孪生：
+使用以下报告属性更新设备孪生：
 
 ```json
 {
@@ -210,7 +212,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 
 ### <a name="subscribe-to-desired-property-updates"></a>订阅所需的属性更新
 
-服务可以更新所需的属性，从而在连接的设备上触发通知。 此通知包括更新后的所需属性，其中包括用于标识更新的版本号。 设备必须使用与报告的属性相同的 `ack` 消息进行响应。
+服务可以更新所需的属性，从而在连接的设备上触发通知。 此通知包括更新后的所需属性，其中包括用于标识更新的版本号。 设备必须在发送回服务的 `ack` 消息中包含此版本号。
 
 默认组件会查看单个属性，并使用收到的版本创建报告的 `ack`：
 
@@ -241,7 +243,7 @@ desiredPropertyPatchHandler = (deviceTwin) => {
 };
 ```
 
-设备孪生在所需部分和报告部分显示属性：
+嵌套组件的设备孪生显示了所需部分和报告部分，如下所示：
 
 ```json
 {

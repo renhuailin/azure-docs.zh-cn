@@ -1,22 +1,22 @@
 ---
 title: 使用 Hadoop MapReduce 活动转换数据
+description: 了解如何使用 Azure 数据工厂或 Synapse Analytics 在 Azure HDInsight 群集上运行 Hadoop MapReduce 程序来处理数据。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过从 Azure 数据工厂在 Azure HDInsight 群集上运行 Hadoop MapReduce 程序来处理数据。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 05/08/2020
-ms.openlocfilehash: 20ac921650f980127f24a48a5dc4e80602b5ef91
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: 7b4cc518b078565735b987ca4a13fc582e16a493
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272032"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806162"
 ---
-# <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop MapReduce 活动转换数据
+# <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory-or-synapse-analytics"></a>在 Azure 数据工厂或 Synapse Analytics 中使用 Hadoop MapReduce 活动转换数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-map-reduce.md)
@@ -24,9 +24,9 @@ ms.locfileid: "122272032"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-数据工厂[管道](concepts-pipelines-activities.md)中的 HDInsight MapReduce 活动会在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上调用 MapReduce 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。
+Azure 数据工厂或 Synapse Analytics [管道](concepts-pipelines-activities.md)中的 HDInsight MapReduce 活动会在[你自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上调用 MapReduce 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。
 
-如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习以下教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。
+要了解详细信息，请在阅读本文之前，先通读 [Azure 数据工厂](introduction.md)和 [Synapse Analytics](../synapse-analytics/overview-what-is.md) 的简介文章，并学习[教程：转换数据](tutorial-transform-data-spark-powershell.md)的教程。
 
 请参阅 [Pig](transform-data-using-hadoop-pig.md) 和 [Hive](transform-data-using-hadoop-hive.md)，深入了解如何使用 HDInsight Pig 和 Hive 活动通过管道在 HDInsight 群集上运行 Pig/Hive 脚本。
 
@@ -66,7 +66,7 @@ ms.locfileid: "122272032"
 | name              | 活动名称                     | 是      |
 | description       | 描述活动用途的文本 | 否       |
 | type              | 对于 MapReduce 活动，活动类型是 HDinsightMapReduce | 是      |
-| linkedServiceName | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
+| linkedServiceName | 引用注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | className         | 要执行的类的名称         | 是      |
 | jarLinkedService  | 对 Azure 存储链接服务的引用，该服务用于存储 Jar 文件。 此处仅支持 [Azure Blob 存储](./connector-azure-blob-storage.md)和 [ADLS Gen2](./connector-azure-data-lake-storage.md) 链接服务 。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
 | jarFilePath       | 提供由 jarLinkedService 引用的 Azure 存储中存储的 Jar 文件的路径。 文件名称需区分大小写。 | 是      |
@@ -122,5 +122,5 @@ ms.locfileid: "122272032"
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [ML 工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习工作室（经典版）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

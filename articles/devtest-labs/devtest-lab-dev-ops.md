@@ -1,14 +1,14 @@
 ---
-title: Azure 开发测试实验室和 DevOps 的集成 | Microsoft Docs
+title: Azure 开发测试实验室和 DevOps 的集成
 description: 了解如何在企业环境中的持续集成 (CI)/持续交付 (CD) 管道内使用 Azure 开发测试实验室的实验室。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c18df3c651dc3f11bbaaec4e71aea38644dffe1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481062"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595078"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure 开发测试实验室和 Azure DevOps 的集成
 DevOps 是一种软件开发方法，它将软件开发 (Dev) 与操作 (Ops) 集成于一个系统。 此系统可能会随业务目标提供新的功能、更新和修补程序。 此方法包含基于目标、使用模式和客户反馈设计新功能，乃至在出现问题时修补、恢复和强化系统的所有内容。 此方法的一个容易识别的组件是持续集成 (CI)/持续交付 (CD) 管道。 CI/CD 管道通过一系列步骤（包括构建、测试和部署）来从提交获取信息、代码和资源，以生成系统。 本文重点介绍在企业环境中的管道内有效使用实验室的不同方式。 

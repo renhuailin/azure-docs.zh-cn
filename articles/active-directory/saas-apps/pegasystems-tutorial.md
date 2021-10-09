@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Pega Systems 的集成 | Microsoft 文档
+title: 教程：Azure AD 与 Pega Systems 的 SSO 集成
 description: 本教程介绍如何在 Azure Active Directory 与 Pega Systems 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/25/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 802bd61d499f64a128a4d1c0585363cb1962f8a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0c88213583105a1076f6606f7265025ec445560
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649994"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609975"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教程：Azure Active Directory 与 Pega Systems 集成
+# <a name="tutorial-azure-ad-sso-integration-with-pega-systems"></a>教程：Azure AD 与 Pega Systems 的 SSO 集成
 
 本教程介绍如何将 Pega Systems 与 Azure Active Directory (Azure AD) 集成。 将 Pega Systems 与 Azure AD 集成后，可以：
 
@@ -63,7 +63,7 @@ ms.locfileid: "101649994"
     1. **[创建 Pega Systems 测试用户](#create-pega-systems-test-user)** - 在 Pega Systems 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -73,21 +73,17 @@ ms.locfileid: "101649994"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 若要在 IdP 发起的模式下配置应用程序，请在“基本 SAML 配置”对话框中完成以下步骤。 
+4. 若要在 IdP 发起的模式下配置应用程序，请在“基本 SAML 配置”对话框中执行以下步骤。
 
-    ![“基本 SAML 配置”对话框](common/idp-intiated.png)
-
-    1. 在“标识符”框中，输入采用以下模式的 URL： 
+    1. 在“标识符”框中，使用以下模式键入 URL： 
 
        `https://<customername>.pegacloud.io:443/prweb/sp/<instanceID>`
 
-    1. 在“回复 URL”框中，输入采用以下模式的 URL： 
+    1. 在“回复 URL”框中，用以下模式键入 URL：
 
        `https://<customername>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
 5. 若要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”并完成以下步骤。 
-
-    ![Pega Systems 域和 URL 单一登录信息](common/both-advanced-urls.png)
 
     1. 在“登录 URL”框中，输入登录 URL 值。 
 
@@ -101,7 +97,6 @@ ms.locfileid: "101649994"
     ![用户属性](common/edit-attribute.png)
 
 7. 除上面屏幕截图中所示的属性以外，Pega Systems 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分，完成以下步骤以添加这些 SAML 令牌属性：  
-
     
    - `uid`
    - `cn`
@@ -166,17 +161,17 @@ ms.locfileid: "101649994"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-pega-systems-sso"></a>配置 Pega Systems SSO
+## <a name="configure-pega-systems-sso"></a>配置 Pega Systems SSO
 
 1. 若要在 **Pega Systems** 端配置单一登录，请在另一个浏览器窗口中使用管理员帐户登录到 Pega 门户。
 
-2. 选择“创建” > “SysAdmin” > “身份验证服务”：
+1. 选择“创建” > “SysAdmin” > “身份验证服务”：
 
     ![选择“身份验证服务”](./media/pegasystems-tutorial/admin.png)
     
-3. 在“创建身份验证服务”屏幕上完成以下步骤。 
+1. 在“创建身份验证服务”屏幕上执行以下步骤。
 
-    ![“创建身份验证服务”屏幕](./media/pegasystems-tutorial/admin1.png)
+    ![“创建身份验证服务”屏幕](./media/pegasystems-tutorial/service.png)
 
     1. 在“类型”列表中，选择“SAML 2.0”。  
 
@@ -186,17 +181,17 @@ ms.locfileid: "101649994"
 
     1. 选择“创建并打开”。 
     
-4. 在“标识提供者(IdP)信息”部分，选择“导入 IdP 元数据”，然后浏览到已从 Azure 门户下载的元数据文件。   单击“提交”以加载元数据： 
+1. 在“标识提供者(IdP)信息”部分，选择“导入 IdP 元数据”，然后浏览到已从 Azure 门户下载的元数据文件。   单击“提交”以加载元数据： 
 
-    ![“标识提供者(IdP)信息”部分](./media/pegasystems-tutorial/admin2.png)
+    ![“标识提供者(IdP)信息”部分](./media/pegasystems-tutorial/metadata.png)
     
     导入操作将填充 IdP 数据，如下所示：
 
-    ![导入的 IdP 数据](./media/pegasystems-tutorial/idp.png)
+    ![导入的 IdP 数据](./media/pegasystems-tutorial/data.png)
     
-6. 在“服务提供程序(SP)设置”部分完成以下步骤。 
+1. 在“服务提供程序(SP)设置”部分执行以下步骤。
 
-    ![服务提供程序设置](./media/pegasystems-tutorial/sp.png)
+    ![服务提供程序设置](./media/pegasystems-tutorial/settings.png)
 
     1. 复制“实体标识”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”框中。   
 
@@ -204,13 +199,13 @@ ms.locfileid: "101649994"
 
     1. 选择  “禁用请求签名”。
 
-7. 选择“保存”。 
+1. 选择“保存”。 
 
 ### <a name="create-pega-systems-test-user"></a>创建 Pega Systems 测试用户
 
 接下来，需要在 Pega Systems 中创建一个名为 Britta Simon 的用户。 请在 [Pega Systems 支持团队](https://www.pega.com/contact-us)的配合下创建用户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -224,8 +219,8 @@ ms.locfileid: "101649994"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Pega Systems。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Pega Systems 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Pega Systems。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Pega Systems 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Pega Systems。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Pega Systems 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Pega Systems 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

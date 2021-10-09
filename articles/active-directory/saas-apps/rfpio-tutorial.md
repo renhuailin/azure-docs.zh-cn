@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 RFPIO 集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 RFPIO 集成
 description: 了解如何在 Azure Active Directory 和 RFPIO 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/27/2021
+ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: f3bed54fb44e73742f05796e98984519462d9123
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a4786945c388c1b81b7e36c8d155f92968e04ac
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728312"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093300"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>教程：Azure Active Directory 与 RFPIO 集成
+# <a name="tutorial-azure-ad-sso-integration-with-rfpio"></a>教程：Azure AD SSO 与 RFPIO 集成
 
 本教程介绍如何将 RFPIO 与 Azure Active Directory (Azure AD) 集成。 将 RFPIO 与 Azure AD 集成后，可以：
 
@@ -38,6 +38,8 @@ ms.locfileid: "121728312"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * RFPIO 支持启用了 SP 和 IDP 的 SSO。
+
+* RFPIO 支持[自动用户预配](rfpio-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -76,7 +78,7 @@ ms.locfileid: "121728312"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     a. 在“标识符”文本框中键入 URL：`https://www.rfpio.com`
 
@@ -84,15 +86,26 @@ ms.locfileid: "121728312"
 
     c. 在“中继状态”文本框中输入的字符串值  。 请联系 [RFPIO 支持团队](https://www.rfpio.com/contact/)获取此值。
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，键入 URL：`https://www.app.rfpio.com`
 
-6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
+1. RFPIO 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
+
+    ![image](common/default-attributes.png)
+
+1. 除了上述属性，RFPIO 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+
+    | 名称 | 源属性|
+    | ------- | --------- |
+    | first_name | user.givenname |
+    | last_name | user.surname |
+
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 RFPIO”部分，根据要求复制相应 URL  。
+1. 在“设置 RFPIO”部分，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -188,6 +201,9 @@ ms.locfileid: "121728312"
     > [!NOTE]
     > Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
 
+> [!NOTE]
+> RFPIO 还支持自动用户预配；有关如何配置自动用户预配的更多详细信息，请参阅[此处](./rfpio-provisioning-tutorial.md)。  
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -202,7 +218,7 @@ ms.locfileid: "121728312"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 RFPIO。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“RFPIO”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 RFPIO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“RFPIO”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 RFPIO。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

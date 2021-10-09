@@ -3,13 +3,13 @@ title: 使用 Azure 门户还原 VM
 description: 使用 Azure 门户（包括“跨区域还原”功能）从恢复点还原 Azure 虚拟机。
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 08/06/2021
-ms.openlocfilehash: 75320c54c9496b1c978fdabb8a0a7560087f777c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: cbe511388755e31a2d295a4cf8ed58e78c9afdc2
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738449"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079516"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -85,7 +85,10 @@ Azure 备份提供了几种用来还原 VM 的方法。
 1. 在“还原虚拟机” > “新建” > “还原类型”中，选择“创建虚拟机”   。
 1. 在“虚拟机名称”中，指定订阅中不存在的 VM。
 1. 在“资源组”中，为新 VM 选择现有的资源组，或者创建具有全局唯一名称的新资源组。 如果分配的名称已存在，则 Azure 将为该组分配与 VM 相同的名称。
-1. 在“虚拟网络”中，选择要将 VM 放入到的 VNet。 此时会显示与订阅关联的所有 VNet。 选择子网。 默认已选择第一个子网。
+1. 在“虚拟网络”中，选择要将 VM 放入到的 VNet。 显示与保管库位于同一位置的订阅关联的所有 VNet，这些 VNet 处于活动状态且未附加任何关联组。 选择子网。
+
+   默认已选择第一个子网。
+
 1. 在“暂存位置”中，为该 VM 指定存储帐户。 [了解详细信息](#storage-accounts)。
 
     ![“还原配置”向导 - 选择还原选项](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)

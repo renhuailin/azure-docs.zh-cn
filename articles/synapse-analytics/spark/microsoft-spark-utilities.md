@@ -11,12 +11,12 @@ ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 5e0590dd524c516b2c6b909184de1f2d65f0074c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: f5dba6b81befd569523111b997c29e54b3e82881
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257040"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774607"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 实用工具简介
 
@@ -453,9 +453,17 @@ FS.Rm("file path", true) // Set the last parameter as True to remove all files a
 
 ::: zone-end
 
-:::zone pivot = "programming-language-python"
+
 
 ## <a name="notebook-utilities"></a>笔记本实用工具 
+
+:::zone pivot = "programming-language-csharp"
+
+不支持。
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
 
 可以使用 MSSparkUtils 笔记本实用工具运行笔记本或使用值退出笔记本。 运行以下命令以概要了解可用的方法：
 
@@ -472,8 +480,8 @@ run(path: String, timeoutSeconds: int, arguments: Map): String -> This method ru
 
 ```
 
-### <a name="run-a-notebook"></a>运行笔记本
-运行笔记本并返回其退出值。 可以在笔记本中以交互方式或在管道中运行嵌套函数调用。 所引用的笔记本将在其调用此函数的 Spark 池上运行。  
+### <a name="reference-a-notebook"></a>引用笔记本
+引用笔记本并返回其退出值。 可以在笔记本中以交互方式或在管道中运行嵌套函数调用。 所引用的笔记本将在其调用此函数的 Spark 池上运行。  
 
 ```python
 
@@ -537,10 +545,7 @@ Sample1 run success with input is 20
 ```
 ::: zone-end
 
-
 :::zone pivot = "programming-language-scala"
-
-## <a name="notebook-utilities"></a>笔记本实用工具 
 
 可以使用 MSSparkUtils 笔记本实用工具运行笔记本或使用值退出笔记本。 运行以下命令以概要了解可用的方法：
 
@@ -557,8 +562,8 @@ run(path: String, timeoutSeconds: int, arguments: Map): String -> This method ru
 
 ```
 
-### <a name="run-a-notebook"></a>运行笔记本
-运行笔记本并返回其退出值。 可以在笔记本中以交互方式或在管道中运行嵌套函数调用。 所引用的笔记本将在其调用此函数的 Spark 池上运行。  
+### <a name="reference-a-notebook"></a>引用笔记本
+引用笔记本并返回其退出值。 可以在笔记本中以交互方式或在管道中运行嵌套函数调用。 所引用的笔记本将在其调用此函数的 Spark 池上运行。  
 
 ```scala
 
@@ -675,7 +680,7 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 |--|--|
 |受众解析类型|“Audience”|
 |存储受众资源|“Storage”|
-|Data Warehouse 受众资源|“DW”|
+|专用 SQL 池（数据仓库）|“DW”|
 |Data Lake 受众资源|“AzureManagement”|
 |保管库受众资源|“DataLakeStore”|
 |Azure OSSDB 受众资源|“AzureOSSDB”|
@@ -1086,6 +1091,31 @@ mssparkutils.env.getClusterId()
 Env.GetClusterId()
 ```
 
+::: zone-end
+
+
+## <a name="runtime-context"></a>运行时上下文
+
+Mssparkutils 运行时 utils 公开了 3 个运行时属性，可以使用 mssparkutils 运行时上下文来获取如下所列的属性：
+- Notebookname - 当前笔记本的名称，将始终返回交互模式和管道模式的值。
+- Pipelinejobid - 管道运行 ID，将在管道模式下返回值，在交互模式下返回空字符串。
+- Activityrunid - 笔记本活动运行 ID，将在管道模式下返回值，在交互模式下返回空字符串。
+
+当前运行时上下文同时支持 Python 和 Scala。
+
+:::zone pivot = "programming-language-python"
+
+```python
+mssparkutils.runtime.context
+```
+::: zone-end
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+%%spark
+mssparkutils.runtime.context
+```
 ::: zone-end
 
 ## <a name="next-steps"></a>后续步骤

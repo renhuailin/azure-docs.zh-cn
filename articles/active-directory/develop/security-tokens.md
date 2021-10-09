@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6d9f5538d377be1414089e591559344bde4f381a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2567a75c0accd7e2bb932d8578e1a225518f5ce3
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98795647"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092749"
 ---
 # <a name="security-tokens"></a>安全令牌
 
@@ -26,7 +26,7 @@ ms.locfileid: "98795647"
 
 **访问令牌**：访问令牌是由 [授权服务器](developer-glossary.md#authorization-server)作为 [OAuth 2.0](active-directory-v2-protocols.md) 流的一部分颁发的安全令牌。 它包含有关令牌所针对的用户和资源的信息。 这些信息可用于访问 Web API 和其他受保护的资源。 访问令牌由资源进行验证，以授予对客户端应用的访问权限。 若要详细了解 Microsoft 标识平台如何颁发访问令牌，请参阅[访问令牌](access-tokens.md)。
 
-**刷新令牌**：由于访问令牌只在短时间内有效，因此授权服务器有时会在颁发访问令牌的同时颁发“刷新令牌”。 然后，客户端应用程序可以在需要时使用此刷新令牌交换新的访问令牌。 若要详细了解 Microsoft 标识平台如何使用刷新令牌来撤销权限，请参阅[令牌吊销](access-tokens.md#token-revocation)。
+**刷新令牌**：由于访问令牌只在短时间内有效，因此授权服务器有时会在颁发访问令牌的同时颁发“刷新令牌”。 然后，客户端应用程序可以在需要时使用此刷新令牌交换新的访问令牌。 若要详细了解 Microsoft 标识平台如何使用刷新令牌来撤销权限，请参阅[刷新令牌](refresh-tokens.md)。
 
 **ID 令牌**：ID 令牌作为 [OpenID Connect](v2-protocols-oidc.md) 流的一部分发送到客户端应用程序。 它们可以与访问令牌一起发送，也可以代替访问令牌发送。 客户端使用 ID 令牌对用户进行身份验证。 若要详细了解 Microsoft 标识平台如何颁发 ID 令牌，请参阅 [ID 令牌](id-tokens.md)。
 

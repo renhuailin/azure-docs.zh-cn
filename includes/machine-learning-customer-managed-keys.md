@@ -2,21 +2,21 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 06/24/2021
+ms.date: 09/14/2021
 ms.author: larryfr
-ms.openlocfilehash: 99d885ab35eb04963d9d2b0c6c9c14dbd10f2e2c
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 757179959035c6bfce77b1feaaf5bfeff5aab001
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113559530"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621580"
 ---
 > [!IMPORTANT]
 > 此 Cosmos DB 实例是在订阅的 Microsoft 受管理资源组中创建而成。 以下服务也是在此资源组中创建，并且由客户管理的密钥配置使用：
 > * Azure 存储帐户
 > * Azure 搜索
 >
-> 由于这些服务是在你的 Azure 订阅中创建，因此这意味着你需要支付创建这些服务实例的费用。 
+> 由于这些服务是在你的 Azure 订阅中创建，因此这意味着你需要支付创建这些服务实例的费用。 如果订阅没有足够的 Azure Cosmos DB 服务配额，将会发生故障。 有关配额的详细信息，请参阅 [Azure Cosmos DB 设备配额](/azure/cosmos-db/concepts-limits)
 >
 > 托管资源组的命名格式为 `<AML Workspace Resource Group Name><GUID>`。 如果 Azure 机器学习工作区使用专用终结点，则系统还将在此资源组中创建一个虚拟网络。 此 VNet 用于保护此资源组和 Azure 机器学习工作区中的服务之间的通信。
 > 

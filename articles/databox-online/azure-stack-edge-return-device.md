@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 09/15/2021
 ms.author: alkohli
-ms.openlocfilehash: ab087747bbc6ee9edcb072223c2edf3465ba4cba
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3fa49fdab111c60c9f73dad5703c39dbc33e1472
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460541"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554198"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>退回 Azure Stack Edge 设备
 
-[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
+[!INCLUDE [applies-to-pro-fpga](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-sku.md)]
 
 本文介绍如何擦除数据，然后退回 Azure Stack Edge 设备。 退回设备后，还可以删除与设备关联的资源。
 
@@ -50,7 +50,7 @@ ms.locfileid: "110460541"
 
 若要开始退回过程，请执行以下步骤。
 
-1. 在 Azure 门户中转到 Azure Stack Edge/Data Box Gateway 资源。 在“概述”中，转到右窗格中的命令栏并选择“退回设备” 。 
+1. 在 Azure 门户中转到 Azure Stack Edge 资源。 在“概述”中，转到右窗格中的命令栏并选择“退回设备” 。 
 
     ![退回设备 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -87,16 +87,31 @@ ms.locfileid: "110460541"
 
 7. Azure Stack Edge 运营团队收到电子邮件后，他们将向你发送反向装运标签。 当你收到此标签时，你可以与承运商一起安排设备取件。 
 
+## <a name="pack-the-device"></a>打包设备
+
+要打包设备，请执行以下步骤。
+
+1. 关闭设备。 在本地 Web UI 中，转到“维护”>“电源设置”。
+2. 选择“关闭”。 出现确认提示时，请单击“是”以继续。 有关详细信息，请参阅[管理电源](../databox-online/azure-stack-edge-manage-access-power-connectivity-mode.md#manage-power)。
+3. 拔下电源线，并拔下设备的所有网络电缆。
+4. 按照以下说明认真准备发货包：
+    1. 使用从 Azure 那里请求的包装箱，或者使用最初的带泡沫包装的包装箱。 
+    1. 将底部的泡沫片放到箱子里。
+    1. 将设备放在泡沫顶部，注意让它紧贴泡沫。
+    1. 将顶部的泡沫片放到箱子里。
+    1. 将电源线放到配件托盘里，将导轨放在泡沫片顶部。
+    1. 将包装箱密封，将从 Azure 那里收到的发货标签贴到包裹上。
+    
+    > [!IMPORTANT]
+    > 如果未遵循正确的退回货物准备指南，设备可能会损坏，我们可能会收取损坏设备费用。 查看[产品服务条款](https://www.microsoft.com/licensing/product-licensing/products)和[有关设备丢失或损坏的 FAQ](https://azure.microsoft.com/pricing/details/databox/edge/)。
+ 
+
+
 ## <a name="schedule-a-pickup"></a>安排取件
 
 若要安排取件，请执行以下步骤。
 
-1. 关闭设备。 在本地 Web UI 中，转到“维护”>“电源设置”。
-2. 选择“关闭”。 出现确认提示时，请单击“是”以继续。 有关详细信息，请参阅[管理电源](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)。
-3. 拔下电源线，并拔下设备的所有网络电缆。
-4. 准备发货包装：使用自己的箱子或从 Azure 收到的空箱子。 将设备和设备附带的电源线放置在箱中。
-5. 将从 Azure 收到的发货标签贴到包装上。
-6. 安排区域快递公司取件。 如果在美国退回设备，则快递公司可能是 UPS 或 FedEx。 安排 UPS 取件：
+1. 安排区域快递公司取件。 如果在美国退回设备，则快递公司可能是 UPS 或 FedEx。 安排 UPS 取件：
 
     1. 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
     2. 在通话中，引用反向装运跟踪号码，如打印的标签上所示。
@@ -109,7 +124,7 @@ ms.locfileid: "110460541"
 在 Azure 数据中心接收到设备后，会检查设备是否损坏或是否有任何篡改迹象。
 
 - 如果设备到达时完好无损，则该资源的计费指示器将停止。 Azure Stack Edge 运营团队将与你联系，确认设备已退回。 然后，你可以在 Azure 门户中删除与该设备关联的资源。
-- 如果设备严重损坏，可能会收取罚款。 有关详细信息，请参阅[有关设备丢失或损坏的 FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) 和[产品服务条款](https://www.microsoft.com/licensing/product-licensing/products)。  
+- 如果设备到达时严重损坏，可能会收取损坏费用。 有关详细信息，请参阅[有关设备丢失或损坏的 FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) 和[产品服务条款](https://www.microsoft.com/licensing/product-licensing/products)。  
 
 
 可以在以下时段从 Azure 门户删除设备：

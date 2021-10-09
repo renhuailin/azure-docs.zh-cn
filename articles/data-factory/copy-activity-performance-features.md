@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 9be8ef1772da6259441a8de4c85fa44d54945c7d
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: c9cedace5f4755e22c4f08ecdde0d3f6fb8fa52f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821813"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663205"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
 
@@ -32,8 +32,8 @@ ms.locfileid: "122821813"
 |:--- |:--- |---- |
 | 文件存储之间 |- **从/向单一文件复制**：2-4 <br>- **从/向多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br><br>例如，如果从包含 4 个大文件的文件夹复制数据并选择保留层次结构，则最大有效 DIU 为 16；选择合并文件时，最大有效 DIU 为 4。 |4 到 32 个，具体取决于文件的数量和大小 |
 | 从文件存储到非文件存储 |- **从单个文件复制**：2-4 <br/>- **从多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br/><br/>例如，如果从包含 4 个大文件的文件夹复制数据，则最大有效 DIU 为 16。 |- **复制到 Azure SQL 数据库或 Azure Cosmos DB**：4-16 个，具体取决于接收器层 (DTU/RU) 和源文件模式<br>- 使用 PolyBase 或 COPY 语句 **复制到 Azure Synapse Analytics**：2<br>- 其他方案：4 |
-| 从非文件存储到文件存储 |- **从启用了分区选项的数据存储复制**（此类数据存储包括 [Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)）：写入文件夹时为 2-256 个，写入单个文件时为 2-4 个。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br/>- 使用 UNLOAD **从 Amazon Redshift 复制**：2<br>- **其他方案**：4 |
-| 非文件存储之间 |- **从启用了分区选项的数据存储复制**（此类数据存储包括 [Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)）：写入文件夹时为 2-256 个，写入单个文件时为 2-4 个。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br/>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br>- **其他方案**：4 |
+| 从非文件存储到文件存储 |- 从启用了分区选项的数据存储复制（此类数据存储包括 [Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md#azure-database-for-postgresql-as-source)、[Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)）：写入文件夹时为 2-256 个，写入单个文件时为 2-4 个。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br/>- 使用 UNLOAD **从 Amazon Redshift 复制**：2<br>- **其他方案**：4 |
+| 非文件存储之间 |- 从启用了分区选项的数据存储复制（此类数据存储包括 [Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md#azure-database-for-postgresql-as-source)、[Azure SQL 数据库](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL 托管实例](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source) 和 [Teradata](connector-teradata.md#teradata-as-source)）：写入文件夹时为 2-256 个，写入单个文件时为 2-4 个。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br/>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br>- **其他方案**：4 |
 
 可以在复制活动监视视图或活动输出中查看用于每个复制运行的 DIU。 有关详细信息，请参阅[复制活动监视](copy-activity-monitoring.md)。 若要替代此默认值，请按如下所示指定 `dataIntegrationUnits` 属性的值。 复制操作在运行时使用的 *实际 DIU 数* 等于或小于配置的值，具体取决于数据模式。
 
@@ -135,7 +135,7 @@ ms.locfileid: "122821813"
 
 激活暂存功能时，首先将数据从源数据存储复制到暂存存储（自带 Azure Blob 或 Azure Data Lake Storage Gen2）。 然后，将数据从暂存复制到接收器数据存储。 复制活动会自动管理两阶段流，还会在数据移动完成后从暂存存储中清除临时数据。
 
-![暂存复制](media/copy-activity-performance/staged-copy.png)
+:::image type="content" source="media/copy-activity-performance/staged-copy.png" alt-text="暂存复制":::
 
 使用暂存存储激活数据移动时，可指定是否要先压缩数据，再将数据从源数据存储移动到暂存存储，然后先解压缩数据，再将数据从过渡数据存储或暂存数据移动到接收器数据存储。
 

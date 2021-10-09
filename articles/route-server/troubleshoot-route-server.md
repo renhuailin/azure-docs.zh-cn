@@ -5,21 +5,16 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 08/30/2021
+ms.date: 09/23/2021
 ms.author: duau
-ms.openlocfilehash: 96e71dbd8a03e66644f0dc754d448a345978d940
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: abece146cb2394046b7f46aa96ea70dc124cade0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255666"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649050"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>排查 Azure 路由服务器问题
-
-> [!IMPORTANT]
-> Azure 路由服务器（预览版）目前为公共预览版状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="connectivity-issues"></a>连接问题
 
@@ -31,7 +26,7 @@ ms.locfileid: "123255666"
 | 0.0.0.0/0 | Internet |
 
 
-### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-go-down"></a>为什么我可以从我的 NVA ping 到 Azure 路由服务器上的 BGP 对等 IP，但在设置它们之间的 BGP 对等互连后，却不能再对相同的 IP 进行 ping 操作了？ BGP 对等互连为何会关闭？
+### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-or-why-is-the-bgp-peering-flapping"></a>为什么我可以从我的 NVA ping 到 Azure 路由服务器上的 BGP 对等 IP，但在设置它们之间的 BGP 对等互连后，却不能再对相同的 IP 进行 ping 操作了？ 或者，为什么 BGP 对等互连不稳定？
 
 在某些 NVA 中，需要为 Azure 路由服务器子网添加静态路由。 例如，如果 Azure 路由服务器在 10.0.255.0/27 中，而 NVA 在 10.0.1.0/24 中，则需要将以下路由添加到 NVA 中的路由表：
 
@@ -45,10 +40,6 @@ ms.locfileid: "123255666"
 将 Azure 路由服务器部署到虚拟网络后，需要更新网关和虚拟网络之间的控制平面。 在此更新过程中，虚拟网络中的 VM 会在一段时间内失去与本地网络的连接。 我们强烈建议你安排维护时段，以便在生产环境中部署 Azure 路由服务器。  
 
 ## <a name="control-plane-issues"></a>控制平面问题
-
-### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>为什么我的 NVA 与 Azure 路由服务器之间的 BGP 对等互连不断开启和关闭（“不稳定”）？
-
-造成不稳定的原因可能是 BGP 计时器设置。 默认情况下，Azure 路由服务器上的“保持活动状态”计时器设置为 60 秒，“保持关闭”计时器设置为 180 秒。
 
 ### <a name="why-does-my-on-premises-network-connected-to-azure-vpn-gateway-not-receive-the-default-route-advertised-by-azure-route-server"></a>连接到 Azure VPN 网关的本地网络为何未收到 Azure 路由服务器播发的默认路由？
 

@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 09/09/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1ce5a7e2532fd150b5445e3b243c841d797b4157
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: ca3f20e3d59b993056684773025fd21661879924
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226853"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639102"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 React SPA 中登录并获取访问令牌
 
-在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript React 单页应用程序 (SPA) 如何使用授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。 
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 JavaScript React 单页应用程序 (SPA) 如何使用授权代码流让用户登录并调用 Microsoft Graph。 此代码示例演示如何获取访问令牌来调用 Microsoft Graph API 或任何 Web API。
 
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "123226853"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，以切换到要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。
@@ -57,7 +57,7 @@ ms.locfileid: "123226853"
 > 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
-> 1. 将“重定向 URI”值设置为 `http://localhost:3000/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 
+> 1. 将“重定向 URI”值设置为 `http://localhost:3000/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。
 > 1. 选择“配置”来应用更改。
 > 1. 在“平台配置”下，展开“单页应用程序” 。
 > 1. 确认在授权类型![已配置](media/quickstart-v2-javascript/green-check.png)下，重定向 URI 符合带有 PKCE 的授权代码流的条件。
@@ -89,14 +89,14 @@ ms.locfileid: "123226853"
 >
 > ```javascript
 > /**
-> * Configuration object to be passed to MSAL instance on creation. 
+> * Configuration object to be passed to MSAL instance on creation.
 > * For a full list of MSAL.js configuration parameters, visit:
-> * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
+> * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md
 > */
 > export const msalConfig = {
 >    auth: {
 >        clientId: "Enter_the_Application_Id_Here",
->        authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+>        authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here",
 >        redirectUri: "Enter_the_Redirect_Uri_Here"
 >    },
 >    cache: {
@@ -116,7 +116,7 @@ ms.locfileid: "123226853"
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
 >
 >    若要查找“应用程序(客户端) ID”的值，请转到 Azure 门户中应用注册的“概览”页面 。
-> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
+> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 设置为以下选项之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
 >
@@ -140,7 +140,7 @@ ms.locfileid: "123226853"
 
 > [!div renderon="docs"]
 >
-> 在同一文件中向下滚动并更新 `graphMeEndpoint`。 
+> 在同一文件中向下滚动并更新 `graphMeEndpoint`。
 > - 将字符串 `Enter_the_Graph_Endpoint_Herev1.0/me` 替换为 `https://graph.microsoft.com/v1.0/me`
 > - `Enter_the_Graph_Endpoint_Herev1.0/me` 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，请输入 `https://graph.microsoft.com/`（包括末尾的正斜杠）。 有关详细信息，请参阅[本文档](/graph/deployments)。
 >

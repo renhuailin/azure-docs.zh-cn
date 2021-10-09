@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 30a010f695282f6cad8757ea15fa295d645abd7f
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 8b6e2ba3c65b5fd521bdb6326069ce5d8be05599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273286"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564878"
 ---
 # <a name="modify-a-capacity-reservation-preview"></a>修改容量预留（预览版）
 
@@ -71,17 +71,14 @@ ms.locfileid: "123273286"
 要更新预留数量，请将 `New-AzCapacityReservation` 与更新后的 `capacityToReserve` 属性一起使用。
 
 ```powershell-interactive
-New-AzCapacityReservation
+Update-AzCapacityReservation
 -ResourceGroupName "myResourceGroup"
--Location "eastus"
--Zone "1"
 -ReservationGroupName "myCapacityReservationGroup"
 -Name "myCapacityReservation"
--Sku "Standard_D2s_v3"
 -CapacityToReserve 5
 ```
 
-要了解详细信息，请转到 Azure PowerShell 命令 [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)。
+要了解详细信息，请转到 Azure PowerShell 命令 [Update-AzCapacityReservation](/powershell/module/az.compute/update-azcapacityreservation)。
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
@@ -152,7 +149,7 @@ New-AzCapacityReservation
 
 1. 考虑以下情况： 
     1. 如果目标 VM 大小不属于该组，请为目标 V​​M [创建新的容量预留](capacity-reservation-create.md) 
-    1. 如果组中已存在目标 VM 大小，请[重设虚拟机大小](.\windows\resize-vm.md) 
+    1. 如果组中已存在目标 VM 大小，请[重设虚拟机大小](resize-vm.md) 
 
 ### <a name="portal"></a>[Portal](#tab/portal2)
 
@@ -162,7 +159,7 @@ New-AzCapacityReservation
 1. 选择“预留” 
 1. 查看每个预留所预留的 VM 大小 
     1. 如果目标 VM 大小不属于该组，请为目标 V​​M [创建新的容量预留](capacity-reservation-create.md) 
-    1. 如果组中已存在目标 VM 大小，请[重设虚拟机大小](.\windows\resize-vm.md) 
+    1. 如果组中已存在目标 VM 大小，请[重设虚拟机大小](resize-vm.md) 
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
@@ -190,7 +187,7 @@ New-AzCapacityReservation
 
 1. 考虑以下情况： 
     1. 如果目标 VM 大小不属于该组，请为目标 V​​M [创建新的容量预留](capacity-reservation-create.md) 
-    1. 如果组中已存在目标 VM 大小，请[重设虚拟机大小](.\windows\resize-vm.md) 
+    1. 如果组中已存在目标 VM 大小，请[重设虚拟机大小](resize-vm.md) 
 
 
 要了解详细信息，请转到 Azure PowerShell 命令 [Get-AzCapacityReservationGroup](/powershell/module/az.compute/get-azcapacityreservationgroup) 和 [Get-AzCapacityReservation](/powershell/module/az.compute/get-azcapacityreservation)。

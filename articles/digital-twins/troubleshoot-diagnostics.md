@@ -1,28 +1,27 @@
 ---
-title: 启用和查询诊断日志
+title: 使用诊断日志
 titleSuffix: Azure Digital Twins
-description: 了解如何使用诊断设置启用日志记录，以及查询可供立即查看的日志。
+description: 了解如何使用诊断设置启用日志记录，以及查询可供立即查看的日志。 此外，请了解日志类别及其架构。
 author: baanders
 ms.author: baanders
-ms.date: 8/24/2021
+ms.date: 9/15/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1479e2b6b715e8f80ea9e02b0b57a3995da2bfd9
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: c868f0c8418f6b265e3de5b4d8ea0c6b7312a33e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219713"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593642"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>排查 Azure 数字孪生问题：诊断日志记录
 
 Azure 数字孪生可以收集服务实例的日志，以监视其性能、访问和其他数据。 你可以使用这些日志来大致了解 Azure 数字孪生实例中发生的情况，并分析问题的根本原因，而无需联系 Azure 支持部门。
 
-本文介绍如何在 Azure 门户中[[配置诊断设置](#turn-on-diagnostic-settings)](https://portal.azure.com)，以开始从 Azure 数字孪生实例收集日志。 你还可以指定要将日志存储到的位置（例如 Log Analytics，或者你选择的存储帐户）。
+本文介绍如何在 [Azure 门户](https://portal.azure.com) 中配置诊断设置，包括要收集哪些类型的日志，以及存储这些日志的位置（例如 Log Analytics 或所选的存储帐户）。 然后，可以查询这些日志，以便快速收集自定义见解。
 
-本文还包含 Azure 数字孪生收集的所有[日志类别](#log-categories)和[日志架构](#log-schemas)列表。
-
-设置日志后，还可以[查询日志](#view-and-query-logs)以快速收集自定义见解。
+本文还介绍了 Azure 数字孪生可以收集的所有日志类别及其架构 。
 
 ## <a name="turn-on-diagnostic-settings"></a>启用诊断设置 
 
@@ -58,6 +57,32 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 新设置在大约 10 分钟后生效。 然后，日志将重新显示在实例的“诊断设置”页上已配置的目标中。 
 
 有关诊断设置及其设置选项的更多详细信息，请访问创建诊断设置以将平台日志和指标发送到不同的目标。
+
+## <a name="view-and-query-logs"></a>查看和查询日志
+
+在配置 Azure 数字孪生日志的存储详细信息后，可以编写自定义查询来生成见解和排查问题。 该服务还提供了几个示例查询，它们通过解决客户可能遇到的有关其实例的常见问题来帮助你开始使用。
+
+下面介绍如何查询实例的日志。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，并导航到你的 Azure 数字孪生实例。 在门户搜索栏中键入该实例的名称即可找到它。 
+
+2. 从菜单中选择“日志”打开日志查询页。 该页中将打开一个名为“查询”的窗口。
+
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="显示 Azure 门户中 Azure 数字孪生实例的日志页的屏幕截图，其中叠加了“查询”窗口，显示了预构建的查询。" lightbox="media/troubleshoot-diagnostics/logs.png":::
+
+    这些查询是为各种日志编写的预生成示例。 可以选择其中一个查询以将其载入查询编辑器，然后运行该查询以查看实例的这些日志。
+
+    还可以在不运行任何查询的情况下关闭“查询”窗口以直接转到查询编辑器页，在其中可以编写或编辑自定义查询代码。
+
+3. 退出“查询”窗口后，你将看到查询编辑器主页。 在此页中可以查看和编辑示例查询的文本，或者从头开始编写你自己的查询。
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="显示 Azure 门户中 Azure 数字孪生实例的日志页的屏幕截图。其中包含了日志列表、查询代码和查询历史记录。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+
+    在左窗格中： 
+    - “表”选项卡显示可在查询中使用的不同 Azure 数字孪生[日志类别](#log-categories)。 
+    - “查询”选项卡包含可加载到编辑器中的示例查询。
+    - 在“筛选器”选项卡中可以自定义查询返回的数据的筛选视图。
+
+有关日志查询以及如何编写日志查询的更多详细信息，请访问 Azure Monitor 中的日志查询概述。
 
 ## <a name="log-categories"></a>日志类别
 
@@ -338,34 +363,6 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
   }
 },
 ```
-
-## <a name="view-and-query-logs"></a>查看和查询日志
-
-在本文的前面部分，你已配置了要存储的日志类型并指定了其存储位置。
-
-若要排查问题并从这些日志生成见解，可以生成 **自定义查询**。 若要开始，你还可以利用服务为你提供的几个示例查询，这些查询可以解决客户在使用其实例时可能遇到的常见问题。
-
-下面介绍如何查询实例的日志。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)，并导航到你的 Azure 数字孪生实例。 在门户搜索栏中键入该实例的名称即可找到它。 
-
-2. 从菜单中选择“日志”打开日志查询页。 该页中将打开一个名为“查询”的窗口。
-
-    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="显示 Azure 门户中 Azure 数字孪生实例的日志页的屏幕截图，其中叠加了“查询”窗口，显示了预构建的查询。" lightbox="media/troubleshoot-diagnostics/logs.png":::
-
-    这些查询是为各种日志编写的预生成示例。 可以选择其中一个查询以将其载入查询编辑器，然后运行该查询以查看实例的这些日志。
-
-    还可以在不运行任何查询的情况下关闭“查询”窗口以直接转到查询编辑器页，在其中可以编写或编辑自定义查询代码。
-
-3. 退出“查询”窗口后，你将看到查询编辑器主页。 在此页中可以查看和编辑示例查询的文本，或者从头开始编写你自己的查询。
-    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="显示 Azure 门户中 Azure 数字孪生实例的日志页的屏幕截图。其中包含了日志列表、查询代码和查询历史记录。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
-
-    在左窗格中： 
-    - “表”选项卡显示可在查询中使用的不同 Azure 数字孪生[日志类别](#log-categories)。 
-    - “查询”选项卡包含可加载到编辑器中的示例查询。
-    - 在“筛选器”选项卡中可以自定义查询返回的数据的筛选视图。
-
-有关日志查询以及如何编写日志查询的更多详细信息，请访问 Azure Monitor 中的日志查询概述。
 
 ## <a name="next-steps"></a>后续步骤
 

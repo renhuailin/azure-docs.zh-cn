@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6982cbc64e28b71566deb295dfe7d56aa8d24189
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98661927"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588744"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
@@ -22,27 +22,27 @@ ms.locfileid: "98661927"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 提取数据并将其上传到 HDInsight 群集。
-> * 使用 Apache Hive 转换数据。
-> * 使用 Sqoop 将数据加载到 Azure SQL 数据库。
+> - 提取数据并将其上传到 HDInsight 群集。
+> - 使用 Apache Hive 转换数据。
+> - 使用 Sqoop 将数据加载到 Azure SQL 数据库。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个针对 HDInsight 配置的 Azure Data Lake Storage Gen2 存储帐户**
+- **一个针对 HDInsight 配置的 Azure Data Lake Storage Gen2 存储帐户**
 
     请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
-* **HDInsight 上基于 Linux 的 Hadoop 群集**
+- **HDInsight 上基于 Linux 的 Hadoop 群集**
 
     请参阅[快速入门：通过 Azure 门户在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)。
 
-* **Azure SQL 数据库**：使用 Azure SQL 数据库作为目标数据存储。 如果 Azure SQL 数据库中没有数据库，请参阅[通过 Azure 门户在 Azure SQL 数据库中创建数据库](../../azure-sql/database/single-database-create-quickstart.md)。
+- **Azure SQL 数据库**：使用 Azure SQL 数据库作为目标数据存储。 如果 Azure SQL 数据库中没有数据库，请参阅[通过 Azure 门户在 Azure SQL 数据库中创建数据库](../../azure-sql/database/single-database-create-quickstart.md)。
 
-* **Azure CLI**：如果尚未安装 Azure CLI，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
+- **Azure CLI**：如果尚未安装 Azure CLI，请参阅 [安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-* **安全外壳 (SSH) 客户端**：有关详细信息，请参阅 [使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
+- **安全外壳 (SSH) 客户端**：有关详细信息，请参阅 [使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="download-the-flight-data"></a>下载航班数据
 
@@ -55,7 +55,7 @@ ms.locfileid: "98661927"
    | 筛选年份 |2013 |
    | 筛选期间 |1 月 |
    | 字段 |Year、FlightDate、Reporting_Airline、IATA_CODE_Reporting_Airline、Flight_Number_Reporting_Airline、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
-   
+
    清除所有其他字段。
 
 3. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
@@ -70,9 +70,9 @@ ms.locfileid: "98661927"
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
    ```
 
-   * 将 `<file-name>` 占位符替换为 .zip 文件的名称。
-   * 将 `<ssh-user-name>` 占位符替换为 HDInsight 群集的 SSH 登录名。
-   * 将 `<cluster-name>` 占位符替换为 HDInsight 群集的名称。
+   - 将 `<file-name>` 占位符替换为 .zip 文件的名称。
+   - 将 `<ssh-user-name>` 占位符替换为 HDInsight 群集的 SSH 登录名。
+   - 将 `<cluster-name>` 占位符替换为 HDInsight 群集的名称。
 
    如果使用密码对 SSH 登录名进行身份验证，系统会提示输入密码。
 
@@ -194,13 +194,13 @@ ms.locfileid: "98661927"
 
 3. 保存文件，方法是使用 CTRL+X，然后根据提示键入 `Y`。
 
-4. 若要启动 Hive 并运行 **flightdelays.hql** 文件，请使用以下命令：
+4. 若要启动 Hive 并运行 `flightdelays.hql` 文件，请使用以下命令：
 
    ```bash
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
    ```
 
-5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
+5. `flightdelays.hql` 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
    ```bash
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -249,11 +249,12 @@ ms.locfileid: "98661927"
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * 将 `<server-name>` 占位符替换为逻辑 SQL 服务器名称。
 
-   * 使用 SQL 数据库的管理员登录名替换 `<admin-login>` 占位符。
+   - 将 `<server-name>` 占位符替换为逻辑 SQL 服务器名称。
 
-   * 将 `<database-name>` 占位符替换为数据库名称
+   - 使用 SQL 数据库的管理员登录名替换 `<admin-login>` 占位符。
+
+   - 将 `<database-name>` 占位符替换为数据库名称
 
    出现提示时，输入 SQL 数据库管理员登录名的密码。
 

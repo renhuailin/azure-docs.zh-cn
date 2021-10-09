@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 678161e4eee7e954f1507c370560e6891850750b
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 54f0796d52d150db272e00c5cb66aa0c68a2e51c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113343"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090982"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Java SDK v4 与 SQL API 帐户配合使用时出现的问题
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -149,6 +149,14 @@ Netty IO 线程仅用于非阻塞性 Netty IO 工作。 SDK 将其中一个 Nett
 
     在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔退让。 遵循退让可确保最大程度地减少等待重试的时间。
 
+### <a name="error-handling-from-java-sdk-reactive-chain"></a>Java SDK 反应式链中的错误处理
+
+当涉及到客户端的应用程序逻辑时，Cosmos DB Java SDK 中的错误处理很重要。 [reactor-core 框架](https://projectreactor.io/docs/core/release/reference/#error.handling)提供了不同的错误处理机制，可用于不同的方案。 建议客户详细了解这些错误处理操作符，并使用最适合其重试逻辑方案的操作符。
+
+> [!IMPORTANT]
+> 不建议使用 [`onErrorContinue()`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-) 运算符，因为并非在所有场景中都支持该运算符。
+> 请注意，`onErrorContinue()` 是一个特殊运算符，可能会让你的反应链的行为变得不明确。 它是上游操作符，而不是下游操作符；它需要特定的操作符支持才能工作，并且作用域可以轻松地从上游传播到没有预料到它的库代码（导致意外行为）。 有关此特殊操作符的更多详细信息，请参阅 `onErrorContinue()` 的[文档](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-)。
+
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>连接到 Azure Cosmos DB 模拟器时出现故障
 
 Azure Cosmos DB 模拟器 HTTPS 证书是自签名证书。 若要将 SDK 与仿真器配合使用，请将仿真器证书导入 Java TrustStore。 有关详细信息，请参阅[导出 Azure Cosmos DB 模拟器证书](../local-emulator-export-ssl-certificates.md)。
@@ -163,7 +171,7 @@ Azure Cosmos DB Java SDK 可提取大量依赖项；一般来说，如果项目�
 ```bash
 mvn dependency:tree
 ```
-有关详细信息，请参阅[maven 依赖项树指南](https://maven.apache.org/plugins-archives/maven-dependency-plugin-2.10/examples/resolving-conflicts-using-the-dependency-tree.html)。
+有关详细信息，请参阅 [maven 依赖项树指南](https://maven.apache.org/plugins-archives/maven-dependency-plugin-2.10/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
 了解项目的哪个依赖项依赖于旧版本后，就可以修改 pom 文件中该 lib 上的依赖项并排除可传递依赖项，如下所示（假定 reactor core 是过时的依赖项）：
 

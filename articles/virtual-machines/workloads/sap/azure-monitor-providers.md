@@ -7,12 +7,12 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.date: 07/06/2021
 ms.author: radeltch
-ms.openlocfilehash: e6d5ad24176c779055fbde2c2ec6e6506cea3285
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5061ee2131ee708c38a68dca02c18a21085b5430
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392163"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616852"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure Monitor for SAP Solutions 提供程序（预览版）
 
@@ -118,7 +118,7 @@ ms.locfileid: "114392163"
    若要配置高可用性群集提供程序，需要以下信息：
    
    - **名称**。 此提供程序的名称。 对于此 Azure Monitor for SAP solutions 实例，它应是唯一的。
-   - Prometheus 终结点。 http\://\<servername or ip address\>:9664/metrics。
+   - Prometheus 终结点。 `http://<servername or ip address>:9664/metrics`.
    - SID。 对于 SAP 系统，请使用 SAP SID。 对于其他系统（例如 NFS 群集），请使用群集的三字符名称。 SID 必须与受监视的其他群集不同。   
    - 群集名称。 创建群集时使用的群集名称。 群集名称可在群集属性 `cluster-name` 中找到。
    - 主机名。 虚拟机 (VM) 的 Linux 主机名。  
@@ -141,7 +141,7 @@ ms.locfileid: "114392163"
 2. 为环境中的每个 BareMetal 或 VM 节点实例配置一个 OS (Linux) 提供程序。 
    若要配置 OS (Linux) 提供程序，需要以下信息： 
       - 名称： 此提供程序的名称。 对于此 Azure Monitor for SAP Solutions 实例，它应是唯一的。 
-      - 节点导出程序终结点。 通常为 http://<servername or ip address>:9100/metrics。 
+      - 节点导出程序终结点。 通常是 `http://<servername or ip address>:9100/metrics`。 
 
 > [!NOTE]
 > 9100 是为 Node_Exporter 终结点公开的端口。

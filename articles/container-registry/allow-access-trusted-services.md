@@ -3,12 +3,12 @@ title: 使用受信任的 Azure 服务访问受网络限制的注册表
 description: 启用受信任的 Azure 服务实例，以便安全地访问受网络限制的容器注册表以拉取或推送映像
 ms.topic: article
 ms.date: 05/19/2021
-ms.openlocfilehash: f99215059308c6a2db1e7bce6b9f03580d2b53a4
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: da22d525bbe86403f26daf7c3505c5dadffe4b81
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286257"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654137"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>允许受信任的服务安全地访问受网络限制的容器注册表（预览版）
 
@@ -45,7 +45,7 @@ Azure 容器注册表具有分层的安全模型，支持多个限制对注册�
 | Azure 安全中心 | 通过[适用于容器注册表的 Azure Defender](scan-images-defender.md) 进行漏洞扫描 | 否 |
 |ACR 任务     | [从 ACR 任务访问父注册表或其他注册表](container-registry-tasks-cross-registry-authentication.md)       | 是 |
 |机器学习 | 使用自定义 Docker 容器映像在机器学习工作区中[部署](../machine-learning/how-to-deploy-custom-container.md)或[训练](../machine-learning/how-to-train-with-custom-image.md)模型 | 是 |
-|Azure 容器注册表 | [从另一个 Azure 容器注册表导入映像](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 否 |
+|Azure 容器注册表 | 向/从受网络限制的 Azure 容器注册表[导入映像](container-registry-import-images.md) | 否 |
 
 > [!NOTE]
 > 目前，启用允许受信任的服务设置不适用于某些其他托管的 Azure 服务，包括应用服务和 Azure 容器实例。

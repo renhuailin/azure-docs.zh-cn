@@ -12,12 +12,12 @@ ms.date: 06/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9157b6212adac3c9bfa5f5c00a9c580a615bf8cf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 216123a60a69fc696423ac9d129201201cac8fbc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724894"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739917"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
@@ -25,6 +25,10 @@ ms.locfileid: "121724894"
 
 > [!NOTE]
 > 还可以以编程方式创建 Azure AD B2C 目录本身，以及链接到 Azure 订阅的相应 Azure 资源。 此功能不是通过 Microsoft Graph API 公开的，而是通过 Azure REST API 公开的。 有关详细信息，请参阅 [B2C 租户 - 创建](/rest/api/activedirectory/b2ctenants/create)。
+
+观看此视频，了解如何使用 Microsoft Graph API 迁移 Azure AD B2C 用户。
+
+>[!Video https://www.youtube.com/embed/9BRXBtkBzL4]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -188,7 +192,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 应用程序将显示可执行的命令列表。 例如，获取所有用户、获取单个用户、删除用户、更新用户的密码和批量导入。
 
 > [!NOTE]
-> 要使应用程序更新用户帐户密码，需要向应用程[授予用户管理员角色](microsoft-graph-get-started.md#optional-grant-user-administrator-role)。
+> 要使应用程序能够更新用户帐户密码，需要向应用程序[授予用户管理员角色](microsoft-graph-get-started.md#optional-grant-user-administrator-role)。
  
 ### <a name="code-discussion"></a>代码探讨
 

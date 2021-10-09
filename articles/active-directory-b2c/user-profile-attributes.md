@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/16/2021
+ms.date: 09/24/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76a7fa3cfeafa20dd81f043d67388bdfb281b6d4
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: c11227d975f572d6d473a22f62f4616ad024af3b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112232514"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061440"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
@@ -59,6 +59,7 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |immutableId     |字符串|通常用于从本地 Active Directory 迁移的用户的标识符。|否|否|持久化、输出|
 |legalAgeGroupClassification|字符串|法定年龄组分类。 基于 ageGroup 和 consentProvidedForMinor 属性计算的只读属性。 允许的值：null、minorWithOutParentalConsent、minorWithParentalConsent、minorNoParentalConsentRequired、notAdult 和 adult。|是|否|持久化、输出|
 |legalCountry<sup>1</sup>  |字符串|用于法律目的的国家/地区。|否|否|持久化、输出|
+|mail    |字符串|用户的电子邮件地址。 示例：“bob@contoso.com”。 注意：不允许使用重音字符。|是|否|持久化、输出|
 |mailNickName    |字符串|用户的邮件别名。 最大长度为 64。|否|否|持久化、输出|
 |mobile (mobilePhone) |字符串|用户的主要手机号码。 最大长度为 64。|是|否|持久化、输出|
 |netId           |字符串|网络 ID。|否|否|持久化、输出|

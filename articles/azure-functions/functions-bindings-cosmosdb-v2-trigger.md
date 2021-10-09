@@ -3,15 +3,15 @@ title: 适用于 Functions 2.x 及更高版本的 Azure Cosmos DB 触发器
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6f4e43efeb1882f52bd335d83a3660a94040ab8a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0bccf556f48cea52c4458ec6afc882c3c6035a71
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729209"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635178"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 触发器
 
@@ -49,6 +49,47 @@ namespace CosmosDBSamplesV2
             {
                 log.LogInformation($"Documents modified: {documents.Count}");
                 log.LogInformation($"First document Id: {documents[0].Id}");
+            }
+        }
+    }
+}
+```
+
+使用 Cosmos DB [扩展版本 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 或更高版本的应用将具有不同的特性属性，如下所示。 此示例引用简单的 `ToDoItem` 类型。
+
+```cs
+namespace CosmosDBSamplesV2
+{
+    public class ToDoItem
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
+    }
+}
+```
+
+```cs
+using System.Collections.Generic;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
+
+namespace CosmosDBSamplesV2
+{
+    public static class CosmosTrigger
+    {
+        [FunctionName("CosmosTrigger")]
+        public static void Run([CosmosDBTrigger(
+            databaseName: "databaseName",
+            containerName: "containerName",
+            Connection = "CosmosDBConnectionSetting",
+            LeaseContainerName = "leases",
+            CreateLeaseContainerIfNotExists = true)]IReadOnlyList<ToDoItem> input, ILogger log)
+        {
+            if (input != null && input.Count > 0)
+            {
+                log.LogInformation("Documents modified " + input.Count);
+                log.LogInformation("First document Id " + input[0].Id);
             }
         }
     }
@@ -217,7 +258,30 @@ Write-Host "First document Id modified : $($Documents[0].id)"
     }
 ```
 
-有关完整示例，请参阅[触发器](#example)。
+在[扩展版本 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 中，一些设置和属性已被删除或重命名。 有关这些更改的详细信息，请参阅[触发器 - 配置](#configuration)。 下面是某个引用简单 `ToDoItem` 类型的方法签名中的 `CosmosDBTrigger` 特性示例：
+
+```cs
+namespace CosmosDBSamplesV2
+{
+    public class ToDoItem
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
+    }
+}
+```
+
+```csharp
+    [FunctionName("DocumentUpdates")]
+    public static void Run([CosmosDBTrigger("database", "container", Connection = "CosmosDBConnectionSetting")]
+        IReadOnlyList<ToDoItem> documents,  
+        ILogger log)
+    {
+        ...
+    }
+```
+
+有关任一扩展版本的完整示例，请参阅[触发器](#example)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -250,20 +314,20 @@ Python 不支持特性。
 |type | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
 |**name** | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
-|**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
+|**connectionStringSetting** <br> 或 <br> 连接|**ConnectionStringSetting** <br> 或 <br> **Connection**| 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `Connection`。 此值是某个应用设置的名称，其中包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串，或包含用于定义连接的配置部分或前缀。 请参阅[连接](./functions-reference.md#connections)。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
-|**collectionName** |**CollectionName** | 受监视的集合的名称。 |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | （可选）应用设置的名称，该设置包含保存租用集合的 Azure Cosmos DB 帐户的连接字符串。 未设置时，使用 `connectionStringSetting` 值。 在门户中创建绑定时，将自动设置该参数。 用于租用集合的连接字符串必须具有写入权限。|
+|**collectionName** <br> 或 <br> **containerName** |**CollectionName** <br> 或 <br> ContainerName | 受监视的集合的名称。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `ContainerName`。 |
+|**leaseConnectionStringSetting** <br> 或 <br> leaseConnection | **LeaseConnectionStringSetting** <br> 或 <br> LeaseConnection | （可选）应用设置的名称，该设置包含保存租用集合的 Azure Cosmos DB 帐户的连接字符串。 未设置时，使用 `connectionStringSetting` 值。 在门户中创建绑定时，将自动设置该参数。 用于租用集合的连接字符串必须具有写入权限。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `LeaseConnection`。在未设置的情况下，它会使用 `Connection` 值。 此值是某个应用设置的名称，其中包含用于连接到 Azure Cosmos DB 帐户（使用租用容器）的连接字符串，或包含用于定义连接的配置部分或前缀。 请参阅[连接](./functions-reference.md#connections)。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | （可选）数据库的名称，该数据库包含用于存储租用的集合。 未设置时，使用 `databaseName` 设置的值。 在门户中创建绑定时，将自动设置该参数。 |
-|**leaseCollectionName** | **LeaseCollectionName** | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值为 `false`。 |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用此设置。 使用门户创建绑定时，将自动设置该参数。
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| （可选）设置后，该值将作为前缀添加到在此函数的租约集合中创建的租约。 使用前缀可让两个不同的 Azure 函数通过不同的前缀来共享同一个租约集合。
+|**leaseCollectionName** <br> 或 <br> leaseContainerName | **LeaseCollectionName** <br> 或 <br> LeaseContainerName | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `LeaseContainerName`。 |
+|**createLeaseCollectionIfNotExists** <br> 或 <br> createLeaseContainerIfNotExists | **CreateLeaseCollectionIfNotExists** <br> 或 <br> CreateLeaseContainerIfNotExists | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值是 `false`。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `CreateLeaseContainerIfNotExists`。 |
+|**leasesCollectionThroughput** <br> 或 <br> leasesContainerThroughput| **LeasesCollectionThroughput** <br> 或 <br> LeasesContainerThroughput| （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用此设置。 使用门户创建绑定时，将自动设置该参数。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `LeasesContainerThroughput`。 |
+|**leaseCollectionPrefix** <br> 或 <br> leaseContainerPrefix| **LeaseCollectionPrefix** <br> 或 <br> leaseContainerPrefix | （可选）设置后，该值将作为前缀添加到在此函数的租约集合中创建的租约。 使用前缀可让两个不同的 Azure 函数通过不同的前缀来共享同一个租约集合。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `LeaseContainerPrefix`。 |
 |**feedPollDelay**| **FeedPollDelay**| （可选）在所有当前更改清空后，每两次在分区中轮询源上的新更改的延迟时间（以毫秒为单位）。 默认值为 5,000 毫秒（5 秒）。
 |**leaseAcquireInterval**| **LeaseAcquireInterval**| （可选）设置后，此项以毫秒为单位定义启动一个计算任务的时间间隔（前提是分区在已知的主机实例中均匀分布）。 默认为 13000（13 秒）。
 |**leaseExpirationInterval**| **LeaseExpirationInterval**| （可选）设置后，此项以毫秒为单位定义在表示分区的租用上进行租用的时间间隔。 如果在此时间间隔内不续订租用，则该租用会过期，分区的所有权会转移到另一个实例。 默认为 60000（60 秒）。
 |**leaseRenewInterval**| **LeaseRenewInterval**| （可选）设置后，此项以毫秒为单位定义当前由实例拥有的分区的所有租用的续订时间间隔。 默认为 17000（17 秒）。
-|**checkpointFrequency**| **CheckpointFrequency**| （可选）设置后，此项以毫秒为单位定义租用检查点的时间间隔。 默认为始终在进行每个 Function 调用之后进行检查。
+|checkpointInterval| CheckpointInterval| （可选）设置后，此项以毫秒为单位定义租用检查点的时间间隔。 默认为始终在进行每个 Function 调用之后进行检查。 <br><br> 此属性在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中不可用。 |
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| （可选）设置后，此属性会对每次函数调用收到的项目的最大数目进行设置。 如果受监视集合中的操作通过存储过程执行，则在从更改源读取项时，会保留[事务范围](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 因此，收到的项数可能高于指定的值，通过同一事务更改的项会通过某个原子批处理操作返回。
 |**startFromBeginning**| **StartFromBeginning**| （可选）此选项告知触发器要从集合的更改历史记录开头位置读取更改，而不是从当前时间开始读取。 从开头位置读取仅在触发器首次启动时起作用，因为在后续运行中，已存储检查点。 如果已经创建租约，则将此选项设置为 `true` 将不起作用。 |
 |**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，“美国东部,美国中南部,北欧”。 |

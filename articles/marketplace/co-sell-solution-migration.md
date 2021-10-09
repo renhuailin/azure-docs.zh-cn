@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 07/13/2021
-ms.openlocfilehash: 6ca8c75e5cf6f5290736cf01a20db63a8fb2d077
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.date: 09/27/2021
+ms.openlocfilehash: d80063eeb46938d3f8006f777a3209bc34d7cfcb
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389076"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083147"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>将联合销售解决方案从 OCP GTM 迁移到商业市场
 
@@ -67,11 +67,11 @@ Microsoft 正在移动发布体验。 [商业市场](overview.md)的目的是实
 ## <a name="begin-the-migration-of-your-solutions-from-ocp-gtm"></a>从 OCP GTM 开始迁移解决方案
 
 1. 从[此处](https://go.microsoft.com/fwlink/?linkid=2165807)开始迁移。
-2. 选择“概述”页面，然后选择“单击此处开始”。
+1. 选择“概述”页面，然后选择“单击此处开始”。
 
     :::image type="content" source="media/co-sell-migrate/welcome-overveiw.png" alt-text="显示“概述”页":::
 
-3. 若要开始迁移，请选择“解决方案”选项卡，其中显示了与你的 MPN ID 相关联的所有解决方案。
+1. 若要开始迁移，请选择“解决方案”选项卡，其中显示了与你的 MPN ID 相关联的所有解决方案。
 
     :::image type="content" source="media/co-sell-migrate/solutions-tab.png" alt-text="合作伙伴中心“概述”页面的“解决方案”选项卡。":::
 
@@ -80,7 +80,7 @@ Microsoft 正在移动发布体验。 [商业市场](overview.md)的目的是实
 
     查看工具提示，了解有关解决方案状态的详细信息。 所有解决方案挂起操作都在“操作”下列出。<a name="beginmigration"></a>
 
-4. 为要迁移的解决方案选择“开始迁移”（请查看上图），然后选择以下选项之一：
+1. 为要迁移的解决方案选择“开始迁移”（请查看上图），然后选择以下选项之一：
 
     :::image type="content" source="media/co-sell-migrate/migration-options.png" alt-text="迁移的三个选项。":::
 
@@ -93,6 +93,52 @@ Microsoft 正在移动发布体验。 [商业市场](overview.md)的目的是实
 如果需要将 OCP GTM 中的解决方案迁移到合作伙伴中心，有两种方案可供选择。 在此合并过程结束时，你的产品/服务将保留推荐管道、宣传资料、联合销售状态和激励措施。
 
 #### <a name="step-1-similar-offer-does-not-exist-in-commercial-marketplace-please-follow-these-steps"></a>步骤 1：如果商业市场中不存在类似的产品/服务，请按照以下步骤操作
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+如果商业市场中还没有产品/服务以供 OCP GTM 中的解决方案合并，则首先需要在商业市场中创建“并发布”产品/服务（这将保留产品/服务的联合销售状态、激励措施和推荐管道。）
+
+1. 在商业市场中创建草稿产品/服务
+
+   1. 在商业市场“概述”页上，选择“+ 新建产品/服务”，然后选择所需的产品/服务类型。
+
+        [ ![“市场产品/服务”页上的“新建产品/服务”按钮的屏幕截图。](media/co-sell-migrate/new-offer-workspaces.png) ](media/co-sell-migrate/new-offer-workspaces.png#lightbox)
+
+   2. 在每个选项卡中填写所需信息。
+      - “了解详细信息”链接和工具提示将引导你了解要求和详细信息。
+      - （可选）填写“通过 CSP 转售”页面（在下图的左侧导航菜单中），以通过云解决方案提供商 (CSP) 计划转售。
+
+        [ ![显示“产品/服务设置”页，其中“概述”选项突出显示。](media/co-sell-migrate/offer-setup-nav-workspaces.png) ](media/co-sell-migrate/offer-setup-nav-workspaces.png#lightbox)
+
+   3. 选择“保存草稿”。
+        - 有关发布产品/服务之前需要提供的信息的详细说明，请阅读相应的[发布指南](./publisher-guide-by-offer-type.md)。
+        - 查看相应文章中产品/服务类型的资格要求，以便最终确定产品/服务的选择和配置。
+        - 查看每个在线商店的发布模式，例如，解决方案如何映射到产品/服务类型和配置。
+        - [列出产品/服务的最佳做法 - Microsoft 商业市场 | Microsoft Docs](./gtm-offer-listing-best-practices.md)
+
+    > [!TIP]
+    > 我们建议不填写“与 Microsoft 联合销售”选项卡中的数据。为节省时间，我们会负责在合并过程中使用你在 OCP GTM 中的现有宣传材料为你填充这些数据。
+
+    合并完成后，可返回“与 Microsoft 联合销售”选项卡，并根据需要进行更新。 有关详细信息，请参阅[为商业市场产品/服务配置联合销售](./co-sell-configure.md)。
+1. 完成后，选择“查看并发布”。
+
+    [ ![显示“与 Microsoft 联合销售”页，其中选项突出显示](media/co-sell-migrate/co-sell-with-ms-workspaces.png) ](media/co-sell-migrate/co-sell-with-ms-workspaces.png#lightbox)
+
+1. 查看所有提交的信息后，选择“发布”以提交草稿产品/服务，供认证审查。 [详细了解认证阶段](./review-publish-offer.md)。
+
+    [ ![显示“评审并发布”页。](media/co-sell-migrate/review-and-publish-workspaces.png) ](media/co-sell-migrate/review-and-publish-workspaces.png#lightbox)
+
+1. 在“概述”选项卡上跟踪提交状态。
+
+    [ ![说明合作伙伴中心产品/服务的“发布”状态。显示了“上线”按钮。“查看验证报告”链接也显示在“自动验证”下。](./media/review-publish-offer/publish-status-saas.png) ](./media/review-publish-offer/publish-status-saas.png#lightbox)
+
+1. 我们将在认证评审完成后通知你。 如果我们提供可操作的反馈，请先解决它，然后选择“发布”以启动重新认证。
+
+1. 产品/服务通过认证后，即可使用提供的链接预览产品/服务，并根据需要进行最终调整。 准备就绪后，选择“投入使用”（请参阅上面的按钮），将产品/服务发布到相关商业市场店面。
+
+1. 继续下面的方案 2 以完成合并过程。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 如果商业市场中还没有产品/服务以供 OCP GTM 中的解决方案合并，则首先需要在商业市场中创建“并发布”产品/服务（这将保留产品/服务的联合销售状态、激励措施和推荐管道。）
 
@@ -128,6 +174,8 @@ Microsoft 正在移动发布体验。 [商业市场](overview.md)的目的是实
 1. 产品/服务通过认证后，即可使用提供的链接预览产品/服务，并根据需要进行最终调整。 准备就绪后，选择“投入使用”（请参阅上面的按钮），将产品/服务发布到相关商业市场店面。
 
 1. 继续下面的方案 2 以完成合并过程。
+
+---
 
 #### <a name="scenario-2-similar-offer-exists-in-commercial-marketplace-please-follow-these-steps"></a>方案 2：如果商业市场中存在类似的产品/服务，请按照以下步骤操作
 

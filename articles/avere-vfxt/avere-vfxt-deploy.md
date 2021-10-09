@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 330fa1368c078f1e44dd436cd3bea6407c6f4cc6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92342410"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794645"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
@@ -85,7 +85,7 @@ ms.locfileid: "92342410"
 
 ![部署模板的第二页](media/avere-vfxt-deploy-2.png)
 
-* Avere vFXT 群集节点计数 - 选择群集中的节点数。 至少 3 个节点，至多 12 个节点。
+* Avere vFXT 群集节点计数 - 选择群集中的节点数。 至少 3 个节点，至多 20 个节点。
 
 * **群集管理密码** - 创建用于群集管理的密码。 可以将此密码与用户名 ```admin``` 配合使用来登录到群集控制面板，你可以在控制面板中监视群集并配置群集设置。
 

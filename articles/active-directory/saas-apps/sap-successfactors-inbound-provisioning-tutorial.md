@@ -1,7 +1,6 @@
 ---
-title: 教程：在 AD 和 Azure AD 中配置 SuccessFactors 入站预配 | Microsoft Docs
+title: 教程：在 AD 和 Azure AD 中配置 SuccessFactors 入站预配
 description: 了解如何配置来自 SuccessFactors 的入站预配
-services: active-directory
 author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
@@ -10,12 +9,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 7b59e0ae2fbb73f341d5254fd2804d50ad141a19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4a1350999258b47db4a5188fa9eab92aa56e567
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98953795"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604939"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教程：配置 SAP SuccessFactors 到 Active Directory 的用户预配 
 本教程旨在说明需要执行哪些步骤才能将用户从 SuccessFactors Employee Central 预配到 Active Directory (AD) 和 Azure AD，以及选择性地将电子邮件地址写回到 SuccessFactors。 
@@ -199,7 +198,7 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可将�
 
    * **管理员密码** - 输入 SuccessFactors API 用户帐户的密码。 
 
-   * **租户 URL** - 输入 SuccessFactors OData API 服务终结点的名称。 仅输入不带 http 和 https 的服务器的主机名。 该值应如下所示：<api-server-name>.successfactors.com。
+   * **租户 URL** - 输入 SuccessFactors OData API 服务终结点的名称。 仅输入不带 http 和 https 的服务器的主机名。 该值应如下所示：\<api-server-name\>.successfactors.com。
 
    * **Active Directory 林 -** 向代理注册时使用的 Active Directory 域的“名称”。 使用下拉列表选择用于预配的目标域。 此值通常为如下所示的字符串：contoso.com
 

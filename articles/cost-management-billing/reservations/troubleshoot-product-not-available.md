@@ -5,15 +5,15 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.author: banders
-ms.reviewer: yashar
+ms.reviewer: primittal
 ms.topic: troubleshooting
-ms.date: 10/27/2020
-ms.openlocfilehash: 8575d9d86d8e720122a295cf92fa571ef33d5b4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 09/20/2021
+ms.openlocfilehash: 51d30767c3e084ade041d22bac8a246aa5d1f502
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92798175"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631127"
 ---
 # <a name="troubleshoot-reservation-type-not-available"></a>排查预留类型不可用的问题
 
@@ -51,7 +51,7 @@ ms.locfileid: "92798175"
 
 这项检查非常简单，使你能够将特定产品添加到购物车并购买预留。 Azure 会评估订阅可用的 CPU 内核总数，并检查该数量是否大于所选项目的核心数。
 
-Azure 不会检查“共享”范围预留实例的配额。 共享范围的预留实例权益适用于注册中的所有订阅。 Azure 无法确定所有订阅中是否有足够的可用内核来部署资源。 不考虑配额情况，Azure 始终允许在选择共享范围时选择 VM 大小。
+Azure 不会检查“共享”范围或“管理组”范围预留实例的配额。 共享范围的预留实例权益适用于注册中的所有订阅。 管理组范围的预留实例权益适用于同时属于管理组和计费范围的所有订阅。 Azure 无法确定所有订阅中是否有足够的可用内核来部署资源。 无论配额是多少，当所选范围设置为“共享”或“管理组”时，Azure 始终允许你选择 VM 大小。
 
 此外，Azure 不会对系统建议的购买进行配额检查。 这些建议基于有效的使用情况。 Azure 假设你有足够的内核来运行特定的 VM 大小，因为你已经产生了创建建议所需的使用情况。
 

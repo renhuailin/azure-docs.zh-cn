@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: reference
 author: vladai78
 ms.author: vladiv
-ms.reviewer: mathoma, jovanpop, sachinp
-ms.date: 09/14/2020
-ms.openlocfilehash: c134631d33313eaefef63fde48dd1693354bf18d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.reviewer: mathoma, vladiv, sachinp
+ms.date: 09/28/2021
+ms.openlocfilehash: 7fba2ede931375d310b64bf7800b2adf43b2a24e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692872"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212772"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -142,13 +142,21 @@ SQL 托管实例只能在[支持的区域](https://azure.microsoft.com/global-in
 
 |订阅类型| SQL 托管实例子网的最大数量 | vCore 单元数目上限* |
 | :---| :--- | :--- |
-|即用即付|3|320|
-|CSP |8（在某些区域中为 15**）|960（在某些区域中为 1440**）|
-|即用即付开发/测试|3|320|
-|Enterprise 开发/测试|3|320|
-|EA|8（在某些区域中为 15**）|960（在某些区域中为 1440**）|
-|Visual Studio Enterprise|2 |64|
-|Visual Studio Professional 和 MSDN 平台|2|32|
+|CSP |16（在某些区域中为 30**）|960（在某些区域中为 1440**）|
+|EA|16（在某些区域中为 30**）|960（在某些区域中为 1440**）|
+|Enterprise 开发/测试|6|320|
+|即用即付|6|320|
+|即用即付开发/测试|6|320|
+|Azure Pass|3|64|
+|BizSpark|3|64|
+|BizSpark Plus|3|64|
+|Microsoft Azure 赞助|3|64|
+|Microsoft 合作伙伴网络|3|64|
+|Visual Studio Enterprise (MPN)|3|64|
+|Visual Studio Enterprise|3|32|
+|Visual Studio Enterprise (BizSpark)|3|32|
+|Visual Studio Professional|3|32|
+|MSDN 平台|3|32|
 
 \*在计划部署时，请考虑业务关键 (BC) 服务层需要的 vCore 容量是常规用途 (GP) 服务层的四 (4) 倍。 例如：1 个 GP vCore = 1 个 vCore 单元，1 个 BC vCore = 4 个 vCore。 若要简化以默认限制为准的消耗量分析，请将区域中部署了 SQL 托管实例的所有子网中的 vCore 单元数进行汇总，并将结果与你的订阅类型的实例单元限制进行比较。 vCore 单元的最大数量限制适用于区域中的每个订阅。 除了跨多个子网部署的所有 vCore 的总和必须小于或等于 vCore 单元数上限外，每个子网没有任何限制。
 

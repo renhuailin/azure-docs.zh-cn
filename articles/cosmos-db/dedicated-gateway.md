@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/17/2021
 ms.author: tisande
-ms.openlocfilehash: 8c253abdfc8ded8ab5507d482640d78e6d4469c8
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 74a3bb89b10a48d5485df29797e891f80839047f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226604"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614838"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Azure Cosmos DB 专用网关 - 概述（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -98,8 +98,9 @@ ms.locfileid: "123226604"
 公共预览版的专用网关存在以下限制：
 
 - 专用网关仅在 SQL API 帐户中受支持。
-- 无法在配置了 [IP 防火墙](how-to-configure-firewall.md)或[专用链接](how-to-configure-private-endpoints.md)的 Azure Cosmos DB 帐户中预配专用网关。
-- 无法在启用了[可用性区域](high-availability.md#availability-zone-support)的 Azure Cosmos DB 帐户中预配专用网关。
+- 无法在配置了 [IP 防火墙](how-to-configure-firewall.md)或[专用链接](how-to-configure-private-endpoints.md)的 Azure Cosmos DB 帐户中连接到专用网关。
+- 无法在[虚拟网络 (Vnet)](how-to-configure-vnet-service-endpoint.md) 中连接到 Azure Cosmos DB 帐户中的专用网关
+- 无法在启用了[可用性区域](high-availability.md#availability-zone-support)的 Azure Cosmos DB 帐户中连接到专用网关。
 - 不能使用[基于角色的访问控制 (RBAC)](how-to-setup-rbac.md) 对通过专用网关路由的数据平面请求进行身份验证
 
 ## <a name="supported-regions"></a>支持的区域
@@ -108,7 +109,7 @@ ms.locfileid: "123226604"
 
 支持的 Azure 区域的最新列表：
 
-| **美洲** | 欧洲和非洲  | **亚太区**  |
+| **美洲** | **欧洲和非洲**  | **亚太区**  |
 | ------------ | -------- | ----------- | 
 | 巴西南部      | 法国中部    | 澳大利亚中部 |
 | 加拿大中部  | 法国南部    | 澳大利亚中部 2 |
@@ -130,6 +131,6 @@ ms.locfileid: "123226604"
 - [集成式缓存](integrated-cache.md)
 - [配置集成式缓存](how-to-configure-integrated-cache.md)
 - [集成式缓存常见问题解答](integrated-cache-faq.md)
-- 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以根据有关现有数据库群集的信息进行容量计划。
-    - 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
-    - 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
+- 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    - 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    - 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

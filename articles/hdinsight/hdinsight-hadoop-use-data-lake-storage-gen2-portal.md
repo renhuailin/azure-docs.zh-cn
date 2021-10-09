@@ -6,13 +6,13 @@ ms.author: guyhay
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 09/17/2020
-ms.openlocfilehash: 372eb428c1ddde52cb557265052bc9fee27d7c83
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 09/07/2021
+ms.openlocfilehash: 2014f0cde340b0070b8c8e5e7fbbd7c2ab6667fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112280398"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797565"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>通过 Azure 门户创建使用 Data Lake Storage Gen2 的群集
 
@@ -86,6 +86,7 @@ Azure 门户是一种基于 Web 的管理工具，用于管理 Microsoft Azure �
     > [!NOTE]
     > * 若要在存储帐户级别向 Data Lake Storage Gen2 添加辅助存储帐户，只需将先前创建的托管标识分配给要添加的新 Data Lake Storage Gen2 即可。 请注意，不支持通过 HDInsight 上的“其他存储帐户”边栏选项卡向 Data Lake Storage Gen2 添加辅助存储帐户。
     > * 可以在 HDInsight 使用的 Azure Blob 存储帐户上启用 RA-GRS 或 RA-ZRS。 但是，不支持针对 RA-GRS 或 RA-ZRS 辅助终结点创建群集。
+    > * HDInsight 不支持将 Data Lake Storage Gen2 设置为“读取访问异地区域冗余存储(RA-GZRS)”或“异地区域冗余存储(GZRS)”。
 
 ## <a name="delete-the-cluster"></a>删除群集
 

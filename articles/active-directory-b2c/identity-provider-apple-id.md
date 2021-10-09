@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c150fdae1820dee3ae440f4d4acdacff04e14e66
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 13120c083eda20b76581448c842db94d657cf42b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271085"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571889"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>使用 Azure Active Directory B2C 设置通过 Apple ID 注册与登录（预览）
 
@@ -78,7 +78,8 @@ ms.locfileid: "122271085"
 ## <a name="configure-apple-as-an-identity-provider"></a>将 Apple 配置为标识提供程序
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 依次选择“标识提供程序”和“Apple (预览)”。
 1. 对于名称，输入“使用 Apple 帐户登录”。 
@@ -126,6 +127,7 @@ ms.locfileid: "122271085"
 
     - appleTeamId：你的 Apple 开发者团队 ID
     - appleServiceId：Apple 服务 ID（客户端 ID）
+    - appleKeyId：存储在 JWT 标头中的 10 位密钥 ID（Apple 要求）
     - p8key：PEM 格式密钥。 获取此密钥的方式如下：在文本编辑器中打开 .p8 文件，复制 `-----BEGIN PRIVATE KEY-----` 和 `-----END PRIVATE KEY-----` 之间的所有内容（无换行符）。
  
 以下 JSON 是调用 Azure 函数的一个示例：
@@ -134,6 +136,7 @@ ms.locfileid: "122271085"
 {
     "appleTeamId": "ABC123DEFG",
     "appleServiceId": "com.yourcompany.app1",
+    "appleKeyId": "URKEYID001",
     "p8key": "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg+s07NiAcuGEu8rxsJBG7ttupF6FRe3bXdHxEipuyK82gCgYIKoZIzj0DAQehRANCAAQnR1W/KbbaihTQayXH3tuAXA8Aei7u7Ij5OdRy6clOgBeRBPy1miObKYVx3ki1msjjG2uGqRbrc1LvjLHINWRD"
 }
 ```
@@ -151,8 +154,9 @@ Azure 函数在响应中使用格式正确且已签名的客户端密码 JWT 做
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
-2. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 在“概述”页上，选择“Identity Experience Framework”。
 1. 选择“策略密钥”，然后选择“添加” 。
 1. 对于“选项”，选择“手动”。

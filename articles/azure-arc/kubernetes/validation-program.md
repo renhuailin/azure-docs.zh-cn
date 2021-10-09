@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: 描述用于 Kubernetes 分发的 Arc 验证计划
 keywords: Kubernetes, Arc, Azure, K8s, 验证
-ms.openlocfilehash: 6ebce59a16c994c676cfe81df4df4e9433d1fb70
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: f5057a7785ec77109d8fe8efb44e1015976786c8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966242"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672849"
 ---
 # <a name="azure-arc-enabled-kubernetes-validation"></a>已启用 Azure Arc 的 Kubernetes 验证
 
@@ -33,7 +33,7 @@ ms.locfileid: "122966242"
 | 提供程序名称 | 分发名称 | 版本 |
 | ------------ | ----------------- | ------- |
 | RedHat       | [OpenShift 容器平台](https://www.openshift.com/products/container-platform) | [4.5.41+](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html)、[4.6.35+](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html)、[4.7.18+](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
-| VMware       | [Tanzu Kubernetes 网格](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes 版本：v1.17.5 |
+| VMware       | [Tanzu Kubernetes 网格](https://tanzu.vmware.com/kubernetes-grid) | TKGm 1.4.0；Upstream K8s v1.21.2+vmware.1 <br>TKGm 1.3.1；Upstream K8s v1.20.5_vmware.2 <br>TKGm 1.2.1；Upstream K8s v1.19.3+vmware.1 |
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1.19](https://ubuntu.com/kubernetes/docs/1.19/components) |
 | SUSE Rancher      | [Rancher Kubernetes 引擎](https://rancher.com/products/rke/) | RKE CLI 版本：[v1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4)Kubernetes 版本：[1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6))、[1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14))、[1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
 | Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | 版本 2.2.1 |

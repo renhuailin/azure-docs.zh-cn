@@ -6,26 +6,21 @@ author: Heidilohr
 manager: lizross
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 09/15/2021
 ms.author: helohr
-ms.openlocfilehash: c7767ad85fabf748a442644f6c7c6701375d58c0
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: e6325c6511c6df9c3f3c021bc24a3f66b2e56c0f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228755"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207728"
 ---
-# <a name="deploy-azure-ad-joined-virtual-machines-in-azure-virtual-desktop"></a>在 Azure 虚拟桌面中部署联接 Azure AD 的 VM
+# <a name="deploy-azure-ad-joined-virtual-machines-in-azure-virtual-desktop"></a>在 Azure 虚拟桌面中部署联接 Azure AD 的虚拟机
 
-> [!IMPORTANT]
-> 联接 VM 的 Azure AD 支持目前为公共预览版。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-本文将介绍在 Azure 虚拟桌面中部署和访问联接 Azure Active Directory 的虚拟机的过程。 联接 Azure AD 的 VM 无需具有从 VM 到本地或虚拟化的 Active Directory 域控制器 (DC) 的视觉线，也无需部署 Azure AD 域服务 (Azure AD DS)。 在某些情况下，它可以完全消除 DC 的需求，从而简化环境的部署和管理。 这些 VM 还可以在 Intune 中自动注册，以便于管理。
+本文将介绍在 Azure 虚拟桌面中部署和访问联接 Azure Active Directory 的虚拟机的过程。 联接 Azure AD 的 VM 无需具有从 VM 到本地的或虚拟化的 Active Directory 域控制器 (DC) 的视觉线，也无需部署 Azure AD 域服务 (Azure AD DS)。 在某些情况下，它可以完全消除 DC 的需求，从而简化环境的部署和管理。 这些 VM 还可以在 Intune 中自动注册，以便于管理。
 
 > [!NOTE]
-> Azure 虚拟桌面（经典）不支持此功能。
+> 联接 Azure AD 的 VM 目前仅在 Azure 商业云中受支持。
 
 ## <a name="supported-configurations"></a>支持的配置
 
@@ -35,12 +30,20 @@ ms.locfileid: "122228755"
 - 用作跳转盒的共用桌面。 在此配置中，用户先访问 Azure 虚拟桌面 VM，然后再连接到网络上的其他电脑。 用户不应在 VM 上保存数据。
 - 用户无需在 VM 上保存数据的共用桌面或应用。 例如，联机保存数据或连接到远程数据库的应用程序。
 
-用户帐户可以是同一 Azure AD 租户中的仅云用户或混合用户。 目前不支持外部用户。
+用户帐户可以是同一 Azure AD 租户中的仅云用户或混合用户。
+
+## <a name="known-limitations"></a>已知的限制
+
+以下已知限制可能会影响对本地的或联接 Active Directory 域的资源的访问。在确定联接 Azure AD 的 VM 是否适合你的环境时，应当考虑这些限制。 目前，对于用户只需访问基于云的资源或基于 Azure AD 的身份验证的情况，建议使用联接 Azure AD 的 VM。
+
+- Azure 虚拟桌面（经典）不支持联接 Azure AD 的 VM。
+- 联接 Azure AD 的 VM 当前不支持外部用户。
+- 联接 Azure AD 的 VM 当前仅支持本地用户配置文件。
+- 联接 Azure AD 的 VM 无法访问 FSLogix 或 MSIX 应用附加的 Azure 文件存储文件共享。 需要 Kerberos 身份验证来访问这些功能之一。
+- Windows 应用商店客户端当前不支持联接 Azure AD 的 VM。
+- Azure 虚拟桌面目前不支持联接 Azure AD 的 VM 的单一登录。
 
 ## <a name="deploy-azure-ad-joined-vms"></a>部署联接 Azure AD 的 VM
-
-> [!IMPORTANT]
-> 在公共预览版期间，必须将主机池配置到[验证环境](create-validation-host-pool.md)中。
 
 [创建新主机池](create-host-pools-azure-marketplace.md)或[扩展现存主机池](expand-existing-host-pool.md)时，可以直接从 Azure 门户部署联接 Azure AD 的 VM。 在虚拟机选项卡上，选择将 VM 联接至 Active Directory 或 Azure Active Directory。 选择 Azure Active Directory 后，可以选择自动用 Intune 注册 VM，以便轻松管理 [Windows 10 企业版](/mem/intune/fundamentals/windows-virtual-desktop)和 [Windows 10 企业版多会话](/mem/intune/fundamentals/windows-virtual-desktop-multi-session) VM。 请记住，Azure Active Directory 选项将会把 VM 联接至你所在订阅中的同一 Azure AD 租户。
 
@@ -48,24 +51,20 @@ ms.locfileid: "122228755"
 > - 主机池应该仅包含相同域加入类型的 VM。 例如，联接 AD 的 VM 应该仅与其他 AD VM 一起，反之亦然。
 > - 主机池 VM 必须为 Windows 10 单会话或多会话，版本为 2004 或者更高。
 
-创建主机池后，必须分配用户访问权限。 对于联接 Azure AD 的 VM，需要执行两项操作：
+### <a name="assign-user-access-to-host-pools"></a>为用户分配对主机池的访问权限
 
-- 将用户添加到应用组，以授予他们访问资源的权限。
-- 向用户授予虚拟机用户登录角色，让他们可以登录到 VM。
+创建主机池后，必须为用户分配访问权限，以便他们访问其资源。 若要授予对资源的访问权限，请将每个用户添加到应用组。 按照[管理应用组](manage-app-groups.md)中的说明，为用户分配应用和桌面的访问权限。 我们建议尽可能使用用户组而不是单个用户。
 
-按照[管理应用组](manage-app-groups.md)中的说明，为用户分配应用和桌面的访问权限。 我们建议尽可能使用用户组而不是单个用户。
+对于联接 Azure AD 的 VM，需要在基于 Active Directory 或 Azure Active Directory 域服务的部署的要求的基础上执行两项额外操作：  
+
+- 为用户分配“虚拟机用户登录”角色，让他们可以登录到 VM。
+- 为需要本地管理权限的管理员分配“虚拟机管理员登录”角色。
 
 若要向用户授予联接 Azure AD 的 VM 的访问权限，则必须[为 VM 配置角色分配](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#configure-role-assignments-for-the-vm)。 可以在 VM、包含 VM 的资源组或订阅上分配虚拟机用户登录名或虚拟机管理员登录角色 。 建议将虚拟机用户登录角色分配给在资源组级别用于应用组的同一用户组，让其应用于主机池中的所有 VM。
 
 ## <a name="access-azure-ad-joined-vms"></a>访问联接 Azure AD 的 VM
 
 本节介绍如何从不同的 Azure 虚拟桌面客户端访问联接 Azure AD 的 VM。
-
-> [!NOTE]
-> 目前不支持使用 Windows Store 客户端连接至联接 Azure AD 的 VM。
-
-> [!NOTE]
-> Azure 虚拟桌面目前不支持联接 Azure AD 的 VM 的单一登录。
 
 ### <a name="connect-using-the-windows-desktop-client"></a>使用 Windows 桌面客户端连接
 
@@ -83,7 +82,7 @@ ms.locfileid: "122228755"
 
 ### <a name="enabling-mfa-for-azure-ad-joined-vms"></a>为联接 Azure AD 的 VM 启用 MFA
 
-可以通过在 Azure 虚拟桌面应用上设置条件访问策略，为联接 Azure AD 的 VM 启用[多重身份验证](set-up-mfa.md)。 若要成功连接，[请禁用旧版按用户多重身份验证](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#using-conditional-access)。 如果不想将登录限制为强身份验证方法（如 Windows Hello for Business），则还需要从条件访问策略中[排除 Azure Windows VM Sign-In 应用](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#mfa-sign-in-method-required)。
+可以通过在 Azure 虚拟桌面应用上设置条件访问策略，为联接 Azure AD 的 VM 启用[多重身份验证](set-up-mfa.md)。 若要成功进行连接，必须[禁用旧版按用户多重身份验证](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#mfa-sign-in-method-required)。 如果不想将登录限制为强身份验证方法（如 Windows Hello for Business），则还需要从条件访问策略中[排除 Azure Windows VM Sign-In 应用](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#mfa-sign-in-method-required)。
 
 ## <a name="user-profiles"></a>用户配置文件
 

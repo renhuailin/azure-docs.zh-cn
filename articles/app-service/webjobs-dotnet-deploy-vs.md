@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 06/24/2021
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: b65475b6f1558930ca8c91c7d1283745bc1b80b8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2c0fb760a5a20167da4a13fb483274908b98548b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778711"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558495"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>使用 Visual Studio 开发和部署 WebJobs
 
@@ -107,7 +107,7 @@ Visual Studio 会向启用了 WebJobs 的项目中添加以下项：
 > 
 
 #### <a name="use-the-webjobs-new-project-template-for-an-independent-webjob"></a><a id="createnolink"></a> 为独立的 Web 作业使用 Web 作业新建项目模板
-1. 选择“文件” > “新建” > “项目”  。 在“创建新项目”对话框中，搜索并选择“适用于 C# 的 Azure Web 作业(.NET Framework)”。
+1. 选择“文件” > “新建” > “项目”  。 在“创建新项目”对话框中，搜索并选择“适用于 C# 的“Azure WebJob (.NET Framework)”。
    
 2. 如前所述，[将控制台应用项目设为独立的 WebJobs 项目](#convertnolink)。
 

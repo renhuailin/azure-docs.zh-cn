@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 TOPdesk - Secure 集成 | Microsoft Docs
+title: 教程：Azure AD 与 TOPdesk - Secure 的 SSO 集成
 description: 了解如何在 Azure Active Directory 与 TOPdesk - Secure 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 5ed23889d8648c65ea0887d2f0f3406b50291f12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3784c7b022a807c86805187fbdffb61167970443
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654285"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679042"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>教程：Azure Active Directory 与 TOPdesk - Secure 集成
+# <a name="tutorial-azure-ad-sso-integration-with-topdesk---secure"></a>教程：Azure AD 与 TOPdesk - Secure 的 SSO 集成
 
 本教程介绍如何将 TOPdesk - Secure 与 Azure Active Directory (Azure AD) 集成。 将 TOPdesk - Secure 与 Azure AD 集成后，可以：
 
@@ -37,7 +37,7 @@ ms.locfileid: "101654285"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* TOPdesk - Secure 支持 **SP** 发起的 SSO
+* TOPdesk - Secure 支持 SP 发起的 SSO。
 
 ## <a name="add-topdesk---secure-from-the-gallery"></a>从库中添加 TOPdesk - Secure
 
@@ -64,7 +64,7 @@ ms.locfileid: "101654285"
     1. **[创建 TOPdesk - Secure 测试用户](#create-topdesk---secure-test-user)** - 在 TOPdesk - Secure 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
@@ -80,14 +80,14 @@ ms.locfileid: "101654285"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net`。
+    a. 在“标识符 URL”框中，填写可从 TOPdesk 配置中检索的 TOPdesk 元数据 URL。 它应使用以下模式：`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
 
-    b. 在“标识符 URL”框中，填写可从 TOPdesk 配置中检索的 TOPdesk 元数据 URL。 它应使用以下模式：`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net/tas/secure/login/verify`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net/tas/secure/login/verify`
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net`。
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [TOPdesk - Secure 客户端支持团队](https://www.topdesk.com/us/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [TOPdesk - Secure 客户端支持团队](https://www.topdesk.com/us/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -121,37 +121,37 @@ ms.locfileid: "101654285"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name=&quot;configure-topdesk---secure-sso&quot;></a>配置 TOPdesk - Secure SSO
+## <a name=&quot;configure-topdesk---secure-sso&quot;></a>配置 TOPdesk - Secure SSO
 
 1. 以管理员身份登录到你的 **TOPdesk（安全版）** 公司站点。
 
 2. 在 **“TOPdesk”** 菜单中，单击 **“设置”**。
 
-    ![设置](./media/topdesk-secure-tutorial/ic790598.png &quot;设置")
+    ![设置](./media/topdesk-secure-tutorial/menu.png &quot;设置")
 
 3. 单击 **“登录设置”**。
 
-    ![登录设置](./media/topdesk-secure-tutorial/ic790599.png "登录设置")
+    ![登录设置](./media/topdesk-secure-tutorial/overview.png "登录设置")
 
 4. 展开 **“登录设置”** 菜单，然后单击 **“常规”**。
 
-    ![常规](./media/topdesk-secure-tutorial/ic790600.png "常规")
+    ![常规](./media/topdesk-secure-tutorial/navigator.png "常规")
 
 5. 在 **“SAML 登录”** 配置部分的 **“安全”** 部分中，执行以下步骤：
 
-    ![技术设置](./media/topdesk-secure-tutorial/ic790855.png "技术设置")
+    ![技术设置](./media/topdesk-secure-tutorial/configuration.png "技术设置")
 
     a. 单击 **“下载”** 以下载公共元数据文件，然后将其本地保存到计算机上。
 
     b. 打开元数据文件，然后找到 **AssertionConsumerService** 节点。
 
-    ![断言使用者服务](./media/topdesk-secure-tutorial/ic790856.png "断言使用者服务")
+    ![断言使用者服务](./media/topdesk-secure-tutorial/service.png "断言使用者服务")
 
     c. 复制 **AssertionConsumerService** 值，并将此值粘贴到“TOPdesk - Secure 域和 URL”部分中的“回复 URL”文本框内。
 
 6. 若要创建证书文件，请执行以下步骤：
 
-    ![证书](./media/topdesk-secure-tutorial/ic790606.png "证书")
+    ![证书](./media/topdesk-secure-tutorial/file.png "证书")
 
     a. 在 Azure 门户中打开下载的元数据文件。
 
@@ -163,11 +163,11 @@ ms.locfileid: "101654285"
 
 7. 在 **“公共”** 部分中，单击 **“添加”**。
 
-    ![添加](./media/topdesk-secure-tutorial/ic790607.png "添加")
+    ![添加](./media/topdesk-secure-tutorial/secure.png "添加")
 
 8. 在 **“SAML 配置助手”** 对话框页上，执行以下步骤：
 
-    ![SAML 配置助手](./media/topdesk-secure-tutorial/ic790608.png "SAML 配置助手")
+    ![SAML 配置助手](./media/topdesk-secure-tutorial/metadata.png "SAML 配置助手")
 
     a. 若要从 Azure 门户上传已下载的元数据文件，请在“联合元数据”下单击“浏览”。
 
@@ -194,11 +194,11 @@ ms.locfileid: "101654285"
 
 2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“操作员”。
 
-    ![Operator](./media/topdesk-secure-tutorial/ic790610.png "操作员")
+    ![Operator](./media/topdesk-secure-tutorial/support-files.png "操作员")
 
 3. 在 **“新建操作员”** 对话框上，执行以下步骤：
 
-    ![新建操作员](./media/topdesk-secure-tutorial/ic790611.png "New 运算符")
+    ![新建操作员](./media/topdesk-secure-tutorial/details.png "New 运算符")
 
     a. 单击“常规”选项卡。
 
@@ -213,7 +213,7 @@ ms.locfileid: "101654285"
 > [!NOTE]
 > 可使用任何其他 TOPdesk - Secure 用户帐户创建工具或 TOPdesk - Secure 提供的 API 来预配 Azure AD 用户帐户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -221,7 +221,7 @@ ms.locfileid: "101654285"
 
 * 直接转到 TOPdesk - Secure 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 TOPdesk - Secure 磁贴时，应当会自动登录到已为其设置了 SSO 的 TOPdesk - Secure。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 TOPdesk - Secure 磁贴时，应当会自动登录到已为其设置了 SSO 的 TOPdesk - Secure。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

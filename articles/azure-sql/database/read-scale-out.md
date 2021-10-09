@@ -10,35 +10,35 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 07/06/2021
-ms.openlocfilehash: f5822a3d5594388627858be22ca9bbc0a43c1739
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/23/2021
+ms.openlocfilehash: 46cfef6e2a226e6eb3c369b46a1214943c998bc1
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361074"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059257"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用只读副本卸载只读的查询工作负荷
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 作为[高可用性体系结构](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)的一部分，“高级”和“业务关键”服务层级中的每个单一数据库、弹性池数据库和托管实例会自动预配有一个主读写副本和多个次要只读副本。 为次要副本预配的计算大小与主要副本相同。 “读取扩展”功能允许使用一个只读副本的计算容量而不是在读写副本上运行它们来卸载只读工作负荷。 这样，一些只读工作负荷可与读写工作负荷相隔离，并且不会影响其性能。 该功能适用于包含逻辑隔离的只读工作负荷（例如分析）的应用程序。 在“高级”和“业务关键”服务层级中，应用程序可以使用此额外的容量获得性能优势，而无需额外付费。
 
-如果至少创建了一个次要副本，则“超大规模”服务层级还会提供“读取扩展”功能。 如果只读工作负荷需要的资源多于一个次要副本上的可用资源，则可使用多个次要副本对该只读工作负荷进行负载均衡。
+如果至少添加了一个[次要副本](service-tier-hyperscale-replicas.md)，则在超大规模服务层级中也可以使用“读取扩展”功能。 超大规模辅助[命名副本](service-tier-hyperscale-replicas.md#named-replica-in-preview)提供独立的缩放、访问隔离、工作负荷隔离、大规模读取横向扩展以及其他权益。 多个次要 [HA 副本](service-tier-hyperscale-replicas.md#high-availability-replica)可用于对只读工作负载进行负荷平衡，只读工作负荷需要的资源量超过了一个次要 HA 副本上提供的资源。 
 
 “基本”、“标准”和“常规用途”服务层级的高可用性体系结构不包含任何副本。 读取扩展功能在这些服务层级中不可用。
 
-下图演示了该功能。
+下图说明了用于高级版和业务关键数据库以及托管实例的功能。
 
 ![只读副本](./media/read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-新的“高级”、“业务关键”和“超大规模”数据库中默认已启用读取扩展功能。 对于超大规模，默认情况下，为新数据库创建一个次要副本。 
+新的“高级”、“业务关键”和“超大规模”数据库中默认已启用读取扩展功能。
 
 > [!NOTE]
-> 托管实例的“业务关键”服务层级中始终启用读取扩展功能。
+> 读取扩展在托管实例的业务关键服务层中始终处于启用状态，并且对于至少具有一个辅助副本的超大规模数据库处于启用状态。
 
 如果在 SQL 连接字符串中配置为 `ApplicationIntent=ReadOnly`，则将应用程序重定向到该数据库或托管实例的只读副本。 有关如何使用 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
 
-如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果将数据库从“标准”或“常规用途”层级升级到“高级”、“业务关键”或“超大规模”层级，并想要确保所有连接继续定向到主要副本，请禁用读取扩展。有关如何禁用读取扩展的详细信息，请参阅[启用和禁用读取扩展](#enable-and-disable-read-scale-out)。
+如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果你将数据库从标准层级或常规用途层级升级到高级版或业务关键，并且要确保所有连接继续转到主副本，请禁用读取横向扩展。有关禁用方法的详细信息，请参阅[启用和禁用读取横向扩展](#enable-and-disable-read-scale-out)。
 
 > [!NOTE]
 > 只读副本不支持查询存储和 SQL Profiler 功能。 
@@ -85,7 +85,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 当连接到只读副本时，动态管理视图 (DMV) 反映副本的状态，并可对其进行查询以进行监视和故障排除。 数据库引擎提供了多个视图来公开各种监视数据。 
 
-常用视图如下：
+以下视图通常用于副本监视和故障排除：
 
 | 名称 | 目的 |
 |:---|:---|
@@ -117,12 +117,12 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>只读副本上的长时间运行的查询
 
-只读副本上运行的查询需要访问查询中引用的对象的元数据（表、索引、统计信息等）极少数情况下，如果在主要副本上修改元数据对象，而查询持有对只读副本上同一对象的锁定，则该查询可以[阻止](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)将主要副本的更改应用到只读副本的过程。 如果此类查询长时间运行，会导致只读副本与主要副本明显不同步。
+在只读副本上运行的查询需要访问查询中引用的对象的元数据（表、索引、统计信息等）。在极少数情况下，如果在主副本上修改了对象元数据，而查询在只读副本上持有对同一对象的锁定，则查询能会[阻止](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK)将主副本中的更改应用到只读副本的过程。 如果此类查询长时间运行，会导致只读副本与主要副本明显不同步。 若副本是潜在故障转移目标（辅助副本在高级版和业务关键服务层、超大规模 HA 副本和所有地理副本），这还会让数据库恢复延迟（如果应进行故障转移），导致时间比预期时间长。
 
-如果在只读副本上长时间运行的查询导致这种阻塞，它将自动终止。 该会话将收到错误 1219“由于高优先级 DDL 操作，你的会话已断开连接”或错误 3947“由于辅助计算未能赶上重做，事务已中止。 请重试该事务。”
+如果对只读副本的长时间运行的查询直接或间接地导致此类阻止行为，则查询可能会自动终止，以避免过多的数据延迟以及可能对数据库可用性造成的影响。 该会话将收到错误 1219“由于高优先级 DDL 操作，你的会话已断开连接”或错误 3947“由于辅助计算未能赶上重做，事务已中止。 请重试该事务。”
 
 > [!NOTE]
-> 如果针对只读副本运行查询时收到错误 3961、1219 或 3947，则重试查询。
+> 如果针对只读副本运行查询时收到错误 3961、1219 或 3947，则重试查询。 或者，当在次要副本上执行长时间运行的查询，避免在主副本上执行将修改对象元数据的操作（架构更改、索引维护、统计更新等）。
 
 > [!TIP]
 > 在“高级”和“业务关键”服务层级中，连接到只读副本时，[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的 `redo_queue_size` 和 `redo_rate` 列都可用于监视数据同步过程，作为只读副本上数据传播延迟的指示。
@@ -130,7 +130,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 ## <a name="enable-and-disable-read-scale-out"></a>启用和禁用读取扩展
 
-“高级”、“业务关键”和“超大规模”服务层级中默认已启用读取扩展。 无法在“基本”、“标准”或“常规用途”服务层级中启用读取扩展。 “读取扩展”在配置了 0 个副本的“超大规模”数据库上自动禁用。
+“高级”、“业务关键”和“超大规模”服务层级中默认已启用读取扩展。 无法在“基本”、“标准”或“常规用途”服务层级中启用读取扩展。 在配置了 0 个次要副本的“超大规模”数据库上会自动禁用“读取扩展”。
 
 可以使用以下方法，对“高级”或“业务关键”服务层级中的单一数据库和弹性池数据库禁用和重新启用读取扩展。
 
@@ -186,16 +186,16 @@ Body: {
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>在只读副本上使用 `tempdb` 数据库
 
-主要副本上的 `tempdb` 数据库不会复制到只读副本。 每个副本具有自身的 `tempdb` 数据库，该数据库是创建该副本时创建的。 这确保 `tempdb` 可更新，并可以在执行查询期间进行修改。 如果只读工作负荷依赖于使用 `tempdb` 对象，则应创建这些对象作为查询脚本的一部分。
+主要副本上的 `tempdb` 数据库不会复制到只读副本。 每个副本具有自身的 `tempdb` 数据库，该数据库是创建该副本时创建的。 这确保 `tempdb` 可更新，并可以在执行查询期间进行修改。 如果只读工作负荷依赖于使用 `tempdb` 对象，则应该在连接到只读副本时，在同一个工作负荷中创建这些对象。
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>结合使用读取扩展与异地复制的数据库
 
 异地复制的辅助数据库具有与主数据库相同的高可用性体系结构。 如果要连接到启用了读取扩展的异地复制辅助数据库，则设置为 `ApplicationIntent=ReadOnly` 的会话将路由到其中一个高可用性副本，就像在主要的可写入数据库上路由它们一样。 而未设为 `ApplicationIntent=ReadOnly` 的会话将路由到异地复制辅助数据库的主要副本，该副本也为只读。 
 
-通过这种方式，创建异地副本将为读写主数据库另外提供两个只读副本，总计三个只读副本。 其他每个异地副本提供另一对只读副本。 可在任何 Azure 区域（包括主数据库的区域）创建异地副本。
+这样，创建异地副本可以为读写主数据库提供多个额外的只读副本。 其他每个异地副本提供另一组只读副本。 可在任何 Azure 区域（包括主数据库的区域）创建异地副本。
 
 > [!NOTE]
-> 异地复制的辅助数据库的副本之间没有自动轮循机制或任何其他负载均衡路由。
+> 异地复制辅助数据库的副本之间没有自动轮循机制或任何其他负载均衡路由，但具有多个 HA 副本的超大规模异地副本除外。 在这种情况下，具有只读意向的会话分布在异地副本的所有 HA 副本上。
 
 ## <a name="next-steps"></a>后续步骤
 

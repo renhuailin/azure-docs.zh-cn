@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 06/10/2021
-ms.openlocfilehash: 6998005024bdbf61fb941ae3ff778be55dc5bb26
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 40323124846bd825b2d0c51d16f7dfa7dc67511f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729772"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082667"
 ---
 # <a name="license-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“许可证”仪表板
 
@@ -27,11 +27,31 @@ ms.locfileid: "121729772"
 
 ## <a name="check-license-usage"></a>检查许可证使用情况
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
 若要检查合作伙伴中心的 ISV 应用的许可证使用情况，请执行以下操作：
+
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“见解”磁贴。
+
+    [ ![说明合作伙伴中心主页上的“见解”磁贴。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 在左侧菜单中，选择“许可证”。
+
+    [ ![合作伙伴中心内“许可证”仪表板的屏幕截图。](./media/license-dashboard/license-dashboard-workspaces.png) ](./media/license-dashboard/license-dashboard-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+若要检查合作伙伴中心的 ISV 应用的许可证使用情况，请执行以下操作：
+
 1. 登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 1. 在左侧导航菜单中，选择“商业市场” > “分析” > “许可证”  。
 
 :::image type="content" source="./media/license-dashboard/license-dashboard.png" alt-text="合作伙伴中心中的“许可证”仪表板的屏幕截图。":::
+
+---
 
 ## <a name="elements-of-the-license-dashboard"></a>“许可证”仪表板的元素
 
@@ -41,7 +61,15 @@ ms.locfileid: "121729772"
 
 可在页面右上角找到月份范围选项。 通过基于过去 6 或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，自定义页面上小组件的输出内容。 默认月份范围（计算期间）为 6 个月。
 
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view) 
+
+[ ![合作伙伴中心内“许可证”仪表板上月份范围选择的屏幕截图。](./media/license-dashboard/license-workspace-filters.png) ](./media/license-dashboard/license-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view) 
+
 :::image type="content" source="./media/license-dashboard/month-range.png" alt-text="合作伙伴中心的“许可证”仪表板上的月范围选择屏幕截图。":::
+
+---
 
 ## <a name="customers-widget"></a>“客户”小组件
 

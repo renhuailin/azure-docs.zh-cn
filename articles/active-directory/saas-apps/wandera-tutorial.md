@@ -1,7 +1,6 @@
 ---
-title: 教程：Azure Active Directory 与 Wandera RADAR Admin 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Wandera RADAR Admin 的集成
 description: 了解如何在 Azure Active Directory 和 Wandera RADAR Admin 之间配置单一登录。
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: celested
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 7f2658261e89ab82c59cdb9b3491766e95491c92
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: c6606494bcdcc006634d4bbb4405933e0adb8ebb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985165"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653790"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>教程：将 Wandera RADAR Admin 与 Azure Active Directory 集成
 
@@ -81,7 +80,7 @@ ms.locfileid: "111985165"
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://radar.wandera.com/saml/acs/<TENANT_ID>` 
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Wandera RADAR Admin客户端支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。 小心将上面 URL 的 <tenant id> 部分替换为 Wandera 帐户内 **设置** > **管理** > **单一登录** 页中显示的租户 ID。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Wandera RADAR Admin客户端支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。 小心将上面 URL 的 \<tenant id\> 部分替换为 Wandera 帐户内 **设置** > **管理** > **单一登录** 页中显示的租户 ID。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -157,7 +156,7 @@ ms.locfileid: "111985165"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 Wandera RADAR Admin。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Wandera RADAR Admin”磁贴时，你应会自动登录到为其设置了 SSO 的 Wandera RADAR Admin。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Wandera RADAR Admin”磁贴时，你应会自动登录到为其设置了 SSO 的 Wandera RADAR Admin。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

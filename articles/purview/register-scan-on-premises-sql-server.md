@@ -1,18 +1,18 @@
 ---
 title: 注册和扫描本地 SQL Server
-description: 本教程介绍如何使用自承载 IR 扫描本地 SQL Server。
+description: 本教程介绍如何在 Azure Purview 中使用自承载 IR 扫描本地 SQL Server。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/18/2020
-ms.openlocfilehash: 2f07ed4ca7bdb722a2563c5e81f7e30a57c79aeb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 4cef99adecadc73f105dfffcdc72163c8b622cc3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721938"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208625"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>注册和扫描本地 SQL Server
 
@@ -48,16 +48,6 @@ SQL Server 本地数据源支持：
 
 SQL 帐户必须拥有访问 master 数据库的权限。 这是因为 `sys.databases` 位于 master 数据库中。 要查找服务器上的所有 SQL 数据库，Purview 扫描程序需要枚举 `sys.databases`。
 
-#### <a name="using-an-existing-server-administrator"></a>使用现有的服务器管理员
-
-如果计划使用现有服务器管理员 (sa) 用户扫描本地 SQL Server，请确保以下各项：
-
-1. `sa` 不是 Windows 身份验证帐户。
-
-2. 你计划使用的服务器级别登录名必须具有 public 和 sysadmin 服务器角色。 验证方式如下：连接到服务器，导航到 SQL Server Management Studio (SSMS)，导航到“安全性”，选择计划使用的登录名，右键单击“属性”，然后选择“服务器角色”。
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="服务器级别登录。":::
-
 #### <a name="creating-a-new-login-and-user"></a>创建新登录名和用户
 
 如果要创建新的登录名和用户以扫描 SQL Server，请执行以下步骤：
@@ -65,7 +55,7 @@ SQL 帐户必须拥有访问 master 数据库的权限。 这是因为 `sys.data
 > [!Note]
    > 以下所有步骤均可使用[此处](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)提供的代码执行
 
-1. 导航到 SQL Server Management Studio (SSMS)，连接到服务器，导航到“安全性”，右键单击“登录”并创建新登录名。 请确保选择“SQL 身份验证”。
+1. 导航到 SQL Server Management Studio (SSMS)，连接到服务器，导航到“安全性”，选择并按住（或右键单击）“登录”并创建新登录名。 请确保选择“SQL 身份验证”。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="创建新登录名和用户。":::
 
@@ -75,9 +65,9 @@ SQL 帐户必须拥有访问 master 数据库的权限。 这是因为 `sys.data
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="用户映射。":::
 
-4. 单击“确定”进行保存  。
+4. 选择“确定”进行保存。
 
-5. 右键单击并选择“属性”，再次导航到所创建的用户。 输入新密码并进行确认。 选择“指定旧密码”，然后输入旧密码。 创建新登录名后需要尽快更改密码。
+5. 选择并按住（或右键单击）“属性”，再次导航到所创建的用户。 输入新密码并进行确认。 选择“指定旧密码”，然后输入旧密码。 创建新登录名后需要尽快更改密码。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/change-password.png" alt-text="更改密码。":::
 
@@ -109,7 +99,7 @@ SQL 帐户必须拥有访问 master 数据库的权限。 这是因为 `sys.data
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择已注册的 SQL Server 源。
 

@@ -4,15 +4,15 @@ description: 介绍异常检测的工作原理、发送通知的时间以及如�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.author: mingshen
-author: mingshen-ms
-ms.date: 06/10/2020
-ms.openlocfilehash: 8c0cba39c2fe299a2cc822309b0063d2d4fe2f71
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+author: saasguide
+ms.author: souchak
+ms.date: 09/27/2021
+ms.openlocfilehash: 8e8989eabc08b98b8b0bac922d7c998496c74a1c
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431512"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455145"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>针对按流量计费的异常情况检测服务
 
@@ -67,7 +67,26 @@ ms.locfileid: "113431512"
 
 提交与按流量计费异常相关的支持票证：
 
-1. 用你的工作帐户登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)。
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 用你的工作帐户登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“帮助 + 支持”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“帮助和支持”磁贴。](../media/workspaces/partner-center-help-support-tile.png) ](../media/workspaces/partner-center-help-support-tile.png#lightbox)
+
+1. 在“我的支持请求”下，选择“+ 新建请求” 。
+1. 在“问题摘要”框中，输入“按流量计费”。
+1. 在“问题类型”框中，选择以下任一项：
+    - 商业市场 > 按流量计费 > 发送的 Azure 应用程序产品/服务使用情况有误
+    - 商业市场 > 按流量计费 > 发送的 SaaS 产品/服务使用情况有误
+1. 在“下一步”中，选择“查看解决方案”。
+1. 查看建议的文档（如果有），或选择“提供问题详细信息”以提交支持票证。
+
+有关更多发布者支持选项，请参阅[合作伙伴中心对商业市场计划的支持](../support.md)。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 用你的工作帐户登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 1. 在页面右上角的菜单中，选择“支持”图标。 “帮助和支持”窗格显示在页面的右侧。
 1. 要获得有关商业市场的帮助，请选择“商业市场”。
    ![显示“支持”窗格。](../media/support/commercial-marketplace-support-pane.png)
@@ -79,6 +98,8 @@ ms.locfileid: "113431512"
 1. 查看建议的文档（如果有），或选择“提供问题详细信息”以提交支持票证。
 
 有关更多发布者支持选项，请参阅[合作伙伴中心对商业市场计划的支持](../support.md)。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

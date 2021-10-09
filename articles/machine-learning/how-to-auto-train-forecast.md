@@ -6,16 +6,16 @@ services: machine-learning
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
 ms.date: 06/11/2021
-ms.openlocfilehash: 87ee8e4b5d28628ae09eec83d7f72f44e762e34f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f8e036a77603c1e0833117a4562ad9dfd93c7ac9
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182290"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427184"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>设置 AutoML，通过 Python 训练时序预测模型
 
@@ -147,7 +147,7 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 |`forecast_horizon`|定义要预测的未来的时段数。 范围以时序频率为单位。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
 |`enable_dnn`|[启用预测 DNN]()。||
 |`time_series_id_column_names`|列名，用于唯一标识多行数据中具有相同时间戳的时序。 如果未定义时序标识符，则假定该数据集为一个时序。 要详细了解单个时序，请查看 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。||
-|`freq`| 时序数据集频率。 此参数表示事件预计发生的时间段，例如每日、每周、每年等。频率必须是 [pandas 偏移别名](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)。 详细了解[频率].(#frequency--target-data-aggregation)||
+|`freq`| 时序数据集频率。 此参数表示事件预计发生的时间段，例如每日、每周、每年等。频率必须是 [pandas 偏移别名](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)。 详细了解[频率].(#frequency-target-data-aggregation)||
 |`target_lags`|要根据数据频率滞后目标值的行数。 此滞后表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 ||
 |`feature_lags`| 当设置了 `target_lags` 并且 `feature_lags` 设置为 `auto` 时，要滞后的功能将由自动化 ML 自动确定。 启用功能滞后有助于提高准确性。 默认情况下会禁用功能滞后。 ||
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。 详细了解[目标滚动窗口聚合](#target-rolling-window-aggregation)。||
@@ -360,17 +360,17 @@ ws = Workspace.from_config()
 experiment = Experiment(ws, "Tutorial-automl-forecasting")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
-```
+``` 
  
 ## <a name="forecasting-with-best-model"></a>用最佳模型进行预测
 
 使用最佳模型迭代来预测测试数据集的值。
 
-[forecast_quantiles()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#forecast-quantiles-x-values--typing-any--y-values--typing-union-typing-any--nonetype----none--forecast-destination--typing-union-typing-any--nonetype----none--ignore-data-errors--bool---false-----azureml-data-abstract-dataset-abstractdataset)函数允许指定预测的开始时间，这与通常用于分类和回归任务的 `predict()` 方法不同。 默认情况下，forecast_quantiles() 方法会生成一个点预测或一个平均值/中值预测，周围没有不确定性锥。 
+[forecast_quantiles()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#forecast-quantiles-x-values--typing-any--y-values--typing-union-typing-any--nonetype----none--forecast-destination--typing-union-typing-any--nonetype----none--ignore-data-errors--bool---false-----azureml-data-abstract-dataset-abstractdataset) 函数允许指定预测的开始时间，这与通常用于分类和回归任务的 `predict()` 方法不同。 默认情况下，forecast_quantiles() 方法生成点预测或平均值/中值预测，而该预测周围没有不确定因素。 
 
 在下例中，先将 `y_pred` 中的所有值替换为 `NaN`。 在本例中，预测原点位于训练数据的末尾。 但是，如果只将 `y_pred` 的后半部分替换为 `NaN`，则函数不会修改前半部分的数值，而会在后半部分预测 `NaN` 值。 函数将返回预测值和对齐的特征。
 
-还可使用 `forecast_quantiles()` 函数中的 `forecast_destination` 参数，预测到指定日期为止的值。
+还可以在 `forecast_quantiles()` 函数中使用 `forecast_destination` 参数以预测到指定日期为止的值。
 
 ```python
 label_query = test_labels.copy().astype(np.float)
@@ -379,7 +379,7 @@ label_fcst, data_trans = fitted_model.forecast_quantiles(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-通常，客户希望了解分布中特定分位数的预测。 例如，使用预测来控制库存，如杂货店的商品或云服务的虚拟机。 在这种情况下，控制点通常类似于“我们希望该商品有库存，99% 的时间里不会用完”。 下面演示了如何指定想要看到的预测的分位数，例如第 50 或第 95 个百分位。 如果未指定分位数，如前面提到的代码示例中所示，则只生成第 50 个百分位的预测。 
+通常客户想要了解分布的特定分位数处的预测。 例如，当为了控制库存（如杂货或云服务的虚拟机库存）而进行预测时。 在这种情况下，控制点通常类似“我们希望货品有库存，且 99% 的时间都有货”。 下面演示如何指定要针对预测查看的分位数，例如第 50 或第 95 百分位数。 如果不指定分位数（如上述代码示例中所示），则仅生成第 50 百分位数预测。 
 
 ```python
 # specify which quantiles you would like 
@@ -413,6 +413,95 @@ day_datetime,store,week_of_year
 
 > [!NOTE]
 > 启用了 `target_lags` 和/或 `target_rolling_window_size` 后，使用自动化 ML 进行预测时不支持样本中预测。
+
+## <a name="forecasting-at-scale"></a>大规模预测 
+
+在有些方案中，单个机器学习模型是不足的，需要提供多个机器学习模型。 例如，预测各个商店某个品牌的销售额，或者为个人用户定制体验。 为每个实例构建模型可以改善许多机器学习的相关问题。 
+
+分组是时序预测中的一种概念，它允许组合时序，以便为每个组训练独立模型。 如果时序需要进行平滑处理、填充或组中包含可从其他实体的历史记录或趋势获益的实体，则此方法可能特别有用。 多模型和分层时序预测是由自动化机器学习提供支持的解决方案，它们针对这些大规模预测方案而提供。 
+
+### <a name="many-models"></a>多模型
+
+使用自动化机器学习的 Azure 机器学习多模型解决方案允许用户并行训练和管理数百万模型。 多模型解决方案加速器利用 [Azure 机器学习管道](concept-ml-pipelines.md)来训练模型。 具体而言，将使用[管道](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29)对象和 [ParalleRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep)，并需要通过 [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig) 设置的特定配置参数。 
+
+
+下图显示了多模型解决方案的工作流。 
+
+![多模型概念图](./media/how-to-auto-train-forecast/many-models.svg)
+
+以下代码演示了用户设置和运行多模型所需的关键参数。
+
+```python
+from azureml.train.automl.runtime._many_models.many_models_parameters import ManyModelsTrainParameters
+
+partition_column_names = ['Store', 'Brand']
+automl_settings = {"task" : 'forecasting',
+                   "primary_metric" : 'normalized_root_mean_squared_error',
+                   "iteration_timeout_minutes" : 10, #This needs to be changed based on the dataset. Explore how long training is taking before setting this value 
+                   "iterations" : 15,
+                   "experiment_timeout_hours" : 1,
+                   "label_column_name" : 'Quantity',
+                   "n_cross_validations" : 3,
+                   "time_column_name": 'WeekStarting',
+                   "max_horizon" : 6,
+                   "track_child_runs": False,
+                   "pipeline_fetch_max_batch_size": 15,}
+
+mm_paramters = ManyModelsTrainParameters(automl_settings=automl_settings, partition_column_names=partition_column_names)
+
+```
+
+### <a name="hierarchical-time-series-forecasting"></a>分层时序预测
+
+在大多数应用程序中，客户需要在宏观级别和微观级别了解预测数据，预测不同地理位置的产品销售额，或了解公司不同组织对劳动力的需求。 训练机器学习模型以智能地预测层次结构数据，这是至关重要的。 
+
+分层时序是一种结构，其中每个唯一序列都按维度（例如地理或产品类型）排列到层次结构中。 以下示例显示的数据具有构成层次结构的唯一属性。 层次结构通过这些方式定义：产品类型（例如耳机或平板电脑）、产品类别（将产品类型拆分为配件和设备）以及产品销售区域。 
+
+![分层数据的原始数据表示例](./media/how-to-auto-train-forecast/hierarchy-data-table.svg)
+ 
+为了进一步直观显示数据，层次结构的叶级别包含具有唯一属性值组合的所有时序。 层次结构中的每个更高级别所考虑的、用于定义时序的维度都会少一个，并且会将较低级别的每个子节点集聚合到一个父节点中。
+ 
+![数据的层次结构视觉对象](./media/how-to-auto-train-forecast/data-tree.svg)
+
+分层时序解决方案建立在多模型解决方案之上，它们共享类似的配置设置。
+
+以下代码演示了用于设置分层时序预测运行的关键参数。 
+
+```python
+
+from azureml.train.automl.runtime._hts.hts_parameters import HTSTrainParameters
+
+model_explainability = True
+
+engineered_explanations = False # Define your hierarchy. Adjust the settings below based on your dataset.
+hierarchy = ["state", "store_id", "product_category", "SKU"]
+training_level = "SKU"# Set your forecast parameters. Adjust the settings below based on your dataset.
+time_column_name = "date"
+label_column_name = "quantity"
+forecast_horizon = 7
+
+
+automl_settings = {"task" : "forecasting",
+                   "primary_metric" : "normalized_root_mean_squared_error",
+                   "label_column_name": label_column_name,
+                   "time_column_name": time_column_name,
+                   "forecast_horizon": forecast_horizon,
+                   "hierarchy_column_names": hierarchy,
+                   "hierarchy_training_level": training_level,
+                   "track_child_runs": False,
+                   "pipeline_fetch_max_batch_size": 15,
+                   "model_explainability": model_explainability,# The following settings are specific to this sample and should be adjusted according to your own needs.
+                   "iteration_timeout_minutes" : 10,
+                   "iterations" : 10,
+                   "n_cross_validations": 2}
+
+hts_parameters = HTSTrainParameters(
+    automl_settings=automl_settings,
+    hierarchy_column_names=hierarchy,
+    training_level=training_level,
+    enable_engineered_explanations=engineered_explanations
+)
+```
 
 ## <a name="example-notebooks"></a>示例笔记本
 

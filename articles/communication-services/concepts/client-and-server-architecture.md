@@ -4,23 +4,22 @@ titleSuffix: An Azure Communication Services concept document
 description: 了解通信服务的体系结构。
 author: probableprime
 manager: mikben
-services: azure-communication-services
 ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 75ab8032d197b00516578f1e0a92f29122126249
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 6d1228ab412ff87f3004e6e1dd5ab1486cee67a0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966617"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360097"
 ---
 # <a name="client-and-server-architecture"></a>客户端和服务器体系结构
 
 本页说明了各种 Azure 通信服务方案中的典型体系结构组件和数据流。 相关组件包括：
 
-1. **客户端应用程序。** 最终用户使用此网站或本机应用程序进行通信。 Azure 通信服务为多个浏览器和应用程序平台提供 [SDK 客户端库](sdk-options.md)。 除了我们的核心 SDK 外，还提供了一个 [UI 工具包](https://aka.ms/acsstorybook)用于加速浏览器应用程序开发。
+1. **客户端应用程序。** 最终用户使用此网站或本机应用程序进行通信。 Azure 通信服务为多个浏览器和应用程序平台提供 [SDK 客户端库](sdk-options.md)。 除了我们的核心 SDK 外，还提供了一个 [UI 库](https://aka.ms/acsstorybook)用于加速浏览器应用开发。
 1. **标识管理服务。**  构建此服务功能是为了将业务逻辑中的用户和其他概念映射到 Azure 通信服务，并在需要时为这些用户创建令牌。
 1. **通话管理服务。**  构建此服务功能是为了管理和监视语音和视频通话。  此服务可以通过呼叫自动化 SDK 和 REST API 创建通话、邀请用户、呼叫电话号码、播放音频、收听 DMTF 声音以及利用许多其他通话功能。
 
@@ -85,7 +84,7 @@ Azure 通信服务应用程序可以加入 Teams 通话。 这适用于许多企
 
 
 ### <a name="dataflows"></a>数据流
-1. 通话管理服务使用 [Graph API](/graph/api/resources/onlinemeeting?view=graph-rest-1.0) 创建群组通话。 另一种模式是最终用户使用 [Bookings](https://www.microsoft.com/microsoft-365/business/scheduling-and-booking-app)、Outlook、Teams 或 Microsoft 365 生态系统中的其他计划体验创建群组通话。
+1. 通话管理服务使用 [Graph API](/graph/api/resources/onlinemeeting?view=graph-rest-1.0&preserve-view=true) 创建群组通话。 另一种模式是最终用户使用 [Bookings](https://www.microsoft.com/microsoft-365/business/scheduling-and-booking-app)、Outlook、Teams 或 Microsoft 365 生态系统中的其他计划体验创建群组通话。
 2. 通话管理服务与 Azure 通信服务客户端共享 Teams 通话的详细信息。
 3. 通常情况下，Teams 用户必须加入通话，并允许外部用户通过大厅加入。 但是，这种体验对 Teams 租户配置和特定会议设置很敏感。
 4. Azure 通信服务用户使用步骤 2 中收到的详细信息初始化其通话客户端并加入 Teams 会议。

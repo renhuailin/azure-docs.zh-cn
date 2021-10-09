@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 75e5100c12940083626d94367bb70b280a49711b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c537e9a9dd733d84161e59999ff17b8b0251f623
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665152"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061174"
 ---
 # <a name="enable-key-vault-logging"></a>启用 Key Vault 日志记录
 
@@ -229,12 +229,9 @@ $blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Co
 
 ## <a name="use-azure-monitor-logs"></a>使用 Azure Monitor 日志
 
-可以使用 Azure Monitor 日志中的 Key Vault 解决方案查看 Key Vault `AuditEvent` 日志。 在 Azure Monitor 日志中，可以使用日志查询来分析数据并获取所需的信息。
-
-有关详细信息，包括如何进行设置，请参阅 [Azure Monitor 中的 Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md)。
+可以使用 Azure Monitor 日志中的 Key Vault 解决方案查看 Key Vault `AuditEvent` 日志。 在 Azure Monitor 日志中，可以使用日志查询来分析数据并获取所需的信息。  有关详细信息，请参阅[监视密钥保管库](monitor-key-vault.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 关于如何解释 Key Vault 日志等概念性信息，请参阅 [Key Vault 日志记录](logging.md)。
-- 有关在 .NET Web 应用程序中使用 Azure Key Vault 的教程，请参阅[从 Web 应用程序使用 Azure Key Vault](tutorial-net-create-vault-azure-web-app.md)。
-- 有关编程参考，请参阅 [Azure Key Vault 开发人员指南](developers-guide.md)。
+- 若要了解有关在密钥保管库上使用 Azure Monitor 的详细信息，请参阅[监控密钥保管库](monitor-key-vault.md)。

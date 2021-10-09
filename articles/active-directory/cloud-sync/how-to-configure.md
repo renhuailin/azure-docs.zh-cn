@@ -7,20 +7,24 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffdd27b67a122f82cc5fdb5568f11c85387955e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1a8602b18c4ec68eacc37faca941211ee83fd63
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660790"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742641"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-sync"></a>为 Azure AD Connect 云同步创建新配置
 
-安装 Azure AD Connect 预配代理后，需要登录到 Azure 门户并对其进行配置。 请执行下列步骤以启用代理。
+以下文档将指导你配置 Azure AD Connect 云同步。有关如何配置云同步的其他信息和示例，请参阅下面的视频。
+
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWKact]
+
 
 ## <a name="configure-provisioning"></a>配置预配
 若要配置预配，请执行以下步骤。

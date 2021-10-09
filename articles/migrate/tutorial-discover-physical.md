@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: f925eb888c1955212a762eb46c63300afd17d77d
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 89548cf1c98e360569255b9028b26230fedf5ed2
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427722"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092331"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现物理服务器
 
@@ -194,28 +194,30 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3.运行 Azure Migrate 安装程序脚本
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
-2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
-3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
-4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+
+3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+
+4. 通过运行以下命令，运行名为“`AzureMigrateInstaller.ps1`”的脚本：
+
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 公有云上已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估物理服务器（或在 AWS、GCP、Xen 等其他云上运行的服务器） 。
 
-    :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="显示如何设置具有所需配置的设备的屏幕截图" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
+   :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="显示如何设置具有所需配置的设备的屏幕截图" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
 
 6. 此安装程序脚本执行以下操作：
 
- - 安装代理和 Web 应用程序。
- - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
- - 下载并安装 IIS 可重写模块。
- - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
- - 在路径下创建以下文件：
-    - **配置文件**：%Programdata%\Microsoft Azure\Config
-    - **日志文件**：%Programdata%\Microsoft Azure\Logs
+   - 安装代理和 Web 应用程序。
+   - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
+   - 下载并安装 IIS 可重写模块。
+   - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
+   - 在路径下创建以下文件：
+     - 配置文件：`%ProgramData%\Microsoft Azure\Config`
+     - 日志文件：`%ProgramData%\Microsoft Azure\Logs`
 
-成功执行脚本后，设备配置管理器将自动启动。
+成功执行该脚本后，将自动启动设备配置管理器。
 
 > [!NOTE]
 > 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
@@ -231,15 +233,15 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
 1. 在可连接到该设备的任一服务器上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*: 44368**。
 
    或者，可以在桌面上单击应用快捷方式打开该应用。
-2. 接受许可条款，并阅读第三方信息。
+1. 接受许可条款，并阅读第三方信息。
 1. 在 Web 应用 >“设置必备组件”中执行以下操作：
-    - **连接**：应用将检查服务器是否可访问 Internet。 如果服务器使用代理：
-        - 单击“设置代理”，并指定代理地址（格式为 http://ProxyIPAddress 或 http://ProxyFQDN) ）和侦听端口。
-        - 如果代理需要身份验证，请指定凭据。
-        - 仅支持 HTTP 代理。
-        - 如果已添加代理详细信息或已禁用代理和/或身份验证，请单击“保存”，再次触发连接性检查。
-    - **时间同步**：将验证时间。 设备上的时间应与 Internet 时间同步，这样才能正常发现服务器。
-    - **安装更新**：Azure Migrate：发现和评估将检查设备上是否安装了最新更新。 检查完成后，可以单击“查看设备服务”查看设备上运行的组件的状态和版本。
+   - **连接**：应用将检查服务器是否可访问 Internet。 如果服务器使用代理：
+     - 单击“设置代理”，并指定代理地址（格式为 http://ProxyIPAddress 或 http://ProxyFQDN) ）和侦听端口。
+     - 如果代理需要身份验证，请指定凭据。
+     - 仅支持 HTTP 代理。
+     - 如果已添加代理详细信息或已禁用代理和/或身份验证，请单击“保存”，再次触发连接性检查。
+   - **时间同步**：将验证时间。 设备上的时间应与 Internet 时间同步，这样才能正常发现服务器。
+   - **安装更新**：Azure Migrate：发现和评估将检查设备上是否安装了最新更新。 检查完成后，可以单击“查看设备服务”查看设备上运行的组件的状态和版本。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
@@ -249,14 +251,11 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
     ![显示设备代码的模式](./media/tutorial-discover-vmware/device-code.png)
 
 1. 单击“复制代码并登录”以复制设备代码，并在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-1. 在新选项卡上，粘贴设备代码并使用 Azure 用户名和密码登录。
-   
-   不支持使用 PIN 登录。
-3. 如果在未登录的情况下意外关闭了登录选项卡，则需要刷新设备配置管理器的浏览器选项卡以再次启用“登录”按钮。
+1. 在新选项卡上，粘贴设备代码并使用 Azure 用户名和密码登录。 不支持使用 PIN 登录。
+1. 如果在未登录的情况下意外关闭了登录选项卡，则需要刷新设备配置管理器的浏览器选项卡以再次启用“登录”按钮。
 1. 成功登录后，使用设备配置管理器返回到上一个选项卡。
-4. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限]()，会启动设备注册。
+1. 如果用于登录的 Azure 用户帐户对在密钥生成过程中创建的 Azure 资源具有恰当的[权限]()，会启动设备注册。
 1. 成功注册设备后，可以通过单击“查看详细信息”来查看注册详细信息。
-
 
 ## <a name="start-continuous-discovery"></a>启动持续发现
 
@@ -289,8 +288,7 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
 1. 在开始发现之前，可以随时 **重新验证** 与服务器之间的连接。
 1. 单击“开始发现”，开始发现已成功验证的服务器。 成功启动发现后，你可以针对表中的每个服务器检查发现状态。
 
-
-随即会启动发现。 每台服务器大约需要 2 分钟，才能将已发现的服务器的元数据显示在 Azure 门户中。
+大约需要 2 分钟才能完成对 100 台服务器及其元数据的发现以显示在 Azure 门户中。
 
 ## <a name="verify-servers-in-the-portal"></a>验证门户中的服务器
 
@@ -298,6 +296,13 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
 
 1. 打开 Azure Migrate 仪表板。
 2. 在 **Azure Migrate - 服务器**  >  **Azure Migrate：发现和评估** 页中，单击显示了 **已发现服务器** 计数的图标。
+
+## <a name="delete-servers"></a>删除服务器
+启动发现后，可通过以下方法从设备配置管理器中删除任何添加的服务器：在“添加发现源”表中搜索服务器名称并单击“删除” 。
+
+>[!NOTE]
+> 如果你选择删除已启动发现的服务器，它将停止正在进行的发现和评估，这可能影响包括此服务器的评估的置信度评级。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2171565)
+
 ## <a name="next-steps"></a>后续步骤
 
 - [评估物理服务器](tutorial-assess-physical.md)以便迁移到 Azure VM。

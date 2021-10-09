@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/17/2021
+ms.date: 09/20/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da0d7c9812575ce6b957e70dbe4f8bc165f39315
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: 8f8a535f7c74e32e59918badbda7747f24a1756f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138722"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623981"
 ---
 # <a name="federation-with-samlws-fed-identity-providers-for-guest-users-preview"></a>与适用于来宾用户的 SAML/WS-Fed 标识提供者联合（预览版）
 
@@ -59,29 +59,34 @@ SAML/WS-Fed IdP 联合来宾用户还可以使用包含租户信息的应用程�
 
 还可以通过添加租户信息，为来宾用户提供指向应用程序或资源的直接链接，例如 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`。
 
-## <a name="limitations"></a>限制
+## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 中的 DNS 验证域
-可以使用 Azure AD 中未经 DNS 验证的域（包括非托管的（经电子邮件验证的或“病毒性的”）Azure AD 租户）设置 SAML/WS-Fed IdP 联合。 但是，我们会阻止 Azure AD 验证域的 SAML/WS-Fed IdP 联合，以支持原生 Azure AD 托管域功能。 如果尝试使用 Azure AD 中经 DNS 验证的域设置 SAML/WS-Fed IdP 联合，则会在 Azure 门户或 PowerShell 中看到错误。
+### <a name="can-i-set-up-samlws-fed-idp-federation-with-azure-ad-verified-domains"></a>能否使用经 Azure AD 验证的域设置 SAML/WS-Fed IdP 联合？
+否，我们会阻止 Azure AD 验证域的 SAML/WS-Fed IdP 联合，以支持原生 Azure AD 托管域功能。 如果尝试使用 Azure AD 中经 DNS 验证的域设置 SAML/WS-Fed IdP 联合，则会在 Azure 门户或 PowerShell 中看到错误。
 
-### <a name="signing-certificate-renewal"></a>签名证书续订
-如果在 IdP 设置中指定元数据 URL，Azure AD 将在签名证书过期时自动续订该证书。 但是，如果出于任何原因在过期之前轮换证书，或未提供元数据 URL，Azure AD 将无法续订该证书。 在这种情况下，你将需要手动更新签名证书。
+### <a name="can-i-set-up-samlws-fed-idp-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>是否可以与非管理的（经电子邮件验证）租户所在的域建立 SAML/WS-Fed IdP 联合？ 
+是，可以使用 Azure AD 中未经 DNS 验证的域（包括非托管的（经电子邮件验证的或“病毒性的”）Azure AD 租户）设置 SAML/WS-Fed IdP 联合。 当用户使用当前不存在的域兑换 B2B 邀请或执行 Azure AD 的自助注册时，将创建此类租户。 如果未验证域且租户尚未完成[管理员接管](../enterprise-users/domains-admin-takeover.md)，则可以与该域建立联合。
 
-### <a name="limit-on-federation-relationships"></a>联合关系限制
+### <a name="how-many-federation-relationships-can-i-create"></a>我可以创建多少联合关系？
 目前最多支持 1000 个联合关系。 此限制包括[内部联合](/powershell/module/msonline/set-msoldomainfederationsettings)和 SAML/WS-Fed IdP 联合。
 
-### <a name="limit-on-multiple-domains"></a>多个域限制
+### <a name="can-i-set-up-federation-with-multiple-domains-from-the-same-tenant"></a>能否设置与同一租户中多个域的联合？
 目前，我们不支持同一个租户中多个域的 SAML/WS-Fed IdP 联合。
 
-## <a name="frequently-asked-questions"></a>常见问题
-### <a name="can-i-set-up-samlws-fed-idp-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>是否可以与非管理的（经电子邮件验证）租户所在的域建立 SAML/WS-Fed IdP 联合？ 
-是的。 如果未验证域且租户尚未完成[管理员接管](../enterprise-users/domains-admin-takeover.md)，则可以与该域建立联合。 当用户使用当前不存在的域兑换 B2B 邀请或执行 Azure AD 的自助注册时，将创建非托管或经电子邮件验证的租户。 可以与这些域建立 SAML/WS-Fed IdP 联合。
+### <a name="do-i-need-to-renew-the-signing-certificate-when-it-expires"></a>签名证书过期时是否需要续签该证书？
+如果在 IdP 设置中指定元数据 URL，Azure AD 将在签名证书过期时自动续订该证书。 但是，如果出于任何原因在过期之前轮换证书，或未提供元数据 URL，Azure AD 将无法续订该证书。 在这种情况下，你将需要手动更新签名证书。
+
 ### <a name="if-samlws-fed-idp-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>如果同时启用了 SAML/WS-Fed IdP 联合和电子邮件一次性密码身份验证，那么哪个方法优先？
 与合作伙伴组织建立 SAML/WS-Fed IdP 联合时，对于该组织中的新来宾用户而言，它将优先于电子邮件一次性密码身份验证。 如果来宾用户在建立 SAML/WS-Fed IdP 联合之前使用一次性密码身份验证兑换了邀请，则他们将继续使用一次性密码身份验证。
+
 ### <a name="does-samlws-fed-idp-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>是否由于部分同步的租户导致了 SAML/WS-Fed IdP 联合地址登录问题？
 否。在此场景中，应使用[电子邮件一次性密码](one-time-passcode.md)功能。 “部分同步的租户”指的是合作伙伴 Azure AD 租户，其中本地用户标识未完全同步到云。 其标识尚不存在于云中但尝试兑换 B2B 邀请的来宾将无法登录。 使用一次性密码功能，此来宾可以登录。 SAML/WS-Fed IdP 联合功能可以解决以下情况：来宾具有其自己的 IdP 托管的组织帐户，但组织没有 Azure AD。
+
 ### <a name="once-samlws-fed-idp-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>为组织配置 SAML/WS-Fed IdP 联合后，是否需要向每位来宾发送单独邀请，并且需要来宾兑换邀请？
 建立 SAML/WS-Fed IdP 联合并不会更改已兑换邀请的来宾用户的身份验证方法。 可以通过[重置来宾用户的兑换状态](reset-redemption-status.md)来更新其身份验证方法。
+
+### <a name="is-there-a-way-to-send-a-signed-request-to-the-saml-identity-provider"></a>是否有方法向 SAML 标识提供者发送已签名的请求？
+目前，Azure AD SAML/WS-Fed 联合功能不支持向 SAML 标识提供者发送已签名的身份验证令牌。
 
 ## <a name="step-1-determine-if-the-partner-needs-to-update-their-dns-text-records"></a>步骤 1：确定合作伙伴是否需要更新其 DNS 文本记录
 
@@ -104,7 +109,10 @@ SAML/WS-Fed IdP 联合来宾用户还可以使用包含租户信息的应用程�
 2. 如果 IdP 不是上一步中列出的允许的提供者之一，请检查合作伙伴的 IdP 身份验证 URL，以查看域是否与目标域或目标域中的主机匹配。 换言之，为 `fabrikam.com` 设置联合时：
 
      - 如果身份验证 URL 是 `https://fabrikam.com` 或 `https://sts.fabrikam.com/adfs`（同一域中的主机），则不需要更改 DNS。
-     - 如果身份验证 URL 为 `https://fabrikamconglomerate.com/adfs`  或  `https://fabrikam.com.uk/adfs`，则域与 fabrikam.com 域不匹配，因此，合作伙伴需要为其 DNS 配置添加身份验证 URL 的文本记录；请转至下一步。
+     - 如果身份验证 URL 为 `https://fabrikamconglomerate.com/adfs`  或  `https://fabrikam.com.uk/adfs`，则域与 fabrikam.com 域不匹配，因此，合作伙伴需要为其 DNS 配置添加身份验证 URL 的文本记录。
+
+    > [!IMPORTANT]
+    > 以下步骤存在一个已知问题。 目前，将 DNS 文本记录添加到联合 IdP 域不会取消阻止身份验证。 我们正在积极解决此问题。
 
 3. 如果根据上一步需要进行 DNS 更改，则要求合作伙伴向其域的 DNS 记录中添加 TXT 记录，如以下示例所示：
 
@@ -122,7 +130,7 @@ SAML/WS-Fed IdP 联合来宾用户还可以使用包含租户信息的应用程�
 可以将 Azure AD B2B 配置为与使用 SAML 协议的 IdP 联合，具体要求如下。 有关在 SAML IdP 和 Azure AD 之间建立信任的详细信息，请参阅[使用 SAML 2.0 标识提供者 (IdP) 进行单一登录](../hybrid/how-to-connect-fed-saml-idp.md)。  
 
 > [!NOTE]
-> 在 Azure AD 中，不能对 SAML/WS-Fed IdP 联合的目标域进行 DNS 验证。 有关详细信息，请参阅[限制](#limitations)部分。
+> 在 Azure AD 中，不能对 SAML/WS-Fed IdP 联合的目标域进行 DNS 验证。 有关详细信息，请参阅[常见问题](#frequently-asked-questions)部分。
 
 #### <a name="required-saml-20-attributes-and-claims"></a>SAML 2.0 的必需属性和声明
 下表显示了必须在第三方 IdP 中配置的特定属性和声明的要求。 若要建立联合，必须从 IdP 的 SAML 2.0 响应中接收以下属性。 可以通过链接到联机安全令牌服务 XML 文件或手动输入来配置这些属性。
@@ -148,7 +156,7 @@ IdP 颁发的 SAML 2.0 令牌的必需声明：
 可以将 Azure AD B2B 配置为与使用 WS-Fed 协议的 IdP 联合，具体要求如下。 目前，已通过 Azure AD 对两个 WS-Fed 提供者的兼容性进行测试，包括 AD FS 和 Shibboleth。 有关通过 Azure AD 在 WS-Fed 兼容的提供者之间建立信赖方信任的详细信息，请参阅 [Azure AD 标识提供者兼容性文档](https://www.microsoft.com/download/details.aspx?id=56843)中提供的“使用 WS 协议的 STS 集成论文”。
 
 > [!NOTE]
-> 在 Azure AD 上，不能对联合的目标域进行 DNS 验证。 有关详细信息，请参阅[限制](#limitations)部分。
+> 在 Azure AD 上，不能对联合的目标域进行 DNS 验证。 有关详细信息，请参阅[常见问题](#frequently-asked-questions)部分。
 
 #### <a name="required-ws-fed-attributes-and-claims"></a>WS-Fed 的必需属性和声明
 

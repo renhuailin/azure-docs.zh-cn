@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: 32f51d110f1ebb8d7b0a39a3183665c65d2b1367
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: d973276781a1664680a3dec08eb894fc362911a5
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469547"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211169"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -30,7 +30,7 @@ ms.locfileid: "123469547"
 
   * 如果要在多租户 Azure 中运行逻辑应用工作流，请参阅[多租户先决条件](#multi-tenant-azure-prerequisites)。
 
-  * 如果你正在高级[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行逻辑应用工作流，请参阅 [ISE 先决条件](#ise-prerequisites)。
+  * 如果你正在高级[集成服务环境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) 中运行逻辑应用工作流，请参阅 [ISE 先决条件](#ise-prerequisites)。
 
 * 要从 Azure 逻辑应用访问的 [SAP 应用程序服务器](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)或 [SAP 消息服务器](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。 有关支持此连接器的 SAP 服务器的信息，请查看 [SAP 兼容性](#sap-compatibility)。
 
@@ -103,7 +103,7 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 1. 通过新操作重新连接到 SAP 系统。
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
 
 ## <a name="multi-tenant-azure-prerequisites"></a>多租户 Azure 先决条件
 
@@ -146,7 +146,7 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 ISE 提供对受 Azure 虚拟网络保护的资源的访问权限，并提供其他 ISE 本机连接器，这些连接器让逻辑应用工作流无需使用本地数据网关即可直接访问本地资源。
 
-1. 如果还没有带有 blob 容器的 Azure 存储帐户，请使用 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md)或 [Azure 存储资源管理器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)创建一个容器。
+1. 如果还没有带有 blob 容器的 Azure 存储帐户，请使用 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md)或 [Azure 存储资源管理器](../storage/blobs/quickstart-storage-explorer.md)创建一个容器。
 
 1. 在本地计算机上[下载并安装最新的 SAP 客户端库](#sap-client-library-prerequisites)。 应具有以下程序集文件：
 
@@ -479,14 +479,14 @@ SAP 连接器的 ISE 版本支持 SNC X.509。 可以通过以下步骤为 SAP I
 
 如果将 IDoc 包装在 XML 信封中，则可以将其与平面文件架构一起使用。 若要发送平面文件 IDoc，请使用一般说明[创建 SAP 操作，以发送 IDoc 消息](#create-sap-action-to-send-message)，并进行以下更改。
 
-1. 对于“将消息发送到 SAP”操作，请使用 SAP 操作 URI `http://microsoft.lobservices.sap/2007/03/Idoc/SendIdoc`。
+1. 对于“将消息发送到 SAP”操作，请使用 SAP 操作 URI `http://Microsoft.LobServices.Sap/2007/03/Idoc/SendIdoc`。
 
 1. 使用 XML 信封设置输入消息的格式。
 
 有关示例，请参阅以下示例 XML 有效负载：
 
 ```xml
-<ReceiveIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
+<SendIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
 <idocData>EDI_DC 3000000001017945375750 30INVOIC011BTSVLINV30KUABCABCFPPC LDCA X004010810 4 SAPMSX LSEDI ABCABCFPPC 000d3ae4-723e-1edb-9ca4-cc017365c9fd 20210217054521INVOICINVOIC01ZINVOIC2RE 20210217054520
 E2EDK010013000000001017945375000001E2EDK01001000000010 ABCABC1.00000 0060 INVO9988298128 298.000 298.000 LB Z4LR EN 0005065828 L
 E2EDKA1 3000000001017945375000002E2EDKA1 000000020 RS ABCABCFPPC 0005065828 ABCABCABC ABCABC Inc. Limited Risk Distributor ABCABC 1950 ABCABCABCA Blvd ABCABAABCAB L5N8L9 CA ABCABC E ON V-ABCABC LDCA
@@ -599,7 +599,7 @@ E2EDS01 3000000001017945375000108E2EDS01 000000020 EXT
 Z2XSK010003000000001017945375000109Z2XSK01000000108030 Z400 52269.20
 Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
 </idocData>
-</ReceiveIdoc>
+</SendIdoc>
 ```
 
 ### <a name="create-http-response-action"></a>创建 HTTP 响应操作
@@ -730,7 +730,7 @@ Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
 
      有关 SAP 操作的详细信息，请参阅 [IDoc 操作的消息架构](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
-1. 现在请保存逻辑应用工作流，以便可以开始从 SAP 系统接收消息。 在设计器工具栏上选择“保存”。
+1. 现在请保存逻辑应用工作流，以便可以开始从 SAP 系统接收消息。 在设计器工具栏上选择“保存”。 
 
    现在，逻辑应用工作流已准备好从 SAP 系统接收消息。
 
@@ -856,13 +856,13 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
     ```xml
     <setting name="SapTraceLevel" serializeAs="String">
-       <value>"Verbose"</value>
+       <value>Verbose</value>
     </setting>
     ```
 
 ### <a name="extended-sap-logging-in-on-premises-data-gateway"></a>本地数据网关上的扩展 SAP 日志记录
 
-如果[为 Azure 逻辑应用使用本地数据网关](../logic-apps/logic-apps-gateway-install.md)，则可以为 SAP 连接器配置扩展日志文件。 你可以使用本地数据网关将 Windows 事件跟踪 (ETW) 事件重定向到包含在网关的日志记录 zip 文件中的轮换日志文件中。
+如果[为 Azure 逻辑应用使用本地数据网关](logic-apps-gateway-install.md)，则可以为 SAP 连接器配置扩展日志文件。 你可以使用本地数据网关将 Windows 事件跟踪 (ETW) 事件重定向到包含在网关的日志记录 zip 文件中的轮换日志文件中。
 
 你可以[将网关的所有配置和服务日志](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)从网关应用的设置导出到 .zip 文件中。
 
@@ -1046,7 +1046,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 1. 若要打开“IDoc 处理中的测试工具”设置，请在 SAP 界面中使用“we19”事务代码 (T-Code)，前缀为“/n”。
 
-1. 在“测试模板”下，选择“通过消息类型”，然后输入消息类型，例如 CREMAS  。 选择“创建”。
+1. 在“测试模板”下，选择“通过消息类型”，然后输入消息类型，例如 CREMAS  。 选择“创建”  。
 
 1. 对于消息“哪个 IDoc 类型？”，通过选择“继续”进行确认 。
 
@@ -1423,7 +1423,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
    有关 SAP 操作的详细信息，请参阅 [IDoc 操作的消息架构](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
 
 默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。  详细了解[“安全类型化”选项](#safe-typing)。
 
@@ -1468,7 +1468,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
    > }
    > ```
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
 
 ### <a name="test-your-workflow"></a>测试工作流
 
@@ -1764,7 +1764,7 @@ traces
 
 1. 在操作“初始化变量”的编辑器中，配置以下设置。 然后保存更改。
 
-   1. 对于“名称”，请输入变量的名称。 例如，`IDOCtransferID`。
+   1. 对于“名称”，请输入变量的名称。 例如 `IDOCtransferID`。
 
    1. 对于“类型”，请选择“字符串”作为变量类型 。
 
@@ -1798,7 +1798,7 @@ traces
 
 1. 在操作“\[IDOC] 确认事务 ID”的编辑器中，配置以下设置。 然后保存更改。
 
-1. 对于“事务 ID”，请再次输入变量的名称。 例如，`IDOCtransferID`。
+1. 对于“事务 ID”，请再次输入变量的名称。 例如 `IDOCtransferID`。
 
 1. （可选）在测试环境中验证重复数据删除。 使用与上一步相同的事务 ID GUID 重复执行“\[IDOC] 将文档发送到 SAP”操作 。
 
@@ -1818,7 +1818,9 @@ traces
 
 * SAP 连接器目前不支持 SAP 路由器字符串。 本地数据网关必须位于要连接的 SAP 系统所在的同一 LAN 中。
 
-* 对于 [ISE 中的逻辑应用](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，此连接器的 ISE 标记版本改用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+* 在“SAP 中的 \[BAPI] Call 方法”操作中，如果该操作返回的 CallBapiResponse 对象中至少存在一个警告，则自动提交功能将不会提交 BAPI 更改。 若要在出现任何警告的情况下提交 BAPI 更改，请使用“\[BAPI - RFC] 创建有状态会话”操作显式创建会话，禁用“SAP 中的 \[BAPI] Call 方法”操作中的自动提交功能 ，并改为调用“\[BAPI] 提交事务”操作。
+
+* 对于 [ISE 中的逻辑应用](connect-virtual-network-vnet-isolated-environment-overview.md)，此连接器的 ISE 标记版本改用 [ISE 消息限制](logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -2015,5 +2017,5 @@ traces
 ## <a name="next-steps"></a>后续步骤
 
 * 从 Azure 逻辑应用[连接到本地系统](logic-apps-gateway-connection.md)
-* 了解如何通过 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 验证、转换和使用其他消息操作
+* 了解如何通过 [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) 验证、转换和使用其他消息操作
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)

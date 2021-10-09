@@ -2,13 +2,13 @@
 title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
-ms.date: 09/01/2021
-ms.openlocfilehash: 3cfbd89e9df6cf2d0d30d744ee8e437e3c364094
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 5469c10bb62164e7feea33a1b56cef3457d46efb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434243"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349678"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -21,9 +21,6 @@ ms.locfileid: "123434243"
 > * 配置备份
 
 [这里](sap-hana-backup-support-matrix.md#scenario-support)有我们目前支持的所有方案。
-
->[!NOTE]
->自 2020 年 8 月 1 日起，适用于 RHEL 的 SAP HANA 备份（7.4、7.6、7.7 和 8.1）已正式发布。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,8 +35,8 @@ ms.locfileid: "123434243"
   * 它应该包含用于添加和删除用户的凭据
   * 请注意，成功运行预注册脚本后可以删除此密钥
 * 还可以选择为 hdbuserstore 中的现有 HANA SYSTEM 用户创建密钥，而不是创建上述步骤中列出的自定义密钥。
-* 在安装了 HANA 的虚拟机中，以 root 用户身份运行 SAP HANA 备份配置脚本（注册前脚本）。 [此脚本](https://aka.ms/scriptforpermsonhana)可让 HANA 系统做好备份准备，并要求将你在上述步骤中创建的密钥作为输入传递。 要了解如何将此输入作为参数传递到脚本，请参阅[预注册脚本的功能](#what-the-pre-registration-script-does)部分。 它还详细说明了预注册脚本的功能。
-* 如果 HANA 安装程序使用专用终结点，请使用 -sn 或 -skip-network-checks 参数运行[预注册脚本](https://aka.ms/scriptforpermsonhana)。
+* 在安装了 HANA 的虚拟机中，以 root 用户身份运行 SAP HANA 备份配置脚本（注册前脚本）。 [此脚本](https://go.microsoft.com/fwlink/?linkid=2173610)可让 HANA 系统做好备份准备，并要求将你在上述步骤中创建的密钥作为输入传递。 要了解如何将此输入作为参数传递到脚本，请参阅[预注册脚本的功能](#what-the-pre-registration-script-does)部分。 它还详细说明了预注册脚本的功能。
+* 如果 HANA 安装程序使用专用终结点，请使用 -sn 或 -skip-network-checks 参数运行[预注册脚本](https://go.microsoft.com/fwlink/?linkid=2173610)。
 
 >[!NOTE]
 >预注册脚本将为 RHEL（7.4、7.6 和 7.7）上运行的 SAP HANA 工作负载安装 compat-unixODBC234，为 RHEL 8.1 上的安装 unixODBC 。 [此包位于 SAP 解决方案 (RPM) 存储库中的 RHEL for SAP HANA（适用于 RHEL 7 服务器）更新服务中](https://access.redhat.com/solutions/5094721)。  对于 Azure 市场 RHEL 映像，存储库应为 rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms。
@@ -57,12 +54,14 @@ ms.locfileid: "123434243"
 | Azure 防火墙 FQDN 标记          | 自动管理必需的 FQDN，因此更易于管理 | 只可用于 Azure 防火墙                         |
 | 允许访问服务 FQDN/IP | 无额外成本   <br><br>  适用于所有网络安全设备和防火墙 | 可能需要访问一组广泛的 IP 或 FQDN   |
 | 使用 HTTP 代理                 | 对 VM 进行单点 Internet 访问                       | 通过代理软件运行 VM 带来的额外成本         |
+| [虚拟网络服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)    |     可用于 Azure 存储（= 恢复服务保管）。     <br><br>     提供很大的优势，可优化数据平面流量的性能。          |         不能用于 Azure AD、Azure 备份服务。    |
+| 网络虚拟设备      |      可用于 Azure 存储、Azure AD、Azure 备份服务。 <br><br> **数据平面**   <ul><li>      Azure 存储：`*.blob.core.windows.net`、`*.queue.core.windows.net`  </li></ul>   <br><br>     **管理平面**  <ul><li>  Azure AD：允许访问 [Microsoft 365 Common 与 Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) 的 56 和 59 节中提到的 FQDN。 </li><li>   Azure 备份服务：`.backup.windowsazure.com` </li></ul> <br>详细了解 [Azure 防火墙服务标记](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.)。       |  增加数据平面流量的开销，降低吞吐量/性能。  |
 
 关于使用这些选项的更多细节如下：
 
 ### <a name="private-endpoints"></a>专用终结点
 
-使用专用终结点，可以从虚拟网络内的服务器安全地连接到恢复服务保管库。 专用终结点为保管库使用 VNET 地址空间中的 IP。 虚拟网络中的资源与保管库之间的网络流量将通过虚拟网络和 Microsoft 主干网络上的专用链接传输。 这样就不会从公共 Internet 泄露信息。 在[此处](./private-endpoints.md)详细了解 Azure 备份的专用终结点。
+使用专用终结点，可以从虚拟网络内的服务器安全地连接到恢复服务保管库。 专用终结点为保管库使用 VNET 地址空间中的专用 IP。 虚拟网络中的资源与保管库之间的网络流量将通过虚拟网络和 Microsoft 主干网络上的专用链接传输。 这样就不会从公共 Internet 泄露信息。 专用终结点分配到虚拟网络的特定子网，不能用于 Azure Active Directory。 在[此处](./private-endpoints.md)详细了解 Azure 备份的专用终结点。
 
 ### <a name="nsg-tags"></a>NSG 标记
 
@@ -72,7 +71,7 @@ ms.locfileid: "123434243"
 
 1. 在“设置”下选择“出站安全规则”。
 
-1. 选择 **添加** 。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
+1. 选择“添加”  。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
 1. 选择“添加”，保存新创建的出站安全规则。
 
@@ -102,17 +101,19 @@ ms.locfileid: "123434243"
 
 ## <a name="understanding-backup-and-restore-throughput-performance"></a>了解备份和还原吞吐量性能
 
-SAP HANA Azure VM 中通过 Backint 提供的备份（日志和非日志）将流式传输到 Azure 恢复服务保管库，因此，了解此流式传输方法非常重要。
+SAP HANA Azure VM 中通过 Backint 提供的备份（日志和非日志）将流式传输到 Azure 恢复服务保管库（在内部使用 Azure 存储 Blob），因此，了解此流式传输方法非常重要。
 
-HANA 的 Backint 组件提供了连接到数据库文件所在底层磁盘的“管道”（要读取的管道，以及要写入到的管道），这些数据库文件将由 Azure 备份服务读取并传输到 Azure 恢复服务保管库。 除了 Backint 本机验证检查以外，Azure 备份服务还会执行校验和来验证流。 这些验证将确保 Azure 恢复服务保管库中存在的数据确实可靠且可恢复。
+HANA 的 Backint 组件提供了连接到数据库文件所在底层磁盘的“管道”（要读取的管道，以及要写入到的管道），这些数据库文件将由 Azure 备份服务读取并传输到 Azure 恢复服务保管库（一个远程 Azure 存储帐户）。 除了 Backint 本机验证检查以外，Azure 备份服务还会执行校验和来验证流。 这些验证将确保 Azure 恢复服务保管库中存在的数据确实可靠且可恢复。
 
-由于流主要处理磁盘，因此你需要了解磁盘性能以衡量备份和还原性能。 请参阅[此文](../virtual-machines/disks-performance.md)，深入了解 Azure VM 中的磁盘吞吐量和性能。 这些也适用于备份和还原性能。
+由于流主要处理磁盘，因此你需要了解磁盘读取性能和传输备份数据时的网络性能，以衡量备份和还原性能。 请参阅[此文](../virtual-machines/disks-performance.md)，深入了解 Azure VM 中的磁盘/网络吞吐量和性能。 这些也适用于备份和还原性能。
 
 对于 HANA 的非日志备份（例如完整备份、差异备份和增量备份），Azure 备份服务会尝试实现最大大约为 420 MBps 的吞吐量，对于 HANA 的日志备份，则会尝试实现最大大约为 100 MBps 的吞吐量。 如上所述，这些并非保证的速度，并且它们取决于以下因素：
 
-* VM 的最大非缓存磁盘吞吐量
-* 底层磁盘类型及其吞吐量
-* 同时尝试读取和写入同一磁盘的进程的数目。
+- VM 的最大非缓存磁盘吞吐量 - 从数据或日志区域读取。
+- 底层磁盘类型及其吞吐量 - 从数据或日志区域读取。
+- VM 的最大网络吞吐量 - 写入恢复服务保管库。
+- 如果 VNET 具有 NVA/防火墙，则取决于网络吞吐量
+- 如果 Azure NetApp 文件上的数据/日志 - 从 ANF 的读取和到保管库的写入均使用 VM 的网络。
 
 > [!IMPORTANT]
 > 在较小的 VM 中，如果非缓存的磁盘吞吐量非常接近或小于 400 MBps，那么你可能会担心整个磁盘 IOPS 都将由备份服务使用，而这可能会影响与磁盘上的读取/写入相关的 SAP HANA 操作。 在这种情况下，如果希望将备份服务使用量限制为最大限值，则可以参阅下一部分。
@@ -176,13 +177,19 @@ hdbuserstore list
 
 下面概述了完成预注册脚本运行所需的步骤。 请注意，在此流程中，我们将提供 SYSTEM 用户密钥作为预注册脚本的输入参数。
 
-|谁  |从  |运行内容  |注释  |
-|---------|---------|---------|---------|
-|```<sid>```adm (OS)     |  HANA OS       |   阅读教程并下载预注册脚本      |   阅读[上述先决条件](#prerequisites)    从[此处](https://aka.ms/scriptforpermsonhana)下载预注册脚本  |
-|```<sid>```adm (OS) 和 SYSTEM 用户 (HANA)    |      HANA OS   |   运行 hdbuserstore Set 命令      |   例如，hdbuserstore Set SYSTEM hostname>:3```<Instance#>```13 SYSTEM ```<password>``` **注意：**  请确保使用主机名，而不是 IP 地址或 FQDN      |
-|```<sid>```adm (OS)    |   HANA OS      |  运行 hdbuserstore List 命令       |   检查结果是否包含默认存储，如下所示：```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
-|Root (OS)     |   HANA OS        |    运行 Azure 备份 HANA 预注册脚本      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
-|```<sid>```adm (OS)    |  HANA OS       |   运行 hdbuserstore List 命令      |    检查结果是否包含新行，如下所示：```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+| 谁     |    从    |    运行内容    |    注释    |
+| --- | --- | --- | --- |
+| `<sid>`adm (OS) |    HANA OS   | 阅读教程并下载预注册脚本。  |    教程：[备份 Azure VM 中的 HANA 数据库](/azure/backup/tutorial-backup-sap-hana-db)   <br><br>    下载[预注册脚本](https://go.microsoft.com/fwlink/?linkid=2173610) |
+| `<sid>`adm (OS)    |    HANA OS    |   启动 HANA (HDB start)    |   在设置之前，请确保 HANA 已启动并正在运行。   |
+| `<sid>`adm (OS)   |   HANA OS  |    运行以下命令： <br>  `hdbuserstore Set`   |  `hdbuserstore Set SYSTEM <hostname>:3<Instance#>13 SYSTEM <password>`  <br><br>   **注意** <br>  确保使用主机名而不是 IP 地址/FQDN。   |
+| `<sid>`adm (OS)   |  HANA OS    |   运行以下命令：<br> `hdbuserstore List`   |  检查结果是否包含默认存储，如下所示： <br><br> `KEY SYSTEM`  <br> `ENV : <hostname>:3<Instance#>13`    <br>  `USER : SYSTEM`   |
+| Root (OS)   |   HANA OS    |    运行 [Azure 备份 HANA 预注册脚本](https://go.microsoft.com/fwlink/?linkid=2173610)。     | `./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM`    |
+| `<sid>`adm (OS)   |   HANA OS   |    运行以下命令： <br> `hdbuserstore List`   |   检查结果是否包含新行，如下所示： <br><br>  `KEY AZUREWLBACKUPHANAUSER` <br>  `ENV : localhost: 3<Instance#>13`   <br> `USER: AZUREWLBACKUPHANAUSER`    |
+| Azure 参与者     |    Azure 门户    |   配置 NSG、NVA、Azure 防火墙等，以允许流向 Azure 备份服务、Azure AD 和 Azure 存储的出站流量。     |    [设置网络连接](/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)    |
+| Azure 参与者 |   Azure 门户    |   创建或打开恢复服务保管库，然后选择 HANA 备份。   |   找到所有要备份的目标 HANA VM。   |
+| Azure 参与者    |   Azure 门户    |   发现 HANA 数据库并配置备份策略。   |  例如： <br><br>  每周备份：每周日凌晨 2:00，每周备份保留 12 周，每月备份保留 12 个月，每年备份保留 3 年   <br>   差异或增量：每天，周日除外    <br>   日志：每 15 分钟运行一次，保留 35 天    |
+| Azure 参与者  |   Azure 门户    |    恢复服务保管库 - 备份项 - SAP HANA     |   检查备份作业（Azure 工作负载）。    |
+| HANA 管理员    | HANA Studio   | 检查备份控制台、备份目录、backup.log、backint.log 和 globa.ini   |    SYSTEMDB 和租户数据库。   |
 
 成功运行预注册脚本并进行验证后，可以继续检查[连接要求](#set-up-network-connectivity)，并从恢复服务保管库[配置备份](#discover-the-databases)
 
@@ -221,6 +228,12 @@ hdbuserstore list
    ![选择“查看和创建”](./media/tutorial-backup-sap-hana-db/review-create.png)
 
 现在，恢复服务存储库已创建。
+
+## <a name="enable-cross-region-restore"></a>启用跨区域还原
+
+在恢复服务保管库中，可以启用跨区域还原。 在配置和保护 HANA 数据库上的备份之前，必须先启用跨区域还原。 了解[如何启用跨区域还原](/azure/backup/backup-create-rs-vault#set-cross-region-restore)。
+
+[详细了解](/azure/backup/backup-azure-recovery-services-vault-overview)跨区域还原。
 
 ## <a name="discover-the-databases"></a>发现数据库
 

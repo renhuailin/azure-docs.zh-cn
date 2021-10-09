@@ -5,14 +5,14 @@ author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/11/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: references_regions
-ms.openlocfilehash: 2415a07a215c99a1775593aae403af6f84b308fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d43d6e7b04e117e4144356ac22ea2858408405df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752474"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582835"
 ---
 # <a name="availability-zone-support-for-azure-api-management"></a>适用于 Azure API 管理的可用性区域支持 
 
@@ -63,7 +63,7 @@ API 管理还支持[多区域部署](api-management-howto-deploy-multi-region.md
 1. 选择现有位置，或在顶部栏中选择“+ 添加”。 该位置必须[支持可用性区域](#supported-regions)。
 1. 选择该位置中的缩放[单元](upgrade-and-scale.md)数。
 1. 在“可用性区域”中，选择一个或多个区域。 选择的单元数必须在可用性区域间均匀分布。 例如，如果选择了 3 个单元，则选择 3 个区域，以便每个区域托管一个单元。
-1. 如果 API 管理实例部署在[虚拟网络](api-management-using-with-vnet.md)中，则在位置中配置虚拟网络设置。 选择位置中可用的现有虚拟网络、子网和公共 IP 地址。
+1. 如果 API Management 实例部署在[虚拟网络](api-management-using-with-vnet.md)中，则通过选择位置中可用的现有虚拟网络、子网和公共 IP 地址，在位置中配置虚拟网络设置。 对于现有位置，必须从“虚拟网络”边栏选项卡配置虚拟网络和子网。
 1. 选择“应用”，然后选择“保存” 。
 
 :::image type="content" source="media/zone-redundancy/add-location-zones.png" alt-text="启用区域冗余":::

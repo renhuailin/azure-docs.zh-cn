@@ -7,13 +7,13 @@ ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/12/2021
-ms.openlocfilehash: 0d5c178010012546bfcf786be7106f980289d6eb
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.date: 09/27/2021
+ms.openlocfilehash: 545e868a902390929254ae6c03d668f8e0d1d10f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204475"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079708"
 ---
 # <a name="create-a-managed-service-offer-for-the-commercial-marketplace"></a>创建面向 Microsoft 商业市场的托管服务产品/服务
 
@@ -23,20 +23,47 @@ ms.locfileid: "114204475"
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
-2. 在左侧导航菜单中，选择“商业市场” > “概述” 。
-3. 在“概述”选项卡上，选择“+ 新建产品/服务” > “托管服务”。
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
 
-:::image type="content" source="./media/new-offer-managed-service.png" alt-text="展示了左侧导航菜单。":::
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
 
-4. 在“新建产品/服务”对话框中，输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。 此 ID 在商业市场列表的 URL 以及 Azure 资源管理器模板中可见（如果适用）。 例如，如果你在此框中输入“test-offer-1”，则产品/服务 Web 地址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。
+
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+    [![说明了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png)](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页上，依次选择“+ 新建产品/服务” > “托管服务”。
+
+    [![说明托管服务产品/服务类型选项。](./media/new-offer-managed-service-workspaces.png)](./media/new-offer-managed-service-workspaces.png#lightbox)
+
+1. 在“新建托管服务”对话框中，输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。 此 ID 在商业市场列表的 URL 以及 Azure 资源管理器模板中可见（如果适用）。 例如，如果你在此框中输入“test-offer-1”，则产品/服务 Web 地址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
 
     - 帐户中的每个产品/服务都必须具有唯一的产品/服务 ID。
     - 只使用小写字母和数字。 其中可以包含连字符和下划线字符，但不能包含空格，并且不得超过 50 个字符。
     - 在选择“创建”后，就无法更改产品/服务 ID 了。
 
-5. 输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。 它在在线商店中不可见，并且不同于向客户显示的产品/服务名称。
-6. 要生成产品/服务并继续操作，请选择“创建”。
+1. 输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。 它在在线商店中不可见，并且不同于向客户显示的产品/服务名称。
+1. 要生成产品/服务并继续操作，请选择“创建”。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航菜单中，选择“商业市场” > “概述” 。
+1. 在“概述”选项卡上，选择“+ 新建产品/服务” > “托管服务”。
+
+    :::image type="content" source="./media/new-offer-managed-service.png" alt-text="展示了左侧导航菜单。":::
+
+1. 在“新建产品/服务”对话框中，输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。 此 ID 在商业市场列表的 URL 以及 Azure 资源管理器模板中可见（如果适用）。 例如，如果你在此框中输入“test-offer-1”，则产品/服务 Web 地址为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+
+    - 帐户中的每个产品/服务都必须具有唯一的产品/服务 ID。
+    - 只使用小写字母和数字。 其中可以包含连字符和下划线字符，但不能包含空格，并且不得超过 50 个字符。
+    - 在选择“创建”后，就无法更改产品/服务 ID 了。
+
+1. 输入“产品/服务别名”。 这是在合作伙伴中心内用于产品/服务的名称。 它在在线商店中不可见，并且不同于向客户显示的产品/服务名称。
+1. 要生成产品/服务并继续操作，请选择“创建”。
+
+---
 
 ## <a name="setup-details"></a>设置详细信息
 

@@ -4,47 +4,61 @@ description: include 文件
 author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 08/03/2021
+ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 7241fcd0026d33518bdbaa99b7f08c64a437c70d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e19743a7ae754296992f4cb281c10c1d44cbe25c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744342"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094027"
 ---
 [![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
 
-本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 你将使用 Azure CLI 创建 Azure IoT 中心和设备。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到中心，并发送遥测数据。
+本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 使用 Azure CLI 和 IoT 资源管理器创建 Azure IoT 中心和设备。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到中心，并发送遥测数据。
 
 ## <a name="prerequisites"></a>先决条件
+本快速入门在 Windows、Linux 和 Raspberry Pi 上运行。 它已在以下 OS 和设备版本上进行了测试：
+
+- Windows 10
+- 在适用于 Linux 的 Windows 子系统 (WSL) 上运行的 Ubuntu 20.04 LTS
+- 在 Raspberry Pi 3 Model B+ 上运行的 Raspberry Pi OS 版本 10 (Raspian)
+
+在开发计算机上安装以下必备组件（对 Raspberry Pi 另有注明的情况除外）：
+
 - 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Git](https://git-scm.com/downloads)。
 - [Node.js](https://nodejs.org) 10 或更高版本。 若要检查节点版本，请运行 `node --version`。
-- [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases)：用于监视和管理 Azure IoT 的跨平台实用工具 
+- [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases)：用于监视和管理 Azure IoT 的基于 GUI 的跨平台实用工具。 如果使用 Raspberry Pi 作为开发平台，建议在另一台计算机上安装 IoT 资源管理器。 如果不想安装 IoT 资源管理器，可使用 Azure CLI 执行相同的步骤。 
 - Azure CLI。 在本快速入门中，有两个选项可用于运行 Azure CLI 命令：
     - 使用 Azure Cloud Shell，这是一个交互式 Shell，可在浏览器中运行 CLI 命令。 建议使用此选项，因为无需安装任何插件。 如果是首次使用 Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。 按照 [Cloud Shell 快速入门](../articles/cloud-shell/quickstart.md)中的步骤启动 Cloud Shell 并选择 Bash 环境。
-    - （可选）在本地计算机上运行 Azure CLI。 如果已安装 Azure CLI，请运行 `az upgrade` 以将 CLI 和扩展升级到当前版本。 要安装 Azure CLI，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+    - （可选）在本地计算机上运行 Azure CLI。 如果已安装 Azure CLI，请运行 `az upgrade` 以将 CLI 和扩展升级到当前版本。 要安装 Azure CLI，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 如果使用 Raspberry Pi 作为开发平台，建议使用 Azure Cloud Shell 或在另一台计算机上安装 Azure CLI。
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
 ## <a name="run-a-simulated-device"></a>运行模拟设备
 在本部分，你会使用 Node.js SDK 将消息从模拟设备发送到 IoT 中心。 你将运行一个示例，该示例实现了具有两个恒温器传感器的温度控制器。
 
-1. 打开新的控制台窗口。 你将使用此控制台来安装 Node.js SDK 和处理 Node.js 示例代码。
+1. 打开一个新的控制台，如 Windows CMD、PowerShell 或 Bash。 在下面的步骤中，使用此控制台来安装 Node.js SDK 并处理 Node.js 示例代码。
 
     > [!NOTE]
     > 如果使用的是 Azure CLI 的本地安装，则现在可能会打开两个控制台窗口。 请确保在刚刚打开的控制台中输入此部分中的命令，而不是用于 CLI 的命令。
 
-1. 在 Node 控制台中，将 [Azure IoT Node.js SDK 设备示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)克隆到本地计算机：
+1. 将 [Azure IoT Node.js SDK 设备示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)克隆到本地计算机：
 
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-node
     ```
 
-1. 导航到“azure-iot-sdk-node/device/samples/pnp”目录：
+1. 导航到示例目录：
 
+    **Windows**
+    ```console
+    cd azure-iot-sdk-node\device\samples\pnp
+    ```
+
+    Linux 或 Raspberry Pi OS
     ```console
     cd azure-iot-sdk-node/device/samples/pnp
     ```
@@ -61,7 +75,7 @@ ms.locfileid: "121744342"
     * 设置名为 `IOTHUB_DEVICE_CONNECTION_STRING` 的环境变量。 对于变量值，请使用上一部分保存的设备连接字符串。
     * 设置名为 `IOTHUB_DEVICE_SECURITY_TYPE` 的环境变量。 对于变量，请使用文本字符串值 `connectionString`。
 
-    **Windows (cmd)**
+    CMD (Windows)
 
     ```console
     set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
@@ -78,15 +92,14 @@ ms.locfileid: "121744342"
     $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
     ```
 
-    **Bash（Linux 或 Windows）**
+    **Bash**
 
     ```bash
     export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
-1. 在 Node 控制台中，运行以下示例文件的代码。 
+1. 运行以下代码示例：
 
-    若要在终端中运行 Node.js 示例：
     ```console
     node pnpTemperatureController.js
     ```
@@ -120,7 +133,7 @@ ms.locfileid: "121744342"
 
 若要使用 Azure CLI 查看设备遥测数据：
 
-1. 在 CLI 应用中，运行 [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) 命令以监视从模拟设备发送到 IoT 中心的事件。 使用之前在 Azure IoT 中为设备和 IoT 中心创建的名称。
+1. 运行 [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) 命令以监视从模拟设备发送到 IoT 中心的事件。 使用之前在 Azure IoT 中为设备和 IoT 中心创建的名称。
 
     ```azurecli
     az iot hub monitor-events --output table --device-id mydevice --hub-name {YourIoTHubName}

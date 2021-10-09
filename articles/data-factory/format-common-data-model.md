@@ -1,34 +1,34 @@
 ---
 title: Common Data Model 格式
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用 Common Data Model 元数据系统转换数据
+description: 使用 Azure 数据工厂和 Synapse Analytics 管道中的 Common Data Model 元数据系统转换数据。
 author: kromerm
 ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 09/09/2021
 ms.author: makromer
-ms.openlocfilehash: 612faa714f6a31bb464d30cc5b30766734782d41
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5e97bb5a51bc636cf8f2227473f090e51bb49c1c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637751"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787691"
 ---
-# <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的 Common Data Model 格式
+# <a name="common-data-model-format-in-azure-data-factory-and-synapse-analytics"></a>Azure 数据工厂和 Synapse Analytics 中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Common Data Model (CDM) 元数据系统可以轻松地在应用程序和业务流程之间共享数据及其含义。 若要了解详细信息，请参阅 [Common Data Model](/common-data-model/) 概述。
 
-在 Azure 数据工厂中，用户可以使用映射数据流，转换 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) 中存储的 model.json 和清单格式的 CDM 实体数据。 还可以使用 CDM 实体引用接收 CDM 格式数据，这些引用会以 CSV 或 Parquet 格式将数据保存在分区文件夹中。 
+在 Azure 数据工厂和 Synapse 管道中，用户可以使用映射数据流，转换以 model.json 和清单格式存储在 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) 中的 CDM 实体数据。 还可以使用 CDM 实体引用接收 CDM 格式数据，这些引用会以 CSV 或 Parquet 格式将数据保存在分区文件夹中。 
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
 Common Data Model 作为映射数据流中的[内联数据集](data-flow-source.md#inline-datasets)提供，同时用作源和接收器。
 
 > [!NOTE]
-> 在编写 CDM 实体时，必须有一个已定义的现有 CDM 实体定义（元数据架构）作为参考。 ADF 数据流接收器将读取该 CDM 实体文件，并将架构导入到接收器中进行字段映射。
+> 在编写 CDM 实体时，必须有一个已定义的现有 CDM 实体定义（元数据架构）作为参考。 数据流接收器将读取该 CDM 实体文件，并将架构导入到接收器中进行字段映射。
 
 ### <a name="source-properties"></a>源属性
 
@@ -53,32 +53,32 @@ Common Data Model 作为映射数据流中的[内联数据集](data-flow-source.
 
 在源和接收器转换过程中选择“实体引用”时，可从以下三个选项中选择实体引用的位置：
 
-* “本地”使用 ADF 已在使用的清单文件中定义的实体
-* “自定义”要求指向的实体清单文件应与清单文件 ADF 所用的文件不同
+* “本地”使用此服务已在使用的清单文件中定义的实体
+* “自定义”要求指向的实体清单文件应与此服务所用的清单文件不同
 * “标准”将使用 ```Github``` 中维护的 CDM 实体标准库中的实体引用。
 
 ### <a name="sink-settings"></a>接收器设置
 
 * 指向包含要写入的实体定义的 CDM 实体引用文件。
 
-![实体设置](media/data-flow/common-data-model-111.png "实体引用")
+:::image type="content" source="media/data-flow/common-data-model-111.png" alt-text="实体设置":::
 
-* 定义要让 ADF 用于写入实体的输出文件的分区路径和格式。
+* 定义要让此服务用于写入实体的输出文件的分区路径和格式。
 
-![实体格式](media/data-flow/common-data-model-222.png "实体格式")
+:::image type="content" source="media/data-flow/common-data-model-222.png" alt-text="实体格式":::
 
 * 设置输出文件位置以及清单文件的位置和名称。
 
-![cdm 位置](media/data-flow/common-data-model-333.png "CDM 位置")
+:::image type="content" source="media/data-flow/common-data-model-333.png" alt-text="cdm 位置":::
 
 
 #### <a name="import-schema"></a>导入架构
 
 CDM 仅作为内联数据集提供，且默认情况下没有关联架构。 若要获取列元数据，请单击“投影”选项卡中的“导入架构”按钮 。这样你可以引用语料库指定的列名称和数据类型。 若要导入架构，[数据流调试会话](concepts-data-flow-debug-mode.md)必须处于活动状态，还必须具有可以指向的现有 CDM 实体定义文件。
 
-在接收器转换过程中将数据流列映射到实体属性时，请单击“映射”选项卡，然后选择“导入架构”。 ADF 将读取接收器选项中所指向的实体引用，使你能够映射到目标 CDM 架构。
+在接收器转换过程中将数据流列映射到实体属性时，请单击“映射”选项卡，然后选择“导入架构”。 此服务将读取接收器选项中所指向的实体引用，使你能够映射到目标 CDM 架构。
 
-![CDM 接收器设置](media/data-flow/common-data-model-444.png "CDM 映射")
+:::image type="content" source="media/data-flow/common-data-model-444.png" alt-text="CDM 接收器设置":::
 
 > [!NOTE]
 >  使用来自 Power BI 或 Power Platform 数据流的 model.json 源类型时，可能会遇到源转换过程中的“语料库路径为 NULL 或空”错误。 这很可能是因 model.json 文件中分区位置路径的格式问题所致。 若要解决此问题，请执行以下步骤： 

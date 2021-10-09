@@ -7,81 +7,106 @@ metadata:
   ms.service: web-application-firewall
   ms.devlang: na
   ms.topic: article
-  ms.date: 05/05/2020
+  ms.date: 09/20/2021
   ms.author: victorh
-  ms.openlocfilehash: b575794a586e55dce81b6ad088d378500589b85d
-  ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+  ms.openlocfilehash: 6070f0f8bd0f355bc826011d90f20256a89eefc6
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/14/2021
-  ms.locfileid: "122181752"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128567036"
 title: Azure Front Door 服务上的 Azure Web 应用程序防火墙的常见问题
 summary: 本文回答 Azure Front Door 服务上的 Azure Web 应用程序防火墙 (WAF) 特性和功能的常见问题。
 sections:
 - name: 忽略
   questions:
   - question: >
-      What is Azure WAF?
+      什么是 Azure WAF？
     answer: >
-      Azure WAF is a web application firewall that helps protect your web applications from common threats such as SQL injection, cross-site scripting, and other web exploits. You can define a WAF policy consisting of a combination of custom and managed rules to control access to your web applications.
+      Azure WAF 是一个 Web 应用程序防火墙，可帮助保护 Web 应用程序免受常见威胁，例如 SQL 注入、跨站点脚本和其他 Web 攻击。 可以定义包含自定义和托管规则组合的 WAF 策略，以控制对 Web 应用程序的访问。
 
 
-      An Azure WAF policy can be applied to web applications hosted on Application Gateway or Azure Front Doors.
-  - question: "What is WAF on Azure Front Door? \n"
+      可以将 Azure WAF 策略应用于托管在应用程序网关或 Azure Front Door 上的 Web 应用程序。
+  - question: "什么是 Azure Front Door 上的 WAF？ \n"
     answer: >
-      Azure Front Door is a highly scalable, globally distributed application and content delivery network. Azure WAF, when integrated with Front Door, stops denial-of-service and targeted application attacks at the Azure network edge, close to attack sources before they enter your virtual network, offers protection without sacrificing performance.
+      Azure Front Door 是高度可缩放的全球分散式应用程序和内容分发网络。 Azure WAF 与 Front Door 集成后，可在 Azure 网络边缘停止拒绝服务和目标应用程序攻击，在攻击源进入虚拟网络之前接近它们，在不影响性能的情况下提供保护。
   - question: >
-      Does Azure WAF support HTTPS?
+      Azure WAF 是否支持 HTTPS？
     answer: >
-      Front Door offers TLS offloading. WAF is natively integrated with Front Door and can inspect a request after it's decrypted.
+      Front Door 提供 TLS 卸载。 WAF 在本机与 Front Door 集成，并可在请求解密后检查请求。
   - question: >
-      Does Azure WAF support IPv6?
+      Azure WAF 是否支持 IPv6？
     answer: >
-      Yes. You can configure IP restriction for IPv4 and IPv6.
+      是的。 可为 IPv4 和 IPv6 配置 IP 限制。
   - question: >
-      How up-to-date are the managed rule sets?
+      托管规则集如何保持最新？
     answer: >
-      We do our best to keep up with changing threat landscape. Once a new rule is updated, it's added to the Default Rule Set with a new version number.
+      我们尽最大努力跟上不断变化的威胁形势。 新规则更新后，将使用新的版本号将其添加到默认规则集。
   - question: >
-      What is the propagation time if I make a change to my WAF policy?
+      如果更改 WAF 策略，传播时间是多长？
     answer: >
-      Most WAF policy deployments complete under 20 minutes. You can expect the policy to take effect as soon as the update is completed across all edge locations globally.
+      大多数 WAF 策略部署在 20 分钟内完成。 更新在全球范围内所有边缘位置完成后，策略即生效。
   - question: >
-      Can WAF policies be different for different regions?
+      不同区域的 WAF 策略是否可以不同？
     answer: >
-      When integrated with Front Door, WAF is a global resource. Same configuration applies across all Front Door locations.
+      与 Front Door 集成后，WAF 为全局资源。 同一配置适用于所有 Front Door 位置。
   - question: >
-      How do I limit access to my back-end to be from Front Door only?
+      如何实现仅限从 Front Door 访问我的后端？
     answer: >
-      You may configure IP Access Control List in your back-end to allow for only Front Door outbound IP address ranges and deny any direct access from Internet. Service tags are supported for you to use on your virtual network. Additionally, you can verify that the X-Forwarded-Host HTTP header field is valid for your web application.
+      你可以在后端配置 IP 访问控制列表，使其仅允许 Front Door 出站 IP 地址范围，并拒绝来自 Internet 的任何直接访问。 支持在虚拟网络上使用服务标记。 此外，还可验证 X-Forwarded-Host HTTP 标头字段对你的 Web 应用程序是否有效。
   - question: >
-      Which Azure WAF options should I choose?
+      我应该选择哪些 Azure WAF 选项？
     answer: >
-      There are two options when applying WAF policies in Azure. WAF with Azure Front Door is a globally distributed, edge security solution. WAF with Application Gateway is a regional, dedicated solution. We recommend you choose a solution based on your overall performance and security requirements. For more information, see [Load-balancing with Azure’s application delivery suite](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md).
+      在 Azure 中应用 WAF 策略时，有两个选项可供选择。 使用 Azure Front Door 的 WAF 是一种全球分布式边缘安全解决方案。 使用应用程序网关的 WAF 是一种区域专用解决方案。 建议基于整体性能和安全要求来选择解决方案。 有关详细信息，请参阅[通过 Azure 的应用程序交付套件实现负载均衡](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)。
   - question: >
-      What's the recommended approach to enabling WAF on Front Door?
+      建议采用什么方法在 Front Door 上启用 WAF？
     answer: >
-      When you enable the WAF on an existing application, it's common to have false positive detections where the WAF rules detect legitimate traffic as a threat. To minimize the risk of an impact to your users, we recommend the following process:
+      在现有应用程序上启用 WAF 时，通常会出现假正检测，其中 WAF 规则会将合法流量检测为威胁。 若要最大程度地降低对用户的影响，我们建议执行以下过程：
 
 
-      * Enable the WAF in [**Detection** mode](./waf-front-door-create-portal.md#change-mode) to ensure that the WAF doesn't block requests while you are working through this process.
+      * 在[检测模式](./waf-front-door-create-portal.md#change-mode)中启用 WAF，以确保在执行此过程时，WAF 不会阻止请求。
         > [!IMPORTANT]
-        > This process describes how to enable the WAF on a new or existing solution when your priority is to minimize the disturbance to your application's users. If you are under attack or imminent threat, you may want to instead deploy the WAF in **Prevention** mode immediately, and use the tuning process to monitor and tune the WAF over time. This will probably cause some of your legitimate traffic to be blocked, which is why we only recommend doing this when you are under threat.
-      * Follow our [guidance for tuning the WAF](./waf-front-door-tuning.md). This process requires that you enable diagnostic logging, review the logs regularly, and add rule exclusions and other mitigations.
+        > 此过程介绍如何在新的或现有的解决方案中启用 WAF，以便最大程度地减少对应用程序用户的干扰。 如果受到攻击或迫在眉睫的威胁，你可能想要立即在“防护”模式下部署 WAF，并使用优化过程监视和优化 WAF 一段时间。 这可能会导致某些合法流量被阻止，这就是为什么我们只建议在受到威胁时才这样做的原因。
+      * 遵循我们的 [WAF 优化指导](./waf-front-door-tuning.md)。 此过程要求你启用诊断日志记录，定期检查日志，以及添加规则排除和其他缓解措施。
 
-      * Repeat this whole process, checking the logs regularly, until you're satisfied that no legitimate traffic is being blocked. The whole process may take several weeks. Ideally you should see fewer false positive detections after each tuning change you make.
+      * 重复这整个过程，定期检查日志，直到你认为没有合法流量被阻止。 整个过程可能需要几周的时间。 理想情况下，每次进行优化更改后，假正检测会减少。
 
-      * Finally, enable the WAF in **Prevention mode**.
+      * 最后，在“防护模式”下启用 WAF。
 
-      * Even once you're running the WAF in production, you should keep monitoring the logs to identify any other false-positive detections. Regularly reviewing the logs will also help you to identify any real attack attempts that have been blocked.
+      * 即使是在生产环境中运行 WAF，也应继续监视日志以识别任何其他假正检测。 定期查看日志还将帮助你确定已阻止的任何实际攻击企图。
   - question: >
-      Do you support same WAF features in all integrated platforms?
+      所有集成平台中是否支持相同的 WAF 功能？
     answer: >
-      Currently, ModSec CRS 2.2.9, CRS 3.0, and CRS 3.1 rules are only supported with WAF on Application Gateway. Rate-limiting, geo-filtering, and Azure managed Default Rule Set rules are supported only with WAF on Azure Front Door.
-  - question: "Is DDoS protection integrated with Front Door? \n"
+      目前，应用程序网关上的 WAF 只支持 ModSec CRS 2.2.9、CRS 3.0 和 CRS 3.1 规则。 只有 Azure Front Door 上的 WAF 支持速率限制、地区筛选和 Azure 托管默认规则集规则。
+  - question: "Front Door 是否集成了 DDoS 防护？ \n"
     answer: >
-      Globally distributed at Azure network edges, Azure Front Door can absorb and geographically isolate large volume attacks. You can create custom WAF policy to automatically block and rate limit http(s) attacks that have known signatures. Further more, you can enable DDoS Protection Standard on the VNet where your back-ends are deployed. Azure DDoS Protection Standard customers receive additional benefits including cost protection, SLA guarantee, and access to experts from DDoS Rapid Response Team for immediate help during an attack. For more information, see [DDoS protection on Front Door](../../frontdoor/front-door-ddos.md).
+      Azure Front Door 全球分布在 Azure 网络边缘，可以吸收并在地理上隔离大规模攻击。 你可以创建自定义 WAF 策略来自动阻止具有已知签名的 http 攻击并对这些攻击进行速率限制。 此外，还可以在部署后端的 VNet 中启用 DDoS 防护标准。 Azure DDoS 防护标准客户可获得更多益处，包括成本保护、SLA 保证，并且可以在攻击期间联系 DDoS 快速响应团队的专家以便立即获得帮助。 有关详细信息，请参阅 [Front Door 上的 DDoS 防护](../../frontdoor/front-door-ddos.md)。
   - question: >
-      Why do additional requests above the threshold configured for my rate limit rule get passed to my backend server?
-    answer: "A rate limit rule can limit abnormally high traffic from any client IP address. You may configure a threshold on the number of web requests allowed from a client IP address during a one-minute or five-minute duration. For granular rate control, rate limiting can be combined with additional match conditions such as HTTP(S) parameter matching. \n\nRequests from the same client often arrive at the same Front Door server. In that case, you'll see additional requests above the threshold get blocked immediately. \n\nHowever, it's possible that requests from the same client may arrive at a different Front Door server that has not refreshed the rate limit counter yet. For example, the client may open a new connection for each request and the threshold is low. In this case, the first request to the new Front Door server would pass the rate limit check. A rate limit threshold is usually set high to defend against denial of service attacks from any client IP address. For a very low threshold, you may see additional requests above the threshold get through.\n"
-additionalContent: "\n## Next steps\n\n- Learn about [Azure Web Application Firewall](../overview.md).\n- Learn more about [Azure Front Door](../../frontdoor/front-door-overview.md)."
+      为什么超出为我的速率限制规则配置的阈值的其他请求会传递到我的后端服务器？
+    answer: "速率控制规则可以限制来自任何客户端 IP 地址的异常高的流量。 可以针对一分钟或五分钟持续时间内允许来自客户端 IP 地址的 Web 请求数配置一个阈值。 为实现精细速率控制，速率限制可以与其他匹配条件（例如 HTTP(S) 参数匹配）结合使用。 \n\n来自同一客户端的请求通常会到达同一 Front Door 服务器。 在这种情况下，超出阈值的其他请求会立即被阻止。 \n\n但是，来自同一客户端的请求可能会到达尚未刷新速率限制计数器的其他 Front Door 服务器。 例如，客户端可能会为每个请求打开一个新连接，并且阈值较低。 在这种情况下，对新 Front Door 服务器的第一个请求将通过速率限制检查。 速率限制阈值通常设置得较高，以抵御来自任何客户端 IP 地址的拒绝服务攻击。 对于极低的阈值，超出阈值的其他请求可能会通过。\n"
+  - question: >
+      WAF 支持哪些内容类型？
+    answer: >
+      Front Door WAF 支持以下内容类型：
+
+
+      - **DRS 2.0**
+
+         **托管规则**
+           * application/json
+           * application/xml
+           * application/x-www-form-urlencoded
+           * multipart/form-data
+
+         **自定义规则**
+           * application/x-www-form-urlencoded
+
+      - **DRS 1.x**
+
+         **托管规则**
+           * application/x-www-form-urlencoded
+           * text/plain
+
+         **自定义规则**
+           * application/x-www-form-urlencoded
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n- 了解 [Azure Web 应用程序防火墙](../overview.md)。\n- 了解 [Azure Front Door](../../frontdoor/front-door-overview.md)。"

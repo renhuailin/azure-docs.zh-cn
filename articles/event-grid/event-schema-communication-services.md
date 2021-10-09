@@ -4,12 +4,12 @@ description: 本文介绍了如何将 Azure 通信服务用作事件网格事件
 ms.topic: conceptual
 ms.date: 06/11/2021
 ms.author: mikben
-ms.openlocfilehash: e6e4245d9f38c00ec337d689a11d185299d71891
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b6bef963fe4f326bf0737ede96f62bfc9ffa9267
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748487"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635311"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure 通信服务中的事件处理
 
@@ -51,6 +51,10 @@ Azure 通信服务发出以下事件类型：
 | Microsoft.Communication.ChatMessageEditedInThread | 在聊天线程中编辑消息时发布 |  
 | Microsoft.Communication.ChatMessageDeletedInThread | 在聊天线程中删除消息时发布  |  
 | Microsoft.Communication.RecordingFileStatusUpdated | 记录文件可用时发布 |
+| Microsoft.Communication.UserDisconnected（预览版） | 在通信服务用户被指定为已断开与通信服务的连接后发布 |
+
+> [!NOTE]
+> Microsoft.Communication.UserDisconnected 事件为公共预览版。 在此预览期间，与用户断开连接状态关联的日志可能会被全局复制。 通过事件网格订阅此事件，可以获得断开连接状态。
 
 可以使用 Azure 门户或 Azure CLI 订阅通信服务资源发出的事件。 可通过查看[如何在通信服务中处理短信事件](../communication-services/quickstarts/telephony-sms/handle-sms-events.md)，来开始处理事件
 
@@ -122,7 +126,7 @@ Azure 通信服务发出以下事件类型：
     "MessageId": "Incoming_20200918002745d29ebbea-3341-4466-9690-0a03af35228e",
     "From": "15555555555",
     "To": "15555555555",
-    "Message": "Great to connect with ACS events ",
+    "Message": "Great to connect with ACS events",
     "ReceivedTimestamp": "2020-09-18T00:27:45.32Z"
   },
   "eventType": "Microsoft.Communication.SMSReceived",
@@ -862,6 +866,30 @@ Azure 通信服务发出以下事件类型：
   "dataVersion": "1.0",
   "metadataVersion": "1",
   "eventTime": "2021-07-27T15:20:34.2199328Z"
+ }
+]
+```
+
+### <a name="microsoftcommunicationuserdisconnectedpreview"></a>Microsoft.Communication.UserDisconnected（预览版）
+
+```json
+[
+ {
+  "id": "8f60490d-0719-4d9d-a1a6-835362fb752e",
+  "topic": "/subscriptions/{subscription-id}/resourcegroups/}{group-name}/providers/microsoft.communication/communicationservices/{communication-services-resource-name}",
+  "subject": "user/{rawId}",
+  "data": {
+    "userCommunicationIdentifier": {
+      "rawId": "8:acs:3d703c91-9657-4b3f-b19c-ef9d53f99710_0000000b-d198-0d50-84f5-084822008d40",
+      "communicationUser": {
+        "id": "8:acs:3d703c91-9657-4b3f-b19c-ef9d53f99710_0000000b-d198-0d50-84f5-084822008d40"
+      }
+    }
+  },
+  "eventType": "Microsoft.Communication.UserDisconnected",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "eventTime": "2021-08-10T20:25:38Z"
  }
 ]
 ```

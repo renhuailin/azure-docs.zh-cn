@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 826217091b3297da0c068336ff67a0a58841716d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4e494b38bea9b799a6a2ee82b3fbb9847446d699
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690453"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611692"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 客户协议的 Azure 使用情况和费用文件中的术语
 
@@ -24,7 +24,7 @@ Azure 使用情况和费用 CSV 文件包含当前计费周期的每日和测定
 
 若要获取 Azure 使用情况和费用文件，请参阅[查看和下载 Microsoft 客户协议的 Azure 使用情况与费用](download-azure-daily-usage.md)。 它以逗号分隔值 (.csv) 文件格式提供，可以在电子表格应用程序中打开它。
 
-使用费是订阅的总“月度”  费用。 使用费不考虑任何信用额度或折扣。
+使用费是订阅的总“月度”费用。 使用费不考虑任何信用额度或折扣。
 
 ## <a name="changes-from-azure-ea-usage-and-charges"></a>Azure EA 使用情况和费用的变化
 
@@ -32,11 +32,11 @@ Azure 使用情况和费用 CSV 文件包含当前计费周期的每日和测定
 
 | Azure EA 使用情况 CSV | Microsoft 客户协议 Azure 使用情况和费用 CSV |
 | --- | --- |
-| Date | date |
-| 月份| date |
 | 日期 | date |
-| 年龄 | date |
-| Products | product |
+| Month| date |
+| 天 | date |
+| Year | date |
+| 产品 | 产品 |
 | 计量 ID | meterID |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
@@ -51,8 +51,8 @@ Azure 使用情况和费用 CSV 文件包含当前计费周期的每日和测定
 | ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
 | AdditionalInfo | additionalInfo |
-| Tags | 标记 |
-| StoreServiceIdentifier | 空值 |
+| 标记 | 标记 |
+| StoreServiceIdentifier | 不适用 |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
@@ -85,12 +85,12 @@ productOrderName | 产品订单的唯一名称
 consumedService | 已耗用服务的名称
 meterId | 计量的唯一标识符
 meterName | 计量的名称
-meterCategory | 计量的分类类别的名称。 例如，“云服务”、“网络”等。  
+meterCategory | 计量的分类类别的名称。 例如，“云服务”、“网络”等。
 meterSubCategory | 计量子分类类别的名称
 meterRegion | 提供服务计量的区域的名称。 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。
 offer | 购买的套餐的名称
 PayGPrice | 资源的零售价格。
-PricingModel | 指示计量器定价方式的标识符（值：On Demand、Reservation、Spot）
+PricingModel | 指示计量器定价方式的标识符（值：按需、预留、现成）
 productId | 产生费用的产品的唯一标识符
 product | 产生费用的产品的名称
 订阅 ID | 产生费用的订阅的唯一标识符
@@ -101,7 +101,7 @@ publisherType | 发布者的类型（值：firstParty、thirdPartyReseller、thi
 publisherName | 市场服务的发布者
 resourceGroupId | 与资源关联的资源组的唯一标识符
 resourceGroupName | 与资源关联的资源组的名称
-resourceId | 资源实例的唯一标识符
+ResourceId | 资源实例的唯一标识符
 resourceType | 资源实例的类型
 resourceLocation | 指明资源正在其中运行的数据中心的位置。
 location | 在为相同区域配置了不同资源位置的情况下，资源的规范化位置

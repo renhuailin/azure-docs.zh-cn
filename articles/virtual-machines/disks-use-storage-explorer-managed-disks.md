@@ -3,137 +3,148 @@ title: 使用 Azure 存储资源管理器管理 Azure 托管磁盘
 description: 了解如何使用 Azure 存储资源管理器跨区域上传、下载和迁移 Azure 托管磁盘并创建托管磁盘的快照。
 author: roygara
 ms.author: rogarana
-ms.date: 09/25/2019
+ms.date: 09/07/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 1ef24210e033c5e0af623dfa6f3cd79146732640
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 84b2ea53ebb0b6102edf5bc501e0e1b9b6f21726
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692291"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781637"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 存储资源管理器管理 Azure 托管磁盘
 
 **适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
-存储资源管理器 1.10.0 可让用户上传、下载和复制托管磁盘，以及创建快照。 由于具有这些附加功能，存储资源管理器使你能够将数据从本地迁移到 Azure，并可以跨 Azure 区域迁移数据。
+Azure 存储资源管理器包含一组丰富的功能，使你能够：
+
+- 上传、下载和复制托管磁盘。
+- 从操作系统或数据磁盘虚拟硬盘创建快照。
+- 将数据从本地迁移到 Azure。
+- 跨 Azure 区域迁移数据。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
-- Azure 订阅
-- 一个或多个 Azure 托管磁盘
-- 最新版本的 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
+
+- Azure 订阅。
+- 至少一个 Azure 托管磁盘。
+- 最新版本的 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="connect-to-an-azure-subscription"></a>连接到 Azure 订阅
 
-如果存储资源管理器未连接到 Azure，则将无法使用它来管理资源。 本部分介绍如何将存储资源管理器连接到 Azure 帐户，以便可以使用它来管理资源。
+如果存储资源管理器未连接到 Azure，则不能用于管理资源。 按照本部分中的步骤，将存储资源管理器连接到你的 Azure 帐户。 之后便可以使用它来管理磁盘。
 
-1. 启动 Azure 存储资源管理器并单击左侧的 **插件** 图标。
+1. 打开 Azure 存储资源管理器并选择工具栏中的“连接”图标。
 
-    ![单击插件图标](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
+    [![Azure 存储资源管理器屏幕截图，其中显示了“连接”图标的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon-lrg.png#lightbox)
 
-1. 选择“添加 Azure 帐户”，然后单击“下一步”。  
+1. 在“连接到 Azure 存储”对话框中，选择“订阅”。 
 
-    ![添加 Azure 帐户](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示了“订阅”选项的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure-lrg.png#lightbox)
 
-1. 在“Azure 登录”对话框中输入 Azure 凭据。 
+1. 选择适当的环境，然后选择“下一步”。 还可以选择“管理自定义环境”来配置和添加自定义环境。
 
-    ![Azure 登录对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/sign-in.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示了“Azure 环境”选项的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/choose-environment-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/choose-environment-lrg.png#lightbox)
 
-1. 从列表中选择你的订阅，然后单击“应用”  。
+1. 在“登录”对话框中，输入 Azure 凭据。
 
-    ![选择订阅](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
+    ![“登录”对话框的屏幕截图。](media/disks-upload-vhd-to-managed-disk-storage-explorer/sign-in.png)
 
-## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>从本地 VHD 上传托管磁盘
+1. 从列表中选择订阅，然后选择“打开资源管理器”。
 
-1. 在左窗格中，展开“磁盘”并选择要将磁盘上传到的资源组。 
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示了“打开资源管理器”选项的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription-lrg.png#lightbox)
 
-    ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
+## <a name="upload-an-on-premises-vhd"></a>上传本地 VHD
 
-1. 选择“上传”。 
+可以将本地虚拟硬盘 (VHD) 文件上传到 Azure，并用来创建映像。 按照此部分中的步骤上传源文件。
 
-    ![选择“上传”](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
+1. 在“资源管理器”窗格中，展开“磁盘”并选择要将磁盘上传到的资源组。 
 
-1. 在“上传 VHD”中，指定源 VHD、磁盘名称、OS 类型、要将磁盘上传到的区域，以及帐户类型。  对于支持可用性区域的某些地区，可以选择所选的区域。
-1. 选择“创建”开始上传磁盘。 
+    [![Azure 存储资源管理器的屏幕截图，突出显示了用于上传磁盘的磁盘节点的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1-lrg.png#lightbox)
 
-    ![上传 VHD 对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog.png)
+1. 在资源组详细信息窗格中，选择“上传”。
+
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示了“上传”选项的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button-lrg.png#lightbox)
+
+1. 在“上传 VHD”对话框中，指定你的 VHD 源文件、磁盘名称、操作系统类型、要将磁盘上传到的区域和帐户类型。 如果区域支持可用性区域，则可以自行选择某个区域。 选择“创建”开始上传磁盘。 
+
+    [![Azure 存储资源管理器的“上传 VHD”对话框的屏幕截图。](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog-lrg.png#lightbox)
 
 1. 现在，上传状态会显示在“活动”中。 
 
-    ![上传状态](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示包含上传状态消息的“"活动”窗格的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading-lrg.png#lightbox)
 
-1. 如果上传已完成但右窗格中未显示该磁盘，请选择“刷新”。 
+如果上传已完成，但在“活动”窗格中看不到磁盘，请选择“刷新”。 
 
 ## <a name="download-a-managed-disk"></a>下载托管磁盘
 
-以下步骤说明如何将托管磁盘下载到本地 VHD。 只能下载状态为“未附加”的磁盘，而无法下载状态为“已附加”的磁盘。  
+按照本部分中的步骤，将托管磁盘下载到本地 VHD。 磁盘的状态必须是“未附加”才能被下载。
 
-1. 在左窗格中展开“磁盘”（如果尚未展开），并选择要从中下载磁盘的资源组。 
+1. 在“资源管理器”窗格中，展开“磁盘”并选择要从中下载磁盘的资源组。 
 
-    ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
+    [![Azure 存储资源管理器的屏幕截图，突出显示了用于下载磁盘的磁盘节点的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1-dl-lrg.png#lightbox)
 
-1. 在右窗格中选择要下载的磁盘。
+1. 在“资源组详细信息”窗格中，选择要下载的磁盘。
 1. 选择“下载”，然后选择磁盘的保存位置。 
 
-    ![下载托管磁盘](media/disks-upload-vhd-to-managed-disk-storage-explorer/download-button.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示了“下载”选项的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/download-button-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/download-button-lrg.png#lightbox)
 
-1. 选择“保存”，随即会开始下载磁盘。  下载状态将显示在“活动”中。 
+1. 选择“保存”开始下载。 下载状态会显示在“活动”中。
 
-    ![下载状态](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示包含下载状态消息的“活动”窗格的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading-lrg.png#lightbox)
 
 ## <a name="copy-a-managed-disk"></a>复制托管磁盘
 
 使用存储资源管理器可以在区域内部或跨区域复制托管磁盘。 若要复制磁盘：
 
-1. 在左侧的“磁盘”下拉列表中，选择包含要复制的磁盘的资源组。 
+1. 在“资源管理器”窗格中，展开“磁盘”下拉列表，然后选择包含要复制的磁盘的资源组。 
 
-    ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
+    [![Azure 存储资源管理器的屏幕截图，突出显示了用于复制磁盘的磁盘节点的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1-lrg.png#lightbox)
 
-1. 在右窗格中选择要复制的磁盘，然后选择“复制”。 
+1. 在“资源组详细信息”窗格中，选择要复制的磁盘，然后选择“复制”。
 
-    ![复制托管磁盘](media/disks-upload-vhd-to-managed-disk-storage-explorer/copy-button.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示了“复制”按钮的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/copy-button-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/copy-button-lrg.png#lightbox)
 
-1. 在左窗格中，选择要将磁盘粘贴到的资源组。
+1. 在“资源管理器”窗格中，展开“磁盘”并选择要粘贴磁盘的资源组。 
 
-    ![选择资源组 2](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg2.png)
+    [![Azure 存储资源管理器的屏幕截图，突出显示了用于粘贴磁盘的磁盘节点的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg2-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg2-lrg.png#lightbox)
 
-1. 在右窗格中选择“粘贴”。 
+1. 在资源组详细信息窗格中选择“粘贴”。
 
-    ![粘贴托管磁盘](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-button.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示了“粘贴”按钮的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-button-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-button-lrg.png#lightbox)
 
-1. 在“粘贴磁盘”对话框中填写值。  还可以指定受支持地区中的可用性区域。
+1. 在“粘贴磁盘”对话框中，填写值。 还可以指定受支持地区中的可用性区域。
 
-    ![“粘贴磁盘”对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog.png)
+    [![Azure 存储资源管理器的粘贴磁盘表单的屏幕截图。](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog-lrg.png#lightbox)
 
-1. 选择“粘贴”，磁盘随即开始复制，复制状态会显示在“活动”中。  
+1. 选择“粘贴”以开始磁盘复制。 状态显示在“活动”中。
 
-    ![复制粘贴状态](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示包含复制和粘贴状态消息的“活动”窗格的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying-lrg.png#lightbox)
 
 ## <a name="create-a-snapshot"></a>创建快照
 
-1. 在左侧的“磁盘”下拉列表中，选择要创建快照的磁盘所在的资源组。 
+1. 在“资源管理器”窗格中，展开“磁盘”，然后选择包含要生成快照的磁盘的资源组。 
 
-    ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
+    [![Azure 存储资源管理器的屏幕截图，突出显示了用于创建磁盘快照的磁盘节点的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1-dl-lrg.png#lightbox)
 
-1. 在右侧选择要创建快照的磁盘，然后选择“创建快照”。 
+1. 在“资源组详细信息”窗格中，选择要生成快照的磁盘，然后选择“创建快照”。
 
-    ![创建快照](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示了“创建快照”按钮的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button-lrg.png#lightbox)
 
-1. 在“创建快照”中，指定快照名称，以及要在其中创建快照的资源组。  然后选择“创建”  。
+1. 在“创建快照”中，指定快照的名称以及您将在其中创建它的资源组。 选择“创建”  。
 
-    ![“创建快照”对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
+    [![Azure 存储资源管理器的“创建快照”对话框的屏幕截图。](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog-lrg.png#lightbox)
 
-1. 创建快照后，可以在“活动”中选择“在门户中打开”，以便在 Azure 门户中查看快照。  
+1. 创建快照后，可以在“活动”中选择“在门户中打开”以在 Azure 门户中查看快照。 
 
-    ![在门户中打开快照](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
+    [![Azure 存储资源管理器的屏幕截图，其中突出显示包含快照状态消息的“活动”窗格中链接的位置。](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal-sml.png)](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal-lrg.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
-
-了解如何[使用 Azure 门户基于 VHD 创建 VM](windows/create-vm-specialized-portal.md)。
-
-了解如何[使用 Azure 门户将托管数据磁盘附加到 Windows VM](windows/attach-managed-disk-portal.md)。
+- [使用 Azure 门户从 VHD 创建虚拟机](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [使用 Azure 门户将托管数据磁盘附加到 Windows 虚拟机](/azure/virtual-machines/windows/attach-managed-disk-portal)

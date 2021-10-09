@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure AD 组管理角色分配 - Azure Active Directory
+title: 使用 Azure AD 组来管理角色分配 - Azure Active Directory
 description: 使用 Azure AD 组来简化 Azure Active Directory 中的角色分配管理。
 services: active-directory
 author: rolyon
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 07/30/2021
+ms.date: 09/28/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bebba34e8d323bc60d83151e7b211388776b7b76
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5f85ab5960aea247a8b47b20d2552cec6e2e534f
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741693"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235319"
 ---
 # <a name="use-azure-ad-groups-to-manage-role-assignments"></a>使用 Azure AD 组来管理角色分配
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 允许指定 Azure AD 组作为角色分配的
 - 对于新组，只能设置 `isAssignableToRole` 属性或者“可将 Azure AD 角色分配到该组”选项。
 - `isAssignableToRole` 属性是不可变的。 一旦创建一个设置了此属性的组，就不能更改此属性。
 - 不能将现有组设为可分配角色的组。
-- 在单个 Azure AD 组织（租户）中最多可以创建 300 个可分配角色的组。
+- 在单个 Azure AD 组织（租户）中最多可以创建 400 个可分配角色的组。
 
 ## <a name="how-are-role-assignable-groups-protected"></a>如何保护可分配角色的组？
 
@@ -54,16 +54,13 @@ Azure Active Directory (Azure AD) 允许指定 Azure AD 组作为角色分配的
 - 只有全局管理员和特权角色管理员能够创建可分配角色的组。
 - 可分配角色的组的成员身份类型必须是“已分配”，不能是 Azure AD 动态组。 自动填充动态组可能会导致将不需要的帐户添加到该组，从而将其分配给该角色。
 - 默认情况下，只有全局管理员和特权角色管理员可以管理可分配角色的组的成员身份，但可以通过添加组所有者来委托管理可分配角色的组。
-- 必须具有 RoleManagement.ReadWrite.All Microsoft Graph 权限，才能管理相应组的成员身份，Group.ReadWrite.All 不起作用。
+- 需要 RoleManagement.ReadWrite.All Microsoft Graph 权限才能管理此类组的成员身份；Group.ReadWrite.All 不起作用。
 - 为了防止特权提升，只有特权身份验证管理员或全局管理员才能为可分配角色的组成员及所有者更改凭据或重置 MFA。
 - 不支持组嵌套。 不能将组添加为角色可分配的组的成员。
 
 ## <a name="use-pim-to-make-a-group-eligible-for-a-role-assignment"></a>使用 PIM 来使组符合角色分配的条件
 
 如果你不希望组的成员长期拥有某个角色的访问权限，可以使用 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 使该组符合角色分配的条件。 然后，该组的每个成员便可以激活角色分配并在固定的一段时间内保持这种状态。
-
-> [!Note]
-> 必须使用更新版本的 PIM 才能为组分配 Azure AD 角色。 你可能正在使用旧版 PIM，因为你的 Azure AD 组织利用了 PIM API。 请向 pim_preview@microsoft.com 发送电子邮件，以请求迁移你的组织并更新 API。 有关详细信息，请参阅 [PIM 中的 Azure AD 角色和功能](../privileged-identity-management/pim-configure.md)。
 
 ## <a name="scenarios-not-supported"></a>不支持的方案
 

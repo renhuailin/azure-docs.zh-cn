@@ -1,14 +1,14 @@
 ---
 title: 更新委派
 description: 了解如何为以前加入到 Azure Lighthouse 的客户更新委托。
-ms.date: 02/16/2021
+ms.date: 09/08/2021
 ms.topic: how-to
-ms.openlocfilehash: e8044732cd1cb544515bcfe5b2c0ac3b40bf0cfe
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 41ba14433f1af7abb60034e4034f0585ed9968f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389248"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736680"
 ---
 # <a name="update-a-delegation"></a>更新委派
 
@@ -58,12 +58,12 @@ ms.locfileid: "114389248"
 
 ## <a name="updating-managed-service-offers"></a>更新托管服务产品/服务
 
-如果你通过发布到 Azure 市场的托管服务产品/服务加入了客户，并且需要更新授权，则可通过使用要在该客户的计划中使用的[授权](../../marketplace/plan-managed-service-offer.md)来[发布新版本的产品/服务](../../marketplace/update-existing-offer.md)，从而更新委托。 然后，客户将能够在 Azure 门户中更新到该最新版本。
+如果你通过发布到 Azure 市场的托管服务产品/服务加入了客户，并且需要更新授权，则可通过使用要在该客户的计划中使用的[授权](../../marketplace/create-managed-service-offer-plans.md#authorizations)[发布新版本的产品/服务](../../marketplace/update-existing-offer.md)来实现此目的。 然后，客户将能够[查看 Azure 门户中的更改并接受新版本](view-manage-service-providers.md#update-service-provider-offers)。
 
-如果要更改管理租户，则需要[创建并发布新的托管服务产品/服务](../../marketplace/plan-managed-service-offer.md)以供客户接受。
+如果要更改管理租户，则需要[创建并发布新的托管服务产品/服务](publish-managed-services-offers.md)以供客户接受。
 
-> [!TIP]
-> 如前文所述，建议不在同一客户和管理租户之间使用多个不同的产品/服务。 如果为使用同一管理租户的同一客户发布新产品/服务，请确保在客户接受新的产品/服务之前先删除以前的产品/服务。
+> [!IMPORTANT]
+> 如前文所述，建议避免将多个不同的产品/服务用于同一客户和管理租户。 如果为使用同一管理租户的同一客户发布新产品/服务，请确保在客户接受新的产品/服务之前先删除以前的产品/服务。
 
 ## <a name="next-steps"></a>后续步骤
 

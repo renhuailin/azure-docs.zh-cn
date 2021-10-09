@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 06/24/2021
+ms.date: 09/12/2021
 tags: azure-synpase
-ms.openlocfilehash: 869498111df151f78cb0a1d9ad7ede1dd84aaf42
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 8a3740a228aa03a23f3584c3412b8451ebacc35e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582598"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812411"
 ---
 # <a name="dynamic-data-masking"></a>动态数据屏蔽 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -52,6 +52,13 @@ Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 支持�
 
 DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，可以考虑对这些字段进行掩码。 在门户的“动态数据掩码”边栏选项卡中，会看到针对数据库建议的列。 用户只需针对一个或多个列单击“添加掩码”，单击“保存”，即可对这些字段应用掩码。
 
+## <a name="manage-dynamic-data-masking-using-t-sql"></a>使用 T-SQL 管理动态数据掩码
+
+- 若要创建动态数据掩码，请参阅[创建动态数据掩码](/sql/relational-databases/security/dynamic-data-masking#creating-a-dynamic-data-mask)。
+- 若要在现有列上添加或编辑掩码，请参阅[在现有列中添加或编辑掩码](/sql/relational-databases/security/dynamic-data-masking#adding-or-editing-a-mask-on-an-existing-column)。
+- 若要授予查看未屏蔽数据的权限，请参阅[授予查看未屏蔽数据的权限](/sql/relational-databases/security/dynamic-data-masking#granting-permissions-to-view-unmasked-data)。
+- 若要删除动态数据掩码，请参阅[删除动态数据掩码](/sql/relational-databases/security/dynamic-data-masking#dropping-a-dynamic-data-mask)。
+
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 为数据库设置动态数据掩码
 
 ### <a name="data-masking-policies"></a>数据掩码策略
@@ -82,7 +89,19 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 ## <a name="permissions"></a>权限
 
-动态数据掩码可由 Azure SQL 数据库管理员、服务器管理员或基于角色的访问控制 (RBAC) [SQL 安全管理器](../../role-based-access-control/built-in-roles.md#sql-security-manager)角色配置。
+以下是用于配置动态数据掩码的内置角色：
+- [SQL 安全管理器](../../role-based-access-control/built-in-roles.md#sql-security-manager)
+- [SQL DB 参与者](../../role-based-access-control/built-in-roles.md#sql-db-contributor)
+- [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)
+
+以下是使用动态数据屏蔽所需的操作：
+
+读/写：
+- Microsoft.Sql/servers/databases/dataMaskingPolicies/* Read：
+- Microsoft.Sql/servers/databases/dataMaskingPolicies/read Write：
+-   Microsoft.Sql/servers/databases/dataMaskingPolicies/write
+
+若要详细了解在使用带有 T-SQL 命令的动态数据掩码时的权限，请参阅[权限](/sql/relational-databases/security/dynamic-data-masking#permissions)
 
 ## <a name="see-also"></a>另请参阅
 

@@ -11,12 +11,12 @@ author: MarkusVi
 manager: mtillman
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad33236812329014851a7397488025a4df558cd
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 267c7ae20f9d424d03897e0ee31b7ad990ed261d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528679"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754103"
 ---
 # <a name="quickstart-access-azure-ad-logs-with-the-microsoft-graph-api"></a>快速入门：使用 Microsoft Graph API 访问 Azure AD 日志 
 
@@ -47,15 +47,15 @@ ms.locfileid: "111528679"
 
 本部分提供使用 Graph API 获取有关登录的信息的步骤。
 
- ![Graph 浏览器查询](./media/quickstart-access-log-with-graph-api/graph-explorer-query.png)   
+ ![Microsoft Graph 资源管理器查询](./media/quickstart-access-log-with-graph-api/graph-explorer-query.png)   
 
 若要查看失败的登录，请执行以下操作：
 
-1. 导航到 [Microsoft Graph 浏览器](https://developer.microsoft.com/en-us/graph/graph-explorer)。
+1. 导航到 [Microsoft Graph 资源管理器](https://developer.microsoft.com/en-us/graph/graph-explorer)。
 
 2. 以全局管理员的身份登录到你的租户。
 
-    ![Microsoft Graph 浏览器身份验证](./media/quickstart-access-log-with-graph-api/graph-explorer-authentication.png)   
+    ![Microsoft Graph 资源管理器身份验证](./media/quickstart-access-log-with-graph-api/graph-explorer-authentication.png)   
 
 3. 在 HTTP 谓词下拉列表中，选择“GET” 。
 
@@ -67,7 +67,7 @@ ms.locfileid: "111528679"
 
 查看查询结果。
 
- ![Microsoft Graph 浏览器响应预览](./media/quickstart-access-log-with-graph-api/response-preview.png)   
+ ![Microsoft Graph 资源管理器响应预览](./media/quickstart-access-log-with-graph-api/response-preview.png)   
 
 
 ## <a name="clean-up-resources"></a>清理资源

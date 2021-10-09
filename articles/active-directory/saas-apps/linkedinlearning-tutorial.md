@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 LinkedIn Learning 集成 | Microsoft Docs
+title: 教程：Azure AD 与 LinkedIn Learning 的 SSO 集成
 description: 了解如何在 Azure Active Directory 和 LinkedIn Learning 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/29/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: c5f43467a281f9c7fdca20f49750a0ac81307237
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 1a80caceb0edbb5e297ff70726843d838d0937df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362982"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832977"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>教程：Azure Active Directory 单一登录 (SSO) 与 LinkedIn Learning 集成
+# <a name="tutorial-azure-ad-sso-integration-with-linkedin-learning"></a>教程：Azure AD 与 LinkedIn Learning 的 SSO 集成
 
 本教程介绍如何将 LinkedIn Learning 与 Azure Active Directory (Azure AD) 集成。 将 LinkedIn Learning 与 Azure AD 集成后，可以：
 
@@ -39,6 +39,7 @@ ms.locfileid: "114362982"
 
 * LinkedIn Learning 支持 SP 和 IDP 发起的 SSO。
 * LinkedIn Learning 支持 Just In Time 用户预配。
+* LinkedIn Learning 支持[自动用户预配](linkedin-learning-provisioning-tutorial.md)。
 
 ## <a name="add-linkedin-learning-from-the-gallery"></a>从库中添加 LinkedIn Learning
 
@@ -107,7 +108,7 @@ ms.locfileid: "114362982"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -195,7 +196,7 @@ ms.locfileid: "114362982"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到设置了 SSO 的 LinkedIn Learning。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 LinkedIn Learning 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 LinkedIn Learning。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 LinkedIn Learning 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 LinkedIn Learning。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ece3693fa183ba31de569e7db632c3d294c10437
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: de462f24f05b93f40453cd74c85a41b5c11ac0d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187174"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656296"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>在 ARM 模板中使用部署脚本
 
@@ -40,6 +40,10 @@ ms.locfileid: "123187174"
 
 > [!NOTE]
 > Azure 登录的重试逻辑现在内置于包装脚本中。 如果你在部署脚本所在的模板中授予权限，部署脚本服务会在 10 分钟内尝试以 10 秒的间隔进行登录，直到托管标识角色分配复制完毕。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解 ARM 模板测试工具包并获得实际操作指导，请参阅“Microsoft learn”上的[使用部署脚本扩展 ARM 模板](/learn/modules/extend-resource-manager-template-deployment-scripts)。
 
 ## <a name="configure-the-minimum-permissions"></a>配置最低权限
 

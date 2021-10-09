@@ -1,6 +1,6 @@
 ---
 title: 有关将设备遥测数据发送到 Azure IoT 中心的快速入门
-description: 本快速入门为设备开发人员介绍如何安全地将设备连接到 Azure IoT 中心。 你将使用适用于 C、C#、Python、Node.js 或 Java 的 Azure IoT 设备 SDK 在模拟设备上运行一个客户端应用，然后连接到 IoT 中心并发送遥测数据。
+description: 本快速入门为设备开发人员介绍如何安全地将设备连接到 Azure IoT 中心。 使用适用于 C、C#、Python、Node.js 或 Java 的 Azure IoT 设备 SDK 生成适用于 Windows、Linux 或 Raspberry Pi OS (Raspian) 的模拟设备客户端。 最后，将设备连接到 Azure IoT 中心并发送遥测。
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 08/03/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 0ac38398f31c2256761c0f1b75d03f2fafeb65f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f7b1543b91d604b6640bf97877bf2c134deee866
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744311"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094028"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>快速入门：将设备中的遥测数据发送到 Azure IoT 中心
+# <a name="quickstart-send-telemetry-from-an-iot-plug-and-play-device-to-azure-iot-hub"></a>快速入门：将遥测从 IoT 即插即用发送到 Azure IoT 中心
 
 **适用对象**：[设备应用程序开发人员](about-iot-develop.md#device-application-development)
 

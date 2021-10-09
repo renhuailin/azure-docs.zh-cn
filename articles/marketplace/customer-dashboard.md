@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 11/09/2020
-ms.openlocfilehash: 43332c559c309bc99754467994a4718ece78d3cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/27/2021
+ms.openlocfilehash: 7d665b34a112328a742e2ba4ed9816406a58fa30
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731209"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082949"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“客户”仪表板
 
@@ -38,17 +38,45 @@ ms.locfileid: "121731209"
 > [!NOTE]
 > 客户获取产品/服务与合作伙伴中心内进行报告之间的最大延迟为 48 小时。
 
+## <a name="access-the-customers-dashboard"></a>访问“客户”仪表板
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“见解”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“见解”磁贴。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 在左侧菜单中，选择“客户”。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航栏中，选择“商业市场” > “分析” > “客户”  。
+
+---
+
 ## <a name="elements-of-the-customers-dashboard"></a>“客户”仪表板的元素
 
 下面各部分介绍了如何使用“客户”仪表板以及如何读取数据。
 
-若要访问合作伙伴中心的“客户”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “客户”。
-
 ### <a name="month-range"></a>月份范围
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+可在每页右上角找到月份范围选择。 基于过去 6 个或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，以便自定义“客户”页面图的输出内容。 默认月份范围（计算期间）为 6 个月。
+
+[ ![展示“客户”页上的月份筛选器。](./media/customer-dashboard/customers-workspace-filters.png) ](./media/customer-dashboard/customers-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 可在每页右上角找到月份范围选择。 基于过去 6 个或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，以便自定义“客户”页面图的输出内容。 默认月份范围（计算期间）为 6 个月。
 
 :::image type="content" source="./media/customer-dashboard/month-range-filters.png" alt-text="展示“客户”页上的月份筛选器。":::
+
+---
 
 > [!NOTE]
 > 可视化小组件和导出报表中的所有指标都使用用户选择的计算周期。
@@ -81,7 +109,7 @@ ms.locfileid: "121731209"
 
 “按订单量/使用量统计的客户”图表有三个选项卡：“订单量”、“规范化使用量”和“原始使用量”。 选择“订单量”选项卡以显示订单详细信息。
 
-:::image type="content" source="./media/customer-dashboard/customers-by-orders-usage.png" alt-text="展示“客户”页上“按订单量/使用量统计的客户”小组件的“订单量”选项卡。":::
+[ ![展示“客户”页上“按订单量/使用量统计的客户”小组件的“订单量”选项卡。](./media/customer-dashboard/customers-by-orders-usage.png) ](./media/customer-dashboard/customers-by-orders-usage.png#lightbox)
 
 注意以下事项：
 

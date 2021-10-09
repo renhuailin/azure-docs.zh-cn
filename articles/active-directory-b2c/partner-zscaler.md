@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9cd193eb6ff2858440f1cd9a62bdd53d58d6047d
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: fb4ff79e1115086ef84694485cd9e7978295a9c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256287"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598834"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>教程：通过 Azure Active Directory B2C 配置 Zscaler Private Access
 
@@ -78,7 +78,7 @@ ZPA 集成包括以下组件：
    b. 在“单一登录”下选择“用户”。   
    c. 在“域”下拉列表中，选择要与此 IdP 相关联的身份验证域。
 
-1. 选择“**下一步**”。
+1. 选择“下一步”。
 
 1. 选择“SP 元数据”选项卡，然后执行以下操作：
 
@@ -117,11 +117,13 @@ ZPA 集成包括以下组件：
 
 接下来，你需要获取以下格式的 SAML 元数据 URL：
 
-```https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/Samlp/metadata```
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/Samlp/metadata`
 
 请注意，`<tenant-name>` 是你的 Azure AD B2C 租户的名称，`<policy-name>` 是你在之前的步骤中创建的自定义 SAML 策略的名称。
 
-例如，URL 可能为 `https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata`。
+例如，URL 可能为：
+
+`https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml/Samlp/metadata`.
 
 打开 Web 浏览器并转到 SAML 元数据 URL。 右键单击页面上的任意位置，选择“另存为”，然后将文件保存到计算机上，以便在下一步使用。
 

@@ -1,25 +1,25 @@
 ---
 title: 使用 Databricks Python 转换数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中运行 Databricks Python 活动来处理或转换数据。
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中运行 Databricks Python 活动来处理或转换数据。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
-ms.date: 03/15/2018
+ms.date: 09/09/2021
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-python, synapse
-ms.openlocfilehash: 24d1ab1860f875201c255e775af151af88585731
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b178a54d71d7f004f66e15f455c0b618842d765e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182069"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806355"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Python 活动在 Azure Databricks 群集中运行 Python 文件。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
+[管道](concepts-pipelines-activities.md)中的 Azure Databricks Python 活动在 Azure Databricks 群集中运行 Python 文件。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
 
 有关此功能的十一分钟介绍和演示，请观看以下视频：
 

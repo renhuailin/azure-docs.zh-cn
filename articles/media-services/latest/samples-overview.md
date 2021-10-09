@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6dd82d635199e4aa47a07e09b3c4649dbc4ef7cd
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e17ec995ad9d8171d1d6a0b51b5112e4597d618f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "122643111"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656658"
 ---
 # <a name="media-services-v3-samples"></a>媒体服务 v3 示例
 
@@ -31,7 +31,10 @@ ms.locfileid: "122643111"
 |-------------|-------------|
 | [Account/CreateAccount](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Account/CreateAccount)|该示例演示了如何创建媒体服务帐户和设置主存储帐户，以及高级配置设置，包括密钥传递 IP 允许列表、托管标识、存储身份验证和创建自己的加密密钥。|
 | [VideoEncoding/Encoding_PredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_PredefinedPreset)|该示例演示了如何使用内置预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
+| [VideoEncoding/Encoding_H264_ContentAware](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264_ContentAware) | 演示不带任何约束的 H.264 内容感知编码的最基本用法 |
+| [VideoEncoding/Encoding_H264_ContentAware_Constrained](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264_ContentAware_Constrained) | 演示如何使用 PresetConfigurations 类来约束预设的输出行为|
 | [VideoEncoding/Encoding_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264)|该示例演示了如何使用自定义 H.264 编码预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
+| [VideoEncoding/Encoding_HEVC_ContentAware](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC_ContentAware) | 演示具有内容感知编码但没有约束的 HEVC 编解码器的基本用法。  PresetConfigurations 类也受 HEVC 的支持，可以添加到此示例中|
 | [VideoEncoding/Encoding_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)|该示例演示了如何使用自定义 HEVC 编码预设和 HTTP URL 输入来提交作业，发布输出资产以进行流式处理，以及下载结果进行验证。|
 | [VideoEncoding/Encoding_StitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)|该示例演示了如何使用 JobInputSequence 提交作业，以将两个或更多个可按开始或结束时间剪辑的资产拼接在一起。 生成的编码文件是单个视频，其所有资产拼接在一起。  示例还将发布输出资产以进行流式传输，以及下载结果进行验证。|
 | [VideoEncoding/Encoding_SpriteThumbnail](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_SpriteThumbnail)|该示例演示了如何使用带缩略图子画面的自定义预设和 HTTP URL 输入来提交作业，如何发布输出资产以进行流式处理，以及如何下载结果进行验证。|
@@ -45,6 +48,7 @@ ms.locfileid: "122643111"
 | [Streaming/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|该示例演示了如何使用内置的 AdaptiveStreaming 预设创建转换，如何提交作业，如何创建资产筛选器和帐户筛选器，如何将筛选器关联到流式传输定位符，以及如何打印用于播放的 URL。|
 | [Streaming/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|该示例演示了如何使用内置的 AdaptiveStreaming 预设创建转换，如何提交作业，如何发布输出资产以进行 HLS 和 DASH 流式传输。|
 | [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | 该示例提供了针对使用按需编码或分析的生产系统的指南和最佳做法。 读者应该从[媒体服务和 VOD 的高可用性](architecture-high-availability-encoding-concept.md)这一配套文章开始。 为 [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) 示例提供了一个单独的解决方案文件。 |
+| [媒体服务的 Azure Functions](https://github.com/xpouyat/media-services-v3-dotnet-core-functions-integration/tree/main/Functions)|此项目包含连接到 Azure 媒体服务 v3进行视频处理的 Azure Functions 示例。 可使用 Visual Studio 2019 或 Visual Studio Code 来开发和运行函数。 提供了一个 Azure 资源管理器 (ARM) 模板和一个 GitHub Actions 工作流，用于部署函数资源并实现持续部署。|
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 

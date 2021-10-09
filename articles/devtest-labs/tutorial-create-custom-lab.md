@@ -1,14 +1,14 @@
 ---
-title: 使用 Azure 开发测试实验室创建实验室 | Microsoft Docs
+title: 创建实验室教程
 description: 在此教程中，我们使用 Azure 门户在 Azure 开发测试实验室中创建实验室。 实验室管理员会设置实验室、创建实验室中的 VM 并配置策略。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52640469ff02fd167b0add4210ddec11db05af97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91324274"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655593"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置实验室
 在此教程中，使用 Azure 门户创建实验室。 实验室管理员在组织中设置实验室、创建实验室中的 VM 并配置策略。 实验室用户（例如：开发人员和测试人员）认领、连接到并使用实验室中的 VM。 
@@ -103,4 +103,3 @@ ms.locfileid: "91324274"
 
 > [!div class="nextstepaction"]
 > [教程：访问实验室](tutorial-use-custom-lab.md)
-

@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/27/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 625df6ed5147b77a9829b6e7b3396f4855068d62
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f97e4ec774dc9ed703a41cdd75fb88747fb627e5
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253854"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090906"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp 文件卷的跨区域复制
 
@@ -35,30 +35,36 @@ Azure NetApp 文件复制功能通过跨区域卷复制提供数据保护。 可
 
 ### <a name="azure-regional-pairs"></a>Azure 区域对
 
-* 美国东部和美国西部
-* 美国东部 2 和美国中部
-* 澳大利亚东部和澳大利亚东南部
-* 加拿大中部和加拿大东部
-* 印度南部和印度中部 
-* 德国中西部和德国北部
-* 日本东部和日本西部
-* 欧洲北部和欧洲西部
-* 英国南部和英国西部
-* 阿拉伯联合酋长国北部和阿拉伯联合酋长国中部
-* 挪威东部和挪威西部
+| 地理位置 | 区域对 A | 区域对 B  |
+|:--- |:--- |:--- |
+| 澳大利亚 | 澳大利亚东部 | 澳大利亚东南部 |
+| Canada | 加拿大中部 | 加拿大东部 |
+| 欧洲 | 北欧 | 西欧 |
+| 德国 | 德国中西部 | 德国北部 |
+| 印度 | 印度中部 |印度南部 |
+| 日本 | 日本东部 | 日本西部 |
+| 北美 | 美国东部 | 美国西部 |
+| 北美 | 美国东部 2 | Central US |
+| 北美 | 美国中北部 | 美国中南部|
+| 挪威 | 挪威东部 | 挪威西部 |
+| 英国 | 英国南部 | 英国西部 |
+| 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | 阿联酋中部 |
+| 美国政府 | US Gov 弗吉尼亚州 | US Gov 德克萨斯州 |
 
 ### <a name="azure-regional-non-standard-pairs"></a>Azure 区域非标准对
 
-*   美国西部 2 和美国东部
-*   美国中南部和美国中部
-*   美国中南部和美国东部
-*   美国中南部和美国东部 2
-*   美国东部和美国东部 2
-*   美国东部 2 和美国西部 2
-*   澳大利亚东部和东南亚 
-*   德国中西部和英国南部
-*   德国中西部和欧洲西部
-*   德国中西部和法国中部
+| 地理位置 | 区域对 A | 区域对 B  |
+|:--- |:--- |:--- |
+| 澳大利亚/东南亚 | 澳大利亚东部 | Southeast Asia |
+| 德国/英国 | 德国中西部 | 英国南部 |
+| 德国/欧洲 | 德国中西部 | 西欧 | 
+| 德国/法国 | 德国中西部 | 法国中部 |
+| 北美 | 美国东部 | 美国东部 2 |
+| 北美 | 美国东部 2| 美国西部 2 |
+| 北美 | 美国中南部 | 美国东部 |
+| 北美 | 美国中南部 | 美国东部 2 |
+| 北美 | 美国中南部 | Central US |
+| 北美 | 美国西部 2 | 美国东部 |
 
 ## <a name="service-level-objectives"></a>服务级别目标
 

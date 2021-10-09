@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/19/2021
+ms.date: 09/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 01d8f23331525443a9f83245b8eec2b402e92d6e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4b4c1e159fcd62d1d9d57b907edbfa4e5f0bfc24
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114443015"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576811"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>为 NFS 卷访问配置具有扩展组的 ADDS LDAP
 
-[创建 NFS 卷](azure-netapp-files-create-volumes.md)时，可以选择为卷启用具有扩展组 LDAP 功能（LDAP 选项）。 此功能使 Active Directory LDAP 用户和扩展组（最多 1024 个组）可以访问卷。 可将“具有扩展组的 LDAP”功能用于 NFSv4.1 和 NFSv3 卷。 
+[创建 NFS 卷](azure-netapp-files-create-volumes.md)时，可以选择为卷启用具有扩展组 LDAP 功能（LDAP 选项）。 此功能使 Active Directory LDAP 用户和扩展组（最多 1024 个组）可以访问卷中的文件和目录。 可将“具有扩展组的 LDAP”功能用于 NFSv4.1 和 NFSv3 卷。 
 
 本文介绍在创建 NFS 卷时启用具有扩展组的 LDAP 的注意事项和步骤。  
 
@@ -79,15 +79,21 @@ ms.locfileid: "114443015"
 4. LDAP NFS 用户在 LDAP 服务器上需要具有某些 POSIX 属性。 为 LDAP 用户和 LDAP 组设置属性，如下所示： 
 
     * LDAP 用户必需的属性：   
-        `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: user`
+        `uid: Alice`,  
+        `uidNumber: 139`,  
+        `gidNumber: 555`,  
+        `objectClass: user, posixAccount`
     * LDAP 组必需的属性：   
-        `objectClass: group`, `gidNumber: 555`
+        `objectClass: group, posixGroup`,  
+        `gidNumber: 555`
 
-    可使用“Active Directory 用户和计算机”MMC 管理单元来管理 POSIX 属性。 以下示例展示了 Active Directory 属性编辑器：  
+    为 `objectClass` 指定的值是单独的条目。 例如，在多值字符串编辑器中，`objectClass` 将为 LDAP 用户指定如下单独的值（`user` 和 `posixAccount`）：   
+
+    ![多值字符串编辑器的屏幕截图，其中显示了为对象类指定了多个值。](../media/azure-netapp-files/multi-valued-string-editor.png) 
+
+    可使用“Active Directory 用户和计算机”MMC 管理单元来管理 POSIX 属性。 以下示例展示了 Active Directory 属性编辑器。 有关详细信息，请参阅[访问 Active Directory 属性编辑器](create-volumes-dual-protocol.md#access-active-directory-attribute-editor)。  
 
     ![Active Directory 属性编辑器](../media/azure-netapp-files/active-directory-attribute-editor.png) 
-
-    有关详细信息，请参阅[访问 Active Directory 属性编辑器](create-volumes-dual-protocol.md#access-active-directory-attribute-editor)。  
 
 5. 如果要配置集成 LDAP 的 NFSv4.1 Linux 客户端，请查看[为 Azure NetApp 文件配置 NFS 客户端](configure-nfs-clients.md)。
 

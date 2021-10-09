@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 52966adfeffc137bf9edd95c61887dbc98f02aa6
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 673835a3e3112bf433faeba815e65c6203dd9ce8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221546"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603802"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -44,6 +44,10 @@ ms.locfileid: "123221546"
 2. 用户可以使用 Azure AD B2C 本地帐户或任何其他联合标识提供者（如果已配置）进行身份验证。
 3. 如果用户使用联合标识提供者登录，令牌响应会发送到 Azure AD B2C。
 4. Azure AD B2C 生成 SAML 断言并将其发送到应用程序。
+
+观看此视频，了解如何将 SAML 应用程序与 Azure AD B2C 集成。 
+
+>[!Video https://www.youtube.com/embed/r2TIVBCm7v4]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -95,7 +99,8 @@ ms.locfileid: "123221546"
 需要将你的证书存储在 Azure AD B2C 租户中。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 1. 在“概述”页上，选择“Identity Experience Framework”。
 1. 选择“策略密钥”，然后选择“添加” 。
@@ -292,7 +297,8 @@ ms.locfileid: "123221546"
 要使 Azure AD B2C 信任你的应用程序，你需要创建一个 Azure AD B2C 应用程序注册。 注册包含配置信息，如应用程序的元数据终结点。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”，然后搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
 1. 输入应用程序的“名称”。 例如，输入“SAMLApp1”。

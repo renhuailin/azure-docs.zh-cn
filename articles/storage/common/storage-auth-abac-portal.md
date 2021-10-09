@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
-ms.date: 05/06/2021
-ms.openlocfilehash: 3e5e46e15a7885eb5e3f4828cb8298355a116fd8
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 09/24/2021
+ms.openlocfilehash: 0ab670b9ef6309b8db01f4a53f41c703dea69423
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300482"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092259"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-the-azure-portal-preview"></a>教程：使用 Azure 门户添加角色分配条件来限制对 Blob 的访问（预览）
 
@@ -29,8 +29,8 @@ ms.locfileid: "112300482"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 将条件添加到角色分配
-> * 基于 blob 索引标记限制对 blob 的访问
+> - 将条件添加到角色分配
+> - 基于 blob 索引标记限制对 blob 的访问
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -67,7 +67,7 @@ ms.locfileid: "112300482"
 1. 以订阅所有者的身份登录到 Azure 门户。
 
 1. 单击“Azure Active Directory”。
-    
+
 1. 创建用户或查找现有用户。 本教程使用 Chandra 作为示例。
 
 ## <a name="step-2-set-up-storage"></a>步骤 2：设置存储
@@ -87,7 +87,7 @@ ms.locfileid: "112300482"
     如果未看到“Blob 索引标记”部分，并且刚注册了订阅，可能需要等待几分钟，更改才会生效。 有关详细信息，请参阅[使用 blob 索引标记（预览版）管理和查找 Azure Blob 存储中的数据](../blobs/storage-blob-index-how-to.md)。
 
     > [!NOTE]
-    > Blob 还支持存储用户定义的任意键-值元数据。 尽管元数据与 Blob 索引标记类似，但你也必须将 Blob 索引标记与条件配合使用。 
+    > Blob 还支持存储用户定义的任意键-值元数据。 尽管元数据与 Blob 索引标记类似，但你也必须将 Blob 索引标记与条件配合使用。
 
     | 密钥 | 值 |
     | --- | --- |
@@ -133,7 +133,7 @@ ms.locfileid: "112300482"
 
 ## <a name="step-4-add-a-condition"></a>步骤 4：添加条件
 
-1. 在“条件”选项卡上，单击“添加条件” 。
+1. 在“条件(可选)”选项卡上，单击“添加条件” 。
 
     ![用于添加新条件的“添加角色分配条件”页面的屏幕截图。](./media/storage-auth-abac-portal/condition-add-new.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "112300482"
 
 1. 在“添加操作”部分，单击“选择操作”。
 
-    随即会显示“选择操作”窗格。 此窗格是基于角色分配（将作为条件的目标）进行了筛选的数据操作列表。 
+    随即会显示“选择操作”窗格。 此窗格是基于角色分配（将作为条件的目标）进行了筛选的数据操作列表。
 
     ![“选择操作”窗格屏幕截图，其中选中了一个操作。](./media/storage-auth-abac-portal/condition-actions-select.png)
 
@@ -213,7 +213,7 @@ ms.locfileid: "112300482"
     ```
 
     下面是一个输出示例。 请注意，由于添加了上述条件，因此无法读取该文件。
-    
+
     ```azurepowershell
     Get-AzStorageBlob: This request is not authorized to perform this operation using this permission. HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation using this permission.
     ErrorCode: AuthorizationPermissionMismatch
@@ -221,7 +221,7 @@ ms.locfileid: "112300482"
     RequestId: <requestId>
     Time: Sun, 13 Sep 2020 12:33:42 GMT
     ```
-    
+
 1. 读取 Cascade 项目的文件。
 
     ```azurepowershell
@@ -229,10 +229,10 @@ ms.locfileid: "112300482"
     ```
 
     下面是一个输出示例。 请注意，由于该项目带有 Project=Cascade 标记，因此可以读取该文件。
-    
+
     ```azurepowershell
        AccountName: <storageAccountName>, ContainerName: <containerName>
-    
+
     Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotT
                                                                                                                   ime
     ----                 --------  ------          -----------                    ------------         ---------- ---------

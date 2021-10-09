@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 7f5553cc51927d878487b0875e72873451a3de3c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4e66c71dd274f6096113992d9584645d5622f1c1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059575"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211034"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域
 
@@ -113,25 +113,31 @@ ms.locfileid: "106059575"
 
 1. 从中心的属性和设置列表中选择“导出模板”。 
 
-   ![显示用于导出 IoT 中心模板的命令的屏幕截图。](./media/iot-hub-how-to-clone/iot-hub-export-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-export-template.png" alt-text="显示用于导出 IoT 中心模板的命令的屏幕截图。" border="true":::
 
 1. 选择“下载”以下载模板。 将文件保存到可以再次找到的某个位置。 
 
-   ![显示用于下载 IoT 中心模板的命令的屏幕截图。](./media/iot-hub-how-to-clone/iot-hub-download-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-download-template.png" alt-text="显示用于下载 IoT 中心模板的命令的屏幕截图。" border="true":::
 
 ### <a name="view-the-template"></a>查看模板 
 
-1. 转到“下载”文件夹（或导出模板时使用的任何文件夹），并找到下载的 zip 文件。 打开该 zip 文件，找到名为 `template.json` 的文件。 选择该文件，然后按 Ctrl+C 复制模板。 转到不在 zip 文件中的另一文件夹，然后粘贴该文件 (Ctrl+V)。 现在可对其进行编辑。
+1. 转到“下载”文件夹（或导出模板时使用的任何文件夹），并找到下载的 zip 文件。 提取 zip 文件，并找到名为 `template.json` 的文件。 选择并复制它。 转到另一文件夹，然后粘贴模板文件 (Ctrl+V)。 现在可对其进行编辑。
  
-    以下示例适用于没有路由配置的一般中心。 它是 **westus** 区域中名为 **ContosoTestHub29358** 的一个 S1 层中心（具有 1 个单元）。 下面是导出的模板。
+    以下示例适用于没有路由配置的一般中心。 它是区域“westus”中名为“ContosoHub”的 S1 层中心（包含 1 个单元）。  下面是导出的模板。
 
     ``` json
     {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
-            "IotHubs_ContosoTestHub29358_name": {
-                "defaultValue": "ContosoTestHub29358",
+            "IotHubs_ContosoHub_connectionString": {
+                "type": "SecureString"
+            },
+            "IotHubs_ContosoHub_containerName": {
+                "type": "SecureString"
+            },
+            "IotHubs_ContosoHub_name": {
+                "defaultValue": "ContosoHub",
                 "type": "String"
             }
         },
@@ -139,47 +145,23 @@ ms.locfileid: "106059575"
         "resources": [
             {
                 "type": "Microsoft.Devices/IotHubs",
-                "apiVersion": "2018-04-01",
-                "name": "[parameters('IotHubs_ContosoTestHub29358_name')]",
+                "apiVersion": "2021-07-01",
+                "name": "[parameters('IotHubs_ContosoHub_name')]",
                 "location": "westus",
                 "sku": {
                     "name": "S1",
                     "tier": "Standard",
                     "capacity": 1
                 },
+                "identity": {
+                    "type": "None"
+                },
                 "properties": {
-                    "operationsMonitoringProperties": {
-                        "events": {
-                            "None": "None",
-                            "Connections": "None",
-                            "DeviceTelemetry": "None",
-                            "C2DCommands": "None",
-                            "DeviceIdentityOperations": "None",
-                            "FileUploadOperations": "None",
-                            "Routes": "None"
-                        }
-                    },
                     "ipFilterRules": [],
                     "eventHubEndpoints": {
                         "events": {
                             "retentionTimeInDays": 1,
-                            "partitionCount": 2,
-                            "partitionIds": [
-                                "0",
-                                "1"
-                            ],
-                            "path": "contosotesthub29358",
-                            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-                        },
-                        "operationsMonitoringEvents": {
-                            "retentionTimeInDays": 1,
-                            "partitionCount": 2,
-                            "partitionIds": [
-                                "0",
-                                "1"
-                            ],
-                            "path": "contosotesthub29358-operationmonitoring",
-                            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
+                            "partitionCount": 4
                         }
                     },
                     "routing": {
@@ -203,8 +185,8 @@ ms.locfileid: "106059575"
                     "storageEndpoints": {
                         "$default": {
                             "sasTtlAsIso8601": "PT1H",
-                            "connectionString": "",
-                            "containerName": ""
+                            "connectionString": "[parameters('IotHubs_ContosoHub_connectionString')]",
+                            "containerName": "[parameters('IotHubs_ContosoHub_containerName')]"
                         }
                     },
                     "messagingEndpoints": {
@@ -224,7 +206,9 @@ ms.locfileid: "106059575"
                             "maxDeliveryCount": 10
                         }
                     },
-                    "features": "None"
+                    "features": "None",
+                    "disableLocalAuth": false,
+                    "allowedFqdnList": []
                 }
             }
         ]
@@ -237,63 +221,47 @@ ms.locfileid: "106059575"
 
 #### <a name="edit-the-hub-name-and-location"></a>编辑中心名称和位置
 
-1. 删除顶部的 parameters 节 -- 只使用中心名称可以大大简化操作，因为我们不会使用多个参数。 
+1. 删除顶部的容器名称参数部分。 ContosoHub 没有关联的容器。
 
     ``` json
-        "parameters": {
-            "IotHubs_ContosoTestHub29358_name": {
-                "defaultValue": "ContosoTestHub29358",
-                "type": "String"
-            }
+    "parameters": {
+      ...
+        "IotHubs_ContosoHub_containerName": {
+            "type": "SecureString"
         },
+      ...
+    },
     ```
 
-1. 更改名称以使用实际（新）名称，而无需从参数（在上一步骤中已删除参数）中检索该名称。 
+1. 删除 storageEndpoints 属性。
 
-    对于新中心，请使用原始中心的名称加上字符串 *clone* 来构成新的名称。 首先清理中心名称和位置。
+    ```json
+    "properties": {
+      ...
+        "storageEndpoints": {
+        "$default": {
+            "sasTtlAsIso8601": "PT1H",
+            "connectionString": "[parameters('IotHubs_ContosoHub_connectionString')]",
+            "containerName": "[parameters('IotHubs_ContosoHub_containerName')]"
+        }
+      },
+      ...
     
+    ```
+
+1. 在“resources”下，将 location 从 westus 更改为 eastus。
+
     旧版本：
 
     ``` json 
-    "name": "[parameters('IotHubs_ContosoTestHub29358_name')]",
     "location": "westus",
     ```
     
     新版本： 
 
     ``` json 
-    "name": "ContosoTestHub29358clone",
     "location": "eastus",
     ```
-
-    接下来，你会发现 **path** 的值包含旧中心的名称。 请将这些值更改为使用新名称。 下面是 **eventHubEndpoints** 下的名为 **events** 和 **OperationsMonitoringEvents** 的路径值。
-
-    完成后，事件中心终结点节应如下所示：
-
-    ``` json
-    "eventHubEndpoints": {
-        "events": {
-            "retentionTimeInDays": 1,
-            "partitionCount": 2,
-            "partitionIds": [
-                "0",
-                "1"
-            ],
-            "path": "contosotesthub29358clone",
-            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-        },
-        "operationsMonitoringEvents": {
-            "retentionTimeInDays": 1,
-            "partitionCount": 2,
-            "partitionIds": [
-                "0",
-                "1"
-            ],
-            "path": "contosotesthub29358clone-operationmonitoring",
-            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-        }
-    ```
-
 #### <a name="update-the-keys-for-the-routing-resources-that-are-not-being-moved"></a>更新不移动的路由资源的密钥
 
 导出已配置路由的中心的资源管理器模板时，将会看到，导出的模板中并未提供这些资源的密钥 -- 这些密钥所在的位置由星号代替。 在导入新中心的模板并创建该中心 **之前**，必须在门户中转到这些资源并检索密钥，然后填充密钥。 
@@ -351,35 +319,41 @@ ms.locfileid: "106059575"
 
 1. 选择“创建资源”。  
 
-1. 在搜索框中输入“模板部署”，然后按 Enter。
+1. 在搜索框中键入“模板部署”，然后选择 Enter。
 
 1. 选择“模板部署(使用自定义模板进行部署)”。 随后会转到“模板部署”屏幕。 选择“创建”。 将看到以下屏幕：
 
-   ![显示用于生成自己的模板的命令的屏幕截图](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png" alt-text="显示用于生成自己的模板的命令的屏幕截图":::
 
 1. 选择“在编辑器中生成自己的模板”，以便可以从文件上传模板。 
 
-1. 选择“加载文件”。 
+1. 选择“加载文件”。
 
-   ![显示用于上传模板文件的命令的屏幕截图](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-upload-file.png" alt-text="显示用于上传模板文件的命令的屏幕截图":::
 
 1. 浏览到已编辑的新模板并将其选中，然后选择“打开”。 随即会在编辑窗口中加载该模板。 选择“保存”。 
 
-   ![显示加载模板的屏幕截图](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-uploaded-file.png" alt-text="显示加载模板的屏幕截图":::
 
-1. 在以下字段中进行填充。
+1. 在“自定义部署”页上填写以下字段。
 
    **订阅**：选择要使用的订阅。
 
-   **资源组**：在新位置创建新资源组。 如果已经设置了新的资源组，可以选择它，而无需新建。
+   资源组：在新位置创建新资源组。 如果已经设置了资源组，可以选择它，而无需新建。
 
-   **位置**：如果选择了现有的资源组，则系统会自动填充与该资源组匹配的位置。 如果创建了新资源组，请填充其位置。
+   区域：如果你选择了现有的资源组，则系统会为你填充与资源组位置匹配的区域。 如果创建了新资源组，请填充其位置。
 
-   **“我同意”复选框**：简单而言，选中此框表示你同意为创建的资源付费。
+   连接字符串：填充中心的连接字符串。
 
-1. 选择“购买”按钮。
+   中心名称：在新区域中为新中心指定名称。
 
-门户现在会验证该模板并部署克隆的中心。 如果有路由配置数据，该数据将包含到新中心，但会指向位于先前位置的资源。
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment-create.png" alt-text="显示“自定义部署”页的屏幕截图":::
+
+1. 选择“查看 + 创建”按钮。
+
+1. 选择“创建”按钮。 门户会验证你的模板并部署克隆的中心。 如果有路由配置数据，该数据将包含到新中心，但会指向位于先前位置的资源。
+
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment-final.png" alt-text="屏幕截图，显示最终的“自定义部署”页":::
 
 ## <a name="managing-the-devices-registered-to-the-iot-hub"></a>管理已注册到 IoT 中心的设备
 

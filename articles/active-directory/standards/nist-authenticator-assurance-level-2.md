@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 168ea35d32a02d512ef088ace098d2938a57c022
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 30287957ca9d44c27f0d46efb6ae358db7d6ab44
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889753"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662260"
 ---
 # <a name="achieve-nist-authenticator-assurance-level-2-with-azure-active-directory"></a>使用 Azure Active Directory 满足 NIST 验证器保证级别 2 要求
 
@@ -45,6 +45,8 @@ ms.locfileid: "111889753"
 | 密码 + 带软件 TPM 的 Azure AD 联接 <br>密码 + 兼容的移动设备<br>密码 + 带软件 TPM 的混合 Azure AD 联接 <br>密码 + Microsoft Authenticator 应用（通知） | 记住的密码 + 单因素加密软件 |
 | 密码 + 带硬件 TPM 的 Azure AD 联接 <br>密码 + 带硬件 TPM 的混合 Azure AD 联接 | 记住的密码 + 单因素加密硬件 |
 
+> [!NOTE]
+> 在条件访问策略中，如果需要将设备标记为合规或已建立混合 Azure AD 联接，则 Authenticator 会充当验证器模拟电阻。
 
 ### <a name="our-recommendations"></a>我们的建议
 
@@ -60,7 +62,7 @@ ms.locfileid: "111889753"
 
 ### <a name="verifier-requirements"></a>验证程序要求
 
-Azure AD 使用经过验证且整体达到 Windows FIPS 140 级别 1 的加密模块来执行其所有与身份验证相关的加密操作。 因此，根据政府机构的要求，该验证程序符合 FIPS 140 要求。
+Azure AD 会使用经过验证且总体达到 Windows FIPS 140 级别 1 的加密模块来执行其所有与身份验证相关的加密操作。 因此，根据政府机构的要求，该验证程序符合 FIPS 140 要求。
 
 ### <a name="authenticator-requirements"></a>验证器要求
 

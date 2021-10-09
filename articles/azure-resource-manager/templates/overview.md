@@ -3,12 +3,12 @@ title: 模板概述
 description: 介绍使用 Azure 资源管理器模板（ARM 模板）部署资源的好处。
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 6c576b7e18d60a858f5f29bde0e674160610223b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 02731a2f37fda2758c9b9e9980b56a5017ed3506
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727184"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637568"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 

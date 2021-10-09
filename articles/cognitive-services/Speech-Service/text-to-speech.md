@@ -3,20 +3,21 @@ title: 文本转语音概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务中的文本转语音功能可让应用程序、工具或设备将文本转换为类似于人类的自然合成语音。 本文概述了文本转语音服务的优势和功能。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/31/2021
-ms.author: lajanuar
+ms.date: 09/01/2020
+ms.author: pafarley
+ms.custom: cog-serv-seo-aug-2020
 keywords: 文本转语音
-ms.openlocfilehash: 84eb522123e5a77de667231b5f91d96a0e7c6a56
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7be06937cf9f3117d426fd9c19cbb6059826e6ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272954"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736895"
 ---
 # <a name="what-is-neural-text-to-speech"></a>什么是神经文本转语音？
 
@@ -84,7 +85,7 @@ GitHub 上提供了文本转语音的示例代码。 这些示例涵盖了最流
 
 ## <a name="migrate-to-neural-voice"></a>迁移到神经语音
 
-我们将于 2024 年 8 月 31 日停用标准语音，之后将不再支持这些语音。该公告已发送至 2021 年 8 月 31 日之前的所有现有语音订阅。 在停用期间（2021 年 8 月 31 日 - 2024 年 8 月 31 日），现有用户可以继续使用其标准语音，所有新用户/新语音资源应转换为神经语音。
+我们将于 2024 年 8 月 31 日停用标准语音，之后将不再支持这些语音。该公告已发送至 2021 年 8 月 31 日之前的所有现有语音订阅。 在停用期间（2021 年 8 月 31 日 - 2024 年 8 月 31 日），现有标准语音用户可以继续使用其标准语音，所有新用户/新语音资源应转换为神经语音。
 
 **必需的操作**
 

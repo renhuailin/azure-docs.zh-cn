@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/06/2021
+ms.date: 09/24/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9551906dc3a80a07597fc8406228a5869688d317
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: af682b21c60c7746595383d2488e3ad064eda4b5
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750568"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058297"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -31,7 +31,7 @@ ms.locfileid: "121750568"
 - 无法根据设备所有者的属性创建设备组。 设备成员资格规则只能引用设备属性。
 
 > [!NOTE]
-> 对于每一个作为一个或多个动态组成员的唯一用户，此功能需要 Azure AD Premium P1 许可证。 无需将许可证分配给用户使其成为动态组成员，但必须在 Azure AD 组织中具有涵盖所有此类用户所需的最小许可证数。 例如：如果在组织的所有动态组中总共拥有 1,000 个唯一用户，则需要至少具有 1,000 个 Azure AD Premium P1 版的许可证，才能满足许可证要求。
+> 对于每一个作为一个或多个动态组成员的唯一用户，此功能需要 Azure AD Premium P1 许可证或 Intune for Education。 无需将许可证分配给用户使其成为动态组成员，但必须在 Azure AD 组织中具有涵盖所有此类用户所需的最小许可证数。 例如：如果在组织的所有动态组中总共拥有 1,000 个唯一用户，则需要至少具有 1,000 个 Azure AD Premium P1 版的许可证，才能满足许可证要求。
 > 对于作为动态设备组成员的设备，不需要许可证。
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure 门户中的规则生成器
@@ -133,7 +133,7 @@ user.department -eq &quot;Sales&quot;
 
 ## <a name="supported-expression-operators"></a>支持的表达式运算符
 
-下表列出了单个表达式支持的所有运算符及其语法。 运算符可以带或不带连字符 (-) 前缀。
+下表列出了单个表达式支持的所有运算符及其语法。 运算符可以带或不带连字符 (-) 前缀。 Contains 运算符进行部分字符串匹配，但集合中的项不匹配。
 
 | 操作员 | 语法 |
 | --- | --- |
@@ -204,7 +204,7 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 ## <a name="rules-with-multiple-expressions"></a>具有多个表达式的规则
 
-组成员资格规则可包含由 -and、-or 和 -not 逻辑运算符连接的多个单一表达式。 此外，还可结合使用逻辑运算符。 
+组成员资格规则可包含由 -and、-or 和 -not 逻辑运算符连接的多个单一表达式。 此外，还可结合使用逻辑运算符。
 
 具有多个表达式且构造正确的成员资格规则的示例如下：
 
@@ -396,7 +396,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Company")
  enrollmentProfileName | Apple 设备注册配置文件名称、Android Enterprise 公司所有专用设备注册配置文件名称或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
- managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
+ managementType | MDM（适用于移动设备） | (device.managementType -eq "MDM")
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | Autopilot 使用的任何字符串值，如所有 Autopilot 设备、OrderID 或 PurchaseOrderID  | (device.devicePhysicalIDs -any _ -contains "[ZTDId]") (device.devicePhysicalIds -any _ -eq "[OrderID]:179887111881") (device.devicePhysicalIds -any _ -eq "[PurchaseOrderId]:76222342342")

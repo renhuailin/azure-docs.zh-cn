@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 4c0cb8241f6eb284acecfcb5921db616af336da8
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: a269f2d93730b6219a2d29d797d94c101b5fdc57
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866929"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129052816"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure 媒体服务的配额和限制
@@ -74,7 +74,7 @@ ms.locfileid: "122866929"
 | 每个直播活动的实时输出 |3 <sup>(5)</sup> |
 | 最长实时输出持续时间 | [DVR 窗口的大小](live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> 有关直播活动限制的详细信息，请参阅[直播活动类型比较和限制](live-event-types-comparison-reference.md)。
+<sup>4</sup> 有关直播活动限制的详细信息，请参阅[直播活动类型比较和限制](live-event-types-comparison-reference.md)。 根据所选的流式处理用例和区域数据中心，AMS 能够为每个媒体服务帐户提供 5 个以上的直播活动。 请提交支持请求以增加帐户配额。
 
 <sup>5</sup> 实时输出在创建时启动，在删除后停止。
 

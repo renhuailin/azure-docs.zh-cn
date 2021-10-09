@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5cc264171c6c2dc5588156af2d3d0deb21e4fe94
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: e9a5b288976d375d9f773fee3dc1ea671ed902b4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228078"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786515"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web 应用：代码配置
 
@@ -382,7 +382,7 @@ def authorized():
 ## <a name="token-cache"></a>令牌缓存
 
 > [!IMPORTANT]
-> Web 应用或 Web API 的令牌缓存实现不同于桌面应用的实现，后者通常是[基于文件](scenario-desktop-acquire-token.md#file-based-token-cache)的。
+> Web 应用或 Web API 的令牌缓存实现不同于桌面应用的实现，后者通常是[基于文件](msal-net-token-cache-serialization.md)的。
 > 出于安全性和性能方面的原因，请务必确保对于 Web 应用和 Web API，每个用户帐户都有一个令牌缓存。 必须为每个帐户序列化令牌缓存。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -420,13 +420,13 @@ services.AddDistributedSqlServerCache(options =>
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Web 应用或 Web API 的令牌缓存实现不同于桌面应用的实现，后者通常是[基于文件](scenario-desktop-acquire-token.md#file-based-token-cache)的。
+Web 应用或 Web API 的令牌缓存实现不同于桌面应用的实现，后者通常是[基于文件](msal-net-token-cache-serialization.md)的。
 
 Web 应用实现可以使用 ASP.NET 会话或服务器内存。 例如，了解在 [MsalAppBuilder.cs#L39-L51](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/79e3e1f084cd78f9170a8ca4077869f217735a1a/WebApp/Utils/MsalAppBuilder.cs#L57-L58) 中创建 MSAL.NET 应用之后缓存实现是如何挂钩的：
 
 
 首先，若要使用这些实现，需执行以下操作：
-- 添加 Microsoft.Identity.Web Nuget 包。 这些令牌缓存序列化程序不会直接引入 MSAL.NET，从而避免了不需要的依赖项。 除了更高级别的 ASP.NET Core，Microsoft.Identity.Web 还引入了作为 MSAL.NET 的帮助程序的类。 
+- 添加 Microsoft.Identity.Web NuGet 包。 这些令牌缓存序列化程序不会直接引入 MSAL.NET，从而避免了不需要的依赖项。 除了更高级别的 ASP.NET Core，Microsoft.Identity.Web 还引入了作为 MSAL.NET 的帮助程序的类。 
 - 在代码中，使用 Microsoft.Identity.Web 命名空间：
 
   ```csharp

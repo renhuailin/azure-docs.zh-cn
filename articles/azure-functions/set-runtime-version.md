@@ -4,12 +4,12 @@ description: Azure Functions 支持多个版本的运行时。 了解如何在 A
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca107ec2f0ce04bf7b1eae3a98087217c267d33d
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 6f608822a8c9b348c16021e64a9fe6a63170d6d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830909"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646960"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
 
@@ -32,11 +32,12 @@ Azure Functions 允许你通过使用函数应用中的 `FUNCTIONS_EXTENSION_VER
 
 下表显示了启用自动更新所需的每个主版本的 `FUNCTIONS_EXTENSION_VERSION` 值：
 
-| 主版本 | `FUNCTIONS_EXTENSION_VERSION` 值 |
-| ------------- | ----------------------------------- |
-| 3.x  | `~3` |
-| 2.x  | `~2` |
-| 1.x  | `~1` |
+| 主版本 | `FUNCTIONS_EXTENSION_VERSION` 值 | 其他配置  |
+| ------------- | ----------------------------------- | ------------------------- |
+| 4.x           | `~4`                                | [在 Windows 上启用 .NET 6](./functions-versions.md#migrating-from-3x-to-4x) |
+| 3.x           | `~3`                                |                           |
+| 2.x           | `~2`                                |                           |
+| 1.x           | `~1`                                |                           |
 
 更改运行时版本会导致函数应用重启。
 

@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 1006f29544bf2708277c6b5a975836a31bcdeff9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6f8812e4894a9ba0daa4423fae77b43bcdb758d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959292"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643985"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>教程：将模板函数添加到 ARM 模板
 
@@ -29,11 +29,11 @@ ms.locfileid: "111959292"
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-存储帐户的位置硬编码为“美国东部”。  但是，可能需要将存储帐户部署到其他区域。 你会再次面对一个问题：模板缺乏灵活性。 可以添加一个位置参数，但理想的情况是默认值更理性，而不仅仅是一个硬编码值。
+存储帐户的位置硬编码为 eastus。 但是，可能需要将存储帐户部署到其他区域。 你会再次面对一个问题：模板缺乏灵活性。 可以添加一个位置参数，但理想的情况是默认值更理性，而不仅仅是一个硬编码值。
 
 ## <a name="use-function"></a>使用函数
 
-如果已完成本系列的上一教程，则你已使用了函数。 在添加 `"[parameters('storageName')]"` 时，你使用了 [parameters](template-functions-deployment.md#parameters) 函数。 括号表示其中的语法是一个[模板表达式](template-expressions.md)。 资源管理器会对语法进行解析，而不是将其视为文本值。
+如果已完成[参数教程](./template-tutorial-add-parameters.md#make-template-reusable)，则使用了函数。 在添加 `"[parameters('storageName')]"` 时，你使用了 [parameters](template-functions-deployment.md#parameters) 函数。 括号表示其中的语法是一个[模板表达式](template-expressions.md)。 资源管理器会对语法进行解析，而不是将其视为文本值。
 
 函数可以在部署过程中动态获取值，为模板增加了灵活性。 在本教程中，我们使用函数来获取用于部署的资源组的位置。
 
@@ -80,7 +80,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择“资源组”。 
 1. 选择已部署到的资源组。
 1. 可以看到一项存储帐户资源已部署，且其位置与资源组一样。

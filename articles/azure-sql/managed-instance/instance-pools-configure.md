@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: mathoma
 ms.date: 09/05/2019
-ms.openlocfilehash: 60afa287a96425ec0a3aead7e5affa6e046b7cbd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a003370180471e02f4801bffd2477f0c50faa99d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689718"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676535"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>将 Azure SQL 托管实例部署到实例池
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,20 +26,24 @@ ms.locfileid: "110689718"
 
 ## <a name="instance-pool-operations"></a>实例池操作
 
-下表显示了与实例池相关的可用操作以及它们是否在 Azure 门户和 PowerShell 中提供。
+下表显示了与实例池相关的可用操作以及它们是否在 Azure 门户、PowerShell 和 Azure CLI 中提供。
 
-|Command|Azure 门户|PowerShell|
-|:---|:---|:---|
-|创建实例池|否|是|
-|更新实例池（属性数目有限）|否 |是 |
-|检查实例池的使用情况和属性|否|是 |
-|删除实例池|否|是|
-|在实例池中创建托管实例|否|是|
-|更新托管实例的资源使用情况|是 |是|
-|检查托管实例的使用情况和属性|是|是|
-|从池中删除托管实例|是|是|
-|在池中的实例中创建数据库|是|是|
-|从 SQL 托管实例中删除数据库|是|是|
+|Command|Azure 门户|PowerShell|Azure CLI|
+|:---|:---|:---|:---|
+|创建实例池|否|是|是|
+|更新实例池（属性数目有限）|否 |是 | 是|
+|检查实例池的使用情况和属性|否|是 | 是 |
+|删除实例池|否|是|是|
+|在实例池中创建托管实例|否|是|否|
+|更新托管实例的资源使用情况|是 |是|否|
+|检查托管实例的使用情况和属性|是|是|否|
+|从池中删除托管实例|是|是|否|
+|在池中的实例中创建数据库|是|是|否|
+|从 SQL 托管实例中删除数据库|是|是|否|
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+要使用 PowerShell，请[安装最新版 PowerShell Core](/powershell/scripting/install/installing-powershell#powershell)，并按照说明[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 可用的 [PowerShell 命令](/powershell/module/az.sql/)：
 
@@ -51,10 +55,24 @@ ms.locfileid: "110689718"
 |[Remove-AzSqlInstancePool](/powershell/module/az.sql/remove-azsqlinstancepool/) | 删除 SQL 托管实例中的实例池。 |
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | 返回有关 SQL 托管实例池使用情况的信息。 |
 
-
-要使用 PowerShell，请[安装最新版 PowerShell Core](/powershell/scripting/install/installing-powershell#powershell)，并按照说明[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
-
 对于与池中的实例和单个实例相关的操作，请使用标准[托管实例命令](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)，但在对池中的实例使用这些命令时，必须填充“实例池名称”属性。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+为 Azure CLI 准备环境。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+可用的 [Azure CLI](/cli/azure/sql) 命令：
+
+|Cmdlet |说明 |
+|:---|:---|
+|[az sql instance-pool create](/cli/azure/sql/instance-pool#az_sql_instance_pool_create) | 创建 SQL 托管实例池。 |
+|[az sql instance-pool show](/cli/azure/sql/instance-pool#az_sql_instance_pool_show) | 返回实例池的相关信息。 |
+|[az sql instance-pool update](/cli/azure/sql/instance-pool#az_sql_instance_pool_update) | 在 SQL 托管实例中设置或更新实例池的属性。 |
+|[az sql instance-pool delete](/cli/azure/sql/instance-pool#az_sql_instance_pool_delete) | 删除 SQL 托管实例中的实例池。 |
+
+---
 
 ## <a name="deployment-process"></a>部署过程
 
@@ -85,6 +103,8 @@ ms.locfileid: "110689718"
 > [!IMPORTANT]
 > 部署实例池的操作耗时较长，大约需要四个半小时。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 若要获取网络参数：
 
 ```powershell
@@ -105,6 +125,37 @@ $instancePool = New-AzSqlInstancePool `
   -ComputeGeneration "Gen5" `
   -Location "westeurope"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要获取虚拟网络参数，请运行以下命令：
+
+```azurecli
+az network vnet show --resource-group MyResourceGroup --name miPoolVirtualNetwork
+```
+
+若要获取虚拟子网参数，请运行以下命令：
+
+```azurecli
+az network vnet subnet show --resource group MyResourceGroup --name miPoolSubnet --vnet-name miPoolVirtualNetwork
+```
+
+若要创建实例池：
+
+```azurecli
+az sql instance-pool create
+    --license-type LicenseIncluded 
+    --location westeurope
+    --name mi-pool-name
+    --capacity 8
+    --tier GeneralPurpose
+    --family Gen5 
+    --resrouce-group myResourceGroup
+    --subnet miPoolSubnet
+    --vnet-name miPoolVirtualNetwork
+```
+
+---
 
 > [!IMPORTANT]
 > 由于部署实例池的操作耗时较长，因此需要先等到它完成，然后才能运行本文中的其他后续步骤。

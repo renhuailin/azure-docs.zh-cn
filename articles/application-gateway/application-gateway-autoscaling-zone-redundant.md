@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: a487cba5026da827276f2e7681c0d362127a4e27
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 63cf40d5d7fcea55cd5de27d2b4d65691d9d0311
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204830"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651990"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -36,7 +36,7 @@ ms.locfileid: "108204830"
 
 ## <a name="supported-regions"></a>支持的区域
 
-已在以下区域推出 Standard_v2 和 WAF_v2 SKU：美国中北部、美国中南部、美国西部、美国西部 2、美国东部、美国东部 2、美国中部、欧洲北部、欧洲西部、东南亚、法国中部、英国西部、日本东部、日本西部、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、东亚、韩国中部、韩国南部、英国南部、印度中部、印度西部、印度南部。
+已在以下区域推出 Standard_v2 和 WAF_v2 SKU：美国中北部、美国中南部、美国西部、美国西部 2、美国东部、美国东部 2、美国中部、欧洲北部、欧洲西部、东南亚、法国中部、英国西部、日本东部、日本西部、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、东亚、韩国中部、韩国南部、英国南部、印度中部、印度西部、印度南部、Jio 印度西部，挪威东部，瑞士北部，阿联酋北部，南阿里卡北部，德国西部中部。
 
 ## <a name="pricing"></a>定价
 

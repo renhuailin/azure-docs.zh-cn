@@ -5,15 +5,14 @@ metadata:
   author: SunetraVirdi
   ms.author: suvirdi
   ms.service: purview
-  ms.subservice: purview-data-catalog
   ms.topic: conceptual
   ms.date: 05/08/2021
-  ms.openlocfilehash: 14a269e84f3b1241cda85c1849a9478ab8701071
-  ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+  ms.openlocfilehash: cdde004521c6f99136bfa75f33359f3599b675df
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/16/2021
-  ms.locfileid: "122228697"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129213443"
 title: 有关 Azure Purview 的常见问题 (FAQ)
 summary: ''
 sections:
@@ -94,7 +93,7 @@ sections:
   - question: >
       Azure Purview 是否对我的 SharePoint 和 OneDrive 中的电子邮件和 PDF 等内容进行扫描和分类？
     answer: >
-      对本地 SharePoint 站点和库进行扫描这一功能是通过 Azure 信息保护扫描程序提供的。 可以在客户的 Microsoft 365 订阅中通过以下 SKU 使用此扫描程序：AIP P1、EMS E3 和 M365 E3。 如果你有这些 SKU 中的任何一个，你应该有权开始使用 Azure 信息保护扫描程序。
+      对本地 SharePoint 站点和库进行扫描这一功能是通过 Azure 信息保护扫描程序提供的。 可以在客户的 Microsoft 365 订阅中通过以下 SKU 使用此扫描程序：AIP P1、EMS E3 和 Microsoft 365 E3。 如果你有这些 SKU 中的任何一个，你应该有权开始使用 Azure 信息保护扫描程序。
   - question: >
       什么是用于扫描的计算？
     answer: >
@@ -113,7 +112,7 @@ sections:
       是的，你可以按订阅和按租户创建多个 Azure Purview 帐户。 你可以查看限制页面：[管理和增加 Azure Purview 资源的配额](how-to-manage-quotas.md)。
 
 
-      我们的 [Azure Purview 部署最佳做法](deployment-best-practices.md)中记录了有关何时应当或何时不应当拥有多个帐户的其他建议。
+      我们的 [Azure Purview 部署最佳做法](deployment-best-practices.md)中记录了有关何时应当或何时不应当拥有多个帐户的更多建议。
   - question: >
       是否可以在单个 Azure Purview 帐户中注册多个租户？
     answer: >

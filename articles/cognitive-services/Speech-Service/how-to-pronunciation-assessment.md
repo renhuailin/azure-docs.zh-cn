@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: f9f787af8cad8dffa728e29fd3a13defc8e160ca
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 2335b1e85290cdea805c3a77754a5843da6cbbda
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494862"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672355"
 ---
 # <a name="pronunciation-assessment"></a>发音评估
 
@@ -28,7 +28,7 @@ ms.locfileid: "110494862"
 本文介绍如何使用语音 SDK 设置 `PronunciationAssessmentConfig` 并检索 `PronunciationAssessmentResult`。
 
 > [!NOTE]
-> 发音评估功能目前支持 `en-US` 语言（可以在所有[语音转文本区域](regions.md#speech-to-text-text-to-speech-and-translation)使用）。 对 `en-GB` 和 `zh-CN` 语言的支持目前为预览版，可以在 `westus`、`eastasia` 和 `centralindia` 区域使用。
+> 发音评估功能目前支持 `en-US` 语言（可以在所有[语音转文本区域](regions.md#speech-to-text-text-to-speech-and-translation)使用）。 对 `en-GB` 和 `zh-CN` 语言的支持现为预览版。
 
 ## <a name="pronunciation-assessment-with-the-speech-sdk"></a>通过语音 SDK 进行发音评估
 

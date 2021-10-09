@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89730779485b4dd74297e2e1137b8e1217f4ef5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674811"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671481"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -34,14 +34,14 @@ ms.locfileid: "92674811"
 
 * 支持的 Oracle 版本： 
     * Oracle 9 及更高版本
-    * Oracle 客户端软件 8.1.7 及更高版本
+    * Oracle Data Access Client (ODAC) 11.2 及更高版本
 
 * 安装本地数据网关。 [从逻辑应用连接到本地数据](../logic-apps/logic-apps-gateway-connection.md)一文列出了相关步骤。 若要连接到 Oracle 数据库，或者连接到安装了 Oracle DB 的 Azure VM，网关是必需的。 
 
     > [!NOTE]
     > 本地数据网关的作用好似一架桥，提供本地数据（不在云中的数据）与逻辑应用之间的安全数据传输。 可以将同一网关用于多个服务和多个数据源。  因此，可能只需安装网关一次。
 
-* 将 Oracle 客户端与本地数据网关安装在同一计算机上。  请务必安装 Oracle 提供的 64 位用于 .Net 的 Oracle 数据提供程序：  
+* 将 Oracle 客户端与本地数据网关安装在同一计算机上。 请确保安装了 Oracle 的 64 位 Oracle 数据提供程序，并选择 Windows 安装程序版本，因为该 `xcopy` 版本不适用于本地数据网关：  
 
   [用于 Windows x64 的 64 位 ODAC 12c Release 4 (12.1.0.2.4)](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 

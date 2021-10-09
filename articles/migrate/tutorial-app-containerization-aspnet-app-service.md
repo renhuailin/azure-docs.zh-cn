@@ -2,17 +2,17 @@
 title: Azure 应用容器化 ASP.NET；容器化 ASP.NET 应用程序并将其迁移到 Azure 应用服务。
 description: 教程：容器化 ASP.NET 应用程序并将其迁移到 Azure 应用服务。
 services: ''
-author: rahugup
+author: rahug1190
 manager: bsiva
 ms.topic: tutorial
 ms.date: 07/02/2021
 ms.author: rahugup
-ms.openlocfilehash: fd0a7d3e1af6bb0a0dad10f9a92194b495b13b91
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e574b7b71f9ea2c968020a11c7b18c3ff4f0a64b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253113"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621429"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-app-service"></a>将 ASP.NET 应用容器化并迁移到 Azure 应用服务
 
@@ -153,6 +153,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 1. 指定运行 ASP.NET 应用程序的服务器的 IP 地址/FQDN 和凭据，该服务器应用于远程连接到服务器以进行应用程序发现。
     - 提供的凭据必须是应用程序服务器上的本地管理员 (Windows) 的凭据。
     - 对于域帐户（用户必须是应用程序服务器上的管理员），请在用户名前添加域名，格式为 <域\用户名>。
+    - 对于本地帐户（用户必须是应用程序服务器上的管理员），请在用户名前添加主机名，格式为 <主机名\用户名>。
     - 一次最多可运行 5 个服务器的应用程序发现。
 
 2. 单击“验证”，验证是否可以从运行该工具的计算机访问应用程序服务器，以及凭据是否有效。 验证成功后，“状态”列会将状态显示为“已映射”。  
@@ -166,8 +167,8 @@ Azure Migrate: 应用容器化工具可帮助你 -
     ![已发现的 ASP.NET 应用程序的屏幕截图。](./media/tutorial-containerize-apps-aks/discovered-app-asp.png)
 
 
-4. 使用复选框选择要容器化的应用程序。
-5. **指定容器名称**：为每个选定的应用程序指定目标容器的名称。 容器名称应指定为 <名称:标记>，其中标记用于容器映像。 例如，可以将目标容器名称指定为 appname:v1。   
+5. 使用复选框选择要容器化的应用程序。
+6. **指定容器名称**：为每个选定的应用程序指定目标容器的名称。 容器名称应指定为 <名称:标记>，其中标记用于容器映像。 例如，可以将目标容器名称指定为 appname:v1。   
 
 ### <a name="parameterize-application-configurations"></a>参数化应用程序配置
 参数化配置，使其可用作部署时间参数。 这使你可以在部署应用程序时配置此设置，而不是将其硬编码为容器映像中的特定值。 例如，此选项对数据库连接字符串等参数非常有用。

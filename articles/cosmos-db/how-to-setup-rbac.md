@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/21/2021
 ms.author: thweiss
-ms.openlocfilehash: d83d6ad6834ea38b293054e59eb39a35be5c507e
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 29aeee156ee87c055a3581e9dc2fd0bd86a2064d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111482"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551038"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>使用 Azure Active Directory 为 Azure Cosmos DB 帐户配置基于角色的访问控制
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,14 +40,24 @@ Azure Cosmos DB 数据平面 RBAC 建立在其他 RBAC 系统（如 [Azure RBAC]
 ## <a name="permission-model"></a><a id="permission-model"></a> 权限模型
 
 > [!IMPORTANT]
-> 此权限模型仅涵盖可用于读取和写入数据的数据库操作。 它不包含任何类型的管理操作，例如创建容器或更改其吞吐量。 这意味着无法使用任何 Azure Cosmos DB 数据平面 SDK 通过 SDK 标识对管理操作进行身份验证。 相反，必须通过以下项使用 [Azure RBAC](role-based-access-control.md)：
-> - [Azure 资源管理器 (ARM) 模板](manage-with-templates.md)
-> - [Azure PowerShell 脚本](manage-with-powershell.md)，
-> - [Azure CLI 脚本](sql/manage-with-cli.md)，
-> - 以下版本的 Azure 管理库
+> 此权限模型仅涵盖涉及读取和写入数据的数据库操作。 它不涵盖对管理资源的任何类型的管理操作，例如：
+> - 创建/替换/删除数据库
+> - 创建/替换/删除容器
+> - 替换容器吞吐量
+> - 创建/替换/删除/读取存储过程
+> - 创建/替换/删除/读取触发器
+> - 创建/替换/删除/读取用户定义的函数
+>
+> *不能通过任何 Azure Cosmos DB 数据平面 SDK* 使用 Azure AD 标识对管理操作进行身份验证。 而是，必须通过以下选项之一使用 [Azure RBAC](role-based-access-control.md)：
+> - [Azure 资源管理器模板（ARM 模板）](./sql/manage-with-templates.md)
+> - [Azure PowerShell 脚本](./sql/manage-with-powershell.md)
+> - [Azure CLI 脚本](./sql/manage-with-cli.md)
+> - 以下版本的 Azure 管理库：
 >   - [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.CosmosDB/)
 >   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
 >   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
+>   
+> 读取数据库和读取容器被视为[元数据请求](#metadata-requests)。 可以按以下部分所述授予对这些操作的访问权限。
 
 下表列出了权限模型公开的所有操作。
 
@@ -113,7 +123,7 @@ Azure Cosmos DB 公开 2 个内置角色定义：
     - `/dbs/<database-name>/colls/<container-name>`（容器级别）。
 
 > [!NOTE]
-> 下面所述的操作可用于：
+> 下面所述的操作在以下环境中可用：
 > - Azure PowerShell：[Az.CosmosDB 版本 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) 或更高版本
 > - [Azure CLI](/cli/azure/install-azure-cli)：版本 2.24.0 或更高版本
 
@@ -299,7 +309,7 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 > 若要创建服务主体的角色分配，请确保使用“Azure Active Directory”门户边栏选项卡的“企业应用程序”部分中找到的“对象 ID”。
 
 > [!NOTE]
-> 下面所述的操作可用于：
+> 下面所述的操作在以下环境中可用：
 > - Azure PowerShell：[Az.CosmosDB 版本 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) 或更高版本
 > - [Azure CLI](/cli/azure/install-azure-cli)：版本 2.24.0 或更高版本
 

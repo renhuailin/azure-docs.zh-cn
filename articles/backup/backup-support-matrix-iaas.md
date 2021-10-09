@@ -2,14 +2,14 @@
 title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
-ms.date: 08/23/2021
+ms.date: 09/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 9244b7c5a62be57b1f8ec9ea0f27918c7aa62457
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 17cd2ca7d4b42e79d1b5012fa36e09a509fa28fe
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770975"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090963"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -43,7 +43,7 @@ ms.locfileid: "122770975"
 修改 VM 的备份策略 | 。<br/><br/> 将使用新策略中的计划和保留期设置备份 VM。 如果保留期设置已延长，则会标记并保留现有的恢复点。 如果保留期设置已缩短，则会在下一个清理作业中清理现有的恢复点，并最终将其删除。
 取消备份作业| 在快照过程中受支持。<br/><br/> 快照正在传输到保管库时不受支持。
 将 VM 备份到其他区域或订阅 |不支持。<br><br>若要成功备份，虚拟机必须与用于备份的保管库位于同一订阅中。
-每日备份（通过 Azure VM 扩展） | 每日进行一次计划的备份。<br/><br/>Azure 备份服务支持每天最多创建三个按需备份，另外还支持一个计划的备份。
+每日备份（通过 Azure VM 扩展） | 每天四次备份 - 根据备份策略进行一次计划备份，以及三次按需备份。    <br><br>    但是，为了允许用户在尝试失败时重试，按需备份的硬限制设置为 9 次尝试。
 每日备份（通过 MARS 代理） | 每日进行三次计划的备份。
 每日备份（通过 DPM/MABS） | 每日进行两次计划的备份。
 每月/每年备份| 使用 Azure VM 扩展备份时不受支持。 仅支持每日和每周备份。<br/><br/> 可将策略设置为按每月/每年保留期保留每日/每周备份。
@@ -83,6 +83,15 @@ Azure 备份不支持 32 位操作系统。
 - 只要 VM 上装有[适用于 Linux 的 Azure VM 代理](../virtual-machines/extensions/agent-linux.md)且支持 Python，其他自带 Linux 分发版也能正常运行。
 - Azure 备份不支持未安装 Python 版本 2.7 且配置了代理的 Linux VM。
 - Azure 备份不支持将从存储或任何其他 NFS 服务器装载的 NFS 文件备份到 Linux 或 Windows 计算机。 它只能备份本地附加到 VM 的磁盘。
+
+## <a name="support-matrix-for-managed-pre-post-scripts-for-linux-databases"></a>适用于 Linux 数据库的托管前处理脚本的支持矩阵
+
+Azure 备份为客户编写自己的前处理脚本提供支持
+
+|支持的数据库  |OS 版本  |数据库版本  |
+|---------|---------|---------|
+|Azure VM 中的 Oracle     |   [Oracle Linux](../virtual-machines/linux/endorsed-distros.md)      |    Oracle 12.x 或更高版本     |
+
 
 ## <a name="backup-frequency-and-retention"></a>备份频率和保留期
 
@@ -230,8 +239,8 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
-没有 DPM/MABS 的本地 Windows 计算机 | 不可用 | ![是][green]
-Azure VM | 不可用 | 不可用
+没有 DPM/MABS 的本地 Windows 计算机 | NA | ![是][green]
+Azure VM | NA | NA
 本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
 本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
 

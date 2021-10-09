@@ -4,16 +4,16 @@ description: 了解如何管理 Azure 预留。 请参阅更改预留范围、�
 ms.service: cost-management-billing
 ms.subservice: reservations
 author: bandersmsft
-ms.reviewer: yashesvi
+ms.reviewer: primittal
 ms.topic: how-to
-ms.date: 06/27/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: cee0acf851d82ba09867b8d66c09a17b21e7af45
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: cbfe1aae48f09330a025861a82cfd8caaa878e41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112989050"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621880"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -52,6 +52,8 @@ ms.locfileid: "112989050"
 如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预留相同的计费上下文中的订阅。
 
 此范围仅适用于使用即用即付费率的单个订阅（套餐 MS-AZR-0003P 或 MS-AZR-0023P），企业套餐 MS-AZR-0017P 或 MS-AZR-0148P，或 CSP 订阅类型。
+
+如果所有订阅都被移出管理组，则保留范围将自动更改为“共享”。
 
 ## <a name="who-can-manage-a-reservation-by-default"></a>默认情况下谁可以管理预留
 

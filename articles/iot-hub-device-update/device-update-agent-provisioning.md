@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e0df727c93e5307e9b66ad5755c8218954a7ff7b
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: e65dc85dff7692f82118871ab93c628efe6cecf8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113552543"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661671"
 ---
 # <a name="device-update-agent-provisioning"></a>Device Update 代理预配
 
@@ -185,7 +185,7 @@ Device Update 当前支持以下 IoT 设备类型：
        
     1. 应会看到一个窗口打开，其中包含一些文本。 首次在 IoT 设备上预配 Device Update 代理时，删除“connection_String=”后的整个字符串。 它只是占位符文本。
     
-    1. 在终端中，将 <your-connection-string> 替换为 Device Update 代理实例的设备的连接字符串。 选择“输入”并“保存”。 应如此示例所示：
+    1. 在终端中，将 \<your-connection-string\> 替换为 Device Update 代理实例的设备的连接字符串。 选择“输入”并“保存”。 应如此示例所示：
     
         ```text
         connection_string=<ADD CONNECTION STRING HERE>

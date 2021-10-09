@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: f20fa22dac3fba4d01cbc5e398bafa4113e94a96
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 26d9b36ec6633f08acfbcc14c6a2fa5a93eb17ae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780292"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666243"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
 
@@ -144,6 +144,10 @@ ms.locfileid: "107780292"
     - **AssociationType**：引用子对象和父对象之间的关系。 有效值为 *Contains* 或 *Associated*。
     - **名称**：引用资源的名称。
     - **ResourceId**：在关联中引用的资源的 URI。
+
+## <a name="supported-resources"></a>支持的资源
+
+网络观察程序拓扑支持一组有限的资源。 这些资源包括虚拟网络、子网、网络接口、网络安全组、负载均衡器、负载均衡器运行状况探测、公共 IP、虚拟网络对等互连、虚拟网络网关、VPN 网关连接、虚拟机和虚拟机规模集。
 
 ## <a name="next-steps"></a>后续步骤
 

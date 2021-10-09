@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 07/22/2021
-ms.openlocfilehash: 9f058cfc97821dc9ddcbedeeed1acf9ebb9919d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/05/2021
+ms.openlocfilehash: ca8ed4fa480bd394196f4ca5b37c52bcc06e41c1
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751311"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546127"
 ---
 # <a name="maintenance-window-preview"></a>维护时段（预览版）
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,32 +76,49 @@ Azure 会定期执行 SQL 数据库和 SQL 托管实例资源的[计划内维护
 
 目前在以下区域可以选择默认维护时段以外的维护时段：
 
-- 澳大利亚东部
-- 澳大利亚东南部
-- 巴西南部
-- 加拿大中部
-- 加拿大东部
-- 印度中部
-- 美国中部
-- 美国东部
-- 美国东部 2
-- 东亚
-- 法国南部
-- 德国中西部
-- Japan East
-- 韩国中部*
-- 美国中北部
-- 北欧
-- 美国中南部
-- 东南亚
-- 英国南部
-- 英国西部
-- 美国中西部
-- 西欧
-- 美国西部
-- 美国西部 2
-
-*仅适用于 Azure SQL 托管实例
+| Azure 区域 | SQL 托管实例 | SQL 数据库 | [Azure 可用性区域](high-availability-sla.md)中的 SQL 数据库 | 
+|:---|:---|:---|:---|
+| 澳大利亚中部 1 | 是 | | |
+| 澳大利亚中部 2 | 是 | | |
+| 澳大利亚东部 | 是 | 是 | 是 |
+| 澳大利亚东南部 | 是 | 是 | |
+| Brazil South | 是 | 是 |  |
+| 加拿大中部 | 是 | 是 | 是 |
+| 加拿大东部 | 是 | 是 | |
+| 印度中部 | 是 | 是 | |
+| 美国中部 | 是 | 是 | 是 |
+| 中国东部 2 |是 | 是 ||
+| 中国北部 2 |是|是 ||
+| 美国东部 | 是 | 是 | 是 |
+| 美国东部 2 | 是 | 是 | 是 |
+| 东亚 | 是 | 是 | |
+| 法国中部 | 是 | 是 | |
+| 法国南部 | 是 | 是 | |
+| 德国中西部 | 是 | 是 |  |
+| 德国北部 | 是 |  |  |
+| Japan East | 是 | 是 | 是 |
+| 日本西部 | 是 | 是 | |
+| 韩国中部 | 是 | | |
+| 韩国南部 | 是 | | |
+| 美国中北部 | 是 | 是 | |
+| 北欧 | 是 | 是 | 是 |
+| 南非北部 | 是 | | | 
+| 南非西部 | 是 | | | 
+| 美国中南部 | 是 | 是 | 是 |
+| 印度南部 | 是 | 是 | |
+| 东南亚 | 是 | 是 | 是 |
+| 瑞士北部 | 是 | 是 | |
+| 瑞士西部 | 是 | | |
+| 阿联酋中部 | 是 | | |
+| 阿拉伯联合酋长国北部 | 是 | | |
+| 英国南部 | 是 | 是 | 是 |
+| 英国西部 | 是 | 是 | |
+| 美国中西部 | 是 | 是 | |
+| 西欧 | 是 | 是 | 是 |
+| 印度西部 | 是 | | |
+| 美国西部 | 是 | 是 |  |
+| 美国西部 2 | 是 | 是 | 是 |
+| | | | | 
 
 ## <a name="gateway-maintenance-for-azure-sql-database"></a>Azure SQL 数据库的网关维护
 
@@ -136,15 +153,17 @@ Azure SQL 托管实例由一组服务组件构成，这些组件托管在一组�
 >  请确保 IP 地址更改后 NSG 和防火墙规则不会阻止数据流量。 
 
 ### <a name="serialization-of-virtual-cluster-management-operations"></a>虚拟群集管理操作序列化
+
 服务升级和虚拟群集大小调整（添加新计算节点或删除不需要的计算节点）等影响虚拟群集的操作均已序列化。 换句话说，在前一个虚拟群集管理操作完成之前，无法开始新虚拟群集管理操作。 如果正在执行的服务升级或维护操作尚未完成维护时段就结束了，则在此期间提交的其他所有虚拟群集管理操作都将搁置，直至下一个维护时段开放并完成服务升级或维护操作。 虚拟群集维护操作时间超出单个时段的情况并不常见，但如果维护操作很复杂，就可能会发生这种情况。
+
 虚拟群集管理操作序列化是常规行为，也适用于默认维护策略。 使用配置的维护时段计划时，两个相邻时段之间的时间段可能是几天。 如果维护操作跨越两个时段，则提交的操作也会搁置几天。 这种情况非常罕见，但在此期间可能会阻止创建新实例或调整现有实例的大小（如果需要更多计算节点）。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [提前通知](advance-notifications.md)
 * [配置维护时段](maintenance-window-configure.md)
+* [提前通知](advance-notifications.md)
 
-## <a name="learn-more"></a>了解更多信息
+## <a name="learn-more"></a>了解更多
 
 * [维护时段常见问题解答](maintenance-window-faq.yml)
 * [Azure SQL 数据库](sql-database-paas-overview.md) 

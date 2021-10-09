@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
 ms.custom: ''
-ms.openlocfilehash: 1eb74fc900ebbf70f8938c31721f717117a4fdd6
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 0028bced72633c1544f6c53fa0f429ca570026c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397493"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621616"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -192,7 +192,7 @@ access_token = token_response.get('access_token')
 下面是在对 FarmBeats Datahub 进行 API 调用时必须指定的最常见的请求标头：
 
 - “内容类型”: application/json
-- “授权”：持有者令牌 <Access-Token>
+- 授权：持有者 \<Access-Token\>
 - “接受”: application/json
 
 ### <a name="input-payload-to-create-metadata"></a>用于创建元数据的输入有效负载

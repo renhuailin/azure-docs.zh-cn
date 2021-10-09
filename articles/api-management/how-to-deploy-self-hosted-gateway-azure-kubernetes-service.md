@@ -1,21 +1,18 @@
 ---
-title: 将自承载网关部署到 Azure Kubernetes 服务 | Microsoft Docs
+title: 将自托管网关部署到 Azure Kubernetes 服务
 description: 了解如何将 Azure API 管理的自承载网关组件部署到 Azure Kubernetes 服务
-services: api-management
-documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: gwallace
-editor: ''
 ms.service: api-management
 ms.topic: article
 ms.date: 06/11/2021
-ms.author: apimpm
-ms.openlocfilehash: c43f31be807d6a649cdd750ee15841a0ecbd7631
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.author: danlep
+ms.openlocfilehash: a5faca1d91596021e236e2bcb459679085ee99aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300752"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620856"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>部署到 Azure Kubernetes 服务
 
@@ -37,7 +34,7 @@ ms.locfileid: "112300752"
 3. 选择“部署”。
 4. “令牌”文本框中的新令牌是使用默认“Expiry”和“Secret Key”值自动生成的。 根据需要调整其中的一个或两个值，然后选择“生成”以创建新令牌。
 5. 确保在“部署脚本”下选择“Kubernetes”。 
-6. 选择“部署”旁边的“<网关名称>.yml”文件链接以下载该文件。 
+6. 选择“部署”旁边的 \<gateway-name\>.yml 文件链接以下载文件。
 7. 根据需要调整 .yml 文件中的 `config.service.endpoint`、端口映射和容器名称。
 8. 根据你的方案，你可能需要更改[服务类型](../aks/concepts-network.md#services)。 
     * 默认值为 `LoadBalancer`，它是外部负载均衡器。 
@@ -45,18 +42,22 @@ ms.locfileid: "112300752"
     * 以下示例使用 `NodePort`。
 1. 选择“部署”文本框右侧的“复制”图标，将 `kubectl` 命令保存到剪贴板。 
 1. 将该命令粘贴到终端（或命令）窗口。 该命令要求下载的环境文件位于当前目录中。
-    ```console
-        kubectl apply -f <gateway-name>.yaml
-    ```
+
+   ```console
+   kubectl apply -f <gateway-name>.yaml
+   ```
+   
 1. 执行命令。 此命令指示 AKS 群集：
     * 使用从 Microsoft Container Registry 下载的自承载网关映像运行容器。 
     * 配置容器以公开 HTTP (8080) 和 HTTPS (443) 端口。
 1. 运行以下命令来检查网关 pod 是否正在运行。 Pod 名称将有所不同。
-    ```console
-    kubectl get pods
-    NAME                                   READY     STATUS    RESTARTS   AGE
-    contoso-apim-gateway-59f5fb94c-s9stz   1/1       Running   0          1m
-    ```
+
+   ```console
+   kubectl get pods
+   NAME                                   READY     STATUS    RESTARTS   AGE
+   contoso-apim-gateway-59f5fb94c-s9stz   1/1       Running   0          1m
+   ```
+
 1. 运行以下命令来检查网关服务是否正在运行。 你的服务名称和 IP 地址与此不同。
     ```console
     kubectl get services
@@ -66,7 +67,7 @@ ms.locfileid: "112300752"
 1. 返回 Azure 门户，确认刚刚部署的网关节点是否报告正常状态。
 
 > [!TIP]
-> 使用 <code>kubectl logs <gateway-pod-name></code> 命令查看自承载网关日志的快照。
+> 使用 `kubectl logs <gateway-pod-name>` 命令查看自承载网关日志的快照。
 
 ## <a name="next-steps"></a>后续步骤
 

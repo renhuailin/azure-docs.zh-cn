@@ -7,13 +7,13 @@ ms.topic: how-to
 author: sharath-satish-msft
 ms.author: shsatish
 ms.reviewer: stmummer
-ms.date: 09/03/2021
-ms.openlocfilehash: 39212b2e9ef5456ecc4f1343cc51fd83064a8840
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/27/2021
+ms.openlocfilehash: c01e7d909e3227fe672047bca897bfa9d9978f85
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535646"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082132"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>配置商业市场产品/服务的联合销售
 
@@ -35,6 +35,30 @@ ms.locfileid: "123535646"
 
 ## <a name="go-to-the-co-sell-with-microsoft-tab"></a>转到“与 Microsoft 联合销售”选项卡
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+     [ ![说明“合作伙伴中心”主页。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+    > [!TIP]
+    > 如果没有看到“市场产品/服务”磁贴，则[在合作伙伴中心中创建市场帐户](create-account.md)，并确保帐户注册市场计划。
+
+1. 在“市场产品/服务”页上，选择要联合销售的产品/服务。
+
+    > [!NOTE]
+    > 可以为尚未发布的新产品/服务或已发布的产品/服务配置联合销售。
+
+1. 在左侧菜单中，选择“与 Microsoft 联合销售”。
+
+    [ ![展示“与 Microsoft 联合销售”页面。](./media/co-sell/co-sell-with-microsoft-tab-workspaces.png) ](./media/co-sell/co-sell-with-microsoft-tab-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 1. 在左侧导航菜单中，选择“商业市场” > “概述” 。
     > [!TIP]
@@ -46,6 +70,8 @@ ms.locfileid: "123535646"
 1. 在左侧菜单中，选择“与 Microsoft 联合销售”。
 
     [![说明左侧导航中的“与 Microsoft 联合销售”链接。](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+
+---
 
 ## <a name="co-sell-listings"></a>联合销售列表
 

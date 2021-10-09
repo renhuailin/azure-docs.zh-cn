@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 4fde975c0649a0ba9da32ed53983e3632d5535ca
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 9b41b546b80106956221b39274501d33cc5fdaf9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690522"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603878"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集自动缩放概述
 
@@ -106,7 +106,7 @@ Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实�
 | 增加百分比 | VM 实例的增加数量百分比。 非常适用于较大的规模集，在其中按固定数量增加 VM 无法明显提高性能。 |
 | 增加计数至   | 创建任意数量的 VM 实例来达到所需的最大数量。                                                            |
 | 减少计数   | 要删除的 VM 实例的固定数目。 在 VM 数量较少的规模集中很有用。                                           |
-| 降低百分比 | VM 实例的减少数量百分比。 非常适用于较大的规模集，在其中按固定数量增加 VM 无法明显降低资源消耗和成本。 |
+| 降低百分比 | VM 实例的减少数量百分比。 非常适用于较大的规模集，在其中按固定数量减少 VM 无法明显降低资源消耗和成本。 |
 | 减少计数至   | 删除任意数量的 VM 实例来达到所需的最小数量。                                                            |
 
 

@@ -1,7 +1,7 @@
 ---
 title: 映射数据流中的联接转换
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 使用 Azure 数据工厂映射数据流中的联接转换合并两个数据源中的数据
+description: 在 Azure 数据工厂或 Synapse Analytics 中使用映射数据流中的联接转换合并来自两个数据源的数据
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 05/15/2020
-ms.openlocfilehash: 77df05774f695235b1ccc1a11713ea68cacafefb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 2a1efc21511fe665d4e54cf955244daf598d4f8b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638825"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060169"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>映射数据流中的联接转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 使用联接转换可以在映射数据流中合并来自两个源或流的数据。 输出流将包含这两个源中基于联接条件匹配的所有列。 
 
@@ -63,19 +65,19 @@ ms.locfileid: "122638825"
 1. 选择“联接类型”
 1. 选择要根据联接条件进行匹配的键列。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉菜单上，然后选择“计算列”。
 
-![联接转换](media/data-flow/join.png "联接")
+:::image type="content" source="media/data-flow/join.png" alt-text="联接转换":::
 
 ### <a name="non-equi-joins"></a>非等值联接
 
 若要在联接条件中使用条件运算符，例如不等于 (!=) 或大于 (>)，请在两列之间更改运算符下拉菜单。 非等值联接要求使用“优化”选项卡中的“固定”广播来广播两个流中的至少一个流。
 
-![非等值联接](media/data-flow/non-equi-join.png "非等值联接")
+:::image type="content" source="media/data-flow/non-equi-join.png" alt-text="非等值联接":::
 
 ## <a name="optimizing-join-performance"></a>优化联接性能
 
 与 SSIS 等工具中的合并联接不同，联接转换不是强制性的合并联接操作。 联接键无需排序。 联接操作基于 Spark 中的最佳联接操作（广播或映射侧联接）进行。
 
-![联接转换优化](media/data-flow/joinoptimize.png "联接优化")
+:::image type="content" source="media/data-flow/joinoptimize.png" alt-text="联接转换优化":::
 
 在联接、查找和存在转换中，如果工作器节点内存可容纳一个数据流或同时容纳两个数据流，则可以通过启用“广播”来优化性能。 默认情况下，Spark 引擎将自动决定是否广播一侧。 若要手动选择要广播的一侧，请选择“固定”。
 
@@ -85,7 +87,7 @@ ms.locfileid: "122638825"
 
 若要对数据流进行自联接，请使用选择转换为现有流添加别名。 通过单击转换旁边的加号图标并选择“新建分支”，来创建新的分支。 添加选择转换，以便为原始流添加别名。 添加联接转换，并选择原始流作为“左侧流”，选择转换作为“右侧流”。
 
-![自联接](media/data-flow/selfjoin.png "自联接")
+:::image type="content" source="media/data-flow/selfjoin.png" alt-text="自联接":::
 
 ## <a name="testing-join-conditions"></a>测试联接条件
 
@@ -108,9 +110,9 @@ ms.locfileid: "122638825"
 
 下面的示例是一个名为 `JoinMatchedData` 的联接转换，它采用左侧流 `TripData` 和右侧流 `TripFare`。  联接条件为表达式 `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`，如果每个流中的 `hack_license`、`medallion`、`vendor_id` 和 `pickup_datetime` 列均匹配，则返回 true。 `joinType` 为 `'inner'`。 我们仅在左侧流中启用广播，因此 `broadcast` 的值为 `'left'`。
 
-在数据工厂 UX 中，此转换如下图所示：
+在 UI 中，此转换如下图所示：
 
-![屏幕截图显示转换，其中包含已选择的“联接设置”选项卡和内部联接类型。](media/data-flow/join-script1.png "联接示例")
+:::image type="content" source="media/data-flow/join-script1.png" alt-text="屏幕截图显示转换，其中包含已选择的“联接设置”选项卡和内部联接类型。":::
 
 此转换的数据流脚本位于下面的代码片段中：
 
@@ -130,9 +132,9 @@ TripData, TripFare
 
 下面的示例是一个名为 `JoiningColumns` 的联接转换，它采用左侧流 `LeftStream` 和右侧流 `RightStream`。 此转换接收两个流，并将 `leftstreamcolumn` 列大于 `rightstreamcolumn` 列的所有行联接在一起。 `joinType` 为 `cross`。 未启用广播，因此 `broadcast` 的值为 `'none'`。
 
-在数据工厂 UX 中，此转换如下图所示：
+在 UI 中，此转换如下图所示：
 
-![屏幕截图显示转换，其中包含已选择的“联接设置”选项卡和自定义（交叉）联接类型。](media/data-flow/join-script2.png "联接示例")
+:::image type="content" source="media/data-flow/join-script2.png" alt-text="屏幕截图显示转换，其中包含已选择的“联接设置”选项卡和自定义（交叉）联接类型。":::
 
 此转换的数据流脚本位于下面的代码片段中：
 

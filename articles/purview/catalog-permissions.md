@@ -1,18 +1,17 @@
 ---
-title: 目录权限（预览版）
-description: 本文概述了如何在 Azure Purview 中配置基于角色的访问控制 (RBAC)
+title: 了解访问和权限
+description: 本文概述了 Azure Purview 中的权限、访问控制和集合。 基于角色的访问控制 (RBAC) 在 Azure Purview 内部进行管理，因此本指南将涵盖保护信息安全的基础知识。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 08/18/2020
-ms.openlocfilehash: 2d9b9aaa6cfd0236a6bc990da5b3ec0870adcd87
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.date: 09/27/2021
+ms.openlocfilehash: fc2ea92f8e5a3d727db130cc4dce7c13c449a9fa
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478187"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209046"
 ---
 # <a name="access-control-in-azure-purview"></a>Azure Purview 中的访问控制
 
@@ -31,10 +30,10 @@ Azure Purview 使用集合来组织和管理对其源、资产和其他项目的
 
 Azure Purview 使用一组预定义的角色来控制谁可以访问帐户中的哪些内容。 这些角色目前是：
 
-- 集合管理员 - 可以编辑 Purview 集合及其详细信息，并可以添加子集合。 他们还可以将用户添加到他们充当管理员的集合中的其他 Purview 角色。
-- 数据源管理员 - 可以管理数据源和数据扫描。
-- 数据管护者 - 可以创建、读取、修改和删除目录数据资产，以及在资产之间建立关系。
-- 数据读取者 - 可以访问（但不能修改）目录数据资产。
+- 集合管理员 - 需要将角色分配给 Azure Purview 中的其他用户或管理集合的用户角色。 集合管理员可以将用户添加到他们作为管理员的集合上的角色。 他们还可以编辑集合及其详细信息，并可以添加子集合。
+- 数据管护者 - 提供对数据目录的访问权限以管理资产、配置自定义分类、设置术语表术语和查看见解的角色。 数据管护者可以创建、读取、修改、移动、应用注释和删除资产。
+- 数据源管理员 - 可以管理数据源和数据扫描的角色。 仅具有数据源管理员角色的用户无权访问 Azure Purview Studio。 将此角色与数据读取者或数据管护者角色相结合可提供更广泛的访问权限。
+- 数据读取者 - 一种提供对数据资产、分类、分类规则、集合、术语表和见解的只读访问权限的角色。
 
 ## <a name="who-should-be-assigned-to-what-role"></a>应将用户分配到哪个角色？
 
@@ -52,7 +51,7 @@ Azure Purview 使用一组预定义的角色来控制谁可以访问帐户中的
 
 ## <a name="understand-how-to-use-azure-purviews-roles-and-collections"></a>了解如何使用 Azure Purview 的角色和集合
 
-所有访问控制将在 Purview 的集合中进行管理。 可以在 [Purview Studio](use-purview-studio.md) 中找到 Purview 的集合。 在 [Azure 门户](https://portal.azure.com)中打开你的 Purview 帐户，然后在“概述”页上选择“Purview Studio”磁贴。 从该位置导航到左侧菜单中的“数据映射”，然后选择“集合”选项卡。
+所有访问控制将在 Purview 的集合中进行管理。 可以在 [Purview Studio](https://web.purview.azure.com/resource/) 中找到 Purview 的集合。 在 [Azure 门户](https://portal.azure.com)中打开你的 Purview 帐户，然后在“概述”页上选择“Purview Studio”磁贴。 从该位置导航到左侧菜单中的“数据映射”，然后选择“集合”选项卡。
 
 创建 Azure Purview 帐户后，它最初包含一个与 Purview 帐户本身同名的根集合。 Purview 帐户的创建者将自动添加为此根集合的集合管理员、数据源管理员、数据管护者和数据读取者，可以编辑和管理此集合。
 
@@ -91,7 +90,7 @@ Azure Purview 使用一组预定义的角色来控制谁可以访问帐户中的
 
 ### <a name="add-users-to-roles"></a>将用户添加到角色
 
-角色分配是通过集合管理的。 只有拥有[集合管理员角色](#roles)的用户能够向该集合上的其他用户授予权限。 需要添加新权限时，集合管理员需访问 Purview Studio，依次导航到“数据映射”、“集合”选项卡，然后选择需要将用户添加到的集合。 在“角色分配”选项卡中，他们可以添加和管理需要权限的用户。
+角色分配是通过集合管理的。 只有拥有[集合管理员角色](#roles)的用户能够向该集合上的其他用户授予权限。 需要添加新权限时，集合管理员需访问 [Purview Studio](https://web.purview.azure.com/resource/)，依次导航到“数据映射”、“集合”选项卡，然后选择需要将用户添加到的集合。 在“角色分配”选项卡中，他们可以添加和管理需要权限的用户。
 
 有关完整说明，请参阅[有关添加角色分配的操作指南](how-to-create-and-manage-collections.md#add-role-assignments)。
 
@@ -136,7 +135,7 @@ Azure 中只有两个内置控制平面角色可以分配用户角色 - 所有�
 #### <a name="an-example-of-assigning-someone-to-a-legacy-role"></a>为用户分配旧版角色的示例
 
 1. 转到 https://portal.azure.com 并导航到 Azure Purview 帐户
-1. 在左侧单击“访问控制(IAM)”
+1. 在左侧选择“访问控制(IAM)”。
 1. 然后，按照[此处](../role-based-access-control/quickstart-assign-role-user-portal.md#create-a-resource-group)提供的一般说明进行操作
 
 ### <a name="legacy-role-definitions-and-actions"></a>旧版角色定义和操作
@@ -147,7 +146,7 @@ Azure 中只有两个内置控制平面角色可以分配用户角色 - 所有�
 
 如果你希望获得对 Azure Purview 帐户的访问权限，以便可以使用其工作室或调用其 API，则你需要添加到 Azure Purview 数据平面角色中。 只有 Azure Purview 帐户的所有者或用户访问管理员才能执行此操作。 对于大多数用户来说，下一步是找到一名本地管理员，该管理员可以帮助你找到可以为你提供访问权限的合适人员。
 
-对于有权访问其公司 [Azure 门户](https://portal.azure.com)的用户，可以查看他们要加入的特定 Azure Purview 帐户，单击其“访问控制(IAM)”选项卡，然后查看作为所有者或用户访问管理员 (UAA) 的用户。 但请注意，在某些情况下，Azure Active Directory 组或服务主体可能用作所有者或 UAA，在这种情况下，可能无法直接联系这些组或服务主体。 而是需要寻求管理员的帮助。
+对于有权访问其公司 [Azure 门户](https://portal.azure.com)的用户，可以查看他们要加入的特定 Azure Purview 帐户，选择其“访问控制(IAM)”选项卡，然后查看作为所有者或用户访问管理员 (UAA) 的用户。 但请注意，在某些情况下，Azure Active Directory 组或服务主体可能用作所有者或 UAA，在这种情况下，可能无法直接联系这些组或服务主体。 而是需要寻求管理员的帮助。
 
 ### <a name="legacy---who-should-be-assigned-to-what-role"></a>旧版 - 应将谁分配到哪个角色？
 

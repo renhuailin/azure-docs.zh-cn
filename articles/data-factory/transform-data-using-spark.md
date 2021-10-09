@@ -1,29 +1,29 @@
 ---
 title: 使用 Spark 活动转换数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何使用 Spark 活动从 Azure 数据工厂管道运行 Spark 程序来转换数据。
+description: 了解如何使用 Spark 活动从 Azure 数据工厂或 Synapse Analytics 管道运行 Spark 程序来转换数据。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 06/09/2021
-ms.openlocfilehash: 702c1a5208fae42e3704e345713f540b0e05d900
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: b5b877d27e04aa81e710b518d3923d438fe0afd2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271978"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805962"
 ---
-# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
+# <a name="transform-data-using-spark-activity-in-azure-data-factory-and-synapse-analytics"></a>在 Azure 数据工厂和 Synapse Analytics 中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-spark.md)
 > * [当前版本](transform-data-using-spark.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-数据工厂[管道](concepts-pipelines-activities.md)中的 Spark 活动在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Spark 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 使用按需的 Spark 链接服务时，数据工厂会自动为你实时创建用于处理数据的 Spark 群集，然后在处理完成后删除群集。 
+数据工厂和 Synapse [管道](concepts-pipelines-activities.md)中的 Spark 活动在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Spark 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。 使用按需的 Spark 链接服务时，此服务会自动为你实时创建用于处理数据的 Spark 群集，然后在处理完成后删除群集。 
 
 
 ## <a name="spark-activity-properties"></a>Spark 活动属性
@@ -76,7 +76,7 @@ ms.locfileid: "122271978"
 ## <a name="folder-structure"></a>文件夹结构
 与 Pig/Hive 作业相比，Spark 作业的可扩展性更高。 对于 Spark 作业，可以提供多个依赖项，例如 jar 包（放在 java CLASSPATH 中）、python 文件（放在 PYTHONPATH 中）和其他任何文件。
 
-在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
+在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，此服务需要 Azure Blob 存储中的以下文件夹结构：     
 
 | 路径                  | 说明                              | 必需 | 类型   |
 | --------------------- | ---------------------------------------- | -------- | ------ |

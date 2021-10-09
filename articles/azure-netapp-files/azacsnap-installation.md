@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.author: phjensen
-ms.openlocfilehash: 5eae527b288570053e1e899bc776d541ffa9e60b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6a5fb518622a36ffe5562e76ffb09a472c12fe01
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729232"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737319"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>安装 Azure 应用程序一致性快照工具
 
@@ -40,7 +40,10 @@ ms.locfileid: "121729232"
 1. “操作系统已打补丁”：请参阅[如何在 Azure 上安装和配置 SAP HANA（大型实例）](../virtual-machines/workloads/sap/hana-installation.md#operating-system)中的打补丁和 SMT 设置。
 1. “已设置时间同步”。 客户需要提供 NTP 兼容的时间服务器，并相应地配置操作系统。
 1. “已安装 HANA”：请参阅 [HANA 数据库上的 SAP NetWeaver 安装](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)中的 HANA 安装说明。
-1. “[启用与存储的通信](#enable-communication-with-storage)”（有关更多详细信息，请参阅单独章节）：客户必须使用私钥/公钥对设置 SSH 并为每个节点提供公钥，在该节点上计划将快照工具执行至 Microsoft Operations 以用于设置在存储后端。
+1. [启用与存储的通信](#enable-communication-with-storage)（有关详细信息，请参阅单独的部分）：选择用于部署的存储后端。
+
+   # <a name="azure-netapp-files"></a>[Azure NetApp 文件](#tab/azure-netapp-files)
+    
    1. “对于 Azure NetApp 文件（有关更多详细信息，请参阅单独章节）”：客户必须生成服务主体身份验证文件。
       
       > [!IMPORTANT]
@@ -48,14 +51,25 @@ ms.locfileid: "121729232"
       > - (https://)management.azure.com:443
       > - (https://)login.microsoftonline.com:443
       
+   # <a name="azure-large-instance-bare-metal"></a>[Azure 大型实例（裸机）](#tab/azure-large-instance)
+      
    1. “对于 Azure 大型实例（有关更多详细信息，请参阅单独章节）”：客户必须使用私钥/公钥对设置 SSH 并为每个节点提供公钥，在该节点上计划将快照工具执行至 Microsoft Operations 以用于设置在存储后端。
 
       通过使用 SSH 连接到其中一个节点（例如 `ssh -l <Storage UserName> <Storage IP Address>`）来对此进行测试。
       键入 `exit` 以注销存储提示。
 
       Microsoft 操作会在预配时提供存储用户和存储 IP。
-  
-1. [启用与 SAP HANA 的通信](#enable-communication-with-sap-hana)（有关更多详细信息，请参阅单独章节）：客户必须设置具有执行快照所需权限的适当的 SAP HANA 用户。
+      
+      ---
+
+1. [启用与存储的通信](#enable-communication-with-storage)（有关详细信息，请参阅单独的部分）：选择用于部署的存储后端。
+
+1. [启用与数据库的通信](#enable-communication-with-database)（有关详细信息，请参阅单独的部分）： 
+   
+   # <a name="sap-hana"></a>[SAP HANA](#tab/sap-hana)
+   
+   客户必须设置具有执行快照所需权限的适当的 SAP HANA 用户。
+
    1. 此设置可以根据以下使用 `grey` 文本的命令行来进行测试
       1. HANAv1
 
@@ -66,16 +80,15 @@ ms.locfileid: "121729232"
             `hdbsql -n <HANA IP address> -i <HANA instance> -d SYSTEMDB -U <HANA user> "\s"`
 
       - 以上示例适用于与 SAP HANA 的非 SSL 通信。
+      
+   ---
+
 
 ## <a name="enable-communication-with-storage"></a>启用与存储的通信
 
-本节介绍如何启用与存储的通信。  
+本节介绍如何启用与存储的通信。 确保已正确选择要使用的存储后端。
 
-按照以下任一说明为你的配置配置存储：
-1. [Azure NetApp 文件（使用虚拟机）](#azure-netapp-files-with-virtual-machine) 
-1. [Azure 大型实例（裸机）](#azure-large-instance-bare-metal)
-
-### <a name="azure-netapp-files-with-virtual-machine"></a>Azure NetApp 文件（使用虚拟机）
+# <a name="azure-netapp-files-with-virtual-machine"></a>[Azure NetApp 文件（使用虚拟机）](#tab/azure-netapp-files)
 
 创建 RBAC 服务主体
 
@@ -118,7 +131,7 @@ ms.locfileid: "121729232"
 
 1. 将输出内容剪切并粘贴到名为 `azureauth.json` 的文件中，该文件与 `azacsnap` 命令存储在同一系统上，并使用适当的系统权限保护文件。
 
-### <a name="azure-large-instance-bare-metal"></a>Azure 大型实例（裸机）
+# <a name="azure-large-instance-bare-metal"></a>[Azure 大型实例（裸机）](#tab/azure-large-instance)
 
 与存储后端的通信通过加密的 SSH 通道执行。 以下示例步骤提供了为此通信设置 SSH 的相关指导。
 
@@ -183,7 +196,13 @@ ms.locfileid: "121729232"
     wKGAIilSg7s6Bq/2lAPDN1TqwIF8wQhAg2C7yeZHyE/ckaw/eQYuJtN+RNBD
     ```
 
-## <a name="enable-communication-with-sap-hana"></a>启用与 SAP HANA 的通信
+---
+
+## <a name="enable-communication-with-database"></a>启用与数据库的通信
+
+本节介绍如何启用与存储的通信。 确保已正确选择要使用的存储后端。
+
+# <a name="sap-hana"></a>[SAP HANA](#tab/sap-hana)
 
 快照工具与 SAP HANA 进行通信，并需要具有相应权限的用户以启动并释放数据库保存点。 下面的示例示出 SAP HANA v2 用户的设置和用于与 SAP HANA 数据库通信的 `hdbuserstore`。
 
@@ -313,6 +332,8 @@ hdbsql \
 
 > [!NOTE]
 > `\` 字符是命令行换行符，用于提高在命令行上传递的多个参数的清晰度。
+
+---
 
 ## <a name="installing-the-snapshot-tools"></a>安装快照工具
 
@@ -476,39 +497,47 @@ userdel -f -r azacsnap
     ```bash
     echo "export LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH:$NEW_LIB_PATH\"" >> /home/azacsnap/.profile
     ```
+    
+1. 要执行的操作取决于存储后端：
 
-1. Azure 上的大型实例
-    1. 从“root”用户（运行安装的用户）复制用于 azacsnap 的后端存储的 SSH 密钥。 这假定“root”用户已配置与存储的连接
-       > 请参阅“[启用与存储的通信](#enable-communication-with-storage)”。
+    # <a name="azure-netapp-files-with-vm"></a>[Azure NetApp 文件（带有 VM）](#tab/azure-netapp-files)
 
-        ```bash
-        cp -pr ~/.ssh /home/azacsnap/.
-        ```
+    1. Azure 上的 NetApp 文件
+        1. 根据 .NET Core 单文件提取指南配置用户的 `DOTNET_BUNDLE_EXTRACT_BASE_DIR` 路径。
+            1. SUSE Linux
 
-    1. 为 SSH 文件正确设置用户权限
+                ```bash
+                echo "export DOTNET_BUNDLE_EXTRACT_BASE_DIR=\$HOME/.net" >> /home/azacsnap/.profile
+                echo "[ -d $DOTNET_BUNDLE_EXTRACT_BASE_DIR] && chmod 700 $DOTNET_BUNDLE_EXTRACT_BASE_DIR" >> /home/azacsnap/.profile
+                ```
 
-        ```bash
-        chown -R azacsnap.sapsys /home/azacsnap/.ssh
-        ```
+            1. RHEL
 
-1. Azure 上的 NetApp 文件
-    1. 根据 .NET Core 单文件提取指南配置用户的 `DOTNET_BUNDLE_EXTRACT_BASE_DIR` 路径。
-        1. SUSE Linux
+                ```bash
+                echo "export DOTNET_BUNDLE_EXTRACT_BASE_DIR=\$HOME/.net" >> /home/azacsnap/.bash_profile
+                echo "[ -d $DOTNET_BUNDLE_EXTRACT_BASE_DIR] && chmod 700 $DOTNET_BUNDLE_EXTRACT_BASE_DIR" >> /home/azacsnap/.bash_profile
+                ```
+
+    # <a name="azure-large-instance-bare-metal"></a>[Azure 大型实例（裸机）](#tab/azure-large-instance)
+
+    1. Azure 上的大型实例
+        1. 从“root”用户（运行安装的用户）复制用于 azacsnap 的后端存储的 SSH 密钥。 这假定“root”用户已配置与存储的连接
+           > 请参阅“[启用与存储的通信](#enable-communication-with-storage)”。
 
             ```bash
-            echo "export DOTNET_BUNDLE_EXTRACT_BASE_DIR=\$HOME/.net" >> /home/azacsnap/.profile
-            echo "[ -d $DOTNET_BUNDLE_EXTRACT_BASE_DIR] && chmod 700 $DOTNET_BUNDLE_EXTRACT_BASE_DIR" >> /home/azacsnap/.profile
+            cp -pr ~/.ssh /home/azacsnap/.
             ```
 
-        1. RHEL
+        1. 为 SSH 文件正确设置用户权限
 
             ```bash
-            echo "export DOTNET_BUNDLE_EXTRACT_BASE_DIR=\$HOME/.net" >> /home/azacsnap/.bash_profile
-            echo "[ -d $DOTNET_BUNDLE_EXTRACT_BASE_DIR] && chmod 700 $DOTNET_BUNDLE_EXTRACT_BASE_DIR" >> /home/azacsnap/.bash_profile
+            chown -R azacsnap.sapsys /home/azacsnap/.ssh
             ```
+
+    ---
 
 1. 复制目标用户 azacsnap 的 SAP HANA 连接安全用户存储。 这假定“root”用户已配置安全用户存储。
-    > 请参阅“[启用与 SAP HANA 的通信](#enable-communication-with-sap-hana)”。
+    > 请参阅[启用与数据库的通信](#enable-communication-with-database)。
 
     ```bash
     cp -pr ~/.hdb /home/azacsnap/.
@@ -563,7 +592,7 @@ userdel -f -r azacsnap
 1. 运行第一个快照备份
     1. `azacsnap -c backup –-volume data--prefix=hana_test --retention=1`
 
-如果在安装前未完成“[启用与 SAP HANA 的通信](#enable-communication-with-sap-hana)”，则需要执行步骤 2。
+如果在安装前未完成[启用与数据库的通信](#enable-communication-with-database)，则需要执行步骤 2。
 
 > [!NOTE]
 > 应正确执行测试命令。 否则，命令可能失败。
@@ -571,6 +600,8 @@ userdel -f -r azacsnap
 ## <a name="configuring-the-database"></a>配置数据库
 
 本部分介绍如何配置数据库。
+
+# <a name="sap-hana"></a>[SAP HANA](#tab/sap-hana)
 
 ### <a name="sap-hana-configuration"></a>SAP HANA 配置
 
@@ -661,6 +692,8 @@ hdbsql -jaxC -n <HANA_ip_address> - i 00 -U AZACSNAP "select * from sys.m_inifil
 global.ini,DEFAULT,,,persistence,log_backup_timeout_s,900
 global.ini,SYSTEM,,,persistence,log_backup_timeout_s,300
 ```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

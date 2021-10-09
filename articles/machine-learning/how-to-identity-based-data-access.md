@@ -4,24 +4,21 @@ titleSuffix: Machine Learning
 description: 了解如何使用基于标识的数据访问，通过 Azure 机器学习数据存储和机器学习 Python SDK 连接到 Azure 上的数据存储服务。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 02/22/2021
+ms.date: 09/28/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 3552a8191fc5482f8a58cc3365302f44f2f364a3
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 1455402a00d8e67a75337c890d10a6c14b98eca2
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284328"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424251"
 ---
-# <a name="connect-to-storage-by-using-identity-based-data-access-preview"></a>通过使用基于标识的数据访问连接到存储（预览版）
-
->[!IMPORTANT]
-> 本文中介绍的功能处于预览阶段。 这些功能属于[实验](/python/api/overview/azure/ml/#stable-vs-experimental)性预览功能，随时可能发生更改。
+# <a name="connect-to-storage-by-using-identity-based-data-access"></a>通过使用基于标识的数据访问连接到存储
 
 本文介绍如何通过 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)，使用基于标识的数据访问和 Azure 机器学习数据存储连接到 Azure 上的存储服务。  
 

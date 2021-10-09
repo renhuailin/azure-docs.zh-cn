@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: e18cd80c0232c4552c0e3dc57a23477d410c5395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a78ae10f7f5f5428f55003af81366c70c4433d81
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92442552"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591931"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hoxhunt"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Hoxhunt 的集成
 
@@ -37,7 +37,8 @@ ms.locfileid: "92442552"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Hoxhunt 支持 SP 启动的 SSO
+* Hoxhunt 支持 SP 启动的 SSO。
+* Hoxhunt 支持[自动用户预配](hoxhunt-provisioning-tutorial.md)。
 
 ## <a name="adding-hoxhunt-from-the-gallery"></a>从库中添加 Hoxhunt
 
@@ -70,7 +71,7 @@ ms.locfileid: "92442552"
 
 1. 在 Azure 门户中的 Hoxhunt 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -92,6 +93,7 @@ ms.locfileid: "92442552"
 1. 在“设置 Hoxhunt”部分中，根据需要复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -124,15 +126,17 @@ ms.locfileid: "92442552"
 
 在本部分中，将在 Hoxhunt 中创建一个名为“Britta Simon”的用户。 请与 [Hoxhunt 支持团队](mailto:support@hoxhunt.com)协作，将用户添加到 Hoxhunt 平台。 使用单一登录前，必须先创建并激活用户。
 
+Hoxhunt 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./hoxhunt-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Hoxhunt 登录 URL，可以从那里启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Hoxhunt 登录 URL，可以从那里启动登录流。 
 
-2. 直接转到 Hoxhunt 登录 URL，并从那里启动登录流。
+* 直接转到 Hoxhunt 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Hoxhunt 磁贴时，将会重定向到 Hoxhunt 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Hoxhunt 磁贴时，将会重定向到 Hoxhunt 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

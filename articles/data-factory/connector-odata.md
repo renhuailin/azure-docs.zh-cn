@@ -1,29 +1,29 @@
 ---
-title: 使用 Azure 数据工厂从 OData 源复制数据
+title: 从 OData 源复制数据
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 OData 源复制到支持的接收器数据存储。
+description: 了解如何通过在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动，将数据从 OData 源复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: b08493b8b055cc013fa073dbbc7c58c5c936f22a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 938693353505a7fb3d37c85234da429ed2367ad4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123317425"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787881"
 ---
-# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
+# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 从 OData 源复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-odata-connector.md)
 > * [当前版本](connector-odata.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 OData 源复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
+本文概述如何在 Azure 数据工厂或 Synapse Analytics 管道中使用复制活动从 OData 源复制数据。 本文是基于概括性介绍复制活动的[复制活动](copy-activity-overview.md)一文编写的。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -55,7 +55,7 @@ ms.locfileid: "123317425"
 
     # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -84,15 +84,15 @@ OData 链接的服务支持以下属性：
 | authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为“Anonymous”  、“Basic”  、“Windows”  和“AadServicePrincipal”  。 不支持基于用户的 OAuth。 此外，还可以在 `authHeader` 属性中配置身份验证标头。| 是 |
 | authHeaders | 附加的用于身份验证的 HTTP 请求标头。<br/> 例如，若要使用 API 密钥身份验证，可以将身份验证类型选为“匿名”，然后在标头中指定 API 密钥。 | 否 |
 | userName | 如果使用 Basic 或 Windows 身份验证，请指定用户名  。 | 否 |
-| password | 指定为 userName 指定的用户帐户的密码   。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
+| password | 指定为 userName 指定的用户帐户的密码   。 将此字段标记为 SecureString 类型以将其安全存储。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 否 |
 | aadServicePrincipalCredentialType | 指定要用于服务主体身份验证的凭据类型。 允许值为：`ServicePrincipalKey` 或 `ServicePrincipalCert`。 | 否 |
-| servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
-| servicePrincipalEmbeddedCert | 指定 Azure Active Directory 中注册的应用程序的 base64 编码证书。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
-| servicePrincipalEmbeddedCertPassword | 如果使用密码保护证书，请指定证书的密码。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。  | 否|
+| servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 SecureString 以安全地存储它，或[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
+| servicePrincipalEmbeddedCert | 指定 Azure Active Directory 中注册的应用程序的 base64 编码证书。 请将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
+| servicePrincipalEmbeddedCertPassword | 如果使用密码保护证书，请指定证书的密码。 请将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。  | 否|
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 否 |
 | aadResourceId | 指定你请求授权的 AAD 资源。| 否 |
-| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 AAD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用服务的云环境。 | 否 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例 1：使用匿名身份验证**
@@ -331,9 +331,9 @@ OData 链接的服务支持以下属性：
 
 ## <a name="data-type-mapping-for-odata"></a>OData 的数据类型映射
 
-从 OData 复制数据时，会在 OData 数据类型和 Azure 数据工厂临时数据类型之间使用以下映射。 要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从 OData 复制数据时，会在 OData 数据类型和服务内部使用的临时数据类型之间使用以下映射。 要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-| OData 数据类型 | 数据工厂临时数据类型 |
+| OData 数据类型 | 临时服务数据类型 |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
@@ -347,7 +347,7 @@ OData 链接的服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
@@ -377,7 +377,7 @@ OData 链接的服务支持以下属性：
    1. 系统会要求你用用户名和密码进行登录。
    1. 获取访问令牌后，请复制并保存它以供下一步使用。
    
-    [![使用 Postman 获取访问令牌](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+    [:::image type="content" source="./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox" alt-text="使用 Postman 获取访问令牌](./media/connector-odata/odata-project-online-postman-access-token-inline.png)":::
 
 1. 创建 OData 链接服务：
     - **服务 URL**：输入 `https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata`。 将 `<your tenant name>` 替换为自己的租户名称。 
@@ -387,20 +387,20 @@ OData 链接的服务支持以下属性：
         - **值**：输入 `Bearer <access token from step 1>`。
     - 测试链接服务。
 
-    ![创建 OData 链接服务](./media/connector-odata/odata-project-online-linked-service.png)
+    :::image type="content" source="./media/connector-odata/odata-project-online-linked-service.png" alt-text="创建 OData 链接服务":::
 
 1. 创建 OData 数据集：
     1. 使用步骤 2 中创建的 OData 链接服务来创建数据集。
     1. 预览数据。
  
-    ![预览数据](./media/connector-odata/odata-project-online-preview-data.png)
+    :::image type="content" source="./media/connector-odata/odata-project-online-preview-data.png" alt-text="预览数据":::
  
 
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中为 VM 配置自动启动设置 | Microsoft Docs
+title: 为 VM 配置自动启动设置
 description: 了解如何在实验室中为 VM 配置自动启动设置。 此设置使实验室中的 VM 能够根据计划自动启动。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 828350cb130e990d6a6ce3f16f084d5629518293
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91328473"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642940"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>自动启动实验室虚拟机  
 通过 Azure 开发测试实验室可以在实验室中配置虚拟机，使其根据计划自动启动和关闭。 有关配置自动关闭设置的信息，请参阅[管理 Azure 开发测试实验室中的某个实验室的自动关闭策略](devtest-lab-auto-shutdown.md)。 

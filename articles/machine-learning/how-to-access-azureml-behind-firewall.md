@@ -4,29 +4,29 @@ titleSuffix: Azure Machine Learning
 description: 如何在使用安全的 Azure 机器学习工作区时配置所需的入站和出站网络流量。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 08/12/2021
+ms.date: 09/14/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 2bcc1a9fdd930a8c9dd85604528a276f9de8d6e8
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 50c8a38a5acbfea119770a5ea81a21d51fd4ea83
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113101"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424533"
 ---
 # <a name="configure-inbound-and-outbound-network-traffic"></a>配置入站和出站网络流量
 
 本文介绍在虚拟网络 (VNet) 中保护 Azure 机器学习工作区时的网络通信要求。 其中包括如何配置 Azure 防火墙以控制对 Azure 机器学习工作区和公共 Internet 的访问。 若要详细了解如何保护 Azure 机器学习，请参阅 [Azure 机器学习的企业安全性](concept-enterprise-security.md)。
 
 > [!NOTE]
-> 本文中的信息适用于 Azure 机器学习工作区，无论该工作区使用专用终结点还是服务终结点。
+> 本文中的信息适用于配置了专用终结点的 Azure 机器学习工作区。
 
 > [!TIP]
-> 本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
+> 本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
 >
 > * [虚拟网络概述](how-to-network-security-overview.md)
 > * [保护工作区资源](how-to-secure-workspace-vnet.md)
@@ -69,10 +69,12 @@ ms.locfileid: "123113101"
     | AzureFrontDoor.FrontEnd</br>* 在 Azure 中国中不需要。 | TCP | 443 | 
     | ContainerRegistry.region  | TCP | 443 |
     | MicrosoftContainerRegistry.region | TCP | 443 |
+    | Keyvault.region | TCP | 443 |
 
     > [!TIP]
     > * 对于自定义 Docker 映像，仅需要 ContainerRegistry.region。 这包括对 Microsoft 提供的基本映像进行的小幅度修改（例如附加包）。
     > * 仅在计划使用 Microsoft 提供的默认 Docker 映像并启用用户管理的依赖项时，才需要 MicrosoftContainerRegistry.region 。
+    > * 仅当工作区是在启用 [hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) 标志的情况下创建时，才需要 Keyvault.region。
     > * 对于包含 `region` 的条目，请替换为所使用的 Azure 区域。 例如 `ContainerRegistry.westus`。
 
 1. 为以下主机添加应用程序规则：
@@ -91,6 +93,9 @@ ms.locfileid: "123113101"
     | **\*.tensorflow.org** | 由基于 Tensorflow 的一些示例使用。 |
     | **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | 用于检索通过安装脚本安装在计算实例上的 VS Code 服务器位。|
     | **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** | 用于检索安装在计算实例上的 websocket 服务器位。 websocket 服务器用于将来自 Visual Studio Code 客户端（桌面应用程序）的请求传输到计算实例上运行的 Visual Studio Code 服务器。|
+    | **dc.applicationinsights.azure.com** | 用于在与 Microsoft 支持人员合作时收集指标和诊断信息。 |
+    | **dc.applicationinsights.microsoft.com** | 用于在与 Microsoft 支持人员合作时收集指标和诊断信息。 |
+    | **dc.services.visualstudio.com** | 用于在与 Microsoft 支持人员合作时收集指标和诊断信息。 | 
     
 
     对于“协议:端口”，请选择“http, https” 。
@@ -106,19 +111,6 @@ ms.locfileid: "123113101"
 * AKS 的常规入站/出站要求，详见[限制 Azure Kubernetes 服务中的出口流量](../aks/limit-egress-traffic.md)一文。
 * 发往 mcr.microsoft.com 的出站流量。
 * 将模型部署到 AKS 群集时，请遵循[将 ML 模型部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md#connectivity)一文中的指导。
-
-### <a name="diagnostics-for-support"></a>针对支持的诊断
-
-如果在使用 Microsoft 支持时需要收集诊断信息，请执行以下步骤：
-
-1. 添加网络规则，以允许传入和传出 `AzureMonitor` 标记的流量。
-1. 为以下主机添加应用程序规则。 为以下主机的“协议: 端口”选择“http, https” ：
-
-    + **dc.applicationinsights.azure.com**
-    + **dc.applicationinsights.microsoft.com**
-    + **dc.services.visualstudio.com**
-
-    有关 Azure Monitor 主机的 IP 地址列表，请参阅 [Azure Monitor 使用的 IP 地址](../azure-monitor/app/ip-addresses.md)。
 
 ## <a name="other-firewalls"></a>其他防火墙
 
@@ -167,11 +159,13 @@ ms.locfileid: "123113101"
 > [!IMPORTANT]
 > 你的防火墙必须允许通过 TCP 端口 18881、443 和 8787 与 .instances.azureml.ms 通信。\* 
 
+> [!TIP]
+> 仅当工作区是在启用 [hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) 标志的情况下创建时，才需要 Azure Key Vault 的 FQDN。
+
 **通过 Azure 机器学习维护的 Docker 映像**
 
 | **要求** | **Azure 公共** | **Azure Government** | **Azure 中国世纪互联** |
 | ----- | ----- | ----- | ----- |
-| Azure 容器注册表 | azurecr.io | azurecr.us | azurecr.cn |
 | Microsoft 容器注册表 | mcr.microsoft.com | mcr.microsoft.com | mcr.microsoft.com |
 | Azure 机器学习预生成映像 | viennaglobal.azurecr.io | viennaglobal.azurecr.io | viennaglobal.azurecr.io |
 
@@ -184,8 +178,15 @@ ms.locfileid: "123113101"
 
 如需了解限制访问部署到 AKS 的模型的相关信息，请参阅[限制 Azure Kubernetes Service 中的出口流量](../aks/limit-egress-traffic.md)。
 
-> [!TIP]
-> 如果你正在与 Microsoft 支持部门合作收集诊断信息，则必须允许到 Azure Monitor 主机使用的 IP 地址的出站流量。 有关 Azure Monitor 主机的 IP 地址列表，请参阅 [Azure Monitor 使用的 IP 地址](../azure-monitor/app/ip-addresses.md)。
+**支持诊断**
+
+为了让 Microsoft 支持部门能够诊断你在工作区中遇到的任何问题，你必须允许到以下主机的出站流量：
+
+* **dc.applicationinsights.azure.com**
+* **dc.applicationinsights.microsoft.com**
+* **dc.services.visualstudio.com**
+
+有关这些主机的 IP 地址列表，请参阅 [Azure Monitor 使用的 IP 地址](../azure-monitor/app/ip-addresses.md)。
 
 ### <a name="python-hosts"></a>Python 主机
 

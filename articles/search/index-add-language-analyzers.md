@@ -7,23 +7,23 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 3a8a235e204826c26f20cc146003e9290331fe07
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.date: 09/08/2021
+ms.openlocfilehash: 082ece269fa0e07419ff44c736fdeb19aaf30bdc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091530"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735348"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
-语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析。 每个可搜索字段都有一个“分析器”属性。 如果内容包含翻译后的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。
+语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析。 每个可搜索字符串字段都有一个“analyzer”属性。 如果内容包含翻译后的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。
 
 ## <a name="when-to-use-a-language-analyzer"></a>何时使用语言分析器
 
 如果感知词汇或句子结构可以为文本分析带来好处，则应该考虑使用语言分析器。 常见例子为不规则动词形式（“bring”和“brought”）或复数名词（“mice”和“mouse”）的关联。 如果没有语言感知功能，仅根据物理特征分析这些字符串，则无法抓住这种联系。 由于大段文本更有可能包含此内容，因此，由描述、评论或摘要组成的字段很适合使用语言分析器。
 
-当内容包含非西方语言字符串时，也应该考虑使用语言分析器。 尽管[默认分析器](search-analyzers.md#default-analyzer)与语言无关，但使用空格和特殊字符（连字符和斜杠）分隔字符串的概念通常更适用于西方语言，而不是非西方语言。 
+当内容包含非西方语言字符串时，也应该考虑使用语言分析器。 虽然[默认分析器（标准 Lucene）](search-analyzers.md#default-analyzer)与语言无关，但使用空格和特殊字符（连字符和斜杠）来分隔字符串的概念更适用于西文语言（相当于非西文语言而言）。 
 
 例如，在中文、日语、韩语 (CJK) 和其他亚洲语言中，空格不一定是词汇分隔符。 请看下面的日语字符串。 因为它没有空格，所以与语言无关的分析器可能会将整个字符串作为一个标记进行分析，但该字符串实际上是一个短语。
 
@@ -54,9 +54,17 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
 ## <a name="how-to-specify-a-language-analyzer"></a>如何指定语言分析器
 
-在字段定义期间，在类型为 Edm 的“可搜索”字段上设置语言分析器。
+在创建索引期间设置分析器，然后再为其加载数据。
 
-尽管字段定义具有多个与分析器相关的属性，但只有“analyzer”属性可用于语言分析器。 “analyzer”的值必须是支持分析器列表中的语言分析器之一。
+1. 在字段定义中，确保将字段的属性设置为“可搜索”且字段类型为 Edm.String。
+
+1. 将“analyzer”属性设置为[支持的分析器列表](#language-analyzer-list)中的语言分析器之一。
+
+   “analyzer”属性是唯一会接受语言分析器的属性，用于索引编制和查询。 其他与分析器相关的属性（“searchAnalyzer”和“indexAnalyzer”）不会接受语言分析器。
+
+无法自定义语言分析器。 如果分析器不符合要求，可以尝试使用 microsoft_language_tokenizer 或 microsoft_language_stemming_tokenizer 创建[自定义分析器](cognitive-search-working-with-skillsets.md)，并添加用于词汇切分前和词汇切分后处理的筛选器。
+
+以下示例演示索引中的语言分析器规范：
 
 ```json
 {

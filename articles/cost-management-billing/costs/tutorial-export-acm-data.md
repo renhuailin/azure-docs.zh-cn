@@ -3,18 +3,18 @@ title: 教程 - 从 Azure 成本管理创建和管理导出的数据
 description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/05/2021
+ms.date: 09/16/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f6d640d40b586e435e1484fce8d6560a961ba6ac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5c27f34adcf427a82f425f7ef4cf24a4ae843bc4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731952"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648765"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -295,6 +295,14 @@ Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-00
   ]
 }
 ```
+
+### <a name="export-versions"></a>导出版本
+
+在 Azure 门户中或使用 API 创建计划导出后，该导出将始终在创建时使用的导出版本上运行。 Azure 将你之前创建的导出保留在相同版本中，除非你更新它。 如果导出版本发生更改，这样做会阻止费用更改和 CSV 字段更改。 导出功能随着时间而变化，字段名称有时也会更改，还会添加新的字段。
+
+如果你想要使用最新的可用数据和字段，建议在 Azure 门户中创建新的导出。 若要将现有导出更新到最新版本，请在 Azure 门户中或者使用最新版的导出 API 来更新它。 如果更新现有导致，则你可能会在字段中看到细微差异，而且之后生成的文件也可能产生费用。
+
+
 ## <a name="verify-that-data-is-collected"></a>验证收集的数据
 
 可以轻松验证正在收集的成本管理数据，并使用 Azure 存储资源管理器查看导出的 CSV 文件。

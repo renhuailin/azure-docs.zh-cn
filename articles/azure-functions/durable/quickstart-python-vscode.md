@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: d84bc4977593a379fda817db67aaccd71793a787
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 235fa649245e973e934e0930b4490f4e4701c94b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752307"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571495"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 创建你的第一个持久函数
 
@@ -20,9 +20,9 @@ ms.locfileid: "121752307"
 
 ![在 Azure 中运行持久函数](./media/quickstart-python-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-为完成此教程：
+完成本教程：
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/download)。
 
@@ -144,7 +144,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | Durable Functions HTTP 启动器 | 创建 HTTP 启动器函数 |
-    | 提供函数名称 | DurableFunctionsHttpStart | 活动函数的名称 |
+    | 提供函数名称 | DurableFunctionsHttpStart | 客户端函数的名称 |
     | 授权级别 | 匿名 | 出于演示目的，请允许在不进行身份验证的情况下调用函数 |
 
 现已添加一个启动业务流程的 HTTP 触发的函数。 打开 DurableFunctionsHttpStart/\_\_init__.py，可以看到，该函数使用 `client.start_new` 启动新的业务流程。 然后，它使用 `client.create_check_status_response` 返回 HTTP 响应，其中包含可用于监视和管理新业务流程的 URL。
@@ -155,7 +155,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数时，系统会提示你安装这些工具（若尚未安装）。
 
-1. 若要测试函数，请在 `Hello` 活动函数代码 (Hello/\_\_init__.py) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
+1. 若要测试函数，请在 `Hello` 活动函数代码 (Hello/\_\_init__.py) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
 
     > [!NOTE]
     > 有关调试的详细信息，请参阅 [Durable Functions 诊断](durable-functions-diagnostics.md#debugging)。

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 LogicMonitor 的集成 | Microsoft Docs
+title: 教程：Azure AD 与 LogicMonitor 的 SSO 集成
 description: 了解如何在 Azure Active Directory 和 LogicMonitor 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: d5342782c26b5c274699bacc4ea0c7cdf5b7f880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86623285f1fa4d9ca3c8be9d1d628bf3c49a0d6c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649397"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607637"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>教程：Azure Active Directory 与 LogicMonitor 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-logicmonitor"></a>教程：Azure AD 与 LogicMonitor 的 SSO 集成
 
 本教程将介绍如何将 LogicMonitor 与 Azure Active Directory (Azure AD) 集成。 将 LogicMonitor 与 Azure AD 集成后，可以：
 
@@ -26,18 +26,18 @@ ms.locfileid: "101649397"
 * 让用户使用其 Azure AD 帐户自动登录到 LogicMonitor。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 LogicMonitor 的集成，需要以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 LogicMonitor 单一登录的订阅。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 LogicMonitor 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* LogicMonitor 支持 SP 发起的 SSO
+* LogicMonitor 支持 SP 发起的 SSO。
 
 ## <a name="add-logicmonitor-from-the-gallery"></a>从库中添加 LogicMonitor
 
@@ -63,7 +63,7 @@ ms.locfileid: "101649397"
     1. **[创建 LogicMonitor 测试用户](#create-logicmonitor-test-user)** - 在 LogicMonitor 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -73,18 +73,16 @@ ms.locfileid: "101649397"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    ![LogicMonitor 域和 URL 单一登录信息](common/sp-identifier.png)
-
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.logicmonitor.com` 
-
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.logicmonitor.com`
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.logicmonitor.com`
     
-    c. 在“回复 URL (断言使用者服务 URL)”文本框中，使用以下模式键入 URL：`https://companyname.logicmonitor.com/santaba/saml/SSO/` 
+    b. 在“回复 URL (断言使用者服务 URL)”文本框中，键入 URL：`https://companyname.logicmonitor.com/santaba/saml/SSO/` 
   
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.logicmonitor.com` 
+
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [LogicMonitor 客户端支持团队](https://www.logicmonitor.com/contact/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [LogicMonitor 客户端支持团队](https://www.logicmonitor.com/contact/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -93,7 +91,6 @@ ms.locfileid: "101649397"
 6. 在“设置 LogicMonitor”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
@@ -119,21 +116,21 @@ ms.locfileid: "101649397"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name=&quot;configure-logicmonitor-sso&quot;></a>配置 LogicMonitor SSO
+## <a name=&quot;configure-logicmonitor-sso&quot;></a>配置 LogicMonitor SSO
 
 1. 以管理员身份登录到你的 **LogicMonitor** 公司站点。
 
 2. 在顶部菜单中，单击“设置”。
 
-    ![设置](./media/logicmonitor-tutorial/ic790052.png &quot;设置")
+    ![设置](./media/logicmonitor-tutorial/menu.png &quot;设置")
 
 3. 在左侧导航栏中，单击“单一登录”。
 
-    ![单一登录](./media/logicmonitor-tutorial/ic790053.png "单一登录")
+    ![单一登录](./media/logicmonitor-tutorial/roles.png "单一登录")
 
 4. 在 **“单一登录 (SSO) 设置”** 部分中，执行以下步骤：
 
-    ![单一登录设置](./media/logicmonitor-tutorial/ic790054.png "单一登录设置")
+    ![单一登录设置](./media/logicmonitor-tutorial/metadata.png "单一登录设置")
 
     a. 选择 **“启用单一登录”**。
 
@@ -153,13 +150,13 @@ ms.locfileid: "101649397"
 
 2. 在顶部菜单中，单击 **“设置”**，然后单击 **“角色和用户”**。
 
-    ![角色和用户](./media/logicmonitor-tutorial/ic790056.png "角色和用户")
+    ![角色和用户](./media/logicmonitor-tutorial/user.png "角色和用户")
 
 3. 单击“添加”。
 
 4. 在 **“添加帐户”** 部分中，执行以下步骤：
 
-    ![添加帐户](./media/logicmonitor-tutorial/ic790057.png "添加帐户")
+    ![添加帐户](./media/logicmonitor-tutorial/details.png "添加帐户")
 
     a. 将要预配的 Azure Active Directory 用户的“用户名”、“电子邮件”、“密码”和“重新键入密码”值键入到相关文本框中   。
 
@@ -170,7 +167,7 @@ ms.locfileid: "101649397"
 > [!NOTE]
 > 可以使用 LogicMonitor 提供的任何其他 LogicMonitor 用户帐户创建工具或 API 来预配 Azure Active Directory 用户帐户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -178,7 +175,7 @@ ms.locfileid: "101649397"
 
 * 直接转到 LogicMonitor 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 LogicMonitor 磁贴时，应会自动登录到为其设置了 SSO 的 LogicMonitor。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 LogicMonitor 磁贴时，应会自动登录到为其设置了 SSO 的 LogicMonitor。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

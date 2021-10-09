@@ -1,14 +1,14 @@
 ---
-title: 管理 Azure 开发测试实验室和计算 VM 的自动关机策略 | Microsoft Docs
+title: 管理 Azure 开发测试实验室和计算 VM 的自动关机策略
 description: 了解如何设置实验室的自动关机策略，以便在虚拟机不使用时自动关闭虚拟机。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 946ee2a4d6f3503671664b0e46806fef7f71a459
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 75fa8f07c7e3d67ea029413d427046e20d45cdea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301989"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648575"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>配置 Azure 开发测试实验室中实验室和计算虚拟机的自动关机
 

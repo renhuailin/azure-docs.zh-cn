@@ -6,12 +6,12 @@ ms.date: 05/04/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
 author: tfitzmac
-ms.openlocfilehash: bfbf876f8621beec4d8eddb80c3db285cd6d4c49
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: bf417b6ca70012a3cf4bce17640aa4bc9ab9fd08
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688285"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611199"
 ---
 # <a name="azure-resource-manager-template-specs"></a>Azure 资源管理器模板规格
 
@@ -23,6 +23,10 @@ Microsoft.Resources/templateSpecs 是模板规格的资源类型。 它包含一
 
 > [!NOTE]
 > 若要将模板规格与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解模板规格和实际操作指南，请参阅 **Microsoft Learn** 中的[使用模板规格发布可重用基础结构代码库](/learn/modules/arm-template-specs)。
 
 ## <a name="why-use-template-specs"></a>为什么使用模板规格？
 

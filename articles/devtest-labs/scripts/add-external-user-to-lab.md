@@ -1,15 +1,15 @@
 ---
-title: PowerShell - 将外部用户添加到 Azure 开发测试实验室中的实验室
+title: PowerShell - 将外部用户添加到实验室
 description: 本文提供 Azure PowerShell 脚本，用于将外部用户添加到 Azure 开发测试实验室中的实验室。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 76fbb5e4d7f5db39a0aadba9098ebf1064b3cda5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3268e124e72e7532709bf9278d644fade0c205a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96022388"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651097"
 ---
 # <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将外部用户添加到 Azure 开发测试实验室中的实验室
 

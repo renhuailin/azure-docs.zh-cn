@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/11/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: c88ff4b65e9655ec931ee663641a446a1838772b
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 22206e91842a71e4dd41102a4ba9a86e11649201
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062513"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>教程：Azure Active Directory 与 SpaceIQ 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "112062513"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * SpaceIQ 支持 IDP 发起的 SSO。
+* SpaceIQ 支持[自动用户预配](spaceiq-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -147,13 +148,15 @@ ms.locfileid: "112062513"
 
 在本部分中，将在 SpaceIQ 中创建一个名为“Britta Simon”的用户。 与 [SpaceIQ 支持团队](mailto:eng@spaceiq.com)合作，在 SpaceIQ 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
+SpaceIQ 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./spaceiq-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 SpaceIQ。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SpaceIQ”磁贴时，你应会自动登录到为其设置了 SSO 的 SpaceIQ。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SpaceIQ”磁贴时，你应会自动登录到为其设置了 SSO 的 SpaceIQ。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

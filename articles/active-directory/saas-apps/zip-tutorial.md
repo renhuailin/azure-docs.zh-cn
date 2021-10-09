@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/28/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 952ab97602ade4a31637b2aa56262ec91551578e
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: aef3c8331b183600bc08508112de9f716af6b099
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895633"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800396"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zip"></a>教程：Azure Active Directory 与 Zip 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "111895633"
 * 让用户使用其 Azure AD 帐户自动登录到 Zip。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,6 +38,7 @@ ms.locfileid: "111895633"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Zip 支持 SP 和 IDP 发起的 SSO。
+* Zip 支持[自动用户预配](zip-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -89,7 +90,7 @@ ms.locfileid: "111895633"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.ziphq.com`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.ziphq.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 请联系 [Zip 客户端支持团队](mailto:support@tryevergreen.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -110,7 +111,7 @@ ms.locfileid: "111895633"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -134,6 +135,8 @@ ms.locfileid: "111895633"
 
 在本部分，你将在 Zip 中创建一个名为 Britta Simon 的用户。 请与 [Zip 支持团队](mailto:support@tryevergreen.com)协作，将用户添加到 Zip 平台。 使用单一登录前，必须先创建并激活用户。
 
+Zip 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./zip-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -148,8 +151,7 @@ ms.locfileid: "111895633"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Zip 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Zip”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页面来启动登录流；如果它是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Zip。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Zip”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页面来启动登录流；如果它是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Zip。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

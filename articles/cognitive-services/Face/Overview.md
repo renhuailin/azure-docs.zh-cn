@@ -7,21 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 人脸识别, 人脸识别软件, 人脸分析, 人脸匹配, 人脸识别应用, 按图像搜索人脸, 人脸识别搜索
-ms.openlocfilehash: 15d8043beb32d8f3c7fa1b237e1ba25310983b86
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 3cb63bb5fb98eddee84677bb8e2d8d11ed86c876
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822281"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362750"
 ---
 # <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
 
 > [!WARNING]
-> 2020 年 6 月 11 日，Microsoft 宣布在以人权为基础的强有力的法规颁布之前，将不向美国的警察局出售人脸识别技术。 同样地，如果客户是美国警察局、由美国警察局准许使用或针对美国警察局使用 Azure 服务，则这些客户不得使用这类服务中包含的人脸识别特性或功能（例如人脸或视频索引器）。 创建新的人脸资源时，必须在 Azure 门户中确认并同意将不会由美国警察局使用该服务或是为美国警察局使用该服务，并且已查看了[负责任的 AI (RAI) 文档](https://go.microsoft.com/fwlink/?linkid=2164191)，将根据它使用此服务。
+> 2020 年 6 月 11 日，Microsoft 宣布在以人权为基础的强有力的法规颁布之前，将不向美国的警察局出售人脸识别技术。 同样地，如果客户是美国警察局、由美国警察局准许使用或针对美国警察局使用 Azure 服务，则这些客户不得使用这类服务中包含的人脸识别特性或功能（例如人脸或视频索引器）。 创建新的人脸资源时，必须在 Azure 门户中确认并同意将不会由美国警察局使用该服务或是为美国警察局使用该服务，并且已查看了[负责任的 AI (RAI) 文档](../cognitive-services-apis-create-account-cli.md#prerequisites)，将根据它使用此服务。
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
@@ -57,7 +57,7 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 
 ### <a name="identification"></a>标识
 
-人脸识别可以被视为“一对多”匹配。 根据其人脸数据与查询人脸的匹配程度，返回匹配候选项。 此方案用于向对某组人员授予建筑物进出权限或验证设备的用户。
+人脸识别可解决图像中一张人脸与安全存储库中一组人脸的“一对多”匹配问题。 根据其人脸数据与查询人脸的匹配程度，返回匹配候选项。 此方案用于向对某组人员授予建筑物进出权限或验证设备的用户。
 
 下图显示名为 `"myfriends"` 的数据库的示例。 每个组最多可以包含 100 万个不同的 person 对象。 每个人员对象可以注册最多 248 张人脸。
 
@@ -67,7 +67,11 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 
 ### <a name="verification"></a>验证
 
-验证操作会回答问题“这两个人脸是否属于同一人？”。 验证也称为“一对一”匹配，因为探测人脸数据只与单个注册人脸进行比较。 验证在识别方案中用于仔细检查给定匹配是否准确。 
+验证操作会回答问题“这两个人脸是否属于同一人？”。 
+
+验证也是将图像中的一张人脸与安全存储库或照片中的一张人脸进行“一对一”匹配
+
+验证可用于身份验证或访问控制应用场景，以验证图片是否与先前捕获的图像（例如政府颁发的 ID 卡中的照片）匹配。
 
 有关身份验证的详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[识别](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)和[验证](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) API 参考文档。
 

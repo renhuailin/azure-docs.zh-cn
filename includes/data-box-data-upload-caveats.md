@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: include
-ms.date: 08/16/2021
+ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: e73b49b92894d2871e474f42ad4ba31a7161677b
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 3a0a63d68c5a63eeb4ac7855b3541471814a734b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122262405"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129220749"
 ---
 - 容器、共享和文件夹：
   - 不要直接将文件复制到任何预创建的共享。 需要在共享下创建文件夹，然后将文件复制到该文件夹。
@@ -25,5 +25,5 @@ ms.locfileid: "122262405"
   - 为了提高数据上传期间的性能，建议[在存储帐户上启用大型文件共享并将共享容量增大到 100 TiB](../articles/storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account)。 只有具有本地冗余存储 (LRS) 的存储帐户才支持大型文件共享。
   - 如果将数据上传到 Azure 时发生任何错误，则会在目标存储帐户中创建一个错误日志。 当上传完成时，可以找到此错误日志的路径，并且可以查看此日志来采取纠正措施。 在验证上传的数据之前，不要删除源中的数据。
   - 根据[保留 Azure Data Box 的文件 ACL、属性和时间戳](../articles/databox/data-box-file-acls-preservation.md)中的指南将数据上传到 Azure 文件存储时，可以保留文件元数据和 NTFS 权限。
-  - 文件的层次结构在上传到云时保持不变。 例如，你在以下路径复制了一个文件：`<container folder>\A\B\C.txt`。 此文件将上传到云中相同的虚拟路径。
+  - 在将 Blob 和 Azure 文件存储上传到云时，将保留文件的层次结构。 例如，你在以下路径复制了一个文件：`<container folder>\A\B\C.txt`。 此文件将上传到云中的相同路径。
   

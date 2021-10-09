@@ -1,26 +1,26 @@
 ---
 title: 复制和转换 Azure Database for MySQL 中的数据
+description: 了解如何使用 Azure 数据工厂或 Synapse Analytics 管道来复制和转换 Azure Database for MySQL 中的数据。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 了解如何通过使用 Azure 数据工厂来复制和转换 Azure Database for MySQL 中的数据。
-ms.author: susabat
-author: ssabat
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 5495feb3e4cfe8080b9be4ee1ec0bc3804232089
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: b9f5f5046e3c03ec0ee7057553b49ca26f18061c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314311"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761861"
 ---
-# <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂复制和转换 Azure Database for MySQL 中的数据
+# <a name="copy-and-transform-data-in-azure-database-for-mysql-using-azure-data-factory-or-synapse-analytics"></a>使用 Azure 数据工厂或 Synapse Analytics 来复制和转换 Azure Database for MySQL 中的数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Database for MySQL 复制数据，以及如何使用数据流来转换 Azure Database for MySQL 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂或 Synapse Analytics 管道中的复制活动从/向 Azure Database for MySQL 复制数据，以及如何使用数据流转换 Azure Database for MySQL 中的数据。 有关详细信息，请阅读 [Azure 数据工厂](introduction.md)和 [Synapse Analytics](../synapse-analytics/overview-what-is.md) 的简介文章。
 
 此连接器专用于 [Azure Database for MySQL 服务](../mysql/overview.md)。 若要从位于本地或云中的通用 MySQL 数据库复制数据，请使用 [MySQL 连接器](connector-mysql.md)。
 
@@ -75,7 +75,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 说明 | 选项 | 必须 |
+| 属性 | 说明 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |
 | SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如 `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 否 |
@@ -306,9 +306,9 @@ IncomingStream sink(allowSchemaDrift: true,
 
 ## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Azure Database for MySQL 的数据类型映射
 
-从 Azure Database for MySQL 复制数据时，以下映射用于从 MySQL 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从 Azure Database for MySQL 复制数据时，以下映射用于从 MySQL 数据类型映射到服务内部使用的临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-| Azure Database for MySQL 数据类型 | 数据工厂临时数据类型 |
+| Azure Database for MySQL 数据类型 | 临时服务数据类型 |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -352,4 +352,4 @@ IncomingStream sink(allowSchemaDrift: true,
 | `year` |`Int32` |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

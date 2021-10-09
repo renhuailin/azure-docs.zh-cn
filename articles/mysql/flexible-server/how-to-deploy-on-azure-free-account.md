@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 08/16/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8d0de4a365d7eab09330371baa40b3f427348d29
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 2472a3495b872a17b073a86a6d99c6ddbf218343
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540417"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755341"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-mysql---flexible-server-for-free"></a>使用 Azure 免费帐户免费试用 Azure Database for MySQL 灵活服务器
 
@@ -34,7 +34,10 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
 - 一个 Azure 免费帐户。 如果没有，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。 
 
 
-## <a name="create-an-instance-of-azure-database-for-mysql---flexible-server"></a>创建一个 Azure Database for MySQL 灵活服务器实例
+## <a name="create-an-azure-database-for-mysql---flexible-server"></a>创建 Azure Database for MySQL 灵活服务器
+
+本文介绍如何使用 Azure 门户创建具有公共访问连接方法的灵活服务器。 或者，参阅相应的快速入门，以使用 [Azure CLI](./quickstart-create-server-cli.md) 或 [ARM 模板](./quickstart-create-arm-template.md)或在 [VNET 内](./quickstart-create-connect-server-vnet.md)创建灵活服务器。
+
 
 1. 使用 Azure 免费帐户登录到 [Azure 门户](https://portal.azure.com/)。 
     

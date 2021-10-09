@@ -7,15 +7,14 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 8b62437fc8bcad406750101eb72b1ef8d48c102f
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: a325f248a4f634657d9b73e3d4b7929e0614a023
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322201"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820734"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>教程：使用已启用 Azure Arc 的 Kubernetes 群集通过 GitOps 实现 CI/CD
-
 
 在本教程中，你会将 GitOps 与已启用 Azure Arc 的 Kubernetes 群集配合使用，来设置一个 CI/CD 解决方案。 你将使用示例 Azure 投票应用执行以下操作：
 

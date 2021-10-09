@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 5a631d9ae7a7d1792e3c4e4a2cbf8281e1168283
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7d62b6fa3523accbeba9a083c74330ff344e2ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226011"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786363"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>教程：创建使用 Microsoft 标识平台进行身份验证的 Blazor Server 应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "99226011"
 - 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。 
 - 将“重定向 URI”下拉框的设置保留为“Web”并输入 `https://localhost:5001/signin-oidc`。 在 Kestrel 上运行的应用的默认端口为 5001。 如果应用通过一个不同的端口提供，请指定该端口号而非 `5001`。
 
-在“管理”下，选择“身份验证” > “隐式授权和混合流”  。 选择“访问令牌”和“ID 令牌”，然后选择“保存”  。
+在“管理”下，选择“身份验证” > “隐式授权和混合流”  。 选择“ID 令牌”，然后选择“保存” 。
 
 最后，因为应用调用了一个受保护的 API（在本例中为 Microsoft Graph），因此在请求访问令牌来调用该 API 时，它需要一个客户端机密来验证其身份。
 
@@ -53,13 +53,13 @@ ms.locfileid: "99226011"
 运行以下命令来下载适用于 Microsoft.Identity.Web 的模板，在本教程中将使用这些模板。
 
 ```dotnetcli
-dotnet new --install Microsoft.Identity.Web.ProjectTemplates::0.4.0-preview
+dotnet new --install Microsoft.Identity.Web.ProjectTemplates
 ```
 
 然后，运行以下命令来创建应用程序。 将命令中的占位符替换为你的应用的概览页面中的正确信息，然后在命令行界面中执行该命令。 使用 `-o|--output` 选项指定的输出位置将创建一个项目文件夹（如果该文件夹不存在）并成为应用程序名称的一部分。
 
 ```dotnetcli
-dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-id "{CLIENT ID}" --tenant-id "{TENANT ID}"
+dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-id "{CLIENT ID}" --tenant-id "{TENANT ID}" --domain "{DOMAIN}"
 ```
 
 | 占位符   | Azure 门户中的名称       | 示例                                |
@@ -67,6 +67,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-i
 | `{APP NAME}`  | &mdash;                 | `BlazorSample`                         |
 | `{CLIENT ID}` | 应用程序（客户端）ID | `41451fa7-0000-0000-0000-69eff5a761fd` |
 | `{TENANT ID}` | 目录（租户）ID   | `e86c78e2-0000-0000-0000-918e0565a45e` |
+| `{DOMAIN}`    | 主域          | `tenantname.onmicrosoft.com`           |
 
 现在，在编辑器中导航到你的新 Blazor 应用，并在 appsettings.json 文件中添加客户端机密，替换文本“secret-from-app-registration”。
 

@@ -3,12 +3,12 @@ title: 基于文件的 AuthN/AuthZ 配置
 description: 若要启用某些预览功能，请使用配置文件在应用服务中配置身份验证和授权。
 ms.topic: article
 ms.date: 07/15/2021
-ms.openlocfilehash: 54fa47055a1f0bba3075d6e77c4fa27d63caf2b6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2875c529e644b46d08251ae57ee9f424492a2433
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730688"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657208"
 ---
 # <a name="file-based-configuration-in-azure-app-service-authentication"></a>Azure 应用服务身份验证中的基于文件的配置
 
@@ -21,7 +21,7 @@ ms.locfileid: "121730688"
 
 1. 在项目根目录（部署到 Web/函数应用中的 D:\home\site\wwwroot）为配置创建新的 JSON 文件。 根据[基于文件的配置引用](#configuration-file-reference)填写所需的配置。 如果修改现有 Azure 资源管理器配置，确保将 `authsettings` 集合中捕获的属性转换为配置文件。
 
-2. 修改现有配置，它在 `Microsoft.Web/sites/<siteName>/config/authsettingsV2` 下的 [Azure 资源管理器](../azure-resource-manager/management/overview.md) API 中捕获。 若要进行修改，可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md) 或 [Azure 资源浏览器](https://resources.azure.com/)之类的工具。 在 authsettingsV2 集合中，需要设置三个属性（并且可能会删除其他属性）：
+2. 修改现有配置，它在 `Microsoft.Web/sites/<siteName>/config/authsettingsV2` 下的 [Azure 资源管理器](../azure-resource-manager/management/overview.md) API 中捕获。 若要进行修改，可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md) 或 [Azure 资源浏览器](https://resources.azure.com/)之类的工具。 在 authsettingsV2 集合中，需要设置两个属性（并且可能会删除其他属性）：
 
     1. 将 `platform.enabled` 设为 true
     2. 将 `platform.configFilePath` 设为文件的名称（例如 auth.json）

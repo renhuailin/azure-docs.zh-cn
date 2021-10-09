@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 464ffc8b5d4d04aeb7e4013f5b25d240d5ee9b06
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1cdd083c1f3e394feea1e29434f87878ace8dbfc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688961"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546218"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>通过 Azure 专用主机预留来节省成本
 
@@ -43,7 +43,7 @@ ms.locfileid: "122688961"
 
 - **云** - 不能在德国或中国区域中购买预留。
 
-- **配额不足** - 范围仅限于单个订阅的预留必须在订阅中具有充足的可用 vCPU 配额才能获得新的预留实例。 例如，目标订阅的配额限制为 10 个 vCPU（适用于 DSv3 系列），则不能再购买支持此系列的预留专用主机。 预留的配额检查包括已部署在订阅中的 VM 和专用主机。 可以[创建配额增加请求](../azure-portal/supportability/resource-manager-core-quotas-request.md)以解决此问题。
+- **配额不足** - 范围仅限于单个订阅的预留必须在订阅中具有充足的可用 vCPU 配额才能获得新的预留实例。 例如，目标订阅的配额限制为 10 个 vCPU（适用于 DSv3 系列），则不能再购买支持此系列的预留专用主机。 预留的配额检查包括已部署在订阅中的 VM 和专用主机。 可以[创建配额增加请求](../azure-portal/supportability/regional-quota-requests.md)以解决此问题。
 
 - **容量限制** - 在极少数情况下，由于某个区域的容量不足，Azure 会限制为专用主机 SKU 的子集购买新的预留。
 
@@ -86,7 +86,9 @@ ms.locfileid: "122688961"
 
 - **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
 
-## <a name="usage-data-and-reservation-utilization"></a>使用数据和预留使用情况
+- 管理组 - 将预留折扣应用于同时属于管理组和计费范围的订阅列表中的匹配资源。
+
+## <a name="usage-data-and-reservation-utilization"></a>使用情况数据和预留使用量
 
 对于获得预留折扣的使用量，使用数据的有效价格为零。 这样可以看出每个预留项对应的预留折扣分别应用于哪一个 VM 实例。
 

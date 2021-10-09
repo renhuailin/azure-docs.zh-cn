@@ -5,30 +5,32 @@ author: timlt
 ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 07/31/2021
-ms.openlocfilehash: bc0ff303fff0906c8d54c2c4992a0bdf18535e6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/17/2021
+ms.openlocfilehash: 92a81cc28b605c715e2522c6ad78e5732a379c8f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744394"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610207"
 ---
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 在本部分中，使用 Azure CLI 创建 IoT 中心和资源组。  Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 IoT 中心充当中央消息中心，用于 IoT 应用程序与设备之间的双向通信。
 
 创建 IoT 中心和资源组：
 
-1. 启动 CLI 应用程序。  若要在本快速入门的其余部分运行 CLI 命令，请复制命令语法，将其粘贴到 CLI 应用程序中，编辑变量值，然后按 Enter 键。
+1. 启动 Azure CLI： 
     - 如果使用 Cloud Shell，请在 CLI 命令上选择 **试用** 按钮，以在拆分浏览器窗口中启动 Cloud Shell。 或者，你可以在单独的浏览器选项卡中打开 [Cloud Shell](https://shell.azure.com/bash) 。
-    - 如果要在本地使用 Azure CLI，请启动 CLI 控制台应用程序并登录到 Azure CLI。
+    - 如果你在本地使用 Azure CLI，请打开控制台（例如 Windows CMD、PowerShell 或 Bash），并[登录到 Azure CLI](/cli/azure/authenticate-azure-cli)。
+    
+    若要在本快速入门的其余部分运行 CLI 命令：请复制命令语法，将其粘贴到 Cloud Shell 窗口或 CLI 控制台中，编辑变量值，然后按 Enter。
 
-1. 运行 [az extension add](/cli/azure/extension#az_extension_add)，安装 *azure-iot* 扩展或将其升级到当前版本。
+1. 运行 [az extension add](/cli/azure/extension#az_extension_add)，将“azure-iot”扩展安装或升级到当前版本。
 
     ```azurecli-interactive
     az extension add --upgrade --name azure-iot
     ```
 
-1. 在 CLI 应用程序中，运行 [az group create](/cli/azure/group#az_group_create) 命令来创建资源组。 以下命令在“eastus”  位置创建名为“MyResourceGroup”的资源组  。 
+1. 运行 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 以下命令在“eastus”  位置创建名为“MyResourceGroup”的资源组  。 
     >[!NOTE]
     > 可以选择设置备用位置。 若要查看可用位置，请运行 `az account list-locations`。 本教程使用示例命令中所示的 eastus。 
 
@@ -50,9 +52,12 @@ ms.locfileid: "121744394"
 
 在本快速入门的其余部分中，你将使用 IoT Explorer 将设备注册到 IoT 中心并查看设备遥测数据。 在本部分中，将配置 IoT Explorer 以连接到刚创建的 IoT 中心，并从公共模型存储库中读取即插即用模型。 
 
+> [!NOTE]
+> 也可使用 Azure CLI 来注册设备。 使用 [az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) --device-id mydevice --hub-name {YourIoTHubName} 命令注册新设备，使用 [az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) --device-id mydevice --hub-name {YourIoTHubName} 命令获取设备的主连接字符串 。 记下设备连接字符串后，可直接跳到[运行模拟设备](#run-a-simulated-device)。
+
 若要添加与 IoT 中心的连接：
 
-1. 在 CLI 应用中，运行 [az iot hub connection-string show](/cli/azure/iot/hub/connection-string#az_iot_hub_connection_string_show) 命令以获取用于 IoT 中心的连接字符串。
+1. 运行 [az iot hub connection-string show](/cli/azure/iot/hub/connection-string#az_iot_hub_connection_string_show) 命令来获取用于 IoT 中心的连接字符串。
 
     ```azurecli
     az iot hub connection-string  show --hub-name {YourIoTHubName}
@@ -91,6 +96,3 @@ ms.locfileid: "121744394"
     :::image type="content" source="media/iot-hub-include-create-hub-iot-explorer/iot-explorer-device-created.png" alt-text="Azure IoT Explorer 设备标识的屏幕截图":::
 
 1. 使用复制按钮复制并记下“主连接字符串”字段。 稍后将需要使用此连接字符串。
-
-> [!NOTE]
-> 如果你更喜欢使用 Azure CLI，可使用 [az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) --device-id mydevice --hub-name {YourIoTHubName} 命令注册新设备，并使用 [az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) --device-id mydevice --hub-name {YourIoTHubName} 命令获取设备的主连接字符串 。

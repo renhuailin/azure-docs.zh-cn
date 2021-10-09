@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 08/06/2021
-ms.openlocfilehash: b9b3a1e651e6207cc037ab8e4c70f81a176c3d82
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: ebf0a77eb4b0e79931af4f33a8adad4f6c115c22
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747265"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081524"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“摘要”仪表板
 
@@ -31,17 +31,45 @@ ms.locfileid: "121747265"
 - 客户对产品/服务的使用情况
 - 客户在 Azure 市场和 AppSource 中的页面访问量
 
+## <a name="access-the-summary-dashboard"></a>访问“摘要”仪表板
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在“主页”上，选择“见解”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“见解”磁贴。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 在左侧菜单中，选择“摘要”。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 在左侧导航栏中，选择“商业市场” > “分析” > “摘要”  。
+
+---
+
 ## <a name="elements-of-the-summary-dashboard"></a>“摘要”仪表板的元素
 
 下面各部分介绍了如何使用“摘要”仪表板以及如何读取数据。
 
-若要访问合作伙伴中心的“摘要”仪表板，请在“商业市场”下选择[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)  > “摘要”。
-
 ### <a name="month-range"></a>月份范围
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+可在每页右上角找到月份范围选择。 基于过去指定月份数选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，以便自定义“摘要”页面图形的输出。 默认月份范围（计算期间）为 6 个月。
+
+[![说明“摘要”仪表板中的月份范围选项。](./media/summary-dashboard/summary-dashboard-filters.png)](./media/summary-dashboard/summary-dashboard-filters.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 可在每页右上角找到月份范围选择。 基于过去 3 个月、6 个月或 12 个月选择一个月份范围，或者选择最长时段为 12 个月的自定义月份范围，以便自定义“摘要”页面图形的输出。 默认月份范围（计算期间）为 6 个月。
 
 :::image type="content" source="./media/summary-dashboard/summary-dashboard.png" alt-text="说明“摘要”仪表板中的月份范围选项。":::
+
+---
 
 > [!NOTE]
 > 可视化小组件和导出报表中的所有指标遵循用户选择的计算周期。

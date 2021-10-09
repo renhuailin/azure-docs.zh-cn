@@ -7,12 +7,12 @@ ms.date: 08/28/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 471a9e0fd68678b0fc09c05bb47ad40affb7d9f9
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 052dc4d0d275c120d7bb9379937fadfe0e005bdd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470159"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656714"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>如何使用设备 IoT Central REST API 控制设备
 
@@ -29,7 +29,10 @@ ms.locfileid: "123470159"
 
 每个 IoT Central REST API 调用都需要授权标头。 有关详细信息，请参阅[如何对 IoT Central REST API 调用进行身份验证和授权](howto-authorize-rest-api.md)。
 
-有关 IoT Central REST API 的参考文档，请参阅 [Azure IoT Central REST API 参考资料](/rest/api/iotcentral/)。
+有关 IoT Central REST API 的参考文档，请参阅 [Azure IoT Central REST API 参考](/rest/api/iotcentral/)。
+
+> [!TIP]
+> [预览 API](/rest/api/iotcentral/1.1-previewdataplane/devices) 支持新的[组织功能](howto-create-organizations.md)。
 
 ## <a name="components-and-modules"></a>组件和模块
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 9879b6a5e70af9aff6a2f7a97321f996a8aa209b
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 3c7e455377ab243f8140ac346c6f924a3b04f0d8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033324"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554157"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>MongoDB 的 Azure Cosmos DB API（4.0 版服务器）：支持的功能和语法
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -313,9 +313,9 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | $dateToString | 是 |
 | $isoDayOfWeek | 是 |
 | $isoWeek | 是 |
-| $dateFromParts | 否 | 
-| $dateToParts | 否 |
-| $dateFromString | 否 |
+| $dateFromParts | 是 | 
+| $dateToParts | 是 |
+| $dateFromString | 是 |
 | $isoWeekYear | 是 |
 
 ### <a name="conditional-expressions"></a>条件表达式
@@ -362,8 +362,8 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | 命令 | 支持 |
 |---------|---------|
 | Double | 是 |
-| String | 是 |
-| 对象 | 是 |
+| 字符串 | 是 |
+| Object | 是 |
 | Array | 是 |
 | Binary Data | 是 | 
 | ObjectId | 是 |
@@ -377,7 +377,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | MaxKey | 是 |
 | Decimal128 | 是 | 
 | Regular Expression | 是 |
-| Javascript | 是 |
+| JavaScript | 是 |
 | JavaScript（带范围）| 是 |
 | Undefined | 是 |
 
@@ -534,34 +534,8 @@ $polygon | 否 |
 
 使用 `findOneAndUpdate` 操作时，支持基于单个字段的排序操作，但不支持基于多个字段的排序操作。
 
-## <a name="unique-indexes"></a>唯一索引
-
-[唯一索引](mongodb-indexing.md#unique-indexes)确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键上保持唯一性的方式。 可通过将 `createIndex` 命令与 `unique` 约束参数一起使用，在 Azure Cosmos DB 中创建唯一索引：
-
-```javascript
-globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
-{
-    "_t" : "CreateIndexesResponse",
-    "ok" : 1,
-    "createdCollectionAutomatically" : false,
-    "numIndexesBefore" : 1,
-    "numIndexesAfter" : 4
-}
-```
-
-## <a name="compound-indexes"></a>复合索引
-
-通过[复合索引](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)，可为几组字段（最多 8 个字段）创建索引。 此类型的索引不同于本机 MongoDB 复合索引。 在 Azure Cosmos DB 中，复合索引用于对应用于多个字段的操作进行排序。 若要创建复合索引，需要指定多个属性作为参数：
-
-```javascript
-globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
-{
-    "createdCollectionAutomatically" : false, 
-    "numIndexesBefore" : 1,
-    "numIndexesAfter" : 2,
-    "ok" : 1
-}
-```
+## <a name="indexing"></a>索引
+用于 MongoDB 的 API [支持各种索引](mongodb-indexing.md)，以便对多个字段进行排序、提高查询性能并强制实施唯一性。
 
 ## <a name="gridfs"></a>GridFS
 

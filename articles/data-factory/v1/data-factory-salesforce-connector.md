@@ -3,16 +3,17 @@ title: 使用数据工厂从 Salesforce 移动数据
 description: 了解如何使用 Azure 数据工厂从 Salesforce 移动数据。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ccc20f415d13356de755af5d1d3afc5b29de72f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f25329389952546007ddf6365fa7b40c9870e264
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387047"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610366"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -46,7 +47,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -61,7 +62,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了针对 Salesforce 链接服务的 JSON 元素说明。
 
-| Property | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**Salesforce** |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认值为“https:\//login.salesforce.com”。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
@@ -74,14 +75,14 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| Property | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |在 Salesforce 中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
 > [!IMPORTANT]
 > 任何自定义对象均需要 API 名称的“__c”部分。
 
-![屏幕截图显示了可在其中查看自定义对象的 API 名称的自定义对象定义详细信息。](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+:::image type="content" source="media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png" alt-text="屏幕截图显示了可在其中查看自定义对象的 API 名称的自定义对象定义详细信息。":::
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表等属性和各种策略可用于所有类型的活动。
@@ -90,14 +91,14 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 Salesforce）时，以下属性在 typeProperties 部分中可用：
 
-| Property | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 92 查询或 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询。 例如：`select * from MyTable__c`。 |否（如果指定了 **数据集** 的 **tableName**） |
 
 > [!IMPORTANT]
 > 任何自定义对象均需要 API 名称的“__c”部分。
 
-![屏幕截图显示了可在其中查看自定义对象的 API 名称的自定义字段和关系。](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+:::image type="content" source="media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png" alt-text="屏幕截图显示了可在其中查看自定义对象的 API 名称的自定义字段和关系。":::
 
 ## <a name="query-tips"></a>查询提示
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>使用 DateTime 列上的 where 子句检索数据
@@ -192,7 +193,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 > [!IMPORTANT]
 > 任何自定义对象均需要 API 名称的“__c”部分。
 
-![屏幕截图显示了可在其中查看单数标签、复数标签、对象名称和 API 名称的自定义对象定义详细信息。](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+:::image type="content" source="media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png" alt-text="屏幕截图显示了可在其中查看单数标签、复数标签、对象名称和 API 名称的自定义对象定义详细信息。":::
 
 **Azure Blob 输出数据集**
 
@@ -273,7 +274,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 > [!IMPORTANT]
 > 任何自定义对象均需要 API 名称的“__c”部分。
 
-![屏幕截图显示了调用了 API 名称的自定义字段和关系。](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+:::image type="content" source="media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png" alt-text="屏幕截图显示了调用了 API 名称的自定义字段和关系。":::
 
 
 ### <a name="type-mapping-for-salesforce"></a>Salesforce 的类型映射
@@ -303,7 +304,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 > [!NOTE]
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
-[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../../includes/data-factory-structure-for-rectangualr-datasets.md)]
+[!INCLUDE [data-factory-structure-for-rectangular-datasets](includes/data-factory-structure-for-rectangular-datasets.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

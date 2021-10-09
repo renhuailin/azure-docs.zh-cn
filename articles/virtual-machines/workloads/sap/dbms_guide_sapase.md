@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/13/2020
+ms.date: 09/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74d5bee95ae91eb11f249518f49b711d9649db01
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: aabb53a573ee8a3ccc5d98ab8316fee560dbf625
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467649"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603897"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
 
@@ -182,10 +182,14 @@ Microsoft Azure 提供了许多不同的虚拟机类型，可运行最小的 SAP
 数据和 LOB 压缩可以在 Azure 虚拟机托管的 VM 中运行，如同在本地运行一样。 有关如何检查是否已在现有 SAP ASE 数据库中使用压缩的更多详细信息，请查看 [SAP 支持说明 1750510](https://launchpad.support.sap.com/#/notes/1750510)。 有关 SAP ASE 数据库压缩的更多详细信息，请查看 [SAP 支持说明 #2121797](https://launchpad.support.sap.com/#/notes/2121797)
 
 ## <a name="high-availability-of-sap-ase-on-azure"></a>Azure 上的 SAP ASE 的高可用性 
-HADR 用户指南详细介绍了双节点 SAP ASE“Always-on”解决方案的设置和配置。  此外，还支持第三个灾难恢复节点。 SAP ASE 支持许多高可用配置，包括共享磁盘和本机 OS 群集（浮动 IP）。 Azure 上唯一支持的配置是使用不带浮动 IP 的 Fault Manager。  浮动 IP 地址方法在 Azure 上不起作用。  SAP 内核是“HA 感知型”应用程序，能够识别主要和辅助 SAP ASE 服务器。 SAP ASE 与 Azure 之间未密切集成，不会使用 Azure 内部负载均衡器。 因此，应该遵循标准的 SAP ASE 文档，首先可以从 [SAP ASE HADR 用户指南](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)着手 
+HADR 用户指南详细介绍了双节点 SAP ASE“Always-on”解决方案的设置和配置。  此外，还支持第三个灾难恢复节点。 SAP ASE 支持许多高可用性[配置](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.4.1/en-US/9b40a3c038a34cbda1064312aa8d25a4.html)，包括共享磁盘和原生 OS 群集（例如 Pacemaker 和 Windows Server 故障转移群集）。 Azure 上的 SAP ASE 有两个受支持的高可用性配置：
+
+- 故障管理器的 HA 感知 - SAP 内核是“HA 感知型”应用程序，能够识别主要和辅助 SAP ASE 服务器。 SAP ASE 的“HA 感知”解决方案与 Azure 之间未紧密集成，不会使用 Azure 内部负载均衡器。  [SAP ASE HADR 用户指南](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)中记录了此解决方案
+- 故障管理器的浮动 IP - 此解决方案可用于 SAP 业务套件和非 SAP 业务套件应用程序。  此解决方案利用 Azure ILB，而 SAP ASE 数据库引擎提供探测端口。  故障管理器会调用 SAPHostAgent，以便在 ASE 主机上启动或停止辅助浮点 IP。  [SAP 说明 #3086679 - SYB：故障管理器：Microsoft Azure 上的浮动 IP 地址](https://launchpad.support.sap.com/#/notes/3086679)中记录了此解决方案
+
 
 > [!NOTE]
-> Azure 上唯一支持的配置是使用不带浮动 IP 的 Fault Manager。  浮动 IP 地址方法在 Azure 上不起作用。 
+> HA 感知解决方案或浮动 IP 解决方案的故障转移时间和其他特征是类似的。  在这两个解决方案之间做出决定时，客户应执行自己的测试和评估，其中包括计划内和计划外故障转移时间以及其他操作过程等因素。  
 
 ### <a name="third-node-for-disaster-recovery"></a>用于灾难恢复的第三个节点
 除了使用 SAP ASE Always-On 实现本地高可用性之外，你可能还想将配置扩展到另一个 Azure 区域中异步复制的节点。 有关详细信息，请参阅 [Sybase 16.3 修补程序级别 3 Always-on + DR on Suse 12.3 的安装过程](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)。

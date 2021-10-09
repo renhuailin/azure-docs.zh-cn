@@ -1,15 +1,15 @@
 ---
 title: FedRAMP High 法规合规性详细信息
 description: FedRAMP High 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 5f87d56668e06bb7a0b41453b3583f2ef040f095
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: eae96901185434523adab46884ecf5d3c36c8584
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472391"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664022"
 ---
 # <a name="details-of-the-fedramp-high-regulatory-compliance-built-in-initiative"></a>FedRAMP High 法规合规性内置计划的详细信息
 
@@ -27,7 +27,7 @@ ms.locfileid: "123472391"
 
 ### <a name="account-management"></a>帐户管理
 
-**ID**：NIST SP 800-53 Rev. 4 AC-2
+**ID**：FedRAMP High AC-2
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -47,7 +47,7 @@ ms.locfileid: "123472391"
 
 ### <a name="automated-system-account-management"></a>自动系统帐户管理
 
-**ID**：NIST SP 800-53 Rev. 4 AC-2 (1)
+**ID**：FedRAMP High AC-2 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -57,7 +57,7 @@ ms.locfileid: "123472391"
 
 ### <a name="role-based-schemes"></a>基于角色的方案
 
-**ID**：NIST SP 800-53 Rev. 4 AC-2 (7)
+**ID**：FedRAMP High AC-2 (7)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -69,7 +69,7 @@ ms.locfileid: "123472391"
 
 ### <a name="account-monitoring--atypical-usage"></a>帐户监视/非典型使用
 
-**ID**：NIST SP 800-53 Rev. 4 AC-2 (12)
+**ID**：FedRAMP High AC-2 (12)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -89,7 +89,7 @@ ms.locfileid: "123472391"
 
 ### <a name="access-enforcement"></a>执法机构
 
-**ID**：NIST SP 800-53 Rev. 4 AC-3
+**ID**：FedRAMP High AC-3
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -112,7 +112,7 @@ ms.locfileid: "123472391"
 
 ### <a name="information-flow-enforcement"></a>信息流强制
 
-**ID**：NIST SP 800-53 Rev. 4 AC-4
+**ID**：FedRAMP High AC-4
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -171,7 +171,7 @@ ms.locfileid: "123472391"
 
 ### <a name="separation-of-duties"></a>职责分离
 
-**ID**：NIST SP 800-53 Rev. 4 AC-5
+**ID**：FedRAMP High AC-5
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -179,7 +179,7 @@ ms.locfileid: "123472391"
 
 ### <a name="least-privilege"></a>最小特权
 
-**ID**：NIST SP 800-53 Rev. 4 AC-6
+**ID**：FedRAMP High AC-6
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -188,7 +188,7 @@ ms.locfileid: "123472391"
 
 ### <a name="review-of-user-privileges"></a>用户特权评审
 
-**ID**：NIST SP 800-53 Rev. 4 AC-6 (7)
+**ID**：FedRAMP High AC-6 (7)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -197,7 +197,7 @@ ms.locfileid: "123472391"
 
 ### <a name="remote-access"></a>远程访问
 
-**ID**：NIST SP 800-53 Rev. 4 AC-17
+**ID**：FedRAMP High AC-17
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -242,7 +242,7 @@ ms.locfileid: "123472391"
 
 ### <a name="automated-monitoring--control"></a>自动监视/控制
 
-**ID**：NIST SP 800-53 Rev. 4 AC-17 (1)
+**ID**：FedRAMP High AC-17 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -289,7 +289,7 @@ ms.locfileid: "123472391"
 
 ### <a name="audit-review-analysis-and-reporting"></a>审核评审、分析和报告
 
-**ID**：NIST SP 800-53 Rev. 4 AU-6
+**ID**：FedRAMP High AU-6
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -312,7 +312,7 @@ ms.locfileid: "123472391"
 
 ### <a name="central-review-and-analysis"></a>集中评审和分析
 
-**ID**：NIST SP 800-53 Rev. 4 AU-6 (4)
+**ID**：FedRAMP High AU-6 (4)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -356,7 +356,7 @@ ms.locfileid: "123472391"
 
 ### <a name="integration--scanning-and-monitoring-capabilities"></a>集成/扫描和监视功能
 
-**ID**：NIST SP 800-53 Rev. 4 AU-6 (5)
+**ID**：FedRAMP High AU-6 (5)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -400,7 +400,7 @@ ms.locfileid: "123472391"
 
 ### <a name="audit-record-retention"></a>审核记录保留期
 
-**ID**：NIST SP 800-53 Rev. 4 AU-11
+**ID**：FedRAMP High AU-11
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -408,7 +408,7 @@ ms.locfileid: "123472391"
 
 ### <a name="audit-generation"></a>审核生成
 
-**ID**：NIST SP 800-53 Rev. 4 AU-12
+**ID**：FedRAMP High AU-12
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -452,7 +452,7 @@ ms.locfileid: "123472391"
 
 ### <a name="system-wide--time-correlated-audit-trail"></a>系统范围/时间相关的审核线索
 
-**ID**：NIST SP 800-53 Rev. 4 AU-12 (1)
+**ID**：FedRAMP High AU-12 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -498,7 +498,7 @@ ms.locfileid: "123472391"
 
 ### <a name="configuration-settings"></a>配置设置
 
-**ID**：NIST SP 800-53 Rev. 4 CM-6
+**ID**：FedRAMP High CM-6
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -510,18 +510,18 @@ ms.locfileid: "123472391"
 |[确保 WEB 应用的“客户端证书(传入客户端证书)”设置为“打开”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5bb220d9-2698-4ee4-8404-b9c30c9df609) |客户端证书允许应用请求传入请求的证书。 只有具有有效证书的客户端才能访问该应用。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_ClientCert.json) |
 |[确保函数应用已启用“客户端证书（传入客户端证书）”](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feaebaea7-8013-4ceb-9d14-7eb32271373c) |客户端证书允许应用请求传入请求的证书。 只有具有有效证书的客户端才能访问该应用。 |Audit、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_ClientCert.json) |
 |[Kubernetes 群集容器 CPU 和内存资源限制不得超过指定的限制](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |强制实施容器 CPU 和内存资源限制，以防止 Kubernetes 群集中发生资源耗尽攻击。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerResourceLimits.json) |
-|[Kubernetes 群集容器不得共享主机进程 ID 命名空间或主机 IPC 命名空间](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |阻止 Pod 容器在 Kubernetes 群集中共享主机进程 ID 命名空间和主机 IPC 命名空间。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.2 和 CIS 5.2.3 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockHostNamespace.json) |
+|[Kubernetes 群集容器不得共享主机进程 ID 命名空间或主机 IPC 命名空间](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |阻止 Pod 容器在 Kubernetes 群集中共享主机进程 ID 命名空间和主机 IPC 命名空间。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.2 和 CIS 5.2.3 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockHostNamespace.json) |
 |[Kubernetes 群集容器应只侦听允许的端口](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F440b515e-a580-421e-abeb-b159a61ddcbc) |将容器限制为只侦听允许的端口，以确保对 Kubernetes 群集进行的访问安全。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[6.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerAllowedPorts.json) |
-|[Kubernetes 群集容器只应使用允许的 AppArmor 配置文件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) |容器只应使用 Kubernetes 群集中允许的 AppArmor 配置文件。 此建议是旨在提高 Kubernetes 环境安全性的 Pod 安全策略的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/EnforceAppArmorProfile.json) |
-|[Kubernetes 群集容器只应使用允许的功能](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) |限制功能以减小 Kubernetes 群集中容器的受攻击面。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.8 和 CIS 5.2.9 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerAllowedCapabilities.json) |
+|[Kubernetes 群集容器只应使用允许的 AppArmor 配置文件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) |容器只应使用 Kubernetes 群集中允许的 AppArmor 配置文件。 此建议是旨在提高 Kubernetes 环境安全性的 Pod 安全策略的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/EnforceAppArmorProfile.json) |
+|[Kubernetes 群集容器只应使用允许的功能](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) |限制功能以减小 Kubernetes 群集中容器的受攻击面。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.8 和 CIS 5.2.9 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerAllowedCapabilities.json) |
 |[Kubernetes 群集容器应只使用允许的映像](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffebd0533-8e55-448f-b837-bd0e06f16469) |使用受信任注册表中的映像，以降低 Kubernetes 群集暴露于未知漏洞、安全问题和恶意映像的风险。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerAllowedImages.json) |
-|[Kubernetes 群集容器应使用只读根文件系统运行](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) |运行使用只读根文件系统的容器，以防止在运行时发生更改而导致恶意二进制文件添加到 Kubernetes 群集中的 PATH。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ReadOnlyRootFileSystem.json) |
-|[Kubernetes 群集 Pod hostPath 卷只应使用允许的主机路径](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75) |仅限将 Pod HostPath 卷装载到 Kubernetes 群集中允许的主机路径。 此建议是旨在提高 Kubernetes 环境安全性的 Pod 安全策略的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedHostPaths.json) |
-|[Kubernetes 群集 Pod 和容器只应使用批准的用户 ID 和组 ID 运行](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) |控制 Pod 和容器可以使用哪些用户、主要组、补充组和文件系统组 ID 在 Kubernetes 群集中运行。 此建议是旨在提高 Kubernetes 环境安全性的 Pod 安全策略的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedUsersGroups.json) |
-|[Kubernetes 群集 Pod 只应使用批准的主机网络和端口范围](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |限制 Pod 在 Kubernetes 群集中对主机网络和允许的主机端口范围的访问。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.4 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/HostNetworkPorts.json) |
+|[Kubernetes 群集容器应使用只读根文件系统运行](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) |运行使用只读根文件系统的容器，以防止在运行时发生更改而导致恶意二进制文件添加到 Kubernetes 群集中的 PATH。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ReadOnlyRootFileSystem.json) |
+|[Kubernetes 群集 Pod hostPath 卷只应使用允许的主机路径](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75) |仅限将 Pod HostPath 卷装载到 Kubernetes 群集中允许的主机路径。 此建议是旨在提高 Kubernetes 环境安全性的 Pod 安全策略的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedHostPaths.json) |
+|[Kubernetes 群集 Pod 和容器只应使用批准的用户 ID 和组 ID 运行](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) |控制 Pod 和容器可以使用哪些用户、主要组、补充组和文件系统组 ID 在 Kubernetes 群集中运行。 此建议是旨在提高 Kubernetes 环境安全性的 Pod 安全策略的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedUsersGroups.json) |
+|[Kubernetes 群集 Pod 只应使用批准的主机网络和端口范围](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |限制 Pod 在 Kubernetes 群集中对主机网络和允许的主机端口范围的访问。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.4 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/HostNetworkPorts.json) |
 |[Kubernetes 群集服务应只侦听允许的端口](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F233a2a17-77ca-4fb1-9b6b-69223d272a44) |将服务限制为只侦听允许的端口，以确保对 Kubernetes 群集进行的访问安全。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[6.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ServiceAllowedPorts.json) |
 |[Kubernetes 群集不应允许特权容器](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |不允许在 Kubernetes 群集中创建特权容器。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.1 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
-|[Kubernetes 群集不得允许容器特权提升](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |不允许容器使用特权提升运行，从而进入 Kubernetes 群集的根。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.5 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilegeEscalation.json) |
+|[Kubernetes 群集不得允许容器特权提升](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |不允许容器使用特权提升运行，从而进入 Kubernetes 群集的根。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.5 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)。 |审核、拒绝、已禁用 |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilegeEscalation.json) |
 |[Linux 计算机应符合 Azure 计算安全基线的要求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](../concepts/guest-configuration.md)。 如果计算机未根据 Azure 计算安全基线中的某条建议进行正确配置，则计算机不合规。 |AuditIfNotExists、Disabled |[1.1.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |
 |[应为 API 应用禁用远程调试](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9c8d085-d9cc-4b17-9cdc-059f1f01f19e) |远程调试需要在 API 应用上打开入站端口。 应禁用远程调试。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_DisableRemoteDebugging_ApiApp_Audit.json) |
 |[应对函数应用禁用远程调试](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e60b895-3786-45da-8377-9c6b4b6ac5f9) |远程调试需要在函数应用上打开入站端口。 应禁用远程调试。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_DisableRemoteDebugging_FunctionApp_Audit.json) |
@@ -530,7 +530,7 @@ ms.locfileid: "123472391"
 
 ### <a name="least-functionality"></a>最少的功能
 
-**ID**：NIST SP 800-53 Rev. 4 CM-7
+**ID**：FedRAMP High CM-7
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -540,7 +540,7 @@ ms.locfileid: "123472391"
 
 ### <a name="prevent-program-execution"></a>阻止程序执行
 
-**ID**：NIST SP 800-53 Rev. 4 CM-7 (2)
+**ID**：FedRAMP High CM-7 (2)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -549,7 +549,7 @@ ms.locfileid: "123472391"
 
 ### <a name="authorized-software--whitelisting"></a>授权软件/允许列表
 
-**ID**：NIST SP 800-53 Rev. 4 CM-7 (5)
+**ID**：FedRAMP High CM-7 (5)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -558,7 +558,7 @@ ms.locfileid: "123472391"
 
 ### <a name="software-usage-restrictions"></a>软件使用限制
 
-**ID**：NIST SP 800-53 Rev. 4 CM-10
+**ID**：FedRAMP High CM-10
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -567,7 +567,7 @@ ms.locfileid: "123472391"
 
 ### <a name="user-installed-software"></a>用户安装的软件
 
-**ID**：NIST SP 800-53 Rev. 4 CM-11
+**ID**：FedRAMP High CM-11
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -578,7 +578,7 @@ ms.locfileid: "123472391"
 
 ### <a name="alternate-storage-site"></a>备用存储站点
 
-**ID**：NIST SP 800-53 Rev. 4 CP-6
+**ID**：FedRAMP High CP-6
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -590,7 +590,7 @@ ms.locfileid: "123472391"
 
 ### <a name="separation-from-primary-site"></a>从主站点分离
 
-**ID**：NIST SP 800-53 Rev. 4 CP-6 (1)
+**ID**：FedRAMP High CP-6 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -602,7 +602,7 @@ ms.locfileid: "123472391"
 
 ### <a name="alternate-processing-site"></a>备用处理站点
 
-**ID**：NIST SP 800-53 Rev. 4 CP-7
+**ID**：FedRAMP High CP-7
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -610,7 +610,7 @@ ms.locfileid: "123472391"
 
 ### <a name="information-system-backup"></a>信息系统备份
 
-**ID**：NIST SP 800-53 Rev. 4 CP-9
+**ID**：FedRAMP High CP-9
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -625,7 +625,7 @@ ms.locfileid: "123472391"
 
 ### <a name="identification-and-authentication-organizational-users"></a>标识和身份验证（组织用户）
 
-**ID**：NIST SP 800-53 Rev. 4 IA-2
+**ID**：FedRAMP High IA-2
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -642,7 +642,7 @@ ms.locfileid: "123472391"
 
 ### <a name="network-access-to-privileged-accounts"></a>特权帐户的网络访问
 
-**ID**：NIST SP 800-53 Rev. 4 IA-2 (1)
+**ID**：FedRAMP High IA-2 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -651,7 +651,7 @@ ms.locfileid: "123472391"
 
 ### <a name="network-access-to-non-privileged-accounts"></a>非特权帐户的网络访问
 
-**ID**：NIST SP 800-53 Rev. 4 IA-2 (2)
+**ID**：FedRAMP High IA-2 (2)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -659,7 +659,7 @@ ms.locfileid: "123472391"
 
 ### <a name="identifier-management"></a>标识符管理
 
-**ID**：NIST SP 800-53 Rev. 4 IA-4
+**ID**：FedRAMP High IA-4
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -673,7 +673,7 @@ ms.locfileid: "123472391"
 
 ### <a name="authenticator-management"></a>验证器管理
 
-**ID**：NIST SP 800-53 Rev. 4 IA-5
+**ID**：FedRAMP High IA-5
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -690,7 +690,7 @@ ms.locfileid: "123472391"
 
 ### <a name="password-based-authentication"></a>基于密码的身份验证
 
-**ID**：NIST SP 800-53 Rev. 4 IA-5 (1)
+**ID**：FedRAMP High IA-5 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -710,7 +710,7 @@ ms.locfileid: "123472391"
 
 ### <a name="incident-handling"></a>事件处理
 
-**ID**：NIST SP 800-53 Rev. 4 IR-4
+**ID**：FedRAMP High IR-4
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -732,7 +732,7 @@ ms.locfileid: "123472391"
 
 ### <a name="incident-monitoring"></a>事件监视
 
-**ID**：NIST SP 800-53 Rev. 4 IR-5
+**ID**：FedRAMP High IR-5
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -756,7 +756,7 @@ ms.locfileid: "123472391"
 
 ### <a name="vulnerability-scanning"></a>漏洞扫描
 
-**ID**：NIST SP 800-53 Rev. 4 RA-5
+**ID**：FedRAMP High RA-5
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -787,7 +787,7 @@ ms.locfileid: "123472391"
 
 ### <a name="security-function-isolation"></a>安全功能隔离
 
-**ID**：NIST SP 800-53 Rev. 4 SC-3
+**ID**：FedRAMP High SC-3
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -798,7 +798,7 @@ ms.locfileid: "123472391"
 
 ### <a name="denial-of-service-protection"></a>拒绝服务保护
 
-**ID**：NIST SP 800-53 Rev. 4 SC-5
+**ID**：FedRAMP High SC-5
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -809,7 +809,7 @@ ms.locfileid: "123472391"
 
 ### <a name="boundary-protection"></a>边界保护
 
-**ID**：NIST SP 800-53 Rev. 4 SC-7
+**ID**：FedRAMP High SC-7
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -869,7 +869,7 @@ ms.locfileid: "123472391"
 
 ### <a name="access-points"></a>接入点
 
-**ID**：NIST SP 800-53 Rev. 4 SC-7 (3)
+**ID**：FedRAMP High SC-7 (3)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -929,7 +929,7 @@ ms.locfileid: "123472391"
 
 ### <a name="transmission-confidentiality-and-integrity"></a>传输保密性和完整性
 
-**ID**：NIST SP 800-53 Rev. 4 SC-8
+**ID**：FedRAMP High SC-8
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -952,7 +952,7 @@ ms.locfileid: "123472391"
 
 ### <a name="cryptographic-or-alternate-physical-protection"></a>加密或备用物理保护
 
-**ID**：NIST SP 800-53 Rev. 4 SC-8 (1)
+**ID**：FedRAMP High SC-8 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -975,7 +975,7 @@ ms.locfileid: "123472391"
 
 ### <a name="cryptographic-key-establishment-and-management"></a>加密密钥建立和管理
 
-**ID**：NIST SP 800-53 Rev. 4 SC-12
+**ID**：FedRAMP High SC-12
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1015,7 +1015,7 @@ ms.locfileid: "123472391"
 
 ### <a name="protection-of-information-at-rest"></a>保护静态信息
 
-**ID**：NIST SP 800-53 Rev. 4 SC-28
+**ID**：FedRAMP High SC-28
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1034,11 +1034,11 @@ ms.locfileid: "123472391"
 |[应在主机处加密 Azure Kubernetes 服务群集中代理节点池的临时磁盘和缓存](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41425d9f-d1a5-499a-9932-f8ed8453932c) |为了增强数据安全性，应对存储在 Azure Kubernetes 服务节点 VM 的虚拟机 (VM) 主机上的数据进行静态加密。 这是许多法规和行业合规性标准中的常见要求。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_EncryptionAtHost_Deny.json) |
 |[应在 SQL 数据库上启用透明数据加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |应启用透明数据加密以保护静态数据并满足符合性要求 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 |[虚拟机和虚拟机规模集应启用主机中加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc4d8e41-e223-45ea-9bf5-eada37891d87) |使用主机中加密可对虚拟机和虚拟机规模集数据进行端到端加密。 主机中加密可对临时磁盘和 OS/数据磁盘缓存实现静态加密。 启用主机中加密后，将使用平台管理的密钥对临时 OS 磁盘进行加密。 OS/数据磁盘缓存使用客户管理的密钥或平台管理的密钥进行静态加密，具体取决于在磁盘中选择的加密类型。 更多信息请访问 [https://aka.ms/vm-hbe](../../../virtual-machines/disks-enable-host-based-encryption-portal.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/HostBasedEncryptionRequired_Deny.json) |
-|[虚拟机应加密临时磁盘、缓存以及计算资源和存储资源之间的数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[虚拟机应该加密计算和存储资源之间的临时磁盘、缓存和数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |默认情况下，虚拟机的操作系统和数据磁盘使用平台管理的密钥进行静态加密。 临时磁盘、数据缓存以及在计算和存储之间流动的数据不加密。 如果存在以下情况，请忽略此建议：1. 使用主机加密，或 2. 托管磁盘上的服务器端加密满足安全要求。 若要了解详细信息，请参阅 [Azure 磁盘存储的服务器端加密](../../../virtual-machines/disk-encryption.md)和[不同的磁盘加密产品/服务](../../../virtual-machines/disk-encryption-overview.md#comparison)。 |AuditIfNotExists、Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="cryptographic-protection"></a>加密保护
 
-**ID**：NIST SP 800-53 Rev. 4 SC-28 (1)
+**ID**：FedRAMP High SC-28 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1057,13 +1057,13 @@ ms.locfileid: "123472391"
 |[应在主机处加密 Azure Kubernetes 服务群集中代理节点池的临时磁盘和缓存](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41425d9f-d1a5-499a-9932-f8ed8453932c) |为了增强数据安全性，应对存储在 Azure Kubernetes 服务节点 VM 的虚拟机 (VM) 主机上的数据进行静态加密。 这是许多法规和行业合规性标准中的常见要求。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_EncryptionAtHost_Deny.json) |
 |[应在 SQL 数据库上启用透明数据加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |应启用透明数据加密以保护静态数据并满足符合性要求 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 |[虚拟机和虚拟机规模集应启用主机中加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc4d8e41-e223-45ea-9bf5-eada37891d87) |使用主机中加密可对虚拟机和虚拟机规模集数据进行端到端加密。 主机中加密可对临时磁盘和 OS/数据磁盘缓存实现静态加密。 启用主机中加密后，将使用平台管理的密钥对临时 OS 磁盘进行加密。 OS/数据磁盘缓存使用客户管理的密钥或平台管理的密钥进行静态加密，具体取决于在磁盘中选择的加密类型。 更多信息请访问 [https://aka.ms/vm-hbe](../../../virtual-machines/disks-enable-host-based-encryption-portal.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/HostBasedEncryptionRequired_Deny.json) |
-|[虚拟机应加密临时磁盘、缓存以及计算资源和存储资源之间的数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[虚拟机应该加密计算和存储资源之间的临时磁盘、缓存和数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |默认情况下，虚拟机的操作系统和数据磁盘使用平台管理的密钥进行静态加密。 临时磁盘、数据缓存以及在计算和存储之间流动的数据不加密。 如果存在以下情况，请忽略此建议：1. 使用主机加密，或 2. 托管磁盘上的服务器端加密满足安全要求。 若要了解详细信息，请参阅 [Azure 磁盘存储的服务器端加密](../../../virtual-machines/disk-encryption.md)和[不同的磁盘加密产品/服务](../../../virtual-machines/disk-encryption-overview.md#comparison)。 |AuditIfNotExists、Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ## <a name="system-and-information-integrity"></a>系统和信息完整性
 
 ### <a name="flaw-remediation"></a>缺陷修正
 
-**ID**：NIST SP 800-53 Rev. 4 SI-2
+**ID**：FedRAMP High SI-2
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1098,7 +1098,7 @@ ms.locfileid: "123472391"
 
 ### <a name="malicious-code-protection"></a>恶意代码防护
 
-**ID**：NIST SP 800-53 Rev. 4 SI-3
+**ID**：FedRAMP High SI-3
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1109,7 +1109,7 @@ ms.locfileid: "123472391"
 
 ### <a name="central-management"></a>集中管理
 
-**ID**：NIST SP 800-53 Rev. 4 SI-3 (1)
+**ID**：FedRAMP High SI-3 (1)
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1120,7 +1120,7 @@ ms.locfileid: "123472391"
 
 ### <a name="information-system-monitoring"></a>信息系统监视
 
-**ID**：NIST SP 800-53 Rev. 4 SI-4
+**ID**：FedRAMP High SI-4
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -1152,7 +1152,7 @@ ms.locfileid: "123472391"
 
 ### <a name="memory-protection"></a>内存保护
 
-**ID**：NIST SP 800-53 Rev. 4 SI-16
+**ID**：FedRAMP High SI-16
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

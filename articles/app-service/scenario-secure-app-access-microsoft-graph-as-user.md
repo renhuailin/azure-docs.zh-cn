@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/21/2021
+ms.date: 09/23/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: ff35dc6211992bd3d89161dede2745c2e366ee8f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 332552d361c4c8c43b7b4bfa981050c829a79762
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463812"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624513"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>教程：以用户身份从安全的应用访问 Microsoft Graph
 
@@ -53,7 +53,7 @@ ms.locfileid: "112463812"
 
 ## <a name="configure-app-service-to-return-a-usable-access-token"></a>对应用服务进行配置，使之返回可用的访问令牌
 
-Web 应用现在具有以已登录用户身份访问 Microsoft Graph 所需的权限。 在此步骤中，配置应用服务身份验证和授权，以便获取用于访问 Microsoft Graph 的可用访问令牌。 对于此步骤，需要下游服务 (Microsoft Graph) 的客户端/应用程序 ID。 Microsoft Graph 的应用 ID 是 00000003-0000-0000-c000-000000000000。
+Web 应用现在具有以已登录用户身份访问 Microsoft Graph 所需的权限。 在此步骤中，配置应用服务身份验证和授权，以便获取用于访问 Microsoft Graph 的可用访问令牌。 为完成此步骤，需要为下游服务 (Microsoft Graph) 添加 User.Read 范围：`https://graph.microsoft.com/User.Read`。
 
 > [!IMPORTANT]
 > 如果未将应用服务配置为返回可用的访问令牌，则在代码中调用 Microsoft 图形 API 时会收到 ```CompactToken parsing failed with error code: 80049217``` 错误。
@@ -65,7 +65,7 @@ Web 应用现在具有以已登录用户身份访问 Microsoft Graph 所需的�
 
 在左侧浏览器中，向下钻取到“config” > “authsettingsV2”。
 
-在“authsettingsV2”视图中，选择“编辑”。 找到 identityProviders -> azureActiveDirectory 的 login 节，添加以下 loginParameters 设置：`"loginParameters":[ "response_type=code id_token","resource=00000003-0000-0000-c000-000000000000" ]`   。
+在“authsettingsV2”视图中，选择“编辑”。 找到 identityProviders -> azureActiveDirectory 的 login 节，添加以下 loginParameters 设置：`"loginParameters":[ "response_type=code id_token","scope=openid offline_access profile https://graph.microsoft.com/User.Read" ]`   。
 
 ```json
 "identityProviders": {
@@ -74,7 +74,7 @@ Web 应用现在具有以已登录用户身份访问 Microsoft Graph 所需的�
       "login": {
         "loginParameters":[
           "response_type=code id_token",
-          "resource=00000003-0000-0000-c000-000000000000"
+          "scope=openid offline_access profile https://graph.microsoft.com/User.Read"
         ]
       }
     }
@@ -98,7 +98,7 @@ az login
 az rest --method GET --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Web/sites/{WEBAPP_NAME}/config/authsettingsv2/list?api-version=2020-06-01' > authsettings.json
 ```
 
-使用你偏好的文本编辑器打开 authsettings.json 文件。 找到 identityProviders -> azureActiveDirectory 的 login 节，添加以下 loginParameters 设置：`"loginParameters":[ "response_type=code id_token","resource=00000003-0000-0000-c000-000000000000" ]`   。
+使用你偏好的文本编辑器打开 authsettings.json 文件。 找到 identityProviders -> azureActiveDirectory 的 login 节，添加以下 loginParameters 设置：`"loginParameters":[ "response_type=code id_token","scope=openid offline_access profile https://graph.microsoft.com/User.Read" ]`   。
 
 ```json
 "identityProviders": {
@@ -107,7 +107,7 @@ az rest --method GET --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RES
       "login": {
         "loginParameters":[
           "response_type=code id_token",
-          "resource=00000003-0000-0000-c000-000000000000"
+          "scope=openid offline_access profile https://graph.microsoft.com/User.Read"
         ]
       }
     }
@@ -121,13 +121,6 @@ az rest --method GET --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RES
 az rest --method PUT --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Web/sites/{WEBAPP_NAME}/config/authsettingsv2?api-version=2020-06-01' --body @./authsettings.json
 ```
 ---
-
-## <a name="update-the-issuer-url"></a>更新颁发者 URL
-在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务，然后导航到“身份验证”边栏选项卡。
-
-单击 Microsoft 标识提供者旁边的“编辑”链接。
-
-检查“基本信息”选项卡中的“颁发者 URL”。如果“颁发者 URL”的末尾包含“/v2.0”，请删除这些字符，然后单击“保存”   。 如果不删除“/v2.0”，则在登录到 Web 应用时，会出现“AADSTS901002: 不支持 'resource' 请求参数”。
 
 ## <a name="call-microsoft-graph-net"></a>调用 Microsoft Graph (.NET)
 
@@ -287,7 +280,7 @@ public class IndexModel : PageModel
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 >
