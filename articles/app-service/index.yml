@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: d0168c8e3c2d7563bfff77b4188d3f95676131d5
-  ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+  ms.openlocfilehash: 921a298c9f410bb17d100556ecc36b1472578d4b
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/23/2021
-  ms.locfileid: "114652021"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129713666"
 landingContent:
 - title: 关于应用服务
   linkLists:
@@ -204,5 +204,5 @@ landingContent:
       url: quickstart-arc.md
   - linkListType: tutorial
     links:
-    - text: 设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）
+    - text: 设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、Functions 和逻辑应用（预览版）
       url: manage-create-arc-environment.md
