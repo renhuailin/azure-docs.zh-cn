@@ -130,19 +130,25 @@
         - name: 应用 Azure 安全基线
           displayName: 'VM, guest configuration, vulnerabilities, ASB, benchmark'
           href: apply-security-baseline.md
-        - name: 漏洞扫描
+        - name: 漏洞评估
           items:
-            - name: 通过集成 Qualys 扫描程序扫描计算机
-              displayName: 'qualys, vulnerability, arc, hybrid'
+            - name: 通过威胁和漏洞管理查找漏洞
+              displayName: 'mde, tvm, vulnerability, va, arc, hybrid'
+              href: deploy-vulnerability-assessment-tvm.md
+            - name: 使用集成的 Qualys 扫描程序查找漏洞
+              displayName: 'qualys, va, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
-            - name: 通过 BYOL VA 解决方案扫描 VM
+            - name: 使用 BYOL VA 解决方案查找漏洞
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
+            - name: 自动启用漏洞评估解决方案
+              displayName: 'qualys, rapid7, vulnerability, auto provision'
+              href: auto-deploy-vulnerability-assessment.md
             - name: 评审并修正漏洞
-              displayName: 'qualys, rapid7, vulnerability'
+              displayName: 'qualys, va, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: 禁止显示特定漏洞结果
-              displayName: 'qualys, rapid7'
+              displayName: 'qualys, rapid7, va'
               href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: 使用实时 VM 访问保护管理端口
           items:

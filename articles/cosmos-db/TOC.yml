@@ -1303,6 +1303,8 @@
           href: graph/powershell-samples.md
         - name: 使用 Azure CLI 进行管理
           href: graph/cli-samples.md
+        - name: 提供链可跟踪性解决方案
+          href: graph/supply-chain-traceability-solution.md
     - name: 参考
       items:
         - name: 响应标头

@@ -10,12 +10,12 @@ metadata:
   author: laujan
   ms.author: lajanuar
   ms.date: 09/05/2019
-  ms.openlocfilehash: 0119e4a8f0c3437953b7941e22fb4b6a2586c70d
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 58971fda2e7b02d04f7e31ea5c74369a21504c8c
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128645239"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129706515"
 landingContent:
 - title: 关于 Azure 表单识别器
   linkLists:
@@ -125,11 +125,11 @@ landingContent:
     links:
     - text: 尝试使用表单识别器（分析发票）
       url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
-- title: 从标识文档中提取数据
+- title: 从 ID 文档中提取数据
   linkLists:
   - linkListType: concept
     links:
-    - text: 标识文档
+    - text: ID 文档
       url: concept-identification-cards.md
   - linkListType: quickstart
     links:

@@ -1,4 +1,4 @@
-- name: Azure 成本管理 + 计费文档
+- name: 成本管理 + 计费文档
   href: index.yml
 - name: 概述
   items:
@@ -36,7 +36,7 @@
   items:
     - name: 成本管理
       items:
-        - name: Azure 成本管理最佳做法
+        - name: 成本管理最佳做法
           href: costs/cost-mgt-best-practices.md
         - name: 了解成本管理数据
           href: costs/understand-cost-mgt-data.md
@@ -400,7 +400,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/billing
-    - name: Azure 成本管理 REST API
+    - name: 成本管理 REST API
       href: /rest/api/cost-management
     - name: Azure 使用情况 REST API
       href: /rest/api/consumption

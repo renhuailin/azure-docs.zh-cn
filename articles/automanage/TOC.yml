@@ -17,7 +17,7 @@
           href: automanage-windows-server-services-overview.md
         - name: 新虚拟机的热补丁
           href: automanage-hotpatch.md
-    - name: 适用于已启用 Arc 的服务器的 Automanage
+    - name: 适用于已启用 Azure Arc 的服务器的 Automanage
       href: automanage-arc.md
     - name: Automanage 帐户
       href: automanage-account.md

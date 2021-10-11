@@ -91,7 +91,7 @@
       items:
         - name: 有关已启用 Azure Arc 的逻辑应用
           href: azure-arc-enabled-logic-apps-overview.md
-        - name: 创建和部署已启用 Arc 的逻辑应用
+        - name: 创建和部署已启用 Azure Arc 的逻辑应用
           href: azure-arc-enabled-logic-apps-create-deploy-workflows.md
     - name: 开发
       items:

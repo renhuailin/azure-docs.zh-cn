@@ -17,10 +17,12 @@
           href: search-get-started-portal.md
         - name: 创建演示应用
           href: search-create-app-portal.md
-        - name: 创建技能集
-          href: cognitive-search-quickstart-blob.md
         - name: 创建知识存储
           href: knowledge-store-create-portal.md
+        - name: 翻译文本并识别实体
+          href: cognitive-search-quickstart-blob.md
+        - name: 应用 OCR 和图像分析
+          href: cognitive-search-quickstart-ocr.md
         - name: 使用搜索浏览器查询
           href: search-explorer.md
     - name: Visual Studio Code

@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: Azure 成本管理 + 计费文档
-summary: “Azure 成本管理 + 计费”可帮助你了解 Azure 发票（帐单）、管理计费帐户和订阅、监视和控制 Azure 支出，并优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
+summary: “成本管理 + 计费”可帮助你了解 Azure 发票（帐单）、管理计费帐户和订阅、监视和控制 Azure 支出，并优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
 metadata:
-  title: Azure 成本管理 + 计费
-  description: “Azure 成本管理 + 计费”可帮助你了解 Azure 发票（帐单）、管理计费帐户和订阅、监视和控制 Azure 支出，并优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
+  title: 成本管理 + 计费
+  description: “成本管理 + 计费”可帮助你了解 Azure 发票（帐单）、管理计费帐户和订阅、监视和控制 Azure 支出，并优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
   ms.service: cost-management-billing
   ms.subservice: common
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 07/14/2021
-  ms.openlocfilehash: ee7f65921165d9649dafd0a2ee2c3934849914d8
-  ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+  ms.date: 10/07/2021
+  ms.openlocfilehash: 4dab44a6129c2e6bb6d810ec820cfb459ddb89df
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/15/2021
-  ms.locfileid: "114203415"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129711255"
 landingContent:
 - title: 分析成本
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     links:
     - text: 根据自己的节奏学习
       url: /learn/paths/control-spending-manage-bills/?WT.mc_id=ignite2020_collections
-    - text: Azure 成本管理视频
+    - text: 成本管理视频
       url: https://www.youtube.com/c/AzureCostManagement
     - text: 开始分析成本
       url: costs/quick-acm-cost-analysis.md
@@ -82,7 +82,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Azure 成本管理最佳做法
+    - text: 成本管理最佳做法
       url: costs/cost-mgt-best-practices.md
     - text: 通过 Azure 预留项节省成本
       url: reservations/save-compute-costs-reservations.md

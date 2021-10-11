@@ -442,7 +442,7 @@
                       href: agents/diagnostics-extension-windows-install.md
                     - name: PowerShell
                       href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                    - name: 资源管理器模板
+                    - name: Resource Manager 模板
                       href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
                 - name: 发送到 Azure Monitor 指标存储
                   items:
@@ -492,7 +492,7 @@
           href: autoscale/autoscale-get-started.md
         - name: 配置设置
           href: autoscale/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: autoscale/autoscale-best-practices.md
         - name: 常见指标
           href: autoscale/autoscale-common-metrics.md
@@ -986,7 +986,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 例外
+            - name: 异常
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -1111,7 +1111,7 @@
               href: containers/container-insights-enable-new-cluster.md
             - name: 为现有的 AKS 群集启用
               href: containers/container-insights-enable-existing-clusters.md
-            - name: 为已启用 Arc 的群集启用
+            - name: 为已启用 Azure Arc 的群集启用
               href: containers/container-insights-enable-arc-enabled-clusters.md
             - name: 针对混合群集启用
               href: containers/container-insights-hybrid-setup.md

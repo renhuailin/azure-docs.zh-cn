@@ -5,6 +5,14 @@
   items:
     - name: 什么是导入/导出服务？
       href: storage-import-export-service.md
+- name: 教程
+  items:
+    - name: 将数据导入 Blob 存储
+      href: storage-import-export-data-to-blobs.md
+    - name: 将数据导入到 Azure 文件
+      href: storage-import-export-data-to-files.md
+    - name: 从 Blob 存储导出数据
+      href: storage-import-export-data-from-blobs.md
 - name: 概念
   items:
     - name: 审查要求
@@ -14,21 +22,15 @@
 - name: 如何
   expanded: true
   items:
-    - name: 部署
-      items:
-        - name: 将数据导入 Blob
-          href: storage-import-export-data-to-blobs.md
-        - name: 将数据导入文件
-          href: storage-import-export-data-to-files.md
-        - name: 从 Blob 导出数据
-          href: storage-import-export-data-from-blobs.md
     - name: 使用客户管理的密钥
       href: storage-import-export-encryption-key-portal.md
+    - name: 确定要使用的磁盘
+      href: storage-import-export-determine-drives-for-export.md
     - name: 监视
       items:
         - name: 查看作业，驱动器状态
           href: storage-import-export-view-drive-status.md
-        - name: 查看作业状态
+        - name: 查看复制日志
           href: storage-import-export-tool-reviewing-job-status-v1.md
     - name: 疑难解答
       items:

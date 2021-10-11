@@ -1004,6 +1004,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 虚拟网络体系结构
           href: ./hdinsight-virtual-network-architecture.md
+        - name: 限制公用连接
+          href: ./hdinsight-restrict-public-connectivity.md
         - name: 专用链接
           href: ./hdinsight-private-link.md
         - name: 传输层安全性
