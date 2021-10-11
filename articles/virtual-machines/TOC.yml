@@ -297,20 +297,6 @@
               href: h-series-retirement.md
             - name: HB 系列停用
               href: hb-series-retirement.md
-        - name: 状态和计费
-          href: states-billing.md
-        - name: vCPU 配额
-          items:
-            - name: CLI
-              displayName: 'vCPU, quota, limit'
-              href: ./linux/quotas.md
-            - name: PowerShell
-              displayName: 'vCPU, quota, limit'
-              href: ./windows/quotas.md
-        - name: 不带临时磁盘的 Azure VM
-          href: azure-vms-no-temp-disk.yml
-        - name: Azure VM 大小命名约定
-          href: vm-naming-conventions.md
         - name: 前几代
           displayName: 'older, retired, expired, deprecated'
           href: sizes-previous-gen.md
@@ -320,9 +306,6 @@
         - name: 独立大小
           displayName: 'isolated VM, sole-tenant, sole'
           href: isolation.md
-        - name: 前几代
-          displayName: 'older, retired, expired, deprecated'
-          href: sizes-previous-gen.md
         - name: Azure 计算单元 (ACU)
           href: acu.md
         - name: 基准评分

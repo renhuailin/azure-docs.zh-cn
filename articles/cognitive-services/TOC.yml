@@ -5,8 +5,6 @@
   items:
     - name: 什么是认知服务？
       href: what-are-cognitive-services.md
-    - name: 认知服务文档中的新增内容
-      href: whats-new-docs.md
     - name: 语言支持
       href: language-support.md
     - name: 定价

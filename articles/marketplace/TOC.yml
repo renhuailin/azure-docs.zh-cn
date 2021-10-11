@@ -51,6 +51,12 @@
       href: marketplace-criteria-content-validation.md
     - name: 潜在顾客管理
       href: partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - name: 专用产品/服务
+      items:
+        - name: 面向云经销商
+          href: isv-csp-reseller.md
+        - name: 常见问题
+          href: isv-csp-faq.yml
     - name: 体验版
       items:
         - name: 什么是体验版？
@@ -80,6 +86,8 @@
         - name: 从 OCP GTM 迁移联合销售解决方案
           href: co-sell-solution-migration.md
         - name: 通过 CSP 合作伙伴转售
+          href: cloud-solution-providers.md
+        - name: ISV 到合作伙伴经销商专营产品/服务
           href: cloud-solution-providers.md
         - name: 连接计划加入指南
           href: business-applications-isv-program.md

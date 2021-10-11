@@ -280,8 +280,8 @@
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技术社区支持组
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
-    - name: Microsoft 365 路线图
-      href: 'https://aka.ms/wvdroadmap'
+    - name: Azure 更新路线图
+      href: 'https://aka.ms/avdroadmap'
     - name: Azure 资源管理器模板
       href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
     - name: Azure 合规性产品

@@ -2,10 +2,8 @@
   href: index.yml
 - name: 概述
   items:
-    - name: Azure IoT 中心是什么？
-      href: about-iot-hub.md
-    - name: IoT 概念
-      href: iot-concepts.md
+    - name: IoT 概念和 Azure IoT 中心
+      href: iot-concepts-and-iot-hub.md
 - name: 快速入门
   expanded: true
   items:

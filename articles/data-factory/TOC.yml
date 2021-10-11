@@ -737,6 +737,8 @@ items:
                 href: monitor-install-analytics.md
           - name: 使用 SDK 进行监视
             href: monitor-programmatically.md
+          - name: 利用电子邮件通知监视管道
+            href: how-to-send-email.md
           - name: 利用 Microsoft Teams 通知监视管道
             href: how-to-send-notifications-to-teams.md
           - name: 监视集成运行时
@@ -876,7 +878,9 @@ items:
             href: how-to-discover-explore-purview-data.md
       - name: 方案
         items:
-          - name: 利用 Microsoft Teams 通知监视管道
+          - name: 从管道发送电子邮件
+            href: how-to-send-email.md
+          - name: 从管道发送 Microsoft Teams 通知
             href: how-to-send-notifications-to-teams.md
           - name: Data Lake 与 EDW 的数据迁移
             items:

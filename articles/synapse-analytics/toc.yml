@@ -838,7 +838,7 @@ items:
                 href: ../data-factory/connector-azure-databricks-delta-lake.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Azure 文件存储
                 href: ../data-factory/connector-azure-file-storage.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
-              - name: Azure SQL 数据库
+              - name: Azure SQL Database
                 href: ../data-factory/connector-azure-sql-database.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Azure SQL 托管实例
                 href: ../data-factory/connector-azure-sql-managed-instance.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json
@@ -1165,7 +1165,9 @@ items:
             items:
               - name: 管道运行
                 href: monitoring/how-to-monitor-pipeline-runs.md
-              - name: 利用 Microsoft Teams 通知监视管道
+              - name: 从管道发送电子邮件
+                href: ../data-factory/how-to-send-email.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+              - name: 从管道发送 Microsoft Teams 通知
                 href: ../data-factory/how-to-send-notifications-to-teams.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
           - name: 创建集成运行时
             items:

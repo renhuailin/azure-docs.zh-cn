@@ -8,17 +8,17 @@ items:
   - name: 快速入门
     expanded: true
     items:
-      - name: 创建 Purview 帐户
+      - name: 创建 Azure Purview 帐户
         items:
-          - name: 创建 Purview 帐户 - 门户
+          - name: 创建帐户 - Azure 门户
             href: create-catalog-portal.md
-          - name: 创建 Purview 帐户 - PowerShell
+          - name: 创建帐户 - PowerShell/CLI
             href: create-catalog-powershell.md
-          - name: 创建 Purview 帐户 - .NET SDK
+          - name: 创建帐户 - .NET SDK
             href: create-purview-dotnet.md
-          - name: 创建 Purview 帐户 - Python
+          - name: 创建帐户 - Python
             href: create-purview-python.md
-      - name: 创建集合 - 门户
+      - name: 创建集合 - Azure 门户
         href: quickstart-create-collection.md
   - name: 教程
     items:
@@ -26,17 +26,17 @@ items:
         items:
           - name: 大规模检查 Azure 源就绪情况
             href: tutorial-data-sources-readiness.md
-          - name: 大规模进行 Purview MSI 配置
+          - name: 大规模进行 Azure Purview MSI 配置
             href: tutorial-msi-configuration.md
-      - name: 加入本地 SQL Server
+      - name: 加入本地 SQL Server 实例
         href: tutorial-register-scan-on-premises-sql-server.md
-      - name: 对 Purview 数据平面使用 REST API
+      - name: 对数据平面使用 REST API
         href: tutorial-using-rest-apis.md
-      - name: 使用 REST API 进行集合管理
+      - name: 对集合使用 REST API
         href: tutorial-metadata-policy-collections-apis.md
   - name: 概念
     items:
-      - name: 使用 Purview Studio
+      - name: 使用 Azure Purview Studio
         href: use-purview-studio.md
       - name: 最佳做法与准则
         items:
@@ -44,9 +44,11 @@ items:
             href: deployment-best-practices.md
           - name: 集合体系结构
             href: concept-best-practices-collections.md
-          - name: Purview 定价准则
+          - name: 定价准则
             href: concept-guidelines-pricing.md
-      - name: Purview 权限
+          - name: 网络体系结构
+            href: concept-best-practices-network.md
+      - name: Azure Purview 权限
         href: catalog-permissions.md
       - name: 数据映射
         items:
@@ -68,7 +70,7 @@ items:
             href: concept-asset-normalization.md
       - name: 数据见解
         href: concept-insights.md
-      - name: 已升级 Purview 帐户
+      - name: 已升级 Azure Purview 帐户
         href: concept-account-upgrade.md
   - name: 操作指南
     items:
@@ -82,7 +84,7 @@ items:
             href: manage-data-sources.md
           - name: 管理凭据
             href: manage-credentials.md
-            displayName: Create and manage Credentials
+            displayName: Create and manage credentials
       - name: 源
         items:
           - name: Azure 多源
@@ -113,7 +115,7 @@ items:
           - name: Azure Data Lake Storage Gen 2
             href: register-scan-adls-gen2.md
             displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-          - name: Azure SQL 数据库
+          - name: Azure SQL Database
             href: register-scan-azure-sql-database.md
             displayName: Register and scan Azure SQL DB
           - name: Azure SQL 数据库托管实例

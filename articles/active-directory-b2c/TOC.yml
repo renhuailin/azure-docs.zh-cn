@@ -398,15 +398,13 @@
           displayName: rest claims exchange
         - name: 保护 API 连接器
           href: secure-rest-api.md
-    - name: 自定义策略
+    - name: 疑难解答
       items:
-        - name: 疑难解答
-          items:
-            - name: 使用 Application Insights 收集日志
-              href: troubleshoot-with-application-insights.md
-              displayName: 'troubleshooting, app insights'
-            - name: 自定义策略故障排除
-              href: troubleshoot-custom-policies.md
+        - name: 使用 Application Insights 收集日志
+          href: troubleshoot-with-application-insights.md
+          displayName: 'troubleshooting, app insights'
+        - name: 故障排除和错误处理
+          href: troubleshoot.md
     - name: UserInfo 终结点
       href: userinfo-endpoint.md
     - name: 合作伙伴集成
