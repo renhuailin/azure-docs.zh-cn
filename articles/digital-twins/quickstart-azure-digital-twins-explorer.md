@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 26063c9d0c02079b2c40eb85330be499b4bb624e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 92b1eeb5317f5a7535406d1b3781a4b0b66cad45
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461967"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272446"
 ---
 # <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>快速入门 - 开始使用 Azure Digital Twins Explorer 中的示例场景
 
 通过 Azure 数字孪生，可创建真实环境的实时模型并与之交互。 首先，将单个元素建模为“数字孪生”。 然后将它们连接到一个知识图，该图可以响应实时事件并查询信息。
 
-在本快速入门中，你将使用 [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) 来探索预生成的 Azure 数字孪生图形。 通过此工具，你可在 Azure 门户中将 Azure 数字孪生数据可视化并与之交互。
+在本快速入门中，你将使用 [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) 来探索预生成的 Azure 数字孪生图形。 通过此工具，你可在 Azure 门户中将 Azure 数字孪生数据可视化并与之交互。 
 
 你将完成以下步骤：
 
@@ -31,6 +31,9 @@ ms.locfileid: "114461967"
 你将使用的示例图形表示具有两个楼层和两个房间的建筑。 Floor0 包含 Room0，Floor1 包含 Room1。 该图形将如下图像所示：
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="四个圆形节点组成的图形的屏幕截图，这些节点在 Azure Digital Twins Explorer 中由箭头连接。":::
+
+>[!NOTE]
+>本快速入门介绍如何浏览预生成的图形，以了解 Azure 数字孪生表示数据的方式。 为简单起见，本快速入门不介绍如何设置 IoT 中心设备与其图形表示形式之间的连接。 若要为图形设置连接的端到端流，请继续阅读教程：[连接端到端解决方案](tutorial-end-to-end.md)。
 
 ## <a name="prerequisites"></a>必备知识
 

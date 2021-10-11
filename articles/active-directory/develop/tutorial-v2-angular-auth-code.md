@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/14/2021
 ms.author: joarroyo
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e9b99ed26276acd8c606e7d19f490867cb42b297
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 01c35297a35b41b58b83aaf361aaa47a76cfecee
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109635305"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230848"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa-using-auth-code-flow"></a>教程：使用授权代码流从 Angular 单页应用程序 (SPA) 将用户登录并调用 Microsoft Graph API
 
@@ -789,7 +789,7 @@ MSAL Angular 向已知的受保护资源提供一个 `Interceptor` 类，该类�
     * Microsoft Graph 的 `["user.read"]`
     * 自定义 Web API 的 `["<Application ID URL>/scope"]`（即 `api://<Application ID>/access_as_user`）
     
-    按如下所述修改 `protectedResourceMap` 中的值：
+    按下面所述修改 `protectedResourceMap` 中的值：
 
     |值名称| 关于|
     |----------|------|

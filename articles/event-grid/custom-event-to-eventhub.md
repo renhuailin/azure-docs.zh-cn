@@ -1,15 +1,15 @@
 ---
 title: 快速入门：将自定义事件发送到事件中心 - 事件网格、Azure CLI
 description: 快速入门：使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 事件中心用于终结点。
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37523e907eb891a326c8dbe975593554958a44b9
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: f725af009f8c2b8f8c4595865d6d746ff9f55849
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897912"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230147"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心
 
@@ -37,6 +37,9 @@ az group create --name gridResourceGroup --location westus2
 
 ```azurecli-interactive
 topicname=<your-topic-name>
+```
+
+```azurecli-interactive
 az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 ```
 
@@ -46,6 +49,9 @@ az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 
 ```azurecli-interactive
 namespace=<unique-namespace-name>
+```
+
+```azurecli-interactive
 hubname=demohub
 
 az eventhubs namespace create --name $namespace --resource-group gridResourceGroup
@@ -94,7 +100,7 @@ done
 
 导航到门户中的事件中心，请注意，事件网格会将这三个事件发送到事件中心。
 
-![显示消息](./media/custom-event-to-eventhub/show-result.png)
+:::image type="content" source="./media/custom-event-to-eventhub/show-result.png" lightbox="./media/custom-event-to-eventhub/show-result.png" alt-text="图像显示门户页，其中传入消息计数为 3。":::
 
 通常，你将创建一个从事件中心检索事件的应用程序。 若要创建从事件中心获取消息的应用程序，请参阅：
 

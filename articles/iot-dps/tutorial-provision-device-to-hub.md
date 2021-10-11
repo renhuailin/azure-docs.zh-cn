@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b6dce9f84ff78a7caaf5f5f7ef702053640cee7a
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: eed3ff374850d4861c94fe79263c26a8f33760ac
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112519094"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271681"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 
@@ -56,7 +56,7 @@ ms.locfileid: "112519094"
 
 现在，请使用所需的安全项目根据设备的证明机制将设备注册到设备预配服务实例： 
 
-1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。
+1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。
 
 2. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”  。 根据设备设置选择“单独注册”选项卡或“注册组”选项卡   。 单击顶部的“添加”按钮  。 选择“TPM”或“X.509”作为标识证明机制，并按前文所述输入适当的安全项目    。 可以输入新的“IoT 中心设备 ID”  。 完成后，单击“保存”按钮  。 
 
@@ -68,9 +68,9 @@ ms.locfileid: "112519094"
 
 ## <a name="start-the-iot-device"></a>启动 IoT 设备
 
-IoT 设备可以是真实设备，也可以是模拟设备。 因为 IoT 设备现在已向设备预配服务实例进行了注册，设备现在可以启动，并且可以调用预配服务，以便该服务使用认证机制来识别此设备。 在预配服务识别设备后，设备将被分配给一个 IoT 中心。 
+IoT 设备可以是真实设备，也可以是模拟设备。 因为 IoT 设备现在已向设备预配服务实例进行了注册，设备现在可以启动，并且可以调用预配服务，以便该服务使用认证机制来识别此设备。 在预配服务识别设备后，设备将被分配给一个 IoT 中心。
 
-针对 C、Java、C#、Node.js 和 Python 提供了模拟设备示例（使用 TPM 和 X.509 认证）。 例如，使用 TPM 和 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的模拟设备将遵循[模拟设备的首次引导顺序](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device)部分中介绍的流程。 使用 X.509 证书认证的相同设备将参考此[引导顺序](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device)部分。
+针对 C、Java、C#、Node.js 和 Python 提供了模拟设备示例（使用 TPM 和 X.509 认证）。  若要查看使用 TPM 证明的设备示例，请参阅[快速入门：预配模拟的 TPM 设备](quick-create-simulated-device-tpm.md)。 有关使用 X.509 证明的设备示例，请参阅[快速入门：预配模拟对称密钥设备](quick-create-simulated-device-x509.md#prepare-and-run-the-device-provisioning-code)
 
 启动该设备可以让设备的客户端应用程序开始注册到设备预配服务。  
 
@@ -78,7 +78,7 @@ IoT 设备可以是真实设备，也可以是模拟设备。 因为 IoT 设备�
 
 设备启动后，应进行以下操作：
 
-1. 设备会向设备预配服务发送注册请求。
+1. 设备向设备预配服务发送注册请求。
 2. 对于 TPM 设备，设备预配服务将回复注册质询，设备需对此进行答复。 
 3. 注册成功后，设备预配服务会向设备发送 IoT 中心 URI、设备 ID 和加密密钥。 
 4. 设备上的 IoT 中心客户端应用程序随后会连接到你的中心。 
@@ -86,7 +86,7 @@ IoT 设备可以是真实设备，也可以是模拟设备。 因为 IoT 设备�
 
     ![成功连接到门户中的中心](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-有关详细信息，请参阅预配设备客户端示例 [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c)。 此示例演示了如何使用 TPM、X.509 证书和对称密钥预配模拟设备。 请回头参阅 [TPM](./quick-create-simulated-device.md)、[X.509](./quick-create-simulated-device-x509.md) 和[对称密钥](./quick-create-simulated-device-symm-key.md)证明快速入门，了解有关如何使用示例的分步说明。
+有关详细信息，请参阅预配设备客户端示例 [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c)。 此示例演示了如何使用 TPM、X.509 证书和对称密钥预配模拟设备。 请回头参阅 [TPM](./quick-create-simulated-device-tpm.md)、[X.509](./quick-create-simulated-device-x509.md) 和[对称密钥](./quick-create-simulated-device-symm-key.md)证明快速入门，了解有关如何使用示例的分步说明。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你了解了如何执行以下操作：

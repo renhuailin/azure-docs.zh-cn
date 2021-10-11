@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 10,000ft Plans 的集成 | Microsoft 文档
+title: 教程：Azure AD SSO 与 10,000ft Plans 集成
 description: 了解如何在 Azure Active Directory 和 10,000ft Plans 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/23/2021
+ms.date: 09/29/2021
 ms.author: jeedes
-ms.openlocfilehash: b8d7e7045e76ceb193a0060a3c83db172f788f6d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1d4e4ce25a34e722b86d9bfa9824b81625f1aa69
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748294"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400362"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>教程：Azure Active Directory 与 10,000ft Plans 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-10000ft-plans"></a>教程：Azure AD SSO 与 10,000ft Plans 集成
 
 本教程介绍如何将 10,000ft Plans 与 Azure Active Directory (Azure AD) 集成。 将 10,000ft Plans 与 Azure AD 集成后，你可以：
 
@@ -76,20 +76,18 @@ ms.locfileid: "124748294"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://app.10000ft.com`
+    a. 在“标识符(实体 ID)”文本框中，键入 URL：`https://rm.smartsheet.com/saml/metadata` 
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://app.10000ft.com/saml/metadata`
+    b. 在“回复 URL”文本框中键入 URL：`https://rm.smartsheet.com/saml/acs`
+    
+    c. 在“登录 URL”文本框中，键入 URL：` https://rm.smartsheet.com`
 
     > [!NOTE]
     > 如果有自定义域，**Identifier** 的值将不同。 若要获取此值，请与 [10,000ft Plans 客户端支持团队](https://www.10000ft.com/plans/support)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载 **证书(原始)** 并将其保存在计算机上。
+1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“复制”图标，以复制“应用联合元数据 URL”  。 然后将其保存在计算机上。
 
-    ![证书下载链接](common/certificateraw.png)
-
-6. 在“设置 10,000ft Plans”部分中，根据要求复制相应的 URL。
-
-    ![复制配置 URL](common/copy-configuration-urls.png)
+    ![“SAML 签名证书”的屏幕截图，其中突出显示了复制图标](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -117,7 +115,23 @@ ms.locfileid: "124748294"
 
 ## <a name="configure-10000ft-plans-sso"></a>配置 10000ft Plans SSO
 
-若要在 10,000ft Plans 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [10,000ft Plans 支持团队](https://www.10000ft.com/plans/support)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 以管理员身份登录到 10000ft Plans 网站。
+
+1. 单击“设置”，然后从下拉列表中选择“帐户设置” 。
+
+    ![“设置”图标的屏幕截图。](./media/10000ftplans-tutorial/settings.png)
+
+1. 在左侧菜单中单击“SSO”并执行以下步骤：
+
+    ![“设置 SSO”页的屏幕截图。](./media/10000ftplans-tutorial/setup-sso.png)
+
+    a. 在“设置 SSO”部分选择“自动配置”。
+
+    b. 在“IdP 元数据 URL”文本框中，输入从 Azure 门户复制的“应用联合元数据 URL”值 。
+
+    c. 启用“自动预配不在帐户中的经过身份验证的用户”复选框。
+
+    d. 单击“保存”  。
 
 ### <a name="create-10000ft-plans-test-user"></a>创建 10000ft Plans 测试用户
 

@@ -5,15 +5,15 @@ author: Jejiang
 ms.service: synapse-analytics
 ms.subservice: purview
 ms.topic: quickstart
-ms.date: 09/02/2021
+ms.date: 09/29/2021
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7d729234244302e648a2d3a0bf9c8dc94f10d5a
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 894df32142cf29e59e40b1e9218f4090bbda93f0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450352"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351603"
 ---
 # <a name="quickstartconnect-a-synapse-workspace-to-an-azure-purview-account"></a>快速入门：将 Synapse 工作区连接到 Azure Purview 帐户
 
@@ -71,13 +71,24 @@ Synapse 工作区的托管标识用于对从 Synapse 工作区到 Purview 的世
 
     将 Synapse 工作区连接到 Synapse Studio 中的 Purview 时，Synapse 会尝试自动添加此类角色分配。 如果你拥有 Purview 根集合的“集合管理员”角色，并且可从你的网络访问 Purview 帐户，则此操作成功完成。
 
-- 对于 2021 年 8 月 18 日之前创建的 Purview 帐户，向 Synapse 工作区的托管标识授予 Purview 帐户的 Azure 内置 [Purview 数据管理者](../../role-based-access-control/built-in-roles.md#purview-data-curator)角色 。 详细了解 [Azure Purview 中的访问控制 - 旧版权限](../../purview/catalog-permissions.md#legacy-permission-guide)。
+- 对于 2021 年 8 月 18 日之前创建的 Purview 帐户，向 Synapse 工作区的托管标识授予 Purview 帐户的 Azure 内置 [Purview 数据管理者（旧版）](../../role-based-access-control/built-in-roles.md#purview-data-curator-legacy)角色 。 详细了解 [Azure Purview 中的访问控制 - 旧版权限](../../purview/catalog-permissions.md#legacy-permission-guide)。
 
     将 Synapse 工作区连接到 Synapse Studio 中的 Purview 时，Synapse 会尝试自动添加此类角色分配。 如果你拥有 Purview 帐户的 Azure 内置“所有者”或“用户访问管理员”角色，则此操作会成功完成 。
 
-如果你拥有读取 Purview 角色分配信息的权限，但未被授予所需角色，那么可能会看到以下警告。 若要确保为管道世系推送正确设置连接，请转到 Purview 帐户，并检查是否向 Synapse 工作区的托管标识授予了“Purview 数据管理者”角色。 否则，请手动添加角色分配。
+## <a name="monitor-purview-connection"></a>监视 Purview 连接
 
-:::image type="content" source="./media/register-purview-account-warning.png" alt-text="展示了在注册 Purview 帐户时出现的警告的屏幕截图。":::
+将 Synapse 工作区连接到 Purview 帐户后，会看到以下页面，其中包含有关已启用的集成功能的详细信息。
+
+:::image type="content" source="./media/monitor-purview-connection-status.png" alt-text="有关监视 Azure Synapse 和 Purview 之间的集成状态的屏幕截图。":::
+
+对于“数据世系 - Synapse 管道”，你可能会看到以下状态之一：
+
+- **已连接**：Synapse 工作区已成功连接到 Purview 帐户。 请注意，这表示 Synapse 工作区与 Purview 帐户关联并且有权向其推送世系。 如果 Purview 帐户受防火墙保护，则还需确保用于执行活动和进行世系推送的集成运行时可以访问 Purview 帐户。 有关详细信息，请参阅[访问安全的 Azure Purview 帐户](how-to-access-secured-purview-account.md)。
+- **已断开连接**：Synapse 工作区无法将世系推送到 Purview，因为尚未将“Purview 数据管护者”角色授予 Synapse 工作区的托管标识。 若要解决此问题，请转到 Purview 帐户以检查角色分配，并根据需要手动授予该角色。 有关详细信息，请参阅[设置身份验证](#set-up-authentication)部分。
+- **未知**：Synapse 工作区无法检查状态。 可能的原因包括：
+
+    - 无法从当前网络访问 Purview 帐户，因为该帐户受防火墙保护。 可以改为从已连接到 Purview 帐户的专用网络启动 Synapse Studio。
+    - 你无权检查 Purview 帐户上的角色分配。 可以联系 Purview 帐户管理员来为你检查角色分配。 若要了解所需的 Purview 角色，请参阅[设置身份验证](#set-up-authentication)部分。
 
 ## <a name="report-lineage-to-azure-purview"></a>向 Azure Purview 报告世系
 

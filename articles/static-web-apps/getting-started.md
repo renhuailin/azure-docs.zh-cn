@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 06/16/2021
 ms.author: cshoe
-ms.openlocfilehash: b543831ceead6d386de0617b02db93a99d9507a6
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 167d6a2fbe6ec782a83c8dc3cb7f3ea57832a594
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609124"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275898"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>快速入门：使用 Azure Static Web Apps 生成第一个静态站点
 
@@ -62,17 +62,20 @@ Azure Static Web Apps 通过从代码存储库生成应用程序来发布网站�
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="创建静态 Web 应用":::
 
+1. 选择附近的区域。
+
+    > [!NOTE]
+    > Azure Static Web Apps 以全局方式分发静态资产。 选择的区域决定了可选过渡环境和 API 函数应用所在的位置。
+
 1. 选择与应用程序类型匹配的预设。
 
     # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="应用程序预设：无框架":::
 
-    输入 ./src 作为应用程序文件的位置，并按 <kbd>Enter</kbd>。
+    输入“/src”作为应用程序文件的位置，然后按 <kbd>Enter</kbd>。
 
-    :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="应用程序生成输出位置":::
-
-    输入 ./src 作为生成输出位置，并按 <kbd>Enter</kbd>。
+    此应用不生成生成输出。 确保生成输出位置为空，然后按 <kbd>Enter</kbd>。
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
@@ -80,7 +83,7 @@ Azure Static Web Apps 通过从代码存储库生成应用程序来发布网站�
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="应用程序预设：Angular":::
 
-    输入“./”作为应用程序文件的位置。
+    输入“/”作为应用程序文件的位置。
 
     :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="应用程序文件位置：Angular":::
 
@@ -92,9 +95,17 @@ Azure Static Web Apps 通过从代码存储库生成应用程序来发布网站�
 
     :::image type="content" source="media/getting-started/extension-presets-react.png" alt-text="应用程序预设：React":::
 
+    输入“/”作为应用程序文件的位置。
+
+    输入“build”作为生成输出位置。
+
     # <a name="vue"></a>[Vue](#tab/vue)
 
     :::image type="content" source="media/getting-started/extension-presets-vue.png" alt-text="应用程序预设：Vue":::
+
+    输入“/”作为应用程序文件的位置。
+
+    输入“dist”作为生成输出位置。
 
     ---
 

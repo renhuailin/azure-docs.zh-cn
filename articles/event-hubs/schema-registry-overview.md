@@ -4,12 +4,12 @@ description: 本文概述了 Azure 事件中心（预览版）支持的架构注
 ms.topic: overview
 ms.date: 05/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 43380ccd4f20616676f4eeb53fb2231b4f76f4e9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6ac6361643d9baafb41259e6db69f816d747b1d8
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371198"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534825"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>事件中心中的 Azure 架构注册表（预览版）
 在许多事件流式处理和消息传送场景中，事件或消息有效负载都包含结构化数据，这些数据使用架构驱动格式（例如 Apache Avro）进行序列化或反序列化。 发送方和接收方可能都需要使用与 JSON 架构相同的架构文档来验证数据的完整性。 对于架构驱动格式，消息使用者必须能够使用该架构，才能反序列化数据。 

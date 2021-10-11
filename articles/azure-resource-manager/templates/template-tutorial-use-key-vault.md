@@ -6,12 +6,12 @@ ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e2136e70f45fa909a306e1af2c25cb6e5c6a85d0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: a352015437437ef47b076b487710018e7ef8e2d9
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081904"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402123"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教程：在 ARM 模板部署中集成 Azure Key Vault
 
@@ -40,11 +40,13 @@ ms.locfileid: "112081904"
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
-* 若要增强安全性，请使用为 VM 管理员帐户生成的密码。 以下是密码生成示例：
+* 若要增强安全性，请使用为 VM 管理员帐户生成的密码。 可以使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 在 PowerShell 或 Bash 中运行以下命令：
 
-    ```console
+    ```shell
     openssl rand -base64 32
     ```
+
+    若要了解详细信息，请运行 `man openssl rand` 以打开手册页。
 
     验证生成的密码是否符合 VM 密码要求。 每个 Azure 服务具有特定的密码要求。 有关 VM 密码要求，请参阅[创建 VM 时，密码有什么要求？](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
 
@@ -58,7 +60,7 @@ ms.locfileid: "112081904"
 > [!NOTE]
 > 如果你（作为要部署虚拟机模板的用户）不是密钥保管库的所有者或参与者，则密钥保管库的所有者或参与者必须向你授予对密钥保管库的 `Microsoft.KeyVault/vaults/deploy/action` 的访问权限。 有关详细信息，请参阅[在部署过程中使用 Azure 密钥保管库传递安全参数值](./key-vault-parameter.md)。
 
-若要运行以下 Azure PowerShell 脚本，请选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell 窗格，然后选择“粘贴”。
+若要运行以下 Azure PowerShell 脚本，请选择“试用”以打开 Cloud Shell。 若要粘贴脚本，请右键单击 shell 窗格，然后选择“粘贴”。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -171,7 +173,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
+1. 登录到 [Cloud Shell](https://shell.azure.com)。
 
 1. 通过在左上角选择“PowerShell”或“Bash”（适用于 CLI）来选择你喜欢使用的环境 。  进行切换时，需重启 shell。
 

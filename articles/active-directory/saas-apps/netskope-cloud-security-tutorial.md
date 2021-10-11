@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: ca68ecca217399db8a570b2d7ba063276b4d61bb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 64551f24d3273f757511a0727779073026fb11c1
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801992"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netskope 管理员控制台的集成
 
@@ -163,7 +163,7 @@ ms.locfileid: "124801992"
 
    ![屏幕截图显示了“SSO/SLO 设置”，你可以在其中选择“编辑设置”。](./media/netskope-cloud-security-tutorial/settings.png)
 
-1. 在“设置”弹出窗口中，执行以下步骤  ；
+1. 在“设置”弹出窗口中，执行以下步骤；
 
    ![屏幕截图显示“设置”对话框，你可以在其中输入所述值。](./media/netskope-cloud-security-tutorial/configuration.png)
 

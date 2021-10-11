@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: 7509be190afd0354f730f72dd97c5b5a118f20dd
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 090b0eaca0e46969aa98e6ac7878da3333602ab6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187336"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533487"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Azure 数据工厂的新增功能
 
@@ -25,6 +25,21 @@ Azure 数据工厂服务正在持续改进。 为了让大家随时了解最新�
 - 更改计划
 
 本页面每月更新，请不时回来查看。 
+
+## <a name="september-2021"></a>2021 年 9 月
+<br>
+<table>
+<tr><td>服务类别<b></b></td><td><b>服务改进</b></td><td><b>详细信息</b></td></tr>
+  <tr><td><b>持续集成和交付 (CI/CD)</b></td><td>扩展的 CI/CD 功能</td><td>现在可以基于 Azure 数据工厂中的任何其他分支创建新的 Git 分支。<br><a href="source-control.md#version-control">了解详细信息</a></td></tr>
+<tr><td rowspan=3><b>数据移动</b></td><td>适用于 Oracle 源的 Amazon 关系数据库服务 (RDS)</td><td>Amazon RDS for Oracle 源连接器现已在 Azure 数据工厂 和 Azure Synapse 中可用。<br><a href="connector-amazon-rds-for-oracle.md">了解详细信息</a></td></tr>
+<tr><td>Amazon RDS for SQL Server 源</td><td>Amazon RDS for SQL Server 源连接器现已在 Azure 数据工厂 和 Azure Synapse 中可用。<br><a href="connector-amazon-rds-for-sql-server.md">了解详细信息</a></td></tr>
+<tr><td>支持从 Azure Database for PostgreSQL 进行并行复制</td><td>Azure Database for PostgreSQL 连接器现在支持并行复制操作。<br><a href="connector-azure-database-for-postgresql.md">了解详细信息</a></td></tr>
+<tr><td rowspan=3><b>数据流</b></td><td>使用 Azure Data Lake Storage (ADLS) Gen2 执行预处理和后处理命令</td><td>现在可以使用数据流中的 ADLS Gen2 接收器执行 Hadoop 分布式文件系统 (HDFS) 预处理和后处理命令<br><a href="connector-azure-data-lake-storage.md#pre-processing-and-post-processing-commands">了解详细信息</a></td></tr>
+<tr><td>为 Azure Integration Runtime (IR) 的现有实例编辑数据流属性</td><td>Azure Integration Runtime (IR) 已更新，允许编辑现有 IR 的数据流属性。 现在无需创建新的 Azure IR 即可修改数据流计算属性。<br><a href="concepts-integration-runtime.md">了解详细信息</a></td></tr>
+<tr><td>用于改进管道活动执行启动时间的 Azure Synapse 的 TTL 设置</td><td>Azure Synapse Analytics 已将 TTL 添加到 Azure Integration Runtime，使数据流管道活动能够在几秒钟内开始执行，从而大大缩短数据流管道的运行时间。<br><a href="control-flow-execute-data-flow-activity.md#data-flow-integration-runtime">了解详细信息</a></td></tr>
+<tr><td><b>集成运行时</b></td><td>Azure 数据工厂托管 vNet 正式发布</td><td>现在，可以将 Azure Integration Runtime 作为托管虚拟网络的一部分进行预配，并利用专用终结点安全地连接到受支持的数据存储。 数据流量通过 Azure 专用链接，这些链接提供到数据源的安全连接。 此外，它还可防止数据外泄到公共 Internet。<br><a href="managed-virtual-network-private-endpoint.md">了解详细信息</a></td></tr>
+<tr><td><b>业务流程</b></td><td>为数据管道操作和提供 SLA</td><td>新的运行时间管道运行指标与数据工厂警报相结合，使数据管道开发人员能够更好地向客户提供 SLA：你告诉我们管道应该运行多长时间，当管道运行时间超过预期时，我们会主动通知你。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/operationalize-and-provide-sla-for-data-pipelines/ba-p/2767768">了解详细信息</a></td></tr>
+</table>
 
 ## <a name="august-2021"></a>2021 年 8 月
 <br>

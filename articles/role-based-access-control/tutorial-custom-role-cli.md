@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e3743697d58d0f5b167b123df59bc5638aa60489
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6fed28798e8e2f7795600b50c0121361ce54584b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771670"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358229"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>教程：使用 Azure CLI 创建 Azure 自定义角色
 
-如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 对于本教程，你将使用 Azure CLI 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户在订阅的管理平面中查看所有内容，以及创建支持票证。
+如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 对于本教程，你将使用 Azure CLI 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色让用户可在订阅的控制平面中查看所有内容，以及创建支持票证。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -50,9 +50,9 @@ ms.locfileid: "107771670"
 
 创建自定义角色的最简单方法是从 JSON 模板着手，添加你的更改，然后创建新角色。
 
-1. 查看适用于 [Microsoft.Support 资源提供程序的](resource-provider-operations.md#microsoftsupport)操作列表。 这有助于了解可用来创建你的权限的操作。
+1. 查看适用于 [Microsoft.Support 资源提供程序](resource-provider-operations.md#microsoftsupport)的操作列表。 这有助于了解可用来创建你的权限的操作。
 
-    | Operation | 说明 |
+    | 操作 | 说明 |
     | --- | --- |
     | Microsoft.Support/register/action | 注册到支持资源提供程序 |
     | Microsoft.Support/supportTickets/read | 获取支持票证详细信息（包括状态、严重性、联系详细信息和通信），或获取各个订阅中的支持票证列表。 |
@@ -79,7 +79,7 @@ ms.locfileid: "107771670"
     }
     ```
     
-1. 将以下将操作添加到 `Actions` 属性。 这些操作允许用户查看订阅中的所有内容，以及创建支持票证。
+1. 将以下操作添加到 `Actions` 属性。 这些操作允许用户查看订阅中的所有内容，以及创建支持票证。
 
     ```
     "*/read",

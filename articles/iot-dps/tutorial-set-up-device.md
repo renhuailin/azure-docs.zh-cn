@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 78858e9d8b7aae10109e4a709100d912869f3189
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f9020c757e1a8bdfb5f244881f69f4790af2e3bf
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727841"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277170"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
@@ -145,7 +145,7 @@ ms.locfileid: "121727841"
 > [!NOTE]
 > 对于这一步，我们假定使用的是模拟设备，通过从工作站运行 SDK 示例注册应用程序的方式来完成。 不过，如果生成需要部署到物理设备的注册应用程序，则适用的概念是相同的。 
 
-1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，复制“ID 范围”值。   ID 范围由此服务生成，可保证唯一性  。 它是不可变的，可用于唯一标识注册 ID。
+1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，复制“ID 范围”值 。 ID 范围由此服务生成，可保证唯一性  。 它是不可变的，可用于唯一标识注册 ID。
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
@@ -201,7 +201,7 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 
 目前，你可能正在门户中预配设备并运行 IoT 中心服务。 若要放弃设备预配设置并且/或者将本教程系列的完成时间延后，建议将它们关闭，避免产生不必要的费用。
 
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务  。 在“所有资源”边栏选项卡的顶部单击“删除”   。  
+1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务。 在“所有资源”边栏选项卡的顶部单击“删除”   。  
 1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 在“所有资源”边栏选项卡的顶部单击“删除”   。  
 
 ## <a name="next-steps"></a>后续步骤

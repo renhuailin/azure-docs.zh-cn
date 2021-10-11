@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 090d11866f3d3605a3703fd7ca39f820bbeb7187
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91315994"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273243"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>教程：跨负载均衡的 IoT 中心预配设备
 
@@ -61,7 +61,7 @@ ms.locfileid: "91315994"
 
 链接设备预配服务和 IoT 中心，以便设备预配服务可向该中心注册设备。
 
-1. 在“所有资源”页上，单击之前创建的设备预配服务  。
+1. 在“所有资源”页上，单击之前创建的设备预配服务。
 2. 在“设备预配服务”页上，单击“链接 IoT 中心”  。
 3. 单击“添加”  。
 4. 在“将链接添加到 IoT 中心”页上，使用单选按钮指定链接的 IoT 中心位于当前订阅中还是其他订阅中  。 然后，从“IoT 中心”框中选择该 IoT 中心的名称  。

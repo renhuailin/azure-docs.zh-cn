@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 27e17c5adeb7ab5a55b4783bac86301ba4237f45
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: cf15fd428c7e487b82823586be6edfd21f6cab48
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538194"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057391"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -70,12 +70,13 @@ ms.locfileid: "123538194"
 - 不支持通配符证书。
 - 不支持使用证书指纹的客户端证书（已计划删除证书指纹）。
 - 不可导出。
+- 不可公开访问的应用服务不支持。
 - 应用服务环境 (ASE) 不支持。
 - 与流量管理器集成的根域不支持。
 - 如果证书适用于 CNAME 映射的域，则必须将 CNAME 直接映射到 `<app-name>.azurewebsites.net`。
 
 > [!NOTE]
-> 免费证书是由 DigiCert 颁发的。 对于某些顶级域，必须通过创建值为 `0 issue digicert.com` 的 [CAA 域记录](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)显式允许 DigiCert 作为证书颁发者。
+> 免费证书是由 DigiCert 颁发的。 对于某些域，必须通过创建值为 `0 issue digicert.com` 的 [CAA 域记录](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)显式允许 DigiCert 作为证书颁发者。
 > 
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>” 。
@@ -131,7 +132,7 @@ ms.locfileid: "123538194"
 | 法律条款 | 单击以确认你同意法律条款。 证书是从 GoDaddy 获取的。 |
 
 > [!NOTE]
-> 从 Azure 购买的应用服务证书由 GoDaddy 颁发。 对于某些顶级域，必须通过创建值为 `0 issue godaddy.com` 的 [CAA 域记录](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)显式允许 GoDaddy 作为证书颁发者
+> 从 Azure 购买的应用服务证书由 GoDaddy 颁发。 对于某些域，必须通过创建值为 `0 issue godaddy.com` 的 [CAA 域记录](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)显式允许 GoDaddy 作为证书颁发者
 > 
 
 ### <a name="store-in-azure-key-vault"></a>存储在 Azure Key Vault 中
@@ -331,6 +332,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 3. 删除现有证书。
 
 ### <a name="renew-an-app-service-certificate"></a>续订应用服务证书
+
+> [!NOTE]
+> 从 2021 年 9 月 23 日开始，应用服务证书将需要每 395 天进行一次域验证。 与应用服务托管证书不同，应用服务证书的域重新验证不会自动进行。
 
 > [!NOTE]
 > 续订过程要求[应用服务的已知服务主体拥有对密钥保管库的所需访问权限](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault)。 当你通过门户导入应用服务证书时，系统会为你配置此权限，不应从密钥保管库中删除它。

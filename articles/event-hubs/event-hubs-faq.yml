@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: event-hubs
   ms.date: 01/20/2021
-  ms.openlocfilehash: 57f2f7c6cbb1cb502339d7fa87509672cef69e41
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: c4f0139377d24f5a7ad18f53f50c16d6bfd19191
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252632"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129536546"
 title: 事件中心常见问题
 summary: ''
 sections:
@@ -56,11 +56,7 @@ sections:
       事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](monitor-event-hubs.md)提供哪些监视功能。
   - question: >
       Azure 事件中心将数据存储在何处？
-    answer: >
-      Azure 事件中心标准层和专用层在你选择的区域中存储元数据和数据。 为 Azure 事件中心命名空间设置异地灾难恢复时，会将元数据复制到你选择的次要区域。 因此，此服务会自动满足区域内数据驻留要求，包括[信任中心](https://azuredatacentermap.azurewebsites.net/)内指定的要求。
-
-
-      [!INCLUDE [event-hubs-connectivity](./includes/event-hubs-connectivity.md)]
+    answer: "Azure 事件中心标准层、高级层和专用层会在创建事件中心命名空间时选择的区域中存储和处理发布给它的数据。 默认情况下，客户数据保留在该区域中。 为 Azure 事件中心命名空间设置异地灾难恢复时，会将元数据复制到你选择的次要区域。 因此，此服务会自动满足区域内数据驻留要求，包括[信任中心](https://azuredatacentermap.azurewebsites.net/)内指定的要求。 \n\n[!INCLUDE [event-hubs-connectivity](./includes/event-hubs-connectivity.md)]\n"
 - name: Apache Kafka 集成
   questions:
   - question: >
@@ -215,7 +211,7 @@ sections:
       是否有与事件中心关联的配额？
     answer: >
       如需所有事件中心配额的列表，请参阅[配额](event-hubs-quotas.md)。
-- name: 故障排除
+- name: 疑难解答
   questions:
   - question: "为什么在从其他订阅中删除命名空间后无法创建该命名空间？ \n"
     answer: "从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 \n"

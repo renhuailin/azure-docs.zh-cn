@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Citrix ShareFile 的集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 Citrix ShareFile 集成
 description: 了解如何在 Azure Active Directory 和 Citrix ShareFile 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,38 +9,40 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 03f2ec7aef1faadcb72d6c7a5a058c7d06596539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f876948276d69e859d68bc2cc4a779ccdd78803
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729663"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669809"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教程：Azure Active Directory 与 Citrix ShareFile 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-citrix-sharefile"></a>教程：Azure AD SSO 与 Citrix ShareFile 集成
 
-本教程介绍如何将 Citrix ShareFile 与 Azure Active Directory (Azure AD) 集成。
-将 Citrix ShareFile 与 Azure AD 集成具有以下优势：
+本教程介绍如何将 Citrix ShareFile 与 Azure Active Directory (Azure AD) 集成。 将 Citrix ShareFile 与 Azure AD 集成后，可以：
 
-* 可以在 Azure AD 中控制谁有权访问 Citrix ShareFile。
-* 可以让用户使用其 Azure AD 帐户自动登录到 Citrix ShareFile（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Citrix ShareFile。
+* 让用户使用其 Azure AD 帐户自动登录到 Citrix ShareFile。
+* 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Citrix ShareFile 的集成，需备齐以下项目：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 Citrix ShareFile 单一登录的订阅。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Citrix ShareFile 单一登录 (SSO) 的订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Citrix ShareFile 支持 SP 发起的 SSO 
+* Citrix ShareFile 支持 SP 发起的 SSO。
 
-## <a name="adding-citrix-sharefile-from-the-gallery"></a>从库添加 Citrix ShareFile
+## <a name="add-citrix-sharefile-from-the-gallery"></a>从库添加 Citrix ShareFile
 
 要配置 Citrix ShareFile 与 Azure AD 的集成，需要从库中将 Citrix ShareFile 添加到托管 SaaS 应用列表。
 
@@ -66,36 +68,40 @@ ms.locfileid: "98729663"
     1. **[创建 Citrix ShareFile 测试用户](#create-citrix-sharefile-test-user)** - 在 Citrix ShareFile 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 Azure 门户中的“Citrix ShareFile”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作： 
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`。
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式之一键入 URL：
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+    | **Identifier** |
+    |--------|
+    | `https://<tenant-name>.sharefile.com` |
+    | `https://<tenant-name>.sharefile.com/saml/info` |
+    | `https://<tenant-name>.sharefile1.com/saml/info` |
+    | `https://<tenant-name>.sharefile1.eu/saml/info` |
+    | `https://<tenant-name>.sharefile.eu/saml/info` |
 
-    - `https://<tenant-name>.sharefile.com`
-    - `https://<tenant-name>.sharefile.com/saml/info`
-    - `https://<tenant-name>.sharefile1.com/saml/info`
-    - `https://<tenant-name>.sharefile1.eu/saml/info`
-    - `https://<tenant-name>.sharefile.eu/saml/info`
-
-    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：
+    b. 在“回复 URL”文本框中，使用以下一种模式键入 URL：
     
-    - `https://<tenant-name>.sharefile.com/saml/acs`
-    - `https://<tenant-name>.sharefile.eu/saml/<URL path>`
-    - `https://<tenant-name>.sharefile.com/saml/<URL path>`
+    | 回复 URL |
+    |-------|
+    | `https://<tenant-name>.sharefile.com/saml/acs` |
+    | `https://<tenant-name>.sharefile.eu/saml/<URL path>` |
+    | `https://<tenant-name>.sharefile.com/saml/<URL path>` |
+
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`。
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Citrix ShareFile 客户端支持团队](https://www.citrix.co.in/products/citrix-content-collaboration/support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Citrix ShareFile 客户端支持团队](https://www.citrix.co.in/products/citrix-content-collaboration/support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -201,7 +207,6 @@ ms.locfileid: "98729663"
 * 直接转到 Citrix ShareFile 登录 URL，并在其中启动登录流。
 
 * 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Citrix ShareFile 磁贴时，会重定向到 Citrix ShareFile 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

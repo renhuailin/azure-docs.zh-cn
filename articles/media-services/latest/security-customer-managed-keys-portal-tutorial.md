@@ -6,16 +6,16 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: e34649162c7a30d4ab43aa068d2c864b5c2d90e0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1a5b4c8e387085b8fee6c6e82ae765a186f43e87
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281065"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356677"
 ---
 # <a name="tutorial-use-the-azure-portal-to-use-customer-managed-keys-or-byok-with-media-services"></a>教程：使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用
 
-借助 2020-05-01 API，可将客户管理的 RSA 密钥与具有系统托管标识的 Azure 媒体服务帐户配合使用。本教程包含 Azure 门户中的步骤。
+借助 2020-05-01 或更高版本的 API，可将客户管理的 RSA 密钥与具有系统托管标识的 Azure 媒体服务帐户配合使用。本教程包含 Azure 门户中的步骤。
 
 使用的服务是：
 

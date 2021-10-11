@@ -12,12 +12,12 @@ ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: 5734d7a1f889c6e7334d0a088fecdfdcd39936c5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 60c0eefea2b141a76445837e1031f73e593520f6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964927"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235832"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 #### <a name="recommendations-for-the-connector-server"></a>有关连接器服务器的建议
 
 1. 将连接器服务器实物定位在靠近应用程序服务器的位置，以优化连接器与应用程序之间的性能。 有关详细信息，请参阅[使用 Azure Active Directory 应用程序代理优化通信流](application-proxy-network-topology.md)。
-1. 连接器服务器和 Web 应用程序服务器应属于同一个 Active Directory 域，或者跨信任域。 若要配合 Windows 集成身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 使用单一登录 (SSO)，这些服务器必须位于同一个域或信任域中。 如果连接器服务器和 Web 应用程序服务器处于不同的 Active Directory 域，则你需要使用基于资源的委派进行单一登录。 有关详细信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](./application-proxy-configure-single-sign-on-with-kcd.md)。
+1. 连接器服务器和 Web 应用程序服务器应属于同一个 Active Directory 域，或者跨信任域。 若要配合集成 Windows 身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 使用单一登录 (SSO)，这些服务器必须位于同一个域或信任域中。 如果连接器服务器和 Web 应用程序服务器处于不同的 Active Directory 域，则你需要使用基于资源的委派进行单一登录。 有关详细信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](./application-proxy-configure-single-sign-on-with-kcd.md)。
 
 > [!WARNING]
 > 如果已部署 Azure AD 密码保护代理，请不要在同一台计算机上一起安装 Azure AD 应用程序代理和 Azure AD 密码保护代理。 Azure AD 应用程序代理和 Azure AD 密码保护代理安装不同版本的 Azure AD Connect 代理更新程序服务。 当在同一台计算机上一起安装时，这些不同的版本是不兼容的。

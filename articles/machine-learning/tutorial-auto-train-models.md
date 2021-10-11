@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 通过 Azure 机器学习 Python SDK 使用 Azure 机器学习自动化 ML 训练回归模型，以便预测纽约出租车费用。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 06/11/2021
+ms.date: 10/01/2021
 ms.custom: devx-track-python, automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 6a909d5742a582776f1467f5053b217876885bf7
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1cbd1a3a43b7693c62c2955ae89b11c35f7d375e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462768"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426560"
 ---
 # <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>教程：使用 AutoML 和 Python 训练回归模型
 
@@ -95,39 +95,10 @@ green_taxi_df.head(10)
 |150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1.19|无|无|-73.94|40.71|-73.95|...|1|7.00|0.00|0.50|0.3|1.75|0.00|nan|9.55|
 |432136|2|2015-01-22 23:16:33   2015-01-22 23:20:13 1   0.65|无|无|-73.94|40.71|-73.94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nan|6.30|
 
-至此，初始数据已加载。是时候定义函数了，以根据接取日期/时间字段创建各种基于时间的特征。 这将新建月份、日期、周几和时段字段，并允许模型将基于时间的季节性考虑在内。 请对数据帧使用 `apply()` 函数，以迭代方式将 `build_time_features()` 函数应用于出租车数据中的每一行。
+删除训练或其他特征生成不需要的一些列。  自动化机器学习将自动处理基于时间的特征，例如 lpepPickupDatetime。
 
 ```python
-def build_time_features(vector):
-    pickup_datetime = vector[0]
-    month_num = pickup_datetime.month
-    day_of_month = pickup_datetime.day
-    day_of_week = pickup_datetime.weekday()
-    hour_of_day = pickup_datetime.hour
-
-    return pd.Series((month_num, day_of_month, day_of_week, hour_of_day))
-
-green_taxi_df[["month_num", "day_of_month","day_of_week", "hour_of_day"]] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
-green_taxi_df.head(10)
-```
-
-|vendorID| lpepPickupDatetime|  lpepDropoffDatetime|    passengerCount| tripDistance|   puLocationId|   doLocationId|   pickupLongitude|    pickupLatitude| dropoffLongitude    |...|   paymentType|fareAmount  |extra| mtaTax| improvementSurcharge|   tipAmount|  tollsAmount|    ehailFee|   totalAmount|tripType|month_num|day_of_month|day_of_week|hour_of_day
-|----|----|----|----|----|----|---|--|---|---|---|----|----|----|--|---|----|-----|----|----|----|----|---|----|----|
-|131969|2|2015-01-11 05:34:44|2015-01-11 05:45:03|3|4.84|无|无|-73.88|40.84|-73.94|...|2|15.00|0.50|0.50|0.3|0.00|0.00|nan|16.30|1.00|1|11|6|
-|1129817|2|2015-01-20 16:26:29|2015-01-20 16:30:26|1|0.69|无|无|-73.96|40.81|-73.96|...|2|4.50|1.00|0.50|0.3|0.00|0.00|nan|6.30|1.00|1|20|1|
-|1278620|2|2015-01-01 05:58:10|2015-01-01 06:00:55|1|0.45|无|无|-73.92|40.76|-73.91|...|2|4.00|0.00|0.50|0.3|0.00|0.00|nan|4.80|1.00|1|1|3|
-|348430|2|2015-01-17 02:20:50|2015-01-17 02:41:38|1|0.00|无|无|-73.81|40.70|-73.82|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00|1|17|5|
-1269627|1|2015-01-01 05:04:10|2015-01-01 05:06:23|1|0.50|无|无|-73.92|40.76|-73.92|...|2|4.00|0.50|0.50|0|0.00|0.00|nan|5.00|1.00|1|1|3|
-|811755|1|2015-01-04 19:57:51|2015-01-04 20:05:45|2|1.10|无|无|-73.96|40.72|-73.95|...|2|6.50|0.50|0.50|0.3|0.00|0.00|nan|7.80|1.00|1|4|6|
-|737281|1|2015-01-03 12:27:31|2015-01-03 12:33:52|1|0.90|无|无|-73.88|40.76|-73.87|...|2|6.00|0.00|0.50|0.3|0.00|0.00|nan|6.80|1.00|1|3|5|
-|113951|1|2015-01-09 23:25:51|2015-01-09 23:39:52|1|3.30|无|无|-73.96|40.72|-73.91|...|2|12.50|0.50|0.50|0.3|0.00|0.00|nan|13.80|1.00|1|9|4|
-|150436|2|2015-01-11 17:15:14|2015-01-11 17:22:57|1|1.19|无|无|-73.94|40.71|-73.95|...|1|7.00|0.00|0.50|0.3|1.75|0.00|nan|9.55|1.00|1|11|6|
-|432136|2|2015-01-22 23:16:33   2015-01-22 23:20:13 1   0.65|无|无|-73.94|40.71|-73.94|...|2|5.00|0.50|0.50|0.3|0.00|0.00|nan|6.30|1.00|1|22|3|
-
-删除训练或其他特征生成不需要的一些列。
-
-```python
-columns_to_remove = ["lpepPickupDatetime", "lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
+columns_to_remove = ["lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
                      "improvementSurcharge", "tollsAmount", "ehailFee", "tripType", "rateCodeID",
                      "storeAndFwdFlag", "paymentType", "fareAmount", "tipAmount"
                     ]

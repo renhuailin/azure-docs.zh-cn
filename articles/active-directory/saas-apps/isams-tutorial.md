@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2021
 ms.author: jeedes
-ms.openlocfilehash: d39ff00d2771a31fa4e83804745e0b2cffecb4a9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: df176704d778a2fab093a0d49b4c585d64f63fc6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802612"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230753"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>教程：Azure Active Directory 单一登录 (SSO) 与 iSAMS 的集成
 

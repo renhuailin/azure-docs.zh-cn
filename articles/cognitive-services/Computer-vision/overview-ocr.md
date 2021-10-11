@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 06/21/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3c644a62dfd48f86fd21a39af57211ff7c20ae36
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 48b1eaa6e01bf25b11ca269e0771b4fd03530bba
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112520613"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533211"
 ---
 # <a name="what-is-optical-character-recognition"></a>什么是光学字符识别？
 
@@ -45,20 +45,26 @@ ms.locfileid: "112520613"
 * 文件大小必须小于 50 MB（对于免费层，则为 6 MB），且尺寸介于 50 x 50 和 10000 x 10000 像素之间。 
 
 ## <a name="supported-languages"></a>支持的语言
-对于印刷体文本，读取 API 总共支持 73 种语言。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr)完整列表。 手写体 OCR 仅支持英语。
+Read API 支持 122 种打印文本语言和 7 种手写文本语言，包括预览语言和功能。
+
+打印文本的 OCR 包括对英语、法语、德语、意大利语、葡萄牙语、西班牙语、中文、日语、韩语和俄语（预览版）以及拉丁语和西里尔语语言的支持，并包含最新的预览版更新。
+
+手写文本的 OCR 包括对英语的支持，以及对法语、德语、意大利语、葡萄牙语、西班牙语和中文语言支持的预览。
+
+有关使用预览版语言和功能的说明，请参阅[如何指定模型版本](./Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional)。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr)完整列表。 预览版模型包含对当前 GA 版本的任何增强功能。
 
 ## <a name="key-features"></a>主要功能
 
-读取 API 包括以下功能。 
+读取 API 包括以下功能。
 
-* 73 种语言的打印文本提取
-* 英语手写文本提取
+* 122 种语言的打印文本提取
+* 7 种语言的手写文本提取
 * 具有位置和置信度分数的文本行和字词
 * 不需要语言标识
 * 支持混合语言、混合模式（打印和手写）
 * 从大型多页文档中选择页面和页面范围
-* 文本行的自然阅读顺序
-* 文本行的手写分类
+* 文本行输出的自然读取顺序选项（仅限拉丁语）
+* 文本行的手写分类（仅限拉丁语）
 * 本地部署可用的 Distroless Docker 容器
 
 了解[如何使用 OCR 功能](./vision-api-how-to-topics/call-read-api.md)。
@@ -78,4 +84,4 @@ ms.locfileid: "112520613"
 ## <a name="next-steps"></a>后续步骤
 
 - 开始使用 [OCR（读取）REST API 或客户端库快速入门](./quickstarts-sdk/client-library.md)。
-- 了解[读取 3.2 REST API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)。
+- 了解[读取 3.2 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)。

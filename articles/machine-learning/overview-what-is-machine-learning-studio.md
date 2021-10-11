@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/23/2021
 adobe-target: true
-ms.openlocfilehash: f52c27bbcd0f289028f51c6fcb1fa22ae321f8b4
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d2b3a18341c782cf848ebd8740577004340be0f8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695765"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351884"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 
@@ -56,7 +56,7 @@ ms.locfileid: "122695765"
 
 + **数据标记**
 
-    使用 [Azure 机器学习数据标签](how-to-create-labeling-projects.md)来高效地协调数据标签项目。
+    使用 Azure 机器学习数据标签高效协调[图像标签](how-to-create-image-labeling-projects.md)或[文本标签](how-to-create-text-labeling-projects.md)项目。
 
 ## <a name="manage-assets-and-resources"></a>管理资产和资源
 

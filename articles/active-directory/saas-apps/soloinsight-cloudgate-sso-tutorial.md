@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/24/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c52a14ce1115be6efcaf99a29f9ee7ca1836c71
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f21c120374a7e6a42c5bb98a1db8687f00aba548
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110452619"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778469"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>教程：将 Soloinsight-CloudGate SSO 与 Azure Active Directory 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "110452619"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Soloinsight-CloudGate SSO 支持 **SP** 发起的 SSO。
+* Soloinsight-CloudGate SSO 支持[自动用户预配](soloinsight-cloudgate-sso-provisioning-tutorial.md)。
 
 ## <a name="add-soloinsight-cloudgate-sso-from-the-gallery"></a>从库中添加 Soloinsight-CloudGate SSO
 
@@ -67,13 +68,13 @@ ms.locfileid: "110452619"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Soloinsight-CloudGate SSO”应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在 Azure 门户中的“Soloinsight-CloudGate SSO”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”页上，输入以下字段的值  ：
+1. 在“基本 SAML 配置”页上，执行以下步骤：
 
     1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.sigateway.com/login` 
 
@@ -172,6 +173,9 @@ ms.locfileid: "110452619"
 
 ![员工测试](./media/soloinsight-cloudgate-sso-tutorial/employee-test.png)
 
+> [!NOTE]
+> Soloinsight-CloudGate SSO 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./soloinsight-cloudgate-sso-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -180,7 +184,7 @@ ms.locfileid: "110452619"
 
 * 直接转到 Soloinsight-CloudGate SSO 登录 URL，从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Soloinsight-CloudGate SSO 磁贴时，将会重定向到 Soloinsight-CloudGate SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Soloinsight-CloudGate SSO 磁贴时，将会重定向到 Soloinsight-CloudGate SSO 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 

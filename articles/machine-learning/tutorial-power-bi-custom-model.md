@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 409936f98dab0fa975c1314a84096b7b46df7613
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 6e71116d79496340c306628a29504aa140e9d5f5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459399"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429901"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Tutorial:Power BI 集成 - 使用 Jupyter Notebook 创建预测模型（第 1 部分，共 2 部分）
 
-在本教程的第 1 部分中，你将使用 Jupyter Notebook 中的代码训练和部署预测机器学习模型。 你还将创建一个评分脚本，以定义模型的输入和输出架构以集成到 Power BI。  在第 2 部分中，你将使用该模型来预测 Microsoft Power BI 中的结果。
+在本教程的第 1 部分中，你将使用 Jupyter Notebook 中的代码训练和部署预测机器学习模型。 你还将创建一个评分脚本，以定义模型的输入和输出架构来集成到 Power BI。  在第 2 部分中，你将使用该模型来预测 Microsoft Power BI 中的结果。
 
 在本教程中，你将了解：
 

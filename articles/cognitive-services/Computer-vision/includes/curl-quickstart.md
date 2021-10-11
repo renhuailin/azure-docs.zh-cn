@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2f01b1d222470c49505638be64180948b6f7e046
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: ceeb1804c9332d9e0d3e11336ff92e8aacc8516c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728242"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585229"
 ---
 使用光学字符识别 REST API 读取印刷体文本和手写文本。
 
@@ -32,10 +32,10 @@ ms.locfileid: "107728242"
 * 已安装 [cURL](https://curl.haxx.se/)
 
 
+## <a name="extract-printed-and-handwritten-text"></a>提取印刷体文本和手写文本
 
-## <a name="read-printed-and-handwritten-text"></a>读取印刷体文本和手写文本
+OCR 服务可以提取图像或文档中的可见文本，并将其转换为字符流。 有关文本提取的详细信息，请参阅[光学字符识别 (OCR) 概述](../overview-ocr.md)。
 
-OCR 服务可以读取图像中的可见文本，并将其转换为字符流。 有关文本识别的详细信息，请参阅[光学字符识别 (OCR)](../overview-ocr.md) 概述。
 
 ### <a name="call-the-read-api"></a>调用读取 API
 
@@ -55,6 +55,9 @@ curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/r
 ```
 
 响应将包含一个 `Operation-Location` 标头，其值为唯一的 URL。 使用此 URL 可以查询读取操作的结果。 该 URL 在 48 小时后过期。
+
+### <a name="how-to-use-preview-features"></a>如何使用预览功能
+有关预览版语言和功能，请参阅[如何指定模型版本](../Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional)以使用最新预览版。 预览版模型包含对当前 GA 语言和功能的任何增强功能。
 
 ### <a name="get-read-results"></a>获取读取结果
 

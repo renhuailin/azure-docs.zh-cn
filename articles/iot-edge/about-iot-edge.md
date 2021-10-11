@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: d2ec1be20c7453d64b3255f9756676d06b023d38
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cf44d5ebe1ea643f588f1f63e0f5695240b1c95
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747315"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233155"
 ---
 # <a name="what-is-azure-iot-edge"></a>什么是 Azure IoT Edge
 
@@ -65,7 +65,7 @@ Azure IoT Edge 运行时在各种大型 IoT 设备上运行，因此可以通过
 
 管理数百万台 IoT 设备的软件生命周期很困难，这些设备通常具有不同的品牌且型号各异，或者地理位置分散。 为特定类型的设备创建和配置工作负载，部署到所有设备，并监视以捕获任何行为异常的设备。 这些活动无法逐一为设备进行，必须大规模操作。
 
-Azure IoT Edge 与 Azure IoT 解决方案加速器无缝集成，提供一个符合解决方案需要的控制平面。 云服务允许：
+Azure IoT Edge 与 Azure IoT Central 无缝集成，提供一个符合解决方案需要的控制平面。 云服务允许：
 
 * 创建和配置在特定类型的设备上运行的工作负荷。
 * 将工作负荷发送到一组设备。

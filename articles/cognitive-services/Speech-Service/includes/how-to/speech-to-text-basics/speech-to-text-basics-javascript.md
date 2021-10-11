@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 98ffbd2d8bed2ea59528fc7b7098d752c658792f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b652b2c7b3f1fd14e401381b5a83a5cf4a987fde
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "126056637"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378269"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -238,7 +238,7 @@ speechConfig.speechRecognitionLanguage = "it-IT";
 >
 > 应在短语数量只有几百的情况下使用短语列表功能。 如果列表较大或语言当前不受支持，则[训练自定义模型](../../../custom-speech-overview.md)可能是提高准确性的更好选择。
 >
-> 不要对自定义终结点使用“短语列表”功能。 而是训练包含短语的自定义模型。
+> 自定义终结点不支持“短语列表”功能。 请不要将其用于自定义终结点。 而是训练包含短语的自定义模型。
 
 若要使用短语列表，请首先创建一个 [`PhraseListGrammar`](/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar) 对象，然后使用 [`addPhrase`](/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar#addphrase-string-) 添加特定的单词和短语。
 

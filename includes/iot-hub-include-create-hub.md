@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: include 文件
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bfa5149cb9aea3ae8deea572abd86f5fb776e252
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 9de7b8c91b1dfdbf10b4e8f5e61e9c8cd9f68abf
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114671175"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129300179"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
@@ -70,4 +70,4 @@ ms.locfileid: "114671175"
 
     :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="查看用于创建新中心的信息。":::
 
-1. 选择“创建”，以启动新中心的部署。 创建中心时，部署将持续几分钟。 部署完成后，单击“转到资源”以打开新的中心。
+1. 选择“创建”，以启动新中心的部署。 创建中心时，部署将持续几分钟。 部署完成后，选择“转到资源”以打开新的中心。

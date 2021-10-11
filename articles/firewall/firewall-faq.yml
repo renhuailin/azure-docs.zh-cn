@@ -6,14 +6,14 @@ metadata:
   author: vhorne
   ms.service: firewall
   ms.topic: conceptual
-  ms.date: 09/01/2021
+  ms.date: 09/28/2021
   ms.author: victorh
-  ms.openlocfilehash: 9eac926802af481d012d58e358b7d40776552049
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: 92ea30808101b60f24796e973820453dcd65d72d
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123436079"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129215655"
 title: Azure 防火墙常见问题解答
 summary: ''
 sections:
@@ -180,7 +180,7 @@ sections:
     answer: >
       否。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
   - question: 通配符在应用程序规则的目标 URL 和目标 FQDN 中如何工作？
-    answer: "- **URL** - 在最右边或最左边时，星号起作用。 如果它位于左侧，则不能是 FQDN 的一部分。\n- FQDN - 星号在置于最左侧时起作用。\n\n示例：\n\n\n  |类型  |规则  |是否支持？  |正样本  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |是|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |是|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|是         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|是|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|是|`www.contoso.com/test/anything`<br>注意 - `www.contoso.com/test` 不匹配（最后一个斜杠）|\n  |TargetURL  |`www.contoso.*/test/*`|否|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|否|         |\n  |TargetURL  |`www.contoso.*`|否|         |\n  |TargetURL  |`www.*contoso.com`|否|         |\n  |TargetURL   |`www.contoso.com:8080`|否|         |\n  |TargetURL   |`*.contoso.*`|否|         |\n  |TargetFQDN    |`www.contoso.com`|是|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|是|`www.contoso.com`<br>`any.contoso.com`|\n  |TargetFQDN    |`*contoso.com`|是|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|否|         |\n  |TargetFQDN    |`*.contoso.*`|否|         |\n \n"
+    answer: "- **URL** - 在最右边或最左边时，星号起作用。 如果它位于左侧，则不能是 FQDN 的一部分。\n- FQDN - 星号在置于最左侧时起作用。\n\n示例：\n\n\n  |类型  |规则  |是否支持？  |正样本  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |是|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |是|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|是         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|是|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|是|`www.contoso.com/test/anything`<br>注意 - `www.contoso.com/test` 不匹配（最后一个斜杠）|\n  |TargetURL  |`www.contoso.*/test/*`|否|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|否|         |\n  |TargetURL  |`www.contoso.*`|否|         |\n  |TargetURL  |`www.*contoso.com`|否|         |\n  |TargetURL   |`www.contoso.com:8080`|否|         |\n  |TargetURL   |`*.contoso.*`|否|         |\n  |TargetFQDN    |`www.contoso.com`|是|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|是|`any.contoso.com`<br><br>注意：如果要专门允许 `contoso.com`，则必须在规则中包含 contoso.com。 否则，默认情况下将删除连接，因为请求将不匹配任何规则。|\n  |TargetFQDN    |`*contoso.com`|是|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|否|         |\n  |TargetFQDN    |`*.contoso.*`|否|         |\n \n"
   - question: >
       “预配状态:失败”意味着什么？
     answer: 无论何时应用配置更改，Azure 防火墙都会尝试更新其所有基础后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。
@@ -213,10 +213,10 @@ sections:
 
       ```azurepowershell
 
-      # Add a Threat Intelligence allow list to an Existing Azure Firewall
+      # Add a Threat Intelligence allowlist to an Existing Azure Firewall
 
 
-      # Create the allow list with both FQDN and IPAddresses
+      # Create the allowlist with both FQDN and IPAddresses
 
       $fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
 

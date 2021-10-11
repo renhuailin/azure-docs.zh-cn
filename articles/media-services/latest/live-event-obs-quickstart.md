@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 03/20/2021
-ms.openlocfilehash: 0e425cddea1adaec8bfb8f0055b55bb0c45fb168
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 43f1602b22a761461f84761ed3a3806397011ae2
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123060"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389507"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>使用 OBS 创建 Azure 媒体服务实时传送流
 
@@ -63,7 +63,7 @@ ms.locfileid: "106123060"
 
    ![“直播活动名称”框。](media/live-events-obs-quickstart/live-event-name.png)
 1. 在“说明”框中输入事件的可选说明。
-1. 选择“直通 – 无云编码”选项。
+1. 选择基本“直通 – 无云编码”选项。
 
    ![云编码选项。](media/live-events-obs-quickstart/cloud-encoding.png)
 1. 选择“RTMP”选项。
@@ -151,7 +151,7 @@ OBS 启动时有一个默认场景，但未选择任何输入。
 
 #### <a name="x264-encoder-settings"></a>X264 编码器设置
 
-1. 如果已选择 **X264** 编码选项，请选中“重新缩放输出”框。 如果在媒体服务中使用“高级直播活动”，请选择 1920x1080，如果在使用标准 (720P) 直播活动，则选择 1280x720。  如果使用的是直通直播活动，则可以选择任何可用的分辨率。
+1. 如果已选择 **X264** 编码选项，请选中“重新缩放输出”框。 如果在媒体服务中使用“高级直播活动”，请选择 1920x1080，如果在使用标准 (720P) 直播活动，则选择 1280x720。  如果使用的是基本或标准直通直播活动，则可以选择任何可用的分辨率。
 
 1. 将“比特率”设置为 1500 kbps 到 4000 kbps 之间的任意值。 如果以 720P 使用标准编码直播活动，建议使用 2500 Kbps。 如果使用1080P 高级直播活动，建议使用 4000 Kbps。 可能需要根据可用的 CPU 能力和网络的带宽调整比特率，以实现所需的质量设置。
 
@@ -165,7 +165,7 @@ OBS 启动时有一个默认场景，但未选择任何输入。
 
 #### <a name="nvidia-nvenc-encoder-settings"></a>Nvidia NVENC 编码器设置
 
-1. 如果已选择 **NVENC** GPU 编码选项，请选中“重新缩放输出”框，然后，如果在媒体服务中使用高级直播活动，选择 1920x1080，如果使用标准 (720p) 直播活动，选择 1280x720。 如果使用的是直通直播活动，则可以选择任何可用的分辨率。
+1. 如果已选择 **NVENC** GPU 编码选项，请选中“重新缩放输出”框，然后，如果在媒体服务中使用高级直播活动，选择 1920x1080，如果使用标准 (720p) 直播活动，选择 1280x720。 如果使用的是基本或标准直通直播活动，则可以选择任何可用的分辨率。
 
 1. 对于恒定比特率控制，将“比率控制”设置为“CBR”。
 
@@ -189,7 +189,7 @@ OBS 启动时有一个默认场景，但未选择任何输入。
 
 #### <a name="intel-quicksync-encoder-settings"></a>Intel QuickSync 编码器设置
 
-1. 如果已选择 Intel **QuickSync** GPU 编码选项，请选中“重新缩放输出”框，然后，如果在媒体服务中使用高级直播活动，选择 1920x1080，如果使用标准 (720p) 直播活动，选择 1280x720。 如果使用的是直通直播活动，则可以选择任何可用的分辨率。
+1. 如果已选择 Intel **QuickSync** GPU 编码选项，请选中“重新缩放输出”框，然后，如果在媒体服务中使用高级直播活动，选择 1920x1080，如果使用标准 (720p) 直播活动，选择 1280x720。 如果使用的是基本或标准直通直播活动，则可以选择任何可用的分辨率。
 
 1. 将“目标使用”设置为“平衡”，或根据 CPU 和 GPU 组合负载，按需调整。 根据需要进行调整并进行试验，以在硬件能够产生的质量下实现 80% 的平均最大 CPU 利用率。 如果使用的硬件受到更多约束，请以“快速”进行试验，如果出现性能问题，则降为“非常快速”。
 
@@ -250,7 +250,7 @@ OBS 启动时有一个默认场景，但未选择任何输入。
 
    ![“定位器名称”框。](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. 暂时不要理会此屏幕上的其他任何设置。
-1. 选择“创建”。
+1. 选择“创建”  。
 
 ## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>使用 Azure Media Player 播放输出的广播
 
@@ -288,7 +288,7 @@ OBS 启动时有一个默认场景，但未选择任何输入。
 
 1. 从媒体服务列表中选择“流式处理终结点”。
 2. 选择前面启动的默认流式处理终结点。 此步骤会打开该终结点的页面。
-3. 选择“停止”。
+3. 选择“停止”  。
 
 > [!TIP]
 > 如果你不想要保留来自此事件的资产，请务必将其删除，以免产生存储费用。

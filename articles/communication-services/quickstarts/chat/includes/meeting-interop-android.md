@@ -5,12 +5,12 @@ ms.author: agiurg
 ms.date: 07/20/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 07a8af0c389b0b5c2216f45e0a3fb0ba053e5690
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: bb5ccb022b4bfeb90f7c50f27ce2a76d43386571
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442873"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378415"
 ---
 本快速入门介绍如何使用适用于 Android 的 Azure 通信服务聊天 SDK 在 Teams 会议中聊天。
 
@@ -45,7 +45,7 @@ ms.locfileid: "114442873"
 
 ## <a name="add-the-teams-ui-layout"></a>添加 Teams UI 布局
 
-将 activity_main.xml 中的代码替换为以下代码片段。 此操作会添加用于线程 id 和发送消息的输入，以及用于发送类型化消息和基本聊天布局的按钮。
+将 activity_main.xml 中的代码替换为以下代码片段。 此操作会添加用于线程 ID 和发送消息的输入，以及用于发送类型化消息和基本聊天布局的按钮。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -390,7 +390,9 @@ import com.azure.android.core.util.AsyncStreamHandler;
 
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>获取通信服务用户的 Teams 会议聊天线程
 
-可以使用图形 API 来检索 Teams 会议链接和聊天，详情请参见[图形文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)。 通信服务呼叫 SDK 接受完整的 Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在具有[图像 API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) 的 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)下访问，也可获取 `threadId`。 响应将获得包含 `threadID` 的 `chatInfo` 对象。 
+可以使用图形 API 来检索 Teams 会议详细信息，详情请参阅[图形文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)。 通信服务呼叫 SDK 接受完整的 Teams 会议链接或会议 ID。 它们将作为 `onlineMeeting` 资源的一部分返回，可在 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)下访问
+
+使用[图形 API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)，还可以获取 `threadID`。 响应将获得包含 `threadID` 的 `chatInfo` 对象。
 
 还可以从 Teams 会议邀请本身的“加入会议”URL 中获取所需的会议信息和线程 ID。
 Teams 会议链接如下所示：`https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here`。 `threadId` 将为 `meeting_chat_thread_id` 在链接中的位置。 确保在使用 `meeting_chat_thread_id` 之前未对其进行转义。 该值应采用以下格式：`19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2`

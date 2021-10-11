@@ -1,15 +1,15 @@
 ---
 title: 创建 Bicep 文件 - Visual Studio Code
 description: 使用 Visual Studio Code 和适用于 Bicep 文件的 Bicep 扩展来部署 Azure 资源
-ms.date: 07/30/2021
+ms.date: 10/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f76d18c756855798651e0c129fd4f0caec15984
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 95e7a601da5c8a9976d2341c2964df0f4d9718d0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750147"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354947"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Bicep 文件
 
@@ -30,6 +30,9 @@ ms.locfileid: "121750147"
 在 main.bicep 中，键入 vnet。 从列表中选择“res-vnet”，然后按 Tab 或 Enter 键。
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/add-snippet.png" alt-text="添加用于创建虚拟网络的代码片段":::
+
+> [!TIP]
+> 如果在 VS Code 中没有看到这些 Intellisense 选项，请确保已按照[先决条件](#prerequisites)中的规定安装了 Bicep 扩展。 如果已安装该扩展，请在打开 Bicep 文件后给 Bicep 语言服务一些时间来启动。 它通常启动很快，但在启动之前不会提供 Intellisense 选项。 右下角的通知指示服务正在启动。 当该通知消失时，服务正在运行。
 
 Bicep 文件现在包含以下代码：
 

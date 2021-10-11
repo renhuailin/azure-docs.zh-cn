@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3b40a285b934da2a193d1d4c6819f69e6b0ba69c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0d7919060306ceec06062bdcd1a212789e740bd5
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610344"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458257"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>教程：使用 Azure PowerShell 配置 IoT 中心消息路由
 
@@ -25,7 +25,7 @@ ms.locfileid: "128610344"
 
 在本教程的第二部分，我们将下载并运行一个 Visual Studio 应用程序，以将消息发送到 IoT 中心。 下载内容的某个文件夹中包含 Azure 资源管理器模板和参数文件，以及 Azure CLI 和 PowerShell 脚本。 
 
-若要查看已完成的脚本，请下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Azure CLI 脚本位于 /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ 中，其文件名为 **iothub_routing_psh.ps1**。
+若要查看已完成的脚本，请下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)。 解压 main.zip 文件。 Azure CLI 脚本位于 /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ 中，其文件名为 **iothub_routing_psh.ps1**。
 
 ## <a name="create-your-resources"></a>创建资源
 

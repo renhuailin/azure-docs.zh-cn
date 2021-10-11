@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: thwimmer
-ms.openlocfilehash: f08ee68a3ee51e7d42b1939cf3e4ecee03808f93
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 16f9124abf34892f00ebb1dadde229ef6d140e55
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324545"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355152"
 ---
 # <a name="tutorial-configure-smallstep-ssh-for-automatic-user-provisioning"></a>教程：为 Smallstep SSH 配置自动用户预配
 
@@ -54,7 +54,7 @@ ms.locfileid: "122324545"
 
 2. 导航到“用户”选项卡并选择“Azure AD”作为标识提供者 。
 
-3. 在下一页上，提供“Azure AD 租户 ID”和“域白名单”以配置 OIDC 。
+3. 在下一页上，提供“Azure AD 租户 ID”和允许列表以配置 OIDC。
 
 4. 在“SCIM 详细信息”下，复制并保存 SCIM“租户 URL”和“机密令牌” 。 在 Azure 门户的 Smallstep SSH 应用程序的“预配”选项卡中，将这些值输入“租户 URL”和“机密令牌”字段 。
 

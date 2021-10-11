@@ -2,16 +2,16 @@
 title: 教程 - 创建和部署模板
 description: 创建第一个 Azure 资源管理器模板（ARM 模板）。 本教程将介绍模板文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 12/17/2020
+ms.date: 10/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83a043084af78d382e06b3f860addb986423e9cb
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 7263a72f19d9dfea8044e55451a52ebdec29ec7d
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187120"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390228"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教程：创建和部署第一个 ARM 模板
 
@@ -100,18 +100,18 @@ az login
 
 ---
 
-如果你有多个 Azure 订阅，请选择要使用的订阅。 将 `[SubscriptionID/SubscriptionName]` 和方括号 `[]` 替换为你的订阅信息：
+如果你有多个 Azure 订阅，请选择要使用的订阅。 使用你的订阅名称替换 `SubscriptionName`。 也可以使用订阅 ID 替换订阅名称。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Set-AzContext [SubscriptionID/SubscriptionName]
+Set-AzContext SubscriptionName
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az account set --subscription [SubscriptionID/SubscriptionName]
+az account set --subscription SubscriptionName
 ```
 
 ---

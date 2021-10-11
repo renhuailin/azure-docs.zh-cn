@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: 0dc539a5f649ed4a894e92e579fdbd15d4d2b4be
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 410b0926faf2e5c6b8885c91cdf08343c3000469
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635786"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362318"
 ---
 # <a name="calling-sdk-overview"></a>呼叫 SDK 概述
 
@@ -88,8 +88,8 @@ ms.locfileid: "128635786"
 
 | 限制                                                         | Web                         | Windows/Android/iOS        |
 | ------------------------------------------------------------- | --------------------------- | -------------------------- |
-| **# 个可同时发送的传出数据流**     | 1 个视频或 1 个屏幕共享 | 1 个视频 + 1 个屏幕共享 |
-| **# 个可同时呈现的传入数据流** | 1 个视频或 1 个屏幕共享 | 6 个视频 + 1 个屏幕共享 |
+| **最多 # 个可同时发送的传出本地数据流**     | 1 个视频或 1 个屏幕共享 | 1 个视频 + 1 个屏幕共享 |
+| **最多 # 个可同时呈现的传入远程数据流** | 4 个视频 + 1 个屏幕共享 | 6 个视频 + 1 个屏幕共享 |
 
 虽然“呼叫 SDK”不会强制执行这些限制，但如果超出这些限制，用户可能会遇到性能降低的情况。
 
@@ -119,7 +119,6 @@ ms.locfileid: "128635786"
 | Windows      | ✔️      | ❌      | ✔️           |
 | Ubuntu/Linux | ✔️      | ❌      | ❌           |    
 
-* Safari 不支持 1:1 呼叫。
 * iOS 或 Android 不支持传出屏幕共享。
 * [Safari 上的 iOS 应用无法枚举/选择麦克风和扬声器设备](../known-issues.md#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados)（例如，蓝牙）；这是 OS 的限制，且始终只有一个设备，OS 控制默认设备选择。
 

@@ -3,17 +3,20 @@ title: Azure 服务总线主题和订阅入门
 description: 本快速入门介绍如何使用 azure-messaging-servicebus 包将消息发送到 Azure 服务总线主题。
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 06/29/2021
+ms.date: 09/16/2021
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 05772a7e4fbb2717dd34cbdaf82ae47162d4f149
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 330a69d437ffb58cb0e47ab6f9fe6a76fda9b8a6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451720"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533521"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-its-subscriptions-net"></a>向 Azure 服务总线主题发送消息，并从其订阅接收消息 (.NET)
 本快速入门介绍如何使用 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET 库向服务总线主题发送消息和接收有关该主题订阅的消息。
+
+> [!NOTE]
+> 可以在 [GitHub 上用于 .NET 的 Azure SDK 存储库中](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)找到更多 Azure 服务总线的 .NET 示例。
 
 ## <a name="prerequisites"></a>先决条件
 如果你是首次使用该服务，请在使用本快速入门之前先参阅[服务总线概述](service-bus-messaging-overview.md)。 
@@ -170,8 +173,7 @@ ms.locfileid: "123451720"
     ```
 
 ### <a name="add-code-to-receive-messages-from-the-subscription"></a>添加代码以从订阅接收消息
-1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤。
-    下面是代码中的重要步骤：
+1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤：
     1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
     1. 对 `ServiceBusClient` 对象调用 [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) 方法，从而为指定的“服务总线”队列创建 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) 对象。 
     1. 为 `ServiceBusProcessor` 对象的 [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) 和 [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) 事件指定处理程序。 

@@ -2,13 +2,13 @@
 title: 事件中心 - 使用 Azure 门户捕获流式处理事件
 description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中心流式处理的事件。
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: b603af17ca4e46b8004b7b2550cddd87164da157
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.date: 09/16/2021
+ms.openlocfilehash: e11eb8aedce9d0ae447e7b6908d17e4c70671f7d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253633"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273037"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 
@@ -81,18 +81,16 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流数
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 
-![配置 Azure Blob 存储][2]
+:::image type="content" source="./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png" alt-text="为现有事件中心配置对 Azure 存储的捕获。":::
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
-
-![配置 Azure Data Lake Storage Gen 2](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
+除了将从 Azure Data Lake Storage Gen 2 帐户中选择一个容器之外，（对 Azure Blob 存储来说）其设置与上述设置相同。 
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 
 
 ![配置 Azure Data Lake Storage][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
-[2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 

@@ -11,27 +11,29 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f560b5d288c1beea639476600a9a40fda19b8044
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 7dc02eb3c74208cf0d438640434430c7c04aeb9c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613397"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353645"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为单页应用设置登录
 
-Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用程序、业务和客户。 应用程序可以使用 Azure AD B2C 通过开放式标准协议对社交帐户和企业帐户进行身份验证。 在本教程中，请使用单页应用程序通过社交标识提供者来登录，并调用受 Azure AD B2C 保护的 Web API。
+Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用程序、业务和客户。 应用程序可以使用 Azure AD B2C 通过开放式标准协议对社交帐户和企业帐户进行身份验证。 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+在本教程中，请使用单页应用程序通过社交标识提供者来登录，并调用受 Azure AD B2C 保护的 Web API。
+
+<!--[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] -->
 
 ## <a name="prerequisites"></a>先决条件
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google 或 Microsoft 中的社交帐户
-- GitHub 中的代码示例：[ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
+- GitHub 中的代码示例：[ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)：
 
-    可以[下载 zip 存档](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)或克隆存储库：
+    可以[下载 zip 存档](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)或克隆存储库
 
     ```console
     git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
@@ -42,7 +44,8 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 1. 启动服务器，方法是在 Node.js 命令提示符处运行以下命令：
 
     ```console
-    npm install && npm update
+    npm install
+    npm update
     npm start
     ```
 
@@ -75,19 +78,16 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 
 示例单页应用程序在对受保护的 Web API 资源的请求中包括访问令牌。
 
-## <a name="clean-up-resources"></a>清理资源
+<!-- ## Clean up resources
 
-如果打算尝试其他 Azure AD B2C 快速入门或教程，可以使用 Azure AD B2C 租户。 可以在不再需要时[删除 Azure AD B2C 租户](faq.yml#how-do-i-delete-my-azure-ad-b2c-tenant-)。
+You can use your Azure AD B2C tenant if you plan to try other Azure AD B2C quickstarts or tutorials. When no longer needed, you can [delete your Azure AD B2C tenant](faq.yml#how-do-i-delete-my-azure-ad-b2c-tenant-).-->
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门使用示例单页应用程序执行了以下操作：
+<!---In this quickstart, you used a sample single-page application to:
 
-- 使用社交标识提供者登录
-- 创建 Azure AD B2C 用户帐户（在登录时自动创建）
-- 调用受 Azure AD B2C 保护的 Web API
+- Sign in with a social identity provider
+- Create an Azure AD B2C user account (created automatically at sign-in)
+- Call a web API protected by Azure AD B2C -->
 
-通过创建自己的 Azure AD B2C 租户来完成入门。
-
-> [!div class="nextstepaction"]
-> [在 Azure 门户中创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)
+- 开始[在 Azure 门户中创建自己的 Azure Active Directory B2C 租户](tutorial-create-tenant.md)

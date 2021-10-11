@@ -2,14 +2,14 @@
 title: Azure 事件中心 - 将实时事件中的数据异常可视化
 description: 教程：将发送到 Microsoft Azure 事件中心的实时事件中的数据异常可视化
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/29/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dc498398a164cb559cb243e46699f39a21ab3d50
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e89cf8f501576b18144e28b8b042948cdcb408ee
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698536"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276453"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 
@@ -25,127 +25,14 @@ ms.locfileid: "110698536"
 > * 配置流分析作业以处理这些交易
 > * 配置 Power BI 可视化以显示结果
 
-需要一个 Azure 订阅才能完成此教程。 如果没有订阅，请在开始之前[创建一个免费帐户][]。
+## <a name="prerequisites"></a>先决条件
+在开始之前，请确保已完成以下步骤：
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
-- 安装 [Visual Studio](https://www.visualstudio.com/)。 
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+- [创建事件中心命名空间，并在该命名空间中创建事件中心](event-hubs-create.md)。
+- 请遵循[获取事件中心连接字符串](event-hubs-get-connection-string.md)中的说明进行操作。 记下事件中心命名空间的连接字符串和事件中心的名称。 
+- 安装 [Visual Studio](https://www.visualstudio.com/)。 使用 Visual Studio 解决方案运行应用，以生成测试事件数据并将其发送到事件中心。 
 - 需要使用一个 Power BI 帐户来分析流分析作业的输出。 可以[免费试用 Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-resources"></a>设置资源
-
-在本教程中，需要一个事件中心命名空间和一个事件中心。 可以使用 Azure CLI 或 Azure PowerShell 创建这些资源。 为所有资源使用相同的资源组和位置。 在本教程结束后，可以通过删除资源组一次性删除所有资源。
-
-以下部分介绍如何执行上述步骤。 遵照适用于 CLI 或 PowerShell 的说明执行以下步骤： 
-
-1. 创建[资源组](../azure-resource-manager/management/overview.md)。 
-
-2. 创建事件中心命名空间。 
-
-3. 创建事件中心。
-
-> [!NOTE]
-> 本本教程稍后需要用到每个脚本中设置的变量。 这些变量包括资源组名称 ($resourceGroup)、事件中心命名空间 ( **$eventHubNamespace**) 和事件中心名称 ( **$eventHubName**)。 本文稍后会使用美元符号 ($) 前缀来引用这些变量，让你知道脚本中已设置这些变量。
-
-<!-- some day they will approve the tab control; 
-  When that happens, put CLI and PSH in tabs. -->
-
-### <a name="set-up-your-resources-using-azure-cli"></a>使用 Azure CLI 设置资源
-
-复制此脚本并将其粘贴到 Cloud Shell。 在已登录的情况下，该脚本会逐行运行。
-
-必须全局唯一的变量已使用 `$RANDOM` 串联起来。 运行脚本时，如果已设置相应的变量，则会生成一个随机数字字符串，并将其串联到固定字符串的末尾，使其保持唯一。
-
-```azurecli-interactive
-# Set the values for location and resource group name.
-location=westus
-resourceGroup=ContosoResourcesEH
-
-# Create the resource group to be used
-#   for all the resources for this tutorial.
-az group create --name $resourceGroup \
-    --location $location
-
-# The Event Hubs namespace name must be globally unique, so add a random number to the end.
-eventHubNamespace=ContosoEHNamespace$RANDOM
-echo "Event Hub Namespace = " $eventHubNamespace
-
-# Create the Event Hubs namespace.
-az eventhubs namespace create --resource-group $resourceGroup \
-   --name $eventHubNamespace \
-   --location $location \
-   --sku Standard
-
-# The event hub name must be globally unique, so add a random number to the end.
-eventHubName=ContosoEHhub$RANDOM
-echo "event hub name = " $eventHubName
-
-# Create the event hub.
-az eventhubs eventhub create --resource-group $resourceGroup \
-    --namespace-name $eventHubNamespace \
-    --name $eventHubName \
-    --message-retention 3 \
-    --partition-count 2
-
-# Get the connection string that authenticates the app with the Event Hubs service.
-connectionString=$(az eventhubs namespace authorization-rule keys list \
-   --resource-group $resourceGroup \
-   --namespace-name $eventHubNamespace \
-   --name RootManageSharedAccessKey \
-   --query primaryConnectionString \
-   --output tsv)
-echo "Connection string = " $connectionString 
-```
-
-### <a name="set-up-your-resources-using-azure-powershell"></a>使用 Azure PowerShell 设置资源
-
-复制此脚本并将其粘贴到 Cloud Shell。 在已登录的情况下，该脚本会逐行运行。
-
-必须全局唯一的变量已使用 `$(Get-Random)` 串联起来。 运行脚本时，如果已设置相应的变量，则会生成一个随机数字字符串，并将其串联到固定字符串的末尾，使其保持唯一。
-
-```azurepowershell-interactive
-# Log in to Azure account.
-Login-AzAccount
-
-# Set the values for the location and resource group.
-$location = "West US"
-$resourceGroup = "ContosoResourcesEH"
-
-# Create the resource group to be used  
-#   for all resources for this tutorial.
-New-AzResourceGroup -Name $resourceGroup -Location $location
-
-# The Event Hubs namespace name must be globally unique, so add a random number to the end.
-$eventHubNamespace = "contosoEHNamespace$(Get-Random)"
-Write-Host "Event Hub Namespace is " $eventHubNamespace
-
-# The event hub name must be globally unique, so add a random number to the end.
-$eventHubName = "contosoEHhub$(Get-Random)"
-Write-Host "Event hub Name is " $eventHubName
-
-# Create the Event Hubs namespace.
-New-AzEventHubNamespace -ResourceGroupName $resourceGroup `
-     -NamespaceName $eventHubNamespace `
-     -Location $location
-
-# Create the event hub.
-$yourEventHub = New-AzEventHub -ResourceGroupName $resourceGroup `
-    -NamespaceName $eventHubNamespace `
-    -Name $eventHubName `
-    -MessageRetentionInDays 3 `
-    -PartitionCount 2
-
-# Get the event hub key, and retrieve the connection string from that object.
-# You need this to run the app that sends test messages to the event hub.
-$eventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup `
-    -Namespace $eventHubNamespace `
-    -AuthorizationRuleName RootManageSharedAccessKey
-
-# Save this value somewhere local for later use.
-Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
-```
 
 ## <a name="run-app-to-produce-test-event-data"></a>运行应用以生成测试事件数据
 
@@ -175,7 +62,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    **资源组**：使用事件中心所用的同一资源组 (**ContosoResourcesEH**)。
 
-   **位置**：使用设置脚本中所用的相同位置（“美国西部”）。 
+   **位置**：试用之前使用的同一 Azure 区域。
 
    ![显示如何创建新的 Azure 流分析作业的屏幕截图。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -187,35 +74,28 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 流分析作业的输入是来自事件中心的信用卡交易。
 
-> [!NOTE]
-> 以美元符号 ($) 开头的变量的值已在前面部分所述的启动脚本中设置。 在此处指定这些字段时，必须使用相同的值，即事件中心命名空间和事件中心名称。
 
-1. 在“作业拓扑”下  ，单击“输入”  。
-
-2. 在“输入”窗格中，单击“添加流输入”并选择“事件中心”   。 在出现的屏幕上填写以下字段：
+1. 在左侧菜单的“作业拓扑”部分中，选择“输入” 。
+2. 在“输入”窗格中，单击“添加流输入”并选择“事件中心”  。 在出现的屏幕上填写以下字段：
 
    **输入别名**：使用 **contosoinputs**。 此字段是定义数据查询时使用的输入流的名称。
 
-   **订阅**：选择订阅。
+   **订阅**：选择 Azure 订阅。
 
-   **事件中心命名空间**：选择事件中心命名空间 ($**eventHubNamespace**)。 
+   **事件中心命名空间**：选择事件中心命名空间。 
 
-   **事件中心名称**：单击“使用现有项”  并选择事件中心 ($**eventHubName**)。
-
-   **事件中心策略名称**：选择“RootManageSharedAccessKey”。 
+   **事件中心名称**：单击“使用现有项”并选择你的事件中心。
 
    **事件中心使用者组**：将此字段留空以使用默认的使用者组。
 
-   在剩余字段中使用默认值。
+   其余字段接受默认值。
 
    ![显示如何将输入流添加到流分析作业的屏幕截图。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
-
 5. 单击“ **保存**”。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>将输出添加到流分析作业
 
-1. 在“作业拓扑”下  ，单击“输出”  。 此字段是定义数据查询时使用的输出流的名称。
-
+1. 在左侧菜单的“作业拓扑”部分中，选择“输出” 。 此字段是定义数据查询时使用的输出流的名称。
 2. 在“输出”窗格中，单击“添加”并选择“Power BI”    。 在出现的屏幕上填写以下字段：
 
    **输出别名**：使用 **contosooutputs**。 此字段是输出的唯一别名。 
@@ -227,11 +107,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
    在剩余字段中使用默认值。
 
    ![显示如何为流分析作业设置输出的屏幕截图。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-outputs.png)
-
 3. 单击“授权”，并登录到 Power BI 帐户  。
-
 4. 在剩余字段中使用默认值。
-
 5. 单击“ **保存**”。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
@@ -348,21 +225,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 登录到 Power BI 帐户。 转到“我的工作区”。  在仪表板名称所在的行中，单击垃圾桶图标。 接下来，转到“数据集”并单击垃圾桶图标以删除相应的数据集 (**contosoehdataset**)。 
 
-### <a name="clean-up-resources-using-azure-cli"></a>使用 Azure CLI 清理资源
-
-若要删除资源组，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令。
-
-```azurecli-interactive
-az group delete --name $resourceGroup
-```
-
-### <a name="clean-up-resources-using-powershell"></a>使用 PowerShell 清理资源
-
-若要删除资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令。
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name $resourceGroup
-```
+### <a name="clean-up-resources"></a>清理资源
+删除包含你在本教程中创建的所有资源的资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -379,4 +243,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 > [!div class="nextstepaction"]
 > [在 .NET Standard 中开始将消息发送到 Azure 事件中心](event-hubs-dotnet-standard-getstarted-send.md)
 
-[创建一个免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[create a free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

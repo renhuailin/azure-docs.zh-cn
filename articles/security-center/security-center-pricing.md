@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 06/10/2021
-ms.openlocfilehash: 52ecc8a66dfa13747daf2b4b7fd227ef7ab5a3b2
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.date: 09/19/2021
+ms.openlocfilehash: 3e76d298d30d2e191edf218e85a8fc64758f8359
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237158"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560781"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure 安全中心免费版与已启用 Azure Defender
 Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，我们会自动开始收取使用费用。
@@ -31,6 +31,7 @@ Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，
     - **虚拟机和容器注册表的漏洞扫描** - 轻松将扫描程序部署到所有虚拟机，这是业界最先进的漏洞管理解决方案。 直接在安全中心内查看、调查和修复扫描到的漏洞。 
     - 混合安全 – 在所有本地和云工作负载上获得统一的安全视图。 应用安全策略并持续评估混合云工作负载的安全性，确保符合安全标准。 收集、搜索并分析来自多个源（包括防火墙和其他合作伙伴解决方案）的安全数据。
     - **威胁防护警报** - 高级行为分析和 Microsoft Intelligent Security Graph 针对不断演变的网络攻击提供防护边界。 内置行为分析和机器学习可识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
+    - **跟踪是否符合一系列标准** - 安全中心持续评估混合云环境，根据 [Azure 安全基准](/security/benchmark/azure/introduction)中的控制措施和最佳做法来分析风险因素。 启用 Azure Defender 后，可以根据组织的需要应用一系列其他行业标准、监管标准和基准。 添加标准并在[监管合规性仪表板](update-regulatory-compliance-packages.md)中跟踪是否符合这些标准。
     - **访问和应用程序控件** (AAC) - 通过应用适合特定工作负载且由机器学习提供支持的建议来创建允许和拒绝列表，阻止恶意软件和其他不需要的应用程序。 实时减小网络受攻击面，控制对 Azure VM 上的管理端口的访问。 AAC 显著降低了遭受暴力攻击和其他网络攻击的风险。
     - **容器安全功能** - 获得在容器化环境中进行漏洞管理和实时威胁保护的好处。 启用适用于容器注册表的 Azure Defender 时，等待全部功能启用完毕可能需要最多 12 个小时。 根据推送到已连接注册表的唯一容器映像的数量收费。 一个映像经过一次扫描后，不会再对其收取相关费用，除非再次对其进行了修改和推送。
     - 适用于连接到 Azure 环境的资源的广度威胁防护 - Azure Defender 包括对所有资源通用的 Azure 服务的 Azure 本机广度威胁防护：Azure 资源管理器、Azure DNS、Azure 网络层和 Azure Key Vault。 Azure Defender 对 Azure 管理层和 Azure DNS 层具有独特的可见性，因此可以保护连接到这些层的云资源。
@@ -103,10 +104,10 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 | 正在解除分配 | 过渡性状态。 完成后，VM 会显示为“已解除分配”。                                                                             | 不计费            |
 | 已解除分配  | VM 已成功停止并从主机中删除。                                                                                  | 不计费            |
 
-:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="显示已解除分配的虚拟机的 Azure 虚拟机。":::
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="显示已解除分配的计算机的 Azure 虚拟机。":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>是否需要为未安装 Log Analytics 代理的计算机付费？
-是的。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，即使未安装 Log Analytics 代理，该订阅中的计算机也会受到一系列保护。
+是的。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，即使未安装 Log Analytics 代理，该订阅中的计算机也会受到一系列保护。 这适用于 Azure 虚拟机、Azure 虚拟机规模集实例和已启用 Azure Arc 的服务器。
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>如果 Log Analytics 代理向多个工作区报告，是否需要重复付费？ 
 是的。 如果已将 Log Analytics 代理配置为将数据发送到两个或更多个不同的 Log Analytics 工作区（多宿主），则需为每个安装了“安全”或“反恶意软件”解决方案的工作区付费。 

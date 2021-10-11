@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 05/17/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 9126b3a915f9d457b51a69a4cef9a79003597c31
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3b731b83264802884bba01ed3c32db6152d0a4f9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091120"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356134"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>什么是 Azure 基于角色的访问控制 (Azure RBAC)？
 
@@ -48,7 +48,7 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 ### <a name="role-definition"></a>角色定义
 
-角色定义是权限的集合。 它通常直接称为“角色”。 角色定义列出可以执行的操作，例如读取、写入和删除。 角色可以是高级别的（例如所有者），也可以是特定的（例如虚拟机读取者）。
+角色定义是权限的集合。 它通常直接称为“角色”。 角色定义列出可执行的操作，例如读取、写入和删除。 角色可以是高级别的（例如所有者），也可以是特定的（例如虚拟机读取者）。
 
 ![示意图显示了角色分配的角色定义示例](./media/shared/rbac-role-definition.png)
 
@@ -58,7 +58,7 @@ Azure 包含多个可用的[内置角色](built-in-roles.md)。 例如，[虚拟
 
 >[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
-Azure 具有数据操作，通过这些操作可以授予对对象内数据的访问权限。 例如，如果某个用户对某个存储帐户拥有读取数据的访问权限，则该用户可以读取该存储帐户中的 Blob 或消息。
+Azure 具有数据操作，使你能够授予对对象内数据的访问权限。 例如，如果某个用户对某个存储帐户拥有读取数据的访问权限，则该用户可以读取该存储帐户中的 Blob 或消息。
 
 有关详细信息，请参阅[了解 Azure 角色定义](role-definitions.md)。
 

@@ -1,26 +1,26 @@
 ---
-title: 包含文件
-description: 包含文件
+title: include 文件
+description: include 文件
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 4715c007ea9c86b623eab63b83cb83514cf16866
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b4ff1f14ac628f28e67f4b619983760d06f60d8b
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114712922"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516739"
 ---
-[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples)
+[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/device/PnpDeviceSamples)
 
-本快速入门介绍一种基本的 Azure IoT 应用程序开发工作流。 首先，创建适用于托管设备的 Azure IoT Central 应用程序。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到 IoT Central，并发送遥测数据。
+本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 首先，创建适用于托管设备的 Azure IoT Central 应用程序。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到 IoT Central，并发送遥测数据。
 
 ## <a name="prerequisites"></a>先决条件
 - [Visual Studio（Community、Professional 或 Enterprise 版）2019](https://visualstudio.microsoft.com/downloads/)。
-- [适用于 C# (.NET) 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库的本地副本。 下载存储库的副本并提取它：[下载 ZIP](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。
+- [适用于 C# (.NET) 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库的本地副本。 下载存储库的副本并提取它：[下载 ZIP](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)。
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "114712922"
 
 如要在 Visual Studio 中运行示例应用程序：
 
-1. 在解压缩适用于 C# 的 Azure IoT 示例的文件夹中，打开 Visual Studio 中的“azure-iot-samples-csharp-master\iot-hub\Samples\device\IoTHubDeviceSamples.sln”解决方案文件。 
+1. 在解压缩了适用于 C# 的 Azure IoT 示例的文件夹中，打开 Visual Studio 中的“azure-iot-samples-csharp-main\iot-hub\Samples\device\IoTHubDeviceSamples.sln”解决方案文件。 
 
 1. 在“解决方案资源管理器”中，选择“PnpDeviceSamples > TemperatureController”项目文件，右键单击它，然后选择“设为启动项目”  。
 

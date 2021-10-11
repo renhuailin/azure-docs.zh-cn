@@ -11,12 +11,12 @@ ms.date: 08/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe1da3615d835b6a2d828fdbca989c805a9f9b17
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: cae6f7285618771f2486c62bfbd3d532db146c8a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823073"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350618"
 ---
 # <a name="troubleshoot-ecma-connector-host-issues"></a>ECMA 连接器主机问题故障排除
 
@@ -187,7 +187,7 @@ ms.locfileid: "122823073"
 
 出现此问题的原因通常是由于本地 PowerShell 执行策略，代理无法执行 PowerShell 注册脚本。
 
-若要解决此问题，请更改服务器上的 PowerShell 执行策略。 需要将“计算机和用户策略”设置为“Undefined”或“RemoteSigned”。 如果设置为“Unrestricted”，则会看到此错误。 有关详细信息，请参阅 [PowerShell 执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)。 
+若要解决此问题，请更改服务器上的 PowerShell 执行策略。 需要将“计算机和用户策略”设置为“Undefined”或“RemoteSigned”。 如果设置为“Unrestricted”，则会看到此错误。 有关详细信息，请参阅 [PowerShell 执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies)。 
 
 ### <a name="log-files"></a>日志文件
 
@@ -227,7 +227,4 @@ ms.locfileid: "122823073"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure AD ECMA 连接器主机安装](on-premises-ecma-install.md)
-- [Azure AD ECMA 连接器主机配置](on-premises-ecma-configure.md)
-- [泛型 SQL 连接器](on-premises-sql-connector-configure.md)
 - [教程：ECMA 连接器主机泛型 SQL 连接器](tutorial-ecma-sql-connector.md)

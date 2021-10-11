@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 06/07/2021
+ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7fb3dcb07b8b868dda7bfef587b930765c4f661e
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 0aad268f8721d2f4747c4e3dec3860e52dd7112a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112199231"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352799"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -60,11 +60,14 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 可将使用者帐户关联到以下标识类型：
 
 * **本地** 标识：将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
-* 社交或企业标识，其中用户的标识由联合标识提供者进行管理 。 例如 Facebook、Microsoft、ADFS 或 Salesforce。
+* 社交或企业标识，其中用户的标识由联合标识提供者进行管理 。 例如 Facebook、Google、Microsoft、ADFS 或 Salesforce。
 
 具有使用者帐户的用户可使用多个标识进行登录。 例如用户名、电子邮件、员工 ID 和政府 ID 等。 单个帐户可以有多个本地和社交标识。
 
-![使用者帐户标识](media/technical-overview/identities.png)<br/>*图：在 Azure AD B2C 中具有多个标识的单个使用者帐户*
+
+
+:::image type="content" source="media/technical-overview/identities.png" alt-text="使用者帐户标识。":::
+<br/>*图：在 Azure AD B2C 中具有多个标识的单个使用者帐户*
 
 有关详细信息，请查看 [Azure Active Directory B2C 中的用户帐户概述](user-overview.md)。
 
@@ -87,13 +90,17 @@ Azure AD B2C 提供了用户可以用于对用户进行身份验证的各种方�
 
 可以配置 Azure AD B2C，以允许用户使用社交和企业标识提供者提供的凭据登录到你的应用程序。 Azure AD B2C 可以与支持 OAuth 1.0、OAuth 2.0、OpenID Connect和 SAML 协议的标识提供者联合。 例如 Facebook、Microsoft 帐户、Google、Twitter 和 AD-FS。
 
-![外部标识提供者](media/technical-overview/external-idps.png)
+
+
+:::image type="content" source="media/technical-overview/external-idps.png" alt-text="外部标识提供者。":::
 
 使用外部标识提供者联合，可让使用者通过其现有的社交帐户或企业帐户登录，而不必仅仅出于访问你的应用程序的目的创建一个新帐户。
 
 在注册或登录页上，Azure AD B2C 会提供外部标识提供者的列表，供用户选择用来登录。 用户选择一个外部标识提供者后，将会转到（重定向到）所选提供者的网站，以完成登录过程。 用户成功登录后，将返回到 Azure AD B2C，以便对应用程序中的帐户进行身份验证。
 
-![使用社交帐户 (Facebook) 进行移动登录的示例](media/technical-overview/external-idp.png)
+
+
+:::image type="content" source="media/technical-overview/external-idp.png" alt-text="使用社交帐户 (Facebook) 进行移动登录的示例。":::
 
 若要了解如何在 Azure AD B2C 中添加标识提供者，请参阅[将标识提供者添加到 Azure Active Directory B2C 中的应用程序](add-identity-provider.md)。
 
@@ -117,7 +124,9 @@ Azure AD B2C 提供了用户可以用于对用户进行身份验证的各种方�
 
 在 Azure AD B2C 中，可创建用户的标识体验，使显示的页面能够与品牌形象无缝融合。 当用户完成应用程序的标识旅程时，你几乎可以获得向用户显示的 HTML 和 CSS 内容的完全控制权。 凭借这种灵活性，可以在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
 
-![按品牌自定义的注册/登录页的屏幕截图](media/technical-overview/seamless-ux.png)
+
+
+:::image type="content" source="media/technical-overview/seamless-ux.png" alt-text="按品牌自定义的注册/登录页的屏幕截图。":::
 
 有关 UI 自定义项的信息，请参见：
 
@@ -165,7 +174,9 @@ Azure AD B2C 通过要求客户在注册过程中和密码重置流程中验证�
 
 返回数据可存储在用户在 Azure AD B2C 中的目录帐户中。 随后，可在后续步骤中在策略中进一步评估此数据，或者将其包含在访问令牌中。
 
-![移动应用程序中的业务线集成](media/technical-overview/lob-integration.png)
+
+
+:::image type="content" source="media/technical-overview/lob-integration.png" alt-text="移动应用程序中的业务线集成。":::
 
 可在自定义策略定义的用户旅程中的任意步骤中添加 REST API 调用。 例如，可在以下时机调用 REST API：
 
@@ -195,7 +206,7 @@ Azure AD B2C 通过要求客户在注册过程中和密码重置流程中验证�
 
 当用户想要登录你的应用程序时，应用程序就会向用户流或自定义策略提供的终结点发起授权请求。 用户流或自定义策略定义并控制用户的体验。 当用户完成用户流（例如注册或登录流）后，Azure AD B2C 会生成一个令牌，然后将用户重定向回到应用程序。
 
-![移动应用，其中的箭头显示 Azure AD B2C 登录页之间的流](media/technical-overview/app-integration.png)
+:::image type="content" source="media/technical-overview/app-integration.png" alt-text="移动应用，其中的箭头显示 Azure AD B2C 登录页之间的流。":::
 
 多个应用程序可以使用同一个用户流或自定义策略。 单个应用程序可以使用多个用户流或自定义策略。
 
@@ -229,7 +240,9 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 
 如果用户忘记了密码，作为 Azure AD B2C 租户管理员，你可以[重置用户的密码](manage-users-portal.md#reset-a-users-password)。 你也可以强制他们定期重置密码。 有关详细信息，请参阅[设置强制密码重置流程](force-password-reset.md)。
 
-![强制密码重置流](media/technical-overview/force-password-reset-flow.png)
+
+
+:::image type="content" source="media/technical-overview/force-password-reset-flow.png" alt-text="强制密码重置流。":::
 
 ## <a name="smart-account-lockout"></a>智能帐户锁定
 
@@ -245,7 +258,8 @@ Azure AD B2C 符合 [Microsoft Azure 信任中心](https://www.microsoft.com/tru
 
 会话将通过只有 Azure AD B2C 安全令牌服务知道的解密密钥建模为加密数据。 使用强加密算法 AES-192。 为实现保密性和完整性，所有通信路径将通过 TLS 进行保护。 我们的安全令牌服务对 TLS 使用扩展验证 (EV) 证书。 一般而言，安全令牌服务不会呈现不受信任的输入，因此可以缓解跨站点脚本 (XSS) 攻击。
 
-![保护传输中数据和静态数据的示意图](media/technical-overview/user-data.png)
+
+:::image type="content" source="media/technical-overview/user-data.png" alt-text="保护传输中数据和静态数据的示意图。":::
 
 ### <a name="access-to-user-data"></a>访问用户数据
 
@@ -286,6 +300,12 @@ Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌�
 
 有关详细信息，请查看[使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为](analytics-with-application-insights.md)。
 
+## <a name="azure-ad-b2c-service-limits-and-restrictions"></a>Azure AD B2C 服务限制和局限性
+详细了解 [Azure AD B2C 服务限制和局限性](service-limits.md)
+
 ## <a name="next-steps"></a>后续步骤
 
-现在你已更深入地了解 Azure Active Directory B2C 的功能和技术方面，可以开始使用[创建 Azure Active Directory B2C 租户教程](tutorial-create-tenant.md)了。
+现在你已更深入地了解了 Azure Active Directory B2C 的功能和技术方面，接下来可：
+- 开始学习 [Azure Active Directory B2C 租户创建教程](tutorial-create-tenant.md)。
+- [使用 Azure Active Directory B2C 为单页应用设置登录](quickstart-single-page-app.md)
+- [Azure Active Directory B2C 概念](application-types.md) 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 548593a3b3c4548fbf1f037cd15c302a68df9845
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93392072"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235072"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>通过 Docker 部署 Azure SQL Edge
 
@@ -43,7 +43,7 @@ ms.locfileid: "93392072"
         ```
 
 > [!NOTE]
-> 对于本文中的 bash 命令，将使用 `sudo`。 在 macOS 和 windows 上，可能不需要 sudo。 在 Linux 上，如果不想使用 sudo 来运行 Docker，可以配置一个 docker 组，并将用户添加到该组。 有关详细信息，请参阅 [Post-installation steps for Linux](https://docs.docker.com/engine/install/linux-postinstall/)（适用于 Linux 的安装后步骤）。
+> 对于本文中的 bash 命令，将使用 `sudo`。 在 macOS 和 Windows 上，可能不需要 `sudo`。 在 Linux 上，如果不想使用 `sudo` 来运行 Docker，可以配置一个 Docker 组，并将用户添加到该组。 有关详细信息，请参阅 [Post-installation steps for Linux](https://docs.docker.com/engine/install/linux-postinstall/)（适用于 Linux 的安装后步骤）。
 
 前面的命令将拉取最新的 Azure SQL Edge 容器映像。 若要查看所有可用映像，请参阅 [azure-sql-egde Docker 中心页](https://hub.docker.com/_/microsoft-azure-sql-edge)。
 

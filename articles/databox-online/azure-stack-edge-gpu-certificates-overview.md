@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
-ms.date: 06/30/2021
+ms.topic: overview
+ms.date: 09/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 558b31262a74a351ef17e42eb79772645f9a4641
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e082ae9343ff935ceeda168573be9648c6cee631
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290375"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358846"
 ---
 # <a name="what-are-certificates-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上有哪些证书？
 
@@ -33,12 +33,12 @@ ms.locfileid: "114290375"
 
 - 自带证书：你也可以选择自带证书。 如果你打算自带证书，则需要遵循一些准则。
 
-- 首先了解能够与本文中的 Azure Stack Edge 设备一起使用的证书类型。
-- 接下来，查看[每种类型的证书的证书要求](azure-stack-edge-gpu-certificate-requirements.md)。  
-- 然后，可以[通过 Azure PowerShell 创建证书](azure-stack-edge-gpu-create-certificates-powershell.md)或[通过就绪检查器工具创建证书](azure-stack-edge-gpu-create-certificates-tool.md)。
-- 最后，[将证书转换成正确的格式](azure-stack-edge-gpu-prepare-certificates-device-upload.md)，这样它们就可以上传到你的设备。
-- 在设备上[上传证书](azure-stack-edge-gpu-manage-certificates.md#upload-certificates-on-your-device)。
-- [在访问设备的客户端上导入证书](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)。
+    - 首先了解能够与本文中的 Azure Stack Edge 设备一起使用的证书类型。
+    - 接下来，查看[每种类型的证书的证书要求](azure-stack-edge-gpu-certificate-requirements.md)。  
+    - 然后，可以[通过 Azure PowerShell 创建证书](azure-stack-edge-gpu-create-certificates-powershell.md)或[通过就绪检查器工具创建证书](azure-stack-edge-gpu-create-certificates-tool.md)。
+    - 最后，[将证书转换成正确的格式](azure-stack-edge-gpu-prepare-certificates-device-upload.md)，这样它们就可以上传到你的设备。
+    - 在设备上[上传证书](azure-stack-edge-gpu-manage-certificates.md#upload-certificates-on-your-device)。
+    - [在访问设备的客户端上导入证书](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)。
 
 ## <a name="types-of-certificates"></a>证书类型
 
@@ -58,6 +58,9 @@ ms.locfileid: "114290375"
 - IoT 设备证书
     
 - Kubernetes 证书
+
+    - Edge 容器注册表证书
+    - Kubernetes 仪表板证书
     
 - Wi-Fi 证书
 - VPN 证书  
@@ -155,19 +158,31 @@ ms.locfileid: "114290375"
 
 - IoT Edge 证书以 `.pem` 格式上传。 
 
-有关 IoT Edge 证书的更多信息，请查看 [Azure IoT Edge 证书详细信息](../iot-edge/iot-edge-certs.md#iot-edge-certificates)和[创建 IoT Edge 生产证书](../iot-edge/how-to-manage-device-certificates.md?preserve-view=true&view=iotedge-2020-11#create-production-certificates)。
+有关 IoT Edge 证书的更多信息，请查看 [Azure IoT Edge 证书详细信息](../iot-edge/iot-edge-certs.md#iot-edge-certificates)和[创建 IoT Edge 生产证书](/azure/iot-edge/how-to-manage-device-certificates?view=iotedge-2020-11&preserve-view=true#create-production-certificates)。
 
 ## <a name="kubernetes-certificates"></a>Kubernetes 证书
 
-如果设备具有 Edge 容器注册表，则需要一个 Edge 容器注册表证书，用于与访问设备上注册表的客户端进行安全通信。
+以下 Kubernetes 证书可用于 Azure Stack Edge 设备。
+
+- **Edge 容器注册表证书**：如果设备具有 Edge 容器注册表，则需要一个 Edge 容器注册表证书，用于与访问设备上注册表的客户端进行安全通信。
+- **仪表板终结点证书**：需要仪表板终结点证书才能访问设备上的 Kubernetes 仪表板。
+
 
 #### <a name="caveats"></a>注意事项
 
-- 必须以 *.pfx* 格式上传包含私钥的 Edge 容器注册表证书。
+- Edge 容器注册表证书应： 
+    - 是 PEM 格式的证书。
+    - 包含以下类型的使用者可选名称 (SAN) 或 CName (CN)：`*.<endpoint suffix>` 或 `ecr.<endpoint suffix>`。 例如：`*.dbe-1d6phq2.microsoftdatabox.com OR ecr.dbe-1d6phq2.microsoftdatabox.com`
+
+
+- 仪表板证书应：
+    - 是 PEM 格式的证书。
+    - 包含以下类型的使用者可选名称 (SAN) 或 CName (CN)：`*.<endpoint-suffix>` 或 `kubernetes-dashboard.<endpoint-suffix>`。 例如 `*.dbe-1d6phq2.microsoftdatabox.com` 或 `kubernetes-dashboard.dbe-1d6phq2.microsoftdatabox.com`。 
+
 
 ## <a name="vpn-certificates"></a>VPN 证书
 
-如果在设备上配置 VPN（点到站点），可以自带 VPN 证书，以确保通信是可信的。 根证书安装在 Azure VPN 网关上，客户端证书安装在使用点到站点方式连接到 VNet 的每个客户端计算机上。
+如果在设备上配置 VPN（点到站点），可以自带 VPN 证书，以确保通信是可信的。 根证书安装在 Azure VPN 网关上，客户端证书安装在使用点到站点方式连接到虚拟网络的每个客户端计算机上。
 
 #### <a name="caveats"></a>注意事项
 

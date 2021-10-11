@@ -1,7 +1,7 @@
 ---
 title: 从命令行创建 C# 函数 - Azure Functions
 description: 了解如何从命令行创建 C# 函数，然后将本地项目发布到 Azure Functions 中托管的无服务器实例。
-ms.date: 08/15/2021
+ms.date: 09/14/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
@@ -11,23 +11,21 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-csharp-ieux
-ms.openlocfilehash: c2344a13c1a3dc005d00933fdc182348be9bb0f2
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+zone_pivot_groups: runtime-version-programming-functions
+ms.openlocfilehash: 5ae176c8f9ebe77a40619a65464594236b94671b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830601"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559860"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中从命令行创建 C# 函数
 
-[!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
+[!INCLUDE [functions-runtime-version-dotnet](../../includes/functions-runtime-version-dotnet.md)]
 
 本文介绍如何使用命令行工具创建响应 HTTP 请求的 C# 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。
 
-本文支持创建两种类型的已编译 C# 函数： 
-
-+ [进程内](create-first-function-cli-csharp.md?tabs=in-process) - 在与 Functions 主机进程相同的进程中运行。 若要了解详细信息，请参阅[使用 Azure Functions 开发 C# 类库函数](functions-dotnet-class-library.md)。
-+ [隔离进程](create-first-function-cli-csharp.md?tabs=isolated-process) - 在单独的 .NET 工作进程中运行。 若要了解详细信息，请参阅[有关在 Azure 中的 .NET 5.0 上运行函数的指南](dotnet-isolated-process-guide.md)。
+[!INCLUDE [functions-dotnet-execution-model](../../includes/functions-dotnet-execution-model.md)]
 
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
@@ -37,9 +35,39 @@ ms.locfileid: "122830601"
 
 在开始之前，必须满足以下条件：
 
+::: zone pivot="programming-runtime-functions-v3"
 [!INCLUDE [functions-cli-dotnet-prerequisites](../../includes/functions-cli-dotnet-prerequisites.md)]
+::: zone-end
+::: zone pivot="programming-runtime-functions-v4"
+# <a name="in-process"></a>[进程内](#tab/in-process)    
 
-+ 还需要一个具有有效订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ [.NET 6.0 SDK](https://dotnet.microsoft.com/download)
+
++ [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 4.x。
+
++ 以下用于创建 Azure 资源的工具之一：
+
+    + [Azure CLI](/cli/azure/install-azure-cli) 版本 2.4 或更高版本。
+
+    + [Azure PowerShell](/powershell/azure/install-az-ps) 版本 5.0 或更高版本。
+
+# <a name="isolated-process"></a>[隔离进程](#tab/isolated-process)
+
++ [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+
++ [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)。 生成过程所需。
+
++ [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 4.x。
+
++ 以下用于创建 Azure 资源的工具之一：
+
+    + [Azure CLI](/cli/azure/install-azure-cli) 版本 2.4 或更高版本。
+
+    + [Azure PowerShell](/powershell/azure/install-az-ps) 版本 5.0 或更高版本。
+---
+::: zone-end
+
+还需要一个具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ### <a name="prerequisite-check"></a>先决条件检查
 
@@ -206,6 +234,11 @@ HttpExample.cs 包含一个接收 `req` 变量中的请求数据的 `Run` 方法
     [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) cmdlet 可在 Azure 中创建函数应用。 
 
     ---
+
+    ::: zone pivot="programming-runtime-functions-v4"
+    > [!NOTE]
+    > 此命令使用 Azure Functions 运行时 3.x 版本创建函数应用。 稍后将运行的 `func azure functionapp publish` 命令会将应用更新到版本 4.x。
+    ::: zone-end
     
     在上一个示例中，请将 `<STORAGE_NAME>` 替换为在上一步骤中使用的帐户的名称，并将 `<APP_NAME>` 替换为适合自己的全局唯一名称。 `<APP_NAME>` 也是函数应用的默认 DNS 域。 
     

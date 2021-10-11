@@ -2,13 +2,13 @@
 title: 使用 Azure 门户创建事件中心专用群集
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure 事件中心群集。
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 9fd43423d8928768f46f4c1c10f14a2ca0a7fc4e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 09/28/2021
+ms.openlocfilehash: 758110a0dcffc8f9ea8a802ac5cbac2c6ffb39b8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375034"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231164"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心专用群集 
 事件中心群集提供单租户部署来满足客户的苛刻流式处理要求。 此套餐提供有保障的 99.99% SLA，只能在专用定价层上使用。 [事件中心群集](event-hubs-dedicated-overview.md)每秒能够引入数百万个事件，且提供有保障的容量和亚秒级的延迟。 在群集中创建的命名空间和事件中心不仅包括高级版产品/服务的所有功能，而且不存在任何流入量限制。 专用套餐还免费随附了热门的[事件中心捕获](event-hubs-capture-overview.md)功能，可让你自动批处理数据流并将其记录到 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)或 [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)。
@@ -35,29 +35,31 @@ ms.locfileid: "110375034"
 
 若要使用 Azure 门户在资源组中创建群集，请完成以下步骤：
 
-1. 单击[此链接](https://aka.ms/eventhubsclusterquickstart)，在 Azure 门户中创建群集。 与之相反，也可在左侧导航窗格中选择“所有服务”，接着在搜索栏中键入“事件中心群集”，然后从结果列表中选择“事件中心群集”。 
-2. 在“创建群集”页上配置以下设置：
+1. 单击[此链接](https://aka.ms/eventhubsclusterquickstart)，在 Azure 门户中创建群集。 与之相反，也可在左侧导航窗格中选择“所有服务”，接着在搜索栏中键入“事件中心群集”，然后从结果列表中选择“事件中心群集”  。
+1. 在“事件中心群集”页上的工具栏中选择“+ 创建” 。 
+1. 在“创建群集”页上配置以下设置：
     1. 输入 **群集的名称**。 系统会立即检查该名称是否可用。
     2. 选择要在其中创建群集的 **订阅**。
     3. 选择要在其中创建群集的 **资源组**。
     4. 选择群集的 **位置**。 如果首选区域灰显，则表明该区域容量出现暂时性不足的情况，请向事件中心团队提交[支持请求](#submit-a-support-request)。
     5. 选择页面底部的“下一步:  标记”按钮。 可能需要等待几分钟让系统完全预配资源。
 
-        ![创建事件中心群集 -“基本信息”页](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png" alt-text="图像显示了“创建事件中心群集”-“基本信息”页。":::
 3. 在“标记”页上配置以下内容： 
     1. 输入要添加的标记的 **名称** 和 **值**。 此步骤是 **可选的**。  
     2. 选择“查看 + 创建”按钮。 
 
-        ![“创建事件中心群集”页 -“标记”页](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png" alt-text="图像显示了“创建事件中心群集”页 -“标记”页。":::
 4. 在“查看 + 创建”页上查看详细信息，然后选择“创建”。   
 
-    ![“创建事件中心群集”页 -“查看 + 创建”页](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png)
+    :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png" alt-text="图像显示了“创建事件中心群集”页 -“查看 + 创建”页。":::
+5. 创建成功后，选择“转到资源”以导航到事件中心群集的主页。 
 
 ## <a name="create-a-namespace-and-event-hub-within-a-cluster"></a>在群集中创建命名空间和事件中心
 
 1. 若要在群集中创建命名空间，请在群集的“事件中心群集”页上，从顶部菜单中选择“+命名空间”。  
 
-    ![“群集管理”页 -“添加命名空间”按钮](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
+    :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png" alt-text="图像显示了“群集管理”页 -“添加命名空间”按钮。":::
 2. 在“创建命名空间”页上执行以下步骤：
     1. 输入 **命名空间的名称**。  系统会检查该名称是否可用。
     2. 命名空间继承以下属性：
@@ -67,7 +69,7 @@ ms.locfileid: "110375034"
         4. 群集名称
     3. 选择“创建”以创建命名空间。  现在你可以管理该群集。  
 
-        ![“在群集中创建命名空间”页](./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png" alt-text="图像显示了群集页中的“创建命名空间”。":::
 3. 创建命名空间后，可以像平时在命名空间中所做的那样[创建事件中心](event-hubs-create.md#create-an-event-hub)。 
 
 

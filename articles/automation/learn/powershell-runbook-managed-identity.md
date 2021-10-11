@@ -3,14 +3,14 @@ title: 在 Azure 自动化中使用托管标识创建 PowerShell runbook
 description: 在本教程中，你会了解如何在 Azure 自动化中将托管标识与 PowerShell runbook 配合使用。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/16/2021
+ms.date: 09/28/2021
 ms.topic: tutorial
-ms.openlocfilehash: 0620aacb1b4f2a6cb7c6214c1ce92add3bec8f63
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f335df520b8d47a9439575a5d2f337d28a9bebc6
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610667"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357541"
 ---
 # <a name="tutorial-create-automation-powershell-runbook-using-managed-identity"></a>教程：使用托管标识创建自动化 PowerShell runbook
 
@@ -28,7 +28,7 @@ ms.locfileid: "128610667"
 
 * 至少具有一个用户分配的托管标识的 Azure 自动化帐户。 有关详细信息，请参阅[对 Azure 自动化帐户使用用户分配的托管标识](../add-user-assigned-identity.md)。
 * 导入到自动化帐户中的 Az 模块：`Az.Accounts`、`Az.Automation`、`Az.ManagedServiceIdentity` 和 `Az.Compute`。 有关详细信息，请参阅[导入 Az 模块](../shared-resources/modules.md#import-az-modules)。
-* 在计算机上安装 [Azure Az PowerShell 模块](/powershell/azure/new-azureps-module-az)。 若要安装或升级，请参阅[如何安装 Azure Az PowerShell 模块](/powershell/azure/install-az-ps)。
+* 在计算机上安装 [Azure Az PowerShell 模块](/powershell/azure/new-azureps-module-az)。 若要安装或升级，请参阅[如何安装 Azure Az PowerShell 模块](/powershell/azure/install-az-ps)。 `Az.ManagedServiceIdentity` 是预览模块，不作为 Az 模块的一部分安装。 若要安装该模块，请运行 `Install-Module -Name Az.ManagedServiceIdentity`。
 * [Azure 虚拟机](../../virtual-machines/windows/quick-create-powershell.md)。 由于需要停止并启动此虚拟机，因此它不应当是生产 VM。
 * 大致熟悉 [Automation runbook](../manage-runbooks.md)。
 
@@ -122,7 +122,7 @@ ms.locfileid: "128610667"
     
     # Connect using a Managed Service Identity
     try {
-            Connect-AzAccount -Identity -ErrorAction stop -WarningAction SilentlyContinue | Out-Null
+            $AzureContext = (Connect-AzAccount -Identity).context
         }
     catch{
             Write-Output "There is no system-assigned user identity. Aborting."; 
@@ -130,8 +130,8 @@ ms.locfileid: "128610667"
         }
     
     # set and store context
-    $subID = (Get-AzContext).Subscription.Id
-    $AzureContext = Set-AzContext -SubscriptionId $subID
+    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+        -DefaultProfile $AzureContext
     
     if ($method -eq "SA")
         {
@@ -142,15 +142,18 @@ ms.locfileid: "128610667"
             Write-Output "Using user-assigned managed identity"
     
             # Connects using the Managed Service Identity of the named user-assigned managed identity
-            $identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $UAMI -DefaultProfile $AzureContext
+            $identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup `
+                -Name $UAMI -DefaultProfile $AzureContext
     
             # validates assignment only, not perms
-            if ((Get-AzAutomationAccount -ResourceGroupName $resourceGroup -Name $automationAccount -DefaultProfile $AzureContext).Identity.UserAssignedIdentities.Values.PrincipalId.Contains($identity.PrincipalId))
+            if ((Get-AzAutomationAccount -ResourceGroupName $resourceGroup `
+                    -Name $automationAccount `
+                    -DefaultProfile $AzureContext).Identity.UserAssignedIdentities.Values.PrincipalId.Contains($identity.PrincipalId))
                 {
-                    Connect-AzAccount -Identity -AccountId $identity.ClientId | Out-Null
+                    $AzureContext = (Connect-AzAccount -Identity -AccountId $identity.ClientId).context
     
                     # set and store context
-                    $AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
+                    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
                 }
             else {
                     Write-Output "Invalid or unassigned user-assigned managed identity"
@@ -163,7 +166,8 @@ ms.locfileid: "128610667"
          }
     
     # Get current state of VM
-    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status -DefaultProfile $AzureContext).Statuses[1].Code
+    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName `
+        -Status -DefaultProfile $AzureContext).Statuses[1].Code
     
     Write-Output "`r`n Beginning VM status: $status `r`n"
     
@@ -178,7 +182,8 @@ ms.locfileid: "128610667"
         }
     
     # Get new state of VM
-    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status -DefaultProfile $AzureContext).Statuses[1].Code  
+    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status `
+        -DefaultProfile $AzureContext).Statuses[1].Code  
     
     Write-Output "`r`n Ending VM status: $status `r`n `r`n"
     

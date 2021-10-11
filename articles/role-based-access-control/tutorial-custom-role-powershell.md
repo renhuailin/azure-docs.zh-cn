@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4fac2cde6f18e504dc2866cc479ce51e3b70b2a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369235"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362001"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Azure 自定义角色
 
-如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 对于本教程，你将使用 Azure PowerShell 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户在订阅的管理平面中查看所有内容，以及创建支持票证。
+如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 对于本教程，你将使用 Azure PowerShell 创建名为 Reader Support Tickets 的自定义角色。 通过该自定义角色，用户可在订阅的控制平面中查看所有内容，还可创建支持票证。
 
 在本教程中，你将了解如何执行以下操作：
 

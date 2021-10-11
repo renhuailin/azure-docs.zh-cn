@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 644fa7a26a2bfed80f14ded790dff2aff02392ee
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5d1604c0b7e9f9dff3b52e3666c024a58fe14ed1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542779"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129377862"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -233,7 +233,7 @@ config->SetSpeechRecognitionLanguage("de-DE");
 >
 > 应在短语数量只有几百的情况下使用短语列表功能。 如果列表较大或语言当前不受支持，则[训练自定义模型](../../../custom-speech-overview.md)可能是提高准确性的更好选择。
 >
-> 不要对自定义终结点使用“短语列表”功能。 而是训练包含短语的自定义模型。
+> 自定义终结点不支持“短语列表”功能。 请不要将其用于自定义终结点。 而是训练包含短语的自定义模型。
 
 若要使用短语列表，请首先创建一个 [`PhraseListGrammar`](/cpp/cognitive-services/speech/phraselistgrammar) 对象，然后使用 [`AddPhrase`](/cpp/cognitive-services/speech/phraselistgrammar#addphrase) 添加特定的单词和短语。
 

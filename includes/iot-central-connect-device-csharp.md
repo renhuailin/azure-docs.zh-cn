@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: d9625e59396111eeecbd0f2ff12d945c3e717c7e
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 32afd7c4fff650e41d04a4ed809ad700cacc4e36
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114407961"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516516"
 ---
-[![浏览代码](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples/Thermostat)
+[![浏览代码](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/device/PnpDeviceSamples/Thermostat)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -21,11 +21,11 @@ ms.locfileid: "114407961"
 
 - 安装了 [Visual Studio（Community、Professional 或 Enterprise 版）](https://visualstudio.microsoft.com/downloads/)的开发计算机。
 
-- [适用于 C# (.NET) 的 Microsoft Azure IoT Samples](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库（包含示例代码）的本地副本。 使用此链接下载存储库副本：[下载 ZIP](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 然后将该文件解压缩到本地计算机上的适当位置。
+- [适用于 C# (.NET) 的 Microsoft Azure IoT Samples](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库（包含示例代码）的本地副本。 使用此链接下载存储库副本：[下载 ZIP](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)。 然后将该文件解压缩到本地计算机上的适当位置。
 
 ## <a name="review-the-code"></a>查看代码
 
-在之前下载的适用于 C# 存储库的 Microsoft Azure IoT 示例副本中，打开 Visual Studio 中的 azure-iot-samples-csharp-master\iot-hub\Samples\device\IoTHubDeviceSamples.sln 项目文件。 在“解决方案资源管理器”中，展开“PnpDeviceSamples”>“TemperatureController”文件夹，然后打开“Program.cs”和“TemperatureControllerSample.cs”文件来查看此示例代码。  
+在之前下载的适用于 C# 存储库的 Microsoft Azure IoT 示例副本中，打开 Visual Studio 中的“azure-iot-samples-csharp-main\iot-hub\Samples\device\IoTHubDeviceSamples.sln”解决方案文件。 在“解决方案资源管理器”中，展开“PnpDeviceSamples”>“TemperatureController”文件夹，然后打开“Program.cs”和“TemperatureControllerSample.cs”文件来查看此示例代码。  
 
 当你运行连接到 IoT Central 的示例时，它将使用设备预配服务 (DPS) 来注册设备并生成连接字符串。 该示例从环境中检索其所需的 DPS 连接信息。
 

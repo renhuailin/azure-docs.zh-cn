@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f2e6918e6cdc6eb87fe80e9110183ed5a0a3693b
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: d431e91eb71d5befe71f134e634fe5ad3c7b392d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106688"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274458"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教程：使用注册组预配多个 X.509 设备
 
@@ -318,7 +318,7 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
 
 ## <a name="create-an-enrollment-group"></a>创建注册组
 
-1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
+1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，然后打开“设备预配服务”。
 
 2. 选择“管理注册”选项卡，然后选择顶部的“添加注册组”按钮 。
 
@@ -339,9 +339,9 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
 
 在本部分中，通过设备预配服务实例信息更新示例代码。 如果设备经过身份验证，将会被分配到与本部分中配置的设备预配服务实例链接的 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值   。
+1. 在 Azure 门户中，选择“设备预配服务”的“概述”选项卡，记下“ID 范围”的值 。
 
-    ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 2. 启动 Visual Studio 并打开在 azure-iot-sdk-c git 存储库根目录中创建的 `cmake` 目录中创建的新解决方案文件。 解决方案文件命名为 `azure_iot_sdks.sln`。
 
@@ -511,7 +511,7 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
 完成此设备客户端示例的测试和研究后，使用以下步骤删除本教程创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
-1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务。 打开服务的“管理注册”，然后选择“注册组”选项卡 。选中在本教程中创建的设备组的“组名称”旁边的复选框，然后按窗格顶部的“删除”按钮。 
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”，然后选择“注册组”选项卡 。选中在本教程中创建的设备组的“组名称”旁边的复选框，然后按窗格顶部的“删除”按钮。 
 1. 在 DPS 中单击“证书”。 对于在本教程中上传和验证的每个证书，请单击证书并单击“删除”按钮将其删除。
 1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 为中心打开“IoT 设备”。 选中在本教程中注册的设备的“设备 ID”旁边的复选框。 单击窗格顶部的“删除”按钮。
 

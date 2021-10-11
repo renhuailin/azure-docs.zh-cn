@@ -10,12 +10,12 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d3a1fe8f4b06601ed6b3e77ffa5743506e923ec4
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 9e610e7ec02ec16d077087dab4742721c4209bfa
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771743"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234844"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -36,7 +36,7 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 
 ## <a name="supported-storage-authorization-types"></a>支持的存储授权类型
 
-如果文件不是公开可用的，则登录到无服务器 SQL 池的用户必须获得访问和查询 Azure 存储中文件的授权。 可以使用三种授权类型来访问非公共存储 - [用户标识](?tabs=user-identity)、[共享访问签名](?tabs=shared-access-signature)和[托管标识](?tabs=managed-identity)。
+如果文件不是公开可用的，则登录到无服务器 SQL 池的用户必须获得访问和查询 Azure 存储中文件的授权。 可以使用四种授权类型来访问非公共存储 - [用户标识](?tabs=user-identity)、[共享访问签名](?tabs=shared-access-signature)、[服务主体](?tab/service-principal)和[托管标识](?tabs=managed-identity)。
 
 > [!NOTE]
 > **Azure AD 直通** 是创建工作区时的默认行为。
@@ -46,7 +46,7 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 用户标识（也称为“Azure AD 直通”）是一种授权类型。使用这种授权时，登录到无服务器 SQL 池的 Azure AD 用户的标识将用于授予数据访问权限。 在访问数据之前，Azure 存储管理员必须向 Azure AD 用户授予权限。 如下表中所示，SQL 用户类型不支持此授权类型。
 
 > [!IMPORTANT]
-> 客户端应用程序可能会缓存 AAD 身份验证令牌。 例如，PowerBI 会缓存 AAD 令牌，并在一小时内重复使用同一令牌。 如果在执行查询的过程中，该令牌过期，则长时间运行的查询可能会失败。 如果查询时遇到 AAD 访问令牌过期导致查询失败，请考虑切换到[托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types)或[共享访问签名](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)。
+> 客户端应用程序可能会缓存 AAD 身份验证令牌。 例如，PowerBI 会缓存 AAD 令牌，并在一小时内重复使用同一令牌。 如果在执行查询的过程中，该令牌过期，则长时间运行的查询可能会失败。 如果查询时遇到 AAD 访问令牌过期导致查询失败，请考虑切换到[服务主体](develop-storage-files-storage-access-control.md?tabs=service-principal#supported-storage-authorization-types)、[托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types)或[共享访问签名](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)。
 
 需要具有存储 Blob 数据所有者/参与者/读取者角色才能使用自己的标识来访问数据。 或者，你可以指定细化 ACL 规则以访问文件和文件夹。 即使你是存储帐户的所有者，也仍需将自己添加到存储 Blob 数据角色之一。
 若要详细了解 Azure Data Lake Store Gen2 中的访问控制，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
@@ -69,6 +69,14 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 > [!IMPORTANT]
 > 你无法使用 SAS 令牌访问专用存储帐户。 请考虑切换到[托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types)或 [Azure AD 直通](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)身份验证以访问受保护的存储。
 
+
+### <a name="service-principal"></a>[Service Principal](#tab/service-principal)
+服务主体是特定 Azure AD 租户中全局应用程序对象的本地表示形式。 此身份验证方法适用于为用户应用、服务或自动化工具授权存储访问的情况。 
+
+应用程序需要在 Azure Active Directory 中注册。 有关注册过程，可以参考[快速入门：将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-register-app.md)。 注册应用程序后，可以使用其服务主体进行授权。 
+
+应为服务主体分配存储 Blob 数据所有者/参与者/读取者角色，以便应用程序访问数据。 即使服务主体是存储帐户的所有者，仍需向其授予适当的存储 Blob 数据角色。 授予对存储文件和文件夹的访问权限的另一种方法是定义服务主体的细化 ACL 规则。 若要详细了解 Azure Data Lake Store Gen2 中的访问控制，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
+
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
 托管标识也称为 MSI。 它是 Azure Active Directory (Azure AD) 的一项功能，为无服务器 SQL 池提供 Azure 服务。 此外，它还会在 Azure AD 中部署一个自动托管的标识。 此标识可用于对有关访问 Azure 存储中的数据的请求授权。
@@ -81,15 +89,19 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 
 ---
 
+#### <a name="cross-tenant-scenarios"></a>跨租户方案
+如果 Azure 存储位于与 Synapse 无服务器 SQL 池不同的租户中，则建议使用通过服务主体进行授权的方法。 也可以进行 SAS 授权，但不支持托管标识 。 
+
 ### <a name="supported-authorization-types-for-databases-users"></a>支持用于数据库用户的授权类型
 
-在下表中，可以找到可用的授权类型：
+在下表中，可以找到 Synapse 无服务器 SQL 终结点不同登录方法的可用授权类型：
 
-| 授权类型                    | SQL 用户    | Azure AD 用户     |
-| ------------------------------------- | ------------- | -----------    |
-| [用户标识](?tabs=user-identity#supported-storage-authorization-types)       | 不支持 | 支持      |
-| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | 支持     | 支持      |
-| [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持 | 支持      |
+| 授权类型                    | SQL 用户    | Azure AD 用户     | *Service Principal* |
+| ------------------------------------- | ------------- | -----------    | -------- |
+| [用户标识](?tabs=user-identity#supported-storage-authorization-types)       |  不支持 | 支持      | 支持|
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | 支持     | 支持      | 支持|
+| [Service Principal](?tabs=service-principal#supported-storage-authorization-types) | 支持 | 支持      | 支持|
+| [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持 | 支持      | 支持|
 
 ### <a name="supported-storages-and-authorization-types"></a>支持的存储和授权类型
 
@@ -98,6 +110,7 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 | 授权类型  | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
 | SAS    | 支持      | 不支持   | 支持     |
+| [Service Principal](?tabs=managed-identity#supported-storage-authorization-types) | 支持   | 支持      | 支持  |
 | [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持      | 支持        | 支持     |
 | [用户标识](?tabs=user-identity#supported-storage-authorization-types)    | 支持      | 支持        | 支持     |
 
@@ -109,6 +122,15 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 > [!NOTE]
 > 存储上的防火墙功能现为公共预览版，它在所有公共云区域中都可用。 
 
+
+在下表中，可以找到 Synapse 无服务器 SQL 终结点不同登录方法的可用授权类型：
+
+| 授权类型                    | SQL 用户    | Azure AD 用户     | *Service Principal* |
+| ------------------------------------- | ------------- | -----------    | -------- |
+| [用户标识](?tabs=user-identity#supported-storage-authorization-types)       |  不支持 | 支持      | 支持|
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | 不支持     | 不支持      | 不支持|
+| [Service Principal](?tabs=service-principal#supported-storage-authorization-types) | 不支持 | 不支持      | 不支持|
+| [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持 | 支持      | 支持|
 
 ### <a name="user-identity"></a>[用户标识](#tab/user-identity)
 
@@ -193,6 +215,10 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 
 不能使用共享访问签名来访问受防火墙保护的存储。
 
+### <a name="service-principal"></a>[Service Principal](#tab/service-principal)
+
+服务主体不能用于访问受防火墙保护的存储。 改用托管标识。
+
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
 需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 Azure 角色](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
@@ -263,8 +289,18 @@ GO
 
 或者，可以只使用存储帐户的基 URL，而不使用容器名称。
 
-### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
+### <a name="service-principal"></a>[Service Principal](#tab/service-principal)
 
+以下脚本将创建服务器级凭据，该凭据可用于访问使用服务主体进行身份验证和授权的存储中的文件。 可以通过访问 Azure 门户中的“应用注册”并选择请求存储访问的应用来找到 AppID。 可以在应用注册过程中获取机密。 AuthorityUrl 是 AAD Oauth2.0 颁发机构的 URL。
+
+```sql
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+WITH IDENTITY = '<AppID>@<AuthorityUrl>' 
+, SECRET = '<Secret>'
+```
+
+### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
+ 
 以下脚本将创建一个服务器级凭据，`OPENROWSET` 函数可以使用该凭据通过工作区托管标识访问 Azure 存储上的任何文件。
 
 ```sql
@@ -313,6 +349,24 @@ GO
 CREATE EXTERNAL DATA SOURCE mysample
 WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
           CREDENTIAL = SasToken
+)
+```
+
+
+### <a name="service-principal"></a>[Service Principal](#tab/service-principal)
+以下脚本将创建数据库范围的凭据，该凭据可用于访问使用服务主体进行身份验证和授权的存储中的文件。 可以通过访问 Azure 门户中的“应用注册”并选择请求存储访问的应用来找到 AppID。 可以在应用注册过程中获取机密。 AuthorityUrl 是 AAD Oauth2.0 颁发机构的 URL。
+
+```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+
+CREATE DATABASE SCOPED CREDENTIAL [<CredentialName>] WITH
+IDENTITY = '<AppID>@<AuthorityUrl>' 
+, SECRET = '<Secret>'
+GO
+CREATE EXTERNAL DATA SOURCE MyDataSource
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = CredentialName
 )
 ```
 
@@ -394,14 +448,18 @@ GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
 GO
 
--- Create databases scoped credential that use Managed Identity or SAS token. User needs to create only database-scoped credentials that should be used to access data source:
+-- Create databases scoped credential that use Managed Identity, SAS token or Service Principal. User needs to create only database-scoped credentials that should be used to access data source:
 
 CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
 WITH IDENTITY = 'Managed Identity'
 GO
 CREATE DATABASE SCOPED CREDENTIAL SasCredential
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
-
+GO
+CREATE DATABASE SCOPED CREDENTIAL SPNCredential WITH
+IDENTITY = '**44e*****8f6-ag44-1890-34u4-22r23r771098@https://login.microsoftonline.com/**do99dd-87f3-33da-33gf-3d3rh133ee33/oauth2/token' 
+, SECRET = '.7OaaU_454azar9WWzLL.Ea9ePPZWzQee~'
+GO
 -- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
 
 CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
@@ -412,6 +470,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 
+--,CREDENTIAL = SPNCredential
 )
 
 CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )

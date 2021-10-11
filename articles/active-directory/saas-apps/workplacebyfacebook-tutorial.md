@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 47e913fad36c518fb46e708d1370d054c312cdf6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ceb5200f716a00d0c8599ab596b29c727dff486e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745314"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232463"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workplace by Facebook 集成
 

@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/17/2019
   ms.author: kefre
   ms.custom: seodec18
-  ms.openlocfilehash: b344ae378bc299a737e212205b2d85f6106424a6
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 5b13040c02d72a2cfd423f014f4f89ffba11d627
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124824822"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129350711"
 title: 计算机视觉 API 常见问题解答
 summary: >
   > [!TIP]
@@ -29,7 +29,7 @@ sections:
   - question: >
       如何提高服务允许的每秒事务数 (TPS)？
     answer: >
-      免费 (S0) 层每分钟只允许 20 个事务。 升级到 S1 层，每秒最多允许 10 个事务。 如果看到错误代码 429 和“请求过多”错误消息，请[提交 Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)，将 TPS 提升为 50 或更高，并简要提供业务理由。 [计算机视觉定价](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/#pricing)。
+      免费 (S0) 层每分钟只允许 20 个事务。 升级到 S1 层，每秒最多获取 30 个事务。 如果看到错误代码 429 和“请求过多”错误消息，请[提交 Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)，将 TPS 提升为 50 或更高，并简要提供业务理由。 [计算机视觉定价](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/#pricing)。
   - question: "服务引发错误，因为图片文件太大。 如何解决此问题？ \n"
     answer: >
       大多数计算机视觉功能的文件大小限制为 4MB，但客户端库 SDK 可以处理最大 6MB 的文件。 对于处理多页文档的光学字符识别 (OCR) 功能，支持的最大文件大小为 50 MB。 有关详细信息，请参阅图像[分析输入限制](overview-image-analysis.md#image-requirements)和 [OCR 输入限制](overview-ocr.md#input-requirements)。

@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: overview
 ms.reviewer: jrasnick, garye
-ms.date: 09/25/2020
+ms.date: 10/01/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e092cf94e5126b5bfa7bd42cc2f362f6d7a9da96
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222133"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402086"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的机器学习功能
 
@@ -25,24 +25,22 @@ Azure Synapse Analytics 提供了各种机器学习功能。 本文概述了如�
 你可能很熟悉典型的数据科学流程。 这是一个众所周知的流程，大多数机器学习项目都遵循该流程。
 
 概括而言，该流程包含以下步骤：
-* （了解业务）
+* 业务理解（本文不讨论）
 * 数据获取和理解
 * 建模
 * 模型部署和评分
 
 本文从数据科学流程角度介绍了各种分析引擎中的 Azure Synapse 机器学习功能。 针对数据科学流程中的每个步骤，汇总了有用的 Azure Synapse 功能。
 
-## <a name="azure-synapse-machine-learning-capabilities"></a>Azure Synapse 机器学习功能
-
-### <a name="data-acquisition-and-understanding"></a>数据获取和理解
+## <a name="data-acquisition-and-understanding"></a>数据获取和理解
 
 大多数机器学习项目都涉及完善的步骤，其中一个步骤是访问和了解数据。
 
-#### <a name="data-source-and-pipelines"></a>数据源和管道
+### <a name="data-source-and-pipelines"></a>数据源和管道
 
 归功于 [Azure 数据工厂](../../data-factory/introduction.md)（Azure Synapse 的一个原生集成部分），有一组功能强大的工具可用于数据引入和数据业务流程管道。 这使你可以轻松地构建数据管道，以便访问数据并将其转换为可用于机器学习的格式。 [详细了解 Synapse 中的数据管道](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。 
 
-#### <a name="data-preparation-and-explorationvisualization"></a>数据准备和浏览/可视化
+### <a name="data-preparation-and-explorationvisualization"></a>数据准备和浏览/可视化
 
 机器学习过程中的一个重要部分是通过浏览和可视化来了解数据。
 
@@ -52,21 +50,21 @@ Azure Synapse Analytics 提供了各种机器学习功能。 本文概述了如�
 
 * [无服务器 SQL 池](../sql/on-demand-workspace-overview.md)提供了一种直接通过数据湖使用 TSQL 浏览数据的方法。 无服务器 SQL 池还在 Synapse Studio 中提供了一些内置的可视化效果。 [详细了解如何使用无服务器 SQL 池来浏览数据](../get-started-analyze-sql-on-demand.md)。
 
-### <a name="modeling"></a>建模
+## <a name="modeling"></a>建模
 
 在 Azure Synapse 中，可以通过 PySpark/Python、Scala 或 .NET 等工具在 Apache Spark 池中执行训练机器学习模型的操作。
 
-#### <a name="train-models-on-spark-pools-with-mllib"></a>通过 MLlib 在 Spark 池中训练模型
+### <a name="train-models-on-spark-pools-with-mllib"></a>通过 MLlib 在 Spark 池中训练模型
 
-可以借助各种算法和库来训练机器学习模型。 [Spark MLlib](http://spark.apache.org/docs/latest/ml-guide.html) 提供了可缩放的机器学习算法，这些算法有助于解决大多数经典的机器学习问题。 [此教程](../spark/apache-spark-machine-learning-mllib-notebook.md)介绍了如何在 Synapse 中使用 MLlib 训练模型。
+可以借助各种算法和库来训练机器学习模型。 [Spark MLlib](http://spark.apache.org/docs/latest/ml-guide.html) 提供了可缩放的机器学习算法，这些算法有助于解决大多数经典的机器学习问题。 有关如何在 Synapse 中使用 MLlib 训练模型的教程，请参阅[使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用](../spark/apache-spark-machine-learning-mllib-notebook.md)。
 
 除了 MLlib 之外，还可以使用 [Scikit Learn](https://scikit-learn.org/stable/) 等常用库来开发模型。 请参阅[在 Azure Synapse Analytics 中管理 Apache Spark 的库](../spark/apache-spark-azure-portal-add-libraries.md)，详细了解如何在 Synapse Spark 池中安装库。
 
-#### <a name="train-models-with-azure-machine-learning-automated-ml"></a>使用 Azure 机器学习自动化 ML 来训练模型
+### <a name="train-models-with-azure-machine-learning-automated-ml"></a>使用 Azure 机器学习自动化 ML 来训练模型
 
-训练机器学习模型的另一种方法是使用自动化 ML，这不需要花太多时间事先熟悉机器学习。 [自动化 ML](../../machine-learning/concept-automated-ml.md) 是一项可自动训练一组机器学习模型的功能，允许用户根据特定指标选择最佳模型。 借助从 Azure Synapse Notebooks 与 Azure 机器学习进行的无缝集成，用户可以轻松地在 Synapse 中通过 Azure Active Directory 传递身份验证来利用自动化 ML。  这意味着你只需指向 Azure 机器学习工作区，无需输入任何凭据。 这是一个[自动化 ML 教程](../spark/apache-spark-azure-machine-learning-tutorial.md)，介绍了如何在 Synapse Spark 池中使用 Azure 机器学习自动化 ML 来训练模型。
+训练机器学习模型的另一种方法是使用自动化 ML，这不需要花太多时间事先熟悉机器学习。 [自动化 ML](../../machine-learning/concept-automated-ml.md) 是一项可自动训练一组机器学习模型的功能，允许用户根据特定指标选择最佳模型。 借助从 Azure Synapse Notebooks 与 Azure 机器学习进行的无缝集成，用户可以轻松地在 Synapse 中通过 Azure Active Directory 传递身份验证来利用自动化 ML。  这意味着你只需指向 Azure 机器学习工作区，无需输入任何凭据。 教程[使用 Python 通过自动化机器学习训练模型](../spark/apache-spark-azure-machine-learning-tutorial.md)介绍了如何在 Synapse Spark Pools 上使用 Azure 机器学习自动化 ML 训练模型。
 
-### <a name="model-deployment-and-scoring"></a>模型部署和评分
+## <a name="model-deployment-and-scoring"></a>模型部署和评分
 
 可以轻松使用已在 Azure Synapse 中或 Azure Synapse 外部训练的模型进行批量评分。 在 Synapse 中，目前有两种方法可用于运行批量评分。
 

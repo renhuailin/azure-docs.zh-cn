@@ -3,19 +3,17 @@ title: Teams 会议互操作性
 titleSuffix: An Azure Communication Services concept document
 description: 加入 Teams 会议
 author: chpalm
-manager: chpalm
-services: azure-communication-services
 ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 15936b796e677f913e6814b29c68394a9560285d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 85616e754df0eebc76dd3dceea48dfefe4acf971
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609719"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362372"
 ---
 # <a name="teams-interoperability"></a>Teams 互操作性
 
@@ -60,9 +58,11 @@ Teams 匿名用户无需是 Teams 用户。 使用 Azure 通信服务，可以�
 
 自带标识 (BYOI) 是使用 Azure 通信服务和 Teams 互操作性的常见模型。 它支持任何标识提供者和身份验证方案。 启用的第一个方案允许你的应用程序加入 Microsoft Teams 会议，并且 Teams 会将这些用户视为匿名外部帐户，与使用 Teams 匿名 Web 应用程序加入的用户相同。 这非常适用于将员工（熟悉 Teams）和外部用户（使用自定义应用程序体验）聚集到会议体验中的企业对使用者应用程序。 今后，我们将启用其他方案，包括直接呼叫和聊天，让你的应用程序可以在 Teams 会议的上下文之外发起与 Teams 用户的呼叫和聊天。
 
-通信服务用户以匿名用户身份加入 Teams 会议的功能由现有的“允许匿名会议加入”配置控制，该配置还控制现有 Teams 匿名会议加入。  此设置可在 Teams 管理中心（ https://admin.teams.microsoft.com/meetings/settings) ）或通过 Teams PowerShell cmdlet Set-CsTeamsMeetingConfiguration（ https://docs.microsoft.com/powershell/module/skype/set-csteamsmeetingconfiguration) ）进行更新。 与 Teams 匿名会议加入一样，应用程序必须具有要加入的会议链接，该链接可通过图形 API 或 Microsoft Teams 中的日历来检索。  Teams 中显示的通信服务用户的名称可通过通信服务通话 SDK 进行配置。
+通信服务用户以匿名用户身份加入 Teams 会议的功能由现有的“允许匿名会议加入”配置控制，该配置还控制现有 Teams 匿名会议加入。  此设置可在 [Teams 管理中心](https://admin.teams.microsoft.com/meetings/settings)或通过 Teams PowerShell cmdlet [Set-CsTeamsMeetingConfiguration](/powershell/module/skype/set-csteamsmeetingconfiguration) 进行更新。 与 Teams 匿名会议加入一样，应用程序必须具有要加入的会议链接，该链接可通过图形 API 或 Microsoft Teams 中的日历来检索。  Teams 中显示的通信服务用户的名称可通过通信服务通话 SDK 进行配置。
 
-外部用户将能够通过 Azure 通信服务 SDK 使用核心音频、视频、屏幕共享和聊天功能。 举手、一起模式和分组讨论室等功能仅适用于 Teams 用户。 通信服务用户只能在参加 Teams 会议并且该会议未计划为频道时发送和接收消息。
+外部用户将能够通过 Azure 通信服务 SDK 使用核心音频、视频、屏幕共享和聊天功能。 举手、一起模式和分组讨论室等功能仅适用于 Teams 用户。 通信服务用户只能在参加 Teams 会议并且该会议未计划为频道时发送和接收消息。 
+
+可以在[聊天概念](./chat/concepts.md#message-types)中找到通信服务用户支持的消息类型列表。 可以忽略不支持的消息类型。
 
 自定义应用程序应考虑使用用户身份验证和其他安全措施来保护 Teams 会议。 请注意允许匿名用户加入会议的安全影响，并使用 [Teams 安全指南](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)配置匿名用户可用的功能。
 

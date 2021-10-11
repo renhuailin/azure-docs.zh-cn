@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 8ec795e7ad54d2101573d857fa52b5aaad0ed71d
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 20a6ced453ca49c08131917f0d22c4c7d9f759a9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032386"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278740"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>快速入门：使用 ARM 模板设置 IoT 中心设备预配服务 (DPS)
 
@@ -170,4 +170,4 @@ az group delete --name "${projectName}rg"
 在本快速入门中，你已部署 IoT 中心和设备预配服务实例，并链接了这两个资源。 若要了解如何使用此设置来预配设备，请继续学习本快速入门中关于如何创建设备的内容。
 
 > [!div class="nextstepaction"]
-> [预配设备的快速入门](./quick-create-simulated-device-symm-key.md)
+> [快速入门：预配模拟对称密钥设备](./quick-create-simulated-device-symm-key.md)

@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 08/13/2021
+ms.date: 09/29/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7bcfa8993cdfa0ab8efcbe35881921c5cf5a92cd
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0b60d1c84ca5b88f0a97d23397a25c3b9f9a5053
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182566"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273133"
 ---
 ## <a name="prerequisites"></a>先决条件
 如果还没有 [Azure 订阅](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
@@ -29,7 +29,7 @@ ms.locfileid: "122182566"
 ## <a name="send-messages-to-the-service-bus-topic"></a>向服务总线主题发送消息
 在此步骤中，你将使用示例应用程序将消息发送到在上一步中创建的服务总线主题。 
 
-1. 克隆 [GitHub azure-service-bus 存储库](https://github.com/Azure/azure-service-bus/)。
+1. 克隆 [GitHub azure-service-bus 存储库](https://github.com/Azure/azure-service-bus/)，或者下载 zip 文件并从中提取文件。 
 2. 在 Visual Studio 中转到 \samples\DotNet\Azure.Messaging.ServiceBus\ServiceBusEventGridIntegrationV2 文件夹，然后打开 SBEventGridIntegration.sln 文件 。
 3. 在解决方案资源管理器窗口中，展开“MessageSender”项目，然后选择“Program.cs” 。
 4. 将 `<SERVICE BUS NAMESPACE - CONNECTION STRING>` 替换为服务总线命名空间的连接字符串，并将 `<TOPIC NAME>` 替换为主题的名称。 

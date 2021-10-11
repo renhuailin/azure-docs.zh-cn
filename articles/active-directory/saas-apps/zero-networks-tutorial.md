@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Zero Networks 集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 Zero Networks 集成
 description: 了解如何在 Azure Active Directory 和 Zero Networks 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: c6c7baf2a1ff899e7604aa65fb3e24c2b7816712
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 533e1dee16a303931987bc83f15f929d89d38b4f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077545"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669331"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zero-networks"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zero Networks 集成
+# <a name="tutorial-azure-ad-sso-integration-with-zero-networks"></a>教程：Azure AD SSO 与 Zero Networks 集成
 
 本教程介绍如何将 Zero Networks 与 Azure Active Directory (Azure AD) 集成。 将 Zero Networks 与 Azure AD 集成后，可以：
 
@@ -35,7 +35,7 @@ ms.locfileid: "123077545"
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程在测试环境中配置并测试 Azure AD SSO。
+在本教程中，将为 Zero Networks 管理门户和访问门户配置 Azure AD SSO。
 
 * Zero Networks 支持 SP 发起的 SSO。
 
@@ -46,31 +46,18 @@ ms.locfileid: "123077545"
 
 若要配置 Zero Networks 与 Azure AD 的集成，需要从库中将 Zero Networks 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 使用 Microsoft 工作帐户登录 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Zero Networks” 。
 1. 从结果面板中选择“Zero Networks”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-sso-for-zero-networks"></a>配置并测试 Zero Networks 的 Azure AD SSO
-
-使用名为 B.Simon 的测试用户配置并测试 Zero Networks 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Zero Networks 中的相关用户之间建立链接关系。
-
-若要配置并测试 Zero Networks 的 Azure AD SSO，请执行以下步骤：
-
-1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 Zero Networks SSO](#configure-zero-networks-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Zero Networks 测试用户](#create-zero-networks-test-user)** - 在 Zero Networks 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
-
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 Azure 门户的“Zero Networks”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
+1. 在 Azure 门户中的“Civic Platform”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
@@ -88,33 +75,9 @@ ms.locfileid: "123077545"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
+## <a name="configure-zero-networks-sso&quot;></a>配置 Zero Networks SSO
 
-在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
-1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-   1. 单击“创建”。
-
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
-
-在本部分，你将通过授予 B.Simon 访问 Zero Networks 的权限，使其能够使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Zero Networks”。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
-## <a name=&quot;configure-zero-networks-sso&quot;></a>配置 Zero Networks SSO
-
-1. 以管理员身份登录到 Zero Networks 公司站点。
+1. 以管理员身份登录到 Zero Networks 管理门户。
 
 1. 导航到“设置” > “标识提供者” 。
 
@@ -134,9 +97,12 @@ ms.locfileid: "123077545"
 
     1. 单击“保存”。
 
-### <a name="create-zero-networks-test-user"></a>创建 Zero Networks 测试用户
+## <a name="configure-user-assignment-requirement"></a>配置用户分配要求
 
-在本部分，你将在 Zero Networks 中创建一个名为 Britta Simon 的用户。 请与 [Zero Networks 支持团队](mailto:support@zeronetworks.com)协作，将用户添加到 Zero Networks 平台中。 使用单一登录前，必须先创建并激活用户。
+1. 在 Azure 门户中的“Zero Networks”应用程序集成页上，找到“管理”部分并选择“属性”  。
+1. 将“需要进行用户分配?”更改为“否” 。
+
+![“需要进行用户分配”的屏幕截图。](./media/zero-networks-tutorial/user-assignment.png)
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -147,7 +113,3 @@ ms.locfileid: "123077545"
 * 直接转到 Zero Networks 登录 URL，并从那里启动登录流。
 
 * 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zero Networks 磁贴时，将会重定向到 Zero Networks 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
-## <a name="next-steps"></a>后续步骤
-
-配置 Zero Networks 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

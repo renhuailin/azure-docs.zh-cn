@@ -4,15 +4,15 @@ description: 本文提供了使用 Azure 逻辑应用通过事件网格处理服
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 08/13/2021
+ms.date: 10/04/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 013468d1b6e5ba6fccb1277f715b5a42a469f4a2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5e5089985b56ad271f3de41fc3c68f091beddffb
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182569"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457182"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用响应通过 Azure 事件网格收到的 Azure 服务总线事件
 本教程介绍如何使用 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 
@@ -24,12 +24,14 @@ ms.locfileid: "122182569"
 
 1. 在 Azure 门户中创建逻辑应用。
     1. 依次选择“+ 创建资源”、“集成”、“逻辑应用”。 
-    2. 在“逻辑应用 - 创建”页上，输入逻辑应用的 **名称**。
-    3. 选择 **Azure 订阅**。 
-    4. 为“资源组”选择“使用现有项”，然后选择以前创建的、用于其他资源（例如 Azure 函数、服务总线命名空间）的资源组。 
-    5. 选择逻辑应用的 **位置**。 
-    6. 选择“查看 + 创建”  。 
+    2. 选择 **Azure 订阅**。 
+    3. 为“资源组”选择“使用现有项”，然后选择以前创建的、用于其他资源（例如 Azure 函数、服务总线命名空间）的资源组。 
+    1. 对于“类型”，请选择“消耗” 。 
+    1. 输入逻辑应用的“名称”。
+    1. 为逻辑应用选择“区域”。 
+    1. 选择“查看 + 创建”  。 
     1. 在“查看 + 创建”页面中，选择“创建”，以创建逻辑应用 。 
+    1. 在“部署完成”页上，选择“转到资源” 。 
 1. 在“逻辑应用设计器”页上，选择“模板”下的“空白逻辑应用”。 
 
 ### <a name="add-a-step-receive-messages-from-service-bus-via-event-grid"></a>添加步骤以通过事件网格从服务总线接收消息
@@ -43,10 +45,12 @@ ms.locfileid: "122182569"
     1. 选择 Azure 订阅。 
     2. 对于“资源类型”，请选择“Microsoft.ServiceBus.Namespaces”。 
     3. 对于“资源名称”，请选择你的服务总线命名空间。 
-    4. 选择“添加新参数”，然后选择“后缀筛选器”。 
-    5. 对于“后缀筛选器”，请输入服务总线主题订阅的名称。 
+    4. 选择“添加新参数”，然后选择“后缀筛选器”，然后将焦点移到下拉列表之外 。
+    
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/add-new-parameter-suffix-filter.png" alt-text="图像显示了添加后缀筛选器的情况。":::
+    1. 对于“后缀筛选器”，请输入服务总线主题订阅的名称。 
         ![逻辑应用设计器 - 配置事件](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
-6. 在设计器中选择“+ 新建步骤”，然后执行以下步骤：
+1. 在设计器中选择“+ 新建步骤”，然后执行以下步骤：
     1. 搜索“服务总线”。
     2. 在列表中选择“服务总线”。 
     3. 在“操作”列表中选择“获取消息”。 
@@ -86,16 +90,19 @@ ms.locfileid: "122182569"
 1. 在“搜索连接器和操作”文本框中，输入“Office 365” 。 
 1. 在搜索结果中选择“Office 365 Outlook”。 
 1. 在操作列表中，选择“发送电子邮件(V2)”。 
+1. 在“发送电子邮件(V2)”窗口中，执行以下步骤： 
 1. 在“正文”文本框内部单击，然后执行以下步骤：
+    1. 对于“收件人”，请输入电子邮件地址。 
+    1. 对于“主题”，请输入“从服务总线主题的订阅收到的消息” 。  
     1. 切换到“表达式”。
-    1. 输入 `base64ToString(items('For_each')?['ContentData'])`。 
+    1. 输入以下表达式：
+    
+        ```
+        base64ToString(items('For_each')?['ContentData'])
+        ``` 
     1. 选择“确定”。 
     
-        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/specify-expression-email.png" alt-text="该插图显示“发送电子邮件”活动的“正文”表达式":::
-1. 对于“主题”，请输入“从服务总线主题的订阅收到的消息” 。  
-1. 对于“收件人”，请输入电子邮件地址。 
-
-    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/send-email-configured.png" alt-text="该插图显示已配置“发送电子邮件”活动":::
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/specify-expression-email.png" alt-text="图像显示了“发送电子邮件”活动的“正文”的表达式。":::
 
 #### <a name="add-another-action-in-the-foreach-loop-to-complete-the-message"></a>在 For each 循环中添加另一个操作以完成消息         
 1. 在“For Each”循环中，选择“添加操作” 。 
@@ -112,7 +119,7 @@ ms.locfileid: "122182569"
 
 ## <a name="test-the-app"></a>测试应用
 1. 如果尚未向主题发送测试消息，请按照[向服务总线主题发送消息](#send-messages-to-the-service-bus-topic)部分中的说明将消息发送到主题。 
-1. 切换到逻辑应用的“概述”页。 “运行历史记录”中会显示已发送的消息的逻辑应用运行。 可能需要几分钟时间，你才能看到逻辑应用运行。 选择工具栏上的“刷新”，以刷新页面。 
+1. 切换到逻辑应用的“概述”页，然后切换到底部窗格中的“运行历史记录”选项卡 。 你会看到逻辑应用运行发送到主题的消息。 可能需要几分钟时间，你才能看到逻辑应用运行。 选择工具栏上的“刷新”，以刷新页面。 
 
     ![逻辑应用设计器 - 逻辑应用运行](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 1. 选择一个逻辑应用运行，查看详细信息。 请注意，它在 for 循环中处理了 5 条消息。 

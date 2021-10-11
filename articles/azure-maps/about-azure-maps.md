@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc, references_regions
-ms.openlocfilehash: e4c9ff1585be0545e93a23772ebd0d05156e1351
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f9b307aeba76f3d5c5ef43ad88f86163b7fc2f57
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728008"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273849"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -25,7 +25,7 @@ Azure Maps 是一系列地理空间服务和 SDK，它使用全新地图绘制�
 * 各种路线规划选项，例如地点到地点、多地点、多地点优化、等时线、电动车、商务车、受影响的交通，以及路网路线。
 * 交通情况视图和事故视图，适用于需要实时交通信息的应用程序。
 * 出行服务（预览版），用于通过结合不同的出行模式和实时到达时间来请求公共交通信息和规划路线。
-* 时区和地理位置（预览版）服务。
+* 时区和地理位置服务。
 * 具有数字高程模型的高程服务
 * 地理围栏和地图数据存储，其中的位置信息托管在 Azure 中。
 * 通过地理空间分析进行智能定位。
@@ -62,13 +62,13 @@ Azure Maps 包含以下可在 Azure 应用程序中提供地理上下文的服�
 
 数据对于地图至关重要。 使用数据服务上传和存储地理空间数据，以用于空间操作或图像合成。  使客户数据靠近 Azure Maps 服务可以降低延迟、提高工作效率，并在应用程序中创建新方案。 有关此服务的详细信息，请访问[数据服务文档](/rest/api/maps/data-v2)。
 
-### <a name="geolocation-service-preview"></a>地理位置服务（预览版）
+### <a name="geolocation-service"></a>地理位置服务
 
-使用地理位置服务预览检索的 IP 地址的双字母国家/地区代码。 此服务可基于地理位置通过提供自定义的应用程序内容帮助你增强用户体验。
+使用地理位置服务检索 IP 地址的双字母国家/地区代码。 此服务可基于地理位置通过提供自定义的应用程序内容帮助你增强用户体验。
 
 有关更多详细信息，请参阅[地理位置服务文档](/rest/api/maps/geolocation)。
 
-### <a name="mobility-services-preview"></a>出行服务（预览版） 
+### <a name="mobility-services-preview"></a>出行服务（预览版）
 
 Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规划和搜索附近的公交站点）的应用程序的开发时间。 用户可以检索有关公交站点、线路和时刻表的详细信息。 通过出行服务，用户还可以检索停靠站点和线路的几何形状，停靠站点、线路和服务区的警报以及实时的公交到达时间和服务警报。 此外，出行服务还提供具有多式联运行程规划选项的路线规划功能。 多式联运行程规划在一个行程中融合了步行、骑行和公共交通选项。 用户还可以访问详细的多式联运分步行程。
 
@@ -76,7 +76,7 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 ### <a name="render-service"></a>呈现服务
 
-[呈现服务 V2（预览版）](/rest/api/maps/renderv2)引入了 [Get Map Tile V2 API](/rest/api/maps/render-v2/get-map-tile) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
+[呈现服务 V2](/rest/api/maps/renderv2) 引入了 [Get Map Tile V2 API](/rest/api/maps/render-v2/get-map-tile) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="来自呈现服务 V2 的地图示例":::
 
@@ -206,16 +206,11 @@ Azure Maps 高程服务是一项 Web 服务，开发人员可以使用该服务�
 
 :::image type="content" source="./media/about-azure-maps/elevation.png" alt-text="带有高程数据的地图示例":::
 
-
 ## <a name="programming-model"></a>编程模型
 
 Azure Maps 针对移动设备设计，可帮助你开发跨平台应用程序。 它使用语言无关的编程模型，并通过 [REST API](/rest/api/maps/) 支持 JSON 输出。
 
 此外，Azure Maps 还通过简单的编程模型提供了一个便利的 [JavaScript 地图控件](/javascript/api/azure-maps-control)。 Web 和移动应用程序的开发都快速而简单。
-
-
-
-
 
 ## <a name="power-bi-visual"></a>Power BI 视觉对象
 
@@ -231,7 +226,8 @@ Power BI 的 Azure Maps 视觉对象提供了一组丰富的数据可视化效�
 
 Azure Maps 使用基于密钥的身份验证方案。 创建帐户时，将生成两个密钥。 若要验证 Azure Maps 服务，可以使用其中任一密钥。
 
-注意：Azure Maps 将与第三方 TomTom 共享客户提供的地址/位置查询（简称“查询”），以实现地图功能。 与 TomTom 共享时，查询不会链接到任何客户或最终用户，也不能用于识别个人。 与 Moovit 和 AccuWeather 集成的出行服务和天气服务目前提供[预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> [!NOTE]
+> Azure Maps 将与第三方 TomTom 共享客户提供的地址/位置查询（简称“查询”），以实现地图功能。 与 TomTom 共享时，查询不会链接到任何客户或最终用户，也不能用于识别个人。 与 Moovit 集成的出行服务目前提供[预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Microsoft 目前正在向“联机服务分包商”列表添加 TomTom、Moovit 和 AccuWeather。
 

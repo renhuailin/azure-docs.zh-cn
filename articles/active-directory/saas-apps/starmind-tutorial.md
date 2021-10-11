@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Starmind 的集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 Starmind 集成
 description: 了解如何在 Azure Active Directory 和 Starmind 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ecccc0bf05dfc4e27835a676748ca144c6bcc6c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 535abbd360ffb3bbc2d07c8cc23491874679b813
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521979"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669315"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-starmind"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Starmind 的集成
+# <a name="tutorial-azure-ad-sso-integration-with-starmind"></a>教程：Azure AD SSO 与 Starmind 集成
 
 本教程介绍如何将 Starmind 与 Azure Active Directory (Azure AD) 集成。 将 Starmind 与 Azure AD 集成可以实现以下功能：
 
@@ -37,10 +37,10 @@ ms.locfileid: "92521979"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Starmind 支持 SP 启动的 SSO
-* Starmind 支持实时用户预配
+* Starmind 支持 SP 发起的 SSO。
+* Starmind 支持实时用户预配。
 
-## <a name="adding-starmind-from-the-gallery"></a>从库中添加 Starmind
+## <a name="add-starmind-from-the-gallery"></a>从库中添加 Starmind
 
 若要配置 Starmind 与 Azure AD 的集成，需要从库中将 Starmind 添加到托管 SaaS 应用的列表。
 
@@ -50,7 +50,6 @@ ms.locfileid: "92521979"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Starmind” 。
 1. 从结果面板中选择“Starmind”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-starmind"></a>配置并测试 Starmind 的 Azure AD SSO
 
@@ -71,23 +70,22 @@ ms.locfileid: "92521979"
 
 1. 在 Azure 门户中的 Starmind 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com`。
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint`
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com`。
 
     d. 在“注销 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint`
 
-
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“登录 URL”、“标识符”、“回复 URL”和“注销 URL”值更新这些值。 请联系 [Starmind 客户端支持团队](mailto:support@starmind.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的标识符、回复 URL、登录 URL 和注销 URL 更新这些值。 请联系 [Starmind 客户端支持团队](mailto:support@starmind.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -133,11 +131,11 @@ ms.locfileid: "92521979"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Starmind 登录 URL，可以从那里启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Starmind 登录 URL，可以从那里启动登录流。 
 
-2. 直接转到 Starmind 登录 URL，并从那里启动登录流。
+* 直接转到 Starmind 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Starmind 磁贴时，将会重定向到 Starmind 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Starmind 磁贴后，会重定向到 Starmind 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

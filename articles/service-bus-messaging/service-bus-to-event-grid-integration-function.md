@@ -4,15 +4,15 @@ description: 本文提供了使用 Azure Functions 通过事件网格处理服�
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/29/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb18eb5df675690a6bb5b796349c140a61949df1
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 46dc7a9ac1b985c116162f60c58afb0e8dff9c3a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "122206979"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273134"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>教程：使用 Azure Functions 响应通过 Azure 事件网格收到的 Azure 服务总线事件
 本教程介绍如何使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 
@@ -44,6 +44,8 @@ ms.locfileid: "122206979"
 1. 在“发布”向导的“目标”页面上，为“目标”选择“Azure”   。 
 1. 在“特定目标”页面上，选择“Azure 函数应用(Windows)” 。 
 1. 在“函数实例”页面上，选择“创建新的 Azure 函数” 。 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/add-function-button.png" alt-text="图像显示 Visual Studio 的“添加函数”按钮 -“发布”对话框。":::
 1. 在“函数应用(Windows)”页面上，执行以下步骤：
     1. 输入函数应用的名称。
     1. 选择 Azure 订阅。

@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: adbb2979fc9e097fa0abf2675759ba1f7aad8a0c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: fffd56c05fc3389a6f10ade5b565a760b842a2ca
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310571"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358215"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>教程：使用 OpenSSL 创建测试证书
 
@@ -285,10 +285,10 @@ openssl x509 -in mycert.crt -out mycert.pem -outform PEM
  
   ```
 
-10. 使用根 CA 配置文件和所有权证明证书的 CSR 创建证书。
+10. 使用从属 CA 配置文件和所有权证明证书的 CSR 创建证书。
 
   ```bash
-    openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
+    openssl ca -config subca.conf -in pop.csr -out pop.crt -extensions client_ext
 
   ```
 
@@ -314,7 +314,7 @@ openssl x509 -in mycert.crt -out mycert.pem -outform PEM
 openssl genpkey -out device.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
 ```
 
-为密钥创建证书签名请求 (CSR)。 无需输入质询密码或可选公司名称。 但是，必须在“公用名”字段中输入设备 ID。
+为密钥创建证书签名请求 (CSR)。 无需输入质询密码或可选公司名称。 但是，必须在“公用名”字段中输入设备 ID。 还可以为其他参数（例如“国家/地区”、“组织名称”等）输入自己的值 。
 
 ```bash
 openssl req -new -key device.key -out device.csr
@@ -349,4 +349,8 @@ openssl ca -config subca.conf -in device.csr -out device.crt -extensions client_
 
 ## <a name="next-steps"></a>后续步骤
 
-前往[“测试证书身份验证”](tutorial-x509-test-certificate.md)，以确定证书是否可在 IoT 中心对设备进行身份验证。
+前往[“测试证书身份验证”](tutorial-x509-test-certificate.md)，以确定证书是否可在 IoT 中心对设备进行身份验证。 该页上的代码要求使用 PFX 证书。 使用以下 OpenSSL 命令将设备 .crt 证书转换为 .pfx 格式。
+
+```bash
+openssl pkcs12 -export -in device.crt -inkey device.key -out device.pfx
+```

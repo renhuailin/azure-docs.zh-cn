@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d563f8a188496918997d54e06594d282ebaa67ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 755c3eaf90cd12fcebc032f33189fb07c6ce9d1a
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637943"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234274"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -191,7 +191,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
+> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。 
 
 > [!NOTE]
 >如果不使用 AD FS 作为本地联合身份验证服务，请按供应商的说明操作，确保供应商支持 WS-Trust 1.3 或 2005 终结点，并且已通过元数据交换文件 (MEX) 发布这些终结点。

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ice Contact Center 的单一登录 (SSO) 集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 ice Contact Center 集成
 description: 了解如何在 Azure Active Directory 与 ice Contact Center 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/09/2021
+ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: cf9e228769531095ae4e8b6629b2377af2df3a0c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: df556e930bd570960080233bc17e77c0bcc5510f
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124790655"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401040"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ice-contact-center"></a>教程：Azure Active Directory 与 ice Contact Center 的单一登录 (SSO) 集成
+# <a name="tutorial-azure-ad-sso-integration-with-ice-contact-center"></a>教程：Azure AD SSO 与 ice Contact Center 集成
 
 本教程介绍如何将 ice Contact Center 与 Azure Active Directory (Azure AD) 集成。 将 ice Contact Center 与 Azure AD 集成后，可以：
 
@@ -32,6 +32,9 @@ ms.locfileid: "124790655"
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 ice Contact Center 单一登录 (SSO) 的订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
