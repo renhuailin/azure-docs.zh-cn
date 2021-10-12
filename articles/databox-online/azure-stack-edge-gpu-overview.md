@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 08/12/2021
+ms.date: 10/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a61178917214e53f6a2d01183a3d35a1ba93eff3
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 551933814b034c3ac6370e4fe25ffe93fc616a4a
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429659"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544975"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>什么是 Azure Stack Edge Pro with GPU？
 
@@ -42,19 +42,20 @@ Azure Stack Edge Pro GPU 具有以下功能：
 
 |功能 |说明  |
 |---------|---------|
-|加速 AI 推断| 由内置 GPU 启用（一个或两个取决于型号）。|
-|边缘计算      |支持 VM 和容器化工作负载，以允许分析、处理和筛选数据。 |
+|加速 AI 推断| 由内置 GPU 启用（一个或两个取决于型号）。 <br> 有关详细信息，请参阅 [Azure Stack Edge 设备上的 GPU 共享](azure-stack-edge-gpu-sharing.md)。|
+|边缘计算      |支持 VM 和容器化工作负载，以允许分析、处理和筛选数据。 <ul><li>有关 VM 工作负荷的信息，请参阅 [Azure Stack Edge 上的 VM 概述](azure-stack-edge-gpu-virtual-machine-overview.md)。</li> <li>有关容器化工作负荷，请参阅 [Azure Stack Edge 上的 Kubernetes 概述](azure-stack-edge-gpu-kubernetes-overview.md)。</li></ul> |
 |数据访问     | 使用云 API 从 Azure 存储 Blob 和 Azure 文件中直接访问数据，以便在云中进行其他数据处理。 设备带有本地缓存，以便快速访问最近使用的文件。|
-|云托管     |设备和服务通过 Azure 门户进行管理。  |
+|云托管     |设备和服务通过 Azure 门户进行管理。|
 |离线上传     | 离线模式支持离线上传方案。|
 |支持的文件传输协议      | 支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关受支持版本的详细信息，请参阅 [Azure Stack Edge Pro GPU 系统要求](azure-stack-edge-system-requirements.md)。|
-|数据刷新     | 可以使用云中的最新内容刷新本地文件。|
+|数据刷新     | 可以使用云中的最新内容刷新本地文件。 <br> 有关详细信息，请参阅[刷新 Azure Stack Edge 上的共享](azure-stack-edge-gpu-manage-shares.md#refresh-shares)。|
 |加密    | BitLocker 支持本地加密数据，并通过 *http* 安全地将数据传输到云中。|
-|带宽限制| 中止以限制在高峰时段使用带宽。|
-|轻松排序| 通过 Azure Edge Hardware Center（预览版）对设备进行批量排序和跟踪。|
+|带宽限制| 中止以限制在高峰时段使用带宽。 <br> 有关详细信息，请参阅[管理 Azure Stack Edge 上的带宽计划](azure-stack-edge-gpu-manage-bandwidth-schedules.md)。|
+|轻松排序| 通过 Azure Edge Hardware Center（预览版）对设备进行批量排序和跟踪。 <br> 有关详细信息，请参阅[通过 Azure Edge Hardware Center 订购设备](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)。|
 |专用网络功能|使用 Azure 网络功能管理器的“市场”体验将网络功能（如移动数据包核心、SD-WAN edge 和 VPN 服务）快速部署到在本地环境中运行的 Azure Stack Edge 设备。 有关详细信息，请参阅[什么是 Azure 网络功能管理器（预览版）](../network-function-manager/overview.md)？|
 
 <!--|ExpressRoute | Added security through ExpressRoute. Use peering configuration where traffic from local devices to the cloud storage endpoints travels over the ExpressRoute. For more information, see [ExpressRoute overview](../expressroute/expressroute-introduction.md).|-->
+
 
 ## <a name="components"></a>组件
 

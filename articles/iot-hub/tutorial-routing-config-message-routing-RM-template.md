@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/24/2021
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 6a5f21153936313a209bb5971c1a7c6bd7a9e973
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: e23eb5b3c3aa85aaa941839234a17e9bd7afb318
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969326"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458996"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>教程：使用 Azure 资源管理器模板配置 IoT 中心消息路由
 
@@ -29,7 +29,7 @@ ms.locfileid: "122969326"
 
 在本教程的第二部分，我们将下载并运行一个 Visual Studio 应用程序，以将消息发送到 IoT 中心。 该下载内容的某个文件夹中包含 Azure 资源管理器模板和参数文件，以及 Azure CLI 和 PowerShell 脚本。
 
-现在请继续下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 资源管理器模板和参数文件位于 /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ 中，其文件名分别为 **template_iothub.json** 和 **template_iothub_parameters.json**。
+现在请继续下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)。 解压 main.zip 文件。 资源管理器模板和参数文件位于 /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ 中，其文件名分别为 **template_iothub.json** 和 **template_iothub_parameters.json**。
 
 ## <a name="create-your-resources"></a>创建资源
 

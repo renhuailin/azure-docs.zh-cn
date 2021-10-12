@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中使用备份和恢复服务还原磁盘并
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7f4d70f43f76c3a72cd8e53037d06d32e61c3cdb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0de37086f3b7a968b69318ebe7bb73689812373a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768487"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537211"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>使用 Azure CLI 还原 VM
 
@@ -163,6 +163,12 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 ```
 
 如果还原作业的“状态”报告为“完成”，则系统已将必要的信息（VM 配置和部署模板）还原到存储帐户 。
+
+#### <a name="using-managed-identity-to-restore-disks"></a>使用托管标识来还原磁盘
+
+Azure 备份还允许在还原操作期间使用托管标识 (MSI) 来访问必须将磁盘还原到的存储帐户。 目前仅托管磁盘还原支持此选项。
+
+如果要使用保管库的系统分配的托管标识来还原磁盘，请向 [az backup restore restore-disks](/cli/azure/backup/restore#az_backup_restore_restore_disks) 命令传递附加标志 --mi-system-assigned。*_ 如果要使用用户分配的托管标识，请传递参数 --mi-user-assigned，并将保管库的托管标识的 ARM ID 作为参数的值。 _*_ _** 请参阅[此文](encryption-at-rest-with-cmk.md#enable-managed-identity-for-your-recovery-services-vault)，了解如何为保管库启用托管标识。 
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>从还原的磁盘创建 VM
 

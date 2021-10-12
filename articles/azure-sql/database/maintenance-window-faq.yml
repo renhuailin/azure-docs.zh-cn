@@ -10,83 +10,88 @@ metadata:
   ms.author: wiassaf
   ms.reviewer: mathoma
   ms.custom: 
-  ms.date: 03/23/2021
-  ms.openlocfilehash: 48d46ca71d76d46cb43fbed8fee8dcbe67e4ce3d
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.date: 09/30/2021
+  ms.openlocfilehash: 608c13253f93f18a8bb1ef59b7af1501077f2c95
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121739689"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129358462"
 title: 维护时段常见问题解答
 summary: 本文解答有关 [Azure SQL 数据库](sql-database-paas-overview.md)和 [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)维护时段的常见问题。
 sections:
 - name: 常规
   questions:
-  - question: What is the maintenance window feature?
+  - question: 维护时段功能是什么？
     answer: >
-      The maintenance window feature provides you with the ability to onboard Azure SQL resource to prescheduled time blocks outside of business hours. See [Maintenance window schedules](maintenance-window.md#gain-more-predictability-with-maintenance-window) for more information.
-  - question: What is the default maintenance policy if I do not choose any specific window?
-    answer: "Maintenance events will occur during the default window 5PM to 8AM local time, Monday - Sunday. \n"
-  - question: Users work in a different time zone than the Azure data center. Which time zone is local?
+      通过维护时段功能，可以将 Azure SQL 资源载入预安排的工作时间以外的时间块。 有关详细信息，请参阅[维护时段计划](maintenance-window.md#gain-more-predictability-with-maintenance-window)。
+  - question: 如果未选择任何特定时段，默认的维护策略是什么？
+    answer: "维护事件将在当地时间周一至周日下午 5 点至上午 8 点这一默认时段内发生。 \n"
+  - question: 用户工作的时区与 Azure 数据中心不同。 哪个时区是本地时区？
     answer: >
-      Local time is determined by the location of Azure region that hosts the resource and may observe daylight saving time in accordance with local time zone definition. It is not determined by the time zone configured on SQL database (always UTC) or managed instance.
-  - question: Can I choose a specific time/day for the maintenance window?
-    answer: "No, you can choose between pre-scheduled weekday or weekend windows. The maintenance can happen any time or day within the window.  \n"
-  - question: What happens once I choose a maintenance window?
+      当地时间由承载资源的 Azure 区域 的位置确定，并根据当地时区定义遵守夏令时。 它不是由在 SQL 数据库（始终是 UTC）或托管实例上配置的时区决定的。
+  - question: 是否可对维护时段选择特定的时间/日期？
+    answer: "不可以，可在预先计划的工作日或周末时段之间进行选择。 维护可在时段中的任何时间或日期执行。  \n"
+  - question: 选择维护时段后会出现什么情况？
     answer: >
-      Configuring maintenance window is a long running asynchronous operation, similar to changing the service tier of your Azure SQL resource. The resource is available during the process, except a short reconfiguration that happens at the end of the operation and typically lasts up to 8 seconds even in case of interrupted long-running transactions. To minimize the impact of the reconfiguration you should perform the operation outside of the peak hours. In case of managed instance, IP address of the instance will change.
-  - question: What types of updates are typically performed during a maintenance window?
+      配置维护时段是一种长时间运行的异步操作，类似于更改 Azure SQL 资源的服务层级。 该资源在此过程中可用，只在操作结束时会发生短暂的重新配置，即使在长期运行的事务中断的情况下，通常最多也仅持续 8 秒。 若要将重新配置的影响降至最低，应在高峰时段之外执行操作。 对于托管实例，实例的 IP 地址将会更改。
+  - question: 在维护时段内通常会执行哪些类型的更新？
     answer: >
-      The maintenance event may contain updates for hardware, firmware, operating system, satelite software components, and SQL engine. They are typically combined into a single batch to minimize the incidence of maintenance events.
-  - question: What can I expect during a maintenance event?
+      维护事件可能包含硬件、固件、操作系统、卫星软件组件和 SQL 引擎的更新。 它们通常合并为单个批，以最大限度地减少维护事件的发生。
+  - question: 维护事件期间会发生什么？
     answer: >
-      During a maintenance update, databases are fully available and accessible but some of the maintenance updates require a reconfiguration as Azure takes SQL Databases offline for a short time to apply the maintenance updates (generally a few seconds in duration). Planned maintenance updates occur once every 35 days on average, which means customer can expect approximately one planned maintenance event per month per Azure SQL Database and managed instance, and only during the maintenance window slots selected by the customer.
-  - question: Are there any prerequisites for configuring maintenance window?
+      在维护更新期间，数据库是完全可用且可访问的，但一些维护更新需要重新配置，因为 Azure 会让 SQL 数据库脱机一小段时间来应用维护更新（通常持续几秒钟）。计划内维护更新平均每 35 天发生一次，这意味着客户可以预计每个 Azure SQL 数据库和托管实例每月大约会发生一次计划内维护事件，并且仅在客户选择的维护时段槽期间发生。
+  - question: 配置维护时段是否有任何先决条件？
     answer: >
-      In case of managed instance [additional IP addresses](../managed-instance/vnet-subnet-determine-size.md#update-scenarios) are needed temporarily, as in scaling vCores scenario for corresponding service tier.
-  - question: In which regions is choosing a maintenance window available?
+      对于托管实例，临时需要[额外的 IP 地址](../managed-instance/vnet-subnet-determine-size.md#update-scenarios)，就像针对相应的服务层级缩放 vCore 的场景中一样。
+  - question: 在哪些区域可以选择维护时段？
     answer: >
-      For a list of available regions, see [Maintenance window availability](maintenance-window.md#availability).
-  - question: I don’t see my region in the available regions list, what can I do?
-    answer: "Contact [azsqlcmfeedback@microsoft.com](mailto:azsqlcmfeedback@microsoft.com) to share the feedback and check the plans for your region. \n"
-  - question: What is the pricing for maintenance window?
+      有关可用区域的列表，请参阅[维护时段可用性](maintenance-window.md#availability)。
+  - question: 在可用区域列表中看不到我的区域，该怎么办？
+    answer: "联系 [azsqlcmfeedback@microsoft.com](mailto:azsqlcmfeedback@microsoft.com)，分享反馈并检查你所在区域的计划。 \n"
+  - question: 维护时段的定价是多少？
     answer: >
-      Configuring and using maintenance window is free of charge to all eligible Azure subscription types, see [Maintenance window cost](maintenance-window.md#cost-and-eligibility).
-  - question: Would I receive a notification of the maintenance window?
+      配置和使用维护时段对所有符合条件的 Azure 订阅类型都是免费的；请参阅[维护时段成本](maintenance-window.md#cost-and-eligibility)。
+  - question: 我是否会收到有关维护时段的通知？
     answer: >
-      You can opt in to receive notification 24 hours prior to the maintenance event, immediately before maintenance starts, and when the maintenance window is completed. The Resource health center can be checked for more information. To receive emails, advance notification must be configured, for more information see [Advance notifications](advance-notifications.md).
-  - question: In which service level objectives (SLOs) can I choose a maintenance window?
+      可选择在维护事件前 24 小时、维护即将开始前以及维护时段完成时接收通知。 可检查资源运行状况中心以了解详细信息。 若要接收电子邮件，必须配置提前通知；有关详细信息，请参阅[提前通知](advance-notifications.md)。
+  - question: 可在哪个服务级别目标 (SLO) 中选择维护时段？
     answer: >
-      Choosing a maintenance window is available in most SLOs with some exceptions, see [maintenance window supported service level objectives](maintenance-window.md#supported-service-level-objectives).
-  - question: If I have selected a maintenance window for a resource, and I downscale to a service level objective (SLO) where choosing a maintenance window is not supported, what happens to my database?
+      可在大多数 SLO 中选择维护时段，但有一些例外情况；请参阅[维护时段支持的服务级别目标](maintenance-window.md#supported-service-level-objectives)。
+  - question: 如果为资源选择了维护时段，并且缩减到一个不支持选择维护时段的服务级别目标 (SLO)，数据库会发生什么情况？
     answer: >
-      In this case, the maintenance window would revert to the default option which is 5PM to 8AM local time.
-  - question: Can I cancel or postpone a planned maintenance event based on the received notification?
+      在这种情况下，维护时段会还原为默认选项，即本地时间下午 5 点至上午 8 点。
+  - question: 能否根据收到的通知取消或推迟计划内维护事件？
     answer: >
-      No. Cancelling or postponing an upcoming maintenance event is not supported. Notifications help you to prepare for the event.
-  - question: How long does it take to process a maintenance window schedule change?
-    answer: "You can choose a different maintenance window at any time, but changes may take up to 24 hours to take effect. \n"
-  - question: What happens when a maintenance event fails?
-    answer: "Although rare, failures or interruptions during a maintenance event can occur.  In the event of a failure, changes are rolled back and the maintenance will be rescheduled to another time.    \n"
-  - question: How do I validate that my databases are set up for maintenance window?
+      不是。 不支持取消或推迟即将发生的维护事件。 通知有助于你为该事件做好准备。
+  - question: 处理维护时段计划更改需要多长时间？
+    answer: "可随时选择其他维护时段，但更改可能需要长达 24 小时才能生效。 \n"
+  - question: 维护事件失败时会发生什么情况？
+    answer: "虽然很少见，但在维护事件期间可能会出现故障或中断。  如果出现故障，更改将回滚，维护将被重新安排到其他时间。    \n"
+  - question: 如何验证数据库是否设置了维护时段？
     answer: >
-      Under settings of the Azure resource, the maintenance tab allows you to review and change the current maintenance plan schedule. You can also review and set the maintenance window schedules for multiple resources via PowerShell, CLI, or Azure API.
-  - question: Can I configure a different maintenance window for each Azure SQL database in an elastic pool?
+      在 Azure 资源的“设置”下，可通过“维护”选项卡查看和更改当前维护计划安排。 还可通过 PowerShell、CLI 或 Azure API 查看并设置多个资源的维护时段计划。
+  - question: 是否可为弹性池中的每个 Azure SQL 数据库配置不同的维护时段？
     answer: >
-      If the database is part of an elastic pool, the maintenance window configuration of the elastic pool will be applied. Single databases outside of an elastic pool can have their own maintenance window configuration.
-  - question: What are supported options to configure a maintenance window for an existing Azure SQL Database or SQL managed instance?
+      如果数据库是弹性池的一部分，则将应用弹性池的维护时段配置。 弹性池之外的单一数据库可以有自己的维护时段配置。
+  - question: 为现有 Azure SQL 数据库或 SQL 托管实例配置维护时段的支持选项有哪些？
     answer: >
-      Azure Portal, PowerShell, Azure CLI, and REST API.
-  - question: Can I configure a maintenance window during database restore, recovery, copy, import, or GeoDR scenarios?
+      Azure 门户、PowerShell、Azure CLI 和 REST API。
+  - question: 是否可在数据库还原、恢复、复制、导入或 GeoDR 场景期间配置维护时段？
     answer: >
-      Not at this moment. The maintenance window can be configured once database is created.
+      目前不可。 创建数据库后，可配置维护时段。
+  - question: 我选择了默认维护时段。 我能否为此维护启用提前通知？
+    answer: >
+      否，无法为默认维护时段选项配置提前通知。 选择维护时段时，请选择系统默认以外的选项来配置和启用提前通知。
+  - question: 我无法为计划内维护设置提前通知，我是否仍会在服务运行状况仪表板中看到计划内维护事件？
+    answer: "否，如果未配置提前通知，则服务运行状况不会显示计划内维护事件。 \n"
 additionalContent: >-
-  ## See Also
+  ## <a name="see-also"></a>另请参阅
 
-  - [Maintenance window](maintenance-window.md)
+  - [维护时段](maintenance-window.md)
 
-  - [Configure maintenance window](maintenance-window-configure.md)
+  - [配置维护时段](maintenance-window-configure.md)
 
-  - [Configure maintenance window notifications](advance-notifications.md)
+  - [配置维护时段通知](advance-notifications.md)
 
-  - [Plan for Azure maintenance events in Azure SQL Database and Azure SQL Managed Instance](planned-maintenance.md)
+  - [在 Azure SQL 数据库和 Azure SQL 托管实例中计划 Azure 维护事件](planned-maintenance.md)

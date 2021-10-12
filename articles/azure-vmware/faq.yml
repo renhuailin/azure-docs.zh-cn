@@ -5,13 +5,13 @@ metadata:
   ms.topic: article
   ms.service: azure-vmware
   ms.custom: contperf-fy21q4
-  ms.date: 08/19/2021
-  ms.openlocfilehash: 716605f2a617d5f02d93596e760156b58f9ddcb2
-  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+  ms.date: 09/29/2021
+  ms.openlocfilehash: 80610860b6af94e79a792d15af82041f65980b73
+  ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/20/2021
-  ms.locfileid: "122514660"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129458825"
 title: 有关 Azure VMware 解决方案的常见问题
 summary: 本文将解答有关 Azure VMware 解决方案的常见问题。
 sections:
@@ -36,18 +36,14 @@ sections:
     answer: 对于新的 Azure VMware 解决方案，Microsoft 与 VMware 具有云服务提供商直接合作伙伴关系。 新解决方案由 Microsoft 设计、构建及提供支持，并已获得 VMware 认可。 两种解决方案的体系结构是一致的，即都是在 Azure 专用基础结构上运行 VMware 技术堆栈。
 - name: 计费
   questions:
-  - question: 在预览期间将如何计费？
-    answer: 在预览期间，计费方式是每月即用即付。 在正式发布 (GA) 后会提供其他选项。
   - question: 发生故障时，是否替换磁盘上的 SLA？
     answer: 磁盘出现问题的任何主机都会被替换。 此操作可将 Azure VMware 解决方案的 SLA 可用性提升至 99.9。
   - question: 如何建立 Azure VMware 解决方案的定价策略？
     answer: 有关定价的一般问题，请参阅 Azure VMware 解决方案[定价](https://azure.microsoft.com/pricing/details/azure-vmware)页面。
   - question: VMware HCX Enterprise 是否可用？如果是，如何收费？
-    answer: VMware HCX Enterprise 可作为预览功能/服务在 Azure VMware 解决方案中提供。 虽然适用于 Azure VMware 解决方案的 VMware HCX Enterprise 为预览版，但其是一项需要遵守预览版服务条款和条件的免费功能/服务。 一旦正式发布 VMware HCX Enterprise 服务，你将会在 30 天后收到一则转换账单计费方法的通知。 在此之后，你可以关闭或选择退出该项服务。
+    answer: 如果计划使用 VMware HCX Enterprise，请确保已通过支持请求启用 [VMware HCX Enterprise](https://rc.portal.azure.com/#create/Microsoft.Support) 附加产品。 这是 Azure VMware 解决方案中的 12 个月免费试用版。
   - question: 对于通过 ExpressRoute 在本地与 Azure VMware 解决方案之间传输的流量，是否会根据数据流量套餐产生任何出站数据传输费用？
     answer: "Azure VMware 解决方案 ExpressRoute 线路中的流量不会以任何方式计费。 通过 ExpressRoute 线路连接到本地以及 Azure 产生的流量根据 ExpressRoute 定价计划收费。\n\n- Azure VMware 解决方案到 vNet 是通过内部 ExpressRoute 线路实现的，在与 Azure VMware 解决方案相同的区域内免费。 但是，如果内部 ExpressRoute 线路是跨区域连接，则会收取数据传输费用。\n\n- Azure VMware 解决方案到本地是通过 vNet 或 ExpressRoute Global Reach（在内部 ExpressRoute 与外部 ExpressRoute 之间）实现的。 如果是在部署 Azure VMware 解决方案的区域内连接到 vNet（如上所述）或使用 ExpressRoute Global Reach，则仍然免费。 \n"
-  - question: 试用版 Azure VMware 解决方案群集的计费何时开始，何时结束？
-    answer: 试用版群集限定为 3 台主机，可用于对 Azure VMware 解决方案私有云进行为期 30 天的评估。 30 天后，群集将按各自的费率自动开始计费。 如果在 30 天的结束日期之前删除了试用版群集，则 Azure VMware 解决方案试用版也将在删除时结束试用。
   - question: 从本地 VM 环境使用 L2 扩展进行迁移时，是否有必要购买除 AV36 实例外的其他 VMware 许可和资源？
     answer: "不需要，无需购买 Azure VMware 解决方案服务以外的其他 VMware 许可。 有关详细信息，请参阅 [Azure VMware 解决方案定价页](https://azure.microsoft.com/pricing/details/azure-vmware/)，了解包含的 VMware 技术。     \n"
 - name: 支持
@@ -161,6 +157,8 @@ sections:
     answer: Azure 虚拟 WAN 不提供两个已连接 ExpressRoute 线路和非虚拟 WAN ExpressRoute 网关之间的传递路由。 借助 ExpressRoute Global Reach，你便可在本地与 Azure VMware 解决方案之间建立连接，但却是通过 Microsoft 全球网络而不是虚拟 WAN 集线器进行连接。
   - question: NSX-T 中是否支持 Windows 2008 作为 Active Directory (AD) 服务器或远程桌面会话主机 (RDSH) 操作系统？
     answer: 否。
+  - question: 为何我无法从本地或 Azure 虚拟网络访问 Azure VMware 解决方案 vCenter Server 设备和 NSX-T Manager？
+    answer: "按照设计，如果只是通过 Azure VMware 解决方案与本地 ExpressRoute 之间的 ExpressRoute Global Reach 或通过 Azure 虚拟网络将 0.0.0.0/0（默认路由）播发到 Azure VMware 解决方案，则无法访问 NSX-T Manager 和 vCenter Server Appliance (VCSA)。 需要播发特定的网络路由/子网才能访问 NSX-T Manager 和 VCSA。 \n"
 - name: 存储
   questions:
   - question: 重复数据删除设置的正确存储策略是什么？
@@ -197,12 +195,8 @@ sections:
     answer: 可以，只要为私有云分配配额，便可横向扩展群集。 当工作负载需求下降时，可以从群集中删除节点，以便缩减群集。 此操作可以通过 Azure VMware 解决方案门户执行。
   - question: 是否共享了底层基础结构？
     answer: 没有，私有云主机和群集是专用的，在使用前后都会安全擦除。
-  - question: 每个群集的最小和最大主机数是多少？
-    answer: 群集可以在 3 台（最少）至 16 台（最多）ESXi 主机之间进行缩放。 试用群集限制为 3 个主机。
-  - question: 可以缩放私有云群集吗？
-    answer: 可以，群集可以在 3 台（最少）至 16 台（最多）ESXi 主机之间进行缩放。
-  - question: 什么是试用群集？
-    answer: 试用群集设有 3 台主机限制，可用于对 Azure VMware 解决方案私有云进行为期一个月的评估。
+  - question: 每个群集的最小和最大主机数是多少？ 可以缩放私有云群集吗？
+    answer: 群集可以在 3 台（最少）至 16 台（最多）ESXi 主机之间进行缩放。
 - name: 身份管理
   questions:
   - question: 我可以通过新的 Azure VMware 解决方案私有云获得哪些帐户和特权？

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-nodejs
 ms.date: 04/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5b7c080e532a7a8cb220a501fb7239300b3f2d3e
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 2b553548111c732ca778c439232e949b0abb4707
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712867"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388596"
 ---
 # <a name="tutorial-stream-live-with-media-services-by-using-nodejs-and-typescript"></a>教程：使用 Node.js 和 TypeScript 通过媒体服务进行实时流式传输
 
@@ -65,7 +65,7 @@ ms.locfileid: "109712867"
 
   - 编码器：NVIDIA NVENC（如果可用）或 x264
   - 速率控制：CBR
-  - 比特率：2500 Kbps（或适合你的计算机的速率）
+  - 比特率：2,500 Kbps（或适合你的计算机的速率）
   - 关键帧间隔：2 秒；若要获得低延迟，则为 1 秒  
   - 预设：低延迟质量或性能 (NVENC)，或使用 x264 的“非常快”
   - 配置文件：高
@@ -85,7 +85,7 @@ git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
 
 实时传送视频流示例位于 [Live](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/Live) 文件夹中。
 
-在 [AMSv3Samples](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples) 文件夹中，将名为“sample.env”的文件复制到名为“.env”的新文件中，以存储在[使用 Azure CLI 访问 Azure 媒体服务 API ](./access-api-howto.md)一文中收集的环境变量设置 。
+在 [AMSv3Samples](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples) 文件夹中，将名为“sample.env”的文件复制到名为“.env”的新文件中，以存储在[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 一文中收集的环境变量设置 。
 请确保该文件的“env”前包含“点”(.)，以使其正确用于代码示例。
 
 [.env 文件](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/sample.env)包含 Azure Active Directory (Azure AD) 应用程序密钥和机密。 同时还包含对媒体服务帐户的 SDK 访问进行身份验证所需的帐户名称和订阅信息。 已配置 .gitignore 文件以避免将此文件发布到分叉存储库。 不要泄露这些凭据，因为它们是帐户的重要机密。
@@ -93,7 +93,7 @@ git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
 > [!IMPORTANT]
 > 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则最终会在帐户中有多个直播活动。 
 >
-> 请务必停止正在运行的直播活动。 否则，将会对你“收费”！ 在完成前一直运行程序，以便自动清理资源。 如果程序停止，或无意停止了调试器并中断了程序执行，则应仔细检查门户，确认未将任何实时事件置于“正在运行”或“等待”状态，避免产生意外的账单费用。
+> 请务必停止正在运行的直播活动， 否则，将会对你“收费”！ 在完成前一直运行程序，以便自动清理资源。 如果程序停止，或无意停止了调试器并中断了程序执行，则应仔细检查门户，确认未将任何实时事件置于“正在运行”或“等待”状态，避免产生意外的账单费用。
 
 ## <a name="examine-the-typescript-code-for-live-streaming"></a>检查 TypeScript 代码以实时传送视频流
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
 npm install @azure/arm-mediaservices
 ```
 
-在“package.js”文件中，已为你配置了此项。 只需运行 `npm install` 即可加载模块和依赖项：
+在“package.json”文件中，已为你配置了此项。 只需运行 `npm install` 即可加载模块和依赖项：
 
 1. 打开“命令提示符”，浏览到示例的目录。
 1. 将目录更改为“AMSv3Samples”文件夹：
@@ -145,7 +145,7 @@ npm install @azure/arm-mediaservices
 
 ### <a name="create-a-live-event"></a>创建直播活动
 
-本部分介绍如何创建直通类型的“直播”活动（将 `LiveEventEncodingType` 设置为 `None`）。 有关可用类型的信息，请参阅[直播活动类型](live-event-outputs-concept.md#live-event-types)。 除了直通，还可以使用实时编码活动进行 720P 或 1080P 自适应比特率云编码。
+本部分介绍如何创建基本的“直通”类型的直播活动（将 `LiveEventEncodingType` 设置为 `PassthroughBasic`）。 有关可用类型的信息，请参阅[直播活动类型](live-event-outputs-concept.md#live-event-types)。 除了基本的或标准的直通，还可以使用实时编码活动进行 720P 或 1080P 自适应比特率云编码。
  
 在创建直播活动时你可能想指定以下项：
 
@@ -178,7 +178,7 @@ npm install @azure/arm-mediaservices
 
 在本部分，创建一个实时输出，该输出使用资产名称作为输入，以告知要将实时事件录制到的位置。 此外，还将设置要在录制内容中使用的时移 (DVR) 窗口。
 
-示例代码演示如何设置 1 小时的时移窗口。 此窗口将允许客户端播放事件的最后一小时内的任何内容。 此外，只有过去 1 小时的实时事件会保留在存档中。 如果需要，可以最多将此窗口其延长到 25 小时。  另请注意，可以控制 HTTP Live Streaming (HLS) 和 Dynamic Adaptive Streaming over HTTP (DASH) 清单在发布时在 URL 路径中使用的输出清单命名。
+示例代码演示如何设置 1 小时的时移窗口。 此窗口将允许客户端播放事件的最后一小时内的任何内容。 此外，只有过去 1 小时的实时事件会保留在存档中。 如果需要，可以最多将此窗口期延长到 25 小时。  另请注意，可以控制 HTTP Live Streaming (HLS) 和 Dynamic Adaptive Streaming over HTTP (DASH) 清单在发布时在 URL 路径中使用的输出清单命名。
 
 还可以随时创建实时输出，也就是我们比喻的“磁带录像机”。 你可以在启动信号流之前或之后创建实时输出。 如果你需要加快速度，在启动信号流之前创建输出通常很有帮助。
 

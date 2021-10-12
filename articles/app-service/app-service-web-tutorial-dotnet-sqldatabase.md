@@ -4,14 +4,14 @@ description: 了解如何将 C# ASP.NET 应用部署到 Azure 和 Azure SQL Serv
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 10/05/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 533bd817b704db9976624b356a9950a9c48b8339
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 818ab11d64468a945d85f5b15f6b39dc1664a424
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605940"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536223"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>教程：使用 Azure SQL 数据库将 ASP.NET 应用部署到 Azure
 
@@ -74,7 +74,7 @@ ms.locfileid: "104605940"
 
 #### <a name="sign-in-and-add-an-app"></a>登录并添加应用
 
-1. 在 **发布** 对话框中，从帐户管理器下拉菜单中单击 **添加帐户**。
+1. 在“发布”对话框中，单击“登录”。
 
 1. 登录到 Azure 订阅。 如果已登录到 Microsoft 帐户，请确保该帐户包含 Azure 订阅。 如果已登录的 Microsoft 帐户不包含 Azure 订阅，请单击该帐户以添加正确的帐户。
 
@@ -130,6 +130,9 @@ ms.locfileid: "104605940"
 
 1. 在 **发布** 对话框中，向下滚动到 **服务依赖项** 部分。 单击 **SQL Server 数据库** 旁边的 **配置**。
 
+    > [!NOTE]
+    > 请确保从“发布”页面而不是“连接的服务”页面配置 SQL 数据库。
+
    ![配置 SQL 数据库依赖项](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sqldb-dependency.png)
 
 1. 选择 **Azure SQL 数据库**，然后单击 **下一步**。
@@ -138,7 +141,7 @@ ms.locfileid: "104605940"
 
 1. 在 **数据库服务器** 旁，单击 **新建**。
 
-   将生成服务器名称。 此名称用作服务器 `<server_name>.database.windows.net` 的默认 URL 的一部分。 它在 Azure SQL 的所有服务器中必须是唯一的。 可以更改服务器名称，但就本教程来说，请保留生成的值。
+   服务器名称用作服务器 `<server_name>.database.windows.net` 的默认 URL 的一部分。 它在 Azure SQL 的所有服务器中必须是唯一的。 将服务器名称更改为所需的值。
 
 1. 添加管理员用户名和密码。 有关密码复杂性要求，请参阅[密码策略](/sql/relational-databases/security/password-policy)。
 
@@ -161,9 +164,12 @@ ms.locfileid: "104605940"
 
 1. 在 **数据库连接字符串名称** 中，键入 _MyDbConnection_。 此名称必须与 _Models/MyDatabaseContext.cs_ 中引用的连接字符串相匹配。
 
-1. 在 **数据库连接用户名** 和 **数据库连接密码** 中，键入在[创建服务器](#create-a-server-and-database)时使用的管理员用户名和密码。
+1. 在 **数据库连接用户名** 和 **数据库连接密码** 中，键入在 [创建服务器](#create-a-server-and-database)时使用的管理员用户名和密码。
 
 1. 确保已选择 **Azure 应用设置**，然后单击 **完成**。
+
+    > [!NOTE]
+    > 相反，如果看到的是“本地用户机密文件”，则必定已从“连接的服务”页而非“发布”页配置 SQL 数据库。
 
     ![配置数据库连接字符串](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
 

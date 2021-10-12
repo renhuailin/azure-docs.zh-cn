@@ -12,18 +12,46 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/18/2021
+ms.date: 10/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 0bf972cd5b597d4cf0fb608eee8481cb72080425
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 2dff42fcf855a41e2e907563b1aecccad0a1661a
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769334"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545918"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
 Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强功能。 
+
+    
+## <a name="october-2021"></a>2021 年 10 月
+
+* [标准网络功能](configure-network-features.md)（预览版）
+
+    Azure NetApp 文件现在支持适用于卷的标准网络功能，自该服务推出以来，客户一直都在请求此类功能。 此功能建立在创新的硬件和软件集成基础之上。 标准网络功能通过各种用于实现无缝且一致体验的功能来提供增强的虚拟网络体验，并为其所有工作负载（包括 Azure NetApp 文件）提供安全保障。
+    
+    创建新的 Azure NetApp 文件卷时，现在可以选择标准或基本网络功能 。 选择标准网络功能后，可以利用 Azure NetApp 文件卷和委托子网支持的以下特性：   
+    * 提高了包含 Azure NetApp 文件卷的 VNet 的 IP 限制，使其与 VM 的 IP 限制相当
+    * 支持在 Azure NetApp 文件委托子网上配置[网络安全组](../virtual-network/network-security-groups-overview.md)，从而增强了网络安全性
+    * 支持进入和来自 Azure NetApp 文件委托子网的[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)，从而增强了网络控制
+    * 基于主动/主动 VPN 网关设置的连接
+    * 与 Azure NetApp 文件建立 [ExpressRoute FastPath](../expressroute/about-fastpath.md) 连接
+
+    此公共预览版目前已在美国中北部先行推出，今后将逐渐在其他区域推出。  随着上市区域和推出功能的不断增多，请关注 [Azure 更新](https://azure.microsoft.com/updates/)随时了解更多信息。  
+ 
+    有关详细信息，请参阅[为 Azure NetApp 文件卷配置网络功能](configure-network-features.md)。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+* [Azure NetApp 文件备份](backup-introduction.md)（预览版）
+
+    Azure NetApp 文件联机快照现在通过快照备份得到了增强。 借助这种新的备份功能，你可以快速且经济高效地将 Azure NetApp 文件快照存储到经济高效且启用了 ZRS 的 Azure 存储，从而进一步保护数据免遭意外删除。 Azure NetApp 文件备份扩展了 ONTAP 的内置快照技术。 将快照存储到 Azure 存储时，系统仅以有效格式复制和存储与先前存储的快照相关的更改块。 但是，已存储的快照仍以完整形式表示，并且可以逐个直接还原到新卷，从而无需执行重复的完整-增量恢复过程。 这种先进的技术最大限度地减少了需要在 Azure 存储中存储和检索的数据量，从而节省了数据传输和存储成本。 它还可以缩短备份存储时间，让你可以实现较小的还原点目标 (RPO)。 现在，你可以选择在 Azure NetApp 文件服务中保留最少数量的联机快照，以满足最直接、近乎即时的数据恢复需求，并以更低的成本在 Azure NetApp 文件备份保管库中建立更长时间的快照历史记录，从而达到长期保留的目的。 有关详细信息，请参阅 [Azure NetApp 文件快照的工作原理](snapshots-introduction.md)。
+
+* Active Directory 连接中的[管理员](create-active-directory-connections.md#create-an-active-directory-connection)选项（预览版）
+
+    Active Directory 连接页面现在包含一个“管理员”字段。 可以指定将被授予卷管理员权限的用户或组。
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -31,7 +59,7 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
     已经可以在[新建 SMB 卷](azure-netapp-files-create-volumes-smb.md#continuous-availability)时启用 SMB 持续可用性 (CA) 功能。 现在还可以在现有 SMB 卷上启用 SMB CA。 请参阅[在现有 SMB 卷上启用连续可用性](enable-continuous-availability-existing-SMB.md)。
 
-* [快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)现已正式发布 (GA)  
+* [快照策略](snapshots-manage-policy.md)现已正式发布 (GA)  
 
     快照策略功能现已正式发布。 使用该功能前无需再进行注册。
 
@@ -148,7 +176,7 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
 ## <a name="november-2020"></a>2020 年 11 月
 
-* [快照还原](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+* [快照还原](snapshots-revert-volume.md)
 
     快照还原功能使你能够快速将卷还原到创建特定快照时的状态。 在大多数情况下，还原卷比将单个文件从快照还原到活动文件系统要快得多。 与将快照还原到新卷相比，此方法也更节省空间。
 
@@ -192,15 +220,15 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
     云保证了 IT 支出的灵活性。 现在，可以通过将现有 Azure NetApp 文件卷移到使用所需卷服务级别的另一个容量池中，来更改该卷的服务级别。 这种针对卷的就地服务级别更改不需要迁移数据， 也不会影响对卷的数据平面访问。 你可以将现有卷更改为使用更高的服务级别（提升性能），或使用更低的服务级别（优化成本）。 此功能免费（常规 [Azure NetApp 文件存储成本](https://azure.microsoft.com/pricing/details/netapp/)仍然适用）。 此功能当前处于预览状态。 你可以按照[动态卷服务级别更改文档](dynamic-change-volume-service-level.md)注册该预览版功能。
 
-* [卷快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)（预览版） 
+* [卷快照策略](snapshots-manage-policy.md)（预览版） 
 
-    Azure NetApp 文件可用于创建卷的时间点快照。 现在，你可以创建快照策略，使 Azure NetApp 文件按你选择的频率自动创建卷快照。 你可以安排以每小时、每天、每周或每月为周期拍摄快照。 还可以指定作为快照策略一部分保留的最大快照数。 此功能免费（常规 [Azure NetApp 文件存储成本](https://azure.microsoft.com/pricing/details/netapp/)仍然适用），并且目前提供预览版。 你可以按照[卷快照策略文档](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)注册该预览版功能。
+    Azure NetApp 文件可用于创建卷的时间点快照。 现在，你可以创建快照策略，使 Azure NetApp 文件按你选择的频率自动创建卷快照。 你可以安排以每小时、每天、每周或每月为周期拍摄快照。 还可以指定作为快照策略一部分保留的最大快照数。 此功能免费（常规 [Azure NetApp 文件存储成本](https://azure.microsoft.com/pricing/details/netapp/)仍然适用），并且目前提供预览版。 你可以按照[卷快照策略文档](snapshots-manage-policy.md)注册该预览版功能。
 
 * [NFS 根访问导出策略](azure-netapp-files-configure-export-policy.md)
 
     Azure NetApp 文件现在允许指定根帐户是否可以访问卷。 
 
-* [隐藏快照路径](azure-netapp-files-manage-snapshots.md#restore-a-file-from-a-snapshot-using-a-client)
+* [隐藏快照路径](snapshots-edit-hide-path.md)
 
     Azure NetApp 文件现在允许指定用户是否可以查看和访问已装载卷上的 `.snapshot` 目录（NFS 客户端）或 `~snapshot` 文件夹（SMB 客户端）。
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Perforce Helix Core - Helix Authentication Service 集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 Perforce Helix Core - Helix Authentication Service 集成
 description: 了解如何在 Azure Active Directory 与 Perforce Helix Core - Helix Authentication Service 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 8f3695edd8529d28ea792fcca57e8225b511635f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e11a0aeff4168b850ae95be7ce26f97e4afa9c81
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124738020"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399596"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core---helix-authentication-service"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Perforce Helix Core - Helix Authentication Service 集成
+# <a name="tutorial-azure-ad-sso-integration-with-perforce-helix-core---helix-authentication-service"></a>教程：Azure AD SSO 与 Perforce Helix Core - Helix Authentication Service 集成
 
 本教程介绍如何将 Perforce Helix Core - Helix Authentication Service 与 Azure Active Directory (Azure AD) 集成。 将 Perforce Helix Core - Helix Authentication Service 与 Azure AD 集成时，可以执行以下操作：
 
@@ -32,6 +32,9 @@ ms.locfileid: "124738020"
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Perforce Helix Core - Helix Authentication Service 单一登录 (SSO) 的订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -73,16 +76,16 @@ ms.locfileid: "124738020"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/` 
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/saml`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/saml`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/saml/sso`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/saml/sso`
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/` 
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Perforce Helix Core - Helix Authentication Service 客户端支持团队](mailto:support@perforce.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [Perforce Helix Core - Helix Authentication Service 客户端支持团队](mailto:support@perforce.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 

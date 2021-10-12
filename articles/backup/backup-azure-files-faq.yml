@@ -5,12 +5,12 @@ metadata:
   ms.date: 04/22/2020
   ms.topic: article
   ms.service: backup
-  ms.openlocfilehash: ac3cc6f6fc6b6896e236fd28c4808c49616cf68a
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 22aeb3771f0a1c1d1f7baafc4ce4a2e5885aa4bc
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252311"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129533125"
 title: 有关如何备份 Azure 文件的问题
 summary: >
   本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在[供讨论的 Microsoft Q&A 问题页面](/answers/topics/azure-backup.html)中发布有关 Azure 备份服务的问题。
@@ -74,6 +74,10 @@ sections:
       是否可以使用 PowerShell 配置/管理/还原 Azure 文件共享的备份？
     answer: >
       是的。 请参阅[此处](backup-azure-afs-automation.md)的详细文档。
+  - question: >
+      为什么 Azure 文件存储备份不根据保管库的“存储复制类型”设置进行复制？
+    answer: >
+      保管库的“存储复制”设置与 Azure 文件存储备份不相关。 这是因为当前解决方案基于快照，不会将数据传输到保管库。 快照存储在与备份文件共享相同的存储帐户中，因此根据存储帐户的复制设置进行复制。
   - question: >
       能否访问 Azure 备份生成的快照并装载它们？
     answer: >

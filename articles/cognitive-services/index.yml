@@ -11,24 +11,24 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.custom: custom-portals-hub
-  ms.date: 08/28/2020
+  ms.date: 10/08/2021
 highlightedContent:
   items:
     - title: 什么是认知服务？
       itemType: overview
       url: ./what-are-cognitive-services.md
-    - title: Docs 中的新增内容
-      itemType: whats-new
-      url: whats-new-docs.md
+    - title: 认知服务本地容器
+      itemType: concept
+      url: ./containers/index.yml
+    - title: 负责使用 AI
+      itemType: concept
+      url: responsible-use-of-ai-overview.md
     - title: 开发选项
       itemType: concept
       url: ./cognitive-services-development-options.md
     - title: 认知服务和机器学习
       itemType: concept
       url: ./cognitive-services-and-machine-learning.md
-    - title: 认知服务本地容器
-      itemType: concept
-      url: ./containers/index.yml
     - title: 带数据库的认知服务
       itemType: concept
       url: ./big-data/cognitive-services-for-big-data.md
@@ -130,12 +130,6 @@ conceptualContent:
         - url: ./big-data/samples-python.md
           itemType: reference
           text: Python 示例
-    - title: 负责使用 AI
-      summary: Azure 认知服务提供了有关如何在应用程序中负责任地使用 AI 服务的相关信息和指导。
-      links:
-        - url: responsible-use-of-ai-overview.md
-          itemType: overview
-          text: 负责使用 AI
 additionalContent:
   sections:
     - title: 其他资源

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 08/12/2021
+ms.date: 10/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 890270bf5594c9ea7dfc35e38b135c20ea671461
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: df6838d1616d27c12d7176df0041a35d0d773f83
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429648"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545108"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>什么是 Azure Stack Edge Mini R？
 
@@ -31,16 +31,16 @@ Azure Stack Edge Mini R 具有以下功能：
 |加固型硬件| 专为恶劣环境设计的加固型硬件。|
 |超便携| 超便携、电池供电的外形规格。|
 |云托管|设备和服务通过 Azure 门户进行管理。|
-|Edge 计算工作负载|允许分析、处理、筛选数据。<br>支持 VM 和容器化工作负载。 |
-|加速 AI 推断| 由 Intel Movidius Myriad X VPU 提供支持。|
+|Edge 计算工作负载|允许分析、处理、筛选数据。<br>支持 VM 和容器化工作负载。 <ul><li>有关 VM 工作负荷的信息，请参阅 [Azure Stack Edge 上的 VM 概述](azure-stack-edge-gpu-virtual-machine-overview.md)。</li> <li>有关容器化工作负荷，请参阅 [Azure Stack Edge 上的 Kubernetes 概述](azure-stack-edge-gpu-kubernetes-overview.md)。</li></ul>  |
+|加速 AI 推断| 由 Intel Movidius Myriad X VPU 提供支持。 |
 |有线和无线 | 允许进行有线数据传输和无线数据传输。|
 |数据访问     | 使用云 API 从 Azure 存储 Blob 和 Azure 文件中直接访问数据，以便在云中进行其他数据处理。 设备带有本地缓存，以便快速访问最近使用的文件。|
 |断开连接模式|  可以选择通过 Azure Stack Hub 管理设备和服务。 在脱机模式下部署、运行和管理应用程序。 <br> 离线模式支持离线上传方案。|
 |支持的文件传输协议      |支持用于数据引入的标准 SMB、NFS 和 REST 协议。 <br> 有关支持的版本的详细信息，请转到 [Azure Stack Edge Mini R 系统要求](azure-stack-edge-gpu-system-requirements.md)。|
-|数据刷新     | 可以使用云中的最新内容刷新本地文件。|
-|双重加密    | 使用自加密驱动器提供第一层加密。 VPN 提供第二层加密。 BitLocker 支持本地加密数据，并通过 https 安全地将数据传输到云中。|
-|带宽限制| 中止以限制在高峰时段使用带宽。|
-|轻松排序| 通过 Azure Edge Hardware Center（预览版）对设备进行批量排序和跟踪。|
+|数据刷新     | 可以使用云中的最新内容刷新本地文件。 <br> 有关详细信息，请参阅[刷新 Azure Stack Edge 上的共享](azure-stack-edge-gpu-manage-shares.md#refresh-shares)。|
+|双重加密    | 使用自加密驱动器提供第一层加密。 VPN 提供第二层加密。 BitLocker 支持本地加密数据，并通过 https 安全地将数据传输到云中。 <br> 有关详细信息，请参阅[在 Azure Stack Edge Pro R 设备上配置 VPN](azure-stack-edge-mini-r-configure-vpn-powershell.md)。|
+|带宽限制| 中止以限制在高峰时段使用带宽。 <br> 有关详细信息，请参阅[管理 Azure Stack Edge 上的带宽计划](azure-stack-edge-gpu-manage-bandwidth-schedules.md)。|
+|轻松排序| 通过 Azure Edge Hardware Center（预览版）对设备进行批量排序和跟踪。 <br> 有关详细信息，请参阅[通过 Azure Edge Hardware Center 订购设备](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)。|
 
 ## <a name="use-cases"></a>用例
 

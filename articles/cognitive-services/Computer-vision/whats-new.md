@@ -10,16 +10,31 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: b7292206aacbbca5c8e76ce573dc6fd0b3e32578
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 1a27bfac347480591a67bf2c164b9ff41fe3b18d
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835749"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426428"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="ocr-read-api-public-preview-supports-122-languages"></a>OCR（读取）API 公共预览版支持 122 种语言
+计算机视觉的 [OCR（读取）API](overview-ocr.md) 使用其最新预览版将[支持的语言](language-support.md)扩展到 122 种：
+* OCR 支持，针对 49 种新语言（包括俄语、保加利亚语、其他西里尔语和其他拉丁语）的打印文本。
+* OCR 支持，针对 6 种新语言（包括英语、简体中文、法语、德语、意大利语、葡萄牙语和西班牙语）的手写文本。
+* 增强功能，用于处理标识文档中的数字 PDF 和计算机可读区域 (MRZ) 文本。
+* 常规性能和 AI 质量改进
+
+请参阅 [OCR 操作指南](Vision-API-How-to-Topics/call-read-api.md)，了解如何使用新的预览功能。
+
+> [!div class="nextstepaction"]
+> [读取 API 入门](./quickstarts-sdk/client-library.md)
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

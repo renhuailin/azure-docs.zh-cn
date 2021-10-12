@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 04/05/2021
-  ms.openlocfilehash: ff157a3d8e744dffd314525a053b8c3ca1ab8999
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: d4877b7346e9854748f6106ca881732c549e98a1
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252493"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129271662"
 title: 常见问题解答 - Microsoft Azure 恢复服务 (MARS) 代理
 summary: >
   本文解答了与使用 [Azure 备份](backup-overview.md)服务中的 Microsoft Azure 恢复服务 (MARS) 代理对数据进行备份相关的常见问题。
@@ -84,6 +84,10 @@ sections:
   - question: >
       将保管库订阅转移到另一个 Azure AD 目录对 MARS 代理备份有什么影响？
     answer: "更改 Azure AD 目录不会对 MARS 代理备份产生影响。 \n"
+  - question: >
+      如果预期的每周、每月或每年备份失败，会发生什么情况？
+    answer: >
+      如果备份失败，则会根据备份策略，按照每周、每月和每年恢复点（长期保留 (LTR) 点）的保留期来保留预期的每周、每月或每年备份后的下一次成功备份。 对于 MARS 代理，此成功备份可能是临时备份或计划备份。
 - name: 管理备份
   questions:
   - question: >

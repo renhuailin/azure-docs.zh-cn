@@ -7,16 +7,21 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: 99216bd26bfff76c4342f1533ff4ced070a69e92
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ca3a4a3bbcfd1de92906b75ed56351afb04b4b17
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124735967"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389430"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
 [Azure Migrate](migrate-services-overview.md) 可帮助发现和访问本地服务器、应用和数据并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 中的新版本和功能。
+
+## <a name="update-september-2021"></a>更新（2021 年 9 月）
+- 通过 [Azure 专用链接](../private-link/private-endpoint-overview.md)在专用网络上发现、评估和迁移服务器。  目前在受支持的[政府云地理区域](migrate-support-matrix.md#supported-geographies-azure-government)提供预览版。 [了解详细信息](how-to-use-azure-migrate-with-private-endpoints.md)
+- 支持使用 PowerShell 将自定义名称标记并添加到无代理 VMware VM 迁移的资源。
+- Azure Migrate 设备：用于从物理服务器发现列表中删除服务器的选项。
 
 ## <a name="update-august-2021"></a>更新（2021 年 8 月）
 

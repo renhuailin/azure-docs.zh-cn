@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/26/2021
+ms.date: 09/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management, has-adal-ref
-ms.openlocfilehash: ba222c5d0ae028b606deda08e225085bd42d761c
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 06b982a43c5155ce5a111bafbac41862363ec07d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966743"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355503"
 ---
 # <a name="introduction-to-azure-ad-connect-v20"></a>Azure AD Connect V2.0 简介 
 
@@ -40,7 +40,7 @@ SQL Server 2019 需要 Visual C++ Redist 14 运行时，因此我们将更新 C+
 
 ### <a name="tls-12"></a>TLS 1.2 
 
-TLS1.0 和 TLS 1.1 被视为不安全的协议，Microsoft 不推荐使用。 Azure AD Connect 的这一版本仅支持 TLS 1.2。 如果你的服务器不支持 TLS 1.2，则需要先启用此功能，然后才能部署 Azure AD Connect V2.0。 有关详细信息，请参阅[对 Azure AD Connect 强制实施 TLS 1.2](reference-connect-tls-enforcement.md)。
+TLS1.0 和 TLS 1.1 被视为不安全的协议，Microsoft 不推荐使用。 Azure AD Connect 的这一版本仅支持 TLS 1.2。 Azure AD Connect V2.0 支持的所有 Windows Server 版本均已默认使用 TLS 1.2。 如果你的服务器不支持 TLS 1.2，则需要先启用此功能，然后才能部署 Azure AD Connect V2.0。 有关详细信息，请参阅[对 Azure AD Connect 强制实施 TLS 1.2](reference-connect-tls-enforcement.md)。
 
 ### <a name="all-binaries-signed-with-sha2"></a>所有用 SHA2 签名的二进制文件 
 
@@ -60,7 +60,7 @@ SQL Server 2019 需要 Windows Server 2016 或更高版本的服务器操作系�
 
 此版本的 Azure AD Connect 包含多个需要 PowerShell 5.0 的 cmdlet，所以此要求是 Azure AD Connect 的新先决条件。  
 
-在[此处](/powershell/scripting/windows-powershell/install/windows-powershell-system-requirements?view=powershell-7.1#windows-powershell-50)可以找到关于 PowerShell 先决条件的更多详细信息。
+在[此处](/powershell/scripting/windows-powershell/install/windows-powershell-system-requirements#windows-powershell-50)可以找到关于 PowerShell 先决条件的更多详细信息。
 
  >[!NOTE]
  >PowerShell 5 已经是 Windows Server 2016 的一部分，所以只要你使用的是最新的 Windows Server 版本，可能就不需要执行任何操作。 
@@ -77,7 +77,7 @@ SQL Server 2019 需要 Windows Server 2016 或更高版本的服务器操作系�
 没有 - 此版本不包含任何新功能。 此版本仅包含 Azure AD Connect 上一些基础组件的更新。 
 
 能否从以前的版本升级到 V2.0？ </br>
-能 - 支持从任何早期版本的 Azure AD Connect 升级到 Azure AD Connect V2.0。 请按照本文中的指导确定最适合你的升级策略。 
+能 - 支持从任何早期版本的 Azure AD Connect 升级到 Azure AD Connect V2.0。 请按照[此文](how-to-upgrade-previous-version.md)中的指导确定最适合你的升级策略。 
 
 能否导出当前服务器的配置并将其导入 Azure AD Connect V2.0？ </br>
 是的，你可以这样做，而且这是迁移到 Azure AD Connect V2.0 的一个很好的方法，尤其是在升级到新的操作系统版本时。 可以在这篇[文章](how-to-connect-import-export-config.md)中详细了解导入/导出配置功能以及如何使用它。 
@@ -88,10 +88,10 @@ SQL Server 2019 需要 Windows Server 2016 或更高版本的服务器操作系�
 应尽快升级到 Azure AD Connect V2.0。 所有 Azure AD Connect V1 版本将于 2022 年 8 月 31 日停用。 目前，我们将继续支持旧版本的 Azure AD Connect，但如果 Azure AD Connect 中的某些组件不再支持，则可能难以提供良好的支持体验。 此升级对于 ADAL 和 TLS1.0/1.1 尤为重要，因为这些服务在弃用后可能会意外停止工作。 
 
 我使用外部 SQL 数据库并且不使用 SQL 2012 LocalDb - 是否仍需升级？ </br>
-是的，即使不使用 SQL Server 2012，仍然需要升级以保持受支持的状态，因为 TLS1.0/1.1 和 ADAL 已弃用。 
+是的，即使不使用 SQL Server 2012，仍然需要升级以保持受支持的状态，因为 TLS1.0/1.1 和 ADAL 已弃用。 请注意，SQL Server 2012 仍可用作 Azure AD Connect V2.0 的外部 SQL 数据库 - Azure AD Connect V2.0 中的 SQL 2019 驱动程序与 SQL Server 2012 兼容。
 
 在将我的 Azure AD Connect 实例升级到 v2.0 后，SQL 2012 组件是否会自动卸载？ </br>
-不会，升级到 SQL 2019 不会从服务器中删除任何 SQL 2012 组件。 如果不再需要这些组件，则应按照 [SQL Server 卸载说明](https://docs.microsoft.com/sql/sql-server/install/uninstall-an-existing-instance-of-sql-server-setup)进行操作。
+不会，升级到 SQL 2019 不会从服务器中删除任何 SQL 2012 组件。 如果不再需要这些组件，则应按照 [SQL Server 卸载说明](/sql/sql-server/install/uninstall-an-existing-instance-of-sql-server-setup)进行操作。
 
 如果我不升级，会发生什么情况？ </br>
 直到即将停用的某个组件被实际弃用，你才会看到影响。 Azure AD Connect 将继续工作。 

@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3ed432e1c0c6b9fbe602720935e5c549437587a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75749723"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277112"
 ---
 # <a name="latency-in-blob-storage"></a>Blob 存储中的延迟
 
 延迟（有时被称为响应时间）是指应用程序必须等待请求完成的时间。 延迟可能会直接影响应用程序的性能。 对于在循环中有人工操作的情况（如处理信用卡交易或加载网页），低延迟通常很重要。 需要以较高速率处理传入事件（如遥测日志记录或 IoT 事件）的系统，也需要低延迟。 本文介绍如何了解和测量块 blob 上操作的延迟，以及如何针对低延迟设计应用程序。
 
-Azure 存储为块 blob 提供两个不同的性能选项：高级和标准。 与标准块 blob 相比，高级块 blob 可以通过高性能 SSD 磁盘显著降低延迟并提高一致性。 有关详细信息，请参阅 [Azure Blob 存储：热、冷以及存档访问层](storage-blob-storage-tiers.md)中的 **高级性能块 blob存储**。
+Azure 存储为块 blob 提供两个不同的性能选项：高级和标准。 与标准块 blob 相比，高级块 blob 可以通过高性能 SSD 磁盘显著降低延迟并提高一致性。 有关详细信息，请参阅 [Blob 数据的热、冷和存档访问层](access-tiers-overview.md)中的“高级性能块 Blob 存储”。
 
 ## <a name="about-azure-storage-latency"></a>关于 Azure 存储延迟
 

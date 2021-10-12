@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 08/19/2021
+ms.date: 10/05/2021
 ms.author: memildin
-ms.openlocfilehash: 0e9988aa7779d85714d6e1562af78c3a5bf0e1ff
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: e6d1c8cf55687a8e4d7612ca432a314ae38256bc
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444687"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534416"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -28,68 +28,44 @@ ms.locfileid: "122444687"
 
 | 计划的更改       | 预计更改日期 |
 |----------------------|---------------------------|
-| [正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| 2021 年 8 月|
-| [将某些警报类型的前缀从“ARM_”更改为“VM_”](#changing-prefix-of-some-alert-types-from-arm_-to-vm_)                                          | 2021 年 10 月|
-| [关于管理 Endpoint Protection 解决方案的更改建议](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | 2021 年第 4 季度    |
+| [即将弃用预览版警报：ARM.MCAS_ActivityFromAnonymousIPAddresses](#deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses)             | 2021 年 10 月|
+| [正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| 2021 年 10 月|
+| [关于管理 Endpoint Protection 解决方案的更改建议](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | 2021 年 10 月    |
 | [针对用于对 SQL 数据库中的敏感数据进行分类的建议进行了增强](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)   | 2022 年第 1 季度    |
+|||
 
+### <a name="deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses"></a>即将弃用预览版警报：ARM.MCAS_ActivityFromAnonymousIPAddresses
+
+**预计更改日期：** 2021 年 10 月
+
+我们即将弃用以下预览版警报：
+
+|警报名称| 说明|
+|----------------------|---------------------------|
+|预览 - 来自有风险的 IP 地址的活动<br>(ARM.MCAS_ActivityFromAnonymousIPAddresses)|检测到来自已被标识为匿名代理 IP 地址的 IP 地址的用户活动。<br>这些代理被想要隐藏其设备 IP 地址的用户使用，并可能用于恶意目的。 此项检测使用可以减少误报的机器学习算法，例如在组织中被用户广泛使用的错误标记的 IP 地址。<br>需要有效的 Microsoft Cloud App Security 许可证。|
+|||
+
+我们已创建新的警报，它们可提供此信息并为其做出补充。 此外，较新的警报（ARM_OperationFromSuspiciousIP、ARM_OperationFromSuspiciousProxyIP）不需要 Microsoft Cloud App Security 的许可证。
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013
 
-**预计更改日期：** 2021 年 8 月
+**预计更改日期：** 2021 年 10 月
 
 将从安全中心的监管合规性仪表板中删除 ISO 27001 的旧版实现。 如果要跟踪 ISO 27001 与安全中心的合规性，请针对所有相关管理组或订阅加入新的 ISO 27001:2013 标准，很快将会从仪表板中删除当前的旧版 ISO 27001。
 
 :::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="安全中心的监管合规性仪表板，其中显示了有关删除 ISO 27001 的旧版实现的消息。" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
-### <a name="changing-prefix-of-some-alert-types-from-arm_-to-vm_"></a>将某些警报类型的前缀从“ARM_”更改为“VM_” 
-
-**预计更改日期：** 2021 年 10 月
-
-2021 年 7 月，我们发布了[适用于资源管理器的 Azure Defender 的警报的逻辑重组](release-notes.md#logical-reorganization-of-azure-defender-for-resource-manager-alerts) 
-
-在对某些 Azure Defender 计划进行逻辑重组的过程中，我们已将 21 条警报从[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md) 移至[适用于服务器的 Azure Defender](defender-for-servers-introduction.md)。
-
-我们现在正在计划更新这些警报的前缀，以与此重新分配相符。 我们会将“ARM_”替换为“VM_”，如下表所示。
-
-| 当前名称                                   | 更改后的名称                             |
-|------------------------------------------------|-----------------------------------------------|
-| ARM_AmBroadFilesExclusion                      | VM_AmBroadFilesExclusion                      |
-| ARM_AmDisablementAndCodeExecution              | VM_AmDisablementAndCodeExecution              |
-| ARM_AmDisablement                              | VM_AmDisablement                              |
-| ARM_AmFileExclusionAndCodeExecution            | VM_AmFileExclusionAndCodeExecution            |
-| ARM_AmTempFileExclusionAndCodeExecution        | VM_AmTempFileExclusionAndCodeExecution        |
-| ARM_AmTempFileExclusion                        | VM_AmTempFileExclusion                        |
-| ARM_AmRealtimeProtectionDisabled               | VM_AmRealtimeProtectionDisabled               |
-| ARM_AmTempRealtimeProtectionDisablement        | VM_AmTempRealtimeProtectionDisablement        |
-| ARM_AmRealtimeProtectionDisablementAndCodeExec | VM_AmRealtimeProtectionDisablementAndCodeExec |
-| ARM_AmMalwareCampaignRelatedExclusion          | VM_AmMalwareCampaignRelatedExclusion          |
-| ARM_AmTemporarilyDisablement                   | VM_AmTemporarilyDisablement                   |
-| ARM_UnusualAmFileExclusion                     | VM_UnusualAmFileExclusion                     |
-| ARM_CustomScriptExtensionSuspiciousCmd         | VM_CustomScriptExtensionSuspiciousCmd         |
-| ARM_CustomScriptExtensionSuspiciousEntryPoint  | VM_CustomScriptExtensionSuspiciousEntryPoint  |
-| ARM_CustomScriptExtensionSuspiciousPayload     | VM_CustomScriptExtensionSuspiciousPayload     |
-| ARM_CustomScriptExtensionSuspiciousFailure     | VM_CustomScriptExtensionSuspiciousFailure     |
-| ARM_CustomScriptExtensionUnusualDeletion       | VM_CustomScriptExtensionUnusualDeletion       |
-| ARM_CustomScriptExtensionUnusualExecution      | VM_CustomScriptExtensionUnusualExecution      |
-| ARM_VMAccessUnusualConfigReset                 | VM_VMAccessUnusualConfigReset                 |
-| ARM_VMAccessUnusualPasswordReset               | VM_VMAccessUnusualPasswordReset               |
-| ARM_VMAccessUnusualSSHReset                    | VM_VMAccessUnusualSSHReset                    |
-
-详细了解[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md) 和[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 计划。
-
-
 ### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>关于管理 Endpoint Protection 解决方案的更改建议
 
-**预计更改日期：** 2021 年第 4 季度
+**预计更改日期：** 2021 年 10 月
 
 2021 年 8 月，我们就如何在计算机上部署和维护 Endpoint Protection 解决方案，增加了两项新预览建议。 有关完整的详细信息，请参阅[发行说明](release-notes.md#two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview)。
 
 正式发布这些建议时，它们将替换以下现有建议：
 
 - **应在计算机上安装 Endpoint Protection** 将替换：
-    - 在虚拟机上安装 Endpoint Protection 解决方案
-    - 在计算机上安装 Endpoint Protection 解决方案 
+    - [在虚拟机上安装终结点保护解决方案（密钥：83f577bd-a1b6-b7e1-0891-12ca19d1e6df）](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/83f577bd-a1b6-b7e1-0891-12ca19d1e6df)
+    - [在计算机上安装终结点保护解决方案（密钥：383cf3bc-fdf9-4a02-120a-3e7e36c6bfee）](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/383cf3bc-fdf9-4a02-120a-3e7e36c6bfee)
 
 - **应在计算机上解决 Endpoint protection 运行状况问题** 将替换具有相同名称的现有建议。 这两个建议有不同的评估密钥：
     - 预览版建议的评估密钥：37a3689a-818e-4a0e-82ac-b1392b9bb000

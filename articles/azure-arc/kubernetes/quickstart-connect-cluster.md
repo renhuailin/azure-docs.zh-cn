@@ -5,19 +5,19 @@ author: mgoedtel
 ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
-ms.date: 06/30/2021
+ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 16e271cf6183dce74fad3075a2e8336030960a08
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 10c97945a78867d92b9ed4887e9655d49b195e33
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966632"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273754"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc
 
-在本快速入门中，你将了解已启用 Azure Arc 的 Kubernetes 的优点，以及如何将现有的 Kubernetes 群集连接到 Azure Arc。有关将群集连接到 Azure Arc 的概念，请参阅[已启用 Azure Arc 的 Kubernetes 代理体系结构一文](./conceptual-agent-architecture.md)。
+在本快速入门中，了解已启用 Azure Arc 的 Kubernetes 的优点，以及如何将现有的 Kubernetes 群集连接到 Azure Arc。有关将群集连接到 Azure Arc 的概念，请参阅[已启用 Azure Arc 的 Kubernetes 代理体系结构一文](./conceptual-agent-architecture.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,12 +47,11 @@ ms.locfileid: "122966632"
     > 群集至少需要有一个操作系统和体系结构类型的节点：`linux/amd64`。 目前尚不支持只有 `linux/arm64` 节点的群集。
 
 * `kubeconfig` 指向群集的文件和上下文。
-* 启用 Azure Arc 的 Kuberneters 资源类型 (`Microsoft.Kubernetes/connectedClusters`) 的“读取”和“写入”权限。
+* 已启用 Azure Arc 的 Kuberneters 资源类型 (`Microsoft.Kubernetes/connectedClusters`) 的“读取”和“写入”权限。
 
-* 安装[最新版本的 Helm 3](https://helm.sh/docs/intro/install)。
+* 安装 [Helm 3](https://helm.sh/docs/intro/install)。 确保 Helm 3 版本为 &lt; 3.7.0。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
 
 * [Azure PowerShell 5.9.0 版或更高版本](/powershell/azure/install-az-ps)
 
@@ -79,9 +78,9 @@ ms.locfileid: "122966632"
     > 群集至少需要有一个操作系统和体系结构类型的节点：`linux/amd64`。 目前尚不支持只有 `linux/arm64` 节点的群集。
 
 * `kubeconfig` 指向群集的文件和上下文。
-* 启用 Azure Arc 的 Kuberneters 资源类型 (`Microsoft.Kubernetes/connectedClusters`) 的“读取”和“写入”权限。
+* 已启用 Azure Arc 的 Kuberneters 资源类型 (`Microsoft.Kubernetes/connectedClusters`) 的“读取”和“写入”权限。
 
-* 安装[最新版本的 Helm 3](https://helm.sh/docs/intro/install)。
+* 安装 [Helm 3](https://helm.sh/docs/intro/install)。 确保 Helm 3 版本为 &lt; 3.7.0。
 
 ---
 
@@ -96,9 +95,9 @@ ms.locfileid: "122966632"
 | `https://management.azure.com`（针对 Azure 云），`https://management.usgovcloudapi.net`（针对 Azure US Government） | 代理需要该终结点才可连接到 Azure 并注册群集。 |
 | `https://<region>.dp.kubernetesconfiguration.azure.com`（针对 Azure 云），`https://<region>.dp.kubernetesconfiguration.azure.us`（针对 Azure US Government） | 代理的数据平面终结点，用于推送状态和提取配置信息。 |
 | `https://login.microsoftonline.com`、`login.windows.net`（针对 Azure 云），`https://login.microsoftonline.us`（针对 Azure US Government） | 提取和更新 Azure 资源管理器令牌所需的终结点。 |
-| `https://mcr.microsoft.com` | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |
-| `https://gbl.his.arc.azure.com` |  需要用于获取区域终结点，以便拉取系统分配的托管服务标识 (MSI) 证书。 |
-| `https://*.his.arc.azure.com`（针对 Azure 云），`https://usgv.his.arc.azure.us`（针对 Azure US Government） |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。 |
+| `https://mcr.microsoft.com`, `https://*.data.mcr.microsoft.com` | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |
+| `https://gbl.his.arc.azure.com`（针对 Azure 云），`https://gbl.his.arc.azure.us`（针对 Azure US Government） |  需要用于获取区域终结点，以便拉取系统分配的托管标识证书。 |
+| `https://*.his.arc.azure.com`（针对 Azure 云），`https://usgv.his.arc.azure.us`（针对 Azure US Government） |  拉取系统分配的托管标识证书时必需。 |
 |`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | 针对基于[连接](cluster-connect.md)和[位置](custom-locations.md)的场景。 |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. 为已启用 Azure Arc 的 Kubernetes 注册提供程序
@@ -219,7 +218,7 @@ Helm release deployment succeeded
 </pre>
 
 > [!TIP]
-> 上面未指定位置参数的命令会在资源组所在位置创建启用了 Azure Arc 的 Kubernetes 资源。 若要在其他位置创建启用了 Azure Arc 的 Kubernetes 资源，请在运行 `az connectedk8s connect` 命令时指定 `--location <region>` 或 `-l <region>`。
+> 上面未指定位置参数的命令会在资源组所在位置创建已启用 Azure Arc 的 Kubernetes 资源。 若要在其他位置创建已启用 Azure Arc 的 Kubernetes 资源，请在运行 `az connectedk8s connect` 命令时指定 `--location <region>` 或 `-l <region>`。
 
 > [!NOTE]
 > 如果你使用服务主体登录到 Azure CLI，则需要设置一个[附加参数](troubleshooting.md#enable-custom-locations-using-service-principal)，用于在群集上启用自定义位置功能。
@@ -247,21 +246,11 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 
 1. 设置 Azure CLI 使用出站代理服务器所需的环境变量：
 
-    * 如果使用的是 Bash，请使用适当的值运行以下命令：
-
-        ```bash
-        export HTTP_PROXY=<proxy-server-ip-address>:<port>
-        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-        ```
-
-    * 如果使用的是 PowerShell，请使用适当的值运行以下命令：
-
-        ```powershell
-        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
-        ```
+    ```bash
+    export HTTP_PROXY=<proxy-server-ip-address>:<port>
+    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+    ```
 
 2. 使用指定的代理参数运行 connect 命令：
 
@@ -270,22 +259,21 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
     ```
 
     > [!NOTE]
-    > * 某些网络请求（例如涉及群集内服务间通信的请求）需要与通过代理服务器路由进行出站通信的流量分开。 `--proxy-skip-range` 参数可用于以逗号分隔的方式指定 CIDR 范围和终结点，以便代理与这些终结点之间的任何通信不会通过出站代理进行。 群集中服务的 CIDR 范围至少应指定为此参数的值。 例如，假设 `kubectl get svc -A` 返回一个服务列表，其中所有服务在 `10.0.0.0/16` 范围内都有 ClusterIP 值。 然后，为 `--proxy-skip-range` 指定的值为“10.0.0.0/16,kubernetes.default.svc”。
+    > * 某些网络请求（例如涉及群集内服务间通信的请求）需要与通过代理服务器路由进行出站通信的流量分开。 `--proxy-skip-range` 参数可用于以逗号分隔的方式指定 CIDR 范围和终结点，以便代理与这些终结点之间的任何通信不会通过出站代理进行。 群集中服务的 CIDR 范围至少应指定为此参数的值。 例如，假设 `kubectl get svc -A` 返回一个服务列表，其中所有服务在 `10.0.0.0/16` 范围内都有 ClusterIP 值。 则要为 `--proxy-skip-range` 指定的值为 `10.0.0.0/16,kubernetes.default.svc,.svc.cluster.local,.svc`。
     > * 大多数出站代理环境预期使用 `--proxy-http`、`--proxy-https` 和 `--proxy-skip-range`。 仅在需要将代理预期的受信任证书插入代理 Pod 的受信任证书存储中时，才需要 `--proxy-cert`。
+    > * 必须将出站代理配置为允许 WebSocket 连接。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-如果群集位于出站代理服务器后面，Azure PowerShell 和启用了 Azure Arc 的 Kubernetes 代理就需要通过出站代理服务器来路由它们的请求。
+如果群集位于出站代理服务器后面，Azure PowerShell 和已启用 Azure Arc 的 Kubernetes 代理就需要通过出站代理服务器来路由它们的请求。
 
 1. 设置 Azure PowerShell 使用出站代理服务器所需的环境变量：
 
-    * 使用适当的值运行以下命令：
-
-        ```powershell
-        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
-        ```
+    ```powershell
+    $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+    $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+    $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+    ```
 
 2. 运行指定了代理参数的连接命令：
 
@@ -332,7 +320,7 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 
 ## <a name="6-view-azure-arc-agents-for-kubernetes"></a>6. 查看适用于 Kubernetes 的 Azure Arc 代理
 
-已启用 Azure Arc 的 Kubernetes 会将几个运算符部署到 `azure-arc` 命名空间中。
+启用了 Azure Arc 的 Kubernetes 会将几个 operator 部署到 `azure-arc` 命名空间中。
 
 1. 使用以下命令查看这些部署和 Pod：
 
@@ -379,7 +367,7 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-可以使用 Azure PowerShell 通过以下命令删除启用了 Azure Arc 的 Kubernetes 资源、任何关联的配置资源，以及群集上运行的任何代理：
+可以使用 Azure PowerShell 通过以下命令删除已启用 Azure Arc 的 Kubernetes 资源、任何关联的配置资源，以及群集上运行的任何代理：
 
 ```azurepowershell
 Remove-AzConnectedKubernetes -ClusterName AzureArcTest1 -ResourceGroupName AzureArcTest

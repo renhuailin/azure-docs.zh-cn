@@ -188,6 +188,8 @@
               href: import-export-analytics-rules.md
             - name: 使用 SOC-ML 异常规则
               href: work-with-anomaly-rules.md
+            - name: 管理分析规则的模板版本
+              href: manage-analytics-rule-templates.md
         - name: 启用用户与实体行为分析 (UEBA)
           href: enable-entity-behavior-analytics.md
         - name: 使用 SOC-ML 异常规则

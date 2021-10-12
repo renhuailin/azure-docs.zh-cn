@@ -8,14 +8,12 @@
 - name: 教程
   expanded: true
   items:
-    - name: 开始使用可验证凭据
-      href: get-started-verifiable-credentials.md
-    - name: 在租户中配置可验证凭据
-      items:
-        - name: 1 - 在自己的 Azure AD 中设置可验证凭据颁发者
-          href: enable-your-tenant-verifiable-credentials.md
-        - name: 2 - 将可验证凭据颁发者连接到自己的 Azure AD
-          href: issue-verify-verifiable-credentials-your-tenant.md
+    - name: 设置可验证凭据服务
+      href: verifiable-credentials-configure-tenant.md
+    - name: 颁发可验证凭据
+      href: verifiable-credentials-configure-issuer.md
+    - name: 验证可验证凭据
+      href: verifiable-credentials-configure-verifier.md
 - name: 概念
   expanded: true
   items:
@@ -32,6 +30,8 @@
           href: plan-issuance-solution.md
         - name: 规划验证解决方案
           href: plan-verification-solution.md
+    - name: 使用请求服务 REST API
+      href: get-started-request-api.md
     - name: 如何定制专属凭据
       href: credential-design.md
     - name: 管理凭据吊销
@@ -49,6 +49,15 @@
       href: 'https://didvc-issuer-sample.azurewebsites.net/'
     - name: 示例验证程序
       href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: 参考
+  expanded: true
+  items:
+    - name: 新增功能
+      href: whats-new.md
+    - name: 颁发 API 规范
+      href: issuance-request-api.md
+    - name: 演示 API 规范
+      href: presentation-request-api.md
 - name: 资源
   expanded: true
   items:

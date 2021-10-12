@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 08/10/2020
+ms.date: 10/04/2021
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 3d97c10236391157dbf0a8d32110e3e1d540a3b3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd8821c898c4fa94963bb240658aa8118a104905
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729264"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407886"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入门：设置 Azure NetApp 文件并创建 NFS 卷
 
@@ -21,7 +21,7 @@ ms.locfileid: "121729264"
 
 在本快速入门中，你将设置以下项：
 
-- Azure NetApp 文件和 NetApp 资源提供程序注册
+- NetApp 资源提供程序的注册
 - 一个 NetApp 帐户
 - 一个容量池
 - 一个用于 Azure NetApp 文件的 NFS 卷
@@ -30,14 +30,7 @@ ms.locfileid: "121729264"
 
 若要查看可为 NFS 卷启用的所有功能以及相关注意事项，请参阅[创建 NFS 卷](azure-netapp-files-create-volumes.md)。 
 
-## <a name="before-you-begin"></a>开始之前
-
-> [!IMPORTANT]
-> 你需要被授予对 Azure NetApp 文件服务的访问权限。 若要请求对该服务的访问权限，请参阅 [Azure NetApp 文件候补名单提交页面](https://aka.ms/azurenetappfiles)。  你必须等待来自 Azure NetApp 文件团队的官方确认电子邮件，然后才能继续操作。
-
----
-
-## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>注册 Azure NetApp 文件和 NetApp 资源提供程序
+## <a name="register-for-netapp-resource-provider"></a>注册 NetApp 资源提供程序
 
 > [!NOTE]
 > 注册过程可能需要一些时间才能完成。
@@ -75,9 +68,7 @@ ms.locfileid: "121729264"
 
 无。
 
-使用 Azure 门户、PowerShell 或 Azure CLI 注册 Azure NetApp 文件和 NetApp 资源提供程序。
-
-有关详细信息，请参阅[注册 Azure NetApp 文件](azure-netapp-files-register.md)。
+使用 Azure 门户、PowerShell 或 Azure CLI [注册 NetApp 资源提供程序](azure-netapp-files-register.md)。
 
 ---
 
@@ -174,7 +165,7 @@ ms.locfileid: "121729264"
 
 ---
 
-## <a name="set-up-a-capacity-pool"></a>设置容量池
+## <a name="create-a-capacity-pool"></a>创建容量池
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 

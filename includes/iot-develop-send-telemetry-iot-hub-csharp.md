@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 08/03/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 6f8cf902303dec652c8b1217815ccd9698e2f21e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 086370583f77ddadeae156fe0fa3d5babf80d815
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610206"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516551"
 ---
 [![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples)
 
@@ -21,7 +21,7 @@ ms.locfileid: "128610206"
 ## <a name="prerequisites"></a>先决条件
 - 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Visual Studio（Community、Professional 或 Enterprise 版）2019](https://visualstudio.microsoft.com/downloads/)。
-- [适用于 C# (.NET) 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库的本地副本。 下载存储库的副本并提取它：[下载 ZIP](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。
+- [适用于 C# (.NET) 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库的本地副本。 下载存储库的副本并提取它：[下载 ZIP](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)。
 - [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases)：用于监视和管理 Azure IoT 的基于 GUI 的跨平台实用工具。 
 - Azure CLI。 在本快速入门中，有两个选项可用于运行 Azure CLI 命令：
     - 使用 Azure Cloud Shell，这是一个交互式 Shell，可在浏览器中运行 CLI 命令。 建议使用此选项，因为无需安装任何插件。 如果是首次使用 Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。 按照 [Cloud Shell 快速入门](../articles/cloud-shell/quickstart.md)中的步骤启动 Cloud Shell 并选择 Bash 环境。
@@ -34,7 +34,7 @@ ms.locfileid: "128610206"
 
 如要在 Visual Studio 中运行示例应用程序：
 
-1. 在解压缩适用于 C# 的 Azure IoT 示例的文件夹中，打开 Visual Studio 中的“azure-iot-samples-csharp-master\iot-hub\Samples\device\IoTHubDeviceSamples.sln”解决方案文件。 
+1. 在 Visual Studio 中，打开适用于 C# 的 Azure IoT 示例解压缩到的文件夹中的“azure-iot-samples-csharp-main\iot-hub\Samples\device\IoTHubDeviceSamples.sln”解决方案文件。 
 
 1. 在“解决方案资源管理器”中，选择“PnpDeviceSamples > TemperatureController”项目文件，右键单击它，然后选择“设为启动项目”  。
 

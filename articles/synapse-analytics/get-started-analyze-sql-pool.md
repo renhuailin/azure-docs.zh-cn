@@ -5,17 +5,17 @@ services: synapse-analytics
 author: saveenr
 ms.author: saveenr
 manager: julieMSFT
-ms.reviewer: jrasnick
+ms.reviewer: jrasnick, wiassaf
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 03/24/2021
-ms.openlocfilehash: 56115e977603e1f2148f84569373dcf4d351e0c4
-ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
+ms.date: 09/29/2021
+ms.openlocfilehash: cf1aabdef95a58c4bdd5a14e3714da37295ed790
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113038203"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387727"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
@@ -23,9 +23,9 @@ ms.locfileid: "113038203"
 
 ## <a name="create-a-dedicated-sql-pool"></a>创建专用 SQL 池
 
-1. 在 Synapse Studio 的左窗格中，选择“管理” > “SQL 池” 。
+1. 在 Synapse Studio 的左窗格中的“分析池”下，选择“管理” > “SQL 池”  。
 1. 选择“新建”
-1. 对于“SQL 池名称”，请选择“SQLPOOL1” 
+1. 对于“专用 SQL 池名称”，请选择“SQLPOOL1” 
 1. 对于“性能级别”，请选择“DW100C” 
 1. 选择“查看 + 创建” > “创建”。 你的专用 SQL 池将在几分钟内准备就绪。 
 
@@ -37,12 +37,14 @@ ms.locfileid: "113038203"
 
 > [!NOTE] 
 > 在工作区中新建专用 SQL 池（之前称为 SQL DW）时，将打开专用 SQL 池预配页面。 预配将在逻辑 SQL 服务器上进行。
+
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>将纽约市出租车数据加载到 SQLPOOL1
 
 1. 在 Synapse Studio 中，导航到“开发”中心，单击“+”按钮以添加新资源，然后新建 SQL 脚本 。
-1. 在脚本上方的“连接到”下拉列表中选择池“SQLPOOL1”（在本教程的[步骤 1](./get-started-create-workspace.md) 中创建的池）。
+1. 在脚本上方的“连接到”下拉列表中选择“SQLPOOL1”池（在本教程的[步骤 1](./get-started-create-workspace.md) 中创建的池）。
 1. 输入以下代码：
-    ```
+
+    ```sql
     IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'NYCTaxiTripSmall' AND O.TYPE = 'U' AND S.NAME = 'dbo')
     CREATE TABLE dbo.NYCTaxiTripSmall
         (
@@ -94,7 +96,7 @@ ms.locfileid: "113038203"
     )
     ```
 1. 单击“运行”按钮以执行脚本。
-1. 此脚本将在 60 秒内完成。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.NYCTaxiTripSmall 的表中。
+1. 此脚本将在 60 秒内完成。 它将 2 百万行纽约市出租车数据加载到一个名为 `dbo.NYCTaxiTripSmall` 的表中。
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>浏览专用 SQL 池中的纽约市出租车数据
 

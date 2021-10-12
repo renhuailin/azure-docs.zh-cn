@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 232a3293d6529955a768ed8d7700289ddbed5177
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 5583596e399456461b2fc157a193b83b596180ee
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136357"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387385"
 ---
 # <a name="about-azure-key-vault-secrets"></a>关于 Azure Key Vault 机密
 
@@ -81,56 +81,18 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 >[!Note]
 >如果调用方具有“列表”或“获取”权限，则调用方可以读取标记。
 
-## <a name="azure-storage-account-key-management"></a>Azure 存储帐户密钥管理
+## <a name="usage-scenarios"></a>使用方案
 
-Key Vault 可以管理 [Azure 存储帐户](../../storage/common/storage-account-overview.md)密钥：
-
-- 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥。 
-- Key Vault 定期重新生成（轮换）密钥。
-- 响应调用方时永远不会返回密钥值。
-- Key Vault 管理存储帐户和经典存储帐户的密钥。
-
-有关详细信息，请参阅：
-- [存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)
-- [Azure Key Vault 中的存储帐户密钥管理](../secrets/overview-storage-keys.md)
-
-
-## <a name="storage-account-access-control"></a>存储帐户访问控制
-
-授权用户或应用程序主体对托管的存储帐户执行操作时，可以使用以下权限：  
-
-- 针对托管存储帐户和 SaS 定义操作的权限
-  - *get*：获取有关存储帐户的信息 
-  - *list*：列出 Key Vault 托管的存储帐户
-  - *update*：更新存储帐户
-  - *delete*：删除存储帐户  
-  - *recover*：恢复删除的存储帐户
-  - *backup*：备份存储帐户
-  - *restore*：将备份存储帐户还原到 Key Vault
-  - *set*：创建或更新存储帐户
-  - *regeneratekey*：为存储帐户重写指定的密钥值
-  - *getsas*：获取有关存储帐户的 SAS 定义的信息
-  - *listsas*：列出存储帐户的存储 SAS 定义
-  - *deletesas*：从存储帐户中删除 SAS 定义
-  - *setsas*：创建或更新存储帐户的新 SAS 定义/属性
-
-- 针对特权操作的权限
-  - *purge*：清除（永久删除）托管存储帐户
-
-有关详细信息，请参阅 [Key Vault REST API 中的存储帐户操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
-
-用于在 Key Vault 中控制访问的操作指南：
-- [使用 CLI 分配 Key Vault 访问策略](../general/assign-access-policy-cli.md)
-- [使用 PowerShell 分配 Key Vault 访问策略](../general/assign-access-policy-powershell.md)
-- [使用 Azure 门户分配 Key Vault 访问策略](../general/assign-access-policy-portal.md)
-- [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](../general/rbac-guide.md)
-
+| 何时使用 | 示例 |
+|--------------|-------------|
+|安全存储、管理生命周期并监视用于服务到服务通信的凭据，例如密码、访问密钥和服务主体客户端机密。  | - [将 Azure Key Vault 用于虚拟机](../general/tutorial-net-virtual-machine.md)<br> - [将 Azure Key Vault 用于 Azure Web 应用](../general/tutorial-net-create-vault-azure-web-app.md) |
 
 ## <a name="next-steps"></a>后续步骤
 
+- [Key Vault 中机密管理的最佳做法](secrets-best-practices.md)
 - [关于 Key Vault](../general/overview.md)
 - [关于键、密钥和证书](../general/about-keys-secrets-certificates.md)
-- [关于密钥](../keys/about-keys.md)
-- [关于证书](../certificates/about-certificates.md)
+- [分配 Key Vault 访问策略](../general/assign-access-policy.md)
+- [使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限](../general/rbac-guide.md)
 - [保护对密钥保管库的访问](../general/security-features.md)
 - [Key Vault 开发人员指南](../general/developers-guide.md)

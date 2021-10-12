@@ -1,7 +1,6 @@
 ---
-title: FortiGate 部署指南 | Microsoft Docs
+title: FortiGate 部署指南
 description: 设置并使用 Fortinet FortiGate 下一代防火墙产品。
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: celested
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
-ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1b3a2dca9e11e12a72ec99685ff71beb279473e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95025418"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353940"
 ---
 # <a name="fortigate-azure-virtual-machine-deployment-guide"></a>FortiGate Azure 虚拟机部署指南
 
@@ -26,7 +25,7 @@ ms.locfileid: "95025418"
 
 Fortinet FortiGate 下一代防火墙产品在 Azure 基础结构即服务 (IaaS) 中作为虚拟机提供。 此虚拟机有两种许可模式：即用即付和自带许可 (BYOL)。
 
-如果你已购买 Fortinet 提供的 FortiGate 许可证，以便与 BYOL 虚拟机部署选项一起使用，请从 Fortinet 的产品激活页面 (https://support.fortinet.com ) 兑换许可证。 生成的许可证文件具有 .lic 文件扩展名。
+如果你已购买 Fortinet 提供的可与 BYOL 虚拟机部署选项一起使用的 FortiGate 许可证，请从 Fortinet 的产品激活页面 (https://support.fortinet.com ) 兑换许可证。 生成的许可证文件具有 .lic 文件扩展名。
 
 ## <a name="download-firmware"></a>下载固件
 
@@ -217,4 +216,4 @@ Fortinet FortiGate 下一代防火墙产品在 Azure 基础结构即服务 (IaaS
 
 ## <a name="configure-fortigate-ssl-vpn"></a>配置 FortiGate SSL VPN
 
-请执行 https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial 中所述的步骤
+执行[教程：Azure Active Directory 单一登录 (SSO) 与 FortiGate SSL VPN 集成](../../fortigate-ssl-vpn-tutorial.md)中概述的步骤

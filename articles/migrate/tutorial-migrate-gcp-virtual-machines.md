@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: aa51a489fd1dc7a3e7188239ea200b6fb95b3ed1
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: fc052deefeec9263d1f055c04381792c1ac0980b
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123271964"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537012"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>发现、评估 Google Cloud Platform (GCP) VM 并将其迁移到 Azure
 
@@ -138,7 +138,7 @@ ms.locfileid: "123271964"
 
 2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。  
 3. 在“目标区域”中，选择要将计算机迁移到的 Azure 区域。
-4. 选择“确认迁移的目标区域为 <区域名称>”。
+4. 选择“确认迁移的目标区域为 \<region-name\>”。
 5. 单击“创建资源”。 随即会在后台创建一个 Azure Site Recovery 保管库。
     - 如果已设置使用 Azure Migrate 服务器迁移进行迁移，则无法配置目标选项，因为之前已设置了资源。
     - 单击此按钮后，无法更改此项目的目标区域。
@@ -315,14 +315,15 @@ ms.locfileid: "123271964"
 
 2. 右键单击要测试的 VM，然后单击“测试迁移”。
 
-    ![测试迁移](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/test-migrate-inline.png" alt-text="显示单击“测试迁移”后的结果的屏幕截图。" lightbox="./media/tutorial-migrate-physical-virtual-machines/test-migrate-expanded.png":::
 
 3. 在“测试迁移”中，选择 Azure VM 在迁移后所在的 Azure VNet。 建议使用非生产 VNet。
 4. “测试迁移”作业随即启动。 在门户通知中监视该作业。
 5. 迁移完成后，在 Azure 门户上的“虚拟机”中查看已迁移的 Azure VM。 计算机名称带有 **-Test** 后缀。
 6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。
 
-    ![清理迁移](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="显示清理测试迁移后的结果的屏幕截图。" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
+
     > [!NOTE]
     > 现在可以使用 SQL VM RP 注册运行 SQL Server 的服务器，以利用自动修补、自动备份和使用 SQL IaaS 代理扩展简化的许可证管理。
     >- 选择“管理” > “复制服务器” > “包含 SQL Server 的计算机” > “计算和网络”，然后选择“是”，注册 SQL VM RP。

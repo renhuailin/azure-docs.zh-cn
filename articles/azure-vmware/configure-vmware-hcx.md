@@ -2,13 +2,13 @@
 title: 在 Azure VMware 解决方案中配置 VMware HCX
 description: 为 Azure VMware 解决方案私有云配置本地 VMware HCX 连接器。
 ms.topic: tutorial
-ms.date: 07/30/2021
-ms.openlocfilehash: 1249a694e01e01d4e7aa31c639c4422be2372ee4
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/07/2021
+ms.openlocfilehash: 022936108246b57f27d26dfffdaa260399821740
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255465"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457499"
 ---
 # <a name="configure-on-premises-vmware-hcx-connector"></a>配置本地 VMware HCX 连接器
 
@@ -26,9 +26,15 @@ ms.locfileid: "123255465"
 
 - 已安装 [VMware HCX 连接器](install-vmware-hcx.md)。
 
-- 如果计划使用 VMware HCX Enterprise，请确保已通过[支持请求](https://portal.azure.com/#create/Microsoft.Support)启用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 附加产品。
+- 如果计划使用 VMware HCX Enterprise，请确保已通过[支持请求](https://portal.azure.com/#create/Microsoft.Support)启用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 附加产品。 这是 Azure VMware 解决方案中的 12 个月免费试用版。
 
-- [软件版本要求](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)
+- 如果你计划[启用 VMware HCX MON](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-0E254D74-60A9-479C-825D-F373C41F40BC.html)，请确保：  
+
+   - 具有适用于 HCX 网络扩展的 NSX-T 或本地 VDS（无标准交换机）
+
+   - 具有一个或多个有效延伸网段
+
+- 已满足 [VMware 软件版本要求](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)。
 
 - 本地 vSphere 环境（源环境）满足[最低要求](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)。
 
@@ -38,7 +44,7 @@ ms.locfileid: "123255465"
 
 - [定义 VMware HCX 网段](plan-private-cloud-deployment.md#define-vmware-hcx-network-segments)。  VMware HCX 的主要用例是工作负荷迁移和灾难恢复。
 
-- 请参阅 [VMware HCX 文档](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-BFD7E194-CFE5-4259-B74B-991B26A51758.html)，了解有关如何使用 HCX 的信息。
+- 若要了解如何使用 HCX，请[参阅 VMware HCX 文档](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-BFD7E194-CFE5-4259-B74B-991B26A51758.html)。
 
 ## <a name="add-a-site-pairing"></a>添加站点配对
 
@@ -204,31 +210,18 @@ VMware HCX 连接器会（自动）部署虚拟设备的子集，这需要多个
    >
    >:::image type="content" source="media/tutorial-vmware-hcx/hcx-service-mesh-datastore-host.png" alt-text="显示 HCX 服务网格数据存储和主机的屏幕截图。" lightbox="media/tutorial-vmware-hcx/hcx-service-mesh-datastore-host.png":::
 
+HCX 互连隧道状态应指示“UP”（启用）且呈绿色。 你现可使用 VMware HCX 来迁移和保护 Azure VMware 解决方案 VM 了。 Azure VMware 解决方案支持工作负载迁移（带有或不带网络扩展）。 因此，你仍可在 vSphere 环境中迁移工作负载，而且还可在本地创建网络并将 VM 部署到这些网络上。 有关详细信息，请参阅 [VMware HCX 文档](https://docs.vmware.com/en/VMware-HCX/index.html)。 
+
+
+
 有关此过程的端到端概述，请观看 [Azure VMware 解决方案：服务网格](https://www.youtube.com/embed/COY3oIws108)视频。
 
-## <a name="create-a-network-extension"></a>创建网络扩展
-
-这是一个可选步骤，用于将任何网络从本地环境扩展到 Azure VMware 解决方案。
-
-1. 在“服务”下，选择“网络扩展” > “创建网络扩展”  。
-
-   :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="显示用于开始创建网络扩展的选项的屏幕截图。" lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
-
-1. 选择要将其扩展到 Azure VMware 解决方案的每个网络，然后选择“下一步”。
-
-   :::image type="content" source="media/tutorial-vmware-hcx/select-extend-networks.png" alt-text="显示选择网络的屏幕截图。":::
-
-1. 输入要扩展的每个网络的本地网关 IP，然后选择“提交”。
-
-   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-gateway.png" alt-text="显示网关 IP 地址条目的屏幕截图。":::
-
-   只需几分钟时间即可完成网络扩展。 然后，你会看到状态更改为“扩展完成”。
-
-   :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="显示“扩展完成”状态的屏幕截图。":::
-
-有关此过程的端到端概述，请观看 [Azure VMware 解决方案：网络扩展](https://www.youtube.com/embed/gYR0nftKui0)视频。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果 HCX 互连隧道状态为“正常”且其颜色为绿色，可使用 VMware HCX 来迁移和保护 Azure VMware 解决方案 VM。 Azure VMware 解决方案支持工作负载迁移（带有或不带网络扩展）。 你仍然可以在 vSphere 环境中迁移工作负载，以及在本地创建网络并将 VM 部署到这些网络上。 有关详细信息，请参阅 [VMware HCX 文档](https://docs.vmware.com/en/VMware-HCX/index.html)。
+配置 HCX 连接器后，接下来还可学习：
+
+- [创建 HCX 网络扩展](configure-hcx-network-extension.md)
+
+- [VMware HCX 移动优化网络 (MON) 指南](vmware-hcx-mon-guidance.md)
 

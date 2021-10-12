@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Create!Webフロー 集成 | Microsoft Docs
+title: '教程：Azure AD SSO 与 Create!Webフロー 集成 '
 description: 了解如何在 Azure Active Directory 和 Create!Webフロー 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2021
+ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 1aaabacff8e1512931aa18c7fe6db20708425096
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 38fab4d4e1dff8f9916693442926312d81409884
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802856"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401990"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-createweb"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Create!Webフロー 集成
+# <a name="tutorial-azure-ad-sso-integration-with-createweb"></a>教程：Azure AD SSO 与 Create!Webフロー 集成
 
 本教程介绍如何将 Create!Webフロー 与 Azure Active Directory (Azure AD) 集成。 将 Create!Webフロー 与 Azure AD 集成后，你可以：
 
@@ -94,7 +94,7 @@ ms.locfileid: "124802856"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<user-hostname>:8443/XFV20`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Create!Webフロー 客户端支持团队](mailto:solution-cwf@iftc.co.jp)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Create!Webフロー 客户端支持团队](https://support.createwebflow.jp/contact/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -130,11 +130,11 @@ ms.locfileid: "124802856"
 
 ## <a name="configure-createweb-sso"></a>配置 Create!Webフロー SSO
 
-若要在 Create!Webフロー 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Create!Webフロー 支持团队](mailto:solution-cwf@iftc.co.jp) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Create!Webフロー 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Create!Webフロー 支持团队](https://support.createwebflow.jp/contact/) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-createweb-test-user"></a>创建 Create!Webフロー 测试用户
 
-在本部分中，你将在 Create!Webフロー 中创建名为 Britta Simon 的用户。 请与 [Create!Webフロー 支持团队](mailto:solution-cwf@iftc.co.jp)协作，将用户添加到 Create!Webフロー 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，你将在 Create!Webフロー 中创建名为 Britta Simon 的用户。 请与 [Create!Webフロー 支持团队](https://support.createwebflow.jp/contact/)协作，将用户添加到 Create!Webフロー 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

@@ -4,15 +4,15 @@ description: 了解如何使用应用服务身份验证和授权来确保应用�
 keywords: 应用服务, azure 应用服务, authN, authZ, 安全, 安全性, 多层, azure active directory, azure ad
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/26/2021
+ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4b5244766769255a74becaa7c8893db45532dc4f
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: e7ee0deb84b6b7ef7c10c296eab236524a3ee487
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227123"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357330"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -53,7 +53,7 @@ ms.locfileid: "123227123"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
 - <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 - <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
@@ -86,7 +86,7 @@ ms.locfileid: "123227123"
     ```
     
     > [!TIP]
-    > 应用服务不需要更改分支名称。 但是，由于许多存储库正在将默认分支更改为 `main`，因此本教程还介绍如何从 `main` 部署存储库。 有关详细信息，请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)。
+    > 应用服务不需要更改分支名称。 但是，由于许多存储库将其默认分支更改为 `main`，因此本教程还介绍如何从 `main` 部署存储库。 有关详细信息，请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)。
 
 ## <a name="deploy-apps-to-azure"></a>将应用部署到 Azure
 
@@ -260,13 +260,7 @@ http://<front-end-app-name>.azurewebsites.net
 
 1. 在“添加标识提供者”页上，选择“Microsoft”作为“标识提供者”以登录 Microsoft 和 Azure AD 标识。
 
-1. 对于“应用程序注册” > “应用程序注册类型”，请选择“新建应用程序注册”。
-
-1. 对于“应用程序注册” > “支持的帐户类型”，请选择“当前租户-单租户”。
-
-1. 在“应用服务身份验证设置”部分中，将“身份验证”设置为“要求身份验证”，并将“未验证请求”设置为“HTTP 302 Found 重定向：建议网站选用”。
-
-1. 在“添加标识提供者”页的底部，单击“添加”为 Web 应用启用身份验证。
+1. 接受默认设置，然后单击“添加”。
 
     :::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="后端应用左侧菜单的屏幕截图，其中显示了选中的身份验证/授权和在右菜单中选中的设置。":::
 
@@ -278,7 +272,7 @@ http://<front-end-app-name>.azurewebsites.net
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>启用针对前端应用的身份验证和授权
 
-遵循前端应用的步骤进行操作，但跳过最后一步。 对于前端应用，不需要客户端 ID。
+遵循前端应用的步骤进行操作，但跳过最后一步。 对于前端应用，不需要客户端 ID。 但是，请留在前端应用的“身份验证”页面上，因为下一步会用到它。
 
 根据需要导航到 `http://<front-end-app-name>.azurewebsites.net`。 现在你会被定向到安全登录页。 登录后，你仍然无法从后端应用访问数据，因为后端应用现在要求从前端应用登录 Azure Active Directory。 你需要执行以下三项操作：
 
@@ -293,13 +287,9 @@ http://<front-end-app-name>.azurewebsites.net
 
 启用对两种应用的身份验证和授权以后，即可通过 AD 应用程序对每种应用提供支持。 在此步骤中，请为前端应用授予代表用户访问后端的权限。 （严格说来就是，请为前端的 AD 应用程序授予代表用户访问后端的 AD 应用程序的权限。）
 
-1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”。
+1. 在前端应用的“身份验证”页面中，在“标识提供者”下选择前端应用名称。 此应用注册是自动为你生成的。 在左侧菜单中选择“API 权限”。
 
-1. 选择“应用注册” > “拥有的应用程序” > “查看此目录中的所有应用程序”。 选择前端应用名称，然后选择“API 权限”。
-
-    :::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="“Microsoft - 应用注册”窗口的屏幕截图，其中包含拥有的应用程序、前端应用名称和选中的 API 权限。":::
-
-1. 选择“添加权限”，然后选择“我的组织使用的 API” > “\<back-end-app-name>”。
+1. 选择“添加权限”，然后选择“我的 API”  >  **\<back-end-app-name>** 。
 
 1. 在后端应用的“请求 API 权限”页中，选择“委托的权限”和“user_impersonation”，然后选择“添加权限”。
 
@@ -309,25 +299,36 @@ http://<front-end-app-name>.azurewebsites.net
 
 现在，前端应用具有以登录用户身份访问后端应用所需的权限。 在此步骤中，请配置应用服务身份验证和授权，以便获取可以用来访问后端的访问令牌。 执行此步骤时，需要后端的客户端 ID，该 ID 是从[为后端应用启用身份验证和授权](#enable-authentication-and-authorization-for-back-end-app)复制的。
 
-1. 导航到 [Azure 资源浏览器](https://resources.azure.com)并使用资源树找到前端 Web 应用。
+在 Cloud Shell 中，在前端应用上运行以下命令，以将 `scope` 参数添加到身份验证设置 `identityProviders.azureActiveDirectory.login.loginParameters`。 请替换 \<front-end-app-name> 和 \<back-end-client-id> 。
 
-1. 此时会打开 [Azure 资源浏览器](https://resources.azure.com)，前端应用在资源树中处于选中状态。 在页面顶部单击“读/写”，以便启用编辑 Azure 资源的功能。
+```azurecli-interactive
+az webapp auth set --resource-group myAuthResourceGroup --name <front-end-app-name> --body '{"identityProviders":{"azureActiveDirectory":{"login":{"loginParameters":["scope=openid profile email offline_access api://<back-end-client-id>/user_impersonation"]}}}}'
+```
 
-    :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="“Azure 资源浏览器”页面顶部的“只读”和“读/写”按钮的屏幕截图，其中“读/写”按钮已选中。":::
+下面解释了请求的范围：
 
-1. 在左侧浏览器中，向下钻取到“config” > “authsettings”。
+- 默认情况下，应用服务已请求 `openid`、`profile` 和 `email`。 有关信息，请参阅 [OpenID Connect 范围](../active-directory/develop/v2-permissions-and-consent.md#openid-connect-scopes)。
+- `api://<back-end-client-id>/user_impersonation` 是后端应用注册中公开的 API。 它是提供 JWT 令牌的范围，该令牌包含后端应用作为[令牌受众](https://wikipedia.org/wiki/JSON_Web_Token)。 
+- 为方便起见，此处包含了 [offline_access](../active-directory/develop/v2-permissions-and-consent.md#offline_access)（便于[刷新令牌](#when-access-tokens-expire)）。
 
-1. 在“authsettings”视图中，单击“编辑”。 使用复制的客户端 ID 将 `additionalLoginParams` 设置为以下 JSON 字符串。 
+> [!TIP]
+> - 若要在 Azure 门户中查看 `api://<back-end-client-id>/user_impersonation` 范围，请转到后端应用的“身份验证”页，单击“标识提供者”下的链接，然后在左侧菜单中单击“公开 API”  。
+> - 若要改为使用 Web 界面配置所需的范围，请参阅[刷新身份验证令牌](configure-authentication-oauth-tokens.md#refresh-auth-tokens)中的 Microsoft 步骤。
+> - 某些范围需要管理员同意或用户同意。 此要求会导致当用户在浏览器中登录前端应用时显示同意请求页面。 为避免出现此同意页面，请在“公开 API”页面中将前端应用注册添加为授权客户端应用程序，方法是单击“添加客户端应用程序”并提供前端应用注册的客户端 ID。
 
-    ```json
-    "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
-    ```
+::: zone pivot="platform-linux"
 
-    :::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="authsettings 视图中代码示例的屏幕截图，其中显示了包含客户端 ID 示例的 additionalLoginParams 字符串。":::
+> [!NOTE]
+> 对于 Linux 应用，有一个临时要求，即，为后端应用注册配置版本控制设置。 在 Cloud Shell 中，使用以下命令对其进行配置。 请务必将 *\<back-end-client-id>* 替换为后端的客户端 ID。
+>
+> ```azurecli-interactive
+> id=$(az ad app show --id <back-end-client-id> --query objectId --output tsv)
+> az rest --method PATCH --url https://graph.microsoft.com/v1.0/applications/$id --body "{'api':{'requestedAccessTokenVersion':2}}" 
+> ```    
 
-1. 单击“PUT”，对设置进行保存。
-
-    现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
+::: zone-end
+    
+现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
 
 若要了解如何为其他提供程序配置访问令牌，请参阅[刷新标识提供者令牌](configure-authentication-oauth-tokens.md#refresh-auth-tokens)。
 

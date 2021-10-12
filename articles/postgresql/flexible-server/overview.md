@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: overview
-ms.date: 08/24/2021
+ms.date: 10/04/2021
 ms.custom: mvc, references_regions
-ms.openlocfilehash: ae7ef0d0ff3cb946bc8c900517a8975bb618ad3c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d1d33a526ef2dfff4709b994c77396a4db1b2a5e
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768137"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457537"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>概述 - Azure Database for PostgreSQL - 灵活服务器
 
@@ -29,7 +29,7 @@ ms.locfileid: "122768137"
 
 ## <a name="overview"></a>概述
 
-Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 通常，该服务提供更大的灵活性和基于用户要求的服务器配置自定义。 灵活服务器体系结构允许用户将数据库引擎与客户端层并置以降低延迟，选择单个可用性区域内以及跨多个可用性区域的高可用性。 灵活服务器还提供了更好的成本优化控制，具有停止/启动服务器和可突增计算层的功能，非常适合无需持续全计算容量的工作负载。 该服务当前支持 PostgreSQL 11 和 12 的社区版本。 此服务目前以预览版提供，现已在各种 [Azure 区域](https://azure.microsoft.com/global-infrastructure/services/)中提供。
+Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 通常，该服务提供更大的灵活性和基于用户要求的服务器配置自定义。 灵活服务器体系结构允许用户将数据库引擎与客户端层并置以降低延迟，选择单个可用性区域内以及跨多个可用性区域的高可用性。 灵活服务器还提供了更好的成本优化控制，具有停止/启动服务器和可突增计算层的功能，非常适合无需持续全计算容量的工作负载。 该服务当前支持 PostgreSQL 11、12 和 13 的社区版本。 此服务目前以预览版提供，现已在各种 [Azure 区域](https://azure.microsoft.com/global-infrastructure/services/)中提供。
 
 ![灵活服务器 - 概述](./media/overview/overview-flexible-server.png)
 
@@ -94,11 +94,11 @@ Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库�
 
 在 Azure 中运行工作负载的一个优点是，它可覆盖全球范围。 灵活服务器当前在以下 Azure 区域中提供：
 
-| Region | 可用性 | 区域冗余 HA | 
+| Region | V3/V4 计算可用性 | 区域冗余 HA | 
 | --- | --- | --- |
 | 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 澳大利亚东南部 | :heavy_check_mark: | :x: | 
-| 巴西南部 | :heavy_check_mark: | :x: |
+| 巴西南部 | :heavy_check_mark:（仅适用于 v3） | :x: |
 | 加拿大中部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 印度中部 | :heavy_check_mark: | :x: |
 | 美国中部 | :heavy_check_mark: | :heavy_check_mark: | 

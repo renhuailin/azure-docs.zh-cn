@@ -16,6 +16,8 @@
       href: concepts/container-management.md
     - name: 分布式数据结构
       href: concepts/data-structures.md
+    - name: Azure Fluid Relay 中的数据加密
+      href: concepts/data-encryption.md
     - name: 应用中的身份验证和授权
       href: concepts/authentication-authorization.md
     - name: 版本兼容性

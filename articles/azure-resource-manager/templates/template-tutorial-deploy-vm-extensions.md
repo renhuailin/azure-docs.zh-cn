@@ -6,12 +6,12 @@ ms.date: 03/26/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 14aece10cad828b82f2541e4f0478633382de662
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b7e7770df1195dc170a28246a572f8825b39a860
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656239"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401268"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教程：使用 ARM 模板部署虚拟机扩展
 
@@ -32,11 +32,13 @@ ms.locfileid: "128656239"
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
-* 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
+* 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 可使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 在 PowerShell 或 Bash 中运行以下命令：
 
-    ```console
+    ```shell
     openssl rand -base64 32
     ```
+
+    若要了解详细信息，请运行 `man openssl rand` 来打开手册页。
 
     Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在 ARM 模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议每三个月更新一次密码。
 

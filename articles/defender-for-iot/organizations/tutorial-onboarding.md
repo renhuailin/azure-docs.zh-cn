@@ -4,14 +4,14 @@ description: 在本教程中，你将了解如何使用虚拟传感器在虚拟�
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/06/2021
+ms.date: 10/05/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 66d95f5700cb3445aa5e2facabe12ea7c70ef92e
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 717b65b78d177e277922687c4c290035b57ab6ab
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544559"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537036"
 ---
 # <a name="tutorial-azure-defender-for-iot-trial-setup"></a>教程：Azure Defender for IoT 试用版设置
 
@@ -248,6 +248,8 @@ ms.locfileid: "123544559"
 
 vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 端口。 可以通过 ESXi 或 Hyper-V 实现此变通方法。
 
+:::image type="content" source="media/tutorial-onboarding/purdue-model.png" alt-text="体系结构中传感器应放置位置的屏幕截图。":::
+
 ### <a name="configure-a-span-port-with-esxi"></a>使用 ESXi 配置 SPAN 端口
 
 **使用 ESXi 配置 SPAN 端口**：
@@ -280,7 +282,7 @@ vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 
 
 开始之前，你需要：
 
-- 确保没有正在运行的 ClearPass VA 实例。
+- 确保没有任何虚拟设备实例正在运行。
 
 - 确保在数据端口而不是管理端口启用 SPAN。
 
@@ -304,11 +306,11 @@ vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 
 
 1. 选择“确定”。
 
-#### <a name="attach-a-clearpass-span-virtual-interface-to-the-virtual-switch"></a>将 ClearPass SPAN 虚拟接口附加到虚拟交换机
+#### <a name="attach-a-span-virtual-interface-to-the-virtual-switch"></a>将 SPAN 虚拟接口附加到虚拟交换机
 
-可通过 Windows PowerShell 或 Hyper-V 管理器将 ClearPass SPAN 虚拟接口附加到虚拟交换机。
+可通过 Windows PowerShell 或 Hyper-V 管理器将 SPAN 虚拟接口附加到虚拟交换机。
 
-**通过 PowerShell 将 ClearPass SPAN 虚拟接口附加到虚拟交换机**：
+若要通过 PowerShell 将 SPAN 虚拟接口附加到虚拟交换机，请执行以下操作：
 
 1. 选择新添加的 SPAN 虚拟交换机，并使用以下命令添加新的网络适配器：
 
@@ -332,7 +334,7 @@ vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 
 
 这些命令将新添加的适配器硬件的名称设置为 `Monitor`。 如果使用 Hyper-V 管理器，新添加的适配器硬件的名称将设置为 `Network Adapter`。
 
-**通过 Hyper-V 管理器将 ClearPass SPAN 虚拟接口附加到虚拟交换机**：
+若要通过 Hyper-V 管理器将 SPAN 虚拟接口附加到虚拟交换机，请执行以下操作：
 
 1. 在“硬件”列表下，选择“网络适配器”。
 

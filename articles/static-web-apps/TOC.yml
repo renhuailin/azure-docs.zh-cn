@@ -108,6 +108,8 @@
       href: publish-azure-resource-manager.md
     - name: 添加 Azure Front Door
       href: front-door-manual.md
+    - name: 以编程方式设置用户角色
+      href: assign-roles-microsoft-graph.md
 - name: 参考
   items:
     - name: Azure CLI

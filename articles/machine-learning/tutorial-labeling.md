@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何管理图像标记过程，使图像可在多类图像分类模型中使用。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
-ms.date: 04/09/2020
+ms.date: 09/30/2021
 ms.custom: data4ml
-ms.openlocfilehash: 2dcd31493bf8ebc7c5096bfe7fda3e2b3f1641be
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 89d3a569a8e202ff2fbe43f697de3598b9b767ad
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459543"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423927"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目 
 
@@ -96,6 +96,10 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
     标记任务类型 | 选择“多类图像分类”。  
     
     选择“下一步”继续创建项目。
+
+### <a name="add-workforce-optional"></a>添加工作人员（可选）
+
+选择“下一步”继续操作。  在本教程中，你不会使用外部工作人员。
 
 ### <a name="select-or-create-a-dataset"></a>选择或创建数据集
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 ScaleX Enterprise 集成 | Microsoft Docs
+title: 教程：Azure AD SSO 与 ScaleX Enterprise 集成
 description: 了解如何在 Azure Active Directory 和 ScaleX Enterprise 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/16/2019
+ms.date: 09/29/2021
 ms.author: jeedes
-ms.openlocfilehash: c3ce7518621e01d9831afc7edd4ba5014a27bac6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6a316bf288995c773d603bb067789086e2b65003
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124821642"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400900"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ScaleX Enterprise 集成
+# <a name="tutorial-azure-ad-sso-integration-with-scalex-enterprise"></a>教程：Azure AD SSO 与 ScaleX Enterprise 集成
 
 本教程介绍如何将 ScaleX Enterprise 与 Azure Active Directory (Azure AD) 进行集成。 将 ScaleX Enterprise 与 Azure AD 集成后，可以：
 
 * 在 Azure AD 中控制谁有权访问 ScaleX Enterprise。
 * 让用户使用其 Azure AD 帐户自动登录到 ScaleX Enterprise。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,44 +37,42 @@ ms.locfileid: "124821642"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* ScaleX Enterprise 支持 **SP 和 IDP** 发起的 SSO
+* ScaleX Enterprise 支持 SP 和 IDP 发起的 SSO。
 
-## <a name="adding-scalex-enterprise-from-the-gallery"></a>从库中添加 ScaleX Enterprise
+## <a name="add-scalex-enterprise-from-the-gallery"></a>从库中添加 ScaleX Enterprise
 
 要配置 ScaleX Enterprise 与 Azure AD 的集成，需要从库中将 ScaleX Enterprise 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“ScaleX Enterprise”   。
 1. 从结果面板中选择“ScaleX Enterprise”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on-for-scalex-enterprise"></a>配置并测试 ScaleX Enterprise 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-scalex-enterprise"></a>配置并测试 ScaleX Enterprise 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置和测试 ScaleX Enterprise 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 ScaleX Enterprise 相关用户之间建立链接关系。
 
-若要配置和测试 ScaleX Enterprise 的 Azure AD SSO，请完成以下构建基块：
-
+若要配置并测试 ScaleX Enterprise 的 Azure AD SSO，请执行以下步骤：
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 ScaleX Enterprise SSO](#configure-scalex-enterprise-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 ScaleX Enterprise 测试用户](#create-scalex-enterprise-test-user)** - 在 ScaleX Enterprise 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 ScaleX Enterprise 测试用户](#create-scalex-enterprise-test-user)** - 在 ScaleX Enterprise 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“ScaleX Enterprise”应用程序集成页上，找到“管理”部分，然后选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在 Azure 门户的“ScaleX Enterprise”应用程序集成页上，找到“管理”部分，然后选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://platform.rescale.com/saml2/<company id>/`
 
@@ -120,13 +116,7 @@ ms.locfileid: "124821642"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“ScaleX Enterprise”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
@@ -148,21 +138,21 @@ ms.locfileid: "124821642"
     > [!NOTE]
     > Contoso 只是一个示例。 这应当是实际公司名称。
 
-    ![显示在右上角的菜单中选择了示例公司名称的屏幕截图。](./media/scalex-enterprise-tutorial/Test_Admin.png)
+    ![显示在右上角的菜单中选择了示例公司名称的屏幕截图。](./media/scalex-enterprise-tutorial/admin.png)
 
 1. 从顶部的菜单中选择“集成”并选择“单一登录”。  
 
-    ![显示选择了“集成”并从下拉菜单中选择了“单一登录”的屏幕截图。](./media/scalex-enterprise-tutorial/admin_sso.png) 
+    ![显示选择了“集成”并从下拉菜单中选择了“单一登录”的屏幕截图。](./media/scalex-enterprise-tutorial/menu.png) 
 
 1. 如下所示填写表单：
 
-    ![配置单一登录](./media/scalex-enterprise-tutorial/scalex_admin_save.png)
+    ![配置单一登录](./media/scalex-enterprise-tutorial/settings.png)
 
-    a. 选择“创建可以通过 SSO 进行身份验证的任何用户” 
+    a. 选择“创建可以通过 SSO 进行身份验证的任何用户”。
 
-    b. **服务提供商 saml**：粘贴 **_urn:oasis:names:tc:SAML:2.0:nameid-format:persistent_** 的值
+    b. 服务提供商 saml：粘贴值“urn:oasis:names:tc:SAML:2.0:nameid-format:persistent”。 
 
-    c. **ACS 响应中的标识提供者名称电子邮件字段**：粘贴 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值
+    c. ACS 响应中的标识提供者名称电子邮件字段：粘贴值“`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`”。
 
     d. **标识提供者 EntityDescriptor 实体 ID：** 粘贴从 Azure 门户复制的“Azure AD 标识符”值  。
 
@@ -180,16 +170,20 @@ ms.locfileid: "124821642"
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 ScaleX Enterprise 磁贴时，应当会自动登录到已为其设置了 SSO 的 ScaleX Enterprise。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)（访问面板简介）。
+#### <a name="sp-initiated"></a>SP 启动的：
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这将重定向到 ScaleX Enterprise 登录 URL，你可以从那里启动登录流。  
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 直接转到 ScaleX Enterprise 登录 URL，在那里启动登录流。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 启动的：
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+* 单击 Azure 门户中的“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 ScaleX Enterprise。 
 
-- [通过 Azure AD 试用 ScaleX Enterprise](https://aad.portal.azure.com/)
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“ScaleX Enterprise”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 ScaleX Enterprise。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+配置 ScaleX Enterprise 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

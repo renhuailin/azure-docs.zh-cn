@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 2a8f8c4a1cda62c4267f7a0f38f4dc9f9654404f
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7dc2a8e5701ba45e49d9be50d5a05727d01cda4d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272450"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533281"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -141,7 +141,7 @@ ms.locfileid: "123272450"
 
 2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。  
 3. 在“目标区域”中，选择要将计算机迁移到的 Azure 区域。
-4. 选择“确认迁移的目标区域为 <区域名称>”。
+4. 选择“确认迁移的目标区域为 \<region-name\>”。
 5. 单击“创建资源”。 随即会在后台创建一个 Azure Site Recovery 保管库。
     - 如果已设置使用 Azure Migrate 服务器迁移进行迁移，则无法配置目标选项，因为之前已设置了资源。
     - 单击此按钮后，无法更改此项目的目标区域。
@@ -329,7 +329,7 @@ ms.locfileid: "123272450"
 5. 迁移完成后，在 Azure 门户上的“虚拟机”中查看已迁移的 Azure VM。 计算机名称带有 **-Test** 后缀。
 6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。
 
-    ![清理迁移](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="显示清理测试迁移后的结果的屏幕截图。" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
 
     > [!NOTE]
     > 现在可以使用 SQL VM RP 注册运行 SQL Server 的服务器，以利用自动修补、自动备份和使用 SQL IaaS 代理扩展简化的许可证管理。

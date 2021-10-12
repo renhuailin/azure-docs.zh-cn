@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b2fc0f070ba5a07a1ac51a314f08873860e852d
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102642"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229670"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教程：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -346,8 +346,8 @@ private async Task DisplayMessageAsync(string message)
 现在，注册应用程序：
 
 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-1. 搜索并选择“Azure Active Directory”。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，以切换到要在其中注册应用程序的租户。
+1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的名称（例如 `UWP-App-calling-MSGraph`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 在“受支持的帐户类型”下，选择“任何组织目录（任何 Azure AD 目录 - 多租户）中的帐户和个人 Microsoft 帐户（例如，Skype、Xbox）”。 
@@ -369,7 +369,7 @@ private async Task DisplayMessageAsync(string message)
 
 ## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>在联盟域中启用集成身份验证（可选）
 
-若要在与 Azure AD 联盟域配合使用的情况下启用集成的 Windows 身份验证，应用程序清单必须启用其他功能。 回到 Visual Studio 中的应用程序。
+若要在为 Azure AD 联合域使用集成 Windows 身份验证的情况下启用该身份验证方法，应用程序清单必须启用其他功能。 回到 Visual Studio 中的应用程序。
 
 1. 打开 *Package.appxmanifest*。
 1. 选择“功能”并启用以下设置：
@@ -379,7 +379,7 @@ private async Task DisplayMessageAsync(string message)
    * **共享用户证书**
 
 > [!IMPORTANT]
-> 默认情况下，未为此示例配置[集成 Windows 身份验证](https://aka.ms/msal-net-iwa)。 请求`Enterprise Authentication`或`Shared User Certificates`功能的应用程序需要由 Windows 应用商店进行的更高级别的验证。 此外，并非所有开发人员都希望执行更高级别的验证。 仅当需要使用 Azure AD 联盟域进行集成 Windows 身份验证时，才启用此设置。
+> 默认情况下，未为此示例配置[集成 Windows 身份验证](https://aka.ms/msal-net-iwa)。 请求`Enterprise Authentication`或`Shared User Certificates`功能的应用程序需要由 Windows 应用商店进行的更高级别的验证。 此外，并非所有开发人员都希望执行更高级别的验证。 仅当需要将集成 Windows 身份验证用于 Azure AD 联合域时，才启用此设置。
 
 ## <a name="alternate-approach-to-using-withdefaultredirecturi"></a>使用 WithDefaultRedirectURI() 的替代方法
 

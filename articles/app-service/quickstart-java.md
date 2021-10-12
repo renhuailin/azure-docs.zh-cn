@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 54ca249d1b89eb90b636da72e1378eadfd5fe0c1
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 2fb7a97f1efb50f76b91cbc49a189deda7cde9c8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681384"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357115"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
 
@@ -98,7 +98,7 @@ cd agoncal-application-petstore-ee7
 运行下面的 Maven 命令来配置部署。 此命令将帮助你设置应用服务操作系统、Java 版本和 Tomcat 版本。
 
 ```azurecli-interactive
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
 ```
 
 ::: zone pivot="platform-windows"
@@ -107,9 +107,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 
 1. 如果系统提示“订阅”选项，通过在行首输入数字来选择适当的 `Subscription`。
 2. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
-3. 当系统提示 OS 选项时，通过输入 `2` 选择 Windows 。
+3. 当系统提示 OS 选项时，通过输入 `1` 选择 Windows 。
 4. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
-5. 当系统提示“定价层”选项时，通过输入 `7` 选择“P1v2” 。
+5. 当系统提示“定价层”选项时，通过输入 `10` 选择“P1v2” 。
 6. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     摘要输出将类似于下面所示的代码片段。
@@ -119,11 +119,11 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
     Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
-    Region : westeurope
-    PricingTier : Basic_B2
+    Region : centralus
+    PricingTier : P1v2
     OS : Windows
-    Java : 1.8
-    WebContainer : java 8
+    Java : Java 8
+    WebContainer : Java SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -139,10 +139,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 
 1. 如果系统提示“订阅”选项，通过在行首输入数字来选择适当的 `Subscription`。
 2. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
-3. 当系统提示 OS 选项时，通过输入 `2` 选择 Windows 。
+3. 当系统提示 OS 选项时，通过输入 `1` 选择 Windows 。
 4. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
-5. 当系统提示“webContainer”选项时，通过输入 `3` 选择“Tomcat 8.5” 。
-6. 当系统提示“定价层”选项时，通过输入 `7` 选择“P1v2” 。
+5. 当系统提示“webContainer”选项时，通过输入 `1` 选择“Tomcat 8.5” 。
+6. 当系统提示“定价层”选项时，通过输入 `10` 选择“P1v2” 。
 7. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     摘要输出将类似于下面所示的代码片段。
@@ -152,10 +152,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
     Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
-    Region : westeurope
-    PricingTier : Basic_B2
+    Region : centralus
+    PricingTier : P1v2
     OS : Windows
-    Java : 1.8
+    Java : Java 8
     WebContainer : tomcat 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
@@ -183,7 +183,7 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
 1. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
 1. 当系统提示 OS 选项时，按 Enter 键选择 Linux 。
 2. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
-3. 当系统提示“定价层”选项时，通过输入 `6` 选择“P1v2” 。
+3. 当系统提示“定价层”选项时，通过输入 `10` 选择“P1v2” 。
 4. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
@@ -191,10 +191,10 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
     Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
-    Region : westeurope
-    PricingTier : Basic_B2
+    Region : centralus
+    PricingTier : P1v2
     OS : Linux
-    RuntimeStack : JAVA 8-jre8
+    Web server stack : JAVA SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -212,8 +212,8 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
 1. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
 1. 当系统提示 OS 选项时，按 Enter 键选择 Linux 。
 1. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
-1. 当系统提示“runtimeStack”选项时，通过输入 `3` 选择“Tomcat 8.5” 。
-1. 当系统提示“定价层”选项时，通过输入 `6` 选择“P1v2” 。
+1. 当系统提示“webcontainer”选项时，请通过输入 `3` 选择“Tomcat 8.5” 。
+1. 当系统提示“定价层”选项时，通过输入 `10` 选择“P1v2” 。
 1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
@@ -221,10 +221,10 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
     Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
-    Region : westeurope
-    PricingTier : Basic_B2
+    Region : centralus
+    PricingTier : P1v2
     OS : Linux
-    RuntimeStack : TOMCAT 8.5-jre8
+    Web server stack : TOMCAT 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -242,8 +242,8 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
 1. 当提示“Web 应用”选项时，按 Enter 接受默认选项 `<create>`。
 1. 当系统提示 OS 选项时，按 Enter 键选择 Linux 。
 1. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
-1. 当系统提示“runtimeStack”选项时，通过输入 `2` 选择“Jbosseap 7”
-1. 当系统提示“定价层”选项时，通过输入 `3` 选择“P1v3” 
+1. 当系统提示“webContainer”选项时，请通过输入 `1` 选择“Jbosseap 7” 。
+1. 当系统提示“定价层”选项时，通过输入 `1` 选择“P1v3” 
 1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
@@ -251,11 +251,11 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
     Subscription Id : ********-****-****-****-************
     AppName : petstoreee7-1623451825408
     ResourceGroup : petstoreee7-1623451825408-rg
-    Region : westeurope
+    Region : centralus
     PricingTier : P1v3
     OS : Linux
     Java : Java 8
-    Web server stack: Jbosseap 7.2
+    Web server stack: Jbosseap 7
     Deploy to slot : false
     Confirm (Y/N) [Y]: y
     [INFO] Saving configuration to pom.
@@ -279,8 +279,8 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
 `<subscriptionId>` | false | 指定订阅 ID。 | 0.1.0+
 `<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
 `<appName>` | true | Web 应用的名称。 | 0.1.0+
-`<region>` | true | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
-`<pricingTier>` | true | Web 应用的定价层。 生产工作负载的默认值为 P1V2，而 B2 是建议用于 Java 开发/测试的最低值 。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
+`<region>` | true | 指定将托管 Web 应用的区域；默认值为 centralus。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
+`<pricingTier>` | true | Web 应用的定价层。 生产工作负荷的默认值为 P1v2，而 B2 是建议用于 Java 开发/测试的最低值 。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
 `<runtime>` | true | 运行时环境配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
 `<deployment>` | true | 部署配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
 

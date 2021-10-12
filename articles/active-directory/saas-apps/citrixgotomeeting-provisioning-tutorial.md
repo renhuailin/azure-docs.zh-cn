@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ff377b0f93968eb6743187e4e659f4e888e5010e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c150788f6b4c5439a20995c8db83b0f50c95a65
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358893"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427089"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>教程：为 GoToMeeting 配置自动用户预配
 
@@ -60,17 +60,14 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 将预配模式设置为“自动”。 
 
-    ![Azure 门户中 GoToMeeting“预配”选项卡的屏幕截图。 将“预配模式”设置为“自动”，并且突出显示“管理员用户名”、“密码”和“测试连接”。](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Azure 门户中 GoToMeeting“预配”选项卡的屏幕截图。 将“预配模式”设置为“自动”，并且突出显示“管理员用户名”、“密码”和“测试连接”。](https://user-images.githubusercontent.com/49566142/135871050-9d63861d-7963-47e0-bbdf-0e7c947e0b41.png)
 
-1. 在“管理员凭据”部分中，执行以下步骤：
+
+1. 在“管理员凭据”部分单击“授权”，登录到出现的弹出窗口中的 GoToMeeting。
    
-    a. 在“GoToMeeting 管理员用户名”文本框中，键入管理员的用户名。
-
-    b. 在“GoToMeeting 管理员密码”文本框中，键入管理员密码。
 
 1. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 GoToMeeting 应用。 如果连接失败，请确保 GoToMeeting 帐户具有团队管理员权限，并重试“管理员凭据”步骤。
 
-1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框。
 
 1. 单击“保存” 
 

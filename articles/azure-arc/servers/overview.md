@@ -1,14 +1,14 @@
 ---
 title: 启用了 Azure Arc 的服务器概述
 description: 了解如何使用启用了 Azure Arc 的服务器像管理 Azure 资源一样管理在 Azure 外部托管的服务器。
-ms.date: 08/27/2021
+ms.date: 09/30/2021
 ms.topic: overview
-ms.openlocfilehash: 2a6ed9eb865ed588653cd9ce5a41863af2db6de4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c064abb4258f36207e8bd4f02f7cb68d8ce1fce1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108709"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355380"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什么是启用了 Azure Arc 的服务器？
 
@@ -32,8 +32,8 @@ ms.locfileid: "123108709"
 | Azure 安全中心 | 使用 [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint) 保护非 Azure 服务器（包括通过 [Azure Defender](../../security-center/defender-for-servers-introduction.md)），用于威胁检测、漏洞管理和主动监视潜在安全威胁。 Azure 安全中心提供来自检测到的威胁的警报和修正建议。 |
 | Azure Sentinel | 可以对连接到启用了 Arc 的服务器的计算机[配置 Azure Sentinel ](scenario-onboard-azure-sentinel.md)以收集与安全相关的事件，并将这些事件与其他数据源相关联。 |
 |**配置** ||
-| Azure 自动化 |使用[更改跟踪和清单](../../automation/change-tracking/overview.md)功能，实现有关安装的软件、Microsoft 服务、Windows 注册表和文件以及 Linux 守护程序的配置更改。<br> 使用[更新管理](../../automation/update-management/overview.md)，为 Windows 和 Linux 服务器管理操作系统更新。 |
-| Azure 自动管理 | 在使用[为启用了 Arc 的服务器自动管理计算机](../../automanage/automanage-arc.md)时，加入一组 Azure 服务。 |
+| Azure 自动化 |使用 PowerShell 和 Python [Runbook](../../automation/automation-runbook-execution.md) 自动完成频繁且耗时的管理任务。<br> 使用[更改跟踪和清单](../../automation/change-tracking/overview.md)功能，实现有关安装的软件、Microsoft 服务、Windows 注册表和文件以及 Linux 守护程序的配置更改。<br> 使用[更新管理](../../automation/update-management/overview.md)，为 Windows 和 Linux 服务器管理操作系统更新。 |
+| Azure Automanage（预览版） | 使用“[为启用了 Arc 的服务器自动管理计算机](../../automanage/automanage-arc.md)”时，自动加入和配置一组 Azure 服务。 |
 | VM 扩展 | 使用支持的[启用了 Arc 的服务器 VM 扩展](manage-vm-extensions.md)，为非 Azure Windows 或 Linux 计算机提供部署后配置和自动化任务。 |
 |**监视**|
 | Azure Monitor | 监视已连接的计算机来宾操作系统性能，并发现应用程序组件，以使用 [VM 见解](../../azure-monitor/vm/vminsights-overview.md)来监视其进程以及与其他资源的依赖项。 使用 [Log Analytics 代理](../../azure-monitor/agents/agents-overview.md#log-analytics-agent)从计算机上运行的操作系统或工作负载收集其他日志数据，例如性能数据和事件。 此数据存储在 [Log Analytics 工作区](../../azure-monitor/logs/design-logs-deployment.md)中。 |
@@ -77,6 +77,6 @@ Connected Machine 代理每 5 分钟向服务发送一条定期检测信号消�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在多台混合计算机中评估或启用已启用了 Arc 的服务器之前，请先查看[连接的计算机代理概述](agent-overview.md)，以了解要求、有关代理的技术详细信息以及部署方法。
+* 在多台混合计算机中评估或启用已启用了 Azure Arc 的服务器之前，请先查看[连接的计算机代理概述](agent-overview.md)，以了解要求、有关代理的技术详细信息以及部署方法。
 
 * 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。

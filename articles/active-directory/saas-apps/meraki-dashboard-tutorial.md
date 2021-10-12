@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 09/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 0cc51035a8bdb0ee12d27763b1d03e6b08494b66
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5adf1f5c2c811bdc2b48e03c1e2892746d36da4b
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124795766"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402866"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>教程：Azure Active Directory 与 Meraki Dashboard 的单一登录 (SSO) 集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "124795766"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-- Meraki Dashboard 支持 IDP  发起的 SSO
+- Meraki Dashboard 支持 IDP 发起的 SSO。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -63,7 +63,7 @@ ms.locfileid: "124795766"
    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. [配置 Meraki Dashboard SSO](#configure-meraki-dashboard-sso)  - 在应用程序端配置单一登录设置。
-   1. [创建 Meraki Dashboard 测试用户](#create-meraki-dashboard-test-user) - 在 Meraki Dashboard 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式  。
+   1. [创建 Meraki Dashboard 管理员角色](#create-meraki-dashboard-admin-roles) - 在 Meraki Dashboard 中创建 B.Simon 的对应用户，并将其链接到该用户在 Azure AD 中对应的身份。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -169,7 +169,7 @@ ms.locfileid: "124795766"
 
    ![Meraki Dashboard 配置](./media/meraki-dashboard-tutorial/configure-4.png)
 
-### <a name="create-meraki-dashboard-test-user"></a>创建 Meraki Dashboard 测试用户
+### <a name="create-meraki-dashboard-admin-roles"></a>创建 Meraki Dashboard 管理员角色
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Meraki Dashboard。
 
@@ -184,6 +184,26 @@ ms.locfileid: "124795766"
 1. 输入角色“meraki_full_admin”，将“组织访问权限”标记为“完全”，然后单击“创建角色”。     对 meraki_readonly_admin 重复此过程，这一次将“组织访问权限”标记为“只读”    。
 
    ![Meraki Dashboard 创建用户](./media/meraki-dashboard-tutorial/user-3.png)
+
+1. 按照以下步骤将 Meraki Dashboard 角色映射到 Azure AD SAML 角色：
+
+   ![应用角色的屏幕截图。](./media/meraki-dashboard-tutorial/app-role.png)
+
+   a. 在 Azure 门户中，单击“应用注册”。
+
+   b. 选择“所有应用程序”，然后单击“Meraki Dashboard”。
+
+   c. 单击“应用角色”，然后单击“创建应用角色”。
+
+   d. 输入“`Meraki Full Admin`”作为“显示名称”。
+   
+   e. 选择“`Users/Groups`”作为“允许的成员”。
+
+   f. 输入“`meraki_full_admin`”作为“值”。
+
+   g. 输入“`Meraki Full Admin`”作为“说明”。
+
+   h. 单击“ **保存**”。 
 
 ## <a name="test-sso"></a>测试 SSO
 

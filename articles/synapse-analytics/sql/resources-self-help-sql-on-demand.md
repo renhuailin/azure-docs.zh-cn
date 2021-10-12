@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 8/31/2021
+ms.date: 9/23/2021
 ms.author: stefanazaric
-ms.reviewer: jrasnick
-ms.openlocfilehash: 906f6a7a8e64c255c8b87219ef0549a553821783
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: e0380c4d1b4fe9c82d6e9b82922b1a509f7dcdf4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536474"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545596"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>无服务器 SQL 池自助服务
 
@@ -53,7 +53,7 @@ ms.locfileid: "123536474"
 
 > [!NOTE]
 > 需要在 Azure Data Lake Gen2 内设置容器级别的“执行”权限。
-> 可以在 Synapse 中设置对文件夹的权限。 
+> 可以在 Azure Synapse 中设置对文件夹的权限。 
 
 
 如果要在此示例中查询 data2.csv，则需要以下权限： 
@@ -63,7 +63,7 @@ ms.locfileid: "123536474"
 
 ![显示数据湖的权限结构的图形。](./media/resources-self-help-sql-on-demand/folder-structure-data-lake.png)
 
-* 以管理员用户身份（需对你要访问的数据拥有完整权限）登录到 Synapse。
+* 以管理用户身份（需对你要访问的数据拥有完整权限）登录 Azure Synapse。
 
 * 在数据窗格中，右键单击该文件，然后选择“管理访问权限”。
 
@@ -75,7 +75,7 @@ ms.locfileid: "123536474"
 ![显示授予“读取”权限 UI 的屏幕截图](./media/resources-self-help-sql-on-demand/grant-permission.png)
 
 > [!NOTE]
-> 对于来宾用户，这需要直接通过 Azure Data Lake 服务来完成，因为不能直接通过 Synapse 完成此操作。 
+> 对于来宾用户，这需要直接通过 Azure Data Lake 服务来完成，因为不能直接通过 Azure Synapse 完成此操作。 
 
 ### <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>查询失败，原因是当前的资源约束导致查询无法执行 
 
@@ -100,7 +100,7 @@ ms.locfileid: "123536474"
 如果查询失败并出现错误消息“处理外部文件时出错：已达到最大错误计数”，则表示指定的列类型与需要加载的数据不匹配。 若要获取有关错误以及要查看的行和列的详细信息，请将分析器版本从“2.0”更改为“1.0”。 
 
 #### <a name="example"></a>示例
-如果想用查询 1 来查询文件“names.csv”，Synapse SQL Serverless 将返回这样的错误。 
+如果想用查询 1 来查询文件“names.csv”，Azure Synapse SQL Serverless 将返回这样的错误。 
 
 names.csv
 ```csv
@@ -133,11 +133,11 @@ FROM
 ```
 原因：
 
-```Error handling external file: ‘Max error count reached’. File/External table name: [filepath].```
+`Error handling external file: ‘Max error count reached’. File/External table name: [filepath].`
 
 分析器版本从版本 2.0 更改为版本 1.0 后，错误消息将有助于识别问题。 现在，新的错误消息是： 
 
-```Bulk load data conversion error (truncation) for row 1, column 2 (Text) in data file [filepath]```
+`Bulk load data conversion error (truncation) for row 1, column 2 (Text) in data file [filepath]`
 
 截断会告诉我们列类型太小，无法容纳数据。 此“names.csv”文件中的最长名字包含七个字符。 因此，要使用的对应数据类型应至少为 VARCHAR(7)。 此错误是由下面这行代码引起的： 
 
@@ -171,7 +171,7 @@ FROM
 例如，如果你只需要数据中的整数，但第 n 行中可能存在字符串，则您会收到这样的错误消息。 若要解决此问题，请检查文件和所选的数据类型。 另外，还要检查行分隔符和字段终止符设置是否正确。 下面的示例演示如何使用 VARCHAR 作为列类型来完成检查。 可在[此处](query-single-csv-file.md)详细了解字段终止符、行分隔符和转义引用字符。 
 
 #### <a name="example"></a>示例 
-如果想用查询 1 来查询文件“names.csv”，Synapse SQL Serverless 将返回这样的错误。 
+如果想用查询 1 来查询文件“names.csv”，Azure Synapse SQL Serverless 将返回这样的错误。 
 
 names.csv
 ```csv
@@ -203,7 +203,7 @@ FROM
     AS [result]
 ```
 
-导致以下错误：```Bulk load data conversion error (type mismatch or invalid character for the specified codepage) for row 6, column 1 (ID) in data file [filepath]```
+导致以下错误：`Bulk load data conversion error (type mismatch or invalid character for the specified codepage) for row 6, column 1 (ID) in data file [filepath]`
 
 需要浏览数据并作出明智的决策来处理此问题。 若要查看导致此问题的数据，需要先更改数据类型。 现在使用 VARCHAR(100) 来分析此问题，而不是查询数据类型为“SMALLINT”的“ID”列。 使用这个经过小幅修改的查询 2，现在可以处理数据，并显示名称列表。 
 
@@ -247,7 +247,7 @@ five,Eva
 如果查询未失败，但是你发现结果表没有按预期加载，则很可能是因为选择了错误的行分隔符或字段终止符。 若要解决此问题，需要再次查看数据并更改这些设置。 由于显示了结果表，所以调试这个查询很容易，就像下面的示例一样。 
 
 #### <a name="example"></a>示例
-如果想用查询 1 来查询文件“names.csv”，Synapse SQL Serverless 将返回一个看起来有点奇怪的结果表。 
+如果想用查询 1 来查询文件“names.csv”，Azure Synapse SQL Serverless 将返回一个看起来有点奇怪的结果表。 
 
 names.csv
 ```csv
@@ -340,7 +340,7 @@ FROM
 若要解决此问题，请检查文件和所选的数据类型。 此[映射表](develop-openrowset.md#type-mapping-for-parquet)有助于选择 SQL 数据类型。 最佳做法提示：只能为将会解析为 VARCHAR 数据类型的列指定映射。 请尽可能避免使用 VARCHAR，从而在查询中提高性能。 
 
 #### <a name="example"></a>示例
-如果想用查询 1 来查询文件“taxi-data.parquet”，Synapse SQL Serverless 将返回这样的错误。
+如果想用查询 1 来查询文件“taxi-data.parquet”，Azure Synapse SQL Serverless 将返回这样的错误。
 
 taxi-data.parquet:
 
@@ -369,9 +369,10 @@ FROM
 
     AS [result]
 ```
+
 导致以下错误： 
 
-```Column 'SumTripDistance' of type 'INT' is not compatible with external data type 'Parquet physical type: DOUBLE', please try with 'FLOAT'. File/External table name: '<filepath>taxi-data.parquet'.```
+`Column 'SumTripDistance' of type 'INT' is not compatible with external data type 'Parquet physical type: DOUBLE', please try with 'FLOAT'. File/External table name: '<filepath>taxi-data.parquet'.`
 
 此错误消息告诉我们数据类型不兼容，并且还会建议你使用 FLOAT 来代替 INT。 此错误是由下面这行代码引起的： 
 
@@ -480,7 +481,7 @@ WITH ( FORMAT_TYPE = PARQUET)
 
 ### <a name="query-returns-null-values"></a>查询返回 `NULL` 值
 
-在以下情况下，Synapse SQL 将返回 `NULL`，而不是你在事务存储中看到的值：
+在以下情况下，Azure Synapse SQL 将返回 `NULL`，而不是你在事务存储中看到的值：
 - 事务存储和分析存储之间存在同步延迟。 在 Cosmos DB 事务存储中输入的值可能在 2 到 3 分钟后才会出现在分析存储中。
 - `WITH` 子句中包含可能有错误的列名或路径表达式。 `WITH` 子句中的列名（或列类型后的路径表达式）必须与 Cosmos DB 集合中的属性名称匹配。 比较时区分大小写（例如，`productCode` 和 `ProductCode` 是不同的属性）。 请确保列名称与 Cosmos DB 属性名称完全匹配。
 - 此属性可能不会移动到分析存储，因为此属性违反了某些[架构约束](../../cosmos-db/analytical-store-introduction.md#schema-constraints)，例如超过 1000 个属性，或超过 127 个嵌套级别。
@@ -494,7 +495,7 @@ WITH ( FORMAT_TYPE = PARQUET)
 ### <a name="cosmosdb-performance-issues"></a>CosmosDB 性能问题
 
 如果你遇到一些意外的性能问题，请确保应用了最佳做法，例如：
-- 确保已将客户端应用程序、无服务器池和 Cosmos DB 分析存储置于[同一区域](best-practices-serverless-sql-pool.md#colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool)。
+- 确保已将客户端应用程序、无服务器池和 Cosmos DB 分析存储置于[同一区域](best-practices-serverless-sql-pool.md#colocate-your-azure-cosmos-db-analytical-storage-and-serverless-sql-pool)。
 - 确保你使用的是具有[最优数据类型](best-practices-serverless-sql-pool.md#use-appropriate-data-types)的 `WITH` 子句。
 - 当你使用字符串谓词筛选数据时，请确保使用 [Latin1_General_100_BIN2_UTF8 排序规则](best-practices-serverless-sql-pool.md#use-proper-collation-to-utilize-predicate-pushdown-for-character-columns)。
 - 如果有可能缓存了重复的查询，请尝试[使用 CETAS 将查询结果存储在 Azure Data Lake Storage 中](best-practices-serverless-sql-pool.md#use-cetas-to-enhance-query-performance-and-joins)。
@@ -505,14 +506,12 @@ WITH ( FORMAT_TYPE = PARQUET)
 - 请确保在 [OPENROWSET](./develop-openrowset.md) 函数或外部表位置中引用 Delta Lake 根文件夹。
   - 根文件夹必须有一个名为 `_delta_log` 的子文件夹。 如果没有 `_delta_log` 文件夹，则查询将失败。 如果看不到该文件夹，表明你正在引用纯 Parquet 文件，必须使用 Apache Spark 池将其[转换为 Delta Lake](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta)。
   - 不要指定用于描述分区架构的通配符。 Delta Lake 查询会自动标识 Delta Lake 分区。 
-- 在 Apache Spark 池中创建的 Delta Lake 表在无服务器 SQL 池中不会自动可用。 若要使用 T-SQL 语言查询此类 Delta Lake 表，请运行 [CREATE EXTERNAL TABLE](https://docs.microsoft.com/azure/synapse-analytics/sql/create-use-external-tables#delta-lake-external-table) 语句并指定 Delta 作为格式。
+- 在 Apache Spark 池中创建的 Delta Lake 表在无服务器 SQL 池中不会自动可用。 若要使用 T-SQL 语言查询此类 Delta Lake 表，请运行 [CREATE EXTERNAL TABLE](./create-use-external-tables.md#delta-lake-external-table) 语句并指定 Delta 作为格式。
 - 外部表不支持分区。 使用 Delta Lake 文件夹的[分区视图](create-use-views.md#delta-lake-partitioned-views)来利用分区消除。 请参阅下面的已知问题和解决方法。
 - 无服务器 SQL 池不支持按时间顺序查看的查询。 你可以在 [Azure 反馈网站](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)上对此功能进行投票。 使用 Azure Synapse Analytics 中的 Apache Spark 池[读取历史数据](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)。
 - 无服务器 SQL 池不支持更新 Delta Lake 文件。 可以使用无服务器 SQL 池来查询最新版本的 Delta Lake。 使用 Azure Synapse Analytics 中的 Apache Spark 池[更新 Delta Lake](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)。
-- Synapse Analytics 中的无服务器 SQL 池不支持带有 [BLOOM 筛选器](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)的数据集。
+- Azure Synapse Analytics 中的无服务器 SQL 池不支持带有 [BLOOM 筛选器](/azure/databricks/delta/optimizations/bloom-filters)的数据集。
 - 专用 SQL 池中不支持 Delta Lake。 请确保使用无服务器池来查询 Delta Lake 文件。
-
-可以在 [Azure Synapse 反馈网站](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=171048)上提出建议和改进。
 
 ### <a name="content-of-directory-on-path-cannot-be-listed"></a>无法列出路径上目录的内容
 
@@ -632,11 +631,48 @@ Azure 团队将调查 `delta_log` 文件的内容，并提供有关可能的错�
 ### <a name="resolving-delta-log-on-path--failed-with-error-cannot-parse-json-object-from-log-file"></a>未能解析路径 ... 上的增量日志，出现以下错误：无法分析日志文件中的 JSON 对象
 
 此错误可能是以下原因/不支持的功能造成的：
-- Delta Lake 数据集上的 [BLOOM 筛选器](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)。 Synapse Analytics 中的无服务器 SQL 池不支持带有 [BLOOM 筛选器](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)的数据集。
+- Delta Lake 数据集上的 [BLOOM 筛选器](/azure/databricks/delta/optimizations/bloom-filters)。 Azure Synapse Analytics 中的无服务器 SQL 池不支持带有 [BLOOM 筛选器](/azure/databricks/delta/optimizations/bloom-filters)的数据集。
 - Delta Lake 数据集中的具有统计信息的浮动列。
 - 在浮动列上进行分区的数据集。
 
-变通方法：如果要使用无服务器 SQL 池读取 Delta Lake 文件夹，请[删除 BLOOM 筛选器](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index)。 如果有导致此问题的 `float` 列，则需要对数据集重新分区或删除统计信息。
+变通方法：如果要使用无服务器 SQL 池读取 Delta Lake 文件夹，请[删除 BLOOM 筛选器](/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index)。 如果有导致此问题的 `float` 列，则需要对数据集重新分区或删除统计信息。
+
+## <a name="performance"></a>性能
+
+无服务器 SQL 池根据数据集的大小和查询复杂程度将资源分配给查询。 不能影响或限制向查询提供的资源。 在某些情况下，可能会遇到意外的查询性能下降并需要确定根本原因。
+
+### <a name="query-duration-is-very-long"></a>查询持续时间很长 
+
+如果使用的是 Synapse Studio，请尝试使用某些桌面客户端，例如 SQL Server Management Studio 或 Azure Data Studio。 Synapse Studio 是使用 HTTP 协议连接到无服务器池的 Web 客户端，它的速度通常比 SQL Server Management Studio 或 Azure Data Studio 中使用的本机 SQL 连接慢。
+
+如果查询持续时间超过 30 分钟，则表明将结果返回到客户端的速度较慢。 无服务器 SQL 池的执行限制为 30 分钟，任何额外的时间都花费在结果流式处理上。
+
+如果查询执行速度缓慢，请检查以下问题：
+-   请确保客户端应用程序与无服务器 SQL 池终结点并置。 跨区域执行查询可能会导致额外的延迟和结果集的流式处理速度变慢。
+-   请确保没有可能导致结果集流式处理速度缓慢的网络问题 
+-   确保客户端应用程序有足够的资源（例如 CPU 使用率未达到 100%）。 
+-   确保存储帐户或 cosmosDB 分析存储与无服务器 SQL 终结点位于同一区域。
+
+请参阅有关[并置资源](best-practices-serverless-sql-pool.md#client-applications-and-network-connections)的最佳做法。
+
+### <a name="high-variations-in-query-durations"></a>查询持续时间变化大
+
+如果执行相同的查询并观察到查询持续时间有变化，则可能有多种原因导致此行为：  
+- 检查是否为首次执行查询。 首次执行查询会收集创建计划所需的统计信息。 统计信息是通过扫描基础文件进行收集的，此收集过程可能会延长查询持续时间。 在 Synapse Studio 中，你将在 SQL 请求列表中看到其他“全局统计信息创建”查询，这些查询会在你的查询之前执行。
+- 统计信息可能会在一段时间后过期，因此你可能会定期观察到对性能的影响，因为无服务器池必须扫描并重新生成统计信息。 你可能会注意到 SQL 请求列表中出现“全局统计信息创建”查询，这些查询会在你的查询之前执行。
+- 执行查询的持续时间较长时，请检查是否在同一终结点上运行了一些额外的工作负载。 无服务器 SQL 终结点将平等地将资源分配给并行执行的所有查询，并且查询可能会延迟。
+
+## <a name="connections"></a>连接
+
+### <a name="sql-on-demand-is-currently-unavailable"></a>SQL 按需服务当前不可用
+
+无服务器 SQL 池终结点在未使用时自动停用。 从任何客户端收到下一个 SQL 请求时，会自动激活终结点。 在某些情况下，执行首个查询时，终结点可能无法正确启动。 在大多数情况下，这都是暂时性的错误。 重试查询将激活实例。
+
+如果长时间看到此消息，请通过 Azure 门户提交支持票证。
+
+### <a name="cannot-connect-from-synapse-studio"></a>无法从 Synapse Studio 进行连接
+
+请参阅 [Synapse Studio 部分](#synapse-studio)。
 
 ## <a name="security"></a>安全性
 
@@ -645,7 +681,7 @@ Azure 团队将调查 `delta_log` 文件的内容，并提供有关可能的错�
 ```
 Login error: Login failed for user '<token-identified principal>'.
 ```
-就服务主体登录而言，应使用应用程序 ID 作为 SID（而不是对象 ID）创建。 服务主体存在一个已知限制，即在为另一个 SPI/应用创建角色分配时，它会阻止 Synapse 服务从 Azure AD Graph 提取应用程序 ID。  
+就服务主体登录而言，应使用应用程序 ID 作为 SID（而不是对象 ID）创建。 服务主体存在一个已知限制，即在为另一个 SPI/应用创建角色分配时，它会阻止 Azure Synapse 服务从 Azure AD Graph 提取应用程序 ID。  
 
 #### <a name="solution-1"></a>解决方案 #1
 导航到“Azure 门户”>“Synapse Studio”>“管理”>“访问控制”，然后手动为所需的服务主体添加 Synapse 管理员或 Synapse SQL 管理员。

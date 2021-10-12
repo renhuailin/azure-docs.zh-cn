@@ -4,14 +4,14 @@ metadata:
   description: 有关 Azure 容器注册表服务的常见问题的解答
   author: sajayantony
   ms.topic: article
-  ms.date: 03/15/2021
+  ms.date: 09/17/2021
   ms.author: sajaya
-  ms.openlocfilehash: ef541e23c2ad3142c4e5b50ccc5351a569727905
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 9a1b4cdb33dc3499bdc027911dee5ac05c2f79b7
+  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114438892"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129545409"
 title: 常见问题解答 - Azure 容器注册表
 summary: >
   本文解答有关 Azure 容器注册表的常见问题和已知问题。
@@ -230,7 +230,7 @@ sections:
       映像隔离目前是 ACR 的预览版功能。 可以启用注册表的隔离模式，使普通用户只能看到已成功通过安全扫描的映像。 有关详细信息，请参阅 [ACR GitHub 存储库](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
   - question: >
       如何实现匿名提取访问？
-    answer: "对 Azure 容器注册表设置匿名（未经身份验证的）请求访问权限目前还是预览功能，适用于标准和高级[服务层](container-registry-skus.md)。 \n\n若要启用匿名请求访问，请使用 Azure CLI（2.21.0 或更高版本）更新注册表，并将 `--anonymous-pull-enabled` 参数传递到 [az acr update](/cli/azure/acr#az_acr_update) 命令：\n\n```azurecli\naz acr update --name myregistry --anonymous-pull-enabled\n``` \n\n你可以通过将 `--anonymous-pull-enabled` 设置为 `false` 随时禁用匿名请求访问。\n\n> [!NOTE]\n> * 尝试匿名拉取操作前，请运行 `docker logout` 以确保清除任何现有 Docker 凭据。\n> * 未经身份验证的客户端只能使用数据平面操作。\n> * 注册表可能会限制高频未经身份验证的请求。\n> * 目前，[异地复制](container-registry-geo-replication.md)的注册表区域不支持匿名请求访问。\n\n> [!WARNING]\n> 匿名请求访问当前适用于注册表中的所有存储库。 如果使用[存储库范围内的令牌](container-registry-repository-scoped-permissions.md)管理存储库访问权限，请注意，所有用户都可能拉取启用了匿名请求的注册表中的存储库。 建议在启用匿名请求访问时删除令牌。\n"
+    answer: "有关详细信息，请参阅[使注册表内容公用](anonymous-pull-access.md)。          \n"
   - question: >
       如何将不可分发层推送到注册表？
     answer: >

@@ -8,19 +8,19 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 84a0722a85e08de34841fef752ac8bb36c32f8b9
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 9fcc67dbcf0cdf6832a4f5ba7718d49c50308c5a
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357045"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458958"
 ---
 # <a name="help-and-support-options-for-azure-communication-services"></a>Azure 通信服务的帮助和支持选项
 
 如果遇到涉及 Azure 通信服务的问题或有相关疑问，你可以有许多选择。
 
 ## <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
-使用 Azure 时，有许多可用的[支持选项和计划](https://azure.microsoft.com/support/plans/)，你可以浏览和查看它们。 可以在 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中创建支持票证。
+使用 Azure 时，有许多可用的[支持选项和计划](https://azure.microsoft.com/support/plans/)，你可以浏览和查看它们。 可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中创建支持票证。
 
 ## <a name="post-a-question-to-microsoft-qa"></a>在 Microsoft Q&A 上发布问题
 
@@ -31,6 +31,10 @@ ms.locfileid: "113357045"
 ## <a name="post-a-question-on-stack-overflow"></a>在 Stack Overflow 上提问
 
 你还可以尝试在 Stack Overflow 上提出问题，这个论坛包含大型社区开发人员社区和生态系统。 Azure 通信服务在那里也有一个[专用标记](https://stackoverflow.com/questions/tagged/azure-communication-services)。
+
+## <a name="tech-community"></a>技术社区
+
+[Microsoft 技术社区](https://techcommunity.microsoft.com/t5/azure-communication-services/bd-p/AzureCommunicationServices)是另一个可以提出产品或技术问题的地方。 Azure 通信服务团队定期在此论坛上发布[博客](https://techcommunity.microsoft.com/t5/azure-communication-services/bg-p/AzureCommunicationServicesBlog)并主办“询问我任何问题”活动。
 
 ## <a name="provide-feedback"></a>提供反馈
 

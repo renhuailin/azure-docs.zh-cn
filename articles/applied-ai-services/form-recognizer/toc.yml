@@ -16,19 +16,19 @@ items:
     items:
       - name: 表单识别器 v2.1
         items:
-          - name: 入门：表单识别器标签工具
+          - name: 表单识别器标签工具
             href: quickstarts/try-sample-label-tool.md
-          - name: 入门：客户端库和 REST API
+          - name: 客户端库和 REST API
             href: quickstarts/try-sdk-rest-api.md
       - name: 表单识别器 v3.0 | 预览版
         items:
-          - name: 入门：表单识别器工作室（预览版）
+          - name: 表单识别器工作室（预览版）
             href: quickstarts/try-v3-form-recognizer-studio.md
-          - name: 入门：REST API（预览版）
+          - name: REST API（预览版）
             href: quickstarts/try-v3-rest-api.md
-          - name: 入门：C# SDK（预览版）
+          - name: C# SDK（预览版）
             href: quickstarts/try-v3-csharp-sdk.md
-          - name: 入门：Python SDK（预览版）
+          - name: Python SDK（预览版）
             href: quickstarts/try-v3-python-sdk.md
   - name: 示例
     items:
@@ -133,6 +133,8 @@ items:
         href: tutorial-azure-function.md
   - name: 参考
     items:
+      - name: 错误代码和消息 v3.0（预览版）
+        href: preview-error-guide.md
       - name: Azure 表单识别器 REST API v2.1
         items:
           - name: REST API v2.1 参考
