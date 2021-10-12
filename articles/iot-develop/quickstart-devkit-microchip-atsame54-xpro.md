@@ -6,13 +6,14 @@ ms.author: timlt
 ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
-ms.date: 06/08/2021
-ms.openlocfilehash: 9611f80c6895387e71cd6387736cb1445e6b1542
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.date: 09/22/2021
+zone_pivot_groups: iot-develop-toolset
+ms.openlocfilehash: 9b99f9ce23807e617d1b909034bbf9616ed54911
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575293"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708047"
 ---
 # <a name="quickstart-connect-a-microchip-atsame54-xpro-evaluation-kit-to-iot-central"></a>快速入门：将微芯片 ATSAME54-XPro 评估工具包连接到 IoT Central
 
@@ -42,6 +43,18 @@ ms.locfileid: "112575293"
     * 可选：[Weather Click](https://www.mikroe.com/weather-click) 传感器。 可以将此传感器添加到设备中以监视天气情况。 如果没有该传感器，仍可完成本快速入门。
     * 可选：[mikroBUS Xplained Pro](https://www.microchip.com/Developmenttools/ProductDetails/ATMBUSADAPTER-XPRO) 适配器。 使用此适配器将 Weather Click 传感器连接到微芯片 E54。 如果没有此传感器和此适配器，仍可完成本快速入门。
 
+:::zone pivot="iot-toolset-iar-ewarm"
+
+* IAR 的 EWARM。 可下载 [IAR 的 EWARM 的 30 天免费试用版](https://www.iar.com/products/architectures/arm/iar-embedded-workbench-for-arm/)。
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+* [MPLAB X IDE 5.35](https://www.microchip.com/mplab/mplab-x-ide)
+* [MPLAB XC32/32++ 编译器 2.4.0 或更高版本](https://www.microchip.com/mplab/compilers)
+
+:::zone-end
+
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
 若要设置开发环境，请先克隆一个 GitHub 存储库，其中包含本快速入门所需的所有资产。 然后安装一组编程工具。
@@ -58,6 +71,8 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>安装工具
 
+:::zone pivot="iot-toolset-cmake"
+
 克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
 
 > [!NOTE]
@@ -68,19 +83,24 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 若要安装工具：
 
-1. 在文件资源管理器中，导航到存储库中的以下路径，并运行名为 *get-toolchain.bat* 的安装脚本：
+1. 在文件资源管理器中，导航到存储库中的以下路径，并运行名为 ***get-toolchain.bat*** 的安装脚本：
+> *getting-started\tools\get-toolchain.bat*
 
-    *getting-started\tools\get-toolchain.bat*
-
-1. 安装后，打开一个新的控制台窗口来识别安装脚本所做的配置更改。 使用此控制台完成本快速入门中的其余编程任务。 可以使用 Windows CMD、PowerShell 或 Git Bash for Windows。
-1. 运行以下代码，确认已安装 CMake 版本3.14 或更高版本。
+2. 安装后，打开一个新的控制台窗口来识别安装脚本所做的配置更改。 使用此控制台完成本快速入门中的其余编程任务。 可以使用 Windows CMD、PowerShell 或 Git Bash for Windows。
+3. 运行以下代码，确认已安装 CMake 版本3.14 或更高版本。
 
     ```shell
     cmake --version
     ```
-若要安装其余工具，请执行以下操作：
 
-* 安装[适用于 AVR&reg; 和 SAM 设备的微芯片工作室](https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices#)。 微芯片工作室是一个设备开发环境，其中包含用于编程和刷写微芯片 E54 的工具。 在本教程中，只使用微芯片工作室来刷写微芯片 E54。 安装需要几分钟时间才能完成，并会多次提示你批准安装组件。
+4. 安装[适用于 AVR&reg; 和 SAM 设备的微芯片工作室](https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices#)。 微芯片工作室是一个设备开发环境，其中包含用于编程和刷写微芯片 E54 的工具。 在本教程中，只使用微芯片工作室来刷写微芯片 E54。 安装需要几分钟时间才能完成，并会多次提示你批准安装组件。
+
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm, iot-toolset-mplab"
+
+使用工具集的制造商提供的安装说明来安装和准备开发工具集。
+
+:::zone-end
 
 [!INCLUDE [iot-develop-embedded-create-central-app-with-device](../../includes/iot-develop-embedded-create-central-app-with-device.md)]
 
@@ -90,102 +110,151 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="add-configuration"></a>添加配置
 
+:::zone pivot="iot-toolset-cmake"
+
 1. 在文本编辑器中打开以下文件：
+> *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
 
-    *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
+2. 将 Azure IoT 设备信息常量设置为在创建 Azure 资源后保存的值。
+> |常量名称|值|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*ID 范围值*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*设备 ID 值*} |
+> | `IOT_DEVICE_SAS_KEY` | {*主密钥值*} |
 
-1. 将 Azure IoT 设备信息常量设置为在创建 Azure 资源后保存的值。
+3. 保存并关闭该文件。
 
-    |常量名称|值|
-    |-------------|-----|
-    |`IOT_DPS_ID_SCOPE` |{*ID 范围值*}|
-    |`IOT_DPS_REGISTRATION_ID` |{*设备 ID 值*}|
-    |`IOT_DEVICE_SAS_KEY` |{*主密钥值*}|
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
 
-1. 保存并关闭该文件。
+1. 在 IAR 中从提取的 zip 文件中打开 azure_rtos.eww EWARM 工作区。
+
+2. 将 Azure IoT 设备信息常量设置为在创建 Azure 资源后保存的值。
+> |常量名称|值|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*ID 范围值*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*设备 ID 值*} |
+> | `IOT_DEVICE_SAS_KEY` | {*主密钥值*} |
+
+3. 保存并关闭该文件。
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+1. 打开 MPLab 并选择“文件”>“打开项目”，然后从提取的 zip 文件中选择所有项目。
+
+2. 将 Azure IoT 设备信息常量设置为在创建 Azure 资源后保存的值。
+> |常量名称|值|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*ID 范围值*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*设备 ID 值*} |
+> | `IOT_DEVICE_SAS_KEY` | {*主密钥值*} |
+
+3. 保存并关闭该文件。
+
+:::zone-end
 
 ### <a name="connect-the-device"></a>连接设备
 
 1. 在微芯片 E54 上，找到“重置”按钮、“以太网”端口和标记为“调试 USB”的 Micro USB 端口。 下图突出显示了每个组件：
+> ![在 Microchip E54 评估工具包板上找到关键组件](media/quickstart-devkit-microchip-atsame54-xpro/microchip-xpro-board.png)
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/microchip-xpro-board.png" alt-text="在 Microchip E54 评估工具包板上找到关键组件":::
+2. 将 Micro USB 电缆连接到微芯片 E54 上的“调试 USB”端口，然后连接到计算机。
+> [!NOTE]
+>  有关微芯片 E54 设置和入门指南的详细信息，也可参阅《[SAM E54 Xplained Pro 用户指南](http://ww1.microchip.com/downloads/en/DeviceDoc/70005321A.pdf)》。
 
-1. 将 Micro USB 电缆连接到微芯片 E54 上的“调试 USB”端口，然后连接到计算机。
-    > [!NOTE]
-    >  有关微芯片 E54 设置和入门指南的详细信息，也可参阅《[SAM E54 Xplained Pro 用户指南](http://ww1.microchip.com/downloads/en/DeviceDoc/70005321A.pdf)》。
-
-1. 使用以太网电缆将微芯片 E54 连接到以太网端口。
+3. 使用以太网电缆将微芯片 E54 连接到以太网端口。
 
 ### <a name="optional-install-a-weather-sensor"></a>可选：安装气象传感器
 
 如果有 Weather Click 传感器和 mikroBUS Xplained Pro 适配器，请按照本部分中的步骤进行操作；否则，请跳到[生成映像](#build-the-image)。 即使没有传感器，也可完成本快速入门。 如果没有真实传感器，设备的示例代码会返回模拟数据。
 
 1. 如果有 Weather Click 传感器和 mikroBUS Xplained Pro 适配器，请将其安装在微芯片 E54 上，如下图中所示：
+> :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/sam-e54-sensor.png" alt-text="在 Microchip ES4 上安装 Weather Click 传感器和 mikroBUS Xplained Pro 适配器":::
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/sam-e54-sensor.png" alt-text="在 Microchip ES4 上安装 Weather Click 传感器和 mikroBUS Xplained Pro 适配器":::
+2. 重新打开之前编辑的配置文件：
+> *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
 
-1. 重新打开之前编辑的配置文件：
+3. 将常数 `__SENSOR_BME280__` 的值设置为 1，如头文件中的以下代码所示。 通过设置此值，设备可以使用 Weather Click 传感器中的实际传感器数据。
+> `#define __SENSOR_BME280__ 1`
 
-    *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
-
-1. 将常数 `__SENSOR_BME280__` 的值设置为 1，如头文件中的以下代码所示。 通过设置此值，设备可以使用 Weather Click 传感器中的实际传感器数据。
-
-    `#define __SENSOR_BME280__ 1`
-
-1. 保存并关闭该文件。
+4. 保存并关闭该文件。
 
 ### <a name="build-the-image"></a>生成映像
 
-1. 在控制台或文件资源管理器中，在以下路径中运行脚本 *rebuild.bat* 以生成映像：
+:::zone pivot="iot-toolset-cmake"
 
-    *getting-started\Microchip\ATSAME54-XPRO\tools\rebuild.bat*
+1. 在控制台或文件资源管理器中，在以下路径中运行脚本 ***rebuild.bat*** 以生成映像：
+> *getting-started\Microchip\ATSAME54-XPRO\tools\rebuild.bat*
 
 2. 生成完成后，请确认已在以下路径中创建了二进制文件：
+> *getting-started\Microchip\ATSAME54-XPRO\build\app\atsame54_azure_iot.bin*
 
-    *getting-started\Microchip\ATSAME54-XPRO\build\app\atsame54_azure_iot.bin*
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
+
+在 IAR 中，选择“项目”>“批量生成”，选择“build_all”，然后选择“生成”以生成所有项目。 你将看到所有示例项目的编译和链接。
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+确保所有示例项目的依赖库（azure_iot、threadx、netxduo、same54_lib）都是通过以下方法生成的：在“项目”窗格中选择相应项目，右键单击项目并选择“生成”。
+
+:::zone-end
 
 ### <a name="flash-the-image"></a>刷写映像
 
+:::zone pivot="iot-toolset-cmake"
+
 1. 打开 Windows“开始”>“微芯片工作室命令提示符”控制台，转到生成的微芯片 E54 二进制文件的文件夹。
+> *getting-started\Microchip\ATSAME54-XPRO\build\app*
 
-    *getting-started\Microchip\ATSAME54-XPRO\build\app*
+2. 通过“atprogram”实用程序，使用二进制映像刷写微芯片 E54：
 
-1. 通过“atprogram”实用程序，使用二进制映像刷写微芯片 E54：
+> [!NOTE] 
+> 有关将 Atmel-ICE 和 atprogram 工具与微芯片 E54 配合使用的详细信息，请参阅[在批量生产环境中使用 Atmel-ICE 进行 AVR 编程](http://ww1.microchip.com/downloads/en/AppNotes/00002466A.pdf)。
 
-    > [!NOTE] 
-    > 有关将 Atmel-ICE 和 atprogram 工具与微芯片 E54 配合使用的详细信息，请参阅[在批量生产环境中使用 Atmel-ICE 进行 AVR 编程](http://ww1.microchip.com/downloads/en/AppNotes/00002466A.pdf)。
+> ```shell
+> atprogram --tool edbg --interface SWD --device ATSAME54P20A program --chiperase --file atsame54_azure_iot.bin --verify
+> ```
 
-    ```shell
-    atprogram --tool edbg --interface SWD --device ATSAME54P20A program --chiperase --file atsame54_azure_iot.bin --verify
-    ```
+> 刷写进程完成后，控制台将确认编程是否已成功：
 
-    刷写进程完成后，控制台将确认编程是否已成功：
+> ```output
+> Firmware check OK
+> Programming and verification completed successfully.
+> ```
 
-    ```output
-    Firmware check OK
-    Programming and verification completed successfully.
-    ```
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
+
+在 IAR 中，在工具栏中按绿色的“下载和调试”按钮，下载并运行程序。 然后按“执行”。
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+在 MPLAB 中，选择“调试”>“调试主项目”。
+
+:::zone-end
 
 ### <a name="confirm-device-connection-details"></a>确认设备连接详细信息
 
 可以使用 **Termite** 应用来监视通信，并确认设备已正确设置。
 
 1. 启动 **Termite**。    
-    > [!TIP]
-    > 如果刷写后在设备中进行初始化或连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)获取其他步骤。
-1. 选择“设置”。
-1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
-    * **波特率**：115,200
-    * **端口**：微芯片 E54 连接到的端口。 如果下拉列表中有多个端口选项，则可以找到要使用的正确端口。 打开 Windows **设备管理器**，查看“端口”以确定要使用的端口。
-    * **流控制**：DTR/DSR
+> [!TIP]
+> 如果刷写后在设备中进行初始化或连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)获取其他步骤。
+2. 选择“设置”。
+3. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
+> * **波特率**：115,200
+> * **端口**：微芯片 E54 连接到的端口。 如果下拉列表中有多个端口选项，则可以找到要使用的正确端口。 打开 Windows **设备管理器**，查看“端口”以确定要使用的端口。
+> * 流控制：DTR/DSR :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/termite-settings.png" alt-text="Termite 应用中串行端口设置的屏幕截图":::
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/termite-settings.png" alt-text="Termite 应用中串行端口设置的屏幕截图":::
+4. 选择“确定”。
+5. 按设备上的“复位”按钮。 该按钮在设备上进行了标记，位于 Micro USB 连接器附近。
+6. 在 **Termite** 应用中，检查以下检查点值，以确认设备已初始化并连接到 Azure IoT。
 
-1. 选择“确定”。
-1. 按设备上的“复位”按钮。 该按钮在设备上进行了标记，位于 Micro USB 连接器附近。
-1. 在 **Termite** 应用中，检查以下检查点值，以确认设备已初始化并连接到 Azure IoT。
-
-    ```output
+```output
     Starting Azure thread
 
     Initializing DHCP
@@ -216,7 +285,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
         Model id: dtmi:azurertos:devkit:gsg;1
     Connected to IoT Hub
     SUCCESS: Azure IoT Hub client initialized
-    ```
+```
 
 在以下步骤中，保持 Termite 处于打开状态以监视设备输出。
 
@@ -292,4 +361,3 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 > [!IMPORTANT]
 > Azure RTOS 为 OEM 提供了一些组件，通过这些组件可以保护通信以及使用底层 MCU/MPU 硬件保护机制创建代码和数据隔离。 但是，每个 OEM 最终负责确保其设备满足不断变化的安全要求。
-

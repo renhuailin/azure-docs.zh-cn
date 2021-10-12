@@ -59,7 +59,7 @@ items:
       - name: 安全性
         items:
           - name: 公共 IP 安全基线
-        href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
+            href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/ip-services/toc.json
   - name: 操作说明
     items:
       - name: 为 Azure 网络接口配置 IP 地址

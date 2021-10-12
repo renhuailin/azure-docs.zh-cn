@@ -5,15 +5,15 @@ services: app-service
 author: msangapu
 ms.service: app-service
 ms.topic: include
-ms.date: 02/27/2019
+ms.date: 09/14/2021
 ms.author: msangapu
 ms.custom: include file
-ms.openlocfilehash: d26b8d131d5a8ff54b12fc5817718ddd381b720b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: afaacb79906c07893d835d654b00815ea97199d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "122643066"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577312"
 ---
 > [!NOTE]
 > `az webapp up` 命令执行以下操作：
@@ -24,5 +24,7 @@ ms.locfileid: "122643066"
 >
 >- 使用指定名称[创建应用](/cli/azure/webapp#az_webapp_create)。
 >
->- [使用 Zip](../articles/app-service/deploy-zip.md) 将文件从当前工作目录部署到应用。
+>- 对当前工作目录中的所有文件进行 [zip 部署](../articles/app-service/deploy-zip.md#deploy-a-zip-package)，并[启用生成自动化](../articles/app-service/deploy-zip.md#enable-build-automation-for-zip-deploy)。
+>
+>- 将参数本地缓存在 .azure/config 文件中，使得以后使用 `az webapp up` 或其他 Azure CLI 命令部署时无需再次指定它们。 默认情况下，自动使用缓存的值。
 >

@@ -10,12 +10,12 @@ author: cjgronlund
 ms.date: 08/03/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 6709309bed5546dacdadc1ba412954e83310e183
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: f0b798db68ee15ffeb393c30f7a7ccc81e4cf386
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446557"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606240"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -52,7 +52,7 @@ Azure 机器学习适用于要在其组织内实现 MLOps（以便在安全且�
 
 ### <a name="studio-ui"></a>Studio UI 
 
-Azure 机器学习工作室是一种图形用户界面，用作项目工作区。 在工作室中，可以执行以下操作：
+[Azure 机器学习工作室](https://ml.azure.com)是一种图形用户界面，用作项目工作区。 在工作室中，可以执行以下操作：
 
 - 查看运行、指标、日志、输出等。
 - 创作和编辑笔记本和文件。
@@ -65,6 +65,8 @@ Azure 机器学习工作室是一种图形用户界面，用作项目工作区�
 - 创作 AutoML 作业。
 
 此外，设计器还提供了一个拖放界面，可用于训练和部署模型。 
+
+如果你是机器学习工作室（经典）用户，[请了解工作室（经典）的弃用以及它和 Azure 机器学习工作室之间的区别](overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)。
 
 ## <a name="enterprise-readiness-and-security"></a>企业就绪情况和安全性
 

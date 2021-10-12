@@ -168,6 +168,8 @@
           href: cache-how-to-monitor.md
         - name: 设置异常警报
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: 使用诊断日志进行监视
+          href: cache-monitor-diagnostic-settings.md
         - name: 监视常见问题解答
           href: cache-monitor-troubleshoot-faq.yml
     - name: 缩放

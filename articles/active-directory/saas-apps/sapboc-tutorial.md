@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 19bdb6d2a586dcb279687673c7fa4e302dc4928b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da2bd04dceb158d2fbd5b73530ff0e6083c52e9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652634"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813204"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>教程：将 SAP Analytics Cloud 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101652634"
 * 让用户使用其 Azure AD 帐户自动登录到 SAP Analytics Cloud。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,6 +38,8 @@ ms.locfileid: "101652634"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * SAP Analytics Cloud 支持 SP 发起的 SSO。
+
+* SAP Analytics Cloud 支持[自动用户预配](sap-analytics-cloud-provisioning-tutorial.md)。 
 
 ## <a name="add-sap-analytics-cloud-from-the-gallery"></a>从库中添加 SAP Analytics Cloud
 
@@ -75,18 +77,22 @@ ms.locfileid: "101652634"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式之一键入 URL：
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式之一键入值：
 
-    - `https://<sub-domain>.sapanalytics.cloud/`
-    - `https://<sub-domain>.sapbusinessobjects.cloud/`
+    | **标识符 URL** |
+    |----|
+    | `<sub-domain>.sapbusinessobjects.cloud` |
+    | `<sub-domain>.sapanalytics.cloud` |
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式之一键入 URL：
-
-    - `<sub-domain>.sapbusinessobjects.cloud`
-    - `<sub-domain>.sapanalytics.cloud`
+    b. 在“登录 URL”文本框中，使用以下模式之一键入 URL：
+    
+    | **登录 URL** |
+    |------|
+    | `https://<sub-domain>.sapanalytics.cloud/` |
+    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
     > [!NOTE] 
-    > 这些 URL 中的值仅用于演示。 请使用实际登录 URL 和标识符 URL 来更新这些值。 若要获取登录 URL，请联系 [SAP Analytics Cloud 客户端支持团队](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)。 可以通过从管理员控制台下载 SAP Analytics Cloud 元数据来获取标识符 URL。 本教程后面将对有所解释。
+    > 这些 URL 中的值仅用于演示。 使用实际标识符和登录 URL 更新这些值。 若要获取登录 URL，请联系 [SAP Analytics Cloud 客户端支持团队](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)。 可以通过从管理员控制台下载 SAP Analytics Cloud 元数据来获取标识符 URL。 本教程后面将对有所解释。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -190,6 +196,9 @@ ms.locfileid: "101652634"
 
     1. 选择“保存”图标。
 
+> [!NOTE]
+> SAP Analytics Cloud 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./sap-analytics-cloud-provisioning-tutorial.md)。
+
 ## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
@@ -198,7 +207,7 @@ ms.locfileid: "101652634"
 
 * 直接转到 SAP Analytics Cloud 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 SAP Analytics Cloud 磁贴时，将会重定向到 SAP Analytics Cloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 SAP Analytics Cloud 磁贴时，将会重定向到 SAP Analytics Cloud 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 
 ## <a name="next-steps"></a>后续步骤
 
