@@ -9,12 +9,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: pstn
-ms.openlocfilehash: 7a27e630490fe78023a9406f931c6066c5e9fb7f
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 2270e29cc9b279348467ca2a6f6593269e37eafb
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362347"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659804"
 ---
 # <a name="list-of-session-border-controllers-certified-for-azure-communication-services-direct-routing"></a>针对 Azure 通信服务直接路由认证的会话边界控制器列表
 本文档包含经认证可用于 Azure 通信服务直接路由的会话边界控制器列表。 此外，它还包含已知限制。
@@ -42,7 +42,7 @@ Azure 通信服务尚不支持媒体旁路。 基于 Web 的客户端不支持�
 |[Metaswitch](https://manuals.metaswitch.com/Perimeta/V4.9/AzureCommunicationServicesIntegrationGuide/Source/notices.html)|Perimeta SBC|4.9|
 |[Oracle](https://www.oracle.com/technical-resources/documentation/acme-packet.html)|Oracle Acme 数据包 SBC|8.4|
 |功能区通信|[SBC SWe / SBC 5400 / SBC 7000](https://support.sonus.net/display/ALLDOC/Ribbon+Configurations+with+Azure+Communication+Services+Direct+Routing)|9.02|
-||SBC SWe Lite/SBC 1000/SBC 2000|9.0
+||[SBC SWe Lite/SBC 1000/SBC 2000](https://support.sonus.net/display/UXDOC90/Best+Practice+-+Configure+SBC+Edge+for+Azure+Communication+Services+Direct+Routing)|9.0
 
 请注意授予主版本的认证。 这意味着支持 SBC 固件中该主版本后面具有任意数字的固件。
 

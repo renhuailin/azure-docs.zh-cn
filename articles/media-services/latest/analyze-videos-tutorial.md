@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 8f857ff3c1a17e0f17d396b8d97d9d0e27b4fa18
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1427e97ceb3cd592a105bc06174e2627e3bc53bd
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646073"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659006"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 来分析视频
 
@@ -91,7 +91,7 @@ CreateInputAsset 函数创建新的输入[资产](/rest/api/media/assets)并将�
 以下函数执行以下操作：
 
 * 创建 Asset。
-* 获取 Asset 的[存储中容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写 [SAS URL](../../storage/common/storage-sas-overview.md)。
+* 获取 Asset 的[存储中容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-a-blob-to-a-container)的可写 [SAS URL](../../storage/common/storage-sas-overview.md)。
 
     如果使用资产的 [ListContainerSas](/rest/api/media/assets/listcontainersas) 函数获取 SAS URL，请注意，该函数将返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它支持存储帐户密钥无缝轮换（例如，使用一个密钥时更改另一个，然后开始使用新密钥并轮换其他密钥）。 第一个 SAS URL 表示存储 key1，第二个表示存储 key2。
 * 使用 SAS URL 将文件上传到存储中的容器中。

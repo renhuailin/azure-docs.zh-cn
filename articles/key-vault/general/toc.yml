@@ -124,6 +124,8 @@
           href: key-vault-recovery.md
         - name: 将 Azure Key Vault 与 Azure Policy 集成
           href: azure-policy.md
+        - name: 排查通过 Azure Policy 实现 Azure Key Vault 的问题
+          href: troubleshoot-azure-policy-for-key-vault.md
         - name: 备份单个密钥保管库对象
           href: backup.md
     - name: 安全

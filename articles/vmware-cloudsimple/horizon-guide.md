@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 使用私有云站点来托管使用 VMware Horizon 的虚拟桌面基础结构
 description: 了解如何使用 CloudSimple 私有云站点来托管使用 VMware Horizon 的虚拟桌面基础结构
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 73435cbc7a630e77f7ed2d7804afd314f68c1a87
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: f78cfe703e15d96c3efd3ff228dd2b238c0b69e8
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433217"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612040"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>使用 CloudSimple 私有云站点来托管使用 VMware Horizon 的虚拟桌面基础结构
 

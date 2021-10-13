@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0b41880bea25c1b833ab2a996a50edcf557f37b8
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: f2392484c8ee7c72daa0da7c3ff9632a981a52ec
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161656"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619683"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>配置 runbook 输出和消息流
 
@@ -30,7 +30,7 @@ ms.locfileid: "108161656"
 
 ## <a name="use-the-output-stream"></a>使用输出流
 
-输出流用于输出脚本或工作流创建的对象（如果该脚本或工作流正常运行）。 Azure 自动化将此流主要用于供调用[当前 Runbook](automation-child-runbooks.md) 的父 Runbook 使用的对象。 父 Runbook [调用某个内联 Runbook](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution) 时，子 Runbook 会将输出流中的数据返回给父 Runbook。
+输出流用于输出脚本或工作流创建的对象（如果该脚本或工作流正常运行）。 Azure 自动化将此流主要用于供调用[当前 Runbook](automation-child-runbooks.md) 的父 Runbook 使用的对象。 父 Runbook [调用某个内联 Runbook](automation-child-runbooks.md#call-a-child-runbook-by-using-inline-execution) 时，子 Runbook 会将输出流中的数据返回给父 Runbook。
 
 仅当某个 runbook 永不会被其他 runbook 调用时，该 runbook 才使用输出流向客户端传递常规信息。 但是，最佳做法是 Runbook 通常使用[详细流](#write-output-to-verbose-stream)向用户传递常规信息。
 
@@ -223,7 +223,7 @@ Write-Verbose -Message "This is a verbose message."
 
 下表列出了在 Runbook 中有效的首选项变量值的行为。
 
-| 值 | 行为 |
+| Value | 行为 |
 |:--- |:--- |
 | 继续 |记录消息并继续执行 Runbook。 |
 | SilentlyContinue |继续执行 Runbook 但不记录消息。 该值会导致忽略消息。 |

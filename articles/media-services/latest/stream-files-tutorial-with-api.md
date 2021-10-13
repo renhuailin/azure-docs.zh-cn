@@ -83,7 +83,7 @@ CreateInputAsset 函数创建新的输入[资产](/rest/api/media/assets)并将�
 以下函数执行以下操作：
 
 * 创建资产。
-* 获取资产的[存储中容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写 [SAS URL](../../storage/common/storage-sas-overview.md)。
+* 获取资产的[存储中容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-a-blob-to-a-container)的可写 [SAS URL](../../storage/common/storage-sas-overview.md)。
 
     如果使用资产的 [ListContainerSas](/rest/api/media/assets/listcontainersas) 函数获取 SAS URL，请注意，该函数将返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它支持存储帐户密钥无缝轮换（例如，使用一个密钥时更改另一个，然后开始使用新密钥并轮换其他密钥）。 第一个 SAS URL 表示存储 key1，第二个表示存储 key2。
 * 使用 SAS URL 将文件上传到存储中的容器中。

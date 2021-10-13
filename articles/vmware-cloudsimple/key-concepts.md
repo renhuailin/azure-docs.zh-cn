@@ -2,19 +2,19 @@
 title: 用于管理 Azure VMware Solution by CloudSimple 的主要概念
 titleSuffix: Azure VMware Solution by CloudSimple
 description: 介绍用于管理 Azure VMware Solution by CloudSimple 的主要概念
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 04/24/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5544ef7725855d28e20d39ff345db6bb07671a2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e48df490137357a376f0d546b7d3c16165205d09
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895319"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620101"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>用于管理 Azure VMware Solution by CloudSimple 的主要概念
 

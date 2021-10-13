@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 09/22/2021
-ms.openlocfilehash: 5c6431fef8c91b41f19d27d19b59efca14986b7f
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: e75b85ea7557e4eb6688e8a549e92820d580359b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061917"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614738"
 ---
 # <a name="partner-center-submission-api-onboarding"></a>合作伙伴中心提交 API 加入
 
@@ -64,7 +64,7 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-对于 POST URI 中的 tenant_id 值以及 client_id 和 client_secret 参数，请指定在上一部分中从合作伙伴中心中为应用程序检索的租户 ID、客户端 ID 和密钥。 对于 resource 参数，必须指定 https://api.partner.microsoft.com。
+对于 POST URI 中的 tenant_id 值以及 client_id 和 client_secret 参数，请指定在上一部分中从合作伙伴中心中为应用程序检索的租户 ID、客户端 ID 和密钥。 对于 resource 参数，必须指定 `https://api.partner.microsoft.com`。
 
 ### <a name="step-3-use-the-partner-center-submission-api"></a>步骤 3：使用合作伙伴中心提交 API
 

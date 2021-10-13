@@ -4,7 +4,7 @@ description: 在 Azure AD Privileged Identity Management (PIM) 中查看 Azure �
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: pim
@@ -14,12 +14,12 @@ ms.date: 04/20/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd211c284ef5240e3f658d90c5d801018a02b9bf
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 36f78327459c8bf6efc3a1cad9d4c5b306e4ba1f
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790174"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668307"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure 资源角色的活动和审核历史记录
 
@@ -32,7 +32,7 @@ ms.locfileid: "109790174"
 
 若要查看特定用户在各种资源中执行的操作，可以查看与给定激活时段关联的 Azure 资源活动。
 
-1. 打开“Azure AD Privileged Identity Management”。 
+1. 打开“Azure AD Privileged Identity Management”。
 
 1. 选择“Azure 资源” 。
 
@@ -54,7 +54,7 @@ ms.locfileid: "109790174"
 
 你可能具有合规性要求，必须向审核者提供角色分配的完整列表。 可以使用 Privileged Identity Management 查询特定资源上的角色分配，这包括针对所有子资源的角色分配。 以前，管理员很难获取某个订阅的角色分配完整列表，他们必须导出每个特定资源的角色分配。 使用 Privileged Identity Management，可以查询某个订阅中所有处于活动状态和符合条件的角色分配，包括针对所有资源组和资源的角色分配。
 
-1. 打开“Azure AD Privileged Identity Management”。 
+1. 打开“Azure AD Privileged Identity Management”。
 
 1. 选择“Azure 资源” 。
 
@@ -74,7 +74,7 @@ ms.locfileid: "109790174"
 
 资源审核提供资源的所有角色活动的视图。
 
-1. 打开“Azure AD Privileged Identity Management”。 
+1. 打开“Azure AD Privileged Identity Management”。
 
 1. 选择“Azure 资源” 。
 

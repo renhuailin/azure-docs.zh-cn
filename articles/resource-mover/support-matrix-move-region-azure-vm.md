@@ -7,20 +7,16 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ced0213a155bee2926a77d0b8f4126b7b97232fb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99980484"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618945"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>对在 Azure 区域之间移动 Azure VM 的支持
 
 本文汇总了使用资源转移器在 Azure 区域之间移动虚拟机和相关网络资源时的支持和先决条件。
-
-> [!IMPORTANT]
-> Azure 资源转移器目前提供预览版。
-
 
 ## <a name="windows-vm-support"></a>Windows VM 支持
 
@@ -28,7 +24,7 @@ ms.locfileid: "99980484"
 
 **操作系统** | **详细信息**
 --- | ---
-Windows Server 2019 | 支持 Server Core、带桌面体验的服务器。
+Windows Server 2019 | 支持服务器核心、带桌面体验的服务器。
 Windows Server 2016  | 支持 Server Core、带桌面体验的服务器。
 Windows Server 2012 R2 | 支持。
 Windows Server 2012 | 支持。

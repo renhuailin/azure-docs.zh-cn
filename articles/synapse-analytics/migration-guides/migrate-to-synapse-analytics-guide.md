@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 601b31aa4941ba3a971ebbc9be03178593b5f565
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: fcd2b4adf6387398d05a26abefd567c1375c92f2
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129055279"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619286"
 ---
 # <a name="migrate-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>将数据仓库迁移到 Azure Synapse Analytics 中的专用 SQL 池
 
@@ -111,7 +111,6 @@ ms.locfileid: "129055279"
 | [数据工作负载评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130) | 此工具为给定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
 | [处理在将数据加载到 Azure Synapse Analytics 时遇到的数据编码问题](https://azure.microsoft.com/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | 这篇博客文章旨在提供有关在使用 PolyBase 将数据加载到 SQL 数据仓库时可能遇到的一些数据编码问题的见解。 此文还提供了一些选项，可用于解决此类问题并成功加载数据。 |
 | [在 Azure Synapse Analytics 专用 SQL 池中获取表大小](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Getting%20table%20sizes%20in%20SQL%20DW.pdf) | 架构师必须执行的一项关键任务是获取有关迁移后的新环境的指标。 例如，收集从本地到云的加载时间并收集 PolyBase 加载时间。 其中最重要的一项任务是确定 SQL 数据仓库中的存储大小情况（与客户当前平台相比）。 |
-| [将本地 SQL Server 登录名迁移到 Azure Synapse Analytics 的实用程序](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) | PowerShell 脚本可以创建 T-SQL 命令脚本，以重新创建登录名并从 SQL Server 的本地实例到 Azure SQL 平台即服务 (PaaS) 服务选择数据库用户。 使用该工具可将 Windows Server Active Directory 帐户自动映射到 Azure Active Directory 帐户，或者根据本地 Windows Server Active Directory 对每个登录名执行 UPN 查找。 该工具还可以选择性地移动 SQL Server 本机登录名。 对于自定义服务器和数据库角色以及角色成员资格、数据库角色和用户权限，均已编写脚本。 目前不支持所包含的数据库，并且仅对一部分可能的 SQL Server 权限进行脚本编写。 支持文档中提供了更多信息，该脚本带有注释，以便于理解。 |
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

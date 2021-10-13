@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 10/11/2021
 ms.author: justinha
-ms.openlocfilehash: 6b61bfbc1419b59d21e8db583b3a8aad5145494e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 808b8ecf102fc8b305c1351d9af3d8dc08377964
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785907"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856993"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>如何在 Azure Active Directory 域服务托管域中同步对象和凭据
 
@@ -76,7 +76,7 @@ ms.locfileid: "110785907"
 | mailNickname |SAMAccountName（有时可能自动生成） |
 | manager |manager |
 | mobile |mobile |
-| objectid |msDS-AzureADObjectId |
+| objectid |msDS-aadObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
 | passwordPolicies |userAccountControl（设置或清除 DONT_EXPIRE_PASSWORD 位） |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |

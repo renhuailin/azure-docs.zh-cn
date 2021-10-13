@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8b53f906eed0df4c6dddbaa64f460cb7a8898a5e
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: 34938a6d5e52912db8d82b39bed3fdbad9f4814c
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113492642"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859013"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限
 
@@ -28,6 +28,21 @@ Azure RBAC 允许用户管理密钥、机密和证书权限。 它提供了一�
 Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组、订阅、资源组或单个资源。  用于密钥保管库的 Azure RBAC 还提供了对单个密钥、机密和证书设定单独权限的功能
 
 有关详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
+
+## <a name="best-practices-for-individual-keys-secrets-and-certificates"></a>单个密钥、机密和证书的最佳做法
+
+我们的建议是对每个环境（开发环境、预生产环境和生产环境）的每个应用程序使用一个保管库。
+
+单个密钥、机密和证书权限应仅用于特定场景：
+
+-   需要在层之间分离访问控制的多层应用程序
+
+-   在多个应用程序之间共享单个机密
+
+有关 Azure Key Vault 管理指南的详细信息，请参阅：
+
+- [Azure Key Vault 最佳做法](best-practices.md)
+- [Azure Key Vault 服务限制](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>用于 Key Vault 数据平面操作的 Azure 内置角色
 

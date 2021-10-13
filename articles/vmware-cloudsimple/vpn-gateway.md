@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 设置 VPN 网关
 description: 介绍如何设置点到站点 VPN 网关和站点到站点 VPN 网关，以及如何在本地网络与 CloudSimple 私有云之间创建连接
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d67958b05bd07e97b46a8ad3812b7ff0ca41f03
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 7ad465597d16dea1860ccd27a9610473bb9cecc1
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178135"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613902"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>在 CloudSimple 网络上设置 VPN 网关
 

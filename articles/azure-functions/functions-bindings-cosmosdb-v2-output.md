@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f385ca93c3cee6535a71dcffdd9240871ab1bdce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d43407221d62992a54f1e5efdeb23afd3dde92ef
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676383"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661172"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输出绑定
 
@@ -629,7 +629,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     }
 ```
 
-在[扩展版本 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 中，一些设置和属性已被删除或重命名。 有关这些更改的详细信息，请参见[输出 - 配置](#configuration)。 下面是某个方法签名中的 `CosmosDB` 特性示例：
+在[扩展版本 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 中，一些设置和属性已被删除或重命名。 有关这些更改的详细信息，请参阅[输出 - 配置](#configuration)。 下面是某个方法签名中的 `CosmosDB` 特性示例：
 
 ```csharp
     [FunctionName("QueueToCosmosDB")]
@@ -673,11 +673,11 @@ Python 不支持特性。
 |**direction**     | 不适用 | 必须设置为 `out`。         |
 |**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
-|**collectionName** <br> 或 <br> **containerName** |**CollectionName** <br> 或 <br> **ContainerName** | 包含在其中创建文档的集合的名称。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `ContainerName`。 |
+|**collectionName** <br> or <br> **containerName** |**CollectionName** <br> or <br> ContainerName | 包含在其中创建文档的集合的名称。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `ContainerName`。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
 |**partitionKey**|**PartitionKey** |当 `CreateIfNotExists` 为 true 时，将定义所创建集合的分区键路径。|
-|**collectionThroughput** <br> 或 <br> **containerThroughput**|**CollectionThroughput** <br> 或 <br> **ContainerThroughput**| 当 `CreateIfNotExists` 为 true 时，将定义所创建集合的[吞吐量](../cosmos-db/set-throughput.md)。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `ContainerThroughput`。 |
-|**connectionStringSetting** <br> 或 <br> 连接   |**ConnectionStringSetting** <br> 或 <br> **Connection**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。  <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `Connection`。 此值是某个应用设置的名称，其中包含连接字符串或包含用于定义连接的配置部分或前缀。 请参阅[连接](./functions-reference.md#connections)。 |
+|**collectionThroughput** <br> or <br> containerThroughput|**CollectionThroughput** <br> or <br> ContainerThroughput| 当 `CreateIfNotExists` 为 true 时，将定义所创建集合的[吞吐量](../cosmos-db/set-throughput.md)。 <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `ContainerThroughput`。 |
+|**connectionStringSetting** <br> or <br> 连接   |**ConnectionStringSetting** <br> or <br> **Connection**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。  <br><br> 在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中，此属性称为 `Connection`。 此值是某个应用设置的名称，其中包含连接字符串或包含用于定义连接的配置部分或前缀。 请参阅[连接](./functions-reference.md#connections)。 |
 |**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，“美国东部,美国中南部,北欧”。 |
 |**useMultipleWriteLocations**| **UseMultipleWriteLocations**| （可选）与 `PreferredLocations` 一起设置为 `true` 时，它可以利用 Azure Cosmos DB 服务中的[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 <br><br> 此属性在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中不可用。 |
 
@@ -700,7 +700,7 @@ Python 不支持特性。
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍 Azure Functions 版本 2.x 中可用于此绑定的全局配置设置。 有关 Azure Functions 版本 2.x 中全局配置设置的详细信息，请参阅 [Azure Functions 版本 2.x 的 host.json 参考](functions-host-json.md)。
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 ```json
 {
@@ -720,7 +720,7 @@ Python 不支持特性。
 |属性  |默认 |说明 |
 |----------|--------|------------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
-|协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。 请参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)。 <br><br> 此设置在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中不可用。 |
+|协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。 请参阅[此文](../cosmos-db/performance-tips.md#networking)，了解两种模式的说明。 <br><br> 此设置在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中不可用。 |
 |leasePrefix|不适用|应用中所有函数要使用的租用前缀。 <br><br> 此设置在 [4.x 版扩展](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher)中不可用。|
 
 ## <a name="next-steps"></a>后续步骤

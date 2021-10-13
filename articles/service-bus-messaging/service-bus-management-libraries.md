@@ -3,12 +3,12 @@ title: 以编程方式管理 Azure 服务总线命名空间和实体
 description: 本文介绍如何以动态或编程方式预配服务总线命名空间和实体。
 ms.topic: article
 ms.date: 08/06/2021
-ms.openlocfilehash: b053ff5cce51fbcd0ce56e2bdbfaff39dddb6394
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2962d5d8aebcf0a24535b7d9c1538dc69bd11e65
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178920"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709132"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>动态预配服务总线命名空间和实体 
 Azure 服务总线提供的库可以帮助动态预配服务总线命名空间和实体。 这样可以实现复杂的部署和消息方案，并能以编程方式确定要预配的实体。
@@ -60,5 +60,5 @@ Azure 服务总线提供的库可以帮助动态预配服务总线命名空间�
 
 
 ## <a name="next-steps"></a>后续步骤
-- 使用最新的服务总线库向队列发送消息并从队列接收消息：[.NET](./service-bus-dotnet-get-started-with-queues.md#send-messages)、[Java](./service-bus-java-how-to-use-queues.md)、[JavaScript](./service-bus-nodejs-how-to-use-queues.md)、[Python](./service-bus-python-how-to-use-queues.md)
+- 使用最新的服务总线库向队列发送消息并从队列接收消息：[.NET](./service-bus-dotnet-get-started-with-queues.md#send-messages-to-the-queue)、[Java](./service-bus-java-how-to-use-queues.md)、[JavaScript](./service-bus-nodejs-how-to-use-queues.md)、[Python](./service-bus-python-how-to-use-queues.md)
 - 使用最新的服务总线库向主题发送消息并从订阅接收消息：[.NET](./service-bus-dotnet-how-to-use-topics-subscriptions.md)、[Java](./service-bus-java-how-to-use-topics-subscriptions.md)、[JavaScript](./service-bus-nodejs-how-to-use-topics-subscriptions.md)、[Python](./service-bus-python-how-to-use-topics-subscriptions.md)

@@ -11,12 +11,12 @@ ms.date: 05/11/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文档处理
-ms.openlocfilehash: d463a45064a9f6b342a7cb735372a3c5098539c4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 43e7da4eea864bf0ac2767718ff8ed04ed58c54e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431741"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715188"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -24,7 +24,7 @@ ms.locfileid: "123431741"
 <!-- markdownlint-disable MD034 -->
 # <a name="train-a-custom-model-using-the-sample-labeling-tool"></a>使用示例标记工具训练自定义模型
 
-在本文中，你要将示例标记工具和表单识别器 REST API 结合使用，通过手动标记的数据训练自定义文档处理模型。 如需详细了解如何使用表单识别器进行受监督的学习，请参阅概述的[通过标签进行训练](overview.md#train-with-labels)部分。
+在本文中，你要将示例标记工具和表单识别器 REST API 结合使用，通过手动标记的数据训练自定义文档处理模型。 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 

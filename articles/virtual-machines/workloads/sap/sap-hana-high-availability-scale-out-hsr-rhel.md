@@ -9,14 +9,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/24/2021
+ms.date: 10/08/2021
 ms.author: radeltch
-ms.openlocfilehash: 36925ac45d4773407d28020b58ef4d7ac8b279e1
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: d2b65fa273a7901c5c40b1c31d0ef399936542cd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129053063"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708641"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上的 SAP HANA 横向扩展系统的高可用性 
 
@@ -617,11 +617,11 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
      * 对于“输入根用户名 [root]”：按 Enter 接受默认值
      * 对于“选择主机 'hana-s1-db2' 的角色 [1]”：1（适用于辅助角色）
      * 对于“输入主机 'hana-s1-db2' 的主机故障转移组 [默认值]”：按 Enter 接受默认值
-     * 对于“输入主机 'hana-s1-db2' 的存储分区号 [\<\<assign automatically\>\>]”：按 Enter 接受默认值
+     * 对于“输入主机‘hana-s1-db2’的存储分区号 [\<\<assign automatically\>\>]”：按 Enter 接受默认值
      * 对于“输入主机 'hana-s1-db2' 的辅助角色组 [默认值]”：按 Enter 接受默认值
      * 对于“选择主机 'hana-s1-db3' 的角色 [1]”：1（适用于辅助角色）
      * 对于“输入主机 'hana-s1-db3' 的主机故障转移组 [默认值]”：按 Enter 接受默认值
-     * 对于“输入主机 'hana-s1-db3' 的存储分区号 [\<\<assign automatically\>\>]”：按 Enter 接受默认值
+     * 对于“输入主机‘hana-s1-db3’的存储分区号 [\<\<assign automatically\>\>]”：按 Enter 接受默认值
      * 对于“输入主机 'hana-s1-db3' 的辅助角色组 [默认值]”：按 Enter 接受默认值
      * 对于“系统管理员 (hn1adm) 密码”：输入密码
      * 对于“输入 SAP 主机代理用户 (sapadm) 密码”：输入密码
@@ -920,11 +920,10 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
     ```bash
     sudo visudo -f /etc/sudoers.d/20-saphana
     # Insert the following lines and then save
-    Cmnd_Alias HANA_S1_SOK   = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S1 -v SOK -t crm_config -s SAPHanaSR
-    Cmnd_Alias HANA_S1_SFAIL = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S1 -v SFAIL -t crm_config -s SAPHanaSR
-    Cmnd_Alias HANA_S2_SOK   = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S2 -v SOK -t crm_config -s SAPHanaSR
-    Cmnd_Alias HANA_S2_SFAIL = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S2 -v SFAIL -t crm_config -s SAPHanaSR
-    hn1adm ALL=(ALL) NOPASSWD: HANA_S1_SOK, HANA_S1_SFAIL, HANA_S2_SOK, HANA_S2_SFAIL
+    Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
+    Cmnd_Alias SFAIL = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SFAIL -t crm_config -s SAPHanaSR
+    hn1adm ALL=(ALL) NOPASSWD: SOK, SFAIL
+    Defaults!SOK, SFAIL !requiretty
     ```
 
 4. **[1,2]** 在两个复制站点上启动 SAP HANA。 以 <sid\>adm 身份执行。  

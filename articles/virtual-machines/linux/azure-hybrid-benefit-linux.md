@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 867d4b380266c5cbfbae68ca61d83ab3fd28aee3
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 9b144af348a13ae3673ccf2a5f2f11810fd3e296
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216586"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728107"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure 混合权益如何应用于 Linux 虚拟机
 
@@ -188,12 +188,13 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="suse"></a>SUSE
 
+若要对 SLES VM 使用 Azure 混合权益，以及有关从 SLES PAYG 迁移到 BYOS 或从 SLES BYOS 迁移到 PAYG 的信息，请参阅 [SUSE Linux Enterprise 和 Azure 混合权益](https://aka.ms/suse-ahb)。 
+
 使用 Azure 混合权益的客户需要将云更新基础结构移动到以下三个选项之一，为这些 VM 提供软件更新和补丁：
 - [SUSE 客户中心](https://scc.suse.com)
 - SUSE 管理器
 - SUSE 存储库镜像工具 (RMT) 
 
-若要对 SLES VM 使用 Azure 混合权益，以及有关从 SLES PAYG 迁移到 BYOS 或从 SLES BYOS 迁移到 PAYG 的信息，请参阅 [SUSE Linux Enterprise 和 Azure 混合权益](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)。 
 
 ## <a name="azure-hybrid-benefit-on-reserved-instances"></a>预留实例的 Azure 混合权益 
 

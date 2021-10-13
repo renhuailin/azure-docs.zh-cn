@@ -1,6 +1,7 @@
 ---
-title: 在 Azure Active Directory 中排查基于密码的单一登录问题
+title: 排查基于密码的单一登录问题
 description: 排查配置为基于密码的单一登录的 Azure AD 应用的问题。
+titleSuffix: Azure AD
 author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
@@ -10,14 +11,14 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 0c3f95559b891cfff9e704883365ca6b7bc1630b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1b33398a9188b55eae3d0ec54fcfe1acc6b6a589
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658196"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613682"
 ---
-# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>在 Azure AD 中排查基于密码的单一登录问题
+# <a name="troubleshoot-password-based-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中排查基于密码的单一登录问题
 
 若要使用“我的应用”中的“基于密码的单一登录 (SSO)” ，必须安装浏览器扩展。 选择某个已配置基于密码的 SSO 的应用时，会自动下载此扩展。 若要了解如何从最终用户的角度使用“我的应用”，请参阅[“我的应用”门户帮助](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)。
 

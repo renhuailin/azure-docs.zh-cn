@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 34484c501a95379194ad2147fbcb553bf3f06980
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 34331436c0e683aefa8ea7cddd4396e4a21546ea
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277682"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619324"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
@@ -45,7 +45,7 @@ Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式
 
 - **成本效益**：Data Lake Storage Gen2 提供了低成本的存储容量和事务。 [Azure Blob 存储生命周期](./lifecycle-management-overview.md)等功能可在数据在其生命周期中进行转换时优化成本。
 
-- **优化的驱动程序：** ABFS 驱动程序专门针对大数据分析而进行[优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
+- **优化的驱动程序：** ABFS 驱动程序专门针对大数据分析而进行 [优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
 
 ### <a name="scalability"></a>可伸缩性
 
@@ -84,5 +84,6 @@ Data Lake Storage gen2 支持多个 Azure 服务。 可以使用它们来引入�
 
 ## <a name="see-also"></a>另请参阅
 
+- [使用 Azure Data Lake Storage Gen2 的最佳做法](data-lake-storage-best-practices.md)
 - [Azure Data Lake Storage Gen2 的已知问题](data-lake-storage-known-issues.md)
 - [Azure Data Lake Storage 的多协议访问](data-lake-storage-multi-protocol-access.md)

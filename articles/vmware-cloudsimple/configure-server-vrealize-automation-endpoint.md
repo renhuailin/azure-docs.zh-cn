@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 在私有云上为 vRealize 自动化设置 vCenter
 description: 介绍如何在 CloudSimple 私有云上将 VMware vCenter 服务器设置为 VMware vRealize 自动化的终结点
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 765e7616c5bea838ba093fb64e9b7e12e651ec69
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: cd00a319c06131014db2873a7339cdf9127fe58d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108182401"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611465"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>在私有云上为 VMware vRealize 自动化设置 vCenter
 
@@ -64,7 +64,7 @@ ms.locfileid: "108182401"
         ![vRA 安装代理](media/configure-vra-endpoint-proxy.png)
 
     11. 单击“下一步”。
-    12. 单击“安装” 。
+    12. 单击“安装”  。
 
 ## <a name="configure-the-vsphere-agent"></a>配置 vSphere 代理
 

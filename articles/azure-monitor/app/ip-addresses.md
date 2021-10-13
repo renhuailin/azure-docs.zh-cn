@@ -3,12 +3,12 @@ title: Azure Monitor 使用的 IP 地址
 description: Application Insights 所需的服务器防火墙例外
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e6f0eb2de43f3ee6a9be61089a22d57f8cfe8116
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7516cdc5fcb605415ef009e7b5f1d5da195ba1c9
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124815778"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858360"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Azure Monitor 使用的 IP 地址
 
@@ -196,7 +196,7 @@ East US
 ```
 
 ### <a name="discovery-api"></a>发现 API
-你可能还需要[以编程方式检索](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)包含服务标记及 IP 地址范围详细信息的最新列表。
+你可能还需要[以编程方式检索](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api)包含服务标记及 IP 地址范围详细信息的最新列表。
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights 和日志分析 API
 

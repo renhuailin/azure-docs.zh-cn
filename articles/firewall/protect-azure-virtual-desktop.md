@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 10/06/2021
 ms.author: victorh
-ms.openlocfilehash: 5c165dc8f00bb21894de06e541c02788bd7b51e5
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 9ac87633dbb4d1b21dfe4fa4430012d91243b8d5
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424986"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620500"
 ---
 # <a name="use-azure-firewall-to-protect-azure-virtual-desktop-deployments"></a>使用 Azure 防火墙保护 Azure 虚拟桌面部署
 
@@ -44,6 +44,7 @@ Azure 虚拟桌面是在 Azure 运行的桌面和应用虚拟化服务。 当最
 | 规则名称 | IP 地址  | VNet 或子网 IP 地址 | TCP      | 80                | IP 地址       | 169.254.169.254、168.63.129.16    |
 | 规则名称 | IP 地址  | VNet 或子网 IP 地址 | TCP      | 443               | 服务标记      | AzureCloud、WindowsVirtualDesktop |
 | 规则名称 | IP 地址  | VNet 或子网 IP 地址 | TCP、UDP | 53                | IP 地址       | *                                 |
+|规则名称  | IP 地址  | VNet 或子网 IP 地址 | TCP      | 1688              | IP 地址       | 23.102.135.246                    |
 
 > [!NOTE]
 > 某些部署可能不需要 DNS 规则。 例如，Azure Active Directory 域控制器会将 DNS 查询转发到位于 168.63.129.16 的 Azure DNS。
@@ -53,7 +54,6 @@ Azure 虚拟桌面是在 Azure 运行的桌面和应用虚拟化服务。 当最
 | “属性”      | 源类型 | 源                    | 协议   | 目标类型 | 目标                                                                                 |
 | --------- | ----------- | ------------------------- | ---------- | ---------------- | ------------------------------------------------------------------------------------------- |
 | 规则名称 | IP 地址  | VNet 或子网 IP 地址 | Https:443  | FQDN 标记         | WindowsVirtualDesktop、WindowsUpdate、Windows 诊断、MicrosoftActiveProtectionService |
-| 规则名称 | IP 地址  | VNet 或子网 IP 地址 | Https:1688 | FQDN             | kms.core.windows.net                                                                        |
 
 > [!IMPORTANT]
 > 建议不要将 TLS 检查用于 Azure 虚拟桌面。 有关详细信息，请参阅[代理服务器准则](../virtual-desktop/proxy-server-support.md#dont-use-ssl-termination-on-the-proxy-server)。

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 1a27bfac347480591a67bf2c164b9ff41fe3b18d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 395b9d2670a488ab0743a987b1e8b857f6f2fb2f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426428"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708319"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "129426428"
 * 增强功能，用于处理标识文档中的数字 PDF 和计算机可读区域 (MRZ) 文本。
 * 常规性能和 AI 质量改进
 
-请参阅 [OCR 操作指南](Vision-API-How-to-Topics/call-read-api.md)，了解如何使用新的预览功能。
+请参阅 [OCR 操作指南](Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional)，了解如何使用新的预览功能。
 
 > [!div class="nextstepaction"]
 > [读取 API 入门](./quickstarts-sdk/client-library.md)

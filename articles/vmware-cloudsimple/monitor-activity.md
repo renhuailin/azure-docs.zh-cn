@@ -2,19 +2,19 @@
 title: 监视私有云活动
 titleSuffix: Azure VMware Solution by CloudSimple
 description: 介绍 Azure VMware Solution by CloudSimple 环境下活动的可用信息，包括警报、事件、任务和审核。
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cf07231b0883af85fb1f950cf9bb6ed9d5811211
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: bc83c19e18913b08411807c7b60dc6a47572cba9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177307"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617466"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>监视 VMware Solution by CloudSimple 活动
 
@@ -46,7 +46,7 @@ CloudSimple 活动日志提供对于在 CloudSimple 门户完成的操作的见�
 
 以下是可用于警报的信息列。 单击“编辑列”，然后选择要查看的列。
 
-| 列 | 描述 |
+| 列 | 说明 |
 ------------ | ------------- |
 | 警报类型 | 警报类别。|
 | 时间 | 出现警报的时间。 |
@@ -54,7 +54,7 @@ CloudSimple 活动日志提供对于在 CloudSimple 门户完成的操作的见�
 | 资源名称 | 分配给资源的名称，如私有云名称。 |
 | 资源类型 | 资源类别：私有云、云机架。 |
 | 资源 ID | 资源的标识符。 |
-| 描述 | 触发警报的说明。 |
+| 说明 | 触发警报的说明。 |
 | 已确认 | 指示是否确认了警报。 |
 
 ## <a name="events"></a>事件
@@ -70,7 +70,7 @@ CloudSimple 活动日志提供对于在 CloudSimple 门户完成的操作的见�
 | 严重性 | 事件严重级别。|
 | 资源名称 | 分配给资源的名称，如私有云名称。 |
 | 资源类型 | 资源类别：私有云、云机架。 |
-| 描述 | 触发警报的说明。 |
+| 说明 | 触发警报的说明。 |
 
 ## <a name="tasks"></a>任务
 
@@ -78,7 +78,7 @@ CloudSimple 活动日志提供对于在 CloudSimple 门户完成的操作的见�
 
 以下是可用于警报的信息列。 单击“编辑列”，然后选择要查看的列。
 
-| 列 | 描述 |
+| 列 | 说明 |
 ------------ | ------------- |
 | 任务 ID | 任务的唯一标识符。 |
 | 操作 | 任务执行的操作。 |
@@ -90,7 +90,7 @@ CloudSimple 活动日志提供对于在 CloudSimple 门户完成的操作的见�
 | 结束 | 任务的结束时间。 |
 | 状态 | 当前任务状态。 |
 | 已用时间 | 完成此任务所需的时间（如果任务已完成），或当前所用时间（如果任务仍在进行）。 |
-| 描述 | 任务说明。 |
+| 说明 | 任务说明。 |
 
 ## <a name="audit"></a>审核
 
@@ -108,7 +108,7 @@ CloudSimple 活动日志提供对于在 CloudSimple 门户完成的操作的见�
 | 资源 ID | 资源的标识符。 |
 | 结果 | 活动结果，如“成功”。 |
 | 所用时间 | 完成任务所用时间。 |
-| 描述 | 操作的说明。 |
+| 说明 | 操作的说明。 |
 
 ## <a name="next-steps"></a>后续步骤
 

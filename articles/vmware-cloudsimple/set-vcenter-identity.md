@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 在私有云上设置 vCenter 标识源
 description: 介绍如何将私有云 vCenter 设置为使用 Active Directory 进行身份验证，以便 VMware 管理员访问 vCenter
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c9067df31c677da7c6f0a6e1b470f85fd785532a
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 36b45bcdc84b02dec5c54eff5f96cb7b07cf2ca5
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108180079"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616030"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>设置 vCenter 标识源以使用 Active Directory
 

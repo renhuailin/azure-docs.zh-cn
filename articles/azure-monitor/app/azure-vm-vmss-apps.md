@@ -4,12 +4,12 @@ description: 针对 Azure VM 和 Azure 虚拟机规模集进行应用程序性�
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2fc5057826eda1856b5b3671b6a995e9e80468f5
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: d3f1d1a8a2e3262ba91339c7335fadda92d90cac
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720645"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856099"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
 
@@ -57,7 +57,7 @@ ms.locfileid: "114720645"
 
 #### <a name="java"></a>Java 
 
-如果需要对 Java 应用程序进行其他自定义遥测，请查看[有什么可用](./java-in-process-agent.md#send-custom-telemetry-from-your-application)，添加[自定义维度](./java-standalone-config.md#custom-dimensions)，或使用[遥测处理器](./java-standalone-telemetry-processors.md)。 
+如果需要对 Java 应用程序进行其他自定义遥测，请查看[有什么可用](./java-in-process-agent.md#custom-telemetry)，添加[自定义维度](./java-standalone-config.md#custom-dimensions)，或使用[遥测处理器](./java-standalone-telemetry-processors.md)。 
 
 #### <a name="nodejs"></a>Node.js
 

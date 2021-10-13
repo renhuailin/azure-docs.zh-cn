@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: d45ab7ba80a33658d1a3feaf024cb23ea65d5fab
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: a470a3c8d4ab9ac4f390f7b18133f65f44fed096
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771797"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711646"
 ---
 # <a name="operating-systems-supported-by-update-management"></a>更新管理支持的操作系统
 
@@ -42,7 +42,7 @@ ms.locfileid: "122771797"
 
 下表列出了更新管理不支持的操作系统：
 
-|操作系统  |说明  |
+|操作系统  |注释  |
 |---------|---------|
 |Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。<br> 对于 Azure Windows 虚拟桌面 (WVD)，管理更新<br> 的推荐方法是使用 [Microsoft Endpoint Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) 实现 Windows 10 客户端计算机修补程序管理。 |
 |Windows Server 2016 Nano Server     | 不支持。       |

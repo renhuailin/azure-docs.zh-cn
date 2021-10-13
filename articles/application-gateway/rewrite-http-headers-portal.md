@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 16479588b0e0ec64a17cb3ce0b7a46c49bd2244e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e077ac7c1cdae781b2a07cdcba0b89e001da87bb
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124769895"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712213"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure 门户
 
@@ -99,7 +99,7 @@ ms.locfileid: "124769895"
 
    - 在“运算符”列表中选择“等于(=)”。  
 
-   - 输入正则表达式模式。 在此示例中，我们将使用 `(https?)://.*azurewebsites.net(.*)$` 模式。
+   - 输入正则表达式模式。 在此示例中，我们将使用 `(https?):\/\/.*azurewebsites.net(.*)$` 模式。
 
    - 选择“确定”  。
 

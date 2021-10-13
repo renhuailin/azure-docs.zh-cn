@@ -8,12 +8,12 @@ ms.date: 06/15/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 798a46d2d77a3363a5540c3c490fd625fba3a9ff
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b1fdd85c2f954751a0ce7e2ec03dc87d4c685809
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728833"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660868"
 ---
 # <a name="update-iot-edge"></a>更新 IoT Edge
 
@@ -245,7 +245,7 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 * 不再使用 libiothsm-std 包。 如果你使用的是 IoT Edge 版本中提供的标准包，则可以将你的配置传输到新版本。 如果你之前使用的是 libiothsm 的不同实现，则需要重新配置用户提供的所有证书（如设备标识证书、设备 CA 和信任捆绑）。
 * 1\.2 版本中引入了新的标识服务 aziot-identity-service。 此服务处理 IoT Edge 以及需要与 IoT 中心通信的其他设备组件的标识预配和管理，如 [IoT 中心的设备更新](../iot-hub-device-update/understand-device-update.md)。
 * 默认配置文件具有新的名称和位置。 默认情况下，设备配置信息现在应位于 `/etc/aziot/config.toml` 中，而以前位于 `/etc/iotedge/config.yaml` 中。 可借助 `iotedge config import` 命令将配置信息从旧位置迁移到新位置，并将旧语法更改为新语法。
-  * 导入命令无法检测或修改设备受信任的平台模块 (TPM) 的访问规则。 如果设备使用 TPM 证明，则需要手动更新 /etc/udev/rules.d/tpmaccess.rules 文件以授予对 aziottpm 服务的访问权限。 有关详细信息，请参阅[向 IoT Edge 授予 TPM 的访问权限](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm)。
+  * 导入命令无法检测或修改设备受信任的平台模块 (TPM) 的访问规则。 如果设备使用 TPM 证明，则需要手动更新 /etc/udev/rules.d/tpmaccess.rules 文件以授予对 aziottpm 服务的访问权限。 有关详细信息，请参阅[向 IoT Edge 授予 TPM 的访问权限](how-to-provision-devices-at-scale-linux-tpm.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm)。
 * 版本 1.2 中的工作负载 API 以新格式保存加密的机密。 如果从旧版本升级到 1.2 版本，则会导入现有的主加密密钥。 工作负载 API 可以使用导入的加密密钥读取以先前的格式保存的机密。 但是，工作负载 API 无法以旧格式写入加密的机密。 机密一旦被模块重新加密，便会以新格式保存。 在版本 1.2 中加密的机密无法被版本 1.1 中的同一模块读取。 如果将加密的数据持久保存到主机装载的文件夹或卷中，请始终在升级之前创建数据的备份副本，以便必要时能够降级。
 
 在自动执行任何更新过程之前，请在测试计算机上验证其是否可正常工作。

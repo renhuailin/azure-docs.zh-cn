@@ -6,14 +6,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/11/2020
+ms.date: 10/8/2021
 ms.author: erhopf
-ms.openlocfilehash: 7e0b0a3023147fc12c0133f7fb0c78b943c09ced
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: e706c8ed4bd15d7d8f1d234d8adfab85d626788c
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067056"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729095"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure 认知服务的支持和帮助选项
 
@@ -144,7 +144,6 @@ ms.locfileid: "122067056"
 在 Azure 博客中随时了解新版本的功能或新闻，这可以帮助你了解编程错误、服务 bug 与认知服务中尚未提供的功能之间的差异。
 
 * 在 [Azure 更新](https://azure.microsoft.com/updates/?category=ai-machine-learning&query=Azure%20Cognitive%20Services)中详细了解产品更新、路线图和公告。
-* 查看 [Docs 中的新增内容](whats-new-docs.md)中最近添加或更新的认知服务文章。
 * 有关认知服务的新闻在 [Azure 博客](https://azure.microsoft.com/blog/topics/cognitive-services/)中共享。
 * [加入 Reddit 上有关认知服务的对话](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)。
 

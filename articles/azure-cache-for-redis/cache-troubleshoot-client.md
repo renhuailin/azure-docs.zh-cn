@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: a41329da9171014b0495498f8757007dbef008ef
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: bd0ca3b20cc37ecf2107e03eea5d6e4a62633f16
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537421"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807186"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>排查 Azure Cache for Redis 客户端问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "129537421"
 - [流量突增](#traffic-burst)
 - [客户端 CPU 使用率过高](#high-client-cpu-usage)
 - [客户端带宽限制](#client-side-bandwidth-limitation)
-- [请求或响应大小过大](#large-request-or-response-size)
+<!-- [Large request or response size](#large-request-or-response-size) -->
 
 ## <a name="memory-pressure-on-redis-client"></a>Redis 客户端上的内存压力
 
@@ -78,11 +78,12 @@ ms.locfileid: "129537421"
 
 若要缓解此问题，请减少网络带宽消耗，或者将客户端 VM 大小提高到可以提供更大网络容量的大小。
 
-## <a name="large-request-or-response-size"></a>请求或响应大小过大
+<!-- 
+## Large request or response Size
 
-请求/响应过大可能导致超时。 例如，假设你在客户端上配置的超时值为 1 秒。 你的应用程序（使用相同的物理网络连接）的同时请求两个键 （例如，A 和 B）。 大多数客户端支持对请求进行“管道操作”，使得请求“A”和“B”可以逐个发送，而无需等待响应。 服务器会按相同顺序将响应发送回来。 如果响应“A”较大，可能会消耗掉后续请求的大部分超时时间。
+A large request/response can cause timeouts. As an example, suppose your timeout value configured on your client is 1 second. Your application requests two keys (for example, 'A' and 'B') at the same time (using the same physical network connection). Most clients support request "pipelining", where both requests 'A' and 'B' are sent one after the other without waiting for their responses. The server sends the responses back in the same order. If response 'A' is large, it can eat up most of the timeout for later requests.
 
-在以下示例中，请求“A”和“B”快速发送到服务器。 服务器开始快速发送响应“A”和“B”。 由于数据传输需要时间，即使服务器的响应速度很快，响应“B”也必须等到响应“A”超时。
+In the following example, request 'A' and 'B' are sent quickly to the server. The server starts sending responses 'A' and 'B' quickly. Because of data transfer times, response 'B' must wait behind response 'A' times out even though the server responded quickly.
 
 ```console
 |-------- 1 Second Timeout (A)----------|
@@ -93,19 +94,20 @@ ms.locfileid: "129537421"
                                        |- Read Response B-| (**TIMEOUT**)
 ```
 
-此请求/响应很难度量值。 可对客户端代码进行检测，以跟踪大型请求和响应。
+This request/response is a difficult one to measure. You could instrument your client code to track large requests and responses.
 
-针对大型响应的解决方法各不相同，但是包括：
+Resolutions for large response sizes are varied but include:
 
-1. 优化应用程序以处理大量的小值，而不是处理少量的大值。
-    - 首选解决方案是将数据分解成较小的相关值。
-    - 请参阅帖子 [Redis 的理想值大小范围是多大？100 KB 是否太大？](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)以了解有关为何推荐更小值的详细信息。
-1. 增大 VM 的大小以获得更高的带宽能力
-    - 提高客户端或服务器 VM 上的带宽可以缩短较大响应的数据传输时间。
-    - 将两台计算机上的网络用量与当前 VM 大小的限制进行比较。 只提高服务器上的带宽，或者只提高客户端上的带宽，都不足以解决问题。
-1. 增加应用程序使用的连接对象数。
-    - 使用轮询方法通过不同的连接对象发出请求。
+1. Optimize your application for a large number of small values, rather than a few large values.
+    - The preferred solution is to break up your data into related smaller values.
+    - See the post [What is the ideal value size range for redis? Is 100 KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) for details on why smaller values are recommended.
+1. Increase the size of your VM to get higher bandwidth capabilities
+    - More bandwidth on your client or server VM may reduce data transfer times for larger responses.
+    - Compare your current network usage on both machines to the limits of your current VM size. More bandwidth on only the server or only on the client may not be enough.
+1. Increase the number of connection objects your application uses.
+    - Use a round-robin approach to make requests over different connection objects.
 
+ -->
 ## <a name="additional-information"></a>其他信息
 
 - [排查 Azure Cache for Redis 服务器端问题](cache-troubleshoot-server.md)

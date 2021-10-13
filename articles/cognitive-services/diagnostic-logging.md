@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: erhopf
-ms.openlocfilehash: deb5db6f205c02812330539c403fbe7b80d4784c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 804d56309cf7f97c93b2f404b1f7a11360c26fd0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747525"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660127"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>为 Azure 认知服务启用诊断日志记录
 
@@ -118,5 +118,4 @@ by bin(TimeGenerated, 10s), OperationName
 * 阅读以下文章，了解事件中心：
   * [什么是 Azure 事件中心？](../event-hubs/event-hubs-about.md)
   * [事件中心入门](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
-* 参阅[从 Azure 存储下载指标和诊断日志](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)。
 * 阅读[了解 Azure Monitor 日志中的日志搜索](../azure-monitor/logs/log-query-overview.md)。

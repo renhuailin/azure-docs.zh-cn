@@ -1036,6 +1036,8 @@
         - name: 查找请求单位费用
           displayName: 'request units, RUs, RU, charge, consumption'
           href: cassandra/find-request-unit-charge-cassandra.md
+        - name: 防止速率限制错误
+          href: cassandra/prevent-rate-limiting-errors.md
         - name: 存储和管理 Spring Data
           href: cassandra/access-data-spring-data-app.md
         - name: 排查常见问题
