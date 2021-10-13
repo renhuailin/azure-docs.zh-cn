@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 使用私有云作为本地工作负荷的灾难站点
 description: 介绍如何将 CloudSimple 私有云设置为本地 VMware 工作负荷的灾难恢复站点
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e7305557944e00121c54112704f67f861d2aa789
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: f9700b5d25a7d564c72bf959d48ad7cf1afce4e7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177775"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612382"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>将 CloudSimple 私有云设置为本地 VMware 工作负荷的灾难恢复站点
 

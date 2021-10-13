@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/07/2021
-ms.openlocfilehash: 2d145e62392ee95189a212c1cd0b294134ce1109
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dda75aedab0c17f14d2725ff9759d7ab30203474
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739074"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712931"
 ---
 # <a name="create-rich-interactive-reports-of-security-center-data"></a>创建丰富的交互式安全中心数据报表
 
@@ -95,7 +95,7 @@ ms.locfileid: "121739074"
 
 详细了解如何使用这些扫描程序：
 
-- [通过集成 VA 扫描程序扫描计算机](deploy-vulnerability-assessment-vm.md)
+- [通过集成 Qualys 扫描程序扫描计算机](deploy-vulnerability-assessment-vm.md)
 - [扫描注册表映像是否存在漏洞](defender-for-container-registries-usage.md)
 - [扫描 SQL 资源是否存在漏洞](defender-for-sql-on-machines-vulnerability-assessment.md)
 

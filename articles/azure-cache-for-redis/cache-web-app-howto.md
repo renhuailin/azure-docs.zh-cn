@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: cauribeg
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f76f350280b0a42f2915d9e9f00357919e5c4f8e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 2a8b63bf02243d9fc5b59d964d6f43579d4bde11
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533793"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657961"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用
 
 在本快速入门中，将使用 Visual Studio 2019 创建一个 ASP.NET Web 应用程序，该应用程序连接到 Azure Redis 缓存以存储和检索缓存中的数据。 然后，将该应用部署到 Azure 应用服务。
 
@@ -39,14 +39,14 @@ ms.locfileid: "129533793"
 
     b. 选择“ASP.NET Web 应用程序(.NET Framework)”。
 
-    c. 选择“**下一步**”。
+    c. 选择“下一步”。
 
 3. 在“项目名称”框中，为项目提供一个名称。 在此示例中，我们使用了 **ContosoTeamStats**。
 
 4. 验证是否已选择“.NET Framework 4.6.1”或更高版本。
 
-5. 选择“创建”  。
-   
+5. 选择“创建”。
+
 6. 选择“MVC”作为项目类型。
 
 7. 对于“身份验证”设置，请确保指定“不进行身份验证”。  默认的“身份验证”设置可能因 Visual Studio 版本而异。 若要对其进行更改，请选择“更改身份验证”，然后选择“不进行身份验证”。 
@@ -61,7 +61,7 @@ ms.locfileid: "129533793"
 
 [!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
-#### <a name="to-edit-the-cachesecretsconfig-file"></a>编辑 *CacheSecrets.config* 文件的步骤
+### <a name="to-edit-the-cachesecretsconfig-file"></a>编辑 *CacheSecrets.config* 文件的步骤
 
 1. 在计算机上创建名为 *CacheSecrets.config* 的文件。将其放到不会连同示例应用程序的源代码一起签入的位置。 在本快速入门中，*CacheSecrets.config* 文件的路径为 *C:\AppSecrets\CacheSecrets.config*。
 
@@ -86,26 +86,27 @@ ms.locfileid: "129533793"
 
 在本部分，请对应用程序进行更新，使之支持一个新视图，该视图显示针对 Azure Redis 缓存执行的一项简单测试。
 
-* [使用缓存的应用设置更新 web.config 文件](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* 将应用程序配置为使用 StackExchange.Redis 客户端
-* 更新 HomeController 和布局
-* 添加新的 RedisCache 视图
+- [使用缓存的应用设置更新 web.config 文件](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
+- 将应用程序配置为使用 StackExchange.Redis 客户端
+- 更新 HomeController 和布局
+- 添加新的 RedisCache 视图
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>使用缓存的应用设置更新 web.config 文件
 
-在本地运行应用程序时，将使用 CacheSecrets.config 中的信息连接到 Azure Redis 缓存实例。 稍后请将此应用程序部署到 Azure。 到时，请在 Azure 中配置一项应用设置，供应用程序用来检索缓存连接信息而不是此文件。 
+在本地运行应用程序时，将使用 CacheSecrets.config 中的信息连接到 Azure Redis 缓存实例。 稍后请将此应用程序部署到 Azure。 到时，请在 Azure 中配置一项应用设置，供应用程序用来检索缓存连接信息而不是此文件。
 
 由于 *CacheSecrets.config* 文件未连同应用程序一起部署到 Azure，因此，只是在本地测试应用程序时才使用此文件。 请尽量安全地保管此信息，防止有人恶意访问缓存数据。
 
 #### <a name="to-update-the-webconfig-file"></a>更新 *web.config* 文件的步骤
+
 1. 在“解决方案资源管理器”中，双击“web.config”文件将其打开。
 
     ![Web.config](./media/cache-web-app-howto/cache-web-config.png)
 
 2. 在 *web.config* 文件中找到 `<appSetting>` 元素。 然后添加以下 `file` 属性。 如果使用了其他文件名或位置，请使用这些值来替换示例中显示的值。
 
-* 之前： `<appSettings>`
-* 之后：`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+- 之前： `<appSettings>`
+- 之后：`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中的标记。 如果找不到指定的文件，运行时会忽略文件属性。 应用程序的源代码中将不包括机密（连接到缓存的连接字符串）。 将 Web 应用部署到 Azure 时，不会部署 CacheSecrets.config 文件。
 
@@ -119,7 +120,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
     Install-Package StackExchange.Redis
     ```
 
-3. NuGet 程序包会为客户端应用程序下载并添加所需的程序集引用，以通过 StackExchange.Azure Redis 缓存客户端访问 Azure Redis 缓存。 如果更愿使用强命名版本的 `StackExchange.Redis` 客户端库，请安装 `StackExchange.Redis.StrongName` 包。
+3. NuGet 程序包会为客户端应用程序下载并添加所需的程序集引用，以通过 StackExchange.Azure Redis 缓存客户端访问 Azure Redis 缓存。 如果更愿使用强命名版本的 `StackExchange.Redis` 客户端库，请安装 `StackExchange.Redis` 包。
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>更新 HomeController 和布局的步骤
 
@@ -339,7 +340,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 4. 在 **解决方案资源管理器** 中，展开“视图” > “共享”文件夹。  然后打开 *_Layout.cshtml* 文件。
 
     将：
-    
+
     ```csharp
     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     ```
@@ -399,6 +400,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 默认情况下，项目配置为在 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 本地托管应用，以进行测试和调试。
 
 ### <a name="to-run-the-app-locally"></a>在本地运行应用的步骤
+
 1. 在 Visual Studio 中选择“调试” > “开始调试”，在本地生成并启动用于测试和调试的应用。 
 
 2. 在浏览器中，选择导航栏上的“Azure Redis 缓存测试”。
@@ -440,9 +442,9 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
 ### <a name="add-the-app-setting-for-the-cache"></a>为缓存添加应用设置
 
-发布新应用以后，请添加新应用设置。 此设置用于存储缓存连接信息。 
+发布新应用以后，请添加新应用设置。 此设置用于存储缓存连接信息。
 
-#### <a name="to-add-the-app-setting"></a>添加应用设置的步骤 
+#### <a name="to-add-the-app-setting"></a>添加应用设置的步骤
 
 1. 在 Azure 门户顶部的搜索栏中键入应用名称，查找刚创建的新应用。
 
@@ -464,7 +466,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
 如果想要继续学习下一篇教程，可以保留本快速入门中创建的资源，以便重复使用。
 
-如果已完成快速入门示例应用程序，可以删除本快速入门中创建的 Azure 资源，以免产生费用。 
+如果已完成快速入门示例应用程序，可以删除本快速入门中创建的 Azure 资源，以免产生费用。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 删除资源组时，包含在其中的所有资源会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从左侧逐个删除这些资源，而不是删除资源组。

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
-ms.openlocfilehash: 5d3513ea7c7e44afde70765bed668c93cf4096bb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dbeec528e22d3622b374d6cfee2d51a61b989aac
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582594"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661153"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 触发器和绑定概述
 
@@ -55,10 +55,10 @@ ms.locfileid: "128582594"
 
 ### <a name="cosmos-db-extension-4x-and-higher"></a>Cosmos DB 扩展 4.x 及更高版本
 
-新版本的 Cosmos DB 绑定扩展可用作[预览版 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB/4.0.0-preview1)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改你可绑定到的类型，并将 v2 SDK `Microsoft.Azure.DocumentDB` 中的类型替换为 v3 SDK [Microsoft.Azure.Cosmos](../cosmos-db/sql/sql-api-sdk-dotnet-standard.md) 中更新的类型。 通过 [SDK 迁移指南](../cosmos-db/sql/migrate-dotnet-v3.md)、[触发器](./functions-bindings-cosmosdb-v2-trigger.md)、[输入绑定](./functions-bindings-cosmosdb-v2-input.md)和[输出绑定](./functions-bindings-cosmosdb-v2-output.md)示例，详细了解这些新类型在哪些方面有变化以及如何迁移它们。
+新版本的 Cosmos DB 绑定扩展可用作[预览版 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB/4.0.0-preview1)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改你可绑定到的类型，并将 v2 SDK `Microsoft.Azure.DocumentDB` 中的类型替换为 v3 SDK [Microsoft.Azure.Cosmos](../cosmos-db/sql/sql-api-sdk-dotnet-standard.md) 中的较新类型。 通过 [SDK 迁移指南](../cosmos-db/sql/migrate-dotnet-v3.md)、[触发器](./functions-bindings-cosmosdb-v2-trigger.md)、[输入绑定](./functions-bindings-cosmosdb-v2-input.md)和[输出绑定](./functions-bindings-cosmosdb-v2-output.md)示例，详细了解这些新类型在哪些方面有变化以及如何迁移到这些新类型。
 
 > [!NOTE]
-> 目前，仅可在 Elastic Premium 计划中使用 4.x 预览扩展通过标识而非机密进行身份验证。 
+> 目前，仅可在弹性高级计划中使用 4.x 预览扩展通过标识而非机密进行身份验证。 
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -74,7 +74,7 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍 Azure Functions 版本 2.x 中可用于此绑定的全局配置设置。 若要详细了解 Azure Functions 版本 2.x 中的全局配置设置，请查看 [Azure Functions 版本 2.x 的 host.json 参考](functions-host-json.md)。
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 ```json
 {
@@ -94,7 +94,7 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 |属性  |默认 |说明 |
 |----------|--------|------------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
-|协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。 请参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)。 <br><br> 此设置在 [4.x 版扩展](#cosmos-db-extension-4x-and-higher)中不可用。 |
+|协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。 请参阅[此文](../cosmos-db/performance-tips.md#networking)，了解两种模式的说明。 <br><br> 此设置在 [4.x 版扩展](#cosmos-db-extension-4x-and-higher)中不可用。 |
 |leasePrefix|不适用|应用中所有函数要使用的租用前缀。 <br><br> 此设置在 [4.x 版扩展](#cosmos-db-extension-4x-and-higher)中不可用。|
 
 ## <a name="next-steps"></a>后续步骤

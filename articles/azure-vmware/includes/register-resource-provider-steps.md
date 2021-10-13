@@ -3,15 +3,15 @@ title: 注册 Azure VMware 解决方案资源提供程序
 description: 注册 Azure VMware 解决方案资源提供程序的步骤。
 ms.topic: include
 ms.date: 02/17/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: 8f1074a0fa703afb6878b708861a67b4bc6d4454
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a4f24e503c06f4f7650334f8c513466eb4dff546
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729067"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638785"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -20,7 +20,7 @@ ms.locfileid: "121729067"
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
  
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户菜单上，选择“所有服务”。
 

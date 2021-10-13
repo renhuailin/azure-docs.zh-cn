@@ -9,15 +9,15 @@ keywords: cognitive services, cognitive intelligence, cognitive solutions, ai se
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 04/16/2021
+ms.date: 10/08/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 4badad1f7e22fcb82e122a56e219fc61973634a2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2b5519d5a71f9a431bd5948283ea12ae79647196
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451257"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730026"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -66,7 +66,7 @@ Azure 认知服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[异常检测器](./anomaly-detector/index.yml "异常检测器") |使用异常检测器可以监视并检测时序数据中的异常。 请参阅[异常探测器快速入门](./anomaly-detector/quickstarts/client-libraries.md)，了解如何开始服务。|
+|[异常检测器](./anomaly-detector/index.yml "异常检测器") |使用异常检测器可以监视并检测时序数据中的异常。 请参阅[异常探测器快速入门](./anomaly-detector/quickstarts/client-libraries.md)，以开始使用该服务。|
 |[内容审查器](./content-moderator/overview.md "内容审查器")|内容审查器监视可能的冒犯性、不可取和危险内容。 请参阅[内容审查器快速入门](./content-moderator/client-libraries.md)，了解如何开始服务。|
 |[个性化体验创建服务](./personalizer/index.yml "个性化体验创建服务")|个性化体验创建服务可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。 请参阅[个性化体验创建服务快速入门](./personalizer/quickstart-personalizer-sdk.md)，了解如何开始服务。|
 
@@ -149,5 +149,4 @@ Azure 认知服务提供了分层的安全模型，包括通过 Azure Active Dir
 ## <a name="next-steps"></a>后续步骤
 
 * [创建认知服务帐户](cognitive-services-apis-create-account.md "创建认知服务帐户")
-* [认知服务文档中的新增内容](whats-new-docs.md "认知服务文档中的新增内容")
 * [计划和管理认知服务的成本](plan-manage-costs.md)

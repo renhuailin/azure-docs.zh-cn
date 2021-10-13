@@ -6,19 +6,19 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f793f96f55a258b2d7cb11f214984416557618df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b30fbbca1bfabfdbf9836e00ee2b2d585308774a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102452996"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611760"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 表存储输出绑定
 
 使用 Azure 表存储输出绑定读取将实体写入 Azure 存储帐户中的表。
 
 > [!NOTE]
-> 此输出绑定不支持更新现有实体。 请使用 [Azure 存储 SDK](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) 中的 `TableOperation.Replace` 操作来更新现有实体。
+> 此输出绑定不支持更新现有实体。 请使用 [Azure 存储 SDK](../cosmos-db/table/table-support.md) 中的 `TableOperation.Replace` 操作来更新现有实体。
 
 ## <a name="example"></a>示例
 

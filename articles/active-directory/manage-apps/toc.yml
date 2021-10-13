@@ -55,10 +55,10 @@
           href: my-apps-deployment-plan.md
     - name: 单一登录
       items:
-        - name: 部署规划
-          href: plan-sso-deployment.md
         - name: 什么是单一登录？
           href: what-is-single-sign-on.md
+        - name: 部署规划
+          href: plan-sso-deployment.md
     - name: 应用程序安全性
       items:
         - name: 应用访问选项
@@ -118,14 +118,14 @@
           href: prevent-domain-hints-with-home-realm-discovery.md
     - name: 迁移应用程序
       items:
-        - name: 迁移资源
-          href: migration-resources.md
         - name: 将 AD FS 应用迁移到 Azure
           href: migrate-adfs-apps-to-azure.md
         - name: 将应用程序身份验证迁移到 Azure Active Directory
           href: migrate-application-authentication-to-azure-active-directory.md
         - name: 使用 AD FS 应用程序活动报表
           href: migrate-adfs-application-activity.md
+        - name: 迁移资源
+          href: migration-resources.md
         - name: 将应用程序从 Okta 迁移到 Azure AD
           items:
             - name: 将应用程序从 Okta 迁移到 Azure AD

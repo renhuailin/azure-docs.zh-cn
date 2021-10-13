@@ -1,6 +1,7 @@
 ---
 title: 通过 Azure AD 合作伙伴集成实现安全的混合访问
 description: 帮助客户发现 SaaS 应用程序，将 SaaS 应用程序迁移到 Azure AD，以及将使用旧式身份验证方法的应用与 Azure AD 相连接。
+titleSuffix: Azure AD
 services: active-directory
 author: gargi-sinha
 manager: martinco
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 04/20/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d7463c6f21ce3973f92ea6261c026adaeaf003d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f700b4850f68f9938bc574b26172f49c1d7c0a73
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630331"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613807"
 ---
 # <a name="secure-hybrid-access-with-azure-active-directory-partner-integrations"></a>通过 Azure Active Directory 合作伙伴集成实现安全的混合访问
 

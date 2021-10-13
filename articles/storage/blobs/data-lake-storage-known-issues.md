@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4276311163134b428fe9d616bf1e6bc23fdedfaf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 11572f957fc2d305f5d6f17303bb8386345abc7b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638361"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714057"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -57,7 +57,6 @@ Azure Data Lake Storage Gen2 支持多个可用于引入数据、执行分析和
 - [获取页面范围](/rest/api/storageservices/get-page-ranges)
 - [增量复制 Blob](/rest/api/storageservices/incremental-copy-blob)
 - [从 URL 放置页](/rest/api/storageservices/put-page-from-url)
-- [放置块列表](/rest/api/storageservices/put-block-list)
 
 具有分层命名空间的帐户不支持非托管 VM 磁盘。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘置于未启用分层命名空间功能的存储帐户中。
 

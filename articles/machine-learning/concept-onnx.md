@@ -10,12 +10,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: e12b1761f8b6536895c1441667f77add002cd860
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 348589b133c126f7190955087cc6068e7af90062
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480005"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614035"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建和加速 ML 模型
 
@@ -79,7 +79,7 @@ results = session.run(["output1", "output2"], {
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-有关完整的 Python API 参考，请参阅 [ONNX 运行时参考文档](https://aka.ms/onnxruntime-python)。    
+有关完整的 Python API 参考，请参阅 [ONNX 运行时参考文档](https://onnxruntime.ai/docs/api/python-api.html)。  
 
 ## <a name="examples"></a>示例
 有关创建和部署 ONNX 模型的示例 Python 笔记本，请参阅 [how-to-use-azureml/deployment/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx)。

@@ -7,25 +7,22 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: ssambare
 author: shivanissambare
-ms.date: 05/25/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: c4a1b52f87f0c5053e357fcb67a2e90962dc37c1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b772db78ebdcbede50b3decc4edd235c336471a6
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433523"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713210"
 ---
-# <a name="extend-a-prebuilt-docker-image-preview"></a>扩展预生成的 Docker 映像（预览版）
+# <a name="extend-a-prebuilt-docker-image"></a>扩展预生成的 Docker 映像
 
 在某些情况下，Azure 机器学习的[用于模型推理的预生成 Docker 映像](concept-prebuilt-docker-images-inference.md)和[扩展性](./how-to-prebuilt-docker-images-inference-python-extensibility.md)解决方案可能不满足你的推理服务需求。
 
 在这种情况下，可以使用 Dockerfile 创建新映像，并将某个预生成的映像用作起点。 通过从现有的预生成 Docker 映像进行扩展，可以使用 Azure 机器学习网络堆栈和库，而无需从头开始创建映像。
-
-> [!IMPORTANT]
-> 将预生成的 Docker 映像与 Azure 机器学习配合使用的功能目前以预览版提供。 预览功能按原样提供，不保证支持或服务级别协议。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 **优点和缺点**
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 5dfd36891c52fb85ea7b7921f82059ed629158b8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4ffeba4fd01a88819857d137f79fef406b43b645
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835414"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658854"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-factset"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FactSet 的集成
 
@@ -78,9 +78,9 @@ ms.locfileid: "124835414"
 
 1. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
 
-    a. 在“标识符”文本框中键入 URL：`https://login.factset.com`
+    a. 在“标识符”文本框中键入 URL：`https://auth.factset.com`
 
-    b. 在“回复 URL”文本框中键入 URL：`https://login.factset.com/services/saml2/`
+    b. 在“回复 URL”文本框中键入 URL：`https://auth.factset.com/sp/ACS.saml2`
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该元数据文件并将其保存在计算机上     。
 

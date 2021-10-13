@@ -222,6 +222,8 @@
           href: authenticate-playbooks-to-sentinel.md
         - name: 在 playbook 中使用触发器和操作
           href: playbook-triggers-actions.md
+        - name: 从模板自定义 playbook
+          href: use-playbook-templates.md
     - name: 管理 Azure Sentinel
       items:
         - name: 适用于 MSSP 的 Azure Sentinel

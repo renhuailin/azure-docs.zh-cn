@@ -3,12 +3,12 @@ title: 在 Service Fabric 托管群集上配置和使用具有托管标识的应
 description: 了解如何在 Azure 资源管理器 (ARM) 模板部署的 Azure Service Fabric 托管群集上配置和使用具有托管标识的应用程序。
 ms.topic: how-to
 ms.date: 8/23/2021
-ms.openlocfilehash: 5007f17754572c03ff820ecda1bb09f6e8a8020e
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: e3fcae9a77a4fb559d8109dd2cdd1b2a9be77b73
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864747"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615251"
 ---
 # <a name="deploy-an-application-with-managed-identity-to-a-service-fabric-managed-cluster"></a>将具有托管标识的应用程序部署到 Service Fabric 托管群集
 
@@ -195,5 +195,5 @@ ms.locfileid: "122864747"
     这是一个等效映射，等效于将标识映射到服务（如上所述），但却是从服务定义的角度来看。 在这里，标识按其易记名称 (`WebAdmin`) 引用，如应用程序清单所述。
 
 ## <a name="next-steps"></a>后续步骤
+* [在 Service Fabric 托管的群集上为 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限](how-to-managed-cluster-grant-access-other-resources.md)
 * [从服务代码中利用 Service Fabric 应用程序的托管标识](how-to-managed-identity-service-fabric-app-code.md)
-* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](how-to-grant-access-other-resources.md)

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 08/25/2021
+ms.date: 09/26/2021
 ms.author: daberry
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 66907bcaef5818990d5a4e855f4cbc98624e2b90
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: b13ac1d3d72a28538a2bdbdc149017848105562c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081085"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619664"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成表 API 应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "129081085"
 
 ## <a name="sample-application"></a>示例应用程序
 
-本教程的示例应用程序可以从存储库 [https://github.com/Azure-Samples/msdocs-azure-data-tables-sdk-dotnet](https://github.com/Azure-Samples/msdocs-azure-data-tables-sdk-dotnet) 进行克隆或下载。  入门应用和完整应用都包含在示例存储库中。
+可以从存储库 [https://github.com/Azure-Samples/msdocs-azure-data-tables-sdk-dotnet](https://github.com/Azure-Samples/msdocs-azure-data-tables-sdk-dotnet) 克隆或下载本教程的示例应用程序。  入门应用和完整应用都包含在示例存储库中。
 
 ```bash
 git clone https://github.com/Azure-Samples/msdocs-azure-data-tables-sdk-dotnet
@@ -44,7 +44,7 @@ git clone https://github.com/Azure-Samples/msdocs-azure-data-tables-sdk-dotnet
 
 ## <a name="1---create-an-azure-cosmos-db-account"></a>1 - 创建 Azure Cosmos DB 帐户
 
-首先需要创建将包含在应用程序中使用的表的 Cosmos DB 表 API 帐户。  这可以使用 Azure 门户、Azure CLI 或 Azure PowerShell 来完成。
+首先需要创建将包含在应用程序中使用的表的 Cosmos DB 表 API 帐户。  可以使用 Azure 门户、Azure CLI 或 Azure PowerShell 执行此操作。
 
 ### <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
@@ -619,11 +619,11 @@ public void RemoveEntity(string partitionKey, string rowKey)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成示例应用程序后，应从 Azure 帐户中删除与本文相关的所有 Azure 资源。  可以通过删除资源组来实现此目的。
+完成示例应用程序后，应从你的 Azure 帐户中删除与本文相关的所有 Azure 资源。  可以通过删除资源组来进行这种清理。
 
 ### <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
-可以通过执行以下操作，使用 [Azure 门户](https://portal.azure.com/)删除资源组。
+可以在 [Azure 门户](https://portal.azure.com/)中执行以下操作来删除资源组。
 
 | 说明    | 屏幕快照 |
 |:----------------|-----------:|
@@ -633,7 +633,7 @@ public void RemoveEntity(string partitionKey, string rowKey)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 删除资源组，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令以及要删除的资源组的名称。  删除某个资源组还会删除该资源组中包含的所有 Azure 资源。
+若要使用 Azure CLI 删除资源组，请结合要删除的资源组的名称使用 [az group delete](/cli/azure/group#az_group_delete) 命令。  删除某个资源组也会删除该资源组中包含的所有 Azure 资源。
 
 ```azurecli
 az group delete --name $RESOURCE_GROUP_NAME
@@ -641,7 +641,7 @@ az group delete --name $RESOURCE_GROUP_NAME
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-若要使用 Azure PowerShell 删除资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令以及要删除的资源组的名称。  删除某个资源组还会删除该资源组中包含的所有 Azure 资源。
+若要使用 Azure PowerShell 删除资源组，请结合要删除的资源组的名称使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令。  删除某个资源组还会删除该资源组中包含的所有 Azure 资源。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name $resourceGroupName

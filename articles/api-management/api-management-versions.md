@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b055cb6771dc76557c61220a52120a5fbbd7940
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040373"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811378"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API 管理中的版本
 
@@ -70,7 +70,7 @@ API 的每个版本都作为其自身的 API 资源进行维护，并将资源�
 
 Azure 门户可为你创建版本集。 你可以在 Azure 门户中修改版本集的名称和说明。
 
-你可以使用 [Azure CLI](/cli/azure/apim/api/versionset)、[Azure PowerShell](/powershell/module/az.apimanagement/#api-management)、[资源管理器模板](/azure/templates/microsoft.apimanagement/service/apiversionsets)或 [Azure 资源管理器 API](/rest/api/apimanagement/2020-06-01-preview/apiversionset) 直接查看和管理版本集。
+你可以使用 [Azure CLI](/cli/azure/apim/api/versionset)、[Azure PowerShell](/powershell/module/az.apimanagement/#api-management)、[资源管理器模板](/azure/templates/microsoft.apimanagement/service/apiversionsets)或 [Azure 资源管理器 API](/rest/api/apimanagement/2020-12-01/api-version-set) 直接查看和管理版本集。
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>将非版本控制 API 迁移到版本控制 API
 

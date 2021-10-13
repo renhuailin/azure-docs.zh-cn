@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 7550fafa0a1fdf67baca4f9c777a4a064f522728
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: bf3aa8b675e242952f32678059b8b2c89d5b95e0
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122651677"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612420"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活服务器中的慢查询日志（预览版）
 
@@ -41,7 +41,7 @@ ms.locfileid: "122651677"
 
 ## <a name="access-slow-query-logs"></a>访问慢查询日志
 
-慢查询日志与 Azure Monitor 诊断设置相集成。 在 MySQL 灵活服务器上启用慢查询日志后，可将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解诊断设置，请参阅[诊断日志文档](../../azure-monitor/essentials/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户启用诊断设置，请参阅[慢查询日志门户文章](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)。
+慢查询日志与 Azure Monitor 诊断设置相集成。 在 MySQL 灵活服务器上启用慢查询日志后，可将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解诊断设置，请参阅[诊断日志文档](../../azure-monitor/essentials/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户启用诊断设置，请参阅[慢查询日志门户文章](tutorial-query-performance-insights.md#set-up-diagnostics)。
 
 下表描述了慢查询日志的输出。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
@@ -133,5 +133,5 @@ ms.locfileid: "122651677"
     
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[审核日志](concepts-audit-logs.md)
-- 通过 [Azure 门户](how-to-configure-slow-query-logs-portal.md)配置慢查询日志
+- [查询性能见解](tutorial-query-performance-insights.md)
 <!-- - [How to configure slow query logs from the Azure CLI](howto-configure-server-logs-in-cli.md). -->

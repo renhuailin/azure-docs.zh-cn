@@ -1,5 +1,6 @@
 ---
-title: 调试基于 SAML 的单一登录 - Azure Active Directory
+title: 调试基于 SAML 的单一登录
+titleSuffix: Azure AD
 description: 在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录。
 services: active-directory
 ms.author: davidmu
@@ -11,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: ergreenl
-ms.openlocfilehash: 99f31344b5bc5b8aad6e2455be5f76ce1d546532
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 52bb2f004aaf37803ca2e0b8e46630274daffb9a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754156"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620671"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 

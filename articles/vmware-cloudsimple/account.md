@@ -1,19 +1,19 @@
 ---
 title: 帐户管理 - Azure VMware Solution by CloudSimple 门户
 description: 介绍如何在 Azure VMware Solution by CloudSimple 门户中管理帐户
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4c26d5accce77ce6fd8c9b6c2b519b93f95013ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e93b445d54fd181aa173f8179911c69195659f4c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895166"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618302"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>在 Azure VMware Solution by CloudSimple 门户中管理帐户
 

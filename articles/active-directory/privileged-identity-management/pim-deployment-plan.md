@@ -3,23 +3,24 @@ title: 如何规划 Privileged Identity Management 部署？ - Azure AD | Micros
 description: 了解如何在 Azure AD 组织中部署 Privileged Identity Management (PIM)。
 services: active-directory
 documentationcenter: ''
-author: BarbaraSelden
-manager: martinco
+author: curtand
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: conceptual
-ms.date: 09/28/2021
-ms.author: baselden
+ms.date: 10/07/2021
+ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e00d6d6486ea5977a38e5e860f2bcd28dbe749fb
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 14109ab2eb32732d357c46182833b13bdd2c99c7
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230107"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668516"
 ---
 # <a name="plan-a-privileged-identity-management-deployment"></a>规划 Privileged Identity Management 部署
 

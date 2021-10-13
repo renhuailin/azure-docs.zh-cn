@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 7d3a108185c43be2f6de72466db10db5e2ec94f1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6e35b814b8b6fce5f223200f1774b7da2fee7a8c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077313"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660963"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 进行持续交付
 
@@ -244,8 +244,6 @@ Azure DevOps 中的模板是用于生成或部署应用的预定义任务组。
 创建新的发布管道时，请搜索 Azure Functions 发布模板。
 
 ![搜索 Azure Functions 发布模板](media/functions-how-to-azure-devops/release-template.png)
-
-发布模板不支持部署到部署槽位。
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>使用 Azure CLI 创建生成管道
 

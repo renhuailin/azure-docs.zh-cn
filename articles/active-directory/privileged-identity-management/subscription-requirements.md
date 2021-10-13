@@ -4,8 +4,8 @@ description: 介绍使用 Azure AD Privileged Identity Management (PIM) 所要�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: markwahl-msft
+manager: KarenH444
+editor: ''
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
 ms.service: active-directory
 ms.workload: identity
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 04/05/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5980e535de875e50c2b2c5a890a371183623dac0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a68764822e2e4bb4a169680ea80e214e5b07e55b
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835785"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667908"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>使用 Privileged Identity Management 所要满足的许可证要求
 
@@ -52,7 +53,7 @@ ms.locfileid: "124835785"
 
 下面是一些许可证场景示例，可帮助你确定必须拥有的许可证数量。
 
-| 方案 | 计算 | 许可证数量 |
+| 场景 | 计算 | 许可证数量 |
 | --- | --- | --- |
 | Woodgrove Bank 有用于不同部门的 10 个管理员和用于配置和管理 PIM 的 2 个全局管理员。 他们使五个管理员符合条件。 | 五个许可证用于符合条件的管理员 | 5 |
 | Graphic Design Institute 有 25 个管理员，其中 14 个是通过 PIM 管理的。 角色激活需要批准，并且组织中有三个不同的用户可以批准激活。 | 14 个许可证用于符合条件的角色 + 三个审批者 | 17 |

@@ -67,7 +67,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳做法
+    - name: 最佳实践
       items:
         - name: 概述
           href: best-practices.md
@@ -237,6 +237,8 @@
           href: load-balancer-standard.md
         - name: 使用静态 IP 地址和 DNS 标签
           href: static-ip.md
+        - name: 使用 HTTP 代理（预览）
+          href: http-proxy.md
         - name: 流入量
           items:
             - name: 创建基本控制器

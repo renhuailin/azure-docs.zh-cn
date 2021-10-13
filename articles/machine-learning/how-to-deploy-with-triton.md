@@ -9,12 +9,12 @@ ms.date: 05/17/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: b6bccf2dd24e557c2d5cdbb5fa6134f8c0dc904d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 64166d398fe488abf7e3820d780bd11699fbb70a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598130"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705370"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -198,15 +198,6 @@ az ml service delete -n triton-densenet-onnx
 [!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=delete-service)]
 
 ---
-
-## <a name="how-to-use-azure-machine-learning-triton-inference-server-container-image"></a>如何使用 Azure 机器学习 Triton 推理服务器容器映像
-
-了解如何通过新的 [CLI(v2)](/cli/azure/ml?view=azure-cli-latest&preserve-view=true) 使用 Azure 机器学习 Triton 推理服务器容器映像。 下面的示例使用[联机终结点和部署](concept-endpoints.md#what-are-online-endpoints-preview)概念。 
-
-1. [部署单个 Triton 模型](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-managed-online-endpoint.sh)。
-1. [部署多个 Triton 模型](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-multiple-models-online-endpoint.sh)。
-1. [部署 Triton 系综模型](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-ensemble-managed-online-endpoint.sh)。
-1. 查看 [Triton 示例](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/triton)。
 
 ## <a name="troubleshoot"></a>疑难解答
 

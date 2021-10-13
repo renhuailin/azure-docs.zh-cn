@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 9/3/2021
+ms.date: 10/07/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 933b66a3a8277763112c0a1838f13fef6dd81544
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 4c44c27c0d99c67c4102167f924a1dcb6f87e871
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452315"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669694"
 ---
 # <a name="create-an-access-review-of-azure-resource-and-azure-ad-roles-in-pim"></a>在 PIM 中创建对 Azure 资源和 Azure AD 角色的访问评审
 

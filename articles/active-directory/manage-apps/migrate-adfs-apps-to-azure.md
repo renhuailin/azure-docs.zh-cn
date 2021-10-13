@@ -1,6 +1,7 @@
 ---
 title: 将应用程序身份验证从 AD FS 移动到 Azure Active Directory
 description: 了解如何使用 Azure Active Directory 替换 Active Directory 联合身份验证服务 (AD FS)，让用户能够单一登录所有应用程序。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,14 +12,14 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 420b1a0042dff8b643dc98f3b3f92e33be8c2d75
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a9d6ca9769e19f300242a50c2016d1e942663567
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791757"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614776"
 ---
-# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
+# <a name="move-application-authentication-to-azure-active-directory"></a>将应用程序身份验证移到 Azure Active Directory
 
 [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) 提供一个通用标识平台，为你的用户、合作伙伴和客户提供单一标识，用于访问应用程序并从任何平台和设备进行协作。 Azure AD 具有[一整套标识管理功能](../fundamentals/active-directory-whatis.md)。 标准化对 Azure AD 的应用程序身份验证和授权可提供这些优势。
 
@@ -409,7 +410,7 @@ AD FS 2016 中的内置访问控制策略：
 
 根据你配置应用的方式，验证 SSO 是否正常工作。
 
-| 身份验证类型| 正在测试 |
+| 身份验证类型| 测试 |
 | :- | :- |
 | OAuth/OpenID Connect| 选择“企业应用程序”>“权限”，并确保你已在应用的用户设置中许可该应用程序。|
 | 基于 SAML 的 SSO | 使用“单一登录”下的[测试 SAML 设置](debug-saml-sso-issues.md)按钮。 |

@@ -98,6 +98,8 @@ items:
     items:
       - name: 模型概述
         href: concept-model-overview.md
+      - name: 表单识别器工作室 | 预览版
+        href: concept-form-recognizer-studio.md
       - name: 常规文档模型 | 预览版
         href: concept-general-document.md
       - name: 布局模型

@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 1e46bb0fad37e1a6da3676578f6cd92af912cb3f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 798f381ef067af174370fb21893c32386390449a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963889"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617276"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 
@@ -80,10 +80,6 @@ Get-EventLog application –source "Microsoft AAD Application Proxy Connector" �
 | 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保用户具有 Azure Active Directory Premium 许可证。 | 如果订阅方管理员未向用户显式分配 Premium 许可证，则用户在尝试访问你发布的应用时可能会收到此错误。 转到订阅方的 Active Directory“许可证”选项卡并确保向此用户或用户组分配 Premium 许可证。 |
 | 找不到具有指定主机名的服务器。 | 如果应用程序的自定义域未正确配置，则用户在尝试访问已发布的应用时可能会收到此错误。 请确保已上传域的证书，并按照[使用 Azure AD 应用程序代理中的自定义域](./application-proxy-configure-custom-domain.md)中的步骤正确配置 DNS 记录 |
 |禁止：无法访问该企业应用或无法对用户授权。 请确保用户已在本地 AD 中定义，并且有权访问本地 AD 中的应用。 | 这可能是访问授权信息的问题，请参阅[某些应用程序和 API 需要访问帐户对象上的授权信息]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information)。 简单来说，要解决此问题，应将应用代理连接器计算机帐户添加到“Windows 授权访问组”内置域组。 |
-
-## <a name="my-error-wasnt-listed-here"></a>此处未列出我遇到的错误
-
-如果遇到的 Azure AD 应用程序代理的错误或问题未在此故障排除指南中列出，请告知我们。 请将遇到的错误的详细信息通过电子邮件发送到我们的[反馈团队](mailto:aadapfeedback@microsoft.com)。
 
 ## <a name="see-also"></a>另请参阅
 * [启用 Azure Active Directory 的应用程序代理](application-proxy-add-on-premises-application.md)

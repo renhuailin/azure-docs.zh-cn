@@ -2,29 +2,17 @@
 title: 排查 OData 集合筛选器问题
 titleSuffix: Azure Cognitive Search
 description: 了解解决 Azure 认知搜索查询中的 OData 集合筛选器错误的方法。
-manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: bevloh
+ms.author: beloh
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/06/2021
+ms.openlocfilehash: da5769f2d9562676b9a3f1c0494395295737ae94
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88932060"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620177"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的 OData 集合筛选器问题
 

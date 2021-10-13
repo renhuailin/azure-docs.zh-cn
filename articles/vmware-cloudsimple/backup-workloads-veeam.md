@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 使用 Veeam 在私有云上备份工作负荷虚拟机
 description: 介绍如何使用 Veeam B&R 9.5 备份在基于 Azure 的 CloudSimple 私有云中运行的虚拟机
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d5037a6d236c0071c25e0e4f148c32f67b5e8438
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 449f000ad9921904f18f5481118330bc5e11d49f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113006277"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618017"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam BR 在 CloudSimple 私有云上备份工作负荷 VM
 
@@ -98,7 +98,7 @@ Veeam 解决方案要求你执行以下操作：
 8. [Veeam 控制台：配置 Veeam Backup & Recovery 软件](#veeam-console-install-veeam-backup-and-recovery-software)
 9. [CloudSimple 门户：设置 Veeam 访问权限和取消提升特权](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 
 在开始 Veeam 部署之前，需要满足以下要求：
 

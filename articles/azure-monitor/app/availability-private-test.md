@@ -3,12 +3,12 @@ title: 专用可用性测试 - Azure Monitor Application Insights
 description: 了解如何通过专用测试在防火墙后面运行的内部服务器上使用可用性测试。
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: dca75f6497567c5c6855fc1b5b12aa17a41b3dec
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 713a57db66042c562e212d65c6dd265c2aab47cd
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103642"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858436"
 ---
 # <a name="private-testing"></a>专用测试
 
@@ -32,7 +32,7 @@ ms.locfileid: "110103642"
 
         :::image type="content" source="media/availability-private-test/service-tag.png" alt-text="包含服务标记源的“添加入站安全规则”选项卡的屏幕截图。":::
 
-- 如果终结点托管在 Azure 外部，或者服务标记不适用于你的方案，则需要单独将 [Web 测试代理的 IP 地址](ip-addresses.md)加入允许列表。 可以直接从 PowerShell、Azure CLI 或使用[服务标记 API](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 从 REST 调用查询 IP 范围。还可以下载 [JSON 文件](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)以获取当前服务标记列表，其中包含 IP 地址详细信息。
+- 如果终结点托管在 Azure 外部，或者服务标记不适用于你的方案，则需要单独将 [Web 测试代理的 IP 地址](ip-addresses.md)加入允许列表。 可以直接从 PowerShell、Azure CLI 或使用[服务标记 API](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) 从 REST 调用查询 IP 范围。还可以下载 [JSON 文件](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)以获取当前服务标记列表，其中包含 IP 地址详细信息。
     1. 在网络安全组资源中，选择“设置”下的“入站安全规则”，然后选择“添加”。
     1. 接下来，选择“IP 地址”作为源，然后在源 IP 地址/CIRD 范围的逗号分隔列表中添加你的 IP 地址。
 

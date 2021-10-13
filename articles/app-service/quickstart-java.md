@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 2fb7a97f1efb50f76b91cbc49a189deda7cde9c8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5be4133f23764ab87e8c1fca3b176d680e1eeae1
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357115"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855605"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
 
@@ -123,7 +123,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
     PricingTier : P1v2
     OS : Windows
     Java : Java 8
-    WebContainer : Java SE
+    Web server stack : Java SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -156,7 +156,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
     PricingTier : P1v2
     OS : Windows
     Java : Java 8
-    WebContainer : tomcat 8.5
+    Web server stack : Tomcat 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -183,7 +183,7 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
 1. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
 1. 当系统提示 OS 选项时，按 Enter 键选择 Linux 。
 2. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
-3. 当系统提示“定价层”选项时，通过输入 `10` 选择“P1v2” 。
+3. 当系统提示“定价层”选项时，通过输入 `9` 选择“P1v2” 。
 4. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
@@ -194,7 +194,7 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
     Region : centralus
     PricingTier : P1v2
     OS : Linux
-    Web server stack : JAVA SE
+    Web server stack : Java SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -213,7 +213,7 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
 1. 当系统提示 OS 选项时，按 Enter 键选择 Linux 。
 1. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
 1. 当系统提示“webcontainer”选项时，请通过输入 `3` 选择“Tomcat 8.5” 。
-1. 当系统提示“定价层”选项时，通过输入 `10` 选择“P1v2” 。
+1. 当系统提示“定价层”选项时，通过输入 `9` 选择“P1v2” 。
 1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
@@ -224,7 +224,7 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
     Region : centralus
     PricingTier : P1v2
     OS : Linux
-    Web server stack : TOMCAT 8.5
+    Web server stack : Tomcat 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -277,12 +277,12 @@ JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的�
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<subscriptionId>` | false | 指定订阅 ID。 | 0.1.0+
-`<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
-`<appName>` | true | Web 应用的名称。 | 0.1.0+
-`<region>` | true | 指定将托管 Web 应用的区域；默认值为 centralus。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
-`<pricingTier>` | true | Web 应用的定价层。 生产工作负荷的默认值为 P1v2，而 B2 是建议用于 Java 开发/测试的最低值 。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
-`<runtime>` | true | 运行时环境配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
-`<deployment>` | true | 部署配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
+`<resourceGroup>` | 是 | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
+`<appName>` | 是 | Web 应用的名称。 | 0.1.0+
+`<region>` | false | 指定将托管 Web 应用的区域；默认值为 centralus。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
+`<pricingTier>` | false | Web 应用的定价层。 生产工作负荷的默认值为 P1v2，而 B2 是建议用于 Java 开发/测试的最低值 。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
+`<runtime>` | false | 运行时环境配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
+`<deployment>` | false | 部署配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
 
 请注意 `<appName>` 和 `<resourceGroup>` 的值（在演示中相应地为 `helloworld-1590394316693` 和 `helloworld-1590394316693-rg`），后面会使用它们。
 

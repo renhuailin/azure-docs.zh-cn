@@ -13,12 +13,12 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84b3cbecc6dbde98693f1fb5dafd6b791c876a70
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 05633ab0a46f3aa88ab3e520b493d40527717872
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353142"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809318"
 ---
 # <a name="tutorial-manage-the-lifecycle-of-your-group-based-licenses-in-azure-ad"></a>教程：在 Azure AD 中管理基于组的许可证的生命周期
  
@@ -55,7 +55,7 @@ ms.locfileid: "129353142"
 
 1. 选择“下一步: 资源角色”转到“资源角色”选项卡 。
 
-2. 在此选项卡上，选择要包含在访问包中的资源和资源角色。 在此场景中，选择“组和团队”并搜索分配了 [Office 许可证](/active-directory/enterprise-users/licensing-groups-assign.md)的组。
+2. 在此选项卡上，选择要包含在访问包中的资源和资源角色。 在此场景中，选择“组和团队”并搜索分配了 [Office 许可证](/azure/active-directory/enterprise-users/licensing-groups-assign)的组。
 
 3. 在“角色”列表中，选择“成员” 。
 
@@ -141,4 +141,4 @@ ms.locfileid: "129353142"
 
 了解如何创建访问包以管理对其他类型的资源（例如应用程序和站点）的访问： 
 
-[在 Azure AD 权利管理中管理对资源的访问](/active-directory/governance/entitlement-management-access-package-first.md)
+[在 Azure AD 权利管理中管理对资源的访问](/azure/active-directory/governance/entitlement-management-access-package-first)

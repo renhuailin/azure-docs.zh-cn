@@ -13,12 +13,12 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e0a0d9bf53192249b50f03df508e86cc88b91e
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 0a68a523a2a5ce14c9fccd2750eb9523b4c5281d
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129155960"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807217"
 ---
 # <a name="tutorial---onboard-external-users-to-azure-ad-through-an-approval-process"></a>教程 - 通过审批流程将外部用户加入 Azure AD
 
@@ -130,4 +130,4 @@ ms.locfileid: "129155960"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何创建访问包以管理对其他类型的资源（例如应用程序和站点）的访问。 [Tutorial:管理对 Azure AD 权利管理中的资源的访问](/active-directory/governance/entitlement-management-access-package-first.md)
+了解如何创建访问包以管理对其他类型的资源（例如应用程序和站点）的访问。 [Tutorial:管理对 Azure AD 权利管理中的资源的访问](/azure/active-directory/governance/entitlement-management-access-package-first)

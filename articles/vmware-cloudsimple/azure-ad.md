@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 在私有云上使用 Azure AD 作为标识源
 description: 介绍如何将 Azure AD 作为标识提供者添加到 CloudSimple 私有云上，以便对从 Azure 访问 CloudSimple 的用户进行身份验证
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 20e854b38aa45e410c5f6ddae51ee4d1bf0b088e
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 01123699f5d7557a9e485a08c62c0808c028bb1e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108182563"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618264"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作为 CloudSimple 私有云上 vCenter 的标识提供者
 
@@ -87,12 +87,12 @@ Azure AD 是 Microsoft 提供的多租户、基于云的目录和标识管理服
     |------------|-----------------|
     | **Name** | 标识源的名称。 |
     | **用户的基准 DN** | 用户的基准可分辨名称。  对于 Azure AD，请使用：`OU=AADDC Users,DC=<domain>,DC=<domain suffix>` 示例：`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`。|
-    | **域名** | 域的 FQDN，例如 example.com。 不要在此文本框中提供 IP 地址。 |
+    | **域名** | 域的 FQDN，例如 example.com。 请勿在此文本框中提供 IP 地址。 |
     | **域别名** | *（可选）* 域 NetBIOS 名称。 如果使用的是 SSPI 身份验证，请将 Active Directory 域的 NetBIOS 名称添加为标识源的别名。 |
     | **组的基准 DN** | 组的基准可分辨名称。 对于 Azure AD，请使用：`OU=AADDC Users,DC=<domain>,DC=<domain suffix>` 示例：`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
     | **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式 `ldaps://hostname:port`。 对于 LDAPS 连接，此端口通常为 636。 <br><br>在主或辅助 LDAP URL 中使用 `ldaps://` 时，需要可为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
     | **辅助服务器 URL** | 用于故障转移的辅助域控制器 LDAP 服务器的地址。 |
-    | **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，则在往 URL 文本框中键入 `ldaps://` 后，系统将显示“选择证书”按钮。 不需要辅助 URL。 |
+    | **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，则在向 URL 文本框中键入 `ldaps://` 后，系统将显示“选择证书”按钮。 不需要辅助 URL。 |
     | **用户名** | 域中用户的 ID，这些用户至少具有对用户和组基准 DN 的只读访问权限。 |
     | **密码** | 通过用户名指定的用户的密码。 |
 

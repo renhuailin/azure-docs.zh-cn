@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 08b730b0196aa5b78ebafc0208accd51e544e8d7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 08782f57ecf82924f48e25a1e8f1a62a1a94264b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787483"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613826"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-active-directory-application-proxy"></a>重定向使用 Azure Active Directory 应用程序代理发布的应用的硬编码链接
 
@@ -142,10 +142,6 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 4. 单击“保存”应用所做的更改。
 
 现在，当用户访问此应用程序时，代理将自动扫描租户上通过应用程序代理发布的内部 URL。
-
-## <a name="send-feedback"></a>发送反馈
-
-我们希望获得你的帮助，使此功能适用于所有应用。 在 HTML 和 CSS 中搜索 30 多个标记。 如果有尚未进行转换的生成链接示例，请向[应用程序代理反馈](mailto:aadapfeedback@microsoft.com)发送一个代码片段。 
 
 ## <a name="next-steps"></a>后续步骤
 [通过 Azure AD 应用程序代理使用自定义域](application-proxy-configure-custom-domain.md)，以便具有相同的内部和外部 URL

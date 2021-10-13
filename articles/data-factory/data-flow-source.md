@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/09/2021
-ms.openlocfilehash: a95bfe8ed978a0d67381d0be1f15038c847ab36b
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.date: 10/11/2021
+ms.openlocfilehash: 1c37fdc73b226c003208e02b019ddf4e23b53374
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061212"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129812320"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>映射数据流中的源转换
 
@@ -67,6 +67,7 @@ ms.locfileid: "129061212"
 | [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 | [SQL Server](connector-sql-server.md) | | ✓/✓ |
+| [REST](connector-rest.md#mapping-data-flow-properties) | | ✓/✓ |
 
 特定于这些连接器的设置位于“源选项”选项卡上。有关这些设置的信息和数据流脚本示例位于连接器文档中。
 

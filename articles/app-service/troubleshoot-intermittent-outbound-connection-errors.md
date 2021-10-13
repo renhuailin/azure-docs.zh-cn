@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: dc6a56cff3492011a4717d867f08a580cf5a198c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fe746ed4fe8c24afa0667d8c2559d9c46fee5211
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738692"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660070"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误
 
@@ -43,7 +43,7 @@ ms.locfileid: "121738692"
 * 连接池：利用连接池，可以避免为对同一地址和端口的调用而打开新的网络连接。
 * 服务终结点：使用服务终结点保护的服务没有 SNAT 端口限制。
 * 专用终结点：使用专用终结点保护的服务没有 SNAT 端口限制。
-* NAT 网关：使用 NAT 网关时，你会得到 64,000 个出站 SNAT 端口，资源可以使用这些端口发送流量。
+* NAT 网关：使用 NAT 网关时，你会得到 64,000 个出站 SNAT 端口，通过该网关发送流量的资源可以使用这些端口。
 
 避免 SNAT 端口问题意味着需要避免对同一主机和端口反复创建新连接。 连接池是解决该问题更简单明了的方法之一。
 
@@ -165,14 +165,6 @@ TCP 连接和 SNAT 端口并不直接相关。 任何应用服务站点的“诊
  
 如果 SNAT 端口耗尽，导致 WebJobs 无法连接到 SQL 数据库，则不会有任何指标显示每个 Web 应用程序进程打开的连接数。 若要查找有问题的 Web 作业，请将多个 Web 作业移到另一个应用服务计划，以确定情况是否有所改善，或者某个计划中仍有问题。 重复该过程，直到找出有问题的 Web 作业。
 
-### <a name="using-snat-ports-sooner"></a>更快地使用 SNAT 端口
-
-无法更改任何 Azure 设置来更快地释放已用的 SNAT 端口，因为所有 SNAT 端口是根据下面的条件释放的，且该行为是有意设计的。
- 
-* 如果服务器或客户端发送 FINACK，则会在 240 秒后[释放 SNAT 端口](../load-balancer/load-balancer-outbound-connections.md)。
-* 如果出现 RST，则会在 15 秒后释放 SNAT 端口。
-* 如果已达到空闲超时，则会释放端口。
- 
 ## <a name="additional-information"></a>其他信息
 
 * [包含应用服务的 SNAT](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)

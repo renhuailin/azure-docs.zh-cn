@@ -3,12 +3,12 @@ title: 基于工作区的 Azure Monitor Application Insights 资源架构
 description: 了解适用于 Azure Monitor Application Insights 基于工作区的资源的新表结构和架构。
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 040f53836466dec446da6fcd312910ca7ad600e4
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575608"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615498"
 ---
 # <a name="workspace-based-resource-changes"></a>基于工作区的资源更改
 
@@ -28,7 +28,7 @@ ms.locfileid: "100575608"
 | pageViews | AppPageViews| 每个网站的浏览情况数据，以及浏览器信息。 |
 | performanceCounters | AppPerformanceCounters | 支持应用程序的计算资源的性能度量，例如 Windows 性能计数器。 |
 | 请求 | AppRequests | 应用程序收到的请求。 例如，为 Web 应用接收到的每个 HTTP 请求记录一条单独的请求记录。  |
-| exceptions | AppSystemEvents | 应用程序运行时引发的异常捕获服务器端和客户端（浏览器）异常。 |
+| exceptions | AppExceptions | 应用程序运行时引发的异常捕获服务器端和客户端（浏览器）异常。 |
 | traces | AppTraces | 通过 TrackTrace () 记录的应用程序代码/日志记录框架发出的详细日志（跟踪）。 |
 
 ## <a name="table-schemas"></a>表架构

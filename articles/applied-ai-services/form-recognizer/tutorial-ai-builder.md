@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 11/23/2020
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: ea5e49cf6a61ad89d182637c11b969ee80c754e6
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: b541c19f3a3bd129e81723df7b1b58ba75e4a540
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326793"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714438"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>教程：使用 AI Builder 创建表单处理应用
 
@@ -57,7 +57,7 @@ ms.locfileid: "122326793"
 > - 超过 50 页的 PDF 文档
 > - 可填写的 PDF
 >
-> 有关输入文档要求的详细信息，请参阅[输入要求](./overview.md#input-requirements)。
+> 有关输入文档要求的详细信息，请参阅[输入要求](concept-model-overview.md#input-requirements)。
 
 ### <a name="upload-your-documents"></a>上传文档
 
@@ -78,7 +78,7 @@ ms.locfileid: "122326793"
 完成分析后，选择缩略图以打开字段选择体验。
 
 > [!IMPORTANT]
-> 如果分析失败，则可能是由于 AI Builder 无法在文档中检测到结构化文本。 验证所更新的文档是否符合[输入要求](./overview.md#input-requirements)。
+> 如果分析失败，则可能是由于 AI Builder 无法在文档中检测到结构化文本。 验证所更新的文档是否符合[输入要求](concept-model-overview.md#input-requirements)。
 
 ## <a name="select-your-form-fields"></a>选择表单字段
 

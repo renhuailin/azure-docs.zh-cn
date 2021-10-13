@@ -3,15 +3,15 @@ title: 创建 Azure VMware 解决方案私有云
 description: 使用 Azure 门户创建 Azure VMware 解决方案私有云的步骤。
 ms.topic: include
 ms.date: 08/05/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: beae1ba1fe5cb37f9c96d411ca9ee0e8cddfe1d3
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: bf607b4db54b9ec3c4eb481cf9917873be4411ad
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122261430"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638714"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -33,7 +33,7 @@ ms.locfileid: "122261430"
    >[!TIP]
    >你已在此快速入门的[规划阶段](../plan-private-cloud-deployment.md)收集了此信息。
 
-   | 字段   | 值  |
+   | 字段   | Value  |
    | ---| --- |
    | **订阅** | 选择打算用于部署的订阅。 一个 Azure 订阅中的所有资源在一起计费。|
    | **资源组** | 选择私有云的资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 或者，可以为私有云创建新的资源组。 |

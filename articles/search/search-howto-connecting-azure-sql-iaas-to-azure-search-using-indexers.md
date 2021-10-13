@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 4aa60a5433f13ca6b942204bbdb8eb4425d0ddf7
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 11dbe95a63ce22602985cb7ff9b4db11f5e8f8dc
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983205"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856745"
 ---
 # <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Azure 虚拟机上到 SQL Server 的索引器连接
 
@@ -83,7 +83,7 @@ IP 寻址会产生一些挑战，如果了解问题和潜在解决方法，则�
 
 通过对搜索服务的 FQDN（例如 `<your-search-service-name>.search.windows.net`）进行 ping 操作，可找到 IP 地址。 虽然搜索服务 IP 地址可能会发生更改，但不太可能更改。 此 IP 地址在服务生存期内通常是静态的。
 
-可以使用[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 找到 `AzureCognitiveSearch` [服务标记](../virtual-network/service-tags-overview.md#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
+可以使用[可下载的 JSON 文件](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) 找到 `AzureCognitiveSearch` [服务标记](../virtual-network/service-tags-overview.md#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
 
 ### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>包括 Azure 认知搜索门户 IP 地址
 

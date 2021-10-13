@@ -4,13 +4,13 @@ description: 介绍如何定义和使用模块，以及如何使用模块范围�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/14/2021
-ms.openlocfilehash: 53bc8d80f1954694b8bdb262cdec25bb4506b221
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/05/2021
+ms.openlocfilehash: bd5069db6a2ad9cb14f5f0b3bc28612afa519727
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672830"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619588"
 ---
 # <a name="use-bicep-modules"></a>使用 Bicep 模块
 
@@ -124,7 +124,7 @@ module dnsZone 'dnszones.bicep' = if (deployZone) {
 
 ## <a name="configure-module-scopes"></a>配置模块作用域
 
-声明模块时，可以为模块设置一个与包含 Bicep 文件的范围不同的范围。 使用 `scope` 属性设置模块的范围。 未提供 scope 属性时，将在父级的目标范围部署模块。
+声明模块时，可以为模块设置一个与 Bicep 包含文件的范围不同的范围。 使用 `scope` 属性设置模块的范围。 未提供 scope 属性时，将在父级的目标范围部署模块。
 
 以下 Bicep 文件显示了如何创建资源组，及如何将模块部署到资源组：
 
@@ -139,7 +139,7 @@ param namePrefix string
 param location string = deployment().location
 
 var resourceGroupName = '${namePrefix}rg'
-resource myResourceGroup 'Microsoft.Resources/resourceGroups@2020-01-01' = {
+resource myResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: resourceGroupName
   location: location
   scope: subscription()
@@ -189,7 +189,7 @@ module storage2 'storageAccount.bicep' = {
 }
 ```
 
-scope 属性必须设置为有效的范围对象。 如果 Bicep 文件部署资源组、订阅或管理组，可以将模块的范围设置为该资源的符号名称。 或者，可使用 scope 函数获取有效的范围。 
+scope 属性必须设置为有效的范围对象。 如果 Bicep 文件部署资源组、订阅或管理组，可以将模块的范围设置为该资源的符号名称。 或者，可使用 scope 函数获取有效的范围。
 
 这些函数包括：
 
@@ -198,7 +198,7 @@ scope 属性必须设置为有效的范围对象。 如果 Bicep 文件部署资
 - [managementGroup](bicep-functions-scope.md#managementgroup)
 - [tenant](bicep-functions-scope.md#tenant)
 
-下面的示例使用 `managementGroup` 函数设置范围。
+下面的示例使用 `managementGroup` 函数来设置范围。
 
 ```bicep
 param managementGroupName string

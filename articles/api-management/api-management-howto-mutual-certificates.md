@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 689dbc56eb5f587e124a645895723436a2a7ccd8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 72b1680af5bb20d772d93d7743224170fde437fd
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569581"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740277"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
 API 管理允许你使用客户端证书确保对 API 后端服务进行安全访问。 本指南介绍如何使用 Azure 门户在 Azure API 管理服务实例中管理证书。 它还说明了如何配置 API 以使用证书来访问后端服务。
 
-你还可以使用 [管理 REST API](/rest/api/apimanagement/2020-06-01-preview/certificate)管理 API 管理证书。
+你还可以使用 [管理 REST API](/rest/api/apimanagement/2020-12-01/certificate)管理 API 管理证书。
 
 ## <a name="certificate-options"></a>证书选项
 

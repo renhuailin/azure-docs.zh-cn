@@ -1,19 +1,19 @@
 ---
 title: 收缩 Azure VMware Solution by CloudSimple 私有云
 description: 了解如何通过删除现有 vSphere 群集中的节点或删除整个群集来在 CloudSimple 中动态收缩私有云。
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 07/01/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cad88e2b151efb17516fb22a1132fe7d7825454e
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: d6608ccc3cbeecc691663a7d10df6535e44c19ac
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181087"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615992"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>收缩 CloudSimple 私有云
 

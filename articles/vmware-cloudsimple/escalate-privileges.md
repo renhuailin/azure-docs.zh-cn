@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 提升 CloudSimple 权限
 description: 介绍如何提升 CloudSimple 权限以在私有云 vCenter 中执行管理功能
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 38c4e9e9128cc9b68a06582863e7026e63fba6d5
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: c0fa83dbec3c5d3ea7547d5b04ee395e09a96164
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176875"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618622"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>提升 CloudSimple 权限以在私有云 vCenter 中执行管理功能
 

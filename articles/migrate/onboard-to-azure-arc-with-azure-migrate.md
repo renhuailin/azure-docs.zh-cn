@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/27/2021
-ms.openlocfilehash: 675c90218f456fc0f238fcf3b1fb93d2e5a7bc44
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 83bee24ca8da03f6a6896bb47cc298860f941f4c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296305"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711973"
 ---
 # <a name="onboard-on-premises-servers-in-vmware-virtual-environment-to-azure-arc"></a>将 VMware 虚拟环境中的本地服务器加入 Azure Arc   
 

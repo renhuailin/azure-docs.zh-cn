@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: fb68ea362c5b91e5c60578f63c752d1982495efb
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: ee4acc6e8e7abf8ece1c6808a810b022745fb66a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538073"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612325"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>启用适用于 Azure Cache for Redis 的区域冗余
 本文将介绍如何使用 Azure 门户配置区域冗余 Azure 缓存实例。
@@ -74,7 +74,7 @@ Azure Cache for Redis 标准层、高级层和企业层通过将每个缓存托�
 
 ### <a name="why-cant-i-enable-zone-redundancy-when-creating-a-premium-cache"></a>为什么在创建高级缓存时无法启用区域冗余？
 
-区域冗余只在具有可用性区域的 Azure 区域中可用。 请参阅[具有可用性区域的 Azure 区域](../availability-zones/az-region.md#azure-services-supporting-availability-zones)，以获取最新列表。
+区域冗余只在具有可用性区域的 Azure 区域中可用。 请参阅[具有可用性区域的 Azure 区域](../availability-zones/az-region.md#azure-regions-with-availability-zones)，以获取最新列表。
 
 ### <a name="why-cant-i-select-all-three-zones-during-cache-create"></a>为什么在缓存创建过程中无法选择所有三个区域？
 

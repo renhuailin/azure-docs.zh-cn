@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 私有云权限模型
 description: 介绍 CloudSimple 私有云权限模型、分组和类别
-author: Ajayan1008
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1c8cfeda008955006f2fbad1df58c8047bd36541
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c49dcb4158785170d67742df5c8c797b139edbe5
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97898039"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620291"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter 的 CloudSimple 私有云权限模型
 
@@ -32,7 +32,7 @@ CloudSimple 保留对私有云环境的完全管理访问权限。 为每位 Clo
 
 ### <a name="pre-created-groups"></a>预先创建的组
 
-| 组名 | 用途 | 角色 |
+| 组名 | 目的 | 角色 |
 | -------- | ------- | ------ |
 | Cloud-Owner-Group | 此组的成员具有对私有云 vCenter 的管理权限 | [Cloud-Owner-Role](#cloud-owner-role) |
 | Cloud-Global-Cluster-Admin-Group | 此组的成员具有对私有云 vCenter 群集的管理权限 | [Cloud-Cluster-Admin-Role](#cloud-cluster-admin-role) |
@@ -67,7 +67,7 @@ CloudSimple 保留对私有云环境的完全管理访问权限。 为每位 Clo
 | **主机 > 库存** | 修改群集 |
 | **vSphere 标记** | 分配或取消分配 vSphere 标记 <br> 创建 vSphere 标记 <br> 创建 vSphere 标记类别 <br> 删除 vSphere 标记 <br> 删除 vSphere 标记类别 <br> 编辑 vSphere 标记 <br> 编辑 vSphere 标记类别 <br> 修改类别的 UsedBy 字段 <br> 修改标记的 UsedBy 字段 |
 | **Network** | Assign network <br> 配置 <br> 移动网络 <br> 删除 |
-| **“性能”** | 修改间隔 |
+| **性能** | 修改间隔 |
 | **主机配置文件** | 查看 |
 | **资源** | 应用建议 <br> 将 vApp 分配到资源池 <br> Assign virtual machine to resource pool <br> 创建资源池 <br> 迁移已关闭的虚拟机 <br> 迁移已启动的虚拟机 <br> 修改资源池 <br> 移动资源池 <br> 查询 vMotion <br> 删除资源池 <br> 重命名资源池 |
 | **计划任务** | 创建任务 <br> 修改任务 <br> 删除任务 <br> 运行任务 |

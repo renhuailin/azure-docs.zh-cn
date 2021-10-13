@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 5ad3560cccb0cd87191f103d435776ce401beb90
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04bd20e233bac44194c66e772db19f022458383d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746622"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615517"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>迁移概述：SQL Server 到 Azure SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -186,7 +186,6 @@ Azure SQL 数据库不会直接支持 SQL 代理作业，需要将其部署到[�
 |[使用 PowerShell 批量创建数据库](https://www.microsoft.com/download/details.aspx?id=103107)|可以使用一组三个 PowerShell 脚本创建资源组 (create_rg.ps1)、[Azure 中的逻辑服务器](../../database/logical-servers.md) (create_sqlserver.ps1) 和 SQL 数据库 (create_sqldb.ps1)。 这些脚本包括循环功能，因此你可以根据需要循环访问和创建任意数量的服务器和数据库。|
 |[使用 MSSQL-Scripter 和 PowerShell 批量部署架构](https://www.microsoft.com/download/details.aspx?id=103032)|此资产在 Azure 中创建一个资源组、一个或多个[逻辑服务器](../../database/logical-servers.md)来承载 Azure SQL 数据库，从一个本地 SQL Server 实例（或多个 SQL Server 2005+ 实例）导出每个架构，并将这些架构导入 Azure SQL 数据库。|
 |[将 SQL Server 代理作业转换为弹性数据库作业](https://www.microsoft.com/download/details.aspx?id=103123)|此脚本将源 SQL Server 代理作业迁移到弹性数据库作业。|
-|[从 Azure SQL 数据库发送电子邮件](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/AF%20SendMail)|此解决方案可作为 SendMail 功能的替代方案，在本地 SQL Server 中可用。 该解决方案使用 Azure Functions 和 SendGrid 服务从 Azure SQL 数据库发送电子邮件。|
 |[用于将本地 SQL Server 登录名移动到 Azure SQL 数据库的实用工具](https://www.microsoft.com/download/details.aspx?id=103111)|PowerShell 脚本可创建 T-SQL 命令脚本以重新创建登录名，并从本地 SQL Server 选择数据库用户到 Azure SQL 数据库。 该工具允许将 Windows Server Active Directory 帐户自动映射到 Azure AD 帐户，还可以选择性地迁移 SQL Server 本机登录名。|
 |[使用 Logman 自动执行 Perfmon 数据收集](https://www.microsoft.com/download/details.aspx?id=103114)|可以使用 Logman 工具收集 Perfmon 数据（以帮助你了解基准性能）和获取迁移目标建议。 该工具使用 logman.exe 创建命令，该命令将创建、启动、停止和删除在远程 SQL Server 实例上设置的性能计数器。|
 

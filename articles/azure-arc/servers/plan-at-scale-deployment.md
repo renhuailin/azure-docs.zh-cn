@@ -3,12 +3,12 @@ title: 如何规划和部署已启用 Azure Arc 的服务器
 description: 了解如何在已启用 Azure Arc 的服务器中启用大量计算机，以简化 Azure 中不可或缺的安全、管理和监视功能的配置。
 ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: a7494bb45eeed9392a44aef400483cd9cfcfb091
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0a8bd9187d3d8d2394fe340eb1822f45e17a50b7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788926"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708969"
 ---
 # <a name="plan-and-deploy-azure-arc-enabled-servers"></a>规划和部署已启用 Azure Arc 的服务器
 
@@ -85,7 +85,7 @@ ms.locfileid: "124788926"
 
 |任务 |详细信息 |持续时间 |
 |-----|-------|---------|
-|创建资源运行状况警报 |如果某台服务器有 15 分钟以上停止向 Azure 发送检测信号，则可能表示该服务器处于脱机状态、网络连接已被阻止，或者代理未运行。 制定一个计划来规定如何应对和调查这些事件，并使用[资源运行状况警报](../..//service-health/resource-health-alert-monitor-guide.md)以便在这些事件开始发生时收到通知。<br><br> 配置警报时请指定以下设置：<br> 资源类型 = 已启用 Azure Arc 的服务器 <br> **当前资源状态** = **不可用**<br> **以前的资源状态** = **可用** | 一小时 |
+|创建资源运行状况警报 |如果某台服务器有 15 分钟以上停止向 Azure 发送检测信号，则可能表示该服务器处于脱机状态、网络连接已被阻止，或者代理未运行。 制定一个计划来规定如何应对和调查这些事件，并使用[资源运行状况警报](../..//service-health/resource-health-alert-monitor-guide.md)以便在这些事件开始发生时收到通知。<br><br> 配置警报时请指定以下设置：<br> **资源类型** = **已启用 Azure Arc 的服务器**<br> **当前资源状态** = **不可用**<br> **以前的资源状态** = **可用** | 一小时 |
 |创建 Azure 顾问警报 | 为获得最佳体验和最新的安全修复和 bug 修复，我们建议将已启用 Azure Arc 的服务器代理保持使用最新版本。 将使用 [Azure 顾问警报](../../advisor/advisor-alerts-portal.md)来识别已过时的代理。<br><br> 配置警报时请指定以下设置：<br> **建议类型** = **升级到最新版本的 Azure Connected Machine Agent** | 一小时 |
 |在订阅或资源组范围[分配 Azure 策略](../../governance/policy/assign-policy-portal.md) |在订阅或资源组范围分配“启用用于 VM 的 Azure Monitor”[策略](../../azure-monitor/vm/vminsights-enable-policy.md)（以及符合需求的其他策略）。 借助 Azure Policy，你可以分配策略定义，以便在整个环境中为 VM 见解安装所需的代理。| 多种多样 |
 |[为已启用 Azure Arc 的服务器启用更新管理](../../automation/update-management/enable-from-automation-account.md) |在 Azure 自动化中配置更新管理，以管理注册到了已启用 Azure Arc 的服务器的 Windows 和 Linux 虚拟机的操作系统更新。 | 15 分钟 |

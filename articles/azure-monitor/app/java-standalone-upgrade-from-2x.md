@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 5f6b5eb64de1e904805446f731158443205d6b68
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cbfdc8c7e07a68335083c529e545143a513b1808
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082410"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858265"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>从 Application Insights Java 2.x SDK 升级
 
@@ -115,31 +115,6 @@ Application Insights Java 3.x 中的操作名称已更改，通常在 Applicatio
 }
 ```
 
-## <a name="dependency-names"></a>依赖项名称
-
-Application Insights Java 3.x 中的依赖项名称也已更改，通常它们同样在 Application Insights 门户 U/X 中提供更好的聚合视图。
-
-同样地，对于某些应用程序，你可能仍然更喜欢由以前的依赖项名称提供的 U/X 中的聚合视图；这样的话，你可使用与上述类似技术来复制以前的行为。
-
-## <a name="operation-name-on-dependencies"></a>依赖项的操作名称
-
-以前在 Application Insights Java 2.x SDK 中，请求遥测中的操作名称也设置在依赖项遥测上。
-Application Insights Java 3.x 不再在依赖项遥测上填充操作名称。
-若要查看作为依赖项遥测父级的请求的操作名称，则可以编写日志 (Kusto) 查询来将依赖项表联接到请求表，例如：
-
-```
-let start = datetime('...');
-let end = datetime('...');
-dependencies
-| where timestamp between (start .. end)
-| project timestamp, type, name, operation_Id
-| join (requests
-    | where timestamp between (start .. end)
-    | project operation_Name, operation_Id)
-    on $left.operation_Id == $right.operation_Id
-| summarize count() by operation_Name, type, name
-```
-
 ## <a name="2x-sdk-logging-appenders"></a>2.x SDK 日志记录追加器
 
 Application Insights Java 3.x [自动收集日志记录](./java-standalone-config.md#auto-collected-logging)，无需配置任何日志记录追加器。
@@ -148,7 +123,7 @@ Application Insights Java 3.x [自动收集日志记录](./java-standalone-confi
 ## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot Starter
 
 没有 Application Insights Java 3.x Spring Boot Starter。
-无论你是否使用 Spring Boot，3.x 安装和配置都会遵循相同的[简单步骤](./java-in-process-agent.md#quickstart)。
+无论你是否使用 Spring Boot，3.x 安装和配置都会遵循相同的[简单步骤](./java-in-process-agent.md#get-started)。
 
 当从 Application Insights Java 2.x SDK Spring Boot Starter 升级时，请注意，云角色名称将不再默认为 `spring.application.name`。
 请参阅 [3.x 配置文档](./java-standalone-config.md#cloud-role-name)，了解如何通过 json config 或环境变量来设置 3.x 中的云角色名称。

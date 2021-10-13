@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: f254cc5b8835bb0430d4c2d3ecd0bd2f7d9fa013
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 115baa8d181bd7ebef125e7a666216efe50680d2
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701175"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740777"
 ---
 # <a name="configure-same-zone-high-availability-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>使用 Azure CLI 在 Azure Database for MySQL 灵活服务器（预览版）中配置相同区域高可用性
 
-此示例 CLI 脚本在 Azure Database for MySQL 灵活服务器中配置和管理[相同区域高可用性](../concepts-high-availability.md)。 只能在创建灵活服务器期间启用相同区域高可用性，但可以随时禁用。 目前，仅“常规用途”和“内存优化”定价层支持相同区域高可用性。
+此示例 CLI 脚本在 Azure Database for MySQL 灵活服务器中配置和管理[相同区域高可用性](../concepts-high-availability.md)。 目前，仅“常规用途”和“内存优化”定价层支持相同区域高可用性。
 
 
 [!INCLUDE [flexible-server-free-trial-note](../../includes/flexible-server-free-trial-note.md)]
@@ -28,13 +28,13 @@ ms.locfileid: "128701175"
 
 ## <a name="sample-script"></a>示例脚本
 
-使用变量的值编辑脚本中突出显示的行。
+使用你的变量值来编辑脚本中突出显示的行。
 
 [!code-azurecli-interactive[main](../../../../cli_scripts/mysql/flexible-server/high-availability/same-zone-ha.sh?highlight=7,10-11 "Configure Same-Zone High Availability.")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
-运行示例脚本后，可使用下面的代码片段来清理资源。
+在运行了该示例脚本后，可以使用以下代码片段来清除资源。
 
 [!code-azurecli-interactive[main](../../../../cli_scripts/mysql/flexible-server/high-availability/clean-up-resources.sh?highlight=4 "Clean up resources.")]
 
