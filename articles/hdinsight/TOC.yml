@@ -695,6 +695,8 @@
           items:
             - name: 容错域不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
+            - name: 完整数据磁盘
+              href: ./kafka/kafka-troubleshoot-full-disk.md
 - name: Apache HBase
   items:
     - name: 概述
