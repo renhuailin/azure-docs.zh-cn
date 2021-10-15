@@ -3,12 +3,12 @@ title: 适用于 Application Insights 的 Azure AD 身份验证（预览）
 description: 了解如何启用 Azure Active Directory (Azure AD) 身份验证，以确保在 Application Insights 资源中仅引入经过身份验证的遥测。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 573a7807f6561dfb326bfa247b12ccafa0857152
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: b38e3498ae61c9639c71eb358a4089dc59243616
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359872"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857704"
 ---
 # <a name="azure-ad-authentication-for-application-insights-preview"></a>适用于 Application Insights 的 Azure AD 身份验证（预览）
 Application Insights 现在支持 Azure Active Directory (Azure AD) 身份验证。 通过使用 Azure AD，可以确保在 Application Insights 资源中仅引入经过身份验证的遥测。 
@@ -135,7 +135,7 @@ appInsights.defaultClient.aadTokenCredential = credential;
 > [!NOTE]
 > 从 [Java 3.2.0-BETA](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0-BETA) 开始，包含对 Application Insights Java 代理中 Azure AD 的支持。 
 
-1. [使用 Java 代理配置应用程序。](java-in-process-agent.md#quickstart)
+1. [使用 Java 代理配置应用程序。](java-in-process-agent.md#get-started)
 
     > [!IMPORTANT]
     > 使用 Java 代理配置应用时，请使用包含“IngestionEndpoint”的完整连接字符串。 例如，`InstrumentationKey=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX;IngestionEndpoint=https://XXXX.applicationinsights.azure.com/`。

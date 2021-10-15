@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 10/01/2021
 ms.custom: template-how-to
 ms.reviewer: wiassaf
-ms.openlocfilehash: 1fa0394f3e711ec172f5a3ad32288f63bcf55dce
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 6cf1564ccc62d6429da56bc8116b124b44b58653
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390413"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728392"
 ---
 # <a name="troubleshooting-a-misclassified-workload-in-azure-synapse-analytics"></a>排查 Azure Synapse Analytics 中错误分类的工作负载的问题
 
@@ -102,7 +102,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','st
 SELECT * FROM sys.dm_pdw_exec_requests;
 ```
 
-有关详细信息，请参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-catalog-views/sys-dm-pdw-exec-requests-transact-sql)。
+有关详细信息，请参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)。
 
 ## <a name="common-scenarios-of-misclassified-workloads"></a>错误分类的工作负载的常见情况
 

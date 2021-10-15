@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/28/2021
+ms.date: 10/11/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8492b35fae2d2c2d716330002d5f889ec693f8c5
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 55a640be9eacf2feaf3852cf14f3181b924373b6
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353374"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856691"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -27,6 +27,11 @@ ms.locfileid: "129353374"
 > 本文中的信息属于初步信息，随时可能更改。 遇到了问题或者找不到所需的内容？ 请创建 GitHub 问题，或查看[面向开发人员的支持和帮助选项](./developer-support-help-options.md)来了解其他可以获得帮助和支持的方法。
 >
 > 本文档是为开发者和管理员提供的指导，但决不应当被客户自己使用。 错误代码可能会随时更改，以便提供更详细的错误消息，以在开发者构建应用程序时为其提供帮助。 依赖于文本或错误代码的应用程序随着时间的推移将会损坏。
+
+## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
+错误代码和消息可能会更改。  有关最新信息，请查看 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
+
+例如，如果收到错误代码“AADSTS50058”，则在 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 中搜索“50058”。  还可以通过将错误代码编号添加到 URL [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) 来直接链接到特定错误。
 
 ## <a name="handling-error-codes-in-your-application"></a>处理应用程序中的错误代码
 
@@ -70,11 +75,6 @@ ms.locfileid: "129353374"
 | `invalid_resource` | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。  在开发过程中，这通常表示错误地设置了测试租户，或者在所请求范围的名称中有拼写错误。 |
 | `interaction_required` | 请求需要用户交互。 例如，需要额外的身份验证步骤。 | 请以交互方式用同一资源重试请求，以便用户能够完成所需的任何质询。  |
 | `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
-
-## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
-错误代码和消息可能会更改。  有关最新信息，请查看 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
-
-例如，如果收到错误代码“AADSTS50058”，则在 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 中搜索“50058”。  还可以通过将错误代码编号添加到 URL [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) 来直接链接到特定错误。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 

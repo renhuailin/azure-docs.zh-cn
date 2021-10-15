@@ -9,12 +9,12 @@ ms.reviewer: eustacea
 ms.date: 09/17/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: fedb06a23a71dbe30954154daa6d314267268551
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: d07f0073141632477a64b2c1cc4bc3a9b8e8d458
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659671"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233497"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全管理器
 
@@ -269,11 +269,11 @@ IoT Edge 安全管理器旨在标识并隔离保护 Azure IoT Edge 平台的安�
 
 了解如何使用软件或虚拟 TPM 通过受信任的平台模块 (TPM) 强化 Azure IoT 安全管理器：  
 
-[使用 Linux 虚拟机上的虚拟 TPM](how-to-provision-devices-at-scale-linux-tpm.md) 创建和预配 IoT Edge 设备。
+[使用 Linux 虚拟机上的虚拟 TPM](how-to-auto-provision-simulated-device-linux.md) 创建和预配 IoT Edge 设备。
 
 <!--1.1-->
 :::moniker range="iotedge-2018-06"
-在 Windows 上使用模拟的 TPM 创建和预配 [IoT Edge 设备](how-to-provision-devices-at-scale-windows-tpm.md)。
+在 Windows 上使用模拟的 TPM 创建和预配 [IoT Edge 设备](how-to-auto-provision-simulated-device-windows.md)。
 :::moniker-end
 
 ## <a name="next-steps"></a>后续步骤
