@@ -5,16 +5,16 @@ description: 了解如何从 Azure 机器学习标记项目中导出数据标签
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.custom: data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: e46d088180666523c27d86a98d740fa49f5214f2
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 2af916866aa78a081f8769322a80f4d846c89d3e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112460479"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424078"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -22,7 +22,7 @@ ms.locfileid: "112460479"
 
 ## <a name="what-are-datasets-with-labels"></a>什么是带标签的数据集 
 
-我们将带标签的 Azure 机器学习数据集称为带标签的数据集。 这些特定数据集类型的带标签数据集只能创建为 Azure 机器学习数据标记项目的输出。 可以使用[这些步骤](how-to-create-labeling-projects.md)创建数据标记项目。 机器学习支持用于图像分类的数据标记项目（无论是多标签的还是多类的），以及带边界框的对象标识。
+我们将带标签的 Azure 机器学习数据集称为带标签的数据集。 这些特定数据集类型的带标签数据集只能创建为 Azure 机器学习数据标记项目的输出。 为[图像标记](how-to-create-image-labeling-projects.md)或[文本标记](how-to-create-text-labeling-projects.md)创建数据标记项目。 机器学习支持用于图像分类的数据标记项目（无论是多标签的还是多类的），以及带边界框的对象标识。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "112460479"
 * [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
     * 安装 [azure-contrib-dataset](/python/api/azureml-contrib-dataset/) 包
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
-* 对 Azure 机器学习数据标记项目的访问权限。 如果没有标记项目，请使用[这些步骤](how-to-create-labeling-projects.md)创建一个。
+* 对 Azure 机器学习数据标记项目的访问权限。 如果没有标记项目，请首先为[图像标记](how-to-create-image-labeling-projects.md)或[文本标记](how-to-create-text-labeling-projects.md)创建一个。
 
 ## <a name="export-data-labels"></a>导出数据标签 
 

@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 8210efe9c17a6edcb18fe114b7f6165d8cbd8360
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6b5bec7006fa7bea7c887286d9cdc1a7b51a3d5c
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281206"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389848"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>经过验证的本地实时传送视频流编码器
 
@@ -28,6 +28,7 @@ ms.locfileid: "106281206"
 
   > [!TIP]
   > 实时传送视频流时，使用直通方法是最经济的。
+  > 服务支持基本和标准直通模式，具体取决于引入要求。 基本直通是最经济的方法，但功能受到限制。 
  
 * 本地实时编码器采用以下格式之一将单比特率流发送至能够使用媒体服务执行实时编码的直播活动：RTMP 或平滑流式处理（分片 MP4）。 然后，直播活动将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。
 

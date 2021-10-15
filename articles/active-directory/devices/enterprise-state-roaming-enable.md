@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f960e737f4623e90761dce17b6ad5b13ee47ee88
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8ed5291ee08d990d563d1ac3e2c3648d6a975280
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624589"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458503"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 
@@ -58,13 +58,8 @@ ms.locfileid: "128624589"
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
 1. 选择“Azure Active Directory” > “用户” > “所有用户”  。
 1. 选择用户，再选择“设备”。
-1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。
-  
-   ![设备同步数据设置图像](./media/enterprise-state-roaming-enable/sync-status.png)
-  
-1. 如果存在同步此用户的数据的设备，此处会显示该设备。
-  
-   ![设备同步纵栏表数据图像](./media/enterprise-state-roaming-enable/device-status-row.png)
+1. 选择“查看设备同步设置和应用数据”显示同步状态。
+1. 显示为用户同步的设备，并可以下载。
 
 ## <a name="data-retention"></a>数据保留
 

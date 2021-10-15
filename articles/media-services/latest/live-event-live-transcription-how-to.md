@@ -22,7 +22,7 @@ Azure 媒体服务提供了不同协议的视频、音频和文本。 如果使�
 - 西欧
 - 北欧
 - 美国东部
-- Central US
+- 美国中部
 - 美国中南部
 - 美国西部 2
 - 巴西南部
@@ -47,7 +47,7 @@ Azure 媒体服务提供了不同协议的视频、音频和文本。 如果使�
 | 法语（法国） | fr-FR |
 | 意大利语（意大利） | it-IT |
 | 荷兰语（荷兰） | nl-NL |
-| 葡萄牙语(巴西) | pt-BR |
+| 葡萄牙语（巴西） | pt-BR |
 | 葡萄牙语(葡萄牙) | pt-PT |
 | 瑞典语（瑞典） | sv-SE |
 
@@ -59,7 +59,7 @@ Azure 媒体服务提供了不同协议的视频、音频和文本。 如果使�
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-该操作具有以下主体（其中以 RTMP 作为引入协议创建了直通实时事件）。 注意增加了 transcriptions 属性。
+该操作具有以下主体（其中以 RTMP 作为引入协议创建了基本直通实时事件）。 注意增加了 transcriptions 属性。
 
 ```
 {
@@ -93,7 +93,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
       }
     },
     "encoding": {
-      "encodingType": "None"
+      "encodingType": "PassthroughBasic"
     },
     "transcriptions": [
       {

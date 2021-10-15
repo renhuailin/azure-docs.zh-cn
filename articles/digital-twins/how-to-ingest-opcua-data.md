@@ -7,12 +7,12 @@ ms.author: dahellem
 ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b93e9a16e7ea083f5117ebff4883a50db28e134a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: be6d4dd328d3b8cd0f02bede7bcba7b6a4e32ae9
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224592"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534531"
 ---
 # <a name="ingesting-opc-ua-data-with-azure-digital-twins"></a>使用 Azure 数字孪生引入 OPC UA 数据
 

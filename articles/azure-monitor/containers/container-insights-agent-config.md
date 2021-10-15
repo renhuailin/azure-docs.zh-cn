@@ -3,12 +3,12 @@ title: 配置容器见解代理数据收集 | Microsoft Docs
 description: 本主题介绍如何配置容器见解代理，以控制 stdout/stderr 和环境变量日志收集。
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: bd818d03d74042e7f58cbc8889ce862279706bec
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c24b87cb35339cb0e400878579b35d5f6b963718
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741324"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388050"
 ---
 # <a name="configure-agent-data-collection-for-container-insights"></a>为容器见解配置代理数据收集
 
@@ -41,7 +41,7 @@ ms.locfileid: "121741324"
 | `[log_collection_settings.stderr] exclude_namespaces =` | String | 逗号分隔的数组 | 不收集其 stderr 日志的 Kubernetes 命名空间数组。<br> 仅当<br> `log_collection_settings.stdout.enabled` 设置为 `true`。<br> 如果未在 ConfigMap 中指定，默认值为<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` | 布尔 | true 或 false | 此设置控制<br> 群集中所有 Pod/节点的环境变量集合，<br> 默认设置为 `enabled = true`（如果未在<br> ConfigMaps 中指定）。<br> 如果环境变量集合已全局启用，则可对特定容器禁用它，<br> 方法是将环境变量<br> `AZMON_COLLECT_ENV` 设置为 False，可以在 Dockerfile 设置中这样做，也可以在 [Pod 的配置文件](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)（位于 **env:** 部分下）中这样做。<br> 如果环境变量集合已全局禁用，则不能对特定容器启用集合（也就是说，可以在容器级别应用的唯一重写是在集合已全局启用的情况下禁用该集合）。 |
 | `[log_collection_settings.enrich_container_logs] enabled =` | 布尔 | true 或 false | 此设置控制容器日志扩充，以填充写入群集中所有容器日志的<br> ContainerLog 表的每条日志记录的 Name 和 Image 属性值。<br> 此设置在 ConfigMap 中未指定时，默认为 `enabled = false`。 |
-| `[log_collection_settings.collect_all_kube_events]` | 布尔 | true 或 false | 此设置支持收集所有类型的 Kube 事件。<br> 默认情况下，不收集 Normal 类型的 Kube 事件。 将此设置设为 `true` 时，不再筛选 Normal 事件，并将收集所有事件。<br> 默认情况下，这设置为 `false`。 |
+| `[log_collection_settings.collect_all_kube_events] enabled =` | 布尔 | true 或 false | 此设置支持收集所有类型的 Kube 事件。<br> 默认情况下，不收集 Normal 类型的 Kube 事件。 将此设置设为 `true` 时，不再筛选 Normal 事件，并将收集所有事件。<br> 此设置在 ConfigMap 中未指定时，默认为 `enabled = false` |
 
 ### <a name="metric-collection-settings"></a>指标收集设置
 

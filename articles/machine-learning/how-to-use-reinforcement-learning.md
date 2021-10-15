@@ -1,5 +1,5 @@
 ---
-title: 训练和部署强化学习模型（预览版）。
+title: 训练和部署强化学习模型（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习强化学习（预览版）来训练 RL 代理玩 Pong 游戏。
 services: machine-learning
@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 84fbea3d7d38e16a2069c40a459d5f86e7412a09
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ca8f0349692b8a72d8a8b5953723249934a6f672
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739036"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428609"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 
@@ -214,6 +214,7 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>创建强化学习估算器
+
 使用 [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator) 将训练的作业提交到 Azure 机器学习。
 
 Azure 机器学习使用估算器类来封装运行配置信息。 这样，你便可以指定脚本执行的配置方式。 

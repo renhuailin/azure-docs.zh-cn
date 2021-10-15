@@ -2,13 +2,13 @@
 title: 使用 VMware Site Recovery Manager 部署灾难恢复
 description: 在 Azure VMware 解决方案私有云中使用 VMware Site Recovery Manager (SRM) 部署灾难恢复。
 ms.topic: how-to
-ms.date: 08/18/2021
-ms.openlocfilehash: d9a224f0aba33420359d50441fe44e6602df7fb0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 2cefe85f71c770ce29a14fb4aad7a91efd91651c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128668916"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430091"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 部署灾难恢复
 
@@ -59,6 +59,8 @@ SRM 可帮助你在受保护的 vCenter 服务器站点和恢复 vCenter 服务�
 :::image type="content" source="media/vmware-srm-vsphere-replication/site-recovery-manager-workflow.png" alt-text="显示 Azure VMware 解决方案上 VMware Site Recovery Manager 的部署工作流的图表。" border="false":::
 
 ## <a name="prerequisites"></a>先决条件
+
+请确保已显式为远程用户提供了远程 vCenter 中的 VRM 管理员和 SRM 管理员角色。
 
 ### <a name="scenario-on-premises-to-azure-vmware-solution"></a>方案：本地到 Azure VMware 解决方案 
 

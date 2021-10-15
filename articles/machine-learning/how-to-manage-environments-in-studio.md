@@ -1,5 +1,5 @@
 ---
-title: 在工作室（预览版）中管理环境
+title: 管理工作室中的环境
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习工作室中创建和管理环境。
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: sagopal
 ms.date: 5/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 8015152a7888df86128aaff31d4b8c6dd9179cf2
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: afa72add9b4fe6014b03331e8ee520669edb29b1
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112460587"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426049"
 ---
-# <a name="manage-software-environments-in-azure-machine-learning-studio-preview"></a>在 Azure 机器学习工作室（预览版）中管理软件环境
+# <a name="manage-software-environments-in-azure-machine-learning-studio"></a>管理 Azure 机器学习工作室中的软件环境
 
 本文介绍如何在 Azure 机器学习工作室中创建和管理 Azure 机器学习[环境](/python/api/azureml-core/azureml.core.environment.environment)。 使用环境可以在项目软件依赖项演化时对其进行跟踪和再现。
 
@@ -37,7 +37,7 @@ ms.locfileid: "112460587"
 
 ## <a name="browse-curated-environments"></a>浏览特选环境
 
-特选环境包含 Python 包的集合，默认情况下可以在你的工作区中使用。 这些环境由缓存的 Docker 映像支持，降低了运行准备成本。 
+特选环境包含 Python 包的集合，默认情况下可以在你的工作区中使用。 这些环境由缓存的 Docker 图像支持，降低了运行准备成本并支持训练和推理方案。 
 
 单击环境以查看其内容的详细信息。 有关详细信息，请参阅 [Azure 机器学习特选环境](resource-curated-environments.md)。 
 

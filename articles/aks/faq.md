@@ -4,12 +4,12 @@ description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的
 ms.topic: conceptual
 ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 612493d55adddea82e3e8d1e3d169eee963bfda2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdccee2795a4e1b2c967c53dc17d15a6520f4402
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724730"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546513"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -287,10 +287,9 @@ spec:
 
 已启用 FIPS 的节点目前在基于 Linux 的节点池上提供预览版。 有关更多详细信息，请参阅[添加已启用 FIPS 的节点池（预览版）](use-multiple-node-pools.md#add-a-fips-enabled-node-pool-preview)。
 
-## <a name="can-i-configure-nsgs-with-aks"></a>能否使用 AKS 配置 NSG？
+## <a name="can-i-configure-nsgs-with-aks"></a>是否可以使用 AKS 配置 NSG？
 
-如果提供自己的子网，则必须管理与该子网关联的网络安全组 (NSG)。 AKS 将仅在 NIC 级别修改 NSG，而不会修改与该子网关联的任何 NSG。 如果使用的是 CNI，还必须确保 NSG 中的安全规则允许节点和 Pod CIDR 范围之间的流量。 如果使用的是 kubenet，还必须确保 NSG 中的安全规则允许节点和 Pod CIDR 之间的流量。
-
+AKS 不会将网络安全组 (NSG) 应用于其子网，也不会修改与该子网相关的任何 NSG。 AKS 只会修改 NIC 级别的 NSG。 如果要使用 CNI，还必须确保 NSG 中的安全规则允许节点和 pod CIDR 范围之间的通信。 如果要使用 kubenet，还必须确保 NSG 中的安全规则允许节点和 pod CIDR 之间的通信。 有关详细信息，请参阅[网络安全组](concepts-network.md#network-security-groups)。
 
 <!-- LINKS - internal -->
 

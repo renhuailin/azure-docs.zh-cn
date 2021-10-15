@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 08/16/2021
 ms.author: memildin
-ms.openlocfilehash: 529a88c2af5c47cb329006b58f2439ab95f40ba2
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: a57a94b8ee0bb91deb0b15a3da0265af15dbc3a3
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228746"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536295"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>通过安全中心的集成式 EDR 解决方案 Microsoft Defender for Endpoint 来保护终结点
 
@@ -37,7 +37,7 @@ Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全
 |----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 发布状态：                               | • 与适用于 Windows 的 Defender for Endpoint 集成 - 正式发布 (GA)<br> • 与适用于 Linux 的 Defender for Endpoint 集成 - 预览版                                                                                                                                     |
 | 定价：                                     | 需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)                                                                                                                                                                                                           |
-| 支持的环境：                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Windows/Linux 的 Azure Arc 计算机<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Linux 的 Azure VM（[支持的版本](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux)）<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Windows Server 2019, 2016, 2012 R2, 2008 R2 SP1、[Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)、[Windows 10 企业版多会话](../virtual-desktop/windows-10-multisession-faq.yml)（前身为“企业版虚拟桌面”(EVD)）的 Azure VM<br>:::image type="icon" source="./media/icons/no-icon.png"::: 运行 Windows 10（除 EVD 或 WVD 以外）的 Azure VM           |
+| 支持的环境：                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Windows/Linux 的 Azure Arc 计算机<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Linux 的 Azure VM（[支持的版本](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux)）<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Windows Server 2022、2019、2016、2012 R2、2008 R2 SP1、[Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)、[Windows 10 企业版多会话](../virtual-desktop/windows-10-multisession-faq.yml)（前身为“企业版虚拟桌面”(EVD)）的 Azure VM<br>:::image type="icon" source="./media/icons/no-icon.png"::: 运行 Windows 10（除 EVD 或 WVD 以外）的 Azure VM           |
 | 所需角色和权限：              | • 启用/禁用集成：“安全管理员”或“所有者” <br>• 查看安全中心内的 Defender for Endpoint 警报：“安全读取者”、“读取者”、“资源组参与者”、“资源组所有者”、“安全管理员”、“订阅所有者”或“订阅参与者”       |
 | 云：                                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 政府<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure 中国世纪互联                                                         |
 |                                              |                                                                                                                                                                                                                                                                                       |
@@ -78,7 +78,7 @@ Microsoft Defender for Endpoint 提供：
 
     - **Azure 虚拟机（Windows 或 Linux）** ：请按照配置设备代理和 Internet 连接设置：[Windows](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) 或 [Linux](/microsoft-365/security/defender-endpoint/linux-static-proxy-configuration) 中所述配置网络设置。
 
-    - **本地计算机**：请将目标计算机连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述。
+    - **本地计算机**：请将目标计算机连接到 Azure Arc，如 [将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述。
 
 1. 启用适用于服务器的 Azure Defender。 请参阅[快速入门：启用 Azure Defender](enable-azure-defender.md)。
 
@@ -258,14 +258,14 @@ Microsoft Defender for Endpoint 提供：
 
 ### <a name="whats-this-mdewindows--mdelinux-extension-running-on-my-machine"></a>计算机上运行的这个“MDE.Windows”/“MDE.Linux”扩展是什么？
 
-过去，Microsoft Defender for Endpoint 由 Log Analytics 代理预配。 [扩展支持以包括 Windows Server 2019](release-notes.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) 和 Linux 时，我们还添加了一个扩展来执行自动载入。 
+过去，Microsoft Defender for Endpoint 由 Log Analytics 代理预配。 [扩展支持以包括 Windows Server 2019](release-notes-archive.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) 和 Linux 时，我们还添加了一个扩展来执行自动载入。 
 
 安全中心会自动将扩展部署到运行以下内容的计算机：
 
 - Windows Server 2019。
 - Windows 10 虚拟桌面 (WVD)。
 - 其他版本的 Windows Server，前提是安全中心无法识别操作系统版本（例如，使用自定义 VM 映像时）。 在这种情况下，Microsoft Defender for Endpoint 仍由 Log Analytics 代理预配。
-- Linux
+- Linux。
 
 > [!IMPORTANT]
 > 如果你删除 MDE。Windows 扩展，系统不会删除 Microsoft Defender for Endpoint。 有关登出，请参阅[登出 Windows 服务器](/microsoft-365/security/defender-endpoint/configure-server-endpoints)。

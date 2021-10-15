@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d26459080e57f8998b40c181306ca10508ad4749
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: cde36aaa5946519533d4e68eb31da48af08be689
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099220"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546285"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -28,7 +28,7 @@ ms.locfileid: "123099220"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * 分配给 AKS 节点池的子网不能是[委托子网](../virtual-network/subnet-delegation-overview.md)。
-* 如果提供自己的子网，则必须管理与该子网关联的网络安全组 (NSG)。 AKS 不会修改与该子网关联的任何 NSG。 还必须确保 NSG 中的安全规则允许节点和 Pod CIDR 范围之间的流量。
+* AKS 不会将网络安全组 (NSG) 应用于其子网，也不会修改与该子网相关的任何 NSG。 如果提供自己的子网并添加与该子网相关的 NSG，则必须确保 NSG 中的安全规则允许节点和 Pod CIDR 范围之间的流量。 有关详细信息，请参阅[网络安全组][aks-network-nsg]。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
 
@@ -358,6 +358,7 @@ az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newnodepoo
 [aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object
 [aks-network-concepts]: concepts-network.md
+[aks-network-nsg]: concepts-network.md#network-security-groups
 [aks-ingress-basic]: ingress-basic.md
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-static-tls]: ingress-static-ip.md

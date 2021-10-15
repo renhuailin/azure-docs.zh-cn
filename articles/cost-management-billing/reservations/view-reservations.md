@@ -6,14 +6,14 @@ ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 10/05/2021
 ms.author: banders
-ms.openlocfilehash: 0c278256c952fce12833a8f4c5fe55e18c3b40b0
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 797aff6fed0cf2eda46bcf5371e57e18df466f00
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099892"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546955"
 ---
 # <a name="permissions-to-view-and-manage-azure-reservations"></a>查看和管理 Azure 预留项的权限
 
@@ -31,6 +31,8 @@ ms.locfileid: "123099892"
 - Azure Active Directory (Azure AD) 租户（目录）中预留的预留管理员
 - 预留读者对 Azure Active Directory (Azure AD) 租户（目录）中的预留拥有只读访问权限
 
+目前，预留管理员和预留读取器角色只能通过 PowerShell 分配。 无法在 Azure 门户中查看或分配这两个角色。 有关详细信息，请参阅[使用 PowerShell 授予访问权限](#grant-access-with-powershell)。
+
 预留项的生命周期独立于 Azure 订阅，因此预留项不是 Azure 订阅下的资源。 相反，它是一个租户级资源，具有自己的 Azure RBAC 权限，与订阅无关。 在购买后，预留项不会从订阅继承权限。
 
 ## <a name="view-and-manage-reservations"></a>查看和管理预留
@@ -42,7 +44,7 @@ ms.locfileid: "123099892"
     - 如果你是 Microsoft 客户协议计费配置文件所有者，请在左侧菜单中选择“计费配置文件”。 在计费配置文件列表中选择一个计费配置文件。
 1. 在左侧菜单中，选择“产品 + 服务” > “预留项” 。
 1. 此时将显示 EA 注册或计费配置文件的完整预留项列表。
-1. 计费管理员可以通过选择预留项，然后在出现的窗口中选择“授予访问权限”，来取得预留项的所有权。
+1. 计费管理员可以通过选择一个或多个预留项，单击“授予访问权限”，并在出现的窗口中选择“授予访问权限”，以取得预留项的所有权。
 
 ### <a name="add-billing-administrators"></a>添加计费管理员
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cfea2bd15bceb7d1478059d9ef80f4eb33337dc6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a0f95f78b8ca84175be185088316209ea5eb1e97
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664744"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546806"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理存储帐户访问密钥
 
@@ -32,15 +32,17 @@ Microsoft 建议使用 Azure 密钥保管库来管理访问密钥，并且定期
 
 若要从 Azure 门户查看和复制存储帐户访问密钥或连接字符串，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
+1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 
-2. 在“设置”下，选择“访问密钥” 。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
+2. 在“安全性 + 网络”下，选择“访问密钥” 。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
 
-3. 找到“key1”下面的“密钥”值，单击“复制”按钮复制该帐户密钥。  
+3. 选择“显示密钥”，即可显示访问密钥和连接字符串，以及允许按钮复制值。
 
-4. 或者，可以复制整个连接字符串。 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。  
+4. 在“key1”下找到“密钥”的值。 选择“复制”按钮以复制帐户密钥。
 
-    :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="显示如何在 Azure 门户中查看访问密钥的屏幕截图":::
+5. 或者，可以复制整个连接字符串。 在“key1”下，找到“连接字符串”值。 选择“复制”按钮以复制“连接字符串”。
+
+    :::image type="content" source="./media/storage-account-keys-manage/portal-connection-string.png" alt-text="显示如何在 Azure 门户中查看访问密钥的屏幕截图":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -50,7 +52,7 @@ Microsoft 建议使用 Azure 密钥保管库来管理访问密钥，并且定期
 
 ```powershell
 $storageAccountKey = `
-    (Get-AzStorageAccountKey `
+    (Get-AzStorageAccountKey
     -ResourceGroupName <resource-group> `
     -Name <storage-account>).Value[0]
 ```
@@ -93,7 +95,19 @@ Microsoft 建议定期轮换访问密钥，以帮助保护存储帐户的安全�
 
 #### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-使用 Azure 门户设置密钥过期策略的功能尚不可用。 可以使用 PowerShell 或 Azure CLI。
+通过以下步骤在 Azure 门户中创建密钥过期策略：
+
+1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
+
+2. 在“安全性 + 网络”下，选择“访问密钥” 。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
+
+3. 选择“设置轮换提醒”链接。
+
+4. 在“设置提醒以轮换访问密钥”中，选择“启用密钥轮换提醒”复选框，并设置提醒的频率。
+
+5. 选择“保存”。
+
+:::image type="content" source="media/storage-account-keys-manage/portal-key-expiration-policy.png" alt-text="屏幕截图：显示如何在 Azure 门户中创建密钥过期策略":::
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -202,7 +216,7 @@ resources
 
 2. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
 
-3. 在“设置”下，选择“访问密钥” 。
+3. 在“安全性 + 网络”下，选择“访问密钥” 。
 
 4. 若要为存储帐户重新生成主访问密钥，请选择主访问密钥旁边的“重新生成”按钮。
 

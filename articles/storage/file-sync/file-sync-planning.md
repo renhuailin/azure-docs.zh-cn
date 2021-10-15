@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 741f20a19c4bfe842ed2c14cee51c1ae19c1d9da
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c4429e0410fb9511d511ce5841876d5fbca173f5
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258470"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388089"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -209,7 +209,9 @@ $validation.Results | Select-Object -Property Type, Path, Level, Description, Re
 在这种情况下，对于此命名空间，Azure 文件同步大约需要 209,500,000 KiB (209.5 GiB) 空间。 将此大小与所需的任何额外可用空间相加，就可以算出此磁盘需要多少可用空间。
 
 ### <a name="failover-clustering"></a>故障转移群集
-Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般用途文件服务器”部署选项。 不可在“适用于应用程序数据的横向扩展文件服务器”(SOFS) 或群集共享卷 (CSV) 上使用故障转移群集。
+1. Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般用途文件服务器”部署选项。 
+2. Azure 文件同步支持的唯一方案是使用群集磁盘的 Windows Server 故障转移群集
+3. 不可在“适用于应用程序数据的横向扩展文件服务器”(SOFS) 上或群集共享卷 (CSV) 或本地磁盘上使用故障转移群集。
 
 > [!Note]  
 > 必须在故障转移群集中的每个节点上安装 Azure 文件同步代理，才能正常进行同步。

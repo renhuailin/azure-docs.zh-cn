@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a89c2dd574c1910d2c35c78aee4f5ee8b561dfc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2b7e51bc2837cdb068f0f9d6704e80d3f41c396e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592786"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538865"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>排查加入混合 Azure AD 的设备问题
 
@@ -233,7 +233,7 @@ HTTP 错误：
 失败的原因：
 
 - 无法以无提示方式获取 DRS 资源的访问令牌。
-   - Windows&nbsp;10 设备通过对活动 WS-Trust 终结点使用集成 Windows 身份验证从联合身份验证服务获取身份验证令牌。 有关详细信息，请参阅[联合服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)。
+   - Windows&nbsp;10 设备通过对活动 WS-Trust 终结点使用集成 Windows 身份验证，从联合身份验证服务获取身份验证令牌。 有关详细信息，请参阅[联合服务配置](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)。
 
 常见错误代码：
 
@@ -443,7 +443,7 @@ TPM 错误：
 
 使用事件查看器查找在 PRT 获取期间由 Azure AD CloudAP 插件记录的日志条目。 
 
-1. 在事件查看器中，打开 Azure AD 事件日志。 这些日志的存储位置是：“应用程序和服务日志” > “Microsoft” > “Windows” > “用户设备注册”。 
+1. 在事件查看器中，打开 Azure AD 操作事件日志。 这些日志的存储位置是：“应用程序和服务日志” > “Microsoft” > “Windows” > “AAD”。 
 
    > [!NOTE]
    > CloudAP 插件将错误事件记录在操作日志中，并在分析日志中记录信息事件。 分析和操作日志事件都是排查问题所必需的。 

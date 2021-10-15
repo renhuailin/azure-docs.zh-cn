@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: e55564ab1534b145958e128f58d50911ae9c51fa
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2ace40157681b250b56fcd595486260f07ec80c3
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746278"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400698"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>为 Azure 虚拟桌面配置图形处理单元 (GPU) 加速
 
@@ -23,10 +23,11 @@ Azure 虚拟桌面支持用于提高应用性能和可伸缩性的 GPU 加速渲
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>选择 GPU 经过优化的合适的 Azure 虚拟机大小
 
-在 Azure 的 [NV 系列](../virtual-machines/nv-series.md)、[NVv3 系列](../virtual-machines/nvv3-series.md)或 [NVv4 系列](../virtual-machines/nvv4-series.md) 的 VM 大小中选择其中一个大小。 这些系列专为应用和桌面虚拟化而定制，并且能使大多数应用和 Windows 用户界面的 GPU 得到加速。 主机池的正确选择取决于多种因素，包括特定的应用工作负荷、所需的用户体验质量和成本。 通常，在给定的用户密度下，更大更强的 GPU 能够实现更好的用户体验，而较小的部分大小 GPU 则能更精细地控制成本和质量。
+在 Azure 的 [NV 系列](../virtual-machines/nv-series.md)、[NVv3 系列](../virtual-machines/nvv3-series.md)或 [NVv4 系列](../virtual-machines/nvv4-series.md) 的 VM 大小中选择其中一个大小。 这些系列专为应用和桌面虚拟化而定制，并且能使大多数应用和 Windows 用户界面的 GPU 得到加速。 主机池的正确选择取决于多种因素，包括特定的应用工作负荷、所需的用户体验质量和成本。 通常，在给定的用户密度下，更大更强的 GPU 能够实现更好的用户体验，而较小的部分大小 GPU 则能更精细地控制成本和质量。 选择 VM 时，请考虑 NV 系列 VM 停用，有关 [NV 停用](../virtual-machines/nv-series-retirement.md)的详细信息
 
 >[!NOTE]
 >Azure 的 NC、NCv2、NCv3、ND 和 NDv2 系列 VM 通常不适用于 Azure 虚拟桌面会话主机。 这些 VM 是为专用的高性能计算或机器学习工具而量身定制，如用 NVIDIA CUDA 构建的工具。 对于大多数应用或 Windows 用户界面，它们不支持 GPU 加速。
+
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>创建主机池、预配虚拟机并配置应用组
 
@@ -36,6 +37,9 @@ Azure 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码：
 
 * Windows 10 版本 1511 或更高版本
 * Windows Server 2016 或更高版本
+
+>[!NOTE]
+>多会话 OS 并未专门列出，但 NV 实例 GRID 许可证支持 25 位并发用户，请参阅 [NV 系列](../virtual-machines/nv-series.md)
 
 你还必须配置应用组，或使用在创建新主机池时自动创建的默认桌面应用组（名为“桌面应用程序组”）。 有关说明，请参阅[教程：管理 Azure 虚拟桌面（经典）的应用组](./manage-app-groups.md)。
 

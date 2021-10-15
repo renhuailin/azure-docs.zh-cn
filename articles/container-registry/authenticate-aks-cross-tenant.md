@@ -4,17 +4,20 @@ description: 为 AKS 群集的服务主体配置访问另一个 AD 租户中的 
 ms.topic: article
 author: dlepow
 ms.author: danlep
-ms.date: 05/21/2021
-ms.openlocfilehash: 154ef93ca89c6d117d23a80986fe30ef2e14a426
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 09/13/2021
+ms.openlocfilehash: da7a03e1f46523b67666a4a0ab7ab53fba909720
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441956"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545465"
 ---
 # <a name="pull-images-from-a-container-registry-to-an-aks-cluster-in-a-different-azure-ad-tenant"></a>将映像从容器注册表拉取到另一个 Azure AD 租户中的 AKS 群集
 
 在某些情况下，Azure AKS 群集可能位于一个 Azure Active Directory (Azure AD) 租户中，而 Azure 容器注册表位于另一个租户中。 本文介绍了使用 AKS 服务主体凭据从容器注册表中进行拉取以启用跨租户身份验证的步骤。
+
+> [!NOTE]
+> 如果群集和容器注册表位于不同租户中，则不能附加注册表并使用 AKS 托管标识进行身份验证。
 
 ## <a name="scenario-overview"></a>方案概述
 本示例假设：
@@ -79,5 +82,6 @@ ms.locfileid: "111441956"
 * 详细了解[使用服务主体进行 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)
 * 在 [Kubernetes 文档](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)中详细了解映像拉取机密
 - 有关详细信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)
+- 详细了解[使用 Azure 容器注册表从 Kubernetes 群集进行身份验证的方案](authenticate-kubernetes-options.md)
 
 

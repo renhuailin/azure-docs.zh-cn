@@ -3,15 +3,15 @@ title: Azure 自动化 Runbook 类型
 description: 本文介绍可以在 Azure 自动化中使用的不同 Runbook 类型，以及在确定要使用的具体类型时的注意事项。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/10/2021
+ms.date: 10/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44923cd63676a6eb2fa589c66726f1c14c76896c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 58bc105a088e2ed06fb710d9a2e38e406e375bd9
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744815"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534326"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
@@ -69,8 +69,8 @@ ms.locfileid: "124744815"
 * 你必须熟悉 PowerShell 脚本。
 * Runbook 无法使用[并行处理](automation-powershell-workflow.md#use-parallel-processing)并行执行多个操作。
 * 出现错误时，Runbook 无法使用[检查点](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)恢复 Runbook。
-* 你可以使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook)（用于创建新作业）仅将 PowerShell 工作流 Runbook 和图形 Runbook 以子 Runbook 的形式包括在内。
-* Runbook 不能使用 PowerShell [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) 语句；Azure 沙盒或混合 Runbook 辅助角色不支持该语句，它会导致作业失败。
+* 你可以使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) cmdlet（用于创建新作业），仅将 PowerShell、PowerShell 工作流 Runbook 和图形 Runbook 以子 Runbook 的形式包括在内。
+* Runbook 不支持使用 PowerShell [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) 语句，且不支持在 Azure 沙盒或混合 Runbook 辅助角色中使用，否则可能导致作业失败。
 
 ### <a name="known-issues"></a>已知问题
 
@@ -124,6 +124,14 @@ Python Runbook 在 Python 2 和 Python 3 下编译。 Python 3 Runbook 目前处
 * 若要使用第三方库，必须将[包导入](python-packages.md)自动化帐户。
 * 在 PowerShell/PowerShell 工作流中使用 Start-AutomationRunbook cmdlet 启动 Python 3 Runbook（预览版）不起作用。 你可以使用 Az.Automation 模块中的 Start-AzAutomationRunbook **** 或 AzureRm.Automation 模块中的 Start-AzureRmAutomationRunbook **** 来解决此限制。  
 * Azure 自动化不支持 sys.stderr **** 。
+
+### <a name="multiple-python-versions"></a>多个 Python 版本
+
+对于 Windows Runbook 辅助角色，运行 Python 2 Runbook 时，它会首先查找环境变量 `PYTHON_2_PATH`，并验证它是否指向有效的可执行文件。 例如，如果安装文件夹为 `C:\Python2`，它将检查 `C:\Python2\python.exe` 是否是有效的路径。 如果未找到，它会查找 `PATH` 环境变量以执行类似的检查。
+
+对于 Python 3，它首先查找 `PYTHON_3_PATH` 环境变量，然后返回到 `PATH` 环境变量。
+
+如果只使用一个版本的 Python，可以将安装路径添加到 `PATH` 变量。 如果要在 Runbook 辅助角色上同时使用这两个版本，请为这些版本将 `PYTHON_2_PATH` 和 `PYTHON_3_PATH` 设置为模块的位置。
 
 ### <a name="known-issues"></a>已知问题
 

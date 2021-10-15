@@ -5,12 +5,12 @@ author: anilmur
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: d24ddd090f9acffc3dd19643d4004dbb58fc344d
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e86d2eb8883efb887a598f93d191ae9070ef2b67
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603845"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402982"
 ---
 # <a name="customer-managed-keys-with-azure-video-analyzer"></a>客户管理的密钥与 Azure 视频分析器
 
@@ -20,7 +20,7 @@ ms.locfileid: "114603845"
 
 系统会为所有视频分析器帐户创建一个帐户密钥。 默认情况下，该帐户密钥使用视频分析器拥有的系统密钥（即系统管理的密钥）进行加密。 你也可以改为将自己的密钥用于 Azure 视频分析器。 在这种情况下，帐户密钥使用你自己的密钥进行加密。 访问策略和视频资源元数据将使用帐户密钥进行加密。
 
-视频分析器使用用户分配的托管标识从你拥有的密钥保管库读取密钥。 创建或更新视频分析器帐户时，必须提供用户分配的托管标识，并为密钥保管库分配适当的 [Azure 基于角色的访问控制]../../role-based-access-control/overview.md)。 视频分析器要求密钥保管库与帐户位于同一个区域，并且已启用软删除和清除保护。
+视频分析器使用用户分配的托管标识从你拥有的密钥保管库读取密钥。 创建或更新视频分析器帐户时，必须提供用户分配的托管标识，并为密钥保管库分配适当的 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)。 视频分析器要求密钥保管库与帐户位于同一个区域，并且已启用软删除和清除保护。
 
 密钥可以是 2048、3072 或 4096 RSA 密钥，同时支持 HSM 和软件密钥。
 

@@ -8,12 +8,12 @@ ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: a8862f0b71a6b3f8bba21bdd4ab40290a00d0959
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e7d46d1680e11307eb873383e91e6e682f545549
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323020"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546532"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的时间点还原功能进行连续备份
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -111,7 +111,9 @@ Azure Cosmos DB 允许隔离和限制将连续备份帐户还原为特定角色�
 
 * 不支持多区域写入帐户。
 
-* 对于已启用 Azure Synapse Link 的帐户，分析存储数据不包含在备份和还原中。 启用 Synapse Link 后，Azure Cosmos DB 将继续按计划的备份间隔自动对事务性存储中的数据执行备份。 目前不支持自动备份和还原分析存储中的数据。
+* Azure Synapse Link 和定期备份模式可在同一数据库帐户中共存。 但是，分析存储数据并不包含在备份和还原中。 启用 Synapse Link 后，Azure Cosmos DB 将继续按计划的备份间隔自动对事务性存储中的数据执行备份。 
+
+* Azure Synapse Link 和连续备份模式可在同一数据库帐户中共存。 目前，启用 Synapse Link 的数据库帐户无法使用连续备份模式，反之亦然。
 
 * 还原的帐户是在源帐户所在的区域中创建的。 如果源帐户未存在于某个区域中，则无法将该帐户还原到该区域。
 

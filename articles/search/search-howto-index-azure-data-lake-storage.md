@@ -6,13 +6,13 @@ author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/17/2021
-ms.openlocfilehash: e0364b3242a0be3e4704ade75f2514c8c63aa779
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 10/01/2021
+ms.openlocfilehash: a0ad2bcbccac87d19a5026ae72416f6d793bad90
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983223"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418739"
 ---
 # <a name="index-data-from-azure-data-lake-storage-gen2"></a>为 Azure Data Lake Storage Gen2 中的数据编制索引
 
@@ -20,13 +20,19 @@ ms.locfileid: "112983223"
 
 Azure Data Lake Storage Gen2 通过 Azure 存储提供。 设置 Azure 存储帐户时，可以选择启用[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)。 这样，就可以将帐户中的内容集合组织成目录和嵌套子目录的层次结构。 启用分层命名空间即可启用 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
 
+本文中的示例使用门户和 REST API。 有关 C# 中的示例，请参阅在 GitHub 上[使用 Azure AD 为 Data Lake Gen2 编制索引](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)。
+
 ## <a name="supported-access-tiers"></a>支持的访问层
 
-Data Lake Storage Gen2 [访问层](../storage/blobs/storage-blob-storage-tiers.md)包括热访问层、冷访问层和存档访问层。 索引器只能访问热访问层和冷访问层。
+Data Lake Storage Gen2 [访问层](../storage/blobs/access-tiers-overview.md)包括热访问层、冷访问层和存档访问层。 索引器只能访问热访问层和冷访问层。
 
 ## <a name="access-control"></a>访问控制
 
-Data Lake Storage Gen2 实现了一个[访问控制模型](../storage/blobs/data-lake-storage-access-control.md)，该模型支持 Azure 基于角色的访问控制 (Azure RBAC) 和像 POSIX 一样的访问控制列表 (ACL)。 为 Data Lake Storage Gen2 中的内容编制索引时，Azure 认知搜索不会从内容中提取 Azure RBAC 和 ACL 信息。 因此，此信息不会包含在 Azure 认知搜索索引中。
+Data Lake Storage Gen2 实现了一个[访问控制模型](../storage/blobs/data-lake-storage-access-control.md)，该模型支持 Azure 基于角色的访问控制 (Azure RBAC) 和像 POSIX 一样的访问控制列表 (ACL)。 在 Azure 认知搜索方案中，访问控制列表受到部分支持：
+
++ 为索引器访问 Data Lake Storage Gen2 中的内容启用了访问控制支持。 对于具有系统或用户分配的托管标识的搜索服务，可以定义角色分配，以确定索引器对 Azure 存储中的特定文件和文件夹的访问权限。
+
++ 不支持对索引的文档级权限。 如果访问控制在每位用户的基础上改变访问级别，则那些权限不能携带到搜索服务的搜索索引中。 所有用户对索引中所有可搜索和可检索内容的访问权限级别相同。
 
 如果对索引中的每个文档保持访问控制非常重要，则应由应用程序开发人员需要负责实施[安全修整](./search-security-trimming-for-azure-search.md)。
 
@@ -38,11 +44,11 @@ Azure 认知搜索 blob 索引器可从以下文档格式提取文本：
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="getting-started-with-the-azure-portal"></a>Azure 门户入门
+## <a name="indexing-through-the-azure-portal"></a>通过 Azure 门户编制索引
 
 Azure 门户支持从 Azure Data Lake Storage Gen2 导入数据。 若要从 Data Lake Storage Gen2 导入数据，请导航到 Azure 门户中的 Azure 认知搜索服务页面，依次选择“导入数据”和“Azure Data Lake Storage Gen2”，然后继续按照导入数据流创建数据源、技能集、索引和索引器 。
 
-## <a name="getting-started-with-the-rest-api"></a>REST API 入门
+## <a name="indexing-with-the-rest-api"></a>使用 REST API 编制索引
 
 REST API 支持 Data Lake Storage Gen2 索引器。 按照以下说明设置数据源、索引和索引器。
 
@@ -93,7 +99,7 @@ SAS 应具有容器的列表和读取权限。 有关存储共享访问签名的
 
 ### <a name="step-2---create-an-index"></a>步骤 2 - 创建索引
 
-索引指定文档、属性和其他构造中可以塑造搜索体验的字段。 所有索引器都要求你指定一个搜索索引定义作为目标。 下面的示例使用[创建索引 (REST API) ](/rest/api/searchservice/create-index)创建简单索引。 
+索引指定文档、属性和其他构造中可以塑造搜索体验的字段。 所有索引器都要求你指定一个搜索索引定义作为目标。 以下示例使用[创建索引 (REST API)](/rest/api/searchservice/create-index)。 
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -117,7 +123,7 @@ SAS 应具有容器的列表和读取权限。 有关存储共享访问签名的
 
 ### <a name="step-3---configure-and-run-the-indexer"></a>步骤 3 - 配置和运行索引器
 
-创建索引和数据源后，就可以准备创建索引器了：
+创建索引和数据源后，就可以[创建索引器](/rest/api/searchservice/create-indexer)：
 
 ```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
@@ -134,11 +140,7 @@ SAS 应具有容器的列表和读取权限。 有关存储共享访问签名的
     }
 ```
 
-此索引器每两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
-
-有关创建索引器 API 的更多详细信息，请参阅[创建索引器](/rest/api/searchservice/create-indexer)。
-
-若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+此索引器立即运行，然后每两小时[按计划](search-howto-schedule-indexers.md)运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。
 
 <a name="DocumentKeys"></a>
 
@@ -265,7 +267,11 @@ api-key: [admin key]
 
 ## <a name="how-to-control-which-blobs-are-indexed"></a>如何控制要为哪些 blob 编制索引
 
-你可以通过 blob 的文件类型或在 blob 上设置属性（导致索引器跳过它们）控制要对哪些 blob 编制索引以及要跳过哪些 blob。
+通过设置角色分配、blob 的文件类型，或通过在 blob 本身中设置属性以让索引器跳过它们，可以控制为哪些 blob 编制索引以及跳过哪些 blob。
+
+### <a name="use-access-controls-and-role-assignments"></a>使用访问控制和角色分配
+
+在系统或用户分配的托管标识下运行的索引器可以具有授予对特定文件和文件夹的读取权限的读者或存储 Blob 数据读者角色中的成员身份。
 
 ### <a name="include-specific-file-extensions"></a>包括特定文件扩展名
 
@@ -337,7 +343,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有数百万个 blob �
 
 在索引过程中经常发生的错误包括：内容类型不受支持、内容缺失或 blob 过大。
 
-默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能希望即使出现错误也继续进行索引，之后再调试各个文档。 有关索引器错误的详细信息，请参阅[索引器故障排除指南](search-indexer-troubleshooting.md)和[索引器错误和警告](cognitive-search-common-errors-warnings.md)。
+默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能希望即使出现错误也继续进行索引，之后再调试各个文档。 若要详细了解索引器错误，请参阅[索引器故障排除指南](search-indexer-troubleshooting.md)和[索引器错误和警告](cognitive-search-common-errors-warnings.md)。
 
 ### <a name="respond-to-errors"></a>响应错误
 
@@ -381,6 +387,7 @@ api-key: [admin key]
 
 ## <a name="see-also"></a>另请参阅
 
++ [C# 示例：使用 Azure AD 为 Data Lake Gen2 编制索引](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)
 + [Azure 认知搜索中的索引器](search-indexer-overview.md)
 + [创建索引器](search-howto-create-indexers.md)
 + [对 blob 的 AI 扩充概述](search-blob-ai-integration.md)

@@ -3,14 +3,14 @@ title: 为 Azure 自动化更新管理配置 Windows 更新设置
 description: 本文介绍了如何配置 Windows 更新设置来与 Azure 自动化更新管理配合使用。
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2020
+ms.date: 10/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a1f95ca856223628974a9519b7c4811bde43965e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d9d95c826af2d9448b296a69a815af26ab4fda4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221962"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546653"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>为 Azure 自动化更新管理配置 Windows 更新设置
 
@@ -27,13 +27,18 @@ Azure 自动化更新管理依赖 [Windows 更新客户端](/windows/deployment/
 
 ## <a name="pre-download-updates"></a>预下载更新
 
-若要配置自动下载（而不自动安装）更新，可以使用组策略[将“自动更新”设置配置为](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)“3”。 使用此设置，可以在后台下载所需更新，并通知你更新可供安装。 这样，更新管理仍可控制计划，但允许在更新管理维护时段之外下载更新。 此行为可防止更新管理中出现 `Maintenance window exceeded` 错误。
+要配置自动下载（而不自动安装）更新，可以使用组策略[配置“自动更新”设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)。 有两个建议的值可供选择，具体取决于操作系统的版本：
+
+* 如果为 Windows Server 2016 及更高版本，将值设为“7”。
+* 如果为 Windows Server 2012 R2 及更早版本，将值设置为“3”。
+
+使用此设置，可以在后台下载所需更新，并通知你更新可供安装。 这样，更新管理仍可控制计划，但允许在更新管理维护时段之外下载更新。 此行为可防止更新管理中出现 `Maintenance window exceeded` 错误。
 
 可以在 PowerShell 中启用此设置：
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
-$WUSettings.NotificationLevel = 3
+$WUSettings.NotificationLevel = <3 or 7>
 $WUSettings.Save()
 ```
 

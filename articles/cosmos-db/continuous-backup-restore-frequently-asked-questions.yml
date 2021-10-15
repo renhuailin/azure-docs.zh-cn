@@ -8,12 +8,12 @@ metadata:
   ms.date: 07/29/2021
   ms.author: govindk
   ms.reviewer: sngun
-  ms.openlocfilehash: 573a6c65de43a75ff3343a41cf64027a78663cda
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: 4d39bbdf519903a6aa368b2401fa150ac381aeb9
+  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121733186"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129546588"
 title: 有关 Azure Cosmos DB 时间点还原功能的常见问题
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -24,23 +24,23 @@ sections:
 - name: 忽略
   questions:
   - question: >
-      How much time does it takes to restore?
+      还原需要多长时间？
     answer: >
-      The restore duration dependents on the size of your data.
+      还原持续时间取决于数据大小。
   - question: >
-      Can I submit the restore time in local time?
+      可否按本地时间提交还原时间？
     answer: >
-      The restore may not happen depending on whether the key resources like databases or containers existed at that time. You can verify by entering the time and looking at the selected database or container for a given time. If you see no resources exist to restore, then the restore process doesn't work.
+      还原可能不会发生，具体取决于当时是否存在关键资源（如数据库和容器）。 可以通过输入时间并查看给定时间的选定数据库或容器来进行验证。 如果看不到要还原的资源，还原过程将不起作用。
   - question: >
-      How can I track if an account is being restored?
-    answer: "After you submit the restore command, and wait on the same page, after the operation is complete, the status bar shows successfully restored account message. You can also search for the restored account and [track the status of account being restored](restore-account-continuous-backup.md#track-restore-status). While restore is in progress, the status of the account will be *Creating*, after the restore operation completes, the account status will change to *Online*.\n\nSimilarly for PowerShell and CLI, you can track the progress of restore operation by executing `az cosmosdb show` command as follows:\n\n```azurecli-interactive\naz cosmosdb show --name \"accountName\" --resource-group \"resourceGroup\"\n```\n\nThe provisioningState shows *Succeeded* when the account is online.\n\n```json\n{\n\"virtualNetworkRules\": [],\n\"writeLocations\" : [\n{\n    \"documentEndpoint\": \"https://<accountname>.documents.azure.com:443/\", \n    \"failoverpriority\": 0,\n    \"id\": \"accountName\" ,\n    \"isZoneRedundant\" : false, \n    \"locationName\": \"West US 2\", \n    \"provisioningState\": \"Succeeded\"\n}\n]\n}\n```\n"
+      如何跟踪是否在还原帐户？
+    answer: "如果已提交了还原命令并在同一页上进行等待，则在操作完成后，状态栏将显示已成功还原帐户的消息。 你还可以搜索已还原的帐户，并[跟踪正在还原的帐户的状态](restore-account-continuous-backup.md#track-restore-status)。 在还原过程中，帐户状态将为“正在创建”，还原操作完成后，帐户状态将更改为“联机”。\n\n同样，对于 PowerShell 和 CLI，可以通过执行 `az cosmosdb show` 命令来跟踪还原操作的进度，如下所示：\n\n```azurecli-interactive\naz cosmosdb show --name \"accountName\" --resource-group \"resourceGroup\"\n```\n\n当帐户联机时，provisioningState 显示“成功”。\n\n```json\n{\n\"virtualNetworkRules\": [],\n\"writeLocations\" : [\n{\n    \"documentEndpoint\": \"https://<accountname>.documents.azure.com:443/\", \n    \"failoverpriority\": 0,\n    \"id\": \"accountName\" ,\n    \"isZoneRedundant\" : false, \n    \"locationName\": \"West US 2\", \n    \"provisioningState\": \"Succeeded\"\n}\n]\n}\n```\n"
   - question: >
-      How can I find out whether an account was restored from another account?
+      如何确定帐户是否已从另一个帐户还原？
     answer: >
-      Run the `az cosmosdb show` command, in the output, you can see that the value of `createMode` property. If the value is set to **Restore**. it indicates that the account was restored from another account. The `restoreParameters` property has further details such as `restoreSource`, which has the source account ID. The last GUID in the `restoreSource` parameter is the instanceId of the source account.
+      运行 `az cosmosdb show` 命令，可在输出中看到 `createMode` 属性的值。 如果该值设置为“还原”， 则表示该帐户已从另一个帐户还原。 `restoreParameters` 属性还包含其他详细信息，例如源帐户 ID `restoreSource`。 `restoreSource` 参数中的最后一个 GUID 是源帐户的 instanceId。
 
 
-      For example, in the following output, the source account's instance ID is *7b4bb-f6a0-430e-ade1-638d781830cc*
+      例如，在下面的输出中，源帐户的实例 ID 为“7b4bb-f6a0-430e-ade1-638d781830cc”
 
 
       ```json
@@ -54,16 +54,19 @@ sections:
 
       ```
   - question: >
-      What happens when I restore a shared throughput database or a container within a shared throughput database?
+      还原共享吞吐量数据库或其中的容器时会发生什么情况？
     answer: >
-      The entire shared throughput database is restored. You cannot choose a subset of containers in a shared throughput database for restore.
+      整个共享吞吐量数据库都会还原。 无法选择还原共享吞吐量数据库中的部分容器。
   - question: >
-      What is the use of InstanceID in the account definition?
-    answer: "At any given point in time, Azure Cosmos DB account's `accountName` property is globally unique while it is alive. However, after the account is deleted, it is possible to create another account with the same name and hence the \"accountName\" is no longer enough to identify an instance of an account. \n\nID or the `instanceId` is a property of an instance of an account and it is used to disambiguate across multiple accounts (live and deleted) if they have same name for restore. You can get the instance ID by running the `Get-AzCosmosDBRestorableDatabaseAccount` or  `az cosmosdb restorable-database-account` commands. The name attribute value denotes the \"InstanceID\".\n"
+      在帐户定义中，InstanceID 有何用途？
+    answer: "在任何给定的时间点，Azure Cosmos DB 帐户的 `accountName` 属性在其处于活动状态时在全局范围内唯一。 但是，在删除帐户后，可以创建同名的另一个帐户，因此“accountName”不再足以标识帐户实例。 \n\nID 或 `instanceId` 是帐户实例的一个属性，用于区分要还原的多个同名帐户（实时帐户和已删除的帐户）。 可以通过运行 `Get-AzCosmosDBRestorableDatabaseAccount` 或 `az cosmosdb restorable-database-account` 命令来获取实例 ID。 name 属性值表示“InstanceID”。\n"
   - question: >
-      Is backup and restore supported for Azure Synapse Link enabled accounts?
-    answer: "\nYes. However, analytical store data isn't included in backups and restores. When Synapse Link is enabled on a database account, Azure Cosmos DB will continue to automatically take backups of your data in the transactional store at scheduled backup interval, as always.\n"
+      启用了 Azure Synapse Link 的帐户是否支持可实现时间点还原的连续备份？
+    answer: "\n否。 目前，连续备份模式和 Synapse Link 这两种功能无法在同一数据库帐户中共存。\n"
   - question: >
-      Is backup and restore supported for analytical store enabled containers?
-    answer: "\nYes, but only for the regular transactional data. Automatic backup and restore of your data in the analytical store is not supported at this time.\n"
-additionalContent: "\n## Next steps\n\n* What is [continuous backup](continuous-backup-restore-introduction.md) mode?\n* Provision an account with continuous backup using [Azure portal](provision-account-continuous-backup.md#provision-portal), [PowerShell](provision-account-continuous-backup.md#provision-powershell), [CLI](provision-account-continuous-backup.md#provision-cli), or [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template).\n* [Manage permissions](continuous-backup-restore-permissions.md) required to restore data with continuous backup mode.\n* [Resource model of continuous backup mode](continuous-backup-restore-resource-model.md)"
+      启用了 Azure Synapse Link 的帐户是否支持定期备份模式？
+    answer: "\n是的。 但是，分析存储数据并不包含在备份和还原中。 在数据库帐户上启用 Synapse Link 后，Azure Cosmos DB 会像往常一样，继续按计划的备份间隔以自动方式对事务性存储中的数据执行备份。\n"
+  - question: >
+      启用了分析存储的容器是否支持定期备份模式？
+    answer: "\n是，但仅适用于常规事务数据。 目前不支持备份和还原分析存储中的数据。\n"
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n* 什么是[连续备份](continuous-backup-restore-introduction.md)模式？\n* 使用 [Azure 门户](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli) 或 [Azure 资源管理器](provision-account-continuous-backup.md#provision-arm-template)预配拥有连续备份功能的帐户。\n* [管理](continuous-backup-restore-permissions.md)以连续备份模式还原数据所需的权限。\n* [连续备份模式的资源模型](continuous-backup-restore-resource-model.md)"

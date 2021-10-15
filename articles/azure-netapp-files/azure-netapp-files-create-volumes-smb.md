@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: a3db25adec1ffb8d56134b6f7e651a4707d613a6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 546f3ad04a371277903f9b11f6d62bba50794051
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577062"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536238"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -29,7 +29,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
 
 ## <a name="before-you-begin"></a>开始之前 
 
-* 必须已设置容量池。 请参阅[设置容量池](azure-netapp-files-set-up-capacity-pool.md)。     
+* 必须已设置容量池。 请参阅[创建容量池](azure-netapp-files-set-up-capacity-pool.md)。     
 * 子网必须委派给 Azure NetApp 文件。 请参阅[将子网委托给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)。
 
 ## <a name="configure-active-directory-connections"></a>配置 Active Directory 连接 
@@ -80,6 +80,9 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * 网络功能  
+        在受支持的区域中，你可以指定在卷中使用基础网络功能或标准网络功能。 有关详细信息，请参阅[为卷配置网络功能](configure-network-features.md)和 [Azure NetApp 文件网络规划指南](azure-netapp-files-network-topologies.md)。
 
     * 如果要将现有的快照策略应用到卷，请单击“显示高级部分”将其展开，指定是否要隐藏快照路径，并在下拉菜单中选择快照策略。 
 

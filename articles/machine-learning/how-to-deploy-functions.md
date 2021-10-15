@@ -1,22 +1,22 @@
 ---
-title: 将 ml 模型部署到 Azure Functions 应用（预览版）
+title: 将 ML 模型部署到 Azure Functions 应用（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习在 Azure Functions 应用中打包模型并将其部署为 Web 服务。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.author: vaidyas
-author: vaidya-s
+ms.subservice: mlops
+ms.author: ssambare
+author: shivanissambare
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.custom: racking-python, devx-track-azurecli
-ms.openlocfilehash: bdeecf02e81ba3c8143f707896bbf3e5c36cf212
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 736568527f629b0552b3829815e02c288edeead1
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885391"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714711"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions（预览版）
 

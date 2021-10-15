@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
 ms.author: pafarley
-ms.openlocfilehash: cb39fc53e5753c2667fcc3d3bf78b075366dd3a8
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0ffa432b6d5d94ad4e313a183d8e277ce44aae3d
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539043"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585006"
 ---
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
@@ -112,6 +112,9 @@ private static async Task<string> GetVoiceSignatureString()
 * 为对话添加参与者。 字符串 `voiceSignatureStringUser1` 和 `voiceSignatureStringUser2` 应来自上述步骤中函数 `GetVoiceSignatureString()` 的输出。
 * 加入该对话并开始听录。
 
+> [!NOTE]
+> `AudioStreamReader` 是可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/csharp/dotnet/conversation-transcription/helloworld/AudioStreamReader.cs) 中获取的帮助程序类。
+
 调用函数 `TranscribeConversationsAsync()` 以开始对话听录。
 
 ```csharp
@@ -201,8 +204,9 @@ public static async Task TranscribeConversationsAsync(string voiceSignatureStrin
                 Task.WaitAny(new[] { stopRecognition.Task });
                 await conversationTranscriber.StopTranscribingAsync().ConfigureAwait(false);
             }
-        }
-    }
-}
+         }
+      }
+   }
 }
 ```
+

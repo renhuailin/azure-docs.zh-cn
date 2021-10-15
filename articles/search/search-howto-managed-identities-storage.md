@@ -6,13 +6,13 @@ author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/02/2021
-ms.openlocfilehash: 7dd06e48d6d610b99f6c52affcd1d6101e04c9ba
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 10/01/2021
+ms.openlocfilehash: 139fa020459804571129d63819a0e82e3f1737e2
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183983"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418644"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>使用托管标识设置到 Azure 存储帐户的连接
 
@@ -20,7 +20,8 @@ ms.locfileid: "122183983"
 
 可以使用系统分配的托管标识或用户分配的托管标识（预览版）。
 
-在详细了解此功能之前，建议先了解什么是索引器以及如何为数据源设置索引器。 有关详细信息，请访问以下链接：
+本文假定你熟悉索引器概念和配置。 如果你不熟悉索引器，请从以下链接开始：
+
 * [索引器概述](search-indexer-overview.md)
 * [Azure Blob 索引器](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 索引器](search-howto-index-azure-data-lake-storage.md)
@@ -28,7 +29,9 @@ ms.locfileid: "122183983"
 
 ## <a name="1---set-up-a-managed-identity"></a>1 - 设置托管标识
 
-使用以下某个选项设置[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+使用以下选项之一为 Azure 认知搜索服务设置[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。 
+
+搜索服务必须是基本层或更高级别。
 
 ### <a name="option-1---turn-on-system-assigned-managed-identity"></a>选项 1 - 打开系统分配的托管标识
 
@@ -39,14 +42,17 @@ ms.locfileid: "122183983"
 选择“保存”后，将看到已分配给搜索服务的对象 ID。
 
 ![对象 ID](./media/search-managed-identities/system-assigned-identity-object-id.png "对象 ID")
- 
+
 ### <a name="option-2---assign-a-user-assigned-managed-identity-to-the-search-service-preview"></a>选项 2 - 将用户分配的托管标识分配给搜索服务（预览版）
 
 如果尚未创建用户分配的托管标识，则需要创建一个。 用户分配的托管标识是 Azure 上的一种资源。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
+
 1. 选择“+ 创建资源”。
+
 1. 在“搜索服务和市场”搜索栏中，搜索“用户分配的托管标识”，然后选择“创建”。
+
 1. 为标识提供描述性名称。
 
 接下来，将用户分配的托管标识分配给搜索服务。 这可以使用 [2021-04-01-preview 管理 API](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) 来完成。
@@ -54,11 +60,14 @@ ms.locfileid: "122183983"
 标识属性包含类型以及一个或多个完全限定的用户分配标识：
 
 * 类型是标识类型。 如果要想同时使用两者，则有效值为“SystemAssigned”、“UserAssigned”或“SystemAssigned、UserAssigned”。 如果值为“None”，将从搜索服务中清除任何先前分配的标识。
-* userAssignedIdentities 包括用户分配的托管标识的详细信息。
-    * 用户分配的托管标识的格式： 
-        * /subscriptions/订阅 ID/resourcegroups/资源组名称/providers/Microsoft.ManagedIdentity/userAssignedIdentities/托管标识名称  
 
-关于如何将用户分配的托管标识分配给搜索服务的示例：
+* userAssignedIdentities 包括用户分配的托管标识的详细信息。 格式为：
+
+  ```bash
+    /subscriptions/<your-subscription-ID>/resourcegroups/<your-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<your-managed-identity-name>
+  ```
+
+用户分配的托管标识分配示例：
 
 ```http
 PUT https://management.azure.com/subscriptions/[subscription ID]/resourceGroups/[resource group name]/providers/Microsoft.Search/searchServices/[search service name]?api-version=2021-04-01-preview
@@ -88,17 +97,22 @@ Content-Type: application/json
 在此步骤中，你将授予 Azure 认知搜索服务或用户分配的托管标识从存储帐户读取数据的权限。
 
 1. 在 Azure 门户中，导航到包含要为其编制索引的数据的存储帐户。
+
 2. 选择“访问控制(标识和访问管理)”
+
 3. 依次选择“添加”和“添加角色分配” 
 
     ![添加角色分配](./media/search-managed-identities/add-role-assignment-storage.png "添加角色分配")
 
 4. 根据要为其编制索引的存储帐户类型选择适当的角色：
-    1. Azure Blob 存储要求将搜索服务添加到“存储 Blob 数据读取者”角色。
-    1. Azure Data Lake Storage Gen2 要求将搜索服务添加到“存储 Blob 数据读取器”角色。
-    1. Azure 表存储要求将搜索服务添加到“读取者和数据访问”角色。
-5.  将“分配访问权限至”保留为“Azure AD 用户、组或服务主体” 
-6.  如果使用的是系统分配的托管标识，请搜索你的搜索服务，然后选择它。 如果使用的是用户分配的托管标识，请搜索用户分配的托管标识的名称，然后选择它。 选择“保存”。
+
+    * Azure Blob 存储要求将搜索服务添加到“存储 Blob 数据读取者”角色。
+    * Azure Data Lake Storage Gen2 要求将搜索服务添加到“存储 Blob 数据读取器”角色。
+    * Azure 表存储要求将搜索服务添加到“读取者和数据访问”角色。
+
+5. 将“分配访问权限至”保留为“Azure AD 用户、组或服务主体” 
+
+6. 如果使用的是系统分配的托管标识，请搜索你的搜索服务，然后选择它。 如果使用的是用户分配的托管标识，请搜索用户分配的托管标识的名称，然后选择它。 选择“保存”。
 
     关于使用系统分配的托管标识的 Azure Blob 存储和 Azure Data Lake Storage Gen2 的示例：
 
@@ -107,6 +121,8 @@ Content-Type: application/json
     关于使用系统分配的托管标识的 Azure 表存储的示例：
 
     ![添加读者和数据访问角色分配](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "添加读者和数据访问角色分配")
+
+有关 C# 中的代码示例，请参阅在 GitHub 上[使用 Azure AD 为 Data Lake Gen2 编制索引](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)。
 
 ## <a name="3---create-the-data-source"></a>3 - 创建数据源
 
@@ -167,7 +183,7 @@ api-key: [admin key]
 * 标识包含用户分配的托管标识的集合。 创建数据源时，只应提供一个用户分配的托管标识。
     * userAssignedIdentities 包括用户分配的托管标识的详细信息。
         * 用户分配的托管标识的格式： 
-            * /subscriptions/订阅 ID/resourcegroups/资源组名称/providers/Microsoft.ManagedIdentity/userAssignedIdentities/托管标识名称  
+            * /subscriptions/订阅 ID/resourcegroups/资源组名称/providers/Microsoft.ManagedIdentity/userAssignedIdentities/托管标识名称
 
 如何使用 [REST API](/rest/api/searchservice/create-data-source) 创建 Blob 数据源对象的示例：
 
@@ -241,14 +257,13 @@ Blob 索引器的索引器定义示例：
 
 若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
-## <a name="accessing-secure-data-in-storage-accounts"></a>访问存储帐户中的安全数据
+## <a name="accessing-network-secured-data-in-storage-accounts"></a>访问存储帐户中的网络安全数据
 
 可使用防火墙和虚拟网络进一步保护 Azure 存储帐户。 如果要索引使用防火墙或虚拟网络保护的 Blob 存储帐户或 Data Lake Gen2 存储帐户的内容，请遵循[通过受信任的服务例外安全地访问存储帐户中的数据](search-indexer-howto-access-trusted-service-exception.md)中的说明。
 
 ## <a name="see-also"></a>另请参阅
 
-详细了解 Azure 存储索引器：
-
 * [Azure Blob 索引器](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 索引器](search-howto-index-azure-data-lake-storage.md)
 * [Azure 表索引器](search-howto-indexing-azure-tables.md)
+* [C# 示例：使用 Azure AD (GitHub) 为 Data Lake Gen2 编制索引](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)

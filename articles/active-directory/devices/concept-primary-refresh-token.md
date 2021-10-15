@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9927232ca01473d8c51ac034f6c0ed24b07a2b39
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 3875beb50cf0bf1a177889a2f49b730d2528e204
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707213"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387993"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -209,4 +209,4 @@ Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、�
 
 ## <a name="next-steps"></a>后续步骤
 
-要详细了解如何解决与 PRT 相关的问题，请参阅[排查已建立混合 Azure Active Directory 联接的 Windows 10 和 Windows Server 2016 设备问题](troubleshoot-hybrid-join-windows-current.md#troubleshoot-post-join-authentication-issues)一文。
+要详细了解如何解决与 PRT 相关的问题，请参阅[排查已建立混合 Azure Active Directory 联接的 Windows 10 和 Windows Server 2016 设备问题](troubleshoot-hybrid-join-windows-current.md)一文。

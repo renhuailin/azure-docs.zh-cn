@@ -1,22 +1,22 @@
 ---
-title: 什么是终结点（预览版）
+title: 什么是终结点（预览版）？
 titleSuffix: Azure Machine Learning
 description: 了解 Azure 机器学习终结点（预览版）如何简化机器学习部署。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2
 ms.date: 06/17/2021
-ms.openlocfilehash: 8ce9241e11bd9aa259c8b7a1bf3114be677a01bd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4a4cc34b3f3bb77e0c2405d3b0a29b40fa1cd616
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447645"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426994"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>什么是 Azure 机器学习终结点（预览版）？ 
 

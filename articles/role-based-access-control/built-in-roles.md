@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/20/2021
+ms.date: 09/28/2021
 ms.custom: generated
-ms.openlocfilehash: b1c1944ddf5fdae42bea41482d429a207190d11f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 02fbc7d0ec30181ccfbd44a2a80c70084a23e4d9
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771128"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427906"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -22,7 +22,7 @@ ms.locfileid: "122771128"
 
 本文列出了 Azure 内置角色。 如果你正在寻找 Azure Active Directory (Azure AD) 的管理员角色，请参阅 [Azure AD 内置角色](../active-directory/roles/permissions-reference.md)。
 
-下表提供了每个内置角色的简短说明。 单击角色名称，查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。 有关这些操作的含义以及它们如何应用于管理和数据平面的信息，请参阅[了解 Azure 角色定义](role-definitions.md)。
+下表提供了每个内置角色的简短说明。 单击角色名称，查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。 有关这些操作的含义以及它们如何应用于控制和数据平面的信息，请参阅[了解 Azure 角色定义](role-definitions.md)。
 
 ## <a name="all"></a>全部
 
@@ -37,9 +37,9 @@ ms.locfileid: "122771128"
 > | **计算** |  |  |
 > | [经典虚拟机参与者](#classic-virtual-machine-contributor) | 允许管理经典虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | [虚拟机管理员登录](#virtual-machine-administrator-login) | 在门户中查看虚拟机并以管理员身份登录 | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
-> | [虚拟机参与者](#virtual-machine-contributor) | 创建和管理虚拟机，管理磁盘和磁盘快照，安装和运行软件，使用 VM 扩展重置虚拟机的根用户密码，以及使用 VM 扩展管理本地用户帐户。 此角色不会授予你对虚拟机连接到的虚拟网络或存储帐户的管理访问权限。 此角色不支持在 Azure RBAC 中分配角色。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
+> | [虚拟机参与者](#virtual-machine-contributor) | 创建和管理虚拟机，管理磁盘和磁盘快照，安装和运行软件，使用 VM 扩展重置虚拟机的根用户密码，以及使用 VM 扩展管理本地用户帐户。 此角色不会授予你对虚拟机连接到的虚拟网络或存储帐户的管理访问权限。 此角色不允许在 Azure RBAC 中分配角色。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [虚拟机用户登录](#virtual-machine-user-login) | 在门户中查看虚拟机并以普通用户身份登录。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **联网** |  |  |
+> | **网络** |  |  |
 > | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [CDN 终结点读者](#cdn-endpoint-reader) | 可以查看 CDN 终结点，但不能进行更改。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [CDN 配置文件参与者](#cdn-profile-contributor) | 可以管理 CDN 配置文件及其终结点，但不能向其他用户授予访问权限。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -79,7 +79,11 @@ ms.locfileid: "122771128"
 > | **Web** |  |  |
 > | [Azure Maps 数据参与者](#azure-maps-data-contributor) | 从 Azure Maps 帐户中授予地图相关数据的读取、写入和删除权限。 | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps 数据读取器](#azure-maps-data-reader) | 授予从 Azure Maps 帐户中读取地图相关数据的权限。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure Spring Cloud Config Server 参与者](#azure-spring-cloud-config-server-contributor) | 允许对 Azure Spring Cloud Config Server 进行读取、写入和删除访问 | a06f5c24-21a7-4e1a-aa2b-f19eb6684f5b |
+> | [Azure Spring Cloud Config Server 读者](#azure-spring-cloud-config-server-reader) | 允许对 Azure Spring Cloud Config Server 进行读取访问 | d04c6db6-4947-4782-9e91-30a88feb7be7 |
 > | [Azure Spring Cloud 数据读取者](#azure-spring-cloud-data-reader) | 允许对 Azure Spring Cloud 进行读取访问 | b5537268-8956-4941-a8f0-646150406f0c |
+> | [Azure Spring Cloud 服务注册表参与者](#azure-spring-cloud-service-registry-contributor) | 允许对 Azure Spring Cloud 服务注册表进行读取、写入和删除访问 | f5880b48-c26d-48be-b172-7927bfa1c8f1 |
+> | [Azure Spring Cloud 服务注册表读者](#azure-spring-cloud-service-registry-reader) | 允许对 Azure Spring Cloud 服务注册表进行读取访问 | cff1b556-2399-4e7e-856d-a8f754be7b65 |
 > | [媒体服务帐户管理员](#media-services-account-administrator) | 创建、读取、修改和删除媒体服务帐户；对其他媒体服务资源的只读访问权限。 | 054126f8-9a2b-4f1c-a9ad-eca461f08466 |
 > | [媒体服务实时事件管理员](#media-services-live-events-administrator) | 创建、读取、修改和删除实时事件、资产、资产筛选器和流式处理定位符；对其他媒体服务资源的只读访问权限。 | 532bc159-b25e-42c0-969e-a1d439f60d77 |
 > | [媒体服务媒体操作员](#media-services-media-operator) | 创建、读取、修改和删除资产、资产筛选器、流式处理定位符和作业；对其他媒体服务资源的只读访问权限。 | e4395492-1534-4db2-bedf-88c14621589c |
@@ -90,10 +94,10 @@ ms.locfileid: "122771128"
 > | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR AccessKey 读取者](#signalr-accesskey-reader) | 读取 SignalR 服务访问密钥 | 04165923-9d83-45d5-8227-78b77b0a687e |
 > | [SignalR 应用服务器（预览版）](#signalr-app-server-preview) | 允许应用服务器使用 AAD 身份验证选项访问 SignalR 服务。 | 420fcaa2-552c-430f-98ca-3264be4806c7 |
-> | [SignalR 参与者](#signalr-contributor) | 创建、读取、更新和删除 SignalR 服务资源 | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
-> | [SignalR 无服务器参与者（预览版）](#signalr-serverless-contributor-preview) | 允许应用在无服务器模式下使用 AAD 身份验证选项来访问服务。 | fd53cd77-2268-407a-8f46-7e7863d0f521 |
+> | [SignalR REST API 所有者](#signalr-rest-api-owner) | 完全访问 Azure Signal 服务 REST API | fd53cd77-2268-407a-8f46-7e7863d0f521 |
+> | [SignalR REST API 读者](#signalr-rest-api-reader) | 以只读方式访问 Azure Signal 服务 REST API | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [SignalR 服务所有者](#signalr-service-owner) | 完全访问 Azure Signal 服务 REST API | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
-> | [SignalR 服务读取者（预览版）](#signalr-service-reader-preview) | 以只读方式访问 Azure Signal 服务 REST API | ddde6b66-c0df-4114-a159-3618637b3035 |
+> | [SignalR/Web PubSub 参与者](#signalrweb-pubsub-contributor) | 创建、读取、更新和删除 SignalR 服务资源 | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
 > | [Web 计划参与者](#web-plan-contributor) | 允许管理网站的 Web 计划，但不允许访问这些计划。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [网站参与者](#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **容器** |  |  |
@@ -111,6 +115,7 @@ ms.locfileid: "122771128"
 > | [Azure Kubernetes 服务 RBAC 读取者](#azure-kubernetes-service-rbac-reader) | 允许进行只读访问并查看命名空间中的大多数对象。 不允许查看角色或角色绑定。 此角色不允许查看机密，因为通过读取机密内容可以访问命名空间中的 ServiceAccount 凭据，这样就会允许以命名空间中任何 ServiceAccount 的身份进行 API 访问（一种特权提升形式）。 在群集范围内应用此角色将提供对所有命名空间的访问权限。 | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
 > | [Azure Kubernetes 服务 RBAC 写入者](#azure-kubernetes-service-rbac-writer) | 允许对命名空间中的大多数对象进行读取/写入访问。不允许此角色查看或修改角色或角色绑定。 但是，允许此角色以命名空间中任何 ServiceAccount 的身份访问机密和运行 Pod，因此可用它获取命名空间中任何 ServiceAccount 的 API 访问级别。 在群集范围内应用此角色将提供对所有命名空间的访问权限。 | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **数据库** |  |  |
+> | [连接到 Azure 的 SQL Server 载入](#azure-connected-sql-server-onboarding) | 对于已启用 Arc 的服务器上的 SQL Server，允许对 Azure 资源的读取和写入访问。 | e8113dce-c529-4d33-91fa-e9b972617508 |
 > | [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) | 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB 操作员](#cosmos-db-operator) | 允许管理 Azure Cosmos DB 帐户，但不能访问其中的数据。 阻止访问帐户密钥和连接字符串。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
 > | [CosmosBackupOperator](#cosmosbackupoperator) | 可以为帐户提交 Cosmos DB 数据库或容器的还原请求 | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
@@ -121,7 +126,6 @@ ms.locfileid: "122771128"
 > | [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和必需的网络配置，但无法向其他人授予访问权限。 | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
 > | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL Server 和数据库，但不允许访问它们及其安全相关策略。 | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
-> | [连接到 Azure 的 SQL Server 载入](#azure-connected-sql-server-onboarding) | 对于已启用 Arc 的服务器上的 SQL Server，允许对 Azure 资源的读取和写入访问。 | e8113dce-c529-4d33-91fa-e9b972617508 |
 > | **分析** |  |  |
 > | [Azure 事件中心数据所有者](#azure-event-hubs-data-owner) | 允许完全访问 Azure 事件中心资源。 | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Azure 事件中心数据接收方](#azure-event-hubs-data-receiver) | 允许接收对 Azure 事件中心资源的访问权限。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
@@ -132,9 +136,9 @@ ms.locfileid: "122771128"
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | [Purview 数据管护者](#purview-data-curator) | Microsoft.Purview 数据管护者可以创建、读取、修改和删除目录数据对象，并可以建立对象之间的关系。 此角色处于预览状态，可能会发生更改。 | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
-> | [Purview 数据读取者](#purview-data-reader) | Microsoft.Purview 数据读取者可以读取目录数据对象。 此角色处于预览状态，可能会发生更改。 | ff100721-1b9d-43d8-af52-42b69c1272db |
-> | [Purview 数据源管理员](#purview-data-source-administrator) | Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此角色处于预览状态，可能会发生更改。 | 200bba9e-f0c8-430f-892b-6f0794863803 |
+> | [Purview 数据管护者（旧）](#purview-data-curator-legacy) | Microsoft.Purview 数据管护者是一个可以创建、读取、修改和删除目录数据对象并可以建立对象之间的关系的旧角色。 我们最近从 Azure 基于角色的访问中弃用此角色，并在 Azure Purview 数据平面中引入了新的数据管护者。 请参阅 [Azure Purview 中的访问控制 - 角色](../purview/catalog-permissions.md#roles) | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [Purview 数据读者（旧）](#purview-data-reader-legacy) | Microsoft.Purview 数据读者是一个可以读取目录数据对象的旧角色。 我们最近从 Azure 基于角色的访问中弃用此角色，并在 Azure Purview 数据平面中引入了新的数据读者。 请参阅 [Azure Purview 中的访问控制 - 角色](../purview/catalog-permissions.md#roles) | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [Purview 数据源管理员（旧）](#purview-data-source-administrator-legacy) | Microsoft.Purview 数据源管理员是一个可以管理数据源和数据扫描的旧角色。 我们最近从 Azure 基于角色的访问中弃用此角色，并在 Azure Purview 数据平面中引入了新的数据源管理员。 请参阅 [Azure Purview 中的访问控制 - 角色](../purview/catalog-permissions.md#roles) | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [架构注册表参与者（预览）](#schema-registry-contributor-preview) | 读取、写入和删除架构注册表组和架构。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [架构注册表读取器（预览版）](#schema-registry-reader-preview) | 读取和列出架构注册表组和架构。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | 区块链 |  |  |
@@ -282,6 +286,7 @@ ms.locfileid: "122771128"
 > | [桌面虚拟化工作区参与者](#desktop-virtualization-workspace-contributor) | 桌面虚拟化工作区参与者。 | 21efdde3-836f-432b-bf3d-3e8e734d4b2b |
 > | [桌面虚拟化工作区读取者](#desktop-virtualization-workspace-reader) | 桌面虚拟化工作区读取者。 | 0fa44ee9-7a7d-466b-9bb2-2bf446b1204d |
 > | [磁盘备份读取者](#disk-backup-reader) | 向备份保管库提供执行磁盘备份的权限。 | 3e5e47e6-65f7-47ef-90b5-e5dd4d455f24 |
+> | [磁盘池操作员](#disk-pool-operator) | 向 StoragePool 资源提供程序提供管理添加到磁盘池的磁盘的权限。 | 60fc6e62-5479-42d4-8bf4-67625fcc2840 |
 > | [磁盘还原操作员](#disk-restore-operator) | 向备份保管库提供执行磁盘还原的权限。 | b50d9833-a0cb-478e-945f-707fcc997c13 |
 > | [磁盘快照参与者](#disk-snapshot-contributor) | 向备份保管库提供管理磁盘快照的权限。 | 7efff54f-a5b4-42b5-a1c5-5411624893ce |
 > | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许管理计划程序作业集合，但不允许访问这些集合。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
@@ -603,6 +608,7 @@ ms.locfileid: "122771128"
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | 创建和管理计算可用性集 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/cloudServices/* | 创建和管理云服务（外延支持） |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | 创建和管理计算位置 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 执行所有虚拟机操作，包括创建、更新、删除、启动、重新启动和关闭虚拟机。 在虚拟机上执行脚本。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | 创建和管理虚拟机规模集 |
@@ -638,6 +644,7 @@ ms.locfileid: "122771128"
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | Microsoft.SerialConsole/serialPorts/connect/action | 连接到串行端口 |
 > | [Microsoft.SqlVirtualMachine](resource-provider-operations.md#microsoftsqlvirtualmachine)/* |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 返回指定存储帐户的访问密钥。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
@@ -697,6 +704,7 @@ ms.locfileid: "122771128"
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.SerialConsole/serialPorts/connect/action",
         "Microsoft.SqlVirtualMachine/*",
         "Microsoft.Storage/storageAccounts/listKeys/action",
         "Microsoft.Storage/storageAccounts/read",
@@ -2990,9 +2998,91 @@ ms.locfileid: "122771128"
 }
 ```
 
+### <a name="azure-spring-cloud-config-server-contributor"></a>Azure Spring Cloud Config Server 参与者
+
+允许对 Azure Spring Cloud Config Server 进行读取、写入和删除访问 [了解详细信息](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/configService/read | 读取特定的 Azure Spring Cloud 服务实例的配置内容（例如 application.yaml） |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/configService/write | 写入特定的 Azure Spring Cloud 服务实例的配置服务器内容 |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/configService/delete | 删除特定的 Azure Spring Cloud 服务实例的配置服务器内容 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read, write and delete access to Azure Spring Cloud Config Server",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a06f5c24-21a7-4e1a-aa2b-f19eb6684f5b",
+  "name": "a06f5c24-21a7-4e1a-aa2b-f19eb6684f5b",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/configService/read",
+        "Microsoft.AppPlatform/Spring/configService/write",
+        "Microsoft.AppPlatform/Spring/configService/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Config Server Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-spring-cloud-config-server-reader"></a>Azure Spring Cloud Config Server 读者
+
+允许对 Azure Spring Cloud Config Server 进行读取访问 [了解详细信息](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/configService/read | 读取特定的 Azure Spring Cloud 服务实例的配置内容（例如 application.yaml） |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read access to Azure Spring Cloud Config Server",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d04c6db6-4947-4782-9e91-30a88feb7be7",
+  "name": "d04c6db6-4947-4782-9e91-30a88feb7be7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/configService/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Config Server Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-spring-cloud-data-reader"></a>Azure Spring Cloud 数据读取者
 
-允许对 Azure Spring Cloud 进行读取访问 [了解详细信息](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+允许对 Azure Spring Cloud 进行读取访问
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3024,6 +3114,88 @@ ms.locfileid: "122771128"
     }
   ],
   "roleName": "Azure Spring Cloud Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-spring-cloud-service-registry-contributor"></a>Azure Spring Cloud 服务注册表参与者
+
+允许对 Azure Spring Cloud 服务注册表进行读取、写入和删除访问 [了解详细信息](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/eurekaService/read | 读取特定的 Azure Spring Cloud 服务实例的用户应用注册信息 |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/eurekaService/write | 写入特定的 Azure Spring Cloud 服务实例的用户应用注册信息 |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/eurekaService/delete | 删除特定的 Azure Spring Cloud 服务实例的用户应用注册信息 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read, write and delete access to Azure Spring Cloud Service Registry",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f5880b48-c26d-48be-b172-7927bfa1c8f1",
+  "name": "f5880b48-c26d-48be-b172-7927bfa1c8f1",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/eurekaService/read",
+        "Microsoft.AppPlatform/Spring/eurekaService/write",
+        "Microsoft.AppPlatform/Spring/eurekaService/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Service Registry Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-spring-cloud-service-registry-reader"></a>Azure Spring Cloud 服务注册表读者
+
+允许对 Azure Spring Cloud 服务注册表进行读取访问 [了解详细信息](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/eurekaService/read | 读取特定的 Azure Spring Cloud 服务实例的用户应用注册信息 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read access to Azure Spring Cloud Service Registry",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/cff1b556-2399-4e7e-856d-a8f754be7b65",
+  "name": "cff1b556-2399-4e7e-856d-a8f754be7b65",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/eurekaService/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Service Registry Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3567,58 +3739,9 @@ ms.locfileid: "122771128"
 }
 ```
 
-### <a name="signalr-contributor"></a>SignalR 参与者
+### <a name="signalr-rest-api-owner"></a>SignalR REST API 所有者
 
-创建、读取、更新和删除 SignalR 服务资源
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
-> | --- | --- |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/* |  |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
-> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
-> | **不操作** |  |
-> | *无* |  |
-> | **DataActions** |  |
-> | *无* |  |
-> | **NotDataActions** |  |
-> | *无* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Create, Read, Update, and Delete SignalR service resources",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
-  "name": "8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
-  "permissions": [
-    {
-      "actions": [
-        "Microsoft.SignalRService/*",
-        "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
-        "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Resources/deployments/*",
-        "Microsoft.Support/*"
-      ],
-      "notActions": [],
-      "dataActions": [],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "SignalR Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="signalr-serverless-contributor-preview"></a>SignalR 无服务器参与者（预览版）
-
-允许应用在无服务器模式下使用 AAD 身份验证选项来访问服务。
+完全访问 Azure Signal 服务 REST API
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3628,6 +3751,16 @@ ms.locfileid: "122771128"
 > | *无* |  |
 > | **DataActions** |  |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | 生成供客户端连接 ASRS 的 AccessToken；默认情况下，该令牌将在 5 分钟后过期。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/send/action | 将消息广播到中心内的所有客户端连接。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | 将消息广播到组。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | 检查组是否存在或用户是否存在于组中。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/write | 加入/退出组。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/send/action | 将消息直接发送到客户端连接。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | 检查客户端连接是否存在。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/write | 关闭客户端连接。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | 将消息发送给可能有多个客户端连接的用户。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | 检查用户是否存在。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write | 修改用户。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -3636,7 +3769,7 @@ ms.locfileid: "122771128"
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets your app access service in serverless mode with AAD auth options.",
+  "description": "Full access to Azure SignalR Service REST APIs",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/fd53cd77-2268-407a-8f46-7e7863d0f521",
   "name": "fd53cd77-2268-407a-8f46-7e7863d0f521",
   "permissions": [
@@ -3644,12 +3777,65 @@ ms.locfileid: "122771128"
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.SignalRService/SignalR/auth/clientToken/action"
+        "Microsoft.SignalRService/SignalR/auth/clientToken/action",
+        "Microsoft.SignalRService/SignalR/hub/send/action",
+        "Microsoft.SignalRService/SignalR/group/send/action",
+        "Microsoft.SignalRService/SignalR/group/read",
+        "Microsoft.SignalRService/SignalR/group/write",
+        "Microsoft.SignalRService/SignalR/clientConnection/send/action",
+        "Microsoft.SignalRService/SignalR/clientConnection/read",
+        "Microsoft.SignalRService/SignalR/clientConnection/write",
+        "Microsoft.SignalRService/SignalR/user/send/action",
+        "Microsoft.SignalRService/SignalR/user/read",
+        "Microsoft.SignalRService/SignalR/user/write"
       ],
       "notDataActions": []
     }
   ],
-  "roleName": "SignalR Serverless Contributor (Preview)",
+  "roleName": "SignalR REST API Owner",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-rest-api-reader"></a>SignalR REST API 读者
+
+以只读方式访问 Azure Signal 服务 REST API
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | 检查组是否存在或用户是否存在于组中。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | 检查客户端连接是否存在。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | 检查用户是否存在。 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read-only access to Azure SignalR Service REST APIs",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ddde6b66-c0df-4114-a159-3618637b3035",
+  "name": "ddde6b66-c0df-4114-a159-3618637b3035",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/group/read",
+        "Microsoft.SignalRService/SignalR/clientConnection/read",
+        "Microsoft.SignalRService/SignalR/user/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR REST API Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3718,20 +3904,23 @@ ms.locfileid: "122771128"
 }
 ```
 
-### <a name="signalr-service-reader-preview"></a>SignalR 服务读取者（预览版）
+### <a name="signalrweb-pubsub-contributor"></a>SignalR/Web PubSub 参与者
 
-以只读方式访问 Azure Signal 服务 REST API
+创建、读取、更新和删除 SignalR 服务资源
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
 > | --- | --- |
-> | *无* |  |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | 检查组是否存在或用户是否存在于组中。 |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | 检查客户端连接是否存在。 |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | 检查用户是否存在。 |
+> | *无* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -3740,22 +3929,25 @@ ms.locfileid: "122771128"
   "assignableScopes": [
     "/"
   ],
-  "description": "Read-only access to Azure SignalR Service REST APIs",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ddde6b66-c0df-4114-a159-3618637b3035",
-  "name": "ddde6b66-c0df-4114-a159-3618637b3035",
+  "description": "Create, Read, Update, and Delete SignalR service resources",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
+  "name": "8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
   "permissions": [
     {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.SignalRService/SignalR/group/read",
-        "Microsoft.SignalRService/SignalR/clientConnection/read",
-        "Microsoft.SignalRService/SignalR/user/read"
+      "actions": [
+        "Microsoft.SignalRService/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Support/*"
       ],
+      "notActions": [],
+      "dataActions": [],
       "notDataActions": []
     }
   ],
-  "roleName": "SignalR Service Reader (Preview)",
+  "roleName": "SignalR/Web PubSub Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -4592,6 +4784,47 @@ ms.locfileid: "122771128"
 ## <a name="databases"></a>数据库
 
 
+### <a name="azure-connected-sql-server-onboarding"></a>连接到 Azure 的 SQL Server 载入
+
+对于已启用 Arc 的服务器上的 SQL Server，允许对 Azure 资源的读取和写入访问。 [了解详细信息](/sql/sql-server/azure-arc/connect)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | Microsoft.AzureArcData/sqlServerInstances/read | 检索 SQL Server 实例资源 |
+> | Microsoft.AzureArcData/sqlServerInstances/write | 更新 SQL Server 实例资源 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Microsoft.AzureArcData service role to access the resources of Microsoft.AzureArcData stored with RPSAAS.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e8113dce-c529-4d33-91fa-e9b972617508",
+  "name": "e8113dce-c529-4d33-91fa-e9b972617508",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.AzureArcData/sqlServerInstances/read",
+        "Microsoft.AzureArcData/sqlServerInstances/write"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Connected SQL Server Onboarding",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="cosmos-db-account-reader-role"></a>Cosmos DB 帐户读者角色
 
 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 [了解详细信息](../cosmos-db/role-based-access-control.md)
@@ -5326,47 +5559,7 @@ ms.locfileid: "122771128"
 }
 ```
 
-### <a name="azure-connected-sql-server-onboarding"></a>连接到 Azure 的 SQL Server 载入
-
- 对于已启用 Arc 的服务器上的 SQL Server，允许对 Azure 资源的读取和写入访问。
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 说明 |
-> | --- | --- |
-> |Microsoft.AzureArcData/sqlServerInstances/read| 读取 Azure 资源信息。 |
-> |Microsoft.AzureArcData/sqlServerInstances/write| 写入 Azure 资源信息。  |
-> | **不操作** |  |
-> | *无* |  |
-> | **DataActions** |  |
-> | *无* |  |
-> | **NotDataActions** |  |
-> | *无* |  | 
-
-```json
-{
-    "id": "/providers/Microsoft.Authorization/roleDefinitions/e8113dce-c529-4d33-91fa-e9b972617508",
-    "properties": {
-        "roleName": "Azure Connected SQL Server Onboarding",
-        "description": "Microsoft.AzureArcData service role to access the resources of Microsoft.AzureArcData stored with RPSAAS.",
-        "assignableScopes": [
-            "/"
-        ],
-        "permissions": [
-            {
-                "actions": [
-                    "Microsoft.AzureArcData/sqlServerInstances/read",
-                    "Microsoft.AzureArcData/sqlServerInstances/write"
-                ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
-            }
-        ]
-    }
-}
-```
-
-## <a name="analytics"></a>Analytics
+## <a name="analytics"></a>分析
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -5800,9 +5993,9 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 }
 ```
 
-### <a name="purview-data-curator"></a>Purview 数据管护者
+### <a name="purview-data-curator-legacy"></a>Purview 数据管护者（旧）
 
-Microsoft.Purview 数据管护者可以创建、读取、修改和删除目录数据对象，并可以建立对象之间的关系。 此角色处于预览状态，可能会发生更改。
+Microsoft.Purview 数据管护者是一个可以创建、读取、修改和删除目录数据对象并可以建立对象之间的关系的旧角色。 我们最近从 Azure 基于角色的访问中弃用此角色，并在 Azure Purview 数据平面中引入了新的数据管护者。 请参阅 [Azure Purview 中的访问控制 - 角色](../purview/catalog-permissions.md#roles)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -5821,7 +6014,7 @@ Microsoft.Purview 数据管护者可以创建、读取、修改和删除目录�
   "assignableScopes": [
     "/"
   ],
-  "description": "The Microsoft.Purview data curator can create, read, modify and delete catalog data objects and establish relationships between objects. This role is in preview and subject to change.",
+  "description": "The Microsoft.Purview data curator is a legacy role that can create, read, modify and delete catalog data objects and establish relationships between objects. We have recently deprecated this role from Azure role-based access and introduced a new data curator inside Azure Purview data plane. See https://docs.microsoft.com/azure/purview/catalog-permissions#roles",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8a3c2885-9b38-4fd2-9d99-91af537c1347",
   "name": "8a3c2885-9b38-4fd2-9d99-91af537c1347",
   "permissions": [
@@ -5837,15 +6030,15 @@ Microsoft.Purview 数据管护者可以创建、读取、修改和删除目录�
       "notDataActions": []
     }
   ],
-  "roleName": "Purview Data Curator",
+  "roleName": "Purview Data Curator (Legacy)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="purview-data-reader"></a>Purview 数据读取者
+### <a name="purview-data-reader-legacy"></a>Purview 数据读者（旧）
 
-Microsoft.Purview 数据读取者可以读取目录数据对象。 此角色处于预览状态，可能会发生更改。
+Microsoft.Purview 数据读者是一个可以读取目录数据对象的旧角色。 我们最近从 Azure 基于角色的访问中弃用此角色，并在 Azure Purview 数据平面中引入了新的数据读者。 请参阅 [Azure Purview 中的访问控制 - 角色](../purview/catalog-permissions.md#roles)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -5863,7 +6056,7 @@ Microsoft.Purview 数据读取者可以读取目录数据对象。 此角色处�
   "assignableScopes": [
     "/"
   ],
-  "description": "The Microsoft.Purview data reader can read catalog data objects. This role is in preview and subject to change.",
+  "description": "The Microsoft.Purview data reader is a legacy role that can read catalog data objects. We have recently deprecated this role from Azure role-based access and introduced a new data reader inside Azure Purview data plane. See https://docs.microsoft.com/azure/purview/catalog-permissions#roles",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ff100721-1b9d-43d8-af52-42b69c1272db",
   "name": "ff100721-1b9d-43d8-af52-42b69c1272db",
   "permissions": [
@@ -5878,15 +6071,15 @@ Microsoft.Purview 数据读取者可以读取目录数据对象。 此角色处�
       "notDataActions": []
     }
   ],
-  "roleName": "Purview Data Reader",
+  "roleName": "Purview Data Reader (Legacy)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="purview-data-source-administrator"></a>Purview 数据源管理员
+### <a name="purview-data-source-administrator-legacy"></a>Purview 数据源管理员（旧）
 
-Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此角色处于预览状态，可能会发生更改。
+Microsoft.Purview 数据源管理员是一个可以管理数据源和数据扫描的旧角色。 我们最近从 Azure 基于角色的访问中弃用此角色，并在 Azure Purview 数据平面中引入了新的数据源管理员。 请参阅 [Azure Purview 中的访问控制 - 角色](../purview/catalog-permissions.md#roles)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -5905,7 +6098,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
   "assignableScopes": [
     "/"
   ],
-  "description": "The Microsoft.Purview data source administrator can manage data sources and data scans. This role is in preview and subject to change.",
+  "description": "The Microsoft.Purview data source administrator is a legacy role that can manage data sources and data scans. We have recently deprecated this role from Azure role-based access and introduced a new data source admin inside Azure Purview data plane. See https://docs.microsoft.com/azure/purview/catalog-permissions#roles",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/200bba9e-f0c8-430f-892b-6f0794863803",
   "name": "200bba9e-f0c8-430f-892b-6f0794863803",
   "permissions": [
@@ -5921,7 +6114,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
       "notDataActions": []
     }
   ],
-  "roleName": "Purview Data Source Administrator",
+  "roleName": "Purview Data Source Administrator (Legacy)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7852,7 +8045,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 允许完全访问 Azure 中继资源。
 
 > [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
+> | 操作 | 说明 |
 > | --- | --- |
 > | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/* |  |
 > | **不操作** |  |
@@ -7893,7 +8086,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 允许发送对 Azure 中继资源的访问权限。
 
 > [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
+> | 操作 | 说明 |
 > | --- | --- |
 > | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/wcfRelays/read |  |
 > | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/hybridConnections/read |  |
@@ -12252,6 +12445,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/* | 创建和管理复制作业 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/* | 创建和管理复制策略 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/* | 创建和管理恢复计划 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationVaultSettings/* |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/* | 创建和管理恢复服务保管库的存储配置 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
@@ -12298,6 +12492,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.RecoveryServices/vaults/replicationJobs/*",
         "Microsoft.RecoveryServices/vaults/replicationPolicies/*",
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/*",
+        "Microsoft.RecoveryServices/vaults/replicationVaultSettings/*",
         "Microsoft.RecoveryServices/Vaults/storageConfig/*",
         "Microsoft.RecoveryServices/Vaults/tokenInfo/read",
         "Microsoft.RecoveryServices/Vaults/usages/read",
@@ -12376,6 +12571,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailover/action | 测试故障转移恢复计划 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailoverCleanup/action | 测试故障转移清理恢复计划 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/unplannedFailover/action | 故障转移恢复计划 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationVaultSettings/read | 读取任何内容  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | 读取恢复服务保管库的警报 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
@@ -12452,6 +12648,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action",
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action",
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action",
+        "Microsoft.RecoveryServices/vaults/replicationVaultSettings/read",
         "Microsoft.RecoveryServices/Vaults/monitoringAlerts/*",
         "Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read",
         "Microsoft.RecoveryServices/Vaults/storageConfig/read",
@@ -12508,6 +12705,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/rea | 读取任何作业 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/read | 读取任何策略 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | 读取任何恢复计划 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationVaultSettings/read | 读取任何内容  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
@@ -12557,6 +12755,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.RecoveryServices/vaults/replicationJobs/read",
         "Microsoft.RecoveryServices/vaults/replicationPolicies/read",
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read",
+        "Microsoft.RecoveryServices/vaults/replicationVaultSettings/read",
         "Microsoft.RecoveryServices/Vaults/storageConfig/read",
         "Microsoft.RecoveryServices/Vaults/tokenInfo/read",
         "Microsoft.RecoveryServices/Vaults/usages/read",
@@ -13409,6 +13608,55 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
     }
   ],
   "roleName": "Disk Backup Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="disk-pool-operator"></a>磁盘池操作员
+
+向 StoragePool 资源提供程序提供管理添加到磁盘池的磁盘的权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | 创建新的磁盘，或更新现有的磁盘 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | 获取磁盘的属性 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Used by the StoragePool Resource Provider to manage Disks added to a Disk Pool.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/60fc6e62-5479-42d4-8bf4-67625fcc2840",
+  "name": "60fc6e62-5479-42d4-8bf4-67625fcc2840",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Compute/disks/write",
+        "Microsoft.Compute/disks/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Disk Pool Operator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

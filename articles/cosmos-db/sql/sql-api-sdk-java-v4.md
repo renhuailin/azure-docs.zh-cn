@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0157a01178c9efcefe03b839a968ba02b04e7ca2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 48988392c1961d6878ccfc0d6c40d86dbe8fd237
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113359"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389127"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>用于 Core (SQL) API 的 Azure Cosmos DB Java SDK v4：发行说明和资源
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -69,10 +69,11 @@ ms.locfileid: "123113359"
 | **Azure Cosmos DB 研讨会和实验室** |[Cosmos DB 研讨会主页](https://aka.ms/cosmosworkshop)
 
 > [!IMPORTANT]
-> * 4\.18.0 版本 - 强烈建议使用 4.18.0 版本和更高版本。
+> * 4\.18.0 版本 - 强烈建议使用 4.18.0 及更高版本。
 > * 4\.13.0 版本更新了 `2020.0.4 (Europium)` 版本序列的 `reactor-core` 和 `reactor-netty` 的主要版本。
 
-[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos/CHANGELOG.md)]
+## <a name="release-history"></a>版本历史记录
+版本历史记录保存在 azure-sdk-for-java 存储库中，有关版本的详细列表，请参阅 [changelog 文件](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos/CHANGELOG.md)。
 
 ## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)] 

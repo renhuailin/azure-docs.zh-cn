@@ -1,20 +1,21 @@
 ---
-title: 处理 Azure Blob 存储中的更改源 | Microsoft Docs
+title: 处理 Azure Blob 存储中的更改源
+titleSuffix: Azure Storage
 description: 了解如何在 .NET 客户端应用程序中处理更改源日志
 author: tamram
 ms.author: tamram
-ms.date: 09/08/2020
+ms.date: 10/01/2021
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d43b91fcebff017d6d18ee736cfddc858650fc7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cbd15bdc337bdb4a7221f634e6f9a66d4d503fe6
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620191"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400793"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>处理 Azure Blob 存储中的更改源
 
@@ -31,7 +32,6 @@ ms.locfileid: "128620191"
 dotnet add package Azure.Storage.Blobs --version 12.5.1
 dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
-
 
 ## <a name="read-records"></a>读取记录
 
@@ -218,4 +218,5 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解更改源日志。 请参阅 [Azure Blob 存储中的更改源](storage-blob-change-feed.md)
+- [数据保护概述](data-protection-overview.md)
+- [Azure Blob 存储中的更改源](storage-blob-change-feed.md)

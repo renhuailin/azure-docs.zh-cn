@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 10/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd4b8ccf3147e349b9625d5912e5d603415ec39a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3c04c2824b005adfc3e04d710b0e55c7f52c99b1
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112297496"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402980"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负载的 Azure 虚拟机 Oracle DBMS 部署
 
@@ -415,6 +415,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 还可以使用 Azure 备份来运行应用程序一致性 VM 备份。 [在 Azure 中规划 VM 备份基础结构](../../../backup/backup-azure-vms-introduction.md)指出，Azure 备份使用 Windows VSS 功能来执行应用程序一致性备份。 Azure 上 SAP 支持的 Oracle DBMS 版本可以利用 VSS 功能进行备份。 有关详细信息，请阅读 Oracle 文档 [使用 VSS 进行数据库备份和还原的基本概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701)。
 
 
+
 ### <a name="high-availability"></a>高可用性
 支持通过 Oracle Data Guard 实现高可用性和灾难恢复。 要在 Data Guard 中实现自动故障转移，需要使用快速启动故障转移 (FSFA)。 观察者 (FSFA) 触发故障转移。 如果不使用 FSFA，则只能使用手动故障转移配置。
 
@@ -517,6 +518,9 @@ Azure 上的 Oracle Database 文件支持 ext4、xfs、NFSv4.1 的文件系统�
 支持通过适用于 Oracle 的 SAP BR* 工具提供备份/还原功能，其方式与在裸机和 Hyper-V 上一样。 Oracle 恢复管理器 (RMAN) 也支持备份到磁盘以及从磁盘还原。
 
 有关如何使用 Azure 备份和恢复服务进行备份和恢复 Oracle Database 的详细信息，请参阅[在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库](../oracle/oracle-overview.md)。
+
+[Azure 备份服务](../../../backup/backup-overview.md)还支持 Oracle 备份，如[使用 Azure 备份在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库](../oracle/oracle-database-backup-azure-backup.md)一文中所述。
+
 
 ### <a name="high-availability"></a>高可用性
 支持通过 Oracle Data Guard 实现高可用性和灾难恢复。 若要在 Data Guard 中实现自动故障转移，需要使用快速启动故障转移 (FSFA)。 观察者功能 (FSFA) 触发故障转移。 如果不使用 FSFA，则只能使用手动故障转移配置。 有关详细信息，请参阅[在 Azure Linux 虚拟机上实施 Oracle Data Guard](../oracle/configure-oracle-dataguard.md)。

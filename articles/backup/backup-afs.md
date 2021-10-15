@@ -3,12 +3,12 @@ title: 在 Azure 门户中备份 Azure 文件共享
 description: 了解如何使用 Azure 门户在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: e236980310889e84fe905861c5843f5a7b7039a2
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 807a173112d0bb85c008403028ab76000a3096db
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109516751"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427956"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 
@@ -60,6 +60,9 @@ ms.locfileid: "109516751"
 1. 从已发现的存储帐户列表中，选择一个帐户，然后选择“确定”。
 
    ![从已发现的存储帐户中进行选择](./media/backup-afs/select-discovered-storage-account.png)
+   
+   >[!NOTE]
+   > 如果存储帐户所在的区域不同于保管库，则它不会出现在已发现的存储帐户列表中。
 
 1. 下一步是选择要备份的文件共享。 选择“要备份的文件共享”部分中的“添加”按钮 。
 
@@ -100,8 +103,6 @@ ms.locfileid: "109516751"
 
 设置备份策略后，将在计划的时间获取文件共享快照。 还会在所选期间保留恢复点。
 
->[!NOTE]
->Azure 备份现在支持对 Azure 文件共享备份进行每日/每周/每月/每年保留的策略。
 
 ## <a name="configure-backup-from-the-file-share-pane"></a>从“文件共享”窗格配置备份
 

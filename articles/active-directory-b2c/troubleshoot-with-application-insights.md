@@ -12,14 +12,25 @@ ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32961477c21c55c21705790495436e2ed10b72fc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 06745d9a3ba5cb1e50e1adf23e88f442bcc31ab0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128568408"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658493"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 日志
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 本文分步讲解如何从 Active Directory B2C (Azure AD B2C) 收集日志来诊断自定义策略存在的问题。 Application Insights 提供了一种方法来诊断异常和直观显示应用程序性能问题。 Azure AD B2C 有一项可将数据发送到 Application Insights 的功能。
 
@@ -193,4 +204,6 @@ ms.locfileid: "128568408"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[排查 Azure AD B2C 自定义策略问题](troubleshoot-custom-policies.md)
+- 了解如何[排查 Azure AD B2C 自定义策略问题](troubleshoot.md)
+
+::: zone-end

@@ -3,12 +3,12 @@ title: 在 Azure Stack Edge 上部署 Azure 视频分析器
 description: 本文列出了可帮助你在 Azure Stack Edge 上部署 Azure 视频分析器的步骤。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 1cfcd7956cd14d0c687c8619732523a5d7bba4c0
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: da14368846cd87d5d4e231933cec0068a4e558f9
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605213"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546600"
 ---
 # <a name="deploy-azure-video-analyzer-on-azure-stack-edge"></a>在 Azure Stack Edge 上部署 Azure 视频分析器
 
@@ -175,6 +175,40 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
     "allowUnsecuredEndpoints": true,
     "telemetryOptOut": false
     ```
+1. 选择“添加”  
+
+添加 RTSP 模拟器 Edge 模块
+
+1. 在页面的“IoT Edge 模块”部分，单击“添加”下拉列表并选择“IoT Edge 模块”，显示“添加 IoT Edge 模块”页面     。
+1. 在“模块设置”选项卡上，提供模块的名称，然后指定容器映像 URI  ：   
+    示例:
+    
+    * IoT Edge 模块名：rtspsim
+    * 映像 URI：mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2  
+
+
+1. 打开“容器创建选项”选项卡。
+ 
+    将以下 JSON 内容复制并粘贴到框中
+    
+    ```
+    {
+        "HostConfig": {
+            "Binds": [
+               "/home/localedgeuser/samples/input/:/live/mediaServer/media/"
+            ],
+            "PortBindings": {
+                    "554/tcp": [
+                        {
+                        "HostPort": "554"
+                        }
+                    ]
+            }
+        }
+    }
+    ```
+1. 选择“添加”  
+
 1. 在完成时选择“下一步:路由”继续转到路由部分。 指定路由。
 
     在“名称”下输入“AVAToHub”，在“值”下输入“FROM /messages/modules/avaedge/outputs/* INTO $upstream” 
@@ -193,6 +227,8 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-on-stack-edge/copy-provisioning-token.png" alt-text="复制令牌":::
+
+
 
 #### <a name="optional-setup-docker-volume-mounts"></a>（可选）设置 Docker 卷装载
 
@@ -268,7 +304,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
                     "Mounts": 
                     [
                         {
-                            "Target": "/var/media",
+                            "Target": "/live/mediaServer/media",
                             "Source": "media",
                             "Type": "volume"
                         }

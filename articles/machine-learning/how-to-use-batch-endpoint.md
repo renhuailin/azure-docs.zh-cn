@@ -4,23 +4,23 @@ titleSuffix: Azure Machine Learning
 description: 本文介绍如何创建批处理终结点，以便连续为大型数据批量评分。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: tracych
 ms.author: tracych
 ms.reviewer: laobri
 ms.date: 8/11/2021
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: b68ba3f0221aa97307e746d192de65b2915d2e4b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: e113fdebb7c6cf11b486bb958ab04af8e37a5e89
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419550"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428039"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>使用批处理终结点（预览版）进行批量评分
 
-本文介绍如何使用批处理终结点（预览版）执行批量评分。 批处理终结点简化了承载用于批量评分的模型的过程，使你可以将工作重心放在机器学习而不是基础结构上。 创建批处理终结点后，可以使用 Azure CLI 或者在任何平台中使用 HTTP 库和 REST API 触发批量评分作业。 有关详细信息，请参阅[什么是 Azure 机器学习终结点（预览版）？](concept-endpoints.md)。
+本文介绍如何使用批处理终结点（预览版）执行批量评分。 批处理终结点简化了承载用于批量评分的模型的过程，使你可以将工作重心放在机器学习而不是基础结构上。 创建批处理终结点后，可以使用 Azure CLI 或者在任何平台中使用 HTTP 库和 REST API 触发批量评分作业。 有关详细信息，请参阅[什么是 Azure 机器学习终结点（预览版）？](concept-endpoints.md)
 
 本文介绍如何执行以下任务：
 

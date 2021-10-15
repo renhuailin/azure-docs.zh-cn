@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 5030abe5dbc93a1b04588d548d353701a5a77ad4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: 5298b572c24d174842da1c9e29b01a1d98f47a39
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559259"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387347"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的逻辑复制和逻辑解码
 
@@ -104,12 +104,21 @@ Azure Database for PostgreSQL 灵活服务器支持以下逻辑数据提取和�
 
 ### <a name="pglogical-extension"></a>pglogical 扩展
 
-下面是在提供者数据库服务器和订阅者上配置 pglogical 的示例。 有关更多详细信息，请参阅 pglogical 扩展文档。 此外，请确保已执行上面列出的先决条件任务。
+下面是在提供者数据库服务器和订阅者上配置 pglogical 的示例。 有关更多详细信息，请参阅 [pglogical 扩展文档](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs)。 此外，请确保已执行上面列出的先决条件任务。
+
 
 1. 在提供者数据库服务器和订阅者数据库服务器的数据库中安装 pglogical 扩展。
     ```SQL
    \C myDB
    CREATE EXTENSION pglogical;
+   ```
+2. 如果复制用户不同于（创建服务器的）服务器管理用户，请确保为用户分配 `azure_pg_admin` 和 `replication` 特权。 或者，你可以将管理员用户授予复制用户。 有关详细信息，请参阅 [pglogical 文档](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs/#limitations-and-restrictions)。
+   ```SQL
+   GRANT azure_pg_admin, replication to myUser;
+   ```
+   或
+   ```SQL
+   GRANT myAdminUser to myUser;
    ```
 2. 在提供者（源/发布者）数据库服务器上，创建提供者节点。
    ```SQL

@@ -8,18 +8,19 @@ ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 6700ade1a7a3f3504dc149841ea918c739dc774f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4b64818b505863ad7f7e2878640eeb28224af2f1
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837724"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400185"
 ---
 # <a name="schema-of-logs-and-events"></a>日志和事件的架构
 
 本文介绍 Azure 数据工厂日志和事件用于监视的架构。
 
 ## <a name="monitor-schema"></a>监视架构
+以下属性列表用于监视。
 
 ### <a name="activity-run-log-attributes"></a>活动运行日志属性
 
@@ -167,7 +168,7 @@ ms.locfileid: "124837724"
 
 ### <a name="ssis-integration-runtime-log-attributes"></a>SSIS Integration Runtime 日志特性
 
-下面是 SSIS IR 启动/停止/维护操作的日志特性。
+以下是 SQL Server Integration Services (SSIS) 集成运行时 (IR) 启动、停止和维护操作的日志属性。
 
 ```json
 {
@@ -192,16 +193,16 @@ ms.locfileid: "124837724"
 | **operationName**          | String | SSIS IR 操作的名称                            | `Start/Stop/Maintenance/Heartbeat` |
 | **category**               | String | 诊断日志的类别                               | `SSISIntegrationRuntimeLogs` |
 | **correlationId**          | String | 用于跟踪特定操作的唯一 ID             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
-| **dataFactoryName**        | String | ADF 的名称                                          | `MyADFv2` |
+| **dataFactoryName**        | String | 数据工厂的名称                                          | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                      | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                  | `Informational` |
 | **resultType**             | String | SSIS IR 操作的结果                          | `Started/InProgress/Succeeded/Failed/Healthy/Unhealthy` |
 | **message**                | String | SSIS IR 操作的输出消息                  | `The stopping of your SSIS integration runtime has succeeded.` |
-| **resourceId**             | String | ADF 资源的唯一 ID                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **resourceId**             | String | 数据工厂资源的唯一 ID                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ### <a name="ssis-event-message-context-log-attributes"></a>SSIS 事件消息上下文日志特性
 
-下面是与 SSIS IR 上的 SSIS 包执行生成的事件消息相关的条件的日志特性。 它们传递的信息与显示许多 SSIS 包属性的运行时值的 [SSIS 目录 (SSISDB) 事件消息上下文表或视图](/sql/integration-services/system-views/catalog-event-message-context)类似。 这些日志在你选择“`Basic/Verbose`”日志记录级别时生成，可用于调试/合规性检查。
+下面是与 SSIS IR 上的 SSIS 包执行生成的事件消息相关的条件的日志特性。 它们传递的信息与 [SSIS 目录 (SSISDB) 事件消息上下文表或视图](/sql/integration-services/system-views/catalog-event-message-context)类似后者显示许多 SSIS 包属性的运行时值。 它们在选择 `Basic/Verbose` 日志记录级别时生成，可用于调试/符合性检查。
 
 ```json
 {
@@ -229,25 +230,25 @@ ms.locfileid: "124837724"
 | 属性                   | 类型   | 说明                                                          | 示例                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
+| **operationName**          | String | 设置为 `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
 | **category**               | String | 诊断日志的类别                                      | `SSISPackageEventMessageContext` |
 | **correlationId**          | String | 用于跟踪特定操作的唯一 ID                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**        | String | ADF 的名称                                                 | `MyADFv2` |
+| **dataFactoryName**        | String | 数据工厂的名称                                                 | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                             | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                         | `Informational` |
-| **operationId**            | String | 用于跟踪 SSISDB 中的特定操作的唯一 ID          | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的操作） |
-| **contextDepth**           | String | 事件消息上下文的深度                              | `0`（0 表示在包执行开始之前的上下文，1 表示发生错误时的上下文，该数字将随着上下文离错误的距离的增加而增大） |
+| **operationId**            | String | 用于跟踪 SSISDB 中的特定操作的唯一 ID          | `1`（1 表示与未存储在 SSISDB 中/通过 T-SQL 调用的包相关的操作。） |
+| **contextDepth**           | String | 事件消息上下文的深度                              | `0`（0 表示在包执行开始之前的上下文，1 表示发生错误时的上下文，该数字将随着上下文离错误的距离的增加而增大。） |
 | **packagePath**            | String | 作为事件消息上下文源的包对象的路径      | `\Package` |
-| **contextType**            | String | 作为事件消息上下文源的包对象的类型      | `60`（请参阅[更多上下文类型](/sql/integration-services/system-views/catalog-event-message-context#remarks)） |
+| **contextType**            | String | 作为事件消息上下文源的包对象的类型      | `60`（请参阅[更多上下文类型](/sql/integration-services/system-views/catalog-event-message-context#remarks)。） |
 | **contextSourceName**      | String | 作为事件消息上下文源的包对象的名称      | `MyPackage` |
 | **contextSourceId**        | String | 作为事件消息上下文源的包对象的唯一 ID | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | String | 事件消息上下文源的包属性的名称   | `DelayValidation` |
 | **propertyValue**          | String | 事件消息上下文源的包属性的值  | `False` |
-| **resourceId**             | String | ADF 资源的唯一 ID                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **resourceId**             | String | 数据工厂资源的唯一 ID                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ### <a name="ssis-event-messages-log-attributes"></a>SSIS 事件消息日志特性
 
-下面是通过 SSIS IR 上的 SSIS 包执行操作生成的事件消息的日志特性。 它们传递的信息与 [SSISDB 事件消息表或视图](/sql/integration-services/system-views/catalog-event-messages)类似，后者显示事件消息的详细文本/元数据。 它们可以在除 `None` 之外的任何日志记录级别生成。
+下面是通过 SSIS IR 上的 SSIS 包执行操作生成的事件消息的日志特性。 它们传递的信息与 [SSISDB 事件消息表或视图](/sql/integration-services/system-views/catalog-event-messages)类似，后者显示事件消息的详细文本或元数据。 它们可以在除 `None` 之外的任何日志记录级别生成。
 
 ```json
 {
@@ -279,16 +280,16 @@ ms.locfileid: "124837724"
 | properties                   | 类型   | 说明                                                        | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
+| **operationName**          | String | 设置为 `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
 | **category**               | String | 诊断日志的类别                                    | `SSISPackageEventMessages` |
 | **correlationId**          | String | 用于跟踪特定操作的唯一 ID                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**        | String | ADF 的名称                                               | `MyADFv2` |
+| **dataFactoryName**        | String | 数据工厂的名称                                               | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                           | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                       | `Informational` |
-| **operationId**            | String | 用于跟踪 SSISDB 中的特定操作的唯一 ID        | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的操作） |
+| **operationId**            | String | 用于跟踪 SSISDB 中的特定操作的唯一 ID        | `1`（1 表示与未存储在 SSISDB 中/通过 T-SQL 调用的包相关的操作。） |
 | **messageTime**            | 字符串 | 创建事件消息的时间（采用 UTC 格式）          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | 字符串 | 事件消息的类型                                     | `70`（请参阅[更多消息类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)） |
-| **messageSourceType**      | 字符串 | 事件消息源的类型                              | `20`（请参阅[更多消息源类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)） |
+| **messageType**            | 字符串 | 事件消息的类型                                     | `70`（请参阅[更多消息类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)。） |
+| **messageSourceType**      | 字符串 | 事件消息源的类型                              | `20`（请参阅[更多消息源类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)。） |
 | **message**                | String | 事件消息的文本                                     | `MyPackage:Validation has started.` |
 | **packageName**            | 字符串 | 已执行的包文件的名称                             | `MyPackage.dtsx` |
 | **eventName**              | 字符串 | 相关运行时事件的名称                                 | `OnPreValidate` |
@@ -296,12 +297,12 @@ ms.locfileid: "124837724"
 | **messageSourceId**        | 字符串 | 作为事件消息源的包组件的唯一 ID    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 | **subcomponentName**       | 字符串 | 作为事件消息源的数据流组件的名称       | `SSIS.Pipeline` |
 | **packagePath**            | String | 作为事件消息源的包对象的路径            | `\Package\Data Flow Task` |
-| **executionPath**          | 字符串 | 从父包到已执行组件的完整路径            | `\Transformation\Data Flow Task`（此路径还捕获组件迭代） |
+| **executionPath**          | 字符串 | 从父包到已执行组件的完整路径            | `\Transformation\Data Flow Task`（此路径还捕获组件迭代。） |
 | **threadId**               | 字符串 | 记录事件消息时执行的线程的唯一 ID | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
 ### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 可执行文件统计信息日志特性
 
-下面是通过 SSIS IR 上的 SSIS 包执行操作生成的可执行文件统计信息的日志特性，其中的可执行文件是包的控制流中的容器或任务。 它们传递的信息与 [SSISDB 可执行文件统计信息表或视图](/sql/integration-services/system-views/catalog-executable-statistics)类似，后者针对每个运行的可执行文件（包括其迭代）显示一行。 它们可以在除 `None` 之外的任何日志记录级别生成，用于识别任务级瓶颈/故障。
+下面是通过 SSIS IR 上的 SSIS 包执行操作生成的可执行文件统计信息的日志特性，其中的可执行文件是包的控制流中的容器或任务。 它们传递的信息与 [SSISDB 可执行文件统计信息表或视图](/sql/integration-services/system-views/catalog-executable-statistics)类似，后者显示每个运行的可执行文件（包括其迭代）的一行。 它们可在除 `None` 之外的任何日志记录级别生成，用于识别任务级瓶颈或失败。
 
 ```json
 {
@@ -325,27 +326,27 @@ ms.locfileid: "124837724"
 }
 ```
 
-| properties                   | 类型   | 说明                                                      | 示例                        |
+| 属性                   | 类型   | 说明                                                      | 示例                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
+| **operationName**          | String | 设置为 `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
 | **category**               | String | 诊断日志的类别                                  | `SSISPackageExecutableStatistics` |
 | **correlationId**          | String | 用于跟踪特定操作的唯一 ID                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**        | String | ADF 的名称                                             | `MyADFv2` |
+| **dataFactoryName**        | String | 数据工厂的名称                                             | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                         | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                     | `Informational` |
-| **executionId**            | 字符串 | 用于跟踪 SSISDB 中的特定执行的唯一 ID      | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的执行） |
-| **executionPath**          | 字符串 | 从父包到已执行组件的完整路径          | `\Transformation\Data Flow Task`（此路径还捕获组件迭代） |
+| **executionId**            | 字符串 | 用于跟踪 SSISDB 中的特定执行的唯一 ID      | `1`（1 表示与未存储在 SSISDB 中/通过 T-SQL 调用的包相关的执行。） |
+| **executionPath**          | 字符串 | 从父包到已执行组件的完整路径          | `\Transformation\Data Flow Task`（此路径还捕获组件迭代。） |
 | **startTime**              | String | 可执行文件进入执行前阶段的时间（采用 UTC 格式）  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | 可执行文件进入执行后阶段的时间（采用 UTC 格式） | `2017-06-28T21:00:27.3534352Z` |
 | **executionDuration**      | 字符串 | 可执行文件的运行时间（毫秒）                   | `1,125` |
-| **executionResult**        | 字符串 | 运行可执行文件的结果                                 | `0`（0 表示成功，1 表示失败，2 表示完成，3 表示取消） |
+| **executionResult**        | 字符串 | 运行可执行文件的结果                                 | `0`（0 表示成功，1 表示失败，2 表示完成，3 表示取消。） |
 | **executionValue**         | 字符串 | 通过运行可执行文件返回的用户定义的值            | `1` |
-| **resourceId**             | String | ADF 资源的唯一 ID                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **resourceId**             | String | 数据工厂资源的唯一 ID                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS 执行组件阶段日志特性
 
-下面是通过 SSIS IR 上的 SSIS 包执行操作生成的数据流组件的运行时统计信息的日志特性。 它们传递的信息与 [SSISDB 执行组件阶段表或视图](/sql/integration-services/system-views/catalog-execution-component-phases)类似，后者显示数据流组件在其所有执行阶段中花费的时间。 当你选择 `Performance/Verbose` 日志记录级别时会生成它们，用于捕获数据流执行统计信息。
+以下是通过 SSIS IR 上的 SSIS 包执行生成的数据流组件的运行时统计信息的日志属性。 它们传递的信息与 [SSISDB 执行组件阶段表或视图](/sql/integration-services/system-views/catalog-execution-component-phases)类似，后者显示数据流组件在其所有执行阶段中花费的时间。 当你选择 `Performance/Verbose` 日志记录级别时会生成它们，用于捕获数据流执行统计信息。
 
 ```json
 {
@@ -373,13 +374,13 @@ ms.locfileid: "124837724"
 | properties                   | 类型   | 说明                                                         | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
+| **operationName**          | String | 设置为 `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
 | **category**               | String | 诊断日志的类别                                     | `SSISPackageExecutionComponentPhases` |
 | **correlationId**          | String | 用于跟踪特定操作的唯一 ID                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**        | String | ADF 的名称                                                | `MyADFv2` |
+| **dataFactoryName**        | String | 数据工厂的名称                                                | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                            | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                        | `Informational` |
-| **executionId**            | 字符串 | 用于跟踪 SSISDB 中的特定执行的唯一 ID         | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的执行） |
+| **executionId**            | 字符串 | 用于跟踪 SSISDB 中的特定执行的唯一 ID         | `1`（1 表示与未存储在 SSISDB 中/通过 T-SQL 调用的包相关的执行。） |
 | **packageName**            | 字符串 | 已执行的包文件的名称                              | `MyPackage.dtsx` |
 | **taskName**               | 字符串 | 执行的数据流任务的名称                                 | `Data Flow Task` |
 | **subcomponentName**       | 字符串 | 数据流组件的名称                                     | `Derived Column` |
@@ -387,7 +388,7 @@ ms.locfileid: "124837724"
 | **startTime**              | String | 执行阶段的开始时间（采用 UTC 格式）                  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | 执行阶段的结束时间（采用 UTC 格式）                    | `2017-06-28T21:00:27.3534352Z` |
 | **executionPath**          | 字符串 | 数据流任务的执行路径                            | `\Transformation\Data Flow Task` |
-| **resourceId**             | String | ADF 资源的唯一 ID                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **resourceId**             | String | 数据工厂资源的唯一 ID                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS 执行数据统计信息日志特性
 
@@ -421,13 +422,13 @@ ms.locfileid: "124837724"
 | properties                     | 类型   | 说明                                                        | 示例                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**            | String | 此项设置为 `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
+| **operationName**            | String | 设置为 `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
 | **category**                 | String | 诊断日志的类别                                    | `SSISPackageExecutionDataStatistics` |
 | **correlationId**            | String | 用于跟踪特定操作的唯一 ID                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
-| **dataFactoryName**          | String | ADF 的名称                                               | `MyADFv2` |
+| **dataFactoryName**          | String | 数据工厂的名称                                               | `MyADFv2` |
 | **integrationRuntimeName**   | String | SSIS IR 的名称                                           | `MySSISIR` |
 | **level**                    | String | 诊断日志的级别                                       | `Informational` |
-| **executionId**              | 字符串 | 用于跟踪 SSISDB 中的特定执行的唯一 ID        | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的执行） |
+| **executionId**              | 字符串 | 用于跟踪 SSISDB 中的特定执行的唯一 ID        | `1`（1 表示与未存储在 SSISDB 中/通过 T-SQL 调用的包相关的执行。） |
 | **packageName**              | 字符串 | 已执行的包文件的名称                             | `MyPackage.dtsx` |
 | **taskName**                 | 字符串 | 执行的数据流任务的名称                                | `Data Flow Task` |
 | **dataflowPathIdString**     | 字符串 | 用于跟踪数据流路径的唯一 ID                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
@@ -437,11 +438,11 @@ ms.locfileid: "124837724"
 | **rowsSent**                 | 字符串 | 由源组件发送的行数                        | `500` |
 | **createdTime**              | 字符串 | 获取行值的时间（采用 UTC 格式）                | `2017-06-28T21:00:27.3534352Z` |
 | **executionPath**            | 字符串 | 数据流任务的执行路径                           | `\Transformation\Data Flow Task` |
-| **resourceId**               | String | ADF 资源的唯一 ID                                 | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **resourceId**               | String | 数据工厂资源的唯一 ID                                 | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 ## <a name="log-analytics-schema"></a>Log Analytics 架构
 
-Log Analytics 从 Monitor 继承架构，但存在以下例外情况：
+Log Analytics 从 Azure Monitor 继承架构，但存在以下例外情况：
 
 * 每个列名中的第一个字母会大写。 例如，Monitor 中的列名“correlationId”在 Log Analytics 中为“CorrelationId”。
 * 没有“Level”列。

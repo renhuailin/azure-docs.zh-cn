@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 10/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 900010fd454e356b43eb7cb5b2ee0379bdf90beb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 1129b4cf06a2de01438f2c83500eee84240183fc
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367321"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705264"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-the-azure-cli"></a>使用 Azure CLI 创建具有静态专用 IP 地址的虚拟机
 
@@ -57,7 +57,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 在本部分中，你会将之前创建的虚拟机专用 IP 地址从“动态”更改为“静态”。  
 
-使用 [az network nic ip-config update](/cli/azure/network/nic/ipconfig#az_network_nic_ip_config_update) 更新网络接口配置。
+使用 [az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update) 更新网络接口配置。
 
 以下命令会将虚拟机专用 IP 地址更改为静态：
 

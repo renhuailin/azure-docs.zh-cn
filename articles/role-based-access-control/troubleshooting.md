@@ -10,15 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 04/06/2021
+ms.date: 10/01/2021
 ms.author: rolyon
 ms.custom: seohack1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b364e74df7e6069407b0bcc3a6cfccd2ead09eae
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3273285aeee7497c43fc4002b2bdabe0b6ef13de
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690863"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390057"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题
 
@@ -26,7 +26,7 @@ ms.locfileid: "110690863"
 
 ## <a name="azure-role-assignments-limit"></a>Azure 角色分配限制
 
-Azure 对于每个订阅最多支持 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 如果尝试分配角色时收到错误消息“无法创建更多的角色分配(代码:RoleAssignmentLimitExceeded)”，请尝试减少订阅中的角色分配数。
+Azure 对于每个订阅最多支持 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配，但不包括管理组范围内的角色分配。 如果尝试分配角色时收到错误消息“无法创建更多的角色分配(代码:RoleAssignmentLimitExceeded)”，请尝试减少订阅中的角色分配数。
 
 > [!NOTE]
 > 每个订阅的角色分配数限制 2000 是固定的，无法提高。
@@ -46,6 +46,13 @@ $scope = "/subscriptions/<subscriptionId>"
 $ras = Get-AzRoleAssignment -Scope $scope | Where-Object {$_.scope.StartsWith($scope)}
 $ras.Count
 ```
+
+## <a name="azure-role-assignments-limit-for-management-groups"></a>管理组的 Azure 角色分配限制
+
+Azure 对于每个管理组最多支持 500 个角色分配。 此限制不同于每个订阅的角色分配限制。
+
+> [!NOTE]
+> 每个管理组的角色分配数限制 500 是固定的，无法提高。
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure 角色分配问题
 
