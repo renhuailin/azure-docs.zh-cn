@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8cedd159c1c4c8a7d5309024d66ddc104c07506b
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.openlocfilehash: 0e894fc6c6e210249e591ed7f9b9b662ff5ae187
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062085"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272920"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -229,7 +229,7 @@ Log Analytics [清除 API](/rest/api/loganalytics/workspacepurge/purge) 不会�
     }
 ```
 
-`retentionInDays` 的有效值为 30 到 730。
+`retentionInDays` 的有效值为 4 到 730。
 
 `Usage` 和 `AzureActivity` 数据类型不能使用自定义保留期进行设置。 它们使用最大的默认工作区保留期（或 90 天）。 
 

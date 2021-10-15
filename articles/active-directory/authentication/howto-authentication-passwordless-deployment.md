@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ee82c26217ac1b760c59f56f9875b7dcbcaf663
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a1c8f1117053e6076d2281036ecc63f1cbf97d15
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759807"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352737"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码身份验证部署
 
@@ -39,7 +39,7 @@ Microsoft 提供了以下与 Azure Active Directory (Azure AD) 集成的[三个�
 
 ## <a name="passwordless-authentication-scenarios"></a>无密码身份验证方案
 
-Microsoft 的无密码身份验证方法可实现多个方案。 请考虑贵组织的需求、先决条件以及每种身份验证方法的功能，以选择你的无密码身份验证策略。 
+Microsoft 的无密码身份验证方法可实现许多方案。 请考虑贵组织的需求、先决条件以及每种身份验证方法的功能，以选择你的无密码身份验证策略。 
 
 下表按设备类型列出了无密码身份验证方法。 我们的建议以粗体显示。
 
@@ -76,12 +76,12 @@ Microsoft 的无密码身份验证方法可实现多个方案。 请考虑贵组
 
 | 先决条件| Microsoft Authenticator 应用| FIDO2 安全密钥|
 | - | -|-|
-| 已启用 [Azure AD 多重身份验证 (MFA) 和自助式密码重置 (SSPR) 组合式注册](howto-registration-mfa-sspr-combined.md)| √| √|  |
-| [用户可以执行 Azure AD MFA](howto-mfa-getstarted.md)| √| √|  |
-| [用户已注册 Azure AD MFA 和 SSPR](howto-registration-mfa-sspr-combined.md)| √| √|  |
-| [用户已将其移动设备注册到 Azure Active Directory](../devices/overview.md)| √| |  |
-| Windows 10 版本 1809 或更高版本，使 Microsoft Edge 或 Mozilla Firefox（版本 67 或更高版本）等受支持的浏览器。 Microsoft 推荐版本 1903 或更高版本以获取本机支持。| | √|  |
-| 兼容的安全密钥。 确保使用的是[经过 Microsoft 测试和验证的 FIDO2 安全密钥](concept-authentication-passwordless.md)或其他兼容的 FIDO2 安全密钥。| | √|  |
+| 已启用 [Azure AD 多重身份验证 (MFA) 和自助式密码重置 (SSPR) 组合式注册](howto-registration-mfa-sspr-combined.md)| √| √|
+| [用户可以执行 Azure AD MFA](howto-mfa-getstarted.md)| √| √|
+| [用户已注册 Azure AD MFA 和 SSPR](howto-registration-mfa-sspr-combined.md)| √| √|
+| [用户已将其移动设备注册到 Azure Active Directory](../devices/overview.md)| √| |
+| Windows 10 版本 1809 或更高版本，使 Microsoft Edge 或 Mozilla Firefox（版本 67 或更高版本）等受支持的浏览器。 Microsoft 推荐版本 1903 或更高版本以获取本机支持。| | √|
+| 兼容的安全密钥。 确保使用的是[经过 Microsoft 测试和验证的 FIDO2 安全密钥](concept-authentication-passwordless.md)或其他兼容的 FIDO2 安全密钥。| | √|
 
 
 ### <a name="windows-hello-for-business"></a>Windows Hello 企业版
@@ -294,17 +294,15 @@ Azure MFA 服务器 - 通过组织的本地 Azure MFA 服务器启用了多重�
 
 ### <a name="troubleshoot-security-key-sign-in"></a>安全密钥登录故障排除
 
-
 | 方案| 解决方案 |
 | - | -|
 | 用户无法执行组合式注册。| 确保已启用[组合式注册](concept-registration-mfa-sspr-combined.md)。 |
 | 用户无法在其[安全设置](https://aka.ms/mysecurityinfo)中添加安全密钥。| 确保已启用[安全密钥](howto-authentication-passwordless-security-key.md)。 |
 | 用户无法在 Windows 10 登录选项中添加安全密钥。| [确保安全密钥用于 Windows 登录](concept-authentication-passwordless.md)已启用 |
-| 错误消息：已检测到此浏览器或 OS 不支持 FIDO2 安全密钥。| 只能在 Windows 10 版本 1809 或更高版本上使用受支持的浏览器（Microsoft Edge 和 Firefox 版本 67）注册无密码 FIDO2 安全设备。 |
+| 错误消息：“已检测到此浏览器或操作系统不支持 FIDO2 安全密钥”。| 只能在 Windows 10 版本 1809 或更高版本上使用受支持的浏览器（Microsoft Edge 和 Firefox 版本 67）注册无密码 FIDO2 安全设备。 |
 | 错误消息：“你的公司策略要求你使用其他方式登录”。| 确定已在租户中启用安全密钥。 |
 | 用户无法在 Windows 10 版本 1809 上管理其安全密钥| 版本 1809 要求使用 FIDO2 密钥供应商提供的安全密钥管理软件。 请与供应商联系以获取支持。 |
 | 我认为我的 FIDO2 安全密钥可能有问题，如何对其进行测试。| 导航至 [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)，输入测试帐户的凭据，插入可疑的安全密钥，选择屏幕右上角的 + 按钮，选择“创建”，然后完成创建过程。 如果此方案失败，则设备可能已损坏。 |
-
 
 ## <a name="manage-passwordless-authentication"></a>管理无密码身份验证
 
@@ -320,7 +318,7 @@ Azure MFA 服务器 - 通过组织的本地 Azure MFA 服务器启用了多重�
 
 * 管理安全密钥和 Microsoft Authenticator 应用的身份验证方法策略。
 
-有关可在 Microsoft Graph 中管理哪些身份验证方法的详细信息，请参阅 [Azure AD 身份验证方法 API 概述](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)。
+有关可在 Microsoft Graph 中管理哪些身份验证方法的详细信息，请参阅 [Azure AD 身份验证方法 API 概述](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)。
 
 ### <a name="rollback"></a>回退
 
@@ -340,12 +338,11 @@ Azure AD 提供一些报告，这些报告可提供技术见解和业务见解�
 
 下表提供了典型报告方案的一些示例：
 
-| 管理风险| 提高工作效率| 管理和符合性|
-|-|-|-|
+| 管理风险| 提高工作效率| 管理和符合性| 其他|
+|-|-|-|-|
 | 报表类型| 身份验证方法 - 为用户注册了组合式安全注册| 身份验证方法 - 为用户注册了应用通知| 登录：查看正在访问租户的用户及其访问方式 |
 | 可能的操作| 尚未注册目标用户| 推动采用 Microsoft Authenticator 应用或安全密钥| 撤销管理员的访问权限或强制执行其他安全策略 |
 
- 
 
 #### <a name="track-usage-and-insights"></a>跟踪使用情况和见解
 

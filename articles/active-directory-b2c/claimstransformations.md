@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 426fe2bee411b5db40314ba6ff4087c37aad657c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85202953"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544842"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -115,7 +115,7 @@ OutputClaim 元素包含以下属性：
 | ClaimTypeReferenceId | 是 | 对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。
 | TransformationClaimType | 是 | 用于引用转换声明类型的标识符。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |
 
-如果输入声明和输出声明具有相同的类型（字符串或布尔值），可以将相同的输入声明用作输出声明。 在这种情况下，声明转换更改具有输出值的输入声明。
+声明转换中使用的输入和输出声明必须是独一无二的。 同一输入声明不能用作输出声明。
 
 ## <a name="example"></a>示例
 

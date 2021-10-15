@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/27/2021
 ms.author: larryfr
 ms.custom: include file
-ms.openlocfilehash: 18d6da8c9156a66a16be7590603ae71b85abb9a4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e144756e65c0ae4d202333cd2972d9c5a1e3fdc8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105491"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740711"
 ---
 Azure 机器学习需要对公共 Internet 进行入站和出站访问。 下表概述了需要的访问权限及其用途。 所有项的协议都是 TCP 。 对于以 `.region` 结尾的服务标记，请将 `region` 替换为包含你的工作区的 Azure 区域。 例如，`Storage.westus`：
 
@@ -28,6 +28,7 @@ Azure 机器学习需要对公共 Internet 进行入站和出站访问。 下表
 | 出站 | 443 | AzureFrontDoor.FrontEnd</br>* Azure 中国区域不需要。 | [Azure 机器学习工作室](https://ml.azure.com)的全球入口点。 | 
 | 出站 | 443 | ContainerRegistry.region | 访问由 Microsoft 提供的 docker 映像。 |
 | 出站 | 443 | MicrosoftContainerRegistry.region | 访问由 Microsoft 提供的 docker 映像。 为 Azure Kubernetes 服务设置 Azure 机器学习路由器。 |
+| 出站 | 443 | Keyvault.region | 访问 Azure Batch 服务的密钥保管库。 仅当工作区是在启用 [hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) 标志的情况下创建时才需要。 |
 
 > [!TIP]
 > 如果需要 IP 地址而不是服务标记，请使用下列选项之一：
@@ -52,6 +53,6 @@ Azure 机器学习需要对公共 Internet 进行入站和出站访问。 下表
 
 将 Azure Kubernetes Service (AKS) 与 Azure 机器学习一起使用时，请允许将以下流量发送到 AKS VNet：
 
-* AKS 的一般入站/出站要求见[限制 Azure Kubernetes 服务中的出口流量](/azure/aks/limit-egress-traffic)一文中所述。
+* AKS 的一般入站/出站要求见[限制 Azure Kubernetes 服务中的出口流量](../articles/aks/limit-egress-traffic.md)一文中所述。
 * 发往 mcr.microsoft.com 的出站流量。
-* 将模型部署到 AKS 群集时，请遵循[将 ML 模型部署到 Azure Kubernetes 服务](/azure/machine-learning/how-to-deploy-azure-kubernetes-service#connectivity)一文中的指导。
+* 将模型部署到 AKS 群集时，请遵循[将 ML 模型部署到 Azure Kubernetes 服务](../articles/machine-learning/how-to-deploy-azure-kubernetes-service.md#connectivity)一文中的指导。

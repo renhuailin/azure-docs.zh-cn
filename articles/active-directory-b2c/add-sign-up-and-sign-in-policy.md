@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 08/24/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0c1871921160b0b5862e7655a3826949406ac111
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 9774eef558b02bef4ef9ec9ecacd6e5a132fd244
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777799"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570303"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中创建注册和登录流
 
@@ -35,6 +35,10 @@ ms.locfileid: "122777799"
 
 ![配置文件编辑流](./media/add-sign-up-and-sign-in-policy/add-sign-up-and-sign-in-flow.png)
 
+观看此视频，了解用户注册和登录策略的工作原理。 
+
+>[!Video https://www.youtube.com/embed/c8rN1ZaR7wk]
+
 ## <a name="prerequisites"></a>先决条件
 
 [在 Azure Active Directory B2C 中注册 Web 应用程序](tutorial-register-applications.md)（如果尚未这样做）。
@@ -47,7 +51,7 @@ ms.locfileid: "122777799"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中选择“目录 + 订阅”图标。
-1. 在“门户设置 | 目录+订阅”页上，在“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在“策略”下，依次选择“用户流”、“新建用户流”。
 

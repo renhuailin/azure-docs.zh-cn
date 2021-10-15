@@ -2,7 +2,6 @@
 title: 自定义 Azure AD 租户应用声明 (PowerShell)
 titleSuffix: Microsoft identity platform
 description: 了解如何为特定 Azure Active Directory 租户中的应用程序自定义在令牌中发出的声明。
-services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -13,12 +12,12 @@ ms.topic: how-to
 ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 302ab2b6f3060213a79b88ce6358cd842f74a425
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 71677a085627f46a995530c522a3a480be188042
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425547"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350999"
 ---
 # <a name="customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant"></a>为租户中的特定应用自定义在令牌中发出的声明
 
@@ -47,7 +46,7 @@ ms.locfileid: "123425547"
 若要开始，请执行以下步骤：
 
 1. 首先请下载最新的 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
-1. 运行 [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0-preview) 命令，登录到 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
+1. 运行 [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0-preview&preserve-view=true) 命令，登录到 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
 
    ``` powershell
    Connect-AzureAD -Confirm
@@ -225,7 +224,7 @@ Authorization: Bearer {token}
     - 私钥的密码（pfx 文件）
 
 > [!IMPORTANT]
-> 私钥必须采用 PKCS#12 格式，因为 Azure AD 不支持其他格式类型。 使用 Microsoft Graph 通过包含证书信息的 `keyCredentials` 修补服务主体时，使用错误格式可能会导致错误“证书无效：密钥值是无效证书”。
+> 私钥必须采用 PKCS#12 格式，因为 Azure AD 不支持其他格式类型。 使用 Microsoft Graph 通过包含证书信息的 `keyCredentials` 来修补服务主体时，使用错误格式可能会导致“证书无效: 密钥值是无效证书”错误。
 
 ```powershell
 

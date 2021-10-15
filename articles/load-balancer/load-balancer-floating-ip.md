@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: e103af26d62518dabb5314c79c61335a2791417a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: a72eceba85e14e058fa7c8ba2b109009e46e6df3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479861"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357448"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure 负载均衡器浮动 IP 配置
 
@@ -24,7 +24,7 @@ ms.locfileid: "123479861"
 
 ## <a name="floating-ip"></a>浮动 IP
 
-在某些应用程序场景中，后端池中单个 VM 上的多个应用程序实例更需要或要求使用相同端口。 端口重用的常见示例包括 
+在某些应用程序场景中，后端池中单个 VM 上的多个应用程序实例更需要或要求使用相同端口。 端口重用的常见示例包括： 
 - 进行群集来实现高可用性
 - 网络虚拟设备
 - 在不重新加密的情况下公开多个 TLS 终结点。 

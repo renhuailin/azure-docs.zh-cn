@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/20/2021
+ms.date: 09/28/2021
 ms.author: tisande
-ms.openlocfilehash: 39b385096fadb5d410520889c0aa8f1a07f1a67a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ebf9eb5e06b98bdd573d91f0a57daeb9d81b1f50
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616548"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230544"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Azure Cosmos DB 集成缓存 - 概述（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -90,7 +90,7 @@ Azure Cosmos DB 集成缓存是一种内存中缓存，可帮助你在请求量�
 
 集成缓存仅支持会话和最终[一致性](consistency-levels.md)。 如果读取具有一致的前缀、有限过期或强一致性，它将始终绕过集成缓存。
 
-若要为所有读取操作配置会话或最终一致性，最简单的方法是[在帐户级别设置最终一致性](consistency-levels.md#configure-the-default-consistency-level)。 但是，如果只希望某些读取具有最终一致性，也可在[请求级别](how-to-manage-consistency.md#override-the-default-consistency-level)配置一致性。
+若要为所有读取操作配置会话或最终一致性，最简单的方法是[在帐户级别设置最终一致性](consistency-levels.md#configure-the-default-consistency-level)。 但是，如果只希望某些读取具有特定一致性，也可在[请求级别](how-to-manage-consistency.md#override-the-default-consistency-level)配置一致性。
 
 ### <a name="session-consistency"></a>会话一致性
 
@@ -139,8 +139,8 @@ Azure Cosmos DB 集成缓存是一种内存中缓存，可帮助你在请求量�
 - `IntegratedCacheEvictedEntriesSize` - 由于 LRU 从专用网关节点的集成缓存中逐出的平均数据量。 此值不包括因超过 `MaxIntegratedCacheStaleness` 时间而过期的数据。
 - `IntegratedCacheItemExpirationCount` - 由于缓存点读取超过 `MaxIntegratedCacheStaleness` 时间而从集成缓存中逐出的项数。 此值是所有专用网关节点的集成缓存实例的平均值。
 - `IntegratedCacheQueryExpirationCount` - 由于缓存查询超过 `MaxIntegratedCacheStaleness` 时间而从集成缓存中逐出的查询数。 此值是所有专用网关节点的集成缓存实例的平均值。
-- `IntegratedCacheItemHitRate` - 使用集成缓存的点读取比例（在通过具有最终一致性的专用网关路由的所有点读取中的占比）。 此值是所有专用网关节点的集成缓存实例的平均值。
-- `IntegratedCacheQueryHitRate` - 使用集成缓存的查询比例（在通过具有最终一致性的专用网关路由的所有查询中的占比）。 此值是所有专用网关节点的集成缓存实例的平均值。
+- `IntegratedCacheItemHitRate` - 使用集成缓存的点读取比例（在通过具有会话一致性或最终一致性的专用网关路由的所有点读取中的占比）。 此值是所有专用网关节点的集成缓存实例的平均值。
+- `IntegratedCacheQueryHitRate` - 使用集成缓存的查询比例（在通过具有会话一致性或最终一致性的专用网关路由的所有查询中的占比）。 此值是所有专用网关节点的集成缓存实例的平均值。
 
 默认情况下，所有现有指标在“指标”边栏选项卡（不是“经典指标”）中提供：
 

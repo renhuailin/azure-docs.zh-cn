@@ -12,22 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/28/2018
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 994af6291f55e9f1dd44f2f522f9273639531257
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006587"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407049"
 ---
 # <a name="create-a-netapp-account"></a>创建 NetApp 帐户
 创建 NetApp 帐户将能够设置容量池并随后创建卷。 使用“Azure NetApp 文件”边栏选项卡来创建新的 NetApp 帐户。
 
 ## <a name="before-you-begin"></a>开始之前
-用户必须收到 Azure NetApp 文件团队发送的一封电子邮件，确认已被授予对该服务的访问权限。 请参阅[提交访问该服务的候补名单请求](azure-netapp-files-register.md#waitlist)。
 
-另外，还必须使用 NetApp 资源提供程序注册订阅。 请参阅[注册 NetApp 资源提供程序](azure-netapp-files-register.md#resource-provider)。
+必须注册订阅才能使用 NetApp 资源提供程序。 请参阅[注册 NetApp 资源提供程序](azure-netapp-files-register.md)。
 
 ## <a name="steps"></a>步骤 
 
@@ -64,5 +63,5 @@ ms.locfileid: "96006587"
 
 ## <a name="next-steps"></a>后续步骤  
 
-[设置容量池](azure-netapp-files-set-up-capacity-pool.md)
+[创建容量池](azure-netapp-files-set-up-capacity-pool.md)
 

@@ -13,12 +13,12 @@ ms.date: 07/22/2021
 ms.author: shermanouko
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 07f6c7f481e815e788b22782f01ad9369bd2c9f6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1f4a710beba53987ce555aad5526298f81d0a43c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039691"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232292"
 ---
 # <a name="get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>获取租户中使用 ADAL 的应用的完整列表
 
@@ -28,9 +28,13 @@ ms.locfileid: "123039691"
 
 工作簿是一组查询，用于收集和可视化 Azure Active Directory (Azure AD) 日志中提供的信息。 [在此处了解有关登录日志架构的详细信息](../reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md)。 Azure AD 管理门户中的登录工作簿现在提供了一个表，可帮助你确定哪些应用程序使用 ADAL 和使用频率。 首先，我们将详细介绍如何在显示应用程序列表的可视化对象之前访问工作簿。
 
-## <a name="step-1-integrate-audit-logs-with-azure-monitor"></a>步骤 1：通过 Azure Monitor 集成审核日志
+## <a name="step-1-send-azure-ad-sign-in-events-to-azure-monitor"></a>步骤 1：将 Azure AD 登录事件发送到 Azure Monitor
 
-在访问工作簿之前，请按照[使用 Azure Monitor 将 Azure AD 登录和审核日志集成](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)中的步骤进行操作。 仅存储 Azure Monitor 集成后创建的登录和审核事件。
+默认情况下，Azure AD 不会将登录事件发送到 Azure Monitor，Azure Monitor 中的登录工作簿才需要。
+
+按照[将 Azure AD 登录和审核日志与 Azure Monitor 集成](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)中的步骤，将 AD 配置为将登录事件发送到 Azure Monitor。 在“诊断设置”配置步骤中，选中“SignInLogs”复选框。
+
+在配置 Azure AD 以将事件发送到 Azure Monitor 之前未发生的任何登录事件，将显示在登录工作簿中。
 
 ## <a name="step-2-access-sign-ins-workbook-in-azure-portal"></a>步骤 2：访问 Azure 门户中的登录工作簿
 

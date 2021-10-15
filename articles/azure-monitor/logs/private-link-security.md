@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e175439cacb75fc50574f172d9e1e34cba4cdbd7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: e0c9a1d640a4ac1596370cace9cd657e082aee48
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426393"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275746"
 ---
 # <a name="use-azure-private-link-to-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络连接到 Azure Monitor
 
@@ -78,7 +78,7 @@ Azure Monitor 专用链接范围将专用终结点（及包含它们的 VNet）�
 * 公开模式 - 使用专用链接与 AMPLS 中的资源进行通信，但也允许流量继续发往其他资源。 请参阅[控制专用链接如何应用于网络](./private-link-design.md#control-how-private-links-apply-to-your-networks)，了解详细信息。
 
 > [!NOTE]
-> Log Analytics 引入操作使用资源特定的终结点。 因此，它不遵循 AMPLS 访问模式。 通过专用链接引入到 AMPLS 中的工作区，而如果引入到 AMPLS 之外的工作区，则使用默认公共终结点。 若要确保引入请求无法访问 AMPLS 之外的资源，请阻止网络访问公共终结点。
+> Log Analytics 引入操作使用资源特定的终结点。 因此，它不遵循 AMPLS 访问模式。 若要确保 Log Analytics 引入请求无法访问 AMPLS 外部的工作区，请将网络防火墙设置为阻止流量发送到公共终结点，不管 AMPLS 访问模式如何。
 
 ## <a name="next-steps"></a>后续步骤
 - [设计专用链接设置](private-link-design.md)

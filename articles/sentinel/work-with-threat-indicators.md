@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 0ce6c7ced310fa467adbdc707d25bb5efc0f02bc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 05aa211d5a96b712862fbb8c81e10ba313ef3b74
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763303"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278783"
 ---
 # <a name="work-with-threat-indicators-in-azure-sentinel"></a>使用 Azure Sentinel 中的威胁指标
 
@@ -33,10 +33,6 @@ ms.locfileid: "124763303"
 - 使用内置的 Analytics 规则模板，根据导入的威胁情报，检测威胁并生成安全警报和事件 。
 
 - 利用“威胁情报”工作簿直观显示 Azure Sentinel 中导入的威胁情报的关键信息 。
-
-> [!IMPORTANT]
-> 请注意，这些功能目前为预览版。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
->
 
 ## <a name="view-your-threat-indicators-in-azure-sentinel"></a>查看 Azure Sentinel 中的威胁指标
 
@@ -139,6 +135,10 @@ ms.locfileid: "124763303"
 在 Azure Sentinel 中，根据分析规则生成的警报还会生成安全事件，这些事件可以在 Azure Sentinel 菜单的“威胁管理”下的“事件”中找到。 安全操作团队将对事件进行会审和调查，以确定适当的响应操作。 你可以在此[教程：使用 Azure Sentinel 调查事件](./investigate-cases.md)中找到详细信息。
 
 ## <a name="detect-threats-using-matching-analytics-public-preview"></a>使用匹配分析（公共预览版）检测威胁
+
+> [!IMPORTANT]
+> 匹配分析目前以预览版提供。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+>
 
 使用内置的 Microsoft 威胁情报匹配分析分析规则模板来[创建规则](detect-threats-built-in.md#use-built-in-analytics-rules)，让 Azure Sentinel 将 Microsoft 生成的威胁情报数据与已引入到 Azure Sentinel 的日志相匹配。
 

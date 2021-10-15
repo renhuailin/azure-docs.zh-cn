@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 4a47a13405402b381c1a1b3682f5d42038218959
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 8454a75936c84f012d05c8917cfffeec4a08dcdc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689147"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278417"
 ---
 # <a name="best-practices-for-azure-sentinel"></a>Azure Sentinel 最佳做法
 
@@ -23,6 +23,35 @@ ms.locfileid: "122689147"
 > 部署 Azure Sentinel 之前，请查看并完成[部署前活动和先决条件](prerequisites.md)。
 >
 
+
+## <a name="best-practice-references"></a>最佳做法参考
+
+Azure Sentinel 文档提供了最佳做法指南，这些指南分散在我们的文章中。 本文提供的内容以外的其他信息请参阅以下文章：
+
+- **管理员用户**：
+
+    - [部署 Azure Sentinel 的预先部署活动和先决条件](prerequisites.md)
+    - [Azure Sentinel 工作区体系结构最佳做法](best-practices-workspace-architecture.md)
+    - [设计 Azure Sentinel 工作区体系结构](design-your-workspace-architecture.md)
+    - [Azure Sentinel 示例工作区设计](sample-workspace-designs.md)
+    - [数据收集最佳做法](best-practices-data.md)
+    - [Azure Sentinel 成本和账单](azure-sentinel-billing.md)
+    - [Azure Sentinel 中的权限](roles.md)
+    - [在 Azure Sentinel 中保护 MSSP 知识产权](mssp-protect-intellectual-property.md)
+    - [Azure Sentinel 中的威胁情报集成](threat-intelligence-integration.md)
+    - [审核 Azure Sentinel 查询和活动](audit-sentinel-data.md)
+
+- **分析师**：
+
+    - [建议的 playbook](automate-responses-with-playbooks.md#recommended-playbooks)
+    - [处理 Azure Sentinel 中的误报](false-positives.md)
+    - [使用 Azure Sentinel 搜寻威胁](hunting.md)
+    - [常用的 Azure Sentinel 工作簿](top-workbooks.md)
+    - [直接检测威胁](detect-threats-built-in.md)
+    - [创建自定义分析规则以检测威胁](detect-threats-custom.md)
+    - [使用 Jupyter Notebook 搜寻安全威胁](notebooks.md)
+
+有关详细信息，另请参阅我们的视频：[构造 SecOps 以获得成功：部署 Azure Sentinel 的最佳做法](https://youtu.be/DyL9MEMhqmI)
 
 ## <a name="regular-soc-activities-to-perform"></a>要执行的常规 SOC 活动
 
@@ -131,36 +160,6 @@ Azure Sentinel 由将数据发送到工作区的组件提供支持，并且它�
 使用将来自引入数据和外部源（例如扩充数据）组合在一起的监视列表。 例如，创建组织或最近离职的员工使用的 IP 地址范围列表。 将监视列表与 playbook 一起用于收集扩充数据，例如，将恶意 IP 地址添加到监视列表以在检测、威胁搜寻和调查期间使用。
 
 在事件发生期间，使用监视列表包含调查数据，然后在调查完成后将其删除，以确保敏感数据不会保留在视图中。
-
-
-## <a name="additional-best-practice-references"></a>其他最佳做法参考
-
-Azure Sentinel 文档提供了更多最佳做法指南，这些指南分散在我们的文章中。 有关详细信息，请参阅以下文章：
-
-- **管理员用户**：
-
-    - [部署 Azure Sentinel 的预先部署活动和先决条件](prerequisites.md)
-    - [Azure Sentinel 工作区体系结构最佳做法](best-practices-workspace-architecture.md)
-    - [设计 Azure Sentinel 工作区体系结构](design-your-workspace-architecture.md)
-    - [Azure Sentinel 示例工作区设计](sample-workspace-designs.md)
-    - [数据收集最佳做法](best-practices-data.md)
-    - [Azure Sentinel 成本和账单](azure-sentinel-billing.md)
-    - [Azure Sentinel 中的权限](roles.md)
-    - [在 Azure Sentinel 中保护 MSSP 知识产权](mssp-protect-intellectual-property.md)
-    - [Azure Sentinel 中的威胁情报集成](threat-intelligence-integration.md)
-    - [审核 Azure Sentinel 查询和活动](audit-sentinel-data.md)
-
-- **分析师**：
-
-    - [建议的 playbook](automate-responses-with-playbooks.md#recommended-playbooks)
-    - [处理 Azure Sentinel 中的误报](false-positives.md)
-    - [使用 Azure Sentinel 搜寻威胁](hunting.md)
-    - [常用的 Azure Sentinel 工作簿](top-workbooks.md)
-    - [直接检测威胁](detect-threats-built-in.md)
-    - [创建自定义分析规则以检测威胁](detect-threats-custom.md)
-    - [使用 Jupyter Notebook 搜寻安全威胁](notebooks.md)
-
-有关详细信息，另请参阅我们的视频：[构造 SecOps 以获得成功：部署 Azure Sentinel 的最佳做法](https://youtu.be/DyL9MEMhqmI)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/09/2020
+ms.date: 10/05/2021
 ms.author: justinha
-ms.openlocfilehash: 8fbde10ccf5a7f083f5fbddaadd6668d880a1fac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955d37144220ec455f6f95bab2102123b54cd0c1
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619821"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536198"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>配置 Azure Active Directory 域服务以支持 SharePoint Server 的用户配置文件同步
 
@@ -37,8 +37,7 @@ SharePoint Server 包括同步用户配置文件的服务。 此功能允许将�
 * 已加入 Azure AD DS 托管域的 Windows Server 管理 VM。
     * 如果需要，请完成[创建管理 VM][tutorial-create-management-vm] 的教程。
 * 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
-* 用于用户配置文件同步服务的 SharePoint 服务帐户。
-    * 如果需要，请参阅[计划 SharePoint Server 中的管理和服务帐户][sharepoint-service-account]。
+* 用于用户配置文件同步服务的 SharePoint 服务帐户名称。 有关配置文件同步帐户的详细信息，请参阅[规划 SharePoint Server 中的管理和服务帐户][sharepoint-service-account]。 若要从 SharePoint 管理中心网站获取配置文件同步帐户名称，请单击“应用程序管理” > “管理服务应用程序” > “用户配置文件服务应用程序”  。 有关详细信息，请参阅[在 SharePoint Server 中使用 SharePoint Active Directory 导入来配置配置文件同步](/SharePoint/administration/configure-profile-synchronization-by-using-sharepoint-active-directory-import)。
 
 ## <a name="service-accounts-overview"></a>服务帐户概述
 
@@ -69,9 +68,6 @@ SharePoint Server 的服务帐户需要足够的特权，才能将更改复制�
 
     ![将 SharePoint 服务帐户添加到 AAD DC 服务帐户安全组](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
-## <a name="next-steps"></a>后续步骤
-
-有关详细信息，请参阅[在 SharePoint Server 中管理用户配置文件同步](/SharePoint/administration/manage-profile-synchronization)。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/27/2021
 ms.author: phjensen
-ms.openlocfilehash: 0a2a110b483d7f5f5618e5679e4479ebf1d313b8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a580a135d2158234c84f3378b024997679ad6017
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438113"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778317"
 ---
 # <a name="release-notes-for-azure-application-consistent-snapshot-tool"></a>Azure 应用程序一致性快照工具（预览版）的发行说明
 
@@ -59,7 +59,7 @@ AzAcSnap v5.0（版本编号：20210421.6349）已公开发布，此版本包含
 
 AzAcSnap v 5.0 预览版（内部版本：20210318.30771）已发布，并包括以下修复和改进内容：
 
-- 无需将 AZACSNAP 用户添加到 SAP HANA 租户 DB，请参阅[启用与 SAP HANA 的通信](azacsnap-installation.md#enable-communication-with-sap-hana)部分。
+- 无需将 AZACSNAP 用户添加到 SAP HANA 租户 DB，详见[启用与数据库的通信](azacsnap-installation.md#enable-communication-with-database)部分。
 - 让用户能使用已配置手动 QOS 的卷进行[还原](azacsnap-cmd-ref-restore.md)的修补程序。
 - 添加了互斥控制来限制 Azure 大型实例的 SSH 连接。
 - 修复安装程序以处理带有空格和其他相关问题的路径名。

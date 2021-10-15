@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 4cb943230c0211c67caf5d7a074d21077358c143
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d6256fdb15fd4e1e5674ab9aa24002027ed712d9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605442"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273526"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -358,7 +358,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--s2s-handle-invalid-metadata** 字符串   指定如何处理无效的元数据键。 可用选项：ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid。 （默认值为 `ExcludeIfInvalid`）。
 
-**--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层 请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。
+**--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层 请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](../blobs/access-tiers-overview.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。
 
 --s2s-preserve-blob-tags               在 blob 存储之间进行服务到服务传输过程中保留索引标记。
 

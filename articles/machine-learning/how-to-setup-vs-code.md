@@ -1,7 +1,7 @@
 ---
 title: 安装 Visual Studio Code 扩展（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解如何安装 Azure 机器学习 Visual Studio Code 扩展
+description: 了解如何安装 Azure 机器学习 Visual Studio Code 扩展。
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 6e0975a61ff5b36eb5ffbe5737be614a70150796
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 2b175d209c6506cb802e0105dff03c7c0f6e6ad9
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419480"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425024"
 ---
 # <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>安装 Visual Studio Code Azure 机器学习扩展（预览版）
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 42e244249ecb0539637918ae2439bdb4f5da4b38
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 0bbbe80a9f4c743fb658aa313641ab790e194509
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588473"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234331"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>为 Azure Active Directory B2C 配置 Nevis 以进行无密码身份验证的教程
 
@@ -232,7 +232,7 @@ ms.locfileid: "107588473"
 
 10. 在表单中填入新密码和显示名称。
 
-11. 选择“创建”。
+11. 选择“创建”  。
 
 12. 你将转到 QR 码扫描页。
 

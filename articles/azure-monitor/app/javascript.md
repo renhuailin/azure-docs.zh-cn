@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4ce6481a35b8a214a2203a165161183d384b4ea0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6e3b7601605eecafa969eec78b82b863580ecc2e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662165"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235737"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -218,7 +218,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enable&#8203;AjaxErrorStatusText | 如果为 true，则在 AJAX 请求失败时包含依赖关系事件中的响应错误数据文本。 | boolean<br/> false |
 | enable&#8203;AjaxPerfTracking |用于启用查找并包含报告的 `ajax`（XHR 和 fetch）报告的指标中其他浏览器 window.performance 计时的标记。 | boolean<br/> false |
 | maxAjaxPerf&#8203;LookupAttempts | 查找 window.performance 计时的最大次数，此值为必需，因为并非所有浏览器在报告 XHR 请求完成之前都会填充 window.performance，而对于 fetch 请求，将在请求完成之后添加该值。| numeric<br/> 3 |
-| ajaxPerfLookupDelay | 重新尝试为 `ajax` 请求查找 windows.performance 计时时要等待的时间，时间以毫秒计并直接传递给 setTimeout()。 | numeric<br/> 25 毫秒 |
+| ajaxPerfLookupDelay | 重新尝试为 `ajax` 请求查找 window.performance 计时时要等待的时间，时间以毫秒计并直接传递给 setTimeout()。 | numeric<br/> 25 毫秒 |
 | enableUnhandled&#8203;PromiseRejection&#8203;Tracking | 如果为 true，则将自动收集未处理的拒绝承诺并报告为 JavaScript 错误。 如果 disableExceptionTracking 为 true（不跟踪异常），则将忽略配置值且不会报告未处理的拒绝承诺。 | boolean<br/> false |
 | disable&#8203;InstrumentationKey&#8203;Validation | 如果为 true，则跳过检测密钥验证检查。 | boolean<br/>false |
 | enablePerfMgr | 启用时（为 true 时）将为已检测的代码创建本地 perfEvents 以发出 perfEvents（通过 doPerf() 帮助程序）。 这可用于根据使用情况识别 SDK 中的性能问题，或者选择性地在自己的已检测代码中识别性能问题。 [基本文档中提供了更多详细信息](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md)。 自 v2.5.7 起 | boolean<br/>false |

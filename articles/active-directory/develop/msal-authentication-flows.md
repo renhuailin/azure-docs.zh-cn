@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: ff8a97afa39f4db6892402c334aacb903d2cb4c2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 67ac453bb70c6889e1a69e7c0c40a88f623813ff
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787237"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235110"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -31,7 +31,7 @@ Microsoft 身份验证库 (MSAL) 支持在不同的应用程序场景中使用�
 | [隐式授权](#implicit-grant) | 允许应用在不执行后端服务器凭据交换的情况下获取令牌。 使应用能够让用户登录、维护会话，并获取客户端 JavaScript 代码中所有其他 Web API 的令牌。 | [单页应用程序 (SPA)](scenario-spa-overview.md) |
 | [代理](#on-behalf-of) | 应用程序调用某个服务或 Web API，而后者又需要调用另一个服务或 Web API。 思路是通过请求链传播委托用户标识和权限。 | [Web API](scenario-web-api-call-api-overview.md) |
 | [用户名/密码](#usernamepassword) | 允许应用程序通过直接处理用户密码来登录用户。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token-username-password.md) |
-| [Windows 集成身份验证](#integrated-windows-authentication) | 允许已加入域或已加入 Azure Active Directory (Azure AD) 的计算机上的应用程序以静默方式获取令牌（无需用户进行任何 UI 交互）。 | [桌面/移动应用](scenario-desktop-acquire-token-integrated-windows-authentication.md) |
+| [集成 Windows 身份验证](#integrated-windows-authentication) | 允许已加入域或已加入 Azure Active Directory (Azure AD) 的计算机上的应用程序以静默方式获取令牌（无需用户进行任何 UI 交互）。 | [桌面/移动应用](scenario-desktop-acquire-token-integrated-windows-authentication.md) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>每个流如何发出令牌和代码
 
@@ -167,7 +167,7 @@ Microsoft 身份验证库 (MSAL) 支持在不同的应用程序场景中使用�
 > [!WARNING]
 > 不建议使用此流。 它需要较高级别的信任，并且会透露凭据信息。 仅当无法使用更安全的流时，才使用此流。 有关详细信息，请参阅[如何解决不断增多的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。
 
-在已加入 Windows 域的计算机上以静默方式获取令牌的首选流是 [Windows 集成身份验证](#integrated-windows-authentication)。 在其他情况下，请使用[设备代码流](#device-code)。
+在已加入 Windows 域的计算机上以无提示方式获取令牌的首选流程是[集成 Windows 身份验证](#integrated-windows-authentication)。 在其他情况下，请使用[设备代码流](#device-code)。
 
 尽管用户名/密码流在某些场景（如 DevOps）中可能有用，但如果要在交互式场景中（需要提供自己的 UI）使用用户名/密码，请避免使用它。
 
@@ -178,7 +178,7 @@ Microsoft 身份验证库 (MSAL) 支持在不同的应用程序场景中使用�
 
 ### <a name="constraints"></a>约束
 
-除了 [集成 Windows 身份验证约束](#integrated-windows-authentication)以外，还存在以下约束：
+除了[集成 Windows 身份验证约束](#integrated-windows-authentication)以外，还存在以下约束：
 
 - 用户名/密码流与条件访问和多重身份验证不兼容。 因此，如果应用在租户管理员要求多重身份验证的 Azure AD 租户中运行，则无法使用此流。 许多组织都会要求多重身份验证。
 - ROPC 仅适用于工作帐户和学校帐户。 不能将 ROPC 用于 Microsoft 帐户 (MSA)。
@@ -187,18 +187,18 @@ Microsoft 身份验证库 (MSAL) 支持在不同的应用程序场景中使用�
 
 ## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
 
-对于已加入域和已加入 Azure AD 的 Windows 计算机上运行的桌面或移动应用程序，MSAL 支持 Windows 集成身份验证 (IWA)。 这些应用程序可以使用 IWA 以静默方式获取令牌（无需要求用户进行任何 UI 交互）。
+对于已加入域或已联接 Azure AD 的 Windows 计算机上运行的桌面或移动应用程序，MSAL 支持集成 Windows 身份验证 (IWA)。 这些应用程序可以使用 IWA 以静默方式获取令牌（无需要求用户进行任何 UI 交互）。
 
-![Windows 集成身份验证示意图](media/msal-authentication-flows/integrated-windows-authentication.png)
+![集成 Windows 身份验证的示意图](media/msal-authentication-flows/integrated-windows-authentication.png)
 
 在上图中，应用程序：
 
-1. 使用 Windows 集成身份验证获取令牌。
+1. 通过使用集成 Windows 身份验证获取令牌。
 2. 使用令牌发出资源请求。
 
 ### <a name="constraints"></a>约束
 
-集成 Windows 身份验证 (IWA) 仅支持联合用户 - 在 Active Directory 中创建的并由 Azure AD 支持的用户。 直接在 Azure AD 中创建的但不是由 Active Directory 支持的用户（托管用户）不能使用此身份验证流。 此项限制不影响[用户名/密码流](#usernamepassword)。
+集成 Windows 身份验证 (IWA) 仅支持联合用户 - 在 Active Directory 中创建并由 Azure AD 支持的用户。 直接在 Azure AD 中创建的但不是由 Active Directory 支持的用户（托管用户）不能使用此身份验证流。 此项限制不影响[用户名/密码流](#usernamepassword)。
 
 IWA 适用于 .NET Framework、.NET Core 和通用 Windows 平台应用程序。
 

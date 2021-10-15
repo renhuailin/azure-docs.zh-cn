@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 86543f160a9ffc725a9512069bac39e6e222d543
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/01/2021
+ms.openlocfilehash: d49deec6a782e0b36f110b7c2046b89e314e4011
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745092"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387328"
 ---
 # <a name="pgbouncer-in-azure-database-for-postgresql---flexible-server"></a>PgBouncer - Azure Database for PostgreSQL - 灵活服务器
 
@@ -25,7 +25,7 @@ PgBouncer 使用更轻量的模型，该模型使用异步 I/O，并且仅在需
 启用后，PgBouncer 将在数据库服务器上的端口 6432 上运行。 你可以将应用程序的数据库连接配置更改为使用同一主机名，但将端口更改为 6432，便可开始使用 PgBouncer 并受益于改进的空闲连接缩放功能。
 
 > [!Note]
-> 公共访问网络和专用访问网络中的常规用途和内存优化计算层都支持 PgBouncer。
+> 公共访问和专用访问网络中的常规用途和内存优化计算层均支持 PgBouncer。 
 
 ## <a name="enabling-and-configuring-pgbouncer"></a>启用和配置 PgBouncer
 
@@ -39,8 +39,8 @@ PgBouncer 使用更轻量的模型，该模型使用异步 I/O，并且仅在需
 | pgBouncer.max_client_conn | 将此参数值设置为要支持的 PgBouncer 客户端连接的最大数量。     | 5000     | 
 | pgBouncer.pool_mode | 将此参数值设置为事务池的事务（此为大多数工作负载的建议设置）。      | TRANSACTION     |
 | pgBouncer.min_pool_size | 如果低于此数量，请将更多服务器连接添加到池。    |   0（禁用）   |
-| pgbouncer.ignore_startup_parameters | PgBouncer 可忽略的以逗号分隔的参数列表。 例如，可以让 PgBouncer 忽略 `extra_float_digits` 参数。|   |
-| pgbouncer.query_wait_timeout | 允许查询等待执行的最长时间（以秒为单位）。 如果在此时间段内未将查询分配给服务器，客户端将断开连接。 | 120s |
+| pgbouncer.ignore_startup_parameters | PgBouncer 可以忽略的参数列表（以逗号分隔）。 例如，可以允许 PgBouncer 忽略 `extra_float_digits` 参数。|   |
+| pgbouncer.query_wait_timeout | 允许查询等待进行执行的最长时间（秒）。 如果在此期间未将查询分配给服务器，则客户端将断开连接。 | 120s |
 | pgBouncer.stats_users | 可选。 将此参数值设置为现有用户的名称，以便能够登录到特殊的 PgBouncer 统计数据库（名为“PgBouncer”）。    |      |
 
 有关 PgBouncer 配置的更多详细信息，请参阅 [pgbouncer.ini](https://www.pgbouncer.org/config.html)。
@@ -77,6 +77,7 @@ psql "host=myPgServer.postgres.database.azure.com port=6432 dbname=postgres user
 * 如果将计算层从常规用途或内存优化更改为可突发层，则你将无法使用 PgBouncer。
 * 每当在执行缩放操作、HA 故障转移或重新启动期间重启服务器时，PgBouncer 也会随服务器虚拟机一同重启。 因此，必须重新建立现有连接。
 * 由于已知问题，门户不会显示所有 PgBouncer 参数。 启用 PgBouncer 并保存参数后，必须退出参数屏幕（例如单击“概述”），然后返回到“参数”页。 
+* PgBouncer 尚不支持 [SCRAM 身份验证](how-to-connect-scram.md)。
   
 ## <a name="next-steps"></a>后续步骤
 

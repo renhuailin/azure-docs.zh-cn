@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 309b900f6c5f2ffe8cc0fd9101e7aa0408cb2dd2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a78d3e68841e4463d4f66f24821b5e42c7650f44
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837725"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400432"
 ---
-# <a name="setup-diagnostic-logs-via-the-azure-monitor-rest-api"></a>通过 Azure Monitor REST API 设置诊断日志
+# <a name="set-up-diagnostic-logs-via-the-azure-monitor-rest-api"></a>通过 Azure Monitor REST API 设置诊断日志
 
 本文介绍如何使用 Azure Monitor REST API 为 Azure 数据工厂设置诊断日志。
 
@@ -27,10 +27,12 @@ ms.locfileid: "124837725"
 * 指定要发送的日志类别。
 * 指定要将每个日志类别保留在存储帐户中多长时间。
 * 保留期为 0 天表示永久保留日志。 如果不需要永久保留，可将该值设置为 1 到 2,147,483,647 的任意天数。
-* 如果设置了保留策略，但禁止将日志存储在存储帐户中，则保留策略无效。 例如，如果仅选择了“事件中心”或“Monitor 日志”选项，此可能会发生这种情况。
+* 如果设置了保留策略，但禁止将日志存储在存储帐户中，则保留策略无效。 例如，如果仅选择了事件中心或 Monitor 日志选项，可能会发生这种情况。
 * 保留策略按天应用。 一天的结束时间可能出现在协调世界时 (UTC) 的午夜。 在一天结束时，会删除当天已超过保留策略期限的日志。 例如，如果保留策略的期限为一天，则在今天开始时，会删除前天的日志。
 
-## <a name="enable-diagnostic-logs-via-the-azure-monitor-rest-api"></a>通过 Azure Monitor REST API 启用诊断日志
+## <a name="enable-diagnostic-logs-via-the-monitor-rest-api"></a>通过 Monitor REST API 启用诊断日志
+
+使用 Monitor REST API 启用诊断日志。
 
 ### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>在 Monitor REST API 中创建或更新诊断设置
 
@@ -44,7 +46,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 #### <a name="headers"></a>头文件
 
 * 将 `{api-version}` 替换为 `2016-09-01`。
-* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
+* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅 [Using resource groups to manage your Azure resources](../azure-resource-manager/management/manage-resource-groups-portal.md)（使用资源组管理 Azure 资源）。
 * 将 `Content-Type` 标头设置为 `application/json`。
 * 将授权标头设置为从 Azure Active Directory (Azure AD) 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-vs-authorization.md)。
 
@@ -92,10 +94,10 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |
 | **storageAccountId** |String | 要将诊断日志发送到的存储帐户的资源 ID。 |
-| **serviceBusRuleId** |String | 服务总线命名空间的服务总线规则 ID。你要在该服务总线命名空间中创建事件中心，以便流式传输诊断日志。 规则 ID 的格式为 `{service bus resource ID}/authorizationrules/{key name}`。|
+| **serviceBusRuleId** |String | 你要在其中创建事件中心以便流式传输诊断日志的服务总线命名空间的服务总线规则 ID。 规则 ID 的格式为 `{service bus resource ID}/authorizationrules/{key name}`。|
 | **workspaceId** | 字符串 | 将在其中保存日志的工作区的工作区 ID。 |
 |**指标**| 要传递到被调用管道的管道运行的参数值| 将参数名映射为自变量值的 JSON 对象。 |
-| **logs**| 复杂类型| 某个资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请先执行 GET 诊断设置操作。 |
+| **logs**| 复杂类型| 资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请执行 GET 诊断设置操作。 |
 | **category**| String| 日志类别及其保留策略的数组。 |
 | **timeGrain** | String | 以 ISO 8601 持续时间格式捕获的指标的粒度。 该属性值必须为 `PT1M`（1 分钟）。 |
 | **enabled**| 布尔 | 指定是否为此资源启用了该指标或日志类别的收集。 |
@@ -164,7 +166,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 #### <a name="headers"></a>头文件
 
 * 将 `{api-version}` 替换为 `2016-09-01`。
-* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
+* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅 [Using resource groups to manage your Azure resources](../azure-resource-manager/management/manage-resource-groups-portal.md)（使用资源组管理 Azure 资源）。
 * 将 `Content-Type` 标头设置为 `application/json`。
 * 将授权标头设置为从 Azure AD 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-vs-authorization.md)。
 

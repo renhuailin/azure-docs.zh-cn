@@ -8,12 +8,12 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 75e8b7482e9d810caf0afb0818d53df141908708
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cce87bbcd8a4a2db5d400b41948e9dcf4598b331
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609263"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390285"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 
@@ -234,7 +234,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 可从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载代理。 下载完成后，双击 MSI 包，开始安装 Azure 文件同步代理。
 
 > [!IMPORTANT]
-> 如果要对故障转移群集使用 Azure 文件同步，则 必须在群集中的每个节点上安装 Azure 文件同步代理。 必须注册群集中的每个节点才能使用 Azure 文件同步。
+> 如果要对故障转移群集使用 Azure 文件同步，则 必须在群集中的每个节点上安装 Azure 文件同步代理。 必须注册群集中的每个节点才能使用 Azure 文件同步。Azure 文件同步支持的唯一方案是使用群集磁盘的 Windows Server 故障转移群集。 有关 Azure 文件同步，请参阅[故障转移群集](file-sync-planning.md#failover-clustering)。
 
 建议执行以下操作：
 - 保留默认安装路径(C:\Program Files\Azure\StorageSyncAgent)，以简化故障排除和服务器维护。
@@ -302,7 +302,7 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 - “Microsoft.StorageSync/storageSyncServices/workflows/read”
 - “Microsoft.StorageSync/storageSyncServices/workflows/operations/read”
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 服务器注册 UI 应在 Azure 文件同步代理安装后自动打开。 如果没有打开，可以手动从其文件位置 C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe 打开。 服务器注册 UI 打开时，请选择“登录”开始操作。
 

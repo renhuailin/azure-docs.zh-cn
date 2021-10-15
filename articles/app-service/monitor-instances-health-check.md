@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 3efac96949d701bbc0147abf8712d4995f781d47
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 37b876b177b7879c57255619d3f5e7e113a2a284
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771842"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278060"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>使用运行状况检查监视应用服务实例
 
@@ -29,8 +29,8 @@ ms.locfileid: "122771842"
 - 此外，纵向或横向扩展时，应用服务将对运行状况检查路径执行 ping 操作，确保新实例准备就绪。
 
 > [!NOTE]
-> 运行状况检查不遵循 302 重定向。 每小时最多更换一个实例，每个应用服务计划每天最多更换三个实例。
->
+>- 运行状况检查不遵循 302 重定向。 每小时最多更换一个实例，每个应用服务计划每天最多更换三个实例。
+>- 请注意，如果运行状况检查提供状态 `Waiting for health check response`，则检查可能会由于 HTTP 状态代码 307 而失败，如果已启用 HTTPS 重定向但禁用 `HTTPS Only`，则可能会发生这种情况。
 
 ## <a name="enable-health-check"></a>启用运行状况检查
 

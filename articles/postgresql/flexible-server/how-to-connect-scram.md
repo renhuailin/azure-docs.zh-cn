@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/23/2021
-ms.openlocfilehash: 7fc67ab7162c7fe62df226fd39aefcd350bbdf82
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.date: 10/01/2021
+ms.openlocfilehash: ad7cbfc7c06a86cca79930c9745160cc9af4697f
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112897233"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388862"
 ---
 # <a name="scram-authentication-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - 灵活服务器中的 SCRAM 身份验证
 
@@ -84,6 +84,9 @@ ms.locfileid: "112897233"
     ```
 
 8. 然后可以从支持 SCRAM 身份验证的客户端连接到服务器。
+
+> [!Note] 
+> 连接到内置托管 [PgBouncer](concepts-pgbouncer.md) 时不支持 SCRAM 身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 灵活服务器虚拟网络](./how-to-manage-virtual-network-cli.md)。

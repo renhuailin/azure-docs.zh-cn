@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/31/2021
 author: palma21
-ms.openlocfilehash: 7fe0aa073cf1ecb959bc7999ba59a2486c65b7e1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0f941b612c76811ba750a06036faf48c7359bedd
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429003"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429844"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中为 Azure 磁盘和 Azure 文件存储启用容器存储接口 (CSI) 驱动程序
 
@@ -66,14 +66,54 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 8
 ```
 
+## <a name="migrating-custom-in-tree-storage-classes-to-csi"></a>将自定义的树内存储类迁移到 CSI
+如果你已根据树内存储驱动程序创建了自定义存储类，在将群集升级到 1.21.x 后，需要迁移这些类。
+
+虽然无需显式迁移到 CSI 提供程序也能使存储类保持有效，但为了能够使用 CSI 功能（快照等），需要执行迁移。
+
+迁移这些存储类涉及到删除现有的存储类，并在将预配程序设置为 disk.csi.azure.com（如果使用 Azure 磁盘）和 files.csi.azure.com（如果使用 Azure 文件存储）的情况下重新预配这些存储类 。  以 Azure 磁盘为例：
+
+### <a name="original-in-tree-storage-class-definition"></a>原始的树内存储类定义
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: managed-premium-retain
+provisioner: kubernetes.io/azure-disk
+reclaimPolicy: Retain
+parameters:
+  storageaccounttype: Premium_LRS
+  kind: Managed
+```
+
+### <a name="csi-storage-class-definition"></a>CSI 存储类定义
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: managed-premium-retain
+provisioner: disk.csi.azure.com
+reclaimPolicy: Retain
+parameters:
+  storageaccounttype: Premium_LRS
+  kind: Managed
+```
+
+CSI 存储系统支持与树内驱动程序相同的功能，因此只需更改预配程序。
+
+
 ## <a name="next-steps"></a>后续步骤
 
 - 若要将 CSI 驱动器用于 Azure 磁盘，请参阅[通过 CSI 驱动程序使用 Azure 磁盘](azure-disk-csi.md)。
 - 若要将 CSI 驱动器用于 Azure 文件存储，请参阅[通过 CSI 驱动程序使用 Azure 文件存储](azure-files-csi.md)。
 - 有关存储最佳做法的详细信息，请参阅[有关 Azure Kubernetes 服务中存储和备份的最佳做法][operator-best-practices-storage]。
+- 有关 CSI 迁移的详细信息，请参阅[从 Kubernetes 树内迁移到 CSI 卷][csi-migration-community]。
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+[csi-migration-community]: https://kubernetes.io/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/

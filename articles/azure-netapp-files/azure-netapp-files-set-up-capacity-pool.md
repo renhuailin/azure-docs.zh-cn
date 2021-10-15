@@ -1,6 +1,6 @@
 ---
-title: 为 Azure NetApp 文件设置容量池 |Microsoft Docs
-description: 介绍了如何设置容量池，以便可以在其中创建卷。
+title: 创建 Azure NetApp 文件容量池 | Microsoft Docs
+description: 介绍如何创建容量池，以便可以在其中创建卷。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: e49a68ee4c4e4f60d8af6919e4eaec33ac0086aa
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 3488b6807982f97cd5feef9b07a6dc7cbe180dcd
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071904"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407544"
 ---
-# <a name="set-up-a-capacity-pool"></a>设置容量池
+# <a name="create-a-capacity-pool-for-azure-netapp-files"></a>创建 Azure NetApp 文件容量池
 
-设置容量池可以在其中创建卷。  
+创建容量池可以在其中创建卷。  
 
 ## <a name="before-you-begin"></a>开始之前 
 

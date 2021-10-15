@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: d49b587262bfceb8072761cec6981ab908abb21e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 996b91040d16a3c2b966bb1b68e83f578d42f583
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732951"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354982"
 ---
 # <a name="what-is-data-wrangling"></a>什么是数据整理？
 
@@ -23,9 +23,6 @@ ms.locfileid: "124732951"
 通过数据工厂，用户能够使用 Power Query 反复地进行云规模的无代码数据准备。 数据工厂与 [Power Query Online](/power-query/) 集成，将 Power Query M 函数作为管道活动使用。
 
 数据工厂通过将 M 转换为 Azure 数据工厂数据流，来将 Power Query Online 混合编辑器生成的 M 转换为 spark 代码，以便实现云规模执行。 整理 Power Query 数据和数据流的数据对于数据工程师或“公民数据集成商”特别有帮助。
-
-> [!NOTE]
-> Azure 数据工厂中的 Power Query 活动当前在公共预览版中提供
 
 ## <a name="use-cases"></a>用例
 
@@ -47,11 +44,11 @@ ms.locfileid: "124732951"
 
 | 连接器 | 数据格式 | 身份验证类型 |
 | -- | -- | --|
-| [Azure Blob 存储](connector-azure-blob-storage.md) | CSV、Parquet | 帐户密钥 |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Service Principal |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV、Parquet | 帐户密钥、服务主体 |
-| [Azure SQL 数据库](connector-azure-sql-database.md) | - | SQL 身份验证 |
-| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL 身份验证 |
+| [Azure Blob 存储](connector-azure-blob-storage.md) | CSV、Parquet、Excel | 帐户密钥、服务主体、MSI |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV、Parquet、Excel | 服务主体、MSI |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV、Parquet、Excel | 帐户密钥、服务主体、MSI |
+| [Azure SQL 数据库](connector-azure-sql-database.md) | - | SQL身份验证、MSI、服务主体 |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL身份验证、MSI、服务主体 |
 
 ## <a name="the-mashup-editor"></a>混合编辑器
 

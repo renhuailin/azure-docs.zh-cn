@@ -1,6 +1,6 @@
 ---
-title: 使用“执行 SSIS 包”活动运行 SSIS 包
-description: 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
+title: 从门户使用“执行 SSIS 包”活动
+description: 本文介绍如何使用“执行 SSIS 包”活动和 Azure 数据工厂工作室门户在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
 ms.service: data-factory
 ms.subservice: integration-services
 ms.devlang: powershell
@@ -8,30 +8,25 @@ ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 06/04/2021
-ms.openlocfilehash: 0b24ae5a1564f182cf44e540a9d05a2aaac005ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: 1e8c1777c8f2a95bd63ab9f03abc9c65fe0b1b6f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733107"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357961"
 ---
-# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
+# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-the-azure-data-factory-studio-portal"></a>在 Azure 数据工厂工作室门户中使用“执行 SSIS 包”活动运行 SSIS 包
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。 
+本文介绍如何使用“执行 SSIS 包”活动和 Azure 数据工厂工作室门户 UI 在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。 
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 如果还没有 Azure-SSIS Integration Runtime (IR)，请按照以下文章中的分步说明创建 IR：[教程：预配 Azure-SSIS IR](./tutorial-deploy-ssis-packages-azure.md)。
 
-## <a name="run-a-package-in-the-azure-portal"></a>在 Azure 门户中运行包
-在本部分中，我们将使用数据工厂用户界面 (UI) 或应用来创建一个数据工厂管道，其中包含可运行 SSIS 包的“执行 SSIS 包”活动。
-
-### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用“执行 SSIS 包”活动创建管道
+## <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用“执行 SSIS 包”活动创建管道
 此步骤使用数据工厂 UI 或应用创建管道。 将“执行 SSIS 包”活动添加到管道，并将该活动配置为运行 SSIS 包。 
 
 1. 在 Azure 门户中的数据工厂概述或主页上，选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 或应用。 
@@ -48,7 +43,7 @@ ms.locfileid: "124733107"
 
    选择“执行 SSIS 包”活动对象，以配置其“常规”、“设置”、“SSIS 参数”、“连接管理器”和“属性替代”选项卡。
 
-#### <a name="general-tab"></a>“常规”选项卡
+### <a name="general-tab"></a>“常规”选项卡
 
 在“执行 SSIS 包”活动的“常规”选项卡上，完成以下步骤。
 
@@ -68,7 +63,7 @@ ms.locfileid: "124733107"
 
    1. 选中“安全输入”复选框，以选择是否要从日志记录中排除“执行 SSIS 包”活动的输入。
 
-#### <a name="settings-tab"></a>“设置”选项卡
+### <a name="settings-tab"></a>“设置”选项卡
 
 在“执行 SSIS 包”活动的“设置”选项卡上，完成以下步骤。
 
@@ -88,7 +83,7 @@ ms.locfileid: "124733107"
 
    1. 对于“包位置”，请选择“SSISDB”、“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”。      
 
-##### <a name="package-location-ssisdb"></a>包位置：SSISDB
+#### <a name="package-location-ssisdb"></a>包位置：SSISDB
 
 如果为 Azure-SSIS IR 预配了 Azure SQL 数据库服务器/托管实例托管的 SSIS 目录 (SSISDB)，则会自动选择“SSISDB”作为包位置，否则，你可以自己选择位置。 如果选择了该位置，请完成以下步骤。
 
@@ -100,7 +95,7 @@ ms.locfileid: "124733107"
 
       :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png" alt-text="在“设置”选项卡上设置属性 - 手动":::
 
-##### <a name="package-location-file-system-package"></a>包位置：文件系统(包)
+#### <a name="package-location-file-system-package"></a>包位置：文件系统(包)
 
 如果没有为 Azure-SSIS IR 预配 SSISDB，则会自动选择“文件系统(包)”作为包位置，否则，你可以自己选择它。 如果选择了该位置，请完成以下步骤。
 
@@ -130,7 +125,7 @@ ms.locfileid: "124733107"
    
 对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
 
-##### <a name="package-location-file-system-project"></a>包位置：文件系统(项目)
+#### <a name="package-location-file-system-project"></a>包位置：文件系统(项目)
 
 如果选择“文件系统(项目)”作为包位置，请完成以下步骤。
 
@@ -158,7 +153,7 @@ ms.locfileid: "124733107"
    
 对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
 
-##### <a name="package-location-embedded-package"></a>包位置：嵌入包
+#### <a name="package-location-embedded-package"></a>包位置：嵌入包
 
 如果选择“嵌入包”作为包位置，请完成以下步骤。
 
@@ -186,7 +181,7 @@ ms.locfileid: "124733107"
    
 对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
 
-##### <a name="package-location-package-store"></a>包位置：包存储
+#### <a name="package-location-package-store"></a>包位置：包存储
 
 如果选择“包存储”作为包位置，请完成以下步骤。
 
@@ -218,7 +213,7 @@ ms.locfileid: "124733107"
    
 对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
 
-#### <a name="ssis-parameters-tab"></a>“SSIS 参数”选项卡
+### <a name="ssis-parameters-tab"></a>“SSIS 参数”选项卡
 
 在“执行 SSIS 包”活动的“SSIS 参数”选项卡上，完成以下步骤。
 
@@ -232,7 +227,7 @@ ms.locfileid: "124733107"
 
 另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。 
 
-#### <a name="connection-managers-tab"></a>“连接管理器”选项卡
+### <a name="connection-managers-tab"></a>“连接管理器”选项卡
 
 在“执行 SSIS 包”活动的“连接管理器”选项卡上，完成以下步骤。
 
@@ -256,7 +251,7 @@ ms.locfileid: "124733107"
 
 另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。 
 
-#### <a name="property-overrides-tab"></a>“属性替代”选项卡
+### <a name="property-overrides-tab"></a>“属性替代”选项卡
 
 在“执行 SSIS 包”活动的“属性替代”选项卡上，完成以下步骤。
 
@@ -288,7 +283,7 @@ ms.locfileid: "124733107"
 
 若要将管道发布到数据工厂，请选择“全部发布”。 
 
-### <a name="run-the-pipeline"></a>运行管道
+## <a name="run-the-pipeline"></a>运行管道
 在此步骤中，将触发管道运行。 
 
 1. 若要触发某个管道运行，请在工具栏中选择“触发器”，然后选择“立即触发”。 
@@ -297,7 +292,7 @@ ms.locfileid: "124733107"
 
 2. 在“管道运行”窗口中选择“完成”。  
 
-### <a name="monitor-the-pipeline"></a>监视管道
+## <a name="monitor-the-pipeline"></a>监视管道
 
 1. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态和其他信息（例如“运行开始”时间）。 若要刷新视图，请选择“刷新”。
 
@@ -319,402 +314,10 @@ ms.locfileid: "124733107"
 
    :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png" alt-text="获取执行 ID。":::
 
-### <a name="schedule-the-pipeline-with-a-trigger"></a>使用触发器计划管道
+## <a name="schedule-the-pipeline-with-a-trigger"></a>使用触发器计划管道
 
 还可以为管道创建一个计划触发器，以便按计划（例如每小时或每天）运行管道。 有关示例，请参阅[创建数据工厂 - 数据工厂 UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)。
 
-## <a name="run-a-package-with-powershell"></a>使用 PowerShell 运行包
-在此部分中，将使用 Azure PowerShell 创建一个数据工厂管道，管道中包含可运行 SSIS 包的“执行 SSIS 包”活动。 
-
-按照[如何安装和配置 Azure PowerShell](/powershell/azure/install-az-ps) 中的分步说明安装最新的 Azure PowerShell 模块。
-
-### <a name="create-a-data-factory-with-azure-ssis-ir"></a>创建包含 Azure-SSIS IR 的数据工厂
-可以使用已预配 Azure-SSIS IR 的现有数据工厂，或者创建包含 Azure-SSIS IR 的新数据工厂。 按照[教程：通过 PowerShell 将 SSIS 包部署到 Azure](./tutorial-deploy-ssis-packages-azure-powershell.md) 中的分步说明，创建包含 Azure-SSIS IR 的新 ADF。
-
-### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用“执行 SSIS 包”活动创建管道 
-在此步骤中创建包含“执行 SSIS 包”活动的管道。 该活动运行 SSIS 包。 
-
-1. 在 `C:\ADF\RunSSISPackage` 文件夹中创建一个名为 `RunSSISPackagePipeline.json` 的 JSON 文件，使其包含类似于以下示例的内容。
-
-   > [!IMPORTANT]
-   > 在保存该文件之前，请替换对象名称、说明、路径、属性或参数值、密码及其他变量值。 
-    
-   ```json
-   {
-       "name": "RunSSISPackagePipeline",
-       "properties": {
-           "activities": [{
-               "name": "MySSISActivity",
-               "description": "My SSIS package/activity description",
-               "type": "ExecuteSSISPackage",
-               "typeProperties": {
-                   "connectVia": {
-                       "referenceName": "MyAzureSSISIR",
-                       "type": "IntegrationRuntimeReference"
-                   },
-                   "executionCredential": {
-                       "domain": "MyExecutionDomain",
-                       "username": "MyExecutionUsername",
-                       "password": {
-                           "type": "SecureString",
-                           "value": "MyExecutionPassword"
-                       }
-                   },
-                   "runtime": "x64",
-                   "loggingLevel": "Basic",
-                   "packageLocation": {
-                       "type": "SSISDB",
-                       "packagePath": "MyFolder/MyProject/MyPackage.dtsx"
-                   },
-                   "environmentPath": "MyFolder/MyEnvironment",
-                   "projectParameters": {
-                       "project_param_1": {
-                           "value": "123"
-                       },
-                       "project_param_2": {
-                           "value": {
-                               "value": "@pipeline().parameters.MyProjectParameter",
-                               "type": "Expression"
-                           }
-                       }
-                   },
-                   "packageParameters": {
-                       "package_param_1": {
-                           "value": "345"
-                       },
-                       "package_param_2": {
-                           "value": {
-                               "type": "AzureKeyVaultSecret",
-                               "store": {
-                                   "referenceName": "myAKV",
-                                   "type": "LinkedServiceReference"
-                               },
-                               "secretName": "MyPackageParameter"
-                           }
-                       }
-                   },
-                   "projectConnectionManagers": {
-                       "MyAdonetCM": {
-                           "username": {
-                               "value": "MyConnectionUsername"
-                           },
-                           "password": {
-                               "value": {
-                                   "type": "SecureString",
-                                   "value": "MyConnectionPassword"
-                               }
-                           }
-                       }
-                   },
-                   "packageConnectionManagers": {
-                       "MyOledbCM": {
-                           "username": {
-                               "value": {
-                                   "value": "@pipeline().parameters.MyConnectionUsername",
-                                   "type": "Expression"
-                               }
-                           },
-                           "password": {
-                               "value": {
-                                   "type": "AzureKeyVaultSecret",
-                                   "store": {
-                                       "referenceName": "myAKV",
-                                       "type": "LinkedServiceReference"
-                                   },
-                                   "secretName": "MyConnectionPassword",
-                                   "secretVersion": "MyConnectionPasswordVersion"
-                               }
-                           }
-                       }
-                   },
-                   "propertyOverrides": {
-                       "\\Package.MaxConcurrentExecutables": {
-                           "value": 8,
-                           "isSensitive": false
-                       }
-                   }
-               },
-               "policy": {
-                   "timeout": "0.01:00:00",
-                   "retry": 0,
-                   "retryIntervalInSeconds": 30
-               }
-           }]
-       }
-   }
-   ```
-
-   若要执行存储在文件系统/Azure 文件存储中的包，请输入包和日志位置属性的值，如下所示：
-
-   ```json
-   {
-       {
-           {
-               {
-                   "packageLocation": {
-                       "type": "File",
-                       "packagePath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyPackage.dtsx",
-                       "typeProperties": {
-                           "packagePassword": {
-                               "type": "SecureString",
-                               "value": "MyEncryptionPassword"
-                           },
-                           "accessCredential": {
-                               "domain": "Azure",
-                               "username": "MyStorageAccount",
-                               "password": {
-                                   "type": "SecureString",
-                                   "value": "MyAccountKey"
-                               }
-                           }
-                       }
-                   },
-                   "logLocation": {
-                       "type": "File",
-                       "logPath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyLogFolder",
-                       "typeProperties": {
-                           "accessCredential": {
-                               "domain": "Azure",
-                               "username": "MyStorageAccount",
-                               "password": {
-                                   "type": "AzureKeyVaultSecret",
-                                   "store": {
-                                       "referenceName": "myAKV",
-                                       "type": "LinkedServiceReference"
-                                   },
-                                   "secretName": "MyAccountKey"
-                               }
-                           }
-                       }
-                   }
-               }
-           }
-       }
-   }
-   ```
-
-   若要执行存储在文件系统/Azure 文件存储中的项目内的包，请输入包位置属性的值，如下所示：
-
-   ```json
-   {
-       {
-           {
-               {
-                   "packageLocation": {
-                       "type": "File",
-                       "packagePath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyProject.ispac:MyPackage.dtsx",
-                       "typeProperties": {
-                           "packagePassword": {
-                               "type": "SecureString",
-                               "value": "MyEncryptionPassword"
-                           },
-                           "accessCredential": {
-                               "domain": "Azure",
-                               "userName": "MyStorageAccount",
-                               "password": {
-                                   "type": "SecureString",
-                                   "value": "MyAccountKey"
-                               }
-                           }
-                       }
-                   }
-               }
-           }
-       }
-   }
-   ```
-
-   若要执行嵌入包，请输入包位置属性的值，如下所示：
-
-   ```json
-   {
-       {
-           {
-               {
-                   "packageLocation": {
-                       "type": "InlinePackage",
-                       "typeProperties": {
-                           "packagePassword": {
-                               "type": "SecureString",
-                               "value": "MyEncryptionPassword"
-                           },
-                           "packageName": "MyPackage.dtsx",
-                           "packageContent":"My compressed/uncompressed package content",
-                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
-                       }
-                   }
-               }
-           }
-       }
-   }
-   ```
-
-   若要执行存储在包存储中的包，请输入包和配置位置属性的值，如下所示：
-
-   ```json
-   {
-       {
-           {
-               {
-                   "packageLocation": {
-                       "type": "PackageStore",
-                       "packagePath": "myPackageStore/MyFolder/MyPackage",
-                       "typeProperties": {
-                           "packagePassword": {
-                               "type": "SecureString",
-                               "value": "MyEncryptionPassword"
-                           },
-                           "accessCredential": {
-                               "domain": "Azure",
-                               "username": "MyStorageAccount",
-                               "password": {
-                                   "type": "SecureString",
-                                   "value": "MyAccountKey"
-                               }
-                           },
-                           "configurationPath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyConfiguration.dtsConfig",
-                           "configurationAccessCredential": {
-                               "domain": "Azure",
-                               "userName": "MyStorageAccount",
-                               "password": {
-                                   "type": "AzureKeyVaultSecret",
-                                   "store": {
-                                       "referenceName": "myAKV",
-                                       "type": "LinkedServiceReference"
-                                   },
-                                   "secretName": "MyAccountKey"
-                               }
-                           }
-                       }
-                   }
-               }
-           }
-       }
-   }
-   ```
-
-2. 在 Azure PowerShell 中，切换到 `C:\ADF\RunSSISPackage` 文件夹。
-
-3. 若要创建管道 **RunSSISPackagePipeline**，请运行 **Set-AzDataFactoryV2Pipeline** cmdlet。
-
-   ```powershell
-   $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
-                                                  -ResourceGroupName $ResGrp.ResourceGroupName `
-                                                  -Name "RunSSISPackagePipeline"
-                                                  -DefinitionFile ".\RunSSISPackagePipeline.json"
-   ```
-
-   下面是示例输出：
-
-   ```
-   PipelineName      : Adfv2QuickStartPipeline
-   ResourceGroupName : <resourceGroupName>
-   DataFactoryName   : <dataFactoryName>
-   Activities        : {CopyFromBlobToBlob}
-   Parameters        : {[inputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification], [outputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
-   ```
-
-### <a name="run-the-pipeline"></a>运行管道
-使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行该管道。 此 cmdlet 返回管道运行 ID，用于将来的监视。
-
-```powershell
-$RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
-                                             -ResourceGroupName $ResGrp.ResourceGroupName `
-                                             -PipelineName $DFPipeLine.Name
-```
-
-### <a name="monitor-the-pipeline"></a>监视管道
-
-运行以下 PowerShell 脚本，持续检查管道运行状态，直到完成数据复制为止。 在 PowerShell 窗口中复制或粘贴以下脚本，然后按 Enter。 
-
-```powershell
-while ($True) {
-    $Run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName `
-                                               -DataFactoryName $DataFactory.DataFactoryName `
-                                               -PipelineRunId $RunId
-
-    if ($Run) {
-        if ($run.Status -ne 'InProgress') {
-            Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
-            $Run
-            break
-        }
-        Write-Output  "Pipeline is running...status: InProgress"
-    }
-
-    Start-Sleep -Seconds 10
-}   
-```
-
-还可使用 Azure 门户监视管道。 有关分步说明，请参阅[监视管道](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)。
-
-### <a name="schedule-the-pipeline-with-a-trigger"></a>使用触发器计划管道
-在上一步骤中，已按需运行了管道。 还可创建一个计划触发器，按计划（例如每小时或每天）运行管道。
-
-1. 在 `C:\ADF\RunSSISPackage` 文件夹中创建一个名为 `MyTrigger.json` 的 JSON 文件，使其包含以下内容： 
-        
-   ```json
-   {
-       "properties": {
-           "name": "MyTrigger",
-           "type": "ScheduleTrigger",
-           "typeProperties": {
-               "recurrence": {
-                   "frequency": "Hour",
-                   "interval": 1,
-                   "startTime": "2017-12-07T00:00:00-08:00",
-                   "endTime": "2017-12-08T00:00:00-08:00"
-               }
-           },
-           "pipelines": [{
-               "pipelineReference": {
-                   "type": "PipelineReference",
-                   "referenceName": "RunSSISPackagePipeline"
-               },
-               "parameters": {}
-           }]
-       }
-   }    
-   ```
-    
-1. 在 Azure PowerShell 中，切换到 `C:\ADF\RunSSISPackage` 文件夹。
-1. 运行 **Set-AzDataFactoryV2Trigger** cmdlet，以创建触发器。 
-
-   ```powershell
-   Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
-                                   -DataFactoryName $DataFactory.DataFactoryName `
-                                   -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
-   ```
-1. 默认情况下，触发器处于停止状态。 运行 **Start-AzDataFactoryV2Trigger** cmdlet 以启动该触发器。 
-
-   ```powershell
-   Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
-                                     -DataFactoryName $DataFactory.DataFactoryName `
-                                     -Name "MyTrigger" 
-   ```
-1. 通过运行 **Get-AzDataFactoryV2Trigger** cmdlet 确认该触发器已启动。 
-
-   ```powershell
-   Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
-                                   -DataFactoryName $DataFactoryName `
-                                   -Name "MyTrigger"     
-   ```    
-1. 在下一小时后运行以下命令。 例如，如果当前时间为下午 3:25 (UTC)，则在下午 4:00 (UTC) 运行该命令。 
-    
-   ```powershell
-   Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
-                                      -DataFactoryName $DataFactoryName `
-                                      -TriggerName "MyTrigger" `
-                                      -TriggerRunStartedAfter "2017-12-06" `
-                                      -TriggerRunStartedBefore "2017-12-09"
-   ```
-
-   在 SQL Server 中针对 SSISDB 数据库运行以下查询，验证是否执行了该包。 
-
-   ```sql
-   select * from catalog.executions
-   ```
-
 ## <a name="next-steps"></a>后续步骤
-请参阅以下博客文章：
+- [通过 PowerShell 在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包](how-to-invoke-ssis-package-ssis-activity-powershell.md)
 - [使用 Azure 数据工厂管道中的 SSIS 活动来实现 ETL/ELT 工作流的现代化并对其进行扩展](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

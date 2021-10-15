@@ -4,27 +4,25 @@ description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 3058265fee62143f88bbd87e69c58dd4ff597920
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: cc6c8e05f5e6f37a8ac832ac5ee8fae386a627f1
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793790"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387708"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>使用 Bicep 和 Azure PowerShell 部署资源
 
 本文介绍如何将 Azure PowerShell 与 Bicep 文件搭配来将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Bicep 概述](overview.md)。
 
-若要部署 Bicep 文件，你需要 [Azure PowerShell 版本 5.6.0 或更高版本](/powershell/azure/install-az-ps)。
-
 ## <a name="prerequisites"></a>先决条件
 
-需要一个 Bicep 文件进行部署。 本文使用的本地文件名为 C:\MyTemplates\azuredeploy.bicep。
+需要一个 Bicep 文件进行部署。 该文件必须为本地。
 
-需安装 Azure PowerShell 并连接到 Azure：
+需要 Azure PowerShell，并将其连接到 Azure：
 
-- **在本地计算机上安装 Azure PowerShell cmdlet。** 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
+- **在本地计算机上安装 Azure PowerShell cmdlet。** 要部署 Bicep 文件，需要 [Azure PowerShell](/powershell/azure/install-az-ps) 版本 5.6.0 或更高版本。 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
 - 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 连接到 Azure。 如果有多个 Azure 订阅，则可能还需要运行 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。 有关详细信息，请参阅[使用多个 Azure 订阅](/powershell/azure/manage-subscriptions-azureps)。
 
 如果没有安装 PowerShell，则可使用 Azure Cloud Shell。 有关详细信息，请参阅[从 Azure Cloud Shell 部署 Bicep 文件](./deploy-cloud-shell.md)。
@@ -139,15 +137,15 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile <path-to-bicep> `
-  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+  -TemplateFile c:\BicepFiles\storage.bicep `
+  -TemplateParameterFile c:\BicepFiles\storage.parameters.json
 ```
 
 若要传递外部参数文件，请使用 `TemplateParameterUri` 参数：
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile <path-to-bicep> `
+  -TemplateFile c:\BicepFiles\storage.bicep `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.parameters.json
 ```
 
@@ -157,11 +155,11 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ## <a name="deploy-template-specs"></a>部署模板规格
 
-目前，Azure PowerShell 不支持通过提供 Bicep 文件来创建模板规格。 但是，可使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。[创建模板规格示例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep)演示了如何在 Bicep 文件中创建模板规格。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON 中，然后使用 JSON 模板创建模板规格。
+目前，Azure PowerShell 不支持通过提供 Bicep 文件来创建模板规格。 但是，可使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。[创建模板规格示例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep)演示了如何在 Bicep 文件中创建模板规格。 还可使用 Bicep CLI 将 Bicep 文件生成到 JSON 中，然后使用 JSON 模板创建模板规格。
 
 ## <a name="deployment-name"></a>部署名称
 
-部署 Bicep 文件时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用 Bicep 文件的名称。 例如，如果部署一个名为 `azuredeploy.bicep` 的 Bicep，但未指定部署名称，则该部署将命名为 `azuredeploy`。
+部署 Bicep 文件时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用 Bicep 文件的名称。 例如，如果部署一个名为 `main.bicep` 的 Bicep，但未指定部署名称，则该部署将命名为 `main`。
 
 每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
 
@@ -189,6 +187,4 @@ $deploymentName="ExampleDeployment"+"$today"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](../templates/rollback-on-error.md)。
 - 若要了解如何在文件中定义参数，请参阅[了解 Bicep 文件的结构和语法](file.md)。
-- 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](../templates/secure-template-with-sas-token.md)。

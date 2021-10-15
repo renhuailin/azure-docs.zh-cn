@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/17/2021
-ms.openlocfilehash: 61e2f33511e6a200258ed16b5ef191e153553db8
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 711b35ec11d42ae16a4b4db08d17e85b5217d41f
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122653158"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387501"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 灵活服务器中创建和管理只读副本
 
@@ -25,7 +25,8 @@ ms.locfileid: "122653158"
 > [!Note]
 >
 > * 启用高可用性的服务器不支持副本。 
->
+> 
+> * 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 灵活服务器。 请确保源服务器位于其中一个定价层中。
 > * 如果在主服务器上启用了 GTID (`gtid_mode` = ON)，则新创建的副本也会启用 GTID 并使用基于 GTID 的复制。 若要了解详细信息，请参阅[全局事务标识符 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="prerequisites"></a>先决条件
@@ -49,7 +50,7 @@ ms.locfileid: "122653158"
 
    :::image type="content" source="./media/how-to-read-replica-portal/add-replica.png" alt-text="Azure Database for MySQL - 复制":::
 
-5. 输入副本服务器的名称。
+5. 输入副本服务器的名称。 如果你的区域支持可用性区域，可以选择你选择的可用性区域。
 
     :::image type="content" source="./media/how-to-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL - 副本名称":::
 

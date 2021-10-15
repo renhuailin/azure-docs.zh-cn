@@ -6,13 +6,13 @@ ms.author: zeinam
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: conceptual
-ms.date: 09/15/2021
-ms.openlocfilehash: 52eb75c054ec9b930898b86f5a58f5334656523a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 09/27/2021
+ms.openlocfilehash: 838730453f5d49efd756abce40faec74513d52b2
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207481"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390323"
 ---
 # <a name="azure-purview-collections-architectures-and-best-practices"></a>Azure Purview 集合体系结构和最佳做法  
 
@@ -53,7 +53,7 @@ Azure Purview 中的[集合](./how-to-create-and-manage-collections.md)支持元
 
 - 数据源、扫描和资产只能属于一个集合。 
 
-- Azure Purview 中的集合层次结构最多支持 300 个集合，集合深度最大为 8 级。 这不包括根集合。 
+- Azure Purview 中的集合层次结构最多支持 256 个集合，集合深度最大为 8 级。 这不包括根集合。 
 
 - 根据设计，不能在单个 Purview 帐户中多次注册数据源。 这种体系结构有助于避免将不同级别的访问控制分配到单个数据源的风险。 如果多个团队使用单个数据源的元数据，则你可以在父集合中注册和管理数据源。 然后，可以在每个子集合下创建相应的扫描，使相关资产出现在每个子集合下。
 
@@ -65,7 +65,9 @@ Azure Purview 中的[集合](./how-to-create-and-manage-collections.md)支持元
 
 - 如果为用户授予了对源和目标集合的“数据管护者”角色，则允许跨集合移动资产。 
 
-- 目前不允许执行某些操作，例如删除、移动和重命名集合。 
+- 目前不允许执行某些操作，例如移动和重命名集合。 
+
+- 如果集合没有任何资产、关联扫描、数据源或子集合，则可以将其删除。
 
 - 如果数据源、扫描和资产存在于 Azure Purview 数据映射中，则它们必须属于某个集合。    
 
@@ -74,9 +76,6 @@ Azure Purview 中的[集合](./how-to-create-and-manage-collections.md)支持元
 
 - Moving assets across collections is allowed if the user is granted the Data Curator role for the source and destination collections. 
 
-- Certain operations, like delete, move, and rename of a collection, aren't allowed via the Azure Purview Studio graphical interface. You can use the API to perform such operations directly in your Azure Purview data map. 
-
-- You can delete a collection if there are no assets or data sources associated with the collection. You can delete a collection that has a scan associated with it. 
 -->
 
 ### <a name="design-recommendations"></a>设计建议 

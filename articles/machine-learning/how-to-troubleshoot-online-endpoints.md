@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何排查托管联机终结点出现的一些常见部署和评分错误。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: petrodeg
 ms.author: petrodeg
 ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: 0edd6b7e9ac3229483d53d0e91c49f06633f5e51
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e4c4b611b4316f0e9a950c9f13144e37c9c1762b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218444"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425746"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>排查托管联机终结点的部署和评分问题（预览版）
 
@@ -195,6 +195,7 @@ az ml endpoint get-logs
     - 包已导入，但不在 conda 环境中
     - 语法错误
     - `init()` 方法失败
+- 如果 `get-logs` 未生成任何日志，通常意味着容器启动失败。 若要调试此问题，请改为尝试[进行本地部署](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-troubleshoot-online-endpoints.md#deploy-locally)。
 - 未正确设置就绪状态或运行情况探测。
 - 容器的环境设置有错误，例如缺少依赖项。
 

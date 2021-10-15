@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 author: Sharmistha-Rai
 ms.author: sharrai
-ms.openlocfilehash: 7c64aee5177adf7ee1d5f5d47ba80c5e25a53002
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: b8771e26f51dd54595ebefdb5ad5230c7257907a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444797"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536664"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -98,7 +98,7 @@ Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 
 
 **存储** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
-NFS | 不可用 | 不可用
+NFS | 不可用 | NA
 SMB 3.0 | 是 | 是
 SAN (ISCSI) | 是 | 是
 多路径 (MPIO)。 测试时使用的对象：<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | 是 | 是
@@ -113,7 +113,7 @@ VHD/VHDX | 是 | 是
 EFI/UEFI<br></br>Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 该 VM 应仅运行 Windows Server 2012 及更高版本。 OS 磁盘应该最多有五个分区或更少，OS 磁盘的大小应该小于 300 GB。| 是 | 是
 共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
-NFS | 不可用 | 不可用
+NFS | 不可用 | NA
 SMB 3.0 | 否 | 否
 RDM | 不可用 | 不可用
 磁盘 > 1 TB | 是，最大 4,095 GB | 是，最大 4,095 GB
@@ -146,7 +146,7 @@ RDM | 不可用 | 不可用
 启用了防火墙的 Azure 存储帐户 | 是的。 适用于目标存储和缓存。 | 是的。 适用于目标存储和缓存。
 修改存储帐户 | 否。 启用复制后，无法修改目标 Azure 存储帐户。 若要修改，请禁用然后重新启用灾难恢复。 | 否
 安全传输选项 | 是 | 是
-
+UEFI 安全启动 | 否 | 否
 
 ## <a name="azure-compute-features"></a>Azure 计算功能
 

@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: sms
-ms.openlocfilehash: 7b10040aa8aabd16d84326c73bd422f9b66ef04e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 658e13aa888e448de723a97bf9cc89c162a774b5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635976"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356323"
 ---
 # <a name="sms-faq"></a>SMS 常见问题解答
 
@@ -46,6 +46,9 @@ SMS 的速率限制：
 
 Azure 通信服务客户可以使用 Azure 事件网格来接收传入的短信。 按照此[快速入门](../../quickstarts/telephony-sms/handle-sms-events.md)中的操作设置事件网格以接收短信。
 
+## <a name="what-is-the-sms-character-limit"></a>短信字符数限制是多少？
+一条短信的字符数限制为 160。 发送消息时，超过 160 个字符的所有消息将拆分为多个段并分开传递，然后接收方的设备会连接这些段。 接收长消息时与此类似，长消息的多个段会自动连接，并作为一条消息传递到 Azure 事件网格中指定的终结点。 
+
 ## <a name="can-i-sendreceive-long-messages-2048-chars"></a>可以发送/接收长短信（>2048 字符）？
 
 Azure 通信服务支持通过短信发送和接收长短信。 但是，某些无线运营商或设备在接收长短信时可能会有不同的操作。
@@ -55,7 +58,6 @@ Azure 通信服务支持通过短信发送和接收长短信。 但是，某些�
 在美国，Azure 通信服务不检查座机号码，但会尝试将短信发送给运营商进行转发。 将向客户收取将短信发送到座机号码的费用。 
 
 ## <a name="can-i-send-messages-to-multiple-recipients"></a>是否可以向多个收件人发送短信？
-
 
 是的，可以通过一个请求向多个收件人发送短信。 按照此[快速入门](../../quickstarts/telephony-sms/send.md?pivots=programming-language-csharp)中的操作将短信发送给多个收件人。
 

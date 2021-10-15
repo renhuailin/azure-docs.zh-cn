@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/24/2021
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 18055232714914456ec2db51891edc70ac89057e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 91637d6f508eb198345add5ad40fed52a67ec952
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779628"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457708"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>通过 IoT 中心将设备中的文件上传到云 (.NET)
 
@@ -59,7 +59,7 @@ ms.locfileid: "124779628"
     dotnet --version
     ```
 
-* 从 [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) 下载 Azure IoT C# 示例，并提取 ZIP 存档。
+* 从 [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip) 下载 Azure IoT C# 示例，并提取 ZIP 存档。
 
 * 确保已在防火墙中打开端口 8883。 本文中的示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "124779628"
 
 在本文中，你将使用之前从 Azure IoT C# 示例存储库中下载的示例作为设备应用。 可以使用 Visual Studio、Visual Studio Code 或所选的文本编辑器打开下面的文件。  
 
-该示例位于你在其中提取 Azure IoT C# 示例的文件夹下的 azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample 中。
+该示例位于你在其中提取 Azure IoT C# 示例的文件夹下的 azure-iot-samples-csharp-main\iot-hub\Samples\device\FileUploadSample 中。
 
 检查 FileUpLoadSample.cs 中的代码。 此文件包含主要示例逻辑。 创建 IoT 中心设备客户端后，它将遵循由三部分组成的标准过程，用于从设备上传文件：
 
@@ -225,7 +225,7 @@ ms.locfileid: "124779628"
 
 
 
-1. 接下来，运行设备应用以将文件上传到 Azure 存储。 打开新命令提示符，并将文件夹更改为你在其中扩展 Azure IoT C# 示例的文件夹下的 azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample。 运行以下命令。 将第二个命令中的 `{Your device connection string}` 占位符值替换为之前在[在 IoT 中心内注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。
+1. 接下来，运行设备应用以将文件上传到 Azure 存储。 打开新命令提示符，并将文件夹更改为你在其中扩展 Azure IoT C# 示例的文件夹下的 azure-iot-samples-csharp-main\iot-hub\Samples\device\FileUploadSample。 运行以下命令。 将第二个命令中的 `{Your device connection string}` 占位符值替换为之前在[在 IoT 中心内注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。
 
     ```cmd/sh
     dotnet restore

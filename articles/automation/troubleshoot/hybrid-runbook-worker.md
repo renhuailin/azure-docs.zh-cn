@@ -1,23 +1,23 @@
 ---
-title: 排查 Azure 自动化混合 Runbook 辅助角色问题
-description: 本文介绍如何排查和解决 Azure 自动化混合 Runbook 辅助角色出现的问题。
+title: 排查 Azure 自动化中基于代理的混合 Runbook 辅助角色问题
+description: 本文介绍如何排查和解决 Azure 自动化基于代理的混合 Runbook 辅助角色出现的问题。
 services: automation
 ms.subservice: ''
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/11/2021
+ms.date: 09/24/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9b06213416241f671dd0e6ef56a7660a3af5f6e8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 824925f4c3616b91f10fc3bae4bdaa1f5a0bb5ee
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123890"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277150"
 ---
-# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>排查混合 Runbook 辅助角色问题
+# <a name="troubleshoot-agent-based-hybrid-runbook-worker-issues-in-automation"></a>排查自动化中基于代理的混合 Runbook 辅助角色问题
 
-本文介绍如何排查和解决 Azure 自动化混合 Runbook 辅助角色的问题。 如需常规信息，请参阅[混合 Runbook 辅助角色概述](../automation-hybrid-runbook-worker.md)。
+本文介绍如何排查和解决 Azure 自动化基于代理的混合 Runbook 辅助角色的问题。 有关如何排查基于扩展的辅助角色的问题，请参阅[排查自动化中基于扩展的混合 Runbook 辅助角色问题](./extension-based-hybrid-runbook-worker.md)。 如需常规信息，请参阅[混合 Runbook 辅助角色概述](../automation-hybrid-runbook-worker.md)。
 
 ## <a name="general"></a>常规
 
@@ -47,7 +47,7 @@ Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可
 
 运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，然后才能将辅助角色配置为托管此功能。 它们使用的 Runbook 和后台进程可能会导致系统过度使用，造成 Runbook 作业延迟或超时。
 
-确认将要运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 出现内存或 CPU 压力可能意味着需要升级资源。 也可以选择其他支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
+确认将要运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 出现内存或 CPU 压力可能意味着需要升级资源。 也可以选择其他支持最低要求的计算资源，并在工作负载需求指示需要增加时进行扩展。
 
 在 **Microsoft-SMA** 事件日志中检查附带“`Win32 Process Exited with code [4294967295]`”说明的相应事件。 此错误的原因是尚未在 Runbook 中配置身份验证，或者未为混合 Runbook 辅助角色组指定运行方式凭据。 在[在混合 Runbook 辅助角色上运行 Runbook](../automation-hrw-run-runbooks.md) 中查看 Runbook 权限，确认是否已正确配置 Runbook 的身份验证。
 
@@ -180,7 +180,7 @@ Linux 混合 Runbook 辅助角色依靠[适用于 Linux 的 Log Analytics 代理
 
 #### <a name="cause"></a>原因
 
-未在 **sudoers** 文件中正确配置适用于 Linux 的 Log Analytics 代理的 **nxautomationuser** 帐户。 需要为混合 Runbook 辅助角色适当配置帐户权限和其他数据，才能让它为 Linux Runbook 辅助角色中的 Runbook 签名。
+未在 sudoers 文件中正确配置适用于 Linux 的 Log Analytics 代理的 nxautomationuser 帐户 。 需要为混合 Runbook 辅助角色适当配置帐户权限和其他数据，才能让它为 Linux Runbook 辅助角色中的 Runbook 签名。
 
 #### <a name="resolution"></a>解决方法
 
@@ -372,7 +372,7 @@ Start-Service -Name HealthService
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你的问题未在本文中列出，或者无法解决问题，请尝试通过以下渠道之一获取更多支持：
+如果你的问题未在本文中列出，或者无法解决你遇到的问题，请尝试通过以下途径之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
 * 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。

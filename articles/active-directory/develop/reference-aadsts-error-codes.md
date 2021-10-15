@@ -12,12 +12,12 @@ ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3a530dae026ffe87efe06fb413966df43ce32314
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8492b35fae2d2c2d716330002d5f889ec693f8c5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588284"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353374"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -88,6 +88,8 @@ ms.locfileid: "128588284"
 | AADSTS20001 | WsFedSignInResponseError - 联合标识提供者出现问题。 请联系 IDP 解决此问题。 |
 | AADSTS20012 | WsFedMessageInvalid - 联合标识提供者出现问题。 请联系 IDP 解决此问题。 |
 | AADSTS20033 | FedMetadataInvalidTenantName - 联合标识提供者出现问题。 请联系 IDP 解决此问题。 |
+| AADSTS28002 | 请求访问令牌时，为输入参数范围“{scope}”提供的值无效。 请指定有效范围。 |
+| AADSTS28003 | 当使用提供的授权代码请求访问令牌时，为输入参数范围提供的值不能为空。 请指定有效范围。|
 | AADSTS40008 | OAuth2IdPUnretryableServerError - 联合标识提供者出现问题。 请联系 IDP 解决此问题。 |
 | AADSTS40009 | OAuth2IdPRefreshTokenRedemptionUserError - 联合标识提供者出现问题。 请联系 IDP 解决此问题。 |
 | AADSTS40010 | OAuth2IdPRetryableServerError - 联合标识提供者出现问题。 请联系 IDP 解决此问题。 |
@@ -163,6 +165,7 @@ ms.locfileid: "128588284"
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword - 用户的 Active Directory 密码已过期。 为用户生成新密码，或者让用户使用自助重置工具重置其密码。 |
 | AADSTS50146 | MissingCustomSigningKey - 需要为此应用配置特定于应用的签名密钥。 没有为此应用程序配置签名密钥，或者密钥已过期或尚未生效。 |
 | AADSTS50147 | MissingCodeChallenge - 代码质询参数的大小无效。 |
+| AADSTS501481 | Code_Verifier 与授权请求中提供的 code_challenge 不匹配。|
 | AADSTS50155 | DeviceAuthenticationFailed - 此用户的设备身份验证失败。 |
 | AADSTS50158 | ExternalSecurityChallenge - 不符合外部安全质询。 |
 | AADSTS50161 | InvalidExternalSecurityChallengeConfiguration - 外部提供程序发送的声明不够，或者向外部提供程序请求的声明缺失。 |
@@ -175,6 +178,7 @@ ms.locfileid: "128588284"
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers - 直通用户不支持会话控制。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要 Windows 集成身份验证。 为租户启用无缝 SSO。 |
 | AADSTS50187 | DeviceInformationNotProvided - 服务无法执行设备身份验证。 |
+| AADSTS50194 | 应用程序“{appId}”({appName})未配置为多租户应用程序。 在“{time}”之后创建的此类应用程序不支持使用 /common 终结点。 使用特定于租户的终结点，或将应用程序配置为多租户。 |
 | AADSTS50196 | LoopDetected - 检测到客户端循环。 检查应用的逻辑，以确保实现了令牌缓存，并且正确处理了错误情况。  该应用在太短的时间内发出了太多相同请求，表明它处于错误状态或滥用请求令牌。 |
 | AADSTS50197 | ConflictingIdentities - 找不到用户。 请尝试再次登录。 |
 | AADSTS50199 | CmsiInterrupt - 出于安全原因，此请求需要用户确认。  由于这是“interaction_required”错误，因此客户端应进行交互式身份验证。之所以发生这种情况，是因为系统 Web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为他们要登录的应用。 要避免此提示，重定向 URI 应是以下安全列表的一部分： <br />http://<br />https://<br />msauth://（仅限 iOS）<br />msauthv2://（仅限 iOS）<br />chrome-extension://（仅限桌面 Chrome 浏览器） |
@@ -182,7 +186,7 @@ ms.locfileid: "128588284"
 | AADSTS51001 | DomainHintMustbePresent - 必须使用本地安全标识符或本地 UPN 提供域提示。 |
 | AADSTS51004 | UserAccountNotInDirectory - 目录中不存在该用户帐户。 |
 | AADSTS51005 | TemporaryRedirect - 等效于 HTTP 状态 307，表示请求的信息位于 location 标头中指定的 URI 处。 如果收到此状态，请遵循与响应关联的 location 标头操作。 如果原始请求方法是 POST，则重定向的请求也会使用 POST 方法。 |
-| AADSTS51006 | ForceReauthDueToInsufficientAuth - 需要 Windows 集成身份验证。 用户已使用缺少 Windows 集成身份验证声明的会话令牌登录。 请求用户重新登录。 |
+| AADSTS51006 | ForceReauthDueToInsufficientAuth - 需要 Windows 集成身份验证。 用户已使用缺少集成 Windows 身份验证声明的会话令牌登录。 请求用户重新登录。 |
 | AADSTS52004 | DelegationDoesNotExistForLinkedIn - 用户未许可访问 LinkedIn 资源。 |
 | AADSTS53000 | DeviceNotCompliant - 条件访问策略需要合规的设备，该设备不合规。 用户必须使用已批准的 MDM 提供程序（例如 Intune）注册其设备。 |
 | AADSTS53001 | DeviceNotDomainJoined - 条件访问策略需要已加入域的设备，而该设备未加入域。 让用户使用已加入域的设备。 |
@@ -191,16 +195,21 @@ ms.locfileid: "128588284"
 | AADSTS53004 | ProofUpBlockedDueToRisk - 在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。 |
 | AADSTS53011 | 用户因主租户的风险而被阻止。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
+| AADSTS54005 | OAuth2 授权代码已兑换，请使用新的有效代码重试，或使用现有的刷新令牌。 |
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
+| AADSTS65002 | 必须通过预授权在第一方应用程序“{applicationId}”与第一方资源“{resourceId}”之间配置同意 - 由 Microsoft 拥有和操作的应用程序必须先获得 API 所有者的批准，然后才能请求该 API 的令牌。  租户中的某位开发人员可能正在尝试重用 Microsoft 拥有的应用 ID。 此错误会导致他们无法模拟 Microsoft 应用程序来调用其他 API。 他们必须移动到在 https://portal.azure.com 中注册的另一个应用 ID。|
 | AADSTS65004 | UserDeclinedConsent - 用户已拒绝许可访问该应用。 让用户重试登录并许可应用|
 | AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app)。 |
 | AADSTS650052 | 应用需要访问你的组织 `\"{organization}\"` 尚未订阅或启用的服务 `(\"{name}\")`。 若要查看服务订阅的配置，请与 IT 管理员联系。 |
 | AADSTS650054 |  应用程序请求访问已删除或不再可用的资源的权限。 确保应用调用的所有资源都存在于你正在操作中的租户中。 |
+| AADSTS650056 | 应用程序配置不正确。 这可能由以下原因之一造成：在客户端的应用程序注册中，客户端没有在所请求的权限中列出针对“{name}”的任何权限。 或者，管理员未在租户中表示同意。 或者，检查请求中的应用程序标识符，确保它与配置的客户端应用程序标识符匹配。 或者，检查请求中的证书，确保该证书有效。 请联系你的管理员来修复配置或者代表租户来表示同意。 客户端应用 ID：{id}。 请联系你的管理员来修复配置或者代表租户来表示同意。|
+| AADSTS650057 | 资源无效。 客户端已请求访问某个资源，但该资源未在客户端应用程序注册中的所需权限中列出。 客户端应用 ID：{appId}({appName})。 请求中的资源值：{resource}。 资源应用 ID：{resourceAppId}。 应用注册中的有效资源列表：{regList}。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 身份验证失败。 刷新令牌无效。 该错误的可能原因如下：<ul><li>令牌绑定标头为空</li><li>令牌绑定哈希不匹配</li></ul> |
 | AADSTS70001 | UnauthorizedClient - 应用程序处于禁用状态。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory)。 |
 | AADSTS70002 | InvalidClient - 验证凭据时出错。 指定的 client_secret 与此客户端的预期值不匹配。 请更正 client_secret，然后重试。 有关详细信息，请参阅[使用授权代码请求访问令牌](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token)。 |
 | AADSTS70003 | UnsupportedGrantType - 应用返回了不受支持的授权类型。 |
+| AADSTS700030 | 证书无效 - 证书中的使用者名称未获授权。 令牌证书中的 SubjectNames/SubjectAlternativeNames（最多 10 个）为：{certificateSubjects}。 |
 | AADSTS70004 | InvalidRedirectUri - 应用返回了无效的重定向 URI。 客户端指定的重定向地址与配置的任何地址或者 OIDC 批准列表中的任何地址都不匹配。 |
 | AADSTS70005 | UnsupportedResponseType - 由于以下原因，应用返回了不受支持的响应类型：<ul><li>没有为应用启用响应类型“token”</li><li>响应类型“id_token”需要“OpenID”作用域 - 编码的 wctx 中包含不支持的 OAuth 参数值</li></ul> |
 | AADSTS700054 | 没有为应用程序启用响应类型“id_token”。  应用程序从授权终结点请求了 ID 令牌，但未启用 ID 令牌隐式授权。  转到“Azure 门户”>“Azure Active Directory”>“应用注册”>“选择你的应用程序”>“身份验证”>在“隐式授权和混合流”下，确保“ID 令牌”处于选中状态。|
@@ -212,6 +221,7 @@ ms.locfileid: "128588284"
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 设备流错误。 授权处于挂起状态。 设备将重试轮询请求。 |
 | AADSTS70018 | BadVerificationCode - 由于用户为设备代码流键入了错误的用户代码，验证码无效。 授权未获批准。 |
 | AADSTS70019 | CodeExpired - 验证码已过期。 让用户重试登录。 |
+| AADSTS70043 | 由于条件访问进行登录频率检查，刷新令牌已过期或无效。 该令牌是在 {issueDate} 颁发的，此请求的最大允许生存期为 {time}。 |
 | AADSTS75001 | BindingSerializationError - SAML 消息绑定期间出错。 |
 | AADSTS75003 | UnsupportedBindingError - 应用返回了与不受支持的绑定相关的错误（无法通过 HTTP POST 以外的绑定发送 SAML 协议响应）。 |
 | AADSTS75005 | Saml2MessageInvalid - Azure AD 不支持应用针对 SSO 所发送的 SAML 请求。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS75005](/troubleshoot/azure/active-directory/error-code-aadsts75005-not-a-valid-saml-request)。 |
@@ -243,20 +253,25 @@ ms.locfileid: "128588284"
 | AADSTS90008 | TokenForItselfRequiresGraphPermission - 用户或管理员尚未许可使用该应用程序。 最起码，应用程序需要通过指定登录并读取用户个人资料权限来访问 Azure AD。 |
 | AADSTS90009 | TokenForItselfMissingIdenticalAppIdentifier - 应用程序正在请求自身的令牌。 仅当指定的资源使用基于 GUID 的应用程序 ID 时，才支持此方案。 |
 | AADSTS90010 | NotSupported - 无法创建该算法。 |
+| AADSTS9001023 |不支持通过 /common 或 /consumers 终结点的授予类型。 请使用 /organizations 或特定于租户的终结点。|
 | AADSTS90012 | RequestTimeout - 请求超时。 |
 | AADSTS90013 | InvalidUserInput - 用户的输入无效。 |
 | AADSTS90014 | MissingRequiredField - 如果预期的字段在凭据中不存在，则可能会显示此错误代码。 |
+| AADSTS900144 | 请求正文必须包含以下参数：“{name}”。  开发人员错误 - 应用尝试在没有必需的或正确的身份验证参数的情况下登录。|
 | AADSTS90015 | QueryStringTooLong - 查询字符串过长。 |
 | AADSTS90016 | MissingRequiredClaim - 访问令牌无效。 缺少必需的声明。 |
 | AADSTS90019 | MissingTenantRealm - Azure AD 无法确定请求中的租户标识符。 |
+| AADSTS90020 | SAML 1.1 断言缺少用户的 ImmutableID。 开发人员错误 - 应用尝试在没有必需的或正确的身份验证参数的情况下登录。|
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - 主体名称格式无效，或者不符合预期的 `name[/host][@realm]` 格式。 主体名称是必需的，而主机和领域是可选的，可设置为 null。 |
 | AADSTS90023 | InvalidRequest - 身份验证服务请求无效。 |
 | AADSTS9002313 | InvalidRequest - 请求格式错误或无效。 - 这里的问题是对某个终结点的请求出了问题。 对此问题的建议是获取发生的错误的 fiddler 跟踪，并查看请求的格式是否确实正确。 |
 | AADSTS90024 | RequestBudgetExceededError - 发生了暂时性错误。 重试。 |
+| AADSTS90027 | 我们无法从 MSA 租户上的此 API 版本颁发令牌。 请与应用程序供应商联系，因为他们需要使用协议版本 2.0 来支持此操作。|
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) 不可用。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS 托管的 WCF 服务发生意外的不可重试错误。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。 |
 | AADSTS90038 | NationalCloudTenantRedirection - 指定的租户“Y”属于国家/地区云“X”。 当前云实例“Z”未与 X 联合。返回了云重定向错误。 |
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 已禁用该功能。 |
+| AADSTS900432 | 跨云请求不支持机密客户端。|
 | AADSTS90051 | InvalidNationalCloudId - 国家云标识符包含无效的云标识符。 |
 | AADSTS90055 | TenantThrottlingError - 传入的请求过多。 此异常是针对阻止的租户引发的。 |
 | AADSTS90056 | BadResourceRequest - 若要兑换访问令牌的代码，应用应该向 `/token` 终结点发送 POST 请求。 另外，在此之前，应该提供授权代码，并在发往 `/token` 终结点的 POST 请求中发送此代码。 有关 OAuth 2.0 授权代码流的概述，请参阅此文：[../azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)。 将用户定向到 `/authorize` 终结点，该终结点会返回 authorization_code。 通过向 `/token` 终结点发布请求，用户可以获取访问令牌。 在 Azure 门户中登录，并检查“应用注册”>“终结点”以确认是否正确配置了两个终结点。 |
@@ -273,6 +288,7 @@ ms.locfileid: "128588284"
 | AADSTS90093 | GraphUserUnauthorized - Graph 返回了针对请求的禁止访问错误代码。 |
 | AADSTS90094 | AdminConsentRequired - 需要管理员许可。 |
 | AADSTS900382 | 跨云请求不支持机密客户端。 |
+| AADSTS90095  | AdminConsentRequiredRequestAccess - 在管理员同意工作流体验中，当告知用户需要请求管理员同意时出现的中断。  |
 | AADSTS90099 | 应用程序“{appId}”({appName}) 未在租户“{tenant}”中获得授权。 应用程序必须获得访问客户租户的授权，然后合作伙伴委托的管理员才能使用应用程序。 若要为应用程序授权，请提供预先许可或执行相应的合作伙伴中心 API。 |
 | AADSTS900971| 未提供回复地址。|
 | AADSTS90100 | InvalidRequestParameter - 参数为空或无效。 |
@@ -311,8 +327,10 @@ ms.locfileid: "128588284"
 | AADSTS130007 | NgcDeviceIsDisabled - 设备已禁用。 |
 | AADSTS130008 | NgcDeviceIsNotFound - 找不到 NGC 密钥引用的设备。 |
 | AADSTS135010 | KeyNotFound |
+| AADSTS135011 |  在身份验证期间使用的设备已禁用。|
 | AADSTS140000 | InvalidRequestNonce - 未提供请求 nonce。 |
 | AADSTS140001 | InvalidSessionKey - 会话密钥无效。|
+| AADSTS165004 | 实际消息内容特定于运行时。 有关详细信息，请查看返回的异常消息。 |
 | AADSTS165900 | InvalidApiRequest - 请求无效。 |
 | AADSTS220450 | UnsupportedAndroidWebViewVersion - 不支持 Chrome WebView 版本。 |
 | AADSTS220501 | InvalidCrlDownload |
@@ -329,6 +347,8 @@ ms.locfileid: "128588284"
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 提供的授权代码是用于其他租户的，因此已被拒绝。 兑换 OAuth2 授权代码时所针对的租户必须是获取该代码时所针对的租户（根据情况使用 /common 或 {tenant ID} 进行指定） |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |
+| AADSTS100007 | AAD 区域仅支持使用适用于 Microsoft 基础结构租户中的 1P 应用或 3P 应用的 SN+I，对 MSI 或来自 MSAL 的请求进行身份验证。|
+| AADSTS1000031 | 目前无法访问应用程序 {appDisplayName}。 请与您的管理员联系。 |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled - 应用程序处于禁用状态。 |
 | AADSTS7000114| 不允许使用应用程序“appIdentifier”进行应用程序代理调用。|
 | AADSTS7500529 | 值“SAMLId-Guid”不是有效的 SAML ID - Azure AD 使用此属性填充返回的响应的 InResponseTo 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示形式前面加上类似于“id”的字符串。 例如，id6c1c178c166d486687be4aaf5e482730 是有效的 ID。 |

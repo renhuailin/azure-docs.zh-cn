@@ -14,12 +14,12 @@ ms.date: 08/24/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: d32a4ec02585de7a34c3d21633454accaa11d69c
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 1d3257980d628a627b9a4896e2511812240454f8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777511"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229879"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 

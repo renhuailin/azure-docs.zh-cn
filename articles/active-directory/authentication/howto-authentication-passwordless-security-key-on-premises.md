@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2079905f81b770039a9b71b2e8e4f21553da099f
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 49963f7c2625a0aa454d8a1bac5ff001cb4debe9
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202983"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230905"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>使用 Azure Active Directory 启用无密码安全密钥登录到本地资源 
 
@@ -47,8 +47,8 @@ Azure AD Kerberos 服务器对象在本地 Active Directory 中创建，然后�
 - [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 的版本为必须为 1.4.32.0 或更高版本。
   - 有关可用的 Azure AD 混合身份验证选项的详细信息，请参阅[为 Azure Active Directory 混合身份解决方案选择正确的身份验证方法](../hybrid/choose-ad-authn.md)以及[选择要用于 Azure AD Connect 的安装类型](../hybrid/how-to-connect-install-select-installation.md)。
 - Windows Server 域控制器必须安装下列修补程序：
-    - 对于 Windows Server 2016 - https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - 对于 Windows Server 2019 - https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+    - 对于 [Windows Server 2016](https://support.microsoft.com/help/4534307/windows-10-update-kb4534307)
+    - 对于 [Windows Server 2019](https://support.microsoft.com/help/4534321/windows-10-update-kb4534321)
 
 ### <a name="supported-scenarios"></a>支持的方案
 
@@ -201,7 +201,8 @@ Azure AD Kerberos 服务器对象在 Azure AD 中表示为 *KerberosDomain* 对�
 
 请确保对足够的域控制器进行修补，以便及时响应资源服务请求。 要检查是否可以看到运行该功能的域控制器，请查看 `nltest /dsgetdc:contoso /keylist /kdc` 的输出。
 
-注意：可以在客户端 Windows 10 v2004 及更高版本中找到 nltest 命令中的这个 /Keylist 开关
+> [!NOTE]
+> `nltest` 命令中的 `/keylist` 开关在客户端 Windows 10 v2004 及更高版本中可用。
 
 ## <a name="next-steps"></a>后续步骤
 

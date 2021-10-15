@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 703c2023103d9225e5dfad5bd0d288164350122f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d10c64af28f6b8dacdbc28d7d29c691fe50580e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450334"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569326"
 ---
 # <a name="create-an-azure-image-builder-template"></a>创建 Azure 映像生成器模板 
 
@@ -25,32 +25,31 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 下面是基本模板格式：
 
 ```json
- { 
+  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
     "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
-        "<name": "<value>",
-        "<name>": "<value>"
-     },
-    "identity":{},           
+      "<name>": "<value>",
+      "<name>": "<value>"
+    },
+    "identity": {},          
     "dependsOn": [], 
     "properties": { 
-        "buildTimeoutInMinutes": <minutes>, 
-        "vmProfile": 
-            {
-            "vmSize": "<vmSize>",
+      "buildTimeoutInMinutes": <minutes>, 
+      "vmProfile": {
+        "vmSize": "<vmSize>",
         "proxyVmSize": "<vmSize>",
-            "osDiskSizeGB": <sizeInGB>,
-            "vnetConfig": {
-                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
-                }
-            },
-        "source": {}, 
-        "customize": {}, 
-        "distribute": {} 
-      } 
- } 
+        "osDiskSizeGB": <sizeInGB>,
+        "vnetConfig": {
+          "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
+      },
+      "source": {}, 
+      "customize": {}, 
+      "distribute": {} 
+    } 
+  } 
 ```
 
 
@@ -143,11 +142,11 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ```json
     "identity": {
-    "type": "UserAssigned",
-          "userAssignedIdentities": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
             "<imgBuilderId>": {}
         }
-        },
+    },
 ```
 
 
@@ -177,10 +176,10 @@ Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场
 ```json
         "source": {
             "type": "PlatformImage",
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "18.04-LTS",
-                "version": "latest"
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
         },
 ```
 
@@ -218,7 +217,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```json
         "source": { 
             "type": "ManagedImage", 
-                "imageId": "/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>"
+            "imageId": "/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>"
         }
 ```
 
@@ -236,7 +235,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
         "source": { 
             "type": "SharedImageVersion", 
             "imageVersionID": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/p  roviders/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageDefinitionName/versions/<imageVersion>" 
-   } 
+        } 
 ```
 
 `imageVersionId` 应是映像版本的 ResourceId。 使用 [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) 可以列出映像版本。
@@ -308,13 +307,13 @@ Shell 定制器支持运行 shell 脚本。 Shell 脚本必须可公开访问，
             "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
-        "customize": [ 
+    "customize": [ 
         { 
             "type": "Shell", 
             "name": "<name>", 
             "inline": "<commands to run>"
-        }, 
-    ], 
+    }, 
+    ],
 ```
 
 OS 支持：Linux 
@@ -397,7 +396,7 @@ shell 定制器支持运行 PowerShell 脚本和内联命令，这些脚本必�
              "validExitCodes": "<exit code>",
              "runElevated": "<true or false>" 
          } 
-    ], 
+     ], 
 ```
 
 OS 支持：Windows 和 Linux
@@ -455,16 +454,16 @@ Windows 目录和 Linux 路径支持此操作，但存在一些差别：
 
 ```json
      "customize": [
-            {
-                "type": "WindowsUpdate",
-                "searchCriteria": "IsInstalled=0",
-                "filters": [
+          {
+               "type": "WindowsUpdate",
+               "searchCriteria": "IsInstalled=0",
+               "filters": [
                     "exclude:$_.Title -like '*Preview*'",
                     "include:$true"
-                            ],
-                "updateLimit": 20
-            }
-               ], 
+               ],
+               "updateLimit": 20
+          }
+     ], 
 ```
 
 OS 支持：Windows
@@ -580,7 +579,7 @@ az resource show \
        "location": "<region>",
        "runOutputName": "<name>",
        "artifactTags": {
-            "<name": "<value>",
+            "<name>": "<value>",
             "<name>": "<value>"
         }
 }
@@ -653,7 +652,7 @@ Azure 共享映像库是一个新的映像管理服务，可用于管理映像�
     "type": "VHD",
     "runOutputName": "<VHD name>",
     "tags": {
-        "<name": "<value>",
+        "<name>": "<value>",
         "<name>": "<value>"
     }
 }
@@ -698,7 +697,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>取消映像生成
 如果你正在运行你认为不正确的映像生成，等待用户输入，或者你觉得永远不会成功完成，则可以取消生成。
 
-可随时取消生成。 如果分发阶段已经开始，你仍然可以取消，但你需要清理任何可能无法完成的映像。 取消命令不会等待取消完成，请使用这些状态[命令](image-builder-troubleshoot.md#customization-log)监视取消进度 `lastrunstatus.runstate`。
+可随时取消生成。 如果分发阶段已经开始，你仍然可以取消，但你需要清理任何可能无法完成的映像。 取消命令不会等待取消完成，请使用这些状态[命令](image-builder-troubleshoot.md#customization-log)监视取消进度的 `lastrunstatus.runstate`。
 
 
 `cancel` 命令的示例：

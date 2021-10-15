@@ -3,16 +3,16 @@ title: 支持的操作系统、容器引擎 - Azure IoT Edge
 description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作系统以及生产设备支持的容器引擎
 author: kgremban
 ms.author: kgremban
-ms.date: 06/09/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2ce05950cc77e41d55be1a957c5f3985addcc99
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: fd970e80f2b091d17c40b15d6c55699721fb1025
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437015"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349665"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -175,21 +175,21 @@ IoT Edge 发行资产和发行说明在 [azure-iotedge 版本](https://github.co
 
 | 发布 | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
 | ------- | ---------- | -------------------- | ---------------------- |
-| **1.2** | 1.2.0<br>1.2.1 | 1.2.0<br>1.2.1   | 1.2.0<br><br> |
+| **1.2** | 1.2.0<br>1.2.1<br>1.2.2<br>1.2.3 | 1.2.0<br>1.2.1<br>1.2.2<br> 1.2.3  | 1.2.0<br>1.2.1<br>1.2.2<br><br> |
 
 下表列出了每个版本（最高为 1.1 LTS 版本）中包含的组件。 可以单独安装或更新此表中列出的组件，并且它们与旧版本中的组件向后兼容。
 
+IoT Edge 1.1 是首个长期支持 (LTS) 发布通道。 此版本未引入任何新功能，但会收到对回归进行的安全更新和修复。 IoT Edge 1.1 LTS 使用 .NET Core 3.1，且有效支持期至 2022 年 12 月 3 日，以匹配 [.NET Core 和 .NET 5 发布生命周期](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
+
 | 发布 | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
-| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br>1.1.3 | 1.1.0<br>1.1.1<br>1.1.2<br>1.1.3 | 1.1.0<br>1.1.1<br><br>1.1.3 |   |
+| 1\.1 LTS | 1.1.0<br>1.1.1<br><br>1.1.3<br>1.1.4<br>1.1.5<br>1.1.6 | 1.1.0<br>1.1.1<br>1.1.2<br>1.1.3<br>1.1.4<br>1.1.5<br><br> | 1.1.0<br>1.1.1<br><br>1.1.3<br>1.1.4<br>1.1.5<br>1.1.6 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
 | **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 3.0.4（ARMv7hl，CentOS）<br>3.0.5 |
 | **1.0.6** | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
-
-<sup>1</sup> IoT Edge 1.1 是首个长期支持 (LTS) 发布通道。 此版本未引入任何新功能，但会收到对回归进行的安全更新和修复。 IoT Edge 1.1 LTS 使用 .NET Core 3.1，且有效支持期至 2022 年 12 月 3 日，以匹配 [.NET Core 和 .NET 5 发布生命周期](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 
 >[!IMPORTANT]
 >随着长期支持渠道的发布，我们建议所有当前运行 1.0.x 的客户将其设备升级到 1.1.x，以获得持续的支持。

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/15/2021
+ms.date: 09/28/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c50d62d5c8f24ed25258305411f9ed045098c7f
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 55ba6435ca8ea3b46051080eb6f33ebfca4e02bd
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112232824"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272749"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure 资源角色
 
@@ -39,7 +39,7 @@ Privileged Identity Management 支持内置的和自定义的 Azure 角色。 �
 
 ## <a name="role-assignment-conditions"></a>角色分配条件
 
-可以使用 Azure 基于属性的访问控制 (Azure ABAC) 预览版，通过 Privileged Identity Management (PIM) 对符合条件的角色分配设置资源条件。 使用 PIM 时，最终用户必须激活符合条件的角色分配，才能获得执行特定操作的权限。 通过在 PIM 中使用 Azure ABAC 条件，不仅可以使用精细的条件限制用户对资源的角色权限，还可以使用 PIM 中通过限时设置、审批工作流和审核核线索等保护角色分配。 有关详细信息，请参阅 [Azure 基于属性的访问控制公共预览版](../../role-based-access-control/conditions-overview.md)。
+可以使用 Azure 基于属性的访问控制 (Azure ABAC) 预览版，通过 Privileged Identity Management (PIM) 对符合条件的角色分配设置资源条件。 使用 PIM 时，最终用户必须激活符合条件的角色分配，才能获得执行特定操作的权限。 通过在 PIM 中使用 Azure 基于属性的访问控制条件，不仅可以使用精细条件来限制用户对资源的角色权限，还可以使用 PIM 通过限时设置、审批工作流和审核线索等措施对角色分配进行保护。 有关详细信息，请参阅 [Azure 基于属性的访问控制公共预览版](../../role-based-access-control/conditions-overview.md)。
 
 ## <a name="assign-a-role"></a>分配角色
 
@@ -92,6 +92,98 @@ Privileged Identity Management 支持内置的和自定义的 Azure 角色。 �
 1. 创建新的角色分配后，会显示状态通知。
 
     ![新建分配 - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+
+## <a name="assign-a-role-using-arm-api"></a>使用 ARM API 分配角色
+
+Privileged Identity Management 支持使用 Azure 资源管理器 (ARM) API 命令来管理 Azure 资源角色，如 [PIM ARM API 参考](/rest/api/authorization/roleeligibilityschedulerequests)中所述。 有关使用 PIM API 所需的权限，请参阅[了解 Privileged Identity Management API](pim-apis.md)。
+
+下面是一个示例 HTTP 请求，用于创建 Azure 角色的合格分配。
+
+### <a name="request"></a>请求
+
+````HTTP
+PUT https://management.azure.com/providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleEligibilityScheduleRequests/64caffb6-55c0-4deb-a585-68e948ea1ad6?api-version=2020-10-01-preview
+````
+
+### <a name="request-body"></a>请求正文
+
+````JSON
+{
+  "properties": {
+    "principalId": "a3bb8764-cb92-4276-9d2a-ca1e895e55ea",
+    "roleDefinitionId": "/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608",
+    "requestType": "AdminAssign",
+    "scheduleInfo": {
+      "startDateTime": "2020-09-09T21:31:27.91Z",
+      "expiration": {
+        "type": "AfterDuration",
+        "endDateTime": null,
+        "duration": "P365D"
+      }
+    },
+    "condition": "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'",
+    "conditionVersion": "1.0"
+  }
+}
+````
+
+### <a name="response"></a>响应
+
+状态代码：201
+
+````HTTP
+{
+  "properties": {
+    "targetRoleEligibilityScheduleId": "b1477448-2cc6-4ceb-93b4-54a202a89413",
+    "targetRoleEligibilityScheduleInstanceId": null,
+    "scope": "/providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f",
+    "roleDefinitionId": "/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608",
+    "principalId": "a3bb8764-cb92-4276-9d2a-ca1e895e55ea",
+    "principalType": "User",
+    "requestType": "AdminAssign",
+    "status": "Provisioned",
+    "approvalId": null,
+    "scheduleInfo": {
+      "startDateTime": "2020-09-09T21:31:27.91Z",
+      "expiration": {
+        "type": "AfterDuration",
+        "endDateTime": null,
+        "duration": "P365D"
+      }
+    },
+    "ticketInfo": {
+      "ticketNumber": null,
+      "ticketSystem": null
+    },
+    "justification": null,
+    "requestorId": "a3bb8764-cb92-4276-9d2a-ca1e895e55ea",
+    "createdOn": "2020-09-09T21:32:27.91Z",
+    "condition": "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'",
+    "conditionVersion": "1.0",
+    "expandedProperties": {
+      "scope": {
+        "id": "/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f",
+        "displayName": "Pay-As-You-Go",
+        "type": "subscription"
+      },
+      "roleDefinition": {
+        "id": "/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608",
+        "displayName": "Contributor",
+        "type": "BuiltInRole"
+      },
+      "principal": {
+        "id": "a3bb8764-cb92-4276-9d2a-ca1e895e55ea",
+        "displayName": "User Account",
+        "email": "user@my-tenant.com",
+        "type": "User"
+      }
+    }
+  },
+  "name": "64caffb6-55c0-4deb-a585-68e948ea1ad6",
+  "id": "/providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/RoleEligibilityScheduleRequests/64caffb6-55c0-4deb-a585-68e948ea1ad6",
+  "type": "Microsoft.Authorization/RoleEligibilityScheduleRequests"
+}
+````
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>更新或删除现有的角色分配
 

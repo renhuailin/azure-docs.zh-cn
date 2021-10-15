@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
-ms.openlocfilehash: 204c7a75eed5be4b6c3aca91d59011fd2b1327b5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8a6a2b7acc4f627bb871520ee6a82be920d1135e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750138"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215902"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -31,7 +31,7 @@ ms.locfileid: "121750138"
 | **支持的环境** | Azure<br>其他云 (Azure Arc)<br>本地 (Azure Arc)  | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
 | **代理要求**  | 无 | 无 | 无 | 需要 Log Analytics 代理 |
 | **收集的数据** | 事件日志<br>性能 | 事件日志<br>ETW 事件<br>性能<br>基于文件的日志<br>IIS 日志<br>.NET 应用日志<br>故障转储<br>代理诊断日志 | 事件日志<br>性能<br>基于文件的日志<br>IIS 日志<br>见解和解决方案<br>其他服务 | 过程依赖项<br>网络连接指标 |
-| **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标 | Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
+| **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标<sup>1</sup> | Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
 | **支持的**<br>**功能**<br>**支持** | Log Analytics<br>指标资源管理器 | 指标资源管理器 | VM 见解<br>Log Analytics<br>Azure 自动化<br>Azure 安全中心<br>Azure Sentinel | VM 见解<br>服务映射 |
 
 ### <a name="linux-agents"></a>Linux 代理
@@ -44,7 +44,7 @@ ms.locfileid: "121750138"
 | **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标<sup>1</sup> | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
 | **支持的**<br>**功能**<br>**支持** | Log Analytics<br>指标资源管理器 | | 指标资源管理器 | VM 见解<br>Log Analytics<br>Azure 自动化<br>Azure 安全中心<br>Azure Sentinel | VM 见解<br>服务映射 |
 
-<sup>1</sup> 目前，适用于 Linux 的 Azure Monitor 代理存在一个限制，即不支持将 Azure Monitor 指标用作唯一目标。 将其与 Azure Monitor 日志一起使用是可行的。 此限制将在下一扩展更新中解决。
+<sup>1</sup> [单击此处](../essentials/metrics-custom-overview.md#quotas-and-limits)可查看使用 Azure Monitor 指标时的其他限制。 在 Linux 上，v.1.10.9.0 或更高版本支持使用 Azure Monitor 指标作为唯一目标。 
 
 ## <a name="azure-monitor-agent"></a>Azure Monitor 代理
 
@@ -54,7 +54,7 @@ ms.locfileid: "121750138"
 
 - 从 Azure、其他云或本地的任何计算机中收集来宾日志和指标。 （Azure 之外的计算机需要[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)。） 
 - 使用[数据收集规则](./data-collection-rule-overview.md)集中管理数据收集配置，并使用 Azure 资源管理器 (ARM) 模板或策略进行整体管理
-- 将数据发送到 Azure Monitor 日志和 Azure Monitor 指标来供 Azure Monitor 分析。 
+- 将数据发送到 Azure Monitor 日志和 Azure Monitor 指标（预览版）来供 Azure Monitor 分析。 
 - 利用 Windows 事件筛选或多归属功能处理 Windows 或 Linux 上的日志
 <!--- Send data to Azure Storage for archiving.
 - Send data to third-party tools using [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
@@ -129,6 +129,7 @@ Azure 诊断扩展的限制包括：
 
 - 依赖关系代理要求在同一个计算机上安装 Log Analytics 代理。
 - 在 Linux 计算机上，必须先安装 Log Analytics 代理，然后再安装 Azure 诊断扩展。
+- 在 Windows 和 Linux 版本的 Dependency Agent 上，数据收集都是使用用户空间服务和内核驱动程序完成的。 
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
@@ -144,6 +145,7 @@ Azure 诊断扩展的限制包括：
 
 | 操作系统 | Azure Monitor 代理 | Log Analytics 代理 | 依赖关系代理 | 诊断扩展 | 
 |:---|:---:|:---:|:---:|:---:|
+| Windows Server 2022                                      | X |   |   |   |
 | Windows Server 2019                                      | X | X | X | X |
 | Windows Server 2019 Core                                 | X |   |   |   |
 | Windows Server 2016                                      | X | X | X | X |
@@ -153,15 +155,19 @@ Azure 诊断扩展的限制包括：
 | Windows Server 2008 R2 SP1                               | X | X | X | X |
 | Windows Server 2008 R2                                   |   |   | X | X |
 | Windows Server 2008 SP2                                   |   | X |  |  |
-| Windows 10 企业版<br>（包括多会话）和专业版<br>（仅限服务器方案）  | X | X | X | X |
-| Windows 8 企业版和专业版<br>（仅限服务器方案）  |   | X | X |   |
-| Windows 7 SP1<br>（仅限服务器方案）                 |   | X | X |   |
+| Windows 10 企业版<br>（包括多会话）和专业版<br>（仅服务器方案<sup>1</sup>）  | X | X | X | X |
+| Windows 8 企业版和专业版<br>（仅服务器方案<sup>1</sup>）  |   | X | X |   |
+| Windows 7 SP1<br>（仅服务器方案<sup>1</sup>）                 |   | X | X |   |
+| Azure Stack HCI                                          |   | X |   |   |
+
+<sup>1</sup> 在服务器硬件上运行操作系统，即始终处于连接状态的计算机，始终打开，不运行其他工作负载（PC、Office、浏览器等）
 
 ### <a name="linux"></a>Linux
 
 | 操作系统 | Azure Monitor 代理 <sup>1</sup> | Log Analytics 代理 <sup>1</sup> | 依赖关系代理 | 诊断扩展 <sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                        |   | X |   |   |
+| Amazon Linux 2                                              |   | X |   |   |
 | CentOS Linux 8                                              | X <sup>3</sup> | X | X |   |
 | CentOS Linux 7                                              | X | X | X | X |
 | CentOS Linux 6                                              |   | X |   |   |
@@ -186,7 +192,7 @@ Azure 诊断扩展的限制包括：
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
 | SUSE Linux Enterprise Server 12 SP5                         | X | X | X | X |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
-| Ubuntu 20.04 LTS                                            | X | X | X |   |
+| Ubuntu 20.04 LTS                                            | X | X | X | X |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
 | Ubuntu 16.04 LTS                                            | X | X | X | X |
 | Ubuntu 14.04 LTS                                            |   | X |   | X |

@@ -2,10 +2,8 @@
 title: 适用于 SAP 工作负荷的 SQL Server Azure 虚拟机 DBMS 部署 | Microsoft Docs
 description: 适用于 SAP 工作负荷的 SQL Server Azure 虚拟机 DBMS 部署
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
 manager: bburns
-editor: ''
 tags: azure-resource-manager
 keywords: Azure、SQL Server、SAP、AlwaysOn
 ms.service: virtual-machines-sap
@@ -15,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66426b6e48c15882f884657fbf8e75f44e500eb8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b9d44e718329c836b1e4fc63861f52cc37458a79
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467632"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352427"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -320,7 +318,7 @@ ms.locfileid: "114467632"
 
 通常应考虑使用最新的 SQL Server 版本在 Azure IaaS 中运行 SAP 工作负荷。 最新的 SQL Server 版本提供与一些 Azure 服务和功能的更好集成。 或者具有优化 Azure IaaS 基础结构中操作的更改。
 
-建议先查看文章 [什么是 Azure 虚拟机上的 SQL Server (Windows\) ] [https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview ]，再继续。
+建议先查看文章[什么是 Azure 虚拟机上的 SQL Server (Windows)](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)，再继续。
 
 在下列章节中，将汇总并提及上述链接下的文档的某些部分。 另外，还将提及有关 SAP 的具体信息，并且更深入地说明一些概念。 不过，强烈建议先完整阅读上述文档，再阅读 SQL Server 特定文档。
 
@@ -488,9 +486,9 @@ SAP 支持的数据库镜像（请参阅 SAP 说明 [965908]）依赖于在 SAP 
 
 至于仅限云的部署，最简单的方法是在 Azure 中设置另一个域，以便让这些 DBMS VM（最好是专用的 SAP VM）位于一个域中。
 
-如果域不可行，也可以对数据库镜像终结点使用证书，如此处所述：<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+如果不可能使用域，也可将证书用于数据库镜像终结点，如下所述：[使用数据库镜像端点证书 (Transact-SQL)](/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql)
 
-有关如何在 Azure 中设置数据库镜像的教程，请参阅：<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+有关如何在 Azure 中设置数据库镜像的教程，请参阅：[数据库镜像 (SQL Server)](/sql/database-engine/database-mirroring/database-mirroring-sql-server)
 
 ### <a name="sql-server-always-on"></a>SQL Server Always On
 由于 AlwaysOn 受本地 SAP 支持（请参阅 SAP 说明 [1772688]），因此，支持在 Azure 中将其与 SAP 搭配。 部署 SQL Server 可用性组侦听程序（请勿与 Azure 可用性集混淆）时有一些特殊注意事项，因为 Azure 目前不允许创建 AD/DNS 对象，而在本地是允许的。 因此，需要执行一些不同的安装步骤来克服 Azure 的特定行为。

@@ -1,22 +1,22 @@
 ---
 title: 预生成 Docker 映像的 Python 扩展性
 titleSuffix: Azure Machine Learning
-description: 使用 Python 包扩展性解决方案扩展预生成的 Docker 映像
+description: 使用 Python 包扩展性解决方案扩展预生成的 Docker 映像。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: bf579687f728739eb3f597bd3d02a8190d8c88b4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 16191b274f840438cac8deab6754991b7b9e29df
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435935"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425005"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>预生成 Docker 映像的 Python 包扩展性（预览版）
 

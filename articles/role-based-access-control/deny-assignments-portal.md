@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 1581139a2bd941f32afbcd4f0ecbefc60c068d80
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077833"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353484"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 拒绝分配
 
@@ -92,10 +92,10 @@ ms.locfileid: "106077833"
 
     | 操作类型 | 说明 |
     | --- | --- |
-    | **操作**  | 已拒绝管理操作。 |
-    | **不操作** | 从已拒绝管理操作中排除的管理操作。 |
-    | **DataActions**  | 已拒绝数据操作。 |
-    | **NotDataActions** | 从已拒绝数据操作中排除的数据操作。 |
+    | **操作**  | 拒绝控制平面操作。 |
+    | **不操作** | 从拒绝控制平面操作中排除的控制平面操作。 |
+    | **DataActions**  | 拒绝数据平面操作。 |
+    | **NotDataActions** | 从拒绝数据平面操作中排除的数据平面操作。 |
 
     就上一屏幕截图中显示的示例来说，下面是有效的权限：
 

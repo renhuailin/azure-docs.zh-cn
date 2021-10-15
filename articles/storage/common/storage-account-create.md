@@ -10,12 +10,12 @@ ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0bac6465ec392ac8d397f1210299c27c3a25c81e
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: a843952e05d71a13a26d56e1588fd10bea0e50c8
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113552309"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275860"
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -151,7 +151,7 @@ az login
 | 安全性 | 最低 TLS 版本 | 必需 | 对于存储帐户的传入请求，请选择最低版本的传输层安全性 (TLS)。 默认值为 TLS 版本 1.2。 当设置为默认值时，使用 TLS 1.0 或 TLS 1.1 发出的传入请求将被拒绝。 有关详细信息，请参阅[针对发送到存储帐户的请求强制实施必需的最低版本的传输层安全性 (TLS)](transport-layer-security-configure-minimum-version.md)。 |
 | Data Lake Storage Gen2 | 启用分层命名空间 | 可选 | 若要将此存储帐户用于 Azure Data Lake Storage Gen2 工作负载，请配置分层命名空间。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](../blobs/data-lake-storage-introduction.md)。 |
 | Blob 存储 | 启用网络文件共享 (NFS) v3 | 可选 | NFS v3 在对象存储规模上提供 Linux 文件系统兼容性，使 Linux 客户端能够从 Azure 虚拟机 (VM) 或本地计算机将容器装载在 Blob 存储中。 有关详细信息，请参阅 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持](../blobs/network-file-system-protocol-support.md)。 |
-| Blob 存储 | 访问层 | 必需 | 使用 Blob 访问层可以根据使用情况以最经济高效的方式存储 blob 数据。 对经常访问的数据选择热层（默认值）。 对不常访问的数据选择冷层。 有关详细信息，请参阅 [Azure Blob 存储的访问层 - 热、冷和存档](../blobs/storage-blob-storage-tiers.md)。 |
+| Blob 存储 | 访问层 | 必需 | 使用 Blob 访问层可以根据使用情况以最经济高效的方式存储 blob 数据。 对经常访问的数据选择热层（默认值）。 对不常访问的数据选择冷层。 有关详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](../blobs/access-tiers-overview.md)。 |
 | Azure 文件 | 启用大型文件共享 | 可选 | 仅适用于使用 LRS 或 ZRS 冗余的标准文件共享。 |
 | 表和队列 | 启用对客户管理的密钥的支持 | 可选 | 若要为表和队列启用客户管理的密钥支持，必须在创建存储帐户时选择此设置。 有关详细信息，请参阅[为表和队列创建一个支持客户管理密钥的帐户](account-encryption-key-create.md)。 |
 

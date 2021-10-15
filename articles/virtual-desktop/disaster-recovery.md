@@ -1,6 +1,6 @@
 ---
-title: 设置 Azure 虚拟桌面灾难恢复计划 - Azure
-description: 如何为 Azure 虚拟桌面部署设置业务连续性和灾难恢复计划。
+title: Azure 虚拟桌面灾难恢复计划
+description: 为 Azure 虚拟桌面部署制定灾难恢复计划以保护数据。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 91795dbe4e648f12e9a088a5aeffb68bffb46a65
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 54202b49e2881d1d128136b876cbf88c2bc87400
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757888"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359762"
 ---
-# <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>设置业务连续性和灾难恢复计划
+# <a name="azure-virtual-desktop-disaster-recovery"></a>Azure 虚拟桌面灾难恢复
 
 为确保组织数据的安全，可能需要采用业务连续性和灾难恢复 (BCDR) 策略。 合理的 BCDR 策略可以让应用和工作负载在执行计划内和计划外维护或 Azure 中断期间仍能保持正常运行。
 

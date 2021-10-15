@@ -4,16 +4,16 @@ description: 若要在 Azure 中创建具有高可用性和弹性的应用程序
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/05/2021
 ms.author: prsandhu
 ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 26d4464d67634d5660796ce24dc9b9dc2505e0ef
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 22b6f4570736d891b7cbcb9c0d2c10d6847ee83f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218235"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533656"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -49,13 +49,13 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 
 | 美洲           | 欧洲               | 非洲              | 亚太区   |
 |--------------------|----------------------|---------------------|----------------|
-| 巴西南部       | 法国中部       | 南非北部* | 澳大利亚东部 |
+| 巴西南部       | 法国中部       | 南非北部  | 澳大利亚东部 |
 | 加拿大中部     | 德国中西部 |                     | 印度中部* |
 | 美国中部         | 北欧         |                     | 日本东部     |
-| 美国东部            | 挪威东部          |                     | 韩国中部* |
+| 美国东部            | 挪威东部          |                     | 韩国中部  |
 | 美国东部 2          | 英国南部             |                     | 东南亚 |
 | 美国中南部   | 西欧          |                     |                |
-| US Gov 弗吉尼亚州    |                      |                     |                |
+| US Gov 弗吉尼亚州    | 瑞典*              |                     |                |
 | 美国西部 2          |                      |                     |                |
 | 美国西部 3          |                      |                     |                |
 

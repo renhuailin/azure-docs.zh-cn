@@ -13,12 +13,12 @@ ms.date: 08/18/2021
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7fa12eca00bca011107f48c6f1b282dded4f3b5a
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: dba6dcf0dded3db4c1cf1ddc26071e9803b55cd6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444549"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232910"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>注册调用 Web API 的移动应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "122444549"
 
 大多数移动应用程序使用交互式身份验证。 如果应用使用这种形式的身份验证，则你可以从任何[帐户类型](quickstart-register-app.md)将用户登录。
 
-### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Windows 集成身份验证、用户名-密码以及 B2C 的受众
+### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>集成 Windows 身份验证、用户名-密码以及 B2C 的受众
 
 如果拥有通用 Windows 平台 (UWP) 应用，则可使用集成 Windows 身份验证 (IWA) 使用户登录。 若要使用 IWA 或用户名-密码身份验证，则应用程序需在你自己的业务线 (LOB) 开发人员租户中使用户登录。 在独立软件供应商 (ISV) 方案中，应用程序可以在 Azure Active Directory 组织中将用户登录。 Microsoft 个人帐户不支持这些身份验证流。
 

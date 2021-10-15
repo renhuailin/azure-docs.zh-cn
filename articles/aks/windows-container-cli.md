@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 的 
 services: container-service
 ms.topic: article
 ms.date: 08/06/2021
-ms.openlocfilehash: 29f010bd9067236e1e07ab79f7a8fbec436ffd85
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 284114ef1f9c8759eaec061b32282154fe72859c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733577"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235300"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -340,7 +340,7 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ![浏览到 ASP.NET 示例应用程序的图像](media/windows-container/asp-net-sample-app.png)
 
 > [!Note]
-> 如果尝试加载页面时收到连接超时消息，则应使用以下命令 [kubectl get pods --watch] 验证示例应用是否已准备就绪。 有时，当你的外部 IP 地址可用时，Windows 容器将无法启动。
+> 如果尝试加载页面时收到连接超时消息，则应使用以下命令 [kubectl get pods --watch] 验证示例应用是否已准备就绪。 有时，当你的外部 IP 地址可用时，Windows 容器无法启动。
 
 ## <a name="delete-cluster"></a>删除群集
 

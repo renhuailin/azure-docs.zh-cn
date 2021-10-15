@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: 9553e53cda41a4fe4d926923bdd71d7d7c5ebb15
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 31da46a7eb6a021a14641d13f9c76ab7406f9b94
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308377"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363411"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
 
@@ -33,7 +33,7 @@ ms.locfileid: "123308377"
 
 1. 确定所需的权限。
 
-    创建自定义角色时，需要清楚可以执行的操作以定义权限。 通常，我们会从一个现有的内置角色着手，并根据需要对其进行修改。 你将操作添加到[角色定义](role-definitions.md)的 `Actions` 或 `NotActions` 属性。 如果有数据操作，请将这些操作添加到 `DataActions` 或 `NotDataActions` 属性。
+    创建自定义角色时，需要清楚可以执行的操作以定义权限。 通常，我们会从一个现有的内置角色着手，并根据需要对其进行修改。 将操作添加到[角色定义](role-definitions.md)的 `Actions` 或 `NotActions` 属性。 如果有数据操作，请将这些操作添加到 `DataActions` 或 `NotDataActions` 属性。
 
     有关详细信息，请参阅下一部分：[如何确定所需的权限](#how-to-determine-the-permissions-you-need)。
 
@@ -157,10 +157,10 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 | `Id`</br>`name` | 是 | String | 自定义角色的唯一 ID。 如果使用 Azure PowerShell 和 Azure CLI，在创建新角色时会自动生成此 ID。 |
 | `IsCustom`</br>`roleType` | 是 | String | 指示此角色是否为自定义角色。 对于自定义角色，设置为 `true` 或 `CustomRole`。 对于内置角色，设置为 `false` 或 `BuiltInRole`。 |
 | `Description`</br>`description` | 是 | String | 自定义角色的说明。 可以包含字母、数字、空格和特殊字符。 最多包含 1024 个字符。 |
-| `Actions`</br>`actions` | 是 | String[] | 一个字符串数组，指定该角色允许执行的管理操作。 有关详细信息，请参阅 [Actions](role-definitions.md#actions)。 |
-| `NotActions`</br>`notActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `Actions` 中排除的管理操作。 有关详细信息，请参阅 [NotActions](role-definitions.md#notactions)。 |
-| `DataActions`</br>`dataActions` | 否 | String[] | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 如果使用 `DataActions` 来创建自定义角色，则无法在管理组范围内分配该角色。 有关详细信息，请参阅 [DataActions](role-definitions.md#dataactions)。 |
-| `NotDataActions`</br>`notDataActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 有关详细信息，请参阅 [NotDataActions](role-definitions.md#notdataactions)。 |
+| `Actions`</br>`actions` | 是 | String[] | 一个字符串数组，指定该角色允许执行的控制平面操作。 有关详细信息，请参阅 [Actions](role-definitions.md#actions)。 |
+| `NotActions`</br>`notActions` | 否 | String[] | 一个字符串数组，指定已从允许的 `Actions` 中排除的控制平面操作。 有关详细信息，请参阅 [NotActions](role-definitions.md#notactions)。 |
+| `DataActions`</br>`dataActions` | 否 | String[] | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据平面操作。 如果使用 `DataActions` 来创建自定义角色，则无法在管理组范围内分配该角色。 有关详细信息，请参阅 [DataActions](role-definitions.md#dataactions)。 |
+| `NotDataActions`</br>`notDataActions` | 否 | String[] | 一个字符串数组，指定已从允许的 `DataActions` 中排除的数据平面操作。 有关详细信息，请参阅 [NotDataActions](role-definitions.md#notdataactions)。 |
 | `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 一个字符串数组，指定自定义角色的可分配范围。 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。 有关详细信息，请参阅 [AssignableScopes](role-definitions.md#assignablescopes)。 |
 
 权限字符串不区分大小写。 创建自定义角色时，约定是匹配可以在其中找到 [Azure 资源提供程序操作](resource-provider-operations.md)中所述权限的大小写。

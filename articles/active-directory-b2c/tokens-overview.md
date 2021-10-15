@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/1/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98ab4a660923f1a399317b9682a231774f310f3c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 391c9adc9b79c5263121cb3827aeec7f5f520338
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128546947"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350318"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌概述
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 在处理每个[身份验证流](application-types.md)时颁发多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。
+Azure Active Directory B2C (Azure AD B2C) 在处理每个[身份验证流](application-types.md)时颁发多种安全令牌。 本文说明每种令牌的格式、安全特征和内容。
 
 ## <a name="token-types"></a>令牌类型
 
@@ -40,7 +40,9 @@ Azure AD B2C 支持 [OAuth 2.0 和 OpenID Connect 协议](protocols-overview.md)
 - `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize`
 - `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token`
 
-应用程序从 Azure AD B2C 接收的安全令牌可能来自 `/authorize` 或 `/token` 终结点。 从 `/authorize` 终结点获取 ID 令牌时，将通过使用[隐式流](implicit-flow-single-page-application.md)完成此操作，该流通常用于供用户登录到基于 JavaScript 的 Web 应用程序。 从 `/token` 终结点获取 ID 令牌时，将通过使用[授权代码流](openid-connect.md#get-a-token)完成此操作，该流使令牌对浏览器保持隐藏。
+应用程序从 Azure AD B2C 接收的安全令牌可能来自 `/authorize` 或 `/token` 终结点。 当获取的 ID 令牌来自：
+-  `/authorize` 终结点时，将通过[隐式流](implicit-flow-single-page-application.md)完成操作，该流通常供用户用于登录到基于 JavaScript 的 Web 应用程序。 
+-  `/token` 终结点时，将通过[代码流](openid-connect.md#get-a-token)完成操作，该流使令牌对浏览器不可见。
 
 ## <a name="claims"></a>声明
 

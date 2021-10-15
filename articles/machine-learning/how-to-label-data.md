@@ -1,30 +1,29 @@
 ---
 title: 标记图像和文本文档
 title.suffix: Azure Machine Learning
-description: 了解如何使用数据标签工具在数据标签项目中快速准备机器学习的文本或图像数据。
+description: 使用数据标签工具在数据标签项目中快速标记机器学习的文本或图像。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 09/24/2021
 ms.custom: data4ml
-ms.openlocfilehash: 491ee8134d17eac9e0abb54780f2aa39e1323e6c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d07a48267effa51a721d1b64c79bc0a6ba7d439f
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446248"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429635"
 ---
 # <a name="labeling-images-and-text-documents"></a>标记图像和文本文档
 
-项目管理员在 Azure 机器学习中[创建数据标签项目](./how-to-create-labeling-projects.md#create-a-data-labeling-project)后，你可以使用标签工具为机器学习项目快速准备数据。 本文介绍：
+项目管理员在 Azure 机器学习中创建[图像数据标签项目](./how-to-create-image-labeling-projects.md)或[文本数据标签项目](./how-to-create-text-labeling-projects.md)后，你可以使用标签工具为机器学习项目快速准备数据。 本文介绍：
 
 > [!div class="checklist"]
 > * 如何访问标签项目
 > * 标记工具
 > * 如何使用工具执行特定的标签任务
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,7 +62,7 @@ ms.locfileid: "114446248"
 
 特别是在标记项目的早期阶段，机器学习模型可能只能准确地预标记一小部分图像。 在标记这些图像后，标记项目将返回到手动标记，为下一轮模型训练收集更多数据。 随着时间的推移，模型将对更高比例的图像更有信心，从而在项目的后期产生更多的预标记任务。
 
-## <a name="image-tasks"></a>图像任务
+## <a name="image-tasks"></a><a name="image-tasks"></a> 图像任务
 
 对于图像分类任务，可选择同时查看多个图像。 使用图像区域上方的图标选择布局。
 
@@ -163,13 +162,13 @@ ms.locfileid: "114446248"
 
 为图像创建多边形后，请选择“提交”以保存工作，否则正在进行的工作不会保存。
 
-## <a name="annotate-text-preview"></a>批注文本（预览版）
+## <a name="label-text-preview"></a><a name="label-text"></a>标记文本（预览版）
 
 > [!IMPORTANT]
 > 文本标签采用公共预览版。
 > 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-批注文本时，请使用工具栏执行以下操作：
+标记文本时，请使用工具栏执行以下操作：
 
 * 增加或缩减文本大小
 * 更改字体

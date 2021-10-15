@@ -3,12 +3,12 @@ title: 适用于 Application Insights 的 Azure AD 身份验证（预览）
 description: 了解如何启用 Azure Active Directory (Azure AD) 身份验证，以确保在 Application Insights 资源中仅引入经过身份验证的遥测。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 9d93da1a8567a7c50dac43c29e3a962652ceee33
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 573a7807f6561dfb326bfa247b12ccafa0857152
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111463"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359872"
 ---
 # <a name="azure-ad-authentication-for-application-insights-preview"></a>适用于 Application Insights 的 Azure AD 身份验证（预览）
 Application Insights 现在支持 Azure Active Directory (Azure AD) 身份验证。 通过使用 Azure AD，可以确保在 Application Insights 资源中仅引入经过身份验证的遥测。 
@@ -174,7 +174,7 @@ appInsights.defaultClient.aadTokenCredential = credential;
       "type": "UAMI", 
       "clientId":"<USER-ASSIGNED MANAGED IDENTITY CLIENT ID>" 
     } 
-  }  
+  }     
 } 
 ```
 :::image type="content" source="media/azure-ad-authentication/user-assigned-managed-identity.png" alt-text="用户分配的托管标识的屏幕截图。" lightbox="media/azure-ad-authentication/user-assigned-managed-identity.png":::
@@ -188,11 +188,11 @@ appInsights.defaultClient.aadTokenCredential = credential;
   "connectionString": "App Insights Connection String with IngestionEndpoint",
    "preview": { 
         "authentication": { 
-        "enabled": true, 
-        "type": "CLIENTSECRET", 
-        "clientId":"<YOUR CLIENT ID>", 
-        "clientSecret":"<YOUR CLIENT SECRET>", 
-        "tenantId":"<YOUR TENANT ID>" 
+          "enabled": true, 
+          "type": "CLIENTSECRET", 
+          "clientId":"<YOUR CLIENT ID>", 
+          "clientSecret":"<YOUR CLIENT SECRET>", 
+          "tenantId":"<YOUR TENANT ID>" 
     } 
   } 
 } 
@@ -206,11 +206,9 @@ appInsights.defaultClient.aadTokenCredential = credential;
 > [!NOTE]
 > Azure AD 身份验证仅适用于 Python v2.7、v3.6 和 v3.7。 从 beta 版本 [opencensus-ext-azure 1.1b0](https://pypi.org/project/opencensus-ext-azure/1.1b0/) 开始，包含对 Application Insights Opencensus Python SDK 中 Azure AD 的支持。
 
-
-构造适当的[凭据](/python/api/overview/azure/identity-readme?view=azure-python#credentials)，并将其传递给 Azure Monitor 导出程序的构造函数。 请确保使用资源的检测密钥和引入终结点设置连接字符串。
+构造适当的[凭据](/python/api/overview/azure/identity-readme#credentials)，并将其传递给 Azure Monitor 导出程序的构造函数。 请确保使用资源的检测密钥和引入终结点设置连接字符串。
 
 下面是 Opencensus Azure Monitor 导出程序支持的以下类型的身份验证。 建议在生产环境中使用托管标识。
-
 
 #### <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
@@ -278,17 +276,17 @@ tracer = Tracer(
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1.  在 Application Insights 资源的左侧菜单中的“配置”标题下选择“属性”。 如果已启用本地身份验证，则选择“启用（单击以更改）”。 
+1. 在 Application Insights 资源的左侧菜单中的“配置”标题下选择“属性”。 如果已启用本地身份验证，则选择“启用（单击以更改）”。 
 
-    :::image type="content" source="./media/azure-ad-authentication/enabled.png" alt-text="在“配置”下的“属性”中选中并启用（单击以更改）本地身份验证按钮的屏幕截图。":::
+   :::image type="content" source="./media/azure-ad-authentication/enabled.png" alt-text="在“配置”下的“属性”中选中并启用（单击以更改）本地身份验证按钮的屏幕截图。":::
 
-1. 选择“已禁用”并应用更改。 
+1. 选择“已禁用”并应用更改。
 
-    :::image type="content" source="./media/azure-ad-authentication/disable.png" alt-text="本地身份验证的屏幕截图，其中突出显示“已启用”/“已禁用”按钮。":::
+   :::image type="content" source="./media/azure-ad-authentication/disable.png" alt-text="本地身份验证的屏幕截图，其中突出显示“已启用”/“已禁用”按钮。":::
 
 1. 资源禁用本地身份验证后，“概述”窗格中将显示相应的信息。
 
-    :::image type="content" source="./media/azure-ad-authentication/overview.png" alt-text="“概述”选项卡的屏幕截图，其中突出显示“已禁用（单击以更改）”。":::
+   :::image type="content" source="./media/azure-ad-authentication/overview.png" alt-text="“概述”选项卡的屏幕截图，其中突出显示“已禁用（单击以更改）”。":::
 
 ### <a name="azure-policy"></a>Azure Policy 
 
@@ -436,7 +434,7 @@ tracer = Tracer(
 
 Application Insights .NET SDK 使用事件源发出错误日志。 若要详细了解如何收集事件源日志，请访问[疑难解答：无数据 - 使用 PerfView 收集日志](asp-net-troubleshoot-no-data.md#PerfView)。
 
-如果 SDK 未能获取令牌，则异常消息将记录为：“未能获取 AAD 令牌。 错误消息：“
+如果 SDK 未能获取令牌，则异常消息将记录为：“未能获取 AAD 令牌。 错误消息:”
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
@@ -462,7 +460,7 @@ appInsights.setup("InstrumentationKey=00000000-0000-0000-0000-000000000000;Inges
 
 或者，在运行应用程序时添加以下 jvm 参数：`-Djava.net.useSystemProxies=true -Dhttps.proxyHost=localhost -Dhttps.proxyPort=8888`
 
-如果在代理中启用了 Azure AD，出站流量将包含 HTTP 标头“Authorization”。
+如果在代理中启用了 Azure AD，出站流量将包含 HTTP 头“Authorization”。
 
 
 #### <a name="401-unauthorized"></a>401 未授权 

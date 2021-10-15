@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/20/2021
 ms.author: danlep
-ms.openlocfilehash: 769c67557b6e9d6947e8ffd0fffa71765cf397c4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 03ac79a70a1725fd6d1ceca6d79d4cdb325a8c51
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601817"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428457"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 
@@ -90,7 +90,7 @@ ms.locfileid: "128601817"
 
     > [!NOTE]
     > 可在“允许的租户”部分中指定多个域。 全局管理员必须先向应用程序授予对目录数据的访问权限，然后用户才能从非原始应用注册域登录。 若要授予权限，全局管理员应：
-    > 1. 转到 `https://<URL of your developer portal>/aadadminconsent`（例如， https://contoso.portal.azure-api.net/aadadminconsent) 。
+    > 1. 转到 `https://<URL of your developer portal>/aadadminconsent`（例如 `https://contoso.portal.azure-api.net/aadadminconsent`）。
     > 1. 输入全局管理员要向其授予访问权限的 Azure AD 租户的域名。
     > 1. 选择“提交”。 
 

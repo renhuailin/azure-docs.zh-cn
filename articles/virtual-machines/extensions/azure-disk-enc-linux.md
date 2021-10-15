@@ -8,12 +8,12 @@ author: ejarvi
 ms.author: ejarvi
 ms.date: 03/19/2020
 ms.collection: linux
-ms.openlocfilehash: 2b589f24c5338dde503d21a71fcbb9863f8da5b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e49b017980fa918be57d4dcc8f9c880bc73c6226
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734582"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275138"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>适用于 Linux 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -41,6 +41,9 @@ Azure 磁盘加密 (ADE) 的扩展架构有两个版本：
 ### <a name="schema-v11-no-aad-recommended"></a>架构 v1.1：无 AAD（推荐）
 
 建议使用 v1.1 架构，它不需要 Azure Active Directory (AAD) 属性。
+
+> [!NOTE]
+> `DiskFormatQuery` 参数已弃用。 其功能已替换为 EncryptFormatAll 选项，这是在加密时格式化数据磁盘的推荐方法。
 
 ```json
 {

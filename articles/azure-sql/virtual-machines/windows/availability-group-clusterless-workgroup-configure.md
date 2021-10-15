@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 2daf927ff9e0a99845ec6fb0283b550856ebfc47
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 86714655c05968a32e16c83b714705929baf1ca7
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572410"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233666"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>配置工作组可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -292,11 +292,11 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-部署可用性组后，请考虑优化 [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)。 
+部署可用性组后，请考虑优化 [Azure VM 上 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)。 
 
 
 若要了解更多信息，请参阅以下文章：
 
-- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
-- [Azure VM 上的 SQL Server 的 Always On 可用性组](availability-group-overview.md)
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Always On 可用性组与 Azure VM 上的 SQL Server](availability-group-overview.md)
 - [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

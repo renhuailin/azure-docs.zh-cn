@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d4d0f355d48532c43e9180f2c819e45d45737b4
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: dc516c9631eda2904ff311af6ca779872d9802f0
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572193"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537193"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>在不同的 Azure 区域中配置 SQL Server Always On 可用性组
 
@@ -150,6 +150,8 @@ ms.locfileid: "111572193"
 
 1. 在 SQL Server 配置管理器中的新 SQL Server 上，[启用 Always On 可用性组](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server)。
 
+1. 在 SQL Server Management Studio 中的新 SQL Server 上，[配置系统帐户权限](availability-group-manually-configure-prerequisites-tutorial.md#configure-system-account-permissions)。
+
 1. [在新的 SQL Server 上打开防火墙端口](availability-group-manually-configure-prerequisites-tutorial.md#endpoint-firewall)。
 
    需要打开的端口号取决于环境。 打开镜像终结点和 Azure 负载均衡器运行状况探测的端口。
@@ -158,12 +160,13 @@ ms.locfileid: "111572193"
 1. [将副本添加到新 SQL Server 上的可用性组](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)。
 
    对于远程 Azure 区域中的副本，请将它设置为使用手动故障转移进行异步复制。  
+   
 
 ## <a name="set-connection-for-multiple-subnets"></a>设置多个子网的连接
 
 远程数据中心内的副本是可用性组的一部分，但位于不同的子网。 如果此副本成为主副本，可能会发生应用程序连接超时。 多子网部署中的本地可用性组也存在相同的行为。 若要允许从客户端应用程序建立连接，请更新客户端连接，或者在群集网络名称资源上配置名称解析缓存。
 
-最好是将客户端连接字符串更新为设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 进行连接](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0)。
+最好更新群集配置以设置 `RegisterAllProvidersIP=1`，并更新客户端连接字符串以设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 进行连接](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0)。
 
 如果无法修改连接字符串，可以配置名称解析缓存。 请参阅[出现超时错误并且在多子网环境中无法连接到 SQL Server 2012 AlwaysOn 可用性组侦听程序](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
 

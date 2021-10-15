@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0931d5668835229be858a8725fd1a2d90c81081d
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: eaa4eafa283ad46ae977d9449dcf9f9273bef38c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432943"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669106"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -49,7 +49,7 @@ ms.locfileid: "113432943"
    > [!NOTE]
    > 子网中仅可具有 ASE。 请务必选择一个容许将来扩展的地址空间。 以后无法更改此设置。 建议使用包含 256 个地址的大小 `/24`。
 
-纵向扩展或缩减时，将会添加具有相应大小的新角色，然后将工作负荷从当前大小迁移到目标大小。 只有在迁移工作负荷之后才会删除原始 VM。 如果你的 ASE 有 100 个 ASP 实例，则在一段时间你需要双倍数目的 VM。  出于这个原因，建议使用“/24”来应对可能需要进行的任何更改。  
+纵向扩展或缩减时，将会添加具有相应大小的新角色，然后将工作负荷从当前大小迁移到目标大小。 只有迁移工作负荷后，才会删除原始 VM。 如果你的 ASE 有 100 个 ASP 实例，则在一段时间你需要双倍数目的 VM。  出于这个原因，建议使用“/24”来应对可能需要进行的任何更改。  
 
 ## <a name="ase-dependencies"></a>ASE 依赖项 ##
 

@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7c3197a8eb9f6734cdd04d609ea0f59465ffa86d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 31dd0096140544db9c1265999b8c0c709def9cda
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535504"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350066"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 OAuth 2.0 隐式流的单页登录
 
-许多新式应用程序都有一个单页应用前端（主要以 JavaScript 编写）。 通常，该应用可使用 React、Angular 或 Vue.js 等框架进行编写。 主要在浏览器上运行的单页应用和其他 JavaScript 应用在身份验证时还面临一些其他挑战：
+许多新式应用程序都有一个单页应用 (SPA) 前端（主要以 JavaScript 编写）。 通常，该应用可使用 React、Angular 或 Vue.js 等框架进行编写。 主要在浏览器中运行的 SPA 和其他 JavaScript 应用在身份验证时还面临一些其他挑战：
 
 - 这些应用程序的安全特征与传统的基于服务器的 Web 应用程序不同。
 - 许多授权服务器与标识提供者不支持跨源资源共享 (CORS) 请求。
 - 重定向离开应用的完整网页浏览器可能会对用户体验具有侵略性。
 
-支持单页应用程序的推荐方法是 [OAuth 2.0 授权代码流（使用 PKCE）](./authorization-code-flow.md)。
+支持 SPA 的推荐方法是 [OAuth 2.0 授权代码流（使用 PKCE）](./authorization-code-flow.md)。
 
 某些框架（如 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)）仅支持隐式授权流。 在这些情况下，Azure Active Directory B2C (Azure AD B2C) 支持 OAuth 2.0 授权隐式授权流。 有关该流的说明，请参阅 [OAuth 2.0 规范第 4.2 节](https://tools.ietf.org/html/rfc6749)。 在隐式流中，应用直接从 Azure Active Directory (Azure AD) 授权终结点接收令牌，无需任何服务器到服务器的交换。 所有身份验证逻辑和会话处理全部在 JavaScript 客户端中通过页面重定向或弹框执行。
 
@@ -53,7 +53,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 |{tenant}| 是 | Azure AD B2C 租户的名称|
 |{policy}| 是| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如：`b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
@@ -68,7 +68,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 此时，要求用户完成策略的工作流。 用户可能必须输入其用户名和密码、用社交标识登录、注册目录或者执行任何其他数目的步骤。 用户操作取决于用户流是如何定义的。
 
-用户完成用户流后，Azure AD 会在你用于 `redirect_uri` 的值处将响应返回到应用。 它使用在 `response_mode` 参数中指定的方法。 对于每种用户操作情况，响应完全相同，与执行的用户流无关。
+在用户完成用户流后，Azure AD B2C 会在你用于 `redirect_uri` 的值处将响应返回到应用。 它使用在 `response_mode` 参数中指定的方法。 对于每种用户操作情况，响应完全相同，与执行的用户流无关。
 
 ### <a name="successful-response"></a>成功的响应
 使用 `response_mode=fragment` 和 `response_type=id_token+token` 的成功响应如下所示（包含换行符以便阅读）：
@@ -126,7 +126,9 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
 ```
 
-若要确定对 ID 令牌签名所用的用户流（以及提取元数据的位置），共有两个选择。 第一种方法，用户流名称包含在 `id_token` 的 `acr` 声明中。 有关如何从 ID 令牌中分析声明的信息，请参阅 [Azure AD B2C 令牌参考](tokens-overview.md)。 另一个方法是在发出请求时在 `state` 参数的值中对用户流进行编码。 然后对 `state` 参数进行解码以确定所使用的用户流。 任意一种方法均有效。
+若要确定对 ID 令牌签名所用的用户流（以及提取元数据的位置），可以采取两种做法：
+-  将用户流名称包含在 `id_token` 的 `acr` 声明中。 有关如何从 ID 令牌中分析声明的信息，请参阅 [Azure AD B2C 令牌参考](tokens-overview.md)。 
+- 发出请求时在 `state` 参数的值中对用户流进行编码。 然后对 `state` 参数进行解码以确定所使用的用户流。 任意一种方法均有效。
 
 从 OpenID Connect 元数据终结点获取元数据文档后，可以使用 RSA-256 公钥（位于此终结点上）来验证 ID 令牌的签名。 在任何给定的时间，此终结点上可能列出多个密钥，每个密钥使用 `kid` 进行标识。 `id_token` 的标头还包含 `kid` 声明。 它指示这些键中的哪一个用于对 ID 令牌进行签名。 有关详细信息（包括了解[验证令牌](tokens-overview.md)），请参阅 [Azure AD B2C 令牌参考](tokens-overview.md)。
 <!--TODO: Improve the information on this-->
@@ -150,7 +152,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 ## <a name="get-access-tokens"></a>获取访问令牌
 如果 Web 应用唯一需要做的是执行用户流，则可以跳过下面几节。 下面几节中的信息仅适用于需要对 Web API 进行验证调用，并且受 Azure AD B2C 保护的 Web 应用。
 
-将用户登录到单页应用后，便可获取访问令牌以调用受 Azure AD 保护的 Web API。 即使已使用 `token` 响应类型收到令牌，也仍可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
+将用户登录到 SPA 后，可以获取访问令牌以调用受 Azure AD 保护的 Web API。 即使已使用 `token` 响应类型收到令牌，也仍可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
 
 在典型的 Web 应用流中，你将对 `/token` 终结点发出请求。 但是，该终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌并不可取。 相反，可以在隐藏的 HTML iframe 元素中使用隐式流，以获取其他 Web API 的新令牌。 下面是一个示例（带换行符以便阅读）：
 
@@ -168,9 +170,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|{tenant}| 必须 | Azure AD B2C 租户的名称|
+|{tenant}| 必需 | Azure AD B2C 租户的名称|
 {policy}| 必须| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如：`b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
-| client_id |必须 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
+| client_id |必需 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |必须 |必须包含 OpenID Connect 登录的 `id_token` 。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri |建议 |应用的重定向 URI，应用可在其中发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
 | scope |必须 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
@@ -231,7 +233,7 @@ ID 令牌和访问令牌在较短时间后都会过期。 应用必须准备好�
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | {tenant} | 是 | Azure AD B2C 租户的名称 |
 | {policy} | 是 | 想要用于从应用程序中注销用户的用户流。 |
@@ -245,4 +247,4 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅代码示例：[在 JavaScript 单页应用程序中使用 Azure AD B2C 登录](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-core-samples/VanillaJSTestApp/app/b2c)。
+参阅代码示例：[在 JavaScript SPA 中使用 Azure AD B2C 登录](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-core-samples/VanillaJSTestApp/app/b2c)。

@@ -1,14 +1,14 @@
 ---
 title: 创建合格授权
 description: 将客户加入 Azure Lighthouse 时，可让管理租户中的用户即时提升其角色。
-ms.date: 08/26/2021
+ms.date: 09/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 1754a7d43f184e340badb7adb29de8caa3901372
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: b36c3a91c780c2d374ceafe14a671aaa135a2d3c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038680"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777823"
 ---
 # <a name="create-eligible-authorizations"></a>创建合格授权
 
@@ -62,7 +62,7 @@ EMS E5 或 Azure AD Premium P2 许可证必须由管理租户（而不是客户�
 
 每个合格授权需要包括用户将有资格即时使用的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
-“角色”可以是 Azure 委托资源管理支持的任何 Azure 内置角色，但“用户访问管理员”除外。
+角色可以是 [Azure 委托资源管理支持的](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)任何 Azure 内置角色，但“用户访问管理员”除外。
 
 > [!IMPORTANT]
 > 如果包括多个使用同一角色的合格授权，则每个合格授权必须具有相同的访问策略设置。

@@ -17,12 +17,12 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8fea0133b7aa93b16a7e65e9e573723e7e21bae
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: f9200c43b76e3ee95618fe1667e4fe0b6a62b160
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112460281"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231646"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系
 
@@ -48,7 +48,7 @@ Azure AD Connect **仅** 管理与 Azure AD 信任相关的设置。 Azure AD Co
 | 颁发转换规则 | 为确保联合设置中的 Azure AD 性能和功能达到最佳，需要用到许多的声明规则。 Azure AD Connect 确保始终使用适当的建议声明规则集来配置 Azure AD 信任。 |
 | Alternate-id | 如果同步配置为使用 alternate-id，Azure AD Connect 会将 AD FS 配置为使用 alternate-id 来执行身份验证。 |
 | 自动元数据更新 | 为 Azure AD 信任配置自动元数据更新。 AD FS 定期检查 Azure AD 信任的元数据，如果这些元数据在 Azure AD 端发生更改，则 AD FS 会将其保持最新状态。 |
-| Windows 集成身份验证 (IWA) | 在执行混合 Azure AD 加入操作期间，将启用 IWA 来进行设备注册，以方便下层设备完成混合 Azure AD 加入 |
+| 集成 Windows 身份验证 (IWA) | 在执行混合 Azure AD 加入操作期间，将启用 IWA 来进行设备注册，以方便下层设备完成混合 Azure AD 加入 |
 
 ## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Azure AD Connect 配置的执行流和联合设置
 

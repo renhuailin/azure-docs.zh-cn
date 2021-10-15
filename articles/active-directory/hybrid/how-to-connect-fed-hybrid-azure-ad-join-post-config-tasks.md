@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58924d8ea9aef9e5c5faa5771572acec99587cdd
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88612463"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234806"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
 
@@ -63,7 +63,7 @@ ms.locfileid: "88612463"
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. 为 Windows 下层设备启用 Azure AD 无缝 SSO
 
-如果组织使用密码哈希同步或直通身份验证登录到 Azure AD，请使用该登录方法启用 Azure AD 无缝 SSO，以便对 Windows 下层设备进行身份验证：https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso。 
+如果组织使用密码哈希同步或直通身份验证登录到 Azure AD，请使用该登录方法启用 [Azure AD 无缝 SSO](/azure/active-directory/connect/active-directory-aadconnect-sso)，以便对 Windows 下层设备进行身份验证。
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. 为 Windows 下层设备设置 Azure AD 策略
 
@@ -82,7 +82,7 @@ ms.locfileid: "88612463"
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. 在 Windows 下层设备上安装 Microsoft 工作区加入
 
-安装程序会在设备系统上创建一个在用户上下文中运行的计划任务。 当用户登录到 Windows 时触发该任务。 使用 Windows 集成身份验证完成身份验证后，该任务将使用用户凭据以静默方式将设备联接到 Azure AD。 下载中心的网址为 https://www.microsoft.com/download/details.aspx?id=53554。 
+安装程序会在设备系统上创建一个在用户上下文中运行的计划任务。 当用户登录到 Windows 时触发该任务。 使用集成 Windows 身份验证完成身份验证后，该任务将使用用户凭据以静默方式将设备联接到 Azure AD。 下载中心的网址为 https://www.microsoft.com/download/details.aspx?id=53554。 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. 配置组策略以允许设备注册
 

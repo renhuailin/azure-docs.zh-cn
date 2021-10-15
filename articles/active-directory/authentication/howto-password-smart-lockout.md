@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77a0a8f1a02fa970965d3393dada2a7720ab3e4
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: f3f8d5fb55d547a1c0602843fb36f19ad45dbc2a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821372"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536578"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>利用 Azure Active Directory 智能锁定保护用户帐户免受攻击
 
@@ -24,7 +24,7 @@ ms.locfileid: "122821372"
 
 ## <a name="how-smart-lockout-works"></a>智能锁定的工作原理
 
-默认情况下，在 Azure 公共租户尝试失败 10 次后，Azure 美国政府租户尝试失败 3 次后，智能锁定会将帐户锁定一分钟，使其无法进行登录尝试。 在每次后续登录尝试失败后，帐户会再次锁定，第一次锁定一分钟，后续尝试失败会锁定更长时间。 若要最大程度地减少攻击者可绕过此行为的方法，我们不公开锁定时段随着额外的不成功登录尝试而增长的速率。
+默认情况下，在 Azure 公共租户和 Azure 中国世纪互联租户尝试失败 10 次或者 Azure 美国政府租户尝试失败 3 次后，智能锁定会将帐户锁定一分钟，使其无法进行登录尝试。 在每次后续登录尝试失败后，帐户会再次锁定，第一次锁定一分钟，后续尝试失败会锁定更长时间。 若要最大程度地减少攻击者可绕过此行为的方法，我们不公开锁定时段随着额外的不成功登录尝试而增长的速率。
 
 智能锁定跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。
 
@@ -65,7 +65,7 @@ ms.locfileid: "122821372"
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>管理 Azure AD 智能锁定值
 
-根据组织要求，可自定义 Azure AD 智能锁定值。 要使用组织特定的值自定义智能锁定设置，需要向用户提供 Azure AD Premium P1 或更高版本的许可证。
+根据组织要求，可自定义 Azure AD 智能锁定值。 要使用组织特定的值自定义智能锁定设置，需要向用户提供 Azure AD Premium P1 或更高版本的许可证。 智能锁定设置自定义不适用于Azure 中国世纪互联租户。
 
 若要检查或修改组织的智能锁定值，请完成以下步骤：
 
@@ -84,13 +84,19 @@ ms.locfileid: "122821372"
 
 ![在 Azure 门户中自定义 Azure AD 智能锁定策略](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>如何确定智能锁定功能是否正常运行
+## <a name="testing-smart-lockout"></a>测试智能锁定
 
 触发智能锁定阈值后，将在帐户锁定时收到以下消息：
 
 *帐户暂时锁定以防止未经授权的使用。请稍后再试！如果仍有问题，请与管理员联系。*
 
 测试智能锁定时，由于 Azure AD 身份验证服务的地理分布和负载均衡特性，登录请求可能由不同的数据中心处理。 在这种情况下，由于每个 Azure AD 数据中心独立地跟踪锁定，因此可能需要比所定义的锁定阈值更多的尝试次数才会导致锁定。 在完全锁定之前，用户最多有 (threshold_limit * datacenter_count) 次错误尝试机会。
+
+智能锁定跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果有人多次输入相同的错误密码，则此行为不会导致帐户被锁定。
+
+
+## <a name="default-protections"></a>默认保护
+除了智能锁定之外，Azure AD 还会通过分析包含 IP 流量的信号和识别异常行为来防范攻击。 Azure AD 默认会阻止这些恶意登录，不管密码有效性如何，都会返回 [AADSTS50053 - IdsLocked 错误代码](../develop/reference-aadsts-error-codes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

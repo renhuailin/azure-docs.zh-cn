@@ -4,13 +4,13 @@ description: 描述在 Bicep 文件中用于处理数字的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 8df0aec96001aa5b1a7cdd7342fe663f0bfa2da0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: b5230d9fd7f228981c3ac3ec899ae8b641cc74fb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758477"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355337"
 ---
 # <a name="numeric-functions-for-bicep"></a>Bicep 的数字函数
 
@@ -24,7 +24,9 @@ ms.locfileid: "124758477"
 
 将指定的值转换为整数。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -56,7 +58,9 @@ output inResult int = int(stringToConvert)
 
 返回整数数组或逗号分隔的整数列表中的最大值。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -96,7 +100,9 @@ output intOutput int = max(0,3,2,5,4)
 
 返回整数数组或逗号分隔的整数列表中的最小值。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |

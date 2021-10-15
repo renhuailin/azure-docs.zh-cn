@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 10/01/2021
 ms.author: duau
-ms.openlocfilehash: aa109544ce890c4a8fae4775010a722791fbe5a7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 61a712fa747252b07a513cfa6e18e3f3b4a67e6c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426069"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400717"
 ---
 # <a name="about-azure-route-server-support-for-expressroute-and-azure-vpn"></a>关于 ExpressRoute 和 Azure VPN 的 Azure 路由服务器支持
 
@@ -34,7 +34,7 @@ Azure 路由服务器不仅支持在 Azure 上运行的第三方网络虚拟设�
 还可以将 SDWAN 设备替换为 Azure VPN 网关。 由于 Azure VPN 网关和 ExpressRoute 是完全托管的，因此只需为两个本地网络启用路由交换，以便彼此通信。
 
 > [!IMPORTANT] 
-> 必须在[主动-主动](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md)模式下配置 Azure VPN 网关。
+> 必须在[主动-主动](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md)模式下配置 Azure VPN 网关，并将 ASN 设置为 65515。
 >
 
 ![示意图：使用路由服务器配置的 ExpressRoute 和 VPN 网关。](./media/expressroute-vpn-support/expressroute-and-vpn-with-route-server.png)

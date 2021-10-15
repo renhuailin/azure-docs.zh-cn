@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: d044ddbde293721e26ed491e237aa5b89075f72a
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.openlocfilehash: c0502b880d23e9f0a63564f11473f48e1c01b096
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455835"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236548"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -74,7 +74,7 @@ Azure 门户通过“指标”页公开负载均衡器指标，可在特定资�
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>通过 API 以编程方式检索多维指标
 
-有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)。 通过为“所有指标”类别添加[诊断设置](../azure-monitor/essentials/diagnostic-settings.md)，可以将这些指标写入存储帐户。 
+有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions)。 通过为“所有指标”类别添加[诊断设置](../azure-monitor/essentials/diagnostic-settings.md)，可以将这些指标写入存储帐户。 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
@@ -152,7 +152,7 @@ Azure 门户通过“指标”页公开负载均衡器指标，可在特定资�
 若要查看 SNAT 端口用量和分配：
 1. 将图形的时间聚合设置为 1 分钟，以确保显示所需的数据。
 1. 选择“使用的 SNAT 端口数”和/或“分配的 SNAT 端口数”作为指标类型，选择“平均值”作为聚合
-    * 默认情况下，这些指标是分配到每个后端 VM 或 VMSS 的或者它们使用的平均 SNAT 端口数，对应于映射到负载均衡器的所有前端公共 IP，是基于 TCP 和 UDP 聚合得出的。
+    * 默认情况下，这些指标是分配到每个后端 VM 或虚拟机规模集的或者由它们使用的平均 SNAT 端口数，对应于映射到负载均衡器的所有前端公共 IP，是基于 TCP 和 UDP 聚合得出的。
     * 若要查看负载均衡器使用的或者为其分配的 SNAT 端口总数，请使用指标聚合“求和” 
 1. 根据特定的“协议类型”、一组“后端 IP”和/或“前端 IP”进行筛选。   
 1. 若要监视每个后端或前端实例的运行状况，请应用拆分。 

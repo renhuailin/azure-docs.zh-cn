@@ -3,15 +3,15 @@ title: 在 Azure 自动化中执行 Runbook
 description: 本文概述了如何在 Azure 自动化中处理 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/13/2021
+ms.date: 09/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 026adbac5ad66772711bcd3988a9c95da49ae6a1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 700c5a9254cbb3ae8fe69ccc0f2ea3b76bb66121
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837473"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356447"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -99,19 +99,9 @@ Azure 自动化利用 [Azure Monitor](../azure-monitor/overview.md) 来监视其
 
 ### <a name="log-analytics-agent-for-linux"></a>适用于 Linux 的 Log Analytics 代理
 
-[适用于 Linux 的 Log Analytics 代理](../azure-monitor/agents/agent-linux.md)与适用于 Windows 的代理工作原理类似，但它将 Linux 计算机连接到 Azure Monitor。 安装此代理时需具有 nxautomation 用户帐户，该用户帐户允许执行需要根权限的命令，例如，在混合 Runbook 辅助角色上执行的命令。 nxautomation 帐户是不需要密码的系统帐户。
+[适用于 Linux 的 Log Analytics 代理](../azure-monitor/agents/agent-linux.md)与适用于 Windows 的代理工作原理类似，但它将 Linux 计算机连接到 Azure Monitor。 代理与特定的服务帐户一起安装，这些帐户执行需要根权限的命令。 有关详细信息，请参阅[服务帐户](./automation-hrw-run-runbooks.md#service-accounts)。
 
-在[安装 Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md)期间，必须存在具有相应 sudo 权限的 nxautomation 帐户。 如果尝试安装辅助角色，但该帐户不存在或没有相应权限，则安装会失败。
-
-请勿更改 `sudoers.d` 文件夹的权限或其所有权。 nxautomation 帐户需要 Sudo 权限，不应删除这些权限。 将它限制到某些文件夹或命令可能会导致中断性变更。
-
-Log Analytics 代理和 nxautomation 帐户的可用日志如下：
-
-* /var/opt/microsoft/omsagent/log/omsagent.log - Log Analytics 代理日志
-* /var/opt/microsoft/omsagent/run/automationworker/worker.log - 自动化辅助角色日志
-
->[!NOTE]
->作为更新管理的一部分启用的 nxautomation 用户仅执行签名的 runbook。
+Log Analytics 代理日志位于 `/var/opt/microsoft/omsagent/log/omsagent.log`。
 
 ## <a name="runbook-permissions"></a>Runbook 权限
 
@@ -150,7 +140,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 |:--- |:--- |
 | 激活 |正在激活作业。 |
 | 已完成 |作业已成功完成。 |
-| 已失败 |图形或 PowerShell 工作流 runbook 未能编译。 PowerShell runbook 未能启动或作业遇到异常。 请参阅 [Azure 自动化 runbook 类型](automation-runbook-types.md)。|
+| 失败 |图形或 PowerShell 工作流 runbook 未能编译。 PowerShell runbook 未能启动或作业遇到异常。 请参阅 [Azure 自动化 runbook 类型](automation-runbook-types.md)。|
 | 失败，正在等待资源 |作业失败，因为它已达到[公平份额](#fair-share)限制三次，并且每次都从同一个检查点或 Runbook 开始处启动。 |
 | 已排队 |作业正在等待自动化辅助角色上的资源变得可用，以便其能够启动。 |
 | 正在恢复 |系统正在恢复已暂停的作业。 |

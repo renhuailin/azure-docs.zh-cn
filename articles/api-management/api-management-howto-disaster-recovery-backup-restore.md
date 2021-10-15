@@ -5,16 +5,16 @@ description: 了解如何在 Azure API 管理中使用备份和还原执行灾�
 services: api-management
 author: dlepow
 ms.service: api-management
-ms.topic: article
-ms.date: 08/20/2021
-ms.author: danlep
+ms.topic: how-to
+ms.date: 10/03/2021
+ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e00882764283fec7ec9ab3252b5997f682411557
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b356d18c1a0c6a29d4fce142fc05e449f08f70d2
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652655"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419138"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -29,7 +29,7 @@ ms.locfileid: "128652655"
 > [!IMPORTANT]
 > 还原操作不会更改目标服务的自定义主机名配置。 我们建议对活动服务和备用服务使用相同的自定义主机名和 TLS 证书，以便在还原操作完成后，可以通过简单的 DNS CNAME 更改将流量重定向到备用实例。
 >
-> 备份操作不会捕获 Azure 门户的 Analytics 边栏选项卡上显示的报告中使用的预聚合日志数据。
+> 备份操作不会捕获 Azure 门户的“分析”边栏选项卡上显示的报告中使用的预聚合日志数据。
 
 > [!WARNING]
 > 每个备份都会在 30 天后过期。 如果在 30 天有效期到期后尝试还原备份，还原会失败并显示 `Cannot restore: backup expired` 消息。
@@ -41,7 +41,7 @@ ms.locfileid: "128652655"
 ## <a name="authenticating-azure-resource-manager-requests"></a>对 Azure 资源管理器请求进行身份验证
 
 > [!IMPORTANT]
-> 用于还原和备份的 REST API 使用 Azure 资源管理器，并且具有与用于管理 API 管理实体的 REST API 不同的身份验证机制。 本部分中的步骤介绍如何对 Azure 资源管理器请求进行身份验证。 有关详细信息，请参阅[对 Azure 资源管理器请求进行身份验证](/rest/api/index)。
+> 用于还原和备份的 REST API 使用 Azure 资源管理器，并且具有与用于管理 API 管理实体的 REST API 不同的身份验证机制。 本部分中的步骤介绍如何对 Azure 资源管理器请求进行身份验证。 有关详细信息，请参阅[对 Azure 资源管理器请求进行身份验证](/rest/api/azure)。
 
 使用 Azure 资源管理器对资源所进行的所有任务都必须使用以下步骤通过 Azure Active Directory 进行身份验证：
 
@@ -122,6 +122,25 @@ namespace GetTokenResourceManagerRequests
     > [!NOTE]
     > 该令牌可能在一段时间后过期。 再次执行示例代码以生成新令牌。
 
+## <a name="accessing-azure-storage"></a>访问 Azure 存储
+
+API 管理使用你为备份和还原操作指定的 Azure 存储帐户。 运行备份或还原操作时，需要配置对存储帐户的访问权限。 API 管理支持两种存储访问机制：Azure 存储访问密钥（默认）或 API 管理托管标识。
+
+### <a name="configure-storage-account-access-key"></a>配置存储帐户访问密钥
+
+有关步骤，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md?tabs=azure-portal)。
+
+### <a name="configure-api-management-managed-identity"></a>配置 API 管理托管标识
+
+> [!NOTE]
+> 若要在备份和还原期间使用 API 管理托管标识进行存储操作，需有 API 管理 REST API 版本 `2021-04-01-preview` 或更高版本。
+
+1. 在 API 管理实例中[为 API 管理启用系统分配的托管标识或用户分配的托管标识](api-management-howto-use-managed-service-identity.md)。
+
+    * 如果启用用户分配的托管标识，请记下该标识的“客户端 ID”。
+    * 如果要备份和还原到不同的 API 管理实例，请在源实例和目标实例中都启用托管标识。
+1. 为该标识分配“存储 Blob 数据参与者”角色，该角色的范围限定为用于备份和还原的存储帐户。 若要分配角色，请使用 [Azure 门户](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)或其他 Azure 工具。
+
 ## <a name="calling-the-backup-and-restore-operations"></a>调用备份和还原操作
 
 REST API 为 [Api 管理服务 - 备份](/rest/api/apimanagement/2020-12-01/api-management-service/backup)和 [Api 管理服务 - 还原](/rest/api/apimanagement/2020-12-01/api-management-service/restore)。
@@ -148,22 +167,53 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 订阅的 ID，该订阅包含的 API 管理服务是你尝试备份的
 -   `resourceGroupName` - Azure API 管理服务的资源组名称
 -   `serviceName` - 正在创建其备份的 API 管理服务的名称，在创建时指定
--   `api-version` 使用受支持的 REST API 版本 (`2020-12-01`) 进行替换
+-   `api-version` - 有效的 REST API 版本，例如 `2020-12-01` 或 `2021-04-01-preview`。
 
-在请求正文中，指定目标 Azure 存储帐户名称、访问密钥、blob 容器名称和备份名称：
+在请求正文中，指定目标存储帐户名称、Blob 容器名称、备份名称和存储访问类型。 如果存储容器不存在，备份操作将创建存储容器。
+
+#### <a name="access-using-storage-access-key"></a>使用存储访问密钥进行访问
 
 ```json
 {
     "storageAccount": "{storage account name for the backup}",
-    "accessKey": "{access key for the account}",
     "containerName": "{backup container name}",
-    "backupName": "{backup blob name}"
+    "backupName": "{backup blob name}",
+    "accessKey": "{access key for the account}"
 }
 ```
 
+#### <a name="access-using-managed-identity"></a>使用托管标识进行访问
+
+> [!NOTE]
+> 若要在备份和还原期间使用 API 管理托管标识进行存储操作，需有 API 管理 REST API 版本 `2021-04-01-preview` 或更高版本。
+
+使用系统分配的托管标识进行访问
+
+```json
+{
+    "storageAccount": "{storage account name for the backup}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}",
+    "accessType": "SystemAssignedManagedIdentity"
+}
+```
+
+使用用户分配的托管标识进行访问
+
+```json
+{
+    "storageAccount": "{storage account name for the backup}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}",
+    "accessType": "UserAssignedManagedIdentity",
+    "clientId": "{client ID of user-assigned identity}"
+}
+```
+
+
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
+备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 头中的 URL 发出 `GET` 请求以查明操作状态。 当备份正在进行时，你将继续收到 `202 Accepted` 状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>还原 API 管理服务
 
@@ -178,22 +228,52 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 订阅 ID，该订阅包含的 API 管理服务是需要将备份还原到其中的
 -   `resourceGroupName` - 资源组的名称，该资源组包含的 Azure API 管理服务是需要将备份还原到其中的
 -   `serviceName` - 要将备份还原到其中的 API 管理服务的名称，在创建时指定
--   `api-version` - 替换为 `api-version=2020-12-01`
+-   `api-version` - 有效的 REST API 版本，例如 `2020-12-01` 或 `2021-04-01-preview`
 
-在请求正文中，指定备份文件位置。 也就是说，添加 Azure 存储帐户名称、访问密钥、Blob 容器名称和备份名称：
+在请求正文中，指定现有存储帐户名称、Blob 容器名称、备份名称和存储访问类型。 
+
+#### <a name="access-using-storage-access-key"></a>使用存储访问密钥进行访问
 
 ```json
 {
     "storageAccount": "{storage account name for the backup}",
-    "accessKey": "{access key for the account}",
     "containerName": "{backup container name}",
-    "backupName": "{backup blob name}"
+    "backupName": "{backup blob name}",
+    "accessKey": "{access key for the account}"
+}
+```
+
+#### <a name="access-using-managed-identity"></a>使用托管标识进行访问
+
+> [!NOTE]
+> 若要在备份和还原期间使用 API 管理托管标识进行存储操作，需有 API 管理 REST API 版本 `2021-04-01-preview` 或更高版本。
+
+使用系统分配的托管标识进行访问
+
+```json
+{
+    "storageAccount": "{storage account name for the backup}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}",
+    "accessType": "SystemAssignedManagedIdentity"
+}
+```
+
+使用用户分配的托管标识进行访问
+
+```json
+{
+    "storageAccount": "{storage account name for the backup}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}",
+    "accessType": "UserAssignedManagedIdentity",
+    "clientId": "{client ID of user-assigned identity}"
 }
 ```
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
+还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，你将继续收到 `202 Accepted` 状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
 
 > [!IMPORTANT]
 > 要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
@@ -205,16 +285,26 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   当备份正在进行时，请 **避免在服务中进行管理更改**，例如 SKU 升级或降级、域名更改等。
 -   从创建时开始，**备份还原仅保证 30 天**。
 -   在正在进行备份操作时对服务配置（例如，API、策略和开发人员门户外观）所做的更改可能不会包含在备份中，将会丢失 。
--   如果 Azure 存储帐户已启用[防火墙][azure-storage-ip-firewall]，那么客户就必须在其存储帐户上“允许”一组 [Azure API 管理控制平面 IP 地址][control-plane-ip-address]，以便让将数据备份到其中或从中还原数据可以正常工作。 Azure 存储帐户可以位于除 API 管理服务所在区域之外的任意 Azure 区域中。 例如，如果 API 管理服务位于美国西部，Azure 存储帐户就可以位于美国西部 2，并且客户需要在防火墙中打开控制平面 IP 13.64.39.16（美国西部的 API 管理控制平面 IP）。 这是因为对 Azure 存储的请求不会从同一 Azure 区域中的计算（Azure API 管理控制平面）进行 SNAT 以转换为公共 IP。 跨区域存储请求将会进行 SNAT，从而转换为公共 IP 地址。
+
 -   不应在 Azure 存储帐户中的 Blob 服务上启用[跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 -   要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
+
+## <a name="storage-networking-constraints"></a>存储网络约束
+
+### <a name="access-using-storage-access-key"></a>使用存储访问密钥进行访问
+
+如果存储帐户启用了[防火墙][azure-storage-ip-firewall]并使用存储密钥进行访问，则客户必须允许其存储帐户上的 [Azure API 管理控制平面 IP 地址][control-plane-ip-address]集，这样才能正常进行备份或还原 。 存储帐户可以位于除 API 管理服务所在区域之外的任意 Azure 区域中。 例如，如果 API 管理服务位于美国西部，Azure 存储帐户就可以位于美国西部 2，并且客户需要在防火墙中打开控制平面 IP 13.64.39.16（美国西部的 API 管理控制平面 IP）。 这是因为对 Azure 存储的请求不会从同一 Azure 区域中的计算（Azure API 管理控制平面）进行 SNAT 转换后发送到公共 IP。 跨区域存储请求将在经过 SNAT 转换后发送到公共 IP 地址。
+
+### <a name="access-using-managed-identity"></a>使用托管标识进行访问
+
+如果使用 API 管理的系统分配的托管标识来访问启用了防火墙的存储帐户，请确保该存储帐户[向受信任的 Azure 服务授予访问权限](../storage/common/storage-network-security.md?tabs=azure-portal#grant-access-to-trusted-azure-services)。
 
 ## <a name="what-is-not-backed-up"></a>不备份的内容
 -   用于创建分析报表的 **用法数据** **不包括** 在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
 -   [自定义域 TLS/SSL](configure-custom-domain.md) 证书。
 -   [自定义 CA 证书](api-management-howto-ca-certificates.md)，包括由客户上传的中间证书或根证书。
 -   [虚拟网络](api-management-using-with-vnet.md)集成设置。
--   [托管的标识](api-management-howto-use-managed-service-identity.md)配置。
+-   [托管标识](api-management-howto-use-managed-service-identity.md)配置。
 -   [Azure Monitor 诊断](api-management-howto-use-azure-monitor.md)配置。
 -   [协议和密码](api-management-howto-manage-protocols-ciphers.md)设置。
 -   [开发人员门户](developer-portal-faq.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management)内容。
@@ -223,12 +313,12 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## <a name="next-steps"></a>后续步骤
 
-有关备份/还原过程的不同演练，请查看以下资源。
+请查看以下相关资源来了解备份/还原过程：
 
--   [复制 Azure API 管理帐户](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [使用逻辑应用自动执行 API 管理备份和还原](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API 管理：备份和还原配置](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
-     Stuart 详述的方法与官方指南不匹配，但非常有趣。 
+- [如何跨区域移动 Azure API 管理](api-management-howto-migrate.md)
+
+API 管理“高级”层还支持[区域冗余](zone-redundancy.md)，该功能可为特定 Azure 区域（位置）中的服务实例提供复原能力和高可用性。
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

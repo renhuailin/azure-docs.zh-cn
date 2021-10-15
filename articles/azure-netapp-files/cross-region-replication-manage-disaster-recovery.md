@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 09/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4f1f766fbec4c9e09d1ebd5e982254cdcbd85403
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590987"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273318"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>使用跨区域复制管理灾难恢复 
 
@@ -59,7 +59,12 @@ ms.locfileid: "104590987"
 灾难恢复后，可以通过执行重新同步操作来重新激活源卷。  重新同步操作将反向执行复制过程，并将数据从目标卷同步到源卷。  
 
 > [!IMPORTANT] 
-> 重新同步操作会使用目标卷数据覆盖源卷数据。  UI 会向发出警告，提示这可能丢失数据。 在操作开始前，系统将提示你确认重新同步操作。
+> 重新同步操作基于最后可用的常见快照，通过使用来自目标卷的最新更新增量更新源卷来同步源卷和目标卷。 在大多数情况下，此操作无需同步整个卷，因为在最新的常见快照之后，只需将对目标卷所做的更改复制到源卷。  
+> 
+> 重新同步操作会使用更新的目标卷数据覆盖源卷中任何比最常见的快照更新的数据。 UI 会向发出警告，提示这可能丢失数据。 在操作开始前，系统将提示你确认重新同步操作。  
+> 
+> 如果因源卷没有在灾难中幸存下来而不存在常见快照，则目标中的所有数据都将重新同步到新创建的源卷。
+
 
 1. 若要重新同步复制，请选择“源”卷。 单击“存储服务”下的“复制”。 然后单击“重新同步”。  
 

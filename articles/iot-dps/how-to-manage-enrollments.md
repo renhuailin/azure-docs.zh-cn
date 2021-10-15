@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: 6ec146a05df1b896f8ca594d29cf13341b70765a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5e9caea0ff8514c633f20f7baa7c501f0ac379d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010956"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276333"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>如何通过 Azure 门户管理设备注册
 
@@ -67,7 +67,7 @@ ms.locfileid: "96010956"
         | 字段 | 描述 |
         | :--- | :--- |
         | **机制** | 选择“X.509”、“TPM”或“对称密钥”作为要使用的证明机制，具体取决于设备将使用的证明方法  。 |
-        | 证明设置 | 有关使用对称密钥或 X.509 证书创建和使用单独注册的分步说明，请参阅[预配对称密钥](quick-create-simulated-device-symmetric-key-java.md#create-a-device-enrollment)或[预配 x.509 证书设备](quick-create-simulated-device-x509-java.md#create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry)快速入门之一。<br><br>有关使用 TPM 证明创建和使用单独注册的分步说明，请参阅[预配模拟的 TPM 设备](quick-create-simulated-device-tpm-java.md#create-a-device-enrollment-entry)示例。|
+        | 证明设置 | 有关使用对称密钥或 X.509 证书创建和使用单独注册的分步说明，请参阅[快速入门：预配模拟对称密钥设备](quick-create-simulated-device-symm-key.md#create-a-device-enrollment)或[快速入门：预配 X.509 证书设备](quick-create-simulated-device-x509.md#create-a-device-enrollment)。<br><br>有关使用 TPM 证明创建和使用单独注册的分步说明，请参阅[预配模拟的 TPM 设备](quick-create-simulated-device-tpm.md#create-a-device-enrollment-entry)示例。|
         | **IoT 中心设备 ID** |  此 ID 代表你的设备。 它必须遵循设备 ID 的规则。 有关详细信息，请参阅[设备标识属性](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties)。<br><br>使用 X.509 证书时，此文本必须是你为注册上传的设备证书上的使用者名称。 使用者名称必须符合设备 ID 规则。|
             
 

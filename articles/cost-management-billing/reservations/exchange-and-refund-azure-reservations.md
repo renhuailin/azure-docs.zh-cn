@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: d45682a3ccdc67cdbff8ef0c1edd542817875fbc
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 56ebba760defcb47d336874294255e2e97e5a151
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891547"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546221"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
@@ -80,6 +80,7 @@ Azure Databricks 预留容量、Azure VMware Solution by CloudSimple 预留、Az
 ### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>即用即付发票款项和 CSP 计划
 
 先取消原始预留购买发票，然后针对退款创建新发票。 对于交换，新发票会显示退款和新的购买。 退款金额根据购买进行调整。 如果你只要求预留退款，则按比例调整后的金额将留给 Microsoft，针对将来的预留购买再进行调整。 如果你以即用即付费率购买了预留，随后又转到 CSP，则可以退回预留并重新购买，无需支付罚金。
+无法在 CSP 中进行自助退款。对于任何退款请求，请通过 CSP 联系支持人员。
 
 ### <a name="pay-as-you-go-credit-card-customers"></a>即用即付信用卡客户
 

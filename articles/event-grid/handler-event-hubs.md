@@ -2,13 +2,13 @@
 title: 事件中心作为 Azure 事件网格事件的事件处理程序
 description: 介绍如何将时间中心用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
-ms.date: 09/28/2021
-ms.openlocfilehash: 6ba4dec31a93b01804779cd9f614e64854fe6cce
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 09/30/2021
+ms.openlocfilehash: 590364d759fe6f628cfaa306d162d00f575c0622
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215028"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354418"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>事件中心作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure 事件中心是其中之一。 
@@ -72,6 +72,17 @@ ms.locfileid: "129215028"
   }
 }
 ```
+
+## <a name="delivery-properties"></a>传递属性
+通过事件订阅，可以设置已传递事件中包含的 HTTP 头。 使用此功能，可设置目标所需的自定义标头。 可以对传递到 Azure 事件中心的事件设置自定义标头。
+
+如果需要将事件发布到某个事件中心内的特定分区，请在事件订阅上设置 `ParitionKey` 属性，以指定用于标识目标事件中心分区的分区键。
+
+| 标头名称 | 标头类型 |
+| :-- | :-- |
+|`PartitionKey` | 静态 |
+
+有关详细信息，请参阅[自定义传送属性](delivery-properties.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 如需支持的事件处理程序的列表，请参阅[事件处理程序](event-handlers.md)一文。 

@@ -4,16 +4,20 @@ description: 本文说明如何将事件发布到自定义主题。 它显示发
 ms.topic: conceptual
 ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3c3be5c11341ddd7bb381134a0d0b50ba8745709
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 489ad5ab07a411612bdbce1a2dc71dc1a3441f3c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515423"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361508"
 ---
-# <a name="post-to-azure-event-grid-custom-topics-using-access-keys"></a>使用访问密钥在 Azure 事件网格发布自定义主题
+# <a name="publish-events-to-azure-event-grid-custom-topics-using-access-keys"></a>使用访问密钥将事件发布到 Azure 事件网格的自定义主题
 
 本文说明如何使用访问密钥发布自定义主题事件。 它显示发布和事件数据的格式。 [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) 仅适用于与预期格式匹配的发布。
+
+
+> [!NOTE]
+> Azure AD 身份验证提供的身份验证支持优于访问密钥或共享访问签名 (SAS) 令牌身份验证所提供的身份验证支持。 使用 Azure AD 身份验证时，将针对 Azure AD 标识提供者来验证标识。 作为开发人员，如果使用 Azure AD 身份验证，则不需要在代码中处理密钥。 还会受益于内置于 Microsoft 标识平台的所有安全功能，例如条件访问，有助于提高应用程序的安全性情况。 有关详细信息，请参阅[使用 Azure Active Directory 对发布客户端进行身份验证](authenticate-with-active-directory.md)。
 
 ## <a name="endpoint"></a>端点
 

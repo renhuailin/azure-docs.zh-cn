@@ -4,12 +4,12 @@ description: 本文概述了什么是 Azure 视频分析器媒体版（以前为
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: juliako
-ms.openlocfilehash: b698bce219468ee44a78aea7b8e449b603ecd975
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b8516ca1d1d5d7020d645f54b1962076e9792f36
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128665656"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232620"
 ---
 # <a name="customize-a-brands-model-in-video-analyzer-for-media"></a>在视频分析器媒体版中自定义品牌模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "128665656"
 
 ![品牌概述](./media/content-model-customization/brands-overview.png)
 
-高级机器学习算法知道如何根据上下文消除歧义，在建筑上下文中谈论 windows（窗户）时，不会将单词“Windows”检测为品牌，对于 Box、Apple 和 Fox 等也是如此。 品牌检测可以针对我们支持的所有语言进行工作。  
+由于高级机器学习算法知道如何根据上下文消除歧义，因此在构造上下文中谈论 Windows 时，不会将单词“Windows”检测为品牌，对于 Box、Apple 和 Fox 等也是如此。 品牌检测可以针对我们支持的所有语言进行工作。
 
 ## <a name="next-steps"></a>后续步骤
 

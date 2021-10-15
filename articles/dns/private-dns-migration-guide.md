@@ -2,24 +2,24 @@
 title: 将旧的 Azure DNS 专用区域迁移到新的资源模型
 titleSuffix: Azure DNS
 description: 本指南将分步说明如何将旧的 DNS 专用区域迁移到最新的资源模型
-services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: cf39a2b5853368f529c524798c6ac6486f148d46
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 566608da26cafab0d491663300136ebc815eb3ff
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745066"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357090"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>将旧的 Azure DNS 专用区域迁移到新的资源模型
 
 在公开预览期间，通过将“zoneType”属性设置为“Private”，使用“dnszones”资源创建专用 DNS 区域。 此类区域将在 2019 年 12 月 31 日之后不受支持，并且必须迁移到使用“privateDnsZones”资源类型而非“dnszones”的 GA 资源模型。 迁移过程很简单，我们提供了一个 PowerShell 脚本来自动执行此过程。 本指南将分步说明如何将 Azure DNS 专用区域迁移到新的资源模型。
 
 若要查找需要迁移的 dnszones 资源，在 Azure CLI 中执行以下命令。
+
 ```azurecli
 az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
@@ -27,7 +27,7 @@ az network dns zone list --query "[?zoneType=='Private']"
 
 ## <a name="prerequisites"></a>先决条件
 
-确保已安装最新版 Azure PowerShell。 有关 Azure PowerShell (Az) 的详细信息及其安装方法，请访问 https://docs.microsoft.com/powershell/azure/new-azureps-module-az
+确保已安装最新版 Azure PowerShell。 有关 Azure PowerShell (Az) 的详细信息及其安装方法，请访问 [Azure Az PowerShell 模块简介](/powershell/azure/new-azureps-module-az)。
 
 确保已安装 Azure PowerShell 的 Az.PrivateDns 模块。 要安装此模块，打开提升的 PowerShell 窗口（管理模式），并输入以下命令
 

@@ -3,35 +3,87 @@ title: 在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模
 description: 本文介绍如何通过 PowerShell Runbook 部署 Azure 存储中存储的 Azure 资源管理器模板。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
-ms.topic: conceptual
+ms.date: 09/23/2021
+ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-keywords: powershell, runbook, json, azure 自动化
-ms.openlocfilehash: cb075d0ad59af211d80443a5e208509ea60c08ed
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 61ff25cd9878ee94ce0ba6db7b2c4e4ac8e649de
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251813"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057750"
 ---
-# <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>在 PowerShell Runbook 中部署 Azure 资源管理器模板
+# <a name="deploy-an-azure-resource-manager-template-in-an-automation-powershell-runbook"></a>在自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
 
-可以编写一个 [Azure 自动化 PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md)，用于通过 [Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)部署 Azure 资源。 借助模板可以通过 Azure 自动化来自动部署 Azure 资源。 可以在一个安全的中心位置（例如 Azure 存储）维护资源管理器模板。
+可以编写一个[自动化 PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md)，用于通过 [Azure 资源管理模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)部署 Azure 资源。 借助模板可以通过 Azure 自动化来自动部署 Azure 资源。 可以在一个安全的中心位置（例如 Azure 存储）维护资源管理器模板。
 
 本文创建一个 PowerShell Runbook，该 Runbook 使用 [Azure 存储](../storage/common/storage-introduction.md)中存储的资源管理器模板部署新的 Azure 存储帐户。
 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果还没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或[注册免费帐户](https://azure.microsoft.com/free/)。
-* [自动化帐户](./automation-security-overview.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。 此帐户必须有权启动和停止虚拟机。
+* 至少具有一个用户分配的托管标识的 Azure 自动化帐户。 有关详细信息，请参阅[对 Azure 自动化帐户使用用户分配的托管标识](./add-user-assigned-identity.md)。
+
+* Az 模块：`Az.Accounts`、`Az.ManagedServiceIdentity`、`Az.Resources` 和 `Az.Storage`。 导入到自动化帐户中。 有关详细信息，请参阅[导入 Az 模块](./shared-resources/modules.md#import-az-modules)。
+
 * 要在其中存储资源管理器模板的 [Azure 存储帐户](../storage/common/storage-account-create.md)。
-* 安装在本地计算机上的 Azure PowerShell。 若要详细了解如何获得 Azure PowerShell，请参阅[安装 Azure Powershell 模块](/powershell/azure/install-az-ps)。
 
-## <a name="create-the-resource-manager-template"></a>创建 资源管理器模板
+* 安装在本地计算机上的 Azure PowerShell。 若要详细了解如何获得 Azure PowerShell，请参阅[安装 Azure Powershell 模块](/powershell/azure/install-az-ps)。 还需要模块 [Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity)。 `Az.ManagedServiceIdentity` 是预览模块，不作为 Az 模块的一部分安装。 若要安装该模块，请运行 `Install-Module -Name Az.ManagedServiceIdentity`
 
-在本示例中，我们使用用于部署新 Azure 存储帐户的资源管理器模板。
+## <a name="assign-permissions-to-managed-identities"></a>向托管标识分配权限
 
-在文本编辑器中复制以下文本：
+向托管标识分配权限，以执行 Runbook 中的存储相关任务。
+
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 以交互方式登录到 Azure，并按照说明进行操作。
+
+    ```powershell
+    # Sign in to your Azure subscription
+    $sub = Get-AzSubscription -ErrorAction SilentlyContinue
+    if(-not($sub))
+    {
+        Connect-AzAccount
+    }
+    
+    # If you have multiple subscriptions, set the one to use
+    # Select-AzSubscription -SubscriptionId <SUBSCRIPTIONID>
+    ```
+
+1. 为以下变量提供适当的值，然后执行脚本。
+
+    ```powershell
+    $resourceGroup = "resourceGroup"
+    $automationAccount = "automationAccount"
+    $storageAccount = "storageAccount"
+    $userAssignedManagedIdentity = "userAssignedManagedIdentity"
+    $storageTemplate = "path\storageTemplate.json"
+    $runbookScript = "path\runbookScript.ps1"
+    ```
+
+1. 为系统分配的托管标识分配 `reader` 角色以执行 cmdlet `Get-AzUserAssignedIdentity`。
+
+    ```powershell
+    $SAMI = (Get-AzAutomationAccount -ResourceGroupName $resourceGroup -Name $automationAccount).Identity.PrincipalId
+    New-AzRoleAssignment `
+        -ObjectId $SAMI `
+        -ResourceGroupName $resourceGroup `
+        -RoleDefinitionName "Reader"
+    ```
+
+1. 将角色 `Storage Account Contributor` 分配给用户分配的托管标识，以针对存储帐户执行操作。
+
+    ```powershell
+    $UAMI_ID = (Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $userAssignedManagedIdentity).PrincipalId
+    New-AzRoleAssignment `
+        -ObjectId $UAMI_ID `
+        -ResourceGroupName $resourceGroup `
+        -RoleDefinitionName "Storage Account Contributor"
+    ```
+
+
+## <a name="create-the-resource-manager-template"></a>创建 Resource Manager 模板
+
+在本示例中，使用用于部署新 Azure 存储帐户的资源管理器模板。 创建名为 `storageTemplate.json` 的本地文件，然后粘贴以下代码：
 
 ```json
 {
@@ -85,65 +137,67 @@ ms.locfileid: "123251813"
 }
 ```
 
-将该文件在本地保存为 TemplateTest.json。
-
 ## <a name="save-the-resource-manager-template-in-azure-files"></a>在 Azure 文件存储中保存资源管理器模板
 
-现在，我们使用 PowerShell 创建 Azure 文件共享并上传 TemplateTest.json 文件。 有关如何在 Azure 门户中创建文件共享和上传文件的说明，请参阅[在 Windows 上开始使用 Azure 文件存储](../storage/files/storage-files-quick-create-use-windows.md)。
+使用 PowerShell 创建 Azure 文件共享并上传 `storageTemplate.json`。 有关如何在 Azure 门户中创建文件共享和上传文件的说明，请参阅[在 Windows 上开始使用 Azure 文件存储](../storage/files/storage-files-quick-create-use-windows.md)。
 
-在本地计算机上启动 PowerShell，运行以下命令创建文件共享并将资源管理器模板上传到该文件共享。
+运行以下命令创建文件共享，并将资源管理器模板上传到该文件共享。
 
 ```powershell
-# Log into Azure
-Connect-AzAccount
-
 # Get the access key for your storage account
-$key = Get-AzStorageAccountKey -ResourceGroupName 'MyAzureAccount' -Name 'MyStorageAccount'
+$key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroup -Name $storageAccount
 
 # Create an Azure Storage context using the first access key
-$context = New-AzStorageContext -StorageAccountName 'MyStorageAccount' -StorageAccountKey $key[0].value
+$context = New-AzStorageContext -StorageAccountName $storageAccount -StorageAccountKey $key[0].value
 
 # Create a file share named 'resource-templates' in your Azure Storage account
 $fileShare = New-AzStorageShare -Name 'resource-templates' -Context $context
 
-# Add the TemplateTest.json file to the new file share
-# "TemplatePath" is the path where you saved the TemplateTest.json file
-$templateFile = 'C:\TemplatePath'
-Set-AzStorageFileContent -ShareName $fileShare.Name -Context $context -Source $templateFile
+# Add the storageTemplate.json file to the new file share
+Set-AzStorageFileContent -ShareName $fileShare.Name -Context $context -Source $storageTemplate
 ```
 
 ## <a name="create-the-powershell-runbook-script"></a>创建 PowerShell Runbook 脚本
 
-现在，我们创建一个 PowerShell 脚本，用于从 Azure 存储获取 TemplateTest.json 文件，并部署该模板以创建新的 Azure 存储帐户。
+创建一个 PowerShell 脚本，用于从 Azure 存储获取 `storageTemplate.json` 文件，并部署模板来创建新的 Azure 存储帐户。  创建名为 `runbookScript.ps1` 的本地文件，然后粘贴以下代码：
 
-在文本编辑器中粘贴以下文本：
 
 ```powershell
 param (
     [Parameter(Mandatory=$true)]
     [string]
-    $ResourceGroupName,
+    $resourceGroup,
 
     [Parameter(Mandatory=$true)]
     [string]
-    $StorageAccountName,
+    $storageAccount,
 
     [Parameter(Mandatory=$true)]
     [string]
-    $StorageAccountKey,
+    $storageAccountKey,
 
     [Parameter(Mandatory=$true)]
     [string]
-    $StorageFileName
+    $storageFileName,
+
+    [Parameter(Mandatory=$true)]
+    [string]
+    $userAssignedManagedIdentity
 )
 
-# Authenticate to Azure if running from Azure Automation
-$ServicePrincipalConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
-Connect-AzAccount `
-    -ServicePrincipal `
-    -Tenant $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint | Write-Verbose
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with user-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup `
+    -Name $userAssignedManagedIdentity `
+    -DefaultProfile $AzureContext
+$AzureContext = (Connect-AzAccount -Identity -AccountId $identity.ClientId).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -DefaultProfile $AzureContext
 
 #Set the parameter values for the Resource Manager template
 $Parameters = @{
@@ -151,41 +205,43 @@ $Parameters = @{
     }
 
 # Create a new context
-$Context = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$Context = New-AzStorageContext -StorageAccountName $storageAccount -StorageAccountKey $storageAccountKey
 
-Get-AzStorageFileContent -ShareName 'resource-templates' -Context $Context -path 'TemplateTest.json' -Destination 'C:\Temp'
+Get-AzStorageFileContent `
+    -ShareName 'resource-templates' `
+    -Context $Context `
+    -path 'storageTemplate.json' `
+    -Destination 'C:\Temp' -Force
 
-$TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
+$TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $storageFileName
 
 # Deploy the storage account
-New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroup `
+    -TemplateFile $TemplateFile `
+    -TemplateParameterObject $Parameters 
 ```
-
-将该文件在本地保存为 DeployTemplate.ps1。
 
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>在 Azure 自动化帐户中导入并发布 Runbook
 
-现在，我们使用 PowerShell 将 Runbook 导入 Azure 自动化帐户，并发布该 Runbook。 有关如何在 Azure 门户中导入和发布 Runbook 的信息，请参阅[在 Azure 自动化中管理 Runbook](manage-runbooks.md)。
+使用 PowerShell 将 Runbook 导入自动化帐户，并发布该 Runbook。 有关在 Azure 门户中导入和发布 Runbook 的信息，请参阅[在 Azure 自动化中管理 Runbook](manage-runbooks.md)。
 
-若要将 DeployTemplate.ps1 以 PowerShell Runbook 的形式导入自动化帐户，请运行以下 PowerShell 命令：
+若要将 `runbookScript.ps1` 以 PowerShell Runbook 的形式导入自动化帐户，请运行以下 PowerShell 命令：
 
 ```powershell
-# MyPath is the path where you saved DeployTemplate.ps1
-# MyResourceGroup is the name of the Azure ResourceGroup that contains your Azure Automation account
-# MyAutomationAccount is the name of your Automation account
 $importParams = @{
-    Path = 'C:\MyPath\DeployTemplate.ps1'
-    ResourceGroupName = 'MyResourceGroup'
-    AutomationAccountName = 'MyAutomationAccount'
-    Type = 'PowerShell'
+    Path = $runbookScript
+    ResourceGroupName = $resourceGroup
+    AutomationAccountName = $automationAccount
+    Type = "PowerShell"
 }
 Import-AzAutomationRunbook @importParams
 
 # Publish the runbook
 $publishParams = @{
-    ResourceGroupName = 'MyResourceGroup'
-    AutomationAccountName = 'MyAutomationAccount'
-    Name = 'DeployTemplate'
+    ResourceGroupName = $resourceGroup
+    AutomationAccountName = $automationAccount
+    Name = "runbookScript"
 }
 Publish-AzAutomationRunbook @publishParams
 ```
@@ -199,17 +255,18 @@ Publish-AzAutomationRunbook @publishParams
 ```powershell
 # Set up the parameters for the runbook
 $runbookParams = @{
-    ResourceGroupName = 'MyResourceGroup'
-    StorageAccountName = 'MyStorageAccount'
-    StorageAccountKey = $key[0].Value # We got this key earlier
-    StorageFileName = 'TemplateTest.json'
+    resourceGroup = $resourceGroup
+    storageAccount = $storageAccount
+    storageAccountKey = $key[0].Value # We got this key earlier
+    storageFileName = "storageTemplate.json"
+    userAssignedManagedIdentity = $userAssignedManagedIdentity
 }
 
 # Set up parameters for the Start-AzAutomationRunbook cmdlet
 $startParams = @{
-    ResourceGroupName = 'MyResourceGroup'
-    AutomationAccountName = 'MyAutomationAccount'
-    Name = 'DeployTemplate'
+    resourceGroup = $resourceGroup
+    AutomationAccountName = $automationAccount
+    Name = "runbookScript"
     Parameters = $runbookParams
 }
 
@@ -230,4 +287,3 @@ Get-AzStorageAccount
 * 若要详细了解资源管理器模板，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。
 * 若要开始使用 Azure 存储，请参阅 [Azure 存储简介](../storage/common/storage-introduction.md)。
 * 若要查找其他有用的 Azure 自动化 Runbook，请参阅[在 Azure 自动化中使用 Runbook 和模块](automation-runbook-gallery.md)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation#automation)。

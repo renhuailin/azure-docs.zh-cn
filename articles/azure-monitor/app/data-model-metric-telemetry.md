@@ -4,12 +4,12 @@ description: 适用于指标遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df3ce8715134aa51ee819210cad4caf126f0e492
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87320572"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229594"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 
@@ -59,7 +59,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 
 ## <a name="custom-properties"></a>自定义属性
 
-自定义属性 `CustomPerfCounter` 设置为 `true` 的指标指示该指标表示 windows 性能计数器。 这些指标已放入 performanceCounters 表， 不在 customMetrics 中。 此外还分析此指标的名称，以提取类别、计数器和实例名称。
+如果指标的自定义属性 `CustomPerfCounter` 设置为 `true`，则表明该指标表示 Windows 性能计数器。 这些指标已放入 performanceCounters 表， 不在 customMetrics 中。 此外还分析此指标的名称，以提取类别、计数器和实例名称。
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
@@ -68,4 +68,3 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 - 了解如何使用[用于处理自定义事件和指标的 Application Insights API](./api-custom-events-metrics.md#trackmetric)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
 - 查看 Application Insights 支持的[平台](./platforms.md)。
-

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 76436717f83491df01706cfe6ac4ca8f47894ce9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 7d0218c06bfe7644fe376e812d14c67bfdf115bc
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108185836"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229917"
 ---
 # <a name="azure-active-directory-application-proxy-and-qlik-sense"></a>Azure Active Directory 应用程序代理和 Qlik Sense 
 Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保可轻松使用应用程序代理来提供对 Qlik Sense 部署的远程访问。  
@@ -49,7 +49,7 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 ### <a name="application-2"></a>应用程序 2： 
 按照应用程序 1 的相同步骤操作，但存在以下例外： 
 
-**步骤 5**：外部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 对于 2018 年 4 月之前的 QlikSense 版本，默认值为 4244（对于 HTTPS）和 4248（对于 HTTP）。 对于 2018 年 4 月之后的 QlikSense 版本，默认值为 443（对于 HTTPS）和 80（对于 HTTP）。  例如：**https&#58;//demo.qlik.com:4244**</br></br>
+**步骤 5**：外部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 对于 2018 年 4 月之前的 QlikSense 版本，默认值为 4244（对于 HTTPS）和 4248（对于 HTTP） 。 对于 2018 年 4 月之后的 QlikSense 版本，默认值为 443（对于 HTTPS）和 80（对于 HTTP） 。  例如：**https&#58;//demo.qlik.com:4244**</br></br>
 步骤 10：不设置 SSO，并禁用“单一登录”
  
  
@@ -58,8 +58,8 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 
 ## <a name="additional-references"></a>其他参考
 有关使用应用程序代理发布 Qlik Sense 的更多信息，请参阅以下 Qlik 社区文章： 
-- [Azure AD with Integrated Windows Authentication using a Kerberos Constrained Delegation with Qlik Sense](https://community.qlik.com/docs/DOC-20183)（通过 Kerberos 约束委派和 Qlik Sense，将 Azure AD 与集成 Windows 身份验证配合使用）
-- [Qlik Sense integration with Azure AD Application Proxy](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)（Qlik Sense 与 Azure AD 应用程序代理集成）
+- [通过 Kerberos 约束委派和 Qlik Sense，将 Azure AD 与集成 Windows 身份验证配合使用](https://community.qlik.com/docs/DOC-20183)
+- [Qlik Sense 与 Azure AD 应用程序代理集成](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
 ## <a name="next-steps"></a>后续步骤
 

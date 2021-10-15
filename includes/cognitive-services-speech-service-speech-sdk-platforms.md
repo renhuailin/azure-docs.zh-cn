@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/03/2021
 ms.author: trbye
-ms.openlocfilehash: c860d1da844cb3dfc319fa192115d6a0343cc4e0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9cfedce886f5d1727dac91dcc1469d077a021c2
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043190"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585128"
 ---
 | 编程语言 | 平台 | SDK 参考 |
 |----------------------|----------|---------------|
@@ -21,6 +21,9 @@ ms.locfileid: "105043190"
 | Objective-C/Swift | iOS、macOS | [Objective-C SDK](/objectivec/cognitive-services/speech/) |
 | Python | Windows、Linux、macOS | [Python SDK](/python/api/azure-cognitiveservices-speech/) |
 
-<sup>1 .NET 语音 SDK 基于 .NET Standard 2.0，因此它支持很多平台。有关详细信息，请参阅 <a href="https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET 实现支持<span class="docon docon-navigate-external x-hidden-focus"></span></a>。</sup>
+<sup>1 .NET 语音 SDK 基于 .NET Standard 2.0，因此它支持很多平台。有关详细信息，请参阅 [.NET 实现支持](/dotnet/standard/net-standard#net-implementation-support)。</sup>
 
 <sup>2 Java 语音 SDK 也作为[语音设备 SDK](../articles/cognitive-services/speech-service/speech-devices-sdk.md) 的一部分提供。</sup>
+
+> [!IMPORTANT]
+> C 不是语音 SDK 支持的编程语言。 几种支持的编程语言（例如 C++）包含属于通用应用程序二进制接口 (ABI) 层的 C 标头。 这些 ABI 标头不能直接使用，并且可能会在不同版本之间发生更改。

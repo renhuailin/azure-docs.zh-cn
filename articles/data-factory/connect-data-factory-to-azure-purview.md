@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
 ms.date: 09/27/2021
-ms.openlocfilehash: 5d5b1ed8a20bc459370a9bb7e437e1f5c977714d
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 6ec86ff575e4848f79dfe8c6e444e47ed6d1f8f1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217946"
+ms.locfileid: "129277890"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>将数据工厂连接到 Azure Purview（预览）
 
@@ -76,7 +76,7 @@ Purview 连接信息存储在数据工厂资源中，如下所示。 若要以�
 
     在创作 UI 上将数据工厂连接到 Purview 时，ADF 会尝试自动添加此类角色分配。 如果你拥有 Purview 根集合的“集合管理员”角色并且可以从你的网络访问 Purview 帐户，此操作则成功完成。
 
-- 对于 2021 年 8 月 18 日之前创建的 Purview 帐户，请向数据工厂的托管标识授予 Purview 帐户的 Azure 内置 [Purview 数据管理者](../role-based-access-control/built-in-roles.md#purview-data-curator)角色 。 详细了解 [Azure Purview 中的访问控制 - 旧版权限](../purview/catalog-permissions.md#legacy-permission-guide)。
+- 对于 2021 年 8 月 18 日之前创建的 Purview 帐户，请向数据工厂的托管标识授予 Purview 帐户的 Azure 内置 [Purview 数据管理者（旧版）](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy)角色。 详细了解 [Azure Purview 中的访问控制 - 旧版权限](../purview/catalog-permissions.md#legacy-permission-guide)。
 
     在创作 UI 上将数据工厂连接到 Purview 时，ADF 会尝试自动添加此类角色分配。 如果你拥有 Purview 帐户的 Azure 内置“所有者”或“用户访问管理员”角色，则此操作会成功完成 。
 

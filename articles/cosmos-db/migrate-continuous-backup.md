@@ -4,16 +4,16 @@ description: Azure Cosmos DB 当前支持从周期模式单向迁移到连续模
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/26/2021
+ms.date: 10/04/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: 270c0fd585c2232b86011673e460737173106b09
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: b6821435f2f6ce04f1b8ba4b3af8b8f47097c2fa
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479069"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545979"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>将 Azure Cosmos DB 帐户从周期备份模式迁移到连续备份模式
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -78,6 +78,24 @@ ms.locfileid: "123479069"
      -Name "myAccount" `
      -BackupPolicyType Continuous
    ```
+
+### <a name="check-the-migration-status"></a>检查迁移状态
+
+运行以下命令并检查 backupPolicy 对象的状态、targetType 属性。 迁移开始后，状态会显示为“正在进行”：
+
+```azurepowershell-interactive
+az cosmosdb show -n "myAccount" -g "myrg"
+```
+
+:::image type="content" source="./media/migrate-continuous-backup/migration-status-started-powershell.png" alt-text="使用 PowerShell 命令检查迁移状态":::
+
+迁移完成后，备份类型将更改为“连续”。 运行相同的命令以检查状态：
+
+```azurepowershell-interactive
+az cosmosdb show -n "myAccount" -g "myrg"
+```
+
+:::image type="content" source="./media/migrate-continuous-backup/migration-status-complete-powershell.png" alt-text="迁移完成后，备份类型将更改为“连续”":::
 
 ## <a name="migrate-using-cli"></a><a id="cli"></a>使用 CLI 进行迁移
 
@@ -148,10 +166,10 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 可以在迁移完成后还原帐户。 如果迁移在太平洋标准时间下午 1:00 完成，则可以从太平洋标准时间下午 1:00 开始执行时间点还原。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 #### <a name="does-the-migration-only-happen-at-the-account-level"></a>迁移是否只发生在帐户级别？
-能。
+是的。
 
 #### <a name="which-accounts-can-be-targeted-for-backup-migration"></a>哪些帐户可以作为备份迁移的目标？
 目前，使用单一写入区域的 SQL API 和 API for MongoDB 帐户，这些帐户已经在整个支持迁移中共享、预配或自动缩放预配。
@@ -202,5 +220,5 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 * 使用 [Azure 门户](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli) 或 [Azure 资源管理器](restore-account-continuous-backup.md#restore-arm-template)还原帐户。
 
 尝试为迁移到 Azure Cosmos DB 进行容量计划？
-   * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+   * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

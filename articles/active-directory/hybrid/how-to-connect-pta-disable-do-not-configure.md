@@ -11,12 +11,12 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26112b1e799cbde3145e7137c686b4b336db4bab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acabc2cf177ec81ecc293398f9b43f42e71c2862
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919929"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234901"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect"></a>使用 Azure AD Connect 时禁用 PTA
 

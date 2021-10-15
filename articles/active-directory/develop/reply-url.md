@@ -2,21 +2,21 @@
 title: 重定向 URI（回复 URL）限制 | Azure AD
 titleSuffix: Microsoft identity platform
 description: 说明 Microsoft 标识平台对重定向 URI（回复 URL）格式强制实施的限制和局限。
-author: SureshJa
-ms.author: sureshja
+author: madansr7
+ms.author: saumadan
 manager: CelesteDG
-ms.date: 08/06/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: contperf-fy21q4-portal, aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 96fe21b4f1df662e72ec88abc68d74db25257de1
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: d20d14619111515332b6aa5aec9239d0a6d50283
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662035"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353044"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重定向 URI（回复 URL）限制和局限
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) 应用程序模型针对重定向 URI 指定�
 
 此表显示了可以在 Microsoft 标识平台中添加到应用注册的重定向 URI 的最大数目。
 
-| 正在登录的帐户 | 最大重定向 URI 数 | 说明 |
+| 正在登录的帐户 | 重定向 URI 的最大数量 | 说明 |
 |--------------------------|---------------------------------|-------------|
 | 任何组织的 Azure Active Directory (Azure AD) 租户中的 Microsoft 工作或学校帐户 | 256 | 应用程序清单中的 `signInAudience` 字段设置为 AzureADMyOrg 或 AzureADMultipleOrgs |
 | 个人 Microsoft 帐户以及工作和学校帐户 | 100 | 应用程序清单中的 `signInAudience` 字段设置为 AzureADandPersonalMicrosoftAccount |
@@ -54,6 +54,11 @@ Azure Active Directory (Azure AD) 应用程序模型针对重定向 URI 指定�
 ## <a name="maximum-uri-length"></a>最大 URI 长度
 
 对于要添加到应用注册中的每个重定向 URI，最多可以使用 256 个字符。
+
+## <a name="redirect-uris-in-application-vs-service-principal-objects"></a>重定向应用程序对象与服务主体对象中的 URI
+
+* 始终只将重定向 URI 添加到应用程序对象。
+* 不要将重定向 URI 值添加到服务主体，因为当服务主体对象与应用程序对象同步时，可能会删除这些值。 之所以会发生这种情况，可能是因为存在触发两个对象之间的同步的更新操作。
 
 ## <a name="supported-schemes"></a>支持的方案
 

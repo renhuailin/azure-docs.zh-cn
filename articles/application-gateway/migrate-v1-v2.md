@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 4757a8237aa6226b78e7c1e79ba50710e31d28e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 000daf7c60d0bc823aacdab85de42af3b6cbbf55
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594259"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419042"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
@@ -84,6 +84,7 @@ ms.locfileid: "99594259"
     -resourceId <v1 application gateway Resource ID>
     -subnetAddressRange <subnet space you want to use>
     -appgwName <string to use to append>
+    -AppGwResourceGroupName <resource group name you want to use>
     -sslCertificates <comma-separated SSLCert objects as above>
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
@@ -101,8 +102,9 @@ ms.locfileid: "99594259"
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:Required** - 这是为包含新 v2 网关的新子网分配（或想要分配）的 IP 地址空间。 必须以 CIDR 表示法指定此参数。 例如：10.0.0.0/24。 无需提前创建此子网。 如果此子网不存在，脚本将会创建它。
+   * **subnetAddressRange: [String]:Required** - 这是为包含新 v2 网关的新子网分配（或想要分配）的 IP 地址空间。 必须以 CIDR 表示法指定此参数。 例如：10.0.0.0/24。 无需提前创建此子网，但 CIDR 需要是 VNET 地址空间的一部分。 此脚本将为你创建它（如果它不存在），如果存在，它将使用现有子网（确保子网为空，且仅包含 v2 网关(如果有)，并且具有足够可用的 IP）。
    * **appgwName: [String]:Optional**。 这是指定用作新 Standard_v2 或 WAF_v2 网关的名称的字符串。 如果未提供此参数，则会使用现有 v1 网关的名称并在其后追加后缀 *_v2*。
+   * AppGwResourceGroupName: [String]: Optional。 要在其中创建 v2 应用程序网关资源的资源组的名称（默认值将为 `<v1-app-gw-rgname>`）
    * **sslCertificates: [PSApplicationGatewaySslCertificate]:Optional**。  创建的 PSApplicationGatewaySslCertificate 对象的逗号分隔列表，这些对象表示 v1 网关中必须上传到新 v2 网关的 TLS/SSL 证书。 对于为 Standard v1 或 WAF v1 网关配置的每个 TLS/SSL 证书，可按如下所示通过 `New-AzApplicationGatewaySslCertificate` 命令创建新的 PSApplicationGatewaySslCertificate 对象。 需要 TLS/SSL 证书文件的路径和密码。
 
      仅当没有为 v1 网关或 WAF 配置 HTTPS 侦听器时，此参数才是可选项。 如果至少安装了一个 HTTPS 侦听器，则必须指定此参数。
@@ -140,6 +142,7 @@ ms.locfileid: "99594259"
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
+      -AppGwResourceGroupName "MyResourceGroup" `
       -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `

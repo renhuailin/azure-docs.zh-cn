@@ -1,23 +1,23 @@
 ---
 title: 为 Azure Cache for Redis 企业实例配置活动异地复制
 description: 了解如何跨 Azure 区域复制 Azure Cache for Redis 企业实例
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.author: yegu
-ms.openlocfilehash: 5f7bd55cfbdd0e38e2c53784dd24760fb051c0f1
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.author: cauribeg
+ms.openlocfilehash: 99169aaacf0ddd39fb4213ee6c1d83c05a71d532
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112233576"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538480"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>为 Azure Cache for Redis 企业实例配置活动异地复制（预览）
 
 本文介绍了如何使用 Azure 门户配置活动异地复制的 Azure 缓存。
 
-活动异地复制将两个 Azure Cache for Redis 企业实例分组到一个跨 Azure 区域的缓存中。 这两个实例都充当本地主缓存。 应用程序决定将哪些实例用于读取和写入请求。
+活动异地复制将最多 5 个 Enterprise Azure Cache for Redis 实例分组到一个跨 Azure 区域的缓存中。 所有实例都充当本地主缓存。 应用程序决定将哪个或哪些实例用于读取和写入请求。
 
 > [!NOTE]
 > Azure 区域之间的数据传输将按标准[带宽费率](https://azure.microsoft.com/pricing/details/bandwidth/)收费。

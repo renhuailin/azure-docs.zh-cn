@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: 79bb517faffdda7e9d7ddef45e7b52f5e81dc201
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 484f52656c5e49113d50f25a94a33b94ed886ab0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589675"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359197"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>建立通过专用终结点的索引器连接
 
@@ -56,7 +56,13 @@ Azure 认知搜索通过管理 REST API 提供 [CreateOrUpdate](/rest/api/search
 在本文的剩余部分中，会结合使用 Azure 门户（如果愿意也可使用 [Azure CLI](/cli/azure/)）和 [Postman](https://www.postman.com/)（如果愿意，也可使用类似于 [curl](https://curl.se/) 的任何其他 HTTP 客户端）来演示 REST API 调用。
 
 > [!NOTE]
-> 若要创建与 Azure Data Lake Storage Gen2 的专用终结点连接，需要创建两个专用终结点。 一个具有 groupID“dfs”的专用终结点和另一个具有 groupID“blob”的专用终结点。
+> 某些 Azure 认知搜索数据源和其他配置需要创建多个共享专用链接才能正常工作。 下面是存在此要求的配置列表，以及每个配置所需的组 ID：
+> * Azure Data Lake Storage Gen2 数据源 - 创建两个共享专用链接：一个共享专用链接的 groupID 为“dfs”，另一个共享专用链接的 groupID 为“blob”。
+> * 配置了知识存储的技能组 - 需要一个或两个共享专用链接，具体取决于为知识存储设置的投影：
+>   * 如果使用 Blob 和/或文件投影，请创建一个 groupID 为“blob”的共享专用链接。 
+>   * 如果使用表投影，请创建一个 groupID 为“table”的共享专用链接。 
+>   * 如果使用 Blob/文件投影和表投影，请创建两个共享专用链接：一个共享专用链接的 groupID 为“blob”，另一个共享专用链接的 groupID 为“table”。 
+> * 启用了缓存的索引器 - 创建两个共享专用链接：一个共享专用链接的 groupID 为“table”，另一个共享专用链接的 groupID 为“blob”。
 
 ## <a name="set-up-indexer-connection-through-private-endpoint"></a>通过专用终结点设置索引器连接
 
@@ -70,25 +76,25 @@ Azure 认知搜索通过管理 REST API 提供 [CreateOrUpdate](/rest/api/search
 
 限制访问的步骤因资源而异。 以下方案显示了三种更常见的资源类型。
 
-- 方案 1：数据源
+- 方案 1：Azure 存储
 
-    以下示例演示了如何配置 Azure 存储帐户。 若选择此选项并将页面留空，则表示不允许来自虚拟网络的流量。
+    以下示例演示如何配置 Azure 存储帐户防火墙。 若选择此选项并将页面留空，则表示不允许来自虚拟网络的流量。
 
     ![Azure 存储“防火墙和虚拟网络”窗格的屏幕截图，显示允许访问所选网络的选项。](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png)
 
 - 方案 2：Azure Key Vault
 
-    以下示例演示了如何配置 Azure Key Vault。
+    以下示例演示如何配置 Azure 密钥保管库防火墙。
  
     ![Azure　Key Vault“防火墙和虚拟网络”窗格的屏幕截图，显示允许访问所选网络的选项。](media\search-indexer-howto-secure-access\key-vault-firewall-noaccess.png)
     
 - 方案 3：Azure Functions
 
-    无需为 Azure Functions 更改网络设置。 在后续步骤中创建共享专用终结点时，在创建共享专用终结点后，Functions 将自动变为只允许通过专用链接访问。
+    无需为 Azure Functions 防火墙更改网络设置。 在后续步骤中创建共享专用终结点时，创建连接到 Functions 的共享专用终结点后，Functions 将自动变为只允许通过专用链接访问。
 
 ### <a name="step-2-create-a-shared-private-link-resource-to-the-azure-resource"></a>步骤 2：创建 Azure 资源的共享专用链接资源
 
-以下部分介绍如何使用 Azure 门户或 Azure CLI 创建共享专用链接资源。
+以下部分介绍如何使用 Azure 门户或 Azure CLI 创建共享专用链接资源。 
 
 #### <a name="option-1-portal"></a>选项 1：门户
 

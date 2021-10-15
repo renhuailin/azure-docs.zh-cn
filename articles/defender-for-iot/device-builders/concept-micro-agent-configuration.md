@@ -1,14 +1,14 @@
 ---
 title: 微代理配置（预览版）
 description: 在进行任何配置更改后，收集器会立即发送所有当前数据。 然后会应用所做的更改。
-ms.date: 08/18/2021
+ms.date: 10/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 432cf82f436e0a70b52d33d77c9002b549f96398
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 43a26a73f97c9d424998a4ff35d1304c0baf6fc0
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122398023"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428438"
 ---
 # <a name="micro-agent-configurations-preview"></a>微代理配置（预览版）
 
@@ -19,7 +19,7 @@ ms.locfileid: "122398023"
 在配置发生更改后，收集器会立即发送所有未发送的事件数据。 发送数据后，将应用所做的更改，并且所有收集器都会重启。
 
 > [!Note]
-> 支持“聚合模式”、“缓存大小”和“频率设置”，但无法对其进行配置。
+> 聚合模式的设置受支持，但不可配置。
 
 ## <a name="event-based-collectors-configurations"></a>基于事件的收集器配置
 

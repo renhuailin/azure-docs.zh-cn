@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9292ad6e167e62b27fa3b646a1b60ba7176ff87
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 46a8e61f296d430713812007b93f1b34cea8588a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367336"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811541"
 ---
 # <a name="conditional-access-resilience-defaults"></a>条件访问：复原能力默认值
 
@@ -86,7 +86,7 @@ ms.locfileid: "129367336"
 
 ### <a name="ms-graph-apis"></a>MS Graph API
 
-还可使用 MS Graph API 和 [Microsoft Graph Explorer](/graph/graph-explorer) 管理条件访问策略的复原能力默认值。 
+还可使用 MS Graph API 和 [Microsoft Graph Explorer](/graph/graph-explorer/graph-explorer-overview) 管理条件访问策略的复原能力默认值。 
 
 示例请求 URL： 
 

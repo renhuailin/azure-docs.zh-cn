@@ -4,13 +4,13 @@ description: 本文介绍如何使用更新管理功能来管理 Azure VM 和非
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/25/2021
+ms.openlocfilehash: 932f5d93c5fa67de486ddb9cabaafd68384f0db8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98915976"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357463"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>管理 VM 的更新和修补程序
 
@@ -49,6 +49,22 @@ Azure 自动化更新管理中的软件更新提供一组工具和资源，它�
 评审符合性结果后，软件更新部署阶段进入到部署软件更新的过程。 若要安装更新，请计划一个遵循你的发布时间和服务窗口的部署。 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
 
 请查看[部署软件更新](deploy-updates.md)，了解如何计划更新部署。
+
+## <a name="exclude-updates"></a>排除更新
+
+在某些 Linux 版本（例如 Red Hat Enterprise Linux）中，可以通过包执行 OS 级别的升级。 这可能会导致运行更新管理并更改 OS 版本号。 由于更新管理使用相同的方法来更新管理员将在 Linux 计算机本地使用的包，因此，此行为是有意实施的。
+
+若要避免通过更新管理部署来更新 OS 版本，可以使用“排除”功能。
+
+在 Red Hat Enterprise Linux 中，要排除的包名称为 `redhat-release-server.x86_64`。
+
+## <a name="linux-update-classifications"></a>Linux 更新分类
+
+将更新部署到 Linux 计算机时，可以选择更新分类。 该选项会筛选满足指定条件的更新。 部署更新时，会在计算机本地应用此筛选器。
+
+由于更新管理在云中执行更新扩充，因此可以将更新管理中的某些更新标记为存在安全影响，但是本地计算机上不会显示该信息。 如果向 Linux 计算机应用关键更新，可能有些更新不会被标记为对该计算机具有安全影响，因此不会应用这些更新。 但是，更新管理仍可能报告该计算机不合规，因为其中包含相关更新的其他信息。
+
+在 CentOS 的 RTM 版本上无法按更新分类部署更新。 要为 CentOS 正确部署更新，请选择所有分类以确保应用更新。 对于 SUSE，如果首先要求与 zypper（包管理器）或其依赖项相关的安全更新，则仅选择“其他更新”作为分类可以安装某些其他安全更新。 此行为是 zypper 的一项限制。 在某些情况下，可能需要重新运行更新部署，然后通过更新日志验证部署。
 
 ## <a name="review-update-deployments"></a>查看更新部署
 

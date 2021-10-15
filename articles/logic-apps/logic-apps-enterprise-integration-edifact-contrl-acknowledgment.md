@@ -8,16 +8,16 @@ ms.author: psrivas
 ms.reviewer: estfan, divswa, azla
 ms.topic: reference
 ms.date: 07/25/2021
-ms.openlocfilehash: 056538b5a6b52fcae646f5f03c6e39c8fce6429f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 8fe32a9ce7fc6d02e32c31a2e698df81857b541e
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768074"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401363"
 ---
 # <a name="contrl-acknowledgments-and-error-codes-for-edifact-messages-in-azure-logic-apps"></a>Azure 逻辑应用中 EDIFACT 消息的 CONTRL 确认和错误代码
 
-在 Azure 逻辑应用中，可以创建工作流来处理使用 EDIFACT 操作时电子数据交换 (EDI) 通信的 EDIFACT 消息。 在 EDI 消息传送中，确认会提供处理 EDI 交换的状态。 接收交换时，[EDIFACT 解码操作](logic-apps-enterprise-integration-edifact-decode.md)可以根据启用的确认类型和指定的验证级别，向发送方返回一种或多种确认类型。
+在 Azure 逻辑应用中，可以创建工作流来处理使用 EDIFACT 操作时电子数据交换 (EDI) 通信的 EDIFACT 消息。 在 EDI 消息传送中，确认会提供处理 EDI 交换的状态。 接收交换时，[EDIFACT 解码操作](logic-apps-enterprise-integration-edifact.md)可以根据启用的确认类型和指定的验证级别，向发送方返回一种或多种确认类型。
 
 本主题简要概述了 EDIFACT CONTRL 确认、交换中的 CONTRL 确认段以及这些段中使用的错误代码。
 
@@ -30,7 +30,7 @@ ms.locfileid: "122768074"
 >
 > 已接收 CONTRL 消息中的错误必须通过除 CONTRL 消息之外的其他方法进行报告。 如果包含数据消息的交换中包含一条或多条 CONTRL 消息，将会生成 CONTRL 消息来响应该交换，就如同已接收的交换中未包含任何 CONTRL 消息一样。
 
-作为技术确认，CONTRL 消息表明交换接收方收到了主题交换以及下列内容：
+作为技术确认，CONTRL 消息表明交换接收方收到了主题交换并承担以下责任：
 
 * 选中部分交换，以确认复制到报表交换响应 (UCI) 段中的数据元素的语法准确性。
 * 承担起通知发送方有关交换中其他部分的接受或拒绝情况的责任。

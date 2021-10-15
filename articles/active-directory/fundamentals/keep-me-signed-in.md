@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e27ac47426e8c3d8ff7b4b02fcdbfcf06d3a3453
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89320250"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231285"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>为 Azure AD 帐户 配置“保持登录状态？”提示
 
@@ -61,7 +61,7 @@ ms.locfileid: "89320250"
 
 为了确保 KMSI 提示只在有益于用户的情况下显示，在以下情况下我们有意不显示 KMSI 提示：
 
-* 用户是通过无缝 SSO 和集成 Windows 身份验证 (IWA) 登录的
+* 用户通过无缝 SSO 和集成 Windows 身份验证 (IWA) 登录
 * 用户是通过 Active Directory 联合身份验证服务和 IWA 登录的
 * 用户是租户中的来宾
 * 用户的风险评分高

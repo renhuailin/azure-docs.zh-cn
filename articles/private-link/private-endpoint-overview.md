@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: allensu
-ms.openlocfilehash: 0d613d7d207da8632fe7a2767d6440ee62378866
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 692bcd4900ae960928a66eaa63b02c6ddf12f2bf
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359401"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705288"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -88,6 +88,7 @@ ms.locfileid: "129359401"
 | **Azure 事件网格** | Microsoft.EventGrid/domains | 域 |
 | **Azure 事件网格** | Microsoft.EventGrid/topics  | 事件网格主题 |
 | **Azure 事件中心** | Microsoft.EventHub/namespaces | 命名空间 |
+| **Azure HDInsight** | Microsoft.HDInsight/clusters | cluster |
 | **适用于 FHIR 的 Azure API** | Microsoft.HealthcareApis/services | 服务 |
 | Azure Keyvault HSM | Microsoft.Keyvault/managedHSMs | HSM |
 | **Azure Key Vault** | Microsoft.KeyVault/vaults | 保管库 |

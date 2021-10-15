@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.openlocfilehash: 3642a48b1b8a5df9a3bc98079873415842b5c1a4
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 4cf9b739cc81e7b9641ad8a8e56d166a576020c8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727951"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230506"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划 Azure AD 应用程序代理部署
 
@@ -108,7 +108,7 @@ Azure Active Directory (Azure AD) 应用程序代理是用于本地应用程序�
 
  **访问**
 
-* 已加入域的远程用户或已加入 Azure AD 的设备用户可通过无缝单一登录 (SSO) 安全地访问已发布的应用程序。
+* 其设备已加入域或已联接 Azure AD 的远程用户可通过无缝单一登录 (SSO) 安全地访问已发布的应用程序。
 
 * 具有获批个人设备的远程用户可安全地访问已发布的应用程序，前提是这些用户已在 MFA 中注册，并且已在其移动电话中注册 Microsoft Authenticator 应用作为一种身份验证方式。
 
@@ -134,7 +134,7 @@ Azure Active Directory (Azure AD) 应用程序代理是用于本地应用程序�
 
 ### <a name="best-practices-for-a-pilot"></a>有关试点的最佳做法
 
-确定完全委派单个应用程序通过单一登录 (SSO) 进行远程访问所需的时间和工作量。 可运行一个涉及其初始发现、发布和常规测试的试点来完成此任务。 使用已针对集成 Windows 身份验证 (IWA) 进行预先配置的简单的基于 IIS 的 Web 应用程序可帮助建立基线，原因是这种设置成功试点远程访问和 SSO 所需的工作量最少。
+确定完全委派单个应用程序通过单一登录 (SSO) 进行远程访问所需的时间和工作量。 可运行一个涉及其初始发现、发布和常规测试的试点来完成此任务。 使用简单的基于 IIS 的 Web 应用程序（已针对集成 Windows 身份验证 (IWA) 进行预先配置）将有助于建立基线，原因是这种设置成功进行远程访问和 SSO 试点所需的工作量最少。
 
 以下设计元素会提高直接在生产租户中实现试点的成功率。
 

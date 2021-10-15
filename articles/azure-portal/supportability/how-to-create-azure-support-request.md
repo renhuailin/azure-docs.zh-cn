@@ -3,13 +3,13 @@ title: 如何创建 Azure 支持请求
 description: 需要协助的客户可在 Azure 门户中查找自助服务解决方案并创建和管理支持请求。
 ms.topic: how-to
 ms.custom: support-help-page
-ms.date: 09/01/2021
-ms.openlocfilehash: 768c778926024288b0d331b5cb6b60c8e9c16a57
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/30/2021
+ms.openlocfilehash: 4598cc16173100749ad3f1bdefd3165020554465
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429407"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358268"
 ---
 # <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
@@ -18,9 +18,9 @@ ms.locfileid: "123429407"
 > [!NOTE]
 > Azure 门户 URL 特定于 Azure 云，你的组织在云端部署。
 >
->* 商业用途的 Azure 门户是：[https://portal.azure.com](https://portal.azure.com)
->* 德国的 Azure 门户是：[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
->* 美国政府的 Azure 门户是：[https://portal.azure.us](https://portal.azure.us)
+>- 商业用途的 Azure 门户是：[https://portal.azure.com](https://portal.azure.com)
+>- 德国的 Azure 门户是：[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>- 美国政府的 Azure 门户是：[https://portal.azure.us](https://portal.azure.us)
 
 Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无限支持。 对于技术支持，需要支持计划。 有关详细信息，请参阅[比较支持计划](https://azure.microsoft.com/support/plans)。
 
@@ -78,7 +78,9 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 
 1. 填写问题详细信息，以便我们了解有关你的问题的详细信息。 可能的话，请提供问题开始时间及任何重现步骤。 可上传文件，例如日志文件或诊断输出内容。 有关文件上传的详细信息，请参阅[文件上传准则](how-to-manage-azure-support-request.md#file-upload-guidelines)。
 
-1. 在“共享诊断信息”部分中，选择“是”或“否”。   选择“是”将允许 Azure 支持从你的 Azure 资源收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 如果不想共享此信息，请选择“否”。 在某些情况下，将有其他选项可供选择，例如是否允许访问虚拟机的内存。
+1. 在“共享诊断信息”部分中，选择“是”或“否”。   选择“是”将允许 Azure 支持从你的 Azure 资源收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 如果不想共享此信息，请选择“否”。 有关我们可能会收集的文件类型的更多详细信息，请参阅[高级诊断信息日志](#advanced-diagnostic-information-logs)部分。
+
+  在某些情况下，可以从其他选项中进行选择。 例如，对于某些类型的虚拟机问题，可以选择是否[允许访问虚拟机的内存](#memory-dump-collection)。
 
 1. 在“支持方法”部分，选择影响程度。 最大严重性级别取决于[支持计划](https://azure.microsoft.com/support/plans)。
 
@@ -93,6 +95,29 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 创建请求之前，请查看要发送给支持人员的所有详细信息。 如果需要进行更改，可以选择“上一页”以返回到任何选项卡。 支持请求的完成情况让你满意时，请选择“创建”。
 
 支持工程师将使用你指定的方法与你联系。 要了解初始响应时间，请参阅[支持范围和响应速度](https://azure.microsoft.com/support/plans/response/)。
+
+### <a name="advanced-diagnostic-information-logs"></a>高级诊断信息日志​
+
+如果你允许收集[高级诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)，Microsoft 支持人员可以收集有助于更快解决你的问题的信息。 以下非详尽列表包括了在不同服务或环境的高级诊断信息下收集的最常见文件的示例。
+
+- [Microsoft Azure PaaS VM 日志](/troubleshoot/azure/virtual-machines/sdp352ef8720-e3ee-4a12-a37e-cc3b0870f359-windows-vm)
+- [Microsoft Azure IaaS VM 日志](https://github.com/azure/azure-diskinspect-service/blob/master/docs/manifest_by_file.md)
+- [Microsoft Azure Service Fabric 日志](/troubleshoot/azure/general/fabric-logs)
+- [StorSimple 支持包和设备日志](https://support.microsoft.com/topic/storsimple-support-packages-and-device-logs-cb0a1c7e-6125-a5a7-f212-51439781f646)
+- [Azure 虚拟机上的 SQL Server 日志](/troubleshoot/azure/general/sql-vm-logs)
+- [Azure Active Directory 日志](/troubleshoot/azure/active-directory/support-data-collection-diagnostic-logs)
+- [Azure Stack Edge 支持包和设备日志](/troubleshoot/azure/general/azure-stack-edge-support-package-device-logs)
+- [Azure Synapse Analytics 日志](/troubleshoot/azure/general/synapse-analytics-apache-spark-pools-diagnostic-logs)
+
+### <a name="memory-dump-collection"></a>内存转储收集
+
+当你为某些虚拟机 (VM) 问题类型创建支持案例时，系统会询问你是否允许支持人员访问你的虚拟机内存。 如果你允许，则我们可以收集内存转储以帮助诊断问题。
+
+完整内存转储是最大的内核模式转储文件。 此文件包括 Windows 使用的所有物理内存。 默认情况下，完整内存转储不包括平台固件使用的物理内存。
+
+转储将从计算节点（Azure 主机）复制到另一台服务器，以便在同一数据中心内进行调试。 客户数据受到保护，因为数据不会离开 Azure 的安全边界。
+
+转储文件是通过生成 VM 的 Hyper-V 保存状态创建的。 这会将 VM 暂停最长 10 分钟，然后 VM 将会恢复。 在此过程中，VM 不会重启。
 
 ## <a name="next-steps"></a>后续步骤
 

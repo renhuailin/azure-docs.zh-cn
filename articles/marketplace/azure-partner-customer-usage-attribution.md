@@ -4,14 +4,14 @@ description: 大致了解如何在商业市场以及合作伙伴开发的其他�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 04/12/2021
+ms.date: 10/04/2021
 ms.custom: devx-track-terraform, devx-track-azurepowershell
-ms.openlocfilehash: 9536002cb5c3e30f32479b74e761d7128090af26
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4c6eaf47035d78a283b4e27bf86e1550ad7279d1
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729779"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457043"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure 客户使用情况归因
 
@@ -263,7 +263,7 @@ provider "azurerm" {
 Microsoft 合作伙伴技术顾问将电话联系你，确定你的需求。
 
 ## <a name="report"></a>报表
-通过客户使用情况归因跟踪的 Azure 使用情况的报告目前对 ISV 合作伙伴不可用。 将报告添加到合作伙伴中心内的商业市场计划以涵盖客户使用情况归因的功能计划在 2021 年下半年推出。
+通过客户使用情况归因跟踪的 Azure 使用情况的报告目前对 ISV 合作伙伴不可用。 将报告添加到合作伙伴中心内的商业市场计划以涵盖客户使用情况归因的功能计划在 2022 年下半年推出。
 
 ## <a name="faq"></a>常见问题解答
 

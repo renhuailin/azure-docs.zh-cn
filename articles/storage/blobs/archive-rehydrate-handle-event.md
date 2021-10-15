@@ -10,12 +10,12 @@ ms.date: 08/11/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3ce2f92f88e24eb634222db5ffab45acaf1a5820
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 06239708293be94f13c62cab7004c7a57d00eea1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577985"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275499"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>运行 Azure 函数以响应 Blob 解除冻结事件
 
@@ -303,7 +303,7 @@ http://localhost:7071/runtime/webhooks/EventGrid?functionName={functionname}
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure Blob 存储的访问层 - 热、冷和存档](storage-blob-storage-tiers.md)
+- [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)
 - [存档层中的 Blob 解除冻结概述](archive-rehydrate-overview.md)
 - [将存档的 Blob 解冻到联机层](archive-rehydrate-to-online-tier.md)
 - [响应 Blob 存储事件](storage-blob-event-overview.md)

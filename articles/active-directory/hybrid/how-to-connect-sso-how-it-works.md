@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 883bef7f38765d45bab0f505e4ce0184dfa59356
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 2a8fd99528e9f744a69533caa5a6009203a5f4de
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110450"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232929"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 
@@ -49,7 +49,7 @@ ms.locfileid: "113110450"
 >[!IMPORTANT]
 > 无缝 SSO 支持 Kerberos 的 `AES256_HMAC_SHA1`、`AES128_HMAC_SHA1` 及 `RC4_HMAC_MD5` 加密类型。 建议将 `AzureADSSOAcc$` 帐户的加密类型设置为 `AES256_HMAC_SHA1` 或 AES 与 RC4 类型之一，以提高安全性。 加密类型存储在 Active Directory 中的 `msDS-SupportedEncryptionTypes` 帐户属性上。  如果 `AzureADSSOAcc$` 帐户加密类型设置为 `RC4_HMAC_MD5`，并且你要将其更改为 AES 加密类型之一，请确保先滚动更新 `AzureADSSOAcc$` 帐户的 Kerberos 解密密钥（如 [FAQ 文档](how-to-connect-sso-faq.yml)中的相关问题下所述），否则无缝 SSO 不会运行。
 
-完成此设置后，无缝 SSO 的工作方式与使用集成 Windows 身份验证 (IWA) 的任何其他登录方式相同。
+完成此设置后，无缝 SSO 的工作方式与使用集成 Windows 身份验证 (IWA) 的任何其他登录的工作方式相同。
 
 ### <a name="how-does-sign-in-on-a-web-browser-with-seamless-sso-work"></a>如何使用无缝 SSO 在 Web 浏览器上进行登录？
 

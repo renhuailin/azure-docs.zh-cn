@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 83a2c5bca5837919015125d6c421dccfef5bf58c
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: b88cb7baa3c8eb8d40bd23d8697f563406bd1fdb
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079440"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535022"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -58,7 +58,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 具有特权访问权限的用户可以增加对你环境的访问权限。 鉴于这些帐户具有的权利，使用时要特别小心。 增强对特权帐户保护的一种常用方法是，要求在登录时进行更强的帐户验证。 在 Azure AD 中，可以通过要求进行多重身份验证来实现更强的帐户验证。
 
-完成 Azure AD 多重身份验证注册后，每次登录以下 9 个 Azure AD 管理员角色时都需要执行额外的身份验证：
+完成 Azure AD 多重身份验证注册后，以下 Azure AD 管理员角色在每次登录时都需要进行额外的身份验证：
 
 - 全局管理员
 - 应用程序管理员

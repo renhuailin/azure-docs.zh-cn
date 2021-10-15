@@ -1,261 +1,316 @@
 ---
-title: 用于 B2B 集成的 EDIFACT 消息
-description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 EDI 格式的 EDIFACT 消息以实现 B2B 企业集成
+title: 在 B2B 工作流中交换 EDIFACT 消息
+description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 创建工作流，以便在合作伙伴之间交换 EDIFACT 消息。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 04/22/2020
-ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 09/29/2021
+ms.openlocfilehash: 19fea6a0405d1fcc4cfbc9b1aa7647c52b4459b6
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006517"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401469"
 ---
-# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 EDIFACT 消息以实现 B2B 企业集成
+# <a name="exchange-edifact-messages-using-workflows-in-azure-logic-apps"></a>使用 Azure 逻辑应用程序中的工作流交换 EDIFACT 消息
 
-在交换 Azure 逻辑应用的 EDIFACT 消息之前，必须先创建 EDIFACT 协议并将它存储在集成帐户中。 下面是创建 EDIFACT 协议的步骤。
+若要在使用 Azure 逻辑应用创建的工作流中发送和接收 EDIFACT 消息，请使用 EDIFACT 连接器，它提供用于支持和管理 EDIFACT 通信的触发器和操作。
 
-> [!NOTE]
-> 本页介绍 Azure 逻辑应用的 EDIFACT 功能。 有关详细信息，请参阅 [X12](logic-apps-enterprise-integration-x12.md)。
+本文介绍如何向现有的逻辑应用工作流添加 EDIFACT 编码和解码操作。 虽然你可以使用任何触发器来启动工作流，但示例使用的是[请求](../connectors/connectors-native-reqres.md)触发器。 有关 EDIFACT 连接器的触发器、操作和限制版本的详细信息，请查看连接器的 Swagger 文件中记录的[连接器参考页](/connectors/edifact/)。
 
-## <a name="before-you-start"></a>开始之前
+![显示包含消息解码属性的“解码 EDIFACT 消息”操作的概述屏幕截图。](./media/logic-apps-enterprise-integration-edifact/overview-edifact-message-consumption.png)
 
-下面是需要准备好的项：
+## <a name="edifact-encoding-and-decoding"></a>EDIFACT 编码和解码
 
-* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)  
-* 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+以下部分介绍可以使用 EDIFACT 编码和解码操作完成的任务。
 
-> [!NOTE]
-> 创建协议时，与合作伙伴之间相互接收或发送的消息中的内容必须与协议类型匹配。
+### <a name="encode-to-edifact-message-action"></a>编码为 EDIFACT 消息操作
 
-[创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)并[添加合作伙伴](logic-apps-enterprise-integration-partners.md)之后，可以遵循以下步骤来创建 EDIFACT 协议。
+* 通过将发送方限定符和标识符与接收方限定符和标识符进行匹配来解析协议。
 
-## <a name="create-an-edifact-agreement"></a>创建 EDIFACT 协议 
+* 序列化电子数据交换 (EDI)，它将 XML 编码的消息转换为交换中的 EDI 事务集。
 
-1. 登录到 [Azure 门户](https://portal.azure.com "Azure 门户")。 
+* 应用事务集标头和尾部段。
 
-2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。
+* 为每个传出交换生成交换控制编号、组控制编号和事务集控制编号。
 
-   ![查找集成帐户](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+* 替换有效负载数据中的分隔符。
 
-   > [!TIP]
-   > 如果未显示“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示文本标签”。
+* 验证 EDI 和特定于合作伙伴的属性，例如针对消息架构的事务集数据元素的架构、事务集数据元素，以及对事务集数据元素的扩展验证。
 
-3. 在“集成帐户”下，选择要创建协议的集成帐户。
+* 为每个事务集生成 XML 文档。
 
-   ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+* 请求技术确认和/或功能确认（如果已配置）。
 
-4. 选择“协议”。 如果未添加“协议”磁贴，请先添加该磁贴。   
+  * 作为技术确认，CONTRL 消息指示接收交换。
 
-   ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+  * 作为功能确认，CONTRL 消息指示接受或拒绝收到的交换、组或消息，包括错误或不受支持的功能列表。
 
-5. 在“协议”页上，选择“添加”。
+### <a name="decode-edifact-message-action"></a>解码 EDIFACT 消息操作
 
-   ![选择“添加”](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+* 针对贸易合作伙伴协议验证信封。
 
-6. 在“添加”下面，输入协议的 **名称**。 对于“协议类型”，请选择“EDIFACT”。  为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。   
+* 通过将发送方限定符和标识符与接收方限定符和标识符进行匹配来解析协议。
 
-   ![提供协议详细信息](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+* 当交换有多个基于协议的“接收设置”的事务时，将交换拆分为多个事务。
 
-   | 属性 | 说明 |
-   | --- | --- |
-   | 名称 |协议的名称 |
-   | 协议类型 | 应为 EDIFACT |
-   | 管理方 |协议需要有管理方和托管方。 宿主合作伙伴代表配置协议的组织。 |
-   | 管理方标识 |管理方的标识符 |
-   | 托管方 |协议需要有管理方和托管方。 托管方代表与管理方进行交易的组织。 |
-   | 托管方标识 |托管方的标识符 |
-   | 接收设置 |这些属性适用于协议接收的所有消息。 |
-   | 发送设置 |这些属性适用于协议发送的所有消息。 |
-   ||| 
+* 拆装交换。
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>配置协议如何处理收到的消息
+* 验证电子数据交换 (EDI) 和特定于合作伙伴的属性，例如交换信封结构、针对控制架构的信封架构、针对消息架构的事务集数据元素的架构，以及对事务集数据元素的扩展验证。
 
-设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的传入消息。
+* 验证交换、组和事务集控制编号不重复（如果已配置），例如：
 
-> [!IMPORTANT]
-> EDIFACT 连接器仅支持 UTF-8 字符。
-> 如果输出中包含意外的字符，请检查 EDIFACT 消息是否使用 UTF-8 字符集。
+  * 根据以前收到的交换检查交换控制编号。
 
-1. 在“添加”下面，选择“接收设置”。 
-根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
+  * 针对交换中的其他组控制编号检查组控制编号。
 
-   “接收设置”划分为以下部分：“标识符”、“确认”、“架构”、“控制编号”、“验证”和“内部设置”。
+  * 针对该组中的其他事务集控制编号检查事务集控制编号。
 
-   ![配置“接收设置”](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+* 将交换拆分为事务集，或保留整个交换，例如：
 
-2. 完成后，请务必选择“确定”保存设置。
+  * 将交换拆分为事务集 - 出错时暂停事务集。
 
-协议现已准备就绪，可以处理符合所选设置的传入消息。
+    解码操作将交换拆分为事务集并分析每个事务集。 该操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
 
-### <a name="identifiers"></a>标识符
+  * 将交换拆分为事务集 - 出错时暂停交换。
 
-| 属性 | 说明 |
-| --- | --- |
-| UNB6.1 (收件人引用密码) |输入范围在 1 到 14 个字符之间的字母数字值。 |
-| UNB6.2 (收件人引用限定符) |输入包含最少一个字符且最多二个字符的字母数字值。 |
+    解码操作将交换拆分为事务集并分析每个事务集。 如果交换中的一个或多个事务集未能通过验证，该操作会将该交换中的所有事务集输出到 `badMessages`。
 
-### <a name="acknowledgments"></a>致谢
+  * 保留交换 - 出错时暂停事务集。
 
-| 属性 | 说明 |
-| --- | --- |
-| 接收消息(CONTRL) |选中此复选框可向交换发送方返回技术 (CONTRL) 确认。 该确认会基于协议的“发送设置”发送给交换发送方。 |
-| 确认(CONTRL) |选中此复选框可向交换发送方返回功能 (CONTRL) 确认。该确认会基于协议的“发送设置”发送给交换发送方。 |
+    解码操作会保留交换并处理整个批处理交换。 该操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
 
-### <a name="schemas"></a>架构
+  * 保留交换 - 出错时暂停交换。
 
-| 属性 | 说明 |
-| --- | --- |
-| UNH2.1 (类型) |选择事务集类型。 |
-| UNH2.2 (版本) |输入消息版本号。 （最少一个字符；最多三个字符）。 |
-| UNH2.3 (发布) |输入消息发布号。 （最少一个字符；最多三个字符）。 |
-| UNH2.5 (协会分配的代码) |输入分配的代码。 （最多六个字符。 必须是字母数字）。 |
-| UNG2.1 (应用发送方 ID) |输入包含最少一个字符且最多 35 个字符的字母数字值。 |
-| UNG2.2 (应用发送方代码限定符) |输入包含最多四个字符的字母数字值。 |
-| SCHEMA |从关联的集成帐户中选择要使用的以前上传的架构。 |
-
-### <a name="control-numbers"></a>控制编号
+    解码操作会保留交换并处理整个批处理交换。 如果交换中的一个或多个事务集未能通过验证，该操作会将该交换中的所有事务集输出到 `badMessages`。
 
-| 属性 | 说明 |
-| --- | --- |
-| 不允许交换控制编号重复项 |若要阻止重复交换，请选择此属性。 如果选中，则 EDIFACT 解码操作会检查收到的交换的交换控制编号 (UNB5) 是否与以前处理的交换控制编号不匹配。 如果检测到匹配项，则不处理交换。 |
-| 检查重复的 UNB5 的时间间隔为每(天) |如果选择禁止重复的交换控制编号，可以通过为此设置提供适当的值，来指定执行检查的间隔天数。 |
-| 不允许组合控制编号重复项 |若要阻止具有重复组控制编号 (UNG5) 的交换，请选择此属性。 |
-| 不允许事务集控制编号重复项 |若要阻止具有重复事务集控制编号 (UNH1) 的交换，请选择此属性。 |
-| EDIFACT 确认控制编号 |若要指定要在确认中使用的事务集引用编号，请为前缀、引用编号的范围和后缀输入值。 |
+* 生成技术确认和/或功能确认（如果已配置）。
 
-### <a name="validation"></a>验证
+  * 技术确认或 CONTRL ACK，报告收到的完整交换的语法检查结果。
 
-完成每个验证行后，会自动添加另一行。 如果未指定任何规则，验证将使用“默认”行。
-
-| 属性 | 说明 |
-| --- | --- |
-| 消息类型 |选择 EDI 消息类型。 |
-| EDI 验证 |根据架构的 EDI 属性、长度限制、空数据元素和尾部分隔符的定义，对数据类型执行 EDI 验证。 |
-| 扩展验证 |如果数据类型不是 EDI，则验证会基于数据元素要求，以及允许重复、枚举和数据元素长度验证（最小/最大）。 |
-| 允许前导零/尾随零 |保留所有前导或尾随零和空格字符。 不要删除这些字符。 |
-| 剪裁前导零/尾随零 |删除前导或尾随零和空格字符。 |
-| 尾部分隔符策略 |生成尾部分隔符。 <p>选择“不允许”会禁止在接收的交换中包含尾部分隔符。 如果交换包含尾部分隔符，会将它声明为无效。 <p>选择“可选”可接受包含或不包含尾部分隔符的交换。 <p>如果接收的交换必须包含尾部分隔符，请选择“强制”。 |
-
-### <a name="internal-settings"></a>内部设置
-
-| 属性 | 说明 |
-| --- | --- |
-| 如果允许尾随分隔符，请创建空的 XML 标记 |选中此复选框可使交换发送方包含用于尾随分隔符的空 XML 标记。 |
-| 将交换拆分为事务集 - 出错时暂停事务集|通过将相应信封应用于事务集，将交换中的每个事务集分析为单独 XML 文档。 仅暂停未通过验证的事务集。 |
-| 将交换拆分为事务集 - 出错时暂停交换|通过应用相应信封，将交换中的每个事务集分析为单独 XML 文档。 如果交换中的一个或多个事务集未能通过验证，则暂停整个交换。 | 
-| 保留交换 - 出错时暂停事务集 |保留交换不变，为整个批处理交换创建 XML 文档。 仅暂停未能通过验证的事务集，同时继续处理所有其他事务集。 |
-| 保留交换 - 出错时暂停交换 |保留交换不变，为整个批处理交换创建 XML 文档。 如果交换中的一个或多个事务集未能通过验证，则暂停整个交换。 |
-
-## <a name="configure-how-your-agreement-sends-messages"></a>配置协议如何发送消息
-
-可以配置此协议如何识别和处理发送给合作伙伴的传出消息。
-
-1.  在“添加”下面，选择“发送设置”。 
-根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
-
-    “发送设置”划分为以下部分：“标识符”、“确认”、“架构”、“字符集和分隔符”、“控制编号”和“验证”。
-
-    ![配置“发送设置”](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
-
-2. 完成后，请务必选择“确定”保存设置。
-
-协议现已准备就绪，可以处理符合所选设置的传出消息。
-
-### <a name="identifiers"></a>标识符
-
-| 属性 | 说明 |
-| --- | --- |
-| UNB1.2 (语法版本) |选择介于 **1** 和 **4** 之间的值。 |
-| UNB2.3 (发件人反向路由地址) |输入包含最少一个字符且最多 14 个字符的字母数字值。 |
-| UNB3.3 (收件人反向路由地址) |输入包含最少一个字符且最多 14 个字符的字母数字值。 |
-| UNB6.1 (收件人引用密码) |输入包含最少一个字符且最多 14 个字符的字母数字值。 |
-| UNB6.2 (收件人引用限定符) |输入包含最少一个字符且最多二个字符的字母数字值。 |
-| UNB7 (应用程序引用 ID) |输入包含最少一个字符且最多 14 个字符的字母数字值 |
-
-### <a name="acknowledgment"></a>确认
-
-| 属性 | 说明 |
-| --- | --- |
-| 接收消息(CONTRL) |如果宿主合作伙伴预期收到技术 (CONTRL) 确认，请选中此复选框。 此设置指定发送消息的主机合作伙伴从来宾合作伙伴请求确认。 |
-| 确认(CONTRL) |如果主机合作伙伴期望收到功能 (CONTRL) 确认，则选中此复选框。 此设置指定发送消息的主机合作伙伴从来宾合作伙伴请求确认。 |
-| 为已接受的事务集生成 SG1/SG4 循环 |如果选择请求功能确认，则选中此复选框可强制为已接受的事务集在功能 CONTRL 确认中生成 SG1/SG4 循环。 |
-
-### <a name="schemas"></a>架构
-
-| 属性 | 说明 |
-| --- | --- |
-| UNH2.1 (类型) |选择事务集类型。 |
-| UNH2.2 (版本) |输入消息版本号。 |
-| UNH2.3 (发布) |输入消息发布号。 |
-| SCHEMA |选择要使用的架构。 架构位于集成帐户中。 要访问架构，请先将集成帐户链接到逻辑应用。 |
-
-### <a name="envelopes"></a>信封
-
-| 属性 | 说明 |
-| --- | --- |
-| UNB8 (Processing Priority Code) |输入长度不超过一个字符的字母数字值。 |
-| UNB10 (通信协议) |输入包含最少一个字符且最多 40 个字符的字母数字值。 |
-| UNB11 (测试指示器) |选中此复选框可指示生成的交换是测试数据 |
-| 应用 UNA 段(服务字符串建议) |选中此复选框可为要发送的交换生成 UNA 段。 |
-| 应用 UNG 段(功能组标头) |选中此复选框可在发送给来宾合作伙伴的消息的功能组标头中创建分组段。 以下值用于创建 UNG 段： <p>对于“UNG1”，输入包含最少一个字符且最多六个字符的字母数字值。 <p>对于“UNG2.1”，输入包含最少一个字符且最多 35 个字符的字母数字值。 <p>对于“UNG2.2”，输入包含最多四个字符的字母数字值。 <p>对于“UNG3.1”，输入包含最少一个字符且最多 35 个字符的字母数字值。 <p>对于“UNG3.2”，输入包含最多四个字符的字母数字值。 <p>对于“UNG6”，输入包含最少一个字符且最多三个字符的字母数字值。 <p>对于“UNG7.1”，输入包含最少一个字符且最多三个字符的字母数字值。 <p>对于“UNG7.2”，输入包含最少一个字符且最多三个字符的字母数字值。 <p>对于“UNG7.3”，输入包含最少 1 个字符且最多 6 个字符的字母数字值。 <p>对于“UNG8”，输入包含最少一个字符且最多 14 个字符的字母数字值。 |
-
-### <a name="character-sets-and-separators"></a>字符集和分隔符
-
-除了字符集，可以输入要用于每种消息类型的不同分隔符集。 如果没有为给定消息架构指定字符集，则使用默认字符集。
-
-| 属性 | 说明 |
-| --- | --- |
-| UNB1.1 (系统标识符) |选择要应用于传出交换的 EDIFACT 字符集。 |
-| 架构 |从下拉列表中选择架构。 完成每行后，会自动添加新行。 对于所选的架构，请根据以下分隔符说明选择要使用的分隔符集。 |
-| 输入类型 |从下拉列表中选择输入类型。 |
-| 组件分隔符 |若要分隔复合数据元素，请输入单个字符。 |
-| 数据元素分隔符 |若要分隔复合数据元素中的简单数据元素，请输入单个字符。 |
-| 段终止符 |若要指示 EDI 段的结尾，请输入单个字符。 |
-| Suffix |选择与段标识符一起使用的字符。 如果指定了后缀，则段终止符数据元素可以为空。 如果段终止符保留为空，则必须指定后缀。 |
-
-### <a name="control-numbers"></a>控制编号
-
-| 属性 | 说明 |
-| --- | --- |
-| UNB5 (交换控制编号) |输入前缀、交换控制编号的值范围和后缀。 这些值用于生成传出交换。 前缀和后缀是可选的，而控制编号是必需的。 控制编号对于每个新消息递增；前缀和后缀保持不变。 |
-| UNG5 (组控制编号) |输入前缀、交换控制编号的值范围和后缀。 这些值用于生成组控制编号。 前缀和后缀是可选的，而控制编号是必需的。 控制编号对于每个新消息递增，直到达到最大值；前缀和后缀保持不变。 |
-| UNH1 (消息标头引用编号) |输入前缀、交换控制编号的值范围和后缀。 这些值用于生成消息标头引用编号。 前缀和后缀是可选的，而引用编号是必需的。 引用编号对于每个新消息递增；前缀和后缀保持不变。 |
-
-### <a name="validation"></a>验证
-
-完成每个验证行后，会自动添加另一行。 如果未指定任何规则，验证将使用“默认”行。
-
-| 属性 | 说明 |
-| --- | --- |
-| 消息类型 |选择 EDI 消息类型。 |
-| EDI 验证 |根据架构的 EDI 属性、长度限制、空数据元素和尾部分隔符的定义，对数据类型执行 EDI 验证。 |
-| 扩展验证 |如果数据类型不是 EDI，则验证会基于数据元素要求，以及允许重复、枚举和数据元素长度验证（最小/最大）。 |
-| 允许前导零/尾随零 |保留所有前导或尾随零和空格字符。 不要删除这些字符。 |
-| 剪裁前导零/尾随零 |删除前导或尾随零字符。 |
-| 尾部分隔符策略 |生成尾部分隔符。 <p>选择“不允许”会禁止在发送的交换中包含尾部分隔符。 如果交换包含尾部分隔符，会将它声明为无效。 <p>选择“可选”可发送包含或不包含尾部分隔符的交换。 <p>如果发送的交换必须包含尾部分隔符，请选择“强制”。 |
-
-## <a name="find-your-created-agreement"></a>查找创建的协议
-
-1.  设置完所有协议属性后，请在“添加”页中选择“确定”来完成创建协议，并返回到集成帐户。 
-
-    新添加的协议随即会出现在“协议”列表中。
-
-2.  还可以在集成帐户概述中查看协议。 在集成帐户菜单中选择“概述”，并选择“协议”磁贴。  
-
-    ![显示“协议”磁贴的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+  * 确认接受或拒绝接收的交换或组的功能确认。
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术方面的详细信息，例如操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/edifact/)。
+有关 EDIFACT 连接器的技术信息，请查看[连接器参考页](/connectors/edifact/)，其中介绍了连接器的 Swagger 文件中记录的触发器、操作和限制。 此外，若要了解在[多租户 Azure 逻辑应用、单租户 Azure 逻辑应用或集成服务环境 (ISE)](logic-apps-overview.md#resource-environment-differences) 中运行的工作流，请查看 [B2B 协议的消息大小限制](logic-apps-limits-and-config.md#b2b-protocol-limits)。 例如，在[集成服务环境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) 中，此连接器的 ISE 版本使用 [ISE 的 B2B 消息限制](logic-apps-limits-and-config.md#b2b-protocol-limits)。
 
-> [!NOTE]
-> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 的 B2B 消息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
+## <a name="prerequisites"></a>先决条件
+
+* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+* 一个可以在其中定义和存储项目（如贸易合作伙伴、协议、证书等）的[集成帐户资源](logic-apps-enterprise-integration-create-integration-account.md)，用于企业集成和 B2B 工作流。 此资源必须满足以下要求：
+
+  * 与逻辑应用资源所在的同一个 Azure 订阅相关联。
+
+  * 与逻辑应用资源位于同一个位置或 Azure 区域。
+
+  * 使用[“逻辑应用（消耗）”资源类型](logic-apps-overview.md#resource-environment-differences)和 EDIFACT 操作时，逻辑应用资源不需要链接到你的集成帐户 。 但是，仍需使用此帐户来存储合作伙伴、协议和证书等项目，以及使用 EDIFACT、[X12](logic-apps-enterprise-integration-x12.md) 或 [AS2](logic-apps-enterprise-integration-as2.md) 操作。 集成帐户仍必须满足其他要求，例如，使用相同的 Azure 订阅并与逻辑应用资源存在于同一位置。
+
+  * 使用[“逻辑应用(标准)”资源类型](logic-apps-overview.md#resource-environment-differences)和 EDIFACT 操作时，工作流需要连接到你在添加 AS2 操作时直接从工作流创建的集成帐户 。
+
+* 集成帐户中至少有两个[贸易合作伙伴](logic-apps-enterprise-integration-partners.md)。 这两个合作伙伴的定义必须使用相同的业务标识限定符，在此方案中为“ZZZ - 双方约定”。
+
+* 参与工作流的贸易合作伙伴之间的 [EDIFACT 协议](logic-apps-enterprise-integration-agreements.md)存在于你的集成帐户中。 每个协议需要指定主机和来宾合作伙伴。 你与其他合作伙伴之间的消息中的内容必须与协议类型匹配。
+
+  > [!IMPORTANT]
+  > EDIFACT 连接器仅支持 UTF-8 字符。 如果输出中包含意外的字符，请检查 EDIFACT 消息是否使用 UTF-8 字符集。
+
+* 要在其中使用 EDIFACT 操作的逻辑应用资源和工作流。
+
+  如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)。
+
+<a name="encode"></a>
+
+## <a name="encode-edifact-messages"></a>为 EDIFACT 消息编码
+
+### <a name="consumption"></a>[消耗](#tab/consumption)
+
+1. 在 [Azure 门户](https://portal.azure.com)的设计器中，打开你的逻辑应用资源和工作流。
+
+1. 在设计器上，在要添加 EDIFACT 操作的触发器或操作下，选择“新建步骤”。
+
+1. 在“选择操作”搜索框中，选择“所有” 。 在搜索框中输入 `edifact encode`。 对于此示例，请选择名为“按协议名称编码为 EDIFACT 消息”的操作。
+
+   ![显示 Azure 门户、工作流设计器，以及处于选中状态的“按协议名称编码为 EDIFACT 消息”操作的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/select-encode-edifact-message-consumption.png)
+
+   > [!NOTE]
+   > 你可以选择“按标识编码为 EDIFACT 消息”操作，但是以后必须提供其他值，例如 EDIFACT 协议指定的“发送方标识符”和“接收方标识符”。 你还必须指定“要编码的 XML 消息”，该消息可以是触发器的输出，也可以是前面操作的输出。
+
+1. 当系统提示创建与集成帐户的连接时，请提供以下信息：
+
+   | 属性 | 必须 | 说明 |
+   |----------|----------|-------------|
+   | **连接名称** | 是 | 连接名称 |
+   | 集成帐户 | 是 | 从可用的集成帐户列表中，选择要使用的帐户。 |
+   ||||
+
+   例如：
+
+   ![显示“按协议名称编码为 EDIFACT 消息”连接窗格的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/create-edifact-encode-connection-consumption.png)
+
+1. 完成操作后，选择“创建”。
+
+1. 在设计器上显示 EDIFACT 操作后，提供特定于此操作的以下属性的信息：
+
+   | 属性 | 必须 | 说明 |
+   |----------|----------|-------------|
+   | EDIFACT 协议的名称 | 是 | 要使用的 EDIFACT 协议。 |
+   | 要编码的 XML 消息 | 是 | EDIFACT 协议指定的消息发送方的业务标识符 |
+   | 其他参数 | 否 | 此操作包括以下其他参数： <p>- 数据元素分隔符 <br>- 转义指示器 <br>- 组件分隔符 <br>- 重复分隔符 <br>- 段终止符 <br>- 段终止符后缀 <br>- 十进制指示器 <p>有关详细信息，请查看 [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact-message-settings.md)。 |
+   ||||
+
+   例如，XML 消息有效负载可以是从“请求”触发器输出的“正文”内容：
+
+   ![显示带有消息编码属性的“按协议名称编码为 EDIFACT 消息”操作的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/encode-edifact-message-agreement-consumption.png)
+
+### <a name="standard"></a>[标准](#tab/standard)
+
+1. 在 [Azure 门户](https://portal.azure.com)的设计器中，打开你的逻辑应用资源和工作流。
+
+1. 在设计器上，在要添加 EDIFACT 操作的触发器或操作下，选择“插入新步骤”（加号），然后选择“添加操作” 。
+
+1. 在“选择操作”搜索框中，选择“Azure” 。 在搜索框中输入 `edifact encode`。 选择名为“按协议名称编码为 EDIFACT 消息”的操作。
+
+   ![显示 Azure 门户、工作流设计器，以及处于选中状态的“按协议名称编码为 EDIFACT 消息”操作的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/select-encode-edifact-message-standard.png)
+
+   > [!NOTE]
+   > 你可以选择“按标识编码为 EDIFACT 消息”操作，但是以后必须提供其他值，例如 EDIFACT 协议指定的“发送方标识符”和“接收方标识符”。 你还必须指定“要编码的 XML 消息”，该消息可以是触发器的输出，也可以是前面操作的输出。
+
+1. 当系统提示创建与集成帐户的连接时，请提供以下信息：
+
+   | 属性 | 必须 | 说明 |
+   |----------|----------|-------------|
+   | **连接名称** | 是 | 连接名称 |
+   | 集成帐户 | 是 | 从可用的集成帐户列表中，选择要使用的帐户。 |
+   ||||
+
+   例如：
+
+   ![显示“按参数名称编码为 EDIFACT 消息”连接窗格的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/create-edifact-encode-connection-standard.png)
+
+1. 完成操作后，选择“创建”。
+
+1. 设计器上显示了 EDIFACT 详细信息窗格后，请提供以下属性的信息：
+
+   | 属性 | 必须 | 说明 |
+   |----------|----------|-------------|
+   | EDIFACT 协议的名称 | 是 | 要使用的 EDIFACT 协议。 |
+   | 要编码的 XML 消息 | 是 | EDIFACT 协议指定的消息发送方的业务标识符 |
+   | 其他参数 | 否 | 此操作包括以下其他参数： <p>- 数据元素分隔符 <br>- 转义指示器 <br>- 组件分隔符 <br>- 重复分隔符 <br>- 段终止符 <br>- 段终止符后缀 <br>- 十进制指示器 <p>有关详细信息，请查看 [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact-message-settings.md)。 |
+   ||||
+
+   例如，消息有效负载是从“请求”触发器输出的“正文”内容：
+
+   ![显示带有消息编码属性的“按参数名称编码为 EDIFACT 消息”操作的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/encode-edifact-message-agreement-standard.png)
+
+---
+
+<a name="decode"></a>
+
+## <a name="decode-edifact-messages"></a>为 EDIFACT 消息解码
+
+### <a name="consumption"></a>[消耗](#tab/consumption)
+
+1. 在 [Azure 门户](https://portal.azure.com)的设计器中，打开你的逻辑应用资源和工作流。
+
+1. 在设计器上，在要添加 EDIFACT 操作的触发器或操作下，选择“新建步骤”。
+
+1. 在“选择操作”搜索框中，选择“所有” 。 在搜索框中输入 `edifact encode`。 选择名为“解码 EDIFACT 消息”的操作。
+
+1. 当系统提示创建与集成帐户的连接时，请提供以下信息：
+
+   | 属性 | 必须 | 说明 |
+   |----------|----------|-------------|
+   | **连接名称** | 是 | 连接名称 |
+   | 集成帐户 | 是 | 从可用的集成帐户列表中，选择要使用的帐户。 |
+   ||||
+
+   例如：
+
+   ![显示“解码 EDIFACT 消息”连接窗格的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/create-edifact-decode-connection-consumption.png)
+
+1. 完成操作后，选择“创建”。
+
+1. 在设计器上显示 EDIFACT 操作后，提供特定于此操作的以下属性的信息：
+
+   | 属性 | 必须 | 说明 |
+   |----------|----------|-------------|
+   | 要解码的 EDIFACT 平面文件消息 | 是 | 要解码的 XML 平面文件消息。 |
+   | 其他参数 | 否 | 此操作包括以下其他参数： <p>- 组件分隔符 <br>- 数据元素分隔符 <br>- 转义指示器 <br>- 重复分隔符 <br>- 段终止符 <br>- 段终止符后缀 <br>- 十进制指示器 <br>- 有效负载字符集 <br>- 段终止符后缀 <br>- 保留交换 <br>- 出错时挂起交换 <p>有关详细信息，请查看 [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact-message-settings.md)。 |
+   ||||
+
+   例如，要解码的 XML 消息有效负载可以是从“请求”触发器输出的“正文”内容：
+
+   ![显示包含消息解码属性的“解码 EDIFACT 消息”操作的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/decode-edifact-message-consumption.png)
+
+### <a name="standard"></a>[标准](#tab/standard)
+
+1. 在 [Azure 门户](https://portal.azure.com)的设计器中，打开你的逻辑应用资源和工作流。
+
+1. 在设计器上，在要添加 EDIFACT 操作的触发器或操作下，选择“插入新步骤”（加号），然后选择“添加操作” 。
+
+1. 在“选择操作”搜索框中，选择“Azure” 。 在搜索框中输入 `edifact encode`。 选择名为“解码 EDIFACT 消息”的操作。
+
+   ![显示 Azure 门户、工作流设计器，以及处于选中状态的“解码 EDIFACT 消息”操作的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/select-decode-edifact-message-standard.png)
+
+1. 当系统提示创建与集成帐户的连接时，请提供以下信息：
+
+   | 属性 | 必须 | 说明 |
+   |----------|----------|-------------|
+   | **连接名称** | 是 | 连接名称 |
+   | 集成帐户 | 是 | 从可用的集成帐户列表中，选择要使用的帐户。 |
+   ||||
+
+   例如：
+
+   ![显示“解码 EDIFACT 消息”连接窗格的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/create-edifact-decode-connection-standard.png)
+
+1. 完成操作后，选择“创建”。
+
+1. 设计器上显示了 EDIFACT 详细信息窗格后，请提供以下属性的信息：
+
+   | 属性 | 必须 | 说明 |
+   |----------|----------|-------------|
+   | EDIFACT 协议的名称 | 是 | 要使用的 EDIFACT 协议。 |
+   | 要编码的 XML 消息 | 是 | EDIFACT 协议指定的消息发送方的业务标识符 |
+   | 其他参数 | 否 | 此操作包括以下其他参数： <p>- 数据元素分隔符 <br>- 转义指示器 <br>- 组件分隔符 <br>- 重复分隔符 <br>- 段终止符 <br>- 段终止符后缀 <br>- 十进制指示器 <p>有关详细信息，请查看 [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact-message-settings.md)。 |
+   ||||
+
+   例如，消息有效负载是从“请求”触发器输出的“正文”内容：
+
+   ![显示包含消息解码属性的“解码 EDIFACT 消息”操作的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/decode-edifact-message-standard.png)
+
+---
+
+## <a name="handle-unh25-segments-in-edifact-documents"></a>处理 EDIFACT 文档中的 UNH2.5 段
+
+在 EDIFACT 文档中，[UNH2.5 段](logic-apps-enterprise-integration-edifact-message-settings.md#receive-settings-schemas)用于架构查找。 例如，在此示例 EDIFACT 消息中，UNH 字段为 `EAN008`：
+
+`UNH+SSDD1+ORDERS:D:03B:UN:EAN008`
+
+若要处理 EDIFACT 文档或处理具有 UN2.5 段的 EDIFACT 消息，请执行以下步骤：
+
+1. 更新或部署具有 UNH2.5 根节点名称的架构。
+
+   例如，假设示例 UNH 字段的架构根名称为 `EFACT_D03B_ORDERS_EAN008`。 对于具有不同 UNH2.5 段的每个 `D03B_ORDERS`，需要部署单个架构。
+
+1. 在 [Azure 门户](https://portal.azure.com)中，根据你使用的是“逻辑应用（消耗）”还是“逻辑应用（标准）”资源类型，分别将架构添加到集成帐户资源或逻辑应用资源中。
+
+1. 无论是使用 EDIFACT 解码操作还是编码操作，请上传架构，并分别在 EDIFACT 协议的“接收设置”或“发送设置”中设置架构设置。
+
+1. 若要编辑 EDIFACT 协议，请在“协议”窗格中选择协议。 在“协议”窗格的工具栏上，选择“编辑为 JSON”。
+
+   * 在协议的 `receiveAgreement` 部分中，找到 `schemaReferences` 部分，并添加 UNH2.5 值。
+
+     ![显示 Azure 门户的屏幕截图，其中 EDIFACT 协议的“receiveAgreement”部分在 JSON 编辑器中，且“schemaReferences”部分突出显示。](./media/logic-apps-enterprise-integration-edifact/agreement-receive-schema-references.png)
+
+   * 在协议的 `sendAgreement` 部分中，找到 `schemaReferences` 部分，并添加 UNH2.5 值。
+
+     ![显示 Azure 门户的屏幕截图，其中 EDIFACT 协议的“sendAgreement”部分在 JSON 编辑器中，且“schemaReferences”部分突出显示。](./media/logic-apps-enterprise-integration-edifact/agreement-send-schema-references.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+* [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact-message-settings.md)

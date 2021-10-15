@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: cd4dcb4bac5f2876db9af194abc5835c1d0f5a3c
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 4fb5bcc0ae5be35f740bc39bc0cf4a9221363358
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586970"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274361"
 ---
 # <a name="manage-your-cache"></a>管理缓存
 
@@ -35,7 +35,7 @@ Azure 门户中的缓存概述页面显示了缓存的项目详细信息、缓�
 在下面阅读有关这些选项的详细信息。
 
 > [!TIP]
-> 还可以管理单个存储目标 - 有关详细信息，请阅读[管理存储目标](manage-storage-targets.md)。
+> 还可以管理单个存储目标 - 有关详细信息，请阅读[查看和管理存储目标](manage-storage-targets.md)。
 
 单击下面的图像，观看演示缓存管理任务的[视频](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)。
 

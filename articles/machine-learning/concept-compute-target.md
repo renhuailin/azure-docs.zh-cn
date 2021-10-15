@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: bb7baa20b5bc7e47e231e3e15937dde941ac0e03
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5e1d4675e7e99410471951c21d7e8112cf6839c5
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608256"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275005"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -93,10 +93,13 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 | [EAv4](../virtual-machines/eav4-easv4-series.md) | 无。 | 内存优化 | 计算群集和实例 |
 | [Ev3](../virtual-machines/ev3-esv3-series.md) | 无。 | 内存优化 | 计算群集和实例 |
 | [FSv2](../virtual-machines/fsv2-series.md) | 无。 | 计算优化 | 计算群集和实例 |
+| [FX](../virtual-machines/fx-series.md) | 需要审批。 | 计算优化 | 计算群集 |
 | [H](../virtual-machines/h-series.md) | 无。 | 高性能计算 | 计算群集和实例 |
 | [HB](../virtual-machines/hb-series.md) | 需要审批。 | 高性能计算 | 计算群集和实例 |
 | [HBv2](../virtual-machines/hbv2-series.md) | 需要审批。 |  高性能计算 | 计算群集和实例 |
+| [HBv3](../virtual-machines/hbv3-series.md) | 需要审批。 |  高性能计算 | 计算群集和实例 |
 | [HC](../virtual-machines/hc-series.md) | 需要审批。 |  高性能计算 | 计算群集和实例 |
+| [LSv2](../virtual-machines/lsv2-series.md) | 无。 |  存储优化 | 计算群集和实例 |
 | [M](../virtual-machines/m-series.md) | 需要审批。 | 内存优化 | 计算群集和实例 |
 | [NC](../virtual-machines/nc-series.md) | 无。 |  GPU | 计算群集和实例 |
 | [NC 促销](../virtual-machines/nc-series.md) | 无。 | GPU | 计算群集和实例 |

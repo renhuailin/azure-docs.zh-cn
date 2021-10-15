@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/14/2021
 ms.author: memildin
-ms.openlocfilehash: fa7076882370b404ea7b1e04cb5c364f22c35fae
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2fc8c04cbe86737d924a1e61e8a2b3808082b7c9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648461"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351717"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>保护本地和多云环境中运行的已启用 Azure Arc 的 Kubernetes 群集
 
@@ -49,6 +49,7 @@ Azure Defender for Kubernetes 群集扩展使用为 Azure Kubernetes 服务群�
 部署扩展之前，请确保：
 - [将 Kubernetes 群集连接到 Azure Arc](../azure-arc/kubernetes/quickstart-connect-cluster.md)
 - 完成[通用群集扩展文档中列出的先决条件](../azure-arc/kubernetes/extensions.md#prerequisites)。
+- 具有 [Helm 3](https://helm.sh/docs/intro/install) 版本 3.7.0 或更高版本
 - 在以下终结点上配置“端口 443”用于出站访问：
     - 对于 Azure 政府云上的群集：
         - *.ods.opinsights.azure.us

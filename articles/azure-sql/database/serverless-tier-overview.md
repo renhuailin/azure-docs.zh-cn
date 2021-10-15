@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: mathoma, wiassaf
-ms.date: 7/29/2021
-ms.openlocfilehash: ac1241b28ae85f19aa4bfdbc1a92310b64d88462
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/28/2021
+ms.openlocfilehash: cc9c0f35be998e8ef3947946c84bc67a94f125cb
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745756"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235623"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 在无服务器数据库和预配的计算数据库中，如果使用了所有可用内存，则可能会逐出缓存条目。
 
-当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，在内存回收之前，可能会有其他延迟，因为后台进程会定期响应先前的用户活动。  例如，删除操作和查询存储清除任务会生成标记为“删除”的虚影记录，但该记录不会被物理删除，直到虚影清除进程运行为止。 虚影清除可能涉及将其他数据页读入缓存。
+在 CPU 利用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，在内存回收之前，可能会有其他延迟，因为后台进程会定期响应先前的用户活动。  例如，删除操作和查询存储清除任务会生成标记为待删除的虚影记录，但该记录不会被物理删除，直至虚影清除进程运行为止。 虚影清除可能涉及将其他数据页读入缓存。
 
 #### <a name="cache-hydration"></a>缓存合成
 
@@ -110,7 +110,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 如果在自动暂停延迟的时间段内，下面的所有条件均成立，则会触发自动暂停：
 
 - 会话数 = 0
-- CPU = 0（对于在用户资源池中运行的用户工作负载）
+- CPU = 0（对于在用户资源池中运行的用户工作负荷）
 
 如有需要，系统也提供了禁用自动暂停的选项。
 
@@ -120,13 +120,13 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 - [长期备份保留](long-term-retention-overview.md) (LTR)。
 - [SQL 数据同步](sql-data-sync-data-sql-server-sql-database.md)中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
 - 为包含无服务器数据库的逻辑服务器创建的 [DNS 别名](dns-alias-overview.md)。
-- [弹性作业（预览版）](elastic-jobs-overview.md)，当作业数据库是无服务器数据库时。 弹性作业面向的数据库支持自动暂停，并将通过作业连接恢复。
+- [弹性作业（预览版）](elastic-jobs-overview.md)（当作业数据库是无服务器数据库时）。 弹性作业针对的数据库支持自动暂停，会通过作业连接进行恢复。
 
 在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
 
 #### <a name="auto-pause-troubleshooting"></a>自动暂停故障排除
 
-如果启用了自动暂停，但数据库在延迟期后未自动暂停，并且未使用上面列出的功能，可能是应用程序或用户在阻止自动暂停。 要查看当前是否有任何应用程序或用户会话连接到数据库，请使用任何客户端工具连接到数据库，然后执行以下查询：
+如果启用了自动暂停，但数据库在延迟期后未自动暂停，并且未使用上面列出的功能，那么，可能是应用程序或用户会话在阻止自动暂停。 若要查看当前是否有任何应用程序或用户会话连接到数据库，请使用任何客户端工具连接到数据库，然后执行以下查询：
 
 ```sql
 SELECT session_id,
@@ -155,13 +155,13 @@ WHERE s.session_id <> @@SPID
 ```
 
 > [!TIP]
-> 运行查询后，确保断开与数据库的连接。 否则，查询所使用的打开会话将阻止自动暂停。
+> 在运行查询后，请确保断开与数据库的连接。 否则，查询所使用的已打开会话会阻止自动暂停。
 
 如果结果集不为空，则表示当前有会话阻止自动暂停。 
 
-如果结果集为空，则会话仍有可能在自动暂停延迟期间更早的某个时间点暂时打开。 要查看此类活动是否在延迟期间发生，可以使用 [Azure SQL 审核](auditing-overview.md)并检查相关时间段内的审核数据。
+如果结果集为空，则会话仍有可能已在自动暂停延迟期间较早的某个时间点暂时打开。 若要查看延迟期间是否发生了此类活动，可以使用 [Azure SQL 审核](auditing-overview.md)并检查相关时间段内的审核数据。
 
-无服务器数据库无法按预期自动暂停的最常见原因是，无论有无并发 CPU 利用率，用户资源池中都存在打开的会话。 请注意，某些[功能](#auto-pausing)不支持自动暂停，但支持自动缩放。
+无服务器数据库无法按预期自动暂停的最常见原因是，无论有无并发 CPU 利用率，用户资源池中都存在打开的会话。
 
 ### <a name="auto-resuming"></a>自动恢复
 
@@ -190,7 +190,7 @@ WHERE s.session_id <> @@SPID
 
 ### <a name="connectivity"></a>连接
 
-如果无服务器数据库处于暂停状态，则首次登录将恢复数据库，并返回一个错误，指出数据库将不可用，错误代码为 40613。 恢复数据库后，必须重新尝试登录以建立连接。 具有连接重试逻辑的数据库客户端应该不需要进行修改。
+如果无服务器数据库处于暂停状态，则首次登录将恢复数据库，并返回一个错误，指出数据库将不可用，错误代码为 40613。 恢复数据库后，必须重新尝试登录以建立连接。 具有连接重试逻辑的数据库客户端应该不需要进行修改。  有关内置于 SqlClient 驱动程序的连接重试逻辑选项，请参阅 [SqlClient 中的可配置重试逻辑](/sql/connect/ado-net/configurable-retry-logic)。
 
 ### <a name="latency"></a>延迟
 
@@ -241,7 +241,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。 稍后可以从门户或通过其他管理 API（PowerShell、Azure CLI、REST API）对其进行更改。
+使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。 稍后可以通过门户或其他管理 API（PowerShell、Azure CLI、REST API）对其进行更改。
 
 ```sql
 CREATE DATABASE testdb
@@ -271,7 +271,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。 稍后可以从门户或通过其他管理 API（PowerShell、Azure CLI、REST API）对其进行更改。
+使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。 稍后可以通过门户或其他管理 API（PowerShell、Azure CLI、REST API）对其进行更改。
 
 ```sql
 ALTER DATABASE testdb 
@@ -302,11 +302,11 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 #### <a name="app-package"></a>应用包
 
-应用包是数据库最外层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 应用包包含 SQL 实例和全文搜索等外部服务，这一组合共同限定了所有用户和 SQL 数据库中数据库使用的系统资源的范围。 SQL 实例通常决定整个应用包的整体资源利用率。
+应用包是数据库最外层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 应用包包含 SQL 实例，此外还包含全文搜索之类的外部服务，这二者共同限定了所有用户以及 SQL 数据库中数据库使用的系统资源的范围。 SQL 实例通常决定整个应用包的整体资源利用率。
 
 #### <a name="user-resource-pool"></a>用户资源池
 
-用户资源池是数据库内层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 用户资源池限定由 DDL 查询（如 CREATE 和 ALTER）、DML 查询（如 INSERT、UPDATE、DELETE 和 MERGE）和 SELECT 查询生成的用户工作负载的 CPU 和 IO 的范围。 这些查询通常表示应用包中最重要的使用率比例。
+用户资源池是数据库内层的资源管理边界，无论数据库位于无服务器计算层中还是预配的计算层中。 用户资源池限定由 DDL 查询（如 CREATE 和 ALTER）、DML 查询（如 INSERT、UPDATE、DELETE 和 MERGE）和 SELECT 查询生成的用户工作负荷的 CPU 和 IO 的范围。 这些查询通常表示应用包中最重要的使用率比例。
 
 ### <a name="metrics"></a>指标
 
@@ -377,7 +377,7 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 
 ### <a name="example-scenario"></a>示例方案
 
-假设为某个无服务器数据库配置了最小 vCore 数 1 和最大 vCore 数 4。  这相当于最小内存大约为 3 GB，最大内存大约为 12 GB。  假设自动暂停延迟设置为 6 小时，数据库工作负荷在 24 小时内的前 2 小时处于活动状态，在其他时间处于非活动状态。    
+假设为某个无服务器数据库配置了最小 vCore 数 1 和最大 vCore 数 4。  此配置相当于最小内存大约为 3 GB，最大内存大约为 12 GB。  假设自动暂停延迟设置为 6 小时，数据库工作负荷在 24 小时内的前 2 小时处于活动状态，在其他时间处于非活动状态。    
 
 在这种情况下，将会计收数据库在前 8 小时内的计算和存储费用。  尽管数据库在 2 小时后处于非活动状态，但仍会根据预配的最小计算资源，计收数据库联机时的后续 6 小时的计算费用。  当数据库暂停时，只会计收 24 小时时段的剩余时间内的存储费用。
 

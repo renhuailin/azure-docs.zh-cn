@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 748e7e09332e9feded9af0bc6cfa9a38d27086f5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5d2152b6e1b2da165303c3a309ca97bf0262b5ee
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615199"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232772"
 ---
 # <a name="performance-testing"></a>性能测试
 
@@ -33,7 +33,7 @@ ms.locfileid: "128615199"
 
 你可[在此处](https://redis.io/topics/benchmarks)找到 Redis 基准文档。
 
-`redis-benchmark.exe` 不支持 TLS。 运行测试前，必须[通过门户启用非 TLS 端口](cache-configure.md#access-ports)。 可在[此处](https://github.com/MSOpenTech/redis/releases)找到 Windows 兼容版本的 redis-benchmark.exe。
+`redis-benchmark.exe` 不支持 TLS。 运行测试前，必须[通过门户启用非 TLS 端口](cache-configure.md#access-ports)。 可在[此处](https://github.com/MSOpenTech/redis/releases)找到 redis-benchmark.exe 的 Windows 兼容版本。
 
 ## <a name="redis-benchmark-examples"></a>Redis 基准示例
 

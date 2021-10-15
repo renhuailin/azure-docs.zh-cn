@@ -5,15 +5,15 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: b64cf919c0197ccc8e7128a045db0eee27356c78
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 6f950725e0cb889a55f39cd4fe1dd00760274880
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123355261"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778808"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -89,3 +89,5 @@ ms.locfileid: "123355261"
 * 规则引擎操作标头值最大字符数：640 个字符。
 * 规则引擎条件标头值最大字符数：256 个字符。
 * 最大 ETag 标头大小：128 字节
+
+若要详细了解适用于规则引擎配置的限制，请参阅[规则引擎术语](../articles/frontdoor/front-door-rules-engine.md#terminology)

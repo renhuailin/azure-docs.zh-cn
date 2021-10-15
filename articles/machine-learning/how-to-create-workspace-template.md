@@ -10,17 +10,14 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: 9a8272d6b21130f253046ef3ffe05db8b00d4b79
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c0220070d6b377212099a67c4328bc080afc1648
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038665"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544614"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
-
-
-<br>
 
 本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
 
@@ -38,7 +35,7 @@ ms.locfileid: "123038665"
 
 ## <a name="workspace-resource-manager-template"></a>工作区资源管理器模板
 
-可以在 Azure 快速入门模板 GitHub 存储库的 [machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json) 目录中找到本文档中使用的 Azure 资源管理器模板。
+可以在 Azure 快速入门模板 GitHub 存储库的 [microsoft.machineleaerningservices/machine-learning-workspace-vnet](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-workspace-vnet/azuredeploy.json) 目录中找到本文档中使用的 Azure 资源管理器模板。
 
 此模板创建以下 Azure 服务：
 

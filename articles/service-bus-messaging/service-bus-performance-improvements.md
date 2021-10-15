@@ -3,12 +3,12 @@ title: 使用 Azure 服务总线提高性能的最佳做法
 description: 介绍如何使用服务总线在交换中转消息时优化性能。
 ms.topic: article
 ms.date: 08/30/2021
-ms.openlocfilehash: d7bd692809504bb16607a431e879f0abfff953cb
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 51b8005f9aa3b53bbcb8d78b83c4449992cf0210
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225259"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560709"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -84,13 +84,14 @@ AMQP 最有效，因为它可以保持与服务总线的连接。 它还实现[�
 > SBMP 仅适用于 .NET Framework。 AMQP 是 .NET Standard 的默认设置。
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>选择适当的服务总线 .NET SDK
-有三个受支持的 Azure 服务总线 .NET SDK。 它们的 API 相似，选择起来可能很困难。 请参阅下表，了解如何做出决定。 Azure.Messaging.ServiceBus SDK 是最新的，我们建议使用它而不是其他 SDK。 Azure.Messaging.ServiceBus SDK 和 Microsoft.Azure.ServiceBus SDK 都是新式的、高性能的，并且是跨平台兼容的。 另外，它们支持基于 WebSocket 的 AMQP，并且是包含开源项目的 Azure .NET SDK 集合的一部分。
+
+`Azure.Messaging.ServiceBus` 包是自 2020 年 11 月起可用的最新 Azure 服务总线 .NET SDK。 有两个较旧的 .NET SDK 将继续收到严重的 bug 修补程序，但我们强烈建议改用最新的 SDK。 若要详细了解如何从较旧的 SDK 迁移，请阅读[迁移指南](https://aka.ms/azsdk/net/migrate/sb)。
 
 | NuGet 包 | 主命名空间 | 平台最低版本 | 协议 |
 |---------------|----------------------|---------------------|-------------|
-| [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>通用 Windows 平台 10.0.16299 | AMQP<br>HTTP |
+| [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus)（最新） | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>通用 Windows 平台 10.0.16299 | AMQP<br>HTTP |
 | [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>通用 Windows 平台 10.0.16299 | AMQP<br>HTTP |
-| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus)（旧版） | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 若要详细了解最低的 .NET Standard 平台支持，请参阅 [.NET 实现支持](/dotnet/standard/net-standard#net-implementation-support)。
 
@@ -102,9 +103,13 @@ AMQP 最有效，因为它可以保持与服务总线的连接。 它还实现[�
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
+> 请注意，自 2020 年 11 月起，可以使用更新的包 Azure.Messaging.ServiceBus。 虽然 Microsoft.Azure.ServiceBus 包将继续收到严重 bug 的修补程序，但我们强烈建议升级。 有关更多详细信息，请阅读[迁移指南](https://aka.ms/azsdk/net/migrate/sb)。
+
 应当将服务总线客户端对象（例如 [`IQueueClient`][QueueClient] 或 [`IMessageSender`][MessageSender] 的实现）注册为单一实例进行依赖关系注入（或将其实例化一次后共享）。 发送消息后，建议不关闭消息工厂、队列、主题或订阅客户端，并在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接。 重新创建工厂时将建立新的连接。 
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+> 请注意，自 2020 年 11 月起，可以使用更新的包 Azure.Messaging.ServiceBus。 虽然 WindowsAzure.ServiceBus 包将继续收到严重 bug 的修补程序，但我们强烈建议升级。 有关更多详细信息，请阅读[迁移指南](https://aka.ms/azsdk/net/migrate/sb)。
 
 `QueueClient` 或 `MessageSender` 之类的服务总线客户端对象通过 [MessagingFactory][MessagingFactory] 对象创建，后者还提供对连接的内部管理。 发送消息后，建议不关闭消息工厂、队列、主题或订阅客户端，并在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 
 

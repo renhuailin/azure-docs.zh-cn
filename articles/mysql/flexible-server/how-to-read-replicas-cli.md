@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/17/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adffb4edf7f689002cab7eae86388ff18ac04027
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 77e9d66af8a03f9d1a55a59d9a355499a3019f29
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122652875"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233894"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 灵活服务器中创建和管理只读副本
 
@@ -26,6 +26,7 @@ ms.locfileid: "122652875"
 > [!Note]
 >
 > * 启用高可用性的服务器不支持副本。 
+>* 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 灵活服务器。 请确保源服务器位于其中一个定价层中。
 >
 > * 如果在主服务器上启用了 GTID (`gtid_mode` = ON)，则新创建的副本也会启用 GTID 并使用基于 GTID 的复制。 若要了解详细信息，请参阅[全局事务标识符 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 

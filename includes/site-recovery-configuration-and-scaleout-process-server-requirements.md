@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 61aa5ffcbab493109371067b1eb9d199a29cb852
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a39b49c8a75f8ffbf99b3d92917c8e5e3e0cae55
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100552919"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585180"
 ---
 **配置和进程服务器要求**
 
@@ -63,6 +63,9 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 
 > [!NOTE]
 > 如果拥有 Site Recovery 保管库的[专用链接连接](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md)，则不需要对配置服务器的任何其他 Internet 访问。 一个例外情况是：使用 OVA 模板设置 CS 计算机时，除了专用链接访问，你还需要访问以下 URL： https://management.azure.com 、 https://www.live.com 和 https://www.microsoft.com 。 如果你不希望允许对这些 URL 的访问，请使用统一安装程序设置该 CS。
+
+> [!NOTE]
+> 设置专用终结点以保护 VMware 和物理计算机时，需要在配置服务器上手动安装 MySQL。 按照[此处](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server#configure-settings)的步骤执行手动安装。 
 
 ## <a name="required-software"></a>所需软件
 

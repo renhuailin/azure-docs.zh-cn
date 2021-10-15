@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 86324c80f0df70713c6ea76a43e4b9da50c1fae6
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 942574fafe6a68b601f3ed4c428dc74fb02719a5
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555013"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532503"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>排查备份 Azure 文件共享时出现的问题
 
@@ -25,8 +25,10 @@ ms.locfileid: "111555013"
   >一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 可以使用[此脚本](scripts/backup-powershell-script-find-recovery-services-vault.md)查找存储帐户所注册到的恢复服务保管库。
 
 - 确保文件共享不是在任何不受支持的存储帐户中。 可以参考 [Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)来查找支持的存储帐户。
+- 请确保存储帐户和恢复服务保管库位于同一区域。
 - 确保在使用新存储帐户时，存储帐户名称和资源组名称的总长度不超过 84 个字符；使用经典存储帐户时，总长度不超过 77 个字符。
-- 检查存储帐户的防火墙设置，确保已启用允许受信任 Microsoft 服务访问存储帐户的选项。
+- 检查存储帐户的防火墙设置，确保已授予“允许受信任服务列表中的 Azure 服务访问此存储帐户”例外。 有关授予例外的步骤，可参阅[此链接](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions)。
+
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>门户中的错误指出无法发现存储帐户
 

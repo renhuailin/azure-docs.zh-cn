@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: 54261049799cc02695d1162012cac9b7bff3558f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1966ce24919e2d98658afe2cec09d37e3b567c60
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559240"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387480"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的限制
 
@@ -96,6 +96,7 @@ PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而�
 - 不支持 Postgres 10 及更早版本。 如果需要较旧的 Postgres 版本，建议使用[单一服务器](../overview-single-server.md)选项。
 - 扩展支持目前仅限于 Postgres `contrib` 扩展。
 - 内置的 PgBouncer 连接池程序当前不适用于可突发服务器。
+- 使用内置 PgBouncer 的连接不支持 SCRAM 身份验证。
 
 ### <a name="stopstart-operation"></a>停止/启动操作
 

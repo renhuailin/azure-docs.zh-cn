@@ -3,13 +3,13 @@ title: 管理和监视 MARS 代理备份
 description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azure 恢复服务 (MARS) 代理备份。
 ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 06/08/2021
-ms.openlocfilehash: c7a696c4059ebc7cc28a34a299060039ac1c0c62
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.date: 10/05/2021
+ms.openlocfilehash: 525bdff82c224b02b941354983276747b483ae56
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902896"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535104"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 (MARS) 代理备份
 
@@ -167,6 +167,62 @@ ms.locfileid: "111902896"
 
     ![粘贴安全 PIN](./media/backup-azure-manage-mars/passphrase2.png)
 1. 确保将通行短语安全保存在备用位置（源计算机之外的位置），最好是保存在 Azure Key Vault 中。 如果正在使用 MARS 代理备份多台计算机，请跟踪所有通行短语。
+
+## <a name="validate-passphrase"></a>验证密码
+
+从 MARS 代理版本 2.0.9190.0 及更高版本开始，必须验证密码，以确保它满足[更新后的要求](/azure/backup/backup-azure-file-folder-backup-faq#what-characters-are-allowed-for-the-passphrase-)。
+
+若要验证密码，请执行以下步骤：
+
+1. 打开 MARS 控制台。
+
+   顶部会显示一条消息，要求验证密码。 
+
+1. 单击 **“验证”** 。
+
+   :::image type="content" source="./media/backup-azure-manage-mars/validate-passphrase-prompt-inline.png" alt-text="显示密码验证提示的屏幕截图。" lightbox="./media/backup-azure-manage-mars/validate-passphrase-prompt-expanded.png":::
+
+   密码验证程序将打开，并提示输入当前密码。 如果密码不满足更新后的要求，则会显示一个重新生成密码的选项。
+
+1. 生成具有以下详细信息的密码：
+
+   - 满足要求的新密码。
+   - 安全 PIN（请参阅[生成安全 PIN 的步骤](#generate-security-pin)）。
+   - 服务器上用于保存新生成的密码的安全位置。
+
+   :::image type="content" source="./media/backup-azure-manage-mars/generate-passphrase.png" alt-text="显示生成具有所需详细信息的密码的过程的屏幕截图。":::
+
+### <a name="validate-passphrase-for-dpmmabs-agent"></a>验证 DPM/MABS 代理的密码
+
+对于 DPM/MABS，请从提升的命令提示符执行密码验证工具。
+   
+可以在以下位置之一找到该工具：
+
+- **System Center Data Protection Manager**
+     
+  %ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\PassphraseValidator.exe
+
+- **Microsoft Azure 备份服务器**
+      
+  %ProgramFiles%\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\PassphraseValidator.exe
+
+密码验证程序将打开，并提示输入当前密码。 如果密码不符合更新后的要求，请重新生成密码。
+   
+:::image type="content" source="./media/backup-azure-manage-mars/passphrase-validator-prompts-for-current-passphrase.png" alt-text="显示当前密码的密码验证程序提示的屏幕截图。":::
+
+请使用以下步骤：
+
+1. 在管理控制台中，导航到“管理”选项卡，然后选择“联机” -> “配置”。
+1. 按照“配置订阅设置向导”操作，并在“加密设置”步骤中，提供更新的密码。
+
+:::image type="content" source="./media/backup-azure-manage-mars/configure-subscription-settings-wizard.png" alt-text="显示按照“配置订阅设置向导”提供密码的过程的屏幕截图。":::
+
+## <a name="generate-security-pin"></a>生成安全 PIN
+
+1. 转到“恢复服务保管库” -> “设置” -> “属性”。
+1. 在“安全 PIN”下选择“生成” 。
+ 
+复制 PIN。 该 PIN 的有效时间仅为五分钟。
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>管理不可用计算机的备份数据
 

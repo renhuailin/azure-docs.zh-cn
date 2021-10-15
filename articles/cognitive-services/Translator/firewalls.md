@@ -10,24 +10,23 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: f5dd72328180574809c812d670f8165ad84963ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afb0e616f01342c94734155e96367f0b453e313a
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98897741"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401857"
 ---
 # <a name="how-to-translate-behind-ip-firewalls-with-translator"></a>如何使用翻译器在 IP 防火墙后面翻译
 
-翻译器可以使用域名或 IP 筛选在防火墙后面翻译。 域名筛选是首选方法。 我们建议不要在经过 IP 筛选的防火墙后面运行 Microsoft Translator。 安装程序在将来可能会发生中断，恕不另行通知。
+翻译器可以使用域名或 IP 筛选在防火墙后面翻译。 域名筛选是首选方法。 如果仍然需要 IP 筛选，建议[使用服务标记获取 IP 地址详细信息](../../virtual-network/service-tags-overview.md#service-tags-on-premises)。 翻译器位于“CognitiveServicesManagement”服务标记下。 
 
-## <a name="translator-ip-addresses"></a>Translator IP 地址
-api.cognitive.microsofttranslator.com 的 IP 地址 - 截至 2019 年 8 月 21 日的翻译器：
+建议不要在经过特定 IP 筛选的防火墙后面运行 Microsoft 翻译工具。 安装程序在将来可能会发生中断，恕不另行通知。
 
-* **亚太区：** 20.40.125.208, 20.43.88.240, 20.184.58.62, 40.90.139.163, 104.44.89.44
-* **欧洲：** 40.90.138.4, 40.90.141.99, 51.105.170.64, 52.155.218.251
-* **北美：** 40.90.139.36, 40.90.139.2, 40.119.2.134, 52.224.200.129, 52.249.207.163
+截至 2021 年 9 月 21 日，翻译器地理位置终结点的 IP 地址为：
 
-## <a name="next-steps"></a>后续步骤
-> [!div class="nextstepaction"]
-> [使用翻译器在 IP 防火墙后面翻译](reference/v3-0-translate.md)
+|地理位置|基 URL（地理终结点）|IP 地址|
+|:--|:--|:--|
+|美国|api-nam.cognitive.microsofttranslator.com|20.42.6.144、20.49.96.128、40.80.190.224、40.64.128.192|
+|欧洲|api-eur.cognitive.microsofttranslator.com|20.50.1.16、20.38.87.129|
+|亚太区|api-apc.cognitive.microsofttranslator.com|40.80.170.160、20.43.132.96、20.37.196.160、20.43.66.16|

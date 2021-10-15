@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: pafarley
 ms.custom: references_regions
-ms.openlocfilehash: 0df6b9575c562ba6b469191efdefd5d5d8226ca9
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 7937ce57cc432143d449f398a0a433686a6671ed
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544017"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129547031"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -57,61 +57,62 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 阿拉伯语（阿拉伯联合酋长国）      | `ar-AE` | 文本                                   |                           |                          |
 | 阿拉伯语（也门）                     | `ar-YE` | 文本                                   |                           |                          |
 | 保加利亚语(保加利亚)               | `bg-BG` | 文本                                   |                           |                          |
-| 加泰罗尼亚语(西班牙)                    | `ca-ES` | 文本                                   | 是                          |                          |
+| 加泰罗尼亚语(西班牙)                    | `ca-ES` | 文本<br>发音                  | 是                          |                          |
 | 中文（粤语，繁体）   | `zh-HK` | 音频 (20201015)<br>文本                 |        是                   |                          |
 | 中文（普通话，简体）     | `zh-CN` | 音频 (20200910)<br>文本                 |     是                      | 是                         |
 | 中文(台湾普通话)       | `zh-TW` | 音频 (20190701, 20201015)<br>文本                 |           是                |                          |
-| 克罗地亚语（克罗地亚）                 | `hr-HR` | 文本                                   |                           |                          |
-| 捷克语（捷克共和国）             | `cs-CZ` | 文本                                   |                           |                          |
-| 丹麦语（丹麦）                   | `da-DK` | 文本                                   | 是                          |                          |
+| 克罗地亚语（克罗地亚）                 | `hr-HR` | 文本<br>发音                  |                           |                          |
+| 捷克语（捷克共和国）             | `cs-CZ` | 文本<br>发音                  |                           |                          |
+| 丹麦语（丹麦）                   | `da-DK` | 文本<br>发音                  | 是                          |                          |
 | 荷兰语（荷兰）                | `nl-NL` | 音频 (20201015)<br>文本<br>发音|    是                       |                          |
-| 英语（澳大利亚）                | `en-AU` | 音频 (20201019)<br>文本                 | 是                          |                          |
-| 英语（加拿大）                   | `en-CA` | 音频 (20201019)<br>文本                 | 是                          |                          |
-| 英语（加纳）                    | `en-GH` | 文本                                   |                           |                          |
-| 英语（香港）                | `en-HK` | 文本                                   |                           |                          |
-| 英语（印度）                    | `en-IN` | 音频 (20200923)<br>文本                 |                          |                          |
-| 英语（爱尔兰）                  | `en-IE` | 文本                                   |                           |                          |
-| 英语（肯尼亚）                    | `en-KE` | 文本                                   |                           |                          |
-| 英语（新西兰）              | `en-NZ` | 音频 (20201019)<br>文本                 |                          |                          |
-| 英语（尼日利亚）                  | `en-NG` | 文本                                   |                           |                          |
-| 英语（菲律宾）              | `en-PH` | 文本                                   |                           |                          |
-| 英语（新加坡）                | `en-SG` | 文本                                   |                           |                          |
-| 英语（南非）             | `en-ZA` | 文本                                   |                           |                          |
-| 英语（坦桑尼亚）                 | `en-TZ` | 文本                                   |                           |                          |
+| 英语（澳大利亚）                | `en-AU` | 音频 (20201019)<br>文本<br>发音| 是                          |                          |
+| 英语（加拿大）                   | `en-CA` | 音频 (20201019)<br>文本<br>发音| 是                          |                          |
+| 英语（加纳）                    | `en-GH` | 文本<br>发音                  |                           |                          |
+| 英语（香港）                | `en-HK` | 文本<br>发音                  |                           |                          |
+| 英语（印度）                    | `en-IN` | 音频 (20200923)<br>文本<br>发音 |                          |                          |
+| 英语（爱尔兰）                  | `en-IE` | 文本<br>发音                  |                           |                          |
+| 英语（肯尼亚）                    | `en-KE` | 文本<br>发音                  |                           |                          |
+| 英语（新西兰）              | `en-NZ` | 音频 (20201019)<br>文本<br>发音 |                          |                          |
+| 英语（尼日利亚）                  | `en-NG` | 文本<br>发音                  |                           |                          |
+| 英语（菲律宾）              | `en-PH` | 文本<br>发音                  |                           |                          |
+| 英语（新加坡）                | `en-SG` | 文本<br>发音                  |                           |                          |
+| 英语（南非）             | `en-ZA` | 文本<br>发音                  |                           |                          |
+| 英语（坦桑尼亚）                 | `en-TZ` | 文本<br>发音                  |                           |                          |
 | 英语（英国）           | `en-GB` | 音频 (20201019)<br>文本<br>发音| 是                          | 是                         |
 | 英语（美国）            | `en-US` | 音频（20201019、20210223）<br>文本<br>发音| 是                          | 是                         |
-| 爱沙尼亚语（爱沙尼亚）                  | `et-EE` | 文本                                   |                           |                          |
-| 菲律宾语（菲律宾）             | `fil-PH`| 文本                                   |                           |                          |
-| 芬兰语（芬兰）                  | `fi-FI` | 文本                                   |     是                      |                          |
+| 爱沙尼亚语（爱沙尼亚）                  | `et-EE` | 文本<br>发音                  |                           |                          |
+| 菲律宾语（菲律宾）             | `fil-PH`| 文本<br>发音                  |                           |                          |
+| 芬兰语（芬兰）                  | `fi-FI` | 文本<br>发音                  |     是                      |                          |
 | 法语（加拿大）                    | `fr-CA` | 音频 (20201015)<br>文本<br>发音|     是                      |                          |
 | 法语（法国）                    | `fr-FR` | 音频 (20201015)<br>文本<br>发音|      是                     |                          |
 | 法语（瑞士）               | `fr-CH` | 文本<br>发音                  |                           |                          |
 | 德语（奥地利）                   | `de-AT` | 文本<br>发音                  |                           |                          |
+| 德语（瑞士）               | `de-CH` | 文本<br>发音                  |                           |                          |
 | 德语（德国）                   | `de-DE` | 音频 (20190701, 20200619, 20201127)<br>文本<br>发音|  是                         |                          |
 | 希腊语(希腊)                     | `el-GR` | 文本                                   |  是                         |                          |
 | 古吉拉特语(印度)                  | `gu-IN` | 文本                                   |                           |                          |
 | 希伯来语（以色列）                    | `he-IL` | 文本                                   |                           |                          |
 | 印地语（印度）                      | `hi-IN` | 音频 (20200701)<br>文本                 |     是                      |                          |
-| 匈牙利语(匈牙利)                | `hu-HU` | 文本                                   |                           |                          |
-| 印度尼西亚语(印度尼西亚)             | `id-ID` | 文本                                   |                           |                          |
-| 爱尔兰语（爱尔兰）                     | `ga-IE` | 文本                                   |                           |                          |
+| 匈牙利语(匈牙利)                | `hu-HU` | 文本<br>发音                  |                           |                          |
+| 印度尼西亚语(印度尼西亚)             | `id-ID` | 文本<br>发音                  |                           |                          |
+| 爱尔兰语（爱尔兰）                    | `ga-IE` | 文本<br>发音                  |                           |                          |
 | 意大利语（意大利）                    | `it-IT` | 音频 (20201016)<br>文本<br>发音|      是                     |                          |
 | 日语（日本）                   | `ja-JP` | 文本                                   |      是                     |                          |
 | 韩语(韩国)                     | `ko-KR` | 音频 (20201015)<br>文本                 |      是                     |                          |
-| 拉脱维亚语(拉脱维亚)                   | `lv-LV` | 文本                                   |                           |                          |
-| 立陶宛语(立陶宛)             | `lt-LT` | 文本                                   |                           |                          |
+| 拉脱维亚语(拉脱维亚)                   | `lv-LV` | 文本<br>发音                  |                           |                          |
+| 立陶宛语(立陶宛)             | `lt-LT` | 文本<br>发音                  |                           |                          |
 | 马来语（马来西亚）                   | `ms-MY` | 文本                                   |                           |                          |
 | 马耳他语（马耳他）                    | `mt-MT` | 文本                                   |                           |                          |
 | 马拉地语(印度)                    | `mr-IN` | 文本                                   |                           |                          |
 | 挪威语（博克马尔语，挪威）         | `nb-NO` | 文本                                   |     是                      |                          |
 | 波斯语（伊朗）                     | `fa-IR` | 文本                                   |                           |                          |
-| 波兰语（波兰）                    | `pl-PL` | 文本                                   |       是                    |                          |
+| 波兰语（波兰）                    | `pl-PL` | 文本<br>发音                  |       是                    |                          |
 | 葡萄牙语(巴西)                | `pt-BR` | 音频 (20190620, 20201015)<br>文本<br>发音|          是                 |                          |
 | 葡萄牙语(葡萄牙)              | `pt-PT` | 文本<br>发音                  |             是              |                          |
-| 罗马尼亚语(罗马尼亚)                 | `ro-RO` | 文本                                   |  是                         |                          |
+| 罗马尼亚语(罗马尼亚)                 | `ro-RO` | 文本<br>发音                  |  是                         |                          |
 | 俄语（俄罗斯）                   | `ru-RU` | 音频 (20200907)<br>文本                 |                是           |                          |
-| 斯洛伐克语(斯洛伐克)                  | `sk-SK` | 文本                                   |                           |                          |
-| 斯洛文尼亚语(斯洛文尼亚)               | `sl-SI` | 文本                                   |                           |                          |
+| 斯洛伐克语(斯洛伐克)                  | `sk-SK` | 文本<br>发音                  |                           |                          |
+| 斯洛文尼亚语(斯洛文尼亚)               | `sl-SI` | 文本<br>发音                  |                           |                          |
 | 西班牙语（阿根廷）                | `es-AR` | 文本<br>发音                  |                           |                          |
 | 西班牙语（玻利维亚）                  | `es-BO` | 文本<br>发音                  |                           |                          |
 | 西班牙语（智利）                    | `es-CL` | 文本<br>发音                  |                           |                          |
@@ -134,8 +135,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 西班牙语（乌拉圭）                  | `es-UY` | 文本<br>发音                  |                           |                          |
 | 西班牙语（美国）                      | `es-US` | 文本<br>发音                  |                           |                          |
 | 西班牙语（委内瑞拉）                | `es-VE` | 文本<br>发音                  |                           |                          |
-| 斯瓦希里语（肯尼亚）                    | `sw-KE` | 文本<br>发音                  |                           |                          |
-| 瑞典语（瑞典）                   | `sv-SE` | 文本                                   |   是                        |                          |
+| 斯瓦希里语（肯尼亚）                    | `sw-KE` | 文本                                   |                           |                          |
+| 瑞典语（瑞典）                   | `sv-SE` | 文本<br>发音                  |   是                        |                          |
 | 泰米尔语（印度）                      | `ta-IN` | 文本                                   |                           |                          |
 | 泰卢固语（印度）                     | `te-IN` | 文本                                   |                           |                          |
 | 泰语（泰国）                    | `th-TH` | 文本                                   |      是                     |                          |
@@ -159,7 +160,6 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 > 神经语音由使用 24 khz 采样率的样本创建。
 > 合成时，所有声音都可以使用其他采样率进行上采样或下采样。
 
-
 | 语言 | Locale | 性别 | 语音名称 | 风格支持 |
 |---|---|---|---|---|
 | 阿拉伯语（埃及） | `ar-EG` | Female | `ar-EG-SalmaNeural` | 常规 |
@@ -168,13 +168,13 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 阿拉伯语（沙特阿拉伯） | `ar-SA` | 男 | `ar-SA-HamedNeural` | 常规 |
 | 保加利亚语(保加利亚) | `bg-BG` | 女 | `bg-BG-KalinaNeural` | 常规 |
 | 保加利亚语(保加利亚) | `bg-BG` | 男 | `bg-BG-BorislavNeural` | 常规 |
-| 加泰罗尼亚语(西班牙) | `ca-ES` | 女 | `ca-ES-AlbaNeural` | 常规 |
-| 加泰罗尼亚语(西班牙) | `ca-ES` | 女 | `ca-ES-JoanaNeural` | 常规 |
+| 加泰罗尼亚语(西班牙) | `ca-ES` | Female | `ca-ES-AlbaNeural` | 常规 |
+| 加泰罗尼亚语(西班牙) | `ca-ES` | Female | `ca-ES-JoanaNeural` | 常规 |
 | 加泰罗尼亚语(西班牙) | `ca-ES` | 男 | `ca-ES-EnricNeural` | 常规 |
 | 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | 常规 |
 | 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-HiuMaanNeural` | 常规 |
 | 中文(粤语，繁体) | `zh-HK` | 男 | `zh-HK-WanLungNeural` | 常规 |
-| 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaoxiaoNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
 | 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaoyouNeural` | 儿童语音，针对讲故事进行了优化 |
 | 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaomoNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种角色扮演和风格 |
 | 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaoxuanNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种角色扮演和风格 |
@@ -215,27 +215,29 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 英语（新加坡） | `en-SG` | 男 | `en-SG-WayneNeural` <sup>新建</sup> | 常规 |
 | 英语（南非） | `en-ZA` | Female | `en-ZA-LeahNeural` <sup>新建</sup> | 常规 |
 | 英语（南非） | `en-ZA` | 男 | `en-ZA-LukeNeural` <sup>新建</sup> | 常规 |
-| 英语(英国) | `en-GB` | 女 | `en-GB-LibbyNeural` | 常规 |
-| 英语(英国) | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
+| 英语（英国） | `en-GB` | Female | `en-GB-LibbyNeural` | 常规 |
+| 英语（英国） | `en-GB` | Female | `en-GB-SoniaNeural` <sup>新建</sup> | 常规 |
+| 英语（英国） | `en-GB` | Female | `en-GB-MiaNeural` <sup>于 10 月 30 日停用，见下文</sup> | 常规 |
 | 英语（英国） | `en-GB` | 男 | `en-GB-RyanNeural` | 常规 |
-| 英语（美国） | `en-US` | 女 | `en-US-AriaNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
-| 英语（美国） | `en-US` | 女 | `en-US-JennyNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
+| 英语（美国） | `en-US` | Female | `en-US-AriaNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
+| 英语（美国） | `en-US` | Female | `en-US-JennyNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
 | 英语（美国） | `en-US` | 男 | `en-US-GuyNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
-| 英语（美国） | `en-US` | Female | `en-US-AmberNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-AshleyNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-CoraNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-ElizabethNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-MichelleNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-MonicaNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 儿童 | `en-US-AnaNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-BrandonNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-ChristopherNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-JacobNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-EricNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-SaraNeural` <sup>新建</sup> | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
+| 英语（美国） | `en-US` | Female | `en-US-AmberNeural` | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-AshleyNeural` | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-CoraNeural` | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-ElizabethNeural` | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-MichelleNeural`| 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-MonicaNeural` | 常规 |
+| 英语（美国） | `en-US` | 儿童 | `en-US-AnaNeural`| 常规 |
+| 英语（美国） | `en-US` | 男 | `en-US-BrandonNeural` | 常规 |
+| 英语（美国） | `en-US` | 男 | `en-US-ChristopherNeural`  | 常规 |
+| 英语（美国） | `en-US` | 男 | `en-US-JacobNeural` | 常规 |
+| 英语（美国） | `en-US` | 男 | `en-US-EricNeural` | 常规 |
 | 爱沙尼亚语(爱沙尼亚) | `et-EE` | 女 | `et-EE-AnuNeural` | 常规 |
 | 爱沙尼亚语(爱沙尼亚) | `et-EE` | 男 | `et-EE-KertNeural` | 常规 |
-| 芬兰语（芬兰） | `fi-FI` | 女 | `fi-FI-NooraNeural` | 常规 |
-| 芬兰语（芬兰） | `fi-FI` | 女 | `fi-FI-SelmaNeural` | 常规 |
+| 芬兰语（芬兰） | `fi-FI` | Female | `fi-FI-NooraNeural` | 常规 |
+| 芬兰语（芬兰） | `fi-FI` | Female | `fi-FI-SelmaNeural` | 常规 |
 | 芬兰语（芬兰） | `fi-FI` | 男 | `fi-FI-HarriNeural` | 常规 |
 | 法语（比利时） | `fr-BE` | Female | `fr-BE-CharlineNeural` | 常规 | 
 | 法语（比利时） | `fr-BE` | 男 | `fr-BE-GerardNeural` | 常规 | 
@@ -286,13 +288,13 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 挪威语（博克马尔语，挪威） | `nb-NO` | 女 | `nb-NO-IselinNeural` | 常规 |
 | 挪威语（博克马尔语，挪威） | `nb-NO` | 女 | `nb-NO-PernilleNeural` | 常规 |
 | 挪威语（博克马尔语，挪威） | `nb-NO` | 男 | `nb-NO-FinnNeural` | 常规 |
-| 波兰语（波兰） | `pl-PL` | 女 | `pl-PL-AgnieszkaNeural` | 常规 |
-| 波兰语（波兰） | `pl-PL` | 女 | `pl-PL-ZofiaNeural` | 常规 |
+| 波兰语（波兰） | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` | 常规 |
+| 波兰语（波兰） | `pl-PL` | Female | `pl-PL-ZofiaNeural` | 常规 |
 | 波兰语（波兰） | `pl-PL` | 男 | `pl-PL-MarekNeural` | 常规 |
-| 葡萄牙语（巴西） | `pt-BR` | 女 | `pt-BR-FranciscaNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
+| 葡萄牙语（巴西） | `pt-BR` | Female | `pt-BR-FranciscaNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
 | 葡萄牙语(巴西) | `pt-BR` | 男 | `pt-BR-AntonioNeural` | 常规 |
-| 葡萄牙语(葡萄牙) | `pt-PT` | 女 | `pt-PT-FernandaNeural` | 常规 |
-| 葡萄牙语(葡萄牙) | `pt-PT` | 女 | `pt-PT-RaquelNeural` | 常规 |
+| 葡萄牙语(葡萄牙) | `pt-PT` | Female | `pt-PT-FernandaNeural` | 常规 |
+| 葡萄牙语(葡萄牙) | `pt-PT` | Female | `pt-PT-RaquelNeural` | 常规 |
 | 葡萄牙语(葡萄牙) | `pt-PT` | 男 | `pt-PT-DuarteNeural` | 常规 |
 | 罗马尼亚语(罗马尼亚) | `ro-RO` | 女 | `ro-RO-AlinaNeural` | 常规 |
 | 罗马尼亚语(罗马尼亚) | `ro-RO` | 男 | `ro-RO-EmilNeural` | 常规 |
@@ -309,23 +311,23 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 西班牙语（哥伦比亚） | `es-CO` | 男 | `es-CO-GonzaloNeural` <sup>新建</sup> | 常规 |
 | 西班牙语（墨西哥） | `es-MX` | Female | `es-MX-DaliaNeural` | 常规 |
 | 西班牙语（墨西哥） | `es-MX` | 男 | `es-MX-JorgeNeural` | 常规 |
-| 西班牙语(西班牙) | `es-ES` | 女 | `es-ES-ElviraNeural` | 常规 |
+| 西班牙语(西班牙) | `es-ES` | Female | `es-ES-ElviraNeural` | 常规 |
 | 西班牙语(西班牙) | `es-ES` | 男 | `es-ES-AlvaroNeural` | 常规 |
 | 西班牙语（美国） | `es-US` | Female | `es-US-PalomaNeural` <sup>新建</sup> | 常规 |
 | 西班牙语（美国） | `es-US` | 男 | `es-US-AlonsoNeural` <sup>新建</sup> | 常规 |
 | 斯瓦希里语（肯尼亚） | `sw-KE` | Female | `sw-KE-ZuriNeural` <sup>新建</sup> | 常规 |
 | 斯瓦希里语（肯尼亚） | `sw-KE` | 男 | `sw-KE-RafikiNeural` <sup>新建</sup> | 常规 |
-| 瑞典语（瑞典） | `sv-SE` | 女 | `sv-SE-HilleviNeural` | 常规 |
-| 瑞典语（瑞典） | `sv-SE` | 女 | `sv-SE-SofieNeural` | 常规 |
+| 瑞典语（瑞典） | `sv-SE` | Female | `sv-SE-HilleviNeural` | 常规 |
+| 瑞典语（瑞典） | `sv-SE` | Female | `sv-SE-SofieNeural` | 常规 |
 | 瑞典语（瑞典） | `sv-SE` | 男 | `sv-SE-MattiasNeural` | 常规 |
 | 泰米尔语（印度） | `ta-IN` | 女 | `ta-IN-PallaviNeural` | 常规 |
 | 泰米尔语（印度） | `ta-IN` | 男 | `ta-IN-ValluvarNeural` | 常规 |
-| 泰卢固语（印度） | `te-IN` | 女 | `te-IN-ShrutiNeural` | 常规 |
+| 泰卢固语（印度） | `te-IN` | Female | `te-IN-ShrutiNeural` | 常规 |
 | 泰卢固语（印度） | `te-IN` | 男 | `te-IN-MohanNeural` | 常规 |
 | 泰语（泰国） | `th-TH` | 女 | `th-TH-AcharaNeural` | 常规 |
 | 泰语（泰国） | `th-TH` | 女 | `th-TH-PremwadeeNeural` | 常规 |
 | 泰语（泰国） | `th-TH` | 男 | `th-TH-NiwatNeural` | 常规 |
-| 土耳其语（土耳其） | `tr-TR` | 女 | `tr-TR-EmelNeural` | 常规 |
+| 土耳其语（土耳其） | `tr-TR` | Female | `tr-TR-EmelNeural` | 常规 |
 | 土耳其语（土耳其） | `tr-TR` | 男 | `tr-TR-AhmetNeural` | 常规 |
 | 乌克兰语(乌克兰) | `uk-UA` | Female | `uk-UA-PolinaNeural` | 常规 | 
 | 乌克兰语(乌克兰) | `uk-UA` | 男 | `uk-UA-OstapNeural` | 常规 | 
@@ -336,6 +338,10 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 威尔士语（英国） | `cy-GB` | 女 | `cy-GB-NiaNeural` | 常规 | 
 | 威尔士语（英国） | `cy-GB` | 男 | `cy-GB-AledNeural` | 常规 | 
 
+> [!IMPORTANT]
+> 英语（英国）语音 `en-GB-MiaNeural` 将于 2021 年 10 月 30 日停用。 `en-GB-MiaNeural` 的所有服务请求将在 2021 年 10 月 30 日后自动重新定向到 `en-GB-SoniaNeural`。
+> 如果使用的是容器神经 TTS，请在 2021 年 10 月 30 日之前[下载](speech-container-howto.md#get-the-container-image-with-docker-pull)最新版本并进行部署。 2021 年 10 月 30 日之后，将拒绝所有以前版本的请求。
+
 #### <a name="neural-voices-in-preview"></a>神经语音（预览版）
 
 下面的神经语音为公共预览版。 
@@ -343,6 +349,10 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 语言                         | Locale  | 性别 | 语音名称                             | 风格支持 |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
 | 英语（美国） | `en-US` | Female | `en-US-JennyMultilingualNeural` <sup>新建</sup> | [使用 SSML](speech-synthesis-markup.md#create-an-ssml-document) 的常规多语言功能 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaochenNeural` <sup>新建</sup> | 针对自发对话进行了优化 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoyanNeural` <sup>新建</sup> | 针对客户服务进行了优化 |
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoshuangNeural` <sup>新建</sup> | 儿童语音，针对儿童故事和聊天进行了优化；[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格|
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoqiuNeural` <sup>新建</sup> | 针对叙事进行了优化 |
 
 > [!IMPORTANT]
 > 公共预览版语音仅在美国东部、西欧和东南亚这三个服务区域提供。
@@ -364,6 +374,9 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 提供超过 75 种标准语音，涉及超过 45 种语言和区域设置，允许用户将文本转换为合成语音。 有关区域可用性的详细信息，请参阅[区域](regions.md#neural-and-standard-voices)。
 
+> [!IMPORTANT]
+> 我们将于 2024 年 8 月 31 日停用标准语音，之后将不再支持这些语音。我们在发送给所有在 2021 年 8 月 31 日之前创建的现有语音订阅用户的电子邮件中宣布了这一消息。 在停用期间（2021 年 8 月 31 日 - 2024 年 8 月 31 日），现有标准语音用户可以继续使用标准语音，但所有新用户/新语音资源必须选择神经语音。
+
 > [!NOTE]
 > 除了两个例外，标准语音从使用 16 khz 采样率的样本创建。
 > en-US-AriaRUS 和 en-US-GuyRUS 语音也是从使用 24 khz 采样率的样本创建的。
@@ -377,9 +390,9 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 加泰罗尼亚语(西班牙) | `ca-ES` | 女 | `ca-ES-HerenaRUS`|
 | 中文(粤语，繁体) | `zh-HK` | 男 | `zh-HK-Danny`|
 | 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-TracyRUS`|
-| 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-HuihuiRUS`|
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-HuihuiRUS`|
 | 中文（普通话，简体） | `zh-CN` | 男 | `zh-CN-Kangkang`|
-| 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-Yaoyao`|
+| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-Yaoyao`|
 | 中文(台湾普通话) |  `zh-TW` | Female | `zh-TW-HanHanRUS`|
 | 中文(台湾普通话) |  `zh-TW` | Female | `zh-TW-Yating`|
 | 中文(台湾普通话) |  `zh-TW` | 男 | `zh-TW-Zhiwei`|
@@ -439,8 +452,8 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 斯洛文尼亚语(斯洛文尼亚) | `sl-SI` | 男 | `sl-SI-Lado`|
 | 西班牙语（墨西哥） | `es-MX` | Female | `es-MX-HildaRUS`|
 | 西班牙语（墨西哥） | `es-MX` | 男 | `es-MX-Raul`|
-| 西班牙语(西班牙) | `es-ES` | 女 | `es-ES-HelenaRUS`|
-| 西班牙语(西班牙) | `es-ES` | 女 | `es-ES-Laura`|
+| 西班牙语(西班牙) | `es-ES` | Female | `es-ES-HelenaRUS`|
+| 西班牙语(西班牙) | `es-ES` | Female | `es-ES-Laura`|
 | 西班牙语(西班牙) | `es-ES` | 男 | `es-ES-Pablo`|
 | 瑞典语（瑞典） | `sv-SE` | 女 | `sv-SE-HedvigRUS`|
 | 泰米尔语（印度） | `ta-IN` | 男 | `ta-IN-Valluvar`|
@@ -491,83 +504,103 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 ## <a name="speech-translation"></a>语音翻译
 
-**语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自“语音转文本”语言表。 可用的目标语言取决于翻译目标是语音还是文本。 可以将传入的语音翻译成 [60 种以上的语言](https://www.microsoft.com/translator/business/languages/)。 这些语言的子集可用于[语音合成](language-support.md#text-languages)。
+**语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自“语音转文本”语言表。 可用的目标语言取决于翻译目标是语音还是文本。 可以将传入的语音翻译任何[支持语言](https://www.microsoft.com/translator/business/languages/)。 这些语言的子集可用于[语音合成](language-support.md#text-languages)。
 
 ### <a name="text-languages"></a>文本语言
 
 | 文本语言           | 语言代码 |
 |:------------------------|:-------------:|
-| 南非荷兰语               | `af`          |
-| 阿拉伯语                  | `ar`          |
-| Bangla                  | `bn`          |
-| 波斯尼亚语(拉丁语系)         | `bs`          |
-| 保加利亚语               | `bg`          |
-| 粤语(繁体) | `yue`         |
-| 加泰罗尼亚语                 | `ca`          |
-| 简体中文      | `zh-Hans`     |
-| 中文(繁体)     | `zh-Hant`     |
-| 克罗地亚语                | `hr`          |
-| 捷克语                   | `cs`          |
-| 丹麦语                  | `da`          |
-| 荷兰语                   | `nl`          |
-| 英语                 | `en`          |
-| 爱沙尼亚语                | `et`          |
-| 斐济语                  | `fj`          |
-| 菲律宾语                | `fil`         |
-| 芬兰语                 | `fi`          |
-| 法语                  | `fr`          |
-| 德语                  | `de`          |
-| 希腊语                   | `el`          |
-| 古吉拉特语                | `gu`          |
-| 海地克里奥尔语          | `ht`          |
-| 希伯来语                  | `he`          |
-| Hindi                   | `hi`          |
-| 白苗文               | `mww`         |
-| 匈牙利语               | `hu`          |
-| 印度尼西亚语              | `id`          |
-| 爱尔兰语                   | `ga`          |
-| 意大利语                 | `it`          |
-| 日语                | `ja`          |
-| 卡纳达语                 | `kn`          |
-| 斯瓦希里语               | `sw`          |
-| 克林贡语                 | `tlh-Latn`    |
-| 克林贡语(plqaD)         | `tlh-Piqd`    |
-| 韩语                  | `ko`          |
-| 拉脱维亚语                 | `lv`          |
-| 立陶宛语              | `lt`          |
-| 马达加斯加语                | `mg`          |
-| 马来语                   | `ms`          |
-| 马拉雅拉姆语               | `ml`          |
-| 马耳他语                 | `mt`          |
-| 毛利语                   | `mi`          |
-| 马拉地语                 | `mr`          |
-| 挪威语               | `nb`          |
-| 波斯语                 | `fa`          |
-| 波兰语                  | `pl`          |
-| 葡萄牙语（巴西）     | `pt-br`       |
-| 葡萄牙语(葡萄牙)   | `pt-pt`       |
-| 旁遮普语                 | `pa`          |
-| 克雷塔罗奥托米语         | `otq`         |
-| 罗马尼亚语                | `ro`          |
-| 俄语                 | `ru`          |
-| 萨摩亚语                  | `sm`          |
-| 塞尔维亚语（西里尔）      | `sr-Cyrl`     |
-| 塞尔维亚语（拉丁）         | `sr-Latn`     |
-| 斯洛伐克语                  | `sk`          |
-| 斯洛文尼亚语               | `sl`          |
-| 西班牙语                 | `es`          |
-| 瑞典语                 | `sv`          |
-| 塔希提语                | `ty`          |
-| 泰米尔语                   | `ta`          |
-| 泰卢固语                  | `te`          |
-| 泰语                    | `th`          |
-| 汤加语                  | `to`          |
-| 土耳其语                 | `tr`          |
-| 乌克兰语               | `uk`          |
-| 乌尔都语                    | `ur`          |
-| 越南语              | `vi`          |
-| 威尔士语                   | `cy`          |
-| 尤卡坦玛雅语            | `yua`         |
+| 南非荷兰语 | `af` |
+| 阿尔巴尼亚语 | `sq` |
+| 阿姆哈拉语 | `am` |
+| 阿拉伯语 | `ar` |
+| 亚美尼亚语 | `hy` |
+| 阿萨姆语 | `as` |
+| 阿塞拜疆语 | `az` |
+| Bangla | `bn` |
+| 波斯尼亚语(拉丁语系) | `bs` |
+| 保加利亚语 | `bg` |
+| 粤语(繁体) | `yue` |
+| 加泰罗尼亚语 | `ca` |
+| 中文（文学） | `lzh` |
+| 简体中文 | `zh-Hans` |
+| 中文(繁体) | `zh-Hant` |
+| 克罗地亚语 | `hr` |
+| 捷克语 | `cs` |
+| 丹麦语 | `da` |
+| 达里语 | `prs` |
+| 荷兰语 | `nl` |
+| 英语 | `en` |
+| 爱沙尼亚语 | `et` |
+| 斐济语 | `fj` |
+| 菲律宾语 | `fil` |
+| 芬兰语 | `fi` |
+| 法语 | `fr` |
+| 法语（加拿大） | `fr-ca` |
+| 德语 | `de` |
+| 希腊语 | `el` |
+| 古吉拉特语 | `gu` |
+| 海地克里奥尔语 | `ht` |
+| 希伯来语 | `he` |
+| Hindi | `hi` |
+| 白苗文 | `mww` |
+| 匈牙利语 | `hu` |
+| 冰岛语 | `is` |
+| 印度尼西亚语 | `id` |
+| 因纽特语 | `iu` |
+| 爱尔兰语 | `ga` |
+| 意大利语 | `it` |
+| 日语 | `ja` |
+| 卡纳达语 | `kn` |
+| 哈萨克语 | `kk` |
+| 高棉语 | `km` |
+| 克林贡语 | `tlh-Latn` |
+| 克林贡语(plqaD) | `tlh-Piqd` |
+| 韩语 | `ko` |
+| 库尔德语(中部) | `ku` |
+| 库尔德语(北部) | `kmr` |
+| 老挝语 | `lo` |
+| 拉脱维亚语 | `lv` |
+| 立陶宛语 | `lt` |
+| 马达加斯加语 | `mg` |
+| 马来语 | `ms` |
+| 马拉雅拉姆语 | `ml` |
+| 马耳他语 | `mt` |
+| 毛利语 | `mi` |
+| 马拉地语 | `mr` |
+| 缅甸 | `my` |
+| 尼泊尔语 | `ne` |
+| 挪威语 | `nb` |
+| 奥里亚语 | `or` |
+| 普什图语 | `ps` |
+| 波斯语 | `fa` |
+| 波兰语 | `pl` |
+| 葡萄牙语（巴西） | `pt` |
+| 葡萄牙语(葡萄牙) | `pt-pt` |
+| 旁遮普语 | `pa` |
+| 克雷塔罗奥托米语 | `otq` |
+| 罗马尼亚语 | `ro` |
+| 俄语 | `ru` |
+| 萨摩亚语 | `sm` |
+| 塞尔维亚语（西里尔） | `sr-Cyrl` |
+| 塞尔维亚语（拉丁） | `sr-Latn` |
+| 斯洛伐克语 | `sk` |
+| 斯洛文尼亚语 | `sl` |
+| 西班牙语 | `es` |
+| 斯瓦希里语 | `sw` |
+| 瑞典语 | `sv` |
+| 塔希提语 | `ty` |
+| 泰米尔语 | `ta` |
+| 泰卢固语 | `te` |
+| 泰语 | `th` |
+| 提格里尼亚语 | `ti` |
+| 汤加语 | `to` |
+| 土耳其语 | `tr` |
+| 乌克兰语 | `uk` |
+| 乌尔都语 | `ur` |
+| 越南语 | `vi` |
+| 威尔士语 | `cy` |
+| 尤卡坦玛雅语 | `yua` |
 
 ## <a name="speaker-recognition"></a>说话人识别
 

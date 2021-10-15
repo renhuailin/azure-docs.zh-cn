@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/06/2021
 ms.author: v-doeris
 ms.custom: has-adal-ref
-ms.openlocfilehash: a67f493666c458637a2cd48b7e0d78e0bcf59862
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 541200501fd9bd3cc1883283bc308445d0e4115e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418767"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232236"
 ---
 # <a name="how-to-migrate-a-javascript-app-from-adaljs-to-msaljs"></a>如何将 JavaScript 应用从 ADAL.js 迁移到 MSAL.js
 
@@ -98,7 +98,7 @@ const msalInstance = new msal.PublicClientApplication(msalConfig);
 
 初始化 [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) 时使用的一些 [ADAL.js 中的配置选项](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context)在 MSAL.js 中已弃用，同时 MSAL.js 中引入了一些新配置选项。 请参阅[可用选项的完整列表](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md)。 重要的是，在获取令牌期间可以替代其中的许多选项（`clientId` 除外），因此你可以根据每个请求设置这些选项。 例如，可以使用与初始化期间获取令牌时设置的 URI 不同的颁发机构 URI 或重定向 URI 。
 
-此外，不再需要通过配置选项指定登录体验（即，是要使用弹出窗口还是重定向页面）。 MSAL.js 会通过 `PublicClientApplication` 实例公开 `loginPopup` 和 `loginRedirect` 方法。
+此外，不再需要通过配置选项指定登录体验（即，是要使用弹出窗口还是重定向页面）。 相反，`MSAL.js` 通过 `PublicClientApplication` 实例公开 `loginPopup` 和 `loginRedirect` 方法。
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -168,7 +168,7 @@ ADAL.js 中的某些公共方法在 MSAL.js 中有等效方法：
 | 空值                               | `loginPopup`                    |                                                  |
 | 不可用                               | `loginRedirect`                 |                                                  |
 | 不可用                               | `logoutPopup`                   |                                                  |
-| 不可用                               | `logoutRedirect`                |                                                  |
+| 空值                               | `logoutRedirect`                |                                                  |
 | 空值                               | `getAccountByHomeId`            | 按主目录 ID（OID + 租户 ID）筛选帐户    |
 | 空值                               | `getAccountLocalId`             | 按本地 ID 筛选帐户（对于 ADFS 非常有用）   |
 | 空值                               | `getAccountUsername`            | 按用户名（如果存在）筛选帐户         |

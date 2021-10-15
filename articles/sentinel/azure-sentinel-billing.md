@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.custom: subject-cost-optimization
 ms.topic: how-to
 ms.date: 09/02/2021
-ms.openlocfilehash: 3e814541ecf43d8f9d12c028e8bebc8ac31fe411
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bd3ff870952701901f432660ec0069afa5151916
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433469"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275347"
 ---
 # <a name="plan-and-manage-costs-for-azure-sentinel"></a>计划和管理 Azure Sentinel 的成本
 
@@ -321,7 +321,7 @@ Azure Sentinel 会将所有数据引入分析到启用了 Azure Sentinel 的 Log
 
 ### <a name="optimize-log-analytics-costs-with-dedicated-clusters"></a>使用专用群集优化 Log Analytics 成本
 
-如果在同一区域中的 Azure Sentinel 工作区或工作区中每天至少引入 1TB 的数据量，请考虑切换到 Log Analytics 专用群集以降低成本。 Log Analytics 专用群集承诺层级将聚合整个工作区的数据量，这些工作区每天总共引入了 1TB 数据量或更多。
+如果在同一区域中的一个或多个 Azure Sentinel 工作区中每天至少引入 500 GB 的数据量，请考虑切换到 Log Analytics 专用群集以降低成本。 Log Analytics 专用群集承诺层级将聚合整个工作区的数据量，这些工作区每天总共引入了 500 GB 或更多的数据量。
 
 Log Analytics 专用群集不适用于 Azure Sentinel 承诺层级。 对于专用群集中的每个工作区，Azure Sentinel 成本仍然适用。
 
@@ -329,7 +329,7 @@ Log Analytics 专用群集不适用于 Azure Sentinel 承诺层级。 对于专�
 
 - 如果查询中涉及的所有工作区都在专用群集中，则跨工作区查询的运行速度更快。 在您的环境中，最好尽可能少地使用工作区，专用群集仍然[限制最多 100 个工作区](../azure-monitor/logs/cross-workspace-query.md)可以包含在单个跨工作区查询中。
 
-- 专用群集中的所有工作区都可以共享群集上设置的 Log Analytics 承诺层级。 不必为每个工作区单独承诺 Log Analytics 承诺层级，这样可以节省成本，同时提高效率。 如果启用专用群集，你要承诺的最低 Log Analytics 承诺层级是每天 1TB 引入。
+- 专用群集中的所有工作区都可以共享群集上设置的 Log Analytics 承诺层级。 不必为每个工作区单独承诺 Log Analytics 承诺层级，这样可以节省成本，同时提高效率。 如果启用专用群集，你要承诺的最低 Log Analytics 承诺层级是每天 500 GB 数据引入。
 
 下面是迁移到专用群集以实现成本优化的一些其他注意事项：
 

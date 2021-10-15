@@ -2,18 +2,18 @@
 title: 使用 Azure API 管理连接到虚拟网络
 description: 了解如何在 Azure API 管理中创建与虚拟网络的连接并通过该连接访问 Web 服务。
 services: api-management
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/10/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 6eb89c069cb8ce1017b84f5c886231ae767a25a8
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 008e3874961af2c3e8ff8dfe3f162254fb9d5f5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537362"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669239"
 ---
 # <a name="connect-to-a-virtual-network-using-azure-api-management"></a>使用 Azure API 管理连接到虚拟网络
 
@@ -109,7 +109,8 @@ ms.locfileid: "123537362"
 
 :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-add-api.png" alt-text="从 VNET 添加 API":::
 
-## <a name="network-configuration"></a>网络配置
+## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"></a>常见网络配置问题
+
 有关其他网络配置设置，请查看以下部分。 
 
 这些设置解决了在 VNET 中部署 API 管理服务时可能发生的常见错误配置问题。
@@ -148,7 +149,7 @@ ms.locfileid: "123537362"
 | * / 25、587、25028                       | 出站           | TCP                | VIRTUAL_NETWORK/INTERNET            | 连接到 SMTP 中继以发送电子邮件                    | 外部和内部  |
 | * / 6381 - 6383              | 入站和出站 | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 访问 Redis 服务以获取计算机之间的[缓存](api-management-caching-policies.md)策略         | 外部和内部  |
 | * / 4290              | 入站和出站 | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 同步用于计算机之间的[速率限制](api-management-access-restriction-policies.md#LimitCallRateByKey)策略的计数器         | 外部和内部  |
-| * / 6390                       | 入站            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure 基础结构负载均衡器                          | 外部和内部  |
+| * / 6390                       | 入站            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | **Azure 基础结构负载均衡器**                          | 外部和内部  |
 
 #### <a name="stv1"></a>[stv1](#tab/stv1)
 
@@ -166,7 +167,7 @@ ms.locfileid: "123537362"
 | * / 25、587、25028                       | 出站           | TCP                | VIRTUAL_NETWORK/INTERNET            | 连接到 SMTP 中继以发送电子邮件                    | 外部和内部  |
 | * / 6381 - 6383              | 入站和出站 | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 访问 Redis 服务以获取计算机之间的[缓存](api-management-caching-policies.md)策略         | 外部和内部  |
 | * / 4290              | 入站和出站 | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 同步用于计算机之间的[速率限制](api-management-access-restriction-policies.md#LimitCallRateByKey)策略的计数器         | 外部和内部  |
-| * / *                         | 入站            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure 基础结构负载均衡器                          | 外部和内部  |
+| * / *                         | 入站            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure 基础结构负载均衡器（对于高级 SKU 非常重要）                         | 外部和内部  |
 
 ---
 
@@ -207,10 +208,14 @@ ms.locfileid: "123537362"
   从 VNET 内部使用 API 管理扩展时，需要对 `port 443` 上的 `dc.services.visualstudio.com` 进行出站访问，以启用 Azure 门户的诊断日志流。 此访问有助于排查你在使用扩展时可能遭遇的问题。
 
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器  
-  无需允许来自 `Developer` SKU 的 `AZURE_LOAD_BALANCER` 服务标记的入站请求，因为其后只部署了一个计算单位。 但是，当缩放至更高的 SKU（如 `Premium`）时，来自 [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 的入站将变得至关重要，因为负载均衡器发生运行状况探测故障将会导致部署失败。
+  无需允许来自 `Developer` SKU 的 `AZURE_LOAD_BALANCER` 服务标记的入站请求，因为其后只部署了一个计算单位。 但是，在缩放至更高的 SKU（例如 `Premium`）时，从 `AZURE_LOAD_BALANCER` 进行入站访问将变得至关重要，因为负载均衡器中的运行状况探测失败会阻止对控制平面和数据平面的所有入站访问。
 
 ### <a name="application-insights"></a>Application Insights  
   如果已针对 API 管理启用 [Azure Application Insights](api-management-howto-app-insights.md) 监视功能，则允许从 VNET 到[遥测终结点](../azure-monitor/app/ip-addresses.md#outgoing-ports)的出站连接。
+
+### <a name="kms-endpoint"></a>KMS 终结点
+
+将运行 Windows 的虚拟机添加到 VNET 时，请允许在端口 1688 上与云中的 [KMS 终结点](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution)建立出站连接。 此配置会将 Windows VM 流量路由到 Azure 密钥管理服务 (KMS) 服务器，以完成 Windows 激活。
 
 ### <a name="force-tunneling-traffic-to-on-premises-firewall-using-expressroute-or-network-virtual-appliance"></a>使用 ExpressRoute 或网络虚拟设备强制通过隧道将流量传输到本地防火墙  
   你通常可以通过配置及定义自己的默认路由 (0.0.0.0/0)，以使来自 API 管理委托子网的所有流量强制穿过本地防火墙或流入网络虚拟设备。 此流量流会中断与 Azure API 管理的连接，因为出站流量会在本地遭到阻止，或者已经过网络地址转换处理，变为一组无法再与各种 Azure 终结点配合工作的无法识别的地址。 不过，你可以通过多种方法解决此问题： 
@@ -230,6 +235,7 @@ ms.locfileid: "123537362"
       - Azure 门户诊断
       - SMTP 中继
       - 开发人员门户验证码
+      - Azure KMS 服务器
 
 ## <a name="routing"></a>路由
 
@@ -335,7 +341,7 @@ ms.locfileid: "123537362"
   | **必需** | 选择“必需”，以查看 API 管理与必需 Azure 服务之间的连接性。 如果失败，则表示该实例无法执行核心操作来管理 API。 |
   | **可选** | 选择“可选”，以查看 API 管理与可选服务之间的连接性。 如果连接失败，仅表示特定功能（如 SMTP）将无法正常工作。 连接失败可能会导致使用和监视 API 管理实例以及提供所承诺 SLA 的能力下降。 |
 
-  若要解决连接问题，请查看[网络配置设置](#network-configuration)并修复所需的网络设置。
+  若要解决连接问题，请查看[网络配置设置](#network-configuration-issues)并修复所需的网络设置。
 
 * **增量更新**  
   更改网络时，请参阅 [NetworkStatus API](/rest/api/apimanagement/2020-12-01/network-status)，以验证 API 服务是否仍具有关键资源的访问权限。 连接状态应每 15 分钟更新一次。

@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: 2cb284e1978ad6c890835318c51c6095891397cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdf7b67a15cf8bd40dadbb709a2829408fa42a57
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723004"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230547"
 ---
 # <a name="interactive-workbooks"></a>交互式工作簿
 
@@ -173,7 +173,7 @@ ms.locfileid: "101723004"
 3. 选中 `allow selection of multiple values` 复选框。
     1. 显示的可视化效果将允许多选，导出的参数值将是值的数组，类似于使用多选下拉参数时的情况。
     2. 如果未选中，则显示可视化效果将仅遵循选中的最后一个项目。 一次仅导出一个值。
-4. 对于要导出的每个参数，请使用“添加参数”按钮。 此时将出现一个弹出窗口，其中包含要导出的参数的设置。
+4. 对于要导出的每个参数，请使用“添加参数”按钮。 此时会出现一个弹出窗口，其中包含要导出的参数的设置。
 
 启用单选后，作者可以指定要导出原始数据的哪个字段。 字段包括参数名称、参数类型以及未选择任何内容时所要使用的默认值（可选）。
 

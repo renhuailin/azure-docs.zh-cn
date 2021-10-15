@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: bf8b1e04e11dee4e636826430838a467fe034e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b03564c293a5c12dca2a52f3afd5f3347b6c8186
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94951122"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278191"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
 
@@ -45,7 +45,7 @@ ms.locfileid: "94951122"
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>在 IoT 中心滚动更新证书
 
-可以手动将设备证书添加到 IoT 中心。 也可以使用设备预配服务实例自动添加证书。 本文假设使用设备预配服务实例来支持自动预配。
+可以手动将设备证书添加到 IoT 中心。 也可以使用设备预配服务实例自动添加证书。 在本文中，我们将假设使用设备预配服务实例来支持自动预配。
 
 最初通过自动预配服务预配设备后，它会启动并联系预配服务。 预配服务通过以下方式做出响应：执行标识检查，然后使用设备的叶证书作为凭据，在 IoT 中心创建设备标识。 预配服务随后告知设备它已分配到哪个 IoT 中心，然后，设备使用其叶证书进行身份验证并连接到 IoT 中心。 
 
@@ -106,7 +106,7 @@ ms.locfileid: "94951122"
 
 #### <a name="update-compromised-root-ca-certificates"></a>更新已泄露的根 CA 证书
 
-1. 单击设备预配服务实例的“证书”选项卡  。
+1. 单击设备预配服务实例的“证书”选项卡。
 
 2. 在列表中单击已泄露的证书，然后单击“删除”按钮。  输入证书名称确认删除，然后单击“确定”。  针对所有已泄露的证书重复此过程。
 
@@ -114,7 +114,7 @@ ms.locfileid: "94951122"
 
 3. 遵循[配置已验证的 CA 证书](how-to-verify-certificates.md)中所述的步骤，添加并验证新的根 CA 证书。
 
-4. 单击设备预配服务实例的“管理注册”选项卡，然后单击“注册组”列表   。 在列表中单击自己的注册组名称。
+4. 单击设备预配服务实例的“管理注册”选项卡，然后单击“注册组”列表 。 在列表中单击自己的注册组名称。
 
 5. 单击“CA 证书”，然后选择新的根 CA 证书。  然后单击“保存”  。 
 
@@ -160,13 +160,13 @@ ms.locfileid: "94951122"
 
 1. 遵循[配置已验证的 CA 证书](how-to-verify-certificates.md)中所述的步骤，添加并验证新的根 CA 证书。
 
-2. 单击设备预配服务实例的“管理注册”选项卡，然后单击“注册组”列表   。 在列表中单击自己的注册组名称。
+2. 单击设备预配服务实例的“管理注册”选项卡，然后单击“注册组”列表 。 在列表中单击自己的注册组名称。
 
 3. 单击“CA 证书”，然后在“辅助证书”配置下选择新的根 CA 证书。   然后单击“保存”  。 
 
     ![选择新的根 CA 证书以应对过期](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. 以后当主要证书过期时，请单击设备预配服务实例的“证书”选项卡  。 在列表中单击已过期的证书，然后单击“删除”按钮。  输入证书名称确认删除，然后单击“确定”。 
+4. 以后当主要证书过期时，请单击设备预配服务实例的“证书”选项卡。 在列表中单击已过期的证书，然后单击“删除”按钮。  输入证书名称确认删除，然后单击“确定”。 
 
     ![删除根 CA 证书](./media/how-to-roll-certificates/delete-root-cert.png)
 

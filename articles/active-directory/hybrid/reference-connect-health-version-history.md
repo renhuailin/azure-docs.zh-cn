@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44ef48fe75d7070d3f471b06d548c06dc5d972b6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 21d59036677a9a62d366e03bcdedb3a2f5d44abe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479780"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351706"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
@@ -31,6 +31,13 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 >
 
 适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](./reference-connect-version-history.md)有关功能反馈，请在 [Connect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
+
+## <a name="september-2021"></a>2021 年 9 月
+**代理更新**
+- 适用于 AD FS 的 Azure AD Connect Health 代理（版本 3.1.113.0）
+  - 修复以在某些基于设备的身份验证方案中从 AD FS 审核中提取设备信息，例如设备合规性和托管状态、设备操作系统和设备操作系统版本。
+  - 修复以在失败情况下填充 OAuth 应用程序信息并使用更具体的错误代码对 OAuth 失败进行分类
+  - 针对客户计算机上 WMI 调用中断的警报进行修复。 现在，此类调用结果/状态将设置为“notRun”。
 
 ## <a name="may-2021"></a>2021 年 5 月
 **代理更新**

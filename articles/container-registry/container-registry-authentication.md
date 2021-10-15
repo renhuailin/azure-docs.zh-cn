@@ -4,12 +4,12 @@ description: 专用 Azure 容器注册表的身份验证选项，包括使用 Az
 ms.topic: article
 ms.date: 06/16/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 04a8e1e4b44340812b0e249255ab394f3081038f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: e21d1a12c0fc9e4cc818ee96f211f541c3ed511a
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113005774"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545937"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>使用 Azure 容器注册表进行身份验证
 
@@ -31,7 +31,7 @@ ms.locfileid: "113005774"
 | [单个 AD 标识](#individual-login-with-azure-ad)                | Azure CLI 中的 `az acr login` <br/><br/> Azure PowerShell 中的 `Connect-AzContainerRegistry`                             | 开发人员、测试人员的交互式推送/拉取                                    | 是                              | AD 令牌必须每隔 3 小时续订一次     |
 | [AD 服务主体](#service-principal)                  | `docker login`<br/><br/>Azure CLI 中的 `az acr login`<br/><br/> Azure PowerShell 中的 `Connect-AzContainerRegistry`<br/><br/> API 或工具中的注册表登录设置<br/><br/> [Kubernetes 拉取机密](container-registry-auth-kubernetes.md)                                           | 从 CI/CD 管道进行的无人参与推送<br/><br/> 到 Azure 或外部服务的无人参与拉取  | 是                              | 存储过程密码默认有效期为 1 年       |
 | [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI 中的  `az acr login` <br/><br/> Azure PowerShell 中的 `Connect-AzContainerRegistry`                                       | 从 Azure CI/CD 管道进行的无人参与推送<br/><br/> 到 Azure 服务的无人参与拉取<br/><br/>   | 是                              | 仅从[支持 Azure 资源托管标识](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)的特选 Azure 服务中使用              |
-| [AKS 群集托管标识](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | 创建或更新 AKS 群集时附加注册表  | 以无人参与的方式拉取到相同或不同订阅中的 AKS 群集                                                 | 否，仅限拉取访问             | 仅适用于 AKS 群集            |
+| [AKS 群集托管标识](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | 创建或更新 AKS 群集时附加注册表  | 以无人参与的方式拉取到相同或不同订阅中的 AKS 群集                                                 | 否，仅限拉取访问             | 仅适用于 AKS 群集<br/><br/>不能用于跨租户身份验证            |
 | [AKS 群集服务主体](authenticate-aks-cross-tenant.md)                    | 创建或更新 AKS 群集时启用  | 从另一个 AD 租户中的注册表中，以无人参与的方式拉取到 AKS 群集                                                  | 否，仅限拉取访问             | 仅适用于 AKS 群集            |
 | [管理员用户](#admin-account)                            | `docker login`                                          | 各个开发人员或测试人员的交互式推送/拉取<br/><br/>从注册表到 Azure 应用服务或 Azure 容器实例的映像门户部署                      | 否，始终仅限拉取和推送访问  | 每个注册表一个帐户，不建议用于多个用户         |
 | [存储库范围的访问令牌](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>Azure CLI 中的 `az acr login`<br/><br/> Azure PowerShell 中的 `Connect-AzContainerRegistry`<br/><br/> [Kubernetes 拉取机密](container-registry-auth-kubernetes.md)    | 各个开发人员或测试人员对存储库的交互式推送/拉取<br/><br/> 各个系统或外部设备从存储库进行无人参与拉取                  | 是                              | 当前未与 AD 标识集成  |

@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: db2c4e50b4de7a680b114582baf1361ee4d75fb8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 017e1ce50c121860038594279a339a03f17bc180
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768812"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363056"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
@@ -40,7 +40,7 @@ Speech Studio 更新
 - C++/C#/Java：我们为 `VoiceProfileClient` 类添加了新 API `GetActivationPhrasesAsync()`，用于为独立识别场景接收说话人识别注册阶段中有效激活短语的列表。 
     - 重要说明：说话人识别功能处于预览版阶段。 在说话人识别功能从预览版中移出到正式发布版中 90 天后，所有在预览版中创建的语音配置文件都将会终止。 届时，预览版语音配置文件将停止运行。
 - Python：在现有的 `SpeechRecognizer` 和 `TranslationRecognizer` 对象上添加了[对连续语言标识 (LID) 的支持](./how-to-automatic-language-detection.md?pivots=programming-language-python)。 
-- Python：添加了名为 `SourceLanguageRecognizer` 的[新 Python 对象](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.sourcelanguagerecognizer?view=azure-python)，以执行一次性或连续的 LID（不进行识别或翻译）。 
+- Python：添加了名为 `SourceLanguageRecognizer` 的[新 Python 对象](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.sourcelanguagerecognizer)，以执行一次性或连续的 LID（不进行识别或翻译）。 
 - JavaScript：为 `VoiceProfileClient` 类添加了 `getActivationPhrasesAsync` API，用于为独立识别场景接收说话人识别注册阶段中有效激活短语的列表。 
 - JavaScript `VoiceProfileClient` 的 `enrollProfileAsync` API 现在为异步可等待。 有关示例用法，请参阅[此独立标识代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/node/speaker-recognition/identification/independent-identification.js)。
 
@@ -602,7 +602,7 @@ SPX 是命令行接口，无需编写代码即可使用 Azure 语音服务。
     | `es-MX` | $1.58 | un peso cincuenta y ocho centavos |
     | `es-ES` | $1.58 | un dólar cincuenta y ocho centavos |
 
-    * 支持以下区域设置中的负货币（例如“-325 €”）：`en-US`、`en-GB`、`fr-FR`、`it-IT`、`en-AU`、`en-CA`。
+    * 支持以下区域设置中的负货币（例如“-325 &euro;”）：`en-US`、`en-GB`、`fr-FR`、`it-IT`、`en-AU`、`en-CA`。
 
 * 改进了 `pt-PT` 中的地址读取。
 * 修复了单词“for”和“four”的 Natasha (`en-AU`) 和 Libby (`en-UK`) 发音问题。

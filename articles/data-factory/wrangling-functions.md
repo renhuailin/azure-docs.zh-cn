@@ -7,21 +7,18 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: e3f310fb7544ed92dcf096dcf0d6e276a01fa7de
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2af1e7f9e1b787e73247d9537b4a8876cc4f7220
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732985"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361240"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Power Query 中用于数据整理的转换函数
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 使用 Azure 数据工厂中的数据整理，可以通过将 Power Query ```M``` 脚本转换为数据流脚本，进行云规模的无代码敏捷数据准备和整理。 ADF 与 [Power Query Online](/powerquery-m/power-query-m-reference) 集成，并通过执行 Spark 使用数据流 Spark 基础结构，使 Power Query ```M``` 函数可用于数据整理。 
-
-> [!NOTE]
-> ADF 中的 Power Query 目前以公共预览版提供
 
 目前，尽管在创作过程中可以使用 Power Query M 函数，但并非所有的 Power Query M 函数都支持用于数据处理。 在构建 Power Query 混合时，如果函数不受支持，系统将提示以下错误消息：
 
@@ -104,19 +101,42 @@ ms.locfileid: "124732985"
 
 ## <a name="m-script-workarounds"></a>M 脚本解决方法
 
-### <a name="for-splitcolumn-there-is-an-alternate-for-split-by-length-and-by-position"></a>对于 ```SplitColumn```，有一个备用项用于按长度和位置拆分
+### ```SplitColumn```
+
+下面列出了一个备用项，用于按长度和位置拆分
 
 * Table.AddColumn(Source, "First characters", each Text.Start([Email], 7), type text)
 * Table.AddColumn(#"Inserted first characters", "Text range", each Text.Middle([Email], 4, 9), type text)
 
 可从功能区中的“提取”选项访问此选项
 
-:::image type="content" source="media/wrangling-data-flow/pq-split.png" alt-text="Power Query 添加列":::
+:::image type="content" source="media/wrangling-data-flow/power-query-split.png" alt-text="Power Query 添加列":::
 
-### <a name="for-tablecombinecolumns"></a>对于 ```Table.CombineColumns```
+### ```Table.CombineColumns```
 
 * Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName])
 
+### <a name="pivots"></a>透视
+
+* 从 PQ 编辑器中选择“透视转换”，然后选择透视列
+
+![Power Query 通用透视](media/wrangling-data-flow/power-query-pivot-1.png)
+
+* 接下来，选择值列和聚合函数
+
+![Power Query 透视选择器](media/wrangling-data-flow/power-query-pivot-2.png)
+
+* 单击“确定”时，将看到编辑器中数据已使用透视值进行更新
+* 还会看到一条警告消息，指出转换可能不受支持
+* 若要修复此警告，使用 PQ 编辑器手动展开透视列表
+* 从功能区中选择“高级编辑器”选项
+* 手动展开透视值列表
+* 将 List.Distinct() 替换为值列表，如下所示：
+```
+#"Pivoted column" = Table.Pivot(Table.TransformColumnTypes(#"Changed column type 1", {{"genres", type text}}), {"Drama", "Horror", "Comedy", "Musical", "Documentary"}, "genres", "Rating", List.Average)
+in
+  #"Pivoted column"
+```
 
 ## <a name="next-steps"></a>后续步骤
 

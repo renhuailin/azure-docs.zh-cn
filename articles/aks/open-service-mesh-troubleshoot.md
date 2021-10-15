@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 0394815b4e75fb8d1f1f277010602839dc6876eb
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 397a1ff24152bf0496842971e545b3eb65e779a3
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439796"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534007"
 ---
 # <a name="open-service-mesh-osm-aks-add-on-troubleshooting-guides"></a>Open Service Mesh (OSM) AKS 附加产品故障排除指南
 
@@ -449,3 +449,11 @@ kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/v0.8.2/ch
 ```azurecli-interactive
 kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/v0.8.2/charts/osm/crds/split.yaml
 ```
+
+### <a name="certificate-management"></a>证书管理
+
+在 [OpenServiceMesh 文档站点](https://docs.openservicemesh.io/docs/guides/certificates/)上可以找到有关 OSM 如何向应用程序 Pod 上运行的 Envoy 代理颁发证书和管理这些证书的信息。
+
+### <a name="upgrading-envoy"></a>升级 Envoy
+
+在加载项监视的命名空间中创建新的 Pod 时，OSM 会在该 Pod 中注入一个 [Envoy 代理挎斗](https://docs.openservicemesh.io/docs/guides/app_onboarding/sidecar_injection/)。 在 OpenServiceMesh 文档站点上的[升级指南](https://docs.openservicemesh.io/docs/getting_started/upgrade/#envoy)中可以找到有关如何更新 Envoy 版本的信息。

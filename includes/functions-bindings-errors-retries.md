@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 740f1e3bd8c08ae7d1684613d1920cffd1bba619
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96356187"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129237286"
 ---
 Azure Functions 中引发的错误可能来自以下任一来源：
 
@@ -297,9 +297,9 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 |---------|---------|---------| 
 |strategy|不适用|必需。 要使用的重试策略。 有效值为 `fixedDelay` or `exponentialBackoff`进行求值的基于 SQL 语言的筛选器表达式。|
 |maxRetryCount|不适用|必需。 每个函数执行允许的最大重试次数。 `-1` 表示无限重试。|
-|delayInterval|不适用|使用 `fixedDelay` 策略时会在重试之间使用的延迟。|
-|minimumInterval|不适用|使用 `exponentialBackoff` 策略时的最小重试延迟。|
-|maximumInterval|不适用|使用 `exponentialBackoff` 策略时的最大重试延迟。| 
+|delayInterval|不适用|使用 `fixedDelay` 策略时在重试之间使用的延迟。 指定为一个格式为 `HH:mm:ss` 的字符串。|
+|minimumInterval|不适用|使用 `exponentialBackoff` 策略时的最小重试延迟。 指定为一个格式为 `HH:mm:ss` 的字符串。|
+|maximumInterval|不适用|使用 `exponentialBackoff` 策略时的最大重试延迟。 指定为一个格式为 `HH:mm:ss` 的字符串。| 
 
 ### <a name="retry-limitations-during-preview"></a>预览期间的重试限制
 

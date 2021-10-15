@@ -1,22 +1,22 @@
 ---
-title: 使用托管联机终结点（预览版）部署机器学习模型
+title: 使用托管联机终结点（预览版）部署 ML 模型
 titleSuffix: Azure Machine Learning
 description: 了解如何将机器学习模型部署为由 Azure 自动管理的 Web 服务。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
 ms.date: 08/05/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 0c421148571b99bb182de6841586caafb116df42
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 882f0d8d140d7394e82aa23bf9a5b72b477940e5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418427"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423607"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-a-managed-online-endpoint-preview"></a>使用托管联机终结点（预览版）部署机器学习模型并为其评分
 
@@ -92,7 +92,7 @@ set ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 
 下表描述了 YAML 格式的终结点的参考资料。 若要了解如何指定这些属性，请参阅[准备系统](#prepare-your-system)或[联机终结点 YAML 参考](reference-yaml-endpoint-managed-online.md)中的 YAML 示例。 有关托管终结点相关限制的信息，请参阅[管理和提高 Azure 机器学习资源的配额](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)。
 
-| 键 | 描述 |
+| 键 | 说明 |
 | --- | --- |
 | `$schema`    | （可选）YAML 架构。 如要查看 YAML 文件的所有可用选项，可在浏览器中查看上述示例中的架构。|
 | `name`       | 终结点的名称。 在 Azure 区域中必须具有唯一性。|
@@ -102,7 +102,7 @@ set ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 
 下表描述了 `deployments` 的属性：
 
-| 键 | 描述 |
+| 密钥 | 说明 |
 | --- | --- |
 | `name`  | 部署的名称。 |
 | `model` | 在此示例中，我们指定了内联模型属性：`name`、`version` 和 `local_path`。 将自动上传和注册模型文件。 内联规范的缺点是，如果要更新模型文件，则必须手动递增版本。 有关相关的最佳实践，请参阅下一节中的提示。 |
@@ -265,7 +265,7 @@ az ml endpoint get-credentials -n $ENDPOINT_NAME
 
 1. 打开 online/model-1/onlinescoring/score.py 文件。
 1. 更改 `init()` 函数的最后一行：在 `logging.info("Init complete")` 后面，添加 `logging.info("Updated successfully")`。 
-1. 保存该文件。
+1. 保存文件。
 1. 运行以下命令：
 
     ```azurecli

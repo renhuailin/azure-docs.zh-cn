@@ -4,13 +4,13 @@ description: 介绍 Bicep 文件中用于确定逻辑值的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: e3a811102c31301386135042c79c205eeb9f7f9a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 4ab5f0382d320e31c650dcb6ebee68f39d6e43b1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758420"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362989"
 ---
 # <a name="logical-functions-for-bicep"></a>Bicep 的逻辑函数
 
@@ -24,7 +24,9 @@ Azure 资源管理器模板中的大多数逻辑函数在 Bicep 中将被替换�
 
 将参数转换为布尔值。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |

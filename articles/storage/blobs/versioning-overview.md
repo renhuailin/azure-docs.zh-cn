@@ -10,12 +10,12 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1feb78c381a189ae2db1d2aa658f8d0782769f99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2fa724f139881f7647468684f5ad97d80a80baf2
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664782"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274418"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -109,7 +109,7 @@ Blob 的所有版本必须具有相同的 blob 类型。 如果 blob 具有先�
 
 ### <a name="access-tiers"></a>访问层级
 
-可以通过调用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作将块 blob 的任何版本（包括当前版本）移到不同的 blob 访问层。 要利用较低的容量定价，可以将较早版本的 blob 移到冷访问层或存档访问层。 有关详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。
+可以通过调用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作将块 blob 的任何版本（包括当前版本）移到不同的 blob 访问层。 要利用较低的容量定价，可以将较早版本的 blob 移到冷访问层或存档访问层。 有关详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 
 若要自动将块 blob 移到相应的层，请使用 blob 生命周期管理。 有关生命周期管理的详细信息，请参阅[管理 Azure Blob 存储生命周期](./lifecycle-management-overview.md)。
 
@@ -209,7 +209,7 @@ Blob 版本的已签名资源为 `bv`。 有关详细信息，请参阅[创建�
 
 启用 blob 版本控制可能会导致帐户产生额外的数据存储费用。 在设计应用程序时，有必要了解在哪些情况下会产生这些费用，以便最大程度地减少费用。
 
-Blob 版本和 blob 快照一样，按与活动数据相同的费率计费。 如何对版本进行计费取决于是否已为基本 blob 或其任何版本（或快照）显式设置层级。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。
+Blob 版本和 blob 快照一样，按与活动数据相同的费率计费。 如何对版本进行计费取决于是否已为基本 blob 或其任何版本（或快照）显式设置层级。 有关 Blob 层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 
 如果尚未更改 blob 或版本的层级，则会针对该 blob、其版本及其拥有的任何快照中不重复的数据块进行计费。 有关详细信息，请参阅[在未显式设置 blob 层级时进行计费](#billing-when-the-blob-tier-has-not-been-explicitly-set)。
 
@@ -298,7 +298,7 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
 
 | 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|

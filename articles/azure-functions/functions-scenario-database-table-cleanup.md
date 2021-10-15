@@ -4,13 +4,13 @@ description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 10/02/2019
-ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/04/2021
+ms.openlocfilehash: d1e98f180579ec7dd070fcbb9adf2e7ede7b15fe
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88207251"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418801"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
@@ -44,9 +44,15 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 但前提是必须已将应用发布到 Azure。 若尚未执行此操作，[请将函数应用发布到 Azure ](functions-develop-vs.md#publish-to-azure)。
 
-1. 在解决方案资源管理器中，右键单击函数应用项目，选择“发布” > “编辑 Azure 应用服务设置” 。 选择“添加设置”，在“新建应用设置名称”中键入 `sqldb_connection`然后选择“确认”  。
+1. 在“解决方案资源管理器”中，右键单击函数应用项目并选择“发布”。
 
-    ![函数应用的应用程序设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
+1. 在“发布”页上，选择“托管”区域中的省略号 (`...`)，然后选择“管理 Azure 应用服务设置”。 
+
+    ![管理函数应用的应用服务设置。](./media/functions-scenario-database-table-cleanup/publish-new-resource.png)
+
+1. 在“应用程序设置”中选择“添加设置”，在“新建应用设置名称”中键入 `sqldb_connection`，然后选择“确定”   。
+
+    ![为函数应用添加应用设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
 1. 在新的“sqldb_connection”设置中，将上一部分复制的连接字符串粘贴到“本地”，并将 `{your_username}` 和 `{your_password}` 占位符替换为实际值 。 选择“从本地插入值”以将更新值复制到“远程”字段，然后选择“确认”  。
 
@@ -54,7 +60,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
     连接字符串以加密方式存储在 Azure 中（远程）。 为防止泄密，应从源代码管理中排除 local.settings.json 项目文件（本地），例如，通过使用 .gitignore 文件完成。
 
-## <a name="add-the-sqlclient-package-to-the-project"></a>将 SqlClient 包添加到项目中
+## <a name="add-the-sqlclient-package-to-the-project&quot;></a>将 SqlClient 包添加到项目中
 
 你需要添加包含 SqlClient 库的 NuGet 包。 需要此数据访问库以连接到 SQL 数据库。
 
@@ -72,7 +78,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 现在，可以添加连接到 SQL 数据库的 C# 函数代码。
 
-## <a name="add-a-timer-triggered-function"></a>添加计时器触发的函数
+## <a name=&quot;add-a-timer-triggered-function&quot;></a>添加计时器触发的函数
 
 1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“添加” > “新 Azure 函数” 。
 
@@ -90,7 +96,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 1. 将现有 `Run` 函数替换为以下代码：
 
     ```cs
-    [FunctionName("DatabaseCleanup")]
+    [FunctionName(&quot;DatabaseCleanup")]
     public static async Task Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer, ILogger log)
     {
         // Get the connection string from app settings and use it to create a connection.

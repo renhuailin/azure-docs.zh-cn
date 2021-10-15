@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 2a0a104b4ad76c94d467c01fe8be421e5b96c435
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: da47d07b804dfee46299ef75e81261171880ea76
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541650"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232064"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -160,7 +160,7 @@ Azure AD 多重身份验证要求完成多种形式的身份验证，因而有�
 
 **最佳做法**：
 
-- 使用 Windows 凭据进行单一登录身份验证。 将本地 AD 域与 Azure AD 相联合，并使用 Windows 集成身份验证（适用于 Azure AD 中已加入域的计算机）。
+- 使用 Windows 凭据进行单一登录身份验证。 将本地 AD 域与 Azure AD 相联合，并使用集成 Windows 身份验证（适用于 Azure AD 中已加入域的计算机）。
   - 请参阅 [SSMS 对 Azure AD 集成身份验证的支持](authentication-aad-configure.md#active-directory-integrated-authentication)一文。
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-applications"></a>尽量减少对应用程序使用基于密码的身份验证

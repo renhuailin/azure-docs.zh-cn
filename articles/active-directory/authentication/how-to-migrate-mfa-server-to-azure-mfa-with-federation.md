@@ -1,7 +1,6 @@
 ---
 title: 通过联合身份验证迁移到 Azure AD MFA - Azure Active Directory
 description: 通过联合身份验证从本地 Azure MFA 服务器迁移到 Azure AD MFA 的分步指南
-services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
@@ -11,12 +10,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b34538fb4d0c9dc7beb0defd22f0aa78207f0a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c5d92d16f5ac9fcd8aa69ce9fd71f4844a77d28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730791"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352716"
 ---
 # <a name="migrate-to-azure-ad-mfa-with-federation"></a>通过联合身份验证迁移到 Azure AD MFA
 
@@ -40,7 +39,7 @@ ms.locfileid: "121730791"
 
 ### <a name="upgrade-ad-fs-server-farm-to-2019-fbl-4"></a>将 AD FS 服务器场升级到 2019，将 FBL 升级到 4
 
-在 AD FS 2019 中，可以为信赖方（例如应用程序）指定附加身份验证方法。 使用组成员身份来确定身份验证提供程序。 通过指定附加身份验证方法，可以过渡到 Azure AD MFA，同时在过渡期间保持其他身份验证不变。 有关详细信息，请参阅[使用 WID 数据库升级到 Windows Server 2016 中的 AD FS](/windows-server/identity/ad-fs/deployment/upgrading-to-ad-fs-in-windows-server)。 这篇文章介绍如何将场升级到 AD FS 2019，以及如何将 FBL 升级到 4。
+在 AD FS 2019 中，可以为信赖方（例如应用程序）指定附加身份验证方法。 使用组成员身份来确定身份验证提供程序。 通过指定附加身份验证方法，可以过渡到 Azure AD MFA，同时在过渡期间保持其他身份验证不变。 有关详细信息，请参阅[使用 WID 数据库升级到 Windows Server 2016 中的 AD FS](/windows-server/identity/ad-fs/deployment/upgrading-to-ad-fs-in-windows-server)。 该文章介绍了如何将场升级到 AD FS 2019，以及如何将 FBL 升级到 4。
 
 ### <a name="configure-claims-rules-to-invoke-azure-ad-mfa"></a>配置声明规则以调用 Azure AD MFA
 
@@ -65,7 +64,7 @@ Get-AdfsAdditionalAuthenticationRule
 若要查看现有的信赖方信任，请运行以下命令并将 RPTrustName 替换为信赖方信任声明规则的名称： 
 
 ```powershell
-(Get-AdfsRelyingPartyTrust -Name “RPTrustName”).AdditionalAuthenticationRules 
+(Get-AdfsRelyingPartyTrust -Name "RPTrustName").AdditionalAuthenticationRules 
 ```
 
 #### <a name="access-control-policies"></a>访问控制策略
@@ -92,7 +91,7 @@ Set-AdfsRelyingPartyTrust -TargetName AppA -AccessControlPolicyName $Null
 
 若要查找组 SID，请结合组名使用以下命令
 
-`Get-ADGroup “GroupName”`
+`Get-ADGroup "GroupName"`
 
 ![显示 Get-ADGroup 脚本结果的屏幕截图图像。](./media/how-to-migrate-mfa-server-to-azure-mfa-user-authentication/find-the-sid.png)
 
@@ -112,7 +111,7 @@ Set-AdfsRelyingPartyTrust -TargetName AppA -AccessControlPolicyName $Null
 运行以下 Azure Powershell cmdlet： 
 
 ```powershell
-(Get-AdfsRelyingPartyTrust -Name “RPTrustName”).AdditionalAuthenticationRules
+(Get-AdfsRelyingPartyTrust -Name "RPTrustName").AdditionalAuthenticationRules
 ```
 
  
@@ -126,7 +125,7 @@ Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
 Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 以下示例假设当前声明规则已配置为，当用户从你的网络外部进行连接时，提示他们执行 MFA。 此示例包括需要追加的附加规则。
@@ -137,12 +136,12 @@ Set-AdfsAdditionalAuthenticationRule -AdditionalAuthenticationRules 'c:[type ==
 "https://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod", value = 
 "https://schemas.microsoft.com/claims/multipleauthn" );
  c:[Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value == 
-“YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
+"YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
 Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
-Value==“YourGroupSid"]) => issue(Type = 
+Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 
@@ -156,12 +155,12 @@ Set-AdfsRelyingPartyTrust -TargetName AppA -AdditionalAuthenticationRules 'c:[ty
 "https://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod", value = 
 "https://schemas.microsoft.com/claims/multipleauthn" );
 c:[Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value == 
-“YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
+"YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
 Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
-Value==“YourGroupSid"]) => issue(Type = 
+Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 
@@ -183,7 +182,7 @@ Value==“YourGroupSid"]) => issue(Type =
 
 如果 SupportsMFA 标志设置为 False，你可能没有使用 Azure MFA；你可能正在使用 AD FS 信赖方的声明规则来调用 MFA。
 
-你可以使用以下 [Windows PowerShell](/powershell/module/msonline/get-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 检查 SupportsMFA 标志的状态：
+你可以使用以下 [Windows PowerShell](/powershell/module/msonline/get-msoldomainfederationsettings) cmdlet 检查 SupportsMFA 标志的状态：
 
 ```powershell
 Get-MsolDomainFederationSettings –DomainName yourdomain.com
@@ -216,7 +215,7 @@ Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true
 
 可通过两种方式为用户注册 Azure MFA： 
 
-* 注册组合式安全信息（MFA 和自助式密码重置） 
+* 注册组合安全性（MFA 和自助式密码重置） 
 
 * 从 MFA 服务器迁移电话号码
 
@@ -328,17 +327,17 @@ $csv|% { New-MgUserAuthenticationPhoneMethod -UserId $_.UPN -phoneType $_.PhoneT
  
 ```console
 c:[Type == &quot;https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid&quot;, Value ==
-“**YourGroupSID**&quot;] => issue(Type = &quot;https://schemas.microsoft.com/claims/authnmethodsproviders&quot;,
+&quot;**YourGroupSID**&quot;] => issue(Type = &quot;https://schemas.microsoft.com/claims/authnmethodsproviders&quot;,
 Value = &quot;AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid",
 Value=="YourGroupSid"]) => issue(Type =
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value =
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 ### <a name="disable-mfa-server-as-an-authentication-provider-in-ad-fs"></a>禁用用作 AD FS 中的身份验证提供程序的 MFA 服务器
 
-此项更改可确保仅将 Azure MFA 用作身份验证提供程序。
+此项更改可确保只将 Azure MFA 用作身份验证提供程序。
 
 1. 打开 AD FS 管理控制台。
 

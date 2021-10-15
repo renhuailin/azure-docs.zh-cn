@@ -4,13 +4,13 @@ description: 介绍在 Bicep 文件中用于处理数组的函数。
 author: mumian
 ms.topic: conceptual
 ms.author: jgao
-ms.date: 09/10/2021
-ms.openlocfilehash: 69a937a68e2f73eaf911f2cb80cf09bab7d78eed
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 69e1e3c9574d6a32663186d46c1af3dceb422f4a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794094"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357618"
 ---
 # <a name="array-functions-for-bicep"></a>Bicep 的数组函数
 
@@ -22,7 +22,9 @@ ms.locfileid: "124794094"
 
 将值转换为数组。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -63,7 +65,9 @@ output objectOutput array = array(objectToConvert)
 
 组合多个数组并返回串联的数组。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -106,6 +110,8 @@ output return array = concat(firstArray, secondArray)
 `contains(container, itemToFind)`
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
+
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>参数
 
@@ -160,6 +166,8 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 确定数组、对象或字符串是否为空。
 
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
@@ -198,7 +206,9 @@ output stringEmpty bool = empty(testString)
 
 返回数组的第一个元素，或字符串的第一个字符。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -236,7 +246,9 @@ output stringOutput string = first('One Two Three')
 
 返回包含参数中通用元素的单个数组或对象。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -327,7 +339,9 @@ output commonDown array = intersection(array2, array3, array1)
 
 返回数组的最后一个元素，或字符串的最后一个字符。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -365,7 +379,9 @@ output stringOutput string = last('One Two three')
 
 返回数组中的元素数、字符串中的字符数或对象中的根级属性数。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -415,7 +431,9 @@ output objectLength int = length(objectToTest)
 
 返回整数数组或逗号分隔的整数列表中的最大值。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -455,7 +473,9 @@ output intOutput int = max(0,3,2,5,4)
 
 返回整数数组或逗号分隔的整数列表中的最小值。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -495,6 +515,8 @@ output intOutput int = min(0,3,2,5,4)
 
 从起始整数并提供项数创建一个整数数组。
 
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
@@ -529,7 +551,9 @@ output rangeOutput array = range(startingInt, numberOfElements)
 
 返回一个数组，其中包含数组中指定数字后面的所有元素；或返回一个字符串，其中包含字符串中指定数后面的所有字符。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -571,7 +595,9 @@ output stringOutput string = skip(testString, charactersToSkip)
 
 返回一个数组，其中包含从数组开头位置算起的指定数目的元素；或返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -613,7 +639,9 @@ output stringOutput string = take(testString, charactersToTake)
 
 返回包含参数中所有元素的单个数组或对象。 重复的值或键仅包含一次。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |

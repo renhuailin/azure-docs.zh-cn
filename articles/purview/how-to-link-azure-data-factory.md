@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 6778394fa152f22002ef48681942edde4b4ed460
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 5ea3b24cbdbd4a4c9a1f11883e8a2231467a7ee3
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219077"
+ms.locfileid: "129278566"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
@@ -73,7 +73,7 @@ ms.locfileid: "129219077"
 
 - 对于在 2021 年 8 月 18 日或之后创建的 Purview 帐户，向数据工厂的托管标识授予 Purview 根集合的“数据管理者”角色  。 详细了解 [Azure Purview 中的访问控制](../purview/catalog-permissions.md)和[添加角色并限制通过集合的访问](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)。
 
-- 对于在 2021 年 8 月 18 日之前创建的 Purview 帐户，向数据工厂的托管标识授予 Purview 帐户的 Azure 内置 [Purview 数据管理者](../role-based-access-control/built-in-roles.md#purview-data-curator)角色 。 详细了解 [Azure Purview 中的访问控制 - 旧版权限](../purview/catalog-permissions.md#legacy-permission-guide)。
+- 对于在 2021 年 8 月 18 日之前创建的 Purview 帐户，向数据工厂的托管标识授予 Purview 帐户的 Azure 内置 [Purview 数据管理者(旧)](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy)角色。 详细了解 [Azure Purview 中的访问控制 - 旧版权限](../purview/catalog-permissions.md#legacy-permission-guide)。
 
 ### <a name="remove-data-factory-connections"></a>删除数据工厂连接
 

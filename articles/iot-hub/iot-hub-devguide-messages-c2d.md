@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: cc681d843d1fc68b3da6918724c7ad3e3ca5e37e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3901f624f5df8770a235c6cd184aca4a3409c26b
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727820"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129547126"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -84,7 +84,7 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 
 如 [终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 */messages/servicebound/feedback* 以消息方式传送反馈。 接收反馈的语义与云到设备消息的语义相同。 可能的话，消息反馈将放入单个消息中，其格式如下：
 
-| 属性     | 说明 |
+| Property     | 说明 |
 | ------------ | ----------- |
 | EnqueuedTime | 一个时间戳，指示中心收到反馈消息的时间 |
 | UserId       | `{iot hub name}` |
@@ -94,14 +94,14 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 
 正文是记录的 JSON 序列化数组，每条记录具有以下属性：
 
-| 属性           | 说明 |
+| Property           | 说明 |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | 一个时间戳，指示消息的结果（例如，中心已收到反馈消息，或原始消息已过期） |
-| OriginalMessageId  | 与此反馈信息相关的从云到设备的消息的 *MessageId* |
-| StatusCode         | 必需的字符串，在 IoT 中心生成的反馈消息中使用： <br/> *Success* <br/> *已过期* <br/> *DeliveryCountExceeded* <br/> *已拒绝* <br/> *Purged* |
-| 说明        | *StatusCode* 的字符串值 |
-| DeviceId           | 与此反馈信息相关的从云到设备的消息的目标设备的 *DeviceId* |
-| DeviceGenerationId | 与此反馈信息相关的从云到设备的消息的目标设备的 *DeviceGenerationId* |
+| enqueuedTimeUtc    | 一个时间戳，指示消息的结果（例如，中心已收到反馈消息，或原始消息已过期） |
+| originalMessageId  | 与此反馈信息相关的从云到设备的消息的 *MessageId* |
+| statusCode         | 必需的字符串，在 IoT 中心生成的反馈消息中使用： <br/> *Success* <br/> *已过期* <br/> *DeliveryCountExceeded* <br/> *已拒绝* <br/> *Purged* |
+| description        | *StatusCode* 的字符串值 |
+| deviceId           | 与此反馈信息相关的从云到设备的消息的目标设备的 *DeviceId* |
+| deviceGenerationId | 与此反馈信息相关的从云到设备的消息的目标设备的 *DeviceGenerationId* |
 
 服务必须指定 *MessageId* ，云到设备的消息才能将其反馈与原始消息相关联。
 
@@ -110,12 +110,12 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 ```json
 [
   {
-    "OriginalMessageId": "0987654321",
-    "EnqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
-    "StatusCode": 0,
-    "Description": "Success",
-    "DeviceId": "123",
-    "DeviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
+    "originalMessageId": "0987654321",
+    "enqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
+    "statusCode": "Success",
+    "description": "Success",
+    "deviceId": "123",
+    "deviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
   },
   {
     ...
@@ -134,7 +134,7 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 
 每个 IoT 中心都针对云到设备的消息传送公开以下配置选项：
 
-| 属性                  | 说明 | 范围和默认值 |
+| Property                  | 说明 | 范围和默认值 |
 | ------------------------- | ----------- | ----------------- |
 | defaultTtlAsIso8601       | 云到设备消息的默认 TTL | ISO_8601 间隔，最大为 2 天（最小为 1 分钟）；默认值：1 小时 |
 | maxDeliveryCount          | 每个设备队列的云到设备最大传送计数 | 1 到 100；默认值：10 |

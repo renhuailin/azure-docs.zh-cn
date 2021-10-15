@@ -5,18 +5,18 @@ description: 了解如何使用 Azure 机器学习在 Azure Functions 应用中�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
-ms.author: ssambare
-author: shivanissambare
+ms.author: vaidyas
+author: vaidya-s
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.custom: racking-python, devx-track-azurecli
-ms.openlocfilehash: 736568527f629b0552b3829815e02c288edeead1
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 2f1c1a1e5e467591f12c7c28f3c9108b1d5be9e3
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714711"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425442"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions（预览版）
 

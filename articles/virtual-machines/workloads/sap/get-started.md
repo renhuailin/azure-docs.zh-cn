@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/24/2021
+ms.date: 10/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ac0c2795f5af31cec40d03ec1889f333441ae25
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 9e875e71a3faaa7314322c170ca09e3b65f5f8ca
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129054806"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399539"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -80,6 +80,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在从文档 [Sap NetWeaver 的
 在本节中，可以找到有关 Microsoft Power BI 集成到 SAP 数据源中以及 Azure 数据工厂集成到 SAP BW 中的文档。
 
 ## <a name="change-log"></a>更改日志
+- 2021 年 10 月 1 日：在目录中添加了链接，该链接指向新的适用于 SAP HANA 备份的 Azure 备份体系结构文档。 在[适用于 SAP 工作负载的 Azure 虚拟机 Oracle DBMS 部署](./dbms_guide_oracle.md)中添加了链接，该链接指向适用于 Oracle DBMS 的 Azure 备份服务
 - 2021 年 9 月 24 日：更改了[在 SLES 上的 Azure VM 中通过 Pacemaker 对 HSR 进行 SAP HANA 横向扩展](./sap-hana-high-availability-scale-out-hsr-suse.md)、[在 RHEL 上通过 ANF 纵向扩展 SAP HANA 的 HA](./sap-hana-high-availability-netapp-files-red-hat.md) 和[在 RHEL 上的 Azure VM 中通过 Pacemaker 对 HSR 进行 SAP HANA 横向扩展](./sap-hana-high-availability-scale-out-hsr-rhel.md)中的内容，以调整为 HANA srHook 创建 sudoers 文件的说明
 - 2021 年 9 月 15 日：在[适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署](./dbms_guide_sapase.md)中为 SAP ASE 引入新 HADR 配置
 - 2021 年 9 月 8 日：将手动 QoS 容量池添加到[适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](./hana-vm-operations-netapp.md)中

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 05/26/2021
+ms.date: 09/28/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4543af78b173632e3374567e9a199f182679e8f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e3c1da0e21f13357c5c537da2530e012101423dd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701721"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215693"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure 防火墙 DNS 设置
 
@@ -21,7 +21,7 @@ ms.locfileid: "110701721"
 
 ## <a name="dns-servers"></a>DNS 服务器
 
-DNS 服务器维护域名并将它解析为 IP 地址。 默认情况下，Azure 防火墙将 Azure DNS 用于名称解析。 通过“DNS 服务器”设置，你可以配置自己的 DNS 服务器来用于 Azure 防火墙名称解析。 你可以配置一台服务器或多台服务器。
+DNS 服务器维护域名并将它解析为 IP 地址。 默认情况下，Azure 防火墙将 Azure DNS 用于名称解析。 通过“DNS 服务器”设置，你可以配置自己的 DNS 服务器来用于 Azure 防火墙名称解析。 你可以配置一台服务器或多台服务器。 如果配置多个 DNS 服务器，则会随机选择所使用的服务器。
 
 > [!NOTE]
 > 对于使用 Azure 防火墙管理器管理的 Azure 防火墙实例，DNS 设置是在关联的 Azure 防火墙策略中配置的。
@@ -80,6 +80,8 @@ $azFw | Set-AzFirewall
 - **消极缓存**：DNS 解析不返回响应，或者不进行解析。 防火墙将此信息缓存一小时。
 
 DNS 代理将存储网络规则中的 FQDN 的所有已解析的 IP 地址。 最佳做法是使用可解析为一个 IP 地址的 FQDN。
+
+如果连接失败，DNS 代理不会执行重试，也不会故障转移到其他 DNS 服务器（包括 Azure DNS）。
 
 ### <a name="policy-inheritance"></a>策略继承
 

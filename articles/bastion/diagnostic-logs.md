@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: ba31710e13ef786f2e4ede68541f1a5884306669
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4803ddf4c3d570e9bd52832ec4120c42972003eb
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730208"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458200"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>启用和使用 Bastion 资源日志
 
@@ -48,7 +48,7 @@ ms.locfileid: "121730208"
    ![选择存储位置](./media/diagnostic-logs/3-resource-location.png)
 4. 找到由 Azure Bastion 创建的 json 文件，其中包含导航到的时间段的诊断日志数据。
 
-5. 从存储 blob 容器下载 json 文件。 下面显示了 json 文件中的一个示例条目供参考：
+5. 从存储 blob 容器下载 json 文件。 下面显示了 json 文件中成功登录的示例条目供参考：
 
    ```json
    { 
@@ -69,6 +69,7 @@ ms.locfileid: "121730208"
       "message":"Successfully Connected.",
       "resourceType":"VM",
       "targetVMIPAddress":"172.16.1.5",
+      "userEmail":"<userAzureAccountEmailAddress>"
       "tunnelId":"<tunnelID>"
    },
    "FluentdIngestTimestamp":"2019-10-03T16:03:34.0000000Z",
@@ -76,7 +77,37 @@ ms.locfileid: "121730208"
    "CustomerSubscriptionId":"<subscripionID>"
    }
    ```
-
+   
+   以下是 json 文件中登录失败（例如，由于用户名/密码不正确）的示例条目：
+   
+   ```json
+   { 
+   "time":"2019-10-03T16:03:34.776Z",
+   "resourceId":"/SUBSCRIPTIONS/<subscripionID>/RESOURCEGROUPS/MYBASTION/PROVIDERS/MICROSOFT.NETWORK/BASTIONHOSTS/MYBASTION-BASTION",
+   "operationName":"Microsoft.Network/BastionHost/connect",
+   "category":"BastionAuditLogs",
+   "level":"Informational",
+   "location":"eastus",
+   "properties":{ 
+      "userName":"<username>",
+      "userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
+      "clientIpAddress":"131.107.159.86",
+      "clientPort":24039,
+      "protocol":"ssh",
+      "targetResourceId":"/SUBSCRIPTIONS/<subscripionID>/RESOURCEGROUPS/MYBASTION/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/LINUX-KEY",
+      "subscriptionId":"<subscripionID>",
+      "message":"Login Failed",
+      "resourceType":"VM",
+      "targetVMIPAddress":"172.16.1.5",
+      "userEmail":"<userAzureAccountEmailAddress>"
+      "tunnelId":"<tunnelID>"
+   },
+   "FluentdIngestTimestamp":"2019-10-03T16:03:34.0000000Z",
+   "Region":"eastus",
+   "CustomerSubscriptionId":"<subscripionID>"
+   }
+   ```
+   
 ## <a name="next-steps"></a>后续步骤
 
 阅读 [Bastion 常见问题解答](bastion-faq.md)。

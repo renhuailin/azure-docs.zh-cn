@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 2cd051b9c20df2d002feaa3908f577be9530fef9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d97270c130545e8a54f924dcc4f50c4a1f36420b
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113629"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387689"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>适用于 Core (SQL) API 的 Spring Data Azure Cosmos DB v3：发行说明和资源
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -94,7 +94,8 @@ ms.locfileid: "123113629"
 > * 3\.10.0 版本 - 强烈建议使用 3.10.0 及更高版本。
 > * 3\.5.0 版本支持 Spring Boot 2.4.3 及更高版本。
 
-[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
+## <a name="release-history"></a>版本历史记录
+版本历史记录保存在 azure-sdk-for-java 存储库中，有关版本的详细列表，请参阅 [changelog 文件](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)。
 
 ## <a name="additional-notes"></a>附加说明
 

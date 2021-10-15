@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a79322439db33620b67ff568387a5750f7ee5c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78183898"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350578"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C：身份验证协议
 通过支持两种行业标准协议（OpenID Connect 和 OAuth 2.0），Azure Active Directory B2C (Azure AD B2C) 为应用提供标识即服务。 这是符合标的服务，但这些协议的任意两个实现之间仍然存在微妙的差异。
@@ -40,7 +40,10 @@ https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token
 
 几乎在所有的 OAuth 和 OpenID Connect 流中，都有四个参与交换的对象：
 
-![显示四个 OAuth 2.0 角色的示意图](./media/protocols-overview/protocols_roles.png)
+
+
+
+:::image type="content" source="./media/protocols-overview/protocols_roles.png" alt-text="显示四个 OAuth 2.0 角色的示意图。":::
 
 * 授权服务器是 Azure AD 终结点。 它可安全处理与用户信息和访问相关的任何内容。 还可以处理流中参与方之间的信任关系。 它负责验证用户的标识、授予和吊销对资源的访问权限，以及颁发令牌。 也被称作标识提供者。
 

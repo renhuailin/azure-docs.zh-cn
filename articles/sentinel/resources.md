@@ -1,26 +1,21 @@
 ---
-title: 使用 Azure Sentinel 时有用的资源 | Microsoft Docs
+title: 使用 Azure Sentinel 时有用的资源
 description: 本文档提供使用 Azure Sentinel 时有用资源的列表。
 services: sentinel
-documentationcenter: na
 author: yelevin
 manager: rkarlin
-editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 247b025524a029fcb68fbe0682b365e9b7f240b5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 47ccfea5b666e3c600454fec5d2e8dc801b78bc2
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128565166"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358107"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>对使用 Azure Sentinel 有用的资源
 
@@ -45,7 +40,7 @@ Azure Sentinel 使用 Azure Monitor Log Analytics 的 Kusto 查询语言 (KQL) �
 
 下表说明了 Azure Sentinel 中的 playbook、工作簿和笔记本之间的区别：
 
-|  |攻略  |工作簿  |笔记本  |
+| 类别 |攻略  |工作簿  |笔记本  |
 |---------|---------|---------|---------|
 |**角色**     |   <ul><li>SOC 工程师</li><li>所有层级的分析师</li></ul>      | <ul><li> SOC 工程师</li><li>所有层级的分析师</li></ul>       | <ul><li>威胁搜寻者和第 2 层/第 3 层分析师</li><li>事件调查者</li><li>数据科学家</li><li>安全研究人员</li></ul>       |
 |**使用**     | 自动完成简单的可重复任务：<ul><li>引入外部数据 </li><li>使用 TI、GeoIP 查找等功能进行数据扩充 </li><li> 调查 </li><li>补救 </li></ul>       | <ul><li>可视化效果</li></ul>        |   <ul><li>查询 Azure Sentinel 数据和外部数据 </li><li>使用 TI、GeoIP 查找、WhoIs 查找等功能进行数据扩充 </li><li> 调查 </li><li> 可视化效果 </li><li> 搜寻 </li><li>机器学习和大数据分析 </li></ul>      |

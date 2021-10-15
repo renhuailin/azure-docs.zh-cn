@@ -4,14 +4,14 @@ description: 了解如何配置适用于 Cosmos DB 的 Azure Functions 触发器
 author: ealsur
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 10/04/2021
 ms.author: maquaran
-ms.openlocfilehash: 44e738cc50feb66fc8806236be388b6baa18a17f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 409cf65dc9b79707a7508590b370b63325101f67
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113502"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427374"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>如何配置适用于 Cosmos DB 的 Azure Functions 触发器的日志记录和连接
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -68,7 +68,7 @@ traces
 }
 ```
 
-其中，`connectionMode` 必须包含所需的连接模式（Direct 或 Gateway），`protocol` 必须包含所需的连接协议（Tcp 或 Https）。 
+其中，`connectionMode` 必须包含所需的连接模式（Direct 或 Gateway），`protocol` 必须包含所需的连接协议（Tcp 用于 Direct 模式，Https 用于 Gateway 模式）。
 
 如果 Azure Functions 项目正在使用 Azure Functions V1 运行时（配置名称略有不同），则应使用 `documentDB` 而不是 `cosmosDB`：
 

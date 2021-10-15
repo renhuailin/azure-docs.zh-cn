@@ -8,16 +8,20 @@ ms.service: azure-sentinel
 ms.topic: reference
 ms.date: 08/12/2021
 ms.author: bagol
-ms.openlocfilehash: 8cbd8861e7dc01e8615225dd88960b581fd4c2f4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3886d26c571246f42c54bb9aab45bae32e05b750
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755076"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362448"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>查找 Azure Sentinel 数据连接器
 
 本文介绍如何在 Azure Sentinel 中部署数据连接器，其中列出所有受支持的内置数据连接器，还提供常规部署流量的链接和特定连接器所需的额外步骤。
+
+> [!TIP]
+> 某些数据连接器仅通过解决方案进行部署。 有关详细信息，请参阅 [Azure Sentinel 解决方案目录](sentinel-solutions-catalog.md)。 还可以在 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors)中找到其他社区构建的数据连接器。
+>
 
 ## <a name="how-to-use-this-guide"></a>如何使用本指南
 

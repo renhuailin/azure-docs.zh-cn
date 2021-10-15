@@ -1,7 +1,7 @@
 ---
 title: 有关将应用程序从 Okta 迁移到 Azure Active Directory 的教程
 titleSuffix: Active Directory
-description: 了解如何将应用程序从 Okta 迁移到 Azure Active Directory
+description: 了解如何将应用程序从 Okta 迁移到 Azure Active Directory。
 services: active-directory
 author: gargi-sinha
 manager: martinco
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: c46410a6998998ace9bc1a9e9809262970a131f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 76acf97366407a34faa2f6a6583d5871ba4c5b4a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791719"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355938"
 ---
 # <a name="tutorial-migrate-your-applications-from-okta-to-azure-active-directory"></a>教程：将应用程序从 Okta 迁移到 Azure Active Directory
 
@@ -24,206 +24,209 @@ ms.locfileid: "124791719"
 
 ## <a name="create-an-inventory-of-current-okta-applications"></a>创建当前 Okta 应用程序的清单
 
-将 Okta 应用程序转换到 Azure AD 时，建议在迁移之前先记录当前环境和应用程序设置。
-
-Okta 提供了一个 API，该 API 可用于从一个集中的位置收集此信息。 若要使用该 API，需要安装 [Postman](https://www.postman.com/) 之类的 API 浏览器工具。
+在开始迁移之前，应记录当前环境和应用程序设置。 可以使用 Okta API 从一个集中位置收集此信息。 若要使用该 API，需要安装 [Postman](https://www.postman.com/) 之类的 API 浏览器工具。
 
 按照以下步骤创建应用程序清单：
 
-1. 安装 Postman 应用。 安装后，从 Okta 管理控制台生成 API 令牌。
+1. 安装 Postman 应用。 然后从 Okta 管理控制台生成 API 令牌。
 
-2. 导航到“安全性”部分下的 API 仪表板，选择“令牌” > “创建令牌” 
+2. 在 API 仪表板上的“安全性”下，选择“令牌” > “创建令牌”  。
 
-   ![该插图显示令牌创建操作](media/migrate-applications-from-okta-to-azure-active-directory/token-creation.png)
+   ![显示用于创建令牌的按钮的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/token-creation.png)
 
 3. 插入令牌名称，然后选择“创建令牌”。
 
-   ![该插图显示已创建令牌](media/migrate-applications-from-okta-to-azure-active-directory/token-created.png)
+   ![显示令牌命名位置的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/token-created.png)
 
-4. 选择“创建令牌”后，请记录并保存令牌值，因为在选择“好的，知道了”后不再可以访问该值 。
+4. 记录并保存令牌值。 在选择“好的，知道了”之后不再可以访问该值。
 
-   ![该插图显示已创建记录](media/migrate-applications-from-okta-to-azure-active-directory/record-created.png)
+   ![显示令牌值的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/record-created.png)
 
-5. 记录 API 令牌后，返回 Postman 应用，并选择工作区下的“导入”。
+5. 在 Postman 应用的工作区中，选择“导入”。
 
-   ![该插图显示有关导入 API 的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/import-api.png)
+   ![显示导入 API 的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/import-api.png)
 
-6. 在“导入”页中选择“链接”，并使用以下链接导入 API：<https://developer.okta.com/docs/api/postman/example.oktapreview.com.environment>
+6. 在“导入”页上选择“链接” 。 然后插入以下链接以导入 API：`https://developer.okta.com/docs/api/postman/example.oktapreview.com.environment`
 
-   ![该插图显示用于导入的链接](media/migrate-applications-from-okta-to-azure-active-directory/link-to-import.png)
+   ![显示用于导入的链接的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/link-to-import.png)
 
->[!NOTE]
->请不要使用你的租户值修改该链接。
+   >[!NOTE]
+   >请不要使用你的租户值修改该链接。
 
-7. 选择“导入”转到下一菜单。
+7. 选择“导入”继续操作。
 
-   ![该插图显示下一个导入菜单](media/migrate-applications-from-okta-to-azure-active-directory/next-import-menu.png)
+   ![显示下一个“导入”页的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/next-import-menu.png)
 
-8. 导入后，将“环境”选择更改为“{yourOktaDomain}”
+8. 导入 API 后，将“环境”选择更改为“{yourOktaDomain}” 。
 
-   ![该插图显示有关更改环境的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/change-environment.png)
+   :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/change-environment.png" alt-text="显示如何更改环境的屏幕截图。" lightbox="media/migrate-applications-from-okta-to-azure-active-directory/change-environment.png":::
 
-9. 更改“环境”选择后，依次选择眼睛图标和“编辑”来编辑 Okta 环境。
+9. 选择眼睛图标编辑 Okta 环境。 然后选择“编辑”。
 
-   ![该插图显示有关编辑环境的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/edit-environment.png)
+   ![显示如何编辑 Okta 环境的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/edit-environment.png)
 
-10. 在“初始值”和“当前值”字段中更新 URL 和 API 密钥的值，并更改名称以反映环境，然后保存这些值 。
+10. 在“初始值”和“当前值”字段中更新 URL 和 API 密钥的值 。 更改名称以反映你的环境。 然后保存值。
 
-    ![该插图显示有关为 API 更新值的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/update-values-for-api.png)
+    ![显示如何更新 API 值的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/update-values-for-api.png)
 
-11. 保存 API 密钥后，[将应用 API 加载到 Postman 中](https://app.getpostman.com/run-collection/377eaf77fdbeaedced17)。
+11. [将 API 加载到 Postman 中](https://app.getpostman.com/run-collection/377eaf77fdbeaedced17)。
 
-12. 将 API 加载到 Postman 后，选择“应用”下拉菜单，然后依次选择“获取应用列表”、“发送”  。
+12. 选择“应用” > “获取应用列表” > “发送”  。
 
-现在，可以使用 JSON 格式输出 Okta 租户中的所有应用程序。
+现在，可以输出 Okta 租户中的所有应用程序。 列表采用 JSON 格式：
 
-![该插图显示应用程序列表](media/migrate-applications-from-okta-to-azure-active-directory/list-of-applications.png)
+![显示 Okta 租户中的应用程序列表的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/list-of-applications.png)
 
-建议复制此 JSON 列表，并使用 <https://konklone.io/json/> 之类的公用转换器或者在 PowerShell 中使用 [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 和 [ConvertTo-CSV](/powershell/module/microsoft.powershell.utility/convertto-csv) 将其转换为 CSV。
+建议复制此 JSON 列表并将其转换为 CSV 格式。 可以使用 [Konklone](https://konklone.io/json/) 之类的公用转换器。 或者，可以在 PowerShell 中使用 [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 和 [ConvertTo-CSV](/powershell/module/microsoft.powershell.utility/convertto-csv)。
 
-下载 CSV 后，Okta 租户中的应用程序已成功记录以供将来参考。
+下载 CSV，以保留 Okta 租户中应用程序的记录供将来参考。
 
 ## <a name="migrate-a-saml-application-to-azure-ad"></a>将 SAML 应用程序迁移到 Azure AD
 
-若要将 SAML 2.0 应用程序迁移到 Azure AD，请先在 Azure AD 租户中配置该应用程序以进行应用程序访问。 在此示例中，我们将转换一个 Salesforce 实例。 请按照[此教程](../saas-apps/salesforce-tutorial.md)加入应用程序。
+若要将 SAML 2.0 应用程序迁移到 Azure AD，请先在 Azure AD 租户中配置该应用程序以进行应用程序访问。 在此示例中，我们将转换一个 Salesforce 实例。 请按照[此教程](../saas-apps/salesforce-tutorial.md)配置应用程序。
 
-若要完成迁移过程，请对 Okta 租户中发现的所有应用程序重复配置步骤。
+若要完成迁移，请对 Okta 租户中发现的所有应用程序重复配置步骤。
 
-1. 导航到 [Azure AD 门户](https://aad.portal.azure.com)，选择“Azure Active Directory” > “企业应用程序” > “新建应用程序”  。
+1. 在 [Azure AD 门户](https://aad.portal.azure.com)中，选择“Azure Active Directory” > “企业应用程序” > “新建应用程序”  。
 
-   ![该插图显示新应用程序的列表](media/migrate-applications-from-okta-to-azure-active-directory/list-of-new-applications.png)
+   ![显示新应用程序列表的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/list-of-new-applications.png)
 
-2. Azure AD 库中提供了 Salesforce。 搜索“salesforce”，选择该应用程序，然后选择“创建”。
+2. 在“Azure AD 库”中，搜索“Salesforce”，选择该应用程序，然后选择“创建”  。
 
-   ![该插图显示 Salesforce 应用程序](media/migrate-applications-from-okta-to-azure-active-directory/salesforce-application.png)
+   ![显示 Azure AD 库中的 Salesforce 应用程序的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/salesforce-application.png)
 
-3. 创建应用程序后，导航到“单一登录”(SSO) 选项卡并选择“SAML” 。
+3. 创建应用程序后，在“单一登录”(SSO) 选项卡选择“SAML” 。
 
-   ![该插图显示 SAML 应用程序](media/migrate-applications-from-okta-to-azure-active-directory/saml-application.png)
+   ![显示 SAML 应用程序的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/saml-application.png)
 
-4. 选择“SAML”后，下载要导入到 Salesforce 的“联合元数据 XML 和证书(原始)”。
+4. 下载要导入到 Salesforce 的“联合元数据 XML 和证书(原始)”。
 
-   ![该插图显示有关下载联合元数据的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/federation-metadata.png)
+   ![显示联合元数据下载位置的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/federation-metadata.png)
 
-5. 捕获 XML 后，导航到 Salesforce 管理控制台，然后选择“标识” > “单一登录设置” > “从元数据文件新建”  
+5. 在 Salesforce 管理控制台上，选择“标识” > “单一登录设置” > “从元数据文件新建”  。
 
-   ![该插图显示 Salesforce 管理控制台](media/migrate-applications-from-okta-to-azure-active-directory/salesforce-admin-console.png)
+   ![显示 Salesforce 管理控制台的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/salesforce-admin-console.png)
 
-6. 上传从 Azure AD 门户下载的 XML 文件，然后选择“创建”。
+6. 上传从 Azure AD 门户下载的 XML 文件。 然后选择“创建”。
 
-   ![该插图显示有关上传 XML 文件的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/upload-xml-file.png)
+   :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/upload-xml-file.png" alt-text="显示 XML 文件上传位置的屏幕截图。" lightbox="media/migrate-applications-from-okta-to-azure-active-directory/upload-xml-file.png":::
 
-7. 上传从 Azure 下载的证书，然后在下一个菜单中选择“保存”以便在 Salesforce 中创建 SAML 提供程序。
+7. 上传从 Azure 下载的证书。 然后选择“保存”以在 Salesforce 中创建 SAML 提供程序。
 
-   ![该插图显示有关创建 SAML 提供程序的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/create-saml-provider.png)
+   ![显示如何在 Salesforce 中创建 SAML 提供程序的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/create-saml-provider.png)
 
-8. 记录“实体 ID”、“登录 URL”和“注销 URL”的值以便在 Azure 中使用，然后选择“下载元数据”选项   。
+8. 记录以下字段中的值。 稍后将在 Azure 中使用这些值。 
+   * **实体 ID**
+   * **登录 URL** 
+   * **注销 URL** 
 
-   ![该插图显示有关记录 Azure 中的值的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/record-values-for-azure.png)
+   然后选择“下载元数据”。
 
-9. 返回到 Azure AD 企业应用程序菜单，选择“上传元数据文件”以将元数据文件上传到 Azure AD 门户中的 SAML SSO 设置。 在保存之前请确认导入的值与记录的值匹配。
+   ![显示应记录的、以便在 Azure 中使用的值的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/record-values-for-azure.png)
 
-   ![该插图显示在 Azure AD 中上传元数据文件的操作](media/migrate-applications-from-okta-to-azure-active-directory/upload-metadata-file.png)
+9. 在 Azure AD“企业应用程序”页上的“SAML SSO 设置”中，选择“上传元数据文件”以将该文件上传到 Azure AD 门户 。 在保存之前，请确保导入的值与记录的值匹配。
 
-10. 保存 SSO 配置后，返回到 Salesforce 管理控制台并选择“公司设置” > “我的域” 。 导航到“身份验证配置”并选择“编辑” 。
+   ![显示如何在 Azure AD 中上传元数据文件的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/upload-metadata-file.png)
 
-    ![该插图显示有关编辑公司设置的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/edit-company-settings.png)
+10. 在 Salesforce 管理控制台中，选择“公司设置” > “我的域” 。 转到“身份验证配置”，然后选择“编辑” 。
 
-11. 选择在前面步骤中配置为可用登录选项的新 SAML 提供程序，然后选择“保存”。
+    ![显示如何编辑公司设置的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/edit-company-settings.png)
 
-    ![该插图显示用于保存 SAML 提供程序的选项](media/migrate-applications-from-okta-to-azure-active-directory/save-saml-provider.png)
+11. 对于登录选项，请选择前面配置的新 SAML 提供程序。 再选择“保存”。
 
-12. 返回到 Azure AD 中的企业应用程序，选择“用户和组”，然后添加测试用户 。
+    ![显示 SAML 提供程序选项保存位置的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/save-saml-provider.png)
 
-    ![该插图显示有关添加测试用户的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/add-test-user.png)
+12. 在 Azure AD 中的“企业应用程序”页上，选择“用户和组” 。 然后添加测试用户。
 
-13. 若要进行测试，请以某个测试用户的身份登录，导航到 <https://aka.ms/myapps>，然后选择“Salesforce”磁贴。
+    ![显示已添加的测试用户的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/add-test-user.png)
 
-    ![该插图显示有关以测试用户的身份登录的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/test-user-sign-in.png)
+13. 若要测试配置，请以某个测试用户的身份登录。 转到你的 Microsoft [应用库](https://aka.ms/myapps)，然后选择“Salesforce”。
 
-14. 选择“Salesforce”磁贴后，选择新配置的标识提供者 (IdP) 进行登录。
+    ![显示如何从应用库打开 Salesforce 的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/test-user-sign-in.png)
 
-    ![该插图显示有关选择新标识提供者的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/new-identity-provider.png)
+14. 选择新配置的标识提供者 (IdP) 以登录。
 
-15. 如果正确配置了所有设置，则用户将会进入 Salesforce 主页。 如果遇到任何问题，请按照[调试指南](../manage-apps/debug-saml-sso-issues.md)进行操作。
+    ![显示登录位置的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/new-identity-provider.png)
 
-16. 测试从 Azure 进行 SSO 连接后，返回到企业应用程序，将具有正确角色的其余用户分配到 Salesforce 应用程序。
+    如果正确配置了所有设置，则测试用户将会进入 Salesforce 主页。 如需故障排除帮助，请参阅[调试指南](../manage-apps/debug-saml-sso-issues.md)。
 
->[!NOTE]
->将其余用户添加到 Azure AD 应用程序后，建议让用户测试连接，确保在继续下一步之前不会出现访问问题。
+16. 在“企业应用程序”页上，将具有正确角色的其余用户分配到 Salesforce 应用程序。
 
-17. 在用户确认没有登录问题后，返回到 Salesforce 管理控制台并选择“公司设置” > “我的域” 。
+    >[!NOTE]
+    >将其余用户添加到 Azure AD 应用程序后，这些用户应测试连接，以确保能够正常访问。 在继续下一步之前测试连接。
 
-18. 导航到“身份验证配置”，选择“编辑”，并取消选择 Okta 作为身份验证服务 。
+17. 在 Salesforce 管理控制台上，选择“公司设置” > “我的域” 。
 
-    ![该插图显示有关取消选择 Okta 作为身份验证服务的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/deselect-okta.png)
+18. 在“身份验证配置”下，选择“编辑” 。 清除用作身份验证服务的“Okta”对应的选择。
 
-现已成功地在 Azure AD 中配置了 Salesforce 以执行 SSO。 本文档稍后将介绍清理 Okta 门户的步骤。
+    ![显示在何处清除用作身份验证服务的“Okta”对应的选择的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/deselect-okta.png)
+
+现已成功地在 Azure AD 中配置 Salesforce 用于 SSO。
 
 ## <a name="migrate-an-oidcoauth-20-application-to-azure-ad"></a>将 OIDC/OAuth 2.0 应用程序迁移到 Azure AD
 
-首先在 Azure AD 租户中配置应用程序以进行应用程序访问。 在此示例中，我们将转换一个自定义 OIDC 应用。
+若要将 OpenID Connect (OIDC) 或 OAuth 2.0 应用程序迁移到 Azure AD，请先在 Azure AD 租户中配置应用程序以进行访问。 在此示例中，我们将转换一个自定义 OIDC 应用。
 
-若要完成迁移过程，请对 Okta 租户中发现的所有应用程序重复配置步骤。
+若要完成迁移，请对 Okta 租户中发现的所有应用程序重复以下配置步骤。
 
-1. 导航到 [Azure AD 门户](https://aad.portal.azure.com)，选择“Azure Active Directory” > “企业应用程序” 。 在“所有应用程序”菜单下，选择“新建应用程序” 。
+1. 在 [Azure AD 门户](https://aad.portal.azure.com)中，选择“Azure Active Directory” > “企业应用程序” 。 在“所有应用程序”下，选择“新建应用程序” 。
 
-2. 选择“创建自己的应用程序”。 在弹出的边侧菜单中，为 OIDC 应用命名，选择“注册所用的应用程序以将其与 Azure AD 集成”对应的单选按钮，然后选择“创建” 。
+2. 选择“创建自己的应用程序”。 在显示的菜单中，为该 OIDC 应用命名，然后选择“注册所用的应用程序以便与 Azure AD 集成”。 然后选择“创建”。
 
-   ![该插图显示有关新建 OIDC 应用程序的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/new-oidc-application.png)
+   :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/new-oidc-application.png" alt-text="显示如何创建 OIDC 应用程序的屏幕截图。" lightbox="media/migrate-applications-from-okta-to-azure-active-directory/new-oidc-application.png":::
 
-3. 在下一页上，你将看到有关应用程序注册租户的选择。 有关详细信息，请参阅[此文](../develop/single-and-multi-tenant-apps.md)。
+3. 在下一页上，设置应用程序注册的租户。 有关详细信息，请参阅 [Azure Active Directory 中的租户](../develop/single-and-multi-tenant-apps.md)。
 
-在此示例中，我们将依次选择“任何组织目录中的帐户(任何 Azure AD 目录 - 多租户)”、“注册”  。
+   在此示例中，我们将选择“任何组织目录中的帐户(任何 Azure AD 目录 - 多租户)” > “注册” 。
 
-![该插图显示有关 Azure AD 目录多租户设置的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/multitenant-azure-ad-directory.png)
+   ![显示如何选择 Azure AD 目录多租户的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/multitenant-azure-ad-directory.png)
 
-4. 注册应用程序后，导航到“Azure Active Directory”下的“应用注册”页，然后打开新建的注册 。
+4. 在“应用注册”页上的“Azure Active Directory”下，打开新建的注册 。
 
-   根据[应用程序方案](../develop/authentication-flows-app-scenarios.md)的不同，可能需要执行多种配置操作。 由于大多数方案需要应用客户端机密，我们将提供相关示例。
+   根据[应用程序方案](../develop/authentication-flows-app-scenarios.md)的不同，可能需要执行多种配置操作。 大多数方案需要应用客户端机密，因此我们将包括这些方案。
 
-5. 在“概述”页上，记录“应用程序(客户端) ID”以便稍后在应用程序中使用。
+5. 在“概述”页上，记录“应用程序(客户端) ID” 。 稍后将在应用程序中使用此 ID。
 
-   ![该插图显示应用程序客户端 ID](media/migrate-applications-from-okta-to-azure-active-directory/application-client-id.png)
+   ![显示应用程序客户端 ID 的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/application-client-id.png)
 
-6. 记录“应用程序 ID”后，在左侧菜单中选择“证书和机密”。 选择“新建客户端机密”，为其命名并相应地设置其过期时间。
+6. 在左侧选择“证书和机密”。 然后选择“新建客户端机密”。 为客户端机密命名并设置其过期时间。
 
-   ![该插图显示有关新建客户端机密的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/new-client-secret.png)
+   ![显示“新建客户端机密”的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/new-client-secret.png)
 
-7. 在离开此页之前，请记录机密的值和 ID。
+7. 请记下该机密的值和 ID。
 
->[!NOTE]
->以后无法记录此信息，如果丢失此信息，必须重新生成机密。
+   >[!NOTE]
+   >如果丢失客户端机密，将无法检索它， 而是需要重新生成机密。
 
-8. 在上述步骤中记录信息后，选择左侧的“API 权限”，并授予应用程序访问 OIDC 堆栈的权限。
+8. 在左侧选择“API 权限”。 然后向应用程序授予对 OIDC 堆栈的访问权限。
 
-9. 依次选择“添加权限”、“Microsoft Graph”和“委托的权限”  。
+9. 选择“添加权限” > “Microsoft Graph” > “委托的权限”  。
 
-10. 在“OpenID 权限”部分添加电子邮件、OpenID 和配置文件，然后选择“添加权限” 。
+10. 在“OpenId 权限”部分，添加“电子邮件”、“openid”和“配置文件”   。 然后选择“添加权限”。
 
-    ![该插图显示有关添加 OpenID 权限的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/add-openid-permission.png)
+    :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/add-openid-permission.png" alt-text="显示在何处添加 OpenID 权限的屏幕截图。" lightbox="media/migrate-applications-from-okta-to-azure-active-directory/add-openid-permission.png":::
 
-11. 添加权限后，为了改善用户体验并消除用户同意提示，请选择“为租户域名授予管理员同意”选项并等待“已授予”状态出现 。
+11. 为了改善用户体验并消除用户同意提示，请选择“为租户域名授予管理员同意”。 然后等待“已授予”状态出现。
 
-    ![该插图显示有关授予管理员同意的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/grant-admin-consent.png)
+    ![显示授予管理员同意的位置的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/grant-admin-consent.png)
 
-12. 如果你的应用程序有重定向 URI 或回复 URL，请依次导航到“身份验证”选项卡、“添加平台”和“Web”，输入相应的 URL，选择“访问令牌”并选择底部的 ID 令牌，然后选择“配置”   。
+12. 如果你的应用程序具有重定向 URI，请输入相应的 URI。 如果回复 URL 依次以“身份验证”选项卡、“添加平台”和“Web”为目标，请输入相应的 URL  。 选择“访问令牌”和“ID 令牌” 。 然后选择“配置”。
 
-    ![该插图显示有关配置令牌的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/configure-tokens.png)
+    :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/configure-tokens.png" alt-text="显示如何配置令牌的屏幕截图。" lightbox="media/migrate-applications-from-okta-to-azure-active-directory/configure-tokens.png":::
+    
+    如果需要，请在“身份验证”菜单中的“高级设置”和“允许公共客户端流”下，选择“是”   。
 
-    如有必要，请在“身份验证”菜单中的“高级设置”下，将“允许公共客户端流”切换为“是” 。
+    ![显示如何允许公共客户端流的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/allow-client-flows.png)
 
-    ![该插图显示有关允许公共客户端流的用户界面](media/migrate-applications-from-okta-to-azure-active-directory/allow-client-flows.png)
-
-13. 返回到配置了 OIDC 的应用程序，将应用程序 ID 和客户端机密导入到应用程序，然后进行测试。 将应用程序配置为使用上述配置（例如 clientID、机密和范围）。
+13. 在配置了 OIDC 的应用程序中，导入应用程序 ID 和客户端机密，然后进行测试。 按照前面的步骤，使用客户端 ID、机密和范围等设置来配置应用程序。
 
 ## <a name="migrate-a-custom-authorization-server-to-azure-ad"></a>将自定义授权服务器迁移到 Azure AD
 
 Okta 授权服务器一对一地映射到[公开 API](../develop/quickstart-configure-app-expose-web-apis.md#add-a-scope) 的应用程序注册。
 
-默认 Okta 授权服务器应映射到 Microsoft Graph 范围/权限。
+默认 Okta 授权服务器应映射到 Microsoft Graph 范围或权限。
 
-![该插图显示默认 Okta 授权](media/migrate-applications-from-okta-to-azure-active-directory/default-okta-authorization.png)
+![显示默认 Okta 授权的屏幕截图。](media/migrate-applications-from-okta-to-azure-active-directory/default-okta-authorization.png)
 
 ## <a name="next-steps"></a>后续步骤 
 

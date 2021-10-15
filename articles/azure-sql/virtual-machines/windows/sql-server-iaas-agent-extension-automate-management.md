@@ -17,12 +17,12 @@ ms.date: 9/01/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 828f4bc269e5d7ec5b0d46c473d2abbf2c200222
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: e5c4dd695cb9761721386eb98e18f00ad53bdc26
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220611"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231304"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理扩展实现自动管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

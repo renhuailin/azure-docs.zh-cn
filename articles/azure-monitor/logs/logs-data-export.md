@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: eb5766214fff67bf7e45998c9f89c640433bbe99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 04662b734f86905f0064bad43ecbecd84bc48042
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652446"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401382"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -32,16 +32,45 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 
 ## <a name="limitations"></a>限制
 
-- 当前可以使用 CLI 或 REST 请求来执行配置。 尚不支持 Azure 门户或 PowerShell。
+- 目前可以使用 CLI 或 REST 请求执行配置。 尚不支持 Azure 门户或 PowerShell。
 - CLI 和 REST 中的 `--export-all-tables` 选项不受支持，将被删除。 你应在导出规则中显式提供表的列表。
-- 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分指定的那些表。 例如，目前不支持自定义日志表。
+- 受支持的表仅限于下面[受支持的表](#supported-tables)部分指定的那些表。 
+- 不支持在导出内容中包含现有的自定义日志表。 在 2022 年 3 月提供的新自定义日志版本将受支持。
 - 如果数据导出规则包含不受支持的表，操作不会失败，但在表受到支持之前，不会导出该表的任何数据。 
 - 如果数据导出规则包含不存在的表，操作会失败并出现错误 `Table <tableName> does not exist in the workspace`。
-- 数据导出将在所有区域提供，但目前在下列区域不可用：瑞士北部、瑞士西部、德国中西部、澳大利亚中部 2、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、日本西部、巴西东南部、挪威东部、挪威西部、法国南部、印度南部、韩国南部、Jio 印度中部、Jio 印度西部、加拿大东部、美国西部 3、瑞典中部、瑞典南部、政府云、中国。
-- 可以在工作区中定义最多 10 个已启用的规则。 允许更多规则，但这些规则处于禁用状态。 
+- 可以在工作区中定义最多 10 个已启用的规则。 允许已禁用的其他规则。 
 - 在工作区的所有导出规则中，目标必须唯一。
-- 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
-- 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，则不能超过 47 个字符。 名称较长的表将不会被导出。
+- 目标必须与 Log Analytics 工作区位于同一区域。
+- 导出到存储帐户时，表名称的长度不能超过 60 个字符；导出到事件中心时，其长度不能超过 47 个字符。 名称较长的表将不会被导出。
+- 数据导出今后将在所有区域中可用，但目前仅在以下区域中受支持： 
+    - 澳大利亚中部
+    - 澳大利亚东部
+    - 澳大利亚东南部
+    - 巴西南部
+    - 加拿大中部
+    - 印度中部
+    - 美国中部
+    - 东亚
+    - 美国东部
+    - 美国东部 2
+    - 法国中部
+    - 德国中西部
+    - Japan East
+    - 韩国中部
+    - 美国中北部
+    - 北欧
+    - 南非北部
+    - 美国中南部
+    - 东南亚
+    - 瑞士北部
+    - 瑞士西部
+    - 阿拉伯联合酋长国北部
+    - 英国南部
+    - 英国西部
+    - 美国中西部
+    - 西欧
+    - 美国西部
+    - 美国西部 2
 
 ## <a name="data-completeness"></a>数据完整性
 如果目标不可用，数据导出会继续重新尝试发送数据，最多持续 30 分钟。 如果 30 分钟后仍不可用，数据将被放弃，直到目标变为可用。
@@ -132,7 +161,7 @@ find where TimeGenerated > ago(24h) | distinct Type
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -519,7 +548,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -703,7 +732,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | NWConnectionMonitorTestResult |  |
 | OfficeActivity | 政府云中的部分支持 - 某些数据是通过 Webhook 从 O365 引入 LA 的。 当前导出中缺少此部分。 |
 | Operation | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
-| 性能 | 部分支持 – 当前仅支持 windows 性能数据。 当前导出中缺少 Linux 性能数据。 |
+| 性能 | 部分支持 – 目前仅支持 Windows 性能数据。 当前导出中缺少 Linux 性能数据。 |
 | PowerBIDatasetsWorkspace |  |
 | PurviewScanStatusLogs |  |
 | SCCMAssessmentRecommendation |  |

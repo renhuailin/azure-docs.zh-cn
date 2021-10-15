@@ -3,19 +3,19 @@ title: 在 Azure 自动化中管理 Python 3 程序包
 description: 本文介绍了如何在 Azure 自动化中管理 Python 3 程序包（预览版）。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/13/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: b7393f06df77b0057925e20a7cf055fddb0a7bf2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: d3ec338b6d6edac2c56c8b42f877a1095aace2a0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965285"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349612"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>在 Azure 自动化中管理 Python 3 程序包（预览版）
 
-通过 Azure 自动化可以在 Azure 沙盒环境和 Linux 混合 Runbook 辅助角色上运行 Python 3 runbook（预览版）。 为了帮助简化 runbook，可以使用 Python 包导入所需的模块。 若要导入单个包，请参阅[导入包](#import-a-package)。 若要导入包含多个包的包，请参阅[导入具有依赖项的包](#import-a-package-with-dependencies)。 本文介绍了如何在 Azure 自动化中管理和使用 Python 3 程序包（预览版）。
+通过 Azure 自动化可以在 Azure 沙盒环境和 Linux 混合 Runbook 辅助角色上运行 Python 3 runbook（预览版）。 为了帮助简化 runbook，可以使用 Python 包导入所需的模块。 Azure 包 4.0.0 会默认安装在 Python 3 自动化环境中。 可以通过在自动化帐户中导入 Python 包来替代默认版本。 为自动化帐户中导入的版本提供首选项。 若要导入单个包，请参阅[导入包](#import-a-package)。 若要导入包含多个包的包，请参阅[导入具有依赖项的包](#import-a-package-with-dependencies)。 本文介绍了如何在 Azure 自动化中管理和使用 Python 3 程序包（预览版）。
 
 ## <a name="packages-as-source-files"></a>作为源文件的包
 
@@ -131,6 +131,22 @@ for group in groups:
 
 > [!NOTE]
 > Python `automationassets` 包在 pypi.org 上不可用，因此无法导入到 Windows 计算机上。
+
+## <a name="identify-available-packages-in-sandbox"></a>确定沙盒中可用的包
+
+使用以下代码列出默认已安装的模块：
+
+```python
+#!/usr/bin/env python3
+
+import pkg_resources
+installed_packages = pkg_resources.working_set
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+   for i in installed_packages])
+
+for package in installed_packages_list:
+    print(package)
+```
 
 ## <a name="next-steps"></a>后续步骤
 

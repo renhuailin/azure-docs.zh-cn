@@ -1,20 +1,20 @@
 ---
 title: 将自定义容器部署为托管联机终结点
 titleSuffix: Azure Machine Learning
-description: 了解如何通过自定义容器在 Azure 机器学习中使用开源服务器
+description: 了解如何通过自定义容器在 Azure 机器学习中使用开源服务器。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: larryfr
 ms.date: 06/16/2021
 ms.topic: how-to
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: b5438ccfcd84a9574e7e65eb9d0342f947f4d03b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4aa55ee69b1092b7a2cb8dd207faf577ac532e32
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599461"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428248"
 ---
 # <a name="deploy-a-tensorflow-model-served-with-tf-serving-using-a-custom-container-in-a-managed-online-endpoint-preview"></a>在托管联机终结点中使用自定义容器部署通过 TF 服务提供服务的 TensorFlow 模型（预览版）
 

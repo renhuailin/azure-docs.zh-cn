@@ -7,16 +7,16 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0b88923ff6447785a4ef5a7c80e1ff44d1a2b9cb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e1c8734b6adcf478216aa8d5d123e95e369d5b58
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777305"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274713"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
-本文演示如何使用[分配策略](concepts-service.md#allocation-policy)将多个对称密钥设备安全地预配到一组 IoT 中心。 通过预配服务定义的分配策略支持各种不同的分配方案。 两个常见的方案是：
+本文演示如何使用[分配策略](concepts-service.md#allocation-policy)将多个模拟对称密钥设备安全地预配到一组 IoT 中心。 通过预配服务定义的分配策略支持各种不同的分配方案。 两个常见的方案是：
 
 * 地理位置/GeoLatency：当设备在两位置之间移动时，通过将设备预配到距离每个位置最近的 IoT 中心来改善网络延迟。 在此方案中，为注册选择跨越区域的一组 IoT 中心。 为这些注册选择“最低延迟”分配策略。 此策略会使设备预配服务评估设备延迟，并从一组 IoT 中心确定最接近的 IoT 中心。 
 
@@ -298,9 +298,9 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将会使设备被识别，并基于延迟被分配到最邻近的 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。****
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值 。
 
-    ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 1. 打开 ~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c，在这两个 VM 上进行编辑。
 

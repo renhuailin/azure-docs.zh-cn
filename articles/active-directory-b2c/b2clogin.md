@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 95fe619ecb33e3b7e79c37b4cddb5950836b4cd5
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 12c7b70b2c1128cac943c8d1d61ad84113eb87f5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113223709"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570119"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
@@ -45,7 +45,7 @@ ms.locfileid: "113223709"
 
 * Microsoft 服务在 cookie 标头中使用的空间就会减少。
 * 重定向 URL 不再需要包含对 Microsoft 的引用。
-* 自定义页面支持 JavaScript 客户端代码（目前为[预览版](javascript-and-page-layout.md)）。 由于安全限制，如果使用 login.microsoftonline.com，将从自定义页面中删除 JavaScript 代码和 HTML 窗体元素。
+* 自定义页面支持 [JavaScript 客户端代码](javascript-and-page-layout.md)。 由于安全限制，如果使用 login.microsoftonline.com，将从自定义页面中删除 JavaScript 代码和 HTML 窗体元素。
 
 ## <a name="overview-of-required-changes"></a>所需的更改概述
 

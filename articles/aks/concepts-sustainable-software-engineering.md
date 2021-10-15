@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的可持续软件工程。
 services: container-service
 ms.topic: conceptual
 ms.date: 03/29/2021
-ms.openlocfilehash: c43c65dfa2f3930510bd59aaa24c798525bd691b
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 3fb40b278a4107cb1cdba2230602b99e2bdfff85
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011485"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355472"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的可持续软件工程原则
 
@@ -24,7 +24,7 @@ ms.locfileid: "107011485"
 
 ## <a name="measure-and-optimize"></a>度量和优化
 
-若要降低 AKS 群集的碳足迹，你需要了解群集资源的使用方式。 [Azure Monitor][azure-monitor] 提供有关群集资源使用情况的详细信息，例如内存和 CPU 使用率。 这些数据可以帮助你做出决定，以减少群集的碳足迹并观察所做更改的效果。 
+若要降低 AKS 群集的碳足迹，需要了解群集资源的使用方式。 [Azure Monitor][azure-monitor] 提供有关群集资源使用情况的详细信息，例如内存和 CPU 使用率。 这些数据可以帮助你做出决定，以减少群集的碳足迹并观察所做更改的效果。 
 
 你还可以安装 [Microsoft 可持续性计算器][sustainability-calculator]，以查看所有 Azure 资源的碳足迹。
 
@@ -103,4 +103,4 @@ ms.locfileid: "107011485"
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/
+[principles-sse]: /learn/modules/sustainable-software-engineering-overview/

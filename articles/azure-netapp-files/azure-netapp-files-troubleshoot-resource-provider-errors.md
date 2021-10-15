@@ -13,14 +13,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a3e97096109ce89f481b2abca2dc7b5a3a237e6
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374875"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407867"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>排查 Azure NetApp 文件资源提供程序错误 
 
@@ -30,13 +30,13 @@ ms.locfileid: "100374875"
 
 在此区域创建 `netAppAccounts` 受到限制。
 
-当订阅添加到 Azure NetApp 文件的等待列表中且用户尝试创建 NetApp 帐户时，会发生这种情况。
+当用户尝试创建 NetApp 帐户时，会出现这种情况。
 
 * 原因：   
 Azure NetApp 文件的 Azure 资源提供程序未成功注册。 
  
 * 解决方案：   
-订阅添加到等待列表后，完成 [Azure NetApp 资源提供程序注册](azure-netapp-files-register.md#resource-provider)中所述的所有步骤。
+完成[注册 NetApp 资源提供程序](azure-netapp-files-register.md)中所述的所有步骤。
 
 无法更改 BareMetalTenantId。  
 
@@ -317,7 +317,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误指示 API 
 
 无法更改 OwnerId
 
-尝试更改卷的 OwnerId 属性时，会出现此错误。 不支持更改 OwnerId。 
+尝试更改卷的 `OwnerId` 属性时，会出现此错误。 不支持更改 `OwnerId`。 
 
 * 原因：   
 创建卷时会设置 `OwnerId` 属性。 该属性之后不能更改。

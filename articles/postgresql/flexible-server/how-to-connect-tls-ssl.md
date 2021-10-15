@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cd9a74e9a05dad68a5d05fd8b9c92ed566c21766
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 065ffe56e2868cce00bd92c612beb987d9372e38
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227426"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388786"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中使用传输层安全性的加密连接
 
@@ -20,7 +20,10 @@ ms.locfileid: "107227426"
 
 Azure Database for PostgreSQL 灵活服务器支持使用传输层安全性 (TLS)（以前称为安全套接字层 (SSL)）将客户端应用程序连接到 PostgreSQL 服务。 TLS 是一种行业标准协议，可确保在数据库服务器与客户端应用程序之间实现加密的网络连接，使你能够满足合规性要求。
 
-Azure Database for PostgreSQL 灵活服务器支持使用传输层安全性 (TLS 1.2+) 的加密连接，并且所有使用 TLS 1.0 和 TLS 1.1 的传入连接都将被拒绝。 对于所有灵活服务器，启用了对 TLS 连接的强制实施，并且你不能禁用 TLS/SSL 以连接到灵活服务器。
+Azure Database for PostgreSQL 灵活服务器支持使用传输层安全性 (TLS 1.2+) 的加密连接，并且所有使用 TLS 1.0 和 TLS 1.1 的传入连接都将被拒绝。 为所有灵活服务器启用了强制实施 TLS 连接的功能。 
+
+>[!Note]
+> 默认情况下，将强制实施客户端与服务器之间的安全连接。 若要禁用 TLS/SSL 以连接到灵活的服务器，可以将服务器参数 `require_secure_transport` 更改为 `OFF`。 
 
 ## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>需要证书验证才能进行 TLS/SSL 连接的应用程序
 在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件生成的本地证书文件才能实现安全连接。 Azure Database for PostgreSQL 灵活服务器使用 DigiCert 全局根 CA。 从 [DigiCert 全局根 CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) 下载此证书（通过 SSL 通信需要它），并将证书文件保存到首选位置。 例如，本教程使用 `c:\ssl`。

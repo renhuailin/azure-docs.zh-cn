@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 1ad358c428f80e2e8bebcecf73cc89ddd5c37bc7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ce91f89e8974517d56aa7f1de55d01b9353106e7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454408"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358577"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>自带密钥（客户管理的密钥）与媒体服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "110454408"
 
 ## <a name="keys-and-key-management"></a>密钥和密钥管理
 
-使用媒体服务 2020-05-01 API 时，可以将自己的密钥与媒体服务一起使用。 将为所有帐户创建一个默认帐户密钥，该密钥由媒体服务拥有的系统密钥加密。 你使用自己的密钥时，帐户密钥使用你的密钥进行加密。 内容密钥由帐户密钥加密。 JobInputHttp url 和对称令牌验证密钥也进行了加密。
+使用媒体服务 2020-05-01 或更高版本的 API 时，可以将自己的密钥与媒体服务一起使用。 将为所有帐户创建一个默认帐户密钥，该密钥由媒体服务拥有的系统密钥加密。 你使用自己的密钥时，帐户密钥使用你的密钥进行加密。 内容密钥由帐户密钥加密。 JobInputHttp url 和对称令牌验证密钥也进行了加密。
 
 :::image type="content" source="./media/customer-managed-key/customer-managed-key.svg" alt-text="客户管理的密钥替换系统管理的密钥":::
 

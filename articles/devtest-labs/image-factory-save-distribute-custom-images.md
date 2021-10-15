@@ -1,14 +1,14 @@
 ---
-title: 在 Azure 开发测试实验室中保存和分发映像 | Microsoft Docs
+title: 保存和分发图像
 description: 本文介绍在 Azure 开发测试实验室中保存已创建的虚拟机 (VM) 中自定义映像的步骤。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d89a792e66d227eaeb20e48c80d432aa0cf56871
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85476234"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623563"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>保存自定义映像并分发到多个实验室
 本文介绍保存已创建的虚拟机 (VM) 中自定义映像的步骤。 此外，还介绍如何将这些自定义映像分发到组织中的其他开发测试实验室。

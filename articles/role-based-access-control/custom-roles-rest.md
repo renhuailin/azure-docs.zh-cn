@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c7e816f15400a28e8b10f4aea7a2315c89048be
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100557515"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352925"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>使用 REST API 创建或更新 Azure 自定义角色
 

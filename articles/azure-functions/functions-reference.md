@@ -3,13 +3,13 @@ title: Azure Functions 开发指南
 description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions 概念和技术，包括各种编程语言和绑定。
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
-ms.date: 10/12/2017
-ms.openlocfilehash: 93ac3458e2d9954c9ec17294fe89199d11cc765f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/02/2021
+ms.openlocfilehash: 49c6fc554eab18ec598db7ec21ef8c15b95d7be9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741390"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669638"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -111,17 +111,18 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 
 Azure Functions 中的某些连接配置为使用标识而不是机密。 支持取决于使用连接的扩展。 在某些情况下，即使连接到的服务支持基于标识的连接，Functions 中仍可能需要连接字符串。
 
-所有计划中的以下触发器和绑定扩展支持基于标识的连接：
+以下触发器和绑定扩展支持基于标识的连接：
 
 > [!NOTE]
 > Durable Functions 不支持基于标识的连接。
 
-| 扩展名称 | 扩展版本                                                                                     |
-|----------------|-------------------------------------------------------------------------------------------------------|
-| Azure Blob     | [版本 5.0.0-beta1 或更高版本](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  |
-| Azure 队列    | [版本 5.0.0-beta1 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) |
-| Azure 事件中心    | [版本 5.0.0-beta1 或更高版本](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) |
-| Azure 服务总线    | [版本 5.0.0-beta2 或更高版本](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) |
+| 扩展名称 | 扩展版本                                                                                     | 支持的计划     |
+|----------------|-------------------------------------------------------------------------------------------------------|---------------------|
+| Azure Blob     | [版本 5.0.0-beta1 或更高版本](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | 全部                 |
+| Azure 队列    | [版本 5.0.0-beta1 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | 全部                 |
+| Azure 事件中心    | [版本 5.0.0-beta1 或更高版本](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | 全部            |
+| Azure 服务总线    | [版本 5.0.0-beta2 或更高版本](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) | 全部         |
+| Azure Cosmos DB   | [版本 4.0.0-预览版 1 或更高版本](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) | 弹性高级 |
 
 
 还可以使用基于标识的连接来配置 Functions 运行时 (`AzureWebJobsStorage`) 所用的存储连接。 请参阅下面的[使用标识连接到主机存储](#connecting-to-host-storage-with-an-identity)。
@@ -142,15 +143,17 @@ Azure Functions 中的某些连接配置为使用标识而不是机密。 支持
 | Azure 队列 | [存储队列数据读取器](../role-based-access-control/built-in-roles.md#storage-queue-data-reader)、[存储队列数据消息处理器](../role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)、[存储队列数据消息发送方](../role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)、[存储队列数据参与者](../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)             |
 | 事件中心   |    [Azure 事件中心数据接收方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)、[Azure 事件中心数据发送方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)、[Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)              |
 | 服务总线 | [Azure 服务总线数据接收方](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)、[Azure 服务总线数据发送方](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)、[Azure 服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) |
+| Azure Cosmos DB | [Cosmos DB 内置数据读者](../cosmos-db/how-to-setup-rbac.md#built-in-role-definitions)、[Cosmos DB 内置数据参与者](../cosmos-db/how-to-setup-rbac.md#built-in-role-definitions) |
 
 #### <a name="connection-properties"></a>连接属性
 
-Azure 服务的基于标识的连接接受以下属性：
+Azure 服务的基于标识的连接接受以下属性，其中 `<CONNECTION_NAME_PREFIX>` 是触发器或绑定定义中的 `connection` 属性值：
 
 | 属性    | 扩展所需 | 环境变量 | 说明 |
 |---|---|---|---|
 | 服务 URI | Azure Blob<sup>1</sup>、Azure 队列 | `<CONNECTION_NAME_PREFIX>__serviceUri` | 要连接到的服务的数据平面 URI。 |
 | 完全限定的命名空间 | 事件中心、服务总线 | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | 完全限定的事件中心和服务总线命名空间。 |
+| 帐户终结点 | Azure Cosmos DB | `<CONNECTION_NAME_PREFIX>__accountEndpoint` | Azure Cosmos DB 帐户终结点 URI。 |
 | 令牌凭据 | (可选) | `<CONNECTION_NAME_PREFIX>__credential` | 定义如何为连接获取令牌。 建议仅在指定用户分配的标识时使用，此时它应设置为“managedidentity”。 仅当在 Azure Functions 服务中托管时，此属性才有效。 |
 | 客户端 ID | (可选) | `<CONNECTION_NAME_PREFIX>__clientId` | 当 `credential` 设置为“managedidentity”时，此属性指定在获取令牌时要使用的用户分配的标识。 该属性接受与分配给应用程序的用户分配的标识对应的客户端 ID。 如果未指定，则将使用系统分配的标识。 在[本地开发方案](#local-development-with-identity-based-connections)中使用时，此属性的使用方式不同，且不应设置 `credential`。 |
 
@@ -189,6 +192,20 @@ Azure 服务的基于标识的连接接受以下属性：
   "IsEncrypted": false,
   "Values": {
     "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
+    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
+    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
+  }
+}
+```
+
+与 Azure Cosmos DB 基于标识的连接所需的 `local.settings.json` 属性示例： 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "<CONNECTION_NAME_PREFIX>__accountEndpoint": "<accountEndpoint>",
     "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
     "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
     "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"

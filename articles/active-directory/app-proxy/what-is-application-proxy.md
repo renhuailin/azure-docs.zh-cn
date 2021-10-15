@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9a21ae719a6e89819cb6841f69ff48e17cc0bec6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cb6241443f4ec7aa9d60501aab50ca21ed1d147d
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779514"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235851"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 
@@ -92,7 +92,7 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 
 应用代理适用于使用以下本机身份验证协议的应用：
 
-* **[Windows 集成身份验证 (IWA)](./application-proxy-configure-single-sign-on-with-kcd.md)。** 对于 IWA，应用程序代理连接器使用 Kerberos 约束委派 (KCD) 对 Kerberos 应用程序的用户进行身份验证。
+* [集成 Windows 身份验证 (IWA)](./application-proxy-configure-single-sign-on-with-kcd.md)。 对于 IWA，应用程序代理连接器使用 Kerberos 约束委派 (KCD) 对 Kerberos 应用程序的用户进行身份验证。
 
 应用代理还支持在第三方集成或特定的配置方案中使用以下身份验证协议：
 

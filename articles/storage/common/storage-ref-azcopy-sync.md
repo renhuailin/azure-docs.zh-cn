@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9ba814b4188984f3a0f6dbe16e866d6184d8cf2b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6acafe9f1fab42f5dde74eaaa4426f1953bf0f9b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128547654"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275404"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -169,7 +169,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--recursive** - 默认值为 `True`，即，在目录之间同步时，将以递归方式查看子目录。 （默认值为 `True`）。
 
-**--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层。 请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。
+**--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层。 请参阅 [Blob 数据的热、冷和存档访问层](../blobs/access-tiers-overview.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。
 
 --s2s-preserve-blob-tags      在 blob 存储之间进行服务到服务同步过程中保留索引标记。
 

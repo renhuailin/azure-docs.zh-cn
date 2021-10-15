@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: a90d9a82ff26c62423651d8d1b16173300147a1c
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 939eb89de2e347aeec2d8946f456f5ba2aa6be29
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536783"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658569"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>使用专用终结点复制本地计算机
 
@@ -41,7 +41,7 @@ Azure Site Recovery 支持使用 [Azure 专用链接](../private-link/private-en
 - 旁路网络中还需要一个额外的 IP 地址，以便与缓存存储帐户建立专用终结点连接。 可以在本地和存储帐户终结点之间使用任何连接方法。 例如，可以使用 Internet 或 Azure [ExpressRoute](../expressroute/index.yml)。 建立专用链接是可选的。 只能在常规用途 v2 帐户上为存储创建专用终结点。 有关常规用途 v2 帐户上数据传输的定价信息，请参阅 [Azure 页 Blob 定价](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
 
 > [!NOTE]
-> 设置专用终结点以保护 VMware 和物理计算机时，需要在配置服务器上手动安装 MySQL。 按照[此处](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server#configure-settings)的步骤执行手动安装。 
+> 设置专用终结点以保护 VMware 和物理计算机时，需要在配置服务器上手动安装 MySQL。 按照[此处](vmware-azure-deploy-configuration-server.md#configure-settings)的步骤执行手动安装。 
 
  ## <a name="create-and-use-private-endpoints-for-site-recovery"></a>为站点恢复创建和使用专用终结点
 

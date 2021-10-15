@@ -8,12 +8,12 @@ ms.author: johndeu
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.service: media-services
-ms.openlocfilehash: a8b40206a73672b1d6bbb0ecded26b9f974be6b9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 553fb2b55a5b183b596016c2942106ead99e79c4
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277583"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387157"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何验证本地实时传送视频流编码器
 
@@ -26,7 +26,7 @@ ms.locfileid: "106277583"
 ## <a name="pass-through-live-event-verification"></a>直通直播活动验证
 
 1. 在媒体服务帐户中，确保 **流式处理终结点** 正在运行。 
-2. 创建并启动直通直播活动。 <br/> 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing-concept.md)。
+2. 创建并启动直通直播活动（基本或标准）。 <br/> 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing-concept.md)。
 3. 获取引入 URL 并配置本地编码器以使用 URL 将多比特率实时流发送到媒体服务。
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的 **资产** 对象。

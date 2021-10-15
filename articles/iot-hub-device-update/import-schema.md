@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5b70d59f83280eda416736e9fd02a2ff417dcc34
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9d3cc8cb8ed36179e2297da7c057851345e1c02e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128556339"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536935"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>将更新导入 Device Update for IoT Hub - 架构和其他信息
 如果要将更新导入 Device Update for IoT Hub，请确保先查看[概念](import-concepts.md)和[操作指南](import-update.md)。 如果你对构造导入清单时使用的架构的详细信息，以及相关对象的信息感兴趣，请参阅下文。
@@ -41,7 +41,7 @@ ms.locfileid: "128556339"
 | 名称 | 类型 | 说明 | 限制 |
 | --------- | --------- | --------- | --------- |
 | 文件名 | 字符串 | 文件的名称 | 不得超过 255 个字符。 在更新中必须是唯一的 |
-| SizeInBytes | Int64 | 文件大小，以字节为单位。 | 每个文件的最大大小为 2 GB，每个更新的总大小为 2 GB |
+| SizeInBytes | Int64 | 文件大小，以字节为单位。 | 请参阅[设备更新限制](./device-update-limits.md)，了解每次更新时每个文件的最大大小，以及所有文件的最大大小 |
 | 哈希 | （属于`Hashes` 对象）的父级。 | 包含文件哈希的 JSON 对象 |
 
 ## <a name="compatibilityinfo-object"></a>CompatibilityInfo 对象
@@ -53,7 +53,7 @@ ms.locfileid: "128556339"
 
 ## <a name="hashes-object"></a>Hashes 对象
 
-| 名称 | 必选 | 类型 | 说明 |
+| 名称 | 必须 | 类型 | 说明 |
 | --------- | --------- | --------- | --------- |
 | Sha256 | True | 字符串 | 使用 SHA-256 算法的文件的 Base64 编码哈希。 |
 

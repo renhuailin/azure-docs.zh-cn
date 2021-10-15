@@ -1,24 +1,24 @@
 ---
 title: 通过预留容量为 Azure 应用服务节省费用
-description: 了解你可以如何节省 Azure 应用服务 Premium v3 和 Premium v2 预留实例成本和独立印花费。
+description: 了解可以如何节省 Azure 应用服务 Premium v3 和独立 v2 预留实例费用和独立印花费。
 author: bandersmsft
 ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/04/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 305849e104c3d8fb48b5d661d3d21f589fd69516
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f3c45799d88601bb8ef9a2d652bb07d7d54aceb9
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664421"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456606"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>节省 Azure 应用服务预留实例的费用
 
-本文介绍了你可以如何节省 Azure 应用服务 Premium v3 和 Premium v2 预留实例成本和独立印花费。
+本文介绍了可以如何使用 Azure 应用服务预留实例节省 Premium v3 和独立 v2 实例费用和独立印花费。
 
 ## <a name="save-with-premium-v3-reserved-instances"></a>使用 Premium v3 预留实例节省费用
 

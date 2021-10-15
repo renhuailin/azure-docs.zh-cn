@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 065a06955adc9c157134e138a25aaee9f54f5bea
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: c7c4c28218d1cf6e1c55523d926fd3691a8c13a8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862113"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356307"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -197,7 +197,7 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何流行�
 
 [工作区](#workspace) > **终结点**
 
-终结点是模型到可在云中托管的 Web 服务的实例化。
+终结点是模型在 Web 服务（可托管在云中）中的实例化。
 
 #### <a name="web-service-endpoint"></a>Web 服务终结点
 
@@ -268,7 +268,7 @@ Azure 机器学习提供以下监视和日志记录功能：
 + [Azure 机器学习设计器](concept-designer.md)，用于执行工作流步骤，无需编写代码
 + [自动化机器学习](concept-automated-ml.md)的 Web 体验
 + [Azure 机器学习笔记本](how-to-run-jupyter-notebooks.md)，用于在集成的 Jupyter 笔记本服务器中编写和运行你自己的代码。
-+ [数据标记项目](how-to-create-labeling-projects.md)，用于创建、管理和监视项目以标记数据
++ 用于创建、管理和监视项目的数据标记项目，适用于标记[图像](how-to-create-image-labeling-projects.md)或[文本](how-to-create-text-labeling-projects.md)。
 
 ### <a name="programming-tools"></a>编程工具
 

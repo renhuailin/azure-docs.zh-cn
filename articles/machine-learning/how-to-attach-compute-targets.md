@@ -1,7 +1,7 @@
 ---
 title: 设置训练和推理计算目标
 titleSuffix: Azure Machine Learning
-description: 将计算资源（计算目标）添加到工作区，用于机器学习训练和推理
+description: 将计算资源（计算目标）添加到工作区，用于机器学习训练和推理。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 8d9910755162ea1da593f2e9ee50183c0a3eaa60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: af5d5914d0a90c2c142582e5cdf2105982205f04
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745293"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427678"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型训练和部署的计算目标
 
@@ -347,21 +347,21 @@ Azure 容器实例 (ACI) 是在部署模型时动态创建的。 不能以任何
 
 ## <a name="kubernetes-preview"></a><a id="kubernetes"></a>Kubernetes（预览版）
 
-Azure 机器学习提供了以下选项，用于为训练附加你自己的 Kubernetes 群集：
+Azure 机器学习提供了以下选项来附加你自己的 Kubernetes 群集进行训练：
 
-* [Azure Kubernetes 服务](../aks/intro-kubernetes.md)。 Azure Kubernetes 服务提供在 Azure 中受托管的群集。
-* [Azure Arc Kubernetes](../azure-arc/kubernetes/overview.md)。 如果群集托管在 Azure 外部，请使用已启用 Azure Arc 的 Kubernetes 群集。
+* [Azure Kubernetes 服务](../aks/intro-kubernetes.md)。 Azure Kubernetes 服务在 Azure 中提供托管群集。
+* [Azure Arc Kubernetes](../azure-arc/kubernetes/overview.md)。 如果群集在 Azure 外部托管，请使用已启用 Azure Arc 的 Kubernetes 群集。
 
 [!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
-若要从工作区拆离 Kubernetes 群集，请使用以下方法：
+若要从工作区分离 Kubernetes 群集，请使用以下方法：
 
 ```python
 compute_target.detach()
 ```
 
 > [!WARNING]
-> 拆离群集不会删除群集。 若要删除 Azure Kubernetes 服务群集，请参阅[将 Azure CLI 与 AKS 配合使用](../aks/kubernetes-walkthrough.md#delete-the-cluster)。 若要删除已启用 Azure Arc 的 Kubernetes 群集，请参阅 [Azure Arc 快速入门](../azure-arc/kubernetes/quickstart-connect-cluster.md#7-clean-up-resources)。
+> 分离群集不会删除群集。 若要删除 Azure Kubernetes 服务群集，请参阅[将 Azure CLI 与 AKS 配合使用](../aks/kubernetes-walkthrough.md#delete-the-cluster)。 若要删除已启用 Azure Arc 的 Kubernetes 群集，请参阅 [Azure Arc 快速入门](../azure-arc/kubernetes/quickstart-connect-cluster.md#7-clean-up-resources)。
 
 ## <a name="notebook-examples"></a>Notebook 示例
 

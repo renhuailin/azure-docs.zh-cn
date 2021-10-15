@@ -7,12 +7,12 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 8a39c2b06ca8a0f852891acb60ba199fc2c6db5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26d81a492b12cd2dd7f1d4de260aa22ac4e73a3e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96024123"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234445"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解决方案中设备配置的最佳做法
 
@@ -20,7 +20,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 * **IoT 硬件制造商/集成商：** IoT 硬件的制造商、组装来自各个制造商的硬件的集成商，或针对由其他供应商制造或集成的 IoT 部署提供硬件的供应商。 参与固件、嵌入式操作系统和嵌入式软件的开发与集成。
 
-* **IoT 解决方案开发人员：** IoT 解决方案的开发通常由解决方案开发人员完成。 此开发人员可能是内部团队成员或专门从事此活动的系统集成商。 IoT 解决方案开发人员可从头开始开发 IoT 解决方案的各个组件、集成各种标准组件或开源组件，或自定义 [IoT 解决方案加速器](../iot-accelerators/index.yml)。
+* **IoT 解决方案开发人员：** IoT 解决方案的开发通常由解决方案开发人员完成。 此开发人员可能是内部团队成员或专门从事此活动的系统集成商。 IoT 解决方案开发人员可从头开始开发 IoT 解决方案的各个组件、集成各种标准组件或开源组件。
 
 * **IoT 解决方案操作员：** 在部署后，IoT 解决方案需要长期的操作、监视、升级和维护。 这些任务可由内部团队来完成，该团队由信息技术专业人员、硬件操作和维护团队，以及负责监督整体 IoT 基础结构行为是否正常的领域专业人员组成。
 

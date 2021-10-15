@@ -4,12 +4,12 @@ description: 本文介绍如何对使用 Azure Active Directory 访问 Azure 服
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 8a28b13a8cde8c908d01d2f0eb2160ba7decb6f6
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: cf9e65468567764e5fe7c91455f010dd6d46831f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122612"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359953"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体
 Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线实体（队列、主题、订阅或筛选器）的请求。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (Azure RBAC) 授予对安全主体的访问权限，该安全主体可能是用户、组或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) 通过 [Azure RBAC](../role-based-access-contr
 > [!NOTE]
 > 请记住，Azure 角色分配可能需要最多五分钟的时间进行传播。 
 
-有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 若要了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
+有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#control-and-data-actions)。 若要了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色  
@@ -109,20 +109,14 @@ Azure Active Directory (Azure AD) 通过 [Azure RBAC](../role-based-access-contr
 
 有关支持获取令牌的方案列表，请参阅[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub 存储库的[方案](https://aka.ms/msal-net-scenarios)部分。
 
-<!-- TAB -- # [.NET](#tab/dotnet) -  -->
-
-如果使用的是最新 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) 库，可使用在 [Azure.Identity](https://www.nuget.org/packages/Azure.Identity) 库中定义的 [ClientSecretCredential](/dotnet/api/azure.identity.clientsecretcredential) 对 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 进行身份验证。
+通过使用最新的 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus)库，可使用在[Azure.Identity](https://www.nuget.org/packages/Azure.Identity)库中定义的 [ClientSecretCredential](/dotnet/api/azure.identity.clientsecretcredential)对 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)进行身份验证。
 
 ```cs
 TokenCredential credential = new ClientSecretCredential("<tenant_id>", "<client_id>", "<client_secret>");
 var client = new ServiceBusClient("<fully_qualified_namespace>", credential);
 ```
 
-如果使用的是旧版 .NET 包，请参阅以下示例：
-- [Microsoft.Azure.ServiceBus 中的 RoleBasedAccessControl](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/RoleBasedAccessControl)
-- [WindowsAzure.ServiceBus 中的 RoleBasedAccessControl](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
-
-<!-- CLOSE TAB --- -->
+如果使用的是较旧的 .NET 包，请参阅 [azure-service-bus 示例存储库](https://github.com/Azure/azure-service-bus)中的 RoleBasedAccessControl 示例。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要详细了解 Azure RBAC，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)？

@@ -4,17 +4,17 @@ description: 了解如何诊断和修复请求标头太大异常。
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 07/13/2020
+ms.date: 09/29/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d180e955fda4074fa2115b26f363b2c1350dab98
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: acd3393471e8a58247ad366dcc8b816965ba8045
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113592"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273488"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>诊断 Azure Cosmos DB“请求标头太大”消息并对其进行故障排除
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "123113592"
 
 #### <a name="solution"></a>解决方案：
 > [!IMPORTANT]
-> 至少升级到 .NET [v3.20.1](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) 或 [v2.15.0](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)。 这些次要版本中包含用于减小会话令牌大小，以防止标头增长并达到大小限制的诸多优化。
+> 至少升级到 .NET [v3.20.1](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) 或 [v2.16.1](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)。 这些次要版本中包含用于减小会话令牌大小，以防止标头增长并达到大小限制的诸多优化。
 1. 请按照 [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) 或 [.NET v2 ](performance-tips.md) 性能提示文章中的指南进行操作。 将应用程序转换为使用具有传输控制协议 (TCP) 的直接连接模式。 采用 TCP 协议的直接连接模式对标头大小没有限制（HTTP 协议则有限制），因此可以避免此问题。 请确保使用最新版本的 SDK，此版本针对不可使用服务互操作时进行的查询操作提供了修复。
 1. 如果采用 TCP 协议的直接连接模式不是适用于你的工作负载的选项，请通过更改[客户端一致性级别](how-to-manage-consistency.md)来缓解此情况。 会话标记仅用于实现会话一致性（这是 Azure Cosmos DB 的默认一致性级别）。 其他一致性级别不使用会话令牌。
 

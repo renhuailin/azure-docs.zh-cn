@@ -10,12 +10,12 @@ ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: ca0ec185721b0e35c15dfe99e361ff024cf01a78
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c923af2d4260afba8ed8347c6723119278ab1c62
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584197"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278626"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
 
@@ -122,7 +122,7 @@ Microsoft 一直在与一家领先的独立评估机构 Cohasset Associates 保�
 
 ### <a name="access-tiers"></a>访问层级
 
-所有 Blob 访问层都支持不可变存储。 可以使用“设置 Blob 层”操作更改 Blob 的访问层。 有关详细信息，请参阅 [Azure Blob 存储的访问层 - 热、冷和存档](storage-blob-storage-tiers.md)。
+所有 Blob 访问层都支持不可变存储。 可以使用“设置 Blob 层”操作更改 Blob 的访问层。 有关详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 
 ### <a name="redundancy-configurations"></a>冗余配置
 
@@ -165,7 +165,7 @@ Azure 存储 Blob 清单提供存储帐户中的容器以及这些容器中的 B
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
 
 | 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|

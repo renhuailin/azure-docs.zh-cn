@@ -7,16 +7,16 @@ ms.custom: references_regions
 ms.date: 06/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: bc356e828adbe9b2d93a202f6b58673dd4ec5efc
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 709721139fa652798c5cc67b7f54e1b7452505a3
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113125899"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273868"
 ---
 # <a name="data-locations-for-azure-virtual-desktop"></a>Azure 虚拟桌面的数据位置
 
-Azure 虚拟桌面目前可用于所有地理位置。 管理员可以在创建主机池虚拟机和相关服务（如文件服务器）时选择存储用户数据的位置。 请查看 [Azure 数据中心地图](https://azuredatacentermap.azurewebsites.net/)详细了解 Azure 地理位置。
+Azure 虚拟桌面目前可用于所有地理位置。 管理员可以在创建主机池虚拟机和相关服务（如文件服务器）时选择存储用户数据的位置。 请查看 [Azure 数据驻留](https://azure.microsoft.com/global-infrastructure/data-residency/#overview)详细了解 Azure 地理位置。
 
 >[!NOTE]
 >Microsoft 不会控制或限制你或你的用户访问你的用户和特定于应用程序的数据的区域。

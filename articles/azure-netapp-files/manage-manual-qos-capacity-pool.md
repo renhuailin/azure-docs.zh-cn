@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 18333b7c9fded73d330cacd6322b0869bf65f9d9
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: dd92472ff810a46743ffa08b1ea2fdd8f9e01da7
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071076"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407582"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>管理手动 QoS 容量池
 
@@ -31,7 +31,7 @@ ms.locfileid: "112071076"
 
 若要使用手动 QoS 类型创建新的容量池，请执行以下操作：
 
-1. 按照[设置容量池](azure-netapp-files-set-up-capacity-pool.md)中的步骤操作。  
+1. 按照[创建容量池](azure-netapp-files-set-up-capacity-pool.md)中的步骤操作。  
 
 2. 在“新建容量池”窗口中，选择“手动 QoS”类型。  
 
@@ -68,7 +68,7 @@ ms.locfileid: "112071076"
 
 ## <a name="next-steps"></a>后续步骤  
 
-* [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
+* [创建容量池](azure-netapp-files-set-up-capacity-pool.md)
 * [Azure NetApp 文件的指标](azure-netapp-files-metrics.md)
 * [Azure NetApp 文件的性能考虑因素](azure-netapp-files-performance-considerations.md)
 * [排查容量池问题](troubleshoot-capacity-pools.md)

@@ -1,7 +1,6 @@
 ---
 title: Azure AD 多重身份验证部署注意事项
 description: 了解成功实现 Azure AD 多重身份验证的部署注意事项和策略
-services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
@@ -11,12 +10,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01044f9d03b911bfb6939023dfb4fd5d3b0a3cd3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 42ce13335c3bab4a853de5001760eca0d85fdf7b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124773790"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352631"
 ---
 # <a name="plan-an-azure-active-directory-multi-factor-authentication-deployment"></a>规划 Azure Active Directory 多重身份验证部署 
 
@@ -64,19 +63,19 @@ Azure Active Directory (Azure AD) 多重身份验证 (MFA) 通过使用第二种
 
 你可以控制租户中可用的身份验证方法。 例如，你可能想要阻止一些安全性最低的方法，例如 SMS。
 
-| 身份验证方法 | 管理方式 | Scoping |
+| 身份验证方法    | 管理方式 | Scoping |
 |-----------------------|-------------|---------|
 | Microsoft Authenticator（推送通知和无密码手机登录）    | MFA 设置或
 身份验证方法策略 | Authenticator 无密码电话登录的范围可缩小到用户和组 |
 | FIDO2 安全密钥 | 身份验证方法策略 | 可以将范围限定为用户和组 |
 | 软件或硬件 OATH 令牌 | MFA 设置 |     |
-| 短信验证 | MFA 设置 | 管理身份验证策略中主要身份验证的短信登录。 可以短信登录的范围限定为用户和组。 |
+| 短信验证 | MFA 设置 | 管理身份验证策略中主要身份验证的短信登录。    可以短信登录的范围限定为用户和组。 |
 | 语音呼叫 | 身份验证方法策略 |       |
 
 
 ## <a name="plan-conditional-access-policies"></a>计划条件访问策略
 
-Azure AD MFA 强制实施条件访问策略。 通过这些策略，你可以在有安全需要时提示用户进行多重身份验证，并在不需要时避免用户进入。
+Azure AD MFA 强制实施条件访问策略。 使用这些策略，你可以在有安全需要时提示用户进行多重身份验证，在没有安全需要时不提示。
 
 ![概念性条件访问的流程](media/howto-mfa-getstarted/conditional-access-overview-how-it-works.png)
 
@@ -117,7 +116,7 @@ Azure AD MFA 强制实施条件访问策略。 通过这些策略，你可以在
 
 如果使用每用户启用和强制执行的 Azure AD 多重身份验证启用用户，则以下 PowerShell 可帮助你转换为基于条件访问的 Azure AD 多重身份验证。
 
-在 ISE 窗口中运行此 PowerShell，或另存为要在本地运行的 `.PS1` 文件。 操作只能使用 [MSOnline 模块](/powershell/module/msonline/?view=azureadps-1.0#msonline)完成。 
+在 ISE 窗口中运行此 PowerShell，或另存为要在本地运行的 `.PS1` 文件。 操作只能使用 [MSOnline 模块](/powershell/module/msonline#msonline)完成。 
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -170,7 +169,7 @@ Azure AD 标识保护同时为 Azure AD MFA 过程提供自动风险检测的注
 如果你使用 Azure Active Directory 标识保护，请[配置 Azure AD MFA 注册策略](../identity-protection/howto-identity-protection-configure-mfa-policy.md)，以提示用户在下次以交互方式登录时进行注册。
 
 ### <a name="registration-without-identity-protection"></a>不使用标识保护进行注册
-如果你没有用于启用 Azure Active Directory 标识保护的许可证，则在下一次需要使用 MFA 进行登录时，会提示用户进行注册。 要要求用户使用 MFA，你可以使用条件访问策略并针对 HR 系统等常用应用程序实施策略。 如果用户的密码被泄露，则泄露的密码可用于注册 MFA，从而控制用户的帐户。 因此，我们[建议使用条件访问策略来保护安全注册过程](../conditional-access/howto-conditional-access-policy-registration.md)，因为条件访问策略要求可信设备和位置。 还可以通过要求[临时访问密码](howto-authentication-temporary-access-pass.md)来进一步确保该过程的安全。 由管理员颁发的一种有时间限制的密码，可满足强身份验证要求，并可用于载入其他身份验证方法（包括无密码方法）。
+如果你没有用于启用 Azure Active Directory 标识保护的许可证，则在下一次需要使用 MFA 进行登录时，系统会提示用户进行注册。 要要求用户使用 MFA，你可以使用条件访问策略并针对 HR 系统等常用应用程序实施策略。 如果用户的密码已泄露，则泄露的密码可用于注册 MFA，从而控制用户的帐户。 因此，我们[建议使用条件访问策略来保护安全注册过程](../conditional-access/howto-conditional-access-policy-registration.md)，因为条件访问策略要求可信设备和位置。 还可以通过要求[临时访问密码](howto-authentication-temporary-access-pass.md)来进一步确保该过程的安全。 由管理员颁发的一种有时间限制的密码，可满足强身份验证要求，并可用于载入其他身份验证方法（包括无密码方法）。
 
 ### <a name="increase-the-security-of-registered-users"></a>提高已注册用户的安全性
 如果你的用户使用短信或语音呼叫注册了 MFA，可能需要将其切换为更安全的方法，例如 Microsoft Authenticator 应用。 Microsoft 现在提供功能的公共预览版，可在用户登录过程中提示用户设置 Microsoft Authenticator 应用。 可以按组设置这些提示，控制要提示的用户，从而通过针对性的宣传活动将用户切换为更安全的方法。 
@@ -182,7 +181,7 @@ Azure AD 标识保护同时为 Azure AD MFA 过程提供自动风险检测的注
 - 以管理员角色更新用户的方法。 为此，请在 Azure 门户中选择用户，然后选择“身份验证方法”并更新其方法。
 用户通信
 
-通知用户即将进行的更改、Azure AD MFA 注册要求以及任何必要的用户操作至关重要。 我们提供[通信模板](https://aka.ms/mfatemplates)和[最终用户文档](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)来帮助草拟通信。 在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以注册。
+必须通知用户即将进行的更改、Azure AD MFA 注册要求以及任何必要的用户操作。 我们提供[通信模板](https://aka.ms/mfatemplates)和[最终用户文档](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)来帮助草拟通信。 在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以注册。
 
 ## <a name="plan-integration-with-on-premises-systems"></a>计划与本地系统进行集成
 

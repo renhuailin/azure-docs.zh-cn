@@ -1,20 +1,20 @@
 ---
 title: 使用 TensorBoard 将试验可视化
 titleSuffix: Azure Machine Learning
-description: 启动 TensorBoard 以可视化试验运行历史记录，并识别可在哪些方面进行超参数优化和重新训练。
+description: 启动 TensorBoard 以可视化试验运行历史记录，确定可在哪些方面进行超参数优化和重新训练。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: minxia
 ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: a8e1c85bf2284eb2dd5a2bc87c2a60b89478e928
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 29c79d53ded02ab4648359210b8b18ea04f5965b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760600"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429008"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure 机器学习可视化试验运行与指标
 

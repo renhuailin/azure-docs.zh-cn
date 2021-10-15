@@ -3,21 +3,23 @@ title: 在 Azure Functions 中使用代理
 description: 有关如何使用 Azure Functions 代理的概述
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34873d3d7e0200d2c6ee58096af880f26c428732
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96601367"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429597"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
 本文介绍了如何配置和使用 Azure Functions 代理。 使用此功能可在 Function App 上指定由其他资源实现的终结点。 可以使用这些代理将大型 API 拆分到多个 Function App 中（与在微服务体系结构中一样），同时对客户端仍然呈现为单个 API 接口。
 
+标准版 Functions 针对代理执行收费。 有关详细信息，请参阅 [Azure Functions 定价](https://azure.microsoft.com/pricing/details/functions/)。
+
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE] 
-> 标准版 Functions 针对代理执行收费。 有关详细信息，请参阅 [Azure Functions 定价](https://azure.microsoft.com/pricing/details/functions/)。
+> 还应考虑将 [Azure API 管理](../api-management/api-management-key-concepts.md)用于应用程序。 它提供与 Functions 代理以及用于生成和维护 API 的其他工具相同的功能，例如 OpenAPI 集成、速率限制和高级策略。 
 
 ## <a name="create-a-proxy"></a><a name="create"></a>创建代理
 

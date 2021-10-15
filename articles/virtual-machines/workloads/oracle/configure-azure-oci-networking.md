@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 9c785be73e424d4669b24600c353a14127e9279a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c8c35abc680a37c3226872698d85be8853dd892d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696021"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456397"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>在 Azure 与 Oracle 云基础结构之间建立直接互连  
 
@@ -32,6 +32,10 @@ ms.locfileid: "122696021"
 下图概要显示了互连：
 
 ![跨云网络连接](https://user-images.githubusercontent.com/37556655/115093592-bced0180-9ecf-11eb-976d-9d4c7a1be2a8.png)
+
+> [!NOTE]
+> 关系图中所示的 ExpressRoute 连接是一种常规 [ExpressRoute 线路](../../../expressroute/expressroute-introduction.md)，支持所有功能，如 Global Reach。
+> 
 
 ## <a name="prerequisites"></a>先决条件
 

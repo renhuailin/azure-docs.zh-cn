@@ -5,21 +5,25 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/02/2019
+ms.date: 10/04/2021
 ms.author: sngun
-ms.openlocfilehash: 91c433edd48c560f2938b50540d9a654e3eee2e7
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6e9a03869fadf5dd6616755a44c12cefe40a5556
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113217"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456017"
 ---
-# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>使用 BI 分析工具和 ODBC 驱动程序连接到 Azure Cosmos DB
+# <a name="connect-to-azure-cosmos-db-using-analytics-bi-and-data-integration-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 Analytics、BI 和 Data Integration 工具连接到 Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
-借助 Azure Cosmos DB ODBC 驱动程序，可以使用 SQL Server Integration Services、Power BI Desktop 和 Tableau 等 BI 分析工具连接到 Azure Cosmos DB，以便能够在这些解决方案中分析和创建 Azure Cosmos DB 数据的可视化效果。
+借助 Azure Cosmos DB ODBC 驱动程序，可以使用 SQL Server Integration Services 和 Tableau 等工具连接到 Azure Cosmos DB，以便能够在这些解决方案中分析、移动、转换和创建 Azure Cosmos DB 数据的可视化效果。
 
 Azure Cosmos DB ODBC 驱动程序符合 ODBC 3.8 规范，支持 ANSI SQL-92 语法。 该驱动程序提供丰富的功能来帮助用户重新规范化 Azure Cosmos DB 中的数据。 使用该驱动程序，能够以表和视图的形式表示 Azure Cosmos DB 中的数据。 使用该驱动程序还可以针对表和视图执行 SQL 操作，包括 group by 查询、插入、更新和删除。
+
+> [!NOTE]
+> 如果使用的是 Power BI，请查看我们的原生连接器[文档](powerbi-visualize.md)。
+
 
 > [!NOTE]
 > 目前仅 Azure Cosmos DB SQL API 帐户支持使用 ODBC 驱动程序连接到 Azure Cosmos DB。

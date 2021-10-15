@@ -4,14 +4,14 @@ description: 本文介绍如何在 Azure 事件中心命名空间中创建架构
 ms.topic: how-to
 ms.date: 06/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1155ef818cf6c82d3159c146006b16d811efeac8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 360f81157f5431a6e6e70a25ef33e707c57cc91a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788385"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536605"
 ---
-# <a name="create-an-azure-event-hubs-schema-registry-preview"></a>创建 Azure 事件中心架构注册表（预览版）
+# <a name="create-an-azure-event-hubs-schema-registry--preview"></a>创建 Azure 事件中心架构注册表（预览版）
 本文介绍如何在 Azure 事件中心托管的架构注册表中创建包含架构的架构组。 有关 Azure 事件中心的架构注册表功能的概述，请参阅[事件中心中的 Azure 架构注册表](schema-registry-overview.md)。
 
 > [!NOTE]
@@ -67,7 +67,7 @@ ms.locfileid: "110788385"
             ]
         }
         ```
-    1. 选择“创建”  。 
+    1. 选择“创建”。 
 1. 从架构列表中选择“架构”。 
 
     :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="显示所选架构的图像。":::

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/03/2021
-ms.openlocfilehash: 0a7bca44ccee4e836fd5aa8e0ef44412e1fc6985
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/29/2021
+ms.openlocfilehash: 6a1c13d8557b49b1481e94bc95eef10fd5e658f6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836212"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230224"
 ---
 # <a name="copy-data-from-and-to-salesforce-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 从/向 Salesforce 复制数据
 
@@ -41,6 +41,9 @@ ms.locfileid: "124836212"
 - 从/向 Salesforce 生产、沙盒和自定义域复制数据。
 
 Salesforce 连接器在 Salesforce REST/Bulk API 之上构建。 从 Salesforce 复制数据时，连接器会根据数据大小在 REST 和批量 API 之间自动选择。当结果集较大时，使用批量 API 来提高性能。你可通过链接服务中的 [`apiVersion` 属性](#linked-service-properties)显式设置用于读取/写入数据的 API 版本。
+
+>[!NOTE]
+>连接器不再设置 Salesforce API 的默认版本。 为了向后兼容，如果之前设置了默认 API 版本，它将一直工作。 对于源，默认值为 45.0，对于接收器，默认值为 40.0。
 
 ## <a name="prerequisites"></a>先决条件
 

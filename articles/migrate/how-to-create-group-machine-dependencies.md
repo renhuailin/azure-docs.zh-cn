@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 757a10473c2f6776ef3a84310b42209ddd12ed45
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1ad8f9496bd781d6ed33927b4056073a50e0b5a2
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643643"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535075"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
@@ -65,9 +65,13 @@ ms.locfileid: "128643643"
 > 受 System Center Operations Manager 2012 R2 或更高版本监视的服务器无需安装 MMA 代理。 服务映射与 Operations Manager 集成。 [遵循](../azure-monitor/vm/service-map-scom.md#prerequisites)集成指南。
 
 1. 在“Azure Migrate：发现和评估”中，单击“已发现的服务器”。
-2. 对于要通过依赖项可视化进行分析的每个服务器，请在“依赖项”列中单击“需要安装代理”。
-3. 在“依赖项”页上，下载适用于 Windows 或 Linux 的 MMA 和依赖项代理。
-4. 在“配置 MMA 代理”下，复制工作区 ID 和密钥。 安装 MMA 代理时需要这些。
+1. 单击“列”，选择“依赖项(基于代理)”，以查看“已发现的服务器”页上的列。
+
+    :::image type="content" source="./media/how-to-create-group-machine-dependencies/columns-inline.png" alt-text="显示单击列后的结果的屏幕截图。" lightbox="./media/how-to-create-group-machine-dependencies/columns-expanded.png":::
+
+1. 对于要通过依赖项可视化进行分析的每个服务器，请在“依赖项”列中单击“需要安装代理”。
+1. 在“依赖项”页上，下载适用于 Windows 或 Linux 的 MMA 和依赖项代理。
+1. 在“配置 MMA 代理”下，复制工作区 ID 和密钥。 安装 MMA 代理时需要这些。
 
     ![安装代理](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 

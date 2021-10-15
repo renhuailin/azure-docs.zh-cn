@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e46161812d122a1d5647e8589c58f9528578b878
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ff1c5396ca2861250c5314ac785f8cbad42bf362
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749827"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235471"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>通过 Azure 事件网格接收和响应 Key Vault 通知
 
@@ -29,7 +29,7 @@ ms.locfileid: "107749827"
 
 ## <a name="concepts"></a>概念
 
-事件网格是针对云的事件处理服务。 通过按照本指南中的步骤操作，你将订阅 Key Vault 事件，并将事件路由到自动化。 当 Key Vault 中的机密之一即将过期时，则会通知事件网格状态更改，并对终结点发出 HTTP POST。 然后，Webhook 会触发 PowerShell 脚本的自动化执行。
+事件网格是针对云的事件处理服务。 通过按照本指南中的步骤操作，你将订阅 Key Vault 事件，并将事件路由到自动化。 当 Key Vault 中的机密之一即将到期时（有效期定义为到期日期之前的 30 天），事件网格会获得状态更改通知，并对终结点发出 HTTP POST。 然后，Webhook 会触发 PowerShell 脚本的自动化执行。
 
 ![HTTP POST 流程图](../media/event-grid-tutorial-1.png)
 

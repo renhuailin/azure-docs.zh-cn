@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 32fbdae5719e2f8e379b39076f8557b3db0d61ca
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 10/01/2021
+ms.openlocfilehash: 0f4ce35a43702f958656b1ad077e6c0f84bc88bb
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020018"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418701"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 .NET (C#) 代码示例
 
@@ -47,7 +47,7 @@ Azure SDK 开发团队中的代码示例演示 API 用法。 可以在 GitHub �
 | 示例 | 项目  |
 |---------|-------------|
 | [快速入门](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | [快速入门：创建搜索索引](search-get-started-dotnet.md)的源代码。 介绍了使用示例数据来创建、加载和查询搜索索引的基本工作流。 |
-| [search-website](https://github.com/azure-samples/azure-search-dotnet-samples/tree/master/search-website) | [教程：向 Web 应用添加搜索](tutorial-csharp-overview.md)的源代码。 演示一个端到端搜索应用，其中包含一个富客户端以及用于托管应用和处理搜索请求的组件。|
+| [search-website](https://github.com/azure-samples/azure-search-dotnet-samples/tree/master/search-website) | [《教程：向 Web 应用添加搜索》](tutorial-csharp-overview.md)的源代码。 演示一个端到端搜索应用，其中包含一个富客户端以及用于托管应用和处理搜索请求的组件。|
 | [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | [如何使用 .NET 客户端库](search-howto-dotnet-sdk.md)的源代码。 不仅逐步讲解基本工作流，还详细介绍了 API 的用法。  |
 | [DotNetHowToSynonyms](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)  | [示例：在 C# 中添加同义词](search-synonyms-tutorial-sdk.md)的源代码。 同义词列表用于扩展查询，可提供索引外部的匹配术语。 |
 | [DotNetToIndexers](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) | [教程：使用 .NET SDK 为 Azure SQL 数据编制索引](search-indexer-tutorial.md)的源代码。 本文演示如何配置具有计划、字段映射和参数的 Azure SQL 索引器。  |
@@ -66,6 +66,7 @@ Azure SDK 开发团队中的代码示例演示 API 用法。 可以在 GitHub �
 
 | 示例 | 说明 |
 |---------|-------------|
+| [使用 Azure AD 为 Data Lake Gen2 编制索引](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md) | 源代码，用于演示索引器连接，以及为通过 Azure AD 和基于角色的访问控制进行保护的 Azure Data Lake Gen2 文件和文件夹编制索引。 |
 | [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills)  | 可合并到你自己的解决方案中的可耗用自定义技能的源代码。  |
 | [知识挖掘解决方案加速器](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | 包括模板、支持文件和分析报表，以帮助你建立端到端知识挖掘解决方案的原型。  |
 | [Covid-19 搜索应用存储库](https://github.com/liamca/covid19search) | 基于认知搜索的 [Covid-19 搜索应用](https://covid19search.azurewebsites.net/)的源代码存储库 |

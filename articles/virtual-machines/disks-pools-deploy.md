@@ -4,15 +4,15 @@ description: 了解如何部署 Azure 磁盘池。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 09/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f0f648f7f8c04aeb6ed97a0c58fa157e743da5f1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 72a25b6bc51732ac9b598cbcb6b45f9ac84fc21b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436963"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351063"
 ---
 # <a name="deploy-an-azure-disk-pool-preview"></a>部署 Azure 磁盘池（预览版）
 
@@ -35,7 +35,7 @@ ms.locfileid: "114436963"
 
 如果要使用 Azure PowerShell 模块，请安装 [6.1.0 或更高版本](/powershell/module/az.diskpool/?view=azps-6.1.0&preserve-view=true)。
 
-如果要使用 Azure CLI，请安装[最新版本](/cli/azure/disk-pool?view=azure-cli-latest)。
+如果要使用 Azure CLI，请安装[最新版本](/cli/azure/disk-pool)。
 
 ## <a name="register-your-subscription-for-the-preview"></a>针对预览版注册你的订阅
 
@@ -71,7 +71,7 @@ ms.locfileid: "114436963"
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 搜索并选择包含磁盘的资源组，或者搜索并选择每个磁盘本身。
 1. 选择“访问控制(IAM)”。
-1. 选择“添加角色分配(预览版)”，在角色列表中选择“虚拟机参与者”。
+1. 选择“添加角色分配(预览版)”，然后在角色列表中选择“磁盘池操作员”。
 
     如果你愿意，你可以改为创建自己的自定义角色。 磁盘池的自定义角色必须具有以下 RBAC 权限才能工作：Microsoft.Compute/disks/write 和 Microsoft.Compute/disks/read。
 

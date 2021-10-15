@@ -1,6 +1,6 @@
 ---
-title: 设置 Azure 虚拟桌面排出模式 - Azure
-description: 如何在 Azure 虚拟桌面中配置和使用排出模式。
+title: 如何使用排出模式隔离会话主机 - Azure 虚拟桌面
+description: 如何使用排出模式隔离会话主机以便在 Azure 虚拟桌面中执行维护。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,14 +9,14 @@ ms.date: 04/14/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 2ff90e2800da857dd5c82cd3b9402fa2454575ac
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 4bacff4ecef6762a4e08760c463531392a71245f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757834"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352013"
 ---
-# <a name="set-drain-mode"></a>设置排出模式
+# <a name="use-drain-mode-to-isolate-session-hosts-and-apply-patches"></a>使用排出模式隔离会话主机并应用修补程序
 
 如果要应用补丁并进行维护而不中断用户会话，排出模式可隔离会话主机。 隔离时，会话主机不会接受新的用户会话。 任何新连接都会重定向到下一个可用的会话主机。 在用户注销或管理员结束会话之前，会话主机中的现有连接会保持工作。 会话主机处于排出模式时，管理员还可以远程连接到服务器，而无需通过 Azure 虚拟桌面服务。 可以将此设置应用于共用和个人桌面。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 23960e112dd03a711027c2364f648f60f23d0c8e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aab3c66a76e22e17e5e5d6c0cd03ebca4562734d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742020"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277644"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -59,14 +59,14 @@ ms.locfileid: "121742020"
 **核心概念**
 
 - 软件定义的网络是围绕虚拟网络 (VNET) 和子网进行组织的。 可以使用 NSG 来管理这些 VNet 和子网的安全性。
-- 网络安全组 (NSG) 包含安全规则列表，这些规则可允许或拒绝 VNet 和子网所连接到的资源中的网络流量。 可以将 NSG 与子网、单个 VM 或附加到 VM 的单个网络接口 (NIC)（资源管理器模型）进行关联。 有关详细信息，请参阅[网络安全组概述](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- 网络安全组 (NSG) 包含安全规则列表，这些规则可允许或拒绝 VNet 和子网所连接到的资源中的网络流量。 NSG 可以与虚拟机中的每个虚拟网络子网和网络接口相关联。 有关详细信息，请参阅[网络安全组概述](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 - 网络中的所有流量流都是使用适用 NSG 中的规则评估的。
 - 这些评估的结果就是 NSG 流日志。 流日志通过 Azure 平台收集，无需对客户资源进行任何更改。
 - 注意：规则分为两种类型（终止和非终止），每种类型都有不同的日志记录行为。
 - - NSG 拒绝规则是终止类型。 拒绝流量的 NSG 会将其记录在流日志中，在这种情况下，处理将在任何 NSG 拒绝流量后停止。 
 - - NSG 允许规则是非终止类型，这意味着即使一个 NSG 允许，处理也会继续下一 NSG。 允许流量的最后一个 NSG 会将流量记录到流日志。
 - NSG 流日志将写入到存储帐户，从存储帐户中可以访问这些日志。
-- 可使用流量分析、Splunk、Grafana、Stealthwatch 等工具导出、处理、分析和可视化流日志。
+- 可以使用流量分析、Splunk、Grafana、Stealthwatch 等工具导出、处理、分析和直观显示流日志。
 
 ## <a name="log-format"></a>日志格式
 

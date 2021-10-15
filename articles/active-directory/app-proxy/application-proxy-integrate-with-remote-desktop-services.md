@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa5c8ae942bb48c78526867eb44cc2084c056d48
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 1f35dfff5c9c29766abf97d32496ca3056ed7e40
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649680"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456986"
 ---
 # <a name="publish-remote-desktop-with-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理发布远程桌面
 
@@ -61,6 +61,7 @@ ms.locfileid: "113649680"
    - 外部 URL：系统会根据应用程序的名称自动填充此字段，但可以修改它。 用户访问 RDS 时，会转到此 URL。
    - 预身份验证方法：Azure Active Directory
    - 转换 URL 标头：否
+   - 使用仅限 HTTP 的 Cookie：否
 2. 将用户分配到已发布的 RD 应用程序。 确保这些用户也都有权访问 RDS。
 3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。
 

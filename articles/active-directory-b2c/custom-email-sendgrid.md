@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: daee0bc89804b8fe72845c411224b689452fe7d2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 67c5c15b81bf2007494cb78496a655e4e0d833fb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723237"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568480"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>使用 SendGrid 进行自定义电子邮件验证
 
@@ -49,12 +49,13 @@ ms.locfileid: "121723237"
 接下来，将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，以供策略引用。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于“选项”，选择“手动”。
-1. 输入策略密钥的 **名称**。 例如，`SendGridSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`SendGridSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“机密”中，输入之前记录的 SendGrid API 密钥。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。
@@ -165,7 +166,7 @@ ms.locfileid: "121723237"
 1. 展开左侧的“设置”，输入 `{{subject}}` 作为“电子邮件主题” 。
 1. 选择“保存模板”。
 1. 通过选择返回箭头返回到“事务模板”页。
-1. 记下你创建的模板的 ID，后面的步骤将要用到。 例如 `d-989077fbba9746e89f3f6411f596fb96`。 在[添加声明转换](#add-the-claims-transformation)时指定此 ID。
+1. 记下你创建的模板的 ID，后面的步骤将要用到。 例如，`d-989077fbba9746e89f3f6411f596fb96`。 在[添加声明转换](#add-the-claims-transformation)时指定此 ID。
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>添加 Azure AD B2C 声明类型
 
@@ -205,7 +206,9 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 将以下声明转换添加到 `<BuildingBlocks>` 中的 `<ClaimsTransformations>` 元素。 对声明转换 XML 进行以下更新：
 
 * 使用先前在[创建 SendGrid 模板](#create-sendgrid-template)中创建的 SendGrid 事务模板的 ID 更新 `template_id` InputParameter 值。
-* 更新 `from.email` 地址值。 使用有效的电子邮件地址有助于防止验证电子邮件被标记为垃圾邮件。
+* 更新 `from.email` 地址值。 使用有效的电子邮件地址有助于防止验证电子邮件被标记为垃圾邮件。 
+   > [!NOTE]
+   > 此电子邮件地址必须在 SendGrid 中的“发件人身份验证”下通过域身份验证或单一发件人身份验证进行验证。
 * 用适合你组织的主题行更新 `personalizations.0.dynamic_template_data.subject` 主题行输入参数的值。
 
 ```xml

@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9fc7a8d5b27da251f13f2c9dfeffa03f7cdbd149
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f10c1f70026b905521193a0dd511ba1e65de6849
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114452552"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274019"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
@@ -30,9 +30,6 @@ Azure 自动化使用许多 PowerShell 模块在 runbook DSC 配置中启用 run
 
 当自动化执行 runbook 和 DSC 编译作业时，它会将模块加载到沙盒中，其中 runbook 可以运行，并且 DSC 配置可以编译。 自动化还自动将任何 DSC 资源放置到 DSC 拉取服务器上的模块中。 计算机在应用 DSC 配置时可以提取资源。
 
->[!NOTE]
->请务必仅导入 runbook 和 DSC 配置所需的模块。 不建议导入根 Az 模块。 它包括可能不需要的许多其他模块，这可能导致性能问题。 改为导入单个模块，如 Az.Compute。
-
 云沙盒最多支持 48 个系统调用，并出于安全原因限制所有其他调用。 云沙盒不支持其他功能，例如凭据管理和某些网络连接。
 
 由于包含的模块和 cmdlet 数量众多，因此很难事先知道哪个 cmdlet 会进行不受支持的调用。 通常，对于需要提升的访问权限以及需要凭据作为参数的 cmdlet，或者对于与网络相关的 cmdlet，我们都知道其问题所在。 沙盒不支持执行完全堆栈网络操作的任何 cmdlet，包括 AIPService PowerShell 模块中的 [Connect-AipService](/powershell/module/aipservice/connect-aipservice) 和 DNSClient 模块中的 [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname)。
@@ -44,19 +41,28 @@ Azure 自动化使用许多 PowerShell 模块在 runbook DSC 配置中启用 run
 
 ## <a name="default-modules"></a>默认模块
 
-下表列出了在创建自动化帐户时，Azure 自动化默认导入的模块。 自动化可以导入这些模块的较新版本。 但是，即使你删除了较新新版本，也不能从自动化帐户中删除原始版本。 请注意，这些默认模块包括多个 AzureRM 模块。
+所有新的自动化帐户都默认导入了最新版本的 PowerShell Az 模块。 Az 模块替代 AzureRM，是推荐用于 Azure 的模块。 新自动化帐户中的默认模块包括现有的 24 个 AzureRM 模块和 60 多个 Az 模块。
 
-默认模块也称为“全局模块”。 在 Azure 门户中，查看创建帐户时导入的模块时，“全局模块”属性将为 true 。
+自动化帐户的用户可以使用本机选项将模块更新到最新的 Az 模块。 该操作将在后端处理所有模块依赖项，从而消除[手动](../automation-update-azure-modules.md#update-az-modules)更新模块或执行 runbook 以[更新 Azure 模块](../automation-update-azure-modules.md#obtain-a-runbook-to-use-for-updates)所带来的不便。  
+
+如果现有自动化帐户只有 AzureRM 模块，则[更新 Az 模块](../automation-update-azure-modules.md#update-az-modules)选项将使用用户选择的 Az 模块版本更新自动化帐户。  
+
+如果现有自动化帐户具有 AzureRM 和某些 Az 模块，则该选项会将剩余的 Az 模块导入自动化帐户。 现有的 Az 模块将优先使用，更新操作不会更新这些模块。 这是为了确保更新模块操作不会因无意中更新 runbook 使用的模块而导致任何 runbook 执行失败。 对于这种情况，建议首先删除现有的 Az 模块，然后执行更新操作以获取在自动化帐户中导入的最新 Az 模块。 默认情况下未导入的此类模块类型称为“自定义”。  自定义模块始终优先于默认模块。  
+
+例如：如果已将 `Az.Aks` 模块与 Az 模块 6.3.0 提供的版本 2.3.0 一起导入，并且尝试将 Az 模块更新到最新的 6.4.0 版本。 更新操作将导入 6.4.0 包中的所有 Az 模块（`Az.Aks` 除外）。 若要具有最新版本的 `Az.Aks`，请先删除现有模块，然后执行更新操作，也可以如[导入 Az 模块](#import-az-modules)中所述单独更新此模块以导入不同版本的特定模块。  
+
+下表列出了在创建自动化帐户时，Azure 自动化默认导入的模块。 自动化可以导入这些模块的较新版本。 但是，即使你删除了较新新版本，也不能从自动化帐户中删除原始版本。
+
+默认模块也称为“全局模块”。 在 Azure 门户中，查看创建帐户时导入的模块时，“全局模块”属性将为 true。
 
 ![Azure 门户中的全局模块属性的屏幕截图](../media/modules/automation-global-modules.png)
-
-自动化不会自动将根 Az 模块导入任何新的或现有的自动化帐户。 要详细了解如何使用这些模块，请参阅[迁移到 Az 模块](#migrate-to-az-modules)。
 
 > [!NOTE]
 > 我们不建议更改自动化帐户中用于部署[在空闲时间启动/停止 VM](../automation-solution-vm-management.md) 的模块和 runbook。
 
 |模块名称|版本|
 |---|---|
+|Az.* | 请参阅 [PowerShell 库](https://www.powershellgallery.com/packages/Az)中“包详细信息”下的完整列表|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |
 | Azure.存储 | 1.0.3 |
@@ -81,10 +87,6 @@ Azure 自动化使用许多 PowerShell 模块在 runbook DSC 配置中启用 run
 | xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
-
-## <a name="az-modules"></a>Az 模块
-
-对于 Az.Automation，大多数 cmdlet 的名称与 AzureRM 模块的名称相同，但 `AzureRM` 前缀已更改为 `Az`。 有关不遵循此命名约定的 Az 模块列表，请参阅[例外名称列表](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)。
 
 ## <a name="internal-cmdlets"></a>内部 cmdlet
 
@@ -122,8 +124,8 @@ Azure 自动化可以导入自定义模块以提供其 cmdlet。 它可以在后
 
 我们不建议在同一自动化帐户中运行 AzureRM 模块和 Az 模块。 当确定要从 AzureRM 迁移到 Az 时，最好完全采用完整迁移。 自动化通常会重复使用自动化帐户中的沙盒，以节省启动时间。 如果不进行完整模块迁移，则可以启动仅使用 AzureRM 模块的作业，然后启动另一个仅使用 Az 模块的作业。 沙盒即将崩溃，你会收到一个错误，指出模块不兼容。 这种情况会导致任何特定 runbook 或配置的随机崩溃。
 
->[!NOTE]
->创建新的自动化帐户时，即使在迁移到 Az 模块后，自动化也会默认安装 AzureRM 模块。 你仍可以使用 AzureRM cmdlet 更新教程 runbook。 但是，不应运行这些 runbook。
+> [!NOTE]
+> 创建新的自动化帐户时，即使在迁移到 Az 模块后，自动化仍会默认安装 AzureRM 模块。
 
 ### <a name="test-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>在模块迁移之前测试 runbook 和 DSC 配置
 
@@ -148,7 +150,7 @@ Azure 自动化可以导入自定义模块以提供其 cmdlet。 它可以在后
 * runbook 使用 [using module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) 语句显式导入模块时。 从 Windows PowerShell 5.0 开始支持 using 语句，并支持类和枚举类型导入。
 * runbook 导入另一个依赖模块时。
 
-可以在 Azure 门户将 Az 模块导入自动化帐户。 切记，仅导入所需的 Az 模块，而不是每个可用的 Az 模块。 由于 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 是其他 Az 模块的依赖项，因此请确保在其他模块之前先将其导入。
+可以在 Azure 门户将 Az 模块导入自动化帐户。 由于 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 是其他 Az 模块的依赖项，因此请确保在其他模块之前先将其导入。
 
 1. 登录 Azure [门户](https://portal.azure.com)。
 1. 搜索并选择“自动化帐户”。

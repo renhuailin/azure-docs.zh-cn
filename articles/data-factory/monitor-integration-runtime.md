@@ -8,12 +8,12 @@ ms.date: 08/11/2020
 author: minhe-msft
 ms.author: hemin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8633ee6f76319afcd9c62a3aa5d70db77113f235
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9e0136fe9ec7274a1788b11134527c8625c2cace
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124750609"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400451"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时
 
@@ -234,7 +234,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 “正在运行/已请求的节点”信息磁贴比较当前正在运行的节点数与先前为 Azure-SSIS IR 请求的节点总数。
 
-双备用对/角色信息磁贴显示了双备用 Azure-SSIS IR 对的名称，该双备用对与 Azure SQL 数据库/托管实例故障转移组同步工作，以实现业务连续性和灾难恢复 (BCDR) 以及 Azure-SSIS IR 的当前主要/辅助角色。 发生 SSISDB 故障转移时，主要和辅助 Azure-SSIS IR 将交换角色（请参阅[为 BCDR 配置 Azure-SSIS IR](./configure-bcdr-azure-ssis-integration-runtime.md)）。
+“双备用对/角色”信息磁贴显示双备用 Azure-SSIS IR 对（该对与 Azure SQL 数据库托管实例故障转移组同步工作，以实现业务连续性和灾难恢复 (BCDR)）的名称以及 Azure-SSIS IR 的当前主要/辅助角色。 发生 SSISDB 故障转移时，主要和辅助 Azure-SSIS IR 将交换角色（请参阅[为 BCDR 配置 Azure-SSIS IR](./configure-bcdr-azure-ssis-integration-runtime.md)）。
 
 下面将更详细地介绍功能磁贴。
 
@@ -270,7 +270,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 #### <a name="static-public-ip-addresses-tile"></a>“静态公共 IP 地址”磁贴
 
-如果为 Azure-SSIS IR 提供了自己的静态公共 IP 地址，则会在 Azure-SSIS IR 监视页面上看到“静态公共 IP 地址”磁贴（请参阅[为 Azure-SSIS IR 提供自己的静态公共 IP 地址](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)）。 在此磁贴上，你可以选择为 Azure-SSIS IR 指定第一个/第二个静态公共 IP 地址的链接，以弹出一个窗口，并可在窗口的文本框中复制其资源 ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`)。 在弹出窗口中，你还可以选择“查看第一个/第二个静态公共 IP 地址设置”链接，以管理 Azure 门户中的第一个/第二个静态公共 IP 地址。
+如果为 Azure-SSIS IR 提供了自己的静态公共 IP 地址，则会在 Azure-SSIS IR 监视页面上看到“静态公共 IP 地址”磁贴（请参阅[为 Azure-SSIS IR 提供自己的静态公共 IP 地址](azure-ssis-integration-runtime-virtual-network-configuration.md#publicIP)）。 在此磁贴上，你可以选择为 Azure-SSIS IR 指定第一个/第二个静态公共 IP 地址的链接，以弹出一个窗口，并可在窗口的文本框中复制其资源 ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`)。 在弹出窗口中，你还可以选择“查看第一个/第二个静态公共 IP 地址设置”链接，以管理 Azure 门户中的第一个/第二个静态公共 IP 地址。
 
 :::image type="content" source="media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png" alt-text="监视 Azure-SSIS IR -“静态”磁贴":::
 

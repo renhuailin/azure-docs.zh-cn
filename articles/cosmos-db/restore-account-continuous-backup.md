@@ -8,12 +8,12 @@ ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62f2491bdd1d3b24be50410a88dcb2114e867913
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1f8622b37055cf8585e9c43f2e822756ac06d1de
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779753"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352186"
 ---
 # <a name="restore-an-azure-cosmos-db-account-that-uses-continuous-backup-mode"></a>还原使用连续备份模式的 Azure Cosmos DB 帐户
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -49,6 +49,8 @@ Azure Cosmos DB 的时间点还原功能可帮助你从容器内的意外更改�
    :::image type="content" source="./media/restore-account-continuous-backup/restore-live-account-portal.png" alt-text="使用 Azure 门户将实时帐户从意外修改中还原。" border="true" lightbox="./media/restore-account-continuous-backup/restore-live-account-portal.png":::
 
 1. 选择以上参数后，选择“提交”按钮，开始还原。 还原费用是一次性的费用，具体取决于数据大小和所选区域中备份存储的费用。 如要了解详细信息，请参阅[定价](continuous-backup-restore-introduction.md#continuous-backup-pricing)部分。
+
+在还原过程中删除源帐户可能会导致还原失败。
 
 ### <a name="use-event-feed-to-identify-the-restore-time"></a><a id="event-feed"></a>使用事件源来标识还原时间
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02fee85b929fe72de4f1a912812724519440471e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "72793122"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233935"
 ---
 保护物联网 (IoT) 基础结构需要严格的深度安全防御策略。 该策略要求保护云中的数据，在公共 Internet 中传输数据时保护数据的完整性以及安全预配设备。 在总体基础结构中的每一层构建更强的安全性保证。
 
@@ -23,7 +23,7 @@ ms.locfileid: "72793122"
 
 * **IoT 硬件制造商/集成商**：通常这些参与者是要部署的 IoT 硬件的制造商、组装来自各个制造商的硬件的集成商，或针对其他供应商制造或集成的 IoT 部署提供硬件的供应商。
 
-* **IoT 解决方案开发人员**：IoT 解决方案的开发通常由解决方案开发人员完成。 此开发人员可能是内部团队成员或专门从事此活动的系统集成商 (SI)。 IoT 解决方案开发人员可从头开始开发 IoT 解决方案的各个组件、集成各个现成或开源组件，或改编仅需轻微调整的解决方案加速器。
+* **IoT 解决方案开发人员**：IoT 解决方案的开发通常由解决方案开发人员完成。 此开发人员可能是内部团队成员或专门从事此活动的系统集成商 (SI)。 IoT 解决方案开发人员可从头开始开发 IoT 解决方案的各种组件，或者集成各种现成组件或开源组件。
 
 * **IoT 解决方案部署人员**：完成开发 IoT 解决方案之后，需要在现场部署解决方案。 此过程涉及硬件部署、设备互连以及在硬件设备或云中部署解决方案。
 

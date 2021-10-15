@@ -5,15 +5,15 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 07/20/2021
+ms.date: 10/05/2021
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb66ed6c1a00c049c2fff6d9fccb22acbcb9fbee
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7a7082005cc2a8154670abfae120d94015b2135c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462499"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545805"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部分：为 Azure 文件共享启用 AD DS 身份验证 
 
@@ -36,7 +36,7 @@ AzFilesHybrid PowerShell 模块中的 cmdlet 为你进行必要的修改并启�
 
 ### <a name="download-azfileshybrid-module"></a>下载 AzFilesHybrid 模块
 
-- 如果未安装 [.Net Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472)，请立即安装。 该模块需要它才能成功导入。
+- 如果未安装 [.NET Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472)，请立即安装。 该模块需要它才能成功导入。
 - [下载并解压缩 AzFilesHybrid 模块（GA 模块：v0.2.0+）](https://github.com/Azure-Samples/azure-files-samples/releases)请注意，v0.2.2 或更高版本支持 AES 256 Kerberos 加密。 如果你已在低于 v0.2.2 的 AzFilesHybrid 版本中启用此功能，并且需要更新以支持 AES 256 Kerberos 加密，请参阅[这篇文章](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)。
 - 使用有权在目标 AD 中创建服务登录帐户或计算机帐户的 AD DS 凭据在加入本地 AD DS 域的设备中安装和执行此模块。
 -  使用同步到 Azure AD 的本地 AD DS 凭据运行脚本。 本地 AD DS 凭据必须在存储帐户上具有“所有者”或“参与者”Azure 角色。
@@ -104,11 +104,11 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 如果你在前面已成功执行 `Join-AzStorageAccountForAuth` 脚本，请转到[确认已启用此功能](#confirm-the-feature-is-enabled)部分。 不需要执行以下手动步骤。
 
-### <a name="checking-environment"></a>检查环境
+### <a name="check-the-environment"></a>检查环境
 
 首先，必须检查你的环境状态。 具体来说，必须检查是否安装了 [Active Directory PowerShell](/powershell/module/activedirectory/)，以及是否正在以管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 模块（或更新版本）](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查 AD DS，查看是否有一个已使用 SPN/UPN 创建为“cifs/your-storage-account-name-here.file.core.windows.net”的[计算机帐户](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](/windows/win32/ad/about-service-logon-accounts)。 如果帐户不存在，请按照下一节的说明创建一个帐户。
 
-### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>在 AD 中手动创建可代表存储帐户的标识
+### <a name="create-an-identity-representing-the-storage-account-in-your-ad-manually"></a>在 AD 中手动创建可表示存储帐户的标识
 
 若要手动创建此帐户，请为存储帐户创建一个新的 Kerberos 密钥。 然后，在下面的 PowerShell cmdlet 中，将该 Kerberos 密钥用作你的帐户密码。 此密钥仅在安装过程中使用，不能用于对存储帐户的任何控制或数据平面操作。 
 
@@ -129,9 +129,37 @@ SPN：“cifs/your-storage-account-name-here.file.core.windows.net”密码：�
 
 保留新创建标识的 SID，你在下一步中将用到它。 你创建的表示存储帐户的标识无需同步到 Azure AD。
 
+#### <a name="optional-enable-aes256-encryption"></a>（可选）启用 AES256 加密
+
+要启用 AES 256 加密，请按照本部分中的步骤操作。 如果打算使用 RC4，则可以跳过本部分。
+
+表示存储帐户的域对象必须满足以下要求：
+- 存储帐户名不得超过 15 个字符。
+- 必须将域对象创建为本地 AD 域中的计算机对象。
+- 除尾随符“$”外，存储帐户名必须与计算机对象的 SamAccountName 相同。
+
+如果域对象不满足这些要求，请将其删除并创建符合要求的全新域对象。
+
+将 `<domain-object-identity>` 和 `<domain-name>` 替换为你的值，然后使用以下命令配置 AES256 支持： 
+
+```powershell
+Set-ADComputer -Identity <domain-object-identity> -Server <domain-name> -KerberosEncryptionType "AES256"
+```
+
+运行该命令后，请将以下脚本中 `<domain-object-identity>` 替换为你的值，然后运行脚本以刷新域对象密码：
+
+```powershell
+$KeyName = "kerb1" # Could be either the first or second kerberos key, this script assumes we're refreshing the first
+$KerbKeys = New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName $KeyName
+$KerbKey = $KerbKeys | Where-Object {$_.KeyName -eq $KeyName} | Select-Object -ExpandProperty Value
+$NewPassword = Convert-ToSecureString -String $KerbKey -AsPlainText -Force
+
+Set-ADAccountPassword -Identity <domain-object-identity> -Reset -NewPassword $NewPassword
+```
+
 ### <a name="enable-the-feature-on-your-storage-account"></a>在存储帐户上启用此功能
 
-现在可以在存储帐户上启用此功能。 在以下命令中为域属性提供一些配置详细信息，然后运行此命令。 以下命令中所需的存储帐户 SID 是你在[上一节](#creating-an-identity-representing-the-storage-account-in-your-ad-manually)的 AD DS 中创建的标识的 SID。
+现在可以在存储帐户上启用此功能。 在以下命令中为域属性提供一些配置详细信息，然后运行此命令。 以下命令中所需的存储帐户 SID 是你在[上一节](#create-an-identity-representing-the-storage-account-in-your-ad-manually)的 AD DS 中创建的标识的 SID。
 
 ```PowerShell
 # Set the feature flag on the target storage account and provide the required AD domain information

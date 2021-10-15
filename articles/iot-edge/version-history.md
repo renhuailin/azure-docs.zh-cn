@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 334173ceb422db765c86ea05912817a02346f997
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7449043475389797be17c20a03e86fc3fbf5bdbe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128578347"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359121"
 ---
 # <a name="azure-iot-edge-versions-and-release-notes"></a>Azure IoT Edge 版本和发行说明
 
@@ -24,8 +24,8 @@ Azure IoT Edge 是基于 GitHub 上托管的开源 IoT Edge 项目构建的产�
 
 此站点上的 IoT Edge 文档可用于产品的两个不同版本，因此你可以选择适用于你的 IoT Edge 环境的内容。 当前支持的两个版本为：
 
-* IoT Edge 1.2 包含最新稳定版本中的新特性和功能的附加内容。
-* IoT Edge 1.1 (LTS) 是 IoT Edge 的首个长期支持 (LTS) 版本。 此版本的文档涵盖 1.1 及之前所有早期版本的所有特性和功能。 在支持的版本 1.1 生命周期内，本文档版本将保持稳定，不会反映更高版本中发布的新特性。
+* IoT Edge 1.2 包含最新稳定版本中的新特性和功能的内容。
+* IoT Edge 1.1 (LTS) 是 IoT Edge 的首个长期支持 (LTS) 版本。 此版本的文档涵盖 1.1 及之前所有早期版本的所有特性和功能。 在支持的版本 1.1 生命周期内，本文档版本将保持稳定，不会反映更高版本中发布的新特性。 IoT Edge 1.1 LTS 的有效支持期至 2022 年 12 月 3 日，以匹配 [.NET Core 3.1 发布生命周期](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 
 有关 IoT Edge 版本的详细信息，请参阅 [Azure IoT Edge 支持的系统](support.md)。
 

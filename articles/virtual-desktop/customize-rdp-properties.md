@@ -7,12 +7,12 @@ ms.date: 10/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 481b81edb0ee5709e712f213036fa8df53aca7c4
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 282044d0ee3d07ae4eaa2c63d8d0bcebae0251aa
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287917"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544482"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自定义主机池的远程桌面协议 (RDP) 属性
 
@@ -38,6 +38,7 @@ RDP 文件默认具有以下属性：
 >[!NOTE]
 >- 仅为桌面应用组启用多监视器模式，对于 RemoteApp 应用组将忽略此模式。
 >- 所有默认 RDP 文件属性将在 Azure 门户中公开。
+>- 默认情况下，Azure 门户中的 CustomRdpProperty 字段为 null。 null CustomRdpProperty 字段会将所有默认的 RDP 属性应用到主机池。 空 CustomRdpProperty 字段不会将任何默认的 RDP 属性应用到主机池。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 09/09/2021
 ms.author: victorh
-ms.openlocfilehash: 3e2b9ab4eaf794e5cf64861d7c641b82f18b64dc
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f106ca51487e1c4c306d51161110062ad3582fcd
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201011"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129440084"
 ---
 | 资源 | 限制 | 注意 |
 | --- | --- | --- |
@@ -18,8 +18,8 @@ ms.locfileid: "114201011"
 | 前端端口 |100<sup>1</sup> | |
 | 后端地址池 |100<sup>1</sup> | |
 | 每个池的后端服务器数 |1,200 | |
-| HTTP 侦听器 |200<sup>1</sup> |限制为正在路由流量的 100 个活动侦听器。 活动侦听器数 = 侦听器的总数 - 处于非活动状态的侦听器数。<br>如果路由规则中的默认配置已设置为路由流量（例如，它具有侦听器、后端池和 HTTP 设置），则也会将其计为侦听器。|
-| HTTP 负载均衡规则 |100<sup>1</sup> | |
+| HTTP 侦听器 |200<sup>1</sup> |限制为正在路由流量的 100 个活动侦听器。 活动侦听器数 = 侦听器的总数 - 处于非活动状态的侦听器数。<br>如果路由规则中的默认配置已设置为路由流量（例如，它具有侦听器、后端池和 HTTP 设置），则也会将其计为侦听器。 有关更多详细信息，请参阅[有关应用程序网关的常见问题解答](../articles/application-gateway/application-gateway-faq.yml#what-is-considered-an-active-listener-versus-inactive-listener)。|
+| HTTP 负载均衡规则 |400<sup>1</sup> | |
 | 后端 HTTP 设置 |100<sup>1</sup> | |
 | 每个网关的实例数 |V1 SKU - 32<br>V2 SKU - 125 | |
 | SSL 证书数 |100<sup>1</sup> |每个 HTTP 侦听器 1 个 |

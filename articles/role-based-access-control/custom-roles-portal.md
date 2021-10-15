@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: de888e76e9ba27fa653905084193e6f8e25d2a81
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dddcbef1b43866a7cba631cd565856aef787ec8b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123315189"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360935"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 自定义角色
 
@@ -184,7 +184,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
     ![“添加权限”列表](./media/shared/add-permissions-list.png)
 
-1. 若要查找适用于数据平面的权限，请单击“数据操作”。 否则，请将操作切换开关保持设置为“操作”，以列出适用于管理平面的权限。 有关管理平面与数据平面之间的差异的详细信息，请参阅[管理和数据操作](role-definitions.md#management-and-data-operations)。
+1. 若要查找适用于数据平面的权限，请单击“数据操作”。 否则，请将操作切换开关保持设置为“操作”，以列出适用于控制平面的权限。 有关控制平面与数据平面之间的差异的详细信息，请参阅[控制和数据操作](role-definitions.md#control-and-data-actions)。
 
 1. 如有需要，请更新搜索字符串以进一步具体化搜索。
 

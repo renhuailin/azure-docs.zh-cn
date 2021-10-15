@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Az
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 89514bad58633727b5189c7d0daecccf5372efea
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 6f669a7382cfe7dad4c1a58186ce3c6a30f49063
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214978"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533966"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -529,6 +529,12 @@ Wait-AzRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetail -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="using-managed-identity-to-restore-disks"></a>使用托管标识来还原磁盘
+
+Azure 备份还允许在还原操作期间使用托管标识 (MSI) 来访问必须将磁盘还原到的存储帐户。 目前仅托管磁盘还原支持此选项。
+
+如果要使用保管库的系统分配的托管标识来还原磁盘，请向 Restore-AzRecoveryServicesBackupItem 命令传递附加标志 -UseSystemAssignedIdentity。 如果要使用用户分配的托管标识，请传递参数 -UserAssignedIdentityId_，并将保管库的托管标识的 ARM ID 作为参数的值。 _*_ _** 请参阅[此文](encryption-at-rest-with-cmk.md#enable-managed-identity-for-your-recovery-services-vault)，了解如何为保管库启用托管标识。 
 
 #### <a name="restore-selective-disks"></a>还原选择性磁盘
 

@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 5c50cffb561076dd7d9c4af8e5b4654784cc3a01
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 51335fe48208423883706796fe4812ec0e0af5fe
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128555353"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275708"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>计划和管理 Azure Blob 存储的成本
 
@@ -117,7 +117,7 @@ Azure Blob 存储在 Azure 基础结构上运行。当你部署新资源时，�
 
 可通过将 blob 数据放入最经济高效的访问层来降低成本。 在三个专为优化数据使用成本设计的层中选择。 例如，热层的存储成本较高，但访问成本较低。 因此，如果计划频繁访问数据，则热层可能是最经济高效的选择。 如果计划不经常访问数据，冷层或存档层可能最适用，因为它们会提高访问数据的成本，同时降低存储数据的成本 。
 
-若要了解详细信息，请参阅 [Azure Blob 存储：热、冷和存档层](../blobs/storage-blob-storage-tiers.md?tabs=azure-portal)。
+若要了解详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](../blobs/access-tiers-overview.md?tabs=azure-portal)。
 
 #### <a name="automatically-move-data-between-access-tiers"></a>在访问层之间自动移动数据
 

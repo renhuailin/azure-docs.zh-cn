@@ -7,13 +7,12 @@ author: surbhijain
 ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
-ms.custom: ''
-ms.openlocfilehash: 3321152d5d7b753ddca23a8810f0d1ae1b3d4399
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: cd13a7f69d3085786407a405598df4bc7b8e0ef9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967016"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358432"
 ---
 # <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>在 Azure 云服务（外延支持）中交换或切换部署
 
@@ -31,7 +30,6 @@ ms.locfileid: "122967016"
 部署第二个云服务时，两个云服务都会将其 SwappableCloudService 属性设置为指向彼此。 对这些云服务进行的任何后续更新都需要指定此属性失败，即系统将返回错误，指示无法删除或更新 SwappableCloudService 属性。
 
 设置后的 SwappableCloudService 属性将被视为只读。 不得将该属性删除或更改为其他值。 删除（可交换云服务对的）其中一个云服务将导致其余云服务的 SwappableCloudService 属性遭到清除。
-
 
 ## <a name="arm-template"></a>ARM 模板
 
@@ -65,7 +63,7 @@ ms.locfileid: "122967016"
 
 ## <a name="rest-api"></a>REST API
 
-若要使用 [REST API](https://review.docs.microsoft.com/rest/api/compute/load-balancers/swap-public-ip-addresses?branch=net202102) 切换到 Azure 云服务（外延支持）中的新云服务部署，请使用以下命令和 JSON 配置：
+若要使用 [REST API](/rest/api/compute/load-balancers/swap-public-ip-addresses) 切换到 Azure 云服务（外延支持）中的新云服务部署，请使用以下命令和 JSON 配置：
 
 ```http
 POST https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/westus/setLoadBalancerFrontendPublicIpAddresses?api-version=2021-02-01

@@ -1,6 +1,6 @@
 ---
-title: 注册 Azure NetApp 文件 | Microsoft Docs
-description: 了解如何提交候补名单请求并为 Azure NetApp 文件注册 Azure 资源提供程序，从而注册 Azure NetApp 文件。
+title: 注册 NetApp 资源提供程序以便与 Azure NetApp 文件一起使用 | Microsoft Docs
+description: 了解如何为 Azure NetApp 文件注册 NetApp 资源提供程序。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,40 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: e37b0a2657c3e3f388ad94eb7da864c1b03023bb
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b8b70a06a6bda9757f9019a6f753af226235a985
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790012"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407734"
 ---
-# <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
+# <a name="register-for-netapp-resource-provider"></a>注册 NetApp 资源提供程序
 
-> [!IMPORTANT] 
-> 在注册 Azure NetApp 文件资源提供程序之前，必须已收到来自 Azure NetApp 文件团队的一封电子邮件，确认你已获得该服务的访问权限。 
-
-本文介绍如何注册 Azure NetApp 文件，以便开始使用该服务。
-
-## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>提交访问该服务的候补名单请求
-
-1. 请转至以下页面，提交访问 Azure NetApp 文件服务的候补名单请求：  
-    [Azure NetApp 文件候补名单提交页](https://aka.ms/azurenetappfiles) 
-
-    候补名单注册不保证可以立即访问服务。 
-
-2. 等待来自 Azure NetApp 文件团队的官方确认电子邮件，然后才能继续其它任务。 
-
-## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>注册 NetApp 资源提供程序
-
-若要使用该服务，必须为 Azure NetApp 文件注册 Azure 资源提供程序。
-
-> [!NOTE] 
-> 即使没有获得服务的访问权限，也能成功注册 NetApp 资源提供程序。 但是，如果没有访问授权，创建 NetApp 帐户或任何其他 Azure NetApp 文件资源的任何 Azure 门户或 API 请求都将被拒绝，并出现以下错误：  
->
-> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
-
+若要使用 Azure NetApp 文件服务，需要注册 NetApp 资源提供程序。
 
 1. 从 Azure 门户中，单击右上角的 Azure Cloud Shell 图标：
 
@@ -72,7 +50,7 @@ ms.locfileid: "109790012"
        
    `<SubID>` 是你的订阅 ID。
 
-    如果看不到该功能名称 `Microsoft.NetApp/ANFGA`，则无权访问该服务。 停在这一步骤。 请按照[提交访问该服务的候补名单请求](#waitlist)中的说明进行操作以请求服务的访问权限，然后继续。 
+
 
 4. 在 Azure Cloud Shell 控制台中，输入以下命令来注册 Azure 资源提供程序： 
     
@@ -109,4 +87,5 @@ ms.locfileid: "109790012"
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建 NetApp 帐户](azure-netapp-files-create-netapp-account.md)
+* [创建 NetApp 帐户](azure-netapp-files-create-netapp-account.md)
+* [创建 Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)

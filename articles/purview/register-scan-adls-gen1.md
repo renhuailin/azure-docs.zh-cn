@@ -4,15 +4,15 @@ description: 本教程介绍如何将 Azure Data Lake Storage Gen1 中的数据�
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 05/08/2021
-ms.openlocfilehash: 1c4801814e77efdb681f32ea35d4dfb68618900b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 093375e30fa9f9a3d6a558c5e230a8bc81a701ad
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736370"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215769"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>注册和扫描 Azure Data Lake Storage Gen1
 
@@ -62,16 +62,16 @@ Azure Data Lake Storage Gen1 数据源支持以下功能：
 
 1. 从 [Azure 门户](https://portal.azure.com)中，查找希望允许目录扫描的订阅、资源组或资源（例如 Azure Data Lake Storage Gen1 存储帐户）。
 
-2. 单击“概述”，然后选择“数据资源管理器” 
+2. 选择“概述”，然后选择“数据资源管理器” 
 
    :::image type="content" source="./media/register-scan-adls-gen1/access-control.png" alt-text="选择访问控制":::
 
-3. 单击顶部导航栏上的“访问”
+3. 选择顶部导航栏上的“访问”
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="单击 访问":::
+   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="选择“访问”":::
 
-4. 单击“添加”。 在“选择用户或组”选项中添加“Purview 目录”。 选择“读取”和“执行”权限 。 确保选择“此文件夹和所有子文件夹和“添加到”选项中的“访问权限项和默认权限项”，如下面的屏幕截图所示。 单击“确定”
-   “MSI 身份验证详细信息”:::image type="content" source="./media/register-scan-adls-gen1/gen1-managed-service-identity-authentication.png" alt-text="_":::
+4. 选择“添加”。 在“选择用户或组”选项中添加“Purview 目录”。 选择“读取”和“执行”权限 。 确保选择“此文件夹和所有子文件夹和“添加到”选项中的“访问权限项和默认权限项”，如下面的屏幕截图所示。 选择“确定”
+   :::image type="content" source="./media/register-scan-adls-gen1/gen1-managed-service-identity-authentication.png" alt-text="MSI 身份验证详细信息":::
    
 > [!Tip]
 > “访问权限项”是针对当前文件和文件夹的权限项。
@@ -118,16 +118,16 @@ Azure Data Lake Storage Gen1 数据源支持以下功能：
 
 1. 从 [Azure 门户](https://portal.azure.com)中，查找希望允许目录扫描的订阅、资源组或资源（例如 Azure Data Lake Storage Gen1 存储帐户）。
 
-2. 单击“概述”，然后选择“数据资源管理器” 
+2. 选择“概述”，然后选择“数据资源管理器” 
 
    :::image type="content" source="./media/register-scan-adls-gen1/access-control.png" alt-text="选择访问控制":::
 
-3. 单击顶部导航栏上的“访问”
+3. 选择顶部导航栏上的“访问”
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="单击“访问”":::
+   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="选择“访问”":::
 
-4. 单击“添加”。 在“选择用户或组”选项中，添加服务主体应用程序。 选择“读取”和“执行”权限 。 确保选择“此文件夹和所有子文件夹和“添加到”选项中的“访问权限项和默认权限项”，如下面的屏幕截图所示。 单击“确定”
-   “服务主体身份验证详细信息”:::image type="content" source="./media/register-scan-adls-gen1/gen1-service-principal-permissions.png" alt-text="service principal authentication details":::
+4. 选择“添加”。 在“选择用户或组”选项中，添加服务主体应用程序。 选择“读取”和“执行”权限 。 确保选择“此文件夹和所有子文件夹和“添加到”选项中的“访问权限项和默认权限项”，如下面的屏幕截图所示。 选择“确定”
+   :::image type="content" source="./media/register-scan-adls-gen1/gen1-service-principal-permissions.png" alt-text="服务主体身份验证详细信息":::
 
 > [!Tip]
 > “访问权限项”是针对当前文件和文件夹的权限项。
@@ -167,7 +167,7 @@ Azure Data Lake Storage Gen1 数据源支持以下功能：
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+1. 在 [Purview Studio](https://web.purview.azure.com/resource/) 的左窗格中选择“数据映射”选项卡。
 
 1. 选择你注册的 Azure Data Lake Storage Gen1 源。
 

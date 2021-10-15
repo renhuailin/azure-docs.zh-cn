@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/11/2021
+ms.date: 10/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f3ecf919337c17514af7d9e0d3d83b2dc75bf1d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 44716cea30df107d3e966ce39e941bcbe385ebb8
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769253"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535672"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备的 Kubernetes 群集上启用 Azure Arc
 
@@ -140,20 +140,21 @@ ms.locfileid: "122769253"
 
 1. 类型：
 
-    `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
+    `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>"` 
+    
+    运行此命令时，会有一个后续提示，要求你输入 `ClientSecret`。 `ClientSecret` 是安全字符串。
 
-    如果使用的云不是 Azure 公有云，请添加 `CloudEnvironment` 参数。 可以将此参数设置为 `AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、      `AZUREGERMANCLOUD` 和 `AZUREUSGOVERNMENTCLOUD`。
+    如果使用的云不是 Azure 公有云，请添加 `CloudEnvironment` 参数。 可以将此参数设置为 `AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、`AZUREGERMANCLOUD` 和 `AZUREUSGOVERNMENTCLOUD`。
 
     > [!NOTE]
     > - 若要在设备上部署 Azure Arc，请确保使用[受支持的 Azure Arc 区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。 
     > - 使用 `az account list-locations` 命令找出要传入到 `Set-HcsKubernetesAzureArcAgent` cmdlet 的确切位置名称。 位置名称的格式通常不含任何空格。
-    > - `ClientId` 和 `ClientSecret` 为所需参数。 `ClientSecret` 是安全字符串。
+    > - `ClientId` 和 `ClientSecret` 是必需的。 
     
     以下是示例：
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b&quot; -ClientSecret &quot;<password>"
-    [10.128.44.240]: PS>
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b"
     ```
     
     在 Azure 门户中，带有在前一个命令中提供的名称的资源应已创建。

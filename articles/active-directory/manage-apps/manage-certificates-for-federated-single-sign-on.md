@@ -12,12 +12,12 @@ ms.date: 04/04/2019
 ms.author: davidmu
 ms.reviewer: saumadan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5217f358e7977d8414204c48d82dd6b4f1554b1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9da004c30de9cf1bc9f0d5aec7c9e766003dba45
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749161"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545315"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
 
@@ -30,6 +30,8 @@ ms.locfileid: "121749161"
 从库中添加新应用程序并配置基于 SAML 的登录时（通过从应用程序概述页选择“单一登录” > “SAML”），Azure AD 将为应用程序生成一个证书，有效期为 3 年。 要下载活动证书作为安全证书 (.cer) 文件，请返回该页面（“基于 SAML 的登录”），选择“SAML 签名证书”标题中的下载链接。 可以在原始（二进制）证书或 Base64（base 64 编码文本）证书之间进行选择。 对于库应用程序，此部分可能还会显示一个作为联合身份验证元数据 XML下载证书的链接（.xml 文件），具体取决于应用程序的要求。
 
 ![SAML 活动签名证书下载选项](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
+
+创建应用程序时由 Azure 生成的 SAML 签名证书是特定于应用的，因此每个证书对于每个应用实例都是唯一的。 不支持对所有应用程序实例使用同一 SAML 证书。 如果要对所有应用实例使用同一 SAML 证书，则需要使用私钥生成自己的 SAML 证书，并将其上传到所有应用实例。 由 Azure 生成的 SAML 签名证书将不具有私钥（即使导出原始证书也不具备）。 
 
 此外，还可以通过选择“SAML 签名证书”标题的“编辑” 图标（铅笔）来下载活动或非活动证书，该操作将显示“SAML 签名证书”页面。 选择要下载的证书旁边的省略号 ( **...** )，然后选择所需的证书格式。 可以使用其他选项，以隐私增强邮件 (PEM) 格式下载证书。 这种格式等同于 Base64，但带有 .pem 文件扩展名，在 Windows 中不会将这种文件识别为证书格式。
 

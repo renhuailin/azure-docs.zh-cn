@@ -8,15 +8,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/22/2021
+ms.date: 09/28/2021
 ms.author: rolyon
 ms.custom: ''
-ms.openlocfilehash: 5b2ec3289d187997763ee0d9280a777d4fa1f396
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c68849dcb3c0c5683bfc160a0b4a1cb03ae0e13a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801751"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356059"
 ---
 # <a name="understand-azure-role-definitions"></a>了解 Azure 角色定义
 
@@ -24,7 +24,7 @@ ms.locfileid: "104801751"
 
 ## <a name="role-definition"></a>角色定义
 
-角色定义是权限的集合。 它有时简称为“角色”。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出允许操作之外的操作，或者与基础数据相关的操作。
+角色定义是权限的集合。 它有时简称为“角色”。 角色定义列出可执行的操作，例如读取、写入和删除。 它还可以列出已从允许的操作中排除的操作，或者与基础数据相关的操作。
 
 以下示例展示了在 Azure PowerShell 中显示的角色定义属性：
 
@@ -62,13 +62,13 @@ assignableScopes []
 | `Id`</br>`name` | 角色的唯一 ID。 内置角色在云之间具有相同的角色 ID。 |
 | `IsCustom`</br>`roleType` | 指示此角色是否为自定义角色。 对于自定义角色，设置为 `true` 或 `CustomRole`。 对于内置角色，设置为 `false` 或 `BuiltInRole`。 |
 | `Description`</br>`description` | 角色的说明。 |
-| `Actions`</br>`actions` | 一个字符串数组，指定该角色允许执行的管理操作。 |
-| `NotActions`</br>`notActions` | 一个字符串数组，指定要从允许的 `Actions` 中排除的管理操作。 |
-| `DataActions`</br>`dataActions` | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 |
-| `NotDataActions`</br>`notDataActions` | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 |
+| `Actions`</br>`actions` | 一个字符串数组，指定该角色允许执行的控制平面操作。 |
+| `NotActions`</br>`notActions` | 一个字符串数组，指定已从允许的 `Actions` 中排除的控制平面操作。 |
+| `DataActions`</br>`dataActions` | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据平面操作。 |
+| `NotDataActions`</br>`notDataActions` | 一个字符串数组，指定已从允许的 `DataActions` 中排除的数据平面操作。 |
 | `AssignableScopes`</br>`assignableScopes` | 一个字符串数组，指定角色可用于分配的范围。 |
 
-### <a name="operations-format"></a>操作格式
+### <a name="actions-format"></a>操作格式
 
 使用以下格式的字符串指定操作：
 
@@ -146,19 +146,19 @@ Azure CLI 中显示的参与者角色：
 }
 ```
 
-## <a name="management-and-data-operations"></a>管理和数据操作
+## <a name="control-and-data-actions"></a>控制和数据操作
 
-管理操作的基于角色的访问控制在角色定义的 `Actions` 和 `NotActions` 属性中指定。 下面是 Azure 中管理操作的一些示例：
+控制平面操作的基于角色的访问控制在角色定义的 `Actions` 和 `NotActions` 属性中指定。 下面是 Azure 中控制平面操作的一些示例：
 
 - 管理存储帐户的访问权限
 - 创建、更新或删除 blob 容器
 - 删除资源组及其所有资源
 
-如果容器身份验证方法设置为“Azure AD 用户帐户”而不是“访问密钥”，则不会继承数据的管理访问权限。 此分隔可防止带通配符 (`*`) 的角色无限制地访问数据。 例如，如果用户对订阅具有[读取者](built-in-roles.md#reader)角色，则他们可以查看存储帐户，但他们默认无法查看基础数据。
+如果容器身份验证方法设置为“Azure AD 用户帐户”而不是“访问密钥”，则控制平面访问权限不会继承到数据平面。 此分隔可防止带通配符 (`*`) 的角色无限制地访问数据。 例如，如果用户对订阅具有[读取者](built-in-roles.md#reader)角色，则他们可以查看存储帐户，但他们默认无法查看基础数据。
 
-以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作。
+以前，基于角色的访问控制不用于数据操作。 数据操作的授权因资源提供程序而异。 用于控制平面操作的同一基于角色的访问控制授权模型已扩展到数据平面操作。
 
-为了支持数据操作，已将新的数据属性添加到角色定义。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
+为了支持数据平面操作，已将新的数据属性添加到角色定义。 数据平面操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在控制平面与数据平面之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据平面操作：
 
 - 读取容器中的 Blob 列表
 - 在容器中写入存储 Blob
@@ -218,15 +218,15 @@ Azure CLI 中显示的存储 Blob 数据读取者角色：
 }
 ```
 
-只能将数据操作添加到 `DataActions` 和 `NotDataActions` 属性。 资源提供程序通过将 `isDataAction` 属性设置为 `true`，来识别哪些操作是数据操作。 若要查看 `isDataAction` 为 `true` 的操作列表，请参阅[资源提供程序操作](resource-provider-operations.md)。 没有数据操作的角色不需要在角色定义中包含 `DataActions` 和 `NotDataActions` 属性。
+只有数据平面操作才能添加到 `DataActions` 和 `NotDataActions` 属性。 资源提供程序通过将 `isDataAction` 属性设置为 `true`，来标识哪些操作是数据操作。 若要查看 `isDataAction` 为 `true` 的操作列表，请参阅[资源提供程序操作](resource-provider-operations.md)。 没有数据操作的角色不需要在角色定义中包含 `DataActions` 和 `NotDataActions` 属性。
 
-所有管理操作 API 调用的授权由 Azure 资源管理器处理。 数据操作 API 调用的授权由资源提供程序或 Azure 资源管理器处理。
+所有控制平面操作 API 调用的授权由 Azure 资源管理器处理。 数据平面 API 调用的授权由资源提供程序或 Azure 资源管理器处理。
 
-### <a name="data-operations-example"></a>数据操作示例
+### <a name="data-actions-example"></a>数据操作示例
 
-为了更好地了解管理和数据操作的工作原理，让我们考虑一个具体的示例。 在订阅范围为 Alice 分配了[所有者](built-in-roles.md#owner)角色。 在存储帐户范围为 Bob 分配了[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色。 下图演示了此示例。
+为了更好地了解控制平面和数据平面操作的工作原理，让我们考虑一个具体的示例。 在订阅范围为 Alice 分配了[所有者](built-in-roles.md#owner)角色。 在存储帐户范围为 Bob 分配了[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色。 下图演示了此示例。
 
-![基于角色的访问控制已得到扩展，支持管理和数据操作](./media/role-definitions/rbac-management-data.png)
+![基于角色的访问控制已扩展，可支持控制平面和数据平面操作](./media/role-definitions/rbac-data-plane.png)
 
 Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色具有以下操作：
 
@@ -248,13 +248,13 @@ Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数�
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-由于 Alice 具有订阅范围的通配符 (`*`) 操作，其权限将向下继承，使其可以执行所有管理操作。 Alice 可以读取、写入和删除容器。 但是，Alice 在不采取其他步骤的情况下无法执行数据操作。 例如，默认情况下，Alice 无法读取容器内的 blob。 若要读取 blob，Alice 必须检索存储访问密钥并使用它们来访问 blob。
+由于 Alice 具有订阅范围的通配符 (`*`) 操作，其权限将向下继承，使其可以执行所有控制平面操作。 Alice 可以读取、写入和删除容器。 但是，Alice 在不采取其他步骤的情况下无法执行数据平面操作。 例如，默认情况下，Alice 无法读取容器内的 blob。 若要读取 blob，Alice 必须检索存储访问密钥并使用它们来访问 blob。
 
-Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色中指定的 `Actions` 和 `DataActions`。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
+Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色中指定的 `Actions` 和 `DataActions`。 Bob 可以基于角色执行控制平面和数据平面操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
 
-有关存储的管理和数据平面安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/blobs/security-recommendations.md)。
+有关存储的控制平面和数据平面安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/blobs/security-recommendations.md)。
 
-### <a name="what-tools-support-using-azure-roles-for-data-operations"></a>哪些工具支持使用 Azure 角色进行数据操作？
+### <a name="what-tools-support-using-azure-roles-for-data-actions"></a>哪些工具支持使用 Azure 角色进行数据操作？
 
 若要查看和处理数据操作，必须安装正确版本的工具或 SDK：
 
@@ -268,13 +268,13 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 | [Azure for Python](/azure/python/) | 0.40.0 或更高版本 |
 | [用于 Ruby 的 Azure SDK](https://rubygems.org/gems/azure_sdk) | 0.17.1 或更高版本 |
 
-若要查看和使用 REST API 中的数据操作，必须将 **api-version** 参数设置为以下版本或更高版本：
+若要在 REST API 中查看和使用数据操作，必须将 api-version 参数设置为以下版本或更高版本：
 
 - 2018-07-01
 
 ## <a name="actions"></a>操作
 
-`Actions` 权限指定该角色允许执行的管理操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 下面是一些可以在 `Actions` 中使用的管理操作的示例。
+`Actions` 权限指定该角色允许执行的控制平面操作。 它是用于标识 Azure 资源提供程序安全对象操作的字符串的集合。 下面是可在 `Actions` 中使用的控制平面操作的一些示例。
 
 > [!div class="mx-tableFixed"]
 > | 操作字符串    | 说明         |
@@ -287,14 +287,14 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="notactions"></a>NotActions
 
-`NotActions` 权限指定从允许的包含通配符 (`*`) 的 `Actions` 中减去或排除的管理操作。 如果通过从包含通配符 (`*`) 的 `Actions` 中减去操作可更方便地定义要允许的操作集，请使用 `NotActions` 权限。 通过从 `Actions` 操作中减去 `NotActions` 操作可以计算出角色授予的访问权限（有效权限）。
+`NotActions` 权限指定从允许的包含通配符 (`*`) 的 `Actions` 中减去或排除的控制平面操作。 如果通过从包含通配符 (`*`) 的 `Actions` 中减去操作可更方便地定义要允许的操作集，请使用 `NotActions` 权限。 通过从 `Actions` 操作中减去 `NotActions` 操作可以计算出角色授予的访问权限（有效权限）。
 
-`Actions - NotActions = Effective management permissions`
+`Actions - NotActions = Effective control plane permissions`
 
-下表显示了 [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement) 通配符操作的有效权限的两个示例：
+下表显示了 [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement) 通配符操作的有效控制平面权限的两个示例：
 
 > [!div class="mx-tableFixed"]
-> | Actions | NotActions | 有效管理权限 |
+> | Actions | NotActions | 有效控制平面权限 |
 > | --- | --- | --- |
 > | `Microsoft.CostManagement/exports/*` | *无* | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/delete`</br>`Microsoft.CostManagement/exports/run/action` |
 > | `Microsoft.CostManagement/exports/*` | `Microsoft.CostManagement/exports/delete` | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/run/action` |
@@ -311,10 +311,10 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="dataactions"></a>DataActions
 
-`DataActions` 权限指定该角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
+`DataActions` 权限指定此角色允许对该对象中的数据执行的数据平面操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
 
 > [!div class="mx-tableFixed"]
-> | 操作字符串    | 说明         |
+> | 数据操作字符串    | 说明         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | 返回 Blob 或 Blob 列表。 |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | 返回写入 Blob 的结果。 |
@@ -323,14 +323,14 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="notdataactions"></a>NotDataActions
 
-`NotDataActions` 权限指定从允许的包含通配符 (`*`) 的 `DataActions` 中减去或排除的数据操作。 如果通过从包含通配符 (`*`) 的 `DataActions` 中减去操作可更方便地定义要允许的操作集，请使用 `NotDataActions` 权限。 通过从 `DataActions` 操作中减去 `NotDataActions` 操作可以计算出角色授予的访问权限（有效权限）。 每个资源提供程序提供相应的一组 API 用于实现数据操作。
+`NotDataActions` 权限指定从允许的包含通配符 (`*`) 的 `DataActions` 中减去或排除的数据平面操作。 如果通过从包含通配符 (`*`) 的 `DataActions` 中减去操作可更方便地定义要允许的操作集，请使用 `NotDataActions` 权限。 通过从 `DataActions` 操作中减去 `NotDataActions` 操作可以计算出角色授予的访问权限（有效权限）。 每个资源提供程序提供相应的一组 API 用于实现数据操作。
 
-`DataActions - NotDataActions = Effective data permissions`
+`DataActions - NotDataActions = Effective data plane permissions`
 
-下表显示了 [Microsoft.Storage](resource-provider-operations.md#microsoftstorage) 通配符操作的有效权限的两个示例：
+下表显示了 [Microsoft.Storage](resource-provider-operations.md#microsoftstorage) 通配符操作的有效数据平面权限的两个示例：
 
 > [!div class="mx-tableFixed"]
-> | DataActions | NotDataActions | 有效数据权限 |
+> | DataActions | NotDataActions | 有效数据平面权限 |
 > | --- | --- | --- |
 > | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | *无* | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
 > | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
@@ -341,7 +341,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` 属性指定可使用此角色定义的范围（管理组、订阅或资源组）。 只能在需要此角色的管理组、订阅或资源组中分配此角色。 必须使用至少一个管理组、订阅或资源。
+`AssignableScopes` 属性指定可分配此角色定义的范围（管理组、订阅或资源组）。 只能在需要此角色的管理组、订阅或资源组中分配此角色。 必须使用至少一个管理组、订阅或资源。
 
 内置角色已将 `AssignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序管理中的新增内容
 description: 有关 Azure Active Directory 应用程序管理的新文档和更新文档。
-ms.date: 09/08/2021
+ms.date: 10/05/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,52 @@ ms.author: davidmu
 author: davidmu1
 manager: CelesteDG
 reviewer: napuri
-ms.openlocfilehash: a5de6a248d389c90cbc67f59b0b94f53c35821f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 260473c428e7bdc2bfd968aa2ba5469e578c1005
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810040"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533133"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增内容
 
 欢迎查看 Azure Active Directory 应用程序管理文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解应用程序管理服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="new-articles"></a>新文章
+
+- [Azure Active Directory 中的应用程序的主领域发现](home-realm-discovery-policy.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [向 Azure Active Directory 中的应用程序分配用户和组](assign-user-or-group-access-portal.md)
+- [使用主领域发现策略为应用程序配置登录行为](configure-authentication-for-federated-users-portal.md)
+- [禁用用户登录 Azure Active Directory 中应用程序的方式](disable-user-sign-in-portal.md)
+- [在 Azure Active Directory 中隐藏企业应用程序](hide-application-from-user-portal.md)
+- [在 Azure Active Directory 中启用自助应用程序分配](manage-self-service-access.md)
+- [在用户使用主领域发现策略登录过程中禁用到联合 IDP 的自动加速](prevent-domain-hints-with-home-realm-discovery.md)
+- [管理对 Azure Active Directory 中应用的访问](what-is-access-management.md)
+- [教程：将应用程序从 Okta 迁移到 Azure Active Directory](migrate-applications-from-okta-to-azure-active-directory.md)
+- [教程：将 Okta 联合迁移到 Azure Active Directory 托管的身份验证](migrate-okta-federation-to-azure-active-directory.md)
+- [教程：将 Okta 登录策略迁移到 Azure AD 条件访问](migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md)
+- [教程：将 Okta 同步预配迁移到基于 Azure AD Connect 的同步](migrate-okta-sync-provisioning-to-azure-active-directory.md)
+- [通过 Azure Active Directory 合作伙伴集成实现安全的混合访问](secure-hybrid-access-integrations.md)
+- [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
+- [快速入门：在 Azure Active Directory 中创建和分配用户帐户](add-application-portal-assign-users.md)
+- [快速入门：在 Azure Active Directory 中配置企业应用程序属性](add-application-portal-configure.md)
+- [在 Azure Active Directory 中添加基于 OpenID Connect 的单一登录应用程序](add-application-portal-setup-oidc-sso.md)
+- [快速入门：在 Azure Active Directory 中为企业应用程序启用单一登录](add-application-portal-setup-sso.md)
+- [快速入门：在 Azure Active Directory 中添加企业应用程序](add-application-portal.md)
+- [快速入门：在 Azure Active Directory 中删除企业应用程序](delete-application-portal.md)
+- [快速入门：在 Azure Active Directory 中查看企业应用程序](view-applications-portal.md)
+- [在“我的应用”门户中创建集合](access-panel-collections.md)
+- [管理应用同意策略](manage-app-consent-policies.md)
+- [在 Azure Active Directory 中向应用程序添加链接的单一登录](configure-linked-sign-on.md)
+- [在 Azure Active Directory 中添加基于密码的应用程序单一登录](configure-password-single-sign-on-non-gallery-applications.md)
+- [在 Azure Active Directory 中规划单一登录部署](plan-sso-deployment.md)
+- [Azure Active Directory 中的单一登录是什么？](what-is-single-sign-on.md)
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

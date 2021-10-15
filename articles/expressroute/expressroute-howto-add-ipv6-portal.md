@@ -7,16 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: ffb713ac2a2f60b6ea046691169f4775bff726e3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 645b936b5c8c550e9a71d33c079721d897aab0e3
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647473"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233533"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>使用 Azure 门户添加对专用对等互连的 IPv6 支持（预览）
 
-本文介绍如何使用 Azure 门户添加 IPv6 支持，以通过 ExpressRoute 连接到 Azure 中的资源。 
+本文介绍如何使用 Azure 门户添加 IPv6 支持，以通过 ExpressRoute 连接到 Azure 中的资源。
+
+>[!NOTE]
+> 门户体验的某些方面仍在实现中。 因此，请按照本文档中提供的说明的确切顺序通过门户成功添加 IPv6 支持。 具体而言，请确保在门户中创建新的虚拟网络网关之前，先创建虚拟网络和子网，或将 IPv6 地址空间添加到现有的虚拟网络和 GatewaySubnet。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 

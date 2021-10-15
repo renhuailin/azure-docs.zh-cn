@@ -3,12 +3,12 @@ title: 使用 Azure Resource Graph (ARG) 查询备份
 description: 详细了解如何使用 Azure Resource Graph (ARG) 查询有关 Azure 资源的备份的信息。
 ms.topic: conceptual
 ms.date: 05/21/2021
-ms.openlocfilehash: 252c921ce911777315ab043501359b5eb74cf176
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9caa1d4d8de77efe9acb31c0cec3be5741b69c7
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733259"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236041"
 ---
 # <a name="query-your-backups-using-azure-resource-graph-arg"></a>使用 Azure Resource Graph (ARG) 查询备份
 
@@ -109,6 +109,17 @@ RecoveryServicesResources
 | extend datasourceType = case(type == 'microsoft.recoveryservices/vaults/backuppolicies', properties.backupManagementType,type == 'microsoft.dataprotection/backupVaults/backupPolicies',properties.datasourceTypes[0],'--')
 | project id,name,vaultName,resourceGroup,properties,datasourceType
 | where datasourceType == 'AzureIaasVM'
+```
+
+### <a name="list-all-vms-associated-with-a-given-backup-policy"></a>列出与给定备份策略关联的所有 VM
+
+```kusto
+RecoveryServicesResources
+| where type == "microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems"
+| project propertiesJSON = parse_json(properties)
+| where propertiesJSON.backupManagementType == "AzureIaasVM"
+| project VMID=propertiesJSON.sourceResourceId, PolicyID=propertiesJSON.policyId
+| where PolicyID == "<ARM ID of the given policy>"
 ```
 
 ### <a name="list-all-backup-policies-used-for-azure-databases-for-postgresql-servers"></a>列出所有用于 Azure Databases for PostgreSQL 服务器的备份策略

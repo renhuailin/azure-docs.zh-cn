@@ -10,16 +10,16 @@ ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: a52460db452d519c51fb7a1b191766b21da67f88
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 908c313da4343798faedf614e8356e511ab0b4dd
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592273"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458636"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>为 Azure 存储使用专用终结点
 
-可对 Azure 存储帐户使用[专用终结点](../../private-link/private-endpoint-overview.md)，使虚拟网络 (VNet) 上的客户端能够通过[专用链接](../../private-link/private-link-overview.md)安全访问数据。 专用终结点为你的存储帐户服务使用 VNET 地址空间中的 IP 地址。 VNet 上的客户端与存储帐户之间的网络流量通过 VNet 和 Microsoft 主干网络上的专用链接进行传输，避免暴露给公共 Internet。
+可对 Azure 存储帐户使用[专用终结点](../../private-link/private-endpoint-overview.md)，使虚拟网络 (VNet) 上的客户端能够通过[专用链接](../../private-link/private-link-overview.md)安全访问数据。 专用终结点为每个存储帐户服务使用 VNET 地址空间中的单独 IP 地址。 VNet 上的客户端与存储帐户之间的网络流量通过 VNet 和 Microsoft 主干网络上的专用链接进行传输，避免暴露给公共 Internet。
 
 通过为存储帐户使用专用终结点，你可以：
 

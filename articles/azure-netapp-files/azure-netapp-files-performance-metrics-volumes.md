@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
-ms.date: 08/07/2019
-ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/29/2021
+ms.openlocfilehash: e5d5104e0f2215e81b5539296ff18572375a8a28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593411"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362386"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp 文件的性能基准测试建议
 
@@ -21,6 +21,8 @@ ms.locfileid: "100593411"
 ## <a name="overview"></a>概述
 
 若要了解 Azure NetApp 文件卷的性能特征，可使用开源工具 [FIO](https://github.com/axboe/fio) 运行一系列基准，以模拟各种工作负载。 FIO 可安装在基于 Linux 和 Windows 的操作系统上。  它是一个出色的工具，用于获取卷的 IOPS 和吞吐量的快速快照。
+
+Azure NetApp 文件不建议使用 `dd` 实用工具作为基准测试工具。 应使用实际的应用程序工作负载、工作负载模拟以及基准测试和分析工具（例如，Oracle 的 Oracle AWR，或 IBM 的等效 DB2 工具）来建立和分析最佳基础结构性能。 例如，FIO、vdbench 和 iometer 等工具可以有效地确定虚拟机的存储限制，并可以将测试参数与实际应用程序工作负载混合体进行匹配，以得出最有用的结果。 不过，始终最好在实际应用程序上进行测试。  
 
 ### <a name="vm-instance-sizing"></a>VM 实例大小
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: 1671b0c4ba57faa6dc631c50cc273678c72b379b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 188e40f9bc3d2d23035549578cdc6440af60a3e5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730130"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359228"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>如何将 Java 应用程序迁移到 Azure VM 和虚拟机规模集上的 JBoss EAP
 
@@ -248,7 +248,7 @@ keytool -list -v -keystore <path to keystore>
 实现在预迁移步骤中定义的迁移目标后，请执行某些端到端验收测试，验证一切是否按预期工作。 显然，迁移后增强功能的一些主题包括但不限于以下方面：
 
 * 使用 Azure 存储提供装载到虚拟机的静态内容。 有关详细信息，请访问[对虚拟机执行附加或分离数据磁盘操作](../../../devtest-labs/devtest-lab-attach-detach-data-disk.md)
-* 通过 Azure DevOps 将应用程序部署到已迁移的 JBoss 群集。 有关详细信息，请访问 [Azure DevOps 入门文档](/azure/devops/get-started/?view=azure-devops)。
+* 通过 Azure DevOps 将应用程序部署到已迁移的 JBoss 群集。 有关详细信息，请访问 [Azure DevOps 入门文档](/azure/devops/get-started)。
 * 请考虑使用[应用程序网关](../../../application-gateway/index.yml)。
 * 通过高级负载均衡服务增强网络拓扑。 有关详细信息，请访问[在 Azure 中使用负载均衡服务](../../../traffic-manager/traffic-manager-load-balancing-azure.md)。
 * 利用 Azure 托管标识管理机密，并将基于角色的访问控制 (RBAC) 分配给 Azure 资源。 有关详细信息，请访问[什么是 Azure 资源的托管标识？](../../../active-directory/managed-identities-azure-resources/overview.md)

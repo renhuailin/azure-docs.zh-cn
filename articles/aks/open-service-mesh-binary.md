@@ -7,12 +7,12 @@ ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 128d0371e65d06e413f503094b56522c67ea83c0
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 83eec8682291a74bc9b23bf4ff1326cee7134e7f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439806"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534940"
 ---
 # <a name="download-the-open-service-mesh-osm-client-library"></a>下载 Open Service Mesh (OSM) 客户端库
 本文将讨论如何下载 OSM 客户端库，以便用于操作和配置 AKS 的 OSM 外接程序。
@@ -39,3 +39,6 @@ ms.locfileid: "123439806"
 
 > [!WARNING]
 > 不要尝试使用 `osm install` 通过二进制文件安装 OSM。 这将导致 OSM 安装未作为附加产品与 AKS 集成。
+
+> [!NOTE]
+> 建议在安装二进制文件之后，在使用 OSM CLI 之前，将 OSM CLI 配置为[自定义 OSM AKS 加载项体验](/open-service-mesh-customize-addon-experience.md)。 

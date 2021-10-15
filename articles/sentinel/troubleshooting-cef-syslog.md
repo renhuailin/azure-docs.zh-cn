@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2021
 ms.author: bagol
-ms.openlocfilehash: 545ab178c99b8d5ab6db1d6619a9859eb3133306
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9f6585cec5c52dd2255fca2a31e2f92853954370
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124781337"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279006"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>排查 CEF 或 Syslog 数据连接器的故障
 
@@ -504,7 +504,7 @@ if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
 
 - 确保可以看到日志被写入到本地日志文件（/var/log/messages 或 /var/log/syslog） 
 
-- 确保可以看到数据包在端口 25524 和/或 25526 上流动
+- 确保可以看到数据包在端口 25224 和/或 25226 上流动
 
 - 确保虚拟机通过 TCP 与端口 443 建立出站连接，或者可以连接到 [Log Analytics 终结点](../azure-monitor/agents/log-analytics-agent.md#network-requirements)
 

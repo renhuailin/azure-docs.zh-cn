@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何创建 Azure 机器学习数据集以访问机器学习试验运行的数据。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.custom: contperf-fy21q1, data4ml
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/06/2021
-ms.openlocfilehash: 5443386a8e62d6576d73161519546e368f41ad82
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: f640165420f06a85633d4db30d6338f4bfa205c4
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860890"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428362"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -48,13 +48,13 @@ ms.locfileid: "121860890"
 
     **或者**
 
-    * 在自己的 Jupyter 笔记本上工作，并[自行安装 SDK](/python/api/overview/azure/ml/install)。
+    * 使用自己的 Jupyter 笔记本，并[自行安装 SDK](/python/api/overview/azure/ml/install)。
 
 > [!NOTE]
-> 某些数据集类依赖于 [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) 包，此包仅兼容64位 Python。 如果是在 Linux 上进行开发，则这些类依赖于 .NET Core 2.1，并且仅在特定发行版上受支持。 有关支持的发行版的详细信息，请参阅[在 Linux 上安装 .NET](/dotnet/core/install/linux) 一文中的“.NET Core 2.1”列。
+> 某些数据集类依赖于 [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) 包，此包仅兼容64位 Python。 如果在 Linux 上进行开发，这些类将依赖于 .NET Core 2.1，且仅在特定的分发版上受支持。 有关支持的发行版的详细信息，请参阅[在 Linux 上安装 .NET](/dotnet/core/install/linux) 一文中的 .NET Core 2.1 列。
 
 > [!IMPORTANT]
-> 虽然该包可以在较旧的 Linux 发行版上正常工作，但我们不建议使用不在主要支持范围内的发行版。 不在主要支持范围内的的发行版可能存在安全漏洞，因为它们不会收到最新更新。 我们建议使用受支持且兼容的最新发行版。
+> 尽管包也许可以在较旧版本的 Linux 发行版上运行，但建议不要使用不含主要支持的发行版。 不含主要支持的发行版可能有安全漏洞，因为它们不会收到最新更新。 建议使用兼容的受支持的最新版本的发行版。
 
 ## <a name="compute-size-guidance"></a>计算大小指南
 
@@ -137,7 +137,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 若要读取 .parquet 格式的文件，请使用 [`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) 方法。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。 
 
-有关支持的文件格式以及语法和设计模式（例如[多行支持](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--)）的信息，请参阅 [TabularDatasetFactory 参考文档](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)。 
+有关支持的文件格式以及语法和设计模式（如[多行支持](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--)）的信息，请参阅 [TabularDatasetFactory 参考文档](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)。 
 
 如果存储位于虚拟网络或防火墙后面，请在 `from_delimited_files()` 方法中设置参数 `validate=False`。 这会绕过初始验证步骤，确保可以从这些安全文件创建数据集。 详细了解如何使用[虚拟网络中的数据存储和数据集](how-to-secure-workspace-vnet.md#datastores-and-datasets)。
 
@@ -223,7 +223,7 @@ file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
 file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
 ```
 
-从[数据标记项目](how-to-create-labeling-projects.md)创建的标记数据集是一种特殊情况。 这些数据集是由图像文件组成的 TabularDataset 的类型。 对于这两种类型的数据集，可以按元数据和列值（如 `label` 和 `image_details`）对图像进行 [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-)。
+从[图像标记项目](how-to-create-image-labeling-projects.md)创建的标记数据集是一种特殊情况。 这些数据集是由图像文件组成的 TabularDataset 的类型。 对于这两种类型的数据集，可以按元数据和列值（如 `label` 和 `image_details`）对图像进行 [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-)。
 
 ```python
 # Dataset that only contains records where the label column value is dog

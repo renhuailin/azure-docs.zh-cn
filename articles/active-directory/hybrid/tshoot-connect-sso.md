@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba5db5208d53996d074dca15bdc8b7b3088e4dec
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 546a7bfbda3f037f3ad40ca9c5d59353cc1de0eb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111188"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349591"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -128,8 +128,12 @@ ms.locfileid: "113111188"
    >使用的域管理员帐户不得是受保护用户组的成员。 如果是，则操作将失败。
 
 2. 调用 `Disable-AzureADSSOForest -OnPremCredentials $creds`。 此命令将从本地域控制器删除此特定 Active Directory 林的 `AZUREADSSOACC` 计算机帐户。
-3. 为在其中设置了该功能的每个 Active Directory 林重复上述步骤。
 
+   >[!NOTE]
+   >如果因故无法访问本地 AD，则可跳过步骤 3.1 和 3.2，改为调用 `Disable-AzureADSSOForest -DomainFqdn <Domain name from the output list in step 2>`。 
+   
+3. 为在其中设置了该功能的每个 Active Directory 林重复上述步骤。
+ 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>步骤 4：为每个 Active Directory 林启用无缝 SSO
 
 1. 调用 `Enable-AzureADSSOForest`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。

@@ -3,17 +3,17 @@ title: 在混合 Runbook 辅助角色上运行 Azure 自动化 Runbook
 description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据中心或其他云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/12/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5f27f9366b388c090ca689a2011c777973b8a894
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 702fcc816bac95345fca8c701be504e4eaa3a1fe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968048"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354742"
 ---
-# <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中运行 Runbook
+# <a name="run-automation-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行自动化 Runbook
 
 在[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上运行的 Runbook 通常用于管理本地计算机上的资源，或部署了辅助角色的本地环境中的资源。 Azure 自动化中的 runbook 通常管理 Azure 云中的资源。 即使使用方式不同，在 Azure 自动化中运行的 Runbook 和在混合 Runbook 辅助角色上运行的 Runbook 结构上是相同的。
 
@@ -21,18 +21,30 @@ ms.locfileid: "122968048"
 
 ## <a name="plan-for-azure-services-protected-by-firewall"></a>规划受防火墙保护的 Azure 服务
 
-在 [Azure 存储](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md) 或 [Azure SQL](../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙时，会阻止从 Azure 自动化 runbook 进行的针对这些服务的访问。 即使启用了允许受信任 Microsoft 服务的防火墙例外，访问也将被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
+在 [Azure 存储](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md) 或 [Azure SQL](../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙时，会阻止从 Azure 自动化 runbook 进行的针对这些服务的访问。 即使启用了允许受信任的 Microsoft 服务的防火墙例外，访问也会被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
 
 ## <a name="plan-runbook-job-behavior"></a>计划 Runbook 作业行为
 
 Azure 自动化处理混合 Runbook 辅助角色上的作业的方式不同于处理 Azure 沙盒中运行的作业的方式。 对于长时间运行的 runbook，请确保它能在重启后复原。 有关作业行为的详细信息，请参阅[混合 Runbook 辅助角色作业](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)。
 
-混合 Runbook 辅助角色的作业在 Windows 上的本地 System 帐户下运行，或者在 Linux 上的 nxautomation 帐户下运行。 对于 Linux，请确保 nxautomation 帐户有权访问 Runbook 模块的存储位置。 若要确保 nxautomation 帐户访问权限，请执行以下操作：
+## <a name="service-accounts"></a>服务帐户
 
-- 使用 [Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请务必为 `Scope` 参数指定 `AllUsers`。
+### <a name="windows"></a>Windows 
+
+混合 Runbook 辅助角色的作业在本地系统帐户下运行。
+
+### <a name="linux"></a>Linux
+
+服务帐户 nxautomation 和 omsagent 已创建。 可在 [https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data) 查看创建和权限分配脚本。 在[安装 Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md)期间，必须存在具有相应 sudo 权限的帐户。 如果尝试安装辅助角色，但该帐户不存在或没有相应权限，则安装会失败。 请勿更改 `sudoers.d` 文件夹的权限或其所有权。 帐户需要 sudo 权限，不应删除这些权限。 将此限制为某些文件夹或命令可能会导致中断性变更。 作为更新管理的一部分启用的 nxautomation 用户仅执行签名的 runbook。
+
+为确保服务帐户可以访问存储的 Runbook 模块，请执行以下操作：
+
 - 在 Linux 上使用 `pip install`、`apt install` 或其他方法安装包时，请确保为所有用户安装该包。 例如，`sudo -H pip install <package_name>`。
+- 如果在 Linux 上使用 [PowerShell](/powershell/scripting/whats-new/what-s-new-in-powershell-70)，则在使用 [Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请务必为 `Scope` 参数指定 `AllUsers`。
 
-有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 PowerShell 的已知问题](/powershell/scripting/whats-new/what-s-new-in-powershell-70)。
+自动化辅助角色日志位于 `/var/opt/microsoft/omsagent/run/automationworker/worker.log`。
+
+将计算机作为混合 Runbook 辅助角色删除时，将删除服务帐户。
 
 ## <a name="configure-runbook-permissions"></a>配置 runbook 权限
 
@@ -72,15 +84,23 @@ Azure 虚拟机上的混合 Runbook 辅助角色可以使用托管标识来向 A
 1. 更新 Runbook，将 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 与 `Identity` 参数一起使用，以便对 Azure 资源进行身份验证。 此配置减少了使用运行方式帐户以及执行关联帐户管理的需求。
 
     ```powershell
-    # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
-    Connect-AzAccount -Identity
+    # Ensures you do not inherit an AzContext in your runbook
+    Disable-AzContextAutosave -Scope Process
+    
+    # Connect to Azure with system-assigned managed identity
+    $AzureContext = (Connect-AzAccount -Identity).context
+    
+    # set and store context
+    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 
     # Get all VM names from the subscription
-    Get-AzVM | Select Name
+    Get-AzVM -DefaultProfile $AzureContext | Select Name
     ```
 
-    > [!NOTE]
-    > `Connect-AzAccount -Identity` 适用于使用系统分配的标识和单一用户分配的标识的混合 Runbook 辅助角色。 如果在混合 Runbook 辅助角色上使用多个用户分配的标识，Runbook 必须为 `Connect-AzAccount` 指定 `AccountId` 参数，以选择特定的用户分配的标识。
+    如果希望 Runbook 使用系统分配的托管标识执行，请按原样保留代码。 如果希望使用用户分配的托管标识，则执行以下操作：
+    1. 从第 5 行中删除 `$AzureContext = (Connect-AzAccount -Identity).context`，
+    1. 将其替换为 `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context`，然后
+    1. 输入客户端 ID。
 
 ### <a name="use-runbook-authentication-with-run-as-account"></a>将 Runbook 身份验证与运行方式帐户结合使用
 

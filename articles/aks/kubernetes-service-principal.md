@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/22/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 332866c49470ed47f3c3de65b03ffd07003f6d13
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: c2ad9c6eae22db2d940942c0ec15c6b1116a54cd
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253254"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353011"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -38,9 +38,9 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-通过 Azure 门户或 [az aks create][az-aks-create] 命令创建 AKS 群集时，Azure 可以自动生成服务主体。
+当你通过 Azure 门户或 [az aks create][az-aks-create] 命令创建 AKS 群集时，Azure 会创建托管标识。
 
-在下述 Azure CLI 示例中，尚未指定服务主体。 在此方案中，Azure CLI 为 AKS 群集创建一个服务主体。 若要成功完成此操作，Azure 帐户必须具有创建服务主体所需的相应权限。
+在下述 Azure CLI 示例中，尚未指定服务主体。 在此方案中，Azure CLI 为 AKS 群集创建一个托管标识。 
 
 ```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup
@@ -48,9 +48,9 @@ az aks create --name myAKSCluster --resource-group myResourceGroup
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-通过 Azure 门户或[New-AzAksCluster][new-azakscluster]命令创建 AKS 群集时，Azure 可以自动生成服务主体。
+通过 Azure 门户或 [New-AzAksCluster][new-azakscluster] 命令创建 AKS 群集时，Azure 可以生成新的托管标识。
 
-下方 Azure PowerShell 示例尚未指定服务主体。 在此方案中，Azure PowerShell 将为 AKS 群集创建一个服务主体。 若要成功完成此操作，Azure 帐户必须具有创建服务主体所需的相应权限。
+下方 Azure PowerShell 示例尚未指定服务主体。 在此方案中，Azure PowerShell 为 AKS 群集创建一个托管标识。 
 
 ```azurepowershell-interactive
 New-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup

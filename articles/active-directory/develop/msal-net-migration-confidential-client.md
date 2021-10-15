@@ -13,12 +13,12 @@ ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 72537e46d7d249190585552e0a8ee11c43e40340
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2148aa8deaa698c10918ee7a6b667c7d90286448
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128566551"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355080"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>将机密客户端应用程序从 ADAL.NET 迁移到 MSAL.NET
 
@@ -38,7 +38,7 @@ ms.locfileid: "128566551"
    - `resourceId` 字符串。 此变量是要调用的 Web API 的应用 ID URI。
    - `IClientAssertionCertificate` 的一个实例或 `ClientAssertion`。 此实例为应用提供客户端凭据，以证明应用的标识。
 
-1. 确定有应用使用 ADAL.NET 后，安装 MSAL.NET NuGet 包 [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) 并更新项目库引用。 有关详细信息，请参阅[安装 NuGet 包](https://www.bing.com/search?q=install+nuget+package)。 如果要使用令牌缓存序列化程序，请同时安装 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web)。
+1. 确定有应用使用 ADAL.NET 后，安装 MSAL.NET NuGet 包 [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) 并更新项目库引用。 有关详细信息，请参阅[安装 NuGet 包](https://www.bing.com/search?q=install+nuget+package)。 如果要使用令牌缓存序列化程序，请同时安装 [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache)。
 
 1. 按照机密客户端场景更新代码。 一些步骤是通用的，适用于所有机密客户端场景。 其他步骤对每种场景具有唯一性。 
 

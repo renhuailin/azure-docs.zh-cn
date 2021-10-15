@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a29bd1513f021be03cf6c6bd4aa83d13062de170
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 6a5b8f990238ac6a700a087d443fcd6881a6bde1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181517"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350592"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -134,14 +134,15 @@ Azure Active Directory Pod 标识支持 2 种操作模式：
 1. 标准模式：在此模式下，将以下 2 个组件部署到 AKS 群集： 
     * [托管标识控制器 (MIC)](https://azure.github.io/aad-pod-identity/docs/concepts/mic/)：一种 Kubernetes 控制器，通过 Kubernetes API 服务器监视对 Pod、[AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/) 和 [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) 所做的更改。 检测到相关更改时，MIC 会根据需要添加或删除 [AzureAssignedIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureassignedidentity/)。 具体而言，如果计划了 Pod，MIC 会将 Azure 上的托管标识分配给节点池在创建阶段使用的基础 VMSS。 删除所有使用该标识的 Pod 时，MIC 会从节点池的 VMSS 中删除标识，除非其他 Pod 使用相同的托管标识。 创建或删除 AzureIdentity 或 AzureIdentityBinding 时，MIC 会执行类似的操作。
     * [节点托管标识 (NMI)](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/)：是在 AKS 群集中每个节点上作为 DaemonSet 运行的 Pod。 NMI 截获每个节点上对 [Azure 实例元数据服务](../virtual-machines/linux/instance-metadata-service.md?tabs=linux)的安全令牌请求，将这些请求重定向到自身并验证 Pod 是否有权访问它为其请求令牌的标识，并代表应用程序从 Azure Active Directory 租户中提取令牌。
-2. 托管模式：在此模式下，只有 NMI。 标识需要由用户手动分配和管理。 有关详细信息，请参阅[托管模式下的 Pod 标识](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/)。 在此模式下，使用 [az aks pod-identity add](/cli/azure/aks/pod-identity?view=azure-cli-latest#az_aks_pod_identity_add) 命令将 Pod 标识添加到 Azure Kubernetes 服务 (AKS) 群集时，它会在 `--namespace` 参数指定的命名空间创建 [AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/) 和 [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/)，而 AKS 资源提供程序将 `--identity-resource-id` 参数指定的托管标识分配给 AKS 群集中每个节点池的虚拟机规模集 (VMSS)。
+
+2. 托管模式：在此模式下，只有 NMI。 标识需要由用户手动分配和管理。 有关详细信息，请参阅[托管模式下的 Pod 标识](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/)。 在此模式下，使用 [az aks pod-identity add](/cli/azure/aks/pod-identity#az_aks_pod_identity_add) 命令将 Pod 标识添加到 Azure Kubernetes 服务 (AKS) 群集时，它会在 `--namespace` 参数指定的命名空间创建 [AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/) 和 [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/)，而 AKS 资源提供程序将 `--identity-resource-id` 参数指定的托管标识分配给 AKS 群集中每个节点池的虚拟机规模集 (VMSS)。
 
 > [!NOTE]
 > 如果决定改为使用 [AKS 群集加载项](./use-azure-ad-pod-identity.md)安装 Azure Active Directory Pod 标识，安装程序将使用`managed`模式。
 
 与`standard`模式相比，`managed`模式具备以下优点：
 
-1. 节点池 VMSS 上的标识分配可能需要 40-60 秒。 对于需要访问标识且不能接受分配延迟的定时任务或应用程序，最好使用`managed`模式，因为标识已经手动或通过 [az aks pod-identity add](/cli/azure/aks/pod-identity?view=azure-cli-latest#az_aks_pod_identity_add) 命令预先分配给了节点池的 VMSS。
+1. 节点池 VMSS 上的标识分配可能需要 40-60 秒。 对于需要访问标识且不能接受分配延迟的定时任务或应用程序，最好使用`managed`模式，因为标识已经手动或通过 [az aks pod-identity add](/cli/azure/aks/pod-identity#az_aks_pod_identity_add) 命令预先分配给了节点池的 VMSS。
 2. 在`standard`模式下，MIC 要求对 AKS 群集使用的 VMSS 具有写入权限和对用户分配的托管标识的`Managed Identity Operator`权限。 在`managed mode`下运行时，由于没有 MIC，因此不需要角色分配。
 
 Pod 托管标识不会手动定义 Pod 凭据，而是会实时请求访问令牌，并使用该令牌访问仅为它们分配的服务。 在 AKS 中，有两个组件处理操作，以便 Pod 使用托管标识：
@@ -170,14 +171,14 @@ Pod 请求 Azure Active Directory 中的安全令牌以访问 Azure 服务时，
 > [!NOTE]
 > Pod 托管标识目前处于预览状态。
 
-若要使用 Pod 托管标识，请参阅[在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)。
+若要使用 Pod 托管标识，请参阅[在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）](use-azure-ad-pod-identity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 本最佳做法文章重点介绍了群集和资源的身份验证与授权。 若要实施其中的某些最佳做法，请参阅以下文章：
 
 * [将 Azure Active Directory 与 AKS 集成][aks-aad]
-* [在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+* [在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）](use-azure-ad-pod-identity.md)
 
 有关 AKS 中的群集操作的详细信息，请参阅以下最佳做法：
 

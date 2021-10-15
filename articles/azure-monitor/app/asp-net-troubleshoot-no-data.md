@@ -4,12 +4,12 @@ description: 在 Azure Application Insights 中看不到数据？ 试试这里�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 828eab154c09e3e623b5cfb84d6fc72d2bd480f5
-ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+ms.openlocfilehash: 3565ca98f61099fb4b2cf2f0c9bf69dbeaa721b5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113616138"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429388"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -43,7 +43,7 @@ Internet Information Services (IIS) 记录到达 IIS 的所有请求的计数，
 * 请参阅[排查状态监视器问题](./status-monitor-v2-troubleshoot.md)。
 
 > [!IMPORTANT]
-> 建议使用[连接字符串](./sdk-connection-string.md?tabs=net)替代检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 建议使用[连接字符串](./sdk-connection-string.md?tabs=net)而不是检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException：无法加载文件或程序集“Microsoft.AspNet TelemetryCorrelation”
@@ -221,9 +221,10 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 ### <a name="net-framework"></a>.NET Framework
 
-1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsighs` 版本匹配
+> [!NOTE]
+> 从 2.14 版开始，不再需要 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包，SDK 日志现在与 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 包一起收集。 不需要任何其他包。
 
-2. 修改 applicationinsights.config 文件以包括以下内容：
+1. 修改 applicationinsights.config 文件以包括以下内容：
 
     ```xml
     <TelemetryModules>
@@ -236,9 +237,9 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
     ```
     应用程序必须对配置的位置具有写入权限
 
-3. 重新启动进程，以便 SDK 获取这些新设置
+2. 重新启动进程，以便 SDK 获取这些新设置
 
-4. 完成后还原这些更改。
+3. 完成后还原这些更改。
 
 ### <a name="net-core"></a>.NET Core
 
@@ -295,7 +296,7 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 
 ## <a name="how-to-remove-application-insights"></a>如何删除 Application Insights
 
-按照[此文](./remove-application-insights.md)中提供的步骤，了解如何在 Visual Studio 中删除 Application Insights。
+执行[删除 Application Insights](./remove-application-insights.md) 一文中提供的步骤，了解如何在 Visual Studio 中删除 Application Insights。
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [有关 Application Insights 的 Microsoft 问答页](/answers/topics/azure-monitor.html)

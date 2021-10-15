@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ea917523c33e73013824203d892d3931a0f2ee9
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: c634c30c325a05d9c1f8f7506180561488a010d6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110586144"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234882"
 ---
 # <a name="configure-identification-and-authentication-controls-to-meet-fedramp-high-impact-level"></a>配置标识和身份验证控件以满足 FedRAMP High 影响级别
 

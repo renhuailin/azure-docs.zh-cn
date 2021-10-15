@@ -4,13 +4,13 @@ description: 描述在 Bicep 文件中用于处理对象的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: fd65cc60412d46a734764d3566fa3606a48c7bf6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 38dfdee2dbe40b40631b45b8d0f9e157f5efc7ae
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758439"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349841"
 ---
 # <a name="object-functions-for-bicep"></a>Bicep 的对象函数
 
@@ -21,6 +21,8 @@ ms.locfileid: "124758439"
 `contains(container, itemToFind)`
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
+
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>参数
 
@@ -75,6 +77,8 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 确定数组、对象或字符串是否为空。
 
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
@@ -113,7 +117,9 @@ output stringEmpty bool = empty(testString)
 
 返回包含参数中通用元素的单个数组或对象。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -169,6 +175,8 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 将有效的 JSON 字符串转换为 JSON 数据类型。
 
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
@@ -223,7 +231,9 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 
 返回数组中的元素数、字符串中的字符数或对象中的根级属性数。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -273,7 +283,9 @@ output objectLength int = length(objectToTest)
 
 返回包含参数中所有元素的单个数组或对象。 重复的值或键仅包含一次。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |

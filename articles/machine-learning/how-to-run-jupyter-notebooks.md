@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/22/2021
-ms.openlocfilehash: 447398acc918dc830769b6b5e227f2ea87eb33c4
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 1a4fbbb84eb296acabd383461e01e90cbf570d9d
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545371"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657371"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter Notebook
 
@@ -207,7 +207,7 @@ ms.locfileid: "129545371"
 
 “计算”下拉列表旁的指示器显示计算的状态。  在计算的下拉列表中也会显示状态。  
 
-|颜色 |计算状态 |
+|Color |计算状态 |
 |---------|---------| 
 | 绿色 | 正在运行计算 |
 | Red |计算失败 | 
@@ -217,7 +217,7 @@ ms.locfileid: "129545371"
 
 “内核”下拉列表旁的指示器显示内核的状态。
 
-|颜色 |内核状态 |
+|Color |内核状态 |
 |---------|---------|
 |  绿色 |内核已连接、空闲、繁忙|
 |  灰色 |内核未连接 |
@@ -311,7 +311,7 @@ ms.locfileid: "129545371"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-* 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 确保[网络允许与 *.instances.azureml.net 和 *.instances.azureml.ms 建立 websocket 连接](https://docs.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress#microsoft-hosts)。 
+* 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 确保[网络允许与 *.instances.azureml.net 和 *.instances.azureml.ms 建立 websocket 连接](how-to-access-azureml-behind-firewall.md?tabs=ipaddress#microsoft-hosts)。 
 
 * 在使用专用终结点的工作区中部署计算实例时，只能[从虚拟网络内部访问](./how-to-secure-training-vnet.md)。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
 

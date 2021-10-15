@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 07/19/2021
-ms.openlocfilehash: 4a7fdf12ecf123c1fb741dcbd2706f7ca9a1d5c2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/15/2021
+ms.openlocfilehash: ce9de190c5754102b9ac66602818b25e960ae8dd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732445"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570248"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
 
@@ -34,6 +34,10 @@ ms.locfileid: "121732445"
 
 > [!IMPORTANT]
 > 当你计划将 Azure AD B2C 日志传输到不同的监视解决方案或存储库时，请注意以下几点。 Azure AD B2C 日志包含个人数据。 此类数据的处理方式应确保个人数据的适当安全，包括使用适当的技术或组织措施防范未经授权或非法处理。
+
+观看此视频以了解如何使用 Azure Monitor 为 Azure AD B2C 配置监控。  
+
+>[!Video https://www.youtube.com/embed/tF2JS6TGc3g]
 
 ## <a name="deployment-overview"></a>部署概述
 
@@ -60,7 +64,8 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 首先，创建或选择一个资源组，其中包含将从 Azure AD B2C 接收数据的目标 Log Analytics 工作区。 部署 Azure 资源管理器模板时请指定资源组名称。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD 租户的目录。
+1. 请确保使用的是包含 Azure AD 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. [创建资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)或选择现有资源组。 此示例使用名为 azure-ad-b2c-monitor 的资源组。
 
 ## <a name="2-create-a-log-analytics-workspace"></a>2.创建 Log Analytics 工作区
@@ -68,7 +73,8 @@ Azure AD B2C 使用 [Azure Active Directory 监视](../active-directory/reports-
 Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。 你将使用此 Log Analytics 工作区从 Azure AD B2C [审核日志](view-audit-logs.md)收集数据，然后使用查询和工作簿将其可视化，或创建警报。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD 租户的目录。
+1. 请确保使用的是包含 Azure AD 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. [创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。 此示例在名为 azure-ad-b2c-monitor 的资源组中使用名为 AzureAdB2C 的 Log Analytics 工作区。
 
 ## <a name="3-delegate-resource-management"></a>3.委托资源管理
@@ -80,7 +86,8 @@ Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。
 首先，获取 Azure AD B2C 目录的“租户 ID”（也称为目录 ID）。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 依次选择“Azure Active Directory”、“概述”。
 1. 记录“租户 ID”。
 
@@ -101,12 +108,13 @@ Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。
 若要在 Azure Lighthouse 中创建自定义授权和委派，我们会使用 Azure 资源管理器模板，该模板可向之前创建的 Azure AD 资源组授予 Azure AD B2C 访问权限（例如 azure-ad-b2c-monitor）。 使用“部署到 Azure”按钮从 GitHub 示例部署模板，这将打开 Azure 门户，并允许直接在门户中配置和部署模板。 对于这些步骤，请确保登录到 Azure AD 租户（而不是 Azure AD B2C 租户）。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD 租户的目录。
-3. 使用“部署到 Azure”按钮打开 Azure 门户，并直接在门户中部署模板。 有关详细信息，请参阅[创建 Azure 资源管理器模板](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template)。
+1. 请确保使用的是包含 Azure AD 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
+1. 使用“部署到 Azure”按钮打开 Azure 门户，并直接在门户中部署模板。 有关详细信息，请参阅[创建 Azure 资源管理器模板](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template)。
 
    [![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
-4. 在“自定义部署”页面上，输入以下信息：
+1. 在“自定义部署”页面上，输入以下信息：
 
    | 字段                 | 定义                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -137,15 +145,10 @@ Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。
 部署模板并等待几分钟让资源投影完成之后，请通过以下步骤将订阅关联到 Azure AD B2C 目录。
 
 1. 如果当前已登录，请注销 Azure 门户（这允许在下一步中刷新会话凭据）。
-2. 使用 Azure AD B2C 管理帐户登录到 [Azure 门户](https://portal.azure.com)。 此帐户必须是在[委派资源管理](#3-delegate-resource-management)步骤中指定的安全组的成员。
-3. 在门户工具栏中选择“目录 + 订阅”图标。
-4. 选择包含 Azure 订阅和你创建的 azure-ad-b2c-monitor 资源组的 Azure AD 目录。
-
-   ![切换目录](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
-
-5. 确认是否选择了正确的目录和订阅。 在此示例中，已选择所有目录和所有订阅。
-
-   ![在目录和订阅筛选器中选择了所有目录](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
+1. 使用 Azure AD B2C 管理帐户登录到 [Azure 门户](https://portal.azure.com)。 此帐户必须是在[委派资源管理](#3-delegate-resource-management)步骤中指定的安全组的成员。
+1. 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页面的“目录名称”列表中，找到包含 Azure 订阅和你创建的 azure-ad-b2c-monitor 资源组的 Azure AD 目录，然后选择“切换”。
+1. 确认是否选择了正确的目录和订阅。
 
 ## <a name="5-configure-diagnostic-settings"></a>5.配置诊断设置
 
@@ -164,7 +167,8 @@ Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。
 为 Azure AD B2C 活动日志配置监视设置：
 
 1. 使用 Azure AD B2C 管理帐户登录到 [Azure 门户](https://portal.azure.com/)。 此帐户必须是在[选择安全组](#32-select-a-security-group)步骤中指定的安全组的成员。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录+订阅”页上的“目录名称”列表中找到你的 Azure AD B2C 目录，然后选择“切换”。
 1. 选择“Azure Active Directory”
 1. 在“监视”下，选择“诊断设置” 。
 1. 如果有用于此资源的现有设置，则会看到已配置的设置列表。 如果要添加新设置，请选择“添加诊断设置”；如果要编辑现有设置，请选择“编辑”。 每个设置最多只能包含一个目标类型。

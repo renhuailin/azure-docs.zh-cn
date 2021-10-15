@@ -9,12 +9,12 @@ ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c204308cff285860c0e887d41eca56ecc220226
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c65cd9e9e6d80222f60a3ee060ba697743713738
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039049"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362711"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
@@ -64,14 +64,13 @@ ms.locfileid: "123039049"
     > [!TIP]
     > 对于原型和测试用途，可以使用本地 Docker 注册表，而不使用云注册表。
 
-除非使用 C 开发模块，否则还需要基于 Python 的 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，以便设置本地开发环境以调试、运行和测试 IoT Edge 解决方案。 如果尚未这样做，请安装 [Python (2.7/3.6/3.7) 和 Pip](https://www.python.org/)，然后在终端中运行此命令安装“iotedgehubdev”  。
+除非使用 C 开发模块，否则还需要基于 Python 的 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，以便设置本地开发环境以调试、运行和测试 IoT Edge 解决方案。 如果尚未这样做，请安装 [Python (2.7/3.6/3.7/3.8) 和 Pip](https://www.python.org/)，然后通过在终端中运行此命令来安装“iotedgehubdev”。
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
 
 > [!NOTE]
-> 目前，iotedgehubdev 使用与 Python 3.8 不兼容的 docker-py 库。
 >
 > 如果有多个 Python，包括预安装的 python 2.7（例如，在 Ubuntu 或 macOS 上），请确保使用正确的 `pip` 或 `pip3` 来安装 **iotedgehubdev**
 
@@ -109,7 +108,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 - 一个 .env 文件，列出环境变量  。 如果 Azure 容器注册表是注册表，则其中将包含 Azure 容器注册表用户名和密码。
 
-  在生产场景中，我们建议使用服务主体来提供对容器注册表（而不是 .env 文件）的访问。 有关详细信息，请参阅[管理对容器注册表的访问](production-checklist.md#manage-access-to-your-container-registry)。
+  在生产场景中，我们建议使用服务主体来提供对容器注册表（而不是 .env 文件）的访问。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
   > [!NOTE]
   > 仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。

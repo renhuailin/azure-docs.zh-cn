@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b8dc092104f3371263719adbec16305afb87113c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 2525417516691fa4ffb6d681fc23b394f4588649
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867379"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129364096"
 ---
 # <a name="how-to-scale-media-reserved-units-legacy"></a>如何缩放媒体保留单位（旧版）
 
@@ -22,7 +22,7 @@ ms.locfileid: "122867379"
 本文介绍如何缩放媒体保留单位 (MRU) 以加快编码速度。
 
 > [!WARNING]
-> 对于使用 API 的 2020-05-01 版本或更高版本创建的媒体服务帐户，此命令将不再适用。 这些帐户将不再需要媒体保留单位，因为系统会根据负载自动纵向扩展和缩减。 如果在 Azure 门户中看不到管理 MRU 的选项，则说明正在运行使用 2020-05-01 API 或更高版本创建的帐户。
+> 对于使用 API 的 2020-05-01（或更高）版本或更高版本创建的媒体服务帐户，此命令将不再适用。 这些帐户将不再需要媒体保留单位，因为系统会根据负载自动纵向扩展和缩减。 如果在 Azure 门户中看不到管理 MRU 的选项，则说明正在运行使用 2020-05-01 API 或更高版本创建的帐户。
 > 本文的目的是记录使用 MRU 的传统过程
 
 ## <a name="prerequisites"></a>先决条件

@@ -5,15 +5,15 @@ author: anastasia-ms
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/22/2021
 ms.author: v-stharr
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cf2934c57441176034d28a7b60e33c639977e62d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dc33bf659785419619afe4f393a8a1ed09142452
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779590"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272522"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
@@ -122,13 +122,9 @@ curl -L -i -X PUT -H 'Content-Type: application/json' -H 'Content-Encoding:  utf
 
 如果已经为基于 X.509 证书的身份验证设置了单个注册或注册组，则设备需要使用其颁发的 X.509 证书来向设备 API 证明身份。 有关如何设置注册和生成设备证书的信息，请参阅以下文章。
 
-* 快速入门 - [使用 Python 将模拟的 X.509 设备预配到 Azure IoT 中心](quick-create-simulated-device-x509-python.md?tabs=linux)
+* 快速入门 - [将模拟的 X.509 设备预配到 Azure IoT 中心](quick-create-simulated-device-x509.md)
 
-* 快速入门 - [使用 Node.js 将模拟的 X.509 设备预配到 Azure IoT 中心](quick-create-simulated-device-x509-node.md)
-
-* 快速入门 - [使用 Python 将 X.509 设备注册到 Azure 设备预配服务](quick-enroll-device-x509-python.md)
-
-* 快速入门 - [使用 Node.js 将 X.509 设备注册到 Azure 设备预配服务](quick-enroll-device-x509-node.md)
+* 快速入门 - [将 X.509 设备注册到 Azure 设备预配服务](quick-enroll-device-x509.md)
 
 以下示例演示在设置注册并颁发设备证书后，如何使用设备的 X.509 证书向设备 API 进行身份验证。
 

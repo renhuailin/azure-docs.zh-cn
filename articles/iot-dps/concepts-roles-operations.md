@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotga
-ms.openlocfilehash: 322d6b590863d8065454c0439c5d899107a6abe7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f25aed4fa424ba7b98781f145ace2dce95d27d99
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98784959"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276144"
 ---
 # <a name="roles-and-operations"></a>角色和操作
 
@@ -30,7 +30,7 @@ ms.locfileid: "98784959"
 | 运算符 | 配置自动预配 | 此操作对应于自动预配的第一阶段。<br><br>**快速入门**：你需要履行操作员角色，在 Azure 订阅中配置设备预配服务和 IoT 中心实例。 |
 |  | 登记设备标识 | 此操作对应于自动预配的第二个阶段。<br><br>**快速入门**：你需要履行操作员角色，在设备预配服务实例中登记模拟设备。 设备标识由快速入门中模拟的认证方法（TPM 或 X.509）确定。 有关认证详细信息，请参阅“开发人员角色”。 |
 | 设备预配服务<br>IoT 中心 | \<all operations\> | 对于使用物理设备的生产实现和使用模拟设备的快速入门，需要通过 Azure 订阅中配置的 IoT 服务履行这些角色。 角色/操作的功能完全相同，因为 IoT 服务预配物理设备和模拟设备的方式没有差别。 |
-| 开发人员 | 生成/部署注册软件 | 此操作对应于自动预配的第三个阶段。 开发人员负责使用相应的 SDK 生成注册软件并将其部署到设备。<br><br>**快速入门**：生成的示例注册应用程序模拟适用于所选平台/语言的、在工作站中运行的真实设备（而不是将其部署到物理设备）。 注册应用程序执行的操作与部署到物理设备的应用程序相同。 需要指定认证方法（TPM 或 X.509 证书），以及设备预配服务实例的注册 URL 和“ID 范围”。 设备标识由 SDK 认证逻辑在运行时根据指定的方法确定： <ul><li>**TPM 认证** - 开发工作站运行 [TPM 模拟器应用程序](quick-create-simulated-device.md)。 运行后，将使用单独的应用程序来提取 TPM 的“认可密钥”和“注册 ID”用于登记设备标识。 SDK 认证逻辑在注册期间也使用模拟器来提供签名的 SAS 令牌用于身份验证和登记验证。</li><li>**X509 认证** - 使用工具 [生成证书](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)。 生成后，需创建用于登记的证书文件。 SDK 认证逻辑在注册期间也使用该证书来提供身份验证和登记验证。</li></ul> |
+| 开发人员 | 生成/部署注册软件 | 此操作对应于自动预配的第三个阶段。 开发人员负责使用相应的 SDK 生成注册软件并将其部署到设备。<br><br>**快速入门**：生成的示例注册应用程序模拟适用于所选平台/语言的、在工作站中运行的真实设备（而不是将其部署到物理设备）。 注册应用程序执行的操作与部署到物理设备的应用程序相同。 需要指定认证方法（TPM 或 X.509 证书），以及设备预配服务实例的注册 URL 和“ID 范围”。 设备标识由 SDK 认证逻辑在运行时根据指定的方法确定： <ul><li>**TPM 认证** - 开发工作站运行 [TPM 模拟器应用程序](quick-create-simulated-device-tpm.md)。 运行后，将使用单独的应用程序来提取 TPM 的“认可密钥”和“注册 ID”用于登记设备标识。 SDK 认证逻辑在注册期间也使用模拟器来提供签名的 SAS 令牌用于身份验证和登记验证。</li><li>**X509 认证** - 使用工具 [生成证书](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)。 生成后，需创建用于登记的证书文件。 SDK 认证逻辑在注册期间也使用该证书来提供身份验证和登记验证。</li></ul> |
 | 设备 | 启动和注册 | 此操作对应于自动预配的第三个阶段，由开发人员生成的设备注册软件执行。 有关详细信息，请参阅“开发人员角色”。 首次启动时： <ol><li>应用程序根据开发期间指定的全局 URL 和服务“ID 范围”，与设备预配服务实例建立连接。</li><li>连接后，将会根据登记期间指定的认证方法和标识对设备进行身份验证。</li><li>完成身份验证后，设备将注册到预配服务实例指定的 IoT 中心实例。</li><li>注册成功后，向注册应用程序返回唯一的设备 ID 和 IoT 中心终结点，以便与 IoT 中心通信。</li><li> 从此时起，设备可以提取用于配置的初始[设备孪生](~/articles/iot-hub/iot-hub-devguide-device-twins.md)状态，并开始执行报告遥测数据的过程。</li></ol>**快速入门**：由于设备是模拟的，因此注册软件在开发工作站上运行。|
 
 下图汇总了设备自动预配期间的角色和操作顺序：
@@ -79,11 +79,11 @@ ms.locfileid: "98784959"
 
 然后继续学习最适合你的设备证明机制和设备预配服务 SDK/语言偏好的“预配设备”快速入门。 此快速入门逐步讲解“设备登记”与“设备注册和配置”阶段： 
 
-| 设备证明机制 | 快速入门 SDK/语言 | 
+| 设备证明机制 | 快速入门 | 
 | ------------------------------- | -------------------- |
-| 对称密钥 | [C](quick-create-simulated-device-symm-key.md)<br>[Java](quick-create-simulated-device-symmetric-key-java.md)<br>[Python](quick-create-device-symmetric-key-python.md) |
-| X.509 证书 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |
-| 模拟的受信任平台模块 (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |
+| 对称密钥 | [预配模拟对称密钥设备](quick-create-simulated-device-symm-key.md) |
+| X.509 证书 | [预配模拟的 X.509 设备](quick-create-simulated-device-x509.md) |
+| 模拟的受信任平台模块 (TPM) | [预配模拟的 TPM 设备](quick-create-simulated-device-tpm.md)|
 
 
 

@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 1f7b4152bee090e39c598b559ffa9d2e8aea8e88
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 245bcbfd59644946ac6f039e35fe02147054cc8c
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123477737"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273223"
 ---
 # <a name="optimize-costs-by-automatically-managing-the-data-lifecycle"></a>通过自动管理数据生命周期优化成本
 
@@ -153,8 +153,8 @@ ms.locfileid: "123477737"
 | tierToArchive               | 对 `blockBlob` 支持                  | 支持     | 支持     |
 | delete                      | 支持 `blockBlob` 和 `appendBlob` | 支持     | 支持     |
 
->[!NOTE]
->如果在同一 Blob 中定义了多个操作，生命周期管理将对该 Blob 应用开销最低的操作。 例如，操作 `delete` 的开销比 `tierToArchive` 更低。 操作 `tierToArchive` 的开销比 `tierToCool` 更低。
+> [!NOTE]
+> 如果在同一 Blob 中定义了多个操作，生命周期管理将对该 Blob 应用开销最低的操作。 例如，操作 `delete` 的开销比 `tierToArchive` 更低。 操作 `tierToArchive` 的开销比 `tierToCool` 更低。
 
 运行条件基于期限。 为了跟踪陈旧程度，基础 Blob 使用上次修改时间，Blob 版本使用版本创建时间，Blob 快照使用快照创建时间。
 
@@ -162,7 +162,7 @@ ms.locfileid: "123477737"
 |--|--|--|
 | daysAfterModificationGreaterThan | 指示陈旧程度（天）的整数值 | 基本 Blob 操作的条件 |
 | daysAfterCreationGreaterThan | 指示陈旧程度（天）的整数值 | Blob 版本和 Blob 快照操作的条件 |
-| daysAfterLastAccessTimeGreaterThan | 指示陈旧程度（天）的整数值 | 启用“访问跟踪”时的基本 Blob 操作条件 |
+| daysAfterLastAccessTimeGreaterThan | 指示陈旧程度（天）的整数值 | 启用访问跟踪时的基础 Blob 操作的条件 |
 
 ## <a name="examples-of-lifecycle-policies"></a>生命周期策略示例
 
@@ -364,11 +364,11 @@ ms.locfileid: "123477737"
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。 
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png)|![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
@@ -391,7 +391,7 @@ ms.locfileid: "123477737"
 
 **如果更新现有策略，运行操作需要多长时间？**
 
-已更新的策略最多需要 24 小时才能生效。 策略生效后，最多可能需要 24 小时才能执行操作。 因此，策略操作最多可能需要 48 小时才能完成。 如果更新是禁用或删除规则，并且使用了 enableAutoTierToHotFromCool，则仍将发生自动分层到热层的情况。 例如，根据上次访问设置一个包含 enableAutoTierToHotFromCool 的规则。 如果规则处于禁用/删除状态，并且 blob 当前处于冷状态并随后被访问，则该 blob 将会移回热层，因为该规则是对生命周期管理外部的访问而应用的。 由于生命周期管理规则为禁用/删除状态，该 blob 不会从热层移动到冷层。  阻止 autoTierToHotFromCool 的唯一方法就是关闭上次访问时间跟踪。
+已更新的策略最多需要 24 小时才能生效。 策略生效后，最多可能需要 24 小时才能执行操作。 因此，策略操作最多可能需要 48 小时才能完成。 如果更新是禁用或删除规则，并且使用了 enableAutoTierToHotFromCool，则仍将发生自动分层到热层的情况。 例如，根据上次访问设置一个包含 enableAutoTierToHotFromCool 的规则。 如果规则处于禁用/删除状态，并且 blob 当前处于冷状态并随后被访问，则该 blob 将会移回热层，因为该规则是对生命周期管理外部的访问而应用的。 由于生命周期管理规则为禁用/删除状态，该 blob 不会从热层移动到冷层。 阻止 autoTierToHotFromCool 的唯一方法就是关闭上次访问时间跟踪。
 
 **我手动解冻了某个存档的 Blob，如何防止它暂时性地移回到存档层？**
 
@@ -400,5 +400,5 @@ ms.locfileid: "123477737"
 ## <a name="next-steps"></a>后续步骤
 
 - [配置生命周期管理策略](lifecycle-management-policy-configure.md)
-- [Azure Blob 存储的访问层 - 热、冷和存档](storage-blob-storage-tiers.md)
+- [Blob 数据支持热访问层、冷访问层和存档访问层](access-tiers-overview.md)
 - [通过 Blob 索引管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)

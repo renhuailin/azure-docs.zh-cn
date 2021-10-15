@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5111092a804845c829cb44f4be9e123b8c9dcca6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0fd10d851c60ebb36a2861c8aa4fbd46daac84d7
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536754"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278683"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中的专用 SQL 池的数据加载策略
 
@@ -96,10 +96,10 @@ ms.locfileid: "123536754"
 |                            BINARY                            |                STRING                 |     nvarchar     |
 |                            BINARY                            |                 ENUM                  |     nvarchar     |
 |                            BINARY                            |                 UUID                  | uniqueidentifier |
-|                            BINARY                            |                DECIMAL                |     decimal      |
+|                            BINARY                            |                DECIMAL                |     Decimal      |
 |                            BINARY                            |                 JSON                  |  nvarchar(MAX)   |
 |                            BINARY                            |                 BSON                  |  varbinary(max)  |
-|                     FIXED_LEN_BYTE_ARRAY                     |                DECIMAL                |     decimal      |
+|                     FIXED_LEN_BYTE_ARRAY                     |                DECIMAL                |     Decimal      |
 |                          BYTE_ARRAY                          |               INTERVAL                |  varchar(max),   |
 |                            INT32                             |             INT(8, true)              |     smallint     |
 |                            INT32                             |            INT(16,   true)            |     smallint     |
@@ -108,11 +108,11 @@ ms.locfileid: "123536754"
 |                            INT32                             |            INT(16, false)             |       int        |
 |                            INT32                             |           INT(32,   false)            |      bigint      |
 |                            INT32                             |                 DATE                  |       date       |
-|                            INT32                             |                DECIMAL                |     decimal      |
+|                            INT32                             |                DECIMAL                |     Decimal      |
 |                            INT32                             |            TIME (MILLIS)             |       time       |
 |                            INT64                             |            INT(64,   true)            |      bigint      |
 |                            INT64                             |           INT(64, false  )            |  decimal(20,0)   |
-|                            INT64                             |                DECIMAL                |     decimal      |
+|                            INT64                             |                DECIMAL                |     Decimal      |
 |                            INT64                             |         TIME (MILLIS)                 |       time       |
 |                            INT64                             | TIMESTAMP (MILLIS)                  |    datetime2     |
 | [复杂类型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 列表                  |   varchar(max)   |
@@ -142,8 +142,8 @@ ms.locfileid: "123536754"
 
 若要加载数据，可以使用下列任一加载选项：
 
-- [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)是推荐使用的加载实用工具，因为它可以无缝且灵活地加载数据。 该语句具有许多 PolyBase 不提供的其他加载功能。 
-- [具有 T-SQL 的 PolyBase](./load-data-from-azure-blob-storage-using-copy.md) 要求定义外部数据对象。
+- [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)是推荐使用的加载实用工具，因为它可以无缝且灵活地加载数据。 该语句具有许多 PolyBase 不提供的其他加载功能。 若要运行示例教程，请参阅[纽约州出租车 COPY 教程](./load-data-from-azure-blob-storage-using-copy.md)。  
+- [具有 T-SQL 的 PolyBase](./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) 要求定义外部数据对象。
 - [Azure 数据工厂 (ADF) 的 PolyBase 和 COPY 语句](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)是另一个业务流程工具。  它定义管道并计划作业。
 - 源数据位于 SQL Server 时，[具有 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 运行良好。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。
 - [将 PolyBase 与 Azure DataBricks 配合使用](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)，可使用 PolyBase 将数据从表传输到 Databricks 数据帧，并且/或者可将 Databricks 数据帧中的数据写入表。

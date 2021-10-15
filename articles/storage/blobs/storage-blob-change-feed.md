@@ -1,20 +1,21 @@
 ---
-title: Azure Blob 存储中的更改源 | Microsoft Docs
+title: Blob 存储中的更改源
+titleSuffix: Azure Storage
 description: 了解 Azure Blob 存储中的更改源日志以及如何使用这些日志。
 author: tamram
 ms.author: tamram
-ms.date: 05/17/2021
+ms.date: 10/01/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 67ecaac43885b76071a6bc71268edb811db7cbbd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bed39bd544ac1b586dcefefb890927fe1ce472b2
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680274"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402143"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
 
@@ -55,7 +56,7 @@ ms.locfileid: "128680274"
 
 - 更改源会捕获帐户中发生的所有可用事件的所有更改。 客户端应用程序可根据需要筛选出事件类型。 （请参阅当前版本的[条件](#conditions)）。
 
-- 只有常规用途 v2 和 Blob 存储帐户才能启用更改源。 目前不支持高级块 blob 帐户和已启用分层命名空间的帐户。 不支持常规用途 v1 存储帐户，但可以在不停机的情况下将其升级到常规用途 v2。有关详细信息，请参阅[升级到 GPv2 存储帐户](../common/storage-account-upgrade.md)。
+- 只有标准常规用途 v2、高级块 Blob 和 Blob 存储帐户才能启用更改源。 当前不支持启用了分层命名空间的帐户。 不支持常规用途 v1 存储帐户，但可以在不停机的情况下将其升级到常规用途 v2。有关详细信息，请参阅[升级到 GPv2 存储帐户](../common/storage-account-upgrade.md)。
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -300,14 +301,14 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
-|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
-| 高级块 blob          | ![否](../media/icons/no-icon.png)|![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| 存储帐户类型 | Blob 存储（默认支持） | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> |
+|--|--|--|--|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级块 blob | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
 
-<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
+<sup>1</sup> Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="faq"></a>常见问题
 

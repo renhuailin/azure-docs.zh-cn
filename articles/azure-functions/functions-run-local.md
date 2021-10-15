@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 07/27/2021
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 04e6f9ab74ab30b73f323e5796c159e07655f836
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 5f2ea49df446c26453bb8cf54af52ab54b2c24b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861668"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669698"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -29,36 +29,62 @@ ms.locfileid: "121861668"
 > * [在本地运行函数。](#start)
 > * [将项目发布到 Azure。](#publish)
 
-## <a name="core-tools-versions"></a>Core Tools 版本
-
-Azure Functions Core Tools 有三个版本。<sup>*</sup> 使用的版本取决于本地开发环境、[所选的语言](supported-languages.md)以及所需的支持级别：
-
-+ [版本 3.x/2.x](#v2)：支持 [3.x 或 2.x 版的 Azure Functions 运行时](functions-versions.md)。 这些版本支持 [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2) 和 [Linux](?tabs=linux#v2)，并使用特定于平台的包管理器或 npm 进行安装。
-
-+ **版本 1.x**：支持 1.x 版的 Azure Functions 运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://www.npmjs.com/package/azure-functions-core-tools)安装。
-
-你只能在给定计算机上安装一个版本的核心工具。 除非另有说明，否则本文中的示例适用于版本 3.x。
-
-<sup>*</sup> 提供 Azure Functions 的试验版本，让你可以在 .NET 6.0 预览版上运行 C# 函数。 若要了解详细信息，请参阅 [Azure Functions v4 早期预览版](https://aka.ms/functions-dotnet6earlypreview-wiki)页面。
-
 ## <a name="prerequisites"></a>先决条件
 
 Azure Functions Core Tools 当前依靠 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps) 通过 Azure 帐户进行身份验证。 这意味着必须安装以下工具之一才能通过 Azure Functions Core Tools [发布到 Azure](#publish)。 
+
+## <a name="core-tools-versions"></a><a name="v2"></a>Core Tools 版本
+
+Azure Functions Core Tools 有四个版本。 使用的版本取决于本地开发环境、[所选的语言](supported-languages.md)以及所需的支持级别。
+
+选择以下版本选项卡来了解每个特定版本和详细的安装说明：
+
+# <a name="version-3x"></a>[3\.x 版](#tab/v3)
+
+支持 [3.x 版](functions-versions.md)的 Azure Functions 运行时。 此版本支持 Windows、macOS 和 Linux，并使用特定于平台的包管理器或 npm 进行安装。 这是建议的 Functions 运行时和 Core Tools 版本。
+
+# <a name="version-4x-preview"></a>[版本 4.x（预览版）](#tab/v4)
+
+支持 [4.x 版](functions-versions.md) Functions 运行时，以预览版提供。 此版本支持 Windows、macOS 和 Linux，并使用特定于平台的包管理器或 npm 进行安装。 除非需要在 .NET 6.0 上运行 C# 函数，否则请考虑使用 3.x 版 Functions 运行时和 Core Tools。
+
+# <a name="version-2x"></a>[版本 2.x](#tab/v2)
+
+支持 [2.x 版](functions-versions.md)的 Azure Functions 运行时。 此版本支持 Windows、macOS 和 Linux，并使用特定于平台的包管理器或 npm 进行安装。 
+
+# <a name="version-1x"></a>[版本 1.x](#tab/v1) 
+
+支持 1.x 版的 Azure Functions 运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://www.npmjs.com/package/azure-functions-core-tools)安装。
+
+---
+
+你只能在给定计算机上安装一个版本的核心工具。  除非另有说明，否则本文中的示例适用于版本 3.x。
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
 [Azure Functions Core Tools] 包含同一运行时的另一版本，该版本为本地开发计算机上可运行的 Azure Functions 运行时提供支持。 它还提供用于创建函数、连接到 Azure 和部署函数项目的命令。
 
-### <a name="version-3x-and-2x"></a><a name="v2"></a>版本 3.x 和 2.x
-
-3\.x/2.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括 [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2) 和 [Linux](?tabs=linux#v2)）都支持此版本。 
+从版本 2.x 开始，Core Tools 是在 .NET Core 基础上构建的。 这意味着，版本 2.x 及更高版本在 .NET Core 支持的所有平台（包括 [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2) 和 [Linux](?tabs=linux#v2)）上运行。
 
 > [!IMPORTANT]
-> 可以使用[扩展捆绑包]绕过安装 .NET Core SDK 的要求。
+> 对于非 .NET 语言，可以使用[扩展捆绑包]绕过安装 .NET Core SDK 的要求。
 
-# <a name="windows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows/v4)
 
-以下步骤使用 Windows 安装程序 (MSI) 安装 Core Tools v3.x。 若要详细了解安装 Core Tools v2.x 所需的其他基于包的安装程序，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
+安装 4.x 版 Core Tools 当前需要 npm。 如果使用不同的包管理器安装了以前版本的 Core Tools，请在安装版本 4.x 之前卸载它。
+
+1. 如果尚未执行此操作，请[安装包含 npm 的 Node.js](https://nodejs.org/en/download/)。 
+
+1. 运行以下 npm 命令以安装 Core Tools 包：
+
+    ```
+    npm i -g azure-functions-core-tools@4 --unsafe-perm true
+    ```
+
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+
+# <a name="windows"></a>[Windows](#tab/windows/v3)
+
+以下步骤使用 Windows 安装程序 (MSI) 安装 Core Tools v3.x。 若要详细了解其他基于包的安装程序，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
 1. 基于Windows 版本下载并运行 Core Tools 安装程序：
 
@@ -67,7 +93,25 @@ Azure Functions Core Tools 当前依靠 [Azure CLI](/cli/azure/install-azure-cli
 
 1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
-# <a name="macos"></a>[macOS](#tab/macos)
+# <a name="windows"></a>[Windows](#tab/windows/v2)
+
+安装 2.x 版 Core Tools 需要 npm。 还可以[使用 Chocolatey 安装包](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#azure-functions-core-tools)。
+
+1. 如果尚未执行此操作，请[安装包含 npm 的 Node.js](https://nodejs.org/en/download/)。 
+
+1. 运行以下 npm 命令以安装 Core Tools 包：
+
+    ```
+    npm install -g azure-functions-core-tools@2 --unsafe-perm true
+    ```
+
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+
+# <a name="windows"></a>[Windows](#tab/windows/v1)
+
+如果需要安装 1.x 版 Core Tools，请参阅 [GitHub 存储库](https://github.com/Azure/azure-functions-core-tools/blob/v1.x/README.md#installing)以了解详细信息。
+
+# <a name="macos"></a>[macOS](#tab/macos/v4)
 
 以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
 
@@ -75,16 +119,39 @@ Azure Functions Core Tools 当前依靠 [Azure CLI](/cli/azure/install-azure-cli
 
 1. 安装 Core Tools 包：
 
-    ##### <a name="v3x-recommended"></a>v3.x（推荐）
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@4
+    # if upgrading on a machine that has 2.x or 3.x installed:
+    brew link --overwrite azure-functions-core-tools@4
+    ```
+    
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 macOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+
+# <a name="macos"></a>[macOS](#tab/macos/v3)
+
+以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
+
+1. 安装 [Homebrew](https://brew.sh/)（如果尚未安装）。
+
+1. 安装 Core Tools 包：
 
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools@3
-    # if upgrading on a machine that has 2.x installed
+    # if upgrading on a machine that has 2.x installed:
     brew link --overwrite azure-functions-core-tools@3
     ```
     
-    ##### <a name="v2x"></a>v2.x
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 macOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+
+# <a name="macos"></a>[macOS](#tab/macos/v2)
+
+以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
+
+1. 安装 [Homebrew](https://brew.sh/)（如果尚未安装）。
+
+1. 安装 Core Tools 包：
 
     ```bash
     brew tap azure/functions
@@ -93,59 +160,43 @@ Azure Functions Core Tools 当前依靠 [Azure CLI](/cli/azure/install-azure-cli
     
 1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 macOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
-# <a name="linux"></a>[Linux](#tab/linux)
+# <a name="macos"></a>[macOS](#tab/macos/v1)
 
-以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
+macOS 不支持 1.x 版 Core Tools。 在 macOS 上使用版本 2.x 或更高版本。
 
-1. 安装 Microsoft 包存储库 GPG 密钥，以验证包完整性：
+# <a name="linux"></a>[Linux](#tab/linux/v4)
 
-    ```bash
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-    ```
+[!INCLUDE [functions-core-tools-linux-install](../../includes/functions-core-tools-linux-install.md)]
 
-1. 在进行 APT 更新之前，设置 APT 源列表。
-
-    ##### <a name="ubuntu"></a>Ubuntu
-
-    ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
-    ```
-
-    ##### <a name="debian"></a>Debian
-
-    ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
-    ```
-
-1. 查看 `/etc/apt/sources.list.d/dotnetdev.list` 文件以获取下面列出的相应 Linux 版本字符串之一：
-
-    | Linux 分发版 | 版本 |
-    | --------------- | ----------- |
-    | Debian 10 | `buster`  |
-    | Debian 9  | `stretch` |
-    | Ubuntu 20.04    | `focal`     |
-    | Ubuntu 19.04    | `disco`     |
-    | Ubuntu 18.10    | `cosmic`    |
-    | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17.04    | `zesty`     |
-    | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
-
-1. 启动 APT 源更新：
+5. 安装 Core Tools 包：
 
     ```bash
     sudo apt-get update
+    sudo apt-get install azure-functions-core-tools-4
     ```
 
-1. 安装 Core Tools 包：
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
-    ##### <a name="v3x-recommended"></a>v3.x（推荐）
+
+# <a name="linux"></a>[Linux](#tab/linux/v3)
+
+[!INCLUDE [functions-core-tools-linux-install](../../includes/functions-core-tools-linux-install.md)]
+
+5. 安装 Core Tools 包：
+
     ```bash
     sudo apt-get update
     sudo apt-get install azure-functions-core-tools-3
     ```
-    
-    ##### <a name="v2x"></a>v2.x
+
+1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+
+# <a name="linux"></a>[Linux](#tab/linux/v2)
+
+[!INCLUDE [functions-core-tools-linux-install](../../includes/functions-core-tools-linux-install.md)]
+
+5. 安装 Core Tools 包：
+
     ```bash
     sudo apt-get update
     sudo apt-get install azure-functions-core-tools-2
@@ -153,11 +204,22 @@ Azure Functions Core Tools 当前依靠 [Azure CLI](/cli/azure/install-azure-cli
 
 1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
+
+# <a name="linux"></a>[Linux](#tab/linux/v1)
+
+Linux 不支持 1.x 版 Core Tools。 在 Linux 上使用版本 2.x 或更高版本。
+
 ---
 
-### <a name="version-1x"></a>版本 1.x
+## <a name="changing-core-tools-versions"></a>更改 Core Tools 版本
 
-如果需要安装 Core Tools 版本 1.x（只能在 Windows 上运行），请参阅 [GitHub 存储库](https://github.com/Azure/azure-functions-core-tools/blob/v1.x/README.md#installing)以了解详细信息。
+更改为不同版本的 Core Tools 时，应使用与原始安装相同的包管理器移动到不同的包版本。 例如，如果使用 npm 安装了 Core Tools 版本 2.x，则应使用以下命令升级到版本 3.x：
+
+```bash
+npm install -g azure-functions-core-tools@3 --unsafe-perm true
+```
+
+如果已使用 Windows 安装程序 (MSI) 在 Windows 上安装 Core Tools，则应在安装其他版本之前从“添加/删除程序”中卸载旧版本。
 
 ## <a name="create-a-local-functions-project"></a>创建本地 Functions 项目
 

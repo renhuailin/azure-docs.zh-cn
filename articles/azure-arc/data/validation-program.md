@@ -9,12 +9,12 @@ author: MikeRayMSFT
 ms.author: mikeray
 description: 介绍适用于已启用 Azure Arc 的数据服务的 Kubernetes 发行版验证程序。
 keywords: Kubernetes、Arc、Azure、K8s、验证、数据服务、SQL 托管实例
-ms.openlocfilehash: 1935648b2d3de48aecf9878865f377c41c8498cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 90158be8a28aae08cbc377aa776947096597a601
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778434"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273830"
 ---
 # <a name="azure-arc-enabled-data-services-kubernetes-validation"></a>已启用 Azure Arc 的数据服务 Kubernetes 验证
 
@@ -31,7 +31,7 @@ ms.locfileid: "121778434"
 
 ### <a name="dell"></a>Dell
 
-|解决方案和版本 | Kubernetes 版本 | 已启用 Azure Arc 的数据服务版本 | SQL 引擎版本 | 超大规模 PostgreSQL 版本
+|解决方案和版本 | Kubernetes 版本 | 已启用 Azure Arc 的数据服务版本 | SQL Server 版本 | 超大规模 PostgreSQL 版本
 |-----|-----|-----|-----|-----|
 | Dell EMC PowerFlex |1.19.7|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) | |
 | PowerFlex 版本 3.6 |1.19.7|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) | |
@@ -65,7 +65,7 @@ ms.locfileid: "121778434"
 
 ## <a name="data-services-validation-process"></a>数据服务验证过程
 
-已启用 Sonobuoy Arc 的数据服务插件在 Kubernetes 群集上自动预配和测试已启用 Azure Arc 的数据服务。
+已启用 Azure Arc 的 Sonobuoy 数据服务插件在 Kubernetes 群集上自动预配和测试已启用 Azure Arc 的数据服务。
 
 ### <a name="prerequisites"></a>先决条件
 

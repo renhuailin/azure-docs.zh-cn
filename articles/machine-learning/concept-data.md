@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何通过 Azure 机器学习数据存储和数据集安全地连接到 Azure 上的数据存储。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b439f65f2807d2d076363938169631651b85d20
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503583"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430148"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
@@ -116,7 +116,7 @@ Azure 机器学习数据集不是你的数据的副本。 创建数据集时，�
 
 Azure 机器学习提供了一个中心位置，用于创建、管理和监视标签项目。 标记项目有助于协调数据、标签和团队成员，使你能够更有效地管理标记任务。 当前支持的任务包括图像分类（多标签或多类）以及使用边界框的对象标识。
 
-创建[数据标记项目](how-to-create-labeling-projects.md)，并输出可在机器学习试验中使用的数据集。
+创建[图像标记项目](how-to-create-image-labeling-projects.md)或[文本标记项目](how-to-create-text-labeling-projects.md)，并输出数据集以用于机器学习试验。
 
 <a name="drift"></a>
 

@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: eef2a1eb5f17864074ac346ac7a89a59d1d59778
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 8c05b77a77bbcbfc977dadb22151f0086001b859
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037285"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359457"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Azure 机器学习跨云区域的功能可用性
 
@@ -80,7 +80,7 @@ ms.locfileid: "123037285"
 | [Visual Studio Code 集成](how-to-setup-vs-code.md)                                             | 公共预览版       | 是                 | 是          |
 | [事件网格集成](how-to-use-event-grid.md)                                                     | 公共预览版       | 是                 | 是          |
 | [将 Azure 流分析与 Azure 机器学习集成](../stream-analytics/machine-learning-udf.md)               | 公共预览版       | 是                 | 是          |
-| **[标记](how-to-create-labeling-projects.md)** |   | | |
+| 标记[图像](how-to-create-image-labeling-projects.md)和[文本](how-to-create-text-labeling-projects.md) |   | | |
 | 标记项目管理门户                                        | GA                   | YES                | YES         |
 | 标记工具门户                                                            | GA                   | YES                | YES         |
 | 使用私人劳动力进行标记                                          | GA                   | YES                | YES         |
@@ -113,8 +113,8 @@ ms.locfileid: "123037285"
 | 所有关联资源/服务的放置  | YES | YES |  |
 | 静态加密和传输中加密。                                                 | YES | YES |  |
 | 对计算资源的 Root 和 SSH 访问。                                          | YES | YES |  |
-| 维护已部署系统（实例、终结点等）的安全性，包括终结点保护、修补和日志记录 |  PARTIAL|  PARTIAL |VNet 后面的 ACI 目前不可用 |                                  
-| 控制（禁用/限制/约束）ACI/AKS 集成的使用                    | PARTIAL| PARTIAL |VNet 后面的 ACI 目前不可用|
+| 维护已部署系统（实例、终结点等）的安全性，包括终结点保护、修补和日志记录 |  PARTIAL|  PARTIAL |VNet 后的 ACI 当前不可用 |                                  
+| 控制（禁用/限制/约束）ACI/AKS 集成的使用                    | PARTIAL| PARTIAL |VNet 后的 ACI 当前不可用|
 | Azure 基于角色的访问控制 (Azure RBAC) - 自定义角色创建                           | YES | YES |  |
 | 控制对 ML 服务使用的 ACR 映像的访问（Azure 提供/维护的与自定义的）  |PARTIAL|  PARTIAL |  |
 | **机器学习服务常规使用情况** |  | | |
@@ -228,7 +228,7 @@ ms.locfileid: "123037285"
 
 * 示例笔记本在需要访问公共数据的情况下可能无法使用。
 * IP 地址范围：[所需的公共 Internet 访问](how-to-secure-training-vnet.md#required-public-internet-access)说明中使用的 CLI 命令不会返回 IP 范围。 请改用[适用于 Azure 中国版的 Azure IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062)。
-* 目前，启用了专用终结点的工作区不支持 Azure 机器学习计算实例预览版，但在下一次将服务扩展部署到所有 AML 区域时，会支持 CI。
+* 目前，启用了专用终结点的工作区中不支持 Azure 机器学习计算实例 (CI) 预览版，但在下一次将服务扩展部署到所有 AML 区域时，会支持 CI。
 
 ## <a name="next-steps"></a>后续步骤
 

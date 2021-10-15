@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac4a35b5a73cb87e3e7962729fdccd89c5f82c57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d7b5505092e2dfe32624545128be4ce4dbb3459
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729850"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278930"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 
@@ -58,7 +58,7 @@ SAS 令牌的格式如下：
 
 有关创建 SAS 令牌的代码示例，请参阅[安全令牌](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)。
 
-Azure IoT C SDK 支持创建对称密钥证明的安全令牌。 有关使用 Azure IoT C SDK 来证明单个注册的示例，请参阅[使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)。
+Azure IoT C SDK 支持创建对称密钥证明的安全令牌。 有关使用 Azure IoT C SDK 来证明单个注册的示例，请参阅[预配模拟对称密钥设备](quick-create-simulated-device-symm-key.md)。
 
 
 ## <a name="group-enrollments"></a>组注册
@@ -182,6 +182,6 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 了解对称密钥证明后，请参阅以下文章以了解更多信息：
 
-* [快速入门：使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)
+* [快速入门：预配模拟对称密钥设备](quick-create-simulated-device-symm-key.md)
 * [了解预配的概念](about-iot-dps.md#provisioning-process)
 * [自动预配入门](./quick-setup-auto-provision.md) 

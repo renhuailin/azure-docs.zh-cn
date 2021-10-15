@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: conceptual
 ms.date: 06/29/2021
 ms.author: allensu
-ms.openlocfilehash: afaee074fcfda1713031468a18039aac8aa398ca
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: dfd00b0eb924c13cc68dbf0d6d1b1833c3ad7893
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297057"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236608"
 ---
 # <a name="what-is-virtual-network-nat"></a>什么是虚拟网络 NAT？
 
@@ -120,6 +120,7 @@ NAT 默认是区域性的。 创建[可用性区域](../../availability-zones/az
 * NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。 基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
 * 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。  NAT 不能部署在具有 IPv6 前缀的子网中。
 * NAT 不能跨多个虚拟网络。
+* NAT 不能部署在[网关子网](../../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsub)中
 
 ## <a name="next-steps"></a>后续步骤
 

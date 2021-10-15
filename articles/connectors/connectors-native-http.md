@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: 10c946010fa3caba14130c3c7055c711323ad93c
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: c1352fe61b8a663371719100aa86806da0791f20
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110498285"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359350"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
@@ -128,19 +128,19 @@ ms.locfileid: "110498285"
 
 如果你在单租户 Azure 逻辑应用中具有“逻辑应用(标准)”资源，并想要将 HTTP 操作用于以下任一身份验证类型，请确保完成相应身份验证类型的额外设置步骤。 否则，调用会失败。
 
-* [TSL/SSL 证书](#tsl-ssl-certificate-authentication)：添加应用设置 `WEBSITE_LOAD_ROOT_CERTIFICATES`，并为 TSL/SSL 证书提供指纹。
+* [/SSL 证书](#tls-ssl-certificate-authentication)：添加应用设置 `WEBSITE_LOAD_ROOT_CERTIFICATES`，并为 TLS/SSL 证书提供指纹。
 
 * [客户端证书或凭据类型为“证书”的 Azure Active Directory 开放式身份验证 (Azure AD OAuth)](#client-certificate-authentication)：添加应用设置 `WEBSITE_LOAD_USER_PROFILE`，并将值设置为 `1`。
 
-<a name="tsl-ssl-certificate-authentication"></a>
+<a name="tls-ssl-certificate-authentication"></a>
 
-### <a name="tslssl-certificate-authentication"></a>TSL/SSL 证书身份验证
+### <a name="tlsssl-certificate-authentication"></a>TLS/SSL 证书身份验证
 
 1. 在逻辑应用资源的应用设置中，[添加或更新应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings) `WEBSITE_LOAD_ROOT_CERTIFICATES`。
 
-1. 对于设置值，请提供 TSL/SSL 证书的指纹作为受信任的根证书。
+1. 对于设置值，请提供 TLS/SSL 证书的指纹作为受信任的根证书。
 
-   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TLS/SSL-certificate>"`
 
 例如，如果使用 Visual Studio Code，请执行以下步骤：
 
@@ -154,7 +154,7 @@ ms.locfileid: "110498285"
       "Values": {
          <...>
          "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TLS/SSL-certificate>",
          <...>
       }
    }
@@ -256,7 +256,9 @@ ms.locfileid: "110498285"
 
 ## <a name="asynchronous-request-response-behavior"></a>异步请求-响应行为
 
-默认情况下，Azure 逻辑应用中所有基于 HTTP 的操作都遵循标准[异步操作模式](/azure/architecture/patterns/async-request-reply)。 该模式指定在 HTTP 操作调用某个终结点、服务、系统或 API 或向其发送请求后，接收方立即返回[“202 已接受”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)响应。 此代码确认接收方已接受请求，但尚未完成处理。 响应可以包括一个指定了 URL 和刷新 ID 的 `location` 标头，调用方可以使用该标头来轮询或检查异步请求的状态，直到接收方停止处理并返回[“200 正常”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)成功响应或其他非 202 响应。 但是，调用方不必等待请求完成处理即可继续运行下一操作。 有关详细信息，请参阅[异步微服务集成强制实施微服务自治](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)。
+对于多租户和单租户 Azure 逻辑应用中的 *有状态* 工作流，所有基于 HTTP 的操作都遵循标准[异步操作模式](/azure/architecture/patterns/async-request-reply)作为默认行为。 该模式指定在 HTTP 操作调用某个终结点、服务、系统或 API 或向其发送请求后，接收方立即返回[“202 已接受”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)响应。 此代码确认接收方已接受请求，但尚未完成处理。 响应可能包括一个 `location` 标头，该标头指定的 URI 和刷新 ID 可供调用方用于轮询或检查异步请求的状态，直到接收方停止处理并返回[“200 正常”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)成功响应或其他非 202 响应。 但是，调用方不必等待请求完成处理即可继续运行下一操作。 有关详细信息，请参阅[异步微服务集成强制实施微服务自治](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)。
+
+对于单租户 Azure 逻辑应用中的无状态工作流，基于 HTTP 的操作不使用异步操作模式。 相反，它们仅同步运行，按原样返回[“202 ACCEPTED”](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)响应，然后继续执行工作流的下一步。 如果响应包含 `location` 标头，则无状态工作流不会轮询指定的 URI 来检查状态。 若要遵循标准[异步操作模式](/azure/architecture/patterns/async-request-reply)，请改用有状态工作流。
 
 * 在逻辑应用设计器中，HTTP 操作（而不是触发器）有一个默认启用的 **异步模式** 设置。 此设置指定调用方不等待处理完成即可继续执行下一操作，但需继续检查状态直到处理停止。 如果禁用，则此设置指定调用方需等待处理完成才能继续执行下一操作。
 
@@ -306,6 +308,22 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 * 将 HTTP 操作替换为 [HTTP Webhook 操作](../connectors/connectors-native-webhook.md)，后者会等待接收方在请求完成处理后以状态和结果做出响应。
 
 <a name="disable-location-header-check"></a>
+
+### <a name="set-up-interval-between-retry-attempts-with-the-retry-after-header"></a>使用 Retry-After 标头设置重试尝试之间的间隔
+
+要指定重试尝试之间的秒数，可以将 `Retry-After` 标头添加到 HTTP 操作响应。 例如，如果目标端点返回 `429 - Too many requests` 状态码，则可以指定更长的重试间隔。 `Retry-After` 标头也适用于 `202 - Accepted` 状态码。
+
+以下是一个相同示例，显示包含 `Retry-After` 的 HTTP 操作响应：
+
+```json
+{
+    "statusCode": 429,
+    "headers": {
+        "Retry-After": "300"
+    }
+}
+```
+
 
 ## <a name="disable-checking-location-headers"></a>禁止检查位置标头
 

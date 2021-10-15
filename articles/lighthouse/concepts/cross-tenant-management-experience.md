@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure Lighthouse 在许多 Azure 服务中启用和增强跨租户体验。
-ms.date: 07/20/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: c57afabe5f3aaf49ef1f1868c04c60af4298381d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a6ad75df4e22f56c8bcb0f28586c736fc6b04a49
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440903"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349778"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -101,7 +101,7 @@ Azure Lighthouse 可更灵活地管理多个客户的资源，而无需登录到
 - [日志分析](../../azure-monitor/logs/service-providers.md)：从多个租户中的远程工作区查询数据（请注意，必须在同一租户中创建用于访问客户租户中工作区数据的自动化帐户）
 - 在客户租户中创建、查看和管理[指标警报](../../azure-monitor/alerts/alerts-metric.md)、[日志警报](../../azure-monitor/alerts/alerts-log.md)和[活动日志警报](../../azure-monitor/alerts/alerts-activity-log.md)
 - 在客户租户中创建警报，通过 Webhook 在管理租户中触发自动化，例如 Azure Automation Runbook 或 Azure Functions
-- 在客户租户中创建[诊断设置](../..//azure-monitor/essentials/diagnostic-settings.md)，以便将资源日志发送到管理租户中的工作区
+- 在客户租户中创建的工作区中创建[诊断设置](../..//azure-monitor/essentials/diagnostic-settings.md)，以便将资源日志发送到管理租户中的工作区
 - 对于 SAP 工作负荷，[使用跨客户租户的聚合视图监视 SAP 解决方案指标](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure 网络](../../networking/fundamentals/networking-overview.md)：

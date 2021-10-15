@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.openlocfilehash: 027c1f44d756494432a076ec32f06e627f916b99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 84d0e0b509505e6d56e39294b3e2819e4b03e024
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128553725"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350016"
 ---
-# <a name="transform-xml-for-workflows-in-azure-logic-apps"></a>在 Azure 逻辑应用中转换工作流的 XML
+# <a name="transform-xml-in-workflows-with-azure-logic-apps"></a>使用 Azure 逻辑应用在工作流中转换 XML
 
 在企业集成企业到企业 (B2B) 应用场景中，可能需要在不同格式之间转换 XML。 逻辑应用工作流可以使用“转换 XML”操作和预定义[映射](logic-apps-enterprise-integration-maps.md)来转换XML。 例如，假设你从使用 YearMonthDay 日期格式 (YYYYMMDD) 的客户那里定期接收 B2B 订单或发票。 但是，你的组织使用的是 MonthDayYear 日期格式 (MMDDYYYY)。 在将订单或发票详细信息存储在客户活动数据库中之前，可以创建并使用一个映射，将 YearMonthDay 格式转换为 MonthDayYear 格式。
 

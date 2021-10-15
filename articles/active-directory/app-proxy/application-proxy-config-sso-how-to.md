@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere, asteen
-ms.openlocfilehash: 8bf923e6793b55b4655c4c2133de1cda10216e18
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 33276b986f951a1ad343a25229b2ee23c33e05b8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186136"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232387"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何配置应用程序代理应用程序的单一登录
 
@@ -32,13 +32,13 @@ ms.locfileid: "108186136"
 ## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>为应用程序代理应用程序配置单一登录模式
 配置特定类型的单一登录。 登录方法的分类基于后端应用程序使用的身份验证类型。 应用代理应用程序支持三种类型的登录：
 
--   **基于密码的登录**：基于密码的登录可用于任何使用用户名和密码字段进行登录的应用程序。 若要了解配置步骤，请参阅[配置 Azure AD 库应用程序的密码单一登录](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)。
+-   基于密码的登录：基于密码的登录可用于任何使用用户名和密码字段进行登录的应用程序。 若要了解配置步骤，请参阅[配置 Azure AD 库应用程序的密码单一登录](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)。
 
 -   **集成 Windows 身份验证**：对于使用集成 Windows 身份验证 (IWA) 的应用程序，通过 Kerberos 约束委派 (KCD) 启用单一登录。 此方法在 Active Directory 中赋予应用程序代理连接器权限来模拟用户，并代表用户发送和接收令牌。 关于配置 KCD 的详细信息，可以在[通过 KCD 启用单一登录文档](application-proxy-configure-single-sign-on-with-kcd.md)中找到。
 
--   **基于标头的登录**：基于标头的登录用于通过 HTTP 标头提供单一登录功能。 若要了解详细信息，请查看[基于标头的单一登录](application-proxy-configure-single-sign-on-with-headers.md)。
+-   基于标头的登录：基于标头的登录用于通过 HTTP 标头提供单一登录功能。 若要了解详细信息，请查看[基于标头的单一登录](application-proxy-configure-single-sign-on-with-headers.md)。
 
--   **SAML 单一登录**：Azure AD 使用 SAML 单一登录通过用户的 Azure AD 帐户对应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。 若要了解如何设置 SAML 单一登录，请查看[使用应用程序代理的 SAML 单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
+-   SAML 单一登录：Azure AD 使用 SAML 单一登录通过用户的 Azure AD 帐户对应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。 若要了解如何设置 SAML 单一登录，请查看[通过应用程序代理进行单一登录时使用的 SAML](application-proxy-configure-single-sign-on-on-premises-apps.md)。
 
 可通过以下方式找到这些选项：转到“企业应用程序”中的应用程序，打开左侧菜单上的“单一登录”页。 请注意，如果应用程序是在旧门户中创建，可能看不到其中某些选项。
 
@@ -50,4 +50,4 @@ ms.locfileid: "108186136"
 - [使用应用程序代理通过密码存储进行单一登录](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [使用应用程序代理通过 Kerberos 约束委派进行单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
 - [使用应用程序代理通过基于标头的身份验证进行单一登录](application-proxy-configure-single-sign-on-with-headers.md) 
-- [使用应用程序代理的 SAML 单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
+- [通过应用程序代理进行单一登录时使用的 SAML](application-proxy-configure-single-sign-on-on-premises-apps.md)。

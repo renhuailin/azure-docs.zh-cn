@@ -3,12 +3,12 @@ title: 管理 Azure 文件共享备份
 description: 本文介绍了管理和监视由 Azure 备份所备份的 Azure 文件共享时需要执行的常见任务。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 973c28b2c8caac4d2acda9e2cd976f9ceb8c387c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88757619"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534037"
 ---
 # <a name="manage-azure-file-share-backups"></a>管理 Azure 文件共享备份
 
@@ -27,6 +27,10 @@ ms.locfileid: "88757619"
 1. 选择“确定”后，“备份作业”窗格会列出所有作业的状态。 选择与要监视的文件共享对应的工作负荷名称。
 
    ![工作负荷名称](./media/manage-afs-backup/workload-name.png)
+
+## <a name="monitor-using-azure-backup-reports"></a>使用 Azure 备份报告进行监视
+
+Azure 备份提供使用 [Azure Monitor 日志](../azure-monitor/logs/log-analytics-tutorial.md)和 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)的报告解决方案。这些资源可帮助你获取有关备份的丰富见解。 可以利用这些报告来获取有关 Azure 文件存储备份项、项级别作业的见解和活动策略的详细信息。 使用备份报告中提供的“通过电子邮件发送报告”功能，可以创建自动化任务以通过电子邮件接收定期报告。[了解](/azure/backup/configure-reports#get-started)如何配置和查看 Azure 备份报告。
 
 ## <a name="create-a-new-policy"></a>创建新策略
 

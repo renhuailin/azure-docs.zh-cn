@@ -1,14 +1,14 @@
 ---
 title: 通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 description: 已启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展向非 Azure VM 提供部署后配置和自动化任务。
-ms.date: 08/24/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: bc19255d7e234b3ca4ada1bc2f9356dc52b3e4dc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d79bae8b84a9e776e64dbe5d93038f88db5bb04c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807253"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354520"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 
@@ -64,6 +64,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 |用于 VM 的 Azure Monitor（见解） |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [适用于 Windows 的 Dependency 代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault 证书同步 | Microsoft.Azure.Key.Vault |KeyVaultForWindows | [适用于 Windows 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-windows.md) |
 |Azure Monitor 代理 |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[安装 Azure Monitor 代理（预览版）](../../azure-monitor/agents/azure-monitor-agent-install.md) |
+|Azure 自动化混合 Runbook 辅助角色扩展（预览版） |Microsoft.Compute |HybridWorkerForWindows |[部署基于扩展的用户混合 Runbook 辅助角色](../../automation/extension-based-hybrid-runbook-worker-install.md)，以在本地执行 Runbook。 |
 
 ### <a name="linux-extensions"></a>Linux 扩展
 
@@ -75,8 +76,9 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 |用于 VM 的 Azure Monitor（见解） |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[适用于 Linux 的 Dependency 代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Azure Key Vault 证书同步 | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md) |
 |Azure Monitor 代理 |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[安装 Azure Monitor 代理（预览版）](../../azure-monitor/agents/azure-monitor-agent-install.md) |
+|Azure 自动化混合 Runbook 辅助角色扩展（预览版） |Microsoft.Compute |HybridWorkerForLinux |[部署基于扩展的用户混合 Runbook 辅助角色](../../automation/extension-based-hybrid-runbook-worker-install.md)，以在本地执行 Runbook。|
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 此功能依赖于订阅中的以下 Azure 资源提供程序：
 
@@ -91,7 +93,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 
 适用于 Linux 的 Log Analytics 代理 VM 扩展需要在目标计算机上安装 Python 2.x。
 
-### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault VM 扩展 
+### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault VM 扩展
 
 Key Vault VM 扩展不支持以下 Linux 操作系统：
 

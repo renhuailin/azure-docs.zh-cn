@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 192952747bcc327c87f94d001afe9faf1ed47978
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5d711771bd8302fb6146376afd1fd7b31613dfe5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605337"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236022"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>可使用哪些 Azure 技术和服务来创建 IoT 解决方案？
 
@@ -33,22 +33,9 @@ Azure IoT Central 是完全托管的应用程序平台，可以用来创建自�
 
 作为完全托管的应用程序平台，IoT Central 具有简单且可预测的定价模型。
 
-## <a name="azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器
-
-[Azure IoT 解决方案加速器](https://www.azureiotsolutions.com)是一组可自定义的企业级解决方案。 可以按原样部署这些解决方案，也可以使用开源 Java 或 .NET 源代码开发自定义 IoT 解决方案。
-
-Azure IoT 解决方案加速器可以对 IoT 解决方案进行高级控制。 解决方案加速器包含预生成的用于常见 IoT 方案的解决方案，可以在数分钟内将其部署到 Azure 订阅。 这些方案包括：
-
-* 连接工厂
-* 设备模拟
-
-所有解决方案加速器的开源代码库都在 GitHub 上提供。 下载代码即可根据具体的 IoT 要求来自定义解决方案加速器。
-
-解决方案加速器使用 Azure 服务，例如，必须在 Azure 订阅中管理的 Azure IoT 中心和 Azure 存储。
-
 ## <a name="custom-solutions"></a>自定义解决方案
 
-若要从头构建 IoT 解决方案，或扩展使用 IoT Central 或解决方案加速器创建的解决方案，请使用一项或多项下述 Azure IoT 技术和服务：
+若要从头构建 IoT 解决方案，或扩展使用 IoT Central 创建的解决方案，请使用一项或多项下述 Azure IoT 技术和服务：
 
 ### <a name="devices"></a>设备
 
@@ -56,7 +43,7 @@ Azure IoT 解决方案加速器可以对 IoT 解决方案进行高级控制。 �
 
 你可以根据 [IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)约定进一步简化为设备创建嵌入代码的方式。 IoT 即插即用使解决方案开发人员能够将设备与其解决方案相集成，而无需编写任何嵌入代码。 IoT 即插即用的核心是描述设备功能的设备功能模型架构。  使用设备功能模型生成嵌入设备代码并配置基于云的解决方案，例如 IoT Central 应用程序。
 
-可通过 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 将部分 IoT 工作负载从 Azure 云服务下移至你的设备。 IoT Edge 可降低解决方案中的延迟、减少设备与云的数据交换量并支持脱机方案。 你可通过 IoT Central 和某些解决方案加速器来管理 IoT Edge 设备。
+可通过 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 将部分 IoT 工作负载从 Azure 云服务下移至你的设备。 IoT Edge 可降低解决方案中的延迟、减少设备与云的数据交换量并支持脱机方案。 你可通过 IoT Central 管理 IoT Edge 设备。
 
 [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) 是一个安全的高级应用程序平台，具有针对互连设备的内置通信和安全功能。 它包括一个安全的微控制器单元、一个自定义的基于 linux 的操作系统和一项基于云的安全服务（提供连续的可续订安全性）。
 
@@ -64,7 +51,7 @@ Azure IoT 解决方案加速器可以对 IoT 解决方案进行高级控制。 �
 
 [Azure IoT 中心](../iot-hub/about-iot-hub.md)服务可在数百万个 IoT 设备和一个基于云的解决方案之间实现安全可靠的双向通信。 [Azure IoT 中心设备预配服务](../iot-dps/about-iot-dps.md)是用于 IoT 中心的帮助程序服务。 可以通过此服务将设备以零接触的方式实时预配到适当的 IoT 中心，不需要人为干预。 有了这些功能，客户就可以通过安全且可缩放的方式预配数百万台设备。
 
-IoT 中心是解决方案加速器的核心组件，可以用来克服 IoT 实现难题，例如：
+IoT 中心是核心组件，可以用来克服 IoT 实现难题，例如：
 
 * 大容量设备连接和管理。
 * 大容量遥测引入。

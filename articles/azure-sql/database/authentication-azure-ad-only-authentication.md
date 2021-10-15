@@ -1,19 +1,20 @@
 ---
-title: Azure SQL 中的仅限 Azure Active Directory 身份验证
-description: 本文提供有关 Azure SQL 数据库和 Azure SQL 托管实例中的“仅限 Azure Active Directory (Azure AD) 身份验证”功能的信息。
+title: 仅限 Azure Active Directory 的身份验证
+description: 本文介绍 Azure SQL 数据库和 Azure SQL 托管实例中的“仅限 Azure Active Directory (Azure AD) 的身份验证”功能
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 06/30/2021
-ms.openlocfilehash: eaf4228dead01e970e25f7c8dc533bfbc06db802
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.date: 08/31/2021
+ms.openlocfilehash: 95a3d04ce8af0e83072e214e2b3fac72c78b28c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128509"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669581"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Azure SQL 中的“仅限 Azure AD 身份验证”
 
@@ -33,7 +34,9 @@ ms.locfileid: "113128509"
 
 ## <a name="feature-description"></a>功能描述
 
-启用“仅限 Azure AD 身份验证”时，将在服务器级别禁用 [SQL 身份验证](logins-create-manage.md#authentication-and-authorization)，并阻止基于任何 SQL 身份验证凭据的任何身份验证。 SQL 身份验证用户将无法连接到 Azure SQL 逻辑服务器（包括其所有数据库）。 即使禁用了 SQL 身份验证，拥有适当权限的 Azure AD 帐户也仍可以创建新的 SQL 身份验证登录名和用户。 不允许新建的 SQL 身份验证帐户连接到服务器。 启用“仅限 Azure AD 身份验证”不会删除现有的 SQL 身份验证登录名和用户帐户。 该功能只会阻止这些帐户连接到服务器以及为此服务器创建的任何数据库。
+启用“仅限 Azure AD 身份验证”时，将在服务器级别禁用 [SQL 身份验证](logins-create-manage.md#authentication-and-authorization)，并阻止基于任何 SQL 身份验证凭据的任何身份验证。 SQL 身份验证用户将无法连接到 Azure SQL 数据库（包括其所有数据库）的[逻辑服务器](logical-servers.md)。 即使禁用了 SQL 身份验证，拥有适当权限的 Azure AD 帐户也仍可以创建新的 SQL 身份验证登录名和用户。 不允许新建的 SQL 身份验证帐户连接到服务器。 启用“仅限 Azure AD 身份验证”不会删除现有的 SQL 身份验证登录名和用户帐户。 该功能只会阻止这些帐户连接到服务器以及为此服务器创建的任何数据库。
+
+还可以使用 Azure Policy 强制创建启用了“仅限 Azure AD 的身份验证”功能的服务器。 有关详细信息，请参阅[支持“仅限 Azure AD 的身份验证”的 Azure Policy](authentication-azure-ad-only-authentication-policy.md)。
 
 ## <a name="permissions"></a>权限
 

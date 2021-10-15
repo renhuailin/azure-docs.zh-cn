@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12f41bc6369ab399ccce83d6c694003175a85fa7
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87908255"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229556"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>适用于混合组织的 Azure Active Directory B2B 协作
 
@@ -28,7 +28,7 @@ ms.locfileid: "87908255"
 
 对于使用基于 SAML 的身份验证的应用，可以通过 Azure 门户，使用 Azure AD 应用程序代理向 B2B 用户提供这些应用以进行身份验证。
 
-对于结合 Kerberos 约束委派 (KCD) 使用 Windows 集成身份验证 (IWA) 的应用，还可以使用 Azure AD 代理进行身份验证。 但是，要进行授权，需要在本地 Windows Server Active Directory 中创建一个用户对象。 可以使用两种方法创建表示 B2B 来宾用户的本地用户对象。
+对于结合 Kerberos 约束委派 (KCD) 使用集成 Windows 身份验证 (IWA) 的应用，还可以使用 Azure AD 代理进行身份验证。 但是，要进行授权，需要在本地 Windows Server Active Directory 中创建一个用户对象。 可以使用两种方法创建表示 B2B 来宾用户的本地用户对象。
 
 - 可以使用 Microsoft Identity Manager (MIM) 2016 SP1 和 Microsoft Graph 的 MIM 管理代理。
 - 可以使用 PowerShell 脚本。 （此解决方案不需要 MIM。）

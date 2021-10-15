@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 597bcf9d7654b88cb4a3f9b7df32ea1c7b770da2
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: f1256eb3be414679a84701c6ea96ac9a72d9caa2
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109508436"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236346"
 ---
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
 
@@ -29,7 +29,7 @@ ms.locfileid: "109508436"
 
 ## <a name="secure-device-provisioning-and-authentication"></a>安全的设备预配和身份验证
 
-IoT 解决方案加速器通过以下两种方法保护 IoT 设备：
+IoT 解决方案通过以下两种方法保护 IoT 设备：
 
 * 为每个设备提供唯一标识密钥（安全令牌），设备可使用该密钥与 IoT 中心通信。
 

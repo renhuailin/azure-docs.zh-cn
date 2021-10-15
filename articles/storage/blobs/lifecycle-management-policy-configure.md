@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 507077913a672da6f9572a283367c5713a9d5e39
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e940db4a16963b236fa5230893373da935532761
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603498"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273205"
 ---
 # <a name="configure-a-lifecycle-management-policy"></a>配置生命周期管理策略
 
@@ -220,4 +220,4 @@ az storage account management-policy create \
 ## <a name="see-also"></a>请参阅
 
 - [通过自动管理数据生命周期优化成本](lifecycle-management-overview.md)
-- [Azure Blob 存储的访问层 - 热、冷和存档](storage-blob-storage-tiers.md)
+- [Blob 数据支持热访问层、冷访问层和存档访问层](access-tiers-overview.md)

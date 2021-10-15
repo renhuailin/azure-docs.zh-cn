@@ -1,18 +1,18 @@
 ---
 title: 混合连接
 description: 了解如何在 Azure 应用服务中创建混合连接来访问不同网络中的资源。
-author: ccompy
+author: madsd
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 05/05/2021
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: c8b0377207dc811358db14285a7e287cd7c72525
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 6ebfa0cb7e65ce09178e3b468a1bf766a0379595
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412594"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425821"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接
 
@@ -37,7 +37,7 @@ ms.locfileid: "111412594"
 
 - 应用可以访问本地系统和服务。
 - 该功能不需要可访问 Internet 的终结点。
-- 设置过程快速而轻松。 无需网关
+- 设置过程快速而轻松。 无需网关。
 - 每个混合连接与单个“主机:端口”组合匹配，这非常有利于安全性。
 - 通常不需要在防火墙中开放端口。 连接全部是通过标准 Web 端口建立的。
 - 由于该功能在网络级别运行，它并不知道应用使用的语言以及终结点使用的技术。
@@ -109,7 +109,7 @@ ms.locfileid: "111412594"
 
 ### <a name="pricing"></a>定价 ###
 
-除了要求使用应用服务计划 SKU 外，使用混合连接还需要额外付费。 需要为混合连接使用的每个侦听器付费。 侦听器是混合连接管理器。 如果你有由两个混合连接管理器支持的五个混合连接，则将有 10 个侦听器。 有关详细信息，请参阅[服务总线定价][sbpricing]。
+除了存在应用服务计划 SKU 要求，使用混合连接还会产生额外的成本。 混合连接使用的每个侦听器都要收费。 侦听器是混合连接管理器。 如果你有由两个混合连接管理器支持的五个混合连接，则将有 10 个侦听器。 有关详细信息，请参阅[服务总线定价][sbpricing]。
 
 ## <a name="hybrid-connection-manager"></a>混合连接管理器 ##
 
@@ -195,9 +195,21 @@ Commands:
 
 ## <a name="secure-your-hybrid-connections"></a>保护混合连接 ##
 
-任何在基础 Azure 服务总线中继上有足够权限的用户都可以将现有的混合连接添加到应用服务 Web 应用。 这意味着，如果必须阻止他人重复使用这个相同的混合连接（例如，如果目标资源是一项没有设置任何其他的安全措施来防止未经授权的访问的服务，则必须这样做），则必须锁定对 Azure 服务总线中继的访问。
+任何在基础 Azure 服务总线中继上有足够权限的用户都可以将现有的混合连接添加到应用服务 Web 应用。 这意味着，如果必须阻止其他人重复使用相同的混合连接（例如，当目标资源是没有任何其他安全措施来防止未经授权的访问的服务时），则必须锁定对 Azure 服务总线中继的访问。
 
-可以通过 `Reader` 访问权限来访问中继的任何人都将能够看到混合连接（在尝试通过 Azure 门户将它添加到 Web 应用时），但却无法添加它，因为缺少检索用于建立中继连接的连接字符串的权限。 若要成功添加混合连接，他们必须具有 `listKeys` 权限 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`)。 `Contributor` 角色或者任何其他包含此权限（在中继上）的角色都会允许用户使用混合连接并将其添加到自己的 Web 应用。
+可以通过 `Reader` 访问权限来访问中继的任何人都将能够看到混合连接（在尝试通过 Azure 门户将它添加到 Web 应用时），但却无法添加它，因为缺少检索用于建立中继连接的连接字符串的权限。 若要成功添加混合连接，他们必须具有 `listKeys` 权限 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`)。 `Contributor` 角色或中继上任何其他包含此权限的角色都会允许用户使用混合连接并将其添加到自己的 Web 应用。
+
+## <a name="manage-your-hybrid-connections"></a>管理混合连接 ##
+
+如果需要更改混合连接的终结点主机或端口，请执行以下步骤：
+
+1. 通过选择连接并选择“混合连接详细信息”窗口左上角的“删除”，从本地计算机上的混合连接管理器中删除混合连接。
+1. 通过导航到应用服务“网络”页中的“混合连接”，断开应用服务中的混合连接。
+1. 导航到需要更新的终结点的中继，然后在左侧导航菜单中的“实体”下选择“混合连接”。
+1. 选择要更新的混合连接，然后在左侧导航菜单中的“设置”下选择“属性”。
+1. 进行更改，然后点击顶部的“保存更改”。
+1. 返回应用服务的“混合连接”设置，并再次添加混合连接。 确保终结点按预期进行更新。 如果在列表中看不到混合连接，请在 5-10 分钟内刷新。
+1. 返回到本地计算机上的混合连接管理器，并再次添加连接。
 
 ## <a name="troubleshooting"></a>故障排除 ##
 
@@ -217,7 +229,6 @@ Commands:
 在应用服务中，可以通过高级工具 (Kudu) 控制台调用 tcpping 命令行工具。 此工具可以告知你是否能够访问 TCP 终结点，但不会告知你是否能够访问混合连接终结点。 在控制台中针对混合连接终结点使用此工具时，只能确认混合连接是否使用了“主机:端口”组合。  
 
 如果你的终结点有命令行客户端，则可以从应用控制台测试连接。 例如，可以使用 curl 测试对 Web 服务器终结点的访问。
-
 
 <!--Links-->
 [HCService]: /azure/service-bus-relay/relay-hybrid-connections-protocol/

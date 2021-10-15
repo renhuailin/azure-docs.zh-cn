@@ -6,13 +6,13 @@ ms.service: mysql
 ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
-ms.date: 08/17/2021
-ms.openlocfilehash: cfbff4be8048090ec606fd8640281dccd17fe084
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/29/2021
+ms.openlocfilehash: 377c9fc994c4d26b67791e3eb525c7fba75a9d78
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128597999"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388881"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - 灵活服务器（预览版）有哪些新增功能？
 
@@ -21,6 +21,40 @@ ms.locfileid: "128597999"
 [Azure Database for MySQL - 灵活服务器](./overview.md#azure-database-for-mysql---flexible-server-preview)是一种部署模式，已设计为在数据库管理功能和配置设置方面提供比单一服务器部署模式更高的控制粒度和灵活性。 该服务目前支持 MySQL 5.7 和 8.0 的社区版本。
 
 本文汇总了自 2021 年 1 月至今 Azure Database for MySQL - 灵活服务器的新版本和功能。 列表按时间倒序排列，最新更新排在最前。
+## <a name="october-2021"></a>2021 年 10 月
+- **创建只读副本时的可用性区域选择**
+
+    创建只读副本时，可以选择所选的可用性区域位置。 可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域中独特的物理位置。 [了解详细信息](../flexible-server/concepts-read-replicas.md)
+
+- **Azure Database for MySQL 中的只读副本 - 可突发 SKU 将不再提供灵活服务器**
+    
+    你将无法在可突发层服务器上创建新的或维护现有的只读副本。 鉴于为可突发 SKU 层提供良好的查询和开发体验，将不再支持创建和维护可突发定价层中的服务器的只读副本。 
+
+    如果现有的 Azure Database for MySQL - 灵活服务器已启用只读副本，则必须将服务器扩展到“常规用途”或“内存优化”定价层，或者在 60 天内删除只读副本。 在 60 天后，虽然你可以继续使用主服务器进行读写操作，但将停止复制到只读副本服务器。 对于新创建的服务器，只读副本选项仅适用于“常规用途”和“内存优化”定价层。  
+
+ 
+
+## <a name="september-2021"></a>2021 年 9 月
+
+此版本的 Azure Database for MySQL - 灵活服务器包含以下更新。
+
+- **另外三个 Azure 区域中的可用性**
+
+  公共预览版的 Azure Database for MySQL - 灵活服务器现已在以下 Azure 区域推出：
+
+  - 英国西部
+  - 加拿大东部
+  - 日本西部
+
+- **Bug 修复**
+
+  在以下区域中修复了同区域高可用性创建：
+
+  - 印度中部
+  - 东亚
+  - 韩国中部
+  - 南非北部
+  - 瑞士北部
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -48,7 +82,7 @@ ms.locfileid: "128597999"
 
 - validate_password 和 caching_sha2_password 插件在个人预览版中可用。
 
-  灵活服务器现在支持在个人预览版中启用 validate_password 和 caching_sha2_password 插件。 请发送电子邮件至 AskAzureDBforMySQL@service.microsoft.com
+  灵活服务器现在支持在个人预览版中启用 validate_password 和 caching_sha2_password 插件。 请发送电子邮件到 AskAzureDBforMySQL@service.microsoft.com 与我们联系
 
 - **另外四个 Azure 区域中的可用性**
 
@@ -64,7 +98,7 @@ ms.locfileid: "128597999"
   - 在区域冗余高可用性服务器故障转移之后，如果使用 SSL 和 ssl_mode VERIFY_IDENTITY，客户端将无法连接到服务器。 可以通过将 ssl_mode 用作 VERIFY_CA 来缓解此问题。
   - 无法在以下区域创建相同区域高可用性服务器：印度中部、东亚、韩国中部、南非北部、瑞士北部。
   - 在极少数情况下和高可用性故障转移后，主服务器将处于 read_only 模式。 在“服务器参数”边栏选项卡中将“read_only”更新为“OFF”可解决此问题。
-  - 在“计算+存储”边栏选项卡中成功缩放计算后，IOPS 将重置为 SKU 默认值。 客户可以在计算部署和随后的 IOPS 重置后，在“计算+存储”边栏选项卡中将 IOPS 重新缩放为所需值（先前设置），从而绕过此问题。
+  - 在“计算+存储”边栏选项卡中成功缩放计算后，IOPS 将重置为 SKU 默认值。 客户可以在计算部署和随后的 IOPS 重置后，在“计算+存储”边栏选项卡中将 IOPS 重新缩放为所需值（先前设置），从而解决此问题。
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -204,7 +238,7 @@ ms.locfileid: "128597999"
 
 - 若要联系 Azure 支持，请[从 Azure 门户提交票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - 若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
-- 要提供反馈或请求新功能，请发送电子邮件至 AskAzureDBforMySQL@service.microsoft.com。
+- 若要提供反馈或请求新功能，请发送电子邮件至 AskAzureDBforMySQL@service.microsoft.com。
 
 ## <a name="next-steps"></a>后续步骤
 

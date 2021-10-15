@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 08/09/2021
-ms.openlocfilehash: c94ca45d77ccab14c7e10ac831aa9d59ee0e0e2d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c99d3dde29edbd0e43f883ff9b31e054cea1a720
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763284"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278873"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -150,7 +150,7 @@ Azure Sentinel 信息模型 (ASIM) 现在支持文件事件规范化架构，该
 - [数据收集最佳做法](best-practices-data.md)
 
 > [!TIP]
-> 你可以在相关的概念和操作方法文章中找到我们在文档中添加的更多指南。 有关详细信息，请参阅[其他最佳做法参考](best-practices.md#additional-best-practice-references)。
+> 你可以在相关的概念和操作方法文章中找到我们在文档中添加的更多指南。 有关详细信息，请参阅[最佳做法参考](best-practices.md#best-practice-references)。
 >
 
 ## <a name="july-2021"></a>2021 年 7 月

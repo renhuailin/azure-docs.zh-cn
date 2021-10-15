@@ -4,13 +4,13 @@ description: 描述在 Bicep 文件中用于处理日期的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 45e0180a11209b39b4c37f16f9940686c042ee89
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 0eb995db6584dd056fa0b1563aec8c117fddeb66
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794113"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357263"
 ---
 # <a name="date-functions-for-bicep"></a>Bicep 的日期函数
 
@@ -22,7 +22,9 @@ ms.locfileid: "124794113"
 
 向基础值加上一个持续时间。 需要 ISO 8601 格式。
 
-### <a name="parameters"></a>parameters
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -85,6 +87,8 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 `utcNow(format)`
 
 以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (`yyyyMMddTHHmmssZ`) 格式。 **此函数只能在参数的默认值中使用。**
+
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>参数
 

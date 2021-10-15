@@ -3,12 +3,12 @@ title: AuthN/AuthZ 中的 OAuth 标记
 description: 了解在应用服务中使用内置身份验证和授权时，如何检索令牌和刷新令牌以及扩展会话。
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: 820ab9fe75bf960c5991187cfef25ace32b6995c
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: f158f9f76820635a65737b75f3c016ff67a3a92a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371179"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352081"
 ---
 # <a name="work-with-oauth-tokens-in-azure-app-service-authentication"></a>在 Azure 应用服务身份验证中使用 OAuth 标记
 
@@ -41,7 +41,7 @@ ms.locfileid: "114371179"
 - **Google**：将一个 `access_type=offline` 查询字符串参数追加到 `/.auth/login/google` API 调用。 如果使用移动应用 SDK，可将该参数添加到 `LogicAsync` 重载之一（请参阅 [Google 刷新令牌](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)）。
 - **Facebook**：不提供刷新令牌。 生存期较长的令牌在 60 天后过期（请参阅 [Facebook 访问令牌的过期和延期](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)）。
 - **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/authentication/faq)）。
-- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
+- Microsoft：在 [https://resources.azure.com](https://resources.azure.com) 中，执行以下步骤：
     1. 在页面顶部，选择“读/写”。
     2. 在左侧浏览器中，导航到“subscriptions > **\<subscription\_name_** > resourceGroups > ****\<resource\_group\_name> > providers > Microsoft.Web > sites > **_**\<app\_name> > config > authsettingsV2” __ 。
     3. 单击 **“编辑”** 。
@@ -51,16 +51,16 @@ ms.locfileid: "114371179"
         "identityProviders": {
           "azureActiveDirectory": {
             "login": {
-              "loginParameters": ["scope=openid offline_access"]
+              "loginParameters": ["scope=openid profile email offline_access"]
             }
           }
         }
         ```
 
     5. 单击“放置”。
-
-> [!NOTE]
-> 如果为应用程序配置了“身份验证(经典)”边栏选项卡，请不要导航到 [https://resources.azure.com](https://resources.azure.com) 中的“authSettingsV2”部分，而是导航到“authsettings” 。 然后编辑设置 ```"additionalLoginParams": ["scope=openid offline_access"]```。
+    
+    > [!NOTE]
+    > 提供刷新令牌的范围为 [offline_access](../active-directory/develop/v2-permissions-and-consent.md#offline_access)。 请在[教程：在 Azure 应用服务中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)中了解它的使用方法。 应用服务默认已请求其他范围。 有关这些默认范围的信息，请参阅 [OpenID Connect 范围](../active-directory/develop/v2-permissions-and-consent.md#openid-connect-scopes)。
 
 配置提供程序以后，即可在令牌存储中[找到访问令牌的刷新令牌和过期时间](#retrieve-tokens-in-app-code)。 
 

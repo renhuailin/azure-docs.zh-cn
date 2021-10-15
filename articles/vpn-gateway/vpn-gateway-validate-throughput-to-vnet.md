@@ -2,7 +2,6 @@
 title: 验证虚拟网络的 VPN 吞吐量
 description: 了解如何验证从本地资源到 Azure 虚拟机的网络吞吐量。
 titleSuffix: Azure VPN Gateway
-services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
@@ -10,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: b5c3853ca2849590b0338c3f82b3e8606cd35d2d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 52d928762d64ce0612ed8e7063c1b2fb2028e870
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643662"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273375"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
@@ -217,7 +216,7 @@ Make install 速度较快
 
 > [!Note]
 > 在 VM 与网关之间执行吞吐量测试过程中，请确保没有中间跃点（例如虚拟设备）。
-> 如果上述 iPERF/NTTTCP 测试返回的结果不佳（在总体吞吐量方面），请参阅以下文章，了解此问题的可能性根本原因是哪些重要因素造成的： https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> 如果上述 iPERF/NTTTCP 测试返回的结果不佳（在总体吞吐量方面），请参阅[本文](../virtual-network/virtual-network-tcpip-performance-tuning.md)，了解此问题的可能性根本原因是哪些重要因素造成的： 
 
 具体而言，在执行这些测试期间同时从客户端和服务器收集的数据包捕获跟踪（Wireshark/网络监视器）有助于对不良性能进行评估。 这些跟踪可能包括丢包、高延迟、MTU 大小问题、 碎片、TCP 0 窗口、失序片段等。
 

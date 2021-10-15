@@ -3,12 +3,12 @@ title: 升级 Azure Service Fabric 群集
 description: 了解用于更新 Azure Service Fabric 群集的选项
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 9af6a9b4d515fcede5bc0444a93ae8118077e7dd
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7fad28e0357b26b0b8753496310c7788f6dbb0c8
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738745"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401141"
 ---
 # <a name="upgrading-and-updating-azure-service-fabric-clusters"></a>升级和更新 Azure Service Fabric 群集
 
@@ -27,6 +27,9 @@ Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源
 还可以设置群集升级模式，并[使用资源管理器模板](service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)选择运行时版本。
 
 自动升级是建议升级模式，因为此选项确保可群集保持受支持状态，并受益于最新修补程序和功能，同时还使你可以使用[波形部署](#wave-deployment-for-automatic-upgrades)策略以对工作负载中断最小的方法计划更新。
+
+> [!NOTE]
+> 如果将现有群集更改为自动模式，则该群集将在新版本开始的下一个升级阶段中注册。 新版本将[在 Service Fabric 团队博客](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)中宣布。 每个升级期间，尽可能选择最高升级路径，请参阅[支持的版本](service-fabric-versions.md)。 手动升级模式触发立即升级。 
 
 ## <a name="wave-deployment-for-automatic-upgrades"></a>自动升级的波形部署
 

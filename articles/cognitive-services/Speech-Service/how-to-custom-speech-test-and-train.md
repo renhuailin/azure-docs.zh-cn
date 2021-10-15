@@ -3,19 +3,19 @@ title: 为自定义语音识别准备数据 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在测试 Microsoft 语音识别的准确性或训练自定义模型时，需要音频和文本数据。 本页介绍数据的类型、用法及其管理方式。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.author: lajanuar
-ms.openlocfilehash: cd1fbd5d0ae9a917ff96fed0af9c14d4c7fc0a7a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/16/2021
+ms.author: pafarley
+ms.openlocfilehash: 046499f32050bf856e6eb39874f3f7b0f0fa2e51
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256331"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569485"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
 
@@ -153,7 +153,8 @@ speech03.wav    the lazy dog was not amused
 
 ## <a name="pronunciation-data-for-training"></a>用于训练的发音数据
 
-如果用户会遇到或使用没有标准发音的不常见字词，你可以提供自定义发音文件来改善识别能力。 
+如果用户会遇到或使用没有标准发音的不常见字词，你可以提供自定义发音文件来改善识别能力。 有关支持自定义发音的语言列表，请参阅[语音转文本表格](language-support.md#speech-to-text)的“自定义”列中的“发音。
+
 > [!IMPORTANT]
 > 建议不要使用自定义发音文件来改变常用字的发音。
 
@@ -166,13 +167,6 @@ speech03.wav    the lazy dog was not amused
 | IEEE | i triple e |
 
 口述形式是拼写的拼音顺序。它可以由字母、单词、音节或三者的组合构成。
-
-自定义发音适用于英语 (`en-US`) 和德语 (`de-DE`)。 下表按语言显示了支持的字符：
-
-| 语言 | Locale | 字符 |
-|----------|--------|------------|
-| 英语 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-| 德语 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
 参考下表来确保相关发音数据文件的格式正确。 发音文件较小，应只占几千字节。
 

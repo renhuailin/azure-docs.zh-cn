@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/28/2021
+ms.date: 09/30/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 216fd3f132464b9866bc1f3b1b61b143de117019
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 5452f6bd6adc4693b74a20d174b6efe42346226d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083460"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351842"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
 
@@ -27,15 +27,15 @@ ms.locfileid: "129083460"
 ## <a name="quick-summary"></a>快速摘要
 
 建议如下：
-- 在 Web 应用和 Web API 中，使用[“Microsoft.Identity.Web”中的令牌缓存序列化程序](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)。 它们甚至提供分布式数据库或缓存系统来存储令牌。
-  - 在 ASP.NET Core [Web 应用](scenario-web-app-call-api-overview.md)和 [Web API](scenario-web-api-call-api-overview.md) 中，使用 Microsoft.Identity.Web 作为 ASP.NET Core 中的较高级 API。
-  - 在 ASP.NET 经典版、.NET Core 和 .NET Framework 中，直接将 MSAL.NET 与 Microsoft.Identity.Web 中提供的[适用于 MSAL 的令牌缓存序列化适配器]()配合使用。 
+- 在 Web 应用和 Web API 中，使用[“Microsoft.Identity.Web.TokenCache”中的令牌缓存序列化程序](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)。 它们甚至提供分布式数据库或缓存系统来存储令牌。
+  - 在 ASP.NET Core [Web 应用](scenario-web-app-call-api-overview.md)和 [Web API](scenario-web-api-call-api-overview.md) 中，使用 [Microsoft.Identity.Web](microsoft-identity-web.md) 作为 ASP.NET Core 中的较高级 API。
+  - 在 ASP.NET 经典版、.NET Core 和 .NET Framework 中，直接将 MSAL.NET 与 Microsoft.Identity.Web.TokenCache NuGet 包中提供的[适用于 MSAL 的令牌缓存序列化适配器](msal-net-token-cache-serialization.md?tabs=aspnet)结合使用。 
 - 在桌面应用程序（可以使用文件系统来存储令牌）中，将 [Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache) 与 MSAL.Net 配合使用。
 - 在移动应用程序（Xamarin.iOS、Xamarin.Android、通用 Windows 平台）中，不要执行任何操作，因为 MSAL.NET 会为你处理缓存：这些平台具有安全的存储。
 
 ## <a name="aspnet-core-web-apps-and-web-apis"></a>[ASP.NET Core Web 应用和 Web API](#tab/aspnetcore)
 
-[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) 库提供了包含令牌缓存序列化的 NuGet 包 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web)：
+[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) 库提供了包含令牌缓存序列化的 NuGet 包 [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache)：
 
 | 扩展方法 | 说明  |
 | ---------------- | ------------ |
@@ -119,11 +119,11 @@ services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
 
 ## <a name="non-aspnet-core-web-apps-and-web-apis"></a>[非 ASP.NET Core Web 应用和 Web API](#tab/aspnet)
 
-即使使用的是 MSAL.NET，也能够受益于 Microsoft.Identity.Web 中引入的令牌缓存序列化 
+即使使用的是 MSAL.NET，也能够受益于 Microsoft.Identity.Web.TokenCache 中引入的令牌缓存序列化 
 
 ### <a name="referencing-the-nuget-package"></a>引用 NuGet 包
 
-除 MSAL.NET 以外，再将 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet 包添加到你的项目
+除 MSAL.NET 以外，再将 [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) NuGet 包添加到你的项目
 
 ### <a name="configuring-the-token-cache"></a>配置令牌缓存
 
@@ -148,7 +148,7 @@ public static async Task<AuthenticationResult> GetTokenAsync(string clientId, X5
        .Build();
 
      // Add a static in-memory token cache. Other options available: see below
-     app.AddInMemoryTokenCache();  // Microsoft.Identity.Web 1.16+
+     app.AddInMemoryTokenCache();  // Microsoft.Identity.Web.TokenCache 1.17+
    
      // Make the call to get a token for client_credentials flow (app to app scenario) 
      return await app.AcquireTokenForClient(scopes).ExecuteAsync();
@@ -282,18 +282,6 @@ var app = ConfidentialClientApplicationBuilder
     .WithCacheSynchronization(false)
     .Build();
 ```
-
-### <a name="monitor-cache-hit-ratios-and-cache-performance"></a>监视缓存命中率和缓存性能
-
-MSAL 公开重要指标作为 [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata) 对象的一部分： 
-
-| 指标       | 含义     | 何时触发警报？    |
-| :-------------: | :----------: | :-----------: |
-|  `DurationTotalInMs` | MSAL 中花费的总时间，包括网络调用和缓存   | 针对整体高延迟(> 1s)的警报。 值取决于令牌源。 从缓存：一个缓存访问。 从 AAD：两个缓存访问 + 一个 HTTP 调用。 第一次调用（每进程）需要更长的时间，因为有一个额外的 HTTP 调用。 |
-|  `DurationInCacheInMs` | 加载或保存令牌缓存所用的时间（由应用开发人员自定义）（例如，保存到 Redis）。| 对高峰发出警报。 |
-|  `DurationInHttpInMs`| 向 AAD 发出 HTTP 调用所花的时间。  | 对高峰发出警报。|
-|  `TokenSource` | 指示令牌的源。 从缓存中检索令牌的速度要快得多（例如，~100 ms 与 ~700 ms）。 可用于监视缓存命中率并发出警报。 | 与 `DurationTotalInMs` 结合使用 |
-
 ### <a name="samples"></a>示例
 
 - [ConfidentialClientTokenCache](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/tree/master/ConfidentialClientTokenCache) 示例中演示了如何在 .NET Framework 和 .NET Core 应用程序中使用令牌缓存序列化程序 
@@ -340,6 +328,23 @@ var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties );
 cacheHelper.RegisterCache(pca.UserTokenCache);
          
 ```
+
+
+##### <a name="plain-text-fallback-mode"></a>纯文本回退模式
+
+跨平台令牌缓存允许以明文形式存储未加密的令牌。 这仅适用于在开发环境中用于调试目的。 可以通过以下代码模式使用纯文本回退模式。
+
+```csharp
+storageProperties =
+    new StorageCreationPropertiesBuilder(
+        Config.CacheFileName + ".plaintext",
+        Config.CacheDir)
+    .WithUnprotectedFile()
+    .Build();
+
+var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false);
+```
+
 
 ## <a name="mobile-apps"></a>[移动应用](#tab/mobile)
 
@@ -594,20 +599,17 @@ namespace CommonCacheMsalV3
 
 ---
 
-## <a name="plain-text-fallback-mode"></a>纯文本回退模式
+## <a name="monitor-cache-hit-ratios-and-cache-performance"></a>监视缓存命中率和缓存性能
 
-MSAL 允许以明文形式存储未加密的令牌。 这仅适用于在开发环境中用于调试目的。 可以通过以下代码模式使用纯文本回退模式。
+MSAL 公开重要指标作为 [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata) 对象的一部分。 可以记录这些指标以评估应用程序的运行状况。
 
-```csharp
-storageProperties =
-    new StorageCreationPropertiesBuilder(
-        Config.CacheFileName + ".plaintext",
-        Config.CacheDir)
-    .WithUnprotectedFile()
-    .Build();
+| 指标       | 含义     | 何时触发警报？    |
+| :-------------: | :----------: | :-----------: |
+|  `DurationTotalInMs` | MSAL 中花费的总时间，包括网络调用和缓存   | 针对整体高延迟(> 1s)的警报。 值取决于令牌源。 从缓存：一个缓存访问。 从 AAD：两个缓存访问 + 一个 HTTP 调用。 第一次调用（每进程）需要更长的时间，因为有一个额外的 HTTP 调用。 |
+|  `DurationInCacheInMs` | 加载或保存令牌缓存所用的时间（由应用开发人员自定义）（例如，保存到 Redis）。| 对高峰发出警报。 |
+|  `DurationInHttpInMs`| 向 AAD 发出 HTTP 调用所花的时间。  | 对高峰发出警报。|
+|  `TokenSource` | 指示令牌的源。 从缓存中检索令牌的速度要快得多（例如，~100 ms 与 ~700 ms）。 可用于监视缓存命中率并发出警报。 | 与 `DurationTotalInMs` 结合使用 |
 
-var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false);
-```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 936a8393f21d71cfb2fd1dd4cd2c249f0d13689c
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9f0b1a3f51a5eae7b10ed74880c8abe1c92aae7a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432569"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278987"
 ---
 # <a name="configure-your-private-link"></a>配置专用链接
 配置专用链接需要几个步骤： 
@@ -156,11 +156,12 @@ $scope = New-AzResource -Location "Global" -Properties $scopeProperties -Resourc
 
 #### <a name="create-ampls---azure-resource-manager-template-arm-template"></a>创建 AMPLS - Azure 资源管理器模板（ARM 模板）
 以下 Azure 资源管理器模板创建以下内容：
-* 名为“my-scope”的专用链接范围 (AMPLS)
+* 一个名为“my-scope”的专用链接范围 (AMPLS)，其查询和引入访问模式设置为 Open。
 * 名为“my-workspace”的 Log Analytics 工作区
-* 将范围内的资源添加到名为“my-workspace-connection”的“my-scope”AMPLS
+* 将有范围的资源添加到名为“my-workspace-connection”的“my-scope”AMPLS
+
 > [!NOTE]
-> 以下 ARM 模板使用不支持设置 AMPLS 访问模式的旧 API 版本。 使用以下模板时，生成的 AMPLS 设置为 QueryAccessMode="Open" 以及 IngestionAccessMode="PrivateOnly"，这意味着它允许在 AMPLS 内和 AMPLS 外的资源上运行查询，但将引入限制为仅访问专用链接资源。
+> 确保使用新 API 版本（2021-07-01-preview 或更高版本）来创建专用链接范围对象（在下面键入“microsoft.insights/privatelinkscopes”）。 过去记录的 ARM 模板使用旧 API 版本，这会导致使用 QueryAccessMode="Open" 和 IngestionAccessMode="PrivateOnly" 设置 AMPLS。
 
 ```
 {
@@ -180,10 +181,15 @@ $scope = New-AzResource -Location "Global" -Properties $scopeProperties -Resourc
     "resources": [
         {
             "type": "microsoft.insights/privatelinkscopes",
-            "apiVersion": "2019-10-17-preview",
+            "apiVersion": "2021-07-01-preview",
             "name": "[parameters('private_link_scope_name')]",
             "location": "global",
-            "properties": {}
+            "properties": {
+                "accessModeSettings":{
+                    "queryAccessMode":"Open",
+                    "ingestionAccessMode":"Open"
+                }
+            }
         },
         {
             "type": "microsoft.operationalinsights/workspaces",

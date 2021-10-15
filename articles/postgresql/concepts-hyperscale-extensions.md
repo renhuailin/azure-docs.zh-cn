@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 08/03/2021
-ms.openlocfilehash: 27c7ae33dc889f7bbc29bb5e396fae3a6cdea67d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/01/2021
+ms.openlocfilehash: 9c5eea702e740c1a437dc96b84a186036e1b1958
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726170"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458447"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - 超大规模 (Citus) 中的 PostgreSQL 扩展
 
@@ -40,107 +40,107 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 目前支持部分关键扩
 ### <a name="citus-extension"></a>Citus 扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
+> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** | PG 14 |
 > |---|---|---|---|---|
-> | [citus](https://github.com/citusdata/citus) | Citus 分布式数据库。 | 9.5-2 | 10.0-3 | 10.0-3 |
+> | [citus](https://github.com/citusdata/citus) | Citus 分布式数据库。 | 9.5 | 10.0.5 | 10.2.1 | 10.2.1 |
 
 ### <a name="data-types-extensions"></a>数据类型扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
+> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** | PG 14 |
 > |---|---|---|---|---|
-> | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不区分大小写的字符串类型。 | 1.5 | 1.6 | 1.6 |
-> | [cube](https://www.postgresql.org/docs/current/static/cube.html) | 提供用于多维数据集的数据类型。 | 1.4 | 1.4 | 1.4 |
-> | [hll](https://github.com/citusdata/postgresql-hll) | 提供 HyperLogLog 数据结构。 | 2.15 | 2.15 | 2.15 |
-> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | 提供用于存储键值对集的数据类型。 | 1.5 | 1.6 | 1.7 |
-> | [isn](https://www.postgresql.org/docs/current/static/isn.html) | 提供用于国际产品编号标准的数据类型。 | 1.2 | 1.2 | 1.2 |
-> | [lo](https://www.postgresql.org/docs/current/lo.html) | 大型对象维护。 | 1.1 | 1.1 | 1.1 |
-> | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | 提供用于分层树形结构的数据类型。 | 1.1 | 1.1 | 1.2 |
-> | [seg](https://www.postgresql.org/docs/current/seg.html) | 用于表示线段或浮点间隔的数据类型。 | 1.3 | 1.3 | 1.3 |
-> | [tdigest](https://github.com/tvondra/tdigest) | 用于基于排名的统计信息（如分位数和剪裁方式）在线累积的数据类型。 | 1.0 | 1.0 | 1.0 |
-> | [topn](https://github.com/citusdata/postgresql-topn/) | Top-n JSONB 的类型。 | 2.3.1 | 2.3.1 | 2.3.1 |
+> | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不区分大小写的字符串类型。 | 1.5 | 1.6 | 1.6 | 1.6 |
+> | [cube](https://www.postgresql.org/docs/current/static/cube.html) | 提供用于多维数据集的数据类型。 | 1.4 | 1.4 | 1.4 | 1.5 |
+> | [hll](https://github.com/citusdata/postgresql-hll) | 提供 HyperLogLog 数据结构。 | 2.15 | 2.15 | 2.16 | 2.16 |
+> | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | 提供用于存储键值对集的数据类型。 | 1.5 | 1.6 | 1.7 | 1.8 |
+> | [isn](https://www.postgresql.org/docs/current/static/isn.html) | 提供用于国际产品编号标准的数据类型。 | 1.2 | 1.2 | 1.2 | 1.2 |
+> | [lo](https://www.postgresql.org/docs/current/lo.html) | 大型对象维护。 | 1.1 | 1.1 | 1.1 | 1.1 |
+> | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | 提供用于分层树形结构的数据类型。 | 1.1 | 1.1 | 1.2 | 1.2 |
+> | [seg](https://www.postgresql.org/docs/current/seg.html) | 用于表示线段或浮点间隔的数据类型。 | 1.3 | 1.3 | 1.3 | 1.4 |
+> | [tdigest](https://github.com/tvondra/tdigest) | 用于基于排名的统计信息（如分位数和剪裁方式）在线累积的数据类型。 | 1.0 | 1.0 | 1.2.0 | 1.2.0 |
+> | [topn](https://github.com/citusdata/postgresql-topn/) | Top-n JSONB 的类型。 | 2.3.1 | 2.3.1 | 2.4.0 | 2.4.0 |
 
 ### <a name="full-text-search-extensions"></a>全文搜索扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
+> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** | PG 14 |
 > |---|---|---|---|---|
-> | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | 提供用于整数的文本搜索字典模板。 | 1.0 | 1.0 | 1.0 |
-> | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | 用于扩展同义词处理的文本搜索字典模板。 | 1.0 | 1.0 | 1.0 |
-> | [unaccent](https://www.postgresql.org/docs/current/static/unaccent.html) | 删除了词素中重音（附加符号）的文本搜索字典。 | 1.1 | 1.1 | 1.1 |
+> | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | 提供用于整数的文本搜索字典模板。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | 用于扩展同义词处理的文本搜索字典模板。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [unaccent](https://www.postgresql.org/docs/current/static/unaccent.html) | 删除了词素中重音（附加符号）的文本搜索字典。 | 1.1 | 1.1 | 1.1 | 1.1 |
 
 ### <a name="functions-extensions"></a>函数扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
+> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** | PG 14 |
 > |---|---|---|---|---|
-> | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | 用于自动增加字段的函数。 | 1.0 | 1.0 | 1.0 |
-> | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | 提供一种计算地球表面上的大圆距离的方法。 | 1.1 | 1.1 | 1.1 |
-> | [fuzzystrmatch](https://www.postgresql.org/docs/current/static/fuzzystrmatch.html) | 提供多个函数，用于确定字符串间的相似性和差异。 | 1.1 | 1.1 | 1.1 |
-> | [insert\_username](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | 用于跟踪表更改者的函数。 | 1.0 | 1.0 | 1.0 |
-> | [intagg](https://www.postgresql.org/docs/current/intagg.html) | 整数聚合器和枚举器（已过时）。 | 1.1 | 1.1 | 1.1 |
-> | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | 提供用于操作无 null 整数数组的函数和运算符。 | 1.2 | 1.2 | 1.3 |
-> | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | 用于跟踪上次修改时间的函数。 | 1.0 | 1.0 | 1.0 |
-> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 | 4.5.1 | 4.5.1 | 4.5.1 |
-> | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 | 1.4 | 1.4 | 1.5 |
-> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 提供加密函数。 | 1.3 | 1.3 | 1.3 |
-> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 用于实现引用完整性的函数（已过时）。 | 1.0 | 1.0 | 1.0 |
-> | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 | 1.0 | 1.0 | 1.0 |
-> | [tcn](https://www.postgresql.org/docs/current/tcn.html) | 触发了更改通知。 | 1.0 | 1.0 | 1.0 |
-> | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | 用于实现按时间顺序查看的函数。 | 1.0 | | |
-> | [uuid ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | 生成全局唯一标识符 (UUID)。 | 1.1 | 1.1 | 1.1 |
+> | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | 用于自动增加字段的函数。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | 提供一种计算地球表面上的大圆距离的方法。 | 1.1 | 1.1 | 1.1 | 1.1 |
+> | [fuzzystrmatch](https://www.postgresql.org/docs/current/static/fuzzystrmatch.html) | 提供多个函数，用于确定字符串间的相似性和差异。 | 1.1 | 1.1 | 1.1 | 1.1 |
+> | [insert\_username](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | 用于跟踪表更改者的函数。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [intagg](https://www.postgresql.org/docs/current/intagg.html) | 整数聚合器和枚举器（已过时）。 | 1.1 | 1.1 | 1.1 | 1.1 |
+> | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | 提供用于操作无 null 整数数组的函数和运算符。 | 1.2 | 1.2 | 1.3 | 1.5 |
+> | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | 用于跟踪上次修改时间的函数。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 | 4.5.1 | 4.5.1 | 4.5.1 | 4.5.1 |
+> | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 | 1.4 | 1.4 | 1.5 | 1.6 |
+> | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 提供加密函数。 | 1.3 | 1.3 | 1.3 | 1.3 |
+> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 用于实现引用完整性的函数（已过时）。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [tcn](https://www.postgresql.org/docs/current/tcn.html) | 触发了更改通知。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | 用于实现按时间顺序查看的函数。 | 1.0 | | | |
+> | [uuid ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | 生成全局唯一标识符 (UUID)。 | 1.1 | 1.1 | 1.1 | 1.1 |
 
 ### <a name="index-types-extensions"></a>索引类型扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
+> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** | PG 14 |
 > |---|---|---|---|---|
-> | [bloom](https://www.postgresql.org/docs/current/bloom.html) | Bloom 访问方法 - 基于签名文件的索引。 | 1.0 | 1.0 | 1.0 |
-> | [btree\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | 提供示例 GIN 运算符类，该类对特定数据类型实现类似 B-tree 的行为。 | 1.3 | 1.3 | 1.3 |
-> | [btree\_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) | 提供实施 B-tree 的 GiST 索引运算符类。 | 1.5 | 1.5 | 1.5 |
+> | [bloom](https://www.postgresql.org/docs/current/bloom.html) | Bloom 访问方法 - 基于签名文件的索引。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [btree\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | 提供示例 GIN 运算符类，该类对特定数据类型实现类似 B-tree 的行为。 | 1.3 | 1.3 | 1.3 | 1.3 |
+> | [btree\_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) | 提供实施 B-tree 的 GiST 索引运算符类。 | 1.5 | 1.5 | 1.5 | 1.6 |
 
 ### <a name="language-extensions"></a>语言扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
+> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** | PG 14 |
 > |---|---|---|---|---|
-> | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL 可加载过程语言。 | 1.0 | 1.0 | 1.0 |
+> | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL 可加载过程语言。 | 1.0 | 1.0 | 1.0 | 1.0 |
 
 ### <a name="miscellaneous-extensions"></a>其他扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
+> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** | PG 14 |
 > |---|---|---|---|---|
-> | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL 的管理函数。 | 2.0 | 2.0 | 2.1 |
-> | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用于验证关系完整性的函数。 | 1.1 | 1.2 | 1.2 |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | 一个支持从数据库会话中连接到其他 PostgreSQL 数据库的模块。 有关此扩展的信息，请参阅“dblink and postgres_fdw”部分。 | 1.2 | 1.2 | 1.2 |
-> | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | 用于平面文件访问的外部数据包装器。 | 1.0 | 1.0 | 1.0 |
-> | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | 在较低级别检查数据库页的内容。 | 1.7 | 1.7 | 1.8 |
-> | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | 提供一种方法用于实时检查共享缓冲区缓存的当前状况。 | 1.3 | 1.3 | 1.3 |
-> | [pg\_cron](https://github.com/citusdata/pg_cron) | PostgreSQL 的作业计划程序。 | 1.3 | 1.3 | 1.3 |
-> | [pg\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | 检查可用空间映射 (FSM)。 | 1.2 | 1.2 | 1.2 |
-> | [pg\_prewarm](https://www.postgresql.org/docs/current/static/pgprewarm.html) | 提供一种方法用于将相关数据加载到缓冲区缓存中。 | 1.2 | 1.2 | 1.2 |
-> | [pg\_stat\_statements](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | 提供一种方法用于跟踪服务器执行的所有 SQL 语句的执行统计信息。 有关此扩展的信息，请参阅“pg_stat_statements”部分。 | 1.6 | 1.7 | 1.8 |
-> | [pg\_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) | 检查可见性映射 (VM) 和页面级别的可见性信息。 | 1.2 | 1.2 | 1.2 |
-> | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | 提供一种显示行级锁定信息的方法。 | 1.2 | 1.2 | 1.2 |
-> | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | 提供一种显示元组级别统计信息的方法。 | 1.5 | 1.5 | 1.5 |
-> | [postgres\_fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | 外部数据包装器，用于访问外部 PostgreSQL 服务器中存储的数据。 有关此扩展的信息，请参阅“dblink and postgres_fdw”部分。| 1.0 | 1.0 | 1.0 |
-> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | 有关 TLS/SSL 证书的信息。 | 1.2 | 1.2 | 1.2 |
-> | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE 方法，接受行数作为限制。 | 1.0 | 1.0 | 1.0 |
-> | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE 方法，接受以毫秒为时间单位的限制。 | 1.0 | 1.0 | 1.0 |
-> | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath 查询和 XSLT。 | 1.1 | 1.1 | 1.1 |
+> | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL 的管理函数。 | 2.0 | 2.0 | 2.1 | 2.1 |
+> | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用于验证关系完整性的函数。 | 1.1 | 1.2 | 1.2 | 1.3 |
+> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | 一个支持从数据库会话中连接到其他 PostgreSQL 数据库的模块。 有关此扩展的信息，请参阅“dblink and postgres_fdw”部分。 | 1.2 | 1.2 | 1.2 | 1.2 |
+> | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | 用于平面文件访问的外部数据包装器。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | 在较低级别检查数据库页的内容。 | 1.7 | 1.7 | 1.8 | 1.9 |
+> | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | 提供一种方法用于实时检查共享缓冲区缓存的当前状况。 | 1.3 | 1.3 | 1.3 | 1.3 |
+> | [pg\_cron](https://github.com/citusdata/pg_cron) | PostgreSQL 的作业计划程序。 | 1.3 | 1.3 | 1.3 | 1.4 |
+> | [pg\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | 检查可用空间映射 (FSM)。 | 1.2 | 1.2 | 1.2 | 1.2 |
+> | [pg\_prewarm](https://www.postgresql.org/docs/current/static/pgprewarm.html) | 提供一种方法用于将相关数据加载到缓冲区缓存中。 | 1.2 | 1.2 | 1.2 | 1.2 |
+> | [pg\_stat\_statements](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | 提供一种方法用于跟踪服务器执行的所有 SQL 语句的执行统计信息。 有关此扩展的信息，请参阅“pg_stat_statements”部分。 | 1.6 | 1.7 | 1.8 | 1.9 |
+> | [pg\_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) | 检查可见性映射 (VM) 和页面级别的可见性信息。 | 1.2 | 1.2 | 1.2 | 1.2 |
+> | [pgrowlocks](https://www.postgresql.org/docs/current/static/pgrowlocks.html) | 提供一种显示行级锁定信息的方法。 | 1.2 | 1.2 | 1.2 | 1.2 |
+> | [pgstattuple](https://www.postgresql.org/docs/current/static/pgstattuple.html) | 提供一种显示元组级别统计信息的方法。 | 1.5 | 1.5 | 1.5 | 1.5 |
+> | [postgres\_fdw](https://www.postgresql.org/docs/current/static/postgres-fdw.html) | 外部数据包装器，用于访问外部 PostgreSQL 服务器中存储的数据。 有关此扩展的信息，请参阅“dblink and postgres_fdw”部分。| 1.0 | 1.0 | 1.0 | 1.1 |
+> | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | 有关 TLS/SSL 证书的信息。 | 1.2 | 1.2 | 1.2 | 1.2 |
+> | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE 方法，接受行数作为限制。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE 方法，接受以毫秒为时间单位的限制。 | 1.0 | 1.0 | 1.0 | 1.0 |
+> | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath 查询和 XSLT。 | 1.1 | 1.1 | 1.1 | 1.1 |
 
 
 ### <a name="postgis-extensions"></a>PostGIS 扩展
 
 > [!div class="mx-tableFixed"]
-> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
+> | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** | PG 14 |
 > |---|---|---|---|---|
-> | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | PostgreSQL 的空间和地理对象。 | 2.5.5 | 3.0.3 | 3.0.3 |
-> | address\_standardizer, address\_standardizer\_data\_us | 用于将地址分析成构成元素。 用于支持地理编码地址规范化步骤。 | 2.5.5 | 3.0.3 | 3.0.3 |
-> | postgis\_sfcgal | PostGIS SFCGAL 函数。 | 2.5.5 | 3.0.3 | 3.0.3 |
-> | postgis\_tiger\_geocoder | PostGIS tiger 地理编码器和反向地理编码器。 | 2.5.5 | 3.0.3 | 3.0.3 |
-> | postgis\_topology | PostGIS 拓扑空间类型和函数。 | 2.5.5 | 3.0.3 | 3.0.3 |
+> | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | PostgreSQL 的空间和地理对象。 | 2.5.5 | 3.0.3 | 3.0.3 | 3.1.4 |
+> | address\_standardizer, address\_standardizer\_data\_us | 用于将地址分析成构成元素。 用于支持地理编码地址规范化步骤。 | 2.5.5 | 3.0.3 | 3.0.3 | 3.1.4 |
+> | postgis\_sfcgal | PostGIS SFCGAL 函数。 | 2.5.5 | 3.0.3 | 3.0.3 | 3.1.4 |
+> | postgis\_tiger\_geocoder | PostGIS tiger 地理编码器和反向地理编码器。 | 2.5.5 | 3.0.3 | 3.0.3 | 3.1.4 |
+> | postgis\_topology | PostGIS 拓扑空间类型和函数。 | 2.5.5 | 3.0.3 | 3.0.3 | 3.1.4 |
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements

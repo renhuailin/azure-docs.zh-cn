@@ -1,15 +1,15 @@
 ---
 title: 处理大型数据集
 description: 了解如何在使用 Azure Resource Graph 的同时，在大型数据集中获取、格式化、分页和跳过记录。
-ms.date: 08/17/2021
+ms.date: 09/29/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b306b52c02a251abf1d781ccce586e4b94c8264b
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 142effe9a4d4d46f04b1a9a018fc366fba69428c
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323740"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274835"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -38,10 +38,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 
 最具限制性的控制措施将胜出。 例如，如果查询使用 top 或 limit 运算符，并生成多于 First 的记录，那么返回的记录数上限等于 First。 同样，如果 top 或 limit 小于 First，那么返回的记录集小于 top 或 limit 配置的值。
 
-First 当前允许的最大值为 5000，这是通过一次对 1000 条记录进行[结果分页](#paging-results)来实现的 。
-
-> [!IMPORTANT]
-> 当 First 配置为大于 1000 条记录时，查询必须对 ID 字段进行投射才能使分页生效 。 如果查询未进行投射，则响应不会进行[分页](#paging-results)，且结果将限制为 1000 条记录。
+First 的最大允许值是 1000。
 
 ## <a name="skipping-records"></a>跳过记录
 

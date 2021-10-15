@@ -1,18 +1,17 @@
 ---
 title: Azure Front Door 上的 Azure Web 应用程序防火墙 DRS 规则组和规则
 description: 本文提供有关 Web 应用程序防火墙 DRS 规则组和规则的信息。
-services: web-application-firewall
-author: vhorne
 ms.service: web-application-firewall
-ms.date: 07/29/2021
+author: vhorne
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 401a6bd003e592d1b53aa91ac24f062688da7a3b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 07/29/2021
+ms.openlocfilehash: 95839937f2356f74d29499bb45e7cd0e1159b02c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435737"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546342"
 ---
 # <a name="web-application-firewall-drs-rule-groups-and-rules"></a>Web 应用程序防火墙 DRS 规则组和规则
 
@@ -62,6 +61,9 @@ OWASP 有两种模式，用于决定是否阻止流量：传统模式和异常�
 |通知       |2|
 
 异常分数的阈值为 5，用于阻止流量。 因此，单个关键规则匹配足以让 WAF 阻止请求，即使在阻止模式下也是如此。 但一个“警告”规则匹配仅使异常分数增加 3，而这并不足以阻止流量。
+
+> [!NOTE]
+> 正文检查仅适用于 DRS 2.0
 
 ### <a name="drs-20"></a>DRS 2.0
 
@@ -288,6 +290,9 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |941370|找到 JavaScript 全局变量|
 |941380|检测到 AngularJS 客户端模板注入|
 
+>[!NOTE]
+> 本文包含对术语“黑名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+
 
 ### <a name="sqli---sql-injection"></a><a name="drs942-20"></a> SQLI - SQL 注入
 |RuleId|说明|
@@ -470,6 +475,9 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |941340|IE XSS 筛选器 - 检测到攻击。|
 |941350|UTF-7 编码 IE XSS - 检测到攻击。|
 
+>[!NOTE]
+> 本文包含对术语“黑名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+
 ### <a name="sqli---sql-injection"></a><a name="drs942-11"></a> SQLI - SQL 注入
 |RuleId|说明|
 |---|---|
@@ -518,7 +526,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |943110|可能的会话固定攻击：包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击：不包含引用方的 SessionID 参数名称|
 
-### <a name="java-attacks"></a><a name="drs944-11"></a> JAVA 攻击
+### <a name="java-attacks"></a><a name="drs944-11"></a> Java 攻击
 |RuleId|说明|
 |---|---|
 |944100|远程命令执行：检测到可疑的 Java 类|
@@ -648,6 +656,9 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |941340|IE XSS 筛选器 - 检测到攻击。|
 |941350|UTF-7 编码 IE XSS - 检测到攻击。|
 
+>[!NOTE]
+> 本文包含对术语“黑名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+
 ### <a name="sqli---sql-injection"></a><a name="drs942-10"></a> SQLI - SQL 注入
 |RuleId|说明|
 |---|---|
@@ -696,7 +707,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |943110|可能的会话固定攻击：包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击：不包含引用方的 SessionID 参数名称|
 
-### <a name="java-attacks"></a><a name="drs944-10"></a> JAVA 攻击
+### <a name="java-attacks"></a><a name="drs944-10"></a> Java 攻击
 |RuleId|说明|
 |---|---|
 |944100|远程命令执行：Apache Struts、Oracle WebLogic|

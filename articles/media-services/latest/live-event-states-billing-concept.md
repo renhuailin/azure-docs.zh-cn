@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: f17c2fcd5793412716c72f02c7cfbe670360fa33
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 961c563a12a3edf4df5c898f0c8ee8f1a5b2daf0
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123069"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390114"
 ---
 # <a name="live-event-states-and-billing"></a>直播活动状态和计费
 
@@ -29,7 +29,7 @@ ms.locfileid: "106123069"
 将[直播活动](/rest/api/media/liveevents)上的 LiveEventEncodingType 设置为 Standard 或 Premium1080p 后，媒体服务就会自动关闭在输入源丢失 12 小时后仍处于“正在运行”状态但却没有“直播输出”运行的直播活动  。 但是，在直播活动处于“正在运行”状态的时间段内，仍会进行计费。
 
 > [!NOTE]
-> 直通直播活动不会自动关闭，必须通过 API 显式停止，以避免过多计费。
+> 直通（基本或标准）直播活动不会自动关闭，必须通过 API 显式停止，以避免过多计费。
 
 ## <a name="states"></a>状态
 

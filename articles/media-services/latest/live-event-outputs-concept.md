@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb80374976752961b5c199fc06a8acba572c4d89
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: c5684a3e3949ca2bf119a4c81d7096726a441da6
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129054464"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390133"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -35,9 +35,10 @@ ms.locfileid: "129054464"
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[实时事件](/rest/api/media/liveevents)可以设置为“直通”（本地实时编码器发送多比特率流）或“实时编码”（本地实时编码器发送单比特率流）。 这些类型是在创建期间使用 [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
+[实时事件](/rest/api/media/liveevents)可以设置为基本或标准直通（本地实时编码器发送多比特率流）或实时编码（本地实时编码器发送单比特率流） 。 这些类型是在创建期间使用 [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
 
-* **LiveEventEncodingType.None**：本地实时编码器发送多比特率流。 引入的流直接通过实时事件，而不会经过任何进一步的处理。 也称为“直通模式”。
+* LiveEventEncodingType.PassthroughBasic：本地实时编码器发送多比特率流。 基本直通限制为 5 Mbps 的峰值流入速率，DVR 时限为 8 小时，不支持实时听录。
+* LiveEventEncodingType.PassthroughStandard：本地实时编码器发送多比特率流。 标准直通的引入速率限制更高，DVR 时限为 25 小时，支持实时听录。
 * **LiveEventEncodingType.Standard**：本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设将编码一组 6 分辨率/比特率对。
 * **LiveEventEncodingType.Premium1080p**：本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 Default1080p 预设指定分辨率/比特率对的输出集。
 
@@ -45,7 +46,7 @@ ms.locfileid: "129054464"
 
 ![使用媒体服务的直通实时事件示例图](./media/live-streaming/pass-through.svg)
 
-使用直通 **实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，实时事件会接受传入视频流，不对其进行进一步的处理。 此类直通实时事件已针对长时间运行的实时事件或 24x365 线性实时传送视频流进行优化。 创建此类实时事件时，请指定 None (LiveEventEncodingType.None)。
+使用基本或标准直通实时事件时，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，实时事件会接受传入视频流，不对其进行进一步的处理。 此类直通实时事件已针对长时间运行的实时事件或 24x365 线性实时传送视频流进行优化。 创建这种类型的实时事件时，请指定“基本”或“标准”直通。 (LiveEventEncodingType.PassThroughStandard)。
 
 发送的贡献源的最高分辨率可为 4K，帧速率可为 60 帧/秒，采用 H.264/AVC 或 H.265/HEVC（仅平滑引入）视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。 有关详细信息，请参阅[实时事件类型的比较](live-event-types-comparison-reference.md)。
 

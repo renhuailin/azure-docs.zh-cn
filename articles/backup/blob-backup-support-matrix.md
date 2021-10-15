@@ -2,14 +2,14 @@
 title: Azure Blob 备份的支持矩阵
 description: 汇总了备份 Azure Blob 时的支持设置和限制
 ms.topic: conceptual
-ms.date: 07/07/2021
+ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 0d9dbcb9bb4497de4c8355ca42597b8e9eecd0e9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 921f08a80511766f55e179fccde38a061800061e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799237"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533184"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Azure Blob 备份的支持矩阵
 
@@ -17,7 +17,7 @@ ms.locfileid: "124799237"
 
 ## <a name="supported-regions"></a>支持的区域
 
-Blob 的操作备份目前在以下区域提供：澳大利亚中部、澳大利亚中部 2、澳大利亚东部、澳大利亚东南部、巴西南部、巴西东南部、加拿大中部、加拿大东部、印度中部、美国中部、东亚、美国东部、美国东部 2、法国中部、德国北部、德国中西部、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、挪威东部、挪威西部、南非北部、美国中南部、东南亚、印度南部、瑞士北部、瑞士西部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、英国南部、英国西部、美国中西部、西欧、印度西部、美国西部、美国西部 2。
+Blob 操作备份适用于除法国南部和南非西部以外的所有公有云区域。 它还在主权云区域中可用 - 所有 Azure 政府区域和中国区域（中国东部除外）。
 
 ## <a name="limitations"></a>限制
 

@@ -8,12 +8,12 @@ ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
 ms.date: 09/15/2021
-ms.openlocfilehash: 3bade2b547db3b76bde02731807d4e6ef3539711
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4c758dfdc40e23197128bc08cccc5748f08f7ed4
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649599"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534888"
 ---
 # <a name="troubleshoot-reservation-utilization"></a>解决预留利用率问题
 
@@ -39,6 +39,14 @@ Azure 门户中的“利用率 (%)”列显示当天的值。 该值是根据使
 ## <a name="solution"></a>解决方案
 
 如果发现利用率值与预期不符，请查看图以获取实际利用率的最完整视图。 任何超过两天的点值都应该准确无误。 7-30 天的长期均值应该准确。
+
+## <a name="other-common-scenarios"></a>其他常见方案
+- 你可能已停止运行资源 A 并开始运行资源 B，而后者不适用于已购买的预留。 要解决此情况，可能需要交换预留，使其与正确的资源相匹配。 
+- 你可能已将资源从某个订阅或资源组移到另一个订阅或资源组，而前者的预留范围与资源将移动的位置不同。 要解决这一情况，可能需要更改预留范围。
+- 你可能已经购买了另一个预留，此预留也将权益应用于相同的作用域，因此，应用权益的现有保留实例更少。 要解决此问题，可能需要交换其中某个预留或对其作退款处理。
+- 你可能已停止运行某个特定的资源，因此其已停止发出使用情况且权益也已停止应用。 要解决此情况，可能需要交换预留，使其与正确的资源相匹配。 
+- 你可能已更改预留的范围，并因此导致其停止将权益应用于资源。 要纠正此情况，可能需要再次更改预留的范围，以确保将资源部署在同一范围内。
+- 预留范围内的订阅已删除或已移出，因此不会将权益应用于资源。 要纠正此情况，可能需要更改预留的范围。
 
 ## <a name="next-steps"></a>后续步骤
 

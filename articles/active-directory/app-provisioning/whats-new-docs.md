@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序预配中的新增内容
 description: 有关 Azure Active Directory 应用程序预配的新文档和更新文档。
-ms.date: 09/08/2021
+ms.date: 10/05/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: 1cd99265954671084b37bcf0f11606a1e334223e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a5b870bb2c0e8021320bf03d990e5d7b636c5422
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759788"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535826"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 应用程序预配：新增内容
 
 欢迎查看 Azure Active Directory 应用程序预配文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解预配服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="new-articles"></a>新文章
+
+- [在 Azure AD 预配服务中启用意外删除防护（预览版）](accidental-deletions.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [应用程序预配在 Azure Active Directory 中的工作方式](how-provisioning-works.md)
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

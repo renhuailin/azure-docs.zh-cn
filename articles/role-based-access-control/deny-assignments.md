@@ -15,12 +15,12 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38427b0686e830939025075536ac79c95ebde4cd
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82733765"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362966"
 ---
 # <a name="understand-azure-deny-assignments"></a>了解 Azure 拒绝分配
 
@@ -54,14 +54,14 @@ ms.locfileid: "82733765"
  拒绝分配具有以下属性：
 
 > [!div class="mx-tableFixed"]
-> | 属性 | 必选 | 类型 | 说明 |
+> | 属性 | 必须 | 类型 | 说明 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | 是 | String | 拒绝分配的显示名称。 对于给定作用域，名称必须是唯一的。 |
 > | `Description` | 否 | String | 拒绝分配的说明。 |
-> | `Permissions.Actions` | 至少一个 Actions 或一个 DataActions | String[] | 用于指定拒绝分配阻止访问的管理操作的字符串数组。 |
-> | `Permissions.NotActions` | 否 | String[] | 用于指定要从拒绝分配中排除的管理操作的字符串数组。 |
-> | `Permissions.DataActions` | 至少一个 Actions 或一个 DataActions | String[] | 用于指定拒绝分配阻止访问的数据操作的字符串数组。 |
-> | `Permissions.NotDataActions` | 否 | String[] | 用于指定要从拒绝分配中排除的数据操作的字符串数组。 |
+> | `Permissions.Actions` | 至少一个 Actions 或一个 DataActions | String[] | 一个字符串数组，用于指定拒绝分配阻止对其进行访问的控制平面操作。 |
+> | `Permissions.NotActions` | 否 | String[] | 一个字符串数组，用于指定要从拒绝分配中排除的控制平面操作。 |
+> | `Permissions.DataActions` | 至少一个 Actions 或一个 DataActions | String[] | 一个字符串数组，用于指定拒绝分配阻止对其进行访问的数据平面操作。 |
+> | `Permissions.NotDataActions` | 否 | String[] | 一个字符串数组，用于指定要从拒绝分配中排除的数据平面操作。 |
 > | `Scope` | 否 | String | 用于指定拒绝分配应用到的作用域的字符串。 |
 > | `DoNotApplyToChildScopes` | 否 | 布尔 | 指定拒绝分配是否应用到子作用域。 默认值为 false。 |
 > | `Principals[i].Id` | 是 | String[] | 拒绝分配应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 设置为空 GUID `00000000-0000-0000-0000-000000000000` 将表示所有主体。 |

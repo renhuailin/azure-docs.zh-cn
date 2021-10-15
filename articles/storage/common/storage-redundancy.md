@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 08/18/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ff085c32c7aeb63fea04f04558c1bccd5814b29b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 72b8df5a79ae1d4da9821d6d7d275dc5744ebb17
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418545"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272730"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
 Azure 存储始终会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 冗余可确保即使遇到故障，存储帐户也能达到其可用性和持久性目标。
 
-在确定最适合自己方案的冗余选项时，请考虑如何在较低成本与较高可用性之间做出取舍。 可帮助你确定应选择哪种冗余选项的因素包括：  
+在确定最适合自己方案的冗余选项时，请考虑如何在较低成本与较高可用性之间做出取舍。 可帮助你确定应选择哪种冗余选项的因素包括：
 
 - 如何在主要区域中复制数据
 - 是否要将你的数据复制到地理上距主要区域较远的另一个区域，以防范区域性灾难
@@ -160,7 +160,7 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>设计应用程序以便能够对次要区域进行读取访问
 
-如果存储帐户已配置为对次要区域进行读取访问，则你可以设计自己的应用程序，以便在主要区域出于任何原因而不可用时，能够无缝转换为从次要区域读取数据。 
+如果存储帐户已配置为对次要区域进行读取访问，则你可以设计自己的应用程序，以便在主要区域出于任何原因而不可用时，能够无缝转换为从次要区域读取数据。
 
 启用 RA-GRS 或 RA-GZRS 后，次要区域可用于读取访问，因此你可以预先测试应用程序，以确保在发生服务中断时可以从次要区域正确读取数据。 若要详细了解如何设计应用程序以利用异地冗余，请参阅[使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)。
 
@@ -221,7 +221,7 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 |:-|:-|:-|:-|
 | 常规用途 v2<br /> 常规用途 v1<br /> 高级块 blob<br /> 旧版 Blob<br /> 高级文件共享 | 常规用途 v2<br /> 高级块 blob<br /> 高级文件共享 | 常规用途 v2<br /> 常规用途 v1<br /> 旧 Blob | 常规用途 v2 |
 
-所有存储帐户的所有数据的复制均基于存储帐户的冗余选项。 复制的对象包括块 Blob、追加 Blob、页 Blob、队列、表和文件。 将复制所有层（包括存档层）中的数据。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
+所有存储帐户的所有数据的复制均基于存储帐户的冗余选项。 复制的对象包括块 Blob、追加 Blob、页 Blob、队列、表和文件。 将复制所有层（包括存档层）中的数据。 有关 Blob 层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](../blobs/access-tiers-overview.md)。
 
 有关每个冗余选项的定价信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 

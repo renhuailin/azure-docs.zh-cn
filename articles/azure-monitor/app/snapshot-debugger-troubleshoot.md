@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ae4a7d070419aae974742802ec5b6b3ae958c87
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026447"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355527"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights Snapshot Debugger，但未看到出现异常的快照，则可以使用以下说明进行故障排除。
@@ -92,7 +92,7 @@ ms.locfileid: "105026447"
    ```
 
 > [!NOTE]
-> 如果修改 httpRuntime targetFramework 值，则会更改应用于应用程序的运行时规定，并可能导致其他细微的行为变化。 进行此更改后，请务必彻底测试你的应用程序。 有关兼容性更改的完整列表，请参阅 https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes
+> 如果修改 httpRuntime targetFramework 值，则会更改应用于应用程序的运行时规定，并可能导致其他细微的行为变化。 进行此更改后，请务必彻底测试你的应用程序。 有关兼容性更改的完整列表，请参阅[重定目标更改](/dotnet/framework/migration-guide/application-compatibility#retargeting-changes)。
 
 > [!NOTE]
 > 如果 targetFramework 为 4.7 或更高版本，则 Windows 将确定可用的协议。 Azure 应用服务中提供了 TLS 1.2。 但是，如果使用的是自己的虚拟机，则可能需要在操作系统中启用 TLS 1.2。

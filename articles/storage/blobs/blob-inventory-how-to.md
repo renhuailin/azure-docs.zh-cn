@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
-ms.openlocfilehash: 67bd943028ba321aa4fa3a5acca30e80cfc36a32
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ace430aa1e48d7e769f82d7258da241a0716a16d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615560"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455638"
 ---
 # <a name="enable-azure-storage-blob-inventory-reports"></a>启用 Azure 存储 Blob 清单报表
 
@@ -63,7 +63,7 @@ Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照�
 
 <a id="powershell"></a>
 
-可以使用 Azure PowerShell 模块启用静态网站托管。
+可以使用 Azure PowerShell 模块来添加、编辑或删除策略。
 
 1. 打开 Windows PowerShell 命令窗口。
 
@@ -75,7 +75,7 @@ Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照�
    Connect-AzAccount
    ```
 
-4. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为将托管静态网站的存储帐户的订阅。
+4. 如果你的标识关联到多个订阅，请设置你的活动订阅。
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
@@ -123,11 +123,11 @@ Azure 存储 Blob 清单功能简述了存储帐户中的容器、Blob、快照�
 
 <a id="cli"></a>
 
-可以使用 [Azure 命令行接口 (CLI)](/cli/azure/) 来启用静态网站托管。
+可以使用 [Azure 命令行界面 (CLI)](/cli/azure/) 来添加、编辑或删除策略。
 
 1. 首先，打开 [Azure Cloud Shell](../../cloud-shell/overview.md)，或者，如果已在本地[安装](/cli/azure/install-azure-cli) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
 
-2. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为将托管静态网站的存储帐户的订阅。
+2. 如果你的标识关联到多个订阅，请设置你的活动订阅。
 
    ```azurecli
       az account set --subscription <subscription-id>

@@ -3,12 +3,12 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: a2813699e082afbc263775821839ed6946e26c1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7229f4a786fc0afc43793ffe730470427ca2b107
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724791"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234916"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -155,7 +155,7 @@ Azure 顾问可识别使用的查询页大小为 100 的 Azure Cosmos DB 容器�
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>考虑在 HBase 群集中使用加速写入功能来提高群集性能
 Azure 顾问会分析过去 7 天内的系统日志，并识别群集是否遇到以下情况：
 1. 高 WAL 同步时间延迟 
-2. 高写入请求计数（1 小时内至少 3 个，超过 1000 个平均写入请求/秒/节点）
+2. 写入请求计数过高（至少 3 次在 1 小时内超过 1000 个平均写入请求/秒/节点）
 
 这些情况指示你的群集遇到了高写入延迟。 这可能是由于群集上执行繁重工作负荷所致。若要提高群集性能，你可能需要考虑使用 Azure HDInsight HBase 提供的加速写入功能。 适用于 HDInsight Apache HBase 群集的加速写入功能可将高级 SSD 托管磁盘附加到每个 RegionServer（工作器节点），而不是使用云存储。 因此，请提供应用程序的低写入延迟和更好的复原能力。 若要详细了解此功能，请[了解详细信息](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
 

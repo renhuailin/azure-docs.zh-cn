@@ -1,14 +1,14 @@
 ---
 title: 部署可修正的策略
 description: 若要通过 Azure Lighthouse 部署使用修正任务的策略，需要在客户租户中创建托管标识。
-ms.date: 09/13/2021
+ms.date: 09/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 2270644a2d3e841a40046743bd6092a3ba44105d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5783d753fabb7246914056139fb9a081b7684b9c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611446"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362269"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可以在委派的订阅中修正的策略
 
@@ -24,6 +24,9 @@ ms.locfileid: "128611446"
 若要允许 **principalId** 在客户租户中创建托管标识，必须将其 **roleDefinitionId** 设置为“用户访问管理员”。 虽然此角色通常不受支持，但可以将它用在此特定方案中，允许具有此权限的用户帐户将一个或多个特定的内置角色分配给托管标识。 这些角色在 delegatedRoleDefinitionIds 属性中定义，可以包括除“用户访问管理员”或“所有者”之外的任何[受支持的 Azure 内置角色](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)。
 
 将客户加入以后，在此授权中创建的 **principalId** 即可将这些内置角色分配给客户租户中的托管标识。 但是，他们不会有通常与“用户访问管理员”角色关联的任何其他权限。
+
+> [!NOTE]
+> 租户之间的[角色分配](../../role-based-access-control/role-assignments-steps.md#step-5-assign-role)目前必须通过 API 完成，而不是在 Azure 门户中完成。
 
 下面的示例显示了一个 **principalId**，该 ID 将有“用户访问管理员”角色。 此用户可将两个内置角色分配给客户租户中的托管标识：参与者和 Log Analytics 参与者。
 
@@ -45,7 +48,7 @@ ms.locfileid: "128611446"
 
 例如，假设你想在客户租户的 Azure Key Vault 资源上启用诊断，如此[示例](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)所示。 管理租户中具有适当权限（如上所述）的用户会部署 [Azure 资源管理器模板](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)来启用此方案。
 
-请注意，目前必须通过 API 而不是 Azure 门户创建与委托订阅配合使用的策略分配。 这样做时，必须将 **apiVersion** 设置为 **2019-04-01-preview**，其中包含新的 **delegatedManagedIdentityResourceId** 属性。 此属性允许包括驻留在客户租户中的托管标识（该租户位于已载入到 Azure Lighthouse 的订阅或资源组中）。
+请注意，目前必须通过 API 而不是 Azure 门户创建与委托订阅配合使用的策略分配。 这样做时，必须将 apiVersion 设置为 2020-10-01-preview，其中包含新的 delegatedManagedIdentityResourceId 属性。 此属性允许包括驻留在客户租户中的托管标识（该租户位于已载入到 Azure Lighthouse 的订阅或资源组中）。
 
 以下示例显示具有 **delegatedManagedIdentityResourceId** 的角色分配。
 

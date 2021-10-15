@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: fd160749fef327efa21094ba69daf2db88449918
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 858234982aa4a148fe6af71ba8993923e80044dd
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357474"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230180"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>单页应用程序：登录和注销
 
@@ -454,7 +454,7 @@ function App() {
 
 ---
 
-## <a name="sign-out-with-a-popup-window"></a>使用弹出窗口进行注销
+## <a name="sign-out-with-a-pop-up-window"></a>使用弹出窗口进行注销
 
 MSAL.js v2 提供了一种 `logoutPopup` 方法，该方法可清除浏览器存储中的缓存，并打开一个指向 Azure Active Directory (Azure AD) 注销页面的弹出窗口。 注销后，Azure AD 会将弹出窗口重定向回应用程序，而 MSAL.js 将关闭弹出窗口。
 

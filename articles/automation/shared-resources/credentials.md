@@ -3,15 +3,15 @@ title: 在 Azure 自动化中管理凭据
 description: 本文介绍如何创建凭据资产并在 Runbook 或 DSC 配置中使用它们。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/22/2020
+ms.date: 09/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6220a44e952aa4d9856ac5fc2077d254103d4a2c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 2a78f9636a29c8e48c8d3e1c38d7127bd3ba84b7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834275"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354052"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
@@ -24,7 +24,7 @@ ms.locfileid: "107834275"
 
 ## <a name="powershell-cmdlets-used-to-access-credentials"></a>用于访问凭据的 PowerShell cmdlet
 
-下表中的 cmdlet 使用 PowerShell 创建和管理自动化凭据。 它们作为 [Az 模块](modules.md#az-modules)的一部分提供。
+下表中的 cmdlet 使用 PowerShell 创建和管理自动化凭据。 它们作为 Az 模块的一部分提供。
 
 | Cmdlet | 说明 |
 |:--- |:--- |
@@ -116,17 +116,33 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-还可以使用凭据通过 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 向 Azure 进行身份验证。 在大多数情况下，应使用[运行方式帐户](../automation-security-overview.md#run-as-accounts)并使用 [Get-AzAutomationConnection](../automation-connections.md) 检索连接。
+在第一次连接[托管标识](../automation-security-overview.md#managed-identities-preview)之后，还可以使用凭据通过 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 向 Azure 进行身份验证。 本例使用[系统分配的托管标识](../enable-managed-identity-for-automation.md)。
 
 ```powershell
-$myCred = Get-AutomationPSCredential -Name 'MyCredential'
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
+
+# Get credential
+$myCred = Get-AutomationPSCredential -Name "MyCredential"
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
 $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
-Connect-AzAccount -Credential $myPsCred
+# Connect to Azure with credential
+$AzureContext = (Connect-AzAccount -Credential $myPsCred -TenantId $AzureContext.Subscription.TenantId).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -TenantId $AzureContext.Subscription.TenantId `
+    -DefaultProfile $AzureContext
 ```
 
 # <a name="python-2"></a>[Python 2](#tab/python2)

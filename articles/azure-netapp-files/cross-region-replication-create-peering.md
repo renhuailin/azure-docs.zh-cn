@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 94528abaf90a94c59dd97c9a4ae0d15162914bc7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 84ccb06b6be84c26ce9adf5d0c8e25d45190fa2b
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751378"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407905"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>为 Azure NetApp 文件创建卷复制
 
@@ -50,7 +50,7 @@ Azure NetApp 文件复制当前不支持多个订阅；必须在单个订阅下�
 1. 目标帐户必须位于与源卷区域不同的区域中。 如有必要，请按照[创建 NetApp 帐户](azure-netapp-files-create-netapp-account.md)中的步骤在 Azure 区域中创建一个用于复制的 NetApp 帐户。   
 还可以在不同的区域中选择现有的 NetApp 帐户。  
 
-2. 如有必要，请按照[设置容量池](azure-netapp-files-set-up-capacity-pool.md)中的步骤在新创建的 NetApp 帐户中创建容量池。   
+2. 如有必要，请按照[创建容量池](azure-netapp-files-set-up-capacity-pool.md)中的步骤在新创建的 NetApp 帐户中创建容量池。   
 
     还可以选择现有容量池来托管复制目标卷。  
 

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: b7bf1d7353917808fca222a7027dda74f89aff70
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac47322f33ac8f2efd08e5b04e639f09959dee28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736097"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352032"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -70,6 +70,10 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 完成后，选择“保存”。
 
+> [!NOTE]
+> 如果将日志写入 blob，则在删除该应用但保留 blob 中的日志时，不会再应用保留策略。 有关详细信息，请参阅[删除资源后可能会累计的成本](overview-manage-costs.md#costs-that-might-accrue-after-resource-deletion)。
+>
+
 ## <a name="enable-application-logging-linuxcontainer"></a>启用应用程序日志记录（Linux/容器）
 
 若要在 [Azure 门户](https://portal.azure.com)中为 Linux 应用或自定义容器应用启用应用程序日志记录，请导航到你的应用，然后选择“应用服务日志”。
@@ -98,15 +102,19 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 完成后，选择“保存”。
 
+> [!NOTE]
+> 如果将日志写入 blob，则在删除该应用但保留 blob 中的日志时，不会再应用保留策略。 有关详细信息，请参阅[删除资源后可能会累计的成本](overview-manage-costs.md#costs-that-might-accrue-after-resource-deletion)。
+>
+
 ## <a name="log-detailed-errors"></a>记录详细错误
 
 若要在 [Azure 门户](https://portal.azure.com)中保存 Windows 应用的错误页或失败请求跟踪，请导航到你的应用，然后选择“应用服务日志”。
 
 在“详细错误日志记录”或“失败请求跟踪”下，选择“打开”，然后选择“保存”。   
 
-这两种类型的日志都将存储在应用服务文件系统中。 最多可保留 50 个错误（文件/文件夹）。 当 HTML 文件的数目超出 50 时，最旧的错误文件会自动删除。
+这两种类型的日志都将存储在应用服务文件系统中。 最多可保留 50 个错误（文件/文件夹）。 当 HTML 文件的数目超出 50 时，最旧的错误文件会被自动删除。
 
-默认情况下，失败请求跟踪功能会捕获 HTTP 状态代码在 400 到 600 之间的失败请求的日志。 若要指定自定义规则，可以覆盖 web.config 文件中的 `<traceFailedRequests>` 部分。
+默认情况下，失败请求跟踪功能会捕获 HTTP 状态代码在 400 到 600 之间的失败请求的日志。 若要指定自定义规则，可以替代 web.config 文件中的 `<traceFailedRequests>` 节。
 
 ## <a name="add-log-messages-in-code"></a>在代码中添加日志消息
 
@@ -189,7 +197,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --provider ht
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | Java SE 和 Tomcat | 是 | 是 | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | 是 | 是 | Web 服务器日志 |
-| AppServiceEnvironmentPlatformLogs | 是 | 不适用 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
+| AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
 | AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对站点内容所做的文件更改；仅适用于高级层和更高层级 |
 | AppServiceAppLogs | ASP.NET 和 Tomcat <sup>1</sup> | ASP.NET 和 Tomcat <sup>1</sup> | Java SE 和 Tomcat Blessed 映像 <sup>2</sup> | Java SE 和 Tomcat Blessed 映像 <sup>2</sup> | 应用程序日志 |

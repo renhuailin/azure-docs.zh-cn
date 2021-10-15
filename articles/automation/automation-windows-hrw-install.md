@@ -1,23 +1,23 @@
 ---
-title: 在 Azure 自动化中部署 Windows 混合 Runbook 辅助角色
-description: 本文介绍如何部署混合 Runbook 辅助角色，你可使用该角色在本地数据中心或云环境的基于 Windows 的计算机上运行 Runbook。
+title: 在自动化中部署基于代理的 Windows 混合 Runbook 辅助角色
+description: 本文介绍如何部署基于代理的混合 Runbook 辅助角色，你可使用该角色在本地数据中心或云环境的基于 Windows 的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/02/2021
+ms.date: 09/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f79fddb5f3855afd27152945a571840f5680be0f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 59d3b78ac09c253270279612598b2d42ac6a2204
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769397"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272060"
 ---
-# <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
+# <a name="deploy-an-agent-based-windows-hybrid-runbook-worker-in-automation"></a>在自动化中部署基于代理的 Windows 混合 Runbook 辅助角色
 
 通过 Azure 自动化的用户混合 Runbook 辅助角色功能，可以直接在 Azure 或非 Azure 计算机上运行 runbook，包括在[已启用 Azure Arc 的服务器](../azure-arc/servers/overview.md)上注册的服务器。 在托管角色的计算机或服务器中，可以直接运行 runbook，并对环境中的资源运行 runbook，从而管理这些本地资源。
 
-Azure 自动化将存储并管理 Runbook，然后将其传送到一台或多台指定的计算机。 本文介绍如何在 Windows 计算机上部署用户混合 Runbook 辅助角色、如何删除辅助角色，以及如何删除混合 Runbook 辅助角色组。
+Azure 自动化将存储并管理 Runbook，然后将其传送到一台或多台选定的计算机。 本文介绍如何在 Windows 计算机上部署用户混合 Runbook 辅助角色、如何删除辅助角色，以及如何删除混合 Runbook 辅助角色组。 对于用户混合 Runbook 辅助角色，另请参阅[在自动化中部署基于扩展的 Windows 或 Linux 用户混合 Runbook 辅助角色](./extension-based-hybrid-runbook-worker-install.md)
 
 成功部署 Runbook 辅助角色后，请查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
 
@@ -103,7 +103,7 @@ runbook 使用以下参数。
 | `CreateVM` | 必需 | 如果为 true，则使用 `VMName` 的值作为新 VM 的名称。 如果为 false，则使用 `VMName` 查找并注册现有 VM。 |
 | `VMName` | 可选 | 创建或注册的虚拟机的名称取决于 `CreateVM` 的值。 |
 | `VMImage` | 可选 | 待创建的 VM 映像的名称。 |
-| `VMlocation` | 可选 | 创建或注册的 VM 位置。 如果未指定位置，则使用 `LAlocation` 的值。 |
+| `VMlocation` | 可选 | 创建或注册的 VM 位置。 如果未指定此位置，则使用 `LAlocation` 值。 |
 | `RegisterHW` | 必需 | 如果为 true，则将 VM 注册为混合辅助角色。 |
 | `WorkerGroupName` | 必需 | 混合辅助角色组的名称。 |
 
@@ -130,7 +130,7 @@ runbook 使用以下参数。
     | `AutomationAccountName` | 必需 | 自动化帐户的名称。
     | `Credential` | 可选 | 登录到 Azure 环境时要使用的凭据。 |
     | `HybridGroupName` | 必需 | 混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 runbook 的目标。 |
-    | `OMSResourceGroupName` | 可选 | Log Analytics 工作区的资源组的名称。 如果未指定此资源组，则使用 `AAResourceGroupName` 的值。 |
+    | `OMSResourceGroupName` | 可选 | Log Analytics 工作区的资源组的名称。 如果未指定此资源组，则使用 `AAResourceGroupName` 值。 |
     | `SubscriptionID` | 必需 | 与自动化帐户关联的 Azure 订阅的标识符。 |
     | `TenantID` | 可选 | 与自动化帐户关联的租户组织的标识符。 |
     | `WorkspaceName` | 可选 | Log Analytics 工作区名称。 如果没有 Log Analytics 工作区，该脚本会创建并配置一个。 |
@@ -184,7 +184,7 @@ runbook 使用以下参数。
         
         - 使用 Azure Policy。
         
-            在使用此方法时，请使用 Azure Policy [将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../governance/policy/samples/built-in-policies.md#monitoring)内置策略定义来审核已启用 Arc 的服务器是否已安装 Log Analytics 代理。 如果该代理未安装，则会使用修正任务来自动部署该代理。 或者，如果你计划通过用于 VM 的 Azure Monitor 来监视计算机，请改为使用[启用用于 VM 的 Azure Monitor](../governance/policy/samples/built-in-initiatives.md#monitoring) 计划来安装和配置 Log Analytics 代理。
+            在使用此方法时，请使用 Azure Policy [将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../governance/policy/samples/built-in-policies.md#monitoring)内置策略定义来审核已启用 Arc 的服务器是否已安装 Log Analytics 代理。 如果该代理未安装，则使用修正任务来自动部署该代理。 如果你计划通过用于 VM 的 Azure Monitor 来监视计算机，请改为使用[启用用于 VM 的 Azure Monitor](../governance/policy/samples/built-in-initiatives.md#monitoring) 计划来安装和配置 Log Analytics 代理。
 
     建议使用 Azure Policy 来安装适用于 Windows 或 Linux 的 Log Analytics 代理。
 

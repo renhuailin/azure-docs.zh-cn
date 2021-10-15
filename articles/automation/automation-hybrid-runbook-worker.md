@@ -3,19 +3,40 @@ title: Azure 自动化混合 Runbook 辅助角色概述
 description: 本文概述了混合 Runbook 辅助角色，可以使用这些辅助角色在本地数据中心或云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/22/2021
+ms.date: 09/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9600a4c38fa2a6f4956e9b1bceb730580c6ce382
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: bcc115e2eb8e380217246b2a401cea93f922aa81
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653072"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272139"
 ---
-# <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
+# <a name="automation-hybrid-runbook-worker-overview"></a>自动化混合 Runbook 辅助角色概述
 
 Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的资源，因为它们在 Azure 云平台中运行。 利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一台或多台指定的计算机。
+
+Azure 自动化通过 Azure 虚拟机 (VM) 扩展框架提供混合 Runbook 辅助角色的本机集成。 Azure VM 代理负责在 Windows 和 Linux VM 上管理 Azure VM 上的扩展，或者通过连接了已启用 Arc 的服务器的虚拟机代理管理非 Azure 虚拟机上的扩展。 目前，Azure 自动化支持两个混合 Runbook 辅助角色安装平台。
+
+| 平台 | 说明 |
+|---|---|
+|基于代理 (V1)  |在 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)向 Azure Monitor [Log Analytics 工作区](../azure-monitor/logs/design-logs-deployment.md)报告完成后安装。|
+|基于扩展 (V2)  |使用[混合 Runbook 辅助角色 VM 扩展](./extension-based-hybrid-runbook-worker-install.md)安装，无需依赖于 Log Analytics 代理向 Azure Monitor Log Analytics 工作区报告。 此平台是建议的平台。|
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/hybrid-worker-group-platform.png" alt-text="显示平台字段的混合辅助角色组":::
+
+下面是适用于基于扩展的混合 Runbook 辅助角色的权益列表： 
+
+| 好处 | 描述 |
+|---|---|
+|无缝载入| 消除在加入混合 Runbook 辅助角色时对 Log Analytics 解决方案的依赖，这是一个多步骤过程，耗时且容易出错。 |
+|统一加入体验| 安装是使用 Azure 和非 Azure 虚拟机支持的相同方法进行管理的。 |
+|易于管理| 与混合辅助角色的 ARM 标识进行本机集成，通过策略和模板提供大规模治理的灵活性。 |
+|基于 Azure AD 的身份验证| 使用 Azure AD 提供的 VM 系统分配的标识。 这将集中控制和管理标识和资源凭据。|
+
+对于安装后的混合 Runbook 辅助角色操作，在混合 Runbook 辅助角色上执行 Runbook 的过程是相同的。 基于扩展的方法旨在简化混合 Runbook 辅助角色的安装和管理，并消除使用基于代理的版本的复杂性。 基于扩展的新安装不会影响基于代理的混合 Runbook 辅助角色的安装或管理。 这两种类型可以在同一虚拟机上共存。
+基于扩展的混合 Runbook 辅助角色仅支持用户混合 Runbook 辅助角色类型，不包括更新管理功能所需的系统混合 Runbook 辅助角色。 目前不支持安装基于扩展的混合 Runbook 辅助角色的 PowerShell 支持。
 
 ## <a name="runbook-worker-types"></a>Runbook 辅助角色类型
 
@@ -26,17 +47,17 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 |**系统** |支持由更新管理功能使用的一组隐藏 Runbook，这些 Runbook 专门用于在 Windows 和 Linux 计算机上安装用户指定的更新。<br> 此类型的混合 Runbook 辅助角色不是混合 Runbook 辅助角色组的成员，因此不会运行面向 Runbook 辅助角色组的 Runbook。 |
 |**用户** |支持预期在 Windows 和 Linux 计算机上直接运行的用户定义的 Runbook，这些 Runbook 是一个或多个 Runbook 辅助角色组的成员。 |
 
-混合 Runbook 辅助角色可在 Windows 或 Linux 操作系统上运行，并且此角色依赖于向 Azure Monitor [Log Analytics 工作区](../azure-monitor/logs/design-logs-deployment.md)进行报告的 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)。 该工作区不仅用于监视计算机是否运行支持的操作系统，还可以用于下载安装混合 Runbook 辅助角色所需的组件。
+基于代理 (V1) 的混合 Runbook 辅助角色依赖于 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)向 Azure Monitor [Log Analytics 工作区](../azure-monitor/logs/design-logs-deployment.md)报告。 该工作区不仅用于监视计算机是否运行支持的操作系统，还可以用于下载安装混合 Runbook 辅助角色所需的组件。
 
-启用 Azure 自动化[更新管理](./update-management/overview.md)后，连接到 Log Analytics 工作区的任何计算机都会自动配置为系统混合 Runbook 辅助角色。 若要将其配置为用户 Windows 混合 Runbook 辅助角色，请参阅[部署 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md)；对于 Linux，请参阅[部署 Linux 混合Runbook 辅助角色](automation-linux-hrw-install.md)。
+启用 Azure 自动化[更新管理](./update-management/overview.md)后，连接到 Log Analytics 工作区的任何计算机都会自动配置为系统混合 Runbook 辅助角色。 要将其配置为用户 Windows 混合 Runbook 辅助角色，请参阅[在自动化中部署基于代理的 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md)，对于 Linux，请参阅[在自动化中部署基于代理的 Linux 混合 Runbook 辅助角色](./automation-linux-hrw-install.md)。
 
 ## <a name="runbook-worker-limits"></a>Runbook 辅助角色限制
 
-下表显示自动化帐户中系统和用户混合 runbook 辅助角色的最大数量。 如果要管理的计算机超过 4,000 台，建议创建其他自动化帐户。
+下表显示自动化帐户中系统和用户混合 runbook 辅助角色的最大数目。 如果要管理的计算机超过 4,000 台，建议创建其他自动化帐户。
 
-|辅助角色类型| 每个自动化帐户支持的最大数量。|
+|辅助角色类型| 每个自动化帐户支持的最大数目。|
 |---|---|
-|System|4000|
+|系统|4000|
 |用户 |4000|
 
 ## <a name="how-does-it-work"></a>它是如何工作的？
@@ -57,10 +78,9 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 |操作系统  |部署类型  |
 |---------|---------|
-|Windows     | [自动](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment)        |
-|Linux     | [手动](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
-
-安装 Windows 计算机的建议方法是，使用 Azure 自动化 Runbook 实现计算机配置过程的自动化。 如果这种方法不可行，你可以执行分步过程来手动安装和配置角色。 对于 Linux 计算机，运行 Python 脚本，在计算机上安装代理。
+|Windows | [自动](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment) |
+|Linux   | [手动](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker) |
+|任一个  | 对于用户混合 Runbook 辅助角色，请参阅[在自动化中部署基于扩展的 Windows 或 Linux 用户混合 Runbook 辅助角色](./extension-based-hybrid-runbook-worker-install.md)。 这是建议的方法。 |
 
 ## <a name="network-planning"></a><a name="network-planning"></a>网络规划
 
@@ -76,7 +96,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ### <a name="service-tags"></a>服务标记
 
-Azure 自动化从服务标记 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md) 开始支持 Azure 虚拟网络服务标记。 可以在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，可以使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 GuestAndHybridManagement），可以允许或拒绝自动化服务的流量。 此服务标记不支持通过将 IP 范围限制到特定区域来实现更精细的控制。
+Azure 自动化从服务标记 [GuestAndHybridManagement](../virtual-network/service-tags-overview.md) 开始支持 Azure 虚拟网络服务标记。 可以在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，可以使用服务标记代替特定 IP 地址。 在规则的相应源或目标字段中指定服务标记名称（例如 GuestAndHybridManagement），可以允许或拒绝自动化服务的流量。 此服务标记不支持通过将 IP 范围限制到特定区域来实现更精细控制的方法。
 
 Azure 自动化服务的服务标记仅提供用于以下场景的 IP：
 

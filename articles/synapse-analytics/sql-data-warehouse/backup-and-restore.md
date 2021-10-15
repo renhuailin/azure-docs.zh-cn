@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 45b9fa1fb96f45b5b24d7a0b823b11f89a471bd4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d17f370739acf5280850beb1eb14ad8cdc0268a6
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752308"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424929"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse 专用 SQL 池中的备份和还原
 
@@ -74,7 +74,7 @@ order by run_id desc
 如果专用 SQL 池不需要异地备份，则可以禁用这些备份，从而节省灾难恢复的存储成本。 为此，请参阅[操作方法指南：禁用专用 SQL 池（之前称为 SQL DW）的异地备份](disable-geo-backup.md)。 请注意，如果禁用异地备份，则在主 Azure 数据中心不可用时，将无法将专用 SQL 池恢复到配对的 Azure 区域。 
 
 > [!NOTE]
-> 如果希望异地备份的 RPO 更短，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到其他区域中的新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 如需数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
+> 如果希望异地备份的 RPO 更短，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到其他区域中的新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 较短恢复点的另一种常见模式是将数据并行引入到数据仓库的主要实例和辅助实例中。 在这种情况下，数据从一个（或多个）源中引入并持久保存到数据仓库的两个独立实例（主要实例和辅助实例）。 为了节省计算成本，可以暂停仓库的辅助实例。 如果需要数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
 
 ## <a name="data-residency"></a>数据驻留 
 

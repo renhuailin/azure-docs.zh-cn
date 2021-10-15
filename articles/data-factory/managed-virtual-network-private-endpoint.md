@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
-ms.date: 07/20/2021
-ms.openlocfilehash: 29bd9cf165ef8247a4185b17d479b01c4e14fa87
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/28/2021
+ms.openlocfilehash: f9c07abdfe512c2564fdfe1595f16db8a6372a8b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638348"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230223"
 ---
-# <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管虚拟网络（预览版）
+# <a name="azure-data-factory-managed-virtual-network"></a>Azure 数据工厂托管虚拟网络
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍 Azure 数据工厂中的托管虚拟网络和托管专用终结点。
 
@@ -36,9 +36,6 @@ ms.locfileid: "122638348"
 
 > [!IMPORTANT]
 >当前，托管虚拟网络仅在与 Azure 数据工厂区域相同的区域中受支持。
-
-> [!Note]
->由于 Azure 数据工厂托管虚拟网络仍以公共预览版提供，因此没有 SLA 保证。
 
 > [!Note]
 >现有的公共 Azure 集成运行时无法切换到 Azure 数据工厂托管虚拟网络中的 Azure 集成运行时，反之亦然。
@@ -83,6 +80,9 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 按照设计，托管虚拟网络中的 Azure 集成运行时的队列时间比公共 Azure 集成运行时长，因为我们不会为每个数据工厂都保留一个计算节点，因此每个活动都需要预热后才能启动，并且主要在虚拟网络联接而不是在 Azure 集成运行时上发生。 对于非复制活动（包括管道活动和外部活动），首次触发它们时有 60 分钟的生存时间 (TTL)。 在 TTL 内，排队时间较短，因为节点已预热。 
 > [!NOTE]
 > 复制活动尚不支持 TTL。
+
+> [!NOTE]
+> 2 托管虚拟网络不支持复制活动的 DIU。
 
 ## <a name="create-managed-virtual-network-via-azure-powershell"></a>通过 Azure PowerShell 创建托管虚拟网络
 ```powershell
@@ -132,19 +132,20 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ### <a name="supported-data-sources"></a>支持的数据源
 以下数据源具有本机专用终结点支持，并可通过专用链接从 ADF 托管虚拟网络连接。
 - Azure Blob 存储（不包括存储帐户 V1）
-- Azure 表存储（不包括存储帐户 V1）
-- Azure 文件（不包括存储帐户 V1）
-- Azure Data Lake Gen2
-- Azure SQL 数据库（不包括 Azure SQL 托管实例）
-- Azure Synapse Analytics
-- Azure CosmosDB SQL
-- Azure Key Vault
-- Azure 专用链接服务
-- Azure 搜索
+- Azure 认知搜索
+- Azure Cosmos DB SQL API
+- Azure Data Lake Storage Gen2
+- Azure Database for MariaDB
 - Azure Database for MySQL
 - Azure Database for PostgreSQL
-- Azure Database for MariaDB
+- Azure 文件（不包括存储帐户 V1）
+- Azure Key Vault
 - Azure 机器学习
+- Azure 专用链接服务
+- Azure Purview
+- Azure SQL 数据库（不包括 Azure SQL 托管实例）
+- Azure Synapse Analytics
+- Azure 表存储（不包括存储帐户 V1）
 
 > [!Note]
 > 仍可以通过公共网络访问数据工厂支持的所有数据源。

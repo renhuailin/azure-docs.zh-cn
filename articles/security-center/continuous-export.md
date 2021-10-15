@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 07/07/2021
+ms.date: 10/05/2021
 ms.author: memildin
-ms.openlocfilehash: 1d8feb49be378abed2a63030c6329e9e8a13d48a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e2b1b238e7f893df5eb56818f256eb324c5be6aa
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750726"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536054"
 ---
 # <a name="continuously-export-security-center-data"></a>连续导出安全中心数据
 
@@ -209,6 +209,9 @@ Azure Monitor 为各种 Azure 警报（包括诊断日志、指标警报以及�
 ## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>手动一次性导出警报和建议
 
 若要下载警报或建议的 CSV 报表，请打开“安全警报”或“建议”页，然后选择“下载 CSV 报表”按钮。
+
+> [!TIP]
+> 由于 Azure Resource Graph 限制，报表的文件大小限制为 1.3 万行。 如果看到与导出数据过多相关的错误，请尝试通过选择导出较小组的订阅来限制输出。
 
 :::image type="content" source="./media/continuous-export/download-alerts-csv.png" alt-text="将警报数据下载为 CSV 文件。" lightbox="./media/continuous-export/download-alerts-csv.png":::
 

@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: dcf969745fcc3c98b5bd0a9ba3681be602b73eb1
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: fd91a848a2da7ca503f74def67c0fab268d253c7
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210205"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387974"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -155,7 +155,7 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f d
 az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update && helm install my-release -f values.yaml bitnami/nginx" -f values.yaml
 ```
 > [!NOTE]
-> 通过创建具有“Microsoft.ContainerService/managedClusters/runcommand/action”权限的自定义角色，并通过将该角色与实时访问或条件访问策略结合使用来将其分配给特定用户和/或组，可以安全地访问 AKS 运行命令。 
+> 通过创建具有“Microsoft.ContainerService/managedClusters/runcommand/action”、“Microsoft.ContainerService/managedclusters/commandResults/read”权限的自定义角色，并通过将该角色与实时访问或条件访问策略结合使用来将其分配给特定用户和/或组，可以安全地访问 AKS 运行命令。 
 
 ## <a name="virtual-network-peering"></a>虚拟网络对等互连
 

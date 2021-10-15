@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 09/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97d2c7ac7026032344f7f08f80cb28bcb0d3d71
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a30dc564dced8d3306c4645ca48b6331e1f6959b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618951"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355765"
 ---
 # <a name="conditional-access-session"></a>条件访问：会话
 
@@ -26,7 +26,7 @@ ms.locfileid: "128618951"
 
 ## <a name="application-enforced-restrictions"></a>应用程序强制实施的限制
 
-组织可以使用此控制要求 Azure AD 将设备信息传递给所选云应用。 设备信息使云应用能够知道连接是从兼容设备还是已加入域设备发起的。 此控制仅支持将 SharePoint Online 和 Exchange Online 作为选定的云应用。 选择后，云应用会使用设备信息为用户提供有限或完整的体验，具体取决于设备状态。
+组织可以使用此控制要求 Azure AD 将设备信息传递给所选云应用。 设备信息使云应用能够知道连接是从兼容设备还是从加入域的设备发起的，并使云应用能够更改会话体验。 此控制仅支持将 SharePoint Online 和 Exchange Online 作为选定的云应用。 选择后，云应用会使用设备信息根据设备状态为用户提供有限的体验（如果设备不是托管设备）或完整的体验（如果设备是托管设备且合规）。
 
 有关使用和配置应用强制实施的限制的详细信息，请参阅以下文章：
 

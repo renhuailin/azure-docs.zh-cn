@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/18/2021
+ms.date: 09/02/2021
 ms.author: aahi
-ms.openlocfilehash: 2bd9d1c6a76e8bf2726831859045363809458228
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 68f320a7af2d41bfb29f6d7f7f84ccdf718044d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123122766"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799068"
 ---
 ## <a name="install-the-container"></a>安装容器
 
@@ -50,6 +50,22 @@ Logging:Disk:Format=json
 - 公开 TCP 端口 5000，并为容器分配伪 TTY
 - 接受最终用户许可协议 (Eula) 和负责任 AI (RAI) 条款
 - 退出后自动删除容器。 容器映像在主计算机上仍然可用。
+
+### <a name="run-the-container-with-client-library-support"></a>使用客户端库支持运行容器
+
+从容器版本 `3.0.017010001-onprem-amd64` 开始（或者在使用 `latest` 容器的情况下），可对运行状况容器运行文本分析，以使用文本分析[客户端库](../quickstarts/client-libraries-rest-api.md)运行状况操作。 为此，请将以下参数添加到 `docker run` 命令：
+
+`enablelro=true`
+
+然后，在对文本分析进行身份验证时，使用正在运行你的容器的终结点：
+
+`http://localhost:5000`
+
+例如，如果使用的是 C# ，请使用以下代码：
+
+```csharp
+var client = new TextAnalyticsClient("http://localhost:5000", "your-text-analytics-key");
+```
 
 ### <a name="demo-ui-to-visualize-output"></a>用于可视化输出的演示 UI
 

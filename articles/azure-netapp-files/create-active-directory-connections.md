@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/09/2021
 ms.author: b-juche
-ms.openlocfilehash: aa47a6b9caaba4b23202390b0cb45a2392b985ea
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ba34d9d1d85ae5845247133289001ffe58174213
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764389"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407639"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>为 Azure NetApp 文件创建和管理 Active Directory 连接
 
@@ -27,7 +27,7 @@ Azure NetApp 文件的几项功能需要 Active Directory 连接。  例如，�
 
 ## <a name="before-you-begin"></a>开始之前  
 
-* 必须已设置容量池。 请参阅[设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
+* 必须已设置容量池。 请参阅[创建容量池](azure-netapp-files-set-up-capacity-pool.md)。   
 * 子网必须委派给 Azure NetApp 文件。 请参阅[将子网委托给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)。
 
 ## <a name="requirements-and-considerations-for-active-directory-connections"></a><a name="requirements-for-active-directory-connections"></a>Active Directory 连接的要求和注意事项

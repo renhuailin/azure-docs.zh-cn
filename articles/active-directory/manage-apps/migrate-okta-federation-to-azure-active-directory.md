@@ -1,7 +1,7 @@
 ---
-title: 教程：将 Okta 联合身份验证迁移到 Azure AD 托管身份验证
+title: 有关将 Okta 联合迁移到 Azure Active Directory 托管的身份验证的教程
 titleSuffix: Active Directory
-description: 了解如何将 Okta 联合应用程序迁移到 Azure AD 托管的身份验证
+description: 了解如何将 Okta 联合应用程序迁移到 Azure AD 托管的身份验证。
 services: active-directory
 author: gargi-sinha
 manager: martinco
@@ -11,244 +11,247 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: b2486f4be20d2347f0cadff04ef8d0aa776ccdc5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 28759e1f53199aca866a6b073c9e05ffd31f3d1e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791681"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355924"
 ---
 # <a name="tutorial-migrate-okta-federation-to-azure-active-directory-managed-authentication"></a>教程：将 Okta 联合迁移到 Azure Active Directory 托管的身份验证
 
-在本教程中，了解如何将现有的 Office 365 租户与 Okta 进行联合以实现单一登录 (SSO) 功能。
+本教程介绍如何将现有的 Office 365 租户与 Okta 进行联合以实现单一登录 (SSO) 功能。
 
-将联合迁移到 Azure Active Directory (AD) 的过程可以分阶段完成，以确保用户获得所需的身份验证体验。 此外，测试对剩余 Okta SSO 应用程序的反向联合访问。
+可以分阶段将联合迁移到 Azure Active Directory (Azure AD)，以确保用户获得良好的身份验证体验。 在分阶段迁移中，还可以测试对任何剩余 Okta SSO 应用程序的反向联合访问。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- 联合到 Okta 以实现 SSO 的 Office 365 租户
-- 配置 Azure AD Connect 服务器或 Azure AD Connect 云预配代理以将用户预配到 Azure AD。
+- 一个已联合到 Okta 以实现 SSO 的 Office 365 租户
+- 已配置一个 Azure AD Connect 服务器或 Azure AD Connect 云预配代理，以将用户预配到 Azure AD
 
-## <a name="step-1---configure-azure-ad-connect-for-authentication"></a>步骤 1 - 配置 Azure AD Connect 进行身份验证
+## <a name="1-configure-azure-ad-connect-for-authentication"></a>1. 配置 Azure AD Connect 进行身份验证
 
-对于已将其 Office 365 域与 Okta 联合的客户，当前可能没有在 Azure AD 中配置有效的身份验证方法。 迁移到托管身份验证之前，应验证 Azure AD Connect，并为其配置下列选项之一以允许用户登录。
+对于已将其 Office 365 域与 Okta 联合的客户，当前可能没有在 Azure AD 中配置有效的身份验证方法。 在迁移到托管身份验证之前，请验证 Azure AD Connect，并将其配置为允许用户登录。
 
-使用以下方法来确定哪种方法最适合你的环境：
+设置最适合你环境的登录方法：
 
--  - 密码哈希同步 [密码哈希同步](../hybrid/whatis-phs.md)是对由 Azure AD Connect 服务器或云预配代理实现的目录同步功能的一种扩展。 可以使用此功能登录到 Azure AD 服务（例如 Microsoft 365）。 登录到该服务时使用的密码与登录到本地 Active Directory 实例时使用的密码相同。
+- 密码哈希同步：[密码哈希同步](../hybrid/whatis-phs.md)是对 Azure AD Connect 服务器或云预配代理实现的目录同步功能的一种扩展。 可以使用此功能登录到 Azure AD 服务（例如 Microsoft 365）。 登录到该服务时使用的密码与登录到本地 Active Directory 实例时使用的密码相同。
 
-- 直通身份验 - Azure AD [直通身份验证](../hybrid/how-to-connect-pta.md)允许用户使用相同的密码登录本地应用程序和基于云的应用程序。 如果用户使用 Azure AD 进行登录，此功能可通过直通身份验证大力，直接针对本地 Active Directory 验证用户的密码。
+- 直通身份验：通过 Azure AD [直通身份验证](../hybrid/how-to-connect-pta.md)，用户可以使用相同的密码登录到本地应用程序和基于云的应用程序。 当用户通过 Azure AD 登录时，直通身份验证代理将直接针对本地 Active Directory 验证密码。
 
-- 无缝 SSO - 当用户登录到连接企业网络的企业台式机之后，[Azure AD 无缝 SSO](../hybrid/how-to-connect-sso.md) 可使用户自动登录。 无缝 SSO 可让用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。
+- 无缝 SSO：当用户位于已连接到企业网络的企业桌面时，[Azure AD 无缝 SSO](../hybrid/how-to-connect-sso.md) 会自动将用户登录。 用户可以通过无缝 SSO 轻松访问基于云的应用程序，而无需使用其他任何本地组件。
 
-无缝 SSO 还可以部署到密码哈希同步或直通身份验证，为 Azure AD 中的用户创造无缝的身份验证体验。
+无缝 SSO 可以部署到密码哈希同步或直通身份验证，为 Azure AD 中的用户创建无缝的身份验证体验。
 
-请确保按照[部署指南](../hybrid/how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)，将无缝 SSO 必备的所有必备软件部署到最终用户。
+遵循[部署指南](../hybrid/how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)，确保为最终用户部署无缝 SSO 必备的所有必备组件。
 
-对于我们的示例，我们将配置密码哈希同步和无缝 SSO。
+在本示例中，我们将配置密码哈希同步和无缝 SSO。
 
 ### <a name="configure-azure-ad-connect-for-password-hash-synchronization-and-seamless-sso"></a>配置用于密码哈希同步和无缝 SSO 的 Azure AD Connect
 
-按照以下步骤配置 Azure AD Connect 以用于密码哈希同步：
+按照以下步骤为密码哈希同步配置 Azure AD Connect：
 
-1. 在 Azure AD Connect 服务器上，从开始菜单或桌面图标启动 Azure AD Connect 应用程序，然后选择“配置”。 
+1. 在 Azure AD Connect 服务器上打开“Azure AD Connect”应用，然后选择“配置” 。
 
-   ![显示 Azure AD 图标和“配置”按钮的图像](media/migrate-okta-federation-to-azure-active-directory/configure-azure-ad.png)
+   ![显示 Azure AD 图标和“配置”按钮的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/configure-azure-ad.png)
 
 2. 选择“更改用户登录” > “下一步。 
 
-   ![显示“更改用户登录”屏幕的图像](media/migrate-okta-federation-to-azure-active-directory/change-user-signin.png)
+   ![显示用于更改用户登录的页面的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/change-user-signin.png)
 
-3. 在下一页中输入全局管理员凭据。
+3. 输入你的全局管理员凭据。
 
-   ![显示如何输入全局管理员凭据的图像](media/migrate-okta-federation-to-azure-active-directory/global-admin-credentials.png)
+   ![显示全局管理员凭据输入位置的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/global-admin-credentials.png)
 
-4. 当前，服务器配置为与 Okta 联合。 将所选内容更新为密码哈希同步。 选中“启用单点登录”复选框
+4. 当前，服务器配置为与 Okta 联合。 将选项更改为“密码哈希同步”。 然后选择“启用单一登录”。
 
-5. 更新选择后，选择“下一步”。
+5. 选择“下一步”  。
 
-若要启用无缝 SSO，请执行下列步骤：
+按照以下步骤启用无缝 SSO：
 
-1. 输入本地管理员的域管理员凭据，然后选择“下一步”。
+1. 输入本地系统的域管理员凭据。 然后，选择“下一步”  。
 
-   ![显示如何输入域管理员凭据的图像](media/migrate-okta-federation-to-azure-active-directory/domain-admin-credentials.png)
+   ![显示用户登录设置的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/domain-admin-credentials.png)
 
 2. 在最后一页上，选择“配置”以更新 Azure AD Connect 服务器。
 
-   ![显示更新 azure ad connect 服务器的图像](media/migrate-okta-federation-to-azure-active-directory/update-azure-ad-connect-server.png)
+   ![显示配置页的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/update-azure-ad-connect-server.png)
 
-3. 暂时忽略混合 Azure AD 加入的警告，但是在从 Okta 禁用联合后需要重新配置设备选项。
+3. 暂时忽略有关混合 Azure AD 加入的警告。 禁用从 Okta 的联合后，你将重新配置设备选项。
 
-   ![显示重新配置设备选项的图像](media/migrate-okta-federation-to-azure-active-directory/reconfigure-device-options.png)
+   ![显示用于配置设备选项的链接的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/reconfigure-device-options.png)
 
-## <a name="step-2---configure-staged-rollout-features"></a>步骤 2 - 配置分阶段推出功能
+## <a name="2-configure-staged-rollout-features"></a>2. 配置分阶段推出功能
 
-[分阶段推出云身份验证](../hybrid/how-to-connect-staged-rollout.md)是 Azure AD 的一项功能，可用于在取消整个域的联合之前测试取消联合的用户。 在部署之前，请先查看[必备组件](../hybrid/how-to-connect-staged-rollout.md#prerequisites)。
+在 Azure AD 中，可以先使用[分阶段推出云身份验证](../hybrid/how-to-connect-staged-rollout.md)来测试用户取消联合，然后再测试整个域的取消联合。 在部署之前，请先查看[先决条件](../hybrid/how-to-connect-staged-rollout.md#prerequisites)。
 
-在 Azure AD Connect 服务器上启用密码哈希同步和无缝 SSO 后，请按照以下步骤配置分阶段推出。
+在 Azure AD Connect 服务器上启用密码哈希同步和无缝 SSO 后，请按照以下步骤配置分阶段推出：
 
-1. 转到 [Azure 门户](https://portal.azure.com/#home)，然后选择“查看”或“管理 Azure Active Directory”。 
+1. 在 [Azure 门户](https://portal.azure.com/#home)中，选择“视图”或“管理 Azure Active Directory” 。
 
-   ![显示 azure 门户的图像](media/migrate-okta-federation-to-azure-active-directory/azure-portal.png)
+   ![显示 Azure 门户的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/azure-portal.png)
 
-2. 在 Azure 活动目录菜单中，选择 **Azure AD Connect** 并确认密码哈希同步在租户中显示为已启用。
+2. 在“Azure Active Directory”菜单中选择“Azure AD Connect” 。 然后确认已在租户中启用“密码哈希同步”。
 
-3. 确认后，选择“为托管用户登录启用分阶段推出”
+3. 选择“为托管用户登录启用分阶段推出”。
 
-   ![显示分阶段推出的图像](media/migrate-okta-federation-to-azure-active-directory/enable-staged-rollout.png)
+   ![显示用于启用分阶段推出的选项的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/enable-staged-rollout.png)
 
-4. 配置服务器后，密码哈希同步设置可能已转换为“开启”，如果没有，请立即启用，你会注意到无缝 SSO 设置为“关闭”。  如果尝试在菜单中启用此功能，则会收到一个错误，指出已为租户中的用户启用了此功能。
+4. 配置服务器后，“密码哈希同步”设置可能已更改为“打开” 。 如果未启用该设置，现在请启用。 
 
-5. 启用密码哈希同步之后，选择“管理组”。
+   请注意“无缝 SSO”已设置为“关闭” 。 如果你尝试启用无缝 SSO，则会收到错误，因为已经为租户中的用户启用了此功能。
 
-   ![显示启用密码哈希同步的图像](media/migrate-okta-federation-to-azure-active-directory/password-hash-sync.png)
+5. 选择“管理组”。
 
-按照有关将组添加到密码哈希同步推出的说明进行操作。 在以下示例中，使用一个安全组，开始时有 10 个成员。
+   ![显示用于管理组的按钮的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/password-hash-sync.png)
 
-![显示安全组示例的图像](media/migrate-okta-federation-to-azure-active-directory/example-security-group.png)
+按照说明将一个组添加到密码哈希同步推出。 在以下示例中，安全组最初有 10 个成员。
 
-添加组后，请等待大约 30 分钟，让该功能在你的租户中生效。 该功能生效后，你的用户在尝试访问 Office 365 服务时将不再被重定向到 Okta。
+![显示安全组示例的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/example-security-group.png)
 
-分阶段推出功能在某些情况下不受支持，如下所示：  
+添加该组后，等待大约 30 分钟，让该功能在租户中生效。 该功能生效后，你的用户在尝试访问 Office 365 服务时将不再被重定向到 Okta。
+
+分阶段推出功能不支持某些方案：  
 
 - 不支持 POP3 和 SMTP 等旧式身份验证。
 
-- 如果已将混合 Azure AD 加入配置为与 Okta 一起使用，则所有混合 Azure AD 加入流仍将进入 Okta，直到域被解除联合。 登录策略应保留在 Okta 中，允许对混合 Azure AD 加入 Windows 客户端进行旧式身份验证。
+- 如果已将混合 Azure AD 加入配置为与 Okta 一起使用，则所有混合 Azure AD 加入流将进入 Okta，直到域被取消联合。 应在 Okta 中保留一个登录策略，以允许混合 Azure AD 加入 Windows 客户端进行旧式身份验证。
 
-## <a name="step-3---create-okta-app-in-azure-ad"></a>步骤 3 - 在 Azure AD 中创建 Okta 应用
+## <a name="3-create-an-okta-app-in-azure-ad"></a>3. 在 Azure AD 中创建 Okta 应用
 
-转换为托管身份验证的用户可能仍在 Okta 中具有需要访问的应用程序，从而使用户可以轻松访问这些应用程序。 了解如何为用户配置链接到 Okta 主页的 Azure AD 应用程序注册。
+已转换为托管身份验证的用户可能仍然需要访问 Okta 中的应用程序。 要使用户能够轻松访问这些应用程序，可以注册一个链接到 Okta 主页的 Azure AD 应用程序。
 
-1. 若要为 Okta 配置企业应用程序注册，请转到 [Azure 门户](https://portal.azure.com/#home)。 在“管理 Azure Active Directory”中选择“查看”。 
+若要为 Okta 配置企业应用程序注册，请执行以下操作： 
+1. 在 [Azure 门户](https://portal.azure.com/#home)中的“管理 Azure Active Directory”下，选择“视图” 。
 
-2. 接下来，从“管理”部分下的菜单中选择“企业应用程序”。
+2. 在左侧菜单中的“管理”下，选择“企业应用程序” 。
 
-   ![显示企业应用程序的图像](media/migrate-okta-federation-to-azure-active-directory/enterprise-application.png)
+   ![显示“企业应用程序”选项的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/enterprise-application.png)
 
-3. 在“所有应用程序”菜单中，选择“新建应用程序”。 
+3. 在“所有应用程序”菜单中，选择“新建应用程序” 。
 
-   ![此图像显示新应用程序](media/migrate-okta-federation-to-azure-active-directory/new-application.png)
+   ![显示“新建应用程序”选项的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/new-application.png)
 
-4. 选择“创建自己的应用程序”，并在弹出的侧菜单上，为 Okta 应用提供名称，并选择“注册所用的应用程序以将其与 Azure AD 集成”单选按钮，然后选择“创建”。  
+4. 选择“创建自己的应用程序”。 在打开的菜单中，为该 Okta 应用命名，然后选择“注册所用的应用程序以便与 Azure AD 集成”。 然后选择“创建”。
 
-   ![显示注册应用程序的图像](media/migrate-okta-federation-to-azure-active-directory/register-application.png)
+   :::image type="content" source="media/migrate-okta-federation-to-azure-active-directory/register-application.png" alt-text="显示如何注册应用程序的屏幕截图。" lightbox="media/migrate-okta-federation-to-azure-active-directory/register-application.png":::
 
-5. 注册应用程序后，将应用程序更改为在任何组织目录中的帐户（例如任何 Azure AD 目录 - 多租户），然后选择“注册”。
+5. 选择“任何组织目录中的帐户(任何 Azure AD 目录 - 多租户)” > “注册” 。
 
-   ![显示注册应用程序并更改应用程序帐户的图像](media/migrate-okta-federation-to-azure-active-directory/register-change-application.png)
+   ![显示如何注册应用程序和更改应用程序帐户的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/register-change-application.png)
 
-6. 添加注册后，回到 Azure AD 菜单，选择“应用注册”，然后打开新创建的注册。
+6. 在 Azure AD 菜单中，选择“应用注册”。 然后打开新建的注册。
 
-   ![显示应用注册的图像](media/migrate-okta-federation-to-azure-active-directory/app-registration.png)
+   ![显示新应用注册的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/app-registration.png)
 
-7. 打开应用程序后，记录你的租户 ID 和应用程序 ID。
+7. 请记下你的租户 ID 和应用程序 ID。
 
    >[!Note]
-   >稍后需要租户 ID 和应用程序 ID 才能在 Okta 中配置标识提供程序。
+   >稍后需要使用该租户 ID 和应用程序 ID 在 Okta 中配置标识提供者。
 
-   ![显示记录租户 ID 和应用程序 ID 的图像](media/migrate-okta-federation-to-azure-active-directory/record-ids.png)
+   ![显示租户 ID 和应用程序 ID 的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/record-ids.png)
 
-8. 在左侧菜单中选择“证书和密码”。 选择“新建客户端机密”，为其指定一个通用名称并设置其过期时间。
+8. 在左侧菜单中，选择“证书和机密”。 然后选择“新建客户端机密”。 为机密指定一个通用名称，并设置其到期日期。
 
-9. 在离开此页之前，记录机密的值和 ID。
+9. 请记下该机密的值和 ID。
 
    >[!NOTE]
-   >稍后将无法记录此信息，如果丢失，则必须重新生成机密。
+   >以后不再会显示该值和 ID。 如果现在不记下此信息，以后必须重新生成机密。
 
-   ![显示记录机密的图像](media/migrate-okta-federation-to-azure-active-directory/record-secrets.png)
+   ![显示在何处记下机密值和 ID 的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/record-secrets.png)
 
-10. 在左侧菜单中选择“API 权限”，并授予应用程序访问 OpenID Connect (OIDC) 堆栈的权限。
+10. 在左侧菜单中，选择“API 权限”。 向应用程序授予对 OpenID Connect (OIDC) 堆栈的访问权限。
 
-11. 选择“添加权限” > “Microsoft Graph” > “委派权限”。  
+11. 选择“添加权限” > “Microsoft Graph” > “委托的权限”  。
 
-    ![显示委托权限的图像](media/migrate-okta-federation-to-azure-active-directory/delegated-permissions.png)
+    :::image type="content" source="media/migrate-okta-federation-to-azure-active-directory/delegated-permissions.png" alt-text="显示“委托的权限”的屏幕截图。" lightbox="media/migrate-okta-federation-to-azure-active-directory/delegated-permissions.png":::
 
-12. 从 OpenID 权限部分，添加“电子邮件”、“OpenID”和“配置文件”，然后选择“添加权限”。   
+12. 从“OpenID 权限”部分，添加“电子邮件”、“openid”和“配置文件”  。 然后选择“添加权限”。
 
-    ![显示添加权限的图像](media/migrate-okta-federation-to-azure-active-directory/add-permissions.png)
+    :::image type="content" source="media/migrate-okta-federation-to-azure-active-directory/add-permissions.png" alt-text="显示如何添加权限的屏幕截图。" lightbox="media/migrate-okta-federation-to-azure-active-directory/add-permissions.png":::
 
-13. 选择“为租户域名授予管理员许可”选项并等待授予状态出现。
+13. 选择“为 \<tenant domain name> 授予管理员同意”，并等待“已授予”状态出现 。
 
-    ![显示授予许可的图像](media/migrate-okta-federation-to-azure-active-directory/grant-consent.png)
+    ![显示已授予同意的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/grant-consent.png)
 
-14. 同意许可后，将在你的用户的应用程序主页的“品牌”下添加主页 URL。
+14. 在左侧菜单中，选择“品牌”。 对于“主页 URL”，请添加用户的应用程序主页。
 
-    ![显示添加品牌的图像](media/migrate-okta-federation-to-azure-active-directory/add-branding.png)
+    ![显示如何添加品牌的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/add-branding.png)
 
-15. 配置应用程序后，过渡到 Okta 管理门户并将 Microsoft 配置为标识提供者。 选择“安全性” > “标识提供者”并添加一个新的标识提供者，并添加默认选项“Microsoft”。  
+15. 在 Okta 管理门户中，选择“安全性” > “标识提供者”以添加新的标识提供者 。 选择“添加 Microsoft”。
 
-    ![该插图显示如何配置 idp](media/migrate-okta-federation-to-azure-active-directory/configure-idp.png)
+    ![显示如何添加标识提供者的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/configure-idp.png)
 
-16. 在“标识提供者”页上，将你的应用程序 ID 复制到客户端 ID 字段，并将客户端机密复制到客户端机密字段。
+16. 在“标识提供者”页上，将你的应用程序 ID 复制到“客户端 ID”字段 。 将客户端机密复制到“客户端机密”字段。
 
-17. 选择“显示高级设置”。 默认情况下，这将绑定 Okta 和 Azure AD 中的用户主体名称 (UPN) 以进行反向联合访问。
+17. 选择“显示高级设置”。 默认情况下，此配置会将 Okta 中的用户主体名称 (UPN) 关联到 Azure AD 中的 UPN，以实现反向联合访问。
 
     >[!IMPORTANT]
-    >如果你的 UPN 在 Okta 和 Azure AD 中不匹配，请选择用户之间的通用属性进行匹配。
+    >如果 Okta 和 Azure AD 中的 UPN 不匹配，请选择在用户之间通用的属性。
 
-18. 完成自动预配的选择。 默认情况下，如果用户与 Okta 不匹配，将会尝试在 Azure AD 中预配用户。 如果已将预配从 Okta 迁移，请选择“重定向到 Okta 登录页面”选项。
+18. 完成自动预配的选择。 默认情况下，如果某个用户在 Okta 中没有匹配的用户，则系统会尝试在 Azure AD 中预配相应的用户。 如果已将预配从 Okta 迁移出来，请选择“重定向到 Okta 登录页”。
 
-    ![显示重定向 okta 登录的图像](media/migrate-okta-federation-to-azure-active-directory/redirect-okta.png)
+    ![显示用于重定向到 Okta 登录页的选项的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/redirect-okta.png)
 
-    创建 IDP 后，需要额外配置才能将用户发送到正确的 IDP。
+    创建标识提供者 (IDP) 后，需要将用户发送到正确的 IDP。
 
-19. 从“标识提供者”菜单中选择路由规则，然后使用 Okta 配置文件中的可用属性之一选择“添加路由规则”。 
+19. 在“标识提供者”菜单中，选择“路由规则” > “添加路由规则”  。 使用 Okta 配置文件中的可用属性之一。
 
-20. 如图所示配置策略以将来自所有备和 IP 的登录定向到 Azure AD。
+20. 若要将来自所有设备和 IP 的登录定向到 Azure AD，请按下图所示设置策略。
 
-    在示例中，所有 Okta 配置文件中都没有使用我们的属性 Division，该属性可以让候选对象轻松用于 IDP 路由。
+    在此示例中，所有 Okta 配置文件上都没有使用 Division 属性，因此该属性非常适合用于 IDP 路由。
 
-    ![显示 IDP 路由划分的图像](media/migrate-okta-federation-to-azure-active-directory/division-idp-routing.png)
+    ![显示用于 IDP 路由的 division 属性的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/division-idp-routing.png)
 
-21. 添加路由规则后，记录 Redirect URI，并将其添加到“应用程序注册”中。
+21. 添加路由规则后，请记下重定向 URI，以便可以将它添加到应用程序注册。
 
-    ![显示了应用程序注册的图像](media/migrate-okta-federation-to-azure-active-directory/application-registration.png)
+    ![显示重定向 URI 位置的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/application-registration.png)
 
-22. 导航回应用程序注册并选择“身份验证”选项卡，然后选择“添加平台”和“Web”。 
+22. 在应用程序注册上的左侧菜单中，选择“身份验证”。 然后选择“添加平台” > “Web” 。
 
-    ![显示添加平台的图像](media/migrate-okta-federation-to-azure-active-directory/add-platform.png)
+    :::image type="content" source="media/migrate-okta-federation-to-azure-active-directory/add-platform.png" alt-text="显示如何添加 Web 平台的屏幕截图。" lightbox="media/migrate-okta-federation-to-azure-active-directory/add-platform.png":::
 
-23. 从 Okta 中的 IDP 添加重定向 URI，然后选择“访问和 ID 令牌”。
+23. 在 Okta 中添加你在 IDP 中记下的重定向 URI。 然后选择“访问令牌”和“ID 令牌” 。
 
-    ![显示 okta 访问和 ID 令牌的图像](media/migrate-okta-federation-to-azure-active-directory/access-id-tokens.png)
+    ![显示 Okta 访问令牌和 ID 令牌的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/access-id-tokens.png)
 
-24. 从管理员控制台中选择“目录” > “人员”。 选择第一个测试用户及其配置文件。
+24. 在管理控制台中，选择“目录” > “人员” 。 选择第一个测试用户以编辑配置文件。
 
-25. 在编辑配置文件时，添加 ToAzureAD 以匹配示例并选择“保存”。 
+25. 在配置文件中添加“ToAzureAD”，如下图所示。 再选择“保存”。
 
-    ![显示配置文件编辑的图像](media/migrate-okta-federation-to-azure-active-directory/profile-editing.png)
+    ![显示如何编辑配置文件的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/profile-editing.png)
 
-26. 保存用户属性后，尝试以修改后的用户身份登录 [Microsoft 356 门户](https://portal.office.com)。 如果用户不是托管身份验证试点的一部分，您会注意到会循环显示。 若要让用户退出循环，请将其添加到托管身份验证体验。
+26. 尝试以修改后的用户身份登录到 [Microsoft 356 门户](https://portal.office.com)。 如果该用户不是托管身份验证试点的一部分，则你会发现你的操作循环往复。 若要退出这种循环，请将该用户添加到托管身份验证体验。
 
-## <a name="step-4---test-okta-app-access-on-pilot-members"></a>步骤 4 - 在试点成员上测试 Okta 应用访问权限
+## <a name="4-test-okta-app-access-on-pilot-members"></a>4. 测试试点成员的 Okta 应用访问权限
 
-在 Azure AD 中配置 Okta 应用并在 Okta 门户中配置标识提供程序后，必须将应用程序分配给用户。
+在 Azure AD 中配置 Okta 应用并在 Okta 门户中配置 IDP 后，必须将应用程序分配到用户。
 
-1. 导航到 Azure 门户，选择“Azure Active Directory” > “企业应用程序”。
+1. 在 Azure 门户中，选择“Azure Active Directory” > “企业应用程序”。
 
-2. 选择之前创建的应用注册，导航到“用户和组”。 添加与托管身份验证试点相关的组。
+2. 选择前面创建的应用注册，并转到“用户和组”。 添加与托管身份验证试点关联的组。
 
->[!NOTE]
->只能从企业应用程序选项中添加用户和组，不能在“应用注册”菜单下添加用户。
+   >[!NOTE]
+   >只能从“企业应用程序”页添加用户和组。 不能从“应用注册”菜单添加用户。
 
-   ![显示添加组的图像](media/migrate-okta-federation-to-azure-active-directory/add-group.png)
+   ![显示如何添加组的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/add-group.png)
 
-3. 大约 15 分钟后，以某个托管身份验证试点用户的身份登录并访问 [Myapplications](https://myapplications.microsoft.com)。
+3. 大约 15 分钟后，以某个托管身份验证试点用户的身份登录并转到“[我的应用](https://myapplications.microsoft.com)”。
 
-   ![显示访问 myapplications 的图像](media/migrate-okta-federation-to-azure-active-directory/my-applications.png)
+   ![显示“我的应用”库的屏幕截图。](media/migrate-okta-federation-to-azure-active-directory/my-applications.png)
 
-4. 在通过身份验证后，将出现一个“Okta 应用程序访问”磁贴，可将用户链接回 Okta 主页。
+4. 选择“Okta 应用程序访问”磁贴，将用户返回到 Okta 主页。
 
-## <a name="step-5---test-managed-authentication-on-pilot-members"></a>步骤 5 - 对试点成员执行托管身份验证测试
+## <a name="5-test-managed-authentication-on-pilot-members"></a>5. 测试试点成员的托管身份验证
 
-配置 Okta 反向联合应用程序后，让你的用户对托管身份验证体验进行全面测试。 建议设置公司品牌，以帮助用户区分他们正在登录的正确租户。 获得有关设置公司品牌的[指南](../fundamentals/customize-branding.md)。
+配置 Okta 反向联合应用后，让用户在托管身份验证体验上展开全面测试。 建议设置公司品牌，以帮助用户识别他们要登录到的租户。 有关详细信息，请参阅[将品牌添加到组织的 Azure AD 登录页](../fundamentals/customize-branding.md)。
 
 >[!IMPORTANT]
->在从 Okta 整体解除域联合之前，确定可能需要的任何其他条件访问策略。 请参阅 **Okta 登录策略到 Azure AD 条件访问的迁移**，了解在完全关闭之前需要采取哪些步骤来保护你的环境。
+>确定在从 Okta 完全取消联合域之前可能需要的任何其他条件访问策略。 若要在完全切断联合之前保护环境，请参阅 [Okta 登录策略到 Azure AD 条件访问的迁移](migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md)。
 
-## <a name="step-6---remove-federation-for-office-365-domains"></a>步骤 6 - 删除 Office 365 域的联合
+## <a name="6-defederate-office-365-domains"></a>6. 取消联合 Office 365 域
 
-一旦你的组织对托管身份验证体验感到满意，就可以解除你的域与 Okta 的联合。 要完成此操作，请使用以下命令连接到 MSOnline PowerShell - 如果还没有 MSOnline PowerShell 模块，可以先通过执行安装模块 MSOnline 来下载。
+如果你的组织对托管身份验证体验感到满意，则可以从 Okta 取消联合你的域。 若要开始，请使用以下命令连接到 MSOnline PowerShell。 如果尚未安装 MSOnline PowerShell 模块，可以输入 `install-module MSOnline` 下载该模块。
 
 ```PowerShell
 
@@ -259,7 +262,7 @@ Set-msoldomainauthentication
 
 ```
 
-将域设置为托管身份验证后，便已成功解除你的 Office 365 租户与 Okta 的联合，同时保持用户对 Okta 主页的访问权限。 
+将域设置为托管身份验证后，便已成功地从 Okta 取消联合了你的 Office 365 租户，同时还保留了用户对 Okta 主页的访问权限。 
 
 ## <a name="next-steps"></a>后续步骤
 

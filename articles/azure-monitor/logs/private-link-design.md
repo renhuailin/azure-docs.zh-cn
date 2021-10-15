@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 3b7316bf7d21a117c80eb49978a807b085db004b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 39a89fbaf72a78bad1c9a0ebca4ce068f6c65cae
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432533"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272883"
 ---
 # <a name="design-your-private-link-setup"></a>设计专用链接设置
 
@@ -70,7 +70,7 @@ ms.locfileid: "123432533"
 选择访问模式时请小心。 如果使用“仅专用”访问模式，则将阻止流向以下资源的流量：在所有共享同一 DNS 的网络中不属于 AMPLS，无论订阅或租户如何（Log Analytics 引入请求除外，在下文中有所介绍）。 如果无法将所有 Azure Monitor 资源添加到 AMPLS，请首先添加选定资源并应用开放访问模式。 只有在将所有 Azure Monitor 资源添加到 AMPLS 后，才能切换到“仅专用”模式以获得最大安全性。
 
 > [!NOTE]
-> Log Analytics 引入操作使用资源特定的终结点。 因此，它不遵循 AMPLS 访问模式。 通过专用链接引入到 AMPLS 中的工作区，而如果引入到 AMPLS 之外的工作区，则使用默认公共终结点。 若要确保引入请求无法访问 AMPLS 之外的资源，请阻止网络访问公共终结点。
+> Log Analytics 引入操作使用资源特定的终结点。 因此，它不遵循 AMPLS 访问模式。 若要确保 Log Analytics 引入请求无法访问 AMPLS 外部的工作区，请将网络防火墙设置为阻止流量发送到公共终结点，不管 AMPLS 访问模式如何。
 
 ### <a name="setting-access-modes-for-specific-networks"></a>设置特定网络的访问模式
 对 AMPLS 资源设置的访问模式会影响所有网络，但你可以替代特定网络的这些设置。

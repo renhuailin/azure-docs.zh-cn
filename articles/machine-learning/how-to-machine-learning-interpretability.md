@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何理解和说明机器学习模型使用 Azure 机器学习 Python SDK 在训练和推理期间进行预测的方式。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, responsible-ml
+ms.subservice: enterprise-readiness
+ms.topic: how-to
+ms.custom: responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: c517cf2fc8491d62cf2379c87acd2eaadde8fe15
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: e4298daf41d63ee9d0f90c171c29502806681070
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576425"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534783"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure 机器学习（预览版）中的模型可解释性
 
@@ -52,7 +52,7 @@ ms.locfileid: "107576425"
 + 在训练和推理期间，基于真实数据集大规模实现模型可解释性。
 + 使用交互式可视化仪表板在训练时发现数据中的模式和解释
 
-在机器学习中，“特征”是用于预测目标数据点的数据字段。 例如，若要预测信用风险，可以使用年龄、帐户大小和帐龄的数据字段。 在本例中，年龄、帐户大小和帐龄都是 **特征**。 特征重要性告知每个数据字段如何影响模型的预测。 例如，年龄可能在预测中广泛使用，而帐户大小和帐龄不会显著影响预测值。 此过程可让数据科学家解释生成的预测，使利益干系人能够洞察哪些特征在模型中最重要。
+在机器学习中，“特征”是用于预测目标数据点的数据字段。 例如，若要预测信用风险，可以使用年龄、帐户大小和帐龄的数据字段。 在本例中，年龄、帐户大小和帐龄都是 **特征**。 特征重要性告知每个数据字段如何影响模型的预测。 例如，年龄可能在预测中广泛使用，而帐户大小和帐户年龄不会显著影响预测值。 此过程可让数据科学家解释生成的预测，使利益干系人能够洞察哪些特征在模型中最重要。
 
 ## <a name="supported-interpretability-techniques"></a>支持的可解释性技术
 
