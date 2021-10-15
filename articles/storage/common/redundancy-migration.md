@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5b561e233deb5478be89f965bb059e68cfb7134f
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 47445520e92f6c7f4a8e5eb78c404b6875dbe017
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271205"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274057"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
@@ -151,7 +151,7 @@ az storage account update \
 > [!NOTE]
 > 高级文件共享仅适用于 LRS 和 ZRS。
 >
-> GZRS 存储帐户当前不支持存档层。 有关详细信息，请参阅 [Azure Blob 存储：热访问层、冷访问层和存档访问层](../blobs/storage-blob-storage-tiers.md)。
+> GZRS 存储帐户当前不支持存档层。 有关详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](../blobs/access-tiers-overview.md)。
 >
 > 托管磁盘仅适用于 LRS，不能迁移到 ZRS。 可将标准 SSD 托管磁盘的快照和映像存储在标准 HDD 存储上，并[在 LRS 与 ZRS 选项之间进行选择](https://azure.microsoft.com/pricing/details/managed-disks/)。 有关与可用性集集成的信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets)。
 

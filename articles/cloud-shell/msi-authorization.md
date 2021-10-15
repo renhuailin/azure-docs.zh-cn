@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Cloud Shell 中使用资源的托管标识
-description: 在 Azure Cloud Shell 中使用 MSI 对代码进行身份验证
+title: 在 Azure Cloud Shell 中获取用户令牌
+description: 如何在 Azure Cloud Shell 中获取经过身份验证的用户的令牌
 services: azure
 author: maertendMSFT
 ms.author: damaerte
@@ -9,42 +9,47 @@ ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/14/2018
-ms.openlocfilehash: 0fb19524079f84e92e1ddbc98a61917026492663
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/29/2021
+ms.openlocfilehash: 117fa3672c78de29cd88797add83fa6e3bf2bf79
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89469892"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362735"
 ---
-# <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中使用 Azure 资源的托管标识
+# <a name="acquire-a-token-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中获取令牌
 
-Azure Cloud Shell 支持使用 Azure 资源的托管标识进行授权。 可以使用此功能来检索访问令牌以便安全地与 Azure 服务进行通信。
+Azure Cloud Shell 提供一个终结点，该终结点会自动对登录到 Azure 门户的用户进行身份验证。 使用此终结点获取访问令牌后可以与 Azure 服务交互。
 
-## <a name="about-managed-identities-for-azure-resources"></a>关于 Azure 资源的托管标识
-生成云应用程序时需要应对的常见挑战是，如何安全地管理为了通过云服务的身份验证而需要插入到代码中的凭据。 在 Cloud Shell 中，可能需要授权从 Key Vault 中检索脚本可能需要的凭据。
+## <a name="authenticating-in-the-cloud-shell"></a>在 Azure Cloud Shell 中进行身份验证
+Azure Cloud Shell 具有自己的终结点，该终结点与浏览器交互以自动完成登录。 当此终结点收到请求时，它会将请求发送回浏览器，浏览器会将请求转发到父级门户框架。 门户窗口向 Azure Active Directory 发出请求，并返回生成的令牌。
 
-Azure 资源的托管标识为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
+如果要使用不同的凭据进行身份验证，可以使用 `az login` 或 `Connect-AzAccount`
 
-## <a name="acquire-access-token-in-cloud-shell"></a>在 Cloud Shell 中获取访问令牌
+## <a name="acquire-and-use-access-token-in-cloud-shell"></a>在 Cloud Shell 中获取和使用访问令牌
 
-执行以下命令来将 MSI 访问令牌设置为环境变量 `access_token`。
+### <a name="acquire-token"></a>获取令牌
+
+执行以下命令，将用户访问令牌设置为环境变量 `access_token`。
 ```
 response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
-echo The MSI access token is $access_token
+echo The access token is $access_token
+```
+
+### <a name="use-token"></a>使用令牌
+
+执行以下命令，使用在上一步获取的令牌取得帐户中所有虚拟机的列表。
+
+```
+curl https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines?api-version=2021-07-01 -H "Authorization: Bearer $access_token" -H "x-ms-version: 2019-02-02"
 ```
 
 ## <a name="handling-token-expiration"></a>处理令牌过期
 
-本地 MSI 子系统会缓存令牌。 因此，可以根据所需的频率调用令牌，仅当存在以下情况时，才在线调用 Azure AD 结果：
-- 由于缓存中没有令牌，发生了缓存未命中
-- 令牌已过期
+本地身份验证终结点会缓存令牌。 你可以随意调用它，只要缓存中未存储令牌，或者令牌已过期，才会发生 Azure Active Directory 身份验证调用。
 
-如果将令牌缓存在代码中，应该准备好处理资源指出令牌已过期的情况。
-
-若要处理令牌错误，请访问[有关获取 MSI 访问令牌的 MSI 页](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#error-handling)。
-
-## <a name="next-steps"></a>后续步骤
-[详细了解 MSI](../active-directory/managed-identities-azure-resources/overview.md)  
-[从 MSI VM 获取访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+## <a name="limitations"></a>限制
+- 资源允许列表对 Cloud Shell 令牌可以提供给哪些资源做出了限制。 如果运行命令后收到类似于 `"error":{"code":"AudienceNotSupported","message":"Audience https://newservice.azure.com/ is not a supported MSI token audience...."}` 的消息，说明你遇到了此限制。 你可以在 [GitHub](https://github.com/Azure/CloudShell/issues) 上提交问题，请求将此服务添加到允许列表。
+- 如果使用 `az login` 命令显式登录，则公司可能实施的任何条件访问规则都将基于 Cloud Shell 容器（而不是运行浏览器计算机）进行评估。 Cloud Shell 容器不视为这些策略的托管设备，因此权限可能会受到策略限制。
+- Azure 托管标识在 Azure Cloud Shell 中不可用。 [详细了解 Azure 托管标识](../active-directory/managed-identities-azure-resources/overview.md)。

@@ -3,17 +3,17 @@ title: 在 Azure 自动化中配置 runbook 输入参数
 description: 本文介绍如何配置 runbook 输入参数，通过这些参数可以在启动 runbook 时将数据传递给它。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/14/2019
+ms.date: 09/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 95a6cc87471fcf2209d452f90e1e5f52cae122c5
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 2b5f7f694d5287f8af900848f0671d7828a95288
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831287"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354079"
 ---
-# <a name="configure-runbook-input-parameters"></a>配置 Runbook 输入参数
+# <a name="configure-runbook-input-parameters-in-automation"></a>在自动化中配置 runbook 输入参数
 
 Runbook 输入参数允许在启动 Runbook 时向它传递数据，从而增加 Runbook 的灵活性。 这些参数可让 Runbook 操作以特定方案和环境为目标。 本文介绍如何在 runbook 中配置和使用输入参数。
 
@@ -71,7 +71,7 @@ Param
 
 ### <a name="configure-input-parameters-in-graphical-runbooks"></a>在图形 Runbook 中配置输入参数
 
-为了说明图形 Runbook 的输入参数配置，让我们创建输出有关虚拟机（可以是单个 VM 或资源组中的所有 VM）的详细信息的 Runbook。 有关详细信息，请参阅[我的第一个图形 Runbook](./learn/automation-tutorial-runbook-graphical.md)。
+为了说明图形 Runbook 的输入参数配置，让我们创建输出有关虚拟机（可以是单个 VM 或资源组中的所有 VM）的详细信息的 Runbook。 有关详细信息，请参阅[我的第一个图形 Runbook](./learn/powershell-runbook-managed-identity.md)。
 
 图形 runbook 使用以下主要 runbook 活动：
 
@@ -113,7 +113,7 @@ Param
 
 与 PowerShell、PowerShell 工作流和图形 Runbook 不同，Python Runbook 不使用命名参数。 Runbook 编辑器将所有输入参数分析为参数值的数组。 可以通过将 `sys` 模块导入 Python 脚本，然后使用 `sys.argv` 数组来访问数组。 请务必注意，数组的第一个元素 `sys.argv[0]` 是脚本的名称。 因此第一个实际输入参数是 `sys.argv[1]`。
 
-若要获取如何在 Python Runbook 中使用输入参数的示例，请参阅[我在 Azure 自动化中的第一个 Python Runbook](./learn/automation-tutorial-runbook-textual-python2.md)。
+若要获取如何在 Python Runbook 中使用输入参数的示例，请参阅[我在 Azure 自动化中的第一个 Python Runbook](./learn/automation-tutorial-runbook-textual-python-3.md)。
 
 ## <a name="assign-values-to-input-parameters-in-runbooks"></a>为 Runbook 中的输入参数赋值
 
@@ -288,7 +288,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 ### <a name="create-the-runbook"></a>创建 Runbook
 
-在 Azure 自动化中创建名为“Test-Json”的新 PowerShell Runbook。 请参阅[我的第一个 PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md)。
+在 Azure 自动化中创建名为“Test-Json”的新 PowerShell Runbook。
 
 要接受 JSON 数据，Runbook 必须将一个对象作为输入参数。 然后，Runbook 可以使用 JSON 文件中定义的属性。
 
@@ -298,17 +298,26 @@ Param(
      [object]$json
 )
 
-# Connect to Azure account
-$Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID `
-    -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 
 # Convert object to actual JSON
 $json = $json | ConvertFrom-Json
 
 # Use the values from the JSON object as the parameters for your command
-Start-AzVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
+Start-AzVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup -DefaultProfile $AzureContext
 ```
+
+如果希望 Runbook 使用系统分配的托管标识执行，请按原样保留代码。 如果希望使用用户分配的托管标识，则执行以下操作：
+1. 从第 10 行中删除 `$AzureContext = (Connect-AzAccount -Identity).context`，
+1. 将其替换为 `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context`，然后
+1. 输入客户端 ID。
 
 在自动化帐户中保存并发布此 Runbook。
 

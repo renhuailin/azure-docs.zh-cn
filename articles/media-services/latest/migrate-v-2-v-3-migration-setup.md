@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: ca8e0f2303ed31660e92f084c0f6760a60f40c22
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c2a08059de275efcfb3e65c6a316566a6a081830
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659469"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357948"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>步骤 3 - 进行设置，以迁移到 V3 REST API 或客户端 SDK
 
@@ -39,7 +39,7 @@ V2 API 中有两个不同的客户端 SDK，一个用于管理 API，可同构�
 
 V3 API 基于 Azure 资源管理 (ARM)。 它使用 Azure Active Directory (Azure AD) 服务主体 ID 和密钥连接到 API。 开发人员将需要创建服务主体或托管标识才能连接到 API。 在 V3 API 中，API 会使用标准 ARM 终结点，对其他所有 Azure 服务使用相似且一致的模型。
 
-以前使用 ARM 管理 API 2015-10-01 版本来管理其 V2 帐户的客户应使用支持 V3 API 访问的 ARM 管理 API 2020-05-01 版本。
+以前使用 2015-10-01 版本的 ARM 管理 API 来管理其 V2 帐户的客户应使用 2020-05-01（或更新）版本的 ARM 管理 API，新版本支持 V3 API 访问。
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>创建新的媒体服务帐户进行测试
 
@@ -69,7 +69,7 @@ V3 API 基于 Azure 资源管理 (ARM)。 它使用 Azure Active Directory (Azur
 使用 [Postman](./setup-postman-rest-how-to.md) 进行媒体服务 v3 REST API 调用。
 请阅读 [REST API 参考页面](/rest/api/media/)。
 
-应在 Postman 集合中使用 2020-05-01 版本字符串。
+应在 Postman 集合中使用 2020-05-01（或更新）版本的字符串。
 
 ## <a name="net"></a>[.NET](#tab/net)
 

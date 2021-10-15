@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b8ceea26ed7a5e58e890c4e313b00f1f4f37f4e7
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 32961477c21c55c21705790495436e2ed10b72fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967793"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568408"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -35,17 +35,19 @@ ms.locfileid: "122967793"
 > [!TIP]
 > Application Insights 的单个实例可用于多个 Azure AD B2C 租户。 然后可以在查询中按租户或策略名称进行筛选。 有关详细信息，请[参阅 Application Insights 中的日志](#see-the-logs-in-application-insights)示例。
 
-若要在订阅中使用现有的 Application Insights 实例，请执行以下步骤：
+要在订阅中使用现有的 Application Insights 实例，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure 订阅的目录（不是 Azure AD B2C 目录）。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 请确保使用的是包含 Azure 订阅的 Azure AD 目录，而不是 Azure AD B2C 目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. 打开之前创建的 Application Insights 资源。
 1. 在“概述”页上，记下“检测密钥” 
 
 若要在订阅中创建 Application Insights 的实例，请执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure 订阅的目录（不是 Azure AD B2C 目录）。
+1. 请确保使用的是包含 Azure 订阅的 Azure AD 目录，而不是 Azure AD B2C 目录。 在门户工具栏中选择“目录 + 订阅”图标。
+1. 在“门户设置 | 目录 + 订阅”页上，在“目录名称”列表中找到 Azure AD 目录，然后选择“切换”。
 1. 在左侧导航菜单中，选择“创建资源”。
 1. 搜索“Application Insights”并将其选中，然后选择“创建” 。
 1. 填写窗体，选择“查看 + 创建”，然后选择“创建” 。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, has-adal-ref
-ms.openlocfilehash: d016d7b5a88aa5413652fa3ed032c04680030142
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 2e214abaa6f193c3464025014757d49349aa388c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419160"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231969"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
@@ -133,11 +133,11 @@ Microsoft 标识平台支持对于以下应用体系结构的身份验证：
 
 ![设备代码流](media/scenarios/device-code-flow-app.svg)
 
-可以在公共客户端应用程序中使用[用户名/密码流](scenario-desktop-acquire-token.md#username-and-password)，不过我们并不建议使用。 在某些方案（例如 DevOps）中仍需要此流。
+可以在公共客户端应用程序中使用[用户名/密码流](scenario-desktop-acquire-token-username-password.md)，不过我们并不建议使用。 在某些方案（例如 DevOps）中仍需要此流。
 
 使用用户名/密码流会使应用程序受限。 例如，应用程序无法以需要使用 Azure AD 中的多重身份验证或条件访问的用户身份登录。 应用程序也无法受益于单一登录。 使用用户名/密码流进行身份验证的方式违反新式身份验证的原则，仅仅是出于遗留原因而提供的。
 
-在桌面应用中，如果希望令牌缓存持久，请自定义[令牌缓存序列化](scenario-desktop-acquire-token.md#file-based-token-cache)。 通过实施[双重令牌缓存序列化](scenario-desktop-acquire-token.md#dual-token-cache-serialization-msal-unified-cache--adal-v3)，可以使用后向兼容和前向兼容的令牌缓存。 这些令牌支持以前代系的身份验证库。 具体的库包括适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 版本 3 和 4。
+在桌面应用中，如果希望令牌缓存持久，请自定义[令牌缓存序列化](msal-net-token-cache-serialization.md)。 通过实施[双重令牌缓存序列化](msal-net-token-cache-serialization.md#dual-token-cache-serialization-msal-unified-cache-and-adal-v3)，可以使用后向兼容和前向兼容的令牌缓存。 这些令牌支持以前代系的身份验证库。 具体的库包括适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 版本 3 和 4。
 
 有关详细信息，请参阅[调用 Web API 的桌面应用](scenario-desktop-overview.md)。
 
@@ -224,7 +224,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
  </tr>
 
   <tr>
-   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt=Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
+   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt="Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
    <td rowspan="4"><a href="scenario-desktop-overview.md">用于调用 Web API 的 桌面应用</a></td>
    <td>使用<a href="v2-oauth2-auth-code-flow.md">授权代码</a>和 PKCE 的交互式方法</td>
    <td>工作或学校帐户、个人帐户和 Azure AD B2C</td>
@@ -241,7 +241,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
  </tr>
 
   <tr>
-   <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
+   <td><a href="scenario-desktop-acquire-token-device-code-flow.md"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">设备代码</a></td>
    <td>工作或学校帐户、个人帐户，但不是 Azure AD B2C 帐户</td>
  </tr>

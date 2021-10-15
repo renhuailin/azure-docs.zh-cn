@@ -1,39 +1,75 @@
 ---
-title: 添加架构以验证 XML
-description: 添加架构以便在带有 Enterprise Integration Pack 的 Azure 逻辑应用中验证 XML 文档。
+title: 添加架构以在工作流中验证 XML
+description: 通过 Azure 逻辑应用和 Enterprise Integration Pack 添加架构以在工作流中验证 XML 文档。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: dc55e70e9ceaa9546890b2ed7dd5df0d705b1a92
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/14/2021
+ms.openlocfilehash: 2c64deb35d89d6e1381fd3b296c7c73d82567ade
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099985"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363855"
 ---
-# <a name="add-schemas-to-validate-xml-in-azure-logic-apps"></a>添加架构以验证 Azure 逻辑应用中的 XML
+# <a name="add-schemas-to-validate-xml-in-workflows-with-azure-logic-apps"></a>使用 Azure 逻辑应用添加架构以在工作流中验证 XML
 
-若要检查文档是否使用有效的 XML 并包含适用于 Azure 逻辑应用中企业集成方案的预定义格式的所需数据，逻辑应用可以使用架构。 架构还可以验证逻辑应用在企业到企业 (B2B) 方案中交换的消息。
+若要检查文档是否使用有效的 XML 并包含预定义格式的所需数据，逻辑应用工作流可以使用 XML 架构进行“XML 验证”操作。 XML 架构使用 [XML 架构定义 (XSD)](https://www.w3.org/TR/xmlschema11-1/) 来描述以 XML 表示的业务文档。
 
-如果你不熟悉逻辑应用，请查看以下文档：
+如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](logic-apps-overview.md) 有关 B2B 企业集成的详细信息，请参阅[使用 Azure 逻辑应用和 Enterprise Integration Pack 构建的 B2B 企业集成工作流](logic-apps-enterprise-integration-overview.md)。
 
-* [什么是 Azure 逻辑应用 - 资源类型和主机环境](logic-apps-overview.md#resource-type-and-host-environment-differences)
+## <a name="prerequisites"></a>先决条件
 
-* [使用单租户 Azure 逻辑应用（标准版）创建集成工作流](create-single-tenant-workflows-azure-portal.md)
+* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* [创建单租户逻辑应用工作流](create-single-tenant-workflows-azure-portal.md)
+* 若要创建架构，可使用以下工具：
 
-* [适用于 Azure 逻辑应用的使用量计量、计费和定价模型](logic-apps-pricing.md)
+  * Visual Studio 2019 和 [Microsoft Azure 逻辑应用企业集成工具扩展](https://aka.ms/vsenterpriseintegrationtools)。
+
+  * Visual Studio 2015 和[适用于 Visual Studio 2015 2.0 的 Microsoft Azure 逻辑应用企业集成工具](https://aka.ms/vsmapsandschemas)扩展。
+
+   > [!IMPORTANT]
+   > 不要将此扩展与 BizTalk Server 扩展一起安装。 同时具有这两个扩展可能会导致意外行为。 请确保只安装其中一个扩展。
+
+   > [!NOTE]
+   > 在高分辨率监视器上，可能会在 Visual Studio 中遇到[地图设计器显示问题](/visualstudio/designers/disable-dpi-awareness)。 若要解决此显示问题，请[在 DPI 无感知模式下重启 Visual Studio](/visualstudio/designers/disable-dpi-awareness#restart-visual-studio-as-a-dpi-unaware-process) 或添加 [DPIUNAWARE 注册表值](/visualstudio/designers/disable-dpi-awareness#add-a-registry-entry)。
+
+* 一个可以在其中定义和存储项目（如贸易合作伙伴、协议、证书等）的[集成帐户资源](logic-apps-enterprise-integration-create-integration-account.md)，用于企业集成和 B2B 工作流。 此资源必须满足以下要求：
+
+  * 与逻辑应用资源所在的同一个 Azure 订阅相关联。
+
+  * 与你打算在其中使用 XML 验证操作的逻辑应用资源位于同一个位置或 Azure 区域。
+
+  * 如果使用的是[“逻辑应用（消耗）”资源类型](logic-apps-overview.md#resource-type-and-host-environment-differences)，必须[将集成帐户链接到逻辑应用资源](logic-apps-enterprise-integration-create-integration-account.md#link-account)，然后才能在工作流中使用项目。
+
+    若要创建和添加要在“逻辑应用（消耗）”工作流中使用的架构，尚不需要逻辑应用资源。 但是，当你准备好在工作流中使用这些架构时，逻辑应用资源需有一个用于存储这些架构的链接集成帐户。
+
+  * 如果使用的是[“逻辑应用（标准）”资源类型](logic-apps-overview.md#resource-type-and-host-environment-differences)，则需要一个现有的逻辑应用资源，因为你不会在集成帐户中存储架构。 但可以使用 Azure 门户或 Visual Studio Code 将架构直接添加到逻辑应用资源。 然后，可以在同一逻辑应用资源中跨多个工作流使用这些架构。
+
+    你仍需要一个集成帐户，用来存储其他项目（例如合作伙伴、协议和证书），以及使用 [AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](logic-apps-enterprise-integration-edifact.md) 操作。 但是，你不需要将逻辑应用资源链接到集成帐户，因此链接功能不存在。 集成帐户仍必须满足其他要求，例如，使用相同的 Azure 订阅并与逻辑应用资源存在于同一位置。
+
+    > [!NOTE]
+    > 目前，仅“逻辑应用(消耗)”资源类型支持 [RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作。 “逻辑应用(标准)”资源类型不包括 [RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作。
+
+* 如果架构为 [2 MB 或更小](#smaller-schema)，可以直接从 Azure 门户将架构添加到集成帐户。 但是，如果架构大于 2 MB 但不超过[架构大小限制](logic-apps-limits-and-config.md#artifact-capacity-limits)，则你可以将架构上传到 Azure 存储帐户。 若要将该架构添加到集成帐户，可以从集成帐户链接到存储帐户。 若要完成此任务，需要提供以下各项：
+
+    | 项 | 说明 |
+    |------|-------------|
+    | [Azure 存储帐户](../storage/common/storage-account-overview.md) | 在此帐户中为架构创建一个 Azure Blob 容器。 了解[如何创建存储帐户](../storage/common/storage-account-create.md)。 |
+    | Blob 容器 | 在此容器中可以上传架构。 稍后在将架构添加到集成帐户时，也需要提供此容器的内容 URI。 了解如何[创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |
+    | [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 借助此工具可以更轻松地管理存储帐户和 Blob 容器。 若要使用存储资源管理器，请选择一个步骤： <p>- 在 Azure 门户中选择你的存储帐户。 在存储帐户菜单中选择“存储资源管理器”。  <p>- 对于桌面版本，请[下载并安装 Azure 存储资源管理器](https://www.storageexplorer.com/)。 然后，遵循[存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)中的步骤将存储资源管理器连接到存储帐户。 若要了解详细信息，请参阅[快速入门：使用 Azure 存储资源管理器在对象存储中创建 Blob](../storage/blobs/quickstart-storage-explorer.md)。  |
+    |||
+
+  若要为“逻辑应用（消耗）”资源类型添加更大的架构，还可使用 [Azure 逻辑应用 REST API - 架构](/rest/api/logic/schemas/create-or-update)。 但是，对于“逻辑应用（标准）”资源类型，Azure 逻辑应用 REST API 目前不可用。
 
 ## <a name="limits"></a>限制
 
-* 对于标准型逻辑应用资源，架构文件大小没有限制。
+* 对于“逻辑应用（标准）”，架构文件大小没有限制。
 
-* 对于消耗型逻辑应用资源，集成帐户和项目（例如架构）存在限制。 有关详细信息，请查看 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
+* 对于“逻辑应用（消耗）”，集成帐户和项目（例如架构）存在限制。 有关详细信息，请查看 [Azure 逻辑应用的限制和配置信息](logic-apps-limits-and-config.md#integration-account-limits)。
 
   通常，当将集成帐户与工作流结合使用并且想要验证 XML 时，可以将架构添加或上传到该帐户。 如果要引用或导入未在集成帐户中的架构，则在使用 `xsd:redefine` 元素时可能会收到以下错误：
 
@@ -41,38 +77,11 @@ ms.locfileid: "123099985"
 
   要解决此错误，需要使用元素 `xsd:import` 或 `xsd:include`，而不是 `xsd:redefine`，或使用 URI。
 
-## <a name="prerequisites"></a>先决条件
-
-* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-* 如果使用的是逻辑应用（标准）资源类型，则不需要集成帐户， 你可以在 Azure 门户或 Visual Studio Code 中将架构直接添加到逻辑应用资源。 然后，可以在同一逻辑应用资源中跨多个工作流使用这些架构。
-
-* 如果使用的是逻辑应用（消耗）资源类型，则需有一个[集成帐户资源](logic-apps-enterprise-integration-create-integration-account.md)，可在其中存储要在企业集成和企业到企业 (B2B) 解决方案中使用的架构和其他项目。 此资源必须满足以下要求：
-
-  * 与逻辑应用资源所在的同一个 Azure 订阅相关联。
-
-  * 与你打算在其中使用 XML 验证操作的逻辑应用资源位于同一个位置或 Azure 区域。
-
-  * 已[链接](logic-apps-enterprise-integration-create-integration-account.md#link-account)到你要在其中使用架构的逻辑应用资源。
-
-    若要创建和添加要在消耗型逻辑应用工作流中使用的架构，尚不需要逻辑应用资源。 但是，当你准备好在工作流中使用这些架构时，逻辑应用资源需有一个用于存储这些架构的链接集成帐户。
-
-* 如果架构为 [2 MB 或更小](#smaller-schema)，可以直接从 Azure 门户将架构添加到集成帐户。 但是，如果架构大于 2 MB 但不超过[架构大小限制](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)，则你可以将架构上传到 Azure 存储帐户。 若要将该架构添加到集成帐户，可以从集成帐户链接到存储帐户。 若要完成此任务，需要提供以下各项：
-
-    | 项 | 说明 |
-    |------|-------------|
-    | [Azure 存储帐户](../storage/common/storage-account-overview.md) | 在此帐户中为架构创建一个 Azure Blob 容器。 了解[如何创建存储帐户](../storage/common/storage-account-create.md)。 |
-    | Blob 容器 | 在此容器中可以上传架构。 稍后在将架构添加到集成帐户时，也需要提供此容器的内容 URI。 了解如何[创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |
-    | [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 借助此工具可以更轻松地管理存储帐户和 Blob 容器。 若要使用存储资源管理器，请选择一个步骤： <p>- 在 Azure 门户中选择你的存储帐户。 在存储帐户菜单中选择“存储资源管理器”。  <p>- 对于桌面版本，请[下载并安装 Azure 存储资源管理器](https://www.storageexplorer.com/)。 然后，遵循[存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)中的步骤将存储资源管理器连接到存储帐户。 若要了解详细信息，请参阅[快速入门：使用 Azure 存储资源管理器在对象存储中创建 Blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。  |
-    |||
-
-  若要为消耗型逻辑应用资源添加更大的映射，还可使用 [Azure 逻辑应用 REST API - 架构](/rest/api/logic/schemas/create-or-update)。 但是，对于标准型逻辑应用资源，Azure 逻辑应用 REST API 目前不可用。
-
-<a name="add-schemas"></a>
+<a name="add-schema"></a>
 
 ## <a name="add-schemas"></a>添加架构
 
-### <a name="consumption-resource"></a>[消耗型资源](#tab/consumption-1)
+### <a name="consumption"></a>[消耗](#tab/consumption)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，使用 Azure 帐户凭据登录。
 
@@ -90,9 +99,9 @@ ms.locfileid: "123099985"
 
 ### <a name="add-schemas-up-to-2-mb"></a>添加不超过 2 MB 的架构
 
-1. 在“添加架构”下，输入架构的名称。 将“小文件”保持选定状态。  选择“架构”框旁边的文件夹图标。 找到并选择要上传的架构。
+1. 在“添加架构”窗格中，输入架构的名称。 将“小文件”保持选定状态。  选择“架构”框旁边的文件夹图标。 找到并选择要上传的架构。
 
-1. 准备就绪后，请选择“确定”。
+1. 完成后，请选择“确定”。
 
    完成架构上传后，该架构将显示在“架构”列表中。
 
@@ -152,7 +161,7 @@ ms.locfileid: "123099985"
 
 完成架构上传后，该架构将显示在“架构”列表中。 在集成帐户“概述”页的“项目”下，会显示上传的架构 。
 
-### <a name="standard-resource"></a>[标准型资源](#tab/standard-1)
+### <a name="standard"></a>[标准](#tab/standard)
 
 #### <a name="azure-portal"></a>Azure 门户
 
@@ -160,11 +169,11 @@ ms.locfileid: "123099985"
 
 1. 在“架构”窗格工具栏中选择“添加” 。
 
-1. 在“添加架构”下，输入架构的唯一名称。
+1. 在“添加架构”窗格中，输入架构的唯一名称。
 
 1. 选择“架构”框旁边的文件夹图标。 选择要上传的架构。
 
-1. 准备就绪后，请选择“确定”。
+1. 完成后，请选择“确定”。
 
    完成架构文件上传后，该架构将显示在“架构”列表中。 在集成帐户“概述”页的“项目”下，也会显示上传的架构 。
 
@@ -176,11 +185,13 @@ ms.locfileid: "123099985"
 
 ---
 
-## <a name="edit-schemas"></a>编辑架构
+<a name="edit-schema"></a>
+
+## <a name="edit-a-schema"></a>编辑架构
 
 若要更新现有的架构，必须上传一个新的架构文件，其中包含所要做出的更改。 但是，可以先下载现有的架构进行编辑。
 
-### <a name="consumption-resource"></a>[消耗型资源](#tab/consumption-2)
+### <a name="consumption"></a>[消耗](#tab/consumption)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，打开你的集成帐户（如果尚未打开）。
 
@@ -192,9 +203,11 @@ ms.locfileid: "123099985"
 
 1. 找到并选择要上传的已更新架构。
 
+1. 完成后，请选择“确定”。
+
    完成架构文件的上传后，更新的架构将显示在“架构”列表中。
 
-### <a name="standard-resource"></a>[标准型资源](#tab/standard-2)
+### <a name="standard"></a>[标准](#tab/standard)
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开你的逻辑应用资源（如果尚未打开）。
 
@@ -204,19 +217,21 @@ ms.locfileid: "123099985"
 
 1. 在“架构”窗格工具栏中选择“添加” 。
 
-1. 在“添加架构”下，输入架构的唯一名称。
+1. 在“添加架构”窗格中，输入架构的唯一名称。
 
 1. 选择“架构”框旁边的文件夹图标。 选择要上传的架构。
 
-1. 准备就绪后，请选择“确定”。
+1. 完成后，请选择“确定”。
 
    完成架构文件的上传后，更新的架构将显示在“架构”列表中。
 
 ---
 
-## <a name="delete-schemas"></a>删除架构
+<a name="delete-schema"></a>
 
-### <a name="consumption-resource"></a>[消耗型资源](#tab/consumption-3)
+## <a name="delete-a-schema"></a>删除架构
+
+### <a name="consumption"></a>[消耗](#tab/consumption)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，打开你的集成帐户（如果尚未打开）。
 
@@ -226,7 +241,7 @@ ms.locfileid: "123099985"
 
 1. 若要确认删除该架构，请选择“是”。
 
-### <a name="standard-resource"></a>[标准型资源](#tab/standard-3)
+### <a name="standard"></a>[标准](#tab/standard)
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开你的逻辑应用资源（如果尚未打开）。
 

@@ -1,5 +1,5 @@
 ---
-title: 什么是工作区
+title: 什么是工作区？
 titleSuffix: Azure Machine Learning
 description: 工作区是 Azure 机器学习的顶级资源。 它保留所有训练运行的历史记录，包括日志、指标、输出和脚本快照。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: 37e6573e1bc26bc79477cf532ef442964f760985
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 01ad9aaa69d0034daacf559bc5d909c27bfa6a01
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226789"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429141"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -115,7 +115,12 @@ ms.locfileid: "123226789"
 
   若要使用现有 Azure 存储帐户，则该帐户不能是 BlobStorage 类型或高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户既不支持高级存储也不支持分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
   
-+ [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练期间和部署模型时使用的 Docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”。
++ [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册用于以下组件的 docker 容器：
+    * 训练和部署模型时为 [Azure 机器学习环境](concept-environments.md)
+    * 部署时为 [AutoML](concept-automated-ml.md)
+    * [数据事件探查](how-to-connect-data-ui.md#data-profile-and-preview)
+
+    为了最大程度地降低成本，ACR 在需要映像之前会“延迟加载”。
 
     > [!NOTE]
     > 如果订阅设置需要向其下的资源添加标记，则 Azure 机器学习创建的 Azure 容器注册表 (ACR) 将失败，因为我们无法将标记设置为 ACR。

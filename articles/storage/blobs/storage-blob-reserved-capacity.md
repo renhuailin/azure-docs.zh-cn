@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 5f130e2367ed2fa4c9095479e9ff9d9722b010e5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 14f8cc665ef1d7335116a2e5b68ea3f58424063a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098535"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274437"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>借助预留容量优化 Blob 存储的成本
 
@@ -34,7 +34,7 @@ Azure 存储预留容量可大幅降低用于块 blob 和 Azure Data Lake Storag
 
 ### <a name="reservation-scope"></a>预留范围
 
-Azure 存储预留容量可用于单个订阅或多个订阅（共享范围）。 当范围为单个订阅时，预留折扣仅适用于所选订阅。 当范围为多个订阅时，预留折扣将在客户的计费背景下在这些订阅之间共享。
+Azure 存储预留容量可用于单个订阅、多个订阅（共享范围）和管理组。 当范围为单个订阅时，预留折扣仅适用于所选订阅。 当范围为多个订阅时，预留折扣将在客户的计费背景下在这些订阅之间共享。 当范围限定为管理组时，预留折扣在同时属于管理组和计费范围的订阅之间共享。
 
 如果要购买 Azure 存储预留容量，则可以将预留用于块 blob 和 Azure Data Lake Storage Gen2 数据。 预留适用于在所购买的范围内使用，且不能仅限于订阅中的特定存储帐户、容器或对象。
 
@@ -44,12 +44,12 @@ Azure 存储预留仅涵盖订阅或共享资源组中存储的数据量。 预�
 
 Azure 存储预留容量适用于标准存储帐户中的资源，包括常规用途 v2 (GPv2) 和 Blob 存储帐户。
 
-所有访问层（热、冷和存档）都支持预留。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热访问层、冷访问层和存档访问层](storage-blob-storage-tiers.md)。
+所有访问层（热、冷和存档）都支持预留。 有关访问层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 
 所有类型的冗余都支持预留。 有关冗余选项的详细信息，请参阅 [Azure 存储冗余](../common/storage-redundancy.md)。
 
 > [!NOTE]
-> Azure 存储预留容量不适用于高级存储帐户、常规用途 v1 (GPv1) 存储帐户、Azure Data Lake Storage Gen1、页 blob、Azure 队列存储或 Azure 表存储。 有关 Azure 文件存储预留容量的信息，请参阅[借助预留容量优化 Azure 文件存储的成本](../files/files-reserve-capacity.md)。  
+> Azure 存储预留容量不适用于高级存储帐户、常规用途 v1 (GPv1) 存储帐户、Azure Data Lake Storage Gen1、页 blob、Azure 队列存储或 Azure 表存储。 有关 Azure 文件存储预留容量的信息，请参阅[借助预留容量优化 Azure 文件存储的成本](../files/files-reserve-capacity.md)。
 
 ### <a name="security-requirements-for-purchase"></a>购买的安全要求
 
@@ -61,7 +61,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
 ## <a name="determine-required-capacity-before-purchase"></a>在购买之前确定所需容量
 
-购买 Azure 存储预留时，必须选择预留的区域、访问层和冗余选项。 预留仅对存储在该区域、访问层和冗余级别中的数据有效。 例如，假设你使用区域冗余存储 (ZRS) 为美国西部的数据购买热层预留。 你不能将相同的预留用于美国东部的数据、存档层中的数据或异地冗余存储 (GRS) 中的数据。 不过，你可以购买其他预留来满足自己的其他需求。  
+购买 Azure 存储预留时，必须选择预留的区域、访问层和冗余选项。 预留仅对存储在该区域、访问层和冗余级别中的数据有效。 例如，假设你使用区域冗余存储 (ZRS) 为美国西部的数据购买热层预留。 你不能将相同的预留用于美国东部的数据、存档层中的数据或异地冗余存储 (GRS) 中的数据。 不过，你可以购买其他预留来满足自己的其他需求。
 
 预留适用于 100 TiB 或 1 PiB 的块，并且 1 PiB 的块具有更高的折扣。 在 Azure 门户中购买预留时，Microsoft 可能会根据你之前的使用情况提供建议，帮助你确定应购买的预留。
 
@@ -73,18 +73,18 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
 请按照以下步骤购买预留容量：
 
-1. 导航到 Azure 门户中的[购买预留](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand)窗格。  
-1. 选择“Azure Blob 存储”购买新的预留。  
+1. 导航到 Azure 门户中的[购买预留](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand)窗格。
+1. 选择“Azure Blob 存储”购买新的预留。
 1. 填写必填字段，如下表所示：
 
     ![显示如何购买预留容量的屏幕截图](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
-   |字段  |描述  |
+   |字段  |说明  |
    |---------|---------|
    |**范围**   |  指示可享受与预留关联的计费权益的订阅数。 它还控制将预留应用于特定订阅的方式。 <br/><br/> 如果选择“共享”，则预留折扣将应用到计费背景下任何订阅中的 Azure 存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包括由帐户管理员创建的所有采用即用即付费率的个人订阅。  <br/><br/>  如果选择“单个订阅”，预留折扣将应用到所选订阅中的 Azure 存储容量。 <br/><br/> 如果选择“单个资源组”，预留折扣将应用到所选订阅中的 Azure 存储容量，以及该订阅内的所选资源组。 <br/><br/> 购买预留后，可以更改预留范围。  |
    |**订阅**  | 用于支付 Azure 存储预留的订阅。 收取费用时将采用所选订阅中的付款方式。 订阅必须是以下类型之一： <br/><br/>  企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）：对于企业订阅，从注册的 Azure 预付款余额（以前称为货币承诺）中扣除费用或作为超额费用收取。 <br/><br/> 采用即用即付费率的个人订阅（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）：对于采用即用即付费率的个人订阅，通过信用卡收取费用或按订阅中的发票付款方式收费。    |
    | **区域** | 预留有效的区域。 |
-   | **访问层** | 预留所适用的访问层。 选项包括“热”、“冷”或“存档”  。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。 |
+   | **访问层** | 预留所适用的访问层。 选项包括“热”、“冷”或“存档”  。 有关访问层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。 |
    | **冗余** | 预留的冗余选项。 选项包括“LRS”、“ZRS”、“GRS”、“GZRS”、“RA-GRS”和“RA-GZRS”     。 有关冗余选项的详细信息，请参阅 [Azure 存储冗余](../common/storage-redundancy.md)。 |
    | **计费频率** | 指示帐户按预留计费的频率。 选项包括“月付”或“预付” 。 |
    | **大小** | 要预留的容量总量。 |

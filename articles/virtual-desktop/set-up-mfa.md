@@ -1,17 +1,17 @@
 ---
-title: 为 Azure 虚拟桌面设置 Azure 多重身份验证 - Azure
-description: 如何设置 Azure 多重身份验证来提高 Azure 虚拟桌面中的安全性。
+title: 为 Azure 虚拟桌面启用 Azure 多重身份验证 - Azure
+description: 如何设置 Azure 多重身份验证，使 Azure 虚拟桌面更安全。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6e01b132dd68fd711af30f816df15795991efd41
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2e86597f0307699c2fc4cac9f48eac5b884e8df3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754180"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363604"
 ---
 # <a name="enable-azure-multifactor-authentication-for-azure-virtual-desktop"></a>为 Azure 虚拟桌面启用 Azure 多重身份验证
 
@@ -40,8 +40,8 @@ ms.locfileid: "111754180"
 下面介绍如何创建一个条件访问策略，要求在连接到 Azure 虚拟桌面时进行多重身份验证：
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-2. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-3. 选择“新策略”  。
+2. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+3. 选择“新策略”。
 4. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 5. 在“分配”  下，选择“用户和组”  。
 6. 在“包括”下面，选择“选择用户和组” > “用户和组”，然后选择你在[先决条件](#prerequisites)阶段中创建的组。

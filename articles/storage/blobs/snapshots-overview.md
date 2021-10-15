@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 46820f1dd17d3393afa7c70ac5beaca1af98ffef
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 437211ae50404443dee30e5a9c8141ea09d69244
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123477539"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278550"
 ---
 # <a name="blob-snapshots"></a>Blob 快照
 
@@ -71,7 +71,7 @@ VHD 文件用于存储 VM 磁盘的当前信息和状态。 可以将磁盘从 V
 
 创建快照（它是 Blob 的只读副本）会导致帐户产生额外的数据存储费用。 在设计应用程序时，有必要了解在哪些情况下会产生这些费用，以便最大程度地减少费用。
 
-Blob 快照和 blob 版本一样，按与活动数据相同的费率计费。 如何对快照（或版本）进行计费取决于是否已为基本 blob 或其任何快照显式设置层级。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。
+Blob 快照和 blob 版本一样，按与活动数据相同的费率计费。 如何对快照（或版本）进行计费取决于是否已为基本 blob 或其任何快照显式设置层级。 有关 Blob 层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 
 如果尚未更改 blob 或快照的层级，则会对该 blob 及其快照以及其具有的任何版本中不重复的数据块进行计费。 有关详细信息，请参阅[在未显式设置 blob 层级时进行计费](#billing-when-the-blob-tier-has-not-been-explicitly-set)。
 
@@ -151,7 +151,7 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 在启用了 blob 软删除的情况下，如果删除或覆盖已显式设置其层级的基本 blob，则软删除的 blob 的任何先前版本都将按完整内容长度进行计费。 有关如何结合使用 blob 版本控制和软删除的详细信息，请参阅 [Blob 版本控制和软删除](versioning-overview.md#blob-versioning-and-soft-delete)。
 
-下表描述了软删除的 blob 的计费行为，具体取决于是启用还是禁用了版本控制。 启用版本控制后，软删除 blob 时将创建一个新版本。 禁用版本控制后，软删除 blob 时将创建软删除快照。
+下表描述了软删除的 blob 的计费行为，具体取决于是启用还是禁用了版本控制。 启用版本控制后，软删除 blob 时将创建一个新版本。 禁用版本控制后，软删除 blob 时将创建一个软删除快照。
 
 | 当你覆盖已显式设置了其层级的基本 blob 时... | 你需要为以下项付费 |
 |-|-|
@@ -160,11 +160,11 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。 
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![否](../media/icons/no-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![否](../media/icons/no-icon.png) |
 | 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![否](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。

@@ -2,14 +2,14 @@
 title: Azure 备份支持矩阵
 description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
-ms.date: 08/23/2021
+ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: f6101485f7dfab8d956a552edc2e77d85a6e2d9e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: eee136952f2830e8d204a2d5346c97101be2a7da
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425808"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363436"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -160,10 +160,10 @@ Azure 备份添加了“跨区域还原”功能以增强数据可用性和复�
 
 资源运行状况检查适用于以下情况：
 
-|     |     |
+| 源运行状况    | 详细信息    |
 | --- | --- |
 | **支持的资源** | 恢复服务保管库 |
-| **支持的区域** | 美国东部 2、美国中部、北欧、法国中部、东亚、日本东部、日本西部、澳大利亚东部、南非北部。 |
+| **支持的区域** | 美国东部、美国东部 2、美国中部、美国中南部、美国中北部、美国中西部、美国西部、美国西部 2、美国西部 3、加拿大东部、加拿大中部、北欧、西欧、英国西部、英国南部、法国中部、法国南部、瑞典中部、瑞典南部、东亚、东南亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚中部、澳大利亚中部 2、澳大利亚东南部、南非北部、南非西部、阿拉伯联合酋长国北部、阿拉伯联合酋长国中部、巴西东南部、巴西南部、瑞士北部、瑞士西部、挪威东部、挪威西部、德国北部、德国中西部、印度西部、印度中部、印度南部、Jio 印度西部、Jio 印度中部。 |
 | **对于不支持的区域** | 资源运行状况显示为“未知”。 |
 
 

@@ -1,23 +1,25 @@
 ---
-title: 验证 B2B 企业集成的 XML
-description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用架构验证 XML。
+title: 在企业集成工作流中验证 XML
+description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 在工作流中通过架构验证 XML。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: 87650a1ab950f8e88fe08a1c4555c98652776730
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/15/2021
+ms.openlocfilehash: f295054913dbf275533d4d14f39497071c6984a8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099272"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353221"
 ---
-# <a name="validate-xml-for-workflows-in-azure-logic-apps"></a>在 Azure 逻辑应用中验证工作流的 XML
+# <a name="validate-xml-in-workflows-with-azure-logic-apps"></a>使用 Azure 逻辑应用在工作流中验证 XML
 
-通常在企业集成企业对企业 (B2B) 方案中，协议中的贸易合作伙伴需确保他们交换的消息有效，才能开始处理数据。 可使用 Azure 逻辑应用中的 XML 验证操作针对预定义的架构验证文档。
+在企业集成企业对企业 (B2B) 方案中，协议中的贸易合作伙伴通常需确保他们交换的消息有效，才能开始处理数据。 逻辑应用工作流可以使用 XML 验证操作和预定义[架构](logic-apps-enterprise-integration-schemas.md)来验证 XML 消息和文档。
+
+如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](logic-apps-overview.md) 有关 B2B 企业集成的详细信息，请参阅[使用 Azure 逻辑应用和 Enterprise Integration Pack 构建的 B2B 企业集成工作流](logic-apps-enterprise-integration-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,33 +29,30 @@ ms.locfileid: "123099272"
 
   如果具有空白工作流，请使用所需的任何触发器。 此示例使用请求触发器。
 
-  如果你刚接触逻辑应用，请查看以下文档：
-
-  * [什么是 Azure 逻辑应用](logic-apps-overview.md)
-
-  * [快速入门：创建第一个逻辑应用工作流](quickstart-create-first-logic-app-workflow.md)
-
-  * [创建单租户逻辑应用工作流](create-single-tenant-workflows-azure-portal.md)
-
-  * [适用于 Azure 逻辑应用的使用量计量、计费和定价模型](logic-apps-pricing.md)
-
-* 如果使用的是逻辑应用（消耗）资源类型，则需要具有满足以下要求的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)：
+* 一个可以在其中定义和存储项目（如贸易合作伙伴、协议、证书等）的[集成帐户资源](logic-apps-enterprise-integration-create-integration-account.md)，用于企业集成和 B2B 工作流。 此资源必须满足以下要求：
 
   * 与逻辑应用资源所在的同一个 Azure 订阅相关联。
 
-  * 与你打算在其中使用 XML 验证操作的逻辑应用资源位于同一个位置或 Azure 区域。
+  * 与你打算在其中使用 XML 验证* 操作的逻辑应用资源位于同一个位置或 Azure 区域。
 
-  * [链接](logic-apps-enterprise-integration-create-integration-account.md#link-account)到逻辑应用资源。
+  * 如果使用的是[“逻辑应用(消耗)”资源类型](logic-apps-overview.md#resource-type-and-host-environment-differences)，则集成帐户需要以下项：
 
-  * 包含[架构](logic-apps-enterprise-integration-schemas.md)以用于验证 XML 内容。
+    * [架构](logic-apps-enterprise-integration-schemas.md)，用于验证 XML 内容。
 
-  如果使用的是逻辑应用（标准）资源类型，则不需要链接集成帐户。 然而，仍必须添加[架构](logic-apps-enterprise-integration-schemas.md)以用于验证逻辑应用资源的 XML 内容。 你可以在“架构”部分“设置”下的逻辑应用资源的菜单上完成此任务 。
+    * [逻辑应用资源的链接](logic-apps-enterprise-integration-create-integration-account.md#link-account)。
+
+  * 如果使用的是[“逻辑应用(标准)”资源类型](logic-apps-overview.md#resource-type-and-host-environment-differences)，则不在集成帐户中存储架构， 但可以使用 Azure 门户或 Visual Studio Code [将架构直接添加到逻辑应用资源](logic-apps-enterprise-integration-schemas.md)。 然后，可以在同一逻辑应用资源中跨多个工作流使用这些架构。
+
+    你仍需要一个集成帐户，用来存储其他项目（例如合作伙伴、协议和证书），以及使用 [AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](logic-apps-enterprise-integration-edifact.md) 操作。 但是，你不需要将逻辑应用资源链接到集成帐户，因此链接功能不存在。 集成帐户仍必须满足其他要求，例如，使用相同的 Azure 订阅并与逻辑应用资源存在于同一位置。
+
+    > [!NOTE]
+    > 目前，仅“逻辑应用(消耗)”资源类型支持 [RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作。 “逻辑应用(标准)”资源类型不包括 [RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作。
 
 ## <a name="add-xml-validation-action"></a>添加 XML 验证操作
 
 1. 在 [Azure 门户](https://portal.azure.com)的设计器视图中打开逻辑应用和工作流。
 
-1. 如果有一个没有触发器的空白逻辑应用，请添加所需的任何触发器。 此示例使用请求触发器。 否则，继续执行下一步。
+1. 如果你有一个没有触发器的空白逻辑应用，请添加所需的任何触发器。 本例中使用的是请求触发器。 否则，继续执行下一步。
 
    若要添加请求触发器，请在设计器搜索框中输入 `HTTP request`，然后选择名为“收到 HTTP 请求时”的请求设计器。
 
@@ -75,15 +74,15 @@ ms.locfileid: "123099272"
 
 1. 若要指定验证的 XML 内容，请在“内容”框中单击，以显示动态内容列表。
 
-   动态内容列表显示了属性标记，这些标记表示工作流中前面步骤的输出。 如果列表不显示预期属性，请检查列表中的触发器或操作标题，以及你是否可以选择“查看详细信息”。
+   动态内容列表显示了属性标记，这些标记表示工作流中前面步骤的输出。 如果列表不显示预期属性，请检查列表中的触发器或操作标题，并看看你是否可以选择“查看详细信息”。
 
-   对于基于消耗或 ISE 计划的逻辑应用，设计器如下例所示：
+   对于基于消耗或 ISE 计划的逻辑应用，设计器如下面的示例所示：
 
-   ![显示多租户设计器的屏幕截图，其中打开了动态内容列表，光标在“内容”框中，并打开了动态内容列表。](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-multi-tenant.png)
+   ![显示多租户设计器的屏幕截图，其中打开了动态内容列表，光标位于“内容”框中，并打开了动态内容列表。](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-multi-tenant.png)
 
-   对于基于计划的标准逻辑应用，设计器如下例所示：
+   对于基于标准计划的逻辑应用，设计器如下面的示例所示：
 
-   ![显示单租户设计器的屏幕截图，其中打开了动态内容列表，光标在“内容”框中，并打开了动态内容列表](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-single-tenant.png)
+   ![显示单租户设计器的屏幕截图，其中打开了动态内容列表，光标位于“内容”框中，并打开了动态内容列表](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-single-tenant.png)
 
 1. 从动态内容列表中，选择要验证的内容的属性令牌。
 
@@ -96,6 +95,8 @@ ms.locfileid: "123099272"
    你现在已设置好 XML 验证操作。 在实际应用中，可能需要将已验证的数据存储在业务线 (LOB) 应用（如 SalesForce）中。 要将已验证的输出发送到 Salesforce，请添加 Salesforce 操作。
 
 1. 若要测试验证操作，请触发并运行工作流。 例如，对于请求触发器，将请求发送到触发器的终结点 URL。
+
+   XML 验证操作在工作流被触发后运行，以及在 XML 内容可用于验证时运行。
 
 ## <a name="next-steps"></a>后续步骤
 

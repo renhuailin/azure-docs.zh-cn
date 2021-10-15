@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 03/16/2020
-ms.openlocfilehash: 3fe1862f951b83c6514bda061650b912e9230e46
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.date: 10/01/2020
+ms.openlocfilehash: 3aa0ddf4a9013d5f64584fbe93a795f6420dc410
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071569"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389896"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>为托管体验版设置 Azure 市场订阅
 
@@ -31,7 +31,7 @@ ms.locfileid: "122071569"
 
 4. 在 Azure 中创建 Azure Active Directory (AD) 应用。 AppSource 将使用此应用在租户中预配和取消预配体验版用户。
     1. 在筛选器窗格中，选择“Azure Active Directory”。
-    2. 选择“应用注册” 。
+    2. 选择 **“应用注册”**。
 
         [![选择应用注册。](media/test-drive/app-registrations.png)](media/test-drive/app-registrations.png#lightbox)
 
@@ -57,12 +57,40 @@ ms.locfileid: "122071569"
     13. 要为 Azure AD 应用生成机密：
         1. 在“管理应用程序”中，选择“证书和机密”。
         2. 在“客户端机密”下，选择“新建客户端机密”。
-        3. 输入描述，例如“体验版”，然后选择相应的持续时间。 此密钥过期后，体验版将中断，此时需要生成并为 AppSource 提供新的密钥。
+
+             :::image type="content" source="./media/test-drive/new-client-secret.png" alt-text="添加新的客户端密码。":::
+
+        3. 输入描述，例如“体验版”，然后选择相应的持续时间。 由于此密钥过期后，测试驱动器将中断，此时需要为 AppSource 生成并提供一个新密钥，因此我们建议使用最长持续时间为 24 个月。
         4. 选择“添加”以生成 Azure 应用机密。 复制此值，因为此值会在收起此边栏选项卡后立即隐藏。 稍后配置体验版时将需要此值。
 
-            :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="添加客户端机密。":::
+            :::image type="content" source="./media/test-drive/add-client-secret-customer.png" alt-text="添加客户端机密。":::
 
-5. 将服务主体角色添加到应用程序，以允许 Azure AD 应用删除 Azure 租户中的用户。
+5. 将服务主体角色添加到应用程序，以允许 Azure AD 应用删除 Azure 租户中的用户。 可通过两个选项完成此步骤。
+
+    **选项 1**
+
+    1. 搜索“Azure AD 角色和管理员”，然后选择该服务。
+
+        :::image type="content" source="./media/test-drive/active-ad-roles.png" alt-text="显示如何搜索 Azure AD 角色和管理员。":::
+
+    2. 在“所有角色”页上，搜索“用户管理员”角色，然后双击“用户管理员”  。
+
+        :::image type="content" source="./media/test-drive/user-administrator.png" alt-text="显示如何搜索并选择“用户管理员”。":::
+
+    3. 选择“添加分配”。
+
+        :::image type="content" source="./media/test-drive/add-assignments-1.png" alt-text="显示“添加分配”按钮。":::
+
+    4. 搜索并选择上面创建的应用，然后选择“添加”。
+
+        :::image type="content" source="./media/test-drive/add-assignments-2.png" alt-text="显示成功的应用分配。":::
+
+    5. 请注意，已成功向应用程序分配服务主体角色：
+
+        :::image type="content" source="./media/test-drive/successful-assignment.png" alt-text="显示已成功向应用程序分配服务主体角色。":::
+
+    **方法 2**
+
     1. 打开管理级别的 PowerShell 命令提示符。
     2. Install-Module MSOnline（如果未安装 MSOnline，则运行此命令）。
     3. Connect-MsolService（这会显示一个弹出窗口；使用新创建的 org 租户登录）。
@@ -70,7 +98,7 @@ ms.locfileid: "122071569"
     5. $sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId。
     6. Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal。
 
-        :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="登录你的帐户。":::
+         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="登录你的帐户。":::
 
 6. 新建安全组，并将其添加到画布应用 (Power Apps)。 此步骤仅适用于画布应用 (Power Apps) 产品/服务。
     1. 新建安全组。
@@ -99,22 +127,20 @@ ms.locfileid: "122071569"
             > - 打开 SharePoint 并与安全组共享数据表。
 
 7. 将刚刚创建的 Azure 应用作为应用程序用户添加到体验版 CRM 实例。 此步骤仅适用于 Dynamics 365 客户参与产品/服务。
-    1. 在 Azure Active Directory 中添加新用户。 创建此用户只需提供“名称”和“用户名”值（属于同一租户） ，将其他字段保留为默认值。 复制用户名值。
-    2. 登录 CRM 实例，并选择“设置” > “安全” > “用户”。
-    3. 将视图更改为“应用程序用户”。
+    1. 登录 CRM 实例，并选择“设置” > “安全” > “用户”。
+    2. 将视图更改为“应用程序用户”。
 
         :::image type="content" source="./media/test-drive/application-users.png" alt-text="设置用户的帐户信息。":::
 
-    4. 添加新用户（确保窗体针对“应用程序用户”）。
-    5. 在“主电子邮件”和“用户名”字段中输入相同的用户名。 在“应用程序 ID”中添加“Azure ApplicationId”。
-    6. 指定任意“全名”。
-    7. 选择“保存”。
-    8. 选择“管理角色”。
-    9. 分配包含读取和写入的自定义或 OOB 安全角色，并分配角色特权（例如“系统管理员”）。
+    3. 添加新用户（确保窗体针对“应用程序用户”）。
+    4. 在“应用程序 ID”中添加上面创建的“Azure ApplicationId”。
+    5. 选择“保存”。
+    6. 选择“管理角色”。
+    7. 分配包含读取和写入的自定义或 OOB 安全角色，并分配角色特权（例如“系统管理员”）。
 
         :::image type="content" source="./media/test-drive/security-roles-selection.png" alt-text="选择角色特权。":::
 
-    10. 此外，启用“代表其他用户”特权。
+    10. 此外，启用“代表其他用户操作”特权。
     11. 向应用程序用户分配为体验版创建的自定义安全角色。
 
 ## <a name="set-up-for-dynamics-365-for-operations"></a>针对 Dynamics 365 for Operations 的设置
@@ -126,7 +152,7 @@ ms.locfileid: "122071569"
 
 3. 在 Azure 中创建 Azure AD 应用。 AppSource 将使用此应用在租户中预配和取消预配体验版用户。
     1. 在筛选器窗格中，选择“Azure Active Directory”。
-    2. 选择“应用注册” 。
+    2. 选择 **“应用注册”**。
 
         :::image type="content" source="./media/test-drive/app-registrations.png" alt-text="选择应用注册。":::
 
@@ -156,7 +182,7 @@ ms.locfileid: "122071569"
         3. 输入描述，例如“体验版”，然后选择相应的持续时间。 此密钥过期后，体验版将中断，此时需要生成并为 AppSource 提供新的密钥。
         4. 选择“添加”以生成 Azure 应用机密。 复制此值，因为此值会在收起此边栏选项卡后立即隐藏。 稍后配置体验版时将需要此值。
 
-            :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="添加客户端机密。":::
+            :::image type="content" source="./media/test-drive/add-client-secret-operations.png" alt-text="显示添加了客户端密码。":::
 
 4. 将服务主体角色添加到应用程序，以允许 Azure AD 应用删除 Azure 租户中的用户。
     1. 打开管理级别的 PowerShell 命令提示符。

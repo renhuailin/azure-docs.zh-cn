@@ -1,25 +1,18 @@
 ---
 title: 有关 Azure NetApp 文件的常见问题解答 | Microsoft Docs
 description: 查看有关 Azure NetApp 文件（如网络、安全性、性能、容量管理和数据迁移/保护）的常见问题解答。
-services: azure-netapp-files
-documentationcenter: ''
-author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/01/2021
+author: b-juche
 ms.author: b-juche
-ms.openlocfilehash: 119cf21f90102f7ebccd8e4e06cd5e5dee3c4bfe
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 10/04/2021
+ms.openlocfilehash: 3d0d43dc795dfc729d006fa629382fe35b433983
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427977"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535667"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -54,9 +47,9 @@ ms.locfileid: "123427977"
 
 否，Azure NetApp 文件目前不支持双堆栈（IPv4 和 IPv6）VNet。  
 
-### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>使用 Azure VMWare 解决方案进行来宾 OS 装载的 IP 地址数是否[限于 1000 个](azure-netapp-files-resource-limits.md#resource-limits)？
+### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>使用 Azure VMware 解决方案进行来宾 OS 装载的 IP 地址数是否[限于 1000 个](azure-netapp-files-resource-limits.md#resource-limits)？
 
-否。 Azure VMWare 解决方案位于 ER 网关后面，这使得它的行为类似于本地系统。 AVS“主机”和“来宾”的数量对于 Azure NetApp 文件不可见，1000 个 IP 地址限制不适用。
+否。 Azure VMware 解决方案位于 ER 网关后面，这使得它的行为类似于本地系统。 AVS“主机”和“来宾”的数量对于 Azure NetApp 文件不可见，1000 个 IP 地址限制不适用。
  
 ## <a name="security-faqs"></a>安全常见问题
 
@@ -83,10 +76,6 @@ Azure NetApp 文件的密钥管理由服务处理。 为每个卷生成唯一的
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>能否配置 NFS 导出策略规则来控制对 Azure NetApp 文件服务装载目标的访问？
 
 能，你可以在单个 NFS 导出策略中配置最多五个规则。
-
-### <a name="does-azure-netapp-files-support-network-security-groups"></a>Azure NetApp 文件是否支持网络安全组？
-
-不支持，当前无法将网络安全组应用于 Azure NetApp 文件的委托子网或服务创建的网络接口。
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>能否在 Azure NetApp 文件中使用 Azure RBAC？
 
@@ -277,7 +266,7 @@ Size: 4096            Blocks: 8          IO Block: 65536  directory
 是，[已用快照容量](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots)将计入卷中预配的空间。 如果卷已满，请考虑采取以下措施：
 
 * [调整卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md)。
-* [删除较旧的快照](azure-netapp-files-manage-snapshots.md#delete-snapshots)，以释放宿主卷中的空间。 
+* [删除较旧的快照](snapshots-delete.md)，以释放宿主卷中的空间。 
 
 ### <a name="does-azure-netapp-files-support-auto-grow-for-volumes-or-capacity-pools"></a>Azure NetApp 文件支持卷或容量池的自动增长吗？
 
@@ -317,7 +306,7 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
     
 Azure NetApp 文件提供 NFS 和 SMB 卷。  可以使用任何基于文件的复制工具在 Azure 区域之间复制数据。 
 
-通过[跨区域复制](cross-region-replication-introduction.md)功能，你可以以异步方式将数据从一个区域中的 Azure NetApp 文件卷（源）复制到另一个区域中的 Azure NetApp 文件卷（目标）。  此外，还可以[使用现有卷的快照创建新卷](azure-netapp-files-manage-snapshots.md#restore-a-snapshot-to-a-new-volume)。
+通过[跨区域复制](cross-region-replication-introduction.md)功能，你可以以异步方式将数据从一个区域中的 Azure NetApp 文件卷（源）复制到另一个区域中的 Azure NetApp 文件卷（目标）。  此外，还可以[使用现有卷的快照创建新卷](snapshots-restore-new-volume.md)。
 
 NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.netapp.com/cloud-sync-service)。通过该解决方案，你能够将 NFS 或 SMB 数据复制到 Azure NetApp 文件 NFS 导出或 SMB 共享。 
 
@@ -337,7 +326,78 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
 
 不是。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
+## <a name="azure-netapp-files-backup-faqs"></a>Azure NetApp 文件备份常见问题解答
+
+此部分回答有关 [Azure NetApp 文件备份](backup-introduction.md)功能的问题。 
+
+### <a name="when-do-my-backups-occur"></a>何时进行备份？   
+
+输入备份策略的频率后，Azure NetApp 文件备份会在随机的时间范围内启动。 例如，每周备份在星期日午夜 12:00 后的随机分配时间间隔内 启动。 用户目前无法修改此时间规定。 将备份策略分配到卷后，会立即启动基准备份。
+
+### <a name="what-happens-if-a-backup-operation-encounters-a-problem"></a>如果备份操作遇到问题，会发生什么情况？
+
+如果在备份操作过程中出现问题，则 Azure NetApp 文件备份会自动重试操作，无需用户交互。 如果重试仍然失败，Azure NetApp 文件备份会报告操作失败。
+
+### <a name="can-i-change-the-location-or-storage-tier-of-my-backup-vault"></a>能否更改备份保管库的位置或存储层？
+
+不能。Azure NetApp 文件自动管理 Azure 存储中的备份数据位置，此位置或 Azure 存储层不能由用户修改。
+
+### <a name="what-types-of-security-are-provided-for-the-backup-data"></a>为备份数据提供了哪些类型的安全性？
+
+Azure NetApp 文件在编码收到的备份数据时使用 AES-256 位加密。 此外，还使用 HTTPS TLSv1.2 连接将加密数据安全地传输到 Azure 存储。 Azure NetApp 文件备份取决于 Azure 存储帐户的内置静态加密功能，该功能用于存储备份数据。
+
+### <a name="what-happens-to-the-backups-when-i-delete-a-volume-or-my-netapp-account"></a>删除卷或 NetApp 帐户后，备份会发生什么情况？ 
+
+ 删除 Azure NetApp 文件卷时，会保留备份。 如果不想保留备份，请在删除卷之前禁用备份。 删除 NetApp 帐户时，备份仍保留并显示在同一订阅的其他 NetApp 帐户下，因此仍可用于还原。 如果删除订阅下的所有 NetApp 帐户，则需确保在删除所有 NetApp 帐户下的所有卷之前禁用备份。
+
+### <a name="whats-the-systems-maximum-backup-retries-for-a-volume"></a>系统的最大卷备份重试次数是多少？  
+
+处理计划的备份作业时，系统会进行 10 次重试。 如果作业失败，系统将无法进行备份操作。 如果是计划的备份（基于配置的策略），系统会每隔一小时尝试备份一次数据。 如果新快照可用，但这些快照尚未传输（或在上一次尝试传输时失败），则会考虑传输这些快照。 
+
+## <a name="application-resilience-faqs"></a>应用程序复原常见问题解答
+
+本部分回答有关应用程序复原的问题。
+
+### <a name="what-do-you-generally-recommend-for-application-timeouts-to-best-handle-potential-application-disruptions-due-to-storage-service-maintenance-events"></a>通常推荐如何最好地处理因存储服务维护事件引起的潜在应用程序中断？
+
+Azure NetApp 文件可能会不定期进行计划内维护（例如，平台更新、服务或软件升级）。 从文件协议 (NFS/SMB) 角度来看，只要应用程序可以处理在执行维护操作的过程中可能会短暂发生的 IO 暂停，那么这些操作通常是非中断性的。 I/O 暂停通常只持续较短时间，从几秒到 30 秒不等。 NFS 协议特别可靠，客户端-服务器文件操作会正常持续。 某些应用程序可能需要进行优化才能处理 30-45 秒的 IO 暂停，因此，请确保知悉应用程序的复原设置以应对存储服务维护事件。 对于利用 SMB 协议的人机交互应用程序，通常标准协议设置就已足够。 
+
+### <a name="do-i-need-to-take-special-precautions-for-specific-smb-based-applications"></a>对于特定的基于 SMB 的应用程序，是否需要采取特殊的预防措施？
+
+是的，某些基于 SMB 的应用程序需要 SMB 透明故障转移。 SMB 透明故障转移可在 Azure NetApp 文件服务上实现维护操作，并且依然保持连接到存储和访问 SMB 卷上的数据的服务器应用程序。 为支持针对特殊应用程序的 SMB 透明故障转移，Azure NetApp 文件现在支持 [SMB 连续可用性共享选项](azure-netapp-files-create-volumes-smb.md#continuous-availability)。 
+
+### <a name="i-am-running-ibm-mq-on-azure-netapp-files-i-have-experienced-application-disruptions-due-to-storage-service-maintenance-despite-using-the-nfs-protocol-do-i-need-to-take-special-precautions"></a>我正在 Azure NetApp 文件上运行 IBM MQ。 尽管使用了 NFS 协议，但由于存储服务维护，导致应用程序中断。 我是否需要采取特殊的预防措施？
+
+是的，如果[在共享文件配置中运行 IBM MQ 应用程序](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-sharing-mq-files)（在该配置中，IBM MQ 数据和日志存储在 Azure NetApp 文件卷上），则建议考虑以下注意事项以提高存储服务维护期间的复原能力：
+
+* 须仅使用 NFS v4.1 协议。
+* 为实现高可用性，应使用[利用共享 NFS v4.1 卷的 IBM MQ 多实例配置](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=manager-create-multi-instance-queue-linux)。 
+* 应对[利用共享 NFS v4.1 卷的 IBM 多实例配置](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-verifying-shared-file-system-behavior)的功能进行验证。 
+* 应实现横向扩展 IBM MQ 体系结构，而非使用一个大型多实例 IBM MQ 配置。 通过在多个 IBM MQ 多实例对之间分布消息处理负载，可能有助于降低服务中断的几率，因为如此一来，每个 MQ 多实例对都将处理更少的消息。
+
+> [!NOTE] 
+> 每个 MQ 多实例对应处理的消息数高度依赖于特定环境。 须确定所需的 MQ 多实例对数量，或纵向扩展或纵向缩减的规则。
+
+横向扩展体系结构由在 Azure 负载均衡器后部署的多个 IBM MQ 多实例对组成。 然后，为与 IBM MQ 通信而配置的应用程序将被配置为通过 Azure 负载均衡器与 IBM MQ 实例通信。 对于共享 NFS 卷上的 IBM MQ 相关支持，应在 IBM 获取供应商支持。
+
+### <a name="i-am-running-apache-activemq-with-leveldb-or-kahadb-on-azure-netapp-files-i-have-experienced-disruptions-due-to-storage-service-maintenance-events-despite-using-the-nfs-protocol-do-i-need-to-take-special-precautions"></a>我正在 Azure NetApp 文件上运行带有 LevelDB 或 KahaDB 的 Apache ActiveMQ。 尽管使用了 NFS 协议，但由于存储服务维护事件，导致应用程序中断。 我是否需要采取特殊的预防措施？
+
+是的，如果正在运行 Apache ActiveMQ，建议[使用可插拔存储保险箱部署 ActiveMQ 高可用性模型](https://www.openlogic.com/blog/pluggable-storage-lockers-activemq)。 
+
+ActiveMQ 高可用性 (HA) 模型确保中转站实例始终处于联机状态，并能够处理消息流量。 最常见的两个 ActiveMQ HA 模型包含通过网络共享文件系统。 目的是向主动和被动中转站实例提供 LevelDB 或 KahaDB。 这些 HA 模型要求在 LevelDB 或 KahaDB 目录中的文件上获取和维护 OS 级锁定，简称为“锁定”。 此 ActiveMQ HA 模型存在一些问题。 它们可能会导致“无主”的情况，在这种情况下，“从”实例并不知道它可以锁定文件。  还可能导致“双主”配置，使索引或日志出现损坏，最终造成消息丢失。 其中的大多数问题都源于 ActiveMQ 无法控制的因素。 例如，优化不佳的 NFS 客户端可能会导致锁定数据在负载下变得过时，从而导致故障转移期间发生“无主”停机。 
+
+由于此 HA 解决方案的大多数问题都源于不准确的 OS 级文件锁定，ActiveMQ 社区在 5.7 版中转站中[引入了可插拔存储保险箱的概念](https://www.openlogic.com/blog/pluggable-storage-lockers-activemq)。 这种方法让用户可以使用其他方式的共享锁定，即行级 JDBC 数据库锁定而不是 OS 级文件系统锁定。 有关 ActiveMQ HA 体系结构和部署的支持或咨询，应联系 [OpenLogic by Perforce](https://www.openlogic.com/contact-us)。
+
+>[!NOTE]
+> 本部分包含对术语“主”和“从”的引用，Microsoft 不再使用这些术语 。 在从软件中删除该术语后，我们会将其从本文中删除。
+
+### <a name="i-am-running-apache-activemq-with-leveldb-or-kahadb-on-azure-netapp-files-i-have-experienced-disruptions-due-to-storage-service-maintenance-event-despite-using-the-smb-protocol-do-i-need-to-take-special-precautions"></a>我正在 Azure NetApp 文件上运行带有 LevelDB 或 KahaDB 的 Apache ActiveMQ。 尽管使用了 SMB 协议，但由于存储服务维护事件，导致应用程序中断。 我是否需要采取特殊的预防措施？
+
+一般行业建议是[不要在 CIFS/SMB 上运行 KahaDB 共享存储](https://www.openlogic.com/blog/activemq-community-deprecates-leveldb-what-you-need-know)。 如果在维护准确的锁定状态时遇到问题，请检查 JDBC 可插拔存储保险箱，它可提供更可靠的锁定机制。 有关 ActiveMQ HA 体系结构和部署的支持或咨询，应联系 [OpenLogic by Perforce](https://www.openlogic.com/contact-us)。
+
 ## <a name="product-faqs"></a>产品常见问题解答
+
+本部分提供与 Azure NetApp 文件相关的产品的信息。 
 
 ### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>能否将 Azure NetApp 文件 NFS 或 SMB 卷与 Azure VMware 解决方案 (AVS) 一起使用？
 

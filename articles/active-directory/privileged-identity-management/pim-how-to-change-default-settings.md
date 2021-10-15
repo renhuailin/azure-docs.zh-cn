@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/25/2021
+ms.date: 09/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 558f8b720992f44a747689cb0e69436507b685c4
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: b60735ee1da80674429a4359783cab832b8dc418
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866992"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457024"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
 
-特权角色管理员可以在其 Azure Active Directory (Azure AD) 组织中自定义 Privileged Identity Management (PIM)，包括更改激活合格角色分配的用户的体验。
+特权角色管理员可以在其 Azure Active Directory (Azure AD) 组织中自定义 Privileged Identity Management (PIM)，包括更改激活合格角色分配的用户的体验。 有关触发通知的 PIM 事件以及接收通知的管理员的信息，请参阅 [Privileged Identity Management 中的电子邮件通知](pim-email-notifications.md#notifications-for-azure-ad-roles)
 
 ## <a name="open-role-settings"></a>打开角色设置
 
@@ -78,9 +78,9 @@ Privileged Identity Management 提供针对激活以及针对活动分配强制�
 
 ### <a name="on-active-assignment"></a>针对活动分配
 
-在某些情况下，你可能希望为用户分配短期（例如，一天）角色。 在这种情况下，分配的成员不需要请求激活。 在这种情况下，Privileged Identity Management 无法在用户使用其角色分配时强制实施多重身份验证，因为从分配角色时起，用户就已经在角色中处于活动状态。
+此选项要求管理员必须在创建活动角色分配（而不是合格角色分配）之前完成多重身份验证。 Privileged Identity Management 无法在用户使用其角色分配时强制实施多重身份验证，因为从分配角色时起，用户就已经在角色中处于活动状态。
 
-若要在分配处于活动状态时要求多重身份验证，请在“编辑角色设置”的“分配”选项卡中选择“激活分配时必须进行 Azure 多重身份验证”选项 。
+若要在创建活动角色分配时要求多重身份验证，请在“编辑角色设置”的“分配”选项卡中选择“要求在活动分配时进行 Azure 多重身份验证”选项。
 
 有关详细信息，请参阅[多重身份验证和 Privileged Identity Management](pim-how-to-require-mfa.md)。
 

@@ -2,13 +2,13 @@
 title: 使用 Azure 专用链接将网络安全地连接到 Azure Arc
 description: 了解如何使用 Azure 专用链接将网络安全地连接到 Azure Arc。
 ms.topic: conceptual
-ms.date: 07/20/2021
-ms.openlocfilehash: 1bd683631e9a7edb321abb56ed423cac11b42557
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 10/01/2021
+ms.openlocfilehash: 10b306ef659903524c5a6a62c24ffe36e074666a
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467994"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399786"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-arc"></a>使用 Azure 专用链接将网络安全地连接到 Azure Arc
 
@@ -26,7 +26,7 @@ ms.locfileid: "114467994"
 借助专用链接，你可以：
 
 - 以专用方式连接到 Azure Arc，无需开放任何公共网络访问权限。
-- 确保仅通过授权的专用网络访问启用 Arc 的计算机或服务器的数据。 这也包括在提供部署后管理和监视支持的计算机或服务器上安装的 [VM 扩展](manage-vm-extensions.md)的数据。
+- 确保仅通过授权的专用网络访问已启用 Azure Arc 的计算机或服务器的数据。 这也包括在提供部署后管理和监视支持的计算机或服务器上安装的 [VM 扩展](manage-vm-extensions.md)的数据。
 - 定义通过专用终结点连接的已启用 Azure Arc 的特定服务器及其他 Azure 服务资源（例如 Azure Monitor），以防止来自专用网络的数据外泄。
 - 使用 ExpressRoute 和专用链接将你的专用本地网络安全地连接到 Azure Arc。
 - 将所有流量保留在 Microsoft Azure 主干网络中。
@@ -35,7 +35,7 @@ ms.locfileid: "114467994"
 
 ## <a name="how-it-works"></a>工作原理
 
-Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的虚拟网络）连接到 Azure 资源（本例中为已启用 Azure Arc 的服务器）。 启用任何一个已启用 Arc 的服务器支持的 VM 扩展（如 Azure 自动化更新管理或 Azure Monitor）时，这些资源将连接其他 Azure 资源。 如：
+Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的虚拟网络）连接到 Azure 资源（本例中为已启用 Azure Arc 的服务器）。 启用任何一个已启用 Azure Arc 的服务器支持的 VM 扩展（如 Azure 自动化更新管理或 Azure Monitor）时，这些资源将连接其他 Azure 资源。 如：
 
 - Log Analytics 工作区，在 Azure 自动化更新管理、Azure 自动化更改跟踪和清单、Azure Monitor VM 见解以及 Azure Monitor 中使用 Log Analytics 代理收集日志时的必要项。
 - Azure 自动化帐户，更新管理以及更改跟踪和清单时的必要项。
@@ -44,10 +44,12 @@ Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的�
 
 :::image type="content" source="./media/private-link-security/private-link-topology.png" alt-text="基本资源拓扑关系图" border="true":::
 
-从前面列出的启用 Arc 的服务器连接到其他 Azure 资源时，需要配置每个服务的专用链接。 有关详细信息，请参阅以下内容，为 [Azure 自动化](../../automation/how-to/private-link-security.md)、[Azure Monitor](../../azure-monitor/logs/private-link-security.md)、[Azure Key Vault](../../key-vault/general/private-link-service.md) 或 [Azure Blob 存储](../../private-link/tutorial-private-endpoint-storage-portal.md)配置专用链接。
+从已启用 Azure Arc 的服务器连接到任何其他 Azure 资源时，需要为每个服务配置专用链接，这是可选的，但建议这样做。 Azure 专用链接需要为每个服务单独配置。
+
+有关配置早前列出的 Azure 服务的专用链接的详细信息，请参阅 [Azure 自动化](../../automation/how-to/private-link-security.md)、[Azure Monitor](../../azure-monitor/logs/private-link-security.md)、[Azure Key Vault](../../key-vault/general/private-link-service.md) 或 [Azure Blob 存储](../../private-link/tutorial-private-endpoint-storage-portal.md)文章。
 
 > [!IMPORTANT]
-> Azure 专用链接现已推出正式版。 专用终结点和专用链接服务（标准负载均衡器后面的服务）都已推出正式版。 不同的 Azure PaaS 会按不同计划加入 Azure 专用链接。 有关专用链接上的 Azure PaaS 的准确状态，请参阅[专用链接可用性](../../private-link/availability.md)。 有关已知的限制，请参阅[专用终结点](../../private-link/private-endpoint-overview.md#limitations)和[专用链接服务](../../private-link/private-link-service-overview.md#limitations)。
+> Azure 专用链接现已推出正式版。 专用终结点和专用链接服务（标准负载均衡器后面的服务）都已推出正式版。 不同的 Azure PaaS 会按不同计划加入 Azure 专用链接。 有关专用链接上的 Azure PaaS 的更新状态，请参阅[专用链接可用性](../../private-link/availability.md)。 有关已知的限制，请参阅[专用终结点](../../private-link/private-endpoint-overview.md#limitations)和[专用链接服务](../../private-link/private-link-service-overview.md#limitations)。
 
 * VNet 中的专用终结点允许其通过网络池中的专用 IP 来访问已启用 Azure Arc 的服务器终结点，而不是使用这些终结点的公共 IP。 这样就可以继续使用已启用 Azure Arc 的服务器资源，无需向未请求的出站流量开放 VNet。
 
@@ -57,7 +59,7 @@ Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的�
 
 ## <a name="restrictions-and-limitations"></a>限制和局限
 
-在规划专用链接设置时，应考虑到启用 Arc 的服务器的专用链接范围对象具有许多限制。
+在规划专用链接设置时，应考虑到已启用 Azure Arc 的服务器的专用链接范围对象具有许多限制。
 
 - 最多可以将一个 Azure Arc 专用链接范围与虚拟网络关联。
 
@@ -65,9 +67,9 @@ Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的�
 
 - 所有本地计算机都需要使用相同的 DNS 转发器解析正确的专用终结点信息（FQDN 记录名称和专用 IP 地址），以便使用相同的专用终结点。 有关详细信息，请参阅 [Azure 专用终结点 DNS 配置](../../private-link/private-endpoint-dns.md)
 
-- 已启用 Azure Arc 的计算机或服务器、Azure Arc 专用链接范围和虚拟网络必须在同一个 Azure 区域。
+- 已启用 Azure Arc 的服务器和 Azure Arc 专用链接范围必须在同一个 Azure 区域。 专用终结点和虚拟网络还必须位于同一 Azure 区域，但此区域可不同于 Azure Arc 专用链接作用域和已启用 Arc 的服务器的区域。
 
-- 在预览期间，必须允许发送至 Azure Active Directory 和 Azure 资源管理器服务标记的流量通过本地网络防火墙。 
+- 在预览期间，必须允许发送至 Azure Active Directory 和 Azure 资源管理器服务标记的流量通过本地网络防火墙。
 
 - 要使用的其他 Azure 服务（例如 Azure Monitor）需要在虚拟网络中有自己的专用终结点。
 
@@ -134,7 +136,7 @@ Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的�
 
 1. 为 Azure Arc 专用链接范围指定一个名称。 最好使用有意义且清晰的名称。
 
-   可以选择要求与此 Azure Arc 专用链接范围（预览版）关联的每台启用 Arc 的计算机或服务器通过专用终结点将数据发送到服务。 如果选择“启用公用网络访问”，则与此 Azure Arc 专用链接范围（预览版）关联的计算机或服务器可以通过专用或公用网络与服务通信。 如果你改变了主意，可以在创建范围后更改此设置。
+   可以选择要求与此 Azure Arc 专用链接范围（预览版）关联的每台启用 Azure Arc 的计算机或服务器通过专用终结点将数据发送到服务。 如果选择“启用公用网络访问”，则与此 Azure Arc 专用链接范围（预览版）关联的计算机或服务器可以通过专用或公用网络与服务通信。 如果你改变了主意，可以在创建范围后更改此设置。
 
 1. 选择“查看 + 创建”  。
 
@@ -173,7 +175,7 @@ Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的�
    b. 针对“与专用 DNS 区域集成”选择“是”，让它自动新建一个专用 DNS 区域 。 实际 DNS 区域可能不同于下面屏幕截图中显示的区域。
 
      > [!NOTE]
-     > 如果选择“否”，并且喜欢手动管理 DNS 记录，请首先完成专用链接设置，包括此专用终结点和专用范围的配置。 然后，根据 [Azure 专用终结点 DNS 配置](../../private-link/private-endpoint-dns.md)中的说明配置 DNS。 切勿在准备专用链接设置时创建空记录。 你创建的 DNS 记录会替代现有设置，并且会影响与启用 Arc 的服务器之间的连接。
+     > 如果选择“否”，并且喜欢手动管理 DNS 记录，请首先完成专用链接设置，包括此专用终结点和专用范围的配置。 然后，根据 [Azure 专用终结点 DNS 配置](../../private-link/private-endpoint-dns.md)中的说明配置 DNS。 切勿在准备专用链接设置时创建空记录。 你创建的 DNS 记录可替代现有设置，并影响与已启用 Azure Arc 的服务器之间的连接。
 
    c.    选择“查看 + 创建”  。
 
@@ -228,9 +230,9 @@ Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的�
 ## <a name="connect-to-an-azure-arc-enabled-servers"></a>连接已启用 Azure Arc 的服务器
 
 > [!NOTE]
-> 使用专用终结点的 Azure Arc Connected Machine 代理受支持的最低版本是 1.4 版。 门户中生成的启用 Arc 的服务器部署脚本可下载最新版本。
+> 使用专用终结点的 Azure Arc Connected Machine Agent 的最低受支持版本是 1.4 版。 门户中生成的已启用 Azure Arc 的服务器部署脚本会下载最新版本。
 
-### <a name="configure-a-new-arc-enabled-server-to-use-private-link"></a>将启用 Arc 的新服务器配置为使用专用链接
+### <a name="configure-a-new-azure-arc-enabled-server-to-use-private-link"></a>将已启用 Azure Arc 的新服务器配置为使用专用链接
 
 首次使用已启用 Azure Arc 的服务器连接计算机或服务器时，可以选择将其连接到专用链接范围。 请使用以下步骤 
 
@@ -257,7 +259,7 @@ Azure Arc 专用链接范围（预览版）将专用终结点（及其所在的�
 
     1. 在完成时选择“下一步:  标记”。
 
-1. 如果选择了“添加多个服务器”，请在“身份验证”页面上，从下拉列表中选择为启用 Arc 的服务器创建的服务主体。 如果尚未为启用 Arc 的服务器创建服务主体，请先查看[如何创建服务主体](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)，以便熟悉所需权限以及创建服务主体的步骤。 选择“下一步：标记”继续。
+1. 如果选择了“添加多个服务器”，请在“身份验证”页面上，从下拉列表中选择为已启用 Azure Arc 的服务器创建的服务主体。 如果尚未为已启用 Azure Arc 的服务器创建服务主体，请先查看[如何创建服务主体](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)，以便自行熟悉所需权限以及创建服务主体的步骤。 选择“下一步：标记”继续。
 
 1. 在“标记”页上，查看建议的默认“物理位置标记”并输入值，或指定一个或多个“自定义标记”以支持你的标准  。
 
@@ -274,9 +276,9 @@ Windows 代理可以从 [https://aka.ms/AzureConnectedMachineAgent](https://aka.
 > [!NOTE]
 > 如果要在 Linux 服务器上部署 Connected Machine 代理，在网络连接检查期间可能会有 5 分钟的延迟，然后出现错误，指出 `you do not have access to login.windows.net`，即使防火墙配置正确也如此。 这是一个已知问题，会在未来的代理版本中修复。 如果防火墙配置正确，则载入仍应成功。
 
-### <a name="configure-an-existing-arc-enabled-server"></a>配置已有的启用 Arc 的服务器
+### <a name="configure-an-existing-azure-arc-enabled-server"></a>配置现有的已启用 Azure Arc 的服务器
 
-对于在专用链接范围之前已设置的启用 Arc 的服务器，可以完成以下步骤，以便这些服务器开始使用启用 Arc 的服务器专用链接范围。
+对于在专用链接范围之前设置的已启用 Azure Arc 的服务器，可以完成以下步骤，以便这些服务器开始使用已启用 Azure Arc 的服务器的专用链接范围。
 
 1. 在 Azure 门户中，导航至 Azure Arc 专用链接范围资源。
 

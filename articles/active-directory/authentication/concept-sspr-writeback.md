@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f27cee969d666d8605c0c87552eed1f305e1e4c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1a6ff8a64ac82b27df6e49ef7f500af3fd65316
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744187"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352732"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助式密码重置写回在 Azure Active Directory 中的工作原理。
 
@@ -51,14 +51,14 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 
 ## <a name="how-password-writeback-works"></a>密码写回的工作原理
 
-当联合或密码哈希同步用户尝试在云中重置或更改其密码时，将执行以下操作：
+当密码哈希同步、直通身份验证配置或联合用户尝试在云中重置或更改其密码时，将执行以下操作：
 
 1. 执行检查，以确定用户具有何种类型的密码。 如果密码在本地管理：
    * 执行检查，以确定写回服务是否在正常运行。 如果是，则用户可以继续操作。
    * 如果写回服务已关闭，则告知用户暂不能重置密码。
 1. 接下来，用户通过相应的身份验证入口，到达“重置密码”页。
 1. 用户选择一个新密码并进行确认。
-1. 如果用户选择“提交”，则使用写回设置过程中创建的公钥来加密纯文本密码。
+1. 如果用户选择“提交”，则使用写回设置过程中创建的公钥来加密明文密码。
 1. 加密的密码将包含在一个有效负载中，该负载通过 HTTPS 通道发送到租户特定的服务总线中继（已在写回设置过程中设置此中继）。 此中继受随机生成的密码保护，只有本地安装知道该密码。
 1. 在消息到达服务总线后，密码重置终结点便自动唤醒，并看到有待处理的重置请求。
 1. 然后，服务使用云定位点属性查找用户。 若要成功完成此查找，必须符合以下条件：
@@ -105,7 +105,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 在用户提交密码重置请求后，重置请求会先经历多个加密步骤，然后才会到达本地环境。 这些加密步骤可确保实现最高的服务可靠性和安全性。 这些步骤如下所述：
 
 1. 使用 2048 位 RSA 密钥加密密码：在用户提交要写回本地的密码后，提交的密码本身会使用 2048 位 RSA 密钥进行加密。
-1. 使用 AES-GCM 进行包级加密：使用 AES-GCM 加密整个包（密码及所需的元数据）。 此加密可防止任何可直接访问基础服务总线通道的人员查看或篡改内容。
+1. 使用 256 位 AES-GCM 进行包级加密：使用 AES-GCM（密钥大小为 256 位）加密整个包（密码及所需的元数据）。 此加密可防止任何可直接访问基础服务总线通道的人员查看或篡改内容。
 1. **所有通信都是通过 TLS/SSL 进行**：与服务总线的所有通信都在 SSL/TLS 通道中发生。 此加密可保护内容不被未经授权的第三方查看/篡改。
 1. **每隔六个月自动滚动更新密钥**：每隔六个月，或者每当在 Azure AD Connect 中禁用再重新启用密码写回时，滚动更新所有密钥，确保最高的服务安全性与可靠性。
 

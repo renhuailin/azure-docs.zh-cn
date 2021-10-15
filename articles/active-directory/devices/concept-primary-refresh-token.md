@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 09/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29b000ee3231361ccdca4c2909e093cdaef6bc04
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 9927232ca01473d8c51ac034f6c0ed24b07a2b39
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866515"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707213"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -67,6 +67,9 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 > [!NOTE]
 > 第三方标识提供者需要支持 WS-Trust 协议，才能在 Windows 10 设备上颁发 PRT。 若没有 WS-Trust，则无法将 PRT 颁发给已建立混合 Azure AD 联接或已建立 Azure AD 联接的设备上的用户。 在 ADFS 上仅需要 usernamemixed 终结点。 adfs/services/trust/2005/windowstransport 和 adfs/services/trust/13/windowstransport 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开
 
+> [!NOTE]
+> 颁发 PRT 时不评估 Azure AD 条件访问策略
+
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT 的生存期有多长？
 
 一经颁发，PRT 的有效期为 14 天，只要用户活跃地使用该设备，就会持续地续订。  
@@ -76,7 +79,7 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 PRT 由 Windows 中的两个关键组件使用：
 
 * **Azure AD CloudAP 插件**：在 Windows 登录过程中，Azure AD CloudAP 插件使用用户提供的凭据从 Azure AD 请求一个 PRT。 当用户无权访问 Internet 连接时，它还会缓存 PRT 以启用缓存的登录。
-* **Azure AD WAM 插件**：当用户尝试访问应用程序时，Azure AD WAM 插件将使用 PRT 在 Windows 10 上启用 SSO。 Azure AD WAM 插件使用 PRT 为依赖 WAM 来请求令牌的应用程序请求刷新和访问令牌。 它还通过将 PRT 注入浏览器请求在浏览器上启用 SSO。 Microsoft Edge（通过原生方式）、Chrome（通过 [Windows 10 帐户](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en)或 [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 扩展）或 Mozilla Firefox v91+（通过 [Windows SSO 设置](https://support.mozilla.org/en-US/kb/windows-sso)）支持 Windows 10 中的浏览器 SSO
+* **Azure AD WAM 插件**：当用户尝试访问应用程序时，Azure AD WAM 插件将使用 PRT 在 Windows 10 上启用 SSO。 Azure AD WAM 插件使用 PRT 为依赖 WAM 来请求令牌的应用程序请求刷新和访问令牌。 它还通过将 PRT 注入浏览器请求在浏览器上启用 SSO。 Microsoft Edge（通过原生方式）、Chrome（通过 [Windows 10 帐户](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en)或 [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 扩展）或 Mozilla Firefox v91+（Firefox [Windows SSO 设置](https://support.mozilla.org/kb/windows-sso)）支持 Windows 10 中的浏览器 SSO
 
 ## <a name="how-is-a-prt-renewed"></a>如何续订 PRT？
 
@@ -90,6 +93,9 @@ PRT 通过两种不同的方法续订：
 在 ADFS 环境中，续订 PRT 无需直连域控制器。 PRT 续订只需使用 WS-TRUST 协议在代理上启用 /adfs/services/trust/2005/usernamemixed 和 /adfs/services/trust/13/usernamemixed 终结点。
 
 只有在更改了密码时才需要使用 Windows 传输终结点进行密码身份验证，而不是进行 PRT 续订。
+
+> [!NOTE]
+> 续订 PRT 时不评估 Azure AD 条件访问策略。
 
 ### <a name="key-considerations"></a>重要注意事项
 
@@ -118,7 +124,7 @@ PRT 通过两种不同的方法续订：
 在特定方案中，PRT 可以获取多重身份验证 (MFA) 声明。 当使用基于 MFA 的 PRT 请求应用程序的令牌时，MFA 声明会传输到这些应用令牌。 此功能可为每个需要 MFA 质询的应用阻止 MFA 质询，从而为用户提供无缝体验。 PRT 可以通过下列方式获取 MFA 声明：
 
 * **使用 Windows Hello 企业版登录**：Windows Hello 企业版替换密码，并使用加密密钥来提供强双重身份验证。 Windows Hello 企业版特定于设备上的用户，且其自身需要 MFA 才能进行预配。 当用户使用 Windows Hello 企业版登录时，用户的 PRT 会获取 MFA 声明。 此方案还适用于使用智能卡登录的用户（如果智能卡身份验证通过 ADFS 生成 MFA 声明）。
-   * 由于 Windows Hello 企业版被视为多重身份验证，因此在刷新 PRT 本身时，会更新 MFA 声明，当用户登录到 WIndows Hello 企业版时，MFA 的持续时间会不断延长
+   * 由于 Windows Hello 企业版被视为多重身份验证，因此在刷新 PRT 本身时，会更新 MFA 声明，当用户登录到 Windows Hello 企业版时，MFA 的持续时间会不断延长。
 * **WAM 交互式登录中的 MFA**：在通过 WAM 请求令牌时，如果用户需要进行 MFA 才能访问应用，则在此交互过程中续订的 PRT 将带有 MFA 声明。
    * 在这种情况下，MFA 声明不会持续更新，因此，MFA 的持续时间取决于目录上设置的生存期。
    * 使用已有的 PRT 和 RT 访问应用时，PRT 和 RT 将被视为身份验证的第一项证明。 将需要具有第二项证明和 MFA 声明的新 AT。 这还将颁发新的 PRT 和 RT。
@@ -203,4 +209,4 @@ Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、�
 
 ## <a name="next-steps"></a>后续步骤
 
-要详细了解如何解决与 PRT 相关的问题，请参阅[排查已建立混合 Azure Active Directory 联接的 Windows 10 和 Windows Server 2016 设备问题](troubleshoot-hybrid-join-windows-current.md)一文。
+要详细了解如何解决与 PRT 相关的问题，请参阅[排查已建立混合 Azure Active Directory 联接的 Windows 10 和 Windows Server 2016 设备问题](troubleshoot-hybrid-join-windows-current.md#troubleshoot-post-join-authentication-issues)一文。

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/22/2021
-ms.openlocfilehash: 890330700e21c34b1a3d9ae78068f577f5f64c6b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 447398acc918dc830769b6b5e227f2ea87eb33c4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739160"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545371"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter Notebook
 
@@ -311,9 +311,9 @@ ms.locfileid: "121739160"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-* 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 确保网络允许与 *.instances.azureml.net 和 *.instances.azureml.ms 建立 websocket 连接。 
+* 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 确保[网络允许与 *.instances.azureml.net 和 *.instances.azureml.ms 建立 websocket 连接](https://docs.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress#microsoft-hosts)。 
 
-* 当计算实例部署在具有专用终结点的工作区中时，只能[从虚拟网络内部访问](./how-to-secure-training-vnet.md#compute-instance)它。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
+* 在使用专用终结点的工作区中部署计算实例时，只能[从虚拟网络内部访问](./how-to-secure-training-vnet.md)。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
 
 * 如果内核崩溃并重启，则可以运行以下命令查看 jupyter 日志并了解更多详细信息：`sudo journalctl -u jupyter`。 如果内核问题仍然存在，请考虑使用具有更多内存的计算实例。
 
@@ -323,4 +323,4 @@ ms.locfileid: "121739160"
 
 * [运行第一个试验](tutorial-1st-experiment-sdk-train.md)
 * [使用快照备份文件存储](../storage/files/storage-snapshots-files.md)
-* [在安全环境中工作](./how-to-secure-training-vnet.md#compute-instance)
+* [在安全环境中工作](./how-to-secure-training-vnet.md#compute-cluster)

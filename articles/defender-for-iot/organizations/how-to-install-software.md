@@ -1,14 +1,14 @@
 ---
 title: Defender for IoT 安装
 description: 了解如何安装适用于 Azure Defender for IoT 的传感器和本地管理控制台。
-ms.date: 06/21/2021
+ms.date: 10/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 5cd5bf569f1e27d66a5fb14d4f580d6842313419
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: a5b4beff2d01896082974bf761cb7544d439af9e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015394"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537311"
 ---
 # <a name="defender-for-iot-installation"></a>Defender for IoT 安装
 
@@ -20,15 +20,15 @@ ms.locfileid: "122015394"
 
 本文涵盖以下安装信息：
 
-  - **硬件：** Dell 和 HPE 物理设备详细信息。
+- **硬件：** Dell 和 HPE 物理设备详细信息。
 
-  - **软件：** 传感器和本地管理控制台软件安装。
+- **软件：** 传感器和本地管理控制台软件安装。
 
-  - **虚拟设备：** 虚拟机详细信息和软件安装。
+- **虚拟设备：** 虚拟机详细信息和软件安装。
 
 安装完成后，将传感器连接到网络。
 
-## <a name="about-defender-for-iot-appliances"></a>关于 Defender for IoT 设备 
+## <a name="about-defender-for-iot-appliances"></a>关于 Defender for IoT 设备
 
 以下部分介绍 Defender for IoT 传感器设备以及 Defender for IoT 本地管理控制台的设备。
 
@@ -99,11 +99,11 @@ Defender for IoT 设备传感器在连接到 SPAN 端口或网络 TAP 后，会�
 
 安装之前，请确保：
 
-  - 已安装了 Rufus。
+- 已安装了 Rufus。
   
-  - 你有一个基于密钥的磁盘，其 USB 版本为 3.0 或更高版本。 最小大小为 4 GB。
+- 你有一个基于密钥的磁盘，其 USB 版本为 3.0 或更高版本。 最小大小为 4 GB。
 
-  - 一个 ISO 安装程序映像文件。
+- 一个 ISO 安装程序映像文件。
 
 在此过程中，将擦除基于密钥的磁盘。
 
@@ -119,13 +119,13 @@ Defender for IoT 设备传感器在连接到 SPAN 端口或网络 TAP 后，会�
 
 在 Dell 设备上安装软件之前，需调整设备的 BIOS 配置：
 
-  - [Dell PowerEdge R340 前面板](#dell-poweredge-r340-front-panel)和 [Dell PowerEdge R340 后面板](#dell-poweredge-r340-back-panel)包含前面板和后面板的说明，以及进行安装所需的信息，如驱动程序和端口。
+- [Dell PowerEdge R340 前面板](#dell-poweredge-r340-front-panel)和 [Dell PowerEdge R340 后面板](#dell-poweredge-r340-back-panel)包含前面板和后面板的说明，以及进行安装所需的信息，如驱动程序和端口。
 
-  - [Dell BIOS 配置](#dell-bios-configuration)介绍了如何连接到 Dell 设备管理界面，以及如何配置 BIOS。
+- [Dell BIOS 配置](#dell-bios-configuration)介绍了如何连接到 Dell 设备管理界面，以及如何配置 BIOS。
 
-  - [软件安装 (Dell R340)](#software-installation-dell-r340) 介绍了安装 Defender for IoT 传感器软件所需的过程。
+- [软件安装 (Dell R340)](#software-installation-dell-r340) 介绍了安装 Defender for IoT 传感器软件所需的过程。
 
-### <a name="dell-poweredge-r340xl-requirements"></a>Dell PowerEdge R340XL 要求 
+### <a name="dell-poweredge-r340xl-requirements"></a>Dell PowerEdge R340XL 要求
 
 若要安装 Dell PowerEdge R340XL 设备，你需要：
 
@@ -143,36 +143,32 @@ Defender for IoT 设备传感器在连接到 SPAN 端口或网络 TAP 后，会�
 
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-front-panel.jpg" alt-text="Dell PowerEdge R340 前面板。":::
 
- 1. 左侧控制面板 
- 1. 光驱（可选） 
- 1. 右侧控制面板 
- 1. 信息标记 
+ 1. 左侧控制面板
+ 1. 光驱（可选）
+ 1. 右侧控制面板
+ 1. 信息标记
  1. 驱动器  
 
 ### <a name="dell-poweredge-r340-back-panel"></a>Dell PowerEdge R340 后面板
 
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-back-panel.jpg" alt-text="Dell PowerEdge R340 后面板。":::
 
-1. 串行端口 
-1. NIC 端口 (Gb 1) 
-1. NIC 端口 (Gb 1) 
-1. 半高 PCIe 
-1. 全高 PCIe 扩展卡插槽 
-1. 电源设备 1 
-1. 电源设备 2 
-1. 系统标识 
-1. 系统状态指示器电缆端口 (CMA) 按钮 
-1. USB 3.0 端口 (2) 
-1. iDRAC9 专用网络端口 
-1. VGA 端口 
+1. 串行端口
+1. NIC 端口 (Gb 1)
+1. NIC 端口 (Gb 1)
+1. 半高 PCIe
+1. 全高 PCIe 扩展卡插槽
+1. 电源设备 1
+1. 电源设备 2
+1. 系统标识
+1. 系统状态指示器电缆端口 (CMA) 按钮
+1. USB 3.0 端口 (2)
+1. iDRAC9 专用网络端口
+1. VGA 端口
 
 ### <a name="dell-bios-configuration"></a>Dell BIOS 配置
 
 必须使用 Dell BIOS 配置来调整要与软件配合使用的 Dell 设备。
-
-BIOS 配置是通过预定义的配置执行的。 可以从[帮助中心](https://cyberx-labs.zendesk.com/hc/)访问该文件。
-
-请将配置文件导入到 Dell 设备。 在使用配置文件之前，需要在 Dell 设备与管理计算机之间建立通信。
 
 Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC 嵌入到每个 Dell PowerEdge 服务器中，提供有助于部署、更新、监视和维护 Dell PowerEdge 设备的功能。
 
@@ -184,7 +180,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. [配置 iDRAC IP 地址](#configure-idrac-ip-address)
 
-1. [导入 BIOS 配置文件](#import-the-bios-configuration-file)
+1. [配置 BIOS](#configuring-the-bios)
 
 #### <a name="configure-idrac-ip-address"></a>配置 iDRAC IP 地址
 
@@ -207,55 +203,9 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. 选择“返回” > “完成”。 
 
-#### <a name="import-the-bios-configuration-file"></a>导入 BIOS 配置文件
+#### <a name="configuring-the-bios"></a>配置 BIOS
 
-本部分介绍如何使用配置文件配置 BIOS。
-
-1. 将具有静态预配置 IP 地址 **10.100.100.200** 的电脑连接到 **iDRAC** 端口。
-
-   :::image type="content" source="media/tutorial-install-components/idrac-port.png" alt-text="预配置的 IP 地址端口的屏幕截图。":::
-
-1. 打开浏览器并输入 **10.100.100.250** 以连接到 iDRAC Web 界面。
-
-1. 使用 Dell 默认管理员特权登录：
-
-   - 用户名：**root**
-
-   - 密码：**calvin**
-
-1. 设备的凭据如下：
-
-   - 用户名：**XXX**
-
-   - 密码：**XXX**
-
-     导入服务器配置文件的操作已启动。
-
-     > [!NOTE]
-     > 导入文件之前，请确保：
-     > - 你是当前连接到 iDRAC 的唯一用户。
-     > - 系统不在 BIOS 菜单中。
-
-1. 转到“配置” > “服务器配置文件”。 设置以下参数：
-
-   :::image type="content" source="media/tutorial-install-components/configuration-screen.png" alt-text="屏幕截图，显示服务器配置文件的配置。":::
-
-   | 参数 | 配置 |
-   |--|--|
-   | 位置类型 | 选择“本地”。 |
-   | 文件路径 | 选择“选择文件”，添加 XML 配置文件。 |
-   | 导入组件 | 选择“BIOS、NIC、RAID”。 |
-   | 最长等待时间 | 选择“20 分钟”。 |
-
-1. 选择“导入”  。
-
-1. 若要监视此过程，请转到“维护” > “作业队列”。
-
-   :::image type="content" source="media/tutorial-install-components/view-the-job-queue.png" alt-text="屏幕截图，显示“作业队列”。":::
-
-#### <a name="manually-configuring-bios"></a>手动配置 BIOS 
-
-如果出现以下情况，你需要手动配置设备 BIOS：
+如果出现以下情况，你需要配置设备 BIOS：
 
 - 你未从 Arrow 购买设备。
 
@@ -263,7 +213,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 访问 BIOS 后，请转到“设备设置”。
 
-若要手动进行配置，请执行以下操作：
+若要配置 BIOS，请执行以下操作：
 
 1. 使用键盘和屏幕直接访问设备 BIOS，或者使用 iDRAC。
 
@@ -327,11 +277,11 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. 选择“SENSOR-RELEASE-\<version\> Enterprise”。
 
-   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="选择传感器版本和企业类型。":::   
+   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="选择传感器版本和企业类型。":::
 
 1. 定义设备配置文件和网络属性：
 
-   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="显示设备配置文件和网络属性的屏幕截图。":::   
+   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="显示设备配置文件和网络属性的屏幕截图。":::
 
    | 参数 | 配置 |
    |--|--|
@@ -355,16 +305,16 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 本部分介绍 HPE ProLiant DL20 安装过程，其中包括以下步骤：
 
-  - 启用远程访问并更新默认的管理员密码。
-  - 配置 BIOS 和 RAID 设置。
-  - 安装软件。
+- 启用远程访问并更新默认的管理员密码。
+- 配置 BIOS 和 RAID 设置。
+- 安装软件。
 
 ### <a name="about-the-installation"></a>关于安装
 
-  - 可以安装企业设备和 SMB 设备。 对于这两种设备类型而言，安装过程是相同的，但阵列配置除外。
-  - 提供了默认的管理用户。 建议在网络配置过程中更改密码。
-  - 在网络配置过程中，需在网络端口 1 上配置 iLO 端口。
-  - 安装过程大约需要 20 分钟。 安装后，系统会重启多次。
+- 可以安装企业设备和 SMB 设备。 对于这两种设备类型而言，安装过程是相同的，但阵列配置除外。
+- 提供了默认的管理用户。 建议在网络配置过程中更改密码。
+- 在网络配置过程中，需在网络端口 1 上配置 iLO 端口。
+- 安装过程大约需要 20 分钟。 安装后，系统会重启多次。
 
 ### <a name="hpe-proliant-dl20-front-panel"></a>HPE ProLiant DL20 前面板
 
@@ -388,17 +338,17 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
     :::image type="content" source="media/tutorial-install-components/system-configuration-window-v2.png" alt-text="屏幕截图，显示“系统配置”窗口。":::
 
-    1.  从“网络接口适配器”字段中选择“共享网络端口-LOM”。
-    
-    1.  禁用 DHCP。
-    
-    1.  输入 IP 地址、子网掩码和网关 IP 地址。
+    1. 从“网络接口适配器”字段中选择“共享网络端口-LOM”。
+
+    1. 禁用 DHCP。
+
+    1. 输入 IP 地址、子网掩码和网关 IP 地址。
 
 1. 选择“F10: 保存”。
 
 1. 选择“Esc”以返回到“ILO 5 配置实用工具”，然后选择“用户管理”。
 
-1. 选择“编辑/删除用户”。 管理员是唯一的已定义默认用户。 
+1. 选择“编辑/删除用户”。 管理员是唯一的已定义默认用户。
 
 1. 更改默认密码，然后选择“F10: 保存”。
 
@@ -449,6 +399,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
     :::image type="content" source="media/tutorial-install-components/boot-override-window-one-v2.png" alt-text="屏幕截图，显示第一个“启动重写”窗口。":::
 
     :::image type="content" source="media/tutorial-install-components/boot-override-window-two-v2.png" alt-text="屏幕截图，显示第二个“启动重写”窗口。":::
+
 ### <a name="software-installation-hpe-proliant-dl20-appliance"></a>软件安装（HPE ProLiant DL20 设备）
 
 安装过程大约需要 20 分钟。 安装后，系统会重启多次。
@@ -465,7 +416,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
     :::image type="content" source="media/tutorial-install-components/select-english-screen.png" alt-text="在 CLI 窗口中选择“英语”。":::
 
-1. 选择“SENSOR-RELEASE-<version> Enterprise”。
+1. 选择“SENSOR-RELEASE-\<version> Enterprise”。
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="屏幕截图，显示用于选择版本的屏幕。":::
 
@@ -488,11 +439,11 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 ## <a name="hpe-proliant-dl360-installation"></a>HPE ProLiant DL360 安装
 
-  - 提供了默认的管理用户。 建议在网络配置过程中更改密码。
+- 提供了默认的管理用户。 建议在网络配置过程中更改密码。
 
-  - 在网络配置过程中，需配置 iLO 端口。
+- 在网络配置过程中，需配置 iLO 端口。
 
-  - 安装过程大约需要 20 分钟。 安装后，系统会重启多次。
+- 安装过程大约需要 20 分钟。 安装后，系统会重启多次。
 
 ### <a name="hpe-proliant-dl360-front-panel"></a>HPE ProLiant DL360 前面板
 
@@ -506,9 +457,9 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 有关 HPE ProLiant DL20 安装，请参阅前面的部分：
 
-  - “启用远程访问并更新密码”
+- “启用远程访问并更新密码”
 
-  - “配置 HPE BIOS”
+- “配置 HPE BIOS”
 
 企业配置是相同的。
 
@@ -549,7 +500,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. 选择“英语”。
 
-1. 选择“SENSOR-RELEASE-<version> Enterprise”。
+1. 选择“SENSOR-RELEASE-\<version> Enterprise”。
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="屏幕截图，显示如何选择版本。":::
 
@@ -561,7 +512,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
     | ----------| ------------- |
     | **硬件配置文件** | 选择“corporate”。 |
     | **管理界面** | **eno2** |
-    | **默认网络参数（由客户提供）** | **管理网络 IP 地址：** <br/>**子网掩码：** <br/>**设备主机名：** <br/>**DNS：** <br/>**默认网关 IP 地址：**|
+    | **默认网络参数（由客户提供）** | **管理网络 IP 地址：** <br> **子网掩码：** <br/>**设备主机名：** <br/>**DNS：** <br/>**默认网关 IP 地址：**|
     | **输入接口：**  | 系统会为你生成输入接口列表。<br/><br/>若要镜像输入接口，请复制带逗号分隔符的列表中显示的所有项。<br/><br/> 无需配置桥接接口。 此选项仅用于特殊用例。 |
 
 1. 大约 10 分钟后，将显示两组凭据。 一个用于 **CyberX** 用户，一个用于 **Support** 用户。
@@ -572,9 +523,9 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 ## <a name="hp-edgeline-300-installation"></a>HP EdgeLine 300 安装
 
-•   提供了默认的管理用户。 建议在网络配置过程中更改密码。
+- 提供了默认的管理用户。 建议在网络配置过程中更改密码。
 
-•   安装过程大约需要 20 分钟。 安装后，系统会重启多次。
+- 安装过程大约需要 20 分钟。 安装后，系统会重启多次。
 
 ### <a name="hp-edgeline-300-back-panel"></a>HP EdgeLine 300 后面板
 
@@ -652,12 +603,12 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
     | 参数 | 配置 |
     |--|--|
     | 配置硬件配置文件 | office |
-    | 配置管理网络接口 | enp3s0 <br />或 <br />可能的值 |
+    | 配置管理网络接口 | enp3s0 <br /> 或 <br />可能的值 |
     | 配置网络 IP 地址： | 客户提供的 IP 地址 |
     | 配置子网掩码： | 客户提供的 IP 地址 |
     | 配置 DNS： | 客户提供的 IP 地址 |
     | 配置默认网关 IP 地址： | 客户提供的 IP 地址 |
-    | 配置输入接口 | enp4s0 <br />或 <br />可能的值 |
+    | 配置输入接口 | enp4s0 <br /> 或 <br />可能的值 |
     | 配置网桥接口 | 空值 |
 
 1. 接受设置，然后输入 `Y` 继续。
@@ -676,11 +627,11 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 本地管理控制台支持 VMware 和 Hyper-V 部署选项。 在开始安装之前，请确保你具有以下项：
 
-  - 已安装并正常运行的 VMware（ESXi 5.5 或更高版本）或 Hyper-V 虚拟机监控程序（Windows 10 专业版或企业版）
+- 已安装并正常运行的 VMware（ESXi 5.5 或更高版本）或 Hyper-V 虚拟机监控程序（Windows 10 专业版或企业版）
 
-  - 虚拟机的可用硬件资源
+- 虚拟机的可用硬件资源
 
-  - Azure Defender for IoT 传感器的 ISO 安装文件
+- Azure Defender for IoT 传感器的 ISO 安装文件
 
 请确保虚拟机监控程序正在运行。
 
@@ -726,7 +677,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. 输入 VHD 的名称和位置。
 
-1. 输入所需的大小（具体取决于体系结构）。   
+1. 输入所需的大小（具体取决于体系结构）。
 
 1. 查看摘要并选择“完成”。
 
@@ -756,7 +707,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 1. 启动虚拟机。
 
-2. 在“操作”菜单上选择“连接”，继续进行软件安装。
+1. 在“操作”菜单上选择“连接”，继续进行软件安装。
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>软件安装（ESXi 和 Hyper-V）
 
@@ -799,7 +750,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 ### <a name="bios-configuration"></a>BIOS 配置
 
-如需为设备配置 BIOS：
+若要为设备配置 BIOS，请执行以下操作：
 
 1. [启用远程访问并更新密码](#enable-remote-access-and-update-the-password)。
 
@@ -807,32 +758,32 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 ### <a name="software-installation"></a>软件安装
 
-安装过程大约需要 20 分钟。 安装后，系统会重启多次。 
+安装过程大约需要 20 分钟。 安装后，系统会重启多次。
 
-在安装过程中，你可以添加辅助 NIC。 如果选择在安装过程中不安装辅助 NIC，则可以稍后[添加辅助 NIC](#add-a-secondary-nic)。 
+在安装过程中，你可以添加辅助 NIC。 如果选择在安装过程中不安装辅助 NIC，则可以稍后[添加辅助 NIC](#add-a-secondary-nic)。
 
 若要安装软件，请执行以下操作：
 
 1. 为安装过程选择首选语言。
 
-   :::image type="content" source="media/tutorial-install-components/on-prem-language-select.png" alt-text="为安装过程选择首选语言。":::     
+   :::image type="content" source="media/tutorial-install-components/on-prem-language-select.png" alt-text="为安装过程选择首选语言。":::
 
 1. 选择“管理-版本-\<version\>\<deployment type\>”。
 
-   :::image type="content" source="media/tutorial-install-components/on-prem-install-screen.png" alt-text="选择你的版本。":::   
+   :::image type="content" source="media/tutorial-install-components/on-prem-install-screen.png" alt-text="选择你的版本。":::
 
 1. 在安装向导中，定义设备配置文件：
 
-   :::image type="content" source="media/tutorial-install-components/on-prem-first-steps-install.png" alt-text="屏幕截图，显示设备配置文件。":::   
+   :::image type="content" source="media/tutorial-install-components/on-prem-first-steps-install.png" alt-text="屏幕截图，显示设备配置文件。":::
 
    | 参数 | 配置 |
    |--|--|
-   | 配置管理网络接口 | 对于 Dell：eth0、eth1 <br /> 对于 HP：enu1、enu2 <br /> 或 <br />可能的值 |
+   | 配置管理网络接口 | 对于 Dell：eth0、eth1 <br /> 对于 HP：enu1、enu2 <br>  或 <br />可能的值 |
    | 配置网络 IP 地址： | 客户提供的 IP 地址 |
    | 配置子网掩码： | 客户提供的 IP 地址 |
    | 配置 DNS： | 客户提供的 IP 地址 |
    | 配置默认网关 IP 地址： | 客户提供的 IP 地址 |
-   
+
 1. （可选）如需安装辅助网络接口卡 (NIC)，请定义以下设备配置文件和网络属性：
 
     :::image type="content" source="media/tutorial-install-components/on-prem-secondary-nic-install.png" alt-text="显示辅助 NIC 安装问题的屏幕截图。":::
@@ -843,7 +794,7 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
    | 配置传感器监视接口的 IP 地址： | 客户提供的 IP 地址 |
    | 为传感器监视接口配置子网掩码： | 客户提供的 IP 地址 |
 
-1. 接受设置并通过输入 `Y` 继续。 
+1. 接受设置并通过输入 `Y` 继续。
 
 1. 大约 10 分钟后，将显示两组凭据。 一组用于 **CyberX** 用户，一组用于 **Support** 用户。
 
@@ -861,9 +812,8 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 
 :::image type="content" source="media/tutorial-install-components/secondary-nic.png" alt-text="辅助 NIC 的总体体系结构。":::
 
-这两个 NIC 都为用户界面 (UI) 提供支持。 
-
-如果选择不部署辅助 NIC，则所有功能都将通过主 NIC 提供。 
+这两个 NIC 都为用户界面 (UI) 提供支持。
+如果选择不部署辅助 NIC，则所有功能都将通过主 NIC 提供。
 
 如已配置本地管理控制台，并希望将辅助 NIC 添加到本地管理控制台，请执行以下步骤：
 
@@ -898,18 +848,18 @@ Dell 设备由一个与生命周期控制器 (LC) 集成的 iDRAC 管理。 LC �
 sudo ethtool -p <port value> <time-in-seconds>
 ```
 
-此命令会导致端口上的指示灯在指定时间段内闪烁。 例如，输入 `sudo ethtool -p eno1 120` 将会使端口 eno1 闪烁 2 分钟，以便在设备背面查找端口。 
+此命令会导致端口上的指示灯在指定时间段内闪烁。 例如，输入 `sudo ethtool -p eno1 120` 将会使端口 eno1 闪烁 2 分钟，以便在设备背面查找端口。
 
 ## <a name="virtual-appliance-on-premises-management-console-installation"></a>虚拟设备：本地管理控制台安装
 
 本地管理控制台 VM 支持以下体系结构：
 
-| 体系结构 | 规范 | 使用情况 | 
+| 体系结构 | 规范 | 使用情况 |
 |--|--|--|
-| Enterprise <br/>（默认且最常用） | CPU：8 <br/>内存：32G RAM<br/> HDD：1.8 TB | 大型生产环境 | 
+| Enterprise <br/>（默认且最常用） | CPU：8 <br/>内存：32G RAM<br/> HDD：1.8 TB | 大型生产环境 |
 | Small | CPU：4 <br/> 内存：8G RAM<br/> HDD：500 GB | 大型生产环境 |
-| Office | CPU：4 <br/>内存：8G RAM <br/> HDD：100 GB | 小型测试环境 | 
-   
+| Office | CPU：4 <br/>内存：8G RAM <br/> HDD：100 GB | 小型测试环境 |
+
 ### <a name="prerequisites"></a>先决条件
 
 本地管理控制台支持 VMware 和 Hyper-V 部署选项。 在开始安装之前，请验证以下先决条件：
@@ -919,7 +869,7 @@ sudo ethtool -p <port value> <time-in-seconds>
 - 虚拟机的硬件资源可用。
 
 - 你有本地管理控制台的 ISO 安装文件。
-    
+
 - 虚拟机监控程序正在运行。
 
 ### <a name="create-the-virtual-machine-esxi"></a>创建虚拟机 (ESXi)
@@ -1044,7 +994,7 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 ### <a name="nuvo-5006lp-installation"></a>Nuvo 5006LP 安装
 
-本部分提供 Nuvo 5006LP 安装过程。 在 Nuvo 5006LP 设备上安装软件之前，需要调整设备的 BIOS 配置。 
+本部分提供 Nuvo 5006LP 安装过程。 在 Nuvo 5006LP 设备上安装软件之前，需要调整设备的 BIOS 配置。
 
 #### <a name="nuvo-5006lp-front-panel"></a>Nuvo 5006LP 前面板
 
@@ -1085,11 +1035,13 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 1. 导航到“Boot”（启动），确保“PXE Boot to LAN”（通过局域网进行 PXE 启动）设置为“Disabled”（已禁用）  。
 
-1. 按 F10 保存设置，然后选择“Exit”（退出） 。 
+1. 按 F10 保存设置，然后选择“Exit”（退出） 。
 
 #### <a name="software-installation-nuvo-5006lp"></a>软件安装 (Nuvo 5006LP)
 
 完成过程大约需要 20 分钟。 安装后，系统会重启多次。
+
+若要安装软件，请执行以下操作：
 
 1. 连接包含 ISO 映像的外部 CD 或基于密钥的磁盘。
 
@@ -1097,7 +1049,7 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 1. 选择“英语”。
 
-1. 选择“XSENSE-RELEASE-<version> Office...”。
+1. 选择“XSENSE-RELEASE-\<version> Office...”。
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="选择要安装的传感器版本。":::
 
@@ -1109,10 +1061,10 @@ sudo ethtool -p <port value> <time-in-seconds>
     | ----------| ------------- |
     | **硬件配置文件** | 选择“Office”。 |
     | **管理界面** | **eth0** |
-    | 管理网络 IP 地址 | 客户提供的 IP 地址 | 
-    | 管理子网掩码 | 客户提供的 IP 地址 | 
+    | 管理网络 IP 地址 | 客户提供的 IP 地址 |
+    | 管理子网掩码 | 客户提供的 IP 地址 |
     | **DNS** | 客户提供的 IP 地址 |
-    | 默认网关 IP 地址 | **0.0.0.0** | 
+    | 默认网关 IP 地址 | **0.0.0.0** |
     | 输入接口 | 输入接口列表由系统生成。 <br />若要镜像输入接口，请复制带逗号分隔符的列表中显示的所有项。 |
     | 网桥接口 | - |
 
@@ -1124,7 +1076,7 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 本部分提供 Fitlet2 安装过程。 在 Fitlet 设备上安装软件之前，需要调整设备的 BIOS 配置。
 
-#### <a name="fitlet2-front-panel"></a>Fitlet2 前面板 
+#### <a name="fitlet2-front-panel"></a>Fitlet2 前面板
 
 :::image type="content" source="media/tutorial-install-components/fitlet-front-panel.png" alt-text="Fitlet 2 前面板的视图。":::
 
@@ -1133,6 +1085,8 @@ sudo ethtool -p <port value> <time-in-seconds>
 :::image type="content" source="media/tutorial-install-components/fitlet2-back-panel.png" alt-text="Fitlet 2 后面板的视图。":::
 
 #### <a name="configure-the-fitlet2-bios"></a>配置 Fitlet2 BIOS
+
+若要配置 Fitlet2 BIOS，请执行以下操作：
 
 1. 打开设备电源。
 
@@ -1165,7 +1119,9 @@ sudo ethtool -p <port value> <time-in-seconds>
 1. 导航到“CSM Configuration”（CSM 配置） > “CSM Support”（CSM 支持） 。
 
 1. 按 +/- 选择“Enabled”（已启用） 。
+
 1. 导航到“Advanced”（高级） > “Boot option filter [Legacy only]”（启动选项筛选器 [仅限旧版]），然后将以下字段中的设置更改为“Legacy”（旧版）  ：
+
     - 网络
     - 存储
     - 视频
@@ -1184,7 +1140,7 @@ sudo ethtool -p <port value> <time-in-seconds>
 1. 导航到“Boot”（启动） > “Boot mode”（启动模式），选择“Legacy”（旧版）  。
 
 1. 选择“Boot Option #1 – [USB CD/DVD]”（启动选项 #1 – [USB CD/DVD]）。
- 
+
 1. 选择“Save & Exit”（保存并退出）。
 
 #### <a name="software-installation-fitlet2"></a>软件安装 (Fitlet2)
@@ -1197,7 +1153,7 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 1. 选择“英语”。
 
-1. 选择“XSENSE-RELEASE-<version> Office...”。
+1. 选择“XSENSE-RELEASE-\<version> Office...”。
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="选择要安装的传感器版本。":::
 
@@ -1212,10 +1168,10 @@ sudo ethtool -p <port value> <time-in-seconds>
     | ----------| ------------- |
     | **硬件配置文件** | 选择“Office”。 |
     | **管理界面** | em1 |
-    | 管理网络 IP 地址 | 客户提供的 IP 地址 | 
-    | 管理子网掩码 | 客户提供的 IP 地址 | 
+    | 管理网络 IP 地址 | 客户提供的 IP 地址 |
+    | 管理子网掩码 | 客户提供的 IP 地址 |
     | **DNS** | 客户提供的 IP 地址 |
-    | 默认网关 IP 地址 | **0.0.0.0** | 
+    | 默认网关 IP 地址 | **0.0.0.0** |
     | 输入接口 | 输入接口列表由系统生成。 <br />若要镜像输入接口，请复制带逗号分隔符的列表中显示的所有项。 |
     | 网桥接口 | - |
 
@@ -1231,11 +1187,11 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 安装后验证必须包括以下测试：
 
-  - **健全性测试**：验证系统是否正在运行。
+- **健全性测试**：验证系统是否正在运行。
 
-  - **版本**：验证版本是否正确。
+- **版本**：验证版本是否正确。
 
-  - **ifconfig**：验证安装过程中配置的所有输入接口是否正在运行。
+- **ifconfig**：验证安装过程中配置的所有输入接口是否正在运行。
 
 ### <a name="check-system-health-by-using-the-gui"></a>使用 GUI 检查系统运行状况
 
@@ -1259,9 +1215,10 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 - **核心日志**：提供核心日志的最后 500 行，使你能够查看最新的日志行而无需导出整个系统日志。
 
-- **任务管理器**：将进程表中出现的任务转换为以下层： 
+- **任务管理器**：将进程表中出现的任务转换为以下层：
   
-  - 永久性层 (Redis) 
+  - 永久性层 (Redis)
+
   - 缓存层 (SQL)
 
 - **网络统计信息**：显示网络统计信息。
@@ -1269,10 +1226,15 @@ sudo ethtool -p <port value> <time-in-seconds>
 - **TOP**：显示进程表。 它是一个 Linux 命令，提供正在运行的系统的动态实时视图。
 
 - **备份内存检查**：提供备份内存的状态，检查以下各项：
-  - 备份文件夹的位置 
+
+  - 备份文件夹的位置
+
   - 备份文件夹的大小
+
   - 备份文件夹的限制
+
   - 上次备份的发生时间
+
   - 有多少空间可用于额外的备份文件
 
 - **ifconfig**：显示设备的物理接口的参数。
@@ -1291,9 +1253,9 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 ### <a name="check-system-health-by-using-the-cli"></a>使用 CLI 检查系统运行状况
 
-**测试 1：健全性**
+在测试系统健全性之前，请验证系统是否已启动并正在运行。
 
-验证系统是否已启动并运行：
+若要测试系统健全性，请执行以下操作：
 
 1. 通过 Linux 终端（例如 PuTTY）和用户 **Support** 连接到 CLI。
 
@@ -1305,9 +1267,9 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 1. 验证“System is UP! (prod)”是否显示在底部。
 
-**测试 2：版本检查**
-
 验证是否使用了正确的版本：
+
+若要检查系统版本，请执行以下操作：
 
 1. 通过 Linux 终端（例如 PuTTY）和用户 **Support** 连接到 CLI。
 
@@ -1315,9 +1277,9 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 1. 检查是否显示了正确的版本。
 
-**测试 3：网络验证**
-
 验证安装过程中配置的所有输入接口是否正在运行：
+
+若要验证系统的网络状态，请执行以下操作：
 
 1. 通过 Linux 终端（例如 PuTTY）和用户 **Support** 连接到 CLI。
 
@@ -1327,9 +1289,9 @@ sudo ethtool -p <port value> <time-in-seconds>
 
     :::image type="content" source="media/tutorial-install-components/interface-list-screen.png" alt-text="屏幕截图，显示接口列表。":::
 
-**测试 4：对 UI 的管理访问权限**
-
 验证是否可以访问控制台 Web GUI：
+
+若要检查管理是否有权访问 UI，请执行以下操作：
 
 1. 使用以太网电缆将便携式计算机连接到管理端口 (**Gb1**)。
 
@@ -1397,13 +1359,15 @@ sudo ethtool -p <port value> <time-in-seconds>
 
 对于任何其他问题，请联系 [Microsoft 支持部门](https://support.microsoft.com/en-us/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099)。
 
-## <a name="appendix-a-mirroring-port-on-vswitch-esxi"></a>附录 A：vSwitch 上的镜像端口 (ESXi)
+## <a name="configure-a-span-port"></a>配置 SPAN 端口
 
-### <a name="configure-a-span-port-on-an-existing-vswitch"></a>在现有 vSwitch 上配置 SPAN 端口
+vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 端口。 可以通过 ESXi 或 Hyper-V 实现此变通方法。
 
-vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 端口。
+:::image type="content" source="media/tutorial-install-components/purdue-model.png" alt-text="体系结构中传感器应放置位置的屏幕截图。":::
 
-若要配置 SPAN 端口，请执行以下操作：
+### <a name="configure-a-span-port-with-esxi"></a>使用 ESXi 配置 SPAN 端口
+
+**使用 ESXi 配置 SPAN 端口**：
 
 1. 打开 vSwitch 属性。
 
@@ -1429,7 +1393,126 @@ vSwitch 没有镜像功能，但你可以使用一种解决方法来实现 SPAN 
 
 1. 连接到传感器，验证镜像功能是否正常。
 
-## <a name="appendix-b-access-sensors-from-the-on-premises-management-console"></a>附录 B：从本地管理控制台访问传感器
+### <a name="configure-a-span-port-with-hyper-v"></a>使用 Hyper-V 配置 SPAN 端口
+
+开始之前，你需要：
+
+- 确保没有任何虚拟设备实例正在运行。
+
+- 确保在数据端口而不是管理端口启用 SPAN。
+
+- 确保数据端口 SPAN 的配置未配置 IP 地址。
+
+**使用 Hyper-V 配置 SPAN 端口**：
+
+1. 打开虚拟交换机管理器。
+
+1. 在“虚拟交换机”列表中，选择“新建虚拟网络交换机” > “外部”作为专用跨区网络适配器类型 。
+
+    :::image type="content" source="media/tutorial-install-components/new-virtual-network.png" alt-text="创建虚拟交换机之前选择新的虚拟网络和外部的屏幕截图。":::
+
+1. 选择“创建虚拟交换机”。
+
+1. 在连接类型下，选择“外部网络”。
+
+1. 确保选中“允许管理操作系统共享此网络适配器”复选框。
+
+   :::image type="content" source="media/tutorial-install-components/external-network.png" alt-text="选择外部网络，并允许管理操作系统共享网络适配器的屏幕截图。":::
+
+1. 选择“确定”。
+
+#### <a name="attach-a-span-virtual-interface-to-the-virtual-switch"></a>将 SPAN 虚拟接口附加到虚拟交换机
+
+可通过 Windows PowerShell 或 Hyper-V 管理器将 SPAN 虚拟接口附加到虚拟交换机。
+
+若要通过 PowerShell 将 SPAN 虚拟接口附加到虚拟交换机，请执行以下操作：
+
+1. 选择新添加的 SPAN 虚拟交换机，并使用以下命令添加新的网络适配器：
+
+    ```bash
+    ADD-VMNetworkAdapter -VMName VK-C1000V-LongRunning-650 -Name Monitor -SwitchName vSwitch_Span
+    ```
+
+1. 使用以下命令，为所选接口启用端口镜像作为跨度目标：
+
+    ```bash
+    Get-VMNetworkAdapter -VMName VK-C1000V-LongRunning-650 | ? Name -eq Monitor | Set-VMNetworkAdapter -PortMirroring Destination
+    ```
+
+    | 参数 | 说明 |
+    |--|--|
+    | VK-C1000V-LongRunning-650 | CPPM VA 名称 |
+    |vSwitch_Span |新添加的 SPAN 虚拟交换机名称 |
+    |监视 |新添加的适配器名称 |
+
+1. 选择“确定”。
+
+这些命令将新添加的适配器硬件的名称设置为 `Monitor`。 如果使用 Hyper-V 管理器，新添加的适配器硬件的名称将设置为 `Network Adapter`。
+
+若要通过 Hyper-V 管理器将 SPAN 虚拟接口附加到虚拟交换机，请执行以下操作：
+
+1. 在“硬件”列表下，选择“网络适配器”。
+
+1. 在“虚拟交换机”字段中，选择“vSwitch_Span”。
+
+    :::image type="content" source="media/tutorial-install-components/vswitch-span.png" alt-text="在虚拟交换机屏幕上选择以下选项的屏幕截图。":::
+
+1. 在“硬件”列表中的“网络适配器”下拉列表下，选择“高级功能”。
+
+1. 在“端口镜像”部分，选择“目标”作为新虚拟接口的镜像模式。
+
+    :::image type="content" source="media/tutorial-install-components/destination.png" alt-text="配置镜像模式所需的选项的屏幕截图。":::
+
+1. 选择“确定”。
+
+#### <a name="enable-microsoft-ndis-capture-extensions-for-the-virtual-switch"></a>为虚拟交换机启用 Microsoft NDIS 捕获扩展
+
+需要为新的虚拟交换机启用 Microsoft NDIS 捕获扩展。
+
+**为新添加的虚拟交换机启用 Microsoft NDIS 捕获扩展**：
+
+1. 在 Hyper-V 主机上打开虚拟交换机管理器。
+
+1. 在“虚拟交换机”列表中，展开虚拟交换机名称 `vSwitch_Span` 并选择“扩展”。
+
+1. 在“交换机扩展”字段中，选择“Microsoft NDIS 捕获”。
+
+    :::image type="content" source="media/tutorial-install-components/microsoft-ndis.png" alt-text="通过从交换机扩展菜单中选择 Microsoft NDIS 来启用它的屏幕截图。":::
+
+1. 选择“确定”。
+
+#### <a name="set-the-mirroring-mode-on-the-external-port"></a>在外部端口上设置镜像模式
+
+需要在新虚拟交换机的外部端口上将镜像模式设置为源。
+
+需要配置 Hyper-V 虚拟交换机 (vSwitch_Span)，以将任何传入外部源端口的流量转发到配置为目标的虚拟网络适配器。
+
+使用以下 PowerShell 命令将外部虚拟交换机端口设置为源镜像模式：
+
+```bash
+$ExtPortFeature=Get-VMSystemSwitchExtensionPortFeature -FeatureName "Ethernet Switch Port Security Settings"
+$ExtPortFeature.SettingData.MonitorMode=2
+Add-VMSwitchExtensionPortFeature -ExternalPort -SwitchName vSwitch_Span -VMSwitchExtensionFeature $ExtPortFeature
+```
+
+| 参数 | 说明 |
+|--|--|
+| vSwitch_Span | 新添加的 SPAN 虚拟交换机名称。 |
+| MonitorMode=2 | 源 |
+| MonitorMode=1 | 目标 |
+| MonitorMode=0 | 无 |
+
+使用以下 PowerShell 命令验证监视模式状态：
+
+```bash
+Get-VMSwitchExtensionPortFeature -FeatureName "Ethernet Switch Port Security Settings" -SwitchName vSwitch_Span -ExternalPort | select -ExpandProperty SettingData
+```
+
+| 参数 | 说明 |
+|--|--|
+| vSwitch_Span | 新添加的 SPAN 虚拟交换机名称 |
+
+## <a name="access-sensors-from-the-on-premises-management-console"></a>通过本地管理控制台访问传感器
 
 可以通过阻止用户直接访问传感器来增强系统安全性。 请改用代理隧道，通过单个防火墙规则让用户从本地管理控制台访问传感器。 此方法可降低对传感器之外的网络环境进行未经授权的访问的可能性。 用户登录传感器时的体验保持不变。
 

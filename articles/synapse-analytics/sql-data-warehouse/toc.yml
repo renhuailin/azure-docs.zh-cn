@@ -96,7 +96,7 @@
               href: ../../azure-sql/database/threat-detection-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: 审核
           href: ../../azure-sql/database/auditing-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
-        - name: 网络安全
+        - name: 网络安全性
           items:
             - name: 防火墙规则
               href: ../../azure-sql/database/firewall-configure.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
@@ -120,11 +120,11 @@
               href: ../../azure-sql/database/logins-create-manage.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: 行级别安全性
               href: column-level-security.md
-            - name: 行级安全性
+            - name: 行级别安全性
               href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 数据保护
           items:
-            - name: 动态数据掩码
+            - name: 动态数据屏蔽
               href: ../../azure-sql/database/dynamic-data-masking-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: 透明数据加密 (TDE) 概述
               href: ../../azure-sql/database/transparent-data-encryption-tde-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
@@ -134,7 +134,7 @@
       items:
         - name: 概述
           href: design-elt-data-loading.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: ../sql/data-loading-best-practices.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -142,7 +142,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: ../sql/best-practices-dedicated-sql-pool.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
         - name: JSON
           items:
@@ -344,6 +344,8 @@
           href: sql-data-warehouse-how-to-configure-workload-importance.md
         - name: 将资源类转换为工作负荷组
           href: sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md
+        - name: 排查缺失的分类问题
+          href: sql-data-warehouse-how-to-troubleshoot-missed-classification.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
     - name: 管理和监视
       items:
         - name: 升级到第 2 代

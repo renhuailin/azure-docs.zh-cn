@@ -15,12 +15,12 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a65ab5e32a3a11becff70fb2e563d6760fa95360
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 4a31b5963f8143079eba016494da19b585273d1a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696644"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353825"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>使用 Azure PowerShell 创建或更新 Azure 自定义角色
 
@@ -164,7 +164,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 使用 PowerShell 创建自定义角色时，可以使用某个[内置角色](built-in-roles.md)作为起点，也可以从头开始。 本部分中的第一个示例以内置角色开始，并为它自定义更多的权限。 编辑属性以添加所需的 `Actions`、`NotActions` 或 `AssignableScopes`，然后将这些更改保存为新角色。
 
-以下示例从[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)内置角色开始，使用该角色创建名为“虚拟机操作员”的自定义角色。 该新角色授权访问 Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 资源提供程序的所有读取操作，并授权访问启动、重新启动和监视操作  。 该自定义角色可以在两个订阅中使用。
+以下示例从[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)内置角色开始，使用该角色创建名为“虚拟机操作员”的自定义角色。 该新角色授权访问 Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 资源提供程序的所有读取操作，并授权访问启动、重新启动和监视虚拟机的操作。   该自定义角色可以在两个订阅中使用。
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"

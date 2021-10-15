@@ -12,12 +12,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5f3c6526139389da3bfdbc3c43cf8b6d2a1dbccf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 594f4d68669b216e4606806a9ac3ef9a5b2f0b5c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567961"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358299"
 ---
 # <a name="api-access-differences-between-azure-media-services-v2-to-v3-api"></a>Azure 媒体服务 V2 与 V3 API 之间的 API 访问差异
 
@@ -49,4 +49,4 @@ ms.locfileid: "105567961"
 所有 .NET、CLI 和其他 SDK 都将面向最新的 2020-05-01 API，因此请查找或配置较旧的 API 版本。
 
 > [!NOTE]
-> 使用 2020-05-01 API 创建的新帐户不能使用 V2 API。
+> 使用 2020-05-01（或更新）版本 API 创建的新帐户不能使用 V2 API。

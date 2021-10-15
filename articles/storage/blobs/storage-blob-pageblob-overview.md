@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 36d36101cc7a7a4efff66e680f47431933ddf569
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 58509ca09bc17911d4a1a16955f97396c082e7de
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630824"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273110"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
@@ -27,7 +27,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 ## <a name="restrictions"></a>限制
 
-页 blob 只能使用“热”访问层，不能使用“冷”或“存档”层。 有关访问层的详细信息，请参阅 [Azure Blob 存储的访问层 - 热、冷和存档](storage-blob-storage-tiers.md)。
+页 blob 只能使用“热”访问层，不能使用“冷”或“存档”层。 有关访问层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 
 ## <a name="sample-use-cases"></a>示例用例
 

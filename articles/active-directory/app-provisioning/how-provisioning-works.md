@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 415824041c8e721c96ad9a9d480d5e50436310e4
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 957ee0b5a7301fa1959b3a88450dd047bfacaad5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964763"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353660"
 ---
 # <a name="how-application-provisioning-works-in-azure-active-directory"></a>应用程序预配在 Azure Active Directory 中的工作方式
 
@@ -81,7 +81,10 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 可以使用 Azure AD 用户预配服务将 Azure AD 中的 B2B（或来宾）用户预配到 SaaS 应用程序。 但是，为使 B2B 用户使用 Azure AD 登录 SaaS 应用程序，SaaS 应用程序必须通过特定的方式配置其基于 SAML 的单一登录功能。 有关如何配置 SaaS 应用程序以支持 B2B 用户的登录的详细信息，请参阅[为 B2B 协作配置 SaaS 应用](../external-identities/configure-saas-apps.md)。
 
-注意，来宾用户的 userPrincipalName 通常存储为“alias#EXT#@domain.com”。 当 userPrincipalName 作为源属性包含在属性映射中时，将从 userPrincipalName 中除去 #EXT#。 如果需要保留 EXT，请将 userPrincipalName 替换为 originalUserPrincipalName 并作为源属性。 
+> [!NOTE]
+来宾用户的 userPrincipalName 通常显示为“alias#EXT#@domain.com”。 当 userPrincipalName 作为源属性包含在属性映射中时，将从 userPrincipalName 中除去 #EXT#。 如果需要保留 EXT，请将 userPrincipalName 替换为 originalUserPrincipalName 并作为源属性。 
+
+userPrincipalName = alias@domain.com originalUserPrincipalName = alias#EXT#@domain.com
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>预配周期：初始和增量
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: f51ca01988a090c4c61b821c16ec67f20d2c679f
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 6d24154c7cbe9e5e17a78b52e5e0117e27b8d026
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416994"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359679"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>按 Metro 列出的 Azure CDN 覆盖范围 
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "112416994"
 >
 
 
-本文列出了 Azure 内容分发网络 (CDN) 产品的包含接入点 (POP) 位置的最新 Metro（按区域排序）。 每个 Metro 可能包含多个 POP。 例如，Microsoft 的 Azure CDN 在 100 个大城市中拥有 116 个 POP。 
+本文列出了 Azure 内容分发网络 (CDN) 产品的包含接入点 (POP) 位置的最新 Metro（按区域排序）。 每个 Metro 可能包含多个 POP。 例如，Microsoft 的 Azure CDN 在 100 个大都会中拥有 118 个 POP。 
 
 > [!IMPORTANT]
 > 每种 Azure CDN 产品都采用不同的方式来构建其 CDN 基础结构，因此 Microsoft 不建议使用 POP 位置来决定使用哪种 Azure CDN 产品。 应考虑其功能和最终用户性能。 请在使用每种 Azure CDN 产品的情况下对性能进行测试来选择适合你的用户的产品。 
@@ -59,4 +59,4 @@ ms.locfileid: "112416994"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要获取最新的 IP 地址允许列表，请参阅 [Azure CDN 边缘节点 API](/rest/api/cdn/cdn/edgenodes)。
+* 若要获取最新的 IP 地址允许列表，请参阅 [Azure CDN 边缘节点 API](/rest/api/cdn/edge-nodes/list)。

@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 91ef36a5dbbfb7e0edb7fe1d75d77d2f2dc4870b
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: ef1cce7905e07c1fa407c0194d585bb196ecdfd6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357600"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232197"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>有关 Internet Explorer 和 Microsoft Edge 浏览器 (MSAL.js) 的已知问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "113357600"
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **通过弹出窗口进行身份验证来完成登录时，弹出窗口无法关闭或卡住不动**。 通过 Microsoft Edge 或 IE(InPrivate) 中的弹出窗口进行身份验证时，输入凭据并登录后，如果导航中涉及跨安全区域的多个域，则会因为 MSAL.js 丢失弹出窗口句柄而无法关闭弹出窗口。
+- 通过弹出窗口进行身份验证来完成登录时，弹出窗口无法关闭或卡住不动。 在 Microsoft Edge 或 IE (InPrivate) 中通过弹出窗口进行身份验证时，输入凭据并登录后，如果导航中涉及跨安全区域的多个域，则会因为 `MSAL.js` 丢失弹出窗口句柄而无法关闭弹出窗口。
 
 ### <a name="update-fix-available-in-msaljs-023"></a>更新：MSAL.js 0.2.3 中提供的修补程序
 [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) 发布了针对身份验证重定向循环问题的修补程序。 在 MSAL.js 配置中启用标志 `storeAuthStateInCookie` 可利用此修补程序。 默认情况下，此标志设置为 false。
@@ -44,7 +44,7 @@ ms.locfileid: "113357600"
 启用 `storeAuthStateInCookie` 标志后，MSAL.js 将使用浏览器 Cookie 存储验证身份验证流所需的请求状态。
 
 > [!NOTE]
-> 此修补程序尚不适用于 msal-angular 和 msal-angularjs 包装器。 此修补程序无法解决弹出窗口的问题。
+> 此修补程序目前尚不适用于 `msal-angular` 和 `msal-angularjs` 包装器。 此修补程序无法解决弹出窗口的问题。
 
 使用以下解决方法。
 
@@ -63,7 +63,7 @@ ms.locfileid: "113357600"
 
 ## <a name="issues-due-to-popup-blockers"></a>弹出窗口阻止程序引起的问题
 
-有时会在 IE 或 Microsoft Edge 中阻止弹出窗口，例如在[多重身份验证](../authentication/concept-mfa-howitworks.md)期间出现第二个弹出窗口时。 你将在浏览器中收到警报，以允许弹出一次或始终弹出。 如果选择允许，浏览器将自动打开弹出窗口并为其返回 `null` 句柄。 因此，身份验证库没有该窗口的句柄，从而无法关闭弹出窗口。 当 Chrome 提示你允许弹出窗口时，由于它不会自动打开弹出窗口，因此不会发生相同的问题。
+有时会在 IE 或 Microsoft Edge 中阻止弹出窗口，例如在[多重身份验证](../authentication/concept-mfa-howitworks.md)期间出现第二个弹出窗口时。 你将在浏览器中收到警报，以允许弹出窗口弹出一次或始终弹出。 如果选择允许，浏览器将自动打开弹出窗口并为其返回 `null` 句柄。 因此，身份验证库没有该窗口的句柄，从而无法关闭弹出窗口。 当 Chrome 提示你允许弹出窗口时，由于它不会自动打开弹出窗口，因此不会发生相同的问题。
 
 作为解决方法，开发人员需要在开始使用其应用之前，在 IE 和 Microsoft Edge 中允许弹出窗口，以避免此问题。
 

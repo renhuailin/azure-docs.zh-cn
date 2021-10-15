@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 4b20448896de05e888de33b2a680623b662b5e5a
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f3d353f7d42baf1f9cc968cb37baac1077a35085
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178440"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231665"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -21,7 +21,7 @@ Azure 备份根据备份要求和基础结构拓扑（本地或 Azure）提供�
 
 可通过恢复服务保管库监视所有备份项。 导航到保管库中的“备份项”部分后会打开一个视图，其中提供与保管库关联的每种工作负载的备份项数量。 单击任意行会打开一个详细视图，其中列出了给定工作负载类型的所有备份项，以及有关每个项的上次备份状态、可用的最新还原点等信息。
 
-![屏幕截图：查看 RS 保管库备份项](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+![查看 RS 保管库备份项的屏幕截图](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
 
 > [!NOTE]
 > 对于使用 DPM 备份到 Azure 的项，该列表将显示使用 DPM 服务器保护的所有数据源（包括磁盘和联机）。 如果对保留了备份数据的数据源停止保护，则该数据源仍会在门户中列出。 可访问数据源的详细信息，查看恢复点是否存在于磁盘、联机或同时存在于这两者中。 此外，对于联机保护已停止但数据仍保留的数据源，在数据完全删除之前，将继续对联机恢复点进行计费。
@@ -32,7 +32,7 @@ Azure 备份根据备份要求和基础结构拓扑（本地或 Azure）提供�
 
 Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警报功能。 在恢复服务保管库设置中，“监视”部分提供了内置的作业和警报。
 
-![屏幕截图：RS 保管库内置监视](media/backup-azure-monitoring-laworkspace/rs-vault-inbuilt-monitoring-menu.png)
+![RS 保管库内置监视的屏幕截图](media/backup-azure-monitoring-laworkspace/rs-vault-inbuilt-monitoring-menu.png)
 
 执行配置备份、备份、还原、删除备份等操作时，会生成作业。
 
@@ -59,6 +59,8 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 - 备份/还原失败
 - 备份成功，并显示针对 Microsoft Azure 恢复服务 (MARS) 代理的警告
 - 停止保护并保留数据/停止保护并删除数据
+- 保管库已禁用软删除功能
+- 数据库工作负载的备份类型不受支持
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>此处会显示以下 Azure 备份解决方案中的警报
 
@@ -72,7 +74,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 ### <a name="consolidated-alerts"></a>合并的警报
 
-对于 Azure 工作负荷备份解决方案（例如 SQL 和 SAP HANA），系统可以非常频繁地生成日志备份（根据策略，最高可达每 15 分钟 1 次）。 因此，也可能会出现日志备份失败也很频繁（高达每 15 分钟一次）的情况。 在这种情况下，如果每次失败都引发一次警报，最终用户将会不堪其扰。 因此，系统会在第一次失败时发送警报，以后由于同一根本原因而失败时则不会生成警报。 将在第一个警报中更新失败计数。 但如果该警报被用户停用，则下一次失败会触发另一警报，系统会将其视为该情况的第一个警报。 这是 Azure 备份针对 SQL 和 SAP HANA 备份执行警报合并的方式。
+对于 Azure 工作负荷备份解决方案（例如 SQL 和 SAP HANA），系统可以非常频繁地生成日志备份（根据策略，最高可达每 15 分钟 1 次）。 因此，也可能会出现日志备份失败也很频繁（高达每 15 分钟一次）的情况。 在这种情况下，如果每次失败都引发一次警报，最终用户将会不堪其扰。 因此，系统会在第一次失败时发送警报，以后由于同一根本原因而失败时则不会生成警报。 将在第一个警报中更新失败计数。 但如果该警报被用户停用，则下一次失败会触发另一警报，系统会将其视为该情况的第一个警报。 这是 Azure 备份针对 SQL 和 SAP HANA 备份执行警报合并的方式。 不合并按需备份作业。
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>未引发警报时生成异常
 
@@ -100,7 +102,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 一旦引发警报，用户就会收到通知。 Azure 备份通过电子邮件提供内置通知机制。 可以指定在生成警报时接收通知的个人电子邮件地址或通讯组列表。 还可以选择是要接收每个警报的通知，还是将这些警报分组成按小时摘要，然后接收通知。
 
-![屏幕截图：RS 保管库内置电子邮件通知](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
+![RS 保管库内置电子邮件通知屏幕截图](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
 配置通知后，你会收到一封欢迎电子邮件或简介电子邮件。 由此可以确认，在引发警报时，Azure 备份可向这些地址发送电子邮件。<br>
 
@@ -115,7 +117,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 若要停用/解决某个活动警报，可以选择与要停用的警报相对应的列表项。 这将打开一个屏幕，其中会显示有关警报的详细信息，顶部有一个“停用”按钮。 选择此按钮会将警报的状态更改为“非活动”。 还可以通过以下方式停用警报：右键单击与警报对应的列表项并选择“停用”。
 
-![屏幕截图：“备份中心”警报停用](media/backup-azure-monitoring-laworkspace/vault-alert-inactivate.png)
+![备份中心警报停用的屏幕截图](media/backup-azure-monitoring-laworkspace/vault-alert-inactivate.png)
 
 ## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure 备份的 Azure Monitor 警报（预览）
 
@@ -155,6 +157,14 @@ Azure 备份目前已提供两种主要类型的内置警报：
 3. 使用“注册”为订阅启用此功能。
     > [!NOTE]
     > 注册可能需要长达 24 小时才能生效。 若要为多个订阅启用此功能，请在屏幕顶部选择相关订阅，并重复上述流程。 如果初始注册后已在订阅中创建新资源，则还建议重新注册预览标志，以继续接收警报。
+
+4. 作为最佳做法，我们还建议注册资源提供程序，以确保功能注册信息按预期与 Azure 备份服务同步。 若要注册资源提供程序，请在已注册功能标志的订阅中运行以下 PowerShell 命令。
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace <ProviderNamespace>
+```
+
+若要接收恢复服务保管库的警报，请为 ProviderNamespace 参数使用值 Microsoft.RecoveryServices。 若要接收备份保管库的警报，请使用值 Microsoft.DataProtection。
 
 ### <a name="viewing-fired-alerts-in-the-azure-portal"></a>在 Azure 门户中查看已触发的警报 
 

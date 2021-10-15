@@ -2,13 +2,13 @@
 title: Bicep 中的数据类型
 description: 描述 Bicep 中可用的数据类型
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: 936f17273a95ceb77030497b27f7f73defc37896
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/30/2021
+ms.openlocfilehash: e2dffac58c3fec1b6c29d2c5e1542c9fec7ec0e4
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624391"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357924"
 ---
 # <a name="data-types-in-bicep"></a>Bicep 中的数据类型
 
@@ -21,7 +21,7 @@ ms.locfileid: "128624391"
 * array
 * bool
 * int
-* 对象 (object)
+* object
 * secureObject - Bicep 中的修饰符指示
 * secureString - Bicep 中的修饰符指示
 * string
@@ -83,9 +83,7 @@ param exampleInt int = 1
 
 ## <a name="objects"></a>对象
 
-对象以左大括号 (`{`) 开头，以右大括号 (`}`) 结尾。 在 Bicep 中，必须在多行中声明对象。 对象中的每个属性都包含键和值。 键和值用冒号 (`:`) 分隔。 对象允许任何类型的任何属性。
-
-在 Bicep 中，键不能用引号括起来。 请不要在属性之间使用逗号。
+对象以左大括号 (`{`) 开头，以右大括号 (`}`) 结尾。 在 Bicep 中，必须在多行中声明对象。 对象中的每个属性都包含键和值。 键和值用冒号 (`:`) 分隔。 对象允许任何类型的任何属性。 请不要在属性之间使用逗号。
 
 ```bicep
 param exampleObject object = {
@@ -93,6 +91,23 @@ param exampleObject object = {
   id: '123-abc'
   isCurrent: true
   tier: 1
+}
+```
+
+在 Bicep 中，对象属性键可以有选择地使用引号：
+
+```bicep
+var test = {
+  'my - special. key': 'value'
+}
+```
+
+在上一示例中，当对象属性键包含特殊字符时，使用了引号。  例如空格、'-' 或 '.'。 以下示例演示了如何在对象属性键中使用内插。
+
+```bicep
+var stringVar = 'example value'
+var objectVar = {
+  '${stringVar}': 'this value'
 }
 ```
 

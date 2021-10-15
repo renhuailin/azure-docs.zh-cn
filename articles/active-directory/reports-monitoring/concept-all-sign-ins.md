@@ -17,12 +17,12 @@ ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbd65204534e978446109c99ca7286c0af00d68
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 9455883bea37602e572a538862eaf5de9c17bbbc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580379"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669410"
 ---
 # <a name="sign-in-logs-in-azure-active-directory---preview"></a>Azure Active Directory 中的登录日志 - 预览版
 
@@ -177,7 +177,7 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 
 - 客户端使用 OAuth 2.0 授权代码来获取访问令牌和刷新令牌。
 
-- 用户在已加入 Azure AD 的电脑上执行 Web 或 Windows 应用的单一登录 (SSO)。
+- 用户在已加入 Azure AD 的电脑上对 Web 或 Windows 应用执行单一登录 (SSO)，无需提供身份验证因素或与 Azure AD 提示交互。
 
 - 用户使用 FOCI（客户端 ID 系列）在移动设备上建立会话后，可以登录到另一个 Microsoft Office 应用。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9dd3525f4efec3c49950839306ee5419c7850c69
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1a733492a46b51d471a0efb0c5f316b0a47c8598
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275407"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353173"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>步骤 1 - 了解迁移到媒体服务 API V3 的好处
 
@@ -26,7 +26,7 @@ ms.locfileid: "106275407"
 
 ## <a name="use-the-latest-api"></a>使用最新的 API
 
-建议你立即开始使用 Azure 媒体服务 V3 API 版本 2020-05-01 来获得相关优势，因为新的特性、功能和性能优化仅在当前 V3 API 中可用。
+我们建议你立即开始使用 2020-05-01（或更新）版本的 Azure 媒体服务 V3 API 来获得相关优势，因为新的特性、功能和性能优化只在当前的 V3 API 中提供。
 
 你可在门户、最新的 SDK、最新的 CLI 和 REST API 中使用正确的版本字符串更改 API 版本。
 

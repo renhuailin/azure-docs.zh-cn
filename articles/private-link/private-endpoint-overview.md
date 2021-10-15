@@ -5,18 +5,18 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 07/15/2021
+ms.date: 09/09/2021
 ms.author: allensu
-ms.openlocfilehash: f816ae15ddba9f56f1b504b2e4ccc52efdc09249
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 0d613d7d207da8632fe7a2767d6440ee62378866
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099970"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359401"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
-Azure 专用终结点是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。 
+专用终结点是使用虚拟网络中的专用 IP 地址的网络接口。 此网络接口通过私密且安全的方式将你连接到由 Azure 专用链接提供支持的服务。 启用专用终结点可将服务引入虚拟网络中。
 
 该服务可以是 Azure 服务，比如：
 
@@ -28,19 +28,25 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 ## <a name="private-endpoint-properties"></a>专用终结点属性 
  专用终结点指定以下属性： 
 
-
 |属性  |说明 |
 |---------|---------|
 |名称    |    资源组中的唯一名称。      |
 |子网    |  要部署的子网以及分配专用 IP 地址的子网。 有关子网要求，请参阅本文中的“限制”部分。         |
 |专用链接资源    |   用于通过可用类型列表中的资源 ID 或别名建立连接的专用链接资源。 将为发送到此资源的所有流量生成唯一的网络标识符。       |
 |目标子资源   |      要连接的子资源。 每个专用链接资源类型具有不同的选项，可根据偏好做出选择。    |
-|连接批准方法    |  自动或手动。 根据 Azure 基于角色的访问控制权限，可以自动批准专用终结点。 如果尝试在没有 Azure 基于角色的访问控制的情况下连接到专用链接资源，请使用手动方法来允许资源所有者批准连接。        |
+|连接批准方法    |  自动或手动。 根据 Azure 基于角色的访问控制权限，你的专用终结点可能会被自动批准。 如果尝试在没有 Azure 基于角色的访问控制的情况下连接到专用链接资源，请使用手动方法来允许资源所有者批准连接。        |
 |请求消息     |  可为请求手动批准的连接指定消息。 此消息可用于标识特定的请求。        |
 |连接状态   |   一个只读属性，指定专用终结点是否处于活动状态。 只能使用处于已批准状态的专用终结点发送流量。 更多可用状态： <br>-**已批准**：连接已自动或手动批准，随时可供使用。</br><br>-**等待中**：连接是手动创建的，正等待由专用链接资源所有者批准。</br><br>-**已拒绝**：连接已被专用链接资源所有者拒绝。</br><br>-**已断开连接**：连接已被专用链接资源所有者删除。 专用终结点已变为参考性终结点，应将其删除以清理资源。 </br>|
 
-下面是有关专用终结点的一些重要详细信息： 
-- 专用终结点使同一 VNet、区域性对等互连的 Vnet、全局性对等互连的 Vnet 中的以及本地用户能够使用 [VPN](https://azure.microsoft.com/services/vpn-gateway/) 或 [Express 路由](https://azure.microsoft.com/services/expressroute/)和由专用链接提供支持的服务在用户之间实现互连。
+有关专用终结点的一些重要详细信息： 
+
+- 专用终结点在下述相同环境中的使用者之间实现连接：
+    
+    - 虚拟网络
+    - 区域对等互连的虚拟网络
+    - 全球对等互连的虚拟网络
+    - 使用 [VPN](https://azure.microsoft.com/services/vpn-gateway/) 或 [Express Route](https://azure.microsoft.com/services/expressroute/) 的本地位置
+    - 由专用链接提供支持的服务
  
 - 网络连接只能由连接到专用终结点的客户端启动。 服务提供商未提供路由配置，因此无法创建与服务使用者的连接。 只能在单个方向建立连接。
 
@@ -50,15 +56,16 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  
 - 专用链接资源可部署在与虚拟网络和专用终结点不同的区域中。
  
-- 可以使用同一个专用链接资源创建多个专用终结点。 对于使用常见 DNS 服务器配置的单个网络，建议的做法是对给定的专用链接资源使用单个专用终结点，以避免出现重复条目或 DNS 解析冲突。 
+- 可以使用同一个专用链接资源创建多个专用终结点。 对于使用常见 DNS 服务器配置的单个网络，建议的做法是对给定的专用链接资源使用单个专用终结点。 使用这种做法可以避免出现重复条目或 DNS 解析冲突。 
  
 - 可以在同一虚拟网络中的相同或不同子网上创建多个专用终结点。 在一个订阅中可以创建的专用终结点数量有限制。 有关详细信息，请参阅  [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 - 来自专用链接资源的订阅也必须注册到 Microsoft。 Network 资源提供程序。 有关详细信息，请参阅 [Azure 资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md)。
-
  
 ## <a name="private-link-resource"></a>专用链接资源 
-专用链接资源是给定专用终结点的目标。 下表列出了可用的专用终结点资源： 
+专用链接资源是给定专用终结点的目标。 
+
+下表列出了支持专用终结点的可用资源： 
  
 | 专用链接资源名称 | 资源类型 | 子资源 |
 | ---------------------------| ------------- | ------------- |
@@ -105,11 +112,11 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 | **Azure 应用服务** | Microsoft.Web/sites | sites |
 | **Azure 应用服务** | Microsoft.Web/staticSites | staticSite |
 
- 
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全性 
-使用 Azure 服务的专用终结点时，流量将受到特定专用链接资源的保护。 平台会执行访问控制，以验证网络连接是否仅抵达指定的专用链接资源。 若要在同一 Azure 服务中访问更多资源，需要使用额外的专用终结点。 
+
+使用专用终结点时，流量将受到专用链接资源的保护。 平台会执行访问控制，以验证网络连接是否仅抵达指定的专用链接资源。 若要在同一 Azure 服务中访问更多资源，需要使用额外的专用终结点。 
  
-可以完全锁定工作负荷，使其无法访问公共终结点来连接受支持的 Azure 服务。 此控制提供内置的渗透防护，可阻止对同一 Azure 服务上托管的其他资源进行访问，从而为资源提供了额外的网络安全层。 
+可以完全锁定工作负荷，使其无法访问公共终结点来连接受支持的 Azure 服务。 这种控制为资源提供额外的网络安全层。 该安全机制提供的保护可以防止对同一 Azure 服务上托管的其他资源进行访问。 
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>使用批准工作流访问专用链接资源 
 可使用以下连接批准方法连接到专用链接资源：
@@ -128,15 +135,19 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 > [!NOTE]
 > 只有处于已批准状态的专用终结点才能将流量发送到给定的专用链接资源。 
 
-### <a name="connecting-using-alias"></a>使用别名进行连接
-别名是当服务所有者在标准负载均衡器后面创建专用链接服务时，生成的唯一名字对象。 服务所有者可与其使用者脱机共享此别名。 使用者可以使用资源 URI 或别名请求连接到专用链接服务。 若要使用别名进行连接，必须使用手动连接批准方法创建专用终结点。 若要使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请查看 [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 和 [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)。 
+### <a name="connect-with-alias"></a>使用别名进行连接
 
-## <a name="dns-configuration"></a>DNS 配置 
-使用完全限定的域名 (FQDN) 作为连接字符串的一部分连接到专用链接资源时，正确配置 DNS 设置以解析为给定的专用 IP 地址很重要。 现有的 Azure 服务可能已有在通过公共终结点进行连接时要使用的 DNS 配置。 必须覆盖此配置，才能使用专用终结点进行连接。 
+别名是当服务所有者在标准负载均衡器后面创建专用链接服务时，生成的唯一名字对象。 服务所有者可与其使用者脱机共享此别名。 
+
+使用者可以使用资源 URI 或别名请求连接到专用链接服务。 若要使用别名进行连接，必须使用手动连接批准方法创建专用终结点。 若要使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请参阅 [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 和 [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)。
+
+## <a name="dns-configuration"></a>DNS 配置
+
+用于与专用链接资源建立连接的 DNS 设置很重要。 使用完全限定的域名 (FQDN) 进行连接时，请确保 DNS 设置正确。 设置必须解析为专用终结点的专用 IP 地址。 现有的 Azure 服务可能已有在通过公共终结点进行连接时要使用的 DNS 配置。 必须覆盖此配置，才能使用专用终结点进行连接。 
  
-与专用终结点关联的网络接口包含配置 DNS 所需的完整的一组信息，包括为专用链接资源指定的 FQDN 和专用 IP 地址。 
+与专用终结点关联的网络接口包含配置 DNS 所需的信息。 信息包括专用链接资源的 FQDN 和专用 IP 地址。 
 
-如需详细了解为专用终结点配置 DNS 的完整建议，请参阅[专用终结点 DNS 配置](private-endpoint-dns.md)。
+有关为专用终结点配置 DNS 的建议的完整详细信息，请参阅[专用终结点 DNS 配置](private-endpoint-dns.md)。
  
 ## <a name="limitations"></a>限制
  
@@ -144,25 +155,42 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 
 | 限制 | 说明 |缓解措施 |
 | --------- | --------- | --------- |
-| 使用用户定义的路由发往专用终结点的流量可能是非对称的。 | 从专用终结点返回的流量会绕过 NVA 并尝试返回到源 VM。 | 对于通过 UDR 发往专用终结点的所有流量，建议通过在 NVA 的 SNAT 流量来确保对称路由。  |
+| 使用用户定义的路由发往专用终结点的流量可能是非对称的。 | 从专用终结点返回的流量会绕过网络虚拟设备 (NVA) 并尝试返回到源 VM。 | 源网络地址转换 (SNAT) 用于确保对称路由。 对于通过 UDR 发往专用终结点的所有流量，建议对 NVA 上的流量使用 SNAT。 |
 
 > [!IMPORTANT]
-> NSG 和 UDR 对专用终结点的支持处于公共预览状态。
+> NSG 和 UDR 对专用终结点的支持在选择区域中处于公共预览状态。 有关详细信息，请参阅[专用链接 UDR 支持的公共预览版](https://azure.microsoft.com/updates/public-preview-of-private-link-udr-support/)和[专用链接网络安全组支持的公共预览版](https://azure.microsoft.com/updates/public-preview-of-private-link-network-security-group-support/)。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
+## <a name="public-preview-limitations"></a>公共预览版限制
 
+### <a name="nsg"></a>NSG
 
+| 限制 | 说明 | 缓解措施 |
+| ---------- | ----------- | ---------- |
+| 无法在专用终结点网络接口上获取有效的路由和安全规则。 | 无法导航到网络接口以查看有效路由和安全规则的相关信息。 | Q4CY21 |
+| 不支持 NSG 流日志。 | NSG 流日志对于发往专用终结点的入站流量不起作用。 | 目前没有信息。 |
+| ZRS 存储帐户出现间歇性丢包。 | 即使在存储专用终结点子网上应用了允许 NSG，使用 ZRS 存储帐户的客户也可能会看到周期性的间歇性丢包。 | 9 月 |
+| Azure 密钥保管库出现间歇性丢包。 | 即使在 Azure 密钥保管库专用终结点子网上应用了允许 NSG，使用 Azure 密钥保管库的客户也可能会看到周期性的间歇性丢包。 | 9 月 |
+| 每个 NSG 的地址前缀数限制。 | 不支持在单个规则的 NSG 中指定 500 个以上的地址前缀。 | 9 月 |
+| AllowVirtualNetworkAccess 标志 | 如果客户在其 VNet (VNet A) 上设置 VNet 对等互连，并且在指向另一个 VNet (VNet B) 的对等互连链路上将 AllowVirtualNetworkAccess 标志设置为 false，则客户无法使用 VirtualNetwork 标记来拒绝从 VNet B 中发出的访问专用终结点资源的流量 。 他们需要为 VNet B 的地址前缀显式添加一个块才能拒绝流量进入专用终结点。 | 9 月 |
+| 不支持双端口 NSG 规则。 | 如果在 NSG 规则中使用多个端口范围，则允许规则和拒绝规则只遵循第一个端口范围。 包含多个端口范围的规则默认为拒绝所有端口而不是特定的端口。 </br> 有关详细信息，请参阅下面的规则示例。 | 9 月 |
+
+| 优先度 | 源端口 | 目标端口 | 操作 | 有效操作 |
+| -------- | ----------- | ---------------- | ------ | ---------------- |
+| 10 | 10-12 | 10-12 | 允许/拒绝 | 源/目标端口中的单个端口范围将按预期方式工作。 |
+| 10 | 10-12、13-14 | 14-15、16-17 | Allow | 仅允许源端口 10-12 和目标端口 14-15。 |
+| 10 | 10-12、13-14 | 120-130、140-150 | 拒绝 | 拒绝来自所有源端口的流量进入所有目标端口，因为存在多个源和目标端口范围。 |
+| 10 | 10-12、13-14 | 120-130 | 拒绝 | 来自所有源端口的流量仅被拒绝进入目标端口 120-130。 存在多个源端口范围和一个目标端口范围。 |
+
+表：示例双端口规则。
+
+### <a name="udr"></a>UDR
+
+| 限制 | 说明 | 缓解措施 |
+| ---------- | ----------- | ---------- |
+| 始终建议使用源网络地址转换 (SNAT)。 | 由于专用终结点数据平面的可变性，建议对发往专用终结点的流量执行 SNAT，以确保返回流量被接受。 | 目前没有信息。 |
+ 
 ## <a name="next-steps"></a>后续步骤
-- [使用门户为 Azure Web 应用创建专用终结点](create-private-endpoint-portal.md)
-- [使用 PowerShell 为 Azure Web 应用创建专用终结点](create-private-endpoint-powershell.md)
-- [使用 CLI 为 Azure Web 应用创建专用终结点](create-private-endpoint-cli.md)
-- [使用门户创建存储帐户的专用终结点](./tutorial-private-endpoint-storage-portal.md)
-- [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
-- [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)
-- [使用门户创建自己的用于 Azure Database for PostgreSQL - 单个服务器的专用链接](../postgresql/howto-configure-privatelink-portal.md)
-- [使用 CLI 创建自己的用于 Azure Database for PostgreSQL - 单个服务器的专用链接](../postgresql/howto-configure-privatelink-cli.md)
-- [使用门户创建自己的用于 Azure Database for MySQL 的专用链接](../mysql/howto-configure-privatelink-portal.md)
-- [使用 CLI 创建自己的用于 Azure Database for MySQL 的专用链接](../mysql/howto-configure-privatelink-cli.md)
-- [使用门户创建自己的用于 Azure Database for MariaDB 的专用链接](../mariadb/howto-configure-privatelink-portal.md)
-- [使用 CLI 创建自己的用于 Azure Database for MariaDB 的专用链接](../mariadb/howto-configure-privatelink-cli.md)
-- [使用门户和 CLI 创建自己的用于 Azure Key Vault 的专用链接](../key-vault/general/private-link-service.md)
+
+- 有关专用终结点和专用链接的详细信息，请参阅[什么是 Azure 专用链接？](private-link-overview.md)。
+- 若要开始为 Web 应用创建专用终结点，请参阅[快速入门 - 使用 Azure 门户创建专用终结点](create-private-endpoint-portal.md)。

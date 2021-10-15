@@ -2,13 +2,13 @@
 title: Bicep 文件结构和语法
 description: 使用声明性语法介绍 Bicep 文件的结构和属性。
 ms.topic: conceptual
-ms.date: 07/02/2021
-ms.openlocfilehash: 5401aebb0b0a82a04a2b78f9af1dc6d133915c0b
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.date: 10/01/2021
+ms.openlocfilehash: e627821f80f76ff536859fd643bd01c55d50ab7e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113286621"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350417"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>了解 Bicep 文件的结构和语法
 
@@ -175,6 +175,17 @@ param storageSKU string = 'Standard_LRS'
 | minValue | int | int | 整数参数的最小值。 最小值包含在内。 |
 | secure | 字符串、对象 | 无 | 将参数标记为安全。 安全参数的值不会保存到部署历史记录中，也不会被记录下来。 有关详细信息，请参阅[保护字符串和对象](data-types.md#secure-strings-and-objects)。 |
 
+修饰器位于 [sys 命名空间](bicep-functions.md#namespaces-for-functions)中。 如果需要将修饰器与具有相同名称的其他项区分开来，请在修饰器前面加上 `sys`。 例如，如果 Bicep 文件包含名为 `description` 的参数，则必须在使用说明修饰器时添加 sys 命名空间。
+
+```bicep
+@sys.description('The name of the instance.')
+param name string
+@sys.description('The description of the instance to display.')
+param description string
+```
+
+有关详细信息，请参阅[修饰器](parameters.md#decorators)。
+
 ## <a name="variables"></a>变量
 
 将变量用于在 Bicep 文件中重复的复杂表达式。 例如，可以为资源名称添加一个变量，该名称通过将多个值连接在一起构造而成。
@@ -191,7 +202,7 @@ var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
 
 ## <a name="resource"></a>资源
 
-使用关键字 `resource` 定义要部署的资源。 资源声明中包含资源的符号名称。 如果需要从资源中获取值，请在 Bicep 文件的其他部分中使用此符号名称。
+使用关键字 `resource` 定义要部署的资源。 资源声明中包含资源的符号名称。 如果需要从资源中获取值，请在 Bicep 文件的其他部分中使用此符号名称。 符号名称可以包含 a-z、A-Z、0-9 和“_”，该名称不能以数字开头。
 
 资源声明中还包含资源类型和 API 版本。
 
@@ -261,7 +272,7 @@ module webModule './webApp.bicep' = {
 }
 ```
 
-借助符号名称，你可以从文件中的其他位置引用模块。 例如，可以通过使用符号名称和输出值的名称来获取模块的输出值。
+借助符号名称，你可以从文件中的其他位置引用模块。 例如，可以通过使用符号名称和输出值的名称来获取模块的输出值。 符号名称可以包含 a-z、A-Z、0-9 和“_”，该名称不能以数字开头。
 
 模块不能与参数、变量或资源同名。
 
@@ -282,9 +293,11 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
 }]
 ```
 
+`batchSize` 修饰器位于 [sys 命名空间](bicep-functions.md#namespaces-for-functions)中。 如果你需要将此装饰器与同名的其他项区分开来，请在修饰器前面加上 sys：`@sys.batchSize(2)`
+
 有关详细信息，请参阅[批量部署](loop-resources.md#deploy-in-batches)。
 
-## <a name="outputs"></a>Outputs
+## <a name="outputs"></a>输出
 
 使用输出，以从部署中返回值。 通常，当需要将某值重新用于其他操作时，可以从已部署的资源中返回该值。
 

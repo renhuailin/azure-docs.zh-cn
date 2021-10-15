@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/01/2021
 ms.author: alkohli
-ms.openlocfilehash: d39b1f1b4220c0899cb649f0544bc7da94f20c09
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 15cfd2b7188f84e14aa12824f8d5fab06d226330
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361596"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363920"
 ---
 # <a name="upload-import-and-export-certificates-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上上传、导入、导出证书
 
@@ -40,24 +40,81 @@ ms.locfileid: "113361596"
 
 要在设备上上传根证书和终结点证书，在本地 Web UI 中使用“证书”页上的“+ 添加证书”选项。 执行以下步骤：
 
-1. 首先上传根证书。 在本地 Web UI 中，转到“证书”>“+ 添加证书”。
+1. 首先上传根证书。 在本地 Web UI 中，转到“证书”。
+1. 选择“+ 添加证书”。
 
-    ![添加签名链证书 1](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+    ![添加签名链证书 1](media/azure-stack-edge-gpu-manage-certificates/add-cert-1.png)
 
-2. 接下来上传终结点证书。 
+1. 保存证书。
 
-    ![添加签名链证书 2](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+#### <a name="upload-endpoint-certificate"></a>上传终结点证书
+
+1. 接下来上传终结点证书。 
+
+    ![添加签名链证书 2](media/azure-stack-edge-gpu-manage-certificates/add-cert-2.png)
 
     选择 .pfx 格式的证书文件，并输入在导出证书时提供的密码。 Azure 资源管理器证书可能需要几分钟才会应用。
 
     如果未首先更新签名链，并且尝试上传终结点证书，则会出现错误。
 
-    ![应用证书错误](media/azure-stack-edge-series-manage-certificates/apply-cert-error-1.png)
+    ![应用证书错误](media/azure-stack-edge-gpu-manage-certificates/apply-cert-error-1.png)
 
     返回并上传签名链证书，然后上传和应用终结点证书。
 
 > [!IMPORTANT]
 > 如果更改了设备名称或 DNS 域，则必须创建新证书。 然后，应将客户端证书和设备证书更新为新的设备名称和 DNS 域。 
+
+#### <a name="upload-kubernetes-certificates"></a>上传 Kubernetes 证书
+
+Kubernetes 证书可用于 Edge 容器注册表或 Kubernetes 仪表板。 在每种情况下，都必须上传证书和密钥文件。 请按照以下步骤创建和上传 Kubernetes 证书：
+
+
+1. 你将使用 `openssl` 创建 Kubernetes 仪表板证书或 Edge 容器注册表。 请确保在用于创建证书的系统上安装 OpenSSL。 在 Windows 系统中，可以使用 Chocolatey 安装 `openssl`。 安装 Chocolatey 后，打开 PowerShell 并键入以下命令：
+    
+    ```powershell
+    choco install openssl
+    ```
+1. 使用 `openssl` 创建这些证书。 将创建 `cert.pem` 证书文件和 `key.pem` 密钥文件。  
+
+    - 对于 Edge 容器注册表，请使用以下命令：
+    
+        ```powershell
+        openssl req -newkey rsa:4096 -nodes -sha256 -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=<ecr.endpoint-suffix>"
+        ``` 
+        下面是示例输出： 
+
+        ```powershell
+        PS C:\WINDOWS\system32> openssl req -newkey rsa:4096 -nodes -sha256 -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=ecr.dbe-1d6phq2.microsoftdatabox.com"
+        Generating a RSA private key
+        .....................++++....++++
+        writing new private key to 'key.pem'
+        -----
+        PS C:\WINDOWS\system32>
+        ```    
+    - 对于 Kubernetes 仪表板证书，请使用以下命令：  
+     
+        ```powershell
+        openssl req -newkey rsa:4096 -nodes -sha256 -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=<<kubernetes-dashboard.endpoint-suffix> OR <endpoint-suffix>>"
+        ```
+        下面是示例输出： 
+
+        ```powershell
+        PS C:\WINDOWS\system32> openssl req -newkey rsa:4096 -nodes -sha256 -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=kubernetes-dashboard.dbe-1d8phq2.microsoftdatabox.com"
+        Generating a RSA private key
+        .....................++++....++++
+        writing new private key to 'key.pem'
+        -----
+        PS C:\WINDOWS\system32>
+        ```          
+1. 上传 Kubernetes 证书和之前生成的相应密钥文件。
+    
+    - 对于 Edge 容器注册表
+    
+        ![添加 Edge 容器注册表证书和密钥文件的屏幕截图](media/azure-stack-edge-gpu-manage-certificates/add-cert-3.png)      
+
+    - 对于 Kubernetes 仪表板     
+
+        ![添加 Kubernetes 仪表板证书和密钥文件的屏幕截图](media/azure-stack-edge-gpu-manage-certificates/add-cert-4.png) 
 
 ## <a name="import-certificates-on-the-client-accessing-the-device"></a>在访问设备的客户端上导入证书
 
@@ -75,22 +132,22 @@ ms.locfileid: "113361596"
 
 1. 右键单击文件并选择“安装证书”。 该操作会启动证书导入向导。
 
-    ![导入证书 1](media/azure-stack-edge-series-manage-certificates/import-cert-1.png)
+    ![导入证书 1](media/azure-stack-edge-gpu-manage-certificates/import-cert-1.png)
 
 2. 对于“存储位置”，选择“本地计算机”，然后选择“下一步”。
 
-    ![导入证书 2](media/azure-stack-edge-series-manage-certificates/import-cert-2.png)
+    ![导入证书 2](media/azure-stack-edge-gpu-manage-certificates/import-cert-2.png)
 
 3. 选择“将所有证书放入以下存储区”，然后选择“浏览”。 
 
     - 若要导入到个人存储，请导航到远程主机的“个人存储”，然后选择“下一步”。
 
-        ![导入证书 4](media/azure-stack-edge-series-manage-certificates/import-cert-4.png)
+        ![导入证书 4](media/azure-stack-edge-gpu-manage-certificates/import-cert-4.png)
 
 
     - 若要导入到受信任的存储区，请导航到“受信任的根证书颁发机构”，然后选择“下一步”。
 
-        ![导入证书 3](media/azure-stack-edge-series-manage-certificates/import-cert-3.png)
+        ![导入证书 3](media/azure-stack-edge-gpu-manage-certificates/import-cert-3.png)
 
  
 4. 选择“完成”。 将显示一条提示已成功导入的消息。

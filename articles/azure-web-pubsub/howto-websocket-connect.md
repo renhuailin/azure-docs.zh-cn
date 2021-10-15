@@ -1,28 +1,29 @@
 ---
-title: 如何开始与 Azure Web PubSub 服务建立 WebSocket 连接
-description: 有关如何在不同的语言中开始与 Azure Web PubSub 服务建立 WebSocket 连接的说明
+title: 如何开始与 Azure Web PubSub 建立 WebSocket 连接
+description: 了解如何在不同的语言中开始与 Azure Web PubSub 服务建立 WebSocket 连接。
 author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.openlocfilehash: 91d326197737ab6dde07bbb72584648cfe025b05
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 02e7afa9b8c454b3520db933d76149973b50c699
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113338"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275157"
 ---
-#  <a name="how-to-start-websocket-connection-to-the-azure-web-pubsub-service"></a>如何开始与 Azure Web PubSub 服务建立 WebSocket 连接
+#  <a name="start-a-websocket-connection-to-azure-web-pubsub"></a>开始与 Azure Web PubSub 建立 WebSocket 连接
 
-客户端使用标准 [WebSocket](https://tools.ietf.org/html/rfc6455) 协议连接到 Azure Web PubSub 服务。 因此，可以使用支持 WebSocket 客户端的语言为该服务编写客户端。 以下各部分演示了以不同语言编写的多个 WebSocket 客户端示例。
+客户端使用标准 [WebSocket](https://tools.ietf.org/html/rfc6455) 协议连接到 Azure Web PubSub 服务。 可以使用 WebSocket 客户端支持的语言为服务编写客户端。 在本文中，你将看到几个不同语言的 WebSocket 客户端示例。
 
-## <a name="auth"></a>Auth
-Web PubSub 服务使用 [JWT 令牌](https://tools.ietf.org/html/rfc7519.html)对客户端进行验证和身份验证。 客户端可将该令牌放在 `access_token` 查询参数中，或者在连接到服务时将该令牌放在 `Authorization` 头中。
+## <a name="authorization"></a>授权
 
-典型的工作流是，客户端先与其应用服务器通信，以获取服务和令牌的 URL。 然后，客户端使用收到的 URL 和令牌打开与服务的 WebSocket 连接。
+Web PubSub 使用 [JSON Web 令牌 (JWT)](https://tools.ietf.org/html/rfc7519.html) 来验证和授权客户端。 客户端可将该令牌放在 `access_token` 查询参数中，或者在连接到服务时将该令牌放在 `Authorization` 头中。
 
-门户中还提供了一个动态生成的包含令牌的客户端 URL，使客户端可以启动快速测试：
+通常，客户端先与其应用服务器通信，以获取服务和令牌的 URL。 然后，客户端使用收到的 URL 和令牌打开与服务的 WebSocket 连接。
+
+该门户还提供了一个工具，用于以动态方式生成带令牌的客户端 URL。 此工具可用于快速测试。
 
 :::image type="content" source="./media/howto-websocket-connect/generate-client-url.png" alt-text="显示在何处找到客户端 URL 生成器的屏幕截图。":::
 
@@ -30,9 +31,9 @@ Web PubSub 服务使用 [JWT 令牌](https://tools.ietf.org/html/rfc7519.html)�
 > 生成令牌时，请确保仅包括必要的角色。
 >
 
-为了简化示例工作流，在以下各部分，我们将使用门户中临时生成的此 URL（`<Client_URL_From_Portal>` 用于表示值）。 生成的令牌默认会在 50 分钟后过期，因此请记得在令牌过期后重新生成令牌。
+为了简化示例工作流，在以下各部分，我们将使用门户中临时生成的此 URL 供客户端连接。 `<Client_URL_From_Portal>` 用于表示值。 生成的令牌默认会在 60 分钟后过期，因此请记得在令牌过期后重新生成令牌。
 
-该服务支持两种类型的 WebSocket 客户端，一种是简单 WebSocket 客户端，另一种是 PubSub WebSocket 客户端。 下面介绍这两种客户端如何连接到该服务。 有关这两种客户端的详细信息，请查看[适用于 Azure Web PubSub 的 WebSocket 客户端协议](./concept-client-protocols.md)。
+该服务支持两种类型的 WebSocket 客户端：一种是简单 WebSocket 客户端，另一种是 PubSub WebSocket 客户端。 下面介绍这两种客户端如何连接到该服务。 有关这些客户端的详细信息，请参阅[适用于 Azure Web PubSub 的 WebSocket 客户端协议](./concept-client-protocols.md)。
 
 ## <a name="dependency"></a>依赖项
 
@@ -52,10 +53,10 @@ Web PubSub 服务使用 [JWT 令牌](https://tools.ietf.org/html/rfc7519.html)�
 
 * [.NET Core 2.1 或更高版本](https://dotnet.microsoft.com/download)
 * `dotnet add package Websocket.Client`
-    * [Websocket.Client](https://github.com/Marfusios/websocket-client) 是提供内置重新连接和错误处理的第三方 WebSocket 客户端
+    * [Websocket.Client](https://github.com/Marfusios/websocket-client) 是提供内置重新连接和错误处理的第三方 WebSocket 客户端。
 
 # <a name="java"></a>[Java](#tab/java)
-- [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本。
+- [Java 开发工具包 (JDK)](/java/azure/jdk/) 版本 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 
 ---
@@ -129,7 +130,7 @@ namespace subscriber
             // Don't forget to replace this <Client_URL_From_Portal> with the value fetched from the portal
             using (var client = new WebsocketClient(new Uri("<Client_URL_From_Portal>")))
             {
-                // Disable the auto disconnect and reconnect because the sample would like the client to stay online even no data comes in
+                // Disable the auto disconnect and reconnect because the sample would like the client to stay online even if no data comes in
                 client.ReconnectTimeout = null;
                 client.MessageReceived.Subscribe(msg => Console.WriteLine($"Message received: {msg}"));
                 await client.Start();
@@ -270,7 +271,7 @@ namespace subscriber
                 return inner;
             }))
             {
-                // Disable the auto disconnect and reconnect because the sample would like the client to stay online even no data comes in
+                // Disable the auto disconnect and reconnect because the sample would like the client to stay online even if no data comes in
                 client.ReconnectTimeout = null;
                 client.MessageReceived.Subscribe(msg => Console.WriteLine($"Message received: {msg}"));
                 await client.Start();
@@ -340,9 +341,9 @@ public final class SubprotocolClient {
 
 ---
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何使用门户中生成的 URL 连接到服务。  请查看以下教程，了解客户端如何与应用服务器通信以获取实际应用程序中的 URL。
+本文介绍了如何使用门户中生成的 URL 连接到服务。 若要了解客户端如何与应用服务器通信以获取实际应用程序中的 URL，请参阅以下教程并查看示例。
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure Web PubSub 创建聊天室](./tutorial-build-chat.md)

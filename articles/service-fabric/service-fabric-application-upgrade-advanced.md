@@ -3,12 +3,12 @@ title: 高级应用程序升级主题
 description: 本文介绍有关升级 Service Fabric 应用程序的一些高级主题。
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 6604300328f2d243077ba341a9028221438dce9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dca3ec669fde61be86f2424d9b314b4b26546c55
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98792042"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363319"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 
@@ -48,11 +48,11 @@ ms.locfileid: "98792042"
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
- * 通过 ARM 模板创建或更新现有服务时，请指定 `InstanceCloseDelayDuration` 值（支持的最低 API 版本：2019-11-01-preview）：
+ * 通过 ARM 模板创建或更新现有服务时，请指定 `InstanceCloseDelayDuration` 值（支持的 API 最低版本：2020-03-01）：
 
     ```ARM template to define InstanceCloseDelayDuration of 30seconds
     {
-      "apiVersion": "2019-11-01-preview",
+      "apiVersion": "2020-03-01",
       "type": "Microsoft.ServiceFabric/clusters/applications/services",
       "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
       "location": "[variables('clusterLocation')]",

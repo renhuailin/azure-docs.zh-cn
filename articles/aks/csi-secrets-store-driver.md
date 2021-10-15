@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: 6b971849501eb4229dd4db8a58f7fc59843aef4b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: caab5417760c75e46b78241edd65d5c0124d5917
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429039"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234084"
 ---
 # <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>在 Azure Kubernetes 服务 (AKS) 群集中使用适用于 Kubernetes 的机密存储 CSI 驱动程序（预览）
 
@@ -34,7 +34,7 @@ ms.locfileid: "123429039"
 - 支持 CSI 内联卷（Kubernetes v1.15+ 版）
 - 支持以单卷形式装载多个机密存储对象
 - 支持使用 SecretProviderClass CRD 完成 Pod 移植
-- 支持窗口容器（Kubernetes v1.18+ 版）
+- 支持 Windows 容器
 - 与 Kubernetes 机密同步（机密存储 CSI 驱动程序 v0.0.10+）
 - 支持自动轮换已装载内容和已同步的 Kubernetes 机密（机密存储 CSI 驱动程序 v0.0.15+）
 
@@ -199,7 +199,8 @@ spec:
     objects:  |
       array:
         - |
-          objectName: <secret-name>       # In this example, 'ExampleSecret'   
+          objectName: <secret-name>       # In this example, 'ExampleSecret' 
+          objectAlias: <secret-alias>     # [OPTIONAL] specify the filename of the object when written to disk - defaults to objectName if not provided
           objectType: secret              # Object types: secret, key or cert
           objectVersion: ""               # [OPTIONAL] object versions, default to latest if empty
     tenantId: "<tenant-id>"               # the tenant ID containing the Azure Key Vault instance

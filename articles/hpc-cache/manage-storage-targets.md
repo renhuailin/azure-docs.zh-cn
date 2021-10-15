@@ -1,25 +1,34 @@
 ---
 title: 管理 Azure HPC 缓存存储目标
-description: 如何暂停、删除、强制删除和刷新 Azure HPC 缓存存储目标
+description: 如何挂起、删除、强制删除和刷新 Azure HPC 缓存存储目标，以及如何了解存储目标状态
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 09/27/2021
 ms.author: v-erkel
-ms.openlocfilehash: 6c747c4a79cb0413d7a96ca7b0148912eef89f84
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5b6127a43ebd93b89ea3a648533c2b739fc58691
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296680"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274272"
 ---
-# <a name="manage-storage-targets"></a>管理存储目标
+# <a name="view-and-manage-storage-targets"></a>查看和管理存储目标
+
+“存储目标设置”页显示 HPC 缓存的每个存储目标的相关信息，并提供用于管理单个存储目标的选项。
+
+> [!TIP]
+> [添加存储目标](hpc-cache-add-storage.md#view-storage-targets)一文中包含了使用 Azure CLI 列出存储目标的说明。 此处列出的其他操作在 Azure CLI 中可能尚未提供。
+
+![Azure 门户中“设置 > 存储帐户”页的屏幕截图。 列表中有多个存储目标，列标题显示每个目标的名称、类型、状态、预配状态、地址/容器和使用情况模型。](media/storage-targets-list-states.png)
+
+## <a name="manage-storage-targets"></a>管理存储目标
 
 你可以对各个存储目标执行管理操作。 这些操作是对[管理缓存](hpc-cache-manage.md)中讨论的缓存级选项的补充。
 
 这些控件可帮助你在发生意外状况（例如存储目标不响应）时进行恢复，并使你能够替代一些自动缓存操作（例如将更改的文件写回到长期存储系统）。
 
-在 Azure 门户中打开“存储目标”页面。 单击存储目标列表最右侧的“...”文本以打开任务列表。
+在 Azure 门户中打开“存储目标”页面。 单击存储目标列表最右侧的“…”图标以打开任务列表。
 
 ![屏幕截图显示了 Azure 门户中的“存储目标”页面，其中，鼠标指针悬停在单击列表中存储目标的行最右侧的三点 (...) 符号后显示的菜单上。](media/storage-target-manage-options.png)
 
@@ -35,7 +44,7 @@ ms.locfileid: "114296680"
 
 有关这些选项的更多详细信息，请阅读本文的其余部分。
 
-## <a name="write-cached-files-to-the-storage-target"></a>将缓存的文件写入存储目标
+### <a name="write-cached-files-to-the-storage-target"></a>将缓存的文件写入存储目标
 
 “刷新”选项指示缓存立即将缓存中存储的任何已更改的文件复制到后端存储系统。 例如，如果客户端计算机反复更新某个特定文件，则该文件会保留在缓存中，而不写入到长期存储系统，这样就可以在数分钟到超过 1 小时的时间段内实现更快速的访问。
 
@@ -47,15 +56,15 @@ ms.locfileid: "114296680"
 
 此选项主要适用于那些包括写入缓存的使用模型。 请阅读[了解缓存使用模型](cache-usage-models.md)，详细了解读写缓存。
 
-## <a name="suspend-a-storage-target"></a>暂停存储目标
+### <a name="suspend-a-storage-target"></a>暂停存储目标
 
 “暂停”功能可禁用对存储目标的客户端访问，但不会从缓存中永久删除存储目标。 如果需要禁用后端存储系统以进行维护、修复或更换，则可以使用此选项。
 
-## <a name="put-a-suspended-storage-target-back-in-service"></a>使暂停的存储目标恢复服务
+### <a name="put-a-suspended-storage-target-back-in-service"></a>使暂停的存储目标恢复服务
 
 使用“恢复”来取消暂停存储目标。
 
-## <a name="force-remove-a-storage-target"></a>强制删除存储目标
+### <a name="force-remove-a-storage-target"></a>强制删除存储目标
 
 > [!NOTE]
 > 此选项可能会导致受影响的存储目标发生数据丢失。
@@ -67,9 +76,8 @@ ms.locfileid: "114296680"
 在从缓存中删除后端存储系统后，也不保证后端存储系统可供访问。
 
 通常，仅当存储目标变得无响应或处于错误状态时，才使用强制删除。 可以使用此选项删除损坏的存储目标，而不必执行更激进的操作。
-<!-- https://msazure.visualstudio.com/One/_workitems/edit/8267141 -->
 
-## <a name="delete-a-storage-target"></a>删除存储目标
+### <a name="delete-a-storage-target"></a>删除存储目标
 
 可以使用 Azure 门户或 AZ CLI 来删除存储目标。
 
@@ -79,11 +87,11 @@ ms.locfileid: "114296680"
 
 如果缓存中存储的已更改数据量过大，则删除存储目标的操作可能需要几分钟才能完成。 请等待操作完成，以确保将数据安全地存储在长期存储系统中。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要删除存储目标，请打开“存储目标”页。 单击存储目标旁边的“...”并从菜单中选择“删除”。
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
 
@@ -102,7 +110,7 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 ---
 
-## <a name="update-ip-address-custom-dns-configurations-only"></a>更新 IP 地址（仅适用于自定义 DNS 配置）
+### <a name="update-ip-address-custom-dns-configurations-only"></a>更新 IP 地址（仅适用于自定义 DNS 配置）
 
 如果缓存使用非默认的 DNS 配置，NFS 存储目标的 IP 地址可能会因后端 DNS 的更改而发生更改。 如果 DNS 服务器更改了后端存储系统的 IP 地址，Azure HPC 缓存可能会失去对存储系统的访问权限。
 
@@ -110,9 +118,23 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 如果需要更新存储目标的由 DNS 提供的 IP 地址，请使用“存储目标”页面。 单击右侧列中的“...”符号以打开上下文菜单。 选择“刷新 DNS”来查询自定义 DNS 服务器以获取新 IP 地址。
 
-![存储目标列表的屏幕截图。 处理一个存储目标时，最右侧列中的“...”菜单将会打开并显示两个选项：“删除”和“刷新 DNS”。](media/refresh-dns.png) <!-- update screenshot if possible -->
+![存储目标列表的屏幕截图。 对于一个存储目标，最右侧列中的“…”菜单已打开并显示这些选项：“刷新”、“挂起”、“刷新 DNS”、“强制删除”、“恢复”（此选项已禁用）和“删除”。](media/refresh-dns.png)
 
 如果成功，更新应会在两分钟内完成。 一次只能刷新一个存储目标；请先等待前一个操作完成，然后再尝试另一个操作。
+
+## <a name="understand-storage-target-state"></a>了解存储目标状态
+
+存储目标列表显示了两种类型的状态：状态和预配状态。
+
+* 状态指示存储目标的操作状态。 此值会定期更新，有助于了解存储目标是否可用于客户端请求，以及哪些管理选项可用。
+* 预配状态说明最后一次添加或编辑存储目标的操作是否成功。 仅当编辑存储目标时才会更新此值。
+
+状态值会影响可以使用的管理选项。 以下是对此值及其影响的简短说明。
+
+* 就绪 - 存储目标正在正常运行，可供客户端使用。 你可以使用此存储目标上的任何管理选项（除了“恢复”，该选项仅对挂起的存储目标有效）。
+* 繁忙 - 存储目标正在处理另一操作。 你可以删除或强制删除存储目标。
+* 挂起 - 存储目标已脱机。 你仍可以刷新、删除或强制删除此存储目标。 选择“恢复”以将目标恢复到服务中。
+* 正在刷新 - 存储目标正在将数据写入后端存储。 正在刷新时，目标无法处理客户端请求，但它会在完成数据写入后自动返回到以前的状态。
 
 ## <a name="next-steps"></a>后续步骤
 

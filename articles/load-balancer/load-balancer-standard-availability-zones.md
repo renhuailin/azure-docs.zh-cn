@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: dfec3e6305b6b955cfb7b2cfd787507db36ff6ba
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 06b8e193f48a4e1d3956c8c40ee03dfd11a4a088
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213590"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276012"
 ---
 # <a name="load-balancer-and-availability-zones"></a>负载均衡器和可用性区域
 
@@ -57,6 +57,10 @@ Azure 负载均衡器支持可用性区域方案。 可以使用标准负载均�
 
 对于内部负载均衡器前端，需将 zones 参数添加到内部负载均衡器前端 IP 配置。 局部区域性前端保证子网中的某个 IP 地址位于特定的局部区域。
 
+## <a name="non-zonal"></a>非局部区域
+
+负载均衡器也可在非区域配置中创建，方法是使用“非局部区域”前端（公共 IP 或公共 IP 前缀）。  此选项不保证冗余。 请注意，[已升级](../virtual-network/public-ip-upgrade-portal.md)的所有公共 IP 地址都属于“无区域”类型。
+
 ## <a name="design-considerations"></a><a name="design"></a>设计注意事项
 
 了解标准负载均衡器的局部区域相关属性后，以下设计注意事项也许可以帮助你完成高可用性设计。
@@ -67,6 +71,14 @@ Azure 负载均衡器支持可用性区域方案。 可以使用标准负载均�
 - 局部区域性前端是在单个局部区域中部署服务的简化设计，其命运与相应的局部区域相同。 如果你的部署所在的局部区域发生故障，则该部署在此次故障时也不能幸存。
 
 建议为生产工作负载使用局部区域冗余的负载均衡器。
+
+### <a name="multiple-frontends"></a>多个前端
+
+使用多个前端可以在多个端口和/或 IP 地址上对流量进行负载均衡。  设计体系结构时，必须考虑到区域冗余和多个前端可以交互的方式。  请注意，如果目标是始终使每个前端都能够灵活应对故障，则用作前端的所有 IP 地址都必须是区域冗余的。   如果一组前端旨在与单个区域关联，那么这组前端的每个 IP 地址都必须与该特定区域关联。  不需要每个区域都有负载均衡器；相反，每个局部区域前端（或局部区域前端集）可以与该特定可用性区域中的后端池中的虚拟机相关联。
+
+### <a name="transition-between-regional-zonal-models"></a>区域局部区域模型之间的转换
+
+如果区域已扩充为具有[可用性区域](../availability-zones/az-overview.md)，则将保持非局部区域性。 为了确保体系结构可以利用新区域，建议创建新前端 IP，并复制相应的规则和配置以利用这些新的公共 IP。
 
 ### <a name="control-vs-data-plane-implications"></a>对控制平面和数据平面的影响
 
@@ -79,7 +91,6 @@ Azure 负载均衡器支持可用性区域方案。 可以使用标准负载均�
 ## <a name="limitations"></a>限制
 
 * 创建后，资源的区域无法更改、更新或创建。
-
 * 创建后，无法将资源从“局部区域”更新为“区域冗余”，反之亦然。
 
 ## <a name="next-steps"></a>后续步骤

@@ -12,12 +12,12 @@ ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 46ebdd1f5cb3093b0c1c1a5bc3273cf1aa1afd8f
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 90f6470171db4be4e0d883196495ddaba16772fb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634825"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362782"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -30,15 +30,53 @@ ms.locfileid: "122634825"
 * Bug 修复
 * 已弃用的功能
 
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="new-basic-pass-through-live-event-sku"></a>新的基本直通直播活动 SKU
+
+新的基本直通直播活动 SKU 使客户能够以[更低的价格点](https://azure.microsoft.com/pricing/details/media-services/)创建直播活动。 它类似于标准直通直播活动，但输入带宽限制较低，允许的实时输出更少，DVR 窗口长度限制不同，并且无法访问实时听录。 有关详细信息，请参阅[直播活动类型比较](./live-event-types-comparison-reference.md#types-comparison)。
+
+### <a name="improved-scale-management-and-monitoring-for-a-streaming-endpoint-in-the-portal"></a>改进了门户中流式处理终结点的规模管理和监视
+
+流式处理终结点门户页现在提供了一种简单的方式，可以用于管理出口容量并估算配置和没有配置 CDN 的受众覆盖范围。  只需调整传递比特率和预期的 CDN 缓存命中率来快速估计受众群体大小，并帮助你确定是否需要扩展为更多的高级流式处理终结点。
+
+   [![在门户中缩放和监视流式处理终结点](./media/release-notes/streaming-endpoint-monitor-inline.png)](./media/release-notes/streaming-endpoint-monitor.png#lightbox)
+
+### <a name="streaming-endpoint-portal-page-now-shows-cpu-egress-and-latency-metrics"></a>流式处理终结点门户页现在显示 CPU、出口和延迟指标
+
+现可在 Azure 门户中的流式处理终结点上可视化 CPU 负载、出口带宽和端到端延迟。 现可直接在门户中使用 Azure Monitor 的强大功能根据 CPU、出口或延迟指标创建监视警报。
+
+### <a name="user-assigned-managed-identities-support-for-media-services-accounts"></a>媒体服务帐户的用户分配管理标识支持
+
+使用用户分配的标识，客户现在能够提高其存储帐户和关联密钥保管库的安全性。 对客户存储帐户和密钥保管库的访问权限将限制为用户分配的托管标识。  你可以完全控制用户托管标识的生存期，并根据需要轻松撤销媒体服务帐户对任意特定存储帐户的访问权限。
+
+### <a name="media-services-storage-accounts-page-in-the-portal-now-support-both-uami-and-sami"></a>门户中的“媒体服务存储帐户”页现在支持 UAMI 和 SAMI
+
+现在，可以直接在媒体服务的 Azure 门户中为存储帐户分配和管理用户分配的托管标识 (UAMI) 或系统分配的托管标识 (SAMI)。
+
+### <a name="bring-your-own-key-page-now-also-supports-both-uami-and-sami"></a>“自带密钥”页现在还支持 UAMI 和 SAMI。
+媒体服务的密钥管理门户页现在支持配置和管理用户分配的托管标识 (UAMI) 或系统分配的托管标识 (SAMI)。
+
+   [![自带密钥进行帐户加密](./media/release-notes/byok-managed-identity.png)](./media/release-notes/byok-managed-identity.png)
+
+
+### <a name="private-link-support-for-media-services"></a>媒体服务的专用链接支持
+现在，可以通过为每项服务创建专用终结点，限制对直播活动、流式处理终结点和密钥传送服务终结点的公共访问，以便实现内容保护和 DRM。 这将限制对每项服务的公共访问。 只有在专用终结点中配置、来自配置的虚拟网络 (VNET) 的流量才能访问这些终结点。
+
+### <a name="ip-allow-list-for-key-service"></a>密钥服务的 IP 允许列表
+现在可以选择允许某些公共 IP 地址访问密钥传送服务，以便实现 DRM 和内容保护。 直播活动终结点和流式处理终结点已支持在各自的页面中配置 IP 允许列表。
+
+现在，你还具有帐户级别功能标志，用于允许/阻止对媒体服务帐户的公共 Internet 访问。
+
 ## <a name="july-2021"></a>2021 年 7 月
 
-### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget-coming-soon---early-september-2021"></a>.NET SDK (Microsoft.Azure.Management.Media) 5.0.0 已在 NuGet 中提供（即将在 2021 年 9 月上旬推出！）
+### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget"></a>.NET SDK (Microsoft.Azure.Management.Media ) 5.0.0 已在 NuGet 中提供
 
 [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/5.0.0) .NET SDK 版本 5.0.0 现已在 NuGet 中发布。 生成此版本的目的是为了与 Open API (Swagger) ARM Rest API [2021-06-01 稳定版本](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01)配合使用。
 
 有关 4.0.0 版本的更改的详细信息，请参阅[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/mediaservices/Microsoft.Azure.Management.Media/CHANGELOG.md)。
 
-#### <a name="changes-in-the-500-net-sdk-release-coming-soon---early-september-2021"></a>5\.0.0 .NET SDK 版本的更改（即将在 2021 年 9 月上旬推出！）
+#### <a name="changes-in-the-500-net-sdk-release"></a>5\.0.0 .NET SDK 版本中的更改
 
 * 媒体服务帐户现在支持系统分配的托管标识和用户分配的托管标识。
 * 为媒体服务帐户添加了 PublicNetworkAccess 选项。 可将此选项与专用链接功能配合使用，以便仅允许来自专用网络的访问，并阻止所有公用网络访问
@@ -48,8 +86,9 @@ ms.locfileid: "122634825"
 #### <a name="breaking-changes-in-tht-500-net-sdk-release"></a>5\.0.0 .NET SDK 版本的中断性变更
 
 * 为了与所有其他 Azure SDK 保持一致，ApiErrorException 已替换为 ErrorResponseException 。 异常正文没有变化。
+* 所有返回“404 未找到”的调用现在都会引发 ErrorResponseException 而不是返回 Null。 进行此更改是为了与其他 Azure SDK 保持一致
 * 媒体服务构造函数可以在 KeyDelivery 参数后面使用新的可选 PublicNetworkAccess 参数。
-* MediaServiceIdentity 中的 Type 属性已从 ManagedIdentityType 枚举更改为字符串，以适应逗号分隔的多个类型。 类型的有效字符串为 SystemAssigned 或 SystemAssigned，以及 UserAssigned 或 UserAssigned。
+* MediaServiceIdentity 中的 Type 属性已从 ManagedIdentityType 枚举更改为字符串，以适应逗号分隔的多个值。 有效的字段为“SystemAssigned”或“UserAssigned” 。
 
 ## <a name="june-2021"></a>2021 年 6 月
 
@@ -71,7 +110,7 @@ ms.locfileid: "122634825"
 
 美国西部 3 区域现已正式发布，可供客户在创建新的媒体服务帐户时使用。
 
-### <a name="key-delivery-supports-ip-allowlist-restrictions"></a>密钥传递支持 IP 允许列表限制
+### <a name="key-delivery-supports-ip-allow-list-restrictions"></a>密钥传递支持 IP 允许列表限制
 
 媒体服务帐户现在可以配置对密钥传递的 IP 允许列表限制。 通过 SDK 以及门户和 CLI 可在媒体服务帐户资源上获得新的允许列表设置。
 这允许操作员将 DRM 许可证和 AES-128 内容密钥的传递限制在特定的 IPv4 范围内。
@@ -162,6 +201,8 @@ Node.js 的更新示例，使用 Azure SDK 中最新的 Typescript 支持。
 - ARM REST API、适用于 .NET core、Node.js、Python、Java、Go 和 Ruby 的客户端 SDK。
 - 客户管理的密钥、受信任的存储集成和专用链接支持[等等](./migrate-v-2-v-3-migration-benefits.md)
 
+作为对 v3 API 和 SDK 的更新的一部分，任何媒体服务帐户都不再需要媒体保留单位 (MRU)，因为系统会根据负载自动扩展和缩减。 有关详细信息，请参阅 [MRU 迁移指南](./migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md)。
+
 #### <a name="action-required"></a>所需的操作
 
 若要最大程度地减少工作负载的中断，请参阅[迁移指南](./migrate-v-2-v-3-migration-introduction.md)，在 2024 年 2 月 29 日之前将代码从版本 2 API 和 SDK 转换为版本 3 API 和 SDK。
@@ -171,7 +212,7 @@ Node.js 的更新示例，使用 Azure SDK 中最新的 Typescript 支持。
 
 ### <a name="standard-encoder-support-for-v2-api-features"></a>对 v2 API 功能的标准编码器支持
 
-除新增了对 HEVC (H.265) 编码的支持以外，现在 2020-05-01 版本的编码 API 中还提供了以下功能。
+除新增了对 HEVC (H.265) 编码的支持以外，现在版本 2020-05-01 （或更高版本）的编码 API 中还提供了以下功能。
 
 - 现在支持使用新的 **JobInputClip** 支持来拼结多个输入文件。
     - 我们已提供一个适用于 .NET 的示例来演示如何[将两个资产拼结到一起](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)。

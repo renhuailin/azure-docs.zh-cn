@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 08/31/2021
 ms.author: alkohli
-ms.openlocfilehash: 6b50169586ef29e579d52985ee8b7822a63560d0
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 30e46f9425f4015893c08b94382e87cfa93c8be8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982423"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363183"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>使用 Kubernetes 仪表板监视 Azure Stack Edge Pro GPU 设备
 
@@ -44,15 +44,31 @@ Kubernetes 仪表板是一个基于 Web 的用户界面，可用于对容器化�
 Kubernetes 仪表板为只读仪表板，在 Kubernetes 主节点上的端口 31000 上运行。 请按照以下步骤访问仪表板： 
 
 1. 在设备的本地 UI 中，转到“设备”，然后转到“设备终结点” 。 
-1. 选择“下载配置”以下载允许访问仪表板的 `kubeconfig`。 将 `config.json` 文件保存在本地系统上。
-1. 选择 Kubernetes 仪表板 URL，在浏览器中打开仪表板。
+1. 复制“Kubernetes 仪表板”终结点。 在客户端的 `C:\Windows\System32\Drivers\etc\hosts` 文件中创建一个 DNS 条目，以连接到 Kubernetes 仪表板。 
 
-    ![本地 UI 中“设备”页面中的 Kubernetes 仪表板 URL](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
+    `<IP address of the Kubernetes dashboard>    <Kubernetes dashboard endpoint suffix>` 
+        
+    ![为“Kubernetes 仪表板”终结点添加 DNS 条目](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/add-domain-name-service-entry-hosts-1.png) 
 
-1. 在“Kubernetes 仪表板登录”页面上：
+1. 在“Kubernetes 仪表板”终结点这一行中，选择“下载配置”。此操作下载的 `kubeconfig` 可允许你访问仪表板。 将 `config.json` 文件保存在本地系统上。   
+
+1. 从本地 UI 下载 Kubernetes 仪表板证书。 
+    1. 在设备的本地 UI 中，转到“证书”。
+    1. 找到“Kubernetes 仪表板”终结点的条目。 在此条目的右侧，选择“下载”，下载客户端系统上要用于访问仪表板的证书。 
+
+    ![下载“Kubernetes 仪表板”终结点证书](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/download-kubernetes-dashboard-endpoint-certificate-1.png)  
+
+1. 将下载的证书安装在客户端上。 如果使用 Windows 客户端，请执行以下步骤： 
+    1. 选择证书，然后在“证书导入向导”中选择“本地计算机”作为存储位置。 
+
+        ![在客户端 1 上安装证书](media/azure-stack-edge-gpu-edge-container-registry/install-certificate-1.png) 
+    
+    1. 在本地计算机上受信任的根存储中安装证书。 
+
+        ![在客户端 2 上安装证书](media/azure-stack-edge-gpu-edge-container-registry/install-certificate-2.png) 
+1. 复制并使用 Kubernetes 仪表板 URL 在浏览器中打开仪表板。 在“Kubernetes 仪表板登录”页面上：
     
     1. 选择“kubeconfig”。 
-        ![选择“kubeconfig”选项](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
     1. 选择省略号“…”。浏览并指向之前在本地系统上下载的 `kubeconfig`。 选择“登录”。
         ![浏览到 kubeconfig 文件](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 

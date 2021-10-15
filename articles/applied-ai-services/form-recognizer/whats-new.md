@@ -7,20 +7,32 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 09/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2efc4d2c546cff172164b9416cbe5a0772167631
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 3adffbac5641c2791c5ef683b5c4d687331a1c3b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326333"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350132"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-azure-form-recognizer"></a>Azure 表单识别器的新增功能
 
 表单识别器服务会持续更新。 将此页添加为书签，随时了解发行说明、功能增强和文档更新。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+[Azure 指标资源管理器高级功能](/azure/azure-monitor/essentials/metrics-charts)可在 Azure 门户的表单识别器资源概述页上使用。
+
+### <a name="monitoring-menu"></a>监视菜单
+
+:::image type="content" source="media/portal-metrics.png" alt-text="显示 Azure 门户中的监视菜单的屏幕截图":::
+
+### <a name="charts"></a>图表
+
+:::image type="content" source="media/portal-metrics-charts.png" alt-text="显示 Azure 门户中的示例指标图表的屏幕截图。":::
 
 ## <a name="july-2021"></a>2021 年 7 月
 

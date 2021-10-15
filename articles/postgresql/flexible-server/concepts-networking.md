@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2021
-ms.openlocfilehash: 768645614035afa852e5d9195666748df9116368
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3a0ce42cf32e218f3debaf6f3e84bb8f27a81c82
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577947"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279025"
 ---
 # <a name="networking-overview-for-azure-database-for-postgresql---flexible-server-preview"></a>Azure Database for PostgreSQL 灵活服务器（预览版）网络概述
 
@@ -74,7 +74,7 @@ ms.locfileid: "128577947"
   目前，不支持以下情况中的 NSG：ASG 是 Azure Database for PostgreSQL 灵活服务器规则的一部分。 目前建议在 NSG 中使用[基于 IP 的源或目标筛选](../../virtual-network/network-security-groups-overview.md#security-rules)。 
 
   > [!IMPORTANT]
-  > Azure Database for PostgreSQL 灵活服务器的高可用性功能要求能够向部署了 Azure Database for PostgreSQL 灵活服务器的 Azure 虚拟网络子网中的目标端口 5432 和 6432 发送/接收流量，以及能够向 Azure 存储发送流量以便进行日志存档。 如果创建[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) 以拒绝流量流入或流出 Azure Database for PostgreSQL 灵活服务器所部署到的子网，请确保允许使用[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) Azure 存储作为目标，将流量发送到该子网中的目标端口 5432 和 6432 以及 Azure 存储。 
+  > Azure Database for PostgreSQL 灵活服务器的高可用性功能要求能够向部署了 Azure Database for PostgreSQL 灵活服务器的 Azure 虚拟网络子网中的目标端口 5432 和 6432 发送/接收流量，以及能够向 Azure 存储发送流量以便进行日志存档。 如果创建[网络安全组 (NSG)](../../virtual-network/network-security-groups-overview.md) 以拒绝流量流入或流出 Azure Database for PostgreSQL 灵活服务器所部署到的子网，请确保允许将流量发送到该子网中的目标端口 5432 和 6432，以及通过使用[服务标记](../../virtual-network/service-tags-overview.md)将 Azure 存储作为目标，允许将流量发送到 Azure 存储。
 
 * 专用 DNS 区域集成。 使用 Azure 专用 DNS 区域集成，可以解析当前虚拟网络中或链接专用 DNS 区域的任何区域内对等互连虚拟网络中的专用 DNS。 
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 59eb3874a7f0de9eba1f5b75204618c887cb9bb2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d78616830c47cb2a50292a226cf1d79e0ece58ba
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122184115"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545070"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -54,7 +54,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 * 需要路由表和用户定义的路由才能使用 Kubenet，这会增加操作的复杂性。
 * 由于 Kubenet 设计，Kubenet 不支持直接 Pod 寻址。
 * 与 Azure CNI 群集不同，多个 Kubenet 群集无法共享一个子网。
-* 如果提供自己的子网，则必须管理与该子网关联的网络安全组 (NSG)。 AKS 不会修改与该子网关联的任何 NSG。 还必须确保 NSG 中的安全规则允许节点和 Pod CIDR 之间的流量。
+* AKS 不将网络安全组 (NSG) 应用于其子网，也不会修改与该子网相关的任何 NSG。 如果提供自己的子网并添加与该子网相关的 NSG，则必须确保 NSG 中的安全规则允许节点和 Pod CIDR 之间的流量。 有关详细信息，请参阅[网络安全组][aks-network-nsg]。
 * Kubenet 不支持的功能包括：
    * [Azure 网络策略](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Kubenet 支持 Calico 网络策略
    * [Windows 节点池](./windows-faq.md)
@@ -224,6 +224,8 @@ Kubenet 网络需要使用经过规划和组织的路由表规则才能成功路
 * 在创建 AKS 群集之前，需要将自定义路由表与子网关联。
 * 创建群集后，无法更新关联的路由表资源。 虽然无法更新路由表资源，但可以在路由表上修改自定义规则。
 * 每个 AKS 群集必须为与群集关联的所有子网使用同一个唯一的路由表。 由于可能存在重叠的 Pod CIDR 和发生路由规则冲突，无法对多个群集重复使用同一个路由表。
+* 不能使用系统分配的托管标识提供自己的子网和路由表。 若要提供你自己的子网和路由表，你必须使用[用户分配的托管标识][user-assigned managed identity]，在创建群集之前分配权限，并确保用户分配的标识对你的自定义子网和自定义路由表具有写入权限。
+* 不支持对多个 AKS 群集使用同一个路由表。
 
 创建自定义路由表并将其与虚拟网络中的子网关联后，可以创建使用路由表的新 AKS 群集。
 需要使用计划将 AKS 群集部署到的子网 ID。 此子网还必须与自定义路由表关联。
@@ -252,6 +254,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-network-concepts]: concepts-network.md
+[aks-network-nsg]: concepts-network.md#network-security-groups
 [az-group-create]: /cli/azure/group#az_group_create
 [az-network-vnet-create]: /cli/azure/network/vnet#az_network_vnet_create
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
@@ -267,3 +270,4 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
 [custom-route-table]: ../virtual-network/manage-route-table.md
+[user-assigned managed identity]: use-managed-identity.md#bring-your-own-control-plane-mi

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: 954b4deb6a095ee862e46cb13d177d9b66cf0dca
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 11a9eac39a672848eee2ea966e5a819d6c771c7b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129053850"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360986"
 ---
 # <a name="peering-service-partners"></a>对等互连服务合作伙伴
 
@@ -47,6 +47,7 @@ Microsoft 已与全球的 Internet 服务提供商 (ISP)、Internet Exchange 提
 | [CMC Networks](https://www.cmcnetworks.net/products/microsoft-azure-peering-services.html) |非洲|
 | [MainOne](https://www.mainone.net/connectivity-services/microsoft-azure-peering-service/) |非洲|
 | [BICS](https://www.bics.com/services/capacity-solutions/cloud-connect/microsoft-azure-cloud-connect/) |欧洲|
+| [Telstra International](https://www.telstra.com.sg/en/products/global-networks/global-internet/global-internet-direct) |亚洲 |
 
 > [!NOTE]
 >有关加入对等互连服务合作伙伴计划的详细信息，请联系 peeringservice@microsoft.com。

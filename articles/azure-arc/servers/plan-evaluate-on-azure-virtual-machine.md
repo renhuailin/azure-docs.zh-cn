@@ -1,34 +1,37 @@
 ---
 title: 如何使用 Azure VM 评估已启用 Azure Arc 的服务器
 description: 了解如何使用 Azure 虚拟机评估已启用 Azure Arc 的服务器。
-ms.date: 09/02/2021
+ms.date: 10/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 81c82ad05b715e7d0243585d3bce0abd44f00670
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 54656e0701857fd3badbcec619b2185917935857
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424377"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389810"
 ---
-# <a name="evaluate-arc-enabled-servers-on-an-azure-virtual-machine"></a>在 Azure 虚拟机上评估已启用 Arc 的服务器
+# <a name="evaluate-azure-arc-enabled-servers-on-an-azure-virtual-machine"></a>在 Azure 虚拟机上评估已启用 Azure Arc 的服务器
 
 已启用 Azure Arc 的服务器旨在帮助将本地运行或在其他云中运行的服务器连接到 Azure。 通常不会在 Azure 虚拟机上使用已启用 Azure Arc 的服务器，因为这些 VM 可以本机使用所有相同的功能，包括 Azure 资源管理器中 VM 的表示形式、VM 扩展、托管标识和 Azure Policy。 如果尝试在 Azure VM 上安装已启用 Azure Arc 的服务器，则会收到一条错误消息，指出该服务器不受支持并且代理安装将取消。
 
 对于生产方案，虽然不能在 Azure VM 上安装已启用 Azure Arc 的服务器，但可以将已启用 Azure Arc 的服务器配置为在 Azure VM 上运行，以便仅用于评估和测试目的。 本文将帮助你设置 Azure VM，然后即可在上面启用已启用 Azure Arc 的服务器。
 
+> [!NOTE]
+> 本文中的步骤适用于托管在 Azure 云中的虚拟机。 Azure Stack Hub 或 Azure Stack Edge 上运行的虚拟机不支持已启用 Azure Arc 的服务器。
+
 ## <a name="prerequisites"></a>先决条件
 
 * 已为帐户分配[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色。
-* Azure 虚拟机正在运行[已启用 Arc 的服务器支持的操作系统](agent-overview.md#supported-operating-systems)。 如果没有 Azure VM，可以部署[简单的 Windows VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json) 或[简单的 Ubuntu Linux 18.04 LTS VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)。
+* Azure 虚拟机正在运行[已启用 Azure Arc 的服务器支持的操作系统](agent-overview.md#supported-operating-systems)。 如果没有 Azure VM，可以部署[简单的 Windows VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json) 或[简单的 Ubuntu Linux 18.04 LTS VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)。
 * Azure VM 可以出站通信，以便从 [Microsoft 下载中心](https://aka.ms/AzureConnectedMachineAgent)下载适用于 Windows 的 Azure Connected Machine 代理包，以及从 Microsoft [包存储库](https://packages.microsoft.com/)下载适用于 Linux 的 Azure Connected Machine 代理包。 如果根据 IT 安全策略限制到 Internet 的出站连接，则需要手动下载代理包，并将其复制到 Azure VM 上的文件夹。
 * 具有提升权限的帐户（即管理员或 root 帐户），以及对 VM 的 RDP 或 SSH 访问权限。
-* 要使用已启用 Arc 的服务器注册和管理 Azure VM，你需要是资源组中的 [Azure Connected Machine 资源管理员](../../role-based-access-control/built-in-roles.md#azure-connected-machine-resource-administrator)或具有[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色。
+* 要使用已启用 Azure Arc 的服务器注册和管理 Azure VM，你需要是资源组中的 [Azure Connected Machine 资源管理员](../../role-based-access-control/built-in-roles.md#azure-connected-machine-resource-administrator)或具有[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色。
 
 ## <a name="plan"></a>计划
 
-若要开始将 Azure VM 作为已启用 Arc 的服务器进行管理，需要先对 Azure VM 进行以下更改，然后才能安装和配置已启用 Arc 的服务器。
+若要开始将 Azure VM 作为已启用 Azure Arc 的服务器进行管理，需要先对 Azure VM 进行以下更改，然后才能安装和配置已启用 Azure Arc 的服务器。
 
-1. 删除部署到 Azure VM 的任何 VM 扩展，如 Log Analytics 代理。 虽然已启用 Arc 的服务器与 Azure VM 支持许多相同的扩展，但已启用 Arc 的服务器代理无法管理已部署到 VM 的 VM 扩展。
+1. 删除部署到 Azure VM 的任何 VM 扩展，如 Log Analytics 代理。 虽然已启用 Azure Arc 的服务器与 Azure VM 支持许多相同的扩展，但已启用 Azure Arc 的服务器代理无法管理已部署到 VM 的 VM 扩展。
 
 2. 禁用 Azure Windows 或 Linux 来宾代理。 Azure VM 来宾代理与已启用 Azure Arc 的服务器 Connected Machine 代理具有相似用途。 为避免这两者之间的冲突，需要禁用 Azure VM 代理。 禁用后，将无法使用 VM 扩展或某些 Azure 服务。
 
@@ -36,7 +39,7 @@ ms.locfileid: "123424377"
 
 执行这些更改后，Azure VM 的行为将类似于 Azure 之外的任何计算机或服务器，并且可以开始安装和评估已启用 Azure Arc 的服务器。
 
-当在 VM 上配置已启用 Arc 的服务器时，Azure 中会出现它的两个表示形式。 一个是 Azure VM 资源，具有 `Microsoft.Compute/virtualMachines` 资源类型，另一个是 Azure Arc 资源，具有 `Microsoft.HybridCompute/machines` 资源类型。 由于阻止从共享物理主机服务器管理来宾操作系统，理解这两个资源的最佳方式是，Azure VM 资源是 VM 的虚拟硬件，使你可以控制电源状态并查看有关其 SKU、网络和存储配置的信息。 Azure Arc 资源管理该 VM 中的来宾操作系统，并可用于安装扩展、查看 Azure Policy 的符合性数据，以及完成已启用 Arc 的服务器支持的其他任务。
+当在 VM 上配置已启用 Azure Arc 的服务器时，Azure 中会出现它的两个表示形式。 一个是 Azure VM 资源，具有 `Microsoft.Compute/virtualMachines` 资源类型，另一个是 Azure Arc 资源，具有 `Microsoft.HybridCompute/machines` 资源类型。 由于阻止从共享物理主机服务器管理来宾操作系统，理解这两个资源的最佳方式是，Azure VM 资源是 VM 的虚拟硬件，使你可以控制电源状态并查看有关其 SKU、网络和存储配置的信息。 Azure Arc 资源管理该 VM 中的来宾操作系统，并可用于安装扩展、查看 Azure Policy 的符合性数据，以及完成已启用 Azure Arc 的服务器支持的其他任务。
 
 ## <a name="reconfigure-azure-vm"></a>重新配置 Azure VM
 
@@ -58,9 +61,11 @@ ms.locfileid: "123424377"
    对于 Linux，请运行以下命令：
 
    ```bash
+   current_hostname=$(hostname)
    sudo service walinuxagent stop
    sudo waagent -deprovision -force
    sudo rm -rf /var/lib/waagent
+   sudo hostnamectl set-hostname $current_hostname
    ```
 
 3. 阻止访问 Azure IMDS 终结点。
@@ -80,14 +85,6 @@ ms.locfileid: "123424377"
    sudo ufw deny out from any to 169.254.169.254
    sudo ufw default allow incoming
    ```
-   若要配置通用 iptables 配置，请运行以下命令：
-
-   ```bash
-   iptables -A OUTPUT -d 169.254.169.254 -j DROP
-   ```
-
-   > [!NOTE]
-   > 每次重启后都需要设置此配置，除非使用永久性 iptables 解决方案。
 
    如果 Azure VM 运行 CentOS、Red Hat 或 SUSE Linux Enterprise Server (SLES)，请执行以下步骤来配置防火墙：
 
@@ -96,12 +93,22 @@ ms.locfileid: "123424377"
    firewall-cmd --reload
    ```
 
-4. 安装和配置已启用 Azure Arc 的服务器代理。
+   对于其他分发版，请参阅防火墙文档或使用以下命令配置通用 iptables 规则：
 
-   VM 现在已可开始评估已启用 Arc 的服务器。 若要安装和配置已启用 Arc 的服务器代理，请参阅[使用 Azure 门户连接混合计算机](onboard-portal.md)，然后按照相应步骤生成安装脚本并使用脚本方法进行安装。
+   ```bash
+   iptables -A OUTPUT -d 169.254.169.254 -j DROP
+   ```
 
    > [!NOTE]
-   > 如果从 Azure VM 到 Internet 的出站连接受到限制，则需要手动下载代理包。 将代理包复制到 Azure VM，并修改已启用 Arc 的服务器安装脚本以引用源文件夹。
+   > 每次重启后都需要设置 iptables 配置，除非使用永久性 iptables 解决方案。
+
+
+4. 安装和配置已启用 Azure Arc 的服务器代理。
+
+   VM 现在已可开始评估已启用 Azure Arc 的服务器。 若要安装和配置已启用 Azure Arc 的服务器代理，请参阅[使用 Azure 门户连接混合计算机](onboard-portal.md)，然后按照相应步骤生成安装脚本并使用脚本方法进行安装。
+
+   > [!NOTE]
+   > 如果从 Azure VM 到 Internet 的出站连接受到限制，则需要手动下载代理包。 将代理包复制到 Azure VM，并修改已启用 Azure Arc 的服务器安装脚本以引用源文件夹。
 
 如果缺少其中一个步骤，安装脚本会检测到它正在 Azure VM 上运行，然后终止并提示错误。 请验证是否已完成步骤 1-3，然后重新运行该脚本。
 
@@ -117,4 +124,4 @@ ms.locfileid: "123424377"
 
 * 了解可用于借助其他 Azure 服务简化部署的[受支持 Azure VM 扩展](manage-vm-extensions.md)，这些服务包括自动化、KeyVault 以及适用于 Windows 或 Linux 计算机的其他服务。
 
-* 完成测试后，请参阅[删除已启用 Arc 的服务器代理](manage-agent.md#remove-the-agent)。
+* 完成测试后，请参阅[删除已启用 Azure Arc 的服务器代理](manage-agent.md#remove-the-agent)。

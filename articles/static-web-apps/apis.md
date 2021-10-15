@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 08/24/2021
 ms.author: cshoe
-ms.openlocfilehash: d7716c6d91ac0f7c8c699d14f265e00f5535a00d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 95e180d34577f94f96b3e35c1f2432d85eb946a9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730410"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361418"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>Azure 静态 Web 应用中通过 Azure Functions 提供 API 支持
 
@@ -41,7 +41,7 @@ Azure 静态 Web 应用通过 [Azure Functions](../azure-functions/functions-ove
 | [托管的标识](../app-service/overview-managed-identity.md) | ✕ | ✔ |
 | [Azure 应用服务身份验证和授权](../app-service/configure-authentication-provider-aad.md)令牌管理 | ✕ | ✔ |
 | Azure Static Web Apps 外部的可用 API 函数 | ✕ | ✔ |
-| Azure 密钥保管库中存储的应用程序设置 | ✕ | ✔ |
+| [密钥保管库引用](../app-service/app-service-key-vault-references.md) | ✕ | ✔ |
 
 ## <a name="configuration"></a>配置
 
@@ -49,7 +49,7 @@ API 终结点通过 api 路由向 Web 应用提供。
 
 | 托管函数 | 创建自己的函数 |
 | --- | --- |
-| 虽然 api 路由已固定，但你可以控制托管函数应用的文件夹位置。 可以通过[编辑工作流 YAML 文件](build-configuration.md)来改变此位置，该文件位于存储库的 .github/workflows 文件夹中的。 | 对 api 路由的请求将发送到现有 Azure Functions 应用。 |
+| 虽然 API 路由已固定，但你可以控制托管函数应用的源代码文件夹位置。 可以通过[编辑工作流 YAML 文件](build-configuration.md)来改变此位置，该文件位于存储库的 .github/workflows 文件夹中的。 | 对 api 路由的请求将发送到现有 Azure Functions 应用。 |
 
 ## <a name="troubleshooting-and-logs"></a>故障排除和日志
 

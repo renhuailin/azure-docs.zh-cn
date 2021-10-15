@@ -2,13 +2,13 @@
 title: Bicep 函数 - 范围
 description: 介绍要在 Bicep 文件中用于检索部署范围相关值的函数。
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 4432aa528dbdd565128a15eb79d4b4c01572c924
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: ee7ea8efbb19048ff5aa6b6ead2bf9d2495ad23a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827443"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360241"
 ---
 # <a name="scope-functions-for-bicep"></a>Bicep 的范围函数
 
@@ -21,6 +21,8 @@ ms.locfileid: "124827443"
 `managementGroup(name)`
 
 返回一个用于将范围设置为管理组的对象。
+
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="remarks"></a>备注
 
@@ -64,6 +66,8 @@ module  'module.bicep' = {
 或
 
 返回表示当前资源组的对象。
+
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="remarks"></a>备注
 
@@ -156,6 +160,8 @@ param location string = resourceGroup().location
 
 返回有关当前部署的订阅的详细信息。
 
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="remarks"></a>备注
 
 subscription 函数具有两种不同的用法。 一种用法是在[模块](modules.md#configure-module-scopes)或[扩展资源类型](scope-extension-resources.md)上设置范围。 另一种用法是获取有关当前订阅的详细信息。 该函数的调用方式确定了其用法。 用于设置 `scope` 属性时，它将返回范围对象。
@@ -207,6 +213,8 @@ output subscriptionOutput object = subscription()
 `tenant()`
 
 返回一个用于将范围设置为租户的对象。
+
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="remarks"></a>备注
 

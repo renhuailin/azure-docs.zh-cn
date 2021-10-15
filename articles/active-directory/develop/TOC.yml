@@ -167,6 +167,8 @@
           href: security-best-practices-for-app-registration.md
     - name: 自动用户预配 (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+    - name: 使用 Microsoft Graph API
+      href: microsoft-graph-intro.md
 - name: 操作说明
   items:
     - name: 集成应用方案
@@ -560,8 +562,6 @@
           href: howto-add-app-roles-in-azure-ad-apps.md
         - name: 在应用程序中实现 RBAC
           href: howto-implement-rbac-for-apps.md
-    - name: 使用 Microsoft Graph API
-      href: microsoft-graph-intro.md
     - name: 针对复原能力构建
       items:
         - name: 开发概述

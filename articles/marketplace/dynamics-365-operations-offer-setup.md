@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 3f9eb3ccae99bfae472dc135fc4526964b3c3bde
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/27/2021
+ms.openlocfilehash: eadbeee57960577f12f880b4582e820eddb63e3c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955727"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234369"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations 产品/服务
 
@@ -26,14 +26,35 @@ ms.locfileid: "111955727"
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。
+
+1. 在“主页”上，选择“市场产品/服务”磁贴。
+
+    [ ![说明了合作伙伴中心主页上的“市场产品/服务”磁贴。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. 在“市场产品/服务”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Operations”。
+
+    [ ![“市场产品/服务”页上“新建产品/服务”按钮的屏幕截图，其中突出显示了“Dynamics 365 for Operations”产品/服务类型。](media/dynamics-365/new-offer-dynamics-365-operations-workspaces.png) ](media/dynamics-365/new-offer-dynamics-365-operations-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> 发布某个产品/服务后，在合作伙伴中心对其进行的任何编辑都不会出现在 Microsoft AppSource 中，除非重新发布该产品和服务。 对产品/服务进行更改后，请确保一律重新发布该产品/服务。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
+
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
-2. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
-3. 在“概述”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Operations”。
+1. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
+1. 在“概述”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Operations”。
 
     :::image type="content" source="media/dynamics-365/new-offer-dynamics-365-operations.png" alt-text="左窗格菜单选项和“新产品/服务”按钮。":::
 
 > [!IMPORTANT]
 > 发布某个产品/服务后，在合作伙伴中心对其进行的任何编辑都不会出现在 Microsoft AppSource 中，除非重新发布该产品和服务。 对产品/服务进行更改后，请确保一律重新发布该产品/服务。
+
+---
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -83,13 +104,13 @@ ms.locfileid: "111955727"
 
 ## <a name="business-applications-isv-program"></a>Business Applications ISV 计划
 
-你的产品/服务最初在标准层进行注册。 如果你的解决方案符合计划资格条件，你可以请求升级到高级层，这将提供扩展的计划权益。 如果这样做，请务必在发布产品/服务之前完成[联合销售模块](https://aka.ms/BizAppsISVProgram)。
+你的产品/服务最初在标准层进行注册。
 
-选中此复选框可请求升级到高级层。
+在发布产品/服务之前，请完成[联合销售模块](https://aka.ms/BizAppsISVProgram)。
 
 选择“保存草稿”，然后转到左侧导航菜单中的下一个选项卡“属性”。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [配置产品/服务属性](dynamics-365-operations-properties.md)
+- 配置产品/服务[属性](dynamics-365-operations-properties.md)
 - [套餐列出最佳做法](gtm-offer-listing-best-practices.md)

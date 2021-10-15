@@ -3,13 +3,13 @@ title: 排查常见的 Azure Kubernetes 服务问题
 description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 时遇到的常见问题
 services: container-service
 ms.topic: troubleshooting
-ms.date: 06/20/2020
-ms.openlocfilehash: 6b115971104699775e9a58a7b25addefe4d12d1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/24/2021
+ms.openlocfilehash: 28807736cf6f58334eb4e6cf674e2c514df9c427
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730734"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235262"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -22,7 +22,7 @@ ms.locfileid: "121730734"
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到 `quota exceeded` 错误。 我该怎么办？ 
 
- [请求更多核心](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+ [请求更多核心](../azure-portal/supportability/regional-quota-requests.md)。
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 `insufficientSubnetSize` 错误。 我该怎么办？
 
@@ -62,7 +62,7 @@ ms.locfileid: "121730734"
 * 使用 `kubectl describe pod <pod-name>` 查看 Pod 本身。
 * 使用 `kubectl logs <pod-name>` 查看日志。
 
-有关如何对 Pod 问题进行故障排除的详细信息，请参阅 Kubernetes 文档中的[调试 Pod](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
+要详细了解如何排除 pod 问题，请参阅 Kubernetes 文档中的[调试 Pod](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
 ## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>当我使用连接到 API 服务器的 `kubectl` 或其他第三方工具时，会收到 `TCP timeouts`
 AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保维持其服务级别目标 (SLO) 和服务级别协议 (SLA)。 如果遇到连接超时，请检查以下内容：
@@ -89,7 +89,7 @@ AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保
 
 确保端口 22、9000 和 1194 已打开，以便连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` 或 `aks-link` Pod 是否正在 kube-system 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>当连接到 AKS API 时，我从客户端收到 `"tls: client offered only unsupported versions"`。   应采取何种操作？
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>当连接到 AKS API 时，我从客户端收到 `"tls: client offered only unsupported versions"`。 我该怎么办？
 
 AKS 支持的最低 TLS 版本是 TLS 1.2。
 
@@ -104,7 +104,7 @@ AKS 支持的最低 TLS 版本是 TLS 1.2。
 当群集由于多种原因进入失败状态时，会发生此错误。 请遵循以下步骤解决群集故障状态，然后重试先前失败的操作：
 
 1. 除非群集摆脱 `failed` 状态，否则 `upgrade` 和 `scale` 操作不会成功。 常见的根本问题和解决方法包括：
-    * 使用 **不足的计算 (CRP) 配额** 进行缩放。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高计算配额](../azure-portal/supportability/resource-manager-core-quotas-request.md)，然后尝试扩展到超出初始配额限制。
+    * 使用 **不足的计算 (CRP) 配额** 进行缩放。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高计算配额](../azure-portal/supportability/regional-quota-requests.md)，然后尝试扩展到超出初始配额限制。
     * 使用高级网络和 **不足的子网（网络）资源** 缩放群集。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高资源配额](../azure-resource-manager/templates/error-resource-quota.md#solution)，然后尝试扩展到超出初始配额限制。
 2. 解决升级失败的根本原因后，群集应会进入成功状态。 确认成功状态后，请重试原始操作。
 
@@ -264,39 +264,15 @@ initContainers:
     mountPath: /data
 ```
 
-### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>Azure 磁盘分离失败可能导致争用条件问题和数据磁盘列表无效
-
-当 Azure 磁盘无法分离时，它会重试最多六次，以使用指数回退来分离磁盘。 它还会在数据磁盘列表上保留一个节点级锁约 3 分钟。 如果在这段时间内手动更新磁盘列表，会导致节点级锁保留的磁盘列表过时，并导致节点不稳定。
-
-此问题在以下版本的 Kubernetes 中已得到修复：
-
-| Kubernetes 版本 | 已修复的版本 |
-|--|:--:|
-| 1.12 | 1.12.9 或更高版本 |
-| 1.13 | 1.13.6 或更高版本 |
-| 1.14 | 1.14.2 或更高版本 |
-| 1.15 和更高版本 | 空值 |
-
-如果当前使用的 Kubernetes 版本无法修复此问题，并且你的节点具有过时的磁盘列表，可以通过批量操作将所有不存在的磁盘从 VM 中分离出来，以缓解此问题。 单独分离不存在的磁盘可能会失败。
-
 ### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>Azure 磁盘数目过大导致附加/分离速度缓慢
 
-如果针对单个节点 VM 的 Azure 磁盘附加/分离操作次数超过 10 次，或针对单个虚拟机规模集池时的操作次数超过 3 次，则速度可能会比预期要慢，因为它们是按顺序执行的。 此问题是已知限制，目前没有解决方法。 [用于支持并行附加/分离的 User Voice 项超出数量限制](https://feedback.azure.com/forums/216843-virtual-machines/suggestions/40444528-vmss-support-for-parallel-disk-attach-detach-for)。
+如果针对单个节点 VM 的 Azure 磁盘附加/分离操作次数超过 10 次，或针对单个虚拟机规模集池时的操作次数超过 3 次，则速度可能会比预期要慢，因为它们是按顺序执行的。 此问题是树中 Azure 磁盘驱动程序的已知限制。 [Azure 磁盘 CSI 驱动程序](https://github.com/kubernetes-sigs/azuredisk-csi-driver)通过在批处理操作中附加/分离磁盘解决了此问题。
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>Azure 磁盘分离失败可能导致节点 VM 处于失败状态
 
 在某些极端情况下，Azure 磁盘分离操作可能部分失败，导致节点 VM 处于故障状态。
 
-此问题在以下版本的 Kubernetes 中已得到修复：
-
-| Kubernetes 版本 | 已修复的版本 |
-|--|:--:|
-| 1.12 | 1.12.10 或更高版本 |
-| 1.13 | 1.13.8 或更高版本 |
-| 1.14 | 1.14.4 或更高版本 |
-| 1.15 和更高版本 | 空值 |
-
-如果当前使用的 Kubernetes 版本无法修复此问题，并且你的节点处于失败状态，可以使用以下方式手动更新 VM 状态，以缓解此问题：
+如果节点处于失败状态，可以使用以下方式之一手动更新 VM 状态来缓解此问题：
 
 * 对于基于可用性集的群集，使用以下代码：
     ```azurecli
@@ -310,21 +286,12 @@ initContainers:
 
 ## <a name="azure-files-and-aks-troubleshooting"></a>Azure 文件存储和 AKS 疑难解答
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>适用于 Azure 文件存储的 Kubernetes 的建议稳定版本是什么？
- 
-| Kubernetes 版本 | 建议的版本 |
-|--|:--:|
-| 1.12 | 1.12.6 或更高版本 |
-| 1.13 | 1.13.4 或更高版本 |
-| 1.14 | 1.14.0 或更高版本 |
-
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>使用 Azure 文件存储时的默认 mountOptions 是什么？
 
 建议的设置：
 
 | Kubernetes 版本 | fileMode 和 dirMode 值|
 |--|:--:|
-| 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 和更高版本 | 0777 |
 
 可以对存储类对象指定装载选项。 以下示例设置 *0777*：
@@ -387,24 +354,6 @@ persistentvolume-controller (combined from similar events): Failed to provision 
 
 可以通过[使用 Azure 文件存储静态预配](azure-files-volume.md)来缓解此问题。
 
-### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Azure 文件存储无法在 Windows Pod 中重新装载
-
-如果删除了包含已装载 Azure 文件存储的 Windows Pod，然后计划在同一节点上重新创建它，装载将失败。 之所以会失败，是因为 Azure 文件存储装载已装载在该节点上，这导致 `New-SmbGlobalMapping` 命令失败。
-
-例如，你可能会看到类似以下内容的错误：
-
-```console
-E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (\"42c0ea39-1af9-11e9-8941-000d3af95268\")" failed. No retries permitted until 2019-01-18 08:15:53.0410149 +0000 GMT m=+732.446642701 (durationBeforeRetry 1s). Error: "MountVolume.SetUp failed for volume \"pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (UniqueName: \"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\") pod \"deployment-azurefile-697f98d559-6zrlf\" (UID: \"42c0ea39-1af9-11e9-8941-000d3af95268\") : azureMount: SmbGlobalMapping failed: exit status 1, only SMB mount is supported now, output: \"New-SmbGlobalMapping : Generic failure \\r\\nAt line:1 char:190\\r\\n+ ... ser, $PWord;New-SmbGlobalMapping -RemotePath $Env:smbremotepath -Cred ...\\r\\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\r\\n    + CategoryInfo          : NotSpecified: (MSFT_SmbGlobalMapping:ROOT/Microsoft/...mbGlobalMapping) [New-SmbGlobalMa \\r\\n   pping], CimException\\r\\n    + FullyQualifiedErrorId : HRESULT 0x80041001,New-SmbGlobalMapping\\r\\n \\r\\n\""
-```
-
-此问题在以下版本的 Kubernetes 中已得到修复：
-
-| Kubernetes 版本 | 已修复的版本 |
-|--|:--:|
-| 1.12 | 1.12.6 或更高版本 |
-| 1.13 | 1.13.4 或更高版本 |
-| 1.14 或更高版本 | 空值 |
-
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>由于存储帐户密钥已更改导致 Azure 文件存储装载失败
 
 如果存储帐户密钥已更改，可能会遇到 Azure 文件存储装载失败。
@@ -435,10 +384,6 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 此错误是由于上游群集自动缩放程序争用条件导致的。 在这种情况下，集群自动缩放程序返回的值与群集中实际存在的值不同。 为此，请禁用[群集自动缩放程序][cluster-autoscaler]，然后再重新启用它。
-
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>磁盘附加速度缓慢，`GetAzureDiskLun` 需要 10 到 15 分钟，并且会显示一个错误
-
-在 1.15.0 之前的 Kubernetes 版本中，可能会收到错误消息，如“错误: WaitForAttach 找不到磁盘的 Lun”。  为解决此问题，请等待大约 15 分钟，然后重试。
 
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>为什么使用带有 kubernetes.io 前缀的节点标签时升级到 Kubernetes 1.16 失败

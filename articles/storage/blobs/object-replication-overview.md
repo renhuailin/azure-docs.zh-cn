@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5a0ca85ff28e56e7e9a47df1e56861d5c6552b97
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 6808160b97d6d1d46917f2e1733b7b1badb4c5f4
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468089"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534359"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -57,7 +57,7 @@ ms.locfileid: "123468089"
 
 对象复制要求同时在源帐户和目标帐户上启用 blob 版本控制。 当源帐户中复制的 blob 被修改时，源帐户中将创建一个新的 blob 版本来反映修改前 blob 以前的状态。 源帐户中的当前版本反映了最近的更新。 当前版本和任何之前的版本都将复制到目标帐户。 要详细了解写入操作如何影响 blob 版本，请参阅[对写入操作进行版本控制](versioning-overview.md#versioning-on-write-operations)。
 
-删除源帐户中的 blob 后，该 blob 的当前版本将变为以前的版本，以前的版本不再存在。 将保留该 blob 的所有现有先前版本。 此状态将被复制到目标帐户。 要详细了解删除操作如何影响 blob 版本，请参阅[对删除操作进行版本控制](versioning-overview.md#versioning-on-delete-operations)。
+删除源帐户中的 Blob 后，该 Blob 的当前版本将变为以前的版本，当前的版本不再存在。 将保留该 blob 的所有现有先前版本。 此状态将被复制到目标帐户。 要详细了解删除操作如何影响 blob 版本，请参阅[对删除操作进行版本控制](versioning-overview.md#versioning-on-delete-operations)。
 
 ### <a name="snapshots"></a>快照
 
@@ -65,7 +65,7 @@ ms.locfileid: "123468089"
 
 ### <a name="blob-tiering"></a>Blob 分层
 
-如果源帐户和目标帐户位于热层或冷层，则支持对象复制。 源帐户和目标帐户可能位于不同的层级。 但如果源帐户或目标帐户中的 blob 已移至存档层，则对象复制将失败。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储的访问层 - 热、冷和存档](storage-blob-storage-tiers.md)。
+如果源帐户和目标帐户位于热层或冷层，则支持对象复制。 源帐户和目标帐户可能位于不同的层级。 但如果源帐户或目标帐户中的 blob 已移至存档层，则对象复制将失败。 有关 Blob 层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 
 ### <a name="immutable-blobs"></a>不可变 blob
 
@@ -99,7 +99,7 @@ Azure Blob 存储的不可变性策略包括基于时间的保留策略和法定
 
 源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，不允许将操作写入目标容器。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 若要写入为其配置了复制规则的目标容器，则必须删除为该容器配置的规则，或者删除复制策略。 当复制策略处于活动状态时，允许对目标容器执行读取和删除操作。
 
-你可以针对目标容器中的 blob 调用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作，将其移动到存档层。 有关存档层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md#archive-access-tier)。
+你可以针对目标容器中的 blob 调用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作，将其移动到存档层。 有关存档层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md#archive-access-tier)。
 
 ## <a name="policy-definition-file"></a>策略定义文件
 
@@ -166,7 +166,7 @@ Azure Blob 存储的不可变性策略包括基于时间的保留策略和法定
 
 Azure Active Directory (Azure AD) 租户是 Azure AD 的专用实例，代表一个组织，专门用于标识和访问管理。 每个 Azure 订阅都与单个 Azure AD 租户具有信任关系。 订阅中的所有资源（包括存储帐户）都与同一个 Azure AD 租户相关联。 有关详细信息，请参阅[什么是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
 
-默认情况下，具有适当权限的用户为对象复制配置的源存储帐户和目标帐户可以位于不同的 Azure AD 租户中。 如果安全策略要求将对象复制限制为仅位于同一租户中的存储帐户，则可以通过设置安全属性 AllowCrossTenantReplication（预览版）禁止跨租户复制。 对某个存储帐户禁止跨租户对象复制时，对于将该存储帐户配置为源或目标帐户的任何对象复制策略，Azure 存储要求源帐户和目标帐户位于同一个 Azure AD 租户中。  有关禁止跨租户对象复制的详细信息，请参阅[防止跨 Azure Active Directory 租户进行对象复制](object-replication-prevent-cross-tenant-policies.md)。
+默认情况下，具有适当权限的用户为对象复制配置的源存储帐户和目标帐户可以位于不同的 Azure AD 租户中。 如果安全策略要求将对象复制限制为仅位于同一租户中的存储帐户，则可以通过设置安全属性 AllowCrossTenantReplication（预览版）禁止跨租户复制。 对某个存储帐户禁止跨租户对象复制时，对于将该存储帐户配置为源或目标帐户的任何对象复制策略，Azure 存储要求源帐户和目标帐户位于同一个 Azure AD 租户中。 有关禁止跨租户对象复制的详细信息，请参阅[防止跨 Azure Active Directory 租户进行对象复制](object-replication-prevent-cross-tenant-policies.md)。
 
 若要对某个存储帐户禁止跨租户对象复制，则将 AllowCrossTenantReplication 属性设置为 false。 如果存储帐户当前未参与任何跨租户对象复制策略，则将 AllowCrossTenantReplication 属性设置为 false 可防止将来配置跨租户对象复制策略时将该存储帐户作为源或目标。
 
@@ -188,12 +188,12 @@ Azure Active Directory (Azure AD) 租户是 Azure AD 的专用实例，代表一
 
 ## <a name="feature-support"></a>功能支持
 
-此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。
 
-| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
-| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 

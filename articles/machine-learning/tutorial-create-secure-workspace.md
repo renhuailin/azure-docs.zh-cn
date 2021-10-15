@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 在安全的虚拟网络中创建 Azure 机器学习工作区和所需的 Azure 服务。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: jhirono
 ms.author: larryfr
 author: blackmist
-ms.date: 08/17/2021
+ms.date: 09/15/2021
 ms.topic: how-to
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: c704064685b4096c8ee7b4a1015d82fae7c40ba9
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: ad81535a8287a4b89f978c4c2523b664375d23d6
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324096"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428723"
 ---
 # <a name="how-to-create-a-secure-workspace"></a>创建安全工作区的方法
 
@@ -35,10 +35,10 @@ ms.locfileid: "122324096"
 > * 创建 Azure 机器学习计算群集。 在云中训练机器学习模型时会用到计算群集。 在 Azure 容器注册表位于 VNet 背后的配置中，它还用于生成 Docker 映像。
 > * 连接到跳转盒并使用 Azure 机器学习工作室。
 
-如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，也可以通过选择“部署到 Azure”按钮来完成本教程中的前五个步骤。 可以从[连接到工作区](#connect-to-the-workspace)继续阅读。
+如果环境满足先决条件，并且你对使用 ARM 模板很熟悉，则还可选择“部署到 Azure”按钮来完成本教程中的前五个步骤。 可以继续从[连接到工作区](#connect-to-the-workspace)中进行读取。
 
-[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.machinelearningservices%2Fmachine-learning-advanced%2Fazuredeploy.json)
-[![部署到 Azure US Gov](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazuregov.svg?sanitize=true)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.machinelearningservices%2Fmachine-learning-advanced%2Fazuredeploy.json)
+[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.machinelearningservices%2Fmachine-learning-workspace-vnet%2Fazuredeploy.json)
+[![部署到 Azure US Gov](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazuregov.svg?sanitize=true)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.machinelearningservices%2Fmachine-learning-workspace-vnet%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -79,22 +79,30 @@ ms.locfileid: "122324096"
     1. 若要创建子网以包含用于训练的工作区、依赖项服务和资源，请选择“+ 添加子网”，并为子网使用以下值：
         * __子网名称__：训练
         * __子网地址范围__：172.17.0.0/24
-        * __服务__：选择以下服务：
-            * __Microsoft.Storage__
-            * __Microsoft.KeyVault__
-            * __Microsoft.ContainerRegistry__
 
         :::image type="content" source="./media/tutorial-create-secure-workspace/vnet-add-training-subnet.png" alt-text="训练子网的屏幕截图":::
+
+        > [!TIP]
+        > 如果计划使用服务终结点将 Azure 存储帐户、Azure Key Vault 和 Azure 容器注册表添加到 VNet，则在“服务”下选择以下选项：
+        > * __Microsoft.Storage__
+        > * __Microsoft.KeyVault__
+        > * __Microsoft.ContainerRegistry__
+        >
+        > 如果你计划使用专用终结点将这些服务添加到 VNet，则无需选择这些项。 本文中的步骤将专用终结点用于这些服务，因此在执行这些步骤时无需选择它们。
 
     1. 若要为用于对模型进行评分的计算资源创建子网，请再次选择“+ 添加子网”，并使用以下值：
         * __子网名称__：评分
         * __子网地址范围__：172.17.1.0/24
-        * __服务__：选择以下服务：
-            * __Microsoft.Storage__
-            * __Microsoft.KeyVault__
-            * __Microsoft.ContainerRegistry__
 
         :::image type="content" source="./media/tutorial-create-secure-workspace/vnet-add-scoring-subnet.png" alt-text="评分子网的屏幕截图":::
+
+        > [!TIP]
+        > 如果计划使用服务终结点将 Azure 存储帐户、Azure Key Vault 和 Azure 容器注册表添加到 VNet，则在“服务”下选择以下选项：
+        > * __Microsoft.Storage__
+        > * __Microsoft.KeyVault__
+        > * __Microsoft.ContainerRegistry__
+        >
+        > 如果你计划使用专用终结点将这些服务添加到 VNet，则无需选择这些项。 本文中的步骤将专用终结点用于这些服务，因此在执行这些步骤时无需选择它们。
 
 1. 选择“安全”。 对于“BastionHost”，选择“启用” 。 [Azure Bastion](../bastion/bastion-overview.md) 可提供一种安全的方式访问 VM 跳转盒，在后续的步骤中，你将在 VNet 中创建此跳转盒。 对于剩余字段，请使用以下值：
 
@@ -168,6 +176,9 @@ ms.locfileid: "122324096"
     :::image type="content" source="./media/tutorial-create-secure-workspace/storage-file-private-endpoint-config.png" alt-text="配置文件专用终结点的 UI":::
 
 1. 选择“查看 + 创建”  。 确认信息无误，然后选择“创建”。
+
+> [!TIP]
+> 如果计划在管道中使用 [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md)，还必须配置专用终结点目标队列和表子资源 。 ParallelRunStep 在幕后使用队列和表进行任务调度和分派。
 
 ## <a name="create-a-key-vault"></a>创建 key vault
 
@@ -283,21 +294,6 @@ ms.locfileid: "122324096"
 
 Azure 机器学习工作室是基于 Web 的应用程序，使你能够轻松管理工作区。 但是，需要先对它进行一些额外的配置，然后才能将它与 VNet 中受保护的资源结合使用。 使用以下步骤启用工作室：
 
-1. 在 Azure 门户中，选择你的存储帐户，然后选择“访问控制(IAM)”。
-1. 选择“+ 添加”，然后选择“添加角色分配(预览)” 。
-
-    ![打开了“添加角色分配”菜单的“访问控制(IAM)”页。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
-
-1. 在“角色”选项卡上，选择“存储 Blob 数据参与者” 。
-
-    ![选中了“角色”选项卡的“添加角色分配”页。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
-
-1. 在“成员”选项卡上，在“将访问权限分配到”区域中选择“用户、组或服务主体”，然后选择“+ 选择成员”   。 在“选择成员”对话框中，输入名称作为 Azure 机器学习工作区。 为工作区选择服务主体，然后使用“选择”按钮。
-
-    :::image type="content" source="./media/tutorial-create-secure-workspace/studio-select-service-principal.png" alt-text="选择服务主体的屏幕截图":::
-
-1. 在“查看 + 分配”选项卡上，选择“查看 + 分配”，以分配角色 。
-
 1. 当使用具有专用终结点的 Azure 存储帐户时，将工作区的服务主体添加为存储专用终结点的“读者”。 在 Azure 门户中，选择你的存储帐户，然后选择“网络”。 接着选择“专用终结点连接”。
 
     :::image type="content" source="./media/tutorial-create-secure-workspace/storage-private-endpoint-select.png" alt-text="存储专用终结点的屏幕截图":::
@@ -396,7 +392,7 @@ Azure 机器学习工作室是基于 Web 的应用程序，使你能够轻松管
 
     :::image type="content" source="./media/tutorial-create-secure-workspace/create-compute-instance.png" alt-text="新计算实例工作流的屏幕截图":::
 
-1. 在“虚拟机”对话框中，输入唯一的“计算机名称”，然后选择“下一步: 高级设置”  。
+1. 在“虚拟机”对话框中，输入唯一“计算机名称”，然后选择“下一步:高级设置”  。
 
     :::image type="content" source="./media/tutorial-create-secure-workspace/create-compute-instance-vm.png" alt-text="计算实例 VM 设置的屏幕截图":::
 
@@ -405,7 +401,7 @@ Azure 机器学习工作室是基于 Web 的应用程序，使你能够轻松管
     :::image type="content" source="./media/tutorial-create-secure-workspace/create-compute-instance-settings.png" alt-text="计算实例设置的屏幕截图":::
 
 > [!TIP]
-> 创建计算群集或计算实例时，Azure 机器学习会动态添加网络安全组 (NSG)。 此 NSG 包含以下特定于计算群集和计算实例的规则：
+> 在创建计算群集或计算实例时，Azure 机器学习动态添加网络安全组 (NSG)。 此 NSG 包含以下特定于计算群集和计算实例的规则：
 > 
 > * 允许 `BatchNodeManagement` 服务标记中端口 29876-29877 上的入站 TCP 流量。
 > * 允许 `AzureMachineLearning` 服务标记中端口 44224 上的入站 TCP 流量。
@@ -424,7 +420,7 @@ Azure 机器学习工作室是基于 Web 的应用程序，使你能够轻松管
 当 Azure 容器注册表位于虚拟网络背后时，Azure 机器学习无法使用它来直接生成 Docker 映像（用于训练和部署）。 相反，可以将工作区配置为使用前面创建的计算群集。 使用以下步骤来创建计算群集，并将工作区配置为使用它来生成映像：
 
 1. 导航到 [https://shell.azure.com/](https://shell.azure.com/) 以打开 Azure Cloud Shell。
-1. 在 Cloud Shell 中，使用以下命令安装适用于 Azure 机器学习的 1.0 CLI：
+1. 从 Cloud Shell 中，使用以下命令安装适用于 Azure 机器学习的 1.0 CLI：
 
     ```azurecli-interactive
     az extension add -n azure-cli-ml

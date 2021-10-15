@@ -9,12 +9,12 @@ ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8c6bc1d7d8fb98541a25c7e91f0e023e2941e559
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 847a0fc7f1867c2a4ea1f620a60f6236efebf4ce
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668485"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358701"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在应用程序网关上创建和使用 Web 应用程序防火墙 v2 自定义规则
 
@@ -131,7 +131,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-2"></a>示例 2
 
-你想要使用 GeoMatch 运算符允许来自美国的流量：
+你想要使用 GeoMatch 运算符仅允许来自美国的流量，并且仍应用托管规则：
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -142,14 +142,14 @@ $condition = New-AzApplicationGatewayFirewallCondition `
    -Operator GeoMatch `
    -MatchValue "US" `
    -Transform Lowercase `
-   -NegationCondition $False
+   -NegationCondition $True
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Name "allowUS" `
    -Priority 2 `
    -RuleType MatchRule `
    -MatchCondition $condition `
-   -Action Allow
+   -Action Block
 ```
 
 相应的 JSON：
@@ -161,11 +161,12 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
         "name": "allowUS",
         "ruleType": "MatchRule",
         "priority": 2,
-        "action": "Allow",
+        "action": "Block",
         "matchConditions": [
           {
             "matchVariable": "RemoteAddr",
             "operator": "GeoMatch",
+            "NegationConditon": false,
             "matchValues": [
               "US"
             ]
@@ -538,6 +539,66 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
             "operator": "Contains",
             "matchValues": [
               "'--"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+```
+
+## <a name="example-7"></a>示例 7
+
+Azure Front Door 部署在应用程序网关前面的情况并不少见。  为了确保应用程序网关接收的流量来自 Front Door 部署，最佳做法是检查 `X-Azure-FDID` 标头是否包含预期的唯一值。  有关于这方面的详细信息，请参阅[如何将对后端的访问锁定为仅限 Azure Front Door](../../frontdoor/front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-)
+
+逻辑：非 p
+
+```azurepowershell
+$expectedFDID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$variable = New-AzApplicationGatewayFirewallMatchVariable `
+   -VariableName RequestHeaders `
+   -Selector X-Azure-FDID
+
+$condition = New-AzApplicationGatewayFirewallCondition `
+   -MatchVariable $variable `
+   -Operator Equal `
+   -MatchValue $expectedFDID `
+   -Transform Lowercase `
+   -NegationCondition $True
+
+$rule = New-AzApplicationGatewayFirewallCustomRule `
+   -Name blockNonAFDTraffic `
+   -Priority 2 `
+   -RuleType MatchRule `
+   -MatchCondition $condition `
+   -Action Block
+```
+
+下面是相应的 JSON：
+
+```json
+  {
+    "customRules": [
+      {
+        "name": "blockNonAFDTraffic",
+        "priority": 2,
+        "ruleType": "MatchRule",
+        "action": "Block",
+        "matchConditions": [
+          {
+            "matchVariables": [
+                {
+                    "variableName": "RequestHeaders",
+                    "selector": "X-Azure-FDID"
+                }
+            ],
+            "operator": "Equal",
+            "negationConditon": true,
+            "matchValues": [
+                "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            ],
+            "transforms": [
+                "Lowercase"
             ]
           }
         ]

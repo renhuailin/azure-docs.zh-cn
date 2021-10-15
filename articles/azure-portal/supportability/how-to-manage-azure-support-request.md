@@ -3,13 +3,13 @@ title: 管理 Azure 支持请求
 description: 介绍如何查看支持请求、发送消息、更改请求严重性级别、与 Azure 支持共享诊断信息、重新打开已关闭的支持请求以及上传文件。
 tags: billing
 ms.topic: how-to
-ms.date: 09/01/2021
-ms.openlocfilehash: f1930402c0f458962c95f8f4fe0f1011f1dcca49
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/30/2021
+ms.openlocfilehash: 8e7b074883fe2dcfb79913e54cf7180e26f29c2a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426375"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353195"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支持请求
 
@@ -52,7 +52,7 @@ ms.locfileid: "123426375"
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>与 Azure 支持共享诊断信息
 
-创建支持请求时，可以在“共享诊断信息”部分中选择“是”或“否”。   此选项确定了 Azure 支持人员是否可从 Azure 资源中收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)，这些信息可能有助于解决你的问题。
+创建支持请求时，可以在“共享诊断信息”部分中选择“是”或“否”。   此选项确定了 Azure 支持是否可从你的 Azure 资源中收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)（例如[日志文件](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs)），这些信息可能有助于解决你的问题。
 
 若要在创建请求后更改“共享诊断信息”选择：
 

@@ -1,14 +1,14 @@
 ---
 title: 大规模监视委托资源
 description: Azure Lighthouse 可帮助你在客户租户间以可缩放的方式来使用 Azure Monitor 日志。
-ms.date: 08/12/2021
+ms.date: 09/30/2021
 ms.topic: how-to
-ms.openlocfilehash: d261fd41c300f317e34ff7cacafa53911b7bbc12
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7ae54918ffad64e6b9790c4458717807cacd09ad
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736614"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363233"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "124736614"
 
 为了收集数据，需要创建 Log Analytics 工作区。 这些 Log Analytics 工作区是针对 Azure Monitor 所收集数据的唯一环境。 每个工作区都有其自己的数据存储库和配置，并且数据源和解决方案均配置为将其数据存储在特定工作区中。
 
-建议直接在客户租户中创建这些工作区。 这样，它们的数据将保留在其租户中，而不是导出到您的租户中。 此外，也便于集中监视 Log Analytics 支持的任何资源或服务，从而更灵活地选择所监视的数据类型。
+建议直接在客户租户中创建这些工作区。 这样，它们的数据将保留在其租户中，而不是导出到您的租户中。 在客户租户中创建工作区便于集中监视 Log Analytics 支持的任何资源或服务，从而更灵活地选择所监视的数据类型。 要通过[诊断设置](../..//azure-monitor/essentials/diagnostic-settings.md)收集信息，需要在客户租户中创建工作区。
 
 > [!TIP]
 > 必须在与工作区相同的租户中创建用于访问 Log Analytics 工作区中数据的所有自动化帐户。

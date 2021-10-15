@@ -6,14 +6,14 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 10/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 169f0b76e1009931d51339fe6b058ca24608af30
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c3cb2a64cd2981c73a673776c01ec98bf44c8041
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061041"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458181"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Azure 认知搜索中的可用性和业务连续性
 
@@ -106,9 +106,7 @@ Azure 认知搜索当前不提供自动化方法来跨区域异地复制搜索�
 
 ## <a name="disaster-recovery-and-service-outages"></a>灾难恢复和服务中断
 
-虽然我们可以挽救数据，但 Azure 认知搜索在群集或数据中心级别发生服务中断时不提供服务的即时故障转移。 如果数据中心的群集出现故障，运营团队会检测故障，并努力还原服务。 在服务还原期间将遇到停机，但是可以根据[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 申请服务信用额度来补偿服务不可用的情况。 
-
-如果在超出 Microsoft 控制的灾难性故障中需要连续性服务，可在其他区域[预配一个附加服务](search-create-service-portal.md)并实施异地复制策略，确保索引跨所有服务完全冗余。
+如[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 中所述，当 Azure 认知搜索服务实例配置有两个或更多副本时，我们保证索引查询请求的高可用性，当 Azure 认知搜索服务实例配置有三个或更多副本时，我们保证索引更新请求的高可用性。 但是，没有任何内置的机制可实现灾难恢复。 如果在超出 Microsoft 控制的灾难性故障中需要连续性服务，建议在其他区域预配另一个服务并实施异地复制策略，确保索引跨所有服务完全冗余。
 
 使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果从同样异地冗余的数据源进行索引，请注意 Azure 认知搜索索引器只能从主要副本执行增量索引（从新的、已修改的或已删除的文档合并更新）。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
 
@@ -122,12 +120,12 @@ Azure 认知搜索当前不提供自动化方法来跨区域异地复制搜索�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解定价层和每个层的服务限制，请参阅[服务限制](search-limits-quotas-capacity.md)。 参阅[规划容量](search-capacity-planning.md)详细了解分区和副本的组合。
+若要详细了解定价层和每个层的服务限制，请参阅[服务限制](search-limits-quotas-capacity.md)。 查看[容量规划](search-capacity-planning.md)详细了解关于分区和副本组合的信息，或查看[案例研究：使用认知搜索来支持复杂的 AI 场景](https://techcommunity.microsoft.com/t5/azure-ai/case-study-effectively-using-cognitive-search-to-support-complex/ba-p/2804078)了解实际的提示。
 
 有关本文所述技术的性能和演示的讨论，请观看以下视频：
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
-> 
+>
 
 <!--Image references-->
 [1]: ./media/search-performance-optimization/geo-redundancy.png

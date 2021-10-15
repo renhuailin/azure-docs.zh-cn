@@ -1,18 +1,18 @@
 ---
-title: 迁移应用程序以使用 Azure Cosmos DB .NET SDK 3.0 (com.azure.cosmos)
-description: 了解如何将现有 .NET 应用程序从 v2 SDK 升级到适用于 Core (SQL) API 的较新 .NET SDK v3（com.azure.cosmos 包）。
+title: 迁移应用程序以使用 Azure Cosmos DB .NET SDK 3.0 (Microsoft.Azure.Cosmos)
+description: 了解如何将现有 .NET 应用程序从 v2 SDK 升级到适用于 Core (SQL) API 的较新 .NET SDK v3（Microsoft.Azure.Cosmos 包）。
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 65c2ab23c98ae9b3a2c57a71e52c1df37f182139
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 10/04/2021
+ms.openlocfilehash: 58ea7624b32b7730863fe3d29f6d9245c4199d25
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113249"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535293"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>迁移应用程序以使用 Azure Cosmos DB .NET SDK v3
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -55,8 +55,7 @@ v3 SDK 包含许多可用性和性能改进，包括：
 ## <a name="why-migrate-to-the-net-v3-sdk"></a>为何要迁移到 .NET v3 SDK
 
 除了大量的可用性和性能改进之外，最新 SDK 中的新功能投资将不会反向移植到较旧版本。
-
-尽管现在还没有计划[停用对 2.0 SDK 的支持](sql-api-sdk-dotnet.md)，但 SDK 会在将来被较新版本替代，该 SDK 将进入维护模式。 如需获得最佳的开发体验，我们建议务必从最新的受支持的 SDK 版本入手。
+v2 SDK 目前处于维护模式。 如需获得最佳的开发体验，我们建议务必从最新的受支持的 SDK 版本入手。
 
 ## <a name="major-name-changes-from-v2-sdk-to-v3-sdk"></a>主名称从 v2 SDK 更改为 v3 SDK
 
@@ -148,7 +147,7 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 ### <a name="exceptions"></a>例外
 
-v2 SDK 在操作过程中使用 `DocumentClientException` 来标记错误，而 v3 SDK 则使用 `CosmosClientException` 来公开 `StatusCode`、`Diagnostics` 以及其他与响应相关的信息。 使用 `ToString()` 时，所有完整信息都会被序列化：
+v2 SDK 在操作过程中使用 `DocumentClientException` 标记错误，v3 SDK 使用 `CosmosClientException`，后者公开了 `StatusCode`、`Diagnostics` 和其他与响应相关的信息。 使用 `ToString()` 时，所有完整信息都会被序列化：
 
 ```csharp
 catch (CosmosClientException ex)
@@ -196,16 +195,16 @@ catch (CosmosException cosmosException) {
 | .NET v2 SDK | .NET v3 SDK |
 |-------------|-------------|
 |`EnableEndpointRediscovery`|`LimitToEndpoint` - 该值现在已反转。如果 `EnableEndpointRediscovery` 设置为 `true`，则 `LimitToEndpoint` 应设置为 `false`。 在使用此设置之前，你需要了解[它对客户端有何影响](troubleshoot-sdk-availability.md)。|
-|`ConnectionProtocol`|删除。 协议绑定到模式，模式为网关 (HTTPS) 模式或直接 (TCP) 模式。|
+|`ConnectionProtocol`|删除。 协议与模式相关联，可以是网关 (HTTPS) 或直接 (TCP)。 V3 SDK 不再支持使用 HTTPS 协议的直接模式，建议使用 TCP 协议。 |
 |`MediaRequestTimeout`|删除。 附件不再受支持。|
 
 ### <a name="session-token"></a>会话令牌
 
-在需要捕获会话令牌的情况下，由于会话令牌是一个标头，因此 v2 SDK 会将响应的会话令牌作为 `ResourceResponse.SessionToken` 公开，而 v3 SDK 则会将该值公开在任何响应的 `Headers.Session` 属性中。
+在需要捕获会话令牌的情况下，由于会话令牌是一个标头，v2 SDK 会将响应的会话令牌作为 `ResourceResponse.SessionToken` 公开，而 v3 SDK 会将该值公开在任何响应的 `Headers.Session` 属性中。
 
 ### <a name="timestamp"></a>时间戳
 
-v2 SDK 通过 `Timestamp` 属性公开文档的时间戳，因为 `Document` 不再可用，用户可以将 `_ts` [系统属性](../account-databases-containers-items.md#properties-of-an-item)映射到模型中的属性。
+v2 SDK 通过 `Timestamp` 属性公开文档的时间戳，因为 `Document` 不再可用，用户可以将 `_ts` [系统属性](../account-databases-containers-items.md#properties-of-an-item)映射到其模型中的属性。
 
 ### <a name="openasync"></a>OpenAsync
 
@@ -710,5 +709,5 @@ private static async Task DeleteItemAsync(DocumentClient client)
 * 使用 v3 SDK [生成控制台应用](sql-api-get-started.md)以管理 Azure Cosmos DB SQL API 数据
 * 详细了解 [v3 SDK 的用途](sql-api-dotnet-v3sdk-samples.md)
 * 尝试为迁移到 Azure Cosmos DB 进行容量计划？
-    * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
-    * 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

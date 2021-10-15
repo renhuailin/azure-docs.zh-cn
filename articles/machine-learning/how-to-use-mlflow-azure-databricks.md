@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 62fd9820d1ec743d7424679753828b0cb7837fbc
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 62e87c2c63ade98be48977e7a8377ad66530af5d
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031042"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428818"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning"></a>使用 MLflow 和 Azure 机器学习跟踪 Azure Databricks ML 试验
 
@@ -213,6 +213,8 @@ display(preds)
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
+
+如果希望保留 Azure Databricks 工作区，但不再需要 Azure ML 工作区，则可删除 Azure ML 工作区。 此操作会导致取消链接 Azure Databricks 工作区和 Azure ML 工作区。 
 
 如果不打算使用工作区中记录的指标和项目，目前尚未提供单独删除它们的功能。 可以改为删除包含存储帐户和工作区的资源组，这样就不会产生任何费用：
 

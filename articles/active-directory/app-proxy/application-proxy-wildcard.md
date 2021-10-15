@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: da2ea074a717189c038705f95f77e538d1bd9680
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 60565787588bf2c061945ba0e99207d853caadc8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962160"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232967"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序
 
@@ -135,7 +135,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 所有三个应用程序：
 
 - 由所有用户使用
-- 使用 *Windows 集成身份验证*
+- 使用集成 Windows 身份验证
 - 具有相同的属性
 
 可以使用[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)中所述的步骤发布通配符应用程序。 此方案假设：

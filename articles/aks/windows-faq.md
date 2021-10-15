@@ -2,15 +2,14 @@
 title: Windows Server 节点池常见问题解答
 titleSuffix: Azure Kubernetes Service
 description: 查看在 Azure Kubernetes 服务 (AKS) 中运行 Windows Server 节点池和应用程序工作负载时的常见问题。
-services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: b278be45af62d50c8df85ed833ebbeb99dd5c35d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dd83803069f83233915c0baae0656346008a3814
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747799"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354631"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 节点池的常见问题
 
@@ -68,7 +67,7 @@ AKS 群集中的主节点（控制平面）由 AKS 服务托管，不会向你�
 
 如果群集是在 2020 年 2 月之前创建的，且从未执行过任何群集升级操作，该群集仍将使用旧的 Windows 映像。 你可能会看到类似于以下内容的错误：
 
-“找不到从部署模板中引用的下列映像:发布者：MicrosoftWindowsServer，产品/服务：WindowsServer, Sku:2019-datacenter-core-smalldisk-2004，版本：最新版本。 有关如何查找可用映像的说明，请参阅 https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage 。”
+“找不到从部署模板中引用的下列映像:发布者：MicrosoftWindowsServer，产品/服务：WindowsServer, Sku:2019-datacenter-core-smalldisk-2004，版本：最新版本。 有关查找可用映像的说明，请参阅[通过 Azure PowerShell 查找和使用 Azure 市场 VM 映像](../virtual-machines/windows/cli-ps-findimage.md)。
 
 修复此错误的方法：
 
@@ -191,6 +190,13 @@ Set-TimeZone -Id "Russian Standard Time"
 ```
 
 若要查看正在运行的容器的当前时区或可用时区列表，请使用 [Get-TimeZone](/powershell/module/microsoft.powershell.management/get-timezone)。
+
+## <a name="can-i-maintain-session-affinity-from-client-connections-to-pods-with-windows-containers"></a>能否使用 Windows 容器保持从客户端连接到 Pod 的会话亲和性？
+虽然这将在 WS2022 操作系统版本中得到支持，但当前通过客户端 IP 实现会话亲和性的方法是通过将所需的 Pod 限制为每个节点运行一个实例并将 Kubernetes 服务配置为将流量定向到本地节点上的 Pod。 若要实现此目的，可以使用以下配置：
+1. 运行最低版本 1.20 的 AKS 群集。
+1. 将 Pod 限制为每个 Windows 节点仅允许一个实例。 这可以通过在部署配置中使用反关联来实现。
+1. 在 Kubernetes 服务配置中，设置“externalTrafficPolicy=Local”。 这将确保 Kubernetes 服务仅将流量定向到本地节点内的 Pod。
+1. 在 Kubernetes 服务配置中，设置“sessionAffinity: ClientIP”。 这将确保 Azure 负载均衡器配置会话亲和性。
 
 ## <a name="what-if-i-need-a-feature-thats-not-supported"></a>如果需要使用不受支持的功能，应该怎么办？
 

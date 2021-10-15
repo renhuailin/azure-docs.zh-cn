@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbb34c147b3629384d7173c3c20d75aac3c7da1
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 0cf360196b3fee73dc91ea7936f2a8faad2dedc5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108794"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231627"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -37,7 +37,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 ## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>通过主刷新令牌进行的 SSO 与无缝 SSO
 
-对于 Windows 10、Windows Server 2016 及更高版本，建议使用通过主刷新令牌 (PRT) 进行的 SSO。 对于 Windows 7 和 8.1，建议使用无缝 SSO。
+对于 Windows 10、Windows Server 2016 及更高版本，建议使用通过主刷新令牌 (PRT) 进行的 SSO。 对于 Windows 7 和 Windows 8.1，建议使用无缝 SSO。
 无缝 SSO 需要用户的设备是已加入域的，但不在 Windows 10 [已加入 Azure AD 的设备](../devices/concept-azure-ad-join.md)或[已加入混合 Azure AD 的设备](../devices/concept-azure-ad-join-hybrid.md)上使用。 在已加入 Azure AD 的、已加入混合 Azure AD 的和已注册 Azure AD 的设备上，SSO 基于[主刷新令牌 (PRT)](../devices/concept-primary-refresh-token.md) 工作
 
 当设备注册到 Azure AD 中，成为已加入混合 Azure AD 的设备、已加入 Azure AD 的设备或个人注册的设备（通过“添加工作或学校帐户”）之后，通过 PRT 进行的 SSO 即可正常工作。 若要详细了解 SSO 如何通过 PRT 与 Windows 10 配合使用，请参阅：[主刷新令牌 (PRT) 和 Azure AD](../devices/concept-primary-refresh-token.md)
@@ -84,7 +84,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 \*\*\*需要[其他配置](how-to-connect-sso-quick-start.md#browser-considerations)。
 
-\*\*\*\*基于 Chromium 的 Microosft Edge
+\*\*\*\*基于 Chromium 的 Microsoft Edge
 
 ## <a name="next-steps"></a>后续步骤
 

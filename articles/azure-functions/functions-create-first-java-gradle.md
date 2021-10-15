@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: be1d54007017ce9b5abb774e75ddfd799f83c612
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: d47de5dd9af7b6d769c31d4909103616293a5a60
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287287"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361655"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 和 Gradle 创建函数并将其发布到 Azure
 
@@ -27,7 +27,7 @@ ms.locfileid: "113287287"
 - [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本
-- [Gradle](https://gradle.org/) 4.10 和更高版本
+- [Gradle](https://gradle.org/) 6.8 和更高版本
 
 还需要一个有效的 Azure 订阅。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -126,7 +126,7 @@ gradle azureFunctionsDeploy
 
 + 资源组。 使用你提供的 _resourceGroup_ 命名。
 + 存储帐户。 Functions 所需。 此名称根据存储帐户名称要求随机生成。
-+ 应用服务计划。 指定的 appRegion 中为函数应用托管的无服务器消耗计划。 此名称随机生成。
++ 应用服务计划。 在指定的区域中托管函数应用的无服务器消耗计划。 此名称随机生成。
 + 函数应用。 函数应用是函数的部署和执行单元。 此名称是 _appName_ 追加一个随机生成的数字。 
 
 此部署还会在启用“从包运行”模式的情况下，使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 将项目文件打包并部署到新函数应用。
@@ -142,7 +142,7 @@ gradle azureFunctionsDeploy
 
 1. 浏览到 [Azure 门户]，登录，在页面顶部将函数应用的 _appName_ 键入“搜索”栏，然后按 Enter。
  
-1. 在函数应用中选择“函数”，选择你的函数，然后单击右上角的“</> 获取函数 URL”。  
+1. 在函数应用中选择“函数”，选择需要的函数，然后单击右上角的“获取函数 URL”。 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="从 Azure 门户复制函数 URL":::
 

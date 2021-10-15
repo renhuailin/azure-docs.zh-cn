@@ -4,28 +4,25 @@ description: 介绍 Bicep 文件中用于检索部署信息的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 53e9f34e2d04f68add7babd8c12b4fd583015847
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/30/2021
+ms.openlocfilehash: 9d06bd78d7ba6dcf0f73326f744e975a9c4e3f53
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025968"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352402"
 ---
 # <a name="deployment-functions-for-bicep"></a>Bicep 的部署函数
 
-资源管理器提供以下函数，用于获取与 Bicep 文件的当前部署相关的值：
-
-* [部署](#deployment)
-* [环境](#environment)
-
-若要从资源、资源组或订阅获取值，请参阅 [Resource functions](./bicep-functions-resource.md)（资源函数）。
+本文介绍用于获取与当前部署相关的值的 Bicep 函数。
 
 ## <a name="deployment"></a>部署
 
 `deployment()`
 
 返回有关当前部署操作的信息。
+
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="return-value"></a>返回值
 
@@ -116,6 +113,8 @@ output deploymentOutput object = deployment()
 
 返回有关用于部署的 Azure 环境的信息。
 
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="return-value"></a>返回值
 
 此函数返回当前 Azure 环境的属性。 以下示例显示了全局 Azure 的属性。 主权云可能会返回略有不同的属性。
@@ -200,4 +199,4 @@ output environmentOutput object = environment()
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Bicep 文件中各部分的说明，请参阅[了解 Bicep 文件的结构和语法](./file.md)。
+* 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](./bicep-functions-resource.md)（资源函数）。

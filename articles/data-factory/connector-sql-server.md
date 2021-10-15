@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/09/2021
-ms.openlocfilehash: 42040653f432577457cea6e5325fe686878e9da3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/29/2021
+ms.openlocfilehash: e366ed2b17ab805c5b3d23663ee96222e2ec9372
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124820170"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358042"
 ---
 # <a name="copy-and-transform-data-to-and-from-sql-server-by-using-azure-data-factory-or-azure-synapse-analytics"></a>通过使用 Azure 数据工厂或 Azure Synapse Analytics 从/向 SQL Server 复制和转换数据
 
@@ -94,7 +94,8 @@ SQL Server 链接服务支持以下属性：
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 > [!NOTE]
-> 数据流中不支持 SQL Server [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver15&preserve-view=true)。 
+> - 数据流中不支持 SQL Server [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver15&preserve-view=true)。 
+> - 数据流不支持 Windows 身份验证。
 
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
@@ -687,7 +688,7 @@ IncomingStream sink(allowSchemaDrift: true,
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |小数 |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
 | numeric |小数 |

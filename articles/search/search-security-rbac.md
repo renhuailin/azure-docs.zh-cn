@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 3a9669b2c569947c76f4f2b92fa316f3b09ab517
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1968bb34d124fa37a51b296071ee24b3eae47772
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577893"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273716"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>在 Azure 认知搜索服务中使用基于角色的授权
 
@@ -49,7 +49,7 @@ Azure 为平台上运行的所有服务提供全局的[基于角色的访问控�
 | [所有者](../role-based-access-control/built-in-roles.md#owner) | 服务操作（正式版） | 对搜索资源拥有完全访问权限，包括能够分配 Azure 角色。 默认情况下，订阅管理员是成员。 |
 | [参与者](../role-based-access-control/built-in-roles.md#contributor) | 服务操作（正式版） | 访问权限级别与所有者相同，但无法分配角色或更改授权选项。 |
 | [读者](../role-based-access-control/built-in-roles.md#reader) | 服务操作（正式版） | 对部分服务信息进行受限访问。 在门户中，读取者角色可以访问服务“概述”页、“概要”部分和“监视”选项卡中的信息。在所有其他选项卡和页面中的访问权限受限制。 </br></br>此角色有权访问服务信息：资源组、服务状态、位置、订阅名称和 ID、标记、URL、定价层、副本、分区和搜索单位。 </br></br>此角色还有权访问服务指标：搜索延迟、受限制请求百分比、每秒平均查询数。 </br></br>无法访问 API 密钥、角色分配、内容（索引或同义词映射）或内容指标（使用的存储、对象数）。 |
-| [搜索服务参与者](../role-based-access-control/built-in-roles.md#search-service-contributor) | 服务操作（正式版），以及顶级对象和内容（预览版） | 此角色是服务级别的参与者的组合，但拥有在内容级别通过 [`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch) 对索引器、同义词映射、索引器、数据源和技能组执行所有操作的完全访问权限。 此角色适用于需要全面管理服务及其内容的搜索服务管理员。 要进行内容管理，必须注册预览版。 </br></br>与参与者一样，此角色的成员无法创建或管理角色分配，也无法更改授权选项。 |
+| [搜索服务参与者](../role-based-access-control/built-in-roles.md#search-service-contributor) | 服务操作（正式版），以及顶级对象（预览版） | 此角色是服务级别的参与者组合，但拥有通过 [`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch) 对索引、同义词映射、索引器、数据源和技能组执行所有操作的完全访问权限。 此角色适用于需要全面管理服务的搜索服务管理员。 </br></br>与参与者一样，此角色的成员无法创建或管理角色分配，也无法更改授权选项。 |
 | [搜索索引数据参与者](../role-based-access-control/built-in-roles.md#search-index-data-contributor) | 文档集合（预览版） | 提供对搜索服务上所有索引中的内容的完全访问权限。 此角色适用于需要导入、刷新或查询索引文档集合的开发人员或索引所有者。 |
 | [搜索索引数据读取者](../role-based-access-control/built-in-roles.md#search-index-data-reader) | 文档集合（预览版） | 提供对搜索服务上的搜索索引的只读访问权限。 此角色适用于运行查询的应用和用户。 |
 
@@ -82,7 +82,7 @@ Azure 为平台上运行的所有服务提供全局的[基于角色的访问控�
 
 1. 使用以下语法打开门户：[https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true)。
 
-1. 导航到搜索服务。
+1. 导航到你的搜索服务。
 
 1. 在左侧导航窗格中，选择“密钥”。
 
@@ -238,6 +238,8 @@ New-AzRoleAssignment -SignInName <email> `
 var tokenCredential =  new ClientSecretCredential(aadTenantId, aadClientId, aadSecret);
 SearchClient srchclient = new SearchClient(serviceEndpoint, indexName, tokenCredential);
 ```
+
+SDK 的 GitHub 存储库中提供了有关[在 Azure SDK for .NET 中使用 AAD 身份验证](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/identity/Azure.Identity)的更多详细信息。
 
 > [!NOTE]
 > 如果收到 403 错误，请验证搜索服务是否已在预览版计划中注册，以及是否为预览版角色分配配置了服务。

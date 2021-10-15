@@ -4,13 +4,13 @@ description: 介绍如何定义 Bicep 文件中的参数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: 901e95708be75ebd4415c90dbd51eeb46ba492c4
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 10/01/2021
+ms.openlocfilehash: b90fb108df58c41578bf9472390574b4bc174111
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450244"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363496"
 ---
 # <a name="parameters-in-bicep"></a>Bicep 中的参数
 
@@ -20,7 +20,11 @@ ms.locfileid: "123450244"
 
 每个参数都必需设置为[数据类型](data-types.md)之一。
 
-## <a name="minimal-declaration"></a>最小声明
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+若要详细了解参数并获得实际操作的指导，请参阅“Microsoft Learn”上的[使用参数构建可重用的 Bicep 模板](/learn/modules/build-reusable-bicep-templates-parameters)。
+
+## <a name="declaration"></a>声明
 
 每个参数需都要一个名称和类型。 参数不能与同一范围内的变量、资源、输出或其他参数同名。
 
@@ -32,56 +36,11 @@ param demoObject object
 param demoArray array
 ```
 
-## <a name="decorators"></a>修饰符
-
-参数对约束或元数据使用修饰器。 修饰器采用 `@expression` 格式，并放置在参数的声明上方。
-
-```bicep
-@expression
-param stgAcctName string
-```
-
-本文在下面的部分中演示如何使用 Bicep 文件中提供的修饰器。
-
-## <a name="secure-parameters"></a>安全参数
-
-可以将字符串或对象参数标记为安全。 安全参数的值不会保存到部署历史记录中，不会有日志记录。
-
-```bicep
-@secure()
-param demoPassword string
-
-@secure()
-param demoSecretObject object
-```
-
-## <a name="allowed-values"></a>允许的值
-
-可以为参数定义允许的值。 可在数组中提供允许的值。 如果为参数传入的值不是允许的值之一，则部署会在验证过程中失败。
-
-```bicep
-@allowed([
-  'one'
-  'two'
-])
-param demoEnum string
-```
-
 ## <a name="default-value"></a>默认值
 
 可以为参数指定默认值。 如果在部署过程中未提供值，则使用默认值。
 
 ```bicep
-param demoParam string = 'Contoso'
-```
-
-若要为参数指定默认值以及其他属性，请使用以下语法。
-
-```bicep
-@allowed([
-  'Contoso'
-  'Fabrikam'
-])
 param demoParam string = 'Contoso'
 ```
 
@@ -93,9 +52,58 @@ param location string = resourceGroup().location
 
 可以使用另一个参数值来生成默认值。 以下模板基于站点名称构造主机计划名称。
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterswithfunctions.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterswithfunctions.bicep" highlight="2":::
 
-## <a name="length-constraints"></a>长度约束
+## <a name="decorators"></a>修饰符
+
+参数对约束或元数据使用修饰器。 修饰器采用 `@expression` 格式，并放置在参数的声明上方。 你可以将参数标记为安全，指定允许的值，为字符串设置最小和最大长度，为整数设置最小值和最大值，并提供参数的说明。
+
+下面的示例演示了修饰器的两个常见用途。
+
+```bicep
+@secure()
+param demoPassword string
+
+@description('Must be at least Standard_A3 to support 2 NICs.')
+param virtualMachineSize string = 'Standard_DS1_v2'
+```
+
+修饰器位于 [sys 命名空间](bicep-functions.md#namespaces-for-functions)中。 如果需要将修饰器与具有相同名称的其他项区分开来，请在修饰器前面加上 `sys`。 例如，如果 Bicep 文件包含名为 `description` 的参数，则必须在使用说明修饰器时添加 sys 命名空间。
+
+```bicep
+@sys.description('The name of the instance.')
+param name string
+@sys.description('The description of the instance to display.')
+param description string
+```
+
+以下部分介绍了可用的修饰器。
+
+### <a name="secure-parameters"></a>安全参数
+
+可以将字符串或对象参数标记为安全。 安全参数的值不会保存到部署历史记录中，不会有日志记录。
+
+```bicep
+@secure()
+param demoPassword string
+
+@secure()
+param demoSecretObject object
+```
+
+### <a name="allowed-values"></a>允许的值
+
+可以为参数定义允许的值。 可在数组中提供允许的值。 如果为参数传入的值不是允许的值之一，则部署会在验证过程中失败。
+
+```bicep
+@allowed([
+  'one'
+  'two'
+])
+param demoEnum string
+```
+
+### <a name="length-constraints"></a>长度约束
 
 可以为字符串和数组参数指定最小和最大长度。 可以设置一个或两个约束。 对于字符串，长度指示字符数。 对于数组，长度指示数组中的项数。
 
@@ -111,7 +119,7 @@ param storageAccountName string
 param appNames array
 ```
 
-## <a name="integer-constraints"></a>整数约束
+### <a name="integer-constraints"></a>整数约束
 
 可以为整数参数设置最小值和最大值。 可以设置一个或两个约束。
 
@@ -121,7 +129,7 @@ param appNames array
 param month int
 ```
 
-## <a name="description"></a>说明
+### <a name="description"></a>说明
 
 若要帮助用户了解要提供的值，请向参数添加说明。 通过门户部署模板时，说明文本将自动用作该参数的提示。 仅当文本提供的信息超过可从参数名称推断出的信息时，才添加说明。
 

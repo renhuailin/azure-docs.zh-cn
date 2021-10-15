@@ -1,19 +1,20 @@
 ---
-title: 块 Blob 存储性能层 — Azure 存储
+title: 块 blob 存储的性能层
+titleSuffix: Azure Storage
 description: 介绍 Azure 块 Blob 存储的高级与标准性能层之间的差异。
 author: normesta
 ms.author: normesta
-ms.date: 05/17/2021
+ms.date: 09/23/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 222a0f3c327c476ef372117ff0734b6739faf9db
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1e0ac8784a8a4e5077d600b2582bc7ce3e7d981b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588687"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279177"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
 
@@ -53,7 +54,7 @@ Azure 块 Blob 存储提供两个不同的性能层：
 
 ## <a name="standard-performance"></a>标准性能
 
-标准性能支持不同的[访问层](storage-blob-storage-tiers.md)以最经济高效的方式存储数据。 它已针对大型数据集的高容量和高吞吐量进行了优化。
+标准性能支持不同的[访问层](access-tiers-overview.md)以最经济高效的方式存储数据。 它已针对大型数据集的高容量和高吞吐量进行了优化。
 
 - **备份和灾难恢复数据集**。 标准性能存储提供经济高效的层，使其成为短期和长期灾难恢复数据集、辅助备份与合规性数据存档的完美用例。
 

@@ -1,8 +1,9 @@
 ### YamlMime:Landing
-title: Azure 成本管理 + 计费文档
+title: 成本管理 + 计费文档
 summary: “成本管理 + 计费”可帮助你了解 Azure 发票（帐单）、管理计费帐户和订阅、监视和控制 Azure 支出，并优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
 metadata:
   title: 成本管理 + 计费
+  titleSuffix: Azure Cost Management + Billing documentation
   description: “成本管理 + 计费”可帮助你了解 Azure 发票（帐单）、管理计费帐户和订阅、监视和控制 Azure 支出，并优化资源使用。 了解如何分析成本、创建和管理预算、导出数据，以及查看建议并根据建议采取措施。
   ms.service: cost-management-billing
   ms.subservice: common
@@ -10,13 +11,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 10/07/2021
-  ms.openlocfilehash: 4dab44a6129c2e6bb6d810ec820cfb459ddb89df
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.date: 10/13/2021
+  ms.openlocfilehash: 50e8782d70e2c8d783c8079e7bd3fb48fcf9bb94
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129711255"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130000378"
 landingContent:
 - title: 分析成本
   linkLists:

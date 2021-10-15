@@ -8,12 +8,12 @@ ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e23ff2623f124c78fb665641ba1f113b044d075a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: c8a2ab0b904c60e2d1d1c44a9d596cf62d0403d6
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439813"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545998"
 ---
 # <a name="best-practices-for-scaling-provisioned-throughput-rus"></a>缩放预配吞吐量的最佳做法（RU/秒） 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,9 +33,13 @@ ms.locfileid: "123439813"
 - **异步纵向扩展**
     - 如果请求的 RU/秒高于物理分区布局支持的数量，Azure Cosmos DB 将拆分现有物理分区。 在资源具有支持请求的 RU/秒所需的最小分区数之前，会发生这种情况。 
     - 因此，操作可能需要一些时间才能完成，通常需要 4-6 小时。
- 
 每个物理分区最多可支持 10,000 RU/秒（适用于所有 API）的吞吐量和 50 GB 存储（适用于所有 API，具有 30 GB 存储的 Cassandra 除外）。 
 
+- **即时纵向缩减**
+    - 对于纵向缩减操作，Azure Cosmos DB 不需要拆分或添加新分区。 
+    - 因此，操作会立即完成，RU/秒可供使用， 
+    - 此操作的关键结果是每个分区范围的 RU 将减少。
+    
 ## <a name="how-to-scale-up-rus-without-changing-partition-layout"></a>如何在不更改分区布局的情况下纵向扩展 RU/秒
 
 ### <a name="step-1-find-the-current-number-of-physical-partitions"></a>步骤 1：查找当前物理分区数。 
@@ -45,7 +49,7 @@ ms.locfileid: "123439813"
 :::image type="content" source="media/scaling-provisioned-throughput-best-practices/number-of-physical-partitions.png" alt-text="按 PartitionKeyRangeID 图表统计规范化 RU 消耗量 (%) 中 PartitionKeyRangeId 的非重复数":::
 
 > [!NOTE]
-> 图表最多只显示 50 个 PartitionKeyRangeId。 如果资源超过 50 个，可以使用 [Azure Cosmos DB REST API](https://docs.microsoft.com/rest/api/cosmos-db/get-partition-key-ranges#example) 来统计分区总数。 
+> 图表最多只显示 50 个 PartitionKeyRangeId。 如果资源超过 50 个，可以使用 [Azure Cosmos DB REST API](/rest/api/cosmos-db/get-partition-key-ranges#example) 来统计分区总数。 
 
 每个 PartitionKeyRangeId 映射到一个物理分区，并分配用于保存一系列可能的哈希值的数据。 
 
@@ -147,7 +151,7 @@ Azure Cosmos DB 根据分区键跨逻辑分区和物理分区分布数据，以�
 
 如果我们使用自动缩放吞吐量或共享吞吐量数据库，要获得 25 个物理分区，我们首先预配 25 * 10,000 RU/秒 = 250,000 RU/秒。 由于我们已达到 25 个物理分区所能支持的最高 RU/秒，因此我们不会在进行数据引入之前进一步增加我们的预配 RU/秒。
  
-理论上，对于 250,000 RU/秒和 1 TB 的数据，如果我们假设需要 1-kb 文档和 10 RU 用于写入，理论上可以在以下时间内完成数据引入：1000 GB * (1,000,000 kb / 1 GB) * (1 个文档 / 1 kb) * (10 RU/文档) * (1 秒 / 150,000 RU) * (1 小时 / 3600 秒) = 11.1 小时。 
+理论上，对于 250,000 RU/秒和 1 TB 的数据，如果我们假设需要 1-kb 文档和 10 RU 用于写入，理论上可以在以下时间内完成数据引入：1000 GB * (1,000,000 kb / 1 GB) * (1 个文档 / 1 kb) * (10 RU/文档) * (1 秒 / 250,000 RU) * (1 小时 / 3600 秒) = 11.1 小时。 
 
 这个计算得到是一个估计值，假设执行数据引入的客户端可以使吞吐量完全饱和，并将写入分布到所有物理分区。 作为最佳做法，建议在客户端“混排”数据。 这可以确保在每一秒，客户端都在写入许多不同的逻辑（从而写入物理）分区。 
  

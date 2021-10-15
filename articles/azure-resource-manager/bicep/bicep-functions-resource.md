@@ -4,13 +4,13 @@ description: 介绍 Bicep 文件中用于检索有关资源的值的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 23d205f44b23b71f476f86d8d589f5d99a417a85
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 4cfbac80e9783dd9424a4b2ee63607fb6f2a7f17
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827540"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361909"
 ---
 # <a name="resource-functions-for-bicep"></a>Bicep 的资源函数
 
@@ -23,6 +23,8 @@ ms.locfileid: "124827540"
 `extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
 
 返回某个[扩展资源](../management/extension-resource-types.md)的资源 ID，该资源属于适用于其他资源的资源类型，是对其功能的补充。
+
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
 
 extensionResourceId 函数在 Bicep 文件中可用，但通常不需要它。 请改用资源的符号名称并访问 `id` 属性。
 
@@ -110,6 +112,8 @@ resource policyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01'
 
 密钥保管库必须将 `enabledForTemplateDeployment` 设置为 `true`。 部署 Bicep 文件的用户必须有权访问该机密。 有关详细信息，请参阅[在部署 Bicep 过程中使用 Azure Key Vault 传递安全参数值](key-vault-parameter.md)。
 
+不需要[命名空间限定符](bicep-functions.md#namespaces-for-functions)，因为此函数与资源类型配合使用。
+
 ### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
@@ -168,18 +172,20 @@ module sql './sql.bicep' = {
 
 `resourceName.list([apiVersion], [functionValues])`
 
-可以使用以 `list` 开头的操作为任何资源类型调用 list 函数。 以下是几个常见示例：`list`、`listKeys`、`listKeyValue` 和 `listSecrets`。 
+可以使用以 `list` 开头的操作为任何资源类型调用 list 函数。 以下是几个常见示例：`list`、`listKeys`、`listKeyValue` 和 `listSecrets`。
 
 此函数的语法因列表操作的名称而异。 返回的值也因操作而异。 Bicep 目前不支持 `list*` 函数的完成和验证。
 
-对于 Bicep 0.4.412 或更高版本，可以使用[访问器运算符](operators-access.md#function-accessor)调用 list 函数。 例如 `stg.listKeys()`。 
+对于 Bicep 0.4.412 或更高版本，可以使用[访问器运算符](operators-access.md#function-accessor)调用 list 函数。 例如 `stg.listKeys()`。
+
+不需要[命名空间限定符](bicep-functions.md#namespaces-for-functions)，因为此函数与资源类型配合使用。
 
 ### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| apiVersion |否 |string |如果未提供此参数，将使用资源的 API 版本。 仅当需要使用特定版本来运行函数时，才提供自定义 API 版本。 使用 yyyy-mm-dd 格式。 |
-| functionValues |否 |对象 (object) | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
+| apiVersion |否 |字符串 |如果未提供此参数，将使用资源的 API 版本。 仅当需要使用特定版本来运行函数时，才提供自定义 API 版本。 使用 yyyy-mm-dd 格式。 |
+| functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
 
@@ -264,12 +270,12 @@ sasToken: stg.listAccountSas('2021-04-01', accountSasProperties).accountSasToken
 | ------------- | ------------- |
 | Microsoft.Addons/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/authorization-server/list-secrets) |
-| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2020-06-01-preview/gateway/list-keys) |
-| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/identity-provider/list-secrets) |
-| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2020-06-01-preview/named-value/list-value) |
-| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/openid-connect-provider/list-secrets) |
-| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/subscription/list-secrets) |
+| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/authorization-server/list-secrets) |
+| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2021-04-01-preview/gateway/list-keys) |
+| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/identity-provider/list-secrets) |
+| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2021-04-01-preview/named-value/list-value) |
+| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/openid-connect-provider/list-secrets) |
+| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/subscription/list-secrets) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
 | Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringcloud/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
@@ -411,13 +417,15 @@ sasToken: stg.listAccountSas('2021-04-01', accountSasProperties).accountSasToken
 
 确定资源类型是否支持某一地区的区域。
 
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace | 是 | string | 要检查是否有区域支持的资源类型的资源提供程序命名空间。 |
-| resourceType | 是 | string | 要检查是否有区域支持的资源类型。 |
-| location | 是 | string | 要检查是否有区域支持的地区。 |
+| providerNamespace | 是 | 字符串 | 要检查是否有区域支持的资源类型的资源提供程序命名空间。 |
+| resourceType | 是 | 字符串 | 要检查是否有区域支持的资源类型。 |
+| location | 是 | 字符串 | 要检查是否有区域支持的地区。 |
 | numberOfZones | 否 | integer | 要返回的逻辑区域数。 默认值为 1。 该数字必须是 1 到 3 的正整数。  对于单区域资源，请使用 1。 对于多区域资源，该值必须小于或等于受支持区域的数量。 |
 | offset | 否 | integer | 起始逻辑区域的偏移量。 如果 offset 加上 numberOfZones 超过受支持区域的数量，函数将返回错误。 |
 
@@ -472,11 +480,15 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 提供程序函数已弃用。 我们不再建议使用它。 如果你使用了此函数来获取资源提供程序的 API 版本，建议在模板中提供特定的 API 版本。 如果版本之间的属性发生更改，则使用动态返回的 API 版本可能会破坏模板。
 
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
+
 ## <a name="reference"></a>reference
 
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 返回表示资源的运行时状态的对象。
+
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
 
 reference 函数在 Bicep 文件中可用，但通常不需要它。 请改用资源的符号名称。
 
@@ -519,6 +531,8 @@ output blobAddress string = stg.properties.primaryEndpoints.blob
 
 返回资源的唯一标识符。
 
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
+
 resourceId 函数在 Bicep 文件中可用，但通常不需要它。 请改用资源的符号名称并访问 `id` 属性。
 
 如果资源名称不确定或未设置在同一个 Bicep 文件中，请使用此函数。 返回的标识符的格式因部署是在资源组、订阅、管理组还是租户的范围内进行而不同。
@@ -559,6 +573,8 @@ output storageID string = stg.id
 `subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)`
 
 返回在订阅级别部署的资源的唯一标识符。
+
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
 
 subscriptionResourceId 函数在 Bicep 文件中可用，但通常不需要它。 请改用资源的符号名称并访问 `id` 属性。
 
@@ -619,6 +635,8 @@ resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-pr
 `tenantResourceId(resourceType, resourceName1, [resourceName2], ...)`
 
 返回在租户级别部署的资源的唯一标识符。
+
+命名空间：[az](bicep-functions.md#namespaces-for-functions)。
 
 tenantResourceId 函数在 Bicep 文件中可用，但通常不需要它。 请改用资源的符号名称并访问 `id` 属性。
 

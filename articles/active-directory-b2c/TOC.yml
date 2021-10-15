@@ -205,8 +205,6 @@
         - name: 资源所有者密码凭据策略
           href: add-ropc-policy.md
           displayName: ROPC
-        - name: 设置自助密码重置策略（已弃用）
-          href: user-flow-self-service-password-reset.md
         - name: 电话注册和登录
           href: phone-authentication-user-flows.md
     - name: 标识提供者
@@ -508,7 +506,7 @@
                   href: social-transformations.md
                 - name: StringCollection
                   href: stringcollection-transformations.md
-                - name: 字符串
+                - name: String
                   href: string-transformations.md
             - name: 谓词
               href: predicates.md

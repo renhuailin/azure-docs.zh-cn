@@ -1,22 +1,22 @@
 ---
-title: 存档层中的 Blob 解除冻结概述
+title: 从存档层解除冻结 Blob
 description: 当 Blob 位于存档访问层时，它被视为处于脱机状态，无法读取或修改。 若要读取或修改存档 Blob 中的数据，须先将 Blob 解除冻结到联机层，即热层或冷层。
 services: storage
 author: tamram
 ms.author: tamram
-ms.date: 08/31/2021
+ms.date: 09/29/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 2c4eac524ecda8a2b90036748fd2a6f2a389a3cd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 195238c6ef4191266a0f4b5dd481fbf24b70528f
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823733"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271814"
 ---
-# <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>存档层中的 Blob 解除冻结概述
+# <a name="blob-rehydration-from-the-archive-tier"></a>从存档层解除冻结 Blob
 
 当 Blob 位于存档访问层时，它被视为处于脱机状态，无法读取或修改。 若要读取或修改存档 Blob 中的数据，须先将 Blob 解除冻结到联机层，即热层或冷层。 提供两个选项解除冻结存储在存档层中的 Blob：
 
@@ -28,7 +28,7 @@ ms.locfileid: "124823733"
 
 可配置 [Azure 事件网格](../../event-grid/overview.md)，以在将 Blob 从存档层解除冻结到联机层时引发事件，并将事件发送到事件处理程序。 有关详细信息，请参阅[处理 Blob 解除冻结事件](#handle-an-event-on-blob-rehydration)。
 
-若要详细了解有关 Azure 存储中的访问层，请参阅 [Azure Blob 存储的访问层 - 热、冷以及存档](storage-blob-storage-tiers.md)。
+有关 Azure 存储中的访问层的详细信息，请参阅 [Blob 数据的热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 
 ## <a name="rehydration-priority"></a>解除冻结优先级
 
@@ -51,7 +51,7 @@ ms.locfileid: "124823733"
 
 对于大多数需要将 Blob 从存档层移动到联机层的方案中，Microsoft 均建议执行复制操作，原因如下：
 
-- 复制操作可避免在要求的 180 天期限到期之前更改存档层中的 Blob 层时评估的提前删除费用。 有关详细信息，请参阅[存档访问层](storage-blob-storage-tiers.md#archive-access-tier)。
+- 复制操作可避免在要求的 180 天期限到期之前更改存档层中的 Blob 层时评估的提前删除费用。 有关详细信息，请参阅[存档访问层](access-tiers-overview.md#archive-access-tier)。
 - 如果针对存储帐户存在一个有效的生命周期管理策略，则使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)解除冻结 Blob 后，会导致生命周期策略将 Blob 移回存档层的情况，因为上次的修改时间超出了此策略设置的阈值。 复制操作将源 Blob 保留在存档层中，并使用不同的名称和新的上次修改时间创建一个新的 Blob，这样，生命周期策略就不会将已解除冻结的 Blob 移回存档层。
 
 复制存档层中的 Blob 可能需要数小时才能完成，具体取决于所选的解除冻结优先级。 Blob 复制操作还会秘密读取已存档的源 Blob，从而在所选目标层中创建新的联机 Blob。 在解除冻结操作完成之前，列出父容器中的 Blob 时，可能会显示新的 Blob，但其层将设置为存档。对存档层中源 Blob 的读取操作完成且 Blob 的内容写入联机层中的新目标 Blob 之后，数据才可用。 新 Blob 是独立的副本，因此修改或删除它不会影响存档层中的源 Blob。
@@ -107,13 +107,13 @@ Azure 事件网格引发以下两个 Blob 解除冻结事件之一，具体取�
 
 使用[复制 Blob](/rest/api/storageservices/copy-blob) 或[从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url) 将存档 Blob 复制到联机层将按数据读取事务数和数据检索大小来计费。 在联机层中创建目标 Blob 将按数据写入事务数来计费。 复制到联机 Blob 时，不会产生提前删除费，因为源 Blob 在存档层中保持未修改状态。 如果选择此选项，则将支付高优先级检索费用。
 
-存档层中的 Blob 应至少存储 180 天。 在 180 天期限到期之前删除或更改存档 Blob 的层会产生提前删除费。 有关详细信息，请参阅[存档访问层](storage-blob-storage-tiers.md#archive-access-tier)。
+存档层中的 Blob 应至少存储 180 天。 在 180 天期限到期之前删除或更改存档 Blob 的层会产生提前删除费。 有关详细信息，请参阅[存档访问层](access-tiers-overview.md#archive-access-tier)。
 
 有关块 Blob 和数据解冻的定价详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。 有关出站数据传输费的详细信息，请参阅[数据传输定价详细信息](https://azure.microsoft.com/pricing/details/data-transfers/)。
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure Blob 存储：热、冷以及存档访问层](storage-blob-storage-tiers.md)。
+- [Blob 数据支持热访问层、冷访问层和存档访问层](access-tiers-overview.md)。
 - [将存档的 Blob 解冻到联机层](archive-rehydrate-to-online-tier.md)
 - [运行 Azure 函数以响应 Blob 解除冻结事件](archive-rehydrate-handle-event.md)
 - [响应 Blob 存储事件](storage-blob-event-overview.md)

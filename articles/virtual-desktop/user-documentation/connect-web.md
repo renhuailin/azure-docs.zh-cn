@@ -3,15 +3,15 @@ title: 使用 Web 客户端连接到 Azure 虚拟桌面 - Azure
 description: 如何使用 Web 客户端连接到 Azure 虚拟桌面。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2021
+ms.date: 09/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0c6e616b63587f46d9dfe73066147de428d0ee0c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3804714a1a21a482166fbf7d592f5ee094ce6a06
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469182"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359731"
 ---
 # <a name="connect-to-azure-virtual-desktop-with-the-web-client"></a>使用 Web 客户端连接到 Azure 虚拟桌面
 
@@ -24,15 +24,15 @@ Web 客户端允许从 Web 浏览器访问 Azure 虚拟桌面资源，而无需�
 >Web 客户端当前不支持移动操作系统。
 
 ## <a name="supported-operating-systems-and-browsers"></a>支持的操作系统和浏览器
+
 >[!IMPORTANT]
->从 2021 年 9 月 30 日开始，Azure 虚拟桌面 Web 客户端将不再支持 Internet Explorer 11。 建议转换为使用 Microsoft Edge 浏览器，而不是 Internet Explorer 11。 有关详细信息，请查看技术社区[博客文章](https://aka.ms/WVDSupportIE11)。
+>从 2021 年 9 月 30 日开始，Azure 虚拟桌面 Web 客户端将不再支持 Internet Explorer。 建议改用 Microsoft Edge 连接到 Web 客户端。 有关详细信息，请参阅我们的[博客文章](https://aka.ms/WVDSupportIE11)。
 
 尽管任何支持 HTML5 的浏览器都应该运行，但我们正式支持以下操作系统和浏览器。
 
 | 浏览者           | 支持的 OS                     | 说明               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
-| Internet Explorer | Windows                          | 版本 11 或更高版本 |
 | Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows、macOS、Linux            | 版本 55 或更高版本 |
 | Google Chrome     | Windows、macOS、Linux、Chrome OS |                     |

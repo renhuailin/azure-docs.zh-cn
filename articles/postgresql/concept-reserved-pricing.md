@@ -1,28 +1,28 @@
 ---
-title: 预留计算定价 - Azure Database for PostgreSQL - 单一服务器
+title: 预留计算定价 - Azure Database for PostgreSQL
 description: 使用预留容量为 Azure Database for PostgreSQL 计算资源预付费用
 author: mksuni
 ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 9b8dafa4a69358b3f6f09551ac426b908750e2f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/01/2021
+ms.openlocfilehash: 9d8c0a4f550442b59a65993aceba37a1672ce078
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735466"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389487"
 ---
-# <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>使用预留容量为 Azure Database for PostgreSQL - 单一服务器计算资源预付费用
+# <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>使用预留容量为 Azure Database for PostgreSQL 计算资源预付费用
 
 Azure Database for PostgreSQL 现在可以让你通过预付计算资源费用来节省资金（与即用即付价格相比）。 使用 Azure Database for PostgreSQL 预留容量，你可以提前承诺为期一年或三年的 PostgreSQL 服务器使用量，以获得可观的计算资源价格折扣。 若要购买 Azure Database for PostgreSQL 预留容量，需要指定 Azure 区域、部署类型、性能层和期限。 </br>
 
 不需要将预留容量分配到特定 Azure Database for PostgreSQL 服务器。 已在运行的或新部署的 Azure Database for PostgreSQL 会自动获得预留定价的权益。 购买预留容量便会预付为期一年或三年的计算资源费用。 购买预留容量后，与预留属性匹配的 Azure Database for PostgreSQL 计算资源费用不再按照即用即付的费率计收。 预留容量不包括与 PostgreSQL 数据库服务器关联的软件、网络或存储费用。 预留期限结束时，计费权益随即过期，Azure Database for PostgreSQL 将按即用即付价格计费。 虚拟机预留实例不自动续订。 有关定价信息，请参阅 [Azure Database for PostgreSQL 预留容量产品/服务](https://azure.microsoft.com/pricing/details/postgresql/)。 </br>
 
 > [!IMPORTANT]
-> 预留容量定价适用于[单一服务器](./overview.md#azure-database-for-postgresql---single-server)和[超大规模 Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) 部署选项中的 Azure Database for PostgreSQL。 有关超大规模 (Citus) RI 定价的信息，请参阅[此页面](concepts-hyperscale-reserved-pricing.md)。
+> 预留容量定价适用于[单一服务器](./overview.md#azure-database-for-postgresql---single-server)、[灵活服务器](flexible-server/overview.md)和[超大规模 Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) 部署选项中的 Azure Database for PostgreSQL。 有关超大规模 (Citus) RI 定价的信息，请参阅[此页面](concepts-hyperscale-reserved-pricing.md)。
 
-可在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for PostgreSQL 预留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买预留容量：
+可在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for PostgreSQL 预留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 若要购买预留容量：
 
 * 必须具有至少一个采用即用即付费率的企业或个人订阅的所有者角色。
 * 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
@@ -54,7 +54,7 @@ Azure Database for PostgreSQL 现在可以让你通过预付计算资源费用�
 | 字段 | 说明 |
 | :------------ | :------- |
 | 订阅   | 用于支付 Azure Database for PostgreSQL 预留容量预定费用的订阅。 订阅付款方式是收取 Azure Database for PostgreSQL 预留容量预订的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将按订阅上的信用卡或发票付款方式收取费用。
-| 范围 | vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： </br></br> “共享”，vCore 预留折扣将应用到计费上下文中任何订阅中运行的 Azure Database for PostgreSQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> “单个订阅”，vCore 预留折扣将应用到此订阅中的 Azure Database for PostgreSQL 服务器。 </br></br> “单个资源组”，预留折扣将应用到所选订阅中的 Azure Database for PostgreSQL 服务器，以及该订阅内的所选资源组。
+| 范围 | vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： </br></br> “共享”，vCore 预留折扣将应用到计费上下文中任何订阅中运行的 Azure Database for PostgreSQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br>“管理组”，预留折扣将应用于在同时属于管理组和计费范围的任何订阅中运行的 Azure Database for PostgreSQL。</br></br> “单个订阅”，vCore 预留折扣将应用到此订阅中的 Azure Database for PostgreSQL 服务器。 </br></br> “单个资源组”，预留折扣将应用到所选订阅中的 Azure Database for PostgreSQL 服务器，以及该订阅内的所选资源组。
 | 区域 | Azure Database for PostgreSQL 预留容量预定所涵盖的 Azure 区域。
 | 部署类型 | 要为其购买预留容量的 Azure Database for PostgreSQL 资源类型。
 | 性能层 | Azure Database for PostgreSQL 服务器的服务层。

@@ -12,12 +12,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: 7a7cd071d9b1a2f0a359c11a123914f451a35569
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a8b0e2d0183f29ebf9ecdee576abeca6acc1827c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690074"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229723"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>云中的新 DBA - 在迁移后管理 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -104,7 +104,7 @@ SQL 数据库中提供了两种身份验证方法：
 - [Azure Active Directory 身份验证](authentication-aad-overview.md)
 - [SQL 身份验证](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-不支持传统的 Windows 身份验证。 Azure Active Directory (Azure AD) 是集中式的标识和访问管理服务。 通过此服务可非常方便地为组织中的所有人员提供单一登录访问 (SSO)。 这意味着，为简化身份验证，凭据将在所有 Azure 服务之间共享。 
+不支持传统的 Windows 身份验证。 Azure Active Directory (Azure AD) 是集中式的标识和访问管理服务。 通过此服务可非常方便地为组织中的人员提供单一登录访问 (SSO)。 这意味着 Azure 服务共享凭据，身份验证更容易。
 
 Azure AD 支持 [Azure AD 多重身份验证](authentication-mfa-ssms-overview.md)，只需[点击几下鼠标](../../active-directory/hybrid/how-to-connect-install-express.md)，Azure AD 就能与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 只需提供用户名/密码，就能让用户在给定服务器上的任何数据库中进行身份验证。 此外，还允许 SQL 数据库和 Azure Synapse Analytics 在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
 

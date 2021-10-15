@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/21/2021
-ms.openlocfilehash: 9501c49bec8d2a632387ecb9b620dcbdc5a0ac1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5505350cffbda3b84e800b34be7094818fdb125c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751273"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230582"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL 托管实例审核入门
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -183,7 +183,7 @@ ms.locfileid: "121751273"
 
 5. 选择审核事件的目标：事件中心、Azure Monitor 日志或两者。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
-6. 单击“保存”  。
+6. 单击“保存” 。
 
     ![配置诊断设置](./media/auditing-configure/9_mi_configure_diagnostics.png)
 
@@ -238,9 +238,9 @@ ms.locfileid: "121751273"
 在审核 Azure SQL 托管实例和 SQL Server 中的数据库方面，主要差异是：
 
 - 使用 Azure SQL 托管实例，审核在服务器级别进行，并在 Azure Blob 存储中存储 `.xel` 日志文件。
-- 在 SQL Server 中，审核也在服务器级别执行，但在文件系统/Windows 事件日志中存储事件。
+- 在 SQL Server 中，审核在服务器级别工作，但在文件系统和 Windows 事件日志中存储事件。
 
-托管实例中的 XEvent 审核支持 Azure Blob 存储目标。 **不支持** 文件和 Windows 日志。
+托管实例中的 XEvent 审核支持 Azure Blob 存储目标。 不支持文件和 Windows 日志。
 
 Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 

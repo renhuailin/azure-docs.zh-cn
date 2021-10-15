@@ -4,69 +4,72 @@ description: 可在 Azure 监视器中为每种资源类型使用的指标的列
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 08/04/2021
+ms.date: 09/10/2021
 ms.author: robb
-ms.openlocfilehash: 4975d83773edba94676b7beeff166c6edb86248d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 15e8ea8c1622ec846d9ab36452d8982c1a64a084
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183468"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458142"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 
 > [!NOTE]
 > 此列表基本上是自动生成的。 通过 GitHub 对此列表所做的任何修改都可能在不发出警告的情况下进行改写。 请与本文的作者联系，以获取有关如何进行永久更新的详细信息。
 
-Azure 监视器提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 
+Azure Monitor 提供多种方式来与指标交互，包括在 Azure 门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 Azure CLI 查询指标。 
 
-本文列出了当前可用于 Azure Monitor 的合并指标管道的所有平台（即自动收集的）指标。 在本文顶部的日期之后更改或添加的指标可能尚未显示在下面。 要以编程方式查询和访问指标列表，请使用 [2018-01-01 API 版本](/rest/api/monitor/metricdefinitions)。 未在此列表列出的其他指标可在门户或旧版 API 中使用。
+本文列出了当前可用于 Azure Monitor 的合并指标管道的所有平台（即自动收集的）指标。 在本文顶部的日期之后更改或添加的指标可能尚未在列表中列出。 要以编程方式查询和访问指标列表，请使用 [2018-01-01 API 版本](/rest/api/monitor/metricdefinitions)。 未在此列表列出的其他指标可能会在门户或旧版 API 中列出。
 
 指标按资源提供程序和资源类型进行了组织。 有关服务和属于它们的资源提供程序和类型的列表，请参阅 [Azure 服务的资源提供程序](../../azure-resource-manager/management/azure-services-resource-providers.md)。  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>将平台指标导出到其他位置
 
-可以通过以下两种方式将平台指标从 Azure monitor 管道导出到其他位置。
-1. 使用[指标 REST API](/rest/api/monitor/metrics/list)
-2. 使用[诊断设置](../essentials/diagnostic-settings.md)将平台指标路由到以下位置： 
-    - Azure 存储
-    - Azure Monitor 日志（以及 Log Analytics）
-    - 事件中心，这是将它们连接到非 Microsoft 系统的方法 
+可以通过以下两种方式将平台指标从 Azure Monitor 管道导出到其他位置：
+
+- 使用[指标 REST API](/rest/api/monitor/metrics/list)。
+- 使用[诊断设置](../essentials/diagnostic-settings.md)将平台指标路由到以下位置： 
+    - Azure 存储。
+    - Azure Monitor 日志（以及 Log Analytics）。
+    - 事件中心，这是将它们连接到非 Microsoft 系统的方法。 
 
 使用诊断设置是路由指标的最简单方法，但存在一些限制： 
 
-- **无法导出某些指标** - 所有指标都可以使用 REST API 导出，但由于 Azure Monitor 后端的复杂性，有些指标无法使用诊断设置导出。 下表中的“可通过诊断设置导出”列列出了可以用这种方式导出的指标。  
+- **可导出性**。 所有指标都可通过 REST API 导出，但由于 Azure Monitor 后端的复杂性，某些指标无法通过诊断设置导出。 下表中的“可通过诊断设置导出”列列出了可以用这种方式导出的指标。  
 
-- **多维指标** - 当前不支持通过诊断设置将多维指标发送到其他位置。 多维指标将按平展后的单维指标导出，并跨维值聚合。 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
+- **多维指标**。 当前不支持通过诊断设置将多维指标发送到其他位置。 多维指标将按平展后的单维指标导出，并跨维值聚合。 
+
+  例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，指标通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 
 ## <a name="guest-os-and-host-os-metrics"></a>来宾 OS 和主机 OS 指标
 
-> [!WARNING]
-> 此处未列出在 Azure 虚拟机、Service Fabric 和云服务中运行的来宾操作系统（来宾 OS）的指标。 来宾 OS 指标必须通过一个或多个代理进行收集，这些代理在来宾操作系统上运行或作为来宾操作系统一部分运行。  来宾 OS 指标包括性能计数器，该性能计数器跟踪来宾 CPU 百分比或内存使用率，这两者经常用于自动缩放或警报功能。 
->
-> **下面列出了可用的主机 OS 指标。** 它们并不相同。 主机 OS 指标与托管来宾 OS 会话的 Hyper-V 会话相关。 
+此处未列出在 Azure 虚拟机、Service Fabric 和云服务中运行的来宾操作系统（来宾 OS）的指标。 来宾 OS 指标必须通过一个或多个代理进行收集，这些代理在来宾操作系统上运行或作为来宾操作系统一部分运行。 来宾 OS 指标包括性能计数器，该性能计数器跟踪来宾 CPU 百分比或内存使用率，这两者经常用于自动缩放或警报功能。 
+
+主机 OS 指标可供使用，已在表中列出。 主机 OS 指标与托管来宾 OS 会话的 Hyper-V 会话相关。 
 
 > [!TIP]
-> 最佳做法是使用并配置 Azure Monitor 代理，将来宾 OS 性能指标发送到存储平台指标的 Azure Monitor 指标数据库中。 该代理通过[自定义指标](../essentials/metrics-custom-overview.md) API 来路由来宾 OS 指标。 然后，你可以像使用平台指标那样，绘制图表、发送警报以及以其他方式使用来宾 OS 指标。 另外，还可以使用相同的代理将来宾 OS 指标发送到 Azure Monitor 日志。 在那里，你可以使用 Log Analytics 查询那些指标以及非指标数据。 
+> 最佳做法是使用并配置 Azure Monitor 代理，将来宾 OS 性能指标发送到存储平台指标的 Azure Monitor 指标数据库中。 该代理通过[自定义指标](../essentials/metrics-custom-overview.md) API 来路由来宾 OS 指标。 然后，你可以像使用平台指标那样，绘制图表、发送警报以及以其他方式使用来宾 OS 指标。 
+>
+> 另外，还可以使用相同的代理将来宾 OS 指标发送到 Azure Monitor 日志。 在那里，你可以使用 Log Analytics 查询这些指标以及非指标数据。 
 
-Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log Analytics 代理。 有关重要的其他信息，请参阅[监视代理概述](../agents/agents-overview.md)。
+Azure Monitor 代理替代了之前用于来宾 OS 路由的 Azure 诊断扩展和 Log Analytics 代理。 有关其他重要信息，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。
 
 ## <a name="table-formatting"></a>表格式
 
-> [!IMPORTANT] 
-> 此最新更新添加了一个新列，并将指标重新排序为字母顺序。 添加信息意味着下表可能在底部有一个水平滚动条，具体取决于浏览器窗口的宽度。 如果你认为缺少信息，可以使用滚动条查看整个表。
+此最新更新添加了一个新列，并将指标重新排序为字母顺序。 添加信息意味着下表可能在底部有一个水平滚动条，具体取决于浏览器窗口的宽度。 如果你认为缺少信息，可以使用滚动条查看整个表。
 
 
 ## <a name="microsoftaadiamazureadmetrics"></a>microsoft.aadiam/azureADMetrics
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ThrottledRequests|否|ThrottledRequests|计数|平均值|azureADMetrics 类型指标|无维度|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |CleanerCurrentPrice|是|内存:清理器当前价格|计数|平均值|内存的当前价格，$/字节/时间，标准化为 1000。|ServerResourceType|
 |CleanerMemoryNonshrinkable|是|内存:不可收缩的清理器内存|字节|平均值|不受后台清理器执行的清除影响的内存量（字节）。|ServerResourceType|
@@ -119,10 +122,11 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BackendDuration|是|后端请求持续时间|毫秒|平均值|后端请求持续时间（毫秒）|位置、主机名|
 |容量|是|容量|百分比|平均值|ApiManagement 服务的利用率指标。 注意：对于除“高级”以外的 SKU，“最大值”聚合将该值显示为 0。|位置|
+|ConnectionAttempts|是|WebSocket 连接尝试(预览)|计数|总计|基于所选源和目标进行 WebSocket 连接尝试的计数|Location, Source, Destination, State|
 |持续时间|是|网关请求的总持续时间|毫秒|平均值|网关请求的总持续时间，以毫秒为单位|位置、主机名|
 |EventHubDroppedEvents|是|删除的事件中心事件数|计数|总计|由于达到队列大小限制而跳过的事件数|位置|
 |EventHubRejectedEvents|是|拒绝的事件中心事件数|计数|总计|拒绝的事件中心事件（配置不当或未授权）数|位置|
@@ -139,11 +143,12 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |SuccessfulRequests|是|成功的网关请求数（已弃用）|计数|总计|成功的网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|位置、主机名|
 |TotalRequests|是|网关请求总数（已弃用）|计数|总计|网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|位置、主机名|
 |UnauthorizedRequests|是|未经授权的网关请求数（已弃用）|计数|总计|未经授权的网关请求数 - 请改用包含 GatewayResponseCodeCategory 维度的多维请求指标|位置、主机名|
+|WebSocketMessages|是|WebSocket 消息(预览)|计数|总计|基于所选源和目标的 WebSocket 消息计数|Location, Source, Destination|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |HttpIncomingRequestCount|是|HttpIncomingRequestCount|计数|计数|传入的 http 请求总数。|StatusCode, Authentication|
 |HttpIncomingRequestDuration|是|HttpIncomingRequestDuration|计数|平均值|http 请求延迟。|StatusCode, Authentication|
@@ -152,7 +157,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |active-timer-count|是|active-timer-count|计数|平均值|当前处于活动状态的计时器数|Deployment, AppName, Pod|
 |alloc-rate|是|alloc-rate|字节|平均值|托管堆中分配的字节数|Deployment, AppName, Pod|
@@ -169,6 +174,14 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |gen-1-size|是|gen-1-size|字节|平均值|第 1 代堆大小|Deployment, AppName, Pod|
 |gen-2-gc-count|是|gen-2-gc-count|计数|平均值|第 2 代 GC 数|Deployment, AppName, Pod|
 |gen-2-size|是|gen-2-size|字节|平均值|第 2 代堆大小|Deployment, AppName, Pod|
+|IngressBytesReceived|是|接收的字节数|字节|平均值|由 Azure Spring Cloud 从客户端接收的字节的计数|Hostname, HttpStatus|
+|IngressBytesReceivedRate|是|入口吞吐量(字节/秒)|每秒字节数|平均值|每秒由 Azure Spring Cloud 从客户端接收的字节数|Hostname, HttpStatus|
+|IngressBytesSent|是|发送的字节数|字节|平均值|由 Azure Spring Cloud 发送到客户端的字节的计数|Hostname, HttpStatus|
+|IngressBytesSentRate|是|出口吞吐量(字节/秒)|每秒字节数|平均值|每秒由 Azure Spring Cloud 发送到客户端的字节数|Hostname, HttpStatus|
+|IngressFailedRequests|是|失败的请求数|计数|平均值|由 Azure Spring Cloud 从客户端发出的失败请求的计数|Hostname, HttpStatus|
+|IngressRequests|是|请求|计数|平均值|由 Azure Spring Cloud 从客户端发出的请求的计数|Hostname, HttpStatus|
+|IngressResponseStatus|是|响应状态|计数|平均值|由 Azure Spring Cloud 返回的 HTTP 响应状态。 可以进一步对响应状态代码分布进行归类来显示 2xx、3xx、4xx 和 5xx 类别的响应|Hostname, HttpStatus|
+|IngressResponseTime|是|响应时间|秒|平均值|由 Azure Spring Cloud 返回的 http 响应时间|Hostname, HttpStatus|
 |jvm.gc.live.data.size|是|jvm.gc.live.data.size|字节|平均值|完全 GC 后的旧代内存池大小|Deployment, AppName, Pod|
 |jvm.gc.max.data.size|是|jvm.gc.max.data.size|字节|平均值|旧代内存池的最大大小|Deployment, AppName, Pod|
 |jvm.gc.memory.allocated|是|jvm.gc.memory.allocated|字节|最大值|运行一个 GC 之后、运行下一个 GC 之前，新代内存池大小增加的递增量|Deployment, AppName, Pod|
@@ -207,17 +220,19 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |total-requests|是|total-requests|计数|平均值|进程生存期内的请求总数|Deployment, AppName, Pod|
 |working-set|是|working-set|计数|平均值|进程所使用的工作集大小 (MB)|Deployment, AppName, Pod|
 
+
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |TotalJob|是|作业总数|计数|总计|作业总数|Runbook、状态|
 |TotalUpdateDeploymentMachineRuns|是|更新部署计算机运行总数|计数|总计|软件更新部署运行中的软件更新部署计算机运行总数|SoftwareUpdateConfigurationName、Status、TargetComputer、SoftwareUpdateConfigurationRunId|
 |TotalUpdateDeploymentRuns|是|更新部署运行总数|计数|总计|软件更新部署运行总数|SoftwareUpdateConfigurationName、Status|
 
-## <a name="microsoftavsprivateclouds"></a>Microsoft.AVS/privateClouds
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+## <a name="microsoftavsprivateclouds"></a>microsoft.avs/privateClouds
+
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |CapacityLatest|是|数据存储磁盘总容量|字节|平均值|数据存储中磁盘的总容量|dsname|
 |DiskUsedPercentage|是| 已使用的数据存储磁盘百分比|百分比|平均值|数据存储中使用的可用磁盘百分比|dsname|
@@ -228,9 +243,10 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |UsageAverage|是|内存使用率平均值|百分比|平均值|内存使用量占已配置或可用内存总量的百分比|clustername|
 |UsedLatest|是|使用的数据存储磁盘|字节|平均值|数据存储中使用的磁盘总量|dsname|
 
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |CoreCount|否|专用核心计数|计数|总计|批处理帐户中的专用核心总数|无维度|
 |CreatingNodeCount|否|正在创建的节点计数|计数|总计|正在创建的节点数目|无维度|
@@ -264,9 +280,10 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |UnusableNodeCount|否|不可用的节点计数|计数|总计|不可用的节点数目|无维度|
 |WaitingForStartTaskNodeCount|否|正在等待启动任务的节点计数|计数|总计|正在等待启动任务完成的节点数目|无维度|
 
+
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |活动核心数|是|活动核心数|计数|平均值|活动核心数|Scenario, ClusterName|
 |活动节点数|是|活动节点数|计数|平均值|正在运行的节点数目|Scenario, ClusterName|
@@ -284,9 +301,10 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |不可用的核心数|是|不可用的核心数|计数|平均值|不可用的核心数|Scenario, ClusterName|
 |不可用的节点数|是|不可用的节点数|计数|平均值|不可用的节点数目|Scenario, ClusterName|
 
+
 ## <a name="microsoftbingaccounts"></a>microsoft.bing/accounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BlockedCalls|是|阻止的调用数|计数|总计|超过速率或配额限制的调用数|ApiName、ServingRegion、StatusCode|
 |ClientErrors|是|客户端错误数|计数|总计|引发任何客户端错误（HTTP 状态代码 4xx）的调用数|ApiName、ServingRegion、StatusCode|
@@ -301,7 +319,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BroadcastProcessedCount|是|BroadcastProcessedCountDisplayName|计数|平均值|已处理的事务数。|Node, channel, type, status|
 |ChaincodeExecuteTimeouts|是|ChaincodeExecuteTimeoutsDisplayName|计数|平均值|已超时的链式代码执行（Init 或调用）数。|Node, chaincode|
@@ -387,7 +405,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftbotservicebotservices"></a>microsoft.botservice/botservices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |RequestLatency|是|请求延迟|毫秒|总计|服务器处理请求所用的时间|Operation, Authentication, Protocol, DataCenter|
 |RequestsTraffic|是|请求流量|百分比|计数|已发出的请求数|Operation, Authentication, Protocol, StatusCode, StatusCodeClass, DataCenter|
@@ -395,7 +413,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |allcachehits|是|缓存命中数(基于实例)|计数|总计|成功的键查找的数目。 如需了解详情，请访问 https://aka.ms/redis/metrics。|ShardId、端口、主要节点|
 |allcachemisses|是|缓存未命中数(基于实例)|计数|总计|失败的键查找的数目。 如需了解详情，请访问 https://aka.ms/redis/metrics。|ShardId、端口、主要节点|
@@ -598,7 +616,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcacheredisenterprise"></a>Microsoft.Cache/redisEnterprise
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |cachehits|是|缓存命中数|计数|总计||无维度|
 |cacheLatency|是|缓存延迟毫秒数（预览）|计数|平均值||InstanceId|
@@ -622,14 +640,14 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|是|Web 应用程序防火墙请求计数|计数|总计|Web 应用程序防火墙所处理的客户端请求数|PolicyName, RuleName, Action|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ByteHitRatio|是|字节命中率|百分比|平均值|这是缓存提供的总字节数与总响应字节数的比率|端点|
 |OriginHealthPercentage|是|源运行状况百分比|百分比|平均值|从 AFDX 到后端的成功运行状况探测的百分比。|Origin, OriginGroup|
@@ -646,7 +664,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |Disk Read Bytes/Sec|否|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|RoleInstanceId|
 |磁盘读取操作次数/秒|是|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|RoleInstanceId|
@@ -659,7 +677,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |Disk Read Bytes/Sec|否|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|无维度|
 |磁盘读取操作次数/秒|是|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|无维度|
@@ -672,7 +690,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft.ClassicStorage/storageAccounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication|
 |流出量|是|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType, ApiName, Authentication|
@@ -685,7 +703,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft.ClassicStorage/storageAccounts/blobServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication|
 |BlobCapacity|否|Blob 容量|字节|平均值|存储帐户的 Blob 服务使用的存储量（以字节为单位）。|BlobType、Tier|
@@ -701,7 +719,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft.ClassicStorage/storageAccounts/fileServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication, FileShare|
 |流出量|是|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType, ApiName, Authentication, FileShare|
@@ -719,7 +737,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft.ClassicStorage/storageAccounts/queueServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication|
 |流出量|是|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType, ApiName, Authentication|
@@ -734,7 +752,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft.ClassicStorage/storageAccounts/tableServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication|
 |流出量|是|流出量|字节|总计|流出的数据量（以字节为单位）。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。|GeoType, ApiName, Authentication|
@@ -749,7 +767,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcloudtesthostedpools"></a>Microsoft.Cloudtest/hostedpools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |已分配|是|已分配|计数|平均值|分配的资源|PoolId, SKU, Images, ProviderName|
 |AllocationDurationMs|是|AllocationDurationMs|毫秒|平均值|分配请求所用的平均时间（毫秒）|PoolId, Type, ResourceRequestType, Image|
@@ -765,7 +783,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcloudtestpools"></a>Microsoft.Cloudtest/pools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |已分配|是|已分配|计数|平均值|分配的资源|PoolId, SKU, Images, ProviderName|
 |AllocationDurationMs|是|AllocationDurationMs|毫秒|平均值|分配请求所用的平均时间（毫秒）|PoolId, Type, ResourceRequestType, Image|
@@ -781,7 +799,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftclusterstornodes"></a>Microsoft.ClusterStor/nodes
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |TotalCapacityAvailable|否|TotalCapacityAvailable|字节|平均值|lustre 文件系统中可用的总容量|filesystem_name, category, system|
 |TotalCapacityUsed|否|TotalCapacityUsed|字节|平均值|lustre 文件系统中已用的总容量|filesystem_name, category, system|
@@ -791,44 +809,66 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
+|AudioSecondsTranscribed|是|转录的音频秒数|计数|总计|转录的秒数|ApiName, FeatureName, UsageChannel, Region|
+|AudioSecondsTranslated|是|转换的音频秒数|计数|总计|转换的秒数|ApiName, FeatureName, UsageChannel, Region|
 |BlockedCalls|是|阻止的调用数|计数|总计|超过速率或配额限制的调用数。|ApiName、OperationName、Region|
-|CharactersTrained|是|训练的字符数|计数|总计|训练的字符总数。|ApiName、OperationName、Region|
-|CharactersTranslated|是|转换的字符|计数|总计|传入的文本请求中的字符总数。|ApiName、OperationName、Region|
+|CharactersTrained|是|训练的字符数(已弃用)|计数|总计|训练的字符总数。|ApiName、OperationName、Region|
+|CharactersTranslated|是|转换的字符数(已弃用)|计数|总计|传入的文本请求中的字符总数。|ApiName、OperationName、Region|
 |ClientErrors|是|客户端错误数|计数|总计|引发客户端错误（HTTP 响应代码 4xx）的调用数。|ApiName、OperationName、Region|
+|ComputerVisionTransactions|是|计算机视觉事务|计数|总计|计算机视觉事务数|ApiName, FeatureName, UsageChannel, Region|
+|CustomVisionTrainingTime|是|自定义视觉训练时间|秒|总计|自定义视觉训练时间|ApiName, FeatureName, UsageChannel, Region|
+|CustomVisionTransactions|是|自定义视觉事务|计数|总计|自定义视觉预测事务数|ApiName, FeatureName, UsageChannel, Region|
 |DataIn|是|数据输入|字节|总计|传入数据的大小（字节）。|ApiName、OperationName、Region|
 |DataOut|是|数据输出|字节|总计|传出数据的大小（字节）。|ApiName、OperationName、Region|
+|DocumentCharactersTranslated|是|转换的文档字符数|计数|总计|文档翻译请求中的字符数。|ApiName, FeatureName, UsageChannel, Region|
+|DocumentCustomCharactersTranslated|是|转换的文档自定义字符数|计数|总计|自定义文档翻译请求中的字符数。|ApiName, FeatureName, UsageChannel, Region|
+|FaceImagesTrained|是|训练的人脸图像|计数|总计|训练的图像数。 每个事务训练 1,000 个图像。|ApiName, FeatureName, UsageChannel, Region|
+|FacesStored|是|存储的人脸|计数|总计|存储的人脸数，每日按比例计算。 每日报告存储的人脸数。|ApiName, FeatureName, UsageChannel, Region|
+|FaceTransactions|是|人脸事务|计数|总计|对人脸服务进行 API 调用的数量|ApiName, FeatureName, UsageChannel, Region|
+|ImagesStored|是|存储的图像|计数|总计|存储的自定义视觉图像数。|ApiName, FeatureName, UsageChannel, Region|
 |延迟|是|延迟|毫秒|平均值|延迟（毫秒）。|ApiName、OperationName、Region|
 |LearnedEvents|是|已了解的事件数|计数|总计|已了解的事件数。|IsMatchBaseline, Mode, RunId|
-|MatchedRewards|是|匹配的奖励数|计数|总计| 匹配的奖励数。|Mode, RunId|
+|LUISSpeechRequests|是|LUIS 语音请求|计数|总计|LUIS 语音转意向理解请求数|ApiName, FeatureName, UsageChannel, Region|
+|LUISTextRequests|是|LUIS 文本请求|计数|总计|LUIS 文本请求数|ApiName, FeatureName, UsageChannel, Region|
+|MatchedRewards|是|匹配的奖励数|计数|总计|匹配的奖励数。|Mode, RunId|
+|NumberofSpeakerProfiles|是|说话人配置文件数|计数|总计|注册的说话人配置文件数。 每小时按比例计算。|ApiName, FeatureName, UsageChannel, Region|
 |ObservedRewards|是|观察到的奖励数|计数|总计|观察到的奖励数。|Mode, RunId|
-|ProcessedCharacters|是|已处理的字符数|计数|总计|字符数。|ApiName, FeatureName, UsageChannel, Region|
+|ProcessedCharacters|是|已处理的字符数|计数|总计|沉浸式阅读器处理的字符数。|ApiName, FeatureName, UsageChannel, Region|
+|ProcessedHealthTextRecords|是|处理的运行状况文本记录|计数|总计|处理的运行状况文本记录数|ApiName, FeatureName, UsageChannel, Region|
+|ProcessedImages|是|已处理的图像|计数|总计|处理的图像数|ApiName, FeatureName, UsageChannel, Region|
+|ProcessedPages|是|处理的页面|计数|总计|处理的页面数|ApiName, FeatureName, UsageChannel, Region|
 |ProcessedTextRecords|是|已处理的文本记录数|计数|总计|文本记录的计数。|ApiName, FeatureName, UsageChannel, Region|
 |ServerErrors|是|服务器错误数|计数|总计|引发服务内部错误（HTTP 响应代码 5xx）的调用数。|ApiName、OperationName、Region|
-|SpeechSessionDuration|是|语音会话持续时间|秒|总计|语音会话的总持续时间（以秒计）。|ApiName、OperationName、Region|
+|SpeakerRecognitionTransactions|是|说话人辨识事务|计数|总计|说话人辨识事务数|ApiName, FeatureName, UsageChannel, Region|
+|SpeechModelHostingHours|是|语音模型托管时间|计数|总计|语音模型托管时间数|ApiName, FeatureName, UsageChannel, Region|
+|SpeechSessionDuration|是|语音会话持续时间(已弃用)|秒|总计|语音会话的总持续时间（以秒计）。|ApiName、OperationName、Region|
 |SuccessfulCalls|是|成功调用数|计数|总计|成功调用数。|ApiName、OperationName、Region|
 |SynthesizedCharacters|是|Synthesized Characters|计数|总计|字符数。|ApiName, FeatureName, UsageChannel, Region|
+|TextCharactersTranslated|是|转换的文本字符数|计数|总计|传入的文本翻译请求中的字符数。|ApiName, FeatureName, UsageChannel, Region|
+|TextCustomCharactersTranslated|是|转换的文本自定义字符数|计数|总计|传入的自定义文本翻译请求中的字符数。|ApiName, FeatureName, UsageChannel, Region|
+|TextTrainedCharacters|是|训练的文本字符数|计数|总计|使用文本翻译训练的字符数。|ApiName, FeatureName, UsageChannel, Region|
 |TotalCalls|是|总调用数|计数|总计|调用总数。|ApiName、OperationName、Region|
 |TotalErrors|是|错误总数|计数|总计|引发错误响应（HTTP 响应代码 4xx 或 5xx）的调用总数。|ApiName、OperationName、Region|
 |TotalTokenCalls|是|令牌调用总数|计数|总计|令牌调用的总数。|ApiName、OperationName、Region|
-|TotalTransactions|是|总事务|计数|总计|事务总数。|无维度|
+|TotalTransactions|是|总事务(已弃用)|计数|总计|事务总数。|无维度|
 |VoiceModelHostingHours|是|语音模型托管小时|计数|总计|小时数。|ApiName, FeatureName, UsageChannel, Region|
 |VoiceModelTrainingMinutes|是|语音模型训练分钟|计数|总计|分钟数。|ApiName, FeatureName, UsageChannel, Region|
 
 
 ## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft.Communication/CommunicationServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |APIRequestAuthentication|否|身份验证 API 请求数|计数|计数|针对通信服务身份验证终结点的所有请求的计数。|Operation, StatusCode, StatusCodeClass|
 |APIRequestChat|是|聊天 API 请求数|计数|计数|针对通信服务聊天终结点的所有请求的计数。|Operation, StatusCode, StatusCodeClass|
-|APIRequestSMS|是|短信 API 请求数|计数|计数|针对通信服务短信终结点的所有请求的计数。|Operation, StatusCode, StatusCodeClass|
+|APIRequestSMS|是|短信 API 请求数|计数|计数|针对通信服务短信终结点的所有请求的计数。|Operation, StatusCode, StatusCodeClass, ErrorCode|
 
 
 ## <a name="microsoftcomputecloudservices"></a>Microsoft.Compute/cloudServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用内存字节数|是|可用内存字节数（预览版）|字节|平均值|可立即分配给进程或供虚拟机中的系统使用的物理内存量（以字节为单位）|RoleInstanceId, RoleId|
 |磁盘读取字节数|是|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节数|RoleInstanceId, RoleId|
@@ -842,7 +882,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcomputecloudservicesroles"></a>Microsoft.Compute/cloudServices/roles
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用内存字节数|是|可用内存字节数（预览版）|字节|平均值|可立即分配给进程或供虚拟机中的系统使用的物理内存量（以字节为单位）|RoleInstanceId, RoleId|
 |磁盘读取字节数|是|磁盘读取字节数|字节|总计|监视期间从磁盘读取的字节数|RoleInstanceId, RoleId|
@@ -856,7 +896,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcomputedisks"></a>microsoft.compute/disks
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |复合磁盘读取字节数/秒|否|磁盘读取字节数/秒（预览版）|字节|平均值|在监视期间每秒从磁盘读取的字节数，请注意，此指标处于预览版阶段，在正式发布之前可能会发生更改|无维度|
 |复合磁盘读取操作数/秒|否|磁盘读取操作数/秒（预览版）|字节|平均值|监视期间在磁盘上执行的读取 IO 数，请注意，此指标处于预览版阶段，在正式发布之前可能会发生更改|无维度|
@@ -866,7 +906,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用内存字节数|是|可用内存字节数（预览版）|字节|平均值|可立即分配给进程或供虚拟机中的系统使用的物理内存量（以字节为单位）|无维度|
 |已用 CPU 信用额度|是|已用 CPU 信用额度|计数|平均值|虚拟机使用的总信用点数。 仅在 B 系列可突发 VM 上可用|无维度|
@@ -918,11 +958,12 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |已使用的 VM 缓存 IOPS 的百分比|是|已使用的 VM 缓存 IOPS 的百分比|百分比|平均值|VM 使用的缓存磁盘 IOPS 的百分比|无维度|
 |已使用的 VM 非缓存带宽百分比|是|已使用的 VM 非缓存带宽百分比|百分比|平均值|VM 使用的未缓存磁盘带宽的百分比|无维度|
 |已使用的 VM 未缓存 IOPS 的百分比|是|已使用的 VM 未缓存 IOPS 的百分比|百分比|平均值|VM 使用的未缓存磁盘 IOPS 的百分比|无维度|
+|VmAvailabilityMetric|是|VM 可用性指标(预览)|计数|平均值|虚拟机在一段时间的可用性度量值。 注意：此指标目前仅可供一小部分客户预览，因为我们优先考虑提高数据质量和一致性。 随着数据标准的改进，我们将分阶段广泛推出此功能。|无维度|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用内存字节数|是|可用内存字节数（预览版）|字节|平均值|可立即分配给进程或供虚拟机中的系统使用的物理内存量（以字节为单位）|VMName|
 |已用 CPU 信用额度|是|已用 CPU 信用额度|计数|平均值|虚拟机使用的总信用点数。 仅在 B 系列可突发 VM 上可用|无维度|
@@ -978,7 +1019,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
-|度量值|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|度量值|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用内存字节数|是|可用内存字节数（预览版）|字节|平均值|可立即分配给进程或供虚拟机中的系统使用的物理内存量（以字节为单位）|无维度|
 |已用 CPU 信用额度|是|已用 CPU 信用额度|计数|平均值|虚拟机使用的总信用点数。 仅在 B 系列可突发 VM 上可用|无维度|
@@ -1034,7 +1075,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftconnectedvehicleplatformaccounts"></a>Microsoft.ConnectedVehicle/platformAccounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ClaimsProviderRequestLatency|是|声明请求执行时间|毫秒|平均值|对客户声明提供程序终结点的请求的平均执行时间（以毫秒为单位）。|VehicleId, DeviceName|
 |ClaimsProviderRequests|是|声明提供程序请求|计数|总计|对声明提供程序的请求数|VehicleId, DeviceName|
@@ -1050,7 +1091,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |CpuUsage|是|CPU 使用率|计数|平均值|所有核心的 CPU 使用率（以 millicore 为单位）。|containerName|
 |MemoryUsage|是|内存用量|字节|平均值|总内存使用量（以字节为单位）。|containerName|
@@ -1060,7 +1101,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AgentPoolCPUTime|是|AgentPool CPU Time|秒|总计|代理池 CPU 时间，以秒为单位|无维度|
 |RunDuration|是|运行持续时间|毫秒|总计|运行持续时间，以毫秒为单位|无维度|
@@ -1073,7 +1114,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |apiserver_current_inflight_requests|否|进行中的请求数|计数|平均值|上一秒每个请求类型在 apiserver 上使用的进行中的请求数最大值|requestKind|
 |cluster_autoscaler_cluster_safe_to_autoscale|否|群集运行状况|计数|平均值|确定群集自动缩放程序是否会对群集执行操作|无维度|
@@ -1099,7 +1140,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |FailedRequests|是|失败的请求数|计数|总计|获取自定义资源提供程序的可用日志|HttpMethod, CallPath, StatusCode|
 |SuccessfullRequests|是|成功的请求数|计数|总计|自定义提供程序发出的成功请求|HttpMethod, CallPath, StatusCode|
@@ -1107,7 +1148,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft.DataBoxEdge/dataBoxEdgeDevices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AvailableCapacity|是|可用容量|字节|平均值|报告期间可用容量(以字节为单位)。|无维度|
 |BytesUploadedToCloud|是|已上传的云字节数（设备）|字节|平均值|报告期间从设备上传到 Azure 的总字节数。|无维度|
@@ -1125,7 +1166,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdatacollaborationworkspaces"></a>Microsoft.DataCollaboration/workspaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |DataAssetCount|是|创建的数据资产数|计数|最大值|已创建的数据资产数|DataAssetName|
 |PipelineCount|是|创建的管道数|计数|最大值|已创建的管道数|PipelineName|
@@ -1135,7 +1176,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |FailedRuns|是|失败的运行次数|计数|总计||pipelineName、activityName|
 |SuccessfulRuns|是|成功的运行次数|计数|总计||pipelineName、activityName|
@@ -1143,7 +1184,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActivityCancelledRuns|是|已取消的活动运行指标数|计数|总计||ActivityType、PipelineName、FailureType、Name|
 |ActivityFailedRuns|是|失败的活动运行数指标|计数|总计||ActivityType、PipelineName、FailureType、Name|
@@ -1176,7 +1217,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |JobAUEndedCancelled|是|已取消的 AU 时间|秒|总计|取消的作业的总 AU 时间。|无维度|
 |JobAUEndedFailure|是|失败的 AU 时间|秒|总计|失败作业的总 AU 时间。|无维度|
@@ -1189,7 +1230,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |DataRead|是|读取的数据量|字节|总计|从帐户中读取的数据总量。|无维度|
 |DataWritten|是|写入的数据量|字节|总计|写入帐户的数据总量。|无维度|
@@ -1200,7 +1241,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |FailedShareSubscriptionSynchronizations|是|接收到的共享失败快照数|计数|计数|帐户中共享接收失败快照数|无维度|
 |FailedShareSynchronizations|是|共享发送失败快照数|计数|计数|帐户中共享发送失败快照数|无维度|
@@ -1212,7 +1253,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |active_connections|是|活动连接数|计数|平均值|活动连接数|无维度|
 |backup_storage_used|是|已用的备份存储|字节|平均值|已用的备份存储|无维度|
@@ -1233,11 +1274,13 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft.DBforMySQL/flexibleServers
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |aborted_connections|是|已中止的连接数|计数|总计|已中止的连接数|无维度|
 |active_connections|是|活动连接数|计数|最大值|活动连接数|无维度|
 |backup_storage_used|是|使用的备份存储|字节|最大值|使用的备份存储|无维度|
+|cpu_credits_consumed|是|已用 CPU 信用额度|计数|最大值|已用 CPU 信用额度|无维度|
+|cpu_credits_remaining|是|剩余 CPU 信用额度|计数|最大值|剩余 CPU 信用额度|无维度|
 |cpu_percent|是|主机 CPU 百分比|百分比|最大值|主机 CPU 百分比|无维度|
 |io_consumption_percent|是|IO 百分比|百分比|最大值|IO 百分比|无维度|
 |memory_percent|是|主机内存百分比|百分比|最大值|主机内存百分比|无维度|
@@ -1253,7 +1296,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |active_connections|是|活动连接数|计数|平均值|活动连接数|无维度|
 |backup_storage_used|是|已用的备份存储|字节|平均值|已用的备份存储|无维度|
@@ -1274,7 +1317,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |active_connections|是|活动连接数|计数|平均值|活动连接数|无维度|
 |backup_storage_used|是|使用的备份存储|字节|平均值|使用的备份存储|无维度|
@@ -1301,7 +1344,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft.DBForPostgreSQL/serverGroupsv2
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |active_connections|是|活动连接数|计数|平均值|活动连接数|ServerName|
 |cpu_percent|是|CPU 百分比|百分比|平均值|CPU 百分比|ServerName|
@@ -1315,7 +1358,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |active_connections|是|活动连接数|计数|平均值|活动连接数|无维度|
 |backup_storage_used|是|使用的备份存储|字节|平均值|使用的备份存储|无维度|
@@ -1337,7 +1380,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |active_connections|是|活动连接数|计数|平均值|活动连接数|无维度|
 |cpu_percent|是|CPU 百分比|百分比|平均值|CPU 百分比|无维度|
@@ -1351,14 +1394,14 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdeviceselasticpools"></a>Microsoft.Devices/ElasticPools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |elasticPool.requestedUsageRate|是|请求的使用率|百分比|平均值|请求的使用率|无维度|
 
 
 ## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft.Devices/ElasticPools/IotHubTenants
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |c2d.commands.egress.abandon.success|是|丢弃的 C2D 消息数|计数|总计|设备丢弃的云到设备消息数|无维度|
 |c2d.commands.egress.complete.success|是|已完成的 C2D 消息传递次数|计数|总计|设备成功完成的云到设备消息传递次数|无维度|
@@ -1388,10 +1431,10 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |d2c.endpoints.latency.serviceBusQueues|是|路由：服务总线队列的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入服务总线队列终结点之间的平均延迟（毫秒）|无维度|
 |d2c.endpoints.latency.serviceBusTopics|是|路由：服务总线主题的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入服务总线主题终结点之间的平均延迟（毫秒）|无维度|
 |d2c.endpoints.latency.storage|是|路由：存储的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入存储终结点之间的平均延迟（毫秒）。|无维度|
-|d2c.telemetry.egress.dropped|是|路由：已丢弃的遥测消息数|计数|总计|由于终结点消亡，IoT 中心路由删除消息的次数。 此值不会统计已传送到回退路由的消息，因为已删除的消息不会传送到回退路由。|无维度|
+|d2c.telemetry.egress.dropped|是|路由：遥测消息删除次数 |计数|总计|由于终结点消亡，IoT 中心路由删除消息的次数。 此值不会统计已传送到回退路由的消息，因为已删除的消息不会传送到回退路由。|无维度|
 |d2c.telemetry.egress.fallback|是|路由：消息传送到回退路由的次数|计数|总计|IoT 中心路由将消息传送到与回退路由关联的终结点的次数。|无维度|
 |d2c.telemetry.egress.invalid|是|路由：遥测消息不兼容|计数|总计|消息由于与终结点不兼容而无法由 IoT 中心路由传送的次数。 此值不包括重试次数。|无维度|
-|d2c.telemetry.egress.orphaned|是|路由：已孤立的遥测消息数|计数|总计|由于消息不匹配任何传递规则（包括回退规则），IoT 中心路由孤立消息的次数。|无维度|
+|d2c.telemetry.egress.orphaned|是|路由：遥测消息孤立次数 |计数|总计|消息由于与任何路由规则（包括回退规则）都不匹配而被 IoT 中心路由孤立的次数。 |无维度|
 |d2c.telemetry.egress.success|是|路由：遥测消息传送次数|计数|总计|使用 IoT 中心路由将消息成功传送到所有终结点的次数。 如果某条消息已路由到多个终结点，则每成功传送一次，此值就会加 1。 如果某条消息多次路由到同一终结点，则每成功传送一次，此值就会加 1。|无维度|
 |d2c.telemetry.ingress.allProtocol|是|遥测消息发送尝试次数|计数|总计|尝试发送到 IoT 中心的、设备到云的遥测消息数|无维度|
 |d2c.telemetry.ingress.sendThrottle|是|限制错误数|计数|总计|由于设备吞吐量限制而导致的限制错误数|无维度|
@@ -1433,7 +1476,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |c2d.commands.egress.abandon.success|是|丢弃的 C2D 消息数|计数|总计|设备丢弃的云到设备消息数|无维度|
 |c2d.commands.egress.complete.success|是|已完成的 C2D 消息传递次数|计数|总计|设备成功完成的云到设备消息传递次数|无维度|
@@ -1507,7 +1550,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AttestationAttempts|是|证明尝试次数|计数|总计|已尝试的设备证明次数|ProvisioningServiceName、Status、Protocol|
 |DeviceAssignments|是|已分配设备|计数|总计|已分配给 IoT 中心的设备数|ProvisioningServiceName、IotHubName|
@@ -1516,7 +1559,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft.DigitalTwins/digitalTwinsInstances
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ApiRequests|是|API 请求|计数|总计|为数字孪生读取、写入、删除和查询操作发出的 API 请求数。|Operation, Authentication, Protocol, StatusCode, StatusCodeClass, StatusText|
 |ApiRequestsFailureRate|是|API 请求失败率|百分比|平均值|服务收到的针对实例的 API 请求数的百分比，这些请求返回数字孪生读取、写入、删除和查询操作的内部错误 (500) 响应代码。|Operation, Authentication, Protocol|
@@ -1536,11 +1579,11 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/DatabaseAccounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AddRegion|是|添加的区域数|计数|计数|添加的区域数|区域|
 |AutoscaleMaxThroughput|否|Autoscale Max Throughput|计数|最大值|自动缩放最大吞吐量|DatabaseName、CollectionName|
-|AvailableStorage|否|（已弃用）Available Storage|字节|总计|“可用存储”将于 2023 年 9 月底从 Azure Monitor 中删除。 Cosmos DB 集合存储大小目前是无限制的。 唯一的限制是每个逻辑分区键的存储大小是 20GB。 可以在诊断日志中启用 PartitionKeyStatistics，了解顶部分区键的存储消耗量。 有关 Cosmos DB 存储配额的详细信息，请查看此文档：[https://docs.microsoft.com/azure/cosmos-db/concepts-limits](/azure/cosmos-db/concepts-limits)。 在弃用之后，仍在已弃用指标上定义的其余警报规则将在提交弃用日期后自动禁用。|CollectionName、DatabaseName、Region|
+|AvailableStorage|否|（已弃用）Available Storage|字节|总计|“可用存储”将于 2023 年 9 月底从 Azure Monitor 中删除。 Cosmos DB 集合存储大小目前是无限制的。 唯一的限制是每个逻辑分区键的存储大小是 20GB。 可以在诊断日志中启用 PartitionKeyStatistics，了解顶部分区键的存储消耗量。 有关 Cosmos DB 存储配额的详细信息，请查看此文档 [Azure Cosmos DB 服务配额](../../cosmos-db/concepts-limits.md)。 在弃用之后，仍在已弃用指标上定义的其余警报规则将在提交弃用日期后自动禁用。|CollectionName、DatabaseName、Region|
 |CassandraConnectionClosures|否|Cassandra 连接关闭数|计数|总计|已关闭的 Cassandra 连接数，按 1 分钟粒度报告|APIType, Region, ClosureReason|
 |CassandraConnectorAvgReplicationLatency|否|Cassandra Connector Average ReplicationLatency|毫秒|平均值|Cassandra 连接器平均复制延迟|无维度|
 |CassandraConnectorReplicationHealthStatus|否|Cassandra Connector Replication Health Status|计数|计数|Cassandra 连接器复制运行状况|NotStarted, ReplicationInProgress, Error|
@@ -1617,7 +1660,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AdvancedFilterEvaluationCount|是|高级筛选器评估|计数|总计|跨此主题的事件订阅评估的高级筛选器总数。|Topic, EventSubscriptionName, DomainEventSubscriptionName|
 |DeadLetteredCount|是|死信事件数|计数|总计|与此事件订阅匹配的死信事件总数|Topic, EventSubscriptionName, DomainEventSubscriptionName, DeadLetterReason|
@@ -1633,7 +1676,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|是|死信事件数|计数|总计|与此事件订阅匹配的死信事件总数|DeadLetterReason|
 |DeliveryAttemptFailCount|否|发送失败的事件数|计数|总计|未能发送到此事件订阅的事件总数|Error, ErrorType|
@@ -1645,7 +1688,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft.EventGrid/extensionTopics
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |PublishFailCount|是|发布失败的事件数|计数|总计|未能发布到此主题的事件总数|ErrorType, Error|
 |PublishSuccessCount|是|发布的事件数|计数|总计|发布到此主题的事件总数|无维度|
@@ -1655,7 +1698,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventgridpartnernamespaces"></a>Microsoft.EventGrid/partnerNamespaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|是|死信事件数|计数|总计|与此事件订阅匹配的死信事件总数|DeadLetterReason、EventSubscriptionName|
 |DeliveryAttemptFailCount|否|发送失败的事件数|计数|总计|未能发送到此事件订阅的事件总数|Error, ErrorType, EventSubscriptionName|
@@ -1671,7 +1714,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventgridpartnertopics"></a>Microsoft.EventGrid/partnerTopics
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AdvancedFilterEvaluationCount|是|高级筛选器评估|计数|总计|跨此主题的事件订阅评估的高级筛选器总数。|EventSubscriptionName|
 |DeadLetteredCount|是|死信事件数|计数|总计|与此事件订阅匹配的死信事件总数|DeadLetterReason、EventSubscriptionName|
@@ -1687,7 +1730,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AdvancedFilterEvaluationCount|是|高级筛选器评估|计数|总计|跨此主题的事件订阅评估的高级筛选器总数。|EventSubscriptionName|
 |DeadLetteredCount|是|死信事件数|计数|总计|与此事件订阅匹配的死信事件总数|DeadLetterReason、EventSubscriptionName|
@@ -1704,7 +1747,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AdvancedFilterEvaluationCount|是|高级筛选器评估|计数|总计|跨此主题的事件订阅评估的高级筛选器总数。|EventSubscriptionName|
 |DeadLetteredCount|是|死信事件数|计数|总计|与此事件订阅匹配的死信事件总数|DeadLetterReason、EventSubscriptionName|
@@ -1721,7 +1764,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventhubclusters"></a>Microsoft.EventHub/clusters
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActiveConnections|否|ActiveConnections|计数|平均值|Microsoft.EventHub 的活动连接总数。|无维度|
 |AvailableMemory|否|可用内存|百分比|最大值|事件中心群集的可用内存，以总内存量的百分比表示。|角色|
@@ -1746,7 +1789,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActiveConnections|否|ActiveConnections|计数|平均值|Microsoft.EventHub 的活动连接总数。|无维度|
 |CaptureBacklog|否|捕获积压工作(backlog)。|计数|总计|捕获有关 Microsoft.EventHub 的积压工作(backlog)。|EntityName|
@@ -1786,7 +1829,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |CategorizedGatewayRequests|是|已分类的网关请求数|计数|总计|按类别（1xx/2xx/3xx/4xx/5xx）统计的网关请求数|HttpStatus|
 |GatewayRequests|是|网关请求数|计数|总计|网关请求数|HttpStatus|
@@ -1808,7 +1851,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|服务的可用率。|无维度|
 |CosmosDbCollectionSize|是|Cosmos DB 集合大小|字节|总计|后备 Cosmos DB 集合的大小（以字节为单位）。|无维度|
@@ -1823,9 +1866,6 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |IoTConnectorMeasurementIngestionLatencyMs|是|分组阶段平均延迟|毫秒|平均值|IoT 连接器收到设备数据到 FHIR 转换阶段处理数据之间的时间段。|Operation, ConnectorName|
 |IoTConnectorNormalizedEvent|是|规范化消息数|计数|Sum|从适用于 FHIR 的 Azure IoT 连接器的规范化阶段中输出的已映射规范化值的总数。|Operation, ConnectorName|
 |IoTConnectorTotalErrors|是|Total Error Count|计数|Sum|适用于 FHIR 的 Azure IoT 连接器记录的错误总数|Name, Operation, ErrorType, ErrorSeverity, ConnectorName|
-|ServiceApiErrors|是|服务错误|计数|Sum|服务生成的内部服务器错误总数。|Protocol, Authentication, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
-|ServiceApiLatency|是|服务延迟|毫秒|平均值|服务的响应延迟。|Protocol, Authentication, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
-|ServiceApiRequests|是|Service Requests|计数|Sum|服务接收的请求总数。|Protocol, Authentication, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalErrors|是|错误总数|计数|Sum|服务遇到的内部服务器错误总数。|Protocol, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalLatency|是|总延迟|毫秒|平均值|服务的响应延迟。|协议|
 |TotalRequests|是|请求总数|计数|Sum|服务接收的请求总数。|协议|
@@ -1833,34 +1873,34 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofthealthcareapisworkspacesiotconnectors"></a>Microsoft.HealthcareApis/workspaces/iotconnectors
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |DeviceEvent|是|传入消息数|计数|Sum|在进行任何规范化之前，适用于 FHIR 的 Azure IoT 连接器接收到的消息总数。|Operation, ResourceName|
 |DeviceEventProcessingLatencyMs|是|规范化阶段平均延迟|毫秒|平均值|从事件的引入时间到事件完成规范化处理的时间之间的平均时间。|Operation, ResourceName|
-|IoTConnectorTotalErrors|是|Total Error Count|计数|Sum|适用于 FHIR 的 Azure IoT 连接器记录的错误总数|Name, Operation, ErrorType, ErrorSeverity, ResourceName|
 |度量|是|度量数|计数|Sum|适用于 FHIR 的 Azure IoT 连接器的 FHIR 转换阶段接收到的规范化值读数的数目。|Operation, ResourceName|
 |MeasurementGroup|是|消息分组数|计数|Sum|FHIR 转换阶段生成的类型、设备、患者和配置时间段中的唯一度量分组总数。|Operation, ResourceName|
 |MeasurementIngestionLatencyMs|是|分组阶段平均延迟|毫秒|平均值|IoT 连接器收到设备数据到 FHIR 转换阶段处理数据之间的时间段。|Operation, ResourceName|
 |NormalizedEvent|是|规范化消息数|计数|Sum|从适用于 FHIR 的 Azure IoT 连接器的规范化阶段中输出的已映射规范化值的总数。|Operation, ResourceName|
+|TotalErrors|是|Total Error Count|计数|Sum|适用于 FHIR 的 Azure IoT 连接器记录的错误总数|Name, Operation, ErrorType, ErrorSeverity, ResourceName|
 
 
 ## <a name="microsofthybridnetworknetworkfunctions"></a>microsoft.hybridnetwork/networkfunctions
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |HyperVVirtualProcessorUtilization|是|CPU 平均利用率|百分比|平均值|一分钟间隔内虚拟 CPU 使用率的总平均百分比。 虚拟 CPU 的总数基于 SKU 定义中的用户配置值。 可以基于 SKU 中定义的 RoleName 应用进一步的筛选。|InstanceName|
 
 
 ## <a name="microsofthybridnetworkvirtualnetworkfunctions"></a>microsoft.hybridnetwork/virtualnetworkfunctions
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |HyperVVirtualProcessorUtilization|是|CPU 平均利用率|百分比|平均值|一分钟间隔内虚拟 CPU 使用率的总平均百分比。 虚拟 CPU 的总数基于 SKU 定义中的用户配置值。 可以基于 SKU 中定义的 RoleName 应用进一步的筛选。|InstanceName|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>microsoft.insights/autoscalesettings
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |MetricThreshold|是|指标阈值|计数|平均值|自动缩放运行时已配置的自动缩放阈值。|MetricTriggerRule|
 |ObservedCapacity|是|观察到的容量|计数|平均值|自动缩放执行时报告的容量。|无维度|
@@ -1870,7 +1910,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|是|可用性|百分比|平均值|已成功完成的可用性测试百分比|availabilityResult/name、availabilityResult/location|
 |availabilityResults/count|否|可用性测试|计数|计数|可用性测试计数|availabilityResult/name, availabilityResult/location, availabilityResult/success|
@@ -1888,7 +1928,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |exceptions/server|否|服务器异常|计数|计数|服务器应用程序中引发的未捕获的异常计数。|cloud/roleName, cloud/roleInstance|
 |pageViews/count|是|页面视图|计数|计数|页面视图计数。|operation/synthetic, cloud/roleName|
 |pageViews/duration|是|页面视图加载时间|毫秒|平均值|页面视图加载时间|operation/synthetic, cloud/roleName|
-|performanceCounters/exceptionsPerSecond|是|异常率|每秒计数|平均值|报告给窗口的已处理和未处理的异常的计数，这些异常包括 .NET 异常和转换为 .NET 异常的非托管异常。|cloud/roleInstance|
+|performanceCounters/exceptionsPerSecond|是|异常率|每秒计数|平均值|报告给 Windows 的已处理和未处理的异常的计数，这些异常包括 .NET 异常和转换为 .NET 异常的非托管异常。|cloud/roleInstance|
 |performanceCounters/memoryAvailableBytes|是|可用内存|字节|平均值|可立刻供进程或系统使用的物理内存。|cloud/roleInstance|
 |performanceCounters/processCpuPercentage|是|进程 CPU|百分比|平均值|所有进程线程使用处理器执行指令所用的运行时间的百分比。 介于 0 到 100 之间。 此指标仅表示 w3wp 进程的性能。|cloud/roleInstance|
 |performanceCounters/processIOBytesPerSecond|是|进程 IO 率|每秒字节数|平均值|每秒读取和写入文件、网络和设备的总字节数。|cloud/roleInstance|
@@ -1906,7 +1946,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |c2d.commands.failure|是|失败命令调用数|Count|总计|从 IoT Central 发起的所有失败命令请求计数|无维度|
 |c2d.commands.requestSize|是|命令调用的请求大小|字节|总计|从 IoT Central 发起的所有命令请求的请求大小|无维度|
@@ -1934,7 +1974,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>microsoft.keyvault/managedhsms
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|否|总体服务可用性|百分比|平均值|服务请求可用性|ActivityType, ActivityName, StatusCode, StatusCodeClass|
 |ServiceApiHit|是|服务 API 命中总计|计数|计数|服务 API 命中总数|ActivityType, ActivityName|
@@ -1943,7 +1983,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|保管库整体可用性|百分比|平均值|保管库请求可用性|ActivityType, ActivityName, StatusCode, StatusCodeClass|
 |SaturationShoebox|否|保管库整体饱和度|百分比|平均值|已使用的保管库容量|ActivityType, ActivityName, TransactionType|
@@ -1954,14 +1994,14 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftkubernetesconnectedclusters"></a>microsoft.kubernetes/connectedClusters
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |capacity_cpu_cores|是|已连接群集中的 cpu 内核总数|计数|总计|已连接群集中的 cpu 内核总数|无维度|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BatchBlobCount|是|Batch Blob Count|计数|平均值|聚合批处理中用于引入的数据源数。|数据库|
 |BatchDuration|是|Batch Duration|秒|平均值|引入流中聚合阶段的持续时间。|数据库|
@@ -1973,7 +2013,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |CacheUtilization|是|缓存利用率|百分比|平均值|群集范围内的使用率级别|无维度|
 |CacheUtilizationFactor|是|缓存利用率因子|百分比|平均值|当前实例数与最佳实例数（根据缓存利用率确定）之间的差额百分比|无维度|
 |ContinuousExportMaxLatenessMinutes|是|连续导出最大延迟|计数|最大值|群集中连续导出作业报告的延迟（分钟）|无维度|
-|ContinuousExportNumOfRecordsExported|是|连续导出 - 已导出的记录数|计数|总计|导出的记录数，在导出操作期间对每个写入的存储项目激发|ContinuousExportName, Database|
+|ContinuousExportNumOfRecordsExported|是|连续导出 – 导出的记录数|计数|总计|导出的记录数，在导出操作期间对每个写入的存储项目激发|ContinuousExportName, Database|
 |ContinuousExportPendingCount|是|连续导出挂起计数|计数|最大值|做好执行准备的挂起的连续导出作业数|无维度|
 |ContinuousExportResult|是|连续导出结果|计数|计数|指示连续导出是成功还是失败|ContinuousExportName, Result, Database|
 |CPU|是|CPU|百分比|平均值|CPU 使用率级别|无维度|
@@ -1984,7 +2024,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |EventsReceived|是|接收的事件数|计数|总计|数据连接接收的事件数。|ComponentType、ComponentName|
 |ExportUtilization|是|导出利用率|百分比|最大值|导出利用率|无维度|
 |IngestionLatencyInSeconds|是|引入延迟|秒|平均值|引入数据的延迟，根据从群集中收到数据，到数据可供查询的时间来测得。 引入延迟周期决于引入方案。|无维度|
-|IngestionResult|是|引入结果|计数|总计|失败或成功被引入的源的总数。 按状态拆分指标，你可以获取有关引入操作状态的详细信息。|IngestionResultDetails、FailureKind|
+|IngestionResult|是|引入结果|计数|总计|失败或成功被引入的源的总数。 通过按状态拆分指标，你可获取有关引入操作状态的详细信息。|IngestionResultDetails、FailureKind|
 |IngestionUtilization|是|引入利用率|百分比|平均值|群集中已使用引入槽的比率|无维度|
 |IngestionVolumeInMB|是|引入量|字节|总计|引入群集的数据总量|数据库|
 |InstanceCount|是|实例计数|计数|平均值|实例总计数|无维度|
@@ -2015,7 +2055,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/IntegrationServiceEnvironments
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActionLatency|是|操作延迟 |秒|平均值|已完成的工作流操作的延迟。|无维度|
 |ActionsCompleted|是|完成的操作数 |计数|总计|已完成的工作流操作数目。|无维度|
@@ -2048,7 +2088,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/Workflows
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActionLatency|是|操作延迟 |秒|平均值|已完成的工作流操作的延迟。|无维度|
 |ActionsCompleted|是|完成的操作数 |计数|总计|已完成的工作流操作数目。|无维度|
@@ -2088,7 +2128,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |活动核心数|是|活动核心数|计数|平均值|活动核心数|Scenario, ClusterName|
 |活动节点数|是|活动节点数|计数|平均值|活动节点数。 这些节点是正在运行作业的节点。|Scenario, ClusterName|
@@ -2146,7 +2186,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft.Maps/accounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|API 可用性|ApiCategory, ApiName|
 |CreatorUsage|否|创建者使用情况|字节|平均值|Azure Maps 创建者使用情况统计信息|ServiceName|
@@ -2155,7 +2195,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AssetCount|是|资产计数|计数|平均值|已在当前媒体服务帐户中创建的资产数量|无维度|
 |AssetQuota|是|资产配额|计数|平均值|当前媒体服务帐户允许的资产数量|无维度|
@@ -2175,7 +2215,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftmediamediaservicesliveevents"></a>Microsoft.Media/mediaservices/liveEvents
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |IngestBitrate|是|实时事件引入比特率|BitsPerSecond|平均值|实时事件的传入比特率引入（以位/秒为单位）。|TrackName|
 |IngestDriftValue|是|实时事件引入偏移值|秒|最大值|引入内容的时间戳与系统时钟之间的偏移量（以秒/分钟为单位）。 非零值表示引入内容的到达时间晚于系统时钟时间。|TrackName|
@@ -2185,7 +2225,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft.Media/mediaservices/streamingEndpoints
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |CPU|是|CPU 使用率|百分比|平均值|高级流式处理终结点的 CPU 使用率。 此数据不可用于标准流式处理终结点。|无维度|
 |流出量|是|流出量|字节|总计|流出的数据量（以字节为单位）。|OutputFormat|
@@ -2194,9 +2234,16 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |SuccessE2ELatency|是|成功端到端延迟|毫秒|平均值|成功请求的平均延迟（以毫秒为单位）。|OutputFormat|
 
 
+## <a name="microsoftmediavideoanalyzers"></a>Microsoft.Media/videoanalyzers
+
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|---|
+|ReceivedBytes|是|接收的字节数|字节|总计|管道节点接收的字节数。|PipelineTopology, Pipeline, Node|
+
+
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft.MixedReality/remoteRenderingAccounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActiveRenderingSessions|是|活动渲染会话数|计数|平均值|活动渲染会话总数|SessionType, SDKVersion|
 |AssetsConverted|是|已转换资产数|计数|总计|已转换资产总数|SDKVersion|
@@ -2204,7 +2251,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftmixedrealityspatialanchorsaccounts"></a>Microsoft.MixedReality/spatialAnchorsAccounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AnchorsCreated|是|创建的定位点数|计数|总计|已创建的定位点数目|DeviceFamily, SDKVersion|
 |AnchorsDeleted|是|删除的定位点数|计数|总计|已删除的定位点数目|DeviceFamily, SDKVersion|
@@ -2216,7 +2263,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |VolumePoolAllocatedSize|是|Pool Allocated Size|字节|平均值|此池的预配大小|无维度|
 |VolumePoolAllocatedToVolumeThroughput|是|池分配的吞吐量|每秒字节数|平均值|属于该池的所有卷的总吞吐量|无维度|
@@ -2228,7 +2275,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/volumes
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AverageReadLatency|是|平均读取延迟|毫秒|平均值|每个操作的平均读取延迟（毫秒）|无维度|
 |AverageWriteLatency|是|平均写入延迟|毫秒|平均值|每个操作的平均写入延迟（毫秒）|无维度|
@@ -2261,7 +2308,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ApplicationGatewayTotalTime|否|应用程序网关总时间|毫秒|平均值|处理请求和发送响应平均花费的时间。 此时间按特定的平均时间间隔（从应用程序网关接收第一个 HTTP 请求字节到完成响应发送操作所需的时间）来计算。 必须注意，这通常包括应用程序网关处理时间、请求和响应数据包遍历网络的时间，以及后端服务器做出响应所花费的时间。|侦听器|
 |AvgRequestCountPerHealthyHost|否|每个正常主机每分钟的请求数|计数|平均值|池中每个正常后端主机每分钟的平均请求计数|BackendSettingsPool|
@@ -2295,7 +2342,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ApplicationRuleHit|是|应用程序规则命中次数|计数|总计|应用程序规则的命中次数|Status、Reason、Protocol|
 |DataProcessed|是|已处理的数据|字节|总计|此防火墙处理的数据总量|无维度|
@@ -2307,7 +2354,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkbastionhosts"></a>microsoft.network/bastionHosts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |pingmesh|否|Bastion 通信状态|计数|平均值|如果所有通信正常，则通信状态显示 1；如果不正常，则显示 0。|无维度|
 |会话|否|会话计数|计数|总计|Bastion 的会话计数。 按总计和每个实例查看。|host|
@@ -2318,7 +2365,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.Network/connections
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BitsInPerSecond|是|BitsInPerSecond|BitsPerSecond|平均值|每秒流入 Azure 的位数|无维度|
 |BitsOutPerSecond|是|BitsOutPerSecond|BitsPerSecond|平均值|每秒流出 Azure 的位数|无维度|
@@ -2326,7 +2373,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |QueryVolume|否|查询量|计数|总计|为 DNS 区域提供服务的查询数|无维度|
 |RecordSetCapacityUtilization|否|记录集容量使用率|百分比|最大值|DNS 区域利用的记录集容量的百分比|无维度|
@@ -2335,7 +2382,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ArpAvailability|是|Arp 可用性|百分比|平均值|从 MSEE 到所有对等方的 ARP 可用性。|PeeringType, Peer|
 |BgpAvailability|是|Bgp 可用性|百分比|平均值|从 MSEE 到所有对等方的 BGP 可用性。|PeeringType, Peer|
@@ -2349,7 +2396,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BitsInPerSecond|是|BitsInPerSecond|BitsPerSecond|平均值|每秒流入 Azure 的位数|无维度|
 |BitsOutPerSecond|是|BitsOutPerSecond|BitsPerSecond|平均值|每秒流出 Azure 的位数|无维度|
@@ -2357,7 +2404,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft.Network/expressRouteGateways
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|否|BitsInPerSecond|BitsPerSecond|平均值|每秒流入 Azure 的位数|ConnectionName|
 |ErGatewayConnectionBitsOutPerSecond|否|BitsOutPerSecond|BitsPerSecond|平均值|每秒流出 Azure 的位数|ConnectionName|
@@ -2371,7 +2418,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft.Network/expressRoutePorts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AdminState|是|AdminState|计数|平均值|端口的管理状态|链接|
 |LineProtocol|是|LineProtocol|计数|平均值|端口的线路协议状态|链接|
@@ -2383,7 +2430,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BackendHealthPercentage|是|后端运行状况百分比|百分比|平均值|从 HTTP/S 代理到后端，成功运行状况探测的百分比|Backend, BackendPool|
 |BackendRequestCount|是|后端请求计数|计数|总计|从 HTTP/S 代理发送到后端的请求数|HttpStatus, HttpStatusGroup, Backend|
@@ -2398,7 +2445,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AllocatedSnatPorts|否|Allocated SNAT Ports|计数|平均值|时间段内已分配的 SNAT 端口总数|FrontendIPAddress、BackendIPAddress、ProtocolType、IsAwaitingRemoval|
 |ByteCount|是|字节计数|字节|总计|时间段内传输的字节总数|FrontendIPAddress, FrontendPort, Direction|
@@ -2412,7 +2459,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworknatgateways"></a>Microsoft.Network/natGateways
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ByteCount|是|字节|字节|总计|时间段内传输的字节总数|Protocol, Direction|
 |DatapathAvailability|是|数据路径可用性（预览版）|计数|平均值|NAT 网关数据路径可用性|无维度|
@@ -2424,7 +2471,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BytesReceivedRate|是|接收的字节数|字节|总计|网络接口接收的字节数|无维度|
 |BytesSentRate|是|发送的字节数|字节|总计|网络接口发送的字节数|无维度|
@@ -2434,7 +2481,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft.Network/networkWatchers/connectionMonitors
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AverageRoundtripMs|是|平均值往返时间（毫秒）（经典）|毫秒|平均值|源和目标之间发送的连接监视探测的平均网络往返时间（毫秒）|无维度|
 |ChecksFailedPercent|是|检查失败百分比|百分比|平均值|连接监视检查失败百分比|SourceAddress、SourceName、SourceResourceId、SourceType、Protocol、DestinationAddress、DestinationName、DestinationResourceId、DestinationType、DestinationPort、TestGroupName、TestConfigurationName、SourceIP、DestinationIP、SourceSubnet、DestinationSubnet|
@@ -2445,7 +2492,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkp2svpngateways"></a>microsoft.network/p2svpngateways
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |P2SBandwidth|是|网关 P2S 带宽|每秒字节数|平均值|网关的点到站点连接带宽（字节/秒）|实例|
 |P2SConnectionCount|是|P2S 连接计数|计数|总计|网关的点到站点连接计数|Protocol, Instance|
@@ -2454,7 +2501,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkprivatednszones"></a>Microsoft.Network/privateDnsZones
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |QueryVolume|是|查询量|计数|总计|为专用 DNS 区域提供的查询数|无维度|
 |RecordSetCapacityUtilization|否|记录集容量使用率|百分比|最大值|专用 DNS 区域使用的记录集容量的百分比|无维度|
@@ -2467,7 +2514,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkprivateendpoints"></a>Microsoft.Network/privateEndpoints
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |PEBytesIn|否|传入字节|计数|总计|传出字节总数|无维度|
 |PEBytesOut|否|传出字节|计数|总计|传出字节总数|无维度|
@@ -2475,7 +2522,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkprivatelinkservices"></a>Microsoft.Network/privateLinkServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |PLSBytesIn|是|传入字节|计数|总计|传出字节总数|PrivateLinkServiceId|
 |PLSBytesOut|是|传出字节|计数|总计|传出字节总数|PrivateLinkServiceId|
@@ -2484,7 +2531,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ByteCount|是|字节计数|字节|总计|时间段内传输的字节总数|Port、Direction|
 |BytesDroppedDDoS|是|丢弃的入站字节 DDoS|每秒字节数|最大值|丢弃的入站字节 DDoS|无维度|
@@ -2516,7 +2563,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|是|按终结点显示的终结点状态|计数|最大值|如果终结点的探测状态为“已启用”，则值为 1；否则，值为 0。|EndpointName|
 |QpsByEndpoint|是|按终结点返回的查询|计数|总计|给定时间范围内返回流量管理器终结点的次数|EndpointName|
@@ -2524,7 +2571,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkvirtualhubs"></a>Microsoft.Network/virtualHubs
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BgpPeerStatus|否|BGP 对等方状态|计数|最大值|1 - 已连接，0 - 未连接|routeserviceinstance, bgppeerip, bgppeertype|
 |CountOfRoutesAdvertisedToPeer|否|播发到对等方的路由计数|计数|最大值|播发到对等方的路由总数|routeserviceinstance, bgppeerip, bgppeertype|
@@ -2533,7 +2580,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>microsoft.network/virtualnetworkgateways
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AverageBandwidth|是|网关 S2S 带宽|每秒字节数|平均值|网关的站点到站点连接带宽（字节/秒）|实例|
 |BgpPeerStatus|否|BGP 对等方状态|计数|平均值|BGP 对等方的状态|BgpPeerAddress, Instance|
@@ -2573,7 +2620,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BytesDroppedDDoS|是|丢弃的入站字节 DDoS|每秒字节数|最大值|丢弃的入站字节 DDoS|ProtectedIPAddress|
 |BytesForwardedDDoS|是|转发的入站字节 DDoS|每秒字节数|最大值|转发的入站字节 DDoS|ProtectedIPAddress|
@@ -2603,14 +2650,14 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnetworkvirtualrouters"></a>Microsoft.Network/virtualRouters
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |PeeringAvailability|是|Bgp 可用性|百分比|平均值|VirtualRouter 和远程对等方之间的 BGP 可用性|对等|
 
 
 ## <a name="microsoftnetworkvpngateways"></a>microsoft.network/vpngateways
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AverageBandwidth|是|网关 S2S 带宽|每秒字节数|平均值|网关的站点到站点连接带宽（字节/秒）|实例|
 |BgpPeerStatus|否|BGP 对等方状态|计数|平均值|BGP 对等方的状态|BgpPeerAddress, Instance|
@@ -2641,7 +2688,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |incoming|是|传入消息数|计数|总计|所有成功的发送 API 调用的计数。 |无维度|
 |incoming.all.failedrequests|是|所有传入的失败请求数|计数|总计|通知中心的传入的失败请求数总计|无维度|
@@ -2709,7 +2756,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |Average_% Available Memory|是|可用内存百分比|计数|平均值|Average_% Available Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_% Available Swap Space|是|可用交换空间百分比|计数|平均值|Average_% Available Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
@@ -2778,7 +2825,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft.Peering/peerings
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |EgressTrafficRate|是|出口流量速率|BitsPerSecond|平均值|出口流量速率（位/秒）|ConnectionId、SessionIp、TrafficClass|
 |IngressTrafficRate|是|入口流量速率|BitsPerSecond|平均值|入口流量速率（位/秒）|ConnectionId、SessionIp、TrafficClass|
@@ -2787,14 +2834,14 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft.Peering/peeringServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |PrefixLatency|是|前缀延迟|毫秒|平均值|中间前缀延迟|PrefixName|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |CleanerCurrentPrice|是|内存:清理器当前价格|计数|平均值|内存的当前价格，$/字节/时间，标准化为 1000。|无维度|
 |CleanerMemoryNonshrinkable|是|内存:不可收缩的清理器内存|字节|平均值|不受后台清理器执行的清除影响的内存量（字节）。|无维度|
@@ -2842,13 +2889,13 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |TotalConnectionRequests|是|连接请求总数|计数|平均值|连接请求总数。 这些是到达的请求。|无维度|
 |VertiPaqNonpaged|是|内存:VertiPaq 未分页|字节|平均值|工作集中被锁定的供内存中引擎使用的内存字节数。|无维度|
 |VertiPaqPaged|是|内存:VertiPaq 已分页|字节|平均值|用于内存中数据的已分页内存字节数。|无维度|
-|workload_memory_metric|是|每个工作负荷的内存 (Gen1)|字节|平均值|每个工作负荷的内存。 仅支持 Power BI Embedded Generation 1 资源。|工作负荷|
-|workload_qpu_metric|是|每个工作负荷的 QPU (Gen1)|计数|平均值|每个工作负荷的 QPU。 A1 的范围是 0-20，A2 的范围是 0-40，A3 的范围是 0-40，A4 的范围是 0-80，A5 的范围是 0-160，A6 的范围是 0-320。 仅支持 Power BI Embedded Generation 1 资源。|工作负荷|
+|workload_memory_metric|是|每个工作负载的内存 (Gen1)|字节|平均值|每个工作负载的内存。 仅支持 Power BI Embedded Generation 1 资源。|工作负荷|
+|workload_qpu_metric|是|每个工作负载的 QPU (Gen1)|计数|平均值|每个工作负载的 QPU。 A1 的范围是 0-20，A2 的范围是 0-40，A3 的范围是 0-40，A4 的范围是 0-80，A5 的范围是 0-160，A6 的范围是 0-320。 仅支持 Power BI Embedded Generation 1 资源。|工作负荷|
 
 
 ## <a name="microsoftpurviewaccounts"></a>microsoft.purview/accounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ScanCancelled|是|已取消扫描数|计数|总计|指示取消的扫描数。|无维度|
 |ScanCompleted|是|已完成扫描数|计数|总计|指示已成功完成的扫描数。|无维度|
@@ -2856,9 +2903,17 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |ScanTimeTaken|是|扫描所用时间|秒|总计|指示扫描总时间（以秒为单位）。|无维度|
 
 
+## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
+
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|---|
+|BackupHealthEvent|是|备份运行状况事件(预览)|计数|计数|与备份作业运行状况相关的运行状况事件计数|dataSourceURL, backupInstanceUrl, dataSourceType, healthStatus, backupInstanceName|
+|RestoreHealthEvent|是|还原运行状况事件(预览)|计数|计数|与还原作业运行状况相关的运行状况事件计数|dataSourceURL, backupInstanceUrl, dataSourceType, healthStatus, backupInstanceName|
+
+
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActiveConnections|否|ActiveConnections|计数|总计|Microsoft.Relay 的活动连接总数。|EntityName|
 |ActiveListeners|否|ActiveListeners|计数|总计|Microsoft.Relay 的活动侦听程序总数。|EntityName|
@@ -2877,15 +2932,15 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftresourcessubscriptions"></a>microsoft.resources/subscriptions
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
-|延迟|是|Http 传入请求延迟数据|计数|平均值|Http 传入请求延迟数据|Method, Namespace, RequestRegion, ResourceType, Microsoft.SubscriptionId|
-|交通|是|交通|计数|平均值|Http 流量|RequestRegion, StatusCode, StatusCodeClass, ResourceType, Namespace, Microsoft.SubscriptionId|
+|延迟|否|延迟|秒|平均值|对 Azure 资源管理器的所有请求的延迟数据|IsCustomerOriginated, Method, Namespace, RequestRegion, ResourceType, StatusCode, StatusCodeClass, Microsoft.SubscriptionId|
+|交通|否|交通|计数|计数|对 Azure 资源管理器的所有请求的流量数据|IsCustomerOriginated, Method, Namespace, RequestRegion, ResourceType, StatusCode, StatusCodeClass, Microsoft.SubscriptionId|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |DocumentsProcessedCount|是|已处理的文档计数|计数|总计|处理的文档数目|DataSourceName, Failed, IndexerName, IndexName, SkillsetName|
 |SearchLatency|是|搜索延迟|秒|平均值|搜索服务的平均搜索延迟|无维度|
@@ -2896,7 +2951,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActiveConnections|否|ActiveConnections|计数|总计|Microsoft.ServiceBus 的活动连接总数。|无维度|
 |ActiveMessages|否|队列/主题中的活动消息计数。|计数|平均值|队列/主题中的活动消息计数。|EntityName|
@@ -2919,26 +2974,9 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |WSXNS|否|内存使用率（已弃用）|百分比|最大值|服务总线高级命名空间内存使用率指标。 此指标已弃用。 请改用内存使用率 (NamespaceMemoryUsage) 指标。|副本|
 
 
-## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
-
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
-|---|---|---|---|---|---|---|
-|ActualCpu|否|ActualCpu|计数|平均值|实际 CPU 用量（毫核心）|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|ActualMemory|否|ActualMemory|字节|平均值|实际内存用量 (MB)|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|AllocatedCpu|否|AllocatedCpu|计数|平均值|分配给此容器的 CPU（毫核心）|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|AllocatedMemory|否|AllocatedMemory|字节|平均值|分配给此容器的内存 (MB)|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|ApplicationStatus|否|ApplicationStatus|计数|平均值|Service Fabric 网格应用程序的状态|ApplicationName、Status|
-|ContainerStatus|否|ContainerStatus|计数|平均值|Service Fabric 网格应用程序中的容器状态|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName、Status|
-|CpuUtilization|否|CpuUtilization|百分比|平均值|此容器的 CPU 利用率，以 AllocatedCpu 的百分比表示|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|MemoryUtilization|否|MemoryUtilization|百分比|平均值|此容器的 CPU 利用率，以 AllocatedCpu 的百分比表示|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|RestartCount|否|RestartCount|计数|平均值|Service Fabric 网格应用程序中某个容器的重启计数|ApplicationName、Status、ServiceName、ServiceReplicaName、CodePackageName|
-|ServiceReplicaStatus|否|ServiceReplicaStatus|计数|平均值|Service Fabric 网格应用程序中某个服务副本的运行状态|ApplicationName、Status、ServiceName、ServiceReplicaName|
-|ServiceStatus|否|ServiceStatus|计数|平均值|Service Fabric 网格应用程序中某个服务的运行状态|ApplicationName、Status、ServiceName|
-
-
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ConnectionCount|是|连接计数|计数|最大值|用户连接量。|终结点|
 |InboundTraffic|是|入站流量|字节|总计|服务的入站流量|无维度|
@@ -2950,7 +2988,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft.SignalRService/WebPubSub
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |InboundTraffic|是|入站流量|字节|总计|从服务外部发往服务内部的流量。 其聚合方式是将流量的所有字节数相加。|无维度|
 |OutboundTraffic|是|出站流量|字节|总计|从服务内部发往服务外部的流量。 其聚合方式是将流量的所有字节数相加。|无维度|
@@ -2959,7 +2997,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |avg_cpu_percent|是|CPU 平均百分比|百分比|平均值|CPU 平均百分比|无维度|
 |io_bytes_read|是|已读取的 IO 字节数|字节|平均值|已读取的 IO 字节数|无维度|
@@ -2970,20 +3008,9 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |virtual_core_count|是|虚拟核心计数|计数|平均值|虚拟核心计数|无维度|
 
 
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
-
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
-|---|---|---|---|---|---|---|
-|database_dtu_consumption_percent|否|DTU 百分比|百分比|平均值|DTU 百分比|DatabaseResourceId、ElasticPoolResourceId|
-|database_storage_used|否|已用数据空间|字节|平均值|已用数据空间|DatabaseResourceId、ElasticPoolResourceId|
-|dtu_consumption_percent|是|DTU 百分比|百分比|平均值|DTU 百分比|ElasticPoolResourceId|
-|dtu_used|是|已用的 DTU|计数|平均值|已用的 DTU|DatabaseResourceId|
-|storage_used|是|已用数据空间|字节|平均值|已用数据空间|ElasticPoolResourceId|
-
-
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |active_queries|是|活动查询数|计数|总计|所有工作负荷组的活动查询数。 仅适用于数据仓库。|无维度|
 |allocated_data_storage|是|已分配的数据空间|字节|平均值|已分配的数据存储。 不适用于数据仓库。|无维度|
@@ -3000,8 +3027,9 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 |cpu_percent|是|CPU 百分比|百分比|平均值|CPU 百分比|无维度|
 |cpu_used|是|已用 CPU|计数|平均值|已用 CPU。 适用于基于 vCore 的数据库。|无维度|
 |deadlock|是|死锁数|计数|总计|死锁数。 不适用于数据仓库。|无维度|
-|delta_num_of_bytes_read|是|远程数据读取|字节|总计|数据读取 IO。 单位为 IO，相当于字节除以 8192。|无维度|
-|delta_num_of_bytes_written|是|远程日志写入|字节|总计|日志写入 IO。 单位为 IO，相当于字节除以 8192。|无维度|
+|delta_num_of_bytes_read|是|远程数据读取|字节|总计|远程数据读取字节数|无维度|
+|delta_num_of_bytes_total|是|读取和写入的远程字节总数|字节|总计|由计算机读取和写入的远程字节总数|无维度|
+|delta_num_of_bytes_written|是|远程日志写入|字节|总计|远程日志写入字节数|无维度|
 |diff_backup_size_bytes|是|差异备份存储大小|字节|最大值|累积的差异备份存储大小。 适用于基于 vCore 的数据库。 不适用于超大规模数据库。|无维度|
 |dtu_consumption_percent|是|DTU 百分比|百分比|平均值|DTU 百分比。 适用于基于 DTU 的数据库。|无维度|
 |dtu_limit|是|DTU 限制|计数|平均值|DTU 限制。 适用于基于 DTU 的数据库。|无维度|
@@ -3038,7 +3066,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |allocated_data_storage|是|已分配的数据空间|字节|平均值|已分配的数据空间|无维度|
 |allocated_data_storage_percent|是|分配的数据空间百分比|百分比|最大值|分配的数据空间百分比|无维度|
@@ -3076,7 +3104,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication|
 |流出量|是|流出量|字节|总计|流出数据量。 此数字包括从 Azure 存储到外部客户端流出的数据量，以及 Azure 内部的流出数据量。 因此，此数字不反映计费的流出量。|GeoType, ApiName, Authentication|
@@ -3089,7 +3117,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication|
 |BlobCapacity|否|Blob 容量|字节|平均值|存储帐户的 Blob 服务使用的存储量（以字节为单位）。|BlobType、Tier|
@@ -3106,7 +3134,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication, FileShare|
 |流出量|是|流出量|字节|总计|流出数据量。 此数字包括从 Azure 存储到外部客户端流出的数据量，以及 Azure 内部的流出数据量。 因此，此数字不反映计费的流出量。|GeoType, ApiName, Authentication, FileShare|
@@ -3125,7 +3153,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication|
 |流出量|是|流出量|字节|总计|流出数据量。 此数字包括从 Azure 存储到外部客户端流出的数据量，以及 Azure 内部的流出数据量。 因此，此数字不反映计费的流出量。|GeoType, ApiName, Authentication|
@@ -3140,7 +3168,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |可用性|是|可用性|百分比|平均值|存储服务或指定的 API 操作的可用性百分比。 可用性通过由 TotalBillableRequests 值除以适用的请求数（其中包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。|GeoType, ApiName, Authentication|
 |流出量|是|流出量|字节|总计|流出数据量。 此数字包括从 Azure 存储到外部客户端流出的数据量，以及 Azure 内部的流出数据量。 因此，此数字不反映计费的流出量。|GeoType, ApiName, Authentication|
@@ -3155,7 +3183,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftstoragecachecaches"></a>Microsoft.StorageCache/caches
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ClientIOPS|是|总客户端 IOPS|计数|平均值|缓存处理客户端文件操作的速率。|无维度|
 |ClientLatency|是|平均客户端延迟|毫秒|平均值|对缓存执行的客户端文件操作的平均延迟。|无维度|
@@ -3201,7 +3229,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>microsoft.storagesync/storageSyncServices
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ServerSyncSessionResult|是|同步会话结果|计数|平均值|每当服务器终结点在云终结点中成功完成同步会话时，记录值 1 的指标|SyncGroupName、ServerEndpointName、SyncDirection|
 |StorageSyncBatchTransferredFileBytes|是|同步的字节数|字节|总计|为同步会话传输的总文件大小|SyncGroupName、ServerEndpointName、SyncDirection|
@@ -3218,7 +3246,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AMLCalloutFailedRequests|是|失败的函数请求数|计数|总计|失败的函数请求数|LogicalName, PartitionId, ProcessorInstance|
 |AMLCalloutInputEvents|是|函数事件数|计数|总计|函数事件数|LogicalName, PartitionId, ProcessorInstance|
@@ -3241,7 +3269,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/workspaces
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BuiltinSqlPoolDataProcessedBytes|否|已处理的数据（字节）|字节|总计|查询处理的数据量|无维度|
 |BuiltinSqlPoolLoginAttempts|否|登录尝试数|计数|总计|成功或失败的登录尝试计数|结果|
@@ -3267,7 +3295,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BigDataPoolAllocatedCores|否|分配的 vCore 数|计数|最大值|为 Apache Spark 池分配的 Vcore 数|SubmitterId|
 |BigDataPoolAllocatedMemory|否|分配的内存 (GB)|计数|最大值|为 Apach Spark 池分配的内存 (GB)|SubmitterId|
@@ -3277,7 +3305,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActiveQueries|否|活动查询数|计数|总计|活动查询数。 如果使用此指标时不进行筛选和拆分，会显示系统上运行的所有活动查询|IsUserDefined|
 |AdaptiveCacheHitPercent|否|自适应缓存命中百分比|百分比|最大值|度量工作负荷使用自适应缓存的效果。 将此指标与缓存命中百分比指标一起使用，以确定是要扩展以增加容量还是重新运行工作负荷以生成缓存|无维度|
@@ -3302,7 +3330,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |IngressReceivedBytes|是|入口收到的字节数|字节|总计|从所有事件源读取的字节数的计数|无维度|
 |IngressReceivedInvalidMessages|是|入口收到的无效消息数|计数|总计|从所有事件中心或 IoT 中心事件源读取的无效消息的计数|无维度|
@@ -3317,7 +3345,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |IngressReceivedBytes|是|入口收到的字节数|字节|总计|从事件源读取的字节数的计数|无维度|
 |IngressReceivedInvalidMessages|是|入口收到的无效消息数|计数|总计|从事件源中读取的无效消息的计数|无维度|
@@ -3332,7 +3360,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft.VMwareCloudSimple/virtualMachines
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |磁盘读取字节数|是|磁盘读取字节数|字节|总计|由于读取操作超过采样期限而限制的总磁盘吞吐量。|无维度|
 |磁盘读取操作次数/秒|是|磁盘读取操作次数/秒|每秒计数|平均值|上一个采样周期的平均 IO 读取操作次数。 请注意，这些操作的大小可能是可变的。|无维度|
@@ -3357,14 +3385,14 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftwebconnections"></a>Microsoft.Web/connections
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |请求|否|请求|计数|总计|API 连接请求数|HttpStatusCode, ClientIPAddress|
 
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft.Web/hostingEnvironments
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActiveRequests|是|活动请求数（已弃用）|计数|总计|ActiveRequests|实例|
 |AverageResponseTime|是|平均响应时间（已弃用）|秒|平均值|AverageResponseTime|实例|
@@ -3393,7 +3421,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |ActiveRequests|是|活动请求数（已弃用）|计数|总计|活动请求数|实例|
 |AverageResponseTime|是|平均响应时间（已弃用）|秒|平均值|前端处理请求所用的平均时间（秒）。|实例|
@@ -3422,7 +3450,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |CpuPercentage|是|CPU 百分比|百分比|平均值|工作节点池的所有实例使用的平均 CPU 量。|实例|
 |MemoryPercentage|是|内存百分比|百分比|平均值|工作节点池的所有实例使用的平均内存量。|实例|
@@ -3433,7 +3461,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BytesReceived|是|数据输入|字节|总计|计划的所有实例使用的平均输入带宽量。|实例|
 |BytesSent|是|数据输出|字节|总计|计划的所有实例使用的平均输出带宽量。|实例|
@@ -3459,7 +3487,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftwebsites"></a>Microsoft.Web/sites
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AppConnections|是|连接|计数|平均值|沙盒中存在的绑定套接字的数目（w3wp.exe 及其子进程）。 绑定套接字是通过调用 bind()/connect() API 创建的，并一直保留到通过 CloseHandle()/closesocket() 关闭所述的套接字。 适用于 WebApps 和 FunctionApps。|实例|
 |AverageMemoryWorkingSet|是|平均内存工作集|字节|平均值|应用使用的平均内存量，以 MiB 为单位。 适用于 WebApps 和 FunctionApps。|实例|
@@ -3503,7 +3531,7 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |AppConnections|是|连接|计数|平均值|沙盒中存在的绑定套接字的数目（w3wp.exe 及其子进程）。 绑定套接字是通过调用 bind()/connect() API 创建的，并一直保留到通过 CloseHandle()/closesocket() 关闭所述的套接字。|实例|
 |AverageMemoryWorkingSet|是|平均内存工作集|字节|平均值|应用使用的平均内存量，以 MiB 为单位。|实例|
@@ -3547,13 +3575,31 @@ Azure Monitor 代理替代了之前用于此路由的 Azure 诊断扩展和 Log 
 
 ## <a name="microsoftwebstaticsites"></a>Microsoft.Web/staticSites
 
-|指标|是否可通过诊断设置导出？|指标显示名称|单位|聚合类型|说明|维度|
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|---|
 |BytesSent|是|数据输出|字节|总计|BytesSent|实例|
 |FunctionErrors|是|FunctionErrors|计数|总计|FunctionErrors|实例|
 |FunctionHits|是|FunctionHits|计数|总计|FunctionHits|实例|
 |SiteErrors|是|SiteErrors|计数|总计|SiteErrors|实例|
 |SiteHits|是|SiteHits|计数|总计|SiteHits|实例|
+
+
+## <a name="wandiscofusionmigrators"></a>Wandisco.Fusion/migrators
+
+|指标|是否可通过诊断设置导出？|指标显示名称|计价单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|---|
+|每秒字节数|是|每秒字节数。|每秒字节数|平均值|迁移程序使用的字节/秒吞吐量速度。||
+|DirectoriesCreatedCount|是|目录创建计数|计数|总计|这提供了在迁移过程中创建的目录数的运行视图。||
+|FileMigrationCount|是|文件迁移计数|计数|总计|这提供了已迁移的文件数的运行总数。||
+|InitialScanDataMigratedInBytes|是|迁移的初始扫描数据(以字节为单位)|字节|总计|这提供了由于本地文件系统的初始扫描，而在新迁移中传输的总字节数视图。 初始扫描迁移后添加到迁移的任何数据都不包含在此指标中。||
+|LiveDataMigratedInBytes|是|迁移的实时数据(以字节为单位)|计数|总计|提供自迁移开始以来，由于客户端活动而更改的 LiveData 的运行总数。||
+|MigratorCPULoad|是|迁移程序 CPU 负载|百分比|平均值|迁移进程的 CPU 消耗。||
+|NumberOfExcludedPaths|是|排除的路径数|计数|总计|提供由于排除规则而从迁移中排除的路径的运行计数。||
+|NumberOfFailedPaths|是|失败路径数|计数|总计|无法迁移的路径计数。||
+|SystemCPULoad|是|系统 CPU 负载|百分比|平均值|总 CPU 占用率。||
+|TotalMigratedDataInBytes|是|迁移的数据总量(以字节为单位)|字节|总计|这提供了给定迁移程序成功迁移的字节的视图||
+|TotalTransactions|是|总事务|计数|总计|这提供了可针对用户计费的数据事务的运行总数。||
+
 
 ## <a name="next-steps"></a>后续步骤
 

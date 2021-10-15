@@ -1,28 +1,22 @@
 ---
 title: 加密 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
 description: 了解针对 Threat Modeling Tool 中暴露的威胁的加密缓解措施。 请参阅缓解措施信息并查看代码示例。
-services: security
-documentationcenter: na
 author: jegeib
 manager: jegeib
 editor: jegeib
-ms.assetid: na
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 6af4fba8ddf50b795d847a2c7b4e2fbc02fe593f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2072500fd1f10f05359d8310b18b531293bd1885
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587173"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357374"
 ---
-# <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
+# <a name="security-frame-cryptography--mitigation"></a>安全框架：加密 | 缓解措施
 
 | 产品/服务 | 项目 |
 | --------------- | ------- |
@@ -170,12 +164,12 @@ ms.locfileid: "97587173"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| **组件**               | IoT 设备 |
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 设备 OS - Windows IoT Core、设备连接、Azure IoT 设备 SDK |
 | **参考**              | [Windows IoT Core 上的 TPM](/windows/iot-core/secure-your-device/TPM)、[设置 Windows IoT Core 上的 TPM](/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm 。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
+| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT 核心版支持 TPM 用户，还可以使用多个兼容的 TPM：[离散 TPM (dTPM)](/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm)。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 |
 
 ### <a name="example"></a>示例
 ```

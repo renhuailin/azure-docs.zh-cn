@@ -1,40 +1,60 @@
 ---
-title: 如何在 Microsoft 合作伙伴中心管理商业市场帐户 - Azure 市场
-description: 了解如何在 Microsoft 合作伙伴中心管理商业市场帐户。
+title: 在合作伙伴中心管理商业市场帐户
+description: 在合作伙伴中心管理商业市场帐户。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
-ms.date: 04/07/2021
-ms.openlocfilehash: 2bd5ae6696c5ce1c2d4ea3be974245fde1053b71
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.date: 09/27/2021
+ms.openlocfilehash: f6730ad58491fb24dbc025eaa44fbc7d7bdade58
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416283"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359809"
 ---
-# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
+# <a name="manage-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 
 **相应的角色**
 
 - 所有者
 - Manager
 
-[创建合作伙伴中心帐户](./create-account.md)后，就可以使用[商业市场仪表板](https://go.microsoft.com/fwlink/?linkid=2166002)管理帐户和产品/服务。
+[创建合作伙伴中心帐户](./create-account.md)后，请使用[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)管理帐户和产品/服务。
 
 ## <a name="access-your-account-settings"></a>访问你的帐户设置
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+如果尚未执行此操作，你（或组织的管理员）应访问合作伙伴中心帐户的[帐户设置](https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#mpn)。
+
+1. 使用要访问的帐户登录到合作伙伴中心内的[商业市场仪表板](https://partner.microsoft.com/dashboard/home)。 如果你具有多个帐户并且已使用其他帐户登录，则可以[切换帐户](switch-accounts.md)。
+
+1. 在右上角选择“设置”（齿轮图标），然后选择“帐户设置” 。
+
+    [ ![合作伙伴中心内的帐户设置菜单的屏幕截图。](./media/manage-accounts/settings-account-workspaces.png) ](./media/manage-accounts/settings-account-workspaces.png#lightbox)
+
+1. 在“帐户设置”下，选择“法律”，然后选择“开发人员”选项卡，查看与商业市场帐户相关的详细信息  。
+
+    [ ![“帐户设置”中法律页上的开发人员选项卡屏幕截图。](./media/manage-accounts/developer-tab-workspaces.png) ](./media/manage-accounts/developer-tab-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 如果尚未执行此操作，你（或组织的管理员）应访问合作伙伴中心帐户的[帐户设置](https://go.microsoft.com/fwlink/?linkid=2165291)。
 
 1. 使用要访问的帐户登录到合作伙伴中心内的[商业市场仪表板](https://go.microsoft.com/fwlink/?linkid=2165290)。 如果你具有多个帐户并且已使用其他帐户登录，则可以[切换帐户](switch-accounts.md)。
 1. 在右上角选择“设置”（齿轮图标），然后选择“帐户设置”。 
 
-    [ ![合作伙伴中心内的帐户设置菜单的屏幕截图。](./media/manage-accounts/settings-account.png) ](./media/manage-accounts/settings-account.png#lightbox)
+   :::image type="content" source="media/manage-accounts/settings-account.png" alt-text="显示合作伙伴中心“帐户设置”选项的屏幕截图。":::
 
-1. 在“帐户设置”下选择“法律” 。 然后选择“开发人员”选项卡，查看与商业市场帐户相关的详细信息。
+1. 在“帐户设置”下，选择“法律”，然后选择“开发人员”选项卡，查看与商业市场帐户相关的详细信息  。
 
-    [ ![“帐户设置”中法律页上的开发人员选项卡屏幕截图。](./media/manage-accounts/developer-tab.png) ](./media/manage-accounts/developer-tab.png#lightbox)
+   :::image type="content" source="media/manage-accounts/developer-tab.png" alt-text=" 显示“开发人员”选项卡的屏幕截图。" lightbox="media/manage-accounts/developer-tab.png":::
+
+---
 
 ### <a name="account-settings-page"></a>“帐户设置”页
 
@@ -110,7 +130,7 @@ ms.locfileid: "112416283"
 
 若要访问“协议”页，请执行以下操作：
 
-1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 1. 在右上方，选择“设置” > “帐户设置” 。
 1. 在“帐户设置”下选择“协议” 。
 
@@ -118,14 +138,40 @@ ms.locfileid: "112416283"
 
 ## <a name="set-up-a-payout-profile"></a>设置付款配置文件
 
-付款配置文件是将销售收款发送到的银行帐户。 此银行帐户必须位于注册合作伙伴中心帐户所在的国家或地区。 有关付款配置文件的详细信息，请参阅[在合作伙伴中心创建和管理付款和税务配置文件](/partner-center/incentives-create-and-manage-your-payout-and-tax-profiles)和[设置奖励付款帐户和纳税表单](/partner-center/set-up-your-payout-account)。
+若要在 Azure 市场中提供可交易的产品/服务，必须在合作伙伴中心提交并验证税务资料和付款资料。  需要先提交税务资料，然后才能创建付款资料。 需要最多 48 小时对税务资料提交进行验证。
 
-若要设置付款配置文件，请执行以下操作：
+付款配置文件是将销售收款发送到的银行帐户。 此银行帐户必须位于注册合作伙伴中心帐户所在的国家或地区。 有关付款配置文件的详细信息，请参阅[设置付款帐户和纳税表单](/partner-center/set-up-your-payout-account)。
+
+### <a name="to-set-up-your-payout-profile"></a>设置付款配置文件
+
+#### <a name="workspaces-view"></a>[工作区视图](#tab/workspaces-view)
+
+1. 使用要访问的帐户登录到合作伙伴中心内的[商业市场仪表板](https://partner.microsoft.com/dashboard/home)。
+
+1. 在右上角选择“设置”（齿轮图标），然后选择“帐户设置”。 
+
+    [ ![合作伙伴中心内的帐户设置菜单的屏幕截图。](./media/manage-accounts/settings-account-workspaces.png) ](./media/manage-accounts/settings-account-workspaces.png#lightbox)
+
+1. 在左侧菜单中的“付款和税务”下，选择“付款和税务配置文件分配”。
+
+    [ ![说明“付款和税务配置文件分配”页。](./media/manage-accounts/payout-and-tax-profile-assignment.png) ](./media/manage-accounts/payout-and-tax-profile-assignment.png#lightbox)
+
+    > [!NOTE]
+    > 如果在左侧菜单中没有看到“付款和税务”部分，请联系全局管理员或帐户管理员以获得权限。
+
+1. 若要详细了解如何设置付款配置文件，请参阅[设置付款帐户和纳税表单](/partner-center/set-up-your-payout-account)。
+
+#### <a name="current-view"></a>[当前视图](#tab/current-view)
 
 1. 转到合作伙伴中心内的[商业市场概述](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)页。
-2. 在“配置文件”部分的“付款配置文件”旁边，选择“更新”  。
-3. 选择付款方式：银行帐户或 PayPal。
-4. 添加付款信息：这可能包括选择帐户类型（支票或储蓄）、输入帐户持有者姓名、帐号和银行代号、帐单邮寄地址、电话号码或 PayPal 电子邮件地址。 有关使用 PayPal 作为帐户付款方式，以及是否在你的市场或区域中支持该付款方式的详细信息，请参阅 [PayPal 信息](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
+1. 在“配置文件”部分的“付款配置文件”旁边，选择“更新”  。
+
+    > [!NOTE]
+    > 如果在左侧菜单中没有看到“付款和税务”部分，请联系全局管理员或帐户管理员以获得权限。
+
+1. 若要详细了解如何设置付款配置文件，请参阅[设置付款帐户和纳税表单](/partner-center/set-up-your-payout-account)。
+
+---
 
 > [!IMPORTANT]
 > 更改付款帐户可能会推迟付款（最多一个付款周期）。 出现此推迟的原因是我们需要验证帐户更改，正如首次设置付款帐户时我们会进行验证。 帐户通过验证后，仍会收到全额款项；当前付款周期应得的任何付款将添加到下一个付款周期。  
@@ -179,17 +225,16 @@ ms.locfileid: "112416283"
 
 ## <a name="create-a-billing-profile"></a>创建计费对象信息
 
-如果要发布 [Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) 或 [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) 产品/服务，则需要填写计费对象信息。
+如果要发布 [Dynamics 365 for Customer Engagement & Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md) 或 [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) 产品/服务，则需要填写计费对象信息。
 
 帐单邮寄地址是通过你的法律实体预填充的，可以稍后更新此地址。 税务和增值税 ID 字段对于某些国家/地区是必填字段，对于其他国家/地区是可选字段。 无法编辑国家/地区名称和公司名称。
 
-1. 转到“帐户设置”。
+1. 在右上角选择“设置”（齿轮图标），然后选择“帐户设置”。 
 1. 然后在左侧导航中，展开“组织配置文件”，然后选择“计费配置文件” 。
-
 
 ## <a name="multi-user-account-management"></a>多用户帐户管理
 
-合作伙伴中心使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 进行多用户帐户访问和管理。 组织的 Azure AD 会在注册过程中自动与合作伙伴中心帐户关联。
+合作伙伴中心使用 [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) 进行多用户帐户访问和管理。 组织的 Azure AD 会在注册过程中自动与合作伙伴中心帐户关联。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,15 +1,15 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入到 Azure Lighthouse，以便你的租户中的用户能够访问和管理客户资源。
-ms.date: 08/26/2021
+ms.date: 09/30/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1d060a7e1a6f9b0ae17e90b1094ec0a5da744e5f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 3dbd3eb285a0135ca1b86294c5d3a41ef88a8472
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469673"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353295"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -338,6 +338,7 @@ az managedservices assignment list
 - 必须为委托的订阅注册 Microsoft.ManagedServices 资源提供商。 此注册操作应该会在部署过程中自动发生，但是，如果没有发生，则可以[手动注册](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 - 授权不得包含任何具有[所有者](../../role-based-access-control/built-in-roles.md#owner)内置角色的用户或任何具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 的内置角色。
 - 必须创建组，并将[组类型](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types)设置为“安全”而不是“Microsoft 365”  。
+- 如果向组授予了访问权限，请检查以确保该用户是该组的成员。 如果不是，可以[使用 Azure AD 将用户添加到组](../../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)，而无需执行其他部署。 请注意，[组所有者](../../active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners.md)不一定是他们管理的组的成员，可能需要添加到组才能具有访问权限。
 - 在对[嵌套组](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)启用访问权限之前，可能会有额外的延迟。
 - 在授权中包含的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)不得包含任何已弃用的角色。 如果某个 Azure 内置角色变成被弃用的，那么，任何使用该角色加入的用户都将失去访问权限，并且你将无法加入其他委托。 若要解决此问题，请将模板更新为只使用受支持的内置角色，然后执行新的部署。
 

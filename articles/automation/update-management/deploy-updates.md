@@ -3,14 +3,14 @@ title: 如何为 Azure 自动化更新管理创建更新部署
 description: 本文介绍如何计划更新部署并查看其状态。
 services: automation
 ms.subservice: update-management
-ms.date: 06/24/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: de148858ba5c88e8dbbf2693dadc818b8c66e833
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1d8ad9b41f9d193624d9c3501493c525777832eb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768326"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350642"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和查看结果
 
@@ -169,6 +169,36 @@ ms.locfileid: "122768326"
 选择“输出”，查看负责管理目标 VM 更新部署的 runbook 的作业流。
 
 若要查看有关部署中错误的详细信息，请选择“错误”。
+
+## <a name="deploy-updates-across-azure-tenants"></a>跨 Azure 租户部署更新
+
+如果你在向“更新管理”进行报告的另一个 Azure 租户中存在需要修补的计算机，则必须使用以下解决方法来计划它们。 可以将 [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) cmdlet 与指定的 `ForUpdateConfiguration` 参数一起使用来创建计划。 可以使用 [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) cmdlet，并将另一个租户中的计算机传递给 `NonAzureComputer` 参数。 以下示例演示如何执行此操作。
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$sched = New-AzAutomationSchedule `
+    -ResourceGroupName mygroup `
+    -AutomationAccountName myaccount `
+    -Name myupdateconfig `
+    -Description test-OneTime `
+    -OneTime `
+    -StartTime $startTime `
+    -ForUpdateConfiguration
+
+New-AzAutomationSoftwareUpdateConfiguration  `
+    -ResourceGroupName $rg `
+    -AutomationAccountName <automationAccountName> `
+    -Schedule $sched `
+    -Windows `
+    -NonAzureComputer $nonAzurecomputers `
+    -Duration (New-TimeSpan -Hours 2) `
+    -IncludedUpdateClassification Security,UpdateRollup `
+    -ExcludedKbNumber KB01,KB02 `
+    -IncludedKbNumber KB100
+```
 
 ## <a name="next-steps"></a>后续步骤
 

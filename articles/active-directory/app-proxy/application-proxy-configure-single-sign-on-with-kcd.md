@@ -12,18 +12,18 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ba29c7577bd725cf0c165e0cae8374d3c4bb647c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 5a13171d234664ca09508f2404acb95e468f9d7c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186090"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232311"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派实现应用程序的单一登录 (SSO)
 
-可以为通过应用程序代理发布的使用集成的 Windows 身份验证保护的本地应用程序提供单一登录。 这些应用程序需要使用 Kerberos 票证进行访问。 应用程序代理使用 Kerberos 约束委派 (KCD) 来支持这些应用程序。 
+可以为通过应用程序代理（该代理使用集成的 Windows 身份验证保护）发布的本地应用程序提供单一登录。 这些应用程序需要使用 Kerberos 票证进行访问。 应用程序代理使用 Kerberos 约束委派 (KCD) 来支持这些应用程序。 
 
-可以在 Active Directory 中提供应用程序代理连接器权限来模拟用户，以使用集成 Windows 身份验证 (IWA) 实现应用程序的单一登录。 连接器使用此权限来代表用户发送和接收令牌。
+通过在 Active Directory 中提供应用程序代理连接器权限来模拟用户，可以使用集成 Windows 身份验证 (IWA) 实现应用程序的单一登录。 连接器使用此权限来代表用户发送和接收令牌。
 
 ## <a name="how-single-sign-on-with-kcd-works"></a>使用 KCD 的单一登录的工作原理
 此示意图介绍用户尝试访问采用 IWA 的本地应用程序时的流程。
@@ -42,7 +42,7 @@ ms.locfileid: "108186090"
 ## <a name="prerequisites"></a>先决条件
 开始为 IWA 应用程序使用 SSO 之前，请确保已在环境中完成以下设置和配置：
 
-* 应用（例如 SharePoint Web 应用）已设置为使用 Windows 集成身份验证。 有关详细信息，请参阅 [Enable Support for Kerberos Authentication](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759186(v=ws.11))（启用对 Kerberos 身份验证的支持）；对于 SharePoint，请参阅 [Plan for Kerberos authentication in SharePoint 2013](/SharePoint/security-for-sharepoint-server/kerberos-authentication-planning)（在 SharePoint 2013 中规划 Kerberos 身份验证）。
+* 你的应用（例如 SharePoint Web 应用）已设置为使用集成 Windows 身份验证。 有关详细信息，请参阅 [Enable Support for Kerberos Authentication](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759186(v=ws.11))（启用对 Kerberos 身份验证的支持）；对于 SharePoint，请参阅 [Plan for Kerberos authentication in SharePoint 2013](/SharePoint/security-for-sharepoint-server/kerberos-authentication-planning)（在 SharePoint 2013 中规划 Kerberos 身份验证）。
 * 所有应用都有[服务主体名称](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx)。
 * 运行连接器的服务器以及运行应用的服务器都已加入域且属于同一个域或信任域。 有关加入域的详细信息，请参阅 [Join a Computer to a Domain](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807102(v=ws.11))（将计算机加入域）。
 * 运行连接器的服务器有权读取用户的 TokenGroupsGlobalAndUniversal 属性。 这是默认设置，可能受环境强化安全性影响。
@@ -88,8 +88,8 @@ ms.locfileid: "108186090"
 1. 根据[使用应用程序代理发布应用程序](../app-proxy/application-proxy-add-on-premises-application.md)中的说明发布应用程序。 请务必选择“Azure Active Directory”作为“预身份验证方法”。
 2. 应用程序显示在企业应用程序列表中之后，选择该应用程序并单击“单一登录”。
 3. 将单一登录模式设置为“集成 Windows 身份验证”。  
-4. 输入应用程序服务器的“内部应用程序 SPN”。 在本示例中，已发布应用程序的 SPN 为 http/www.contoso.com。 此 SPN 需要位于连接器可以向其提供委派的凭据的服务列表中。 
-5. 针对你要代表你的用户使用的连接器选择“委派的登录标识”。 有关详细信息，请参阅[使用不同的本地标识和云标识](#working-with-different-on-premises-and-cloud-identities)
+4. 输入应用程序服务器的“内部应用程序 SPN”。 在本示例中，已发布应用程序的 SPN 为 `http/www.contoso.com`。 此 SPN 需要位于连接器可以向其提供委派的凭据的服务列表中。
+5. 针对你要代表你的用户使用的连接器选择“委派的登录标识”。 有关详细信息，请参阅[使用不同的本地标识和云标识](#working-with-different-on-premises-and-cloud-identities)。
 
    ![高级应用程序配置](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 

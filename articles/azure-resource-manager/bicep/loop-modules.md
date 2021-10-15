@@ -4,13 +4,13 @@ description: 在 Bicep 文件中使用循环和数组来部署多个模块实例
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/27/2021
-ms.openlocfilehash: f8893fa6716d1b106e54f7eb76002622ce5a4bc3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 8c679eda4de1a3e29719a1518166e214b57b37c3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793429"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357816"
 ---
 # <a name="module-iteration-in-bicep"></a>Bicep 中的模块迭代
 
@@ -149,6 +149,8 @@ module stgModule './storageAccount.bicep' = [for i in range(0, 4): {
 ```
 
 对于纯顺序部署，将批大小设置为 1。
+
+`batchSize` 修饰器位于 [sys 命名空间](bicep-functions.md#namespaces-for-functions)中。 如果需要将此修饰器与具有相同名称的其他项区分开来，请在修饰器前面加上 sys：`@sys.batchSize(2)`
 
 ## <a name="next-steps"></a>后续步骤
 

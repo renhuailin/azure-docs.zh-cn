@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1b50fbbdd38d1bb24c1732c465784c3ddb757e3f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9df6e2c1bd937f275fb3b35db8cd6ac2e3909502
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114454775"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532875"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure 认知搜索中的语义搜索
 
@@ -36,6 +36,13 @@ ms.locfileid: "114454775"
 
 语义搜索是用于提高搜索结果质量的功能的集合。 针对搜索服务启用时，它通过两种方式来扩展查询执行管道。 首先，它在初始结果集的基础上添加二次排名，将与语义最接近的结果提升到列表顶部。 其次，它会提取并返回响应中的描述和答案，你可以在搜索页面上呈现它们以改进用户的搜索体验。
 
+| Feature | 说明 |
+|---------|-------------|
+| [语义重新排名](semantic-ranking.md) | 使用上下文或语义含义基于现有结果计算新的相关性分数。 |
+| [语义标题和突出显示](semantic-how-to-query-request.md) | 从文档中提取对内容进行最佳概括的句子和短语并突出显示关键片段，以便于扫描。 当单个内容字段在结果页中过于密集时，汇总结果的标题就显得非常有用。 突出显示的文本表明最相关的词语和短语，以便用户可以快速确定为何匹配项被视为相关。 |
+| [语义答案](semantic-answers.md) | 从语义查询返回的可选的附加子结构。 它为与问题类似的查询提供直接答案。 它要求文档中包含具有答案特征的文本。 |
+| [拼写检查](speller-how-to-add.md) | 在查询词语到达搜索引擎之前纠正拼写错误。 |
+
 ## <a name="how-semantic-ranking-works"></a>语义排名的工作原理
 
 语义排名查找词语之间的上下文和相关性，从而提高使查询更有意义的匹配度。 语言理解在你的内容中找到摘要或字幕以及答案，并将它们包括在响应中，然后，这些内容可以呈现在搜索结果页面上，以获得更高效的搜索体验 。
@@ -47,17 +54,6 @@ ms.locfileid: "114454775"
 以下视频概要介绍功能。
 
 > [!VIDEO https://www.youtube.com/embed/yOf0WfVd_V0]
-
-## <a name="features-in-semantic-search"></a>语义搜索中的功能
-
-语义搜索通过以下新功能提高精准率和召回率：
-
-| Feature | 说明 |
-|---------|-------------|
-| [拼写检查](speller-how-to-add.md) | 在查询词语到达搜索引擎之前纠正拼写错误。 |
-| [语义排名](semantic-ranking.md) | 使用上下文或语义含义计算相关性分数。 |
-| [语义标题和突出显示](semantic-how-to-query-request.md) | 在文档中，突出显示对内容进行最佳概括的句子和短语中的关键片段，以便于扫描。 当单个内容字段在结果页中过于密集时，汇总结果的标题就显得非常有用。 突出显示的文本表明最相关的词语和短语，以便用户可以快速确定为何匹配项被视为相关。 |
-| [语义答案](semantic-answers.md) | 从语义查询返回的可选的附加子结构。 它为与问题类似的查询提供直接答案。 |
 
 ### <a name="order-of-operations"></a>运算顺序
 
@@ -77,15 +73,15 @@ ms.locfileid: "114454775"
 
 ## <a name="semantic-capabilities-and-limitations"></a>语义功能和限制
 
-语义搜索是一项较新的技术，因此，对于它能够和无法实现的效果，必须设定预期。 它通过两种方式来提高搜索结果的质量：
+语义搜索是一项较新的技术，因此，对于它能够和无法实现的效果，必须设定预期。 它的作用是通过以下方式来提高搜索质量：
 
-* 首先，它会提升语义更接近原始查询意图的匹配项。
+* 提升语义更接近原始查询意向的匹配项。
 
-* 其次，通过它可以实现在页面上呈现描述和可能的答案，使结果更易于使用。
+* 在每个结果中查找可用作字幕（且有可能可用作答案）并且可在搜索结果页上呈现的字符串。
 
-语义搜索并不适用于每种场景，在继续之前，请确保拥有可以利用语义搜索功能的内容。 语义搜索中的语言模型最适用于信息丰富并且为散文结构的可搜索内容。 例如，在评估内容以获取答案时，模型会扫描并提取看起来像答案的逐字字符串，但不会将新字符串作为查询的答案或作为匹配文档的描述。 若要回答“什么汽车的油耗最低”这个问题，索引应该包含“混合动力汽车是市场上油耗最低的汽车”等短语。
+语义搜索无法对整个语料库重新运行查询，以查找语义上相关的结果。 语义搜索将现有结果集重新排名，其中包括由默认排名算法评分的前 50 个结果。 此外，语义搜索无法创建新信息或字符串。 字幕和答案是从内容中逐字提取的，因此，如果结果不包含类似于答案的文本，则语言模型不会生成结果。
 
-语义搜索无法关联或推断来自文档或文档语料库中不同内容片段的信息。 例如，如果“沙漠中的度假酒店”查询缺少地理输入，则引擎将不会生成亚利桑那或内华达的酒店的匹配项，虽然这两个州都有沙漠。 同样，如果查询包含子句“过去 5 年中”，则引擎不会根据要返回的当前日期计算时间间隔。 在认知搜索中，对上述情形可能有帮助的机制包括[同义词映射](search-synonyms.md)或[日期筛选器](search-query-odata-filter.md)，前者可用于在表面上不同的术语间生成关联，后者可指定为 OData 表达式。
+尽管语义搜索并非在每种方案中都能起到作用，但某些内容可以明显受益于其功能。 语义搜索中的语言模型最适用于信息丰富并且为散文结构的可搜索内容。 知识库、联机文档或包含描述性内容的文档可以充分受益于语义搜索功能。
 
 ## <a name="availability-and-pricing"></a>可用性和定价
 
@@ -93,12 +89,36 @@ ms.locfileid: "114454775"
 
 | 功能 | 层 | 区域 | 注册 | 定价 |
 |---------|------|--------|---------------------|-------------------|
-| 语义搜索（字幕、亮点、答案） | 标准层 (S1、S2、S3) | 美国中北部、美国西部、美国西部 2、美国东部 2、北欧、西欧 | 必须 | [认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)  |
-| 拼写检查 | 任意 | 美国中北部、美国西部、美国西部 2、美国东部 2、北欧、西欧 | 必须 | 无（免费） |
+| 语义搜索（排名、字幕、亮点、答案） | 标准层 (S1、S2、S3) | 美国中北部、美国西部、美国西部 2、美国东部 2、北欧、西欧 | 必须 | [认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)  |
+| 拼写检查 | 基本及以上层级 | 全部 | 无 | 无（免费） |
 
-没有语义搜索也可免费使用拼写检查。 如果查询请求包括 `queryType=semantic` 并且搜索字符串不为空（例如 `search=pet friendly hotels in new york`），则会对语义搜索收费。 空搜索（`search=*` 的查询）不收费，即使 queryType 设置为 `semantic` 也是如此。
+如果查询请求包括“queryType=semantic”并且搜索字符串不为空（例如“search=pet friendly hotels in new york”），则会对语义搜索收费。 如果搜索字符串为空（“search=*”），即使 queryType 设置为“semantic”，也不会收费。
 
-如果不希望在搜索服务中使用语义搜索功能，可以[禁用语义搜索](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch)来防止意外使用和费用。
+## <a name="disable-semantic-search"></a>禁用语义搜索
+
+为了充分防止意外使用和收费，你可以在搜索服务上使用“创建”或“更新服务 API”[禁用语义搜索](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch)。 禁用该功能后，任何包含语义查询类型的请求都将被拒绝。
+
+* 管理 REST API 版本 2021-04-01-Preview 提供此选项
+
+* 需要拥有所有者或参与者权限才能禁用功能
+
+```http
+PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups/{{resource-group}}/providers/Microsoft.Search/searchServices/{{search-service-name}}?api-version=2021-04-01-Preview
+    {
+      "location": "{{region}}",
+      "sku": {
+        "name": "standard"
+      },
+      "properties": {
+        "semanticSearch": "disabled"
+      }
+    }
+```
+
+若要重新启用语义搜索，请重新运行上述请求，将“semanticSearch”设置为“free”（默认值）或“standard”。
+
+> [!TIP]
+> 将会通过 Azure Active Directory 对管理 REST API 调用进行身份验证。 有关设置安全主体和请求的指导，请参阅博客文章 [Azure REST APIs with Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)（通过 Postman 使用 Azure REST API（2021 年））。 已使用该博客文章中提供的说明和 Postman 集合对前面的示例进行了测试。
 
 ## <a name="next-steps"></a>后续步骤
 

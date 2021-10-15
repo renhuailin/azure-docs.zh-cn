@@ -1,24 +1,32 @@
 ---
-title: 使用 Azure CLI 和和 Bicep 文件部署资源
+title: 使用 Azure CLI 和和 Bicep 文件部署资源 | Microsoft Docs
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 Bicep 文件中定义了资源。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/15/2021
-ms.openlocfilehash: 38d1762faf0d9cbab70b57a79cf9d7811c9fab6b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 10/01/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+ms.openlocfilehash: ab371ec2f4cb59b602e953be0043f4dbe49dfb9e
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427059"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389051"
 ---
-# <a name="deploy-resources-with-bicep-and-azure-cli"></a>使用 Bicep 和 Azure CLI 部署资源
+# <a name="how-to-deploy-resources-with-bicep-and-azure-cli"></a>如何使用 Bicep 和 Azure CLI 部署资源
 
 本文介绍如何将 Azure CLI 与 Bicep 文件配合使用将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Bicep 概述](./overview.md)。
 
-若要部署 Bicep 文件，需要安装 [Azure CLI 2.20.0 或更高版本](/cli/azure/install-azure-cli)。
+## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+需要一个 Bicep 文件进行部署。 该文件必须为本地。
+
+需要 Azure CLI，并将其连接到 Azure：
+
+- **在本地计算机上安装 Azure CLI 命令。** 若要部署 Bicep 文件，需要安装 [Azure CLI](/cli/azure/install-azure-cli) 2.20.0 或更高版本。
+- 使用 [az login](/cli/azure/reference-index#az_login) 连接到 Azure。 如果有多个 Azure 订阅，则可能还需要运行 [az account set](/cli/azure/account#az_account_set)。
+
+适用于 Azure CLI 的示例是针对 `bash` shell 编写的。 若要在 Windows PowerShell 或命令提示符中运行此示例，可能需要更改脚本的元素。
 
 如果未安装 Azure CLI，可以使用 Azure Cloud Shell。 有关详细信息，请参阅[从 Azure Cloud Shell 部署 Bicep 文件](./deploy-cloud-shell.md)。
 
@@ -86,7 +94,7 @@ az deployment group create \
 
 ## <a name="deploy-remote-bicep-file"></a>部署远程 Bicep 文件
 
-目前，Azure CLI 不支持部署远程 Bicep 文件。 使用 [Bicep CLI](./install.md#development-environment) 将 Bicep 文件编译为 JSON 模板，然后将 JSON 文件加载到远程位置。
+目前，Azure CLI 不支持部署远程 Bicep 文件。 使用 [Bicep CLI](./install.md#vs-code-and-bicep-extension) 将 Bicep 文件编译为 JSON 模板，然后将 JSON 文件加载到远程位置。
 
 ## <a name="parameters"></a>parameters
 
@@ -182,11 +190,11 @@ az deployment group create \
 
 ## <a name="deploy-template-specs"></a>部署模板规格
 
-目前，Azure CLI 不支持通过提供 Bicep 文件来创建模板规格。 但是，可使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。[创建模板规格示例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep)演示了如何在 Bicep 文件中创建模板规格。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON 中，然后使用 JSON 模板创建模板规格。
+目前，Azure CLI 不支持通过提供 Bicep 文件来创建模板规格。 但是，可使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。[创建模板规格示例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep)演示了如何在 Bicep 文件中创建模板规格。 还可使用 Bicep CLI 将 Bicep 文件生成到 JSON 中，然后使用 JSON 模板创建模板规格。
 
 ## <a name="deployment-name"></a>部署名称
 
-部署 Bicep 文件时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用 Bicep 文件的名称。 例如，如果部署一个名为 `azuredeploy.bicep` 的 Bicep 文件，但未指定部署名称，则该部署将命名为 `azuredeploy`。
+部署 Bicep 文件时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用 Bicep 文件的名称。 例如，如果部署一个名为 `main.bicep` 的 Bicep 文件，但未指定部署名称，则该部署将命名为 `main`。
 
 每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
 
@@ -212,6 +220,4 @@ deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](../templates/rollback-on-error.md)。
-- 若要了解如何在文件中定义参数，请参阅[了解 Bicep 文件的结构和语法](file.md)。
-* 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../templates/common-deployment-errors.md)。
+* 若要了解如何在文件中定义参数，请参阅[了解 Bicep 文件的结构和语法](file.md)。

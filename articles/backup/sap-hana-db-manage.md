@@ -3,12 +3,12 @@ title: 管理 Azure VM 上已备份的 SAP HANA 数据库
 description: 本文介绍了对在 Azure 虚拟机上运行的 SAP HANA 数据库进行管理和监视时的常见任务。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 54d3341a83873ad3cc50815f04a0b252bb44438e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e793cddeb4e751c47ffa82786f24e65a0873faf
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101703760"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231361"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和监视已备份的 SAP HANA 数据库
 
@@ -84,7 +84,12 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 #### <a name="restore"></a>还原
 
-可以从“备份作业”页[监视](#monitor-manual-backup-jobs-in-the-portal)从 HANA 本机客户端（使用 Backint）触发以还原到同一台计算机的还原 。
+可以从“备份作业”页[监视](#monitor-manual-backup-jobs-in-the-portal)从 HANA 本机客户端（使用 Backint）触发以还原到同一台计算机的还原  。
+不允许从 HANA 本地客户触发的还原还原到其他计算机。 这是因为 Azure 备份服务无法根据 Azure RBAC 规则对目标服务器进行身份验证以进行还原。
+
+#### <a name="delete"></a>删除
+
+Azure 备份不支持从 HANA 本机客户端执行删除操作，因为备份策略决定了 Azure 恢复服务保管库中备份的生命周期。
 
 ### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行到本地磁盘的 SAP HANA 本机客户端备份
 
@@ -175,7 +180,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 有时，修改策略操作可能导致某些备份项的策略版本不一致。 如果在触发修改策略操作后，备份项的相应配置保护作业失败，则会发生这种情况。 它在备份项视图中显示如下：
 
-![策略不一致](./media/sap-hana-db-manage/inconsistent-policy.png)
+![不一致的策略](./media/sap-hana-db-manage/inconsistent-policy.png)
 
 单击一下即可修复所有受影响的项的策略版本：
 

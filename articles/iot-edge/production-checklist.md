@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 964c3f0bb346b3c2606af1227b558d06071bfe20
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b131d20122ca2440698fed301768d1fe961ac286
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728821"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390342"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -165,12 +165,12 @@ IoT Edge 代理和 IoT Edge 中心映像使用与之关联的 IoT Edge 版本进
 
 你了解如何在专用 Azure 注册表中存储自定义代码模块的容器映像，但你也可以使用它来存储公共容器映像（例如将它用于 edgeAgent 和 edgHub 运行时模块）。 如果有很严格的防火墙限制，则可能需要执行此操作，因为这些运行时容器存储在 Microsoft 容器注册表 (MCR) 中。
 
-使用 Docker pull 命令获取映像，并将其放入专用注册表中。 请注意，你将需要使用每个新版 IoT Edge 运行时来更新映像。
+使用 Docker pull 命令获取映像，并将其放入专用注册表中。 在拉取操作期间需要指定容器版本，在如下所示容器说明页中找到最新的容器版本，并在需要时替换 pull 命令中的版本。 请注意，你将需要使用每个新版 IoT Edge 运行时来更新映像。
 
 | IoT Edge 运行时容器 | Docker pull 命令 |
 | --- | --- |
-| [Azure IoT Edge 代理](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
-| [Azure IoT Edge 中心](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+| [Azure IoT Edge 代理](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent:<VERSION_TAG>` |
+| [Azure IoT Edge 中心](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub:<VERSION_TAG>` |
 
 接下来，请确保在 edgeAgent 和 edgeHub 系统模块的 deployment.template.json 文件中更新映像引用。 将 `mcr.microsoft.com` 替换为这两个模块的注册表名称和服务器。
 
@@ -362,7 +362,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。
 
-为了更安全地访问注册表，可以使用[身份验证选项](../container-registry/container-registry-authentication.md)。 一种建议使用的常用身份验证方法是使用 Active Directory 服务主体，该方法非常适用于应用程序或服务，它以自动或无人值守（无头）方式拉取容器映像，就像 IoT Edge 设备所做的那样。
+为了更安全地访问注册表，可以使用[身份验证选项](../container-registry/container-registry-authentication.md)。 一种建议使用的常用身份验证方法是使用 Active Directory 服务主体，该方法非常适用于应用程序或服务，它以自动或无人值守（无头）方式拉取容器映像，就像 IoT Edge 设备所做的那样。 另一种选择是使用存储库范围的令牌，这使你能够创建长期或短期标识以及对存储级别的范围访问，这些标识只能存在于创建它们的 Azure 容器注册表中。
 
 若要创建服务主体，请按[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述运行两个脚本。 这些脚本执行以下任务：
 
@@ -375,6 +375,16 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 * 对于用户名或客户端 ID，请指定服务主体 ID。
 
 * 对于密码或客户端机密，请指定服务主体密码。
+
+<br>
+
+要创建存储库范围的令牌，请遵循[创建存储库范围的令牌](../container-registry/container-registry-repository-scoped-permissions.md)。
+
+要使用存储库范围的令牌进行身份验证，请提供创建存储库范围令牌后获得的令牌名称和密码。 在部署清单中指定这些凭据。
+
+* 对于用户名，请指定令牌的用户名。
+
+* 对于密码，请指定令牌的密码之一。
 
 > [!NOTE]
 > 实现增强的安全身份验证后，请禁用“管理员用户”设置，以便不再提供默认的用户名/密码访问权限。 在 Azure 门户的容器注册表中，从左窗格菜单的“设置”下选择“访问密钥”。

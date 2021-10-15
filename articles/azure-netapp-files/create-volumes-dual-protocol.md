@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 33e01466a3e0629af9a691e33eb9161bf8098611
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4fc34329ec7f318d79dd04e271db7b37b7e1cc59
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751431"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533620"
 ---
 # <a name="create-a-dual-protocol-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议卷
 
@@ -30,7 +30,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
 ## <a name="before-you-begin"></a>准备阶段 
 
 * 必须已创建容量池。  
-    请参阅[设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
+    请参阅[创建容量池](azure-netapp-files-set-up-capacity-pool.md)。   
 * 子网必须委派给 Azure NetApp 文件。  
     请参阅[将子网委托给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)。
 
@@ -110,9 +110,12 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
+    * **网络功能**  
+        在受支持的区域中，你可以指定对于卷是使用基础网络功能还是标准网络功能 。 有关详细信息，请参阅[为卷配置网络功能](configure-network-features.md)和 [Azure NetApp 文件网络规划指南](azure-netapp-files-network-topologies.md)。
+
     * 如果要将现有的快照策略应用到卷，请单击“显示高级部分”将其展开，指定是否要隐藏快照路径，并在下拉菜单中选择快照策略。 
 
-        有关创建快照策略的信息，请参阅[管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
+        有关创建快照策略的信息，请参阅[管理快照策略](snapshots-manage-policy.md)。
 
         ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
@@ -173,7 +176,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协�
 
         Kerberos 需要其他配置。 按照[配置 NFSv4.1 Kerberos 加密](configure-kerberos-encryption.md)中的说明进行操作。
 
-    *  按需要自定义“Unix 权限”，以指定装载路径的更改权限。 此设置不适用于装载路径下的文件。 默认设置为 `0770`。 此默认设置向所有者和组授予读取、写入和执行权限，但不向其他用户授予任何权限。     
+    *  按需要自定义“Unix 权限”，以指定装载路径的更改权限。 此设置不适用于装载路径下的文件。 默认设置为 `0770`。 此默认设置向所有者和组授予“读取”、“写入”和“执行”权限，但不向其他用户授予任何权限。     
         注册要求和注意事项适用于“Unix 权限”设置。 请按照[配置 Unix 权限和更改所有权模式](configure-unix-permissions-change-ownership-mode.md)中的说明操作。  
 
     * 或[配置卷的导出策略](azure-netapp-files-configure-export-policy.md)。
@@ -203,16 +206,24 @@ Active Directory 连接中的“允许具有 LDAP 的本地 NFS 用户”选项�
 
 ## <a name="manage-ldap-posix-attributes"></a>管理 LDAP POSIX 属性
 
-可以使用 Active Directory 用户和计算机 MMC 管理单元管理 POSIX 属性，如 UID、主目录和其他值。  以下示例展示了 Active Directory 属性编辑器：  
+可以使用 Active Directory 用户和计算机 MMC 管理单元管理 POSIX 属性，如 UID、主目录和其他值。  以下示例展示了 Active Directory 属性编辑器： 
 
 ![Active Directory 属性编辑器](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
 需要为 LDAP 用户和 LDAP 组设置以下属性： 
 * LDAP 用户必需的属性：   
-    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
+    `uid: Alice`,  
+    `uidNumber: 139`,  
+    `gidNumber: 555`,  
+    `objectClass: user, posixAccount`
 * LDAP 组必需的属性：   
-    `objectClass: posixGroup`, `gidNumber: 555`
+    `objectClass: group, posixGroup`,  
+    `gidNumber: 555`
 * 所有用户和组必须分别具有唯一的 `uidNumber` 和 `gidNumber`。 
+
+为 `objectClass` 指定的值是单独的条目。 例如，在多值字符串编辑器中，`objectClass` 将为 LDAP 用户指定如下单独的值（`user` 和 `posixAccount`）：   
+
+![多值字符串编辑器的屏幕截图，其中显示了为对象类指定了多个值。](../media/azure-netapp-files/multi-valued-string-editor.png) 
 
 Azure Active Directory 域服务 (AADDS) 不允许修改在组织 AADDC 用户 OU 中创建的用户和组的 POSIX 属性。 作为一种解决方法，可以创建自定义 OU，并在自定义 OU 中创建用户和组。
 

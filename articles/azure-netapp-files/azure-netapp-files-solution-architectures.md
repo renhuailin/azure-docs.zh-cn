@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 10/05/2021
 ms.author: b-juche
-ms.openlocfilehash: fc5d979c0c89c6f331e6b48fa1ffba30b5a91eb2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 22424e6d8498535c2b4b884834439a4f1882ab9d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122970316"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537241"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文提供了使用 Azure NetApp 文件的解决方案体系结构最佳做法的参考，帮助你更好地理解这个体系结构。  
@@ -34,6 +34,7 @@ ms.locfileid: "122970316"
 
 ### <a name="oracle"></a>Oracle
 
+* [使用 Azure NetApp 文件的 Oracle Database - Azure 示例方案](/azure/architecture/example-scenario/file-storage/oracle-azure-netapp-files)
 * [使用 Azure NetApp 文件的 Microsoft Azure 上的 Oracle 数据库](https://www.netapp.com/media/17105-tr4780.pdf)
 * [Microsoft Azure 上的 Oracle VM 映像及其部署：共享存储配置选项](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Azure NetApp 文件单卷上的 Oracle 数据库性能](performance-oracle-single-volumes.md)
@@ -52,12 +53,14 @@ ms.locfileid: "122970316"
 
 ### <a name="file-sharing-and-global-file-caching"></a>文件共享和全局文件缓存
 
+* [使用 Azure NetApp 文件和 DFS 命名空间的企业文件共享的灾难恢复](https://techcommunity.microsoft.com/t5/azure-architecture-blog/disaster-recovery-for-enterprise-file-shares/ba-p/2808757)
 * [生成自己的 Azure NFS？将 Linux 文件共享迁移到云](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
 * [使用 Azure NetApp 文件和 NetApp 全局文件缓存进行全局分布式 Enterprise 文件共享](https://f.hubspotusercontent20.net/hubfs/525875/NA-580-0521-Architecture-Doc-R3.pdf)
 * [Azure NetApp 文件的云合规性](https://cloud.netapp.com/hubfs/Cloud%20Compliance%20for%20Azure%20NetApp%20Files%20-%20November%202020.pdf)
 
 ### <a name="sql-server"></a>SQL Server
 
+* [使用 Azure NetApp 文件的 Azure 虚拟机上的 SQL Server - Azure 示例方案](/azure/architecture/example-scenario/file-storage/sql-server-azure-netapp-files)
 * [Azure 上的 SQL Server 部署指南（使用 Azure NetApp 文件）](https://www.netapp.com/pdf.html?item=/media/27154-tr-4888.pdf)
 * [使用 Azure NetApp 文件进行 SQL Server 部署的好处](solutions-benefits-azure-netapp-files-sql-server.md)
 * [使用 Azure NetApp 文件通过 SMB 部署 SQL Server](https://www.youtube.com/watch?v=x7udfcYbibs)
@@ -85,6 +88,7 @@ ms.locfileid: "122970316"
 * [在 Red Hat Enterprise Linux 上使用 Azure NetApp 文件在 Azure VM 上利用备用节点实现 SAP HANA 的横向扩展](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 * [RHEL 上使用 HSR 和 Pacemaker 的 SAP HANA 横向扩展 - Azure 虚拟机](../virtual-machines/workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md)
 * [Azure 应用程序一致性快照工具 (AzAcSnap)](azacsnap-introduction.md)
+* [使用 Azure NetApp 文件进行 SAP HANA 灾难恢复](https://docs.netapp.com/us-en/netapp-solutions-sap/pdfs/sidebar/SAP_HANA_Disaster_Recovery_with_Azure_NetApp_Files.pdf)
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
@@ -171,6 +175,11 @@ ms.locfileid: "122970316"
 * [Azure NetApp 文件 + Trident = 用于 Kubernetes 的动态和持久存储](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
 * [Trident - 容器的存储业务流程协调程序](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Azure Kubernetes 服务 (AKS) 中的 Magento 电子商务平台](/azure/architecture/example-scenario/magento/magento-azure)
+
+### <a name="azure-red-hat-openshift"></a>Azure Red Hat Openshift   
+
+*   [使用 Trident 从 OpenShift 自动执行 Azure NetApp 文件](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/using-trident-to-automate-azure-netapp-files-from-openshift/ba-p/2367351)
+
 
 ### <a name="azure-batch"></a>Azure Batch
 

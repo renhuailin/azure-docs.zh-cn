@@ -1,18 +1,17 @@
 ---
 title: Azure 虚拟 WAN 常见问题解答 | Microsoft Docs
 description: 查看有关 Azure 虚拟 WAN 网络、客户端、网关、设备、合作伙伴和连接的常见问题解答。
-services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7b0045ccfd54d956ef8ae7fd2eb1b38705aafd31
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: eaeefcfc48492686abc88215e80bc6d74a836f4f
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514966"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545032"
 ---
 # <a name="virtual-wan-faq"></a>虚拟 WAN 常见问题解答
 
@@ -34,7 +33,9 @@ ms.locfileid: "122514966"
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>虚拟 WAN 中如何处理可用性区域和复原？
 
-虚拟 WAN 是中心以及其中提供的服务的集合。 用户可以根据需要拥有任意数量的虚拟 WAN。 虚拟 WAN 中心内包含多个服务，例如 VPN、ExpressRoute 等。其中每个服务（Azure 防火墙除外）均部署在“可用性区域”区域中（如果该区域支持可用性区域）。 如果在中心进行初始部署后，某个区域成为可用性区域，则用户可以重新创建网关，这将触发可用性区域部署。 所有网关在中心内都预配为主动-主动，这意味着中心内置了复原能力。 如果用户需要跨区域的复原能力，可以连接到多个中心。
+虚拟 WAN 是中心以及其中提供的服务的集合。 用户可以根据需要拥有任意数量的虚拟 WAN。 虚拟 WAN 中心内包含多个服务，例如 VPN、ExpressRoute 等。其中每个服务（Azure 防火墙除外）自动部署在“可用性区域”区域中（如果该区域支持可用性区域）。 如果在中心进行初始部署后，某个区域成为可用性区域，则用户可以重新创建网关，这将触发可用性区域部署。 所有网关在中心内都预配为主动-主动，这意味着中心内置了复原能力。 如果用户需要跨区域的复原能力，可以连接到多个中心。 
+
+目前，可以使用 Azure 防火墙管理器门户、[PowerShell](/powershell/module/az.network/new-azfirewall#example-6--create-a-firewall-with-no-rules-and-with-availability-zones) 或 CLI 部署 Azure 防火墙来支持可用性区域。 目前无法配置要跨可用性区域部署的现有防火墙。 需要删除并重新部署 Azure 防火墙。 
 
 尽管虚拟 WAN 的概念是全球性的，但实际的虚拟 WAN 资源基于资源管理器，并且按区域进行部署。 如果虚拟 WAN 区域本身遇到问题，则该虚拟 WAN 中的所有中心都将继续按原样运行，但在虚拟 WAN 区域可用之前，用户无法创建新的中心。
 
@@ -251,10 +252,10 @@ Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主�
 如果某个虚拟中心从多个远程中心获知同一路由，则其决定顺序如下所示：
 
 1. 最长前缀匹配。
-1. 本地路由优先于中心间路由（虚拟中心为中心间 AS 分配65520-65520）。
+1. 本地路由优先于中心间路由。
 1. 静态路由优先于 BGP 路由：这与虚拟中心路由器做出的决定有关。 但是，如果决策者是其中的站点通过 BGP 播发路由的 VPN 网关，或者是提供静态地址前缀的 VPN 网关，则静态路由可能优先于 BGP 路由。
 1. ExpressRoute (ER) 优先于 VPN：在本地中心，ER 优先于 VPN。 ExpressRoute 线路之间的传输连接只能通过 Global Reach 提供。 因此，当有一个 ExpressRoute 线路连接到一个中心，并且有另一个 ExpressRoute 线路通过 VPN 连接连接到其他中心时，对于中心间路由方案，VPN 可能是首选项。
-1. AS 路径长度。
+1. AS 路径长度（当广告路由到彼此时，虚拟中心会在路由前追加 AS 路径 65520-65520）。
 
 ### <a name="does-the-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>虚拟 WAN 中心是否允许 ExpressRoute 线路之间的连接？
 

@@ -118,4 +118,4 @@
     - name: Azure AD 角色的 PowerShell 示例
       href: powershell-for-azure-ad-roles.md
     - name: Azure AD 服务限制
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md

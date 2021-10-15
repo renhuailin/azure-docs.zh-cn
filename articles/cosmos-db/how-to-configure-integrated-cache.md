@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 09/28/2021
 ms.author: tisande
-ms.openlocfilehash: b8c2e27b7023a106815b34538f1cd3dba85354b3
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 251f534669333c17a4bb408a23b33f73c79c9e9f
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114667648"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229696"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>如何配置 Azure Cosmos DB 集成缓存（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "114667648"
 
 ## <a name="adjust-request-consistency"></a>调整请求一致性
 
-请务必将请求一致性调整为“最终”。 否则，请求将始终绕过集成缓存。 要为所有读取操作配置最终一致性，最简单的方法是[在帐户级别设置](consistency-levels.md#configure-the-default-consistency-level)。 你还可在[请求级别](how-to-manage-consistency.md#override-the-default-consistency-level)配置一致性，如果只希望部分读取使用集成缓存，则建议在请求级别配置。
+请务必将请求一致性调整为“会话”或“最终”。 否则，请求将始终绕过集成缓存。 要为所有读取操作配置特定一致性，最简单的方法是[在帐户级别设置](consistency-levels.md#configure-the-default-consistency-level)。 你还可在[请求级别](how-to-manage-consistency.md#override-the-default-consistency-level)配置一致性，如果只希望部分读取使用集成缓存，则建议在请求级别配置。
 
 > [!NOTE]
 > 如果使用的是 Python SDK，则必须显式设置每个请求的一致性级别。 默认不会自动应用帐户级别的设置。
@@ -100,7 +100,7 @@ FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefin
 
 -   客户端连接到专用网关终结点
 -  客户端使用网关模式（Python 和 Node.js SDK 始终使用网关模式）
--   请求的一致性必须设置为“最终”。
+-   请求的一致性必须设置为“会话”或“最终”
 
 > [!NOTE]
 > 你对集成缓存有何反馈？ 我们想听一听！ 欢迎直接与 Azure Cosmos DB 工程团队分享反馈：cosmoscachefeedback@microsoft.com

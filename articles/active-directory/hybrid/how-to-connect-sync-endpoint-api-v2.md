@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4434b59044aed8c9814431864e5c3c9b7d98254c
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: a0a3e8476ae567c0e7d35ab53e1a5c57a52ad2e7
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575711"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233685"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect 同步 V2 终结点 API 
 Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Active Directory 的同步服务操作性能。 通过利用新的 V2 终结点，导出或导入 Azure AD 时的性能会有显著提升。 这一新终结点支持以下功能：
@@ -29,7 +29,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
 > 目前，新终结点对写回的 Microsoft 365 组没有已配置的组大小限制。 这可能会影响 Active Directory 和同步周期延迟。 建议以递增方式增加组大小。  
 
 >[!NOTE]
-> Azure AD Connect 同步 V2 终结点 API 目前仅适用于以下 Azure 环境：
+> Azure AD Connect 同步 V2 终结点 API 为正式版，但目前只能在这些 Azure 环境中使用：
 > - Azure 商业版
 > - Azure 中国云
 > - Azure 美国政府云 此 API 在 Azure 德国云中不可用
@@ -127,7 +127,7 @@ Microsoft 已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Act
  
  ![编辑同步规则](media/how-to-connect-sync-endpoint-api-v2/endpoint5.png)
 
-9. 点击“保存”(Save) 
+9. 点击“保存” 
 10. 打开管理员 PowerShell 提示符 
 11. 重新启用同步计划程序 
  

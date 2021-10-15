@@ -1,18 +1,17 @@
 ---
 title: 已启用 Azure Arc 的 Open Service Mesh（预览版）
-description: 已启用 Arc 的 Kubernetes 群集上的 Open Service Mesh (OSM) 扩展
-services: azure-arc
+description: 已启用 Azure Arc 的 Kubernetes 群集上的 Open Service Mesh (OSM) 扩展
 ms.service: azure-arc
 ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: c8a10873f420b5aba75596a4377bfa4f0b37d4f7
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 16e13238ffd471678eab9bdd0245aa708b7c4419
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606891"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389354"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>已启用 Azure Arc 的 Open Service Mesh（预览版）
 
@@ -20,11 +19,11 @@ ms.locfileid: "122606891"
 
 OSM 在 Kubernetes 上运行基于 Envoy 的控制平面，可以使用 [SMI](https://smi-spec.io/) API 进行配置，并通过将 Envoy 代理作为挎斗容器注入到每个应用程序实例旁边来运行。 [详细了解](https://docs.openservicemesh.io/#features) Open Service Mesh 实现的服务网格方案。
 
-### <a name="support-limitations-for-arc-enabled-open-service-mesh"></a>已启用 Arc 的 Open Service Mesh 的支持限制
+### <a name="support-limitations-for-azure-arc-enabled-open-service-mesh"></a>已启用 Azure Arc 的 Open Service Mesh 的支持限制
 
-- 在一个已连接到 Arc 的 Kubernetes 群集上，只能部署一个 Open Service Mesh 实例
+- 在一个已连接到 Azure Arc 的 Kubernetes 群集上，只能部署一个 Open Service Mesh 实例。
 - 为 Open Service Mesh v0.8.4 和更高版本推出了此功能的公共预览版。 在[此处](https://github.com/Azure/osm-azure/releases)可以找到最新发布版本。 受支持的发行版本附有注释。 忽略与中间版本关联的标记。 
-- 目前支持以下 Kubernetes 发行版
+- 目前支持以下 Kubernetes 发行版：
     - AKS 引擎
     - HCI 上的 AKS
     - Cluster API Azure
@@ -35,15 +34,14 @@ OSM 在 Kubernetes 上运行基于 Envoy 的控制平面，可以使用 [SMI](ht
     - Amazon Elastic Kubernetes Service
 - 可将 Azure Monitor 与已启用 Azure Arc 的 Open Service Mesh 相集成，但[支持将受到限制](https://github.com/microsoft/Docker-Provider/blob/ci_dev/Documentation/OSMPrivatePreview/ReadMe.md)。
 
-
 [!INCLUDE [preview features note](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - 确保满足[此处](extensions.md#prerequisites)列出的所有一般群集扩展先决条件。
 - 使用版本 >= v0.4.0 的 az k8s-extension CLI
 
-## <a name="install-arc-enabled-open-service-mesh-osm-on-an-arc-enabled-kubernetes-cluster"></a>在已启用 Arc 的 Kubernetes 群集上安装已启用 Arc 的 Open Service Mesh (OSM)
+## <a name="install-azure-arc-enabled-open-service-mesh-osm-on-an-azure-arc-enabled-kubernetes-cluster"></a>在已启用 Azure Arc 的 Kubernetes 群集上安装已启用 Azure Arc 的 Open Service Mesh (OSM)
 
 以下步骤假设已有一个包含受支持 Kubernetes 发行版且已连接到 Azure Arc 的群集。
 
@@ -54,12 +52,12 @@ OSM 在 Kubernetes 上运行基于 Envoy 的控制平面，可以使用 [SMI](ht
 设置环境变量：
 
 ```azurecli-interactive
-export VERSION=0.8.4
+export VERSION=<osm-arc-version>
 export CLUSTER_NAME=<arc-cluster-name>
 export RESOURCE_GROUP=<resource-group-name>
 ```
 
-在已启用 Arc 的 Open Service Mesh 的预览期，`az k8s-extension create` 命令仅接受对 `--release-train` 标志使用 `pilot`。 `--auto-upgrade-minor-version` 始终设置为 `false`，且必须提供版本。 如果你有 OpenShift 群集，请使用[此部分](#install-a-specific-version-of-osm-on-openshift-cluster)中的步骤。
+在已启用 Azure Arc 的 Open Service Mesh 的预览期，`az k8s-extension create` 命令仅接受对 `--release-train` 标志使用 `pilot`。 `--auto-upgrade-minor-version` 始终设置为 `false`，且必须提供版本。 如果你有 OpenShift 群集，请使用[此部分](#install-a-specific-version-of-osm-on-openshift-cluster)中的步骤。
 
 ```azurecli-interactive
 az k8s-extension create --cluster-name $CLUSTER_NAME --resource-group $RESOURCE_GROUP --cluster-type connectedClusters --extension-type Microsoft.openservicemesh --scope cluster --release-train pilot --name osm --version $VERSION
@@ -94,7 +92,7 @@ az k8s-extension create --cluster-name $CLUSTER_NAME --resource-group $RESOURCE_
   },
   "statuses": [],
   "type": "Microsoft.KubernetesConfiguration/extensions",
-  "version": "0.8.4"
+  "version": "x.x.x"
 }
 ```
 
@@ -126,9 +124,9 @@ az k8s-extension create --cluster-name $CLUSTER_NAME --resource-group $RESOURCE_
 
 为确保特权 init 容器设置不会还原为默认设置，请在所有后续 az k8s-extension create 命令中传入 "osm.OpenServiceMesh.enablePrivilegedInitContainer" : "true" 配置设置。
 
-### <a name="install-arc-enabled-osm-using-arm-template"></a>使用 ARM 模板安装已启用 Arc 的 OSM
+### <a name="install-azure-arc-enabled-osm-using-arm-template"></a>使用 ARM 模板安装已启用 Azure Arc 的 OSM
 
-将群集连接到 Azure Arc 后，创建采用以下格式的 JSON 文件，并确保更新 <cluster-name> 值：
+将群集连接到 Azure Arc 后，创建采用以下格式的 JSON 文件，并确保更新 \<cluster-name\> 和 \<osm-arc-version\> 值：
 
 ```json
 {
@@ -150,7 +148,7 @@ az k8s-extension create --cluster-name $CLUSTER_NAME --resource-group $RESOURCE_
             }
         },
         "ExtensionVersion": {
-            "defaultValue": "0.8.4",
+            "defaultValue": "<osm-arc-version>",
             "type": "String",
             "metadata": {
                 "description": "The extension type version."
@@ -203,7 +201,7 @@ az deployment group create --name $DEPLOYMENT_NAME --resource-group $RESOURCE_GR
 
 现在，应该可以查看 OSM 资源并在群集中使用 OSM 扩展。
 
-## <a name="validate-the-arc-enabled-open-service-mesh-installation"></a>验证已启用 Arc 的 Open Service Mesh 安装
+## <a name="validate-the-azure-arc-enabled-open-service-mesh-installation"></a>验证已启用 Azure Arc 的 Open Service Mesh 安装
 
 运行以下命令。
 
@@ -240,7 +238,7 @@ az k8s-extension show --cluster-type connectedClusters --cluster-name $CLUSTER_N
   },
   "statuses": [],
   "type": "Microsoft.KubernetesConfiguration/extensions",
-  "version": "0.8.4"
+  "version": "x.x.x"
 }
 ```
 ## <a name="osm-controller-configuration"></a>OSM 控制器配置
@@ -355,7 +353,7 @@ kubectl get configmap osm-config -n arc-osm-system -o json
     > [!NOTE]
     > 为确保 ConfigMap 更改不会还原为默认值，请在所有后续 az k8s-extension create 命令中传入相同的配置设置。
 
-## <a name="using-the-arc-enabled-open-service-mesh"></a>使用已启用 Arc 的 Open Service Mesh
+## <a name="using-the-azure-arc-enabled-open-service-mesh"></a>使用已启用 Azure Arc 的 Open Service Mesh
 
 若要开始使用 OSM 功能，首先需要将应用程序命名空间加入服务网格。 从 [OSM GitHub 版本页](https://github.com/openservicemesh/osm/releases/)下载 OSM CLI。 将命名空间添加到网格后，可以配置 SMI 策略以实现所需的 OSM 功能。
 
@@ -392,7 +390,7 @@ OSM 扩展不会安装 [Jaeger](https://www.jaegertracing.io/docs/getting-starte
 
 Azure Monitor 和 Azure Application Insights 都提供用于收集、分析和处理来自云环境与本地环境的遥测数据的综合解决方案，可帮助你将应用程序和服务的可用性和性能最大化。
 
-已启用 Arc 的 Open Service Mesh 将深度集成到这两个 Azure 服务，并提供无缝的 Azure 体验用于查看和响应 OSM 指标所提供的关键 KPI。 按照以下步骤允许 Azure Monitor 抓取 prometheus 终结点以收集应用程序指标。 
+已启用 Azure Arc 的 Open Service Mesh 将深度集成到这两个 Azure 服务，并提供无缝的 Azure 体验用于查看和响应 OSM 指标所提供的关键 KPI。 按照以下步骤允许 Azure Monitor 抓取 prometheus 终结点以收集应用程序指标。 
 
 1. 确保要监视的应用程序命名空间已加入到网格。 请按照[此处](#onboard-namespaces-to-the-service-mesh)提供的指导操作。
 
@@ -427,7 +425,7 @@ InsightsMetrics
 
 ### <a name="navigating-the-osm-dashboard"></a>在 OSM 仪表板中导航
 
-1. 使用[此链接](https://aka.ms/azmon/osmarcux)访问已连接到 Arc 的 Kubernetes 群集。
+1. 使用[此链接](https://aka.ms/azmon/osmarcux)访问已连接到 Azure Arc 的 Kubernetes 群集。
 2. 转到 Azure Monitor，导航到“报告”选项卡以访问 OSM 工作簿。
 3. 选择时间范围和命名空间以限定服务的范围。
 
@@ -466,7 +464,7 @@ InsightsMetrics
 
 ### <a name="upgrade-instructions"></a>升级说明
 
-1. 删除旧的 CRD 和自定义资源（从 [OSM 存储库](https://github.com/openservicemesh/osm)的根目录运行）。 确保 [OSM CRD](https://github.com/openservicemesh/osm/tree/main/charts/osm/crds) 的标记对应于图表的新版本。
+1. 删除旧的 CRD 和自定义资源（从 [OSM 存储库](https://github.com/openservicemesh/osm)的根目录运行）。 确保 [OSM CRD](https://github.com/openservicemesh/osm/tree/main/cmd/osm-bootstrap/crds) 的标记对应于图表的新版本。
     ```azurecli-interactive
     kubectl delete --ignore-not-found --recursive -f ./charts/osm/crds/
 
@@ -487,7 +485,7 @@ InsightsMetrics
 
 5. 使用新 CRD 重新创建自定义资源
 
-## <a name="uninstall-arc-enabled-open-service-mesh"></a>部署已启用 Arc 的 Open Service Mesh
+## <a name="uninstall-azure-arc-enabled-open-service-mesh"></a>卸载已启用 Azure Arc 的 Open Service Mesh
 
 请使用以下命令：
 
@@ -510,7 +508,7 @@ az k8s-extension list --cluster-type connectedClusters --cluster-name $CLUSTER_N
 
 ## <a name="troubleshooting"></a>故障排除
 
-参阅[此处](troubleshooting.md#arc-enabled-open-service-mesh)提供的故障排除指南。
+参阅[此处](troubleshooting.md#azure-arc-enabled-open-service-mesh)提供的故障排除指南。
 
 ## <a name="next-steps"></a>后续步骤
 

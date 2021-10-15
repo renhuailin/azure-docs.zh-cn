@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/26/2021
-ms.openlocfilehash: eb94adfa104b68f515374090cfd07f300896a163
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 9994e37d747419bd42820bd4c3c4c5ed1e147708
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708807"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360182"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>为虚拟机产品/服务创建计划
 
@@ -159,7 +159,17 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 ### <a name="reuse-technical-configuration"></a>重复使用技术配置
 
-如果有多个相同类型的计划，并且它们用的包完全相同，请选择“此计划重复使用其他计划中的技术配置”。 使用此选项，可以为此产品/服务选择相同类型的其他计划，并重复使用其技术配置。
+此选项允许你在同一产品/服务中的各计划之间使用相同的技术配置设置，从而利用同一组映像。 如果启用重复使用技术配置选项，则计划将继承与你所选择的基本计划相同的技术配置设置。  更改基本计划时，相应更改将反映在重复使用此技术配置的计划中。
+
+重复使用另一个计划中的技术配置设置的一些常见原因包括：
+
+1. 相同的映像可用于“即付即用”和 BYOL。 
+2. 对价格不同的专用计划重复使用公用计划中的相同技术配置。 
+3. 解决方案会根据用户选择部署的计划而有所不同。 例如，软件是相同的，但功能因计划而异。
+
+利用 [Azure 实例元数据服务](/azure/virtual-machines/windows/instance-metadata-service) (IMDS) 确定解决方案部署在哪个计划中，以验证许可证或启用相应的功能。
+
+如果以后决定要在计划之间发布不同的更改，可以分离这些计划。 通过为你的计划取消选中此选项，可以分离重复使用技术配置的计划。 分离后，计划将在你上次设置的位置携带相同的技术配置设置，并且计划可能在配置上存在差异。 过去已独立发布的计划以后不能重复使用技术配置。 
 
 ### <a name="operating-system"></a>操作系统
 

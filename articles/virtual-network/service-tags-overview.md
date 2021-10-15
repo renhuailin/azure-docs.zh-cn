@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/23/2021
+ms.date: 9/30/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 11f8c7ddd7e06e9cc4c27173d5bb8f9dd14cbd42
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 39262b40cc320152bcbf2e9e5c0947e52234a019
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768470"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400223"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -68,6 +68,7 @@ ms.locfileid: "122768470"
 | **AzureDatabricks** | Azure Databricks。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureDataExplorerManagement** | Azure 数据资源管理器管理。 | 入站 | 否 | 否 |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 出站 | 否 | 是 |
+| **AzureDeviceUpdate** | Device Update for IoT Hub。 | 推送、请求和匿名 | 否 | 是 |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 出站 | 否 | 否 |
 | **AzureDevOps** | Azure Dev Ops。<br/><br/>注意：此标签当前无法通过 Azure 门户进行配置| 入站 | 否 | 是 |
 | **AzureDigitalTwins** | Azure 数字孪生。<br/><br/>注意：此标记或此标记所涵盖的 IP 地址可用于限制对事件路由配置的终结点的访问。 此标记当前不可通过 Azure 门户进行配置 | 入站 | 否 | 是 |
@@ -101,6 +102,7 @@ ms.locfileid: "122768470"
 | **Internet** | 虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。<br/><br/>此地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。 | 推送、请求和匿名 | 否 | 否 |
 | **LogicApps** | 逻辑应用。 | 推送、请求和匿名 | 否 | 否 |
 | **LogicAppsManagement** | 逻辑应用的管理流量。 | 入站 | 否 | 否 |
+| **MicrosoftAzureFluidRelay** | 此标记表示用于 Azure Microsoft Fluid Relay Server 的 IP 地址。 | 出站 | 否 | 否 |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 出站 | 否 | 否 |
 | **MicrosoftContainerRegistry** | 用于 Microsoft 容器映像的容器注册表。 <br/><br/>*注意：* 此标记依赖于 AzureFrontDoor.FirstParty 标记。 | 出站 | 是 | 是 |
 | **PowerBI** | PowerBi。 注意：此标签当前无法通过 Azure 门户进行配置。 | 推送、请求和匿名 | 否 | 否|
@@ -155,6 +157,19 @@ ms.locfileid: "122768470"
 - [Azure 德国](https://www.microsoft.com/download/details.aspx?id=57064)   
 
 这些文件中的 IP 地址范围采用 CIDR 表示法。 
+
+请注意，以下 AzureCloud 标记的区域名称未根据标准架构进行格式设置： 
+- AzureCloud.centralfrance (FranceCentral)
+- AzureCloud.southfrance (FranceSouth)
+- AzureCloud.germanywc (GermanyWestCentral)
+- AzureCloud.germanyn (GermanyNorth)
+- AzureCloud.norwaye (NorwayEast)
+- AzureCloud.norwayw (NorwayWest)
+- AzureCloud.switzerlandn (SwitzerlandNorth)
+- AzureCloud.switzerlandw (SwitzerlandWest)
+- AzureCloud.usstagee (EastUSSTG)
+- AzureCloud.usstagec (SouthCentralUSSTG)
+
 
 > [!NOTE]
 >XML 文件中已发布关于 [Azure 公用](https://www.microsoft.com/download/details.aspx?id=41653)、[Azure 中国](https://www.microsoft.com/download/details.aspx?id=42064)和 [Azure 德国](https://www.microsoft.com/download/details.aspx?id=54770)的部分此类信息。 这些 XML 下载内容将于 2020 年 6 月 30 日被弃用，该日期之后不再可用。 应按照前面几节中所述，使用发现 API 或 JSON 文件下载进行迁移。

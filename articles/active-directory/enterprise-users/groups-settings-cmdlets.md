@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e45101caec9127c39837d015d6a5117c7e2ae775
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: cdd7eb4acf93270ece6215492d79dd12e5d6d0dc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472036"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272332"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
@@ -33,6 +33,9 @@ ms.locfileid: "114472036"
 Microsoft 365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 起初，目录中不会显示任何设置对象，因为目录配置为默认设置。 若要更改默认设置，必须使用设置模板创建新的设置对象。 设置模板由 Microsoft 定义。 有几个不同的设置模板。 若要配置目录的 Microsoft 365 组设置，请使用名为“Group.Unified”的模板。 若要针对单个组配置 Microsoft 365 组设置，请使用名为“Group.Unified.Guest”的模板。 此模板用于管理对 Microsoft 365 组的来宾访问权限。 
 
 这些 Cmdlet 属于 Azure Active Directory PowerShell V2 模块。 有关如何在计算机上下载和安装模块的说明，请参阅文章 [Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/overview)（Azure Active Directory PowerShell 版本 2）。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureAD/)安装模块的版本 2 发行版。
+
+>[!Note]
+>即使适当设置限制将来宾添加到 Microsoft 365 组，管理员仍可将来宾用户添加到 Microsoft 365 组。 此设置将限制非管理员用户将来宾用户添加到 Microsoft 365 组。
 
 ## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
 
@@ -153,7 +156,7 @@ Microsoft 365 组设置使用 Settings 对象和 SettingsTemplate 对象配置�
 |  <ul><li>EnableGroupCreation<li>键入：布尔<li>默认值：True |一个标志，指明是否允许非管理员用户在目录中创建 Microsoft 365 组。 此设置不需要 Azure Active Directory Premium P1 许可证。|
 |  <ul><li>GroupCreationAllowedGroupId<li>键入：String<li>默认值："" |安全组的 GUID，允许该组的成员创建 Microsoft 365 组，即使 EnableGroupCreation == false。 |
 |  <ul><li>UsageGuidelinesUrl<li>键入：String<li>默认值："" |组使用准则链接。 |
-|  <ul><li>ClassificationDescriptions<li>键入：String<li>默认值："" | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>其中，Classification 与 ClassificationList 中的条目匹配。<br>当 EnableMIPLabels == True 时，此设置不适用。<br>ClassificationDescriptions 属性的长度限制为 300 字符，并且不能转义逗号，
+|  <ul><li>ClassificationDescriptions<li>键入：String<li>默认值："" | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>其中，Classification 与 ClassificationList 中的条目匹配。<br>当 EnableMIPLabels == True 时，此设置不适用。<br>属性 ClassificationDescriptions 的字符限制为 300，不能对逗号进行转义。
 |  <ul><li>DefaultClassification<li>键入：String<li>默认值："" | 如果未指定，则为要用作组的默认分类的分类。<br>当 EnableMIPLabels == True 时，此设置不适用。|
 |  <ul><li>PrefixSuffixNamingRequirement<li>键入：String<li>默认值："" | 最大长度为 64 个字符的字符串，用于定义为 Microsoft 365 组配置的命名约定。 有关详细信息，请参阅[对 Microsoft 365 组强制实施命名策略](groups-naming-policy.md)。 |
 | <ul><li>CustomBlockedWordsList<li>键入：String<li>默认值："" | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅[对 Microsoft 365 组强制实施命名策略](groups-naming-policy.md)。 |

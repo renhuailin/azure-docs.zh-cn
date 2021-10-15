@@ -3,17 +3,17 @@ title: 在 Azure 自动化中更新 Azure PowerShell 模块
 description: 本文介绍如何更新 Azure 自动化中默认提供的常见 Azure PowerShell 模块。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/14/2019
+ms.date: 09/24/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c1632da35864fc6822b385adac06d7f124aea061
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: cfa2c8b029a8c8267249907d3f67582a2a38c139
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830405"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272081"
 ---
-# <a name="update-azure-powershell-modules"></a>更新 Azure PowerShell 模块
+# <a name="update-azure-powershell-modules-in-automation"></a>在自动化中更新 Azure PowerShell 模块
 
 默认情况下，每个自动化帐户中都提供最常见的 PowerShell 模块。 请参阅[默认模块](shared-resources/modules.md#default-modules)。 由于 Azure 团队会定期更新 Azure 模块，因此包含的 cmdlet 可能会发生更改。 这些更改（例如，重命名参数或完全弃用 cmdlet）可能会对 Runbook 产生负面影响。 
 
@@ -24,12 +24,31 @@ ms.locfileid: "107830405"
 
 为了避免影响 Runbook 及其自动化过程，请在继续操作之前进行测试和验证。 如果没有用于此目的专用自动化帐户，请考虑创建一个自动化帐户，以便可以在 Runbook 开发期间测试许多不同的方案。 该测试应该包括更新 PowerShell 模块等迭代更改。
 
-请确保为自动化帐户创建了 [Azure 运行方式帐户](automation-security-overview.md#run-as-accounts)。
+确保自动化帐户已添加[系统分配的托管标识或用户分配的托管标识](quickstarts/enable-managed-identity.md)。
 
 如果在本地开发脚本，建议测试时在本地使用与自动化帐户中相同的模块版本，以确保收到相同的结果。 在验证结果并且应用了所需的任何更改之后，则可将更改移到生产环境。
 
 > [!NOTE]
 > 新自动化帐户可能不包含最新的模块。
+
+## <a name="update-az-modules"></a>更新 Az 模块
+
+目前，仅可以通过门户更新 AZ 模块。 将来会提供通过 PowerShell 和 ARM 模板进行的更新。 执行以下步骤时，只会更新默认的 Az 模块：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，并导航到自动化帐户。
+1. 在“共享资源”下，选择“PowerShell 模块” ****  **** 。
+1. 选择“更新 Az 模块” **** 。
+1. 选择“要更新的模块”。 默认情况下，它将显示 Az 模块。  
+1. 从下拉列表中，选择“模块版本”。
+1. 选择“更新”，将 Az 模块更新到你所选择的版本。
+
+   :::image type="content" source="./media/automation-update-azure-modules/update-az-modules-portal.png" alt-text="包含选择内容的“更新 AZ 模块”页面。":::
+
+如果你选择的版本低于自动化帐户中导入的现有 Az 模块版本，则更新操作将执行回退到选定的低版本的操作。  
+
+可以通过检查“PowerShell 模块”下“模块”列表中显示的更新模块的模块版本和状态属性验证更新操作 。 
+
+Azure 团队将定期更新模块版本，并通过从下拉列表中选择模块版本来提供更新默认 Az 模块的选项。  
 
 ## <a name="obtain-a-runbook-to-use-for-updates"></a>获取用于更新的 Runbook
 

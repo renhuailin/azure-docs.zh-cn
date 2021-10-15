@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/24/2021
+ms.date: 10/01/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687e23c7267991eee171e205a537a45546da73b2
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 510e2207a2c25c5da5f4de08f3bf16fbf6cf4c7d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864576"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354298"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
@@ -31,7 +31,7 @@ ms.locfileid: "122864576"
 > [!IMPORTANT]
 >
 > - 从 2021 年 7 月 12 日开始，如果 Azure AD B2B 客户设置了新的 Google 集成，将其用于自定义应用程序或业务线应用程序的自助注册或用于邀请外部用户，则会为 Gmail 用户阻止身份验证（错误屏幕显示在[预期内容](#what-to-expect)中）。 仅当在 2021 年 7 月 12 日之后为自助注册用户流或邀请创建 Google 集成或业务线应用程序未移至系统 Web 视图时，才发生此问题。 由于默认情况下启用了系统 Web 视图，因此大多数应用不会受到影响。 为了避免此问题，我们强烈建议你在为自助注册创建任何新的 Google 集成之前，将 Gmail 身份验证移至系统浏览器。 请参阅[嵌入式 Web 视图所需的操作](#action-needed-for-embedded-frameworks)。
-> - 从 2021 年 9 月 30 日开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行外部用户邀请或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。 [了解详细信息](#deprecation-of-web-view-sign-in-support)。
+> - 从 2021 年 9 月 30 日开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行外部用户邀请或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。 [了解详细信息](#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google 用户体验是什么？
 
@@ -58,7 +58,7 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 
 ## <a name="deprecation-of-web-view-sign-in-support"></a>弃用 web-view 登录支持
 
-从 2021 年 9 月 30 日开始，Google 将[弃用嵌入式 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行[外部用户邀请](google-federation.md)或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。
+从 2021 年 9 月 30 日开始，Google 将[弃用嵌入式 Web 视图登录支持](https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行[外部用户邀请](google-federation.md)或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。
 
 以下是将影响 Gmai l用户的已知方案：
 - Windows 上的 Microsoft 应用（例如 Teams 和 Power Apps） 
@@ -72,11 +72,7 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 - 通过网站访问的 Microsoft 365 服务（例如 SharePoint Online、Office Web Apps 和 Teams Web 应用）
 - 使用系统 web-view 进行身份验证的移动应用（iOS 上的 [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)、Android 上的[自定义标签](https://developer.chrome.com/docs/android/custom-tabs/overview/)）。  
 - Google Workspace 标识，例如，将[基于 SAML 的联合](direct-federation.md)与 Google Workspace 结合使用时
-
-我们正在向 Google 确认此更改是否会影响以下内容：
 - 使用 Web 帐户管理器(WAM)或 Web 身份验证代理 (WAB) 的 Windows 应用。  
-
-我们将继续测试各种平台和方案，并将相应地更新本文。
 
 ### <a name="action-needed-for-embedded-web-views"></a>嵌入式 web-view 所需的操作
 
@@ -84,20 +80,55 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 
 ### <a name="what-to-expect"></a>期望
 
-在 Google 于 2021 年 9 月 30 日实施这些更改之前，Microsoft 将为仍在使用嵌入式 Web 视图的应用部署解决方法，以确保身份验证不会被阻止。 系统将提示使用嵌入式 Web 视图中的 Gmail 帐户登录的用户在单独的浏览器中输入代码以完成登录。
+从 9 月 30 日开始，Microsoft 将全局推出一个设备登录流，作为解决方法提供给仍在使用嵌入式 Web 视图的应用，以确保不会阻止身份验证。
+
+### <a name="how-to-sign-in-with-the-device-sign-in-flow"></a>如何使用设备登录流登录
+
+设备登录流会提示在嵌入式 Web 视图中使用 Gmail 帐户登录的用户在单独的浏览器中输入代码，然后才能完成登录。 如果用户在浏览器中没有活动会话的情况下首次使用其 Gmail 帐户登录，他们将在屏幕上看到以下内容。 如果现有的 Gmail 帐户已登录，则其中一些步骤可能会取消。
+
+1. 在“登录”屏幕上，用户输入其 Gmail 地址，然后选择“下一步”。 
+
+   ![显示登录屏幕的屏幕截图](media/google-federation/1-sign-in.png)
+
+1. 出现以下屏幕，提示用户打开新窗口，导航到 https://microsoft.com/devicelogin ，然后输入显示的 9 位数字母数字代码。
+
+   ![显示 9 位数代码的屏幕截图](media/google-federation/2-sign-in-code.png)
+
+1. 此操作将打开设备登录页面，用户可以在此页面中输入代码。 
+
+   ![显示设备登录页面的屏幕截图](media/google-federation/3-enter-code.png)
+
+1. 如果代码匹配，出于安全目的，系统会要求用户重新输入其电子邮件以确认其应用和登录位置。
+
+   ![显示重新输入电子邮件的屏幕截图](media/google-federation/4-sign-in-reenter-email.png)
+
+1. 用户使用其电子邮件和密码登录 Google。
+
+   ![显示 Google 登录屏幕的屏幕截图](media/google-federation/5-sign-in-with-google.png)
+
+1. 系统将再次要求用户确认要登录的应用。
+
+   ![显示应用程序确认屏幕的屏幕截图](media/google-federation/6-confirm-sign-in.png)
+
+1. 用户选择“继续”。 提示确认用户已登录。 用户关闭选项卡或窗口，并返回到第一个屏幕，此时用户已登录到应用。
+
+   ![显示登录确认的屏幕截图](media/google-federation/7-app-sign-in-confirmed.png)
 
 或者，现有 Gmail 用户和新 Gmail 用户可以使用电子邮件一次性密码进行登录。 若要让 Gmail 用户使用电子邮件一次性密码，请执行以下操作：
+
 1. [启用电子邮件一次性密码](one-time-passcode.md#enable-email-one-time-passcode)
 2. [删除 Google 联合身份验证](google-federation.md#how-do-i-remove-google-federation)
 3. [重置 Gmail 用户的兑换状态](reset-redemption-status.md)，以便他们今后可以使用电子邮件一次性密码。
+
+如果要请求延期，受影响的（一或多个）OAuth 客户端 ID 的客户应该已收到来自 Google Developers 的电子邮件，其中包含有关一次性政策实施延期的信息，该延期必须在 2022 年 1 月 31 日之前结束，具体内容如下：
+
+- “如有必要，你可以为列出的每个 OAuth 客户端 ID 请求 **适用于嵌入式 Web 视图的政策实施延期**，延期是一次性的，至 2022 年 1 月 31 日结束。 为清楚起见，适用于嵌入式 Web 视图的政策将于 2022 年 2 月 1 日起实施，没有任何例外或延期。”
 
 迁移到允许使用 web-view 进行身份验证的应用程序将不会受到影响，并且像往常一样，将不允许用户通过 Google 进行身份验证。
 
 如果应用程序未迁移到允许 web-view 进行身份验证，则受影响的 Gmail 用户将看到以下屏幕。
 
 ![Google 登录错误（如果应用没有迁移到系统浏览器）](media/google-federation/google-sign-in-error-ewv.png)
-
-当 Google 分享了更多细节时，我们将更新这份文档。
 
 ### <a name="distinguishing-between-cefelectron-and-embedded-web-views"></a>区分 CEF/Electron 和嵌入式 web-view
 

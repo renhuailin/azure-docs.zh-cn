@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2017
+ms.date: 08/22/2021
 ms.author: monicar
-ms.openlocfilehash: a97726498adc89a8453d88bef9a61aa343da2c5e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0f0b624097fdb159fd52adae7ae57830833662f2
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956442"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272939"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -28,6 +28,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 * [Microsoft Azure 和 Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) - Azure 服务及其 AWS 对等项的定义。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [云计算术语](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 常规行业云术语。
+* [Azure 基本概念](/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts) - 适用于 Azure 的 Microsoft 云采用框架。
 
 ## <a name="account"></a>account
 用于访问和管理 Azure 订阅的帐户。 它通常被称为 Azure 帐户，尽管帐户可以是以下任何一个：现有的工作、学校或个人 Microsoft 帐户。 当注册[免费试用版](https://azure.microsoft.com)时，还可以创建一个帐户来管理 Azure 订阅。  

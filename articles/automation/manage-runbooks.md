@@ -3,15 +3,15 @@ title: 在 Azure 自动化中管理 Runbook
 description: 本文介绍如何在 Azure 自动化中管理 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 05/03/2021
+ms.date: 09/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c33b4dfdcecf64c692ad5e0df5de3ea80cc34d84
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 88122af7da4472db497713b4f417092cca7e87df
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737560"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351454"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
@@ -19,10 +19,10 @@ ms.locfileid: "108737560"
 
 ## <a name="create-a-runbook"></a>创建 Runbook
 
-使用 Azure 门户或 Windows PowerShell 在 Azure 自动化中创建新的 Runbook。 Runbook 创建后，就可使用下文中的信息编辑它：
+使用 Azure 门户或 PowerShell 在 Azure 自动化中创建新的 Runbook。 Runbook 创建后，就可使用下文中的信息编辑它：
 
 * [在 Azure 自动化中编辑文本 Runbook](automation-edit-textual-runbook.md)
-* [了解自动化 Runbook 的关键 Windows PowerShell 工作流概念](automation-powershell-workflow.md)
+* [了解自动化 Runbook 的关键 PowerShell 工作流概念](automation-powershell-workflow.md)
 * [在 Azure 自动化中管理 Python 2 包](python-packages.md)
 * [在 Azure 自动化中管理 Python 3 程序包（预览版）](python-3-packages.md)
 
@@ -84,7 +84,7 @@ New-AzAutomationRunbook @params
 > [!NOTE]
 > 导入图形 Runbook 后，可将其转换为其他类型。 但是，无法将图形 Runbook 转换为文本 Runbook。
 
-### <a name="import-a-runbook-with-windows-powershell"></a>使用 Windows PowerShell 导入 Runbook
+### <a name="import-a-runbook-with-powershell"></a>使用 PowerShell 导入 Runbook
 
 使用 [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook) cmdlet 将脚本文件作为草稿 Runbook 导入。 如果该 Runbook 已存在，则导入将失败，除非你将 `Force` 参数与 cmdlet 一起使用。
 
@@ -167,44 +167,43 @@ $JobInfo.GetEnumerator() | Sort-Object Key -Descending | Select-Object -First 1
 如果一些 Runbook 同时跨多个作业运行，则它们可能会表现得很奇怪。 在这种情况下，重要的是让 Runbook 实现逻辑来确定是否已有正在运行的作业。 下面是一个基本示例。
 
 ```powershell
-# Authenticate to Azure
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-$cnParams = @{
-    ServicePrincipal      = $true
-    Tenant                = $connection.TenantId
-    ApplicationId         = $connection.ApplicationId
-    CertificateThumbprint = $connection.CertificateThumbprint
-}
-Connect-AzAccount @cnParams
-$AzureContext = Set-AzContext -SubscriptionId $connection.SubscriptionID
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -DefaultProfile $AzureContext
 
 # Check for already running or new runbooks
-$runbookName = "RunbookName"
-$rgName = "ResourceGroupName"
-$accountName = "AutomationAccountName"
-$jobs = Get-AzAutomationJob -ResourceGroupName $rgName -AutomationAccountName $accountName -RunbookName $runbookName -AzContext $AzureContext
+$runbookName = "runbookName"
+$resourceGroupName = "resourceGroupName"
+$automationAccountName = "automationAccountName"
+
+$jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName `
+    -AutomationAccountName $automationAccountName `
+    -RunbookName $runbookName `
+    -DefaultProfile $AzureContext
 
 # Check to see if it is already running
 $runningCount = ($jobs.Where( { $_.Status -eq 'Running' })).count
 
 if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Status -eq 'New')) {
     # Exit code
-    Write-Output "Runbook [$runbookName] is already running"
+    Write-Output "Runbook $runbookName is already running"
     exit 1
 } else {
     # Insert Your code here
+    Write-Output "Runbook $runbookName is not running"
 }
 ```
-或者，可以使用 PowerShell 的展开功能将连接信息传递给 `Connect-AzAccount`。 在这种情况下，上一示例的前几行将如下所示。
 
-```powershell
-# Authenticate to Azure
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount @connection
-$AzureContext = Set-AzContext -SubscriptionId $connection.SubscriptionID
-```
-
-有关详细信息，请参阅[关于展开](/powershell/module/microsoft.powershell.core/about/about_splatting)。
+如果希望 Runbook 使用系统分配的托管标识执行，请按原样保留代码。 如果希望使用用户分配的托管标识，则执行以下操作：
+1. 从第 5 行中删除 `$AzureContext = (Connect-AzAccount -Identity).context`，
+1. 将其替换为 `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context`，然后
+1. 输入客户端 ID。
 
 ## <a name="handle-transient-errors-in-a-time-dependent-script"></a>处理依赖时间的脚本中的暂时性错误
 
@@ -220,29 +219,33 @@ Runbook 必须可靠且能够处理[错误](automation-runbook-execution.md#erro
 Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 
 
 ```powershell
+# Ensures you do not inherit an AzContext in your runbook
 Disable-AzContextAutosave -Scope Process
 
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-$cnParams = @{
-    ServicePrincipal      = $true
-    Tenant                = $connection.TenantId
-    ApplicationId         = $connection.ApplicationId
-    CertificateThumbprint = $connection.CertificateThumbprint
-}
-Connect-AzAccount @cnParams
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
 
-$childRunbookName = 'ChildRunbookDemo'
-$accountName = 'MyAutomationAccount'
-$rgName = 'MyResourceGroup'
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -DefaultProfile $AzureContext
+
+$childRunbookName = 'childRunbookDemo'
+$resourceGroupName = "resourceGroupName"
+$automationAccountName = "automationAccountName"
 
 $startParams = @{
-    ResourceGroupName     = $rgName
-    AutomationAccountName = $accountName
+    ResourceGroupName     = $resourceGroupName
+    AutomationAccountName = $automationAccountName
     Name                  = $childRunbookName
     DefaultProfile        = $AzureContext
 }
 Start-AzAutomationRunbook @startParams
 ```
+
+如果希望 Runbook 使用系统分配的托管标识执行，请按原样保留代码。 如果希望使用用户分配的托管标识，则执行以下操作：
+1. 从第 5 行中删除 `$AzureContext = (Connect-AzAccount -Identity).context`，
+1. 将其替换为 `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context`，然后
+1. 输入客户端 ID。
 
 ## <a name="work-with-a-custom-script"></a>使用自定义脚本
 

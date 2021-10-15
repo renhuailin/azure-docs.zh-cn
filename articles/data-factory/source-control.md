@@ -7,13 +7,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/04/2021
-ms.openlocfilehash: 0eb7356542eb7016cd27cc76e048857e8d7f9955
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.date: 09/22/2021
+ms.openlocfilehash: 24e6157ce585914229a3b65a20feba4640ca272a
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598083"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458806"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "122598083"
 为了提供更好的创作体验，Azure 数据工厂支持使用 Azure Repos 或 GitHub 配置 Git 存储库。 Git 是一个支持简化变更跟踪和协作的版本控制系统。 本文将概述 Git 存储库的配置和工作原理，并重点介绍最佳做法和故障排除指南。
 
 > [!NOTE]
-> 对于 Azure 政府版云，仅 GitHub Enterprise Server 可用。
+> 我们在 Azure 政府、Azure 中国添加了 GitHub 公共支持。 请参阅[公告博客](https://techcommunity.microsoft.com/t5/azure-data-factory/cicd-improvements-with-github-support-in-azure-government-and/ba-p/2686918)。
 
 若要详细了解 Azure 数据工厂如何与 Git 集成，请观看下面时长 15 分钟的教程视频：
 
@@ -42,7 +42,7 @@ ms.locfileid: "122598083"
     -   还原导致 bug 的更改的功能。
 -   **部分保存：** 在通过数据工厂服务进行创作时，不能将更改保存为草稿，所有发布都必须通过数据工厂验证。 无论是管道尚未完成还是你只是不想在计算机崩溃时丢失更改，Git 集成都支持对数据工厂资源进行增量更改，无论资源处于何种状态均是如此。 配置 git 存储库可以保存更改，让你可以在执行满意的更改测试后才进行发布。
 -   **协作和控制：** 如果有多个团队成员参与同一工厂，则可能需要通过代码评审流程让团队成员相互协作。 你还可以对工厂进行设置，使参与者拥有不同的权限。 可以仅允许某些团队成员通过 Git 进行更改，并只允许团队中的某些人将更改“发布”到工厂。
--   **更好的 CI/CD：** 如果要通过 [持续交付过程](continuous-integration-deployment.md)部署到多个环境中，git 集成可使某些操作更简单。 部分此类操作包括：
+-   **更好的 CI/CD：** 如果要通过 [持续交付过程](continuous-integration-delivery.md)部署到多个环境中，git 集成可使某些操作更简单。 部分此类操作包括：
     -   将发布管道配置为开发工厂中发生任何更改后立即自动触发。
     -   自定义工厂中可用作资源管理器模板的参数的属性。 仅将所需属性集保留为参数并将其他所有内容进行硬编码可能很有用。
 -   **性能更好：** 使用 git 集成的工厂平均加载速度是通过数据工厂服务创作的 10 倍。 性能提升的原因在于资源是通过 Git 下载的。
@@ -58,19 +58,19 @@ ms.locfileid: "122598083"
 
 在 Azure 数据工厂主页中，选择顶部的“设置代码存储库”。
 
-![从主页配置代码存储库](media/doc-common-process/set-up-code-repository.png)
+:::image type="content" source="media/doc-common-process/set-up-code-repository.png" alt-text="从主页配置代码存储库":::
 
 ### <a name="configuration-method-2-authoring-canvas"></a>配置方法 2：创作画布
 
 在 Azure 数据工厂用户体验创作画布中，依次选择“数据工厂”下拉菜单和“设置代码存储库”。
 
-![通过创作配置代码存储库设置](media/author-visually/configure-repo-2.png)
+:::image type="content" source="media/author-visually/configure-repo-2.png" alt-text="通过创作配置代码存储库设置":::
 
 ### <a name="configuration-method-3-management-hub"></a>配置方法 3：管理中心
 
 转到 ADF 用户体验中的管理中心。 选择“源代码管理”部分的“Git 配置”。 如果没有连接的存储库，请单击“配置”。
 
-![通过管理中心配置代码存储库设置](media/author-visually/configure-repo-3.png)
+:::image type="content" source="media/author-visually/configure-repo-3.png" alt-text="通过管理中心配置代码存储库设置":::
 
 ### <a name="configuration-method-4-during-factory-creation"></a>配置方法 4：在创建工厂期间
 
@@ -79,7 +79,7 @@ ms.locfileid: "122598083"
 > [!NOTE]
 > 在 Azure 门户中配置 git 时，必须手动输入项目名称和存储库名称等设置，而不是从下拉列表中选择。
 
-![在 Azure 门户中配置代码存储库设置](media/author-visually/configure-repo-4.png)
+:::image type="content" source="media/author-visually/configure-repo-4.png" alt-text="在 Azure 门户中配置代码存储库设置":::
 
 ## <a name="author-with-azure-repos-git-integration"></a>使用 Azure Repos Git 集成进行创作
 
@@ -90,7 +90,7 @@ ms.locfileid: "122598083"
 
 ### <a name="azure-repos-settings"></a>Azure Repos 设置
 
-![配置存储库设置](media/author-visually/repo-settings.png)
+:::image type="content" source="media/author-visually/repo-settings.png" alt-text="配置存储库设置":::
 
 配置窗格将显示以下 Azure Repos 代码存储库设置：
 
@@ -102,6 +102,7 @@ ms.locfileid: "122598083"
 | **ProjectName** | Azure Repos 项目名称。 可以在 `https://{organization name}.visualstudio.com/{project name}` 中找到 Azure Repos 项目名称。 | `<your Azure Repos project name>` |
 | **RepositoryName** | Azure Repos 代码存储库名称。 Azure Repos 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | `<your Azure Repos code repository name>` |
 | **协作分支** | 将用于发布的 Azure Repos 协作分支。 该名称默认为 `main`。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch name>` |
+| **发布分支** | 发布分支是存储和更新发布相关 ARM 模板的存储库中的分支。 该名称默认为 `adf_publish`。 | `<your publish branch name>` |
 | **根文件夹** | Azure Repos 协作分支中的根文件夹。 | `<your root folder name>` |
 | 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否从 UX 创作画布将现有数据工厂资源导入 Azure Repos Git 存储库。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 | **要将资源导入到的分支** | 指定要将数据工厂资源（管道、数据集、链接服务等）导入哪个分支。 可将资源导入以下分支之一：a. 协作；b. 新建；c. 使用现有项 |  |
@@ -140,7 +141,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 ### <a name="github-settings"></a>GitHub 设置
 
-![GitHub 存储库设置](media/author-visually/github-integration-image2.png)
+:::image type="content" source="media/author-visually/github-integration-image2.png" alt-text="GitHub 存储库设置":::
 
 配置窗格将显示以下 GitHub 存储库设置：
 
@@ -176,15 +177,15 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 1. 转到 GitHub，打开“设置”。
 
-    ![打开 GitHub 设置](media/author-visually/github-settings.png)
+    :::image type="content" source="media/author-visually/github-settings.png" alt-text="打开 GitHub 设置":::
 
 1. 选择“应用程序”。 在“授权的 OAuth 应用”选项卡中，应会看到“AzureDataFactory”。
 
-    ![选择 OAuth 应用](media/author-visually/github-organization-select-application.png)
+    :::image type="content" source="media/author-visually/github-organization-select-application.png" alt-text="选择 OAuth 应用":::
 
 1. 选择此应用程序，并授予其对组织的访问权限。
 
-    ![授予访问权限](media/author-visually/github-organization-grant.png)
+    :::image type="content" source="media/author-visually/github-organization-grant.png" alt-text="授予访问权限":::
 
 在按照这些步骤操作后，工厂将能够连接到组织中的公用和专用存储库。 
 
@@ -205,13 +206,17 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 ### <a name="creating-feature-branches"></a>创建功能分支
 
-与数据工厂关联的每个 Azure Repos Git 存储库都有一个协作分支。 （默认协作分支为 `main`）。 用户还可以通过单击分支下拉列表中的“+ 新建分支”来创建功能分支。 出现“新建分支”窗格后，输入功能分支的名称。
+与数据工厂关联的每个 Azure Repos Git 存储库都有一个协作分支。 （默认协作分支为 `main`）。 用户还可以通过单击分支下拉列表中的“+ 新建分支”来创建功能分支。 
 
-![创建新分支](media/author-visually/new-branch.png)
+:::image type="content" source="media/author-visually/new-branch.png" alt-text="创建新分支":::
+
+“新建分支”窗格出现后，输入功能分支的名称，然后选择一个分支作为工作的基础。
+
+:::image type="content" source="media/author-visually/create-branch-from-private-branch.png" alt-text="显示如何基于专用分支创建分支的屏幕截图。":::
 
 准备好将功能分支的更改合并到协作分支时，单击分支下拉列表并选择“创建拉取请求”。 此操作会将你转到 Azure Repos Git，可以在这里发起拉取请求、完成代码评审并将更改合并至协作分支。 （默认分支为 `main`）。 只能从协作分支发布至数据工厂服务。 
 
-![创建新的拉取请求](media/author-visually/create-pull-request.png)
+:::image type="content" source="media/author-visually/create-pull-request.png" alt-text="创建新的拉取请求":::
 
 ### <a name="configure-publishing-settings"></a>配置发布设置
 
@@ -232,11 +237,11 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 在将更改合并到协作分支（默认为 `main`）后，单击“发布”，以将主分支中的代码更改手动发布到数据工厂服务中。
 
-![将更改发布至数据更改服务](media/author-visually/publish-changes.png)
+:::image type="content" source="media/author-visually/publish-changes.png" alt-text="将更改发布至数据更改服务":::
 
 此时会打开一个侧窗格，你可以在其中确认发布分支和挂起的更改是否正确。 验证更改后，单击“确定”以确认发布。
 
-![确认正确的发布分支](media/author-visually/configure-publish-branch.png)
+:::image type="content" source="media/author-visually/configure-publish-branch.png" alt-text="确认正确的发布分支":::
 
 > [!IMPORTANT]
 > 主分支并不代表数据工厂服务中部署的内容。 必须将主分支手动发布到数据工厂服务。
@@ -279,7 +284,7 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 <u>代码流：</u>协作分支 -> 实时模式
 
-![强制从协作分支发布代码](media/author-visually/force-publish-changes-from-collaboration-branch.png)
+:::image type="content" source="media/author-visually/force-publish-changes-from-collaboration-branch.png" alt-text="强制从协作分支发布代码":::
 
 #### <a name="option-2-disconnect-and-reconnect-git-repository"></a>选项 2：断开连接并重新连接 Git 存储库
 
@@ -293,15 +298,21 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 根据需要适当地选择任一方法。 
 
+### <a name="all-resources-showing-as-new-on-publish"></a>所有资源在发布时都显示为新资源
+
+发布时，所有资源可能会显示为新资源，即使它们之前已发布。 如果通过重新部署工厂 ARM 模板或通过 PowerShell 或 REST API 更新工厂 repoConfiguration 属性，将 lastCommitId 属性重置在工厂的 repoConfiguration 属性上，则可能发生这种情况  。 继续发布资源将解决问题，但为了防止再次发生此类事件，请避免更新工厂 repoConfiguration 属性。 
+
+
+
 ## <a name="switch-to-a-different-git-repository"></a>切换到不同 Git 存储库
 
 若要切换到另一个 Git 存储库，请转到“源代码管理”下的管理中心的“Git 配置”页。 选择“断开”。 
 
-![“Git”图标](media/author-visually/remove-repository.png)
+:::image type="content" source="media/author-visually/remove-repository.png" alt-text="“Git”图标":::
 
 输入数据工厂名称并单击“确认”以删除与数据工厂关联的 Git 存储库。
 
-![删除与当前 Git 存储库的关联](media/author-visually/remove-repository-2.png)
+:::image type="content" source="media/author-visually/remove-repository-2.png" alt-text="删除与当前 Git 存储库的关联":::
 
 删除与当前存储库的关联后，可以将 Git 设置配置为使用不同的存储库，然后将现有数据工厂资源导入新存储库。
 
@@ -311,4 +322,4 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关监视和管理管道的信息，请参阅[以编程方式监视和管理管道](monitor-programmatically.md)。
-* 若要实现持续集成和部署，请参阅 [Azure 数据工厂中的持续集成和交付 (CI/CD)](continuous-integration-deployment.md)。
+* 若要实现持续集成和部署，请参阅 [Azure 数据工厂中的持续集成和交付 (CI/CD)](continuous-integration-delivery.md)。

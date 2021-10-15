@@ -12,12 +12,12 @@ ms.date: 09/28/2020
 ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地、Docker、容器、流式处理、算法
-ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a2481705ef1bed5a4b6d20bdfcbe68022c5f9e2
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97862315"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057372"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>安装并运行异常检测器 API 的 Docker 容器 
 
@@ -124,7 +124,7 @@ ApiKey={API_KEY}
 
 请将 `<container-registry>` 和 `<container-name>` 替换为所用容器的值。 这些容器不需要是同一容器。 可以在 HOST 上同时运行异常检测器和 LUIS 容器，也可以运行多个异常检测器容器。
 
-在端口 5000 上运行第一个容器。
+在主机端口 5000 上运行第一个容器。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -134,11 +134,11 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-在端口 5001 上运行第二个容器。
+在主机端口 5001 上运行第二个容器。
 
 
 ```bash
-docker run --rm -it -p 5000:5001 --memory 4g --cpus 1 \
+docker run --rm -it -p 5001:5000 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
 Billing={ENDPOINT_URI} \

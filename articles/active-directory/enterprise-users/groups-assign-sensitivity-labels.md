@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 09/28/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bb00c2554b17ec68cfd1cffa0902bed421b9e4e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b3285c18394c8c59d17e41b3a3eb3fd43428cd61
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433064"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229575"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>向 Azure Active Directory 中的 Microsoft 365 组分配敏感度标签
 
@@ -45,11 +45,13 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 1. 提取 Azure AD 组织的当前组设置。
 
     ```PowerShell
-    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
+    $setting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
+    $template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+    $setting = $template.CreateDirectorySetting()
     ```
 
     > [!NOTE]
-    > 如果没有为此 Azure AD 组织创建组设置，则上述 cmdlet 中会发生一个错误，内容为“无法将自变量绑定到参数‘Id’，因为该参数是空值”。 在这种情况下，必须先创建设置。 按照[用于配置组设置的 Azure Active Directory cmdlet](../enterprise-users/groups-settings-cmdlets.md) 中的步骤为此 Azure AD 组织创建组设置。
+    > 如果没有为此 Azure AD 组织创建组设置，你将收到一个错误，内容为“无法将实参绑定到形参‘Id’，因为它为 NULL”。 在这种情况下，必须先创建设置。 按照[用于配置组设置的 Azure Active Directory cmdlet](../enterprise-users/groups-settings-cmdlets.md) 中的步骤为此 Azure AD 组织创建组设置。
 
 1. 下一步，显示当前组设置。
 
@@ -66,7 +68,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 1. 接着保存更改并应用设置：
 
     ```PowerShell
-    Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+    New-AzureADDirectorySetting -DirectorySetting $setting
     ```
 
 还需要将敏感度标签与 Azure AD 同步。 有关说明，请参阅[如何为容器启用敏感度标签以及同步标签](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels)。

@@ -1,23 +1,23 @@
 ---
 title: Azure Monitor 日志专用群集
-description: 每天引入超过 1 TB 监视数据的客户可以使用专用群集，而不是共享群集
+description: 满足最低承诺层级的客户可以使用专用群集
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: yossi-y
+ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ffef89736038d2dc9977b908959207d8dafd8acc
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a1236e1b68b90e9a1e48d61fa1b425ba26ead14b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540228"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351393"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
 Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日志客户启用高级功能。 客户可以选择应在专用群集上托管哪些 Log Analytics 工作区。
 
-专用群集要求客户使用每天至少 1 TB 的数据引入产能进行提交。 可以将现有工作区迁移到专用群集，而不会丢失数据或服务中断。 
+专用群集要求客户承诺每天至少引入 500 GB 的数据。 可以将现有工作区迁移到专用群集，而不会丢失数据或服务中断。 
 
 需要专用群集的功能：
 
@@ -30,7 +30,7 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 
 ## <a name="management"></a>管理 
 
-专用群集通过表示 Azure Monitor 日志群集的 Azure 资源进行管理。 使用 [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/cluster?view=azure-cli-latest)、[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights) 或 [REST](https://docs.microsoft.com/rest/api/loganalytics/clusters) 以编程方式执行操作。
+专用群集通过表示 Azure Monitor 日志群集的 Azure 资源进行管理。 使用 [CLI](/cli/azure/monitor/log-analytics/cluster)、[PowerShell](/powershell/module/az.operationalinsights) 或 [REST](/rest/api/loganalytics/clusters) 以编程方式执行操作。
 
 创建群集后，可将工作区关联到它，并且其中新引入的数据存储在该群集中。 可随时取消工作区与群集的关联，新数据存储在共享的 Log Analytics 群集中。 关联和取消关联操作不会影响你在此操作前后的查询和对数据的访问，并且它受制于工作区中的保留。 要实现关联，群集和工作区必须在同一区域中。
 
@@ -83,13 +83,16 @@ Authorization: Bearer <token>
 
 每个区域每个订阅最多可以有 2 个活动群集。 如果删除群集，该群集将仍保留 14 天。 每个区域每个订阅最多可以有 4 个保留群集（活动或最近删除的群集）。
 
-> [!INFORMATION] 群集创建会触发资源分配和预配。 此操作可能需要几个小时才能完成。
+> [!NOTE]
+> 创建群集会触发资源分配和预配。 此操作可能需要几个小时才能完成。
 > 专用群集一旦预配就开始计费，不考虑数据引入情况；建议准备部署来更快预配群集并更快将其与工作区关联。 检查下列各项：
 > - 确定要关联到群集的初始工作区列表
 > - 你有权访问专用于该群集的订阅和所有要关联的工作区
 
 **CLI**
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster create --no-wait --resource-group "resource-group-name" --name "cluster-name" --location "region-name" --sku-capacity "daily-ingestion-gigabyte"
 
 # Wait for job completion
@@ -99,6 +102,8 @@ az resource wait --created --ids /subscriptions/subscription-id/resourceGroups/r
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" -AsJob
 
 # Check when the job is done
@@ -140,12 +145,16 @@ Log Analytics 群集的预配需要一段时间才能完成。 使用以下方�
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
 ```
  
@@ -220,8 +229,12 @@ principalId GUID 是托管标识服务在创建群集时生成的。
 
 **CLI**
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 # Find cluster resource ID
 $clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")]" --query [].id --output table
+
+Set-AzContext -SubscriptionId "workspace-subscription-id"
 
 az monitor log-analytics workspace linked-service create --no-wait --name cluster --resource-group "resource-group-name" --workspace-name "workspace-name" --write-access-resource-id $clusterResourceId
 
@@ -232,8 +245,12 @@ az resource wait --created --ids /subscriptions/subscription-id/resourceGroups/r
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 # Find cluster resource ID
 $clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name").id
+
+Select-AzSubscription "workspace-subscription-id"
 
 # Link the workspace to the cluster
 Set-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId -AsJob
@@ -275,12 +292,16 @@ Content-type: application/json
 
 **CLI**
 ```azurecli
+Set-AzContext -SubscriptionId "workspace-subscription-id"
+
 az monitor log-analytics workspace show --resource-group "resource-group-name" --workspace-name "workspace-name"
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "workspace-subscription-id"
+
 Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
@@ -330,7 +351,7 @@ Authorization: Bearer <token>
 
 ## <a name="change-cluster-properties"></a>更改群集属性
 
-创建群集资源并对其进行完全预配后，可以使用 PowerShell 或 REST API 编辑其他属性。 预配群集后可以设置的其他属性包括：
+创建群集资源并对其进行完全预配后，可以使用 CLI、PowerShell 或 REST API 编辑其他属性。 预配群集后可以设置的其他属性包括：
 
 - keyVaultProperties - 包含 Azure 密钥保管库中具有以下参数的密钥：KeyVaultUri、KeyName、KeyVersion。 请参阅[为群集更新密钥标识符详细信息](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details)。
 - 标识 - 用于对密钥保管库进行身份验证的标识。 这可以是系统分配的或用户分配的。
@@ -350,12 +371,16 @@ Authorization: Bearer <token>
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster list --resource-group "resource-group-name"
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
 ```
 
@@ -414,12 +439,16 @@ Authorization: Bearer <token>
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster list
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Get-AzOperationalInsightsCluster
 ```
 **REST API**
@@ -440,17 +469,21 @@ Authorization: Bearer <token>
 
 ## <a name="update-commitment-tier-in-cluster"></a>更新群集中的承诺层级
 
-链接工作区的数据量随时间变化时，建议适当地更新承诺层级别。 该层级以 GB 为单位指定，其值可以是 500、1000、2000 或 5000 GB/天。 请注意，无需提供完整的 REST 请求正文，但应包含 sku。
+链接工作区的数据量随时间变化时，建议适当地更新承诺层级别。 该层级以 GB 为单位指定，其值可以是 500、1000、2000 或 5000 GB/天。 请注意，无需提供完整的 REST 请求正文，但应包含 SKU。
 
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster update --resource-group "resource-group-name" --name "cluster-name"  --sku-capacity 500
 ```
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 500
 ```
 
@@ -508,12 +541,16 @@ Content-type: application/json
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "workspace-subscription-id"
+
 az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "workspace-name" --name cluster
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "workspace-subscription-id"
+
 # Unlink a workspace from cluster
 Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -WorkspaceName {workspace-name} -LinkedServiceName cluster
 ```
@@ -538,12 +575,16 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-nam
 
 **CLI**
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster delete --resource-group "resource-group-name" --name $clusterName
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
 ```
 

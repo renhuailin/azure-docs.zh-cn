@@ -1,34 +1,34 @@
 ---
-title: Azure 数据工厂支持的计算环境
+title: 计算环境
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 可与 Azure 数据工厂管道（例如 Azure HDInsight）配合使用来转换或处理数据的计算环境。
+description: 了解可与 Azure 数据工厂和 Synapse Analytics 管道（例如 Azure HDInsight）配合使用来转换或处理数据的计算环境。
 ms.service: data-factory
 ms.subservice: concepts
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.date: 05/08/2019
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 55b089b7deea167ca14a83a21e7c8d166edc519b
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: c6e2491c5c57ca8ebbde287f58fad6d6429b5ee4
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598067"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236694"
 ---
-# <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
+# <a name="compute-environments-supported-by-azure-data-factory-and-synapse-pipelines"></a>Azure 数据工厂和 Synapse 管道支持的计算环境
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
+本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了在配置用于链接这些计算环境的链接服务时支持的不同配置（按需和自带）。
 
-下表提供了数据工厂所支持的计算环境以及可以在其上运行的活动的列表。 
+下表提供了支持的计算环境以及可以在其上运行的活动的列表。 
 
 | 计算环境                                          | 活动                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [自定义](transform-data-using-dotnet-custom-activity.md)     |
-| [机器学习工作室（经典版）](#ml-studio-classic-linked-service) | [ML Studio（经典）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
+| [机器学习工作室（经典版）](#azure-machine-learning-studio-classic-linked-service) | [ML Studio（经典）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
 | [Azure 机器学习](#azure-machine-learning-linked-service) | [Azure 机器学习执行管道](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程](transform-data-using-stored-procedure.md) |
@@ -43,20 +43,20 @@ ms.locfileid: "122598067"
 | 计算链接服务中 | 属性名称                | 说明                                                  | Blob | ADLS Gen2 | Azure SQL DB | ADLS Gen 1 |
 | ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
 | 按需                 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 | 是  | 是       | 否           | 否         |
-|                           | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 | 是  | 否        | 否           | 否         |
+|                           | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使服务能够代你注册这些帐户。 | 是  | 否        | 否           | 否         |
 |                           | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储以创建按需 HDInsight 群集。 | 否   | 否        | 是          | 否         |
 | BYOC                      | linkedServiceName            | Azure 存储链接服务引用。                | 是  | 是       | 否           | 否         |
-|                           | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 | 否   | 否        | 否           | 否         |
+|                           | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使服务能够代你注册这些帐户。 | 否   | 否        | 否           | 否         |
 |                           | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的引用。 | 否   | 否        | 否           | 否         |
 
 ### <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
 
-在此类型的配置中，计算环境由 Azure 数据工厂服务完全管理。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
+在这种类型的配置中，计算环境完全由服务管理。 作业提交到进程数据前，该服务会自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
 
 > [!NOTE]
 > 按需配置目前仅支持 Azure HDInsight 群集。 Azure Databricks 还支持使用作业群集的按需作业。 有关详细信息，请参阅 [Azure Databricks 链接服务](#azure-databricks-linked-service)。
 
-Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 存储帐户 `must` 是通用的标准 Azure 存储帐户。 
+服务可自动创建按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 存储帐户 `must` 是通用的标准 Azure 存储帐户。 
 
 请注意以下关于按需 HDInsight 链接服务的 **重要** 事项：
 
@@ -70,7 +70,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 #### <a name="example"></a>示例
 
-以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 数据工厂服务自动创建基于 Linux 的 HDInsight 群集来处理所需的活动。 
+以下 JSON 定义基于 Linux 的按需 HDInsight 链接服务。 服务自动创建基于 Linux 的 HDInsight 群集来处理所需的活动。 
 
 ```json
 {
@@ -107,7 +107,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 > [!IMPORTANT]
 > HDInsight 群集在 JSON 中指定的 Blob 存储 (**linkedServiceName**).内创建 **默认容器**。 HDInsight 不会在删除群集时删除此容器。 此行为是设计使然。 使用按需 HDInsight 链接服务时，除非有现有的实时群集 (**timeToLive**)，否则每当需要处理切片时会创建 HDInsight 群集；并在处理完成后删除该群集。 
 >
-> 随着运行的活动越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
+> 随着运行的活动越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourfactoryorworkspacename**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具删除 Azure Blob 存储中的容器。
 
 #### <a name="properties"></a>属性
 
@@ -117,13 +117,13 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | clusterSize                  | 群集中辅助进程/数据节点的数量。 HDInsight 群集创建时具有 2 个头节点以及一定数量的辅助进程节点（此节点的数量是为此属性所指定的数量）。 这些节点的大小为拥有 4 个核心的 Standard_D3，因此一个具有 4 个辅助节点的群集拥有 24 个核心（辅助节点有 4\*4 = 16 个核心，头节点有 2\*4 = 8 个核心）。 请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)，了解详细信息。 | 是      |
 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此 Azure 存储帐户位于同一区域。 Azure HDInsight 会限制可在其支持的每个 Azure 区域中使用的核心总数。 确保在 Azure 区域中有足够的内核配额来满足所需的 clusterSize。 有关详细信息，请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>目前，无法创建使用 Azure Data Lake Storage（第 2 代）作为存储的按需 HDInsight 群集。 若要将 HDInsight 处理的结果数据存储在 Azure Data Lake Storage（第 2 代）中，请使用“复制活动”将数据从 Azure Blob 存储复制到 Azure Data Lake Storage（第 2 代）中。 </p> | 是      |
 | clusterResourceGroup         | 在此资源组中创建 HDInsight 群集。 | 是      |
-| timetolive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。 允许的最小值为 5 分钟 (00: 05:00)。<br/><br/>例如，如果一个活动运行需要 6 分钟，而 timetolive 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br/><br/>创建按需 HDInsight 群集是一项开销非常大的操作（可能会花费一定的时间），因此请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br/><br/>如果将 timetolive 值设置为 0，则将会在活动运行处理完后立即删除群集。 然而，如果设置了较高的值，则群集可能会保持空闲状态，以方便你登录进行某些故障排除工作，但这可能会导致成本高昂。 因此，根据具体需要设置适当的值非常重要。<br/><br/>如果 timetolive 属性值设置适当，多个管道则可共享按需 HDInsight 群集实例。 | 是      |
+| timetolive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。 允许的最小值为 5 分钟 (00: 05:00)。<br/><br/>例如，如果一个活动运行需要 6 分钟，而 timetolive 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br/><br/>创建按需 HDInsight 群集是一项开销非常大的操作（可能会花费一定的时间），因此请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高服务的性能。<br/><br/>如果将 timetolive 值设置为 0，则将会在活动运行处理完后立即删除群集。 然而，如果设置了较高的值，则群集可能会保持空闲状态，以方便你登录进行某些故障排除工作，但这可能会导致成本高昂。 因此，根据具体需要设置适当的值非常重要。<br/><br/>如果 timetolive 属性值设置适当，多个管道则可共享按需 HDInsight 群集实例。 | 是      |
 | clusterType                  | 要创建的 HDInsight 群集的类型。 允许的值是“hadoop”和“spark”。 如果未指定，默认值为 hadoop。 无法按需创建启用企业安全性套餐的群集，请改用[现有群集/自带计算](#azure-hdinsight-linked-service)。 | 否       |
 | 版本                      | HDInsight 群集的版本。 如果未指定较高的值，则使用当前 HDInsight 定义的默认版本。 | 否       |
 | hostSubscriptionId           | 用于创建 HDInsight 群集的 Azure 订阅 ID。 如果未指定，则使用 Azure 登录上下文的订阅 ID。 | 否       |
 | clusterNamePrefix           | HDI 群集名称的前缀，时间戳自动追加到群集名称的末尾| 否       |
 | sparkVersion                 | 群集类型为“Spark”时的 spark 版本 | 否       |
-| additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 这些存储帐户必须与 HDInsight 群集位于同一区域中，该群集是在与 linkedServiceName 指定的存储帐户相同的区域中创建的。 | 否       |
+| additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使服务能够代你注册这些帐户。 这些存储帐户必须与 HDInsight 群集位于同一区域中，该群集是在与 linkedServiceName 指定的存储帐户相同的区域中创建的。 | 否       |
 | osType                       | 操作系统的类型。 允许值包括：Linux 和 Windows（仅适用于 HDInsight 3.3）。 默认值为 Linux。 | 否       |
 | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储来创建按需 HDInsight 群集。 | 否       |
 | connectVia                   | 用于将活动分发到此 HDInsight 链接服务的集成运行时。 对于按需的 HDInsight 链接服务，它仅支持 Azure 集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
@@ -131,7 +131,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | clusterPassword                   | 用于访问群集的安全字符串类型密码。 | 否       |
 | clusterSshUserName         | 用于通过 SSH 远程连接到群集节点的用户名（适用于 Linux）。 | 否       |
 | clusterSshPassword         | 用于通过 SSH 远程连接到群集节点的安全字符串类型密码（适用于 Linux）。 | 否       |
-| scriptActions | 在按需创建群集期间指定 [HDInsight 群集自定义](../hdinsight/hdinsight-hadoop-customize-cluster-linux.md)的脚本。 <br />目前，Azure 数据工厂的用户界面创作工具仅支持指定 1 个脚本操作，但你可以通过 JSON 解决此限制（在 JSON 中指定多个脚本操作）。 | 否 |
+| scriptActions | 在按需创建群集期间指定 [HDInsight 群集自定义](../hdinsight/hdinsight-hadoop-customize-cluster-linux.md)的脚本。 <br />目前，UI 创作工具仅支持指定 1 个脚本操作，但你可以通过 JSON 解决此限制（在 JSON 中指定多个脚本操作）。 | 否 |
 
 
 > [!IMPORTANT]
@@ -169,7 +169,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 也可以为按需 HDInsight 群集的粒度配置指定以下属性。
 
-| 属性               | 描述                              | 必须 |
+| 属性               | 说明                              | 必须 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为待创建的 HDInsight 群集指定核心配置参数（如在 core-site.xml 中）。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -237,7 +237,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 #### <a name="node-sizes"></a>节点大小
 可使用以下属性指定头节点、数据节点和 Zookeeper 节点的大小： 
 
-| 属性          | 描述                              | 必须 |
+| 属性          | 说明                              | 必须 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 指定头节点的大小。 默认值为：Standard_D3。 有关详细信息，请参阅 **指定节点大小** 部分。 | 否       |
 | dataNodeSize      | 指定数据节点的大小。 默认值为：Standard_D3。 | 否       |
@@ -255,7 +255,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 如果为这些属性指定了错误的值，则可能会收到以下错误：未能创建群集。 异常：无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息：'PreClusterCreationValidationFailure'。 收到此错误时，请确保使用的是 [虚拟机的大小](../virtual-machines/sizes.md)一文中的表中的 **CMDLET 和 API** 名称。
 
 ### <a name="bring-your-own-compute-environment"></a>自带计算环境
-在此类型的配置中，用户可在数据工厂中将现有的计算环境注册为链接服务。 该计算环境由用户进行管理，数据工厂服务用它来执行活动。
+在这种类型的配置中，用户可将现有的计算环境注册为链接服务。 计算环境由用户进行管理，服务使用它执行活动。
 
 此类型的配置支持以下计算环境：
 
@@ -266,7 +266,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 * Azure SQL DB、Azure Synapse Analytics、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 链接服务
-可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。
+可以创建 Azure HDInsight 链接服务，以向数据工厂或 Synapse 工作区注册你自己的 HDInsight 群集。
 
 ### <a name="example"></a>示例
 
@@ -296,7 +296,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 描述                                                  | 必需 |
+| 属性          | 说明                                                  | 必需 |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | 类型属性应设置为 **HDInsight**。            | 是      |
 | clusterUri        | HDInsight 群集的 URI。                            | 是      |
@@ -318,7 +318,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以创建 Azure Batch 链接服务，以向数据工厂注册虚拟机 (VM) 的 Batch 池。 你可以使用 Azure Batch 运行自定义活动。
+可以创建 Azure Batch 链接服务，以向数据工厂或 Synapse 工作区注册虚拟机 (VM) 的 Batch 池。 你可以使用 Azure Batch 运行自定义活动。
 
 如果不熟悉 Azure Batch 服务，请参阅以下文章：
 
@@ -369,8 +369,8 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | linkedServiceName | 与此 Azure Batch 链接服务相关联的 Azure 存储链接服务的名称。 此链接服务用于暂存运行活动所需的文件。 | 是      |
 | connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
-## <a name="ml-studio-classic-linked-service"></a>ML 工作室（经典）链接服务
-可以创建 ML 工作室（经典）链接服务，用于向数据工厂注册机器学习工作室（经典）批处理计分终结点。
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure 机器学习工作室（经典版）链接服务
+可以创建 Azure 机器学习工作室（经典版）链接服务，以向数据工厂或 Synapse 工作区注册机器学习工作室（经典版）批处理评分终结点。
 
 ### <a name="example"></a>示例
 
@@ -395,7 +395,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 描述                              | 必需                                 |
+| 属性               | 说明                              | 必需                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
@@ -407,7 +407,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                       |
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务
-可以创建 Azure 机器学习链接服务，将 Azure 机器学习工作区连接到数据工厂。
+可以创建 Azure 机器学习链接服务，将 Azure 机器学习工作区连接到数据工厂或 Synapse 工作区。
 
 > [!NOTE]
 > 目前，Azure 机器学习链接服务仅支持服务主体身份验证。
@@ -452,7 +452,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
-创建 **Azure Data Lake Analytics** 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
+可以创建 Azure Data Lake Analytics 链接服务，将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂或 Synapse 工作区。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
 
 ### <a name="example"></a>示例
 
@@ -483,7 +483,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 描述                              | 必需                                 |
+| 属性             | 说明                              | 必需                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | accountName          | Azure Data Lake Analytics 帐户名。  | 是                                      |
@@ -545,13 +545,13 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 描述                              | 必需                                 |
+| 属性             | 说明                              | 必需                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | 链接服务的名称               | 是   |
 | type                 | 类型属性应设置为：**Azure Databricks**。 | 是                                      |
 | 域               | 根据 Databricks 工作区的区域相应地指定 Azure 区域。 示例： https://eastus.azuredatabricks.net | 是                                 |
-| accessToken          | 数据工厂通过 Azure Databricks 进行身份验证时，必须使用访问令牌。 需从 Databricks 工作区生成访问令牌。 [此处](/azure/databricks/dev-tools/api/latest/authentication#generate-token)提供了查找访问令牌的更多详细步骤  | 否                                       |
-| MSI          | 使用数据工厂的托管标识（由系统分配）向 Azure Databricks 进行身份验证。 使用“MSI”身份验证时，不需要访问令牌  | 否                                       |
+| accessToken          | 该服务通过 Azure Databricks 进行身份验证时，必须使用访问令牌。 需从 Databricks 工作区生成访问令牌。 [此处](/azure/databricks/dev-tools/api/latest/authentication#generate-token)提供了查找访问令牌的更多详细步骤  | 否                                       |
+| MSI          | 使用服务的托管标识（由系统分配）向 Azure Databricks 进行身份验证。 使用“MSI”身份验证时，不需要访问令牌。 可在[此处](https://techcommunity.microsoft.com/t5/azure-data-factory/azure-databricks-activities-now-support-managed-identity/ba-p/1922818)找到有关托管标识身份验证的更多详细信息  | 否                                       |
 | existingClusterId    | 现有群集的群集 ID，用于在其上运行所有作业。 该群集应该是已创建的交互式群集。 如果群集停止响应，则可能需要手动重启该群集。 Databricks 建议在新群集上运行作业，以提高可靠性。 可以通过 Databricks 工作区 ->“群集”->“交互式群集名称”->“配置”->“标记”找到交互式群集的群集 ID。 [更多详细信息](https://docs.databricks.com/user-guide/clusters/tags.html) | 否 
 | instancePoolId    | Databricks 工作区中现有池的实例池 ID。  | 否  |
 | newClusterVersion    | 群集的 Spark 版本。 它会在 Databricks 中创建作业群集。 | 否  |
@@ -563,19 +563,19 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ## <a name="azure-sql-database-linked-service"></a>Azure SQL 数据库链接服务
 
-创建 Azure SQL 链接服务，并将其与[存储过程活动](transform-data-using-stored-procedure.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [Azure SQL 连接器](connector-azure-sql-database.md#linked-service-properties)一文，以了解此链接服务的详细信息。
+创建 Azure SQL 链接服务，并将其与[存储过程活动](transform-data-using-stored-procedure.md)配合使用，以从管道调用存储过程。 请参阅 [Azure SQL 连接器](connector-azure-sql-database.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics 链接服务
 
-创建 Azure Synapse Analytics 链接服务，并将其与[存储过程活动](transform-data-using-stored-procedure.md)配合使用，以从数据工厂管道调用存储过程。 请参阅 [Azure Synapse Analytics 连接器](connector-azure-sql-data-warehouse.md#linked-service-properties)一文，以详细了解此链接服务。
+创建 Azure Synapse Analytics 链接服务，并将其与[存储过程活动](transform-data-using-stored-procedure.md)配合使用，以从管道调用存储过程。 请参阅 [Azure Synapse Analytics 连接器](connector-azure-sql-data-warehouse.md#linked-service-properties)一文，以详细了解此链接服务。
 
 ## <a name="sql-server-linked-service"></a>SQL Server 链接服务
 
-创建 SQL Server 链接服务，并将其与[存储的过程活动](transform-data-using-stored-procedure.md)配合使用，以从数据工厂管道调用存储的过程。 请参阅 [SQL Server 连接器](connector-sql-server.md#linked-service-properties)一文，以了解此链接服务的详细信息。
+创建 SQL Server 链接服务，并将其与[存储过程活动](transform-data-using-stored-procedure.md)配合使用，以从管道调用存储过程。 请参阅 [SQL Server 连接器](connector-sql-server.md#linked-service-properties)一文，以了解此链接服务的详细信息。
 
 ## <a name="azure-function-linked-service"></a>Azure 函数链接服务
 
-创建 Azure 函数链接服务，并将其与 [Azure 函数活动](control-flow-azure-function-activity.md)一起使用，以在数据工厂管道中运行 Azure Functions。 Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误 *响应内容不是有效的 JObject*。
+创建 Azure 函数链接服务，并将其与 [Azure 函数活动](control-flow-azure-function-activity.md)一起使用，以在管道中运行 Azure Functions。 Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不是 `JObject`。）除了 `JObject` 之外的任何返回类型都将失败，并且会引发用户错误 *响应内容不是有效的 JObject*。
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
@@ -586,4 +586,4 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂支持的数据转换活动的列表，请参阅[转换数据](transform-data.md)。
+有关支持的转换活动列表，请参阅[转换数据](transform-data.md)。

@@ -8,19 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/30/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8752a80eb4b5faae3566ce1e7bbd70dd61b26ba1
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 64ac913bb8f3e29dd3a99ab5abde5db3326a1a29
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219599"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423851"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
+
+## <a name="october-2021"></a>2021 年 10 月
+
+* 模型版本 `2021-08-01` 中[抽取式摘要](how-tos/extractive-summarization.md)功能的质量改进。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+* 从版本 `3.0.017010001-onprem-amd64` 开始，现在可以使用客户端库调用运行状况文本分析容器。 有关详细信息，请参阅[如何安装和运行文本分析容器](how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare#run-the-container-with-client-library-support)。
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

@@ -2,13 +2,13 @@
 title: Bicep 函数 - any
 description: 介绍了 Bicep 中可用于转换类型的 any 函数。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: c4bf30d88f9cad54e83ad1d813242dc09e6c01a5
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/09/2021
+ms.openlocfilehash: 2826f6180bc8ba4c476fd067a19db25b52f5d65b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025971"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353703"
 ---
 # <a name="any-function-for-bicep"></a>Bicep 的 any 函数
 
@@ -16,15 +16,20 @@ Bicep 支持名为 `any()` 的函数，以解决 Bicep 类型系统中的类型�
 
 此函数不存在于 Azure 资源管理器模板运行时中。 它只被 Bicep 使用，不会在生成的模板的 JSON 中发出。
 
+> [!NOTE]
+> 为帮助解决类型错误，如果某些缺失或不正确的类型要求你使用 `any()` 函数，请告知我们。 将详细信息添加到 GitHub 问题[类型验证缺失/不准确](https://github.com/Azure/bicep/issues/784)。
+
 ## <a name="any"></a>any
 
 `any(value)`
 
 返回与任何数据类型都兼容的值。
 
+命名空间：[sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | value | 是 | 所有类型 | 要转换为兼容类型的值。 |
 
@@ -71,6 +76,6 @@ publicIPAddress: any((pipId == '') ? null : {
 
 有关 `any()` 函数的更复杂用法，请参阅以下示例：
 
-* [需要特定名称的子资源](https://github.com/Azure/bicep/blob/main/docs/examples/201/api-management-create-all-resources/main.bicep#L246)
+* [需要特定名称的子资源](https://github.com/Azure/bicep/blob/62eb8109ae51d4ee4a509d8697ef9c0848f36fe4/docs/examples/201/api-management-create-all-resources/main.bicep#L247)
 * [在资源类型中未定义的资源属性（即使它存在）](https://github.com/Azure/bicep/blob/main/docs/examples/201/log-analytics-with-solutions-and-diagnostics/main.bicep#L26)
 

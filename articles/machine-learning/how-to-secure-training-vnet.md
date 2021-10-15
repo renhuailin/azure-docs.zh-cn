@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 使用独立的 Azure 虚拟网络保护 Azure 机器学习训练环境。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 08/04/2021
-ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: b4b7f35173b4f1d6d83d9b7ffd937704750f5502
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.date: 09/24/2021
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
+ms.openlocfilehash: 4fe1a4f9966e5342ee4f8a12d2b24b3a449efbae
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603964"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424324"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
@@ -50,7 +50,7 @@ ms.locfileid: "122603964"
 
 + 若要将资源部署到虚拟网络或子网中，你的用户帐户必须在 Azure 基于角色的访问控制 (Azure RBAC) 中具有以下操作的权限：
 
-    - “Microsoft.Network/virtualNetworks/*/read”（在虚拟网络资源上）。 这对于 ARM 模板部署来说是不需要的
+    - “Microsoft.Network/virtualNetworks/*/read”（在虚拟网络资源上）。 对于 Azure 资源管理器 (ARM) 模板部署，不需要这样做
     - “Microsoft.Network/virtualNetworks/subnet/join/action”（在子网资源上）。
 
     若要详细了解如何将 Azure RBAC 与网络配合使用，请参阅[网络内置角色](../role-based-access-control/built-in-roles.md#networking)
@@ -63,6 +63,7 @@ ms.locfileid: "122603964"
     * 计算群集可动态缩放。 如果没有足够的未分配 IP 地址，则只会为群集分配一部分资源。
     * 计算实例只需要一个 IP 地址。
 
+* 若要创建[不使用公共 IP 地址](#no-public-ip)的计算实例（预览功能），工作区必须使用专用终结点连接到 VNet。 有关详细信息，请参阅[为 Azure 机器学习工作区配置专用终结点](how-to-configure-private-link.md)。
 * 确保没有任何安全策略或锁定限制管理虚拟网络所需的权限。 检查策略或锁定时，请查看虚拟网络的订阅和资源组。
 * 检查对虚拟网络的订阅或资源组实施的安全策略或锁定是否限制了管理虚拟网络所需的权限。 
 * 如果你打算通过限制流量来保护虚拟网络，请参阅[所需的公共 Internet 访问权限](#required-public-internet-access)部分。
@@ -88,7 +89,13 @@ ms.locfileid: "122603964"
 
         :::image type="content" source="./media/how-to-secure-training-vnet/compute-instance-cluster-network-security-group.png" alt-text="NSG 的屏幕截图":::
 
-    * 一个公共 IP 地址。 如果 Azure Policy 分配禁止创建公共 IP，则群集/实例的部署将失败
+
+        > [!TIP]
+        > 如果计算实例不使用公共 IP 地址（预览功能），则不需要这些入站 NSG 规则。 如果还使用计算群集，群集仍将需要这些规则。
+    * 对于计算群集，需要一个公共 IP 地址。 如果 Azure Policy 分配禁止创建公共 IP，则计算的部署将失败。
+
+    * 对于计算实例，现可删除公共 IP 地址（预览资源）。 如果 Azure Policy 分配禁止创建公共 IP，则计算实例的部署将成功。
+
     * 一个负载均衡器
 
     对于计算群集，每当群集纵向缩减到 0 个节点时，将删除这些资源，而当群集横向扩展时，将创建这些资源。
@@ -109,6 +116,7 @@ ms.locfileid: "122603964"
 * 当工作区使用专用终结点时，只能从虚拟网络内部访问计算实例。 如果使用自定义 DNS 或 hosts 文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目。 将此条目映射到工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅 [自定义 DNS](./how-to-custom-dns.md) 一文。
 * 虚拟网络服务终结点策略不适用于计算群集/实例系统存储帐户。
 * 如果存储和计算实例位于不同的区域，则可能会出现间歇性超时。
+* 如果工作区的 Azure 容器注册表使用专用终结点连接到虚拟网络，则不能对计算实例使用托管标识。 若要将托管标识用于计算实例，请不要将容器注册表放在 VNet 中。
 * 如果要在计算实例上使用 Jupyter Notebook：
 
     * 不要禁用 websocket 通信。 确保网络允许与 `*.instances.azureml.net` 和 `*.instances.azureml.ms` 进行 websocket 通信。
@@ -117,10 +125,12 @@ ms.locfileid: "122603964"
 * 可以在不包含你的工作区的其他区域中创建计算群集。 此功能处于预览版阶段，只可用于计算群集，不可用于计算实例 。 为群集使用不同的区域时，有以下限制：
 
     * 如果工作区关联的资源（例如存储）与群集位于不同的虚拟网络中，请在网络之间设置全局虚拟网络对等互连。 有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
-    * 如果使用已启用专用终结点的工作区，则不支持在不同的区域中创建群集。
     * 你可能会看到网络延迟和数据传输成本增加。 在创建群集和在该群集上运行作业时，可能会产生延迟和成本。
 
     当使用不同于工作区的区域时，诸如使用 NSG 规则、用户定义的路由和输入/输出要求等指南可以正常应用。
+
+    > [!WARNING]
+    > 如果使用启用了专用终结点的工作区，则不支持在不同的区域中创建群集 。
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
@@ -139,7 +149,7 @@ ms.locfileid: "122603964"
 
 有关使用防火墙解决方案的信息，请参阅[将防火墙和 Azure 机器学习结合使用](how-to-access-azureml-behind-firewall.md)。
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>计算群集和实例 
+## <a name="compute-clusters"></a><a name="compute-cluster"></a>计算群集
 
 使用以下选项卡选择计算群集的创建方式：
 
@@ -158,10 +168,11 @@ ms.locfileid: "122603964"
 
 1. 在“配置设置”部分中，设置“计算名称”、“虚拟网络”和“子网”。   
 
+    :::image type="content" source="media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="显示设置计算名称、虚拟网络和子网的屏幕截图。":::
+
     > [!TIP]
     > 如果工作区使用专用终结点连接到虚拟网络，则“虚拟网络”选择字段将显示为灰色。
-
-    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="虚拟网络设置的屏幕快照":::
+    > 
 
 1. 选择“创建”以创建计算群集。
 
@@ -210,7 +221,26 @@ except ComputeTargetException:
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
-### <a name="inbound-traffic"></a>入站流量
+## <a name="compute-instance"></a>计算实例
+
+有关如何创建在虚拟网络中部署的计算实例的步骤，请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。
+
+### <a name="no-public-ip-for-compute-instances-preview"></a><a name="no-public-ip"></a>没有用于计算实例的公共 IP（预览版）
+
+启用“无公共 IP”时，计算实例不会使用公共 IP 来与任何依赖关系通信。 相反，它仅在使用 Azure 专用链接生态系统以及服务/专用终结点时在虚拟网络中进行通信，完全不需要使用公共 IP。 无公共 IP 会从 Internet 删除计算实例节点的访问和可发现性，从而消除重大的威胁向量。 计算实例还将执行数据包筛选，拒绝来自外部虚拟网络的任何流量。 “无公共 IP”实例依赖于 Azure 机器学习工作区的 [Azure 专用链接](how-to-configure-private-link.md)。 
+
+若要使出站连接正常工作，需要使用用户定义的路由设置一个出口防火墙（例如 Azure 防火墙）。 例如，你可以使用设置了[入站/出站配置](how-to-access-azureml-behind-firewall.md)的防火墙，并通过在部署计算实例的子网上定义路由表来路由流量。 路由表条目可以设置地址前缀为 0.0.0.0/0 的防火墙专用 IP 地址的下一跃点。
+
+与公共 IP 计算实例的通信相比，启用了“无公共 IP”的计算实例没有公共 Internet 的入站通信要求 。 具体而言，不需要任何入站 NSG 规则（`BatchNodeManagement`、`AzureMachineLearning`）。 你仍然需要允许通过 VirtualNetwork 源、任何端口源、VirtualNetwork 目标以及 29876、29877、44224 的目标端口进行入站  。
+
+“无公共 IP”的计算实例还要求禁用专用终结点网络策略和专用链接服务网络策略。 这些要求来自 Azure 专用链接服务和专用终结点，并不是 Azure 机器学习特定的。 按照[对专用链接服务源 IP 禁用网络策略](../private-link/disable-private-link-service-network-policy.md)中的说明操作，在虚拟网络子网上设置参数 `disable-private-endpoint-network-policies` 和 `disable-private-link-service-network-policies`。
+
+若要在工作室中创建无公共 IP 地址计算实例（预览功能），请在“虚拟网络”部分中设置“无公共 IP”复选框。
+还可以通过 ARM 模板创建无公共 IP 计算实例。 在 ARM 模板中，将 enableNodePublicIP 参数设置为 false。
+
+[!INCLUDE [no-public-ip-info](../../includes/machine-learning-no-public-ip-availibility.md)]
+
+## <a name="inbound-traffic"></a>入站流量
 
 [!INCLUDE [udr info for computes](../../includes/machine-learning-compute-user-defined-routes.md)]
 

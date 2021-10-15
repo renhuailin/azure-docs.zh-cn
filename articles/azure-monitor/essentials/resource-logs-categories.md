@@ -1,31 +1,31 @@
 ---
-title: Azure Monitor 资源日志支持的服务和类别
-description: Azure Monitor 参考：了解 Azure 资源日志支持的服务和事件架构。
+title: 受支持的 Azure Monitor 资源日志类别
+description: 了解 Azure Monitor 资源日志支持的服务和事件架构。
 ms.topic: reference
-ms.date: 08/04/2021
-ms.openlocfilehash: 2cbe701f3fbedacf29124c823743966be1f7ba32
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 09/10/2021
+ms.openlocfilehash: 9c41c714d2913247a6b0d00e3b242da9c59e038e
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183893"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457746"
 ---
-# <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
+# <a name="supported-categories-for-azure-monitor-resource-logs"></a>受支持的 Azure Monitor 资源日志类别
 
 > [!NOTE]
 > 此列表基本上是自动生成的。 通过 GitHub 对此列表所做的任何修改都可能在不发出警告的情况下进行改写。 请与本文的作者联系，以获取有关如何进行永久更新的详细信息。
 
-[Azure Monitor 资源日志](../essentials/platform-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
+[Azure Monitor 资源日志](../essentials/platform-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志都共享一个常见的顶级架构。 每个服务都可灵活选择为其自己的事件发出唯一属性。
 
 资源日志以前称为诊断日志。 此名称在 2019 年 10 月发生了更改，因为 Azure Monitor 收集的日志类型已转变，不仅仅包括 Azure 资源。
 
-资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 所有资源日志都有一个通用架构，其中包含特定于服务的字段，这些字段随后会针对不同的日志类别进行添加。 有关详细信息，请参阅 [Azure 资源日志的通用架构和特定于服务的架构]()
+资源类型（为 `resourceId` 属性时可用）和类别的组合唯一标识架构。 所有资源日志都有一个通用架构，其中包含特定于服务的字段，这些字段随后会针对不同的日志类别进行添加。 有关详细信息，请参阅 [Azure 资源日志的通用架构和特定于服务的架构](/azure/azure-monitor/essentials/resource-logs-schema)。
 
 ## <a name="costs"></a>成本
 
-[Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/)、[Azure 存储](https://azure.microsoft.com/product-categories/storage/)、[事件中心](https://azure.microsoft.com/pricing/details/event-hubs/)以及直接与 Azure Monitor 集成的合作伙伴（[例如 Datadog](../../partner-solutions/datadog/overview.md)）存在与数据引入和数据存储相关的成本。 请查看上述这些服务的定价页链接，了解这些成本。 资源日志只是可发送到这些位置的其中一种数据。 
+[Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/)、[Azure 存储](https://azure.microsoft.com/product-categories/storage/)、[Azure 事件中心](https://azure.microsoft.com/pricing/details/event-hubs/)以及直接与 Azure Monitor 集成的合作伙伴（[例如 Datadog](../../partner-solutions/datadog/overview.md)）存在与数据引入和数据存储相关的成本。 请查看上一句中链接的定价页，了解这些服务的成本。 资源日志只是可发送到这些位置的其中一种数据。 
 
-此外，将某些类别的资源日志导出到这些位置可能会产生成本。 下表列出了那些可能会产生导出成本的日志。 有关导出定价的详细信息，请参阅 [Azure Monitor 定价页中](https://azure.microsoft.com/pricing/details/monitor/)的“平台日志”部分。
+此外，将某些类别的资源日志导出到这些位置可能会产生成本。 下一部分的表中列出了可能会产生导出成本的日志。 有关导出定价的详细信息，请参阅 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)的“平台日志”部分。
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 
@@ -33,7 +33,7 @@ ms.locfileid: "122183893"
 
 某些类别可能只适用于特定类型的资源。 如果你觉得缺少资源，请参阅特定于资源的文档。 例如，Microsoft.Sql/servers/databases 类别并非适用于所有类型的数据库。 有关详细信息，请参阅[有关 SQL 数据库诊断日志记录的信息](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。 
 
-如果仍觉得缺少某些内容，可以在本文底部打开 GitHub 评论。
+如果仍觉得缺少某些内容，可以在本文底部添加 GitHub 评论。
 
 
 ## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices
@@ -58,6 +58,18 @@ ms.locfileid: "122183893"
 |登录|登录|是|
 
 
+## <a name="microsoftagfoodplatformfarmbeats"></a>Microsoft.AgFoodPlatform/farmBeats
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|ApplicationAuditLogs|应用程序审核日志|是|
+|FarmManagementLogs|场管理日志|是|
+|FarmOperationLogs|场操作日志|是|
+|ProviderAuthLogs|提供程序身份验证日志|是|
+|SatelliteLogs|附属日志|是|
+|WeatherLogs|天气日志|是|
+
+
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
 |Category|类别显示名称|导出成本|
@@ -71,6 +83,7 @@ ms.locfileid: "122183893"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |GatewayLogs|ApiManagement 网关的相关日志|否|
+|WebSocketConnectionLogs|与 Websocket 连接相关的日志|是|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
@@ -86,6 +99,7 @@ ms.locfileid: "122183893"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |ApplicationConsole|应用程序控制台|否|
+|IngressLogs|Ingress 日志|是|
 |SystemLogs|系统日志|否|
 
 
@@ -103,9 +117,10 @@ ms.locfileid: "122183893"
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
-|DscNodeStatus|Dsc 节点状态|否|
-|JobLogs|作业日志|否|
-|JobStreams|作业流|否|
+|AuditEvent|AuditEvent|是|
+|DscNodeStatus|DscNodeStatus|否|
+|JobLogs|JobLogs|否|
+|JobStreams|JobStreams|否|
 
 
 ## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft.AutonomousDevelopmentPlatform/accounts
@@ -117,11 +132,26 @@ ms.locfileid: "122183893"
 |请求|请求|是|
 
 
+## <a name="microsoftavsprivateclouds"></a>microsoft.avs/privateClouds
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|vmwaresyslog|VMware VCenter Syslog|是|
+
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |ServiceLog|服务日志|否|
+
+
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|BaiClusterEvent|BaiClusterEvent|否|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|否|
+|BaiJobEvent|BaiJobEvent|否|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
@@ -146,6 +176,13 @@ ms.locfileid: "122183893"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |BotRequest|来自渠道的对机器人的请求|否|
+
+
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|ConnectedClientList|连接的客户端列表|是|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
@@ -396,6 +433,13 @@ ms.locfileid: "122183893"
 |管理|管理|否|
 
 
+## <a name="microsoftdesktopvirtualizationscalingplans"></a>Microsoft.DesktopVirtualization/scalingplans
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|自动缩放|自动缩放日志|是|
+
+
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
 |Category|类别显示名称|导出成本|
@@ -535,7 +579,16 @@ ms.locfileid: "122183893"
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
+|ExPCompute|ExPCompute|是|
 |请求|请求|否|
+
+
+## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|AuditLogs|审核日志|否|
+|DiagnosticLogs|诊断日志|是|
 
 
 ## <a name="microsofthealthcareapisworkspacesdicomservices"></a>Microsoft.HealthcareApis/workspaces/dicomservices
@@ -598,6 +651,7 @@ ms.locfileid: "122183893"
 |命令|命令|否|
 |FailedIngestion|引入操作失败|否|
 |IngestionBatching|引入批处理|否|
+|期刊|期刊|是|
 |查询|查询|否|
 |SucceededIngestion|成功引入操作|否|
 |TableDetails|表详细信息|否|
@@ -656,6 +710,14 @@ ms.locfileid: "122183893"
 |---|---|---|
 |KeyDeliveryRequests|密钥传递请求|否|
 |MediaAccount|媒体帐户运行状况|是|
+
+
+## <a name="microsoftmediavideoanalyzers"></a>Microsoft.Media/videoanalyzers
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|PipelineDiagnostics|管道诊断日志|是|
+|PipelineOperational|管道操作日志|是|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
@@ -768,6 +830,13 @@ ms.locfileid: "122183893"
 |TunnelDiagnosticLog|隧道诊断日志|否|
 
 
+## <a name="microsoftnetworkfunctionazuretrafficcollectors"></a>Microsoft.NetworkFunction/azureTrafficCollectors
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|ExpressRouteCircuitIpfix|Express Route 线路 IPFIX 流记录|是|
+
+
 ## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft.NotificationHubs/namespaces
 
 |Category|类别显示名称|导出成本|
@@ -787,6 +856,7 @@ ms.locfileid: "122183893"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |引擎|引擎|否|
+
 
 ## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft.PowerBI/tenants/workspaces
 
@@ -808,6 +878,7 @@ ms.locfileid: "122183893"
 |---|---|---|
 |DataSensitivityLogEvent|DataSensitivity|是|
 |ScanStatusLogEvent|ScanStatus|否|
+|安全性|PurviewAccountAuditEvents|是|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
@@ -845,6 +916,14 @@ ms.locfileid: "122183893"
 |OperationLogs|操作日志|否|
 
 
+## <a name="microsoftsecurityinsightssettings"></a>microsoft.securityinsights/settings
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|分析|分析|是|
+|DataConnectors|数据收集 – 连接器|是|
+
+
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
 |Category|类别显示名称|导出成本|
@@ -863,7 +942,9 @@ ms.locfileid: "122183893"
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
-|AllLogs|Azure Web PubSub 服务日志。|是|
+|ConnectivityLogs|Azure Web PubSub 服务的连接日志。|是|
+|HttpRequestLogs|Azure Web PubSub 服务的 HTTP 请求日志。|是|
+|MessagingLogs|Azure Web PubSub 服务的消息传递日志。|是|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances

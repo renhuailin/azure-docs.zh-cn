@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 01d62055de8e8327b518bc3638cab85426917247
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 98fd879cb8d960f2f688b3aa002fa86832981744
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864639"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353066"
 ---
 # <a name="media-reserved-units-migration-guidance"></a>媒体保留单位迁移指南
 
@@ -34,7 +34,7 @@ ms.locfileid: "122864639"
 请根据以下方案迁移 MRU：
 
 * 对于所有媒体服务帐户，你不再需要设置媒体保留单位 (MRU)。 系统现在将根据负载自动纵向扩展和缩减。
-* 如果你有在 2020-05-01 版 API 之前创建的帐户，则你仍有权访问 API 来管理 MRU，但系统不会将你所设置的任何 MRU 配置用于控制编码并发性或性能。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 可以使用适用于媒体服务 V3 的 CLI 2.0 或使用 Azure 门户来管理 MRU。
+* 如果你有在 2020-05-01（或更新）版本 API 之前创建的帐户，则你仍有权访问 API 来管理 MRU，但系统不会将你所设置的任何 MRU 配置用于控制编码并发或性能。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 可以使用适用于媒体服务 V3 的 CLI 2.0 或使用 Azure 门户来管理 MRU。
 * 如果在 Azure 门户中看不到管理 MRU 的选项，则说明你正在运行使用 2020-05-01 API 或更高版本创建的帐户。
 * 如果你熟悉如何将 MRU 类型设置为 S3，则性能会随着 MRU 的移除而提高或保持不变。
 * 如果你是现有的 V2 客户，则需要在迁移完成之前创建一个新的 V3 帐户以支持现有的应用程序。 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7b4b3806ed00955096939c4b996c9a9d3daec004
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: a1f0fe56af1faaf9b743bf752f75c6dcb6aad881
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323812"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351263"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒体服务编码视频和音频
 
@@ -97,11 +97,11 @@ ms.locfileid: "122323812"
 
 目前支持以下内置预设：
 
-- EncoderNamedPreset.AACGoodQualityAudio：生成一个 MP4 文件，其中仅包含以 192 kbps 编码的立体声音频。
+- **EncoderNamedPreset.AACGoodQualityAudio**：生成一个 MP4 文件，其中仅包含以 192 kbps 编码的立体声音频。
 - EncoderNamedPreset.AdaptiveStreaming（建议）：支持 H.264 自适应比特率编码。 有关详细信息，请参阅[自动生成比特率梯形图](encode-autogen-bitrate-ladder.md)。
 - EncoderNamerPreset.H265AdaptiveStreaming：类似于 AdaptiveStreaming 预设，但使用 HEVC (H.265) 编解码器。 生成一组符合 GOP 的 MP4 文件，其中包含 H.265 视频和立体声 AAC 音频。 根据输入分辨率、比特率和帧速率自动生成比特率阶梯。 自动生成的预设始终不会超过输入分辨率。 例如，如果输入为 720p，则输出将最高保持 720p。
-- EncoderNamedPreset.ContentAwareEncoding：公开一个用于 H.264 内容感知编码的预设。 使用内容感知编码来生成一组已进行 GOP 调整的 MP4。 在提供任何输入内容的情况下，服务将对输入内容执行初始的轻量分析，并使用结果来确定最佳层数，以及自适应流式处理适合传送的比特率和分辨率设置。 此预设对于中低复杂度的视频特别有效，这些视频的输出文件的比特率将会较低，但质量仍可为观看者带来良好体验。 输出将包含带有交错式视频和音频的 MP4 文件。 此预设仅产生高达 1080P 的高清输出。 如果需要 4K 输出，则可以使用“maxBitrateBps”属性，通过 [PresetConfigurations](https://github.com/Azure/azure-rest-api-specs/blob/7026463801584950d4ccbaa6b05b15d29555dd3a/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Encoding.json#L2397) 配置预设。 有关详细信息，请参阅[内容感知编码](encode-content-aware-concept.md)。
-- EncoderNamedPreset.H265ContentAwareEncoding：公开一个用于 HEVC (H.265) 内容感知编码的预设。 使用内容感知编码来生成一组已进行 GOP 调整的 MP4。 在提供任何输入内容的情况下，服务将对输入内容执行初始的轻量分析，并使用结果来确定最佳层数，以及自适应流式处理适合传送的比特率和分辨率设置。 此预设对于中低复杂度的视频特别有效，这些视频的输出文件的比特率将会较低，但质量仍可为观看者带来良好体验。 输出将包含带有交错式视频和音频的 MP4 文件。 此预设产生高达 4K 的高清输出。 如果需要 8K 输出，则可以使用“maxBitrateBps”属性，通过 [PresetConfigurations](https://github.com/Azure/azure-rest-api-specs/blob/7026463801584950d4ccbaa6b05b15d29555dd3a/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Encoding.json#L2397) 配置预设。
+- **EncoderNamedPreset.ContentAwareEncoding**：公开一个用于 H.264 内容感知编码的预设。 使用内容感知编码生成一组符合 GOP 标准的 MP4。 在提供任何输入内容的情况下，服务将对输入内容执行初始的轻量分析，并使用结果来确定最佳层数，以及自适应流式处理适合传送的比特率和分辨率设置。 此预设对于中低复杂度的视频特别有效，这些视频的输出文件的比特率将会较低，但质量仍可为观看者带来良好体验。 输出将包含带有交错式视频和音频的 MP4 文件。 此预设仅产生高达 1080P 的高清输出。 如果需要 4K 输出，你可以使用“maxBitrateBps”属性通过 [PresetConfigurations](https://github.com/Azure/azure-rest-api-specs/blob/7026463801584950d4ccbaa6b05b15d29555dd3a/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Encoding.json#L2397) 配置预设。 有关详细信息，请参阅[内容感知编码](encode-content-aware-concept.md)。
+- **EncoderNamedPreset.H265ContentAwareEncoding**：公开一个用于 HEVC (H.265) 内容感知编码的预设。 使用内容感知编码生成一组符合 GOP 标准的 MP4。 在提供任何输入内容的情况下，服务将对输入内容执行初始的轻量分析，并使用结果来确定最佳层数，以及自适应流式处理适合传送的比特率和分辨率设置。 此预设对于中低复杂度的视频特别有效，这些视频的输出文件的比特率将会较低，但质量仍可为观看者带来良好体验。 输出将包含带有交错式视频和音频的 MP4 文件。 此预设产生高达 4K HD 的高清输出。 如果需要 8K 输出，你可以使用“maxBitrateBps”属性通过 [PresetConfigurations](https://github.com/Azure/azure-rest-api-specs/blob/7026463801584950d4ccbaa6b05b15d29555dd3a/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01/Encoding.json#L2397) 配置预设。
   > [!NOTE]
   > 请确保使用 ContentAwareEncoding，而不使用现在已弃用的 ContentAwareEncodingExperimental
 
@@ -148,7 +148,7 @@ ms.locfileid: "122323812"
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中缩放编码
 
 若要缩放媒体处理，请参阅[使用 CLI 进行缩放](media-reserved-units-cli-how-to.md)。
-对于使用 API 的 2020 年 5 月 1 日版本创建的或通过 Azure 门户创建的帐户，不再需要缩放和媒体保留单位。 缩放将会自动进行，并由服务在内部进行处理。
+对于使用 2020-05-01 版本或更新版本的 API 创建的帐户或通过 Azure 门户创建的帐户，不再需要缩放和媒体保留单位。 缩放将会自动进行，并由服务在内部进行处理。
 
 ## <a name="billing"></a>计费
 
