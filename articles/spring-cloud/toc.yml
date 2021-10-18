@@ -160,6 +160,8 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: 创建角色和权限
           href: how-to-permissions.md
+        - name: 使用 TLS/SSL 证书
+          href: how-to-use-tls-certificate.md
         - name: 启用端到端传输层安全性
           href: how-to-enable-end-to-end-tls.md
         - name: 访问 Config Server 和服务注册表

@@ -97,7 +97,20 @@
         - name: 在 Azure Percept DK 上设置高级网络设置
           href: how-to-set-up-advanced-network-settings.md
         - name: 通过 5G 或 LTE 网络连接 Azure Percept
-          href: connect-over-cellular.md
+          items:
+            - name: 通过 5G 或 LTE 网络连接 Azure Percept
+              href: connect-over-cellular.md
+              items:
+                - name: 使用 USB 调制解调器连接
+                  href: connect-over-cellular-usb.md
+                - name: 使用手机网关连接
+                  href: connect-over-cellular-gateway.md
+                - name: 使用 Vodafone Connect 4G 连接与使用 USB 调制解调器连接
+                  href: connect-over-cellular-usb-vodafone.md
+                - name: 使用 Multitech USB 调制解调器连接
+                  href: connect-over-cellular-usb-multitech.md
+                - name: 使用 Quectel 5G 开发人员工具包连接
+                  href: connect-over-cellular-usb-quectel.md
         - name: 通过 SSH 连接到 Azure Percept DK
           href: how-to-ssh-into-percept-dk.md
         - name: 通过串行连接到 Azure Percept DK

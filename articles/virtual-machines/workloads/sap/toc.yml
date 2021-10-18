@@ -102,6 +102,14 @@
       href: sap-deployment-checklist.md
     - name: 部署 SAP NetWeaver 应用程序
       href: deployment-guide.md
+    - name: 适用于 SAP 的 Azure VM 扩展
+      items:
+        - name: 适用于 SAP 的 Azure VM 扩展的先决条件
+          href: vm-extension-for-sap.md
+        - name: 适用于 SAP 的 Azure VM 扩展的标准版本
+          href: vm-extension-for-sap-standard.md
+        - name: 适用于 SAP 的 Azure VM 扩展的新版本
+          href: vm-extension-for-sap-new.md
     - name: 在 Azure 上规划和实施 SAP NetWeaver
       href: planning-guide.md
     - name: Azure VM 上的 SAP Business One

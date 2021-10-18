@@ -309,7 +309,7 @@
           href: consume-private-endpoints.md
         - name: 配置 IP 防火墙
           href: configure-firewall.md
-        - name: 通过 Azure Active Directory 保护 Webhook
+        - name: 将事件交付到 Azure Active Directory 保护的终结点
           href: secure-webhook-delivery.md
     - name: 疑难解答
       items:

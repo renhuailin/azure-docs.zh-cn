@@ -12,12 +12,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 11/08/2019
-  ms.openlocfilehash: c4820bef73e2dac03f2b400ff4c802f9e7cb8e65
-  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+  ms.openlocfilehash: cb092b5fd8131c67931c85758d71f955fdf4110d
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/15/2021
-  ms.locfileid: "114219015"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129998478"
 landingContent:
 - title: 关于 Azure 容器注册表
   linkLists:
@@ -25,8 +25,6 @@ landingContent:
     links:
     - text: 什么是 Azure 容器注册表？
       url: container-registry-intro.md
-    - text: 注册表、存储库和映像
-      url: container-registry-concepts.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
@@ -53,6 +51,10 @@ landingContent:
       url: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
 - title: 管理注册表
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用客户端库管理内容
+      url: quickstart-client-libraries.md
   - linkListType: how-to-guide
     links:
     - text: 查看存储库和标记
@@ -65,6 +67,8 @@ landingContent:
       url: container-registry-delete.md
   - linkListType: concept
     links:
+    - text: 注册表、存储库和映像
+      url: container-registry-concepts.md
     - text: 异地复制
       url: container-registry-geo-replication.md
     - text: 身份验证

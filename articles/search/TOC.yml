@@ -31,7 +31,7 @@
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
-    - name: JavaScript
+    - name: Javascript
       href: search-get-started-javascript.md
     - name: REST
       href: search-get-started-rest.md
@@ -198,6 +198,8 @@
           items:
             - name: 基于密钥的身份验证
               href: search-security-api-keys.md
+            - name: Azure AD 身份验证
+              href: search-howto-aad.md
             - name: 基于角色的授权
               href: search-security-rbac.md
             - name: 配置 IP 防火墙
@@ -400,6 +402,8 @@
               href: knowledge-store-projection-shape.md
             - name: 定义投影
               href: knowledge-store-projections-examples.md
+            - name: 投影示例
+              href: knowledge-store-projection-example-long.md
             - name: 使用存储资源管理器进行查看
               href: knowledge-store-view-storage-explorer.md
             - name: 使用 Power BI 进行连接

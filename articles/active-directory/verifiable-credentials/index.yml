@@ -1,47 +1,59 @@
 ### YamlMime:Landing
-title: Azure Active Directory 可验证凭据文档
+title: Azure Active Directory 可验证凭据文档（预览）
 summary: 可验证凭据可帮助构建解决方案，使客户能够管理自己的数据。
 metadata:
   author: barclayn
   description: 了解如何将可验证凭据合并到解决方案中，使客户能够控制自己的相关信息
-  manager: daveba
+  manager: karenh444
   ms.author: barclayn
   ms.collection: na
-  ms.date: 03/30/2021
+  ms.date: 10/13/2021
   ms.service: active-directory
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 13eb88e8e8613c913f66185eba751a1fe3c36e1e
-  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.openlocfilehash: 8a69a36231d2eb47307537da0e39ab4306942669
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/01/2021
-  ms.locfileid: "106176203"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130006786"
 landingContent:
-- title: 关于可验证凭据
+- title: 关键概念
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Active Directory 可验证凭据简介
       url: decentralized-identifier-overview.md
+  - linkListType: overview
+    links:
+    - text: 分散式身份识别指导原则
+      url: https://www.microsoft.com/security/blog/2021/10/06/microsofts-5-guiding-principles-for-decentralized-identities/
   - linkListType: video
     links:
     - text: 监管对资源的访问
       url: https://www.youtube.com/watch?v=r20hCF9NbTo
-- title: 可验证凭据使用户可以控制自己的个人信息
+- title: 了解 Azure Active Directory 可验证凭据服务
   linkLists:
   - linkListType: tutorial
     links:
     - text: 开始使用可验证凭据
-      url: get-started-verifiable-credentials.md
+      url: enable-your-tenant-verifiable-credentials.md
+  - linkListType: tutorial
+    links:
+    - text: 颁发可验证凭据
+      url: verifiable-credentials-configure-issuer.md
+- title: 生成可验证凭据解决方案
+  linkLists:
   - linkListType: concept
     links:
-    - text: 颁发者服务通信示例
-      url: issuer-openid.md
-- title: 如何链接 DID
-  linkLists:
+    - text: 规划体系结构
+      url: introduction-to-verifiable-credentials-architecture.md
   - linkListType: how-to-guide
     links:
-    - text: 将域链接到分散式身份识别
-      url: how-to-dnsbind.md
+    - text: 颁发程序的请求服务 API
+      url: issuance-request-api.md
+  - linkListType: how-to-guide
+    links:
+    - text: 验证程序的请求服务 API
+      url: presentation-request-api.md

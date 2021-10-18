@@ -341,7 +341,7 @@
             - name: 针对指标创建警报
               href: howto-alert-on-metric.md
               displayName: 'alerts, metrics, monitor'
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md
@@ -630,12 +630,17 @@
           items:
             - name: 工作器节点上的数据分片
               href: tutorial-hyperscale-shard.md
-        - name: 设计多租户数据库
-          href: tutorial-design-database-hyperscale-multi-tenant.md
-          displayName: 'hyperscale, tutorial, multi-tenant'
-        - name: 设计实时仪表板
-          href: tutorial-design-database-hyperscale-realtime.md
-          displayName: 'hyperscale, tutorial, real-time'
+            - name: 设计多租户数据库
+              href: tutorial-design-database-hyperscale-multi-tenant.md
+              displayName: 'hyperscale, tutorial, multi-tenant'
+            - name: 设计实时仪表板
+              href: tutorial-design-database-hyperscale-realtime.md
+              displayName: 'hyperscale, tutorial, real-time'
+        - name: 管理员
+          items:
+            - name: 专用访问权限
+              href: tutorial-hyperscale-private-access.md
+              displayName: 'hyperscale, tutorial, private'
     - name: 概念
       items:
         - name: 基本层
@@ -651,11 +656,16 @@
               href: concepts-hyperscale-choose-distribution-column.md
             - name: 表共置
               href: concepts-hyperscale-colocation.md
-        - name: 安全性
+        - name: 数据访问和安全性
           items:
-            - name: 防火墙规则
+            - name: 概述
+              href: concepts-hyperscale-security-overview.md
+            - name: 公共访问
               href: concepts-hyperscale-firewall-rules.md
               displayName: 'firewall, rules, hyperscale'
+            - name: 专用访问权限
+              href: concepts-hyperscale-private-access.md
+              displayName: 'private, link, hyperscale'
             - name: 配置 SSL
               href: concepts-hyperscale-ssl-connection-security.md
               displayName: 'hyperscale, ssl'
@@ -702,11 +712,18 @@
               href: howto-hyperscale-scale-grow.md
             - name: 重新均衡分区
               href: howto-hyperscale-scale-rebalance.md
-        - name: 防火墙规则
+        - name: 数据访问和安全性
           items:
-            - name: Azure 门户
-              href: howto-hyperscale-manage-firewall-using-portal.md
-              displayName: 'firewall rule, hyperscale'
+            - name: 公共访问
+              items:
+                - name: Azure 门户
+                  href: howto-hyperscale-manage-firewall-using-portal.md
+                  displayName: 'firewall rule, hyperscale'
+            - name: 专用访问权限
+              items:
+                - name: Azure 门户
+                  href: howto-hyperscale-private-access.md
+                  displayName: 'network, private link'
         - name: 创建用户
           href: howto-hyperscale-create-users.md
         - name: 分布式数据

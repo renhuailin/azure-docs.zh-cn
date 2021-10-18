@@ -17,7 +17,7 @@
 - name: 教程
   items:
     - name: 与 WAF 集成
-      href: app-service-app-service-environment-web-application-firewall.md
+      href: integrate-with-application-gateway.md
     - name: ASE 自定义设置
       href: app-service-app-service-environment-custom-settings.md
 - name: 示例
@@ -62,22 +62,16 @@
       items:
         - name: ASEv1
           href: app-service-app-service-environment-intro.md
-        - name: 创建 ASEv1
-          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: 从模板创建 ASEv1
+          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
         - name: 配置 ASEv1
           href: app-service-web-configure-an-app-service-environment.md
-        - name: 创建内部 ASEv1
-          href: app-service-environment-with-internal-load-balancer.md
-        - name: 基于模板创建内部 ASEv1
-          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
         - name: 在 ASEv1 中配置自动缩放
           href: app-service-environment-auto-scale.md
         - name: 在 ASEv1 中横向扩展应用
           href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
         - name: 网络体系结构
           href: app-service-app-service-environment-network-architecture-overview.md
-        - name: 在 ASEv1 中创建 Web 应用
-          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
         - name: 连接到后端
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: 配置 ExpressRoute

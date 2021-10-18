@@ -374,10 +374,12 @@
               href: azure-stack-edge-gpu-recover-device-failure.md
         - name: 监视
           items:
+            - name: 查看警报
+              href: azure-stack-edge-alerts.md
+            - name: 为警报通知使用规则
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: 使用指标图表
               href: azure-stack-edge-monitor.md
-            - name: 管理设备事件警报
-              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: 使用 Kubernetes 仪表板
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: 使用 Azure Monitor

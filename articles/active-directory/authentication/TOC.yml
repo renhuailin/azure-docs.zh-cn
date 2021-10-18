@@ -60,6 +60,8 @@
           href: multi-factor-authentication-faq.yml
     - name: 密码保护
       items:
+        - name: 组合密码策略检查
+          href: concept-password-ban-bad-combined-policy.md
         - name: 在云中消除弱密码
           href: concept-password-ban-bad.md
         - name: 在本地消除弱密码

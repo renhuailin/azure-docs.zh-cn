@@ -49,8 +49,12 @@
           href: outputs.md
           displayName: 'dynamic number of outputs,modules'
         - name: 模块
-          href: modules.md
-          displayName: 'scopes,consume'
+          items:
+            - name: 模块定义
+              href: modules.md
+              displayName: 'scopes,consume'
+            - name: 创建专用注册表
+              href: private-module-registry.md
         - name: 循环
           items:
             - name: 资源
@@ -148,11 +152,13 @@
     - name: Bicep 文件结构
       displayName: 'parameters,variables,resources,outputs,condition'
       href: file.md
-    - name: Bicep 资源参考
+    - name: 资源参考
       href: /azure/templates/
     - name: 数据类型
       href: data-types.md
-      displayName: 'supported types,arrays,booleans,integers,objects,strings,secure,'
+      displayName: 'supported types,arrays,booleans,integers,objects,strings,secure'
+    - name: Bicep 配置文件
+      href: bicep-config.md
     - name: 函数
       items:
         - name: 所有函数

@@ -9,12 +9,12 @@ metadata:
   author: hickeys
   ms.author: hickeys
   ms.date: 08/19/2021
-  ms.openlocfilehash: 86238a56af7d5d5e7f8e105bbe487994dffa207f
-  ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+  ms.openlocfilehash: d503930da03d2a86e141513ce1ff16ee06ffd950
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/07/2021
-  ms.locfileid: "129661449"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129984319"
 landingContent:
 - title: 关于 Azure Fluid Relay
   linkLists:
@@ -24,11 +24,37 @@ landingContent:
       url: overview/overview.md
     - text: Azure Fluid Relay 体系结构
       url: concepts/architecture.md
-- title: 操作说明和快速入门
-  linkLists:
+    - text: Fluid Framework 发行版的版本兼容性
+      url: concepts/version-compatibility.md
   - linkListType: get-started
     links:
     - text: 预配 Azure Fluid Relay 服务
       url: how-tos/provision-fluid-azure-portal.md
     - text: 快速入门：摇骰子
       url: quickstarts/quickstart-dice-roll.md
+- title: 深入了解
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 应用中的身份验证和授权
+      url: concepts/authentication-authorization.md
+    - text: Azure Fluid Relay 中的数据加密
+      url: concepts/data-encryption.md
+    - text: 分布式数据结构 (DDS)
+      url: concepts/data-structures.md
+    - text: Azure Fluid Relay 令牌协定
+      url: how-tos/fluid-json-web-token.md
+- title: 如何使用 Azure Fluid
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何：连接到 Azure Fluid Relay 服务
+      url: how-tos/connect-fluid-azure-service.md
+    - text: 如何：使用 Azure 函数编写 TokenProvider
+      url: how-tos/azure-function-token-provider.md
+    - text: 如何：使用 AzureClient 进行本地测试
+      url: how-tos/local-mode-with-azure-client.md
+    - text: 删除 Microsoft Azure Fluid Relay Server 中的 Fluid 容器
+      url: how-tos/container-deletion.md
+    - text: 如何：将测试自动化与 Azure Fluid Relay 一起使用
+      url: how-tos/test-automation.md

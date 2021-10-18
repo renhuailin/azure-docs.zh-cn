@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Maps 文档
-summary: Microsoft Azure Maps 为所有行业的开发人员提供强大的地理空间功能。 这些地理空间功能与最新的地理信息数据打包在一起。 Azure Maps 适用于 Web 应用程序和移动应用程序。 Azure Maps 是一组与 Azure One API 兼容的 REST API。 下面只是 Azure Maps 提供的服务的简要概述 - 地图、搜索、路线、交通、出行、天气、时区、地理位置、地理围栏、地图数据、创建者和空间操作。 Web 和 Android SDK 使开发轻松、灵活并可跨多个平台移植。
+summary: Microsoft Azure Maps 为所有行业的开发人员提供强大的地理空间功能。 这些地理空间功能与最新的地理信息数据打包在一起。 Azure Maps 适用于 Web 应用程序和移动应用程序。 Azure Maps 是一组与 Azure One API 兼容的 REST API。 下面只是 Azure Maps 提供的服务的简要概述 - 地图、搜索、路线、交通、天气、时区、地理位置、地理围栏、地图数据、创建者和空间操作。 Web 和 Android SDK 使开发轻松、灵活并可跨多个平台移植。
 metadata:
   title: Azure Maps 文档 | Microsoft Docs
   description: 了解 Azure Maps 以及如何使用它为 Web 或移动应用程序提供地理空间服务。
   ms.service: azure-maps
   ms.topic: landing-page
-  author: anastasia-ms
-  ms.author: v-stharr
-  ms.date: 1/15/2020
-  ms.openlocfilehash: 0f2f5ff726fb723e6481d03e5d8019be45fb9100
-  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+  author: stevemunk
+  ms.author: v-munksteve
+  ms.date: 10/13/2021
+  ms.openlocfilehash: 21efc1c783be18875d17f72879d7251beec28641
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/06/2021
-  ms.locfileid: "113303951"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130000473"
 landingContent:
 - title: 关于 Azure Maps
   linkLists:
@@ -42,6 +42,8 @@ landingContent:
       url: quick-demo-map-app.md
     - text: 使用 Azure Maps 创建 Android 应用
       url: quick-android-map.md
+    - text: 使用 Azure Maps 创建 iOS 应用
+      url: quick-iOS-app.md
   - linkListType: concept
     links:
     - text: 选择适用于 Maps 帐户的定价层
@@ -156,6 +158,16 @@ landingContent:
       url: clustering-point-data-android-sdk.md
     - text: 使用数据驱动样式表达式
       url: data-driven-style-expressions-android-sdk.md
+- title: 使用 iOS SDK 进行开发
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure Maps 创建 iOS 应用
+      url: quick-iOS-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: iOS 地图控件入门
+      url: how-to-use-ios-map-control-library.md
 - title: 使用 Location Based Services 进行开发
   linkLists:
   - linkListType: concept
@@ -230,22 +242,6 @@ landingContent:
     links:
     - text: 交互式地图组件
       url: /powerapps/maker/canvas-apps/geospatial-component-map
-- title: 使用出行服务进行开发
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 移动服务
-      url: mobility-service-data-structure.md
-  - linkListType: how-to-guide
-    links:
-    - text: 请求公共交通路线
-      url: how-to-request-transit-data.md
-    - text: 请求实时公共交通数据
-      url: how-to-request-real-time-data.md
-  - linkListType: reference
-    links:
-    - text: 移动服务
-      url: /rest/api/maps/mobility
 - title: 使用天气服务进行开发
   linkLists:
   - linkListType: concept

@@ -8,6 +8,8 @@
       href: overview-monitoring.md
     - name: 什么是“登录诊断”？
       href: overview-sign-in-diagnostics.md
+    - name: 什么是标记的登录？
+      href: overview-flagged-sign-ins.md
 - name: 快速入门
   expanded: true
   items:
@@ -60,6 +62,8 @@
           href: howto-find-activity-reports.md
         - name: 排查用户登录错误
           href: howto-troubleshoot-sign-in-errors.md
+        - name: 修复已标记为存在风险的用户
+          href: howto-remediate-users-flagged-for-risk.md
         - name: 配置报告 API 的先决条件
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: 如何使用 Azure AD 工作簿
@@ -91,8 +95,6 @@
 - name: 参考
   expanded: true
   items:
-    - name: 登录日志中的基本信息标识符
-      href: reference-basic-info-identifiers.md
     - name: 用于报告的 Azure AD PowerShell cmdlet
       href: reference-powershell-reporting.md
     - name: 审核日志 API 参考

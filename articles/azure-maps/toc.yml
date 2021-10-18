@@ -12,6 +12,8 @@ items:
         href: quick-demo-map-app.md
       - name: 创建 Android 应用
         href: quick-android-map.md
+      - name: 创建 iOS 应用
+        href: quick-iOS-app.md
   - name: 教程
     items:
       - name: Web SDK 教程
@@ -88,8 +90,6 @@ items:
             href: render-coverage.md
           - name: 路由覆盖区域
             href: routing-coverage.md
-          - name: 出行覆盖区域
-            href: mobility-coverage.md
           - name: 天气覆盖区域
             href: weather-coverage.md
       - name: 本地化支持
@@ -98,8 +98,6 @@ items:
         href: supported-map-styles.md
       - name: 缩放级别和磁贴网格
         href: zoom-levels-and-tile-grid.md
-      - name: 移动服务
-        href: mobility-service-data-structure.md
       - name: 天气服务概念
         href: weather-services-concepts.md
       - name: 天气服务常见问题解答
@@ -141,10 +139,6 @@ items:
             href: how-to-use-best-practices-for-routing.md
           - name: 在静态地图上呈现自定义数据
             href: how-to-render-custom-data.md
-          - name: 请求公共交通路线
-            href: how-to-request-transit-data.md
-          - name: 请求实时公共交通数据
-            href: how-to-request-real-time-data.md
           - name: 请求实时和预测的天气数据
             href: how-to-request-weather-data.md
           - name: 请求高程数据
@@ -283,6 +277,10 @@ items:
             href: data-driven-style-expressions-android-sdk.md
           - name: 对事件做出响应
             href: android-map-events.md
+      - name: 使用 iOS SDK 进行开发
+        items:
+          - name: iOS 地图控件入门
+            href: how-to-use-ios-map-control-library.md
       - name: 在 Power BI 中使用 Azure Maps
         items:
           - name: 入门
@@ -293,6 +291,8 @@ items:
             href: power-bi-visual-add-bubble-layer.md
           - name: 添加条形图层
             href: power-bi-visual-add-bar-chart-layer.md
+          - name: 添加热度地图层
+            href: power-bi-visual-add-heat-map-layer.md
           - name: 添加引用层
             href: power-bi-visual-add-reference-layer.md
           - name: 添加图块层
@@ -333,8 +333,6 @@ items:
             href: /rest/api/maps/elevation
           - name: 地理位置服务
             href: /rest/api/maps/geolocation
-          - name: 移动服务
-            href: /rest/api/maps/mobility
           - name: 呈现服务
             href: /rest/api/maps/render
           - name: 呈现服务 V2
