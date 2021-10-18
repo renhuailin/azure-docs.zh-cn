@@ -211,9 +211,9 @@
             - name: 查询存储
               href: concepts-query-store.md
               displayName: 'performance, query store'
-            - name: 查询性能见解
+            - name: Query Performance Insight
               href: concepts-query-performance-insight.md
-              displayName: query performance insights
+              displayName: Query Performance Insight
             - name: 性能建议
               href: concepts-performance-recommendations.md
               displayName: recommendation
@@ -647,7 +647,7 @@
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 管理存储过程
       href: reference-stored-procedures.md

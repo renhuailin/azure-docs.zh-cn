@@ -318,7 +318,7 @@ items:
             href: connector-azure-databricks-delta-lake.md
           - name: Azure 文件存储
             href: connector-azure-file-storage.md
-          - name: Azure SQL Database
+          - name: Azure SQL 数据库
             href: connector-azure-sql-database.md
             displayName: upsert
           - name: Azure SQL 托管实例
@@ -981,6 +981,8 @@ items:
                 href: connector-troubleshoot-dynamics-dataverse.md
               - name: FTP、SFTP 和 HTTP
                 href: connector-troubleshoot-ftp-sftp-http.md
+              - name: Hive
+                href: connector-troubleshoot-hive.md
               - name: Oracle
                 href: connector-troubleshoot-oracle.md
               - name: ORC 格式
@@ -1030,7 +1032,7 @@ items:
         href: /powershell/module/az.datafactory/
       - name: REST API
         href: /rest/api/datafactory
-      - name: 资源管理器模板
+      - name: Resource Manager 模板
         href: /azure/templates/microsoft.datafactory/allversions
       - name: Python
         href: /python/api/overview/azure/datafactory

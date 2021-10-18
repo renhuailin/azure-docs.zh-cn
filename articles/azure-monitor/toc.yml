@@ -442,7 +442,7 @@
                       href: agents/diagnostics-extension-windows-install.md
                     - name: PowerShell
                       href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                    - name: 资源管理器模板
+                    - name: Resource Manager 模板
                       href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
                 - name: 发送到 Azure Monitor 指标存储
                   items:
@@ -506,7 +506,7 @@
           href: autoscale/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: autoscale/autoscale-webhook-email.md
-        - name: 故障排除
+        - name: 疑难解答
           href: autoscale/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: autoscale/autoscale-resource-log-schema.md
@@ -773,7 +773,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md
@@ -992,7 +992,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 异常
+            - name: 例外
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -1017,8 +1017,6 @@
                   href: app/devops.md
                 - name: 将开发、测试和生产隔开
                   href: app/separate-resources.md
-                - name: 如何在 Application Insights 中执行...？
-                  href: app/how-do-i.md
                 - name: 管理 Application Insights
                   href: app/powershell.md
                 - name: 管理 Azure 云服务

@@ -220,8 +220,6 @@
   items:
     - name: 故障排除概述、反馈和支持
       href: troubleshoot-set-up-overview.md
-    - name: 识别和诊断问题
-      href: diagnostics-role-service.md
     - name: 入门功能
       href: troubleshoot-getting-started.md
     - name: 创建主机池

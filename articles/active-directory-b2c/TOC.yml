@@ -376,6 +376,8 @@
           items:
             - name: Datawiza
               href: partner-datawiza.md
+            - name: F5
+              href: partner-f5.md
             - name: Ping 标识
               href: partner-ping-identity.md
             - name: Strata
@@ -506,7 +508,7 @@
                   href: social-transformations.md
                 - name: StringCollection
                   href: stringcollection-transformations.md
-                - name: String
+                - name: 字符串
                   href: string-transformations.md
             - name: 谓词
               href: predicates.md

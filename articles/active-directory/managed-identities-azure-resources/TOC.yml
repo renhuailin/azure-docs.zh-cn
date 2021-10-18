@@ -24,8 +24,6 @@
           href: tutorial-windows-vm-access-sql.md
         - name: 访问 Azure Key Vault
           href: tutorial-windows-vm-access-nonaad.md
-        - name: 访问 Azure Cosmos DB
-          href: tutorial-windows-vm-access-cosmos-db.md
         - name: 使用用户分配的托管标识访问 Azure 资源管理器
           href: tutorial-windows-vm-ua-arm.md
     - name: Linux VM/VMSS
@@ -40,12 +38,12 @@
           href: tutorial-linux-vm-access-storage-sas.md
         - name: 访问 Azure Key Vault
           href: tutorial-linux-vm-access-nonaad.md
-        - name: 访问 Azure Cosmos DB
-          href: tutorial-linux-vm-access-cosmos-db.md
         - name: 访问 Azure 容器注册表
           href: ../../container-registry/container-registry-authentication-managed-identity.md?context=%2fazure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context
         - name: 使用用户分配的托管标识访问 Azure 资源管理器
           href: msi-tutorial-linux-vm-access-arm.md
+    - name: 访问 Azure Cosmos DB
+      href: tutorial-vm-managed-identities-cosmos.md
     - name: Azure 服务总线
       href: ../../service-bus-messaging/service-bus-managed-service-identity.md?context=%2fazure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context
     - name: Azure 应用服务和 Functions
@@ -128,7 +126,7 @@
       href: /dotnet/api/overview/azure/identity-readme
     - name: Java
       href: /java/api/overview/azure/identity-readme
-    - name: JavaScript
+    - name: Javascript
       href: /javascript/api/overview/azure/identity-readme
     - name: Python
       href: /python/api/overview/azure/identity-readme

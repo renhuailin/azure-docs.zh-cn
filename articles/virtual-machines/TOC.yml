@@ -987,7 +987,7 @@
     - name: 概述
       displayName: 'managed disks, introduction to managed disks'
       href: managed-disks-overview.md
-    - name: 选择适用于 IaaS VM 的磁盘类型
+    - name: 磁盘类型
       href: disks-types.md
     - name: 磁盘冗余选项
       href: disks-redundancy.md
@@ -1741,7 +1741,7 @@
                 - name: 自定义字段
                   displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Log Analytics VM 扩展
               href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
