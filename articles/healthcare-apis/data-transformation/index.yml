@@ -1,0 +1,43 @@
+### YamlMime:Landing
+title: 传输和转换数据
+summary: Azure 医疗保健 API 的数据传输和数据转换文档页 (预览版) 。
+metadata:
+  title: Azure 医疗保健 API 数据转换
+  description: Azure 医疗保健 API 的数据转换文档部分
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: data-transformation
+  ms.topic: landing-page
+  ms.collection: collection
+  author: ginalee-dotcom
+  ms.author: ginle
+  ms.date: 06/01/2021
+  ms.openlocfilehash: 90e88c34f8f4a6c60d9de4e3355a66433ac091a4
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121777532"
+landingContent:
+- title: 配置数据导出设置
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 配置导出设置
+      url: configure-export-data.md
+- title: 导出数据
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 导出数据
+      url: export-data.md
+    - text: 去标识化导出
+      url: de-identified-export.md
+    - text: 将数据导出到 Synapse
+      url: move-to-synapse.md
+- title: 转换数据
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: $convert-data 和 FHIR 转换器扩展模板
+      url: convert-data.md

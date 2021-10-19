@@ -1,106 +1,106 @@
 ---
-title: Azure 中支持的 FHIR 功能 - Azure API for FHIR
-description: 本文介绍在 Azure API for FHIR 中实现的 FHIR 规范Azure API for FHIR
+title: FHIR 服务中支持的 FHIR 功能
+description: 本文介绍在医疗保健 API 中实现的 FHIR 规范的功能
 services: healthcare-apis
 author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 6/16/2021
+ms.date: 08/03/2021
 ms.author: cavoeg
-ms.openlocfilehash: 3e2d0c051ff882e43b04b2aea4357e78d79e67dc
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: c1f40d6129f08b8369885631232b394d66f1d260
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113135944"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045836"
 ---
-# <a name="features"></a>功能
+# <a name="supported-fhir-features"></a>支持的 FHIR 功能
 
-Azure API for FHIR Microsoft FHIR Server for Azure 的完全托管部署。 服务器是 [FHIR 标准的](https://hl7.org/fhir) 实现。 本文档列出了 FHIR 服务器的主要功能。
+> [!IMPORTANT]
+> Azure Healthcare APIs 目前为预览版。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+Azure 医疗保健 API (中的 FHIR 服务称为 FHIR 服务) 提供开源 FHIR 服务器的完全托管部署，是 &reg; [FHIR](https://hl7.org/fhir)[](https://github.com/microsoft/fhir-server)标准的实现。 本文档列出了 FHIR 服务的主要功能。
 
 ## <a name="fhir-version"></a>FHIR 版本
 
-支持最新版本： `4.0.1`
+支持的最新版本：`4.0.1`
 
-目前还支持以前的版本，包括： `3.0.2`
+目前还支持以前的版本，包括：`3.0.2`
 
 ## <a name="rest-api"></a>REST API
 
-| API                            | 支持 - PaaS | 支持 - OSS (SQL)  | 支持 - OSS (Cosmos DB)  | 评论                                             |
-|--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| 读取                           | 是       | 是       | 是       |                                                     |
-| vread                          | 是       | 是       | 是       |                                                     |
-| update                         | 是       | 是       | 是       |                                                     |
-| 使用乐观锁定进行更新 | 是       | 是       | 是       |                                                     |
-| 更新 (条件)            | 是       | 是       | 是       |                                                     |
-| 修补程序                          | 否        | 否        | 否        |                                                     |
-| delete                         | 是       | 是       | 是       |  请参阅下面的说明。                                   |
-| 删除 (条件)            | 是       | 是        | 是        |                                                     |
-| history                        | 是       | 是       | 是       |                                                     |
-| create                         | 是       | 是       | 是       | 支持 POST/PUT                               |
-| 创建 (条件)            | 是       | 是       | 是       | 问题 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| search                         | 部分   | 部分   | 部分   | 请参阅 [FHIR 搜索概述](overview-of-search.md)。                           |
-| 链接搜索                 | 部分       | 是       | 部分   | 请参阅下面的注释 2。                                   |
-| 反向链接搜索         | 部分       | 是       | 部分   | 请参阅下面的注释 2。                                   |
-| capabilities                   | 是       | 是       | 是       |                                                     |
-| 批处理                          | 是       | 是       | 是       |                                                     |
-| transaction                    | 否        | 是       | 否        |                                                     |
-| 分页                         | 部分   | 部分   | 部分   | `self``next`支持 和                     |
-| 中介                 | 否        | 否        | 否        |                                                     |
+| API    | 适用于 FHIR 的 Azure API | 医疗保健 API 中的 FHIR 服务 | 评论 |
+|--------|--------------------|---------------------------------|---------|
+| 读取   | 是                | 是                             |         |
+| vread  | 是                | 是                             |         |
+| update | 是                | 是                             |         | 
+| 使用乐观锁定更新 | 是       | 是       |
+| 更新（条件）           | 是       | 是       |
+| 修补程序                          | 是       | 是       | 仅支持 [JSON 修补程序](https://www.hl7.org/fhir/http.html#patch) 。 我们在此 PR 的捆绑包中包含了一种使用 JSON 修补程序 [的解决方法](https://github.com/microsoft/fhir-server/pull/2143)。|
+| 修补 (条件)             | 是       | 是       |
+| delete                         | 是       | 是       | 请参阅下面的删除部分的详细信息 |
+| 删除（条件）           | 是       | 是       | 请参阅下面的删除部分的详细信息 |
+| history                        | 是       | 是       |
+| create                         | 是       | 是       | 支持 POST/PUT |
+| 创建（条件）           | 是       | 是       | 问题 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
+| search                         | 部分   | 部分   | 请参阅 [FHIR 搜索概述](overview-of-search.md)。 |
+| 链式搜索                 | 是       | 是       | |
+| 反向链式搜索         | 是       | 是       | |
+| 批处理                          | 是       | 是       |
+| transaction                    | 否        | 是       |
+| 分页                         | 部分   | 部分   | 支持 `self` 和 `next`                     |
+| 中介                 | 否        | 否        |
 
-> [!Note]
-> 按 FHIR 规范定义的删除要求在删除后，资源的后续非版本特定读取将返回 410 HTTP 状态代码，并且不再通过搜索找到该资源。 使用Azure API for FHIR还可以完全删除资源 (包括资源) 历史记录。 若要完全删除资源，可以将参数设置传递 `hardDelete` 给 true (`DELETE {server}/{resource}/{id}?hardDelete=true`) 。 如果未传递此参数或将其设置 `hardDelete` 为 false，则资源的历史版本仍将可用。
+### <a name="delete-and-conditional-delete"></a>删除和条件删除
 
+由 FHIR 规范定义的删除要求在删除后，对资源进行后续非特定版本读取时必须返回 410 HTTP 状态代码，且无法再通过搜索找到该资源。 使用 Azure API for FHIR 和 FHIR 服务，还可以完全删除 (，包括资源) 历史记录。 若要完全删除资源，可将参数设置 `hardDelete` 传递为 true (`DELETE {server}/{resource}/{id}?hardDelete=true`)。 如果未传递此参数或将 `hardDelete` 设置为 false，则资源的历史版本仍然可用。
 
- **注释 2**
-* 在 CosmosDB 中添加对链式和反向链接 FHIR 搜索的 MVP 支持。 
+除了删除之外，Azure API for FHIR和 FHIR 服务还支持条件删除，这允许你传递搜索条件以删除资源。 默认情况下，条件删除将允许你一次删除一个项。 还可以指定 参数 `_count` ，一次最多删除 100 个项。 下面是使用条件删除的一些示例。
 
-  在用于 FHIR 的 Azure API 和 Cosmos 提供支持的开源 FHIR 服务器中，链式搜索和反向链接搜索是一项 MVP 实现。 若要在 Cosmos DB 上完成链式搜索，实现会遍历搜索表达式，并发出子查询来解析匹配的资源。 这适用于表达式的每个级别。 如果任何查询返回的结果超过100，则将引发错误。 默认情况下，链式搜索位于功能标志之后。 若要在 Cosmos DB 上使用链式搜索，请使用标头 `x-ms-enable-chained-search: true` 。 有关更多详细信息，请参阅 [PR 1695](https://github.com/microsoft/fhir-server/pull/1695)。
+若要使用条件删除删除单个项，必须指定返回单个项的搜索条件。
+``` JSON
+DELETE https://{{hostname}}/Patient?identifier=1032704
+```
+
+可以执行相同的搜索，但包括 hardDelete=true 以同时删除所有历史记录。
+```JSON 
+DELETE https://{{hostname}}/Patient?identifier=1032704&hardDelete=true
+```
+
+如果要删除多个资源，可以包括 ，这将删除最多 `_count=100` 100 个与搜索条件匹配的资源。 
+``` JSON
+DELETE https://{{hostname}}/Patient?identifier=1032704&_count=100
+```
 
 ## <a name="extended-operations"></a>扩展操作
 
-支持扩展 RESTful API 的所有操作。
+支持的所有操作扩展了REST API。
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
-|------------------------|-----------|-----------|-----------|---------|
-|  (整个系统的 $export)  | 是       | 是       | 是       |         |
-| 患者/$export        | 是       | 是       | 是       |         |
-| 组/$export          | 是       | 是       | 是       |         |
-| $convert 数据          | 是       | 是       | 是       |         |
-| $validate              | 是       | 是       | 是       |         |
-| $member-匹配          | 是       | 是       | 是       |         |
-| $patient-所有    | 是       | 是       | 是       |         |
-
-## <a name="persistence"></a>持久性
-
-Microsoft FHIR 服务器具有可插接式持久性模块 (参阅 [`Microsoft.Health.Fhir.Core.Features.Persistence`](https://github.com/Microsoft/fhir-server/tree/master/src/Microsoft.Health.Fhir.Core/Features/Persistence)) 。
-
-目前，FHIR 服务器开源包含[Azure Cosmos DB](../../cosmos-db/index-overview.md)和[SQL 数据库](https://azure.microsoft.com/services/sql-database/)的实现。
-
-CosmosDB 是一种全球分布的多模型 (SQL api、MongoDB api 等 ) 数据库。 它支持不同的 [一致性级别](../../cosmos-db/consistency-levels.md)。 默认部署模板配置 FHIR 服务器 `Strong` 一致性，但可以使用 `x-ms-consistency-level` 请求标头，通过请求来修改一致性策略 (一般宽松地) 请求。
+| 搜索参数类型 | 适用于 FHIR 的 Azure API | 医疗保健 API 中的 FHIR 服务| 注释 |
+|------------------------|-----------|-----------|---------|
+| $export（整个系统） | 是       | 是       |         |
+| 患者/$export        | 是       | 是       |         |
+| 组/$export          | 是       | 是       |         |
+| $convert-data          | 是       | 是       |         |
+| $validate              | 是       | 是       |         |
+| $member-match          | 是       | 是       |         |
+| $patient-everything    | 是       | 是       |         |
+| $purge-历史记录         | 是       | 是       |         |
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-FHIR 服务器使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)进行访问控制。 具体而言，如果将配置参数设置为，则会强制实施基于角色的访问控制 (RBAC) ， `FhirServer:Security:Enabled` `true` 并且除 `/metadata`) 到 FHIR 服务器的所有 (请求都必须 `Authorization` 将请求标头设置为 `Bearer <TOKEN>` 。 令牌必须包含声明中定义的一个或多个角色 `roles` 。 如果令牌包含允许指定资源上指定操作的角色，则将允许请求。
-
-目前，对给定角色允许的操作在 API 上 *全局* 应用。
+FHIR 服务使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)进行访问控制。 
 
 ## <a name="service-limits"></a>服务限制
 
-* [**请求单位 (ru)**](../../cosmos-db/concepts-limits.md) -可在门户中为 FHIR 的 Azure API 配置最多10000个 ru。 你将需要至少 400 ru 或 40 ru/GB，取两者中较大者。 如果你需要10000个多个 ru，则可以将其放在支持票证中，以增加此项。 可用的最大值为1000000。
+* 捆绑大小 - 每个捆绑限制为 500 个项。
 
-* **束大小** -每个束限制为500个项目。
-
-* **数据大小** -数据/文档每个都必须略微小于 2 MB。
-
-* **订阅限制** -默认情况下，每个订阅最多只能有10个 FHIR 服务器实例。 如果每个订阅需要更多实例，请打开支持票证，并提供有关需求的详细信息。
-
-* **并发连接和实例** -默认情况下，在群集中的两个实例上有15个并发连接 (总计30个并发请求) 。 如果需要更多的并发请求，请打开支持票证，并提供有关需求的详细信息。
+* **订阅限制** -默认情况下，每个订阅最多只能有10个 FHIR 服务。 此限制可用于一个或多个工作区。 
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了 Azure API for FHIR 中支持的 FHIR 功能。 接下来，部署适用于 FHIR 的 Azure API。
+本文介绍了 FHIR 服务中支持的 FHIR 功能。 接下来，部署 FHIR 服务。
  
 >[!div class="nextstepaction"]
->[部署 Azure API for FHIR](fhir-paas-portal-quickstart.md)
+>[部署 FHIR 服务](fhir-portal-quickstart.md)

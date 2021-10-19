@@ -1,46 +1,64 @@
 ---
-title: $validate上的配置文件创建 FHIR Azure API for FHIR
-description: $validate配置文件创建 FHIR 资源
+title: $validate Azure 医疗保健 API 中的 FHIR 服务上的配置文件创建 FHIR 资源
+description: $validate FHIR 服务中的配置文件创建 FHIR 资源
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 05/06/2021
-ms.author: ginle
-ms.openlocfilehash: 2c367dbed14e0dba9a8a95a3ce2709d2415c7cd6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/03/2021
+ms.author: cavoeg
+ms.openlocfilehash: b52389b6007c436614840a9bad568a0e81cf7fa2
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466694"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779563"
 ---
 # <a name="how-to-validate-fhir-resources-against-profiles"></a>如何根据配置文件验证 FHIR 资源
 
-HL7 FHIR 定义了存储和交换医疗保健数据的标准且可互操作的方式。 即使在基本 FHIR 规范中，根据使用 FHIR 的上下文定义其他规则或扩展也很有帮助。 对于 FHIR 的此类特定于上下文的用法 **，FHIR** 配置文件用于额外的规范层。
+> [!IMPORTANT]
+> Azure Healthcare APIs 目前为预览版。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
-[FHIR 配置文件](https://www.hl7.org/fhir/profiling.html) 描述表示为 的资源的其他上下文，例如约束或扩展 `StructureDefinition` 。 HL7 FHIR 标准定义了一组基本资源，并且这些标准基资源具有通用定义。 通过 FHIR 配置文件，可以使用约束和扩展缩小范围并自定义资源定义。
+HL7 FHIR 定义了一种标准且可互操作的方式，以存储和交换医疗保健数据。 即使在基本 FHIR 规范中，根据使用 FHIR 的上下文定义其他规则或扩展也很有帮助。 对于 FHIR 的此类特定于上下文的用法，FHIR 配置文件可用于实现额外的规范层。
 
-Azure API for FHIR允许针对配置文件验证资源，以查看资源是否符合配置文件。 本文逐步介绍 FHIR 配置文件的基础知识，以及如何在创建和更新资源时根据配置文件 `$validate` 使用 验证资源。
+[FHIR 配置文件](https://www.hl7.org/fhir/profiling.html)描述了表示为 `StructureDefinition` 的资源中的其他上下文，例如约束或扩展。 HL7 FHIR 标准定义了一组基本资源，且这些标准基本资源具有通用定义。 通过 FHIR 配置文件，可以使用约束和扩展缩小资源定义范围并对其进行自定义。
+
+Azure 医疗保健 API 中的 FHIR (称为 FHIR 服务) 允许根据配置文件验证资源，以查看资源是否符合配置文件。 本文将逐步介绍 FHIR 配置文件的基础知识，以及在创建和更新资源时如何根据配置文件使用 `$validate` 验证资源。
 
 ## <a name="fhir-profile-the-basics"></a>FHIR 配置文件：基础知识
 
-配置文件设置资源的其他上下文，通常表示为 `StructureDefinition` 资源。 `StructureDefinition` 定义一组有关资源或数据类型的内容的规则，例如资源具有哪些字段以及这些字段可以具有哪些值。 例如，配置文件可以限制基数 (例如，将最大基数设置为 0 以排除元素) ，将元素的内容限制为单个固定值，或定义资源的所需扩展。 它还可以指定现有配置文件的其他约束。 `StructureDefinition`由其规范 URL 标识：
+配置文件在资源上设置其他上下文，通常表示为 `StructureDefinition` 资源。 `StructureDefinition` 定义了一组有关资源或数据类型内容的规则，例如资源所具有的字段以及这些字段所可以采用的值。 例如，配置文件可以限制基数（例如，将最大基数设置为 0 以排除元素），将元素的内容限制为单个固定值，或定义资源所需的扩展。 该资源还可以指定对现有配置文件的其他约束。 `StructureDefinition` 由其规范 URL 标识：
 
 ```rest
 http://hl7.org/fhir/StructureDefinition/{profile}
 ```
 
-在 字段中 `{profile}` ，指定配置文件的名称。
+在 `{profile}` 字段中，可指定配置文件的名称。
 
 例如：
 
-- `http://hl7.org/fhir/StructureDefinition/patient-birthPlace` 是一个基本配置文件，需要有关患者出生日期的注册地址的信息。
-- `http://hl7.org/fhir/StructureDefinition/bmi` 是另一个基本配置文件，用于定义如何表示 BMI 观测 (体) 索引。
-- `http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance` 是美国核心配置文件，用于设置与患者关联的资源的最小期望 `AllergyIntolerance` ，并标识了必填字段，例如扩展和值集。
+- `http://hl7.org/fhir/StructureDefinition/patient-birthPlace` 是基本配置文件，需要有关患者出生登记地址的信息。
+- `http://hl7.org/fhir/StructureDefinition/bmi` 是另一个基本配置文件，用于定义如何表示身体质量指数 (BMI) 观察值。
+- `http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance` 是 US Core 配置文件，用于设置与患者关联的 `AllergyIntolerance` 资源的最低预期，并标识扩展和值集等必填字段。
+
+当资源符合配置文件时，其配置文件在 `profile` 字段内的资源中指定。
+
+```json
+{
+  "resourceType" : "Patient",
+  "id" : "ExamplePatient1",
+  "meta" : {
+    "lastUpdated" : "2020-10-30T09:48:01.8512764-04:00",
+    "source" : "Organization/PayerOrganizationExample1",
+    "profile" : [
+      "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Patient"
+    ]
+  },
+```
 
 ### <a name="base-profile-and-custom-profile"></a>基本配置文件和自定义配置文件
 
-有两种类型的配置文件：基本配置文件和自定义配置文件。 基本配置文件是资源需要遵从的基本配置文件 `StructureDefinition` ，由或等基本资源定义 `Patient` `Observation` 。 例如， (BMI) 配置文件的主体大容量索引 `Observation` 将会如下所示：
+存在两种类型的配置文件，即基本配置文件和自定义配置文件。 基本配置文件是资源需要符合的基本 `StructureDefinition`，由基本资源（如 `Patient` 或 `Observation`）定义。 例如，身体质量指数 (BMI) `Observation` 配置文件如下所示：
 
 ```json
 {
@@ -50,17 +68,17 @@ http://hl7.org/fhir/StructureDefinition/{profile}
 }
 ```
 
-自定义配置文件是一组在基本配置文件之上的附加约束，限制或添加不属于基本规范的资源参数。 自定义配置文件非常有用，因为可以通过在现有基础资源上指定约束和扩展来自定义自己的资源定义。 例如，你可能想要生成一个配置文件，该配置文件显示 `AllergyIntolerance` 基于性别的资源实例 `Patient` ，在这种情况下，你将在 `Patient` 具有配置文件的现有配置文件的基础上创建自定义配置文件 `AllergyIntolerance` 。
+自定义配置文件是除基本配置文件之外的一组附加约束，用于限制或添加不属于基本规范的资源参数。 自定义配置文件非常有用，原因在于可以通过指定现有基本资源上的约束和扩展来自定义自己的资源定义。 例如，你可能希望生成一个基于 `Patient` 性别显示 `AllergyIntolerance` 资源实例的配置文件，在这种情况下，你可以在具有 `AllergyIntolerance` 配置文件的现有 `Patient` 配置文件的基础上创建自定义配置文件。
 
 > [!NOTE]
-> 自定义配置文件必须在基资源的基础上生成，并且不能与基资源冲突。 例如，如果某个元素的基数为 1.. 1，则自定义配置文件不能是可选的。
+> 自定义配置文件必须建立在基本资源基础之上，并且不能与基本资源相冲突。 例如，如果元素的基数为 1..1，则自定义配置文件无法将其设为可选。
 
 自定义配置文件也由各种实现指南指定。 一些常见的实现指南包括：
 
 |名称 |URL
 |---- |----
-美国核心 |<https://www.hl7.org/fhir/us/core/>
-CARIN 蓝按钮 |<http://hl7.org/fhir/us/carin-bb/>
+US Core |<https://www.hl7.org/fhir/us/core/>
+CARIN 蓝色按钮 |<http://hl7.org/fhir/us/carin-bb/>
 Da Vinci 付款人数据交换 |<http://hl7.org/fhir/us/davinci-pdex/>
 Argonaut |<http://www.fhir.org/guides/argonaut/pd/>
 
@@ -71,16 +89,16 @@ Argonaut |<http://www.fhir.org/guides/argonaut/pd/>
 若要将配置文件存储到服务器，可以执行 `POST` 请求：
 
 ```rest
-POST http://<your FHIR service base URL>/{Resource}
+POST http://<your FHIR service base URL>/StructureDefinition
 ```
 
-其中 `{Resource}` ，字段将替换为 `StructureDefinition` ，您可以使用 `StructureDefinition` `POST` 或格式的服务器的资源 `JSON` `XML` 。 例如，如果要存储配置文件 `us-core-allergyintolerance` ，可以：
+例如，若要存储 `us-core-allergyintolerance` 配置文件，可以执行下列操作：
 
 ```rest
-POST http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance
+POST https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance
 ```
 
-存储并检索 US Core 的云配置文件的位置：
+存储并检索 US Core 过敏不耐受配置文件的位置：
 
 ```json
 {
@@ -112,7 +130,7 @@ POST http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.
 ...
 ```
 
-大多数配置文件具有资源类型 `StructureDefinition` ，但它们也可以是 和 类型， `ValueSet` `CodeSystem` 它们是 [术语资源](http://hl7.org/fhir/terminologies.html) 。 例如，如果使用 JSON 格式的配置文件，服务器将返回存储的配置文件，并为其分配 ，就像使用 `POST` `ValueSet` `id` 一样 `StructureDefinition` 。 下面是上传"条件严重性"配置文件时获取的示例，[](https://www.hl7.org/fhir/valueset-condition-severity.html)该配置文件指定条件/诊断严重性等级的条件：
+大多数配置文件具有 `StructureDefinition` 资源类型，但也可以是 `ValueSet` 和 `CodeSystem` 类型，这都是[术语](http://hl7.org/fhir/terminologies.html)资源。 例如，如果以 JSON 格式 `POST` 一个 `ValueSet` 配置文件，服务器将返回存储的配置文件，并针对该配置文件分配 `id`，跟 `StructureDefinition` 的情况一样。 如下是上传“[条件严重性](https://www.hl7.org/fhir/valueset-condition-severity.html)”配置文件时获取的示例，该配置文件指定了条件/诊断严重性等级的标准：
 
 ```json
 {
@@ -151,25 +169,25 @@ POST http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.
 ...
 ```
 
-可以看到 是 ，配置文件的 还指定 `resourceType` `ValueSet` `url` 这是类型 `ValueSet` `"http://hl7.org/fhir/ValueSet/condition-severity"` ：。
+可以看到 `resourceType` 是 `ValueSet`，配置文件的 `url` 还指定这是类型 `ValueSet`: `"http://hl7.org/fhir/ValueSet/condition-severity"`。
 
 ### <a name="viewing-profiles"></a>查看配置文件
 
-可以使用请求访问服务器中的现有自定义 `GET` 配置文件。 所有有效的配置文件（如实现指南中具有有效规范 URL 的配置文件）都应可通过查询访问：
+可以使用 `GET` 请求访问服务器中现有的自定义配置文件。 所有有效的配置文件（如实现指南中具有有效规范 URL 的配置文件）均应可通过查询进行访问：
 
 ```rest
 GET http://<your FHIR service base URL>/StructureDefinition?url={canonicalUrl} 
 ```
 
-字段 `{canonicalUrl}` 将替换为配置文件的规范 URL。
+其中，字段 `{canonicalUrl}` 将替换为配置文件的规范 URL。
 
-例如，若要查看 US Core 资源 `Goal` 配置文件：
+例如，若要查看 US Core `Goal` 资源配置文件：
 
 ```rest
-GET http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal
+GET https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal
 ```
 
-这会返回 `StructureDefinition` "美国核心目标"配置文件的资源，该资源将如下所示：
+这会返回 US Core Goal 配置文件的 `StructureDefinition` 资源，如下所示：
 
 ```json
 {
@@ -197,7 +215,7 @@ GET http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.o
 ...
 ```
 
-我们的 FHIR 服务器不返回基本配置文件的实例，但可以在 HL7 网站上轻松找到这些实例， `StructureDefinition` 例如：
+FHIR 服务不返回基本配置文件的实例，但可以在 HL7 网站上轻松找到这些实例， `StructureDefinition` 例如：
 
 - `http://hl7.org/fhir/Observation.profile.json.html`
 - `http://hl7.org/fhir/Patient.profile.json.html`
@@ -205,14 +223,14 @@ GET http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.o
 
 ### <a name="profiles-in-the-capability-statement"></a>功能语句中的配置文件
 
-列出了 FHIR 服务器的所有可能行为，这些行为将用作服务器功能的语句，例如结构 `Capability Statement` 定义和值集。 Azure API for FHIR以以下形式更新功能语句，并提供有关上传和存储的配置文件的信息：
+列出了 FHIR 服务的所有可能的行为，这些行为将用作服务器功能的语句，例如结构 `Capability Statement` 定义和值集。 FHIR 服务使用以下形式上传和存储的配置文件的信息更新功能语句：
 
 - `CapabilityStatement.rest.resource.profile`
 - `CapabilityStatement.rest.resource.supportedProfile`
 
-这些说明将显示配置文件的所有规范，该规范描述对资源的总体支持，包括对基数、绑定、扩展或其他限制的任何约束。 因此，当你的格式为的 `POST` 配置文件 `StructureDefinition` ，而 `GET` 资源元数据要查看 full 功能语句时，你会看到参数旁边已 `supportedProfiles` 上传的配置文件上的所有详细信息。
+上述语句将显示配置文件（可描述对资源的总体支持）的所有规范，包括对基数、绑定、扩展等限制的任何约束。 因此，以 `StructureDefinition` 的形式 `POST` 配置文件，以及 `GET` 资源元数据以查看完整的功能语句时，将在 `supportedProfiles` 参数旁边看到自己上传的配置文件的所有详细信息。
 
-例如，如果你 `POST` 使用的是美国核心患者配置文件，此配置文件的开头如下所示：
+例如，如果 `POST` US Core 患者配置文件，如下所示：
 
 ```json
 {
@@ -229,13 +247,13 @@ GET http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.o
 ...
 ```
 
-并发送 `GET` 请求 `metadata` ：
+为 `metadata` 发送 `GET` 请求：
 
 ```rest
 GET http://<your FHIR service base URL>/metadata
 ```
 
-将返回， `CapabilityStatement` 其中包含上传到 FHIR 服务器的美国核心患者配置文件中的以下信息：
+你将收到 `CapabilityStatement`，其中包含有关你上传至 FHIR 服务器的 US Core 患者配置文件的以下信息：
 
 ```json
 ...
@@ -248,24 +266,24 @@ GET http://<your FHIR service base URL>/metadata
 ...
 ```
 
-## <a name="validating-resources-against-the-profiles"></a>针对配置文件验证资源
+## <a name="validating-resources-against-the-profiles"></a>根据配置文件验证资源
 
-FHIR 资源（如 `Patient` 或 `Observation` ）可以将其符合性表达给特定的配置文件。 这允许我们的 FHIR 服务器针对关联的配置文件或指定的配置文件来 **验证** 给定的资源。 针对配置文件验证资源意味着检查资源是否符合配置文件，包括或实现指南中列出的规范 `Resource.meta.profile` 。
+FHIR 资源（如 `Patient` 或 `Observation`）可以表示其符合特定的配置文件。 这允许 FHIR 服务 **根据** 关联的配置文件或指定的配置文件验证给定的资源。 根据配置文件验证资源意味着检查资源是否符合配置文件，包括 `Resource.meta.profile` 或实现指南中列出的规范。
 
-可以通过两种方式来验证资源。 首先，你可以 `$validate` 对已在 FHIR 服务器中的资源使用操作。 其次，您可以将 `POST` 它作为资源或操作的一部分进行 `Update` 服务器 `Create` 。 在这两种情况下，你都可以通过 FHIR 服务器配置来决定当资源不符合所需的配置文件时要执行的操作。
+可以使用下列两种方法验证资源。 首先，可以针对 `$validate` FHIR 服务中已有的资源使用操作。 其次，可以将该资源作为资源 `Update` 或 `Create` 操作的一部分 `POST` 到服务器。 在这两种情况下，都可以通过 FHIR 服务配置决定在资源不符合所需配置文件时要执行什么操作。
 
 ### <a name="using-validate"></a>使用 $validate
 
-`$validate`操作检查提供的配置文件是否有效，以及资源是否符合指定的配置文件。 如 [HL7 FHIR 规范](https://www.hl7.org/fhir/resource-operation-validate.html)中所述，还可以为指定 `mode` `$validate` ，例如 `create` 和 `update` ：
+`$validate` 操作检查所提供的配置文件是否有效，以及资源是否符合指定的配置文件。 如 [HL7 FHIR 规范](https://www.hl7.org/fhir/resource-operation-validate.html)中所述，还可以为 `$validate` 指定 `mode`，例如 `create` 和 `update`：
 
-- `create`：服务器检查配置文件内容在现有资源中是否唯一，以及是否可将其创建为新资源
-- `update`：检查配置文件是否为针对已命名现有资源的更新 (例如，不对不可变字段进行任何更改) 
+- `create`：服务器检查配置文件内容在现有资源中是否唯一，以及是否可以将其创建为新资源
+- `update`：检查配置文件是否是针对指定的现有资源的更新（例如，未对不可变字段进行更改）
 
 服务器将始终返回 `OperationOutcome` 作为验证结果。
 
 #### <a name="validating-an-existing-resource"></a>验证现有资源
 
-若要验证现有资源，请 `$validate` 在请求中使用 `GET` ：
+若要验证现有资源，请在 `GET` 请求中使用 `$validate`：
 
 ```rest
 GET http://<your FHIR service base URL>/{resource}/{resource ID}/$validate
@@ -274,10 +292,10 @@ GET http://<your FHIR service base URL>/{resource}/{resource ID}/$validate
 例如：
 
 ```rest
-GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429e68d130e/$validate
+GET https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/Patient/a6e11662-def8-4dde-9ebc-4429e68d130e/$validate
 ```
 
-在以上示例中，将验证现有资源 `Patient` `a6e11662-def8-4dde-9ebc-4429e68d130e` 。 如果有效，将获取 `OperationOutcome` 如下所示的 ：
+在上述示例中，将验证现有 `Patient` 资源 `a6e11662-def8-4dde-9ebc-4429e68d130e`。 如果该资源有效，将得到 `OperationOutcome`，如下所示：
 
 ```json
 {
@@ -292,7 +310,7 @@ GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429
 }
 ```
 
-如果资源无效，将收到错误代码和错误消息，并详细说明资源无效的原因。 或错误表示无法执行验证本身，并且资源 `4xx` `5xx` 是否有效是未知的。 返回 `OperationOutcome` 的错误消息示例可能如下所示：
+如果该资源无效，将收到错误代码和错误消息，其中详细说明资源无效的原因。 `4xx` 或 `5xx` 错误表示无法执行验证本身，并且不知道资源是否有效。 返回的带有错误消息的示例 `OperationOutcome` 可能如下所示：
 
 ```json
 {
@@ -334,24 +352,17 @@ GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429
 }
 ```
 
-在以上示例中，资源不符合提供的配置文件， `Patient` 该配置文件需要患者标识符值和性别。
+在上述示例中，资源不符合所提供的 `Patient` 配置文件，该配置文件需要患者标识符值和性别。
 
-如果要将配置文件指定为参数，可以指定要验证的配置文件的规范 URL，例如以下示例，包含 US Core 配置文件和 的 `Patient` 基配置文件 `heartrate` ：
-
-```rest
-GET http://<your FHIR service base URL>/{Resource}/{Resource ID}/$validate?profile={canonicalUrl}
-```
-
-例如：
+如果希望将配置文件指定为参数，则可以指定要验证的配置文件的规范 URL，例如 `heartrate` 的 HL7 基本配置文件示例如下：
 
 ```rest
-GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429e68d130e/$validate?profile=http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
-GET http://my-fhir-server.azurewebsites.net/Observation/12345678/$validate?profile=http://hl7.org/fhir/StructureDefinition/heartrate
+GET https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/Observation/12345678/$validate?profile=http://hl7.org/fhir/StructureDefinition/heartrate
 ```
 
 #### <a name="validating-a-new-resource"></a>验证新资源
 
-如果要验证要上传到服务器的新资源，可以执行 `POST` 请求：
+若要验证上传到服务器的新资源，可以执行 `POST` 请求：
 
 ```rest
 POST http://<your FHIR service base URL>/{Resource}/$validate
@@ -360,14 +371,14 @@ POST http://<your FHIR service base URL>/{Resource}/$validate
 例如：
 
 ```rest
-POST http://my-fhir-server.azurewebsites.net/Patient/$validate 
+POST https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/Patient/$validate 
 ```
 
-此请求将创建请求有效负载中指定的新资源（无论是 JSON 格式还是 XML 格式）并验证上传的资源。 然后，它将作为 `OperationOutcome` 新资源的验证结果返回 。
+此请求将创建你在请求有效负载中指定的新资源（无论是 JSON 格式还是 XML 格式）并验证上传的资源。 然后，此请求将返回 `OperationOutcome`，作为对新资源进行验证的结果。
 
-### <a name="validate-on-resource-create-or-resource-update"></a>在资源 CREATE 或资源更新上进行验证
+### <a name="validate-on-resource-create-or-resource-update"></a>创建资源或更新资源时进行验证
 
-可以选择何时验证资源，例如资源 CREATE 或 UPDATE。 可以在服务器配置设置中的 下指定 `CoreFeatures` 此名称：
+你可以选择何时验证资源，例如在创建资源或更新资源时。 可以在服务器配置设置中的 `CoreFeatures` 下指定此时机：
 
 ```json
 {
@@ -379,8 +390,8 @@ POST http://my-fhir-server.azurewebsites.net/Patient/$validate
 }
 ```
 
-如果资源符合提供的 并且配置文件存在于系统中，则服务器将按照上述 `Resource.meta.profile` 配置设置执行相应操作。 如果提供的配置文件不存在于服务器中，则验证请求将被忽略，并留在 中 `Resource.meta.profile` 。
-验证通常是一项成本高昂的操作，因此它通常仅在测试服务器或一小部分资源中运行 - 因此，在服务器端启用或关闭验证操作非常重要。 如果服务器配置指定不使用资源创建/更新验证，则用户可以通过在 `header` 创建/更新请求的中指定此行为来重写此行为：
+如果资源符合所提供的 `Resource.meta.profile` 并且该配置文件存在于系统中，则服务器将按照上述配置设置执行相应操作。 如果服务器中不存在所提供的配置文件，则验证请求将遭到忽略并留在 `Resource.meta.profile` 中。
+验证通常是一项代价高昂的操作，往往只在测试服务器或一小部分资源上运行，因此，必须使用上述方法在服务器端打开或关闭验证操作。 如果服务器配置指定在创建/更新资源时退出验证，则用户可以通过在创建/更新请求的 `header` 中进行指定以替代此行为：
 
 ```rest
 x-ms-profile-validation: true
@@ -388,7 +399,7 @@ x-ms-profile-validation: true
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了 FHIR 配置文件，以及如何使用 $validate 针对配置文件验证资源。 若要了解适用于 FHIR 的其他支持功能的 Azure API，请参阅：
+本文介绍了 FHIR 配置文件，以及如何使用 $validate 根据配置文件验证资源。 若要了解 FHIR 服务的其他受支持功能，请查看：
 
 >[!div class="nextstepaction"]
 >[FHIR 支持的功能](fhir-features-supported.md)

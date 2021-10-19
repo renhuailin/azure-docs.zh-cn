@@ -9,19 +9,19 @@ ms.topic: reference
 ms.date: 08/03/2021
 ms.author: cavoeg
 ms.custom: references_regions
-ms.openlocfilehash: 2b0a4a3aeb0045c0df31c61d6b10b5d9bc12e349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7e36e91125e721d8ce5ed4dbc2603109838ca531
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778102"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122780004"
 ---
 # <a name="frequently-asked-questions-about-the-fhir-service"></a>FHIR 服务常见问题解答
 
 > [!IMPORTANT]
 > Azure Healthcare APIs 目前为预览版。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
-本部分介绍了有关 Azure Healthcare APIs FHIR 服务（以下称为 FHIR 服务）的一些常见问题解答。
+本部分介绍有关 Azure 医疗保健 Api FHIR 服务的一些常见问题， (特此称为 FHIR service) 。
 
 ## <a name="fhir-service-the-basics"></a>FHIR 服务：基础知识
 

@@ -1,19 +1,19 @@
 ---
 title: Azure API for FHIR 的内置策略定义
 description: 列出 Azure API for FHIR 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 08/13/2021
+ms.date: 10/11/2021
 author: matjazl
 ms.author: zxue
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 722b846f469644f18174402ed875a6ed27b0a3f7
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
-ms.translationtype: HT
+ms.openlocfilehash: 1ad3f8f16ccb3a8e25cd60e13b1b02696e720b67
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178363"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808677"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-api-for-fhir"></a>Azure API for FHIR 的 Azure Policy 内置定义
 

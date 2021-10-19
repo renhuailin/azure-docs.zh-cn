@@ -1,29 +1,32 @@
 ---
-title: 如何在 Azure API for FHIR 中运行重建索引作业
-description: 本文介绍如何运行索引编制作业，为尚未在数据库中编制索引的任何搜索或排序参数编制索引。
+title: '如何在 FHIR service 中运行重建索引作业-Azure 医疗保健 Api (预览) '
+description: 如何运行索引编制作业，为尚未在数据库中编制索引的任何搜索或排序参数编制索引
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 4/23/2021
+ms.date: 08/23/2021
 ms.author: cavoeg
-ms.openlocfilehash: b4ede817b3babfb9221ac8fa982acc0322c9d7b2
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 5544e0caee421d128d7238cb140c4dd525ed7022
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112379665"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778906"
 ---
 # <a name="running-a-reindex-job"></a>运行重建索引作业
 
-在某些情况下，可能会在 Azure API for FHIR 中搜索或排序参数，这些参数尚未编制索引。 当你定义自己的搜索参数时，这尤其有用。 在对搜索参数编制索引之前，不能在搜索中使用它。 本文介绍如何运行索引编制作业，对尚未在数据库中编制索引的任何搜索或排序参数编制索引。
+> [!IMPORTANT]
+> Azure Healthcare APIs 目前为预览版。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+在某些情况下，你可能在 Azure 医疗保健 Api 的 FHIR 服务中有搜索或排序参数， (特此称为 FHIR service) 尚未编制索引。 此方案与您定义自己的搜索参数有关。 在为搜索参数编制索引之前，它不能用于搜索。 本文概述如何运行重编索引作业，为数据库中尚未编制索引的任何搜索或排序参数编制索引。
 
 > [!Warning]
-> 在开始之前阅读本文，这一点很重要。 重建索引作业的性能可能非常高。 本文包含有关如何限制和控制重建索引作业的选项。
+> 在开始之前请务必阅读整篇文章。 重编索引作业可能会非常耗用性能。 本文包含用于限制和控制重编索引作业的选项。
 
 ## <a name="how-to-run-a-reindex-job"></a>如何运行重新索引作业 
 
-若要启动重建索引作业，请使用下面的代码示例：
+要启动重编索引作业，请使用以下代码示例：
 
 ```json
 POST {{FHIR URL}}/$reindex 
@@ -37,7 +40,7 @@ POST {{FHIR URL}}/$reindex
 }
  ```
 
-如果请求成功，则返回已创建的状态 **201** 。 此消息的结果如下所示：
+如果请求成功，则返回状态“201 Created”。 此消息的结果如下：
 
 ```json
 HTTP/1.1 201 Created 
@@ -91,15 +94,15 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 ```
 
 > [!NOTE]
-> 若要检查的状态或取消索引编制作业，需要重新编制索引的 ID。 这是生成的参数资源的 ID。 在上面的示例中，重建索引作业的 ID 是 `560c7c61-2c70-4c54-b86d-c53a9d29495e` 。
+> 若要检查重索引作业的状态或取消重索引作业，则需要重编索引 ID。 这是生成的参数资源的 ID。 在上面的示例中，重编索引作业的 ID 为 `560c7c61-2c70-4c54-b86d-c53a9d29495e`。
 
- ## <a name="how-to-check-the-status-of-a-reindex-job"></a>如何检查重建索引作业的状态
+ ## <a name="how-to-check-the-status-of-a-reindex-job"></a>如何检查重编索引的状态
 
-开始重建索引作业后，可以使用以下操作来检查作业的状态：
+开始重建索引作业后，可以使用以下调用来检查作业的状态：
 
 `GET {{FHIR URL}}/_operations/reindex/{{reindexJobId}`
 
-重建索引作业结果的状态如下所示：
+重编索引作业结果的状态如下所示：
 
 ```json
 {
@@ -161,41 +164,40 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
     {
 ```
 
-重建索引作业结果中显示以下信息：
+在重编索引作业结果中显示如下信息：
 
-* **totalResourcesToReindex**：包含作为作业的一部分而重新编制索引的资源总数。
+* **totalResourcesToReindex**：包括在作业中重编索引的资源的总数。
 
-* **resourcesSuccessfullyReindexed**：已成功重新编制索引的总计。
+* **resourcesSuccessfullyReindexed**：已成功重编索引的总数。
 
-* **进度**：已完成重新索引作业百分比。 等于 resourcesSuccessfullyReindexed/totalResourcesToReindex x 100。
+* **progress**：重编索引作业完成进度的百分比。 等于 resourcesSuccessfullyReindexed/totalResourcesToReindex x 100。
 
-* **状态**：如果重建索引作业已排队、正在运行、已完成、失败或已取消，这将会出现。
+* **状态**：如果重建索引作业已排队、正在运行、已完成、失败或已取消，则为。
 
-* **资源**：此列表列出了由重建索引作业影响的所有资源类型。
+* **资源**：列出由重建索引作业影响的所有资源类型。
 
-## <a name="delete-a-reindex-job"></a>删除重建索引作业
+## <a name="delete-a-reindex-job"></a>删除重编索引作业
 
-如果需要取消重建索引作业，请使用 delete 调用并指定重新索引作业 ID：
+如果需要取消重编索引作业，请使用删除调用并指定重编索引作业 ID：
 
 `Delete {{FHIR URL}}/_operations/reindex/{{reindexJobId}`
 
 ## <a name="performance-considerations"></a>性能注意事项
 
-重建索引作业的性能可能会相当高。 我们实现了一些限制控制，以帮助你管理重新编制索引作业对数据库的运行的方式。
+重编索引作业可能会非常耗用性能。 我们实现了一些限制控件，帮助你管理重编索引作业在数据库上的运行方式。
 
 > [!NOTE]
-> 在较大的数据集上，对于每日运行的索引编制作业，这种情况并不常见。 对于包含30000000万个资源的数据库，我们4-5 注意到，在10万个
+> 重编索引作业在大型数据集上运行数天的情况并不少见。
 
-下表列出了可用参数、默认值和建议范围。 您可以使用这些参数来加速进程 (使用更多计算) 或减慢进程 (使用较少的计算) 。 例如，可以在较低的流量时间运行重新索引作业，并增加计算以使其更快完成。 相反，您可以使用这些设置来确保计算的使用率非常低，并使其在后台运行一天。 
+下表列出了可用参数、默认值和建议范围。 可以使用这些参数加快进程（使用更多的计算）或减缓进程（使用更少的计算）。 
 
-| **参数**                     | **说明**              | **默认**        | **建议范围**           |
+| **参数**                     | **说明**              | **Default**        | **可用范围**            |
 | --------------------------------- | ---------------------------- | ------------------ | ------------------------------- |
-| QueryDelayIntervalInMilliseconds  | 这是在重建索引作业期间要启动的每一批资源之间的延迟。 | 500 MS ( 5 秒)  | 50到5000：50将提高重建索引作业的速度，5000会使其从默认值降低。 |
-| MaximumResourcesPerQuery  | 这是要重新编制索引的资源批中包含的最大资源数。  | 100 | 1-500 |
-| MaximumConcurrency  | 这是一次完成的批处理数。  | 1 | 1-5 |
-| targetDataStoreUsagePercentage | 这允许您指定要用于重新索引作业的数据存储的百分比。 例如，你可以指定50%，这将确保在 Cosmos DB 上，最多可确保索引编制作业使用50% 的可用 ru。  | 不存在，这意味着可以使用最多100%。 | 1-100 |
+| QueryDelayIntervalInMilliseconds  | 重建索引作业期间每个要启动的资源批处理之间的延迟。 数值越小，工作就越快，越多越好。 | 500 MS（0.5 秒） | 50至500000 |
+| MaximumResourcesPerQuery  | 要重新编制索引的资源批中包含的最大资源数。  | 100 | 1-5000 |
+| MaximumConcurrency  | 一次完成的批处理数。  | 1 | 1-10 |
 
-如果要使用上述任意参数，则可以在启动重新索引作业时将其传递到参数资源中。
+如果要使用上述任何参数，可以在启动重索引作业时将它们传递到参数资源。
 
 ```json
 {
@@ -204,10 +206,6 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
     {
       "name": "maximumConcurrency",
       "valueInteger": "3"
-    },
-    {
-      "name": "targetDataStoreUsagePercentage",
-      "valueInteger": "20"
     },
     {
       "name": "queryDelayIntervalInMilliseconds",
@@ -223,10 +221,7 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何启动重建索引作业。 若要了解如何定义需要重建索引作业的新搜索参数，请参阅 
+在本文中，你已了解如何启动重编索引作业。 要了解如何定义需要重编索引作业的新搜索参数，请参阅 
 
 >[!div class="nextstepaction"]
 >[定义自定义搜索参数](how-to-do-custom-search.md)
-
-         
-     

@@ -1,0 +1,51 @@
+items:
+  - name: 用于 FHIR 的 Azure API 文档
+    href: ./azure-api-for-fhir/index.yml
+  - name: Azure 医疗保健 Api (预览) 文档
+    href: index.yml
+  - name: 概述
+    expanded: true
+    items:
+      - name: 关于医疗保健 Api
+        href: healthcare-apis-overview.md
+      - name: 关于工作区
+        href: workspace-overview.md
+      - name: FHIR 服务
+        href: ./fhir/index.yml
+      - name: DICOM 服务
+        href: ./dicom/index.yml
+      - name: IoT 连接器
+        href: ./iot/index.yml
+      - name: 传输和转换数据
+        href: ./data-transformation/index.yml
+  - name: 快速入门
+    expanded: true
+    items:
+      - name: 部署医疗保健 Api
+        href: healthcare-apis-quickstart.md
+  - name: 操作指南
+    expanded: true
+    items:
+      - name: 身份验证和授权
+        href: authentication-authorization.md
+      - name: 使用 Postman 访问 FHIR 服务
+        href: use-postman.md
+      - name: 使用卷访问
+        href: using-curl.md
+      - name: 使用 REST 客户端进行访问
+        href: using-rest-client.md
+      - name: 注册应用程序
+        href: register-application.md
+      - name: 日志记录
+        href: logging.md
+  - name: 概念
+    items:
+      - name: Azure Policy 的安全控件
+        href: security-controls-policy.md
+  - name: 资源
+    expanded: true
+    items:
+      - name: 常见问题解答
+        href: healthcare-apis-faqs.md
+      - name: GitHub 项目
+        href: github-projects.md

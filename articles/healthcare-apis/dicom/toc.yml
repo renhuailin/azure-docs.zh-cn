@@ -1,0 +1,57 @@
+items:
+  - name: DICOM 服务
+    href: index.yml
+  - name: 概述
+    expanded: true
+    items:
+      - name: 关于 DICOM 服务
+        href: dicom-services-overview.md
+  - name: 快速入门
+    expanded: true
+    items:
+      - name: 使用应用程序部署 DICOM Azure 门户
+        href: deploy-dicom-services-in-azure.md
+  - name: 教程
+    expanded: true
+    items:
+      - name: 将 DICOMweb 标准 API 与 C 一起使用#
+        href: dicomweb-standard-apis-c-sharp.md
+      - name: 将 DICOMweb 标准 API 与 cURL 一起使用
+        href: dicomweb-standard-apis-curl.md
+      - name: 将 DICOMweb 标准 API 与 Python 一同使用
+        href: dicomweb-standard-apis-python.md
+  - name: 概念
+    expanded: true
+    items:
+      - name: 将 DICOMweb 标准 API 与 DICOM 服务一同使用
+        href: dicomweb-standard-apis-with-dicom-services.md
+      - name: DICOM 更改源概述
+        href: dicom-change-feed-overview.md
+      - name: 为 DICOM 服务注册 Azure Active Directory 应用程序
+        href: dicom-register-azure-active-directory-applications.md
+      - name: 在 DICOM 服务中启用诊断日志记录
+        href: enable-diagnostic-logging.md
+  - name: 操作指南
+    expanded: true
+    items:
+      - name: 使用更改源拉取 DICOM 更改
+        href: pull-dicom-changes-from-change-feed.md
+      - name: 注册服务客户端应用程序
+        href: dicom-register-service-client-application.md
+      - name: 注册公共客户端应用程序
+        href: dicom-register-public-application.md
+      - name: 注册机密客户端应用程序
+        href: dicom-register-confidential-client-application.md
+      - name: 为 DICOM 服务配置 Azure RBAC
+        href: dicom-configure-azure-rbac.md
+      - name: 使用 Azure CLI 获取用于 DICOM 服务的访问令牌
+        href: dicom-get-access-token-azure-cli.md
+  - name: 资源
+    expanded: true
+    items:
+      - name: DICOM 服务的 API 版本控制
+        href: api-versioning-dicom-service.md
+      - name: DICOM 一致性声明
+        href: dicom-services-conformance-statement.md
+      - name: 常见问题解答
+        href: dicom-services-faqs.yml

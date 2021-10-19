@@ -8,25 +8,25 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: cavoeg
-ms.openlocfilehash: e38295a306e41dee6b92df7839f8f10878535ea1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4571d8f1183cd2aa56568d2e5c4f83abb0f7f5dc
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778601"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779338"
 ---
 # <a name="azure-active-directory-identity-configuration-for-fhir-service"></a>FHIR 服务的 Azure Active Directory 标识配置
 
 > [!IMPORTANT]
 > Azure Healthcare APIs 目前为预览版。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
-使用医疗保健数据时，确保数据安全并且不能由未经授权的用户或应用程序访问，这一点非常重要。 FHIR 服务器使用 [OAuth 2.0](https://oauth.net/2/) 确保此数据的安全性。 使用 [Azure Active Directory](../../active-directory/index.yml) 保护 FHIR 服务，这是 OAuth 2.0 标识提供者的一个示例。 本文概述了 FHIR 服务器授权以及获取令牌以访问 FHIR 服务器所需的步骤。 尽管这些步骤将适用于任何 FHIR 服务器和任何标识提供者，但本文会演练将医疗保健 API FHIR 服务和 Azure Active Directory (Azure AD) 作为标识提供者。
+使用医疗保健数据时，确保数据安全并且不能由未经授权的用户或应用程序访问，这一点非常重要。 FHIR 服务器使用 [OAuth 2.0](https://oauth.net/2/) 确保此数据的安全性。 Azure 医疗保健 API (FHIR 服务) 使用 Azure Active Directory（OAuth 2.0 标识提供者[](../../active-directory/index.yml)的示例）进行保护。 本文概述了 FHIR 服务器授权以及获取令牌以访问 FHIR 服务器所需的步骤。 虽然这些步骤适用于任何 FHIR 服务器和任何标识提供者，但本文将演练 FHIR 服务和Azure Active Directory (Azure AD) 标识提供者。
 
 ## <a name="access-control-overview"></a>访问控制概述
 
-为了让客户端应用程序能够访问 FHIR 服务，它必须提供一个访问令牌。 访问令牌是经过签名的 [Base64](https://en.wikipedia.org/wiki/Base64) 编码的属性（声明）集合，用于传达有关客户端标识和角色以及授予客户端权限的信息。
+为了使客户端应用程序能够访问 FHIR 服务，它必须提供访问令牌。 访问令牌是经过签名的 [Base64](https://en.wikipedia.org/wiki/Base64) 编码的属性（声明）集合，用于传达有关客户端标识和角色以及授予客户端权限的信息。
 
-有多种方法可以获取令牌，但 FHIR 服务不考虑令牌的获取方式，只要该令牌是具有正确声明的正确签名令牌即可。 
+获取令牌的方法有很多，但 FHIR 服务并不关心如何获取令牌，只要它是具有正确声明的适当签名令牌。 
 
 以[授权代码流](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)为例，访问 FHIR 服务器需执行以下四个步骤：
 
@@ -46,15 +46,15 @@ ms.locfileid: "121778601"
 FHIR 服务器通常需要 [JSON Web 令牌](https://en.wikipedia.org/wiki/JSON_Web_Token)（JWT，有时发音为“jot”）。 它由三个部分组成：
 
 第 1 部分：标头，例如：
-    ```json
+```json
     {
       "alg": "HS256",
       "typ": "JWT"
     }
-    ```
+```
 
 第 2 部分：有效负载（声明），例如：
-    ```json
+```json
     {
      "oid": "123",
      "iss": "https://issuerurl",
@@ -63,7 +63,7 @@ FHIR 服务器通常需要 [JSON Web 令牌](https://en.wikipedia.org/wiki/JSON_
         "admin"
       ]
     }
-    ```
+```
 
 第 3 部分：签名，它是通过串联标头和有效负载的 Base64 编码内容并根据标头中指定的算法 (`alg`) 计算这些内容的加密哈希这一方法计算得出的。 服务器将能够从标识提供者获取公钥，并验证此令牌是否由特定的标识提供者颁发且未被篡改。
 

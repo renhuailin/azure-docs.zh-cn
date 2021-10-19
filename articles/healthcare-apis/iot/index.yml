@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: IoT 连接器
+summary: Azure 医疗保健 Api (预览版) 的 IoT 连接器文档页。
+metadata:
+  title: Azure 医疗保健 Api IoT 连接器
+  description: Azure 医疗保健 Api 的数据转换文档部分
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: data-transformation
+  ms.topic: landing-page
+  ms.collection: collection
+  author: msjasteppe
+  ms.author: jasteppe
+  ms.date: 10/12/2021
+  ms.openlocfilehash: 322abc6caf874aa7155b9385e376d066e2c82e11
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130003735"
+landingContent:
+- title: 部署 IoT 连接器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 使用门户部署 IoT 连接器
+      url: deploy-iot-connector-in-azure.md
+- title: 使用 IoT 连接器
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IoT 连接器数据流
+      url: iot-data-flow.md
+    - text: 设备映射
+      url: how-to-use-device-mapping-iot.md
+    - text: FHIR 目标映射
+      url: how-to-use-fhir-mapping-iot.md
+    - text: IoMT 连接器数据映射器工具
+      url: https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper
+- title: Azure IoT 中心
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 通过 Azure IoT 中心接收设备数据
+      url: device-data-through-iot-hub.md

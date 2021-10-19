@@ -5,18 +5,18 @@ author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 4/23/2021
+ms.date: 8/23/2021
 ms.author: cavoeg
-ms.openlocfilehash: 31377dbae6016e7a505b92b983bc5368c456981a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3434a868ac11c90b3ad864f94adf6876e358a8aa
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778236"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772013"
 ---
 # <a name="running-a-reindex-job-in-azure-api-for-fhir"></a>在适用于 FHIR 的 Azure API 中运行重编索引作业
 
-在某些情况下，你可能在适用于 FHIR 的 Azure API 中有一些尚未建立索引的搜索或排序参数。 在定义自己的搜索参数时，这一点尤其重要。 在为搜索参数编制索引之前，它不能用于搜索。 本文概述如何运行重编索引作业，为数据库中尚未编制索引的任何搜索或排序参数编制索引。
+在某些情况下，你可能在适用于 FHIR 的 Azure API 中有一些尚未建立索引的搜索或排序参数。 此方案与您定义自己的搜索参数有关。 在为搜索参数编制索引之前，它不能用于搜索。 本文概述如何运行重编索引作业，为数据库中尚未编制索引的任何搜索或排序参数编制索引。
 
 > [!Warning]
 > 在开始之前请务必阅读整篇文章。 重编索引作业可能会非常耗用性能。 本文包含用于限制和控制重编索引作业的选项。
@@ -95,7 +95,7 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 
  ## <a name="how-to-check-the-status-of-a-reindex-job"></a>如何检查重编索引的状态
 
-启动重编索引作业后，可以使用以下方法检查作业的状态：
+开始重建索引作业后，可以使用以下调用来检查作业的状态：
 
 `GET {{FHIR URL}}/_operations/reindex/{{reindexJobId}`
 
@@ -169,9 +169,9 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 
 * **progress**：重编索引作业完成进度的百分比。 等于 resourcesSuccessfullyReindexed/totalResourcesToReindex x 100。
 
-* **status**：这将显示重编索引作业是排队、正在运行、完成、失败还是已取消。
+* **状态**：如果重建索引作业已排队、正在运行、已完成、失败或已取消，则为。
 
-* **resources**：这会列出受重编索引作业影响的所有资源类型。
+* **资源**：列出由重建索引作业影响的所有资源类型。
 
 ## <a name="delete-a-reindex-job"></a>删除重编索引作业
 
@@ -186,14 +186,14 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 > [!NOTE]
 > 重编索引作业在大型数据集上运行数天的情况并不少见。 对于拥有 30 万亿个资源的数据库，我们注意到在有 10 万个 RU 的情况下为整个数据库重新编制索引需要 4-5 天的时间。
 
-下表列出了可用参数、默认值和建议范围。 可以使用这些参数加快进程（使用更多的计算）或减缓进程（使用更少的计算）。 例如，可以在流量较低的时候运行重编索引作业，并增加计算以更快地完成该作业。 相反，可以使用设置来确保计算的使用率非常低，并让它在后台运行几天。 
+下表列出了可用参数、默认值和建议范围。 您可以使用这些参数加速处理 (使用更多计算) 或减慢进程 (使用较少的计算) 。 例如，可以在流量较低的时候运行重编索引作业，并增加计算以更快地完成该作业。 相反，您可以使用这些设置来确保计算的使用率较低，并使其在后台运行一天。 
 
-| **参数**                     | **说明**              | **默认**        | **建议范围**           |
+| **参数**                     | **说明**              | **Default**        | **可用范围**           |
 | --------------------------------- | ---------------------------- | ------------------ | ------------------------------- |
-| QueryDelayIntervalInMilliseconds  | 该参数是在重编索引作业期间启动每批资源之间的延迟。 | 500 MS（0.5 秒） | 50 到 5000：50 将加快重索引作业，5000 将降低它的默认速度。 |
-| MaximumResourcesPerQuery  | 该参数是在要重编索引的一批资源中包含的最大资源数。  | 100 | 1-500 |
-| MaximumConcurrency  | 该参数是一次完成的批数。  | 1 | 1-5 |
-| targetDataStoreUsagePercentage | 该参数可以指定用于重编索引作业的数据存储的百分比。 例如，可以指定 50%，这将确保重编索引作业最多使用 Cosmos DB 上可用 RU 的 50%。  | 如果没有指定，则意味着最多可以使用 100%。 | 1-100 |
+| QueryDelayIntervalInMilliseconds  | 重建索引作业期间每个要启动的资源批处理之间的延迟。 数值越小，工作越快，越多越好。 | 500 MS（0.5 秒） | 50-500000 |
+| MaximumResourcesPerQuery  | 要重新编制索引的资源批中包含的最大资源数。  | 100 | 1-5000 |
+| MaximumConcurrency  | 一次完成的批处理数。  | 1 | 1-10 |
+| targetDataStoreUsagePercentage | 允许你指定要用于重新索引作业的数据存储的百分比。 例如，可以指定 50%，这将确保重编索引作业最多使用 Cosmos DB 上可用 RU 的 50%。  | 不存在，这意味着可以使用最多100%。 | 0-100 |
 
 如果要使用上述任何参数，可以在启动重索引作业时将它们传递到参数资源。
 
@@ -227,6 +227,3 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 
 >[!div class="nextstepaction"]
 >[定义自定义搜索参数](how-to-do-custom-search.md)
-
-         
-     

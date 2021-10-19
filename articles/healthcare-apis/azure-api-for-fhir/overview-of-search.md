@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 5/17/2021
 ms.author: cavoeg
-ms.openlocfilehash: af0b40ccd33829803978aa5c42f1dcb4c0fcc4c2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f974cb0a5099ce23f9b7ecaf719c09239c21eca8
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778683"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824522"
 ---
 # <a name="overview-of-search-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中进行搜索的概述
 
@@ -136,7 +136,7 @@ GET {{FHIR_URL}}/metadata
 | _revinclude                   | 是                  | 是                       |包含的项仅限 100 个。 PaaS 上的 _revinclude 和 Cosmos DB 上的 OSS 不包括 :iterate 支持 [(#2137)](https://github.com/microsoft/fhir-server/issues/2137)。  错误的请求 [#1319](https://github.com/microsoft/fhir-server/issues/1319) 还包含错误的状态代码                            |
 | _summary                      | 是             | 是                   |
 | _total                        | 部分              | 部分                   | _total=none 和 _total=accurate                               |
-| _sort                         | 部分              | 部分                   | 支持 sort=_lastUpdated。 对于在 2021 年 4 月 20 日之后创建的 Azure API for FHIR 和 OSS Cosmos DB 数据库，支持对名字、姓氏和临床日期进行排序。 FHIR 服务和 OSS SQL DB 数据库支持按字符串和日期排序。                              |
+| _sort                         | 部分              | 部分                   | 支持 sort=_lastUpdated。 默认情况下，按升序对记录进行排序。 可以使用前缀"-"按降序排序。 对于在 2021 年 4 月 20 日之后创建的 Azure API for FHIR 和 OSS Cosmos DB 数据库，支持对名字、姓氏和临床日期进行排序。          |
 | _contained                    | 否                   | 否                        |
 | _containedType                | 否                   | 否                        |
 | _score                        | 否                   | 否                        |

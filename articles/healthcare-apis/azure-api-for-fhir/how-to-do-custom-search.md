@@ -1,18 +1,18 @@
 ---
 title: 如何在 Azure API for FHIR 中进行自定义搜索
-description: 本文介绍如何定义你自己的、要在数据库中使用的自定义搜索参数。
+description: 本文介绍如何在 Azure API 中定义你自己的自定义搜索参数，以便在数据库中使用 FHIR。
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 05/03/2021
 ms.author: cavoeg
-ms.openlocfilehash: 1fd19057d71a4ef6ac7f199d9fd133285ffeee18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 28acdb257fe3eee41eb1585e9f1c60a26c91b0ad
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779750"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358502"
 ---
 # <a name="defining-custom-search-parameters-for-azure-api-for-fhir"></a>为 Azure API for FHIR 定义自定义的搜索参数
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: cavoeg
-ms.openlocfilehash: 935084c12551dcbebecf3f10bb0e6eff19eff45f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 83c38f2add15481bab844f1c21a142644b546c0c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778682"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429201"
 ---
 # <a name="patient-everything-in-fhir"></a>FHIR 中的 Patient-everything
 
@@ -58,7 +58,7 @@ GET {FHIRURL}/Patient/{ID}/$everything?start=2010&end=2020
 
 若要使用 $patient-everything 查询患者的“观察结果”和“所遇问题”，请使用以下调用： 
 ```json
-GET {FHIRURL}/Patient/{ID}/$everything_type=Observation,Encounter 
+GET {FHIRURL}/Patient/{ID}/$everything?_type=Observation,Encounter 
 ```
 
 若要使用 $patient-everything 查询患者自 2021-05-27T05:00:00Z 以来的“所有内容”，请使用以下调用： 

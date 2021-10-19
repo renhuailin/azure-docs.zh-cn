@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: rabhaiya
-ms.openlocfilehash: 690a406c9cb0dd7644656c78236a2001ae0f0f2e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4b32bf7a505fb7ca3958d8add69e3deb25cee0a1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778494"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748733"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>适用于 FHIR 的 Azure IoT 连接器（预览版）映射模版
 本文详细介绍了如何使用映射模板配置适用于快速医疗保健互操作性资源 (FHIR&#174;)* 的 Azure IoT 连接器。
@@ -65,8 +65,8 @@ ms.locfileid: "121778494"
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 JsonPathContentTemplate 允许使用 JSON 路径来匹配和提取事件中心消息中的值。
 
-| 属性 | 说明 |<div style="width:150px">示例</div>
-| --- | --- | --- 
+| 属性 | 说明 |示例 |
+| --- | --- | --- |
 |TypeName|要与模板所匹配的度量关联的类型。|`heartrate`
 |TypeMatchExpression|针对事件中心有效负载进行评估的 JSON 路径表达式。 如果找到匹配的 JToken，则会将模板视为匹配项。 将会针对此处匹配的已提取 JToken 对所有后续表达式进行评估。|`$..[?(@heartRate)]`
 |TimestampExpression|JSON 路径表达式，用于提取度量的 OccurenceTimeUtc 的时间戳值。|`$.endDate`

@@ -8,21 +8,21 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.author: cavoeg
-ms.openlocfilehash: 678151fb59941fafb521a9fc62ef2be0b94cf6de
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 557cbb92f643e553c1dae0768e2891abf7327f03
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779746"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779410"
 ---
 # <a name="fhir-service-access-token-validation"></a>FHIR 服务访问令牌验证
 
 > [!IMPORTANT]
 > Azure Healthcare APIs 目前为预览版。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
-FHIR 服务验证访问令牌的方式取决于实现和配置。 本文将逐步说明验证步骤，这些步骤可能有助于排查访问问题。
+Azure 医疗保健 API 中的 FHIR (称为 FHIR 服务) 验证访问令牌取决于实现和配置。 本文将逐步说明验证步骤，这些步骤可能有助于排查访问问题。
 
-## <a name="validate-token-has-no-issues-with-identity-provider"></a>验证令牌是否存在标识提供者相关的问题
+## <a name="validate-token-has-no-issues-with-identity-provider"></a>验证令牌是否不存在标识提供者相关的问题
 
 令牌验证的第一步是验证该令牌是否由正确的标识提供者颁发并且尚未修改。 FHIR 服务器将配置为使用称作颁发机构 `Authority` 的特定标识提供者。 FHIR 服务器将从 `/.well-known/openid-configuration` 终结点检索有关标识提供者的信息。 使用 Azure AD 时，完整的 URL 是：
 
@@ -104,7 +104,7 @@ FHIR 服务器的重要属性为 `jwks_uri`（告知服务器要从何处提取�
 
 服务器验证令牌的真实性后，FHIR 服务器将继续验证客户端是否具有访问令牌所需的声明。
 
-使用 FHIR 服务时，服务器将会验证：
+使用 FHIR 服务时，服务器将验证：
 
 1. 令牌是否包含适当的 `Audience`（`aud` 声明）。
 1. 允许该令牌的目标用户或主体访问 FHIR 服务器数据平面。 令牌的 `oid` 声明包含用于唯一标识该用户或主体的标识对象 ID。

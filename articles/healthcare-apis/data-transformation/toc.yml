@@ -1,0 +1,16 @@
+items:
+  - name: 传输和转换数据
+    href: index.yml
+  - name: 导出数据
+    expanded: true
+    items:
+      - name: 为导出配置设置
+        href: configure-export-data.md
+      - name: 导出
+        href: export-data.md
+      - name: 去标识化导出
+        href: de-identified-export.md
+      - name: 导出到 Synapse
+        href: move-to-synapse.md
+  - name: 转换数据
+    href: convert-data.md

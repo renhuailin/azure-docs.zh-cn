@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure 医疗保健 Api (预览) 文档
+summary: 所有 Azure 医疗保健 Api (预览) 服务的文档，包括 FHIR、DICOM 和数据转换。
+metadata:
+  title: Azure 医疗保健 Api 文档
+  description: 所有 Azure 医疗保健 Api 产品和服务的文档，包括 FHIR、DICOM 和数据转换
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.topic: landing-page
+  ms.collection: collection
+  author: msjasteppe
+  ms.author: jasteppe
+  ms.date: 10/05/2021
+  ms.openlocfilehash: dc71d1a28dd572c1635c22f8505409c0905d397c
+  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129545333"
+landingContent:
+- title: 什么是医疗保健 Api？
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于医疗保健 Api
+      url: healthcare-apis-overview.md
+    - text: 关于工作区
+      url: workspace-overview.md
+  - linkListType: deploy
+    links:
+    - text: 医疗保健 Api 入门
+      url: healthcare-apis-quickstart.md
+- title: 使用医疗保健 Api
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 身份验证和授权
+      url: authentication-authorization.md
+    - text: 使用 REST 客户端进行访问
+      url: using-rest-client.md
+  - linkListType: reference
+    links:
+    - text: 医疗保健 Api 常见问题
+      url: healthcare-apis-faqs.md
+- title: 传输和转换数据
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 导出数据
+      url: ./data-transformation/export-data.md
+    - text: 将数据导出到 Synapse
+      url: ./data-transformation/move-to-synapse.md
+  - linkListType: concept
+    links:
+    - text: 转换数据
+      url: ./data-transformation/convert-data.md
+- title: FHIR 服务
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 关于 FHIR 服务
+      url: ./fhir/overview.md
+  - linkListType: deploy
+    links:
+    - text: 使用门户部署 FHIR 服务
+      url: ./fhir/fhir-portal-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 互操作性和患者访问
+      url: ./fhir/cms-tutorial-introduction.md
+    - text: FHIR 搜索操作
+      url: ./fhir/overview-of-search.md
+- title: DICOM 服务
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 关于 DICOM 服务
+      url: ./dicom/dicom-services-overview.md
+  - linkListType: deploy
+    links:
+    - text: 使用门户部署 DICOM 服务
+      url: ./dicom/deploy-dicom-services-in-azure.md
+  - linkListType: tutorial
+    links:
+    - text: DICOMweb 标准 Api
+      url: ./dicom/dicomweb-standard-apis-with-dicom-services.md
+    - text: DICOM 更改源
+      url: ./dicom/pull-dicom-changes-from-change-feed.md
+- title: IoT 连接器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 关于 IoT 连接器
+      url: ./iot/iot-connector-overview.md
+  - linkListType: deploy
+    links:
+    - text: 使用门户部署 IoT 连接器
+      url: ./iot/deploy-iot-connector-in-azure.md
+  - linkListType: tutorial
+    links:
+    - text: 通过 Azure IoT 中心接收设备数据
+      url: ./iot/device-data-through-iot-hub.md

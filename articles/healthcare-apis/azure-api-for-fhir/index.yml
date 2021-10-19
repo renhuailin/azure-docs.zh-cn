@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure API for FHIR 文档
+summary: Azure API for FHIR 是一种托管的 API，它基于标准、符合法规且适合临床健康数据，实现解决方案用于可执行相关操作的分析和机器学习。
+metadata:
+  title: Azure API for FHIR 文档 - 教程和操作指南
+  description: Azure API for FHIR 是一种托管的 API，它基于标准、符合法规且适合临床健康数据，实现解决方案用于可执行相关操作的分析和机器学习。
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: matjazl
+  ms.author: matjazl
+  ms.date: 08/13/2020
+  ms.openlocfilehash: 06681a9940c09eb6f50d44fdad0906681ecdb6e6
+  ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/18/2021
+  ms.locfileid: "122396939"
+landingContent:
+- title: Azure API for FHIR 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure API for FHIR？
+      url: overview.md
+    - text: 什么是适用于 FHIR 的 Azure IoT 连接器（预览版）？
+      url: overview.md#azure-iot-connector-for-fhir-preview
+  - linkListType: quickstart
+    links:
+    - text: 部署适用于 FHIR 的 API 服务器
+      url: fhir-paas-portal-quickstart.md
+    - text: 部署适用于 FHIR 的 Azure IoT 连接器（预览版）
+      url: iot-fhir-portal-quickstart.md
+- title: 设置教程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署 JavaScript 应用，从 FHIR 服务读取数据
+      url: tutorial-web-app-fhir-server.md
+    - text: 智能集成来获取第三方应用和病历卡
+      url: use-smart-on-fhir-proxy.md
+    - text: 通过 Azure IoT 中心接收设备数据
+      url: device-data-through-iot-hub.md
+- title: 注册应用进行 AD 身份验证
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 注册资源应用
+      url: register-resource-azure-ad-client-app.md
+    - text: 注册机密客户端应用
+      url: register-confidential-azure-ad-client-app.md
+    - text: 注册公共客户端应用
+      url: register-public-azure-ad-client-app.md
+    - text: 注册服务客户端应用
+      url: register-service-azure-ad-client-app.md

@@ -1,45 +1,41 @@
 ---
-title: 在 Azure API for FHIR 中配置跨域资源共享
-description: 本文介绍如何在 Azure API for FHIR 中配置跨域资源共享。
+title: 在 FHIR 服务中配置跨域资源共享
+description: 本文介绍如何在 FHIR 服务中配置跨域资源共享
 author: matjazl
 ms.author: zxue
-ms.date: 3/11/2019
+ms.date: 08/03/2021
 ms.topic: reference
 ms.service: healthcare-apis
 ms.subservice: fhir
-ms.openlocfilehash: 3ce1f914afab2a46ab734c270b00e2c7938dc80b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: e322b1fb848f9156b1d00d2d1ae051ef62536c4a
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283908"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778879"
 ---
-# <a name="configure-cross-origin-resource-sharing-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中配置跨域资源共享
+# <a name="configure-cross-origin-resource-sharing-in-fhir-service"></a>在 FHIR 服务中配置跨域资源共享
 
-适用于快速医疗保健互操作性资源 (FHIR) 的 Azure API 支持[跨域资源共享 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing)。 CORS 允许你配置设置，以便一个域中的应用程序 (源) 可以从其他域（称为跨域请求）访问资源。
+> [!IMPORTANT]
+> Azure Healthcare APIs 目前为预览版。 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
-CORS 通常用于单页面应用程序，该应用程序必须将 RESTful API 调用到不同的域。
+Azure 医疗保健 Api (特此称为 FHIR service) 支持 [跨域资源共享 (CORS) ](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing)中的 FHIR 服务。 通过 CORS，你可以配置设置，使来自一个域（源）的应用程序可以访问来自另一个域的资源（称为跨域请求）。
 
-若要在用于 FHIR 的 Azure API 中配置 CORS 设置，请指定以下设置：
+CORS 通常用于必须对不同的域调用 RESTful API 的单页应用。
 
-- **源 (访问控制-允许)**。 允许向 Azure API for FHIR 提供跨域请求的域列表。 必须在单独的行中输入每个域 (源) 。 您可以输入一个星号 ( * ) 以允许来自任何域的调用，但我们不建议这样做，因为这会带来安全风险。
+若要配置 FHIR 服务中的 CORS 设置，请指定以下设置：
 
-- **标头 (访问控制-允许-标头)**。 源请求将包含的标头的列表。 若要允许所有标头，请输入星号 ( * ) 。
+- 源 (Access-Control-Allow-Origin)。 允许向 FHIR 服务发出跨源请求的域的列表。 必须在单独的行中输入每个域（源）。 可以输入一个星号 (*) 以允许来自任何域的调用，但我们不建议这样做，因为这会带来安全风险。
 
-- **(访问控制-允许) 方法的方法**。 在 API 调用中 (PUT、GET、POST 等) 的允许方法。 对于所有方法，选择 "全 **选** "。
+- 标头 (Access-Control-Allow-Headers)。 源请求将包含的标头的列表。 若要允许所有标头，请输入一个星号 (*)。
 
-- **最大年龄 (访问控制-最大年龄)**。 用于缓存 "访问控制-允许-标头" 和 "访问控制-允许"-方法的预检请求结果的值（以秒为单位）。
+- 方法 (Access-Control-Allow-Methods)。 API 调用中允许的方法（PUT、GET、POST 等）。 选择“全选”则允许所有方法。
 
-- **允许凭据 (访问控制-允许)**。 CORS 请求通常不包含 cookie 来阻止 [跨站点请求伪造 (CSRF) ](https://en.wikipedia.org/wiki/Cross-site_request_forgery) 攻击。 如果选择此设置，则可以发出请求以包括 cookie 等凭据。 如果已使用星号 ( * ) 设置了源，则无法配置此设置。
+- 最长时间 (Access-Control-Max-Age)。 用于缓存 Access-Control-Allow-Headers 和 Access-Control-Allow-Methods 的预检请求结果的值（以秒为单位）。
 
-![ (CORS) 设置的跨域资源共享](media/cors/cors.png)
+- 允许凭据 (Access-Control-Allow-Credentials)。 CORS 请求通常不包含 Cookie，以防止[跨网站请求伪造 (CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) 攻击。 如果选择此设置，则可以发出请求以包括 Cookie 等凭据。 如果你已使用星号 (*) 设置了源，则无法配置此设置。
+
+![跨域资源共享 (CORS) 设置](media/cors/cors.png)
 
 >[!NOTE]
->不能为不同的域来源指定不同的设置。 所有设置 (**标头**、 **方法**、 **最大期限** 和 **允许凭据**) 适用于在 "源" 设置中指定的所有来源。
-
-## <a name="next-steps"></a>后续步骤
-
-本文介绍了如何在 Azure API for FHIR 中配置跨域共享。 接下来，为 FHIR 部署完全托管的 Azure API：
- 
->[!div class="nextstepaction"]
->[部署 Azure API for FHIR](fhir-paas-portal-quickstart.md)
+>不能为不同的域源指定不同的设置。 所有设置（“标头”、“方法”、“最长时间”和“允许凭据”）都适用于在“源”设置中指定的所有源。

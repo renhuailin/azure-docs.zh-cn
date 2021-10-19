@@ -1,19 +1,18 @@
 ---
 title: 在 Azure AD 中注册机密客户端应用 - Azure API for FHIR
 description: 在 Azure Active Directory 中注册机密客户端应用程序，该应用程序代表用户进行身份验证，并请求访问资源应用程序。
-services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/10/2021
 ms.author: cavoeg
-ms.openlocfilehash: 5f49b73e034e4a38ba6022270a68f3d6c2018a40
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 2851f230a19bfbafb514e9fb22fd3f37de1f610b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396836"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272540"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory-for-azure-api-for-fhir"></a>在 Azure Active Directory 中为 Azure API for FHIR 注册机密客户端应用程序
 
@@ -45,25 +44,10 @@ ms.locfileid: "122396836"
 
 ## <a name="api-permissions"></a>API 权限
 
-注册应用程序后，必须选择此应用程序应代表用户请求哪些 API 权限。
+用户的权限Azure API for FHIR RBAC 进行管理。 有关更多详细信息，请访问 [配置 Azure RBAC for FHIR](configure-azure-rbac.md)。
 
-1. 选择“API 权限”。
-
-    :::image type="content" source="media/add-azure-active-directory/portal-aad-register-new-app-registration-confidential-client-api-permissions.png" alt-text="机密客户端。API 权限。":::
-
-1. 选择“添加权限”。
-
-    若使用 Azure API for FHIR，则将通过在“我组织使用的 API”下搜索 Azure Healthcare API 来添加对 Azure Healthcare APIs 的权限。 Azure Healthcare API 的搜索结果仅在[已部署 Azure API for FHIR ](fhir-paas-powershell-quickstart.md)时返回。
-
-    若要引用不同的资源应用程序，请选择之前在“我的 API”下创建的 [FHIR API 资源应用程序注册](register-resource-azure-ad-client-app.md)。
-
-
-    :::image type="content" source="media/confidential-client-application/confidential-client-org-api.png" alt-text="机密客户端。我的组织 API" lightbox="media/confidential-client-application/confidential-app-org-api-expanded.png":::
-    
-
-1. 选择机密客户端应用程序将代表用户请求的作用域（权限）。 依次选择“user_impersonation”、“添加权限”。 
-
-    :::image type="content" source="media/confidential-client-application/confidential-client-add-permission.png" alt-text="机密客户端。委托的权限":::
+>[!NOTE]
+>尝试使用 grant_type client_credentials 等工具为用户Azure API for FHIR访问令牌时，请使用安全令牌。 有关更多详细信息，请访问[在上测试 FHIR API Azure API for FHIR。](tutorial-web-app-test-postman.md)
 
 
 ## <a name="application-secret"></a>应用程序机密
@@ -88,4 +72,4 @@ ms.locfileid: "122396836"
 本文向你说明在 Azure AD 中注册机密客户端应用程序的步骤， 以及将 API 权限添加到 Azure Healthcare API 的步骤。 最后，向你展示如何创建应用程序机密。 此外，还能了解如何使用 Postman 访问 FHIR 服务器。
  
 >[!div class="nextstepaction"]
->[使用 Postman 访问 FHIR 服务](../fhir/using-postman.md)
+>[使用 Postman 访问 FHIR 服务](./../use-postman.md)

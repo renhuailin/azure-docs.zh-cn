@@ -1,19 +1,18 @@
 ---
 title: 在 Azure AD 中注册公共客户端应用 - Azure API for FHIR
 description: 本文介绍如何在 Azure Active Directory 中注册公共客户端应用程序，以准备好在 Azure 中部署 FHIR API。
-services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/10/2021
 ms.author: cavoeg
-ms.openlocfilehash: 5b089e1c1c6d5a5b621fb50fda9e975e2320ea7e
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e89d577385e41fc1e2dcd0b58afafc8ccf5371c8
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396735"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278303"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory-for-azure-api-for-fhir"></a>在 Azure Active Directory 中为 Azure API for FHIR 注册公共客户端应用程序
 
@@ -27,7 +26,7 @@ ms.locfileid: "122396735"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，单击“Azure Active Directory”。
 
-2. 在“Azure Active Directory”边栏选项卡中，单击“应用注册” ：
+2. 在“Azure Active Directory”边栏选项卡中，单击“应用注册”： 
 
     ![Azure 门户。 新建应用注册。](media/add-azure-active-directory/portal-aad-new-app-registration.png)
 
@@ -55,22 +54,13 @@ ms.locfileid: "122396735"
 
 ## <a name="api-permissions"></a>API 权限
 
-与[机密客户端应用程序](register-confidential-azure-ad-client-app.md)一样，需要选择此应用程序应该能够代表用户请求哪些 API 权限：
+用户的权限Azure API for FHIR RBAC 进行管理。 有关更多详细信息，请访问 [配置 Azure RBAC for FHIR](configure-azure-rbac.md)。
 
-1. 打开“API 权限”。
-
-    如果使用 Azure API for FHIR，可以通过在“我的组织使用的 API”下搜索“Azure Healthcare APIs”来添加对 Azure Healthcare APIs 的权限。 仅当已[部署 Azure API for FHIR](fhir-paas-powershell-quickstart.md) 时，才能找到此项。
-
-    
-    如果引用其他资源应用程序，请在“我的 API”下选择以前创建的 [FHIR API 资源应用程序注册](register-resource-azure-ad-client-app.md)：
-
-    ![Azure 门户。 新建公共 API 权限 - Azure API for FHIR 默认值](media/public-client-application/api-permissions.png)
-
-
-2. 选择希望应用程序能够请求的权限：![Azure 门户。 应用权限](media/public-client-application/app-permissions.png)
+>[!NOTE]
+>尝试使用 grant_type client_credentials 等工具为用户Azure API for FHIR访问令牌时，请使用安全令牌。 有关更多详细信息，请访问[在上测试 FHIR API Azure API for FHIR。](tutorial-web-app-test-postman.md)
 
 ## <a name="validate-fhir-server-authority"></a>验证 FHIR 服务器颁发机构
-如果在本文中注册的应用程序和你的 FHIR 服务器位于同一 Azure AD 租户中，则你可以继续执行后续步骤。
+如果在本文中注册的应用程序和你的 FHIR 服务器在同一 Azure AD 租户中，则可以继续执行后续步骤。
 
 如果在不包含你的 FHIR 服务器的其他 Azure AD 租户中配置客户端应用程序，则需要更新颁发机构。 在 Azure API for FHIR 中的“设置”->“身份验证”下设置颁发机构。 将颁发机构设置为“https://login.microsoftonline.com/\<TENANT-ID>”。
 
@@ -79,4 +69,4 @@ ms.locfileid: "122396735"
 在本文中，你已了解如何在 Azure Active Directory 中注册公共客户端应用程序。 接下来，请使用 Postman 测试对 FHIR 服务器的访问。
  
 >[!div class="nextstepaction"]
->[使用 Postman 访问 FHIR 服务](../fhir/using-postman.md)
+>[使用 Postman 访问 FHIR 服务](./../use-postman.md)

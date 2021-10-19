@@ -1,0 +1,36 @@
+items:
+  - name: IoT 连接器
+    href: index.yml
+  - name: 概述
+    expanded: true
+    items:
+      - name: 关于 IoT 连接器
+        href: iot-connector-overview.md
+  - name: 快速入门
+    expanded: true
+    items:
+      - name: 部署 IoT 连接器
+        expanded: true
+        items:
+          - name: 使用门户
+            href: deploy-iot-connector-in-azure.md
+  - name: 操作指南
+    expanded: true
+    items:
+      - name: 通过 Azure IoT 中心接收设备数据
+        href: device-data-through-iot-hub.md
+      - name: IoT 数据流
+        href: iot-data-flow.md
+      - name: 使用设备映射
+        href: how-to-use-device-mapping-iot.md
+      - name: 使用 FHIR 目标映射
+        href: how-to-use-fhir-mapping-iot.md
+      - name: 通过诊断设置导出 IoT 连接器指标
+        href: iot-metrics-diagnostics-export.md
+  - name: 资源
+    expanded: true
+    items:
+      - name: 开放源代码项目
+        href: iot-git-projects.md
+      - name: 故障排除指南
+        href: iot-troubleshoot-guide.md
