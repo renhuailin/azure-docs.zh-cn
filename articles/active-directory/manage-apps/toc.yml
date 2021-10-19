@@ -140,12 +140,18 @@
       items:
         - name: 使用 Azure AD 保护混合访问
           href: secure-hybrid-access.md
-        - name: F5 和 Azure AD 集成
-          href: f5-aad-integration.md
-        - name: Azure IaaS 中的 F5 BIG-IP VE 部署
-          href: f5-bigip-deployment-guide.md
-        - name: 将 F5 BIG-IP VE 用于 Azure AD 以实现无密码 VPN
-          href: f5-aad-password-less-vpn.md
+        - name: Datawiza
+          href: datawiza-with-azure-ad.md
+        - name: F5
+          items:
+            - name: F5 和 Azure AD 集成
+              href: f5-aad-integration.md
+            - name: Azure IaaS 中的 F5 BIG-IP VE 部署
+              href: f5-bigip-deployment-guide.md
+            - name: 将 F5 BIG-IP VE 用于 Azure AD 以实现无密码 VPN
+              href: f5-aad-password-less-vpn.md
+        - name: Silverfort
+          href: silverfort-azure-ad-integration.md
     - name: 单一登录
       items:
         - name: 链接

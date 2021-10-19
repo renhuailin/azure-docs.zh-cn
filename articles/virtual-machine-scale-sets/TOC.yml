@@ -190,7 +190,7 @@
     - name: 认可的 Linux 发行版
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
-    - name: 业务流程模式（预览版）
+    - name: 业务流程模式
       items:
         - name: 概述
           href: virtual-machine-scale-sets-orchestration-modes.md
